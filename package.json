@@ -1,0 +1,15 @@
+{
+  "name": "mukaan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js && node test-i18n.js && node test-v5.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "playwright-core": "^1.63.0"
+  }
+}

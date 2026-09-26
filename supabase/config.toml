@@ -1,0 +1,20 @@
+project_id = "molaplan"
+
+[auth]
+site_url = "https://molaplan.com"
+additional_redirect_urls = ["https://molaplan.com/**", "https://www.molaplan.com/**", "https://molaplan.pages.dev/**", "http://localhost:8765/**", "http://127.0.0.1:8765/**"]
+
+[auth.rate_limit]
+email_sent = 100
+
+[auth.email]
+enable_confirmations = true
+
+[auth.email.smtp]
+enabled = true
+host = "smtp.resend.com"
+port = 465
+user = "resend"
+pass = "env(RESEND_API_KEY)"
+admin_email = "noreply@molaplan.com"
+sender_name = "Molaplan"
