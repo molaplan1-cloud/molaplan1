@@ -77,7 +77,7 @@ create table if not exists public.events (
   place            text not null check (char_length(place) between 2 and 70),
   lat              double precision check (lat between -90 and 90),
   lng              double precision check (lng between -180 and 180),
-  max_participants int not null default 6 check (max_participants between 2 and 50),
+  max_participants int null default null check (max_participants is null or max_participants between 2 and 100000),
   skill_level      text not null default 'all' check (skill_level in ('all','beginner','intermediate','advanced')),
   is_crazy         boolean not null default false,
   crazy_level      smallint not null default 0 check (crazy_level between 0 and 3),
@@ -319,7 +319,7 @@ alter table public.events add constraint events_ends_check check (
   ends_at is null or (ends_at >= starts_at and ends_at <= starts_at + interval '62 days'));
 alter table public.events drop constraint if exists events_max_participants_check;
 alter table public.events add constraint events_max_participants_check check (
-  max_participants between 2 and 100000 and (kind <> 'community' or max_participants <= 50));
+  (max_participants is null or max_participants between 2 and 100000) and (max_participants is null or kind <> 'community' or max_participants <= 50));
 alter table public.events drop constraint if exists events_description_check;
 alter table public.events add constraint events_description_check check (
   char_length(description) <= case when kind = 'community' then 600 else 2000 end);
@@ -655,7 +655,7 @@ begin
       raise exception 'event_in_past' using errcode = 'P0001';
     end if;
     select count(*) into n from public.event_participants where event_id = new.event_id;
-    if n >= e.max_participants then
+    if e.max_participants is not null and n >= e.max_participants then
       raise exception 'event_full' using errcode = 'P0001';
     end if;
   end if;
@@ -1395,6 +1395,33 @@ drop policy if exists "reports: ylläpito poistaa" on public.reports;
 create policy "reports: ylläpito poistaa" on public.reports
   for delete to authenticated using (public.is_admin());
 
+-- items: kaikki näkevät saatavilla olevat; omistaja ja ylläpito muokkaa
+alter table public.items enable row level security;
+drop policy if exists "items: kaikki lukevat saatavilla olevat" on public.items;
+create policy "items: kaikki lukevat saatavilla olevat" on public.items
+  for select to authenticated using (status = 'available' or owner_id = auth.uid() or public.is_admin());
+drop policy if exists "items: kirjautunut luo oman" on public.items;
+create policy "items: kirjautunut luo oman" on public.items
+  for insert to authenticated with check (owner_id = auth.uid() and status = 'available');
+drop policy if exists "items: omistaja tai ylläpito muokkaa" on public.items;
+create policy "items: omistaja tai ylläpito muokkaa" on public.items
+  for update to authenticated using (owner_id = auth.uid() or public.is_admin())
+  with check (owner_id = auth.uid() or public.is_admin());
+drop policy if exists "items: omistaja tai ylläpito poistaa" on public.items;
+create policy "items: omistaja tai ylläpito poistaa" on public.items
+  for delete to authenticated using (owner_id = auth.uid() or public.is_admin());
+
+-- item_contacts: omistaja ja ylläpito näkevät
+alter table public.item_contacts enable row level security;
+drop policy if exists "item_contacts: omistaja ja ylläpito lukevat" on public.item_contacts;
+create policy "item_contacts: omistaja ja ylläpito lukevat" on public.item_contacts
+  for select to authenticated using (
+    public.is_admin() or exists (select 1 from public.items i where i.id = item_id and i.owner_id = auth.uid()));
+drop policy if exists "item_contacts: omistaja lisää" on public.item_contacts;
+create policy "item_contacts: omistaja lisää" on public.item_contacts
+  for insert to authenticated with check (
+    exists (select 1 from public.items i where i.id = item_id and i.owner_id = auth.uid()));
+
 -- ---------------------------------------------------------------------
 -- 5. OIKEUDET JA REALTIME
 -- ---------------------------------------------------------------------
@@ -1504,6 +1531,10 @@ grant execute on function public.can_help() to authenticated;
 grant execute on function public.is_helper(uuid) to authenticated;
 grant execute on function public.is_conversation_member(uuid) to authenticated;
 grant execute on function public.display_name_of(uuid) to authenticated;
+grant execute on function public.submit_item(jsonb, jsonb) to authenticated;
+grant execute on function public.close_item(uuid, text) to authenticated;
+revoke execute on function public.submit_item(jsonb, jsonb) from public, anon;
+revoke execute on function public.close_item(uuid, text) from public, anon;
 
 -- Yritystilausten muistutukset päivittäin, JOS pg_cron on jo asennettu (tätä skriptiä ei asenna sitä)
 do $$
@@ -1536,6 +1567,116 @@ insert into public.profiles (id, email_verified)
 insert into public.profile_private (id)
   select p.id from public.profiles p
   on conflict (id) do nothing;
+
+-- ---------------------------------------------------------------------
+-- 1q. ANNETAAN / TARVITAAN (items)
+-- ---------------------------------------------------------------------
+create table if not exists public.items (
+  id          uuid primary key default gen_random_uuid(),
+  owner_id    uuid not null default auth.uid() references public.profiles(id) on delete cascade,
+  kind        text not null check (kind in ('give','need')),
+  title       text not null check (char_length(title) between 3 and 80),
+  description text not null default '' check (char_length(description) <= 1000),
+  city        text not null check (char_length(city) between 1 and 40),
+  district    text not null default '' check (char_length(district) <= 40),
+  status      text not null default 'available' check (status in ('available','taken','closed')),
+  photo_url   text not null default '' check (photo_url = '' or (photo_url ~ '^https://[^\s<>"'']+$' and char_length(photo_url) <= 400)),
+  created_at  timestamptz not null default now(),
+  updated_at  timestamptz not null default now(),
+  constraint items_no_prices check (title !~ '€' and description !~ '€')
+);
+create index if not exists items_status_city_idx on public.items (status, lower(city));
+create index if not exists items_owner_idx on public.items (owner_id);
+
+-- Yhteystiedot: näkyvät vain omistajalle, ylläpitäjille ja kiinnostuneille (jatkossa: chatti)
+create table if not exists public.item_contacts (
+  item_id      uuid primary key references public.items(id) on delete cascade,
+  contact_name text not null check (char_length(contact_name) between 2 and 40),
+  phone        text check (phone is null or phone ~ '^\+?[0-9][0-9 ()-]{5,19}$'),
+  email        text not null check (char_length(email) between 3 and 254 and position('@' in email) > 1),
+  created_at   timestamptz not null default now()
+);
+
+-- Trigger: items updated_at
+create or replace function public.items_updated_at() returns trigger
+language plpgsql as $$
+begin new.updated_at := now(); return new; end $$;
+drop trigger if exists items_updated_at on public.items;
+create trigger items_updated_at before update on public.items
+  for each row execute function public.items_updated_at();
+
+-- Trigger: items before insert – omistaja = kutsuja, ei kaupallista sisältöä
+create or replace function public.items_before_write() returns trigger
+language plpgsql as $$
+begin
+  if auth.uid() is not null then
+    if public.is_banned() then
+      raise exception 'account_banned' using errcode = 'P0001';
+    end if;
+    if tg_op = 'INSERT' then
+      new.owner_id := auth.uid();
+      new.status := 'available';
+      new.created_at := now();
+      if not coalesce((select email_verified from public.profiles where id = auth.uid()), false) then
+        raise exception 'email_not_verified' using errcode = 'P0001';
+      end if;
+    else
+      new.created_at := old.created_at;
+      new.owner_id := old.owner_id;
+    end if;
+  end if;
+  if public.looks_commercial(new.title) or public.looks_commercial(new.description) then
+    raise exception 'commercial_content' using errcode = 'P0001';
+  end if;
+  return new;
+end $$;
+drop trigger if exists items_before_write on public.items;
+create trigger items_before_write before insert or update on public.items
+  for each row execute function public.items_before_write();
+
+-- Trigger: item_contacts – sähköposti = tilin sähköposti
+create or replace function public.item_contacts_before_insert() returns trigger
+language plpgsql security definer set search_path = public as $$
+declare em text;
+begin
+  select u.email into em from auth.users u where u.id = auth.uid();
+  if em is not null and em <> '' then new.email := em; end if;
+  new.contact_name := btrim(new.contact_name);
+  new.phone := btrim(coalesce(new.phone, ''));
+  return new;
+end $$;
+drop trigger if exists item_contacts_before_insert on public.item_contacts;
+create trigger item_contacts_before_insert before insert on public.item_contacts
+  for each row execute function public.item_contacts_before_insert();
+
+-- RPC: lisaa item + yhteystiedot yhdessa transaktiossa
+create or replace function public.submit_item(it jsonb, contact jsonb) returns uuid
+language plpgsql security invoker set search_path = public as $$
+declare iid uuid;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  insert into public.items (kind, title, description, city, district, photo_url)
+  values (
+    it->>'kind', btrim(it->>'title'), coalesce(it->>'description', ''),
+    btrim(it->>'city'), btrim(coalesce(it->>'district', '')),
+    coalesce(it->>'photo_url', ''))
+  returning id into iid;
+  insert into public.item_contacts (item_id, contact_name, phone)
+  values (iid, contact->>'name', coalesce(contact->>'phone', ''));
+  return iid;
+end $$;
+
+-- RPC: sulje / merkitse otetuksi
+create or replace function public.close_item(iid uuid, new_status text) returns void
+language plpgsql security invoker set search_path = public as $$
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if new_status not in ('taken','closed') then
+    raise exception 'invalid_status' using errcode = 'P0001';
+  end if;
+  update public.items set status = new_status
+    where id = iid and (owner_id = auth.uid() or public.is_admin());
+end $$;
 
 -- ---------------------------------------------------------------------
 -- 6. LAJIT (perusdata)

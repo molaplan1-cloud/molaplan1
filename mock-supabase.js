@@ -121,7 +121,7 @@ function doInsert(t,row,a){
    if(row.user_id!==a)throw RLS(t);
    const e=db.events.find(x=>x.id===row.event_id);if(!e)throw E('event_not_found');
    if(db.event_participants.some(p=>p.event_id===e.id&&p.user_id===a))throw E('duplicate key value violates unique constraint "event_participants_pkey"','23505');
-   if(a!==e.host_id){if(Date.parse(e.ends_at||e.starts_at)<Date.now()-3600000)throw E('event_in_past');if(db.event_participants.filter(p=>p.event_id===e.id).length>=e.max_participants)throw E('event_full')}
+   if(a!==e.host_id){if(Date.parse(e.ends_at||e.starts_at)<Date.now()-3600000)throw E('event_in_past');if(e.max_participants!=null&&db.event_participants.filter(p=>p.event_id===e.id).length>=e.max_participants)throw E('event_full')}
    row.joined_at=now();db.event_participants.push(row);
    if(a!==e.host_id){const c=db.conversations.find(x=>x.event_id===e.id);sysMsg(c&&c.id,nameOf(a)+' liittyi mukaan 🎉','joined',{name:nameOf(a)});notify(e.host_id,'🙌',nameOf(a)+' liittyi tapahtumaasi “'+e.title+'”','event',e.id,'joined_your_event',{name:nameOf(a),title:e.title})}
    return row}
