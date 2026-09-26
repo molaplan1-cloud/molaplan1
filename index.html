@@ -828,6 +828,10 @@ select.inp{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.
 .cz-banner.soft .cta{margin-top:9px;font-size:12.5px;padding:6px 12px}
 .chip.ball{font-weight:800;color:#1F4E79;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(90deg,#4C8DD6,#2B6CB0) border-box;border:2px solid transparent;box-shadow:none}
 .chip.ball.on{background:linear-gradient(90deg,#4C8DD6,#2B6CB0);color:#fff}
+.chip.giv{background:linear-gradient(#fff,#fff) padding-box,linear-gradient(90deg,#FF8C3D,#FF5722) border-box;border:2px solid transparent;box-shadow:none;color:#C24A00;font-weight:800}
+.chip.giv.on{background:linear-gradient(90deg,#FF8C3D,#FF5722);color:#fff;box-shadow:0 8px 16px -8px rgba(255,87,34,.8)}
+.chip.need{background:linear-gradient(#fff,#fff) padding-box,linear-gradient(90deg,#9C27B0,#E91E63) border-box;border:2px solid transparent;box-shadow:none;color:#7B1FA2;font-weight:800}
+.chip.need.on{background:linear-gradient(90deg,#9C27B0,#E91E63);color:#fff;box-shadow:0 8px 16px -8px rgba(156,39,176,.8)}
 .kind-row{display:flex;align-items:center;gap:8px;margin:2px 0 6px;min-width:0}
 .kind-row .org{font-size:12.5px;font-weight:700;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .kind-badge{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:800;padding:4px 9px;border-radius:999px;white-space:nowrap}
@@ -925,7 +929,7 @@ const CRAZY_ACTS=[
  ['flashmob','Tanssia bussipysäkillä','🕺',320,3,false],['avanto','Avantouinti auringonnousussa','🌅',20,3,false],['huonorunous','Vuoden huonoin runo -ilta','📜',260,1,false],
  ['kasari','Pukeudu 80-luvuksi','📼',300,2,false]
 ].map(([id,name,emoji,hue,lvl,adult])=>mkAct({id,raw:name,emoji,hue,crazy:true,lvl,adult}));
-const CZ_ALL='__hullut', GOOD_ALL='__hyvat', BIZ_ALL='__yritykset';
+const CZ_ALL='__hullut', GOOD_ALL='__hyvat', BIZ_ALL='__yritykset', GIVE_ALL='__annetaan', NEED_ALL='__tarvitaan';
 function clvlName(n){return n>=1&&n<=3?tx('clvl.'+n):''}
 const ADULT_RE=/naku|alasti|alaston|konjak|viini|olut|oluen|kalja|bisse|shamp|kuohu|cocktail|drinkk|viski|siideri|lonkero|känn|kossu|vodka|rommi|punssi|pubi|baari|wine|beer|naked|nude|nudis|whisk|brandy|cognac|cerveza|desnud|sangr[ií]a|tequila|naken|nakna|nakenbad|(^|[^a-z])vino/i;   /* keep in sync with public.looks_adult() */
 const LEVELS=['all','beginner','intermediate','advanced'];
@@ -1530,6 +1534,8 @@ function byId(id){return S.meetups.find(m=>m.id===id)}
 function nearSort(){return hereNear(viewCity())}
 function timeOk(m){const n=dayDiff(m);if(F.time==='today')return n===0;if(F.time==='tomorrow')return n===1;if(F.time==='week')return n>=0&&n<=6;return true}
 function filtered(){
+ /* GIVE_ALL and NEED_ALL are handled by filteredItems() - return empty for event list */
+ if(F.act===GIVE_ALL||F.act===NEED_ALL)return[];
  const c=viewCity().toLowerCase();
  const list=S.meetups.filter(m=>String(m.city).toLowerCase()===c&&!isPast(m)&&(F.act==='all'||(F.act===CZ_ALL?isCrazy(m):F.act===BIZ_ALL?m.kind==='business':m.act===F.act))&&timeOk(m)&&(F.district==='all'||m.district===F.district)&&(F.level==='all'||(LEGACY_LEVEL[m.level]||m.level)===F.level||(LEGACY_LEVEL[m.level]||m.level)==='all'));
  if(!nearSort())return list.sort((a,b)=>dateObj(a)-dateObj(b));
@@ -1705,7 +1711,7 @@ function filtersHTML(ctx){
  const chip=a=>`<button class="chip ${a.custom?'custom':''} ${a.crazy?'czact':''} ${F.act===a.id?'on':''}" data-a="f-act" data-v="${esc(a.id)}">${a.emoji} ${esc(a.name)}</button>`;
  const t=(v,l)=>`<button class="${F.time===v?'on':''}" data-a="f-time" data-v="${v}">${l}</button>`;
  return `<div class="filters">
-  <div class="chips" data-keep="acts-${ctx}"><button class="chip ${F.act==='all'?'on':''}" data-a="f-act" data-v="all">${tx('filter.all')}</button><button class="chip gall ${F.act===GOOD_ALL?'on':''}" data-a="f-act" data-v="${GOOD_ALL}">${tx('filter.good')}</button><button class="chip ball ${F.act===BIZ_ALL?'on':''}" data-a="f-act" data-v="${BIZ_ALL}" id="chip-biz-${ctx}">${tx('filter.biz')}</button>${orderedActs().filter(a=>!a.crazy).map(chip).join('')}<button class="chip czall ${F.act===CZ_ALL?'on':''}" data-a="f-act" data-v="${CZ_ALL}">${tx('filter.crazy')}</button>${orderedActs().filter(a=>a.crazy).map(chip).join('')}</div>
+  <div class="chips" data-keep="acts-${ctx}"><button class="chip ${F.act==='all'?'on':''}" data-a="f-act" data-v="all">${tx('filter.all')}</button><button class="chip gall ${F.act===GOOD_ALL?'on':''}" data-a="f-act" data-v="${GOOD_ALL}">${tx('filter.good')}</button><button class="chip giv ${F.act===GIVE_ALL?'on':''}" data-a="f-act" data-v="${GIVE_ALL}">${tx('filter.give')}</button><button class="chip need ${F.act===NEED_ALL?'on':''}" data-a="f-act" data-v="${NEED_ALL}">${tx('filter.need')}</button><button class="chip ball ${F.act===BIZ_ALL?'on':''}" data-a="f-act" data-v="${BIZ_ALL}" id="chip-biz-${ctx}">${tx('filter.biz')}</button>${orderedActs().filter(a=>!a.crazy).map(chip).join('')}<button class="chip czall ${F.act===CZ_ALL?'on':''}" data-a="f-act" data-v="${CZ_ALL}">${tx('filter.crazy')}</button>${orderedActs().filter(a=>a.crazy).map(chip).join('')}</div>
   <div class="seg">${t('all',tx('common.all'))}${t('today',tx('date.today'))}${t('tomorrow',tx('date.tomorrow'))}${t('week',tx('date.thisWeek'))}</div>
   <div class="selrow">
    <label class="sel scity">${icon('city')}<select data-f="city" id="f-city-${ctx}" aria-label="${tx('city.which')}">${cityOptions(viewCity())}</select></label>
