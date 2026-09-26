@@ -1770,7 +1770,7 @@ async function csAdd(el){
 /* ================= FILTERS ================= */
 function filtersHTML(ctx){
  const t=(v,l)=>`<button class="${F.time===v?'on':''}" data-a="f-time" data-v="${v}">${l}</button>`;
- const r=(v,l)=>`<button class="radius-btn ${F.radius===v?'on':''}" data-a="f-radius" data-v="${v}">${l}</button>`;
+ const r=v=>`<button class="radius-btn ${F.radius===v?'on':''}" data-a="f-radius" data-v="${v}">${v>0?v+' km':tx('filter.radiusAll')}</button>`;
  const curAct=F.act;
  const curActLabel=curAct==='all'?tx('filter.all'):curAct===GOOD_ALL?tx('filter.good'):curAct===GIVE_ALL?tx('filter.give'):curAct===NEED_ALL?tx('filter.need'):curAct===BIZ_ALL?tx('filter.biz'):curAct===CZ_ALL?tx('filter.crazy'):(Acts.find(a=>a.id===curAct)?.emoji+' '+(Acts.find(a=>a.id===curAct)?.name||curAct)||tx('filter.all'));
  const item=(id,emoji,name)=>`<button class="act-filter-item ${F.act===id?'on':''}" data-a="f-act" data-v="${esc(id)}"><span class="emoji">${emoji||''}</span><span>${esc(name)}</span></button>`;
@@ -1795,7 +1795,7 @@ function filtersHTML(ctx){
   </div>
   <div class="radius-row" id="radius-row">
    <button class="loc-btn" data-a="loc-home" id="loc-home-btn" title="${tx('map.useMyLoc')}">${icon('pin')} ${HERE?'●':'○'}</button>
-   ${r(5,tx('filter.radius5'))}${r(10,tx('filter.radius10'))}${r(25,tx('filter.radius25'))}${r(50,tx('filter.radius50'))}${r(100,tx('filter.radius100'))}${r(0,tx('filter.radiusAll'))}
+   ${r(5)}${r(10)}${r(25)}${r(50)}${r(100)}${r(0)}
   </div></div>`;
 }
 function cityChanged(){if(C&&!C.touchedCity)resetCreate();if(bigMap){bigMap._fitted=false;selectMarker(null)}}
