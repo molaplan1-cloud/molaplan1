@@ -1190,6 +1190,13 @@ alter table public.conversations         enable row level security;
 alter table public.messages              enable row level security;
 alter table public.conversation_reads    enable row level security;
 alter table public.notifications         enable row level security;
+alter table public.teams                 enable row level security;
+alter table public.team_members          enable row level security;
+alter table public.team_roles            enable row level security;
+alter table public.team_places           enable row level security;
+alter table public.team_events          enable row level security;
+alter table public.team_event_rsvps     enable row level security;
+alter table public.team_messages        enable row level security;
 
 -- profiles
 drop policy if exists "profiles: kirjautuneet lukevat" on public.profiles;
@@ -1336,6 +1343,119 @@ create policy "notifications: omat merkitään luetuiksi" on public.notification
 drop policy if exists "notifications: omat poistetaan" on public.notifications;
 create policy "notifications: omat poistetaan" on public.notifications
   for delete to authenticated using (user_id = auth.uid());
+
+-- =====================================================================
+--  JOUKKUEET / SEURAT RLS
+-- =====================================================================
+
+-- teams: jäsenet ja omistaja näkevät, omistaja muokkaa
+drop policy if exists "teams: jäsenet näkevät" on public.teams;
+create policy "teams: jäsenet näkevät" on public.teams
+  for select to authenticated using (
+    owner_id = auth.uid() or exists (
+      select 1 from public.team_members m where m.team_id = id and m.user_id = auth.uid()));
+drop policy if exists "teams: kirjautunut luo" on public.teams;
+create policy "teams: kirjautunut luo" on public.teams
+  for insert to authenticated with check (owner_id = auth.uid());
+drop policy if exists "teams: omistaja muokkaa" on public.teams;
+create policy "teams: omistaja muokkaa" on public.teams
+  for update to authenticated using (owner_id = auth.uid());
+drop policy if exists "teams: omistaja poistaa" on public.teams;
+create policy "teams: omistaja poistaa" on public.teams
+  for delete to authenticated using (owner_id = auth.uid());
+
+-- team_members: jäsenet näkevät, omistaja lisää/poistaa
+drop policy if exists "team_members: jäsenet näkevät" on public.team_members;
+create policy "team_members: jäsenet näkevät" on public.team_members
+  for select to authenticated using (
+    user_id = auth.uid() or exists (
+      select 1 from public.teams t where t.id = team_id and t.owner_id = auth.uid()));
+drop policy if exists "team_members: omistaja lisää" on public.team_members;
+create policy "team_members: omistaja lisää" on public.team_members
+  for insert to authenticated with check (
+    exists (select 1 from public.teams t where t.id = team_id and t.owner_id = auth.uid()));
+drop policy if exists "team_members: omistaja poistaa" on public.team_members;
+create policy "team_members: omistaja poistaa" on public.team_members
+  for delete to authenticated using (
+    exists (select 1 from public.teams t where t.id = team_id and t.owner_id = auth.uid()));
+
+-- team_roles: vain joukkueen jäsenet
+drop policy if exists "team_roles: jäsenet näkevät" on public.team_roles;
+create policy "team_roles: jäsenet näkevät" on public.team_roles
+  for select to authenticated using (
+    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id
+      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
+drop policy if exists "team_roles: omistaja muokkaa" on public.team_roles;
+create policy "team_roles: omistaja muokkaa" on public.team_roles
+  for insert to authenticated with check (
+    exists (select 1 from public.teams t where t.id = team_id and t.owner_id = auth.uid()));
+drop policy if exists "team_roles: omistaja poistaa" on public.team_roles;
+create policy "team_roles: omistaja poistaa" on public.team_roles
+  for delete to authenticated using (
+    exists (select 1 from public.teams t where t.id = team_id and t.owner_id = auth.uid()));
+
+-- team_places: jäsenet näkevät, omistaja muokkaa
+drop policy if exists "team_places: jäsenet näkevät" on public.team_places;
+create policy "team_places: jäsenet näkevät" on public.team_places
+  for select to authenticated using (
+    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id
+      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
+drop policy if exists "team_places: omistaja muokkaa" on public.team_places;
+create policy "team_places: omistaja muokkaa" on public.team_places
+  for insert to authenticated with check (
+    exists (select 1 from public.teams t where t.id = team_id and t.owner_id = auth.uid()));
+drop policy if exists "team_places: omistaja poistaa" on public.team_places;
+create policy "team_places: omistaja poistaa" on public.team_places
+  for delete to authenticated using (
+    exists (select 1 from public.teams t where t.id = team_id and t.owner_id = auth.uid()));
+
+-- team_events: jäsenet näkevät, omistaja/coach luo
+drop policy if exists "team_events: jäsenet näkevät" on public.team_events;
+create policy "team_events: jäsenet näkevät" on public.team_events
+  for select to authenticated using (
+    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id
+      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
+drop policy if exists "team_events: omistaja/coach luo" on public.team_events;
+create policy "team_events: omistaja/coach luo" on public.team_events
+  for insert to authenticated with check (
+    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id and m.role in ('admin','coach')
+      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
+drop policy if exists "team_events: omistaja/coach muokkaa" on public.team_events;
+create policy "team_events: omistaja/coach muokkaa" on public.team_events
+  for update to authenticated using (
+    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id and m.role in ('admin','coach')
+      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
+drop policy if exists "team_events: omistaja/coach poistaa" on public.team_events;
+create policy "team_events: omistaja/coach poistaa" on public.team_events
+  for delete to authenticated using (
+    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id and m.role in ('admin','coach')
+      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
+
+-- team_event_rsvps: jäsenet näkevät, kirjautunut ilmoittautuu itse
+drop policy if exists "team_event_rsvps: jäsenet näkevät" on public.team_event_rsvps;
+create policy "team_event_rsvps: jäsenet näkevät" on public.team_event_rsvps
+  for select to authenticated using (
+    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id
+      where t.id = (select team_id from public.team_events e where e.id = event_id)
+      and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
+drop policy if exists "team_event_rsvps: jäsen ilmoittautuu" on public.team_event_rsvps;
+create policy "team_event_rsvps: jäsen ilmoittautuu" on public.team_event_rsvps
+  for insert to authenticated with check (user_id = auth.uid());
+drop policy if exists "team_event_rsvps: jäsen peruu" on public.team_event_rsvps;
+create policy "team_event_rsvps: jäsen peruu" on public.team_event_rsvps
+  for delete to authenticated using (user_id = auth.uid());
+
+-- team_messages: jäsenet näkevät ja lähettävät
+drop policy if exists "team_messages: jäsenet näkevät" on public.team_messages;
+create policy "team_messages: jäsenet näkevät" on public.team_messages
+  for select to authenticated using (
+    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id
+      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
+drop policy if exists "team_messages: jäsenet lähettävät" on public.team_messages;
+create policy "team_messages: jäsenet lähettävät" on public.team_messages
+  for insert to authenticated with check (
+    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id
+      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
 
 -- businesses / business_private / business_members
 alter table public.businesses       enable row level security;
@@ -1597,6 +1717,116 @@ create table if not exists public.item_contacts (
   created_at   timestamptz not null default now()
 );
 
+-- =====================================================================
+--  JOUKKUEET / SEURAT (Nimenhuuto.com-tyylinen hallinta)
+-- =====================================================================
+
+-- Joukkueet
+create table if not exists public.teams (
+  id          uuid primary key default gen_random_uuid(),
+  name        text not null check (char_length(name) between 2 and 50),
+  sport       text not null default '' check (char_length(sport) <= 40),
+  description text not null default '' check (char_length(description) <= 300),
+  logo_url    text not null default '',
+  owner_id    uuid not null references public.profiles(id) on delete cascade,
+  created_at  timestamptz not null default now(),
+  updated_at  timestamptz not null default now()
+);
+create index if not exists teams_owner_idx on public.teams (owner_id);
+
+-- Joukkueen jäsenet
+create table if not exists public.team_members (
+  id         uuid primary key default gen_random_uuid(),
+  team_id    uuid not null references public.teams(id) on delete cascade,
+  user_id    uuid not null references public.profiles(id) on delete cascade,
+  role       text not null default 'member' check (role in ('admin','coach','player','member')),
+  joined_at  timestamptz not null default now(),
+  unique(team_id, user_id)
+);
+create index if not exists team_members_team_idx on public.team_members (team_id);
+create index if not exists team_members_user_idx on public.team_members (user_id);
+
+-- Joukkueen muokattavat roolit (esim. valmentaja, puolustaja, hyökkääjä)
+create table if not exists public.team_roles (
+  id         uuid primary key default gen_random_uuid(),
+  team_id    uuid not null references public.teams(id) on delete cascade,
+  name       text not null check (char_length(name) between 1 and 30),
+  color      text not null default '#7C6FFF' check (char_length(color) <= 20),
+  sort_order int  not null default 0,
+  unique(team_id, name)
+);
+create index if not exists team_roles_team_idx on public.team_roles (team_id);
+
+-- Joukkueen paikat (karttalinkit pelipaikoille)
+create table if not exists public.team_places (
+  id        uuid primary key default gen_random_uuid(),
+  team_id   uuid not null references public.teams(id) on delete cascade,
+  name      text not null check (char_length(name) between 2 and 60),
+  address   text not null default '' check (char_length(address) <= 120),
+  lat       double precision check (lat is null or lat between -90 and 90),
+  lng       double precision check (lng is null or lng between -180 and 180),
+  notes     text not null default '' check (char_length(notes) <= 200),
+  sort_order int  not null default 0
+);
+create index if not exists team_places_team_idx on public.team_places (team_id);
+
+-- Joukkueen tapahtumat (treenit, pelit)
+create table if not exists public.team_events (
+  id               uuid primary key default gen_random_uuid(),
+  team_id          uuid not null references public.teams(id) on delete cascade,
+  title            text not null check (char_length(title) between 2 and 60),
+  description      text not null default '' check (char_length(description) <= 400),
+  starts_at        timestamptz not null,
+  location_id      uuid references public.team_places(id) on delete set null,
+  max_participants int null check (max_participants is null or max_participants >= 1),
+  created_by       uuid not null references public.profiles(id),
+  created_at       timestamptz not null default now(),
+  updated_at       timestamptz not null default now()
+);
+create index if not exists team_events_team_idx on public.team_events (team_id);
+create index if not exists team_events_starts_idx on public.team_events (starts_at);
+
+-- Joukkueen tapahtumaan ilmoittautumiset
+create table if not exists public.team_event_rsvps (
+  id          uuid primary key default gen_random_uuid(),
+  event_id    uuid not null references public.team_events(id) on delete cascade,
+  user_id     uuid not null references public.profiles(id) on delete cascade,
+  role_in_event text not null default '' check (char_length(role_in_event) <= 30),
+  notes       text not null default '' check (char_length(notes) <= 100),
+  created_at  timestamptz not null default now(),
+  unique(event_id, user_id)
+);
+create index if not exists team_event_rsvps_event_idx on public.team_event_rsvps (event_id);
+create index if not exists team_event_rsvps_user_idx on public.team_event_rsvps (user_id);
+
+-- Joukkueen viestit / tiedotukset
+create table if not exists public.team_messages (
+  id         uuid primary key default gen_random_uuid(),
+  team_id    uuid not null references public.teams(id) on delete cascade,
+  sender_id  uuid not null references public.profiles(id),
+  message    text not null check (char_length(message) between 1 and 500),
+  sent_at    timestamptz not null default now()
+);
+create index if not exists team_messages_team_idx on public.team_messages (team_id, sent_at);
+
+-- Trigger: teams updated_at
+create or replace function public.teams_updated_at() returns trigger language plpgsql as $$
+begin new.updated_at := now(); return new; end $$;
+drop trigger if exists teams_updated_at on public.teams;
+create trigger teams_updated_at before update on public.teams for each row execute function public.teams_updated_at();
+
+-- Trigger: team_events updated_at
+create or replace function public.team_events_updated_at() returns trigger language plpgsql as $$
+begin new.updated_at := now(); return new; end $$;
+drop trigger if exists team_events_updated_at on public.team_events;
+create trigger team_events_updated_at before update on public.team_events for each row execute function public.team_events_updated_at();
+
+-- Trigger: profiles created → liitä hänet omistajaksi kaikkiin joukkueisiin joissa on sama owner_id
+-- (tämä ei ole tarpeen, joukkueen omaja lisätään erikseen team_membersiin)
+
+-- =====================================================================
+--  TRIGGER: items updated_at
+-- =====================================================================
 -- Trigger: items updated_at
 create or replace function public.items_updated_at() returns trigger
 language plpgsql as $$
