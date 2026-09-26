@@ -1130,9 +1130,9 @@ async function loadAll(){
   q(sb.from('team_members').select('*')),
   q(sb.from('team_roles').select('*')),
   q(sb.from('team_places').select('*')),
-  q(sb.from('team_events').select('*').order('event_date',{ascending:true})),
+  q(sb.from('team_events').select('*').order('starts_at',{ascending:true})),
   q(sb.from('team_event_rsvps').select('*')),
-  q(sb.from('team_messages').select('*').order('created_at',{ascending:true}))
+  q(sb.from('team_messages').select('*').order('sent_at',{ascending:true}))
  ]);
  const tmemBy={};(tmem||[]).forEach(m=>{tmemBy[m.team_id]=tmemBy[m.team_id]||[];tmemBy[m.team_id].push(m)});
  const troleBy={};(troles||[]).forEach(r=>{troleBy[r.team_id]=troleBy[r.team_id]||[];troleBy[r.team_id].push(r)});
@@ -3121,7 +3121,7 @@ async function bizSubmit(el){
  await refreshData();renderBiz();
 }
 function profileBizHTML(){const mine=myBizs();
- return `<div class="card-box" id="p-biz"><h3>🏢 ${tx('biz.title')}</h3>${mine.length?mine.map(myBizCardHTML).join(''):`<p class="muted" style="font-size:13px;margin:0;line-height:1.5">${tx('biz.profileHint')}</p>`}<button class="btn ghost block" data-a="open-biz" id="open-biz" style="margin-top:12px">${tx('biz.forBiz')} →</button></div>`}
+ return `<div class="card-box" id="p-biz"><h3>🏢 ${tx('biz.title')}</h3>${mine.length?mine.map(myBizCardHTML).join(''):`<p class="muted" style="font-size:13px;margin:0;line-height:1.5">${tx('biz.profileHint')}</p>`}<button class="btn primary block" data-a="open-biz" id="open-biz" style="margin-top:12px">${tx('biz.forBiz')} →</button></div>`}
 async function admApprove(id,el){
  const h=helpById(id);if(!h||h.status!=='pending'||!S.isAdmin)return;
  try{await withBusy(el,()=>q(sb.from('help_requests').update({status:'approved',admin_reason:''}).eq('id',id)))}catch(e){toast(errText(e));return}
@@ -3239,7 +3239,7 @@ function renderProfile(){
  const jc=S.meetups.filter(m=>joined(m)&&!isHost(m)).length, cc=S.meetups.filter(isHost).length;
  const favs=u.favs.map(act);
  $('#s-profile').innerHTML=`
- <div class="p-hero">${avatar(ME,'xl')}<h1>${esc(myName())}</h1><p>📍 ${esc(cityLabel(cityName()))}${u.district?' · '+esc(distLabel(u.district,u.city)):''}</p>${isVerified()?`<span class="vbadge" id="p-verified">${tx('help.verifiedRole')}</span>`:''}</div>
+ <div class="p-hero">${avatar(ME,'xl')}<h1>${esc(myName())}</h1><p>📍 ${esc(cityLabel(cityName()))}${u.district?' · '+esc(distLabel(u.district,u.city)):''} <button class="link-btn" data-a="edit-city" aria-label="${tx('loc.change')}">${icon('edit')} ${tx('loc.change')}</button></p>${isVerified()?`<span class="vbadge" id="p-verified">${tx('help.verifiedRole')}</span>`:''}</div>
  <div class="stats"><div class="stat"><b>${jc}</b><span>${tx('prof.statJoined')}</span></div><div class="stat"><b>${cc}</b><span>${tx('prof.statCreated')}</span></div><div class="stat"><b>${u.favs.length}</b><span>${tx('prof.statActs')}</span></div></div>
  ${S.banned?`<div class="card-box" id="p-banned"><div class="req-msg bad" style="margin:0">⛔ ${tx('create.bannedBody')}</div></div>`:''}
  ${profileGoodHTML()}
@@ -3300,7 +3300,7 @@ function myTeams(){return S.teams.filter(t=>t.members.some(m=>m.uid===ME))}
 function isTeamAdmin(t){return t.owner===ME||t.role==='admin'}
 function isTeamCoach(t){return isTeamAdmin(t)||t.role==='coach'}
 function teamLogo(t,cls){if(t.logo)return `<img src="${esc(t.logo)}" alt="${esc(t.name)}" class="${cls}" onerror="this.style.display='none'">`;return `<span class="av ${cls}" style="background:var(--pri)">${esc((t.name[0]||'?').toUpperCase())}</span>`}
-function profileTeamsHTML(){const ts=myTeams();if(!ts.length)return`<div class="card-box"><h3>${tx('team.title')}</h3><p class="muted" style="margin:0 0 10px;font-size:14px">${tx('team.none')}</p><div style="background:linear-gradient(135deg,var(--pri),var(--sec));color:#fff;border-radius:12px;padding:16px;text-align:center"><div style="font-size:13px;opacity:.9">${tx('team.subscriptionInfo')}</div><div style="font-size:22px;font-weight:700;margin:4px 0">${tx('team.pricePerMonth')}</div><button class="btn" style="background:#fff;color:var(--pri);font-weight:600;margin-top:8px" data-a="open-team-pricing">${tx('team.subscribeCta')} →</button></div></div>`;return`<div class="card-box"><h3>${tx('team.title')}</h3><div class="row" style="gap:10px;flex-wrap:wrap">${ts.map(t=>`<button class="team-chip" data-a="open-team" data-id="${t.id}">${teamLogo(t,'xs')}<span>${esc(t.name)}</span></button>`).join('')}<button class="btn ghost" data-a="open-teams" style="flex:0 0 auto">${tx('team.manage')} →</button></div></div>`}
+function profileTeamsHTML(){const ts=myTeams();if(!ts.length)return`<div class="card-box"><h3>${tx('team.title')}</h3><p class="muted" style="margin:0 0 10px;font-size:14px">${tx('team.none')}</p><div style="background:linear-gradient(135deg,var(--pri),var(--sec));color:#fff;border-radius:12px;padding:16px;text-align:center"><div style="font-size:13px;opacity:.9">${tx('team.subscriptionInfo')}</div><div style="font-size:22px;font-weight:700;margin:4px 0">${tx('team.pricePerMonth')}</div><button class="btn" style="background:#fff;color:var(--pri);font-weight:600;margin-top:8px" data-a="open-team-pricing">${tx('team.subscribeCta')} →</button></div></div>`;return`<div class="card-box"><h3>${tx('team.title')}</h3><div class="row" style="gap:10px;flex-wrap:wrap">${ts.map(t=>`<button class="team-chip" data-a="open-team" data-id="${t.id}">${teamLogo(t,'xs')}<span>${esc(t.name)}</span></button>`).join('')}<button class="btn primary" data-a="open-teams" style="flex:0 0 auto">${tx('team.manage')} →</button></div></div>`}
 function renderTeams(){const browse=teamSeg==='browse',mine=myTeams(),other=browse?S.teams.filter(t=>!mine.some(m=>m.id===t.id)):[];$('#s-teams').innerHTML=`<div class="push-head"><button class="icon-btn" data-a="back" aria-label="${tx('common.back')}">${icon('back')}</button><span class="t">${tx('team.h1')}</span><button class="btn primary sm" data-a="team-create">${tx('team.create')}</button></div><div class="seg seg2" style="margin:0 16px 14px"><button class="${teamSeg==='browse'?'on':''}" data-a="team-seg" data-v="browse">${tx('team.browse')}</button><button class="${teamSeg==='mine'?'on':''}" data-a="team-seg" data-v="mine">${tx('mine.joinedN',{n:mine.length})}</button></div>${teamPricingBanner()}${browse?other.length?`<div class="cards">${other.map(teamCardHTML).join('')}</div>`:`<div class="cards"><div class="empty"><div class="e">🔍</div><h3>${tx('team.noTeams')}</h3></div></div>`:mine.length?`<div class="cards">${mine.map(t=>teamCardHTML(t,true)).join('')}</div>`:`<div class="cards"><div class="empty"><div class="e">👥</div><h3>${tx('team.none')}</h3><button class="btn primary" data-a="team-seg" data-v="browse">${tx('team.browse')}</button></div></div>`}`}
 function teamCardHTML(t,mine){const isAdmin=isTeamAdmin(t);return`<div class="card team-card" data-a="${mine?'open-team':'team-join'}" data-id="${t.id}"><div class="team-card-head">${teamLogo(t,'md')}<div class="team-card-info"><b>${esc(t.name)}</b><span class="muted">${t.sport?esc(t.sport):''} · ${txn('team.membersN',t.members.length)}</span></div>${mine?`<span class="chip">${tx('team.role.'+t.role)||t.role}</span>`:`<button class="btn ghost sm" data-a="team-join" data-id="${t.id}">${tx('team.join')}</button>`}</div></div>`}
 function teamPricingBanner(){return`<div class="card" style="margin:0 16px 14px;background:linear-gradient(135deg,var(--pri),var(--sec));color:#fff;padding:16px;text-align:center"><div style="font-size:13px;opacity:.9">${tx('team.subscriptionInfo')}</div><div style="font-size:28px;font-weight:700;margin:6px 0">${tx('team.pricePerMonth')}</div><div style="font-size:12px;opacity:.8">${tx('team.freeTrial')}</div><button class="btn" style="background:#fff;color:var(--pri);margin-top:10px;font-weight:600" data-a="open-team-pricing">${tx('team.subscribeCta')} →</button></div>`}
@@ -3447,7 +3447,7 @@ document.addEventListener('click',e=>{
   case 'ftoggle':mapCollapsed=!mapCollapsed;renderMapFilters();break;
   case 'show-on-map':{const mid=id;go('map');setTimeout(()=>{if(!bigMap)return;const m=byId(mid);if(!m)return;if(!markers[mid]){if(CITIES[m.city])F.city=m.city;F.act='all';F.time='all';F.district='all';F.level='all';renderMapAll(false)}if(markers[mid]){bigMap.setView([m.lat,m.lng],15,{animate:false});bigMap._fitted=true;selectMarker(mid,true)}},150);break}
   case 'mine-seg':mineSeg=v;renderMine();break;
-  case 'save-profile':saveProfile(el);break;
+  case 'edit-city':{const el=$('#p-city');if(el)el.scrollIntoView({behavior:'smooth',block:'center'});break}
   case 'auth-mode':authMode=v;authNote='';{const i=$('#au-email');if(i)pendingEmail=i.value.trim()}renderAuth();break;
   case 'auth-resend':authResend(el);break;
   case 'pw-toggle':{const i=el.parentElement.querySelector('input');if(i){const show=i.type==='password';i.type=show?'text':'password';el.textContent=show?tx('common.hide'):tx('common.show')}break}
