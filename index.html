@@ -2080,8 +2080,7 @@ function renderCreate(){
   <label class="field"><span>${tx('create.time')}</span><input class="inp" type="time" id="c-time" value="${C.time}"></label></div>
   ${nc?`<div class="two"><label class="field"><span>${pub?tx('pub.endDay'):tx('pub.endDayOpt')}</span><input class="inp" type="date" id="c-edate" min="${ymd(today0())}" value="${esc(C.edate)}"></label>
   <label class="field"><span>${tx('pub.endTime')}</span><input class="inp" type="time" id="c-etime" value="${esc(C.etime)}"></label></div>`:''}
-  <div class="two"><label class="field"><span>${tx('city.which')}</span><select class="inp" id="c-city">${cityOptions(C.city)}</select></label>
-  <label class="field"><span>${tx('create.district')}</span><select class="inp" id="c-district">${districtOptions(C.city,C.district)}</select></label></div>
+  <label class="field"><span>${tx('city.which')}</span><input class="inp" id="c-city" maxlength="60" placeholder="${tx('city.any')}" value="${esc(C.city)}"></label>
   <label class="field"><span>${tx('create.place')}</span><input class="inp" id="c-place" maxlength="70" placeholder="${tx('create.placePh')}" value="${esc(C.place)}"></label>
   <div class="field" style="margin:0"><span>${tx('create.mapLabel')}</span><div class="pick-map" id="pick-map"></div><div class="pick-hint" id="pick-hint"></div></div>
  </div>
@@ -2103,8 +2102,7 @@ function renderCreate(){
  ['title','date','time','place','desc','edate','etime','org','url','price'].forEach(k=>{const el=$('#c-'+k);if(!el)return;el.addEventListener('input',()=>{C[k]=el.value;if(k==='title'||k==='desc')updAdWarn();if(k==='title'){const t=ADULT_RE.test(el.value);if(t!==!!C._t){C._t=t;renderCreateCrazy();if(pickMarker)pickMarker.setIcon(createPin())}}})});
  const mx=$('#c-maxn');if(mx)mx.addEventListener('input',()=>{C.maxn=Number(mx.value)||0});
  const bs=$('#c-biz');if(bs)bs.onchange=()=>{C.bizId=bs.value};
- const dsel=$('#c-district');if(dsel)dsel.onchange=()=>{C.district=dsel.value;const c=cityInfo(C.city).d[C.district];if(c){C.lat=c[0];C.lng=c[1];if(pickMap){pickMap.setView(c,15);placePickMarker()}}};
- const csel=$('#c-city');if(csel)csel.onchange=()=>{C.city=csel.value;C.touchedCity=true;C.district=C.city===cityName()&&cityInfo(C.city).d[S.user.district]?S.user.district:firstDistrict(C.city);dsel.innerHTML=districtOptions(C.city,C.district);dsel.onchange()};
+ const csel=$('#c-city');if(csel)csel.addEventListener('input',()=>{C.city=csel.value;C.touchedCity=true});
  setTimeout(initPickMap,60);
 }
 function renderCreateActs(){
