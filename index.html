@@ -1858,6 +1858,30 @@ function emptyHTML(){
  const ideas=orderedActs().filter(a=>!a.crazy).slice(0,3);
  return `<div class="empty" id="home-empty"><div class="e">🌱</div><h3>${tx('home.emptyTitle')}</h3><p>${tx('home.emptyBody')}</p>${ideas.length?`<div class="idea-chips">${ideas.map(a=>`<button class="chip" data-a="quick-create" data-v="${esc(a.id)}">${a.emoji} ${esc(a.name)}</button>`).join('')}</div>`:''}<button class="btn primary" data-a="tab" data-t="create">${tx('home.emptyCta')}</button></div>`;
 }
+function bizTeamCardsHTML(){
+ const guest=isGuest();
+ const bizAction=guest?'guest-auth':(ME?'open-biz':'');
+ const teamAction=guest?'guest-auth':(ME?'open-teams':'');
+ const bizTarget=guest?'signup':'';
+ return `<div style="padding:0 16px 8px;display:flex;flex-direction:column;gap:10px">
+  <div style="background:linear-gradient(135deg,#7c3aed,#a855f7);border-radius:16px;padding:16px;color:#fff;display:flex;align-items:center;gap:14px">
+   <span style="font-size:32px;flex:none">🏢</span>
+   <div style="flex:1;min-width:0">
+    <div style="font-weight:700;font-size:15px">${tx('home.bizCard')}</div>
+    <div style="font-size:12px;opacity:.85;margin-top:2px">${tx('home.bizCardSub')}</div>
+   </div>
+   <button class="btn" style="background:#fff;color:#7c3aed;font-weight:600;flex:none;white-space:nowrap" data-a="${bizAction}" ${guest?`data-v="${bizTarget}"`:''}>${tx('home.bizCardCta')}</button>
+  </div>
+  <div style="background:linear-gradient(135deg,#0369a1,#0ea5e9);border-radius:16px;padding:16px;color:#fff;display:flex;align-items:center;gap:14px">
+   <span style="font-size:32px;flex:none">👥</span>
+   <div style="flex:1;min-width:0">
+    <div style="font-weight:700;font-size:15px">${tx('home.teamCard')}</div>
+    <div style="font-size:12px;opacity:.85;margin-top:2px">${tx('home.teamCardSub')}</div>
+   </div>
+   <button class="btn" style="background:#fff;color:#0369a1;font-weight:600;flex:none;white-space:nowrap" data-a="${teamAction}" ${guest?`data-v="${bizTarget}"`:''}>${tx('home.teamCardCta')}</button>
+  </div>
+ </div>`;
+}
 function bannerHTML(){
  const n=crazyUpcoming().length;
  return `<button class="cz-banner soft" data-a="open-hullut" id="cz-banner" aria-label="${tx('home.czAria')}">
@@ -1893,7 +1917,7 @@ function renderHome(){
  <div class="cards">${list.length?cards.slice(0,near?3:cards.length).join(''):F.act===BIZ_ALL?bizEmptyHTML():emptyHTML()}</div>`}
  ${near?goodBannerHTML()+(cards.length>3&&F.act!==GOOD_ALL&&F.act!==GIVE_ALL&&F.act!==NEED_ALL?`<div class="cards cards-more">${cards.slice(3).join('')}</div>`:''):''}
  ${F.act===GOOD_ALL?'':bizSecHTML(bizList)}
- ${F.act===GOOD_ALL||F.act===BIZ_ALL||F.act===GIVE_ALL||F.act===NEED_ALL?'':bannerHTML()}`});
+ ${F.act===GOOD_ALL||F.act===BIZ_ALL||F.act===GIVE_ALL||F.act===NEED_ALL?'':bizTeamCardsHTML()+bannerHTML()}`});
 }
 
 /* ================= JOIN / LEAVE ================= */
