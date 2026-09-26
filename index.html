@@ -50,42 +50,21 @@ svg.i{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2.2;stroke
   .act-filter-popup{left:16px;right:16px}
   .desk-note{display:none!important}
 }
-/* Desktop layout */
+/* Desktop layout - simplified full width without phone frame */
 @media (min-width:901px){
-  #app{max-width:100%;height:100dvh;border-radius:0;box-shadow:none;display:flex;flex-direction:column}
-  #app>.screen,#app>.push{position:relative;flex:1;overflow:hidden}
-  .home-top{display:flex;align-items:flex-start;justify-content:space-between;padding:24px 32px 0;flex-wrap:wrap;gap:16px}
-  .home-top>.row{order:1}
-  .home-top>.row+.row{order:2}
+  #app{max-width:100%;height:100dvh;border-radius:0;box-shadow:none}
+  .home-top{padding:24px 32px 0}
   .hdr-brand{font-size:28px}
   .hello{font-size:18px}
-  .filters{max-width:100%;flex-direction:row;flex-wrap:wrap;align-items:center;gap:16px;margin-bottom:20px;padding:16px 24px;background:rgba(255,255,255,.7);border-radius:20px;backdrop-filter:blur(10px)}
-  .filters>.chips,.filters>.seg,.filters>.selrow,.filters>.radius-row{display:flex;flex-wrap:wrap;gap:8px}
-  .filters>.chips{order:1;flex:1}
-  .filters>.seg{order:2}
-  .filters>.selrow{order:3}
-  .filters>.radius-row{order:4;padding:0}
-  .act-filter-popup{left:24px;max-width:480px}
-  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;max-width:1400px;margin:0 auto;padding:0 24px}
+  .filters{flex-direction:row;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:20px;padding:12px 20px}
+  .cards{max-width:1200px;margin:0 auto;padding:0 24px}
   .card{margin:0}
-  .cards-container{padding:0 0 24px;max-width:1400px;margin:0 auto}
   .seg{margin:0 24px}
   .selrow{padding:0 24px}
   .radius-row{padding:0 24px}
-  .page-head{padding:24px 32px 0}
-  #s-create{max-width:100%;padding:0 32px;overflow-y:auto}
-  .c-mode{margin:0 24px 14px!important}
-  .create-fields{max-width:800px}
+  #s-create{padding:0 32px;overflow-y:auto}
+  .create-fields{max-width:700px}
   .desk-note{display:none!important}
-  /* Detail view on desktop */
-  #s-detail{overflow-y:auto}
-  .detail-layout{display:grid;grid-template-columns:1fr 380px;gap:24px;max-width:1200px;margin:0 auto;padding:24px}
-  .d-bar{position:relative;background:transparent;backdrop-filter:none;border-top:none;padding:16px 0}
-  /* Map on desktop */
-  #s-map{display:flex}
-  #bigmap{flex:1;height:100%}
-  .map-top{width:360px;flex-shrink:0;border-radius:0 0 24px 0;max-height:100%;overflow-y:auto}
-  .map-card{left:auto;right:24px;bottom:24px;width:340px}
 }
 .desk-note{display:none;position:fixed;left:24px;bottom:20px;font-size:13px;color:var(--muted);max-width:260px;line-height:1.5}
 .desk-note b{color:var(--ink)}
