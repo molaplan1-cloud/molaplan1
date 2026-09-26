@@ -3302,6 +3302,26 @@ function openPwSheet(){
  $('#app').classList.add('sheet-open');
 }
 async function pwSave(el){const v=$('#pw-new').value||'';if(v.length<8){$('#pw-new').classList.add('err');toast(tx('auth.pwTooShort'));return}try{await withBusy(el,async()=>{const r=await sb.auth.updateUser({password:v});if(r.error)throw r.error})}catch(e){toast(errText(e));return}closeSheet();toast(tx('auth.pwChanged'))}
+function openCitySheet(){
+ const u=S.user;
+ sheetCtx='city';
+ $('#sheet').innerHTML=`<div class="grab"></div>
+  <h3>${icon('pin')} ${tx('loc.change')}</h3>
+  <label class="field"><span>${tx('city.which')}</span><select class="inp" id="cs-city">${cityOptions(cityName())}</select></label>
+  <label class="field" id="cs-d-wrap"><span>${tx('city.homeDistrict')}</span><select class="inp" id="cs-district"></select></label>
+  <div class="row" style="gap:10px;margin-top:16px"><button class="btn ghost" data-a="sheet-close" style="flex:1">${tx('common.cancel')}</button><button class="btn primary" data-a="city-save" style="flex:2">${tx('common.save')}</button></div>`;
+ const upd=()=>{$('#cs-district').innerHTML=districtOptions($('#cs-city').value,S.user.district);const f=$('#cs-district option');if(f)f.selected=true};
+ $('#cs-city').onchange=upd;upd();
+ $('#app').classList.add('sheet-open');$('#sheet').scrollTop=0;
+}
+async function citySave(el){
+ const c=$('#cs-city').value, d=$('#cs-district').value||'';
+ try{await withBusy(el,()=>q(sb.from('profiles').update({city:c,district:d}).eq('id',ME)))}catch(e){toast(errText(e));return}
+ Object.assign(S.user,{city:c,district:d});
+ F.city='';F.district='all';GF.district='all';resetCreate();
+ if(bigMap){bigMap._fitted=false;selectMarker(null);renderMarkers(true)}
+ renderProfile();renderMapFilters();closeSheet();toast(tx('prof.saved'));
+}
 async function deleteAccount(el){
  if(!confirm(tx('prof.confirmDelete')))return;
  try{await withBusy(el,async()=>{const r=await sb.rpc('delete_my_account');if(r.error)throw r.error})}catch(e){toast(errText(e));return}
@@ -3471,7 +3491,7 @@ document.addEventListener('click',e=>{
   case 'ftoggle':mapCollapsed=!mapCollapsed;renderMapFilters();break;
   case 'show-on-map':{const mid=id;go('map');setTimeout(()=>{if(!bigMap)return;const m=byId(mid);if(!m)return;if(!markers[mid]){if(CITIES[m.city])F.city=m.city;F.act='all';F.time='all';F.district='all';F.level='all';renderMapAll(false)}if(markers[mid]){bigMap.setView([m.lat,m.lng],15,{animate:false});bigMap._fitted=true;selectMarker(mid,true)}},150);break}
   case 'mine-seg':mineSeg=v;renderMine();break;
-  case 'edit-city':{const el=$('#p-city');if(el)el.scrollIntoView({behavior:'smooth',block:'center'});break}
+  case 'edit-city':openCitySheet();break
   case 'auth-mode':authMode=v;authNote='';{const i=$('#au-email');if(i)pendingEmail=i.value.trim()}renderAuth();break;
   case 'auth-resend':authResend(el);break;
   case 'pw-toggle':{const i=el.parentElement.querySelector('input');if(i){const show=i.type==='password';i.type=show?'text':'password';el.textContent=show?tx('common.hide'):tx('common.show')}break}
@@ -3479,6 +3499,7 @@ document.addEventListener('click',e=>{
   case 'logout':logout(el);break;
   case 'pw-open':openPwSheet();break;
   case 'pw-save':pwSave(el);break;
+  case 'city-save':citySave(el);break;
   case 'delete-account':deleteAccount(el);break;
   case 'open-guide':e.preventDefault();e.stopPropagation();openGuide();break;
   case 'open-teams':teamSeg='browse';renderTeams();openPush('s-teams');break;
