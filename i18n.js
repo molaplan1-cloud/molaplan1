@@ -985,7 +985,20 @@ window.MOLAPLAN_I18N={
 "team.team": "Team",
 "team.title": "Teams",
 "team.upcoming": "Upcoming events",
-"team.view.map": "Map"
+"team.view.map": "Map",
+"team.subscribe": "Subscribe",
+"team.pricing": "Pricing",
+"team.pricePerMonth": "10 €/month",
+"team.pricePerYear": "120 €/year",
+"team.freeTrial": "14-day free trial",
+"team.subscribeCta": "Subscribe for more teams",
+"team.billing": "Billing",
+"team.mySubscription": "My subscription",
+"team.active": "Active",
+"team.cancelSubscription": "Cancel subscription",
+"team.subscriptionInfo": "Each team costs 10 €/month. Cancel anytime.",
+"team.trialEnds": "Trial ends {date}",
+"team.trialEndsInfo": "Your free trial ends on {date}. Subscribe to keep your team."
 },
 "es": {
 "act.avanto": "Baño en agua helada al amanecer",
@@ -1962,7 +1975,20 @@ window.MOLAPLAN_I18N={
 "team.team": "Equipo",
 "team.title": "Equipos",
 "team.upcoming": "Próximos eventos",
-"team.view.map": "Mapa"
+"team.view.map": "Mapa",
+"team.subscribe": "Suscribirse",
+"team.pricing": "Precios",
+"team.pricePerMonth": "10 €/mes",
+"team.pricePerYear": "120 €/año",
+"team.freeTrial": "Prueba gratuita de 14 días",
+"team.subscribeCta": "Suscríbete para más equipos",
+"team.billing": "Facturación",
+"team.mySubscription": "Mi suscripción",
+"team.active": "Activo",
+"team.cancelSubscription": "Cancelar suscripción",
+"team.subscriptionInfo": "Cada equipo cuesta 10 €/mes. Cancela cuando quieras.",
+"team.trialEnds": "La prueba termina el {date}",
+"team.trialEndsInfo": "Tu prueba gratuita termina el {date}. Suscríbete para mantener tu equipo."
 },
 "fi": {
 "act.avanto": "Avantouinti auringonnousussa",
@@ -2939,7 +2965,20 @@ window.MOLAPLAN_I18N={
 "team.team": "Joukkue",
 "team.title": "Joukkueet",
 "team.upcoming": "Tulevat tapahtumat",
-"team.view.map": "Kartta"
+"team.view.map": "Kartta",
+"team.subscribe": "Tilaa",
+"team.pricing": "Hinnoittelu",
+"team.pricePerMonth": "10 €/kk",
+"team.pricePerYear": "120 €/vuosi",
+"team.freeTrial": "14 päivän ilmainen kokeilu",
+"team.subscribeCta": "Tilaa lisää joukkueita",
+"team.billing": "Laskutus",
+"team.mySubscription": "Tilaukseni",
+"team.active": "Aktiivinen",
+"team.cancelSubscription": "Peru tilaus",
+"team.subscriptionInfo": "Jokainen joukkue maksaa 10 €/kk. Peru milloin vain.",
+"team.trialEnds": "Kokeilu päättyy {date}",
+"team.trialEndsInfo": "Ilmainen kokeilusi päättyy {date}. Tilaa jatkaaksesi."
 },
 "sv": {
 "act.avanto": "Vinterbad i soluppgången",
@@ -3916,6 +3955,19 @@ window.MOLAPLAN_I18N={
 "team.team": "Lag",
 "team.title": "Lag",
 "team.upcoming": "Kommande händelser",
-"team.view.map": "Karta"
+"team.view.map": "Karta",
+"team.subscribe": "Prenumerera",
+"team.pricing": "Prissättning",
+"team.pricePerMonth": "10 €/månad",
+"team.pricePerYear": "120 €/år",
+"team.freeTrial": "14 dagars gratis prov",
+"team.subscribeCta": "Prenumerera för fler lag",
+"team.billing": "Fakturering",
+"team.mySubscription": "Min prenumeration",
+"team.active": "Aktiv",
+"team.cancelSubscription": "Avsluta prenumeration",
+"team.subscriptionInfo": "Varje lag kostar 10 €/månad. Avsluta när som helst.",
+"team.trialEnds": "Provperioden slutar {date}",
+"team.trialEndsInfo": "Din gratis provperiod slutar {date}. Prenumerera för att behålla ditt lag."
 }
 };
