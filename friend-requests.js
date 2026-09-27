@@ -3,6 +3,24 @@
 
 const FRIENDS_KEY = 'molaplan.friends';
 const REQUESTS_KEY = 'molaplan.friendRequests';
+let supabaseClient = null;
+
+// Initialize Supabase
+function initSupabase(){
+  if (window.supabase && typeof window.supabase.createClient === 'function') {
+    try {
+      const url = window.SUPABASE_URL || localStorage.getItem('supabase_url');
+      const key = window.SUPABASE_KEY || localStorage.getItem('supabase_key');
+      if (url && key) {
+        supabaseClient = window.supabase.createClient(url, key);
+        return true;
+      }
+    } catch (e) {
+      console.warn('Supabase init failed, using localStorage only', e);
+    }
+  }
+  return false;
+}
 
 function readJSON(key, fallback){
   try {
@@ -36,6 +54,12 @@ function getCurrentUserId(){
     if (value) return String(value);
   }
   return null;
+}
+
+function getCurrentEventId(){
+  return (window.__molaplan && window.__molaplan.state && window.__molaplan.state.detailId) || 
+         (window.__molaplan && window.__molaplan.state && window.__molaplan.state.currentId) ||
+         null;
 }
 
 function getFriends(){
@@ -84,36 +108,96 @@ function addFriend(a, b){
     return (left === String(a) && right === String(b)) || (left === String(b) && right === String(a));
   });
   if (existing) return true;
-  list.push({ user_id: String(a), friend_id: String(b), created_at: Date.now() });
+  list.push({ user_id: String(a), friend_id: String(b), created_at: new Date().toISOString() });
   saveFriends(list);
   return true;
 }
 
-function addRequest(requesterId, targetId){
+async function addRequest(requesterId, targetId){
+  const eventId = getCurrentEventId();
   const requests = getRequests();
   const existing = requests.find(r => String(r.requester_id) === String(requesterId) && String(r.target_id) === String(targetId));
+  
   if (existing) {
     if (existing.status === 'accepted') {
       addFriend(requesterId, targetId);
       return true;
     }
     existing.status = 'accepted';
-    existing.updated_at = Date.now();
+    existing.updated_at = new Date().toISOString();
     saveRequests(requests);
     addFriend(requesterId, targetId);
+    
+    // Sync to database
+    if (supabaseClient) {
+      try {
+        await supabaseClient
+          .from('friend_requests')
+          .update({ status: 'accepted', updated_at: new Date().toISOString() })
+          .eq('requester_id', requesterId)
+          .eq('target_id', targetId);
+      } catch (e) {
+        console.warn('DB sync failed:', e);
+      }
+    }
     return true;
   }
-  requests.push({
+  
+  const newRequest = {
     id: (window.crypto && crypto.randomUUID ? crypto.randomUUID() : 'friend-' + Date.now() + '-' + Math.random().toString(16).slice(2)),
     requester_id: String(requesterId),
     target_id: String(targetId),
-    status: 'accepted',
-    created_at: Date.now(),
-    updated_at: Date.now()
-  });
+    event_id: eventId ? String(eventId) : null,
+    status: 'pending',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  };
+  
+  requests.push(newRequest);
   saveRequests(requests);
-  addFriend(requesterId, targetId);
+  
+  // Sync to database
+  if (supabaseClient) {
+    try {
+      await supabaseClient
+        .from('friend_requests')
+        .insert([newRequest]);
+    } catch (e) {
+      console.warn('DB insert failed:', e);
+    }
+  }
+  
   return true;
+}
+
+async function loadFriendsFromDB(){
+  if (!supabaseClient) return;
+  try {
+    const userId = getCurrentUserId();
+    if (!userId) return;
+    
+    // Hae kaverit
+    const { data: friends, error: friendsError } = await supabaseClient
+      .from('friends')
+      .select('*')
+      .or(`user_id.eq.${userId},friend_id.eq.${userId}`);
+    
+    if (!friendsError && friends) {
+      saveFriends(friends);
+    }
+    
+    // Hae pyynnöt
+    const { data: requests, error: requestsError } = await supabaseClient
+      .from('friend_requests')
+      .select('*')
+      .or(`requester_id.eq.${userId},target_id.eq.${userId}`);
+    
+    if (!requestsError && requests) {
+      saveRequests(requests);
+    }
+  } catch (e) {
+    console.warn('Failed to load from DB:', e);
+  }
 }
 
 function toast(msg){
@@ -190,6 +274,10 @@ function ensureStyles(){
       color: var(--pri, #5B4BFF);
       cursor: pointer;
       min-width: 95px;
+      transition: all .2s;
+    }
+    .friend-request-btn:active {
+      transform: scale(.95);
     }
     .friend-request-btn.is-friend {
       background: #E6FCF5;
@@ -207,35 +295,48 @@ function ensureStyles(){
   document.head.appendChild(style);
 }
 
-document.addEventListener('click', function(event){
+document.addEventListener('click', async function(event){
   const button = event.target.closest('[data-friend-target]');
   if (!button) return;
+  
+  button.disabled = true;
+  
   const myId = getCurrentUserId();
   const targetId = button.dataset.friendTarget;
-  if (!myId || !targetId) return;
+  if (!myId || !targetId) {
+    button.disabled = false;
+    return;
+  }
 
   const state = requestState(myId, targetId);
   if (state === 'friends') {
     toast('Olette jo kavereita');
+    button.disabled = false;
     return;
   }
   if (state === 'pending') {
     toast('Kaveripyyntö on jo lähetetty');
+    button.disabled = false;
     return;
   }
   if (state === 'requested') {
-    addRequest(targetId, myId);
+    await addRequest(targetId, myId);
     toast('Kaveripyyntö hyväksytty');
     refreshFriendButtons();
+    button.disabled = false;
     return;
   }
 
-  addRequest(myId, targetId);
+  await addRequest(myId, targetId);
   toast('Kaveripyyntö lähetetty');
   refreshFriendButtons();
+  button.disabled = false;
 });
 
+// Initialize
 ensureStyles();
+initSupabase();
+loadFriendsFromDB();
 setTimeout(refreshFriendButtons, 250);
 setInterval(refreshFriendButtons, 1500);
 const observer = new MutationObserver(function(){ refreshFriendButtons(); });
