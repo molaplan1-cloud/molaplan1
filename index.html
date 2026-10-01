@@ -845,11 +845,27 @@ select.inp{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.
 .land-help .kick{display:inline-flex}
 .land-pillars{display:flex;flex-wrap:wrap;gap:6px;margin:-4px 0 14px}
 .land-pillars span{font-size:12.5px;font-weight:700;padding:5px 10px;border-radius:999px;background:#F3F1FB;color:var(--ink2)}
-.land-biz{margin-top:14px}
-.land-biz summary{cursor:pointer;font-weight:800;font-size:15px;list-style:none}
-.land-biz summary::-webkit-details-marker{display:none}
-.land-biz summary::after{content:' ›';color:var(--muted)}
-.land-biz[open] summary{margin-bottom:12px}
+.org-card{margin-top:14px}
+.org-card .kick{display:block;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--pri)}
+.org-card h2{margin:6px 0 6px;font-size:19px;line-height:1.25}
+.org-card p{margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5}
+.org-opts{display:flex;flex-direction:column;gap:12px;padding:0 16px 14px}
+.org-opt{display:flex;align-items:center;gap:14px;text-align:left;width:100%;padding:16px;border-radius:18px;border:1.5px solid var(--line,#E4E1EF);background:#fff;font:inherit;color:inherit;cursor:pointer;box-shadow:0 2px 10px rgba(30,20,60,.05)}
+.org-opt:hover{border-color:var(--pri)}
+.org-opt .oe{font-size:30px;flex:none}
+.org-opt .ot{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.org-opt .ot b{font-size:16px}
+.org-opt .ot small{font-size:13px;color:var(--muted);line-height:1.45}
+.org-opt .ot em{font-style:normal;font-size:12px;font-weight:700;color:var(--pri);margin-top:2px}
+.org-opt .oa{flex:none;transform:rotate(180deg);opacity:.5;display:flex}
+.tr-ol{margin:0;padding-left:20px;font-size:14px;line-height:1.6}
+.tr-ol li{margin:2px 0}
+.home-org{margin:0 16px 8px;display:flex;align-items:center;gap:14px;width:calc(100% - 32px);text-align:left;padding:14px 16px;border-radius:16px;border:1.5px dashed var(--line,#DCD8EA);background:#fff;font:inherit;color:inherit;cursor:pointer}
+.home-org .oe{font-size:26px;flex:none}
+.home-org b{display:block;font-size:14.5px}
+.home-org small{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.home-org .go{margin-left:auto;flex:none;font-weight:800;color:var(--pri);font-size:13px;white-space:nowrap}
+.seg.seg4 button{font-size:12px;padding-left:4px;padding-right:4px}
 .cz-banner.soft{padding:14px 16px 13px;border-radius:20px;opacity:.92;box-shadow:0 10px 22px -16px rgba(120,40,120,.55)}
 .cz-banner.soft h2{font-size:18px;margin:8px 0 4px}
 .cz-banner.soft p{font-size:12.5px}
@@ -1009,6 +1025,8 @@ select.inp{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.
   <section id="s-ask" class="screen push"></section>
   <section id="s-admin" class="screen push"></section>
   <section id="s-biz" class="screen push"></section>
+  <section id="s-orgs" class="screen push"></section>
+  <section id="s-teamreq" class="screen push"></section>
   <section id="s-teams" class="screen push"></section>
   <section id="s-team" class="screen push"></section>
 
@@ -1107,7 +1125,7 @@ let sb=null, ME=null, SESSION=null, rtChannel=null, loadedAt=0, loadP=null, load
 let authMode='signup', pendingEmail='', authNote='', handlingFor=null;
 const INITIAL_HASH=location.hash||'';
 let vEditPhone=false, vPhoneDraft='';
-function emptyState(){return {biz:[],reports:[],banned:false,loaded:false,user:{name:'',city:'Helsinki',customCity:'',district:'Kallio',favs:[],bio:''},email:'',emailVerified:false,phone:'',isAdmin:false,onboarded:false,acts:[],meetups:[],helps:[],items:[],chats:{},convOf:{},targetOf:{},reads:{},notifs:[],names:{},teams:[],teamOf:{},teamMembers:{},teamEvents:{},teamPlaces:{},teamMsgs:{},teamEventRsvps:{}}}
+function emptyState(){return {biz:[],reports:[],teamReqs:[],banned:false,loaded:false,user:{name:'',city:'Helsinki',customCity:'',district:'Kallio',favs:[],bio:''},email:'',emailVerified:false,phone:'',isAdmin:false,onboarded:false,acts:[],meetups:[],helps:[],items:[],chats:{},convOf:{},targetOf:{},reads:{},notifs:[],names:{},teams:[],teamOf:{},teamMembers:{},teamEvents:{},teamPlaces:{},teamMsgs:{},teamEventRsvps:{}}}
 let S=emptyState();
 /* Feature flags: teams + give/need items came from GitHub unfinished (no backend flow yet) -> hidden unless ?ff=teams,items or localStorage molaplan.ff */
 const FF=new Set(String(new URLSearchParams(location.search).get('ff')||(()=>{try{return localStorage.getItem('molaplan.ff')}catch(e){return ''}})()||'').split(',').map(x=>x.trim()).filter(Boolean));
@@ -1124,7 +1142,7 @@ async function qOpt(p){try{return (await q(p))||[]}catch(e){console.warn('Molapl
 async function selectIn(table,col,ids,build){if(!ids.length)return [];const parts=[];for(let i=0;i<ids.length;i+=80){let b=sb.from(table).select('*').in(col,ids.slice(i,i+80));if(build)b=build(b);parts.push(q(b))}return (await Promise.all(parts)).flat().filter(Boolean)}
 function errText(e){
  const m=String((e&&(e.message||e.error_description||e.msg))||e||'')+' '+String((e&&e.code)||'');
- const M=[[/commercial_content/,tx('err.commercial')],[/account_banned/,tx('err.banned')],[/public_event_admin_only/,tx('err.adminOnly')],[/business_subscription_required/,tx('err.bizInactive')],[/businesses_fi_code|valid_y_tunnus/,tx('err.yTunnus')],[/businesses_code_active_key/,tx('err.bizDuplicate')],[/too_many_businesses/,tx('err.tooManyBiz')],[/reports_once_key/,tx('err.alreadyReported')],[/report_target_missing/,tx('err.reportMissing')],[/business_contact_required|business_private_billing/,tx('err.bizBilling')],[/events_kind_fields/,tx('err.kindFields')],[/events_ends/,tx('err.endsRange')],[/official_url|logo_url|website/,tx('err.httpsUrl')],[/friend_request_exists|friend_request_declined/,tx('err.friendExists')],[/not_friends/,tx('err.notFriends')],[/friend_rate_limited/,tx('err.rateLimit')],[/event_full/,tx('err.eventFull')],[/event_in_past|request_in_past/,tx('err.past')],[/verification_required/,tx('err.verificationRequired')],[/email_not_verified/,tx('err.emailNotVerified')],[/request_full/,tx('err.requestFull')],[/request_not_open/,tx('err.requestNotOpen')],[/own_request/,tx('err.ownRequest')],[/no_prices/,tx('err.noPrices')],[/status_change_not_allowed/,tx('err.statusChange')],[/activities_name_lower_key|duplicate key|23505/,tx('err.duplicate')],[/Invalid login credentials/i,tx('err.badLogin')],[/Email not confirmed/i,tx('err.emailNotConfirmed')],[/already registered|already been registered|user_already_exists/i,tx('err.alreadyRegistered')],[/rate limit|too many|over_email_send_rate_limit|429/i,tx('err.rateLimit')],[/Password should|weak_password|password.*(short|characters)/i,tx('err.weakPassword')],[/same_password|different from the old/i,tx('err.samePassword')],[/Failed to fetch|NetworkError|network|Load failed/i,tx('err.network')],[/JWT|not_authenticated|session_not_found|refresh_token/i,tx('err.session')],[/row-level security|42501|permission denied/i,tx('err.forbidden')]];
+ const M=[[/commercial_content/,tx('err.commercial')],[/account_banned/,tx('err.banned')],[/public_event_admin_only/,tx('err.adminOnly')],[/business_subscription_required/,tx('err.bizInactive')],[/businesses_fi_code|valid_y_tunnus/,tx('err.yTunnus')],[/businesses_code_active_key/,tx('err.bizDuplicate')],[/too_many_businesses/,tx('err.tooManyBiz')],[/too_many_team_requests/,tx('err.tooManyTeamReq')],[/team_request_invalid|team_requests_/,tx('err.teamReq')],[/reason_required/,tx('adm.writeReason')],[/reports_once_key/,tx('err.alreadyReported')],[/report_target_missing/,tx('err.reportMissing')],[/business_contact_required|business_private_billing/,tx('err.bizBilling')],[/events_kind_fields/,tx('err.kindFields')],[/events_ends/,tx('err.endsRange')],[/official_url|logo_url|website/,tx('err.httpsUrl')],[/friend_request_exists|friend_request_declined/,tx('err.friendExists')],[/not_friends/,tx('err.notFriends')],[/friend_rate_limited/,tx('err.rateLimit')],[/event_full/,tx('err.eventFull')],[/event_in_past|request_in_past/,tx('err.past')],[/verification_required/,tx('err.verificationRequired')],[/email_not_verified/,tx('err.emailNotVerified')],[/request_full/,tx('err.requestFull')],[/request_not_open/,tx('err.requestNotOpen')],[/own_request/,tx('err.ownRequest')],[/no_prices/,tx('err.noPrices')],[/status_change_not_allowed/,tx('err.statusChange')],[/activities_name_lower_key|duplicate key|23505/,tx('err.duplicate')],[/Invalid login credentials/i,tx('err.badLogin')],[/Email not confirmed/i,tx('err.emailNotConfirmed')],[/already registered|already been registered|user_already_exists/i,tx('err.alreadyRegistered')],[/rate limit|too many|over_email_send_rate_limit|429/i,tx('err.rateLimit')],[/Password should|weak_password|password.*(short|characters)/i,tx('err.weakPassword')],[/same_password|different from the old/i,tx('err.samePassword')],[/Failed to fetch|NetworkError|network|Load failed/i,tx('err.network')],[/JWT|not_authenticated|session_not_found|refresh_token/i,tx('err.session')],[/row-level security|42501|permission denied/i,tx('err.forbidden')]];
  for(const [re,t] of M)if(re.test(m))return t;
  return tx('err.generic');
 }
@@ -1154,11 +1172,12 @@ async function loadAll(){
   q(sb.from('conversation_reads').select('*').eq('user_id',ME)),
   q(sb.from('notifications').select('*').eq('user_id',ME).order('created_at',{ascending:false}).limit(50))
  ]);
- const [bizs,bmem,bpriv,reps]=await Promise.all([
+ const [bizs,bmem,bpriv,reps,treqs]=await Promise.all([
   q(sb.from('businesses').select('*').order('created_at',{ascending:false}).limit(500)),
   q(sb.from('business_members').select('*')),
   q(sb.from('business_private').select('*')),
-  q(sb.from('reports').select('*').order('created_at',{ascending:false}).limit(300))
+  q(sb.from('reports').select('*').order('created_at',{ascending:false}).limit(300)),
+  qOpt(sb.from('team_requests').select('*').order('created_at',{ascending:false}).limit(300))
  ]);
  if(!prof){await q(sb.from('profiles').insert({id:ME}));return loadAll()}
  const evIds=(evs||[]).map(e=>e.id), hIds=(helps||[]).map(h=>h.id), cIds=(convs||[]).map(c=>c.id);
@@ -1168,7 +1187,7 @@ async function loadAll(){
   selectIn('messages','conversation_id',cIds,b=>b.order('created_at',{ascending:false}).limit(1500))
  ]);
  const ids=new Set();
- (evs||[]).forEach(e=>ids.add(e.host_id));(reps||[]).forEach(r=>ids.add(r.reporter_id));parts.forEach(p=>ids.add(p.user_id));(helps||[]).forEach(h=>ids.add(h.requester_id));offers.forEach(o=>ids.add(o.helper_id));msgs.forEach(m=>{if(m.sender_id)ids.add(m.sender_id)});
+ (evs||[]).forEach(e=>ids.add(e.host_id));(reps||[]).forEach(r=>ids.add(r.reporter_id));(treqs||[]).forEach(r=>ids.add(r.requester_id));parts.forEach(p=>ids.add(p.user_id));(helps||[]).forEach(h=>ids.add(h.requester_id));offers.forEach(o=>ids.add(o.helper_id));msgs.forEach(m=>{if(m.sender_id)ids.add(m.sender_id)});
  ids.delete(ME);ids.delete(null);ids.delete(undefined);
  const profs=await selectIn('profiles','id',[...ids]);
  const N={};profs.forEach(p=>N[p.id]=p.display_name||'');
@@ -1183,6 +1202,7 @@ async function loadAll(){
  const pBy={};parts.slice().sort((a,b)=>String(a.joined_at).localeCompare(String(b.joined_at))).forEach(p=>(pBy[p.event_id]=pBy[p.event_id]||[]).push(p.user_id));
  const mBy={},prBy={};(bmem||[]).forEach(x=>(mBy[x.business_id]=mBy[x.business_id]||[]).push(x.user_id));(bpriv||[]).forEach(x=>prBy[x.business_id]=x);
  T.biz=(bizs||[]).map(b=>mapBiz(b,prBy[b.id],mBy[b.id]));
+ T.teamReqs=(treqs||[]).map(r=>({id:r.id,requester:r.requester_id,name:r.team_name||'',sport:r.sport||'',city:r.city||'',contactName:r.contact_name||'',email:r.contact_email||'',phone:r.contact_phone||'',desc:r.description||'',status:r.status||'pending',reason:r.admin_reason||'',created:Date.parse(r.created_at)||0}));
  T.reports=(reps||[]).map(r=>({id:r.id,reporter:r.reporter_id,target:r.target_id,reason:r.reason,note:r.note||'',status:r.status,created:Date.parse(r.created_at)||0}));
  T.meetups=(evs||[]).map(e=>{const ppl=pBy[e.id]||[];const hi=ppl.indexOf(e.host_id);if(hi>0){ppl.splice(hi,1);ppl.unshift(e.host_id)}const b=e.business_id&&T.biz.find(x=>x.id===e.business_id);return mapEvent(Object.assign({},e,b?{business_name:b.name,business_logo:b.logo}:{}),ppl)});
  const oBy={};offers.slice().sort((a,b)=>String(a.created_at).localeCompare(String(b.created_at))).forEach(o=>(oBy[o.request_id]=oBy[o.request_id]||[]).push(o.helper_id));
@@ -1266,6 +1286,8 @@ function refreshAllViews(){
  if($('#s-hullut').classList.contains('active'))renderHullut();
  if($('#s-admin').classList.contains('active'))renderAdmin();
  if($('#s-biz').classList.contains('active')&&!($('#s-biz').contains(document.activeElement)&&document.activeElement.matches('input,textarea,select')))renderBiz();
+ if($('#s-orgs').classList.contains('active'))renderOrgs();
+ if($('#s-teamreq').classList.contains('active')&&!($('#s-teamreq').contains(document.activeElement)&&document.activeElement.matches('input,textarea,select')))renderTeamReq();
 }
 function meetupSig(m){return JSON.stringify([m.people,m.max,m.title,m.desc,m.place,m.date,m.time,m.people.map(nameOf),S.isAdmin,m.ends,m.endTime,m.organizer,m.url,m.price,m.bizName,S.reports.filter(r=>r.target===m.id&&r.reporter===ME).length])}
 function helpSigOf(h){return JSON.stringify([h.status,h.helpers,h.max,h.title,h.desc,h.contact,h.helpers.map(nameOf)])}
@@ -1273,7 +1295,7 @@ function helpSigOf(h){return JSON.stringify([h.status,h.helpers,h.max,h.title,h.
 /* ================= GUEST MODE: browse without an account ================= */
 const GUEST_KEY='molaplan.guest', PENDING_KEY='molaplan.pending';
 const ACT_COLS='id,name,emoji,hue,is_crazy,crazy_level,is_adult,is_custom,sort_order,created_at';
-const GATED=new Set(['join','leave','open-chat','chat-detail','offer','unoffer','ask-help','quick-create','hullut-create','open-notifs','add-own','edit-favs','verify-open','open-admin','delete','publish','qa','req-reply','req-close','save-profile','v-phone-save','report','rep-send','bz-submit','new-biz-event','edit-event']);
+const GATED=new Set(['join','leave','open-chat','chat-detail','offer','unoffer','ask-help','quick-create','hullut-create','open-notifs','add-own','edit-favs','verify-open','open-admin','delete','publish','qa','req-reply','req-close','save-profile','v-phone-save','report','rep-send','bz-submit','new-biz-event','edit-event','tr-submit']);
 let guestTab='home';
 function isGuest(){return !ME&&!!S.guest}
 function guestPref(){try{const g=JSON.parse(localStorage.getItem(GUEST_KEY)||'null');if(g&&CITIES[g.city])return {city:g.city,district:districts(g.city).includes(g.district)?g.district:firstDistrict(g.city)}}catch(e){}return null}
@@ -1346,7 +1368,7 @@ function renderLanding(opts){
   <span class="kick">${tx('home.goodKicker')}</span><h2>${tx('home.helpTitle')}</h2><p>${tx('home.goodSub')}</p>
   <div class="hc-actions"><button class="btn hc-offer" data-a="land-help" data-v="offer" id="land-offer">${tx('home.helpOffer')}</button><button class="btn hc-ask" data-a="land-help" data-v="ask" id="land-ask">${tx('home.helpAsk')}</button></div>
  </div>
- <details class="onb-card land-biz land-side" id="land-biz"><summary>🏢 ${tx('biz.forBiz')}</summary>${bizOfferHTML()}<button class="btn ghost block" data-a="guest-auth" data-v="signup" id="land-biz-signup" style="margin-top:12px">${tx('biz.applyNeedsAccount')}</button></details>`);
+ <div class="onb-card org-card land-side" id="land-orgs"><span class="kick">🏢 👥 ${tx('org.ask')}</span><h2>${tx('org.h1')}</h2><p>${tx('org.landSub')}</p><button class="btn ghost block" data-a="land-orgs" id="land-orgs-btn">${tx('org.cta')} →</button></div>`);
  bindCityFields('land');
  if(opts.auto&&!landManual)geoGranted().then(g=>{if(g&&$('#landing')&&!S.loaded)landLocate($('#land-locate'),true)});
 }
@@ -1380,6 +1402,14 @@ async function landHelp(el,v){
  if(ME)return;
  enterApp('home');setTimeout(openGood,60);
 }
+async function landOrgs(el){
+ const g=guestPref(), c=$('#land-city');
+ const city=g?g.city:(c?c.value:cityName()), d=g?g.district:firstDistrict(city);
+ S.user.city=city;S.user.district=d;saveGuestPref(city,d);F.city='';F.district='all';GF.district='all';landManual=false;landNote='';
+ try{await withBusy(el,()=>loadPublic())}catch(e){toast(errText(e),3600);return}
+ if(ME)return;
+ enterApp('home');setTimeout(openOrgs,60);
+}
 async function landGo(el,tab){
  const c=$('#land-city').value, d=$('#land-district').value||firstDistrict(c);
  S.user.city=c;S.user.district=d;saveGuestPref(c,d);F.city='';F.district='all';GF.district='all';landManual=false;landNote='';
@@ -1388,7 +1418,7 @@ async function landGo(el,tab){
  if(ME)return;
  enterApp(tab==='map'?'map':'home');
 }
-function needsAccount(a,el){if(a==='tab')return ['create','chats','mine','profile'].includes(el.dataset.t);return GATED.has(a)}
+function needsAccount(a,el){if(a==='tab'||a==='go-tab')return ['create','chats','mine','profile'].includes(a==='tab'?el.dataset.t:el.dataset.v);return GATED.has(a)}
 function openAuthPrompt(p){
  try{sessionStorage.setItem(PENDING_KEY,JSON.stringify(p))}catch(e){}
  const why={join:'guest.whyJoin',offer:'guest.whyHelp',unoffer:'guest.whyHelp','ask-help':'guest.whyAsk','open-chat':'guest.whyChat','quick-create':'guest.whyCreate','hullut-create':'guest.whyCreate',tab:p.t==='create'?'guest.whyCreate':p.t==='chats'?'guest.whyChat':'guest.whyDefault'}[p.a]||'guest.whyDefault';
@@ -1426,7 +1456,10 @@ function runPending(p){
   case 'offer':{if(!helpById(p.id))return;openHelp(p.id);setTimeout(()=>offerHelp(p.id,$('#d-offer')||dummy()),150);break}
   case 'open-chat':case 'chat-detail':if(byId(p.id))openDetail(p.id);else if(helpById(p.id))openHelp(p.id);break;
   case 'tab':if(['create','chats','mine','profile'].includes(p.t))go(p.t);break;
+  case 'go-tab':if(['create','chats','mine','profile'].includes(p.v))go(p.v);break;
   case 'ask-help':openAsk();break;
+  case 'team-req':openTeamReq();break;
+  case 'open-biz':openBiz();break;
   case 'quick-create':quickCreate(p.v);break;
   case 'hullut-create':startCrazyCreate(p.v);break;
   case 'open-notifs':openNotifs();break;
@@ -1714,7 +1747,7 @@ function mapFallback(el,msg){el.innerHTML=`<div class="map-fallback">🗺️<br>
 function renderNav(){
  const t=(id,ic,label,badge)=>`<button class="nav-btn ${curTab===id?'on':''}" data-a="tab" data-t="${id}">${icon(ic)}<span>${label}</span>${badge?`<i class="nav-badge" id="nav-badge" aria-label="${txn('nav.unread',badge)}">${badge>99?'99+':badge}</i>`:''}</button>`;
  const u=S.onboarded?totalUnread():0;
- $('#nav').innerHTML=`<button class="nav-logo" data-a="tab" data-t="home" aria-label="Molaplan">${MARK('nl')}</button>`+t('home','home',tx('nav.home'))+t('map','map',tx('nav.map'))+`<button class="nav-plus ${curTab==='create'?'on':''}" data-a="tab" data-t="create" aria-label="${tx('create.cta')}"><span>${icon('plus')}</span></button>`+t('chats','chat',tx('nav.chats'),u)+t('mine','cal',tx('nav.mine'))+`<button class="nav-btn nav-desk prof ${curTab==='profile'?'on':''}" data-a="tab" data-t="profile">${ME?avatar(ME,'sm'):icon('user')}<span>${ME?tx('nav.profile'):tx('guest.login')}</span></button>`;
+ $('#nav').innerHTML=`<button class="nav-logo" data-a="go-tab" data-v="home" aria-label="Molaplan">${MARK('nl')}</button>`+t('home','home',tx('nav.home'))+t('map','map',tx('nav.map'))+`<button class="nav-plus ${curTab==='create'?'on':''}" data-a="tab" data-t="create" aria-label="${tx('create.cta')}"><span>${icon('plus')}</span></button>`+t('chats','chat',tx('nav.chats'),u)+t('mine','cal',tx('nav.mine'))+`<button class="nav-btn nav-desk prof ${curTab==='profile'?'on':''}" data-a="go-tab" data-v="profile">${ME?avatar(ME,'sm'):icon('user')}<span>${ME?tx('nav.profile'):tx('guest.login')}</span></button>`;
 }
 function go(tab){
  closePush(true);
@@ -1925,27 +1958,16 @@ function emptyHTML(){
 }
 function bizTeamCardsHTML(){
  const guest=isGuest();
- const bizAction=guest?'guest-auth':(ME?'open-biz':'');
  const teamAction=guest?'guest-auth':(ME?'open-teams':'');
- const bizTarget=guest?'signup':'';
- return `<div style="padding:0 16px 8px;display:flex;flex-direction:column;gap:10px">
-  <div style="background:linear-gradient(135deg,#7c3aed,#a855f7);border-radius:16px;padding:16px;color:#fff;display:flex;align-items:center;gap:14px">
-   <span style="font-size:32px;flex:none">🏢</span>
-   <div style="flex:1;min-width:0">
-    <div style="font-weight:700;font-size:15px">${tx('home.bizCard')}</div>
-    <div style="font-size:12px;opacity:.85;margin-top:2px">${tx('home.bizCardSub')}</div>
-   </div>
-   <button class="btn" style="background:#fff;color:#7c3aed;font-weight:600;flex:none;white-space:nowrap" data-a="${bizAction}" ${guest?`data-v="${bizTarget}"`:''}>${tx('home.bizCardCta')}</button>
-  </div>
-  ${ff('teams')?`  <div style="background:linear-gradient(135deg,#0369a1,#0ea5e9);border-radius:16px;padding:16px;color:#fff;display:flex;align-items:center;gap:14px">
+ return `<button class="home-org" data-a="open-orgs" id="home-orgs"><span class="oe">🏢</span><span><b>${tx('org.cta')}</b><small>${tx('org.homeSub')}</small></span><span class="go">${tx('org.homeCta')}</span></button>
+  ${ff('teams')?`<div style="padding:0 16px 8px"><div style="background:linear-gradient(135deg,#0369a1,#0ea5e9);border-radius:16px;padding:16px;color:#fff;display:flex;align-items:center;gap:14px">
    <span style="font-size:32px;flex:none">👥</span>
    <div style="flex:1;min-width:0">
     <div style="font-weight:700;font-size:15px">${tx('home.teamCard')}</div>
     <div style="font-size:12px;opacity:.85;margin-top:2px">${tx('home.teamCardSub')}</div>
    </div>
-   <button class="btn" style="background:#fff;color:#0369a1;font-weight:600;flex:none;white-space:nowrap" data-a="${teamAction}" ${guest?`data-v="${bizTarget}"`:''}>${tx('home.teamCardCta')}</button>
-  </div>`:''}
- </div>`;
+   <button class="btn" style="background:#fff;color:#0369a1;font-weight:600;flex:none;white-space:nowrap" data-a="${teamAction}" ${guest?'data-v="signup"':''}>${tx('home.teamCardCta')}</button>
+  </div></div>`:''}`;
 }
 function bannerHTML(){
  const n=crazyUpcoming().length;
@@ -2041,6 +2063,8 @@ function showEntry(e){
  else if(e.screen==='s-ask'){openPush('s-ask');renderAsk()}
  else if(e.screen==='s-admin'){renderAdmin();openPush('s-admin')}
  else if(e.screen==='s-biz'){renderBiz();openPush('s-biz')}
+ else if(e.screen==='s-orgs'){renderOrgs();openPush('s-orgs')}
+ else if(e.screen==='s-teamreq'){renderTeamReq();openPush('s-teamreq')}
  else if(e.screen==='s-chat'){chatId=e.param;markRead(chatId);openPush('s-chat');renderChat();const ms=$('#cv-msgs');if(ms)ms.scrollTop=ms.scrollHeight}
  if(e.scroll!=null&&e.screen!=='s-chat')$('#'+e.screen).scrollTop=e.scroll;
 }
@@ -3051,8 +3075,9 @@ function notifGo(id){
  else if(g.kind==='help'){const h=helpById(g.id);if(h&&h.status==='approved')openHelp(g.id);else{mineSeg='requests';go('mine')}}
  else if(g.kind==='chat'){if(chatObj(g.id)&&chatObj(g.id).member)openChat(g.id);else refreshData().then(()=>openChat(g.id))}
  else if(g.kind==='event'){if(byId(g.id))openDetail(g.id)}
- else if(g.kind==='admin'){if(bizById(g.id))adminSec='biz';else if(byId(g.id)&&S.reports.some(r=>r.target===g.id))adminSec='reports';openAdmin()}
+ else if(g.kind==='admin'){if(bizById(g.id))adminSec='biz';else if(teamReqById(g.id))adminSec='teams';else if(byId(g.id)&&S.reports.some(r=>r.target===g.id))adminSec='reports';openAdmin()}
  else if(g.kind==='business')openBiz();
+ else if(g.kind==='team')openTeamReq();
  else if(g.kind==='friend'){go('profile');setTimeout(()=>{const f=$('#p-friends');if(f)f.scrollIntoView({block:'center'})},150)}
 }
 /* ---- admin (profiles.is_admin, set via SQL) ---- */
@@ -3077,8 +3102,8 @@ function renderAdmin(){
  const pend=S.helps.filter(h=>h.status==='pending').sort((a,b)=>a.created-b.created);
  const done=S.helps.filter(h=>h.status!=='pending').sort((a,b)=>b.updated-a.updated);
  const list=adminTab==='pending'?pend:done;
- const bp=(S.biz||[]).filter(b=>b.status==='pending').length, ro=openReports();
- const secs=`<div class="seg seg3 adm-secs" id="adm-secs" style="margin:0 16px 14px"><button class="${adminSec==='help'?'on':''}" data-a="adm-sec" data-v="help" id="adm-sec-help">${tx('adm.secHelp')}${pend.length?` <i class="cnt">${pend.length}</i>`:''}</button><button class="${adminSec==='biz'?'on':''}" data-a="adm-sec" data-v="biz" id="adm-sec-biz">${tx('adm.secBiz')}${bp?` <i class="cnt">${bp}</i>`:''}</button><button class="${adminSec==='reports'?'on':''}" data-a="adm-sec" data-v="reports" id="adm-sec-reports">${tx('adm.secReports')}${ro.length?` <i class="cnt">${new Set(ro.map(r=>r.target)).size}</i>`:''}</button></div>`;
+ const bp=(S.biz||[]).filter(b=>b.status==='pending').length, ro=openReports(), tp=(S.teamReqs||[]).filter(r=>r.status==='pending').length;
+ const secs=`<div class="seg seg4 adm-secs" id="adm-secs" style="margin:0 16px 14px"><button class="${adminSec==='help'?'on':''}" data-a="adm-sec" data-v="help" id="adm-sec-help">${tx('adm.secHelp')}${pend.length?` <i class="cnt">${pend.length}</i>`:''}</button><button class="${adminSec==='biz'?'on':''}" data-a="adm-sec" data-v="biz" id="adm-sec-biz">${tx('adm.secBiz')}${bp?` <i class="cnt">${bp}</i>`:''}</button><button class="${adminSec==='teams'?'on':''}" data-a="adm-sec" data-v="teams" id="adm-sec-teams">${tx('adm.secTeams')}${tp?` <i class="cnt">${tp}</i>`:''}</button><button class="${adminSec==='reports'?'on':''}" data-a="adm-sec" data-v="reports" id="adm-sec-reports">${tx('adm.secReports')}${ro.length?` <i class="cnt">${new Set(ro.map(r=>r.target)).size}</i>`:''}</button></div>`;
  const head=`<div class="push-head"><button class="icon-btn" data-a="back" aria-label="${tx('common.back')}">${icon('back')}</button><span class="t">${tx('adm.title')}</span><span class="adm-pill">${tx('adm.pill')}</span></div>`;
  const pubBtn=`<div style="padding:0 16px 14px"><button class="btn ghost block" data-a="new-public" id="adm-new-public">🎪 ${tx('pub.addPublic')}</button></div>`;
  if(adminSec==='biz'){
@@ -3087,6 +3112,13 @@ function renderAdmin(){
   const bl=(S.biz||[]).slice().sort((a,b)=>(ord[a.status]-ord[b.status])||String(a.until||'9').localeCompare(String(b.until||'9'))||b.created-a.created);
   s.innerHTML=head+`<div class="ask-title"><small>🏢 ${tx('biz.forBiz')}</small><h1>${tx('adm.bizH1')} <span>🏢</span></h1><p>${tx('adm.bizIntro')}</p></div>`+secs+pubBtn+
    `<div class="cards" id="adm-biz-list">${bl.length?bl.map(b=>admBizHTML(b,t)).join(''):`<div class="empty"><div class="e">🏢</div><h3>${tx('adm.bizNone')}</h3></div>`}</div><div style="height:28px"></div>`;
+  s.scrollTop=st;return;
+ }
+ if(adminSec==='teams'){
+  const ord={pending:0,approved:1,rejected:2};
+  const tl=(S.teamReqs||[]).slice().sort((a,b)=>(ord[a.status]-ord[b.status])||b.created-a.created);
+  s.innerHTML=head+`<div class="ask-title"><small>👥 ${tx('org.kicker')}</small><h1>${tx('adm.trH1')} <span>👥</span></h1><p>${tx('adm.trIntro')}</p></div>`+secs+
+   `<div class="cards" id="adm-tr-list">${tl.length?tl.map(admTeamHTML).join(''):`<div class="empty"><div class="e">👥</div><h3>${tx('adm.trNone')}</h3></div>`}</div><div style="height:28px"></div>`;
   s.scrollTop=st;return;
  }
  if(adminSec==='reports'){
@@ -3208,7 +3240,7 @@ function renderBiz(){
  <div class="ask-title"><small>🏢 ${tx('biz.forBiz')}</small><h1>${tx('biz.h1')}</h1><p>${tx('biz.intro')}</p></div>
  <div class="card-box">${bizOfferHTML()}</div>
  ${mine.length?`<div class="card-box" id="biz-mine"><h3>${tx('biz.mine')}</h3>${mine.map(myBizCardHTML).join('')}</div>`:''}
- ${!ME?`<div style="padding:0 16px"><button class="btn primary block" data-a="guest-auth" data-v="signup" id="biz-guest-signup">${tx('biz.applyNeedsAccount')}</button></div>`:showForm?bizFormHTML():`<div style="padding:0 16px"><button class="btn ghost block" data-a="biz-form-open" id="biz-form-open">＋ ${tx('biz.another')}</button></div>`}
+ ${!ME?`<div style="padding:0 16px"><button class="btn primary block" data-a="biz-guest" id="biz-guest-signup">${tx('biz.applyNeedsAccount')}</button></div>`:showForm?bizFormHTML():`<div style="padding:0 16px"><button class="btn ghost block" data-a="biz-form-open" id="biz-form-open">＋ ${tx('biz.another')}</button></div>`}
  <p class="fine" style="margin:14px 20px 28px">${tx('biz.rulesNote')}</p>`;
  s.scrollTop=st;
 }
@@ -3221,7 +3253,7 @@ async function bizSubmit(el){
  if(v('bz-web')&&!safeHttps(v('bz-web')))bad.push(['bz-web','err.httpsUrl']);
  if(v('bz-logo')&&!safeHttps(v('bz-logo')))bad.push(['bz-logo','err.httpsUrl']);
  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('bz-email')))bad.push(['bz-email','create.missing']);
- if(!validPhone(v('bz-phone')))bad.push(['bz-phone','v.phoneInvalid']);
+ if(!validPhone(v('bz-phone')))bad.push(['bz-phone','v.checkPhone']);
  if(v('bz-bill').length<5&&v('bz-einv').length<5)bad.push(['bz-bill','err.bizBilling']);
  if(!bizTerms)bad.push(['ck-bizterms','biz.termsNeeded']);
  bad.forEach(([id])=>{const e=$('#'+id);if(e)e.classList.add('err')});
@@ -3230,8 +3262,89 @@ async function bizSubmit(el){
  bizFormOpen=false;bizTerms=false;toast(tx('biz.sent'),3600);
  await refreshData();renderBiz();
 }
-function profileBizHTML(){const mine=myBizs();
- return `<div class="card-box" id="p-biz"><h3>🏢 ${tx('biz.title')}</h3>${mine.length?mine.map(myBizCardHTML).join(''):`<p class="muted" style="font-size:13px;margin:0;line-height:1.5">${tx('biz.profileHint')}</p>`}<button class="btn primary block" data-a="open-biz" id="open-biz" style="margin-top:12px">${tx('biz.forBiz')} →</button></div>`}
+function profileBizHTML(){const mine=myBizs(), tr=myTeamReqs();
+ return `<div class="card-box" id="p-biz"><h3>🏢 ${tx('org.profileTitle')}</h3>${mine.length||tr.length?mine.map(myBizCardHTML).join('')+tr.map(myTeamReqRowHTML).join(''):`<p class="muted" style="font-size:13px;margin:0;line-height:1.5">${tx('org.profileHint')}</p>`}<button class="btn primary block" data-a="open-orgs" id="open-orgs" style="margin-top:12px">${tx('org.cta')}</button></div>`}
+/* ---- one entry point for business + team accounts ("Avaa tili yritykselle tai joukkueelle") ---- */
+let trFormOpen=false;
+function openOrgs(){navTo('s-orgs',null)}
+function openTeamReq(){navTo('s-teamreq',null)}
+function teamReqById(id){return id?(S.teamReqs||[]).find(r=>r.id===id):null}
+function myTeamReqs(){return ME?(S.teamReqs||[]).filter(r=>r.requester===ME):[]}
+function myTeamReqRowHTML(r){return `<div class="biz-mine-row tr-row" id="my-tr-${r.id}"><span class="bl">👥</span><span class="bm"><b>${esc(r.name)}</b><small class="st-txt bst-${r.status}">${esc(tx('trst.'+r.status))}</small><small class="muted">${esc(r.sport)} · ${esc(r.city)}</small>${r.status==='rejected'&&r.reason?`<small class="bad-txt">${tx('adm.rejectReason')}: ${esc(r.reason)}</small>`:''}</span></div>`}
+function orgOptionsHTML(){return `<div class="org-opts" id="org-opts">
+ <button class="org-opt" data-a="open-biz" id="org-biz"><span class="oe">🏢</span><span class="ot"><b>${tx('org.bizTitle')}</b><small>${tx('org.bizSub')}</small><em>${tx('biz.price')} · ${tx('org.bizReview')}</em></span><span class="oa">${icon('back')}</span></button>
+ <button class="org-opt team" data-a="open-teamreq" id="org-team"><span class="oe">👥</span><span class="ot"><b>${tx('org.teamTitle')}</b><small>${tx('org.teamSub')}</small><em>${tx('org.teamReview')}</em></span><span class="oa">${icon('back')}</span></button>
+</div>`}
+function renderOrgs(){
+ const s=$('#s-orgs');if(!s)return;
+ const bz=ME?myBizs():[], tr=myTeamReqs();
+ s.innerHTML=`<div class="push-head"><button class="icon-btn" data-a="back" aria-label="${tx('common.back')}">${icon('back')}</button><span class="t">${tx('org.title')}</span></div>
+ <div class="ask-title"><small>🏢 👥 ${tx('org.kicker')}</small><h1>${tx('org.h1')}</h1><p>${tx('org.intro')}</p></div>
+ ${orgOptionsHTML()}
+ ${bz.length||tr.length?`<div class="card-box" id="org-mine"><h3>${tx('org.mine')}</h3>${bz.map(myBizCardHTML).join('')}${tr.map(myTeamReqRowHTML).join('')}</div>`:''}
+ ${ME?'':`<p class="fine" style="margin:4px 20px 0">${tx('org.needsAccount')}</p>`}
+ <p class="fine" style="margin:14px 20px 28px">${tx('org.note')}</p>`;
+}
+function teamReqFormHTML(){
+ const f=(id,label,attrs,val)=>`<label class="field"><span>${label}</span><input class="inp" id="${id}" ${attrs||''} value="${esc(val||'')}"></label>`;
+ return `<div class="card-box" id="tr-form"><h3>${tx('tr.formTitle')}</h3>
+  ${S.emailVerified?'':`<div class="req-msg" id="tr-verify">${tx('biz.verifyFirst')} <button class="inline-link" data-a="verify-open">${tx('prof.verifyContacts')}</button></div>`}
+  ${f('tr-name',tx('tr.name'),`maxlength="80" autocomplete="organization" placeholder="${esc(tx('tr.namePh'))}"`)}
+  <div class="two">${f('tr-sport',tx('tr.sport'),`maxlength="60" placeholder="${esc(tx('tr.sportPh'))}"`)}${f('tr-city',tx('tr.city'),'maxlength="60" list="tr-cities" autocomplete="address-level2"',cityLabel(cityName()))}</div>
+  <datalist id="tr-cities">${CITY_LIST.map(c=>`<option value="${esc(cityLabel(c.id))}"></option>`).join('')}</datalist>
+  <label class="field"><span>${tx('tr.desc')}</span><textarea class="inp" id="tr-desc" maxlength="800" placeholder="${esc(tx('tr.descPh'))}"></textarea></label>
+  <h3 style="font-size:16px;margin-top:6px">${tx('tr.contactTitle')}</h3>
+  ${f('tr-cname',tx('tr.contactName'),'maxlength="80" autocomplete="name"',S.user.name)}
+  ${f('tr-email',tx('biz.email'),'type="email" inputmode="email" maxlength="200" autocomplete="email"',S.email)}
+  ${f('tr-phone',tx('tr.phoneOpt'),'type="tel" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="+358 40 123 4567"',S.phone)}
+  <button class="btn primary block" data-a="tr-submit" id="tr-submit" style="margin-top:6px">${tx('tr.submit')}</button>
+  <p class="fine" style="margin:10px 2px 0">${tx('tr.privacy')}</p></div>`;
+}
+function renderTeamReq(){
+ const s=$('#s-teamreq');if(!s)return;const st=s.scrollTop;
+ const mine=myTeamReqs(), pend=mine.filter(r=>r.status==='pending').length;
+ const showForm=!!ME&&(trFormOpen||!pend)&&pend<3;
+ s.innerHTML=`<div class="push-head"><button class="icon-btn" data-a="back" aria-label="${tx('common.back')}">${icon('back')}</button><span class="t">${tx('org.teamTitle')}</span></div>
+ <div class="ask-title"><small>👥 ${tx('org.kicker')}</small><h1>${tx('tr.h1')}</h1><p>${tx('tr.intro')}</p></div>
+ <div class="card-box" id="tr-how"><h3>${tx('tr.howTitle')}</h3><ol class="tr-ol"><li>${tx('tr.how1')}</li><li>${tx('tr.how2')}</li><li>${tx('tr.how3')}</li></ol></div>
+ ${mine.length?`<div class="card-box" id="tr-mine"><h3>${tx('tr.mine')}</h3>${mine.map(myTeamReqRowHTML).join('')}</div>`:''}
+ ${!ME?`<div style="padding:0 16px"><button class="btn primary block" data-a="tr-guest" id="tr-guest-signup">${tx('tr.needsAccount')}</button><p class="fine" style="margin:10px 4px 0;text-align:center">${tx('tr.needsAccountSub')}</p></div>`:showForm?teamReqFormHTML():pend<3?`<div style="padding:0 16px"><button class="btn ghost block" data-a="tr-form-open" id="tr-form-open">＋ ${tx('tr.another')}</button></div>`:''}
+ <p class="fine" style="margin:14px 20px 28px">${tx('org.note')}</p>`;
+ s.scrollTop=st;
+}
+async function trSubmit(el){
+ const v=id=>(($('#'+id)||{}).value||'').trim();
+ const bad=[];
+ if(v('tr-name').length<2)bad.push(['tr-name','tr.errName']);
+ if(v('tr-sport').length<2)bad.push(['tr-sport','tr.errSport']);
+ if(v('tr-city').length<2)bad.push(['tr-city','tr.errCity']);
+ if(v('tr-cname').length<2)bad.push(['tr-cname','tr.errContact']);
+ if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('tr-email')))bad.push(['tr-email','tr.errEmail']);
+ if(v('tr-phone')&&!validPhone(v('tr-phone')))bad.push(['tr-phone','v.checkPhone']);
+ bad.forEach(([id])=>{const e=$('#'+id);if(e)e.classList.add('err')});
+ if(bad.length){toast(tx(bad[0][1]),3600);const e=$('#'+bad[0][0]);if(e){e.scrollIntoView({block:'center',behavior:'smooth'});e.focus({preventScroll:true})}return}
+ const req={team_name:v('tr-name'),sport:v('tr-sport'),city:v('tr-city'),contact_name:v('tr-cname'),contact_email:v('tr-email'),contact_phone:v('tr-phone'),description:v('tr-desc')};
+ try{await withBusy(el,()=>q(sb.rpc('request_team_account',{req})))}catch(e){toast(errText(e),4200);return}
+ trFormOpen=false;toast(tx('tr.sent'),4200);
+ await refreshData();renderTeamReq();const s=$('#s-teamreq');if(s)s.scrollTop=0;
+}
+function admTeamHTML(r){
+ return `<article class="card adm tr-adm" id="adm-tr-${r.id}" data-id="${r.id}">
+  <div class="card-top"><div class="emo">👥</div><div class="card-meta"><div class="act-name">${esc(r.sport)} · ${esc(r.city)}</div><div class="when">${tx('tl.sent')} ${listTime(r.created)}</div></div><span class="st st-${r.status}">${tx('trst.'+r.status)}</span></div>
+  <h3>${esc(r.name)}</h3>
+  ${r.desc?`<p class="desc sm">${esc(r.desc)}</p>`:''}
+  <dl class="adm-dl"><dt>${tx('biz.contact')}</dt><dd>${esc(r.contactName)}<br><a href="mailto:${esc(r.email)}">${esc(r.email)}</a>${r.phone?`<br><a href="tel:${esc(r.phone.replace(/[^\d+]/g,''))}">${esc(r.phone)}</a>`:''}</dd>
+  <dt>${tx('adm.requester')}</dt><dd>${esc(r.requester===ME?myName():nameOf(r.requester))}</dd></dl>
+  ${r.status==='pending'?`<div class="adm-actions"><button class="btn gprimary" data-a="adm-tr-approve" data-id="${r.id}" id="adm-tr-ok-${r.id}">${tx('adm.approve')}</button><button class="btn danger" data-a="adm-tr-reject" data-id="${r.id}" id="adm-tr-no-${r.id}">${tx('adm.reject')}</button></div>`:''}
+  ${r.status==='rejected'&&r.reason?`<div class="req-msg bad">${tx('adm.rejectReason')}: ${esc(r.reason)}</div>`:''}
+ </article>`;
+}
+async function admTeamApprove(id,el){
+ const r=teamReqById(id);if(!r||!S.isAdmin||r.status!=='pending')return;
+ try{await withBusy(el,()=>q(sb.rpc('admin_review_team_request',{p_id:id,p_status:'approved',p_reason:''})))}catch(e){toast(errText(e));return}
+ r.status='approved';toast(tx('adm.trApproved'),3200);renderAdmin();refreshData();
+}
+
 async function admApprove(id,el){
  const h=helpById(id);if(!h||h.status!=='pending'||!S.isAdmin)return;
  try{await withBusy(el,()=>q(sb.from('help_requests').update({status:'approved',admin_reason:''}).eq('id',id)))}catch(e){toast(errText(e));return}
@@ -3240,10 +3353,10 @@ async function admApprove(id,el){
  afterHelpChange(id);refreshData();
 }
 function openReasonSheet(id,kind){
- const h=kind==='bizreject'?bizById(id):helpById(id);if(!h)return;sheetCtx='reason';
- if(kind==='bizreject')h.title=h.name;
- const rej=kind==='reject'||kind==='bizreject';
- const presets=kind==='bizreject'?[tx('adm.bizPreset1'),tx('adm.bizPreset2'),tx('adm.bizPreset3')]:rej?[tx('adm.preset1'),tx('adm.preset2'),tx('adm.preset3'),tx('adm.preset4')]:[tx('adm.preset5'),tx('adm.preset6'),tx('adm.preset7'),tx('adm.preset8')];
+ const h=kind==='trreject'?teamReqById(id):kind==='bizreject'?bizById(id):helpById(id);if(!h)return;sheetCtx='reason';
+ if(kind==='bizreject'||kind==='trreject')h.title=h.name;
+ const rej=kind==='reject'||kind==='bizreject'||kind==='trreject';
+ const presets=kind==='trreject'?[tx('adm.trPreset1'),tx('adm.trPreset2'),tx('adm.trPreset3')]:kind==='bizreject'?[tx('adm.bizPreset1'),tx('adm.bizPreset2'),tx('adm.bizPreset3')]:rej?[tx('adm.preset1'),tx('adm.preset2'),tx('adm.preset3'),tx('adm.preset4')]:[tx('adm.preset5'),tx('adm.preset6'),tx('adm.preset7'),tx('adm.preset8')];
  $('#sheet').innerHTML=`<div class="grab"></div><h3>${rej?tx('adm.rejectTitle'):tx('adm.infoTitle')}</h3><p class="sub">“${esc(h.title)}” – ${rej?tx('adm.rejectSub'):tx('adm.infoSub')}</p>
  <div class="fav-chips" style="margin-bottom:12px">${presets.map(p=>`<button class="chip" data-a="reason-preset" data-v="${esc(p)}">${esc(p)}</button>`).join('')}</div>
  <label class="field"><span>${rej?tx('adm.reasonReq'):tx('adm.msgReq')}</span><textarea class="inp" id="reason-txt" maxlength="300" placeholder="${rej?tx('adm.rejectPh'):tx('adm.infoPh')}"></textarea></label>
@@ -3252,6 +3365,9 @@ function openReasonSheet(id,kind){
 }
 async function reasonOk(id,kind,el){
  const t=$('#reason-txt');
+ if(kind==='trreject'){const r=t?t.value.trim():'';if(r.length<3){if(t)t.classList.add('err');toast(tx('adm.writeReason'));return}
+  try{await withBusy(el,()=>q(sb.rpc('admin_review_team_request',{p_id:id,p_status:'rejected',p_reason:r.slice(0,300)})))}catch(e){toast(errText(e));return}
+  const x=teamReqById(id);if(x){x.status='rejected';x.reason=r.slice(0,300)}closeSheet();toast(tx('adm.rejectedToast'));renderAdmin();refreshData();return}
  if(kind==='bizreject'){const r=t?t.value.trim():'';if(r.length<3){if(t)t.classList.add('err');toast(tx('adm.writeReason'));return}closeSheet();return bizUpdate(id,{status:'rejected',admin_reason:r.slice(0,300)},el,tx('adm.rejectedToast'))}
  const h=helpById(id);if(!h||!t)return;
  const r=t.value.trim();if(r.length<3){t.classList.add('err');toast(kind==='reject'?tx('adm.writeReason'):tx('adm.writeMsg'));return}
@@ -3449,6 +3565,7 @@ document.addEventListener('click',e=>{
  if(isGuest()&&needsAccount(a,el)){e.preventDefault();openAuthPrompt({a,id:id||null,v:v||null,t:el.dataset.t||null});return}
  switch(a){
   case 'tab':go(el.dataset.t);break;
+  case 'go-tab':go(v);break;
   case 'land-go':landGo(el,v);break;
   case 'guest-auth':guestAuth(v,!!el.closest('#auth-prompt'));break;
   case 'auth-cancel':authCancel();break;
@@ -3506,6 +3623,15 @@ document.addEventListener('click',e=>{
   case 'rep-reason':repReason=v;$$('#rep-reasons .chk').forEach(b=>{const on=b.dataset.v===v;b.classList.toggle('on',on);b.setAttribute('aria-checked',on)});break;
   case 'rep-send':sendReport(id,el);break;
   case 'open-biz':openBiz();break;
+  case 'open-orgs':openOrgs();break;
+  case 'open-teamreq':openTeamReq();break;
+  case 'land-orgs':landOrgs(el);break;
+  case 'tr-submit':trSubmit(el);break;
+  case 'tr-guest':try{sessionStorage.setItem(PENDING_KEY,JSON.stringify({a:'team-req'}))}catch(e){}guestAuth('signup',true);break;
+  case 'biz-guest':try{sessionStorage.setItem(PENDING_KEY,JSON.stringify({a:'open-biz'}))}catch(e){}guestAuth('signup',true);break;
+  case 'tr-form-open':trFormOpen=true;renderTeamReq();setTimeout(()=>{const f=$('#tr-name');if(f)f.focus()},50);break;
+  case 'adm-tr-approve':admTeamApprove(id,el);break;
+  case 'adm-tr-reject':openReasonSheet(id,'trreject');break;
   case 'biz-form-open':bizFormOpen=true;renderBiz();setTimeout(()=>{const f=$('#bz-name');if(f)f.focus()},50);break;
   case 'bz-terms':bizTerms=!bizTerms;el.classList.toggle('on',bizTerms);el.classList.remove('err');el.setAttribute('aria-checked',bizTerms);break;
   case 'bz-submit':bizSubmit(el);break;
@@ -3587,8 +3713,7 @@ document.addEventListener('click',e=>{
   case 'team-do-create':createTeam(el);break;
   case 'open-team-event':openTeamEvent(el.dataset.eid);break;
   case 'team-rsvp':teamRsvp(el.dataset.eid,el.dataset.status,el);break;
-  case 'open-team-pricing':showTeamPricingSheet();break;
-  case 'team-request-subscribe':window.location.href='mailto:tilaus@molaplan.com?subject='+encodeURIComponent(tx('team.subscribe')+' - '+S.user.email);toast(tx('tl.sent')+' ✓');closeSheet();break;
+  case 'open-team-pricing':case 'team-request-subscribe':closeSheet();openTeamReq();break;
  }
 });
 document.addEventListener('change',e=>{const el=e.target;if(el.matches('select[data-f]')){F[el.dataset.f]=el.value;if(el.dataset.f==='city'){F.district='all';GF.district='all';cityChanged()}onFilterChange()}if(el.id==='gf-city'){F.city=el.value;F.district='all';GF.district='all';cityChanged();renderGood()}if(el.id==='gf-district'){GF.district=el.value;renderGood()}if(el.id==='a-district'&&A){A.district=el.value;askDistrictMoved()}if(el.id==='a-city'&&A){A.city=el.value;A.district=A.city===cityName()&&cityInfo(A.city).d[S.user.district]?S.user.district:firstDistrict(A.city);const ds=$('#a-district');if(ds)ds.innerHTML=districtOptions(A.city,A.district);askDistrictMoved()}});

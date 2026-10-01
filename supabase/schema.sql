@@ -331,10 +331,10 @@ alter table public.events add constraint events_description_check check (
 create index if not exists events_last_idx on public.events (last_at);
 create index if not exists events_business_idx on public.events (business_id);
 
--- Ilmoitusten linkit: myös yritystili
+-- Ilmoitusten linkit: myös yritystili, kaverit ja joukkuetilin pyyntö ('team', 7e)
 alter table public.notifications drop constraint if exists notifications_link_kind_check;
 alter table public.notifications add constraint notifications_link_kind_check
-  check (link_kind in ('request','help','chat','event','admin','business','friend'));
+  check (link_kind in ('request','help','chat','event','admin','business','friend','team'));
 
 -- ---------------------------------------------------------------------
 -- 1c. MAINOSTUSSUOJA JA MODEROINTI
@@ -2256,5 +2256,99 @@ grant execute on function public.send_friend_request(uuid, uuid) to authenticate
 grant execute on function public.respond_friend_request(uuid, boolean) to authenticated;
 grant execute on function public.remove_friend(uuid) to authenticated;
 grant execute on function public.invite_friend_to_event(uuid, uuid) to authenticated;
+
+-- 7e. JOUKKUETILIN PYYNTÖ (2026-10-01): käyttäjä pyytää joukkue-/seuratiliä → ylläpito hyväksyy tai hylkää käsin
+--     (ylläpitojono). Ei maksua eikä hintaa. Varsinainen joukkueiden käyttöliittymä (7b, ff=teams) on yhä piilossa;
+--     hyväksyntä ei luo joukkuetta automaattisesti – ylläpito ottaa yhteyttä pyytäjään.
+--     Kirjoitukset vain RPC:iden kautta (request_team_account, admin_review_team_request). anon: ei mitään.
+create table if not exists public.team_requests (
+  id            uuid primary key default gen_random_uuid(),
+  requester_id  uuid not null references public.profiles(id) on delete cascade,
+  team_name     text not null check (char_length(team_name) between 2 and 80),
+  sport         text not null check (char_length(sport) between 2 and 60),
+  city          text not null check (char_length(city) between 2 and 60),
+  contact_name  text not null check (char_length(contact_name) between 2 and 80),
+  contact_email text not null check (char_length(contact_email) <= 200 and contact_email ~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'),
+  contact_phone text not null default '' check (contact_phone = '' or contact_phone ~ '^\+?[0-9][0-9 ()-]{5,19}$'),
+  description   text not null default '' check (char_length(description) <= 800),
+  status        text not null default 'pending' check (status in ('pending','approved','rejected')),
+  admin_reason  text not null default '' check (char_length(admin_reason) <= 300),
+  reviewed_by   uuid references public.profiles(id) on delete set null,
+  reviewed_at   timestamptz,
+  created_at    timestamptz not null default now(),
+  updated_at    timestamptz not null default now()
+);
+create index if not exists team_requests_requester_idx on public.team_requests (requester_id, created_at desc);
+create index if not exists team_requests_status_idx on public.team_requests (status, created_at);
+
+create or replace function public.request_team_account(req jsonb) returns uuid
+language plpgsql security definer set search_path = public as $$
+declare me uuid := auth.uid(); rid uuid;
+  v_name text := btrim(regexp_replace(coalesce(req->>'team_name', ''), '\s+', ' ', 'g'));
+  v_sport text := btrim(regexp_replace(coalesce(req->>'sport', ''), '\s+', ' ', 'g'));
+  v_city text := btrim(regexp_replace(coalesce(req->>'city', ''), '\s+', ' ', 'g'));
+  v_cname text := btrim(regexp_replace(coalesce(req->>'contact_name', ''), '\s+', ' ', 'g'));
+  v_email text := lower(btrim(coalesce(req->>'contact_email', '')));
+  v_phone text := btrim(coalesce(req->>'contact_phone', ''));
+  v_desc text := btrim(coalesce(req->>'description', ''));
+begin
+  if me is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  if not coalesce((select email_verified from public.profiles where id = me), false) then
+    raise exception 'email_not_verified' using errcode = 'P0001';
+  end if;
+  if char_length(v_name) not between 2 and 80 or char_length(v_sport) not between 2 and 60
+     or char_length(v_city) not between 2 and 60 or char_length(v_cname) not between 2 and 80
+     or char_length(v_desc) > 800 or char_length(v_email) > 200
+     or v_email !~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'
+     or (v_phone <> '' and v_phone !~ '^\+?[0-9][0-9 ()-]{5,19}$') then
+    raise exception 'team_request_invalid' using errcode = 'P0001';
+  end if;
+  if (select count(*) from public.team_requests where requester_id = me and status = 'pending') >= 3
+     or (select count(*) from public.team_requests where requester_id = me and created_at > now() - interval '1 day') >= 5 then
+    raise exception 'too_many_team_requests' using errcode = 'P0001';
+  end if;
+  insert into public.team_requests (requester_id, team_name, sport, city, contact_name, contact_email, contact_phone, description)
+  values (me, v_name, v_sport, v_city, v_cname, v_email, v_phone, v_desc)
+  returning id into rid;
+  perform public.notify_admins('👥', 'admin_new_team_request', jsonb_build_object('name', v_name, 'sport', v_sport, 'city', v_city),
+    'Uusi joukkuetilipyyntö: “' || v_name || '” (' || v_sport || ', ' || v_city || ')', 'admin', rid);
+  return rid;
+end $$;
+
+-- Ylläpito: hyväksy / hylkää (hylkäyksessä syy pakollinen). Pyytäjä saa ilmoituksen.
+create or replace function public.admin_review_team_request(p_id uuid, p_status text, p_reason text default '') returns void
+language plpgsql security definer set search_path = public as $$
+declare r public.team_requests; v_reason text := left(btrim(coalesce(p_reason, '')), 300);
+begin
+  if auth.uid() is null or not public.is_admin() then raise exception 'admin_only' using errcode = 'P0001'; end if;
+  if p_status not in ('approved', 'rejected') then raise exception 'team_request_invalid' using errcode = 'P0001'; end if;
+  if p_status = 'rejected' and char_length(v_reason) < 3 then raise exception 'reason_required' using errcode = 'P0001'; end if;
+  select * into r from public.team_requests where id = p_id for update;
+  if not found then raise exception 'team_request_not_found' using errcode = 'P0001'; end if;
+  if r.status <> 'pending' then raise exception 'team_request_already_reviewed' using errcode = 'P0001'; end if;
+  update public.team_requests
+     set status = p_status, admin_reason = case when p_status = 'rejected' then v_reason else '' end,
+         reviewed_by = auth.uid(), reviewed_at = now(), updated_at = now()
+   where id = p_id;
+  if p_status = 'approved' then
+    perform public.notify(r.requester_id, '✅', 'team_request_approved', jsonb_build_object('name', r.team_name),
+      'Joukkuetilipyyntö “' || r.team_name || '” hyväksyttiin 🎉 Otamme sinuun pian yhteyttä.', 'team', r.id);
+  else
+    perform public.notify(r.requester_id, '❌', 'team_request_rejected', jsonb_build_object('name', r.team_name, 'reason', v_reason),
+      'Joukkuetilipyyntöä “' || r.team_name || '” ei hyväksytty. Syy: ' || v_reason, 'team', r.id);
+  end if;
+end $$;
+
+alter table public.team_requests enable row level security;
+drop policy if exists "team_requests: pyytäjä ja ylläpito lukevat" on public.team_requests;
+create policy "team_requests: pyytäjä ja ylläpito lukevat" on public.team_requests for select to authenticated
+  using (requester_id = auth.uid() or public.is_admin());
+revoke all on public.team_requests from public, anon, authenticated;
+grant select on public.team_requests to authenticated;
+revoke execute on function public.request_team_account(jsonb) from public, anon;
+revoke execute on function public.admin_review_team_request(uuid, text, text) from public, anon;
+grant execute on function public.request_team_account(jsonb) to authenticated;
+grant execute on function public.admin_review_team_request(uuid, text, text) to authenticated;
 
 -- Valmis! 🎉

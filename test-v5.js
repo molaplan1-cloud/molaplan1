@@ -18,7 +18,7 @@ let passed = 0;
   const tab = t => page.click(`#nav [data-t="${t}"]`);
   const profile = async () => { await page.click('#s-home .hdr-actions [data-t="profile"]'); await page.waitForSelector('#s-profile.active'); };
   const ymd = n => { const d = new Date(Date.now() + n * 864e5); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
-  const loginAs = async (email) => { await M(e => { localStorage.setItem('molaplan.mock.session', window.__mockSupa.userId(e)); localStorage.setItem('molaplan.lang', 'fi'); }, email); await page.goto('about:blank'); await page.goto(BASE + '?mock=1'); try { await page.waitForSelector('#s-home.active .home-top #loc-pill', { timeout: 10000 }); } catch (e) { await page.screenshot({ path: '/tmp/login-fail.png' }); throw new Error('login as ' + email + ' failed: ' + await page.evaluate(() => [...document.querySelectorAll('.screen.active')].map(s => s.id).join())); } };
+  const loginAs = async (email) => { await M(e => { localStorage.setItem('molaplan.mock.session', window.__mockSupa.userId(e)); localStorage.setItem('molaplan.lang', 'fi'); }, email); await page.goto('about:blank'); await page.goto(BASE + '?mock=1'); try { await page.waitForSelector('#s-home.active .home-top .hdr-actions [data-t="profile"]', { timeout: 10000 }); } catch (e) { await page.screenshot({ path: '/tmp/login-fail.png' }); throw new Error('login as ' + email + ' failed: ' + await page.evaluate(() => [...document.querySelectorAll('.screen.active')].map(s => s.id).join())); } };
   const iso = (n, h) => { const d = new Date(Date.now() + n * 864e5); d.setHours(h, 0, 0, 0); return d.toISOString(); };
 
   // ---------- setup ----------
@@ -36,8 +36,7 @@ let passed = 0;
   const hero = await page.textContent('.onb-hero');
   ok(/auttakaa toisianne/.test(hero) && !hero.includes('🤪') && !/hulluun/.test(hero), 'landing tagline = hobbies + helping each other; no 🤪 in the hero');
   ok(await page.isVisible('#land-pillars') && await page.isVisible('#land-help #land-offer') && await page.isVisible('#land-help #land-ask'), 'landing shows "Autetaan toisiamme" card with Tarjoa apua / Pyydä apua');
-  await page.click('#land-biz summary');
-  ok((await page.textContent('#land-biz')).includes('49 € / kk + ALV') && (await page.textContent('#land-biz')).includes('Laskutetaan kuukausittain'), 'landing "Yrityksille" shows the business offer (49 € / kk + ALV)');
+  ok(await page.isVisible('#land-orgs #land-orgs-btn') && (await page.textContent('#land-orgs')).includes('Avaa tili yritykselle tai joukkueelle'), 'landing has a clear "Avaa tili yritykselle tai joukkueelle" entry');
   ok((await M(() => document.querySelector('meta[name=description]').content)).includes('auta naapuria'), 'meta description rebalanced');
   await page.click('#land-offer'); await page.waitForSelector('#s-good.active');
   ok(true, '"Tarjoa apua" on the landing opens Hyvät teot (guest)');
@@ -104,7 +103,7 @@ let passed = 0;
 
   // ---------- 5. business account ----------
   await loginAs('pekka@example.com');
-  await profile(); await page.click('#open-biz'); await page.waitForSelector('#s-biz.active #biz-form');
+  await profile(); await page.click('#open-orgs'); await page.waitForSelector('#s-orgs.active #org-biz'); await page.click('#org-biz'); await page.waitForSelector('#s-biz.active #biz-form');
   ok((await page.textContent('#biz-offer')).includes('49 € / kk + ALV') && (await page.textContent('#biz-offer')).includes('Rajattomasti tapahtumia'), 'business screen shows the price and terms');
   await page.fill('#bz-name', 'Pekan Pyörä Oy'); await page.fill('#bz-code', '1234567-2'); await page.fill('#bz-web', 'https://pekanpyora.fi');
   await page.fill('#bz-bill', 'Pyöräkatu 1, 00100 Helsinki'); await page.click('#ck-bizterms'); await page.click('#bz-submit'); await waitToast(/Y-tunnus/);
@@ -113,7 +112,9 @@ let passed = 0;
   let biz = (await DB()).businesses[0];
   ok(biz && biz.status === 'pending' && biz.business_code === '0737546-2' && (await DB()).business_private[0].billing_address.includes('Pyöräkatu'), 'application stored as pending (6-digit code padded to 0737546-2), billing kept in business_private');
   ok((await DB()).notifications.some(n => n.code === 'admin_new_business'), 'admin notified about the application');
-  await page.click('#s-biz [data-a="back"]'); await page.waitForTimeout(300);
+  await page.click('#s-biz [data-a="back"]'); await page.waitForSelector('#s-orgs.active #org-mine');
+  ok((await page.textContent('#org-mine')).includes('Pekan Pyörä Oy'), 'business/team options screen lists the pending application');
+  await page.click('#s-orgs [data-a="back"]'); await page.waitForSelector('#s-profile.active');
   ok((await page.textContent('#p-biz')).includes('Pekan Pyörä Oy') && (await page.textContent('#p-biz')).includes('Odottaa'), 'profile business card shows the pending application');
   await tab('create'); await page.waitForSelector('#s-create.active #c-title');
   ok(!(await page.$('#c-mode-business')), 'no business event mode before approval + active subscription');

@@ -64,7 +64,7 @@ const SHOTS = __dirname + '/shots/', BASE = process.env.URL || 'http://127.0.0.1
   await p.evaluate(() => { const r = document.querySelector('#c-desc'); document.querySelector('#s-create').scrollTop = r.getBoundingClientRect().top + document.querySelector('#s-create').scrollTop - 200; }); await shot('v5-create-rules');
   // 6. business apply form
   await go('mikko@example.com', 'fi'); await p.waitForSelector('#s-home.active');
-  await p.evaluate(() => { document.querySelector('#s-home .hdr-actions [data-t="profile"]').click(); }); await p.waitForSelector('#open-biz'); await p.click('#open-biz'); await p.waitForSelector('#s-biz.active');
+  await p.evaluate(() => { document.querySelector('#s-home .hdr-actions [data-t="profile"]').click(); }); await p.waitForSelector('#open-orgs'); await p.click('#open-orgs'); await p.waitForSelector('#org-biz'); await p.click('#org-biz'); await p.waitForSelector('#s-biz.active');
   await p.click('#biz-form-open').catch(() => {}); await p.waitForSelector('#biz-form'); await p.fill('#bz-name', 'Kallion Kahvila'); await p.fill('#bz-code', '1572860-0'); await p.waitForTimeout(100); await shot('v5-business-apply');
   // 7. admin business queue + reports
   await go('aino@example.com', 'fi'); await p.waitForSelector('#s-home.active');
