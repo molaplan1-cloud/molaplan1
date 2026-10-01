@@ -280,3 +280,13 @@ Next: e2e-real.js extensions, deploy.sh --no-deploy.
 - Live meta after migration == replica after migration (only pgcrypto-location noise): /workspace/molaplan-backups/live-db-after-merge-meta/.
 - Final live counts: 3 users/profiles, 1 admin (owner, not banned), 4 events, 5 messages, 1 notification, 2 participants, 0 friend rows.
 - Nothing pushed. Pages settings unchanged.
+
+# Push + git-build switch – 2026-10-01 19:00 (UTC+3) (user approved deploy + push)
+## P0 – start: main b4d6634, 10 ahead of origin/main 35f8b1b.
+## P1 – GitHub repo molaplan1-cloud/molaplan1 is PUBLIC (API: private=false, visibility=public, default branch main).
+- Secret scan of 35f8b1b..main (excluding node_modules removals): no keys/tokens (only code references to "service_role"/password vars).
+## P2 – build.sh: no Node, no /workspace paths; hash fallback sha1sum -> sha256sum -> shasum (commit). Clean clone + `env -i PATH=/usr/bin:/bin
+  bash build.sh` -> dist/ (index.html, 4 js, _headers) identical (diff -r) to ./deploy.sh --no-deploy output, ?v=907edb3383.
+  Note: Pages build image will still auto-install package.json deps (playwright-core only, no browser download).
+## P3 – Pages project PATCHed: build_command "bash build.sh", destination_dir "dist", root_dir "". GET confirms; production branch main,
+  deployments_enabled + production_deployments_enabled true, previews all (unchanged).
