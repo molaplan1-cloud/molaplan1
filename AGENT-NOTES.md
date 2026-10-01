@@ -320,3 +320,53 @@ warmer help-request copy/simpler form, SEO. Commit locally only (Pages auto-depl
 - Home: 3-column card grid (auto-fill minmax 300px), filters in one row. Map: filters + the same filtered list (#map-side,
   renderMapSide(); selected marker highlights/scrolls its card) on the left, map on the right. Push/tab screens: centred 860px column.
   Sheets become centred dialogs. Landing: hero on top, landing card left, side cards right.
+- U2 follow-up (U3 commit): desktop nav-rail logo/profile buttons use data-a="go-tab" data-v=… (not data-t), so mobile selectors
+  like `#nav [data-t="home"]` keep matching one visible button. Landing grid: grid-auto-rows:max-content (rows collapsed otherwise).
+## U3 – navigation + business/TEAM account entry + team account request flow (commit 0d69bed)
+- Paths changed (why: the business/team application was hard to find, teams had only a dead 10 €/kk button behind ?ff=teams):
+  - NEW push screen s-orgs "Yritys- ja joukkuetilit" (openOrgs): two options → 🏢 Yritystili (existing s-biz, price as before)
+    and 👥 Joukkuetili (NEW s-teamreq). Lists own business applications + team requests. Back → where you came from.
+  - Entry points to s-orgs: landing card #land-orgs "Avaa tili yritykselle tai joukkueelle" (replaces the <details> "Yrityksille";
+    guest enters the app first, then s-orgs), home card #home-orgs (replaces the purple biz card; ff=teams card untouched),
+    profile card #p-biz → "Yritys- tai joukkuetili" + button #open-orgs (was #open-biz straight to s-biz).
+  - Guest "Luo ensin oma tili" on s-teamreq / s-biz remembers the target (PENDING team-req / open-biz) → returns after sign-up/login.
+  - Admin: 4th tab "Joukkueet" (#adm-sec-teams, pending count) with approve / reject (reason sheet, 3 presets).
+  - Notifications: team_request_* → s-teamreq; admin_new_team_request → admin "Joukkueet" tab.
+  - ff=teams actions open-team-pricing / team-request-subscribe now open s-teamreq (no mailto, no payment). Full teams UI still hidden.
+- DB (schema.sql 7e + link_kind 'team'): table team_requests (RLS: select own or admin; no direct writes; anon nothing),
+  RPC request_team_account(req jsonb) (auth + not banned + email verified; 3 pending / 5 per day; notify_admins) and
+  admin_review_team_request(p_id, p_status, p_reason) (admin only; reject needs reason; notifies requester). Approval does NOT
+  create a team – the admin contacts the requester. No price text, no payment. Mock + supabase/tests/team-requests.sql (26 OK).
+- Also fixed: business form used a missing i18n key v.phoneInvalid → v.checkPhone.
+## U4 – help requests ("Autetaan toisiamme", kicker "Hyvät teot") (commit 772b1a4)
+- Home + landing help card: "💚 Pyydä apua" is the one main button; offering is a small link "🙋 Haluatko itse auttaa? Katso pyynnöt →".
+- s-good: warm hero ("Pyytäminen on ihan ok – naapurit auttavat mielellään"), card "Hyvä pyyntö on lyhyt ja ystävällinen" with 3
+  short sample requests, small dashed card "Haluatko auttaa tai lahjoittaa jotain?" → scrolls to the requests (offer/donate via a
+  request; the separate items/giveaways UI stays behind ff=items).
+- Ask form 3 → 2 steps: step 1 = category, title, description, city/area, day/time (+ route/map for Kuljetus); needs/exact place/
+  map/duration/helpers folded into "Lisätiedot (vapaaehtoinen)". Step 2 = contact + verification + summary + ONE consent box
+  (#ck-all, sends all three consent_* = true as before) + manual-review note. Warmer placeholders. e2e-real.js updated (#ck-all;
+  backup /workspace/molaplan-backups/e2e-real.js.pre-ux).
+## U5 – SEO (commit 8f2203e)
+- <head>: title + description (fi static, per-language via applyStaticI18n incl. og/twitter title+description, og:locale),
+  canonical https://molaplan.com/ (JS sets https://molaplan.com/?lang=xx when opened with ?lang=), hreflang fi/en/es/sv via
+  ?lang= URLs + x-default, OG + Twitter summary_large_image with og-image.png (1200×630, brand only, made with Chrome from
+  /workspace/molaplan-build/ux/assets/og.html), JSON-LD WebSite + Organization, manifest.webmanifest, favicon.ico (32px PNG in ICO),
+  icon.svg, icon-192/512, maskable 512, apple-touch-icon, robots meta.
+- Static #gate content (first paint, crawlers, no-JS): hero + h1 + fi/en text + cities (Helsinki, Vantaa, Espoo, Tuusula,
+  Stockholm, London, Madrid). JS landing: logo is the h1 (sr-only "Molaplan"), new "Mikä Molaplan on?" card (i18n ×4).
+- Speed: leaflet/config/cities/i18n/friend-requests `defer`, app script `type="module"` (deferred, same order), fonts + leaflet
+  CSS preload/onload (noscript fallback).
+- robots.txt (Allow /, Disallow ?mock=, Sitemap), sitemap.xml (root + 4 ?lang URLs with xhtml:link alternates).
+- build.sh: copies the 10 static files (fails if one is missing), sed handles `<script defer src=…>` (still exactly 4 stamped),
+  _headers: images/icons 1 week, manifest 1 day (+ application/manifest+json), robots/sitemap 1 h.
+- SPA limitation: events have no own URL (no routing) → no per-event pages, no JSON-LD Event, crawlers only see the landing.
+  Would need /e/<id> routes + Pages Function/prerender later. Check: /workspace/molaplan-build/ux/seo_check.py <url of dist> (49 OK).
+## U6 – live DB (17:11–17:20 UTC+3)
+- Backup: /workspace/molaplan-backups/live-db-before-ux-1711/ (+ .tgz; export_live.sh: all public tables + meta).
+- Applied ONLY the delta (link_kind check + section 7e) in one transaction, twice (idempotent):
+  /workspace/molaplan-build/ux/ux-delta-7e.sql. Verified: table + RLS + 1 select policy, grants authenticated:SELECT only,
+  RPCs security definer, anon has no execute, check includes 'team'. Owner account untouched.
+- Live e2e (local server, real config): e2e-real.js 56 ✔, e2e-friends-real.js 48 ✔, NEW /workspace/molaplan-e2e/e2e-team-real.js
+  26 ✔ (anon/RLS, guest landing → team request → login → submit, admin approve in the UI, reject with reason, notifications,
+  cleanup: 0 leftovers; the owner gets 2 admin notifications during the run, deleted in cleanup).
