@@ -217,3 +217,23 @@ Next: e2e-real.js extensions, deploy.sh --no-deploy.
   (deploy hash changes if scripts change – rerun deploy.sh before a real deploy.)
 - Screenshots 390×844@2x: shots/m-home.png, shots/m-friends.png, shots/m-event-unlimited.png (`SHOTS=shots node test-friends.js`).
 ## M10 – local main fast-forwarded to merge-2026-10-01 (nothing pushed, nothing deployed, live DB untouched)
+
+# Live DB migration + deploy – 2026-10-01 18:28 (UTC+3; box clock runs UTC)
+## D0 – start: main 8825d58, 5 ahead of origin/main 35f8b1b (fast-forward). Nothing pushed.
+## D1 – live DB backup (18:29–18:33)
+- `supabase db dump --linked` needs Docker (not installed) -> fallback: every public table as JSON + schema metadata via
+  `supabase db query --linked -o json`: /workspace/molaplan-backups/live-db-before-merge-1829/ (+ .tgz), script export_live.sh.
+  data-<table>.json (25 tables: profiles 3, events 4, event_participants 2, conversations 4, messages 5, notifications 1, …),
+  auth-users-noSecrets.json (no password hashes), meta-{columns,constraints,indexes,policies,functions,views,triggers,grants,rls}.json.
+## D2a – live DB had drift not made by schema.sql (dashboard changes) -> schema.sql would have failed on live
+- profiles/businesses/teams.username NOT NULL *without default* -> `insert into profiles … on conflict do nothing` (line ~1540)
+  and handle_new_user fail => new sign-ups were broken on live. public.friends is a TABLE (requester/addressee/status, trigger
+  friends_after_change inserting into non-existent notifications.link) -> blocks `create view friends`. friend_requests in old shape.
+  Team tables in dashboard shape with permissive policies (team_events/places/roles insert with check true, select true everywhere).
+  "Anyone can read business usernames" select true -> pending business applications readable by every user.
+  activities recreated (empty, no policies/triggers, events_activity_id_fkey gone). search_profiles() security definer, anon-callable.
+- Local replica: /workspace/molaplan-sqltest/live-replica (build.sh = stub + fbf8cda schema + extras.sql drift + live-data.sql);
+  metadata diff vs live snapshot = only formatting/pgcrypto-location noise.
+- Fix: schema.sql section 5b (conditional drift handling) + activities FK restore after seed. Commit 9b8ec7f.
+  Replica: applies 3× without errors; RLS suite 64 OK (empty drift replica), merge suite 39 OK (replica with live data);
+  fresh DB run.sh OK (10-rls-tests.sql seed count fixed 30→34, stale test).
