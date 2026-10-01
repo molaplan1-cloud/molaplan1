@@ -77,7 +77,7 @@ create table if not exists public.events (
   place            text not null check (char_length(place) between 2 and 70),
   lat              double precision check (lat between -90 and 90),
   lng              double precision check (lng between -180 and 180),
-  max_participants int null default null check (max_participants is null or max_participants between 2 and 100000),
+  max_participants int default 6 check (max_participants is null or max_participants between 2 and 100000),
   skill_level      text not null default 'all' check (skill_level in ('all','beginner','intermediate','advanced')),
   is_crazy         boolean not null default false,
   crazy_level      smallint not null default 0 check (crazy_level between 0 and 3),
@@ -317,9 +317,14 @@ alter table public.events add constraint events_price_info_check check (char_len
 alter table public.events drop constraint if exists events_ends_check;
 alter table public.events add constraint events_ends_check check (
   ends_at is null or (ends_at >= starts_at and ends_at <= starts_at + interval '62 days'));
+-- max_participants NULL = ei rajaa (vain julkiset ja yritystapahtumat); tavalliset tapahtumat 2–50
+alter table public.events alter column max_participants drop not null;
+update public.events set max_participants = 50 where max_participants is null and kind = 'community';
 alter table public.events drop constraint if exists events_max_participants_check;
 alter table public.events add constraint events_max_participants_check check (
-  (max_participants is null or max_participants between 2 and 100000) and (max_participants is null or kind <> 'community' or max_participants <= 50));
+  (max_participants is null and kind <> 'community')
+  or (max_participants is not null and max_participants between 2 and 100000
+      and (kind <> 'community' or max_participants <= 50)));
 alter table public.events drop constraint if exists events_description_check;
 alter table public.events add constraint events_description_check check (
   char_length(description) <= case when kind = 'community' then 600 else 2000 end);
@@ -329,7 +334,7 @@ create index if not exists events_business_idx on public.events (business_id);
 -- Ilmoitusten linkit: myös yritystili
 alter table public.notifications drop constraint if exists notifications_link_kind_check;
 alter table public.notifications add constraint notifications_link_kind_check
-  check (link_kind in ('request','help','chat','event','admin','business'));
+  check (link_kind in ('request','help','chat','event','admin','business','friend'));
 
 -- ---------------------------------------------------------------------
 -- 1c. MAINOSTUSSUOJA JA MODEROINTI
@@ -1190,13 +1195,6 @@ alter table public.conversations         enable row level security;
 alter table public.messages              enable row level security;
 alter table public.conversation_reads    enable row level security;
 alter table public.notifications         enable row level security;
-alter table public.teams                 enable row level security;
-alter table public.team_members          enable row level security;
-alter table public.team_roles            enable row level security;
-alter table public.team_places           enable row level security;
-alter table public.team_events          enable row level security;
-alter table public.team_event_rsvps     enable row level security;
-alter table public.team_messages        enable row level security;
 
 -- profiles
 drop policy if exists "profiles: kirjautuneet lukevat" on public.profiles;
@@ -1344,119 +1342,6 @@ drop policy if exists "notifications: omat poistetaan" on public.notifications;
 create policy "notifications: omat poistetaan" on public.notifications
   for delete to authenticated using (user_id = auth.uid());
 
--- =====================================================================
---  JOUKKUEET / SEURAT RLS
--- =====================================================================
-
--- teams: jäsenet ja omistaja näkevät, omistaja muokkaa
-drop policy if exists "teams: jäsenet näkevät" on public.teams;
-create policy "teams: jäsenet näkevät" on public.teams
-  for select to authenticated using (
-    owner_id = auth.uid() or exists (
-      select 1 from public.team_members m where m.team_id = id and m.user_id = auth.uid()));
-drop policy if exists "teams: kirjautunut luo" on public.teams;
-create policy "teams: kirjautunut luo" on public.teams
-  for insert to authenticated with check (owner_id = auth.uid());
-drop policy if exists "teams: omistaja muokkaa" on public.teams;
-create policy "teams: omistaja muokkaa" on public.teams
-  for update to authenticated using (owner_id = auth.uid());
-drop policy if exists "teams: omistaja poistaa" on public.teams;
-create policy "teams: omistaja poistaa" on public.teams
-  for delete to authenticated using (owner_id = auth.uid());
-
--- team_members: jäsenet näkevät, omistaja lisää/poistaa
-drop policy if exists "team_members: jäsenet näkevät" on public.team_members;
-create policy "team_members: jäsenet näkevät" on public.team_members
-  for select to authenticated using (
-    user_id = auth.uid() or exists (
-      select 1 from public.teams t where t.id = team_id and t.owner_id = auth.uid()));
-drop policy if exists "team_members: omistaja lisää" on public.team_members;
-create policy "team_members: omistaja lisää" on public.team_members
-  for insert to authenticated with check (
-    exists (select 1 from public.teams t where t.id = team_id and t.owner_id = auth.uid()));
-drop policy if exists "team_members: omistaja poistaa" on public.team_members;
-create policy "team_members: omistaja poistaa" on public.team_members
-  for delete to authenticated using (
-    exists (select 1 from public.teams t where t.id = team_id and t.owner_id = auth.uid()));
-
--- team_roles: vain joukkueen jäsenet
-drop policy if exists "team_roles: jäsenet näkevät" on public.team_roles;
-create policy "team_roles: jäsenet näkevät" on public.team_roles
-  for select to authenticated using (
-    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id
-      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
-drop policy if exists "team_roles: omistaja muokkaa" on public.team_roles;
-create policy "team_roles: omistaja muokkaa" on public.team_roles
-  for insert to authenticated with check (
-    exists (select 1 from public.teams t where t.id = team_id and t.owner_id = auth.uid()));
-drop policy if exists "team_roles: omistaja poistaa" on public.team_roles;
-create policy "team_roles: omistaja poistaa" on public.team_roles
-  for delete to authenticated using (
-    exists (select 1 from public.teams t where t.id = team_id and t.owner_id = auth.uid()));
-
--- team_places: jäsenet näkevät, omistaja muokkaa
-drop policy if exists "team_places: jäsenet näkevät" on public.team_places;
-create policy "team_places: jäsenet näkevät" on public.team_places
-  for select to authenticated using (
-    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id
-      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
-drop policy if exists "team_places: omistaja muokkaa" on public.team_places;
-create policy "team_places: omistaja muokkaa" on public.team_places
-  for insert to authenticated with check (
-    exists (select 1 from public.teams t where t.id = team_id and t.owner_id = auth.uid()));
-drop policy if exists "team_places: omistaja poistaa" on public.team_places;
-create policy "team_places: omistaja poistaa" on public.team_places
-  for delete to authenticated using (
-    exists (select 1 from public.teams t where t.id = team_id and t.owner_id = auth.uid()));
-
--- team_events: jäsenet näkevät, omistaja/coach luo
-drop policy if exists "team_events: jäsenet näkevät" on public.team_events;
-create policy "team_events: jäsenet näkevät" on public.team_events
-  for select to authenticated using (
-    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id
-      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
-drop policy if exists "team_events: omistaja/coach luo" on public.team_events;
-create policy "team_events: omistaja/coach luo" on public.team_events
-  for insert to authenticated with check (
-    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id and m.role in ('admin','coach')
-      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
-drop policy if exists "team_events: omistaja/coach muokkaa" on public.team_events;
-create policy "team_events: omistaja/coach muokkaa" on public.team_events
-  for update to authenticated using (
-    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id and m.role in ('admin','coach')
-      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
-drop policy if exists "team_events: omistaja/coach poistaa" on public.team_events;
-create policy "team_events: omistaja/coach poistaa" on public.team_events
-  for delete to authenticated using (
-    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id and m.role in ('admin','coach')
-      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
-
--- team_event_rsvps: jäsenet näkevät, kirjautunut ilmoittautuu itse
-drop policy if exists "team_event_rsvps: jäsenet näkevät" on public.team_event_rsvps;
-create policy "team_event_rsvps: jäsenet näkevät" on public.team_event_rsvps
-  for select to authenticated using (
-    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id
-      where t.id = (select team_id from public.team_events e where e.id = event_id)
-      and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
-drop policy if exists "team_event_rsvps: jäsen ilmoittautuu" on public.team_event_rsvps;
-create policy "team_event_rsvps: jäsen ilmoittautuu" on public.team_event_rsvps
-  for insert to authenticated with check (user_id = auth.uid());
-drop policy if exists "team_event_rsvps: jäsen peruu" on public.team_event_rsvps;
-create policy "team_event_rsvps: jäsen peruu" on public.team_event_rsvps
-  for delete to authenticated using (user_id = auth.uid());
-
--- team_messages: jäsenet näkevät ja lähettävät
-drop policy if exists "team_messages: jäsenet näkevät" on public.team_messages;
-create policy "team_messages: jäsenet näkevät" on public.team_messages
-  for select to authenticated using (
-    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id
-      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
-drop policy if exists "team_messages: jäsenet lähettävät" on public.team_messages;
-create policy "team_messages: jäsenet lähettävät" on public.team_messages
-  for insert to authenticated with check (
-    exists (select 1 from public.teams t join public.team_members m on m.team_id = t.id
-      where t.id = team_id and (t.owner_id = auth.uid() or m.user_id = auth.uid())));
-
 -- businesses / business_private / business_members
 alter table public.businesses       enable row level security;
 alter table public.business_private enable row level security;
@@ -1514,33 +1399,6 @@ create policy "reports: ylläpito käsittelee" on public.reports
 drop policy if exists "reports: ylläpito poistaa" on public.reports;
 create policy "reports: ylläpito poistaa" on public.reports
   for delete to authenticated using (public.is_admin());
-
--- items: kaikki näkevät saatavilla olevat; omistaja ja ylläpito muokkaa
-alter table public.items enable row level security;
-drop policy if exists "items: kaikki lukevat saatavilla olevat" on public.items;
-create policy "items: kaikki lukevat saatavilla olevat" on public.items
-  for select to authenticated using (status = 'available' or owner_id = auth.uid() or public.is_admin());
-drop policy if exists "items: kirjautunut luo oman" on public.items;
-create policy "items: kirjautunut luo oman" on public.items
-  for insert to authenticated with check (owner_id = auth.uid() and status = 'available');
-drop policy if exists "items: omistaja tai ylläpito muokkaa" on public.items;
-create policy "items: omistaja tai ylläpito muokkaa" on public.items
-  for update to authenticated using (owner_id = auth.uid() or public.is_admin())
-  with check (owner_id = auth.uid() or public.is_admin());
-drop policy if exists "items: omistaja tai ylläpito poistaa" on public.items;
-create policy "items: omistaja tai ylläpito poistaa" on public.items
-  for delete to authenticated using (owner_id = auth.uid() or public.is_admin());
-
--- item_contacts: omistaja ja ylläpito näkevät
-alter table public.item_contacts enable row level security;
-drop policy if exists "item_contacts: omistaja ja ylläpito lukevat" on public.item_contacts;
-create policy "item_contacts: omistaja ja ylläpito lukevat" on public.item_contacts
-  for select to authenticated using (
-    public.is_admin() or exists (select 1 from public.items i where i.id = item_id and i.owner_id = auth.uid()));
-drop policy if exists "item_contacts: omistaja lisää" on public.item_contacts;
-create policy "item_contacts: omistaja lisää" on public.item_contacts
-  for insert to authenticated with check (
-    exists (select 1 from public.items i where i.id = item_id and i.owner_id = auth.uid()));
 
 -- ---------------------------------------------------------------------
 -- 5. OIKEUDET JA REALTIME
@@ -1651,10 +1509,6 @@ grant execute on function public.can_help() to authenticated;
 grant execute on function public.is_helper(uuid) to authenticated;
 grant execute on function public.is_conversation_member(uuid) to authenticated;
 grant execute on function public.display_name_of(uuid) to authenticated;
-grant execute on function public.submit_item(jsonb, jsonb) to authenticated;
-grant execute on function public.close_item(uuid, text) to authenticated;
-revoke execute on function public.submit_item(jsonb, jsonb) from public, anon;
-revoke execute on function public.close_item(uuid, text) from public, anon;
 
 -- Yritystilausten muistutukset päivittäin, JOS pg_cron on jo asennettu (tätä skriptiä ei asenna sitä)
 do $$
@@ -1687,226 +1541,6 @@ insert into public.profiles (id, email_verified)
 insert into public.profile_private (id)
   select p.id from public.profiles p
   on conflict (id) do nothing;
-
--- ---------------------------------------------------------------------
--- 1q. ANNETAAN / TARVITAAN (items)
--- ---------------------------------------------------------------------
-create table if not exists public.items (
-  id          uuid primary key default gen_random_uuid(),
-  owner_id    uuid not null default auth.uid() references public.profiles(id) on delete cascade,
-  kind        text not null check (kind in ('give','need')),
-  title       text not null check (char_length(title) between 3 and 80),
-  description text not null default '' check (char_length(description) <= 1000),
-  city        text not null check (char_length(city) between 1 and 40),
-  district    text not null default '' check (char_length(district) <= 40),
-  status      text not null default 'available' check (status in ('available','taken','closed')),
-  photo_url   text not null default '' check (photo_url = '' or (photo_url ~ '^https://[^\s<>"'']+$' and char_length(photo_url) <= 400)),
-  created_at  timestamptz not null default now(),
-  updated_at  timestamptz not null default now(),
-  constraint items_no_prices check (title !~ '€' and description !~ '€')
-);
-create index if not exists items_status_city_idx on public.items (status, lower(city));
-create index if not exists items_owner_idx on public.items (owner_id);
-
--- Yhteystiedot: näkyvät vain omistajalle, ylläpitäjille ja kiinnostuneille (jatkossa: chatti)
-create table if not exists public.item_contacts (
-  item_id      uuid primary key references public.items(id) on delete cascade,
-  contact_name text not null check (char_length(contact_name) between 2 and 40),
-  phone        text check (phone is null or phone ~ '^\+?[0-9][0-9 ()-]{5,19}$'),
-  email        text not null check (char_length(email) between 3 and 254 and position('@' in email) > 1),
-  created_at   timestamptz not null default now()
-);
-
--- =====================================================================
---  JOUKKUEET / SEURAT (Nimenhuuto.com-tyylinen hallinta)
--- =====================================================================
-
--- Joukkueet
-create table if not exists public.teams (
-  id          uuid primary key default gen_random_uuid(),
-  name        text not null check (char_length(name) between 2 and 50),
-  sport       text not null default '' check (char_length(sport) <= 40),
-  description text not null default '' check (char_length(description) <= 300),
-  logo_url    text not null default '',
-  owner_id    uuid not null references public.profiles(id) on delete cascade,
-  created_at  timestamptz not null default now(),
-  updated_at  timestamptz not null default now()
-);
-create index if not exists teams_owner_idx on public.teams (owner_id);
-
--- Joukkueen jäsenet
-create table if not exists public.team_members (
-  id         uuid primary key default gen_random_uuid(),
-  team_id    uuid not null references public.teams(id) on delete cascade,
-  user_id    uuid not null references public.profiles(id) on delete cascade,
-  role       text not null default 'member' check (role in ('admin','coach','player','member')),
-  joined_at  timestamptz not null default now(),
-  unique(team_id, user_id)
-);
-create index if not exists team_members_team_idx on public.team_members (team_id);
-create index if not exists team_members_user_idx on public.team_members (user_id);
-
--- Joukkueen muokattavat roolit (esim. valmentaja, puolustaja, hyökkääjä)
-create table if not exists public.team_roles (
-  id         uuid primary key default gen_random_uuid(),
-  team_id    uuid not null references public.teams(id) on delete cascade,
-  name       text not null check (char_length(name) between 1 and 30),
-  color      text not null default '#7C6FFF' check (char_length(color) <= 20),
-  sort_order int  not null default 0,
-  unique(team_id, name)
-);
-create index if not exists team_roles_team_idx on public.team_roles (team_id);
-
--- Joukkueen paikat (karttalinkit pelipaikoille)
-create table if not exists public.team_places (
-  id        uuid primary key default gen_random_uuid(),
-  team_id   uuid not null references public.teams(id) on delete cascade,
-  name      text not null check (char_length(name) between 2 and 60),
-  address   text not null default '' check (char_length(address) <= 120),
-  lat       double precision check (lat is null or lat between -90 and 90),
-  lng       double precision check (lng is null or lng between -180 and 180),
-  notes     text not null default '' check (char_length(notes) <= 200),
-  sort_order int  not null default 0
-);
-create index if not exists team_places_team_idx on public.team_places (team_id);
-
--- Joukkueen tapahtumat (treenit, pelit)
-create table if not exists public.team_events (
-  id               uuid primary key default gen_random_uuid(),
-  team_id          uuid not null references public.teams(id) on delete cascade,
-  title            text not null check (char_length(title) between 2 and 60),
-  description      text not null default '' check (char_length(description) <= 400),
-  starts_at        timestamptz not null,
-  location_id      uuid references public.team_places(id) on delete set null,
-  max_participants int null check (max_participants is null or max_participants >= 1),
-  created_by       uuid not null references public.profiles(id),
-  created_at       timestamptz not null default now(),
-  updated_at       timestamptz not null default now()
-);
-create index if not exists team_events_team_idx on public.team_events (team_id);
-create index if not exists team_events_starts_idx on public.team_events (starts_at);
-
--- Joukkueen tapahtumaan ilmoittautumiset
-create table if not exists public.team_event_rsvps (
-  id          uuid primary key default gen_random_uuid(),
-  event_id    uuid not null references public.team_events(id) on delete cascade,
-  user_id     uuid not null references public.profiles(id) on delete cascade,
-  role_in_event text not null default '' check (char_length(role_in_event) <= 30),
-  notes       text not null default '' check (char_length(notes) <= 100),
-  created_at  timestamptz not null default now(),
-  unique(event_id, user_id)
-);
-create index if not exists team_event_rsvps_event_idx on public.team_event_rsvps (event_id);
-create index if not exists team_event_rsvps_user_idx on public.team_event_rsvps (user_id);
-
--- Joukkueen viestit / tiedotukset
-create table if not exists public.team_messages (
-  id         uuid primary key default gen_random_uuid(),
-  team_id    uuid not null references public.teams(id) on delete cascade,
-  sender_id  uuid not null references public.profiles(id),
-  message    text not null check (char_length(message) between 1 and 500),
-  sent_at    timestamptz not null default now()
-);
-create index if not exists team_messages_team_idx on public.team_messages (team_id, sent_at);
-
--- Trigger: teams updated_at
-create or replace function public.teams_updated_at() returns trigger language plpgsql as $$
-begin new.updated_at := now(); return new; end $$;
-drop trigger if exists teams_updated_at on public.teams;
-create trigger teams_updated_at before update on public.teams for each row execute function public.teams_updated_at();
-
--- Trigger: team_events updated_at
-create or replace function public.team_events_updated_at() returns trigger language plpgsql as $$
-begin new.updated_at := now(); return new; end $$;
-drop trigger if exists team_events_updated_at on public.team_events;
-create trigger team_events_updated_at before update on public.team_events for each row execute function public.team_events_updated_at();
-
--- Trigger: profiles created → liitä hänet omistajaksi kaikkiin joukkueisiin joissa on sama owner_id
--- (tämä ei ole tarpeen, joukkueen omaja lisätään erikseen team_membersiin)
-
--- =====================================================================
---  TRIGGER: items updated_at
--- =====================================================================
--- Trigger: items updated_at
-create or replace function public.items_updated_at() returns trigger
-language plpgsql as $$
-begin new.updated_at := now(); return new; end $$;
-drop trigger if exists items_updated_at on public.items;
-create trigger items_updated_at before update on public.items
-  for each row execute function public.items_updated_at();
-
--- Trigger: items before insert – omistaja = kutsuja, ei kaupallista sisältöä
-create or replace function public.items_before_write() returns trigger
-language plpgsql as $$
-begin
-  if auth.uid() is not null then
-    if public.is_banned() then
-      raise exception 'account_banned' using errcode = 'P0001';
-    end if;
-    if tg_op = 'INSERT' then
-      new.owner_id := auth.uid();
-      new.status := 'available';
-      new.created_at := now();
-      if not coalesce((select email_verified from public.profiles where id = auth.uid()), false) then
-        raise exception 'email_not_verified' using errcode = 'P0001';
-      end if;
-    else
-      new.created_at := old.created_at;
-      new.owner_id := old.owner_id;
-    end if;
-  end if;
-  if public.looks_commercial(new.title) or public.looks_commercial(new.description) then
-    raise exception 'commercial_content' using errcode = 'P0001';
-  end if;
-  return new;
-end $$;
-drop trigger if exists items_before_write on public.items;
-create trigger items_before_write before insert or update on public.items
-  for each row execute function public.items_before_write();
-
--- Trigger: item_contacts – sähköposti = tilin sähköposti
-create or replace function public.item_contacts_before_insert() returns trigger
-language plpgsql security definer set search_path = public as $$
-declare em text;
-begin
-  select u.email into em from auth.users u where u.id = auth.uid();
-  if em is not null and em <> '' then new.email := em; end if;
-  new.contact_name := btrim(new.contact_name);
-  new.phone := btrim(coalesce(new.phone, ''));
-  return new;
-end $$;
-drop trigger if exists item_contacts_before_insert on public.item_contacts;
-create trigger item_contacts_before_insert before insert on public.item_contacts
-  for each row execute function public.item_contacts_before_insert();
-
--- RPC: lisaa item + yhteystiedot yhdessa transaktiossa
-create or replace function public.submit_item(it jsonb, contact jsonb) returns uuid
-language plpgsql security invoker set search_path = public as $$
-declare iid uuid;
-begin
-  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
-  insert into public.items (kind, title, description, city, district, photo_url)
-  values (
-    it->>'kind', btrim(it->>'title'), coalesce(it->>'description', ''),
-    btrim(it->>'city'), btrim(coalesce(it->>'district', '')),
-    coalesce(it->>'photo_url', ''))
-  returning id into iid;
-  insert into public.item_contacts (item_id, contact_name, phone)
-  values (iid, contact->>'name', coalesce(contact->>'phone', ''));
-  return iid;
-end $$;
-
--- RPC: sulje / merkitse otetuksi
-create or replace function public.close_item(iid uuid, new_status text) returns void
-language plpgsql security invoker set search_path = public as $$
-begin
-  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
-  if new_status not in ('taken','closed') then
-    raise exception 'invalid_status' using errcode = 'P0001';
-  end if;
-  update public.items set status = new_status
-    where id = iid and (owner_id = auth.uid() or public.is_admin());
-end $$;
 
 -- ---------------------------------------------------------------------
 -- 6. LAJIT (perusdata)
@@ -1950,5 +1584,546 @@ on conflict (id) do update set
   name = excluded.name, emoji = excluded.emoji, hue = excluded.hue,
   is_crazy = excluded.is_crazy, crazy_level = excluded.crazy_level, is_adult = excluded.is_adult,
   is_custom = false, sort_order = excluded.sort_order;
+
+-- ---------------------------------------------------------------------
+-- 7. GITHUB-YHDISTÄMINEN 2026-10-01: annetaan/tarvitaan (items), joukkueet (teams), kaverit (friends)
+--    Kaikki osiot ovat idempotentteja ja tulevat taulujen/funktioiden luonnin JÄLKEEN (RLS + oikeudet lopussa).
+--    HUOM: Supabase antaa uusille tauluille oletuksena oikeudet myös anonille -> suljetaan erikseen.
+-- ---------------------------------------------------------------------
+
+-- 7a. ANNETAAN / TARVITAAN (items) – tietokantapohja GitHubista; käyttöliittymä on vielä kesken (ff=items)
+create table if not exists public.items (
+  id          uuid primary key default gen_random_uuid(),
+  owner_id    uuid not null default auth.uid() references public.profiles(id) on delete cascade,
+  kind        text not null check (kind in ('give','need')),
+  title       text not null check (char_length(title) between 3 and 80),
+  description text not null default '' check (char_length(description) <= 1000),
+  city        text not null check (char_length(city) between 1 and 40),
+  district    text not null default '' check (char_length(district) <= 40),
+  status      text not null default 'available' check (status in ('available','taken','closed')),
+  photo_url   text not null default '' check (photo_url = '' or (photo_url ~ '^https://[^\s<>"'']+$' and char_length(photo_url) <= 400)),
+  created_at  timestamptz not null default now(),
+  updated_at  timestamptz not null default now(),
+  constraint items_no_prices check (title !~ '€' and description !~ '€')
+);
+create index if not exists items_status_city_idx on public.items (status, lower(city));
+create index if not exists items_owner_idx on public.items (owner_id);
+
+create table if not exists public.item_contacts (
+  item_id      uuid primary key references public.items(id) on delete cascade,
+  contact_name text not null check (char_length(contact_name) between 2 and 40),
+  phone        text check (phone is null or phone = '' or phone ~ '^\+?[0-9][0-9 ()-]{5,19}$'),
+  email        text not null default '' check (email = '' or (char_length(email) between 3 and 254 and position('@' in email) > 1)),
+  created_at   timestamptz not null default now()
+);
+
+create or replace function public.items_before_write() returns trigger
+language plpgsql security definer set search_path = public as $$
+begin
+  if auth.uid() is not null then
+    if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+    if tg_op = 'INSERT' then
+      new.owner_id := auth.uid();
+      new.status := 'available';
+      new.created_at := now();
+      if not coalesce((select email_verified from public.profiles where id = auth.uid()), false) then
+        raise exception 'email_not_verified' using errcode = 'P0001';
+      end if;
+    else
+      new.created_at := old.created_at;
+      new.owner_id := old.owner_id;
+    end if;
+  end if;
+  new.updated_at := now();
+  if public.looks_commercial(new.title) or public.looks_commercial(new.description) then
+    raise exception 'commercial_content' using errcode = 'P0001';
+  end if;
+  return new;
+end $$;
+drop trigger if exists items_updated_at on public.items;
+drop function if exists public.items_updated_at();
+drop trigger if exists items_before_write on public.items;
+create trigger items_before_write before insert or update on public.items
+  for each row execute function public.items_before_write();
+
+create or replace function public.item_contacts_before_insert() returns trigger
+language plpgsql security definer set search_path = public as $$
+declare em text;
+begin
+  select u.email into em from auth.users u where u.id = auth.uid();
+  new.email := coalesce(em, '');
+  new.contact_name := btrim(new.contact_name);
+  new.phone := btrim(coalesce(new.phone, ''));
+  return new;
+end $$;
+drop trigger if exists item_contacts_before_insert on public.item_contacts;
+create trigger item_contacts_before_insert before insert on public.item_contacts
+  for each row execute function public.item_contacts_before_insert();
+
+create or replace function public.submit_item(it jsonb, contact jsonb) returns uuid
+language plpgsql security invoker set search_path = public as $$
+declare iid uuid;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  insert into public.items (kind, title, description, city, district, photo_url)
+  values (it->>'kind', btrim(it->>'title'), coalesce(it->>'description', ''),
+          btrim(it->>'city'), btrim(coalesce(it->>'district', '')), coalesce(it->>'photo_url', ''))
+  returning id into iid;
+  insert into public.item_contacts (item_id, contact_name, phone)
+  values (iid, contact->>'name', coalesce(contact->>'phone', ''));
+  return iid;
+end $$;
+
+create or replace function public.close_item(iid uuid, new_status text) returns void
+language plpgsql security invoker set search_path = public as $$
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if new_status not in ('taken','closed') then raise exception 'invalid_status' using errcode = 'P0001'; end if;
+  update public.items set status = new_status where id = iid and (owner_id = auth.uid() or public.is_admin());
+end $$;
+
+alter table public.items         enable row level security;
+alter table public.item_contacts enable row level security;
+drop policy if exists "items: kaikki lukevat saatavilla olevat" on public.items;
+create policy "items: kaikki lukevat saatavilla olevat" on public.items
+  for select to authenticated using (status = 'available' or owner_id = auth.uid() or public.is_admin());
+drop policy if exists "items: kirjautunut luo oman" on public.items;
+create policy "items: kirjautunut luo oman" on public.items
+  for insert to authenticated with check (owner_id = auth.uid() and status = 'available' and not public.is_banned());
+drop policy if exists "items: omistaja tai ylläpito muokkaa" on public.items;
+create policy "items: omistaja tai ylläpito muokkaa" on public.items
+  for update to authenticated using (owner_id = auth.uid() or public.is_admin())
+  with check (owner_id = auth.uid() or public.is_admin());
+drop policy if exists "items: omistaja tai ylläpito poistaa" on public.items;
+create policy "items: omistaja tai ylläpito poistaa" on public.items
+  for delete to authenticated using (owner_id = auth.uid() or public.is_admin());
+drop policy if exists "item_contacts: omistaja ja ylläpito lukevat" on public.item_contacts;
+create policy "item_contacts: omistaja ja ylläpito lukevat" on public.item_contacts
+  for select to authenticated using (
+    public.is_admin() or exists (select 1 from public.items i where i.id = item_id and i.owner_id = auth.uid()));
+drop policy if exists "item_contacts: omistaja lisää" on public.item_contacts;
+create policy "item_contacts: omistaja lisää" on public.item_contacts
+  for insert to authenticated with check (
+    exists (select 1 from public.items i where i.id = item_id and i.owner_id = auth.uid()));
+
+-- 7b. JOUKKUEET / SEURAT – sarakkeet vastaavat käyttöliittymää (event_date/event_time/place_*, rsvp status,
+--     team_messages.created_at). Käyttöliittymä on vielä piilossa (ff=teams), tilausmaksua ei ole toteutettu.
+create table if not exists public.teams (
+  id          uuid primary key default gen_random_uuid(),
+  name        text not null check (char_length(name) between 2 and 50),
+  sport       text not null default '' check (char_length(sport) <= 40),
+  description text not null default '' check (char_length(description) <= 300),
+  logo_url    text not null default '',
+  owner_id    uuid not null default auth.uid() references public.profiles(id) on delete cascade,
+  created_at  timestamptz not null default now(),
+  updated_at  timestamptz not null default now()
+);
+alter table public.teams drop constraint if exists teams_logo_url_check;
+alter table public.teams add constraint teams_logo_url_check check (
+  logo_url = '' or (logo_url ~ '^https://[^\s<>"'']+$' and char_length(logo_url) <= 400));
+create index if not exists teams_owner_idx on public.teams (owner_id);
+alter table public.teams alter column owner_id set default auth.uid();
+
+create table if not exists public.team_members (
+  id         uuid primary key default gen_random_uuid(),
+  team_id    uuid not null references public.teams(id) on delete cascade,
+  user_id    uuid not null references public.profiles(id) on delete cascade,
+  role       text not null default 'member' check (role in ('admin','coach','player','member')),
+  joined_at  timestamptz not null default now(),
+  unique (team_id, user_id)
+);
+create index if not exists team_members_team_idx on public.team_members (team_id);
+create index if not exists team_members_user_idx on public.team_members (user_id);
+
+create table if not exists public.team_roles (
+  id         uuid primary key default gen_random_uuid(),
+  team_id    uuid not null references public.teams(id) on delete cascade,
+  name       text not null check (char_length(name) between 1 and 30),
+  color      text not null default '#7C6FFF' check (char_length(color) <= 20),
+  sort_order int  not null default 0,
+  unique (team_id, name)
+);
+create index if not exists team_roles_team_idx on public.team_roles (team_id);
+
+create table if not exists public.team_places (
+  id         uuid primary key default gen_random_uuid(),
+  team_id    uuid not null references public.teams(id) on delete cascade,
+  name       text not null check (char_length(name) between 2 and 60),
+  address    text not null default '' check (char_length(address) <= 120),
+  lat        double precision check (lat is null or lat between -90 and 90),
+  lng        double precision check (lng is null or lng between -180 and 180),
+  notes      text not null default '' check (char_length(notes) <= 200),
+  sort_order int  not null default 0
+);
+create index if not exists team_places_team_idx on public.team_places (team_id);
+
+create table if not exists public.team_events (
+  id               uuid primary key default gen_random_uuid(),
+  team_id          uuid not null references public.teams(id) on delete cascade,
+  title            text not null check (char_length(title) between 2 and 60),
+  description      text not null default '' check (char_length(description) <= 400),
+  event_date       date not null,
+  event_time       time,
+  place_id         uuid references public.team_places(id) on delete set null,
+  place_name       text check (place_name is null or char_length(place_name) <= 60),
+  place_address    text check (place_address is null or char_length(place_address) <= 120),
+  max_participants int check (max_participants is null or max_participants >= 1),
+  created_by       uuid default auth.uid() references public.profiles(id) on delete set null,
+  created_at       timestamptz not null default now(),
+  updated_at       timestamptz not null default now()
+);
+-- Jos taulu luotiin GitHubin aiemmalla määrittelyllä (starts_at/location_id), lisätään UI:n sarakkeet ja löysätään vanhat
+alter table public.team_events add column if not exists event_date date;
+alter table public.team_events add column if not exists event_time time;
+alter table public.team_events add column if not exists place_id uuid references public.team_places(id) on delete set null;
+alter table public.team_events add column if not exists place_name text;
+alter table public.team_events add column if not exists place_address text;
+do $$
+begin
+  if exists (select 1 from information_schema.columns where table_schema = 'public' and table_name = 'team_events' and column_name = 'starts_at') then
+    execute 'alter table public.team_events alter column starts_at drop not null';
+    execute 'update public.team_events set event_date = (starts_at at time zone ''Europe/Helsinki'')::date, event_time = (starts_at at time zone ''Europe/Helsinki'')::time where event_date is null and starts_at is not null';
+  end if;
+  if exists (select 1 from information_schema.columns where table_schema = 'public' and table_name = 'team_events' and column_name = 'location_id') then
+    execute 'update public.team_events e set place_id = e.location_id, place_name = p.name, place_address = nullif(p.address, '''')
+               from public.team_places p where p.id = e.location_id and e.place_id is null';
+  end if;
+  if exists (select 1 from information_schema.columns where table_schema = 'public' and table_name = 'team_events' and column_name = 'created_by' and is_nullable = 'NO') then
+    execute 'alter table public.team_events alter column created_by drop not null';
+  end if;
+end $$;
+alter table public.team_events alter column created_by set default auth.uid();
+create index if not exists team_events_team_idx on public.team_events (team_id);
+create index if not exists team_events_date_idx on public.team_events (event_date);
+
+create table if not exists public.team_event_rsvps (
+  id            uuid primary key default gen_random_uuid(),
+  event_id      uuid not null references public.team_events(id) on delete cascade,
+  user_id       uuid not null references public.profiles(id) on delete cascade,
+  status        text not null default 'going',
+  role_in_event text not null default '' check (char_length(role_in_event) <= 30),
+  notes         text not null default '' check (char_length(notes) <= 100),
+  created_at    timestamptz not null default now(),
+  unique (event_id, user_id)
+);
+alter table public.team_event_rsvps add column if not exists status text not null default 'going';
+alter table public.team_event_rsvps drop constraint if exists team_event_rsvps_status_check;
+alter table public.team_event_rsvps add constraint team_event_rsvps_status_check check (status in ('going','maybe'));
+create index if not exists team_event_rsvps_event_idx on public.team_event_rsvps (event_id);
+create index if not exists team_event_rsvps_user_idx on public.team_event_rsvps (user_id);
+
+create table if not exists public.team_messages (
+  id         uuid primary key default gen_random_uuid(),
+  team_id    uuid not null references public.teams(id) on delete cascade,
+  sender_id  uuid default auth.uid() references public.profiles(id) on delete set null,
+  message    text not null check (char_length(message) between 1 and 500),
+  created_at timestamptz not null default now()
+);
+alter table public.team_messages add column if not exists created_at timestamptz not null default now();
+alter table public.team_messages alter column sender_id set default auth.uid();
+alter table public.team_messages alter column sender_id drop not null;
+do $$
+begin
+  if exists (select 1 from information_schema.columns where table_schema = 'public' and table_name = 'team_messages' and column_name = 'sent_at') then
+    execute 'update public.team_messages set created_at = sent_at where sent_at is not null and created_at <> sent_at';
+  end if;
+end $$;
+create index if not exists team_messages_team_idx on public.team_messages (team_id, created_at);
+
+create or replace function public.touch_updated_at() returns trigger language plpgsql as $$
+begin new.updated_at := now(); return new; end $$;
+drop trigger if exists teams_updated_at on public.teams;
+create trigger teams_updated_at before update on public.teams for each row execute function public.touch_updated_at();
+drop trigger if exists team_events_updated_at on public.team_events;
+create trigger team_events_updated_at before update on public.team_events for each row execute function public.touch_updated_at();
+drop function if exists public.teams_updated_at();
+drop function if exists public.team_events_updated_at();
+
+-- Apufunktiot (security definer) -> ei rekursiota teams <-> team_members -politiikoissa
+create or replace function public.is_team_member(tid uuid) returns boolean
+language sql stable security definer set search_path = public as $$
+  select exists (select 1 from public.teams t where t.id = tid and t.owner_id = auth.uid())
+      or exists (select 1 from public.team_members m where m.team_id = tid and m.user_id = auth.uid())
+$$;
+create or replace function public.is_team_admin(tid uuid) returns boolean
+language sql stable security definer set search_path = public as $$
+  select exists (select 1 from public.teams t where t.id = tid and t.owner_id = auth.uid())
+      or exists (select 1 from public.team_members m where m.team_id = tid and m.user_id = auth.uid() and m.role = 'admin')
+$$;
+create or replace function public.is_team_coach(tid uuid) returns boolean
+language sql stable security definer set search_path = public as $$
+  select public.is_team_admin(tid)
+      or exists (select 1 from public.team_members m where m.team_id = tid and m.user_id = auth.uid() and m.role = 'coach')
+$$;
+create or replace function public.team_of_event(eid uuid) returns uuid
+language sql stable security definer set search_path = public as $$
+  select team_id from public.team_events where id = eid
+$$;
+
+alter table public.teams            enable row level security;
+alter table public.team_members     enable row level security;
+alter table public.team_roles       enable row level security;
+alter table public.team_places      enable row level security;
+alter table public.team_events      enable row level security;
+alter table public.team_event_rsvps enable row level security;
+alter table public.team_messages    enable row level security;
+
+-- vanhat (rekursiiviset) GitHub-politiikat pois
+drop policy if exists "teams: jäsenet näkevät" on public.teams;
+drop policy if exists "teams: kirjautunut luo" on public.teams;
+drop policy if exists "teams: omistaja muokkaa" on public.teams;
+drop policy if exists "teams: omistaja poistaa" on public.teams;
+drop policy if exists "team_members: jäsenet näkevät" on public.team_members;
+drop policy if exists "team_members: omistaja lisää" on public.team_members;
+drop policy if exists "team_members: omistaja poistaa" on public.team_members;
+drop policy if exists "team_roles: jäsenet näkevät" on public.team_roles;
+drop policy if exists "team_roles: omistaja muokkaa" on public.team_roles;
+drop policy if exists "team_roles: omistaja poistaa" on public.team_roles;
+drop policy if exists "team_places: jäsenet näkevät" on public.team_places;
+drop policy if exists "team_places: omistaja muokkaa" on public.team_places;
+drop policy if exists "team_places: omistaja poistaa" on public.team_places;
+drop policy if exists "team_events: jäsenet näkevät" on public.team_events;
+drop policy if exists "team_events: omistaja/coach luo" on public.team_events;
+drop policy if exists "team_events: omistaja/coach muokkaa" on public.team_events;
+drop policy if exists "team_events: omistaja/coach poistaa" on public.team_events;
+drop policy if exists "team_event_rsvps: jäsenet näkevät" on public.team_event_rsvps;
+drop policy if exists "team_event_rsvps: jäsen ilmoittautuu" on public.team_event_rsvps;
+drop policy if exists "team_event_rsvps: jäsen peruu" on public.team_event_rsvps;
+drop policy if exists "team_messages: jäsenet näkevät" on public.team_messages;
+drop policy if exists "team_messages: jäsenet lähettävät" on public.team_messages;
+
+-- teams: hakemisto näkyy kirjautuneille (selaa + liity), ylläpitäjä muokkaa
+drop policy if exists "teams: kirjautuneet näkevät" on public.teams;
+create policy "teams: kirjautuneet näkevät" on public.teams for select to authenticated using (true);
+drop policy if exists "teams: kirjautunut luo oman" on public.teams;
+create policy "teams: kirjautunut luo oman" on public.teams for insert to authenticated
+  with check (owner_id = auth.uid() and not public.is_banned());
+drop policy if exists "teams: ylläpitäjä muokkaa" on public.teams;
+create policy "teams: ylläpitäjä muokkaa" on public.teams for update to authenticated
+  using (public.is_team_admin(id)) with check (public.is_team_admin(id));
+drop policy if exists "teams: omistaja poistaa oman" on public.teams;
+create policy "teams: omistaja poistaa oman" on public.teams for delete to authenticated using (owner_id = auth.uid());
+
+drop policy if exists "team_members: jäsenet näkevät jäsenet" on public.team_members;
+create policy "team_members: jäsenet näkevät jäsenet" on public.team_members for select to authenticated
+  using (user_id = auth.uid() or public.is_team_member(team_id));
+drop policy if exists "team_members: liity tai ylläpitäjä lisää" on public.team_members;
+create policy "team_members: liity tai ylläpitäjä lisää" on public.team_members for insert to authenticated
+  with check ((user_id = auth.uid() and role = 'member' and not public.is_banned()) or public.is_team_admin(team_id));
+drop policy if exists "team_members: ylläpitäjä muuttaa roolin" on public.team_members;
+create policy "team_members: ylläpitäjä muuttaa roolin" on public.team_members for update to authenticated
+  using (public.is_team_admin(team_id)) with check (public.is_team_admin(team_id));
+drop policy if exists "team_members: eroa tai ylläpitäjä poistaa" on public.team_members;
+create policy "team_members: eroa tai ylläpitäjä poistaa" on public.team_members for delete to authenticated
+  using (user_id = auth.uid() or public.is_team_admin(team_id));
+
+drop policy if exists "team_roles: jäsenet lukevat" on public.team_roles;
+create policy "team_roles: jäsenet lukevat" on public.team_roles for select to authenticated using (public.is_team_member(team_id));
+drop policy if exists "team_roles: ylläpitäjä hallitsee" on public.team_roles;
+create policy "team_roles: ylläpitäjä hallitsee" on public.team_roles for all to authenticated
+  using (public.is_team_admin(team_id)) with check (public.is_team_admin(team_id));
+drop policy if exists "team_places: jäsenet lukevat" on public.team_places;
+create policy "team_places: jäsenet lukevat" on public.team_places for select to authenticated using (public.is_team_member(team_id));
+drop policy if exists "team_places: ylläpitäjä hallitsee" on public.team_places;
+create policy "team_places: ylläpitäjä hallitsee" on public.team_places for all to authenticated
+  using (public.is_team_admin(team_id)) with check (public.is_team_admin(team_id));
+drop policy if exists "team_events: jäsenet lukevat" on public.team_events;
+create policy "team_events: jäsenet lukevat" on public.team_events for select to authenticated using (public.is_team_member(team_id));
+drop policy if exists "team_events: valmentaja hallitsee" on public.team_events;
+create policy "team_events: valmentaja hallitsee" on public.team_events for all to authenticated
+  using (public.is_team_coach(team_id)) with check (public.is_team_coach(team_id));
+drop policy if exists "team_event_rsvps: jäsenet lukevat" on public.team_event_rsvps;
+create policy "team_event_rsvps: jäsenet lukevat" on public.team_event_rsvps for select to authenticated
+  using (public.is_team_member(public.team_of_event(event_id)));
+drop policy if exists "team_event_rsvps: jäsen ilmoittautuu" on public.team_event_rsvps;
+create policy "team_event_rsvps: jäsen ilmoittautuu" on public.team_event_rsvps for insert to authenticated
+  with check (user_id = auth.uid() and public.is_team_member(public.team_of_event(event_id)));
+drop policy if exists "team_event_rsvps: jäsen muuttaa omaa" on public.team_event_rsvps;
+create policy "team_event_rsvps: jäsen muuttaa omaa" on public.team_event_rsvps for update to authenticated
+  using (user_id = auth.uid()) with check (user_id = auth.uid() and public.is_team_member(public.team_of_event(event_id)));
+drop policy if exists "team_event_rsvps: jäsen peruu oman" on public.team_event_rsvps;
+create policy "team_event_rsvps: jäsen peruu oman" on public.team_event_rsvps for delete to authenticated using (user_id = auth.uid());
+drop policy if exists "team_messages: jäsenet lukevat" on public.team_messages;
+create policy "team_messages: jäsenet lukevat" on public.team_messages for select to authenticated using (public.is_team_member(team_id));
+drop policy if exists "team_messages: jäsen lähettää" on public.team_messages;
+create policy "team_messages: jäsen lähettää" on public.team_messages for insert to authenticated
+  with check (sender_id = auth.uid() and public.is_team_member(team_id) and not public.is_banned());
+
+-- 7c. KAVERIT: kaveripyynnöt, kaverilista (näkymä) ja kutsut tapahtumiin. Kirjoitukset vain RPC:iden kautta.
+create table if not exists public.friend_requests (
+  id           uuid primary key default gen_random_uuid(),
+  requester_id uuid not null references public.profiles(id) on delete cascade,
+  target_id    uuid not null references public.profiles(id) on delete cascade,
+  event_id     uuid references public.events(id) on delete set null,
+  status       text not null default 'pending' check (status in ('pending','accepted','declined')),
+  created_at   timestamptz not null default now(),
+  updated_at   timestamptz not null default now(),
+  responded_at timestamptz,
+  constraint friend_requests_not_self check (requester_id <> target_id)
+);
+create unique index if not exists friend_requests_pair_key on public.friend_requests
+  (least(requester_id, target_id), greatest(requester_id, target_id));
+create index if not exists friend_requests_target_idx on public.friend_requests (target_id, status);
+create index if not exists friend_requests_requester_idx on public.friend_requests (requester_id, created_at);
+
+create table if not exists public.event_invites (
+  event_id   uuid not null references public.events(id) on delete cascade,
+  inviter_id uuid not null references public.profiles(id) on delete cascade,
+  invitee_id uuid not null references public.profiles(id) on delete cascade,
+  created_at timestamptz not null default now(),
+  primary key (event_id, inviter_id, invitee_id)
+);
+create index if not exists event_invites_invitee_idx on public.event_invites (invitee_id);
+create index if not exists event_invites_inviter_idx on public.event_invites (inviter_id, created_at);
+
+create or replace view public.friends with (security_invoker = true) as
+  select requester_id as user_id, target_id as friend_id, coalesce(responded_at, updated_at) as since
+    from public.friend_requests where status = 'accepted'
+  union all
+  select target_id, requester_id, coalesce(responded_at, updated_at)
+    from public.friend_requests where status = 'accepted';
+
+create or replace function public.are_friends(a uuid, b uuid) returns boolean
+language sql stable security definer set search_path = public as $$
+  select exists (select 1 from public.friend_requests r where r.status = 'accepted'
+    and least(r.requester_id, r.target_id) = least(a, b) and greatest(r.requester_id, r.target_id) = greatest(a, b))
+$$;
+
+-- Kaveripyyntö. Jos toinen on jo pyytänyt sinua -> hyväksytään. Hylättyä omaa pyyntöä ei voi lähettää uudelleen
+-- (hylkäystä ei kerrota pyytäjälle). Toinen osapuoli voi silti lähettää oman pyynnön.
+create or replace function public.send_friend_request(p_target uuid, p_event uuid default null) returns text
+language plpgsql security definer set search_path = public as $$
+declare me uuid := auth.uid(); r public.friend_requests; nm text;
+begin
+  if me is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  if p_target is null or p_target = me then raise exception 'friend_self' using errcode = 'P0001'; end if;
+  if not exists (select 1 from public.profiles where id = p_target) then
+    raise exception 'friend_target_missing' using errcode = 'P0001';
+  end if;
+  if (select count(*) from public.friend_requests where requester_id = me and created_at > now() - interval '1 day') >= 50 then
+    raise exception 'friend_rate_limited' using errcode = 'P0001';
+  end if;
+  nm := public.display_name_of(me);
+  select * into r from public.friend_requests
+    where least(requester_id, target_id) = least(me, p_target) and greatest(requester_id, target_id) = greatest(me, p_target)
+    for update;
+  if found then
+    if r.status = 'accepted' then return 'accepted'; end if;
+    if r.requester_id = p_target and r.status = 'pending' then
+      update public.friend_requests set status = 'accepted', responded_at = now(), updated_at = now() where id = r.id;
+      perform public.notify(p_target, '🤝', 'friend_accepted', jsonb_build_object('name', nm), nm || ' hyväksyi kaveripyyntösi', 'friend', r.id);
+      return 'accepted';
+    end if;
+    if r.requester_id = me then
+      if r.status = 'pending' then return 'pending'; end if;
+      raise exception 'friend_request_declined' using errcode = 'P0001';
+    end if;
+    update public.friend_requests
+      set requester_id = me, target_id = p_target, status = 'pending', event_id = p_event,
+          created_at = now(), updated_at = now(), responded_at = null
+      where id = r.id;
+  else
+    insert into public.friend_requests (requester_id, target_id, event_id) values (me, p_target, p_event) returning * into r;
+  end if;
+  if not exists (select 1 from public.notifications n where n.user_id = p_target and n.code = 'friend_request'
+                 and n.params->>'from' = me::text and n.created_at > now() - interval '1 day') then
+    perform public.notify(p_target, '👋', 'friend_request', jsonb_build_object('name', nm, 'from', me), nm || ' lähetti sinulle kaveripyynnön', 'friend', r.id);
+  end if;
+  return 'pending';
+end $$;
+
+create or replace function public.respond_friend_request(p_request uuid, p_accept boolean) returns void
+language plpgsql security definer set search_path = public as $$
+declare me uuid := auth.uid(); r public.friend_requests; nm text;
+begin
+  if me is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  select * into r from public.friend_requests where id = p_request and target_id = me and status = 'pending' for update;
+  if not found then raise exception 'friend_request_not_found' using errcode = 'P0001'; end if;
+  update public.friend_requests
+    set status = case when p_accept then 'accepted' else 'declined' end, responded_at = now(), updated_at = now()
+    where id = r.id;
+  if p_accept then
+    nm := public.display_name_of(me);
+    perform public.notify(r.requester_id, '🤝', 'friend_accepted', jsonb_build_object('name', nm), nm || ' hyväksyi kaveripyyntösi', 'friend', r.id);
+  end if;
+end $$;
+
+-- Poistaa kaveruuden (kumpi tahansa) tai perii oman odottavan pyynnön
+create or replace function public.remove_friend(p_other uuid) returns void
+language plpgsql security definer set search_path = public as $$
+declare me uuid := auth.uid();
+begin
+  if me is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  delete from public.friend_requests
+    where least(requester_id, target_id) = least(me, p_other) and greatest(requester_id, target_id) = greatest(me, p_other)
+      and (status = 'accepted' or (status = 'pending' and requester_id = me));
+end $$;
+
+-- Kutsu kaveri tapahtumaan: vain kavereita, vain tulevia tapahtumia, yksi kutsu / tapahtuma / kaveri
+create or replace function public.invite_friend_to_event(p_event uuid, p_friend uuid) returns void
+language plpgsql security definer set search_path = public as $$
+declare me uuid := auth.uid(); e public.events; nm text; n int;
+begin
+  if me is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  select * into e from public.events where id = p_event;
+  if not found then raise exception 'event_not_found' using errcode = 'P0001'; end if;
+  if coalesce(e.ends_at, e.starts_at) < now() then raise exception 'event_in_past' using errcode = 'P0001'; end if;
+  if not public.are_friends(me, p_friend) then raise exception 'not_friends' using errcode = 'P0001'; end if;
+  if (select count(*) from public.event_invites where inviter_id = me and created_at > now() - interval '1 day') >= 100 then
+    raise exception 'friend_rate_limited' using errcode = 'P0001';
+  end if;
+  insert into public.event_invites (event_id, inviter_id, invitee_id) values (p_event, me, p_friend)
+    on conflict do nothing;
+  get diagnostics n = row_count;
+  if n > 0 then
+    nm := public.display_name_of(me);
+    perform public.notify(p_friend, '💌', 'event_invite', jsonb_build_object('name', nm, 'title', e.title), nm || ' kutsui sinut tapahtumaan “' || e.title || '”', 'event', p_event);
+  end if;
+end $$;
+
+alter table public.friend_requests enable row level security;
+alter table public.event_invites   enable row level security;
+drop policy if exists "friend_requests: osapuolet lukevat" on public.friend_requests;
+create policy "friend_requests: osapuolet lukevat" on public.friend_requests for select to authenticated
+  using (requester_id = auth.uid() or target_id = auth.uid() or public.is_admin());
+drop policy if exists "event_invites: osapuolet lukevat" on public.event_invites;
+create policy "event_invites: osapuolet lukevat" on public.event_invites for select to authenticated
+  using (inviter_id = auth.uid() or invitee_id = auth.uid());
+
+-- 7d. OIKEUDET uusille tauluille ja funktioille
+revoke all on public.items, public.item_contacts, public.teams, public.team_members, public.team_roles,
+  public.team_places, public.team_events, public.team_event_rsvps, public.team_messages,
+  public.friend_requests, public.event_invites, public.friends from anon;
+grant select, insert, update, delete on public.items, public.item_contacts, public.teams, public.team_members,
+  public.team_roles, public.team_places, public.team_events, public.team_event_rsvps, public.team_messages to authenticated;
+revoke insert, update, delete on public.friend_requests, public.event_invites from authenticated;
+grant select on public.friend_requests, public.event_invites, public.friends to authenticated;
+
+revoke execute on function public.submit_item(jsonb, jsonb) from public, anon;
+revoke execute on function public.close_item(uuid, text) from public, anon;
+revoke execute on function public.is_team_member(uuid) from public, anon;
+revoke execute on function public.is_team_admin(uuid) from public, anon;
+revoke execute on function public.is_team_coach(uuid) from public, anon;
+revoke execute on function public.team_of_event(uuid) from public, anon;
+revoke execute on function public.are_friends(uuid, uuid) from public, anon;
+revoke execute on function public.send_friend_request(uuid, uuid) from public, anon;
+revoke execute on function public.respond_friend_request(uuid, boolean) from public, anon;
+revoke execute on function public.remove_friend(uuid) from public, anon;
+revoke execute on function public.invite_friend_to_event(uuid, uuid) from public, anon;
+revoke execute on function public.items_before_write() from public, anon, authenticated;
+revoke execute on function public.item_contacts_before_insert() from public, anon, authenticated;
+grant execute on function public.submit_item(jsonb, jsonb) to authenticated;
+grant execute on function public.close_item(uuid, text) to authenticated;
+grant execute on function public.is_team_member(uuid) to authenticated;
+grant execute on function public.is_team_admin(uuid) to authenticated;
+grant execute on function public.is_team_coach(uuid) to authenticated;
+grant execute on function public.team_of_event(uuid) to authenticated;
+grant execute on function public.are_friends(uuid, uuid) to authenticated;
+grant execute on function public.send_friend_request(uuid, uuid) to authenticated;
+grant execute on function public.respond_friend_request(uuid, boolean) to authenticated;
+grant execute on function public.remove_friend(uuid) to authenticated;
+grant execute on function public.invite_friend_to_event(uuid, uuid) to authenticated;
 
 -- Valmis! 🎉
