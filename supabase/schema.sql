@@ -1534,6 +1534,126 @@ begin
   end if;
 end $$;
 
+-- 5b. LIVE-KANNAN AJAUTUMA (havaittu 2026-10-01): Supabasen hallintapaneelissa tehdyt muutokset, joita tämä tiedosto ei
+--     luonut. Kaikki ehdollisia -> tuoreessa kannassa no-op.
+--     * profiles/businesses/teams.username NOT NULL ilman oletusta -> rekisteröityminen (handle_new_user),
+--       yrityshakemus ja joukkueen luonti kaatuivat -> annetaan uniikki oletusarvo.
+--     * "Anyone can read business usernames" (select true kaikille) paljasti käsittelemättömät yrityshakemukset.
+--     * legacy-taulut friends (taulu, ei näkymä) ja friend_requests (vanha muoto) -> siirretään uuteen muotoon.
+--     * joukkuetaulujen vanhat sallivat politiikat ("teams:lukevat", "team_events:luovat" with check true, ...).
+--     * search_profiles() oli anonin kutsuttavissa (security definer -> kaikkien nimet).
+do $$
+declare r record;
+begin
+  -- username-sarakkeet: oletusarvo, jotta insertit, jotka eivät tunne saraketta, eivät kaadu
+  for r in select c.table_name, c.column_default from information_schema.columns c
+           where c.table_schema = 'public' and c.column_name = 'username'
+             and c.table_name in ('profiles','businesses','teams') and c.is_nullable = 'NO' loop
+    if r.column_default is null then
+      execute format('alter table public.%I alter column username set default (%L || replace(gen_random_uuid()::text, ''-'', ''''))',
+                     r.table_name, left(r.table_name, 1) || '_');
+    end if;
+  end loop;
+  if to_regclass('public.businesses') is not null then
+    drop policy if exists "Anyone can read business usernames" on public.businesses;
+  end if;
+
+  -- friend_requests vanhassa muodossa (status varchar, ei responded_at, aikaleimat ilman aikavyöhykettä)
+  if to_regclass('public.friend_requests') is not null
+     and not exists (select 1 from information_schema.columns where table_schema = 'public'
+                     and table_name = 'friend_requests' and column_name = 'responded_at') then
+    delete from public.friend_requests where requester_id is null or target_id is null or requester_id = target_id;
+    alter table public.friend_requests drop constraint if exists friend_requests_requester_id_target_id_event_id_key;
+    alter table public.friend_requests add column responded_at timestamptz;
+    alter table public.friend_requests alter column status type text using (case when status = 'rejected' then 'declined' else coalesce(status, 'pending') end);
+    update public.friend_requests set status = 'pending' where status not in ('pending','accepted','declined');
+    alter table public.friend_requests alter column created_at type timestamptz using coalesce(created_at, now()) at time zone 'UTC',
+                                       alter column updated_at type timestamptz using coalesce(updated_at, now()) at time zone 'UTC';
+    update public.friend_requests set created_at = coalesce(created_at, now()), updated_at = coalesce(updated_at, now());
+    alter table public.friend_requests alter column requester_id set not null, alter column target_id set not null,
+      alter column status set not null, alter column status set default 'pending',
+      alter column created_at set not null, alter column created_at set default now(),
+      alter column updated_at set not null, alter column updated_at set default now();
+    alter table public.friend_requests add constraint friend_requests_status_check check (status in ('pending','accepted','declined'));
+    alter table public.friend_requests add constraint friend_requests_not_self check (requester_id <> target_id);
+    alter table public.friend_requests drop constraint if exists friend_requests_event_id_fkey;
+    alter table public.friend_requests add constraint friend_requests_event_id_fkey
+      foreign key (event_id) references public.events(id) on delete set null;
+    -- yksi rivi / pari (uusi uniikki indeksi): pidetään hyväksytty tai uusin
+    delete from public.friend_requests f using public.friend_requests g
+      where least(f.requester_id, f.target_id) = least(g.requester_id, g.target_id)
+        and greatest(f.requester_id, f.target_id) = greatest(g.requester_id, g.target_id) and f.id <> g.id
+        and ((g.status = 'accepted') :: int, g.updated_at, g.id) > ((f.status = 'accepted') :: int, f.updated_at, f.id);
+  end if;
+
+  -- friends taulukkona (GitHub/hallintapaneeli) -> rivit friend_requestsiin, taulu pois (tilalle näkymä osiossa 7c)
+  if exists (select 1 from pg_class c where c.oid = to_regclass('public.friends') and c.relkind = 'r') then
+    if to_regclass('public.friend_requests') is null then
+      create table public.friend_requests (
+        id uuid primary key default gen_random_uuid(),
+        requester_id uuid not null references public.profiles(id) on delete cascade,
+        target_id uuid not null references public.profiles(id) on delete cascade,
+        event_id uuid references public.events(id) on delete set null,
+        status text not null default 'pending' check (status in ('pending','accepted','declined')),
+        created_at timestamptz not null default now(), updated_at timestamptz not null default now(),
+        responded_at timestamptz, constraint friend_requests_not_self check (requester_id <> target_id));
+    end if;
+    insert into public.friend_requests (requester_id, target_id, status, created_at, updated_at, responded_at)
+      select distinct on (least(f.requester_id, f.addressee_id), greatest(f.requester_id, f.addressee_id))
+             f.requester_id, f.addressee_id,
+             case f.status when 'accepted' then 'accepted' when 'rejected' then 'declined' else 'pending' end,
+             f.created_at, f.updated_at, case when f.status <> 'pending' then f.updated_at end
+        from public.friends f
+       where f.requester_id <> f.addressee_id
+         and not exists (select 1 from public.friend_requests x
+                          where least(x.requester_id, x.target_id) = least(f.requester_id, f.addressee_id)
+                            and greatest(x.requester_id, x.target_id) = greatest(f.requester_id, f.addressee_id))
+       order by least(f.requester_id, f.addressee_id), greatest(f.requester_id, f.addressee_id), (f.status = 'accepted') desc, f.updated_at desc;
+    drop table public.friends cascade;
+  end if;
+  drop function if exists public.friends_after_change();
+
+  -- joukkuetaulut hallintapaneelin muodossa: puuttuvat sarakkeet + NOT NULL -kentät, joita UI lähettää nullina
+  if to_regclass('public.teams') is not null then
+    alter table public.teams add column if not exists description text not null default '';
+  end if;
+  if to_regclass('public.team_events') is not null then
+    alter table public.team_events add column if not exists updated_at timestamptz not null default now();
+    if exists (select 1 from information_schema.columns where table_schema = 'public' and table_name = 'team_events'
+               and column_name = 'place_name' and is_nullable = 'NO') then
+      alter table public.team_events alter column place_name drop not null, alter column place_address drop not null;
+    end if;
+    if exists (select 1 from pg_constraint where conname = 'team_events_created_by_fkey' and confdeltype <> 'n') then
+      alter table public.team_events alter column created_by drop not null;
+      alter table public.team_events drop constraint team_events_created_by_fkey;
+      alter table public.team_events add constraint team_events_created_by_fkey
+        foreign key (created_by) references public.profiles(id) on delete set null;
+    end if;
+  end if;
+  if to_regclass('public.team_event_rsvps') is not null then
+    delete from public.team_event_rsvps where status not in ('going','maybe');  -- 'not' = ei ilmoittautumista (UI poistaa rivin)
+    alter table public.team_event_rsvps add column if not exists role_in_event text not null default '' check (char_length(role_in_event) <= 30);
+    alter table public.team_event_rsvps add column if not exists notes text not null default '' check (char_length(notes) <= 100);
+  end if;
+  if exists (select 1 from pg_constraint where conname = 'team_messages_sender_id_fkey' and confdeltype <> 'n') then
+    alter table public.team_messages alter column sender_id drop not null;
+    alter table public.team_messages drop constraint team_messages_sender_id_fkey;
+    alter table public.team_messages add constraint team_messages_sender_id_fkey
+      foreign key (sender_id) references public.profiles(id) on delete set null;
+  end if;
+  for r in select tablename, policyname from pg_policies where schemaname = 'public'
+             and tablename in ('teams','team_members','team_roles','team_places','team_events','team_event_rsvps','team_messages')
+             and (policyname ~ '^team[a-z_]*:[a-z]' or policyname = 'Anyone can read team usernames') loop
+    execute format('drop policy %I on public.%I', r.policyname, r.tablename);
+  end loop;
+
+  -- search_profiles(): vain kirjautuneille
+  if to_regprocedure('public.search_profiles(text)') is not null then
+    revoke execute on function public.search_profiles(text) from public, anon;
+    grant execute on function public.search_profiles(text) to authenticated;
+  end if;
+end $$;
+
 -- Jo olemassa olevat käyttäjät (jos skripti ajetaan myöhemmin) saavat profiilin
 insert into public.profiles (id, email_verified)
   select u.id, u.email_confirmed_at is not null from auth.users u
@@ -1584,6 +1704,17 @@ on conflict (id) do update set
   name = excluded.name, emoji = excluded.emoji, hue = excluded.hue,
   is_crazy = excluded.is_crazy, crazy_level = excluded.crazy_level, is_adult = excluded.is_adult,
   is_custom = false, sort_order = excluded.sort_order;
+
+-- Live-kannassa activities oli luotu uudelleen (tyhjä, events_activity_id_fkey hävinnyt) -> palautetaan viiteavain,
+-- kun kaikki tapahtumien lajit löytyvät (muuten jätetään väliin, ettei skripti kaadu).
+do $$
+begin
+  if not exists (select 1 from pg_constraint where conrelid = 'public.events'::regclass and conname = 'events_activity_id_fkey')
+     and not exists (select 1 from public.events e where not exists (select 1 from public.activities a where a.id = e.activity_id)) then
+    alter table public.events add constraint events_activity_id_fkey
+      foreign key (activity_id) references public.activities(id) on update cascade;
+  end if;
+end $$;
 
 -- ---------------------------------------------------------------------
 -- 7. GITHUB-YHDISTÄMINEN 2026-10-01: annetaan/tarvitaan (items), joukkueet (teams), kaverit (friends)
