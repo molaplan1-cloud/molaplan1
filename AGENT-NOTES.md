@@ -237,3 +237,31 @@ Next: e2e-real.js extensions, deploy.sh --no-deploy.
 - Fix: schema.sql section 5b (conditional drift handling) + activities FK restore after seed. Commit 9b8ec7f.
   Replica: applies 3× without errors; RLS suite 64 OK (empty drift replica), merge suite 39 OK (replica with live data);
   fresh DB run.sh OK (10-rls-tests.sql seed count fixed 30→34, stale test).
+## D2 – schema applied to live (≈18:50)
+- `supabase db query --linked -f supabase/schema.sql --agent no` (9b8ec7f) -> no error, exit 0.
+- Verified: friend_requests/event_invites/items/item_contacts tables, friends = VIEW, RPCs send/respond_friend_request,
+  remove_friend, invite_friend_to_event, are_friends, submit_item, close_item, is_team_member; friends_after_change dropped;
+  events.max_participants nullable (check: NULL only for non-community); link_kind incl. 'friend'; username defaults set;
+  activities 34 + events_activity_id_fkey restored; 0 legacy team/business policies; search_profiles not executable by anon.
+  Data unchanged: 3 profiles, 4 events, 5 messages, 1 notification, 2 participants; owner is_admin=true, banned=false.
+## D3 – real e2e on live (≈18:55–19:00)
+- e2e-real.js (unchanged, copy in molaplan-build/e2e-real.before-merge.js): ALL PASSED 56 checks, leftovers 0.
+- NEW /workspace/molaplan-e2e/e2e-friends-real.js: 4 throwaway users (D host, E friend, X third party, F admin via SQL, owner guarded),
+  UI in headless Chrome with injected Supabase sessions: add friend from participant row -> notification -> accept in profile card ->
+  friend_accepted notif -> friends view both ways -> invite from detail sheet -> single event_invite notif -> remove friend -> invite
+  rejected; RLS: 3rd user/anon/direct insert/foreign accept/self/search_profiles anon; admin creates public "Ei rajaa (∞)" event in
+  the UI -> max null, guest view, 3 joins; community null rejected; non-admin public rejected. ALL PASSED 48 checks.
+  Cleanup: users deleted (cascade) + admin event + linked notifications; leftovers all 0; owner untouched.
+## D4 – Pages git integration (GET /accounts/{id}/pages/projects/molaplan, ≈19:05) – settings NOT changed
+- source: github molaplan1-cloud/molaplan1 (= local origin), production_branch main, deployments_enabled=true,
+  production_deployments_enabled=true, preview_deployment_setting=all (every branch -> preview), pr_comments on.
+- build_config: build_command "", destination_dir "" (repo root), root_dir "" -> a push serves the WHOLE repo as-is.
+- latest_deployment b1bf50c9 = github:push 35f8b1b (09-27 11:35 UTC+3), but canonical (served on molaplan.com / pages.dev)
+  = 5309f7aa ad_hoc 09-26 10:40 UTC+3 (rollback). Git deploys b1bf50c9/e4fbfa17/d407b1ac/3cddf3f4 still reachable on their
+  <id>.molaplan.pages.dev URLs incl. /AGENT-NOTES.md (owner email/ids/project ref; no secrets).
+- Git build of current main would work functionally (index.html + 4 scripts in root) but: no ?v stamping, no deploy _headers,
+  and publishes AGENT-NOTES.md, supabase/schema.sql, tests, shots, *.ps1 … Copying deploy.sh's _headers (immutable /*.js) to the
+  root would be harmful (unversioned JS cached 1 year).
+- Local commit d40031c: build.sh (portable copy+stamp+_headers -> dist/; deploy.sh now calls it, output byte-identical),
+  root _headers (revalidate everything, nosniff, noindex internal files), dist/ ignored. npm test still exit 0.
+  Recommendation: Pages Settings -> Builds: build command `bash build.sh`, output dir `dist` (user decision).
