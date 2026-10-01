@@ -22,7 +22,7 @@ let passed = 0;
   const ymd = n => { const d = new Date(Date.now() + n * 864e5); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
   const loginAs = async (email) => { await M(e => { localStorage.setItem('molaplan.mock.session', window.__mockSupa.userId(e)); localStorage.setItem('molaplan.lang', 'fi'); }, email); await page.goto('about:blank'); await page.goto(BASE + '?mock=1'); await page.waitForSelector('#s-home.active .home-top #loc-pill', { timeout: 10000 }); await page.waitForFunction(() => window.MolaplanFriends && window.MolaplanApp && window.MolaplanApp.me); };
   const openEvent = async id => { await page.click(`#s-home .card[data-id="${id}"]`); await page.waitForSelector('#s-detail.active'); await page.waitForTimeout(250); };
-  const shot = async (name, sel) => { if (!SHOTS) return; if (sel) await page.$eval(sel, e => e.scrollIntoView({ block: 'start' })); await page.waitForTimeout(350); await page.screenshot({ path: `${SHOTS}/${name}.png` }); console.log('  📸', `${SHOTS}/${name}.png`); };
+  const shot = async (name, sel, block = 'start') => { if (!SHOTS) return; await page.waitForTimeout(2800); /* let toasts fade */ if (sel) await page.$eval(sel, (e, b) => e.scrollIntoView({ block: b }), block); await page.waitForTimeout(400); await page.screenshot({ path: `${SHOTS}/${name}.png` }); console.log('  📸', `${SHOTS}/${name}.png`); };
 
   // ---------- setup: 4 users, Liisa hosts a board game night, Pekka joins ----------
   await page.goto(BASE + '?mock=1');
@@ -118,11 +118,12 @@ let passed = 0;
   const big = db.events.find(e => e.title === 'Kaupunkijuoksu');
   ok(big && big.kind === 'public' && big.max_participants === null, 'stored with max_participants = null');
   ok((await page.textContent('#d-cap')).includes('Ei rajaa'), 'detail shows "Osallistujia enintään: Ei rajaa"');
-  await shot('m-event-unlimited');
+  await shot('m-event-unlimited', '#d-cap', 'center');
   // 25 people join – never "full"
   const joins = await M(async id => { const S = window.__mockSupa; const errs = []; for (let i = 0; i < 25; i++) { const e = `j${i}@example.com`; S.createUser(e, 'Juoksija ' + i); const r = await S.as(e).from('event_participants').insert({ event_id: id, user_id: S.userId(e) }); if (r.error) errs.push(r.error.message); } return errs; }, big.id);
   ok(!joins.length, '25 participants can join an unlimited event');
   await loginAs('liisa@example.com');
+  await shot('m-home', '#s-home .sec-head');
   const card = await page.$eval(`#s-home .card[data-id="${big.id}"]`, e => e.textContent);
   ok(card.includes('Ei rajaa') && !(await page.$(`#s-home .card[data-id="${big.id}"] .btn.full`)) && await page.isVisible(`#s-home .card[data-id="${big.id}"] [data-a="join"]`), 'card shows "∞ Ei rajaa" and stays joinable');
   await page.click(`#s-home .card[data-id="${big.id}"] [data-a="join"]`); await page.waitForTimeout(500);

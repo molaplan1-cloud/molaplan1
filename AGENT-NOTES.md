@@ -153,3 +153,67 @@ Next: e2e-real.js extensions, deploy.sh --no-deploy.
 # Giveaways ('Annetaan pois'/'Tarvitaan') + privacy/terms task – started 2026-09-26 11:58 (UTC+3)
 ## G0 – backup
 - /workspace/molaplan-backups/before-giveaways-0858.tgz (box clock label; molaplan + molaplan-e2e/e2e-real.js, node_modules excluded)
+
+# Merge with GitHub – 2026-10-01
+(times UTC+3; box clock runs UTC)
+## M0 – backup (17:43)
+- /workspace/molaplan-backups/before-merge-1743.tgz (whole /workspace/molaplan incl. .git, node_modules excluded).
+- Local branch backup/remote-2026-09-27 -> origin/main 35f8b1b (no upstream, never pushed).
+- State: working tree == fbf8cda for all app files (only node_modules deleted from disk, still tracked in fbf8cda).
+## M1 – inspection of fbf8cda..origin/main (18 commits, not only friend requests)
+- Baseline on working tree (== fbf8cda): test.js 109 ✓, test-i18n 245 ✓, test-v5 50 ✓.
+- origin/main history: 50ee8d4 (deploy.sh mode only) · bf93eec free-form city in create form · 469c4a8 Give/Need chips (giveaways scaffolding)
+  · 93f422c unlimited participants (max null), radius filter + loc button, act dropdown, desktop CSS, items(give/need) schema, reverse geocode
+  · ba81ac2/a191ebb/fb52073/5b39cad layout/filter tweaks (city select removed from filters) · 042c86a teams schema · bb3623e/73bbed9 teams UI + 10 €/kk pricing
+  · a015f8a profile "Vaihda aluetta" button, push.ps1/fix_schema.ps1 · b429e73 home biz/team promo cards · c0a6d06 · 6b99886 openCitySheet
+  · 91a3809/c5ed0f1 friend-requests.js (localStorage prototype + best-effort Supabase sync; tables friend_requests/friends NOT in schema)
+  · 38a0e13 index.html cut to 4.7 KB skeleton loading non-existent app.js (35f8b1b) -> broken.
+- index.html @6b99886 (331 KB) = fbf8cda full app + all user's later UI work -> used as merge base for index.html (superset of working tree).
+- Bugs found in origin code: teams UI uses columns that schema lacks (event_date/event_time/place_*/rsvp status/created_at), teams RLS
+  recursive (teams<->team_members) and `m.team_id = id` compares to team_members.id; items/teams RLS+grants placed before CREATE TABLE
+  (schema.sql fails on a fresh/live DB); loadAll() would fail if team tables missing; `Acts` undefined in act dropdown label;
+  JSX `<>` fragment in detail spots; duplicate full-check makes unlimited community events "full"; items never loaded, no create UI.
+- Giveaways: working tree has NO partial giveaway code (G0 died before edits). origin has only scaffolding (items schema, Give/Need chips, empty list).
+## M2 – branch merge-2026-10-01 (from origin/main 35f8b1b, no upstream) + index.html (≈17:55–18:05)
+- index.html = full app @6b99886 (fbf8cda + user's 09-26 UI work) patched by /workspace/molaplan-build/merge/patch_index.py (do not rerun):
+  feature flags FF/ff() (`?ff=teams,items` or localStorage molaplan.ff) – teams UI + Give/Need hidden by default (no backend/pricing yet);
+  tolerant team loading; fixed `Acts`, JSX fragment, duplicate full-check; unlimited participants ("Ei rajaa (∞)") only for public/business
+  events (community stays 2–50), card chip + detail "Osallistujia enintään: Ei rajaa"; friends hooks (.prow[data-uid], #d-friends, #p-friends,
+  window.MolaplanApp API, notif kind 'friend'); <script src="friend-requests.js"> after the app script.
+- openCitySheet (6b99886) kept: it is the profile "Vaihda aluetta" sheet for the logged-in user; guest "Vaihda aluetta" keeps the landing picker.
+## M3 – i18n.js merged (/workspace/molaplan-build/merge/i18n_build.js + i18n_add.json, re-runnable)
+- all fbf8cda keys/values kept, origin keys added, missing es/sv/fi filled, new fr.* / notif.friend_* / event_invite / pub.noLimitChip keys; 1052 keys × 4 langs.
+## M4 – friend-requests.js rewritten for the full app (Supabase RPCs instead of localStorage prototype)
+- participant rows get Lisää kaveriksi / Pyyntö lähetetty / Hyväksy / Kaveri ✓; detail "💌 Kutsu kavereita" sheet; profile card "Kaverit"
+  (incoming accept/decline, list + remove, outgoing cancel). window.MolaplanFriends {load, render, stateWith, friendIds}.
+## M5 – mock-supabase.js: friend_requests, event_invites, teams tables + RPCs send/respond_friend_request, remove_friend, invite_friend_to_event
+## M6 – supabase/schema.sql (base = fbf8cda schema; idempotent; no ';;' found anywhere)
+- events.max_participants nullable; check: NULL only for public/business, community 2–50 (NULL-safe: `is not null and …` – a plain
+  `between` would let NULL through); link_kind + 'friend'; section 7: 7a items (fixed order), 7b teams (UI columns, security-definer helpers,
+  no recursion, migration from GitHub's starts_at/location_id/sent_at columns), 7c friends (friend_requests, event_invites, view friends,
+  RPCs, rate limits), 7d grants (anon revoked).
+- Verified on local Postgres 17 (/workspace/molaplan-sqltest): fresh DB ×2, old fbf schema → new ×2, old + GitHub-style team tables with
+  data → new ×2: no errors. New scenario test 30-merge-tests.sql (friends, invites, unlimited, teams RLS, anon): ALL PASSED on all 3 DBs.
+  business rls_test/mod_test outputs identical old vs new schema.
+## M7 – tests adapted to the user's 09-26 UI changes + bugs fixed on the way (≈18:10)
+- Activity chips → dropdown: tests use .act-filter-item; filtersHTML ids are now per context (act-filter-btn-home/-map) – before, the map
+  dropdown toggled the hidden home popup (duplicate ids); added "🤪 Hullut" (CZ_ALL) item back to the dropdown.
+- City filter removed by user ("Remove city restrictions"): near-me feed now includes other cities (last, by distance) – test updated;
+  test-i18n map city loop replaced by map activity-menu + markers check.
+- Free-form city in create: city normalised to the supported name, pin moves to a supported city when typed, district derived from the pin
+  (nearest district ≤25 km, '' for unknown cities) – before, the old district/pin of the home city was saved with any typed city.
+- Teams UI used undefined icon 'settings' → added; team.membersN → plural keys .one/.other.
+## M8 – repo hygiene + commits on merge-2026-10-01 (≈18:15–18:20)
+- `git rm -r --cached node_modules supabase/.temp`; .gitignore (node_modules/, supabase/.temp/, .env*, *.pem/*.key, *.tgz/*.zip, logs).
+  shots/ stays tracked. Secret scan of tracked files: only the anon key in config.js (role=anon) + project ref; config.toml uses
+  env(RESEND_API_KEY). push.ps1 / fix_schema.ps1 kept (user's Windows helpers, harmless; fix_schema.ps1 not needed – no ';;').
+- deploy.sh: exec bit restored, friend-requests.js copied + ?v= stamped (same hash for all 4 local scripts, aborts if not 4).
+- supabase/tests/: 00-supabase-stub.sql + friends-teams-unlimited.sql (scratch DB only).
+## M9 – verification (≈18:20–18:30)
+- `npm test` (now incl. test-friends.js): test.js 109 ✓, test-i18n 227 ✓ (was 245: the 7-city map-filter loop ×3 langs removed with
+  the city filter, +3 map menu checks), test-v5 50 ✓, test-friends 29 ✓ → exit 0. mock_smoke.js 40 PASS / 0 FAIL.
+- `./deploy.sh --no-deploy` → /workspace/molaplan-deploy (4 scripts ?v=907edb3383). Served on :8766, headless Chrome with and without
+  ?mock=1 (supabase.co requests aborted – live DB never contacted): all local files 200, no console/page errors.
+  (deploy hash changes if scripts change – rerun deploy.sh before a real deploy.)
+- Screenshots 390×844@2x: shots/m-home.png, shots/m-friends.png, shots/m-event-unlimited.png (`SHOTS=shots node test-friends.js`).
+## M10 – local main fast-forwarded to merge-2026-10-01 (nothing pushed, nothing deployed, live DB untouched)
