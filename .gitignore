@@ -1,0 +1,20 @@
+# dependencies (install with `npm ci`)
+node_modules/
+# Supabase CLI local state / caches
+supabase/.temp/
+supabase/.branches/
+# secrets – never commit (service_role key, DB password, Resend key, access tokens)
+.env
+.env.*
+*.pem
+*.key
+# backups / archives / logs
+*.tgz
+*.tar.gz
+*.zip
+*.log
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
