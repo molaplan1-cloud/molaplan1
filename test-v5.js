@@ -44,10 +44,10 @@ let passed = 0;
 
   // ---------- 2. home order (logged in) ----------
   await loginAs('liisa@example.com');
-  const chips = await page.$$eval('#s-home .chips .chip', x => x.map(e => e.dataset.v));
+  const chips = await page.$$eval('#act-filter-popup-home .act-filter-item', x => x.map(e => e.dataset.v));
   const acts = await M(() => window.__molaplan.state.acts.map(a => ({ id: a.id, crazy: a.crazy })));
   const iCz = chips.indexOf('__hullut'), crazyIds = acts.filter(a => a.crazy).map(a => a.id), normIds = acts.filter(a => !a.crazy).map(a => a.id);
-  ok(chips.slice(0, 3).join() === 'all,__hyvat,__yritykset' && normIds.every(id => chips.indexOf(id) > 2 && chips.indexOf(id) < iCz) && crazyIds.every(id => chips.indexOf(id) > iCz), 'chips: Kaikki, 💚 Hyvät teot, 🏢 Yritykset, normal activities, then 🤪 Hullut + crazy activities');
+  ok(chips.slice(0, 3).join() === 'all,__hyvat,__yritykset' && normIds.every(id => chips.indexOf(id) > 2 && chips.indexOf(id) < iCz) && crazyIds.every(id => chips.indexOf(id) > iCz), 'activity menu: Kaikki, 💚 Hyvät teot, 🏢 Yritykset, normal activities, then 🤪 Hullut + crazy activities');
   ok(await M(() => { const h = document.querySelector('#help-card'), f = document.querySelector('#s-home .filters'); return !!h && !!(h.compareDocumentPosition(f) & Node.DOCUMENT_POSITION_FOLLOWING); }), 'warm "Autetaan toisiamme 💚" card sits above the filters');
   ok(await M(() => { const c = document.querySelector('#cz-banner'), cards = [...document.querySelectorAll('#s-home .cards')].pop(); return c.classList.contains('soft') && !!(cards.compareDocumentPosition(c) & Node.DOCUMENT_POSITION_FOLLOWING); }), 'crazy banner moved to the end and toned down');
   await page.click('#hc-ask'); await page.waitForSelector('#s-ask.active');
@@ -142,7 +142,7 @@ let passed = 0;
   ok((await page.textContent('#d-org')).includes('Pekan Pyörä Oy') && !(await page.textContent('#s-detail')).includes('Pekka'), 'business event shows the business name, never the person');
   await page.click('#s-detail [data-a="back"]'); await tab('home');
   ok(await page.isVisible('#biz-sec') && (await page.textContent('#biz-sec')).includes('Yritysten tapahtumat'), 'home: separate "Yritysten tapahtumat" section');
-  await page.click('#chip-biz-home'); await page.waitForTimeout(200);
+  await page.click('#act-filter-btn-home'); await page.click('#act-filter-popup-home [data-v="__yritykset"]'); await page.waitForTimeout(200);
   const bt = await page.$$eval('#s-home .card h3', x => x.map(e => e.textContent));
   ok(bt.length === 1 && bt[0].startsWith('Pyörähuollon ilta') && (await page.textContent('#s-home .card .kind-badge')).includes('Yritys'), '"🏢 Yritykset" chip shows only business events with the "Yritys" badge');
   // expiry

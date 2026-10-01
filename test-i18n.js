@@ -231,39 +231,29 @@ const KEY_RE = new RegExp('\\b(?:' + [...new Set(KEYS.map(k => k.split('.')[0]))
     if (lang === 'sv') await shot('sv-03-chat');
     await page.click('#s-chat [data-a="back"]'); await page.click('#s-detail [data-a="back"]');
     // notification text from code (Bob joins MY event later) -> check event created by me
-    // create: city + district selectable, saved with the event
+    // create: free-form city (GitHub 2026-09-26); a supported city moves the pin, the district is derived from the pin
     await page.click('#nav [data-t="create"]'); await page.waitForSelector('#s-create.active #c-title');
-    ok(await page.inputValue('#c-city') === c.city && await page.inputValue('#c-district') === c.district, `[${lang}] create form defaults to my city + district`);
-    await page.selectOption('#c-city', c.evCity); await page.selectOption('#c-district', c.evDistrict);
+    ok(await page.inputValue('#c-city') === c.city && !(await page.$('#c-district')), `[${lang}] create form defaults to my city (free-form input)`);
+    await page.fill('#c-city', c.evCity.toLowerCase());
     await page.fill('#c-title', 'Board game night 🎲'); await page.click('#s-create [data-a="c-act"][data-v="lautapelit"]');
     await page.fill('#c-place', 'Library 📚');
     await scan(page, lang, 'create event');
     if (lang === 'en') { await page.evaluate(() => document.querySelector('#s-create').scrollTop = 0); await shot('en-03-create'); }
     await page.click('#ck-rule'); await page.click('#s-create [data-a="publish"]'); await page.waitForSelector('#s-detail.active');
     const myEv = await M(() => window.__mockSupa.db().events.find(e => e.title === 'Board game night 🎲'));
-    { const d = await M(({ city, district }) => window.MOLAPLAN_CITIES.find(x => x.id === city).areas.flatMap(a => a.d).find(x => x[0] === district), { city: c.evCity, district: c.evDistrict });
-      ok(myEv && myEv.city === c.evCity && myEv.district === c.evDistrict && myEv.skill_level === 'all' && Math.abs(myEv.lat - d[2]) < 0.03 && Math.abs(myEv.lng - d[3]) < 0.03, `[${lang}] event created in ${c.evCity} / ${c.evDistrict} (pin at the district, level key "all")`); }
+    { const d = await M(city => window.MOLAPLAN_CITIES.find(x => x.id === city).areas[0].d[0], c.evCity);
+      ok(myEv && myEv.city === c.evCity && myEv.district === d[0] && myEv.skill_level === 'all' && Math.abs(myEv.lat - d[2]) < 0.03 && Math.abs(myEv.lng - d[3]) < 0.03, `[${lang}] event created in ${c.evCity} / ${d[0]} (city name normalised, pin moved to the city, district from the pin, level key "all")`); }
     await M(async id => { await window.__mockSupa.as('bob+test@example.com').from('event_participants').insert({ event_id: id, user_id: window.__mockSupa.userId('bob+test@example.com') }); }, myEv.id);
     const joinNotif = D[lang]['notif.joined_your_event'].replace('{name}', 'Bob').replace('{title}', 'Board game night 🎲');
     await page.waitForFunction(t => window.__molaplan.state.notifs.some(n => n.text === t), joinNotif, { timeout: 4000 });
     ok(true, `[${lang}] notification from DB code rendered as "${joinNotif}"`);
     await page.click('#s-detail [data-a="back"]');
-    // map: city filter re-centres the map
-    await page.click('#nav [data-t="map"]'); await page.waitForSelector('#s-map.active #f-city-map');
-    for (const city of ['Vantaa', 'Tuusula', 'Espoo', 'Stockholm', 'London', 'Madrid', 'Helsinki']) {
-      await page.selectOption('#f-city-map', city); await page.waitForTimeout(500);
-      const r = await M(city => {
-        const m = window.__molaplan.mapCenter(), ds = window.MOLAPLAN_CITIES.find(c => c.id === city).areas.flatMap(a => a.d);
-        const la = ds.map(d => d[2]), ln = ds.map(d => d[3]);
-        const inside = m.lat >= Math.min(...la) - 0.01 && m.lat <= Math.max(...la) + 0.01 && m.lng >= Math.min(...ln) - 0.01 && m.lng <= Math.max(...ln) + 0.01;
-        const others = window.MOLAPLAN_CITIES.filter(c => c.id !== city).map(c => Math.hypot(m.lat - c.c[0], m.lng - c.c[1]));
-        const own = Math.hypot(m.lat - window.__molaplan.cityCenter(city)[0], m.lng - window.__molaplan.cityCenter(city)[1]);
-        return { inside, nearest: own <= Math.min(...others) || inside, v: window.__molaplan.viewCity, at: m.lat.toFixed(3) + ',' + m.lng.toFixed(3) };
-      }, city);
-      ok(r.v === city && r.inside, `[${lang}] map filter ${city}: map re-centred inside ${city} (${r.at})`);
-    }
-    await page.selectOption('#f-city-map', c.city); await page.waitForTimeout(400);
-    ok(await page.locator('#s-map .leaflet-marker-icon').count() >= 2, `[${lang}] map shows the ${c.city} events after switching back`);
+    // map: (city filter was removed on GitHub 2026-09-26 – feed/map are no longer city-scoped) – activity menu + markers
+    await page.click('#nav [data-t="map"]'); await page.waitForSelector('#s-map.active #act-filter-btn-map');
+    await page.click('#act-filter-btn-map'); await page.waitForSelector('#act-filter-popup-map:not(.hidden)');
+    ok(await page.isVisible('#act-filter-popup-map [data-v="all"]') && !(await page.isVisible('#act-filter-popup-home')), `[${lang}] map activity menu opens its own popup`);
+    await page.click('#act-filter-popup-map [data-v="all"]'); await page.waitForTimeout(400);
+    ok(await page.locator('#s-map .leaflet-marker-icon').count() >= 2, `[${lang}] map shows the ${c.city} events`);
     await scan(page, lang, 'map');
     if (lang === 'es') await shot('es-02-map');
     // good deeds + help request with city/district
