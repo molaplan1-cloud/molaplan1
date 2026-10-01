@@ -11,7 +11,7 @@ let lastTs=0;const now=()=>{let t=Date.now();if(t<=lastTs)t=lastTs+1;lastTs=t;re
 const ADULT=/naku|alasti|alaston|konjak|viini|olut|oluen|kalja|bisse|shamp|kuohu|cocktail|drinkk|viski|siideri|lonkero|känn|kossu|vodka|rommi|punssi|pubi|baari|wine|beer|naked|nude|nudis|whisk|brandy|cognac|cerveza|desnud|sangr[ií]a|tequila|naken|nakna|nakenbad|(^|[^a-z])vino/i;
 const SEED=[['padel','Padel','🏓',155],['sulkapallo','Sulkapallo','🏸',190],['tennis','Tennis','🎾',75],['juoksu','Juoksu','🏃',12],['kavely','Kävely','🚶',100],['vaellus','Vaellus','🥾',125],['pyoraily','Pyöräily','🚴',30],['kuntosali','Kuntosali','🏋️',350],['jooga','Jooga','🧘',280],['uinti','Uinti','🏊',205],['frisbeegolf','Frisbeegolf','🥏',45],['jalkapallo','Jalkapallo','⚽',140],['salibandy','Salibandy','🏑',222],['lautapelit','Lautapelit','🎲',258],['kahvi','Kahvi & juttelu','☕',24],['valokuvaus','Valokuvaus','📷',300],['kalastus','Kalastus','🎣',195],['neulonta','Neulonta','🧶',330],['kieltenvaihto','Kieltenvaihto','🗣️',170],['konsertit','Konsertit','🎵',312],['festivaali','Festivaalit','🎪',330],['markkinat','Markkinat','🛍️',36],['juoksutapahtuma','Juoksutapahtumat','🏅',8],['kulttuuri','Kulttuuri','🎭',275]].map((a,i)=>({id:a[0],name:a[1],emoji:a[2],hue:a[3],is_crazy:false,crazy_level:0,is_adult:false,is_custom:false,sort_order:10+i*10,created_by:null}))
  .concat([['nakuuinti','Nakuuinti','🌊',200,3,true],['pelle','Pellekokoontuminen','🤡',350,2,false],['konjakkipiknik','Konjakkipiknik','🥃',30,1,true],['pyjamabrunssi','Pyjamabrunssi','🥞',40,1,false],['karaokepuisto','Karaoke puistossa','🎤',290,2,false],['vesisota','Vesipyssytaistelu','💦',195,2,false],['flashmob','Tanssia bussipysäkillä','🕺',320,3,false],['avanto','Avantouinti auringonnousussa','🌅',20,3,false],['huonorunous','Vuoden huonoin runo -ilta','📜',260,1,false],['kasari','Pukeudu 80-luvuksi','📼',300,2,false]].map((a,i)=>({id:a[0],name:a[1],emoji:a[2],hue:a[3],is_crazy:true,crazy_level:a[4],is_adult:a[5],is_custom:false,sort_order:500+i*10,created_by:null})));
-const TABLES=['users','profiles','profile_private','activities','events','event_participants','help_requests','help_request_contacts','help_offers','conversations','messages','conversation_reads','notifications','businesses','business_private','business_members','reports'];
+const TABLES=['users','profiles','profile_private','activities','events','event_participants','help_requests','help_request_contacts','help_offers','conversations','messages','conversation_reads','notifications','businesses','business_private','business_members','reports','friend_requests','event_invites','teams','team_members','team_roles','team_places','team_events','team_event_rsvps','team_messages'];
 function fresh(){const d={calls:[]};TABLES.forEach(t=>d[t]=[]);d.activities=SEED.map(a=>Object.assign({created_at:now()},a));return d}
 let db;try{db=JSON.parse(localStorage.getItem(DB_KEY))}catch(e){}if(!db||!db.users)db=fresh();TABLES.forEach(t=>{if(!db[t])db[t]=[]});
 const persist=()=>localStorage.setItem(DB_KEY,JSON.stringify(db));persist();
@@ -28,6 +28,15 @@ function isMember(cid,u){const c=db.conversations.find(x=>x.id===cid);if(!c||!u)
  if(c.event_id)return db.event_participants.some(p=>p.event_id===c.event_id&&p.user_id===u);
  const h=reqOf(c.help_request_id);return !!h&&['approved','closed'].includes(h.status)&&(h.requester_id===u||isHelper(h.id,u))}
 const nameOf=u=>(prof(u)&&prof(u).display_name)||'Joku';
+// ---- friends (mirrors schema.sql 7c) and teams (7b)
+const pairOf=(a,b)=>db.friend_requests.find(r=>(r.requester_id===a&&r.target_id===b)||(r.requester_id===b&&r.target_id===a));
+const areFriends=(a,b)=>{const r=pairOf(a,b);return !!r&&r.status==='accepted'};
+const teamOf=id=>db.teams.find(t=>t.id===id);
+const teamRole=(tid,u)=>{const m=db.team_members.find(x=>x.team_id===tid&&x.user_id===u);return m?m.role:null};
+const isTeamMember=(tid,u)=>{const t=teamOf(tid);return !!t&&(t.owner_id===u||!!teamRole(tid,u))};
+const isTeamAdmin=(tid,u)=>{const t=teamOf(tid);return !!t&&(t.owner_id===u||teamRole(tid,u)==='admin')};
+const isTeamCoach=(tid,u)=>isTeamAdmin(tid,u)||teamRole(tid,u)==='coach';
+const teamOfEvent=eid=>{const e=db.team_events.find(x=>x.id===eid);return e&&e.team_id};
 // ---- public / business events, moderation (mirrors schema.sql 1b / 1c)
 const todayFi=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Helsinki',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 const addDays=(ymd,n)=>{const d=new Date(ymd+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10)};
@@ -55,6 +64,7 @@ function eventRules(row,a,isNew,old){
  if(kind==='business'&&!row.business_id)chk('events_kind_fields');
  if(!URL_OK(row.official_url))chk('events_official_url_check');
  if(row.ends_at&&(Date.parse(row.ends_at)<Date.parse(row.starts_at)||Date.parse(row.ends_at)>Date.parse(row.starts_at)+62*864e5))chk('events_ends_check');
+ if(row.max_participants===null&&kind==='community')chk('events_max_participants_check');
  if(row.max_participants!=null&&!(row.max_participants>=2&&row.max_participants<=100000&&(kind!=='community'||row.max_participants<=50)))chk('events_max_participants_check');
  row.ends_at=row.ends_at||null;row.business_id=row.business_id||null;row.last_at=row.ends_at||row.starts_at;
 }
@@ -73,6 +83,12 @@ function visible(t,r,u){if(!u)return false;switch(t){
  case 'business_private':return isBizMember(r.business_id,u)||isAdmin(u);
  case 'business_members':return r.user_id===u||isBizMember(r.business_id,u)||isAdmin(u);
  case 'reports':return r.reporter_id===u||isAdmin(u);
+ case 'friend_requests':return r.requester_id===u||r.target_id===u||isAdmin(u);
+ case 'event_invites':return r.inviter_id===u||r.invitee_id===u;
+ case 'teams':return true;
+ case 'team_members':return r.user_id===u||isTeamMember(r.team_id,u);
+ case 'team_roles':case 'team_places':case 'team_events':case 'team_messages':return isTeamMember(r.team_id,u);
+ case 'team_event_rsvps':return isTeamMember(teamOfEvent(r.event_id),u);
  default:return true}}
 function notify(uid,icon,body,kind,id,code,params){if(!uid)return;ins('notifications',{id:uuid(),user_id:uid,icon,code:code||null,params:params||{},body:String(body).slice(0,500),link_kind:kind,link_id:id,read_at:null,created_at:now()})}
 function notifyAdmins(icon,body,kind,id,code,params){db.profiles.filter(p=>p.is_admin).forEach(p=>notify(p.id,icon,body,kind,id,code,params))}
@@ -150,6 +166,13 @@ function doInsert(t,row,a){
    notifyAdmins('🚩','Uusi ilmoitus tapahtumasta “'+e.title+'”','admin',e.id,'admin_new_report',{title:e.title});
    return row}
   case 'notifications':case 'conversations':case 'help_requests':case 'help_request_contacts':case 'businesses':case 'business_private':case 'business_members':throw RLS(t);
+  case 'friend_requests':case 'event_invites':throw RLS(t); // only via RPCs
+  case 'teams':if(isBanned(a))throw E('account_banned');row.owner_id=row.owner_id||a;if(row.owner_id!==a)throw RLS(t);row.name=String(row.name||'').trim();if(row.name.length<2||row.name.length>50)throw E('violates check constraint "teams_name_check"','23514');row.id=uuid();row.created_at=now();row.updated_at=row.created_at;row.sport=row.sport||'';row.description=row.description||'';row.logo_url=row.logo_url||'';break;
+  case 'team_members':if(!((row.user_id===a&&(row.role||'member')==='member')||isTeamAdmin(row.team_id,a)))throw RLS(t);if(db.team_members.some(x=>x.team_id===row.team_id&&x.user_id===row.user_id))throw E('duplicate key value violates unique constraint "team_members_team_id_user_id_key"','23505');row.role=row.role||'member';row.id=uuid();row.joined_at=now();break;
+  case 'team_roles':case 'team_places':if(!isTeamAdmin(row.team_id,a))throw RLS(t);row.id=uuid();break;
+  case 'team_events':if(!isTeamCoach(row.team_id,a))throw RLS(t);row.id=uuid();row.created_by=a;row.created_at=now();row.updated_at=row.created_at;break;
+  case 'team_event_rsvps':if(row.user_id!==a||!isTeamMember(teamOfEvent(row.event_id),a))throw RLS(t);if(!['going','maybe'].includes(row.status))throw E('violates check constraint "team_event_rsvps_status_check"','23514');row.id=uuid();row.created_at=now();break;
+  case 'team_messages':if(!isTeamMember(row.team_id,a))throw RLS(t);row.sender_id=a;row.id=uuid();row.created_at=now();break;
  }
  db[t].push(row);return row;
 }
@@ -188,6 +211,10 @@ function doUpdate(t,old,patch,a){
    Object.assign(old,row);
    if(row.status!==(patch.__prev||'')){/* no-op */}
    return old}
+  case 'teams':if(!isTeamAdmin(old.id,a))return null;row.id=old.id;row.owner_id=old.owner_id;row.updated_at=now();break;
+  case 'team_members':if(!isTeamAdmin(old.team_id,a))return null;row.team_id=old.team_id;row.user_id=old.user_id;break;
+  case 'team_events':if(!isTeamCoach(old.team_id,a))return null;row.team_id=old.team_id;row.updated_at=now();break;
+  case 'team_event_rsvps':if(old.user_id!==a)return null;row.user_id=old.user_id;row.event_id=old.event_id;if(!['going','maybe'].includes(row.status))throw E('violates check constraint "team_event_rsvps_status_check"','23514');break;
   default:return null;
  }
  Object.assign(old,row);return old;
@@ -213,7 +240,9 @@ function afterHelpUpdate(prev,h){
 }
 function cascade(t,row){
  if(t==='businesses'){db.events.filter(e=>e.business_id===row.id).forEach(e=>cascade('events',e));db.events=db.events.filter(e=>e.business_id!==row.id);db.business_private=db.business_private.filter(x=>x.business_id!==row.id);db.business_members=db.business_members.filter(x=>x.business_id!==row.id)}
- if(t==='events'){db.event_participants=db.event_participants.filter(p=>p.event_id!==row.id);const cs=db.conversations.filter(c=>c.event_id===row.id).map(c=>c.id);dropConvs(cs)}
+ if(t==='teams'){['team_members','team_roles','team_places','team_messages'].forEach(k=>db[k]=db[k].filter(x=>x.team_id!==row.id));const ev=db.team_events.filter(x=>x.team_id===row.id).map(x=>x.id);db.team_event_rsvps=db.team_event_rsvps.filter(x=>!ev.includes(x.event_id));db.team_events=db.team_events.filter(x=>x.team_id!==row.id)}
+ if(t==='team_events')db.team_event_rsvps=db.team_event_rsvps.filter(x=>x.event_id!==row.id);
+ if(t==='events'){db.event_invites=db.event_invites.filter(x=>x.event_id!==row.id);db.friend_requests.forEach(x=>{if(x.event_id===row.id)x.event_id=null});db.event_participants=db.event_participants.filter(p=>p.event_id!==row.id);const cs=db.conversations.filter(c=>c.event_id===row.id).map(c=>c.id);dropConvs(cs)}
  if(t==='help_requests'){db.help_request_contacts=db.help_request_contacts.filter(c=>c.request_id!==row.id);db.help_offers=db.help_offers.filter(o=>o.request_id!==row.id);dropConvs(db.conversations.filter(c=>c.help_request_id===row.id).map(c=>c.id))}
 }
 function dropConvs(ids){db.conversations=db.conversations.filter(c=>!ids.includes(c.id));db.messages=db.messages.filter(m=>!ids.includes(m.conversation_id));db.conversation_reads=db.conversation_reads.filter(r=>!ids.includes(r.conversation_id))}
@@ -226,6 +255,11 @@ function canDelete(t,r,a){switch(t){
  case 'notifications':case 'conversation_reads':return r.user_id===a;
  case 'messages':return r.sender_id===a||isAdmin(a);
  case 'activities':return isAdmin(a);
+ case 'teams':return isTeamAdmin(r.id,a);
+ case 'team_members':return r.user_id===a||isTeamAdmin(r.team_id,a);
+ case 'team_roles':case 'team_places':return isTeamAdmin(r.team_id,a);
+ case 'team_events':return isTeamCoach(r.team_id,a);
+ case 'team_event_rsvps':return r.user_id===a;
  default:return false}}
 function afterDelete(t,r){
  if(t==='event_participants'){const e=db.events.find(x=>x.id===r.event_id);if(e){const c=db.conversations.find(x=>x.event_id===e.id);sysMsg(c&&c.id,nameOf(r.user_id)+' perui osallistumisen','left',{name:nameOf(r.user_id)})}}
@@ -344,6 +378,42 @@ function rpc(name,args,actor){
    else throw E('moderation_action_invalid');
    persist();return {data:null,error:null};
   }
+  if(name==='send_friend_request'){
+   const tg=args.p_target,ev=args.p_event||null;
+   if(isBanned(a))throw E('account_banned');
+   if(!tg||tg===a)throw E('friend_self');if(!prof(tg))throw E('friend_target_missing');
+   if(db.friend_requests.filter(r=>r.requester_id===a&&Date.parse(r.created_at)>Date.now()-864e5).length>=50)throw E('friend_rate_limited');
+   if(ev&&!db.events.some(e=>e.id===ev))throw E('violates foreign key constraint "friend_requests_event_id_fkey"','23503');
+   let r=pairOf(a,tg);const ts=now();
+   if(r){
+    if(r.status==='accepted'){persist();return {data:'accepted',error:null}}
+    if(r.requester_id===tg&&r.status==='pending'){Object.assign(r,{status:'accepted',responded_at:ts,updated_at:ts});notify(tg,'🤝',nameOf(a)+' hyväksyi kaveripyyntösi','friend',r.id,'friend_accepted',{name:nameOf(a)});persist();return {data:'accepted',error:null}}
+    if(r.requester_id===a){if(r.status==='pending'){persist();return {data:'pending',error:null}}throw E('friend_request_declined')}
+    Object.assign(r,{requester_id:a,target_id:tg,status:'pending',event_id:ev,created_at:ts,updated_at:ts,responded_at:null});
+   }else{r={id:uuid(),requester_id:a,target_id:tg,event_id:ev,status:'pending',created_at:ts,updated_at:ts,responded_at:null};db.friend_requests.push(r)}
+   if(!db.notifications.some(n=>n.user_id===tg&&n.code==='friend_request'&&n.params&&n.params.from===a&&Date.parse(n.created_at)>Date.now()-864e5))notify(tg,'👋',nameOf(a)+' lähetti sinulle kaveripyynnön','friend',r.id,'friend_request',{name:nameOf(a),from:a});
+   persist();return {data:'pending',error:null};
+  }
+  if(name==='respond_friend_request'){
+   const r=db.friend_requests.find(x=>x.id===args.p_request&&x.target_id===a&&x.status==='pending');if(!r)throw E('friend_request_not_found');
+   const ts=now();Object.assign(r,{status:args.p_accept?'accepted':'declined',responded_at:ts,updated_at:ts});
+   if(args.p_accept)notify(r.requester_id,'🤝',nameOf(a)+' hyväksyi kaveripyyntösi','friend',r.id,'friend_accepted',{name:nameOf(a)});
+   persist();return {data:null,error:null};
+  }
+  if(name==='remove_friend'){
+   const o=args.p_other;db.friend_requests=db.friend_requests.filter(r=>!(((r.requester_id===a&&r.target_id===o)||(r.requester_id===o&&r.target_id===a))&&(r.status==='accepted'||(r.status==='pending'&&r.requester_id===a))));
+   persist();return {data:null,error:null};
+  }
+  if(name==='invite_friend_to_event'){
+   const e=db.events.find(x=>x.id===args.p_event),f=args.p_friend;
+   if(isBanned(a))throw E('account_banned');if(!e)throw E('event_not_found');
+   if(Date.parse(e.ends_at||e.starts_at)<Date.now())throw E('event_in_past');
+   if(!areFriends(a,f))throw E('not_friends');
+   if(db.event_invites.filter(x=>x.inviter_id===a&&Date.parse(x.created_at)>Date.now()-864e5).length>=100)throw E('friend_rate_limited');
+   if(!db.event_invites.some(x=>x.event_id===e.id&&x.inviter_id===a&&x.invitee_id===f)){db.event_invites.push({event_id:e.id,inviter_id:a,invitee_id:f,created_at:now()});
+    notify(f,'💌',nameOf(a)+' kutsui sinut tapahtumaan “'+e.title+'”','event',e.id,'event_invite',{name:nameOf(a),title:e.title})}
+   persist();return {data:null,error:null};
+  }
   throw E('function '+name+' not found');
  }catch(e){persist();return {data:null,error:{message:e.message,code:e.code}}}});
 }
@@ -355,6 +425,8 @@ function deleteUser(a){
  db.help_offers=db.help_offers.filter(o=>o.helper_id!==a);db.messages.forEach(m=>{if(m.sender_id===a)m.sender_id=null});
  db.profile_private=db.profile_private.filter(p=>p.id!==a);db.profiles=db.profiles.filter(p=>p.id!==a);db.users=db.users.filter(u=>u.id!==a);
  db.activities.forEach(x=>{if(x.created_by===a)x.created_by=null});
+ db.friend_requests=db.friend_requests.filter(r=>r.requester_id!==a&&r.target_id!==a);db.event_invites=db.event_invites.filter(r=>r.inviter_id!==a&&r.invitee_id!==a);
+ db.teams.filter(x=>x.owner_id===a).forEach(x=>cascade('teams',x));db.teams=db.teams.filter(x=>x.owner_id!==a);db.team_members=db.team_members.filter(x=>x.user_id!==a);db.team_event_rsvps=db.team_event_rsvps.filter(x=>x.user_id!==a);
 }
 // ---------- auth
 function sessionUid(){const id=localStorage.getItem(SES_KEY);return id&&db.users.some(u=>u.id===id)?id:null}
