@@ -1,0 +1,20 @@
+{
+  "name": "Molaplan – seuraa harrastuksiin ja apua naapureilta",
+  "short_name": "Molaplan",
+  "description": "Meet people in your city for sports, hobbies and helping each other. Löydä seuraa harrastuksiin ja auttakaa toisianne omassa kaupungissasi.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "lang": "fi",
+  "dir": "ltr",
+  "background_color": "#F5F4FA",
+  "theme_color": "#5B4BFF",
+  "categories": ["social", "lifestyle", "sports"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

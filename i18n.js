@@ -2,6 +2,12 @@
    Every key must exist in all four languages; tests enforce this. */
 window.MOLAPLAN_I18N={
 "en": {
+"about.body": "Molaplan is a free app for meeting people in your own city: find company for sports and hobbies, join local events and help each other out, neighbour to neighbour.",
+"about.cities": "Cities",
+"about.p1": "Sports and hobbies – a run, padel, disc golf, a board game night or just coffee",
+"about.p2": "Helping each other – ask for a hand or offer yours, always free",
+"about.p3": "Public events near you, on a list and on the map",
+"about.title": "What is Molaplan?",
 "act.avanto": "Ice swimming at sunrise",
 "act.fallback": "Activity",
 "act.festivaali": "Festivals",
@@ -770,7 +776,7 @@ window.MOLAPLAN_I18N={
 "map.useMyLoc": "Use my location",
 "map.youAreHere": "📍 You are here",
 "meta.desc": "Molaplan – find people for your hobbies, help a neighbour and ask for help in your own city. ¡Mola el plan!",
-"meta.title": "Molaplan – find people to do things with",
+"meta.title": "Molaplan – find people for hobbies and help from neighbours",
 "mine.browseHint": "Browse upcoming events and tap \"Join!\".",
 "mine.createHint": "Create an event and invite others to join in.",
 "mine.createdN": "Created ({n})",
@@ -1122,6 +1128,12 @@ window.MOLAPLAN_I18N={
 "view.map": "Map"
 },
 "es": {
+"about.body": "Molaplan es una app gratuita para conocer gente en tu ciudad: encuentra compañía para hacer deporte y tus aficiones, únete a eventos locales y ayudaos entre vecinos.",
+"about.cities": "Ciudades",
+"about.p1": "Deporte y aficiones: correr, pádel, disc golf, una noche de juegos de mesa o un café",
+"about.p2": "Ayudarnos: pide una mano u ofrece la tuya, siempre gratis",
+"about.p3": "Eventos públicos cerca de ti, en lista y en el mapa",
+"about.title": "¿Qué es Molaplan?",
 "act.avanto": "Baño en agua helada al amanecer",
 "act.fallback": "Actividad",
 "act.festivaali": "Festivales",
@@ -1890,7 +1902,7 @@ window.MOLAPLAN_I18N={
 "map.useMyLoc": "Usar mi ubicación",
 "map.youAreHere": "📍 Estás aquí",
 "meta.desc": "Molaplan: encuentra compañía para tus aficiones, ayuda a un vecino y pide ayuda en tu ciudad. ¡Mola el plan!",
-"meta.title": "Molaplan – encuentra gente para tus planes",
+"meta.title": "Molaplan – encuentra gente para tus planes y ayuda entre vecinos",
 "mine.browseHint": "Explora los próximos eventos y pulsa \"¡Me apunto!\".",
 "mine.createHint": "Crea un evento e invita a otros a apuntarse.",
 "mine.createdN": "Creados ({n})",
@@ -2242,6 +2254,12 @@ window.MOLAPLAN_I18N={
 "view.map": "Mapa"
 },
 "fi": {
+"about.body": "Molaplan on ilmainen sovellus, jolla tapaat ihmisiä omassa kaupungissasi: löydä seuraa liikuntaan ja harrastuksiin, liity paikallisiin tapahtumiin ja auttakaa toisianne naapurihengessä.",
+"about.cities": "Kaupungit",
+"about.p1": "Liikunta ja harrastukset – lenkki, padel, frisbeegolf, lautapeli-ilta tai vaikka kahvit",
+"about.p2": "Autetaan toisiamme – pyydä apua tai tarjoa omaasi, aina ilmaiseksi",
+"about.p3": "Julkiset tapahtumat lähelläsi listana ja kartalla",
+"about.title": "Mikä Molaplan on?",
 "act.avanto": "Avantouinti auringonnousussa",
 "act.fallback": "Laji",
 "act.festivaali": "Festivaalit",
@@ -3010,7 +3028,7 @@ window.MOLAPLAN_I18N={
 "map.useMyLoc": "Käytä sijaintiani",
 "map.youAreHere": "📍 Tässä olet",
 "meta.desc": "Molaplan – löydä seuraa harrastuksiin, auta naapuria ja pyydä apua omassa kaupungissasi. ¡Mola el plan!",
-"meta.title": "Molaplan – löydä seuraa harrastuksiin",
+"meta.title": "Molaplan – löydä seuraa harrastuksiin ja apua naapureilta",
 "mine.browseHint": "Selaa tulevia tapahtumia ja paina \"Mukaan!\".",
 "mine.createHint": "Luo tapahtuma ja kutsu muut mukaan harrastamaan.",
 "mine.createdN": "Luomani ({n})",
@@ -3362,6 +3380,12 @@ window.MOLAPLAN_I18N={
 "view.map": "Kartta"
 },
 "sv": {
+"about.body": "Molaplan är en gratis app för att träffa människor i din egen stad: hitta sällskap för sport och fritidsintressen, gå med i lokala evenemang och hjälp varandra som grannar.",
+"about.cities": "Städer",
+"about.p1": "Sport och fritid – en löptur, padel, discgolf, en spelkväll eller bara en fika",
+"about.p2": "Vi hjälper varandra – be om hjälp eller erbjud din, alltid gratis",
+"about.p3": "Offentliga evenemang nära dig, i en lista och på kartan",
+"about.title": "Vad är Molaplan?",
 "act.avanto": "Vinterbad i soluppgången",
 "act.fallback": "Aktivitet",
 "act.festivaali": "Festivaler",
@@ -4130,7 +4154,7 @@ window.MOLAPLAN_I18N={
 "map.useMyLoc": "Använd min plats",
 "map.youAreHere": "📍 Här är du",
 "meta.desc": "Molaplan – hitta sällskap för dina intressen, hjälp en granne och be om hjälp i din egen stad. ¡Mola el plan!",
-"meta.title": "Molaplan – hitta sällskap för dina fritidsintressen",
+"meta.title": "Molaplan – hitta sällskap för fritiden och hjälp av grannar",
 "mine.browseHint": "Bläddra bland kommande evenemang och tryck på \"Jag är med!\".",
 "mine.createHint": "Skapa ett evenemang och bjud in andra att hänga med.",
 "mine.createdN": "Skapade ({n})",
