@@ -4,6 +4,9 @@
 # Usage: bash build.sh [outdir]   (default: dist)
 # Needs only bash + coreutils/sed/grep (no Node). Used by deploy.sh (wrangler direct upload) and usable as the Cloudflare Pages git build:
 #   Build command: bash build.sh    Build output directory: dist    Root directory: (empty)
+# Pages Functions (functions/e/[id].js = per-event OG/SEO pages, functions/sitemap-events.xml.js) live in /functions at the REPO ROOT,
+# not in dist: Pages (git builds) compiles <root>/functions itself, and `wrangler pages deploy dist` uses ./functions of its cwd
+# (deploy.sh runs it from this directory). They import lib/event-page.mjs (bundled by Pages/wrangler).
 set -euo pipefail
 SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"; DST="${1:-$SRC/dist}"
 case "$DST" in /*) ;; *) DST="$SRC/$DST";; esac
@@ -18,7 +21,7 @@ for f in $JS; do cp "$SRC/$f.js" "$DST"/; done
 for f in $STATIC; do [ -f "$SRC/$f" ] || { echo "build.sh: missing $f" >&2; exit 1; }; cp "$SRC/$f" "$DST"/; done
 if command -v sha1sum >/dev/null 2>&1; then H="sha1sum"; elif command -v sha256sum >/dev/null 2>&1; then H="sha256sum"; else H="shasum"; fi
 V=$(cd "$DST" && cat $(for f in $JS; do echo "$f.js"; done) | $H | cut -c1-10)
-sed -i -E "s#<script (defer )?src=\"(config|cities|i18n|friend-requests)\.js\"></script>#<script \1src=\"\2.js?v=$V\"></script>#g" "$DST"/index.html
+sed -i -E "s#<script (defer )?src=\"/?(config|cities|i18n|friend-requests)\.js\"></script>#<script \1src=\"/\2.js?v=$V\"></script>#g" "$DST"/index.html
 N=$(grep -c "\.js?v=$V\"" "$DST"/index.html || true)
 [ "$N" = "4" ] || { echo "cache-busting: expected 4 stamped scripts, got $N" >&2; exit 1; }
 cat > "$DST"/_headers <<H

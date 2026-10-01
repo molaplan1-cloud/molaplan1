@@ -5,3 +5,4 @@ Disallow: /*?mock=
 Disallow: /*&mock=
 
 Sitemap: https://molaplan.com/sitemap.xml
+Sitemap: https://molaplan.com/sitemap-events.xml

@@ -20,3 +20,5 @@ Thumbs.db
 .idea/
 # build output (bash build.sh)
 dist/
+# wrangler pages dev state
+.wrangler/

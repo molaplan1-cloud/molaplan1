@@ -64,8 +64,7 @@ function eventRules(row,a,isNew,old){
  if(kind==='business'&&!row.business_id)chk('events_kind_fields');
  if(!URL_OK(row.official_url))chk('events_official_url_check');
  if(row.ends_at&&(Date.parse(row.ends_at)<Date.parse(row.starts_at)||Date.parse(row.ends_at)>Date.parse(row.starts_at)+62*864e5))chk('events_ends_check');
- if(row.max_participants===null&&kind==='community')chk('events_max_participants_check');
- if(row.max_participants!=null&&!(row.max_participants>=2&&row.max_participants<=100000&&(kind!=='community'||row.max_participants<=50)))chk('events_max_participants_check');
+ if(row.max_participants!=null&&!(Number.isInteger(row.max_participants)&&row.max_participants>=2&&row.max_participants<=100000))chk('events_max_participants_check');   // NULL = no limit, any event type (2026-10-01)
  row.ends_at=row.ends_at||null;row.business_id=row.business_id||null;row.last_at=row.ends_at||row.starts_at;
 }
 function notifyMembers(bid,icon,body,code,params){db.business_members.filter(m=>m.business_id===bid).forEach(m=>notify(m.user_id,icon,body,'business',bid,code,params))}

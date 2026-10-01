@@ -80,7 +80,7 @@ let passed = 0;
   ok((await page.textContent(`#s-detail .prow[data-uid="${PEKKA}"] .fr-btn`)).includes('Kaveri') && await page.isVisible(`#s-detail .prow[data-uid="${MATTI}"] [data-fr="add"]`), 'detail: Pekka marked "Kaveri ✓"; Matti still addable (decline not revealed as friendship)');
 
   // ---------- 4. invite a friend to an event ----------
-  const ev2 = await M(async () => { const r = await window.__mockSupa.as('liisa@example.com').from('events').insert({ activity_id: 'kahvi', title: 'Kahvit Kalliossa', starts_at: new Date(Date.now() + 3 * 864e5).toISOString(), city: 'Helsinki', district: 'Kallio', place: 'Kahvila Sävy', lat: 60.183, lng: 24.951, max_participants: 4 }).select().single(); return r.data.id; });
+  const ev2 = await M(async () => { const r = await window.__mockSupa.as('liisa@example.com').from('events').insert({ activity_id: 'kahvi', title: 'Kahvit Karhupuistossa', starts_at: new Date(Date.now() + 3 * 864e5).toISOString(), city: 'Helsinki', district: 'Kallio', place: 'Kahvila Sävy', lat: 60.183, lng: 24.951, max_participants: 4 }).select().single(); return r.data.id; });
   await page.click('#s-detail [data-a="back"]');
   await M(() => window.__molaplan.refresh()); await page.waitForSelector(`#s-home .card[data-id="${ev2}"]`);
   await openEvent(ev2);
@@ -96,7 +96,7 @@ let passed = 0;
 
   // ---------- 5. Pekka: invite notification, friend list, remove friend ----------
   await loginAs('pekka@example.com');
-  ok(await M(t => window.__molaplan.state.notifs.some(n => n.text.includes('kutsui sinut') && n.text.includes(t)), 'Kahvit Kalliossa'), 'Pekka sees "Liisa kutsui sinut tapahtumaan …"');
+  ok(await M(t => window.__molaplan.state.notifs.some(n => n.text.includes('kutsui sinut') && n.text.includes(t)), 'Kahvit Karhupuistossa'), 'Pekka sees "Liisa kutsui sinut tapahtumaan …"');
   await profile();
   ok((await page.textContent('#fr-list')).includes('Liisa'), "Pekka's friend list shows Liisa");
   await page.click(`#fr-list .fr-row[data-uid="${LIISA}"] [data-fr="remove"]`); await waitToast(/Poistettu/);
@@ -112,7 +112,7 @@ let passed = 0;
   await page.fill('#c-title', 'Kaupunkijuoksu'); await page.fill('#c-date', ymd(4)); await page.fill('#c-time', '10:00'); await page.fill('#c-edate', ymd(4)); await page.fill('#c-etime', '14:00');
   await page.fill('#c-place', 'Kaisaniemen puisto'); await page.fill('#c-org', 'Helsingin kaupunki'); await page.fill('#c-desc', 'Ilmainen juoksutapahtuma kaikille.');
   await page.click('#c-nolimit-btn');
-  ok(await page.isDisabled('#c-maxn') && (await page.getAttribute('#c-nolimit-btn', 'aria-pressed')) === 'true', 'toggle on: number field disabled');
+  ok(await page.isDisabled('#c-maxn') && (await page.getAttribute('#c-nolimit-btn', 'aria-checked')) === 'true', 'toggle on: number field disabled');
   await page.click('#c-publish'); await page.waitForSelector('#s-detail.active #kind-strip');
   db = await DB();
   const big = db.events.find(e => e.title === 'Kaupunkijuoksu');
@@ -128,11 +128,33 @@ let passed = 0;
   ok(card.includes('Ei rajaa') && !(await page.$(`#s-home .card[data-id="${big.id}"] .btn.full`)) && await page.isVisible(`#s-home .card[data-id="${big.id}"] [data-a="join"]`), 'card shows "∞ Ei rajaa" and stays joinable');
   await page.click(`#s-home .card[data-id="${big.id}"] [data-a="join"]`); await page.waitForTimeout(500);
   ok((await DB()).event_participants.filter(p => p.event_id === big.id).length === 26, 'Liisa joins as the 26th');
-  // community events keep the 2–50 limit
-  const cm = await M(async () => (await window.__mockSupa.as('liisa@example.com').from('events').insert({ activity_id: 'kahvi', title: 'Rajaton kahvi', starts_at: new Date(Date.now() + 864e5).toISOString(), city: 'Helsinki', place: 'Kallio', max_participants: null })).error);
-  ok(cm && /max_participants/.test(cm.message), 'community event with no limit is rejected (2–50 stays)');
+  // community events: number field (min 2) + "Ei rajaa" too – no −/+ stepper (2026-10-01)
+  const cm = await M(async () => { const L = window.__mockSupa.as('liisa@example.com'), s = new Date(Date.now() + 864e5).toISOString(); const base = { activity_id: 'kahvi', starts_at: s, city: 'Helsinki', place: 'Kallio' };
+    const a = await L.from('events').insert(Object.assign({ title: 'Rajaton kahvi', max_participants: null }, base)).select().single();
+    const b = await L.from('events').insert(Object.assign({ title: 'Iso piknik', max_participants: 300 }, base)).select().single();
+    const c = await L.from('events').insert(Object.assign({ title: 'Yksin', max_participants: 1 }, base));
+    return [a.error && a.error.message, a.data && a.data.max_participants, b.error && b.error.message, b.data && b.data.max_participants, c.error && c.error.message]; });
+  ok(!cm[0] && cm[1] === null && !cm[2] && cm[3] === 300 && /max_participants/.test(cm[4] || ''), 'community event: NULL (no limit) and 300 allowed, 1 rejected (' + JSON.stringify(cm) + ')');
   await page.click('#nav [data-t="create"]'); await page.waitForSelector('#s-create.active #c-title');
-  ok(!(await page.$('#c-nolimit-btn')), 'normal create form has no "Ei rajaa" toggle');
+  ok(await page.isVisible('#c-maxn') && await page.isVisible('#c-nolimit-btn') && !(await page.$('#s-create [data-a="c-max"]')) && !(await page.$('#s-create .stepper')), 'normal create form: number field + "Ei rajaa", no −/+ buttons');
+  ok((await page.textContent('#c-max-field')).includes('Osallistujia enintään (sinä mukaan lukien)') && (await page.textContent('#c-nolimit-btn')).trim().endsWith('Ei rajaa') && (await page.inputValue('#c-maxn')) === '6' && (await page.getAttribute('#c-maxn', 'min')) === '2', 'label, default 6, min 2');
+  await page.click('#s-create [data-a="c-act"][data-v="kahvi"]');
+  await page.fill('#c-title', 'Iltakahvit Torkkelinmäellä'); await page.fill('#c-date', ymd(3)); await page.fill('#c-time', '17:00'); await page.fill('#c-place', 'Karhupuisto');
+  await page.fill('#c-maxn', '1'); await page.click('#ck-rule'); await page.click('#c-publish');
+  await waitToast(/vähintään 2/); { const r = [await M(() => document.querySelector('#c-maxn').className), (await DB()).events.filter(e => e.title === 'Iltakahvit Torkkelinmäellä').length, (await DB()).events.filter(e => e.title === 'Iltakahvit Torkkelinmäellä').map(e => e.max_participants + '/' + e.host_id).join()]; ok(/err/.test(r[0]) && r[1] === 0, 'max 1 is rejected with a clear message ' + JSON.stringify(r)); }
+  await page.fill('#c-maxn', '120'); await page.click('#c-publish'); await page.waitForSelector('#s-detail.active');
+  ok((await DB()).events.find(e => e.title === 'Iltakahvit Torkkelinmäellä').max_participants === 120, 'community event with 120 places (above the old 50 cap) saved');
+  await page.click('#s-detail [data-a="back"]'); await page.waitForSelector('#s-home.active');
+  await page.click('#nav [data-t="create"]'); await page.waitForSelector('#s-create.active #c-title');
+  await page.click('#s-create [data-a="c-act"][data-v="kahvi"]');
+  await page.fill('#c-title', 'Avoimet ovet pihalla'); await page.fill('#c-date', ymd(3)); await page.fill('#c-time', '18:00'); await page.fill('#c-place', 'Kallion kirjasto');
+  await page.click('#c-nolimit-btn');
+  ok(await page.isDisabled('#c-maxn') && (await page.getAttribute('#c-nolimit-btn', 'aria-checked')) === 'true', 'community "Ei rajaa" disables the number field');
+  await shot('m-create-maxfield', '#c-max-field', 'center');
+  await page.click('#ck-rule'); await page.click('#c-publish'); await page.waitForSelector('#s-detail.active');
+  const un = (await DB()).events.find(e => e.title === 'Avoimet ovet pihalla');
+  ok(un && un.kind === 'community' && un.max_participants === null, 'community event stored with max_participants = null');
+  ok((await page.textContent('#s-detail .info-grid')).includes('∞'), 'detail shows ∞ for an unlimited community event');
 
   ok(!errors.length, 'no console errors' + (errors.length ? ': ' + errors.join(' | ') : ''));
   console.log(`\n${passed} checks passed`);

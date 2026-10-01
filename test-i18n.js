@@ -28,7 +28,7 @@ const badVal = [];
 for (const k of KEYS) for (const l of LANGS) { const v = D[l][k]; if (typeof v !== 'string' || !v.trim()) badVal.push(l + ':' + k + ' empty'); else { if (ph(v) !== ph(D.fi[k])) badVal.push(l + ':' + k + ' placeholders'); if (tags(v) !== tags(D.fi[k])) badVal.push(l + ':' + k + ' html'); } }
 ok(!badVal.length, 'no empty values; placeholders and HTML tags match across languages' + (badVal.length ? ': ' + badVal.slice(0, 8).join(', ') : ''));
 // untranslated: a non-Finnish value identical to Finnish is only allowed for names that really are the same
-const SAME_OK = new Set(['act.padel', 'act.tennis', 'chat.chat', 'dur.2-3h', 'dur.24h', 'view.list']);   // + cityname.* (e.g. Madrid is Madrid everywhere)
+const SAME_OK = new Set(['act.padel', 'act.tennis', 'chat.chat', 'dur.2-3h', 'dur.24h', 'view.list', 'home.title']);   // home.title = the Spanish slogan "Mola el plan!" in every language (user decision 2026-10-01)   // + cityname.* (e.g. Madrid is Madrid everywhere)
 const same = [];
 for (const k of KEYS) for (const l of ['en', 'sv', 'es']) if (D[l][k] === D.fi[k] && /[a-zåäöñ]{3,}/i.test(D.fi[k].replace(/<[^>]+>|\{\w+\}|Molaplan|OpenStreetMap/g, '')) && !SAME_OK.has(k) && !/^cityname\./.test(k)) same.push(l + ':' + k);
 ok(!same.length, 'no Finnish text left untranslated in en/sv/es' + (same.length ? ': ' + same.slice(0, 10).join(', ') : ''));

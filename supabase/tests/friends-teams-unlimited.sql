@@ -98,11 +98,23 @@ insert into events (kind, activity_id, title, starts_at, ends_at, city, place, o
 select t_ok((select max_participants is null from events where title = 'Iso juoksu'), 'public event with max_participants NULL (no limit)');
 commit;
 begin; select t_login('fa@t.fi'); set local role authenticated;
-select t_expect_error('insert into events (activity_id, title, starts_at, city, place, max_participants) values (''kahvi'', ''Rajaton'', now() + interval ''1 day'', ''Helsinki'', ''Kallio'', null)', 'events_max_participants_check');
+-- 2026-10-01: community events may be unlimited too (NULL) and have more than 50 places; 1 or > 100000 is still rejected
+insert into events (activity_id, title, starts_at, city, place, max_participants) values ('kahvi', 'Rajaton', now() + interval '1 day', 'Helsinki', 'Kallio', null);
+select t_ok((select max_participants is null and kind = 'community' from events where title = 'Rajaton'), 'community event with max_participants NULL (no limit)');
+insert into events (activity_id, title, starts_at, city, place, max_participants) values ('kahvi', 'Iso piknik', now() + interval '1 day', 'Helsinki', 'Kallio', 300);
+select t_ok((select max_participants = 300 from events where title = 'Iso piknik'), 'community event with 300 places (old cap was 50)');
+select t_expect_error('insert into events (activity_id, title, starts_at, city, place, max_participants) values (''kahvi'', ''Yksin'', now() + interval ''1 day'', ''Helsinki'', ''Kallio'', 1)', 'events_max_participants_check');
+select t_expect_error('insert into events (activity_id, title, starts_at, city, place, max_participants) values (''kahvi'', ''Liikaa'', now() + interval ''1 day'', ''Helsinki'', ''Kallio'', 100001)', 'events_max_participants_check');
+update events set max_participants = 8 where title = 'Rajaton';
+select t_ok((select max_participants = 8 from events where title = 'Rajaton'), 'host can switch an unlimited community event back to a limit');
+update events set max_participants = null where title = 'Rajaton';
+select t_ok((select max_participants is null from events where title = 'Rajaton'), 'host can switch a community event to no limit');
 insert into event_participants (event_id, user_id) values ((select id from events where title = 'Iso juoksu'), auth.uid());
 commit;
 begin; select t_login('fb@t.fi'); set local role authenticated;
 insert into event_participants (event_id, user_id) values ((select id from events where title = 'Iso juoksu'), auth.uid());
+insert into event_participants (event_id, user_id) values ((select id from events where title = 'Rajaton'), auth.uid());
+select t_ok((select count(*) = 2 from event_participants where event_id = (select id from events where title = 'Rajaton')), 'joining an unlimited community event works');
 commit;
 begin; select t_login('fc@t.fi'); set local role authenticated;
 insert into event_participants (event_id, user_id) values ((select id from events where title = 'Iso juoksu'), auth.uid());

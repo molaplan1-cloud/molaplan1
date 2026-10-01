@@ -370,3 +370,67 @@ warmer help-request copy/simpler form, SEO. Commit locally only (Pages auto-depl
 - Live e2e (local server, real config): e2e-real.js 56 ✔, e2e-friends-real.js 48 ✔, NEW /workspace/molaplan-e2e/e2e-team-real.js
   26 ✔ (anon/RLS, guest landing → team request → login → submit, admin approve in the UI, reject with reason, notifications,
   cleanup: 0 leftovers; the owner gets 2 admin notifications during the run, deleted in cleanup).
+## P7 – Part A: publish UX to production (2026-10-01 ≈20:40–20:55 UTC+3)
+- og-image.png 497 KB → 133 KB (libimagequant 256 colours, dither 0.5; 1200×630, PSNR ≈42.6; original kept in
+  /workspace/molaplan-build/ux/assets/og-image-orig.png) – commit abaef7d.
+- main fast-forwarded 48674af → abaef7d, normal push (token only in the env, `credential.helper=` for the call, nothing stored).
+- Pages git production build 7ae6ddf4 (main abaef7d) = success. /workspace/molaplan-e2e/verify-live-ux.js on molaplan.com: 4 scripts
+  ?v=4152d3346c, robots/sitemap/og-image/manifest/icons with cache headers, canonical/og/JSON-LD/static text, mobile + desktop guest
+  landing/feed, no console errors, no 4xx. Note: robots.txt is served max-age=14400 (Cloudflare override of our 3600).
+## S1 – shareable event URLs + per-event SEO (branch share-urls-2026-10-01, NOT on main)
+- URL: /e/<uuid>-<slug> (slug = ASCII title, ≤48 chars; /e/<uuid> alone works too). index.html uses absolute script paths
+  (/config.js …, /mock-supabase.js) so the same HTML works under /e/. build.sh sed accepts both and stamps "/x.js?v=".
+- SPA: DEEP_EV parsed at boot. Guests skip the landing and land on the event (their area is NOT saved; the feed behind it uses the
+  event's city). Members: opened after loadAll (members may see more, e.g. 18+). Not visible (RLS) → toast "Tapahtumaa ei löytynyt"
+  + normal start, URL reset to /. Opening a detail pushes /e/… (history.pushState), closing/back returns to the feed and the URL to /
+  (history.back for our own entry, guarded by popGuard against races); browser back/forward handled in popstate. While an event is
+  open the document title/canonical/og:url are the event's (applyStaticI18n doesn't overwrite them).
+- Share: share icon in the event hero → sheet: Web Share API ("Muut sovellukset…", only when navigator.share exists), WhatsApp
+  (wa.me), Facebook (sharer.php), Messenger (fb-messenger:// on touch devices; desktop: copy link + open messenger.com, since the
+  web send dialog needs an FB app id), Telegram (t.me/share/url), e-mail (mailto), copy link (clipboard + execCommand fallback),
+  plus the link in a read-only field. Brand icons: simple-icons (CC0) paths inline. Not gated for guests.
+- Pages Functions at the REPO ROOT (Pages compiles <root>/functions; output dir stays dist): functions/e/[id].js and
+  functions/sitemap-events.xml.js, both importing lib/event-page.mjs (pure, unit-tested). The function fetches index.html via
+  env.ASSETS and the event from Supabase REST **guest_events** (security_invoker view → anon RLS: upcoming, not 18+, no host ids)
+  with the anon key parsed from the deployed config.js (or env SUPABASE_URL/SUPABASE_ANON_KEY). Injects <title>, description,
+  canonical, og:url/title/description/locale, twitter:title/description, robots, JSON-LD Event (name, start/end, Place + address
+  + geo, organizer = business/organiser name or "Molaplan" – never the host), removes the root hreflang links, adds a static event
+  block (h1) in #gate for crawlers/no-JS. og:image = default og-image.png. public/business → index; community → noindex (still a
+  full preview when shared; flip INDEX_KINDS in lib/event-page.mjs to index them). Unknown/forbidden/junk id → generic
+  "Tapahtumaa ei löytynyt" page, 404 + noindex + X-Robots-Tag (junk ids never hit the DB). Supabase error → 503 no-store.
+  Cache-Control public, max-age=60. ?lang= picks fi/en/es/sv strings + date locale; times in the city's time zone.
+- /sitemap-events.xml: upcoming public + business events (≤1000), referenced from robots.txt.
+- deploy.sh now runs wrangler from the repo root (so ./functions is bundled); DEPLOY_BRANCH env for previews.
+- Local: `node serve.js 8765` (new; serves index.html for /e/<id> like Pages) replaces python http.server for the tests.
+  Full stack locally: `bash build.sh /tmp/mp-dist && /workspace/cf/node_modules/.bin/wrangler pages dev /tmp/mp-dist --port 8788`
+  from the repo root (workerd, real functions, live DB).
+## S2 – user changes on the same branch
+- Home headline "Mitä tehtäisiin yhdessä?" → "Mola el plan!" (key home.title, Spanish in all 4 languages – SAME_OK in
+  test-i18n) + subtitle home.sub (fi "Hyvä suunnitelma on parempi yhdessä. Katso, mitä lähelläsi tapahtuu.", en/es/sv).
+  Small card "Mistä nimi Molaplan tulee?" (name.title/name.body ×4) on the home feed (bottom) and the landing (side column).
+- Participant limit: one number field (min 2, max 100000) + "Ei rajaa" checkbox (role=checkbox) for ALL event types; the −/+
+  stepper for community events is gone. Defaults 6 (community) / 500 (public/business) until the user types. err.maxRange toast.
+  DB: events_max_participants_check = NULL or 2..100000 for every kind (the old "community 2–50, never NULL" rule and the
+  `update … set 50 where null and community` line removed from schema.sql – re-running schema.sql no longer touches rows).
+  The join trigger already treats NULL as unlimited. Mock mirrors it. Pending join after login also works for unlimited events.
+  Live: backup /workspace/molaplan-backups/live-db-before-share-1827(.tgz), then /workspace/molaplan-build/share/delta-maxp.sql
+  in one transaction (21:39 UTC+3), verified constraint def.
+- Place autocomplete (create form "Paikka"): Photon https://photon.komoot.io/api/ (OSM; search-as-you-type allowed – Nominatim's
+  policy forbids autocomplete). 300 ms debounce, ≥3 chars, AbortController for stale requests, per-query cache, bias lat/lon =
+  map centre (else pin/city), location_bias_scale 0.4, lang=en for the English UI (Photon supports default/en/de/fr; fi/sv/es get
+  local names), ≤6 results "name / street nr, district, city". ARIA combobox + listbox, ↑ ↓ Enter Esc, mousedown-preventDefault
+  so tap/click works without losing focus, messages for searching / no results / offline / service error, attribution "Haku:
+  Photon · © OpenStreetMap". Picking fills the field, sets C.lat/lng, map setView zoom 17 + pin; dragging/tapping the pin works as
+  before. Reverse lookup (Nominatim reverse, allowed) on pin moves: debounce 700 ms, ≥1.5 s between requests, same ~10 m spot not
+  repeated, skipped offline, now also sets C.place and formats "Testikatu 5" (UK "5 Baker Street"); dragend no longer calls it twice.
+## S3 – tests (share-urls branch)
+- npm test: test.js 114, test-i18n 233, test-v5 51, test-friends 35 (new community "Ei rajaa"/120/min-2 checks), test-teams 27,
+  NEW test-share.js 80 (unit: id parsing, slug == SPA evSlug, injection on the real index.html, escaping/XSS, JSON-LD, noindex,
+  404/503, guest_events-only + anon key, sitemap; mock UI: guest deep link on mobile, back/forward, share fallbacks, Web Share,
+  clipboard, 18+/unknown ids, member opens 18+ link, headline/name card ×4 languages, Photon autocomplete with mocked Photon +
+  Nominatim incl. debounce/keyboard/tap/no results/error/offline/rate limit, lang=en). mock_smoke 40.
+- SQL (scratch PG 17 /tmp/pgtest:55432, schema applied twice): friends-teams-unlimited 45 OK (community NULL/300 ok, 1 and 100001
+  rejected, switch limit both ways, join unlimited community), team-requests 26 OK.
+- Live: NEW /workspace/molaplan-e2e/e2e-share-real.js (TARGET=<deploy>): throwaway admin + user, public + community (NULL limit) +
+  18+ events, max 1 rejected, OG/JSON-LD/robots per kind, 404s, sitemap, guest SPA on mobile, OG dump (shots/share-og-dump.*),
+  cleanup. e2e-friends-real.js: community "no limit" now expected to succeed (+ min-2 check).

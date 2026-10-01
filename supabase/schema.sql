@@ -317,14 +317,12 @@ alter table public.events add constraint events_price_info_check check (char_len
 alter table public.events drop constraint if exists events_ends_check;
 alter table public.events add constraint events_ends_check check (
   ends_at is null or (ends_at >= starts_at and ends_at <= starts_at + interval '62 days'));
--- max_participants NULL = ei rajaa (vain julkiset ja yritystapahtumat); tavalliset tapahtumat 2–50
+-- max_participants NULL = ei rajaa – kaikki tapahtumatyypit, myös tavalliset (2026-10-01); muuten 2–100000.
+-- (Ennen: NULL vain julkisille/yritystapahtumille ja tavallisille 2–50. Idempotentti: ei muuta olemassa olevia rivejä.)
 alter table public.events alter column max_participants drop not null;
-update public.events set max_participants = 50 where max_participants is null and kind = 'community';
 alter table public.events drop constraint if exists events_max_participants_check;
 alter table public.events add constraint events_max_participants_check check (
-  (max_participants is null and kind <> 'community')
-  or (max_participants is not null and max_participants between 2 and 100000
-      and (kind <> 'community' or max_participants <= 50)));
+  max_participants is null or max_participants between 2 and 100000);
 alter table public.events drop constraint if exists events_description_check;
 alter table public.events add constraint events_description_check check (
   char_length(description) <= case when kind = 'community' then 600 else 2000 end);
