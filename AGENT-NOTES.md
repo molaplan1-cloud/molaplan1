@@ -265,3 +265,18 @@ Next: e2e-real.js extensions, deploy.sh --no-deploy.
 - Local commit d40031c: build.sh (portable copy+stamp+_headers -> dist/; deploy.sh now calls it, output byte-identical),
   root _headers (revalidate everything, nosniff, noindex internal files), dist/ ignored. npm test still exit 0.
   Recommendation: Pages Settings -> Builds: build command `bash build.sh`, output dir `dist` (user decision).
+## D5 – deploy (≈18:56 UTC+3)
+- `./deploy.sh` (wrangler pages deploy --branch main; not refused despite git connection) -> deployment 6779f8b8-e727-4932-8c39-03f8925e614b,
+  https://6779f8b8.molaplan.pages.dev, production, now latest + canonical (aliases molaplan.com, www.molaplan.com). ?v=907edb3383.
+- Right after deploy one curl of molaplan.com/friend-requests.js?v=… got a stale edge copy (text/html SPA fallback, max-age=14400,
+  cf-cache-status then EXPIRED) – correct on the next request; browsers that hit that window could keep the HTML for 4 h.
+## D6 – live verification (/workspace/molaplan-e2e/verify-live.js via live-shots.js, ≈18:58)
+- All live events were in the past (feed empty) -> live-shots.js creates a temporary public unlimited event with a throwaway admin,
+  runs verify-live.js, deletes event + user (leftovers 0).
+- molaplan.com and molaplan.pages.dev: 4 scripts ?v=907edb3383, each 200 application/javascript immutable; MolaplanFriends present;
+  landing + home feed + event detail; no 4xx, no console/page errors. www.molaplan.com serves the same index (curl).
+- Screenshots 390×844@2x: shots/live-molaplan-com-{landing,home,event}.png, shots/live-molaplan-pages-dev-{landing,home,event}.png
+  (not committed – a git build would publish shots/).
+- Live meta after migration == replica after migration (only pgcrypto-location noise): /workspace/molaplan-backups/live-db-after-merge-meta/.
+- Final live counts: 3 users/profiles, 1 admin (owner, not banned), 4 events, 5 messages, 1 notification, 2 participants, 0 friend rows.
+- Nothing pushed. Pages settings unchanged.
