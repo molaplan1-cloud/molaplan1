@@ -302,3 +302,21 @@ Next: e2e-real.js extensions, deploy.sh --no-deploy.
   live events past).
 ## P6 – old deployments (not deleted): 69 total; 50 still serve AGENT-NOTES.md (and supabase/schema.sql) on <id>.molaplan.pages.dev
   (all git pushes 09-26/27 + wrangler deploys of 6b99886 from the repo dir). No email/secrets in those notes.
+
+# UX task (branch ux-2026-10-01) – 2026-10-01 19:15 (UTC+3)
+Scope: remove "Vaihda aluetta", desktop layout, navigation + business/team account entry + team account REQUEST flow,
+warmer help-request copy/simpler form, SEO. Commit locally only (Pages auto-deploys main AND previews every pushed branch).
+## U0 – backup: `git branch backup/pre-ux-2026-10-01` (= main 48674af); work branch ux-2026-10-01. Helpers in
+  /workspace/molaplan-build/ux/ (ed.py edit helper, i18n_tool.js = add/delete keys in all 4 langs, seed.js/tour.js/montage.js).
+## U1 – "Vaihda aluetta" removed
+- Home header .loc-pill (#loc-pill → profile, guest #guest-city → landing picker), profile hero "Vaihda aluetta" link,
+  openCitySheet()/citySave() + actions edit-city/city-save/guest-city, .loc-pill/.loc-name/.loc-chg CSS, i18n loc.change (×4).
+- Kept: feed filters 📍 (#loc-home-btn) + radius chips, near-me sort, landing picker, home city in profile "Omat tiedot".
+- test.js: asserts the element is gone and the radius filter still narrows the near-me feed.
+## U2 – desktop layout (≥900px; 520–899px keeps the centred phone frame, <520px mobile unchanged)
+- Dark frame kept/strengthened: dark body (#0E0C1B + brand glows), #app = min(1200px, 100vw-64px) × (100dvh-48px), radius 30px,
+  10px near-black bezel shadow. --nav-h:0 → bottom nav becomes a left rail (logo, ＋ create, Koti, Kartta, Chatit, Omat, Profiili;
+  .nav-desk items only on desktop) and stays visible on push screens (no dead ends).
+- Home: 3-column card grid (auto-fill minmax 300px), filters in one row. Map: filters + the same filtered list (#map-side,
+  renderMapSide(); selected marker highlights/scrolls its card) on the left, map on the right. Push/tab screens: centred 860px column.
+  Sheets become centred dialogs. Landing: hero on top, landing card left, side cards right.

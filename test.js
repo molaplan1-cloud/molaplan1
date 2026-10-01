@@ -68,11 +68,12 @@ let passed = 0;
   await page.click('#land-go'); await page.waitForSelector('#s-home.active .card');
   ok(await M(() => window.__molaplan.state.guest === true && !window.__mockSupa.db().calls.some(c => c.fn === 'signUp')), 'guest sees the feed without an account');
   const gHome = await page.textContent('#s-home');
-  ok(gHome.includes('Padel Hyrylässä') && gHome.includes('Tuusula'), 'guest feed shows public events in the chosen city');
+  ok(gHome.includes('Padel Hyrylässä'), 'guest feed shows public events in the chosen city');
   ok(!gHome.includes('Kuutamouinti'), '18+ events are not shown to guests');
   ok(await page.isVisible('#guest-login') && await page.isVisible('#guest-lang'), 'guest header has "Kirjaudu" and a language button');
   ok(await page.isVisible('#vt-list') && await page.isVisible('#vt-map') && (await page.textContent('#vt-list')).includes('Lista') && (await page.textContent('#vt-map')).includes('Kartta'), 'home feed has a visible Lista/Kartta toggle');
-  ok((await page.textContent('#guest-city')).includes('Vaihda aluetta'), 'home header offers "Vaihda aluetta" (change area)');
+  ok(!(await page.$('#guest-city')) && !(await page.$('#loc-pill')) && !/Vaihda aluetta/.test(await page.textContent('#s-home')), 'no separate "Vaihda aluetta" element in the home header (events have their own location filter)');
+  ok(await page.isVisible('#loc-home-btn') && await page.isVisible('#radius-row'), 'location/near-me filter (📍 + km) is available in the feed filters');
   ok(await M(() => document.querySelector('#s-home .act-filter-item.on').dataset.v === 'all'), 'default activity filter = all activities');
   const gState = await M(() => JSON.stringify(window.__molaplan.state));
   ok(!gState.includes('Hanna') && !gState.includes('+358401112233') && !gState.includes('hanna@example.com') && !gState.includes('Kotikatu'), 'guest data has no names, phone numbers, emails or street addresses');
@@ -415,8 +416,9 @@ let passed = 0;
     ok(true, 'List/Map toggle switches back to the list');
     await p.reload(); await p.waitForSelector('#s-home.active .card');
     ok(!(await p.$('#landing')) && await p.evaluate(() => window.__geoCalls) === 0 && (await p.textContent('#s-home .card h3')) === 'Kahvit Kalliossa', 'choice remembered: next visit opens the near-me feed directly, without prompting again');
-    await p.click('#guest-city'); await p.waitForSelector('#landing #land-city');
-    ok(await p.isVisible('#land-locate') && await p.isVisible('#land-city'), '"Vaihda aluetta" opens the area picker (with "Näytä lähelläni" still available)');
+    await p.click('#s-home [data-a="f-radius"][data-v="5"]'); await p.waitForTimeout(200);
+    const t5 = await p.$$eval('#s-home .card h3', x => x.map(e => e.textContent));
+    ok(t5.length >= 1 && !t5.includes('Brädspel på Söder'), 'near-me radius filter (5 km) still narrows the feed: ' + t5.join(', '));
     await c.close();
   }
   {
