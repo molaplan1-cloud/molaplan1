@@ -18,3 +18,5 @@ supabase/.branches/
 Thumbs.db
 .vscode/
 .idea/
+# build output (bash build.sh)
+dist/

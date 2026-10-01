@@ -1,0 +1,13 @@
+# Used only when Cloudflare Pages serves the repository root as-is (git build with no build command / output dir).
+# Script URLs are NOT versioned there, so nothing may be cached as immutable: everything is revalidated (ETag),
+# a new push is picked up on the next load. build.sh writes its own _headers (versioned JS cached 1 year) into
+# its output dir, so this file does not affect ./deploy.sh or a `bash build.sh` -> dist git build.
+/*
+  Cache-Control: no-cache, must-revalidate
+  X-Content-Type-Options: nosniff
+/AGENT-NOTES.md
+  X-Robots-Tag: noindex
+/supabase/*
+  X-Robots-Tag: noindex
+/shots/*
+  X-Robots-Tag: noindex
