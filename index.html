@@ -837,8 +837,27 @@ select.inp{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.
 .help-card .hc-count{display:inline-block;margin-top:8px;font-size:12.5px;font-weight:800;opacity:.9}
 .hc-actions{display:flex;gap:10px;padding:4px 16px 16px}
 .hc-actions .btn{flex:1;height:44px;border-radius:14px;font-weight:800;font-size:14px}
-.hc-offer{background:#fff;color:var(--gd-d)}
-.hc-ask{background:rgba(255,255,255,.18);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.7)}
+.hc-ask{background:#fff;color:var(--gd-d);flex:1 1 100%}
+.hc-offer{background:none;border:0;padding:6px 4px;margin:2px auto 0;font:inherit;font-size:13.5px;font-weight:700;color:#fff;opacity:.92;cursor:pointer;text-decoration:underline;text-decoration-color:rgba(255,255,255,.45);text-underline-offset:3px}
+.hc-actions{flex-wrap:wrap}
+.g-ideas{margin:0 16px 14px;padding:16px 16px 14px;border-radius:20px;background:#fff;box-shadow:0 2px 12px rgba(12,166,120,.08),inset 0 0 0 1.5px rgba(12,166,120,.16)}
+.g-ideas h3{margin:0 0 4px;font-size:16px}
+.g-ideas p{margin:0 0 8px;color:var(--muted);font-size:13px}
+.g-ideas ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.g-ideas li{font-size:14px;line-height:1.45;color:var(--ink2);background:#F1FBF7;border-radius:12px;padding:8px 12px}
+.g-give{display:flex;align-items:center;gap:12px;margin:0 16px 14px;padding:12px 14px;border-radius:16px;border:1.5px dashed rgba(12,166,120,.35);background:#fff;font-size:13px;line-height:1.45}
+.g-give .e{font-size:24px;flex:none}
+.g-give b{display:block;font-size:14px;margin-bottom:1px}
+.g-give span.t{color:var(--muted)}
+.g-give button{margin-left:auto;flex:none;background:none;border:0;font:inherit;font-weight:800;color:var(--gd-d);cursor:pointer;white-space:nowrap;padding:6px 2px}
+details.a-more{margin:0 16px 14px;border-radius:22px;background:#fff;box-shadow:0 1px 0 rgba(23,21,43,.04),0 6px 20px rgba(23,21,43,.05)}
+details.a-more>summary{cursor:pointer;list-style:none;padding:16px 18px;display:flex;flex-direction:column;gap:2px}
+details.a-more>summary::-webkit-details-marker{display:none}
+details.a-more>summary b{font-size:15px}
+details.a-more>summary b::after{content:' ＋';color:var(--gd)}
+details.a-more[open]>summary b::after{content:' −'}
+details.a-more>summary small{color:var(--muted);font-size:12.5px}
+details.a-more .inner{padding:0 18px 16px}
 .onb-card.help-card{padding:0;margin-top:14px}
 .land-help{padding:18px 0 0!important}
 .land-help .kick,.land-help h2,.land-help p{margin-left:18px;margin-right:18px}
@@ -1366,7 +1385,7 @@ function renderLanding(opts){
  </div>
  <div class="onb-card help-card land-help land-side" id="land-help">
   <span class="kick">${tx('home.goodKicker')}</span><h2>${tx('home.helpTitle')}</h2><p>${tx('home.goodSub')}</p>
-  <div class="hc-actions"><button class="btn hc-offer" data-a="land-help" data-v="offer" id="land-offer">${tx('home.helpOffer')}</button><button class="btn hc-ask" data-a="land-help" data-v="ask" id="land-ask">${tx('home.helpAsk')}</button></div>
+  <div class="hc-actions"><button class="btn hc-ask" data-a="land-help" data-v="ask" id="land-ask">${tx('home.helpAsk')}</button><button class="hc-offer" data-a="land-help" data-v="offer" id="land-offer">${tx('home.helpOfferLink')}</button></div>
  </div>
  <div class="onb-card org-card land-side" id="land-orgs"><span class="kick">🏢 👥 ${tx('org.ask')}</span><h2>${tx('org.h1')}</h2><p>${tx('org.landSub')}</p><button class="btn ghost block" data-a="land-orgs" id="land-orgs-btn">${tx('org.cta')} →</button></div>`);
  bindCityFields('land');
@@ -2657,7 +2676,7 @@ function goodBannerHTML(){
    <p>${tx('home.goodSub')}</p>
    <span class="hc-count"><small>${txn('home.goodCount',n)}</small> · ${tx('home.goodCta')}</span>
   </button>
-  <div class="hc-actions"><button class="btn hc-offer" data-a="open-good" id="hc-offer">${tx('home.helpOffer')}</button><button class="btn hc-ask" data-a="ask-help" id="hc-ask">${tx('home.helpAsk')}</button></div>
+  <div class="hc-actions"><button class="btn hc-ask" data-a="ask-help" id="hc-ask">${tx('home.helpAsk')}</button><button class="hc-offer" data-a="open-good" id="hc-offer">${tx('home.helpOfferLink')}</button></div>
  </div>`;
 }
 function homeGoodHTML(){
@@ -2696,7 +2715,9 @@ function renderGood(){
   <div class="cz-stats"><span><b>${all.length}</b>${tx('good.statOpen')}</span><span><b>${helpers}</b>${tx('good.statHelpers')}</span><span><b>${CATS.length}</b>${tx('good.statWays')}</span></div>
  </div>
  <div class="cz-actions"><button class="btn gprimary" data-a="ask-help" id="ask-btn">${tx('good.askPlus')}</button><button class="btn ghost" data-a="good-map">${icon('map')} ${tx('hul.onMap')}</button></div>
- <div class="filters">
+ <div class="g-ideas" id="good-ideas"><h3>${tx('good.ideasTitle')}</h3><p>${tx('good.ideasLead')}</p><ul><li>${tx('good.idea1')}</li><li>${tx('good.idea2')}</li><li>${tx('good.idea3')}</li></ul></div>
+ <div class="g-give" id="good-give"><span class="e">🎁</span><span><b>${tx('good.giveTitle')}</b><span class="t">${tx('good.giveBody')}</span></span><button data-a="good-see" id="good-see">${tx('good.giveCta')}</button></div>
+ <div class="filters" id="good-filters">
   <div class="chips" data-keep="gf-cats"><button class="chip gsel ${GF.cat==='all'?'on':''}" data-a="gf-cat" data-v="all">${tx('good.all')}</button>${CATS.map(c=>`<button class="chip gsel ${GF.cat===c.id?'on':''}" data-a="gf-cat" data-v="${c.id}">${c.emoji} ${esc(c.name)}</button>`).join('')}</div>
   <div class="selrow"><label class="sel scity">${icon('city')}<select id="gf-city" aria-label="${tx('city.which')}">${cityOptions(viewCity())}</select></label><label class="sel ${GF.district!=='all'?'gset':''}">${icon('pin')}<select id="gf-district" aria-label="${tx('create.district')}"><option value="all">${tx('filter.allAreas')}</option>${districtOptions(viewCity(),GF.district,true)}</select></label></div>
  </div>
@@ -2856,64 +2877,63 @@ function vDone(){
 /* ---- Pyydä apua (multi-step) ---- */
 function newAsk(){
  const vc=viewCity(), hc=homeCenter(), ds=districts(vc), t=new Date();t.setDate(t.getDate()+2);
- return {step:1,cat:'siivous',title:'',desc:'',needs:'',city:vc,district:vc===cityName()&&ds.includes(S.user.district)?S.user.district:firstDistrict(vc),place:'',lat:hc.c[0],lng:hc.c[1],dest:null,destLabel:'',pinMode:'from',date:ymd(t),time:'12:00',dur:'2-3h',max:1,name:S.user.name||'',consent:{vol:false,terms:false,review:false}};
+ return {step:1,more:false,cat:'siivous',title:'',desc:'',needs:'',city:vc,district:vc===cityName()&&ds.includes(S.user.district)?S.user.district:firstDistrict(vc),place:'',lat:hc.c[0],lng:hc.c[1],dest:null,destLabel:'',pinMode:'from',date:ymd(t),time:'12:00',dur:'2-3h',max:1,name:S.user.name||'',consent:false};
 }
 function openAsk(){if(!A)A=newAsk();navTo('s-ask',null)}
-function askStepsHTML(){return `<span class="ask-steps" aria-label="${tx('ask.step')} ${A.step}/3">${[1,2,3].map(i=>`<i class="${i<=A.step?'on':''}"></i>`).join('')}</span>`}
+function askStepsHTML(){return `<span class="ask-steps" aria-label="${tx('ask.step')} ${A.step}/2">${[1,2].map(i=>`<i class="${i<=A.step?'on':''}"></i>`).join('')}</span>`}
 function renderAsk(toTop){
  if(!A)A=newAsk();
  const s=$('#s-ask'), st=s.scrollTop, c=cat(A.cat), kulj=A.cat==='kuljetus';
  if(askMap){askMap.remove();askMap=null}
- const T=['',tx('ask.s1'),tx('ask.s2'),tx('ask.s3')];
- const P=['',tx('ask.s1sub'),tx('ask.s2sub'),tx('ask.s3sub')];
+ const T=['',tx('ask.s1'),tx('ask.s2')];
+ const P=['',tx('ask.s1sub'),tx('ask.s2sub')];
  let body='';
  if(A.step===1){
   const ds=districts();
+  const mapBox=`<div class="field" style="margin:0"><span>${tx('create.mapLabel')}${kulj?' ('+tx('ask.route')+')':''}</span><div class="pick-map" id="ask-map"></div><div class="pick-hint g" id="ask-hint"></div></div>`;
   body=`<div class="card-box"><h3>${tx('ask.category')}</h3><div class="gcat-grid">${CATS.map(x=>`<button class="gcat ${A.cat===x.id?'on':''}" data-a="a-cat" data-v="${x.id}"><span>${x.emoji}</span>${esc(x.name)}</button>`).join('')}</div></div>
   <div class="card-box">
    <label class="field"><span>${tx('ask.titleReq')}</span><input class="inp" id="a-title" maxlength="70" placeholder="${esc(catPh(A.cat))}" value="${esc(A.title)}"></label>
-   <label class="field"><span>${tx('ask.descReq')}</span><textarea class="inp" id="a-desc" maxlength="600" placeholder="${tx('ask.descPh')}">${esc(A.desc)}</textarea></label>
-   <label class="field" style="margin:0"><span>${tx('ask.needsQ')}</span><input class="inp" id="a-needs" maxlength="100" placeholder="${kulj?tx('ask.needsPhKulj'):tx('ask.needsPh')}" value="${esc(A.needs)}"></label>
+   <label class="field" style="margin:0"><span>${tx('ask.descReq')}</span><textarea class="inp" id="a-desc" maxlength="600" placeholder="${tx('ask.descPh')}">${esc(A.desc)}</textarea></label>
   </div>
   <div class="card-box">
    <div class="two"><label class="field"><span>${tx('city.which')}</span><select class="inp" id="a-city">${cityOptions(A.city)}</select></label>
    <label class="field"><span>${tx('ask.districtReq')}</span><select class="inp" id="a-district">${districtOptions(A.city,A.district)}</select></label></div>
-   <label class="field"><span>${kulj?tx('ask.start'):tx('ask.exactPlace')}</span><input class="inp" id="a-place" maxlength="60" placeholder="${kulj?tx('ask.phStart'):tx('ask.placePh')}" value="${esc(A.place)}"></label>
-   ${kulj?`<label class="field"><span>${tx('ask.destReq')}</span><input class="inp" id="a-destlabel" maxlength="60" placeholder="${tx('ask.destPh')}" value="${esc(A.destLabel)}"></label>
-   <div class="seg gseg"><button class="${A.pinMode==='from'?'on':''}" data-a="a-pinmode" data-v="from" id="pm-from">${tx('ask.pmFrom')}</button><button class="${A.pinMode==='to'?'on':''}" data-a="a-pinmode" data-v="to" id="pm-to">${tx('ask.pmTo')}${A.dest?' ✓':''}</button></div>`:''}
-   <div class="field" style="margin:0"><span>${tx('create.mapLabel')}${kulj?' ('+tx('ask.route')+')':''}</span><div class="pick-map" id="ask-map"></div><div class="pick-hint g" id="ask-hint"></div></div>
+   <div class="two"><label class="field" style="margin:0"><span>${tx('ask.dayReq')}</span><input class="inp" type="date" id="a-date" min="${ymd(new Date())}" value="${A.date}"></label><label class="field" style="margin:0"><span>${tx('ask.timeReq')}</span><input class="inp" type="time" id="a-time" value="${A.time}"></label></div>
   </div>
-  <div class="card-box">
-   <div class="two"><label class="field"><span>${tx('ask.dayReq')}</span><input class="inp" type="date" id="a-date" min="${ymd(new Date())}" value="${A.date}"></label><label class="field"><span>${tx('ask.timeReq')}</span><input class="inp" type="time" id="a-time" value="${A.time}"></label></div>
-   <div class="field"><span>${tx('ask.duration')}</span><div class="dur-pick">${DURS.map(d=>`<button class="${A.dur===d?'on':''}" data-a="a-dur" data-v="${d}">${esc(durName(d))}</button>`).join('')}</div></div>
+  ${kulj?`<div class="card-box">
+   <label class="field"><span>${tx('ask.start')}</span><input class="inp" id="a-place" maxlength="60" placeholder="${tx('ask.phStart')}" value="${esc(A.place)}"></label>
+   <label class="field"><span>${tx('ask.destReq')}</span><input class="inp" id="a-destlabel" maxlength="60" placeholder="${tx('ask.destPh')}" value="${esc(A.destLabel)}"></label>
+   <div class="seg gseg"><button class="${A.pinMode==='from'?'on':''}" data-a="a-pinmode" data-v="from" id="pm-from">${tx('ask.pmFrom')}</button><button class="${A.pinMode==='to'?'on':''}" data-a="a-pinmode" data-v="to" id="pm-to">${tx('ask.pmTo')}${A.dest?' ✓':''}</button></div>
+   ${mapBox}
+  </div>`:''}
+  <details class="a-more" id="a-more"${A.more?' open':''}><summary><b>${tx('ask.moreTitle')}</b><small>${kulj?tx('ask.needsQ')+' · '+tx('ask.duration')+' · '+tx('ask.helpersNeeded'):tx('ask.moreSub')}</small></summary><div class="inner">
+   <label class="field"><span>${tx('ask.needsQ')}</span><input class="inp" id="a-needs" maxlength="100" placeholder="${kulj?tx('ask.needsPhKulj'):tx('ask.needsPh')}" value="${esc(A.needs)}"></label>
+   ${kulj?'':`<label class="field"><span>${tx('ask.exactPlace')}</span><input class="inp" id="a-place" maxlength="60" placeholder="${tx('ask.placePh')}" value="${esc(A.place)}"></label>${mapBox}`}
+   <div class="field" style="margin-top:14px"><span>${tx('ask.duration')}</span><div class="dur-pick">${DURS.map(d=>`<button class="${A.dur===d?'on':''}" data-a="a-dur" data-v="${d}">${esc(durName(d))}</button>`).join('')}</div></div>
    <div class="field" style="margin:0"><span>${tx('ask.helpersNeeded')}</span><div class="stepper"><button data-a="a-max" data-v="-1" aria-label="${tx('create.less')}">−</button><b id="a-max">${A.max}</b><button data-a="a-max" data-v="1" aria-label="${tx('create.more')}">+</button></div></div>
-  </div>`;
- }else if(A.step===2){
+  </div></details>`;
+ }else{
   body=`<div class="card-box"><h3>${tx('ask.contacts')}</h3>
    <label class="field"><span>${tx('ask.nameReq')}</span><input class="inp" id="a-name" maxlength="40" autocomplete="name" placeholder="${tx('ask.namePh')}" value="${esc(A.name)}"></label>
    <div id="vblock">${verifyBlockHTML()}</div>
   </div>
-  <div class="safe-note g-note" id="manual-review"><span class="e">🛡️</span><span><b>${tx('ask.reviewTitle')}</b>${tx('ask.reviewBody')}<small>${tx('help.myContactsNote')}</small></span></div>`;
- }else{
-  const ck=(k,html)=>`<button class="chk ${A.consent[k]?'on':''}" data-a="a-consent" data-v="${k}" id="ck-${k}" role="checkbox" aria-checked="${A.consent[k]}"><span class="box">✓</span><span>${html}</span></button>`;
-  body=`<div class="card-box"><h3>${tx('ask.summary')}</h3>
+  <div class="card-box" id="a-summary"><h3>${tx('ask.summary')}</h3>
    <div class="sumrow"><div class="emo gemo">${c.emoji}</div><div><div class="act-name gname">${esc(c.name)}</div><h4>${esc(A.title)}</h4></div></div>
-   <ul class="sumlist"><li><b>${tx('ask.when')}</b><span>${esc(whenText(A)+' · '+durName(A.dur))}</span></li><li><b>${tx('event.where')}</b><span>${esc(kulj&&A.dest?(A.place||A.district)+' → '+A.destLabel:(A.place||A.district))}</span></li><li><b>${tx('ask.helpers')}</b><span>${A.max}</span></li><li><b>${tx('ask.contactPerson')}</b><span>${esc(A.name)}</span></li></ul>
-   <div class="vticks">${vtick(tx('v.emailVerified'),S.emailVerified)}${vtick(tx('v.phoneGiven'),!!S.phone)}${vtick(tx('v.adminWillCheck'),false,true)}</div>
+   <ul class="sumlist"><li><b>${tx('ask.when')}</b><span>${esc(whenText(A)+' · '+durName(A.dur))}</span></li><li><b>${tx('event.where')}</b><span>${esc(kulj&&A.dest?(A.place||A.district)+' → '+A.destLabel:(A.place||A.district))}</span></li><li><b>${tx('ask.helpers')}</b><span>${A.max}</span></li></ul>
   </div>
   <div class="card-box"><h3>${tx('ask.consents')}</h3>
-   ${ck('vol',tx('ask.consentVol'))}
-   ${ck('terms',tx('ask.acceptGuidelines',{link:`<span class="inline-link" data-a="open-guide" role="link">${tx('ask.readGuidelines')}</span>`}))}
-   ${ck('review',tx('ask.consentReview'))}
+   <button class="chk ${A.consent?'on':''}" data-a="a-consent" id="ck-all" role="checkbox" aria-checked="${A.consent}"><span class="box">✓</span><span>${tx('ask.consentAll',{link:`<span class="inline-link" data-a="open-guide" role="link">${tx('ask.readGuidelines')}</span>`})}</span></button>
   </div>
-  <div class="safe-note g-note"><span class="e">🛡️</span><span><b>${tx('ask.rememberSafety')}</b>${tx('ask.safetyBody')}</span></div>`;
+  <div class="safe-note g-note" id="manual-review"><span class="e">🛡️</span><span><b>${tx('ask.reviewTitle')}</b>${tx('ask.reviewBody')}<small>${tx('help.myContactsNote')}</small></span></div>`;
  }
  s.innerHTML=`<div class="push-head"><button class="icon-btn" data-a="back" aria-label="${tx('common.back')}">${icon('back')}</button><span class="t">${tx('good.ask')}</span>${askStepsHTML()}</div>
- <div class="ask-title"><small>${tx('ask.step')} ${A.step}/3 · ${tx('help.goodTag')}</small><h1>${T[A.step]}</h1><p>${P[A.step]}</p></div>
+ <div class="ask-title"><small>${tx('ask.step')} ${A.step}/2 · ${tx('help.goodTag')}</small><h1>${T[A.step]}</h1><p>${P[A.step]}</p></div>
  ${body}
- <div class="sticky-cta ask-cta"><div class="row" style="gap:10px">${A.step>1?`<button class="btn ghost" data-a="a-prev" style="flex:1;height:54px">← ${tx('common.back')}</button>`:''}<button class="btn gprimary" id="a-next" data-a="${A.step<3?'a-next':'a-submit'}" style="flex:2;height:54px">${A.step===1?tx('ask.next'):A.step===2?tx('ask.nextConsents'):tx('ask.submit')}</button></div></div>`;
+ <div class="sticky-cta ask-cta"><div class="row" style="gap:10px">${A.step>1?`<button class="btn ghost" data-a="a-prev" style="flex:1;height:54px">← ${tx('common.back')}</button>`:''}<button class="btn gprimary" id="a-next" data-a="${A.step<2?'a-next':'a-submit'}" style="flex:2;height:54px">${A.step===1?tx('ask.next'):tx('ask.submit')}</button></div></div>`;
  s.scrollTop=toTop?0:st;
- if(A.step===1)setTimeout(initAskMap,60);
+ if(A.step===1&&(kulj||A.more))setTimeout(initAskMap,60);
+ const md=$('#a-more');if(md)md.addEventListener('toggle',()=>{A.more=md.open;if(md.open){if(!askMap)setTimeout(initAskMap,30);else setTimeout(()=>askMap&&askMap.invalidateSize(),60)}});
  updAskCta();
 }
 function updAskCta(){if(A&&A.step===2){const b=$('#a-next');if(b)b.classList.toggle('dim',!isVerified())}}
@@ -2987,12 +3007,12 @@ function askValidate(){
  return true;
 }
 async function askNext(el){
- if(A.step===2&&!S.phone){const i=$('#v-phone');if(i&&validPhone(i.value.trim())){if(!(await savePhone(el)))return}}
  if(!askValidate())return;A.step++;renderAsk(true);
 }
 async function askSubmit(el){
- const miss=['vol','terms','review'].filter(k=>!A.consent[k]);
- if(miss.length){miss.forEach(k=>{const e=$('#ck-'+k);if(e)e.classList.add('err')});toast(tx('ask.errConsents'));return}
+ if(A.step===2&&!S.phone){const i=$('#v-phone');if(i&&validPhone(i.value.trim())){if(!(await savePhone(el)))return}}
+ if(!askValidate())return;
+ if(!A.consent){const e=$('#ck-all');if(e){e.classList.add('err');e.scrollIntoView({block:'center',behavior:'smooth'})}toast(tx('ask.errConsents'));return}
  const kulj=A.cat==='kuljetus'&&A.dest;
  const req={category:A.cat,title:A.title.trim(),description:A.desc.trim(),needs:A.needs.trim(),city:A.city||cityName(),district:A.district,place:A.place.trim()||A.district,lat:A.lat,lng:A.lng,dest_lat:kulj?A.dest.lat:null,dest_lng:kulj?A.dest.lng:null,dest_label:kulj?A.destLabel.trim():null,starts_at:localIso(A.date,A.time),duration:A.dur,helpers_needed:A.max,consent_voluntary:true,consent_terms:true,consent_review:true};
  const contact={name:A.name.trim(),phone:S.phone,email:S.email};
@@ -3591,7 +3611,7 @@ document.addEventListener('click',e=>{
   case 'a-max':A.max=Math.max(1,Math.min(10,A.max+Number(v)));$('#a-max').textContent=A.max;break;
   case 'a-next':askNext(el);break;
   case 'a-prev':A.step=Math.max(1,A.step-1);renderAsk(true);break;
-  case 'a-consent':A.consent[v]=!A.consent[v];el.classList.toggle('on',A.consent[v]);el.classList.remove('err');el.setAttribute('aria-checked',A.consent[v]);break;
+  case 'a-consent':A.consent=!A.consent;el.classList.toggle('on',A.consent);el.classList.remove('err');el.setAttribute('aria-checked',A.consent);break;
   case 'a-submit':askSubmit(el);break;
   case 'v-phone-save':savePhone(el);break;
   case 'v-change':vEditPhone=true;vPhoneDraft=S.phone;refreshVerify();setTimeout(()=>{const i=$('#v-phone');if(i)i.focus()},50);break;
@@ -3624,6 +3644,7 @@ document.addEventListener('click',e=>{
   case 'rep-send':sendReport(id,el);break;
   case 'open-biz':openBiz();break;
   case 'open-orgs':openOrgs();break;
+  case 'good-see':{const t=$('#good-filters');if(t)t.scrollIntoView({block:'start',behavior:'smooth'});break}
   case 'open-teamreq':openTeamReq();break;
   case 'land-orgs':landOrgs(el);break;
   case 'tr-submit':trSubmit(el);break;

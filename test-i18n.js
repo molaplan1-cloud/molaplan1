@@ -271,9 +271,7 @@ const KEY_RE = new RegExp('\\b(?:' + [...new Set(KEYS.map(k => k.split('.')[0]))
     await page.click('#s-ask [data-a="a-next"]'); await page.waitForSelector('#vblock');
     await page.fill('#v-phone', '+358 40 123 4567'); await page.click('[data-a="v-phone-save"]'); await page.waitForSelector('#vr-phone.ok');
     await scan(page, lang, 'help request step 2');
-    await page.click('#s-ask [data-a="a-next"]'); await page.waitForSelector('#ck-vol');
-    for (const k of ['vol', 'terms', 'review']) await page.click('#ck-' + k, { position: { x: 16, y: 16 } });
-    await scan(page, lang, 'help request step 3');
+    await page.click('#ck-all', { position: { x: 16, y: 16 } });
     await page.click('#s-ask [data-a="a-submit"]'); await page.waitForSelector('#s-mine.active .card.req');
     const req = await M(() => window.__mockSupa.db().help_requests.find(h => h.title === 'Moving boxes 📦'));
     ok(req && req.city === 'Vantaa' && req.district === 'Tikkurila', `[${lang}] help request saved with chosen city/district (Vantaa / Tikkurila)`);
