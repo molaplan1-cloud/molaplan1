@@ -290,3 +290,15 @@ Next: e2e-real.js extensions, deploy.sh --no-deploy.
   Note: Pages build image will still auto-install package.json deps (playwright-core only, no browser download).
 ## P3 – Pages project PATCHed: build_command "bash build.sh", destination_dir "dist", root_dir "". GET confirms; production branch main,
   deployments_enabled + production_deployments_enabled true, previews all (unchanged).
+## P4 – push (≈19:01 UTC+3): `git push https://x-access-token:<token>@… main:main backup/remote-2026-09-27:backup/remote-2026-09-27`
+  (credential.helper disabled for the call) -> main 35f8b1b..1d8cfee (fast-forward), new branch backup/remote-2026-09-27 (35f8b1b).
+  Token not in .git/config, ~/.git-credentials or ~/.gitconfig.
+## P5 – git build: production f64826b9-c20a-4982-9dbd-b172b759911e (1d8cfee) success: npm clean-install (1 pkg) -> `bash build.sh`
+  -> dist, "Parsed 3 valid header rules", now canonical for molaplan.com/www. Preview 0f4c85e8 for backup/remote-2026-09-27 failed
+  as expected (35f8b1b has no build.sh; preview only).
+- molaplan.com / www / pages.dev: 4 scripts ?v=907edb3383, friend-requests.js 200 application/javascript (immutable),
+  /AGENT-NOTES.md, /supabase/schema.sql, /build.sh, /mock-supabase.js, /package.json, /shots/* -> SPA index.html fallback (files not
+  served). Headless Chrome (verify-live.js ALLOW_EMPTY=1): no 4xx, no console/page errors, MolaplanFriends loaded. Feed empty (all
+  live events past).
+## P6 – old deployments (not deleted): 69 total; 50 still serve AGENT-NOTES.md (and supabase/schema.sql) on <id>.molaplan.pages.dev
+  (all git pushes 09-26/27 + wrangler deploys of 6b99886 from the repo dir). No email/secrets in those notes.
