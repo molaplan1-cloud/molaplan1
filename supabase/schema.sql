@@ -352,7 +352,7 @@ alter table public.events add constraint events_cover_path_check check (
 -- Ilmoitusten linkit: myös yritystili, kaverit ja joukkuetilin pyyntö ('team', 7e)
 alter table public.notifications drop constraint if exists notifications_link_kind_check;
 alter table public.notifications add constraint notifications_link_kind_check
-  check (link_kind in ('request','help','chat','event','admin','business','friend','team'));
+  check (link_kind in ('request','help','chat','event','admin','business','friend','team','group'));   -- 'group' = osio 8c
 
 -- ---------------------------------------------------------------------
 -- 1c. MAINOSTUSSUOJA JA MODEROINTI
@@ -2005,7 +2005,7 @@ create table if not exists public.team_event_rsvps (
 );
 alter table public.team_event_rsvps add column if not exists status text not null default 'going';
 alter table public.team_event_rsvps drop constraint if exists team_event_rsvps_status_check;
-alter table public.team_event_rsvps add constraint team_event_rsvps_status_check check (status in ('going','maybe'));
+alter table public.team_event_rsvps add constraint team_event_rsvps_status_check check (status in ('going','maybe','no'));   -- 'no' = osio 9a
 create index if not exists team_event_rsvps_event_idx on public.team_event_rsvps (event_id);
 create index if not exists team_event_rsvps_user_idx on public.team_event_rsvps (user_id);
 
@@ -2679,13 +2679,16 @@ do $$ begin
     alter table public.conversations add constraint conversations_group_id_key unique (group_id);
   end if;
 end $$;
+-- 'team' (osio 9a) mukana jo tässä, jotta schema.sql:n uudelleenajo onnistuu joukkuechattien kanssa
+alter table public.conversations add column if not exists team_id uuid;
 alter table public.conversations drop constraint if exists conversations_kind_check;
-alter table public.conversations add constraint conversations_kind_check check (kind in ('event','help','group'));
+alter table public.conversations add constraint conversations_kind_check check (kind in ('event','help','group','team'));
 alter table public.conversations drop constraint if exists conversations_target;
 alter table public.conversations add constraint conversations_target check (
-  (kind = 'event' and event_id is not null and help_request_id is null and group_id is null) or
-  (kind = 'help'  and help_request_id is not null and event_id is null and group_id is null) or
-  (kind = 'group' and group_id is not null and event_id is null and help_request_id is null));
+  (kind = 'event' and event_id is not null and help_request_id is null and group_id is null and team_id is null) or
+  (kind = 'help'  and help_request_id is not null and event_id is null and group_id is null and team_id is null) or
+  (kind = 'group' and group_id is not null and event_id is null and help_request_id is null and team_id is null) or
+  (kind = 'team'  and team_id is not null and event_id is null and help_request_id is null and group_id is null));
 
 alter table public.notifications drop constraint if exists notifications_link_kind_check;
 alter table public.notifications add constraint notifications_link_kind_check
