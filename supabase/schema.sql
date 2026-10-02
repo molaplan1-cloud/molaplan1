@@ -3591,7 +3591,7 @@ begin
   if not found then raise exception 'team_member_not_found' using errcode = 'P0001'; end if;
   select * into t from public.teams where id = m.team_id;
   if m.user_id is not null and m.user_id = t.owner_id then raise exception 'team_owner_stays_manager' using errcode = 'P0001'; end if;
-  if not (m.user_id = auth.uid() or public.is_team_admin(m.team_id)
+  if not (coalesce(m.user_id = auth.uid(), false) or public.is_team_admin(m.team_id)
           or (m.user_id is null and public.is_team_coach(m.team_id))) then
     raise exception 'team_manager_only' using errcode = 'P0001';
   end if;
@@ -3616,6 +3616,8 @@ begin
   if tg_op = 'UPDATE' then
     new.team_id := old.team_id; new.created_by := old.created_by; new.created_at := old.created_at;
     if new.series_id is distinct from old.series_id and new.series_id is not null then new.series_id := old.series_id; end if;
+  elsif auth.uid() is not null then
+    new.created_by := auth.uid(); new.cancelled := coalesce(new.cancelled, false);
   end if;
   new.title := btrim(regexp_replace(coalesce(new.title, ''), '\s+', ' ', 'g'));
   new.description := btrim(coalesce(new.description, ''));
@@ -3761,7 +3763,7 @@ begin
   select * into m from public.team_members where id = p_member and team_id = e.team_id;
   if not found then raise exception 'team_member_not_found' using errcode = 'P0001'; end if;
   staff := public.is_team_coach(e.team_id);
-  if not (m.user_id = auth.uid() or staff or exists (
+  if not (coalesce(m.user_id = auth.uid(), false) or staff or exists (
             select 1 from public.team_members p where p.team_id = e.team_id and p.user_id = auth.uid()
                and p.role = 'parent' and p.linked_member = m.id)) then
     raise exception 'team_rsvp_not_allowed' using errcode = 'P0001';
