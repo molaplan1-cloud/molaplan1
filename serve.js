@@ -4,7 +4,7 @@ const ROOT = __dirname, PORT = Number(process.argv[2] || process.env.PORT || 876
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.css': 'text/css', '.png': 'image/png', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.json': 'application/json', '.webmanifest': 'application/manifest+json', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml' };
 http.createServer((req, res) => {
   let p = decodeURIComponent(new URL(req.url, 'http://x').pathname);
-  if (p === '/' || /^\/e\/[^/]+\/?$/.test(p)) p = '/index.html';
+  if (p === '/' || /^\/(e|g)\/[^/]+\/?$/.test(p)) p = '/index.html';
   const f = path.join(ROOT, path.normalize(p));
   if (!f.startsWith(ROOT + path.sep)) { res.writeHead(403); return res.end(); }
   fs.readFile(f, (err, buf) => {

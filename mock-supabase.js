@@ -11,7 +11,10 @@ let lastTs=0;const now=()=>{let t=Date.now();if(t<=lastTs)t=lastTs+1;lastTs=t;re
 const ADULT=/naku|alasti|alaston|konjak|viini|olut|oluen|kalja|bisse|shamp|kuohu|cocktail|drinkk|viski|siideri|lonkero|känn|kossu|vodka|rommi|punssi|pubi|baari|wine|beer|naked|nude|nudis|whisk|brandy|cognac|cerveza|desnud|sangr[ií]a|tequila|naken|nakna|nakenbad|(^|[^a-z])vino/i;
 const SEED=[['padel','Padel','🏓',155],['sulkapallo','Sulkapallo','🏸',190],['tennis','Tennis','🎾',75],['juoksu','Juoksu','🏃',12],['kavely','Kävely','🚶',100],['vaellus','Vaellus','🥾',125],['pyoraily','Pyöräily','🚴',30],['kuntosali','Kuntosali','🏋️',350],['jooga','Jooga','🧘',280],['uinti','Uinti','🏊',205],['frisbeegolf','Frisbeegolf','🥏',45],['jalkapallo','Jalkapallo','⚽',140],['salibandy','Salibandy','🏑',222],['lautapelit','Lautapelit','🎲',258],['kahvi','Kahvi & juttelu','☕',24],['valokuvaus','Valokuvaus','📷',300],['kalastus','Kalastus','🎣',195],['neulonta','Neulonta','🧶',330],['kieltenvaihto','Kieltenvaihto','🗣️',170],['konsertit','Konsertit','🎵',312],['festivaali','Festivaalit','🎪',330],['markkinat','Markkinat','🛍️',36],['juoksutapahtuma','Juoksutapahtumat','🏅',8],['kulttuuri','Kulttuuri','🎭',275]].map((a,i)=>({id:a[0],name:a[1],emoji:a[2],hue:a[3],is_crazy:false,crazy_level:0,is_adult:false,is_custom:false,sort_order:10+i*10,created_by:null}))
  .concat([['nakuuinti','Nakuuinti','🌊',200,3,true],['pelle','Pellekokoontuminen','🤡',350,2,false],['konjakkipiknik','Konjakkipiknik','🥃',30,1,true],['pyjamabrunssi','Pyjamabrunssi','🥞',40,1,false],['karaokepuisto','Karaoke puistossa','🎤',290,2,false],['vesisota','Vesipyssytaistelu','💦',195,2,false],['flashmob','Tanssia bussipysäkillä','🕺',320,3,false],['avanto','Avantouinti auringonnousussa','🌅',20,3,false],['huonorunous','Vuoden huonoin runo -ilta','📜',260,1,false],['kasari','Pukeudu 80-luvuksi','📼',300,2,false]].map((a,i)=>({id:a[0],name:a[1],emoji:a[2],hue:a[3],is_crazy:true,crazy_level:a[4],is_adult:a[5],is_custom:false,sort_order:500+i*10,created_by:null})));
-const TABLES=['users','profiles','profile_private','activities','events','event_participants','help_requests','help_request_contacts','help_offers','conversations','messages','conversation_reads','notifications','businesses','business_private','business_members','reports','friend_requests','event_invites','teams','team_members','team_roles','team_places','team_events','team_event_rsvps','team_messages','team_requests'];
+const NEW_ACTS=[['koripallo','Koripallo','🏀',25,'Basketball','Basket','Baloncesto'],['lentopallo','Lentopallo','🏐',45,'Volleyball','Volleyboll','Voleibol'],['golf','Golf','⛳',110,'Golf','Golf','Golf'],['kiipeily','Kiipeily','🧗',20,'Climbing','Klättring','Escalada'],['hiihto','Hiihto','⛷️',200,'Cross-country skiing','Längdskidåkning','Esquí de fondo'],['luistelu','Luistelu','⛸️',195,'Ice skating','Skridskoåkning','Patinaje sobre hielo'],['melonta','Melonta','🛶',185,'Kayaking','Paddling','Piragüismo'],['sup','SUP-lautailu','🏄',190,'Stand-up paddling','SUP-paddling','Paddle surf'],['tanssi','Tanssi','💃',320,'Dancing','Dans','Baile'],['shakki','Shakki','♟️',240,'Chess','Schack','Ajedrez'],['poytatennis','Pöytätennis','🏓',160,'Table tennis','Bordtennis','Tenis de mesa'],['squash','Squash','🎾',70,'Squash','Squash','Squash'],['jaakiekko','Jääkiekko','🏒',210,'Ice hockey','Ishockey','Hockey sobre hielo'],['kirjapiiri','Kirjapiiri','📚',280,'Book club','Bokcirkel','Club de lectura']]
+ .map((a,i)=>({id:a[0],name:a[1],emoji:a[2],hue:a[3],is_crazy:false,crazy_level:0,is_adult:false,is_custom:false,sort_order:250+i*10,created_by:null,name_i18n:{fi:a[1],en:a[4],sv:a[5],es:a[6]}}));
+SEED.push(...NEW_ACTS);SEED.forEach(a=>{a.status='approved';a.name_i18n=a.name_i18n||{}});
+const TABLES=['users','profiles','profile_private','activities','events','event_participants','help_requests','help_request_contacts','help_offers','conversations','messages','conversation_reads','notifications','businesses','business_private','business_members','reports','friend_requests','event_invites','teams','team_members','team_roles','team_places','team_events','team_event_rsvps','team_messages','team_requests','groups','group_members','group_invites','group_join_requests','storage_objects'];
 function fresh(){const d={calls:[]};TABLES.forEach(t=>d[t]=[]);d.activities=SEED.map(a=>Object.assign({created_at:now()},a));return d}
 let db;try{db=JSON.parse(localStorage.getItem(DB_KEY))}catch(e){}if(!db||!db.users)db=fresh();TABLES.forEach(t=>{if(!db[t])db[t]=[]});
 const persist=()=>localStorage.setItem(DB_KEY,JSON.stringify(db));persist();
@@ -25,9 +28,37 @@ const canHelp=u=>{const p=prof(u),pp=db.profile_private.find(x=>x.id===u);return
 const reqOf=id=>db.help_requests.find(h=>h.id===id);
 const isHelper=(rid,u)=>db.help_offers.some(o=>o.request_id===rid&&o.helper_id===u);
 function isMember(cid,u){const c=db.conversations.find(x=>x.id===cid);if(!c||!u)return false;
+ if(c.kind==='group')return db.group_members.some(m=>m.group_id===c.group_id&&m.user_id===u);
  if(c.event_id)return db.event_participants.some(p=>p.event_id===c.event_id&&p.user_id===u);
  const h=reqOf(c.help_request_id);return !!h&&['approved','closed'].includes(h.status)&&(h.requester_id===u||isHelper(h.id,u))}
 const nameOf=u=>(prof(u)&&prof(u).display_name)||'Joku';
+// ---- chat groups (mirrors schema.sql 8c), images (8b)
+const grpOf=id=>db.groups.find(g=>g.id===id);
+const grpRole=(gid,u)=>{const m=db.group_members.find(x=>x.group_id===gid&&x.user_id===u);return m?m.role:null};
+const isGrpMod=(gid,u)=>['founder','moderator'].includes(grpRole(gid,u));
+const grpVisible=(gid,u)=>{const g=grpOf(gid);return !!g&&!!u&&(g.visibility==='open'||isAdmin(u)||!!grpRole(gid,u)||db.group_invites.some(i=>i.group_id===gid&&i.invitee_id===u)||db.group_join_requests.some(r=>r.group_id===gid&&r.user_id===u))};
+const grpConv=gid=>{const c=db.conversations.find(x=>x.group_id===gid);return c&&c.id};
+const UUID_RE=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+const validImg=p=>/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/[0-9a-z_-]{6,64}\.(webp|jpg)$/.test(p||'');
+const pathUuid=p=>{const s=String(p||'').split('/')[0];return UUID_RE.test(s)?s:null};
+const objOf=(b,p)=>db.storage_objects.find(o=>o.bucket_id===b&&o.name===p);
+const canEditEvent=(eid,u)=>{const e=db.events.find(x=>x.id===eid);return !!e&&!!u&&((e.host_id&&e.host_id===u)||isAdmin(u)||(!!e.business_id&&bizCanPost(e.business_id,u)))};
+const canPostImage=(cid,u)=>{const c=db.conversations.find(x=>x.id===cid);return !!c&&!isBanned(u)&&isMember(cid,u)&&['event','group'].includes(c.kind)};
+const imgReported=(p,u)=>isAdmin(u)&&db.reports.some(r=>r.target_type==='message'&&r.status==='open'&&(db.messages.find(m=>m.id===r.target_id)||{}).image_path===p);
+function objVisible(o,u){if(!u)return false;if(o.bucket_id==='event-covers')return canEditEvent(pathUuid(o.name),u)||isAdmin(u);return isMember(pathUuid(o.name),u)||imgReported(o.name,u)}
+function grpAddMember(gid,uid,actor){
+ if(db.group_members.some(m=>m.group_id===gid&&m.user_id===uid))return;
+ db.group_members.push({group_id:gid,user_id:uid,role:'member',joined_at:now()});
+ db.group_invites=db.group_invites.filter(i=>!(i.group_id===gid&&i.invitee_id===uid));
+ db.group_join_requests.forEach(r=>{if(r.group_id===gid&&r.user_id===uid&&r.status==='pending'){r.status='approved';r.decided_at=r.decided_at||now()}});
+ const g=grpOf(gid);sysMsg(grpConv(gid),nameOf(uid)+' liittyi mukaan 🎉','joined',{name:nameOf(uid)});
+ if(g.founder_id&&g.founder_id!==uid&&g.founder_id!==actor)notify(g.founder_id,'👥',nameOf(uid)+' liittyi ryhmääsi “'+g.name+'”','group',gid,'group_member_joined',{name:nameOf(uid),group:g.name});
+}
+function grpFounderGone(gid){const g=grpOf(gid);if(!g)return;const rest=db.group_members.filter(m=>m.group_id===gid).sort((x,y)=>((y.role==='moderator')-(x.role==='moderator'))||String(x.joined_at).localeCompare(String(y.joined_at)));
+ if(!rest.length){dropGroup(gid);return}rest[0].role='founder';g.founder_id=rest[0].user_id;g.updated_at=now()}
+function dropGroup(gid){db.groups=db.groups.filter(g=>g.id!==gid);['group_members','group_invites','group_join_requests'].forEach(k=>db[k]=db[k].filter(x=>x.group_id!==gid));dropConvs(db.conversations.filter(c=>c.group_id===gid).map(c=>c.id))}
+function grpInput(name,desc,a){if(name.length<3||name.length>60||desc.length>600)throw E('group_invalid');if(!isAdmin(a)&&(looksCommercial(name)||looksCommercial(desc)))throw E('commercial_content')}
+const groupRow=(g,u)=>Object.assign({},g,{member_count:db.group_members.filter(m=>m.group_id===g.id).length,my_role:grpRole(g.id,u)});
 // ---- friends (mirrors schema.sql 7c) and teams (7b)
 const pairOf=(a,b)=>db.friend_requests.find(r=>(r.requester_id===a&&r.target_id===b)||(r.requester_id===b&&r.target_id===a));
 const areFriends=(a,b)=>{const r=pairOf(a,b);return !!r&&r.status==='accepted'};
@@ -74,7 +105,12 @@ function visible(t,r,u){if(!u)return false;switch(t){
  case 'help_request_contacts':{const h=reqOf(r.request_id);return isAdmin(u)||isHelper(r.request_id,u)||(!!h&&h.requester_id===u)}
  case 'help_offers':{const h=reqOf(r.request_id);return r.helper_id===u||(!!h&&visible('help_requests',h,u))}
  case 'conversations':return isMember(r.id,u);
- case 'messages':return isMember(r.conversation_id,u);
+ case 'messages':return isMember(r.conversation_id,u)||(isAdmin(u)&&db.reports.some(x=>x.target_type==='message'&&x.target_id===r.id));
+ case 'groups':return grpVisible(r.id,u);
+ case 'group_members':return r.user_id===u||!!grpRole(r.group_id,u)||isAdmin(u);
+ case 'group_invites':return r.invitee_id===u||r.inviter_id===u||isGrpMod(r.group_id,u);
+ case 'group_join_requests':return r.user_id===u||isGrpMod(r.group_id,u)||isAdmin(u);
+ case 'storage_objects':return false;
  case 'conversation_reads':return r.user_id===u;
  case 'notifications':return r.user_id===u;
  case 'users':return false;
@@ -108,7 +144,8 @@ function doInsert(t,row,a){
   case 'profiles':if(row.id!==a)throw RLS(t);row.is_admin=false;row.email_verified=false;break;
   case 'profile_private':if(row.id!==a)throw RLS(t);if(row.phone&&!/^\+?[0-9][0-9 ()-]{5,19}$/.test(row.phone))throw E('violates check constraint "profile_private_phone_check"','23514');if(db.profile_private.some(x=>x.id===a))throw E('duplicate key value violates unique constraint "profile_private_pkey"','23505');break;
   case 'activities':
-   if(!isAdmin(a)){row.is_custom=true;row.created_by=a;row.sort_order=1000}
+   if(!isAdmin(a)){if(isBanned(a))throw E('account_banned');if(looksCommercial(row.name))throw E('commercial_content');row.is_custom=true;row.created_by=a;row.sort_order=1000;row.status='pending';row.name_i18n={}}
+   else{row.status=row.status||'approved';row.name_i18n=row.name_i18n||{}}
    if(row.created_by!==a||!row.is_custom)throw RLS(t);
    row.name=String(row.name||'').trim().replace(/\s+/g,' ');
    if(row.name.length<2||row.name.length>28)throw E('violates check constraint "activities_name_check"','23514');
@@ -116,7 +153,9 @@ function doInsert(t,row,a){
    if(db.activities.some(x=>x.name.toLowerCase()===row.name.toLowerCase()))throw E('duplicate key value violates unique constraint "activities_name_lower_key"','23505');
    if(ADULT.test(row.name))row.is_adult=true;
    if(row.is_crazy&&!row.crazy_level)row.crazy_level=2;if(!row.is_crazy)row.crazy_level=0;
-   row.created_at=now();break;
+   row.created_at=now();db.activities.push(row);
+   if(row.status==='pending')notifyAdmins('🏷️','Uusi laji odottaa hyväksyntää: “'+row.name+'”','admin',null,'admin_new_activity',{name:row.name});
+   return row;
   case 'events':{
    row.kind=row.kind||'community';
    if(row.kind==='community'){if(!isAdmin(a)||!row.host_id)row.host_id=a;if(row.host_id!==a)throw RLS(t)}
@@ -144,7 +183,9 @@ function doInsert(t,row,a){
   case 'messages':
    if(isBanned(a))throw E('account_banned');
    if(!isMember(row.conversation_id,a)||(row.sender_id&&row.sender_id!==a))throw RLS(t);
-   row.sender_id=a;row.kind='user';row.body=String(row.body||'').trim();if(!row.body||row.body.length>1000)throw E('violates check constraint "messages_body_check"','23514');
+   row.sender_id=a;row.kind='user';row.body=String(row.body||'').trim();
+   if(row.image_path!=null){if(!validImg(row.image_path)||pathUuid(row.image_path)!==row.conversation_id)throw E('image_path_invalid');if(!canPostImage(row.conversation_id,a))throw E('image_not_allowed');if(!objOf('chat-images',row.image_path))throw E('image_missing')}else{row.image_path=null;row.image_w=null;row.image_h=null}
+   if((!row.body&&!row.image_path)||row.body.length>1000)throw E('violates check constraint "messages_body_check"','23514');
    row.id=uuid();row.created_at=now();return ins(t,row);
   case 'conversation_reads':if(row.user_id!==a||!isMember(row.conversation_id,a))throw RLS(t);break;
   case 'help_offers':{
@@ -160,13 +201,17 @@ function doInsert(t,row,a){
   case 'reports':{
    row.reporter_id=a;row.status='open';row.resolved_by=null;row.resolved_at=null;row.target_type=row.target_type||'event';row.note=String(row.note||'').trim();
    if(!['business_ad','inappropriate','spam','other'].includes(row.reason))throw E('violates check constraint "reports_reason_check"','23514');
-   const e=db.events.find(x=>x.id===row.target_id);if(!e)throw E('report_target_missing');
+   if(!['event','message','event_cover','group'].includes(row.target_type))throw E('violates check constraint "reports_target_type_check"','23514');
+   const e=db.events.find(x=>x.id===row.target_id), msg=db.messages.find(x=>x.id===row.target_id), grp=grpOf(row.target_id);
+   const okT=row.target_type==='event'?!!e:row.target_type==='event_cover'?!!(e&&e.cover_path):row.target_type==='message'?!!(msg&&msg.kind==='user'&&isMember(msg.conversation_id,a)):grpVisible(row.target_id,a);
+   if(!okT)throw E('report_target_missing');
+   const title=row.target_type==='group'?grp.name:row.target_type==='message'?((msg.image_path?'📷 ':'')+String(msg.body||'').slice(0,60)):e.title;
    if(db.reports.some(r=>r.reporter_id===a&&r.target_type===row.target_type&&r.target_id===row.target_id))throw E('duplicate key value violates unique constraint "reports_once_key"','23505');
    row.id=uuid();row.created_at=now();db.reports.push(row);
-   notifyAdmins('🚩','Uusi ilmoitus tapahtumasta “'+e.title+'”','admin',e.id,'admin_new_report',{title:e.title});
+   notifyAdmins('🚩','Uusi ilmoitus: “'+title+'”','admin',row.target_id,'admin_new_report',{title});
    return row}
   case 'notifications':case 'conversations':case 'help_requests':case 'help_request_contacts':case 'businesses':case 'business_private':case 'business_members':throw RLS(t);
-  case 'friend_requests':case 'event_invites':case 'team_requests':throw E('permission denied for table '+t,'42501'); // only via RPCs
+  case 'friend_requests':case 'event_invites':case 'team_requests':case 'groups':case 'group_members':case 'group_invites':case 'group_join_requests':case 'storage_objects':throw E('permission denied for table '+t,'42501'); // only via RPCs
   case 'teams':if(isBanned(a))throw E('account_banned');row.owner_id=row.owner_id||a;if(row.owner_id!==a)throw RLS(t);row.name=String(row.name||'').trim();if(row.name.length<2||row.name.length>50)throw E('violates check constraint "teams_name_check"','23514');row.id=uuid();row.created_at=now();row.updated_at=row.created_at;row.sport=row.sport||'';row.description=row.description||'';row.logo_url=row.logo_url||'';break;
   case 'team_members':if(!((row.user_id===a&&(row.role||'member')==='member')||isTeamAdmin(row.team_id,a)))throw RLS(t);if(db.team_members.some(x=>x.team_id===row.team_id&&x.user_id===row.user_id))throw E('duplicate key value violates unique constraint "team_members_team_id_user_id_key"','23505');row.role=row.role||'member';row.id=uuid();row.joined_at=now();break;
   case 'team_roles':case 'team_places':if(!isTeamAdmin(row.team_id,a))throw RLS(t);row.id=uuid();break;
@@ -187,7 +232,9 @@ function doUpdate(t,old,patch,a){
    const k=old.kind||'community';
    if(!(old.host_id===a||isAdmin(a)||(old.business_id&&isBizMember(old.business_id,a))))return null;
    row.kind=k;row.business_id=old.business_id||null;if(!isAdmin(a))row.host_id=old.host_id;
-   eventRules(row,a,false,old);row.updated_at=now();break}
+   eventRules(row,a,false,old);
+   if(row.cover_path!=null&&row.cover_path!==old.cover_path){if(!validImg(row.cover_path)||pathUuid(row.cover_path)!==old.id)throw E('image_path_invalid');if(!objOf('event-covers',row.cover_path))throw E('image_missing')}
+   row.cover_path=row.cover_path||null;row.updated_at=now();break}
   case 'businesses':{
    if(!(isBizMember(old.id,a)||isAdmin(a)))return null;
    if(!isAdmin(a)){['id','created_by','created_at','subscription_active_until','expiring_notified_for','expired_notified_for','reviewed_by','reviewed_at','admin_reason'].forEach(k=>row[k]=old[k]);
@@ -272,7 +319,7 @@ function guestView(t,a,cols){
  const recent=r=>Date.parse(r.starts_at)>Date.now()-864e5;
  if(t==='activities'){if(!cols||cols==='*'||/created_by/.test(cols))throw E('permission denied for table activities','42501');return db.activities.map(r=>{const o=Object.assign({},r);delete o.created_by;return o})}
  if(t==='businesses'){if(!cols||cols==='*'||/business_code|subscription|admin|created_by|consent|notified|review/.test(cols))throw E('permission denied for table businesses','42501');return db.businesses.filter(b=>b.status==='approved').map(b=>({id:b.id,name:b.name,logo_url:b.logo_url,website:b.website,description:b.description,country:b.country,status:b.status}))}
- if(t==='guest_events')return db.events.filter(e=>a||(!e.is_adult&&Date.parse(e.last_at||e.starts_at)>Date.now()-864e5)).map(e=>({kind:e.kind||'community',ends_at:e.ends_at||null,last_at:e.last_at||e.starts_at,organizer_name:e.organizer_name||'',official_url:e.official_url||'',price_info:e.price_info||'',business_id:e.business_id||null,business_name:(bizOf(e.business_id)&&bizOf(e.business_id).status==='approved')?bizOf(e.business_id).name:null,business_logo:(bizOf(e.business_id)&&bizOf(e.business_id).status==='approved')?bizOf(e.business_id).logo_url:null,id:e.id,activity_id:e.activity_id,title:e.title,description:e.description,starts_at:e.starts_at,city:e.city,district:e.district,place:e.place,lat:e.lat,lng:e.lng,max_participants:e.max_participants,skill_level:e.skill_level,is_crazy:e.is_crazy,crazy_level:e.crazy_level,is_adult:e.is_adult,created_at:e.created_at,participant_count:db.event_participants.filter(p=>p.event_id===e.id).length}));
+ if(t==='guest_events')return db.events.filter(e=>a||(!e.is_adult&&Date.parse(e.last_at||e.starts_at)>Date.now()-864e5)).map(e=>({kind:e.kind||'community',ends_at:e.ends_at||null,last_at:e.last_at||e.starts_at,organizer_name:e.organizer_name||'',official_url:e.official_url||'',price_info:e.price_info||'',business_id:e.business_id||null,business_name:(bizOf(e.business_id)&&bizOf(e.business_id).status==='approved')?bizOf(e.business_id).name:null,business_logo:(bizOf(e.business_id)&&bizOf(e.business_id).status==='approved')?bizOf(e.business_id).logo_url:null,id:e.id,activity_id:e.activity_id,title:e.title,description:e.description,starts_at:e.starts_at,city:e.city,district:e.district,place:e.place,lat:e.lat,lng:e.lng,max_participants:e.max_participants,skill_level:e.skill_level,is_crazy:e.is_crazy,crazy_level:e.crazy_level,is_adult:e.is_adult,created_at:e.created_at,participant_count:db.event_participants.filter(p=>p.event_id===e.id).length,cover_path:e.cover_path||null}));
  return db.help_requests.filter(h=>h.status==='approved'&&(a||recent(h))).map(h=>({id:h.id,category:h.category,title:h.title,description:h.description,needs:h.needs,city:h.city,district:h.district,lat:Math.round(h.lat*100)/100,lng:Math.round(h.lng*100)/100,starts_at:h.starts_at,duration:h.duration,helpers_needed:h.helpers_needed,status:h.status,email_verified:h.email_verified,created_at:h.created_at,helpers_count:db.help_offers.filter(o=>o.request_id===h.id).length}));
 }
 // ---------- query builder
@@ -301,6 +348,7 @@ class Q{
    if(this.op==='select'){
     let src;
     if(t==='guest_events'||t==='guest_help_requests'||(!a&&(t==='activities'||t==='businesses')))src=guestView(t,a,this.cols);
+    else if(t==='groups_v'){if(!a)throw E('permission denied for table groups_v','42501');src=db.groups.filter(r=>grpVisible(r.id,a)).map(g=>groupRow(g,a))}
     else{if(!a||!db[t])throw E('permission denied for table '+t,'42501');src=db[t].filter(r=>visible(t,r,a))}
     out=src.filter(r=>this.match(r));
     this.ord.slice().reverse().forEach(([c,asc])=>out.sort((x,y)=>{const A=x[c],B=y[c];return (A<B?-1:A>B?1:0)*(asc?1:-1)}));
@@ -440,6 +488,109 @@ function rpc(name,args,actor){
     notify(f,'💌',nameOf(a)+' kutsui sinut tapahtumaan “'+e.title+'”','event',e.id,'event_invite',{name:nameOf(a),title:e.title})}
    persist();return {data:null,error:null};
   }
+  /* ---- 8a activities queue */
+  if(name==='admin_review_activity'){
+   if(!isAdmin(a))throw E('admin_only');const st=args.p_status;if(!['approved','rejected'].includes(st))throw E('activity_status_invalid');
+   const x=db.activities.find(r=>r.id===args.p_id);if(!x)throw E('activity_not_found');
+   const nm={};Object.entries(args.p_names||{}).forEach(([k,v])=>{v=String(v||'').trim();if(['fi','en','sv','es'].includes(k)&&v.length>=2&&v.length<=40)nm[k]=v});
+   const prev=x.status;Object.assign(x,{status:st,name_i18n:Object.assign({},x.name_i18n||{},nm),reviewed_by:a,reviewed_at:now()});
+   if(x.created_by&&prev!==st){if(st==='approved')notify(x.created_by,'🏷️','Ehdottamasi laji “'+x.name+'” lisättiin kaikkien lajilistaan 🎉',null,null,'activity_approved',{name:x.name});else notify(x.created_by,'ℹ️','Ehdottamaasi lajia “'+x.name+'” ei lisätty yhteiseen listaan.',null,null,'activity_rejected',{name:x.name})}
+   persist();return {data:null,error:null};
+  }
+  /* ---- 8b admin removes reported content (file removed first by the client via storage.remove) */
+  if(name==='admin_remove_content'){
+   if(!isAdmin(a))throw E('admin_only');const ty=args.p_type,id=args.p_id;let pth=null;
+   if(ty==='message'){const m=db.messages.find(x=>x.id===id);if(m){pth=m.image_path||null;db.messages=db.messages.filter(x=>x!==m)}}
+   else if(ty==='event_cover'){const ev=db.events.find(x=>x.id===id);if(ev){pth=ev.cover_path||null;ev.cover_path=null}}
+   else if(ty==='group')dropGroup(id);
+   else throw E('report_target_invalid');
+   db.reports.forEach(r=>{if(r.target_type===ty&&r.target_id===id&&r.status==='open'){r.status='resolved';r.resolved_by=a;r.resolved_at=now()}});
+   persist();return {data:pth,error:null};
+  }
+  /* ---- 8c groups */
+  const ws=v=>String(v||'').replace(/\s+/g,' ').trim();
+  if(name==='create_group'){
+   const p=args.p||{};if(isBanned(a))throw E('account_banned');
+   const nm=ws(p.name),ds=String(p.description||'').trim(),vis=p.visibility||'open';if(!['open','closed'].includes(vis))throw E('group_invalid');grpInput(nm,ds,a);
+   if(db.groups.filter(g=>g.founder_id===a&&Date.parse(g.created_at)>Date.now()-864e5).length>=5)throw E('group_rate_limited');
+   const num=v=>v==null||v===''||!Number.isFinite(Number(v))?null:Number(v);
+   const g={id:uuid(),name:nm,description:ds,visibility:vis,activity_id:db.activities.some(x=>x.id===p.activity_id)?p.activity_id:null,city:String(p.city||'').trim().slice(0,40),district:String(p.district||'').trim().slice(0,40),lat:num(p.lat),lng:num(p.lng),founder_id:a,created_at:now(),updated_at:now()};
+   db.groups.push(g);db.group_members.push({group_id:g.id,user_id:a,role:'founder',joined_at:now()});
+   const cid=uuid();db.conversations.push({id:cid,kind:'group',event_id:null,help_request_id:null,group_id:g.id,created_at:now()});
+   sysMsg(cid,'Ryhmä “'+nm+'” perustettiin – tervetuloa! 👋','group_created',{name:nm});
+   persist();return {data:g.id,error:null};
+  }
+  if(name==='update_group'){
+   const g=grpOf(args.p_id),p=args.p||{};if(isBanned(a))throw E('account_banned');if(!g)throw E('group_not_found');if(grpRole(g.id,a)!=='founder'&&!isAdmin(a))throw E('group_founder_only');
+   const nm=ws(p.name!=null?p.name:g.name),ds=String(p.description!=null?p.description:g.description).trim(),vis=p.visibility||g.visibility;if(!['open','closed'].includes(vis))throw E('group_invalid');grpInput(nm,ds,a);
+   Object.assign(g,{name:nm,description:ds,visibility:vis,updated_at:now()});if('activity_id' in p)g.activity_id=db.activities.some(x=>x.id===p.activity_id)?p.activity_id:null;if('city' in p)g.city=String(p.city||'').trim().slice(0,40);if('district' in p)g.district=String(p.district||'').trim().slice(0,40);
+   persist();return {data:null,error:null};
+  }
+  if(name==='delete_group'){const g=grpOf(args.p_id);if(g&&grpRole(g.id,a)!=='founder'&&!isAdmin(a))throw E('group_founder_only');if(!g&&!isAdmin(a))throw E('group_founder_only');dropGroup(args.p_id);db.reports.forEach(r=>{if(r.target_type==='group'&&r.target_id===args.p_id&&r.status==='open'){r.status='resolved';r.resolved_by=a;r.resolved_at=now()}});persist();return {data:null,error:null}}
+  if(name==='join_group'){
+   const g=grpOf(args.p_id);if(isBanned(a))throw E('account_banned');if(!g)throw E('group_not_found');
+   if(grpRole(g.id,a)){persist();return {data:'member',error:null}}
+   if(g.visibility==='closed'&&!db.group_invites.some(i=>i.group_id===g.id&&i.invitee_id===a))throw E('group_closed');
+   grpAddMember(g.id,a,a);persist();return {data:'member',error:null};
+  }
+  if(name==='leave_group'){
+   const r=grpRole(args.p_id,a);if(r==='founder')throw E('founder_cannot_leave');
+   if(r){db.group_members=db.group_members.filter(m=>!(m.group_id===args.p_id&&m.user_id===a));sysMsg(grpConv(args.p_id),nameOf(a)+' poistui ryhmästä','group_left',{name:nameOf(a)})}
+   persist();return {data:null,error:null};
+  }
+  if(name==='invite_to_group'){
+   const g=grpOf(args.p_id),u=args.p_user;if(isBanned(a))throw E('account_banned');if(!g)throw E('group_not_found');if(!isGrpMod(g.id,a))throw E('group_mod_only');
+   if(!u||u===a||!prof(u))throw E('group_invite_invalid');
+   if(!grpRole(g.id,u)&&!db.group_invites.some(i=>i.group_id===g.id&&i.invitee_id===u)){
+    if(db.group_invites.filter(i=>i.inviter_id===a&&Date.parse(i.created_at)>Date.now()-864e5).length>=100)throw E('group_rate_limited');
+    db.group_invites.push({group_id:g.id,invitee_id:u,inviter_id:a,created_at:now()});
+    notify(u,'💌',nameOf(a)+' kutsui sinut ryhmään “'+g.name+'”','group',g.id,'group_invite',{name:nameOf(a),group:g.name});
+   }
+   persist();return {data:null,error:null};
+  }
+  if(name==='respond_group_invite'){
+   const i=db.group_invites.find(x=>x.group_id===args.p_id&&x.invitee_id===a);if(!i)throw E('group_invite_not_found');
+   if(args.p_accept){if(isBanned(a))throw E('account_banned');const g=grpOf(args.p_id);grpAddMember(g.id,a,a);if(i.inviter_id&&i.inviter_id!==g.founder_id)notify(i.inviter_id,'🤝',nameOf(a)+' hyväksyi kutsusi ryhmään “'+g.name+'”','group',g.id,'group_invite_accepted',{name:nameOf(a),group:g.name})}
+   else db.group_invites=db.group_invites.filter(x=>x!==i);
+   persist();return {data:null,error:null};
+  }
+  if(name==='request_join_group'){
+   const g=grpOf(args.p_id),msg=String(args.p_message||'').trim().slice(0,200);if(isBanned(a))throw E('account_banned');if(!g)throw E('group_not_found');
+   if(grpRole(g.id,a)){persist();return {data:'member',error:null}}
+   if(g.visibility==='open'||db.group_invites.some(i=>i.group_id===g.id&&i.invitee_id===a)){grpAddMember(g.id,a,a);persist();return {data:'member',error:null}}
+   if(!isAdmin(a)&&looksCommercial(msg))throw E('commercial_content');
+   const r=db.group_join_requests.find(x=>x.group_id===g.id&&x.user_id===a);
+   if(r&&r.status==='pending'){persist();return {data:'pending',error:null}}
+   if(r&&r.status==='declined'&&Date.parse(r.decided_at)>Date.now()-7*864e5)throw E('group_request_declined');
+   if(db.group_join_requests.filter(x=>x.user_id===a&&Date.parse(x.created_at)>Date.now()-864e5).length>=30)throw E('group_rate_limited');
+   if(r)Object.assign(r,{message:msg,status:'pending',created_at:now(),decided_by:null,decided_at:null});else db.group_join_requests.push({group_id:g.id,user_id:a,message:msg,status:'pending',created_at:now(),decided_by:null,decided_at:null});
+   db.group_members.filter(m=>m.group_id===g.id&&['founder','moderator'].includes(m.role)).forEach(m=>notify(m.user_id,'🙋',nameOf(a)+' pyytää liittyä ryhmään “'+g.name+'”','group',g.id,'group_join_request',{name:nameOf(a),group:g.name}));
+   persist();return {data:'pending',error:null};
+  }
+  if(name==='review_join_request'){
+   if(!isGrpMod(args.p_id,a))throw E('group_mod_only');const r=db.group_join_requests.find(x=>x.group_id===args.p_id&&x.user_id===args.p_user&&x.status==='pending');if(!r)throw E('group_request_not_found');
+   const g=grpOf(args.p_id);Object.assign(r,{status:args.p_approve?'approved':'declined',decided_by:a,decided_at:now()});
+   if(args.p_approve){grpAddMember(g.id,args.p_user,a);notify(args.p_user,'✅','Liittymispyyntösi ryhmään “'+g.name+'” hyväksyttiin 🎉','group',g.id,'group_request_approved',{group:g.name})}
+   persist();return {data:null,error:null};
+  }
+  if(name==='remove_group_member'){
+   const g=grpOf(args.p_id),u=args.p_user;if(grpRole(args.p_id,a)!=='founder'&&!isAdmin(a))throw E('group_founder_only');if(u===a)throw E('group_remove_self');
+   if(grpRole(args.p_id,u)==='founder')throw E('group_remove_founder');
+   if(grpRole(args.p_id,u)){db.group_members=db.group_members.filter(m=>!(m.group_id===args.p_id&&m.user_id===u));db.group_invites=db.group_invites.filter(i=>!(i.group_id===args.p_id&&i.invitee_id===u));
+    sysMsg(grpConv(g.id),nameOf(u)+' poistettiin ryhmästä','group_member_removed',{name:nameOf(u)});notify(u,'ℹ️','Sinut poistettiin ryhmästä “'+g.name+'”',null,null,'group_removed',{group:g.name})}
+   persist();return {data:null,error:null};
+  }
+  if(name==='set_group_role'){
+   if(grpRole(args.p_id,a)!=='founder')throw E('group_founder_only');if(!['moderator','member'].includes(args.p_role))throw E('group_invalid');
+   const m=db.group_members.find(x=>x.group_id===args.p_id&&x.user_id===args.p_user);if(!m||m.role==='founder')throw E('group_member_not_found');
+   if(m.role!==args.p_role){m.role=args.p_role;const g=grpOf(args.p_id);if(args.p_role==='moderator')notify(args.p_user,'⭐','Sinut nimitettiin ryhmän “'+g.name+'” moderaattoriksi','group',g.id,'group_moderator',{group:g.name})}
+   persist();return {data:null,error:null};
+  }
+  if(name==='group_preview'){
+   const g=grpOf(args.p_id);if(!g){persist();return {data:[],error:null}}
+   const r=db.group_join_requests.find(x=>x.group_id===g.id&&x.user_id===a);
+   persist();return {data:[{id:g.id,name:g.name,description:g.description,visibility:g.visibility,activity_id:g.activity_id,city:g.city,member_count:db.group_members.filter(m=>m.group_id===g.id).length,my_role:grpRole(g.id,a),invited:db.group_invites.some(i=>i.group_id===g.id&&i.invitee_id===a),request_status:r?r.status:null}],error:null};
+  }
   throw E('function '+name+' not found');
  }catch(e){persist();return {data:null,error:{message:e.message,code:e.code}}}});
 }
@@ -452,6 +603,8 @@ function deleteUser(a){
  db.profile_private=db.profile_private.filter(p=>p.id!==a);db.profiles=db.profiles.filter(p=>p.id!==a);db.users=db.users.filter(u=>u.id!==a);
  db.activities.forEach(x=>{if(x.created_by===a)x.created_by=null});
  db.friend_requests=db.friend_requests.filter(r=>r.requester_id!==a&&r.target_id!==a);db.team_requests=db.team_requests.filter(r=>r.requester_id!==a);db.event_invites=db.event_invites.filter(r=>r.inviter_id!==a&&r.invitee_id!==a);
+ db.group_invites=db.group_invites.filter(i=>i.invitee_id!==a);db.group_join_requests=db.group_join_requests.filter(r=>r.user_id!==a);
+ db.group_members.filter(m=>m.user_id===a).forEach(m=>{db.group_members=db.group_members.filter(x=>x!==m);if(m.role==='founder')grpFounderGone(m.group_id)});db.groups.forEach(g=>{if(g.founder_id===a)g.founder_id=null});
  db.teams.filter(x=>x.owner_id===a).forEach(x=>cascade('teams',x));db.teams=db.teams.filter(x=>x.owner_id!==a);db.team_members=db.team_members.filter(x=>x.user_id!==a);db.team_event_rsvps=db.team_event_rsvps.filter(x=>x.user_id!==a);
 }
 // ---------- auth
@@ -484,9 +637,30 @@ const auth={
  async updateUser(p){const id=sessionUid();if(!id)return {data:{},error:{message:'session_not_found'}};const u=db.users.find(x=>x.id===id);if(p.password){if(String(p.password).length<8)return {data:{},error:{message:'Password should be at least 8 characters.'}};u.password=p.password}db.calls.push({fn:'updateUser'});persist();emitAuth('USER_UPDATED');return {data:{user:sessionObj().user},error:null}},
  async refreshSession(){return {data:{session:sessionObj()},error:null}}
 };
+// ---------- storage (schema.sql 8b): buckets event-covers (public) + chat-images (private), 256 kB, webp/jpeg, RLS as in SQL
+const BUCKETS={'event-covers':{public:true},'chat-images':{public:false}}, MAX_OBJ=262144, MIMES=['image/webp','image/jpeg'];
+const blobToDataUrl=b=>new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=()=>rej(r.error);r.readAsDataURL(b)});
+const SE=(m,s)=>({data:null,error:{message:m,statusCode:String(s||400),error:m}});
+function storageApi(actor){return {from(bucket){return {
+ async upload(path,blob,o){await new Promise(r=>setTimeout(r,10));const a=actor();if(!a)return SE('new row violates row-level security policy','403');if(!BUCKETS[bucket])return SE('Bucket not found','404');
+  const type=(o&&o.contentType)||blob.type||'';const size=blob.size||0;db.calls.push({fn:'upload',bucket,path,size,type});
+  if(size>MAX_OBJ){persist();return SE('The object exceeded the maximum allowed size','413')}
+  if(!MIMES.includes(type)){persist();return SE('mime type '+type+' is not supported','415')}
+  const ok=validImg(path)&&(bucket==='event-covers'?(!isBanned(a)&&canEditEvent(pathUuid(path),a)):canPostImage(pathUuid(path),a));
+  if(!ok){persist();return SE('new row violates row-level security policy','403')}
+  if(objOf(bucket,path)){persist();return SE('The resource already exists','409')}
+  const data=await blobToDataUrl(blob);db.storage_objects.push({bucket_id:bucket,name:path,owner_id:a,mime:type,size,data,created_at:now()});persist();
+  return {data:{path,fullPath:bucket+'/'+path},error:null}},
+ async createSignedUrl(path,sec){const r=await this.createSignedUrls([path],sec);if(r.error)return r;const x=r.data[0];return x.error?SE(x.error,'404'):{data:{signedUrl:x.signedUrl},error:null}},
+ async createSignedUrls(paths,sec){await new Promise(r=>setTimeout(r,10));const a=actor();db.calls.push({fn:'sign',bucket,n:paths.length});persist();
+  return {data:paths.map(p=>{const o=objOf(bucket,p);return o&&objVisible(o,a)?{path:p,signedUrl:o.data,error:null}:{path:p,signedUrl:null,error:'Object not found'}}),error:null}},
+ getPublicUrl(path){const o=objOf(bucket,path);return {data:{publicUrl:BUCKETS[bucket]&&BUCKETS[bucket].public&&o?o.data:'data:image/gif;base64,R0lGODlhAQABAAAAACw='}}},
+ async remove(paths){await new Promise(r=>setTimeout(r,10));const a=actor();const del=db.storage_objects.filter(o=>o.bucket_id===bucket&&paths.includes(o.name)&&objVisible(o,a)&&(bucket==='event-covers'?(canEditEvent(pathUuid(o.name),a)||isAdmin(a)):(o.owner_id===a||isAdmin(a))));
+  db.storage_objects=db.storage_objects.filter(o=>!del.includes(o));db.calls.push({fn:'remove',bucket,n:del.length});persist();return {data:del.map(o=>({name:o.name})),error:null}}
+}}}}
 function createClient(){
  const actor=()=>sessionUid();
- return {auth,from:t=>new Q(t,actor),rpc:(n,a)=>rpc(n,a,actor),
+ return {auth,from:t=>new Q(t,actor),rpc:(n,a)=>rpc(n,a,actor),storage:storageApi(actor),
   channel(name){const ch={name,subs:[],on(type,f,cb){this.subs.push({f,cb});return this},subscribe(cb){channels.push(this);if(cb)setTimeout(()=>cb('SUBSCRIBED'),0);return this},unsubscribe(){channels=channels.filter(c=>c!==this)}};return ch},
   removeChannel(ch){channels=channels.filter(c=>c!==ch);return Promise.resolve('ok')}};
 }
@@ -497,7 +671,8 @@ window.__mockSupa={
  db:()=>db,
  reset(){db=fresh();persist();localStorage.removeItem(SES_KEY)},
  createUser(email,name,o={}){const u=createUserRow(email,o.password||'salasana123',o.confirmed!==false);const p=prof(u.id);Object.assign(p,{display_name:name||'',city:o.city||'Helsinki',district:o.district||'Kallio',favs:o.favs||[],onboarded:true});if(o.phone)db.profile_private.find(x=>x.id===u.id).phone=o.phone;if(o.admin)p.is_admin=true;persist();return u.id},
- as(email){const u=byEmail(email);const actor=()=>u&&u.id;return {id:u&&u.id,from:t=>new Q(t,actor),rpc:(n,a)=>rpc(n,a,actor)}},
+ as(email){const u=byEmail(email);const actor=()=>u&&u.id;return {id:u&&u.id,from:t=>new Q(t,actor),rpc:(n,a)=>rpc(n,a,actor),storage:storageApi(actor)}},
+ putObject(bucket,path,owner,data,mime){db.storage_objects.push({bucket_id:bucket,name:path,owner_id:owner||null,mime:mime||'image/webp',size:(data||'').length,data:data||'',created_at:now()});persist()},
  setBusiness(id,patch){const b=bizOf(id);if(b){Object.assign(b,patch);persist()}return !!b},
  today:()=>todayFi(),
  makeAdmin(email){const u=byEmail(email);if(u){prof(u.id).is_admin=true;persist()}return !!u},

@@ -1088,6 +1088,90 @@ details.a-more .inner{padding:0 18px 16px}
   #gate .onb-card.land-side~.onb-card.land-side{margin-top:14px}
   #onb{padding:0 max(0px,calc((100% - 640px) / 2))}
 }
+/* ---- media + groups + sports (2026-10-02) ---- */
+.card-cover{margin:-16px -16px 12px;aspect-ratio:16/9;overflow:hidden;background:hsl(var(--h,260) 60% 92%)}
+.card-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.d-hero.has-cover{min-height:270px;display:flex;flex-direction:column}
+.d-hero.has-cover::after{display:none}
+.d-hero.has-cover .d-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.d-hero.has-cover::before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(10,8,25,.38),rgba(10,8,25,.06) 38%,rgba(10,8,25,.66))}
+.d-hero.has-cover>*:not(.d-cover){position:relative;z-index:1}
+.d-hero.has-cover .d-emoji{display:none}
+.d-hero.has-cover .act-name{margin-top:auto;padding-top:90px}
+.d-hero.has-cover h1{text-shadow:0 2px 14px rgba(0,0,0,.45)}
+.d-cover-tools{display:flex;gap:14px;justify-content:flex-end;flex-wrap:wrap;padding:8px 18px 0;font-size:13px}
+.d-cover-tools .txt-btn{font-size:13px}
+.cover-hint{margin:0 0 10px;font-size:13px;line-height:1.45}
+.cover-prev{border-radius:16px;overflow:hidden;aspect-ratio:16/9;margin:0 0 10px;background:#EEE}
+.cover-prev img{width:100%;height:100%;object-fit:cover;display:block}
+.ch-form .ch-att{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:var(--pri);background:#F1EEFB}
+.ch-form .ch-att svg{width:21px;height:21px}
+.ch-form .ch-att.busy{opacity:.55;pointer-events:none;animation:pulse 1s infinite}
+.bub.has-img{padding:4px 4px 6px;max-width:min(78%,320px)}
+.bub.has-img .who{padding:4px 8px 2px}
+.bub .ph{display:block;width:min(260px,62vw);max-height:340px;border-radius:14px;overflow:hidden;background:rgba(0,0,0,.06);position:relative;margin:0 0 4px;padding:0;cursor:zoom-in}
+.bub .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.bub.has-img .cap{display:block;padding:2px 8px 0}
+.ph .ph-gone{display:none}
+.ph.gone img{display:none}
+.ph.gone .ph-gone{display:grid;place-items:center;min-height:90px;height:100%;font-size:13px;color:var(--muted);padding:10px;text-align:center}
+.img-view{border-radius:16px;overflow:hidden;background:#111;display:grid;place-items:center;max-height:62vh}
+.img-view img{max-width:100%;max-height:62vh;object-fit:contain;display:block}
+.img-view.gone{background:#F3F2F8;min-height:120px}
+.rep-img{border-radius:14px;overflow:hidden;margin:10px 0;max-height:260px;background:#F3F2F8}
+.rep-img img{width:100%;max-height:260px;object-fit:contain;display:block}
+.act-ta{position:relative;margin:0 0 12px}
+.act-ta .ac-list{max-height:320px;overflow:auto}
+.act-opt{display:flex;align-items:center;gap:10px}
+.act-opt .ao-emo{font-size:20px;width:26px;text-align:center}
+.act-opt .ao-name{flex:1;min-width:0}
+.act-opt.sel .ao-name{font-weight:800}
+.ao-pend{color:var(--muted);font-weight:600}
+.ao-star,.afi-star{flex:none;width:36px;height:36px;border-radius:50%;font-size:19px;line-height:1;color:#B9B5CC;display:grid;place-items:center}
+.ao-star.on,.afi-star.on{color:#F5A524}
+.ao-star:hover,.afi-star:hover{background:#F4F2FB}
+.act-new{flex-direction:column;align-items:flex-start;font-weight:700;color:var(--pri)}
+.act-new small{display:block;font-weight:500;color:var(--muted);font-size:12px;margin-top:2px}
+
+.act-sel{font-size:13px;color:var(--muted);margin:0 0 10px}
+.act-sel b{color:var(--ink)}
+.chip .fav-mark{color:#F5A524;margin-right:2px}
+.afi-row{display:flex;align-items:center;gap:2px}
+.afi-row .act-filter-item{flex:1;min-width:0}
+.afi-q{height:40px;margin:2px 0 8px;font-size:14px}
+.chat-seg .cnt,.btn .cnt,h3 .cnt{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--pri);color:#fff;font-size:11px;font-style:normal;font-weight:800;vertical-align:1px}
+.grp-top{padding:0}
+.grp-sec h2{font-size:15px}
+.vis-badge{display:inline-flex;align-items:center;gap:3px;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px;background:#EEF9F1;color:#1C7A43;white-space:nowrap}
+.vis-badge.closed{background:#F4EFFF;color:#6B3FD1}
+.grp-row .ci-r2{gap:6px;flex-wrap:wrap}
+.grp-hero{margin:0 16px 14px;padding:22px 18px 18px;border-radius:26px;color:#fff;background:linear-gradient(150deg,hsl(var(--h) 75% 55%),hsl(calc(var(--h) + 45) 80% 60%));position:relative;overflow:hidden}
+.grp-hero .grp-emo{font-size:44px;line-height:1}
+.grp-hero h1{font-size:25px;font-weight:800;line-height:1.2;margin:10px 0 10px;word-break:break-word}
+.grp-badges{display:flex;flex-wrap:wrap;gap:6px}
+.grp-badges>span{background:rgba(255,255,255,.22);color:#fff;border-radius:999px;padding:3px 10px;font-size:12.5px;font-weight:700}
+.grp-badges .vis-badge{background:rgba(255,255,255,.92)}
+.grp-desc .desc{white-space:pre-wrap;line-height:1.5}
+.grp-mem,.grp-req{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid #F0EEF6}
+.grp-mem:first-of-type,.grp-req:first-of-type{border-top:0}
+.grp-mem .grow,.grp-req .grow{flex:1;min-width:0}
+.grp-req{align-items:flex-start;flex-wrap:wrap}
+.grp-req p{margin:3px 0;font-size:13.5px}
+.grp-req-btns{display:flex;gap:8px;margin-left:auto}
+.grp-req-btns .btn{height:38px;padding:0 14px;font-size:13.5px}
+.grp-mem-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.grp-mem-btns .txt-btn{font-size:12.5px}
+.role-badge{font-size:11.5px;font-weight:800;padding:2px 8px;border-radius:999px;background:#FFF3D6;color:#8A5A00;white-space:nowrap}
+.role-badge.moderator{background:#E8F1FF;color:#1F5BB8}
+.grp-foot{display:flex;flex-direction:column;gap:10px;padding:4px 16px 0}
+.gi-list{max-height:52vh;overflow:auto}
+.gi-btn{height:36px;padding:0 14px;font-size:13.5px}
+.gi-done{font-size:13px}
+.gr-hint{display:block;margin-top:6px;font-size:12.5px;line-height:1.4}
+.act-names{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.act-names .field{margin-bottom:8px}
+.seg.seg5 button{font-size:11px;padding-left:2px;padding-right:2px}
+@media (min-width:900px){.bub .ph{width:300px}.grp-hero{margin:0 0 16px}}
 </style></head>
 <body>
 <div class="desk-note" data-i18n="desk.note"></div>
@@ -1144,6 +1228,7 @@ details.a-more .inner{padding:0 18px 16px}
   <section id="s-teamreq" class="screen push"></section>
   <section id="s-teams" class="screen push"></section>
   <section id="s-team" class="screen push"></section>
+  <section id="s-group" class="screen push"></section>
 
   <nav id="nav"></nav>
 
@@ -1204,7 +1289,7 @@ function tx(k,p){
  return v;
 }
 function txn(k,n,p){let f='other';try{f=new Intl.PluralRules(LOCALES[LANG]).select(n)}catch(e){}return tx(k+'.'+(f==='one'?'one':'other'),Object.assign({n},p||{}))}
-function mkAct(o){Object.defineProperty(o,'name',{enumerable:true,configurable:true,get(){if(o.custom)return o.raw;const k='act.'+o.id;return I18N.en&&I18N.en[k]!=null?tx(k):o.raw}});return o}
+function mkAct(o){Object.defineProperty(o,'name',{enumerable:true,configurable:true,get(){if(o.custom)return (o.i18n&&o.i18n[LANG])||o.raw;const k='act.'+o.id;return I18N.en&&I18N.en[k]!=null?tx(k):(o.i18n&&o.i18n[LANG])||o.raw}});return o}
 function langPickerHTML(id,mini){const L2=mini?['en','fi','es','sv'].map(c=>LANGS.find(x=>x[0]===c)):LANGS;return `<div class="lang-pick${mini?' mini':''}" id="${id}" role="group" aria-label="${esc(tx('lang.label'))}">${L2.map(([c,n])=>`<button type="button" class="${c===LANG?'on':''}" data-a="set-lang" data-v="${c}" lang="${c}" aria-pressed="${c===LANG}"${mini?` title="${n}" aria-label="${n}"`:''}>${mini?c.toUpperCase():n}</button>`).join('')}</div>`}
 const OG_LOCALE={fi:'fi_FI',en:'en_GB',es:'es_ES',sv:'sv_SE'};
 function setMeta(sel,v){const m=document.querySelector(sel);if(m)m.setAttribute(sel.startsWith('link')?'href':'content',v)}
@@ -1251,11 +1336,11 @@ const INITIAL_HASH=location.hash||'';
 /* shareable event URLs: /e/<uuid>[-slug] opens the event directly (functions/e/[id].js serves the same index.html with per-event meta) */
 const EV_PATH_RE=/^\/e\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(?:-[^\/]*)?\/?$/i;
 let DEEP_EV=(()=>{const m=EV_PATH_RE.exec(location.pathname);return m?m[1].toLowerCase():null})();
-const ROOT_PATH=DEEP_EV||/^\/e\//.test(location.pathname)?'/':location.pathname;
+const ROOT_PATH=DEEP_EV||/^\/(e|g)\//.test(location.pathname)?'/':location.pathname;
 let popGuard=false;
 try{if(DEEP_EV)history.replaceState({mpEv:DEEP_EV,pushed:false},'',location.href);else if(/^\/e\//.test(location.pathname))history.replaceState(null,'','/'+location.search+location.hash)}catch(e){}
 let vEditPhone=false, vPhoneDraft='';
-function emptyState(){return {biz:[],reports:[],teamReqs:[],banned:false,loaded:false,user:{name:'',city:'Helsinki',customCity:'',district:'Kallio',favs:[],bio:''},email:'',emailVerified:false,phone:'',isAdmin:false,onboarded:false,acts:[],meetups:[],helps:[],items:[],chats:{},convOf:{},targetOf:{},reads:{},notifs:[],names:{},teams:[],teamOf:{},teamMembers:{},teamEvents:{},teamPlaces:{},teamMsgs:{},teamEventRsvps:{}}}
+function emptyState(){return {biz:[],reports:[],teamReqs:[],banned:false,loaded:false,user:{name:'',city:'Helsinki',customCity:'',district:'Kallio',favs:[],bio:''},email:'',emailVerified:false,phone:'',isAdmin:false,onboarded:false,acts:[],meetups:[],helps:[],items:[],chats:{},convOf:{},targetOf:{},reads:{},notifs:[],names:{},teams:[],teamOf:{},teamMembers:{},teamEvents:{},teamPlaces:{},teamMsgs:{},teamEventRsvps:{},groups:[],gInvites:[],gReqs:[],repMsgs:{}}}
 let S=emptyState();
 /* Feature flags: teams + give/need items came from GitHub unfinished (no backend flow yet) -> hidden unless ?ff=teams,items or localStorage molaplan.ff */
 const FF=new Set(String(new URLSearchParams(location.search).get('ff')||(()=>{try{return localStorage.getItem('molaplan.ff')}catch(e){return ''}})()||'').split(',').map(x=>x.trim()).filter(Boolean));
@@ -1272,7 +1357,7 @@ async function qOpt(p){try{return (await q(p))||[]}catch(e){console.warn('Molapl
 async function selectIn(table,col,ids,build){if(!ids.length)return [];const parts=[];for(let i=0;i<ids.length;i+=80){let b=sb.from(table).select('*').in(col,ids.slice(i,i+80));if(build)b=build(b);parts.push(q(b))}return (await Promise.all(parts)).flat().filter(Boolean)}
 function errText(e){
  const m=String((e&&(e.message||e.error_description||e.msg))||e||'')+' '+String((e&&e.code)||'');
- const M=[[/commercial_content/,tx('err.commercial')],[/account_banned/,tx('err.banned')],[/public_event_admin_only/,tx('err.adminOnly')],[/business_subscription_required/,tx('err.bizInactive')],[/businesses_fi_code|valid_y_tunnus/,tx('err.yTunnus')],[/businesses_code_active_key/,tx('err.bizDuplicate')],[/too_many_businesses/,tx('err.tooManyBiz')],[/too_many_team_requests/,tx('err.tooManyTeamReq')],[/team_request_invalid|team_requests_/,tx('err.teamReq')],[/reason_required/,tx('adm.writeReason')],[/reports_once_key/,tx('err.alreadyReported')],[/report_target_missing/,tx('err.reportMissing')],[/business_contact_required|business_private_billing/,tx('err.bizBilling')],[/events_kind_fields/,tx('err.kindFields')],[/events_ends/,tx('err.endsRange')],[/official_url|logo_url|website/,tx('err.httpsUrl')],[/friend_request_exists|friend_request_declined/,tx('err.friendExists')],[/not_friends/,tx('err.notFriends')],[/friend_rate_limited/,tx('err.rateLimit')],[/event_full/,tx('err.eventFull')],[/event_in_past|request_in_past/,tx('err.past')],[/verification_required/,tx('err.verificationRequired')],[/email_not_verified/,tx('err.emailNotVerified')],[/request_full/,tx('err.requestFull')],[/request_not_open/,tx('err.requestNotOpen')],[/own_request/,tx('err.ownRequest')],[/no_prices/,tx('err.noPrices')],[/status_change_not_allowed/,tx('err.statusChange')],[/activities_name_lower_key|duplicate key|23505/,tx('err.duplicate')],[/Invalid login credentials/i,tx('err.badLogin')],[/Email not confirmed/i,tx('err.emailNotConfirmed')],[/already registered|already been registered|user_already_exists/i,tx('err.alreadyRegistered')],[/rate limit|too many|over_email_send_rate_limit|429/i,tx('err.rateLimit')],[/Password should|weak_password|password.*(short|characters)/i,tx('err.weakPassword')],[/same_password|different from the old/i,tx('err.samePassword')],[/Failed to fetch|NetworkError|network|Load failed/i,tx('err.network')],[/JWT|not_authenticated|session_not_found|refresh_token/i,tx('err.session')],[/row-level security|42501|permission denied/i,tx('err.forbidden')]];
+ const M=[[/img_type|img_decode|mime type .* is not supported|invalid_mime_type|\b415\b/i,tx('img.unsupported')],[/img_big|exceeded the maximum allowed size|Payload too large|\b413\b/i,tx('img.tooBig')],[/image_not_allowed/,tx('img.notAllowed')],[/image_path_invalid|image_missing/,tx('img.failed')],[/group_closed/,tx('grp.closedErr')],[/founder_cannot_leave/,tx('grp.founderCannotLeave')],[/group_request_declined/,tx('grp.reqDeclined')],[/group_rate_limited|activity_rate_limited/,tx('err.rateLimit')],[/group_invalid|group_invite_invalid/,tx('grp.invalid')],[/group_founder_only|group_mod_only|group_remove_founder|group_remove_self|admin_only/,tx('err.forbidden')],[/group_not_found|group_invite_not_found|group_request_not_found|group_member_not_found/,tx('grp.notFound')],[/commercial_content/,tx('err.commercial')],[/account_banned/,tx('err.banned')],[/public_event_admin_only/,tx('err.adminOnly')],[/business_subscription_required/,tx('err.bizInactive')],[/businesses_fi_code|valid_y_tunnus/,tx('err.yTunnus')],[/businesses_code_active_key/,tx('err.bizDuplicate')],[/too_many_businesses/,tx('err.tooManyBiz')],[/too_many_team_requests/,tx('err.tooManyTeamReq')],[/team_request_invalid|team_requests_/,tx('err.teamReq')],[/reason_required/,tx('adm.writeReason')],[/reports_once_key/,tx('err.alreadyReported')],[/report_target_missing/,tx('err.reportMissing')],[/business_contact_required|business_private_billing/,tx('err.bizBilling')],[/events_kind_fields/,tx('err.kindFields')],[/events_ends/,tx('err.endsRange')],[/official_url|logo_url|website/,tx('err.httpsUrl')],[/friend_request_exists|friend_request_declined/,tx('err.friendExists')],[/not_friends/,tx('err.notFriends')],[/friend_rate_limited/,tx('err.rateLimit')],[/event_full/,tx('err.eventFull')],[/event_in_past|request_in_past/,tx('err.past')],[/verification_required/,tx('err.verificationRequired')],[/email_not_verified/,tx('err.emailNotVerified')],[/request_full/,tx('err.requestFull')],[/request_not_open/,tx('err.requestNotOpen')],[/own_request/,tx('err.ownRequest')],[/no_prices/,tx('err.noPrices')],[/status_change_not_allowed/,tx('err.statusChange')],[/activities_name_lower_key|duplicate key|23505/,tx('err.duplicate')],[/Invalid login credentials/i,tx('err.badLogin')],[/Email not confirmed/i,tx('err.emailNotConfirmed')],[/already registered|already been registered|user_already_exists/i,tx('err.alreadyRegistered')],[/rate limit|too many|over_email_send_rate_limit|429/i,tx('err.rateLimit')],[/Password should|weak_password|password.*(short|characters)/i,tx('err.weakPassword')],[/same_password|different from the old/i,tx('err.samePassword')],[/Failed to fetch|NetworkError|network|Load failed/i,tx('err.network')],[/JWT|not_authenticated|session_not_found|refresh_token/i,tx('err.session')],[/row-level security|42501|permission denied/i,tx('err.forbidden')]];
  for(const [re,t] of M)if(re.test(m))return t;
  return tx('err.generic');
 }
@@ -1280,11 +1365,11 @@ async function withBusy(el,fn){const b=el&&el.closest?el.closest('button'):null;
 function fire(p){Promise.resolve(p).then(r=>{if(r&&r.error)console.warn('Molaplan:',r.error)}).catch(e=>console.warn('Molaplan:',e))}
 function hm(d){return pad2(d.getHours())+':'+pad2(d.getMinutes())}
 function localIso(date,time){const [y,mo,d]=date.split('-').map(Number),[h,mi]=time.split(':').map(Number);return new Date(y,mo-1,d,h,mi).toISOString()}
-function mapAct(a){const crazy=!!a.is_crazy;return mkAct({id:a.id,raw:String(a.name||''),emoji:safeEmoji(a.emoji),hue:Number.isFinite(Number(a.hue))?Number(a.hue):hashHue(a.name),crazy,lvl:crazy?(Number(a.crazy_level)||2):0,adult:!!a.is_adult,custom:!!a.is_custom,mine:!!(a.is_custom&&a.created_by&&a.created_by===ME)})}
-function mapEvent(e,people){const d=new Date(e.starts_at);const mp=e.max_participants==null?null:Number(e.max_participants);return {id:e.id,act:e.activity_id,title:e.title,desc:e.description||'',date:ymd(d),time:hm(d),city:e.city,district:e.district||'',place:e.place,lat:e.lat==null?null:Number(e.lat),lng:e.lng==null?null:Number(e.lng),max:mp==null?null:(mp||2),unlimited:mp==null,level:LEGACY_LEVEL[e.skill_level]||e.skill_level||'all',crazy:!!e.is_crazy,clvl:Number(e.crazy_level)||0,adult:!!e.is_adult,host:e.host_id,people:people||[],created:Date.parse(e.created_at)||0,kind:e.kind||'community',ends:e.ends_at?ymd(new Date(e.ends_at)):'',endTime:e.ends_at?hm(new Date(e.ends_at)):'',endsAt:e.ends_at||null,organizer:e.organizer_name||'',url:e.official_url||'',price:e.price_info||'',bizId:e.business_id||null,bizName:e.business_name||'',bizLogo:e.business_logo||'',skill:e.skill_level||'all'}}
+function mapAct(a){const crazy=!!a.is_crazy;return mkAct({id:a.id,raw:String(a.name||''),emoji:safeEmoji(a.emoji),hue:Number.isFinite(Number(a.hue))?Number(a.hue):hashHue(a.name),crazy,lvl:crazy?(Number(a.crazy_level)||2):0,adult:!!a.is_adult,custom:!!a.is_custom,mine:!!(a.is_custom&&a.created_by&&a.created_by===ME),i18n:a.name_i18n&&typeof a.name_i18n==='object'?a.name_i18n:{},status:a.status||'approved',createdBy:a.created_by||null,created:Date.parse(a.created_at)||0})}
+function mapEvent(e,people){const d=new Date(e.starts_at);const mp=e.max_participants==null?null:Number(e.max_participants);return {id:e.id,act:e.activity_id,title:e.title,desc:e.description||'',date:ymd(d),time:hm(d),city:e.city,district:e.district||'',place:e.place,lat:e.lat==null?null:Number(e.lat),lng:e.lng==null?null:Number(e.lng),max:mp==null?null:(mp||2),unlimited:mp==null,level:LEGACY_LEVEL[e.skill_level]||e.skill_level||'all',crazy:!!e.is_crazy,clvl:Number(e.crazy_level)||0,adult:!!e.is_adult,host:e.host_id,people:people||[],created:Date.parse(e.created_at)||0,kind:e.kind||'community',ends:e.ends_at?ymd(new Date(e.ends_at)):'',endTime:e.ends_at?hm(new Date(e.ends_at)):'',endsAt:e.ends_at||null,organizer:e.organizer_name||'',url:e.official_url||'',price:e.price_info||'',bizId:e.business_id||null,bizName:e.business_name||'',bizLogo:e.business_logo||'',skill:e.skill_level||'all',cover:e.cover_path||''}}
 function mapBiz(b,priv,members){return {id:b.id,name:b.name||'',code:b.business_code||'',country:b.country||'FI',logo:b.logo_url||'',website:b.website||'',desc:b.description||'',status:b.status||'approved',reason:b.admin_reason||'',until:b.subscription_active_until||'',createdBy:b.created_by||null,created:Date.parse(b.created_at)||0,updated:Date.parse(b.updated_at||b.created_at)||0,member:!!(members&&members.includes(ME)),priv:priv||null}}
 function mapHelp(h,helpers,c){const d=new Date(h.starts_at);return {id:h.id,cat:h.category,title:h.title,desc:h.description||'',needs:h.needs||'',district:h.district,place:h.place||'',city:h.city,lat:Number(h.lat),lng:Number(h.lng),dest:h.dest_lat!=null&&h.dest_lng!=null?{lat:Number(h.dest_lat),lng:Number(h.dest_lng),label:h.dest_label||''}:null,date:ymd(d),time:hm(d),dur:h.duration||'',max:Number(h.helpers_needed)||1,helpers:helpers||[],mine:h.requester_id===ME,requesterId:h.requester_id,contact:c?{name:c.contact_name,phone:c.phone,email:c.email}:null,emailVerified:!!h.email_verified,status:h.status,reason:h.admin_reason||'',history:(Array.isArray(h.history)?h.history:[]).map(x=>({s:x.s,t:Date.parse(x.t)||0})),created:Date.parse(h.created_at)||0,updated:Date.parse(h.updated_at||h.created_at)||0}}
-function mapMsg(r){return {id:r.id,from:r.sender_id||null,sys:r.kind==='system',text:r.body,code:r.code||null,params:r.params||{},t:Date.parse(r.created_at)||Date.now()}}
+function mapMsg(r){return {id:r.id,from:r.sender_id||null,sys:r.kind==='system',text:r.body,code:r.code||null,params:r.params||{},t:Date.parse(r.created_at)||Date.now(),img:r.image_path||'',iw:Number(r.image_w)||0,ih:Number(r.image_h)||0}}
 function mapNotif(n){const o={id:n.id,ic:safeEmoji(n.icon),t:Date.parse(n.created_at)||Date.now(),read:!!n.read_at,go:n.link_kind?{kind:n.link_kind,id:n.link_id}:null};Object.defineProperty(o,'text',{enumerable:true,get(){return codeText('notif.',n.code,n.params,n.body)}});return o}
 function codeText(prefix,code,params,fallback){const k=prefix+code;if(!code||!(I18N.en&&I18N.en[k]!=null))return String(fallback||'');const p={};Object.keys(params||{}).forEach(x=>p[x]=String(params[x]==null?'':params[x]));if(!p.name)p.name=tx('common.someone');if(/^\d{4}-\d{2}-\d{2}$/.test(p.date||''))p.date=fmtYmd(p.date);return tx(k,p)}
 function fmtYmd(v){const [y,mo,d]=String(v).split('-').map(Number);return dtf({day:'numeric',month:'numeric',year:'numeric'}).format(new Date(y,mo-1,d))}
@@ -1302,12 +1387,16 @@ async function loadAll(){
   q(sb.from('conversation_reads').select('*').eq('user_id',ME)),
   q(sb.from('notifications').select('*').eq('user_id',ME).order('created_at',{ascending:false}).limit(50))
  ]);
- const [bizs,bmem,bpriv,reps,treqs]=await Promise.all([
+ const [bizs,bmem,bpriv,reps,treqs,grps,gmem,ginv,greq]=await Promise.all([
   q(sb.from('businesses').select('*').order('created_at',{ascending:false}).limit(500)),
   q(sb.from('business_members').select('*')),
   q(sb.from('business_private').select('*')),
   q(sb.from('reports').select('*').order('created_at',{ascending:false}).limit(300)),
-  qOpt(sb.from('team_requests').select('*').order('created_at',{ascending:false}).limit(300))
+  qOpt(sb.from('team_requests').select('*').order('created_at',{ascending:false}).limit(300)),
+  qOpt(sb.from('groups_v').select('*').order('created_at',{ascending:false}).limit(500)),
+  qOpt(sb.from('group_members').select('*')),
+  qOpt(sb.from('group_invites').select('*')),
+  qOpt(sb.from('group_join_requests').select('*'))
  ]);
  if(!prof){await q(sb.from('profiles').insert({id:ME}));return loadAll()}
  const evIds=(evs||[]).map(e=>e.id), hIds=(helps||[]).map(h=>h.id), cIds=(convs||[]).map(c=>c.id);
@@ -1316,8 +1405,12 @@ async function loadAll(){
   selectIn('help_offers','request_id',hIds),
   selectIn('messages','conversation_id',cIds,b=>b.order('created_at',{ascending:false}).limit(1500))
  ]);
+ /* admin: reported chat messages (photo paths) – readable via the "ylläpito näkee ilmoitetut" policy */
+ const repMsgIds=prof.is_admin?[...new Set((reps||[]).filter(r=>r.target_type==='message'&&r.status==='open').map(r=>r.target_id))]:[];
+ const repMsgs=repMsgIds.length?await selectIn('messages','id',repMsgIds):[];
  const ids=new Set();
  (evs||[]).forEach(e=>ids.add(e.host_id));(reps||[]).forEach(r=>ids.add(r.reporter_id));(treqs||[]).forEach(r=>ids.add(r.requester_id));parts.forEach(p=>ids.add(p.user_id));(helps||[]).forEach(h=>ids.add(h.requester_id));offers.forEach(o=>ids.add(o.helper_id));msgs.forEach(m=>{if(m.sender_id)ids.add(m.sender_id)});
+ (gmem||[]).forEach(m=>ids.add(m.user_id));(ginv||[]).forEach(i=>{ids.add(i.invitee_id);ids.add(i.inviter_id)});(greq||[]).forEach(r=>ids.add(r.user_id));(grps||[]).forEach(g=>ids.add(g.founder_id));(acts||[]).forEach(a=>{if(a.status==='pending')ids.add(a.created_by)});repMsgs.forEach(m=>ids.add(m.sender_id));
  ids.delete(ME);ids.delete(null);ids.delete(undefined);
  const profs=await selectIn('profiles','id',[...ids]);
  const N={};profs.forEach(p=>N[p.id]=p.display_name||'');
@@ -1333,7 +1426,7 @@ async function loadAll(){
  const mBy={},prBy={};(bmem||[]).forEach(x=>(mBy[x.business_id]=mBy[x.business_id]||[]).push(x.user_id));(bpriv||[]).forEach(x=>prBy[x.business_id]=x);
  T.biz=(bizs||[]).map(b=>mapBiz(b,prBy[b.id],mBy[b.id]));
  T.teamReqs=(treqs||[]).map(r=>({id:r.id,requester:r.requester_id,name:r.team_name||'',sport:r.sport||'',city:r.city||'',contactName:r.contact_name||'',email:r.contact_email||'',phone:r.contact_phone||'',desc:r.description||'',status:r.status||'pending',reason:r.admin_reason||'',created:Date.parse(r.created_at)||0}));
- T.reports=(reps||[]).map(r=>({id:r.id,reporter:r.reporter_id,target:r.target_id,reason:r.reason,note:r.note||'',status:r.status,created:Date.parse(r.created_at)||0}));
+ T.reports=(reps||[]).map(r=>({id:r.id,type:r.target_type||'event',reporter:r.reporter_id,target:r.target_id,reason:r.reason,note:r.note||'',status:r.status,created:Date.parse(r.created_at)||0}));
  T.meetups=(evs||[]).map(e=>{const ppl=pBy[e.id]||[];const hi=ppl.indexOf(e.host_id);if(hi>0){ppl.splice(hi,1);ppl.unshift(e.host_id)}const b=e.business_id&&T.biz.find(x=>x.id===e.business_id);return mapEvent(Object.assign({},e,b?{business_name:b.name,business_logo:b.logo}:{}),ppl)});
  const oBy={};offers.slice().sort((a,b)=>String(a.created_at).localeCompare(String(b.created_at))).forEach(o=>(oBy[o.request_id]=oBy[o.request_id]||[]).push(o.helper_id));
  const cBy={};(contacts||[]).forEach(c=>cBy[c.request_id]=c);
@@ -1358,12 +1451,17 @@ async function loadAll(){
  T.teams.forEach(t=>{t.members.forEach(m=>{if(m.uid===ME)S.teamOf[t.id]=m.role})});
  S.teamEventRsvps=tersvpBy;
  S.teamMsgs=tmsgBy;
- (convs||[]).forEach(c=>{const tid=c.event_id||c.help_request_id;if(!tid)return;T.convOf[tid]=c.id;T.targetOf[c.id]=tid;T.chats[tid]=[]});
+ (convs||[]).forEach(c=>{const tid=c.event_id||c.help_request_id||c.group_id;if(!tid)return;T.convOf[tid]=c.id;T.targetOf[c.id]=tid;T.chats[tid]=[]});
  msgs.slice().sort((a,b)=>String(a.created_at).localeCompare(String(b.created_at))).forEach(m=>{const tid=T.targetOf[m.conversation_id];if(tid)T.chats[tid].push(mapMsg(m))});
  Object.keys(prevS.chats||{}).forEach(tid=>{const pend=(prevS.chats[tid]||[]).filter(x=>x.pending);if(pend.length&&T.chats[tid])T.chats[tid].push(...pend)});
  (reads||[]).forEach(r=>{const tid=T.targetOf[r.conversation_id];if(tid)T.reads[tid]=Date.parse(r.last_read_at)||0});
  Object.keys(prevS.reads||{}).forEach(tid=>{if(T.convOf[tid])T.reads[tid]=Math.max(T.reads[tid]||0,prevS.reads[tid]||0)});
  T.notifs=(notifs||[]).map(mapNotif);
+ const gmBy={};(gmem||[]).forEach(m=>(gmBy[m.group_id]=gmBy[m.group_id]||[]).push(m));
+ T.groups=(grps||[]).map(g=>mapGroup(g,gmBy[g.id]));
+ T.gInvites=(ginv||[]).map(i=>({group:i.group_id,invitee:i.invitee_id,inviter:i.inviter_id||null,created:Date.parse(i.created_at)||0}));
+ T.gReqs=(greq||[]).map(r=>({group:r.group_id,user:r.user_id,message:r.message||'',status:r.status||'pending',created:Date.parse(r.created_at)||0}));
+ T.repMsgs={};repMsgs.forEach(m=>T.repMsgs[m.id]=m);
  if(window.MolaplanFriends){try{await window.MolaplanFriends.load()}catch(e){console.warn('Molaplan: friends unavailable',e)}}
  loadedAt=Date.now();
 }
@@ -1388,7 +1486,7 @@ function onRealtimeMsg(row){
  const arr=S.chats[tid]=S.chats[tid]||[];
  if(arr.some(x=>x.id===row.id))return;
  const x=mapMsg(row);
- const pi=arr.findIndex(y=>y.pending&&y.from===x.from&&y.text===x.text);
+ const pi=arr.findIndex(y=>y.pending&&y.from===x.from&&y.text===x.text&&(y.img||'')===(x.img||''));
  if(pi>=0)arr.splice(pi,1,x);else arr.push(x);
  if(x.sys||(x.from&&x.from!==ME&&!S.names[x.from]))scheduleRefresh();
  if(inChatView(tid))markRead(tid);
@@ -1407,7 +1505,7 @@ function refreshAllViews(){
  if(curTab==='home')renderHome();
  if(curTab==='map'){renderMapAll(false);if(mapSel)renderMapCard()}
  if(curTab==='mine')renderMine();
- if(curTab==='chats')renderChatList();
+ if(curTab==='chats'){renderChatList();renderGroupsList();const cs=$('#chat-seg');if(cs)cs.outerHTML=chatSegHTML()}
  if(curTab==='profile'&&!($('#s-profile').contains(document.activeElement)&&document.activeElement.matches('input,textarea,select')))renderProfile();
  if($('#s-detail').classList.contains('active')){const m=byId(detailId);if(!m){goBack();return}if(meetupSig(m)!==detailSig)renderDetail(false);else{const b=$('#chat-box');if(b)b.innerHTML=detailChatBoxHTML(m)}}
  if($('#s-hdetail').classList.contains('active')){const h=helpById(helpId);if(!h){goBack();return}if(helpSigOf(h)!==helpSig)renderHelpDetail(false);else{const b=$('#hchat-box');if(b)b.innerHTML=helpChatBoxHTML(h)}}
@@ -1418,14 +1516,15 @@ function refreshAllViews(){
  if($('#s-biz').classList.contains('active')&&!($('#s-biz').contains(document.activeElement)&&document.activeElement.matches('input,textarea,select')))renderBiz();
  if($('#s-orgs').classList.contains('active'))renderOrgs();
  if($('#s-teamreq').classList.contains('active')&&!($('#s-teamreq').contains(document.activeElement)&&document.activeElement.matches('input,textarea,select')))renderTeamReq();
+ if($('#s-group').classList.contains('active')&&!($('#s-group').contains(document.activeElement)&&document.activeElement.matches('input,textarea,select')))renderGroup(false);
 }
-function meetupSig(m){return JSON.stringify([m.people,m.max,m.title,m.desc,m.place,m.date,m.time,m.people.map(nameOf),S.isAdmin,m.ends,m.endTime,m.organizer,m.url,m.price,m.bizName,S.reports.filter(r=>r.target===m.id&&r.reporter===ME).length])}
+function meetupSig(m){return JSON.stringify([m.people,m.max,m.title,m.desc,m.place,m.date,m.time,m.people.map(nameOf),S.isAdmin,m.ends,m.endTime,m.organizer,m.url,m.price,m.bizName,S.reports.filter(r=>r.target===m.id&&r.reporter===ME).length,m.cover])}
 function helpSigOf(h){return JSON.stringify([h.status,h.helpers,h.max,h.title,h.desc,h.contact,h.helpers.map(nameOf)])}
 
 /* ================= GUEST MODE: browse without an account ================= */
 const GUEST_KEY='molaplan.guest', PENDING_KEY='molaplan.pending';
-const ACT_COLS='id,name,emoji,hue,is_crazy,crazy_level,is_adult,is_custom,sort_order,created_at';
-const GATED=new Set(['join','leave','open-chat','chat-detail','offer','unoffer','ask-help','quick-create','hullut-create','open-notifs','add-own','edit-favs','verify-open','open-admin','delete','publish','qa','req-reply','req-close','save-profile','v-phone-save','report','rep-send','bz-submit','new-biz-event','edit-event','tr-submit']);
+const ACT_COLS='id,name,emoji,hue,is_crazy,crazy_level,is_adult,is_custom,sort_order,created_at,name_i18n,status';
+const GATED=new Set(['join','leave','open-chat','chat-detail','offer','unoffer','ask-help','quick-create','hullut-create','open-notifs','add-own','edit-favs','verify-open','open-admin','delete','publish','qa','req-reply','req-close','save-profile','v-phone-save','report','rep-send','bz-submit','new-biz-event','edit-event','tr-submit','open-group','grp-new','fav-star','report-cover','img-report','chat-img']);
 let guestTab='home';
 function isGuest(){return !ME&&!!S.guest}
 function guestPref(){try{const g=JSON.parse(localStorage.getItem(GUEST_KEY)||'null');if(g&&CITIES[g.city])return {city:g.city,district:districts(g.city).includes(g.district)?g.district:firstDistrict(g.city)}}catch(e){}return null}
@@ -1596,6 +1695,7 @@ function runPending(p){
   case 'open-chat':case 'chat-detail':if(byId(p.id))openDetail(p.id);else if(helpById(p.id))openHelp(p.id);break;
   case 'tab':if(['create','chats','mine','profile'].includes(p.t))go(p.t);break;
   case 'go-tab':if(['create','chats','mine','profile'].includes(p.v))go(p.v);break;
+  case 'open-group':if(p.id)openGroup(p.id);break;
   case 'ask-help':openAsk();break;
   case 'team-req':openTeamReq();break;
   case 'open-biz':openBiz();break;
@@ -1722,7 +1822,7 @@ function enterApp(tab){
  resetCreate();go(tab||'home');
  if(ME)resumePending();
  refreshHereQuietly();
- openDeepEvent();
+ openDeepEvent();openDeepGroup();
 }
 /* /e/<id>: open the event once the data is loaded (guests see only what the guest_events view / RLS allows) */
 function openDeepEvent(){
@@ -1736,7 +1836,7 @@ function teardown(){
  if(rtChannel){try{sb.removeChannel(rtChannel)}catch(e){}rtChannel=null}
  clearTimeout(refreshT);
  closeSheet();closePush(true);
- C=null;A=null;curTab='home';mapSel=null;chatQ='';mineSeg='joined';vEditPhone=false;vPhoneDraft='';
+ C=null;A=null;curTab='home';mapSel=null;chatQ='';chatSeg='chats';grpQ='';groupId=null;grpPrev=null;mineSeg='joined';vEditPhone=false;vPhoneDraft='';
  Object.assign(F,{act:'all',time:'all',district:'all',level:'all'});Object.assign(GF,{cat:'all',district:'all'});Object.assign(HF,{act:'all',lvl:0});
  if(bigMap){try{bigMap.remove()}catch(e){}bigMap=null;markerLayer=null;markers={};meMarker=null}
  if(pickMap){try{pickMap.remove()}catch(e){}pickMap=null;pickMarker=null}
@@ -1780,7 +1880,7 @@ let csCrazy=false, csAdult=false, csAdultTouched=false;
 const $=(s,r=document)=>r.querySelector(s);
 const $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const ICONS={
+const ICONS={camera:'<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',
  settings:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
  home:'<path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2h-4v-7H9v7H5a2 2 0 0 1-2-2z"/>',
  map:'<polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>',
@@ -1822,7 +1922,9 @@ function clvlHTML(n,withLabel){return `<span class="cz-lvl" title="${tx('clvl.ti
 function czBadgesHTML(m){if(!isCrazy(m)&&!is18(m))return '';return `<div class="cz-badges">${isCrazy(m)?`<span class="cz-badge">${tx('crazy.short')}</span>${clvlHTML(clvlOf(m))}`:''}${is18(m)?`<span class="b18" title="${tx('adult.only')}">18+</span>`:''}</div>`}
 function crazyUpcoming(){const c=viewCity().toLowerCase();return S.meetups.filter(m=>String(m.city).toLowerCase()===c&&!isPast(m)&&isCrazy(m)).sort((a,b)=>dateObj(a)-dateObj(b))}
 function act(id){return allActs().find(a=>a.id===id)||{id,name:tx('act.fallback'),emoji:'✨',hue:260}}
-function orderedActs(){const f=S.user.favs;const all=allActs();return all.filter(a=>f.includes(a.id)).concat(all.filter(a=>!f.includes(a.id)))}
+/* global lists: approved sports + the user's own pending suggestions (schema.sql 8a) */
+function listActs(){return allActs().filter(a=>!a.status||a.status==='approved'||a.mine||(ME&&a.createdBy===ME))}
+function orderedActs(){const f=S.user.favs;const all=listActs();return all.filter(a=>f.includes(a.id)).concat(all.filter(a=>!f.includes(a.id)))}
 function cityName(){return CITIES[S.user.city]?S.user.city:'Helsinki'}
 /* the city being browsed (filters/map/lists); defaults to the home city */
 function viewCity(){return CITIES[F.city]?F.city:cityName()}
@@ -1918,7 +2020,7 @@ function go(tab){
 }
 function openPush(id){$$('.push').forEach(p=>p.classList.toggle('active',p.id===id));$('#app').classList.add('pushed');$('#'+id).scrollTop=0}
 function closePush(silent){
- navStack=[];chatId=null;
+ navStack=[];chatId=null;groupId=null;
  const wasDetail=$('#s-detail').classList.contains('active');
  $$('.push').forEach(p=>p.classList.remove('active'));$('#app').classList.remove('pushed');
  if(wasDetail){detailId=null;if(miniMap){miniMap.remove();miniMap=null}}
@@ -2027,7 +2129,17 @@ function closeSheet(){$('#app').classList.remove('sheet-open')}
 async function csAdd(el){
  const name=$('#cs-name').value.trim().replace(/\s+/g,' ');
  if(name.length<2){$('#cs-name').classList.add('err');toast(tx('cs.nameNeeded'));return}
- if(allActs().some(a=>a.name.toLowerCase()===name.toLowerCase())){$('#cs-name').classList.add('err');toast(tx('cs.exists'));return}
+ const lc=name.toLocaleLowerCase(),actNames=a=>[a.name,a.raw,...Object.values(a.i18n||{}),...Object.keys(I18N).map(l=>I18N[l]&&I18N[l]['act.'+a.id])].filter(Boolean).map(n=>String(n).toLocaleLowerCase());
+ const ex=listActs().find(a=>actNames(a).includes(lc));
+ if(ex){
+  if(!S.user.favs.includes(ex.id)){S.user.favs.push(ex.id);if(S.onboarded)fire(sb.from('profiles').update({favs:S.user.favs}).eq('id',ME))}
+  closeSheet();
+  if(sheetCtx==='lajit'){pick.add(ex.id);renderLajit()}
+  if(sheetCtx==='create'){C.act=ex.id;renderCreateActs();renderCreateCrazy();updTitlePh();if(pickMarker)pickMarker.setIcon(createPin())}
+  if(sheetCtx==='hullut'&&$('#s-hullut').classList.contains('active'))renderHullut();
+  toast(tx('acts.existsPicked',{emoji:ex.emoji,name:ex.name}));return
+ }
+ if(allActs().some(a=>actNames(a).includes(lc))){$('#cs-name').classList.add('err');toast(tx('cs.exists'));return}
  const adult=!!csAdult||ADULT_RE.test(name);
  const row={id:'c_'+rid(),name,emoji:safeEmoji(csEmoji),hue:hashHue(name),is_crazy:!!csCrazy,crazy_level:csCrazy?2:0,is_adult:adult,is_custom:true,created_by:ME};
  let saved;
@@ -2040,7 +2152,8 @@ async function csAdd(el){
  if(sheetCtx==='hullut'&&$('#s-hullut').classList.contains('active'))renderHullut();
  if(curTab==='home'&&S.onboarded)renderHome();
  if(bigMap)renderMapFilters();
- toast(tx('lajit.added',{emoji:a.emoji,name:a.name})+(a.crazy?' '+tx('lajit.crazyWow'):''));
+ if(a.status==='pending')toast(tx('acts.pendingAdded',{emoji:a.emoji,name:a.name}),4600);
+ else toast(tx('lajit.added',{emoji:a.emoji,name:a.name})+(a.crazy?' '+tx('lajit.crazyWow'):''));
 }
 
 /* ================= FILTERS ================= */
@@ -2050,19 +2163,21 @@ function filtersHTML(ctx){
  const curAct=F.act;
  const curActLabel=curAct==='all'?tx('filter.all'):curAct===GOOD_ALL?tx('filter.good'):curAct===GIVE_ALL?tx('filter.give'):curAct===NEED_ALL?tx('filter.need'):curAct===BIZ_ALL?tx('filter.biz'):curAct===CZ_ALL?tx('filter.crazy'):(act(curAct).emoji+' '+esc(act(curAct).name));
  const item=(id,emoji,name)=>`<button class="act-filter-item ${F.act===id?'on':''}" data-a="f-act" data-v="${esc(id)}"><span class="emoji">${emoji||''}</span><span>${esc(name)}</span></button>`;
+ const aitem=a=>`<div class="afi-row" data-v="${esc(a.id)}">${item(a.id,a.emoji,a.name)}${ME?starBtn(a.id,'afi-star'):''}</div>`;
  const regularActs=orderedActs().filter(a=>!a.crazy);
  const crazyActs=orderedActs().filter(a=>a.crazy);
  return `<div class="filters">
   <div style="padding:0 20px 4px;position:relative">
    <button class="act-filter-btn ${curAct!=='all'?'on':''}" data-a="act-filter-toggle" id="act-filter-btn-${ctx}" aria-expanded="false">${curActLabel} <span style="font-size:11px">▾</span></button>
    <div class="act-filter-popup hidden" id="act-filter-popup-${ctx}">
+    <input class="inp afi-q" type="search" id="afi-q-${ctx}" placeholder="${tx('acts.searchPh')}" aria-label="${tx('acts.searchPh')}" autocomplete="off">
     <button class="act-filter-item ${F.act==='all'?'on':''}" data-a="f-act" data-v="all"><span class="emoji">🌟</span><span>${tx('filter.all')}</span></button>
     <button class="act-filter-item ${F.act===GOOD_ALL?'on':''}" data-a="f-act" data-v="${GOOD_ALL}"><span class="emoji">✨</span><span>${tx('filter.good')}</span></button>
     ${ff('items')?`<button class="act-filter-item ${F.act===GIVE_ALL?'on':''}" data-a="f-act" data-v="${GIVE_ALL}"><span class="emoji">🎁</span><span>${tx('filter.give')}</span></button>
     <button class="act-filter-item ${F.act===NEED_ALL?'on':''}" data-a="f-act" data-v="${NEED_ALL}"><span class="emoji">🆘</span><span>${tx('filter.need')}</span></button>`:''}
     <button class="act-filter-item ${F.act===BIZ_ALL?'on':''}" data-a="f-act" data-v="${BIZ_ALL}"><span class="emoji">🏢</span><span>${tx('filter.biz')}</span></button>
-    ${regularActs.length?`<div class="act-filter-section"><div class="act-filter-section-title">${tx('filter.activities')}</div>${regularActs.map(a=>item(a.id,a.emoji,a.name)).join('')}</div>`:''}
-    ${crazyActs.length?`<div class="act-filter-section"><div class="act-filter-section-title">${tx('filter.crazyActivities')}</div>${item(CZ_ALL,'',tx('filter.crazy'))}${crazyActs.map(a=>item(a.id,a.emoji,a.name)).join('')}</div>`:''}
+    ${regularActs.length?`<div class="act-filter-section"><div class="act-filter-section-title">${tx('filter.activities')}</div>${regularActs.map(aitem).join('')}</div>`:''}
+    ${crazyActs.length?`<div class="act-filter-section"><div class="act-filter-section-title">${tx('filter.crazyActivities')}</div>${item(CZ_ALL,'',tx('filter.crazy'))}${crazyActs.map(aitem).join('')}</div>`:''}
    </div>
   </div>
   <div class="seg">${t('all',tx('common.all'))}${t('today',tx('date.today'))}${t('tomorrow',tx('date.tomorrow'))}${t('week',tx('date.thisWeek'))}</div>
@@ -2097,6 +2212,7 @@ function whenRange(m){if(!m.ends)return whenText(m);if(m.ends===dateStr(m))retur
 function cardHTML(m,i=0){
  const a=act(m.act), nc=isNC(m);
  return `<article class="card ${isCrazy(m)?'crazy':''} ${nc?'k-'+m.kind:''}" data-a="open" data-id="${m.id}" style="--h:${a.hue};animation-delay:${Math.min(i,8)*40}ms">
+  ${m.cover?`<div class="card-cover"><img src="${esc(coverUrl(m.cover))}" alt="" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></div>`:''}
   <div class="card-top"><div class="emo">${m.kind==='business'?bizLogoHTML(m.bizLogo):a.emoji}</div><div class="card-meta"><div class="act-name">${esc(a.name)}</div><div class="when">${icon('clock')} ${nc?whenRange(m):whenText(m)}</div></div>${distPill(m)}</div>
   ${nc?`<div class="kind-row">${kindBadgeHTML(m)}<span class="org">${esc(orgName(m))}</span></div>`:''}
   <h3>${esc(m.title)}</h3>
@@ -2186,7 +2302,7 @@ function canDeleteEvent(m){return !!ME&&(isHost(m)||S.isAdmin||(m.kind==='busine
 async function delMeetup(id,el){
  const m=byId(id);if(!m||!canDeleteEvent(m))return;
  if(!confirm(tx(isHost(m)?'event.confirmDelete':'event.confirmDeleteAdmin',{title:m.title})))return;
- try{await withBusy(el,()=>q(sb.from('events').delete().eq('id',id)))}catch(e){toast(errText(e));return}
+ try{await withBusy(el,async()=>{if(m.cover)await Promise.resolve(sb.storage.from('event-covers').remove([m.cover])).catch(()=>null);await q(sb.from('events').delete().eq('id',id))})}catch(e){toast(errText(e));return}
  S.meetups=S.meetups.filter(x=>x.id!==id);delete S.chats[id];delete S.reads[id];
  if(mapSel===id)selectMarker(null);
  closePush();if(bigMap)renderMarkers(false);toast(tx('event.deleted'));
@@ -2204,7 +2320,7 @@ function afterChange(id){
 let miniMap=null;
 /* push-screen stack: detail ⇄ chat ⇄ hullut */
 let navStack=[];
-function curEntry(){const p=$$('.push').find(x=>x.classList.contains('active'));if(!p||p.id==='s-lajit')return null;return {screen:p.id,param:p.id==='s-detail'?detailId:p.id==='s-chat'?chatId:p.id==='s-hdetail'?helpId:null,scroll:p.scrollTop}}
+function curEntry(){const p=$$('.push').find(x=>x.classList.contains('active'));if(!p||p.id==='s-lajit')return null;return {screen:p.id,param:p.id==='s-detail'?detailId:p.id==='s-chat'?chatId:p.id==='s-hdetail'?helpId:p.id==='s-group'?groupId:null,scroll:p.scrollTop}}
 function leaveCurrent(){
  if($('#s-detail').classList.contains('active')){detailId=null;if(miniMap){miniMap.remove();miniMap=null}}
  if($('#s-chat').classList.contains('active'))chatId=null;
@@ -2222,6 +2338,7 @@ function showEntry(e){
  else if(e.screen==='s-biz'){renderBiz();openPush('s-biz')}
  else if(e.screen==='s-orgs'){renderOrgs();openPush('s-orgs')}
  else if(e.screen==='s-teamreq'){renderTeamReq();openPush('s-teamreq')}
+ else if(e.screen==='s-group'){groupId=e.param;grpPrev=null;openPush('s-group');renderGroup(true)}
  else if(e.screen==='s-chat'){chatId=e.param;markRead(chatId);openPush('s-chat');renderChat();const ms=$('#cv-msgs');if(ms)ms.scrollTop=ms.scrollHeight}
  if(e.scroll!=null&&e.screen!=='s-chat')$('#'+e.screen).scrollTop=e.scroll;
 }
@@ -2293,7 +2410,7 @@ function safeNoteHTML(m){
 function renderDetail(initial){
  const m=byId(detailId);if(!m){closePush();return}
  const a=act(m.act), me=joined(m), host=isHost(m), full=!m.unlimited&&m.people.length>=m.max, nc=isNC(m);
- const reported=S.reports.some(r=>r.target===m.id&&r.reporter===ME);
+ const reported=S.reports.some(r=>r.target===m.id&&r.reporter===ME&&(r.type||'event')==='event');
  const s=$('#s-detail');const st=s.scrollTop;
  const chat=S.chats[m.id]||[];
  const hostName=m.host===ME?myName()+' '+tx('common.youParen'):nameOf(m.host);
@@ -2302,12 +2419,13 @@ function renderDetail(initial){
  const inChat=me||host, uc=unreadOf(m.id);
  const chatBox=`<div class="card-box" id="chat-box">${detailChatBoxHTML(m)}</div>`;
  s.innerHTML=`
- <div class="d-hero ${isCrazy(m)?'crazy':''}" style="--h:${a.hue}" data-emo="${a.emoji}">
+ <div class="d-hero ${isCrazy(m)?'crazy':''} ${m.cover?'has-cover':''}" style="--h:${a.hue}" data-emo="${a.emoji}">${m.cover?`<img class="d-cover" id="d-cover" src="${esc(coverUrl(m.cover))}" alt="${esc(tx('img.coverAlt'))}" onerror="this.closest('.d-hero').classList.remove('has-cover');this.remove()">`:''}
   <div class="row between"><button class="icon-btn" data-a="back" aria-label="${tx('common.back')}">${icon('back')}</button><button class="icon-btn d-share" data-a="share-ev" data-id="${m.id}" id="d-share" aria-label="${tx('share.title')}" title="${tx('share.title')}">${icon('share')}</button></div>
   <div class="d-emoji">${a.emoji}</div>
   <div class="act-name">${esc(a.name)}</div>
   <h1>${esc(m.title)}</h1>
  </div>
+ ${detailCoverToolsHTML(m)}
  <div class="info-grid">
   <div class="info"><small>${icon('clock')} ${tx('ask.when')}</small><b>${longDate(m)}<br>${atTime(m.time)}${m.ends?`<br><span class="until" id="d-ends">${tx('pub.until')} ${m.ends===dateStr(m)?atTime(m.endTime):esc(longDate({date:m.ends,time:m.endTime})+' '+atTime(m.endTime))}</span>`:''}</b></div>
   <div class="info"><small>${icon('pin')} ${tx('event.where')}</small><b>${esc(m.place)}</b></div>
@@ -2537,7 +2655,7 @@ function renderCreate(){
  <div class="page-head"><h1>${h1}</h1><p>${pub?tx('pub.createSub'):biz?tx('biz.createSub'):tx('create.sub')}</p></div>
  ${modes.length>1&&!C.editId?`<div class="seg c-mode${modes.length>2?' seg3':''}" id="c-mode" style="margin:0 16px 14px">${modes.map(k=>`<button class="${C.mode===k?'on':''}" data-a="c-mode" data-v="${k}" id="c-mode-${k}">${ml[k]}</button>`).join('')}</div>`:''}
  ${biz&&ab.length>1&&!C.editId?`<div class="card-box"><label class="field" style="margin:0"><span>${tx('biz.which')}</span><select class="inp" id="c-biz">${ab.map(b=>`<option value="${esc(b.id)}" ${b.id===C.bizId?'selected':''}>${esc(b.name)}</option>`).join('')}</select></label></div>`:''}
- <div class="card-box"><h3>${tx('act.fallback')}</h3><div class="act-pick" id="c-acts"></div></div>
+ <div class="card-box" id="c-act-box"><h3 id="c-act-lbl">${tx('act.fallback')}</h3><div class="ac-wrap act-ta" id="c-act-ta"><input class="inp" id="c-act-q" type="search" maxlength="28" placeholder="${tx('acts.searchCreatePh')}" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="c-act-list" aria-labelledby="c-act-lbl"><ul class="ac-list" id="c-act-list" role="listbox" aria-labelledby="c-act-lbl" hidden></ul></div><div class="act-sel" id="c-act-sel"></div><div class="act-pick" id="c-acts"></div></div>
  <div class="card-box" id="c-crazy"></div>
  <div class="card-box">
   <label class="field"><span>${tx('create.title')}</span><input class="inp" id="c-title" maxlength="60" value="${esc(C.title)}"></label>
@@ -2559,11 +2677,12 @@ function renderCreate(){
   <div class="field"><span>${tx('create.level')}</span><div class="lvl-pick" id="c-levels">${LEVELS.map(l=>`<button class="${C.level===l?'on':''}" data-a="c-level" data-v="${l}">${esc(levelName(l))}</button>`).join('')}</div></div>
   <label class="field" style="margin:0"><span>${tx('event.desc')}</span><textarea class="inp" id="c-desc" maxlength="${nc?2000:600}" placeholder="${tx('create.descPh')}">${esc(C.desc)}</textarea></label>
  </div>
+ <div class="card-box" id="c-cover"></div>
  ${nc?'':`<div class="card-box rule-note" id="c-rule"><h3>🤝 ${tx('create.ruleTitle')}</h3><p>${tx('create.ruleText')}</p><button class="inline-link" data-a="open-biz" id="c-rule-biz">🏢 ${tx('create.ruleLink')}</button>
   <div class="ad-warn" id="c-adwarn" role="alert" hidden>⚠️ ${tx('create.adWarn')}</div>
   <button class="chk ${C.rule?'on':''}" data-a="c-rule" id="ck-rule" role="checkbox" aria-checked="${C.rule}" style="margin-top:12px"><span class="box">✓</span><span>${tx('create.ruleCheck')}</span></button></div>`}
  <div style="padding:4px 16px 10px"><button class="btn primary block" data-a="publish" id="c-publish" style="height:54px;font-size:16px">${C.editId?tx('common.save'):tx('create.publish')}</button>${C.editId?`<button class="txt-btn" data-a="c-cancel-edit" style="display:block;margin:10px auto 0">${tx('common.cancel')}</button>`:''}</div>`;
- renderCreateActs();renderCreateCrazy();updTitlePh();updAdWarn();acInit();
+ renderCreateActs();renderCreateCrazy();updTitlePh();updAdWarn();acInit();actAcInit();renderCoverBox();
  ['title','date','time','place','desc','edate','etime','org','url','price'].forEach(k=>{const el=$('#c-'+k);if(!el)return;el.addEventListener('input',()=>{C[k]=el.value;if(k==='place')C.touchedPlace=true;if(k==='title'||k==='desc')updAdWarn();if(k==='title'){const t=ADULT_RE.test(el.value);if(t!==!!C._t){C._t=t;renderCreateCrazy();if(pickMarker)pickMarker.setIcon(createPin())}}})});
  const mx=$('#c-maxn');if(mx)mx.addEventListener('input',()=>{C.maxn=Number(mx.value)||0;C.maxTouched=true;mx.classList.remove('err')});
  const bs=$('#c-biz');if(bs)bs.onchange=()=>{C.bizId=bs.value};
@@ -2574,7 +2693,10 @@ function renderCreate(){
 }
 function renderCreateActs(){
  const el=$('#c-acts');if(!el)return;
- el.innerHTML=orderedActs().map(a=>`<button class="chip ${a.custom?'custom':''} ${a.crazy?'czact':''} ${C.act===a.id?'on':''}" data-a="c-act" data-v="${esc(a.id)}">${a.emoji} ${esc(a.name)}</button>`).join('')+`<button class="chip addown" data-a="add-own" data-ctx="create">${tx('create.addOwn')}</button>`;
+ const favs=S.user.favs||[];
+ el.innerHTML=orderedActs().map(a=>`<button class="chip ${a.custom?'custom':''} ${a.crazy?'czact':''} ${C.act===a.id?'on':''}" data-a="c-act" data-v="${esc(a.id)}">${favs.includes(a.id)?'<span class="fav-mark" aria-hidden="true">★</span>':''}${a.emoji} ${esc(a.name)}${a.status==='pending'?' ⏳':''}</button>`).join('')+`<button class="chip addown" data-a="add-own" data-ctx="create">${tx('create.addOwn')}</button>`;
+ const sl=$('#c-act-sel');if(sl){const a=act(C.act);sl.innerHTML=`${tx('acts.selected')}: <b>${a.emoji} ${esc(a.name)}</b>${a.status==='pending'?` · ⏳ ${tx('acts.pendingMine')}`:''}`}
+ const qi=$('#c-act-q');if(qi&&qi.value)filterActChips(qi.value);
 }
 function updTitlePh(){const a=act(C.act);const t=$('#c-title');if(t)t.placeholder=cEff().crazy?tx('create.phCrazy',{emoji:a.emoji,name:a.name}):tx('create.phNormal',{emoji:a.emoji,name:a.name.toLocaleLowerCase(LOCALES[LANG])})}
 function cEff(){const a=act(C.act);const t=ADULT_RE.test(C.title||'');const crazy=!!(a.crazy||C.crazyUser);return {crazy,adult:!!(a.adult||C.adultUser||t),clvl:C.clvl||a.lvl||2,lockC:!!a.crazy,lockA:!!(a.adult||t),byTitle:t&&!a.adult}}
@@ -2755,6 +2877,7 @@ async function publish(el){
   if(editing)saved=await withBusy(el,()=>q(sb.from('events').update(row).eq('id',editing).select().single()));
   else{Object.assign(row,nc?{kind:C.mode,host_id:null,business_id:biz?C.bizId:null}:{host_id:ME});saved=await withBusy(el,()=>q(sb.from('events').insert(row).select().single()))}
  }catch(err){toast(errText(err),4200);updAdWarn();return}
+ saved=await withBusy(el,()=>saveCover(saved));
  const b=saved.business_id&&bizById(saved.business_id);
  const m=mapEvent(Object.assign({},saved,b?{business_name:b.name,business_logo:b.logo}:{}),editing?(byId(editing)||{people:[]}).people:(nc?[]:[ME]));
  if(editing)S.meetups=S.meetups.map(x=>x.id===editing?m:x);else{S.meetups.push(m);S.reads[m.id]=Date.now()}
@@ -2778,9 +2901,9 @@ function chatObj(id){
  if(m){const a=act(m.act);return {id,kind:'meetup',title:m.title,emoji:a.emoji,hue:a.hue,crazy:isCrazy(m),good:false,people:m.people,place:m.place,src:m,member:joined(m)||isHost(m),host:isHost(m),hostName:m.host,created:m.created||0,catName:a.name}}
  const h=helpById(id);
  if(h){const c=cat(h.cat);return {id,kind:'help',title:h.title,emoji:c.emoji,hue:160,crazy:false,good:true,people:helpPeople(h),place:helpPlace(h),src:h,member:isHelpMember(h),host:!!h.mine,hostName:h.requesterId,created:h.created||0,catName:c.name}}
- return null;
+ return grpChatObj(id);
 }
-function myChats(){return S.meetups.map(m=>chatObj(m.id)).concat((S.helps||[]).map(h=>chatObj(h.id))).filter(o=>o&&o.member)}
+function myChats(){return S.meetups.map(m=>chatObj(m.id)).concat((S.helps||[]).map(h=>chatObj(h.id))).concat((S.groups||[]).filter(g=>g.myRole).map(g=>chatObj(g.id))).filter(o=>o&&o.member)}
 function lastMsg(id){const c=S.chats[id]||[];return c[c.length-1]}
 function lastT(o){const l=lastMsg(o.id);return l?l.t:(o.created||0)}
 function unreadOf(id){const r=S.reads[id]||0;return (S.chats[id]||[]).filter(x=>!x.sys&&x.from!==ME&&x.t>r).length}
@@ -2793,7 +2916,7 @@ function markRead(id){
  fire(sb.from('conversation_reads').upsert({conversation_id:cid,user_id:ME,last_read_at:new Date(S.reads[id]).toISOString()},{onConflict:'conversation_id,user_id'}));
 }
 const readSent={};
-function msgText(x){if(x&&x.sys&&x.code)return codeText('sys.',x.code,x.params,x.text);return String(x&&x.text||'')}
+function msgText(x){if(x&&x.sys&&x.code)return codeText('sys.',x.code,x.params,x.text);if(x&&x.img&&!x.text)return '📷 '+tx('img.photo');return String(x&&x.text||'')}
 function previewText(l){return l.sys?msgText(l):(l.from===ME?tx('common.you'):nameOf(l.from))+': '+msgText(l)}
 function fmtClock(t){return hhmm(new Date(t))}
 function dayOff(t){const d=new Date(t);d.setHours(0,0,0,0);return Math.round((d-today0())/864e5)}
@@ -2803,8 +2926,10 @@ function isEmojiOnly(t){return t.length<=16&&/^[\p{Extended_Pictographic}\p{Emoj
 function chatAv(o,cls=''){return `<span class="ci-av ${cls} ${o.crazy?'cz':''} ${o.good?'good':''}" style="--h:${o.hue}"><span>${o.emoji}</span></span>`}
 function renderChats(){
  const s=$('#s-chats');
- s.innerHTML=`
- <div class="page-head"><div class="head-row"><div><h1>${tx('chat.chat')}<span class="grad-text">it</span> 💬</h1><p>${tx('chats.sub')}</p></div><div class="hdr-actions"><span class="bellw">${bellHTML()}</span><button data-a="tab" data-t="profile" aria-label="${tx('nav.profile')}">${avatar(ME,'lg')}</button></div></div></div>
+ const head=`
+ <div class="page-head"><div class="head-row"><div><h1>${tx('chat.chat')}<span class="grad-text">it</span> 💬</h1><p>${chatSeg==='groups'?tx('grp.sub'):tx('chats.sub')}</p></div><div class="hdr-actions"><span class="bellw">${bellHTML()}</span><button data-a="tab" data-t="profile" aria-label="${tx('nav.profile')}">${avatar(ME,'lg')}</button></div></div></div>`+chatSegHTML();
+ if(chatSeg==='groups'){renderGroupsBrowse(s,head);return}
+ s.innerHTML=head+`
  <label class="c-search">${icon('search')}<input id="chat-q" type="search" placeholder="${tx('chats.searchPh')}" value="${esc(chatQ)}" autocomplete="off" aria-label="${tx('chats.search')}"></label>
  <div id="chat-list"></div>
  <p class="chats-note">${tx('chats.note')}</p>`;
@@ -2820,45 +2945,45 @@ function renderChatList(){
  el.innerHTML=`<div class="chat-list">${list.map(chatItemHTML).join('')}</div>`;
 }
 function chatItemHTML(o){
- const l=lastMsg(o.id), u=unreadOf(o.id), s=o.src, past=isPast(s);
+ const l=lastMsg(o.id), u=unreadOf(o.id), s=o.src, past=o.kind!=='group'&&isPast(s);
  const prev=!l?tx('chats.noMessages'):l.sys?esc(msgText(l)):`<b>${esc(l.from===ME?tx('common.you'):nameOf(l.from))}:</b> ${esc(msgText(l))}`;
- const tag=o.kind==='help'?`<span class="ci-host good">${tx(o.host?'chats.tagOwnRequest':'chats.tagHelping')}</span>`:(o.host?`<span class="ci-host">${tx('card.host')}</span>`:'');
+ const tag=o.kind==='group'?(s.myRole&&s.myRole!=='member'?`<span class="ci-host">${tx('grp.role.'+s.myRole)}</span>`:''):o.kind==='help'?`<span class="ci-host good">${tx(o.host?'chats.tagOwnRequest':'chats.tagHelping')}</span>`:(o.host?`<span class="ci-host">${tx('card.host')}</span>`:'');
  return `<button class="ci ${u?'unread':''} ${past?'past':''} ${o.good?'good':''}" data-a="open-chat" data-id="${o.id}">
   ${chatAv(o)}
   <span class="ci-main">
    <span class="ci-r1"><b class="ci-title">${esc(o.title)}</b><span class="ci-time">${listTime(l&&l.t)}</span></span>
-   <span class="ci-r2"><span class="ci-when ${o.crazy?'cz':''} ${o.good?'good':''}">${past?tx('chat.past'):'📅 '+dayLabel(s)+' '+fmtTime(s.time)}</span>${tag}</span>
+   <span class="ci-r2"><span class="ci-when ${o.crazy?'cz':''} ${o.good?'good':''}">${o.kind==='group'?'👥 '+txn('grp.members',s.count):past?tx('chat.past'):'📅 '+dayLabel(s)+' '+fmtTime(s.time)}</span>${tag}</span>
    <span class="ci-r3"><span class="ci-prev">${prev}</span>${u?`<span class="ci-badge">${u}</span>`:''}</span>
   </span>
  </button>`;
 }
 function openChat(id){
  const o=chatObj(id);if(!o)return;
- if(!o.member){toast(o.kind==='help'?tx('chats.offerToOpen'):tx('chats.joinToOpen'));return}
+ if(!o.member){if(o.kind==='group'){openGroup(id);return}toast(o.kind==='help'?tx('chats.offerToOpen'):tx('chats.joinToOpen'));return}
  navTo('s-chat',id);
 }
 function renderChat(){
  const o=chatObj(chatId);if(!o)return;
  const sc=$('#s-chat');sc.classList.toggle('good',o.good);
- const qe=o.good?QUICK_EMO_G:QUICK_EMO, qa=(o.good?QUICK_ACT_G:QUICK_ACT).map(k=>tx(k));
+ const qe=o.good?QUICK_EMO_G:QUICK_EMO, qa=o.kind==='group'?[]:(o.good?QUICK_ACT_G:QUICK_ACT).map(k=>tx(k));
  sc.innerHTML=`
  <div class="ch-top">
   <button class="icon-btn" data-a="back" aria-label="${tx('common.back')}">${icon('back')}</button>
-  <button class="ch-head" data-a="chat-detail" data-id="${o.id}" aria-label="${o.kind==='help'?tx('chat.openHelpInfo'):tx('chat.openEventInfo')}">${chatAv(o,'sm')}<span class="ch-meta"><b>${esc(o.title)}</b><small id="cv-sub"></small></span></button>
-  <button class="icon-btn" data-a="chat-detail" data-id="${o.id}" aria-label="${o.kind==='help'?tx('chat.helpInfo'):tx('chat.eventInfo')}" style="color:${o.good?'var(--gd)':'var(--pri)'}">${icon('info')}</button>
+  <button class="ch-head" data-a="chat-detail" data-id="${o.id}" aria-label="${o.kind==='help'?tx('chat.openHelpInfo'):o.kind==='group'?tx('grp.openGroupInfo'):tx('chat.openEventInfo')}">${chatAv(o,'sm')}<span class="ch-meta"><b>${esc(o.title)}</b><small id="cv-sub"></small></span></button>
+  <button class="icon-btn" data-a="chat-detail" data-id="${o.id}" aria-label="${o.kind==='help'?tx('chat.helpInfo'):o.kind==='group'?tx('grp.info'):tx('chat.eventInfo')}" style="color:${o.good?'var(--gd)':'var(--pri)'}">${icon('info')}</button>
  </div>
- <div class="ch-pin">${o.good?'💚':icon('pin')}<span class="pl">${esc(o.good?tx('chat.goodPlace',{place:o.place}):o.place)}</span></div>
+ ${chPinHTML(o)}
  <div class="ch-msgs" id="cv-msgs" aria-live="polite"></div>
  <div class="ch-quick">${qe.map(e=>`<button class="qe" data-a="qa" data-v="${e}" aria-label="${tx('common.send')} ${e}">${e}</button>`).join('')}<span class="qsep"></span>${qa.map(q=>`<button class="qa" data-a="qa" data-v="${esc(q)}">${esc(q)}</button>`).join('')}</div>
- <form class="ch-form" data-form="chat-full"><input class="inp" id="cv-in" maxlength="1000" placeholder="${o.good?tx('chat.phGood'):tx('chat.ph')}" autocomplete="off" enterkeyhint="send"><button class="send" type="submit" aria-label="${tx('common.send')}">${icon('send')}</button></form>`;
+ <form class="ch-form" data-form="chat-full">${o.kind==='meetup'||o.kind==='group'?`<button type="button" class="ch-att" data-a="chat-img" id="cv-img" aria-label="${tx('img.send')}" title="${tx('img.send')}">${icon('camera')}</button><input type="file" id="cv-file" accept="image/*" hidden>`:''}<input class="inp" id="cv-in" maxlength="1000" placeholder="${o.good?tx('chat.phGood'):tx('chat.ph')}" autocomplete="off" enterkeyhint="send"><button class="send" type="submit" aria-label="${tx('common.send')}">${icon('send')}</button></form>`;
  renderChatMsgs();
 }
 function renderChatMsgs(){
  const el=$('#cv-msgs'), o=chatObj(chatId);if(!el||!o)return;
  const s=o.src;
- $('#cv-sub').innerHTML=`<em>${isPast(s)?tx('chat.past'):whenText(s)}</em> · ${txn('chat.members',o.people.length)}`;
+ $('#cv-sub').innerHTML=o.kind==='group'?`<em>${s.vis==='open'?tx('grp.open'):tx('grp.closed')}</em> · ${txn('grp.members',s.count)}`:`<em>${isPast(s)?tx('chat.past'):whenText(s)}</em> · ${txn('chat.members',o.people.length)}`;
  const msgs=(S.chats[o.id]||[]).slice();
- const dd=dayDiff(s);
+ const dd=o.kind==='group'?null:dayDiff(s);
  if(dd===0||dd===1){const t0=today0().getTime();const rem={sys:true,rem:true,text:`📅 ${o.kind==='help'?tx('chat.goodStarts'):tx('chat.eventStarts')} ${tx(dd===0?'date.todayAt':'date.tomorrowAt',{time:fmtTime(s.time)})}`,t:t0+1};let i=msgs.findIndex(x=>x.t>=t0);if(i<0)i=msgs.length;msgs.splice(i,0,rem)}
  let html='',lastDay='',lastFrom=null;
  if(o.kind==='help')html+=`<div class="sysmsg">${tx('chat.safe')}</div>`;
@@ -2866,19 +2991,20 @@ function renderChatMsgs(){
   const dk=ymd(new Date(x.t));
   if(dk!==lastDay){html+=`<div class="day-sep">${dayName(x.t)}</div>`;lastDay=dk;lastFrom=null}
   if(x.sys){html+=`<div class="sysmsg ${x.rem?'rem':''}">${esc(msgText(x))}</div>`;lastFrom=null;continue}
-  const mine=x.from===ME, first=x.from!==lastFrom, txt=msgText(x), emo=isEmojiOnly(txt);
-  html+=`<div class="msg ${mine?'mine':''} ${first?'first':'cont'}">${mine?'':first?avatar(x.from):'<span class="av-sp"></span>'}<div class="bub ${emo?'emoj':''}">${!mine&&first?`<span class="who">${esc(nameOf(x.from))}</span>`:''}${esc(txt)}<span class="tm">${fmtClock(x.t)}</span></div></div>`;
+  const mine=x.from===ME, first=x.from!==lastFrom, txt=x.img?String(x.text||''):msgText(x), emo=!x.img&&isEmojiOnly(txt);
+  html+=`<div class="msg ${mine?'mine':''} ${first?'first':'cont'}">${mine?'':first?avatar(x.from):'<span class="av-sp"></span>'}<div class="bub ${emo?'emoj':''} ${x.img?'has-img':''}">${!mine&&first?`<span class="who">${esc(nameOf(x.from))}</span>`:''}${x.img?msgImgHTML(x)+(txt?`<span class="cap">${esc(txt)}</span>`:''):esc(txt)}<span class="tm">${fmtClock(x.t)}</span></div></div>`;
   lastFrom=x.from;
  }
  if(!msgs.length)html+=`<div class="sysmsg" style="margin-top:20px">${tx('chat.noMsgsStart')}</div>`;
- el.innerHTML=html;el.scrollTop=el.scrollHeight;
+ el.innerHTML=html;el.scrollTop=el.scrollHeight;hydrateImgs(el);
 }
 function inChatView(id){return chatId===id&&$('#s-chat').classList.contains('active')}
 function refreshChatViews(id){
  if(inChatView(id))renderChatMsgs();
  if(detailId===id&&$('#s-detail').classList.contains('active')){const b=$('#chat-box');if(b)b.innerHTML=detailChatBoxHTML(byId(id))}
  if(helpId===id&&$('#s-hdetail').classList.contains('active')){const b=$('#hchat-box');const h=helpById(id);if(b&&h)b.innerHTML=helpChatBoxHTML(h)}
- if(curTab==='chats'&&!$('#app').classList.contains('pushed'))renderChatList();
+ if(curTab==='chats'&&!$('#app').classList.contains('pushed')){renderChatList();renderGroupsList()}
+ if(groupId===id&&$('#s-group').classList.contains('active'))renderGroup(false);
  if(curTab==='mine'&&!$('#app').classList.contains('pushed'))renderMine();
  renderNav();
 }
@@ -3376,7 +3502,8 @@ function notifGo(id){
  else if(g.kind==='help'){const h=helpById(g.id);if(h&&h.status==='approved')openHelp(g.id);else{mineSeg='requests';go('mine')}}
  else if(g.kind==='chat'){if(chatObj(g.id)&&chatObj(g.id).member)openChat(g.id);else refreshData().then(()=>openChat(g.id))}
  else if(g.kind==='event'){if(byId(g.id))openDetail(g.id)}
- else if(g.kind==='admin'){if(bizById(g.id))adminSec='biz';else if(teamReqById(g.id))adminSec='teams';else if(byId(g.id)&&S.reports.some(r=>r.target===g.id))adminSec='reports';openAdmin()}
+ else if(g.kind==='admin'){if(g.id&&bizById(g.id))adminSec='biz';else if(g.id&&teamReqById(g.id))adminSec='teams';else if(g.id&&S.reports.some(r=>r.target===g.id))adminSec='reports';else if(!g.id&&pendingActs().length)adminSec='acts';openAdmin()}
+ else if(g.kind==='group')openGroup(g.id);
  else if(g.kind==='business')openBiz();
  else if(g.kind==='team')openTeamReq();
  else if(g.kind==='friend'){go('profile');setTimeout(()=>{const f=$('#p-friends');if(f)f.scrollIntoView({block:'center'})},150)}
@@ -3403,10 +3530,16 @@ function renderAdmin(){
  const pend=S.helps.filter(h=>h.status==='pending').sort((a,b)=>a.created-b.created);
  const done=S.helps.filter(h=>h.status!=='pending').sort((a,b)=>b.updated-a.updated);
  const list=adminTab==='pending'?pend:done;
+ const ap=pendingActs().length;
  const bp=(S.biz||[]).filter(b=>b.status==='pending').length, ro=openReports(), tp=(S.teamReqs||[]).filter(r=>r.status==='pending').length;
- const secs=`<div class="seg seg4 adm-secs" id="adm-secs" style="margin:0 16px 14px"><button class="${adminSec==='help'?'on':''}" data-a="adm-sec" data-v="help" id="adm-sec-help">${tx('adm.secHelp')}${pend.length?` <i class="cnt">${pend.length}</i>`:''}</button><button class="${adminSec==='biz'?'on':''}" data-a="adm-sec" data-v="biz" id="adm-sec-biz">${tx('adm.secBiz')}${bp?` <i class="cnt">${bp}</i>`:''}</button><button class="${adminSec==='teams'?'on':''}" data-a="adm-sec" data-v="teams" id="adm-sec-teams">${tx('adm.secTeams')}${tp?` <i class="cnt">${tp}</i>`:''}</button><button class="${adminSec==='reports'?'on':''}" data-a="adm-sec" data-v="reports" id="adm-sec-reports">${tx('adm.secReports')}${ro.length?` <i class="cnt">${new Set(ro.map(r=>r.target)).size}</i>`:''}</button></div>`;
+ const secs=`<div class="seg seg5 adm-secs" id="adm-secs" style="margin:0 16px 14px"><button class="${adminSec==='help'?'on':''}" data-a="adm-sec" data-v="help" id="adm-sec-help">${tx('adm.secHelp')}${pend.length?` <i class="cnt">${pend.length}</i>`:''}</button><button class="${adminSec==='biz'?'on':''}" data-a="adm-sec" data-v="biz" id="adm-sec-biz">${tx('adm.secBiz')}${bp?` <i class="cnt">${bp}</i>`:''}</button><button class="${adminSec==='teams'?'on':''}" data-a="adm-sec" data-v="teams" id="adm-sec-teams">${tx('adm.secTeams')}${tp?` <i class="cnt">${tp}</i>`:''}</button><button class="${adminSec==='reports'?'on':''}" data-a="adm-sec" data-v="reports" id="adm-sec-reports">${tx('adm.secReports')}${ro.length?` <i class="cnt">${new Set(ro.map(r=>r.target)).size}</i>`:''}</button><button class="${adminSec==='acts'?'on':''}" data-a="adm-sec" data-v="acts" id="adm-sec-acts">${tx('adm.secActs')}${ap?` <i class="cnt">${ap}</i>`:''}</button></div>`;
  const head=`<div class="push-head"><button class="icon-btn" data-a="back" aria-label="${tx('common.back')}">${icon('back')}</button><span class="t">${tx('adm.title')}</span><span class="adm-pill">${tx('adm.pill')}</span></div>`;
  const pubBtn=`<div style="padding:0 16px 14px"><button class="btn ghost block" data-a="new-public" id="adm-new-public">🎪 ${tx('pub.addPublic')}</button></div>`;
+ if(adminSec==='acts'){
+  const pl=pendingActs();
+  s.innerHTML=head+`<div class="ask-title"><small>🏷️ ${tx('adm.pill')}</small><h1>${tx('acts.admH1')} <span>🏷️</span></h1><p>${tx('acts.admIntro')}</p></div>`+secs+`<div class="cards" id="adm-act-list">${pl.length?pl.map(admActCardHTML).join(''):`<div class="empty" id="adm-act-empty"><div class="e">🎉</div><h3>${tx('acts.admNone')}</h3></div>`}</div><div style="height:28px"></div>`;
+  s.scrollTop=st;return;
+ }
  if(adminSec==='biz'){
   if(Date.now()-sweepDone>60000){sweepDone=Date.now();fire(sb.rpc('business_expiry_sweep'))}
   const t=ymd(today0()), ord={pending:0,approved:1,rejected:2};
@@ -3423,11 +3556,11 @@ function renderAdmin(){
   s.scrollTop=st;return;
  }
  if(adminSec==='reports'){
-  const g={};ro.forEach(r=>(g[r.target]=g[r.target]||[]).push(r));
+  const g={};ro.forEach(r=>{const k=(r.type||'event')+'|'+r.target;(g[k]=g[k]||[]).push(r)});
   const handled=(S.reports||[]).length-ro.length;
   s.innerHTML=head+`<div class="ask-title"><small>🚩 ${tx('adm.pill')}</small><h1>${tx('adm.repH1')} <span>🚩</span></h1><p>${tx('adm.repIntro')}</p></div>`+secs+
-   `<div class="cards" id="adm-rep-list">${Object.keys(g).length?Object.keys(g).map(k=>admRepHTML(k,g[k])).join(''):`<div class="empty"><div class="e">🎉</div><h3>${tx('adm.repNone')}</h3></div>`}</div>${handled?`<p class="muted" style="text-align:center;font-size:13px">${txn('adm.repHandled',handled)}</p>`:''}<div style="height:28px"></div>`;
-  s.scrollTop=st;return;
+   `<div class="cards" id="adm-rep-list">${Object.keys(g).length?Object.keys(g).map(k=>admRepHTML(g[k][0].target,g[k])).join(''):`<div class="empty"><div class="e">🎉</div><h3>${tx('adm.repNone')}</h3></div>`}</div>${handled?`<p class="muted" style="text-align:center;font-size:13px">${txn('adm.repHandled',handled)}</p>`:''}<div style="height:28px"></div>`;
+  hydrateImgs(s);s.scrollTop=st;return;
  }
  s.innerHTML=head+`
  <div class="ask-title"><small>${tx('adm.kicker')}</small><h1>${tx('adm.h1')} <span class="g-text">💚</span></h1><p>${tx('adm.intro')}</p></div>
@@ -3457,6 +3590,7 @@ function admBizHTML(b,t){
  </article>`;
 }
 function admRepHTML(target,list){
+ if(list[0]&&list[0].type&&list[0].type!=='event')return admRepMediaHTML(target,list);
  const m=byId(target), cnt={};list.forEach(r=>cnt[r.reason]=(cnt[r.reason]||0)+1);
  return `<article class="card adm rep-adm" id="adm-rep-${target}" data-id="${target}">
   <div class="card-top"><div class="emo">🚩</div><div class="card-meta"><div class="act-name">${REP_REASONS.filter(k=>cnt[k]).map(k=>esc(tx('rep.r.'+k))+(cnt[k]>1?' ×'+cnt[k]:'')).join(' · ')}</div><div class="when">${listTime(Math.max(...list.map(r=>r.created)))}</div></div></div>
@@ -3478,12 +3612,12 @@ function admBiz(a,id,el){
  if(a==='end'){if(!confirm(tx('adm.bizEndConfirm',{name:b.name})))return;return bizUpdate(id,{subscription_active_until:addDaysYmd(t,-1)},el,tx('adm.bizEnded'))}
  if(a==='date'){const v=($('#bd-'+id)||{}).value;if(!/^\d{4}-\d{2}-\d{2}$/.test(v||'')){toast(tx('create.missing'));return}return bizUpdate(id,{subscription_active_until:v},el,tx('adm.bizExtended',{date:fmtYmd(v)}))}
 }
-async function resolveReports(target,status){await q(sb.from('reports').update({status}).eq('target_id',target).eq('status','open'));(S.reports||[]).forEach(r=>{if(r.target===target&&r.status==='open')r.status=status})}
+async function resolveReports(target,status,type){let b=sb.from('reports').update({status}).eq('target_id',target).eq('status','open');if(type)b=b.eq('target_type',type);await q(b);(S.reports||[]).forEach(r=>{if(r.target===target&&r.status==='open'&&(!type||r.type===type))r.status=status})}
 async function admRep(a,target,el){
  if(!S.isAdmin)return;const m=byId(target);
  try{
   if(a==='dismiss'){await withBusy(el,()=>resolveReports(target,'dismissed'));toast(tx('adm.repDismissed'))}
-  else if(a==='del'){if(!m||!confirm(tx('event.confirmDeleteAdmin',{title:m.title})))return;await withBusy(el,async()=>{await resolveReports(target,'resolved');await q(sb.from('events').delete().eq('id',target))});S.meetups=S.meetups.filter(x=>x.id!==target);toast(tx('event.deleted'))}
+  else if(a==='del'){if(!m||!confirm(tx('event.confirmDeleteAdmin',{title:m.title})))return;await withBusy(el,async()=>{await resolveReports(target,'resolved');if(m.cover)await Promise.resolve(sb.storage.from('event-covers').remove([m.cover])).catch(()=>null);await q(sb.from('events').delete().eq('id',target))});S.meetups=S.meetups.filter(x=>x.id!==target);toast(tx('event.deleted'))}
   else if(a==='warn'){if(!m||!m.host)return;await withBusy(el,async()=>{await q(sb.rpc('admin_moderate',{uid:m.host,action:'warn'}));await resolveReports(target,'resolved')});toast(tx('adm.repWarned'))}
   else if(a==='ban'){if(!m||!m.host||!confirm(tx('adm.repBanConfirm',{name:nameOf(m.host)})))return;await withBusy(el,async()=>{await q(sb.rpc('admin_moderate',{uid:m.host,action:'ban'}));await resolveReports(target,'resolved')});toast(tx('adm.repBanned'),3200)}
  }catch(e){toast(errText(e));return}
@@ -3491,19 +3625,13 @@ async function admRep(a,target,el){
 }
 /* ---- report an event (community events only) ---- */
 let repReason='business_ad';
-function openReportSheet(id){
- const m=byId(id);if(!m||isNC(m))return;sheetCtx='report';repReason='business_ad';
- $('#sheet').innerHTML=`<div class="grab"></div><div id="rep-sheet"><h3>🚩 ${tx('rep.title')}</h3><p class="sub">“${esc(m.title)}” – ${tx('rep.sub')}</p>
- <div class="rep-reasons" id="rep-reasons">${REP_REASONS.map(k=>`<button class="chk ${k===repReason?'on':''}" data-a="rep-reason" data-v="${k}" id="rep-r-${k}" role="radio" aria-checked="${k===repReason}"><span class="box">✓</span><span>${tx('rep.r.'+k)}</span></button>`).join('')}</div>
- <label class="field"><span>${tx('rep.note')}</span><textarea class="inp" id="rep-note" maxlength="300" placeholder="${tx('rep.notePh')}"></textarea></label>
- <div class="row" style="gap:10px"><button class="btn ghost" data-a="sheet-close" style="flex:1">${tx('common.cancel')}</button><button class="btn danger" data-a="rep-send" data-id="${id}" id="rep-send" style="flex:2">${tx('rep.send')}</button></div></div>`;
- $('#app').classList.add('sheet-open');
-}
+function openReportSheet(id){const m=byId(id);if(!m||isNC(m))return;openReportFor('event',id,m.title)}
 async function sendReport(id,el){
+ const rtype=(el&&el.dataset&&el.dataset.type)||'event';
  const note=(($('#rep-note')||{}).value||'').trim().slice(0,300);
- let r;try{r=await withBusy(el,()=>q(sb.from('reports').insert({target_type:'event',target_id:id,reason:repReason,note}).select().single()))}catch(e){toast(errText(e),3600);if(/reports_once_key|23505/.test(String(e&&(e.message||e.code))))closeSheet();return}
- S.reports.push({id:r.id,reporter:ME,target:id,reason:repReason,note,status:'open',created:Date.now()});
- closeSheet();toast(tx('rep.thanks'),3200);if(detailId===id)renderDetail(false);
+ let r;try{r=await withBusy(el,()=>q(sb.from('reports').insert({target_type:rtype,target_id:id,reason:repReason,note}).select().single()))}catch(e){toast(errText(e),3600);if(/reports_once_key|23505/.test(String(e&&(e.message||e.code))))closeSheet();return}
+ S.reports.push({id:r.id,type:rtype,reporter:ME,target:id,reason:repReason,note,status:'open',created:Date.now()});
+ closeSheet();toast(tx('rep.thanks'),3200);if(detailId===id&&$('#s-detail').classList.contains('active'))renderDetail(false);if(rtype==='group'&&groupId===id)renderGroup(false);
 }
 /* ---- business accounts ---- */
 let bizFormOpen=false, bizTerms=false;
@@ -3858,6 +3986,463 @@ async function teamRsvp(eid,status,el){try{if(status==='not'){await q(sb.from('t
 function teamSegHTML(){const ts=myTeams();return ts.length?`<div class="card" style="margin:0 16px 14px"><div class="row" style="gap:8px;flex-wrap:wrap"><span class="muted" style="font-size:13px">${tx('team.title')}:</span>${ts.slice(0,3).map(t=>`<button class="chip ${curTeam&&curTeam.id===t.id?'on':''}" data-a="open-team" data-id="${t.id}">${teamLogo(t,'xs')}${esc(t.name)}</button>`).join('')}${ts.length>3?`<span class="muted">+${ts.length-3}</span>`:''}<button class="chip" data-a="open-teams">${icon('plus')} ${tx('team.h1')}</button></div></div>`:''}
 function showTeamPricingSheet(){openSheet('team-pricing',false);setTimeout(()=>{$('#sheet').innerHTML=`<div class="grab"></div><div style="text-align:center;padding:10px 0 20px"><h2 style="margin:0 0 6px">${tx('team.pricing')}</h2><p class="muted" style="margin:0">${tx('team.subscriptionInfo')}</p></div><div class="card" style="margin:0 16px 16px;text-align:center;padding:24px"><div style="font-size:36px;font-weight:700;color:var(--pri)">${tx('team.pricePerMonth')}</div><div class="muted" style="margin:6px 0">${tx('team.freeTrial')}</div><div style="margin-top:16px;font-size:14px"><b>${tx('team.pricePerYear')}</b></div></div><div style="padding:0 16px 20px;text-align:center"><p class="muted" style="font-size:13px">${tx('team.subscribeCta')}</p><button class="btn primary block" style="margin-top:10px" data-a="team-request-subscribe">${tx('team.subscribe')}</button><button class="btn ghost" data-a="sheet-close" style="margin-top:8px">${tx('common.back')}</button></div>`},50)}
 
+/* ================= IMAGES: event covers + chat photos (schema.sql 8b) =================
+   Client-side compression: long edge <= 1600 px, <= ~200 kB, webp (jpeg fallback; covers jpeg for link previews).
+   Re-encoding through a canvas drops EXIF/GPS metadata. Buckets enforce 256 kB + webp/jpeg server-side. */
+const IMG_EDGE=1600, IMG_MAX=200*1024, IMG_RAW_MAX=40*1024*1024, IMG_SIGN_S=3600;
+let webpOk=null;
+function canvasBlob(c,type,qv){return new Promise(r=>{try{c.toBlob(b=>r(b),type,qv)}catch(e){r(null)}})}
+async function decodeImage(file){
+ if(window.createImageBitmap){try{return await createImageBitmap(file,{imageOrientation:'from-image'})}catch(e){}}
+ return await new Promise((res,rej)=>{const u=URL.createObjectURL(file),i=new Image();i.onload=()=>{i._u=u;res(i)};i.onerror=()=>{URL.revokeObjectURL(u);rej(new Error('img_decode'))};i.src=u});
+}
+async function compressImage(file,prefer){
+ if(!file||!(/^image\//.test(file.type||'')||/\.(jpe?g|png|webp|gif|heic|heif|avif|bmp)$/i.test(file.name||'')))throw new Error('img_type');
+ if(file.size>IMG_RAW_MAX)throw new Error('img_big');
+ const src=await decodeImage(file);
+ const W0=src.width||src.naturalWidth, H0=src.height||src.naturalHeight;
+ try{
+  if(!W0||!H0)throw new Error('img_decode');
+  let scale=Math.min(1,IMG_EDGE/Math.max(W0,H0));
+  for(let round=0;round<5;round++){
+   const w=Math.max(1,Math.round(W0*scale)),h=Math.max(1,Math.round(H0*scale));
+   const c=document.createElement('canvas');c.width=w;c.height=h;
+   const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,w,h);g.imageSmoothingQuality='high';g.drawImage(src,0,0,w,h);
+   for(const qv of [0.82,0.74,0.66,0.58,0.5,0.42]){
+    let b=null;
+    if(prefer!=='jpeg'&&webpOk!==false){b=await canvasBlob(c,'image/webp',qv);if(b&&b.type==='image/webp')webpOk=true;else{webpOk=false;b=null}}
+    if(!b)b=await canvasBlob(c,'image/jpeg',qv);
+    if(b&&b.size<=IMG_MAX&&(b.type==='image/webp'||b.type==='image/jpeg'))return {blob:b,type:b.type,ext:b.type==='image/webp'?'webp':'jpg',w,h};
+   }
+   scale*=0.75;
+  }
+  throw new Error('img_big');
+ }finally{try{if(src.close)src.close();if(src._u)URL.revokeObjectURL(src._u)}catch(e){}}
+}
+function imgName(){const a=new Uint8Array(12);crypto.getRandomValues(a);return [...a].map(x=>x.toString(16).padStart(2,'0')).join('')}
+function coverUrl(p){if(!p||!sb)return '';try{return sb.storage.from('event-covers').getPublicUrl(p).data.publicUrl||''}catch(e){return ''}}
+function canCover(m){return !!ME&&!!m&&(isHost(m)||S.isAdmin||(m.kind==='business'&&isBizMemberOf(m.bizId)))}
+/* signed URLs for private chat photos (cached ~55 min) */
+const IMGC=new Map();
+function hydrateImgs(root){
+ if(!root||!sb||!ME)return;
+ const els=[...root.querySelectorAll('img[data-path]:not([src])')];if(!els.length)return;
+ const now=Date.now(), need=[];
+ els.forEach(e=>{const c=IMGC.get(e.dataset.path);if(c&&c.exp>now)e.src=c.url;else if(!need.includes(e.dataset.path))need.push(e.dataset.path)});
+ if(!need.length)return;
+ Promise.resolve(sb.storage.from('chat-images').createSignedUrls(need,IMG_SIGN_S)).then(r=>{
+  ((r&&r.data)||[]).forEach(x=>{if(x&&x.signedUrl&&x.path)IMGC.set(x.path,{url:x.signedUrl,exp:Date.now()+(IMG_SIGN_S-300)*1000})});
+  need.forEach(p=>{const c=IMGC.get(p);$$('img[data-path]').filter(e=>e.dataset.path===p&&!e.getAttribute('src')).forEach(e=>{if(c)e.src=c.url;else{const ph=e.closest('.ph');if(ph)ph.classList.add('gone')}})});
+ }).catch(e=>console.warn('Molaplan: signed urls',e));
+}
+function msgImgHTML(x){
+ const w=Math.max(1,x.iw||4),h=Math.max(1,x.ih||3);
+ return `<button type="button" class="ph" data-a="img-open" data-id="${esc(x.id)}" style="aspect-ratio:${w}/${h}" aria-label="${tx('img.open')}"><img data-path="${esc(x.img)}"${x.localUrl?` src="${esc(x.localUrl)}"`:''} alt="${tx('img.alt')}" decoding="async" onerror="this.parentNode.classList.add('gone')"><span class="ph-gone">🖼️ ${tx('img.gone')}</span></button>`;
+}
+async function sendImage(id,file){
+ const o=chatObj(id);if(!o||!(o.kind==='meetup'||o.kind==='group'))return;
+ if(S.banned){toast(tx('err.banned'));return}
+ const cid=S.convOf[id];if(!cid){toast(tx('chat.notReady'));refreshData();return}
+ const inp=$('#cv-in'), caption=inChatView(id)&&inp?String(inp.value||'').trim().slice(0,1000):'';
+ const btn=$('#cv-img');if(btn){btn.classList.add('busy');btn.setAttribute('aria-busy','true')}
+ let c;try{c=await compressImage(file)}catch(e){if(btn){btn.classList.remove('busy');btn.removeAttribute('aria-busy')}toast(errText(e),3600);return}
+ if(inp&&caption)inp.value='';
+ const path=`${cid}/${imgName()}.${c.ext}`, local=URL.createObjectURL(c.blob);
+ const tmp={id:'tmp'+rid(),from:ME,text:caption,img:path,iw:c.w,ih:c.h,localUrl:local,t:Date.now(),pending:true};
+ (S.chats[id]=S.chats[id]||[]).push(tmp);refreshChatViews(id);
+ let uploaded=false;
+ try{
+  const up=await sb.storage.from('chat-images').upload(path,c.blob,{contentType:c.type,cacheControl:'3600',upsert:false});
+  if(up&&up.error)throw up.error;uploaded=true;
+  IMGC.set(path,{url:local,exp:Date.now()+864e5});
+  const row=await q(sb.from('messages').insert({conversation_id:cid,body:caption,sender_id:ME,image_path:path,image_w:c.w,image_h:c.h}).select().single());
+  const arr=S.chats[id]||[], i=arr.indexOf(tmp), real=mapMsg(row);
+  if(arr.some(x=>x.id===real.id)){if(i>=0)arr.splice(i,1)}else if(i>=0)arr[i]=real;else arr.push(real);
+  markRead(id);
+ }catch(e){
+  const arr=S.chats[id]||[], i=arr.indexOf(tmp);if(i>=0)arr.splice(i,1);
+  if(uploaded)fire(sb.storage.from('chat-images').remove([path]));
+  toast(errText(e),3600);
+ }finally{if(btn){btn.classList.remove('busy');btn.removeAttribute('aria-busy')}}
+ refreshChatViews(id);
+}
+function chatMsgById(mid){for(const k of Object.keys(S.chats||{})){const x=(S.chats[k]||[]).find(y=>y.id===mid);if(x)return {tid:k,x}}return null}
+function openImg(mid){
+ const f=chatMsgById(mid);if(!f||!f.x.img)return;const x=f.x, mine=x.from===ME, c=IMGC.get(x.img);
+ sheetCtx='img';
+ const src=x.localUrl||(c&&c.exp>Date.now()?c.url:'');
+ $('#sheet').innerHTML=`<div class="grab"></div><div id="img-sheet"><div class="img-view ph" id="img-view"><img data-path="${esc(x.img)}"${src?` src="${esc(src)}"`:''} alt="${tx('img.alt')}" onerror="this.parentNode.classList.add('gone')"><span class="ph-gone">🖼️ ${tx('img.gone')}</span></div>
+ <p class="sub" style="margin:10px 0 14px">${esc(mine?tx('common.you'):nameOf(x.from))} · ${listTime(x.t)}${x.text?' · '+esc(x.text):''}</p>
+ <div class="row" style="gap:10px;flex-wrap:wrap">${(mine||S.isAdmin)&&!x.pending?`<button class="btn danger" data-a="img-del" data-id="${esc(x.id)}" id="img-del" style="flex:1">${tx('img.delete')}</button>`:''}${!mine&&!x.pending?`<button class="btn ghost" data-a="img-report" data-id="${esc(x.id)}" id="img-report" style="flex:1">🚩 ${tx('img.report')}</button>`:''}<button class="btn ghost" data-a="sheet-close" style="flex:1">${tx('common.close')}</button></div></div>`;
+ $('#app').classList.add('sheet-open');$('#sheet').scrollTop=0;hydrateImgs($('#sheet'));
+}
+async function delImgMsg(mid,el){
+ const f=chatMsgById(mid);if(!f||f.x.pending)return;const x=f.x;
+ if(!(x.from===ME||S.isAdmin))return;
+ if(!confirm(tx('img.confirmDelete')))return;
+ try{await withBusy(el,async()=>{if(x.img){const r=await sb.storage.from('chat-images').remove([x.img]);if(r&&r.error)throw r.error}await q(sb.from('messages').delete().eq('id',mid))})}catch(e){toast(errText(e));return}
+ const arr=S.chats[f.tid]||[], i=arr.indexOf(x);if(i>=0)arr.splice(i,1);IMGC.delete(x.img);
+ closeSheet();refreshChatViews(f.tid);toast(tx('img.deleted'));
+}
+/* ---- cover image: create/edit form + detail page ---- */
+function coverBoxHTML(){
+ const ex=C.editId&&!C.coverDel?((byId(C.editId)||{}).cover||''):'';
+ const src=C.coverPrev||(ex?coverUrl(ex):'');
+ return `<h3>🖼️ ${tx('img.coverTitle')}</h3><p class="muted cover-hint">${tx('img.coverHint')}</p>
+ ${src?`<div class="cover-prev"><img src="${esc(src)}" alt="${tx('img.coverAlt')}" id="c-cover-img"></div>`:''}
+ <div class="row" style="gap:10px"><button type="button" class="btn ghost" data-a="c-cover-pick" id="c-cover-pick" style="flex:1">📷 ${src?tx('img.coverChange'):tx('img.coverAdd')}</button>${src?`<button type="button" class="btn ghost" data-a="c-cover-del" id="c-cover-del">${tx('img.coverRemove')}</button>`:''}</div>
+ <input type="file" id="c-cover-file" accept="image/*" hidden>`;
+}
+function renderCoverBox(){const b=$('#c-cover');if(b&&C)b.innerHTML=coverBoxHTML()}
+async function pickCover(file){
+ const btn=$('#c-cover-pick');
+ let c;try{c=await withBusy(btn,()=>compressImage(file,'jpeg'))}catch(e){toast(errText(e),3600);return}
+ if(!C)return;
+ if(C.coverPrev)URL.revokeObjectURL(C.coverPrev);
+ C.coverBlob=c;C.coverPrev=URL.createObjectURL(c.blob);C.coverDel=false;renderCoverBox();
+}
+function delCover(){if(!C)return;if(C.coverPrev)URL.revokeObjectURL(C.coverPrev);C.coverBlob=null;C.coverPrev='';C.coverDel=true;renderCoverBox()}
+async function uploadCover(evId,c,old){
+ const path=`${evId}/${imgName()}.${c.ext}`;
+ const up=await sb.storage.from('event-covers').upload(path,c.blob,{contentType:c.type,cacheControl:'31536000',upsert:false});
+ if(up&&up.error)throw up.error;
+ let row;try{row=await q(sb.from('events').update({cover_path:path}).eq('id',evId).select().single())}catch(e){fire(sb.storage.from('event-covers').remove([path]));throw e}
+ if(old&&old!==path)fire(sb.storage.from('event-covers').remove([old]));
+ return row;
+}
+async function saveCover(saved){
+ const old=saved.cover_path||'';
+ if(C&&C.coverBlob){
+  try{saved=await uploadCover(saved.id,C.coverBlob,old)}catch(e){console.warn('Molaplan: cover upload failed',e);setTimeout(()=>toast(tx('img.coverFailed')+' '+errText(e),5200),900)}
+ }else if(C&&C.coverDel&&old){
+  try{saved=await q(sb.from('events').update({cover_path:null}).eq('id',saved.id).select().single());fire(sb.storage.from('event-covers').remove([old]))}catch(e){toast(errText(e))}
+ }
+ return saved;
+}
+/* detail page: the host changes / removes the cover directly */
+async function detailCoverPick(id,file){
+ const m=byId(id);if(!canCover(m))return;const btn=$('#d-cover-pick');
+ try{await withBusy(btn,async()=>{const c=await compressImage(file,'jpeg');const row=await uploadCover(id,c,m.cover);m.cover=row.cover_path||''})}catch(e){toast(errText(e),4200);return}
+ toast(tx('img.coverSaved'));if(detailId===id)renderDetail(false);afterChange(id);
+}
+async function detailCoverDel(id,el){
+ const m=byId(id);if(!canCover(m)||!m.cover)return;if(!confirm(tx('img.coverRemoveConfirm')))return;
+ const old=m.cover;
+ try{await withBusy(el,()=>q(sb.from('events').update({cover_path:null}).eq('id',id)))}catch(e){toast(errText(e));return}
+ fire(sb.storage.from('event-covers').remove([old]));m.cover='';toast(tx('img.coverRemoved'));if(detailId===id)renderDetail(false);afterChange(id);
+}
+function detailCoverToolsHTML(m){
+ if(!ME)return '';
+ const mine=canCover(m)&&!isPast(m);
+ const repd=S.reports.some(r=>r.target===m.id&&r.reporter===ME&&r.type==='event_cover');
+ if(mine)return `<div class="d-cover-tools" id="d-cover-tools"><button class="txt-btn" data-a="d-cover-pick" data-id="${m.id}" id="d-cover-pick">📷 ${m.cover?tx('img.coverChange'):tx('img.coverAdd')}</button>${m.cover?`<button class="txt-btn danger-txt" data-a="d-cover-del" data-id="${m.id}" id="d-cover-del">${tx('img.coverRemove')}</button>`:''}<input type="file" id="d-cover-file" data-id="${m.id}" accept="image/*" hidden></div>`;
+ if(m.cover)return `<div class="d-cover-tools" id="d-cover-tools">${repd?`<span class="muted">✓ ${tx('img.reported')}</span>`:`<button class="txt-btn" data-a="report-cover" data-id="${m.id}" id="d-cover-report">🚩 ${tx('img.reportCover')}</button>`}</div>`;
+ return '';
+}
+
+/* ================= REPORTS for photos / covers / groups ================= */
+function openReportFor(type,id,title){
+ sheetCtx='report';repReason=type==='event'?'business_ad':'inappropriate';
+ const sub={event:tx('rep.sub'),message:tx('rep.subImg'),event_cover:tx('rep.subImg'),group:tx('rep.subGroup')}[type]||tx('rep.sub');
+ $('#sheet').innerHTML=`<div class="grab"></div><div id="rep-sheet"><h3>🚩 ${tx(type==='group'?'rep.titleGroup':type==='event'?'rep.title':'rep.titleImg')}</h3><p class="sub">“${esc(title)}” – ${sub}</p>
+ <div class="rep-reasons" id="rep-reasons">${REP_REASONS.map(k=>`<button class="chk ${k===repReason?'on':''}" data-a="rep-reason" data-v="${k}" id="rep-r-${k}" role="radio" aria-checked="${k===repReason}"><span class="box">✓</span><span>${tx('rep.r.'+k)}</span></button>`).join('')}</div>
+ <label class="field"><span>${tx('rep.note')}</span><textarea class="inp" id="rep-note" maxlength="300" placeholder="${tx('rep.notePh')}"></textarea></label>
+ <div class="row" style="gap:10px"><button class="btn ghost" data-a="sheet-close" style="flex:1">${tx('common.cancel')}</button><button class="btn danger" data-a="rep-send" data-id="${esc(id)}" data-type="${type}" id="rep-send" style="flex:2">${tx('rep.send')}</button></div></div>`;
+ $('#app').classList.add('sheet-open');$('#sheet').scrollTop=0;
+}
+function repInfo(type,target){
+ if(type==='message'){const r=(S.repMsgs||{})[target];return r?{uid:r.sender_id,title:tx('rep.kindMessage'),text:r.body||'',img:r.image_path||'',bucket:'chat-images'}:null}
+ if(type==='event_cover'){const m=byId(target);return m?{uid:m.host,title:m.title,text:'',img:m.cover||'',bucket:'event-covers',pub:true}:null}
+ if(type==='group'){const g=groupById(target);return g?{uid:g.founder,title:g.name,text:g.desc,img:'',bucket:''}:null}
+ return null;
+}
+function admRepMediaHTML(target,list){
+ const type=list[0].type, info=repInfo(type,target), cnt={};list.forEach(r=>cnt[r.reason]=(cnt[r.reason]||0)+1);
+ const kind={message:'🖼️ '+tx('rep.kindMessage'),event_cover:'🖼️ '+tx('rep.kindCover'),group:'👥 '+tx('rep.kindGroup')}[type]||'';
+ const who=info&&info.uid?`<dl class="adm-dl"><dt>${tx(type==='group'?'grp.role.founder':type==='message'?'rep.sender':'event.hostLabel')}</dt><dd>${esc(info.uid===ME?myName():nameOf(info.uid))}</dd></dl>`:'';
+ const img=info&&info.img?(info.pub?`<div class="rep-img"><img src="${esc(coverUrl(info.img))}" alt="${tx('img.alt')}"></div>`:`<div class="rep-img ph"><img data-path="${esc(info.img)}" alt="${tx('img.alt')}" onerror="this.parentNode.classList.add('gone')"><span class="ph-gone">🖼️ ${tx('img.gone')}</span></div>`):'';
+ return `<article class="card adm rep-adm rep-${type}" id="adm-rep-${type==='event_cover'?'cover-':''}${target}" data-id="${target}">
+  <div class="card-top"><div class="emo">🚩</div><div class="card-meta"><div class="act-name">${esc(kind)} · ${REP_REASONS.filter(k=>cnt[k]).map(k=>esc(tx('rep.r.'+k))+(cnt[k]>1?' ×'+cnt[k]:'')).join(' · ')}</div><div class="when">${listTime(Math.max(...list.map(r=>r.created)))}</div></div></div>
+  <h3>${info?esc(info.title):tx('rep.deleted')}</h3>${img}${info&&info.text?`<p class="desc sm">${esc(info.text)}</p>`:''}${who}
+  ${list.filter(r=>r.note).map(r=>`<div class="req-msg">“${esc(r.note)}”</div>`).join('')}
+  <div class="adm-actions rep-actions">${info?`<button class="btn danger" data-a="adm-repm" data-v="rm" data-type="${type}" data-id="${target}" id="adm-rep-rm-${target}">${tx(type==='group'?'grp.delete':'adm.repRemove')}</button>${info.uid?`<button class="btn ghost" data-a="adm-repm" data-v="warn" data-type="${type}" data-id="${target}">${tx('adm.repWarn')}</button><button class="btn danger" data-a="adm-repm" data-v="ban" data-type="${type}" data-id="${target}">${tx('adm.repBan')}</button>`:''}`:''}<button class="btn ghost" data-a="adm-repm" data-v="dismiss" data-type="${type}" data-id="${target}" id="adm-rep-dismiss-${target}">${tx('adm.repDismiss')}</button></div>
+ </article>`;
+}
+async function admRepMedia(a,target,type,el){
+ const info=repInfo(type,target);
+ try{
+  if(a==='dismiss'){await withBusy(el,()=>resolveReports(target,'dismissed',type));toast(tx('adm.repDismissed'))}
+  else if(a==='rm'||a==='del'){
+   if(!info||!confirm(tx(type==='group'?'grp.confirmDelete':'adm.repRemoveConfirm',{name:info.title})))return;
+   await withBusy(el,async()=>{
+    /* the file goes first: Storage only lets the admin see a chat photo while its report is open */
+    if(info.img){const r=await sb.storage.from(info.bucket).remove([info.img]);if(r&&r.error)throw r.error}
+    await q(sb.rpc('admin_remove_content',{p_type:type,p_id:target}));
+   });
+   (S.reports||[]).forEach(r=>{if(r.target===target&&r.status==='open')r.status='resolved'});
+   if(type==='event_cover'){const m=byId(target);if(m)m.cover=''}
+   if(type==='group')S.groups=(S.groups||[]).filter(g=>g.id!==target);
+   if(type==='message')Object.keys(S.chats).forEach(k=>{S.chats[k]=(S.chats[k]||[]).filter(x=>x.id!==target)});
+   toast(tx('adm.repRemoved'));
+  }
+  else if(a==='warn'||a==='ban'){
+   if(!info||!info.uid)return;if(a==='ban'&&!confirm(tx('adm.repBanConfirm',{name:nameOf(info.uid)})))return;
+   await withBusy(el,async()=>{await q(sb.rpc('admin_moderate',{uid:info.uid,action:a}));await resolveReports(target,'resolved',type)});
+   toast(tx(a==='ban'?'adm.repBanned':'adm.repWarned'),3200);
+  }
+ }catch(e){toast(errText(e));return}
+ renderAdmin();refreshData();
+}
+
+/* ================= SPORTS: typeahead, favourites, admin queue (schema.sql 8a) ================= */
+function foldTxt(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim()}
+function actTerms(a){
+ if(!a)return [];
+ if(!a._terms||a._tl!==LANG){const t=[a.name,a.raw,a.id];Object.values(a.i18n||{}).forEach(v=>t.push(v));Object.keys(I18N).forEach(l=>{const v=I18N[l]&&I18N[l]['act.'+a.id];if(v)t.push(v)});
+  Object.defineProperty(a,'_terms',{value:t.filter(Boolean).map(foldTxt),writable:true,configurable:true,enumerable:false});Object.defineProperty(a,'_tl',{value:LANG,writable:true,configurable:true,enumerable:false})}
+ return a._terms;
+}
+function actMatches(qs,limit){
+ const f=foldTxt(qs), favs=S.user.favs||[];
+ const list=listActs().filter(a=>!f||actTerms(a).some(t=>t.includes(f)));
+ const sc=a=>(favs.includes(a.id)?0:2)+(f&&!actTerms(a).some(t=>t.startsWith(f))?1:0);
+ return list.map((a,i)=>({a,s:sc(a),i})).sort((x,y)=>x.s-y.s||x.i-y.i).slice(0,limit||8).map(x=>x.a);
+}
+let actAcIdx=-1;
+function starBtn(id,cls){const on=(S.user.favs||[]).includes(id), n=act(id).name;return `<button type="button" class="${cls} ${on?'on':''}" data-a="fav-star" data-v="${esc(id)}" aria-pressed="${on}" aria-label="${esc(tx(on?'acts.unstar':'acts.star',{name:n}))}" title="${esc(tx(on?'acts.unstar':'acts.star',{name:n}))}">${on?'★':'☆'}</button>`}
+function actAcRender(){
+ const inp=$('#c-act-q'), ul=$('#c-act-list');if(!inp||!ul)return;
+ const v=inp.value.trim(), list=actMatches(v,8), f=foldTxt(v);
+ const exact=!!f&&allActs().some(a=>actTerms(a).includes(f));
+ const n=list.length+(v.length>=2&&!exact?1:0);if(actAcIdx>=n)actAcIdx=n-1;
+ let html=list.map((a,i)=>`<li class="ac-opt act-opt ${i===actAcIdx?'on':''} ${C&&C.act===a.id?'sel':''}" role="option" id="c-act-opt-${i}" aria-selected="${i===actAcIdx}" data-a="c-act-pick" data-v="${esc(a.id)}"><span class="ao-emo">${a.emoji}</span><span class="ao-name">${esc(a.name)}${a.status==='pending'?` <small class="ao-pend">⏳ ${tx('acts.pendingMine')}</small>`:''}</span>${ME?starBtn(a.id,'ao-star'):''}</li>`).join('');
+ if(v.length>=2&&!exact)html+=`<li class="ac-opt act-new ${actAcIdx===list.length?'on':''}" role="option" id="c-act-opt-${list.length}" aria-selected="${actAcIdx===list.length}" data-a="c-act-new" data-v="${esc(v.slice(0,28))}">＋ ${esc(tx('acts.addNew',{name:v.slice(0,28)}))}<small>${tx('acts.addNewHint')}</small></li>`;
+ if(!html)html=`<li class="ac-msg" role="presentation">${tx('acts.noMatch')}</li>`;
+ ul.innerHTML=html;ul.hidden=false;inp.setAttribute('aria-expanded','true');
+ if(actAcIdx>=0)inp.setAttribute('aria-activedescendant','c-act-opt-'+actAcIdx);else inp.removeAttribute('aria-activedescendant');
+}
+function actAcClose(){const ul=$('#c-act-list'),inp=$('#c-act-q');if(ul)ul.hidden=true;if(inp){inp.setAttribute('aria-expanded','false');inp.removeAttribute('aria-activedescendant')}actAcIdx=-1}
+function filterActChips(v){const f=foldTxt(v);$$('#c-acts .chip[data-v]').forEach(ch=>{ch.hidden=!!f&&!actTerms(act(ch.dataset.v)).some(t=>t.includes(f))})}
+function actAcInit(){
+ const inp=$('#c-act-q'), ul=$('#c-act-list');if(!inp||!ul)return;
+ ul.addEventListener('mousedown',e=>e.preventDefault());
+ inp.addEventListener('input',()=>{actAcIdx=-1;actAcRender();filterActChips(inp.value)});
+ inp.addEventListener('focus',()=>actAcRender());
+ inp.addEventListener('keydown',e=>{
+  const items=$$('#c-act-list [role=option]');
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(ul.hidden)actAcRender();if(!items.length)return;actAcIdx=e.key==='ArrowDown'?(actAcIdx+1)%items.length:(actAcIdx<=0?items.length-1:actAcIdx-1);actAcRender();const on=$('#c-act-opt-'+actAcIdx);if(on)on.scrollIntoView({block:'nearest'})}
+  else if(e.key==='Enter'){e.preventDefault();const it=items[actAcIdx>=0?actAcIdx:0];if(it&&!ul.hidden)it.click()}
+  else if(e.key==='Escape'){if(!ul.hidden){e.stopPropagation();actAcClose()}}
+ });
+ inp.addEventListener('blur',()=>setTimeout(()=>{const w=$('#c-act-ta');if(!w||!w.contains(document.activeElement))actAcClose()},160));
+}
+function setCreateAct(v){C.act=v;renderCreateActs();renderCreateCrazy();updTitlePh();if(pickMarker)pickMarker.setIcon(createPin())}
+function actPickFromAc(v){setCreateAct(v);const inp=$('#c-act-q');if(inp){inp.value='';inp.blur()}actAcClose();filterActChips('')}
+function actNewFromAc(name){actAcClose();openSheet('create',false);const n=$('#cs-name');if(n){n.value=name;n.dispatchEvent(new Event('input'));csPrev();setTimeout(()=>n.focus({preventScroll:true}),60)}}
+function toggleFav(id){
+ if(!ME||!id)return;
+ const f=S.user.favs, i=f.indexOf(id);if(i>=0)f.splice(i,1);else f.push(id);
+ const on=f.includes(id), n=act(id).name;
+ fire(sb.from('profiles').update({favs:f}).eq('id',ME));
+ $$('[data-a="fav-star"]').filter(b=>b.dataset.v===id).forEach(b=>{b.classList.toggle('on',on);b.setAttribute('aria-pressed',String(on));b.textContent=on?'★':'☆';const l=tx(on?'acts.unstar':'acts.star',{name:n});b.setAttribute('aria-label',l);b.title=l});
+ toast(tx(on?'acts.starred':'acts.unstarred',{name:n}),1800);
+}
+function filterActPopup(inp){
+ const p=inp.closest('.act-filter-popup');if(!p)return;const f=foldTxt(inp.value);
+ p.querySelectorAll('.afi-row').forEach(r=>{r.hidden=!!f&&!actTerms(act(r.dataset.v)).some(t=>t.includes(f))});
+ p.querySelectorAll(':scope > .act-filter-item').forEach(b=>{b.hidden=!!f&&b.dataset.v!=='all'});
+ p.querySelectorAll('.act-filter-section').forEach(s=>{const rows=[...s.querySelectorAll('.afi-row')];s.hidden=!!f&&rows.length>0&&rows.every(r=>r.hidden)});
+}
+/* admin: new free-text sports wait here; approving adds them to everyone's list (optionally translated) */
+function admActCardHTML(a){
+ const used=(S.meetups||[]).filter(m=>m.act===a.id).length;
+ return `<article class="card adm act-adm" id="adm-act-${esc(a.id)}" data-id="${esc(a.id)}">
+  <div class="card-top"><div class="emo">${a.emoji}</div><div class="card-meta"><div class="act-name">${esc(a.raw)}${a.crazy?' · 🤪':''}${a.adult?' · 18+':''}</div><div class="when">${tx('tl.sent')} ${listTime(a.created)} · ${esc(a.createdBy===ME?myName():nameOf(a.createdBy))}</div></div><span class="st st-pending">${tx('acts.pending')}</span></div>
+  <p class="muted" style="font-size:13px;margin:10px 0 4px">${txn('acts.usedN',used)} · ${tx('acts.translateHint')}</p>
+  <div class="act-names">${LANGS.map(([l,ln])=>`<label class="field"><span>${esc(ln)}</span><input class="inp" id="an-${esc(a.id)}-${l}" data-l="${l}" maxlength="40" value="${esc((a.i18n&&a.i18n[l])||a.raw)}"></label>`).join('')}</div>
+  <div class="adm-actions"><button class="btn gprimary" data-a="adm-act-ok" data-id="${esc(a.id)}" id="adm-act-ok-${esc(a.id)}">${tx('adm.approve')}</button><button class="btn danger" data-a="adm-act-no" data-id="${esc(a.id)}" id="adm-act-no-${esc(a.id)}">${tx('adm.reject')}</button></div>
+ </article>`;
+}
+function pendingActs(){return (S.acts||[]).filter(a=>a.status==='pending').sort((a,b)=>a.created-b.created)}
+async function admAct(ok,id,el){
+ const a=(S.acts||[]).find(x=>x.id===id);if(!a||!S.isAdmin)return;
+ if(!ok&&!confirm(tx('acts.rejectConfirm',{name:a.raw})))return;
+ const names={};LANGS.forEach(([l])=>{const i=document.getElementById('an-'+id+'-'+l);const v=i?i.value.trim():'';if(v.length>=2)names[l]=v});
+ try{await withBusy(el,()=>q(sb.rpc('admin_review_activity',{p_id:id,p_status:ok?'approved':'rejected',p_names:ok?names:null})))}catch(e){toast(errText(e));return}
+ a.status=ok?'approved':'rejected';if(ok)a.i18n=Object.assign({},a.i18n||{},names);a._terms=null;
+ toast(tx(ok?'acts.approved':'acts.rejected',{name:a.name}),3200);renderAdmin();refreshData();
+}
+
+/* ================= GROUPS (schema.sql 8c) ================= */
+let groupId=null, chatSeg='chats', grpQ='', grpPrev=null, GR=null;
+const NEAR_GROUP_KM=40, GROLE_ORD={founder:0,moderator:1,member:2};
+function groupById(id){return id?(S.groups||[]).find(g=>g.id===id):null}
+function mapGroup(g,mems){return {id:g.id,name:g.name||'',desc:g.description||'',vis:g.visibility==='closed'?'closed':'open',act:g.activity_id||'',city:g.city||'',district:g.district||'',lat:g.lat==null?null:Number(g.lat),lng:g.lng==null?null:Number(g.lng),founder:g.founder_id||null,created:Date.parse(g.created_at)||0,count:Number(g.member_count)||(mems||[]).length,myRole:g.my_role||null,members:(mems||[]).map(m=>({uid:m.user_id,role:m.role,joined:Date.parse(m.joined_at)||0})).sort((a,b)=>(GROLE_ORD[a.role]-GROLE_ORD[b.role])||a.joined-b.joined)}}
+function myGroups(){return (S.groups||[]).filter(g=>g.myRole)}
+function isGMod(g){return !!g&&(g.myRole==='founder'||g.myRole==='moderator')}
+function grpEmoji(g){return g.act?act(g.act).emoji:'👥'}
+function grpHue(g){return g.act?act(g.act).hue:hashHue(g.name)}
+function grpInvite(id){return (S.gInvites||[]).find(i=>i.group===id&&i.invitee===ME)}
+function grpMyReq(id){return (S.gReqs||[]).find(r=>r.group===id&&r.user===ME)}
+function grpPendingReqs(id){return (S.gReqs||[]).filter(r=>r.group===id&&r.status==='pending'&&r.user!==ME)}
+function grpKm(g){if(g.lat==null||g.lng==null)return null;const vc=CITIES[viewCity()];const h=HERE&&hereNear(viewCity())?HERE:vc?{lat:vc.c[0],lng:vc.c[1]}:HERE;return h?kmBetween(h.lat,h.lng,g.lat,g.lng):null}
+function grpVisBadge(g){return g.vis==='open'?`<span class="vis-badge open">🔓 ${tx('grp.open')}</span>`:`<span class="vis-badge closed">🔒 ${tx('grp.closed')}</span>`}
+function grpChatObj(id){const g=groupById(id);if(!g)return null;return {id,kind:'group',title:g.name,emoji:grpEmoji(g),hue:grpHue(g),crazy:false,good:false,people:g.members.map(m=>m.uid),place:g.city,src:g,member:!!g.myRole,host:g.myRole==='founder',hostName:g.founder,created:g.created,catName:tx('grp.kind')+' '+(g.act?act(g.act).name:'')}}
+function chPinHTML(o){if(o.kind==='group'){const g=o.src;return `<div class="ch-pin">👥<span class="pl">${esc([g.vis==='open'?tx('grp.open'):tx('grp.closed'),g.city,g.act?act(g.act).name:''].filter(Boolean).join(' · '))}</span></div>`}return `<div class="ch-pin">${o.good?'💚':icon('pin')}<span class="pl">${esc(o.good?tx('chat.goodPlace',{place:o.place}):o.place)}</span></div>`}
+function chatSegHTML(){const inv=(S.gInvites||[]).filter(i=>i.invitee===ME&&!(groupById(i.group)||{}).myRole).length, gu=myGroups().reduce((n,g)=>n+unreadOf(g.id),0);
+ return `<div class="seg chat-seg" id="chat-seg" style="margin:0 16px 12px"><button class="${chatSeg==='chats'?'on':''}" data-a="chat-seg" data-v="chats" id="chat-seg-chats">💬 ${tx('grp.segChats')}</button><button class="${chatSeg==='groups'?'on':''}" data-a="chat-seg" data-v="groups" id="chat-seg-groups">👥 ${tx('grp.segGroups')}${inv+gu?` <i class="cnt">${inv+gu}</i>`:''}</button></div>`}
+function grpRowHTML(g,opt){
+ const o=grpChatObj(g.id), l=g.myRole?lastMsg(g.id):null, u=g.myRole?unreadOf(g.id):0, k=grpKm(g);
+ const prev=opt==='invite'?`💌 ${esc(tx('grp.invitedRow'))}`:l?(l.sys?esc(msgText(l)):`<b>${esc(l.from===ME?tx('common.you'):nameOf(l.from))}:</b> ${esc(l.img&&!l.text?'📷 '+tx('img.photo'):msgText(l))}`):esc(g.desc||'');
+ const req=!g.myRole&&grpMyReq(g.id);
+ return `<button class="ci grp-row ${u?'unread':''}" data-a="open-group" data-id="${g.id}" id="grp-row-${g.id}">
+  ${chatAv(o)}
+  <span class="ci-main">
+   <span class="ci-r1"><b class="ci-title">${esc(g.name)}</b><span class="ci-time">${l?listTime(l.t):k!=null?fmtKm(k):''}</span></span>
+   <span class="ci-r2">${grpVisBadge(g)}<span class="ci-when">👥 ${txn('grp.members',g.count)}${g.city?' · '+esc(g.city):''}</span>${g.myRole&&g.myRole!=='member'?`<span class="ci-host">${tx('grp.role.'+g.myRole)}</span>`:''}${req&&req.status==='pending'?`<span class="ci-host">⏳ ${tx('grp.reqSentShort')}</span>`:''}</span>
+   <span class="ci-r3"><span class="ci-prev">${prev}</span>${u?`<span class="ci-badge">${u}</span>`:''}</span>
+  </span>
+ </button>`;
+}
+function renderGroupsBrowse(s,head){
+ s.innerHTML=head+`<div class="grp-top"><label class="c-search">${icon('search')}<input id="grp-q" type="search" placeholder="${tx('grp.searchPh')}" value="${esc(grpQ)}" autocomplete="off" aria-label="${tx('grp.search')}"></label></div>
+ <div style="padding:0 16px 12px"><button class="btn primary block" data-a="grp-new" id="grp-new">＋ ${tx('grp.create')}</button></div>
+ <div id="grp-list"></div><p class="chats-note">${tx('grp.note')}</p>`;
+ renderGroupsList();
+}
+function renderGroupsList(){
+ const el=$('#grp-list');if(!el)return;
+ const f=foldTxt(grpQ);
+ const match=g=>!f||foldTxt([g.name,g.desc,g.city,g.district,g.act?act(g.act).name:''].join(' ')).includes(f);
+ const inv=(S.gInvites||[]).filter(i=>i.invitee===ME).map(i=>groupById(i.group)).filter(g=>g&&!g.myRole&&match(g));
+ const mine=myGroups().filter(match).sort((a,b)=>lastT(grpChatObj(b.id))-lastT(grpChatObj(a.id)));
+ const vc=foldTxt(viewCity());
+ const other=(S.groups||[]).filter(g=>!g.myRole&&!grpInvite(g.id)&&(g.vis==='open'||grpMyReq(g.id))&&match(g)).map(g=>({g,k:grpKm(g)}));
+ const near=(f?other:other.filter(x=>x.k!=null?x.k<=NEAR_GROUP_KM:foldTxt(x.g.city)===vc)).sort((a,b)=>(a.k==null?1e9:a.k)-(b.k==null?1e9:b.k)||b.g.count-a.g.count).map(x=>x.g);
+ const sec=(id,title,list,opt)=>list.length?`<div class="sec-head grp-sec" id="${id}"><h2>${title}</h2></div><div class="chat-list">${list.map(g=>grpRowHTML(g,opt)).join('')}</div>`:'';
+ let html=sec('grp-sec-inv','💌 '+tx('grp.invites'),inv,'invite')+sec('grp-sec-mine',tx('grp.mine'),mine)+sec('grp-sec-near',f?tx('grp.results'):tx('grp.near',{city:esc(cityLabel(viewCity()))}),near);
+ if(!near.length)html+=`<div class="cards"><div class="empty" id="grp-empty"><div class="e">${f?'🔍':'👥'}</div><h3>${f?tx('grp.noMatch'):tx('grp.noneNear')}</h3><p>${f?tx('grp.noMatchBody'):tx('grp.noneNearBody')}</p></div></div>`;
+ el.innerHTML=html;
+}
+function openGroup(id){if(!id)return;if(!ME){openAuthPrompt({a:'open-group',id});return}navTo('s-group',id)}
+function grpHead(g){return `<div class="push-head"><button class="icon-btn" data-a="back" aria-label="${tx('common.back')}">${icon('back')}</button><span class="t">${tx('grp.kind')}</span>${g?`<button class="icon-btn" data-a="grp-share" data-id="${g.id}" id="grp-share" aria-label="${tx('grp.share')}" title="${tx('grp.share')}">${icon('share')}</button>`:'<span style="width:44px"></span>'}</div>`}
+function grpHeroHTML(g){return `<div class="grp-hero" style="--h:${grpHue(g)}" id="grp-hero"><div class="grp-emo">${grpEmoji(g)}</div><h1 id="grp-name">${esc(g.name)}</h1><div class="grp-badges">${grpVisBadge(g)}<span>👥 ${txn('grp.members',g.count)}</span>${g.city?`<span>📍 ${esc(g.city)}</span>`:''}${g.act?`<span>${act(g.act).emoji} ${esc(act(g.act).name)}</span>`:''}</div></div>${g.desc?`<div class="card-box grp-desc"><p class="desc" id="grp-desc" style="margin:0">${esc(g.desc)}</p></div>`:''}`}
+function grpJoinBoxHTML(g,invited,req){
+ if(invited)return `<div class="card-box" id="grp-actions"><p class="muted" style="margin:0 0 12px">💌 ${esc(tx('grp.invitedBy',{name:invited.inviter?nameOf(invited.inviter):tx('common.someone')}))}</p><div class="row" style="gap:10px"><button class="btn primary" data-a="grp-accept" data-id="${g.id}" id="grp-accept" style="flex:2">${tx('grp.accept')}</button><button class="btn ghost" data-a="grp-decline" data-id="${g.id}" id="grp-decline" style="flex:1">${tx('grp.decline')}</button></div></div>`;
+ if(g.vis==='open')return `<div class="card-box" id="grp-actions"><p class="muted" style="margin:0 0 12px">${tx('grp.openInfo')}</p><button class="btn primary block" data-a="grp-join" data-id="${g.id}" id="grp-join">${tx('grp.join')}</button></div>`;
+ if(req==='pending')return `<div class="card-box" id="grp-actions"><div class="req-msg" id="grp-req-pending">⏳ ${tx('grp.reqPending')}</div></div>`;
+ return `<div class="card-box" id="grp-actions"><p class="muted" style="margin:0 0 10px">🔒 ${tx('grp.closedInfo')}</p>${req==='declined'?`<div class="req-msg bad" style="margin-bottom:10px">${tx('grp.reqDeclined')}</div>`:''}<label class="field"><span>${tx('grp.reqMsg')}</span><textarea class="inp" id="grp-req-msg" maxlength="200" placeholder="${tx('grp.reqMsgPh')}"></textarea></label><button class="btn primary block" data-a="grp-request" data-id="${g.id}" id="grp-request">${tx('grp.request')}</button></div>`;
+}
+async function renderGroup(initial){
+ const s=$('#s-group');if(!s)return;const id=groupId;const g=groupById(id);const st=s.scrollTop;
+ if(!g){
+  if(initial||!grpPrev||grpPrev.id!==id){
+   if(initial)s.innerHTML=grpHead(null)+`<div class="cards"><div class="empty" style="box-shadow:none"><div class="e">⏳</div></div></div>`;
+   let r=null;try{r=await q(sb.rpc('group_preview',{p_id:id}))}catch(e){r=null}
+   if(groupId!==id)return;
+   const p=Array.isArray(r)?r[0]:r;
+   grpPrev=p?{id:p.id,name:p.name||'',desc:p.description||'',vis:p.visibility==='closed'?'closed':'open',act:p.activity_id||'',city:p.city||'',count:Number(p.member_count)||0,myRole:p.my_role||null,invited:!!p.invited,req:p.request_status||null,members:[],preview:true}:{id,missing:true};
+   if(p&&p.my_role){await refreshData();if(groupId===id&&groupById(id))return renderGroup(false)}
+  }
+  const p=grpPrev;
+  if(!p||p.missing){s.innerHTML=grpHead(null)+`<div class="cards"><div class="empty" id="grp-missing"><div class="e">🔍</div><h3>${tx('grp.notFound')}</h3><p>${tx('grp.notFoundBody')}</p><button class="btn primary" data-a="go-tab" data-v="chats">${tx('grp.browse')}</button></div></div>`;return}
+  s.innerHTML=grpHead(p)+grpHeroHTML(p)+grpJoinBoxHTML(p,p.invited?{inviter:null}:null,p.req)+`<div style="height:28px"></div>`;
+  return;
+ }
+ grpPrev=null;
+ const founder=g.myRole==='founder', member=!!g.myRole, mod=isGMod(g);
+ const invited=grpInvite(g.id), req=grpMyReq(g.id), reqs=mod?grpPendingReqs(g.id):[];
+ const reported=S.reports.some(r=>r.target===g.id&&r.reporter===ME&&r.type==='group');
+ const pendInv=mod?(S.gInvites||[]).filter(i=>i.group===g.id).length:0;
+ const u=member?unreadOf(g.id):0;
+ let html=grpHead(g)+grpHeroHTML(g);
+ if(member)html+=`<div class="card-box" id="grp-actions"><button class="btn primary block" data-a="open-chat" data-id="${g.id}" id="grp-chat">💬 ${tx('grp.openChat')}${u?` <i class="cnt">${u}</i>`:''}</button>${g.myRole!=='member'?`<p class="muted" style="margin:10px 0 0;font-size:13px">${tx(founder?'grp.youFounder':'grp.youMod')}</p>`:''}</div>`;
+ else html+=grpJoinBoxHTML(g,invited,req&&req.status);
+ if(mod)html+=`<div class="card-box" id="grp-mod"><h3>💌 ${tx('grp.inviteTitle')}</h3><p class="muted" style="margin:0 0 10px;font-size:13px">${tx('grp.inviteHint')}${pendInv?' · '+txn('grp.invitedN',pendInv):''}</p><button class="btn ghost block" data-a="grp-invite" data-id="${g.id}" id="grp-invite">${tx('grp.inviteBtn')}</button>
+  ${g.vis==='closed'||reqs.length?`<h3 style="margin-top:16px">🙋 ${tx('grp.requests')}${reqs.length?` <i class="cnt">${reqs.length}</i>`:''}</h3>${reqs.length?reqs.map(r=>`<div class="grp-req" id="grp-req-${r.user}">${avatar(r.user,'sm')}<div class="grow"><b>${esc(nameOf(r.user))}</b>${r.message?`<p>“${esc(r.message)}”</p>`:''}<small class="muted">${listTime(r.created)}</small></div><div class="grp-req-btns"><button class="btn gprimary" data-a="grp-req-ok" data-id="${g.id}" data-uid="${r.user}" id="grp-req-ok-${r.user}">${tx('adm.approve')}</button><button class="btn ghost" data-a="grp-req-no" data-id="${g.id}" data-uid="${r.user}" id="grp-req-no-${r.user}">${tx('grp.decline')}</button></div></div>`).join(''):`<p class="muted" style="margin:0;font-size:13px">${tx('grp.noRequests')}</p>`}`:''}</div>`;
+ if(member||S.isAdmin)html+=`<div class="card-box" id="grp-members"><h3>${txn('grp.membersN',g.members.length)}</h3>${g.members.map(m=>`<div class="grp-mem" id="grp-mem-${m.uid}">${avatar(m.uid,'sm')}<b class="grow">${esc(m.uid===ME?myName()+' '+tx('common.youParen'):nameOf(m.uid))}</b>${m.role!=='member'?`<span class="role-badge ${m.role}">${tx('grp.role.'+m.role)}</span>`:''}${founder&&m.uid!==ME&&m.role!=='founder'?`<span class="grp-mem-btns"><button class="txt-btn" data-a="grp-role" data-id="${g.id}" data-uid="${m.uid}" data-v="${m.role==='moderator'?'member':'moderator'}" id="grp-role-${m.uid}">${tx(m.role==='moderator'?'grp.unmod':'grp.makeMod')}</button><button class="txt-btn danger-txt" data-a="grp-remove" data-id="${g.id}" data-uid="${m.uid}" id="grp-remove-${m.uid}">${tx('grp.remove')}</button></span>`:''}</div>`).join('')}</div>`;
+ html+=`<div class="grp-foot">${founder?`<button class="btn ghost block" data-a="grp-edit" data-id="${g.id}" id="grp-edit">✏️ ${tx('grp.edit')}</button>`:''}${member&&!founder?`<button class="btn ghost block" data-a="grp-leave" data-id="${g.id}" id="grp-leave">${tx('grp.leave')}</button>`:''}${founder||S.isAdmin?`<button class="btn danger block" data-a="grp-delete" data-id="${g.id}" id="grp-delete">${tx('grp.delete')}</button>`:''}${!founder?(reported?`<p class="muted" style="text-align:center;margin:4px 0">✓ ${tx('grp.reported')}</p>`:`<button class="txt-btn" data-a="grp-report" data-id="${g.id}" id="grp-report" style="margin:4px auto">🚩 ${tx('grp.report')}</button>`):''}</div><div style="height:28px"></div>`;
+ s.innerHTML=html;if(!initial)s.scrollTop=st;
+}
+async function grpAct(fn,args,el,okKey,after){
+ let r;try{r=await withBusy(el,()=>q(sb.rpc(fn,args)))}catch(e){toast(errText(e),3600);return null}
+ if(okKey)toast(tx(okKey),2600);
+ await refreshData();if(after)after(r);else if($('#s-group').classList.contains('active'))renderGroup(false);
+ return r==null?true:r;
+}
+function grpJoin(id,el){return grpAct('join_group',{p_id:id},el,'grp.joined')}
+function grpRequest(id,el){const m=(($('#grp-req-msg')||{}).value||'').trim().slice(0,200);return grpAct('request_join_group',{p_id:id,p_message:m},el,null,r=>{toast(tx(r==='member'?'grp.joined':'grp.reqSent'),3000);grpPrev=null;renderGroup(true)})}
+function grpRespond(id,ok,el){return grpAct('respond_group_invite',{p_id:id,p_accept:ok},el,ok?'grp.joined':'grp.inviteDeclined',()=>{grpPrev=null;if(ok||groupById(id))renderGroup(true);else goBack()})}
+function grpReview(id,uid,ok,el){return grpAct('review_join_request',{p_id:id,p_user:uid,p_approve:ok},el,ok?'grp.reqApproved':'grp.reqDeclinedOk')}
+function grpRole(id,uid,role,el){return grpAct('set_group_role',{p_id:id,p_user:uid,p_role:role},el,role==='moderator'?'grp.modMade':'grp.modRemoved')}
+function grpRemove(id,uid,el){if(!confirm(tx('grp.confirmRemove',{name:nameOf(uid)})))return;return grpAct('remove_group_member',{p_id:id,p_user:uid},el,'grp.removed')}
+function grpLeave(id,el){const g=groupById(id);if(!g||!confirm(tx('grp.confirmLeave',{name:g.name})))return;return grpAct('leave_group',{p_id:id},el,'grp.left',()=>{grpPrev=null;renderGroup(true)})}
+function grpDelete(id,el){const g=groupById(id);if(!g||!confirm(tx('grp.confirmDelete',{name:g.name})))return;return grpAct('delete_group',{p_id:id},el,'grp.deleted',()=>{S.groups=(S.groups||[]).filter(x=>x.id!==id);closePush();chatSeg='groups';go('chats')})}
+async function grpShare(id){
+ const g=groupById(id)||grpPrev;if(!g)return;const url=location.origin+'/g/'+id;
+ try{if(navigator.share){await navigator.share({title:g.name+' | Molaplan',text:tx('grp.shareText',{name:g.name}),url});return}}catch(e){if(e&&e.name==='AbortError')return}
+ try{await navigator.clipboard.writeText(url);toast(tx('grp.linkCopied'),2600)}catch(e){toast(url,5000)}
+}
+function openGroupForm(id){
+ const g=id?groupById(id):null;if(id&&(!g||g.myRole!=='founder'))return;
+ GR={id:id||null,vis:g?g.vis:'open'};sheetCtx='grp-form';
+ const acts=orderedActs().filter(a=>!a.adult);
+ $('#sheet').innerHTML=`<div class="grab"></div><div id="grp-form"><h3>${g?tx('grp.editTitle'):tx('grp.createTitle')}</h3><p class="sub">${tx('grp.createSub')}</p>
+ <label class="field"><span>${tx('grp.name')}</span><input class="inp" id="gr-name" maxlength="60" value="${esc(g?g.name:'')}" placeholder="${tx('grp.namePh')}" autocomplete="off"></label>
+ <label class="field"><span>${tx('grp.desc')}</span><textarea class="inp" id="gr-desc" maxlength="600" placeholder="${tx('grp.descPh')}">${esc(g?g.desc:'')}</textarea></label>
+ <div class="field"><span>${tx('grp.visibility')}</span><div class="seg" id="gr-vis" style="margin:0">${['open','closed'].map(v=>`<button type="button" class="${GR.vis===v?'on':''}" data-a="gr-vis" data-v="${v}" id="gr-vis-${v}">${v==='open'?'🔓 '+tx('grp.open'):'🔒 '+tx('grp.closed')}</button>`).join('')}</div><small class="muted gr-hint" id="gr-vis-hint">${tx(GR.vis==='open'?'grp.openHint':'grp.closedHint')}</small></div>
+ <label class="field"><span>${tx('grp.sport')}</span><select class="inp" id="gr-act"><option value="">${tx('grp.noSport')}</option>${acts.map(a=>`<option value="${esc(a.id)}" ${g&&g.act===a.id?'selected':''}>${a.emoji} ${esc(a.name)}</option>`).join('')}</select></label>
+ <label class="field"><span>${tx('city.which')}</span><input class="inp" id="gr-city" maxlength="40" value="${esc(g?g.city:viewCity())}" autocomplete="off"></label>
+ <div class="ad-warn" id="gr-adwarn" role="alert" hidden>⚠️ ${tx('grp.adWarn')}</div>
+ <div class="row" style="gap:10px"><button class="btn ghost" data-a="sheet-close" style="flex:1">${tx('common.cancel')}</button><button class="btn primary" data-a="gr-save" id="gr-save" style="flex:2">${g?tx('common.save'):tx('grp.createBtn')}</button></div></div>`;
+ $('#app').classList.add('sheet-open');$('#sheet').scrollTop=0;
+}
+function grVis(v){if(!GR)return;GR.vis=v;$$('#gr-vis button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));const h=$('#gr-vis-hint');if(h)h.textContent=tx(v==='open'?'grp.openHint':'grp.closedHint')}
+async function saveGroup(el){
+ if(!GR)return;
+ const name=$('#gr-name').value.trim().replace(/\s+/g,' '), desc=$('#gr-desc').value.trim(), actId=$('#gr-act').value, city=$('#gr-city').value.trim().slice(0,40);
+ if(name.length<3){$('#gr-name').classList.add('err');toast(tx('grp.nameNeeded'));return}
+ if(!S.isAdmin&&(looksCommercial(name)||looksCommercial(desc))){$('#gr-adwarn').hidden=false;toast(tx('err.commercial'),4200);return}
+ const k=knownCity(city), c=k?CITIES[k].c:null;
+ const p={name,description:desc,visibility:GR.vis,activity_id:actId||'',city:k||city,district:''};
+ if(c){p.lat=c[0];p.lng=c[1]}
+ let r;
+ try{r=await withBusy(el,()=>q(GR.id?sb.rpc('update_group',{p_id:GR.id,p}):sb.rpc('create_group',{p})))}catch(e){toast(errText(e),4200);if(/commercial/.test(String(e&&e.message)))$('#gr-adwarn').hidden=false;return}
+ const id=GR.id||r;const editing=!!GR.id;GR=null;closeSheet();
+ await refreshData();
+ toast(tx(editing?'grp.saved':'grp.created'),2600);
+ if(editing){if($('#s-group').classList.contains('active'))renderGroup(false)}else if(id)openGroup(id);
+}
+async function openInviteSheet(gid){
+ const g=groupById(gid);if(!isGMod(g))return;sheetCtx='grp-invite';
+ const mem=new Set(g.members.map(m=>m.uid));
+ const fr=(window.MolaplanFriends&&window.MolaplanFriends.friendIds)?window.MolaplanFriends.friendIds():[];
+ const cand=[...new Set(fr.concat(Object.keys(S.names||{})))].filter(u=>u&&u!==ME&&!mem.has(u));
+ const miss=cand.filter(u=>!S.names[u]);
+ if(miss.length){try{(await selectIn('profiles','id',miss)).forEach(p=>S.names[p.id]=p.display_name||'')}catch(e){}}
+ const frs=new Set(fr);
+ const list=cand.sort((a,b)=>(frs.has(b)-frs.has(a))||nameOf(a).localeCompare(nameOf(b)));
+ const invited=new Set((S.gInvites||[]).filter(i=>i.group===gid).map(i=>i.invitee));
+ $('#sheet').innerHTML=`<div class="grab"></div><div id="grp-invite-sheet"><h3>💌 ${tx('grp.inviteTitle')}</h3><p class="sub">${tx('grp.inviteSub',{name:esc(g.name)})}</p>
+ ${list.length?`<label class="c-search" style="margin:0 0 10px">${icon('search')}<input id="gi-q" type="search" placeholder="${tx('grp.invitePh')}" autocomplete="off" aria-label="${tx('grp.invitePh')}"></label>
+ <div class="gi-list" id="gi-list">${list.map(u=>`<div class="grp-mem gi-row" data-n="${esc(foldTxt(nameOf(u)))}" id="gi-${u}">${avatar(u,'sm')}<b class="grow">${esc(nameOf(u))}${frs.has(u)?` <small class="muted">· ${tx('grp.friend')}</small>`:''}</b>${invited.has(u)?`<span class="muted gi-done">✓ ${tx('grp.invited')}</span>`:`<button class="btn ghost gi-btn" data-a="gi-send" data-id="${gid}" data-uid="${u}" id="gi-send-${u}">${tx('grp.inviteOne')}</button>`}</div>`).join('')}</div>`:`<div class="empty" style="box-shadow:none;padding:18px 6px"><div class="e">🤝</div><p>${tx('grp.inviteNone')}</p></div>`}
+ <button class="btn ghost block" data-a="grp-share" data-id="${gid}" style="margin-top:12px">${icon('share')} ${tx('grp.shareLink')}</button></div>`;
+ $('#app').classList.add('sheet-open');$('#sheet').scrollTop=0;
+}
+async function grpInviteSend(gid,uid,el){
+ try{await withBusy(el,()=>q(sb.rpc('invite_to_group',{p_id:gid,p_user:uid})))}catch(e){toast(errText(e),3600);return}
+ (S.gInvites=S.gInvites||[]).push({group:gid,invitee:uid,inviter:ME,created:Date.now()});
+ const row=$('#gi-'+uid);if(row){const b=row.querySelector('.gi-btn');if(b)b.outerHTML=`<span class="muted gi-done">✓ ${tx('grp.invited')}</span>`}
+ toast(tx('grp.inviteSent',{name:nameOf(uid)}),2400);
+}
+let DEEP_GRP=(()=>{const m=/^\/g\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\/?$/i.exec(location.pathname);return m?m[1].toLowerCase():null})();
+/* /g/<id>: remembered as a pending action (runs after sign-in / on load via resumePending) */
+if(DEEP_GRP){try{sessionStorage.setItem(PENDING_KEY,JSON.stringify({a:'open-group',id:DEEP_GRP}))}catch(e){}try{history.replaceState(null,'','/'+location.search+location.hash)}catch(e){}}
+function openDeepGroup(){
+ if(!DEEP_GRP)return;const id=DEEP_GRP;DEEP_GRP=null;
+ if(!ME&&isGuest())setTimeout(()=>{toast(tx('grp.loginToSee'),4200);openAuthPrompt({a:'open-group',id})},350);
+}
+
 /* ================= EVENTS ================= */
 document.addEventListener('click',e=>{
  const el=e.target.closest('[data-a]');if(!el)return;
@@ -3878,7 +4463,7 @@ document.addEventListener('click',e=>{
   case 'back':goBack();break;
   case 'open-hullut':openHullut();break;
   case 'open-chat':openChat(id);break;
-  case 'chat-detail':{const o=chatObj(id);if(o&&o.kind==='help')navTo('s-hdetail',id);else navTo('s-detail',id);break}
+  case 'chat-detail':{const o=chatObj(id);if(o&&o.kind==='help')navTo('s-hdetail',id);else if(o&&o.kind==='group')navTo('s-group',id);else navTo('s-detail',id);break}
   case 'open-good':openGood();break;
   case 'good-map':goodMap();break;
   case 'gf-cat':GF.cat=v;renderGood();break;
@@ -3980,6 +4565,41 @@ document.addEventListener('click',e=>{
   case 'cs-emoji':csEmoji=v;$$('.emoji-grid button').forEach(b=>b.classList.toggle('on',b===el));$('#cs-emoji-own').value='';csPrev();break;
   case 'cs-add':csAdd(el);break;
   case 'c-act':C.act=v;renderCreateActs();renderCreateCrazy();updTitlePh();if(pickMarker)pickMarker.setIcon(createPin());break;
+  case 'c-act-pick':actPickFromAc(v);break;
+  case 'c-act-new':actNewFromAc(v);break;
+  case 'fav-star':toggleFav(v);break;
+  case 'c-cover-pick':{const f=$('#c-cover-file');if(f)f.click();break}
+  case 'c-cover-del':delCover();break;
+  case 'd-cover-pick':{const f=$('#d-cover-file');if(f)f.click();break}
+  case 'd-cover-del':detailCoverDel(id,el);break;
+  case 'report-cover':{const m=byId(id);if(m)openReportFor('event_cover',id,m.title);break}
+  case 'chat-img':{const f=$('#cv-file');if(f)f.click();break}
+  case 'img-open':openImg(id);break;
+  case 'img-del':delImgMsg(id,el);break;
+  case 'img-report':openReportFor('message',id,tx('img.photo'));break;
+  case 'adm-repm':admRepMedia(v,id,el.dataset.type,el);break;
+  case 'adm-act-ok':admAct(true,id,el);break;
+  case 'adm-act-no':admAct(false,id,el);break;
+  case 'chat-seg':chatSeg=v;renderChats();break;
+  case 'open-group':openGroup(id);break;
+  case 'grp-new':openGroupForm(null);break;
+  case 'grp-edit':openGroupForm(id);break;
+  case 'gr-vis':grVis(v);break;
+  case 'gr-save':saveGroup(el);break;
+  case 'grp-join':grpJoin(id,el);break;
+  case 'grp-request':grpRequest(id,el);break;
+  case 'grp-accept':grpRespond(id,true,el);break;
+  case 'grp-decline':grpRespond(id,false,el);break;
+  case 'grp-req-ok':grpReview(id,el.dataset.uid,true,el);break;
+  case 'grp-req-no':grpReview(id,el.dataset.uid,false,el);break;
+  case 'grp-role':grpRole(id,el.dataset.uid,v,el);break;
+  case 'grp-remove':grpRemove(id,el.dataset.uid,el);break;
+  case 'grp-leave':grpLeave(id,el);break;
+  case 'grp-delete':grpDelete(id,el);break;
+  case 'grp-invite':openInviteSheet(id);break;
+  case 'gi-send':grpInviteSend(id,el.dataset.uid,el);break;
+  case 'grp-share':grpShare(id);break;
+  case 'grp-report':{const g=groupById(id);if(g)openReportFor('group',id,g.name);break}
   case 'c-level':C.level=v;$$('#c-levels button').forEach(b=>b.classList.toggle('on',b===el));break;
   case 'c-nolimit':C.nolimit=!C.nolimit;{const b=$('#c-nolimit-btn');if(b){b.classList.toggle('on',C.nolimit);b.setAttribute('aria-checked',C.nolimit)}const mi=$('#c-maxn');if(mi){mi.disabled=C.nolimit;mi.classList.remove('err')}}break;
   case 'publish':publish(el);break;
@@ -4021,14 +4641,14 @@ document.addEventListener('click',e=>{
   case 'open-team-pricing':case 'team-request-subscribe':closeSheet();openTeamReq();break;
  }
 });
-document.addEventListener('change',e=>{const el=e.target;if(el.matches('select[data-f]')){F[el.dataset.f]=el.value;if(el.dataset.f==='city'){F.district='all';GF.district='all';cityChanged()}onFilterChange()}if(el.id==='gf-city'){F.city=el.value;F.district='all';GF.district='all';cityChanged();renderGood()}if(el.id==='gf-district'){GF.district=el.value;renderGood()}if(el.id==='a-district'&&A){A.district=el.value;askDistrictMoved()}if(el.id==='a-city'&&A){A.city=el.value;A.district=A.city===cityName()&&cityInfo(A.city).d[S.user.district]?S.user.district:firstDistrict(A.city);const ds=$('#a-district');if(ds)ds.innerHTML=districtOptions(A.city,A.district);askDistrictMoved()}});
+document.addEventListener('change',e=>{const el=e.target;if(el.type==='file'&&el.files&&el.files[0]){const f=el.files[0];if(el.id==='cv-file'){el.value='';if(chatId)sendImage(chatId,f);return}if(el.id==='c-cover-file'){el.value='';pickCover(f);return}if(el.id==='d-cover-file'){const i=el.dataset.id;el.value='';detailCoverPick(i,f);return}}if(el.matches('select[data-f]')){F[el.dataset.f]=el.value;if(el.dataset.f==='city'){F.district='all';GF.district='all';cityChanged()}onFilterChange()}if(el.id==='gf-city'){F.city=el.value;F.district='all';GF.district='all';cityChanged();renderGood()}if(el.id==='gf-district'){GF.district=el.value;renderGood()}if(el.id==='a-district'&&A){A.district=el.value;askDistrictMoved()}if(el.id==='a-city'&&A){A.city=el.value;A.district=A.city===cityName()&&cityInfo(A.city).d[S.user.district]?S.user.district:firstDistrict(A.city);const ds=$('#a-district');if(ds)ds.innerHTML=districtOptions(A.city,A.district);askDistrictMoved()}});
 document.addEventListener('submit',e=>{
  e.preventDefault();const f=e.target.dataset.form, btn=e.target.querySelector('[type=submit]');
  if(f==='chat-full'){const i=$('#cv-in');if(chatId&&i){sendMessage(chatId,i.value);i.value='';i.focus({preventScroll:true})}}
  else if(f==='auth')authSubmit(btn);
  else if(f==='recovery')recoverySubmit(btn);
 });
-document.addEventListener('input',e=>{if(e.target.id==='chat-q'){chatQ=e.target.value;renderChatList();return}goodInput(e.target);if(e.target.classList&&e.target.classList.contains('err'))e.target.classList.remove('err')});
+document.addEventListener('input',e=>{if(e.target.id==='chat-q'){chatQ=e.target.value;renderChatList();return}if(e.target.id==='grp-q'){grpQ=e.target.value;renderGroupsList();return}if(e.target.classList&&e.target.classList.contains('afi-q')){filterActPopup(e.target);return}if(e.target.id==='gi-q'){const f=foldTxt(e.target.value);$$('#gi-list .gi-row').forEach(r=>r.hidden=!!f&&!r.dataset.n.includes(f));return}if(e.target.id==='gr-name'||e.target.id==='gr-desc'){const w=$('#gr-adwarn');if(w)w.hidden=!!S.isAdmin||!(looksCommercial(($('#gr-name')||{}).value)||looksCommercial(($('#gr-desc')||{}).value))}goodInput(e.target);if(e.target.classList&&e.target.classList.contains('err'))e.target.classList.remove('err')});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('#app').classList.contains('sheet-open'))closeSheet();else if($('#app').classList.contains('pushed')&&S.onboarded)goBack()}});
 
 /* ================= FRIENDS (friend-requests.js) ================= */
@@ -4038,7 +4658,7 @@ window.MolaplanApp={get sb(){return sb},get me(){return ME},get state(){return S
  get detailId(){return $('#s-detail').classList.contains('active')?detailId:null},
  rerender(){if(curTab==='profile'&&$('#s-profile').classList.contains('active'))frHook('profile');if($('#s-detail').classList.contains('active')){const m=byId(detailId);if(m)frHook('detail',m)}}};
 /* ================= INIT ================= */
-window.__molaplan={get state(){return S},get create(){return C},get pickView(){if(!pickMap)return null;const c=pickMap.getCenter(),m=pickMarker&&pickMarker.getLatLng();return {lat:c.lat,lng:c.lng,zoom:pickMap.getZoom(),marker:m?{lat:m.lat,lng:m.lng}:null}},get crazyUpcoming(){return crazyUpcoming().map(m=>m.id)},get unreadTotal(){return totalUnread()},get approvedHelps(){return approvedHelps().map(h=>h.id)},refresh:()=>refreshData(),get lang(){return LANG},get i18nMissing(){return [...I18N_MISSING]},get viewCity(){return viewCity()},mapCenter:()=>bigMap?bigMap.getCenter():null,cityCenter:c=>CITIES[c]?CITIES[c].c:null};
+window.__molaplan={get state(){return S},get create(){return C},get pickView(){if(!pickMap)return null;const c=pickMap.getCenter(),m=pickMarker&&pickMarker.getLatLng();return {lat:c.lat,lng:c.lng,zoom:pickMap.getZoom(),marker:m?{lat:m.lat,lng:m.lng}:null}},get crazyUpcoming(){return crazyUpcoming().map(m=>m.id)},get unreadTotal(){return totalUnread()},get approvedHelps(){return approvedHelps().map(h=>h.id)},refresh:()=>refreshData(),get lang(){return LANG},get i18nMissing(){return [...I18N_MISSING]},get viewCity(){return viewCity()},mapCenter:()=>bigMap?bigMap.getCenter():null,cityCenter:c=>CITIES[c]?CITIES[c].c:null,compress:(f,p)=>compressImage(f,p),get groups(){return S.groups||[]},get chatSeg(){return chatSeg}};
 boot();
 })();
 </script>

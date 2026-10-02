@@ -434,3 +434,18 @@ warmer help-request copy/simpler form, SEO. Commit locally only (Pages auto-depl
 - Live: NEW /workspace/molaplan-e2e/e2e-share-real.js (TARGET=<deploy>): throwaway admin + user, public + community (NULL limit) +
   18+ events, max 1 rejected, OG/JSON-LD/robots per kind, 404s, sitemap, guest SPA on mobile, OG dump (shots/share-og-dump.*),
   cleanup. e2e-friends-real.js: community "no limit" now expected to succeed (+ min-2 check).
+
+# Media + groups + sports (branch media-groups-2026-10-02) – 2026-10-02 (times UTC+3; box clock runs UTC)
+Scope: event cover images + chat photos (Supabase Storage), chat groups (open/closed), sport typeahead + favourites + admin
+queue. Build files of the previous (interrupted) worker: /workspace/molaplan-build/media/ (s8.sql, patch_index.py, patch_mock.py,
+mg_block.js, i18n_d.py – all already applied, don't rerun; sqltest.sh = scratch-PG suite runner, re-runnable).
+## G0 – review of the inherited uncommitted work (≈07:00–07:20)
+- schema.sql section 8 (8a sports: name_i18n/status/review + 14 extra sports + admin_review_activity + queue notification;
+  8b images: events.cover_path, messages.image_path/w/h, buckets event-covers (public) + chat-images (private) 256 kB webp/jpeg
+  with storage.objects policies, storage_object_exists check, image_reported (admin sees reported chat photo);
+  8c groups/group_members/group_invites/group_join_requests, conversations kind 'group', RPCs only, groups_v; 8d reports on
+  message/event_cover/group + admin_remove_content; 8e grants, anon nothing). Client (index.html): compression, covers in
+  card/detail/form, chat photos with signed URLs, report/admin removal, sports typeahead + stars + admin "Lajit" tab, groups UI
+  (Chatit → Ryhmät segment, s-group, /g/<id> links). lib/event-page.mjs og:image from cover. Mock mirrors all. i18n 193 keys ×4.
+- Baseline on the inherited tree: sqltest.sh (stub+storage stub, schema ×2): friends-teams-unlimited 45, team-requests 26,
+  media-groups 93 OK; npm test: 114 / 233 / 51 / 35 / 27 / 85 all passed; mock_smoke 40 PASS. Coherent -> WIP commit.

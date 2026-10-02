@@ -328,6 +328,22 @@ alter table public.events add constraint events_description_check check (
   char_length(description) <= case when kind = 'community' then 600 else 2000 end);
 create index if not exists events_last_idx on public.events (last_at);
 create index if not exists events_business_idx on public.events (business_id);
+-- Kansikuva (osio 8b): Storage-polku julkisessa event-covers-bucketissa
+-- Polku: <uuid>/<satunnainen nimi>.webp|.jpg ; ensimmäinen kansio = tapahtuma (kansikuva) tai keskustelu (chatti)
+create or replace function public.path_uuid(p text) returns uuid
+language sql immutable as $$
+  select case when split_part(coalesce(p, ''), '/', 1) ~ '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+              then split_part(p, '/', 1)::uuid end
+$$;
+create or replace function public.valid_image_path(p text) returns boolean
+language sql immutable as $$
+  select coalesce(p ~ '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/[0-9a-z_-]{6,64}\.(webp|jpg)$', false)
+$$;
+
+alter table public.events add column if not exists cover_path text;
+alter table public.events drop constraint if exists events_cover_path_check;
+alter table public.events add constraint events_cover_path_check check (
+  cover_path is null or (public.valid_image_path(cover_path) and public.path_uuid(cover_path) = id));
 
 -- Ilmoitusten linkit: myös yritystili, kaverit ja joukkuetilin pyyntö ('team', 7e)
 alter table public.notifications drop constraint if exists notifications_link_kind_check;
@@ -415,9 +431,11 @@ language sql stable security definer set search_path = public as $$
   select exists (select 1 from public.help_offers o where o.request_id = rid and o.helper_id = auth.uid())
 $$;
 
+-- plpgsql: rungon taulut tarkistetaan vasta suoritettaessa (ryhmätaulut luodaan osiossa 8c)
 create or replace function public.is_conversation_member(cid uuid) returns boolean
-language sql stable security definer set search_path = public as $$
-  select exists (
+language plpgsql stable security definer set search_path = public as $$
+begin
+  return exists (
     select 1 from public.conversations c
     where c.id = cid and (
       (c.event_id is not null and exists (
@@ -428,8 +446,11 @@ language sql stable security definer set search_path = public as $$
          where h.id = c.help_request_id and h.status in ('approved','closed')
            and (h.requester_id = auth.uid() or exists (
                  select 1 from public.help_offers o where o.request_id = h.id and o.helper_id = auth.uid()))))
-    ))
-$$;
+      or
+      (c.kind = 'group' and exists (
+         select 1 from public.group_members m where m.group_id = c.group_id and m.user_id = auth.uid()))
+    ));
+end $$;
 
 -- Yritystilin jäsen / aktiivinen tilaus (hyväksytty + voimassa tänään tai myöhemmin)
 create or replace function public.is_business_member(bid uuid) returns boolean
@@ -545,15 +566,25 @@ create trigger profile_private_updated_at before update on public.profile_privat
 create or replace function public.activities_before_write() returns trigger
 language plpgsql as $$
 begin
+  new.name := btrim(regexp_replace(new.name, '\s+', ' ', 'g'));
   if auth.uid() is not null and not public.is_admin() then
     if tg_op = 'INSERT' then
+      if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+      -- uusi vapaatekstilaji: käytettävissä heti omassa tapahtumassa, yhteiseen listaan vasta ylläpidon hyväksynnän jälkeen (8a)
+      if public.looks_commercial(new.name) then raise exception 'commercial_content' using errcode = 'P0001'; end if;
+      if (select count(*) from public.activities a where a.created_by = auth.uid() and a.created_at > now() - interval '1 day') >= 10 then
+        raise exception 'activity_rate_limited' using errcode = 'P0001';
+      end if;
       new.is_custom := true;
       new.created_by := auth.uid();
       new.sort_order := 1000;
       new.created_at := now();
+      new.status := 'pending';
+      new.name_i18n := '{}'::jsonb;
+      new.reviewed_by := null;
+      new.reviewed_at := null;
     end if;
   end if;
-  new.name := btrim(regexp_replace(new.name, '\s+', ' ', 'g'));
   if public.looks_adult(new.name) then new.is_adult := true; end if;
   if new.is_crazy and new.crazy_level = 0 then new.crazy_level := 2; end if;
   if not new.is_crazy then new.crazy_level := 0; end if;
@@ -891,8 +922,20 @@ begin
     new.kind := 'user';
     new.code := null;
     new.params := '{}'::jsonb;
+    -- kuva (8b): vain tapahtuma- ja ryhmächatit, tiedoston on oltava tallennettu chat-images-bucketiin
+    if new.image_path is not null then
+      if not public.valid_image_path(new.image_path) or public.path_uuid(new.image_path) is distinct from new.conversation_id then
+        raise exception 'image_path_invalid' using errcode = 'P0001';
+      end if;
+      if not public.can_post_image(new.conversation_id) then
+        raise exception 'image_not_allowed' using errcode = 'P0001';
+      end if;
+      if not public.storage_object_exists('chat-images', new.image_path) then
+        raise exception 'image_missing' using errcode = 'P0001';
+      end if;
+    end if;
   end if;
-  new.body := btrim(new.body);
+  new.body := btrim(coalesce(new.body, ''));
   new.created_at := now();
   return new;
 end $$;
@@ -1134,7 +1177,11 @@ begin
       new.resolved_at := null;
       new.created_at := now();
     end if;
-    if new.target_type = 'event' and not exists (select 1 from public.events where id = new.target_id) then
+    if (new.target_type = 'event' and not exists (select 1 from public.events where id = new.target_id))
+       or (new.target_type = 'event_cover' and not exists (select 1 from public.events where id = new.target_id and cover_path is not null))
+       or (new.target_type = 'message' and not exists (select 1 from public.messages m where m.id = new.target_id
+             and m.kind = 'user' and public.is_conversation_member(m.conversation_id)))
+       or (new.target_type = 'group' and not public.group_visible(new.target_id)) then
       raise exception 'report_target_missing' using errcode = 'P0001';
     end if;
     new.note := btrim(coalesce(new.note, ''));
@@ -1152,8 +1199,14 @@ create or replace function public.reports_after_insert() returns trigger
 language plpgsql security definer set search_path = public as $$
 declare t text;
 begin
-  select title into t from public.events where id = new.target_id;
-  perform public.notify_admins('🚩', 'admin_new_report', jsonb_build_object('title', coalesce(t, '')), 'Uusi ilmoitus tapahtumasta “' || coalesce(t, '') || '”', 'admin', new.target_id);
+  if new.target_type in ('event','event_cover') then
+    select title into t from public.events where id = new.target_id;
+  elsif new.target_type = 'group' then
+    select name into t from public.groups where id = new.target_id;
+  else
+    select case when m.image_path is not null then '📷 ' else '' end || left(m.body, 60) into t from public.messages m where m.id = new.target_id;
+  end if;
+  perform public.notify_admins('🚩', 'admin_new_report', jsonb_build_object('title', coalesce(t, '')), 'Uusi ilmoitus: “' || coalesce(t, '') || '”', 'admin', new.target_id);
   return null;
 end $$;
 drop trigger if exists reports_after_insert on public.reports;
@@ -1463,7 +1516,8 @@ create or replace view public.guest_events with (security_invoker = true) as
          e.created_at, public.event_participant_count(e.id) as participant_count,
          e.kind, e.ends_at, e.last_at, e.organizer_name, e.official_url, e.price_info, e.business_id,
          (select b.name from public.businesses b where b.id = e.business_id) as business_name,
-         (select b.logo_url from public.businesses b where b.id = e.business_id) as business_logo
+         (select b.logo_url from public.businesses b where b.id = e.business_id) as business_logo,
+         e.cover_path
   from public.events e;
 create or replace view public.guest_help_requests with (security_invoker = true) as
   select h.id, h.category, h.title, h.description, h.needs, h.city, h.district,
@@ -2348,5 +2402,725 @@ revoke execute on function public.request_team_account(jsonb) from public, anon;
 revoke execute on function public.admin_review_team_request(uuid, text, text) from public, anon;
 grant execute on function public.request_team_account(jsonb) to authenticated;
 grant execute on function public.admin_review_team_request(uuid, text, text) to authenticated;
+
+-- ---------------------------------------------------------------------
+-- 8. KUVAT, CHATTIRYHMÄT JA LAJILISTA (2026-10-02)
+--    8a. Lajit: käännetyt nimet (name_i18n), tila (approved/pending/rejected), ylläpidon jono, lisälajit.
+--        Suosikit = profiles.favs (käyttäjän tähdittämät lajit, näkyvät ensin suodattimessa ja luontilomakkeessa).
+--    8b. Kuvat (Supabase Storage): tapahtuman kansikuva (julkinen bucket event-covers, satunnainen polku
+--        <event_id>/<satunnainen>.webp) ja chattikuvat (yksityinen bucket chat-images, polku <conversation_id>/…,
+--        luku vain keskustelun jäsenille – signed URL). Bucketin raja: 256 kt, vain image/webp + image/jpeg.
+--        Client pakkaa (pitkä sivu ≤1600 px, ≤ ~200 kt, EXIF/GPS pois uudelleenpiirrolla).
+--    8c. Chattiryhmät: avoin (haku + lähellä, kuka tahansa liittyy) tai suljettu (kutsu perustajalta/moderaattorilta
+--        tai hyväksytty liittymispyyntö). Perustaja poistaa jäseniä ja nimittää moderaattorit. Chat = conversations
+--        (kind 'group'), realtime + kuvat. Kirjoitukset vain RPC:iden kautta. anon: ei mitään.
+--    8d. Ilmoitukset (reports) myös viesteistä/kuvista, kansikuvista ja ryhmistä; ylläpito poistaa.
+-- ---------------------------------------------------------------------
+
+-- 8a. LAJIT --------------------------------------------------------------
+alter table public.activities add column if not exists name_i18n jsonb not null default '{}'::jsonb;
+alter table public.activities add column if not exists status text not null default 'approved';
+alter table public.activities add column if not exists reviewed_by uuid references public.profiles(id) on delete set null;
+alter table public.activities add column if not exists reviewed_at timestamptz;
+alter table public.activities drop constraint if exists activities_status_check;
+alter table public.activities add constraint activities_status_check check (status in ('approved','pending','rejected'));
+alter table public.activities drop constraint if exists activities_name_i18n_check;
+alter table public.activities add constraint activities_name_i18n_check check (
+  jsonb_typeof(name_i18n) = 'object' and pg_column_size(name_i18n) <= 1000);
+create index if not exists activities_status_idx on public.activities (status, created_at);
+
+-- Käännetyt nimet perusdatan lajeille (sama kuin i18n.js act.<id>)
+update public.activities a set name_i18n = v.n::jsonb
+from (values
+  ('padel','{"fi":"Padel","en":"Padel","sv":"Padel","es":"Pádel"}'),
+  ('sulkapallo','{"fi":"Sulkapallo","en":"Badminton","sv":"Badminton","es":"Bádminton"}'),
+  ('tennis','{"fi":"Tennis","en":"Tennis","sv":"Tennis","es":"Tenis"}'),
+  ('juoksu','{"fi":"Juoksu","en":"Running","sv":"Löpning","es":"Correr"}'),
+  ('kavely','{"fi":"Kävely","en":"Walking","sv":"Promenader","es":"Caminar"}'),
+  ('vaellus','{"fi":"Vaellus","en":"Hiking","sv":"Vandring","es":"Senderismo"}'),
+  ('pyoraily','{"fi":"Pyöräily","en":"Cycling","sv":"Cykling","es":"Ciclismo"}'),
+  ('kuntosali','{"fi":"Kuntosali","en":"Gym","sv":"Gym","es":"Gimnasio"}'),
+  ('jooga','{"fi":"Jooga","en":"Yoga","sv":"Yoga","es":"Yoga"}'),
+  ('uinti','{"fi":"Uinti","en":"Swimming","sv":"Simning","es":"Natación"}'),
+  ('frisbeegolf','{"fi":"Frisbeegolf","en":"Disc golf","sv":"Discgolf","es":"Disc golf"}'),
+  ('jalkapallo','{"fi":"Jalkapallo","en":"Football","sv":"Fotboll","es":"Fútbol"}'),
+  ('salibandy','{"fi":"Salibandy","en":"Floorball","sv":"Innebandy","es":"Floorball"}'),
+  ('lautapelit','{"fi":"Lautapelit","en":"Board games","sv":"Brädspel","es":"Juegos de mesa"}'),
+  ('kahvi','{"fi":"Kahvi & juttelu","en":"Coffee & chat","sv":"Kaffe & prat","es":"Café y charla"}'),
+  ('valokuvaus','{"fi":"Valokuvaus","en":"Photography","sv":"Fotografering","es":"Fotografía"}'),
+  ('kalastus','{"fi":"Kalastus","en":"Fishing","sv":"Fiske","es":"Pesca"}'),
+  ('neulonta','{"fi":"Neulonta","en":"Knitting","sv":"Stickning","es":"Punto"}'),
+  ('kieltenvaihto','{"fi":"Kieltenvaihto","en":"Language exchange","sv":"Språkutbyte","es":"Intercambio de idiomas"}'),
+  ('konsertit','{"fi":"Konsertit","en":"Concerts","sv":"Konserter","es":"Conciertos"}'),
+  ('festivaali','{"fi":"Festivaalit","en":"Festivals","sv":"Festivaler","es":"Festivales"}'),
+  ('markkinat','{"fi":"Markkinat","en":"Markets & fairs","sv":"Marknader","es":"Mercadillos y ferias"}'),
+  ('juoksutapahtuma','{"fi":"Juoksutapahtumat","en":"Running events","sv":"Löpartävlingar","es":"Carreras populares"}'),
+  ('kulttuuri','{"fi":"Kulttuuri","en":"Culture","sv":"Kultur","es":"Cultura"}'),
+  ('nakuuinti','{"fi":"Nakuuinti","en":"Skinny dipping","sv":"Nakenbad","es":"Baño nudista"}'),
+  ('pelle','{"fi":"Pellekokoontuminen","en":"Clown meetup","sv":"Clownträff","es":"Quedada de payasos"}'),
+  ('konjakkipiknik','{"fi":"Konjakkipiknik","en":"Cognac picnic","sv":"Konjakspicknick","es":"Pícnic con coñac"}'),
+  ('pyjamabrunssi','{"fi":"Pyjamabrunssi","en":"Pyjama brunch","sv":"Pyjamasbrunch","es":"Brunch en pijama"}'),
+  ('karaokepuisto','{"fi":"Karaoke puistossa","en":"Karaoke in the park","sv":"Karaoke i parken","es":"Karaoke en el parque"}'),
+  ('vesisota','{"fi":"Vesipyssytaistelu","en":"Water pistol fight","sv":"Vattenpistolkrig","es":"Guerra de pistolas de agua"}'),
+  ('flashmob','{"fi":"Tanssia bussipysäkillä","en":"Dancing at the bus stop","sv":"Dans vid busshållplatsen","es":"Bailar en la parada del bus"}'),
+  ('avanto','{"fi":"Avantouinti auringonnousussa","en":"Ice swimming at sunrise","sv":"Vinterbad i soluppgången","es":"Baño helado al amanecer"}'),
+  ('huonorunous','{"fi":"Vuoden huonoin runo -ilta","en":"Worst Poem of the Year night","sv":"Årets sämsta dikt-kväll","es":"Noche del peor poema del año"}'),
+  ('kasari','{"fi":"Pukeudu 80-luvuksi","en":"Dress up 80s style","sv":"Klä ut dig i 80-talsstil","es":"Vístete de los 80"}')
+) as v(id, n)
+where a.id = v.id and a.name_i18n is distinct from v.n::jsonb;
+
+-- Lisää yleisiä lajeja hakua varten (ei lisätä, jos samanniminen laji on jo olemassa toisella id:llä)
+insert into public.activities (id, name, emoji, hue, is_crazy, crazy_level, is_adult, is_custom, sort_order, created_by, status, name_i18n)
+select v.id, v.name, v.emoji, v.hue, false, 0, false, false, v.so, null, 'approved', v.n::jsonb
+from (values
+  ('koripallo','Koripallo','🏀', 25,250,'{"fi":"Koripallo","en":"Basketball","sv":"Basket","es":"Baloncesto"}'),
+  ('lentopallo','Lentopallo','🏐', 45,260,'{"fi":"Lentopallo","en":"Volleyball","sv":"Volleyboll","es":"Voleibol"}'),
+  ('golf','Golf','⛳',110,270,'{"fi":"Golf","en":"Golf","sv":"Golf","es":"Golf"}'),
+  ('kiipeily','Kiipeily','🧗', 20,280,'{"fi":"Kiipeily","en":"Climbing","sv":"Klättring","es":"Escalada"}'),
+  ('hiihto','Hiihto','⛷️',200,290,'{"fi":"Hiihto","en":"Cross-country skiing","sv":"Längdskidåkning","es":"Esquí de fondo"}'),
+  ('luistelu','Luistelu','⛸️',195,300,'{"fi":"Luistelu","en":"Ice skating","sv":"Skridskoåkning","es":"Patinaje sobre hielo"}'),
+  ('melonta','Melonta','🛶',185,310,'{"fi":"Melonta","en":"Kayaking","sv":"Paddling","es":"Piragüismo"}'),
+  ('sup','SUP-lautailu','🏄',190,320,'{"fi":"SUP-lautailu","en":"Stand-up paddling","sv":"SUP-paddling","es":"Paddle surf"}'),
+  ('tanssi','Tanssi','💃',320,330,'{"fi":"Tanssi","en":"Dancing","sv":"Dans","es":"Baile"}'),
+  ('shakki','Shakki','♟️',240,340,'{"fi":"Shakki","en":"Chess","sv":"Schack","es":"Ajedrez"}'),
+  ('poytatennis','Pöytätennis','🏓',160,350,'{"fi":"Pöytätennis","en":"Table tennis","sv":"Bordtennis","es":"Tenis de mesa"}'),
+  ('squash','Squash','🎾', 70,360,'{"fi":"Squash","en":"Squash","sv":"Squash","es":"Squash"}'),
+  ('jaakiekko','Jääkiekko','🏒',210,370,'{"fi":"Jääkiekko","en":"Ice hockey","sv":"Ishockey","es":"Hockey sobre hielo"}'),
+  ('kirjapiiri','Kirjapiiri','📚',280,380,'{"fi":"Kirjapiiri","en":"Book club","sv":"Bokcirkel","es":"Club de lectura"}')
+) as v(id, name, emoji, hue, so, n)
+where not exists (select 1 from public.activities x where lower(x.name) = lower(v.name) and x.id <> v.id)
+on conflict (id) do update set
+  name = excluded.name, emoji = excluded.emoji, hue = excluded.hue, is_custom = false,
+  sort_order = excluded.sort_order, status = 'approved', name_i18n = excluded.name_i18n;
+
+-- Uusi laji (käyttäjä) -> ylläpidolle ilmoitus (jono "Lajit")
+create or replace function public.activities_after_insert() returns trigger
+language plpgsql security definer set search_path = public as $$
+begin
+  if new.status = 'pending' then
+    perform public.notify_admins('🏷️', 'admin_new_activity', jsonb_build_object('name', new.name),
+      'Uusi laji odottaa hyväksyntää: “' || new.name || '”', 'admin', null);
+  end if;
+  return null;
+end $$;
+drop trigger if exists activities_after_insert on public.activities;
+create trigger activities_after_insert after insert on public.activities
+  for each row execute function public.activities_after_insert();
+
+-- Ylläpito: hyväksy (lisää yhteiseen listaan, valinnaisesti käännökset) / hylkää. Lisääjä saa ilmoituksen.
+create or replace function public.admin_review_activity(p_id text, p_status text, p_names jsonb default null) returns void
+language plpgsql security definer set search_path = public as $$
+declare a public.activities; n jsonb := '{}'::jsonb; k text; v text;
+begin
+  if auth.uid() is null or not public.is_admin() then raise exception 'admin_only' using errcode = 'P0001'; end if;
+  if p_status not in ('approved','rejected') then raise exception 'activity_status_invalid' using errcode = 'P0001'; end if;
+  select * into a from public.activities where id = p_id for update;
+  if not found then raise exception 'activity_not_found' using errcode = 'P0001'; end if;
+  if p_names is not null and jsonb_typeof(p_names) = 'object' then
+    for k, v in select key, btrim(value) from jsonb_each_text(p_names) loop
+      if k in ('fi','en','sv','es') and char_length(v) between 2 and 40 then n := n || jsonb_build_object(k, v); end if;
+    end loop;
+  end if;
+  update public.activities set status = p_status, name_i18n = a.name_i18n || n,
+         reviewed_by = auth.uid(), reviewed_at = now() where id = p_id;
+  if a.created_by is not null and a.status is distinct from p_status then
+    if p_status = 'approved' then
+      perform public.notify(a.created_by, '🏷️', 'activity_approved', jsonb_build_object('name', a.name),
+        'Ehdottamasi laji “' || a.name || '” lisättiin kaikkien lajilistaan 🎉', null, null);
+    else
+      perform public.notify(a.created_by, 'ℹ️', 'activity_rejected', jsonb_build_object('name', a.name),
+        'Ehdottamaasi lajia “' || a.name || '” ei lisätty yhteiseen listaan. Voit silti käyttää sitä omissa tapahtumissasi.', null, null);
+    end if;
+  end if;
+end $$;
+
+-- 8b. KUVAT ---------------------------------------------------------------
+
+alter table public.messages add column if not exists image_path text;
+alter table public.messages add column if not exists image_w int;
+alter table public.messages add column if not exists image_h int;
+alter table public.messages drop constraint if exists messages_image_check;
+alter table public.messages add constraint messages_image_check check (
+  (image_path is null and image_w is null and image_h is null)
+  or (public.valid_image_path(image_path) and public.path_uuid(image_path) = conversation_id
+      and coalesce(image_w, 1) between 1 and 4000 and coalesce(image_h, 1) between 1 and 4000));
+alter table public.messages drop constraint if exists messages_body_check;
+alter table public.messages add constraint messages_body_check check (
+  char_length(body) <= 1000 and (char_length(body) >= 1 or image_path is not null));
+create index if not exists messages_image_idx on public.messages (image_path) where image_path is not null;
+
+-- Saako kutsuja muokata tapahtumaa (kansikuva)? järjestäjä, ylläpito tai yrityksen jäsen (aktiivinen tilaus)
+create or replace function public.can_edit_event(eid uuid) returns boolean
+language sql stable security definer set search_path = public as $$
+  select exists (select 1 from public.events e where e.id = eid and (
+    (e.host_id is not null and e.host_id = auth.uid()) or public.is_admin()
+    or (e.business_id is not null and public.business_can_post(e.business_id))))
+$$;
+-- Kuvia saa lähettää tapahtuma- ja ryhmächatteihin (ei avunpyyntöjen chatteihin), vain jäsenet, ei estetyt
+create or replace function public.can_post_image(cid uuid) returns boolean
+language sql stable security definer set search_path = public as $$
+  select not public.is_banned() and public.is_conversation_member(cid)
+     and exists (select 1 from public.conversations c where c.id = cid and c.kind in ('event','group'))
+$$;
+-- Ylläpito näkee chattikuvan vain, jos siitä on avoin ilmoitus
+create or replace function public.image_reported(p text) returns boolean
+language sql stable security definer set search_path = public as $$
+  select public.is_admin() and exists (
+    select 1 from public.reports r join public.messages m on m.id = r.target_id
+    where r.target_type = 'message' and r.status = 'open' and m.image_path = p)
+$$;
+
+-- Kansikuvan ja chattikuvan on oltava oikeasti tallennettu (storage.objects), muuten polku hylätään
+create or replace function public.storage_object_exists(b text, p text) returns boolean
+language plpgsql stable security definer set search_path = public as $$
+begin
+  if to_regclass('storage.objects') is null then return true; end if;   -- ei Storagea (paikallinen testikanta)
+  return exists (select 1 from storage.objects o where o.bucket_id = b and o.name = p);
+end $$;
+
+create or replace function public.events_cover_check() returns trigger
+language plpgsql as $$
+begin
+  if new.cover_path is not null and new.cover_path is distinct from (case when tg_op = 'UPDATE' then old.cover_path end) then
+    if auth.uid() is not null and public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+    if not public.valid_image_path(new.cover_path) or public.path_uuid(new.cover_path) is distinct from new.id then
+      raise exception 'image_path_invalid' using errcode = 'P0001';
+    end if;
+    if not public.storage_object_exists('event-covers', new.cover_path) then
+      raise exception 'image_missing' using errcode = 'P0001';
+    end if;
+  end if;
+  return new;
+end $$;
+drop trigger if exists events_cover_check on public.events;
+create trigger events_cover_check before insert or update of cover_path on public.events
+  for each row execute function public.events_cover_check();
+
+-- Storage-bucketit ja -säännöt (vain jos Supabase Storage on käytössä)
+do $$
+begin
+  if to_regclass('storage.buckets') is null or to_regclass('storage.objects') is null then
+    raise notice 'storage schema missing - skipping buckets/policies';
+    return;
+  end if;
+  insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+    values ('event-covers', 'event-covers', true, 262144, array['image/webp','image/jpeg'])
+    on conflict (id) do update set public = true, file_size_limit = 262144, allowed_mime_types = array['image/webp','image/jpeg'];
+  insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+    values ('chat-images', 'chat-images', false, 262144, array['image/webp','image/jpeg'])
+    on conflict (id) do update set public = false, file_size_limit = 262144, allowed_mime_types = array['image/webp','image/jpeg'];
+
+  drop policy if exists "molaplan covers: editor uploads" on storage.objects;
+  create policy "molaplan covers: editor uploads" on storage.objects for insert to authenticated
+    with check (bucket_id = 'event-covers' and public.valid_image_path(name) and not public.is_banned()
+                and public.can_edit_event(public.path_uuid(name)));
+  drop policy if exists "molaplan covers: editor reads" on storage.objects;
+  create policy "molaplan covers: editor reads" on storage.objects for select to authenticated
+    using (bucket_id = 'event-covers' and (public.can_edit_event(public.path_uuid(name)) or public.is_admin()));
+  drop policy if exists "molaplan covers: editor deletes" on storage.objects;
+  create policy "molaplan covers: editor deletes" on storage.objects for delete to authenticated
+    using (bucket_id = 'event-covers' and (public.can_edit_event(public.path_uuid(name)) or public.is_admin()));
+
+  drop policy if exists "molaplan chat images: members upload" on storage.objects;
+  create policy "molaplan chat images: members upload" on storage.objects for insert to authenticated
+    with check (bucket_id = 'chat-images' and public.valid_image_path(name) and public.can_post_image(public.path_uuid(name)));
+  drop policy if exists "molaplan chat images: members read" on storage.objects;
+  create policy "molaplan chat images: members read" on storage.objects for select to authenticated
+    using (bucket_id = 'chat-images' and (public.is_conversation_member(public.path_uuid(name)) or public.image_reported(name)));
+  drop policy if exists "molaplan chat images: uploader or admin deletes" on storage.objects;
+  create policy "molaplan chat images: uploader or admin deletes" on storage.objects for delete to authenticated
+    using (bucket_id = 'chat-images' and (owner_id = auth.uid()::text or public.is_admin()));
+end $$;
+
+-- 8c. CHATTIRYHMÄT ----------------------------------------------------------
+create table if not exists public.groups (
+  id          uuid primary key default gen_random_uuid(),
+  name        text not null check (char_length(name) between 3 and 60),
+  description text not null default '' check (char_length(description) <= 600),
+  visibility  text not null default 'open' check (visibility in ('open','closed')),
+  activity_id text references public.activities(id) on update cascade on delete set null,
+  city        text not null default '' check (char_length(city) <= 40),
+  district    text not null default '' check (char_length(district) <= 40),
+  lat         double precision check (lat between -90 and 90),
+  lng         double precision check (lng between -180 and 180),
+  founder_id  uuid references public.profiles(id) on delete set null,
+  created_at  timestamptz not null default now(),
+  updated_at  timestamptz not null default now()
+);
+create index if not exists groups_visibility_idx on public.groups (visibility, created_at desc);
+create index if not exists groups_founder_idx on public.groups (founder_id, created_at);
+
+create table if not exists public.group_members (
+  group_id  uuid not null references public.groups(id) on delete cascade,
+  user_id   uuid not null references public.profiles(id) on delete cascade,
+  role      text not null default 'member' check (role in ('founder','moderator','member')),
+  joined_at timestamptz not null default now(),
+  primary key (group_id, user_id)
+);
+create unique index if not exists group_members_one_founder on public.group_members (group_id) where role = 'founder';
+create index if not exists group_members_user_idx on public.group_members (user_id);
+
+create table if not exists public.group_invites (
+  group_id   uuid not null references public.groups(id) on delete cascade,
+  invitee_id uuid not null references public.profiles(id) on delete cascade,
+  inviter_id uuid references public.profiles(id) on delete set null,
+  created_at timestamptz not null default now(),
+  primary key (group_id, invitee_id)
+);
+create index if not exists group_invites_invitee_idx on public.group_invites (invitee_id);
+create index if not exists group_invites_inviter_idx on public.group_invites (inviter_id, created_at);
+
+create table if not exists public.group_join_requests (
+  group_id   uuid not null references public.groups(id) on delete cascade,
+  user_id    uuid not null references public.profiles(id) on delete cascade,
+  message    text not null default '' check (char_length(message) <= 200),
+  status     text not null default 'pending' check (status in ('pending','approved','declined')),
+  created_at timestamptz not null default now(),
+  decided_by uuid references public.profiles(id) on delete set null,
+  decided_at timestamptz,
+  primary key (group_id, user_id)
+);
+create index if not exists group_join_requests_user_idx on public.group_join_requests (user_id, created_at);
+
+-- Ryhmän chat = conversations.kind 'group'
+alter table public.conversations add column if not exists group_id uuid;
+do $$ begin
+  if not exists (select 1 from pg_constraint where conname = 'conversations_group_id_fkey') then
+    alter table public.conversations add constraint conversations_group_id_fkey
+      foreign key (group_id) references public.groups(id) on delete cascade;
+  end if;
+  if not exists (select 1 from pg_constraint where conname = 'conversations_group_id_key') then
+    alter table public.conversations add constraint conversations_group_id_key unique (group_id);
+  end if;
+end $$;
+alter table public.conversations drop constraint if exists conversations_kind_check;
+alter table public.conversations add constraint conversations_kind_check check (kind in ('event','help','group'));
+alter table public.conversations drop constraint if exists conversations_target;
+alter table public.conversations add constraint conversations_target check (
+  (kind = 'event' and event_id is not null and help_request_id is null and group_id is null) or
+  (kind = 'help'  and help_request_id is not null and event_id is null and group_id is null) or
+  (kind = 'group' and group_id is not null and event_id is null and help_request_id is null));
+
+alter table public.notifications drop constraint if exists notifications_link_kind_check;
+alter table public.notifications add constraint notifications_link_kind_check
+  check (link_kind in ('request','help','chat','event','admin','business','friend','team','group'));
+
+create or replace function public.group_role(gid uuid) returns text
+language sql stable security definer set search_path = public as $$
+  select m.role from public.group_members m where m.group_id = gid and m.user_id = auth.uid()
+$$;
+create or replace function public.is_group_member(gid uuid) returns boolean
+language sql stable security definer set search_path = public as $$
+  select exists (select 1 from public.group_members m where m.group_id = gid and m.user_id = auth.uid())
+$$;
+create or replace function public.is_group_mod(gid uuid) returns boolean
+language sql stable security definer set search_path = public as $$
+  select exists (select 1 from public.group_members m where m.group_id = gid and m.user_id = auth.uid()
+                 and m.role in ('founder','moderator'))
+$$;
+create or replace function public.group_member_count(gid uuid) returns int
+language sql stable security definer set search_path = public as $$
+  select count(*)::int from public.group_members where group_id = gid
+$$;
+-- Ryhmä näkyy listassa: avoimet kaikille kirjautuneille; suljetut jäsenille, kutsutuille ja pyynnön tehneille
+create or replace function public.group_visible(gid uuid) returns boolean
+language sql stable security definer set search_path = public as $$
+  select exists (select 1 from public.groups g where g.id = gid and (
+    g.visibility = 'open' or public.is_admin()
+    or exists (select 1 from public.group_members m where m.group_id = g.id and m.user_id = auth.uid())
+    or exists (select 1 from public.group_invites i where i.group_id = g.id and i.invitee_id = auth.uid())
+    or exists (select 1 from public.group_join_requests r where r.group_id = g.id and r.user_id = auth.uid())))
+$$;
+
+create or replace function public.group_input_ok(v_name text, v_desc text) returns void
+language plpgsql stable security definer set search_path = public as $$
+begin
+  if char_length(v_name) not between 3 and 60 or char_length(v_desc) > 600 then
+    raise exception 'group_invalid' using errcode = 'P0001';
+  end if;
+  if not public.is_admin() and (public.looks_commercial(v_name) or public.looks_commercial(v_desc)) then
+    raise exception 'commercial_content' using errcode = 'P0001';
+  end if;
+end $$;
+
+create or replace function public.create_group(p jsonb) returns uuid
+language plpgsql security definer set search_path = public as $$
+declare me uuid := auth.uid(); gid uuid; cid uuid;
+  v_name text := btrim(regexp_replace(coalesce(p->>'name', ''), '\s+', ' ', 'g'));
+  v_desc text := btrim(coalesce(p->>'description', ''));
+  v_vis text := coalesce(nullif(p->>'visibility', ''), 'open');
+  v_act text := nullif(p->>'activity_id', '');
+begin
+  if me is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  if v_vis not in ('open','closed') then raise exception 'group_invalid' using errcode = 'P0001'; end if;
+  perform public.group_input_ok(v_name, v_desc);
+  if v_act is not null and not exists (select 1 from public.activities where id = v_act) then v_act := null; end if;
+  if (select count(*) from public.groups where founder_id = me and created_at > now() - interval '1 day') >= 5 then
+    raise exception 'group_rate_limited' using errcode = 'P0001';
+  end if;
+  insert into public.groups (name, description, visibility, activity_id, city, district, lat, lng, founder_id)
+  values (v_name, v_desc, v_vis, v_act, left(btrim(coalesce(p->>'city', '')), 40), left(btrim(coalesce(p->>'district', '')), 40),
+          case when (p->>'lat') ~ '^-?[0-9]+(\.[0-9]+)?$' and abs((p->>'lat')::float8) <= 90 then (p->>'lat')::float8 end,
+          case when (p->>'lng') ~ '^-?[0-9]+(\.[0-9]+)?$' and abs((p->>'lng')::float8) <= 180 then (p->>'lng')::float8 end, me)
+  returning id into gid;
+  insert into public.group_members (group_id, user_id, role) values (gid, me, 'founder');
+  insert into public.conversations (kind, group_id) values ('group', gid) returning id into cid;
+  perform public.post_system_message(cid, 'group_created', jsonb_build_object('name', v_name), 'Ryhmä “' || v_name || '” perustettiin – tervetuloa! 👋');
+  return gid;
+end $$;
+
+create or replace function public.update_group(p_id uuid, p jsonb) returns void
+language plpgsql security definer set search_path = public as $$
+declare g public.groups;
+  v_name text; v_desc text; v_vis text; v_act text;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  select * into g from public.groups where id = p_id for update;
+  if not found then raise exception 'group_not_found' using errcode = 'P0001'; end if;
+  if coalesce(public.group_role(p_id), '') <> 'founder' and not public.is_admin() then raise exception 'group_founder_only' using errcode = 'P0001'; end if;
+  v_name := btrim(regexp_replace(coalesce(p->>'name', g.name), '\s+', ' ', 'g'));
+  v_desc := btrim(coalesce(p->>'description', g.description));
+  v_vis := coalesce(nullif(p->>'visibility', ''), g.visibility);
+  v_act := case when p ? 'activity_id' then nullif(p->>'activity_id', '') else g.activity_id end;
+  if v_vis not in ('open','closed') then raise exception 'group_invalid' using errcode = 'P0001'; end if;
+  perform public.group_input_ok(v_name, v_desc);
+  if v_act is not null and not exists (select 1 from public.activities where id = v_act) then v_act := null; end if;
+  update public.groups set name = v_name, description = v_desc, visibility = v_vis, activity_id = v_act,
+    city = case when p ? 'city' then left(btrim(coalesce(p->>'city', '')), 40) else city end,
+    district = case when p ? 'district' then left(btrim(coalesce(p->>'district', '')), 40) else district end,
+    updated_at = now()
+  where id = p_id;
+end $$;
+
+-- Ryhmän poisto: perustaja tai ylläpito (chatti ja jäsenyydet poistuvat cascade-säännöillä)
+create or replace function public.delete_group(p_id uuid) returns void
+language plpgsql security definer set search_path = public as $$
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if coalesce(public.group_role(p_id), '') <> 'founder' and not public.is_admin() then raise exception 'group_founder_only' using errcode = 'P0001'; end if;
+  delete from public.groups where id = p_id;
+  update public.reports set status = 'resolved', resolved_by = auth.uid(), resolved_at = now()
+    where target_type = 'group' and target_id = p_id and status = 'open';
+end $$;
+
+create or replace function public.group_add_member(gid uuid, uid uuid) returns void
+language plpgsql security definer set search_path = public as $$
+declare cid uuid; nm text; g public.groups;
+begin
+  insert into public.group_members (group_id, user_id, role) values (gid, uid, 'member') on conflict do nothing;
+  if not found then return; end if;
+  delete from public.group_invites where group_id = gid and invitee_id = uid;
+  update public.group_join_requests set status = 'approved', decided_at = coalesce(decided_at, now()) where group_id = gid and user_id = uid and status = 'pending';
+  select * into g from public.groups where id = gid;
+  select id into cid from public.conversations where group_id = gid;
+  nm := public.display_name_of(uid);
+  perform public.post_system_message(cid, 'joined', jsonb_build_object('name', nm), nm || ' liittyi mukaan 🎉');
+  if g.founder_id is not null and g.founder_id <> uid and g.founder_id <> auth.uid() then
+    perform public.notify(g.founder_id, '👥', 'group_member_joined', jsonb_build_object('name', nm, 'group', g.name),
+      nm || ' liittyi ryhmääsi “' || g.name || '”', 'group', gid);
+  end if;
+end $$;
+
+-- Liity: avoimeen kuka tahansa; suljettuun vain kutsulla (kutsu hyväksytään samalla)
+create or replace function public.join_group(p_id uuid) returns text
+language plpgsql security definer set search_path = public as $$
+declare me uuid := auth.uid(); g public.groups;
+begin
+  if me is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  select * into g from public.groups where id = p_id;
+  if not found then raise exception 'group_not_found' using errcode = 'P0001'; end if;
+  if public.is_group_member(p_id) then return 'member'; end if;
+  if g.visibility = 'closed' and not exists (select 1 from public.group_invites where group_id = p_id and invitee_id = me) then
+    raise exception 'group_closed' using errcode = 'P0001';
+  end if;
+  if (select count(*) from public.group_members where user_id = me) >= 200 then
+    raise exception 'group_rate_limited' using errcode = 'P0001';
+  end if;
+  perform public.group_add_member(p_id, me);
+  return 'member';
+end $$;
+
+create or replace function public.leave_group(p_id uuid) returns void
+language plpgsql security definer set search_path = public as $$
+declare me uuid := auth.uid(); cid uuid; nm text;
+begin
+  if me is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.group_role(p_id) = 'founder' then raise exception 'founder_cannot_leave' using errcode = 'P0001'; end if;
+  delete from public.group_members where group_id = p_id and user_id = me;
+  if found then
+    select id into cid from public.conversations where group_id = p_id;
+    nm := public.display_name_of(me);
+    perform public.post_system_message(cid, 'group_left', jsonb_build_object('name', nm), nm || ' poistui ryhmästä');
+  end if;
+end $$;
+
+-- Kutsu: perustaja tai moderaattori. Kutsuttu saa ilmoituksen ja voi liittyä (myös suljettuun).
+create or replace function public.invite_to_group(p_id uuid, p_user uuid) returns void
+language plpgsql security definer set search_path = public as $$
+declare me uuid := auth.uid(); g public.groups; nm text; n int;
+begin
+  if me is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  select * into g from public.groups where id = p_id;
+  if not found then raise exception 'group_not_found' using errcode = 'P0001'; end if;
+  if not public.is_group_mod(p_id) then raise exception 'group_mod_only' using errcode = 'P0001'; end if;
+  if p_user is null or p_user = me or not exists (select 1 from public.profiles where id = p_user) then
+    raise exception 'group_invite_invalid' using errcode = 'P0001';
+  end if;
+  if exists (select 1 from public.group_members where group_id = p_id and user_id = p_user) then return; end if;
+  if (select count(*) from public.group_invites where inviter_id = me and created_at > now() - interval '1 day') >= 100 then
+    raise exception 'group_rate_limited' using errcode = 'P0001';
+  end if;
+  insert into public.group_invites (group_id, invitee_id, inviter_id) values (p_id, p_user, me) on conflict do nothing;
+  get diagnostics n = row_count;
+  if n > 0 then
+    nm := public.display_name_of(me);
+    perform public.notify(p_user, '💌', 'group_invite', jsonb_build_object('name', nm, 'group', g.name),
+      nm || ' kutsui sinut ryhmään “' || g.name || '”', 'group', p_id);
+  end if;
+end $$;
+
+create or replace function public.respond_group_invite(p_id uuid, p_accept boolean) returns void
+language plpgsql security definer set search_path = public as $$
+declare me uuid := auth.uid(); i public.group_invites; g public.groups; nm text;
+begin
+  if me is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  select * into i from public.group_invites where group_id = p_id and invitee_id = me for update;
+  if not found then raise exception 'group_invite_not_found' using errcode = 'P0001'; end if;
+  if p_accept then
+    if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+    perform public.group_add_member(p_id, me);
+    select * into g from public.groups where id = p_id;
+    nm := public.display_name_of(me);
+    if i.inviter_id is not null and i.inviter_id is distinct from g.founder_id then
+      perform public.notify(i.inviter_id, '🤝', 'group_invite_accepted', jsonb_build_object('name', nm, 'group', g.name),
+        nm || ' hyväksyi kutsusi ryhmään “' || g.name || '”', 'group', p_id);
+    end if;
+  else
+    delete from public.group_invites where group_id = p_id and invitee_id = me;
+  end if;
+end $$;
+
+-- Liittymispyyntö suljettuun ryhmään (linkin kautta). Hylätyn pyynnön voi uusia 7 päivän päästä.
+create or replace function public.request_join_group(p_id uuid, p_message text default '') returns text
+language plpgsql security definer set search_path = public as $$
+declare me uuid := auth.uid(); g public.groups; r public.group_join_requests; nm text; m record;
+  v_msg text := left(btrim(coalesce(p_message, '')), 200);
+begin
+  if me is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  select * into g from public.groups where id = p_id;
+  if not found then raise exception 'group_not_found' using errcode = 'P0001'; end if;
+  if public.is_group_member(p_id) then return 'member'; end if;
+  if g.visibility = 'open' or exists (select 1 from public.group_invites where group_id = p_id and invitee_id = me) then
+    perform public.join_group(p_id); return 'member';
+  end if;
+  if not public.is_admin() and public.looks_commercial(v_msg) then raise exception 'commercial_content' using errcode = 'P0001'; end if;
+  select * into r from public.group_join_requests where group_id = p_id and user_id = me for update;
+  if found then
+    if r.status = 'pending' then return 'pending'; end if;
+    if r.status = 'declined' and r.decided_at > now() - interval '7 days' then
+      raise exception 'group_request_declined' using errcode = 'P0001';
+    end if;
+  end if;
+  if (select count(*) from public.group_join_requests where user_id = me and created_at > now() - interval '1 day') >= 30 then
+    raise exception 'group_rate_limited' using errcode = 'P0001';
+  end if;
+  insert into public.group_join_requests (group_id, user_id, message, status, created_at)
+    values (p_id, me, v_msg, 'pending', now())
+    on conflict (group_id, user_id) do update set message = excluded.message, status = 'pending', created_at = now(),
+      decided_by = null, decided_at = null;
+  nm := public.display_name_of(me);
+  for m in select user_id from public.group_members where group_id = p_id and role in ('founder','moderator') loop
+    perform public.notify(m.user_id, '🙋', 'group_join_request', jsonb_build_object('name', nm, 'group', g.name),
+      nm || ' pyytää liittyä ryhmään “' || g.name || '”', 'group', p_id);
+  end loop;
+  return 'pending';
+end $$;
+
+create or replace function public.review_join_request(p_id uuid, p_user uuid, p_approve boolean) returns void
+language plpgsql security definer set search_path = public as $$
+declare g public.groups; r public.group_join_requests;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if not public.is_group_mod(p_id) then raise exception 'group_mod_only' using errcode = 'P0001'; end if;
+  select * into r from public.group_join_requests where group_id = p_id and user_id = p_user and status = 'pending' for update;
+  if not found then raise exception 'group_request_not_found' using errcode = 'P0001'; end if;
+  select * into g from public.groups where id = p_id;
+  update public.group_join_requests set status = case when p_approve then 'approved' else 'declined' end,
+    decided_by = auth.uid(), decided_at = now() where group_id = p_id and user_id = p_user;
+  if p_approve then
+    perform public.group_add_member(p_id, p_user);
+    perform public.notify(p_user, '✅', 'group_request_approved', jsonb_build_object('group', g.name),
+      'Liittymispyyntösi ryhmään “' || g.name || '” hyväksyttiin 🎉', 'group', p_id);
+  end if;
+end $$;
+
+-- Perustaja poistaa jäsenen (myös moderaattorin); ylläpito voi myös
+create or replace function public.remove_group_member(p_id uuid, p_user uuid) returns void
+language plpgsql security definer set search_path = public as $$
+declare g public.groups; cid uuid; nm text;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if coalesce(public.group_role(p_id), '') <> 'founder' and not public.is_admin() then raise exception 'group_founder_only' using errcode = 'P0001'; end if;
+  if p_user = auth.uid() then raise exception 'group_remove_self' using errcode = 'P0001'; end if;
+  select * into g from public.groups where id = p_id;
+  if exists (select 1 from public.group_members where group_id = p_id and user_id = p_user and role = 'founder') then
+    raise exception 'group_remove_founder' using errcode = 'P0001';
+  end if;
+  delete from public.group_members where group_id = p_id and user_id = p_user;
+  if found then
+    delete from public.group_invites where group_id = p_id and invitee_id = p_user;
+    select id into cid from public.conversations where group_id = p_id;
+    nm := public.display_name_of(p_user);
+    perform public.post_system_message(cid, 'group_member_removed', jsonb_build_object('name', nm), nm || ' poistettiin ryhmästä');
+    perform public.notify(p_user, 'ℹ️', 'group_removed', jsonb_build_object('group', g.name),
+      'Sinut poistettiin ryhmästä “' || g.name || '”', null, null);
+  end if;
+end $$;
+
+-- Perustaja nimittää / poistaa moderaattorin
+create or replace function public.set_group_role(p_id uuid, p_user uuid, p_role text) returns void
+language plpgsql security definer set search_path = public as $$
+declare g public.groups; cur text;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if coalesce(public.group_role(p_id), '') <> 'founder' then raise exception 'group_founder_only' using errcode = 'P0001'; end if;
+  if p_role not in ('moderator','member') then raise exception 'group_invalid' using errcode = 'P0001'; end if;
+  select role into cur from public.group_members where group_id = p_id and user_id = p_user for update;
+  if not found or cur = 'founder' then raise exception 'group_member_not_found' using errcode = 'P0001'; end if;
+  if cur = p_role then return; end if;
+  update public.group_members set role = p_role where group_id = p_id and user_id = p_user;
+  select * into g from public.groups where id = p_id;
+  if p_role = 'moderator' then
+    perform public.notify(p_user, '⭐', 'group_moderator', jsonb_build_object('group', g.name),
+      'Sinut nimitettiin ryhmän “' || g.name || '” moderaattoriksi', 'group', p_id);
+  end if;
+end $$;
+
+-- Esikatselu linkin kautta (myös suljettu ryhmä): nimi, kuvaus, jäsenmäärä – ei jäsenlistaa eikä viestejä
+create or replace function public.group_preview(p_id uuid)
+returns table (id uuid, name text, description text, visibility text, activity_id text, city text,
+               member_count int, my_role text, invited boolean, request_status text)
+language sql stable security definer set search_path = public as $$
+  select g.id, g.name, g.description, g.visibility, g.activity_id, g.city, public.group_member_count(g.id),
+         public.group_role(g.id),
+         exists (select 1 from public.group_invites i where i.group_id = g.id and i.invitee_id = auth.uid()),
+         (select r.status from public.group_join_requests r where r.group_id = g.id and r.user_id = auth.uid())
+  from public.groups g where g.id = p_id and auth.uid() is not null
+$$;
+
+-- Perustaja poistuu (tilin poisto) -> vanhin moderaattori / jäsen perustajaksi; tyhjä ryhmä poistetaan
+create or replace function public.group_members_after_delete() returns trigger
+language plpgsql security definer set search_path = public as $$
+declare nxt uuid;
+begin
+  if old.role <> 'founder' or not exists (select 1 from public.groups where id = old.group_id) then return null; end if;
+  select user_id into nxt from public.group_members where group_id = old.group_id
+    order by (role = 'moderator') desc, joined_at asc limit 1;
+  if nxt is null then
+    delete from public.groups where id = old.group_id;
+  else
+    update public.group_members set role = 'founder' where group_id = old.group_id and user_id = nxt;
+    update public.groups set founder_id = nxt, updated_at = now() where id = old.group_id;
+  end if;
+  return null;
+end $$;
+drop trigger if exists group_members_after_delete on public.group_members;
+create trigger group_members_after_delete after delete on public.group_members
+  for each row execute function public.group_members_after_delete();
+
+-- Listanäkymä: jäsenmäärä ja oma rooli (RLS: security_invoker)
+create or replace view public.groups_v with (security_invoker = true) as
+  select g.*, public.group_member_count(g.id) as member_count, public.group_role(g.id) as my_role
+  from public.groups g;
+
+alter table public.groups              enable row level security;
+alter table public.group_members       enable row level security;
+alter table public.group_invites       enable row level security;
+alter table public.group_join_requests enable row level security;
+drop policy if exists "groups: näkyvät" on public.groups;
+create policy "groups: näkyvät" on public.groups for select to authenticated using (public.group_visible(id));
+drop policy if exists "group_members: jäsenet ja ylläpito lukevat" on public.group_members;
+create policy "group_members: jäsenet ja ylläpito lukevat" on public.group_members for select to authenticated
+  using (user_id = auth.uid() or public.is_group_member(group_id) or public.is_admin());
+drop policy if exists "group_invites: osapuolet ja moderaattorit lukevat" on public.group_invites;
+create policy "group_invites: osapuolet ja moderaattorit lukevat" on public.group_invites for select to authenticated
+  using (invitee_id = auth.uid() or inviter_id = auth.uid() or public.is_group_mod(group_id));
+drop policy if exists "group_join_requests: pyytäjä ja moderaattorit lukevat" on public.group_join_requests;
+create policy "group_join_requests: pyytäjä ja moderaattorit lukevat" on public.group_join_requests for select to authenticated
+  using (user_id = auth.uid() or public.is_group_mod(group_id) or public.is_admin());
+
+-- 8d. ILMOITUKSET (reports): myös viestit/kuvat, kansikuvat ja ryhmät ----------------------
+alter table public.reports drop constraint if exists reports_target_type_check;
+alter table public.reports add constraint reports_target_type_check check (target_type in ('event','message','event_cover','group'));
+
+-- Ylläpito näkee ilmoitetun viestin (myös kuvan polun), vaikka ei ole keskustelun jäsen
+drop policy if exists "messages: ylläpito näkee ilmoitetut" on public.messages;
+create policy "messages: ylläpito näkee ilmoitetut" on public.messages for select to authenticated
+  using (public.is_admin() and exists (select 1 from public.reports r where r.target_type = 'message' and r.target_id = messages.id));
+
+-- Ylläpito: poista ilmoitettu sisältö. Palauttaa poistettavan kuvan polun (client poistaa tiedoston Storage-API:lla).
+create or replace function public.admin_remove_content(p_type text, p_id uuid) returns text
+language plpgsql security definer set search_path = public as $$
+declare pth text;
+begin
+  if auth.uid() is null or not public.is_admin() then raise exception 'admin_only' using errcode = 'P0001'; end if;
+  if p_type = 'message' then
+    delete from public.messages where id = p_id returning image_path into pth;
+  elsif p_type = 'event_cover' then
+    select cover_path into pth from public.events where id = p_id;
+    update public.events set cover_path = null where id = p_id;
+  elsif p_type = 'group' then
+    delete from public.groups where id = p_id;
+  else
+    raise exception 'report_target_invalid' using errcode = 'P0001';
+  end if;
+  update public.reports set status = 'resolved', resolved_by = auth.uid(), resolved_at = now()
+    where target_type = p_type and target_id = p_id and status = 'open';
+  return pth;
+end $$;
+
+-- 8e. OIKEUDET -------------------------------------------------------------------------------
+revoke all on public.groups, public.group_members, public.group_invites, public.group_join_requests, public.groups_v from anon;
+revoke insert, update, delete on public.groups, public.group_members, public.group_invites, public.group_join_requests from authenticated;
+grant select on public.groups, public.group_members, public.group_invites, public.group_join_requests, public.groups_v to authenticated;
+
+grant select (name_i18n, status) on public.activities to anon;
+grant select (cover_path) on public.events to anon;   -- guest_events.cover_path (osio 5b)
+
+do $$
+declare f text;
+begin
+  foreach f in array array[
+    'public.admin_review_activity(text, text, jsonb)', 'public.can_edit_event(uuid)', 'public.can_post_image(uuid)',
+    'public.image_reported(text)', 'public.storage_object_exists(text, text)',
+    'public.group_role(uuid)', 'public.is_group_member(uuid)', 'public.is_group_mod(uuid)', 'public.group_member_count(uuid)',
+    'public.group_visible(uuid)', 'public.group_input_ok(text, text)', 'public.create_group(jsonb)', 'public.update_group(uuid, jsonb)',
+    'public.delete_group(uuid)', 'public.group_add_member(uuid, uuid)', 'public.join_group(uuid)', 'public.leave_group(uuid)',
+    'public.invite_to_group(uuid, uuid)', 'public.respond_group_invite(uuid, boolean)', 'public.request_join_group(uuid, text)',
+    'public.review_join_request(uuid, uuid, boolean)', 'public.remove_group_member(uuid, uuid)', 'public.set_group_role(uuid, uuid, text)',
+    'public.group_preview(uuid)', 'public.admin_remove_content(text, uuid)'] loop
+    execute format('revoke execute on function %s from public, anon', f);
+  end loop;
+  foreach f in array array[
+    'public.admin_review_activity(text, text, jsonb)', 'public.can_edit_event(uuid)', 'public.can_post_image(uuid)',
+    'public.image_reported(text)', 'public.storage_object_exists(text, text)', 'public.group_role(uuid)', 'public.is_group_member(uuid)', 'public.is_group_mod(uuid)',
+    'public.group_member_count(uuid)', 'public.group_visible(uuid)', 'public.create_group(jsonb)', 'public.update_group(uuid, jsonb)',
+    'public.delete_group(uuid)', 'public.join_group(uuid)', 'public.leave_group(uuid)', 'public.invite_to_group(uuid, uuid)',
+    'public.respond_group_invite(uuid, boolean)', 'public.request_join_group(uuid, text)', 'public.review_join_request(uuid, uuid, boolean)',
+    'public.remove_group_member(uuid, uuid)', 'public.set_group_role(uuid, uuid, text)', 'public.group_preview(uuid)',
+    'public.admin_remove_content(text, uuid)'] loop
+    execute format('grant execute on function %s to authenticated', f);
+  end loop;
+  -- sisäiset: ei API-kutsuttavia
+  revoke execute on function public.group_add_member(uuid, uuid) from authenticated;
+  revoke execute on function public.group_input_ok(text, text) from authenticated;
+  revoke execute on function public.activities_after_insert() from public, anon, authenticated;
+  revoke execute on function public.group_members_after_delete() from public, anon, authenticated;
+end $$;
 
 -- Valmis! 🎉

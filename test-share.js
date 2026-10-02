@@ -44,6 +44,13 @@ let passed = 0; const ok = (c, m) => { if (!c) throw new Error('ASSERT: ' + m); 
   const PUB = Object.assign({}, EV, { kind: 'public', title: 'Helsinki City Run', organizer_name: 'Helsinki City Run ry', ends_at: '2026-10-03T13:00:00+00:00', city: 'Madrid', district: 'Retiro' });
   const m2 = L.buildEventMeta(PUB, 'en'), h2 = L.injectMeta(INDEX, m2).html, ld2 = JSON.parse(/id="ld-event">([^<]*)</.exec(h2)[1]);
   ok(metaOf(h2, 'name', 'robots').startsWith('index') && ld2.organizer.name === 'Helsinki City Run ry' && ld2.endDate && ld2.location.address.addressCountry === 'ES' && !('isAccessibleForFree' in ld2) && /18:00/.test(m2.title) && metaOf(h2, 'property', 'og:locale') === 'en_GB', 'public event (en, Madrid time): indexable, organiser, endDate, ES, og:locale en_GB');
+  // event cover (public bucket event-covers) as og:image / twitter:image / JSON-LD image
+  const CV = ID + '/a1b2c3d4e5f6.jpg', SU = 'https://abc.supabase.co';
+  ok(L.coverImageUrl({ id: ID, cover_path: CV }, SU + '/') === SU + '/storage/v1/object/public/event-covers/' + CV, 'coverImageUrl: public Storage URL for a valid cover path');
+  ok([{ id: ID, cover_path: '6d53cc50-2b2b-4dd2-a9f9-64f9e882d258/a1b2c3d4e5f6.jpg' }, { id: ID, cover_path: ID + '/../../x.jpg' }, { id: ID, cover_path: ID + '/a1b2c3.png' }, { id: ID, cover_path: ID + '/"><x.jpg' }, { id: ID, cover_path: null }, { id: ID }].every(x => L.coverImageUrl(x, SU) === null) && L.coverImageUrl({ id: ID, cover_path: CV }, 'javascript:alert(1)') === null, 'coverImageUrl rejects other events’ paths, traversal, png, markup, missing path and non-https bases');
+  const mc = L.buildEventMeta(Object.assign({}, EV, { cover_url: L.coverImageUrl({ id: ID, cover_path: CV }, SU) }), 'fi'), rc = L.injectMeta(INDEX, mc), hc = rc.html;
+  ok(metaOf(hc, 'property', 'og:image') === SU + '/storage/v1/object/public/event-covers/' + CV && metaOf(hc, 'name', 'twitter:image') === metaOf(hc, 'property', 'og:image') && metaOf(hc, 'property', 'og:image:alt') === EV.title && metaOf(hc, 'name', 'twitter:image:alt') === EV.title && !/og:image:width|og:image:height/.test(hc), 'cover: og:image + twitter:image = cover URL, alt = title, default 1200×630 size hints removed');
+  ok(JSON.parse(/id="ld-event">([^<]*)</.exec(hc)[1]).image[0] === metaOf(hc, 'property', 'og:image') && /og:image:width/.test(h1) && metaOf(h1, 'property', 'og:image:alt') !== EV.title, 'cover in JSON-LD image; events without a cover keep the default image, size and alt');
   // escaping / injection attempts in user content
   const EVIL = Object.assign({}, EV, { title: '"><script>alert(1)</script>', description: 'x</script><script>alert(2)</script> & <!-- \u2028', place: '<img src=x onerror=alert(3)>' });
   const he = L.injectMeta(INDEX, L.buildEventMeta(EVIL, 'fi')).html;
@@ -62,6 +69,8 @@ let passed = 0; const ok = (c, m) => { if (!c) throw new Error('ASSERT: ' + m); 
   ok(a.headers['X-Robots-Tag'] === 'noindex' && /max-age=60/.test(a.headers['Cache-Control']), 'community page: X-Robots-Tag noindex, short cache');
   const b = await L.handleEventRequest({ url: 'https://molaplan.com/e/' + ID, idSeg: ID, getAsset: asset, fetchImpl: fake([]) });
   ok(b.status === 404 && !b.meta.found && b.headers['X-Robots-Tag'] === 'noindex' && /noindex/.test(b.html), 'not visible to guests (private / 18+ / past – empty from RLS): 404 generic noindex');
+  const ac = await L.handleEventRequest({ url: 'https://molaplan.com/e/' + ID, idSeg: ID, getAsset: asset, fetchImpl: fake([Object.assign({}, EV, { cover_path: CV })]) });
+  ok(/cover_path/.test(calls[calls.length - 1].u) && metaOf(ac.html, 'property', 'og:image') === cfg.url + '/storage/v1/object/public/event-covers/' + CV, 'handler: guest_events.cover_path -> og:image on the project’s public bucket');
   const n0 = calls.length; const c = await L.handleEventRequest({ url: 'https://molaplan.com/e/hello', idSeg: 'hello', getAsset: asset, fetchImpl: fake([EV]) });
   ok(c.status === 404 && calls.length === n0, 'invalid id: no DB request at all, 404');
   const d = await L.handleEventRequest({ url: 'https://molaplan.com/e/' + ID, idSeg: ID, getAsset: asset, fetchImpl: fake([Object.assign({}, EV, { is_adult: true })]) });
