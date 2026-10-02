@@ -1,5 +1,9 @@
 # Guest mode – agent progress log
 
+> **Supabase token (since 2026-10-02):** use `MOLAPLAN_SUPABASE_TOKEN` for Molaplan – `SUPABASE_ACCESS_TOKEN` belongs to
+> another project. Run CLI as `bash -lc 'SUPABASE_ACCESS_TOKEN="$MOLAPLAN_SUPABASE_TOKEN" /home/box/.local/bin/supabase … --agent no'`.
+> export_live.sh, media2/apply_live.sh and all /workspace/molaplan-e2e/*.js already prefer it. Never print it.
+
 ## Step 1 (worker 3, started 07:31 box time = UTC) – state assessment
 Inherited from crashed worker (07:05-07:17), diffed against /workspace/molaplan-backups/before-guest-0704.tgz:
 - schema.sql: section 5b added (anon column grants + RLS on activities/events/help_requests, lat/lng_approx generated cols,
@@ -487,3 +491,24 @@ mg_block.js, i18n_d.py – all already applied, don't rerun; sqltest.sh = scratc
   notifications; owner never touched). Not yet executed against live – expect to fix small things on first run.
 - Local results: npm test 114/233/51/35/27/85/72 all passed; mock_smoke 40 PASS; SQL full schema 45/26/96 OK; delta on
   old schema 45/26/96 OK; verify_live.sql OK on the delta'd scratch DB. Screenshots re-taken (shots/mg-*.png).
+## G4 – live rollout + live e2e (≈08:05–08:45)
+- Token: MOLAPLAN_SUPABASE_TOKEN (see top). export_live.sh / apply_live.sh export SUPABASE_ACCESS_TOKEN from it; e2e scripts set
+  process.env.SUPABASE_ACCESS_TOKEN from it. apply_live.sh preflight accepts 200/201; backup name uses TZ=Europe/Kyiv
+  (the box has no "Europe/Kiev" zone -> it silently gave UTC).
+- Pre-checks (rolled back): postgres may create policies on storage.objects and insert into storage.buckets; storage.objects
+  has owner_id.
+- Backup: /workspace/molaplan-backups/live-db-before-media-0806.tgz (41 files: every public table, auth users without
+  secrets, schema metadata, storage buckets/policies/objects). Delta applied in ONE transaction (08:10), verify_live.sql:
+  buckets event-covers public / chat-images private, 256 kB, webp+jpeg; 6 storage policies; RLS on all 4 group tables;
+  0 anon grants and 0 authenticated write grants on groups*; activities 48 (34 + 14 new, all with en names);
+  events/guest_events.cover_path present; owner is_admin true (profile updated_at unchanged).
+- e2e-media-real.js vs preview: 88/88. Fixes: the e2e removed the reported photo in the wrong order (admin UI deletes the
+  file first: Storage lets the admin see a chat photo only while its report is open); message-report notifications/reports
+  now cleaned up (3 leftovers of the first runs were deleted by exact id). Found: Supabase CDN keeps serving a deleted
+  public cover (cf-cache-status HIT) -> c45e23e covers uploaded with cacheControl 3600 instead of 1 year.
+- Regression e2e vs preview: e2e-real 56, e2e-friends 49, e2e-team 26, e2e-share 39 – all passed, cleanup OK, owner untouched.
+  e2e-real / e2e-team now take BASE=<deploy>/ (default stays the local server); e2e-friends: `pe.goto(BASE)` instead of
+  reload (a reload reopens /e/<id> since share URLs – failed on production too, test-only issue).
+- Live counts after all runs equal the backup (reports 1, notifications 6, events 3, messages 3, users 3, files 0, groups 0).
+- NEW /workspace/molaplan-e2e/live-media-shots.js (BASE=<deploy>): throwaway users + event with cover + open group with a photo
+  chat, screenshots, cleanup -> shots/live-mg-{m,d1440}-{home-cover-card,event-cover,group-chat,sports-typeahead,sports-typeahead-2}.png
