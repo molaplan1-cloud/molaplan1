@@ -512,3 +512,24 @@ mg_block.js, i18n_d.py – all already applied, don't rerun; sqltest.sh = scratc
 - Live counts after all runs equal the backup (reports 1, notifications 6, events 3, messages 3, users 3, files 0, groups 0).
 - NEW /workspace/molaplan-e2e/live-media-shots.js (BASE=<deploy>): throwaway users + event with cover + open group with a photo
   chat, screenshots, cleanup -> shots/live-mg-{m,d1440}-{home-cover-card,event-cover,group-chat,sports-typeahead,sports-typeahead-2}.png
+
+## H – publish media-groups to production (2026-10-02)
+- main fast-forwarded 66e142f -> fe0b4ca, normal push (no force). Pages production deploy 22d64937 succeeded; molaplan.com
+  serves i18n.js?v=8cc7a75c0f (was 3b0806670a). deploy.sh fallback not needed.
+- Verified with `BASE=https://molaplan.com SHOT_PREFIX=live-prod-mg- node /workspace/molaplan-e2e/live-media-shots.js`:
+  guest feed + cover, logged-in home, event cover, group chat with photo, sports typeahead; no page/console errors; cleanup OK.
+  Shots: shots/live-prod-mg-{m,d1440}-*.png (not committed).
+
+## T – team + business management (branch orgs-admin-2026-10-02, preview only – never main)
+- Schema section 9 (+ 9b business, 9c grants) in supabase/schema.sql; tests supabase/tests/orgs.sql (108). Delta built by
+  /workspace/molaplan-build/orgs/make_delta.py -> delta-orgs.sql, tested by deltatest.sh (old schema + live drift sim).
+- UI: orgs.js (built by `cat /workspace/molaplan-build/orgs/js/p1..p7.js > orgs.js` – edit the parts, then concatenate).
+  Screens #s-tm (team, param team id) and #s-bm (business). Hooks in index.html: showEntry/curEntry orgParam, chatObj/myChats
+  (conversation kind 'team'), chat UI treats team like group (+ ⚑ report on others' text messages), notifGo, profile rows,
+  create form extra_info (#c-extra, detail #d-extra), deep links /t/<token> /b/<token> (sessionStorage molaplan.orgLink).
+  build.sh stamps 5 scripts (orgs added); serve.js serves /t/ and /b/.
+- i18n: 258 new keys via /workspace/molaplan-build/orgs/i18n/{a..e}.py -> all.json -> ux/i18n_tool.js.
+- Mock: admin_review_team_request approval creates team + manager + team chat; test-teams.js expects the team page.
+- Fixed a pre-existing flake in test-media.js: refreshAllViews re-rendered the admin view while typing (now skipped when an
+  input in #s-admin has focus, like profile/biz).
+- Tests after UI: npm test 114/233/51/35/30/85/72, mock_smoke 40, SQL suites all OK.
