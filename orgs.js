@@ -155,7 +155,7 @@ async function openLink(){
  let p=null;try{p=await app.q(app.sb.rpc(l.k==='b'?'business_link_preview':'team_link_preview',{p_token:l.tok}))}catch(e){app.toast(T('tm.linkInvalid'),4200);return}
  if(!p){app.toast(T('tm.linkInvalid'),4200);return}
  if(p.already_member){l.k==='b'?openBizManage(p.business_id):openTeam(p.team_id);return}
- const role=l.k==='b'?T('bm.role.editor'):T('tm.role.'+p.role);
+ const role=(l.k==='b'?T('bm.role.editor'):T('tm.role.'+p.role)).toLocaleLowerCase();
  app.openSheet(`<div class="om-sheet" id="org-join-sheet"><div style="font-size:40px;text-align:center">${l.k==='b'?'🏢':'👥'}</div><h3 style="text-align:center">${esc(l.k==='b'?T('bm.joinTitle',{name:p.name}):T('tm.joinTitle',{name:p.name}))}</h3>
   <p class="sub" style="text-align:center">${esc(l.k==='b'?T('bm.joinBody'):p.member_name?T('tm.joinParentBody',{name:p.member_name}):T('tm.joinBody',{role}))}</p>
   ${l.k==='t'?`<p class="muted" style="text-align:center;font-size:13px;margin:0 0 14px">${esc([p.sport,p.city,TN('tm.membersN',Number(p.members)||0)].filter(Boolean).join(' · '))}</p>`:''}
@@ -176,7 +176,7 @@ function renderTeam(keepScroll){
  const a=teamAct(t), unread=role?A().unreadOf(id):0;
  let html=head(T('tm.kind'))+`<div class="om-hero" style="--h:${teamHue(t)}" id="tm-hero"><div class="e">${teamEmoji(t)}</div><h1 id="tm-name">${esc(t.name)}</h1><div class="bd">${role?`<span id="tm-myrole">${esc(T('tm.role.'+role))}</span>`:''}<span>👥 ${esc(TN('tm.membersN',members(id).length))}</span>${t.city?`<span>📍 ${esc(t.city)}</span>`:''}${a?`<span>${a.emoji} ${esc(a.name)}</span>`:t.sport?`<span>${esc(t.sport)}</span>`:''}</div></div>`;
  if(!role){
-  if(inv)html+=`<div class="card-box" id="tm-invite"><p class="muted" style="margin:0 0 12px">💌 ${esc(T('tm.invitedBy',{name:inv.inviter_id?A().nameOf(inv.inviter_id):T('common.someone'),role:T('tm.role.'+inv.role)}))}</p><div class="row" style="gap:10px"><button class="btn primary" data-o="inv-accept" data-id="${id}" id="tm-inv-accept" style="flex:2">${T('tm.accept')}</button><button class="btn ghost" data-o="inv-decline" data-id="${id}" id="tm-inv-decline" style="flex:1">${T('tm.decline')}</button></div></div>`;
+  if(inv)html+=`<div class="card-box" id="tm-invite"><p class="muted" style="margin:0 0 12px">💌 ${esc(T('tm.invitedBy',{name:inv.inviter_id?A().nameOf(inv.inviter_id):T('common.someone'),role:T('tm.role.'+inv.role).toLocaleLowerCase()}))}</p><div class="row" style="gap:10px"><button class="btn primary" data-o="inv-accept" data-id="${id}" id="tm-inv-accept" style="flex:2">${T('tm.accept')}</button><button class="btn ghost" data-o="inv-decline" data-id="${id}" id="tm-inv-decline" style="flex:1">${T('tm.decline')}</button></div></div>`;
   s.innerHTML=html+`<div style="height:28px"></div>`;return;
  }
  html+=`<div class="card-box" id="tm-chat-box"><button class="btn primary block" data-a="open-chat" data-id="${id}" id="tm-chat">💬 ${T('tm.openChat')}${unread?` <i class="cnt">${unread}</i>`:''}</button>${t.description?`<p class="desc" id="tm-desc" style="margin:12px 0 0">${esc(t.description)}</p>`:''}</div>`;
