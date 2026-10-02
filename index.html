@@ -1099,7 +1099,7 @@ details.a-more .inner{padding:0 18px 16px}
 .d-hero.has-cover .d-emoji{display:none}
 .d-hero.has-cover .act-name{margin-top:auto;padding-top:90px}
 .d-hero.has-cover h1{text-shadow:0 2px 14px rgba(0,0,0,.45)}
-.d-cover-tools{display:flex;gap:14px;justify-content:flex-end;flex-wrap:wrap;padding:8px 18px 0;font-size:13px}
+.d-cover-tools{display:flex;gap:14px;justify-content:flex-end;flex-wrap:wrap;padding:8px 18px 0;margin-bottom:26px;font-size:13px;position:relative;z-index:3}
 .d-cover-tools .txt-btn{font-size:13px}
 .cover-hint{margin:0 0 10px;font-size:13px;line-height:1.45}
 .cover-prev{border-radius:16px;overflow:hidden;aspect-ratio:16/9;margin:0 0 10px;background:#EEE}
@@ -1107,9 +1107,9 @@ details.a-more .inner{padding:0 18px 16px}
 .ch-form .ch-att{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:var(--pri);background:#F1EEFB}
 .ch-form .ch-att svg{width:21px;height:21px}
 .ch-form .ch-att.busy{opacity:.55;pointer-events:none;animation:pulse 1s infinite}
-.bub.has-img{padding:4px 4px 6px;max-width:min(78%,320px)}
+.bub.has-img{padding:4px 4px 6px;max-width:none;min-width:0}
 .bub.has-img .who{padding:4px 8px 2px}
-.bub .ph{display:block;width:min(260px,62vw);max-height:340px;border-radius:14px;overflow:hidden;background:rgba(0,0,0,.06);position:relative;margin:0 0 4px;padding:0;cursor:zoom-in}
+.bub .ph{display:block;width:min(260px,60vw);max-height:340px;border-radius:14px;overflow:hidden;background:rgba(0,0,0,.06);position:relative;margin:0 0 4px;padding:0;cursor:zoom-in}
 .bub .ph img{width:100%;height:100%;object-fit:cover;display:block}
 .bub.has-img .cap{display:block;padding:2px 8px 0}
 .ph .ph-gone{display:none}
@@ -1157,7 +1157,7 @@ details.a-more .inner{padding:0 18px 16px}
 .grp-mem .grow,.grp-req .grow{flex:1;min-width:0}
 .grp-req{align-items:flex-start;flex-wrap:wrap}
 .grp-req p{margin:3px 0;font-size:13.5px}
-.grp-req-btns{display:flex;gap:8px;margin-left:auto}
+.grp-req-btns{display:flex;gap:8px;margin-left:auto;flex-basis:100%;justify-content:flex-end}
 .grp-req-btns .btn{height:38px;padding:0 14px;font-size:13.5px}
 .grp-mem-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
 .grp-mem-btns .txt-btn{font-size:12.5px}
@@ -1170,7 +1170,8 @@ details.a-more .inner{padding:0 18px 16px}
 .gr-hint{display:block;margin-top:6px;font-size:12.5px;line-height:1.4}
 .act-names{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
 .act-names .field{margin-bottom:8px}
-.seg.seg5 button{font-size:11px;padding-left:2px;padding-right:2px}
+.seg.seg5{overflow-x:auto;scrollbar-width:none}.seg.seg5::-webkit-scrollbar{display:none}
+.seg.seg5 button{flex:1 0 auto;white-space:nowrap;word-break:normal;font-size:12px;padding-left:10px;padding-right:10px}
 @media (min-width:900px){.bub .ph{width:300px}.grp-hero{margin:0 0 16px}}
 </style></head>
 <body>
@@ -2135,7 +2136,7 @@ async function csAdd(el){
   if(!S.user.favs.includes(ex.id)){S.user.favs.push(ex.id);if(S.onboarded)fire(sb.from('profiles').update({favs:S.user.favs}).eq('id',ME))}
   closeSheet();
   if(sheetCtx==='lajit'){pick.add(ex.id);renderLajit()}
-  if(sheetCtx==='create'){C.act=ex.id;renderCreateActs();renderCreateCrazy();updTitlePh();if(pickMarker)pickMarker.setIcon(createPin())}
+  if(sheetCtx==='create'){C.act=ex.id;clearActQ();renderCreateActs();renderCreateCrazy();updTitlePh();if(pickMarker)pickMarker.setIcon(createPin())}
   if(sheetCtx==='hullut'&&$('#s-hullut').classList.contains('active'))renderHullut();
   toast(tx('acts.existsPicked',{emoji:ex.emoji,name:ex.name}));return
  }
@@ -2148,7 +2149,7 @@ async function csAdd(el){
  if(!S.user.favs.includes(a.id)){S.user.favs.push(a.id);if(S.onboarded)fire(sb.from('profiles').update({favs:S.user.favs}).eq('id',ME))}
  closeSheet();
  if(sheetCtx==='lajit'){pick.add(a.id);renderLajit()}
- if(sheetCtx==='create'){C.act=a.id;renderCreateActs();renderCreateCrazy();updTitlePh();if(pickMarker)pickMarker.setIcon(createPin())}
+ if(sheetCtx==='create'){C.act=a.id;clearActQ();renderCreateActs();renderCreateCrazy();updTitlePh();if(pickMarker)pickMarker.setIcon(createPin())}
  if(sheetCtx==='hullut'&&$('#s-hullut').classList.contains('active'))renderHullut();
  if(curTab==='home'&&S.onboarded)renderHome();
  if(bigMap)renderMapFilters();
@@ -4239,6 +4240,7 @@ function actAcInit(){
  });
  inp.addEventListener('blur',()=>setTimeout(()=>{const w=$('#c-act-ta');if(!w||!w.contains(document.activeElement))actAcClose()},160));
 }
+function clearActQ(){const qi=$('#c-act-q');if(qi)qi.value='';actAcClose();filterActChips('')}
 function setCreateAct(v){C.act=v;renderCreateActs();renderCreateCrazy();updTitlePh();if(pickMarker)pickMarker.setIcon(createPin())}
 function actPickFromAc(v){setCreateAct(v);const inp=$('#c-act-q');if(inp){inp.value='';inp.blur()}actAcClose();filterActChips('')}
 function actNewFromAc(name){actAcClose();openSheet('create',false);const n=$('#cs-name');if(n){n.value=name;n.dispatchEvent(new Event('input'));csPrev();setTimeout(()=>n.focus({preventScroll:true}),60)}}
@@ -4324,7 +4326,8 @@ function renderGroupsList(){
  const near=(f?other:other.filter(x=>x.k!=null?x.k<=NEAR_GROUP_KM:foldTxt(x.g.city)===vc)).sort((a,b)=>(a.k==null?1e9:a.k)-(b.k==null?1e9:b.k)||b.g.count-a.g.count).map(x=>x.g);
  const sec=(id,title,list,opt)=>list.length?`<div class="sec-head grp-sec" id="${id}"><h2>${title}</h2></div><div class="chat-list">${list.map(g=>grpRowHTML(g,opt)).join('')}</div>`:'';
  let html=sec('grp-sec-inv','💌 '+tx('grp.invites'),inv,'invite')+sec('grp-sec-mine',tx('grp.mine'),mine)+sec('grp-sec-near',f?tx('grp.results'):tx('grp.near',{city:esc(cityLabel(viewCity()))}),near);
- if(!near.length)html+=`<div class="cards"><div class="empty" id="grp-empty"><div class="e">${f?'🔍':'👥'}</div><h3>${f?tx('grp.noMatch'):tx('grp.noneNear')}</h3><p>${f?tx('grp.noMatchBody'):tx('grp.noneNearBody')}</p></div></div>`;
+ if(!near.length&&!f&&(mine.length||inv.length))html+=`<p class="muted" id="grp-empty-more" style="text-align:center;font-size:13px;margin:14px 16px 4px">${tx('grp.noOtherNear')}</p>`;
+ else if(!near.length)html+=`<div class="cards"><div class="empty" id="grp-empty"><div class="e">${f?'🔍':'👥'}</div><h3>${f?tx('grp.noMatch'):tx('grp.noneNear')}</h3><p>${f?tx('grp.noMatchBody'):tx('grp.noneNearBody')}</p></div></div>`;
  el.innerHTML=html;
 }
 function openGroup(id){if(!id)return;if(!ME){openAuthPrompt({a:'open-group',id});return}navTo('s-group',id)}

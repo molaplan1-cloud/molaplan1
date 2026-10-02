@@ -460,3 +460,12 @@ mg_block.js, i18n_d.py – all already applied, don't rerun; sqltest.sh = scratc
   reports_after_insert, guest_events, all of section 8). deltatest.sh: old schema 66e142f + storage stub -> delta ×2 -> suites
   45/26/96 OK; functions/policies/constraints/views/grants identical to a fresh full-schema DB (md5 compare).
 - SQL suite media-groups.sql: +3 checks (group chat ad guard) -> 96 OK.
+## G2 – UI fixes + mock UI suite (≈07:40)
+- index.html: cover tools no longer hidden under the info grid (margin/z-index); chat photo bubbles fit a 390px screen
+  (.bub.has-img, .ph min(260px,60vw)); admin 5-tab segment scrolls horizontally; join-request buttons on their own row;
+  groups list shows a small "no other groups nearby" line (grp.noOtherNear ×4) instead of the big empty card when the user
+  already has groups/invites; sport search box is cleared after picking/adding a sport.
+- NEW test-media.js (mock UI, 72 checks): typeahead in 4 languages, favourites first, free-text -> admin queue -> approve with
+  translations; cover compression (≤1600px, ≤200 kB, EXIF/GPS stripped), card/detail/change/remove; chat photo WebP + signed
+  URL + outsider blocked; reports -> admin removal; open + closed groups end to end (invite, moderator, /g/ link, join request,
+  removal, ad guard, realtime); guest/anon see nothing. Added to npm test. SHOTS=shots node test-media.js = screenshots.
