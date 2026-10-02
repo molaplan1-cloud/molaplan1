@@ -67,7 +67,8 @@ function css(){if($('#orgs-css'))return;const s=document.createElement('style');
 .om-titles{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.om-titles button{height:30px;padding:0 10px;border-radius:999px;background:#F3F2F8;font-size:12.5px;font-weight:600}
 .om-row-btns{display:flex;gap:6px;flex-wrap:wrap}
 .om-sheet .inp{width:100%}.om-sheet h3{margin-bottom:4px}
-.om-mgr{display:flex;gap:8px;margin-top:10px}.om-mgr .btn{flex:1}
+.om-mgr{display:flex;gap:8px;margin-top:10px}.om-mgr .btn{flex:1;min-width:0;white-space:normal;line-height:1.2;padding-left:10px;padding-right:10px}
+#s-tm,#s-bm{overflow-x:hidden}.om-ev .m,.om-place .m{overflow-wrap:anywhere}
 .om-ext{color:var(--pri);font-weight:700;font-size:13px}
 .msg .msg-rep{align-self:center;flex:none;border:0;background:none;color:var(--muted);opacity:.55;font-size:13px;padding:6px;cursor:pointer}.msg .msg-rep:hover{opacity:1}
 `;document.head.appendChild(s)}
@@ -541,8 +542,8 @@ function renderBiz(keepScroll){
   const ev=bizEvents(b.id);
   h+=`<div class="card-box" id="bm-events">${active?`<button class="btn primary block" data-o="bm-new-ev" data-id="${b.id}" id="bm-new-ev" style="margin-bottom:12px">＋ ${T('bm.newEvent')}</button>`:''}
    ${ev.length?ev.map(m=>{const a=A().act(m.act);return `<div class="om-place" id="bm-ev-${m.id}"><span style="font-size:22px">${a.emoji}</span><div class="m"><b>${esc(m.title)}</b><small>🗓️ ${esc(fmtDay(m.date))} ${esc(A().fmtTime(m.time))} · 📍 ${esc(m.place)}${m.city?', '+esc(A().cityLabel(m.city)):''}</small>
-    <small>${m.price?'💶 '+esc(m.price)+' · ':''}👥 ${m.people.length}${m.unlimited?'':'/'+m.max}${m.series?` · <span class="om-tag">🔁 ${T('tm.recurring')}</span>`:''}</small></div>
-    <span class="om-row-btns"><button class="btn ghost sm" data-o="bm-open-ev" data-id="${m.id}" id="bm-open-ev-${m.id}">${T('bm.view')}</button>${active?`<button class="btn ghost sm" data-o="bm-edit-ev" data-id="${m.id}" id="bm-edit-ev-${m.id}">✏️</button><button class="btn ghost sm" data-o="bm-del-ev" data-id="${m.id}" id="bm-del-ev-${m.id}">🗑️</button>`:''}</span></div>`}).join('')
+    <small>${m.price?'💶 '+esc(m.price)+' · ':''}👥 ${m.people.length}${m.unlimited?'':'/'+m.max}${m.series?` · <span class="om-tag">🔁 ${T('tm.recurring')}</span>`:''}</small>
+    <div class="om-acts"><button class="btn ghost sm" data-o="bm-open-ev" data-id="${m.id}" id="bm-open-ev-${m.id}">${T('bm.view')}</button>${active?`<button class="btn ghost sm" data-o="bm-edit-ev" data-id="${m.id}" id="bm-edit-ev-${m.id}">✏️ ${T('common.edit')}</button><button class="btn ghost sm" data-o="bm-del-ev" data-id="${m.id}" id="bm-del-ev-${m.id}" aria-label="${T('common.delete')}">🗑️</button>`:''}</div></div></div>`}).join('')
    :`<p class="muted" id="bm-no-events" style="margin:0;font-size:13.5px">${T('bm.noEvents')}</p>`}</div>`;
  }else if(BM.seg==='series'){
   const ser=D.bser.filter(x=>x.business_id===b.id);
