@@ -4108,7 +4108,7 @@ async function pickCover(file){
 function delCover(){if(!C)return;if(C.coverPrev)URL.revokeObjectURL(C.coverPrev);C.coverBlob=null;C.coverPrev='';C.coverDel=true;renderCoverBox()}
 async function uploadCover(evId,c,old){
  const path=`${evId}/${imgName()}.${c.ext}`;
- const up=await sb.storage.from('event-covers').upload(path,c.blob,{contentType:c.type,cacheControl:'31536000',upsert:false});
+ const up=await sb.storage.from('event-covers').upload(path,c.blob,{contentType:c.type,cacheControl:'3600',upsert:false});
  if(up&&up.error)throw up.error;
  let row;try{row=await q(sb.from('events').update({cover_path:path}).eq('id',evId).select().single())}catch(e){fire(sb.storage.from('event-covers').remove([path]));throw e}
  if(old&&old!==path)fire(sb.storage.from('event-covers').remove([old]));
