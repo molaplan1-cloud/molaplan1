@@ -185,7 +185,7 @@ function renderTeam(keepScroll){
  html+=`<div class="om-seg" id="tm-seg" role="tablist">${segs.map(([k,l])=>`<button class="${TM.seg===k?'on':''}" data-o="tm-seg" data-v="${k}" id="tm-seg-${k}" role="tab" aria-selected="${TM.seg===k}">${l}</button>`).join('')}</div>`;
  html+=TM.seg==='members'?membersHTML(t):TM.seg==='places'?placesHTML(t):TM.seg==='info'?docsHTML(t):TM.seg==='settings'?settingsHTML(t):schedHTML(t);
  html+=`<div class="grp-foot">${role&&t.owner_id!==me()?`<button class="btn ghost block" data-o="tm-leave" data-id="${id}" id="tm-leave">${T('tm.leave')}</button>`:''}</div><div style="height:28px"></div>`;
- s.innerHTML=html;if(keepScroll)s.scrollTop=st;
+ dropMap();s.innerHTML=html;if(keepScroll)s.scrollTop=st;
  if(TM.seg==='places')setTimeout(()=>placesMap(t),40);
 }
 /* schedule */
@@ -248,6 +248,7 @@ function membersHTML(t){
 }
 /* places */
 let pMap=null;
+function dropMap(){if(pMap){try{pMap.stop();pMap.off();pMap.remove()}catch(e){}pMap=null}}
 function placesHTML(t){
  const ps=D.places.filter(p=>p.team_id===t.id), staff=isStaff(t.id);
  return `<div class="card-box" id="tm-places">${ps.some(p=>p.lat!=null)?`<div class="om-map" id="tm-places-map"></div>`:''}
@@ -258,11 +259,11 @@ function placesHTML(t){
   ${staff?`<button class="btn primary block" data-o="pl-new" data-id="${t.id}" id="tm-pl-new" style="margin-top:12px">＋ ${T('tm.addPlace')}</button>`:''}</div>`;
 }
 function placesMap(t){
- const el=$('#tm-places-map');if(pMap){try{pMap.remove()}catch(e){}pMap=null}
+ const el=$('#tm-places-map');dropMap();
  if(!el||!window.L)return;const ps=D.places.filter(p=>p.team_id===t.id&&p.lat!=null);if(!ps.length)return;
  pMap=L.map(el,{zoomControl:false,attributionControl:true});A().addTiles(pMap);
  const ms=ps.map(p=>L.marker([p.lat,p.lng],{icon:A().pinIcon(t.activity_id)}).addTo(pMap).bindPopup(esc(p.name)));
- if(ms.length===1)pMap.setView(ms[0].getLatLng(),15);else pMap.fitBounds(L.featureGroup(ms).getBounds().pad(.25));
+ if(ms.length===1)pMap.setView(ms[0].getLatLng(),15,{animate:false});else pMap.fitBounds(L.featureGroup(ms).getBounds().pad(.25),{animate:false});
 }
 /* docs: instructions / programme / notes */
 const DOC_KINDS=['instructions','programme','notes'], DOC_IC={instructions:'📘',programme:'🗓️',notes:'📝'};
@@ -301,7 +302,7 @@ function pickerInit(pfx,lat,lng,city,actId){
   inp.addEventListener('keydown',e=>{if(e.key==='Escape')ppClose()})}
  if(l){l.addEventListener('mousedown',e=>{if(!e.target.closest('a'))e.preventDefault()});l.addEventListener('click',e=>{const o=e.target.closest('[data-i]');if(o)ppPick(+o.dataset.i)})}
  setTimeout(()=>{
-  const el=$('#'+pfx+'-map');if(!el||!window.L)return;if(PP.map){try{PP.map.remove()}catch(e){}}
+  const el=$('#'+pfx+'-map');if(!el||!window.L)return;pickerDone();
   const c=PP.lat!=null?[PP.lat,PP.lng]:A().cityInfo(city||A().viewCity()).c;
   PP.map=L.map(el,{zoomControl:false});A().addTiles(PP.map);PP.map.setView(c,PP.lat!=null?15:12);
   PP.mk=L.marker(c,{draggable:true,icon:A().pinIcon(PP.act)}).addTo(PP.map);
@@ -310,7 +311,7 @@ function pickerInit(pfx,lat,lng,city,actId){
   PP.map.on('click',e=>{PP.mk.setLatLng(e.latlng);PP.lat=e.latlng.lat;PP.lng=e.latlng.lng;PP.mk.setOpacity(1)});
  },120);
 }
-function pickerDone(){if(PP.map){try{PP.map.remove()}catch(e){}}PP.map=null;PP.mk=null}
+function pickerDone(){if(PP.map){try{PP.map.stop();PP.map.off();PP.map.remove()}catch(e){}}PP.map=null;PP.mk=null}
 function ppClose(){const l=$('#'+PP.pfx+'-ac'),i=$('#'+PP.pfx+'-addr');if(l)l.hidden=true;if(i)i.setAttribute('aria-expanded','false')}
 function ppMsg(m){const l=$('#'+PP.pfx+'-ac');if(!l)return;l.innerHTML=`<li class="ac-msg" role="presentation">${esc(m)}</li>`;l.hidden=false}
 async function ppSearch(q){
@@ -336,7 +337,7 @@ function ppPick(i){
  if(nm&&!nm.value.trim()){nm.value=it.main.slice(0,60);if(inp)inp.value=(addr||it.main).slice(0,120)}
  else if(inp)inp.value=[it.main,addr].filter(Boolean).join(', ').slice(0,120);
  PP.lat=it.lat;PP.lng=it.lng;PP.cityHint=it.city;
- if(PP.map&&PP.mk){PP.mk.setLatLng([it.lat,it.lng]);PP.mk.setOpacity(1);PP.map.setView([it.lat,it.lng],16)}
+ if(PP.map&&PP.mk){PP.mk.setLatLng([it.lat,it.lng]);PP.mk.setOpacity(1);PP.map.setView([it.lat,it.lng],16,{animate:false})}
  ppClose();
 }
 
@@ -720,7 +721,7 @@ function show(screen,param){
  if(screen==='s-tm'){if(TM.id!==param){TM.seg='sched';TM.showPast=false;TM.openEv=null}TM.id=param;renderTeam(false)}
  else if(screen==='s-bm'){if(BM.id!==param)BM.seg='events';BM.id=param;renderBiz(false)}
 }
-function leave(){if(pMap){try{pMap.remove()}catch(e){}pMap=null}}
+function leave(){dropMap();pickerDone()}
 document.addEventListener('click',onClick);
 css();
 window.MolaplanOrgs={load,chatObj,chatList,openTeam,openBizManage,show,leave,rerender,reqRowAction,bizRowAction,profileTeamsHTML,notifGo,openLink,teamForRequest,
