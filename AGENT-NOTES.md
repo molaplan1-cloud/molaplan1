@@ -533,3 +533,8 @@ mg_block.js, i18n_d.py – all already applied, don't rerun; sqltest.sh = scratc
 - Fixed a pre-existing flake in test-media.js: refreshAllViews re-rendered the admin view while typing (now skipped when an
   input in #s-admin has focus, like profile/biz).
 - Tests after UI: npm test 114/233/51/35/30/85/72, mock_smoke 40, SQL suites all OK.
+- LIVE DELTA APPLIED 2026-10-02 09:39–09:44 (UTC+3) with /workspace/molaplan-build/orgs/live/apply_live.sh (preflight -> backup
+  /workspace/molaplan-backups/live-db-before-orgs-0939.tgz (45 files) -> delta-orgs.sql in ONE transaction -> live/verify.sql + counts.sql).
+  Verify: event_time is time, 6 new tables, RLS on every team*/business* table, 0 anon grants, 0 direct write grants on
+  RPC-only tables, 11 key functions, events/guest_events.extra_info, new role/kind/link_kind checks. Counts unchanged
+  (users 3, events 3, messages 3, notifications 6, reports 1, team_requests 1, teams 0); owner untouched (updated_at 2026-09-26).
