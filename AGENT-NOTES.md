@@ -538,3 +538,10 @@ mg_block.js, i18n_d.py – all already applied, don't rerun; sqltest.sh = scratc
   Verify: event_time is time, 6 new tables, RLS on every team*/business* table, 0 anon grants, 0 direct write grants on
   RPC-only tables, 11 key functions, events/guest_events.extra_info, new role/kind/link_kind checks. Counts unchanged
   (users 3, events 3, messages 3, notifications 6, reports 1, team_requests 1, teams 0); owner untouched (updated_at 2026-09-26).
+- Preview https://orgs-admin-2026-10-02.molaplan.pages.dev (deploy 5ad9ad2f, commit 85ebf4a). NEW /workspace/molaplan-e2e/e2e-orgs-real.js
+  (BASE=preview): 95/95 – team request -> approval creates team/manager/chat, settings, Photon place + pin, training, weekly
+  series (8 occ.), docs (+ staff-only), roster player, member + parent links, join by /t/<token>, RSVPs, parent answers for
+  child, coach via friend invite, captain/title, edit + cancel occurrence (notified), series re-save keeps edited one, chat
+  text/photo/report, removals; business apply -> approve -> series with price/extra info (6 events, 07:30 Helsinki),
+  organiser via /b/<token>, expired = read-only (UI + DB). Cleanup leaves nothing; owner untouched. Photon has no
+  "Hyrylän urheilupuisto" -> the test types "Rykmentinportinkatu".
