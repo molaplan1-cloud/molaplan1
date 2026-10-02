@@ -469,3 +469,21 @@ mg_block.js, i18n_d.py – all already applied, don't rerun; sqltest.sh = scratc
   translations; cover compression (≤1600px, ≤200 kB, EXIF/GPS stripped), card/detail/change/remove; chat photo WebP + signed
   URL + outsider blocked; reports -> admin removal; open + closed groups end to end (invite, moderator, /g/ link, join request,
   removal, ad guard, realtime); guest/anon see nothing. Added to npm test. SHOTS=shots node test-media.js = screenshots.
+## G3 – preview pushed, live rollout BLOCKED on Supabase access (≈07:45–08:00)
+- Pushed media-groups-2026-10-02 (0786281, fefcd03) -> Pages preview builds OK: https://media-groups-2026-10-02.molaplan.pages.dev
+  (deploy 7d81d6c3 = fefcd03). /e/<unknown> 404 page OK, /g/<id> serves the SPA.
+- fefcd03: /e/ Pages Function retries without cover_path when the DB answers 400 (code deployed before the schema).
+- BLOCKER: SUPABASE_ACCESS_TOKEN now only sees another project ("BC Yrityshallinta"); for fhuqbzdumxlqmgibhobl the
+  Management API answers 403 (database_read / database_write / api_gateway_keys_read / project_admin_read missing), so
+  `supabase db query --linked` fails at "Initialising login role". No backup, no live delta, no live e2e were possible.
+  Live DB is unchanged (anon REST: activities.name_i18n / guest_events.cover_path missing, groups table absent).
+  Consequence: the preview's logged-in/guest feed errors until the delta is applied (it selects name_i18n etc.);
+  production (main 66e142f) is unaffected. Apply the delta BEFORE merging to main.
+- Ready to run once the token has DB access: `bash -lc 'bash /workspace/molaplan-build/media2/apply_live.sh'`
+  (preflight -> export_live.sh JSON backup + storage buckets/policies/objects metadata -> tgz -> regenerated delta in one
+  transaction -> verify_live.sql). Then `TARGET=https://media-groups-2026-10-02.molaplan.pages.dev node
+  /workspace/molaplan-e2e/e2e-media-real.js` (NEW, ~85 checks: real Storage limits/RLS/signed URLs, og:image, reports +
+  admin removal, open/closed groups, ad guard, sports queue + favourites; full cleanup incl. storage files and admin
+  notifications; owner never touched). Not yet executed against live – expect to fix small things on first run.
+- Local results: npm test 114/233/51/35/27/85/72 all passed; mock_smoke 40 PASS; SQL full schema 45/26/96 OK; delta on
+  old schema 45/26/96 OK; verify_live.sql OK on the delta'd scratch DB. Screenshots re-taken (shots/mg-*.png).
