@@ -186,6 +186,7 @@ function doInsert(t,row,a){
    row.sender_id=a;row.kind='user';row.body=String(row.body||'').trim();
    if(row.image_path!=null){if(!validImg(row.image_path)||pathUuid(row.image_path)!==row.conversation_id)throw E('image_path_invalid');if(!canPostImage(row.conversation_id,a))throw E('image_not_allowed');if(!objOf('chat-images',row.image_path))throw E('image_missing')}else{row.image_path=null;row.image_w=null;row.image_h=null}
    if((!row.body&&!row.image_path)||row.body.length>1000)throw E('violates check constraint "messages_body_check"','23514');
+   {const cv=db.conversations.find(c=>c.id===row.conversation_id);if(cv&&cv.kind==='group'&&!isAdmin(a)&&looksCommercial(row.body))throw E('commercial_content')}
    row.id=uuid();row.created_at=now();return ins(t,row);
   case 'conversation_reads':if(row.user_id!==a||!isMember(row.conversation_id,a))throw RLS(t);break;
   case 'help_offers':{

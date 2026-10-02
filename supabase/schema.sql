@@ -934,6 +934,11 @@ begin
         raise exception 'image_missing' using errcode = 'P0001';
       end if;
     end if;
+    -- ryhmächatit (8c): sama mainossuoja kuin tavallisissa tapahtumissa (ylläpito saa kirjoittaa vapaasti)
+    if exists (select 1 from public.conversations c where c.id = new.conversation_id and c.kind = 'group')
+       and not public.is_admin() and public.looks_commercial(new.body) then
+      raise exception 'commercial_content' using errcode = 'P0001';
+    end if;
   end if;
   new.body := btrim(coalesce(new.body, ''));
   new.created_at := now();
@@ -3086,7 +3091,7 @@ end $$;
 
 -- 8e. OIKEUDET -------------------------------------------------------------------------------
 revoke all on public.groups, public.group_members, public.group_invites, public.group_join_requests, public.groups_v from anon;
-revoke insert, update, delete on public.groups, public.group_members, public.group_invites, public.group_join_requests from authenticated;
+revoke insert, update, delete, truncate, references, trigger on public.groups, public.group_members, public.group_invites, public.group_join_requests, public.groups_v from authenticated;
 grant select on public.groups, public.group_members, public.group_invites, public.group_join_requests, public.groups_v to authenticated;
 
 grant select (name_i18n, status) on public.activities to anon;

@@ -163,6 +163,10 @@ insert into messages (conversation_id, body) values (t_cid((select v from ids wh
 insert into storage.objects (bucket_id, name) values ('chat-images', t_cid((select v from ids where k='gopen')) || '/grp00001.webp');
 insert into messages (conversation_id, body, image_path) values (t_cid((select v from ids where k='gopen')), 'Kenttä', t_cid((select v from ids where k='gopen')) || '/grp00001.webp');
 select t_ok((select count(*) from messages where conversation_id = t_cid((select v from ids where k='gopen')) and sender_id = auth.uid()) = 2, 'member sends text + image in group chat');
+select t_expect_error($$insert into messages (conversation_id, body) values (t_cid((select v from ids where k='gopen')), 'Mailat -20 % www.padelkauppa.fi')$$, 'commercial_content');
+select t_expect_error($$insert into messages (conversation_id, body) values (t_cid((select v from ids where k='gopen')), 'Soita 040 123 4567')$$, 'commercial_content');
+insert into messages (conversation_id, body) values (t_cid((select v from ids where k='gopen')), 'Pelataan klo 18.30–20, jaetaan kenttämaksu');
+select t_ok((select count(*) from messages where conversation_id = t_cid((select v from ids where k='gopen')) and body like 'Pelataan klo%') = 1, 'group chat: anti-ad guard blocks URL/price/phone, normal wording passes');
 select t_expect_error($$select join_group((select v from ids where k='gclosed'))$$, 'group_closed');
 select t_ok(request_join_group((select v from ids where k='gclosed'), 'Hei, saisinko liittyä?') = 'pending', 'B requests to join the closed group');
 select t_ok((select count(*) from groups where id = (select v from ids where k='gclosed')) = 1, 'requester now sees the closed group');

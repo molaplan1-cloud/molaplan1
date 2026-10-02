@@ -449,3 +449,14 @@ mg_block.js, i18n_d.py – all already applied, don't rerun; sqltest.sh = scratc
   (Chatit → Ryhmät segment, s-group, /g/<id> links). lib/event-page.mjs og:image from cover. Mock mirrors all. i18n 193 keys ×4.
 - Baseline on the inherited tree: sqltest.sh (stub+storage stub, schema ×2): friends-teams-unlimited 45, team-requests 26,
   media-groups 93 OK; npm test: 114 / 233 / 51 / 35 / 27 / 85 all passed; mock_smoke 40 PASS. Coherent -> WIP commit.
+## G1 – gaps fixed (≈07:30)
+- Group chats now have the same anti-ad guard as community events: messages_before_insert raises commercial_content for
+  non-admin messages/captions in kind='group' conversations (looks_commercial); mock mirrors it; client blocks before sending
+  (grpAdBlocked, text stays in the input) + toast grp.adChat (×4). Event/help chats unchanged.
+- 8e: groups_v writes revoked from authenticated too (full schema re-run had picked up a blanket grant on the view).
+- i18n: grp.adChat added (ux/i18n_tool.js), fi grp.confirmLeave "Poistutko ryhmästä …?".
+- Live delta generator: /workspace/molaplan-build/media2/make_delta.py -> delta-media-groups.sql (begin…commit: cover
+  helpers + events.cover_path, is_conversation_member, activities_before_write, messages_before_insert, reports_before_write,
+  reports_after_insert, guest_events, all of section 8). deltatest.sh: old schema 66e142f + storage stub -> delta ×2 -> suites
+  45/26/96 OK; functions/policies/constraints/views/grants identical to a fresh full-schema DB (md5 compare).
+- SQL suite media-groups.sql: +3 checks (group chat ad guard) -> 96 OK.
