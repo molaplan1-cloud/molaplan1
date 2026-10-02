@@ -14,7 +14,7 @@ const SEED=[['padel','Padel','🏓',155],['sulkapallo','Sulkapallo','🏸',190],
 const NEW_ACTS=[['koripallo','Koripallo','🏀',25,'Basketball','Basket','Baloncesto'],['lentopallo','Lentopallo','🏐',45,'Volleyball','Volleyboll','Voleibol'],['golf','Golf','⛳',110,'Golf','Golf','Golf'],['kiipeily','Kiipeily','🧗',20,'Climbing','Klättring','Escalada'],['hiihto','Hiihto','⛷️',200,'Cross-country skiing','Längdskidåkning','Esquí de fondo'],['luistelu','Luistelu','⛸️',195,'Ice skating','Skridskoåkning','Patinaje sobre hielo'],['melonta','Melonta','🛶',185,'Kayaking','Paddling','Piragüismo'],['sup','SUP-lautailu','🏄',190,'Stand-up paddling','SUP-paddling','Paddle surf'],['tanssi','Tanssi','💃',320,'Dancing','Dans','Baile'],['shakki','Shakki','♟️',240,'Chess','Schack','Ajedrez'],['poytatennis','Pöytätennis','🏓',160,'Table tennis','Bordtennis','Tenis de mesa'],['squash','Squash','🎾',70,'Squash','Squash','Squash'],['jaakiekko','Jääkiekko','🏒',210,'Ice hockey','Ishockey','Hockey sobre hielo'],['kirjapiiri','Kirjapiiri','📚',280,'Book club','Bokcirkel','Club de lectura']]
  .map((a,i)=>({id:a[0],name:a[1],emoji:a[2],hue:a[3],is_crazy:false,crazy_level:0,is_adult:false,is_custom:false,sort_order:250+i*10,created_by:null,name_i18n:{fi:a[1],en:a[4],sv:a[5],es:a[6]}}));
 SEED.push(...NEW_ACTS);SEED.forEach(a=>{a.status='approved';a.name_i18n=a.name_i18n||{}});
-const TABLES=['users','profiles','profile_private','activities','events','event_participants','help_requests','help_request_contacts','help_offers','conversations','messages','conversation_reads','notifications','businesses','business_private','business_members','reports','friend_requests','event_invites','teams','team_members','team_roles','team_places','team_events','team_event_rsvps','team_messages','team_requests','groups','group_members','group_invites','group_join_requests','storage_objects'];
+const TABLES=['users','profiles','profile_private','activities','events','event_participants','help_requests','help_request_contacts','help_offers','conversations','messages','conversation_reads','notifications','businesses','business_private','business_members','reports','friend_requests','event_invites','teams','team_members','team_roles','team_places','team_events','team_event_rsvps','team_messages','team_requests','team_docs','team_event_series','team_invites','team_invite_links','business_event_series','business_invite_links','groups','group_members','group_invites','group_join_requests','storage_objects'];
 function fresh(){const d={calls:[]};TABLES.forEach(t=>d[t]=[]);d.activities=SEED.map(a=>Object.assign({created_at:now()},a));return d}
 let db;try{db=JSON.parse(localStorage.getItem(DB_KEY))}catch(e){}if(!db||!db.users)db=fresh();TABLES.forEach(t=>{if(!db[t])db[t]=[]});
 const persist=()=>localStorage.setItem(DB_KEY,JSON.stringify(db));persist();
@@ -29,6 +29,7 @@ const reqOf=id=>db.help_requests.find(h=>h.id===id);
 const isHelper=(rid,u)=>db.help_offers.some(o=>o.request_id===rid&&o.helper_id===u);
 function isMember(cid,u){const c=db.conversations.find(x=>x.id===cid);if(!c||!u)return false;
  if(c.kind==='group')return db.group_members.some(m=>m.group_id===c.group_id&&m.user_id===u);
+ if(c.kind==='team')return isTeamMember(c.team_id,u);
  if(c.event_id)return db.event_participants.some(p=>p.event_id===c.event_id&&p.user_id===u);
  const h=reqOf(c.help_request_id);return !!h&&['approved','closed'].includes(h.status)&&(h.requester_id===u||isHelper(h.id,u))}
 const nameOf=u=>(prof(u)&&prof(u).display_name)||'Joku';
@@ -43,7 +44,7 @@ const validImg=p=>/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
 const pathUuid=p=>{const s=String(p||'').split('/')[0];return UUID_RE.test(s)?s:null};
 const objOf=(b,p)=>db.storage_objects.find(o=>o.bucket_id===b&&o.name===p);
 const canEditEvent=(eid,u)=>{const e=db.events.find(x=>x.id===eid);return !!e&&!!u&&((e.host_id&&e.host_id===u)||isAdmin(u)||(!!e.business_id&&bizCanPost(e.business_id,u)))};
-const canPostImage=(cid,u)=>{const c=db.conversations.find(x=>x.id===cid);return !!c&&!isBanned(u)&&isMember(cid,u)&&['event','group'].includes(c.kind)};
+const canPostImage=(cid,u)=>{const c=db.conversations.find(x=>x.id===cid);return !!c&&!isBanned(u)&&isMember(cid,u)&&['event','group','team'].includes(c.kind)};
 const imgReported=(p,u)=>isAdmin(u)&&db.reports.some(r=>r.target_type==='message'&&r.status==='open'&&(db.messages.find(m=>m.id===r.target_id)||{}).image_path===p);
 function objVisible(o,u){if(!u)return false;if(o.bucket_id==='event-covers')return canEditEvent(pathUuid(o.name),u)||isAdmin(u);return isMember(pathUuid(o.name),u)||imgReported(o.name,u)}
 function grpAddMember(gid,uid,actor){
@@ -65,7 +66,7 @@ const areFriends=(a,b)=>{const r=pairOf(a,b);return !!r&&r.status==='accepted'};
 const teamOf=id=>db.teams.find(t=>t.id===id);
 const teamRole=(tid,u)=>{const m=db.team_members.find(x=>x.team_id===tid&&x.user_id===u);return m?m.role:null};
 const isTeamMember=(tid,u)=>{const t=teamOf(tid);return !!t&&(t.owner_id===u||!!teamRole(tid,u))};
-const isTeamAdmin=(tid,u)=>{const t=teamOf(tid);return !!t&&(t.owner_id===u||teamRole(tid,u)==='admin')};
+const isTeamAdmin=(tid,u)=>{const t=teamOf(tid);return !!t&&(t.owner_id===u||['admin','manager'].includes(teamRole(tid,u)))};
 const isTeamCoach=(tid,u)=>isTeamAdmin(tid,u)||teamRole(tid,u)==='coach';
 const teamOfEvent=eid=>{const e=db.team_events.find(x=>x.id===eid);return e&&e.team_id};
 // ---- public / business events, moderation (mirrors schema.sql 1b / 1c)
@@ -415,7 +416,12 @@ function rpc(name,args,actor){
    const r=db.team_requests.find(x=>x.id===args.p_id);if(!r)throw E('team_request_not_found');
    if(r.status!=='pending')throw E('team_request_already_reviewed');
    Object.assign(r,{status:st,admin_reason:st==='rejected'?reason:'',reviewed_by:a,reviewed_at:now(),updated_at:now()});
-   if(st==='approved')notify(r.requester_id,'✅','Joukkuetilipyyntö “'+r.team_name+'” hyväksyttiin 🎉 Otamme sinuun pian yhteyttä.','team',r.id,'team_request_approved',{name:r.team_name});
+   if(st==='approved'){/* schema.sql 9: approval creates the team, the requester becomes its team manager, plus the team chat */
+    const tid=uuid(),cid=uuid();db.teams.push({id:tid,name:r.team_name,sport:r.sport||'',description:r.description||'',logo_url:'',owner_id:r.requester_id,team_request_id:r.id,city:r.city||'',activity_id:null,created_at:now(),updated_at:now()});
+    db.team_members.push({id:uuid(),team_id:tid,user_id:r.requester_id,role:'manager',title:'',display_name:'',linked_member:null,joined_at:now()});
+    db.conversations.push({id:cid,kind:'team',event_id:null,help_request_id:null,group_id:null,team_id:tid,created_at:now()});
+    sysMsg(cid,'Joukkue “'+r.team_name+'” on valmis – tervetuloa! 👋','team_created',{name:r.team_name});
+    notify(r.requester_id,'✅','Joukkuetilipyyntö “'+r.team_name+'” hyväksyttiin 🎉 Joukkueen hallintasivu on nyt avattu sinulle.','team',tid,'team_request_approved',{name:r.team_name})}
    else notify(r.requester_id,'❌','Joukkuetilipyyntöä “'+r.team_name+'” ei hyväksytty. Syy: '+reason,'team',r.id,'team_request_rejected',{name:r.team_name,reason});
    persist();return {data:null,error:null};
   }

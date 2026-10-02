@@ -1230,6 +1230,8 @@ details.a-more .inner{padding:0 18px 16px}
   <section id="s-teams" class="screen push"></section>
   <section id="s-team" class="screen push"></section>
   <section id="s-group" class="screen push"></section>
+  <section id="s-tm" class="screen push"></section>
+  <section id="s-bm" class="screen push"></section>
 
   <nav id="nav"></nav>
 
@@ -1336,8 +1338,10 @@ let authMode='signup', pendingEmail='', authNote='', handlingFor=null;
 const INITIAL_HASH=location.hash||'';
 /* shareable event URLs: /e/<uuid>[-slug] opens the event directly (functions/e/[id].js serves the same index.html with per-event meta) */
 const EV_PATH_RE=/^\/e\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(?:-[^\/]*)?\/?$/i;
+/* team / business join links: /t/<token>, /b/<token> – kept in sessionStorage until the user is signed in (orgs.js) */
+(()=>{const m=/^\/(t|b)\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\/?$/i.exec(location.pathname);if(!m)return;try{sessionStorage.setItem('molaplan.orgLink',JSON.stringify({k:m[1].toLowerCase(),tok:m[2].toLowerCase()}))}catch(e){}try{history.replaceState(null,'','/'+location.search)}catch(e){}})();
 let DEEP_EV=(()=>{const m=EV_PATH_RE.exec(location.pathname);return m?m[1].toLowerCase():null})();
-const ROOT_PATH=DEEP_EV||/^\/(e|g)\//.test(location.pathname)?'/':location.pathname;
+const ROOT_PATH=DEEP_EV||/^\/(e|g|t|b)\//.test(location.pathname)?'/':location.pathname;
 let popGuard=false;
 try{if(DEEP_EV)history.replaceState({mpEv:DEEP_EV,pushed:false},'',location.href);else if(/^\/e\//.test(location.pathname))history.replaceState(null,'','/'+location.search+location.hash)}catch(e){}
 let vEditPhone=false, vPhoneDraft='';
@@ -1367,7 +1371,7 @@ function fire(p){Promise.resolve(p).then(r=>{if(r&&r.error)console.warn('Molapla
 function hm(d){return pad2(d.getHours())+':'+pad2(d.getMinutes())}
 function localIso(date,time){const [y,mo,d]=date.split('-').map(Number),[h,mi]=time.split(':').map(Number);return new Date(y,mo-1,d,h,mi).toISOString()}
 function mapAct(a){const crazy=!!a.is_crazy;return mkAct({id:a.id,raw:String(a.name||''),emoji:safeEmoji(a.emoji),hue:Number.isFinite(Number(a.hue))?Number(a.hue):hashHue(a.name),crazy,lvl:crazy?(Number(a.crazy_level)||2):0,adult:!!a.is_adult,custom:!!a.is_custom,mine:!!(a.is_custom&&a.created_by&&a.created_by===ME),i18n:a.name_i18n&&typeof a.name_i18n==='object'?a.name_i18n:{},status:a.status||'approved',createdBy:a.created_by||null,created:Date.parse(a.created_at)||0})}
-function mapEvent(e,people){const d=new Date(e.starts_at);const mp=e.max_participants==null?null:Number(e.max_participants);return {id:e.id,act:e.activity_id,title:e.title,desc:e.description||'',date:ymd(d),time:hm(d),city:e.city,district:e.district||'',place:e.place,lat:e.lat==null?null:Number(e.lat),lng:e.lng==null?null:Number(e.lng),max:mp==null?null:(mp||2),unlimited:mp==null,level:LEGACY_LEVEL[e.skill_level]||e.skill_level||'all',crazy:!!e.is_crazy,clvl:Number(e.crazy_level)||0,adult:!!e.is_adult,host:e.host_id,people:people||[],created:Date.parse(e.created_at)||0,kind:e.kind||'community',ends:e.ends_at?ymd(new Date(e.ends_at)):'',endTime:e.ends_at?hm(new Date(e.ends_at)):'',endsAt:e.ends_at||null,organizer:e.organizer_name||'',url:e.official_url||'',price:e.price_info||'',bizId:e.business_id||null,bizName:e.business_name||'',bizLogo:e.business_logo||'',skill:e.skill_level||'all',cover:e.cover_path||''}}
+function mapEvent(e,people){const d=new Date(e.starts_at);const mp=e.max_participants==null?null:Number(e.max_participants);return {id:e.id,act:e.activity_id,title:e.title,desc:e.description||'',date:ymd(d),time:hm(d),city:e.city,district:e.district||'',place:e.place,lat:e.lat==null?null:Number(e.lat),lng:e.lng==null?null:Number(e.lng),max:mp==null?null:(mp||2),unlimited:mp==null,level:LEGACY_LEVEL[e.skill_level]||e.skill_level||'all',crazy:!!e.is_crazy,clvl:Number(e.crazy_level)||0,adult:!!e.is_adult,host:e.host_id,people:people||[],created:Date.parse(e.created_at)||0,kind:e.kind||'community',ends:e.ends_at?ymd(new Date(e.ends_at)):'',endTime:e.ends_at?hm(new Date(e.ends_at)):'',endsAt:e.ends_at||null,organizer:e.organizer_name||'',url:e.official_url||'',price:e.price_info||'',extra:e.extra_info||'',series:e.series_id||null,bizId:e.business_id||null,bizName:e.business_name||'',bizLogo:e.business_logo||'',skill:e.skill_level||'all',cover:e.cover_path||''}}
 function mapBiz(b,priv,members){return {id:b.id,name:b.name||'',code:b.business_code||'',country:b.country||'FI',logo:b.logo_url||'',website:b.website||'',desc:b.description||'',status:b.status||'approved',reason:b.admin_reason||'',until:b.subscription_active_until||'',createdBy:b.created_by||null,created:Date.parse(b.created_at)||0,updated:Date.parse(b.updated_at||b.created_at)||0,member:!!(members&&members.includes(ME)),priv:priv||null}}
 function mapHelp(h,helpers,c){const d=new Date(h.starts_at);return {id:h.id,cat:h.category,title:h.title,desc:h.description||'',needs:h.needs||'',district:h.district,place:h.place||'',city:h.city,lat:Number(h.lat),lng:Number(h.lng),dest:h.dest_lat!=null&&h.dest_lng!=null?{lat:Number(h.dest_lat),lng:Number(h.dest_lng),label:h.dest_label||''}:null,date:ymd(d),time:hm(d),dur:h.duration||'',max:Number(h.helpers_needed)||1,helpers:helpers||[],mine:h.requester_id===ME,requesterId:h.requester_id,contact:c?{name:c.contact_name,phone:c.phone,email:c.email}:null,emailVerified:!!h.email_verified,status:h.status,reason:h.admin_reason||'',history:(Array.isArray(h.history)?h.history:[]).map(x=>({s:x.s,t:Date.parse(x.t)||0})),created:Date.parse(h.created_at)||0,updated:Date.parse(h.updated_at||h.created_at)||0}}
 function mapMsg(r){return {id:r.id,from:r.sender_id||null,sys:r.kind==='system',text:r.body,code:r.code||null,params:r.params||{},t:Date.parse(r.created_at)||Date.now(),img:r.image_path||'',iw:Number(r.image_w)||0,ih:Number(r.image_h)||0}}
@@ -1452,7 +1456,7 @@ async function loadAll(){
  T.teams.forEach(t=>{t.members.forEach(m=>{if(m.uid===ME)S.teamOf[t.id]=m.role})});
  S.teamEventRsvps=tersvpBy;
  S.teamMsgs=tmsgBy;
- (convs||[]).forEach(c=>{const tid=c.event_id||c.help_request_id||c.group_id;if(!tid)return;T.convOf[tid]=c.id;T.targetOf[c.id]=tid;T.chats[tid]=[]});
+ (convs||[]).forEach(c=>{const tid=c.event_id||c.help_request_id||c.group_id||c.team_id;if(!tid)return;T.convOf[tid]=c.id;T.targetOf[c.id]=tid;T.chats[tid]=[]});
  msgs.slice().sort((a,b)=>String(a.created_at).localeCompare(String(b.created_at))).forEach(m=>{const tid=T.targetOf[m.conversation_id];if(tid)T.chats[tid].push(mapMsg(m))});
  Object.keys(prevS.chats||{}).forEach(tid=>{const pend=(prevS.chats[tid]||[]).filter(x=>x.pending);if(pend.length&&T.chats[tid])T.chats[tid].push(...pend)});
  (reads||[]).forEach(r=>{const tid=T.targetOf[r.conversation_id];if(tid)T.reads[tid]=Date.parse(r.last_read_at)||0});
@@ -1464,6 +1468,7 @@ async function loadAll(){
  T.gReqs=(greq||[]).map(r=>({group:r.group_id,user:r.user_id,message:r.message||'',status:r.status||'pending',created:Date.parse(r.created_at)||0}));
  T.repMsgs={};repMsgs.forEach(m=>T.repMsgs[m.id]=m);
  if(window.MolaplanFriends){try{await window.MolaplanFriends.load()}catch(e){console.warn('Molaplan: friends unavailable',e)}}
+ if(window.MolaplanOrgs){try{await window.MolaplanOrgs.load()}catch(e){console.warn('Molaplan: teams unavailable',e)}}
  loadedAt=Date.now();
 }
 function refreshData(){
@@ -1511,6 +1516,7 @@ function refreshAllViews(){
  if($('#s-detail').classList.contains('active')){const m=byId(detailId);if(!m){goBack();return}if(meetupSig(m)!==detailSig)renderDetail(false);else{const b=$('#chat-box');if(b)b.innerHTML=detailChatBoxHTML(m)}}
  if($('#s-hdetail').classList.contains('active')){const h=helpById(helpId);if(!h){goBack();return}if(helpSigOf(h)!==helpSig)renderHelpDetail(false);else{const b=$('#hchat-box');if(b)b.innerHTML=helpChatBoxHTML(h)}}
  if($('#s-chat').classList.contains('active'))renderChatMsgs();
+ if(window.MolaplanOrgs&&orgsActive()){const ae=document.activeElement;if(!(ae&&ae.matches('input,textarea,select')&&$('.push.active')&&$('.push.active').contains(ae)))MolaplanOrgs.rerender()}
  if($('#s-good').classList.contains('active'))renderGood();
  if($('#s-hullut').classList.contains('active'))renderHullut();
  if($('#s-admin').classList.contains('active'))renderAdmin();
@@ -1519,7 +1525,7 @@ function refreshAllViews(){
  if($('#s-teamreq').classList.contains('active')&&!($('#s-teamreq').contains(document.activeElement)&&document.activeElement.matches('input,textarea,select')))renderTeamReq();
  if($('#s-group').classList.contains('active')&&!($('#s-group').contains(document.activeElement)&&document.activeElement.matches('input,textarea,select')))renderGroup(false);
 }
-function meetupSig(m){return JSON.stringify([m.people,m.max,m.title,m.desc,m.place,m.date,m.time,m.people.map(nameOf),S.isAdmin,m.ends,m.endTime,m.organizer,m.url,m.price,m.bizName,S.reports.filter(r=>r.target===m.id&&r.reporter===ME).length,m.cover])}
+function meetupSig(m){return JSON.stringify([m.people,m.max,m.title,m.desc,m.place,m.date,m.time,m.people.map(nameOf),S.isAdmin,m.ends,m.endTime,m.organizer,m.url,m.price,m.extra,m.bizName,S.reports.filter(r=>r.target===m.id&&r.reporter===ME).length,m.cover])}
 function helpSigOf(h){return JSON.stringify([h.status,h.helpers,h.max,h.title,h.desc,h.contact,h.helpers.map(nameOf)])}
 
 /* ================= GUEST MODE: browse without an account ================= */
@@ -1697,6 +1703,7 @@ function runPending(p){
   case 'tab':if(['create','chats','mine','profile'].includes(p.t))go(p.t);break;
   case 'go-tab':if(['create','chats','mine','profile'].includes(p.v))go(p.v);break;
   case 'open-group':if(p.id)openGroup(p.id);break;
+  case 'org-link':if(window.MolaplanOrgs)MolaplanOrgs.openLink();break;
   case 'ask-help':openAsk();break;
   case 'team-req':openTeamReq();break;
   case 'open-biz':openBiz();break;
@@ -1824,6 +1831,7 @@ function enterApp(tab){
  if(ME)resumePending();
  refreshHereQuietly();
  openDeepEvent();openDeepGroup();
+ if(window.MolaplanOrgs)MolaplanOrgs.openLink();
 }
 /* /e/<id>: open the event once the data is loaded (guests see only what the guest_events view / RLS allows) */
 function openDeepEvent(){
@@ -2321,12 +2329,15 @@ function afterChange(id){
 let miniMap=null;
 /* push-screen stack: detail ⇄ chat ⇄ hullut */
 let navStack=[];
-function curEntry(){const p=$$('.push').find(x=>x.classList.contains('active'));if(!p||p.id==='s-lajit')return null;return {screen:p.id,param:p.id==='s-detail'?detailId:p.id==='s-chat'?chatId:p.id==='s-hdetail'?helpId:p.id==='s-group'?groupId:null,scroll:p.scrollTop}}
+function curEntry(){const p=$$('.push').find(x=>x.classList.contains('active'));if(!p||p.id==='s-lajit')return null;return {screen:p.id,param:p.id==='s-detail'?detailId:p.id==='s-chat'?chatId:p.id==='s-hdetail'?helpId:p.id==='s-group'?groupId:(p.id==='s-tm'||p.id==='s-bm')?orgParam[p.id]:null,scroll:p.scrollTop}}
+const orgParam={};
+function orgsActive(){return $('#s-tm').classList.contains('active')||$('#s-bm').classList.contains('active')}
 function leaveCurrent(){
  if($('#s-detail').classList.contains('active')){detailId=null;if(miniMap){miniMap.remove();miniMap=null}}
  if($('#s-chat').classList.contains('active'))chatId=null;
  if($('#s-hdetail').classList.contains('active')){helpId=null;if(hMap){hMap.remove();hMap=null}}
  if($('#s-ask').classList.contains('active')&&askMap){askMap.remove();askMap=null}
+ if($('#s-tm').classList.contains('active')&&window.MolaplanOrgs)MolaplanOrgs.leave();
 }
 function showEntry(e){
  if(e.screen!=='s-detail'&&e.screen!=='s-chat')leaveEvUrl();
@@ -2340,6 +2351,7 @@ function showEntry(e){
  else if(e.screen==='s-orgs'){renderOrgs();openPush('s-orgs')}
  else if(e.screen==='s-teamreq'){renderTeamReq();openPush('s-teamreq')}
  else if(e.screen==='s-group'){groupId=e.param;grpPrev=null;openPush('s-group');renderGroup(true)}
+ else if(e.screen==='s-tm'||e.screen==='s-bm'){orgParam[e.screen]=e.param;openPush(e.screen);if(window.MolaplanOrgs)MolaplanOrgs.show(e.screen,e.param)}
  else if(e.screen==='s-chat'){chatId=e.param;markRead(chatId);openPush('s-chat');renderChat();const ms=$('#cv-msgs');if(ms)ms.scrollTop=ms.scrollHeight}
  if(e.scroll!=null&&e.screen!=='s-chat')$('#'+e.screen).scrollTop=e.scroll;
 }
@@ -2435,6 +2447,7 @@ function renderDetail(initial){
   <div class="info"><small>${icon('users')} ${tx('prof.statJoined')}</small><b>${m.people.length} / ${m.unlimited?'∞':m.max}${full&&!m.unlimited?' · '+tx('event.fullLower'):''}</b></div>`}
  </div>
  ${nc?`<div class="kind-strip" id="kind-strip">${kindBadgeHTML(m)}${safeHttps(m.url)?`<a class="btn ghost off-link" id="d-official" href="${esc(safeHttps(m.url))}" target="_blank" rel="noopener nofollow ugc">${icon('ext')} ${tx('pub.officialPage')}</a>`:''}</div>`:''}
+ ${nc&&m.extra?`<div class="card-box" id="d-extra"><h3>ℹ️ ${tx('pub.extraInfo')}</h3><p class="desc" style="white-space:pre-wrap;margin:0">${esc(m.extra)}</p></div>`:''}
  ${isCrazy(m)||is18(m)?`<div class="cz-strip" id="cz-strip">${isCrazy(m)?`<span class="cz-badge">${tx('event.crazyBadge')}</span>${clvlHTML(clvlOf(m),true)}`:''}${is18(m)?'<span class="b18">18+</span>':''}</div>`:''}
  ${safeNoteHTML(m)}
  ${inChat?chatBox:''}
@@ -2614,7 +2627,7 @@ function resetCreate(){
  const t=new Date();t.setDate(t.getDate()+1);
  const vc=viewCity(), hc=homeCenter(), ds=districts(vc);
  C={act:S.user.favs[0]||'kahvi',crazyUser:false,adultUser:false,clvl:0,title:'',date:ymd(t),time:'18:00',city:vc,district:vc===cityName()&&ds.includes(S.user.district)?S.user.district:firstDistrict(vc),place:'',lat:hc.c[0],lng:hc.c[1],level:'all',desc:'',rendered:false,
-  mode:'community',bizId:null,edate:'',etime:'',org:'',url:'',price:'',maxn:6,maxTouched:false,rule:false,editId:null,nolimit:false};
+  mode:'community',bizId:null,edate:'',etime:'',org:'',url:'',price:'',extra:'',maxn:6,maxTouched:false,rule:false,editId:null,nolimit:false};
  if(pickMap){pickMap.remove();pickMap=null;pickMarker=null}
 }
 /* ---- anti-advertising (mirrors public.looks_commercial in schema.sql – keep both in sync) ----
@@ -2632,14 +2645,14 @@ function updAdWarn(){
  w.hidden=!(bt||bd);const t=$('#c-title'),d=$('#c-desc');if(t)t.classList.toggle('adbad',bt);if(d)d.classList.toggle('adbad',bd);
  return bt||bd;
 }
-function syncCreate(){['title','date','time','place','desc','edate','etime','org','url','price'].forEach(k=>{const e=$('#c-'+k);if(e)C[k]=e.value});const n=$('#c-maxn');if(n)C.maxn=Number(n.value)||0;const b=$('#c-biz');if(b)C.bizId=b.value}
+function syncCreate(){['title','date','time','place','desc','edate','etime','org','url','price','extra'].forEach(k=>{const e=$('#c-'+k);if(e)C[k]=e.value});const n=$('#c-maxn');if(n)C.maxn=Number(n.value)||0;const b=$('#c-biz');if(b)C.bizId=b.value}
 function showCreate(){if(!C)resetCreate();if(!C.rendered)renderCreate();else setTimeout(()=>pickMap&&pickMap.invalidateSize(),60)}
 function startPublicCreate(){if(!S.isAdmin)return;resetCreate();C.mode='public';closePush(true);go('create')}
 function startBizCreate(id){const b=activeBizs().find(x=>x.id===id)||activeBizs()[0];if(!b){toast(tx('err.bizInactive'));return}resetCreate();C.mode='business';C.bizId=b.id;closePush(true);go('create')}
 function editEvent(id){
  const m=byId(id);if(!m||!canEditEvent(m))return;
  resetCreate();
- Object.assign(C,{mode:m.kind,bizId:m.bizId,editId:m.id,act:m.act,title:m.title,date:m.date,time:m.time,edate:m.ends||'',etime:m.endTime||'',city:m.city,district:m.district,place:m.place,lat:m.lat,lng:m.lng,maxn:m.max||(m.kind==='community'?6:500),maxTouched:true,nolimit:!!m.unlimited,level:LEGACY_LEVEL[m.level]||m.level||'all',desc:m.desc,org:m.organizer,url:m.url,price:m.price,crazyUser:!!m.crazy,adultUser:!!m.adult,clvl:m.clvl||0,touchedCity:true});
+ Object.assign(C,{mode:m.kind,bizId:m.bizId,editId:m.id,act:m.act,title:m.title,date:m.date,time:m.time,edate:m.ends||'',etime:m.endTime||'',city:m.city,district:m.district,place:m.place,lat:m.lat,lng:m.lng,maxn:m.max||(m.kind==='community'?6:500),maxTouched:true,nolimit:!!m.unlimited,level:LEGACY_LEVEL[m.level]||m.level||'all',desc:m.desc,org:m.organizer,url:m.url,price:m.price,extra:m.extra||'',crazyUser:!!m.crazy,adultUser:!!m.adult,clvl:m.clvl||0,touchedCity:true});
  closePush(true);go('create');
 }
 function renderCreate(){
@@ -2671,7 +2684,8 @@ function renderCreate(){
  ${nc?`<div class="card-box" id="c-nc">
   ${pub?`<label class="field"><span>${tx('pub.organizer')}</span><input class="inp" id="c-org" maxlength="80" placeholder="${tx('pub.organizerPh')}" value="${esc(C.org)}"></label>`:''}
   <label class="field"><span>${tx('pub.officialUrl')}</span><input class="inp" id="c-url" type="url" inputmode="url" maxlength="300" placeholder="https://" value="${esc(C.url)}"></label>
-  <label class="field" style="margin:0"><span>${tx('pub.priceInfo')}</span><input class="inp" id="c-price" maxlength="120" placeholder="${tx('pub.pricePh')}" value="${esc(C.price)}"></label>
+  <label class="field"><span>${tx('pub.priceInfo')}</span><input class="inp" id="c-price" maxlength="120" placeholder="${tx('pub.pricePh')}" value="${esc(C.price)}"></label>
+  <label class="field" style="margin:0"><span>${tx('pub.extraInfo')}</span><textarea class="inp" id="c-extra" maxlength="1000" rows="3" placeholder="${tx('pub.extraPh')}">${esc(C.extra||'')}</textarea></label>
  </div>`:''}
  <div class="card-box">
   <div class="field" id="c-max-field"><span>${nc?tx('pub.maxLabel'):tx('create.maxLabel')}</span><div class="nolimit-row"><input class="inp" id="c-maxn" type="number" inputmode="numeric" min="2" max="100000" step="1" value="${C.maxn}" ${C.nolimit?'disabled':''} aria-label="${nc?tx('pub.maxLabel'):tx('create.maxLabel')}"><button class="nolimit-btn ${C.nolimit?'on':''}" data-a="c-nolimit" id="c-nolimit-btn" role="checkbox" aria-checked="${C.nolimit}"><span class="box">✓</span>${tx('create.noLimit')}</button></div></div>
@@ -2684,7 +2698,7 @@ function renderCreate(){
   <button class="chk ${C.rule?'on':''}" data-a="c-rule" id="ck-rule" role="checkbox" aria-checked="${C.rule}" style="margin-top:12px"><span class="box">✓</span><span>${tx('create.ruleCheck')}</span></button></div>`}
  <div style="padding:4px 16px 10px"><button class="btn primary block" data-a="publish" id="c-publish" style="height:54px;font-size:16px">${C.editId?tx('common.save'):tx('create.publish')}</button>${C.editId?`<button class="txt-btn" data-a="c-cancel-edit" style="display:block;margin:10px auto 0">${tx('common.cancel')}</button>`:''}</div>`;
  renderCreateActs();renderCreateCrazy();updTitlePh();updAdWarn();acInit();actAcInit();renderCoverBox();
- ['title','date','time','place','desc','edate','etime','org','url','price'].forEach(k=>{const el=$('#c-'+k);if(!el)return;el.addEventListener('input',()=>{C[k]=el.value;if(k==='place')C.touchedPlace=true;if(k==='title'||k==='desc')updAdWarn();if(k==='title'){const t=ADULT_RE.test(el.value);if(t!==!!C._t){C._t=t;renderCreateCrazy();if(pickMarker)pickMarker.setIcon(createPin())}}})});
+ ['title','date','time','place','desc','edate','etime','org','url','price','extra'].forEach(k=>{const el=$('#c-'+k);if(!el)return;el.addEventListener('input',()=>{C[k]=el.value;if(k==='place')C.touchedPlace=true;if(k==='title'||k==='desc')updAdWarn();if(k==='title'){const t=ADULT_RE.test(el.value);if(t!==!!C._t){C._t=t;renderCreateCrazy();if(pickMarker)pickMarker.setIcon(createPin())}}})});
  const mx=$('#c-maxn');if(mx)mx.addEventListener('input',()=>{C.maxn=Number(mx.value)||0;C.maxTouched=true;mx.classList.remove('err')});
  const bs=$('#c-biz');if(bs)bs.onchange=()=>{C.bizId=bs.value};
  const csel=$('#c-city');if(csel)csel.addEventListener('input',()=>{C.city=csel.value;C.touchedCity=true;
@@ -2872,7 +2886,7 @@ async function publish(el){
  const e=cEff();
  const maxParts=C.nolimit?null:Math.round(C.maxn);
  const row={activity_id:C.act,title:C.title.trim(),description:C.desc.trim(),starts_at:localIso(C.date,C.time),city:(knownCity(C.city)||String(C.city||'').trim()||cityName()).slice(0,40),district:districtFor(C.city||cityName(),C.lat,C.lng),place:C.place.trim(),lat:C.lat,lng:C.lng,max_participants:maxParts,skill_level:C.level,is_crazy:e.crazy,crazy_level:e.crazy?e.clvl:0,is_adult:e.adult};
- if(nc){Object.assign(row,{ends_at:C.edate||C.etime?localIso(C.edate||C.date,C.etime||'23:59'):null,organizer_name:pub?C.org.trim():'',official_url:C.url.trim(),price_info:C.price.trim()})}
+ if(nc){Object.assign(row,{ends_at:C.edate||C.etime?localIso(C.edate||C.date,C.etime||'23:59'):null,organizer_name:pub?C.org.trim():'',official_url:C.url.trim(),price_info:C.price.trim(),extra_info:String(C.extra||'').trim().slice(0,1000)})}
  let saved;const editing=C.editId;
  try{
   if(editing)saved=await withBusy(el,()=>q(sb.from('events').update(row).eq('id',editing).select().single()));
@@ -2902,9 +2916,9 @@ function chatObj(id){
  if(m){const a=act(m.act);return {id,kind:'meetup',title:m.title,emoji:a.emoji,hue:a.hue,crazy:isCrazy(m),good:false,people:m.people,place:m.place,src:m,member:joined(m)||isHost(m),host:isHost(m),hostName:m.host,created:m.created||0,catName:a.name}}
  const h=helpById(id);
  if(h){const c=cat(h.cat);return {id,kind:'help',title:h.title,emoji:c.emoji,hue:160,crazy:false,good:true,people:helpPeople(h),place:helpPlace(h),src:h,member:isHelpMember(h),host:!!h.mine,hostName:h.requesterId,created:h.created||0,catName:c.name}}
- return grpChatObj(id);
+ return grpChatObj(id)||(window.MolaplanOrgs?MolaplanOrgs.chatObj(id):null);
 }
-function myChats(){return S.meetups.map(m=>chatObj(m.id)).concat((S.helps||[]).map(h=>chatObj(h.id))).concat((S.groups||[]).filter(g=>g.myRole).map(g=>chatObj(g.id))).filter(o=>o&&o.member)}
+function myChats(){return S.meetups.map(m=>chatObj(m.id)).concat((S.helps||[]).map(h=>chatObj(h.id))).concat((S.groups||[]).filter(g=>g.myRole).map(g=>chatObj(g.id))).concat(window.MolaplanOrgs?MolaplanOrgs.chatList():[]).filter(o=>o&&o.member)}
 function lastMsg(id){const c=S.chats[id]||[];return c[c.length-1]}
 function lastT(o){const l=lastMsg(o.id);return l?l.t:(o.created||0)}
 function unreadOf(id){const r=S.reads[id]||0;return (S.chats[id]||[]).filter(x=>!x.sys&&x.from!==ME&&x.t>r).length}
@@ -2946,45 +2960,45 @@ function renderChatList(){
  el.innerHTML=`<div class="chat-list">${list.map(chatItemHTML).join('')}</div>`;
 }
 function chatItemHTML(o){
- const l=lastMsg(o.id), u=unreadOf(o.id), s=o.src, past=o.kind!=='group'&&isPast(s);
+ const l=lastMsg(o.id), u=unreadOf(o.id), s=o.src, past=o.kind!=='group'&&o.kind!=='team'&&isPast(s);
  const prev=!l?tx('chats.noMessages'):l.sys?esc(msgText(l)):`<b>${esc(l.from===ME?tx('common.you'):nameOf(l.from))}:</b> ${esc(msgText(l))}`;
- const tag=o.kind==='group'?(s.myRole&&s.myRole!=='member'?`<span class="ci-host">${tx('grp.role.'+s.myRole)}</span>`:''):o.kind==='help'?`<span class="ci-host good">${tx(o.host?'chats.tagOwnRequest':'chats.tagHelping')}</span>`:(o.host?`<span class="ci-host">${tx('card.host')}</span>`:'');
+ const tag=o.kind==='team'?(s.myRole&&s.myRole!=='member'?`<span class="ci-host">${tx('tm.role.'+s.myRole)}</span>`:''):o.kind==='group'?(s.myRole&&s.myRole!=='member'?`<span class="ci-host">${tx('grp.role.'+s.myRole)}</span>`:''):o.kind==='help'?`<span class="ci-host good">${tx(o.host?'chats.tagOwnRequest':'chats.tagHelping')}</span>`:(o.host?`<span class="ci-host">${tx('card.host')}</span>`:'');
  return `<button class="ci ${u?'unread':''} ${past?'past':''} ${o.good?'good':''}" data-a="open-chat" data-id="${o.id}">
   ${chatAv(o)}
   <span class="ci-main">
    <span class="ci-r1"><b class="ci-title">${esc(o.title)}</b><span class="ci-time">${listTime(l&&l.t)}</span></span>
-   <span class="ci-r2"><span class="ci-when ${o.crazy?'cz':''} ${o.good?'good':''}">${o.kind==='group'?'👥 '+txn('grp.members',s.count):past?tx('chat.past'):'📅 '+dayLabel(s)+' '+fmtTime(s.time)}</span>${tag}</span>
+   <span class="ci-r2"><span class="ci-when ${o.crazy?'cz':''} ${o.good?'good':''}">${o.kind==='group'||o.kind==='team'?'👥 '+txn('grp.members',s.count):past?tx('chat.past'):'📅 '+dayLabel(s)+' '+fmtTime(s.time)}</span>${tag}</span>
    <span class="ci-r3"><span class="ci-prev">${prev}</span>${u?`<span class="ci-badge">${u}</span>`:''}</span>
   </span>
  </button>`;
 }
 function openChat(id){
  const o=chatObj(id);if(!o)return;
- if(!o.member){if(o.kind==='group'){openGroup(id);return}toast(o.kind==='help'?tx('chats.offerToOpen'):tx('chats.joinToOpen'));return}
+ if(!o.member){if(o.kind==='group'){openGroup(id);return}if(o.kind==='team'){navTo('s-tm',id);return}toast(o.kind==='help'?tx('chats.offerToOpen'):tx('chats.joinToOpen'));return}
  navTo('s-chat',id);
 }
 function renderChat(){
  const o=chatObj(chatId);if(!o)return;
  const sc=$('#s-chat');sc.classList.toggle('good',o.good);
- const qe=o.good?QUICK_EMO_G:QUICK_EMO, qa=o.kind==='group'?[]:(o.good?QUICK_ACT_G:QUICK_ACT).map(k=>tx(k));
+ const qe=o.good?QUICK_EMO_G:QUICK_EMO, qa=o.kind==='group'||o.kind==='team'?[]:(o.good?QUICK_ACT_G:QUICK_ACT).map(k=>tx(k));
  sc.innerHTML=`
  <div class="ch-top">
   <button class="icon-btn" data-a="back" aria-label="${tx('common.back')}">${icon('back')}</button>
-  <button class="ch-head" data-a="chat-detail" data-id="${o.id}" aria-label="${o.kind==='help'?tx('chat.openHelpInfo'):o.kind==='group'?tx('grp.openGroupInfo'):tx('chat.openEventInfo')}">${chatAv(o,'sm')}<span class="ch-meta"><b>${esc(o.title)}</b><small id="cv-sub"></small></span></button>
-  <button class="icon-btn" data-a="chat-detail" data-id="${o.id}" aria-label="${o.kind==='help'?tx('chat.helpInfo'):o.kind==='group'?tx('grp.info'):tx('chat.eventInfo')}" style="color:${o.good?'var(--gd)':'var(--pri)'}">${icon('info')}</button>
+  <button class="ch-head" data-a="chat-detail" data-id="${o.id}" aria-label="${o.kind==='help'?tx('chat.openHelpInfo'):o.kind==='team'?tx('tm.openInfo'):o.kind==='group'?tx('grp.openGroupInfo'):tx('chat.openEventInfo')}">${chatAv(o,'sm')}<span class="ch-meta"><b>${esc(o.title)}</b><small id="cv-sub"></small></span></button>
+  <button class="icon-btn" data-a="chat-detail" data-id="${o.id}" aria-label="${o.kind==='help'?tx('chat.helpInfo'):o.kind==='team'?tx('tm.info'):o.kind==='group'?tx('grp.info'):tx('chat.eventInfo')}" style="color:${o.good?'var(--gd)':'var(--pri)'}">${icon('info')}</button>
  </div>
  ${chPinHTML(o)}
  <div class="ch-msgs" id="cv-msgs" aria-live="polite"></div>
  <div class="ch-quick">${qe.map(e=>`<button class="qe" data-a="qa" data-v="${e}" aria-label="${tx('common.send')} ${e}">${e}</button>`).join('')}<span class="qsep"></span>${qa.map(q=>`<button class="qa" data-a="qa" data-v="${esc(q)}">${esc(q)}</button>`).join('')}</div>
- <form class="ch-form" data-form="chat-full">${o.kind==='meetup'||o.kind==='group'?`<button type="button" class="ch-att" data-a="chat-img" id="cv-img" aria-label="${tx('img.send')}" title="${tx('img.send')}">${icon('camera')}</button><input type="file" id="cv-file" accept="image/*" hidden>`:''}<input class="inp" id="cv-in" maxlength="1000" placeholder="${o.good?tx('chat.phGood'):tx('chat.ph')}" autocomplete="off" enterkeyhint="send"><button class="send" type="submit" aria-label="${tx('common.send')}">${icon('send')}</button></form>`;
+ <form class="ch-form" data-form="chat-full">${o.kind==='meetup'||o.kind==='group'||o.kind==='team'?`<button type="button" class="ch-att" data-a="chat-img" id="cv-img" aria-label="${tx('img.send')}" title="${tx('img.send')}">${icon('camera')}</button><input type="file" id="cv-file" accept="image/*" hidden>`:''}<input class="inp" id="cv-in" maxlength="1000" placeholder="${o.good?tx('chat.phGood'):tx('chat.ph')}" autocomplete="off" enterkeyhint="send"><button class="send" type="submit" aria-label="${tx('common.send')}">${icon('send')}</button></form>`;
  renderChatMsgs();
 }
 function renderChatMsgs(){
  const el=$('#cv-msgs'), o=chatObj(chatId);if(!el||!o)return;
  const s=o.src;
- $('#cv-sub').innerHTML=o.kind==='group'?`<em>${s.vis==='open'?tx('grp.open'):tx('grp.closed')}</em> · ${txn('grp.members',s.count)}`:`<em>${isPast(s)?tx('chat.past'):whenText(s)}</em> · ${txn('chat.members',o.people.length)}`;
+ $('#cv-sub').innerHTML=o.kind==='team'?`<em>${tx('tm.kind')}</em> · ${txn('grp.members',s.count)}`:o.kind==='group'?`<em>${s.vis==='open'?tx('grp.open'):tx('grp.closed')}</em> · ${txn('grp.members',s.count)}`:`<em>${isPast(s)?tx('chat.past'):whenText(s)}</em> · ${txn('chat.members',o.people.length)}`;
  const msgs=(S.chats[o.id]||[]).slice();
- const dd=o.kind==='group'?null:dayDiff(s);
+ const dd=o.kind==='group'||o.kind==='team'?null:dayDiff(s);
  if(dd===0||dd===1){const t0=today0().getTime();const rem={sys:true,rem:true,text:`📅 ${o.kind==='help'?tx('chat.goodStarts'):tx('chat.eventStarts')} ${tx(dd===0?'date.todayAt':'date.tomorrowAt',{time:fmtTime(s.time)})}`,t:t0+1};let i=msgs.findIndex(x=>x.t>=t0);if(i<0)i=msgs.length;msgs.splice(i,0,rem)}
  let html='',lastDay='',lastFrom=null;
  if(o.kind==='help')html+=`<div class="sysmsg">${tx('chat.safe')}</div>`;
@@ -2993,7 +3007,7 @@ function renderChatMsgs(){
   if(dk!==lastDay){html+=`<div class="day-sep">${dayName(x.t)}</div>`;lastDay=dk;lastFrom=null}
   if(x.sys){html+=`<div class="sysmsg ${x.rem?'rem':''}">${esc(msgText(x))}</div>`;lastFrom=null;continue}
   const mine=x.from===ME, first=x.from!==lastFrom, txt=x.img?String(x.text||''):msgText(x), emo=!x.img&&isEmojiOnly(txt);
-  html+=`<div class="msg ${mine?'mine':''} ${first?'first':'cont'}">${mine?'':first?avatar(x.from):'<span class="av-sp"></span>'}<div class="bub ${emo?'emoj':''} ${x.img?'has-img':''}">${!mine&&first?`<span class="who">${esc(nameOf(x.from))}</span>`:''}${x.img?msgImgHTML(x)+(txt?`<span class="cap">${esc(txt)}</span>`:''):esc(txt)}<span class="tm">${fmtClock(x.t)}</span></div></div>`;
+  html+=`<div class="msg ${mine?'mine':''} ${first?'first':'cont'}">${mine?'':first?avatar(x.from):'<span class="av-sp"></span>'}<div class="bub ${emo?'emoj':''} ${x.img?'has-img':''}">${!mine&&first?`<span class="who">${esc(nameOf(x.from))}</span>`:''}${x.img?msgImgHTML(x)+(txt?`<span class="cap">${esc(txt)}</span>`:''):esc(txt)}<span class="tm">${fmtClock(x.t)}</span></div>${o.kind==='team'&&!mine&&!x.img&&x.id&&!x.pending?`<button type="button" class="msg-rep" data-a="msg-report" data-id="${esc(x.id)}" aria-label="${tx('tm.reportMsg')}" title="${tx('tm.reportMsg')}">⚑</button>`:''}</div>`;
   lastFrom=x.from;
  }
  if(!msgs.length)html+=`<div class="sysmsg" style="margin-top:20px">${tx('chat.noMsgsStart')}</div>`;
@@ -3507,8 +3521,8 @@ function notifGo(id){
  else if(g.kind==='event'){if(byId(g.id))openDetail(g.id)}
  else if(g.kind==='admin'){if(g.id&&bizById(g.id))adminSec='biz';else if(g.id&&teamReqById(g.id))adminSec='teams';else if(g.id&&S.reports.some(r=>r.target===g.id))adminSec='reports';else if(!g.id&&pendingActs().length)adminSec='acts';openAdmin()}
  else if(g.kind==='group')openGroup(g.id);
- else if(g.kind==='business')openBiz();
- else if(g.kind==='team')openTeamReq();
+ else if(g.kind==='business'){if(!(window.MolaplanOrgs&&MolaplanOrgs.notifGo('business',g.id)))openBiz()}
+ else if(g.kind==='team'){if(!(window.MolaplanOrgs&&MolaplanOrgs.notifGo('team',g.id)))openTeamReq()}
  else if(g.kind==='friend'){go('profile');setTimeout(()=>{const f=$('#p-friends');if(f)f.scrollIntoView({block:'center'})},150)}
 }
 /* ---- admin (profiles.is_admin, set via SQL) ---- */
@@ -3645,7 +3659,7 @@ function openBiz(){navTo('s-biz',null)}
 function myBizs(){return (S.biz||[]).filter(b=>b.member||(b.createdBy&&b.createdBy===ME))}
 function bizStatusText(b){const t=ymd(today0());if(b.status!=='approved')return tx('bizst.'+b.status);if(b.until&&b.until>=t)return tx('biz.activeTo',{date:fmtYmd(b.until)});return b.until?tx('biz.endedOn',{date:fmtYmd(b.until)}):tx('biz.awaitingBilling')}
 function myBizCardHTML(b){const t=ymd(today0()), act=b.status==='approved'&&b.until&&b.until>=t;
- return `<div class="biz-mine-row" id="my-biz-${b.id}"><span class="bl">${bizLogoHTML(b.logo)}</span><span class="bm"><b>${esc(b.name)}</b><small class="st-txt bst-${act?'approved':b.status==='approved'?'pending':b.status}">${esc(bizStatusText(b))}</small>${b.status==='rejected'&&b.reason?`<small class="bad-txt">${tx('adm.rejectReason')}: ${esc(b.reason)}</small>`:''}</span>${act?`<button class="btn primary sm" data-a="new-biz-event" data-id="${b.id}" id="new-biz-ev-${b.id}">＋ ${tx('biz.newEvent')}</button>`:''}</div>`}
+ return `<div class="biz-mine-row" id="my-biz-${b.id}"><span class="bl">${bizLogoHTML(b.logo)}</span><span class="bm"><b>${esc(b.name)}</b><small class="st-txt bst-${act?'approved':b.status==='approved'?'pending':b.status}">${esc(bizStatusText(b))}</small>${b.status==='rejected'&&b.reason?`<small class="bad-txt">${tx('adm.rejectReason')}: ${esc(b.reason)}</small>`:''}</span><span class="om-row-btns">${act?`<button class="btn primary sm" data-a="new-biz-event" data-id="${b.id}" id="new-biz-ev-${b.id}">＋ ${tx('biz.newEvent')}</button>`:''}${window.MolaplanOrgs?MolaplanOrgs.bizRowAction(b):''}</span></div>`}
 function bizFormHTML(){
  const f=(id,label,attrs,val)=>`<label class="field"><span>${label}</span><input class="inp" id="${id}" ${attrs||''} value="${esc(val||'')}"></label>`;
  return `<div class="card-box" id="biz-form"><h3>${tx('biz.formTitle')}</h3>
@@ -3695,14 +3709,14 @@ async function bizSubmit(el){
  await refreshData();renderBiz();
 }
 function profileBizHTML(){const mine=myBizs(), tr=myTeamReqs();
- return `<div class="card-box" id="p-biz"><h3>🏢 ${tx('org.profileTitle')}</h3>${mine.length||tr.length?mine.map(myBizCardHTML).join('')+tr.map(myTeamReqRowHTML).join(''):`<p class="muted" style="font-size:13px;margin:0;line-height:1.5">${tx('org.profileHint')}</p>`}<button class="btn primary block" data-a="open-orgs" id="open-orgs" style="margin-top:12px">${tx('org.cta')}</button></div>`}
+ return `<div class="card-box" id="p-biz"><h3>🏢 ${tx('org.profileTitle')}</h3>${mine.length||tr.length?mine.map(myBizCardHTML).join('')+tr.map(myTeamReqRowHTML).join(''):`<p class="muted" style="font-size:13px;margin:0;line-height:1.5">${tx('org.profileHint')}</p>`}<button class="btn primary block" data-a="open-orgs" id="open-orgs" style="margin-top:12px">${tx('org.cta')}</button></div>${window.MolaplanOrgs?MolaplanOrgs.profileTeamsHTML():''}`}
 /* ---- one entry point for business + team accounts ("Avaa tili yritykselle tai joukkueelle") ---- */
 let trFormOpen=false;
 function openOrgs(){navTo('s-orgs',null)}
 function openTeamReq(){navTo('s-teamreq',null)}
 function teamReqById(id){return id?(S.teamReqs||[]).find(r=>r.id===id):null}
 function myTeamReqs(){return ME?(S.teamReqs||[]).filter(r=>r.requester===ME):[]}
-function myTeamReqRowHTML(r){return `<div class="biz-mine-row tr-row" id="my-tr-${r.id}"><span class="bl">👥</span><span class="bm"><b>${esc(r.name)}</b><small class="st-txt bst-${r.status}">${esc(tx('trst.'+r.status))}</small><small class="muted">${esc(r.sport)} · ${esc(r.city)}</small>${r.status==='rejected'&&r.reason?`<small class="bad-txt">${tx('adm.rejectReason')}: ${esc(r.reason)}</small>`:''}</span></div>`}
+function myTeamReqRowHTML(r){return `<div class="biz-mine-row tr-row" id="my-tr-${r.id}"><span class="bl">👥</span><span class="bm"><b>${esc(r.name)}</b><small class="st-txt bst-${r.status}">${esc(tx('trst.'+r.status))}</small><small class="muted">${esc(r.sport)} · ${esc(r.city)}</small>${r.status==='rejected'&&r.reason?`<small class="bad-txt">${tx('adm.rejectReason')}: ${esc(r.reason)}</small>`:''}</span>${window.MolaplanOrgs?MolaplanOrgs.reqRowAction(r):''}</div>`}
 function orgOptionsHTML(){return `<div class="org-opts" id="org-opts">
  <button class="org-opt" data-a="open-biz" id="org-biz"><span class="oe">🏢</span><span class="ot"><b>${tx('org.bizTitle')}</b><small>${tx('org.bizSub')}</small><em>${tx('biz.price')} · ${tx('org.bizReview')}</em></span><span class="oa">${icon('back')}</span></button>
  <button class="org-opt team" data-a="open-teamreq" id="org-team"><span class="oe">👥</span><span class="ot"><b>${tx('org.teamTitle')}</b><small>${tx('org.teamSub')}</small><em>${tx('org.teamReview')}</em></span><span class="oa">${icon('back')}</span></button>
@@ -3713,6 +3727,7 @@ function renderOrgs(){
  s.innerHTML=`<div class="push-head"><button class="icon-btn" data-a="back" aria-label="${tx('common.back')}">${icon('back')}</button><span class="t">${tx('org.title')}</span></div>
  <div class="ask-title"><small>🏢 👥 ${tx('org.kicker')}</small><h1>${tx('org.h1')}</h1><p>${tx('org.intro')}</p></div>
  ${orgOptionsHTML()}
+ ${ME&&window.MolaplanOrgs?MolaplanOrgs.profileTeamsHTML():''}
  ${bz.length||tr.length?`<div class="card-box" id="org-mine"><h3>${tx('org.mine')}</h3>${bz.map(myBizCardHTML).join('')}${tr.map(myTeamReqRowHTML).join('')}</div>`:''}
  ${ME?'':`<p class="fine" style="margin:4px 20px 0">${tx('org.needsAccount')}</p>`}
  <p class="fine" style="margin:14px 20px 28px">${tx('org.note')}</p>`;
@@ -4043,7 +4058,7 @@ function msgImgHTML(x){
  return `<button type="button" class="ph" data-a="img-open" data-id="${esc(x.id)}" style="aspect-ratio:${w}/${h}" aria-label="${tx('img.open')}"><img data-path="${esc(x.img)}"${x.localUrl?` src="${esc(x.localUrl)}"`:''} alt="${tx('img.alt')}" decoding="async" onerror="this.parentNode.classList.add('gone')"><span class="ph-gone">🖼️ ${tx('img.gone')}</span></button>`;
 }
 async function sendImage(id,file){
- const o=chatObj(id);if(!o||!(o.kind==='meetup'||o.kind==='group'))return;
+ const o=chatObj(id);if(!o||!(o.kind==='meetup'||o.kind==='group'||o.kind==='team'))return;
  if(S.banned){toast(tx('err.banned'));return}
  const cid=S.convOf[id];if(!cid){toast(tx('chat.notReady'));refreshData();return}
  const inp=$('#cv-in'), caption=inChatView(id)&&inp?String(inp.value||'').trim().slice(0,1000):'';
@@ -4293,7 +4308,7 @@ function grpPendingReqs(id){return (S.gReqs||[]).filter(r=>r.group===id&&r.statu
 function grpKm(g){if(g.lat==null||g.lng==null)return null;const vc=CITIES[viewCity()];const h=HERE&&hereNear(viewCity())?HERE:vc?{lat:vc.c[0],lng:vc.c[1]}:HERE;return h?kmBetween(h.lat,h.lng,g.lat,g.lng):null}
 function grpVisBadge(g){return g.vis==='open'?`<span class="vis-badge open">🔓 ${tx('grp.open')}</span>`:`<span class="vis-badge closed">🔒 ${tx('grp.closed')}</span>`}
 function grpChatObj(id){const g=groupById(id);if(!g)return null;return {id,kind:'group',title:g.name,emoji:grpEmoji(g),hue:grpHue(g),crazy:false,good:false,people:g.members.map(m=>m.uid),place:g.city,src:g,member:!!g.myRole,host:g.myRole==='founder',hostName:g.founder,created:g.created,catName:tx('grp.kind')+' '+(g.act?act(g.act).name:'')}}
-function chPinHTML(o){if(o.kind==='group'){const g=o.src;return `<div class="ch-pin">👥<span class="pl">${esc([g.vis==='open'?tx('grp.open'):tx('grp.closed'),g.city,g.act?act(g.act).name:''].filter(Boolean).join(' · '))}</span></div>`}return `<div class="ch-pin">${o.good?'💚':icon('pin')}<span class="pl">${esc(o.good?tx('chat.goodPlace',{place:o.place}):o.place)}</span></div>`}
+function chPinHTML(o){if(o.kind==='team'){const t=o.src.team||{};return `<div class="ch-pin">👥<span class="pl">${esc([tx('tm.kind'),t.city,t.activity_id?act(t.activity_id).name:t.sport].filter(Boolean).join(' · '))}</span></div>`}if(o.kind==='group'){const g=o.src;return `<div class="ch-pin">👥<span class="pl">${esc([g.vis==='open'?tx('grp.open'):tx('grp.closed'),g.city,g.act?act(g.act).name:''].filter(Boolean).join(' · '))}</span></div>`}return `<div class="ch-pin">${o.good?'💚':icon('pin')}<span class="pl">${esc(o.good?tx('chat.goodPlace',{place:o.place}):o.place)}</span></div>`}
 function chatSegHTML(){const inv=(S.gInvites||[]).filter(i=>i.invitee===ME&&!(groupById(i.group)||{}).myRole).length, gu=myGroups().reduce((n,g)=>n+unreadOf(g.id),0);
  return `<div class="seg chat-seg" id="chat-seg" style="margin:0 16px 12px"><button class="${chatSeg==='chats'?'on':''}" data-a="chat-seg" data-v="chats" id="chat-seg-chats">💬 ${tx('grp.segChats')}</button><button class="${chatSeg==='groups'?'on':''}" data-a="chat-seg" data-v="groups" id="chat-seg-groups">👥 ${tx('grp.segGroups')}${inv+gu?` <i class="cnt">${inv+gu}</i>`:''}</button></div>`}
 function grpRowHTML(g,opt){
@@ -4469,7 +4484,7 @@ document.addEventListener('click',e=>{
   case 'back':goBack();break;
   case 'open-hullut':openHullut();break;
   case 'open-chat':openChat(id);break;
-  case 'chat-detail':{const o=chatObj(id);if(o&&o.kind==='help')navTo('s-hdetail',id);else if(o&&o.kind==='group')navTo('s-group',id);else navTo('s-detail',id);break}
+  case 'chat-detail':{const o=chatObj(id);if(o&&o.kind==='help')navTo('s-hdetail',id);else if(o&&o.kind==='team')navTo('s-tm',id);else if(o&&o.kind==='group')navTo('s-group',id);else navTo('s-detail',id);break}
   case 'open-good':openGood();break;
   case 'good-map':goodMap();break;
   case 'gf-cat':GF.cat=v;renderGood();break;
@@ -4583,6 +4598,7 @@ document.addEventListener('click',e=>{
   case 'img-open':openImg(id);break;
   case 'img-del':delImgMsg(id,el);break;
   case 'img-report':openReportFor('message',id,tx('img.photo'));break;
+  case 'msg-report':openReportFor('message',id,tx('rep.kindMessage'));break;
   case 'adm-repm':admRepMedia(v,id,el.dataset.type,el);break;
   case 'adm-act-ok':admAct(true,id,el);break;
   case 'adm-act-no':admAct(false,id,el);break;
@@ -4662,6 +4678,9 @@ function frHook(view,arg){try{if(window.MolaplanFriends&&ME&&!isGuest())window.M
 window.MolaplanApp={get sb(){return sb},get me(){return ME},get state(){return S},get guest(){return isGuest()},tx,txn,esc,toast,avatar,nameOf,q,withBusy,errText,icon,isPast,byId,joined,isHost,
  openSheet(html,ctx){sheetCtx=ctx||'friends';$('#sheet').innerHTML='<div class="grab"></div>'+html;$('#app').classList.add('sheet-open');$('#sheet').scrollTop=0},closeSheet,
  get detailId(){return $('#s-detail').classList.contains('active')?detailId:null},
+ /* used by orgs.js (team + business management) */
+ navTo,goBack,closePush,openChat,refreshData,act,orderedActs,knownCity,get cities(){return CITIES},cityInfo,addTiles,pinIcon:a=>pinIconAct(a,false,false),fmtYmd,ymd,today0,foldTxt,dtf,get lang(){return LANG},
+ safeHttps,photonLang,unreadOf,selectIn,openAuthPrompt,editEvent,startBizCreate,openDetail,delMeetup,bizById,myName,listTime,fmtTime,viewCity,cityLabel,levelName,hashHue,openReportFor,refreshViews:()=>refreshAllViews(),
  rerender(){if(curTab==='profile'&&$('#s-profile').classList.contains('active'))frHook('profile');if($('#s-detail').classList.contains('active')){const m=byId(detailId);if(m)frHook('detail',m)}}};
 /* ================= INIT ================= */
 window.__molaplan={get state(){return S},get create(){return C},get pickView(){if(!pickMap)return null;const c=pickMap.getCenter(),m=pickMarker&&pickMarker.getLatLng();return {lat:c.lat,lng:c.lng,zoom:pickMap.getZoom(),marker:m?{lat:m.lat,lng:m.lng}:null}},get crazyUpcoming(){return crazyUpcoming().map(m=>m.id)},get unreadTotal(){return totalUnread()},get approvedHelps(){return approvedHelps().map(h=>h.id)},refresh:()=>refreshData(),get lang(){return LANG},get i18nMissing(){return [...I18N_MISSING]},get viewCity(){return viewCity()},mapCenter:()=>bigMap?bigMap.getCenter():null,cityCenter:c=>CITIES[c]?CITIES[c].c:null,compress:(f,p)=>compressImage(f,p),get groups(){return S.groups||[]},get chatSeg(){return chatSeg}};
@@ -4669,5 +4688,6 @@ boot();
 })();
 </script>
 <script defer src="/friend-requests.js"></script>
+<script defer src="/orgs.js"></script>
 </body>
 </html>

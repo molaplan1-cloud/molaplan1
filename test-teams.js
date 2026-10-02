@@ -105,9 +105,14 @@ let passed = 0;
   ok(await M(() => window.__molaplan.state.notifs.some(n => /FC Kaislikko/.test(n.text) && /hyväksyttiin/.test(n.text))), 'notification text: "Joukkuetilipyyntö “FC Kaislikko” hyväksyttiin 🎉"');
   await page.click('#s-home [data-a="open-notifs"]'); await page.waitForSelector('#notif-list');
   const n1 = await M(() => window.__molaplan.state.notifs.find(n => /hyväksyttiin/.test(n.text)).id);
-  await page.click(`#notif-list [data-id="${n1}"]`); await page.waitForSelector('#s-teamreq.active #tr-mine');
+  await page.click(`#notif-list [data-id="${n1}"]`); await page.waitForSelector('#s-tm.active #tm-name');
+  ok((await txt('#tm-name')) === 'FC Kaislikko' && (await txt('#tm-myrole')) === 'Joukkueenjohtaja', 'tapping the approval opens the new team page, requester is the team manager');
+  ok(await page.isVisible('#tm-chat') && await page.isVisible('#tm-ev-new'), 'team page has the chat and the schedule tools');
+  await page.click('#s-tm.active [data-a="back"]');
+  await profile(); await page.click('#open-orgs'); await page.click('#org-team'); await page.waitForSelector('#s-teamreq.active #tr-mine');
   const mine = await txt('#tr-mine');
-  ok(mine.includes('Hyväksytty – otamme yhteyttä') && mine.includes('Ei hyväksytty') && mine.includes('Joukkueella on jo tili'), 'tapping the notification opens the request screen with both outcomes');
+  ok(mine.includes('Hyväksytty – hallintasivu avattu') && mine.includes('Ei hyväksytty') && mine.includes('Joukkueella on jo tili'), 'the request screen shows both outcomes');
+  ok(await page.isVisible('#tr-mine [data-o="open-team"]'), 'approved request row links to the team page');
 
   // ---------- 6. unverified user gets a clear notice ----------
   await loginAs('uuno@example.com'); await profile(); await page.click('#open-orgs'); await page.click('#org-team'); await page.waitForSelector('#s-teamreq.active #tr-form');
