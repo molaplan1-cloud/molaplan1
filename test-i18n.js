@@ -28,7 +28,7 @@ const badVal = [];
 for (const k of KEYS) for (const l of LANGS) { const v = D[l][k]; if (typeof v !== 'string' || !v.trim()) badVal.push(l + ':' + k + ' empty'); else { if (ph(v) !== ph(D.fi[k])) badVal.push(l + ':' + k + ' placeholders'); if (tags(v) !== tags(D.fi[k])) badVal.push(l + ':' + k + ' html'); } }
 ok(!badVal.length, 'no empty values; placeholders and HTML tags match across languages' + (badVal.length ? ': ' + badVal.slice(0, 8).join(', ') : ''));
 // untranslated: a non-Finnish value identical to Finnish is only allowed for names that really are the same
-const SAME_OK = new Set(['act.padel', 'act.tennis', 'act.golf', 'act.squash', 'chat.chat', 'dur.2-3h', 'dur.24h', 'view.list', 'home.title']);   // home.title = the Spanish slogan "Mola el plan!" in every language (user decision 2026-10-01)   // + cityname.* (e.g. Madrid is Madrid everywhere)
+const SAME_OK = new Set(['act.padel', 'act.tennis', 'act.golf', 'act.squash', 'chat.chat', 'dur.2-3h', 'dur.24h', 'view.list', 'home.title', 'tt.libero']);   // home.title = the Spanish slogan "Mola el plan!" in every language (user decision 2026-10-01)   // + cityname.* (e.g. Madrid is Madrid everywhere)
 const same = [];
 for (const k of KEYS) for (const l of ['en', 'sv', 'es']) if (D[l][k] === D.fi[k] && /[a-zåäöñ]{3,}/i.test(D.fi[k].replace(/<[^>]+>|\{\w+\}|Molaplan|OpenStreetMap/g, '')) && !SAME_OK.has(k) && !/^cityname\./.test(k)) same.push(l + ':' + k);
 ok(!same.length, 'no Finnish text left untranslated in en/sv/es' + (same.length ? ': ' + same.slice(0, 10).join(', ') : ''));
@@ -44,7 +44,7 @@ const seedIds = [...schema.matchAll(/^\s*\('([a-z]+)',\s*'[^']+',\s*'/gm)].map(m
 const catIds = [...new Set([...html.matchAll(/\['(siivous|maalaus|koira|kuljetus|seura|muutto|kauppa|piha|muu)','/g)].map(m => m[1]))];
 const codes = new Set([...schema.matchAll(/post_system_message\(\w+,\s*'([a-z_]+)'/g)].map(m => 'sys.' + m[1]).concat([...schema.matchAll(/notify(?:_admins)?\((?:[\w.]+,\s*)?'[^']*',\s*'([a-z_]+)'/g)].map(m => 'notif.' + m[1])));
 const dataKeys = [...new Set(actIds.concat(seedIds))].map(i => 'act.' + i).concat(catIds.map(i => 'cat.' + i), ['all', 'beginner', 'intermediate', 'advanced'].map(i => 'level.' + i), ['1h', '2-3h', 'halfday', 'day', '24h', 'days'].map(i => 'dur.' + i), ['clvl.1', 'clvl.2', 'clvl.3'], [...codes]);
-const missData = dataKeys.filter(k => !(k in D.en));
+const missData = dataKeys.filter(k => !/_$/.test(k) && !(k in D.en)).concat(['notif.team_role_manager', 'notif.team_role_coach'].filter(k => !(k in D.en)));   // 'team_role_' || v_role is built in SQL
 ok(actIds.length >= 30 && catIds.length === 9 && codes.size >= 16 && !missData.length, `activity (${new Set(actIds.concat(seedIds)).size}), category (9), level, duration and server-code (${codes.size}) keys all translated` + (missData.length ? ': ' + missData.join(', ') : ''));
 // cities data
 const cityIds = CITIES.map(c => c.id);

@@ -1519,7 +1519,7 @@ function refreshAllViews(){
  if(window.MolaplanOrgs&&orgsActive()){const ae=document.activeElement;if(!(ae&&ae.matches('input,textarea,select')&&$('.push.active')&&$('.push.active').contains(ae)))MolaplanOrgs.rerender()}
  if($('#s-good').classList.contains('active'))renderGood();
  if($('#s-hullut').classList.contains('active'))renderHullut();
- if($('#s-admin').classList.contains('active'))renderAdmin();
+ if($('#s-admin').classList.contains('active')&&!($('#s-admin').contains(document.activeElement)&&document.activeElement.matches('input,textarea,select')))renderAdmin();
  if($('#s-biz').classList.contains('active')&&!($('#s-biz').contains(document.activeElement)&&document.activeElement.matches('input,textarea,select')))renderBiz();
  if($('#s-orgs').classList.contains('active'))renderOrgs();
  if($('#s-teamreq').classList.contains('active')&&!($('#s-teamreq').contains(document.activeElement)&&document.activeElement.matches('input,textarea,select')))renderTeamReq();
