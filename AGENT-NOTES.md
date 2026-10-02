@@ -545,3 +545,12 @@ mg_block.js, i18n_d.py – all already applied, don't rerun; sqltest.sh = scratc
   text/photo/report, removals; business apply -> approve -> series with price/extra info (6 events, 07:30 Helsinki),
   organiser via /b/<token>, expired = read-only (UI + DB). Cleanup leaves nothing; owner untouched. Photon has no
   "Hyrylän urheilupuisto" -> the test types "Rykmentinportinkatu".
+
+### T — regression + wrap-up (2026-10-02, UTC+3)
+- 213b94b: the role is lower case inside the join/invite sentences ("roolissa jäsen"). Preview deploy cbbfdaa0 succeeded.
+- Regression e2e against https://orgs-admin-2026-10-02.molaplan.pages.dev: e2e-real 56, e2e-team-real 26, e2e-friends-real 49, e2e-share-real 39, e2e-media-real 88. All passed, leftovers 0, owner untouched.
+- e2e-orgs-real.js 95/95 (previous deploy, before the lower-case tweak).
+- Live counts after the runs equal counts-before.json (users 3, events 3, messages 3, notifications 6, reports 1, team_requests 1, teams 0, owner updated 2026-09-26).
+- Fixes during T: mobile horizontal overflow (739ed8c); Leaflet `_leaflet_pos` error, maps removed before re-render (141f65c).
+- Shots (not committed): shots/live-orgs-m-*.png (14), shots/live-orgs-d1440-*.png (6).
+- Main NOT pushed for T (preview only).
