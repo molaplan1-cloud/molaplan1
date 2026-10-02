@@ -62,6 +62,10 @@ select t_expect_error($q$select admin_review_team_request((select id from team_r
 commit;
 begin; select t_login('tra@t.fi'); set local role authenticated;
 select t_ok((select count(*) from notifications where code = 'team_request_approved' and link_kind = 'team') = 1, 'requester notified: approved');
+select t_ok((select count(*) from teams where name = 'Espoon Kiekko' and owner_id = auth.uid()) = 1, 'approval created the team, requester owns it');
+select t_ok((select role from team_members m join teams t on t.id = m.team_id where t.name = 'Espoon Kiekko' and m.user_id = auth.uid()) = 'manager', 'requester is team manager');
+select t_ok((select link_id from notifications where code = 'team_request_approved') = (select id from teams where name = 'Espoon Kiekko'), 'approval notification links to the team');
+select t_ok((select count(*) from teams where name = 'Toinen') = 0, 'rejected request creates no team');
 select t_ok((select count(*) from notifications where code = 'team_request_rejected' and params->>'reason' = 'Tiedot puuttuvat') = 1, 'requester notified: rejected with reason');
 select t_ok((select admin_reason from team_requests where team_name = 'Toinen') = 'Tiedot puuttuvat', 'requester sees the reason');
 select t_ok(request_team_account('{"team_name":"Neljäs","sport":"Futis","city":"Espoo","contact_name":"Aino","contact_email":"a@t.fi"}') is not null, 'after review, a new request is allowed again (only 1 pending left)');
@@ -69,4 +73,5 @@ commit;
 -- ===== account deletion cascades
 delete from auth.users where email = 'tra@t.fi';
 select t_ok((select count(*) from public.team_requests) = 0, 'requests removed with the account');
+select t_ok((select count(*) from public.teams) = 0, 'team removed with the owner account');
 select 'TEAM REQUEST TESTS PASSED' as result;

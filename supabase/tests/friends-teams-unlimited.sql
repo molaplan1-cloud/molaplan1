@@ -121,28 +121,30 @@ insert into event_participants (event_id, user_id) values ((select id from event
 select t_ok((select count(*) from event_participants where event_id = (select id from events where title = 'Iso juoksu')) >= 1, 'joining an unlimited event works');
 commit;
 
--- ===== teams (no RLS recursion, coach/member rules)
+-- ===== teams (2026-10-02: team only via approved team request; member writes only via RPC; no RLS recursion)
 begin; select t_login('fa@t.fi'); set local role authenticated;
-insert into teams (name, sport) values ('FC Kallio', 'Jalkapallo');
-insert into team_members (team_id, user_id, role) values ((select id from teams where name = 'FC Kallio'), auth.uid(), 'admin');
-select t_ok((select count(*) from teams where name = 'FC Kallio') = 1, 'teams select works (no recursion)');
+select t_expect_error('insert into teams (name, sport) values (''FC Kallio'', ''Jalkapallo'')', 'permission denied');
+select request_team_account('{"team_name":"FC Kallio","sport":"Jalkapallo","city":"Helsinki","contact_name":"Aa","contact_email":"fa@t.fi"}');
 commit;
-begin; select t_login('fb@t.fi'); set local role authenticated;
-select t_expect_error('insert into team_members (team_id, user_id, role) values ((select id from teams where name = ''FC Kallio''), auth.uid(), ''admin'')', 'row-level security');
-insert into team_members (team_id, user_id, role) values ((select id from teams where name = 'FC Kallio'), auth.uid(), 'member');
-select t_expect_error('insert into team_events (team_id, title, event_date) values ((select id from teams where name = ''FC Kallio''), ''Treeni'', current_date + 1)', 'row-level security');
+begin; select t_login('fadm@t.fi'); set local role authenticated;
+select admin_review_team_request((select id from team_requests where team_name = 'FC Kallio'), 'approved', '');
 commit;
 begin; select t_login('fa@t.fi'); set local role authenticated;
+select t_ok((select count(*) from teams where name = 'FC Kallio') = 1, 'teams select works (no recursion), approval created the team');
+select t_ok((select role from team_members where user_id = auth.uid()) = 'manager', 'requester is team manager');
 insert into team_events (team_id, title, event_date, event_time) values ((select id from teams where name = 'FC Kallio'), 'Treenit', current_date + 1, '18:00');
-select t_ok((select created_by = auth.uid() from team_events where title = 'Treenit'), 'team event created by coach/admin, created_by defaults to caller');
+select t_ok((select created_by = auth.uid() from team_events where title = 'Treenit'), 'team event created by manager, created_by defaults to caller');
 commit;
 begin; select t_login('fb@t.fi'); set local role authenticated;
-insert into team_event_rsvps (event_id, user_id, status) values ((select id from team_events where title = 'Treenit'), auth.uid(), 'going');
-select t_ok((select count(*) from team_members m join teams t on t.id = m.team_id where t.name = 'FC Kallio') = 2 and (select count(*) from team_event_rsvps r join team_events e on e.id = r.event_id where e.title = 'Treenit') = 1, 'member sees members + RSVPs');
+select t_ok((select count(*) from teams) = 0, 'non-member does not see the team');
+select t_expect_error('insert into team_members (team_id, user_id, role) values ((select id from teams limit 1), auth.uid(), ''member'')', 'permission denied');
 commit;
 begin; select t_login('fc@t.fi'); set local role authenticated;
 select t_ok((select count(*) from team_events) = 0 and (select count(*) from team_members) = 0, 'non-member sees no team events/members');
 commit;
+-- clean up so later suites start from an empty team state
+delete from public.teams where name = 'FC Kallio';
+delete from public.team_requests where team_name = 'FC Kallio';
 
 -- ===== anon
 begin; set local role anon;

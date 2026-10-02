@@ -291,6 +291,7 @@ alter table public.events add column if not exists ends_at timestamptz;
 alter table public.events add column if not exists organizer_name text not null default '';
 alter table public.events add column if not exists official_url text not null default '';
 alter table public.events add column if not exists price_info text not null default '';
+alter table public.events add column if not exists extra_info text not null default '';   -- lisätiedot (yritys / julkinen)
 alter table public.events add column if not exists business_id uuid;
 alter table public.events add column if not exists last_at timestamptz generated always as (coalesce(ends_at, starts_at)) stored;
 alter table public.events alter column host_id drop not null;
@@ -314,6 +315,9 @@ alter table public.events add constraint events_official_url_check check (
   official_url = '' or (official_url ~ '^https://[^\s<>"'']+$' and char_length(official_url) <= 300));
 alter table public.events drop constraint if exists events_price_info_check;
 alter table public.events add constraint events_price_info_check check (char_length(price_info) <= 120);
+alter table public.events drop constraint if exists events_extra_info_check;
+alter table public.events add constraint events_extra_info_check check (
+  char_length(extra_info) <= 1000 and (kind <> 'community' or extra_info = ''));
 alter table public.events drop constraint if exists events_ends_check;
 alter table public.events add constraint events_ends_check check (
   ends_at is null or (ends_at >= starts_at and ends_at <= starts_at + interval '62 days'));
@@ -449,6 +453,10 @@ begin
       or
       (c.kind = 'group' and exists (
          select 1 from public.group_members m where m.group_id = c.group_id and m.user_id = auth.uid()))
+      or
+      (c.kind = 'team' and (
+         exists (select 1 from public.teams t where t.id = c.team_id and t.owner_id = auth.uid())
+         or exists (select 1 from public.team_members m where m.team_id = c.team_id and m.user_id = auth.uid())))
     ));
 end $$;
 
@@ -637,6 +645,7 @@ begin
   new.organizer_name := btrim(coalesce(new.organizer_name, ''));
   new.official_url := btrim(coalesce(new.official_url, ''));
   new.price_info := btrim(coalesce(new.price_info, ''));
+  new.extra_info := case when new.kind = 'community' then '' else btrim(coalesce(new.extra_info, '')) end;
   select * into a from public.activities where id = new.activity_id;
   if found then
     new.is_crazy := new.is_crazy or a.is_crazy;
@@ -1522,7 +1531,7 @@ create or replace view public.guest_events with (security_invoker = true) as
          e.kind, e.ends_at, e.last_at, e.organizer_name, e.official_url, e.price_info, e.business_id,
          (select b.name from public.businesses b where b.id = e.business_id) as business_name,
          (select b.logo_url from public.businesses b where b.id = e.business_id) as business_logo,
-         e.cover_path
+         e.cover_path, e.extra_info
   from public.events e;
 create or replace view public.guest_help_requests with (security_invoker = true) as
   select h.id, h.category, h.title, h.description, h.needs, h.city, h.district,
@@ -1894,8 +1903,8 @@ create policy "item_contacts: omistaja lisää" on public.item_contacts
   for insert to authenticated with check (
     exists (select 1 from public.items i where i.id = item_id and i.owner_id = auth.uid()));
 
--- 7b. JOUKKUEET / SEURAT – sarakkeet vastaavat käyttöliittymää (event_date/event_time/place_*, rsvp status,
---     team_messages.created_at). Käyttöliittymä on vielä piilossa (ff=teams), tilausmaksua ei ole toteutettu.
+-- 7b. JOUKKUEET / SEURAT – perustaulut. Hallinta (roolit, toistuvat tapahtumat, kutsut, chat, RLS) osiossa 9a.
+--     Joukkue syntyy vain ylläpidon hyväksymästä joukkuetilipyynnöstä (7e).
 create table if not exists public.teams (
   id          uuid primary key default gen_random_uuid(),
   name        text not null check (char_length(name) between 2 and 50),
@@ -2028,20 +2037,23 @@ drop function if exists public.teams_updated_at();
 drop function if exists public.team_events_updated_at();
 
 -- Apufunktiot (security definer) -> ei rekursiota teams <-> team_members -politiikoissa
+-- Rooli: manager (joukkueenjohtaja; omistaja on aina manager), coach, member, parent (osio 9a)
+create or replace function public.team_role(tid uuid) returns text
+language sql stable security definer set search_path = public as $$
+  select case when exists (select 1 from public.teams t where t.id = tid and t.owner_id = auth.uid()) then 'manager'
+              else (select m.role from public.team_members m where m.team_id = tid and m.user_id = auth.uid()) end
+$$;
 create or replace function public.is_team_member(tid uuid) returns boolean
 language sql stable security definer set search_path = public as $$
-  select exists (select 1 from public.teams t where t.id = tid and t.owner_id = auth.uid())
-      or exists (select 1 from public.team_members m where m.team_id = tid and m.user_id = auth.uid())
+  select auth.uid() is not null and public.team_role(tid) is not null
 $$;
 create or replace function public.is_team_admin(tid uuid) returns boolean
 language sql stable security definer set search_path = public as $$
-  select exists (select 1 from public.teams t where t.id = tid and t.owner_id = auth.uid())
-      or exists (select 1 from public.team_members m where m.team_id = tid and m.user_id = auth.uid() and m.role = 'admin')
+  select coalesce(public.team_role(tid) = 'manager', false)
 $$;
 create or replace function public.is_team_coach(tid uuid) returns boolean
 language sql stable security definer set search_path = public as $$
-  select public.is_team_admin(tid)
-      or exists (select 1 from public.team_members m where m.team_id = tid and m.user_id = auth.uid() and m.role = 'coach')
+  select coalesce(public.team_role(tid) in ('manager','coach'), false)
 $$;
 create or replace function public.team_of_event(eid uuid) returns uuid
 language sql stable security definer set search_path = public as $$
@@ -2080,62 +2092,30 @@ drop policy if exists "team_event_rsvps: jäsen peruu" on public.team_event_rsvp
 drop policy if exists "team_messages: jäsenet näkevät" on public.team_messages;
 drop policy if exists "team_messages: jäsenet lähettävät" on public.team_messages;
 
--- teams: hakemisto näkyy kirjautuneille (selaa + liity), ylläpitäjä muokkaa
+-- Vanhat väljät politiikat pois – tiukat politiikat osiossa 9a (joukkue näkyy vain jäsenille, kirjoitukset RPC:llä)
 drop policy if exists "teams: kirjautuneet näkevät" on public.teams;
-create policy "teams: kirjautuneet näkevät" on public.teams for select to authenticated using (true);
 drop policy if exists "teams: kirjautunut luo oman" on public.teams;
-create policy "teams: kirjautunut luo oman" on public.teams for insert to authenticated
-  with check (owner_id = auth.uid() and not public.is_banned());
 drop policy if exists "teams: ylläpitäjä muokkaa" on public.teams;
-create policy "teams: ylläpitäjä muokkaa" on public.teams for update to authenticated
-  using (public.is_team_admin(id)) with check (public.is_team_admin(id));
 drop policy if exists "teams: omistaja poistaa oman" on public.teams;
-create policy "teams: omistaja poistaa oman" on public.teams for delete to authenticated using (owner_id = auth.uid());
 
 drop policy if exists "team_members: jäsenet näkevät jäsenet" on public.team_members;
-create policy "team_members: jäsenet näkevät jäsenet" on public.team_members for select to authenticated
-  using (user_id = auth.uid() or public.is_team_member(team_id));
 drop policy if exists "team_members: liity tai ylläpitäjä lisää" on public.team_members;
-create policy "team_members: liity tai ylläpitäjä lisää" on public.team_members for insert to authenticated
-  with check ((user_id = auth.uid() and role = 'member' and not public.is_banned()) or public.is_team_admin(team_id));
 drop policy if exists "team_members: ylläpitäjä muuttaa roolin" on public.team_members;
-create policy "team_members: ylläpitäjä muuttaa roolin" on public.team_members for update to authenticated
-  using (public.is_team_admin(team_id)) with check (public.is_team_admin(team_id));
 drop policy if exists "team_members: eroa tai ylläpitäjä poistaa" on public.team_members;
-create policy "team_members: eroa tai ylläpitäjä poistaa" on public.team_members for delete to authenticated
-  using (user_id = auth.uid() or public.is_team_admin(team_id));
 
 drop policy if exists "team_roles: jäsenet lukevat" on public.team_roles;
-create policy "team_roles: jäsenet lukevat" on public.team_roles for select to authenticated using (public.is_team_member(team_id));
 drop policy if exists "team_roles: ylläpitäjä hallitsee" on public.team_roles;
-create policy "team_roles: ylläpitäjä hallitsee" on public.team_roles for all to authenticated
-  using (public.is_team_admin(team_id)) with check (public.is_team_admin(team_id));
 drop policy if exists "team_places: jäsenet lukevat" on public.team_places;
-create policy "team_places: jäsenet lukevat" on public.team_places for select to authenticated using (public.is_team_member(team_id));
 drop policy if exists "team_places: ylläpitäjä hallitsee" on public.team_places;
-create policy "team_places: ylläpitäjä hallitsee" on public.team_places for all to authenticated
-  using (public.is_team_admin(team_id)) with check (public.is_team_admin(team_id));
 drop policy if exists "team_events: jäsenet lukevat" on public.team_events;
-create policy "team_events: jäsenet lukevat" on public.team_events for select to authenticated using (public.is_team_member(team_id));
 drop policy if exists "team_events: valmentaja hallitsee" on public.team_events;
-create policy "team_events: valmentaja hallitsee" on public.team_events for all to authenticated
-  using (public.is_team_coach(team_id)) with check (public.is_team_coach(team_id));
 drop policy if exists "team_event_rsvps: jäsenet lukevat" on public.team_event_rsvps;
-create policy "team_event_rsvps: jäsenet lukevat" on public.team_event_rsvps for select to authenticated
-  using (public.is_team_member(public.team_of_event(event_id)));
 drop policy if exists "team_event_rsvps: jäsen ilmoittautuu" on public.team_event_rsvps;
-create policy "team_event_rsvps: jäsen ilmoittautuu" on public.team_event_rsvps for insert to authenticated
-  with check (user_id = auth.uid() and public.is_team_member(public.team_of_event(event_id)));
 drop policy if exists "team_event_rsvps: jäsen muuttaa omaa" on public.team_event_rsvps;
-create policy "team_event_rsvps: jäsen muuttaa omaa" on public.team_event_rsvps for update to authenticated
-  using (user_id = auth.uid()) with check (user_id = auth.uid() and public.is_team_member(public.team_of_event(event_id)));
 drop policy if exists "team_event_rsvps: jäsen peruu oman" on public.team_event_rsvps;
-create policy "team_event_rsvps: jäsen peruu oman" on public.team_event_rsvps for delete to authenticated using (user_id = auth.uid());
 drop policy if exists "team_messages: jäsenet lukevat" on public.team_messages;
 create policy "team_messages: jäsenet lukevat" on public.team_messages for select to authenticated using (public.is_team_member(team_id));
 drop policy if exists "team_messages: jäsen lähettää" on public.team_messages;
-create policy "team_messages: jäsen lähettää" on public.team_messages for insert to authenticated
-  with check (sender_id = auth.uid() and public.is_team_member(team_id) and not public.is_banned());
 
 -- 7c. KAVERIT: kaveripyynnöt, kaverilista (näkymä) ja kutsut tapahtumiin. Kirjoitukset vain RPC:iden kautta.
 create table if not exists public.friend_requests (
@@ -2315,8 +2295,7 @@ grant execute on function public.remove_friend(uuid) to authenticated;
 grant execute on function public.invite_friend_to_event(uuid, uuid) to authenticated;
 
 -- 7e. JOUKKUETILIN PYYNTÖ (2026-10-01): käyttäjä pyytää joukkue-/seuratiliä → ylläpito hyväksyy tai hylkää käsin
---     (ylläpitojono). Ei maksua eikä hintaa. Varsinainen joukkueiden käyttöliittymä (7b, ff=teams) on yhä piilossa;
---     hyväksyntä ei luo joukkuetta automaattisesti – ylläpito ottaa yhteyttä pyytäjään.
+--     (ylläpitojono). Ei maksua eikä hintaa. Hyväksyntä luo joukkueen ja joukkueen hallintasivun (osio 9a).
 --     Kirjoitukset vain RPC:iden kautta (request_team_account, admin_review_team_request). anon: ei mitään.
 create table if not exists public.team_requests (
   id            uuid primary key default gen_random_uuid(),
@@ -2373,10 +2352,11 @@ begin
   return rid;
 end $$;
 
--- Ylläpito: hyväksy / hylkää (hylkäyksessä syy pakollinen). Pyytäjä saa ilmoituksen.
+-- Ylläpito: hyväksy / hylkää (hylkäyksessä syy pakollinen). Hyväksyntä luo joukkueen (osio 9a, pyytäjästä
+-- joukkueenjohtaja) ja avaa hallintasivun; pyytäjä saa ilmoituksen.
 create or replace function public.admin_review_team_request(p_id uuid, p_status text, p_reason text default '') returns void
 language plpgsql security definer set search_path = public as $$
-declare r public.team_requests; v_reason text := left(btrim(coalesce(p_reason, '')), 300);
+declare r public.team_requests; v_reason text := left(btrim(coalesce(p_reason, '')), 300); tid uuid;
 begin
   if auth.uid() is null or not public.is_admin() then raise exception 'admin_only' using errcode = 'P0001'; end if;
   if p_status not in ('approved', 'rejected') then raise exception 'team_request_invalid' using errcode = 'P0001'; end if;
@@ -2389,8 +2369,9 @@ begin
          reviewed_by = auth.uid(), reviewed_at = now(), updated_at = now()
    where id = p_id;
   if p_status = 'approved' then
+    tid := public.create_team_from_request(r);
     perform public.notify(r.requester_id, '✅', 'team_request_approved', jsonb_build_object('name', r.team_name),
-      'Joukkuetilipyyntö “' || r.team_name || '” hyväksyttiin 🎉 Otamme sinuun pian yhteyttä.', 'team', r.id);
+      'Joukkuetilipyyntö “' || r.team_name || '” hyväksyttiin 🎉 Joukkueen hallintasivu on nyt avattu sinulle.', 'team', tid);
   else
     perform public.notify(r.requester_id, '❌', 'team_request_rejected', jsonb_build_object('name', r.team_name, 'reason', v_reason),
       'Joukkuetilipyyntöä “' || r.team_name || '” ei hyväksytty. Syy: ' || v_reason, 'team', r.id);
@@ -2561,11 +2542,11 @@ language sql stable security definer set search_path = public as $$
     (e.host_id is not null and e.host_id = auth.uid()) or public.is_admin()
     or (e.business_id is not null and public.business_can_post(e.business_id))))
 $$;
--- Kuvia saa lähettää tapahtuma- ja ryhmächatteihin (ei avunpyyntöjen chatteihin), vain jäsenet, ei estetyt
+-- Kuvia saa lähettää tapahtuma-, ryhmä- ja joukkuechatteihin (ei avunpyyntöjen chatteihin), vain jäsenet, ei estetyt
 create or replace function public.can_post_image(cid uuid) returns boolean
 language sql stable security definer set search_path = public as $$
   select not public.is_banned() and public.is_conversation_member(cid)
-     and exists (select 1 from public.conversations c where c.id = cid and c.kind in ('event','group'))
+     and exists (select 1 from public.conversations c where c.id = cid and c.kind in ('event','group','team'))
 $$;
 -- Ylläpito näkee chattikuvan vain, jos siitä on avoin ilmoitus
 create or replace function public.image_reported(p text) returns boolean
@@ -3126,6 +3107,1122 @@ begin
   revoke execute on function public.group_input_ok(text, text) from authenticated;
   revoke execute on function public.activities_after_insert() from public, anon, authenticated;
   revoke execute on function public.group_members_after_delete() from public, anon, authenticated;
+end $$;
+
+
+-- ---------------------------------------------------------------------
+-- 9. JOUKKUEIDEN JA YRITYSTEN HALLINTA (2026-10-02)
+--    9a joukkueet: ylläpidon hyväksymä joukkuetilipyyntö luo joukkueen (pyytäjä = joukkueenjohtaja);
+--       harjoitukset/pelit/palaverit + toistuvuus, paikat, ohjeet/ohjelma/muistiinpanot, joukkueen chat
+--       (conversations.kind 'team': kuvat, ilmoitukset, realtime), ilmoittautumiset, jäsenet ja roolit
+--       (joukkueenjohtaja, valmentaja, jäsen, huoltaja ↔ jäsen), kapteeni per tapahtuma, tittelit.
+--    9b yritykset: järjestäjät (omistaja hallitsee kutsulinkillä), toistuvat yritystapahtumat, hinta ja
+--       lisätiedot; päättynyt tilaus = vain luku.
+--    Kirjoitukset jäseniin, kutsuihin, ilmoittautumisiin ja sarjoihin vain RPC:iden kautta. anon: ei mitään.
+-- ---------------------------------------------------------------------
+
+-- Toistuvuus: päivät väliltä [p_from, p_to], joiden ISO-viikonpäivä (1 = ma … 7 = su) on listalla
+create or replace function public.series_dates(p_days int[], p_from date, p_to date) returns setof date
+language sql immutable as $$
+  select d::date from generate_series(p_from::timestamp, p_to::timestamp, interval '1 day') d
+  where extract(isodow from d)::int = any(p_days)
+$$;
+create or replace function public.valid_weekdays(p int[]) returns boolean
+language sql immutable as $$
+  select p is not null and cardinality(p) between 1 and 7 and p <@ array[1,2,3,4,5,6,7]
+$$;
+
+-- 9a. JOUKKUEET ------------------------------------------------------------
+
+-- teams: hyväksytystä pyynnöstä, kaupunki ja laji (lajilistasta oletustitteleitä varten)
+alter table public.teams add column if not exists team_request_id uuid;
+alter table public.teams add column if not exists city text not null default '';
+alter table public.teams add column if not exists activity_id text;
+do $$ begin
+  if not exists (select 1 from pg_constraint where conname = 'teams_team_request_id_fkey') then
+    alter table public.teams add constraint teams_team_request_id_fkey
+      foreign key (team_request_id) references public.team_requests(id) on delete set null;
+  end if;
+  if not exists (select 1 from pg_constraint where conname = 'teams_activity_id_fkey') then
+    alter table public.teams add constraint teams_activity_id_fkey
+      foreign key (activity_id) references public.activities(id) on update cascade on delete set null;
+  end if;
+end $$;
+create unique index if not exists teams_team_request_key on public.teams (team_request_id) where team_request_id is not null;
+alter table public.teams drop constraint if exists teams_name_check;
+alter table public.teams add constraint teams_name_check check (char_length(name) between 2 and 80);
+alter table public.teams drop constraint if exists teams_sport_check;
+alter table public.teams add constraint teams_sport_check check (char_length(sport) <= 60);
+alter table public.teams drop constraint if exists teams_description_check;
+alter table public.teams add constraint teams_description_check check (char_length(description) <= 800);
+alter table public.teams drop constraint if exists teams_city_check;
+alter table public.teams add constraint teams_city_check check (char_length(city) <= 60);
+
+-- team_members: roolit manager (joukkueenjohtaja) / coach / member / parent (huoltaja, linkitetty jäseneen),
+-- titteli (esim. maalivahti), jäsen ilman omaa tiliä (esim. junioripelaaja, nimi näkyy vain joukkueelle)
+alter table public.team_members drop constraint if exists team_members_role_check;
+update public.team_members set role = 'manager' where role = 'admin';
+update public.team_members set role = 'member' where role = 'player';
+alter table public.team_members add constraint team_members_role_check check (role in ('manager','coach','member','parent'));
+alter table public.team_members add column if not exists title text not null default '';
+alter table public.team_members add column if not exists display_name text not null default '';
+alter table public.team_members add column if not exists linked_member uuid;
+alter table public.team_members alter column user_id drop not null;
+do $$ begin
+  if not exists (select 1 from pg_constraint where conname = 'team_members_linked_member_fkey') then
+    alter table public.team_members add constraint team_members_linked_member_fkey
+      foreign key (linked_member) references public.team_members(id) on delete set null;
+  end if;
+end $$;
+alter table public.team_members drop constraint if exists team_members_title_check;
+alter table public.team_members add constraint team_members_title_check check (char_length(title) <= 40);
+alter table public.team_members drop constraint if exists team_members_identity_check;
+alter table public.team_members add constraint team_members_identity_check check (
+  (user_id is not null and display_name = '') or (user_id is null and char_length(display_name) between 2 and 40 and role = 'member'));
+alter table public.team_members drop constraint if exists team_members_parent_check;
+alter table public.team_members add constraint team_members_parent_check check (linked_member is null or role = 'parent');
+create index if not exists team_members_linked_idx on public.team_members (linked_member);
+
+-- team_roles = joukkueen omat tittelit (lajin oletustittelit tulevat sovelluksesta); team_places = tallennetut paikat
+alter table public.team_places add column if not exists created_at timestamptz not null default now();
+
+-- Toistuvat harjoitukset / pelit / palaverit
+create table if not exists public.team_event_series (
+  id            uuid primary key default gen_random_uuid(),
+  team_id       uuid not null references public.teams(id) on delete cascade,
+  kind          text not null default 'training' check (kind in ('training','game','meeting')),
+  title         text not null check (char_length(title) between 2 and 60),
+  description   text not null default '' check (char_length(description) <= 400),
+  weekdays      int[] not null check (public.valid_weekdays(weekdays)),
+  start_time    time not null,
+  duration_min  int not null default 90 check (duration_min between 5 and 1440),
+  starts_on     date not null,
+  ends_on       date not null,
+  place_id      uuid references public.team_places(id) on delete set null,
+  place_name    text not null default '' check (char_length(place_name) <= 60),
+  place_address text not null default '' check (char_length(place_address) <= 120),
+  created_by    uuid default auth.uid() references public.profiles(id) on delete set null,
+  created_at    timestamptz not null default now(),
+  updated_at    timestamptz not null default now(),
+  constraint team_event_series_range check (ends_on >= starts_on and ends_on <= starts_on + 400)
+);
+create index if not exists team_event_series_team_idx on public.team_event_series (team_id);
+
+-- team_events: live-kannassa event_time oli tekstiä (''), muutetaan time-tyypiksi
+do $$ begin
+  if exists (select 1 from information_schema.columns where table_schema = 'public' and table_name = 'team_events'
+             and column_name = 'event_time' and data_type <> 'time without time zone') then
+    alter table public.team_events alter column event_time drop default;
+    alter table public.team_events alter column event_time drop not null;
+    alter table public.team_events alter column event_time type time using
+      (case when btrim(event_time::text) ~ '^[0-9]{1,2}:[0-9]{2}(:[0-9]{2})?$' then btrim(event_time::text)::time end);
+  end if;
+end $$;
+alter table public.team_events alter column place_name set default '';
+alter table public.team_events alter column place_address set default '';
+alter table public.team_events add column if not exists kind text not null default 'training';
+alter table public.team_events add column if not exists duration_min int not null default 90;
+alter table public.team_events add column if not exists series_id uuid;
+alter table public.team_events add column if not exists cancelled boolean not null default false;
+alter table public.team_events add column if not exists modified boolean not null default false;
+alter table public.team_events add column if not exists captain_member uuid;
+alter table public.team_events add column if not exists opponent text not null default '';
+do $$ begin
+  if not exists (select 1 from pg_constraint where conname = 'team_events_series_id_fkey') then
+    alter table public.team_events add constraint team_events_series_id_fkey
+      foreign key (series_id) references public.team_event_series(id) on delete set null;
+  end if;
+  if not exists (select 1 from pg_constraint where conname = 'team_events_captain_member_fkey') then
+    alter table public.team_events add constraint team_events_captain_member_fkey
+      foreign key (captain_member) references public.team_members(id) on delete set null;
+  end if;
+end $$;
+alter table public.team_events drop constraint if exists team_events_kind_check;
+alter table public.team_events add constraint team_events_kind_check check (kind in ('training','game','meeting'));
+alter table public.team_events drop constraint if exists team_events_duration_check;
+alter table public.team_events add constraint team_events_duration_check check (duration_min between 5 and 1440);
+alter table public.team_events drop constraint if exists team_events_description_check;
+alter table public.team_events add constraint team_events_description_check check (char_length(description) <= 400);
+alter table public.team_events drop constraint if exists team_events_opponent_check;
+alter table public.team_events add constraint team_events_opponent_check check (char_length(opponent) <= 60);
+alter table public.team_events drop constraint if exists team_events_place_name_check;
+alter table public.team_events add constraint team_events_place_name_check check (place_name is null or char_length(place_name) <= 60);
+alter table public.team_events drop constraint if exists team_events_place_address_check;
+alter table public.team_events add constraint team_events_place_address_check check (place_address is null or char_length(place_address) <= 120);
+alter table public.team_events drop constraint if exists team_events_max_participants_check;
+alter table public.team_events add constraint team_events_max_participants_check check (max_participants is null or max_participants >= 1);
+create index if not exists team_events_series_idx on public.team_events (series_id, event_date);
+
+-- Ilmoittautumiset jäsenriveittäin (huoltaja vastaa linkitetyn jäsenen puolesta; jäsen ilman tiliä mahdollinen)
+alter table public.team_event_rsvps add column if not exists member_id uuid;
+alter table public.team_event_rsvps add column if not exists responded_by uuid;
+alter table public.team_event_rsvps add column if not exists updated_at timestamptz not null default now();
+alter table public.team_event_rsvps alter column user_id drop not null;
+do $$ begin
+  if not exists (select 1 from pg_constraint where conname = 'team_event_rsvps_member_id_fkey') then
+    alter table public.team_event_rsvps add constraint team_event_rsvps_member_id_fkey
+      foreign key (member_id) references public.team_members(id) on delete cascade;
+  end if;
+  if not exists (select 1 from pg_constraint where conname = 'team_event_rsvps_responded_by_fkey') then
+    alter table public.team_event_rsvps add constraint team_event_rsvps_responded_by_fkey
+      foreign key (responded_by) references public.profiles(id) on delete set null;
+  end if;
+end $$;
+update public.team_event_rsvps r set member_id = m.id from public.team_events e, public.team_members m
+  where r.member_id is null and e.id = r.event_id and m.team_id = e.team_id and m.user_id = r.user_id;
+delete from public.team_event_rsvps where member_id is null;
+alter table public.team_event_rsvps alter column member_id set not null;
+alter table public.team_event_rsvps drop constraint if exists team_event_rsvps_status_check;
+alter table public.team_event_rsvps add constraint team_event_rsvps_status_check check (status in ('going','maybe','no'));
+alter table public.team_event_rsvps drop constraint if exists team_event_rsvps_event_id_user_id_key;
+create unique index if not exists team_event_rsvps_event_member_key on public.team_event_rsvps (event_id, member_id);
+
+-- Ohjeet, ohjelma ja muistiinpanot (muistiinpanot voi rajata vain valmentajille/johdolle)
+create table if not exists public.team_docs (
+  id          uuid primary key default gen_random_uuid(),
+  team_id     uuid not null references public.teams(id) on delete cascade,
+  kind        text not null default 'instructions' check (kind in ('instructions','programme','notes')),
+  title       text not null check (char_length(title) between 1 and 80),
+  body        text not null default '' check (char_length(body) <= 8000),
+  staff_only  boolean not null default false,
+  sort_order  int not null default 0,
+  updated_by  uuid default auth.uid() references public.profiles(id) on delete set null,
+  created_at  timestamptz not null default now(),
+  updated_at  timestamptz not null default now()
+);
+create index if not exists team_docs_team_idx on public.team_docs (team_id, kind, sort_order);
+
+-- Kutsut: kaverikutsu (ilmoitus) ja kutsulinkki (token; huoltajalinkki voi kohdistua tiettyyn jäseneen)
+create table if not exists public.team_invites (
+  team_id    uuid not null references public.teams(id) on delete cascade,
+  invitee_id uuid not null references public.profiles(id) on delete cascade,
+  inviter_id uuid references public.profiles(id) on delete set null,
+  role       text not null default 'member' check (role in ('member','parent','coach')),
+  created_at timestamptz not null default now(),
+  primary key (team_id, invitee_id)
+);
+create index if not exists team_invites_invitee_idx on public.team_invites (invitee_id);
+create table if not exists public.team_invite_links (
+  token       uuid primary key default gen_random_uuid(),
+  team_id     uuid not null references public.teams(id) on delete cascade,
+  role        text not null default 'member' check (role in ('member','parent','coach')),
+  for_member  uuid references public.team_members(id) on delete cascade,
+  created_by  uuid references public.profiles(id) on delete set null,
+  created_at  timestamptz not null default now(),
+  expires_at  timestamptz not null default now() + interval '14 days',
+  max_uses    int not null default 30 check (max_uses between 1 and 200),
+  uses        int not null default 0,
+  revoked     boolean not null default false,
+  constraint team_invite_links_parent check (for_member is null or role = 'parent')
+);
+create index if not exists team_invite_links_team_idx on public.team_invite_links (team_id, created_at desc);
+
+-- Joukkueen chat = conversations.kind 'team'
+alter table public.conversations add column if not exists team_id uuid;
+do $$ begin
+  if not exists (select 1 from pg_constraint where conname = 'conversations_team_id_fkey') then
+    alter table public.conversations add constraint conversations_team_id_fkey
+      foreign key (team_id) references public.teams(id) on delete cascade;
+  end if;
+  if not exists (select 1 from pg_constraint where conname = 'conversations_team_id_key') then
+    alter table public.conversations add constraint conversations_team_id_key unique (team_id);
+  end if;
+end $$;
+alter table public.conversations drop constraint if exists conversations_kind_check;
+alter table public.conversations add constraint conversations_kind_check check (kind in ('event','help','group','team'));
+alter table public.conversations drop constraint if exists conversations_target;
+alter table public.conversations add constraint conversations_target check (
+  (kind = 'event' and event_id is not null and help_request_id is null and group_id is null and team_id is null) or
+  (kind = 'help'  and help_request_id is not null and event_id is null and group_id is null and team_id is null) or
+  (kind = 'group' and group_id is not null and event_id is null and help_request_id is null and team_id is null) or
+  (kind = 'team'  and team_id is not null and event_id is null and help_request_id is null and group_id is null));
+
+-- Apufunktiot: rooli ja jäsenyys (team_role, is_team_*) ovat osiossa 7b
+create or replace function public.team_member_count(tid uuid) returns int
+language sql stable security definer set search_path = public as $$
+  select count(*)::int from public.team_members where team_id = tid
+$$;
+create or replace function public.team_staff_ids(tid uuid) returns setof uuid
+language sql stable security definer set search_path = public as $$
+  select user_id from public.team_members where team_id = tid and role in ('manager','coach') and user_id is not null
+  union select owner_id from public.teams where id = tid
+$$;
+create or replace function public.team_conv(tid uuid) returns uuid
+language sql stable security definer set search_path = public as $$
+  select id from public.conversations where team_id = tid
+$$;
+
+-- Joukkueen luonti vain ylläpidon hyväksynnästä (ei suoraa insertiä). Uudelleenajettava: sama pyyntö = sama joukkue.
+create or replace function public.create_team_from_request(r public.team_requests) returns uuid
+language plpgsql security definer set search_path = public as $$
+declare tid uuid; cid uuid; act text;
+begin
+  select id into tid from public.teams where team_request_id = r.id;
+  if tid is not null then return tid; end if;
+  select a.id into act from public.activities a
+    where a.status = 'approved' and (lower(a.name) = lower(r.sport) or exists (
+      select 1 from jsonb_each_text(a.name_i18n) n where lower(n.value) = lower(r.sport))) limit 1;
+  insert into public.teams (name, sport, description, city, owner_id, team_request_id, activity_id)
+  values (left(r.team_name, 80), left(r.sport, 60), left(r.description, 800), left(r.city, 60), r.requester_id, r.id, act)
+  returning id into tid;
+  insert into public.team_members (team_id, user_id, role) values (tid, r.requester_id, 'manager')
+    on conflict (team_id, user_id) do update set role = 'manager';
+  insert into public.conversations (kind, team_id) values ('team', tid) returning id into cid;
+  perform public.post_system_message(cid, 'team_created', jsonb_build_object('name', r.team_name),
+    'Joukkue “' || r.team_name || '” on valmis – tervetuloa! 👋');
+  return tid;
+end $$;
+
+-- admin_review_team_request (7e) kutsuu create_team_from_request-funktiota hyväksynnässä
+
+create or replace function public.update_team(p_id uuid, p jsonb) returns void
+language plpgsql security definer set search_path = public as $$
+declare t public.teams; v_act text;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  select * into t from public.teams where id = p_id for update;
+  if not found then raise exception 'team_not_found' using errcode = 'P0001'; end if;
+  if not public.is_team_admin(p_id) then raise exception 'team_manager_only' using errcode = 'P0001'; end if;
+  v_act := case when p ? 'activity_id' then nullif(p->>'activity_id', '') else t.activity_id end;
+  if v_act is not null and not exists (select 1 from public.activities where id = v_act) then v_act := null; end if;
+  update public.teams set
+    name = coalesce(nullif(btrim(regexp_replace(coalesce(p->>'name', ''), '\s+', ' ', 'g')), ''), t.name),
+    description = case when p ? 'description' then left(btrim(coalesce(p->>'description', '')), 800) else t.description end,
+    sport = case when p ? 'sport' then left(btrim(coalesce(p->>'sport', '')), 60) else t.sport end,
+    city = case when p ? 'city' then left(btrim(coalesce(p->>'city', '')), 60) else t.city end,
+    activity_id = v_act
+  where id = p_id;
+end $$;
+
+-- Jäsenen lisäys (sisäinen): kutsulinkki / kaverikutsu. Huoltajalinkki liittää huoltajan valittuun jäseneen.
+create or replace function public.team_add_member(tid uuid, uid uuid, p_role text, p_for uuid) returns uuid
+language plpgsql security definer set search_path = public as $$
+declare mid uuid; nm text; t public.teams; r record;
+begin
+  select id into mid from public.team_members where team_id = tid and user_id = uid;
+  if mid is not null then
+    if p_for is not null then
+      update public.team_members set linked_member = p_for, role = 'parent' where id = mid and role in ('member','parent');
+    end if;
+    return mid;
+  end if;
+  insert into public.team_members (team_id, user_id, role, linked_member)
+    values (tid, uid, coalesce(p_role, 'member'), case when p_role = 'parent' then p_for end) returning id into mid;
+  delete from public.team_invites where team_id = tid and invitee_id = uid;
+  select * into t from public.teams where id = tid;
+  nm := public.display_name_of(uid);
+  perform public.post_system_message(public.team_conv(tid), 'joined', jsonb_build_object('name', nm), nm || ' liittyi mukaan 🎉');
+  for r in select s from public.team_staff_ids(tid) s loop
+    if r.s <> uid then
+      perform public.notify(r.s, '👥', 'team_member_joined', jsonb_build_object('name', nm, 'team', t.name),
+        nm || ' liittyi joukkueeseen “' || t.name || '”', 'team', tid);
+    end if;
+  end loop;
+  return mid;
+end $$;
+
+-- Kutsulinkit (henkilökunta luo; valmentajalinkin vain joukkueenjohtaja). Huoltajalinkki voi kohdistua jäseneen.
+create or replace function public.create_team_invite_link(p_team uuid, p_role text default 'member', p_for uuid default null) returns uuid
+language plpgsql security definer set search_path = public as $$
+declare tok uuid;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  if not public.is_team_coach(p_team) then raise exception 'team_staff_only' using errcode = 'P0001'; end if;
+  if coalesce(p_role, '') not in ('member','parent','coach') then raise exception 'team_role_invalid' using errcode = 'P0001'; end if;
+  if p_role = 'coach' and not public.is_team_admin(p_team) then raise exception 'team_manager_only' using errcode = 'P0001'; end if;
+  if p_for is not null and (p_role <> 'parent' or not exists (
+       select 1 from public.team_members where id = p_for and team_id = p_team and role = 'member')) then
+    raise exception 'team_member_not_found' using errcode = 'P0001';
+  end if;
+  if (select count(*) from public.team_invite_links where team_id = p_team and created_at > now() - interval '1 day') >= 30 then
+    raise exception 'too_many_invite_links' using errcode = 'P0001';
+  end if;
+  insert into public.team_invite_links (team_id, role, for_member, created_by) values (p_team, p_role, p_for, auth.uid())
+    returning token into tok;
+  return tok;
+end $$;
+
+create or replace function public.revoke_team_invite_link(p_token uuid) returns void
+language plpgsql security definer set search_path = public as $$
+declare tid uuid;
+begin
+  select team_id into tid from public.team_invite_links where token = p_token;
+  if tid is null or not public.is_team_coach(tid) then raise exception 'team_staff_only' using errcode = 'P0001'; end if;
+  update public.team_invite_links set revoked = true where token = p_token;
+end $$;
+
+-- Linkin esikatselu kirjautuneelle (joukkueen nimi, laji, rooli, kohdejäsen) – ei jäsenlistaa
+create or replace function public.team_link_preview(p_token uuid) returns jsonb
+language plpgsql stable security definer set search_path = public as $$
+declare l public.team_invite_links; t public.teams;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  select * into l from public.team_invite_links where token = p_token;
+  if not found or l.revoked or l.expires_at < now() or l.uses >= l.max_uses then
+    raise exception 'invite_link_invalid' using errcode = 'P0001';
+  end if;
+  select * into t from public.teams where id = l.team_id;
+  return jsonb_build_object('team_id', t.id, 'name', t.name, 'sport', t.sport, 'city', t.city, 'activity_id', t.activity_id,
+    'role', l.role, 'member_name', (select coalesce(nullif(m.display_name, ''), public.display_name_of(m.user_id))
+                                      from public.team_members m where m.id = l.for_member),
+    'already_member', public.is_team_member(t.id), 'members', public.team_member_count(t.id));
+end $$;
+
+create or replace function public.join_team_by_link(p_token uuid) returns uuid
+language plpgsql security definer set search_path = public as $$
+declare l public.team_invite_links; was boolean;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  select * into l from public.team_invite_links where token = p_token for update;
+  if not found or l.revoked or l.expires_at < now() or l.uses >= l.max_uses then
+    raise exception 'invite_link_invalid' using errcode = 'P0001';
+  end if;
+  was := exists (select 1 from public.team_members where team_id = l.team_id and user_id = auth.uid());
+  perform public.team_add_member(l.team_id, auth.uid(), l.role, l.for_member);
+  if not was then update public.team_invite_links set uses = uses + 1 where token = p_token; end if;
+  return l.team_id;
+end $$;
+
+-- Kaverikutsu (vain kavereille) + vastaus
+create or replace function public.invite_to_team(p_team uuid, p_user uuid, p_role text default 'member') returns void
+language plpgsql security definer set search_path = public as $$
+declare t public.teams; nm text;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  if not public.is_team_coach(p_team) then raise exception 'team_staff_only' using errcode = 'P0001'; end if;
+  if coalesce(p_role, '') not in ('member','parent','coach') then raise exception 'team_role_invalid' using errcode = 'P0001'; end if;
+  if p_role = 'coach' and not public.is_team_admin(p_team) then raise exception 'team_manager_only' using errcode = 'P0001'; end if;
+  if p_user is null or p_user = auth.uid() or not public.are_friends(auth.uid(), p_user) then
+    raise exception 'not_friends' using errcode = 'P0001';
+  end if;
+  if exists (select 1 from public.team_members where team_id = p_team and user_id = p_user) then
+    raise exception 'already_team_member' using errcode = 'P0001';
+  end if;
+  if (select count(*) from public.team_invites where team_id = p_team and created_at > now() - interval '1 day') >= 100 then
+    raise exception 'too_many_invites' using errcode = 'P0001';
+  end if;
+  select * into t from public.teams where id = p_team;
+  insert into public.team_invites (team_id, invitee_id, inviter_id, role) values (p_team, p_user, auth.uid(), p_role)
+    on conflict (team_id, invitee_id) do update set role = excluded.role, inviter_id = excluded.inviter_id, created_at = now();
+  nm := public.display_name_of(auth.uid());
+  perform public.notify(p_user, '👥', 'team_invite', jsonb_build_object('name', nm, 'team', t.name),
+    nm || ' kutsui sinut joukkueeseen “' || t.name || '”', 'team', p_team);
+end $$;
+
+create or replace function public.respond_team_invite(p_team uuid, p_accept boolean) returns void
+language plpgsql security definer set search_path = public as $$
+declare i public.team_invites;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  select * into i from public.team_invites where team_id = p_team and invitee_id = auth.uid() for update;
+  if not found then raise exception 'team_invite_not_found' using errcode = 'P0001'; end if;
+  delete from public.team_invites where team_id = p_team and invitee_id = auth.uid();
+  if p_accept then
+    if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+    perform public.team_add_member(p_team, auth.uid(), i.role, null);
+  end if;
+end $$;
+
+-- Jäsen ilman omaa tiliä (esim. juniori, jonka huoltaja ilmoittaa)
+create or replace function public.add_team_roster_member(p_team uuid, p_name text, p_title text default '') returns uuid
+language plpgsql security definer set search_path = public as $$
+declare v text := btrim(regexp_replace(coalesce(p_name, ''), '\s+', ' ', 'g')); mid uuid;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  if not public.is_team_coach(p_team) then raise exception 'team_staff_only' using errcode = 'P0001'; end if;
+  if char_length(v) not between 2 and 40 then raise exception 'team_member_name_invalid' using errcode = 'P0001'; end if;
+  if public.team_member_count(p_team) >= 300 then raise exception 'team_full' using errcode = 'P0001'; end if;
+  insert into public.team_members (team_id, user_id, role, display_name, title)
+    values (p_team, null, 'member', v, left(btrim(coalesce(p_title, '')), 40)) returning id into mid;
+  return mid;
+end $$;
+
+-- Rooli, titteli ja huoltajan linkitys. Roolit ja linkit: joukkueenjohtaja; titteli: henkilökunta. Omistaja pysyy johtajana.
+create or replace function public.set_team_member(p_member uuid, p jsonb) returns void
+language plpgsql security definer set search_path = public as $$
+declare m public.team_members; t public.teams; v_role text; v_link uuid; v_title text; v_name text;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  select * into m from public.team_members where id = p_member for update;
+  if not found then raise exception 'team_member_not_found' using errcode = 'P0001'; end if;
+  if not public.is_team_coach(m.team_id) then raise exception 'team_staff_only' using errcode = 'P0001'; end if;
+  select * into t from public.teams where id = m.team_id;
+  v_role := coalesce(nullif(p->>'role', ''), m.role);
+  v_link := case when p ? 'linked_member' then nullif(p->>'linked_member', '')::uuid else m.linked_member end;
+  v_title := case when p ? 'title' then left(btrim(coalesce(p->>'title', '')), 40) else m.title end;
+  v_name := case when p ? 'display_name' and m.user_id is null
+                 then btrim(regexp_replace(coalesce(p->>'display_name', ''), '\s+', ' ', 'g')) else m.display_name end;
+  if (v_role <> m.role or v_link is distinct from m.linked_member) and not public.is_team_admin(m.team_id) then
+    raise exception 'team_manager_only' using errcode = 'P0001';
+  end if;
+  if v_role not in ('manager','coach','member','parent') then raise exception 'team_role_invalid' using errcode = 'P0001'; end if;
+  if m.user_id is null and v_role <> 'member' then raise exception 'team_role_invalid' using errcode = 'P0001'; end if;
+  if m.user_id = t.owner_id and v_role <> 'manager' then raise exception 'team_owner_stays_manager' using errcode = 'P0001'; end if;
+  if v_role <> 'parent' then v_link := null; end if;
+  if v_link is not null and not exists (select 1 from public.team_members x where x.id = v_link and x.team_id = m.team_id
+                                         and x.role = 'member' and x.id <> m.id) then
+    raise exception 'team_member_not_found' using errcode = 'P0001';
+  end if;
+  if m.user_id is null and char_length(v_name) not between 2 and 40 then raise exception 'team_member_name_invalid' using errcode = 'P0001'; end if;
+  if m.role = 'member' and v_role <> 'member' then
+    update public.team_members set linked_member = null where linked_member = m.id;
+  end if;
+  update public.team_members set role = v_role, linked_member = v_link, title = v_title, display_name = v_name where id = m.id;
+  if v_role <> m.role and v_role in ('manager','coach') and m.user_id is not null and m.user_id <> auth.uid() then
+    perform public.notify(m.user_id, '⭐', 'team_role_' || v_role, jsonb_build_object('team', t.name),
+      'Sinut nimettiin ' || case when v_role = 'manager' then 'joukkueenjohtajaksi' else 'valmentajaksi' end
+      || ' joukkueessa “' || t.name || '”', 'team', t.id);
+  end if;
+end $$;
+
+-- Poisto: johtaja kenet tahansa (ei omistajaa), valmentaja tilittömät jäsenet, jäsen itsensä (lähtö)
+create or replace function public.remove_team_member(p_member uuid) returns void
+language plpgsql security definer set search_path = public as $$
+declare m public.team_members; t public.teams; nm text;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  select * into m from public.team_members where id = p_member for update;
+  if not found then raise exception 'team_member_not_found' using errcode = 'P0001'; end if;
+  select * into t from public.teams where id = m.team_id;
+  if m.user_id is not null and m.user_id = t.owner_id then raise exception 'team_owner_stays_manager' using errcode = 'P0001'; end if;
+  if not (m.user_id = auth.uid() or public.is_team_admin(m.team_id)
+          or (m.user_id is null and public.is_team_coach(m.team_id))) then
+    raise exception 'team_manager_only' using errcode = 'P0001';
+  end if;
+  nm := coalesce(nullif(m.display_name, ''), public.display_name_of(m.user_id));
+  delete from public.team_members where id = m.id;
+  if m.user_id is not null then
+    if m.user_id = auth.uid() then
+      perform public.post_system_message(public.team_conv(t.id), 'team_left', jsonb_build_object('name', nm), nm || ' lähti joukkueesta');
+    else
+      perform public.post_system_message(public.team_conv(t.id), 'team_member_removed', jsonb_build_object('name', nm),
+        nm || ' poistettiin joukkueesta');
+      perform public.notify(m.user_id, '👋', 'team_removed', jsonb_build_object('team', t.name),
+        'Sinut poistettiin joukkueesta “' || t.name || '”', 'team', t.id);
+    end if;
+  end if;
+end $$;
+
+-- Tapahtuman tarkistukset: paikka, kapteeni ja sarja samasta joukkueesta; sarjan esiintymän muokkaus = "muokattu"
+create or replace function public.team_events_before_write() returns trigger
+language plpgsql security definer set search_path = public as $$
+begin
+  if tg_op = 'UPDATE' then
+    new.team_id := old.team_id; new.created_by := old.created_by; new.created_at := old.created_at;
+    if new.series_id is distinct from old.series_id and new.series_id is not null then new.series_id := old.series_id; end if;
+  end if;
+  new.title := btrim(regexp_replace(coalesce(new.title, ''), '\s+', ' ', 'g'));
+  new.description := btrim(coalesce(new.description, ''));
+  new.opponent := btrim(coalesce(new.opponent, ''));
+  new.place_name := btrim(coalesce(new.place_name, ''));
+  new.place_address := btrim(coalesce(new.place_address, ''));
+  if new.place_id is not null and not exists (select 1 from public.team_places p where p.id = new.place_id and p.team_id = new.team_id) then
+    raise exception 'team_place_not_found' using errcode = 'P0001';
+  end if;
+  if new.captain_member is not null and not exists (
+       select 1 from public.team_members m where m.id = new.captain_member and m.team_id = new.team_id and m.role in ('member','coach','manager')) then
+    raise exception 'team_member_not_found' using errcode = 'P0001';
+  end if;
+  if new.series_id is not null and not exists (select 1 from public.team_event_series s where s.id = new.series_id and s.team_id = new.team_id) then
+    raise exception 'team_series_not_found' using errcode = 'P0001';
+  end if;
+  if tg_op = 'UPDATE' and new.series_id is not null and coalesce(current_setting('molaplan.series_sync', true), '') <> '1'
+     and (new.event_date, new.event_time, new.duration_min, new.title, new.description, new.place_id, new.place_name, new.place_address, new.kind)
+         is distinct from (old.event_date, old.event_time, old.duration_min, old.title, old.description, old.place_id, old.place_name, old.place_address, old.kind) then
+    new.modified := true;
+  end if;
+  return new;
+end $$;
+drop trigger if exists team_events_before_write on public.team_events;
+create trigger team_events_before_write before insert or update on public.team_events
+  for each row execute function public.team_events_before_write();
+
+-- Peruttu → ilmoitus tuleville/ehkä tuleville (ja linkitetyille huoltajille) + viesti joukkueen chattiin
+create or replace function public.team_events_after_update() returns trigger
+language plpgsql security definer set search_path = public as $$
+declare r record; t public.teams; d text;
+begin
+  if new.cancelled and not old.cancelled then
+    select * into t from public.teams where id = new.team_id;
+    d := to_char(new.event_date, 'DD.MM.') || coalesce(' ' || to_char(new.event_time, 'HH24:MI'), '');
+    for r in
+      select distinct u from (
+        select m.user_id u from public.team_event_rsvps x join public.team_members m on m.id = x.member_id
+         where x.event_id = new.id and x.status in ('going','maybe') and m.user_id is not null
+        union
+        select p.user_id from public.team_event_rsvps x join public.team_members p on p.linked_member = x.member_id
+         where x.event_id = new.id and x.status in ('going','maybe') and p.user_id is not null) q
+      where u is distinct from auth.uid()
+    loop
+      perform public.notify(r.u, '🚫', 'team_event_cancelled', jsonb_build_object('title', new.title, 'date', d, 'team', t.name),
+        '“' || new.title || '” (' || d || ') on peruttu – ' || t.name, 'team', new.team_id);
+    end loop;
+    perform public.post_system_message(public.team_conv(new.team_id), 'team_event_cancelled',
+      jsonb_build_object('title', new.title, 'date', d, 'team', t.name), '“' || new.title || '” (' || d || ') on peruttu');
+  end if;
+  return null;
+end $$;
+drop trigger if exists team_events_after_update on public.team_events;
+create trigger team_events_after_update after update of cancelled on public.team_events
+  for each row execute function public.team_events_after_update();
+
+-- Toistuvat tapahtumat: luonti ja muokkaus. Muokkaus päivittää tulevat, muokkaamattomat ja perumattomat
+-- esiintymät päivämäärän mukaan (ilmoittautumiset säilyvät); poistuneet päivät poistetaan, uudet lisätään.
+create or replace function public.save_team_series(p jsonb) returns uuid
+language plpgsql security definer set search_path = public as $$
+declare s public.team_event_series; sid uuid := nullif(p->>'id', '')::uuid; tid uuid; v_days int[]; v_from date; v_to date;
+  v_title text := btrim(regexp_replace(coalesce(p->>'title', ''), '\s+', ' ', 'g'));
+  v_kind text := coalesce(nullif(p->>'kind', ''), 'training'); v_time time; v_dur int; v_place uuid;
+  v_pname text := left(btrim(coalesce(p->>'place_name', '')), 60); v_paddr text := left(btrim(coalesce(p->>'place_address', '')), 120);
+  v_desc text := left(btrim(coalesce(p->>'description', '')), 400); today date := public.today_fi(); n int;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  if sid is not null then
+    select * into s from public.team_event_series where id = sid for update;
+    if not found then raise exception 'team_series_not_found' using errcode = 'P0001'; end if;
+    tid := s.team_id;
+  else
+    tid := nullif(p->>'team_id', '')::uuid;
+  end if;
+  if tid is null or not public.is_team_coach(tid) then raise exception 'team_staff_only' using errcode = 'P0001'; end if;
+  begin
+    v_days := array(select distinct x::int from jsonb_array_elements_text(coalesce(p->'weekdays', '[]'::jsonb)) x order by 1);
+    v_time := (p->>'start_time')::time;
+    v_dur := coalesce(nullif(p->>'duration_min', '')::int, 90);
+    v_from := (p->>'starts_on')::date;
+    v_to := (p->>'ends_on')::date;
+    v_place := nullif(p->>'place_id', '')::uuid;
+  exception when others then raise exception 'team_series_invalid' using errcode = 'P0001';
+  end;
+  if not public.valid_weekdays(v_days) or v_time is null or v_from is null or v_to is null or v_to < v_from
+     or v_to > v_from + 400 or v_dur not between 5 and 1440 or char_length(v_title) not between 2 and 60
+     or v_kind not in ('training','game','meeting') or (sid is null and v_to < today) then
+    raise exception 'team_series_invalid' using errcode = 'P0001';
+  end if;
+  if v_place is not null then
+    select name, address into v_pname, v_paddr from public.team_places where id = v_place and team_id = tid;
+    if not found then raise exception 'team_place_not_found' using errcode = 'P0001'; end if;
+  end if;
+  select count(*) into n from public.series_dates(v_days, greatest(v_from, today), v_to);
+  if n > 370 then raise exception 'team_series_too_long' using errcode = 'P0001'; end if;
+  perform set_config('molaplan.series_sync', '1', true);
+  if sid is null then
+    insert into public.team_event_series (team_id, kind, title, description, weekdays, start_time, duration_min, starts_on, ends_on,
+                                          place_id, place_name, place_address, created_by)
+      values (tid, v_kind, v_title, v_desc, v_days, v_time, v_dur, v_from, v_to, v_place, v_pname, v_paddr, auth.uid())
+      returning id into sid;
+  else
+    update public.team_event_series set kind = v_kind, title = v_title, description = v_desc, weekdays = v_days, start_time = v_time,
+      duration_min = v_dur, starts_on = v_from, ends_on = v_to, place_id = v_place, place_name = v_pname, place_address = v_paddr,
+      updated_at = now() where id = sid;
+    delete from public.team_events e where e.series_id = sid and e.event_date >= today and not e.modified and not e.cancelled
+      and e.event_date not in (select public.series_dates(v_days, greatest(v_from, today), v_to));
+    update public.team_events e set kind = v_kind, title = v_title, description = v_desc, event_time = v_time, duration_min = v_dur,
+      place_id = v_place, place_name = v_pname, place_address = v_paddr
+      where e.series_id = sid and e.event_date >= today and not e.modified and not e.cancelled;
+  end if;
+  insert into public.team_events (team_id, series_id, kind, title, description, event_date, event_time, duration_min,
+                                  place_id, place_name, place_address, created_by)
+    select tid, sid, v_kind, v_title, v_desc, d, v_time, v_dur, v_place, v_pname, v_paddr, auth.uid()
+      from public.series_dates(v_days, greatest(v_from, today), v_to) d
+     where not exists (select 1 from public.team_events e where e.series_id = sid and e.event_date = d);
+  perform set_config('molaplan.series_sync', '0', true);
+  return sid;
+end $$;
+
+-- Sarjan poisto: tulevat esiintymät poistetaan, menneet jäävät (series_id → null)
+create or replace function public.delete_team_series(p_id uuid) returns void
+language plpgsql security definer set search_path = public as $$
+declare tid uuid;
+begin
+  select team_id into tid from public.team_event_series where id = p_id;
+  if tid is null or not public.is_team_coach(tid) then raise exception 'team_staff_only' using errcode = 'P0001'; end if;
+  delete from public.team_events where series_id = p_id and event_date >= public.today_fi();
+  delete from public.team_event_series where id = p_id;
+end $$;
+
+-- Ilmoittautuminen: oma, huoltaja linkitetyn jäsenen puolesta tai henkilökunta kenen tahansa puolesta.
+-- p_status null = vastaus pois. Peruttuun tai menneeseen ei voi enää ilmoittautua (henkilökunta voi kirjata jälkikäteen).
+create or replace function public.team_rsvp(p_event uuid, p_member uuid, p_status text) returns void
+language plpgsql security definer set search_path = public as $$
+declare e public.team_events; m public.team_members; staff boolean;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  select * into e from public.team_events where id = p_event;
+  if not found or not public.is_team_member(e.team_id) then raise exception 'team_event_not_found' using errcode = 'P0001'; end if;
+  select * into m from public.team_members where id = p_member and team_id = e.team_id;
+  if not found then raise exception 'team_member_not_found' using errcode = 'P0001'; end if;
+  staff := public.is_team_coach(e.team_id);
+  if not (m.user_id = auth.uid() or staff or exists (
+            select 1 from public.team_members p where p.team_id = e.team_id and p.user_id = auth.uid()
+               and p.role = 'parent' and p.linked_member = m.id)) then
+    raise exception 'team_rsvp_not_allowed' using errcode = 'P0001';
+  end if;
+  if m.role = 'parent' then raise exception 'team_rsvp_not_allowed' using errcode = 'P0001'; end if;
+  if not staff and (e.cancelled or e.event_date < public.today_fi()) then raise exception 'team_event_closed' using errcode = 'P0001'; end if;
+  if p_status is null or p_status = '' then
+    delete from public.team_event_rsvps where event_id = p_event and member_id = p_member;
+    return;
+  end if;
+  if p_status not in ('going','maybe','no') then raise exception 'team_rsvp_invalid' using errcode = 'P0001'; end if;
+  if p_status = 'going' and e.max_participants is not null and (
+       select count(*) from public.team_event_rsvps where event_id = p_event and status = 'going' and member_id <> p_member) >= e.max_participants then
+    raise exception 'event_full' using errcode = 'P0001';
+  end if;
+  insert into public.team_event_rsvps (event_id, member_id, user_id, status, responded_by, updated_at)
+    values (p_event, p_member, m.user_id, p_status, auth.uid(), now())
+    on conflict (event_id, member_id) do update set status = excluded.status, responded_by = excluded.responded_by, updated_at = now();
+end $$;
+
+-- Omistajan poistuminen (tilin poisto) → seuraava joukkueenjohtaja tai valmentaja omistajaksi
+create or replace function public.teams_owner_handover() returns trigger
+language plpgsql security definer set search_path = public as $$
+declare nxt uuid;
+begin
+  if exists (select 1 from public.teams t where t.id = old.team_id and t.owner_id = old.user_id) then
+    select user_id into nxt from public.team_members where team_id = old.team_id and user_id is not null
+      order by (role = 'manager') desc, (role = 'coach') desc, joined_at limit 1;
+    if nxt is not null then
+      update public.teams set owner_id = nxt where id = old.team_id;
+      update public.team_members set role = 'manager' where team_id = old.team_id and user_id = nxt;
+    end if;
+  end if;
+  return null;
+end $$;
+drop trigger if exists teams_owner_handover on public.team_members;
+create trigger teams_owner_handover after delete on public.team_members
+  for each row execute function public.teams_owner_handover();
+
+create or replace function public.team_docs_before_write() returns trigger
+language plpgsql as $$
+begin
+  if tg_op = 'UPDATE' then new.team_id := old.team_id; new.created_at := old.created_at; end if;
+  new.title := btrim(coalesce(new.title, ''));
+  new.updated_by := auth.uid();
+  new.updated_at := now();
+  return new;
+end $$;
+drop trigger if exists team_docs_before_write on public.team_docs;
+create trigger team_docs_before_write before insert or update on public.team_docs
+  for each row execute function public.team_docs_before_write();
+create or replace function public.team_places_before_write() returns trigger
+language plpgsql as $$
+begin
+  if tg_op = 'UPDATE' then new.team_id := old.team_id; new.created_at := old.created_at; end if;
+  new.name := btrim(coalesce(new.name, '')); new.address := btrim(coalesce(new.address, '')); new.notes := btrim(coalesce(new.notes, ''));
+  return new;
+end $$;
+drop trigger if exists team_places_before_write on public.team_places;
+create trigger team_places_before_write before insert or update on public.team_places
+  for each row execute function public.team_places_before_write();
+
+-- RLS: joukkue näkyy vain jäsenille, kutsutuille ja ylläpidolle. Jäsenet/kutsut/ilmoittautumiset/sarjat vain RPC:llä.
+alter table public.team_event_series enable row level security;
+alter table public.team_docs         enable row level security;
+alter table public.team_invites      enable row level security;
+alter table public.team_invite_links enable row level security;
+
+drop policy if exists "teams: kirjautuneet näkevät" on public.teams;
+drop policy if exists "teams: kirjautunut luo oman" on public.teams;
+drop policy if exists "teams: ylläpitäjä muokkaa" on public.teams;
+drop policy if exists "teams: omistaja poistaa oman" on public.teams;
+drop policy if exists "teams: jäsenet, kutsutut ja ylläpito näkevät" on public.teams;
+create policy "teams: jäsenet, kutsutut ja ylläpito näkevät" on public.teams for select to authenticated
+  using (public.is_team_member(id) or public.is_admin()
+         or exists (select 1 from public.team_invites i where i.team_id = teams.id and i.invitee_id = auth.uid()));
+drop policy if exists "teams: omistaja tai ylläpito poistaa" on public.teams;
+create policy "teams: omistaja tai ylläpito poistaa" on public.teams for delete to authenticated
+  using (owner_id = auth.uid() or public.is_admin());
+
+drop policy if exists "team_members: jäsenet näkevät jäsenet" on public.team_members;
+drop policy if exists "team_members: liity tai ylläpitäjä lisää" on public.team_members;
+drop policy if exists "team_members: ylläpitäjä muuttaa roolin" on public.team_members;
+drop policy if exists "team_members: eroa tai ylläpitäjä poistaa" on public.team_members;
+drop policy if exists "team_members: joukkue ja ylläpito näkevät" on public.team_members;
+create policy "team_members: joukkue ja ylläpito näkevät" on public.team_members for select to authenticated
+  using (public.is_team_member(team_id) or public.is_admin());
+
+drop policy if exists "team_roles: jäsenet lukevat" on public.team_roles;
+drop policy if exists "team_roles: ylläpitäjä hallitsee" on public.team_roles;
+drop policy if exists "team_roles: joukkue lukee" on public.team_roles;
+create policy "team_roles: joukkue lukee" on public.team_roles for select to authenticated using (public.is_team_member(team_id));
+drop policy if exists "team_roles: henkilökunta hallitsee" on public.team_roles;
+create policy "team_roles: henkilökunta hallitsee" on public.team_roles for all to authenticated
+  using (public.is_team_coach(team_id)) with check (public.is_team_coach(team_id) and not public.is_banned());
+
+drop policy if exists "team_places: jäsenet lukevat" on public.team_places;
+drop policy if exists "team_places: ylläpitäjä hallitsee" on public.team_places;
+drop policy if exists "team_places: joukkue lukee" on public.team_places;
+create policy "team_places: joukkue lukee" on public.team_places for select to authenticated using (public.is_team_member(team_id));
+drop policy if exists "team_places: henkilökunta hallitsee" on public.team_places;
+create policy "team_places: henkilökunta hallitsee" on public.team_places for all to authenticated
+  using (public.is_team_coach(team_id)) with check (public.is_team_coach(team_id) and not public.is_banned());
+
+drop policy if exists "team_events: jäsenet lukevat" on public.team_events;
+drop policy if exists "team_events: valmentaja hallitsee" on public.team_events;
+drop policy if exists "team_events: joukkue lukee" on public.team_events;
+create policy "team_events: joukkue lukee" on public.team_events for select to authenticated using (public.is_team_member(team_id));
+drop policy if exists "team_events: henkilökunta hallitsee" on public.team_events;
+create policy "team_events: henkilökunta hallitsee" on public.team_events for all to authenticated
+  using (public.is_team_coach(team_id)) with check (public.is_team_coach(team_id) and not public.is_banned());
+
+drop policy if exists "team_event_series: joukkue lukee" on public.team_event_series;
+create policy "team_event_series: joukkue lukee" on public.team_event_series for select to authenticated
+  using (public.is_team_member(team_id));
+
+drop policy if exists "team_event_rsvps: jäsenet lukevat" on public.team_event_rsvps;
+drop policy if exists "team_event_rsvps: jäsen ilmoittautuu" on public.team_event_rsvps;
+drop policy if exists "team_event_rsvps: jäsen muuttaa omaa" on public.team_event_rsvps;
+drop policy if exists "team_event_rsvps: jäsen peruu oman" on public.team_event_rsvps;
+drop policy if exists "team_event_rsvps: joukkue lukee" on public.team_event_rsvps;
+create policy "team_event_rsvps: joukkue lukee" on public.team_event_rsvps for select to authenticated
+  using (public.is_team_member(public.team_of_event(event_id)));
+
+drop policy if exists "team_docs: joukkue lukee" on public.team_docs;
+create policy "team_docs: joukkue lukee" on public.team_docs for select to authenticated
+  using (public.is_team_member(team_id) and (not staff_only or public.is_team_coach(team_id)));
+drop policy if exists "team_docs: henkilökunta hallitsee" on public.team_docs;
+create policy "team_docs: henkilökunta hallitsee" on public.team_docs for all to authenticated
+  using (public.is_team_coach(team_id)) with check (public.is_team_coach(team_id) and not public.is_banned());
+
+drop policy if exists "team_invites: osapuolet lukevat" on public.team_invites;
+create policy "team_invites: osapuolet lukevat" on public.team_invites for select to authenticated
+  using (invitee_id = auth.uid() or public.is_team_coach(team_id));
+drop policy if exists "team_invite_links: henkilökunta lukee" on public.team_invite_links;
+create policy "team_invite_links: henkilökunta lukee" on public.team_invite_links for select to authenticated
+  using (public.is_team_coach(team_id));
+
+-- team_messages = vanha, käyttämätön taulu (chat on nyt conversations.kind 'team'): ei uusia kirjoituksia
+drop policy if exists "team_messages: jäsen lähettää" on public.team_messages;
+
+-- 9b. YRITYKSET: omistaja hallitsee järjestäjiä (editor), järjestäjät luovat ja muokkaavat yrityksen tapahtumia.
+--     Päättynyt tilaus = vain luku (business_can_post vaatii aktiivisen tilauksen myös poistoon).
+create or replace function public.is_business_owner(bid uuid) returns boolean
+language sql stable security definer set search_path = public as $$
+  select exists (select 1 from public.business_members m where m.business_id = bid and m.user_id = auth.uid() and m.role = 'owner')
+$$;
+
+drop policy if exists "businesses: jäsen tai ylläpito päivittää" on public.businesses;
+drop policy if exists "businesses: omistaja tai ylläpito päivittää" on public.businesses;
+create policy "businesses: omistaja tai ylläpito päivittää" on public.businesses
+  for update to authenticated using (public.is_business_owner(id) or public.is_admin())
+  with check (public.is_business_owner(id) or public.is_admin());
+drop policy if exists "business_private: jäsen tai ylläpito lukee" on public.business_private;
+drop policy if exists "business_private: omistaja tai ylläpito lukee" on public.business_private;
+create policy "business_private: omistaja tai ylläpito lukee" on public.business_private
+  for select to authenticated using (public.is_business_owner(business_id) or public.is_admin());
+drop policy if exists "business_private: jäsen lisää" on public.business_private;
+drop policy if exists "business_private: omistaja lisää" on public.business_private;
+create policy "business_private: omistaja lisää" on public.business_private
+  for insert to authenticated with check (public.is_business_owner(business_id));
+drop policy if exists "business_private: jäsen tai ylläpito päivittää" on public.business_private;
+drop policy if exists "business_private: omistaja tai ylläpito päivittää" on public.business_private;
+create policy "business_private: omistaja tai ylläpito päivittää" on public.business_private
+  for update to authenticated using (public.is_business_owner(business_id) or public.is_admin())
+  with check (public.is_business_owner(business_id) or public.is_admin());
+drop policy if exists "events: järjestäjä tai ylläpito poistaa" on public.events;
+create policy "events: järjestäjä tai ylläpito poistaa" on public.events
+  for delete to authenticated using (
+    host_id = auth.uid() or public.is_admin() or (business_id is not null and public.business_can_post(business_id)));
+
+-- Järjestäjäkutsu linkillä (omistaja, aktiivinen tilaus): 7 vrk, enintään 5 käyttöä
+create table if not exists public.business_invite_links (
+  token       uuid primary key default gen_random_uuid(),
+  business_id uuid not null references public.businesses(id) on delete cascade,
+  created_by  uuid references public.profiles(id) on delete set null,
+  created_at  timestamptz not null default now(),
+  expires_at  timestamptz not null default now() + interval '7 days',
+  max_uses    int not null default 5 check (max_uses between 1 and 50),
+  uses        int not null default 0,
+  revoked     boolean not null default false
+);
+create index if not exists business_invite_links_biz_idx on public.business_invite_links (business_id, created_at desc);
+alter table public.business_invite_links enable row level security;
+drop policy if exists "business_invite_links: omistaja lukee" on public.business_invite_links;
+create policy "business_invite_links: omistaja lukee" on public.business_invite_links for select to authenticated
+  using (public.is_business_owner(business_id) or public.is_admin());
+
+create or replace function public.create_business_invite_link(p_business uuid) returns uuid
+language plpgsql security definer set search_path = public as $$
+declare tok uuid;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  if not public.is_business_owner(p_business) then raise exception 'business_owner_only' using errcode = 'P0001'; end if;
+  if not public.business_active(p_business) then raise exception 'business_subscription_required' using errcode = 'P0001'; end if;
+  if (select count(*) from public.business_invite_links where business_id = p_business and created_at > now() - interval '1 day') >= 20 then
+    raise exception 'too_many_invite_links' using errcode = 'P0001';
+  end if;
+  insert into public.business_invite_links (business_id, created_by) values (p_business, auth.uid()) returning token into tok;
+  return tok;
+end $$;
+
+create or replace function public.revoke_business_invite_link(p_token uuid) returns void
+language plpgsql security definer set search_path = public as $$
+declare bid uuid;
+begin
+  select business_id into bid from public.business_invite_links where token = p_token;
+  if bid is null or not (public.is_business_owner(bid) or public.is_admin()) then
+    raise exception 'business_owner_only' using errcode = 'P0001';
+  end if;
+  update public.business_invite_links set revoked = true where token = p_token;
+end $$;
+
+create or replace function public.business_link_preview(p_token uuid) returns jsonb
+language plpgsql stable security definer set search_path = public as $$
+declare l public.business_invite_links; b public.businesses;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  select * into l from public.business_invite_links where token = p_token;
+  if not found or l.revoked or l.expires_at < now() or l.uses >= l.max_uses or not public.business_active(l.business_id) then
+    raise exception 'invite_link_invalid' using errcode = 'P0001';
+  end if;
+  select * into b from public.businesses where id = l.business_id;
+  return jsonb_build_object('business_id', b.id, 'name', b.name, 'logo_url', b.logo_url,
+    'already_member', public.is_business_member(b.id));
+end $$;
+
+create or replace function public.join_business_by_link(p_token uuid) returns uuid
+language plpgsql security definer set search_path = public as $$
+declare l public.business_invite_links; b public.businesses; nm text; r record;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  select * into l from public.business_invite_links where token = p_token for update;
+  if not found or l.revoked or l.expires_at < now() or l.uses >= l.max_uses or not public.business_active(l.business_id) then
+    raise exception 'invite_link_invalid' using errcode = 'P0001';
+  end if;
+  if public.is_business_member(l.business_id) then return l.business_id; end if;
+  if (select count(*) from public.business_members where business_id = l.business_id) >= 30 then
+    raise exception 'business_members_full' using errcode = 'P0001';
+  end if;
+  insert into public.business_members (business_id, user_id, role) values (l.business_id, auth.uid(), 'editor');
+  update public.business_invite_links set uses = uses + 1 where token = p_token;
+  select * into b from public.businesses where id = l.business_id;
+  nm := public.display_name_of(auth.uid());
+  for r in select user_id from public.business_members where business_id = b.id and role = 'owner' and user_id <> auth.uid() loop
+    perform public.notify(r.user_id, '🏢', 'business_member_joined', jsonb_build_object('name', nm, 'business', b.name),
+      nm || ' liittyi yrityksen “' || b.name || '” järjestäjäksi', 'business', b.id);
+  end loop;
+  return b.id;
+end $$;
+
+-- Järjestäjän poisto: omistaja (ei viimeistä omistajaa), järjestäjä itse tai ylläpito
+create or replace function public.remove_business_member(p_business uuid, p_user uuid) returns void
+language plpgsql security definer set search_path = public as $$
+declare m public.business_members; b public.businesses;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  select * into m from public.business_members where business_id = p_business and user_id = p_user for update;
+  if not found then raise exception 'business_member_not_found' using errcode = 'P0001'; end if;
+  if not (p_user = auth.uid() or public.is_business_owner(p_business) or public.is_admin()) then
+    raise exception 'business_owner_only' using errcode = 'P0001';
+  end if;
+  if m.role = 'owner' and not public.is_admin() then raise exception 'business_owner_stays' using errcode = 'P0001'; end if;
+  delete from public.business_members where business_id = p_business and user_id = p_user;
+  select * into b from public.businesses where id = p_business;
+  if p_user <> auth.uid() then
+    perform public.notify(p_user, '👋', 'business_removed', jsonb_build_object('business', b.name),
+      'Sinut poistettiin yrityksen “' || b.name || '” järjestäjistä', 'business', b.id);
+  end if;
+end $$;
+
+-- Toistuvat yritystapahtumat: sarja luo jokaisesta päivästä tavallisen yritystapahtuman (oma chat, osallistujat).
+-- Muokkaus päivittää tulevat, erikseen muokkaamattomat esiintymät; poistuneet päivät poistetaan.
+create table if not exists public.business_event_series (
+  id               uuid primary key default gen_random_uuid(),
+  business_id      uuid not null references public.businesses(id) on delete cascade,
+  activity_id      text not null references public.activities(id) on update cascade,
+  title            text not null check (char_length(title) between 3 and 60),
+  description      text not null default '' check (char_length(description) <= 2000),
+  city             text not null check (char_length(city) between 1 and 40),
+  district         text not null default '' check (char_length(district) <= 40),
+  place            text not null check (char_length(place) between 2 and 70),
+  lat              double precision check (lat between -90 and 90),
+  lng              double precision check (lng between -180 and 180),
+  weekdays         int[] not null check (public.valid_weekdays(weekdays)),
+  start_time       time not null,
+  duration_min     int check (duration_min is null or duration_min between 5 and 1440),
+  starts_on        date not null,
+  ends_on          date not null,
+  tz               text not null default 'Europe/Helsinki' check (char_length(tz) <= 40),
+  price_info       text not null default '' check (char_length(price_info) <= 120),
+  official_url     text not null default '' check (official_url = '' or (official_url ~ '^https://[^\s<>"'']+$' and char_length(official_url) <= 300)),
+  extra_info       text not null default '' check (char_length(extra_info) <= 1000),
+  max_participants int check (max_participants is null or max_participants between 2 and 100000),
+  skill_level      text not null default 'all' check (skill_level in ('all','beginner','intermediate','advanced')),
+  created_by       uuid default auth.uid() references public.profiles(id) on delete set null,
+  created_at       timestamptz not null default now(),
+  updated_at       timestamptz not null default now(),
+  constraint business_event_series_range check (ends_on >= starts_on and ends_on <= starts_on + 400)
+);
+create index if not exists business_event_series_biz_idx on public.business_event_series (business_id);
+alter table public.business_event_series enable row level security;
+drop policy if exists "business_event_series: jäsenet ja ylläpito lukevat" on public.business_event_series;
+create policy "business_event_series: jäsenet ja ylläpito lukevat" on public.business_event_series for select to authenticated
+  using (public.is_business_member(business_id) or public.is_admin());
+
+alter table public.events add column if not exists series_id uuid;
+alter table public.events add column if not exists series_modified boolean not null default false;
+do $$ begin
+  if not exists (select 1 from pg_constraint where conname = 'events_series_id_fkey') then
+    alter table public.events add constraint events_series_id_fkey
+      foreign key (series_id) references public.business_event_series(id) on delete set null;
+  end if;
+end $$;
+create index if not exists events_series_idx on public.events (series_id, starts_at);
+
+create or replace function public.events_series_mark() returns trigger
+language plpgsql as $$
+begin
+  if coalesce(current_setting('molaplan.series_sync', true), '') = '1' then return new; end if;
+  if tg_op = 'INSERT' then new.series_id := null; new.series_modified := false; return new; end if;
+  new.series_id := old.series_id;
+  if old.series_id is not null and (new.starts_at, new.ends_at, new.title, new.description, new.place, new.city, new.price_info, new.extra_info)
+       is distinct from (old.starts_at, old.ends_at, old.title, old.description, old.place, old.city, old.price_info, old.extra_info) then
+    new.series_modified := true;
+  end if;
+  return new;
+end $$;
+drop trigger if exists events_series_mark on public.events;
+create trigger events_series_mark before insert or update on public.events
+  for each row execute function public.events_series_mark();
+
+create or replace function public.save_business_series(p jsonb) returns uuid
+language plpgsql security definer set search_path = public as $$
+declare s public.business_event_series; sid uuid := nullif(p->>'id', '')::uuid; bid uuid; v public.business_event_series;
+  today date := public.today_fi(); n int;
+begin
+  if auth.uid() is null then raise exception 'not_authenticated' using errcode = 'P0001'; end if;
+  if public.is_banned() then raise exception 'account_banned' using errcode = 'P0001'; end if;
+  if sid is not null then
+    select * into s from public.business_event_series where id = sid for update;
+    if not found then raise exception 'business_series_not_found' using errcode = 'P0001'; end if;
+    bid := s.business_id;
+  else
+    bid := nullif(p->>'business_id', '')::uuid;
+  end if;
+  if bid is null or not public.business_can_post(bid) then raise exception 'business_subscription_required' using errcode = 'P0001'; end if;
+  begin
+    v.activity_id := p->>'activity_id';
+    v.title := btrim(regexp_replace(coalesce(p->>'title', ''), '\s+', ' ', 'g'));
+    v.description := btrim(coalesce(p->>'description', ''));
+    v.city := btrim(coalesce(p->>'city', ''));
+    v.district := left(btrim(coalesce(p->>'district', '')), 40);
+    v.place := btrim(coalesce(p->>'place', ''));
+    v.lat := nullif(p->>'lat', '')::double precision;
+    v.lng := nullif(p->>'lng', '')::double precision;
+    v.weekdays := array(select distinct x::int from jsonb_array_elements_text(coalesce(p->'weekdays', '[]'::jsonb)) x order by 1);
+    v.start_time := (p->>'start_time')::time;
+    v.duration_min := nullif(p->>'duration_min', '')::int;
+    v.starts_on := (p->>'starts_on')::date;
+    v.ends_on := (p->>'ends_on')::date;
+    v.tz := coalesce(nullif(p->>'tz', ''), 'Europe/Helsinki');
+    v.price_info := btrim(coalesce(p->>'price_info', ''));
+    v.official_url := btrim(coalesce(p->>'official_url', ''));
+    v.extra_info := btrim(coalesce(p->>'extra_info', ''));
+    v.max_participants := nullif(p->>'max_participants', '')::int;
+    v.skill_level := coalesce(nullif(p->>'skill_level', ''), 'all');
+  exception when others then raise exception 'business_series_invalid' using errcode = 'P0001';
+  end;
+  if not public.valid_weekdays(v.weekdays) or v.start_time is null or v.starts_on is null or v.ends_on is null
+     or v.ends_on < v.starts_on or v.ends_on > v.starts_on + 400 or (sid is null and v.ends_on < today)
+     or not exists (select 1 from pg_timezone_names where name = v.tz)
+     or not exists (select 1 from public.activities a where a.id = v.activity_id and a.status = 'approved') then
+    raise exception 'business_series_invalid' using errcode = 'P0001';
+  end if;
+  select count(*) into n from public.series_dates(v.weekdays, greatest(v.starts_on, today), v.ends_on);
+  if n > 120 then raise exception 'business_series_too_long' using errcode = 'P0001'; end if;
+  perform set_config('molaplan.series_sync', '1', true);
+  if sid is null then
+    insert into public.business_event_series (business_id, activity_id, title, description, city, district, place, lat, lng, weekdays,
+      start_time, duration_min, starts_on, ends_on, tz, price_info, official_url, extra_info, max_participants, skill_level, created_by)
+    values (bid, v.activity_id, v.title, v.description, v.city, v.district, v.place, v.lat, v.lng, v.weekdays, v.start_time,
+      v.duration_min, v.starts_on, v.ends_on, v.tz, v.price_info, v.official_url, v.extra_info, v.max_participants, v.skill_level, auth.uid())
+    returning id into sid;
+  else
+    update public.business_event_series set activity_id = v.activity_id, title = v.title, description = v.description, city = v.city,
+      district = v.district, place = v.place, lat = v.lat, lng = v.lng, weekdays = v.weekdays, start_time = v.start_time,
+      duration_min = v.duration_min, starts_on = v.starts_on, ends_on = v.ends_on, tz = v.tz, price_info = v.price_info,
+      official_url = v.official_url, extra_info = v.extra_info, max_participants = v.max_participants, skill_level = v.skill_level,
+      updated_at = now() where id = sid;
+    delete from public.events e where e.series_id = sid and not e.series_modified and e.starts_at > now()
+      and (e.starts_at at time zone v.tz)::date not in (select public.series_dates(v.weekdays, greatest(v.starts_on, today), v.ends_on));
+    update public.events e set activity_id = v.activity_id, title = v.title, description = v.description, city = v.city,
+      district = v.district, place = v.place, lat = v.lat, lng = v.lng, price_info = v.price_info, official_url = v.official_url,
+      extra_info = v.extra_info, max_participants = v.max_participants, skill_level = v.skill_level,
+      starts_at = ((e.starts_at at time zone v.tz)::date + v.start_time) at time zone v.tz,
+      ends_at = case when v.duration_min is null then null
+                     else (((e.starts_at at time zone v.tz)::date + v.start_time) at time zone v.tz) + make_interval(mins => v.duration_min) end
+     where e.series_id = sid and not e.series_modified and e.starts_at > now();
+  end if;
+  insert into public.events (kind, business_id, host_id, series_id, activity_id, title, description, starts_at, ends_at, city, district,
+                             place, lat, lng, max_participants, skill_level, price_info, official_url, extra_info)
+    select 'business', bid, null, sid, v.activity_id, v.title, v.description, (d + v.start_time) at time zone v.tz,
+           case when v.duration_min is null then null else ((d + v.start_time) at time zone v.tz) + make_interval(mins => v.duration_min) end,
+           v.city, v.district, v.place, v.lat, v.lng, v.max_participants, v.skill_level, v.price_info, v.official_url, v.extra_info
+      from public.series_dates(v.weekdays, greatest(v.starts_on, today), v.ends_on) d
+     where (d + v.start_time) at time zone v.tz > now()
+       and not exists (select 1 from public.events e where e.series_id = sid and (e.starts_at at time zone v.tz)::date = d);
+  perform set_config('molaplan.series_sync', '0', true);
+  return sid;
+end $$;
+
+create or replace function public.delete_business_series(p_id uuid) returns void
+language plpgsql security definer set search_path = public as $$
+declare bid uuid;
+begin
+  select business_id into bid from public.business_event_series where id = p_id;
+  if bid is null or not public.business_can_post(bid) then raise exception 'business_subscription_required' using errcode = 'P0001'; end if;
+  delete from public.events where series_id = p_id and starts_at > now();
+  delete from public.business_event_series where id = p_id;
+end $$;
+
+-- 9c. Oikeudet: anon ei mitään; suorat kirjoitukset vain henkilökunnan tauluihin (RLS), muu RPC:llä
+revoke all on public.team_event_series, public.team_docs, public.team_invites, public.team_invite_links,
+  public.business_invite_links, public.business_event_series from public, anon;
+revoke all on public.teams, public.team_members, public.team_roles, public.team_places, public.team_events,
+  public.team_event_rsvps, public.team_messages from anon;
+revoke insert, update, delete on public.team_members, public.team_event_rsvps, public.team_messages, public.team_event_series,
+  public.team_invites, public.team_invite_links, public.business_invite_links, public.business_event_series from authenticated;
+revoke insert, update on public.teams from authenticated;
+grant select on public.teams, public.team_members, public.team_event_rsvps, public.team_messages, public.team_event_series,
+  public.team_invites, public.team_invite_links, public.business_invite_links, public.business_event_series to authenticated;
+grant delete on public.teams to authenticated;
+grant select, insert, update, delete on public.team_docs, public.team_places, public.team_roles, public.team_events to authenticated;
+grant select (extra_info) on public.events to anon;   -- guest_events.extra_info (osio 5b)
+
+do $$
+declare f text;
+begin
+  foreach f in array array[
+    'series_dates(int[], date, date)', 'valid_weekdays(int[])', 'team_role(uuid)', 'team_member_count(uuid)',
+    'update_team(uuid, jsonb)', 'create_team_invite_link(uuid, text, uuid)', 'revoke_team_invite_link(uuid)',
+    'team_link_preview(uuid)', 'join_team_by_link(uuid)', 'invite_to_team(uuid, uuid, text)', 'respond_team_invite(uuid, boolean)',
+    'add_team_roster_member(uuid, text, text)', 'set_team_member(uuid, jsonb)', 'remove_team_member(uuid)',
+    'save_team_series(jsonb)', 'delete_team_series(uuid)', 'team_rsvp(uuid, uuid, text)',
+    'is_business_owner(uuid)', 'create_business_invite_link(uuid)', 'revoke_business_invite_link(uuid)',
+    'business_link_preview(uuid)', 'join_business_by_link(uuid)', 'remove_business_member(uuid, uuid)',
+    'save_business_series(jsonb)', 'delete_business_series(uuid)']
+  loop
+    execute 'revoke execute on function public.' || f || ' from public, anon';
+    execute 'grant execute on function public.' || f || ' to authenticated';
+  end loop;
+  foreach f in array array[
+    'create_team_from_request(public.team_requests)', 'team_add_member(uuid, uuid, text, uuid)', 'team_staff_ids(uuid)',
+    'team_conv(uuid)', 'team_events_before_write()', 'team_events_after_update()', 'teams_owner_handover()',
+    'team_docs_before_write()', 'team_places_before_write()', 'events_series_mark()']
+  loop
+    execute 'revoke execute on function public.' || f || ' from public, anon, authenticated';
+  end loop;
 end $$;
 
 -- Valmis! 🎉
