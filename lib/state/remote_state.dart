@@ -136,7 +136,7 @@ class RemoteState extends ChangeNotifier {
 String defaultDeviceName() {
   try {
     final h = Platform.localHostname;
-    if (Platform.isAndroid) return 'Android ($h)';
+    if (Platform.isAndroid) return h == 'localhost' || h.isEmpty ? 'Android-laite' : 'Android ($h)';
     if (Platform.isWindows) return 'Windows ($h)';
     return h;
   } catch (_) {
