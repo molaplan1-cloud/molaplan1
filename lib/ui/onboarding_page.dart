@@ -3,6 +3,8 @@ import 'package:material_ui/material_ui.dart';
 import '../models/models.dart';
 import 'app_scope.dart';
 import 'connections_page.dart';
+import 'error_box.dart';
+import 'remote_pages.dart';
 import 'template_gallery.dart';
 import 'tile_editor.dart';
 
@@ -15,7 +17,7 @@ class OnboardingPage extends StatefulWidget {
 
 class _OnboardingPageState extends State<OnboardingPage> {
   int step = 0;
-  static const steps = 4;
+  static const steps = 5;
 
   Dashboard get _dash => AppScope.read(context).config.dashboards.first;
 
@@ -98,6 +100,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
         );
       case 2:
         return _firstTile(context);
+      case 3:
+        return _remote(context);
       default:
         return _done(context);
     }
@@ -316,6 +320,44 @@ class _OnboardingPageState extends State<OnboardingPage> {
     );
   }
 
+  Widget _remote(BuildContext context) {
+    final st = AppScope.of(context);
+    return _page(
+      context,
+      [
+        _stepHeader(
+          context,
+          tx(context, 'Haluatko ohjata kotia myös kodin ulkopuolelta?', 'Control your home from outside too?'),
+          tx(
+            context,
+            'Kotona kaikki toimii jo. Kodin ulkopuolelta tarvitaan kotiin yksi aina päällä oleva laite (vanha tabletti tai PC) – ei reititinasetuksia, ei tilejä.',
+            'At home everything works already. From outside you need one always-on device at home (an old tablet or a PC) – no router settings, no accounts.',
+          ),
+        ),
+        const SizedBox(height: 16),
+        if (st.remote.isPaired || st.remote.bridgeOn) ...[
+          SuccessBox(
+            text: st.remote.isPaired
+                ? tx(context, 'Etäyhteys on käytössä.', 'Remote access is on.')
+                : tx(context, 'Tämä laite on kotisilta.', 'This device is the home bridge.'),
+          ),
+          const SizedBox(height: 12),
+        ],
+        remoteChoices(context),
+      ],
+      action: FilledButton(
+        key: const ValueKey('onboarding-remote-next'),
+        onPressed: () => _go(4),
+        child: Text(
+          st.remote.isPaired || st.remote.bridgeOn
+              ? tx(context, 'Seuraava', 'Next')
+              : tx(context, 'Ei nyt – vain kotona', 'Not now – home only'),
+          style: const TextStyle(fontSize: 18),
+        ),
+      ),
+    );
+  }
+
   Widget _done(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     return _page(
@@ -364,8 +406,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
           tx(context, 'Asetukset', 'Settings'),
           tx(
             context,
-            'Sieltä löydät tämän oppaan uudelleen sekä varmuuskopioinnin.',
-            'Find this guide again and backups there.',
+            'Sieltä löydät tämän oppaan, etäyhteyden ja varmuuskopioinnin.',
+            'Find this guide, remote access and backups there.',
           ),
         ),
       ],

@@ -296,6 +296,50 @@ class AppState extends ChangeNotifier {
     return used;
   }
 
+  /// Adds the home bridge's connections + dashboards (from a paired bridge).
+  /// Device-local settings (language, bridge mode, relay) are not copied.
+  /// Returns the number of dashboards added.
+  Future<int> adoptHomeSetup(String json) async {
+    final other = AppConfig.fromJson(Map<String, dynamic>.from(jsonDecode(json) as Map));
+    final known = {for (final c in config.connections) _addrKey(c)};
+    final remap = <String, String>{};
+    final add = <ConnectionConfig>[];
+    for (final c in other.connections) {
+      final same = config.connections.where((e) => _addrKey(e) == _addrKey(c)).firstOrNull;
+      if (same != null && known.contains(_addrKey(c))) {
+        remap[c.id] = same.id;
+      } else if (connection(c.id) != null) {
+        final n = ConnectionConfig.fromJson(c.toJson(includeSecrets: true))..id = newId();
+        remap[c.id] = n.id;
+        add.add(n);
+      } else {
+        add.add(c);
+      }
+    }
+    String m(String? id) => id == null ? '' : (remap[id] ?? id);
+    for (final d in other.dashboards) {
+      for (final t in d.tiles) {
+        if (t.connectionId != null) t.connectionId = m(t.connectionId);
+        t.onCommand?.connectionId = m(t.onCommand?.connectionId);
+        t.offCommand?.connectionId = m(t.offCommand?.connectionId);
+        for (final c in t.commands) {
+          c.connectionId = m(c.connectionId);
+        }
+      }
+    }
+    final emptyDefault = config.connections.isEmpty && config.dashboards.every((d) => d.tiles.isEmpty);
+    if (emptyDefault) config.dashboards.clear();
+    config.connections.addAll(add);
+    config.dashboards.addAll(other.dashboards);
+    if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: lang == 'fi' ? 'Koti' : 'Home'));
+    for (final c in add) {
+      await _persistSecrets(c);
+    }
+    await save();
+    notifyListeners();
+    return other.dashboards.length;
+  }
+
   /// Appends connections + dashboards from [other] (e.g. the example set).
   Future<Dashboard?> merge(AppConfig other) async {
     config.connections.addAll(other.connections);

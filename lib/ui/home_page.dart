@@ -4,6 +4,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../models/models.dart';
 import 'app_scope.dart';
+import 'remote_pages.dart';
 import 'connections_page.dart';
 import 'onboarding_page.dart';
 import 'settings_page.dart';
@@ -265,6 +266,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(d.name),
         actions: [
+          if (!_editing) const RemoteStatusChip(),
           if (_editing) ...[
             IconButton(
               tooltip: tx(context, 'Nimeä', 'Rename'),

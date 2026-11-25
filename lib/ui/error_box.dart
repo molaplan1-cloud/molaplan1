@@ -2,11 +2,15 @@ import 'package:material_ui/material_ui.dart';
 
 import '../core/friendly_error.dart';
 import 'app_scope.dart';
+import 'remote_pages.dart';
 
 /// Plain-language error with an optional "technical details" disclosure.
 class ErrorBox extends StatelessWidget {
-  const ErrorBox({super.key, required this.error});
+  const ErrorBox({super.key, required this.error, this.awayHint = true});
   final Object error;
+
+  /// Offer "Not at home? Turn on remote access" for can't-reach errors.
+  final bool awayHint;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +39,18 @@ class ErrorBox extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             Text(f.hint, style: TextStyle(color: cs.onErrorContainer, fontSize: 15.5, height: 1.35)),
+            if (awayHint && awayKinds.contains(f.kind) && !AppScope.of(context).remote.isPaired)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: FilledButton.tonalIcon(
+                  key: const ValueKey('away-hint'),
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RemoteHubPage())),
+                  icon: const Icon(Icons.cloud_outlined),
+                  label: Text(
+                    tx(context, 'Et ole kotona? Ota etäyhteys käyttöön', 'Not at home? Turn on remote access'),
+                  ),
+                ),
+              ),
             Theme(
               data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
               child: ExpansionTile(

@@ -15,13 +15,7 @@ enum LinkStatus { home, remote, offline }
 
 bool isNetworkError(Object e) {
   if (e is TimeoutException) return true;
-  return const {
-    ErrorKind.dns,
-    ErrorKind.unreachable,
-    ErrorKind.refused,
-    ErrorKind.modbusTimeout,
-    ErrorKind.noResponse,
-  }.contains(classifyError(e));
+  return awayKinds.contains(classifyError(e));
 }
 
 /// Chooses LAN or relay. Tries the LAN first; after a network failure that the

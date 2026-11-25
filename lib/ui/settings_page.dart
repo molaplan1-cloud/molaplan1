@@ -6,9 +6,11 @@ import 'package:material_ui/material_ui.dart';
 
 import '../state/examples.dart';
 import 'app_scope.dart';
+import 'guides_page.dart';
 import 'onboarding_page.dart';
+import 'remote_pages.dart';
 
-const appVersion = '0.2.0';
+const appVersion = '0.3.0';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -84,6 +86,38 @@ class _SettingsPageState extends State<SettingsPage> {
                 ],
                 selected: {st.lang},
                 onSelectionChanged: (s) => st.setLanguage(s.first),
+              ),
+              const SizedBox(height: 28),
+              Text(tx(context, 'Etäyhteys', 'Remote access'), style: text.titleMedium),
+              const SizedBox(height: 4),
+              Text(
+                tx(context, 'Ohjaa kotia myös kodin ulkopuolelta.', 'Control your home from outside too.'),
+                style: text.bodySmall,
+              ),
+              const SizedBox(height: 8),
+              Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: [
+                  FilledButton.tonalIcon(
+                    key: const ValueKey('settings-remote'),
+                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RemoteHubPage())),
+                    icon: const Icon(Icons.cloud_outlined),
+                    label: Text(
+                      st.remote.isPaired || st.remote.bridgeOn
+                          ? '${tx(context, 'Etäyhteys', 'Remote access')}: ${RemoteStatusChip.describe(context).$3}'
+                          : tx(context, 'Ota etäyhteys käyttöön', 'Set up remote access'),
+                    ),
+                  ),
+                  OutlinedButton.icon(
+                    key: const ValueKey('settings-guides'),
+                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const GuidesPage())),
+                    icon: const Icon(Icons.menu_book_outlined),
+                    label: Text(
+                      tx(context, 'Ohjeet: VPN, Nabu Casa, pilvi-MQTT', 'Guides: VPN, Nabu Casa, cloud MQTT'),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 28),
               Text(tx(context, 'Ohjeet', 'Help'), style: text.titleMedium),

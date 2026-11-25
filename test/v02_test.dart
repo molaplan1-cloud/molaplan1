@@ -292,6 +292,13 @@ void main() {
       expect(find.text('Ruudut ovat valmiina'), findsOneWidget);
       await tester.tap(find.byKey(const ValueKey('onboarding-next')));
       await tester.pumpAndSettle();
+      // v0.3: remote access step
+      expect(find.text('Haluatko ohjata kotia myös kodin ulkopuolelta?'), findsOneWidget);
+      expect(find.byKey(const ValueKey('remote-pair')), findsOneWidget);
+      expect(find.byKey(const ValueKey('remote-bridge')), findsOneWidget);
+      expect(find.byKey(const ValueKey('remote-guides')), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('onboarding-remote-next')));
+      await tester.pumpAndSettle();
       expect(find.text('Valmista!'), findsOneWidget);
       await tester.tap(find.byKey(const ValueKey('onboarding-done')));
       await tester.pumpAndSettle();

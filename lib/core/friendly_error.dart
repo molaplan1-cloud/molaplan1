@@ -15,8 +15,25 @@ enum ErrorKind {
   noResponse,
   config,
   missingConnection,
+  remoteBridgeOffline,
+  remoteNoInternet,
+  remoteNotPaired,
+  remoteTimeout,
+  pairBadCode,
+  pairRejected,
+  pairTampered,
+  pairTimeout,
   unknown,
 }
+
+/// Errors that mean "can't reach the device from here" – remote access would help.
+const awayKinds = {
+  ErrorKind.dns,
+  ErrorKind.unreachable,
+  ErrorKind.refused,
+  ErrorKind.modbusTimeout,
+  ErrorKind.noResponse,
+};
 
 /// A plain-language explanation of a failure, for people who are not techies.
 class FriendlyError {
@@ -33,6 +50,20 @@ ErrorKind classifyError(Object e) {
   final s = e.toString().toLowerCase();
   bool any(List<String> xs) => xs.any(s.contains);
   if (s.contains('connection missing') || s.contains('yhteys puuttuu')) return ErrorKind.missingConnection;
+  if (s.startsWith('remote: ')) {
+    if (s.contains('bridge_offline')) return ErrorKind.remoteBridgeOffline;
+    if (s.contains('not_paired')) return ErrorKind.remoteNotPaired;
+    if (s.contains('timeout')) return ErrorKind.remoteTimeout;
+    return ErrorKind.remoteNoInternet;
+  }
+  if (s.startsWith('pairing failed: ')) {
+    if (any(['unknown_code', 'bad_code', 'expired', 'bad_request'])) return ErrorKind.pairBadCode;
+    if (s.contains('rejected')) return ErrorKind.pairRejected;
+    if (s.contains('tampered')) return ErrorKind.pairTampered;
+    if (s.contains('timeout')) return ErrorKind.pairTimeout;
+    if (s.contains('bridge_offline')) return ErrorKind.remoteBridgeOffline;
+    return ErrorKind.remoteNoInternet;
+  }
   if (s.contains('modbus exception 2')) return ErrorKind.modbusAddress;
   if (s.contains('modbus exception 1')) return ErrorKind.modbusFunction;
   if (s.contains('modbus exception 3')) return ErrorKind.modbusValue;
@@ -237,6 +268,86 @@ FriendlyError friendlyError(Object e, String lang) {
         t(
           'Avaa muokkaus (kynä) ja valitse ruudulle laite.',
           'Open edit mode (pencil) and choose a device for the tile.',
+        ),
+        tech,
+      );
+    case ErrorKind.remoteBridgeOffline:
+      return FriendlyError(
+        k,
+        t('Kotisilta ei ole päällä', 'The home bridge is off'),
+        t(
+          'Etäyhteys kulkee kotona olevan sillan (tabletti tai PC) kautta. Tarkista että se on päällä, Molaplan on auki ja sillä on netti.',
+          'Remote access goes through the bridge at home (tablet or PC). Check that it is on, Molaplan is open and it has internet.',
+        ),
+        tech,
+      );
+    case ErrorKind.remoteNoInternet:
+      return FriendlyError(
+        k,
+        t('Ei nettiyhteyttä', 'No internet connection'),
+        t(
+          'Laitteesi ei saa yhteyttä Molaplanin etäpalveluun. Tarkista mobiilidata tai wifi.',
+          'Your device cannot reach the Molaplan remote service. Check mobile data or Wi-Fi.',
+        ),
+        tech,
+      );
+    case ErrorKind.remoteNotPaired:
+      return FriendlyError(
+        k,
+        t('Etäyhteys on poistettu', 'Remote access was removed'),
+        t(
+          'Tämä laite on poistettu kotisillalta. Yhdistä uudelleen: Asetukset → Etäyhteys.',
+          'This device was removed on the home bridge. Pair again: Settings → Remote access.',
+        ),
+        tech,
+      );
+    case ErrorKind.remoteTimeout:
+      return FriendlyError(
+        k,
+        t('Kotisilta ei vastannut ajoissa', 'The home bridge did not answer in time'),
+        t(
+          'Yhteys voi olla hidas. Yritä hetken päästä uudelleen.',
+          'The connection may be slow. Try again in a moment.',
+        ),
+        tech,
+      );
+    case ErrorKind.pairBadCode:
+      return FriendlyError(
+        k,
+        t('Koodi ei kelpaa', 'The code is not valid'),
+        t(
+          'Tarkista 6 numeroa kotisillan näytöltä. Koodi on voimassa 10 minuuttia ja kelpaa kerran – paina tarvittaessa sillalla "Yhdistä puhelin" uudelleen.',
+          'Check the 6 digits on the bridge screen. A code is valid for 10 minutes and works once – press "Pair a phone" on the bridge again if needed.',
+        ),
+        tech,
+      );
+    case ErrorKind.pairRejected:
+      return FriendlyError(
+        k,
+        t('Kotisilta ei hyväksynyt laitetta', 'The bridge did not accept this device'),
+        t(
+          'Kun yhdistät koodilla, sillan näytölle tulee kysymys – paina siellä "Hyväksy". Tai skannaa QR-koodi, silloin hyväksyntää ei tarvita.',
+          'When pairing with the code, the bridge asks for confirmation – press "Accept" there. Or scan the QR code, then no confirmation is needed.',
+        ),
+        tech,
+      );
+    case ErrorKind.pairTampered:
+      return FriendlyError(
+        k,
+        t('Turvatarkistus epäonnistui', 'Security check failed'),
+        t(
+          'Yhteyttä ei voitu varmistaa turvalliseksi, joten sitä ei otettu käyttöön. Yritä uudelleen QR-koodilla.',
+          'The connection could not be verified as safe, so it was not used. Try again with the QR code.',
+        ),
+        tech,
+      );
+    case ErrorKind.pairTimeout:
+      return FriendlyError(
+        k,
+        t('Kotisilta ei vastannut', 'The bridge did not answer'),
+        t(
+          'Hyväksy laite sillan näytöllä 3 minuutin sisällä, tai skannaa QR-koodi.',
+          'Accept the device on the bridge screen within 3 minutes, or scan the QR code.',
         ),
         tech,
       );

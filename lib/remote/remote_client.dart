@@ -135,8 +135,9 @@ Future<PairedHome> pairWithHome({
     (raw) {
       if (raw is! String) return;
       final m = jsonDecode(raw) as Map;
-      if (m['t'] == 'p' && m['d'] is Map && !reply.isCompleted)
+      if (m['t'] == 'p' && m['d'] is Map && !reply.isCompleted) {
         reply.complete(Map<String, dynamic>.from(m['d'] as Map));
+      }
       if (m['t'] == 'err' && !reply.isCompleted) reply.completeError(PairingFailed('${m['code']}'));
     },
     onDone: () {
