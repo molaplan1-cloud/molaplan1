@@ -176,4 +176,44 @@ void main() {
     }
     expect(tester.takeException(), isNull);
   });
+
+  testWidgets('Windows 1280x800 window: 4×2 price tile keeps a readable chart (no overlapping axis labels)', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(1280, 800);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    final now = DateTime.now();
+    final st = AppState(configStore: MemoryConfigStore(), secretStore: MemorySecretStore());
+    await tester.runAsync(st.load);
+    await tester.runAsync(() => st.setOnboardingDone(true));
+    st.config.connections.add(ConnectionConfig(id: 'fx', name: 'fx', type: 'price'));
+    st.debugSetDriver('fx', _Fixed({'chart': _chart(now)}));
+    st.config.dashboards.first.tiles.add(
+      TileConfig(
+        id: 'price',
+        type: TileType.value,
+        title: 'Sähkön hinta',
+        icon: 'bolt',
+        colSpan: 4,
+        rowSpan: 2,
+        connectionId: 'fx',
+        read: {'field': 'chart'},
+        pollSeconds: 300,
+      ),
+    );
+    await tester.pumpWidget(MolaplanApp(state: st));
+    for (var i = 0; i < 4; i++) {
+      await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 30)));
+      await tester.pump(const Duration(milliseconds: 100));
+    }
+    await tester.pump(const Duration(seconds: 1));
+    final bars = find.byKey(const ValueKey('price-bars'));
+    expect(bars, findsOneWidget);
+    expect(tester.getSize(bars).height, greaterThan(75));
+    final p = tester.widget<CustomPaint>(bars).painter! as PriceBarsPainter;
+    expect(p.debugGridGap, greaterThanOrEqualTo(20));
+    expect(tester.takeException(), isNull);
+    await _shot(tester, 'win1280');
+  });
 }

@@ -260,68 +260,87 @@ class _PriceTileBodyState extends State<PriceTileBody> {
       );
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        FittedBox(
-          fit: BoxFit.scaleDown,
-          alignment: Alignment.centerLeft,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              for (var i = 0; i < stats.length; i++) ...[if (i > 0) const SizedBox(width: 22), stats[i]],
-            ],
-          ),
-        ),
-        const SizedBox(height: 8),
-        Expanded(child: chart),
-        const SizedBox(height: 4),
-        Row(
+    return LayoutBuilder(
+      builder: (context, box) {
+        // A short 2×2 tile (e.g. a 1280×800 window): the chart gets the room, the chips stay on the
+        // full-screen page (tap the tile).
+        final short = !widget.page && box.maxHeight.isFinite && box.maxHeight < 300;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Expanded(
-              child: Wrap(
-                spacing: 6,
-                runSpacing: 4,
-                crossAxisAlignment: WrapCrossAlignment.center,
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.centerLeft,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (quarter)
-                    ChoiceChip(
-                      key: const ValueKey('price-res'),
-                      visualDensity: VisualDensity.compact,
-                      label: Text(hourly ? '1 h' : '15 min'),
-                      selected: !hourly,
-                      onSelected: (_) => setState(() => _hourly = !hourly),
-                    ),
-                  if (hasMeters)
-                    for (final o in const ['kwh', 'cost'])
-                      ChoiceChip(
-                        key: ValueKey('price-overlay-$o'),
-                        visualDensity: VisualDensity.compact,
-                        label: Text(o == 'kwh' ? tx(context, 'Kulutus', 'Usage') : tx(context, 'Kustannus', 'Cost')),
-                        selected: overlay == o,
-                        onSelected: (s) => setState(() => _overlay = s ? o : 'none'),
-                      ),
-                  if (quarter && widget.page)
-                    Text(
-                      tx(context, 'Luvut tuntikeskiarvoina', 'Figures are hourly averages'),
-                      style: text.labelSmall?.copyWith(color: cs.onSurfaceVariant),
-                    ),
-                  if (!v.hasTomorrow)
-                    Text(
-                      tx(context, 'Huominen n. klo 14 jälkeen', 'Tomorrow after ~14:00'),
-                      style: text.labelSmall?.copyWith(color: cs.onSurfaceVariant),
-                    ),
+                  for (var i = 0; i < stats.length; i++) ...[if (i > 0) const SizedBox(width: 22), stats[i]],
                 ],
               ),
             ),
-            Text(
-              updatedText,
-              key: const ValueKey('price-updated'),
-              style: text.labelSmall?.copyWith(color: cs.onSurfaceVariant),
-            ),
+            SizedBox(height: short ? 2 : 8),
+            Expanded(child: chart),
+            const SizedBox(height: 4),
+            if (short)
+              Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  updatedText,
+                  key: const ValueKey('price-updated'),
+                  style: text.labelSmall?.copyWith(color: cs.onSurfaceVariant),
+                ),
+              )
+            else
+              Row(
+                children: [
+                  Expanded(
+                    child: Wrap(
+                      spacing: 6,
+                      runSpacing: 4,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        if (quarter)
+                          ChoiceChip(
+                            key: const ValueKey('price-res'),
+                            visualDensity: VisualDensity.compact,
+                            label: Text(hourly ? '1 h' : '15 min'),
+                            selected: !hourly,
+                            onSelected: (_) => setState(() => _hourly = !hourly),
+                          ),
+                        if (hasMeters)
+                          for (final o in const ['kwh', 'cost'])
+                            ChoiceChip(
+                              key: ValueKey('price-overlay-$o'),
+                              visualDensity: VisualDensity.compact,
+                              label: Text(
+                                o == 'kwh' ? tx(context, 'Kulutus', 'Usage') : tx(context, 'Kustannus', 'Cost'),
+                              ),
+                              selected: overlay == o,
+                              onSelected: (s) => setState(() => _overlay = s ? o : 'none'),
+                            ),
+                        if (quarter && widget.page)
+                          Text(
+                            tx(context, 'Luvut tuntikeskiarvoina', 'Figures are hourly averages'),
+                            style: text.labelSmall?.copyWith(color: cs.onSurfaceVariant),
+                          ),
+                        if (!v.hasTomorrow)
+                          Text(
+                            tx(context, 'Huominen n. klo 14 jälkeen', 'Tomorrow after ~14:00'),
+                            style: text.labelSmall?.copyWith(color: cs.onSurfaceVariant),
+                          ),
+                      ],
+                    ),
+                  ),
+                  Text(
+                    updatedText,
+                    key: const ValueKey('price-updated'),
+                    style: text.labelSmall?.copyWith(color: cs.onSurfaceVariant),
+                  ),
+                ],
+              ),
           ],
-        ),
-      ],
+        );
+      },
     );
   }
 }
@@ -338,9 +357,9 @@ double niceStep(double range, {int n = 4}) {
 }
 
 /// (axis low, axis high, step) for prices lo..hi: rounded to the step, never 46.4.
-(double, double, double) priceAxis(double lo, double hi) {
+(double, double, double) priceAxis(double lo, double hi, {int n = 5}) {
   final l = math.min(lo, 0.0), h = math.max(hi, 1.0);
-  final st = niceStep(h - l, n: 5);
+  final st = niceStep(h - l, n: n);
   return ((l / st).floor() * st, (h / st).ceil() * st, st);
 }
 
@@ -373,6 +392,9 @@ class PriceBarsPainter extends CustomPainter {
 
   /// Where the Now line was drawn (for tests): x in px and the time it stands for.
   double? debugNowX;
+
+  /// Pixel distance between y gridlines in the last paint (tests: labels never overlap).
+  double? debugGridGap;
 
   TextPainter _tp(String s, Color color, double size, {FontWeight? weight}) => TextPainter(
     text: TextSpan(
@@ -417,6 +439,8 @@ class PriceBarsPainter extends CustomPainter {
     final (lo, hi, step) = priceAxis(
       win.map((e) => e.$1.cents).reduce(math.min),
       win.map((e) => e.$1.cents).reduce(math.max) * (axes ? 1.08 : 1.0),
+      // Short charts get fewer gridlines so the labels never overlap (≥ ~22 px apart).
+      n: axes ? (h / 26).floor().clamp(1, 5) : 5,
     );
     double y(double c) => top + h * (hi - c) / (hi - lo);
     final zero = y(0);
@@ -426,6 +450,7 @@ class PriceBarsPainter extends CustomPainter {
     final labelColor = cs.onSurfaceVariant.withValues(alpha: 0.9);
 
     if (axes) {
+      debugGridGap = (y(lo) - y(lo + step)).abs();
       _label(canvas, leftTitle, const Offset(2, 2), align: 0, size: 10.5, color: labelColor);
       for (var val = lo; val <= hi + 1e-9; val += step) {
         canvas.drawLine(Offset(left, y(val)), Offset(left + w, y(val)), grid);
