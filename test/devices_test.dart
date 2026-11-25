@@ -178,9 +178,16 @@ void main() {
     expect(creds['token'], MockDirigera.token);
     expect(hub.challenge, isNotNull);
     final r = await p.connect(ctx(), c, creds);
-    expect(r.items.map((i) => i.name), ['Keittiö', 'Kahvinkeitin'], reason: 'sensors are not switches');
+    expect(r.items.map((i) => i.name), ['Keittiö', 'Kahvinkeitin', 'Liike', 'Pesukone vuotohälytin']);
     final tiles = p.tiles(r);
-    expect(tiles.map((t) => t.type), [TileType.toggle, TileType.toggle, TileType.value]);
+    // t143u: sensors are sensor tiles (no controls), never lights or switches.
+    expect(tiles.map((t) => t.type), [TileType.toggle, TileType.toggle, TileType.value, TileType.value, TileType.value]);
+    expect(tiles[3].sensor, 'motion');
+    expect(tiles[4].sensor, 'leak');
+    expect(tiles[4].onCommand, isNull);
+    expect(tiles[4].commands, isEmpty);
+    expect(await readTile(tiles[4], r.connection), true);
+    expect(await createDriver(r.connection).read(tiles[4].battery!), 74);
     await runCmd(tiles.first.onCommand!, r.connection);
     expect((hub.devices.first['attributes'] as Map)['isOn'], true);
     await runCmd(tiles[0].commands.first, r.connection, 80);

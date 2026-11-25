@@ -90,12 +90,11 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
     }
   }
 
-  int _hueLights(HaCatalog c) =>
-      c.entities.where((e) => e.platform == 'hue' && e.entityId.startsWith('light.')).length;
+  int _hueLights(HaCatalog c) => c.entities.where((e) => e.platform == 'hue' && e.entityId.startsWith('light.')).length;
 
-  bool _hasHue() => AppScope.read(context).config.connections.any(
-    (x) => x.type == 'http' && x.name == 'Hue' && (x.secrets['token'] ?? '').isNotEmpty,
-  );
+  bool _hasHue() =>
+      AppScope.read(context).config.connections
+          .any((x) => x.type == 'http' && x.name == 'Hue' && (x.secrets['token'] ?? '').isNotEmpty);
 
   Set<String> _existing() {
     final st = AppScope.read(context);
@@ -149,7 +148,7 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
           }
         }
       }
-      final tiles = haTilesForPicked(g.value, widget.connection.id, lang, cameraConnId: cam?.id);
+      final tiles = haTilesForPicked(g.value, widget.connection.id, lang, cameraConnId: cam?.id, all: c.entities);
       count += tiles.length;
       await st.applyTemplate(TemplateResult([?cam], tiles), into: d);
     }
@@ -316,7 +315,9 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
                   final p = providerById('hue');
                   if (p == null) return;
                   Navigator.of(context).push(
-                    MaterialPageRoute<void>(builder: (_) => AddDeviceWizard(provider: p, dashboard: widget.dashboard)),
+                    MaterialPageRoute<void>(
+                      builder: (_) => AddDeviceWizard(provider: p, dashboard: widget.dashboard),
+                    ),
                   );
                 },
                 child: Text(tx(context, 'Lisää Hue-silta', 'Add Hue Bridge')),

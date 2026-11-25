@@ -1,6 +1,7 @@
 /// One-time fixes for configurations saved by older versions.
 library;
 
+import '../devices/sensors.dart';
 import '../models/models.dart';
 import '../prices/prices.dart';
 
@@ -102,4 +103,40 @@ bool _sameLight(TileConfig a, TileConfig b) {
   if (a.connectionId != b.connectionId) return false;
   if (b.read['entityId'] != null) return a.read['entityId'] == b.read['entityId'];
   return a.read['path'] != null && a.read['path'] == b.read['path'];
+}
+
+
+/// t143u: sensors that older versions added as lights/switches (a bulb icon, Pois, a brightness
+/// slider) become sensor tiles: no controls, a sensor icon, Kuiva / VUOTO! etc. The read source
+/// is marked for [repair] when it still points at the bogus light ('repair': 'ha' | 'hue').
+bool fixMisclassifiedSensors(AppConfig cfg) {
+  var changed = false;
+  final types = {for (final c in cfg.connections) c.id: c.type};
+  for (final d in cfg.dashboards) {
+    for (final t in d.tiles) {
+      if (t.sensor != null || (t.type != TileType.toggle && t.type != TileType.slider)) continue;
+      if (!looksLikeSensor(t.title)) continue;
+      final kind = sensorKindFromName(t.title);
+      if (kind == null) continue;
+      final entity = '${t.read['entityId'] ?? ''}';
+      final path = '${t.read['path'] ?? ''}';
+      t.type = TileType.value;
+      t.sensor = kind;
+      t.icon = sensorIcon(kind);
+      t.onCommand = null;
+      t.offCommand = null;
+      t.commands = [];
+      t.light = {};
+      t.confirm = false;
+      t.valueMap = '';
+      if (types[t.connectionId] == 'homeassistant' || entity.isNotEmpty) {
+        t.onValue = 'on';
+        if (entity.startsWith('light.') || entity.startsWith('switch.')) t.read = {...t.read, 'repair': 'ha'};
+      } else if (RegExp(r'/lights/\d+').hasMatch(path)) {
+        t.read = {...t.read, 'repair': 'hue'};
+      }
+      changed = true;
+    }
+  }
+  return changed;
 }

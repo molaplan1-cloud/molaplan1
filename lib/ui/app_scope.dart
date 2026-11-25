@@ -30,7 +30,11 @@ void showSnack(BuildContext context, String msg, {bool error = false}) {
         ),
         backgroundColor: error ? cs.errorContainer : cs.inverseSurface,
         behavior: SnackBarBehavior.floating,
-        duration: Duration(seconds: error ? 5 : 2),
+        // t146u: always auto-dismiss (info 3 s, errors 5 s), closable.
+        duration: Duration(seconds: error ? 5 : 3),
+        persist: false,
+        showCloseIcon: true,
+        closeIconColor: error ? cs.onErrorContainer : cs.onInverseSurface,
       ),
     );
 }
@@ -45,7 +49,11 @@ void showUndo(BuildContext context, String msg, VoidCallback undo) {
         content: Text(msg, style: TextStyle(color: cs.onInverseSurface)),
         backgroundColor: cs.inverseSurface,
         behavior: SnackBarBehavior.floating,
-        duration: const Duration(seconds: 6),
+        // t146u: a SnackBar with an action persists by default since Flutter 3.29 – not ours.
+        duration: const Duration(seconds: 5),
+        persist: false,
+        showCloseIcon: true,
+        closeIconColor: cs.onInverseSurface,
         action: SnackBarAction(label: tx(context, 'Kumoa', 'Undo'), textColor: cs.inversePrimary, onPressed: undo),
       ),
     );
@@ -84,4 +92,21 @@ Future<String?> promptText(BuildContext context, String title, {String initial =
       ],
     ),
   );
+}
+
+
+/// t146u: SnackBars never outlive the page they were shown on.
+final snackMessengerKey = GlobalKey<ScaffoldMessengerState>();
+
+class SnackDismissObserver extends NavigatorObserver {
+  void _hide() => snackMessengerKey.currentState?.hideCurrentSnackBar();
+  @override
+  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    if (route is PageRoute) _hide();
+  }
+
+  @override
+  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    if (route is PageRoute) _hide();
+  }
 }

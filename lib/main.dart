@@ -58,6 +58,8 @@ class MolaplanApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Molaplan',
         navigatorKey: navigatorKey,
+        scaffoldMessengerKey: snackMessengerKey,
+        navigatorObservers: [SnackDismissObserver()],
         debugShowCheckedModeBanner: false,
         theme: molaplanTheme(brightness: Brightness.light),
         darkTheme: molaplanTheme(),

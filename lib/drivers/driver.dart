@@ -57,7 +57,11 @@ Object? extractValue(Object? raw, Map<String, dynamic> spec) {
   if (regex != null && v != null) v = applyRegex(v.toString(), regex);
   final path = spec.strOrNull('jsonPath');
   if (path != null && v != null) v = jsonPathGet(v, path);
-  return coerce(v);
+  v = coerce(v);
+  // Optional multiplier (e.g. Zigbee temperatures in 0.01 °C → scale 0.01). Modbus has its own.
+  final scale = spec['scale'];
+  if (v is num && scale is num && scale != 1 && !spec.containsKey('register')) v = v * scale;
+  return v;
 }
 
 class DriverDescriptor {

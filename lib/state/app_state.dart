@@ -1,6 +1,7 @@
 import 'measure_history.dart';
 import '../devices/climate.dart';
 import 'migrations.dart';
+import 'sensor_repair.dart';
 
 import 'dart:async';
 import 'dart:convert';
@@ -8,6 +9,7 @@ import 'dart:io' show Directory, Platform;
 
 import 'package:flutter/foundation.dart';
 
+import '../core/template.dart';
 import '../drivers/driver.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
@@ -183,7 +185,20 @@ class AppState extends ChangeNotifier implements SyncHost {
     ];
   }
 
+  final _sensorPrev = <String, bool>{};
+
   void onTileValue(TileConfig t, Object? v, [DateTime? at]) {
+    if (t.sensor != null) {
+      // t143u: remember the last alarm (calm → alarm), shown on the tile.
+      final alarm = isTruthy(v, onValue: t.onValue.isEmpty ? null : t.onValue);
+      final prev = _sensorPrev[t.id];
+      _sensorPrev[t.id] = alarm;
+      if (alarm && (prev == false || (prev == null && t.lastAlarm == null))) {
+        t.lastAlarm = (at ?? DateTime.now()).millisecondsSinceEpoch;
+        unawaited(save());
+      }
+      return;
+    }
     if (isMeasureTile(t)) {
       final d = v is num ? v.toDouble() : double.tryParse('${v ?? ''}'.replaceAll(',', '.'));
       if (d != null) {
@@ -320,7 +335,8 @@ class AppState extends ChangeNotifier implements SyncHost {
         final b = removeEmptyIntegrationViews(config);
         final c = migrateSplitClimateTiles(config);
         final e = mergeBrightnessTiles(config);
-        if (a || b || c || e) unawaited(configStore.save(jsonEncode(config.toJson())));
+        final f = fixMisclassifiedSensors(config);
+        if (a || b || c || e || f) unawaited(configStore.save(jsonEncode(config.toJson())));
       } catch (_) {
         config = AppConfig();
       }
@@ -363,6 +379,14 @@ class AppState extends ChangeNotifier implements SyncHost {
     }
     _fixRawIdTitles();
     unawaited(automations.start());
+    unawaited(
+      repairSensorTiles(config, driverFor).then((c) async {
+        if (c) {
+          await save();
+          notifyListeners();
+        }
+      }, onError: (_) {}),
+    );
     loaded = true;
     notifyListeners();
   }

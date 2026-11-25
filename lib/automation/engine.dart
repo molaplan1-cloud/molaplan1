@@ -367,9 +367,11 @@ class AutomationEngine {
         case 'script':
           await runScript('${st.args['scriptId']}', depth: depth + 1);
         case 'notify':
+          final tid = st.args['tileId'] as String?;
+          final body = '${st.args['body'] ?? ''}';
           await sendNotification(
             '${st.args['title'] ?? source}',
-            '${st.args['body'] ?? ''}',
+            body.isEmpty && tid != null && tid.isNotEmpty ? env.tileTitle(tid) : body,
             priority: (st.args['priority'] as num?)?.toInt() ?? 3,
             tileId: st.args['tileId'] as String?,
           );
@@ -505,6 +507,14 @@ class AutomationTemplate {
 
   static const all = [
     AutomationTemplate(
+      'leak_alarm',
+      'Vesivuoto → hälytys',
+      'Water leak → alarm',
+      'Kiireellinen ilmoitus heti, kun vuotoanturi havaitsee vettä (myös hiljaisena aikana).',
+      'An urgent notification as soon as a leak sensor detects water (also during quiet hours).',
+      'water',
+    ),
+    AutomationTemplate(
       'sunset_lights',
       'Valot päälle auringonlaskulla',
       'Lights on at sunset',
@@ -574,6 +584,15 @@ class AutomationTemplate {
   Automation build(List<String> targets, {required bool fi}) {
     String n(String a, String b) => fi ? a : b;
     switch (id) {
+      case 'leak_alarm':
+        final t = targets.isEmpty ? '' : targets.first;
+        return Automation(
+          name: n(this.fi, en),
+          template: id,
+          trigger: Trigger('state', {'tileId': t, 'to': 'on'}),
+          cooldownMin: 5,
+          actions: [ActionStep.notify(n('VESIVUOTO!', 'WATER LEAK!'), '', priority: 5, tileId: t)],
+        );
       case 'sunset_lights':
         return Automation(
           name: n(this.fi, en),

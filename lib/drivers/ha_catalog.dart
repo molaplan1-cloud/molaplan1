@@ -13,6 +13,7 @@ import 'package:web_socket_channel/io.dart';
 
 import '../l10n/l10n.dart';
 import '../models/models.dart';
+import '../devices/sensors.dart';
 import '../devices/climate.dart';
 
 class HaEntity {
@@ -285,6 +286,11 @@ List<TileConfig> haTilesFor(HaEntity e, String connId, String lang, {String? cam
     offCommand: CommandStep(connectionId: connId, spec: {'service': off, 'entityId': id}),
   );
   switch (e.domain) {
+    case 'light' || 'switch' when sensorKindFromName(e.name) != null:
+      // t143u: a sensor's on/off cluster ("…vuotohälytin Basic") is not a light.
+      return [
+        sensorTile(kind: sensorKindFromName(e.name)!, title: e.name, connectionId: connId, read: read, onValue: 'on'),
+      ];
     case 'light':
       final modes = e.attributes['supported_color_modes'];
       final dims = modes is List && modes.any((m) => m != 'onoff') || e.attributes['brightness'] != null;
@@ -403,6 +409,11 @@ List<TileConfig> haTilesFor(HaEntity e, String connId, String lang, {String? cam
         ),
       ];
   }
+  // t143u: leak / door / motion / smoke sensors get the sensor tile (no controls).
+  final sk = sensorKindForHa(e.domain, e.deviceClass);
+  if (sk != null) {
+    return [sensorTile(kind: sk, title: e.name, connectionId: connId, read: read, onValue: 'on')];
+  }
   // sensor, binary_sensor and everything else: show the value.
   final temp = e.deviceClass == 'temperature';
   return [
@@ -421,7 +432,13 @@ List<TileConfig> haTilesFor(HaEntity e, String connId, String lang, {String? cam
 /// Tiles for picked entities with thermostat parts combined (t137u): a climate entity takes its
 /// device's temperature/humidity sensors; a temperature sensor + a °C number/input_number of the
 /// same device become ONE thermostat tile (+ humidity if the device has it).
-List<TileConfig> haTilesForPicked(List<HaEntity> picked, String connId, String lang, {String? cameraConnId}) {
+List<TileConfig> haTilesForPicked(
+  List<HaEntity> picked,
+  String connId,
+  String lang, {
+  String? cameraConnId,
+  List<HaEntity> all = const [],
+}) {
   bool isTemp(HaEntity e) => e.domain == 'sensor' && (e.deviceClass == 'temperature' || e.unit.contains('°'));
   bool isHum(HaEntity e) => e.domain == 'sensor' && e.deviceClass == 'humidity';
   bool isSet(HaEntity e) => (e.domain == 'number' || e.domain == 'input_number') && e.unit.contains('°');
@@ -431,9 +448,68 @@ List<TileConfig> haTilesForPicked(List<HaEntity> picked, String connId, String l
   for (final e in picked) {
     if (e.deviceId != null) byDev.putIfAbsent(e.deviceId!, () => []).add(e);
   }
+  // Whole devices (all entities of the catalog) for sensor detection and batteries.
+  final devAll = <String, List<HaEntity>>{};
+  for (final e in {...all, ...picked}) {
+    if (e.deviceId != null) devAll.putIfAbsent(e.deviceId!, () => []).add(e);
+  }
+  Map<String, dynamic>? batteryOf(HaEntity e) {
+    final b = (devAll[e.deviceId] ?? const <HaEntity>[])
+        .where((x) => x.domain == 'sensor' && x.deviceClass == 'battery')
+        .firstOrNull;
+    if (b == null) return null;
+    used.add(b.entityId);
+    return {'entityId': b.entityId};
+  }
+
   for (final e in picked) {
     if (used.contains(e.entityId)) continue;
     final dev = e.deviceId == null ? const <HaEntity>[] : byDev[e.deviceId]!;
+    // t143u: a "light"/"switch" entity of a battery sensor (ZHA/Z2M "Basic", on/off cluster) or one
+    // whose name says sensor → the device's real sensor tile instead.
+    if (e.domain == 'light' || e.domain == 'switch') {
+      final whole = devAll[e.deviceId] ?? const <HaEntity>[];
+      final real = whole.where((x) => sensorKindForHa(x.domain, x.deviceClass) != null).firstOrNull;
+      final battery = whole.any((x) => x.domain == 'sensor' && x.deviceClass == 'battery');
+      if (real != null && (battery || looksLikeSensor(e.name) || looksLikeSensor(real.name))) {
+        used.add(e.entityId);
+        if (used.add(real.entityId)) {
+          out.add(
+            sensorTile(
+              kind: sensorKindForHa(real.domain, real.deviceClass)!,
+              title: real.name,
+              connectionId: connId,
+              read: {'entityId': real.entityId},
+              onValue: 'on',
+              battery: batteryOf(real),
+            ),
+          );
+        }
+        continue;
+      }
+      final named = sensorKindFromName(e.name);
+      if (named != null) {
+        used.add(e.entityId);
+        out.add(
+          sensorTile(kind: named, title: e.name, connectionId: connId, read: {'entityId': e.entityId}, onValue: 'on'),
+        );
+        continue;
+      }
+    }
+    if (sensorKindForHa(e.domain, e.deviceClass) case final sk?) {
+      used.add(e.entityId);
+      out.add(
+        sensorTile(
+          kind: sk,
+          title: e.name,
+          connectionId: connId,
+          read: {'entityId': e.entityId},
+          onValue: 'on',
+          battery: batteryOf(e),
+        ),
+      );
+      continue;
+    }
     if (e.domain == 'climate') {
       // The climate entity has current_temperature (+ current_humidity): its sensors are redundant.
       used.addAll([

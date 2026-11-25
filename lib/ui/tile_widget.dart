@@ -28,6 +28,7 @@ import 'measure_view.dart';
 import 'tile_status.dart';
 import 'tile_visuals.dart';
 import 'weather_tile.dart';
+import 'sensor_tile.dart';
 import '../energy/meters.dart';
 
 /// A live dashboard tile. Rebuilt (runtime restarted) when its config changes.
@@ -622,6 +623,7 @@ class _TileWidgetState extends State<TileWidget> {
     final r = rt!;
     final err = away ? null : r.error;
     if (t.type == TileType.thermostat) return ThermostatTile(tile: t, editing: widget.editing);
+    if (t.sensor != null) return SensorTile(tile: t, runtime: r, editing: widget.editing || away);
     if (isClimateTile(t)) return ClimateTile(tile: t, editing: widget.editing || away);
     if (t.type == TileType.camera) {
       return Card(

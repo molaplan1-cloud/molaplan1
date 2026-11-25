@@ -34,6 +34,11 @@ const tileIcons = <String, IconData>{
   'remote': Icons.settings_remote_outlined,
   'sun': Icons.wb_sunny_outlined,
   'battery': Icons.battery_std_outlined,
+  'motion': Icons.directions_walk,
+  'smoke': Icons.local_fire_department_outlined,
+  'scene': Icons.auto_awesome_outlined,
+  'script': Icons.code,
+  'group': Icons.workspaces_outline,
 };
 
 /// Names shown in the icon picker (fi, en).
@@ -69,6 +74,11 @@ const tileIconLabels = <String, (String, String)>{
   'remote': ('Kaukosäädin', 'Remote'),
   'sun': ('Aurinko', 'Sun'),
   'battery': ('Akku', 'Battery'),
+  'motion': ('Liike', 'Motion'),
+  'smoke': ('Savu', 'Smoke'),
+  'scene': ('Tilanne', 'Scene'),
+  'script': ('Skripti', 'Script'),
+  'group': ('Ryhmä', 'Group'),
 };
 
 IconData iconFor(TileConfig t) {

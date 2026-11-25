@@ -8,6 +8,7 @@ import '../core/fields.dart';
 import '../drivers/driver.dart';
 import '../models/models.dart';
 import 'provider.dart';
+import 'sensors.dart';
 import 'shelly_cloud_model.dart';
 import '../l10n/l10n.dart';
 
@@ -29,7 +30,11 @@ class ShellyDevice {
     this.app = '',
     this.name,
     this.authEnabled = false,
+    this.flood = false,
   });
+
+  /// t143u: Shelly Flood (leak sensor, battery, sleeps between reports) – no relays.
+  final bool flood;
   final String id;
   final String model;
   final String app;
@@ -79,6 +84,16 @@ Future<ShellyDevice> probeShelly(Driver d, {bool havePassword = false}) async {
     final st = await get('/status');
     final relays = (st['relays'] as List?) ?? const [];
     final meters = (st['meters'] as List?) ?? const [];
+    if (relays.isEmpty && (st.containsKey('flood') || '${info['type']}'.startsWith('SHWT'))) {
+      return ShellyDevice(
+        id: 'shelly-${info['mac'] ?? ''}'.toLowerCase(),
+        model: '${info['type'] ?? 'SHWT-1'}',
+        gen: 1,
+        authEnabled: info['auth'] == true,
+        channels: const [],
+        flood: true,
+      );
+    }
     if (relays.isEmpty) throw AddDeviceError(AddProblem.nothingToAdd);
     return ShellyDevice(
       id: 'shelly-${info['mac'] ?? ''}'.toLowerCase(),
@@ -122,9 +137,21 @@ Future<ShellyDevice> probeShelly(Driver d, {bool havePassword = false}) async {
     );
   }
   chans.sort((a, b) => a.id.compareTo(b.id));
-  if (chans.isEmpty) throw AddDeviceError(AddProblem.nothingToAdd);
   final sys = cfg['sys'] is Map ? (cfg['sys'] as Map)['device'] : null;
   final devName = (info['name'] ?? (sys is Map ? sys['name'] : null) ?? '').toString().trim();
+  if (chans.isEmpty && st.containsKey('flood:0')) {
+    return ShellyDevice(
+      id: '${info['id'] ?? 'shelly'}',
+      model: '${info['model'] ?? ''}',
+      app: '${info['app'] ?? 'Flood'}',
+      gen: gen,
+      name: devName.isEmpty ? null : devName,
+      authEnabled: info['auth_en'] == true,
+      channels: const [],
+      flood: true,
+    );
+  }
+  if (chans.isEmpty) throw AddDeviceError(AddProblem.nothingToAdd);
   return ShellyDevice(
     id: '${info['id'] ?? 'shelly'}',
     model: '${info['model'] ?? ''}',
@@ -197,6 +224,24 @@ List<TileConfig> shellyTiles(
   String lang = 'fi',
 }) {
   final tiles = <TileConfig>[];
+  if (d.flood) {
+    final custom = names['flood']?.trim() ?? '';
+    final g1 = d.gen == 1;
+    tiles.add(
+      sensorTile(
+        kind: 'leak',
+        title: custom.isNotEmpty ? custom : (d.name ?? tr(lang, 'Vesivuotoanturi', 'Water leak sensor')),
+        connectionId: c.id,
+        // Battery device: reachable only while awake – the last value is kept in between.
+        read: g1 ? {'path': '/status', 'jsonPath': 'flood'} : {'path': '/rpc/Flood.GetStatus?id=0', 'jsonPath': 'alarm'},
+        battery: g1
+            ? {'path': '/status', 'jsonPath': 'bat.value'}
+            : {'path': '/rpc/DevicePower.GetStatus?id=0', 'jsonPath': 'battery.percent'},
+        pollSeconds: 60,
+      ),
+    );
+    return tiles;
+  }
   for (final ch in d.channels) {
     if (skip.contains('${ch.id}')) continue;
     final custom = names['${ch.id}']?.trim() ?? '';
@@ -330,6 +375,13 @@ class ShellyProvider extends DeviceProvider {
         label: '${dev.friendlyModel}${dev.name != null ? ' – ${dev.name}' : ''}',
         data: {'device': dev},
         items: [
+          if (dev.flood)
+            AddItem(
+              key: 'flood',
+              name: dev.name ?? tr(ctx.lang, 'Vesivuotoanturi', 'Water leak sensor'),
+              kind: 'sensor:leak',
+              subtitle: tr(ctx.lang, 'vuotoanturi · paristo', 'leak sensor · battery'),
+            ),
           for (final ch in dev.channels)
             AddItem(
               key: '${ch.id}',

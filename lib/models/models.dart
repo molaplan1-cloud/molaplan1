@@ -197,6 +197,16 @@ class TileConfig {
   /// {'rgb': bool, 'ct': bool, 'bri': bool, 'ctMin': K, 'ctMax': K, 'glow': ARGB}.
   Map<String, dynamic> light;
 
+  /// t143u: a sensor tile (value type): 'leak' | 'door' | 'motion' | 'smoke' | 'vibration'.
+  /// The read value is the alarm state (truthy = alarm / open / motion).
+  String? sensor;
+
+  /// Optional battery read spec (same connection), %.
+  Map<String, dynamic>? battery;
+
+  /// When the sensor last alarmed (ms since epoch).
+  int? lastAlarm;
+
   TileConfig({
     String? id,
     required this.type,
@@ -228,6 +238,9 @@ class TileConfig {
     this.gaugeMin,
     this.gaugeMax,
     Map<String, dynamic>? light,
+    this.sensor,
+    this.battery,
+    this.lastAlarm,
   }) : id = id ?? newId(),
        light = light ?? {},
        read = read ?? {},
@@ -265,6 +278,9 @@ class TileConfig {
     'gaugeMin': ?gaugeMin,
     'gaugeMax': ?gaugeMax,
     if (light.isNotEmpty) 'light': light,
+    'sensor': ?sensor,
+    'battery': ?battery,
+    'lastAlarm': ?lastAlarm,
   };
 
   factory TileConfig.fromJson(Map<String, dynamic> j) => TileConfig(
@@ -298,6 +314,9 @@ class TileConfig {
     gaugeMin: (j['gaugeMin'] as num?)?.toDouble(),
     gaugeMax: (j['gaugeMax'] as num?)?.toDouble(),
     light: j['light'] is Map ? Map<String, dynamic>.from(j['light'] as Map) : null,
+    sensor: j['sensor'] as String?,
+    battery: j['battery'] is Map ? Map<String, dynamic>.from(j['battery'] as Map) : null,
+    lastAlarm: (j['lastAlarm'] as num?)?.toInt(),
   );
 
   TileConfig copy() => TileConfig.fromJson(jsonDecode(jsonEncode(toJson())));

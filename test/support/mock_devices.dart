@@ -143,6 +143,15 @@ class MockHue {
   late HttpServer server;
   bool buttonPressed = false;
   int pairAttempts = 0;
+
+  /// t143u: a leak sensor joined to the bridge that also shows up under /lights ("Basic").
+  bool withSensors = false;
+  final sensors = <String, Map<String, dynamic>>{
+    '5': {'name': 'Pesukone vuoto', 'type': 'ZHAWater', 'uniqueid': '00:15:8d:00:01:02:03:04-01-0500', 'state': <String, dynamic>{'water': false}, 'config': {'battery': 87}},
+    '6': {'name': 'Pesukone vuoto', 'type': 'ZHAWater', 'uniqueid': '00:15:8d:00:01:02:03:04-01-0500', 'state': <String, dynamic>{'water': false}, 'config': {'battery': 87}},
+    '7': {'name': 'Eteinen lämpö', 'type': 'ZLLTemperature', 'uniqueid': '00:17:88:01:aa:bb:cc:dd-02-0402', 'state': <String, dynamic>{'temperature': 2150}, 'config': {'battery': 60}},
+    '8': {'name': 'Daylight', 'type': 'Daylight', 'state': <String, dynamic>{'daylight': true}},
+  };
   final lights = {
     '1': {'name': 'Olohuone', 'type': 'Extended color light', 'state': <String, dynamic>{'on': false, 'bri': 100, 'reachable': true}},
     '2': {'name': 'Eteinen', 'type': 'On/Off plug-in unit', 'state': <String, dynamic>{'on': true, 'reachable': true}},
@@ -163,7 +172,16 @@ class MockHue {
       }
       if (!p.startsWith('/api/$user')) return _json(r, [{'error': {'type': 1, 'description': 'unauthorized user'}}]);
       final rest = p.substring('/api/$user'.length);
-      if (rest == '/lights') return _json(r, lights);
+      if (rest == '/lights') {
+        return _json(r, {
+          ...lights,
+          if (withSensors)
+            '3': {'name': 'Pesukone vuotohälytin Basic', 'type': 'On/Off light', 'uniqueid': '00:15:8d:00:01:02:03:04-01', 'state': {'on': false, 'bri': 1, 'reachable': true}},
+        });
+      }
+      if (rest == '/sensors') return withSensors ? _json(r, sensors) : _json(r, <String, dynamic>{});
+      final sm = RegExp(r'^/sensors/(\d+)$').firstMatch(rest);
+      if (sm != null && sensors[sm[1]] != null) return _json(r, sensors[sm[1]]!);
       if (rest == '/groups') {
         return _json(r, {'1': {'name': 'Olohuone', 'type': 'Room', 'lights': ['1'], 'state': {'any_on': false}}});
       }
@@ -193,7 +211,8 @@ class MockDirigera {
   final devices = [
     {'id': 'light-1', 'deviceType': 'light', 'type': 'light', 'isReachable': true, 'attributes': <String, dynamic>{'customName': 'Keittiö', 'model': 'TRADFRI bulb', 'isOn': false, 'lightLevel': 50}},
     {'id': 'outlet-1', 'deviceType': 'outlet', 'type': 'outlet', 'isReachable': true, 'attributes': <String, dynamic>{'customName': 'Kahvinkeitin', 'model': 'TRETAKT', 'isOn': true, 'currentActivePower': 3.5}},
-    {'id': 'sensor-1', 'deviceType': 'motionSensor', 'type': 'sensor', 'attributes': {'customName': 'Liike'}},
+    {'id': 'sensor-1', 'deviceType': 'motionSensor', 'type': 'sensor', 'attributes': {'customName': 'Liike', 'isDetected': false, 'batteryPercentage': 90}},
+    {'id': 'leak-1', 'deviceType': 'waterSensor', 'type': 'sensor', 'attributes': {'customName': 'Pesukone vuotohälytin', 'waterLeakDetected': true, 'batteryPercentage': 74}},
   ];
   static const token = 'dirigera-token-xyz';
   String get address => 'http://127.0.0.1:${server.port}';
