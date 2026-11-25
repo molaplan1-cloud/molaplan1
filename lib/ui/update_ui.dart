@@ -21,7 +21,7 @@ String plainNotes(String md) {
   return lines.join('\n').replaceAll(RegExp(r'\n{3,}'), '\n\n').trim();
 }
 
-/// Startup: check (at most every 6 h) and offer the update. In bridge mode only
+/// Startup, app resume and every 20 min: check (at most once an hour; offline = retry next time) and offer the update. In bridge mode only
 /// the non-blocking banner appears, so the bridge keeps working undisturbed.
 Future<void> startupUpdateCheck(BuildContext context) async {
   final st = AppScope.read(context);

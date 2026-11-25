@@ -10,6 +10,7 @@ import 'ui/theme.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final state = AppState(configStore: PrefsConfigStore(), secretStore: SecureSecretStore());
+  state.account.autoSync = true; // background sync when signed in
   await state.load();
   if (state.config.bridgeMode) await keepScreenOn(true);
   state.update.autoCheck = true;

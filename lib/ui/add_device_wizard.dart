@@ -204,7 +204,42 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       return;
     }
     final st = AppScope.read(context);
-    final h = hostOf(a);
+    final chk = checkAddress(a, locals);
+    if (chk.issue == AddressIssue.badFormat) {
+      showSnack(context, addressHint(a, locals, st.lang)!, error: true);
+      return;
+    }
+    if (chk.issue == AddressIssue.notPrivate) {
+      final fix = chk.suggestion;
+      final r = await showDialog<String>(
+        context: context,
+        builder: (c) => AlertDialog(
+          icon: const Icon(Icons.spellcheck, size: 36),
+          title: Text(tx(c, 'Tarkista osoite', 'Check the address')),
+          content: Text(tx(
+            c,
+            '${hostOf(a)} ei ole kotiverkon osoite. Kotiverkon osoitteet alkavat yleensä 192.168. – katso osoite uudelleen $brand-sovelluksesta.${fix == null ? '' : '\n\nTarkoititko $fix?'}',
+            '${hostOf(a)} is not a home network address. They usually start with 192.168. – check it again in the $brand app.${fix == null ? '' : '\n\nDid you mean $fix?'}',
+          )),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(c), child: Text(tx(c, 'Korjaan itse', 'I\'ll fix it'))),
+            TextButton(onPressed: () => Navigator.pop(c, 'as-is'), child: Text(tx(c, 'Kokeile silti', 'Try anyway'))),
+            if (fix != null)
+              FilledButton(
+                key: const ValueKey('wiz-use-fix'),
+                onPressed: () => Navigator.pop(c, 'fix'),
+                child: Text(tx(c, 'Käytä $fix', 'Use $fix')),
+              ),
+          ],
+        ),
+      );
+      if (r == null || !mounted) return;
+      if (r == 'fix') {
+        addrCtl.text = a.replaceFirst(hostOf(a), fix!);
+        return _manualNext();
+      }
+    }
+    final h = hostOf(addrCtl.text.trim());
     if (!st.remote.isPaired && locals.isNotEmpty && isIPv4(h) && !sameSubnet(h, locals)) {
       final mine = locals.first.substring(0, locals.first.lastIndexOf('.'));
       final go = await showDialog<bool>(
@@ -225,7 +260,7 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       );
       if (go != true) return;
     }
-    await _pick(Candidate(provider: p.id, address: a));
+    await _pick(Candidate(provider: p.id, address: addrCtl.text.trim()));
   }
 
   Future<void> _connect() async {
@@ -433,22 +468,49 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
 
   List<Widget> _remote(BuildContext context) {
     final st = AppScope.read(context);
+    final text = Theme.of(context).textTheme;
+    Widget section(String s) => Padding(
+      padding: const EdgeInsets.only(top: 10, bottom: 8),
+      child: Text(s, style: text.titleSmall?.copyWith(color: Theme.of(context).colorScheme.primary)),
+    );
+    final cloud = p.id == 'shelly'
+        ? [
+            section(tx(context, 'A) Ilman kotisiltaa', 'A) Without a home bridge')),
+            _bigChoice(
+              context,
+              key: const ValueKey('wiz-use-cloud'),
+              icon: Icons.cloud_outlined,
+              title: tx(context, 'Käytä Shelly Cloudia (ei kotisiltaa)', 'Use Shelly Cloud (no bridge)'),
+              body: tx(
+                context,
+                'Paras, jos mikään laite ei ole aina kotona – esim. kun tabletti kulkee mukanasi. Ohjaus kulkee Shellyn oman pilven kautta. Tarvitset avaimen Shelly-sovelluksesta (näytämme mistä).',
+                'Best if no device always stays at home – e.g. your tablet travels with you. Control goes via Shelly\'s own cloud. You need a key from the Shelly app (we show where).',
+              ),
+              onTap: () => setState(() {
+                p = providerById('shelly_cloud')!;
+                step = WizStep.find;
+              }),
+            ),
+            section(tx(context, 'B) Kotisillan kautta', 'B) Through a home bridge')),
+          ]
+        : <Widget>[];
     return [
       _title(
         context,
-        tx(context, 'Ohjaa kotia mistä tahansa', 'Control your home from anywhere'),
+        tx(context, 'Miten ohjaat kotia muualta?', 'How will you control your home when away?'),
         tx(
           context,
-          'Molaplan toimii kodin ulkopuolella, kun kotona on yksi laite kotisiltana – esimerkiksi tabletti tai PC, joka on aina päällä ja samassa wifissä kuin $brand. Puhelimesi ottaa yhteyden kotisiltaan netin yli. Porttiohjauksia ei tarvita ja yhteys on salattu.',
-          'Molaplan works away from home when one device at home acts as the home bridge – e.g. a tablet or PC that is always on and on the same Wi-Fi as $brand. Your phone reaches it over the internet. No port forwarding, encrypted.',
+          'Kotisilta on laite, joka on AINA kotona, päällä ja samassa wifissä kuin $brand – esim. vanha puhelin, tabletti tai PC. Muut laitteesi ottavat siihen yhteyden netin yli (salattu, ei porttiohjauksia). Jos laite lähtee mukaasi, se ei sovi kotisillaksi.${st.account.signedIn ? ' Koska olet kirjautunut, kotiyhteys siirtyy kaikille laitteillesi automaattisesti.' : ''}',
+          'A home bridge is a device that ALWAYS stays at home, switched on and on the same Wi-Fi as $brand – e.g. an old phone, tablet or PC. Your other devices reach it over the internet (encrypted, no port forwarding). A device you carry around is not a good bridge.${st.account.signedIn ? ' As you are signed in, the home connection reaches all your devices automatically.' : ''}',
         ),
       ),
+      ...cloud,
       _bigChoice(
         context,
         key: const ValueKey('wiz-make-bridge'),
         icon: Icons.router_outlined,
-        title: tx(context, 'Tämä laite on kotona – tee siitä kotisilta', 'This device stays at home – make it the bridge'),
-        body: tx(context, 'Suositus kotiin jäävälle tabletille tai PC:lle. Puhelimet yhdistetään siihen myöhemmin QR-koodilla.', 'Recommended for a tablet or PC that stays home. Phones connect to it later with a QR code.'),
+        title: tx(context, 'Tämä laite jää aina kotiin – tee siitä kotisilta', 'This device always stays home – make it the bridge'),
+        body: tx(context, 'Pidä laite laturissa ja Molaplan auki. Muut laitteet yhdistetään siihen QR-koodilla tai kirjautumalla samalle tilille.', 'Keep it charging with Molaplan open. Other devices connect with a QR code or by signing in to the same account.'),
         onTap: () async {
           await st.setBridgeMode(true);
           await keepScreenOn(true);
@@ -470,18 +532,6 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           unawaited(_search());
         },
       ),
-      if (p.id == 'shelly')
-        _bigChoice(
-          context,
-          key: const ValueKey('wiz-use-cloud'),
-          icon: Icons.cloud_outlined,
-          title: tx(context, 'Ei kotisiltaa? Käytä Shelly Cloudia', 'No bridge? Use Shelly Cloud'),
-          body: tx(context, 'Toimii etänä Shellyn oman pilven kautta. Tarvitset Shelly-sovelluksesta avaimen.', 'Works remotely via the Shelly cloud. You need a key from the Shelly app.'),
-          onTap: () => setState(() {
-            p = providerById('shelly_cloud')!;
-            step = WizStep.find;
-          }),
-        ),
       TextButton(
         key: const ValueKey('wiz-skip-remote'),
         onPressed: () {
@@ -599,7 +649,15 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           controller: addrCtl,
           keyboardType: TextInputType.url,
           style: const TextStyle(fontSize: 18),
-          decoration: InputDecoration(labelText: tx(context, 'IP-osoite', 'IP address'), hintText: p.addressHint, border: const OutlineInputBorder()),
+          decoration: InputDecoration(
+            labelText: tx(context, 'IP-osoite', 'IP address'),
+            hintText: p.addressHint,
+            border: const OutlineInputBorder(),
+            helperText: addressHint(addrCtl.text, locals, AppScope.read(context).lang),
+            helperMaxLines: 3,
+            helperStyle: TextStyle(color: Theme.of(context).colorScheme.tertiary),
+          ),
+          onChanged: (_) => setState(() {}),
           onSubmitted: (_) => _manualNext(),
         ),
         const SizedBox(height: 8),

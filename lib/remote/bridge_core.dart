@@ -274,6 +274,58 @@ class BridgeCore {
     log?.call('paired device "$name" ($dev)');
   }
 
+  /// "enroll" op: an already paired device (e.g. one signed into the same Molaplan account)
+  /// adds a sibling device without a QR code. The new device sends only its public key;
+  /// it gets its own token, so it can be removed separately.
+  Future<Map<String, dynamic>> _enroll(Map<String, dynamic> r) async {
+    final id = r['id'];
+    final spec = Map<String, dynamic>.from((r['spec'] as Map?) ?? const {});
+    final dev = '${spec['dev']}';
+    final pub = '${spec['pub']}';
+    final name = '${spec['name'] ?? 'Molaplan'}';
+    if (!RegExp(r'^[0-9a-f]{16,32}$').hasMatch(dev) || pub.length < 40) {
+      return {'id': id, 'ok': false, 'e': 'Bad enroll request', 'k': 'unknown'};
+    }
+    final token = b64(randomBytes(32));
+    await _allow(dev, name, pub, token);
+    log?.call('enrolled device "$name" ($dev) via account');
+    return {
+      'id': id,
+      'ok': true,
+      'v': {'token': token, 'name': homeName},
+    };
+  }
+
+  Future<void> _allow(String dev, String name, String pub, String token) async {
+    _send({'t': 'allow', 'dev': dev, 'h': await sha256Hex(token)});
+    devices.removeWhere((e) => e.id == dev);
+    final pd = PairedDevice(id: dev, name: name, pub: pub, added: DateTime.now());
+    devices.add(pd);
+    _keys.remove(dev);
+    await _save();
+    _changes.add(null);
+    _paired.add(pd);
+  }
+
+  /// Makes a client credential for the signed-in Molaplan account, so the account's other
+  /// devices get this home without pairing (they enroll their own key with it).
+  Future<Map<String, dynamic>> createAccountGrant({String name = 'Molaplan-tili'}) async {
+    if (_ws == null) throw StateError('Bridge is not connected to the relay');
+    final dev = randomHex(8);
+    final me = await Identity.generate();
+    final token = b64(randomBytes(32));
+    await _allow(dev, name, b64(me.publicKey), token);
+    return {
+      'relay': relay,
+      'home': home,
+      'dev': dev,
+      'seed': b64(me.seed),
+      'bridgePub': publicKey,
+      'token': token,
+      'name': homeName,
+    };
+  }
+
   Future<void> removeDevice(String dev) async {
     devices.removeWhere((d) => d.id == dev);
     _keys.remove(dev);
@@ -316,7 +368,7 @@ class BridgeCore {
     if (_seen.containsKey(n)) return; // replay
     _seen[n] = now;
     final batch = [for (final r in (msg['b'] as List? ?? [])) Map<String, dynamic>.from(r as Map)];
-    final results = await Future.wait(batch.map(executor.run));
+    final results = await Future.wait(batch.map((r) => r['op'] == 'enroll' ? _enroll(r) : executor.run(r)));
     await _reply(dev, key, {'r': results});
   }
 

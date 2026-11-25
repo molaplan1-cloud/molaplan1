@@ -7,14 +7,27 @@ import '../drivers/driver.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
 import '../templates/device_templates.dart';
+import '../account/supabase_api.dart' show AccountApi;
+import '../account/vault.dart' show defaultIterations;
+import 'account_state.dart';
 import 'remote_state.dart';
 import 'storage.dart';
 import 'update_state.dart';
 
-class AppState extends ChangeNotifier {
-  AppState({required this.configStore, required this.secretStore}) {
+class AppState extends ChangeNotifier implements SyncHost {
+  AppState({required this.configStore, required this.secretStore, AccountApi? accountApi, int kdfIterations = defaultIterations}) {
+    account = AccountState(store: secretStore, host: this, api: accountApi, kdfIterations: kdfIterations);
+    account.addListener(notifyListeners);
     remote = RemoteState(store: secretStore, configJson: () => exportJson(includeSecrets: true));
     remote.addListener(notifyListeners);
+    remote.addListener(() {
+      final p = remote.paired;
+      if (p != null && p.home != _lastHome) {
+        final first = _lastHome == null && !loaded;
+        _lastHome = p.home;
+        if (!first) account.homeChanged(p.toJson());
+      }
+    });
     update = UpdateState(
       checkedAt: () => config.updateCheckedAt,
       skipped: () => config.updateSkip,
@@ -32,6 +45,9 @@ class AppState extends ChangeNotifier {
   final ConfigStore configStore;
   final SecretStore secretStore;
   late final RemoteState remote;
+
+  /// Molaplan account (optional): sync between the user's devices.
+  late final AccountState account;
 
   AppConfig config = AppConfig();
   final _drivers = <String, Driver>{};
@@ -70,6 +86,8 @@ class AppState extends ChangeNotifier {
     } catch (e) {
       debugPrint('remote load failed: $e');
     }
+    _lastHome = remote.paired?.home;
+    await account.load();
     loaded = true;
     notifyListeners();
   }
@@ -90,7 +108,91 @@ class AppState extends ChangeNotifier {
 
   Future<void> save() async {
     await configStore.save(jsonEncode(config.toJson()));
+    if (!_applyingSync) account.localChanged();
   }
+
+  bool _applyingSync = false;
+  String? _lastHome;
+
+  // ---- account sync (SyncHost)
+  static const _deviceLocal = ['onboardingDone', 'bridgeMode', 'relayUrl', 'remoteCameraSeconds', 'updateCheckedAt', 'updateSkip'];
+
+  @override
+  Map<String, dynamic> syncConfig() {
+    final j = config.toJson();
+    for (final k in _deviceLocal) {
+      j.remove(k);
+    }
+    return j;
+  }
+
+  @override
+  Map<String, Map<String, String>> syncSecrets() => {
+    for (final c in config.connections)
+      if (c.secrets.values.any((v) => v.isNotEmpty)) c.id: {for (final e in c.secrets.entries) if (e.value.isNotEmpty) e.key: e.value},
+  };
+
+  @override
+  bool get hasLocalSetup => config.connections.isNotEmpty || config.dashboards.any((d) => d.tiles.isNotEmpty);
+
+  @override
+  Future<void> applySynced(Map<String, dynamic> cfg, Map<String, Map<String, String>>? secrets) async {
+    final other = AppConfig.fromJson({...cfg, 'app': 'molaplan'});
+    final oldSecrets = {for (final c in config.connections) c.id: c.secrets};
+    for (final d in _drivers.values) {
+      unawaited(d.dispose());
+    }
+    _drivers.clear();
+    for (final c in other.connections) {
+      final s = secrets?[c.id] ?? oldSecrets[c.id];
+      if (s != null) c.secrets.addAll(s);
+    }
+    final removed = oldSecrets.keys.toSet().difference({for (final c in other.connections) c.id});
+    config.connections = other.connections;
+    config.dashboards = other.dashboards;
+    config.language = other.language;
+    if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: lang == 'fi' ? 'Koti' : 'Home'));
+    if (hasLocalSetup) config.onboardingDone = true;
+    _applyingSync = true;
+    try {
+      for (final c in config.connections) {
+        await _persistSecrets(c);
+      }
+      for (final id in removed) {
+        for (final k in oldSecrets[id]!.keys) {
+          try {
+            await secretStore.delete(secretKey(id, k));
+          } catch (_) {}
+        }
+      }
+      await save();
+    } finally {
+      _applyingSync = false;
+    }
+    notifyListeners();
+  }
+
+  @override
+  Future<void> mergeSynced(Map<String, dynamic> cfg, Map<String, Map<String, String>>? secrets) async {
+    final other = AppConfig.fromJson({...cfg, 'app': 'molaplan'});
+    for (final c in other.connections) {
+      final s = secrets?[c.id];
+      if (s != null) c.secrets.addAll(s);
+    }
+    await adoptHomeSetup(jsonEncode(other.toJson(includeSecrets: true)));
+  }
+
+  @override
+  Map<String, dynamic>? homeCredential() => remote.paired?.toJson();
+
+  @override
+  Future<bool> adoptHome(Map<String, dynamic> grant) => remote.adoptAccountHome(grant);
+
+  @override
+  Future<Map<String, dynamic>?> makeHomeGrant() => remote.createAccountGrant();
+
+  @override
+  String deviceName() => defaultDeviceName();
 
   Future<void> _persistSecrets(ConnectionConfig c) async {
     for (final k in descriptorFor(c.type).secretKeys) {
@@ -370,6 +472,8 @@ class AppState extends ChangeNotifier {
 
   @override
   void dispose() {
+    account.removeListener(notifyListeners);
+    account.dispose();
     update.removeListener(notifyListeners);
     update.dispose();
     remote.removeListener(notifyListeners);

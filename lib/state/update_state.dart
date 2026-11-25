@@ -55,7 +55,7 @@ class UpdateState extends ChangeNotifier {
   final DateTime Function() now;
   final String current;
 
-  static const interval = Duration(hours: 6);
+  static const interval = Duration(hours: 1);
 
   /// Off by default so tests never touch the network; main() turns it on.
   bool autoCheck = false;
@@ -78,7 +78,7 @@ class UpdateState extends ChangeNotifier {
   /// Startup check: at most once per [interval], silent when offline/rate limited,
   /// skipped versions are not offered. Returns the release to offer, if any.
   Future<ReleaseInfo?> checkOnStartup() async {
-    if (!autoCheck || !due) return null;
+    if (!autoCheck || !due || phase != UpdatePhase.idle) return null;
     final r = await _check();
     if (r.outcome == CheckOutcome.unavailable) return null; // try again next start
     await remember(checkedAt: now().millisecondsSinceEpoch);

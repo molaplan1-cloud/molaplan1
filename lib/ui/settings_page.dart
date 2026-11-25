@@ -6,6 +6,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../state/examples.dart';
 import '../state/update_state.dart' show UpdatePhase;
+import 'account_page.dart';
 import 'app_scope.dart';
 import 'guides_page.dart';
 import 'onboarding_page.dart';
@@ -81,6 +82,33 @@ class _SettingsPageState extends State<SettingsPage> {
           child: ListView(
             padding: const EdgeInsets.all(16),
             children: [
+              Text(tx(context, 'Tili', 'Account'), style: text.titleMedium),
+              const SizedBox(height: 4),
+              Text(
+                st.account.signedIn
+                    ? tx(context, 'Samat kodit ja ruudut kaikilla laitteillasi.', 'The same homes and tiles on all your devices.')
+                    : tx(
+                        context,
+                        'Kirjaudu, niin kodit, laitteet ja ruudut ovat samat PC:llä, tabletilla ja puhelimella. Vapaaehtoinen.',
+                        'Sign in to have the same homes, devices and tiles on PC, tablet and phone. Optional.',
+                      ),
+                style: text.bodySmall,
+              ),
+              const SizedBox(height: 8),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: FilledButton.tonalIcon(
+                  key: const ValueKey('settings-account'),
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AccountPage())),
+                  icon: Icon(st.account.signedIn ? Icons.account_circle : Icons.login),
+                  label: Text(
+                    st.account.signedIn
+                        ? '${tx(context, 'Tili', 'Account')}: ${st.account.email}'
+                        : tx(context, 'Kirjaudu tai luo tili', 'Sign in or create an account'),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 28),
               Text(tx(context, 'Kieli', 'Language'), style: text.titleMedium),
               const SizedBox(height: 8),
               SegmentedButton<String>(
@@ -216,8 +244,8 @@ class _SettingsPageState extends State<SettingsPage> {
               Text(
                 tx(
                   context,
-                  'Oma ohjauspääte: HTTP, MQTT, Modbus TCP, Home Assistant, kamerat, WebSocket, TCP ja UDP. Kaikki asetukset pysyvät tällä laitteella.',
-                  'Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. All settings stay on this device.',
+                  'Oma ohjauspääte: HTTP, MQTT, Modbus TCP, Home Assistant, kamerat, WebSocket, TCP ja UDP. Ilman tiliä kaikki asetukset pysyvät tällä laitteella.',
+                  'Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. Without an account all settings stay on this device.',
                 ),
                 style: text.bodySmall,
               ),

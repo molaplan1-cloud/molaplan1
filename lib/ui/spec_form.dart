@@ -1,5 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 
+import '../devices/provider.dart' show checkAddress, addressHint, AddressIssue;
+
 import '../core/field_help.dart';
 import '../core/fields.dart';
 import 'app_scope.dart';
@@ -113,6 +115,17 @@ class _FieldInputState extends State<_FieldInput> {
     widget.onChanged?.call();
   }
 
+  bool get _isAddress => const {'host', 'baseUrl', 'url', 'broker'}.contains(f.key);
+
+  /// Warns about typos like 191.168.50.172 (not a home network address).
+  String? get _addrHint {
+    if (!_isAddress) return null;
+    final t = _ctl.text.trim();
+    if (!RegExp(r'^(\w+://)?[\d.]+(:\d+)?(/.*)?$').hasMatch(t)) return null;
+    final r = checkAddress(t, const []);
+    return r.issue == AddressIssue.ok ? null : addressHint(t, const [], widget.lang);
+  }
+
   @override
   Widget build(BuildContext context) {
     final label = '${f.label(widget.lang)}${f.required ? ' *' : ''}';
@@ -169,9 +182,14 @@ class _FieldInputState extends State<_FieldInput> {
           decoration: InputDecoration(
             labelText: label,
             hintText: f.hint == null ? null : '${widget.lang == 'fi' ? 'esim.' : 'e.g.'} ${f.hint}',
-            helperText: widget.help,
+            helperText: _addrHint ?? widget.help,
+            helperMaxLines: 4,
+            helperStyle: _addrHint == null ? null : TextStyle(color: Theme.of(context).colorScheme.tertiary),
           ),
-          onChanged: _setText,
+          onChanged: (t) {
+            _setText(t);
+            if (_isAddress) setState(() {});
+          },
         );
     }
   }

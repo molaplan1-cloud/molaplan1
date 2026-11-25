@@ -1,0 +1,561 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
+
+import '../account/supabase_api.dart';
+import '../account/vault.dart';
+import '../remote/e2e.dart' show b64, unb64, sha256Hex;
+import 'stores.dart';
+
+/// What the account needs from the app (implemented by AppState).
+abstract class SyncHost {
+  /// Homes, devices, tiles and layout – without secrets or device-local settings.
+  Map<String, dynamic> syncConfig();
+
+  /// Device passwords / tokens / cloud keys per connection id.
+  Map<String, Map<String, String>> syncSecrets();
+
+  /// Replaces the synced part of the local setup. [secrets] is null while the vault is locked.
+  Future<void> applySynced(Map<String, dynamic> config, Map<String, Map<String, String>>? secrets);
+
+  /// Adds the account's homes/devices to this device's own (first sign-in, "merge both").
+  Future<void> mergeSynced(Map<String, dynamic> config, Map<String, Map<String, String>>? secrets);
+
+  bool get hasLocalSetup;
+
+  /// This device's home (relay) connection credential, if paired.
+  Map<String, dynamic>? homeCredential();
+
+  /// Connects this device to the account's home (no QR). Returns true on success.
+  Future<bool> adoptHome(Map<String, dynamic> grant);
+
+  /// If this device is the home bridge: a credential for the account's devices.
+  Future<Map<String, dynamic>?> makeHomeGrant();
+
+  String deviceName();
+}
+
+enum SyncStatus { off, syncing, ok, offline, error }
+
+/// The first sign-in on a device that already has its own setup.
+enum FirstSyncChoice { uploadLocal, useAccount, merge }
+
+class PendingFirstSync {
+  PendingFirstSync({required this.localHas, required this.remoteHas, required this.row});
+  final bool localHas;
+  final bool remoteHas;
+  final SyncRow? row;
+}
+
+/// Molaplan account: sign-in, sync of the setup between the user's devices (PC, tablet,
+/// phone) and the end-to-end encrypted vault for secrets and the home connection.
+class AccountState extends ChangeNotifier {
+  AccountState({required this.store, required this.host, AccountApi? api, this.kdfIterations = defaultIterations})
+    : api = api ?? AccountApi();
+
+  final SecretStore store;
+  final SyncHost host;
+  final AccountApi api;
+  final int kdfIterations;
+
+  static const storageKey = 'molaplan.account.v1';
+  static String keyStorage(String uid) => 'molaplan.account.key.$uid';
+
+  /// Off by default (tests); main() turns on background sync.
+  bool autoSync = false;
+  static const pollEvery = Duration(seconds: 60);
+  static const pushDelay = Duration(seconds: 2);
+
+  Session? session;
+  List<int>? _key;
+  int? lastRev;
+  String? lastHash;
+  int? localChangedAt;
+
+  SyncStatus status = SyncStatus.off;
+  Object? lastError;
+  DateTime? lastSync;
+
+  /// The account has saved passwords that this device cannot open yet (signed in with a code).
+  bool needsUnlock = false;
+
+  /// Set after sign-in when this device and/or the account already have a setup.
+  PendingFirstSync? pendingFirstSync;
+
+  Timer? _poll;
+  Timer? _push;
+  Future<void>? _running;
+  bool _again = false;
+
+  bool get signedIn => session != null;
+  String? get email => session?.email;
+  bool get hasKey => _key != null;
+
+  // ---------------------------------------------------------------- persistence
+
+  Future<void> load() async {
+    try {
+      final raw = await store.read(storageKey);
+      if (raw == null) return;
+      final j = Map<String, dynamic>.from(jsonDecode(raw) as Map);
+      session = Session.fromJson(Map<String, dynamic>.from(j['session'] as Map));
+      lastRev = (j['rev'] as num?)?.toInt();
+      lastHash = j['hash'] as String?;
+      localChangedAt = (j['changed'] as num?)?.toInt();
+      needsUnlock = j['locked'] == true;
+      final k = await store.read(keyStorage(session!.userId));
+      _key = k == null ? null : unb64(k);
+      status = SyncStatus.ok;
+    } catch (e) {
+      debugPrint('account load failed: $e');
+      session = null;
+    }
+    if (signedIn) _startTimers();
+    notifyListeners();
+  }
+
+  Future<void> _persist() async {
+    final s = session;
+    if (s == null) return store.delete(storageKey);
+    await store.write(
+      storageKey,
+      jsonEncode({
+        'session': s.toJson(),
+        'rev': ?lastRev,
+        'hash': ?lastHash,
+        'changed': ?localChangedAt,
+        if (needsUnlock) 'locked': true,
+      }),
+    );
+  }
+
+  void _startTimers() {
+    _poll?.cancel();
+    if (!autoSync) return;
+    _poll = Timer.periodic(pollEvery, (_) => unawaited(syncNow(quiet: true)));
+  }
+
+  void _set(SyncStatus s, [Object? err]) {
+    status = s;
+    lastError = err;
+    notifyListeners();
+  }
+
+  // ---------------------------------------------------------------- sign in / up
+
+  /// Creates an account. Returns true when signed in right away, false when the emailed
+  /// confirmation code is needed ([confirmSignUp]).
+  Future<bool> signUp(String email, String password) async {
+    final s = await api.signUp(email.trim(), password);
+    if (s == null) {
+      _pendingPassword = password;
+      return false;
+    }
+    await _afterSignIn(s, password: password);
+    return true;
+  }
+
+  String? _pendingPassword;
+
+  Future<void> confirmSignUp(String email, String code) async {
+    final s = await api.verifyCode(email.trim(), code, type: 'signup');
+    await _afterSignIn(s, password: _pendingPassword);
+    _pendingPassword = null;
+  }
+
+  Future<void> signIn(String email, String password) async {
+    final s = await api.signIn(email.trim(), password);
+    await _afterSignIn(s, password: password);
+  }
+
+  Future<void> sendCode(String email) => api.sendCode(email.trim());
+
+  Future<void> signInWithCode(String email, String code) async {
+    final s = await api.verifyCode(email.trim(), code);
+    await _afterSignIn(s);
+  }
+
+  Future<void> sendRecovery(String email) => api.sendRecovery(email.trim());
+
+  /// "Unohdin salasanan": code from the email + a new password.
+  /// If this device does not hold the account key, the saved device passwords cannot be
+  /// recovered: a new vault is made from what this device has ([resetVault]).
+  Future<void> recoverWithCode(String email, String code, String newPassword) async {
+    final s = await api.verifyCode(email.trim(), code, type: 'recovery');
+    await api.setPassword(s, newPassword);
+    await _afterSignIn(s, password: newPassword, resetIfLocked: true);
+  }
+
+  Future<void> _afterSignIn(Session s, {String? password, bool resetIfLocked = false}) async {
+    final changedUser = session?.userId != s.userId;
+    session = s;
+    if (changedUser) {
+      lastRev = null;
+      lastHash = null;
+    }
+    final k = await store.read(keyStorage(s.userId));
+    _key = k == null ? null : unb64(k);
+    final row = await api.fetch(s);
+    Map<String, dynamic>? keyWrap;
+    if (row?.keyWrap != null) {
+      if (_key == null && password != null) {
+        try {
+          _key = await unwrapAccountKey(row!.keyWrap!, password, s.userId);
+        } on WrongVaultPassword {
+          if (resetIfLocked) {
+            _key = newAccountKey();
+            keyWrap = await wrapAccountKey(_key!, password, s.userId, iter: kdfIterations);
+          }
+        }
+      } else if (_key != null && password != null && resetIfLocked) {
+        keyWrap = await wrapAccountKey(_key!, password, s.userId, iter: kdfIterations); // new password, same key
+      }
+    } else if (password != null) {
+      _key ??= newAccountKey();
+      keyWrap = await wrapAccountKey(_key!, password, s.userId, iter: kdfIterations);
+    }
+    if (_key != null) await store.write(keyStorage(s.userId), b64(_key!));
+    needsUnlock = row?.vault != null && _key == null;
+    _pendingWrap = keyWrap;
+    await _persist();
+    _startTimers();
+
+    final remoteHas = row != null && _hasSetup(row.config);
+    final localHas = host.hasLocalSetup;
+    if (row == null) {
+      if (localHas) {
+        pendingFirstSync = PendingFirstSync(localHas: true, remoteHas: false, row: row);
+      } else {
+        await _upload(row);
+      }
+    } else if (!remoteHas && localHas && lastRev == null) {
+      pendingFirstSync = PendingFirstSync(localHas: true, remoteHas: false, row: row);
+    } else if (localHas && lastRev == null) {
+      pendingFirstSync = PendingFirstSync(localHas: true, remoteHas: true, row: row);
+    } else {
+      await _adopt(row);
+    }
+    if (_pendingWrap != null && pendingFirstSync == null) await syncNow();
+    notifyListeners();
+  }
+
+  Map<String, dynamic>? _pendingWrap;
+
+  static bool _hasSetup(Map<String, dynamic> c) =>
+      ((c['connections'] as List?) ?? const []).isNotEmpty ||
+      ((c['dashboards'] as List?) ?? const []).any((d) => ((d as Map)['tiles'] as List? ?? const []).isNotEmpty);
+
+  /// The user's answer to [pendingFirstSync]. [null] = keep this device out of sync (signs out).
+  Future<void> resolveFirstSync(FirstSyncChoice? choice) async {
+    final p = pendingFirstSync;
+    pendingFirstSync = null;
+    if (p == null) return;
+    if (choice == null) return signOut();
+    switch (choice) {
+      case FirstSyncChoice.uploadLocal:
+        if (p.row != null) await _adoptHome(p.row!);
+        await _upload(p.row);
+      case FirstSyncChoice.useAccount:
+        await _adopt(p.row!);
+      case FirstSyncChoice.merge:
+        await _adoptHome(p.row!);
+        final secrets = await _vaultSecrets(p.row!);
+        await host.mergeSynced(p.row!.config, secrets);
+        await _upload(p.row);
+    }
+    notifyListeners();
+  }
+
+  // ---------------------------------------------------------------- unlock / password
+
+  /// Opens the saved device passwords on this device (after a code sign-in).
+  Future<void> unlock(String password) async {
+    final s = session!;
+    final row = await api.fetch(s);
+    if (row?.keyWrap == null) {
+      needsUnlock = false;
+      await _persist();
+      notifyListeners();
+      return;
+    }
+    _key = await unwrapAccountKey(row!.keyWrap!, password, s.userId);
+    await store.write(keyStorage(s.userId), b64(_key!));
+    needsUnlock = false;
+    await _adopt(row);
+    await _persist();
+    notifyListeners();
+  }
+
+  /// Starts over with the passwords on this device (the old vault cannot be opened).
+  Future<void> resetVault(String password) async {
+    final s = session!;
+    _key = newAccountKey();
+    await store.write(keyStorage(s.userId), b64(_key!));
+    _pendingWrap = await wrapAccountKey(_key!, password, s.userId, iter: kdfIterations);
+    needsUnlock = false;
+    lastHash = null;
+    await syncNow();
+  }
+
+  Future<void> changePassword(String newPassword) async {
+    final s = await _fresh();
+    await api.setPassword(s, newPassword);
+    if (_key != null) {
+      _pendingWrap = await wrapAccountKey(_key!, newPassword, s.userId, iter: kdfIterations);
+      lastHash = null;
+      await syncNow();
+    }
+  }
+
+  // ---------------------------------------------------------------- sign out / delete
+
+  Future<void> signOut() async {
+    final s = session;
+    _poll?.cancel();
+    _push?.cancel();
+    session = null;
+    pendingFirstSync = null;
+    needsUnlock = false;
+    lastRev = null;
+    lastHash = null;
+    if (s != null) {
+      await store.delete(keyStorage(s.userId));
+      unawaited(api.signOut(s));
+    }
+    _key = null;
+    await _persist();
+    _set(SyncStatus.off);
+  }
+
+  /// GDPR: removes the account and all synced data from the server. This device keeps its
+  /// own setup (local mode).
+  Future<void> deleteAccount() async {
+    final s = await _fresh();
+    await api.deleteAccount(s);
+    await signOut();
+  }
+
+  // ---------------------------------------------------------------- sync
+
+  /// This device was paired with a (different) home by QR/code: the account gets that home.
+  void homeChanged(Map<String, dynamic> credential) {
+    if (_vaultHome != null && _vaultHome!['home'] == credential['home']) return;
+    _vaultHome = credential;
+    localChanged();
+  }
+
+  /// Called by the app after every local save.
+  void localChanged() {
+    if (!signedIn || pendingFirstSync != null) return;
+    localChangedAt = DateTime.now().millisecondsSinceEpoch;
+    _push?.cancel();
+    if (autoSync) _push = Timer(pushDelay, () => unawaited(syncNow(quiet: true)));
+  }
+
+  Future<Session> _fresh() async {
+    var s = session;
+    if (s == null) throw AccountError(AccountProblem.sessionExpired);
+    if (s.expiresSoon) {
+      try {
+        s = await api.refresh(s.refresh);
+      } on AccountError catch (e) {
+        if (e.problem == AccountProblem.sessionExpired || e.problem == AccountProblem.server) {
+          // Refresh token gone (signed out elsewhere / account deleted): back to local mode.
+          await signOut();
+          lastError = e;
+        }
+        rethrow;
+      }
+      session = s;
+      await _persist();
+    }
+    return s;
+  }
+
+  /// Pulls changes from the account and pushes this device's changes. Serialized.
+  Future<void> syncNow({bool quiet = false}) async {
+    if (!signedIn || pendingFirstSync != null) return;
+    if (_running != null) {
+      _again = true;
+      return _running;
+    }
+    final f = _sync(quiet);
+    _running = f;
+    try {
+      await f;
+    } finally {
+      _running = null;
+    }
+    if (_again) {
+      _again = false;
+      await syncNow(quiet: quiet);
+    }
+  }
+
+  Future<void> _sync(bool quiet) async {
+    if (!quiet) _set(SyncStatus.syncing);
+    try {
+      for (var attempt = 0; attempt < 3; attempt++) {
+        final s = await _fresh();
+        final hash = await _localHash();
+        final dirty = hash != lastHash || _pendingWrap != null;
+        final rev = await api.remoteRev(s);
+        if (rev == null) {
+          await _upload(null);
+          break;
+        }
+        if (rev != lastRev) {
+          final row = (await api.fetch(s))!;
+          final localNewer =
+              dirty && lastRev != null && (localChangedAt ?? 0) > (row.updatedAt?.millisecondsSinceEpoch ?? 0);
+          if (!localNewer) {
+            await _adopt(row);
+            if (_pendingWrap == null) break;
+            continue;
+          }
+          try {
+            await _push2(s, row.rev);
+            break;
+          } on AccountError catch (e) {
+            if (e.problem != AccountProblem.conflict) rethrow;
+            continue;
+          }
+        }
+        if (!dirty) break;
+        try {
+          await _push2(s, lastRev);
+          break;
+        } on AccountError catch (e) {
+          if (e.problem != AccountProblem.conflict) rethrow;
+        }
+      }
+      await _maybeShareHome();
+      lastSync = DateTime.now();
+      _set(SyncStatus.ok);
+    } on AccountError catch (e) {
+      _set(e.problem == AccountProblem.offline ? SyncStatus.offline : SyncStatus.error, e);
+      if (!quiet) rethrow;
+    } catch (e) {
+      _set(SyncStatus.error, e);
+      if (!quiet) rethrow;
+    }
+  }
+
+  Map<String, dynamic>? _vaultHome;
+
+  Future<Map<String, dynamic>> _vaultData() async => {
+    'secrets': host.syncSecrets(),
+    'home': ?(_vaultHome ?? host.homeCredential()),
+  };
+
+  Future<String> _localHash() async => sha256Hex(jsonEncode({'c': host.syncConfig(), 'v': await _vaultData()}));
+
+  Future<void> _upload(SyncRow? row) async {
+    final s = await _fresh();
+    await _push2(s, row?.rev);
+    await _maybeShareHome();
+    lastSync = DateTime.now();
+    status = SyncStatus.ok;
+  }
+
+  Future<void> _push2(Session s, int? baseRev) async {
+    final hash = await _localHash();
+    final vault = _key == null ? null : await sealVault(_key!, await _vaultData(), s.userId);
+    final row = await api.put(
+      s,
+      baseRev: baseRev,
+      config: host.syncConfig(),
+      keyWrap: _pendingWrap,
+      vault: vault,
+      device: host.deviceName(),
+    );
+    _pendingWrap = null;
+    lastRev = row.rev;
+    lastHash = hash;
+    await _persist();
+  }
+
+  Future<Map<String, Map<String, String>>?> _vaultSecrets(SyncRow row) async {
+    final v = await _openVault(row);
+    if (v == null) return null;
+    return {
+      for (final e in ((v['secrets'] as Map?) ?? const {}).entries)
+        '${e.key}': {for (final x in (e.value as Map).entries) '${x.key}': '${x.value}'},
+    };
+  }
+
+  Future<Map<String, dynamic>?> _openVault(SyncRow row) async {
+    if (row.vault == null) return null;
+    if (_key == null) {
+      needsUnlock = true;
+      return null;
+    }
+    try {
+      return await openVault(_key!, row.vault!, session!.userId);
+    } on WrongVaultPassword {
+      // The vault was reset on another device: this device's key is stale.
+      needsUnlock = true;
+      await store.delete(keyStorage(session!.userId));
+      _key = null;
+      return null;
+    }
+  }
+
+  /// Applies the account's setup on this device.
+  Future<void> _adopt(SyncRow row) async {
+    final v = await _openVault(row);
+    final secrets = v == null
+        ? null
+        : {
+            for (final e in ((v['secrets'] as Map?) ?? const {}).entries)
+              '${e.key}': {for (final x in (e.value as Map).entries) '${x.key}': '${x.value}'},
+          };
+    await host.applySynced(row.config, secrets);
+    await _useHome(v);
+    lastRev = row.rev;
+    lastHash = await _localHash();
+    await _persist();
+    lastSync = DateTime.now();
+    status = SyncStatus.ok;
+    notifyListeners();
+  }
+
+  Future<void> _adoptHome(SyncRow row) async => _useHome(await _openVault(row));
+
+  Future<void> _useHome(Map<String, dynamic>? v) async {
+    final home = v?['home'];
+    if (home is! Map) return;
+    _vaultHome = Map<String, dynamic>.from(home);
+    if (host.homeCredential() == null) {
+      try {
+        await host.adoptHome(_vaultHome!);
+      } catch (e) {
+        debugPrint('adopt home failed: $e');
+      }
+    }
+  }
+
+  /// The bridge device puts a home credential into the account vault once.
+  Future<void> _maybeShareHome() async {
+    if (_key == null || _vaultHome != null) return;
+    final own = host.homeCredential();
+    final g = own ?? await host.makeHomeGrant();
+    if (g == null) return;
+    _vaultHome = g;
+    final s = await _fresh();
+    try {
+      await _push2(s, lastRev);
+    } on AccountError catch (e) {
+      if (e.problem != AccountProblem.conflict) rethrow;
+      _again = true;
+    }
+  }
+
+  @override
+  void dispose() {
+    _poll?.cancel();
+    _push?.cancel();
+    super.dispose();
+  }
+}

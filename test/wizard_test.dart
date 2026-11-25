@@ -70,7 +70,7 @@ void main() {
     ));
     await tester.pumpAndSettle();
     // Remote-first: the bridge is explained before searching.
-    expect(find.text('Ohjaa kotia mistä tahansa'), findsOneWidget);
+    expect(find.text('Miten ohjaat kotia muualta?'), findsOneWidget);
     expect(find.byKey(const ValueKey('wiz-make-bridge')), findsOneWidget);
     expect(find.byKey(const ValueKey('wiz-use-cloud')), findsOneWidget);
     await tester.tap(find.byKey(const ValueKey('wiz-skip-remote')));

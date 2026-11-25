@@ -280,3 +280,56 @@ Future<Object?> probeJson(HttpClient c, Uri uri, {Duration timeout = const Durat
     return null;
   }
 }
+
+enum AddressIssue { ok, badFormat, notPrivate, otherSubnet }
+
+/// Checks a typed device address ("192.168.50.172", "http://shelly.local").
+/// [suggestion] is a likely intended address for typos like 191.168.50.172.
+({AddressIssue issue, String? suggestion}) checkAddress(String input, List<String> locals) {
+  final h = hostOf(input);
+  if (h.isEmpty) return (issue: AddressIssue.badFormat, suggestion: null);
+  final looksNumeric = RegExp(r'^[\d.]+$').hasMatch(h);
+  if (!looksNumeric) return (issue: AddressIssue.ok, suggestion: null); // host name
+  final parts = h.split('.');
+  final nums = parts.map(int.tryParse).toList();
+  if (parts.length != 4 || nums.any((n) => n == null || n > 255)) {
+    return (issue: AddressIssue.badFormat, suggestion: null);
+  }
+  if (!isPrivateIPv4(h)) {
+    String? s;
+    if (nums[1] == 168) {
+      s = '192.168.${nums[2]}.${nums[3]}';
+    } else if (locals.isNotEmpty) {
+      final net = locals.first.substring(0, locals.first.lastIndexOf('.'));
+      s = '$net.${nums[3]}';
+    }
+    return (issue: AddressIssue.notPrivate, suggestion: s);
+  }
+  if (locals.isNotEmpty && !sameSubnet(h, locals)) return (issue: AddressIssue.otherSubnet, suggestion: null);
+  return (issue: AddressIssue.ok, suggestion: null);
+}
+
+/// One-line plain-Finnish/English hint for [checkAddress], or null when fine.
+String? addressHint(String input, List<String> locals, String lang) {
+  if (input.trim().isEmpty) return null;
+  final r = checkAddress(input, locals);
+  final fi = lang == 'fi';
+  switch (r.issue) {
+    case AddressIssue.ok:
+      return null;
+    case AddressIssue.badFormat:
+      return fi
+          ? 'Osoite näyttää vajaalta. Muoto on neljä numeroa pisteillä, esim. 192.168.1.50.'
+          : 'The address looks incomplete. Use four numbers with dots, e.g. 192.168.1.50.';
+    case AddressIssue.notPrivate:
+      final s = r.suggestion == null ? '' : (fi ? ' Tarkoititko ${r.suggestion}?' : ' Did you mean ${r.suggestion}?');
+      return fi
+          ? 'Tämä ei ole kotiverkon osoite (kotiverkon osoitteet alkavat yleensä 192.168.).$s'
+          : 'This is not a home network address (they usually start with 192.168.).$s';
+    case AddressIssue.otherSubnet:
+      final mine = locals.first.substring(0, locals.first.lastIndexOf('.'));
+      return fi
+          ? 'Huom: tämä laite on verkossa $mine.x – laite ei ehkä ole samassa wifissä.'
+          : 'Note: this device is on $mine.x – the device may be on another Wi-Fi.';
+  }
+}

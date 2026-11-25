@@ -17,8 +17,11 @@ import 'package:molaplan/remote/protocol.dart';
 import 'package:molaplan/drivers/registry.dart';
 import 'package:molaplan/remote/remote_client.dart';
 import 'package:molaplan/remote/router.dart';
+import 'package:molaplan/state/app_state.dart';
+import 'package:molaplan/state/remote_state.dart';
 import 'package:molaplan/state/stores.dart';
 
+import 'support/fake_supabase.dart';
 import 'support/mock_devices.dart';
 
 /// End-to-end: real relay (local `wrangler dev`, or MOLAPLAN_RELAY_URL) + bridge + phone client
@@ -289,5 +292,31 @@ void main() {
     await router.client!.dispose();
     await bridge.dispose();
     await shelly.stop();
+  });
+
+  test('account: the bridge shares its home, a new device signed in gets it without a QR code', () async {
+    if (relay == null) return markTestSkipped('no relay');
+    final sb = FakeSupabase(autoconfirm: true);
+    final home = AppState(configStore: MemoryConfigStore(), secretStore: MemorySecretStore(), accountApi: sb.api(), kdfIterations: 1000);
+    await home.load();
+    home.remote.relay = relay!;
+    await home.setBridgeMode(true);
+    await home.remote.bridge!.changes.firstWhere((_) => home.remote.bridge!.link == BridgeLink.online).timeout(const Duration(seconds: 20));
+    await home.account.signUp('koti@example.com', 'Hyva-Salasana1');
+    expect(home.remote.bridge!.devices.single.name, 'Molaplan-tili');
+    expect(jsonEncode(sb.rows.values.single).contains(home.remote.bridge!.home), isFalse, reason: 'home credential is inside the encrypted vault');
+
+    final pc = AppState(configStore: MemoryConfigStore(), secretStore: MemorySecretStore(), accountApi: sb.api(), kdfIterations: 1000);
+    await pc.load();
+    await pc.account.signIn('koti@example.com', 'Hyva-Salasana1');
+    expect(pc.remote.isPaired, isTrue);
+    expect(pc.remote.paired!.home, home.remote.bridge!.home);
+    expect(await pc.remote.usesSharedCredential(), isFalse, reason: 'the PC enrolled its own key');
+    expect(home.remote.bridge!.devices.map((d) => d.name), contains(defaultDeviceName()));
+    expect(await pc.remote.checkRemote(), isTrue);
+    await pc.remote.unpair();
+    pc.dispose();
+    await home.setBridgeMode(false);
+    home.dispose();
   });
 }

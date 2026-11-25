@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 
 import '../remote/bridge_core.dart';
+import '../remote/e2e.dart';
 import '../remote/executor.dart';
 import '../remote/protocol.dart';
 import '../remote/remote_client.dart';
@@ -36,7 +37,9 @@ class RemoteState extends ChangeNotifier {
 
   void _changed() {
     // Router callbacks can fire during a build (tile refresh); defer.
-    scheduleMicrotask(notifyListeners);
+    scheduleMicrotask(() {
+      if (!_disposed) notifyListeners();
+    });
   }
 
   bool get isPaired => paired != null;
@@ -74,8 +77,63 @@ class RemoteState extends ChangeNotifier {
     return p;
   }
 
+  static const sharedKey = 'molaplan.remote.shared';
+
+  /// Home connection from the Molaplan account (no QR): enrolls this device's own key using
+  /// the account's credential. If the bridge is offline or older than 0.4, the account
+  /// credential is used as-is for now and enrolling is retried on the next start.
+  /// Returns true when this device now has a home connection.
+  Future<bool> adoptAccountHome(Map<String, dynamic> grant, {String? deviceName}) async {
+    final g = PairedHome.fromJson(grant);
+    if (paired != null && paired!.home == g.home && paired!.dev != g.dev) return true; // already enrolled
+    final name = deviceName ?? defaultDeviceName();
+    final me = await Identity.generate();
+    final dev = randomHex(8);
+    final tmp = RemoteClient(g);
+    try {
+      final v = await tmp
+          .call('enroll', spec: {'dev': dev, 'pub': b64(me.publicKey), 'name': name})
+          .timeout(const Duration(seconds: 15));
+      final m = Map<String, dynamic>.from(v as Map);
+      final own = PairedHome(
+        relay: g.relay,
+        home: g.home,
+        dev: dev,
+        seed: b64(me.seed),
+        bridgePub: g.bridgePub,
+        token: '${m['token']}',
+        name: '${m['name'] ?? g.name}',
+      );
+      await own.save(store);
+      await store.delete(sharedKey);
+      paired = own;
+    } catch (e) {
+      debugPrint('enroll failed, using the account credential: $e');
+      if (paired?.home == g.home) return true;
+      await g.save(store);
+      await store.write(sharedKey, g.dev);
+      paired = g;
+    } finally {
+      unawaited(tmp.dispose());
+    }
+    _setClient(RemoteClient(paired!));
+    notifyListeners();
+    return true;
+  }
+
+  /// True while this device uses the shared account credential (enroll pending).
+  Future<bool> usesSharedCredential() async => paired != null && await store.read(sharedKey) == paired!.dev;
+
+  /// The bridge makes a credential for the account (so the account's devices get this home).
+  Future<Map<String, dynamic>?> createAccountGrant() async {
+    final b = bridge;
+    if (b == null || b.link != BridgeLink.online) return null;
+    return b.createAccountGrant();
+  }
+
   Future<void> unpair() async {
     await PairedHome.forget(store);
+    await store.delete(sharedKey);
     paired = null;
     _setClient(null);
     notifyListeners();
@@ -125,8 +183,11 @@ class RemoteState extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool _disposed = false;
+
   @override
   void dispose() {
+    _disposed = true;
     _clientSub?.cancel();
     _bridgeSub?.cancel();
     unawaited(router.client?.dispose());

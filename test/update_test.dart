@@ -184,7 +184,7 @@ void main() {
       status = 200;
     });
 
-    test('startup: at most once every 6 h; offline does not count', () async {
+    test('startup (also on resume / every 20 min): at most once an hour; offline does not count', () async {
       final u = make();
       status = 403;
       expect(await u.checkOnStartup(), isNull);
@@ -192,7 +192,7 @@ void main() {
       status = 200;
       expect((await u.checkOnStartup())!.version, '0.3.2');
       expect(calls, 2);
-      now = now.add(const Duration(hours: 5, minutes: 59));
+      now = now.add(const Duration(minutes: 59));
       expect(await u.checkOnStartup(), isNull);
       expect(calls, 2);
       now = now.add(const Duration(minutes: 2));

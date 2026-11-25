@@ -1,6 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 
 import '../models/models.dart';
+import 'account_page.dart';
 import 'app_scope.dart';
 import 'connections_page.dart';
 import 'error_box.dart';
@@ -236,12 +237,25 @@ class _OnboardingPageState extends State<OnboardingPage> {
         _point(
           context,
           Icons.lock_outline,
-          tx(context, 'Pysyy sinun laitteellasi', 'Stays on your device'),
+          tx(context, 'Sama koti kaikilla laitteilla', 'The same home on all devices'),
           tx(
             context,
-            'Ei tiliä, ei pilveä. Salasanat tallennetaan suojattuna.',
-            'No account, no cloud. Passwords are stored securely.',
+            'Halutessasi kirjaudu tilillä, niin PC, tabletti ja puhelin näyttävät saman kodin. Salasanat salataan laitteellasi. Tili ei ole pakollinen.',
+            'Sign in if you like, and PC, tablet and phone show the same home. Passwords are encrypted on your device. No account needed.',
           ),
+        ),
+        const SizedBox(height: 8),
+        OutlinedButton.icon(
+          key: const ValueKey('onboarding-signin'),
+          style: OutlinedButton.styleFrom(minimumSize: const Size.fromHeight(52)),
+          onPressed: () async {
+            await Navigator.push(context, MaterialPageRoute(builder: (_) => const AccountPage()));
+            if (!mounted) return;
+            final st = AppScope.read(this.context);
+            if (st.account.signedIn && st.hasLocalSetup) await _finish();
+          },
+          icon: const Icon(Icons.login),
+          label: Text(tx(context, 'Minulla on jo Molaplan-tili – kirjaudu', 'I already have a Molaplan account – sign in')),
         ),
       ],
       action: FilledButton(

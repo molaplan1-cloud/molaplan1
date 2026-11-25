@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:cryptography/cryptography.dart';
 
@@ -206,7 +207,8 @@ class RemoteClient {
   Timer? _ping;
   Timer? _flush;
   Timer? _idleClose;
-  int _nextId = 1;
+  // Random start: devices sharing one account credential never mix up replies.
+  int _nextId = 1 + Random.secure().nextInt(1 << 30);
   final _queue = <Map<String, dynamic>>[];
   final _pending = <int, Completer<Object?>>{};
   bool _disposed = false;

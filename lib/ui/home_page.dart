@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'dart:io';
 
 import 'package:material_ui/material_ui.dart';
@@ -18,23 +20,47 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   String? _dashId;
   bool _editing = false;
   bool _pickedGallery = false;
+  Timer? _hourly;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (!mounted) return;
       final st = AppScope.read(context);
       if (st.loaded && !st.config.onboardingDone && st.config.connections.isEmpty) {
-        Navigator.push(context, MaterialPageRoute(builder: (_) => const OnboardingPage()));
-      } else if (st.loaded) {
-        startupUpdateCheck(context);
+        await Navigator.push(context, MaterialPageRoute(builder: (_) => const OnboardingPage()));
+      }
+      if (mounted && st.loaded) {
+        unawaited(startupUpdateCheck(context));
+        unawaited(st.account.syncNow(quiet: true));
       }
     });
+    // A tablet/PC that stays open for days still notices new versions (the check itself
+    // runs at most once per UpdateState.interval and retries soon when offline).
+    _hourly = Timer.periodic(const Duration(minutes: 20), (_) {
+      if (mounted) unawaited(startupUpdateCheck(context));
+    });
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state != AppLifecycleState.resumed || !mounted) return;
+    final st = AppScope.read(context);
+    unawaited(startupUpdateCheck(context));
+    unawaited(st.account.syncNow(quiet: true));
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _hourly?.cancel();
+    super.dispose();
   }
 
   Dashboard _current() {
