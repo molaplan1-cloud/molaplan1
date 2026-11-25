@@ -375,7 +375,6 @@ class _ShellyCloudSwitchSheetState extends State<ShellyCloudSwitchSheet> {
               obscureText: true,
               decoration: InputDecoration(
                 labelText: tx(context, 'Pilviavain', 'Cloud key'),
-                border: const OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 12),
@@ -385,7 +384,6 @@ class _ShellyCloudSwitchSheetState extends State<ShellyCloudSwitchSheet> {
               decoration: InputDecoration(
                 labelText: tx(context, 'Palvelin (Server URI)', 'Server (Server URI)'),
                 hintText: 'shelly-103-eu.shelly.cloud',
-                border: const OutlineInputBorder(),
               ),
             ),
             if (error != null) ...[

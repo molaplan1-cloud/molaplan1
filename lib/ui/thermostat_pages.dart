@@ -481,7 +481,6 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
         isExpanded: true,
         decoration: InputDecoration(
           labelText: label,
-          border: const OutlineInputBorder(),
         ),
         items: [
           DropdownMenuItem(
@@ -512,7 +511,6 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
       decoration: InputDecoration(
         labelText: label,
         suffixText: unit,
-        border: const OutlineInputBorder(),
       ),
       onChanged: (s) {
         final d = double.tryParse(s.replaceAll(',', '.'));
@@ -649,7 +647,6 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
         decoration: InputDecoration(
           labelText: tx(context, 'Nimi', 'Name'),
           hintText: tx(context, 'esim. Olohuone', 'e.g. Living room'),
-          border: const OutlineInputBorder(),
         ),
       ),
       const SizedBox(height: 12),

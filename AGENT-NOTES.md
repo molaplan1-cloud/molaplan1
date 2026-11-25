@@ -193,3 +193,9 @@ Relay: https://relay.molaplan.com (custom domain; also https://molaplan-relay.mo
 - Windows check: download the release zip on DESKTOP-V52NF2O, verify SHA256, replace Desktop\molaplan-windows-x64 (backup in %USERPROFILE%\molaplan-backup-<old>), start, screenshot.
 - Tablet: adb on the PC (C:\Users\Administrator\tools\android-sdk\platform-tools\adb.exe); needs USB or wireless debugging.
 - Requirements checklist: docs/REQUIREMENTS.md (t142u) – update every release, full table in every report.
+
+## v0.7.0 work log (2026-11-25)
+Done: automation model/engine/script language/host/bridge op/AutomationState/ntfy; t143u sensors; t146u snackbars; t147u duplicate title; t145u form overlap (inside labels, spacing, test).
+Pending: t144u half-step tile sizes (w/h half-units, migration ×2, resize snaps, Leveys/Korkeus 0,5…4, compact 0.5 variants, goldens 0.5×0.5 / 0.5×1 / 1.5×1);
+t148u trend tile (change over period with arrow/colour, range chips 1h/6h/24h/7vrk persisted per tile, x-axis spans window, backfill HA history/Shelly);
+UI for Automaatiot/Skriptit/Tilannekuvat + 'Luo automaatio' in add sheet + templates; group tiles; scene/script tiles; livelier UI; morning summary card; notification settings page (ntfy link, quiet hours, mute, test); Windows tray/toasts init; deep link handling in app; translations; REQUIREMENTS R130–R138 + t143u–t148u; release notes; version bump; release.

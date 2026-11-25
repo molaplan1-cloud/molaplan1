@@ -195,7 +195,6 @@ class _TemplateGridState extends State<TemplateGrid> {
                       'Hae merkkiä tai laitetta (esim. Shelly, Hue, IKEA)',
                       'Search brand or device (e.g. Shelly, Hue, IKEA)',
                     ),
-                    border: const OutlineInputBorder(),
                   ),
                 ),
               ),

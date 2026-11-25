@@ -379,7 +379,7 @@ class _TileWidgetState extends State<TileWidget> {
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   style: const TextStyle(fontSize: 24, letterSpacing: 8),
-                  decoration: InputDecoration(labelText: tx(c, 'PIN', 'PIN'), border: const OutlineInputBorder()),
+                  decoration: InputDecoration(labelText: tx(c, 'PIN', 'PIN')),
                   onSubmitted: (v) => Navigator.pop(c, v),
                 ),
                 CheckboxListTile(

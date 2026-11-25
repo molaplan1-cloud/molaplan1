@@ -830,7 +830,6 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           decoration: InputDecoration(
             labelText: tx(context, 'IP-osoite', 'IP address'),
             hintText: p.addressHint,
-            border: const OutlineInputBorder(),
             helperText: addressHint(addrCtl.text, locals, AppScope.read(context).lang),
             helperMaxLines: 3,
             helperStyle: TextStyle(color: Theme.of(context).colorScheme.tertiary),
@@ -857,7 +856,6 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         decoration: InputDecoration(
           labelText: tx(context, f.fi, f.en) + (f.optional ? tx(context, ' (vapaaehtoinen)', ' (optional)') : ''),
           hintText: f.hint,
-          border: const OutlineInputBorder(),
         ),
       ),
       Padding(
@@ -931,7 +929,6 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
                 hintText: f.hint,
                 helperText: f.helpFi.isEmpty ? null : tx(context, f.helpFi, f.helpEn),
                 helperMaxLines: 3,
-                border: const OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 12),
@@ -945,7 +942,6 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           style: const TextStyle(fontSize: 18),
           decoration: InputDecoration(
             labelText: tx(context, 'Laitteen salasana', 'Device password'),
-            border: const OutlineInputBorder(),
           ),
           onSubmitted: (_) => _connect(),
         ),

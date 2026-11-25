@@ -105,7 +105,7 @@ class _TileLookSheetState extends State<TileLookSheet> {
             TextField(
               key: const ValueKey('look-name'),
               controller: _name,
-              decoration: InputDecoration(labelText: tx(context, 'Nimi', 'Name'), border: const OutlineInputBorder()),
+              decoration: InputDecoration(labelText: tx(context, 'Nimi', 'Name')),
               onSubmitted: (v) => v.trim().isEmpty ? null : st.renameTile(t, v),
               onTapOutside: (_) {
                 if (_name.text.trim().isNotEmpty && _name.text.trim() != t.title) st.renameTile(t, _name.text);

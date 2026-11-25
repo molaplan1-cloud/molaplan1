@@ -58,7 +58,6 @@ class MeterRoleEditor extends StatelessWidget {
               isExpanded: true,
               decoration: InputDecoration(
                 labelText: tx(context, 'Osa mittaria (valinnainen)', 'Part of meter (optional)'),
-                border: const OutlineInputBorder(),
               ),
               items: [
                 DropdownMenuItem(value: null, child: Text(tx(context, 'Ei mitään', 'None'))),
@@ -327,7 +326,7 @@ class _ContractPageState extends State<ContractPage> {
           child: TextFormField(
             initialValue: '${p.value}',
             keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
-            decoration: InputDecoration(labelText: label, suffixText: unit, border: const OutlineInputBorder()),
+            decoration: InputDecoration(labelText: label, suffixText: unit),
             onChanged: (s) => p.value = double.tryParse(s.replaceAll(',', '.')) ?? p.value,
           ),
         ),
@@ -347,7 +346,7 @@ class _ContractPageState extends State<ContractPage> {
   Widget _hour(String label, int v, void Function(int) set) => Expanded(
     child: DropdownButtonFormField<int>(
       initialValue: v,
-      decoration: InputDecoration(labelText: label, border: const OutlineInputBorder()),
+      decoration: InputDecoration(labelText: label),
       items: [for (var h = 0; h < 24; h++) DropdownMenuItem(value: h, child: Text('${_pad2(h)}:00'))],
       onChanged: (x) => setState(() => set(x ?? v)),
     ),
@@ -375,7 +374,7 @@ class _ContractPageState extends State<ContractPage> {
             key: const ValueKey('contract-zone'),
             initialValue: priceZones.containsKey(zone) ? zone : 'FI',
             isExpanded: true,
-            decoration: InputDecoration(labelText: tx(context, 'Hinta-alue', 'Price area'), border: const OutlineInputBorder()),
+            decoration: InputDecoration(labelText: tx(context, 'Hinta-alue', 'Price area')),
             items: [for (final e in priceZones.entries) DropdownMenuItem(value: e.key, child: Text('${e.key} – ${e.value.$1}'))],
             onChanged: (v) => setState(() {
               zone = v ?? zone;
@@ -445,7 +444,6 @@ class _ContractPageState extends State<ContractPage> {
               decoration: InputDecoration(
                 labelText: '${tx(context, 'ALV', 'VAT')} (${c.country})',
                 suffixText: '%',
-                border: const OutlineInputBorder(),
               ),
               onChanged: (s) => c.vat = double.tryParse(s.replaceAll(',', '.')) ?? c.vat,
             ),
@@ -535,7 +533,6 @@ class _HomeLocationPageState extends State<HomeLocationPage> {
             decoration: InputDecoration(
               labelText: tx(context, 'Paikkakunta', 'Town'),
               hintText: tx(context, 'esim. Tampere', 'e.g. Tampere'),
-              border: const OutlineInputBorder(),
               suffixIcon: busy
                   ? const Padding(padding: EdgeInsets.all(12), child: CircularProgressIndicator(strokeWidth: 2))
                   : IconButton(icon: const Icon(Icons.search), onPressed: _search),

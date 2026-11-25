@@ -38,8 +38,15 @@ ThemeData molaplanTheme({Brightness brightness = Brightness.dark}) {
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: cs.surfaceContainerHigh,
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      // t145u: the floating label stays INSIDE the filled box (an outline border floats it onto the
+      // top edge, where it collided with the previous field's helper text on Windows).
+      border: UnderlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
+      enabledBorder: UnderlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
+      focusedBorder: UnderlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: cs.primary, width: 2),
+      ),
+      contentPadding: const EdgeInsets.fromLTRB(16, 22, 16, 10),
       helperMaxLines: 4,
       helperStyle: TextStyle(fontSize: 13, color: cs.onSurfaceVariant, height: 1.3),
     ),

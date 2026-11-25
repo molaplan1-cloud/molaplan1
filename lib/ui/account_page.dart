@@ -245,7 +245,7 @@ class _AccountPageState extends State<AccountPage> {
     controller: _email,
     keyboardType: TextInputType.emailAddress,
     autofillHints: const [AutofillHints.email],
-    decoration: InputDecoration(labelText: t('Sähköposti', 'Email'), border: const OutlineInputBorder()),
+    decoration: InputDecoration(labelText: t('Sähköposti', 'Email')),
   );
 
   Widget _passwordField({String? label, String? helper}) => TextField(
@@ -257,7 +257,6 @@ class _AccountPageState extends State<AccountPage> {
       labelText: label ?? t('Salasana', 'Password'),
       helperText: helper,
       helperMaxLines: 3,
-      border: const OutlineInputBorder(),
       suffixIcon: IconButton(
         tooltip: t('Näytä salasana', 'Show password'),
         icon: Icon(showPassword ? Icons.visibility_off : Icons.visibility),
@@ -277,7 +276,6 @@ class _AccountPageState extends State<AccountPage> {
         'Koodi tulee muutamassa minuutissa. Katso myös roskapostikansio.',
         'The code arrives in a few minutes. Check the spam folder too.',
       ),
-      border: const OutlineInputBorder(),
     ),
   );
 
@@ -547,7 +545,6 @@ class _AccountPageState extends State<AccountPage> {
           obscureText: true,
           decoration: InputDecoration(
             labelText: t('Tilin salasana', 'Account password'),
-            border: const OutlineInputBorder(),
           ),
         ),
         _big(

@@ -34,10 +34,13 @@ class ControlView extends StatelessWidget {
     final st = AppScope.of(context);
     final groups = st.config.dashboards.where((d) => d.tiles.isNotEmpty).toList();
     final single = groups.length == 1;
+    final title = single ? groups.first.name : tx(context, 'Koti', 'Home');
+    // t147u: never "Koti" in the app bar and again as the first section header.
+    bool sameAsTitle(Dashboard d) => d.name.trim().toLowerCase() == title.trim().toLowerCase();
     return Scaffold(
       key: const ValueKey('control-view'),
       appBar: AppBar(
-        title: Text(single ? groups.first.name : tx(context, 'Koti', 'Home')),
+        title: Text(title, key: const ValueKey('cv-title')),
         actions: [
           const RemoteStatusChip(),
           if (!st.viewLocked && showAppBarAdd(context))
@@ -83,7 +86,7 @@ class ControlView extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(gap, 6, gap, st.viewLocked ? 32 : 96),
                     children: [
                       for (final d in groups) ...[
-                        if (!single)
+                        if (!single && !sameAsTitle(d))
                           Padding(
                             padding: const EdgeInsets.fromLTRB(4, 14, 4, 10),
                             child: Text(
@@ -227,7 +230,6 @@ class ControlView extends StatelessWidget {
                   'Ilman PIN-koodia lukitus avataan yhdellä napautuksella.',
                   'Without a PIN one tap unlocks.',
                 ),
-                border: const OutlineInputBorder(),
               ),
             ),
           ],
@@ -277,7 +279,6 @@ class ControlView extends StatelessWidget {
             decoration: InputDecoration(
               labelText: tx(c, 'PIN-koodi', 'PIN code'),
               errorText: error,
-              border: const OutlineInputBorder(),
             ),
           ),
           actions: [

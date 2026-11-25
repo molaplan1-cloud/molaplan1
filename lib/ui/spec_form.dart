@@ -23,7 +23,7 @@ class SpecForm extends StatelessWidget {
     final basic = fields.where((f) => !isAdvanced(f, scope: scope)).toList();
     final adv = fields.where((f) => isAdvanced(f, scope: scope)).toList();
     Widget input(FieldSpec f) => Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.only(bottom: 18),
       child: _FieldInput(
         key: ValueKey(f.key),
         field: f,

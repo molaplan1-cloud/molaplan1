@@ -296,14 +296,11 @@ class _TileEditorState extends State<TileEditor> {
                         tx(context, 'Päivitysväli (s, 0 = ei kyselyä)', 'Poll interval (s, 0 = none)'),
                         t.pollSeconds,
                         (v) => t.pollSeconds = v.toInt(),
-                      ),
-                      Text(
-                        tx(
+                        helper: tx(
                           context,
                           'MQTT, Home Assistant ja WebSocket päivittyvät reaaliajassa ilman kyselyä.',
                           'MQTT, Home Assistant and WebSocket update live without polling.',
                         ),
-                        style: text.bodySmall,
                       ),
                       const SizedBox(height: 8),
                       Row(
@@ -497,17 +494,17 @@ class _TileEditorState extends State<TileEditor> {
     ),
   );
 
-  Widget _numField(String label, num value, void Function(num) set, {bool pad = true}) {
+  Widget _numField(String label, num value, void Function(num) set, {bool pad = true, String? helper}) {
     final f = TextFormField(
       initialValue: value is double && value == value.roundToDouble() ? value.toInt().toString() : value.toString(),
       keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
-      decoration: InputDecoration(labelText: label),
+      decoration: InputDecoration(labelText: label, helperText: helper, helperMaxLines: 4),
       onChanged: (s) {
         final n = num.tryParse(s.replaceAll(',', '.'));
         if (n != null) set(n);
       },
     );
-    return pad ? Padding(padding: const EdgeInsets.only(bottom: 6), child: f) : f;
+    return pad ? Padding(padding: const EdgeInsets.only(bottom: 18), child: f) : f;
   }
 
   Widget _connectionPicker(String? id, {required bool camera, required void Function(String?) onChanged}) {

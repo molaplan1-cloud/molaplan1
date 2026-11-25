@@ -242,7 +242,6 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.search),
               hintText: tx(context, 'Hae nimellä tai tunnuksella', 'Search by name or id'),
-              border: const OutlineInputBorder(),
               isDense: true,
             ),
           ),
