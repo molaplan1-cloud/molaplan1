@@ -20,10 +20,25 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           channel: stable
           cache: true
-      - run: sudo apt-get update && sudo apt-get install -y mosquitto
+      - name: Install and start Mosquitto
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mosquitto
+          printf 'listener 18883 127.0.0.1\nallow_anonymous true\npersistence false\n' | sudo tee /etc/mosquitto/ci-test.conf >/dev/null
+          sudo mosquitto -c /etc/mosquitto/ci-test.conf -d
+          for i in $(seq 1 50); do
+            if bash -c 'echo >/dev/tcp/127.0.0.1/18883' 2>/dev/null; then
+              exit 0
+            fi
+            sleep 0.1
+          done
+          echo "mosquitto did not listen on 18883" >&2
+          exit 1
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
+        env:
+          MQTT_TEST_PORT: '18883'
 
   windows:
     needs: test

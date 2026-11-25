@@ -344,13 +344,21 @@ void main() {
       '/usr/bin/mosquitto',
     ].firstWhere((p) => File(p).existsSync(), orElse: () => '');
     setUpAll(() async {
+      final envPort = Platform.environment['MQTT_TEST_PORT'];
+      if (envPort != null && envPort.isNotEmpty) {
+        port = int.parse(envPort);
+        return;
+      }
       if (mosq.isEmpty) return;
       final s = await ServerSocket.bind(InternetAddress.loopbackIPv4, 0);
       port = s.port;
       await s.close();
-      final conf = File('${Directory.systemTemp.createTempSync('mq').path}/m.conf')
-        ..writeAsStringSync('listener $port 127.0.0.1\nallow_anonymous true\n');
-      broker = await Process.start(mosq, ['-c', conf.path]);
+      // Write the config under the project dir: Ubuntu's AppArmor profile for the
+      // packaged mosquitto binary rejects files under /tmp.
+      final confDir = Directory('.dart_tool')..createSync(recursive: true);
+      final conf = File('${confDir.path}/mosquitto-test.conf')
+        ..writeAsStringSync('listener $port 127.0.0.1\nallow_anonymous true\npersistence false\n');
+      broker = await Process.start(mosq, ['-c', conf.absolute.path]);
       final logs = StringBuffer();
       var dead = false;
       broker!.stdout.transform(utf8.decoder).listen(logs.write);
@@ -394,7 +402,7 @@ void main() {
       expect(await d2.read({'topic': 'home/iv/state', 'jsonPath': 'temp'}), 20.5);
       expect(await d2.test(), startsWith('OK'));
       await d2.dispose();
-    }, skip: mosq.isEmpty ? 'mosquitto not installed' : null);
+    }, skip: (mosq.isEmpty && (Platform.environment['MQTT_TEST_PORT'] ?? '').isEmpty) ? 'mosquitto not installed' : null);
   });
 }
 
