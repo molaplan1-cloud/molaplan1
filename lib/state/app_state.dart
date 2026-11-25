@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import '../drivers/driver.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
+import '../templates/device_templates.dart';
 import 'storage.dart';
 
 class AppState extends ChangeNotifier {
@@ -201,6 +202,70 @@ class AppState extends ChangeNotifier {
     }
     await save();
     notifyListeners();
+  }
+
+  Future<void> setOnboardingDone(bool done) async {
+    config.onboardingDone = done;
+    await save();
+    notifyListeners();
+  }
+
+  /// Re-inserts a deleted tile (undo).
+  Future<void> restoreTile(Dashboard d, TileConfig t, int index) async {
+    if (!config.dashboards.contains(d)) return;
+    d.tiles.insert(index.clamp(0, d.tiles.length), t);
+    await save();
+    notifyListeners();
+  }
+
+  Future<void> restoreDashboard(Dashboard d, int index) async {
+    config.dashboards.insert(index.clamp(0, config.dashboards.length), d);
+    // drop the auto-created empty default, if deleting left one behind
+    config.dashboards.removeWhere((x) => x != d && x.tiles.isEmpty && config.dashboards.length > 1 && x.name == (lang == 'fi' ? 'Koti' : 'Home'));
+    await save();
+    notifyListeners();
+  }
+
+  static String _addrKey(ConnectionConfig c) {
+    final s = c.settings;
+    final a = (s['baseUrl'] ?? s['host'] ?? s['url'] ?? '').toString().toLowerCase().replaceAll(RegExp(r'/+$'), '');
+    return '${c.type}|$a|${s['port'] ?? ''}|${s['unitId'] ?? ''}';
+  }
+
+  /// Adds a template result. Connections that already exist (same type +
+  /// address) are reused so e.g. a second HA template doesn't duplicate HA.
+  /// Returns the connections actually used.
+  Future<List<ConnectionConfig>> applyTemplate(TemplateResult r, {Dashboard? into, List<TileConfig>? tiles}) async {
+    final remap = <String, String>{};
+    final used = <ConnectionConfig>[];
+    for (final c in r.connections) {
+      final existing = config.connections.where((e) => _addrKey(e) == _addrKey(c)).firstOrNull;
+      if (existing != null) {
+        remap[c.id] = existing.id;
+        c.secrets.forEach((k, v) => existing.secrets.putIfAbsent(k, () => v));
+        await _persistSecrets(existing);
+        await _drivers.remove(existing.id)?.dispose();
+        used.add(existing);
+      } else {
+        config.connections.add(c);
+        await _persistSecrets(c);
+        used.add(c);
+      }
+    }
+    String m(String? id) => id == null ? '' : (remap[id] ?? id);
+    final d = into ?? config.dashboards.first;
+    for (final t in tiles ?? r.tiles) {
+      if (t.connectionId != null) t.connectionId = m(t.connectionId);
+      t.onCommand?.connectionId = m(t.onCommand?.connectionId);
+      t.offCommand?.connectionId = m(t.offCommand?.connectionId);
+      for (final c in t.commands) {
+        c.connectionId = m(c.connectionId);
+      }
+      d.tiles.add(t);
+    }
+    await save();
+    notifyListeners();
+    return used;
   }
 
   /// Appends connections + dashboards from [other] (e.g. the example set).

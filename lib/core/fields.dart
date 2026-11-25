@@ -11,6 +11,11 @@ class FieldSpec {
   final List<String> options;
   final String? hint;
   final bool required;
+  final String? helpFi;
+  final String? helpEn;
+
+  /// Shown under "Lisäasetukset" (collapsed) instead of the main form.
+  final bool? advanced;
 
   const FieldSpec(
     this.key,
@@ -21,9 +26,13 @@ class FieldSpec {
     this.options = const [],
     this.hint,
     this.required = false,
+    this.helpFi,
+    this.helpEn,
+    this.advanced,
   });
 
   String label(String lang) => lang == 'fi' ? fi : en;
+  String? ownHelp(String lang) => lang == 'fi' ? helpFi : helpEn;
 }
 
 /// Reads typed values from a settings map with defaults.

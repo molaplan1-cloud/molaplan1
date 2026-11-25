@@ -235,8 +235,9 @@ class AppConfig {
   List<ConnectionConfig> connections;
   List<Dashboard> dashboards;
   String language;
+  bool onboardingDone;
 
-  AppConfig({List<ConnectionConfig>? connections, List<Dashboard>? dashboards, this.language = 'fi'})
+  AppConfig({List<ConnectionConfig>? connections, List<Dashboard>? dashboards, this.language = 'fi', this.onboardingDone = false})
     : connections = connections ?? [],
       dashboards = dashboards ?? [];
 
@@ -254,6 +255,7 @@ class AppConfig {
     }
     return AppConfig(
       language: (j['language'] ?? 'fi') as String,
+      onboardingDone: (j['onboardingDone'] ?? false) as bool,
       connections: ((j['connections'] as List?) ?? []).map((e) => ConnectionConfig.fromJson(_map(e))).toList(),
       dashboards: ((j['dashboards'] as List?) ?? []).map((e) => Dashboard.fromJson(_map(e))).toList(),
     );
