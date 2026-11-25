@@ -9,6 +9,7 @@ import '../models/models.dart';
 import 'driver.dart';
 import 'http_driver.dart' show makeHttpClient;
 import 'mqtt_driver.dart';
+import '../l10n/l10n.dart';
 
 /// One air-conditioner brand in the picker, mapped to Tasmota IRhvac vendor names
 /// (IRremoteESP8266 protocol names). [alt] = other protocols the same brand uses.
@@ -88,10 +89,10 @@ class IrState {
   };
 
   String summary(String lang) {
-    if (!power) return lang == 'fi' ? 'Pois päältä' : 'Off';
-    final m = lang == 'fi' ? irModeFi(mode) : irModeEn(mode);
-    final f = lang == 'fi' ? 'puhallin $fan' : 'fan $fan';
-    return '$m ${_fmt(temp)} °C, $f${swing ? (lang == 'fi' ? ', suuntaus' : ', swing') : ''}';
+    if (!power) return tr(lang, 'Pois päältä', 'Off');
+    final m = tr(lang, irModeFi(mode), irModeEn(mode));
+    final f = tr(lang, 'puhallin $fan', 'fan $fan');
+    return '$m ${_fmt(temp)} °C, $f${swing ? tr(lang, ', suuntaus', ', swing') : ''}';
   }
 }
 
@@ -657,7 +658,7 @@ class IrDriver extends Driver {
       case 'temp':
         return st.temp;
       case 'mode':
-        return driverLang == 'fi' ? irModeFi(st.power ? st.mode : 'off') : irModeEn(st.power ? st.mode : 'off');
+        return tr(driverLang, irModeFi(st.power ? st.mode : 'off'), irModeEn(st.power ? st.mode : 'off'));
       case 'fan':
         return irFans.indexOf(st.fan);
       case 'swing':

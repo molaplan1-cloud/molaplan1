@@ -5,6 +5,7 @@ import '../devices/provider.dart' show checkAddress, addressHint, AddressIssue;
 import '../core/field_help.dart';
 import '../core/fields.dart';
 import 'app_scope.dart';
+import '../l10n/l10n.dart';
 
 /// Generic form for a list of [FieldSpec]s editing [values] in place.
 class SpecForm extends StatelessWidget {
@@ -49,9 +50,9 @@ class SpecForm extends StatelessWidget {
               initiallyExpanded: advUsed,
               tilePadding: EdgeInsets.zero,
               leading: const Icon(Icons.tune),
-              title: Text(lang == 'fi' ? 'Lisäasetukset' : 'Advanced settings'),
+              title: Text(tr(lang, 'Lisäasetukset', 'Advanced settings')),
               subtitle: Text(
-                lang == 'fi' ? 'Yleensä näihin ei tarvitse koskea' : "Usually you don't need these",
+                tr(lang, 'Yleensä näihin ei tarvitse koskea', "Usually you don't need these"),
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               childrenPadding: const EdgeInsets.only(top: 4),
@@ -181,7 +182,7 @@ class _FieldInputState extends State<_FieldInput> {
               : (f.kind == FieldKind.multiline ? TextInputType.multiline : TextInputType.text),
           decoration: InputDecoration(
             labelText: label,
-            hintText: f.hint == null ? null : '${widget.lang == 'fi' ? 'esim.' : 'e.g.'} ${f.hint}',
+            hintText: f.hint == null ? null : '${tr(widget.lang, 'esim.', 'e.g.')} ${f.hint}',
             helperText: _addrHint ?? widget.help,
             helperMaxLines: 4,
             helperStyle: _addrHint == null ? null : TextStyle(color: Theme.of(context).colorScheme.tertiary),

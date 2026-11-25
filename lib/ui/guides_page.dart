@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'app_scope.dart';
 import 'heatpump_pages.dart';
 import 'remote_pages.dart';
+import '../l10n/l10n.dart';
 
 typedef Txt = (String fi, String en);
 
@@ -190,7 +191,7 @@ class GuidesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final lang = AppScope.of(context).lang;
-    String t(Txt x) => lang == 'fi' ? x.$1 : x.$2;
+    String t(Txt x) => tr(lang, x.$1, x.$2);
     final cs = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(title: Text(tx(context, 'Etäkäytön ohjeet', 'Remote access guides'))),
@@ -273,7 +274,7 @@ class GuideDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final lang = AppScope.of(context).lang;
-    String t(Txt x) => lang == 'fi' ? x.$1 : x.$2;
+    String t(Txt x) => tr(lang, x.$1, x.$2);
     final text = Theme.of(context).textTheme;
     final cs = Theme.of(context).colorScheme;
     final g = guide;

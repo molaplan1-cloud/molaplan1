@@ -14,6 +14,8 @@ analyzer:
     - build/**
     - android/**
     - windows/**
+    - tool/l10n/**
+    - lib/l10n/gen/**
 
 linter:
   # The lint rules applied to this project can be customized in the

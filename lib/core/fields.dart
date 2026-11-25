@@ -1,3 +1,4 @@
+import '../l10n/l10n.dart';
 enum FieldKind { text, multiline, number, boolean, choice, secret }
 
 /// Describes one editable setting of a connection / read spec / command spec.
@@ -31,8 +32,8 @@ class FieldSpec {
     this.advanced,
   });
 
-  String label(String lang) => lang == 'fi' ? fi : en;
-  String? ownHelp(String lang) => lang == 'fi' ? helpFi : helpEn;
+  String label(String lang) => tr(lang, fi, en);
+  String? ownHelp(String lang) => helpFi == null ? (lang == 'fi' ? null : helpEn) : tr(lang, helpFi!, helpEn ?? helpFi!);
 }
 
 /// Reads typed values from a settings map with defaults.

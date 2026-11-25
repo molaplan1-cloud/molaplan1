@@ -86,7 +86,7 @@ class _TemplateGridState extends State<TemplateGrid> {
                 Navigator.pop(c);
                 widget.onPick(tpl);
               },
-              child: Text(tx(c, 'Käytä: ${tpl.name('fi')}', 'Use: ${tpl.name('en')}')),
+              child: Text('${tx(c, 'Käytä', 'Use')}: ${tpl.name(AppScope.of(c).lang)}'),
             ),
         ],
       ),

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io' show Platform;
 
 import 'package:flutter/foundation.dart';
 
@@ -14,6 +15,7 @@ import 'account_state.dart';
 import 'remote_state.dart';
 import 'storage.dart';
 import 'update_state.dart';
+import '../l10n/l10n.dart';
 
 class AppState extends ChangeNotifier implements SyncHost {
   AppState({
@@ -21,7 +23,8 @@ class AppState extends ChangeNotifier implements SyncHost {
     required this.secretStore,
     AccountApi? accountApi,
     int kdfIterations = defaultIterations,
-  }) {
+    String Function()? systemLocale,
+  }) : systemLocale = systemLocale ?? _platformLocale {
     account = AccountState(store: secretStore, host: this, api: accountApi, kdfIterations: kdfIterations);
     account.addListener(notifyListeners);
     remote = RemoteState(store: secretStore, configJson: () => exportJson(includeSecrets: true));
@@ -59,7 +62,17 @@ class AppState extends ChangeNotifier implements SyncHost {
   final _drivers = <String, Driver>{};
   bool loaded = false;
 
-  String get lang => config.language;
+  /// Device locale, e.g. "sv_SE" (injectable for tests).
+  final String Function() systemLocale;
+
+  static String _platformLocale() {
+    // Widget tests run in an en_US locale; the test suite is written against the Finnish texts.
+    if (!kIsWeb && Platform.environment.containsKey('FLUTTER_TEST')) return 'fi_FI';
+    return PlatformDispatcher.instance.locale.toString();
+  }
+
+  /// The language in use: chosen in settings, or the device language ('auto').
+  String get lang => appLanguages.containsKey(config.language) ? config.language : languageForLocale(systemLocale());
 
   static String secretKey(String connId, String field) => 'molaplan.secret.$connId.$field';
 
@@ -83,7 +96,7 @@ class AppState extends ChangeNotifier implements SyncHost {
       }
     }
     if (config.dashboards.isEmpty) {
-      config.dashboards.add(Dashboard(name: config.language == 'fi' ? 'Koti' : 'Home'));
+      config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     }
     remote.relay = config.relayUrl ?? remote.relay;
     remote.router.remoteCameraSeconds = config.remoteCameraSeconds;
@@ -92,7 +105,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     } catch (e) {
       debugPrint('remote load failed: $e');
     }
-    driverLang = config.language;
+    driverLang = lang;
     _lastHome = remote.paired?.home;
     await account.load();
     loaded = true;
@@ -100,7 +113,7 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   Future<void> setBridgeMode(bool on) async {
-    on ? await remote.enableBridge(name: lang == 'fi' ? 'Koti' : 'Home') : await remote.disableBridge();
+    on ? await remote.enableBridge(name: tr(lang, 'Koti', 'Home')) : await remote.disableBridge();
     config.bridgeMode = on;
     await save();
     notifyListeners();
@@ -175,6 +188,7 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   // ---- account sync (SyncHost)
   static const _deviceLocal = [
+    'language',
     'onboardingDone',
     'bridgeMode',
     'relayUrl',
@@ -220,9 +234,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     final removed = oldSecrets.keys.toSet().difference({for (final c in other.connections) c.id});
     config.connections = other.connections;
     config.dashboards = other.dashboards;
-    config.language = other.language;
-    driverLang = config.language;
-    if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: lang == 'fi' ? 'Koti' : 'Home'));
+    if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     if (hasLocalSetup) config.onboardingDone = true;
     _applyingSync = true;
     try {
@@ -366,7 +378,7 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   Future<void> deleteDashboard(Dashboard d) async {
     config.dashboards.remove(d);
-    if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: lang == 'fi' ? 'Koti' : 'Home'));
+    if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     await save();
     notifyListeners();
   }
@@ -413,7 +425,7 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   Future<void> setLanguage(String l) async {
     config.language = l;
-    driverLang = l;
+    driverLang = lang;
     await save();
     notifyListeners();
   }
@@ -429,7 +441,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     }
     _drivers.clear();
     config = imported;
-    if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: lang == 'fi' ? 'Koti' : 'Home'));
+    if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     for (final c in config.connections) {
       await _persistSecrets(c);
     }
@@ -455,7 +467,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     config.dashboards.insert(index.clamp(0, config.dashboards.length), d);
     // drop the auto-created empty default, if deleting left one behind
     config.dashboards.removeWhere(
-      (x) => x != d && x.tiles.isEmpty && config.dashboards.length > 1 && x.name == (lang == 'fi' ? 'Koti' : 'Home'),
+      (x) => x != d && x.tiles.isEmpty && config.dashboards.length > 1 && x.name == tr(lang, 'Koti', 'Home'),
     );
     await save();
     notifyListeners();
@@ -541,7 +553,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (emptyDefault) config.dashboards.clear();
     config.connections.addAll(add);
     config.dashboards.addAll(other.dashboards);
-    if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: lang == 'fi' ? 'Koti' : 'Home'));
+    if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     for (final c in add) {
       await _persistSecrets(c);
     }

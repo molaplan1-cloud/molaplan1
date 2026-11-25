@@ -1,6 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 
 import '../state/app_state.dart';
+import '../l10n/l10n.dart';
 
 class AppScope extends InheritedNotifier<AppState> {
   const AppScope({super.key, required AppState state, required super.child}) : super(notifier: state);
@@ -12,7 +13,7 @@ class AppScope extends InheritedNotifier<AppState> {
 }
 
 /// Inline translation helper: tx(context, 'suomeksi', 'in English').
-String tx(BuildContext context, String fi, String en) => AppScope.read(context).lang == 'fi' ? fi : en;
+String tx(BuildContext context, String fi, String en) => tr(AppScope.read(context).lang, fi, en);
 
 void showSnack(BuildContext context, String msg, {bool error = false}) {
   final cs = Theme.of(context).colorScheme;

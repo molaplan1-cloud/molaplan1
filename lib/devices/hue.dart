@@ -7,6 +7,7 @@ import 'dart:io';
 
 import '../models/models.dart';
 import 'provider.dart';
+import '../l10n/l10n.dart';
 
 Future<Candidate?> probeHueAt(HttpClient c, String ip) async {
   final j = await probeJson(c, Uri.parse('http://$ip/api/config'));
@@ -115,7 +116,6 @@ class HueProvider extends DeviceProvider {
     if (token.isEmpty) throw AddDeviceError(AddProblem.needsPassword);
     final conn = _conn(c.address, token)..name = c.name ?? 'Hue';
     final d = ctx.driver(conn);
-    final fi = ctx.lang == 'fi';
     try {
       Object? lights, groups;
       try {
@@ -137,9 +137,9 @@ class HueProvider extends DeviceProvider {
             kind: 'light',
             hasPower: st.containsKey('bri'),
             subtitle: [
-              if (st['reachable'] == false) fi ? 'ei tavoitettavissa' : 'unreachable',
-              if (st['on'] != null) st['on'] == true ? (fi ? 'päällä' : 'on') : (fi ? 'pois' : 'off'),
-              if (st.containsKey('bri')) fi ? 'himmennettävä' : 'dimmable',
+              if (st['reachable'] == false) tr(ctx.lang, 'ei tavoitettavissa', 'unreachable'),
+              if (st['on'] != null) st['on'] == true ? tr(ctx.lang, 'päällä', 'on') : tr(ctx.lang, 'pois', 'off'),
+              if (st.containsKey('bri')) tr(ctx.lang, 'himmennettävä', 'dimmable'),
             ].join(' · '),
           ));
         }
@@ -153,7 +153,7 @@ class HueProvider extends DeviceProvider {
             name: '${g['name']}',
             kind: 'room',
             preselect: false,
-            subtitle: fi ? 'koko huone (${(g['lights'] as List?)?.length ?? 0} valoa)' : 'whole room',
+            subtitle: tr(ctx.lang, 'koko huone (${(g['lights'] as List?)?.length ?? 0} valoa)', 'whole room'),
           ));
         }
       }
@@ -189,7 +189,7 @@ class HueProvider extends DeviceProvider {
       if (power && it.hasPower && !room) {
         out.add(TileConfig(
           type: TileType.slider,
-          title: '$title – ${lang == 'fi' ? 'kirkkaus' : 'brightness'}',
+          title: '$title – ${tr(lang, 'kirkkaus', 'brightness')}',
           icon: 'brightness',
           connectionId: c.id,
           pollSeconds: 10,

@@ -202,7 +202,7 @@ void main() {
       custom: svc,
     );
     final v = await d.read({'field': 'now'}) as num;
-    expect(v, inInclusiveRange(5 * 1.25 + 2, 5.3 * 1.25 + 2));
+    expect(v, inInclusiveRange(5 * 1.25 + 2 - 0.01, 5.3 * 1.25 + 2 + 0.01)); // rounded to 0.01 c
     final chart = await d.read({'field': 'chart'}) as Map;
     expect((chart['points'] as List), hasLength(192));
     expect(chart['res'], 900);

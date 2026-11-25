@@ -7,6 +7,7 @@ import '../drivers/ir_driver.dart';
 import '../prices/prices.dart';
 import '../models/models.dart';
 import 'iv_profiles_data.dart';
+import '../l10n/l10n.dart';
 
 class TemplateResult {
   final List<ConnectionConfig> connections;
@@ -52,8 +53,8 @@ class DeviceTemplate {
     this.advanced = false,
   });
 
-  String name(String lang) => lang == 'fi' ? fi : en;
-  String desc(String lang) => lang == 'fi' ? descFi : descEn;
+  String name(String lang) => tr(lang, fi, en);
+  String desc(String lang) => tr(lang, descFi, descEn);
 }
 
 // ---------------------------------------------------------------- helpers
@@ -93,7 +94,7 @@ bool _b(Map<String, dynamic> v, String k, [bool d = false]) {
   return x.toString() == 'true';
 }
 
-String _t(String lang, String fi, String en) => lang == 'fi' ? fi : en;
+String _t(String lang, String fi, String en) => tr(lang, fi, en);
 
 FieldSpec _ip(String fiHelp, String enHelp, {String hint = '192.168.1.50'}) => FieldSpec(
   'address',
@@ -1679,7 +1680,7 @@ List<TileConfig> heatPumpIrTiles(
       for (final (m, icon) in [('heat', 'fire'), ('cool', 'snow'), ('auto', 'sun'), ('dry', 'water'), ('fan', 'fan')])
         TileConfig(
           type: TileType.button,
-          title: lang == 'fi' ? irModeFi(m) : irModeEn(m),
+          title: tr(lang, irModeFi(m), irModeEn(m)),
           icon: icon,
           connectionId: cid,
           commands: [set('mode', m)],

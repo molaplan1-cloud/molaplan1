@@ -39,7 +39,9 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
       ),
     ),
     AddProblem.unreachable => (
-      t('Laitetta ei tavoitettu${address.isEmpty ? '' : ' osoitteesta $address'}', 'Could not reach the device${address.isEmpty ? '' : ' at $address'}'),
+      address.isEmpty
+          ? t('Laitetta ei tavoitettu', 'Could not reach the device')
+          : t('Laitetta ei tavoitettu osoitteesta $address', 'Could not reach the device at $address'),
       t(
         '1. Tarkista että $brand on päällä (valo palaa).\n2. Tämän laitteen (tai kotisillan) pitää olla samassa wifissä kuin $brand.\n3. Tarkista osoite – se voi vaihtua. Paina "Takaisin" ja hae uudelleen.',
         '1. Check that $brand is powered.\n2. This device (or the home bridge) must be on the same Wi-Fi.\n3. Check the address – it can change. Tap "Back" and search again.',
@@ -216,11 +218,14 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         builder: (c) => AlertDialog(
           icon: const Icon(Icons.spellcheck, size: 36),
           title: Text(tx(c, 'Tarkista osoite', 'Check the address')),
-          content: Text(tx(
-            c,
-            '${hostOf(a)} ei ole kotiverkon osoite. Kotiverkon osoitteet alkavat yleensä 192.168. – katso osoite uudelleen $brand-sovelluksesta.${fix == null ? '' : '\n\nTarkoititko $fix?'}',
-            '${hostOf(a)} is not a home network address. They usually start with 192.168. – check it again in the $brand app.${fix == null ? '' : '\n\nDid you mean $fix?'}',
-          )),
+          content: Text(
+            tx(
+                  c,
+                  '${hostOf(a)} ei ole kotiverkon osoite. Kotiverkon osoitteet alkavat yleensä 192.168. – katso osoite uudelleen $brand-sovelluksesta.',
+                  '${hostOf(a)} is not a home network address. They usually start with 192.168. – check it again in the $brand app.',
+                ) +
+                (fix == null ? '' : '\n\n${tx(c, 'Tarkoititko $fix?', 'Did you mean $fix?')}'),
+          ),
           actions: [
             TextButton(onPressed: () => Navigator.pop(c), child: Text(tx(c, 'Korjaan itse', 'I\'ll fix it'))),
             TextButton(onPressed: () => Navigator.pop(c, 'as-is'), child: Text(tx(c, 'Kokeile silti', 'Try anyway'))),
@@ -500,9 +505,12 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         tx(context, 'Miten ohjaat kotia muualta?', 'How will you control your home when away?'),
         tx(
           context,
-          'Kotisilta on laite, joka on AINA kotona, päällä ja samassa wifissä kuin $brand – esim. vanha puhelin, tabletti tai PC. Muut laitteesi ottavat siihen yhteyden netin yli (salattu, ei porttiohjauksia). Jos laite lähtee mukaasi, se ei sovi kotisillaksi.${st.account.signedIn ? ' Koska olet kirjautunut, kotiyhteys siirtyy kaikille laitteillesi automaattisesti.' : ''}',
-          'A home bridge is a device that ALWAYS stays at home, switched on and on the same Wi-Fi as $brand – e.g. an old phone, tablet or PC. Your other devices reach it over the internet (encrypted, no port forwarding). A device you carry around is not a good bridge.${st.account.signedIn ? ' As you are signed in, the home connection reaches all your devices automatically.' : ''}',
-        ),
+          'Kotisilta on laite, joka on AINA kotona, päällä ja samassa wifissä kuin $brand – esim. vanha puhelin, tabletti tai PC. Muut laitteesi ottavat siihen yhteyden netin yli (salattu, ei porttiohjauksia). Jos laite lähtee mukaasi, se ei sovi kotisillaksi.',
+          'A home bridge is a device that ALWAYS stays at home, switched on and on the same Wi-Fi as $brand – e.g. an old phone, tablet or PC. Your other devices reach it over the internet (encrypted, no port forwarding). A device you carry around is not a good bridge.',
+            ) +
+            (st.account.signedIn
+                ? ' ${tx(context, 'Koska olet kirjautunut, kotiyhteys siirtyy kaikille laitteillesi automaattisesti.', 'As you are signed in, the home connection reaches all your devices automatically.')}'
+                : ''),
       ),
       ...cloud,
       _bigChoice(
@@ -805,7 +813,9 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         context,
         tx(context, 'Valmis! $added ruutua lisätty', 'Done! $added tiles added'),
         remoteOk
-            ? tx(context, 'Ruudut toimivat kotona ja kodin ulkopuolella${cloud ? ' pilven' : ' kotisillan'} kautta – mitään muuta ei tarvitse tehdä.', 'The tiles work at home and away${cloud ? ' through the cloud' : ' through the home bridge'} – nothing else to do.')
+            ? (cloud
+                  ? tx(context, 'Ruudut toimivat kotona ja kodin ulkopuolella pilven kautta – mitään muuta ei tarvitse tehdä.', 'The tiles work at home and away through the cloud – nothing else to do.')
+                  : tx(context, 'Ruudut toimivat kotona ja kodin ulkopuolella kotisillan kautta – mitään muuta ei tarvitse tehdä.', 'The tiles work at home and away through the home bridge – nothing else to do.'))
             : tx(context, 'Ruudut toimivat nyt kotiverkossa. Jotta voit ohjata kotia mistä tahansa, ota kotisilta käyttöön.', 'The tiles work on your home network. To control from anywhere, set up the home bridge.'),
       ),
       if (!remoteOk)

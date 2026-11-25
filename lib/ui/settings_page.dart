@@ -13,6 +13,7 @@ import 'onboarding_page.dart';
 import 'remote_pages.dart';
 import 'update_ui.dart';
 import '../version.dart';
+import 'language_picker.dart';
 
 export '../version.dart' show appVersion;
 
@@ -114,14 +115,7 @@ class _SettingsPageState extends State<SettingsPage> {
               const SizedBox(height: 28),
               Text(tx(context, 'Kieli', 'Language'), style: text.titleMedium),
               const SizedBox(height: 8),
-              SegmentedButton<String>(
-                segments: const [
-                  ButtonSegment(value: 'fi', label: Text('Suomi')),
-                  ButtonSegment(value: 'en', label: Text('English')),
-                ],
-                selected: {st.lang},
-                onSelectionChanged: (s) => st.setLanguage(s.first),
-              ),
+              const LanguagePicker(),
               const SizedBox(height: 20),
               SwitchListTile(
                 key: const ValueKey('settings-advanced'),

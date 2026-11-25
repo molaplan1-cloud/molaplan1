@@ -1,0 +1,3397 @@
+{
+ "@@locale": "sv",
+ "s03c0a5192b": "Adress som inte hittats",
+ "@s03c0a5192b": {
+  "x-mt": true
+ },
+ "sb3ef01a6fa": "Kontrollera stavningen. Prova IP-adressen (t.ex. 192.168.1.50) istället för ett namn.",
+ "@sb3ef01a6fa": {
+  "x-mt": true
+ },
+ "s274a753ad6": "Enhet som inte finns på denna adress",
+ "@s274a753ad6": {
+  "x-mt": true
+ },
+ "s2b503695b6": "Kontrollera att enheten är på och att din telefon eller dator är på samma Wi-Fi. Kontrollera också IP-adressen - den kan ändras, så reservera en fast adress i routern.",
+ "@s2b503695b6": {
+  "x-mt": true
+ },
+ "sff9ca463e3": "Enhet hittades men hamnen är stängd",
+ "@sff9ca463e3": {
+  "x-mt": true
+ },
+ "s1d4f4506de": "Kontrollera portnumret och att tjänsten (webb UI, MQTT eller Modbus TCP) är aktiverad på enheten.",
+ "@s1d4f4506de": {
+  "x-mt": true
+ },
+ "s8523a9cfd0": "Säker anslutning (https) misslyckades",
+ "@s8523a9cfd0": {
+  "x-mt": true
+ },
+ "sdfd499c1f1": "Prova http:// istället, eller aktivera \"Tillåt självsignerat certifikat\" under Avancerad.",
+ "@sdfd499c1f1": {
+  "x-mt": true
+ },
+ "s3fabccc1cd": "Inloggning, lösenord eller token avvisas",
+ "@s3fabccc1cd": {
+  "x-mt": true
+ },
+ "sdc2d65f8eb": "Kontrollera referenser. I Home Assistant kan du skapa en ny långlivad token i din profil.",
+ "@sdc2d65f8eb": {
+  "x-mt": true
+ },
+ "se0a7cef6c4": "Enhet svarade men objektet hittades inte",
+ "@se0a7cef6c4": {
+  "x-mt": true
+ },
+ "see02239a35": "Kontrollera sökvägen eller företagets namn (t.ex. light.living_room).",
+ "@see02239a35": {
+  "x-mt": true
+ },
+ "sdec83d1e90": "Enheten rapporterade ett fel",
+ "@sdec83d1e90": {
+  "x-mt": true
+ },
+ "s3de239ffc5": "Kontrollera vägen och nyttolast.",
+ "@s3de239ffc5": {
+  "x-mt": true
+ },
+ "s6121e8d8f1": "Okänt register på enheten",
+ "@s6121e8d8f1": {
+  "x-mt": true
+ },
+ "s3474aedf54": "Kontrollera registret nummer. Om tabellen börjar vid 1 (t.ex. 40001), subtrahera 1. Kontrollera också innehav vs ingång.",
+ "@s3474aedf54": {
+  "x-mt": true
+ },
+ "s2c303f6774": "Registertyp som inte stöds",
+ "@s2c303f6774": {
+  "x-mt": true
+ },
+ "s945685fcda": "Prova den andra registreringstypen (hålla inmatning).",
+ "@s945685fcda": {
+  "x-mt": true
+ },
+ "s07ffbc349a": "Värde som avvisas av enheten",
+ "@s07ffbc349a": {
+  "x-mt": true
+ },
+ "s76b95eef9f": "Värdet är förmodligen ur räckvidd. Kontrollera skalan också.",
+ "@s76b95eef9f": {
+  "x-mt": true
+ },
+ "sb66bc0e677": "Ingen Modbus svar",
+ "@sb66bc0e677": {
+  "x-mt": true
+ },
+ "s6ef5539bc2": "Ansluten men inget svar. Kontrollera enhetens id (ofta 1) och gateway-serieinställningarna.",
+ "@s6ef5539bc2": {
+  "x-mt": true
+ },
+ "s17ea4c52d5": "Inget svar från enheten",
+ "@s17ea4c52d5": {
+  "x-mt": true
+ },
+ "s50ecf9ba6f": "Ansluten men inget svar i tid. Kontrollera meddelandet.",
+ "@s50ecf9ba6f": {
+  "x-mt": true
+ },
+ "sf93db545a1": "Det finns ett misstag i inställningarna",
+ "@sf93db545a1": {
+  "x-mt": true
+ },
+ "sf19a9f0856": "Kontrollera fälten, t.ex. att adressen börjar med http:// och siffrorna är siffror.",
+ "@sf19a9f0856": {
+  "x-mt": true
+ },
+ "s3976954bef": "Denna kakel har ingen enhet",
+ "@s3976954bef": {
+  "x-mt": true
+ },
+ "sc025e0a1f4": "Öppet redigeringsläge (penna) och välj en enhet för kakeln.",
+ "@sc025e0a1f4": {
+  "x-mt": true
+ },
+ "s7e11595f9e": "Hembron är avstängd",
+ "@s7e11595f9e": {
+  "x-mt": true
+ },
+ "s2cd1df086e": "Fjärråtkomst går igenom bron hemma (tablet eller PC). Kontrollera att det är på, Molaplan är öppen och det har internet.",
+ "@s2cd1df086e": {
+  "x-mt": true
+ },
+ "sdfb639365a": "Ingen internetanslutning",
+ "sdbf06d05d9": "Din enhet kan inte nå Molaplan fjärrtjänst. Kontrollera mobildata eller Wi-Fi.",
+ "@sdbf06d05d9": {
+  "x-mt": true
+ },
+ "s8b737f4026": "Fjärråtkomst togs bort",
+ "@s8b737f4026": {
+  "x-mt": true
+ },
+ "s4b9e4ca079": "Den här enheten togs bort på hemmabron. Par igen: Inställningar → Fjärråtkomst.",
+ "@s4b9e4ca079": {
+  "x-mt": true
+ },
+ "s5b3116ed94": "Hembron svarade inte i tid",
+ "@s5b3116ed94": {
+  "x-mt": true
+ },
+ "se082095a34": "Anslutningen kan vara långsam. Försök igen i ett ögonblick.",
+ "@se082095a34": {
+  "x-mt": true
+ },
+ "s688a4f4ccb": "Koden är inte giltig",
+ "@s688a4f4ccb": {
+  "x-mt": true
+ },
+ "sfa0e226cd0": "Kontrollera 6 siffror på bryggskärmen. En kod är giltig i 10 minuter och fungerar en gång - tryck på \"Paira en telefon\" på bron igen om det behövs.",
+ "@sfa0e226cd0": {
+  "x-mt": true
+ },
+ "sfa5c1fb1ac": "Bron accepterade inte denna enhet",
+ "@sfa5c1fb1ac": {
+  "x-mt": true
+ },
+ "s9ad07ab36e": "När du kopplar ihop med koden ber bron om bekräftelse - tryck på \"Acceptera\" där. Eller skanna QR-koden, då behövs ingen bekräftelse.",
+ "@s9ad07ab36e": {
+  "x-mt": true
+ },
+ "sb5c271ae6a": "Säkerhetskontroll misslyckades",
+ "@sb5c271ae6a": {
+  "x-mt": true
+ },
+ "s3d7ca280db": "Anslutningen kunde inte verifieras som säker, så den användes inte igen med QR-koden.",
+ "@s3d7ca280db": {
+  "x-mt": true
+ },
+ "s0061b44673": "Bron svarade inte",
+ "@s0061b44673": {
+  "x-mt": true
+ },
+ "sceb894b9b3": "Acceptera enheten på bryggskärmen inom 3 minuter, eller skanna QR-koden.",
+ "@sceb894b9b3": {
+  "x-mt": true
+ },
+ "s9dd2ff794f": "Något gick fel",
+ "sbb62433c2c": "Kontrollera inställningarna och försök igen.",
+ "@sbb62433c2c": {
+  "x-mt": true
+ },
+ "s0bf7cb1613": "Philips Hue",
+ "s4dbb677293": "nås inte",
+ "s609cb4c5f9": "på",
+ "s356d822497": "av",
+ "sf50732e8e8": "dimmable",
+ "@sf50732e8e8": {
+  "x-mt": true
+ },
+ "s3832b8c729": "hela rummet",
+ "see129fb410": "ljusstyrka",
+ "s08d04d58a9": "Kanal {p0}",
+ "@s08d04d58a9": {
+  "x-mt": true
+ },
+ "se78754330c": "effekt",
+ "sfcb44be1a0": "Shelly",
+ "s5f2b2ca5f5": "på nu",
+ "s67f64cd925": "av nu",
+ "s64037991c2": "Shelly app → din profil → Användarinställningar → Auktoriseringsmolnnyckel → Få nyckel. Kopiera och klistra in den här.",
+ "@s64037991c2": {
+  "x-mt": true
+ },
+ "s062b21969d": "Visas på samma sida under nyckeln (\"Server URI\").",
+ "@s062b21969d": {
+  "x-mt": true
+ },
+ "sf30bb5d5e6": "Vanligtvis inte behövs. Om ingenting finns: Shelly app → enhet → inställningar → Enhetsinformation → Enhets-ID. Separat flera med kommatecken.",
+ "@sf30bb5d5e6": {
+  "x-mt": true
+ },
+ "s3aaacf80d2": "offline",
+ "s252ebed5af": "Shelly Cloud",
+ "s25399cd337": "Server Server Server",
+ "@s25399cd337": {
+  "x-mt": true
+ },
+ "s246c7a46ff": "Shelly app → Användarinställningar → Tillstånd molnnyckel → Server URI.",
+ "@s246c7a46ff": {
+  "x-mt": true
+ },
+ "s61a2d946a4": "Cloud Key",
+ "@s61a2d946a4": {
+  "x-mt": true
+ },
+ "s9d468f5c64": "Shelly app → Användarinställningar → Tillstånd molnnyckel → Få nyckel.",
+ "@s9d468f5c64": {
+  "x-mt": true
+ },
+ "sf34c97592f": "IKEA Dirigera",
+ "sa376ec78ec": "Lampa",
+ "sda8d9bf1cd": "Uttag",
+ "sb662db81d8": "Adressen ser ofullständig. Använd fyra nummer med prickar, t.ex. 192.168.1.50.",
+ "@sb662db81d8": {
+  "x-mt": true
+ },
+ "s738ecfe2bc": " menade du {p0}?",
+ "@s738ecfe2bc": {
+  "x-mt": true
+ },
+ "s06e738bf27": "This is not a home network address (they usually start with 192.168.).{p0}",
+ "@s06e738bf27": {
+  "x-mt": true
+ },
+ "sbae99909c4": "Obs!: den här enheten är på {p0}.x - enheten kan vara på ett annat Wi-Fi.",
+ "@sbae99909c4": {
+  "x-mt": true
+ },
+ "sa0c07ccd04": "Du har den senaste versionen ({p0}).",
+ "@sa0c07ccd04": {
+  "x-mt": true
+ },
+ "sa118d84538": "Kunde inte söka efter uppdateringar just nu. Kontrollera internetanslutningen och försök igen senare.",
+ "@sa118d84538": {
+  "x-mt": true
+ },
+ "s9f2b092d8c": "Version {p0} är tillgänglig",
+ "@s9f2b092d8c": {
+  "x-mt": true
+ },
+ "sa5133b2c4a": "Du har version {p0}.",
+ "@sa5133b2c4a": {
+  "x-mt": true
+ },
+ "se099b5797e": "Vad är nytt:",
+ "@se099b5797e": {
+  "x-mt": true
+ },
+ "s9315c3df42": "Hoppa över denna version",
+ "@s9315c3df42": {
+  "x-mt": true
+ },
+ "sdd5c8f0a9d": "Senare",
+ "sfbf490ec3f": "Uppdatera",
+ "s5a94ef2af1": "Nedladdningen var skadad",
+ "@s5a94ef2af1": {
+  "x-mt": true
+ },
+ "s81e4325573": "Ladda ner misslyckad",
+ "@s81e4325573": {
+  "x-mt": true
+ },
+ "s4b1d3df588": "Filkontrollsumman matchade inte, så ingenting installerades. Försök igen på ett ögonblick.",
+ "@s4b1d3df588": {
+  "x-mt": true
+ },
+ "s0c463c7069": "Kontrollera internetanslutningen och försök igen. Du kan också ladda ner uppdateringen från releasesidan.",
+ "@s0c463c7069": {
+  "x-mt": true
+ },
+ "s5dd4c9671f": "Öppen release page",
+ "@s5dd4c9671f": {
+  "x-mt": true
+ },
+ "s49ddc3c3b6": "Uppdatering nedladdad",
+ "@s49ddc3c3b6": {
+  "x-mt": true
+ },
+ "s04a05bb8fc": "Filen verifieras och sparas:\n{p0}\n\nFör att använda den:\nNära Molaplan.\nExtrahera zip över den gamla Molaplan-mappen (eller i en ny mapp).\n3. Start molaplan.exe. Dina inställningar hålls.",
+ "@s04a05bb8fc": {
+  "x-mt": true
+ },
+ "s1dd246ec69": "Release page",
+ "@s1dd246ec69": {
+  "x-mt": true
+ },
+ "s0f07b20d45": "Öppen zip",
+ "@s0f07b20d45": {
+  "x-mt": true
+ },
+ "s6e1ebc8baa": "Öppen mapp",
+ "@s6e1ebc8baa": {
+  "x-mt": true
+ },
+ "sa065e7f650": "Tillåt att installera uppdateringar",
+ "@sa065e7f650": {
+  "x-mt": true
+ },
+ "sdc3bf71baf": "Android ber en gång om tillstånd så att Molaplan kan installera sina egna uppdateringar.\n\nTryck på \"Öppna inställningar\".\nSlå på \"Tillåt från den här källan\".\nKom tillbaka och tryck på \"Uppdatera\" igen.",
+ "@sdc3bf71baf": {
+  "x-mt": true
+ },
+ "s809d0eb368": "Avbryt",
+ "sa1bd8d2533": "Öppna inställningar",
+ "s441683b7a8": "Verifiera...",
+ "@s441683b7a8": {
+  "x-mt": true
+ },
+ "se83b7fb2ac": "Ladda ner uppdatering...",
+ "@se83b7fb2ac": {
+  "x-mt": true
+ },
+ "s0b68f81d82": "Molaplan {p0} är tillgänglig. Bron fortsätter att fungera.",
+ "@s0b68f81d82": {
+  "x-mt": true
+ },
+ "sb06bee9921": "Föreställning",
+ "@sb06bee9921": {
+  "x-mt": true
+ },
+ "sf1b5d0ffa6": "Lösenordet matchar inte. Skriv ditt kontolösenord.",
+ "@sf1b5d0ffa6": {
+  "x-mt": true
+ },
+ "s11ee4426b2": "Något gick fel: {p0}",
+ "@s11ee4426b2": {
+  "x-mt": true
+ },
+ "sbf59e43c36": "Ingen internetanslutning. Kontrollera Wi-Fi eller mobildata och försök igen.",
+ "@sbf59e43c36": {
+  "x-mt": true
+ },
+ "s9ba7e7a8e6": "Fel e-post eller lösenord. Kontrollera dem eller tryck på \"Glöm lösenord\".",
+ "@s9ba7e7a8e6": {
+  "x-mt": true
+ },
+ "se899b438b5": "E-postmeddelandet bekräftas ännu inte. Leta efter koden i din e-post.",
+ "@se899b438b5": {
+  "x-mt": true
+ },
+ "s3fb651ebf3": "Detta e-postmeddelande har redan ett konto. Logga in i stället.",
+ "@s3fb651ebf3": {
+  "x-mt": true
+ },
+ "s1eddf46047": "Lösenordet måste vara minst 8 tecken.",
+ "@s1eddf46047": {
+  "x-mt": true
+ },
+ "sca19a10c02": "Det ser inte ut som en e-postadress.",
+ "@sca19a10c02": {
+  "x-mt": true
+ },
+ "s736463f0d2": "Koden är fel eller löpt ut. Kontrollera den eller be om en ny.",
+ "@s736463f0d2": {
+  "x-mt": true
+ },
+ "s4800010fa4": "För många försök. Vänta en minut och försök igen.",
+ "@s4800010fa4": {
+  "x-mt": true
+ },
+ "sf1a6e42ab0": "Din inloggning utgår. Vänligen logga in igen.",
+ "@sf1a6e42ab0": {
+  "x-mt": true
+ },
+ "sf597621fdd": "En annan enhet ändrade installationen samtidigt. Försök igen.",
+ "@sf597621fdd": {
+  "x-mt": true
+ },
+ "se16eef219e": "Kontotjänsten svarade inte ordentligt. Försök igen inom kort.",
+ "@se16eef219e": {
+  "x-mt": true
+ },
+ "s2ab0ff38c1": "Ditt konto har redan en inställning",
+ "@s2ab0ff38c1": {
+  "x-mt": true
+ },
+ "s3ce644ca86": "Spara den här enhetens inställning till ditt konto?",
+ "@s3ce644ca86": {
+  "x-mt": true
+ },
+ "s43d6286f35": "Denna enhet har sina egna enheter och plattor också. Vad ska vi göra?",
+ "@s43d6286f35": {
+  "x-mt": true
+ },
+ "sd8a380a86d": "Då samma hem, enheter och plattor visas på varje enhet som är inloggad på detta konto.",
+ "@sd8a380a86d": {
+  "x-mt": true
+ },
+ "sec25d10ff5": "Avboka och signera ut",
+ "@sec25d10ff5": {
+  "x-mt": true
+ },
+ "sb7a13da58b": "Använd kontots installation",
+ "@sb7a13da58b": {
+  "x-mt": true
+ },
+ "sf498dceefb": "Kombinera båda (rekommenderas)",
+ "@sf498dceefb": {
+  "x-mt": true
+ },
+ "s9542718c6f": "Spara till konto",
+ "@s9542718c6f": {
+  "x-mt": true
+ },
+ "sa711c4833e": "Skriv din e-postadress.",
+ "@sa711c4833e": {
+  "x-mt": true
+ },
+ "s933dc9caef": "Minst 8 tecken.",
+ "@s933dc9caef": {
+  "x-mt": true
+ },
+ "sb3cec3f199": "Molaplan-konto",
+ "sb24f053a48": "E-post",
+ "s976a9f2980": "Lösenord",
+ "sc0f9642fb2": "Visa lösenord",
+ "s4d212254bc": "Kod från e-post",
+ "@s4d212254bc": {
+  "x-mt": true
+ },
+ "s3b86a618be": "Koden anländer om några minuter. Kontrollera spam mappen också.",
+ "@s3b86a618be": {
+  "x-mt": true
+ },
+ "sb35c5ba0fc": "Med ett konto är dina hem, enheter och plattor samma på alla dina enheter - PC, surfplatta och telefon. Hemanslutningen flyttar till en ny enhet utan en QR-kod.\n\nKontot är valfritt: utan en Molaplan fungerar som tidigare och installationen stannar på den här enheten.",
+ "@sb35c5ba0fc": {
+  "x-mt": true
+ },
+ "se697487621": "Logga in",
+ "sec4d25a98e": "Jag har inget konto – skapa ett",
+ "@sec4d25a98e": {
+  "x-mt": true
+ },
+ "s860d0269e0": "Logga in med en kod som skickas via e-post",
+ "@s860d0269e0": {
+  "x-mt": true
+ },
+ "s755639049e": "Glömt lösenord",
+ "s4a1671a2cc": "Skapa ett Molaplan-konto",
+ "@s4a1671a2cc": {
+  "x-mt": true
+ },
+ "s75c960f1e5": "Välj ett lösenord (8+ tecken)",
+ "@s75c960f1e5": {
+  "x-mt": true
+ },
+ "sea446a95e5": "Lösenordet skyddar också dina enhetslösenord och molnnycklar: de krypteras på den här enheten innan du sparar. Håll det säkert.",
+ "@sea446a95e5": {
+  "x-mt": true
+ },
+ "s4508b6c2e0": "Skapa konto",
+ "s0ca1377846": "Vi skickade en kod till {p0}. Skriv den nedan.",
+ "@s0ca1377846": {
+  "x-mt": true
+ },
+ "s07e981c940": "Jag har redan ett konto – logga in",
+ "@s07e981c940": {
+  "x-mt": true
+ },
+ "s2e793f899b": "Bekräfta din e-post",
+ "@s2e793f899b": {
+  "x-mt": true
+ },
+ "s87b6699e12": "Bekräfta",
+ "s824a7408ab": "En ny kod skickades.",
+ "@s824a7408ab": {
+  "x-mt": true
+ },
+ "s317ad443fb": "Ingen kod – skicka en ny",
+ "@s317ad443fb": {
+  "x-mt": true
+ },
+ "scf7e14661c": "Tillbaka",
+ "s22c960ff4f": "Logga in med en kod",
+ "@s22c960ff4f": {
+  "x-mt": true
+ },
+ "s7d29d1dfbd": "Vi mailar dig en kod. Inget lösenord som behövs för att logga in.",
+ "@s7d29d1dfbd": {
+  "x-mt": true
+ },
+ "sc350da6f19": "Skicka kod",
+ "@sc350da6f19": {
+  "x-mt": true
+ },
+ "s23cda12342": "Kod som skickas till {p0}.",
+ "@s23cda12342": {
+  "x-mt": true
+ },
+ "s14d85b9e32": "Logga in",
+ "saa1e3d1f13": "Skicka en ny kod",
+ "@saa1e3d1f13": {
+  "x-mt": true
+ },
+ "s8c48f847f6": "Återställ lösenord",
+ "@s8c48f847f6": {
+  "x-mt": true
+ },
+ "safd591d9b6": "Vi e-postar dig en kod, sedan väljer du ett nytt lösenord.",
+ "@safd591d9b6": {
+  "x-mt": true
+ },
+ "s6807ac704e": "Nytt lösenord (8+ tecken)",
+ "@s6807ac704e": {
+  "x-mt": true
+ },
+ "sa9b5a0b2df": "Ändra lösenord och logga in",
+ "@sa9b5a0b2df": {
+  "x-mt": true
+ },
+ "se10ce6962a": "Synkar…",
+ "s94d5ea139c": "Upp till datum på alla dina enheter",
+ "@s94d5ea139c": {
+  "x-mt": true
+ },
+ "sc6f1932436": "Offline – förändringar synkroniseras när du är online",
+ "@sc6f1932436": {
+  "x-mt": true
+ },
+ "s16ab688a9b": "Sync misslyckades - kommer att gå tillbaka",
+ "@s16ab688a9b": {
+  "x-mt": true
+ },
+ "s97d4aa9c1a": "Inte synkroniserad ännu",
+ "@s97d4aa9c1a": {
+  "x-mt": true
+ },
+ "s40ea946050": "Inloggad",
+ "s456721b668": "Synka nu",
+ "sa9df24980f": "Enhet lösenord och molnnycklar är låsta. Skriv ditt konto lösenord för att öppna dem på den här enheten.",
+ "@sa9df24980f": {
+  "x-mt": true
+ },
+ "sd1723cc065": "Konto lösenord",
+ "@sd1723cc065": {
+  "x-mt": true
+ },
+ "s9e9a059c2f": "Lås upp",
+ "@s9e9a059c2f": {
+  "x-mt": true
+ },
+ "s8b2b8fdc77": "Jag glömde det - starta lösenorden över",
+ "@s8b2b8fdc77": {
+  "x-mt": true
+ },
+ "s5ec8009dfd": "Sparas till kontot: hem, enheter, kakel och deras beställning och hemanslutningen. Enhetslösenord, molnnycklar och hemanslutningsnycklar krypteras på den här enheten med ditt kontolösenord innan du laddar upp - servern kan inte läsa dem.",
+ "@s5ec8009dfd": {
+  "x-mt": true
+ },
+ "s2ea6f9de12": "Byt lösenord",
+ "s7ebd89c416": "Logga ut?",
+ "@s7ebd89c416": {
+  "x-mt": true
+ },
+ "s6c6165d662": "Hem och plattor stannar på den här enheten, men ändrar inte längre dina andra enheter.",
+ "@s6c6165d662": {
+  "x-mt": true
+ },
+ "s643325053b": "Logga ut",
+ "sfd6f965e64": "Radera konto",
+ "s37bf90cffe": "Permanent raderar kontot och allt som lagras på servern. Den här enheten håller sin egen inställning.",
+ "@s37bf90cffe": {
+  "x-mt": true
+ },
+ "sc523d0f28e": "Radera konto",
+ "s84fda3e17f": "Avbryt",
+ "s162a85c6ef": "Spara",
+ "s02c3403918": "Välj ett nytt lösenord.",
+ "@s02c3403918": {
+  "x-mt": true
+ },
+ "s04ab058029": "Lösenord ändras.",
+ "@s04ab058029": {
+  "x-mt": true
+ },
+ "s7c23534562": "Starta lösenord över",
+ "@s7c23534562": {
+  "x-mt": true
+ },
+ "s5ea3703a0a": "Saved enhet lösenord och molnnycklar är förlorade och måste skrivas igen. Hem och kakel stannar. Din inloggningslösenord ändras till denna nya.",
+ "@s5ea3703a0a": {
+  "x-mt": true
+ },
+ "s321912ef77": "Ta bort kontot permanent?",
+ "@s321912ef77": {
+  "x-mt": true
+ },
+ "s3b0ea9bbc7": "Kontot {p0} och allt som lagras på servern raderas. Detta kan inte ångras.\n\nDenna enhet fortsätter att fungera utan ett konto.",
+ "@s3b0ea9bbc7": {
+  "x-mt": true
+ },
+ "s139d2075b8": "Kontot raderat.",
+ "@s139d2075b8": {
+  "x-mt": true
+ },
+ "sfb4df77773": "Ge knappen ett namn.",
+ "@sfb4df77773": {
+  "x-mt": true
+ },
+ "s986eb41068": "Använd Pronto: lägg till dump: pronto till remote_receiver.",
+ "@s986eb41068": {
+  "x-mt": true
+ },
+ "s0d353281af": "Knapp \"{p0}\" tillade.",
+ "@s0d353281af": {
+  "x-mt": true
+ },
+ "s8e4e78e067": "Lär in fjärrkontroll",
+ "s2acab0eccd": "Klar",
+ "s608a56ad4b": "Spara fjärrknappar till Molaplan, t.ex. \"Turbo\". Blastaren behöver en IR-mottagare.",
+ "@s608a56ad4b": {
+  "x-mt": true
+ },
+ "sa1aed8855e": "IR fjärrkontroll",
+ "@sa1aed8855e": {
+  "x-mt": true
+ },
+ "sded7fb8520": "RF433 fjärrkontroll",
+ "@sded7fb8520": {
+  "x-mt": true
+ },
+ "sc8e312a953": "RF433 = radiofjärrkontroller (sockor, markiser, garageportar, fans). IR = infraröd (värmepumpar, TV-apparater).",
+ "@sc8e312a953": {
+  "x-mt": true
+ },
+ "s63c57060b6": "Tryck på \"Startlyssning\".",
+ "@s63c57060b6": {
+  "x-mt": true
+ },
+ "s439f6f3869": "Placera fjärrkontrollen på blastaren (under 1 m) och tryck på knappen en gång.",
+ "@s439f6f3869": {
+  "x-mt": true
+ },
+ "sd8667596c3": "Namn och tryck på \"Spara som knapp\".",
+ "@sd8667596c3": {
+  "x-mt": true
+ },
+ "sd5f1a45865": "IR är envägs: värmepumpen bekräftar inte. Molaplan visar bara vad den skickade. Learning fungerar på hemmanätverket.",
+ "@sd5f1a45865": {
+  "x-mt": true
+ },
+ "s628dc92a8d": "Lyssna... tryck på fjärrknappen",
+ "@s628dc92a8d": {
+  "x-mt": true
+ },
+ "s1313eb829d": "Börja lyssna",
+ "s619fdf8b5c": "Koden mottagen",
+ "s6264a40ec6": "Knappens namn",
+ "sc630994fba": "Visas som kakel titel.",
+ "@sc630994fba": {
+  "x-mt": true
+ },
+ "s09feac6b28": "ESPHome kan inte ta nya koder över nätverket. Lägg till detta på enheten YAML, installera den och spara sedan knappen:",
+ "@s09feac6b28": {
+  "x-mt": true
+ },
+ "sd6f41faa1d": "Kopiera",
+ "s0a7c7a151a": "Spara som knapp",
+ "s29adc71f1c": "CN105-kontakt på inomhusplanen. ESPHome: esphome-mitsubishiheatpump.",
+ "@s29adc71f1c": {
+  "x-mt": true
+ },
+ "s1d17c9fc6e": "S21 (de flesta väggenheter) eller X50A. Faikin pluggar rakt in; ESPHome: esphome-daikin-s21.",
+ "@s1d17c9fc6e": {
+  "x-mt": true
+ },
+ "s07767f6a03": "CN-CNT-kontakt (där Panasonics WLAN adapter går) ESPHome: esphome-panasonic-ac.",
+ "@s07767f6a03": {
+  "x-mt": true
+ },
+ "s659b742754": "Toshiba inomhus serviceport. ESPHome: esphome-toshiba_ac.",
+ "@s659b742754": {
+  "x-mt": true
+ },
+ "s7c3bf9542b": "Skriv enheten IP.",
+ "@s7c3bf9542b": {
+  "x-mt": true
+ },
+ "sdfa6aedae8": "\"{p0}\" tillade.",
+ "@sdfa6aedae8": {
+  "x-mt": true
+ },
+ "sbd2f94e7a4": "Värmepump (serviceport/ESPHome)",
+ "@sbd2f94e7a4": {
+  "x-mt": true
+ },
+ "s49b479c566": "Bästa sättet: en liten ESP32 på inomhusenhetstjänstporten. Till skillnad från IR är det tvåvägs - verkligt tillstånd och rumstemperatur.",
+ "@s49b479c566": {
+  "x-mt": true
+ },
+ "sc95a59f7c6": "Säkerhet: Stäng värmepumpen på huvudet innan du öppnar inomhusenheten. Det kan påverka garantin.",
+ "@sc95a59f7c6": {
+  "x-mt": true
+ },
+ "s7b7121b71e": "Port by Brand",
+ "@s7b7121b71e": {
+  "x-mt": true
+ },
+ "s67c1a8a6a3": "Steg",
+ "@s67c1a8a6a3": {
+  "x-mt": true
+ },
+ "s2f9c5f3130": "Få en ESP32-kontroll och kabel.",
+ "@s2f9c5f3130": {
+  "x-mt": true
+ },
+ "s2675e49423": "Flash ESPHome per projektguide. Inkludera \"web_server:\" - Molaplan använder den.",
+ "@s2675e49423": {
+  "x-mt": true
+ },
+ "scd70d27319": "Anslut den med strömmen av.",
+ "@scd70d27319": {
+  "x-mt": true
+ },
+ "s56b0cb63ea": "Skriv dess IP nedan och tryck på \"Hitta värmepumpar\".",
+ "@s56b0cb63ea": {
+  "x-mt": true
+ },
+ "sdd1cd7bdd5": "ESPHome controller IP",
+ "@sdd1cd7bdd5": {
+  "x-mt": true
+ },
+ "sa1e21d236a": "Från routerns enhetslista eller ESPHome dashboard.",
+ "@sa1e21d236a": {
+  "x-mt": true
+ },
+ "s1bef32afe0": "Hitta värmepumpar",
+ "@s1bef32afe0": {
+  "x-mt": true
+ },
+ "s9aa9bc9679": "Enhet svarade men har ingen klimatenhet.",
+ "@s9aa9bc9679": {
+  "x-mt": true
+ },
+ "s5a40f12b6a": "Lägg till",
+ "s306729fe62": "Inga priser",
+ "@s306729fe62": {
+  "x-mt": true
+ },
+ "s29fd8d5b5e": "Nu",
+ "s723c887da6": "Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min",
+ "@s723c887da6": {
+  "x-mt": true
+ },
+ "scaaff6345d": "max max max max max",
+ "@scaaff6345d": {
+  "x-mt": true
+ },
+ "s65982a11bc": "Inkl. imorgon",
+ "@s65982a11bc": {
+  "x-mt": true
+ },
+ "se79acaf837": "imorgon efter kl. 14.00",
+ "@se79acaf837": {
+  "x-mt": true
+ },
+ "s55d52c5ae1": "Denna enhet är inte på Wi-Fi",
+ "@s55d52c5ae1": {
+  "x-mt": true
+ },
+ "s9a4dece965": "Anslut den här enheten till ditt hem Wi-Fi (en {p0} använder). Eller, om du är borta, ställa in hembron så att sökningen körs på en enhet hemma.",
+ "@s9a4dece965": {
+  "x-mt": true
+ },
+ "s3972820cd6": "Kunde inte nå enheten",
+ "@s3972820cd6": {
+  "x-mt": true
+ },
+ "s0f480abb4a": "Kunde inte nå enheten på {p0}",
+ "@s0f480abb4a": {
+  "x-mt": true
+ },
+ "sa82143ee02": "Kontrollera att {p0} drivs.\nDen här enheten (eller hemmabron) måste vara på samma Wi-Fi.\nKontrollera adressen - den kan ändras. Tryck på \"Tack\" och sök igen.",
+ "@sa82143ee02": {
+  "x-mt": true
+ },
+ "sd4d7ad1bab": "En annan enhet svarade",
+ "@sd4d7ad1bab": {
+  "x-mt": true
+ },
+ "s5b7d02a301": "Enheten på den adressen är inte {p0}. Kontrollera adressen.",
+ "@s5b7d02a301": {
+  "x-mt": true
+ },
+ "sdac5622fa8": "Enheten begär ett lösenord",
+ "@sdac5622fa8": {
+  "x-mt": true
+ },
+ "sbf9ee8aaec": "Ett lösenord är inställt på enheten. Skriv det nedan och tryck på \"Konnect\".",
+ "@sbf9ee8aaec": {
+  "x-mt": true
+ },
+ "s83f57c7c24": "Fel lösenord",
+ "s32e85a0ba2": "Kontrollera lösenordet (fallet frågor). Du kan ändra det i enhetsappen.",
+ "@s32e85a0ba2": {
+  "x-mt": true
+ },
+ "sb1d36bfdd3": "Knappen trycktes inte i tid",
+ "@sb1d36bfdd3": {
+  "x-mt": true
+ },
+ "sc994f6ec6e": "Tryck på \"Försök igen\" och tryck sedan på knappen direkt.",
+ "@sc994f6ec6e": {
+  "x-mt": true
+ },
+ "s663202243e": "Inget att kontrollera hittades",
+ "@s663202243e": {
+  "x-mt": true
+ },
+ "sb03997d94b": "Enheten svarade men har inga växlar eller lampor. För molnet, skriv enhets-ID.",
+ "@sb03997d94b": {
+  "x-mt": true
+ },
+ "s869571042f": "Cloud key eller server som inte accepterats",
+ "@s869571042f": {
+  "x-mt": true
+ },
+ "sab1763c592": "Kopiera nyckeln och servern igen från Shelly-appen (användarinställningarna → auktoriseringsmolnnyckel).",
+ "@sab1763c592": {
+  "x-mt": true
+ },
+ "s855ffbfd24": "Kunde inte nå molnet",
+ "@s855ffbfd24": {
+  "x-mt": true
+ },
+ "s739d569a9c": "Kontrollera internetanslutningen.",
+ "@s739d569a9c": {
+  "x-mt": true
+ },
+ "sc96a3502b5": "För många förfrågningar",
+ "@sc96a3502b5": {
+  "x-mt": true
+ },
+ "sed917dc2a2": "Molnet begränsar begäran. Vänta ett ögonblick.",
+ "@sed917dc2a2": {
+  "x-mt": true
+ },
+ "s516dbdd784": "Hembron är från date",
+ "@s516dbdd784": {
+  "x-mt": true
+ },
+ "s70089507bf": "Uppdatera Molaplan på bron (Inställningar → Kontrollera för uppdateringar).",
+ "@s70089507bf": {
+  "x-mt": true
+ },
+ "scc1918f2dc": "Kontrollera att bron hemma är på, Molaplan är öppen och det har internet.",
+ "@scc1918f2dc": {
+  "x-mt": true
+ },
+ "sce0949d6fc": "Försök igen. Om det fortsätter att hända, starta om enheten.",
+ "@sce0949d6fc": {
+  "x-mt": true
+ },
+ "sce6d01c270": "Skriv adressen först",
+ "@sce6d01c270": {
+  "x-mt": true
+ },
+ "s65bbf3cab4": "Kontrollera adressen",
+ "sb711cc1ce2": "{p0} är inte ett hemnätverk adress. De börjar vanligtvis med 192.168. - kontrollera det igen i {p1} app.",
+ "@sb711cc1ce2": {
+  "x-mt": true
+ },
+ "se60794c266": "menade du {p0}?",
+ "@se60794c266": {
+  "x-mt": true
+ },
+ "s264fda2dee": "Jag fixar det",
+ "@s264fda2dee": {
+  "x-mt": true
+ },
+ "s0a6098ac78": "Prova ändå",
+ "@s0a6098ac78": {
+  "x-mt": true
+ },
+ "sc1039f5cf6": "Använd {p0}",
+ "@sc1039f5cf6": {
+  "x-mt": true
+ },
+ "s20f777bfef": "Adressen finns på ett annat nätverk",
+ "@s20f777bfef": {
+  "x-mt": true
+ },
+ "sbb1730fa00": "Adress {p0} är inte på samma nätverk som den här enheten ({p1}.x). Vanligtvis är den här enheten på ett annat Wi-Fi än {p2}.\n\nGå med i samma Wi-Fi, eller ställa in hembron.",
+ "@sbb1730fa00": {
+  "x-mt": true
+ },
+ "s43370d968c": "Fyll i första",
+ "@s43370d968c": {
+  "x-mt": true
+ },
+ "s915c9a0db3": "Välj minst en",
+ "@s915c9a0db3": {
+  "x-mt": true
+ },
+ "sb160156a36": "Lägg till: {p0}",
+ "@sb160156a36": {
+  "x-mt": true
+ },
+ "s6c3e76828b": "Nästa",
+ "s43d448a950": "Lägg till i hemvyn",
+ "sd890121a57": "Show home view",
+ "@sd890121a57": {
+  "x-mt": true
+ },
+ "sb1717cc67c": "A) Utan en hembro",
+ "@sb1717cc67c": {
+  "x-mt": true
+ },
+ "s2082568a23": "Använd Shelly Cloud (ingen bro)",
+ "@s2082568a23": {
+  "x-mt": true
+ },
+ "s5080d486b8": "Bäst om ingen enhet alltid stannar hemma - t.ex. din surfplatta reser med dig. Kontroll går via Shellys eget moln. Du behöver en nyckel från Shelly-appen (vi visar var).",
+ "@s5080d486b8": {
+  "x-mt": true
+ },
+ "s82985d5078": "B) genom en hembro",
+ "@s82985d5078": {
+  "x-mt": true
+ },
+ "s78aec2034d": "Hur kommer du att kontrollera ditt hem när du är borta?",
+ "@s78aec2034d": {
+  "x-mt": true
+ },
+ "s03b3c3b3c8": "En hembro är en enhet som ALLTID stannar hemma, slås på och på samma Wi-Fi som {p0} - t.ex. en gammal telefon, surfplatta eller PC. Dina andra enheter når den över internet (krypterad, ingen port vidarebefordran). En enhet som du bär runt är inte en bra bro.",
+ "@s03b3c3b3c8": {
+  "x-mt": true
+ },
+ "s688d1308d7": "När du är inloggad når hemanslutningen alla dina enheter automatiskt.",
+ "@s688d1308d7": {
+  "x-mt": true
+ },
+ "s96feb2f60a": "Den här enheten stannar alltid hemma – gör den till bron",
+ "@s96feb2f60a": {
+  "x-mt": true
+ },
+ "sb2a33a1ec4": "Håll den laddning med Molaplan öppen. Andra enheter ansluter med en QR-kod eller genom att logga in på samma konto.",
+ "@sb2a33a1ec4": {
+  "x-mt": true
+ },
+ "s1b9f4ae6d5": "Bron är på en annan enhet - anslut till den",
+ "@s1b9f4ae6d5": {
+  "x-mt": true
+ },
+ "s13d739b710": "Skanna bron QR-koden. Enheter hittas sedan genom bron, även när du är borta.",
+ "@s13d739b710": {
+  "x-mt": true
+ },
+ "sda6a1e50e9": "Hoppa för nu - lägg till i hemnätverket (fjärråtkomst kan ställas in senare)",
+ "@sda6a1e50e9": {
+  "x-mt": true
+ },
+ "s6f326a48f9": "Hitta: {p0}",
+ "@s6f326a48f9": {
+  "x-mt": true
+ },
+ "sc788897ba0": "Söker genom hembron, så detta fungerar också hemifrån.",
+ "@sc788897ba0": {
+  "x-mt": true
+ },
+ "s0f7361f40c": "Titta på ditt hem Wi-Fi. Tryck på din.",
+ "@s0f7361f40c": {
+  "x-mt": true
+ },
+ "sda2b4c9721": "Öppna Wi-Fi inställningar",
+ "@sda2b4c9721": {
+  "x-mt": true
+ },
+ "sc93d9cc14b": "Ansluten – sök igen",
+ "@sc93d9cc14b": {
+  "x-mt": true
+ },
+ "s13f0596b74": "Söker... (ca 5 sekunder)",
+ "@s13f0596b74": {
+  "x-mt": true
+ },
+ "saae59a3865": "via home bridge",
+ "@saae59a3865": {
+  "x-mt": true
+ },
+ "s8eabd27f68": "Ingenting hittas automatiskt. Kontrollera att {p0} är på och på samma Wi-Fi. Du kan också skriva adressen nedan.",
+ "@s8eabd27f68": {
+  "x-mt": true
+ },
+ "s2fc39b0bd7": "Sök igen",
+ "sa616ab181e": "Skriv adressen",
+ "@sa616ab181e": {
+  "x-mt": true
+ },
+ "sb439b8abc3": "Eller skriv adressen",
+ "@sb439b8abc3": {
+  "x-mt": true
+ },
+ "s178e07f06b": "IP-adress",
+ "scf487a3699": "Var hittar jag det?",
+ "@scf487a3699": {
+  "x-mt": true
+ },
+ "s9b9b0d01a2": " (valfritt)",
+ "s0a7134d0e3": "Tryck på knappen nu",
+ "s43118959d5": "{p0} vänster",
+ "@s43118959d5": {
+  "x-mt": true
+ },
+ "sba10f23f03": "Ansluter…",
+ "se4095d7d95": "Enhetens lösenord",
+ "sdbdf676485": "Anslut",
+ "s200542b930": "Försök igen",
+ "s8f610a3bb2": "Jag är hemifrån",
+ "@s8f610a3bb2": {
+  "x-mt": true
+ },
+ "sf77125583f": "Tekniska detaljer",
+ "s77ec7b376b": "Hittade: {p0}",
+ "@s77ec7b376b": {
+  "x-mt": true
+ },
+ "sac4debdb9c": "Välj vad som går på hemvyn och namnge dem.",
+ "@sac4debdb9c": {
+  "x-mt": true
+ },
+ "sb1924acbe7": "Namn",
+ "s86c3f92546": "Lägg också till ljusstyrka / kraft",
+ "@s86c3f92546": {
+  "x-mt": true
+ },
+ "s91571486e4": "Visa också kraft (W)",
+ "@s91571486e4": {
+  "x-mt": true
+ },
+ "sf86536db42": "Gjort! {p0} kakel tillagda",
+ "@sf86536db42": {
+  "x-mt": true
+ },
+ "sbfaea66122": "Brickorna arbetar hemma och bort genom molnet - inget annat att göra.",
+ "@sbfaea66122": {
+  "x-mt": true
+ },
+ "se7c68b3bed": "Brickorna arbetar hemma och bort genom hembron - inget annat att göra.",
+ "@se7c68b3bed": {
+  "x-mt": true
+ },
+ "sbc8469cce1": "Brickorna fungerar på ditt hemnätverk. För att styra från var som helst, ställa in hembron.",
+ "@sbc8469cce1": {
+  "x-mt": true
+ },
+ "s856a422504": "Ställ in fjärråtkomst",
+ "@s856a422504": {
+  "x-mt": true
+ },
+ "sd9923cda70": "Inte hemma? Sväng på fjärråtkomst",
+ "@sd9923cda70": {
+  "x-mt": true
+ },
+ "s876c7230a2": "Lägg till enhet",
+ "s1e593aeca2": "Stäng",
+ "s3d00dee1a9": "Använd",
+ "sa252f06bff": "Välj ditt enhetsmärke. Molaplan hittar det och skapar plattorna.",
+ "@sa252f06bff": {
+  "x-mt": true
+ },
+ "s5b3b5e5a24": "Sök varumärke eller enhet (t.ex. Shelly, Hue, IKEA)",
+ "@s5b3b5e5a24": {
+  "x-mt": true
+ },
+ "sa427be10c9": "Hitta och ansluta automatiskt",
+ "@sa427be10c9": {
+  "x-mt": true
+ },
+ "s6f4cc0844f": "Kommande – hur man använder den idag",
+ "@s6f4cc0844f": {
+  "x-mt": true
+ },
+ "s846ee3bc67": "Andra enheter",
+ "s2a9b6fedd9": "Kan inte hitta ditt varumärke?",
+ "@s2a9b6fedd9": {
+  "x-mt": true
+ },
+ "scfc7244d06": "Husqvarna, Zigbee, Tuya, värmepumpar... se hur man använder dem idag.",
+ "@scfc7244d06": {
+  "x-mt": true
+ },
+ "sf7b77783e5": "Annan (manuell inställning)",
+ "sc168355ee6": "Annan enhet (avancerat)",
+ "s3022f72ece": "Alla anslutningstyper.",
+ "@s3022f72ece": {
+  "x-mt": true
+ },
+ "s2d1d488d6d": "för tekniska användare.",
+ "@s2d1d488d6d": {
+  "x-mt": true
+ },
+ "s6f1c11270c": "Innehåller exempelinställningar",
+ "@s6f1c11270c": {
+  "x-mt": true
+ },
+ "s8f4c0baf1a": "Inga enheter hittades automatiskt. Skriv adressen själv - hitta den i routern eller enhetsappen.",
+ "@s8f4c0baf1a": {
+  "x-mt": true
+ },
+ "s104238f11e": "Hittade enheter – välj din:",
+ "@s104238f11e": {
+  "x-mt": true
+ },
+ "sd5f9dce947": "Sök är inte tillgängligt på detta nätverk.",
+ "@sd5f9dce947": {
+  "x-mt": true
+ },
+ "s26abc57d91": "Lär in fjärrkontrollens knappar?",
+ "sc709f38633": "Grundläggande kontroll fungerar redan. Du kan också lära andra fjärrknappar, t.ex. \"Turbo\".",
+ "@sc709f38633": {
+  "x-mt": true
+ },
+ "s6cac83dd5e": "Inte nu",
+ "s97ea2eeb11": "Lär in nu",
+ "s09cfb7b2a1": "Enheten tillagd",
+ "sda9574390f": "Enhet och {p0} kakel tillagda",
+ "@sda9574390f": {
+  "x-mt": true
+ },
+ "sd51ee1ec8d": "Förinställda inställningar är exempel. Kontrollera dem mot din enhetsmanual innan du förlitar dig på dem.",
+ "@sd51ee1ec8d": {
+  "x-mt": true
+ },
+ "s566585dc66": "IR är envägs: värmepumpen bekräftar inte. Molaplan skickar alltid hela staten och visar vad den skickade. Lär dig andra fjärrknappar senare: Anslutningar → blaster → \"Lär fjärrkontroll\".",
+ "@s566585dc66": {
+  "x-mt": true
+ },
+ "s0dd21e026c": "Guide och automatisk sökning",
+ "@s0dd21e026c": {
+  "x-mt": true
+ },
+ "s695a011cc1": "Söker…",
+ "s47d409fddd": "Sök nätverk",
+ "@s47d409fddd": {
+  "x-mt": true
+ },
+ "s7196b72140": "Inga infödda Modbus TCP - en RS485 → TCP-gateway behövs.",
+ "@s7196b72140": {
+  "x-mt": true
+ },
+ "s2e8ba44677": "Källa",
+ "@s2e8ba44677": {
+  "x-mt": true
+ },
+ "sceb8e47d07": "Testa anslutningen",
+ "s02ce5f4a01": "Fungerar!",
+ "sb9e9e55164": "Dessa plattor kommer att skapas",
+ "@sb9e9e55164": {
+  "x-mt": true
+ },
+ "s1cb2891ef2": "Fyll i fälten märkta med * för att se plattorna.",
+ "@s1cb2891ef2": {
+  "x-mt": true
+ },
+ "s504861ee78": "Inga färdiga plattor - du kan lägga till dem senare med pennaknappen.",
+ "@s504861ee78": {
+  "x-mt": true
+ },
+ "s1094266d4c": "Visar ett värde",
+ "@s1094266d4c": {
+  "x-mt": true
+ },
+ "sf6ae3f3323": "Strömbrytare",
+ "s20dad69675": "Knapp",
+ "s0e9f94df05": "Reglage",
+ "s109b454866": "Kamera view",
+ "@s109b454866": {
+  "x-mt": true
+ },
+ "s37153e0e80": "Avancerade inställningar",
+ "s0ca55a9cae": "Andra enheter använder tekniska inställningar (HTTP, MQTT, Modbus...). Om ditt varumärke är listat, använd det istället.\n\nSlå på avancerade inställningar? Du kan stänga av dem i Inställningar.",
+ "@s0ca55a9cae": {
+  "x-mt": true
+ },
+ "s9630135746": "Slå på",
+ "s2ad22696ca": "Språk",
+ "s7efc5653d2": "Enhetens språk",
+ "s4529c1010a": "Välj en kameraanslutning",
+ "@s4529c1010a": {
+  "x-mt": true
+ },
+ "sc95fb5440b": "Stream slutade",
+ "@sc95fb5440b": {
+  "x-mt": true
+ },
+ "s6e700ae773": "Prisstyrning borttagen",
+ "s5aa3400a7a": "Prisstyrning sparad",
+ "s2f5410429b": "Regeln körs på den här enheten (hembro). Håll den hemma.",
+ "@s2f5410429b": {
+  "x-mt": true
+ },
+ "sb86a43361f": "Regeln körs på hemmabroen - din telefon kan vara avstängd.",
+ "@sb86a43361f": {
+  "x-mt": true
+ },
+ "s4e35ba5321": "Ingen hembro ännu. Regeln sparas men körs bara en gång en alltid-på tablett eller PC hemma är bron (Inställningar → Fjärråtkomst).",
+ "@s4e35ba5321": {
+  "x-mt": true
+ },
+ "s1a9e9bead3": "Priskontroll: {p0}",
+ "@s1a9e9bead3": {
+  "x-mt": true
+ },
+ "s6b609c3376": "När ska den vara på?",
+ "s93e5435cf4": "Ingen prisstyrning",
+ "s55e5c3a177": "Hur många timmar på",
+ "s52ef5e0b45": "Prisgräns",
+ "s993193d056": "Kommande på-tider",
+ "s2f7c00a89e": "Priser som inte är tillgängliga just nu.",
+ "@s2f7c00a89e": {
+  "x-mt": true
+ },
+ "s406e599999": "Inga tider under nästa dag (eller morgondagens priser är inte ute ännu).",
+ "@s406e599999": {
+  "x-mt": true
+ },
+ "s140acccb81": "I dag",
+ "s0de6e75a52": "I morgon",
+ "sf87d92faf4": "Prisområdet {p0}. Dag-ahead spot priser inkl. moms {p1} %. Lägg till \"Elektricitetspris\" enhet för att ändra område och avgifter.",
+ "@sf87d92faf4": {
+  "x-mt": true
+ },
+ "s2adc3a77ed": "Välj anslutningstyp",
+ "@s2adc3a77ed": {
+  "x-mt": true
+ },
+ "s78d94155f1": "Anslutningar",
+ "s776d8b06bf": "Ny anslutning",
+ "@s776d8b06bf": {
+  "x-mt": true
+ },
+ "sc6d89693a5": "Inga anslutningar ännu. Lägg till en enhet eller tjänst, t.ex. ventilationsenhet (Modbus), Home Assistant eller en kamera.",
+ "@sc6d89693a5": {
+  "x-mt": true
+ },
+ "s07c82cb0af": "Krävt fält",
+ "@s07c82cb0af": {
+  "x-mt": true
+ },
+ "sf702cf0ac6": "Radera anslutning?",
+ "@sf702cf0ac6": {
+  "x-mt": true
+ },
+ "s6b83de0ab9": "{p0} kakel använder denna anslutning och kommer att sluta fungera.",
+ "@s6b83de0ab9": {
+  "x-mt": true
+ },
+ "sccd1325381": "Anslutningen kommer att tas bort från den här enheten.",
+ "@sccd1325381": {
+  "x-mt": true
+ },
+ "sc1845eb440": "Radera",
+ "s837e0fc5e6": "IR är envägs: värmepumpen bekräftar inte kommandon. Tiles visar det sista skickade tillståndet.",
+ "@s837e0fc5e6": {
+  "x-mt": true
+ },
+ "s09737988fd": "Anslutningen fungerar!",
+ "s0a972aa85e": "Lösenord och tokens lagras i enhetens säkra lagring.",
+ "@s0a972aa85e": {
+  "x-mt": true
+ },
+ "s229f981388": "Home bridge på",
+ "@s229f981388": {
+  "x-mt": true
+ },
+ "sfc2dc8fc36": "Bridge: offline",
+ "@sfc2dc8fc36": {
+  "x-mt": true
+ },
+ "sdedbb30a67": "Hemma",
+ "s9d64d4c166": "Fjärr",
+ "s1f8cf57b2c": "Ingen anslutning",
+ "s678a751265": "Anslut den här enheten hem",
+ "@s678a751265": {
+  "x-mt": true
+ },
+ "sdae0305965": "Det finns en hembro (tablett eller PC) hemma redan. Skanna dess QR-kod eller skriv 6 siffror.",
+ "@sdae0305965": {
+  "x-mt": true
+ },
+ "s5f8284b98f": "Gör den här enheten hembron",
+ "@s5f8284b98f": {
+  "x-mt": true
+ },
+ "s6a95f7843b": "Den här enheten stannar hemma, alltid på (laddare + Wi-Fi) och passerar fjärrkommandon till dina enheter.",
+ "@s6a95f7843b": {
+  "x-mt": true
+ },
+ "s2c3ae5833b": "Andra sätt: VPN, Nabu Casa, moln MQTT",
+ "@s2c3ae5833b": {
+  "x-mt": true
+ },
+ "s807e3a32f3": "Steg-för-steg guider om du redan använder Tailscale, WireGuard, Home Assistant Cloud eller moln MQTT.",
+ "@s807e3a32f3": {
+  "x-mt": true
+ },
+ "sa3e78d5c4e": "Hembron svarar – fjärråtkomst fungerar.",
+ "@sa3e78d5c4e": {
+  "x-mt": true
+ },
+ "s370acd310d": "Fjärråtkomst",
+ "s0b57661c18": "Kontrollera ditt hem var som helst",
+ "@s0b57661c18": {
+  "x-mt": true
+ },
+ "sb43ef4094c": "Hemma pratar Molaplan med dina enheter direkt. På andra ställen krypteras det genom din hemmabro - ingen port vidarebefordran eller routerinställningar. Appen plockar rätt väg automatiskt.",
+ "@sb43ef4094c": {
+  "x-mt": true
+ },
+ "s075e5a4864": "Ansluten till hemmet",
+ "sa7679488fb": "Hemma = direkt. Fjärr = genom hembron. Ingen anslutning = varken svar.",
+ "@sa7679488fb": {
+  "x-mt": true
+ },
+ "s19cec9667e": "Test fjärråtkomst",
+ "@s19cec9667e": {
+  "x-mt": true
+ },
+ "s86ad95fa48": "Copy home dashboards",
+ "@s86ad95fa48": {
+  "x-mt": true
+ },
+ "sfaa5185b74": "Ta bort fjärråtkomst?",
+ "@sfaa5185b74": {
+  "x-mt": true
+ },
+ "sbc44ce6993": "Den här enheten kan sedan inte längre komma hem från utsidan. Du kan koppla ihop igen när som helst.",
+ "@sbc44ce6993": {
+  "x-mt": true
+ },
+ "s9593939a4c": "Ta bort",
+ "s3563cb1635": "Ta bort fjärråtkomst",
+ "@s3563cb1635": {
+  "x-mt": true
+ },
+ "s528c4f3a4c": "Den här enheten är hembron",
+ "@s528c4f3a4c": {
+  "x-mt": true
+ },
+ "se7b8d659b5": "Avancerat",
+ "sfd263f3e04": "Kamera uppdateras när fjärrkontrollen",
+ "@sfd263f3e04": {
+  "x-mt": true
+ },
+ "s99249ddf24": "Fjärrkameran visar en bild varje {p0} s (besparar data).",
+ "@s99249ddf24": {
+  "x-mt": true
+ },
+ "s451ea613dd": "Relay server",
+ "@s451ea613dd": {
+  "x-mt": true
+ },
+ "s72da730a42": "Fjärrservice: ansluten",
+ "@s72da730a42": {
+  "x-mt": true
+ },
+ "s421f161f5b": "Anslutning till fjärrtjänsten...",
+ "@s421f161f5b": {
+  "x-mt": true
+ },
+ "s88e2b1dad5": "Ingen anslutning till fjärrtjänsten – retrying automatiskt. Kontrollera internetanslutningen.",
+ "@s88e2b1dad5": {
+  "x-mt": true
+ },
+ "scc0cccf89d": "Av",
+ "sa1d085d92c": "Hembron har inga instrumentpaneler att kopiera.",
+ "@sa1d085d92c": {
+  "x-mt": true
+ },
+ "sa13ef6f8d9": "Copied: {p0} dashboards",
+ "@sa13ef6f8d9": {
+  "x-mt": true
+ },
+ "sab5e7202f5": "Ansluten till \"{p0}\"!",
+ "@sab5e7202f5": {
+  "x-mt": true
+ },
+ "s30f06b7fb0": "Du kan nu styra ditt hem från var som helst. Kopiera hembroens instrumentpaneler och enheter till den här enheten också?",
+ "@s30f06b7fb0": {
+  "x-mt": true
+ },
+ "s641263ce18": "Nej tack",
+ "sa7a6c0fc2d": "inte en Molaplan-kod",
+ "@sa7a6c0fc2d": {
+  "x-mt": true
+ },
+ "se2ecf1935a": "Anslut till hemmet",
+ "s410655fd47": "Hur att ansluta",
+ "@s410655fd47": {
+  "x-mt": true
+ },
+ "s3a141e0c32": "På hembron (tablett eller PC hemma) öppna Molaplan → Inställningar → Fjärråtkomst → Gör den här enheten hembroen.",
+ "@s3a141e0c32": {
+  "x-mt": true
+ },
+ "sc7c83b2f58": "Tryck på \"Pair a phone\" där. En QR-kod och 6 siffror visas.",
+ "@sc7c83b2f58": {
+  "x-mt": true
+ },
+ "s35284509d4": "Skanna QR-koden eller skriv siffrorna nedan.",
+ "@s35284509d4": {
+  "x-mt": true
+ },
+ "s66bb65d8e8": "Skanna QR-koden",
+ "@s66bb65d8e8": {
+  "x-mt": true
+ },
+ "se97cc157ef": "eller skriva koden",
+ "@se97cc157ef": {
+  "x-mt": true
+ },
+ "s643434044c": "När du använder koden trycker du på \"Acceptera\" på hemmabron också.",
+ "@s643434044c": {
+  "x-mt": true
+ },
+ "s9753766742": "Tryck på \"Acceptera\" på hembroskärmen...",
+ "@s9753766742": {
+  "x-mt": true
+ },
+ "s50e49dd1df": "Peka kameran på QR-koden",
+ "@s50e49dd1df": {
+  "x-mt": true
+ },
+ "s5d717bb2c5": "Kan inte använda kameran ({p0}). Tillåt kameraåtkomst eller skriv koden.",
+ "@s5d717bb2c5": {
+  "x-mt": true
+ },
+ "s7132345f20": "Enhet \"{p0}\" ansluten!",
+ "@s7132345f20": {
+  "x-mt": true
+ },
+ "sb38b582dab": "Hembrygga",
+ "se2e2af02ac": "Hembron är en enhet som stannar hemma, t.ex. en gammal surfplatta eller en dator. När du är borta, din telefons kommandon krypteras genom den till dina enheter.",
+ "@se2e2af02ac": {
+  "x-mt": true
+ },
+ "sd64f52490d": "Håll det på laddaren och på hemmet Wi-Fi.",
+ "@sd64f52490d": {
+  "x-mt": true
+ },
+ "sbb23f25581": "Håll Molaplan öppen. Skärmen stannar kvar medan bron är på.",
+ "@sbb23f25581": {
+  "x-mt": true
+ },
+ "sbfed096278": "Använd den här enheten som hemmabron",
+ "@sbfed096278": {
+  "x-mt": true
+ },
+ "s13995350ed": "Para ihop en telefon",
+ "s6a74454a98": "Paired enheter",
+ "@s6a74454a98": {
+  "x-mt": true
+ },
+ "s1e4fc2e7fe": "Ännu inte. Tryck på \"Pair a phone\".",
+ "@s1e4fc2e7fe": {
+  "x-mt": true
+ },
+ "s7ea55c5834": "Tillagd",
+ "sfd8d693d04": "Ta bort \"{p0}\"?",
+ "@sfd8d693d04": {
+  "x-mt": true
+ },
+ "s84572f642e": "Enheten kan sedan inte längre anslutas på distans. Det kan paras igen.",
+ "@s84572f642e": {
+  "x-mt": true
+ },
+ "sc58a7d7121": "Hemmets namn",
+ "s9715416100": "Skanna med telefonen",
+ "@s9715416100": {
+  "x-mt": true
+ },
+ "sf54c6d871c": "På telefonen: Molaplan → Inställningar → Fjärråtkomst → Anslut den här enheten hem",
+ "@sf54c6d871c": {
+  "x-mt": true
+ },
+ "sf7fa9632f3": "Giltigt för",
+ "@sf7fa9632f3": {
+  "x-mt": true
+ },
+ "s5378bb3f05": "Acceptera den här enheten?",
+ "@s5378bb3f05": {
+  "x-mt": true
+ },
+ "s1d8bb7b0a6": "\"{p0}\" vill ha fjärrkontroll av ditt hem. Acceptera endast om det är din egen eller en familjemedlems enhet som precis har angett koden.",
+ "@s1d8bb7b0a6": {
+  "x-mt": true
+ },
+ "sa04c218f82": "Avvisa",
+ "sdfaf8c242b": "Godkänn",
+ "s1cf33c1fbc": "Värde",
+ "s86029171be": "Av/på",
+ "s4ddce888df": "Knapp / genväg",
+ "s357fc9c3fe": "Slider / setpoint",
+ "@s357fc9c3fe": {
+  "x-mt": true
+ },
+ "seeb6c38c8e": "Kamera",
+ "s14da6beba5": "Visar en läsning, t.ex. temperatur.",
+ "@s14da6beba5": {
+  "x-mt": true
+ },
+ "se4b1d203df": "På/av, t.ex. ett ljus eller larm.",
+ "@se4b1d203df": {
+  "x-mt": true
+ },
+ "sc2197ab417": "En kran gör en eller många saker.",
+ "@sc2197ab417": {
+  "x-mt": true
+ },
+ "sd611704caf": "Justera ett värde, t.ex. temperatur.",
+ "@sd611704caf": {
+  "x-mt": true
+ },
+ "sacfc0c0b41": "Visar en kamerabild.",
+ "@sacfc0c0b41": {
+  "x-mt": true
+ },
+ "s76e7a995de": "Value read",
+ "@s76e7a995de": {
+  "x-mt": true
+ },
+ "sc5edd6d3d1": "Ny ruta",
+ "sa684fd0716": "Redigera ruta",
+ "s8a8673aafe": "Rubrik",
+ "scf37cbeda8": "Ikon",
+ "sa444aab286": "Automatisk",
+ "sfeab9bd26f": "Bredd",
+ "@sfeab9bd26f": {
+  "x-mt": true
+ },
+ "s58be670598": "Höjd",
+ "@s58be670598": {
+  "x-mt": true
+ },
+ "sea30815e6a": "Tekniska kakelinställningar visas när du slår på \"Avancerad\" i Inställningar.",
+ "@sea30815e6a": {
+  "x-mt": true
+ },
+ "s382afc832f": "Statlig källa",
+ "@s382afc832f": {
+  "x-mt": true
+ },
+ "s581aee3e96": "Valfritt: där det nuvarande tillståndet läses av.",
+ "@s581aee3e96": {
+  "x-mt": true
+ },
+ "se6b18b17d9": "omröstningsintervall (s, 0 = none)",
+ "@se6b18b17d9": {
+  "x-mt": true
+ },
+ "s01f2b1ee0c": "MQTT, Home Assistant och WebSocket uppdatering lever utan omröstning.",
+ "@s01f2b1ee0c": {
+  "x-mt": true
+ },
+ "s937448ecf5": "Testläsare",
+ "@s937448ecf5": {
+  "x-mt": true
+ },
+ "s5cbdea7f7e": "Display",
+ "@s5cbdea7f7e": {
+  "x-mt": true
+ },
+ "se6af4b33df": "Enhet",
+ "sd5498697da": "Decimaler",
+ "@sd5498697da": {
+  "x-mt": true
+ },
+ "s4f7007db78": "Värdenamn",
+ "@s4f7007db78": {
+  "x-mt": true
+ },
+ "s4aae179c52": "0=Off;1=Home;2=Away",
+ "s0c12fda7ca": "Toggle kommandon",
+ "@s0c12fda7ca": {
+  "x-mt": true
+ },
+ "s3a9d9e16ef": "\"På\" värden (komma separerade, tomma = auto)",
+ "@s3a9d9e16ef": {
+  "x-mt": true
+ },
+ "s1509c5a2a6": "På kommando",
+ "@s1509c5a2a6": {
+  "x-mt": true
+ },
+ "s2a1e131afd": "OFF kommando",
+ "@s2a1e131afd": {
+  "x-mt": true
+ },
+ "s0201de52c0": "'{''{'value'}''}' i kommandot ersätts av reglaget värde.",
+ "@s0201de52c0": {
+  "x-mt": true
+ },
+ "sc30c9a7e51": "Steg Steg",
+ "@sc30c9a7e51": {
+  "x-mt": true
+ },
+ "s4d6451a63a": "Ställ in kommando",
+ "@s4d6451a63a": {
+  "x-mt": true
+ },
+ "sa4082e1a79": "Kommandon (kör i ordning)",
+ "@sa4082e1a79": {
+  "x-mt": true
+ },
+ "s467488e572": "En genväg kan styra flera enheter i sekvens, med förseningar.",
+ "@s467488e572": {
+  "x-mt": true
+ },
+ "sad43973fb3": "Lägg till kommando",
+ "sdaef43c622": "Be om bekräftelse",
+ "@sdaef43c622": {
+  "x-mt": true
+ },
+ "s5210a5ad23": "Anslutning",
+ "s96705fc3df": "Kommandot skickat",
+ "sb41db1e809": "Försök försöka",
+ "@sb41db1e809": {
+  "x-mt": true
+ },
+ "s77d2309fd5": "Fördröjning före (ms)",
+ "@s77d2309fd5": {
+  "x-mt": true
+ },
+ "sc0f5a14d2b": "Färgtrösklar (värde ≥gräns → färg)",
+ "@sc0f5a14d2b": {
+  "x-mt": true
+ },
+ "scd65d31d4c": "Begränsning",
+ "@scd65d31d4c": {
+  "x-mt": true
+ },
+ "s30a2c0f460": "Lägg till tröskelvärde",
+ "@s30a2c0f460": {
+  "x-mt": true
+ },
+ "s4226eb046f": "Ångra",
+ "sd5cb601286": "Tailscale (enkel VPN)",
+ "@sd5cb601286": {
+  "x-mt": true
+ },
+ "s0aa851cfb4": "Gratis för personligt bruk. Din telefon och hem fungerar som ett nätverk - Molaplan arbetar med samma adresser som hemma.",
+ "@s0aa851cfb4": {
+  "x-mt": true
+ },
+ "s444ca5d58f": "Bra om du har en alltid-på PC, Raspberry Pi eller Home Assistant hemma.",
+ "@s444ca5d58f": {
+  "x-mt": true
+ },
+ "sec7b4d1d7a": "Skapa ett Tailscale-konto hos tailscale.com (Google, Microsoft eller Apple sign-in).",
+ "@sec7b4d1d7a": {
+  "x-mt": true
+ },
+ "s178c57446d": "Installera Tailscale på den alltid på enheten hemma. I Home Assistant: Inställningar → Add-ons → Tailscale.",
+ "@s178c57446d": {
+  "x-mt": true
+ },
+ "s4faf83aa13": "Slå på \"subnet router\" där och ange ditt hemnätverk, t.ex. 192.168.1.0/24. Sedan är alla dina hemenheter tillgängliga.",
+ "@s4faf83aa13": {
+  "x-mt": true
+ },
+ "s721719c0e1": "Godkänn rutten i Tailscale adminkonsolen (Machines → enhet → Redigera ruttinställningar).",
+ "@s721719c0e1": {
+  "x-mt": true
+ },
+ "s921f981bda": "Installera Tailscale-appen på din telefon och logga in med samma konto. Byt VPN på.",
+ "@s921f981bda": {
+  "x-mt": true
+ },
+ "s8ae7e7b2a4": "Molaplan använder samma adresser som hemma. Inget annat att ändra.",
+ "@s8ae7e7b2a4": {
+  "x-mt": true
+ },
+ "se92301ff0a": "https://tailscale.com/download",
+ "sf6270ae66c": "https://tailscale.com/kb/1019/subnets",
+ "s57f0b61334": "WireGuard (router VPN)",
+ "@s57f0b61334": {
+  "x-mt": true
+ },
+ "sb9bb49ab92": "Om din router stöder WireGuard (t.ex. ASUS, FRITZ!Box, UniFi, OpenWrt), ansluter din telefon till hemnätverket direkt.",
+ "@sb9bb49ab92": {
+  "x-mt": true
+ },
+ "s986d264604": "Bra om routern har WireGuard och din anslutning har en offentlig IP-adress.",
+ "@s986d264604": {
+  "x-mt": true
+ },
+ "sf24b16dc12": "Öppna routerns inställningar och leta efter \"VPN-server\" → \"WireGuard\".",
+ "@sf24b16dc12": {
+  "x-mt": true
+ },
+ "s1e5d1eb832": "Aktivera servern och lägg till en ny enhet (peer) för telefonen.",
+ "@s1e5d1eb832": {
+  "x-mt": true
+ },
+ "s8e0252a2b4": "Routern visar en QR-kod. Installera WireGuard-appen på telefonen och skanna den.",
+ "@s8e0252a2b4": {
+  "x-mt": true
+ },
+ "s4b3740b727": "Kontrollera att \"tillåtna IP-filer\" inkluderar hemnätverket (t.ex. 192.168.1.0/24).",
+ "@s4b3740b727": {
+  "x-mt": true
+ },
+ "sd2e8523b28": "Byt VPN på i telefon – Molaplan fungerar som hemma.",
+ "@sd2e8523b28": {
+  "x-mt": true
+ },
+ "saa17c5a456": "https://www.wireguard.com/install/",
+ "se5960424ea": "Många mobila bredband (4G/5G hem internet) anslutningar har ingen offentlig IP (CGNAT) och WireGuard sedan inte kan nås från utsidan. Använd Molaplan fjärråtkomst eller Tailscale istället.",
+ "@se5960424ea": {
+  "x-mt": true
+ },
+ "sab2dfe387b": "Home Assistant Cloud (Nabu Casa)",
+ "s2e0586b37e": "En betald månatlig prenumeration från tillverkarna av Home Assistant. ger en säker fjärradress till Home Assistant.",
+ "@s2e0586b37e": {
+  "x-mt": true
+ },
+ "s534e7ec95e": "Bra om dina enheter redan finns i Home Assistant.",
+ "@s534e7ec95e": {
+  "x-mt": true
+ },
+ "s0f7533967d": "In Home Assistant: Inställningar → Home Assistant Cloud → starta rättegången eller logga in.",
+ "@s0f7533967d": {
+  "x-mt": true
+ },
+ "s2e60dd8178": "Vrid \"fjärrkontroll\" på.",
+ "@s2e60dd8178": {
+  "x-mt": true
+ },
+ "s7a73024451": "Kopiera fjärradressen, som ser ut: https://abcd1234.ui.nabu.casa",
+ "@s7a73024451": {
+  "x-mt": true
+ },
+ "sd4873612f7": "I Molaplan: Anslutningar → Home Assistant → ändra adressen till fjärradressen. Token förblir densamma.",
+ "@sd4873612f7": {
+  "x-mt": true
+ },
+ "s15223b0e32": "Home Assistant plattor fungerar nu överallt.",
+ "@s15223b0e32": {
+  "x-mt": true
+ },
+ "s9b3201b1fa": "https://www.nabucasa.com/",
+ "s60e7067815": "Detta täcker endast enheter som styrs via Home Assistant. För andra (Modbus, kameror direkt) använder Molaplan fjärråtkomst eller en VPN.",
+ "@s60e7067815": {
+  "x-mt": true
+ },
+ "s8e0d0a2d4e": "Cloud MQTT (t.ex. HiveMQ Cloud)",
+ "@s8e0d0a2d4e": {
+  "x-mt": true
+ },
+ "sd0fff65292": "Enheter och Molaplan pratar genom samma molnserver. HiveMQ Cloud har en gratis nivå som är tillräckligt för hemmabruk.",
+ "@sd0fff65292": {
+  "x-mt": true
+ },
+ "s7350b9f98b": "Bra för MQTT-enheter: Tasmota, ESPHome, Shelly, Zigbee2MQTT, dina egna ESP-kort.",
+ "@s7350b9f98b": {
+  "x-mt": true
+ },
+ "s59b3c7d246": "Skapa ett gratis konto på console.hivemq.cloud och skapa ett gratis kluster (gratis / serverless).",
+ "@s59b3c7d246": {
+  "x-mt": true
+ },
+ "s04fe436d1e": "Under \"Access Management\" skapa ett användarnamn och lösenord.",
+ "@s04fe436d1e": {
+  "x-mt": true
+ },
+ "sdf0075eab5": "Kopiera serveradressen (t.ex. abcd.s1.eu.hivemq.cloud). Hamnen är 8883 med TLS på.",
+ "@sdf0075eab5": {
+  "x-mt": true
+ },
+ "s9e9be6fc33": "Sätt den här servern, användarnamn och lösenord i dina enheters MQTT-inställningar (TLS på).",
+ "@s9e9be6fc33": {
+  "x-mt": true
+ },
+ "s90f1cb151b": "I Molaplan: Anslutningar → MQTT → adress, port 8883, TLS på, användarnamn och lösenord. Done - fungerar överallt.",
+ "@s90f1cb151b": {
+  "x-mt": true
+ },
+ "s77bf29f2f5": "https://console.hivemq.cloud/",
+ "safd2cd2b7b": "Välj ett starkt lösenord: alla som vet att det kan styra dina enheter.",
+ "@safd2cd2b7b": {
+  "x-mt": true
+ },
+ "s9557c0ef28": "Fjärråtkomstguider",
+ "@s9557c0ef28": {
+  "x-mt": true
+ },
+ "sf4d7957b78": "Lättast: Molaplan fjärråtkomst",
+ "@sf4d7957b78": {
+  "x-mt": true
+ },
+ "s8032085166": "Inga konton, inga routerinställningar. Du behöver bara en tablett eller dator som stannar hemma.",
+ "@s8032085166": {
+  "x-mt": true
+ },
+ "sd9b48e01fc": "Andra sätt",
+ "@sd9b48e01fc": {
+  "x-mt": true
+ },
+ "sfe551fd431": "Enhetsguider",
+ "sa35e37b4b4": "Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Hittades automatiskt.",
+ "@sa35e37b4b4": {
+  "x-mt": true
+ },
+ "scb28b11e70": "Ny vy",
+ "s1f9799af4e": "t.ex. stuga",
+ "@s1f9799af4e": {
+  "x-mt": true
+ },
+ "s3a13f9d077": "Rename Dashboard",
+ "@s3a13f9d077": {
+  "x-mt": true
+ },
+ "sa5bf37213b": "Radera Dashboard?",
+ "@sa5bf37213b": {
+  "x-mt": true
+ },
+ "s10671afc00": "\"{p0}\" och dess {p1} kakel kommer att raderas.",
+ "@s10671afc00": {
+  "x-mt": true
+ },
+ "s897761b5f4": "Dashboard \"{p0}\" raderad",
+ "@s897761b5f4": {
+  "x-mt": true
+ },
+ "scc5cf9957d": "Välj kakeltyp",
+ "@scc5cf9957d": {
+  "x-mt": true
+ },
+ "s7cf6340503": "Ny enhet med färdiga rutor",
+ "se6ca707cf3": "Lättast: Shelly, ESP32-CAM, Home Assistant",
+ "@se6ca707cf3": {
+  "x-mt": true
+ },
+ "s0789f5f14f": "DASHBOARDS",
+ "s1da81fd6c3": "Inställningar",
+ "s59622d792b": "Byt namn",
+ "sfb3e3c456c": "Delete Dashboard",
+ "@sfb3e3c456c": {
+  "x-mt": true
+ },
+ "s187d328bb1": "Redigera",
+ "scdfd80f963": "Lägg till ruta",
+ "s41c3cebc48": "Lägg till enhet",
+ "s71af34b8e9": "Tom vy",
+ "s6a210970eb": "Din enhet plattor visas här: temperaturer, växlar, kameror och genvägar. Börja med att lägga till en enhet.",
+ "@s6a210970eb": {
+  "x-mt": true
+ },
+ "s4229fb4103": "Lägg till din första enhet",
+ "s147f47be4c": "Lägg till ruta",
+ "sf67e0d5752": "Radera rutan?",
+ "s97f46743e0": "Tile \"{p0}\" raderad",
+ "@s97f46743e0": {
+  "x-mt": true
+ },
+ "sa0d8c62e5a": "Inget kommando konfigurerat",
+ "@sa0d8c62e5a": {
+  "x-mt": true
+ },
+ "s1e5d696a26": "Kör detta kommando?",
+ "@s1e5d696a26": {
+  "x-mt": true
+ },
+ "sdfc012fb4e": "PIN-kod",
+ "@sdfc012fb4e": {
+  "x-mt": true
+ },
+ "s1df6e2eaa7": "PIN",
+ "secab66c046": "Kom ihåg på denna enhet",
+ "@secab66c046": {
+  "x-mt": true
+ },
+ "s10bf4eab8e": "Lagrad krypterad på den här enheten bara. Som standard lagras PIN-koden inte.",
+ "@s10bf4eab8e": {
+  "x-mt": true
+ },
+ "s912ea5d2ec": "Skicka",
+ "s856418521a": "Inga kommandon konfigurerade",
+ "@s856418521a": {
+  "x-mt": true
+ },
+ "sdfa66ee201": "{p0}: Sänd",
+ "@sdfa66ee201": {
+  "x-mt": true
+ },
+ "s12fc3810a5": "Sent – vänta på svaret...",
+ "@s12fc3810a5": {
+  "x-mt": true
+ },
+ "sd1c7d49360": "Svara på",
+ "@sd1c7d49360": {
+  "x-mt": true
+ },
+ "s38ac222392": "Värde",
+ "s29fae6a0e8": "Prisstyrning på",
+ "sbfe79d1f5f": "Uppdaterad",
+ "@sbfe79d1f5f": {
+  "x-mt": true
+ },
+ "s25580038cb": "Saved PIN bort",
+ "@s25580038cb": {
+  "x-mt": true
+ },
+ "sf50c488b24": "Glöm frälst PIN",
+ "@sf50c488b24": {
+  "x-mt": true
+ },
+ "safe0429a90": "Prisstyrning",
+ "sf3d644dd4c": "Lär in en fjärrkontrollknapp",
+ "sfb1a18d11f": "Uppdatera",
+ "s4cbe24240f": "På",
+ "s33831dd49f": "Av",
+ "sdc398885dc": "Avancerade inställningar",
+ "s5d477f3cd8": "Vanligtvis behöver du inte dessa",
+ "@s5d477f3cd8": {
+  "x-mt": true
+ },
+ "s2315e0e739": "t.ex.",
+ "s4dab2d409b": "Exportkonfiguration",
+ "@s4dab2d409b": {
+  "x-mt": true
+ },
+ "s149c1e54d6": "Konfiguration exporterad",
+ "@s149c1e54d6": {
+  "x-mt": true
+ },
+ "s35f445793b": "Importera konfiguration",
+ "@s35f445793b": {
+  "x-mt": true
+ },
+ "sd55be829e3": "Ersätt nuvarande konfiguration?",
+ "@sd55be829e3": {
+  "x-mt": true
+ },
+ "s852dd1795e": "Alla aktuella anslutningar och instrumentpaneler ersätts av filinnehållet.",
+ "@s852dd1795e": {
+  "x-mt": true
+ },
+ "s580678cb10": "Importera",
+ "s5f2ec17730": "Konfiguration importerad",
+ "@s5f2ec17730": {
+  "x-mt": true
+ },
+ "sa87fff54f3": "Import misslyckades",
+ "@sa87fff54f3": {
+  "x-mt": true
+ },
+ "s2fd2bfedb8": "Konto",
+ "s4c0ff416ab": "Samma hem och plattor på alla dina enheter.",
+ "@s4c0ff416ab": {
+  "x-mt": true
+ },
+ "scc7e418ee3": "Logga in för att ha samma hem, enheter och plattor på PC, surfplatta och telefon. Valfritt.",
+ "@scc7e418ee3": {
+  "x-mt": true
+ },
+ "s9bb545e9b3": "Logga in eller skapa ett konto",
+ "sf4caddf894": "Avancerat",
+ "s21f870dbc2": "Visar tekniska inställningar: anslutningar (HTTP, MQTT, Modbus...), nyttolast, JSON-vägar och kakelkällor. De flesta behöver inte dessa.",
+ "@s21f870dbc2": {
+  "x-mt": true
+ },
+ "saec69088a5": "Styr ditt hem från utsidan också.",
+ "@saec69088a5": {
+  "x-mt": true
+ },
+ "scc3d01ee5e": "Guider: VPN, Nabu Casa, moln MQTT",
+ "@scc3d01ee5e": {
+  "x-mt": true
+ },
+ "s90ba544719": "Hjälp",
+ "sb915c42792": "Visa den blivande guiden",
+ "@sb915c42792": {
+  "x-mt": true
+ },
+ "sd337a7ddd5": "Backup och överföring",
+ "@sd337a7ddd5": {
+  "x-mt": true
+ },
+ "s07c1048b4f": "Exportera konfigurationen till en JSON-fil och importera den på en annan enhet (t.ex. PC → telefon).",
+ "@s07c1048b4f": {
+  "x-mt": true
+ },
+ "s2f797098e7": "Inkludera lösenord och tokens",
+ "@s2f797098e7": {
+  "x-mt": true
+ },
+ "s26f72949e3": "Filen är sedan okrypterad - håll den säker.",
+ "@s26f72949e3": {
+  "x-mt": true
+ },
+ "sdb12678e52": "Exportera",
+ "s34686ffb09": "Exempel",
+ "s412c666544": "Lägg till ett exempel instrumentpanel (kamera, larm, ljus, ventilation). Byt adresserna med din.",
+ "@s412c666544": {
+  "x-mt": true
+ },
+ "sec02c7c071": "Lägg till exempelvy",
+ "s522d6584c5": "Sök efter uppdateringar",
+ "sd178a1d809": "Din egen kontrollterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kameror, WebSocket, TCP och UDP. Utan ett konto stannar alla inställningar på den här enheten.",
+ "@sd178a1d809": {
+  "x-mt": true
+ },
+ "se455dc672b": "Steg Steg",
+ "@se455dc672b": {
+  "x-mt": true
+ },
+ "s3ddd2678bf": "Hoppa över guiden",
+ "s171ac59e67": "Välj din enhet nedan. Du fyller bara i sin adress - resten görs för dig.",
+ "@s171ac59e67": {
+  "x-mt": true
+ },
+ "s907220900d": "Välkommen till Molaplan",
+ "se722dfcec9": "Molaplan är ditt hem egen kontrollpanel. Du lägger in exakt de enheter och knappar du behöver.",
+ "@se722dfcec9": {
+  "x-mt": true
+ },
+ "scbac938ead": "Se allt på en blick",
+ "@scbac938ead": {
+  "x-mt": true
+ },
+ "se25f930e31": "Temperaturer, ljus, larm och kamera i en vy.",
+ "@se25f930e31": {
+  "x-mt": true
+ },
+ "s3e450dba98": "Kontrollera med en kran",
+ "@s3e450dba98": {
+  "x-mt": true
+ },
+ "sdda6a3f06e": "Ljus på, öka ventilationen eller en \"Leaving Home\" -knapp som gör många saker samtidigt.",
+ "@sdda6a3f06e": {
+  "x-mt": true
+ },
+ "sbcac0cd35a": "Samma hem på alla enheter",
+ "@sbcac0cd35a": {
+  "x-mt": true
+ },
+ "sd43d517cc7": "Logga in om du vill, och PC, surfplatta och telefon visar samma hem. Lösenord krypteras på din enhet. Inget konto behövs.",
+ "@sd43d517cc7": {
+  "x-mt": true
+ },
+ "s70fff97e97": "Jag har redan ett Molaplan-konto - logga in",
+ "@s70fff97e97": {
+  "x-mt": true
+ },
+ "sd6561a08ca": "Nu börjar vi",
+ "se5be2a8386": "Dina rutor är klara",
+ "s8162694dbe": "Lägg till din första ruta",
+ "s7b2a30b77c": "Dessa plattor gjordes för din enhet. Du kan ändra och ordna dem senare.",
+ "@s7b2a30b77c": {
+  "x-mt": true
+ },
+ "s39e163fa49": "En kakel visar information eller styr en enhet. Välj vilken typ av kakel:",
+ "@s39e163fa49": {
+  "x-mt": true
+ },
+ "s4bfb026e45": "Jag ska göra detta senare",
+ "@s4bfb026e45": {
+  "x-mt": true
+ },
+ "s3f0351473c": "Kontrollera ditt hem från utsidan också?",
+ "@s3f0351473c": {
+  "x-mt": true
+ },
+ "s6fe6fe631f": "Hemma fungerar allt redan. Från utsidan behöver du en alltid-på-enhet hemma (en gammal surfplatta eller en dator) - inga router-inställningar, inga konton.",
+ "@s6fe6fe631f": {
+  "x-mt": true
+ },
+ "sb599b7432f": "Fjärråtkomst är på.",
+ "@sb599b7432f": {
+  "x-mt": true
+ },
+ "s33a294d472": "Den här enheten är hembron.",
+ "@s33a294d472": {
+  "x-mt": true
+ },
+ "s4aa8cce504": "Inte nu – bara hemmet",
+ "@s4aa8cce504": {
+  "x-mt": true
+ },
+ "sd3c370ca52": "Klart!",
+ "s1359035b73": "Tryck på en kakel",
+ "@s1359035b73": {
+  "x-mt": true
+ },
+ "sfd26c8e50b": "En switch växlar, en knapp kör sitt kommando.",
+ "@sfd26c8e50b": {
+  "x-mt": true
+ },
+ "s416c8184a7": "Pencil-knappen högst upp",
+ "@s416c8184a7": {
+  "x-mt": true
+ },
+ "s2ba275defe": "Redigera, lägg till, ta bort och dra kakel runt.",
+ "@s2ba275defe": {
+  "x-mt": true
+ },
+ "se872eeb0f5": "Långtrycka en kakel",
+ "@se872eeb0f5": {
+  "x-mt": true
+ },
+ "s63496941fc": "Se detaljer och en förklaring om något är fel.",
+ "@s63496941fc": {
+  "x-mt": true
+ },
+ "s080be778d5": "Hitta den här guiden, fjärråtkomst och säkerhetskopior där.",
+ "@s080be778d5": {
+  "x-mt": true
+ },
+ "sae0fae7127": "Gå till min Dashboard",
+ "@sae0fae7127": {
+  "x-mt": true
+ },
+ "s3d43664fcc": "WebSocket",
+ "sfcbb753f53": "URL",
+ "s81479e1555": "Headers (Namn: värde per rad)",
+ "@s81479e1555": {
+  "x-mt": true
+ },
+ "s5811b38d7b": "Token (Authorization: Bearer)",
+ "sd512dbbfc7": "Meddelande på connect",
+ "@sd512dbbfc7": {
+  "x-mt": true
+ },
+ "s2c4fd261e2": "Tillåt självsignerat certifikat",
+ "@s2c4fd261e2": {
+  "x-mt": true
+ },
+ "s4d089aab74": "Filter (meddelande innehåller)",
+ "@s4d089aab74": {
+  "x-mt": true
+ },
+ "s55c951a8ad": "JSON väg",
+ "@s55c951a8ad": {
+  "x-mt": true
+ },
+ "s10813e25b3": "Regex (grupp 1)",
+ "@s10813e25b3": {
+  "x-mt": true
+ },
+ "s4a282cd247": "Begär meddelande (Skicka på läs)",
+ "@s4a282cd247": {
+  "x-mt": true
+ },
+ "sbeef545d37": "Meddelande ('{''{'value'}''}' = värde)",
+ "@sbeef545d37": {
+  "x-mt": true
+ },
+ "s0477f24b6b": "HTTP / REST",
+ "s3102ae3a16": "Base URL",
+ "@s3102ae3a16": {
+  "x-mt": true
+ },
+ "s38d0517a8d": "Autentisering",
+ "@s38d0517a8d": {
+  "x-mt": true
+ },
+ "sed995f57b8": "Användarnamn",
+ "s65e35b7cc4": "Token",
+ "s51510ae27a": "Extra rubriker (Namn: värde per rad)",
+ "@s51510ae27a": {
+  "x-mt": true
+ },
+ "s361419c448": "Timeout (s)",
+ "@s361419c448": {
+  "x-mt": true
+ },
+ "sf235ce5ec0": "Metod",
+ "@sf235ce5ec0": {
+  "x-mt": true
+ },
+ "s484291707c": "Vägen",
+ "@s484291707c": {
+  "x-mt": true
+ },
+ "s54c8aed8bc": "Kropp",
+ "@s54c8aed8bc": {
+  "x-mt": true
+ },
+ "s5c5e9b662c": "Kroppen ('{''{'value'}''}' = värde)",
+ "@s5c5e9b662c": {
+  "x-mt": true
+ },
+ "s8e82ca13cf": "Content-Type",
+ "s3c045f21ee": "Testad: GET {p0} (basadress, {p1} byte, {p2} ms).",
+ "@s3c045f21ee": {
+  "x-mt": true
+ },
+ "s7797602869": "Inga kommandon skickades och kakelvägar testades inte.",
+ "@s7797602869": {
+  "x-mt": true
+ },
+ "sbf349dfcbd": "HTTP {p0}: the device answered but refused the login. Check username, password or token. {p1}",
+ "@sbf349dfcbd": {
+  "x-mt": true
+ },
+ "s3bd10f0ae2": "HTTP {p0}: the device answered with a server error. {p1}",
+ "@s3bd10f0ae2": {
+  "x-mt": true
+ },
+ "s2a7fa26dd6": "✓ The device answered at {p0} (HTTP 404: no page at the base address – normal for many devices). The connection works. {p1}",
+ "@s2a7fa26dd6": {
+  "x-mt": true
+ },
+ "sb2821916bc": "Anslutning fungerar: HTTP {p0}. {p1} {p2}",
+ "@sb2821916bc": {
+  "x-mt": true
+ },
+ "sad3975b3c1": "Kamera (MJPEG / JPEG)",
+ "@sad3975b3c1": {
+  "x-mt": true
+ },
+ "s1534821f4a": "Kamerabas URL",
+ "@s1534821f4a": {
+  "x-mt": true
+ },
+ "se995a6862d": "Läge",
+ "s4f356d158a": "Refresh (s, snapshot)",
+ "@s4f356d158a": {
+  "x-mt": true
+ },
+ "sca7e088857": "Elpris",
+ "sfb62156afe": "Prisområde",
+ "s2525f9a4f5": "Finland är ett område (FI). I Sverige och Norge beror det på var du bor.",
+ "@s2525f9a4f5": {
+  "x-mt": true
+ },
+ "s8f4a683abf": "Moms %",
+ "s1c7d76a774": "Ditt lands moms.",
+ "@s1c7d76a774": {
+  "x-mt": true
+ },
+ "se49d0fba92": "Elhandlarens påslag (c/kWh)",
+ "s20a5e2936a": "Spot kontrakt marginal utan moms.",
+ "@s20a5e2936a": {
+  "x-mt": true
+ },
+ "s923f9739de": "Elnät + skatt (c/kWh)",
+ "s2a3498fb0f": "Från din faktura, inkl. moms. Lämna 0 för energi endast.",
+ "@s2a3498fb0f": {
+  "x-mt": true
+ },
+ "s515da3a9dd": "Prisserver",
+ "@s515da3a9dd": {
+  "x-mt": true
+ },
+ "s98cc9f1c14": "Molaplans server hämtar priser från öppna källor.",
+ "@s98cc9f1c14": {
+  "x-mt": true
+ },
+ "s271885dc8b": "Vad ska man visa",
+ "@s271885dc8b": {
+  "x-mt": true
+ },
+ "s46282f452b": "Nu = aktuellt pris, diagram = idag och imorgon.",
+ "@s46282f452b": {
+  "x-mt": true
+ },
+ "s2f754e8ab4": "Inga priser för idag ännu.",
+ "@s2f754e8ab4": {
+  "x-mt": true
+ },
+ "sd575462da3": "i morgon ",
+ "s18faad19ed": "Inget pris för nu.",
+ "@s18faad19ed": {
+  "x-mt": true
+ },
+ "s29178b43f4": "Elpriset är lättläst.",
+ "@s29178b43f4": {
+  "x-mt": true
+ },
+ "s1a707f2788": "Imorgon: ja.",
+ "@s1a707f2788": {
+  "x-mt": true
+ },
+ "sb85af981c1": "I morgon: ännu inte (publicerad runt 14:00).",
+ "@sb85af981c1": {
+  "x-mt": true
+ },
+ "s6270faf138": "✓ Priser för {p0} ({p1} slots, {p2} min, källa {p3}).",
+ "@s6270faf138": {
+  "x-mt": true
+ },
+ "se1bd60873c": "MQTT",
+ "s85b9781bb7": "Broker värd",
+ "@s85b9781bb7": {
+  "x-mt": true
+ },
+ "s800d13debd": "Port Port Port Port",
+ "@s800d13debd": {
+  "x-mt": true
+ },
+ "s49fa57061a": "TLS",
+ "s0fcef98aad": "Använd WebSocket (ws:// eller wss://)",
+ "@s0fcef98aad": {
+  "x-mt": true
+ },
+ "s5089c65c1f": "Klient-ID (tomt = auto)",
+ "@s5089c65c1f": {
+  "x-mt": true
+ },
+ "s9372a6f755": "Keep alive (s)",
+ "sd373a99107": "Tillståndsämne",
+ "s518c8aa712": "Kommandoämne",
+ "@s518c8aa712": {
+  "x-mt": true
+ },
+ "s120726c79a": "Betalning ('{''{'value'}''}' = värde)",
+ "@s120726c79a": {
+  "x-mt": true
+ },
+ "s3660228d11": "QoS",
+ "s1b07c9ba3d": "Retain",
+ "s91c3d72d1e": "fan {p0}",
+ "@s91c3d72d1e": {
+  "x-mt": true
+ },
+ "s40032ddea9": "Swing",
+ "@s40032ddea9": {
+  "x-mt": true
+ },
+ "s7068e8892e": "Okänd kod utan rådata. Aktivera rådata i Tasmota (SetOption58 1) och försök igen.",
+ "@s7068e8892e": {
+  "x-mt": true
+ },
+ "s6207a45bff": "IR blaster (värmepump)",
+ "@s6207a45bff": {
+  "x-mt": true
+ },
+ "s859c2e7734": "Blaster firmware",
+ "@s859c2e7734": {
+  "x-mt": true
+ },
+ "s3f8d3fb444": "tasmota_http = Tasmota (tasmota-ir) av IP. tasmota_mqtt = Tasmota via en MQTT-mäklare. esphome = ESPHome klimat_ir. http/mqtt = annan blaster med dina egna mallar.",
+ "@s3f8d3fb444": {
+  "x-mt": true
+ },
+ "s38471ae691": "Blaster adress",
+ "@s38471ae691": {
+  "x-mt": true
+ },
+ "sda91fafa54": "IP-adress för IR-blastaren (Tasmota eller ESPHome).",
+ "@sda91fafa54": {
+  "x-mt": true
+ },
+ "sf9220a3e4d": "Brand IR-protokoll",
+ "@sf9220a3e4d": {
+  "x-mt": true
+ },
+ "s423f2576c4": "Tasmota IRhvac leverantör, t.ex. MITSUBISHI_AC, PANASONIC_AC, DAIKIN. Om ingenting händer, prova ett annat protokoll av samma varumärke.",
+ "@s423f2576c4": {
+  "x-mt": true
+ },
+ "s74ff2fd8a8": "Modell (valfritt)",
+ "@s74ff2fd8a8": {
+  "x-mt": true
+ },
+ "sef4c0e5d90": "IRhvac Model nummer för vissa märken. Lämna tomt om det är osäkert.",
+ "@sef4c0e5d90": {
+  "x-mt": true
+ },
+ "s8e7962c184": "Tasmota ämne",
+ "@s8e7962c184": {
+  "x-mt": true
+ },
+ "s5ae4cc50db": "MQTT: från Tasmota (Konfiguration → MQTT → Ämne).",
+ "@s5ae4cc50db": {
+  "x-mt": true
+ },
+ "sed30580f59": "MQTT mäklare adress",
+ "@sed30580f59": {
+  "x-mt": true
+ },
+ "s744ce256bb": "MQTT: maskinen som kör mäklaren.",
+ "@s744ce256bb": {
+  "x-mt": true
+ },
+ "se6754df705": "MQTT-port",
+ "@se6754df705": {
+  "x-mt": true
+ },
+ "sbfc8ee6c86": "Användarnamn",
+ "s711670d91a": "MQTT eller webbanvändare.",
+ "@s711670d91a": {
+  "x-mt": true
+ },
+ "s3bbd70773d": "Lämna tom om det inte behövs.",
+ "@s3bbd70773d": {
+  "x-mt": true
+ },
+ "s443fe6f350": "ESPHome klimat id",
+ "@s443fe6f350": {
+  "x-mt": true
+ },
+ "s62feae1a9f": "ESPHome endast: klimatobjektet id.",
+ "@s62feae1a9f": {
+  "x-mt": true
+ },
+ "se0efd6dfb3": "Kommando URL (andra blaster)",
+ "@se0efd6dfb3": {
+  "x-mt": true
+ },
+ "s5366cbd4df": "Endast http: URL som tar emot hela staten. Placeholders som listas.",
+ "@s5366cbd4df": {
+  "x-mt": true
+ },
+ "sce533db7c1": "Payload mall (andra blaster)",
+ "@sce533db7c1": {
+  "x-mt": true
+ },
+ "s0fa691e7c7": "http body eller mqtt payload. Empty = IRhvac JSON ('{''{'json'}''}').",
+ "@s0fa691e7c7": {
+  "x-mt": true
+ },
+ "s8567c5faa6": "sammanfattning = fullt tillstånd som text. rum = blastarens temperatursensor. Andra = sista skickad inställning.",
+ "@s8567c5faa6": {
+  "x-mt": true
+ },
+ "sdd8cd8132c": "Vad man ska ändra",
+ "@sdd8cd8132c": {
+  "x-mt": true
+ },
+ "s2e8b846390": "Hela staten skickas alltid på en gång. Värdet kommer från kakeln eller \"Value\".",
+ "@s2e8b846390": {
+  "x-mt": true
+ },
+ "sb517d97868": "T.ex. värme, svalt, auto, torrt, fan eller on/off. Empty = kakelvärde.",
+ "@sb517d97868": {
+  "x-mt": true
+ },
+ "sda4a1b2eee": "Lärd kod",
+ "@sda4a1b2eee": {
+  "x-mt": true
+ },
+ "s0cfc723aa2": "Fylld när du sparar en inlärd fjärrknapp. Skicka med Tasmota IRsend.",
+ "@s0cfc723aa2": {
+  "x-mt": true
+ },
+ "s3f26cb7602": "ESPHome knapp",
+ "@s3f26cb7602": {
+  "x-mt": true
+ },
+ "sc71964f422": "ESPHome endast: id av mallknappen för en lärd kod.",
+ "@sc71964f422": {
+  "x-mt": true
+ },
+ "s852a166240": "Blaster adress saknas.",
+ "@s852a166240": {
+  "x-mt": true
+ },
+ "s75ce01c354": "Tasmota behöver webben lösenord.",
+ "@s75ce01c354": {
+  "x-mt": true
+ },
+ "sf9d84ad23c": "Tasmota vet inte {p0}. Installera tasmota-ir-byggnaden.",
+ "@sf9d84ad23c": {
+  "x-mt": true
+ },
+ "sff167aa9a6": "Tasmota förkastade kommandot: {p0}",
+ "@sff167aa9a6": {
+  "x-mt": true
+ },
+ "s385c6a9a2d": "Okänd leverantör \"{p0}\".",
+ "@s385c6a9a2d": {
+  "x-mt": true
+ },
+ "sb4ea2389cb": "ESPHome klimat \"{p0}\" hittades inte.",
+ "@sb4ea2389cb": {
+  "x-mt": true
+ },
+ "s34deda2c72": "Kommando URL saknas.",
+ "@s34deda2c72": {
+  "x-mt": true
+ },
+ "s04e4777aea": "Temperatur saknas.",
+ "@s04e4777aea": {
+  "x-mt": true
+ },
+ "sfce1a094cb": "Ingen temperatursensor på blastaren.",
+ "@sfce1a094cb": {
+  "x-mt": true
+ },
+ "s4536eb33dd": "Ingen temperatur mottagen.",
+ "@s4536eb33dd": {
+  "x-mt": true
+ },
+ "s9b5bbfa2c6": "Rumstemperatur endast från Tasmota/ESPHome.",
+ "@s9b5bbfa2c6": {
+  "x-mt": true
+ },
+ "s5acc16dafb": "RF433 behöver Tasmota.",
+ "@s5acc16dafb": {
+  "x-mt": true
+ },
+ "s8478662ad1": "Lärda koder behöver Tasmota.",
+ "@s8478662ad1": {
+  "x-mt": true
+ },
+ "s9f8263b5a0": "ESPHome-knappen \"{p0}\" hittades inte.",
+ "@s9f8263b5a0": {
+  "x-mt": true
+ },
+ "s3296e8d7e7": "Ingen kod inom {p0} s. Peka fjärrkontrollen rakt på sprängaren (under 1 m) och tryck igen.",
+ "@s3296e8d7e7": {
+  "x-mt": true
+ },
+ "s1e73ba395d": "RF433 lärande behöver Tasmota.",
+ "@s1e73ba395d": {
+  "x-mt": true
+ },
+ "scc47b4b225": "Lärande fungerar med Tasmota och ESPHome blasters.",
+ "@scc47b4b225": {
+  "x-mt": true
+ },
+ "s96adaaf2b6": "Tasmota svarade (version {p0}). Testad: Status 0 på {p1}. Inget skickades till värmepumpen.",
+ "@s96adaaf2b6": {
+  "x-mt": true
+ },
+ "sfce5c770f1": "Broker OK but Tasmota \"{p0}\" did not answer.",
+ "@sfce5c770f1": {
+  "x-mt": true
+ },
+ "s2c3b95a054": "✓ Tasmota \"{p0}\" answered via MQTT. Nothing sent to the heat pump.",
+ "@s2c3b95a054": {
+  "x-mt": true
+ },
+ "scf9ead3297": "✓ ESPHome klimat \"{p0}\" hittades. Ingenting skickades.",
+ "@scf9ead3297": {
+  "x-mt": true
+ },
+ "s8ad50358b9": "Inget test för andra sprängmedel: IR är envägs. Tryck på kraftplattan och titta på värmepumpen.",
+ "@s8ad50358b9": {
+  "x-mt": true
+ },
+ "s3b476099a2": "Enhet svarade HTTP {p0}. Är web_server aktiverad i ESPHome?",
+ "@s3b476099a2": {
+  "x-mt": true
+ },
+ "sd44aec7380": "Inget svar från {p0}.",
+ "@sd44aec7380": {
+  "x-mt": true
+ },
+ "s120026628c": "Kunde inte nå {p0}.",
+ "@s120026628c": {
+  "x-mt": true
+ },
+ "s43c9b88580": "Auto",
+ "sa3e8beed42": "Värme",
+ "s6c9668fbd9": "Kyla",
+ "s9db8aefc43": "Avfuktning",
+ "s018d2e08f4": "Fläkt",
+ "s36fb6ba26f": "Modbus TCP",
+ "sa70cc38354": "Värd",
+ "@sa70cc38354": {
+  "x-mt": true
+ },
+ "sdc5301b750": "Enhet Id",
+ "@sdc5301b750": {
+  "x-mt": true
+ },
+ "s15e327bf8e": "Timeout (ms)",
+ "@s15e327bf8e": {
+  "x-mt": true
+ },
+ "s943b8b6bf3": "Registrera tabell",
+ "@s943b8b6bf3": {
+  "x-mt": true
+ },
+ "sf51ad986eb": "Adress (0-baserad)",
+ "@sf51ad986eb": {
+  "x-mt": true
+ },
+ "s601f118ac0": "Datatyp",
+ "@s601f118ac0": {
+  "x-mt": true
+ },
+ "sddd62d21b0": "Swap ord (CDAB)",
+ "@sddd62d21b0": {
+  "x-mt": true
+ },
+ "see24ec5d84": "Skala",
+ "@see24ec5d84": {
+  "x-mt": true
+ },
+ "s0a239b832b": "Offset",
+ "@s0a239b832b": {
+  "x-mt": true
+ },
+ "s5f374d3643": "Enhet id (tom = anslutning)",
+ "@s5f374d3643": {
+  "x-mt": true
+ },
+ "sef11962984": "Skriv för att",
+ "@sef11962984": {
+  "x-mt": true
+ },
+ "s779b59ba4b": "Värde ('{''{'value'}''}' = reglage/toggle)",
+ "@s779b59ba4b": {
+  "x-mt": true
+ },
+ "sefaea1b818": "ntfy (meddelandekanal/kommandon)",
+ "@sefaea1b818": {
+  "x-mt": true
+ },
+ "s6a4516e0fe": "Kommandoämne (namn eller fullständig URL)",
+ "@s6a4516e0fe": {
+  "x-mt": true
+ },
+ "se003ecc10b": "Ämne kommandon skickas till. Du kan klistra in hela URL, t.ex. https://ntfy.sh/my-topic - samma som din iPhone Shortcut använder. ämnesnamnet fungerar som ett lösenord: hålla det länge och slumpmässigt.",
+ "@se003ecc10b": {
+  "x-mt": true
+ },
+ "s800cd08229": "Svara på ämne (valfritt)",
+ "@s800cd08229": {
+  "x-mt": true
+ },
+ "s2e3a66d384": "Om hemenheten svarar på ett annat ämne, skriv det här. Lämna tomt om svaret kommer på samma ämne - vårt eget kommando ignoreras sedan och nästa meddelande visas som svaret.",
+ "@s2e3a66d384": {
+  "x-mt": true
+ },
+ "s5bc736c04a": "Access token (tillval)",
+ "@s5bc736c04a": {
+  "x-mt": true
+ },
+ "s77feae14f5": "Endast behövs för ett skyddat ämne (ntfy-konto → Access-tokens). Lämna tomt för ett offentligt ämne.",
+ "@s77feae14f5": {
+  "x-mt": true
+ },
+ "seca0d75969": "Standard är den offentliga ntfy.sh. Ändra bara för din egen ntfy-server. En fullständig URL ovan åsidosätter detta.",
+ "@seca0d75969": {
+  "x-mt": true
+ },
+ "sddbea594a4": "senaste = det senaste meddelandet, log = flera senaste meddelanden (nyaste först).",
+ "@sddbea594a4": {
+  "x-mt": true
+ },
+ "s2bd0e69d44": "Ämne (valfritt)",
+ "@s2bd0e69d44": {
+  "x-mt": true
+ },
+ "s4eb1e8ac15": "Ämne att läsa. Empty = anslutningens svarsämne (eller kommandoämnet).",
+ "@s4eb1e8ac15": {
+  "x-mt": true
+ },
+ "s09fa5c0332": "Antal meddelanden (logg)",
+ "@s09fa5c0332": {
+  "x-mt": true
+ },
+ "s17fda9fb06": "Hur många nya meddelanden logg visar.",
+ "@s17fda9fb06": {
+  "x-mt": true
+ },
+ "s78f2f0d783": "Hur långt tillbaka",
+ "@s78f2f0d783": {
+  "x-mt": true
+ },
+ "s79bdbfd820": "30m, 12h eller 2d. Den offentliga ntfy.sh håller meddelanden i cirka 12 timmar.",
+ "@s79bdbfd820": {
+  "x-mt": true
+ },
+ "sfe357edcec": "Kommando (text för att skicka)",
+ "@sfe357edcec": {
+  "x-mt": true
+ },
+ "s48e102023d": "Texten att skicka, t.ex. \"uppdatering\". Med en PIN-kod läggs den upp efter ett utrymme: \"uppdatera 1234\".",
+ "@s48e102023d": {
+  "x-mt": true
+ },
+ "saf2ebedf61": "Be om en PIN på press",
+ "@saf2ebedf61": {
+  "x-mt": true
+ },
+ "sfcb5608064": "Be om en PIN-kod (dold) på varje press och godkänner den till kommandot. PIN-koden lagras inte om du väljer \"Kom ihåg på den här enheten\".",
+ "@sfcb5608064": {
+  "x-mt": true
+ },
+ "sfee393b70e": "Vänta på svaret",
+ "@sfee393b70e": {
+  "x-mt": true
+ },
+ "sfff5bc52e5": "Lyssnar på hemenhetens svar och visar det i den här kakeln (och som ett meddelande när appen är i bakgrunden).",
+ "@sfff5bc52e5": {
+  "x-mt": true
+ },
+ "sbdcbe301b9": "Vänta på svar (s)",
+ "@sbdcbe301b9": {
+  "x-mt": true
+ },
+ "s121542d6d7": "Hur lång tid att vänta innan du säger att inget svar kom.",
+ "@s121542d6d7": {
+  "x-mt": true
+ },
+ "sa53638cfea": "Svaret stannar på plattan (s)",
+ "@sa53638cfea": {
+  "x-mt": true
+ },
+ "se6d21484a8": "Hur länge svaret stannar på kakeln. 0 = tills nästa press.",
+ "@se6d21484a8": {
+  "x-mt": true
+ },
+ "s74d68a98d6": "Meddelande titel (valfritt)",
+ "@s74d68a98d6": {
+  "x-mt": true
+ },
+ "sc2492ac3ab": "ntfy meddelande titel. vanligtvis tom.",
+ "@sc2492ac3ab": {
+  "x-mt": true
+ },
+ "s54ea45f27f": "ntfy: ämne \"{p0}\" skyddas (HTTP {p1}). Lägg till en åtkomsttoken (tk_...) till anslutningen.",
+ "@s54ea45f27f": {
+  "x-mt": true
+ },
+ "s72c37e530d": "ntfy: för många meddelanden (HTTP 429) Vänta ett ögonblick och försök igen.",
+ "@s72c37e530d": {
+  "x-mt": true
+ },
+ "s0870daf796": "ntfy: kommandoämne saknas",
+ "@s0870daf796": {
+  "x-mt": true
+ },
+ "s28dc7ea012": "ntfy: anslutning stängd innan svaret",
+ "@s28dc7ea012": {
+  "x-mt": true
+ },
+ "sa4313864fe": "Kommandot skickades, men inget svar kom inom {p0} s. Kontrollera att hemenheten är på och lyssnar på \"{p1}\".",
+ "@sa4313864fe": {
+  "x-mt": true
+ },
+ "s85a1947a44": "(inga meddelanden)",
+ "@s85a1947a44": {
+  "x-mt": true
+ },
+ "s7069b18b7d": "ntfy: kommandotext saknas",
+ "@s7069b18b7d": {
+  "x-mt": true
+ },
+ "s43de3fd299": " Svara på ämne: {p0}.",
+ "@s43de3fd299": {
+  "x-mt": true
+ },
+ "s9ed9eb7f92": "✓ ntfy server {p0} svarade och ämne \"{p1}\" är läsbart ({p2} meddelanden i sista timmen). {p3} Inget kommando skickades - tryck på kakeln för att försöka.",
+ "@s9ed9eb7f92": {
+  "x-mt": true
+ },
+ "sf0ef0140c3": "Home Assistant",
+ "s1f90ee6992": "Långlivad access token",
+ "@s1f90ee6992": {
+  "x-mt": true
+ },
+ "sccb0cca8e3": "Live updates (websocket)",
+ "@sccb0cca8e3": {
+  "x-mt": true
+ },
+ "s8f8e1cfad3": "Entity Id",
+ "@s8f8e1cfad3": {
+  "x-mt": true
+ },
+ "s382111aebc": "Attribut (tom = stat)",
+ "@s382111aebc": {
+  "x-mt": true
+ },
+ "sf500d0ad67": "Tjänsteservice",
+ "@sf500d0ad67": {
+  "x-mt": true
+ },
+ "s7286715019": "Extra data JSON ('{''{'value'}''}' = värde)",
+ "@s7286715019": {
+  "x-mt": true
+ },
+ "s1b5b0421c0": "Payload är hex",
+ "@s1b5b0421c0": {
+  "x-mt": true
+ },
+ "s44ab1d33df": "Vänta på svar",
+ "@s44ab1d33df": {
+  "x-mt": true
+ },
+ "s341bf61e36": "Svar som hex",
+ "@s341bf61e36": {
+  "x-mt": true
+ },
+ "se7cff2d61e": "TCP (rå)",
+ "@se7cff2d61e": {
+  "x-mt": true
+ },
+ "s1dfeacd9f6": "UDP",
+ "s5b44cbe9c0": "Hem",
+ "s804e935440": "ESP32 kamera",
+ "@s804e935440": {
+  "x-mt": true
+ },
+ "s478ddb6e1a": "Ventilationsenhet (Modbus)",
+ "@s478ddb6e1a": {
+  "x-mt": true
+ },
+ "s4b4fd14aaf": "Gård",
+ "s8d06ee5308": "Larm",
+ "s8ac16d45bc": "",
+ "sbde42d83a3": "Vardagsrummets lampor",
+ "sb7c78c63b3": "Tilluft",
+ "sbb2adef009": "Fläkthastighet",
+ "see46441329": "0=Off;1=Away;2=Home;3=Boost;4=Max",
+ "sb25aad3bc2": "Jag går hemifrån",
+ "saf4b222a68": "Enhetens IP-adress",
+ "s1bbea216af": "ESP32-CAM-kameran",
+ "@s1bbea216af": {
+  "x-mt": true
+ },
+ "saaaeccd0cc": "Low-cost Wi-Fi kamera. Visar live video.",
+ "@saaaeccd0cc": {
+  "x-mt": true
+ },
+ "saaea39b2de": "Kamera IP-adress",
+ "@saaea39b2de": {
+  "x-mt": true
+ },
+ "s6ef2a3f197": "Visas i seriell bildskärmen på start eller i router enhetslistan.",
+ "@s6ef2a3f197": {
+  "x-mt": true
+ },
+ "sae199413a2": "E.g. Yard, Hall.",
+ "@sae199413a2": {
+  "x-mt": true
+ },
+ "s2dd165b39f": "Bildtyp",
+ "@s2dd165b39f": {
+  "x-mt": true
+ },
+ "sb66b153f36": "mjpeg = live video (rekommenderas). snapshot = stillbild varannan sekund.",
+ "@sb66b153f36": {
+  "x-mt": true
+ },
+ "sf81257929d": "Shelly relä / uttag",
+ "s2b8ab6defc": "Byt ett ljus eller apparat på / av och visa kraft.",
+ "@s2b8ab6defc": {
+  "x-mt": true
+ },
+ "s7fcea114f0": "Vad styr den?",
+ "sdccd6e7f24": "Modell",
+ "s864ba0233b": "Nyare (Plus, Pro, Gen3) = Plus / Pro / Gen2 +. Old Shelly 1, 2.5, Plug S = Gen1.",
+ "@s864ba0233b": {
+  "x-mt": true
+ },
+ "s92f97cd95e": "Visa kraft (W)",
+ "@s92f97cd95e": {
+  "x-mt": true
+ },
+ "s54c71d86aa": "Bara för modeller med mätning (t.ex. Plus 1PM).",
+ "@s54c71d86aa": {
+  "x-mt": true
+ },
+ "s49671fc56f": "Kanal",
+ "s06f8a27d8a": "För flerkanalsenheter: 0 = första.",
+ "@s06f8a27d8a": {
+  "x-mt": true
+ },
+ "s259e46c59a": "Endast om du ställer in ett lösenord.",
+ "@s259e46c59a": {
+  "x-mt": true
+ },
+ "s702ca14235": "Tasmota-enhet",
+ "sc130e073ba": "Relä eller plug kör Tasmota firmware.",
+ "@sc130e073ba": {
+  "x-mt": true
+ },
+ "s16be1831d6": "Endast för enheter med energimätning.",
+ "@s16be1831d6": {
+  "x-mt": true
+ },
+ "s8890d26ef2": "Relä nummer",
+ "@s8890d26ef2": {
+  "x-mt": true
+ },
+ "s7e6d21d466": "För multireläenheter 1, 2, 3...",
+ "@s7e6d21d466": {
+  "x-mt": true
+ },
+ "s5f1e4a036e": "Web lösenord",
+ "@s5f1e4a036e": {
+  "x-mt": true
+ },
+ "s397e83233d": "Endast om ett webblösenord är inställt (användaradmin).",
+ "@s397e83233d": {
+  "x-mt": true
+ },
+ "se0e5f715ad": "ESPHome-enhet",
+ "@se0e5f715ad": {
+  "x-mt": true
+ },
+ "sa0efcdf688": "Din egen ESP32/ESP8266 med ESPHome (web_server aktiverad).",
+ "@sa0efcdf688": {
+  "x-mt": true
+ },
+ "s631420589f": "Enhetens namn",
+ "s1db899640b": "Switch id (tillval)",
+ "@s1db899640b": {
+  "x-mt": true
+ },
+ "sb2e87033fc": "Bytesnamnet från YAML i lägre fall med understreck.",
+ "@sb2e87033fc": {
+  "x-mt": true
+ },
+ "s978ae8f1d6": "Sensor id (tillval)",
+ "@s978ae8f1d6": {
+  "x-mt": true
+ },
+ "s4ba12c5866": "Sensornamn på samma sätt (se enhetswebbsidan).",
+ "@s4ba12c5866": {
+  "x-mt": true
+ },
+ "s945273ef29": "Sensor enhet",
+ "@s945273ef29": {
+  "x-mt": true
+ },
+ "s5ca2e25792": "Endast om web_server auth är inställd.",
+ "@s5ca2e25792": {
+  "x-mt": true
+ },
+ "sb847f22473": "Web användarnamn",
+ "@sb847f22473": {
+  "x-mt": true
+ },
+ "s7f8e45ea74": "Ljus, larm, sensorer – allt i Home Assistant.",
+ "@s7f8e45ea74": {
+  "x-mt": true
+ },
+ "s9f70681d3f": "Home Assistant Adress",
+ "@s9f70681d3f": {
+  "x-mt": true
+ },
+ "s123502628e": "Adressen du öppnar Home Assistant med.",
+ "@s123502628e": {
+  "x-mt": true
+ },
+ "s92e3c4cd40": "Långlivad token",
+ "@s92e3c4cd40": {
+  "x-mt": true
+ },
+ "s4e3f2052b2": "Hem Assistent → din profil → Säkerhet → Långlivade åtkomsttokens → Skapa token. Klistra det här.",
+ "@s4e3f2052b2": {
+  "x-mt": true
+ },
+ "s75a056cf4d": "Ljus (valfritt)",
+ "@s75a056cf4d": {
+  "x-mt": true
+ },
+ "sdb9a90cb96": "Entity id från Inställningar → Enheter → Entiteter.",
+ "@sdb9a90cb96": {
+  "x-mt": true
+ },
+ "sa9681c1a9a": "Alarm (valfritt)",
+ "@sa9681c1a9a": {
+  "x-mt": true
+ },
+ "s64bd3ab3ff": "Temperaturgivare (valfritt)",
+ "sa6504f5712": "Switch (tillval)",
+ "@sa6504f5712": {
+  "x-mt": true
+ },
+ "s64d4364336": "disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming",
+ "s54e063bd9c": "Värmepump (Home Assistant)",
+ "@s54e063bd9c": {
+  "x-mt": true
+ },
+ "s2afe650320": "Luftvärmepump som visas i Home Assistant som en klimatenhet.",
+ "@s2afe650320": {
+  "x-mt": true
+ },
+ "s48fdd98530": "Om det redan har lagts till återanvänds samma anslutning.",
+ "@s48fdd98530": {
+  "x-mt": true
+ },
+ "sfe5ad3202f": "Det behövs inte om HA redan läggs till.",
+ "@sfe5ad3202f": {
+  "x-mt": true
+ },
+ "sce069d8d1a": "Värmepump Entity",
+ "@sce069d8d1a": {
+  "x-mt": true
+ },
+ "s05e2aaa15c": "Börjar med klimat.",
+ "@s05e2aaa15c": {
+  "x-mt": true
+ },
+ "sc7d02fbe84": "Värmepump",
+ "se699281c85": "Värmepump (MQTT)",
+ "@se699281c85": {
+  "x-mt": true
+ },
+ "s8643040b95": "E.g. mitsubishi2mqtt eller liknande ESP-kontroller. Ämnen är exempel - verifiera.",
+ "@s8643040b95": {
+  "x-mt": true
+ },
+ "s2a1148ee77": "MQTT mäklare IP",
+ "@s2a1148ee77": {
+  "x-mt": true
+ },
+ "s53e472c976": "Maskin som kör Mosquitto (ofta HA-boxen).",
+ "@s53e472c976": {
+  "x-mt": true
+ },
+ "s29aff3d2a0": "MQTT användarnamn",
+ "@s29aff3d2a0": {
+  "x-mt": true
+ },
+ "s37e57de4b9": "Lämna tomt om det inte krävs.",
+ "@s37e57de4b9": {
+  "x-mt": true
+ },
+ "sffe00ea1b3": "MQTT lösenord",
+ "@sffe00ea1b3": {
+  "x-mt": true
+ },
+ "s407d4a5e56": "Basämne",
+ "@s407d4a5e56": {
+  "x-mt": true
+ },
+ "sc1af622c0a": "Från kontrollinställningarna. State: <base>/state, kommandon: <base>/set.",
+ "@sc1af622c0a": {
+  "x-mt": true
+ },
+ "s9783a8fd53": "rum",
+ "sbc996a7d25": "börvärde",
+ "sa69c0e1ca3": "Luftvärmepump (IR)",
+ "s025e7bf04d": "Styr någon fjärrstyrd värmepump med en IR-blastare (Tasmota eller ESPHome). IR är envägs: Molaplan visar vad den senast skickade.",
+ "@s025e7bf04d": {
+  "x-mt": true
+ },
+ "sb5d4127728": "IR blaster",
+ "@sb5d4127728": {
+  "x-mt": true
+ },
+ "sc899cf95db": "De flesta färdiga IR-blastare kör Tasmota (använd tasmota-ir-byggnaden). ESPHome = din ESPHome-enhet med klimat_ir.",
+ "@sc899cf95db": {
+  "x-mt": true
+ },
+ "safc7f1325c": "Värmepumpens märke",
+ "s7675ec1754": "Välj märket på enheten eller fjärrkontrollen. Om det inte reagerar, prova \"Övrigt\" med ett alternativt protokoll.",
+ "@s7675ec1754": {
+  "x-mt": true
+ },
+ "s9702830f91": "Protokoll (endast \"andra\")",
+ "@s9702830f91": {
+  "x-mt": true
+ },
+ "s6df0837908": "Tasmota IRhvac leverantörsnamn. behövs bara för \"Övrigt\" eller för att prova en annan.",
+ "@s6df0837908": {
+  "x-mt": true
+ },
+ "saa49bfdb90": "Visas i kakeltitlar.",
+ "@saa49bfdb90": {
+  "x-mt": true
+ },
+ "sf1971ac29b": "Tasmota ämne (endast MQTT)",
+ "@sf1971ac29b": {
+  "x-mt": true
+ },
+ "s65529d5877": "Tasmota → Konfiguration → MQTT → Ämne. Andra MQTT blaster: kommandoämne.",
+ "@s65529d5877": {
+  "x-mt": true
+ },
+ "s321c1677e2": "ESPHome klimat id (endast ESPHome)",
+ "@s321c1677e2": {
+  "x-mt": true
+ },
+ "s4c07dec7b5": "Climate_ir objekt id, som visas på enhetens webbsida.",
+ "@s4c07dec7b5": {
+  "x-mt": true
+ },
+ "s2229e548f3": "MQTT eller webbanvändare.",
+ "@s2229e548f3": {
+  "x-mt": true
+ },
+ "s06cff48000": "Command URL (endast HTTP)",
+ "@s06cff48000": {
+  "x-mt": true
+ },
+ "s5b41e244d6": "Placeholders: '{''{'power'}''}' '{''{'mode'}''}' '{''{'temp'}''}' '{''{'fan'}''}' '{''{'swing'}''}' '{''{'vendor'}''}' '{''{'json'}''}'.",
+ "@s5b41e244d6": {
+  "x-mt": true
+ },
+ "s9a60c2026e": "Lägesknappar",
+ "sd119ce3382": "Knappar för värme, cool, auto, torr och fläkt.",
+ "@sd119ce3382": {
+  "x-mt": true
+ },
+ "s9b8dd7076a": "Fläkthastighet",
+ "s9597aa1ae9": "Slider 0-5 (0 = auto).",
+ "@s9597aa1ae9": {
+  "x-mt": true
+ },
+ "secae50c5dd": "Svängning",
+ "s8bcb8433f9": "Louver svänger på/av.",
+ "@s8bcb8433f9": {
+  "x-mt": true
+ },
+ "s78a5e5fa61": "Rumstemperatur från blaster sensor",
+ "@s78a5e5fa61": {
+  "x-mt": true
+ },
+ "s2dd6395602": "Endast om blastaren har en temperatursensor.",
+ "@s2dd6395602": {
+  "x-mt": true
+ },
+ "s4ff78f06ab": "Luftvärmepump (serviceport/ESPHome)",
+ "@s4ff78f06ab": {
+  "x-mt": true
+ },
+ "s6cc7b6b499": "ESPHome controller på inomhus enhet service port (Mitsubishi CN105, Daikin S21/X50A, Panasonic CN-CNT, Toshiba).",
+ "@s6cc7b6b499": {
+  "x-mt": true
+ },
+ "s647e86e5e5": "Klimat id",
+ "@s647e86e5e5": {
+  "x-mt": true
+ },
+ "sbeb6af1e1c": "Klimatenheten hos ESPHome-enheten. \"Hitta värmepumpar\" i guiden finner det för dig.",
+ "@sbeb6af1e1c": {
+  "x-mt": true
+ },
+ "sbf36d139cb": "Endast om web_server har auth.",
+ "@sbf36d139cb": {
+  "x-mt": true
+ },
+ "s54d4fdbba4": "Endast om web_server har auth.",
+ "@s54d4fdbba4": {
+  "x-mt": true
+ },
+ "s84cd6a5180": "RF433-fjärrkontroll (Athom IR & RF)",
+ "s4105198757": "Kontrollera RF433 radio-avlägsna enheter (sockor, markiser, garageportar) med Athom \"Tasmota IR & RF433 Controller\". Du lär knapparna direkt efter att ha lagt till.",
+ "@s4105198757": {
+  "x-mt": true
+ },
+ "sc34430eec0": "t.ex. vad du kontrollerar.",
+ "@sc34430eec0": {
+  "x-mt": true
+ },
+ "s12447972e0": "Bara om ett Tasmota-webblösenord är inställt.",
+ "@s12447972e0": {
+  "x-mt": true
+ },
+ "s6385f1487e": "Elpris (spot)",
+ "se807a72c0a": "Dagens och morgondagens spotpris som ett diagram. Priskontroll: länge tryck på en enhetsplatta → Priskontroll.",
+ "@se807a72c0a": {
+  "x-mt": true
+ },
+ "sef8d24c969": "Land / prisområde",
+ "sef4f509f9f": "Välj ditt land, i Sverige och Norge ditt område.",
+ "@sef4f509f9f": {
+  "x-mt": true
+ },
+ "sf3a8631d14": "Från din faktura inkl. moms. 0 = endast energi.",
+ "@sf3a8631d14": {
+  "x-mt": true
+ },
+ "sf3be8aac1c": "Din avtalsmarginal utan moms.",
+ "@sf3be8aac1c": {
+  "x-mt": true
+ },
+ "s49dfca65a3": "Elpriset {p0}",
+ "@s49dfca65a3": {
+  "x-mt": true
+ },
+ "scf849c933b": "El just nu",
+ "s53a951507b": "Billigaste timmen",
+ "s3e99310fc0": "Pris i dag och i morgon",
+ "s9af9526395": "Ventilationsenhet (Modbus TCP)",
+ "@s9af9526395": {
+  "x-mt": true
+ },
+ "s29dc0baf55": "Temperaturer och fläkthastighet. Registrera förinställningar är exempel - verifiera med din handbok.",
+ "@s29dc0baf55": {
+  "x-mt": true
+ },
+ "sb75966bb58": "Enhet eller gateway IP",
+ "@sb75966bb58": {
+  "x-mt": true
+ },
+ "s751331a84a": "Om enheten bara har RS485 behöver du en RS485 → Modbus TCP-gateway.",
+ "@s751331a84a": {
+  "x-mt": true
+ },
+ "s658cdb6ff8": "Märke",
+ "s785c0c264c": "Välj ett varumärke för att fylla i register som ett exempel. \"-\" = tom.",
+ "@s785c0c264c": {
+  "x-mt": true
+ },
+ "s7e9c785c20": "Ofta 1.",
+ "@s7e9c785c20": {
+  "x-mt": true
+ },
+ "s0591744c19": "Nästan alltid 502.",
+ "@s0591744c19": {
+  "x-mt": true
+ },
+ "s5ccb7405cf": "Ventilation",
+ "se7dfa3594e": "MQTT-enhet",
+ "@se7dfa3594e": {
+  "x-mt": true
+ },
+ "s12ab103795": "Alla enheter som talar MQTT (Zigbee2MQTT, din egen ESP, ...).",
+ "@s12ab103795": {
+  "x-mt": true
+ },
+ "sffcfefd91c": "Maskin som kör MQTT mäklare.",
+ "@sffcfefd91c": {
+  "x-mt": true
+ },
+ "s6ac05d979c": "Vad är det?",
+ "s460d48d0cc": "switch = on/off, sensor = visar ett värde.",
+ "@s460d48d0cc": {
+  "x-mt": true
+ },
+ "s850c7e1194": "Tillståndsämne",
+ "s49b7311a1e": "Ämne där enheten rapporterar sitt tillstånd.",
+ "@s49b7311a1e": {
+  "x-mt": true
+ },
+ "s579969e7e4": "Kommandoämne (switch)",
+ "@s579969e7e4": {
+  "x-mt": true
+ },
+ "s137db4076a": "Ämnet för kommandot på/off.",
+ "@s137db4076a": {
+  "x-mt": true
+ },
+ "s4c95226869": "På meddelande",
+ "@s4c95226869": {
+  "x-mt": true
+ },
+ "s70f2ea8532": "Off-meddelande",
+ "@s70f2ea8532": {
+  "x-mt": true
+ },
+ "sdc234849ac": "JSON-fältet",
+ "@sdc234849ac": {
+  "x-mt": true
+ },
+ "sd3f60d4a71": "Om meddelandet är JSON, fältnamnet.",
+ "@sd3f60d4a71": {
+  "x-mt": true
+ },
+ "s6cee917658": "Enhet (sensor)",
+ "@s6cee917658": {
+  "x-mt": true
+ },
+ "s3cd541d271": "Andra Wi-Fi-enhet (HTTP)",
+ "@s3cd541d271": {
+  "x-mt": true
+ },
+ "s69885630aa": "En enhet med ett webb-API. Visar ett värde; lägg till fler plattor senare.",
+ "@s69885630aa": {
+  "x-mt": true
+ },
+ "s200320e245": "Statussökväg",
+ "sc5872d2e30": "Där enheten rapporterar sitt tillstånd. Empty = ingen kakel nu.",
+ "@sc5872d2e30": {
+  "x-mt": true
+ },
+ "s5564de12b2": "Fält att visa",
+ "@s5564de12b2": {
+  "x-mt": true
+ },
+ "s377942beb7": "Fältnamn i svaret.",
+ "@s377942beb7": {
+  "x-mt": true
+ },
+ "sbaf1a279c2": "Kommando och svar (ntfy)",
+ "@sbaf1a279c2": {
+  "x-mt": true
+ },
+ "se0fb2c7eea": "Skicka ett kommando som ett ntfy-meddelande (t.ex. \"uppdatering\" + PIN) och se hemenhetens svar i samma kakel. Samma kanal som en iPhone-genväg.",
+ "@se0fb2c7eea": {
+  "x-mt": true
+ },
+ "s8231329360": "Kommando ämne URL",
+ "@s8231329360": {
+  "x-mt": true
+ },
+ "sd82d127f05": "Klistra på samma URL dina genvägsposter kommandon till (t.ex. https://ntfy.sh/kv-cmd-...). Ämnet ensam fungerar också.",
+ "@sd82d127f05": {
+  "x-mt": true
+ },
+ "s1b3bbae234": "Endast om hemenheten svarar på ett annat ämne.Empty = samma ämne ignoreras vårt eget kommando.",
+ "@s1b3bbae234": {
+  "x-mt": true
+ },
+ "s1b08aa4646": "Text som visas på kakeln, t.ex. \"Uppdatera\" eller \"Status\".",
+ "@s1b08aa4646": {
+  "x-mt": true
+ },
+ "s5bed8bff00": "Kommando",
+ "se2a81ae67d": "Texten att skicka. PIN-koden läggs till efter ett utrymme, t.ex. \"uppdatera 1234\".",
+ "@se2a81ae67d": {
+  "x-mt": true
+ },
+ "s1477964f04": "Be om PIN på varje press",
+ "@s1477964f04": {
+  "x-mt": true
+ },
+ "s62672283f6": "PIN-koden är dold och lagras inte om du inte väljer \"Kom ihåg på den här enheten\".",
+ "@s62672283f6": {
+  "x-mt": true
+ },
+ "sb5e914eaf7": "Endast för ett skyddat ämne. Lämna tomt för ett offentligt ämne.",
+ "@sb5e914eaf7": {
+  "x-mt": true
+ },
+ "s1a98a7e424": "Lägg också till ett meddelande log tile",
+ "@s1a98a7e424": {
+  "x-mt": true
+ },
+ "s5ab6348524": "Visar de senaste meddelandena i ämnet i sin egen kakel.",
+ "@s5ab6348524": {
+  "x-mt": true
+ },
+ "s57e684ac9e": "Meddelanden",
+ "sdc84bf286f": "off=Off;heat=Heat;cool=Cool;auto=Auto;heat_cool=Auto;dry=Dry;fan_only=Fan",
+ "s3378eb2d0b": "{p0} – temperatur",
+ "@s3378eb2d0b": {
+  "x-mt": true
+ },
+ "saa437260b8": "Sent State (IR är one-way)",
+ "@saa437260b8": {
+  "x-mt": true
+ },
+ "sfffb54daf4": "Tillstånd",
+ "seab2c72485": "Fan (0 = auto)",
+ "@seab2c72485": {
+  "x-mt": true
+ },
+ "sfb0b971c01": "Svängning",
+ "s3a38b97f7b": "{p0} – rum",
+ "@s3a38b97f7b": {
+  "x-mt": true
+ },
+ "se17d4e4197": "Hue Bridge och dess lampor (också Zigbee lampor parade till det). Par med bryggknappen.",
+ "@se17d4e4197": {
+  "x-mt": true
+ },
+ "sf83a145406": "I Hue-appen: Inställningar → Hue Bridges → (i) → IP-adress. Eller i routerns enhetslista: \"Philips-hue\".",
+ "@sf83a145406": {
+  "x-mt": true
+ },
+ "s80ee7a25a9": "Tryck på den stora runda knappen ovanpå Hue Bridge nu. Vänta här - det ansluter själv.",
+ "@s80ee7a25a9": {
+  "x-mt": true
+ },
+ "sa6ff717527": "Reläer och pluggar: Pro 4PM, Plus 1PM, Plug S, 2,5 ... Hittas automatiskt, kakel för varje kanal.",
+ "@sa6ff717527": {
+  "x-mt": true
+ },
+ "sd7e123cd2f": "I Shelly-appen: öppna enheten → växel (inställningar) → Enhetsinformation → IP-adress. Eller i routerns enhetslista: namnet börjar med \"helt...\".",
+ "@sd7e123cd2f": {
+  "x-mt": true
+ },
+ "sd8dfb25d31": "Shelly Cloud (ingen bro)",
+ "@sd8dfb25d31": {
+  "x-mt": true
+ },
+ "s350215338a": "Styr Shellys genom Shelly-molnet från var som helst. Du behöver bara nyckeln från Shelly-appen.",
+ "@s350215338a": {
+  "x-mt": true
+ },
+ "sb38eac6a87": "IKEA smart hub och dess lampor och pluggar (Zigbee). Par med knappen på navet.",
+ "@sb38eac6a87": {
+  "x-mt": true
+ },
+ "s4e92ab791e": "I IKEA Home smart app: Inställningar → Hub → IP-adress. Eller i routerns enhetslista: \"gw2-...\" eller \"dirigera\".",
+ "@s4e92ab791e": {
+  "x-mt": true
+ },
+ "s73824fc3d0": "Tryck på åtgärdsknappen på botten av Dirigera-navet en gång nu. Vänta här.",
+ "@s73824fc3d0": {
+  "x-mt": true
+ }
+}

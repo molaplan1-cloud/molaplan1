@@ -8,6 +8,7 @@ import '../core/fields.dart';
 import '../drivers/driver.dart';
 import '../models/models.dart';
 import 'provider.dart';
+import '../l10n/l10n.dart';
 
 class ShellyChannel {
   ShellyChannel(this.id, {this.name, this.hasPower = false, this.on, this.power});
@@ -142,14 +143,13 @@ ConnectionConfig shellyConnection(String address, ShellyDevice d, {String? passw
 
 /// One on/off tile per channel, plus a power tile for metered channels.
 List<TileConfig> shellyTiles(ConnectionConfig c, ShellyDevice d, {Map<String, String> names = const {}, Set<String> skip = const {}, bool power = true, String lang = 'fi'}) {
-  final fi = lang == 'fi';
   final tiles = <TileConfig>[];
   for (final ch in d.channels) {
     if (skip.contains('${ch.id}')) continue;
     final custom = names['${ch.id}']?.trim() ?? '';
     final title = custom.isNotEmpty
         ? custom
-        : ch.name ?? (d.channels.length == 1 ? (d.name ?? d.friendlyModel) : (fi ? 'Kanava ${ch.id + 1}' : 'Channel ${ch.id + 1}'));
+        : ch.name ?? (d.channels.length == 1 ? (d.name ?? d.friendlyModel) : tr(lang, 'Kanava ${ch.id + 1}', 'Channel ${ch.id + 1}'));
     final g1 = d.gen == 1;
     tiles.add(TileConfig(
       type: TileType.toggle,
@@ -164,7 +164,7 @@ List<TileConfig> shellyTiles(ConnectionConfig c, ShellyDevice d, {Map<String, St
     if (power && ch.hasPower) {
       tiles.add(TileConfig(
         type: TileType.value,
-        title: '$title – ${fi ? 'teho' : 'power'}',
+        title: '$title – ${tr(lang, 'teho', 'power')}',
         icon: 'bolt',
         connectionId: c.id,
         unit: 'W',
@@ -239,7 +239,6 @@ class ShellyProvider extends DeviceProvider {
     try {
       final dev = await probeShelly(d, havePassword: pw.isNotEmpty);
       final conn = shellyConnection(c.address, dev, password: pw);
-      final fi = ctx.lang == 'fi';
       return Connected(
         connection: conn,
         label: '${dev.friendlyModel}${dev.name != null ? ' – ${dev.name}' : ''}',
@@ -248,10 +247,10 @@ class ShellyProvider extends DeviceProvider {
           for (final ch in dev.channels)
             AddItem(
               key: '${ch.id}',
-              name: ch.name ?? (dev.channels.length == 1 ? (dev.name ?? dev.friendlyModel) : (fi ? 'Kanava ${ch.id + 1}' : 'Channel ${ch.id + 1}')),
+              name: ch.name ?? (dev.channels.length == 1 ? (dev.name ?? dev.friendlyModel) : tr(ctx.lang, 'Kanava ${ch.id + 1}', 'Channel ${ch.id + 1}')),
               hasPower: ch.hasPower,
               subtitle: [
-                if (ch.on != null) ch.on! ? (fi ? 'nyt päällä' : 'on now') : (fi ? 'nyt pois' : 'off now'),
+                if (ch.on != null) ch.on! ? tr(ctx.lang, 'nyt päällä', 'on now') : tr(ctx.lang, 'nyt pois', 'off now'),
                 if (ch.power != null) '${ch.power!.round()} W',
               ].join(' · '),
             ),
@@ -336,7 +335,6 @@ class ShellyCloudProvider extends DeviceProvider {
     if (key.isEmpty || server.isEmpty) throw AddDeviceError(AddProblem.cloudBadKey, 'missing');
     final conn = ConnectionConfig(name: 'Shelly Cloud', type: 'shelly_cloud', settings: {'server': server}, secrets: {'authKey': key});
     final d = ctx.driver(conn);
-    final fi = ctx.lang == 'fi';
     try {
       final ids = (creds['deviceIds'] ?? '').split(RegExp(r'[,\s]+')).map((s) => s.trim().toLowerCase()).where((s) => s.isNotEmpty).toList();
       List devices;
@@ -366,8 +364,8 @@ class ShellyCloudProvider extends DeviceProvider {
             hasPower: ch['power'] != null,
             subtitle: [
               '${dev['model'] ?? ''}'.trim(),
-              if (!online) fi ? 'ei yhteydessä pilveen' : 'offline',
-              if (ch['on'] != null) ch['on'] == true ? (fi ? 'päällä' : 'on') : (fi ? 'pois' : 'off'),
+              if (!online) tr(ctx.lang, 'ei yhteydessä pilveen', 'offline'),
+              if (ch['on'] != null) ch['on'] == true ? tr(ctx.lang, 'päällä', 'on') : tr(ctx.lang, 'pois', 'off'),
             ].where((s) => s.isNotEmpty).join(' · '),
           ));
         }
@@ -402,7 +400,7 @@ class ShellyCloudProvider extends DeviceProvider {
       if (power && it.hasPower) {
         out.add(TileConfig(
           type: TileType.value,
-          title: '$title – ${lang == 'fi' ? 'teho' : 'power'}',
+          title: '$title – ${tr(lang, 'teho', 'power')}',
           icon: 'bolt',
           connectionId: c.id,
           unit: 'W',

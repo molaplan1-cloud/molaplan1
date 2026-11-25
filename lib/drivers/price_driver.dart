@@ -184,9 +184,12 @@ class PriceDriver extends Driver {
   Future<String> test() async {
     final se = await service.get(zone, force: true);
     final now = DateTime.now();
-    return dtx(
-      '✓ Hinnat haettu alueelle $zone (${se.points.length} jaksoa, ${se.resolution ~/ 60} min, lähde ${se.source}). Huominen: ${se.hasTomorrow(now) ? 'kyllä' : 'ei vielä (julkaistaan n. klo 14)'}.',
-      '✓ Prices for $zone (${se.points.length} slots, ${se.resolution ~/ 60} min, source ${se.source}). Tomorrow: ${se.hasTomorrow(now) ? 'yes' : 'not yet'}.',
-    );
+    final tomorrow = se.hasTomorrow(now)
+        ? dtx('Huominen: kyllä.', 'Tomorrow: yes.')
+        : dtx('Huominen: ei vielä (julkaistaan n. klo 14).', 'Tomorrow: not yet (published around 14:00).');
+    return '${dtx(
+      '✓ Hinnat haettu alueelle $zone (${se.points.length} jaksoa, ${se.resolution ~/ 60} min, lähde ${se.source}).',
+      '✓ Prices for $zone (${se.points.length} slots, ${se.resolution ~/ 60} min, source ${se.source}).',
+    )} $tomorrow';
   }
 }

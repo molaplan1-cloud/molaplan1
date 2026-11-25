@@ -238,6 +238,7 @@ class AppConfig {
   static const formatVersion = 1;
   List<ConnectionConfig> connections;
   List<Dashboard> dashboards;
+  /// 'auto' (device language) or one of fi, en, sv, et, es.
   String language;
   bool onboardingDone;
 
@@ -263,7 +264,7 @@ class AppConfig {
   AppConfig({
     List<ConnectionConfig>? connections,
     List<Dashboard>? dashboards,
-    this.language = 'fi',
+    this.language = 'auto',
     this.onboardingDone = false,
     this.bridgeMode = false,
     this.relayUrl,
@@ -297,7 +298,7 @@ class AppConfig {
       throw const FormatException('Not a Molaplan configuration file');
     }
     return AppConfig(
-      language: (j['language'] ?? 'fi') as String,
+      language: (j['language'] ?? 'auto') as String,
       onboardingDone: (j['onboardingDone'] ?? false) as bool,
       bridgeMode: (j['bridgeMode'] ?? false) as bool,
       advanced: j['advanced'] == true,

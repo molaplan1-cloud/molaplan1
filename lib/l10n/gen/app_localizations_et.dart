@@ -1,0 +1,3498 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for Estonian (`et`).
+class AppLocalizationsEt extends AppLocalizations {
+  AppLocalizationsEt([String locale = 'et']) : super(locale);
+
+  @override
+  String get s03c0a5192b => 'Aadressi ei leitud';
+
+  @override
+  String get sb3ef01a6fa =>
+      'Kontrolli õigekirja. Proovi nime asemel IP- aadressi (nt 192. 168. 1. 50).';
+
+  @override
+  String get s274a753ad6 => 'Seadet ei leitud sellel aadressil';
+
+  @override
+  String get s2b503695b6 =>
+      'Kontrollige, kas seade on sisse lülitatud ja kas teie telefon või arvuti on samas WiFi-ühenduses. Kontrollige ka IP- aadressi – see võib muutuda, nii et reserveerige ruuteris kindel aadress.';
+
+  @override
+  String get sff9ca463e3 => 'Seade leiti, kuid port on suletud';
+
+  @override
+  String get s1d4f4506de =>
+      'Kontrollige pordi numbrit ja kas teenus (veebi UI, MQTT või Modbus TCP) on seadmes lubatud.';
+
+  @override
+  String get s8523a9cfd0 => 'Turvaline ühendus (https) nurjus';
+
+  @override
+  String get sdfd499c1f1 =>
+      'Proovige selle asemel http:// või lubage \"Luba ise allkirjastatud sertifikaat\" jaotises Advanced.';
+
+  @override
+  String get s3fabccc1cd => 'Sisselogimine, parool või token lükati tagasi';
+
+  @override
+  String get sdc2d65f8eb =>
+      'Kontrolli parooli. Koduabilisega saad luua uue pikaealise märgi oma profiilis.';
+
+  @override
+  String get se0a7cef6c4 => 'Seade vastas, kuid elementi ei leitud';
+
+  @override
+  String get see02239a35 =>
+      'Kontrollige asukohta või olemi nime (nt light.living_room).';
+
+  @override
+  String get sdec83d1e90 => 'Seade teatas veast';
+
+  @override
+  String get s3de239ffc5 => 'Kontrollige teed ja lasti.';
+
+  @override
+  String get s6121e8d8f1 => 'Tundmatu register seadmes';
+
+  @override
+  String get s3474aedf54 =>
+      'Kontrollige registrinumbrit. Kui tabel algab 1- st (nt 40001), lahutage 1. Kontrollige ka hoidmist vs sisendit.';
+
+  @override
+  String get s2c303f6774 => 'Registritüüp pole toetatud';
+
+  @override
+  String get s945685fcda => 'Proovi teist registritüüpi (sisend ↔).';
+
+  @override
+  String get s07ffbc349a => 'Seadme poolt tagasi lükatud väärtus';
+
+  @override
+  String get s76b95eef9f =>
+      'Väärtus on ilmselt väljaspool lubatud piire. Kontrolli ka skaalat.';
+
+  @override
+  String get sb66bc0e677 => 'Modbusi vastust ei ole';
+
+  @override
+  String get s6ef5539bc2 =>
+      'Ühendatud, kuid ei vasta. Kontrolli ühiku ID- d (sageli 1) ja lüüsi jadaseadistusi.';
+
+  @override
+  String get s17ea4c52d5 => 'Seadmelt vastust ei ole';
+
+  @override
+  String get s50ecf9ba6f =>
+      'Ühendatud, kuid ei vasta õigel ajal. Kontrolli teadet.';
+
+  @override
+  String get sf93db545a1 => 'Seadistustes on viga';
+
+  @override
+  String get sf19a9f0856 =>
+      'Kontrollige väljasid, nt et aadress algab http://-ga ja numbrid on numbrid.';
+
+  @override
+  String get s3976954bef => 'Sellel plaadil pole seadet';
+
+  @override
+  String get sc025e0a1f4 =>
+      'Avage redigeerimisrežiim (pliiats) ja valige plaatide seade.';
+
+  @override
+  String get s7e11595f9e => 'Kodusild on maas';
+
+  @override
+  String get s2cd1df086e =>
+      'Kaugjuurdepääs käib läbi koduse silla (tahvel või arvuti). Kontrolli, kas see on sisse lülitatud, Molaplan on avatud ja sellel on internet.';
+
+  @override
+  String get sdfb639365a => 'Internetiühendus puudub';
+
+  @override
+  String get sdbf06d05d9 =>
+      'Sinu seade ei pääse ligi Molaplani kaugteenusele. Kontrolli mobiilseid andmeid või Wi-Fi- d.';
+
+  @override
+  String get s8b737f4026 => 'Kaugjuurdepääs eemaldati';
+
+  @override
+  String get s4b9e4ca079 =>
+      'See seade eemaldati kodusillalt. Paar uuesti: Seadistused → Kaugjuurdepääs.';
+
+  @override
+  String get s5b3116ed94 => 'Kodusild ei vastanud õigel ajal';
+
+  @override
+  String get se082095a34 =>
+      'Ühendus võib olla aeglane. Proovi hetke pärast uuesti.';
+
+  @override
+  String get s688a4f4ccb => 'Kood ei ole kehtiv';
+
+  @override
+  String get sfa0e226cd0 =>
+      'Kontrolli 6 numbrit sillaekraanil. Kood kehtib 10 minutit ja töötab üks kord – vajadusel vajuta sillal uuesti \"Pane telefon\".';
+
+  @override
+  String get sfa5c1fb1ac => 'Sild ei aktsepteerinud seda seadet';
+
+  @override
+  String get s9ad07ab36e =>
+      'Koodiga sidumisel palub sild kinnitust – vajuta seal \"Nõustuge\". Või skaneerige QR-kood, siis pole kinnitust vaja.';
+
+  @override
+  String get sb5c271ae6a => 'Turvakontroll nurjus';
+
+  @override
+  String get s3d7ca280db =>
+      'Ühendust ei olnud võimalik kontrollida turvalisena, mistõttu seda ei kasutatud. Proovi uuesti QR- koodiga.';
+
+  @override
+  String get s0061b44673 => 'Sild ei vastanud';
+
+  @override
+  String get sceb894b9b3 =>
+      'Aktsepteerige seade silla ekraanil 3 minuti jooksul või skaneerige QR-kood.';
+
+  @override
+  String get s9dd2ff794f => 'Midagi läks valesti';
+
+  @override
+  String get sbb62433c2c => 'Kontrollige seadeid ja proovige uuesti.';
+
+  @override
+  String get s0bf7cb1613 => 'Philips Hue';
+
+  @override
+  String get se17d4e4197 =>
+      'Hue sild ja selle tuled (ka Zigbee tuled paaris). Paari sillanupuga.';
+
+  @override
+  String get sf83a145406 =>
+      'Hue rakenduses: Seadistused → Hue Bridges → (i) → IP- aadress. Või ruuteri seadmete loendis: \"Philips-hue\".';
+
+  @override
+  String get s80ee7a25a9 =>
+      'Klõpsa kohe Hue silla peal asuvale suurele ümmargusele nupule. Oota siin – see ühendub iseenesest.';
+
+  @override
+  String get s4dbb677293 => 'kättesaamatu';
+
+  @override
+  String get s609cb4c5f9 => 'sees';
+
+  @override
+  String get s356d822497 => 'väljas';
+
+  @override
+  String get sf50732e8e8 => 'hämardada';
+
+  @override
+  String s3832b8c729(String p0) {
+    return 'kogu tuba';
+  }
+
+  @override
+  String get see129fb410 => 'heledus';
+
+  @override
+  String s08d04d58a9(String p0) {
+    return 'Kanal $p0';
+  }
+
+  @override
+  String get se78754330c => 'võimsus';
+
+  @override
+  String get sfcb44be1a0 => 'Shelly';
+
+  @override
+  String get sa6ff717527 =>
+      'Releed ja pistikud: Pro 4PM, Plus 1PM, Plug S, 2.5... Leiti automaatselt, plaadid igale kanalile.';
+
+  @override
+  String get sd7e123cd2f =>
+      'Shelly rakenduses: open the device → gear (settings) → Device information → IP- aadress. Või ruuteri seadmete nimekirjas: nimi algab sõnaga \"shelly...\".';
+
+  @override
+  String get s5f2b2ca5f5 => 'praegu sees';
+
+  @override
+  String get s67f64cd925 => 'praegu väljas';
+
+  @override
+  String get sd8dfb25d31 => 'Shelly Cloud (sillata)';
+
+  @override
+  String get s350215338a =>
+      'Juhtige Shellyt kõikjalt läbi Shelly pilve. Selleks on vaja ainult Shelly rakenduse võtit.';
+
+  @override
+  String get s64037991c2 =>
+      'Shelly rakendus → sinu profiil → Kasutaja seaded → Autoriseerimispilve võti → Hangi võti. Kopeeri ja aseta siia.';
+
+  @override
+  String get s062b21969d =>
+      'Näidatakse samal lehel võtme all (\"Server URI\").';
+
+  @override
+  String get sf30bb5d5e6 =>
+      'Tavaliselt ei ole vaja. Kui midagi ei leita: Shelly app → device → settings → Device information → Device ID. Eralda mitu komadega.';
+
+  @override
+  String get s3aaacf80d2 => 'võrguühenduseta';
+
+  @override
+  String get s252ebed5af => 'Shelly Cloud';
+
+  @override
+  String get s25399cd337 => 'Server';
+
+  @override
+  String get s246c7a46ff =>
+      'Shelly app → Kasutaja seaded → Autoriseerimispilve võti → Server URI.';
+
+  @override
+  String get s61a2d946a4 => 'Pilvevõti';
+
+  @override
+  String get s9d468f5c64 =>
+      'Shelly app → Kasutaja seaded → Autoriseerimispilve võti → Hangi võti.';
+
+  @override
+  String get sf34c97592f => 'IKEA Dirigera';
+
+  @override
+  String get sb38eac6a87 =>
+      'IKEA nutisõlm ja selle tuled ja pistikud (Zigbee) Paari rummuga.';
+
+  @override
+  String get s4e92ab791e =>
+      'IKEA Home nutirakenduses: Seadistused → Hub → IP- aadress. Või ruuteri seadmete loendis: \"gw2-...\" või \"dirigera\".';
+
+  @override
+  String get s73824fc3d0 =>
+      'Vajuta kord Dirigera rummu allosas asuvat tegevusnuppu. Oota siin.';
+
+  @override
+  String get sa376ec78ec => 'Valgusti';
+
+  @override
+  String get sda8d9bf1cd => 'Pistikupesa';
+
+  @override
+  String get sb662db81d8 =>
+      'Aadress näib olevat ebatäielik. Kasuta nelja numbrit koos punktidega, nt 192.168.1. 50.';
+
+  @override
+  String s738ecfe2bc(String p0) {
+    return ' Kas sa mõtlesid $p0?';
+  }
+
+  @override
+  String s06e738bf27(String p0) {
+    return 'See ei ole koduvõrgu aadress (need algavad tavaliselt 192.168.). $p0';
+  }
+
+  @override
+  String sbae99909c4(String p0) {
+    return 'Märkus: see seade on sisse lülitatud $p0.x - seade võib olla teisel Wi-Fi-l.';
+  }
+
+  @override
+  String sa0c07ccd04(String p0) {
+    return 'Teil on kõige uuem versioon ($p0).';
+  }
+
+  @override
+  String get sa118d84538 =>
+      'Uuenduste kontrollimine pole praegu võimalik. Kontrolli internetiühendust ja proovi hiljem uuesti.';
+
+  @override
+  String s9f2b092d8c(String p0) {
+    return 'Versioon $p0 on saadaval';
+  }
+
+  @override
+  String sa5133b2c4a(String p0) {
+    return 'Sul on versioon $p0.';
+  }
+
+  @override
+  String get se099b5797e => 'Mis on uus:';
+
+  @override
+  String get s9315c3df42 => 'Jäta see versioon vahele';
+
+  @override
+  String get sdd5c8f0a9d => 'Hiljem';
+
+  @override
+  String get sfbf490ec3f => 'Uuenda';
+
+  @override
+  String get s5a94ef2af1 => 'Allalaadimine oli rikutud';
+
+  @override
+  String get s81e4325573 => 'Allalaadimine nurjus';
+
+  @override
+  String get s4b1d3df588 =>
+      'Faili kontrollsumma ei sobinud, nii et midagi ei paigaldatud. Palun proovi hetke pärast uuesti.';
+
+  @override
+  String get s0c463c7069 =>
+      'Kontrolli internetiühendust ja proovi uuesti. Uuenduse võib alla laadida ka väljalaskeleheküljelt.';
+
+  @override
+  String get s5dd4c9671f => 'Avamislehekülg';
+
+  @override
+  String get s49ddc3c3b6 => 'Allalaaditud uuendamine';
+
+  @override
+  String s04a05bb8fc(String p0) {
+    return 'Faili kontrollitakse ja salvestatakse:\n$p0\n\nEt seda kasutada:\n1. Sulge Molaplan.\n2. Tõmmake zip üle vana Molaplani kausta (või uude kausta).\n3. Käivita molaplan.exe. Seadistused säilitatakse.';
+  }
+
+  @override
+  String get s1dd246ec69 => 'Vabasta leht';
+
+  @override
+  String get s0f07b20d45 => 'Ava zip';
+
+  @override
+  String get s6e1ebc8baa => 'Ava kataloog';
+
+  @override
+  String get sa065e7f650 => 'Värskenduste paigaldamise lubamine';
+
+  @override
+  String get sdc3bf71baf =>
+      'Android küsib luba, et Molaplan saaks oma värskendused installida.\n\n1. Puudutus \"Avatud seaded\".\n2. Lülita sisse \"Luba sellest allikast\".\n3. Tule tagasi ja puuduta uuesti \"Uuenda\".';
+
+  @override
+  String get s809d0eb368 => 'Tühista';
+
+  @override
+  String get sa1bd8d2533 => 'Ava seaded';
+
+  @override
+  String get s441683b7a8 => 'Kontrollin...';
+
+  @override
+  String get se83b7fb2ac => 'Uuenduse allalaadimine...';
+
+  @override
+  String s0b68f81d82(String p0) {
+    return 'Molaplan $p0 on saadaval. Sild töötab edasi.';
+  }
+
+  @override
+  String get sb06bee9921 => 'Näita';
+
+  @override
+  String get sf1b5d0ffa6 => 'Parool ei sobi. Kirjuta oma konto parool.';
+
+  @override
+  String s11ee4426b2(String p0) {
+    return 'Midagi läks valesti: $p0';
+  }
+
+  @override
+  String get sbf59e43c36 =>
+      'Internetiühendus puudub. Kontrolli Wi-Fi või mobiilseid andmeid ja proovi uuesti.';
+
+  @override
+  String get s9ba7e7a8e6 =>
+      'Vale e- kiri või parool. Kontrolli neid või klõpsa nupule \"Unusta parool\".';
+
+  @override
+  String get se899b438b5 =>
+      'E- kiri ei ole veel kinnitatud. Otsi koodi oma e- kirjast.';
+
+  @override
+  String get s3fb651ebf3 =>
+      'Sellel kirjal on juba konto. Selle asemel logi sisse.';
+
+  @override
+  String get s1eddf46047 => 'Parool peab olema vähemalt 8 tähemärki.';
+
+  @override
+  String get sca19a10c02 => 'See ei näe välja nagu e-posti aadress.';
+
+  @override
+  String get s736463f0d2 =>
+      'Kood on vale või aegunud. Kontrolli seda või küsi uut.';
+
+  @override
+  String get s4800010fa4 =>
+      'Liiga palju katseid, oota üks hetk ja proovi uuesti.';
+
+  @override
+  String get sf1a6e42ab0 =>
+      'Teie sisselogimine aegus, palun kirjutage uuesti sisse.';
+
+  @override
+  String get sf597621fdd =>
+      'Teine seade muutis samal ajal seadistust. Proovi uuesti.';
+
+  @override
+  String get se16eef219e =>
+      'Kontoteenus ei vastanud korralikult. Proovige varsti uuesti.';
+
+  @override
+  String get s2ab0ff38c1 => 'Teie konto on juba seadistatud';
+
+  @override
+  String get s3ce644ca86 => 'Salvesta seadme seadistus oma kontole?';
+
+  @override
+  String get s43d6286f35 =>
+      'Sellel seadmel on ka oma seadmed ja plaadid. Mida me peaksime tegema?';
+
+  @override
+  String get sd8a380a86d =>
+      'Seejärel ilmuvad samad kodud, seadmed ja plaadid igale sellele kontole sisse logitud seadmele.';
+
+  @override
+  String get sec25d10ff5 => 'Tühistage ja logige sisse';
+
+  @override
+  String get sb7a13da58b => 'Konto seadistuse kasutamine';
+
+  @override
+  String get sf498dceefb => 'Mõlema kombineerimine (soovitatav)';
+
+  @override
+  String get s9542718c6f => 'Salvesta kontole';
+
+  @override
+  String get sa711c4833e => 'Kirjuta oma e-posti aadress.';
+
+  @override
+  String get s933dc9caef => 'Vähemalt 8 tähemärki.';
+
+  @override
+  String get sb3cec3f199 => 'Molaplani konto';
+
+  @override
+  String get sb24f053a48 => 'E-post';
+
+  @override
+  String get s976a9f2980 => 'Parool';
+
+  @override
+  String get sc0f9642fb2 => 'Näita parooli';
+
+  @override
+  String get s4d212254bc => 'E- posti kood';
+
+  @override
+  String get s3b86a618be =>
+      'Kood saabub mõne minuti pärast. Kontrolli ka rämpsposti kausta.';
+
+  @override
+  String get sb35c5ba0fc =>
+      'Kontoga on sinu kodud, seadmed ja plaadid kõigis seadmetes – arvutis, tahvelarvutis ja telefonis – ühesugused. Koduühendus liigub uude seadmesse ilma QR-koodita.\n\nKonto on vabatahtlik: ilma ühe Molaplanita töötab nagu varem ja seadistus jääb sellesse seadmesse.';
+
+  @override
+  String get se697487621 => 'Logi sisse';
+
+  @override
+  String get sec4d25a98e => 'Mul ei ole kontot - loo üks';
+
+  @override
+  String get s860d0269e0 => 'Logige sisse koodiga, mis saadetakse e-posti teel';
+
+  @override
+  String get s755639049e => 'Unustasin parooli';
+
+  @override
+  String get s4a1671a2cc => 'Molaplani konto loomine';
+
+  @override
+  String get s75c960f1e5 => 'Vali parool (8+ märki)';
+
+  @override
+  String get sea446a95e5 =>
+      'Parool kaitseb ka sinu seadme paroole ja pilvevõtmeid: need krüptitakse enne salvestamist selles seadmes. Hoidke seda turvaliselt.';
+
+  @override
+  String get s4508b6c2e0 => 'Loo konto';
+
+  @override
+  String s0ca1377846(String p0) {
+    return 'Saatsime koodi aadressile $p0. Kirjuta see allpool.';
+  }
+
+  @override
+  String get s07e981c940 => 'Mul on juba konto olemas – logi sisse';
+
+  @override
+  String get s2e793f899b => 'E- posti kinnitamine';
+
+  @override
+  String get s87b6699e12 => 'Kinnita';
+
+  @override
+  String get s824a7408ab => 'Saati uus kood.';
+
+  @override
+  String get s317ad443fb => 'Kood puudub – saada uus';
+
+  @override
+  String get scf7e14661c => 'Tagasi';
+
+  @override
+  String get s22c960ff4f => 'Sisselogimine koodiga';
+
+  @override
+  String get s7d29d1dfbd =>
+      'Me saadame sulle koodi, sisselogimiseks pole vaja parooli.';
+
+  @override
+  String get sc350da6f19 => 'Saada kood';
+
+  @override
+  String s23cda12342(String p0) {
+    return 'Kood saadetakse aadressile $p0.';
+  }
+
+  @override
+  String get s14d85b9e32 => 'Logi sisse';
+
+  @override
+  String get saa1e3d1f13 => 'Saada uus kood';
+
+  @override
+  String get s8c48f847f6 => 'Parool lähtestatakse';
+
+  @override
+  String get safd591d9b6 =>
+      'Me saadame teile koodi, seejärel valite uue parooli.';
+
+  @override
+  String get s6807ac704e => 'Uus parool (8+ märki)';
+
+  @override
+  String get sa9b5a0b2df => 'Parooli muutmine ja sisselogimine';
+
+  @override
+  String get se10ce6962a => 'Sünkroonin…';
+
+  @override
+  String get s94d5ea139c => 'Ajakohastatud kõigis oma seadmetes';
+
+  @override
+  String get sc6f1932436 =>
+      'Offline - muudatused sünkroonis, kui tagasi võrgus';
+
+  @override
+  String get s16ab688a9b => 'Sünkroniseerimine nurjus - proovitakse uuesti';
+
+  @override
+  String get s97d4aa9c1a => 'Pole veel sünkroniseeritud';
+
+  @override
+  String get s40ea946050 => 'Sisse logitud';
+
+  @override
+  String get s456721b668 => 'Sünkrooni kohe';
+
+  @override
+  String get sa9df24980f =>
+      'Seadme paroolid ja pilveklahvid on lukustatud. Kirjuta oma konto parool, et avada need selles seadmes.';
+
+  @override
+  String get sd1723cc065 => 'Konto parool';
+
+  @override
+  String get s9e9a059c2f => 'Vabastage';
+
+  @override
+  String get s8b2b8fdc77 => 'Ma unustasin selle - alustage paroolide üle';
+
+  @override
+  String get s5ec8009dfd =>
+      'Salvestatud kontole: kodud, seadmed, plaadid ja nende järjekord ning koduühendus. Seadme paroolid, pilveklahvid ja koduühenduse võtmed krüptitakse selles seadmes enne üleslaadimist sinu konto parooliga – server ei saa neid lugeda.';
+
+  @override
+  String get s2ea6f9de12 => 'Muuda parooli';
+
+  @override
+  String get s7ebd89c416 => 'Kirjutage alla?';
+
+  @override
+  String get s6c6165d662 =>
+      'Kodud ja plaadid jäävad sellesse seadmesse, kuid muudatused ei jõua enam teie teistesse seadmetesse.';
+
+  @override
+  String get s643325053b => 'Logi välja';
+
+  @override
+  String get sfd6f965e64 => 'Kustuta konto';
+
+  @override
+  String get s37bf90cffe =>
+      'Kustutab jäädavalt konto ja kõik serverisse salvestatud. See seade säilitab oma seadistused.';
+
+  @override
+  String get sc523d0f28e => 'Kustuta konto';
+
+  @override
+  String get s84fda3e17f => 'Tühista';
+
+  @override
+  String get s162a85c6ef => 'Salvesta';
+
+  @override
+  String get s02c3403918 => 'Vali uus parool.';
+
+  @override
+  String get s04ab058029 => 'Parool on muutunud.';
+
+  @override
+  String get s7c23534562 => 'Paroolide käivitamine';
+
+  @override
+  String get s5ea3703a0a =>
+      'Salvestatud seadme paroolid ja pilveklahvid lähevad kaotsi ning need tuleb uuesti sisestada. Kodud ja plaadid jäävad alles. Sisselogimise parool muutub uueks.';
+
+  @override
+  String get s321912ef77 => 'Kas kustutada konto jäädavalt?';
+
+  @override
+  String s3b0ea9bbc7(String p0) {
+    return 'Konto $p0 ja kõik serveris salvestatud kustutatakse. Seda ei saa tagasi võtta.\n\nSee seade töötab ilma kontota.';
+  }
+
+  @override
+  String get s139d2075b8 => 'Konto kustutatud.';
+
+  @override
+  String get sfb4df77773 => 'Anna nupule nimi.';
+
+  @override
+  String get s986eb41068 =>
+      'Pronto kasutamine: lisa dump: pronto kaugvastuvõtjale.';
+
+  @override
+  String s0d353281af(String p0) {
+    return 'Nupp \"$p0\" lisatud.';
+  }
+
+  @override
+  String get s8e4e78e067 => 'Õpeta pult';
+
+  @override
+  String get s2acab0eccd => 'Valmis';
+
+  @override
+  String get s608a56ad4b =>
+      'Salvestab Molaplanile kaugnupud, nt \"Turbo\". Lõhkeaine vajab infrapunavastuvõtjat.';
+
+  @override
+  String get sa1aed8855e => 'IR-i pult';
+
+  @override
+  String get sded7fb8520 => 'RF433 pult';
+
+  @override
+  String get sc8e312a953 =>
+      'RF433 = raadio kaugjuhtimispuldid (pesad, varikatused, garaažiuksed, ventilaatorid). IR = infrapunane (soojuspumbad, telerid).';
+
+  @override
+  String get s63c57060b6 => 'Puuduta \"Alusta kuulamist\".';
+
+  @override
+  String get s439f6f3869 =>
+      'Suuna pult lõhkaja juurde (alla 1 m) ja vajuta nuppu üks kord.';
+
+  @override
+  String get sd8667596c3 => 'Nimetage see ja koputage \"Salvesta kui nupp\".';
+
+  @override
+  String get sd5f1a45865 =>
+      'IR on ühesuunaline: soojuspump ei kinnita seda. Molaplan näitab ainult seda, mida ta saatis. Õppimine töötab koduvõrgus.';
+
+  @override
+  String get s628dc92a8d => 'Kuulamine... vajuta puldi nuppu';
+
+  @override
+  String get s1313eb829d => 'Alusta kuulamist';
+
+  @override
+  String get s619fdf8b5c => 'Kood vastu võetud';
+
+  @override
+  String get s6264a40ec6 => 'Nupu nimi';
+
+  @override
+  String get sc630994fba => 'Näidatud kui plaadi tiitel.';
+
+  @override
+  String get s09feac6b28 =>
+      'ESPHome ei saa võtta uusi koode üle võrgu. Lisa see seadmesse YAML, paigalda see ja salvesta nupp:';
+
+  @override
+  String get sd6f41faa1d => 'Kopeeri';
+
+  @override
+  String get s0a7c7a151a => 'Salvesta nupuna';
+
+  @override
+  String get s29adc71f1c =>
+      'CN105 pistik siselaual. ESPHome: esfome-mitsubishiheatpump.';
+
+  @override
+  String get s1d17c9fc6e =>
+      'S21 (enamik seinaplokke) või X50A. Faikin pistikud otse sisse; ESPHome: esphome-daikin-s21.';
+
+  @override
+  String get s07767f6a03 =>
+      'CN-CNT-pistik (kus läheb Panasonicu WLAN-i adapter). ESPHome: esfome- panasonic-ac.';
+
+  @override
+  String get s659b742754 =>
+      'Toshiba siseteenindusport. ESPHome: esphome- toshiba_ac.';
+
+  @override
+  String get s7c3bf9542b => 'Kirjuta seadme IP.';
+
+  @override
+  String sdfa6aedae8(String p0, String p1) {
+    return '\"$p0\" lisatud.';
+  }
+
+  @override
+  String get sbd2f94e7a4 => 'Soojuspump (teenindussadam/ESPHome)';
+
+  @override
+  String get s49b479c566 =>
+      'Parim viis: väike ESP32 siseseadme teeninduspordis. Erinevalt IR-ist on see kahesuunaline – reaalne olek ja toatemperatuur.';
+
+  @override
+  String get sc95a59f7c6 =>
+      'Ohutus: soojuspump lülitatakse vooluvõrgust välja enne siseseadme avamist. See võib mõjutada garantiid.';
+
+  @override
+  String get s7b7121b71e => 'Sadam kaubamärgi järgi';
+
+  @override
+  String get s67c1a8a6a3 => 'Sammud';
+
+  @override
+  String get s2f9c5f3130 => 'Hankige ESP32 kontroller ja kaabel.';
+
+  @override
+  String get s2675e49423 =>
+      'Flash ESPHome vastavalt projekti juhendile. Kaasa \"web_ server:\" – Molaplan kasutab seda.';
+
+  @override
+  String get scd70d27319 => 'Ühenda see väljalülitatud vooluga.';
+
+  @override
+  String get s56b0cb63ea =>
+      'Kirjutage selle IP allpool ja puudutage \"Leia soojuspumbad\".';
+
+  @override
+  String get sdd1cd7bdd5 => 'ESPHome kontrolleri IP';
+
+  @override
+  String get sa1e21d236a =>
+      'Ruuteri seadmete loendist või ESPHome armatuurlauast.';
+
+  @override
+  String get s1bef32afe0 => 'Soojuspumpade leidmine';
+
+  @override
+  String get s9aa9bc9679 => 'Seade vastas, kuid sellel ei ole kliimaüksust.';
+
+  @override
+  String get s5a40f12b6a => 'Lisa';
+
+  @override
+  String get s306729fe62 => 'Hindadeta';
+
+  @override
+  String get s29fd8d5b5e => 'Praegu';
+
+  @override
+  String get s723c887da6 => 'min';
+
+  @override
+  String get scaaff6345d => 'max';
+
+  @override
+  String get s65982a11bc => 'sh homme';
+
+  @override
+  String get se79acaf837 => 'homme pärast 14.00';
+
+  @override
+  String get s55d52c5ae1 => 'See seade ei ole Wi-Fi-s';
+
+  @override
+  String s9a4dece965(String p0) {
+    return 'Ühenda see seade oma kodu Wi-Fi- ga (see, mida $p0 kasutab). Või kui oled eemal, seadista kodusild nii, et otsing käiks koduses seadmes.';
+  }
+
+  @override
+  String get s3972820cd6 => 'Seadmeni jõudmine nurjus';
+
+  @override
+  String s0f480abb4a(String p0) {
+    return 'Seadme jõudmine asukohta $p0 nurjus';
+  }
+
+  @override
+  String sa82143ee02(String p0, String p1) {
+    return '1. Kontrolli, kas $p0 on sisse lülitatud.\n2. See seade (või kodusild) peab olema samal Wi-Fi-l.\n3. Kontrolli aadressi – see võib muutuda. Kliki \"Tagasi\" ja otsi uuesti.';
+  }
+
+  @override
+  String get sd4d7ad1bab => 'Vastas teine seade';
+
+  @override
+  String s5b7d02a301(String p0) {
+    return 'Seade sellel aadressil ei ole $p0. Kontrolli aadressi.';
+  }
+
+  @override
+  String get sdac5622fa8 => 'Seade küsib parooli';
+
+  @override
+  String get sbf9ee8aaec =>
+      'Seadmele on määratud parool. Kirjuta see alla ja klõpsa nupule \"Ühenda\".';
+
+  @override
+  String get s83f57c7c24 => 'Vale parool';
+
+  @override
+  String get s32e85a0ba2 =>
+      'Kontrolli parooli (juhtumiküsimused). Seda saab muuta seadme rakenduses.';
+
+  @override
+  String get sb1d36bfdd3 => 'Nuppu ei vajutatud õigel ajal';
+
+  @override
+  String get sc994f6ec6e =>
+      'Puudutage \"Proovige uuesti\" ja seejärel vajutage nuppu kohe.';
+
+  @override
+  String get s663202243e => 'Midagi, mida kontrollida, ei leitud';
+
+  @override
+  String get sb03997d94b =>
+      'Seade vastas, kuid sellel ei ole lüliteid ega tulesid. Pilve jaoks kirjuta seadme ID.';
+
+  @override
+  String get s869571042f => 'Pilvevõti või server ei ole aktsepteeritud';
+
+  @override
+  String get sab1763c592 =>
+      'Kopeeri võti ja server uuesti Shelly rakendusest (Kasutaja seaded → Autoriseerimispilve võti).';
+
+  @override
+  String get s855ffbfd24 => 'Pilveni jõudmine nurjus';
+
+  @override
+  String get s739d569a9c => 'Kontrolli internetiühendust.';
+
+  @override
+  String get sc96a3502b5 => 'Liiga palju taotlusi';
+
+  @override
+  String get sed917dc2a2 => 'Pilvepiirangud nõuavad, oota korraks.';
+
+  @override
+  String get s516dbdd784 => 'Kodusild on aegunud';
+
+  @override
+  String get s70089507bf =>
+      'Uuenda Molaplan sillal (Seaded → Kontrolli värskendusi).';
+
+  @override
+  String get scc1918f2dc =>
+      'Kontrollige, kas sild kodus on sisse lülitatud, Molaplan on avatud ja sellel on internet.';
+
+  @override
+  String get sce0949d6fc => 'Kui see jätkub, käivitage seade uuesti.';
+
+  @override
+  String get sce6d01c270 => 'Kirjuta aadress esimesena';
+
+  @override
+  String get s65bbf3cab4 => 'Kontrolli aadressi';
+
+  @override
+  String sb711cc1ce2(String p0, String p1) {
+    return '$p0 ei ole koduvõrgu aadress. Tavaliselt algavad need 192. 168- ga – kontrolli seda uuesti rakenduses $p1.';
+  }
+
+  @override
+  String se60794c266(String p0) {
+    return 'Kas sa mõtlesid $p0?';
+  }
+
+  @override
+  String get s264fda2dee => 'Ma teen selle korda';
+
+  @override
+  String get s0a6098ac78 => 'Proovige';
+
+  @override
+  String sc1039f5cf6(String p0) {
+    return 'Kasuta $p0';
+  }
+
+  @override
+  String get s20f777bfef => 'Aadress on teises võrgus';
+
+  @override
+  String sbb1730fa00(String p0, String p1, String p2, String p3) {
+    return 'Aadress $p0 ei ole selle seadmega samas võrgus ($p1. x). Tavaliselt on see seade erineval Wi-Fi- l kui $p2.\n\nLiituge sama Wi-Fi-ga või seadistage kodu sild.';
+  }
+
+  @override
+  String get s43370d968c => 'Täitke esimesena';
+
+  @override
+  String get s915c9a0db3 => 'Vali vähemalt üks';
+
+  @override
+  String sb160156a36(String p0) {
+    return 'Lisa: $p0';
+  }
+
+  @override
+  String get s6c3e76828b => 'Edasi';
+
+  @override
+  String get s43d448a950 => 'Lisa kodu vaatesse';
+
+  @override
+  String get sd890121a57 => 'Koduvaate näitamine';
+
+  @override
+  String get sb1717cc67c => 'A. Ilma kodusillata';
+
+  @override
+  String get s2082568a23 => 'Shelly Cloudi kasutamine (sillata)';
+
+  @override
+  String get s5080d486b8 =>
+      'Parim, kui ükski seade ei jää alati koju – nt tahvelarvuti liigub koos sinuga. Juhtimine käib Shelly enda pilve kaudu. Sul on vaja Shelly rakenduse võtit (me näitame, kus).';
+
+  @override
+  String get s82985d5078 => 'B. Läbi kodusilla';
+
+  @override
+  String get s78aec2034d =>
+      'Kuidas sa kontrollid oma kodu, kui oled kodust eemal?';
+
+  @override
+  String s03b3c3b3c8(String p0) {
+    return 'Kodusild on seade, mis ALATI jääb koju, on sisse ja sisse lülitatud samasse Wi-Fisse nagu $p0 – nt vana telefon, tahvelarvuti või arvuti. Teie muud seadmed jõuavad selleni interneti kaudu (krüptitud, porti ei edastata). Seade, mida te kannate, ei ole hea sild.';
+  }
+
+  @override
+  String get s688d1308d7 =>
+      'Kui olete sisse logitud, jõuab koduühendus automaatselt kõigisse teie seadmetesse.';
+
+  @override
+  String get s96feb2f60a => 'See seade jääb alati koju - tee sellest sild';
+
+  @override
+  String get sb2a33a1ec4 =>
+      'Hoidke selle laadimine Molaplaniga lahti. Teised seadmed ühenduvad QR-koodiga või logivad sisse samale kontole.';
+
+  @override
+  String get s1b9f4ae6d5 => 'Sild on teisel seadmel - ühendage see sellega';
+
+  @override
+  String get s13d739b710 =>
+      'Silla QR- koodi skaneerimine. Seadmed leitakse siis läbi silla isegi siis, kui oled eemal.';
+
+  @override
+  String get sda6a1e50e9 =>
+      'Jäta kohe vahele – lisa koduvõrku (kaugjuurdepääsu saab seadistada hiljem)';
+
+  @override
+  String s6f326a48f9(String p0) {
+    return 'Leidmine: $p0';
+  }
+
+  @override
+  String get sc788897ba0 =>
+      'Otsides läbi kodu silla, töötab see ka kodust eemal.';
+
+  @override
+  String get s0f7361f40c => 'Vaatan sinu kodu Wi-Fi-d.';
+
+  @override
+  String get sda2b4c9721 => 'Ava Wi-Fi seadistused';
+
+  @override
+  String get sc93d9cc14b => 'Ühendatud - otsi uuesti';
+
+  @override
+  String get s13f0596b74 => 'Otsimine... (umbes 5 sekundit)';
+
+  @override
+  String get saae59a3865 => 'kodusilla kaudu';
+
+  @override
+  String s8eabd27f68(String p0, String p1) {
+    return 'Automaatselt ei leitud midagi. Kontrolli, kas $p0 on samal Wi-Fi- l. Allpool saab kirjutada ka aadressi.';
+  }
+
+  @override
+  String get s2fc39b0bd7 => 'Otsi uuesti';
+
+  @override
+  String get sa616ab181e => 'Kirjuta aadress';
+
+  @override
+  String get sb439b8abc3 => 'Või sisestage aadress';
+
+  @override
+  String get s178e07f06b => 'IP-aadress';
+
+  @override
+  String get scf487a3699 => 'Kust ma selle leian?';
+
+  @override
+  String get s9b9b0d01a2 => ' (valikuline)';
+
+  @override
+  String get s0a7134d0e3 => 'Vajuta nüüd nuppu';
+
+  @override
+  String s43118959d5(String p0) {
+    return '$p0';
+  }
+
+  @override
+  String get sba10f23f03 => 'Ühendan…';
+
+  @override
+  String get se4095d7d95 => 'Seadme parool';
+
+  @override
+  String get sdbdf676485 => 'Ühenda';
+
+  @override
+  String get s200542b930 => 'Proovi uuesti';
+
+  @override
+  String get s8f610a3bb2 => 'Ma olen kodust eemal';
+
+  @override
+  String get sf77125583f => 'Tehnilised üksikasjad';
+
+  @override
+  String s77ec7b376b(String p0) {
+    return 'Leitud: $p0';
+  }
+
+  @override
+  String get sac4debdb9c => 'Valige, mis toimub koduvaates ja nimetage need.';
+
+  @override
+  String get sb1924acbe7 => 'Nimi';
+
+  @override
+  String get s86c3f92546 => 'Lisa ka heledust/võimsust';
+
+  @override
+  String get s91571486e4 => 'Näidatakse ka võimsust (W)';
+
+  @override
+  String sf86536db42(String p0) {
+    return 'Tehtud! $p0 lisatud plaadid';
+  }
+
+  @override
+  String get sbfaea66122 =>
+      'Plaadid töötavad kodus ja eemal pilve kaudu - midagi muud ei ole teha.';
+
+  @override
+  String get se7c68b3bed =>
+      'Plaadid töötavad kodus ja eemal läbi kodusilla - midagi muud ei ole teha.';
+
+  @override
+  String get sbc8469cce1 =>
+      'Plaadid töötavad sinu koduvõrgus, et juhtida ükskõik kust, pane kodusild valmis.';
+
+  @override
+  String get s856a422504 => 'Kaugjuurdepääsu seadistamine';
+
+  @override
+  String get sd9923cda70 => 'Lülitage kaugjuurdepääs sisse';
+
+  @override
+  String get s876c7230a2 => 'Lisa seade';
+
+  @override
+  String get s1e593aeca2 => 'Sulge';
+
+  @override
+  String get s3d00dee1a9 => 'Kasuta';
+
+  @override
+  String get sa252f06bff =>
+      'Vali oma seadme kaubamärk, Molaplan leiab selle ja loob plaadid.';
+
+  @override
+  String get s5b3b5e5a24 =>
+      'Otsingu kaubamärk või seade (nt Shelly, Hue, IKEA)';
+
+  @override
+  String get sa427be10c9 => 'Otsi ja ühendu automaatselt';
+
+  @override
+  String get s6f4cc0844f => 'Tulemas – kuidas seda täna kasutada';
+
+  @override
+  String get s846ee3bc67 => 'Muud seadmed';
+
+  @override
+  String get s2a9b6fedd9 => 'Ei leia oma kaubamärki?';
+
+  @override
+  String get scfc7244d06 =>
+      'Husqvarna, Zigbee, Tuya, soojuspumbad... vaata, kuidas neid täna kasutada.';
+
+  @override
+  String get sf7b77783e5 => 'Muu (käsitsi seadistus)';
+
+  @override
+  String get sc168355ee6 => 'Muu seade (täpsem)';
+
+  @override
+  String get s3022f72ece => 'Kõik ühenduse tüübid.';
+
+  @override
+  String get s2d1d488d6d => 'Tehnilistele kasutajatele.';
+
+  @override
+  String get s6f1c11270c => 'Sisaldab näiteseadistusi';
+
+  @override
+  String get s8f4c0baf1a =>
+      'Automaatselt ei leitud ühtegi seadet. Kirjuta aadress ise – leia see ruuterist või seadme rakendusest.';
+
+  @override
+  String get s104238f11e => 'Leitud seadmed – vali enda omad:';
+
+  @override
+  String get sd5f9dce947 => 'Otsing ei ole selles võrgus saadaval.';
+
+  @override
+  String get s26abc57d91 => 'Õpetada puldi nupud?';
+
+  @override
+  String get sc709f38633 =>
+      'Põhijuhtimine juba toimib. Õpetada võib ka teisi kaugnuppe, näiteks \"Turbo\".';
+
+  @override
+  String get s6cac83dd5e => 'Mitte praegu';
+
+  @override
+  String get s97ea2eeb11 => 'Õpeta kohe';
+
+  @override
+  String get s09cfb7b2a1 => 'Seade lisatud';
+
+  @override
+  String sda9574390f(String p0) {
+    return 'Lisatud seade ja $p0 plaadid';
+  }
+
+  @override
+  String get sd51ee1ec8d =>
+      'Eelseadistused on näited. Kontrolli neid enne nende kasutamist seadme kasutusjuhendis.';
+
+  @override
+  String get s566585dc66 =>
+      'IR on ühesuunaline: soojuspump ei kinnita. Molaplan saadab alati kogu oleku ja näitab, mida ta saatis. Õpi teisi kaugnuppe hiljem: ühendused → blaster → \"Õpi kaugjuhtimispult\".';
+
+  @override
+  String get s0dd21e026c => 'Juhend ja automaatne otsing';
+
+  @override
+  String get s695a011cc1 => 'Otsin…';
+
+  @override
+  String get s47d409fddd => 'Otsinguvõrk';
+
+  @override
+  String get s7196b72140 =>
+      '⁇  Puudub emakeelne Modbus TCP - RS485 → TCP-värav on vajalik.';
+
+  @override
+  String get s2e8ba44677 => 'Allikas';
+
+  @override
+  String get sceb8e47d07 => 'Testi ühendust';
+
+  @override
+  String get s02ce5f4a01 => 'Töötab!';
+
+  @override
+  String get sb9e9e55164 => 'Need plaadid luuakse';
+
+  @override
+  String get s1cb2891ef2 =>
+      'Täitke väljad, mis on tähistatud *-ga, et näha plaate.';
+
+  @override
+  String get s504861ee78 =>
+      'Valmis plaate pole - saate neid hiljem pliiatsi nupuga lisada.';
+
+  @override
+  String get s1094266d4c => 'Näitab väärtust';
+
+  @override
+  String get sf6ae3f3323 => 'Lüliti';
+
+  @override
+  String get s20dad69675 => 'Nupp';
+
+  @override
+  String get s0e9f94df05 => 'Liugur';
+
+  @override
+  String get s109b454866 => 'Kaameravaade';
+
+  @override
+  String get s37153e0e80 => 'Täpsemad seaded';
+
+  @override
+  String get s0ca55a9cae =>
+      'Teised seadmed kasutavad tehnilisi seadistusi (HTTP, MQTT, Modbus...). Kui sinu kaubamärk on kirjas, kasuta seda.\n\nLisaseadistuste sisselülitamine? Neid saab seadistustes välja lülitada.';
+
+  @override
+  String get s9630135746 => 'Lülita sisse';
+
+  @override
+  String get s2ad22696ca => 'Keel';
+
+  @override
+  String get s7efc5653d2 => 'Seadme keel';
+
+  @override
+  String get s4529c1010a => 'Kaameraühenduse valimine';
+
+  @override
+  String get sc95fb5440b => 'Stream lõppes';
+
+  @override
+  String get s6e700ae773 => 'Hinnajuhtimine eemaldatud';
+
+  @override
+  String get s5aa3400a7a => 'Hinnajuhtimine salvestatud';
+
+  @override
+  String get s2f5410429b =>
+      'Reegel töötab sellel seadmel (kodusillal). Hoia see kodus sees.';
+
+  @override
+  String sb86a43361f(String p0) {
+    return 'Reegel töötab kodusillal - teie telefon võib olla välja lülitatud.';
+  }
+
+  @override
+  String get s4e35ba5321 =>
+      'Kodusild veel puudub. Reegel salvestatakse, kuid töötab ainult siis, kui alati kodus olev tahvelarvuti või arvuti on sild (Seaded → Kaugjuurdepääs).';
+
+  @override
+  String s1a9e9bead3(String p0) {
+    return 'Hinnakontroll: $p0';
+  }
+
+  @override
+  String get s6b609c3376 => 'Millal peab see sees olema?';
+
+  @override
+  String get s93e5435cf4 => 'Hinnajuhtimine puudub';
+
+  @override
+  String get s55e5c3a177 => 'Mitu tundi sees';
+
+  @override
+  String get s52ef5e0b45 => 'Hinnapiir';
+
+  @override
+  String get s993193d056 => 'Tulevased sees-ajad';
+
+  @override
+  String get s2f7c00a89e => 'Hinnad pole praegu saadaval.';
+
+  @override
+  String get s406e599999 =>
+      'Järgmisel päeval ei ole aega (või homsed hinnad ei ole veel väljas).';
+
+  @override
+  String get s140acccb81 => 'Täna';
+
+  @override
+  String get s0de6e75a52 => 'Homme';
+
+  @override
+  String sf87d92faf4(String p0, String p1) {
+    return 'Hinnapiirkond $p0. Järgmise päeva hetkehinnad koos käibemaksuga $p1 %. Lisage pindala ja tasude muutmiseks seade \"Elektrihind\".';
+  }
+
+  @override
+  String get s2adc3a77ed => 'Vali ühenduse tüüp';
+
+  @override
+  String get s78d94155f1 => 'Ühendused';
+
+  @override
+  String get s776d8b06bf => 'Uus ühendus';
+
+  @override
+  String get sc6d89693a5 =>
+      'Puuduvad ühendused. Lisage seade või teenus, nt ventilatsiooniseade (Modbus), koduabiline või kaamera.';
+
+  @override
+  String get s07c82cb0af => 'Nõutav väli';
+
+  @override
+  String get sf702cf0ac6 => 'Kustuta ühendus?';
+
+  @override
+  String s6b83de0ab9(String p0) {
+    return '$p0 plaadid kasutavad seda ühendust ja lõpetavad töötamise.';
+  }
+
+  @override
+  String get sccd1325381 => 'Ühendus eemaldatakse sellest seadmest.';
+
+  @override
+  String get sc1845eb440 => 'Kustuta';
+
+  @override
+  String get s837e0fc5e6 =>
+      'IR on ühesuunaline: soojuspump ei kinnita käske. Plaadid näitavad viimast saadetud olekut.';
+
+  @override
+  String get s09737988fd => 'Ühendus töötab!';
+
+  @override
+  String get s0a972aa85e =>
+      'Paroolid ja märgid salvestatakse seadme turvalises hoiuruumis.';
+
+  @override
+  String get s229f981388 => 'Kodusild';
+
+  @override
+  String get sfc2dc8fc36 => 'Sild: ühenduseta';
+
+  @override
+  String get sdedbb30a67 => 'Kodus';
+
+  @override
+  String get s9d64d4c166 => 'Kaug';
+
+  @override
+  String get s1f8cf57b2c => 'Ühendus puudub';
+
+  @override
+  String get s678a751265 => 'Ühenda see seade koju';
+
+  @override
+  String get sdae0305965 =>
+      'Kodusild (tahvel või PC) on juba olemas. Skaneeri selle QR- koodi või kirjuta 6 numbrit.';
+
+  @override
+  String get s5f8284b98f => 'Tee sellest seadmest kodusild';
+
+  @override
+  String get s6a95f7843b =>
+      'See seade jääb koju, alati sisse (laadija + Wi-Fi) ja edastab teie seadmetele kaugkäske.';
+
+  @override
+  String get s2c3ae5833b => 'Muud viisid: VPN, Nabu Casa, cloud MQTT';
+
+  @override
+  String get s807e3a32f3 =>
+      'Step-by-step juhendid, kui te juba kasutate Tailscale, WireGuard, Home Assistant Cloud või cloud MQTT.';
+
+  @override
+  String get sa3e78d5c4e => 'Kodusild vastab - kaugjuurdepääs töötab.';
+
+  @override
+  String get s370acd310d => 'Kaugjuurdepääs';
+
+  @override
+  String get s0b57661c18 => 'Kontrolli oma kodu igal pool';
+
+  @override
+  String get sb43ef4094c =>
+      'Kodus suhtleb Molaplan otse sinu seadmetega. Mujal krüptitakse see läbi sinu kodusilla – pordi edasisuunamist ega ruuteri seadistusi ei ole. Rakendus valib automaatselt õige tee.';
+
+  @override
+  String get s075e5a4864 => 'Ühendatud koduga';
+
+  @override
+  String get sa7679488fb =>
+      'Kodus = otse. Kaugus = läbi kodusilla. Ühendus puudub = ei vastused.';
+
+  @override
+  String get s19cec9667e => 'Kaugjuurdepääsu testimine';
+
+  @override
+  String get s86ad95fa48 => 'Kopeeri kodu armatuurlauad';
+
+  @override
+  String get sfaa5185b74 => 'Eemaldage kaugjuurdepääs?';
+
+  @override
+  String get sbc44ce6993 =>
+      'See seade ei saa siis enam väljastpoolt koju jõuda. Paarida võib igal ajal uuesti.';
+
+  @override
+  String get s9593939a4c => 'Eemalda';
+
+  @override
+  String get s3563cb1635 => 'Eemalda kaugjuurdepääs';
+
+  @override
+  String get s528c4f3a4c => 'See seade on kodusild';
+
+  @override
+  String get se7b8d659b5 => 'Täpsem';
+
+  @override
+  String get sfd263f3e04 => 'Kaamera värskendab kaugjuhtimispuldi korral';
+
+  @override
+  String s99249ddf24(String p0) {
+    return 'Kaugjuhtimisega näitab kaamera pilti iga $p0 s (salvestab andmed).';
+  }
+
+  @override
+  String get s451ea613dd => 'Redaktor';
+
+  @override
+  String get s72da730a42 => 'Kaugteenus: ühendatud';
+
+  @override
+  String get s421f161f5b => 'Ühendamine kaugteenusega...';
+
+  @override
+  String get s88e2b1dad5 =>
+      'Puudub ühendus kaugteenusega – proovitakse automaatselt uuesti. Kontrolli internetiühendust.';
+
+  @override
+  String get scc0cccf89d => 'Väljas';
+
+  @override
+  String get sa1d085d92c => 'Kodusillal ei ole armatuurlaudu kopeerida.';
+
+  @override
+  String sa13ef6f8d9(String p0) {
+    return 'Koopia: $p0 armatuurlauad';
+  }
+
+  @override
+  String sab5e7202f5(String p0) {
+    return 'Ühendatud \"$p0\"-ga!';
+  }
+
+  @override
+  String get s30f06b7fb0 =>
+      'Nüüd saad oma kodu juhtida kõikjalt. Kopeeri kodusilla armatuurlauad ja seadmed ka sellesse seadmesse?';
+
+  @override
+  String get s641263ce18 => 'Ei, aitäh';
+
+  @override
+  String get sa7a6c0fc2d => 'ei ole Molaplan kood';
+
+  @override
+  String get se2ecf1935a => 'Ühenda koduga';
+
+  @override
+  String get s410655fd47 => 'Kuidas ühendada';
+
+  @override
+  String get s3a141e0c32 =>
+      'Kodusillal (tablett või PC kodus) avatud Molaplan → Seaded → Kaugjuurdepääs → Tee see seade kodusillaks.';
+
+  @override
+  String get sc7c83b2f58 =>
+      'Vajuta sinna \"Pair a phone\". Ilmub QR-kood ja 6 numbrit.';
+
+  @override
+  String get s35284509d4 =>
+      'Skaneerige QR-koodi või kirjutage allpool olevad numbrid.';
+
+  @override
+  String get s66bb65d8e8 => 'QR- koodi skaneerimine';
+
+  @override
+  String get se97cc157ef => 'või sisestage kood';
+
+  @override
+  String get s643434044c =>
+      'Koodi kasutamisel vajutage ka kodusillal \"Accept\".';
+
+  @override
+  String get s9753766742 => 'Vajuta \"Aktsepti\" kodusilla ekraanile...';
+
+  @override
+  String get s50e49dd1df => 'Suuna kaamera QR-koodile';
+
+  @override
+  String s5d717bb2c5(String p0) {
+    return 'Kaamera kasutamine nurjus ($p0). Kaamera kasutamise lubamine või koodi kirjutamine.';
+  }
+
+  @override
+  String s7132345f20(String p0) {
+    return 'Seade \"$p0\" ühendatud!';
+  }
+
+  @override
+  String get sb38b582dab => 'Kodusild';
+
+  @override
+  String get se2e2af02ac =>
+      'Kodusild on seade, mis jääb kodus sisse, nt vana tahvelarvuti või arvuti. Kui oled eemal, krüptitakse telefoni käsud selle kaudu sinu seadmetesse.';
+
+  @override
+  String get sd64f52490d => 'Hoidke seda laadijal ja kodus Wi-Fi-l.';
+
+  @override
+  String get sbb23f25581 =>
+      'Hoidke Molaplan lahti. Ekraan jääb sisse, kuni sild on peal.';
+
+  @override
+  String get sbfed096278 => 'Kasutage seda seadet kodusillana';
+
+  @override
+  String get s13995350ed => 'Seo telefon';
+
+  @override
+  String get s6a74454a98 => 'Paaritud seadmed';
+
+  @override
+  String get s1e4fc2e7fe => 'Veel mitte. Vajuta \"Pange telefon\".';
+
+  @override
+  String get s7ea55c5834 => 'Lisatud';
+
+  @override
+  String sfd8d693d04(String p0) {
+    return 'Eemalda \"$p0\"?';
+  }
+
+  @override
+  String get s84572f642e =>
+      'Seade ei saa siis enam kaugühendust luua. Seda saab uuesti paari panna.';
+
+  @override
+  String get sc58a7d7121 => 'Kodu nimi';
+
+  @override
+  String get s9715416100 => 'Skaneeri telefoniga';
+
+  @override
+  String get sf54c6d871c =>
+      'Telefonis: Molaplan → Seaded → Kaugjuurdepääs → Ühendage see seade kodus';
+
+  @override
+  String get sf7fa9632f3 => 'Kehtib';
+
+  @override
+  String get s5378bb3f05 => 'Nõustuge selle seadmega?';
+
+  @override
+  String s1d8bb7b0a6(String p0) {
+    return '\"$p0\" wants remote control of your home. Accept only if it is your own or a family member\'s device that just entered the code.';
+  }
+
+  @override
+  String get sa04c218f82 => 'Keeldu';
+
+  @override
+  String get sdfaf8c242b => 'Nõustu';
+
+  @override
+  String get s1cf33c1fbc => 'Väärtus';
+
+  @override
+  String get s86029171be => 'Sisse/välja';
+
+  @override
+  String get s4ddce888df => 'Nupp / otsetee';
+
+  @override
+  String get s357fc9c3fe => 'Liugur / setpoint';
+
+  @override
+  String get seeb6c38c8e => 'Kaamera';
+
+  @override
+  String get s14da6beba5 => 'Näitab näitu, nt temperatuuri.';
+
+  @override
+  String get se4b1d203df => 'Sisse/väljalülitatud, nt tuli või häire.';
+
+  @override
+  String get sc2197ab417 => 'Üks kraan teeb ühte või mitut asja.';
+
+  @override
+  String get sd611704caf => 'Väärtuse, nt temperatuuri reguleerimine.';
+
+  @override
+  String get sacfc0c0b41 => 'Näitab kaamera pilti.';
+
+  @override
+  String get s76e7a995de => 'Väärtusloetelu';
+
+  @override
+  String get sc5edd6d3d1 => 'Uus paan';
+
+  @override
+  String get sa684fd0716 => 'Muuda paani';
+
+  @override
+  String get s8a8673aafe => 'Pealkiri';
+
+  @override
+  String get scf37cbeda8 => 'Ikoon';
+
+  @override
+  String get sa444aab286 => 'Automaatne';
+
+  @override
+  String get sfeab9bd26f => 'Laius';
+
+  @override
+  String get s58be670598 => 'Kõrgus';
+
+  @override
+  String get sea30815e6a =>
+      'Tehnilised plaatide seaded ilmuvad, kui lülitate Seadistustes sisse \"Advanced\".';
+
+  @override
+  String get s382afc832f => 'Osariigi allikas';
+
+  @override
+  String get s581aee3e96 => 'Valikuline: kus loetakse praegust olekut.';
+
+  @override
+  String get se6b18b17d9 => 'Polli intervall (s, 0 = puudub)';
+
+  @override
+  String get s01f2b1ee0c =>
+      'MQTT, Home Assistant ja WebSocket värskendus otse ilma küsitlusteta.';
+
+  @override
+  String get s937448ecf5 => 'Test loe edasi';
+
+  @override
+  String get s5cbdea7f7e => 'Kuvamine';
+
+  @override
+  String get se6af4b33df => 'Ühik';
+
+  @override
+  String get sd5498697da => 'Kümnendkohad';
+
+  @override
+  String get s4f7007db78 => 'Väärtusnimed';
+
+  @override
+  String get s4aae179c52 => '0=Off;1=Home;2=Away';
+
+  @override
+  String get s0c12fda7ca => 'Käskude lülitamine';
+
+  @override
+  String get s3a9d9e16ef => '\"On\" väärtused (koma eraldatud, tühi = auto)';
+
+  @override
+  String get s1509c5a2a6 => 'käsuliinil';
+
+  @override
+  String get s2a1e131afd => 'Väljumiskomando';
+
+  @override
+  String get s0201de52c0 =>
+      '{\'{value}\'} käsus asendatakse liuguri väärtusega.';
+
+  @override
+  String get sc30c9a7e51 => 'Samm';
+
+  @override
+  String get s4d6451a63a => 'Käsu määramine';
+
+  @override
+  String get sa4082e1a79 => 'Käsud (käivitatakse järjekorras)';
+
+  @override
+  String get s467488e572 =>
+      'Otsetee võib juhtida mitut seadet järjestikku, viivitustega.';
+
+  @override
+  String get sad43973fb3 => 'Lisa käsk';
+
+  @override
+  String get sdaef43c622 => 'Kinnitamise küsimine';
+
+  @override
+  String get s5210a5ad23 => 'Ühendus';
+
+  @override
+  String get s96705fc3df => 'Käsk saadetud';
+
+  @override
+  String get sb41db1e809 => 'Proovi';
+
+  @override
+  String get s77d2309fd5 => 'Hilinemine enne (ms)';
+
+  @override
+  String get sc0f5a14d2b => 'Värvikünnised (väärtus ≥ piir → värv)';
+
+  @override
+  String get scd65d31d4c => 'Limit';
+
+  @override
+  String get s30a2c0f460 => 'Lisage künnis';
+
+  @override
+  String get s4226eb046f => 'Võta tagasi';
+
+  @override
+  String get sd5cb601286 => 'Sabaskaala (lihtne VPN)';
+
+  @override
+  String get s0aa851cfb4 =>
+      'Teie telefon ja kodu toimivad nagu üks võrk – Molaplan töötab samade aadressidega nagu kodus.';
+
+  @override
+  String get s444ca5d58f =>
+      'Hea, kui teil on alati arvuti, Raspberry Pi või Home Assistant kodus.';
+
+  @override
+  String get sec7b4d1d7a =>
+      'Loo Tailscale\'i konto aadressil tailscale.com (Google, Microsoft või Apple\'i sisselogimine).';
+
+  @override
+  String get s178c57446d =>
+      'Paigalda sabaskaala alati sisselülitatud seadmele kodus. In Home Assistant: Settings → Add-ons → Tailscale.';
+
+  @override
+  String get s4faf83aa13 =>
+      'Lülitage seal sisse \"alamvõrgu ruuter\" ja sisestage oma koduvõrk, nt 192.168.1.0/24. Siis on kõik teie koduseadmed kättesaadavad.';
+
+  @override
+  String get s721719c0e1 =>
+      'Teekonna kinnitamine Tailscale admin-konsoolis (Machines → device → Edit route settings).';
+
+  @override
+  String get s921f981bda =>
+      'Paigalda telefoni Tailscale rakendus ja logi sisse sama kontoga. Lülita sisse VPN.';
+
+  @override
+  String get s8ae7e7b2a4 => 'Molaplan kasutab samu aadresse nagu kodus.';
+
+  @override
+  String get se92301ff0a => 'https://tailscale.com/download';
+
+  @override
+  String get sf6270ae66c => 'https://tailscale.com/kb/1019/subnets';
+
+  @override
+  String get s57f0b61334 => 'WireGuard (ruuter VPN)';
+
+  @override
+  String get sb9bb49ab92 =>
+      'Kui teie ruuter toetab WireGuardi (nt ASUS, FRITZ!Box, UniFi, OpenWrt), liitub teie telefon otse koduvõrguga.';
+
+  @override
+  String get s986d264604 =>
+      'Hea, kui ruuteril on WireGuard ja teie ühendusel on avalik IP-aadress.';
+
+  @override
+  String get sf24b16dc12 =>
+      'Avage ruuteri seaded ja otsige \"VPN-server\" → \"WireGuard\".';
+
+  @override
+  String get s1e5d1eb832 =>
+      'Serveri lubamine ja uue seadme (peer) lisamine telefonile.';
+
+  @override
+  String get s8e0252a2b4 =>
+      'Ruuter näitab QR- koodi. Paigalda WireGuardi rakendus telefoni ja skaneeri see.';
+
+  @override
+  String get s4b3740b727 =>
+      'Kontrollida, et \"Lubatud IP-d\" hõlmaks koduvõrku (nt 192.168.1.0/24).';
+
+  @override
+  String get sd2e8523b28 =>
+      'Lülitage VPN sisse telefonis - Molaplan töötab nagu kodus.';
+
+  @override
+  String get saa17c5a456 => 'https://www.wireguard.com/install/';
+
+  @override
+  String get se5960424ea =>
+      'Paljudel mobiilse lairiba (4G/5G koduinternet) ühendustel puudub avalik IP (CGNAT) ja WireGuard ei ole siis väljastpoolt kättesaadav. Kasuta selle asemel Molaplani kaugjuurdepääsu või Tailscale\'i.';
+
+  @override
+  String get sab2dfe387b => 'Home Assistant Cloud (Nabu Casa)';
+
+  @override
+  String get s2e0586b37e =>
+      'Koduabilise tegijate igakuine tasuline tellimus. Annab Home Assistantile turvalise kaugaadressi.';
+
+  @override
+  String get s534e7ec95e => 'Hea, kui teie seade on juba koduabilises.';
+
+  @override
+  String get s0f7533967d =>
+      'In Home Assistant: Settings → Home Assistant Cloud → Alustage prooviversiooni või logige sisse.';
+
+  @override
+  String get s2e60dd8178 => 'Lülita \"Kaugjuhtimine\" sisse.';
+
+  @override
+  String get s7a73024451 =>
+      'Kopeeri kaugaadress, mis näeb välja järgmine: https://abcd1234.ui.nabu.casa';
+
+  @override
+  String get sd4873612f7 =>
+      'Molaplan: ühendused → Home Assistant → muudab aadressi võrguaadressiks. Märk jääb samaks.';
+
+  @override
+  String get s15223b0e32 => 'Koduabilise plaadid töötavad nüüd kõikjal.';
+
+  @override
+  String get s9b3201b1fa => 'https://www.nabucasa.com/';
+
+  @override
+  String get s60e7067815 =>
+      'See hõlmab ainult Home Assistanti kaudu juhitavaid seadmeid. Teistel (Modbus, kaamerad otse) on Molaplani kaugjuurdepääs või VPN.';
+
+  @override
+  String get s8e0d0a2d4e => 'Cloud MQTT (nt HiveMQ Cloud)';
+
+  @override
+  String get sd0fff65292 =>
+      'Seadmed ja Molaplan räägivad läbi sama pilveserveri. HiveMQ Cloudil on vaba tase, millest piisab koduseks kasutamiseks.';
+
+  @override
+  String get s7350b9f98b =>
+      'Hea MQTT-seadmetele: Tasmota, ESPHome, Shelly, Zigbee2MQTT, teie enda ESP-lauad.';
+
+  @override
+  String get s59b3c7d246 =>
+      'Looge tasuta konto aadressil console.hivemq.cloud ja looge tasuta klaster (tasuta / serverita).';
+
+  @override
+  String get s04fe436d1e =>
+      'Alas \"Juurdepääsu haldamine\" loo kasutajanimi ja parool.';
+
+  @override
+  String get sdf0075eab5 =>
+      'Kopeerib serveri aadressi (nt abcd.s1.eu.hivemq.cloud). Port on 8883, kus TLS on sees.';
+
+  @override
+  String get s9e9be6fc33 =>
+      'Pane see server, kasutajanimi ja parool oma seadmete MQTT-seadetesse (TLS sisse lülitatud).';
+
+  @override
+  String get s90f1cb151b =>
+      'Molaplan: ühendused → MQTT → aadress, port 8883, TLS sees, kasutajanimi ja parool. Tehtud – töötab kõikjal.';
+
+  @override
+  String get s77bf29f2f5 => 'https://console.hivemq.cloud/';
+
+  @override
+  String get safd2cd2b7b =>
+      'Valige tugev parool: igaüks, kes seda teab, saab teie seadmeid juhtida.';
+
+  @override
+  String get s9557c0ef28 => 'Kaugjuurdepääsu juhendid';
+
+  @override
+  String get sf4d7957b78 => 'Lihtsaim: Molaplan kaugjuurdepääs';
+
+  @override
+  String get s8032085166 =>
+      'Kontosid pole, ruuteri seadistusi pole. Vaja on ainult tahvelarvutit või arvutit, mis jääb kodus sisse.';
+
+  @override
+  String get sd9b48e01fc => 'Teisiti';
+
+  @override
+  String get sfe551fd431 => 'Seadmete juhendid';
+
+  @override
+  String get sa35e37b4b4 =>
+      'Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Leiti automaatselt.';
+
+  @override
+  String get scb28b11e70 => 'Uus vaade';
+
+  @override
+  String get s1f9799af4e => 'nt Cottage';
+
+  @override
+  String get s3a13f9d077 => 'Armatuurlaua ümbernimetamine';
+
+  @override
+  String get sa5bf37213b => 'Kustuta armatuurlaud?';
+
+  @override
+  String s10671afc00(String p0, String p1) {
+    return '\"$p0\" ja selle $p1 plaadid kustutatakse.';
+  }
+
+  @override
+  String s897761b5f4(String p0) {
+    return 'Armatuurlaud \"$p0\" kustutatud';
+  }
+
+  @override
+  String get scc5cf9957d => 'Vali plaaditüüp';
+
+  @override
+  String get s7cf6340503 => 'Uus seade valmis paanidega';
+
+  @override
+  String get se6ca707cf3 =>
+      'Kõige lihtsam: Shelly, ESP32-CAM, Home Assistant...';
+
+  @override
+  String get s0789f5f14f => 'DASHBOARDS';
+
+  @override
+  String get s1da81fd6c3 => 'Seaded';
+
+  @override
+  String get s59622d792b => 'Nimeta ümber';
+
+  @override
+  String get sfb3e3c456c => 'Kustuta armatuurlaud';
+
+  @override
+  String get s187d328bb1 => 'Muuda';
+
+  @override
+  String get scdfd80f963 => 'Lisa paan';
+
+  @override
+  String get s41c3cebc48 => 'Lisa seade';
+
+  @override
+  String get s71af34b8e9 => 'Tühi vaade';
+
+  @override
+  String get s6a210970eb =>
+      'Siin on näha seadme plaadid: temperatuurid, lülitid, kaamerad ja kiirklahvid. Alusta seadme lisamisega.';
+
+  @override
+  String get s4229fb4103 => 'Lisa oma esimene seade';
+
+  @override
+  String get s147f47be4c => 'Lisa paan';
+
+  @override
+  String get sf67e0d5752 => 'Kustutada paan?';
+
+  @override
+  String s97f46743e0(String p0) {
+    return 'Kivi \"$p0\" kustutatud';
+  }
+
+  @override
+  String get sa0d8c62e5a => 'Käsku pole seadistatud';
+
+  @override
+  String get s1e5d696a26 => 'Käivita seda käsku?';
+
+  @override
+  String get sdfc012fb4e => 'PIN-kood';
+
+  @override
+  String get s1df6e2eaa7 => 'PIN';
+
+  @override
+  String get secab66c046 => 'Selle seadme meeldejätmine';
+
+  @override
+  String get s10bf4eab8e =>
+      'Salvestatud krüptituna ainult sellesse seadmesse. Vaikimisi PIN- koodi ei salvestata.';
+
+  @override
+  String get s912ea5d2ec => 'Saada';
+
+  @override
+  String get s856418521a => 'Käske pole seadistatud';
+
+  @override
+  String sdfa66ee201(String p0) {
+    return '$p0: saadetud';
+  }
+
+  @override
+  String get s12fc3810a5 => 'Saatis – vastust oodates...';
+
+  @override
+  String get sd1c7d49360 => 'Vasta';
+
+  @override
+  String get s38ac222392 => 'Väärtus';
+
+  @override
+  String get s29fae6a0e8 => 'Hinnajuhtimine sees';
+
+  @override
+  String get sbfe79d1f5f => 'Uuendatud';
+
+  @override
+  String get s25580038cb => 'Salvestatud PIN-kood eemaldatud';
+
+  @override
+  String get sf50c488b24 => 'Unusta salvestatud PIN';
+
+  @override
+  String get safe0429a90 => 'Hinnajuhtimine';
+
+  @override
+  String get sf3d644dd4c => 'Õpeta puldi nupp';
+
+  @override
+  String get sfb1a18d11f => 'Värskenda';
+
+  @override
+  String get s4cbe24240f => 'Sees';
+
+  @override
+  String get s33831dd49f => 'Väljas';
+
+  @override
+  String get sdc398885dc => 'Täpsemad seaded';
+
+  @override
+  String get s5d477f3cd8 => 'Tavaliselt sa ei vaja neid';
+
+  @override
+  String get s2315e0e739 => 'nt';
+
+  @override
+  String get s4dab2d409b => 'Ekspordi konfiguratsioon';
+
+  @override
+  String get s149c1e54d6 => 'Eksporditud seadistused';
+
+  @override
+  String get s35f445793b => 'Impordi seadistus';
+
+  @override
+  String get sd55be829e3 => 'Kas asendada praegune seadistus?';
+
+  @override
+  String get s852dd1795e =>
+      'Kõik aktiivsed ühendused ja armatuurlauad asendatakse faili sisuga.';
+
+  @override
+  String get s580678cb10 => 'Impordi';
+
+  @override
+  String get s5f2ec17730 => 'Imporditud seadistused';
+
+  @override
+  String get sa87fff54f3 => 'Import nurjus';
+
+  @override
+  String get s2fd2bfedb8 => 'Konto';
+
+  @override
+  String get s4c0ff416ab => 'Samad kodud ja plaadid kõigis teie seadmetes.';
+
+  @override
+  String get scc7e418ee3 =>
+      'Logi sisse, et arvutil, tahvelarvutil ja telefonil oleksid samad kodud, seadmed ja plaadid. Valikuline.';
+
+  @override
+  String get s9bb545e9b3 => 'Logi sisse või loo konto';
+
+  @override
+  String get sf4caddf894 => 'Täpsem';
+
+  @override
+  String get s21f870dbc2 =>
+      'Näitab tehnilisi seadistusi: ühendused (HTTP, MQTT, Modbus...), nimikoormused, JSON- i rajad ja plaatide allikad. Enamik inimesi ei vaja neid.';
+
+  @override
+  String get saec69088a5 => 'Kontrollige oma kodu ka väljastpoolt.';
+
+  @override
+  String get scc3d01ee5e => 'Juhised: VPN, Nabu Casa, cloud MQTT';
+
+  @override
+  String get s90ba544719 => 'Abi';
+
+  @override
+  String get sb915c42792 => 'Käivitamise juhendi näitamine';
+
+  @override
+  String get sd337a7ddd5 => 'Varundamine ja ülekandmine';
+
+  @override
+  String get s07c1048b4f =>
+      'Ekspordib konfiguratsiooni JSON-faili ja impordib selle teise seadmesse (nt PC → telefon).';
+
+  @override
+  String get s2f797098e7 => 'Paroolide ja märkide kaasamine';
+
+  @override
+  String get s26f72949e3 => 'Fail on krüptimata – hoia seda turvaliselt.';
+
+  @override
+  String get sdb12678e52 => 'Ekspordi';
+
+  @override
+  String get s34686ffb09 => 'Näide';
+
+  @override
+  String get s412c666544 =>
+      'Lisa näidis armatuurlaud (kaamera, häire, tuled, ventilatsioon). Asenda aadressid enda omadega.';
+
+  @override
+  String get sec02c7c071 => 'Lisa näidisvaade';
+
+  @override
+  String get s522d6584c5 => 'Otsi uuendusi';
+
+  @override
+  String get sd178a1d809 =>
+      'Oma juhtimisterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kaamerad, WebSocket, TCP ja UDP. Ilma kontota jäävad kõik seaded sellesse seadmesse.';
+
+  @override
+  String get se455dc672b => 'Samm';
+
+  @override
+  String get s3ddd2678bf => 'Jäta juhend vahele';
+
+  @override
+  String get s171ac59e67 =>
+      'Vali allpool oma seade. Kirjuta ainult selle aadress – ülejäänu on sinu eest tehtud.';
+
+  @override
+  String get s907220900d => 'Tere tulemast Molaplani';
+
+  @override
+  String get se722dfcec9 =>
+      'Molaplan on sinu kodu juhtpaneel. Sa paned sisse täpselt vajalikud seadmed ja nupud.';
+
+  @override
+  String get scbac938ead => 'Näe kõike lühidalt';
+
+  @override
+  String get se25f930e31 =>
+      'Temperatuurid, tuled, alarm ja kaamera ühes vaates.';
+
+  @override
+  String get s3e450dba98 => 'Kontroll ühe kraaniga';
+
+  @override
+  String get sdda6a3f06e =>
+      'Tuled põlevad, suurendavad ventilatsiooni või \"kodust lahkumise\" nuppu, mis teeb korraga palju asju.';
+
+  @override
+  String get sbcac0cd35a => 'Sama kodu kõigis seadmetes';
+
+  @override
+  String get sd43d517cc7 =>
+      'Soovi korral logi sisse ning arvuti, tahvelarvuti ja telefon näitavad sama kodu. Paroolid on sinu seadmes krüptitud. Kontot pole vaja.';
+
+  @override
+  String get s70fff97e97 => 'Mul on juba Molaplani konto - logi sisse';
+
+  @override
+  String get sd6561a08ca => 'Alustame';
+
+  @override
+  String get se5be2a8386 => 'Sinu paanid on valmis';
+
+  @override
+  String get s8162694dbe => 'Lisa oma esimene paan';
+
+  @override
+  String get s7b2a30b77c =>
+      'Need plaadid on tehtud sinu seadme jaoks. Sa võid neid hiljem vahetada ja korrastada.';
+
+  @override
+  String get s39e163fa49 =>
+      'Plaat näitab teavet või juhib seadet. Vali, millist plaati:';
+
+  @override
+  String get s4bfb026e45 => 'Teen seda hiljem';
+
+  @override
+  String get s3f0351473c => 'Kontrolli oma kodu ka väljastpoolt?';
+
+  @override
+  String get s6fe6fe631f =>
+      'Kodus on kõik juba töökorras. Väljastpoolt on vaja kodus üht alati sisselülitatud seadet (vana tahvelarvuti või arvuti) – ei mingeid ruuteri seadistusi, ei mingeid kontosid.';
+
+  @override
+  String get sb599b7432f => 'Kaugjuurdepääs on sisse lülitatud.';
+
+  @override
+  String get s33a294d472 => 'See seade on kodusild.';
+
+  @override
+  String get s4aa8cce504 => 'Mitte praegu – ainult kodus';
+
+  @override
+  String get sd3c370ca52 => 'Valmis!';
+
+  @override
+  String get s1359035b73 => 'Koputa plaati';
+
+  @override
+  String get sfd26c8e50b => 'Lüliti lülitab, nupp käivitab oma käsu.';
+
+  @override
+  String get s416c8184a7 => 'Pliiatsinupp ülaosas';
+
+  @override
+  String get s2ba275defe => 'Muuda, lisa, kustuta ja lohista plaate ümber.';
+
+  @override
+  String get se872eeb0f5 => 'Pikalt pressitud plaat';
+
+  @override
+  String get s63496941fc =>
+      'Vaadake üksikasju ja selgitust, kui midagi on valesti.';
+
+  @override
+  String get s080be778d5 =>
+      'Leidke see juhend, kaugjuurdepääs ja varukoopiad seal.';
+
+  @override
+  String get sae0fae7127 => 'Mine mu armatuurlauale';
+
+  @override
+  String get s3d43664fcc => 'WebSocket';
+
+  @override
+  String get sfcbb753f53 => 'URL';
+
+  @override
+  String get s81479e1555 => 'Päised (Nimi: väärtus rea kohta)';
+
+  @override
+  String get s5811b38d7b => 'Token (Authorization: Bearer)';
+
+  @override
+  String get sd512dbbfc7 => 'Teade ühenduse kohta';
+
+  @override
+  String get s2c4fd261e2 => 'Iseallkirjastatud sertifikaadi lubamine';
+
+  @override
+  String get s4d089aab74 => 'Filter (sõnumi sisu)';
+
+  @override
+  String get s55c951a8ad => 'Json';
+
+  @override
+  String get s10813e25b3 => 'Regex (1. rühm)';
+
+  @override
+  String get s4a282cd247 => 'Nõudeteade (saadetakse lugemisel)';
+
+  @override
+  String get sbeef545d37 => 'Teade ({\'{value}\'} = väärtus)';
+
+  @override
+  String get s0477f24b6b => 'HTTP / REST';
+
+  @override
+  String get s3102ae3a16 => 'Baas-URL';
+
+  @override
+  String get s38d0517a8d => 'Autentimine';
+
+  @override
+  String get sed995f57b8 => 'Kasutajanimi';
+
+  @override
+  String get s65e35b7cc4 => 'Token';
+
+  @override
+  String get s51510ae27a => 'Lisapäised (Nimi: väärtus rea kohta)';
+
+  @override
+  String get s361419c448 => 'Aegumine (s)';
+
+  @override
+  String get sf235ce5ec0 => 'Meetod';
+
+  @override
+  String get s484291707c => 'Path';
+
+  @override
+  String get s54c8aed8bc => 'Keha';
+
+  @override
+  String get s5c5e9b662c => 'Keha ({\'{value}\'} = väärtus)';
+
+  @override
+  String get s8e82ca13cf => 'Content-Type';
+
+  @override
+  String s3c045f21ee(String p0, String p1, String p2) {
+    return 'Testitud: GET $p0 (baasaadress, $p1 baitid, $p2 ms).';
+  }
+
+  @override
+  String get s7797602869 => 'Käske ei saadetud ja plaatide teid ei testitud.';
+
+  @override
+  String sbf349dfcbd(String p0, String p1) {
+    return 'HTTP $p0: seade vastas, kuid keeldus sisselogimisest. Kontrolli kasutajanime, parooli või märgist. $p1';
+  }
+
+  @override
+  String s3bd10f0ae2(String p0, String p1) {
+    return 'HTTP $p0: seade vastas serveri veaga. $p1';
+  }
+
+  @override
+  String s2a7fa26dd6(String p0, String p1) {
+    return '✓ Seade vastas aadressil $p0 (HTTP 404: baasaadressil leht puudub – paljude seadmete puhul tavaline). Ühendus toimib. $p1';
+  }
+
+  @override
+  String sb2821916bc(String p0, String p1, String p2) {
+    return '✓ Ühendus toimib: HTTP $p0. $p1 $p2';
+  }
+
+  @override
+  String get sad3975b3c1 => 'Kaamera (MJPEG / JPEG)';
+
+  @override
+  String get s1534821f4a => 'Kaamera baas- URL';
+
+  @override
+  String get se995a6862d => 'Režiim';
+
+  @override
+  String get s4f356d158a => 'Värskendamine (s, hetktõmmis)';
+
+  @override
+  String get sca7e088857 => 'Elektri hind';
+
+  @override
+  String get sfb62156afe => 'Hinnapiirkond';
+
+  @override
+  String get s2525f9a4f5 =>
+      'Soome on üks piirkond (FI). Rootsis ja Norras sõltub see sellest, kus te elate.';
+
+  @override
+  String get s8f4a683abf => 'Käibemaks %';
+
+  @override
+  String get s1c7d76a774 => 'Teie riigi käibemaks.';
+
+  @override
+  String get se49d0fba92 => 'Müüja marginaal (c/kWh)';
+
+  @override
+  String get s20a5e2936a =>
+      'Kohapealne lepinguline kasumimarginaal ilma käibemaksuta.';
+
+  @override
+  String get s923f9739de => 'Võrgutasu + aktsiis (c/kWh)';
+
+  @override
+  String get s2a3498fb0f =>
+      'Teie arvelt, kaasa arvatud käibemaks. Jätke 0 ainult energia jaoks.';
+
+  @override
+  String get s515da3a9dd => 'Hinnaserver';
+
+  @override
+  String get s98cc9f1c14 => 'Molaplani server tõmbab hindu avatud allikatest.';
+
+  @override
+  String get s271885dc8b => 'Mida näidata';
+
+  @override
+  String get s46282f452b => 'Nüüd = praegune hind, diagramm = täna ja homme.';
+
+  @override
+  String get s2f754e8ab4 => 'Tänaseks pole veel hindasid.';
+
+  @override
+  String get sd575462da3 => 'homme ';
+
+  @override
+  String get s18faad19ed => 'Praegu pole hinda.';
+
+  @override
+  String get s29178b43f4 => 'Elektri hind on püsiarveldus.';
+
+  @override
+  String get s1a707f2788 => 'Homme: jah.';
+
+  @override
+  String get sb85af981c1 => 'Homme: veel mitte (avaldatud kella 14 paiku).';
+
+  @override
+  String s6270faf138(String p0, String p1, String p2, String p3) {
+    return '✓ Hinnad $p0 ($p1 pesad, $p2 min, allikas $p3).';
+  }
+
+  @override
+  String get se1bd60873c => 'MQTT';
+
+  @override
+  String get s85b9781bb7 => 'Maakleri peremees';
+
+  @override
+  String get s800d13debd => 'Port';
+
+  @override
+  String get s49fa57061a => 'TLS';
+
+  @override
+  String get s0fcef98aad => 'WebSocketi kasutamine (ws:// või wss://)';
+
+  @override
+  String get s5089c65c1f => 'Kliendi ID (tühi = auto)';
+
+  @override
+  String get s9372a6f755 => 'Keep alive (s)';
+
+  @override
+  String get sd373a99107 => 'Oleku teema';
+
+  @override
+  String get s518c8aa712 => 'Käsuteema';
+
+  @override
+  String get s120726c79a => 'Kasulik koormus ({\'{value}\'} = väärtus)';
+
+  @override
+  String get s3660228d11 => 'QoS';
+
+  @override
+  String get s1b07c9ba3d => 'Retain';
+
+  @override
+  String s91c3d72d1e(String p0) {
+    return 'fan $p0';
+  }
+
+  @override
+  String get s40032ddea9 => 'kiik';
+
+  @override
+  String get s7068e8892e =>
+      'Tundmatu kood ilma toorandmeteta. Toorandmete lubamine Tasmotas (SetOption58 1) ja proovi uuesti.';
+
+  @override
+  String get s6207a45bff => 'IR-lõhkepea (soojuspump)';
+
+  @override
+  String get s859c2e7734 => 'Blasteri püsivara';
+
+  @override
+  String get s3f8d3fb444 =>
+      'tasmota_ http = Tasmota (tasmota-ir) IP. tasmota_ mqtt = Tasmota MQTT maakleri kaudu. esphome = ESPHome climate_ ir. http/ mqtt = muu blaster oma mallidega.';
+
+  @override
+  String get s38471ae691 => 'Lõhkeaine aadress';
+
+  @override
+  String get sda91fafa54 => 'IR blasteri IP-aadress (Tasmota või ESPHome).';
+
+  @override
+  String get sf9220a3e4d => 'Kaubamärk IR protokoll';
+
+  @override
+  String get s423f2576c4 =>
+      'Tasmota IRhvac müüja, nt MITSUBISHI_AC, PANASONIC_AC, DAIKIN. Kui midagi ei juhtu, proovige sama kaubamärgi mõnda muud protokolli.';
+
+  @override
+  String get s74ff2fd8a8 => 'Mudel (valikuline)';
+
+  @override
+  String get sef4c0e5d90 =>
+      'Mõne kaubamärgi IRhvac Mudeli number. Kui pole kindel, jäta tühjaks.';
+
+  @override
+  String get s8e7962c184 => 'Tasmota';
+
+  @override
+  String get s5ae4cc50db =>
+      'Ainult MQTT: alates Tasmota (Configuration → MQTT → Topic).';
+
+  @override
+  String get sed30580f59 => 'MQTT maakleri aadress';
+
+  @override
+  String get s744ce256bb => 'Ainult MQTT: masin, mis juhib maaklerit.';
+
+  @override
+  String get se6754df705 => 'MQTT port';
+
+  @override
+  String get sbfc8ee6c86 => 'Kasutajanimi';
+
+  @override
+  String get s711670d91a => 'MQTT või veebikasutaja.';
+
+  @override
+  String get s3bbd70773d => 'Jäetakse tühjaks, kui seda ei ole vaja.';
+
+  @override
+  String get s443fe6f350 => 'ESPHome kliima ID';
+
+  @override
+  String get s62feae1a9f => 'Ainult ESPHome: kliimaobjekti ID.';
+
+  @override
+  String get se0efd6dfb3 => 'Käsu URL (muu lõhkaja)';
+
+  @override
+  String get s5366cbd4df =>
+      'Ainult http: URL, mis saab täieliku oleku. Kohatäitjad on loetletud.';
+
+  @override
+  String get sce533db7c1 => 'Kasuliku koormuse šabloon (muu lõhkaja)';
+
+  @override
+  String get s0fa691e7c7 =>
+      'http body või mqtt payload. Tühi = IRhvac JSON ({\'{json}\'}).';
+
+  @override
+  String get s8567c5faa6 =>
+      'Kokkuvõte = täielik olek tekstina. ruum = lõhkaja temperatuuriandur. Muud = viimane saadetud seadistus.';
+
+  @override
+  String get sdd8cd8132c => 'Mida muuta';
+
+  @override
+  String get s2e8b846390 =>
+      'Kogu olek saadetakse alati korraga. Väärtus tuleb plaadilt või \"Väärtus\".';
+
+  @override
+  String get sb517d97868 =>
+      'Nt kuumus, jahutus, automaatne, kuiv, ventilaator või sisse/välja lülitatud. Tühi = plaatide väärtus.';
+
+  @override
+  String get sda4a1b2eee => 'Õppitud kood';
+
+  @override
+  String get s0cfc723aa2 =>
+      'Täidetud, kui salvestad õpitud kaugnupu. Saadetud Tasmota IRsendiga.';
+
+  @override
+  String get s3f26cb7602 => 'EsPHome nupp';
+
+  @override
+  String get sc71964f422 => 'Ainult ESPHome: õpitud koodi malli nupu ID.';
+
+  @override
+  String get s852a166240 => 'Lõhkeaine aadress on kadunud.';
+
+  @override
+  String get s75ce01c354 => 'Tasmota vajab veebiparooli.';
+
+  @override
+  String sf9d84ad23c(String p0) {
+    return 'Tasmota ei tea $p0 Paigalda tasmota- i ehitamine.';
+  }
+
+  @override
+  String sff167aa9a6(String p0) {
+    return 'Tasmota lükkas käsu tagasi: $p0';
+  }
+
+  @override
+  String s385c6a9a2d(String p0) {
+    return 'Tundmatu müüja \"$p0\".';
+  }
+
+  @override
+  String sb4ea2389cb(String p0) {
+    return 'ESPHome kliimat \"$p0\" ei leitud.';
+  }
+
+  @override
+  String get s34deda2c72 => 'Käsu URL puudub.';
+
+  @override
+  String get s04e4777aea => 'Temperatuur puudub.';
+
+  @override
+  String get sfce1a094cb => 'Lõhkeainel pole temperatuuriandurit.';
+
+  @override
+  String s4536eb33dd(String p0) {
+    return 'Temperatuuri ei saadud.';
+  }
+
+  @override
+  String get s9b5bbfa2c6 => 'Toatemperatuur ainult Tasmota/ESPHome\'ist.';
+
+  @override
+  String get s5acc16dafb => 'RF433 vajab Tasmotat.';
+
+  @override
+  String get s8478662ad1 => 'Õpetatud koodid vajavad Tasmotat.';
+
+  @override
+  String s9f8263b5a0(String p0, String p1) {
+    return 'ESPHome nuppu \"$p0\" ei leitud.';
+  }
+
+  @override
+  String s3296e8d7e7(String p0) {
+    return 'Koodi ei ole $p0 s. Suunake pult otse lõhkajale (alla 1 m) ja vajutage uuesti.';
+  }
+
+  @override
+  String get s1e73ba395d => 'RF433 õppimine vajab Tasmotat.';
+
+  @override
+  String get scc47b4b225 => 'Õppimine töötab Tasmota ja ESPHome blastersiga.';
+
+  @override
+  String s96adaaf2b6(String p0, String p1, String p2) {
+    return '✓ Tasmota vastas (versioon $p0). Testitud: olek 0 at $p1. Soojuspumbale ei saadetud midagi.';
+  }
+
+  @override
+  String sfce5c770f1(String p0) {
+    return 'Maakler OK, aga Tasmota \"$p0\" ei vastanud.';
+  }
+
+  @override
+  String s2c3b95a054(String p0) {
+    return 'Tasmota \"$p0\" vastas MQTT kaudu, soojuspumbale ei saadetud midagi.';
+  }
+
+  @override
+  String scf9ead3297(String p0, String p1, String p2, String p3) {
+    return '✓ ESPHome kliima \"$p0\" leiti. Midagi ei saadetud.';
+  }
+
+  @override
+  String get s8ad50358b9 =>
+      'Teiste lõhkajate testi ei tehta: IR on ühesuunaline. Vajutage toiteplaati ja jälgige soojuspumpa.';
+
+  @override
+  String s3b476099a2(String p0) {
+    return 'Seade vastas HTTP $p0. Kas web_ server on ESPHome\' is lubatud?';
+  }
+
+  @override
+  String sd44aec7380(String p0) {
+    return 'Ei mingit vastust $p0.';
+  }
+
+  @override
+  String s120026628c(String p0) {
+    return '$p0 hankimine nurjus.';
+  }
+
+  @override
+  String get s43c9b88580 => 'Auto';
+
+  @override
+  String get sa3e8beed42 => 'Küte';
+
+  @override
+  String get s6c9668fbd9 => 'Jahutus';
+
+  @override
+  String get s9db8aefc43 => 'Kuivatus';
+
+  @override
+  String get s018d2e08f4 => 'Ventilaator';
+
+  @override
+  String get s36fb6ba26f => 'Modbus TCP';
+
+  @override
+  String get sa70cc38354 => 'Peremees';
+
+  @override
+  String get sdc5301b750 => 'Ühiku ID';
+
+  @override
+  String get s15e327bf8e => 'Aegumine (ms)';
+
+  @override
+  String get s943b8b6bf3 => 'Registritabel';
+
+  @override
+  String get sf51ad986eb => 'Aadress (0-põhine)';
+
+  @override
+  String get s601f118ac0 => 'Andmetüüp';
+
+  @override
+  String get sddd62d21b0 => 'Vahetussõnad (CDAB)';
+
+  @override
+  String get see24ec5d84 => 'Skaala';
+
+  @override
+  String get s0a239b832b => 'Offset';
+
+  @override
+  String get s5f374d3643 => 'Ühiku ID (tühi = ühendus)';
+
+  @override
+  String get sef11962984 => 'Kirjuta';
+
+  @override
+  String get s779b59ba4b => 'Väärtus ({\'{value}\'} = liugur/lülitus)';
+
+  @override
+  String get sefaea1b818 => 'ntfy (teatekanal / käsud)';
+
+  @override
+  String get s6a4516e0fe => 'Käsu teema (nimi või täielik URL)';
+
+  @override
+  String get se003ecc10b =>
+      'Topic käsud saadetakse. Sa võid asetada kogu URL- i, nt https://ntfy.sh/my- teema – sama, mida kasutab sinu iPhone\' i kiirklahv. Teema nimi töötab nagu parool: hoia see pikk ja juhuslik.';
+
+  @override
+  String get s800cd08229 => 'Vastamise teema (valikuline)';
+
+  @override
+  String get s2e3a66d384 =>
+      'Kui koduseade vastab mõnele muule teemale, kirjuta see siia. Jäta tühjaks, kui vastus tuleb samale teemale – siis ignoreeritakse meie enda käsku ja järgmist teadet näidatakse vastusena.';
+
+  @override
+  String get s5bc736c04a => 'Juurdepääsuluba (valikuline)';
+
+  @override
+  String get s77feae14f5 =>
+      'Vajalik ainult kaitstud teema puhul (ntfy konto → Access tokens). Avaliku teema puhul jäta tühjaks.';
+
+  @override
+  String get seca0d75969 =>
+      'Vaikimisi on avalik ntfy.sh. Muuda ainult enda ntfy serverit. Selle tühistab ülal asuv täielik URL.';
+
+  @override
+  String get sddbea594a4 =>
+      'latest = uusim sõnum, log = mitu hiljutist sõnumit (uusim esimene).';
+
+  @override
+  String get s2bd0e69d44 => 'Teema (valikuline)';
+
+  @override
+  String get s4eb1e8ac15 =>
+      'Loetav teema. Tühi = ühenduse vastuse teema (või käsuteema).';
+
+  @override
+  String get s09fa5c0332 => 'Teadete arv (log)';
+
+  @override
+  String get s17fda9fb06 => 'Mitut hiljutist sõnumit logi näitab.';
+
+  @override
+  String get s78f2f0d783 => 'Kui kaugele tagasi?';
+
+  @override
+  String get s79bdbfd820 =>
+      'Nt 30 m, 12h või 2d. Avalik ntfy.sh hoiab sõnumeid umbes 12 tundi.';
+
+  @override
+  String get sfe357edcec => 'Käsk (saadetav tekst)';
+
+  @override
+  String get s48e102023d =>
+      'Saadatav tekst, nt \"uuendamine\". PIN-koodiga lisatakse see tühiku järele: \"uuendamine 1234\".';
+
+  @override
+  String get saf2ebedf61 => 'PIN-koodi küsimine ajakirjanduses';
+
+  @override
+  String get sfcb5608064 =>
+      'Palub PIN-koodi (peidetud) igale vajutamisele ja lisab selle käsule. PIN- koodi ei salvestata, kui sa ei vali \"Mäleta seda seadet\".';
+
+  @override
+  String get sfee393b70e => 'Oota vastust';
+
+  @override
+  String get sfff5bc52e5 =>
+      'Kuulab koduseadme vastust ja näitab seda selles plaadis (ja teatena, kui rakendus on taustal).';
+
+  @override
+  String get sbdcbe301b9 => 'Oodata vastust (s)';
+
+  @override
+  String get s121542d6d7 =>
+      'Kui kaua oodata, enne kui öelda, et vastust ei tulnud.';
+
+  @override
+  String get sa53638cfea => 'Vastus jääb plaadile (plaatidele)';
+
+  @override
+  String get se6d21484a8 =>
+      'Kui kaua vastus jääb plaadile. 0 = kuni järgmise vajutamiseni.';
+
+  @override
+  String get s74d68a98d6 => 'Teate pealkiri (valikuline)';
+
+  @override
+  String get sc2492ac3ab => 'ntfy kirja pealkiri. Tavaliselt tühi.';
+
+  @override
+  String s54ea45f27f(String p0, String p1) {
+    return 'ntfy: teema \"$p0\" on kaitstud (HTTP $p1). Lisa ühendusele ligipääsumärk (tk_...).';
+  }
+
+  @override
+  String get s72c37e530d =>
+      'ntfy: liiga palju kirju (HTTP 429). Oota üks hetk ja proovi uuesti.';
+
+  @override
+  String get s0870daf796 => 'ntfy: käsuteema puudub';
+
+  @override
+  String get s28dc7ea012 => 'ntfy: ühendus suleti enne vastust';
+
+  @override
+  String sa4313864fe(String p0, String p1) {
+    return 'Käsk saadeti, kuid vastust ei tulnud $p0 s jooksul. Kontrollige, kas koduseade on sisse lülitatud ja kuulake \"$p1\".';
+  }
+
+  @override
+  String get s85a1947a44 => '(teateid ei ole)';
+
+  @override
+  String get s7069b18b7d => 'ntfy: käsu tekst puudub';
+
+  @override
+  String s43de3fd299(String p0) {
+    return ' Vasta teema: $p0.';
+  }
+
+  @override
+  String s9ed9eb7f92(String p0, String p1, String p2, String p3) {
+    return '✓ ntfy server $p0 vastas ja teema \"$p1\" on loetav ($p2 sõnumid viimases tunnis).$p3 Käsku ei saadetud - koputage plaati proovida.';
+  }
+
+  @override
+  String get sf0ef0140c3 => 'Home Assistant';
+
+  @override
+  String get s1f90ee6992 => 'Pikaajaline juurdepääsuluba';
+
+  @override
+  String get sccb0cca8e3 => 'Otseuudised (veebipesa)';
+
+  @override
+  String get s8f8e1cfad3 => 'Üksuse identifitseerimiskood';
+
+  @override
+  String get s382111aebc => 'Atribuut (tühi = olek)';
+
+  @override
+  String get sf500d0ad67 => 'Service';
+
+  @override
+  String get s7286715019 => 'Lisaandmed JSON ({\'{value}\'} = väärtus)';
+
+  @override
+  String get s1b5b0421c0 => 'Kasulik koorem';
+
+  @override
+  String get s44ab1d33df => 'Oota vastust';
+
+  @override
+  String get s341bf61e36 => 'Reageerimine kuusena';
+
+  @override
+  String get se7cff2d61e => 'TCP (toores)';
+
+  @override
+  String get s1dfeacd9f6 => 'UDP';
+
+  @override
+  String get s5b44cbe9c0 => 'Kodu';
+
+  @override
+  String get s804e935440 => 'ESP32 kaamera';
+
+  @override
+  String get s478ddb6e1a => 'Ventilatsiooniseade (Modbus)';
+
+  @override
+  String get s4b4fd14aaf => 'Õu';
+
+  @override
+  String get s8d06ee5308 => 'Häire';
+
+  @override
+  String get s8ac16d45bc => '';
+
+  @override
+  String get sbde42d83a3 => 'Elutoa valgustid';
+
+  @override
+  String get sb7c78c63b3 => 'Sissepuhkeõhk';
+
+  @override
+  String get sbb2adef009 => 'Ventilaatori kiirus';
+
+  @override
+  String get see46441329 => '0=Off;1=Away;2=Home;3=Boost;4=Max';
+
+  @override
+  String get sb25aad3bc2 => 'Lahkun kodust';
+
+  @override
+  String get saf4b222a68 => 'Seadme IP-aadress';
+
+  @override
+  String get s1bbea216af => 'ESP32-CAM-kaamera';
+
+  @override
+  String get saaaeccd0cc => 'Odav Wi-Fi kaamera. Näitab live- videot.';
+
+  @override
+  String get saaea39b2de => 'Kaamera IP aadress';
+
+  @override
+  String get s6ef2a3f197 =>
+      'Näidatakse jadamonitoris alglaadimisel või ruuteri seadmete loendis.';
+
+  @override
+  String get sae199413a2 => 'Nt Yard, Hallway.';
+
+  @override
+  String get s2dd165b39f => 'Pilditüüp';
+
+  @override
+  String get sb66b153f36 =>
+      'mjpeg = live video (soovitatav). snapshot = ikka pilt iga paari sekundi tagant.';
+
+  @override
+  String get sf81257929d => 'Shelly relee / pistikupesa';
+
+  @override
+  String get s2b8ab6defc =>
+      'Lülitage valgus või seade sisse/välja ja näidake toidet.';
+
+  @override
+  String get s7fcea114f0 => 'Mida see juhib?';
+
+  @override
+  String get sdccd6e7f24 => 'Mudel';
+
+  @override
+  String get s864ba0233b =>
+      'Uuem (Plus, Pro, Gen3) = Plus / Pro / Gen2+. Old Shelly 1, 2.5, Plug S = Gen1.';
+
+  @override
+  String get s92f97cd95e => 'Võimsuse näitamine (W)';
+
+  @override
+  String get s54c71d86aa => 'Ainult mõõtmisega (nt pluss 1PM) mudelite puhul.';
+
+  @override
+  String get s49671fc56f => 'Kanal';
+
+  @override
+  String get s06f8a27d8a => 'Mitmekanaliliste seadmete puhul: 0 = esimene.';
+
+  @override
+  String get s259e46c59a => 'Ainult siis, kui määrad parooli.';
+
+  @override
+  String get s702ca14235 => 'Tasmota seade';
+
+  @override
+  String get sc130e073ba => 'Relee või pistik töötab Tasmota firmware.';
+
+  @override
+  String get s16be1831d6 => 'Ainult energiamõõtmisega seadmete puhul.';
+
+  @override
+  String get s8890d26ef2 => 'Releenumber';
+
+  @override
+  String get s7e6d21d466 => 'Mitmereleeliste seadmete puhul 1, 2, 3...';
+
+  @override
+  String get s5f1e4a036e => 'Veebiparool';
+
+  @override
+  String get s397e83233d =>
+      'Ainult siis, kui veebiparool on seadistatud (kasutaja admin).';
+
+  @override
+  String get se0e5f715ad => 'ESPHome seade';
+
+  @override
+  String get sa0efcdf688 =>
+      'ESP32/ESP8266 koos ESPHome\'iga (web_server lubatud).';
+
+  @override
+  String get s631420589f => 'Seadme nimi';
+
+  @override
+  String get s1db899640b => 'Lülitumise ID (valikuline)';
+
+  @override
+  String get sb2e87033fc =>
+      'Lüliti nimi YAML-ist väiksemal juhul alakriipsuga.';
+
+  @override
+  String get s978ae8f1d6 => 'Anduri ID (valikuline)';
+
+  @override
+  String get s4ba12c5866 => 'Anduri nimi samamoodi (vaata seadme veebilehte).';
+
+  @override
+  String get s945273ef29 => 'Sensoriüksus';
+
+  @override
+  String get s5ca2e25792 => 'Ainult siis, kui web_ server autth on määratud.';
+
+  @override
+  String get sb847f22473 => 'Veebi kasutajanimi';
+
+  @override
+  String get s7f8e45ea74 => 'Tuled, alarm, andurid - kõike Home Assistantis.';
+
+  @override
+  String get s9f70681d3f => 'Koduabilise aadress';
+
+  @override
+  String get s123502628e => 'Aadress, millega avad koduabilise.';
+
+  @override
+  String get s92e3c4cd40 => 'Pikaealine märk';
+
+  @override
+  String get s4e3f2052b2 =>
+      'Home Assistant → oma profiili → Turvalisus → Pikaajaline juurdepääsu märgid → Loo token. Paiguta siia.';
+
+  @override
+  String get s75a056cf4d => 'Valgus (ei ole kohustuslik)';
+
+  @override
+  String get sdb9a90cb96 => 'Entity id from Settings → Devices → Entities.';
+
+  @override
+  String get sa9681c1a9a => 'Häire (valikuline)';
+
+  @override
+  String get s64bd3ab3ff => 'Temperatuuriandur (valikuline)';
+
+  @override
+  String get sa6504f5712 => 'Lülitumine (valikuline)';
+
+  @override
+  String get s64d4364336 =>
+      'disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming';
+
+  @override
+  String get s54e063bd9c => 'Soojuspump (koduabiline)';
+
+  @override
+  String get s2afe650320 =>
+      'Õhksoojuspump, mida näidatakse Home Assistantis kliimaüksusena.';
+
+  @override
+  String get s48fdd98530 =>
+      'Kui see on juba lisatud, kasutatakse sama ühendust uuesti.';
+
+  @override
+  String get sfe5ad3202f => 'Ei ole vaja, kui HA on juba lisatud.';
+
+  @override
+  String get sce069d8d1a => 'Soojuspumba seade';
+
+  @override
+  String get s05e2aaa15c => 'Algab kliimast.';
+
+  @override
+  String get sc7d02fbe84 => 'Soojuspump';
+
+  @override
+  String get se699281c85 => 'Soojuspump (MQTT)';
+
+  @override
+  String get s8643040b95 =>
+      'Nt mitsubishi2mqtt või sarnane ESP kontroller. Teemad on näited – kontrolli.';
+
+  @override
+  String get s2a1148ee77 => 'MQTT maakleri IP';
+
+  @override
+  String get s53e472c976 => 'Masin töötab Mosquitto (sageli HA kasti).';
+
+  @override
+  String get s29aff3d2a0 => 'MQTT kasutajanimi';
+
+  @override
+  String get s37e57de4b9 => 'Jäetakse tühjaks, kui seda ei nõuta.';
+
+  @override
+  String get sffe00ea1b3 => 'MQTT parool';
+
+  @override
+  String get s407d4a5e56 => 'Baasteema';
+
+  @override
+  String get sc1af622c0a =>
+      'Kontrollija seadistustest. Olek: <base>/state, käsud: <base>/set.';
+
+  @override
+  String get s9783a8fd53 => 'tuba';
+
+  @override
+  String get sbc996a7d25 => 'seadeväärtus';
+
+  @override
+  String get sa69c0e1ca3 => 'Õhksoojuspump (IR)';
+
+  @override
+  String get s025e7bf04d =>
+      'Iga kaugjuhitava soojuspumba juhtimine infrapunalõhkeseadmega (Tasmota või ESPHome). IR on ühesuunaline: Molaplan näitab, mida ta viimati saatis.';
+
+  @override
+  String get sb5d4127728 => 'IR-purjetaja';
+
+  @override
+  String get sc899cf95db =>
+      'Enamik valmis IR-lõhkeseadmeid käivitab Tasmota (kasuta tasmota-ir ehitamist). ESPHome = sinu ESPHome- seade koos kliima_ ir- ga.';
+
+  @override
+  String get safc7f1325c => 'Soojuspumba kaubamärk';
+
+  @override
+  String get s7675ec1754 =>
+      'Vali seadme mark või pult. Kui see ei reageeri, proovi alternatiivse protokolliga \"Muu\".';
+
+  @override
+  String get s9702830f91 => 'Protokoll (ainult \"Muu\")';
+
+  @override
+  String get s6df0837908 =>
+      'Tasmota IRhvaci müüja nimi. Vajalik ainult \"Muu\" jaoks või teise proovimiseks.';
+
+  @override
+  String get saa49bfdb90 => 'Näidatud plaatide pealkirjades.';
+
+  @override
+  String get sf1971ac29b => 'Tasmota teema (ainult MQTT)';
+
+  @override
+  String get s65529d5877 =>
+      'Tasmota → Configuration → MQTT → Topic. Other MQTT blaster: command topic.';
+
+  @override
+  String get s321c1677e2 => 'Esfome climate id (ainult Esfome)';
+
+  @override
+  String get s4c07dec7b5 =>
+      'Climate_ i objekti ID, mida näidatakse seadme veebileheküljel.';
+
+  @override
+  String get s2229e548f3 => 'MQTT või veebikasutaja.';
+
+  @override
+  String get s06cff48000 => 'Käsu URL (ainult muu HTTP)';
+
+  @override
+  String get s5b41e244d6 =>
+      'Kohatäitjad: {\'{power}\'} {\'{mode}\'} {\'{temp}\'} {\'{fan}\'} {\'{swing}\'} {\'{vendor}\'} {\'{json}\'}.';
+
+  @override
+  String get s9a60c2026e => 'Režiiminupud';
+
+  @override
+  String get sd119ce3382 =>
+      'Nööbid soojuse, jahutuse, auto, kuiva ja ventilaatori jaoks.';
+
+  @override
+  String get s9b8dd7076a => 'Ventilaatori kiirus';
+
+  @override
+  String get s9597aa1ae9 => 'Liugur 0–5 (0 = auto).';
+
+  @override
+  String get secae50c5dd => 'Õõtsumine';
+
+  @override
+  String get s8bcb8433f9 => 'Valjuhääldumine sisse/välja.';
+
+  @override
+  String get s78a5e5fa61 => 'Toatemperatuur lõhkamissensorist';
+
+  @override
+  String get s2dd6395602 => 'Ainult siis, kui lõhkajal on temperatuuriandur.';
+
+  @override
+  String get s4ff78f06ab => 'Õhksoojuspump (teenindusport / ESPHome)';
+
+  @override
+  String get s6cc7b6b499 =>
+      'ESPHome kontroller siseseadme teeninduspordis (Mitsubishi CN105, Daikin S21/X50A, Panasonic CN-CNT, Toshiba).';
+
+  @override
+  String get s647e86e5e5 => 'Kliima ID';
+
+  @override
+  String get sbeb6af1e1c =>
+      'ESPHome\'i seadme kliimaüksus. \"Leia teejuhis soojuspumbad\" leiab selle sinu eest.';
+
+  @override
+  String get sbf36d139cb => 'Ainult siis, kui web_serveril on auth.';
+
+  @override
+  String get s54d4fdbba4 => 'Ainult siis, kui web_serveril on auth.';
+
+  @override
+  String get s84cd6a5180 => 'RF433 pult (Athom IR & RF)';
+
+  @override
+  String get s4105198757 =>
+      'RF433 raadiokaugseadmete (pesad, varikatused, garaažiuksed) juhtimine Athomiga \"Tasmota IR & RF433 kontroller\". Nupud õpetatakse kohe pärast lisamist.';
+
+  @override
+  String get sc34430eec0 => 'Nt mida sa kontrollid.';
+
+  @override
+  String get s12447972e0 => 'Ainult siis, kui on määratud Tasmota veebiparool.';
+
+  @override
+  String get s6385f1487e => 'Elektri hind (börs)';
+
+  @override
+  String get se807a72c0a =>
+      'Tänane ja homne hetkehind graafikuna. Hinnakontroll: kaua vajutage seadme plaati → Hinnakontroll.';
+
+  @override
+  String get sef8d24c969 => 'Riik / hinnapiirkond';
+
+  @override
+  String get sef4f509f9f => 'Valige oma riik; Rootsis ja Norras oma piirkond.';
+
+  @override
+  String get sf3a8631d14 =>
+      'Teie arvelt koos käibemaksuga. 0 = ainult energia.';
+
+  @override
+  String get sf3be8aac1c => 'Teie lepinguline marginaal ilma käibemaksuta.';
+
+  @override
+  String s49dfca65a3(String p0) {
+    return 'Elektri hind $p0';
+  }
+
+  @override
+  String get scf849c933b => 'Elekter praegu';
+
+  @override
+  String get s53a951507b => 'Odavaim tund';
+
+  @override
+  String get s3e99310fc0 => 'Hind täna ja homme';
+
+  @override
+  String get s9af9526395 => 'Ventilatsiooniseade (Modbus TCP)';
+
+  @override
+  String get s29dc0baf55 =>
+      'Temperatuurid ja ventilaatori kiirus. Registri eelseadistused on näited – kontrolli oma käsiraamatuga.';
+
+  @override
+  String get sb75966bb58 => 'Ühiku või lüüsi IP';
+
+  @override
+  String get s751331a84a =>
+      'Kui seadmel on ainult RS485, on vaja RS485 → Modbus TCP väravat. Sisesta selle IP.';
+
+  @override
+  String get s658cdb6ff8 => 'Kaubamärk';
+
+  @override
+  String get s785c0c264c =>
+      'Valige bränd, et eeltäita registrid näitena. \"—\" = tühi.';
+
+  @override
+  String get s7e9c785c20 => 'Sageli 1.';
+
+  @override
+  String get s0591744c19 => 'Peaaegu alati 502.';
+
+  @override
+  String get s5ccb7405cf => 'Ventilatsioon';
+
+  @override
+  String get se7dfa3594e => 'MQTT-seade';
+
+  @override
+  String get s12ab103795 =>
+      'Iga seade, mis räägib MQTT (Zigbee2MQTT, oma ESP, ...).';
+
+  @override
+  String get sffcfefd91c => 'Masin, mis töötab MQTT maakleriga.';
+
+  @override
+  String get s6ac05d979c => 'Mis see on?';
+
+  @override
+  String get s460d48d0cc => 'lüliti = sisse/ välja, andur = näitab väärtust.';
+
+  @override
+  String get s850c7e1194 => 'Oleku teema';
+
+  @override
+  String get s49b7311a1e => 'Teema, kus seade teatab oma olekust.';
+
+  @override
+  String get s579969e7e4 => 'Käsu teema (lüliti)';
+
+  @override
+  String get s137db4076a => 'Sisse- ja väljalülitamiskäsu teema.';
+
+  @override
+  String get s4c95226869 => 'Teates';
+
+  @override
+  String get s70f2ea8532 => 'Väljalülitatud teade';
+
+  @override
+  String get sdc234849ac => 'JSON';
+
+  @override
+  String get sd3f60d4a71 => 'Kui sõnum on JSON, siis välja nimi.';
+
+  @override
+  String get s6cee917658 => 'Ühik (sensor)';
+
+  @override
+  String get s3cd541d271 => 'Muu Wi-Fi-seade (HTTP)';
+
+  @override
+  String get s69885630aa =>
+      'Seade, millel on veebi rakendusliides. Näitab üht väärtust, lisab hiljem veel plaate.';
+
+  @override
+  String get s200320e245 => 'Oleku tee';
+
+  @override
+  String get sc5872d2e30 =>
+      'Kus seade teatab oma olekust. Tühjus = pole plaati.';
+
+  @override
+  String get s5564de12b2 => 'Väli näitamiseks';
+
+  @override
+  String get s377942beb7 => 'Välja nimi vastuses.';
+
+  @override
+  String get sbaf1a279c2 => 'Käsk ja vastus (ntfy)';
+
+  @override
+  String get se0fb2c7eea =>
+      'Saada käsk ntfy sõnumina (nt \"update\" + PIN) ja vaata koduseadme vastust samas plaadis. Sama kanal kui iPhone\'i kiirklahv.';
+
+  @override
+  String get s8231329360 => 'Käsuteema URL';
+
+  @override
+  String get sd82d127f05 =>
+      'Aseta sama URL, millele kiirklahvi postitused käsud annavad (nt https://ntfy.sh/kv- cmd-...). Ka teema nimi üksi toimib.';
+
+  @override
+  String get s1b3bbae234 =>
+      'Ainult siis, kui koduseade vastab mõnele muule teemale. Tühi = sama teema, ignoreeritakse meie enda käsku.';
+
+  @override
+  String get s1b08aa4646 =>
+      'Tekst, mida näidatakse plaadil, nt \"Uuendamine\" või \"Status\".';
+
+  @override
+  String get s5bed8bff00 => 'Käsk';
+
+  @override
+  String get se2a81ae67d =>
+      'Saadetav tekst. PIN- kood lisatakse tühiku järele, nt \"uuendamine 1234\".';
+
+  @override
+  String get s1477964f04 => 'PIN-koodi küsimine igal pressil';
+
+  @override
+  String get s62672283f6 =>
+      'PIN-koodi küsitakse peidetud ja seda ei salvestata, kui te ei vali \"Mäleta seda seadet\".';
+
+  @override
+  String get sb5e914eaf7 =>
+      'Ainult kaitstud teema puhul. Jäta tühjaks avaliku teema puhul.';
+
+  @override
+  String get s1a98a7e424 => 'Lisa ka teadete logiplaat';
+
+  @override
+  String get s5ab6348524 => 'Näitab teema viimaseid sõnumeid oma plaadil.';
+
+  @override
+  String get s57e684ac9e => 'Sõnumid';
+
+  @override
+  String get sdc84bf286f =>
+      'off=Off;heat=Heat;cool=Cool;auto=Auto;heat_cool=Auto;dry=Dry;fan_only=Fan';
+
+  @override
+  String s3378eb2d0b(String p0) {
+    return '$p0 – temperatuur';
+  }
+
+  @override
+  String get saa437260b8 => 'Saadetud olek (IR on ühesuunaline)';
+
+  @override
+  String get sfffb54daf4 => 'Olek';
+
+  @override
+  String get seab2c72485 => 'Ventilaator (0 = automaatne)';
+
+  @override
+  String get sfb0b971c01 => 'Õõtsumine';
+
+  @override
+  String s3a38b97f7b(String p0) {
+    return '$p0 – ruum';
+  }
+}

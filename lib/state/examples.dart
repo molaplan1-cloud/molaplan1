@@ -1,27 +1,27 @@
 import '../models/models.dart';
+import '../l10n/l10n.dart';
 
 /// Example dashboard showing the idea; the user replaces addresses with theirs.
 AppConfig exampleConfig(String lang) {
-  final fi = lang == 'fi';
   final ha = ConnectionConfig(
     name: 'Home Assistant',
     type: 'homeassistant',
     settings: {'baseUrl': 'http://homeassistant.local:8123', 'liveUpdates': true},
   );
   final cam = ConnectionConfig(
-    name: fi ? 'ESP32-kamera' : 'ESP32 camera',
+    name: tr(lang, 'ESP32-kamera', 'ESP32 camera'),
     type: 'camera',
     settings: {'baseUrl': 'http://192.168.1.70', 'auth': 'none'},
   );
   final iv = ConnectionConfig(
-    name: fi ? 'IV-kone (Modbus)' : 'Ventilation unit (Modbus)',
+    name: tr(lang, 'IV-kone (Modbus)', 'Ventilation unit (Modbus)'),
     type: 'modbus',
     settings: {'host': '192.168.1.60', 'port': 502, 'unitId': 1},
   );
   final tiles = <TileConfig>[
     TileConfig(
       type: TileType.camera,
-      title: fi ? 'Piha' : 'Yard',
+      title: tr(lang, 'Piha', 'Yard'),
       colSpan: 2,
       rowSpan: 2,
       connectionId: cam.id,
@@ -29,11 +29,11 @@ AppConfig exampleConfig(String lang) {
     ),
     TileConfig(
       type: TileType.toggle,
-      title: fi ? 'Hälytys' : 'Alarm',
+      title: tr(lang, 'Hälytys', 'Alarm'),
       icon: 'alarm',
       connectionId: ha.id,
       read: {'entityId': 'alarm_control_panel.koti'},
-      valueMap: fi ? 'disarmed=Pois;armed_away=Päällä;armed_home=Kotona;triggered=HÄLYTYS' : '',
+      valueMap: tr(lang, 'disarmed=Pois;armed_away=Päällä;armed_home=Kotona;triggered=HÄLYTYS', ''),
       onCommand: CommandStep(
         connectionId: ha.id,
         spec: {'service': 'alarm_control_panel.alarm_arm_away', 'entityId': 'alarm_control_panel.koti'},
@@ -46,7 +46,7 @@ AppConfig exampleConfig(String lang) {
     ),
     TileConfig(
       type: TileType.toggle,
-      title: fi ? 'Olohuoneen valot' : 'Living room lights',
+      title: tr(lang, 'Olohuoneen valot', 'Living room lights'),
       icon: 'lightbulb',
       connectionId: ha.id,
       read: {'entityId': 'light.olohuone'},
@@ -55,7 +55,7 @@ AppConfig exampleConfig(String lang) {
     ),
     TileConfig(
       type: TileType.value,
-      title: fi ? 'Tuloilma' : 'Supply air',
+      title: tr(lang, 'Tuloilma', 'Supply air'),
       icon: 'thermostat',
       connectionId: iv.id,
       read: {'table': 'holding', 'address': 10, 'dataType': 'int16', 'scale': 0.1},
@@ -65,7 +65,7 @@ AppConfig exampleConfig(String lang) {
     ),
     TileConfig(
       type: TileType.slider,
-      title: fi ? 'IV-kone nopeus' : 'Fan speed',
+      title: tr(lang, 'IV-kone nopeus', 'Fan speed'),
       icon: 'fan',
       connectionId: iv.id,
       read: {'table': 'holding', 'address': 20},
@@ -73,14 +73,14 @@ AppConfig exampleConfig(String lang) {
       max: 4,
       step: 1,
       decimals: 0,
-      valueMap: fi ? '0=Pois;1=Poissa;2=Kotona;3=Tehostus;4=Max' : '0=Off;1=Away;2=Home;3=Boost;4=Max',
+      valueMap: tr(lang, '0=Pois;1=Poissa;2=Kotona;3=Tehostus;4=Max', '0=Off;1=Away;2=Home;3=Boost;4=Max'),
       commands: [
         CommandStep(connectionId: iv.id, spec: {'table': 'holding', 'address': 20, 'value': '{{value}}'}),
       ],
     ),
     TileConfig(
       type: TileType.button,
-      title: fi ? 'Lähden kotoa' : 'Leaving home',
+      title: tr(lang, 'Lähden kotoa', 'Leaving home'),
       icon: 'home',
       colSpan: 2,
       confirm: true,
@@ -98,6 +98,6 @@ AppConfig exampleConfig(String lang) {
   return AppConfig(
     language: lang,
     connections: [ha, cam, iv],
-    dashboards: [Dashboard(name: fi ? 'Esimerkki' : 'Example', tiles: tiles)],
+    dashboards: [Dashboard(name: tr(lang, 'Esimerkki', 'Example'), tiles: tiles)],
   );
 }

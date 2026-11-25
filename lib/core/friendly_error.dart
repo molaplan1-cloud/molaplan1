@@ -1,4 +1,5 @@
 import 'dart:async';
+import '../l10n/l10n.dart';
 
 enum ErrorKind {
   dns,
@@ -129,10 +130,9 @@ ErrorKind classifyError(Object e) {
 }
 
 FriendlyError friendlyError(Object e, String lang) {
-  final fi = lang == 'fi';
   final tech = e.toString().replaceFirst('Exception: ', '');
   final k = classifyError(e);
-  String t(String a, String b) => fi ? a : b;
+  String t(String a, String b) => tr(lang, a, b);
   switch (k) {
     case ErrorKind.dns:
       return FriendlyError(

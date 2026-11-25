@@ -8,6 +8,7 @@ import '../models/models.dart';
 import '../templates/device_templates.dart';
 import 'app_scope.dart';
 import 'error_box.dart';
+import '../l10n/l10n.dart';
 
 /// Lower-case ESPHome-style id: "Olohuone – lämmitys" -> "olohuone_lammitys".
 String slugId(String s) {
@@ -407,7 +408,7 @@ class _HeatPumpServiceGuidePageState extends State<HeatPumpServiceGuidePage> {
                 Card(
                   child: ListTile(
                     title: Text('${p.$1} – ${p.$2}'),
-                    subtitle: Text(AppScope.of(context).lang == 'fi' ? p.$3 : p.$4),
+                    subtitle: Text(tr(AppScope.of(context).lang, p.$3, p.$4)),
                     trailing: const Icon(Icons.open_in_new, size: 18),
                     onTap: () => launchUrl(Uri.parse(p.$5), mode: LaunchMode.externalApplication),
                   ),

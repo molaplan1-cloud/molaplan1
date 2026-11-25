@@ -1,0 +1,3397 @@
+{
+ "@@locale": "es",
+ "s03c0a5192b": "Dirección no encontrada",
+ "@s03c0a5192b": {
+  "x-mt": true
+ },
+ "sb3ef01a6fa": "Revise la ortografía. Pruebe la dirección IP (por ejemplo, 192.168.1.50) en lugar de un nombre.",
+ "@sb3ef01a6fa": {
+  "x-mt": true
+ },
+ "s274a753ad6": "Dispositivo no encontrado en esta dirección",
+ "@s274a753ad6": {
+  "x-mt": true
+ },
+ "s2b503695b6": "Compruebe que el dispositivo está encendido y que su teléfono o PC está en el mismo Wi-Fi. También revise la dirección IP – puede cambiar, por lo que reserve una dirección fija en su router.",
+ "@s2b503695b6": {
+  "x-mt": true
+ },
+ "sff9ca463e3": "Dispositivo encontrado pero el puerto está cerrado",
+ "@sff9ca463e3": {
+  "x-mt": true
+ },
+ "s1d4f4506de": "Compruebe el número de puerto y que el servicio (UI USB, MQTT o Modbus TCP) está habilitado en el dispositivo.",
+ "@s1d4f4506de": {
+  "x-mt": true
+ },
+ "s8523a9cfd0": "La conexión segura (https) falló",
+ "@s8523a9cfd0": {
+  "x-mt": true
+ },
+ "sdfd499c1f1": "Pruebe http:// en su lugar, o active \"Allow self-signed certificate\" bajo Advanced.",
+ "@sdfd499c1f1": {
+  "x-mt": true
+ },
+ "s3fabccc1cd": "Login, contraseña o token rechazado",
+ "@s3fabccc1cd": {
+  "x-mt": true
+ },
+ "sdc2d65f8eb": "Consulta las credenciales. En Home Assistant puedes crear un nuevo token de larga vida en tu perfil.",
+ "@sdc2d65f8eb": {
+  "x-mt": true
+ },
+ "se0a7cef6c4": "El dispositivo respondió pero el artículo no fue encontrado",
+ "@se0a7cef6c4": {
+  "x-mt": true
+ },
+ "see02239a35": "Compruebe el camino o nombre de entidad (por ejemplo, light.living_room).",
+ "@see02239a35": {
+  "x-mt": true
+ },
+ "sdec83d1e90": "El dispositivo reportó un error",
+ "@sdec83d1e90": {
+  "x-mt": true
+ },
+ "s3de239ffc5": "Revisa el camino y la carga útil.",
+ "@s3de239ffc5": {
+  "x-mt": true
+ },
+ "s6121e8d8f1": "Registro desconocido en el dispositivo",
+ "@s6121e8d8f1": {
+  "x-mt": true
+ },
+ "s3474aedf54": "Compruebe el número de registro. Si la tabla comienza a 1 (por ejemplo, 40001), subtract 1. También comprobar la retención vs entrada.",
+ "@s3474aedf54": {
+  "x-mt": true
+ },
+ "s2c303f6774": "Tipo de registro no compatible",
+ "@s2c303f6774": {
+  "x-mt": true
+ },
+ "s945685fcda": "Pruebe el otro tipo de registro (mantener  entrada de la mercancía).",
+ "@s945685fcda": {
+  "x-mt": true
+ },
+ "s07ffbc349a": "Valor rechazado por el dispositivo",
+ "@s07ffbc349a": {
+  "x-mt": true
+ },
+ "s76b95eef9f": "El valor está probablemente fuera de rango. Revise la escala también.",
+ "@s76b95eef9f": {
+  "x-mt": true
+ },
+ "sb66bc0e677": "No Modbus reply",
+ "@sb66bc0e677": {
+  "x-mt": true
+ },
+ "s6ef5539bc2": "Conectado pero sin respuesta. Compruebe la unidad id (a menudo 1) y la configuración de serie de la puerta de entrada.",
+ "@s6ef5539bc2": {
+  "x-mt": true
+ },
+ "s17ea4c52d5": "No hay respuesta desde el dispositivo",
+ "@s17ea4c52d5": {
+  "x-mt": true
+ },
+ "s50ecf9ba6f": "Conectado pero sin respuesta a tiempo. Revisa el mensaje.",
+ "@s50ecf9ba6f": {
+  "x-mt": true
+ },
+ "sf93db545a1": "Hay un error en la configuración",
+ "@sf93db545a1": {
+  "x-mt": true
+ },
+ "sf19a9f0856": "Compruebe los campos, por ejemplo, que la dirección comienza con http:// y los números son números.",
+ "@sf19a9f0856": {
+  "x-mt": true
+ },
+ "s3976954bef": "Esta baldosa no tiene dispositivo",
+ "@s3976954bef": {
+  "x-mt": true
+ },
+ "sc025e0a1f4": "Abrir modo de edición (pencil) y elegir un dispositivo para la ficha.",
+ "@sc025e0a1f4": {
+  "x-mt": true
+ },
+ "s7e11595f9e": "El puente de casa está apagado",
+ "@s7e11595f9e": {
+  "x-mt": true
+ },
+ "s2cd1df086e": "El acceso remoto pasa por el puente en casa (tablet o PC). Comprueba que está encendido, Molaplan está abierto y tiene Internet.",
+ "@s2cd1df086e": {
+  "x-mt": true
+ },
+ "sdfb639365a": "Sin conexión a internet",
+ "sdbf06d05d9": "Su dispositivo no puede llegar al servicio remoto Molaplan. Compruebe los datos móviles o Wi-Fi.",
+ "@sdbf06d05d9": {
+  "x-mt": true
+ },
+ "s8b737f4026": "Se removió el acceso remoto",
+ "@s8b737f4026": {
+  "x-mt": true
+ },
+ "s4b9e4ca079": "Este dispositivo fue removido en el puente de inicio. Par de nuevo: Ajustes → Acceso remoto.",
+ "@s4b9e4ca079": {
+  "x-mt": true
+ },
+ "s5b3116ed94": "El puente de casa no respondió a tiempo",
+ "@s5b3116ed94": {
+  "x-mt": true
+ },
+ "se082095a34": "La conexión puede ser lenta. Intente de nuevo en un momento.",
+ "@se082095a34": {
+  "x-mt": true
+ },
+ "s688a4f4ccb": "El código no es válido",
+ "@s688a4f4ccb": {
+  "x-mt": true
+ },
+ "sfa0e226cd0": "Revise los 6 dígitos en la pantalla del puente. Un código es válido durante 10 minutos y funciona una vez – presione \"Pair un teléfono\" en el puente de nuevo si es necesario.",
+ "@sfa0e226cd0": {
+  "x-mt": true
+ },
+ "sfa5c1fb1ac": "El puente no aceptó este dispositivo",
+ "@sfa5c1fb1ac": {
+  "x-mt": true
+ },
+ "s9ad07ab36e": "Al emparejarse con el código, el puente pide confirmación – pulse \"Aceptar\" allí. O escanear el código QR, entonces no se necesita confirmación.",
+ "@s9ad07ab36e": {
+  "x-mt": true
+ },
+ "sb5c271ae6a": "El control de seguridad falló",
+ "@sb5c271ae6a": {
+  "x-mt": true
+ },
+ "s3d7ca280db": "La conexión no podía ser verificada como segura, por lo que no se usó. Prueba de nuevo con el código QR.",
+ "@s3d7ca280db": {
+  "x-mt": true
+ },
+ "s0061b44673": "El puente no respondió",
+ "@s0061b44673": {
+  "x-mt": true
+ },
+ "sceb894b9b3": "Aceptar el dispositivo en la pantalla del puente dentro de 3 minutos, o escanear el código QR.",
+ "@sceb894b9b3": {
+  "x-mt": true
+ },
+ "s9dd2ff794f": "Algo salió mal",
+ "sbb62433c2c": "Compruebe la configuración e inténtelo de nuevo.",
+ "@sbb62433c2c": {
+  "x-mt": true
+ },
+ "s0bf7cb1613": "Philips Hue",
+ "s4dbb677293": "inalcanzable",
+ "s609cb4c5f9": "encendido",
+ "s356d822497": "apagado",
+ "sf50732e8e8": "dimmable",
+ "@sf50732e8e8": {
+  "x-mt": true
+ },
+ "s3832b8c729": "toda la habitación",
+ "see129fb410": "brillo",
+ "s08d04d58a9": "Canal {p0}",
+ "@s08d04d58a9": {
+  "x-mt": true
+ },
+ "se78754330c": "potencia",
+ "sfcb44be1a0": "Shelly",
+ "s5f2b2ca5f5": "encendido ahora",
+ "s67f64cd925": "apagado ahora",
+ "s64037991c2": "Aplicación Shelly → tu perfil → Ajustes de usuario → Clave de la nube de autorización → Obtener clave. Copiar y pegarlo aquí.",
+ "@s64037991c2": {
+  "x-mt": true
+ },
+ "s062b21969d": "Se muestra en la misma página debajo de la llave (\"Server URI\").",
+ "@s062b21969d": {
+  "x-mt": true
+ },
+ "sf30bb5d5e6": "Normalmente no es necesario. Si no se encuentra nada: Aplicación Shelly → dispositivo → Ajustes → Información del dispositivo → ID del dispositivo. Separar varios con comas.",
+ "@sf30bb5d5e6": {
+  "x-mt": true
+ },
+ "s3aaacf80d2": "sin conexión",
+ "s252ebed5af": "Shelly Cloud",
+ "s25399cd337": "Servidor",
+ "@s25399cd337": {
+  "x-mt": true
+ },
+ "s246c7a46ff": "Aplicación Shelly → Configuración del usuario → Clave de la nube de autorización → Servidor URI.",
+ "@s246c7a46ff": {
+  "x-mt": true
+ },
+ "s61a2d946a4": "Clave de nube",
+ "@s61a2d946a4": {
+  "x-mt": true
+ },
+ "s9d468f5c64": "Aplicación Shelly → Configuración del usuario → Clave de la nube de autorización → Obtener clave.",
+ "@s9d468f5c64": {
+  "x-mt": true
+ },
+ "sf34c97592f": "IKEA Dirigera",
+ "sa376ec78ec": "Luz",
+ "sda8d9bf1cd": "Enchufe",
+ "sb662db81d8": "La dirección se ve incompleta. Use cuatro números con puntos, por ejemplo 192.168.1.50.",
+ "@sb662db81d8": {
+  "x-mt": true
+ },
+ "s738ecfe2bc": " Did you mean {p0}?",
+ "@s738ecfe2bc": {
+  "x-mt": true
+ },
+ "s06e738bf27": "Esta no es una dirección de red casera (por lo general comienzan con 192.168).{p0}",
+ "@s06e738bf27": {
+  "x-mt": true
+ },
+ "sbae99909c4": "Nota: este dispositivo está en {p0}.x – el dispositivo puede estar en otro Wi-Fi.",
+ "@sbae99909c4": {
+  "x-mt": true
+ },
+ "sa0c07ccd04": "Usted tiene la última versión ({p0}).",
+ "@sa0c07ccd04": {
+  "x-mt": true
+ },
+ "sa118d84538": "No podía comprobar las actualizaciones ahora mismo. Compruebe la conexión a Internet e inténtelo de nuevo más tarde.",
+ "@sa118d84538": {
+  "x-mt": true
+ },
+ "s9f2b092d8c": "Versión {p0} está disponible",
+ "@s9f2b092d8c": {
+  "x-mt": true
+ },
+ "sa5133b2c4a": "Tienes la versión {p0}.",
+ "@sa5133b2c4a": {
+  "x-mt": true
+ },
+ "se099b5797e": "¿Qué hay de nuevo?",
+ "@se099b5797e": {
+  "x-mt": true
+ },
+ "s9315c3df42": "Saltar esta versión",
+ "@s9315c3df42": {
+  "x-mt": true
+ },
+ "sdd5c8f0a9d": "Más tarde",
+ "sfbf490ec3f": "Actualizar",
+ "s5a94ef2af1": "La descarga estaba corrompida",
+ "@s5a94ef2af1": {
+  "x-mt": true
+ },
+ "s81e4325573": "Descarga fallido",
+ "@s81e4325573": {
+  "x-mt": true
+ },
+ "s4b1d3df588": "La suma de comprobación de archivos no coincidió, así que nada fue instalado. Por favor, inténtelo de nuevo en un momento.",
+ "@s4b1d3df588": {
+  "x-mt": true
+ },
+ "s0c463c7069": "Compruebe la conexión a Internet e inténtelo de nuevo. También puede descargar la actualización de la página de lanzamiento.",
+ "@s0c463c7069": {
+  "x-mt": true
+ },
+ "s5dd4c9671f": "Página de lanzamiento abierta",
+ "@s5dd4c9671f": {
+  "x-mt": true
+ },
+ "s49ddc3c3b6": "Actualización descargada",
+ "@s49ddc3c3b6": {
+  "x-mt": true
+ },
+ "s04a05bb8fc": "El archivo se verifica y se guarda:\n{p0}\n\nPara utilizarlo:\n1. Cerrar Molaplan.\n2. Extraiga la cremallera sobre la antigua carpeta Molaplan (o en una nueva carpeta).\n3. Comience molaplan.exe. Sus ajustes se guardan.",
+ "@s04a05bb8fc": {
+  "x-mt": true
+ },
+ "s1dd246ec69": "Página de lanzamiento",
+ "@s1dd246ec69": {
+  "x-mt": true
+ },
+ "s0f07b20d45": "Cierre abierto",
+ "@s0f07b20d45": {
+  "x-mt": true
+ },
+ "s6e1ebc8baa": "Carpeta abierta",
+ "@s6e1ebc8baa": {
+  "x-mt": true
+ },
+ "sa065e7f650": "Permitir la instalación de actualizaciones",
+ "@sa065e7f650": {
+  "x-mt": true
+ },
+ "sdc3bf71baf": "Android pide una vez permiso para que Molaplan pueda instalar sus propias actualizaciones.\n\n1. Pulsa \"Abran ajustes\".\n2. Enciende \"Permitir de esta fuente\".\n3. Vuelve y toca \"Actualizar\" otra vez.",
+ "@sdc3bf71baf": {
+  "x-mt": true
+ },
+ "s809d0eb368": "Cancelar",
+ "sa1bd8d2533": "Abrir ajustes",
+ "s441683b7a8": "Verificante...",
+ "@s441683b7a8": {
+  "x-mt": true
+ },
+ "se83b7fb2ac": "Descargando la actualización...",
+ "@se83b7fb2ac": {
+  "x-mt": true
+ },
+ "s0b68f81d82": "Molaplan {p0} is available. The bridge keeps working.",
+ "@s0b68f81d82": {
+  "x-mt": true
+ },
+ "sb06bee9921": "Show",
+ "@sb06bee9921": {
+  "x-mt": true
+ },
+ "sf1b5d0ffa6": "La contraseña no coincide. Introduzca la contraseña de su cuenta.",
+ "@sf1b5d0ffa6": {
+  "x-mt": true
+ },
+ "s11ee4426b2": "Algo salió mal: {p0}",
+ "@s11ee4426b2": {
+  "x-mt": true
+ },
+ "sbf59e43c36": "No hay conexión a Internet. Compruebe la conexión Wi-Fi o datos móviles e inténtelo de nuevo.",
+ "@sbf59e43c36": {
+  "x-mt": true
+ },
+ "s9ba7e7a8e6": "Correo electrónico o contraseña incorrecta. Compruébalos, o pulsa \"Contraseña olvidada\".",
+ "@s9ba7e7a8e6": {
+  "x-mt": true
+ },
+ "se899b438b5": "El correo electrónico no está confirmado todavía. Busque el código en su correo electrónico.",
+ "@se899b438b5": {
+  "x-mt": true
+ },
+ "s3fb651ebf3": "Este email ya tiene una cuenta. Inicie sesión en su lugar.",
+ "@s3fb651ebf3": {
+  "x-mt": true
+ },
+ "s1eddf46047": "La contraseña debe ser por lo menos 8 caracteres.",
+ "@s1eddf46047": {
+  "x-mt": true
+ },
+ "sca19a10c02": "Eso no parece una dirección de correo electrónico.",
+ "@sca19a10c02": {
+  "x-mt": true
+ },
+ "s736463f0d2": "El código está mal o expirado. Revise o pida uno nuevo.",
+ "@s736463f0d2": {
+  "x-mt": true
+ },
+ "s4800010fa4": "Demasiados intentos, espera un minuto y vuelve a intentarlo.",
+ "@s4800010fa4": {
+  "x-mt": true
+ },
+ "sf1a6e42ab0": "Su registro caducó, por favor ingrese de nuevo.",
+ "@sf1a6e42ab0": {
+  "x-mt": true
+ },
+ "sf597621fdd": "Otro dispositivo cambió la configuración al mismo tiempo. Prueba de nuevo.",
+ "@sf597621fdd": {
+  "x-mt": true
+ },
+ "se16eef219e": "El servicio de cuenta no respondió correctamente. Inténtelo de nuevo en breve.",
+ "@se16eef219e": {
+  "x-mt": true
+ },
+ "s2ab0ff38c1": "Tu cuenta ya tiene una configuración",
+ "@s2ab0ff38c1": {
+  "x-mt": true
+ },
+ "s3ce644ca86": "¿Ahorrar la configuración de este dispositivo en tu cuenta?",
+ "@s3ce644ca86": {
+  "x-mt": true
+ },
+ "s43d6286f35": "Este dispositivo también tiene sus propios dispositivos y baldosas. ¿Qué debemos hacer?",
+ "@s43d6286f35": {
+  "x-mt": true
+ },
+ "sd8a380a86d": "Luego aparecen los mismos hogares, dispositivos y fichas en cada dispositivo firmado en esta cuenta.",
+ "@sd8a380a86d": {
+  "x-mt": true
+ },
+ "sec25d10ff5": "Cancela y firma",
+ "@sec25d10ff5": {
+  "x-mt": true
+ },
+ "sb7a13da58b": "Utilice la configuración de la cuenta",
+ "@sb7a13da58b": {
+  "x-mt": true
+ },
+ "sf498dceefb": "Combine ambos (recomendados)",
+ "@sf498dceefb": {
+  "x-mt": true
+ },
+ "s9542718c6f": "Guardar en cuenta",
+ "@s9542718c6f": {
+  "x-mt": true
+ },
+ "sa711c4833e": "Escribe tu dirección de correo electrónico.",
+ "@sa711c4833e": {
+  "x-mt": true
+ },
+ "s933dc9caef": "Al menos 8 caracteres.",
+ "@s933dc9caef": {
+  "x-mt": true
+ },
+ "sb3cec3f199": "Cuenta de Molaplan",
+ "sb24f053a48": "Correo electrónico",
+ "s976a9f2980": "Contraseña",
+ "sc0f9642fb2": "Mostrar contraseña",
+ "s4d212254bc": "Código del correo electrónico",
+ "@s4d212254bc": {
+  "x-mt": true
+ },
+ "s3b86a618be": "El código llega en unos minutos. Compruebe la carpeta de spam también.",
+ "@s3b86a618be": {
+  "x-mt": true
+ },
+ "sb35c5ba0fc": "Con una cuenta tus hogares, dispositivos y fichas son los mismos en todos tus dispositivos – PC, tablet y teléfono. La conexión a casa se mueve a un nuevo dispositivo sin un código QR.\n\nLa cuenta es opcional: sin un Molaplan funciona como antes y la configuración permanece en este dispositivo.",
+ "@sb35c5ba0fc": {
+  "x-mt": true
+ },
+ "se697487621": "Iniciar sesión",
+ "sec4d25a98e": "No tengo una cuenta – crear uno",
+ "@sec4d25a98e": {
+  "x-mt": true
+ },
+ "s860d0269e0": "Inicia sesión con un código enviado por correo electrónico",
+ "@s860d0269e0": {
+  "x-mt": true
+ },
+ "s755639049e": "He olvidado la contraseña",
+ "s4a1671a2cc": "Crear una cuenta Molaplan",
+ "@s4a1671a2cc": {
+  "x-mt": true
+ },
+ "s75c960f1e5": "Elija una contraseña (8+ caracteres)",
+ "@s75c960f1e5": {
+  "x-mt": true
+ },
+ "sea446a95e5": "La contraseña también protege las contraseñas de tu dispositivo y las teclas de nube: están encriptadas en este dispositivo antes de guardarlo. Mantenlo seguro.",
+ "@sea446a95e5": {
+  "x-mt": true
+ },
+ "s4508b6c2e0": "Crear cuenta",
+ "s0ca1377846": "Enviamos un código a {p0}.",
+ "@s0ca1377846": {
+  "x-mt": true
+ },
+ "s07e981c940": "Ya tengo una cuenta - firmar en",
+ "@s07e981c940": {
+  "x-mt": true
+ },
+ "s2e793f899b": "Confirme su correo electrónico",
+ "@s2e793f899b": {
+  "x-mt": true
+ },
+ "s87b6699e12": "Confirmar",
+ "s824a7408ab": "Se envió un nuevo código.",
+ "@s824a7408ab": {
+  "x-mt": true
+ },
+ "s317ad443fb": "No hay código – enviar uno nuevo",
+ "@s317ad443fb": {
+  "x-mt": true
+ },
+ "scf7e14661c": "Atrás",
+ "s22c960ff4f": "Inicia sesión con un código",
+ "@s22c960ff4f": {
+  "x-mt": true
+ },
+ "s7d29d1dfbd": "Te enviamos un código. No hay contraseña necesaria para iniciar sesión.",
+ "@s7d29d1dfbd": {
+  "x-mt": true
+ },
+ "sc350da6f19": "Enviar código",
+ "@sc350da6f19": {
+  "x-mt": true
+ },
+ "s23cda12342": "Código enviado a {p0}.",
+ "@s23cda12342": {
+  "x-mt": true
+ },
+ "s14d85b9e32": "Iniciar sesión",
+ "saa1e3d1f13": "Enviar un nuevo código",
+ "@saa1e3d1f13": {
+  "x-mt": true
+ },
+ "s8c48f847f6": "Reiniciar contraseña",
+ "@s8c48f847f6": {
+  "x-mt": true
+ },
+ "safd591d9b6": "Te enviamos un código, y luego eliges una nueva contraseña.",
+ "@safd591d9b6": {
+  "x-mt": true
+ },
+ "s6807ac704e": "Nueva contraseña (8+ caracteres)",
+ "@s6807ac704e": {
+  "x-mt": true
+ },
+ "sa9b5a0b2df": "Cambiar contraseña y iniciar sesión",
+ "@sa9b5a0b2df": {
+  "x-mt": true
+ },
+ "se10ce6962a": "Sincronizando…",
+ "s94d5ea139c": "Hasta la fecha en todos sus dispositivos",
+ "@s94d5ea139c": {
+  "x-mt": true
+ },
+ "sc6f1932436": "Sin conexión – cambio de sincronización al volver en línea",
+ "@sc6f1932436": {
+  "x-mt": true
+ },
+ "s16ab688a9b": "El sincronismo falló - volverá a entrar",
+ "@s16ab688a9b": {
+  "x-mt": true
+ },
+ "s97d4aa9c1a": "Aún no se han sincronizado",
+ "@s97d4aa9c1a": {
+  "x-mt": true
+ },
+ "s40ea946050": "Sesión iniciada",
+ "s456721b668": "Sincronizar ahora",
+ "sa9df24980f": "Las contraseñas de dispositivo y las teclas de nube están bloqueadas. Introduzca la contraseña de su cuenta para abrirlos en este dispositivo.",
+ "@sa9df24980f": {
+  "x-mt": true
+ },
+ "sd1723cc065": "Contraseña de cuenta",
+ "@sd1723cc065": {
+  "x-mt": true
+ },
+ "s9e9a059c2f": "Desbloquear",
+ "@s9e9a059c2f": {
+  "x-mt": true
+ },
+ "s8b2b8fdc77": "Lo olvidé – empezar las contraseñas de nuevo",
+ "@s8b2b8fdc77": {
+  "x-mt": true
+ },
+ "s5ec8009dfd": "Guardado en la cuenta: hogares, dispositivos, fichas y su orden, y la conexión a domicilio. Las contraseñas de dispositivos, claves de nube y claves de conexión a domicilio están cifradas en este dispositivo con la contraseña de su cuenta antes de subir – el servidor no puede leerlas.",
+ "@s5ec8009dfd": {
+  "x-mt": true
+ },
+ "s2ea6f9de12": "Cambiar contraseña",
+ "s7ebd89c416": "¿Salir?",
+ "@s7ebd89c416": {
+  "x-mt": true
+ },
+ "s6c6165d662": "Los hogares y las baldosas permanecen en este dispositivo, pero los cambios ya no llegan a los otros dispositivos.",
+ "@s6c6165d662": {
+  "x-mt": true
+ },
+ "s643325053b": "Cerrar sesión",
+ "sfd6f965e64": "Eliminar cuenta",
+ "s37bf90cffe": "Elimina permanentemente la cuenta y todo lo almacenado en el servidor. Este dispositivo mantiene su propia configuración.",
+ "@s37bf90cffe": {
+  "x-mt": true
+ },
+ "sc523d0f28e": "Eliminar cuenta",
+ "s84fda3e17f": "Cancelar",
+ "s162a85c6ef": "Guardar",
+ "s02c3403918": "Elige una nueva contraseña.",
+ "@s02c3403918": {
+  "x-mt": true
+ },
+ "s04ab058029": "Cambió la contraseña.",
+ "@s04ab058029": {
+  "x-mt": true
+ },
+ "s7c23534562": "Inicie contraseñas sobre",
+ "@s7c23534562": {
+  "x-mt": true
+ },
+ "s5ea3703a0a": "Las contraseñas de dispositivo guardadas y las teclas de nube se pierden y deben ser escritas de nuevo. Hogares y fichas permanecen. Su contraseña de inicio de sesión cambia a esta nueva.",
+ "@s5ea3703a0a": {
+  "x-mt": true
+ },
+ "s321912ef77": "Eliminar la cuenta permanentemente?",
+ "@s321912ef77": {
+  "x-mt": true
+ },
+ "s3b0ea9bbc7": "La cuenta {p0} y todo lo almacenado en el servidor se elimina. Esto no se puede deshacer.\n\nEste dispositivo sigue funcionando sin una cuenta.",
+ "@s3b0ea9bbc7": {
+  "x-mt": true
+ },
+ "s139d2075b8": "Se suprimió la cuenta.",
+ "@s139d2075b8": {
+  "x-mt": true
+ },
+ "sfb4df77773": "Dale un nombre al botón.",
+ "@sfb4df77773": {
+  "x-mt": true
+ },
+ "s986eb41068": "Use Pronto: agregue el basurero: rápido a remoto_receptor.",
+ "@s986eb41068": {
+  "x-mt": true
+ },
+ "s0d353281af": "Button \"{p0}\" agregó.",
+ "@s0d353281af": {
+  "x-mt": true
+ },
+ "s8e4e78e067": "Aprender mando",
+ "s2acab0eccd": "Listo",
+ "s608a56ad4b": "Guardar botones remotos a Molaplan, por ejemplo, \"Turbo\". El blaster necesita un receptor IR.",
+ "@s608a56ad4b": {
+  "x-mt": true
+ },
+ "sa1aed8855e": "IR remote",
+ "@sa1aed8855e": {
+  "x-mt": true
+ },
+ "sded7fb8520": "A distancia RF433",
+ "@sded7fb8520": {
+  "x-mt": true
+ },
+ "sc8e312a953": "RF433 = radio remotas (sockets, toldos, puertas de garaje, ventiladores). IR = infrarrojos (bombas de calor, televisores).",
+ "@sc8e312a953": {
+  "x-mt": true
+ },
+ "s63c57060b6": "Toca \"Empieza a escuchar\".",
+ "@s63c57060b6": {
+  "x-mt": true
+ },
+ "s439f6f3869": "Apunte el control remoto en el interruptor (menos de 1 m) y presione el botón una vez.",
+ "@s439f6f3869": {
+  "x-mt": true
+ },
+ "sd8667596c3": "Dirígelo y pulsa \"Guardar como botón\".",
+ "@sd8667596c3": {
+  "x-mt": true
+ },
+ "sd5f1a45865": "IR es unidireccional: la bomba de calor no confirma. Molaplan sólo muestra lo que envió. Aprendizaje trabaja en la red doméstica.",
+ "@sd5f1a45865": {
+  "x-mt": true
+ },
+ "s628dc92a8d": "Escucha... pulsa el botón remoto",
+ "@s628dc92a8d": {
+  "x-mt": true
+ },
+ "s1313eb829d": "Empezar a escuchar",
+ "s619fdf8b5c": "Código recibido",
+ "s6264a40ec6": "Nombre del botón",
+ "sc630994fba": "Se muestra como el título de la baldosa.",
+ "@sc630994fba": {
+  "x-mt": true
+ },
+ "s09feac6b28": "ESPHome no puede tomar nuevos códigos sobre la red. Añadir esto al dispositivo YAML, instalarlo, y luego guardar el botón:",
+ "@s09feac6b28": {
+  "x-mt": true
+ },
+ "sd6f41faa1d": "Copiar",
+ "s0a7c7a151a": "Guardar como botón",
+ "s29adc71f1c": "Conector CN105 en el tablero interior. ESPHome: esphome-mitsubishiheatpump.",
+ "@s29adc71f1c": {
+  "x-mt": true
+ },
+ "s1d17c9fc6e": "S21 (más unidades de pared) o X50A. Enchufes Faikin directamente; ESPHome: esphome-daikin-s21.",
+ "@s1d17c9fc6e": {
+  "x-mt": true
+ },
+ "s07767f6a03": "Conector CN-CNT (donde va el adaptador WLAN de Panasonic). ESPHome: esphome-panasonic-ac.",
+ "@s07767f6a03": {
+  "x-mt": true
+ },
+ "s659b742754": "Puerto de servicio interior Toshiba. ESPHome: esphome-toshiba_ac.",
+ "@s659b742754": {
+  "x-mt": true
+ },
+ "s7c3bf9542b": "Introduzca el dispositivo IP.",
+ "@s7c3bf9542b": {
+  "x-mt": true
+ },
+ "sdfa6aedae8": "\"{p0}\" añadido.",
+ "@sdfa6aedae8": {
+  "x-mt": true
+ },
+ "sbd2f94e7a4": "Bomba de calor (puerto de servicio/ESPHome)",
+ "@sbd2f94e7a4": {
+  "x-mt": true
+ },
+ "s49b479c566": "La mejor manera: un pequeño ESP32 en el puerto de servicio de unidad interior. A diferencia de IR es de dos vías - estado real y temperatura ambiente.",
+ "@s49b479c566": {
+  "x-mt": true
+ },
+ "sc95a59f7c6": "Seguridad: apagar la bomba de calor en las centrales antes de abrir la unidad interior. Puede afectar la garantía.",
+ "@sc95a59f7c6": {
+  "x-mt": true
+ },
+ "s7b7121b71e": "Puerto por marca",
+ "@s7b7121b71e": {
+  "x-mt": true
+ },
+ "s67c1a8a6a3": "Pasos",
+ "@s67c1a8a6a3": {
+  "x-mt": true
+ },
+ "s2f9c5f3130": "Consigue un controlador ESP32 y cable.",
+ "@s2f9c5f3130": {
+  "x-mt": true
+ },
+ "s2675e49423": "Flash ESPHome por la guía del proyecto. Incluye \"web_server:\" – Molaplan lo usa.",
+ "@s2675e49423": {
+  "x-mt": true
+ },
+ "scd70d27319": "Conéctelo con la energía apagada.",
+ "@scd70d27319": {
+  "x-mt": true
+ },
+ "s56b0cb63ea": "Escribe su IP debajo y pulsa \"Busca bombas de calor\".",
+ "@s56b0cb63ea": {
+  "x-mt": true
+ },
+ "sdd1cd7bdd5": "Controlador ESPHome IP",
+ "@sdd1cd7bdd5": {
+  "x-mt": true
+ },
+ "sa1e21d236a": "Desde la lista de dispositivos del router o el panel ESPHome.",
+ "@sa1e21d236a": {
+  "x-mt": true
+ },
+ "s1bef32afe0": "Encontrar bombas de calor",
+ "@s1bef32afe0": {
+  "x-mt": true
+ },
+ "s9aa9bc9679": "El dispositivo respondió pero no tiene una entidad climática.",
+ "@s9aa9bc9679": {
+  "x-mt": true
+ },
+ "s5a40f12b6a": "Añadir",
+ "s306729fe62": "No hay precios",
+ "@s306729fe62": {
+  "x-mt": true
+ },
+ "s29fd8d5b5e": "Ahora",
+ "s723c887da6": "min",
+ "@s723c887da6": {
+  "x-mt": true
+ },
+ "scaaff6345d": "max",
+ "@scaaff6345d": {
+  "x-mt": true
+ },
+ "s65982a11bc": "incl. mañana",
+ "@s65982a11bc": {
+  "x-mt": true
+ },
+ "se79acaf837": "mañana después de las 14:00",
+ "@se79acaf837": {
+  "x-mt": true
+ },
+ "s55d52c5ae1": "Este dispositivo no está en Wi-Fi",
+ "@s55d52c5ae1": {
+  "x-mt": true
+ },
+ "s9a4dece965": "Conecte este dispositivo a su hogar Wi-Fi (el que usa {p0}). O, si está lejos, establezca el puente de inicio para que la búsqueda se ejecute en un dispositivo en casa.",
+ "@s9a4dece965": {
+  "x-mt": true
+ },
+ "s3972820cd6": "No podía alcanzar el dispositivo",
+ "@s3972820cd6": {
+  "x-mt": true
+ },
+ "s0f480abb4a": "No pude alcanzar el dispositivo en {p0}",
+ "@s0f480abb4a": {
+  "x-mt": true
+ },
+ "sa82143ee02": "1. Compruebe que {p0} está alimentado.\n2. Este dispositivo (o el puente de inicio) debe estar en el mismo Wi-Fi.\n3. Revise la dirección – puede cambiar. Pulse \"Volver\" y busque de nuevo.",
+ "@sa82143ee02": {
+  "x-mt": true
+ },
+ "sd4d7ad1bab": "Un dispositivo diferente respondió",
+ "@sd4d7ad1bab": {
+  "x-mt": true
+ },
+ "s5b7d02a301": "El dispositivo en esa dirección no es {p0}. Revisa la dirección.",
+ "@s5b7d02a301": {
+  "x-mt": true
+ },
+ "sdac5622fa8": "El dispositivo pide una contraseña",
+ "@sdac5622fa8": {
+  "x-mt": true
+ },
+ "sbf9ee8aaec": "Se establece una contraseña en el dispositivo. Escriba a continuación y pulse \"Connect\".",
+ "@sbf9ee8aaec": {
+  "x-mt": true
+ },
+ "s83f57c7c24": "Contraseña incorrecta",
+ "s32e85a0ba2": "Compruebe la contraseña (cuestión de casos). Puede cambiarla en la aplicación del dispositivo.",
+ "@s32e85a0ba2": {
+  "x-mt": true
+ },
+ "sb1d36bfdd3": "El botón no se apretó en el tiempo",
+ "@sb1d36bfdd3": {
+  "x-mt": true
+ },
+ "sc994f6ec6e": "Pulse \"Prueba de nuevo\" y luego presione el botón de inmediato.",
+ "@sc994f6ec6e": {
+  "x-mt": true
+ },
+ "s663202243e": "No se encontró nada que controlar",
+ "@s663202243e": {
+  "x-mt": true
+ },
+ "sb03997d94b": "El dispositivo respondió pero no tiene interruptores ni luces. Para la nube, escriba el ID del dispositivo.",
+ "@sb03997d94b": {
+  "x-mt": true
+ },
+ "s869571042f": "Clave de nube o servidor no aceptado",
+ "@s869571042f": {
+  "x-mt": true
+ },
+ "sab1763c592": "Copiar la tecla y el servidor de nuevo desde la aplicación Shelly (Configuración de usuario → Clave de la nube de autorización).",
+ "@sab1763c592": {
+  "x-mt": true
+ },
+ "s855ffbfd24": "No podía alcanzar la nube",
+ "@s855ffbfd24": {
+  "x-mt": true
+ },
+ "s739d569a9c": "Consulta la conexión a Internet.",
+ "@s739d569a9c": {
+  "x-mt": true
+ },
+ "sc96a3502b5": "Demasiados pedidos",
+ "@sc96a3502b5": {
+  "x-mt": true
+ },
+ "sed917dc2a2": "La nube limita las solicitudes.",
+ "@sed917dc2a2": {
+  "x-mt": true
+ },
+ "s516dbdd784": "El puente de la casa está fuera de la fecha",
+ "@s516dbdd784": {
+  "x-mt": true
+ },
+ "s70089507bf": "Actualizar Molaplan en el puente (Configuración → Compruebe las actualizaciones).",
+ "@s70089507bf": {
+  "x-mt": true
+ },
+ "scc1918f2dc": "Compruebe que el puente en casa está encendido, Molaplan está abierto y tiene Internet.",
+ "@scc1918f2dc": {
+  "x-mt": true
+ },
+ "sce0949d6fc": "Inténtalo de nuevo, si sigue sucediendo, reinicia el dispositivo.",
+ "@sce0949d6fc": {
+  "x-mt": true
+ },
+ "sce6d01c270": "Introduzca la dirección primero",
+ "@sce6d01c270": {
+  "x-mt": true
+ },
+ "s65bbf3cab4": "Comprueba la dirección",
+ "sb711cc1ce2": "{p0} no es una dirección de red casera. Normalmente comienzan con 192.168. – compruébalo de nuevo en la aplicación {p1}.",
+ "@sb711cc1ce2": {
+  "x-mt": true
+ },
+ "se60794c266": "Did you mean {p0}?",
+ "@se60794c266": {
+  "x-mt": true
+ },
+ "s264fda2dee": "Lo arreglaré",
+ "@s264fda2dee": {
+  "x-mt": true
+ },
+ "s0a6098ac78": "Inténtalo de todos modos",
+ "@s0a6098ac78": {
+  "x-mt": true
+ },
+ "sc1039f5cf6": "Use {p0}",
+ "@sc1039f5cf6": {
+  "x-mt": true
+ },
+ "s20f777bfef": "La dirección está en otra red",
+ "@s20f777bfef": {
+  "x-mt": true
+ },
+ "sbb1730fa00": "Dirección {p0} no está en la misma red que este dispositivo ({p1}.x). Generalmente este dispositivo está en un Wi-Fi diferente que {p2}.\n\nÚnete al mismo Wi-Fi, o establece el puente de inicio.",
+ "@sbb1730fa00": {
+  "x-mt": true
+ },
+ "s43370d968c": "Rellene primero",
+ "@s43370d968c": {
+  "x-mt": true
+ },
+ "s915c9a0db3": "Elige al menos uno",
+ "@s915c9a0db3": {
+  "x-mt": true
+ },
+ "sb160156a36": "Add: {p0}",
+ "@sb160156a36": {
+  "x-mt": true
+ },
+ "s6c3e76828b": "Siguiente",
+ "s43d448a950": "Añadir a la vista de inicio",
+ "sd890121a57": "Mostrar vista a casa",
+ "@sd890121a57": {
+  "x-mt": true
+ },
+ "sb1717cc67c": "A) Sin un puente casero",
+ "@sb1717cc67c": {
+  "x-mt": true
+ },
+ "s2082568a23": "Use Shelly Cloud (sin puente)",
+ "@s2082568a23": {
+  "x-mt": true
+ },
+ "s5080d486b8": "Mejor si ningún dispositivo siempre se queda en casa – por ejemplo, tu tableta viaja contigo. El control pasa por la propia nube de Shelly. Necesitas una llave de la aplicación de Shelly (señamos dónde).",
+ "@s5080d486b8": {
+  "x-mt": true
+ },
+ "s82985d5078": "B) A través de un puente casero",
+ "@s82985d5078": {
+  "x-mt": true
+ },
+ "s78aec2034d": "¿Cómo controlarás tu casa cuando estés lejos?",
+ "@s78aec2034d": {
+  "x-mt": true
+ },
+ "s03b3c3b3c8": "Un puente casero es un dispositivo que ALWAYS permanece en casa, encendido y en el mismo Wi-Fi que {p0} – por ejemplo un teléfono antiguo, tableta o PC. Tus otros dispositivos lo alcanzan por Internet (encriptado, sin reenvío de puerto). Un dispositivo que llevas no es un buen puente.",
+ "@s03b3c3b3c8": {
+  "x-mt": true
+ },
+ "s688d1308d7": "Como se ha firmado, la conexión a domicilio llega a todos sus dispositivos automáticamente.",
+ "@s688d1308d7": {
+  "x-mt": true
+ },
+ "s96feb2f60a": "Este dispositivo siempre se queda en casa – hazlo el puente",
+ "@s96feb2f60a": {
+  "x-mt": true
+ },
+ "sb2a33a1ec4": "Mantenga la carga con Molaplan abierto. Otros dispositivos se conectan con un código QR o mediante la firma en la misma cuenta.",
+ "@sb2a33a1ec4": {
+  "x-mt": true
+ },
+ "s1b9f4ae6d5": "El puente está en otro dispositivo – conectarse a él",
+ "@s1b9f4ae6d5": {
+  "x-mt": true
+ },
+ "s13d739b710": "Escanee el código QR del puente. Los dispositivos se encuentran a través del puente, incluso cuando usted está lejos.",
+ "@s13d739b710": {
+  "x-mt": true
+ },
+ "sda6a1e50e9": "Skip for now – add on the home network (remote access can be set up later)",
+ "@sda6a1e50e9": {
+  "x-mt": true
+ },
+ "s6f326a48f9": "Encontrar: {p0}",
+ "@s6f326a48f9": {
+  "x-mt": true
+ },
+ "sc788897ba0": "Buscando a través del puente de casa, así que esto funciona lejos de casa también.",
+ "@sc788897ba0": {
+  "x-mt": true
+ },
+ "s0f7361f40c": "Mirando tu Wi-Fi en casa, toca el tuyo.",
+ "@s0f7361f40c": {
+  "x-mt": true
+ },
+ "sda2b4c9721": "Configuración abierta de Wi-Fi",
+ "@sda2b4c9721": {
+  "x-mt": true
+ },
+ "sc93d9cc14b": "Conectado – búsqueda de nuevo",
+ "@sc93d9cc14b": {
+  "x-mt": true
+ },
+ "s13f0596b74": "Buscando... (unos 5 segundos)",
+ "@s13f0596b74": {
+  "x-mt": true
+ },
+ "saae59a3865": "via casa puente",
+ "@saae59a3865": {
+  "x-mt": true
+ },
+ "s8eabd27f68": "No se encuentra automáticamente. Compruebe que {p0} está en y en el mismo Wi-Fi. También puede escribir la dirección a continuación.",
+ "@s8eabd27f68": {
+  "x-mt": true
+ },
+ "s2fc39b0bd7": "Buscar de nuevo",
+ "sa616ab181e": "Introduzca la dirección",
+ "@sa616ab181e": {
+  "x-mt": true
+ },
+ "sb439b8abc3": "O escriba la dirección",
+ "@sb439b8abc3": {
+  "x-mt": true
+ },
+ "s178e07f06b": "Dirección IP",
+ "scf487a3699": "¿Dónde lo encuentro?",
+ "@scf487a3699": {
+  "x-mt": true
+ },
+ "s9b9b0d01a2": " (opcional)",
+ "s0a7134d0e3": "Pulsa el botón ahora",
+ "s43118959d5": "{p0} s left",
+ "@s43118959d5": {
+  "x-mt": true
+ },
+ "sba10f23f03": "Conectando…",
+ "se4095d7d95": "Contraseña del dispositivo",
+ "sdbdf676485": "Conectar",
+ "s200542b930": "Reintentar",
+ "s8f610a3bb2": "Estoy lejos de casa",
+ "@s8f610a3bb2": {
+  "x-mt": true
+ },
+ "sf77125583f": "Detalles técnicos",
+ "s77ec7b376b": "Encontré: {p0}",
+ "@s77ec7b376b": {
+  "x-mt": true
+ },
+ "sac4debdb9c": "Escoge lo que pasa en la vista de casa y llámalos.",
+ "@sac4debdb9c": {
+  "x-mt": true
+ },
+ "sb1924acbe7": "Nombre",
+ "s86c3f92546": "También añadir brillo / poder",
+ "@s86c3f92546": {
+  "x-mt": true
+ },
+ "s91571486e4": "También mostrar potencia (W)",
+ "@s91571486e4": {
+  "x-mt": true
+ },
+ "sf86536db42": "Done! {p0} tiles added",
+ "@sf86536db42": {
+  "x-mt": true
+ },
+ "sbfaea66122": "Las baldosas funcionan en casa y lejos a través de la nube – nada más que hacer.",
+ "@sbfaea66122": {
+  "x-mt": true
+ },
+ "se7c68b3bed": "Los azulejos trabajan en casa y lejos a través del puente de casa – nada más que hacer.",
+ "@se7c68b3bed": {
+  "x-mt": true
+ },
+ "sbc8469cce1": "Los azulejos funcionan en su red de casa. Para controlar desde cualquier lugar, establecer el puente de inicio.",
+ "@sbc8469cce1": {
+  "x-mt": true
+ },
+ "s856a422504": "Configurar el acceso remoto",
+ "@s856a422504": {
+  "x-mt": true
+ },
+ "sd9923cda70": "¿No en casa? Activa el acceso remoto",
+ "@sd9923cda70": {
+  "x-mt": true
+ },
+ "s876c7230a2": "Añadir dispositivo",
+ "s1e593aeca2": "Cerrar",
+ "s3d00dee1a9": "Usar",
+ "sa252f06bff": "Escoge la marca del dispositivo. Molaplan la encuentra y crea las fichas.",
+ "@sa252f06bff": {
+  "x-mt": true
+ },
+ "s5b3b5e5a24": "Buscar marca o dispositivo (por ejemplo, Shelly, Hue, IKEA)",
+ "@s5b3b5e5a24": {
+  "x-mt": true
+ },
+ "sa427be10c9": "Encontrar y conectar automáticamente",
+ "@sa427be10c9": {
+  "x-mt": true
+ },
+ "s6f4cc0844f": "Llegando - cómo utilizarlo hoy",
+ "@s6f4cc0844f": {
+  "x-mt": true
+ },
+ "s846ee3bc67": "Otros dispositivos",
+ "s2a9b6fedd9": "¿No puedes encontrar tu marca?",
+ "@s2a9b6fedd9": {
+  "x-mt": true
+ },
+ "scfc7244d06": "Husqvarna, Zigbee, Tuya, bombas de calor... ver cómo utilizarlas hoy.",
+ "@scfc7244d06": {
+  "x-mt": true
+ },
+ "sf7b77783e5": "Otro (configuración manual)",
+ "sc168355ee6": "Otro dispositivo (avanzado)",
+ "s3022f72ece": "Todos los tipos de conexión.",
+ "@s3022f72ece": {
+  "x-mt": true
+ },
+ "s2d1d488d6d": "Para usuarios técnicos.",
+ "@s2d1d488d6d": {
+  "x-mt": true
+ },
+ "s6f1c11270c": "Contiene configuración de ejemplo",
+ "@s6f1c11270c": {
+  "x-mt": true
+ },
+ "s8f4c0baf1a": "No hay dispositivos encontrados automáticamente. Introduzca la dirección usted mismo – encontrarla en su router o la aplicación del dispositivo.",
+ "@s8f4c0baf1a": {
+  "x-mt": true
+ },
+ "s104238f11e": "Dispositivos encontrados - elegir el suyo:",
+ "@s104238f11e": {
+  "x-mt": true
+ },
+ "sd5f9dce947": "La búsqueda no está disponible en esta red.",
+ "@sd5f9dce947": {
+  "x-mt": true
+ },
+ "s26abc57d91": "¿Enseñar los botones del mando?",
+ "sc709f38633": "El control básico ya funciona. También puede enseñar otros botones remotos, por ejemplo \"Turbo\".",
+ "@sc709f38633": {
+  "x-mt": true
+ },
+ "s6cac83dd5e": "Ahora no",
+ "s97ea2eeb11": "Enseñar ahora",
+ "s09cfb7b2a1": "Dispositivo añadido",
+ "sda9574390f": "Device and {p0} tiles added",
+ "@sda9574390f": {
+  "x-mt": true
+ },
+ "sd51ee1ec8d": "La configuración de Preset son ejemplos. Reviselos contra el manual del dispositivo antes de confiar en ellos.",
+ "@sd51ee1ec8d": {
+  "x-mt": true
+ },
+ "s566585dc66": "IR es unidireccional: la bomba de calor no confirma. Molaplan siempre envía todo el estado y muestra lo que envió. Aprenda otros botones remotos más tarde: Conexiones → blaster → \"Aprende remoto\".",
+ "@s566585dc66": {
+  "x-mt": true
+ },
+ "s0dd21e026c": "Guía y búsqueda automática",
+ "@s0dd21e026c": {
+  "x-mt": true
+ },
+ "s695a011cc1": "Buscando…",
+ "s47d409fddd": "Red de búsqueda",
+ "@s47d409fddd": {
+  "x-mt": true
+ },
+ "s7196b72140": "Г No nativo Modbus TCP – un RS485 → La puerta de entrada TCP es necesaria.",
+ "@s7196b72140": {
+  "x-mt": true
+ },
+ "s2e8ba44677": "Fuente",
+ "@s2e8ba44677": {
+  "x-mt": true
+ },
+ "sceb8e47d07": "Probar la conexión",
+ "s02ce5f4a01": "¡Funciona!",
+ "sb9e9e55164": "Estas fichas serán creadas",
+ "@sb9e9e55164": {
+  "x-mt": true
+ },
+ "s1cb2891ef2": "Llenar en los campos marcados con * para ver los azulejos.",
+ "@s1cb2891ef2": {
+  "x-mt": true
+ },
+ "s504861ee78": "No hay fichas listas – puedes añadirlas más tarde con el botón del lápiz.",
+ "@s504861ee78": {
+  "x-mt": true
+ },
+ "s1094266d4c": "Muestra un valor",
+ "@s1094266d4c": {
+  "x-mt": true
+ },
+ "sf6ae3f3323": "Interruptor",
+ "s20dad69675": "Botón",
+ "s0e9f94df05": "Control deslizante",
+ "s109b454866": "Vista de cámara",
+ "@s109b454866": {
+  "x-mt": true
+ },
+ "s37153e0e80": "Ajustes avanzados",
+ "s0ca55a9cae": "Otros dispositivos utilizan configuraciones técnicas (HTTP, MQTT, Modbus...). Si su marca está lista, utilícela en su lugar.\n\nPuede apagarlos en Ajustes.",
+ "@s0ca55a9cae": {
+  "x-mt": true
+ },
+ "s9630135746": "Activar",
+ "s2ad22696ca": "Idioma",
+ "s7efc5653d2": "Idioma del dispositivo",
+ "s4529c1010a": "Elija una conexión de cámara",
+ "@s4529c1010a": {
+  "x-mt": true
+ },
+ "sc95fb5440b": "Corriente terminada",
+ "@sc95fb5440b": {
+  "x-mt": true
+ },
+ "s6e700ae773": "Control por precio eliminado",
+ "s5aa3400a7a": "Control por precio guardado",
+ "s2f5410429b": "La regla se ejecuta en este dispositivo (puente de casa). Mantenlo en casa.",
+ "@s2f5410429b": {
+  "x-mt": true
+ },
+ "sb86a43361f": "La regla se ejecuta en el puente de casa – su teléfono puede estar apagado.",
+ "@sb86a43361f": {
+  "x-mt": true
+ },
+ "s4e35ba5321": "Aún no hay puente de inicio. La regla se guarda pero funciona sólo una vez una tableta o PC siempre en casa es el puente (Configuración → Acceso remoto).",
+ "@s4e35ba5321": {
+  "x-mt": true
+ },
+ "s1a9e9bead3": "Control de precios: {p0}",
+ "@s1a9e9bead3": {
+  "x-mt": true
+ },
+ "s6b609c3376": "¿Cuándo debe estar encendido?",
+ "s93e5435cf4": "Sin control por precio",
+ "s55e5c3a177": "Cuántas horas encendido",
+ "s52ef5e0b45": "Límite de precio",
+ "s993193d056": "Próximas horas de encendido",
+ "s2f7c00a89e": "Los precios no están disponibles ahora mismo.",
+ "@s2f7c00a89e": {
+  "x-mt": true
+ },
+ "s406e599999": "No hay horas al día siguiente (o los precios de mañana todavía no están apagados).",
+ "@s406e599999": {
+  "x-mt": true
+ },
+ "s140acccb81": "Hoy",
+ "s0de6e75a52": "Mañana",
+ "sf87d92faf4": "Precio de la zona {p0}. Precio del día-ahead incl. IVA {p1} %. Añada el dispositivo \"Precio de electricidad\" para cambiar el área y las tarifas.",
+ "@sf87d92faf4": {
+  "x-mt": true
+ },
+ "s2adc3a77ed": "Elija el tipo de conexión",
+ "@s2adc3a77ed": {
+  "x-mt": true
+ },
+ "s78d94155f1": "Conexiones",
+ "s776d8b06bf": "Nueva conexión",
+ "@s776d8b06bf": {
+  "x-mt": true
+ },
+ "sc6d89693a5": "No hay conexiones todavía. Agregue un dispositivo o servicio, por ejemplo unidad de ventilación (Modbus), Asistente de casa o una cámara.",
+ "@sc6d89693a5": {
+  "x-mt": true
+ },
+ "s07c82cb0af": "Campo obligatorio",
+ "@s07c82cb0af": {
+  "x-mt": true
+ },
+ "sf702cf0ac6": "Eliminar la conexión?",
+ "@sf702cf0ac6": {
+  "x-mt": true
+ },
+ "s6b83de0ab9": "{p0} tiles use this connection and will stop working.",
+ "@s6b83de0ab9": {
+  "x-mt": true
+ },
+ "sccd1325381": "La conexión se eliminará de este dispositivo.",
+ "@sccd1325381": {
+  "x-mt": true
+ },
+ "sc1845eb440": "Eliminar",
+ "s837e0fc5e6": "IR es unidireccional: la bomba de calor no confirma los comandos. Los azulejos muestran el último estado enviado.",
+ "@s837e0fc5e6": {
+  "x-mt": true
+ },
+ "s09737988fd": "¡La conexión funciona!",
+ "s0a972aa85e": "Las contraseñas y las fichas se almacenan en el almacenamiento seguro del dispositivo.",
+ "@s0a972aa85e": {
+  "x-mt": true
+ },
+ "s229f981388": "Puente de casa en",
+ "@s229f981388": {
+  "x-mt": true
+ },
+ "sfc2dc8fc36": "Bridge: offline",
+ "@sfc2dc8fc36": {
+  "x-mt": true
+ },
+ "sdedbb30a67": "En casa",
+ "s9d64d4c166": "Remoto",
+ "s1f8cf57b2c": "Sin conexión",
+ "s678a751265": "Conecte este dispositivo a casa",
+ "@s678a751265": {
+  "x-mt": true
+ },
+ "sdae0305965": "Hay un puente casero (tablet o PC) en casa ya. Escanee su código QR o escriba los 6 dígitos.",
+ "@sdae0305965": {
+  "x-mt": true
+ },
+ "s5f8284b98f": "Haga este dispositivo el puente casero",
+ "@s5f8284b98f": {
+  "x-mt": true
+ },
+ "s6a95f7843b": "Este dispositivo se mantiene en casa, siempre en (cargar + Wi-Fi), y pasa comandos remotos a sus dispositivos.",
+ "@s6a95f7843b": {
+  "x-mt": true
+ },
+ "s2c3ae5833b": "Otras formas: VPN, Nabu Casa, nube MQTT",
+ "@s2c3ae5833b": {
+  "x-mt": true
+ },
+ "s807e3a32f3": "Guías paso a paso si ya utiliza Tailscale, WireGuard, Home Assistant Cloud o cloud MQTT.",
+ "@s807e3a32f3": {
+  "x-mt": true
+ },
+ "sa3e78d5c4e": "El puente del hogar responde – el acceso remoto funciona.",
+ "@sa3e78d5c4e": {
+  "x-mt": true
+ },
+ "s370acd310d": "Acceso remoto",
+ "s0b57661c18": "Controla tu hogar desde cualquier lugar",
+ "@s0b57661c18": {
+  "x-mt": true
+ },
+ "sb43ef4094c": "En casa Molaplan habla directamente con sus dispositivos. En otro lugar se encripta a través de su puente de inicio – ningún puerto de reenvío o configuración de router. La aplicación elige el camino correcto automáticamente.",
+ "@sb43ef4094c": {
+  "x-mt": true
+ },
+ "s075e5a4864": "Conectado a casa",
+ "sa7679488fb": "En casa = directamente. Remoto = a través del puente casero. Sin conexión = ni respuestas.",
+ "@sa7679488fb": {
+  "x-mt": true
+ },
+ "s19cec9667e": "Acceso remoto de prueba",
+ "@s19cec9667e": {
+  "x-mt": true
+ },
+ "s86ad95fa48": "Copiar los tableros caseros",
+ "@s86ad95fa48": {
+  "x-mt": true
+ },
+ "sfaa5185b74": "¿Eliminar el acceso remoto?",
+ "@sfaa5185b74": {
+  "x-mt": true
+ },
+ "sbc44ce6993": "Este dispositivo ya no puede llegar a casa desde fuera. Puedes emparejar de nuevo en cualquier momento.",
+ "@sbc44ce6993": {
+  "x-mt": true
+ },
+ "s9593939a4c": "Quitar",
+ "s3563cb1635": "Eliminar el acceso remoto",
+ "@s3563cb1635": {
+  "x-mt": true
+ },
+ "s528c4f3a4c": "Este dispositivo es el puente casero",
+ "@s528c4f3a4c": {
+  "x-mt": true
+ },
+ "se7b8d659b5": "Avanzado",
+ "sfd263f3e04": "Refrigerio de la cámara cuando está remoto",
+ "@sfd263f3e04": {
+  "x-mt": true
+ },
+ "s99249ddf24": "remotamente la cámara muestra una imagen cada {p0} s (datos de las olas).",
+ "@s99249ddf24": {
+  "x-mt": true
+ },
+ "s451ea613dd": "Relay server",
+ "@s451ea613dd": {
+  "x-mt": true
+ },
+ "s72da730a42": "Servicio remoto: conectado",
+ "@s72da730a42": {
+  "x-mt": true
+ },
+ "s421f161f5b": "Conectarse al servicio remoto...",
+ "@s421f161f5b": {
+  "x-mt": true
+ },
+ "s88e2b1dad5": "No hay conexión con el servicio remoto – reintentando automáticamente. Compruebe la conexión a Internet.",
+ "@s88e2b1dad5": {
+  "x-mt": true
+ },
+ "scc0cccf89d": "Apagado",
+ "sa1d085d92c": "El puente no tiene dashboards para copiar.",
+ "@sa1d085d92c": {
+  "x-mt": true
+ },
+ "sa13ef6f8d9": "Copied: {p0} dashboards",
+ "@sa13ef6f8d9": {
+  "x-mt": true
+ },
+ "sab5e7202f5": "Conectado a \"{p0}\"!",
+ "@sab5e7202f5": {
+  "x-mt": true
+ },
+ "s30f06b7fb0": "Ahora puede controlar su hogar desde cualquier lugar. Copia los paneles y dispositivos del puente de inicio a este dispositivo también?",
+ "@s30f06b7fb0": {
+  "x-mt": true
+ },
+ "s641263ce18": "No, gracias",
+ "sa7a6c0fc2d": "no es un código Molaplan",
+ "@sa7a6c0fc2d": {
+  "x-mt": true
+ },
+ "se2ecf1935a": "Conectar a casa",
+ "s410655fd47": "Cómo conectarse",
+ "@s410655fd47": {
+  "x-mt": true
+ },
+ "s3a141e0c32": "En el puente de inicio (tabla o PC en casa) abra Molaplan → Ajustes → Acceso remoto → Haga de este dispositivo el puente de inicio.",
+ "@s3a141e0c32": {
+  "x-mt": true
+ },
+ "sc7c83b2f58": "Presione \"Pair un teléfono\" allí. Aparece un código QR y 6 dígitos.",
+ "@sc7c83b2f58": {
+  "x-mt": true
+ },
+ "s35284509d4": "Escríbase el código QR o escriba los dígitos a continuación.",
+ "@s35284509d4": {
+  "x-mt": true
+ },
+ "s66bb65d8e8": "Escanear el código QR",
+ "@s66bb65d8e8": {
+  "x-mt": true
+ },
+ "se97cc157ef": "o escriba el código",
+ "@se97cc157ef": {
+  "x-mt": true
+ },
+ "s643434044c": "Al usar el código, presione \"Aceptar\" en el puente de inicio también.",
+ "@s643434044c": {
+  "x-mt": true
+ },
+ "s9753766742": "Presione \"Acepto\" en la pantalla del puente casero...",
+ "@s9753766742": {
+  "x-mt": true
+ },
+ "s50e49dd1df": "Apunte la cámara en el código QR",
+ "@s50e49dd1df": {
+  "x-mt": true
+ },
+ "s5d717bb2c5": "No se puede utilizar la cámara ({p0}). Permitir acceso a la cámara o escribir el código.",
+ "@s5d717bb2c5": {
+  "x-mt": true
+ },
+ "s7132345f20": "Dispositivo \"{p0}\" conectado!",
+ "@s7132345f20": {
+  "x-mt": true
+ },
+ "sb38b582dab": "Puente de casa",
+ "se2e2af02ac": "El puente casero es un dispositivo que se mantiene en casa, por ejemplo una vieja tableta o un PC. Cuando usted está lejos, los comandos de su teléfono se encriptan a través de él a sus dispositivos.",
+ "@se2e2af02ac": {
+  "x-mt": true
+ },
+ "sd64f52490d": "Mantenlo en el cargador y en el Wi-Fi casero.",
+ "@sd64f52490d": {
+  "x-mt": true
+ },
+ "sbb23f25581": "Mantén a Molaplan abierto. La pantalla se mantiene mientras el puente está encendido.",
+ "@sbb23f25581": {
+  "x-mt": true
+ },
+ "sbfed096278": "Utilice este dispositivo como puente casero",
+ "@sbfed096278": {
+  "x-mt": true
+ },
+ "s13995350ed": "Vincular un teléfono",
+ "s6a74454a98": "Dispositivos pares",
+ "@s6a74454a98": {
+  "x-mt": true
+ },
+ "s1e4fc2e7fe": "Nada todavía. Presione \"Pair un teléfono\".",
+ "@s1e4fc2e7fe": {
+  "x-mt": true
+ },
+ "s7ea55c5834": "Añadido",
+ "sfd8d693d04": "¿Retirar \"{p0}\"?",
+ "@sfd8d693d04": {
+  "x-mt": true
+ },
+ "s84572f642e": "El dispositivo ya no puede conectarse remotamente. Puede ser emparejado de nuevo.",
+ "@s84572f642e": {
+  "x-mt": true
+ },
+ "sc58a7d7121": "Nombre de la casa",
+ "s9715416100": "Escanear con el teléfono",
+ "@s9715416100": {
+  "x-mt": true
+ },
+ "sf54c6d871c": "En el teléfono: Molaplan → Ajustes → Acceso remoto → Conectar este dispositivo a casa",
+ "@sf54c6d871c": {
+  "x-mt": true
+ },
+ "sf7fa9632f3": "Válido para",
+ "@sf7fa9632f3": {
+  "x-mt": true
+ },
+ "s5378bb3f05": "¿Aceptar este dispositivo?",
+ "@s5378bb3f05": {
+  "x-mt": true
+ },
+ "s1d8bb7b0a6": "\"{p0}\" quiere control remoto de su casa. Aceptar sólo si es su propio o el dispositivo de un miembro de la familia que acaba de entrar en el código.",
+ "@s1d8bb7b0a6": {
+  "x-mt": true
+ },
+ "sa04c218f82": "Rechazar",
+ "sdfaf8c242b": "Aceptar",
+ "s1cf33c1fbc": "Valor",
+ "s86029171be": "Encender/apagar",
+ "s4ddce888df": "Botón / atajo",
+ "s357fc9c3fe": "Slider / setpoint",
+ "@s357fc9c3fe": {
+  "x-mt": true
+ },
+ "seeb6c38c8e": "Cámara",
+ "s14da6beba5": "Muestra una lectura, por ejemplo, temperatura.",
+ "@s14da6beba5": {
+  "x-mt": true
+ },
+ "se4b1d203df": "On/off, p. ej. una luz o alarma.",
+ "@se4b1d203df": {
+  "x-mt": true
+ },
+ "sc2197ab417": "Un toque hace una o muchas cosas.",
+ "@sc2197ab417": {
+  "x-mt": true
+ },
+ "sd611704caf": "Ajusta un valor, por ejemplo, la temperatura.",
+ "@sd611704caf": {
+  "x-mt": true
+ },
+ "sacfc0c0b41": "Muestra una imagen de cámara.",
+ "@sacfc0c0b41": {
+  "x-mt": true
+ },
+ "s76e7a995de": "Valor leído",
+ "@s76e7a995de": {
+  "x-mt": true
+ },
+ "sc5edd6d3d1": "Nuevo mosaico",
+ "sa684fd0716": "Editar mosaico",
+ "s8a8673aafe": "Título",
+ "scf37cbeda8": "Icono",
+ "sa444aab286": "Automático",
+ "sfeab9bd26f": "Width",
+ "@sfeab9bd26f": {
+  "x-mt": true
+ },
+ "s58be670598": "Altura",
+ "@s58be670598": {
+  "x-mt": true
+ },
+ "sea30815e6a": "Los ajustes de baldosas técnicos aparecen cuando enciende \"Advanced\" en Ajustes.",
+ "@sea30815e6a": {
+  "x-mt": true
+ },
+ "s382afc832f": "Fuente del Estado",
+ "@s382afc832f": {
+  "x-mt": true
+ },
+ "s581aee3e96": "Opcional: de dónde se lee el estado actual.",
+ "@s581aee3e96": {
+  "x-mt": true
+ },
+ "se6b18b17d9": "Intervalo de la encuesta (s, 0 = ninguno)",
+ "@se6b18b17d9": {
+  "x-mt": true
+ },
+ "s01f2b1ee0c": "MQTT, Home Assistant and WebSocket update live without polling.",
+ "@s01f2b1ee0c": {
+  "x-mt": true
+ },
+ "s937448ecf5": "Prueba de lectura",
+ "@s937448ecf5": {
+  "x-mt": true
+ },
+ "s5cbdea7f7e": "Visualización",
+ "@s5cbdea7f7e": {
+  "x-mt": true
+ },
+ "se6af4b33df": "Unidad",
+ "sd5498697da": "Decimales",
+ "@sd5498697da": {
+  "x-mt": true
+ },
+ "s4f7007db78": "Nombres de valor",
+ "@s4f7007db78": {
+  "x-mt": true
+ },
+ "s4aae179c52": "0=Off;1=Home;2=Away",
+ "s0c12fda7ca": "Toggle comandos",
+ "@s0c12fda7ca": {
+  "x-mt": true
+ },
+ "s3a9d9e16ef": "\"En\" valores (comma separado, vacío = auto)",
+ "@s3a9d9e16ef": {
+  "x-mt": true
+ },
+ "s1509c5a2a6": "ON comando",
+ "@s1509c5a2a6": {
+  "x-mt": true
+ },
+ "s2a1e131afd": "OFF command",
+ "@s2a1e131afd": {
+  "x-mt": true
+ },
+ "s0201de52c0": "'{''{'value'}''}' en el comando es reemplazado por el valor deslizante.",
+ "@s0201de52c0": {
+  "x-mt": true
+ },
+ "sc30c9a7e51": "Paso",
+ "@sc30c9a7e51": {
+  "x-mt": true
+ },
+ "s4d6451a63a": "Establecer el comando",
+ "@s4d6451a63a": {
+  "x-mt": true
+ },
+ "sa4082e1a79": "Comandos (corridos en orden)",
+ "@sa4082e1a79": {
+  "x-mt": true
+ },
+ "s467488e572": "Un acceso directo puede controlar varios dispositivos en secuencia, con retrasos.",
+ "@s467488e572": {
+  "x-mt": true
+ },
+ "sad43973fb3": "Añadir comando",
+ "sdaef43c622": "Solicitar confirmación",
+ "@sdaef43c622": {
+  "x-mt": true
+ },
+ "s5210a5ad23": "Conexión",
+ "s96705fc3df": "Comando enviado",
+ "sb41db1e809": "Pruébalo",
+ "@sb41db1e809": {
+  "x-mt": true
+ },
+ "s77d2309fd5": "Retraso antes (ms)",
+ "@s77d2309fd5": {
+  "x-mt": true
+ },
+ "sc0f5a14d2b": "umbrales de color (valor ≥ límite → color)",
+ "@sc0f5a14d2b": {
+  "x-mt": true
+ },
+ "scd65d31d4c": "Limitación",
+ "@scd65d31d4c": {
+  "x-mt": true
+ },
+ "s30a2c0f460": "Añada el umbral",
+ "@s30a2c0f460": {
+  "x-mt": true
+ },
+ "s4226eb046f": "Deshacer",
+ "sd5cb601286": "Tailscale (fácil VPN)",
+ "@sd5cb601286": {
+  "x-mt": true
+ },
+ "s0aa851cfb4": "Gratis para uso personal. Su teléfono y su hogar actúan como una red – Molaplan trabaja con las mismas direcciones que en casa.",
+ "@s0aa851cfb4": {
+  "x-mt": true
+ },
+ "s444ca5d58f": "Bien si tienes un PC siempre conectado, Raspberry Pi o Home Assistant en casa.",
+ "@s444ca5d58f": {
+  "x-mt": true
+ },
+ "sec7b4d1d7a": "Crear una cuenta de Tailscale en tailscale.com (Google, Microsoft o Apple-in).",
+ "@sec7b4d1d7a": {
+  "x-mt": true
+ },
+ "s178c57446d": "Instala Tailscale en el dispositivo siempre en casa. En Home Assistant: Settings → Add-ons → Tailscale.",
+ "@s178c57446d": {
+  "x-mt": true
+ },
+ "s4faf83aa13": "Encienda el \"rutador de subred\" allí e ingrese su red de inicio, por ejemplo 192.168.1.0/24. Entonces todos los dispositivos de su hogar son accesibles.",
+ "@s4faf83aa13": {
+  "x-mt": true
+ },
+ "s721719c0e1": "Aprobar la ruta en la consola de administración Tailscale (Machines → dispositivo → Editar configuración de la ruta).",
+ "@s721719c0e1": {
+  "x-mt": true
+ },
+ "s921f981bda": "Instala la aplicación Tailscale en tu teléfono y accede con la misma cuenta.",
+ "@s921f981bda": {
+  "x-mt": true
+ },
+ "s8ae7e7b2a4": "¡Hecho! Molaplan utiliza las mismas direcciones que en casa. Nada más que cambiar.",
+ "@s8ae7e7b2a4": {
+  "x-mt": true
+ },
+ "se92301ff0a": "https://tailscale.com/download",
+ "sf6270ae66c": "https://tailscale.com/kb/1019/subnets",
+ "s57f0b61334": "WireGuard (reuter VPN)",
+ "@s57f0b61334": {
+  "x-mt": true
+ },
+ "sb9bb49ab92": "Si su router admite WireGuard (por ejemplo ASUS, FRITZ!Box, UniFi, OpenWrt), su teléfono se une a la red de inicio directamente.",
+ "@sb9bb49ab92": {
+  "x-mt": true
+ },
+ "s986d264604": "Bien si el router tiene WireGuard y su conexión tiene una dirección IP pública.",
+ "@s986d264604": {
+  "x-mt": true
+ },
+ "sf24b16dc12": "Abra la configuración del router y busque \"servidor VPN\" → \"WireGuard\".",
+ "@sf24b16dc12": {
+  "x-mt": true
+ },
+ "s1e5d1eb832": "Habilitar el servidor y añadir un nuevo dispositivo (peer) para el teléfono.",
+ "@s1e5d1eb832": {
+  "x-mt": true
+ },
+ "s8e0252a2b4": "El router muestra un código QR. Instala la aplicación WireGuard en el teléfono y escríbela.",
+ "@s8e0252a2b4": {
+  "x-mt": true
+ },
+ "s4b3740b727": "Comprueba que \"Protectores permitidos\" incluye la red doméstica (por ejemplo, 192.168.1.0/24).",
+ "@s4b3740b727": {
+  "x-mt": true
+ },
+ "sd2e8523b28": "Cambiar el VPN en el teléfono – Molaplan funciona como en casa.",
+ "@sd2e8523b28": {
+  "x-mt": true
+ },
+ "saa17c5a456": "https://www.wireguard.com/install/",
+ "se5960424ea": "Muchas conexiones de banda ancha móvil (4G/5G home internet) no tienen IP pública (CGNAT) y WireGuard entonces no se puede llegar desde fuera. Use acceso remoto Molaplan o Tailscale en su lugar.",
+ "@se5960424ea": {
+  "x-mt": true
+ },
+ "sab2dfe387b": "Home Assistant Cloud (Nabu Casa)",
+ "s2e0586b37e": "Una suscripción mensual pagada de los fabricantes de Home Assistant. Da una dirección remota segura a Home Assistant.",
+ "@s2e0586b37e": {
+  "x-mt": true
+ },
+ "s534e7ec95e": "Bien si sus dispositivos ya están en Home Assistant.",
+ "@s534e7ec95e": {
+  "x-mt": true
+ },
+ "s0f7533967d": "En Home Assistant: Settings → Home Assistant Cloud → iniciar el ensayo o iniciar sesión.",
+ "@s0f7533967d": {
+  "x-mt": true
+ },
+ "s2e60dd8178": "Gire \"Remote control\" en.",
+ "@s2e60dd8178": {
+  "x-mt": true
+ },
+ "s7a73024451": "Copiar la dirección remota, que parece: https://abcd1234.ui.nabu.casa",
+ "@s7a73024451": {
+  "x-mt": true
+ },
+ "sd4873612f7": "En Molaplan: Conexiones → Home Assistant → cambiar la dirección a la dirección remota. El token se mantiene igual.",
+ "@sd4873612f7": {
+  "x-mt": true
+ },
+ "s15223b0e32": "¡Hecho! Las baldosas de Home Assistant ahora funcionan en todas partes.",
+ "@s15223b0e32": {
+  "x-mt": true
+ },
+ "s9b3201b1fa": "https://www.nabucasa.com/",
+ "s60e7067815": "Esto sólo cubre los dispositivos controlados a través de Home Assistant. Para otros (Modbus, cámaras directamente) utilizan el acceso remoto Molaplan o una VPN.",
+ "@s60e7067815": {
+  "x-mt": true
+ },
+ "s8e0d0a2d4e": "Cloud MQTT (por ejemplo, HiveMQ Cloud)",
+ "@s8e0d0a2d4e": {
+  "x-mt": true
+ },
+ "sd0fff65292": "Dispositivos y Molaplan hablan a través del mismo servidor en la nube. HiveMQ Cloud tiene un nivel gratuito que es suficiente para el uso doméstico.",
+ "@sd0fff65292": {
+  "x-mt": true
+ },
+ "s7350b9f98b": "Bien para dispositivos MQTT: Tasmota, ESPHome, Shelly, Zigbee2MQTT, tus propias tablas ESP.",
+ "@s7350b9f98b": {
+  "x-mt": true
+ },
+ "s59b3c7d246": "Cree una cuenta gratuita en consola.hivemq.cloud y cree un clúster libre (gratuito/sin soporte).",
+ "@s59b3c7d246": {
+  "x-mt": true
+ },
+ "s04fe436d1e": "Bajo \"Access Management\" crea un nombre de usuario y contraseña.",
+ "@s04fe436d1e": {
+  "x-mt": true
+ },
+ "sdf0075eab5": "Copiar la dirección del servidor (por ejemplo, abcd.s1.eu.hivemq.cloud). El puerto es de 8883 con TLS encendido.",
+ "@sdf0075eab5": {
+  "x-mt": true
+ },
+ "s9e9be6fc33": "Ponga este servidor, nombre de usuario y contraseña en la configuración de MQTT de sus dispositivos (TLS en).",
+ "@s9e9be6fc33": {
+  "x-mt": true
+ },
+ "s90f1cb151b": "En Molaplan: Conexiones → MQTT → dirección, puerto 8883, TLS on, nombre de usuario y contraseña.",
+ "@s90f1cb151b": {
+  "x-mt": true
+ },
+ "s77bf29f2f5": "https://console.hivemq.cloud/",
+ "safd2cd2b7b": "Elija una contraseña fuerte: cualquiera que sepa que puede controlar sus dispositivos.",
+ "@safd2cd2b7b": {
+  "x-mt": true
+ },
+ "s9557c0ef28": "Guías de acceso remoto",
+ "@s9557c0ef28": {
+  "x-mt": true
+ },
+ "sf4d7957b78": "Más fácil: acceso remoto Molaplan",
+ "@sf4d7957b78": {
+  "x-mt": true
+ },
+ "s8032085166": "Sin cuentas, sin configuración de router. Sólo necesita una tableta o PC que se mantenga en casa.",
+ "@s8032085166": {
+  "x-mt": true
+ },
+ "sd9b48e01fc": "Otras formas",
+ "@sd9b48e01fc": {
+  "x-mt": true
+ },
+ "sfe551fd431": "Guías de dispositivos",
+ "sa35e37b4b4": "Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Se encuentra automáticamente.",
+ "@sa35e37b4b4": {
+  "x-mt": true
+ },
+ "scb28b11e70": "Nuevo panel",
+ "s1f9799af4e": "e.g. Cottage",
+ "@s1f9799af4e": {
+  "x-mt": true
+ },
+ "s3a13f9d077": "Rename dashboard",
+ "@s3a13f9d077": {
+  "x-mt": true
+ },
+ "sa5bf37213b": "¿Supir el panel de control?",
+ "@sa5bf37213b": {
+  "x-mt": true
+ },
+ "s10671afc00": "\"{p0}\" y sus tablas {p1} serán eliminadas.",
+ "@s10671afc00": {
+  "x-mt": true
+ },
+ "s897761b5f4": "Dashboard \"{p0}\" eliminado",
+ "@s897761b5f4": {
+  "x-mt": true
+ },
+ "scc5cf9957d": "Elija el tipo de azulejos",
+ "@scc5cf9957d": {
+  "x-mt": true
+ },
+ "s7cf6340503": "Nuevo dispositivo con mosaicos listos",
+ "se6ca707cf3": "Más fácil: Shelly, ESP32-CAM, Home Assistant...",
+ "@se6ca707cf3": {
+  "x-mt": true
+ },
+ "s0789f5f14f": "DASHBOARDS",
+ "s1da81fd6c3": "Ajustes",
+ "s59622d792b": "Renombrar",
+ "sfb3e3c456c": "Suprímase el tablero",
+ "@sfb3e3c456c": {
+  "x-mt": true
+ },
+ "s187d328bb1": "Editar",
+ "scdfd80f963": "Añadir mosaico",
+ "s41c3cebc48": "Añadir dispositivo",
+ "s71af34b8e9": "Panel vacío",
+ "s6a210970eb": "Las fichas del dispositivo aparecen aquí: temperaturas, interruptores, cámaras y atajos. Comience añadiendo un dispositivo.",
+ "@s6a210970eb": {
+  "x-mt": true
+ },
+ "s4229fb4103": "Añade tu primer dispositivo",
+ "s147f47be4c": "Añadir mosaico",
+ "sf67e0d5752": "¿Eliminar el mosaico?",
+ "s97f46743e0": "Tile \"{p0}\" eliminado",
+ "@s97f46743e0": {
+  "x-mt": true
+ },
+ "sa0d8c62e5a": "No hay ningún comando configurado",
+ "@sa0d8c62e5a": {
+  "x-mt": true
+ },
+ "s1e5d696a26": "¿Ejecutar este comando?",
+ "@s1e5d696a26": {
+  "x-mt": true
+ },
+ "sdfc012fb4e": "Código PIN",
+ "@sdfc012fb4e": {
+  "x-mt": true
+ },
+ "s1df6e2eaa7": "PIN",
+ "secab66c046": "Recuerde en este dispositivo",
+ "@secab66c046": {
+  "x-mt": true
+ },
+ "s10bf4eab8e": "Almacenado encriptado en este dispositivo solamente. Por defecto el PIN no se almacena.",
+ "@s10bf4eab8e": {
+  "x-mt": true
+ },
+ "s912ea5d2ec": "Enviar",
+ "s856418521a": "No hay comandos configurados",
+ "@s856418521a": {
+  "x-mt": true
+ },
+ "sdfa66ee201": "{p0}: sent",
+ "@sdfa66ee201": {
+  "x-mt": true
+ },
+ "s12fc3810a5": "Enviado – esperando la respuesta...",
+ "@s12fc3810a5": {
+  "x-mt": true
+ },
+ "sd1c7d49360": "Respuesta a la respuesta",
+ "@sd1c7d49360": {
+  "x-mt": true
+ },
+ "s38ac222392": "Valor",
+ "s29fae6a0e8": "Control por precio activado",
+ "sbfe79d1f5f": "Actualizado",
+ "@sbfe79d1f5f": {
+  "x-mt": true
+ },
+ "s25580038cb": "Separación de PIN",
+ "@s25580038cb": {
+  "x-mt": true
+ },
+ "sf50c488b24": "Olvídate de PIN salvado",
+ "@sf50c488b24": {
+  "x-mt": true
+ },
+ "safe0429a90": "Control por precio",
+ "sf3d644dd4c": "Aprender un botón del mando",
+ "sfb1a18d11f": "Actualizar",
+ "s4cbe24240f": "Encendido",
+ "s33831dd49f": "Apagado",
+ "sdc398885dc": "Ajustes avanzados",
+ "s5d477f3cd8": "Normalmente no necesitas estos",
+ "@s5d477f3cd8": {
+  "x-mt": true
+ },
+ "s2315e0e739": "p. ej.",
+ "s4dab2d409b": "Configuración de las exportaciones",
+ "@s4dab2d409b": {
+  "x-mt": true
+ },
+ "s149c1e54d6": "Configuración exportada",
+ "@s149c1e54d6": {
+  "x-mt": true
+ },
+ "s35f445793b": "Configuración de importación",
+ "@s35f445793b": {
+  "x-mt": true
+ },
+ "sd55be829e3": "¿Reemplazar la configuración actual?",
+ "@sd55be829e3": {
+  "x-mt": true
+ },
+ "s852dd1795e": "Todas las conexiones y paneles actuales son reemplazadas por el contenido del archivo.",
+ "@s852dd1795e": {
+  "x-mt": true
+ },
+ "s580678cb10": "Importar",
+ "s5f2ec17730": "Configuración importada",
+ "@s5f2ec17730": {
+  "x-mt": true
+ },
+ "sa87fff54f3": "La importación falló",
+ "@sa87fff54f3": {
+  "x-mt": true
+ },
+ "s2fd2bfedb8": "Cuenta",
+ "s4c0ff416ab": "Las mismas casas y fichas en todos tus dispositivos.",
+ "@s4c0ff416ab": {
+  "x-mt": true
+ },
+ "scc7e418ee3": "Inicie sesión para tener las mismas casas, dispositivos y fichas en PC, tableta y teléfono. Opcional.",
+ "@scc7e418ee3": {
+  "x-mt": true
+ },
+ "s9bb545e9b3": "Inicia sesión o crea una cuenta",
+ "sf4caddf894": "Avanzado",
+ "s21f870dbc2": "Muestra configuración técnica: conexiones (HTTP, MQTT, Modbus...), cargas de pago, caminos JSON y fuentes de baldosas. La mayoría de la gente no necesita estas.",
+ "@s21f870dbc2": {
+  "x-mt": true
+ },
+ "saec69088a5": "Controla tu casa desde fuera también.",
+ "@saec69088a5": {
+  "x-mt": true
+ },
+ "scc3d01ee5e": "Guías: VPN, Nabu Casa, nube MQTT",
+ "@scc3d01ee5e": {
+  "x-mt": true
+ },
+ "s90ba544719": "Ayuda",
+ "sb915c42792": "Mostrar el guía de arranque",
+ "@sb915c42792": {
+  "x-mt": true
+ },
+ "sd337a7ddd5": "Copia de seguridad y transferencia",
+ "@sd337a7ddd5": {
+  "x-mt": true
+ },
+ "s07c1048b4f": "Exportar la configuración a un archivo JSON e importarlo en otro dispositivo (por ejemplo, PC → teléfono).",
+ "@s07c1048b4f": {
+  "x-mt": true
+ },
+ "s2f797098e7": "Incluye contraseñas y fichas",
+ "@s2f797098e7": {
+  "x-mt": true
+ },
+ "s26f72949e3": "El archivo entonces no está encriptado – mantenerlo a salvo.",
+ "@s26f72949e3": {
+  "x-mt": true
+ },
+ "sdb12678e52": "Exportar",
+ "s34686ffb09": "Ejemplo",
+ "s412c666544": "Agregue un dashboard de ejemplo (camera, alarma, luces, ventilación). Reemplace las direcciones con el suyo.",
+ "@s412c666544": {
+  "x-mt": true
+ },
+ "sec02c7c071": "Añadir panel de ejemplo",
+ "s522d6584c5": "Buscar actualizaciones",
+ "sd178a1d809": "Su propia terminal de control: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP y UDP. Sin una cuenta, todos los ajustes permanecen en este dispositivo.",
+ "@sd178a1d809": {
+  "x-mt": true
+ },
+ "se455dc672b": "Paso",
+ "@se455dc672b": {
+  "x-mt": true
+ },
+ "s3ddd2678bf": "Saltar la guía",
+ "s171ac59e67": "Elija su dispositivo abajo. Sólo llena su dirección – el resto está hecho para usted.",
+ "@s171ac59e67": {
+  "x-mt": true
+ },
+ "s907220900d": "Bienvenido a Molaplan",
+ "se722dfcec9": "Molaplan es el propio panel de control de tu casa. Pones exactamente los dispositivos y botones que necesitas.",
+ "@se722dfcec9": {
+  "x-mt": true
+ },
+ "scbac938ead": "Mira todo de un vistazo",
+ "@scbac938ead": {
+  "x-mt": true
+ },
+ "se25f930e31": "Temperaturas, luces, alarma y cámara en una sola vista.",
+ "@se25f930e31": {
+  "x-mt": true
+ },
+ "s3e450dba98": "Control con un grifo",
+ "@s3e450dba98": {
+  "x-mt": true
+ },
+ "sdda6a3f06e": "Luces encendidas, aumentar la ventilación, o un botón \"Dejar casa\" que hace muchas cosas a la vez.",
+ "@sdda6a3f06e": {
+  "x-mt": true
+ },
+ "sbcac0cd35a": "La misma casa en todos los dispositivos",
+ "@sbcac0cd35a": {
+  "x-mt": true
+ },
+ "sd43d517cc7": "Inicie sesión si lo desea, y PC, tableta y teléfono mostrar el mismo hogar. Las contraseñas están cifradas en su dispositivo. No se necesita ninguna cuenta.",
+ "@sd43d517cc7": {
+  "x-mt": true
+ },
+ "s70fff97e97": "Ya tengo una cuenta de Molaplan – firma",
+ "@s70fff97e97": {
+  "x-mt": true
+ },
+ "sd6561a08ca": "Empecemos",
+ "se5be2a8386": "Tus mosaicos están listos",
+ "s8162694dbe": "Añade tu primer mosaico",
+ "s7b2a30b77c": "Estas fichas fueron hechas para tu dispositivo. Puedes cambiarlas y arreglarlas más tarde.",
+ "@s7b2a30b77c": {
+  "x-mt": true
+ },
+ "s39e163fa49": "Una baldosa muestra información o controla un dispositivo. Elige qué tipo de baldosas:",
+ "@s39e163fa49": {
+  "x-mt": true
+ },
+ "s4bfb026e45": "Lo haré más tarde",
+ "@s4bfb026e45": {
+  "x-mt": true
+ },
+ "s3f0351473c": "¿Controla tu casa desde fuera también?",
+ "@s3f0351473c": {
+  "x-mt": true
+ },
+ "s6fe6fe631f": "En casa todo funciona ya. Desde fuera necesita un dispositivo siempre en casa (una vieja tableta o un PC) – ninguna configuración del router, ninguna cuenta.",
+ "@s6fe6fe631f": {
+  "x-mt": true
+ },
+ "sb599b7432f": "El acceso remoto está encendido.",
+ "@sb599b7432f": {
+  "x-mt": true
+ },
+ "s33a294d472": "Este dispositivo es el puente casero.",
+ "@s33a294d472": {
+  "x-mt": true
+ },
+ "s4aa8cce504": "No ahora – solo en casa",
+ "@s4aa8cce504": {
+  "x-mt": true
+ },
+ "sd3c370ca52": "¡Listo!",
+ "s1359035b73": "Pulsa una baldosa",
+ "@s1359035b73": {
+  "x-mt": true
+ },
+ "sfd26c8e50b": "Un interruptor se mueve, un botón ejecuta su comando.",
+ "@sfd26c8e50b": {
+  "x-mt": true
+ },
+ "s416c8184a7": "Botón de lápiz en la parte superior",
+ "@s416c8184a7": {
+  "x-mt": true
+ },
+ "s2ba275defe": "Editar, añadir, eliminar y arrastrar las fichas alrededor.",
+ "@s2ba275defe": {
+  "x-mt": true
+ },
+ "se872eeb0f5": "Long-press a tile",
+ "@se872eeb0f5": {
+  "x-mt": true
+ },
+ "s63496941fc": "Ver detalles y una explicación si algo está mal.",
+ "@s63496941fc": {
+  "x-mt": true
+ },
+ "s080be778d5": "Encuentra esta guía, acceso remoto y copias de seguridad allí.",
+ "@s080be778d5": {
+  "x-mt": true
+ },
+ "sae0fae7127": "Ve a mi salpicadero",
+ "@sae0fae7127": {
+  "x-mt": true
+ },
+ "s3d43664fcc": "WebSocket",
+ "sfcbb753f53": "URL",
+ "s81479e1555": "Headers (Name: value per line)",
+ "@s81479e1555": {
+  "x-mt": true
+ },
+ "s5811b38d7b": "Token (Authorization: Bearer)",
+ "sd512dbbfc7": "Mensaje en conexión",
+ "@sd512dbbfc7": {
+  "x-mt": true
+ },
+ "s2c4fd261e2": "Permitir certificado autosignificado",
+ "@s2c4fd261e2": {
+  "x-mt": true
+ },
+ "s4d089aab74": "Filtro (mensaje contiene)",
+ "@s4d089aab74": {
+  "x-mt": true
+ },
+ "s55c951a8ad": "JSON path",
+ "@s55c951a8ad": {
+  "x-mt": true
+ },
+ "s10813e25b3": "Regex (grupo 1)",
+ "@s10813e25b3": {
+  "x-mt": true
+ },
+ "s4a282cd247": "Solicitud de mensaje (sentido al leer)",
+ "@s4a282cd247": {
+  "x-mt": true
+ },
+ "sbeef545d37": "Mensaje ('{''{'value'}''}' = valor)",
+ "@sbeef545d37": {
+  "x-mt": true
+ },
+ "s0477f24b6b": "HTTP / REST",
+ "s3102ae3a16": "Base URL",
+ "@s3102ae3a16": {
+  "x-mt": true
+ },
+ "s38d0517a8d": "Autenticación",
+ "@s38d0517a8d": {
+  "x-mt": true
+ },
+ "sed995f57b8": "Usuario",
+ "s65e35b7cc4": "Token",
+ "s51510ae27a": "Cabeceras extra (Nombre: valor por línea)",
+ "@s51510ae27a": {
+  "x-mt": true
+ },
+ "s361419c448": "Timeout (s)",
+ "@s361419c448": {
+  "x-mt": true
+ },
+ "sf235ce5ec0": "Método",
+ "@sf235ce5ec0": {
+  "x-mt": true
+ },
+ "s484291707c": "Camino",
+ "@s484291707c": {
+  "x-mt": true
+ },
+ "s54c8aed8bc": "Cuerpo",
+ "@s54c8aed8bc": {
+  "x-mt": true
+ },
+ "s5c5e9b662c": "Cuerpo ('{''{'value'}''}' = valor)",
+ "@s5c5e9b662c": {
+  "x-mt": true
+ },
+ "s8e82ca13cf": "Content-Type",
+ "s3c045f21ee": "Tested: GET {p0} (base address, {p1} bytes, {p2} ms).",
+ "@s3c045f21ee": {
+  "x-mt": true
+ },
+ "s7797602869": "No se enviaron órdenes y no se probaron caminos de azulejos.",
+ "@s7797602869": {
+  "x-mt": true
+ },
+ "sbf349dfcbd": "HTTP {p0}: el dispositivo respondió pero rechazó el login. Compruebe el nombre de usuario, contraseña o ficha. {p1}",
+ "@sbf349dfcbd": {
+  "x-mt": true
+ },
+ "s3bd10f0ae2": "HTTP {p0}: el dispositivo respondió con un error de servidor. {p1}",
+ "@s3bd10f0ae2": {
+  "x-mt": true
+ },
+ "s2a7fa26dd6": "✓ El dispositivo respondió a {p0} (HTTP 404: ninguna página en la dirección base – normal para muchos dispositivos). La conexión funciona. {p1}",
+ "@s2a7fa26dd6": {
+  "x-mt": true
+ },
+ "sb2821916bc": "✓ Trabajos de conexión: HTTP {p0}. {p1} {p2}",
+ "@sb2821916bc": {
+  "x-mt": true
+ },
+ "sad3975b3c1": "Cámara (MJPEG / JPEG)",
+ "@sad3975b3c1": {
+  "x-mt": true
+ },
+ "s1534821f4a": "Base de la cámara URL",
+ "@s1534821f4a": {
+  "x-mt": true
+ },
+ "se995a6862d": "Modo",
+ "s4f356d158a": "Refresh (s, snapshot)",
+ "@s4f356d158a": {
+  "x-mt": true
+ },
+ "sca7e088857": "Precio de la electricidad",
+ "sfb62156afe": "Zona de precio",
+ "s2525f9a4f5": "Finlandia es una zona (FI). En Suecia y Noruega depende de dónde vives.",
+ "@s2525f9a4f5": {
+  "x-mt": true
+ },
+ "s8f4a683abf": "IVA %",
+ "s1c7d76a774": "El IVA de su país.",
+ "@s1c7d76a774": {
+  "x-mt": true
+ },
+ "se49d0fba92": "Margen del comercializador (c/kWh)",
+ "s20a5e2936a": "Mando de contrato sin IVA.",
+ "@s20a5e2936a": {
+  "x-mt": true
+ },
+ "s923f9739de": "Peajes + impuestos (c/kWh)",
+ "s2a3498fb0f": "De tu factura, incl. IVA. Deja 0 solo para energía.",
+ "@s2a3498fb0f": {
+  "x-mt": true
+ },
+ "s515da3a9dd": "Servidor de precio",
+ "@s515da3a9dd": {
+  "x-mt": true
+ },
+ "s98cc9f1c14": "Los precios del servidor de Molaplan son de fuentes abiertas.",
+ "@s98cc9f1c14": {
+  "x-mt": true
+ },
+ "s271885dc8b": "Qué mostrar",
+ "@s271885dc8b": {
+  "x-mt": true
+ },
+ "s46282f452b": "ahora = precio actual, gráfico = hoy y mañana.",
+ "@s46282f452b": {
+  "x-mt": true
+ },
+ "s2f754e8ab4": "Todavía no hay precios para hoy.",
+ "@s2f754e8ab4": {
+  "x-mt": true
+ },
+ "sd575462da3": "mañana ",
+ "s18faad19ed": "No hay precio por ahora.",
+ "@s18faad19ed": {
+  "x-mt": true
+ },
+ "s29178b43f4": "El precio de electricidad es sólo lectura.",
+ "@s29178b43f4": {
+  "x-mt": true
+ },
+ "s1a707f2788": "Mañana: sí.",
+ "@s1a707f2788": {
+  "x-mt": true
+ },
+ "sb85af981c1": "Mañana: aún no (publicado alrededor de las 14:00).",
+ "@sb85af981c1": {
+  "x-mt": true
+ },
+ "s6270faf138": "✓ Precios para {p0} ({p1} ranuras, {p2} min, source {p3}).",
+ "@s6270faf138": {
+  "x-mt": true
+ },
+ "se1bd60873c": "MQTT",
+ "s85b9781bb7": "Broker host",
+ "@s85b9781bb7": {
+  "x-mt": true
+ },
+ "s800d13debd": "Puerto",
+ "@s800d13debd": {
+  "x-mt": true
+ },
+ "s49fa57061a": "TLS",
+ "s0fcef98aad": "Use WebSocket (ws:// o wss://)",
+ "@s0fcef98aad": {
+  "x-mt": true
+ },
+ "s5089c65c1f": "ID de cliente (vacío = auto)",
+ "@s5089c65c1f": {
+  "x-mt": true
+ },
+ "s9372a6f755": "Keep alive (s)",
+ "sd373a99107": "Tema de estado",
+ "s518c8aa712": "Tema del comando",
+ "@s518c8aa712": {
+  "x-mt": true
+ },
+ "s120726c79a": "Carga útil ('{''{'value'}''}' = valor)",
+ "@s120726c79a": {
+  "x-mt": true
+ },
+ "s3660228d11": "QoS",
+ "s1b07c9ba3d": "Retain",
+ "s91c3d72d1e": "fan {p0}",
+ "@s91c3d72d1e": {
+  "x-mt": true
+ },
+ "s40032ddea9": ", swing",
+ "@s40032ddea9": {
+  "x-mt": true
+ },
+ "s7068e8892e": "Código desconocido sin datos brutos. Habilitar datos brutos en Tasmota (SetOption581) e inténtelo de nuevo.",
+ "@s7068e8892e": {
+  "x-mt": true
+ },
+ "s6207a45bff": "Bomba de calor IR (bomba de calor)",
+ "@s6207a45bff": {
+  "x-mt": true
+ },
+ "s859c2e7734": "Blaster firmware",
+ "@s859c2e7734": {
+  "x-mt": true
+ },
+ "s3f8d3fb444": "tasmota_http = Tasmota (tasmota-ir) por IP. tasmota_mqtt = Tasmota a través de un broker MQTT. esphome = ESPHome climate_ir. http/mqtt = otro blaster con tus propias plantillas.",
+ "@s3f8d3fb444": {
+  "x-mt": true
+ },
+ "s38471ae691": "Dirección de Blaster",
+ "@s38471ae691": {
+  "x-mt": true
+ },
+ "sda91fafa54": "Dirección IP del blaster IR (Tasmota o ESPHome).",
+ "@sda91fafa54": {
+  "x-mt": true
+ },
+ "sf9220a3e4d": "Protocolo de marca IR",
+ "@sf9220a3e4d": {
+  "x-mt": true
+ },
+ "s423f2576c4": "Tasmota IRhvac vendedor, por ejemplo MITSUBISHI_AC, PANASONIC_AC, DAIKIN. Si no pasa nada, prueba otro protocolo de la misma marca.",
+ "@s423f2576c4": {
+  "x-mt": true
+ },
+ "s74ff2fd8a8": "Modelo (opcional)",
+ "@s74ff2fd8a8": {
+  "x-mt": true
+ },
+ "sef4c0e5d90": "Número de modelo IRhvac para algunas marcas. Dejar vacío si no está seguro.",
+ "@sef4c0e5d90": {
+  "x-mt": true
+ },
+ "s8e7962c184": "Tema de Tasmota",
+ "@s8e7962c184": {
+  "x-mt": true
+ },
+ "s5ae4cc50db": "MQTT sólo: de Tasmota (Configuración → MQTT → Tema).",
+ "@s5ae4cc50db": {
+  "x-mt": true
+ },
+ "sed30580f59": "Dirección de corredores de MQTT",
+ "@sed30580f59": {
+  "x-mt": true
+ },
+ "s744ce256bb": "MQTT sólo: la máquina que ejecuta el corredor.",
+ "@s744ce256bb": {
+  "x-mt": true
+ },
+ "se6754df705": "puerto MQTT",
+ "@se6754df705": {
+  "x-mt": true
+ },
+ "sbfc8ee6c86": "Usuario",
+ "s711670d91a": "MQTT o usuario web.",
+ "@s711670d91a": {
+  "x-mt": true
+ },
+ "s3bbd70773d": "Deja vacío si no es necesario.",
+ "@s3bbd70773d": {
+  "x-mt": true
+ },
+ "s443fe6f350": "ESPHome climate id",
+ "@s443fe6f350": {
+  "x-mt": true
+ },
+ "s62feae1a9f": "ESPHome solamente: el objeto climático id.",
+ "@s62feae1a9f": {
+  "x-mt": true
+ },
+ "se0efd6dfb3": "URL del comando (otro blaster)",
+ "@se0efd6dfb3": {
+  "x-mt": true
+ },
+ "s5366cbd4df": "http solamente: URL que recibe el estado completo.",
+ "@s5366cbd4df": {
+  "x-mt": true
+ },
+ "sce533db7c1": "Plantilla de carga de pago (otro blaster)",
+ "@sce533db7c1": {
+  "x-mt": true
+ },
+ "s0fa691e7c7": "Cuerpo http o mqtt payload. Vacío = IRhvac JSON ('{''{'json'}''}').",
+ "@s0fa691e7c7": {
+  "x-mt": true
+ },
+ "s8567c5faa6": "sumario = estado completo como texto. habitación = sensor de temperatura del interruptor. Otros = último ajuste enviado.",
+ "@s8567c5faa6": {
+  "x-mt": true
+ },
+ "sdd8cd8132c": "Qué cambiar",
+ "@sdd8cd8132c": {
+  "x-mt": true
+ },
+ "s2e8b846390": "Todo el estado es enviado a la vez. El valor viene de la baldosa o \"Value\".",
+ "@s2e8b846390": {
+  "x-mt": true
+ },
+ "sb517d97868": "E.g. calor, fresco, auto, seco, ventilador o encendido/off. Vacío = valor de baldosas.",
+ "@sb517d97868": {
+  "x-mt": true
+ },
+ "sda4a1b2eee": "Código de aprendizaje",
+ "@sda4a1b2eee": {
+  "x-mt": true
+ },
+ "s0cfc723aa2": "Lleno cuando guardas un botón remoto aprendido.",
+ "@s0cfc723aa2": {
+  "x-mt": true
+ },
+ "s3f26cb7602": "ESPHome botón",
+ "@s3f26cb7602": {
+  "x-mt": true
+ },
+ "sc71964f422": "ESPHome solamente: id del botón de plantilla para un código aprendido.",
+ "@sc71964f422": {
+  "x-mt": true
+ },
+ "s852a166240": "Falta la dirección de Blaster.",
+ "@s852a166240": {
+  "x-mt": true
+ },
+ "s75ce01c354": "Tasmota necesita la contraseña web.",
+ "@s75ce01c354": {
+  "x-mt": true
+ },
+ "sf9d84ad23c": "Tasmota no sabe {p0}. Instalar la construcción de tasmota-ir.",
+ "@sf9d84ad23c": {
+  "x-mt": true
+ },
+ "sff167aa9a6": "Tasmota rechazó el mandamiento: {p0}",
+ "@sff167aa9a6": {
+  "x-mt": true
+ },
+ "s385c6a9a2d": "Vendedor desconocido \"{p0}\".",
+ "@s385c6a9a2d": {
+  "x-mt": true
+ },
+ "sb4ea2389cb": "ESPHome climate \"{p0}\" no se encuentra.",
+ "@sb4ea2389cb": {
+  "x-mt": true
+ },
+ "s34deda2c72": "Falta la URL del comando.",
+ "@s34deda2c72": {
+  "x-mt": true
+ },
+ "s04e4777aea": "Falta la temperatura.",
+ "@s04e4777aea": {
+  "x-mt": true
+ },
+ "sfce1a094cb": "No hay sensor de temperatura en el interruptor.",
+ "@sfce1a094cb": {
+  "x-mt": true
+ },
+ "s4536eb33dd": "No se recibió temperatura.",
+ "@s4536eb33dd": {
+  "x-mt": true
+ },
+ "s9b5bbfa2c6": "Temperatura de la habitación sólo desde Tasmota/ESPHome.",
+ "@s9b5bbfa2c6": {
+  "x-mt": true
+ },
+ "s5acc16dafb": "RF433 necesita Tasmota.",
+ "@s5acc16dafb": {
+  "x-mt": true
+ },
+ "s8478662ad1": "Los códigos aprendidos necesitan Tasmota.",
+ "@s8478662ad1": {
+  "x-mt": true
+ },
+ "s9f8263b5a0": "ESPHome botón \"{p0}\" no se encuentra.",
+ "@s9f8263b5a0": {
+  "x-mt": true
+ },
+ "s3296e8d7e7": "No hay ningún código dentro {p0} s. Puntee el control remoto en el volador (menos de 1 m) y presione de nuevo.",
+ "@s3296e8d7e7": {
+  "x-mt": true
+ },
+ "s1e73ba395d": "RF433 necesidades de aprendizaje Tasmota.",
+ "@s1e73ba395d": {
+  "x-mt": true
+ },
+ "scc47b4b225": "Aprender trabaja con los blasters de Tasmota y ESPHome.",
+ "@scc47b4b225": {
+  "x-mt": true
+ },
+ "s96adaaf2b6": "✓ Tasmota respondió (versión {p0}). Testado: Estado 0 a {p1}. Nada fue enviado a la bomba de calor.",
+ "@s96adaaf2b6": {
+  "x-mt": true
+ },
+ "sfce5c770f1": "Broker OK pero Tasmota \"{p0}\" no respondió.",
+ "@sfce5c770f1": {
+  "x-mt": true
+ },
+ "s2c3b95a054": "✓ Tasmota \"{p0}\" respondió vía MQTT. Nada enviado a la bomba de calor.",
+ "@s2c3b95a054": {
+  "x-mt": true
+ },
+ "scf9ead3297": "✓ ESPHome climate \"{p0}\" encontrado. Nada fue enviado.",
+ "@scf9ead3297": {
+  "x-mt": true
+ },
+ "s8ad50358b9": "No hay prueba para otros voladores: IR es de una manera. Presione la baldosa de energía y observe la bomba de calor.",
+ "@s8ad50358b9": {
+  "x-mt": true
+ },
+ "s3b476099a2": "El dispositivo respondió HTTP {p0}. ¿Está habilitado web_servidor en ESPHome?",
+ "@s3b476099a2": {
+  "x-mt": true
+ },
+ "sd44aec7380": "Sin respuesta de {p0}.",
+ "@sd44aec7380": {
+  "x-mt": true
+ },
+ "s120026628c": "Could not reach {p0}.",
+ "@s120026628c": {
+  "x-mt": true
+ },
+ "s43c9b88580": "Auto",
+ "sa3e8beed42": "Calor",
+ "s6c9668fbd9": "Frío",
+ "s9db8aefc43": "Deshumidificar",
+ "s018d2e08f4": "Ventilador",
+ "s36fb6ba26f": "Modbus TCP",
+ "sa70cc38354": "Host",
+ "@sa70cc38354": {
+  "x-mt": true
+ },
+ "sdc5301b750": "Unidad id",
+ "@sdc5301b750": {
+  "x-mt": true
+ },
+ "s15e327bf8e": "Timeout (ms)",
+ "@s15e327bf8e": {
+  "x-mt": true
+ },
+ "s943b8b6bf3": "Cuadro de registro",
+ "@s943b8b6bf3": {
+  "x-mt": true
+ },
+ "sf51ad986eb": "Address (0-based)",
+ "@sf51ad986eb": {
+  "x-mt": true
+ },
+ "s601f118ac0": "Tipo de datos",
+ "@s601f118ac0": {
+  "x-mt": true
+ },
+ "sddd62d21b0": "Cierre de palabras (CDAB)",
+ "@sddd62d21b0": {
+  "x-mt": true
+ },
+ "see24ec5d84": "Escala",
+ "@see24ec5d84": {
+  "x-mt": true
+ },
+ "s0a239b832b": "Offset",
+ "@s0a239b832b": {
+  "x-mt": true
+ },
+ "s5f374d3643": "Unidad id (vacío = conexión)",
+ "@s5f374d3643": {
+  "x-mt": true
+ },
+ "sef11962984": "Escribe",
+ "@sef11962984": {
+  "x-mt": true
+ },
+ "s779b59ba4b": "Valor ('{''{'value'}''}' = slider/toggle)",
+ "@s779b59ba4b": {
+  "x-mt": true
+ },
+ "sefaea1b818": "ntfy (canal de mensajería / comandos)",
+ "@sefaea1b818": {
+  "x-mt": true
+ },
+ "s6a4516e0fe": "Tema de comando (nombre o URL completa)",
+ "@s6a4516e0fe": {
+  "x-mt": true
+ },
+ "se003ecc10b": "Topic the commands are sent to. Usted puede pegar la URL completa, por ejemplo https://ntfy.sh/my-topic – el mismo que su iPhone Shortcut utiliza. El nombre del tema funciona como una contraseña: mantenerlo largo y aleatorio.",
+ "@se003ecc10b": {
+  "x-mt": true
+ },
+ "s800cd08229": "Tema de respuesta (opcional)",
+ "@s800cd08229": {
+  "x-mt": true
+ },
+ "s2e3a66d384": "Si el dispositivo de inicio responde a otro tema, escríbelo aquí. Deja vacío si la respuesta viene sobre el mismo tema – nuestro propio comando es ignorado y el siguiente mensaje se muestra como la respuesta.",
+ "@s2e3a66d384": {
+  "x-mt": true
+ },
+ "s5bc736c04a": "Acceso a la ficha (opcional)",
+ "@s5bc736c04a": {
+  "x-mt": true
+ },
+ "s77feae14f5": "Sólo se necesita para un tema protegido (cuenta n ostensible → Acceso fichas). Dejar vacío para un tema público.",
+ "@s77feae14f5": {
+  "x-mt": true
+ },
+ "seca0d75969": "Default es el público ntfy.sh. Cambiar sólo para su propio servidor ntfy. Una URL completa sobresigue esto.",
+ "@seca0d75969": {
+  "x-mt": true
+ },
+ "sddbea594a4": "último = el mensaje más reciente, log = varios mensajes recientes (no menor primero).",
+ "@sddbea594a4": {
+  "x-mt": true
+ },
+ "s2bd0e69d44": "Tema (opcional)",
+ "@s2bd0e69d44": {
+  "x-mt": true
+ },
+ "s4eb1e8ac15": "Tema a leer. Vacío = el tema de respuesta de la conexión (o el tema de comando).",
+ "@s4eb1e8ac15": {
+  "x-mt": true
+ },
+ "s09fa5c0332": "Número de mensajes (log)",
+ "@s09fa5c0332": {
+  "x-mt": true
+ },
+ "s17fda9fb06": "Cuántos mensajes recientes muestra el registro.",
+ "@s17fda9fb06": {
+  "x-mt": true
+ },
+ "s78f2f0d783": "¿Qué tan lejos?",
+ "@s78f2f0d783": {
+  "x-mt": true
+ },
+ "s79bdbfd820": "Por ejemplo 30m, 12h o 2d. El público ntfy.sh mantiene mensajes durante aproximadamente 12 horas.",
+ "@s79bdbfd820": {
+  "x-mt": true
+ },
+ "sfe357edcec": "Comando (texto para enviar)",
+ "@sfe357edcec": {
+  "x-mt": true
+ },
+ "s48e102023d": "El texto para enviar, por ejemplo, \"actualizar\". Con un PIN se adjunta después de un espacio: \"actualizar 1234\".",
+ "@s48e102023d": {
+  "x-mt": true
+ },
+ "saf2ebedf61": "Solicitar un PIN en prensa",
+ "@saf2ebedf61": {
+  "x-mt": true
+ },
+ "sfcb5608064": "Pide un PIN (hidden) en cada prensa y lo anexa al comando. El PIN no se almacena a menos que elija \"Recordar en este dispositivo\".",
+ "@sfcb5608064": {
+  "x-mt": true
+ },
+ "sfee393b70e": "Esperar la respuesta",
+ "@sfee393b70e": {
+  "x-mt": true
+ },
+ "sfff5bc52e5": "Escucha la respuesta del dispositivo de inicio y lo muestra en esta ficha (y como notificación cuando la aplicación está en el fondo).",
+ "@sfff5bc52e5": {
+  "x-mt": true
+ },
+ "sbdcbe301b9": "Esperar respuesta (s)",
+ "@sbdcbe301b9": {
+  "x-mt": true
+ },
+ "s121542d6d7": "Cuánto tiempo para esperar antes de decir que no hubo respuesta.",
+ "@s121542d6d7": {
+  "x-mt": true
+ },
+ "sa53638cfea": "Responder permanece en la baldosa (s)",
+ "@sa53638cfea": {
+  "x-mt": true
+ },
+ "se6d21484a8": "Cuanto tiempo la respuesta se mantiene en la baldosa. 0 = hasta la siguiente prensa.",
+ "@se6d21484a8": {
+  "x-mt": true
+ },
+ "s74d68a98d6": "Título del mensaje (opcional)",
+ "@s74d68a98d6": {
+  "x-mt": true
+ },
+ "sc2492ac3ab": "Nombre del mensaje, por lo general vacío.",
+ "@sc2492ac3ab": {
+  "x-mt": true
+ },
+ "s54ea45f27f": "ntfy: tema \"{p0}\" está protegido (HTTP {p1}). Añadir un acceso token (tk_...) a la conexión.",
+ "@s54ea45f27f": {
+  "x-mt": true
+ },
+ "s72c37e530d": "ntfy: demasiados mensajes (HTTP 429). Espera un momento y prueba de nuevo.",
+ "@s72c37e530d": {
+  "x-mt": true
+ },
+ "s0870daf796": "ntfy: tema de comando desaparecido",
+ "@s0870daf796": {
+  "x-mt": true
+ },
+ "s28dc7ea012": "ntfy: conexión cerrada antes de la respuesta",
+ "@s28dc7ea012": {
+  "x-mt": true
+ },
+ "sa4313864fe": "El comando fue enviado, pero ninguna respuesta llegó dentro {p0} s. Chequea que el dispositivo de casa está encendido y escucha \"{p1}\".",
+ "@sa4313864fe": {
+  "x-mt": true
+ },
+ "s85a1947a44": "(sin mensajes)",
+ "@s85a1947a44": {
+  "x-mt": true
+ },
+ "s7069b18b7d": "ntfy: texto de comando desaparecido",
+ "@s7069b18b7d": {
+  "x-mt": true
+ },
+ "s43de3fd299": " Responder tema: {p0}.",
+ "@s43de3fd299": {
+  "x-mt": true
+ },
+ "s9ed9eb7f92": "✓ ntfy server {p0} contestado y el tema \"{p1}\" es legible ({p2} mensajes en la última hora).{p3} No se envió ningún comando – toque la ficha para probar.",
+ "@s9ed9eb7f92": {
+  "x-mt": true
+ },
+ "sf0ef0140c3": "Home Assistant",
+ "s1f90ee6992": "Token de acceso de larga duración",
+ "@s1f90ee6992": {
+  "x-mt": true
+ },
+ "sccb0cca8e3": "Actualizaciones en vivo (websocket)",
+ "@sccb0cca8e3": {
+  "x-mt": true
+ },
+ "s8f8e1cfad3": "Entity id",
+ "@s8f8e1cfad3": {
+  "x-mt": true
+ },
+ "s382111aebc": "Atributo (vacío = estado)",
+ "@s382111aebc": {
+  "x-mt": true
+ },
+ "sf500d0ad67": "Servicio",
+ "@sf500d0ad67": {
+  "x-mt": true
+ },
+ "s7286715019": "Datos adicionales JSON ('{''{'value'}''}' = valor)",
+ "@s7286715019": {
+  "x-mt": true
+ },
+ "s1b5b0421c0": "La carga es hex",
+ "@s1b5b0421c0": {
+  "x-mt": true
+ },
+ "s44ab1d33df": "Esperar la respuesta",
+ "@s44ab1d33df": {
+  "x-mt": true
+ },
+ "s341bf61e36": "Respuesta como hex",
+ "@s341bf61e36": {
+  "x-mt": true
+ },
+ "se7cff2d61e": "TCP (vacío)",
+ "@se7cff2d61e": {
+  "x-mt": true
+ },
+ "s1dfeacd9f6": "UDP",
+ "s5b44cbe9c0": "Casa",
+ "s804e935440": "Cámara ESP32",
+ "@s804e935440": {
+  "x-mt": true
+ },
+ "s478ddb6e1a": "Unidad de ventilación (Modbus)",
+ "@s478ddb6e1a": {
+  "x-mt": true
+ },
+ "s4b4fd14aaf": "Patio",
+ "s8d06ee5308": "Alarma",
+ "s8ac16d45bc": "",
+ "sbde42d83a3": "Luces del salón",
+ "sb7c78c63b3": "Aire de impulsión",
+ "sbb2adef009": "Velocidad del ventilador",
+ "see46441329": "0=Off;1=Away;2=Home;3=Boost;4=Max",
+ "sb25aad3bc2": "Salgo de casa",
+ "saf4b222a68": "Dirección IP del dispositivo",
+ "s1bbea216af": "Cámara ESP32-CAM",
+ "@s1bbea216af": {
+  "x-mt": true
+ },
+ "saaaeccd0cc": "Cámara Wi-Fi de bajo costo. Muestra vídeo en vivo.",
+ "@saaaeccd0cc": {
+  "x-mt": true
+ },
+ "saaea39b2de": "Dirección IP de cámara",
+ "@saaea39b2de": {
+  "x-mt": true
+ },
+ "s6ef2a3f197": "Se muestra en el monitor de serie en el arranque o en la lista de dispositivos del router.",
+ "@s6ef2a3f197": {
+  "x-mt": true
+ },
+ "sae199413a2": "Por ejemplo, Yard, Hallway.",
+ "@sae199413a2": {
+  "x-mt": true
+ },
+ "s2dd165b39f": "Tipo de imagen",
+ "@s2dd165b39f": {
+  "x-mt": true
+ },
+ "sb66b153f36": "mjpeg = video en vivo (recomendado). snapshot = imagen todavía cada pocos segundos.",
+ "@sb66b153f36": {
+  "x-mt": true
+ },
+ "sf81257929d": "Relé / enchufe Shelly",
+ "s2b8ab6defc": "Cambiar una luz o un dispositivo encendido / apagado y mostrar potencia.",
+ "@s2b8ab6defc": {
+  "x-mt": true
+ },
+ "s7fcea114f0": "¿Qué controla?",
+ "sdccd6e7f24": "Modelo",
+ "s864ba0233b": "Más reciente (Plus, Pro, Gen3) = Plus / Pro / Gen2+. Old Shelly 1, 2.5, Plug S = Gen1.",
+ "@s864ba0233b": {
+  "x-mt": true
+ },
+ "s92f97cd95e": "Mostrar potencia (W)",
+ "@s92f97cd95e": {
+  "x-mt": true
+ },
+ "s54c71d86aa": "Sólo para modelos con medición (por ejemplo, más 1PM).",
+ "@s54c71d86aa": {
+  "x-mt": true
+ },
+ "s49671fc56f": "Canal",
+ "s06f8a27d8a": "Para dispositivos multicanal: 0 = primero.",
+ "@s06f8a27d8a": {
+  "x-mt": true
+ },
+ "s259e46c59a": "Sólo si estableces una contraseña.",
+ "@s259e46c59a": {
+  "x-mt": true
+ },
+ "s702ca14235": "Dispositivo Tasmota",
+ "sc130e073ba": "Relé o plug running Tasmota firmware.",
+ "@sc130e073ba": {
+  "x-mt": true
+ },
+ "s16be1831d6": "Sólo para dispositivos con medición de energía.",
+ "@s16be1831d6": {
+  "x-mt": true
+ },
+ "s8890d26ef2": "Número de relé",
+ "@s8890d26ef2": {
+  "x-mt": true
+ },
+ "s7e6d21d466": "Para dispositivos multirrelés 1, 2, 3...",
+ "@s7e6d21d466": {
+  "x-mt": true
+ },
+ "s5f1e4a036e": "Contraseña web",
+ "@s5f1e4a036e": {
+  "x-mt": true
+ },
+ "s397e83233d": "Sólo si se establece una contraseña web (usuario admin).",
+ "@s397e83233d": {
+  "x-mt": true
+ },
+ "se0e5f715ad": "ESPHome device",
+ "@se0e5f715ad": {
+  "x-mt": true
+ },
+ "sa0efcdf688": "Su propio ESP32/ESP8266 con ESPHome (web_server habilitado).",
+ "@sa0efcdf688": {
+  "x-mt": true
+ },
+ "s631420589f": "Nombre del dispositivo",
+ "s1db899640b": "Interruptor id (opcional)",
+ "@s1db899640b": {
+  "x-mt": true
+ },
+ "sb2e87033fc": "El nombre del interruptor de YAML en el caso inferior con subrayados.",
+ "@sb2e87033fc": {
+  "x-mt": true
+ },
+ "s978ae8f1d6": "Sensor id (opcional)",
+ "@s978ae8f1d6": {
+  "x-mt": true
+ },
+ "s4ba12c5866": "Nombre del sensor de la misma manera (ver la página web del dispositivo).",
+ "@s4ba12c5866": {
+  "x-mt": true
+ },
+ "s945273ef29": "Unidad de sensor",
+ "@s945273ef29": {
+  "x-mt": true
+ },
+ "s5ca2e25792": "Sólo si web_server auth se establece.",
+ "@s5ca2e25792": {
+  "x-mt": true
+ },
+ "sb847f22473": "Nombre de usuario web",
+ "@sb847f22473": {
+  "x-mt": true
+ },
+ "s7f8e45ea74": "Luces, alarma, sensores, cualquier cosa en Home Assistant.",
+ "@s7f8e45ea74": {
+  "x-mt": true
+ },
+ "s9f70681d3f": "Home Assistant address",
+ "@s9f70681d3f": {
+  "x-mt": true
+ },
+ "s123502628e": "La dirección con la que abres Home Assistant.",
+ "@s123502628e": {
+  "x-mt": true
+ },
+ "s92e3c4cd40": "Token de larga vida",
+ "@s92e3c4cd40": {
+  "x-mt": true
+ },
+ "s4e3f2052b2": "Home Assistant → su perfil → Seguridad → Tokens de acceso a larga vida → Crear token. Pruébalo aquí.",
+ "@s4e3f2052b2": {
+  "x-mt": true
+ },
+ "s75a056cf4d": "Luz (opcional)",
+ "@s75a056cf4d": {
+  "x-mt": true
+ },
+ "sdb9a90cb96": "Entidad id de Ajustes → Dispositivos → Entidades.",
+ "@sdb9a90cb96": {
+  "x-mt": true
+ },
+ "sa9681c1a9a": "Alarma (opcional)",
+ "@sa9681c1a9a": {
+  "x-mt": true
+ },
+ "s64bd3ab3ff": "Sensor de temperatura (opcional)",
+ "sa6504f5712": "Interruptor (opcional)",
+ "@sa6504f5712": {
+  "x-mt": true
+ },
+ "s64d4364336": "disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming",
+ "s54e063bd9c": "Bomba de calor (Auxiliar)",
+ "@s54e063bd9c": {
+  "x-mt": true
+ },
+ "s2afe650320": "Bomba de calor de aire mostrada en Home Assistant como entidad climática.",
+ "@s2afe650320": {
+  "x-mt": true
+ },
+ "s48fdd98530": "Si ya se ha añadido, se reutiliza la misma conexión.",
+ "@s48fdd98530": {
+  "x-mt": true
+ },
+ "sfe5ad3202f": "No es necesario si HA ya está añadido.",
+ "@sfe5ad3202f": {
+  "x-mt": true
+ },
+ "sce069d8d1a": "Entidad de bomba de calor",
+ "@sce069d8d1a": {
+  "x-mt": true
+ },
+ "s05e2aaa15c": "Empieza con el clima.",
+ "@s05e2aaa15c": {
+  "x-mt": true
+ },
+ "sc7d02fbe84": "Bomba de calor",
+ "se699281c85": "Bomba de calor (MQTT)",
+ "@se699281c85": {
+  "x-mt": true
+ },
+ "s8643040b95": "Por ejemplo, mitsubishi2mqtt o controlador ESP similar. Los temas son ejemplos – verificar.",
+ "@s8643040b95": {
+  "x-mt": true
+ },
+ "s2a1148ee77": "Interventor MQTT IP",
+ "@s2a1148ee77": {
+  "x-mt": true
+ },
+ "s53e472c976": "Máquina de correr Mosquitto (a menudo la caja HA).",
+ "@s53e472c976": {
+  "x-mt": true
+ },
+ "s29aff3d2a0": "MQTT nombre de usuario",
+ "@s29aff3d2a0": {
+  "x-mt": true
+ },
+ "s37e57de4b9": "Deja vacío si no es necesario.",
+ "@s37e57de4b9": {
+  "x-mt": true
+ },
+ "sffe00ea1b3": "Contraseña MQTT",
+ "@sffe00ea1b3": {
+  "x-mt": true
+ },
+ "s407d4a5e56": "Tema básico",
+ "@s407d4a5e56": {
+  "x-mt": true
+ },
+ "sc1af622c0a": "Desde la configuración del controlador. Estado: ierebase confianza/state, comandos: ■base confianza/set.",
+ "@sc1af622c0a": {
+  "x-mt": true
+ },
+ "s9783a8fd53": "habitación",
+ "sbc996a7d25": "consigna",
+ "sa69c0e1ca3": "Bomba de calor aire (IR)",
+ "s025e7bf04d": "Controle cualquier bomba de calor controlada por control remoto con un volador IR (Tasmota o ESPHome). IR es de una sola dirección: Molaplan muestra lo que envió por última vez.",
+ "@s025e7bf04d": {
+  "x-mt": true
+ },
+ "sb5d4127728": "IR blaster",
+ "@sb5d4127728": {
+  "x-mt": true
+ },
+ "sc899cf95db": "Los voladores IR más listos funcionan con Tasmota (utiliza la construcción de tasmota-ir). ESPHome = tu dispositivo ESPHome con climate_ir.",
+ "@sc899cf95db": {
+  "x-mt": true
+ },
+ "safc7f1325c": "Marca de la bomba de calor",
+ "s7675ec1754": "Escoja la marca de la unidad o remota. Si no reacciona, pruebe \"Otro\" con un protocolo alternativo.",
+ "@s7675ec1754": {
+  "x-mt": true
+ },
+ "s9702830f91": "Protocolo (sólo \"otro\")",
+ "@s9702830f91": {
+  "x-mt": true
+ },
+ "s6df0837908": "Tasmota IRhvac nombre del vendedor. Sólo se necesita para \"Otros\" o para probar otro.",
+ "@s6df0837908": {
+  "x-mt": true
+ },
+ "saa49bfdb90": "Se muestran en títulos de baldosas.",
+ "@saa49bfdb90": {
+  "x-mt": true
+ },
+ "sf1971ac29b": "Tema de Tasmota (sólo MQTT)",
+ "@sf1971ac29b": {
+  "x-mt": true
+ },
+ "s65529d5877": "Tasmota → Configuración → MQTT → Tema. Otro blaster MQTT: tema de comandos.",
+ "@s65529d5877": {
+  "x-mt": true
+ },
+ "s321c1677e2": "ESPHome climate id (ESPHome only)",
+ "@s321c1677e2": {
+  "x-mt": true
+ },
+ "s4c07dec7b5": "El objeto climate_ir id, mostrado en la página web del dispositivo.",
+ "@s4c07dec7b5": {
+  "x-mt": true
+ },
+ "s2229e548f3": "MQTT o usuario web.",
+ "@s2229e548f3": {
+  "x-mt": true
+ },
+ "s06cff48000": "URL de comando (otro HTTP solamente)",
+ "@s06cff48000": {
+  "x-mt": true
+ },
+ "s5b41e244d6": "Placeholders: '{''{'power'}''}' '{''{'mode'}''}' '{''{'temp'}''}' '{''{'fan'}''}' '{''{'swing'}''}' '{''{'vendor'}''}' '{''{'json'}''}'.",
+ "@s5b41e244d6": {
+  "x-mt": true
+ },
+ "s9a60c2026e": "Botones de modo",
+ "sd119ce3382": "Botones para calor, fresco, auto, seco y ventilador.",
+ "@sd119ce3382": {
+  "x-mt": true
+ },
+ "s9b8dd7076a": "Velocidad del ventilador",
+ "s9597aa1ae9": "Slider 0–5 (0 = auto).",
+ "@s9597aa1ae9": {
+  "x-mt": true
+ },
+ "secae50c5dd": "Oscilación",
+ "s8bcb8433f9": "El swing de Louver en/off.",
+ "@s8bcb8433f9": {
+  "x-mt": true
+ },
+ "s78a5e5fa61": "Temperatura de la habitación del sensor de la explosión",
+ "@s78a5e5fa61": {
+  "x-mt": true
+ },
+ "s2dd6395602": "Sólo si el blaster tiene un sensor de temperatura.",
+ "@s2dd6395602": {
+  "x-mt": true
+ },
+ "s4ff78f06ab": "Bomba de calor de aire (porto de servicio / ESPHome)",
+ "@s4ff78f06ab": {
+  "x-mt": true
+ },
+ "s6cc7b6b499": "Controlador ESPHome en el puerto de servicio de unidad interior (Mitsubishi CN105, Daikin S21/X50A, Panasonic CN-CNT, Toshiba). Dos vías: estado real y temperatura ambiente.",
+ "@s6cc7b6b499": {
+  "x-mt": true
+ },
+ "s647e86e5e5": "Climate id",
+ "@s647e86e5e5": {
+  "x-mt": true
+ },
+ "sbeb6af1e1c": "La entidad climática del dispositivo ESPHome. \"Encuentra bombas de calor\" en la guía lo encuentra para ti.",
+ "@sbeb6af1e1c": {
+  "x-mt": true
+ },
+ "sbf36d139cb": "Sólo si web_server tiene auth.",
+ "@sbf36d139cb": {
+  "x-mt": true
+ },
+ "s54d4fdbba4": "Sólo si web_server tiene auth.",
+ "@s54d4fdbba4": {
+  "x-mt": true
+ },
+ "s84cd6a5180": "Mando RF433 (Athom IR & RF)",
+ "s4105198757": "Controlar dispositivos RF433 de radio-remote (sockets, toldos, puertas de garaje) con el Athom \"Tasmota IR & RF433 Controller\". Enseña los botones justo después de añadir.",
+ "@s4105198757": {
+  "x-mt": true
+ },
+ "sc34430eec0": "Por ejemplo, lo que controlas.",
+ "@sc34430eec0": {
+  "x-mt": true
+ },
+ "s12447972e0": "Sólo si se establece una contraseña web de Tasmota.",
+ "@s12447972e0": {
+  "x-mt": true
+ },
+ "s6385f1487e": "Precio de la electricidad (spot)",
+ "se807a72c0a": "Hoy y mañana el precio del spot como un gráfico. Control de precios: larga presión de una ficha de dispositivo → Control de precios.",
+ "@se807a72c0a": {
+  "x-mt": true
+ },
+ "sef8d24c969": "País / zona de precio",
+ "sef4f509f9f": "Escoja su país; en Suecia y Noruega su área.",
+ "@sef4f509f9f": {
+  "x-mt": true
+ },
+ "sf3a8631d14": "De su factura incl. IVA. 0 = energía solamente.",
+ "@sf3a8631d14": {
+  "x-mt": true
+ },
+ "sf3be8aac1c": "Su margen de contrato sin IVA.",
+ "@sf3be8aac1c": {
+  "x-mt": true
+ },
+ "s49dfca65a3": "Precio de electricidad {p0}",
+ "@s49dfca65a3": {
+  "x-mt": true
+ },
+ "scf849c933b": "Electricidad ahora",
+ "s53a951507b": "Hora más barata",
+ "s3e99310fc0": "Precio hoy y mañana",
+ "s9af9526395": "Unidad de ventilación (Modbus TCP)",
+ "@s9af9526395": {
+  "x-mt": true
+ },
+ "s29dc0baf55": "Temperaturas y velocidad de los ventiladores. Los presets de registro son ejemplos – verifique con su manual.",
+ "@s29dc0baf55": {
+  "x-mt": true
+ },
+ "sb75966bb58": "Unidad o puerta de entrada IP",
+ "@sb75966bb58": {
+  "x-mt": true
+ },
+ "s751331a84a": "Si la unidad tiene sólo RS485, necesita una puerta RS485 → Modbus TCP. Ingrese su IP.",
+ "@s751331a84a": {
+  "x-mt": true
+ },
+ "s658cdb6ff8": "Marca",
+ "s785c0c264c": "Escoja una marca para prefijar registros como ejemplo. \"—\" = vacío.",
+ "@s785c0c264c": {
+  "x-mt": true
+ },
+ "s7e9c785c20": "A menudo 1.",
+ "@s7e9c785c20": {
+  "x-mt": true
+ },
+ "s0591744c19": "Casi siempre 502.",
+ "@s0591744c19": {
+  "x-mt": true
+ },
+ "s5ccb7405cf": "Ventilación",
+ "se7dfa3594e": "Dispositivo MQTT",
+ "@se7dfa3594e": {
+  "x-mt": true
+ },
+ "s12ab103795": "Cualquier dispositivo que hable MQTT (Zigbee2MQTT, su propio ESP, ...).",
+ "@s12ab103795": {
+  "x-mt": true
+ },
+ "sffcfefd91c": "Máquina que dirige el corredor de MQTT.",
+ "@sffcfefd91c": {
+  "x-mt": true
+ },
+ "s6ac05d979c": "¿Qué es?",
+ "s460d48d0cc": "interruptor = encendido / apagado, sensor = muestra un valor.",
+ "@s460d48d0cc": {
+  "x-mt": true
+ },
+ "s850c7e1194": "Tema de estado",
+ "s49b7311a1e": "Tema donde el dispositivo reporta su estado.",
+ "@s49b7311a1e": {
+  "x-mt": true
+ },
+ "s579969e7e4": "Tema del comando (switch)",
+ "@s579969e7e4": {
+  "x-mt": true
+ },
+ "s137db4076a": "Tema para el comando on/off.",
+ "@s137db4076a": {
+  "x-mt": true
+ },
+ "s4c95226869": "Mensaje",
+ "@s4c95226869": {
+  "x-mt": true
+ },
+ "s70f2ea8532": "Mensaje apagado",
+ "@s70f2ea8532": {
+  "x-mt": true
+ },
+ "sdc234849ac": "Campo JSON",
+ "@sdc234849ac": {
+  "x-mt": true
+ },
+ "sd3f60d4a71": "Si el mensaje es JSON, el nombre del campo.",
+ "@sd3f60d4a71": {
+  "x-mt": true
+ },
+ "s6cee917658": "Unidad (sensor)",
+ "@s6cee917658": {
+  "x-mt": true
+ },
+ "s3cd541d271": "Otro dispositivo Wi-Fi (HTTP)",
+ "@s3cd541d271": {
+  "x-mt": true
+ },
+ "s69885630aa": "Un dispositivo con una API web. Muestra un valor; añade más fichas más tarde.",
+ "@s69885630aa": {
+  "x-mt": true
+ },
+ "s200320e245": "Ruta de estado",
+ "sc5872d2e30": "Donde el dispositivo reporta su estado. Vacío = ninguna baldosa ahora.",
+ "@sc5872d2e30": {
+  "x-mt": true
+ },
+ "s5564de12b2": "Campo para mostrar",
+ "@s5564de12b2": {
+  "x-mt": true
+ },
+ "s377942beb7": "Nombre de campo en la respuesta.",
+ "@s377942beb7": {
+  "x-mt": true
+ },
+ "sbaf1a279c2": "Comando y respuesta",
+ "@sbaf1a279c2": {
+  "x-mt": true
+ },
+ "se0fb2c7eea": "Envíe un comando como un mensaje ntfy (por ejemplo \"actualizar\" + PIN) y vea la respuesta del dispositivo en el mismo nivel. El mismo canal que un acceso directo al iPhone.",
+ "@se0fb2c7eea": {
+  "x-mt": true
+ },
+ "s8231329360": "Tema de comando URL",
+ "@s8231329360": {
+  "x-mt": true
+ },
+ "sd82d127f05": "Pruebe la misma URL que sus mensajes de acceso directo se ordenan (p. ej. https://ntfy.sh/kv-cmd-...).",
+ "@sd82d127f05": {
+  "x-mt": true
+ },
+ "s1b3bbae234": "Sólo si el dispositivo de casa responde sobre otro tema. Vacío = mismo tema, nuestro propio comando es ignorado.",
+ "@s1b3bbae234": {
+  "x-mt": true
+ },
+ "s1b08aa4646": "Texto mostrado en la baldosa, por ejemplo \"Actualizar\" o \"Estatus\".",
+ "@s1b08aa4646": {
+  "x-mt": true
+ },
+ "s5bed8bff00": "Comando",
+ "se2a81ae67d": "El texto a enviar. El PIN se adjunta después de un espacio, por ejemplo \"actualizar 1234\".",
+ "@se2a81ae67d": {
+  "x-mt": true
+ },
+ "s1477964f04": "Preguntar por el PIN en cada prensa",
+ "@s1477964f04": {
+  "x-mt": true
+ },
+ "s62672283f6": "El PIN se le pide oculto y no se almacena a menos que elija \"Recuerde en este dispositivo\".",
+ "@s62672283f6": {
+  "x-mt": true
+ },
+ "sb5e914eaf7": "Sólo para un tema protegido. Dejar vacío para un tema público.",
+ "@sb5e914eaf7": {
+  "x-mt": true
+ },
+ "s1a98a7e424": "También agregue una ficha de registro de mensajes",
+ "@s1a98a7e424": {
+  "x-mt": true
+ },
+ "s5ab6348524": "Muestra los mensajes más recientes del tema en su propia ficha.",
+ "@s5ab6348524": {
+  "x-mt": true
+ },
+ "s57e684ac9e": "Mensajes",
+ "sdc84bf286f": "off=Off;heat=Heat;cool=Cool;auto=Auto;heat_cool=Auto;dry=Dry;fan_only=Fan",
+ "s3378eb2d0b": "{p0} – temperature",
+ "@s3378eb2d0b": {
+  "x-mt": true
+ },
+ "saa437260b8": "Estado enviado (IR es de una sola dirección)",
+ "@saa437260b8": {
+  "x-mt": true
+ },
+ "sfffb54daf4": "Estado",
+ "seab2c72485": "Fan (0 = auto)",
+ "@seab2c72485": {
+  "x-mt": true
+ },
+ "sfb0b971c01": "Oscilación",
+ "s3a38b97f7b": "{p0} – room",
+ "@s3a38b97f7b": {
+  "x-mt": true
+ },
+ "se17d4e4197": "Puente de Hue y sus luces (también las luces de Zigbee se unieron a él). Pareja con el botón puente.",
+ "@se17d4e4197": {
+  "x-mt": true
+ },
+ "sf83a145406": "En la aplicación Hue: Ajustes → Hue Bridges → (i) → Dirección IP. O en la lista de dispositivos del router: \"Philips-hue\".",
+ "@sf83a145406": {
+  "x-mt": true
+ },
+ "s80ee7a25a9": "Presione el gran botón redondo en la parte superior del puente de Hue. Espere aquí – se conecta por sí mismo.",
+ "@s80ee7a25a9": {
+  "x-mt": true
+ },
+ "sa6ff717527": "Relés y enchufes: Pro 4PM, Plus 1PM, Plug S, 2.5... encontrado automáticamente, fichas para cada canal.",
+ "@sa6ff717527": {
+  "x-mt": true
+ },
+ "sd7e123cd2f": "En la aplicación Shelly: abre el dispositivo → engranaje (ajustes) → Información del dispositivo → Dirección IP. O en la lista del dispositivo del router: el nombre comienza con \"muelle...\".",
+ "@sd7e123cd2f": {
+  "x-mt": true
+ },
+ "sd8dfb25d31": "Shelly Cloud (sin puente)",
+ "@sd8dfb25d31": {
+  "x-mt": true
+ },
+ "s350215338a": "Control Shellys a través de la nube Shelly desde cualquier lugar. Sólo necesitas la clave de la aplicación Shelly.",
+ "@s350215338a": {
+  "x-mt": true
+ },
+ "sb38eac6a87": "IKEA smart hub y sus luces y enchufes (Zigbee). Pare con el botón en el centro.",
+ "@sb38eac6a87": {
+  "x-mt": true
+ },
+ "s4e92ab791e": "En la aplicación inteligente IKEA Home: Ajustes → Hub → Dirección IP. O en la lista de dispositivos del router: \"gw2-...\" o \"dirigera\".",
+ "@s4e92ab791e": {
+  "x-mt": true
+ },
+ "s73824fc3d0": "Presione el botón de acción en la parte inferior del centro de Dirigera una vez ahora.",
+ "@s73824fc3d0": {
+  "x-mt": true
+ }
+}

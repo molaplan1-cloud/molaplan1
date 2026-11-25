@@ -9,6 +9,7 @@ import 'remote_pages.dart';
 import 'add_device_wizard.dart';
 import 'template_gallery.dart';
 import 'tile_editor.dart';
+import 'language_picker.dart';
 
 /// Step-by-step first-run guide. Re-openable from Settings.
 class OnboardingPage extends StatefulWidget {
@@ -176,21 +177,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   Widget _welcome(BuildContext context) {
-    final st = AppScope.of(context);
     final cs = Theme.of(context).colorScheme;
     return _page(
       context,
       [
         Align(
           alignment: Alignment.centerRight,
-          child: SegmentedButton<String>(
-            segments: const [
-              ButtonSegment(value: 'fi', label: Text('Suomi')),
-              ButtonSegment(value: 'en', label: Text('English')),
-            ],
-            selected: {st.lang},
-            onSelectionChanged: (s) => st.setLanguage(s.first),
-          ),
+          child: const LanguagePicker(),
         ),
         const SizedBox(height: 16),
         Container(

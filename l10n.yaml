@@ -1,0 +1,8 @@
+# Flutter gen-l10n: ARB files are produced by tool/l10n/translate.py (see AGENT-NOTES.md, "Translations").
+arb-dir: lib/l10n/arb
+template-arb-file: app_en.arb
+output-dir: lib/l10n/gen
+output-localization-file: app_localizations.dart
+output-class: AppLocalizations
+use-escaping: true
+nullable-getter: false

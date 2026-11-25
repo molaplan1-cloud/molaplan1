@@ -1,4 +1,5 @@
 import 'fields.dart';
+import '../l10n/l10n.dart';
 
 /// Plain-language help for every driver field + which ones are "advanced".
 /// Key: `driver.section.key`, falling back to `*.section.key` and
@@ -232,7 +233,7 @@ String? helpText(FieldSpec f, String lang, {String? scope}) {
   final p = scope.split('.');
   final h = helpFor(p[0], p[1], f.key);
   if (h == null) return null;
-  return lang == 'fi' ? h.fi : h.en;
+  return tr(lang, h.fi, h.en);
 }
 
 bool isAdvanced(FieldSpec f, {String? scope}) {

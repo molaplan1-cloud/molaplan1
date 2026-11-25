@@ -8,6 +8,7 @@ import 'package:crypto/crypto.dart' as crypto;
 
 import '../models/models.dart';
 import 'provider.dart';
+import '../l10n/l10n.dart';
 
 String _b64url(List<int> b) => base64Url.encode(b).replaceAll('=', '');
 
@@ -100,7 +101,6 @@ class DirigeraProvider extends DeviceProvider {
     if (token.isEmpty) throw AddDeviceError(AddProblem.needsPassword);
     final conn = _conn(c.address, token);
     final d = ctx.driver(conn);
-    final fi = ctx.lang == 'fi';
     try {
       Object? list;
       try {
@@ -115,13 +115,13 @@ class DirigeraProvider extends DeviceProvider {
         if (!a.containsKey('isOn') || !(type == 'light' || type == 'outlet')) continue;
         items.add(AddItem(
           key: '${dev['id']}',
-          name: '${(a['customName'] ?? '').toString().trim().isEmpty ? (type == 'light' ? (fi ? 'Valo' : 'Light') : (fi ? 'Pistorasia' : 'Plug')) : a['customName']}',
+          name: '${(a['customName'] ?? '').toString().trim().isEmpty ? (type == 'light' ? tr(ctx.lang, 'Valo', 'Light') : tr(ctx.lang, 'Pistorasia', 'Plug')) : a['customName']}',
           kind: type,
           hasPower: a.containsKey('currentActivePower') || a.containsKey('lightLevel'),
           subtitle: [
             '${a['model'] ?? ''}'.trim(),
-            if (dev['isReachable'] == false) fi ? 'ei tavoitettavissa' : 'unreachable',
-            a['isOn'] == true ? (fi ? 'päällä' : 'on') : (fi ? 'pois' : 'off'),
+            if (dev['isReachable'] == false) tr(ctx.lang, 'ei tavoitettavissa', 'unreachable'),
+            a['isOn'] == true ? tr(ctx.lang, 'päällä', 'on') : tr(ctx.lang, 'pois', 'off'),
           ].where((s) => s.isNotEmpty).join(' · '),
         ));
       }
@@ -161,7 +161,7 @@ class DirigeraProvider extends DeviceProvider {
         out.add(outlet[it.key] == true
             ? TileConfig(
                 type: TileType.value,
-                title: '$title – ${lang == 'fi' ? 'teho' : 'power'}',
+                title: '$title – ${tr(lang, 'teho', 'power')}',
                 icon: 'bolt',
                 connectionId: c.id,
                 unit: 'W',
@@ -171,7 +171,7 @@ class DirigeraProvider extends DeviceProvider {
               )
             : TileConfig(
                 type: TileType.slider,
-                title: '$title – ${lang == 'fi' ? 'kirkkaus' : 'brightness'}',
+                title: '$title – ${tr(lang, 'kirkkaus', 'brightness')}',
                 icon: 'brightness',
                 connectionId: c.id,
                 min: 1,

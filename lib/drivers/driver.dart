@@ -4,6 +4,7 @@ import '../core/fields.dart';
 import '../core/jsonpath.dart';
 import '../core/template.dart';
 import '../models/models.dart';
+import '../l10n/l10n.dart';
 
 class DriverException implements Exception {
   final String message;
@@ -14,7 +15,7 @@ class DriverException implements Exception {
 
 /// UI language for human-readable driver texts (connection test results). Set by AppState.
 String driverLang = 'fi';
-String dtx(String fi, String en) => driverLang == 'fi' ? fi : en;
+String dtx(String fi, String en) => tr(driverLang, fi, en);
 
 /// Common interface every connection type implements.
 ///
@@ -67,7 +68,7 @@ class DriverDescriptor {
     this.cameraOnly = false,
   });
 
-  String label(String lang) => lang == 'fi' ? fi : en;
+  String label(String lang) => tr(lang, fi, en);
 
   Set<String> get secretKeys => connectionFields.where((f) => f.kind == FieldKind.secret).map((f) => f.key).toSet();
 }

@@ -1,3 +1,5 @@
+import 'package:cupertino_ui/cupertino_ui.dart' show GlobalCupertinoLocalizations;
+import 'package:flutter_localizations/flutter_localizations.dart' show GlobalWidgetsLocalizations;
 import 'package:material_ui/material_ui.dart';
 
 import 'state/app_state.dart';
@@ -6,6 +8,7 @@ import 'ui/app_scope.dart';
 import 'ui/home_page.dart';
 import 'ui/remote_pages.dart';
 import 'ui/theme.dart';
+import 'l10n/gen/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,6 +42,14 @@ class MolaplanApp extends StatelessWidget {
         theme: molaplanTheme(brightness: Brightness.light),
         darkTheme: molaplanTheme(),
         themeMode: ThemeMode.dark,
+        locale: Locale(state.lang),
+        supportedLocales: AppLocalizations.supportedLocales,
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
         home: const HomePage(),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import '../models/models.dart';
 import '../prices/prices.dart';
 import 'app_scope.dart';
+import '../l10n/l10n.dart';
 
 /// Simple presets for price control (one rule per tile).
 class PricePreset {
@@ -233,8 +234,8 @@ class _PriceRulePageState extends State<PriceRulePage> {
                       RadioListTile<String>(
                         key: ValueKey('preset-${p.id}'),
                         value: p.id,
-                        title: Text(lang == 'fi' ? p.fi : p.en),
-                        subtitle: Text(lang == 'fi' ? p.descFi : p.descEn),
+                        title: Text(tr(lang, p.fi, p.en)),
+                        subtitle: Text(tr(lang, p.descFi, p.descEn)),
                       ),
                   ],
                 ),

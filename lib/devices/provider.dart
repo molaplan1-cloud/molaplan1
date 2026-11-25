@@ -12,6 +12,7 @@ import 'dart:io';
 
 import '../drivers/driver.dart';
 import '../models/models.dart';
+import '../l10n/l10n.dart';
 
 enum ProviderKind { local, cloud }
 
@@ -124,8 +125,8 @@ abstract class DeviceProvider {
   /// Cloud login fields (server, key, ...).
   List<CredField> get credFields => const [];
 
-  String name(String lang) => lang == 'fi' ? fi : en;
-  String desc(String lang) => lang == 'fi' ? descFi : descEn;
+  String name(String lang) => tr(lang, fi, en);
+  String desc(String lang) => tr(lang, descFi, descEn);
 
   /// LAN scan (pure Dart; also runs on the bridge for remote discovery).
   Future<List<Candidate>> scan(List<String> locals) async => const [];
@@ -313,23 +314,16 @@ enum AddressIssue { ok, badFormat, notPrivate, otherSubnet }
 String? addressHint(String input, List<String> locals, String lang) {
   if (input.trim().isEmpty) return null;
   final r = checkAddress(input, locals);
-  final fi = lang == 'fi';
   switch (r.issue) {
     case AddressIssue.ok:
       return null;
     case AddressIssue.badFormat:
-      return fi
-          ? 'Osoite näyttää vajaalta. Muoto on neljä numeroa pisteillä, esim. 192.168.1.50.'
-          : 'The address looks incomplete. Use four numbers with dots, e.g. 192.168.1.50.';
+      return tr(lang, 'Osoite näyttää vajaalta. Muoto on neljä numeroa pisteillä, esim. 192.168.1.50.', 'The address looks incomplete. Use four numbers with dots, e.g. 192.168.1.50.');
     case AddressIssue.notPrivate:
-      final s = r.suggestion == null ? '' : (fi ? ' Tarkoititko ${r.suggestion}?' : ' Did you mean ${r.suggestion}?');
-      return fi
-          ? 'Tämä ei ole kotiverkon osoite (kotiverkon osoitteet alkavat yleensä 192.168.).$s'
-          : 'This is not a home network address (they usually start with 192.168.).$s';
+      final s = r.suggestion == null ? '' : tr(lang, ' Tarkoititko ${r.suggestion}?', ' Did you mean ${r.suggestion}?');
+      return tr(lang, 'Tämä ei ole kotiverkon osoite (kotiverkon osoitteet alkavat yleensä 192.168.).$s', 'This is not a home network address (they usually start with 192.168.).$s');
     case AddressIssue.otherSubnet:
       final mine = locals.first.substring(0, locals.first.lastIndexOf('.'));
-      return fi
-          ? 'Huom: tämä laite on verkossa $mine.x – laite ei ehkä ole samassa wifissä.'
-          : 'Note: this device is on $mine.x – the device may be on another Wi-Fi.';
+      return tr(lang, 'Huom: tämä laite on verkossa $mine.x – laite ei ehkä ole samassa wifissä.', 'Note: this device is on $mine.x – the device may be on another Wi-Fi.');
   }
 }

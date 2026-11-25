@@ -51,6 +51,10 @@ dependencies:
   mobile_scanner: ^7.5.0
   wakelock_plus: ^1.8.2
   url_launcher: ^6.3.3
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
+  cupertino_ui: ^1.1.7
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +73,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
