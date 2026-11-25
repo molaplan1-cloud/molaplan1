@@ -24,6 +24,7 @@ enum AddProblem {
   notThisBrand,
   needsPassword,
   wrongPassword,
+
   /// A detail the device does not tell by itself (Sonoff DIY device id); see [DeviceProvider.credFields].
   needsDetails,
   buttonNotPressed,
@@ -46,7 +47,14 @@ class AddDeviceError implements Exception {
 
 /// Something found on the network (or typed in by the user).
 class Candidate {
-  Candidate({required this.provider, required this.address, this.id = '', this.model = '', this.name, this.viaBridge = false});
+  Candidate({
+    required this.provider,
+    required this.address,
+    this.id = '',
+    this.model = '',
+    this.name,
+    this.viaBridge = false,
+  });
   final String provider;
   final String address;
   final String id;
@@ -69,11 +77,23 @@ class Candidate {
 
 /// One thing the user can get a tile for (a relay channel, a lamp, a plug...).
 class AddItem {
-  AddItem({required this.key, required this.name, this.kind = 'switch', this.hasPower = false, this.subtitle = '', this.preselect = true});
+  AddItem({
+    required this.key,
+    required this.name,
+    this.kind = 'switch',
+    this.hasPower = false,
+    this.subtitle = '',
+    this.preselect = true,
+    this.group = '',
+  });
   final String key;
+
+  /// Heading in the add list (type or room); empty = no headings.
+  final String group;
   final bool preselect;
   final String name;
   final String kind;
+
   /// Power metering (or brightness for lamps): gets an extra tile when "extras" is on.
   final bool hasPower;
   final String subtitle;
@@ -88,7 +108,16 @@ class Connected {
 }
 
 class CredField {
-  const CredField(this.key, this.fi, this.en, {this.helpFi = '', this.helpEn = '', this.secret = false, this.hint = '', this.optional = false});
+  const CredField(
+    this.key,
+    this.fi,
+    this.en, {
+    this.helpFi = '',
+    this.helpEn = '',
+    this.secret = false,
+    this.hint = '',
+    this.optional = false,
+  });
   final String key, fi, en, helpFi, helpEn, hint;
   final bool secret;
   final bool optional;
@@ -139,12 +168,19 @@ abstract class DeviceProvider {
   Future<List<Candidate>> scan(List<String> locals) async => const [];
 
   /// Button pairing: returns credentials once the user pressed the button.
-  Future<Map<String, String>> pair(AddContext ctx, Candidate c, {void Function(int secondsLeft)? tick}) async => const {};
+  Future<Map<String, String>> pair(AddContext ctx, Candidate c, {void Function(int secondsLeft)? tick}) async =>
+      const {};
 
   /// Connects (with [creds]) and lists what can be added.
   Future<Connected> connect(AddContext ctx, Candidate c, Map<String, String> creds);
 
-  List<TileConfig> tiles(Connected r, {Map<String, String> names = const {}, Set<String> skip = const {}, bool power = true, String lang = 'fi'});
+  List<TileConfig> tiles(
+    Connected r, {
+    Map<String, String> names = const {},
+    Set<String> skip = const {},
+    bool power = true,
+    String lang = 'fi',
+  });
 }
 
 // ---------------------------------------------------------------- helpers
@@ -325,12 +361,24 @@ String? addressHint(String input, List<String> locals, String lang) {
     case AddressIssue.ok:
       return null;
     case AddressIssue.badFormat:
-      return tr(lang, 'Osoite näyttää vajaalta. Muoto on neljä numeroa pisteillä, esim. 192.168.1.50.', 'The address looks incomplete. Use four numbers with dots, e.g. 192.168.1.50.');
+      return tr(
+        lang,
+        'Osoite näyttää vajaalta. Muoto on neljä numeroa pisteillä, esim. 192.168.1.50.',
+        'The address looks incomplete. Use four numbers with dots, e.g. 192.168.1.50.',
+      );
     case AddressIssue.notPrivate:
       final s = r.suggestion == null ? '' : tr(lang, ' Tarkoititko ${r.suggestion}?', ' Did you mean ${r.suggestion}?');
-      return tr(lang, 'Tämä ei ole kotiverkon osoite (kotiverkon osoitteet alkavat yleensä 192.168.).$s', 'This is not a home network address (they usually start with 192.168.).$s');
+      return tr(
+        lang,
+        'Tämä ei ole kotiverkon osoite (kotiverkon osoitteet alkavat yleensä 192.168.).$s',
+        'This is not a home network address (they usually start with 192.168.).$s',
+      );
     case AddressIssue.otherSubnet:
       final mine = locals.first.substring(0, locals.first.lastIndexOf('.'));
-      return tr(lang, 'Huom: tämä laite on verkossa $mine.x – laite ei ehkä ole samassa wifissä.', 'Note: this device is on $mine.x – the device may be on another Wi-Fi.');
+      return tr(
+        lang,
+        'Huom: tämä laite on verkossa $mine.x – laite ei ehkä ole samassa wifissä.',
+        'Note: this device is on $mine.x – the device may be on another Wi-Fi.',
+      );
   }
 }

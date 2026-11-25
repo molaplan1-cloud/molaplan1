@@ -122,10 +122,10 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
       ),
     ),
     AddProblem.unknown => (
-      t('Jokin meni pieleen', 'Something went wrong'),
+      t('Laitteeseen ei saatu yhteyttä', 'Could not connect to the device'),
       t(
-        'Yritä uudelleen. Jos ongelma toistuu, käynnistä laite uudelleen.',
-        'Try again. If it keeps happening, restart the device.',
+        'Tarkista osoite ja että laite on päällä, ja yritä uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.',
+        'Check the address and that the device is on, then try again. The technical details show the exact reason.',
       ),
     ),
   };
@@ -1008,7 +1008,29 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           'Pick what goes on the home view and name them.',
         ),
       ),
-      for (final it in r.items)
+      if (r.items.length > 3)
+        Align(
+          alignment: Alignment.centerRight,
+          child: TextButton(
+            key: const ValueKey('wiz-select-all'),
+            onPressed: () => setState(() => skip.isEmpty ? skip.addAll(r.items.map((i) => i.key)) : skip.clear()),
+            child: Text(
+              skip.isEmpty
+                  ? tx(context, 'Poista valinnat', 'Select none')
+                  : tx(context, 'Valitse kaikki (${r.items.length})', 'Select all (${r.items.length})'),
+            ),
+          ),
+        ),
+      for (final (i, it) in r.items.indexed) ...[
+        if (it.group.isNotEmpty && (i == 0 || r.items[i - 1].group != it.group))
+          Padding(
+            key: ValueKey('wiz-group-${it.group}'),
+            padding: const EdgeInsets.fromLTRB(4, 12, 4, 6),
+            child: Text(
+              it.group,
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Theme.of(context).colorScheme.primary),
+            ),
+          ),
         Card(
           margin: const EdgeInsets.only(bottom: 10),
           child: Padding(
@@ -1042,6 +1064,7 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
             ),
           ),
         ),
+      ],
       if (hasExtras)
         SwitchListTile(
           key: const ValueKey('wiz-extras'),

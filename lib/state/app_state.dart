@@ -1,3 +1,7 @@
+import 'measure_history.dart';
+import '../devices/climate.dart';
+import 'migrations.dart';
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io' show Directory, Platform;
@@ -31,10 +35,13 @@ class AppState extends ChangeNotifier implements SyncHost {
     int kdfIterations = defaultIterations,
     String Function()? systemLocale,
     ConfigStore? energyStore,
+    ConfigStore? historyStore,
     this.imageDir,
   }) : systemLocale = systemLocale ?? _platformLocale,
-       energyStore = energyStore ?? MemoryConfigStore() {
+       energyStore = energyStore ?? MemoryConfigStore(),
+       historyStore = historyStore ?? MemoryConfigStore() {
     TileRuntime.observer = onTileValue;
+    TileRuntime.needsPrefill = (t) => isMeasureTile(t) && measureHistory.last(measureKey(t)) == null;
     account = AccountState(store: secretStore, host: this, api: accountApi, kdfIterations: kdfIterations);
     account.addListener(notifyListeners);
     remote = RemoteState(store: secretStore, configJson: () => exportJson(includeSecrets: true));
@@ -75,6 +82,11 @@ class AppState extends ChangeNotifier implements SyncHost {
   // ---- energy: meters, contract, costs
   /// Where the hourly meter log is kept (device-local, not synced).
   final ConfigStore energyStore;
+
+  /// Measurement history (trend / gauge / last value offline). Saved every minute at most.
+  final ConfigStore historyStore;
+  final measureHistory = MeasureHistory();
+  Timer? _historySaveTimer;
   final energyLog = EnergyLog();
   Timer? _energySaveTimer;
 
@@ -165,6 +177,13 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   void onTileValue(TileConfig t, Object? v, [DateTime? at]) {
+    if (isMeasureTile(t)) {
+      final d = v is num ? v.toDouble() : double.tryParse('${v ?? ''}'.replaceAll(',', '.'));
+      if (d != null) {
+        measureHistory.add(measureKey(t), d, at ?? DateTime.now());
+        if (historyStore is! MemoryConfigStore) _historySaveTimer ??= Timer(const Duration(seconds: 60), saveHistory);
+      }
+    }
     final m = config.energy.meters[t.id];
     if (m == null) return;
     final kind = meterKind(t.unit);
@@ -173,6 +192,12 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (kind == 'power') livePower[t.id] = (at ?? DateTime.now(), toK(d, t.unit));
     energyLog.record(t.id, kind, toK(d, t.unit), at ?? DateTime.now(), unitPriceAt);
     _energySaveTimer ??= Timer(const Duration(seconds: 60), saveEnergy);
+  }
+
+  Future<void> saveHistory() async {
+    _historySaveTimer?.cancel();
+    _historySaveTimer = null;
+    await historyStore.save(jsonEncode(measureHistory.toJson()));
   }
 
   Future<void> saveEnergy() async {
@@ -284,6 +309,11 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (raw != null) {
       try {
         config = AppConfig.fromJson(Map<String, dynamic>.from(jsonDecode(raw) as Map));
+        final a = migratePriceConnections(config);
+        final b = removeEmptyIntegrationViews(config);
+        final c = migrateSplitClimateTiles(config);
+        final e = mergeBrightnessTiles(config);
+        if (a || b || c || e) unawaited(configStore.save(jsonEncode(config.toJson())));
       } catch (_) {
         config = AppConfig();
       }
@@ -312,6 +342,10 @@ class AppState extends ChangeNotifier implements SyncHost {
     try {
       final e = await energyStore.load();
       if (e != null) energyLog.loadJson(Map<String, dynamic>.from(jsonDecode(e) as Map));
+    } catch (_) {}
+    try {
+      final h = await historyStore.load();
+      if (h != null) measureHistory.loadJson(Map<String, dynamic>.from(jsonDecode(h) as Map));
     } catch (_) {}
     _lastHome = remote.paired?.home;
     await account.load();
@@ -779,6 +813,25 @@ class AppState extends ChangeNotifier implements SyncHost {
     return true;
   }
 
+  /// Remembers an own name for a scanned device (empty = forget).
+  Future<void> setScanName(String key, String name) async {
+    name.trim().isEmpty ? config.scanNames.remove(key) : config.scanNames[key] = name.trim();
+    await save();
+    notifyListeners();
+  }
+
+  Future<void> setFavoriteColors(List<String> v) async {
+    config.favoriteColors = v;
+    await save();
+    notifyListeners();
+  }
+
+  Future<void> setHideAwayTiles(bool v) async {
+    config.hideAwayTiles = v;
+    await save();
+    notifyListeners();
+  }
+
   Future<void> setTileDensity(String v) async {
     config.tileDensity = v;
     await save();
@@ -946,7 +999,11 @@ class AppState extends ChangeNotifier implements SyncHost {
   void dispose() {
     _rulesTimer?.cancel();
     _energySaveTimer?.cancel();
-    if (TileRuntime.observer == onTileValue) TileRuntime.observer = null;
+    _historySaveTimer?.cancel();
+    if (TileRuntime.observer == onTileValue) {
+      TileRuntime.observer = null;
+      TileRuntime.needsPrefill = null;
+    }
     account.removeListener(notifyListeners);
     account.dispose();
     update.removeListener(notifyListeners);

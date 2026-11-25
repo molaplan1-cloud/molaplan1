@@ -143,8 +143,8 @@ void main() {
     expect(find.text('Löytyi 5. Lisää napauttamalla.'), findsOneWidget);
     expect(find.byKey(const ValueKey('scan-add-192.168.50.90')), findsNothing); // HomeKit: not controllable
     expect(find.textContaining('ei vielä ohjattavissa'), findsOneWidget);
-    expect(find.text('2 tuntematonta laitetta'), findsOneWidget);
-    await tester.tap(find.text('2 tuntematonta laitetta'));
+    expect(find.text('Muut laitteet verkossa (2)'), findsOneWidget);
+    await tester.tap(find.text('Muut laitteet verkossa (2)'));
     await tester.pumpAndSettle();
     expect(find.textContaining('Raspberry Pi'), findsOneWidget);
     expect(find.text('Tuntematon laite'), findsNWidgets(2));

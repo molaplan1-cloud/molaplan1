@@ -54,22 +54,37 @@ void main() {
     expect(shortDate(DateTime(2026, 11, 26), 'sv'), '26 nov');
   });
 
-  test('price view: now, today min/avg/max, quartile colours, hourly averaging, instant cost', () {
+  test('price view: ONE calculation – hourly stats whatever the bars show, levels, instant cost', () {
     final now = DateTime(2026, 11, 25, 18, 7);
-    final v = PriceView.build(_today(now), 900, now);
-    expect(v.current!.start, DateTime(2026, 11, 25, 18));
-    expect(v.current!.cents, 20.0);
-    expect(v.min!.cents, 2.0);
-    expect(v.max!.cents, 23.0);
-    expect(v.avg, closeTo((24 * 2 + 12 * 21.5 + 60 * 8) / 96, 1e-9));
-    expect(v.levels.first, 0);
-    expect(v.levels[v.slots.indexOf(v.max!)], 3);
-    expect(v.hasTomorrow, isFalse);
-    final h = PriceView.build(_today(now), 900, now, hourly: true);
+    final q = PriceView.build(_today(now), 900, now, hourly: false);
+    final h = PriceView.build(_today(now), 900, now);
+    expect(q.slots.length, 96);
     expect(h.slots.length, 24);
-    expect(h.current!.cents, 21.5);
-    expect(v.instantCost(1.5), 30.0);
-    expect(v.instantCost(null), isNull);
+    // Same numbers on the tile (hourly bars) and the chart (15-min bars).
+    for (final v in [q, h]) {
+      expect(v.current!.start, DateTime(2026, 11, 25, 18));
+      expect(v.current!.cents, 21.5);
+      expect(v.min!.cents, 2.0);
+      expect(v.max!.cents, 21.5);
+      expect(v.avg, closeTo((24 * 2 + 12 * 21.5 + 60 * 8) / 96, 1e-9));
+      expect(v.hasTomorrow, isFalse);
+    }
+    expect(q.levels.first, 0);
+    expect(q.levels[q.slots.indexWhere((s) => s.cents == 23.0)], 2);
+    // A tile that claims hourly data but gets 15-min points still reads the spacing.
+    final wrongRes = PriceView.build(_today(now), 3600, now, hourly: false);
+    expect((wrongRes.sourceMinutes, wrongRes.slots.first.minutes), (15, 15));
+    expect(wrongRes.current!.cents, 21.5);
+    // UTC timestamps are bucketed by local (Helsinki) hours.
+    final utc = PriceView.build([for (final p in _today(now)) (p.$1.toUtc(), p.$2)], 900, now);
+    expect(utc.current!.start, DateTime(2026, 11, 25, 18));
+    expect(utc.current!.cents, 21.5);
+    // Next-12-h window for the tile's mini chart.
+    final w = h.window(DateTime(2026, 11, 25, 17), DateTime(2026, 11, 26, 5));
+    expect(w.first.$1.start, DateTime(2026, 11, 25, 17));
+    expect(w.length, 7); // 17…23 (no tomorrow yet)
+    expect(h.instantCost(1.5), closeTo(32.25, 1e-9));
+    expect(h.instantCost(null), isNull);
   });
 
   test('spot contract prices include margin, transfer, tax and VAT', () async {

@@ -1,3 +1,5 @@
+import '../devices/climate.dart';
+
 import 'dart:convert';
 
 import 'package:material_ui/material_ui.dart' hide Threshold;
@@ -500,7 +502,7 @@ final deviceTemplates = <DeviceTemplate>[
       final c = ConnectionConfig(
         name: 'Home Assistant',
         type: 'homeassistant',
-        settings: {'baseUrl': url, 'liveUpdates': true},
+        settings: {'baseUrl': url, 'liveUpdates': true, if (v['allowSelfSigned'] == true) 'allowSelfSigned': true},
         secrets: {if (_s(v, 'token').isNotEmpty) 'token': _s(v, 'token')},
       );
       // Tiles are picked next in the entity picker (HaEntityPickerPage) – never all at once.
@@ -552,7 +554,7 @@ final deviceTemplates = <DeviceTemplate>[
       final c = ConnectionConfig(
         name: 'Home Assistant',
         type: 'homeassistant',
-        settings: {'baseUrl': url, 'liveUpdates': true},
+        settings: {'baseUrl': url, 'liveUpdates': true, if (v['allowSelfSigned'] == true) 'allowSelfSigned': true},
         secrets: {if (_s(v, 'token').isNotEmpty) 'token': _s(v, 'token')},
       );
       final e = _s(v, 'entity');
@@ -1322,49 +1324,8 @@ final deviceTemplates = <DeviceTemplate>[
   ),
 ];
 
-List<TileConfig> heatPumpHaTiles(String cid, String e, String name, String lang) => [
-  TileConfig(
-    type: TileType.value,
-    title: '$name – ${_t(lang, 'huone', 'room')}',
-    icon: 'thermostat',
-    unit: '°C',
-    connectionId: cid,
-    read: {'entityId': e, 'attribute': 'current_temperature'},
-  ),
-  TileConfig(
-    type: TileType.slider,
-    title: '$name – ${_t(lang, 'asetus', 'setpoint')}',
-    icon: 'heatpump',
-    unit: '°C',
-    colSpan: 2,
-    min: 16,
-    max: 30,
-    step: 0.5,
-    connectionId: cid,
-    read: {'entityId': e, 'attribute': 'temperature'},
-    commands: [
-      CommandStep(
-        connectionId: cid,
-        spec: {'service': 'climate.set_temperature', 'entityId': e, 'data': '{"temperature": {{value}}}'},
-      ),
-    ],
-  ),
-  TileConfig(
-    type: TileType.toggle,
-    title: name,
-    icon: 'power',
-    connectionId: cid,
-    read: {'entityId': e},
-    valueMap: _t(
-      lang,
-      'off=Pois;heat=Lämmitys;cool=Jäähdytys;auto=Auto;heat_cool=Auto;dry=Kuivaus;fan_only=Puhallus',
-      'off=Off;heat=Heat;cool=Cool;auto=Auto;heat_cool=Auto;dry=Dry;fan_only=Fan',
-    ),
-    onValue: 'heat,cool,auto,heat_cool,dry,fan_only',
-    onCommand: CommandStep(connectionId: cid, spec: {'service': 'climate.turn_on', 'entityId': e}),
-    offCommand: CommandStep(connectionId: cid, spec: {'service': 'climate.turn_off', 'entityId': e}),
-  ),
-];
+/// HA climate entity → ONE combined thermostat tile (t137u; used to be three tiles).
+List<TileConfig> heatPumpHaTiles(String cid, String e, String name, String lang) => [haClimateTile(cid, e, name)];
 
 // ---------------------------------------------------------------- IV profiles
 

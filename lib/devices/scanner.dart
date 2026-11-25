@@ -10,6 +10,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import '../core/discovery.dart';
+import 'identify.dart';
+import 'ha_setup.dart';
 import 'onvif.dart';
 import 'provider.dart';
 
@@ -25,7 +27,53 @@ class ScanHit {
     this.mac,
     this.vendor,
     this.viaBridge = false,
-  }) : via = via ?? {};
+    this.type = '',
+    this.maker = '',
+    Map<String, String>? names,
+    Set<int>? ports,
+    Set<String>? services,
+    this.role = '',
+  }) : via = via ?? {},
+       names = names ?? {},
+       ports = ports ?? {},
+       services = services ?? {};
+
+  /// phone, tablet, computer, printer, tv, speaker, router, nas, camera, server, iot ('' = not known).
+  String type;
+  String maker;
+
+  /// Name per source (mDNS, PTR, NetBIOS, LLMNR, SSDP, HTTP, TLS, Tämä laite, Reititin).
+  final Map<String, String> names;
+  final Set<int> ports;
+
+  /// mDNS service types seen.
+  final Set<String> services;
+
+  /// 'self' (this device), 'router', 'iphone' / 'android' (hotspot) or ''.
+  String role;
+
+  /// SSDP LOCATION (description XML) – not serialised.
+  String? location;
+
+  /// Home Assistant instance uuid (mDNS TXT) – merges duplicates of one HA (t133u). Not serialised.
+  String? haUuid;
+
+  /// Best name from all sources ('' = none).
+  String get bestName {
+    for (final k in namePriority) {
+      final n = names[k];
+      if (n != null && n.trim().isNotEmpty) return n.trim();
+    }
+    return name;
+  }
+
+  /// Key for a user's own name: the MAC if known (survives DHCP changes), else the IP.
+  String get nameKey => mac ?? ip;
+
+  void addName(String source, String? n) {
+    final c = source == 'Tämä laite' || source == 'Reititin' ? (n ?? '').trim() : cleanHostName(n ?? '');
+    if (c.isNotEmpty) names.putIfAbsent(source, () => c);
+  }
 
   final String ip;
 
@@ -73,6 +121,16 @@ class ScanHit {
     if (id.isEmpty) id = o.id;
     mac ??= o.mac;
     vendor ??= o.vendor;
+    for (final e in o.names.entries) {
+      names.putIfAbsent(e.key, () => e.value);
+    }
+    ports.addAll(o.ports);
+    services.addAll(o.services);
+    if (type.isEmpty) type = o.type;
+    if (maker.isEmpty) maker = o.maker;
+    if (role.isEmpty) role = o.role;
+    location ??= o.location;
+    haUuid ??= o.haUuid;
   }
 
   Map<String, dynamic> toJson() => {
@@ -85,6 +143,12 @@ class ScanHit {
     'via': via.toList(),
     'mac': ?mac,
     'vendor': ?vendor,
+    if (type.isNotEmpty) 'type': type,
+    if (maker.isNotEmpty) 'maker': maker,
+    if (names.isNotEmpty) 'names': names,
+    if (ports.isNotEmpty) 'ports': ports.toList()..sort(),
+    if (services.isNotEmpty) 'services': services.toList(),
+    if (role.isNotEmpty) 'role': role,
   };
 
   factory ScanHit.fromJson(Map j, {bool viaBridge = false}) => ScanHit(
@@ -98,6 +162,12 @@ class ScanHit {
     mac: j['mac'] as String?,
     vendor: j['vendor'] as String?,
     viaBridge: viaBridge,
+    type: '${j['type'] ?? ''}',
+    maker: '${j['maker'] ?? ''}',
+    names: {for (final e in ((j['names'] as Map?) ?? const {}).entries) '${e.key}': '${e.value}'},
+    ports: {for (final p in (j['ports'] as List?) ?? const []) (p as num).toInt()},
+    services: {for (final v in (j['services'] as List?) ?? const []) '$v'},
+    role: '${j['role'] ?? ''}',
   );
 
   /// A candidate for the provider's wizard (one tap, no search step).
@@ -136,7 +206,66 @@ const scanServices = [
   '_home-assistant._tcp',
   '_http._tcp',
   '_onvif._tcp',
+  // Only for names / types (phones, computers, printers, TVs).
+  '_device-info._tcp',
+  '_companion-link._tcp',
+  '_apple-mobdev2._tcp',
+  '_airplay._tcp',
+  '_raop._tcp',
+  '_homekit._tcp',
+  '_workstation._tcp',
+  '_smb._tcp',
+  '_ipp._tcp',
+  '_printer._tcp',
+  '_googlecast._tcp',
+  '_spotify-connect._tcp',
+  '_sonos._tcp',
+  '_ssh._tcp',
 ];
+
+const _nameOnlyServices = {
+  '_device-info._tcp',
+  '_companion-link._tcp',
+  '_apple-mobdev2._tcp',
+  '_airplay._tcp',
+  '_raop._tcp',
+  '_homekit._tcp',
+  '_workstation._tcp',
+  '_smb._tcp',
+  '_ipp._tcp',
+  '_printer._tcp',
+  '_googlecast._tcp',
+  '_spotify-connect._tcp',
+  '_sonos._tcp',
+  '_ssh._tcp',
+};
+
+/// Any mDNS record -> a name-only hit (instance name, host, TXT model / friendly name).
+ScanHit? nameHitFromMdns(FoundDevice d, Map<String, String> txt) {
+  final ip = d.ip;
+  if (ip == null) return null;
+  final h = ScanHit(ip: ip, via: {'mDNS'}, services: {d.service});
+  final fn = txt['fn'] ?? txt['ty'];
+  if (fn != null) h.addName('mDNS', fn);
+  if (_nameOnlyServices.contains(d.service) && d.service != '_workstation._tcp') h.addName('mDNS', d.label);
+  // _workstation instance: "ennin-pc [aa:bb:cc:dd:ee:ff]"
+  if (d.service == '_workstation._tcp') {
+    h.addName('mDNS', d.label.replaceAll(RegExp(r'\s*\[[0-9a-fA-F:]+\]$'), ''));
+    final m = RegExp(r'\[([0-9a-fA-F:]{17})\]').firstMatch(d.label);
+    if (m != null) h.mac = m[1]!.toLowerCase();
+  }
+  h.addName('mDNS', d.host);
+  h.model = txt['model'] ?? txt['md'] ?? txt['am'] ?? txt['product'] ?? '';
+  if (d.service.startsWith('_home-assistant')) {
+    h
+      ..kind = 'homeassistant'
+      ..port = d.port
+      ..haUuid = (txt['uuid'] ?? '').isEmpty ? null : txt['uuid'];
+    final n = txt['location_name'];
+    if (n != null && n.isNotEmpty) h.names['mDNS'] = n;
+  }
+  return h;
+}
 
 /// mDNS result -> hit.
 ScanHit? hitFromMdns(FoundDevice d) {
@@ -159,6 +288,7 @@ ScanHit? hitFromMdns(FoundDevice d) {
     _ when s.startsWith('_onvif') => ('camera', guessCameraBrand(label), null),
     _ when s.startsWith('_hap') => ('homekit', '', null),
     _ when l.contains('tasmota') => ('tasmota', '', null),
+    _ when _nameOnlyServices.contains(s) => ('unknown', '', null),
     _ => ('http', '', d.port == 80 ? null : d.port),
   };
   final model = switch (kind) {
@@ -191,7 +321,8 @@ ScanHit hitFromSsdp(String ip, Map<String, String> h) {
   }
   final brand = guessCameraBrand(server);
   if (brand.isNotEmpty) return ScanHit(ip: ip, kind: 'camera', id: brand, via: {'SSDP'});
-  return ScanHit(ip: ip, kind: 'unknown', model: (h['server'] ?? '').split(' ').take(3).join(' '), via: {'SSDP'});
+  return ScanHit(ip: ip, kind: 'unknown', model: (h['server'] ?? '').split(' ').take(3).join(' '), via: {'SSDP'})
+    ..location = h['location'];
 }
 
 Future<List<ScanHit>> ssdpDiscover({Duration timeout = const Duration(seconds: 3)}) async {
@@ -221,7 +352,7 @@ Future<List<ScanHit>> ssdpDiscover({Duration timeout = const Duration(seconds: 3
 // ---------------------------------------------------------------- subnet probe
 
 /// Ports that tell what a host is: web UI, Sonoff DIY, Dirigera, RTSP camera, Home Assistant.
-const probePorts = [80, 8081, 8443, 554, 8123];
+const probePorts = [80, 8081, 8443, 554, 8123, 443, 22, 445, 631, 9100, 1883, 62078, 8008, 5000];
 
 /// TCP connect: true = open, false = host answered but closed (it exists), null = no answer.
 Future<bool?> tcpProbe(String ip, int port, {Duration timeout = const Duration(milliseconds: 500)}) async {
@@ -247,7 +378,7 @@ Future<ScanHit?> probeHost(HttpClient c, String ip) async {
     for (var i = 0; i < probePorts.length; i++)
       if (results[i] == true) probePorts[i],
   ];
-  final hit = ScanHit(ip: ip, via: {'probe'});
+  final hit = ScanHit(ip: ip, via: {'probe'}, ports: open.toSet());
   if (open.contains(80)) {
     hit.kind = 'http';
     Future<Object?> get(String path) =>
@@ -396,22 +527,34 @@ String? macVendor(String? mac) {
 // ---------------------------------------------------------------- the scan
 
 /// Everything found on this device's LAN, recognised devices first. [locals] = own IPv4s.
+/// Includes this device ('Tämä laite') and the router / hotspot, with the best name
+/// from every source ([identify]).
 Future<List<ScanHit>> scanNetwork({
   List<String>? locals,
   bool probeSubnet = true,
+  bool identify = true,
   Duration timeout = const Duration(seconds: 3),
 }) async {
   final ips = locals ?? await localIPv4s();
   if (ips.isEmpty) return const [];
   final all = <String, ScanHit>{};
   void add(ScanHit h) {
-    if (ips.contains(h.ip)) return; // ourselves
     all.containsKey(h.ip) ? all[h.ip]!.merge(h) : all[h.ip] = h;
   }
 
+  final info = identify ? nativeNetInfo() : Future.value(const <String, Object?>{});
   await withMulticastLock(() async {
     await Future.wait([
-      discoverDevices(services: scanServices, timeout: timeout)
+      discoverDevices(
+            services: scanServices,
+            timeout: timeout,
+            onRecord: identify
+                ? (d, txt) {
+                    final h = nameHitFromMdns(d, txt);
+                    if (h != null) add(h);
+                  }
+                : null,
+          )
           .then((r) {
             for (final d in r.$1) {
               final h = hitFromMdns(d);
@@ -445,12 +588,141 @@ Future<List<ScanHit>> scanNetwork({
       if (v.contains('shelly')) h.kind = 'shelly';
     }
   }
+  if (identify) await identifyHits(all, ips, await info);
+  await dedupeHaHits(all);
   final out = all.values.toList()
     ..sort((a, b) {
-      final k = (b.known ? 1 : 0) - (a.known ? 1 : 0);
+      int rank(ScanHit h) => h.role == 'self' ? 0 : (h.role.isNotEmpty ? 1 : (h.known ? 2 : 3));
+      final k = rank(a) - rank(b);
       if (k != 0) return k;
       final pa = a.ip.split('.').map(int.tryParse).last ?? 0, pb = b.ip.split('.').map(int.tryParse).last ?? 0;
       return pa.compareTo(pb);
     });
   return out;
+}
+
+/// One Home Assistant = one entry (t133u): an open port 8123 alone (router port-forward) only
+/// counts when the HA frontend really answers there, and hits of the same instance (same mDNS
+/// uuid) collapse to the preferred address (LAN IP that answers). The others stay as plain hosts.
+Future<void> dedupeHaHits(
+  Map<String, ScanHit> all, {
+  Future<bool> Function(String ip, int port) confirm = confirmHa,
+}) async {
+  final ha = all.values.where((h) => h.kind == 'homeassistant').toList();
+  await Future.wait(
+    ha.where((h) => !h.via.contains('mDNS') && h.haUuid == null).map((h) async {
+      if (!await confirm(h.ip, h.port ?? 8123)) {
+        h
+          ..kind = h.role == 'router' ? 'unknown' : 'http'
+          ..port = null;
+      }
+    }),
+  );
+  final byUuid = <String, List<ScanHit>>{};
+  for (final h in all.values.where((h) => h.kind == 'homeassistant' && h.haUuid != null)) {
+    byUuid.putIfAbsent(h.haUuid!, () => []).add(h);
+  }
+  for (final group in byUuid.values.where((g) => g.length > 1)) {
+    group.sort((a, b) {
+      final r = haUrlRank('http://${a.ip}') - haUrlRank('http://${b.ip}');
+      if (r != 0) return r;
+      return (b.via.contains('mDNS') ? 1 : 0) - (a.via.contains('mDNS') ? 1 : 0);
+    });
+    for (final dup in group.skip(1)) {
+      dup
+        ..kind = 'http'
+        ..port = null
+        ..haUuid = null;
+    }
+  }
+}
+
+/// Adds this device, the gateway and names from PTR / NetBIOS / LLMNR / SSDP XML / HTTP / TLS.
+/// About 2 s in total: everything runs in parallel with short timeouts.
+Future<void> identifyHits(Map<String, ScanHit> all, List<String> locals, Map<String, Object?> info) async {
+  // This device.
+  final model = [info['maker'], info['model']].whereType<String>().join(' ').trim();
+  final selfName = (info['name'] as String?)?.trim().isNotEmpty == true
+      ? info['name'] as String
+      : (model.isNotEmpty ? model : Platform.localHostname);
+  for (final ip in locals) {
+    final h = all.putIfAbsent(ip, () => ScanHit(ip: ip, via: {'self'}));
+    h.role = 'self';
+    h.names['Tämä laite'] = selfName;
+    if (model.isNotEmpty && h.model.isEmpty) h.model = model;
+    h.type = info['tablet'] == true ? 'tablet' : (Platform.isAndroid || Platform.isIOS ? 'phone' : 'computer');
+    if (info['maker'] is String) h.maker = _cap(info['maker'] as String);
+  }
+  // Gateway: from the OS, else ".1" of our subnet if something answers there.
+  var gw = info['gateway'] as String? ?? await desktopGateway();
+  if (gw == null) {
+    for (final ip in locals) {
+      final g = '${ip.substring(0, ip.lastIndexOf('.'))}.1';
+      if (g != ip && all.containsKey(g)) gw = g;
+    }
+  }
+  if (gw != null && !locals.contains(gw)) {
+    final h = all.putIfAbsent(gw, () => ScanHit(ip: gw!, via: {'gateway'}));
+    final k = gatewayKind(gw);
+    h.role = k;
+    h.type = k == 'router' ? 'router' : 'phone';
+    if (k == 'iphone') h.maker = 'Apple';
+  }
+
+  final others = [
+    for (final h in all.values)
+      if (h.role != 'self') h.ip,
+  ];
+  final c = HttpClient()..connectionTimeout = const Duration(milliseconds: 1200);
+  try {
+    final nb = netbiosNames(others);
+    final ll = llmnrNames(others);
+    await Future.wait([for (final h in all.values.where((h) => h.role != 'self')) _identifyOne(c, h)])
+        .timeout(const Duration(seconds: 3), onTimeout: () => const []);
+    for (final e in (await nb).entries) {
+      all[e.key]?.addName('NetBIOS', e.value);
+    }
+    for (final e in (await ll).entries) {
+      all[e.key]?.addName('LLMNR', e.value);
+    }
+  } finally {
+    c.close(force: true);
+  }
+  for (final h in all.values) {
+    final (t, m) = guessType(
+      names: [...h.names.values, h.name],
+      services: h.services,
+      ports: h.ports,
+      vendor: h.vendor,
+      model: h.model,
+      ssdpType: (h.names['_ssdpType'] ?? '').toLowerCase(),
+      server: h.names['_server'] ?? '',
+    );
+    if (h.type.isEmpty) h.type = t;
+    if (h.maker.isEmpty) h.maker = m;
+    h.names.remove('_ssdpType');
+    h.names.remove('_server');
+  }
+}
+
+String _cap(String s) => s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);
+
+Future<void> _identifyOne(HttpClient c, ScanHit h) async {
+  await Future.wait([
+    reverseName(h.ip).then((n) => h.addName('PTR', n)),
+    if (h.location != null)
+      upnpDescription(c, h.location!).then((d) {
+        h.addName('SSDP', d['friendlyName']);
+        if (h.maker.isEmpty && (d['manufacturer'] ?? '').isNotEmpty) h.maker = d['manufacturer']!;
+        if (h.model.isEmpty && (d['modelName'] ?? '').isNotEmpty) h.model = d['modelName']!;
+        if (d['deviceType'] != null) h.names['_ssdpType'] = d['deviceType']!;
+      }),
+    if (!h.known && (h.ports.contains(80) || h.ports.contains(5000)))
+      httpTitle(c, h.ip, h.ports.contains(80) ? 80 : 5000).then((r) {
+        h.addName('HTTP', r.$1);
+        if (r.$2.isNotEmpty) h.names['_server'] = r.$2;
+      }),
+    if (!h.known && (h.ports.contains(443) || h.ports.contains(8443)))
+      tlsCommonName(h.ip, h.ports.contains(443) ? 443 : 8443).then((n) => h.addName('TLS', n)),
+  ]);
 }

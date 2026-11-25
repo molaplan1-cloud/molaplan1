@@ -187,7 +187,7 @@ void main() {
       final cid = st.config.connections.single.id;
       final tiles = st.config.dashboards.first.tiles;
       // The HA template itself adds no tiles any more (entities are picked in the HA picker, t108u).
-      expect(tiles.length, 3);
+      expect(tiles.length, 1); // t137u: one combined thermostat tile
       expect(tiles.every((t) => t.connectionId == cid), isTrue);
       expect(
         tiles.where((t) => t.commands.isNotEmpty).every((t) => t.commands.every((c) => c.connectionId == cid)),

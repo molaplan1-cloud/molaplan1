@@ -19,7 +19,7 @@ void main() {
     expect(lock.confirm, isTrue);
     expect(lock.onValue, 'locked');
     expect(haTilesFor(e('scene.a'), 'c', 'fi').single.type, TileType.button);
-    expect(haTilesFor(e('climate.a'), 'c', 'fi').map((t) => t.type), contains(TileType.slider));
+    expect(haTilesFor(e('climate.a'), 'c', 'fi').single.read['kind'], 'climate'); // t137u: one thermostat tile
     final temp = haTilesFor(e('sensor.t', {}, '°C', 'temperature'), 'c', 'fi').single;
     expect((temp.type, temp.unit), (TileType.value, '°C'));
     final cam = haTilesFor(e('camera.piha'), 'c', 'fi', cameraConnId: 'cam').single;

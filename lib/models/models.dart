@@ -182,6 +182,20 @@ class TileConfig {
   double bgScrim;
   bool bgDimOff;
 
+  /// Measurement tiles: "Näyttötapa" auto | value | gauge | trend | gauge_trend.
+  String display;
+
+  /// Trend length in hours (1, 6, 24).
+  int trendHours;
+
+  /// Gauge range; null = automatic from the history.
+  double? gaugeMin;
+  double? gaugeMax;
+
+  /// Colour lights (t134u): detected capabilities and the last colour for the tile glow:
+  /// {'rgb': bool, 'ct': bool, 'bri': bool, 'ctMin': K, 'ctMax': K, 'glow': ARGB}.
+  Map<String, dynamic> light;
+
   TileConfig({
     String? id,
     required this.type,
@@ -208,7 +222,13 @@ class TileConfig {
     this.bgImage,
     this.bgScrim = 0.45,
     this.bgDimOff = false,
+    this.display = 'auto',
+    this.trendHours = 1,
+    this.gaugeMin,
+    this.gaugeMax,
+    Map<String, dynamic>? light,
   }) : id = id ?? newId(),
+       light = light ?? {},
        read = read ?? {},
        thresholds = thresholds ?? [],
        commands = commands ?? [];
@@ -239,6 +259,11 @@ class TileConfig {
     'bgImage': ?bgImage,
     if (bgImage != null) 'bgScrim': bgScrim,
     if (bgDimOff) 'bgDimOff': true,
+    if (display != 'auto') 'display': display,
+    if (trendHours != 1) 'trendHours': trendHours,
+    'gaugeMin': ?gaugeMin,
+    'gaugeMax': ?gaugeMax,
+    if (light.isNotEmpty) 'light': light,
   };
 
   factory TileConfig.fromJson(Map<String, dynamic> j) => TileConfig(
@@ -267,6 +292,11 @@ class TileConfig {
     bgImage: j['bgImage'] as String?,
     bgScrim: (j['bgScrim'] as num?)?.toDouble() ?? 0.45,
     bgDimOff: j['bgDimOff'] == true,
+    display: const ['value', 'gauge', 'trend', 'gauge_trend'].contains(j['display']) ? j['display'] as String : 'auto',
+    trendHours: const [1, 6, 24].contains(j['trendHours']) ? (j['trendHours'] as num).toInt() : 1,
+    gaugeMin: (j['gaugeMin'] as num?)?.toDouble(),
+    gaugeMax: (j['gaugeMax'] as num?)?.toDouble(),
+    light: j['light'] is Map ? Map<String, dynamic>.from(j['light'] as Map) : null,
   );
 
   TileConfig copy() => TileConfig.fromJson(jsonDecode(jsonEncode(toJson())));
@@ -347,6 +377,15 @@ class AppConfig {
   /// "Laattakoko": small / normal / large dashboard tiles.
   String tileDensity;
 
+  /// t131u: hide LAN-only tiles while away from home (off by default – they're greyed instead).
+  bool hideAwayTiles;
+
+  /// t134u: saved light colours: '#RRGGBB' or 'K2700' (white temperature).
+  List<String> favoriteColors;
+
+  /// Own names for devices the network scan found (key: MAC or IP).
+  Map<String, String> scanNames;
+
   AppConfig({
     List<ConnectionConfig>? connections,
     List<Dashboard>? dashboards,
@@ -362,7 +401,12 @@ class AppConfig {
     this.advanced = false,
     this.viewLocked = false,
     this.tileDensity = 'normal',
-  }) : rules = rules ?? [],
+    this.hideAwayTiles = false,
+    List<String>? favoriteColors,
+    Map<String, String>? scanNames,
+  }) : favoriteColors = favoriteColors ?? ['#FF8A3D', '#FFD166', '#4D96FF', '#C77DFF', 'K2700', 'K5000'],
+       scanNames = scanNames ?? {},
+       rules = rules ?? [],
        energy = energy ?? EnergySettings(),
        connections = connections ?? [],
        dashboards = dashboards ?? [];
@@ -376,6 +420,9 @@ class AppConfig {
     if (advanced) 'advanced': true,
     if (viewLocked) 'viewLocked': true,
     if (tileDensity != 'normal') 'tileDensity': tileDensity,
+    if (hideAwayTiles) 'hideAwayTiles': true,
+    'favoriteColors': favoriteColors,
+    if (scanNames.isNotEmpty) 'scanNames': scanNames,
     'relayUrl': ?relayUrl,
     if (remoteCameraSeconds != 2) 'remoteCameraSeconds': remoteCameraSeconds,
     'updateCheckedAt': ?updateCheckedAt,
@@ -397,6 +444,9 @@ class AppConfig {
       advanced: j['advanced'] == true,
       viewLocked: j['viewLocked'] == true,
       tileDensity: const ['small', 'large'].contains(j['tileDensity']) ? j['tileDensity'] as String : 'normal',
+      hideAwayTiles: j['hideAwayTiles'] == true,
+      favoriteColors: j['favoriteColors'] is List ? [for (final c in j['favoriteColors'] as List) '$c'] : null,
+      scanNames: {for (final e in _map(j['scanNames'] ?? const {}).entries) e.key: '${e.value}'},
       relayUrl: j['relayUrl'] as String?,
       remoteCameraSeconds: (j['remoteCameraSeconds'] as num?)?.toInt() ?? 2,
       updateCheckedAt: (j['updateCheckedAt'] as num?)?.toInt(),

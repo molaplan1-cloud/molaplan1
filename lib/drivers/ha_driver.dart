@@ -101,6 +101,8 @@ class HomeAssistantDriver extends Driver {
   Future<Object?> read(Map<String, dynamic> spec) async {
     final entity = spec.str('entityId');
     final cached = _ws != null ? _states[entity] : null;
+    // {'full': true}: the whole state (state + attributes) – colour lights, thermostats.
+    if (spec['full'] == true) return cached ?? await _getState(entity);
     return _pick(cached ?? await _getState(entity), spec);
   }
 

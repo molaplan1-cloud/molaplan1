@@ -176,6 +176,8 @@ class HueProvider extends DeviceProvider {
       final res = room ? '/api/{{token}}/groups/$id' : '/api/{{token}}/lights/$id';
       final set = room ? '$res/action' : '$res/state';
       CommandStep put(String body) => CommandStep(connectionId: c.id, spec: {'method': 'PUT', 'path': set, 'body': body});
+      // t141u: light + brightness is ONE tile (0–100 % slider on the tile, colour/ct via the sheet).
+      final dim = it.hasPower;
       out.add(TileConfig(
         type: TileType.toggle,
         title: title,
@@ -185,20 +187,8 @@ class HueProvider extends DeviceProvider {
         read: {'path': res, 'jsonPath': room ? 'state.any_on' : 'state.on'},
         onCommand: put('{"on":true}'),
         offCommand: put('{"on":false}'),
+        commands: [if (dim) put('{"on":true,"bri":{{value_bri254}}}')],
       ));
-      if (power && it.hasPower && !room) {
-        out.add(TileConfig(
-          type: TileType.slider,
-          title: '$title – ${tr(lang, 'kirkkaus', 'brightness')}',
-          icon: 'brightness',
-          connectionId: c.id,
-          pollSeconds: 10,
-          min: 1,
-          max: 254,
-          read: {'path': res, 'jsonPath': 'state.bri'},
-          commands: [put('{"on":true,"bri":{{value_int}}}')],
-        ));
-      }
     }
     return out;
   }

@@ -80,8 +80,11 @@ class PriceSettings {
 }
 
 class PriceSeries {
-  PriceSeries(this.zone, this.points, {this.source = '', this.license = '', DateTime? fetched})
+  PriceSeries(this.zone, this.points, {this.source = '', this.license = '', DateTime? fetched, this.stale = false})
     : fetched = fetched ?? DateTime.now();
+
+  /// True when the last fetch failed and these are older cached prices.
+  final bool stale;
   final String zone;
   final List<PricePoint> points;
   final String source;
@@ -116,14 +119,21 @@ class PriceSeries {
     return PriceSeries(zone, out, source: source, license: license, fetched: fetched);
   }
 
-  static PriceSeries fromJson(Map<String, dynamic> j) {
+  static PriceSeries fromJson(Map<String, dynamic> j, {DateTime? fetched, bool stale = false}) {
     final res = (j['resolution'] as num?)?.toInt() ?? 3600;
     final pts = <PricePoint>[
       for (final p in (j['points'] as List? ?? const []))
         if (p is List && p.length >= 2 && p[1] is num)
           PricePoint(DateTime.fromMillisecondsSinceEpoch((p[0] as num).toInt() * 1000), res, (p[1] as num).toDouble()),
     ]..sort((a, b) => a.start.compareTo(b.start));
-    return PriceSeries('${j['zone'] ?? ''}', pts, source: '${j['source'] ?? ''}', license: '${j['license'] ?? ''}');
+    return PriceSeries(
+      '${j['zone'] ?? ''}',
+      pts,
+      source: '${j['source'] ?? ''}',
+      license: '${j['license'] ?? ''}',
+      fetched: fetched,
+      stale: stale,
+    );
   }
 }
 
@@ -147,16 +157,77 @@ class PriceService {
     });
   }
 
+  /// Optional persistent copy of the last good answer per zone (set in main.dart); used when
+  /// the price server is unreachable or answers 5xx, so the tile keeps showing prices.
+  static Future<String?> Function()? loadStore;
+  static Future<void> Function(String json)? saveStore;
+
   Future<PriceSeries> _fetch(String zone) async {
-    final r = await _client
-        .get(Uri.parse('$server/v1/prices?zone=${Uri.encodeQueryComponent(zone)}'))
-        .timeout(const Duration(seconds: 15));
-    if (r.statusCode != 200) {
-      throw PriceException(r.statusCode == 400 ? 'unknown_zone' : 'HTTP ${r.statusCode}');
+    Object? last;
+    for (var attempt = 0; attempt < 2; attempt++) {
+      if (attempt > 0) await Future<void>.delayed(retryDelay);
+      try {
+        final r = await _client
+            .get(Uri.parse('$server/v1/prices?zone=${Uri.encodeQueryComponent(zone)}'))
+            .timeout(const Duration(seconds: 15));
+        if (r.statusCode == 400) throw PriceException('unknown_zone');
+        if (r.statusCode != 200) {
+          last = PriceException('HTTP ${r.statusCode}');
+          if (r.statusCode >= 500 || r.statusCode == 429) continue;
+          break;
+        }
+        final body = utf8.decode(r.bodyBytes);
+        final s = PriceSeries.fromJson(jsonDecode(body) as Map<String, dynamic>);
+        _cache[zone] = s;
+        _persist(zone, body);
+        return s;
+      } on PriceException {
+        rethrow;
+      } catch (e) {
+        last = e;
+      }
     }
-    final s = PriceSeries.fromJson(jsonDecode(utf8.decode(r.bodyBytes)) as Map<String, dynamic>);
-    _cache[zone] = s;
-    return s;
+    // Fall back to the last good prices (memory, then disk), marked stale.
+    final c = _cache[zone];
+    if (c != null && c.points.isNotEmpty) {
+      return PriceSeries(c.zone, c.points, source: c.source, license: c.license, fetched: c.fetched, stale: true);
+    }
+    final disk = await _fromStore(zone);
+    if (disk != null) {
+      _cache[zone] = disk;
+      return disk;
+    }
+    throw last is PriceException ? last : PriceException('$last');
+  }
+
+  static Duration retryDelay = const Duration(seconds: 2);
+
+  Future<void> _persist(String zone, String body) async {
+    final save = saveStore;
+    if (save == null) return;
+    try {
+      final m = <String, dynamic>{};
+      final old = await loadStore?.call();
+      if (old != null) m.addAll(jsonDecode(old) as Map<String, dynamic>);
+      m[zone] = {'at': DateTime.now().millisecondsSinceEpoch, 'body': body};
+      await save(jsonEncode(m));
+    } catch (_) {}
+  }
+
+  Future<PriceSeries?> _fromStore(String zone) async {
+    try {
+      final raw = await loadStore?.call();
+      if (raw == null) return null;
+      final e = (jsonDecode(raw) as Map<String, dynamic>)[zone];
+      if (e is! Map) return null;
+      return PriceSeries.fromJson(
+        jsonDecode(e['body'] as String) as Map<String, dynamic>,
+        fetched: DateTime.fromMillisecondsSinceEpoch((e['at'] as num).toInt()),
+        stale: true,
+      );
+    } catch (_) {
+      return null;
+    }
   }
 
   void put(PriceSeries s) => _cache[s.zone] = s;

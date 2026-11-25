@@ -1,3 +1,5 @@
+import '../state/net_health.dart';
+import 'add_sheet.dart';
 import 'tile_grid.dart';
 import 'tile_status.dart';
 
@@ -38,6 +40,13 @@ class ControlView extends StatelessWidget {
         title: Text(single ? groups.first.name : tx(context, 'Koti', 'Home')),
         actions: [
           const RemoteStatusChip(),
+          if (!st.viewLocked && showAppBarAdd(context))
+            IconButton(
+              key: const ValueKey('appbar-add'),
+              tooltip: tx(context, 'Lisää', 'Add'),
+              icon: const Icon(Icons.add),
+              onPressed: () => showAddSheet(context, dashboard: groups.isEmpty ? null : groups.last),
+            ),
           if (st.viewLocked)
             Padding(
               padding: const EdgeInsets.only(right: 4),
@@ -50,45 +59,66 @@ class ControlView extends StatelessWidget {
           const SizedBox(width: 8),
         ],
       ),
+      floatingActionButton: st.viewLocked
+          ? null
+          : FloatingActionButton.extended(
+              key: const ValueKey('add-fab'),
+              onPressed: () => showAddSheet(context, dashboard: groups.isEmpty ? null : groups.last),
+              icon: const Icon(Icons.add),
+              label: Text(tx(context, 'Lisää', 'Add')),
+            ),
       body: Column(
         children: [
           const UpdateBanner(),
           const OfflineBanner(),
           const NoAccountBanner(),
           Expanded(
-            child: LayoutBuilder(
-              builder: (context, box) {
-                final g = tileGridFor(box.maxWidth, AppScope.of(context).config.tileDensity);
-                final gap = g.gap;
-                return ListView(
-                  padding: EdgeInsets.fromLTRB(gap, 6, gap, 32),
-                  children: [
-                    for (final d in groups) ...[
-                      if (!single)
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(4, 14, 4, 10),
-                          child: Text(
-                            d.name,
-                            key: ValueKey('group-${d.id}'),
-                            style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                      Wrap(
-                        spacing: gap,
-                        runSpacing: gap,
-                        children: [
-                          for (final t in d.tiles)
-                            SizedBox(
-                              width: g.width(t.colSpan),
-                              height: g.height(t.rowSpan),
-                              child: TileWidget(key: ValueKey('cv-${t.id}'), tile: t, control: true),
+            child: ListenableBuilder(
+              listenable: NetHealth.instance,
+              builder: (context, _) => LayoutBuilder(
+                builder: (context, box) {
+                  final g = tileGridFor(box.maxWidth, AppScope.of(context).config.tileDensity);
+                  final gap = g.gap;
+                  return ListView(
+                    padding: EdgeInsets.fromLTRB(gap, 6, gap, st.viewLocked ? 32 : 96),
+                    children: [
+                      for (final d in groups) ...[
+                        if (!single)
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(4, 14, 4, 10),
+                            child: Text(
+                              d.name,
+                              key: ValueKey('group-${d.id}'),
+                              style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
                             ),
-                        ],
-                      ),
+                          ),
+                        Wrap(
+                          spacing: gap,
+                          runSpacing: gap,
+                          children: [
+                            for (final t in d.tiles)
+                              if (!st.config.hideAwayTiles || awayLanConnection(st, t) == null)
+                                SizedBox(
+                                  width: g.width(t.colSpan),
+                                  height: g.height(t.rowSpan),
+                                  child: TileWidget(key: ValueKey('cv-${t.id}'), tile: t, control: true),
+                                ),
+                            if (!st.viewLocked && d == groups.last)
+                              SizedBox(
+                                width: g.width(1),
+                                height: g.height(1),
+                                child: AddPlaceholderTile(
+                                  key: const ValueKey('add-placeholder'),
+                                  onTap: () => showAddSheet(context, dashboard: d),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ],
                     ],
-                  ],
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         ],

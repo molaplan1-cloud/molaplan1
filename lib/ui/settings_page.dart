@@ -134,7 +134,22 @@ class _SettingsPageState extends State<SettingsPage> {
                 selected: {st.config.tileDensity},
                 onSelectionChanged: (v) => st.setTileDensity(v.first),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 12),
+              SwitchListTile(
+                key: const ValueKey('settings-hide-away'),
+                contentPadding: EdgeInsets.zero,
+                title: Text(tx(context, 'Piilota etänä toimimattomat', 'Hide tiles that don\'t work remotely')),
+                subtitle: Text(
+                  tx(
+                    context,
+                    'Kotiverkon ulkopuolella vain kotiverkossa toimivat ruudut piilotetaan. Oletuksena ne näkyvät harmaina paikallaan.',
+                    'Away from home, tiles that only work on the home network are hidden. By default they stay in place, greyed out.',
+                  ),
+                ),
+                value: st.config.hideAwayTiles,
+                onChanged: st.setHideAwayTiles,
+              ),
+              const SizedBox(height: 8),
               SwitchListTile(
                 key: const ValueKey('settings-advanced'),
                 contentPadding: EdgeInsets.zero,

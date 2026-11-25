@@ -224,6 +224,121 @@ class AppLocalizationsEn extends AppLocalizations {
   String get se78754330c => 'power';
 
   @override
+  String get s1a4eab1f51 => '°C';
+
+  @override
+  String get s9e731440d8 => '%';
+
+  @override
+  String get s77c638e731 => '%';
+
+  @override
+  String get s96abb7f975 => '';
+
+  @override
+  String get s91e5760e43 => '';
+
+  @override
+  String get s2f76c2abd3 => '';
+
+  @override
+  String get sc2b99541c7 => 'Switches and relays';
+
+  @override
+  String get sd85dbd8e5e => 'Lights and dimmers';
+
+  @override
+  String get s38935a3c66 => 'Covers and rollers';
+
+  @override
+  String get s64c6ca7840 => 'Energy meters';
+
+  @override
+  String get s662fecdc8d => 'Sensors';
+
+  @override
+  String get s027fcbe1b6 => 'Switch';
+
+  @override
+  String get sa376ec78ec => 'Light';
+
+  @override
+  String get s6814e463b1 => 'Cover';
+
+  @override
+  String get s477d8b2c95 => 'Total power';
+
+  @override
+  String sdaa374b331(String p0) {
+    return 'Phase $p0';
+  }
+
+  @override
+  String get s32c88e5aa6 => 'Light level';
+
+  @override
+  String get sbb26f2192c => 'Battery';
+
+  @override
+  String get s57b4effa42 => 'Door / window';
+
+  @override
+  String get s66350d8e7a => 'Motion';
+
+  @override
+  String get s29045a726e => 'Flood';
+
+  @override
+  String get s57c2113aee => 'Smoke';
+
+  @override
+  String get se8422f063f => 'Sensor';
+
+  @override
+  String get s609cb4c5f9 => 'on';
+
+  @override
+  String get s356d822497 => 'off';
+
+  @override
+  String get s0b2f7d7c80 => 'open';
+
+  @override
+  String get s7009587b85 => 'closed';
+
+  @override
+  String get s3b35de231e => 'motion';
+
+  @override
+  String get s3dfa789b85 => 'ALARM';
+
+  @override
+  String get sd9b6de0a6a => 'Other';
+
+  @override
+  String se7520a3990(String p0) {
+    return 'asleep – last $p0';
+  }
+
+  @override
+  String get s3aaacf80d2 => 'offline';
+
+  @override
+  String get see129fb410 => 'brightness';
+
+  @override
+  String get s5d888c1384 => 'true=Open;false=Closed';
+
+  @override
+  String get sd74ad36c31 => 'true=Motion;false=No motion';
+
+  @override
+  String get sfa12d7fdd7 => 'true=LEAK!;false=Dry';
+
+  @override
+  String get s1f18c0f400 => 'true=SMOKE!;false=OK';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -242,12 +357,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s4dbb677293 => 'unreachable';
 
   @override
-  String get s609cb4c5f9 => 'on';
-
-  @override
-  String get s356d822497 => 'off';
-
-  @override
   String get sf50732e8e8 => 'dimmable';
 
   @override
@@ -256,10 +365,136 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get see129fb410 => 'brightness';
+  String get sceabe202da => 'camera_';
 
   @override
-  String get sceabe202da => 'camera_';
+  String get s834e3e8c5d => 'Apple';
+
+  @override
+  String get s11d8d321df => 'Apple';
+
+  @override
+  String get sceefb34afd => 'Apple';
+
+  @override
+  String get s24a447c14c => 'Apple';
+
+  @override
+  String get s14418a4f88 => 'Apple';
+
+  @override
+  String get saab3e952a6 => 'Apple';
+
+  @override
+  String get s7fbbfbf469 => 'Apple';
+
+  @override
+  String get s045b27e316 => 'Samsung';
+
+  @override
+  String get s2c0aede81e => 'Samsung';
+
+  @override
+  String get s7bd2005e15 => 'Google';
+
+  @override
+  String get sdcec96b503 => 'Google';
+
+  @override
+  String get s49960d413e => 'Google';
+
+  @override
+  String get s99e5776a78 => 'Google';
+
+  @override
+  String get sea3c963b09 => 'Sonos';
+
+  @override
+  String get s1e7b1fc81c => 'Synology';
+
+  @override
+  String get s7dc8f4cf35 => 'Synology';
+
+  @override
+  String get s161d78d79c => 'QNAP';
+
+  @override
+  String get s2512122220 => 'Brother';
+
+  @override
+  String get s127258a6f4 => 'Epson';
+
+  @override
+  String get s4e31401b4f => 'Canon';
+
+  @override
+  String get s933e21c819 => 'HP';
+
+  @override
+  String get sb309051c1f => 'HP';
+
+  @override
+  String get s6f339c5c37 => 'HP';
+
+  @override
+  String get s5f8734f6e4 => 'HP';
+
+  @override
+  String get sceb247a904 => 'Xiaomi';
+
+  @override
+  String get s10b7b68d6c => 'Huawei';
+
+  @override
+  String get s3692c1d592 => 'LG';
+
+  @override
+  String get se7d945b970 => 'LG';
+
+  @override
+  String get s5a5044b5df => 'Sony';
+
+  @override
+  String get sd92d7da7d5 => 'Sony';
+
+  @override
+  String get saa909391c3 => 'Philips';
+
+  @override
+  String get se39b8c84ab => 'Raspberry Pi';
+
+  @override
+  String get sec8808f414 => 'AVM';
+
+  @override
+  String get s0e225fb918 => 'TP-Link';
+
+  @override
+  String get sb34f35dce5 => 'ASUS';
+
+  @override
+  String get s7ea140809c => 'Netgear';
+
+  @override
+  String get s284be225b7 => 'Ubiquiti';
+
+  @override
+  String get sfbaeb6a17e => 'Ubiquiti';
+
+  @override
+  String get sa24e9ce91d => 'MikroTik';
+
+  @override
+  String get sa1b725d397 => 'Espressif';
+
+  @override
+  String get sdf96423738 => 'Amazon';
+
+  @override
+  String get sf253859589 => 'Amazon';
+
+  @override
+  String get sec4d80656d => 'Roku';
 
   @override
   String sb9964cfb3b(String p0) {
@@ -303,9 +538,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'Usually not needed. If nothing is found: Shelly app → device → settings → Device information → Device ID. Separate several with commas.';
 
   @override
-  String get s3aaacf80d2 => 'offline';
-
-  @override
   String get s252ebed5af => 'Shelly Cloud';
 
   @override
@@ -336,9 +568,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s73824fc3d0 =>
       'Press the action button on the bottom of the Dirigera hub once now. Wait here.';
-
-  @override
-  String get sa376ec78ec => 'Light';
 
   @override
   String get sda8d9bf1cd => 'Plug';
@@ -423,6 +652,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s5b44cbe9c0 => 'Home';
+
+  @override
+  String get s5a40f12b6a => 'Add';
 
   @override
   String get s58aaa6dade => 'The view is locked';
@@ -992,16 +1224,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s9aa9bc9679 => 'Device answered but has no climate entity.';
 
   @override
-  String get s5a40f12b6a => 'Add';
-
-  @override
-  String get s7aa295f82d => 'Not at home – switch ›';
-
-  @override
-  String get sdc74e0c0e7 => 'Not on home network – switch to remote ›';
-
-  @override
   String get s3a5c21004e => 'Offline';
+
+  @override
+  String get sbc7a87e591 => 'Could not get prices – retrying';
+
+  @override
+  String get s3f0837ec84 => 'Could not get the weather – retrying';
 
   @override
   String get s68cbe596f8 => 'Sign-in expired';
@@ -1280,10 +1509,73 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s13e301a66e => 'Unknown device';
 
   @override
+  String get sddb2c2cb2b => 'Phone';
+
+  @override
+  String get s16cd267576 => 'Tablet';
+
+  @override
+  String get sec4679ec39 => 'Computer';
+
+  @override
+  String get s798f9a0558 => 'Printer';
+
+  @override
+  String get s06109b8e5c => 'TV / media player';
+
+  @override
+  String get sc4655d321e => 'Speaker';
+
+  @override
+  String get sa9f2f85b3e => 'Router';
+
+  @override
+  String get sf8360dcd74 => 'Network storage';
+
+  @override
+  String get s8e21b6f258 => 'Smart device';
+
+  @override
+  String get sb38b582dab => 'Home bridge';
+
+  @override
+  String get sdf66171e91 => 'This device';
+
+  @override
+  String get s76a76a654e => 'iPhone hotspot';
+
+  @override
+  String get s15d4ca1672 => 'Phone hotspot';
+
+  @override
+  String get sd54522fe39 => 'Router / hotspot';
+
+  @override
   String get s23f4820db7 => 'not controllable yet';
 
   @override
   String get saae59a3865 => 'via home bridge';
+
+  @override
+  String get sdccd6e7f24 => 'Model';
+
+  @override
+  String get s891a4b434e => ')\'}';
+
+  @override
+  String get s43aba09687 => 'Ports';
+
+  @override
+  String get scee3511db6 => 'Sources';
+
+  @override
+  String get sbc46a05125 => 'Name the device';
+
+  @override
+  String get s1d5ed84aed => 'Remembered on this device.';
+
+  @override
+  String get s59622d792b => 'Rename';
 
   @override
   String get s1169d2d093 => 'Find devices';
@@ -1314,12 +1606,34 @@ class AppLocalizationsEn extends AppLocalizations {
       'You are away: the home bridge searched your home network.';
 
   @override
-  String sc81d032be0(String p0) {
-    return '$p0 unknown devices';
+  String sf16a25c313(String p0) {
+    return 'Other devices on the network ($p0)';
   }
 
   @override
-  String get s7f3081821b => 'Molaplan cannot control these.';
+  String get s9e8430c37b =>
+      'Molaplan does not control these. iPhones show their name only while awake.';
+
+  @override
+  String get s3c98732a8c => 'Gauge';
+
+  @override
+  String get s6f29aeb685 => 'Trend';
+
+  @override
+  String get s3298699c1a => 'Gauge + trend';
+
+  @override
+  String get sed593f53ed => 'Value';
+
+  @override
+  String get s9027c88cb7 => 'Collecting data…';
+
+  @override
+  String get se38a9bb2ed => 'Last';
+
+  @override
+  String get s049d71f971 => 'last';
 
   @override
   String get s55d52c5ae1 => 'This device is not on Wi-Fi';
@@ -1595,6 +1909,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sac4debdb9c => 'Pick what goes on the home view and name them.';
 
   @override
+  String get sfe5661e401 => 'Select none';
+
+  @override
+  String s2618555da0(String p0) {
+    return 'Select all ($p0)';
+  }
+
+  @override
   String get s86c3f92546 => 'Also add brightness / power';
 
   @override
@@ -1826,6 +2148,72 @@ class AppLocalizationsEn extends AppLocalizations {
       'No live video. Check that you are on the home network and RTSP is on in the camera.';
 
   @override
+  String get s8e574c3313 => 'Power';
+
+  @override
+  String get sa9360bdda1 => 'Fan';
+
+  @override
+  String get sc7d02fbe84 => 'Heat pump';
+
+  @override
+  String get s8d06ee5308 => 'Alarm';
+
+  @override
+  String get sfb63e3c23f => 'Lock';
+
+  @override
+  String get s2f42d90475 => 'Water';
+
+  @override
+  String get sf2d10dd213 => 'Electricity / power';
+
+  @override
+  String get s291ca127d6 => 'Garage';
+
+  @override
+  String get sb543af1c63 => 'Door';
+
+  @override
+  String get s60b1079d6c => 'Window';
+
+  @override
+  String get s66ce56ca38 => 'Start';
+
+  @override
+  String get s0ab3a44562 => 'Timer';
+
+  @override
+  String get s3044a10005 => 'Network';
+
+  @override
+  String get s1f67139f55 => 'Sauna / heating';
+
+  @override
+  String get sf21fd72396 => 'Outlet';
+
+  @override
+  String get s7783fe5fca => 'Favourite';
+
+  @override
+  String get sb2fa876c32 => 'Brightness';
+
+  @override
+  String get s912ea5d2ec => 'Send';
+
+  @override
+  String get se223375393 => 'List';
+
+  @override
+  String get sfb0b971c01 => 'Swing';
+
+  @override
+  String get see42f2d999 => 'Remote';
+
+  @override
+  String get s9126bf24a0 => 'Sun';
+
+  @override
   String get s306729fe62 => 'No prices';
 
   @override
@@ -1841,16 +2229,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s5fc5085143 => 'Cost';
 
   @override
+  String get s2b2118a93b => 'Old data';
+
+  @override
   String get sb730159a01 => 'Price now';
 
   @override
-  String get sbc8fb68b5d => 'Cheapest today';
+  String get s68fcfcfed1 => 'Cheapest hour today';
 
   @override
   String get s86ff059f5e => 'Average today';
 
   @override
-  String get se3d8d53b4b => 'Priciest today';
+  String get s7b911d48c6 => 'Priciest hour today';
 
   @override
   String get s29dbf49d92 => 'Instant cost';
@@ -1866,6 +2257,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s5f131c3ec4 => 'Usage';
+
+  @override
+  String get s039bb374fe => 'Figures are hourly averages';
 
   @override
   String get sa5e6b1e0e3 => 'Tomorrow after ~14:00';
@@ -1990,6 +2384,26 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s0a972aa85e =>
       'Passwords and tokens are stored in the device\'s secure storage.';
+
+  @override
+  String get sc51b1e0dc0 => 'What do you want to add?';
+
+  @override
+  String get s67584c9abf => 'Device';
+
+  @override
+  String get s38f5b2ef26 =>
+      'Shelly, Sonoff, Hue, camera, heat pump… Searches your home network automatically.';
+
+  @override
+  String get s3b56b2cb8d => 'Tile';
+
+  @override
+  String get sfc846c4cc5 =>
+      'Electricity price, weather, camera, gauge, notification or command – no new device needed.';
+
+  @override
+  String get s147f47be4c => 'Add a tile';
 
   @override
   String get s229f981388 => 'Home bridge on';
@@ -2163,9 +2577,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get sb38b582dab => 'Home bridge';
-
-  @override
   String get se2e2af02ac =>
       'The home bridge is a device that stays on at home, e.g. an old tablet or a PC. When you are away, your phone\'s commands go encrypted through it to your devices.';
 
@@ -2273,13 +2684,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scf37cbeda8 => 'Icon';
 
   @override
-  String get sa444aab286 => 'Automatic';
-
-  @override
   String get sfeab9bd26f => 'Width';
 
   @override
   String get s58be670598 => 'Height';
+
+  @override
+  String get sd7314e8237 => 'Display';
+
+  @override
+  String get s1c72b8c56a => 'Trend length';
+
+  @override
+  String get s6bb0c0c7e3 => 'Gauge minimum';
+
+  @override
+  String get sa444aab286 => 'Automatic';
+
+  @override
+  String get sbf29caff87 => 'Gauge maximum';
 
   @override
   String get sea30815e6a =>
@@ -2583,9 +3006,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s0789f5f14f => 'DASHBOARDS';
 
   @override
-  String get s59622d792b => 'Rename';
-
-  @override
   String get sfb3e3c456c => 'Delete dashboard';
 
   @override
@@ -2600,9 +3020,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s4229fb4103 => 'Add your first device';
-
-  @override
-  String get s147f47be4c => 'Add a tile';
 
   @override
   String get sf67e0d5752 => 'Delete tile?';
@@ -2810,6 +3227,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sa6212aaeb4 => 'Location';
 
   @override
+  String get s12c2f8e6e4 => 'Home network only';
+
+  @override
+  String s5f7c464e6d(String p0) {
+    return 'at $p0';
+  }
+
+  @override
+  String s21b64ae0a7(String p0) {
+    return '$p0 only works on the home network. The tile returns to normal by itself when you are home again.';
+  }
+
+  @override
+  String get s6b1a8249de => 'Last state';
+
+  @override
+  String get s56650a18d5 => 'Make it work remotely ›';
+
+  @override
   String get sa0d8c62e5a => 'No command configured';
 
   @override
@@ -2824,9 +3260,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s10bf4eab8e =>
       'Stored encrypted on this device only. By default the PIN is not stored.';
-
-  @override
-  String get s912ea5d2ec => 'Send';
 
   @override
   String get s856418521a => 'No commands configured';
@@ -2879,9 +3312,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sa4c0eeea02 => 'Heat pumps and AC';
 
   @override
-  String get s662fecdc8d => 'Sensors';
-
-  @override
   String get sa8dbf04ad3 => 'Binary sensors';
 
   @override
@@ -2889,9 +3319,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s487bf00fc7 => 'Locks';
-
-  @override
-  String get s8d06ee5308 => 'Alarm';
 
   @override
   String get s88ac47e6d1 => 'Cameras';
@@ -3089,6 +3516,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s8382da3467 => 'Normal';
 
   @override
+  String get s7c1cd8314e => 'Hide tiles that don\'t work remotely';
+
+  @override
+  String get sa0cbbafb4e =>
+      'Away from home, tiles that only work on the home network are hidden. By default they stay in place, greyed out.';
+
+  @override
   String get s21f870dbc2 =>
       'Shows technical settings: connections (HTTP, MQTT, Modbus…), payloads, JSON paths and tile sources. Most people don\'t need these.';
 
@@ -3246,7 +3680,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s64f4d1e11a => 'Set the home location';
 
   @override
-  String get s8ff5c58a5d => 'No weather forecast';
+  String get sbf7cc3de9a => 'Try now';
 
   @override
   String get s1becc05ea1 => 'locked=Locked;unlocked=Unlocked;jammed=JAMMED';
@@ -3984,9 +4418,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s7fcea114f0 => 'What does it control?';
 
   @override
-  String get sdccd6e7f24 => 'Model';
-
-  @override
   String get s864ba0233b =>
       'Newer (Plus, Pro, Gen3) = Plus / Pro / Gen2+. Old Shelly 1, 2.5, Plug S = Gen1.';
 
@@ -4088,9 +4519,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s05e2aaa15c => 'Starts with climate.';
-
-  @override
-  String get sc7d02fbe84 => 'Heat pump';
 
   @override
   String get se699281c85 => 'Heat pump (MQTT)';
@@ -4431,9 +4859,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get seab2c72485 => 'Fan (0 = auto)';
-
-  @override
-  String get sfb0b971c01 => 'Swing';
 
   @override
   String s3a38b97f7b(String p0) {

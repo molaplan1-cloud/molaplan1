@@ -228,6 +228,121 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se78754330c => 'potencia';
 
   @override
+  String get s1a4eab1f51 => '°C';
+
+  @override
+  String get s9e731440d8 => '%';
+
+  @override
+  String get s77c638e731 => '%';
+
+  @override
+  String get s96abb7f975 => '';
+
+  @override
+  String get s91e5760e43 => '';
+
+  @override
+  String get s2f76c2abd3 => '';
+
+  @override
+  String get sc2b99541c7 => 'Interruptores y relés';
+
+  @override
+  String get sd85dbd8e5e => 'Luces y reguladores';
+
+  @override
+  String get s38935a3c66 => 'Cortinas y persianas';
+
+  @override
+  String get s64c6ca7840 => 'Medidores de energía';
+
+  @override
+  String get s662fecdc8d => 'Sensores';
+
+  @override
+  String get s027fcbe1b6 => 'Cambio';
+
+  @override
+  String get sa376ec78ec => 'Luz';
+
+  @override
+  String get s6814e463b1 => 'Cubierta';
+
+  @override
+  String get s477d8b2c95 => 'Potencia total';
+
+  @override
+  String sdaa374b331(String p0) {
+    return 'Fase $p0';
+  }
+
+  @override
+  String get s32c88e5aa6 => 'Nivel de luz';
+
+  @override
+  String get sbb26f2192c => 'Batería';
+
+  @override
+  String get s57b4effa42 => 'Puerta / ventana';
+
+  @override
+  String get s66350d8e7a => 'Movimiento';
+
+  @override
+  String get s29045a726e => 'Fuga de agua';
+
+  @override
+  String get s57c2113aee => 'Humo';
+
+  @override
+  String get se8422f063f => 'Sensor';
+
+  @override
+  String get s609cb4c5f9 => 'encendido';
+
+  @override
+  String get s356d822497 => 'apagado';
+
+  @override
+  String get s0b2f7d7c80 => 'abierto';
+
+  @override
+  String get s7009587b85 => 'cerrado';
+
+  @override
+  String get s3b35de231e => 'moción';
+
+  @override
+  String get s3dfa789b85 => 'ALARM';
+
+  @override
+  String get sd9b6de0a6a => 'Otros';
+
+  @override
+  String se7520a3990(String p0) {
+    return 'durmiendo – último $p0';
+  }
+
+  @override
+  String get s3aaacf80d2 => 'sin conexión';
+
+  @override
+  String get see129fb410 => 'brillo';
+
+  @override
+  String get s5d888c1384 => 'true=Open;false=Closed';
+
+  @override
+  String get sd74ad36c31 => 'true=Motion;false=No motion';
+
+  @override
+  String get sfa12d7fdd7 => 'true=LEAK!;false=Dry';
+
+  @override
+  String get s1f18c0f400 => 'true=SMOKE!;false=OK';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -246,12 +361,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s4dbb677293 => 'inalcanzable';
 
   @override
-  String get s609cb4c5f9 => 'encendido';
-
-  @override
-  String get s356d822497 => 'apagado';
-
-  @override
   String get sf50732e8e8 => 'dimmable';
 
   @override
@@ -260,10 +369,136 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get see129fb410 => 'brillo';
+  String get sceabe202da => 'camera_';
 
   @override
-  String get sceabe202da => 'camera_';
+  String get s834e3e8c5d => 'Apple';
+
+  @override
+  String get s11d8d321df => 'Apple';
+
+  @override
+  String get sceefb34afd => 'Apple';
+
+  @override
+  String get s24a447c14c => 'Apple';
+
+  @override
+  String get s14418a4f88 => 'Apple';
+
+  @override
+  String get saab3e952a6 => 'Apple';
+
+  @override
+  String get s7fbbfbf469 => 'Apple';
+
+  @override
+  String get s045b27e316 => 'Samsung';
+
+  @override
+  String get s2c0aede81e => 'Samsung';
+
+  @override
+  String get s7bd2005e15 => 'Google';
+
+  @override
+  String get sdcec96b503 => 'Google';
+
+  @override
+  String get s49960d413e => 'Google';
+
+  @override
+  String get s99e5776a78 => 'Google';
+
+  @override
+  String get sea3c963b09 => 'Sonos';
+
+  @override
+  String get s1e7b1fc81c => 'Sinología';
+
+  @override
+  String get s7dc8f4cf35 => 'Sinología';
+
+  @override
+  String get s161d78d79c => 'QNAP';
+
+  @override
+  String get s2512122220 => 'Hermano';
+
+  @override
+  String get s127258a6f4 => 'Epson';
+
+  @override
+  String get s4e31401b4f => 'Canon';
+
+  @override
+  String get s933e21c819 => 'HP';
+
+  @override
+  String get sb309051c1f => 'HP';
+
+  @override
+  String get s6f339c5c37 => 'HP';
+
+  @override
+  String get s5f8734f6e4 => 'HP';
+
+  @override
+  String get sceb247a904 => 'Xiaomi';
+
+  @override
+  String get s10b7b68d6c => 'Huawei';
+
+  @override
+  String get s3692c1d592 => 'LG';
+
+  @override
+  String get se7d945b970 => 'LG';
+
+  @override
+  String get s5a5044b5df => 'Sony';
+
+  @override
+  String get sd92d7da7d5 => 'Sony';
+
+  @override
+  String get saa909391c3 => 'Philips';
+
+  @override
+  String get se39b8c84ab => 'Raspberry Pi';
+
+  @override
+  String get sec8808f414 => 'AVM';
+
+  @override
+  String get s0e225fb918 => 'TP-Link';
+
+  @override
+  String get sb34f35dce5 => 'ASUS';
+
+  @override
+  String get s7ea140809c => 'Netgear';
+
+  @override
+  String get s284be225b7 => 'Ubiquiti';
+
+  @override
+  String get sfbaeb6a17e => 'Ubiquiti';
+
+  @override
+  String get sa24e9ce91d => 'MikroTik';
+
+  @override
+  String get sa1b725d397 => 'Espressif';
+
+  @override
+  String get sdf96423738 => 'Amazon';
+
+  @override
+  String get sf253859589 => 'Amazon';
+
+  @override
+  String get sec4d80656d => 'Roku';
 
   @override
   String sb9964cfb3b(String p0) {
@@ -307,9 +542,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'Normalmente no es necesario. Si no se encuentra nada: Aplicación Shelly → dispositivo → Ajustes → Información del dispositivo → ID del dispositivo. Separar varios con comas.';
 
   @override
-  String get s3aaacf80d2 => 'sin conexión';
-
-  @override
   String get s252ebed5af => 'Shelly Cloud';
 
   @override
@@ -340,9 +572,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s73824fc3d0 =>
       'Presione el botón de acción en la parte inferior del centro de Dirigera una vez ahora.';
-
-  @override
-  String get sa376ec78ec => 'Luz';
 
   @override
   String get sda8d9bf1cd => 'Enchufe';
@@ -427,6 +656,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s5b44cbe9c0 => 'Casa';
+
+  @override
+  String get s5a40f12b6a => 'Añadir';
 
   @override
   String get s58aaa6dade => 'La vista está cerrada';
@@ -1006,16 +1238,13 @@ class AppLocalizationsEs extends AppLocalizations {
       'El dispositivo respondió pero no tiene una entidad climática.';
 
   @override
-  String get s5a40f12b6a => 'Añadir';
-
-  @override
-  String get s7aa295f82d => 'Fuera de casa – cambiar ›';
-
-  @override
-  String get sdc74e0c0e7 => 'Fuera de la red de casa – cambiar a remoto ›';
-
-  @override
   String get s3a5c21004e => 'Sin conexión';
+
+  @override
+  String get sbc7a87e591 => 'No podía conseguir precios – retrying';
+
+  @override
+  String get s3f0837ec84 => 'No pude conseguir el tiempo – retrying';
 
   @override
   String get s68cbe596f8 => 'La sesión ha caducado';
@@ -1298,10 +1527,73 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s13e301a66e => 'Dispositivo desconocido';
 
   @override
+  String get sddb2c2cb2b => 'Teléfono';
+
+  @override
+  String get s16cd267576 => 'Tableta';
+
+  @override
+  String get sec4679ec39 => 'Ordenador';
+
+  @override
+  String get s798f9a0558 => 'Impresora';
+
+  @override
+  String get s06109b8e5c => 'TV / reproductor';
+
+  @override
+  String get sc4655d321e => 'Altavoz';
+
+  @override
+  String get sa9f2f85b3e => 'Router';
+
+  @override
+  String get sf8360dcd74 => 'Almacenamiento en red';
+
+  @override
+  String get s8e21b6f258 => 'Dispositivo inteligente';
+
+  @override
+  String get sb38b582dab => 'Puente de casa';
+
+  @override
+  String get sdf66171e91 => 'Este dispositivo';
+
+  @override
+  String get s76a76a654e => 'Punto de acceso del iPhone';
+
+  @override
+  String get s15d4ca1672 => 'Punto de acceso del teléfono';
+
+  @override
+  String get sd54522fe39 => 'Router / punto de acceso';
+
+  @override
   String get s23f4820db7 => 'no controlable todavía';
 
   @override
   String get saae59a3865 => 'via casa puente';
+
+  @override
+  String get sdccd6e7f24 => 'Modelo';
+
+  @override
+  String get s891a4b434e => ')\'}';
+
+  @override
+  String get s43aba09687 => 'Puertos';
+
+  @override
+  String get scee3511db6 => 'Fuentes';
+
+  @override
+  String get sbc46a05125 => 'Nombrar el dispositivo';
+
+  @override
+  String get s1d5ed84aed => 'Se recuerda en este dispositivo.';
+
+  @override
+  String get s59622d792b => 'Renombrar';
 
   @override
   String get s1169d2d093 => 'Buscar dispositivos';
@@ -1333,12 +1625,34 @@ class AppLocalizationsEs extends AppLocalizations {
       'Usted está lejos: el puente de la casa registró su red de la casa.';
 
   @override
-  String sc81d032be0(String p0) {
-    return '$p0 dispositivos desconocidos';
+  String sf16a25c313(String p0) {
+    return 'Otros dispositivos en la red ($p0)';
   }
 
   @override
-  String get s7f3081821b => 'Molaplan no puede controlar estos.';
+  String get s9e8430c37b =>
+      'Molaplan no controla estos. Los iPhones muestran su nombre sólo mientras están despiertos.';
+
+  @override
+  String get s3c98732a8c => 'Indicador';
+
+  @override
+  String get s6f29aeb685 => 'Tendencia';
+
+  @override
+  String get s3298699c1a => 'Indicador + tendencia';
+
+  @override
+  String get sed593f53ed => 'Valor';
+
+  @override
+  String get s9027c88cb7 => 'Recopilar datos...';
+
+  @override
+  String get se38a9bb2ed => 'El último';
+
+  @override
+  String get s049d71f971 => 'el último';
 
   @override
   String get s55d52c5ae1 => 'Este dispositivo no está en Wi-Fi';
@@ -1616,6 +1930,14 @@ class AppLocalizationsEs extends AppLocalizations {
       'Escoge lo que pasa en la vista de casa y llámalos.';
 
   @override
+  String get sfe5661e401 => 'No seleccionar ninguno';
+
+  @override
+  String s2618555da0(String p0) {
+    return 'Seleccione todo ($p0)';
+  }
+
+  @override
   String get s86c3f92546 => 'También añadir brillo / poder';
 
   @override
@@ -1848,6 +2170,72 @@ class AppLocalizationsEs extends AppLocalizations {
       'No hay video en vivo. Compruebe que usted está en la red de la casa y RTSP está en la cámara.';
 
   @override
+  String get s8e574c3313 => 'Potencia';
+
+  @override
+  String get sa9360bdda1 => 'Ventilador';
+
+  @override
+  String get sc7d02fbe84 => 'Bomba de calor';
+
+  @override
+  String get s8d06ee5308 => 'Alarma';
+
+  @override
+  String get sfb63e3c23f => 'Cerradura';
+
+  @override
+  String get s2f42d90475 => 'Agua';
+
+  @override
+  String get sf2d10dd213 => 'Electricidad / potencia';
+
+  @override
+  String get s291ca127d6 => 'Garaje';
+
+  @override
+  String get sb543af1c63 => 'Puerta';
+
+  @override
+  String get s60b1079d6c => 'Ventana';
+
+  @override
+  String get s66ce56ca38 => 'Comienzo';
+
+  @override
+  String get s0ab3a44562 => 'Timer';
+
+  @override
+  String get s3044a10005 => 'Red';
+
+  @override
+  String get s1f67139f55 => 'Sauna / calefacción';
+
+  @override
+  String get sf21fd72396 => 'Outlet';
+
+  @override
+  String get s7783fe5fca => 'Favorito';
+
+  @override
+  String get sb2fa876c32 => 'Brillante';
+
+  @override
+  String get s912ea5d2ec => 'Enviar';
+
+  @override
+  String get se223375393 => 'Lista';
+
+  @override
+  String get sfb0b971c01 => 'Oscilación';
+
+  @override
+  String get see42f2d999 => 'Remoto';
+
+  @override
+  String get s9126bf24a0 => 'Sol';
+
+  @override
   String get s306729fe62 => 'No hay precios';
 
   @override
@@ -1863,16 +2251,19 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s5fc5085143 => 'Coste';
 
   @override
+  String get s2b2118a93b => 'Datos antiguos';
+
+  @override
   String get sb730159a01 => 'Precio ahora';
 
   @override
-  String get sbc8fb68b5d => 'Más barato hoy';
+  String get s68fcfcfed1 => 'Hora más barata hoy';
 
   @override
   String get s86ff059f5e => 'Precio medio hoy';
 
   @override
-  String get se3d8d53b4b => 'Más caro hoy';
+  String get s7b911d48c6 => 'Hora más cara hoy';
 
   @override
   String get s29dbf49d92 => 'Coste instantáneo';
@@ -1888,6 +2279,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s5f131c3ec4 => 'Consumo';
+
+  @override
+  String get s039bb374fe => 'Las cifras son medias horarias';
 
   @override
   String get sa5e6b1e0e3 => 'Mañana después de ~14:00';
@@ -2012,6 +2406,26 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s0a972aa85e =>
       'Las contraseñas y las fichas se almacenan en el almacenamiento seguro del dispositivo.';
+
+  @override
+  String get sc51b1e0dc0 => '¿Qué quieres añadir?';
+
+  @override
+  String get s67584c9abf => 'Dispositivo';
+
+  @override
+  String get s38f5b2ef26 =>
+      'Shelly, Sonoff, Hue, cámara, bomba de calor... Busca tu red de inicio automáticamente.';
+
+  @override
+  String get s3b56b2cb8d => 'Tarjeta';
+
+  @override
+  String get sfc846c4cc5 =>
+      'Precio de electricidad, tiempo, cámara, calibre, notificación o comando – ningún nuevo dispositivo necesario.';
+
+  @override
+  String get s147f47be4c => 'Añadir tarjeta';
 
   @override
   String get s229f981388 => 'Puente de casa en';
@@ -2188,9 +2602,6 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get sb38b582dab => 'Puente de casa';
-
-  @override
   String get se2e2af02ac =>
       'El puente casero es un dispositivo que se mantiene en casa, por ejemplo una vieja tableta o un PC. Cuando usted está lejos, los comandos de su teléfono se encriptan a través de él a sus dispositivos.';
 
@@ -2298,13 +2709,25 @@ class AppLocalizationsEs extends AppLocalizations {
   String get scf37cbeda8 => 'Icono';
 
   @override
-  String get sa444aab286 => 'Automático';
-
-  @override
   String get sfeab9bd26f => 'Width';
 
   @override
   String get s58be670598 => 'Altura';
+
+  @override
+  String get sd7314e8237 => 'Visualización';
+
+  @override
+  String get s1c72b8c56a => 'Longitud de la tendencia';
+
+  @override
+  String get s6bb0c0c7e3 => 'Monto mínimo';
+
+  @override
+  String get sa444aab286 => 'Automático';
+
+  @override
+  String get sbf29caff87 => 'Montaje máximo';
 
   @override
   String get sea30815e6a =>
@@ -2609,9 +3032,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s0789f5f14f => 'DASHBOARDS';
 
   @override
-  String get s59622d792b => 'Renombrar';
-
-  @override
   String get sfb3e3c456c => 'Suprímase el tablero';
 
   @override
@@ -2626,9 +3046,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s4229fb4103 => 'Añade tu primer dispositivo';
-
-  @override
-  String get s147f47be4c => 'Añadir tarjeta';
 
   @override
   String get sf67e0d5752 => '¿Eliminar la tarjeta?';
@@ -2837,6 +3254,25 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sa6212aaeb4 => 'Ubicación';
 
   @override
+  String get s12c2f8e6e4 => 'Red de hogar solamente';
+
+  @override
+  String s5f7c464e6d(String p0) {
+    return 'a $p0';
+  }
+
+  @override
+  String s21b64ae0a7(String p0) {
+    return '$p0 sólo funciona en la red de la casa. La tarjeta regresa a la normalidad por sí misma cuando usted está en casa de nuevo.';
+  }
+
+  @override
+  String get s6b1a8249de => 'Último estado';
+
+  @override
+  String get s56650a18d5 => 'Hacer que funcione remotamente ›';
+
+  @override
   String get sa0d8c62e5a => 'No hay ningún comando configurado';
 
   @override
@@ -2851,9 +3287,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s10bf4eab8e =>
       'Almacenado encriptado en este dispositivo solamente. Por defecto el PIN no se almacena.';
-
-  @override
-  String get s912ea5d2ec => 'Enviar';
 
   @override
   String get s856418521a => 'No hay comandos configurados';
@@ -2906,9 +3339,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sa4c0eeea02 => 'Bombas de calor y A/A';
 
   @override
-  String get s662fecdc8d => 'Sensores';
-
-  @override
   String get sa8dbf04ad3 => 'Sensores binarios';
 
   @override
@@ -2916,9 +3346,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s487bf00fc7 => 'Cierre';
-
-  @override
-  String get s8d06ee5308 => 'Alarma';
 
   @override
   String get s88ac47e6d1 => 'Cámaras';
@@ -3117,6 +3544,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s8382da3467 => 'Normal';
 
   @override
+  String get s7c1cd8314e => 'Ocultar tarjetas que no funcionan remotamente';
+
+  @override
+  String get sa0cbbafb4e =>
+      'Lejos de casa, las tarjetas que sólo funcionan en la red de la casa están ocultas. Por defecto se quedan en el lugar, grisados.';
+
+  @override
   String get s21f870dbc2 =>
       'Muestra configuración técnica: conexiones (HTTP, MQTT, Modbus...), cargas de pago, caminos JSON y fuentes de baldosas. La mayoría de la gente no necesita estas.';
 
@@ -3277,7 +3711,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s64f4d1e11a => 'Indica la ubicación de casa';
 
   @override
-  String get s8ff5c58a5d => 'No hay pronóstico del tiempo';
+  String get sbf7cc3de9a => 'Pruebe ahora';
 
   @override
   String get s1becc05ea1 => 'locked=Cerrado;unlocked=Abierto;jammed=ATASCADO';
@@ -4017,9 +4451,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s7fcea114f0 => '¿Qué controla?';
 
   @override
-  String get sdccd6e7f24 => 'Modelo';
-
-  @override
   String get s864ba0233b =>
       'Más reciente (Plus, Pro, Gen3) = Plus / Pro / Gen2+. Old Shelly 1, 2.5, Plug S = Gen1.';
 
@@ -4124,9 +4555,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s05e2aaa15c => 'Empieza con el clima.';
-
-  @override
-  String get sc7d02fbe84 => 'Bomba de calor';
 
   @override
   String get se699281c85 => 'Bomba de calor (MQTT)';
@@ -4473,9 +4901,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get seab2c72485 => 'Fan (0 = auto)';
-
-  @override
-  String get sfb0b971c01 => 'Oscilación';
 
   @override
   String s3a38b97f7b(String p0) {

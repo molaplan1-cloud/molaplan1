@@ -116,24 +116,37 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
       groups.putIfAbsent(byRoom ? e.areaName : null, () => []).add(e);
     }
     var count = 0;
+    // Entities without an area go to the view the user came from (or 'Koti') – never to a new
+    // integration-named view (t138u).
+    final home =
+        widget.dashboard ??
+        st.config.dashboards.where((x) => x.name == tx(context, 'Koti', 'Home')).firstOrNull ??
+        st.config.dashboards.first;
+    final created = <Dashboard>[];
     for (final g in groups.entries) {
-      Dashboard? d = widget.dashboard;
+      Dashboard? d = home;
       if (g.key != null) {
         d = st.config.dashboards.where((x) => x.name.toLowerCase() == g.key!.toLowerCase()).firstOrNull;
         if (d == null) {
-          final only = st.config.dashboards.length == 1 && st.config.dashboards.first.tiles.isEmpty;
+          final only =
+              st.config.dashboards.length == 1 && st.config.dashboards.first.tiles.isEmpty && !groups.containsKey(null);
           if (only) {
             // The empty default view becomes the first room.
             d = st.config.dashboards.first;
             await st.renameDashboard(d, g.key!);
           } else {
             d = await st.addDashboard(g.key!);
+            created.add(d);
           }
         }
       }
-      final tiles = [for (final e in g.value) ...haTilesFor(e, widget.connection.id, lang, cameraConnId: cam?.id)];
+      final tiles = haTilesForPicked(g.value, widget.connection.id, lang, cameraConnId: cam?.id);
       count += tiles.length;
       await st.applyTemplate(TemplateResult([?cam], tiles), into: d);
+    }
+    // Never leave an empty auto-created view behind.
+    for (final d in created.where((d) => d.tiles.isEmpty)) {
+      await st.deleteDashboard(d);
     }
     if (!mounted) return;
     showSnack(context, tx(context, '$count ruutua lisätty', '$count tiles added'));

@@ -1,6 +1,6 @@
 /// What a tile says when its read fails: the real device problem in a short readable chip,
 /// a quiet offline state when the whole device is offline (one banner says it), or
-/// "Ei kotiverkossa – vaihda etäyhteyteen ›" for LAN devices while away from home.
+/// for LAN devices while away from home the tile itself turns grey ("Vain kotiverkossa", t131u).
 library;
 
 import 'package:material_ui/material_ui.dart';
@@ -11,6 +11,7 @@ import '../devices/shelly.dart';
 import '../drivers/registry.dart';
 import '../drivers/driver.dart';
 import '../models/models.dart';
+import '../state/app_state.dart';
 import '../state/net_health.dart';
 import 'app_scope.dart';
 import 'remote_pages.dart';
@@ -27,16 +28,20 @@ TileIssue tileIssue(BuildContext context, ConnectionConfig? c, String err, NetHe
   final k = classifyError(err);
   final host = c == null ? '' : connectionHost(c.settings);
   final local = isLanHost(host);
-  if (c != null && h.awayFromLan(host)) {
-    return TileIssue(
-      TileIssueKind.awayFromLan,
-      narrow
-          ? tx(context, 'Ei kotiverkossa – vaihda ›', 'Not at home – switch ›')
-          : tx(context, 'Ei kotiverkossa – vaihda etäyhteyteen ›', 'Not on home network – switch to remote ›'),
-    );
-  }
+  // LAN devices while away are shown by the greyed "Vain kotiverkossa" tile state (t131u),
+  // not by an error chip.
+  if (c != null && h.awayFromLan(host)) return TileIssue(TileIssueKind.awayFromLan, '');
   if (!local && (h.offline || k == ErrorKind.remoteNoInternet)) {
     return TileIssue(TileIssueKind.offline, tx(context, 'Ei yhteyttä', 'Offline'));
+  }
+  // Price / weather are services, not devices: never "device" wording.
+  if (isServiceConnection(c)) {
+    return TileIssue(
+      TileIssueKind.offline,
+      c!.type == 'price'
+          ? tx(context, 'Hintoja ei saatu – yritetään uudelleen', 'Could not get prices – retrying')
+          : tx(context, 'Säätietoja ei saatu – yritetään uudelleen', 'Could not get the weather – retrying'),
+    );
   }
   final text = switch (k) {
     ErrorKind.auth => tx(context, 'Kirjautuminen vanhentunut', 'Sign-in expired'),
@@ -59,6 +64,21 @@ TileIssue tileIssue(BuildContext context, ConnectionConfig? c, String err, NetHe
   };
   return TileIssue(TileIssueKind.device, text);
 }
+
+/// The LAN-only connection a tile depends on, if this device is currently away from that LAN
+/// (t131u). Service tiles (price/weather) and cloud connections never count.
+ConnectionConfig? awayLanConnection(AppState st, TileConfig t, [NetHealth? health]) {
+  final h = health ?? NetHealth.instance;
+  final ids = [?t.connectionId, for (final c in t.commands) c.connectionId];
+  for (final id in ids) {
+    final c = st.connection(id);
+    if (c == null || isServiceConnection(c)) continue;
+    if (h.awayFromLan(connectionHost(c.settings))) return c;
+  }
+  return null;
+}
+
+bool isServiceConnection(ConnectionConfig? c) => c != null && (c.type == 'price' || c.type == 'weather');
 
 bool isLanHost(String host) =>
     isPrivateIPv4(host) || host.endsWith('.local') || (host.isNotEmpty && !host.contains('.'));

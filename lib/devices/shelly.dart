@@ -8,6 +8,7 @@ import '../core/fields.dart';
 import '../drivers/driver.dart';
 import '../models/models.dart';
 import 'provider.dart';
+import 'shelly_cloud_model.dart';
 import '../l10n/l10n.dart';
 
 class ShellyChannel {
@@ -453,42 +454,7 @@ class ShellyCloudProvider extends DeviceProvider {
         if (s.contains('429') || s.contains('LIMIT')) throw AddDeviceError(AddProblem.cloudRateLimit, s);
         throw explain(e);
       }
-      final items = <AddItem>[];
-      final meta = <String, Map<String, dynamic>>{};
-      for (final dev in devices.whereType<Map>()) {
-        final id = '${dev['id']}';
-        final chans = (dev['channels'] as List?) ?? const [];
-        final online = dev['online'] != false;
-        for (final ch in chans.whereType<Map>()) {
-          final key = '$id:${ch['channel']}';
-          meta[key] = {
-            'id': id,
-            'channel': ch['channel'],
-            'gen': dev['gen'],
-            'power': ch['power'] != null,
-            'named': ch['name'] != null,
-          };
-          items.add(
-            AddItem(
-              key: key,
-              name: shellyChannelTitle(
-                ch['name'] as String?,
-                dev['name'] as String?,
-                ch['channel'] as int? ?? 0,
-                chans.length,
-                ctx.lang,
-                model: friendlyShellyModel('${dev['model'] ?? ''}', id),
-              ),
-              hasPower: ch['power'] != null,
-              subtitle: [
-                '${dev['model'] ?? ''}'.trim(),
-                if (!online) tr(ctx.lang, 'ei yhteydessä pilveen', 'offline'),
-                if (ch['on'] != null) ch['on'] == true ? tr(ctx.lang, 'päällä', 'on') : tr(ctx.lang, 'pois', 'off'),
-              ].where((s) => s.isNotEmpty).join(' · '),
-            ),
-          );
-        }
-      }
+      final (items, meta) = cloudAddItems(devices, ctx.lang);
       if (items.isEmpty) throw AddDeviceError(AddProblem.nothingToAdd, ids.isEmpty ? 'list' : 'ids');
       return Connected(connection: conn, label: 'Shelly Cloud', items: items, data: {'meta': meta});
     } finally {
@@ -510,40 +476,19 @@ class ShellyCloudProvider extends DeviceProvider {
     for (final it in r.items) {
       if (skip.contains(it.key)) continue;
       final m = meta[it.key]!;
-      final title = (names[it.key]?.trim().isNotEmpty ?? false) ? names[it.key]!.trim() : it.name;
-      final base = {'id': m['id'], 'channel': m['channel']};
-      out.add(
-        TileConfig(
-          type: TileType.toggle,
-          title: title,
-          icon: 'outlet',
-          connectionId: c.id,
-          pollSeconds: 15,
-          read: {...base, 'field': 'output'},
-          onCommand: CommandStep(connectionId: c.id, spec: {...base, 'on': true}),
-          offCommand: CommandStep(connectionId: c.id, spec: {...base, 'on': false}),
+      final named = names[it.key]?.trim().isNotEmpty ?? false;
+      final title = named ? names[it.key]!.trim() : it.name;
+      out.addAll(
+        cloudTiles(
+          c.id,
+          m,
+          title,
+          it.hasPower && power,
+          lang,
+          named: named,
+          siblings: meta.values.where((x) => x['id'] == m['id'] && x['kind'] == 'switch').length,
         ),
       );
-      if (power && it.hasPower) {
-        out.add(
-          TileConfig(
-            type: TileType.value,
-            title: shellyPowerTitle(
-              title,
-              (names[it.key]?.trim().isNotEmpty ?? false) || (meta[it.key]!['named'] == true),
-              m['channel'] as int? ?? 0,
-              meta.values.where((x) => x['id'] == m['id']).length,
-              lang,
-            ),
-            icon: 'bolt',
-            connectionId: c.id,
-            unit: 'W',
-            decimals: 0,
-            pollSeconds: 30,
-            read: {...base, 'field': 'power'},
-          ),
-        );
-      }
     }
     return out;
   }
@@ -597,10 +542,14 @@ Map<String, dynamic> parseCloudDevice(Map dev) {
         ) ??
         clean(cfg['name']),
     'channels': chans,
+    'comps': [for (final c in parseCloudComps(st, cfg)) c.toJson()],
+    'updated': cloudUpdated(st)?.toIso8601String(),
+    'room': clean(dev['room']),
   };
 }
 
-/// Shelly Cloud driver. read spec {id, channel, field: output|power};
+/// Shelly Cloud driver. read spec {id, channel, field: output|power} or {id, comp, field};
+/// send {id, comp, on|pos|brightness} for lights/covers;
 /// send spec {id, channel, on} or {op: list|get, ids}. Keeps to ~1 request/second.
 class ShellyCloudDriver extends Driver {
   ShellyCloudDriver(super.config);
@@ -693,19 +642,58 @@ class ShellyCloudDriver extends Driver {
     return out;
   }
 
+  /// Every device on the account. all_status is the source of truth: the v2 get (names) leaves out
+  /// many kinds (Gen1, BLU, sensors), which used to hide everything but Gen2 switches.
   Future<List<Map<String, dynamic>>> _list({bool settings = false}) async {
-    final v = await _post('/device/all_status', form: const {});
+    final v = await _post('/device/all_status', form: const {'show_info': 'true'});
     final data = v is Map ? v['data'] : null;
     final all = data is Map ? data['devices_status'] : null;
     if (v is Map && v['isok'] == false) throw DriverException('HTTP 401: ${v['errors'] ?? 'auth'}');
     if (all is! Map) return const [];
-    final ids = [
-      for (final e in all.entries)
-        if (e.value is Map)
-          '${(e.value as Map)['_dev_info'] is Map ? ((e.value as Map)['_dev_info'] as Map)['id'] ?? e.key : e.key}'
-              .toLowerCase(),
-    ];
-    return ids.isEmpty ? const [] : _get(ids, settings: settings);
+    final base = <String, Map<String, dynamic>>{};
+    final now = DateTime.now();
+    for (final e in all.entries) {
+      if (e.value is! Map) continue;
+      final st = e.value as Map;
+      final info = st['_dev_info'] is Map ? st['_dev_info'] as Map : const {};
+      final id = '${info['id'] ?? e.key}'.toLowerCase();
+      final p = parseCloudDevice({
+        'id': id,
+        'status': st,
+        'online': info['online'],
+        'code': info['code'],
+        'gen': info['gen'],
+        'name': info['name'],
+      });
+      base[id] = p;
+      _cache[id] = (now, p);
+    }
+    if (settings && base.isNotEmpty) {
+      try {
+        for (final p in await _get(base.keys.toList(), settings: true)) {
+          final b = base[p['id']];
+          base[p['id'] as String] = b == null ? p : mergeCloudDevice(b, p);
+        }
+      } catch (_) {}
+      try {
+        final l = await _post('/interface/device/get_all_lists', form: const {});
+        final d = l is Map && l['data'] is Map ? l['data'] as Map : const {};
+        final rooms = d['rooms'] is Map ? d['rooms'] as Map : const {};
+        final devs = d['devices'] is Map ? d['devices'] as Map : const {};
+        for (final e in devs.entries) {
+          if (e.value is! Map) continue;
+          final k = '${e.key}'.toLowerCase();
+          final id = k.split('_').first;
+          final dev = base[id];
+          if (dev == null) continue;
+          final dv = e.value as Map;
+          final room = rooms['${dv['room_id']}'];
+          if (room is Map && '${room['name'] ?? ''}'.trim().isNotEmpty) dev['room'] ??= '${room['name']}'.trim();
+          if (k == id && '${dv['name'] ?? ''}'.trim().isNotEmpty) dev['name'] ??= '${dv['name']}'.trim();
+        }
+      } catch (_) {}
+    }
+    return base.values.toList();
   }
 
   /// Polls of several tiles within ~1 s are merged into one request.
@@ -717,7 +705,12 @@ class ShellyCloudDriver extends Driver {
       final ids = _pendingIds.toList();
       _pendingIds.clear();
       _batch = null;
-      await _get(ids);
+      List<Map<String, dynamic>> got = const [];
+      try {
+        got = await _get(ids);
+      } catch (_) {}
+      // Devices the v2 API does not serve (Gen1, BLU, sensors) come from all_status.
+      if (got.length < ids.length) await _list();
     });
     await _batch;
     return _cache[id]?.$2;
@@ -766,6 +759,21 @@ class ShellyCloudDriver extends Driver {
     final id = spec.str('id').toLowerCase();
     final dev = await _status(id);
     if (dev == null) throw DriverException('Device $id not found in Shelly Cloud');
+    final compKey = spec.str('comp');
+    if (compKey.isNotEmpty) {
+      final c = ((dev['comps'] as List?) ?? const []).whereType<Map>().where((c) => c['key'] == compKey).firstOrNull;
+      if (c == null) throw DriverException('$compKey not found');
+      final comp = CloudComp.fromJson(c);
+      if (dev['online'] == false && !comp.isSensor) throw DriverException('Shelly Cloud: device offline');
+      if (spec.str('field') == '*') return comp.values; // whole component (colour lights)
+      final v = comp.values[spec.str('field', comp.values.containsKey('value') ? 'value' : 'output')];
+      final at = DateTime.tryParse('${dev['updated'] ?? ''}');
+      // Sleeping battery devices: the last report with its time.
+      if (comp.isSensor && at != null && (dev['online'] == false || DateTime.now().difference(at).inMinutes > 10)) {
+        return TimedValue(v, at);
+      }
+      return v;
+    }
     if (dev['online'] == false) throw DriverException('Shelly Cloud: device offline');
     final ch = (dev['channels'] as List)
         .cast<Map>()
@@ -785,6 +793,12 @@ class ShellyCloudDriver extends Driver {
     }
     spec = _spec(spec);
     final id = spec.str('id').toLowerCase();
+    final compKey = spec.str('comp');
+    if (compKey.isNotEmpty) {
+      await _post(cloudControlPath(compKey), form: cloudControlForm(id, compKey, spec, value));
+      _cache.remove(id);
+      return null;
+    }
     final on = spec.containsKey('on')
         ? spec['on'] == true || spec['on'] == 'true'
         : value == true || value == 1 || value == 'true';
@@ -794,6 +808,22 @@ class ShellyCloudDriver extends Driver {
     );
     _cache.remove(id);
     return null;
+  }
+
+  /// Prefill for power tiles: the switch's last-3-minutes energy from the cloud status.
+  @override
+  Future<List<(DateTime, double)>> history(Map<String, dynamic> spec) async {
+    spec = _spec(spec);
+    if (spec.str('field') != 'power') return const [];
+    final id = spec.str('id').toLowerCase();
+    final dev = await _status(id);
+    final comps = ((dev?['comps'] as List?) ?? const []).whereType<Map>();
+    final ch = spec.str('channel', '0');
+    final key = spec.str('comp');
+    final c = comps
+        .where((c) => key.isNotEmpty ? c['key'] == key : (c['kind'] == 'switch' && '${c['idx']}' == ch))
+        .firstOrNull;
+    return shellyMinuteHistory(c?['values']);
   }
 
   @override

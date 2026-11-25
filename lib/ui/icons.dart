@@ -33,6 +33,42 @@ const tileIcons = <String, IconData>{
   'swing': Icons.swap_vert,
   'remote': Icons.settings_remote_outlined,
   'sun': Icons.wb_sunny_outlined,
+  'battery': Icons.battery_std_outlined,
+};
+
+/// Names shown in the icon picker (fi, en).
+const tileIconLabels = <String, (String, String)>{
+  'lightbulb': ('Valo', 'Light'),
+  'power': ('Virta', 'Power'),
+  'thermostat': ('Lämpötila', 'Temperature'),
+  'fan': ('Tuuletin', 'Fan'),
+  'heatpump': ('Lämpöpumppu', 'Heat pump'),
+  'alarm': ('Hälytys', 'Alarm'),
+  'lock': ('Lukko', 'Lock'),
+  'camera': ('Kamera', 'Camera'),
+  'water': ('Vesi', 'Water'),
+  'humidity': ('Kosteus', 'Humidity'),
+  'bolt': ('Sähkö / teho', 'Electricity / power'),
+  'home': ('Koti', 'Home'),
+  'garage': ('Autotalli', 'Garage'),
+  'door': ('Ovi', 'Door'),
+  'window': ('Ikkuna', 'Window'),
+  'sensor': ('Anturi', 'Sensor'),
+  'speed': ('Mittari', 'Gauge'),
+  'play': ('Käynnistä', 'Start'),
+  'timer': ('Ajastin', 'Timer'),
+  'wifi': ('Verkko', 'Network'),
+  'fire': ('Sauna / lämmitys', 'Sauna / heating'),
+  'snow': ('Jäähdytys', 'Cooling'),
+  'outlet': ('Pistorasia', 'Outlet'),
+  'star': ('Suosikki', 'Favourite'),
+  'brightness': ('Kirkkaus', 'Brightness'),
+  'send': ('Lähetä', 'Send'),
+  'list': ('Lista', 'List'),
+  'swing': ('Suuntaus', 'Swing'),
+  'remote': ('Kaukosäädin', 'Remote'),
+  'sun': ('Aurinko', 'Sun'),
+  'battery': ('Akku', 'Battery'),
 };
 
 IconData iconFor(TileConfig t) {

@@ -58,6 +58,27 @@ bool deviceMatchesTemplate(FoundDevice d, String templateId) {
 
 const _lock = MethodChannel('molaplan/multicast');
 
+const _txtServices = {
+  '_home-assistant._tcp',
+  '_device-info._tcp',
+  '_airplay._tcp',
+  '_raop._tcp',
+  '_googlecast._tcp',
+  '_ipp._tcp',
+  '_printer._tcp',
+};
+
+/// This device's name and the default gateway (Android; null fields elsewhere).
+Future<Map<String, Object?>> nativeNetInfo() async {
+  if (!Platform.isAndroid) return const {};
+  try {
+    final m = await _lock.invokeMethod<Map>('netInfo');
+    return {for (final e in (m ?? const {}).entries) '${e.key}': e.value};
+  } catch (_) {
+    return const {};
+  }
+}
+
 // Android's WifiManager.MulticastLock is not reference counted here, so nested users
 // (the network scan around mDNS) count in Dart.
 var _lockDepth = 0;
@@ -113,6 +134,7 @@ Future<RawDatagramSocket> _bind(
 Future<(List<FoundDevice>, String?)> discoverDevices({
   List<String> services = const ['_esphomelib._tcp', '_shelly._tcp', '_home-assistant._tcp', '_http._tcp'],
   Duration timeout = const Duration(seconds: 4),
+  void Function(FoundDevice d, Map<String, String> txt)? onRecord,
 }) async {
   final found = <String, FoundDevice>{};
   final client = MDnsClient(rawDatagramSocketFactory: _bind);
@@ -125,6 +147,46 @@ Future<(List<FoundDevice>, String?)> discoverDevices({
             .lookup<PtrResourceRecord>(ResourceRecordQuery.serverPointer('$svc.local'), timeout: timeout)
             .toList();
         for (final ptr in ptrs) {
+          final txt = <String, String>{};
+          if (onRecord != null && _txtServices.contains(svc)) {
+            final t = await client
+                .lookup<TxtResourceRecord>(
+                  ResourceRecordQuery.text(ptr.domainName),
+                  timeout: const Duration(seconds: 1),
+                )
+                .toList()
+                .catchError((_) => <TxtResourceRecord>[]);
+            for (final r in t) {
+              for (final kv in r.text.split('\n')) {
+                final i = kv.indexOf('=');
+                if (i > 0) txt[kv.substring(0, i).toLowerCase()] = kv.substring(i + 1);
+              }
+            }
+          }
+          // _device-info has no SRV: the instance is the host name ("Ennin-iPhone").
+          if (onRecord != null && svc == '_device-info._tcp') {
+            final inst = ptr.domainName.split('._').first;
+            final ips = await client
+                .lookup<IPAddressResourceRecord>(
+                  ResourceRecordQuery.addressIPv4('$inst.local'),
+                  timeout: const Duration(seconds: 1),
+                )
+                .toList()
+                .catchError((_) => <IPAddressResourceRecord>[]);
+            if (ips.isNotEmpty) {
+              onRecord(
+                FoundDevice(
+                  name: ptr.domainName,
+                  service: svc,
+                  host: '$inst.local',
+                  ip: ips.first.address.address,
+                  port: 0,
+                ),
+                txt,
+              );
+            }
+            continue;
+          }
           final srvs = await client
               .lookup<SrvResourceRecord>(
                 ResourceRecordQuery.service(ptr.domainName),
@@ -145,6 +207,7 @@ Future<(List<FoundDevice>, String?)> discoverDevices({
               ip: ips.isEmpty ? null : ips.first.address.address,
               port: srv.port,
             );
+            onRecord?.call(d, txt);
             // Prefer the more specific service if a device advertises several.
             final key = d.ip ?? d.host;
             if (!found.containsKey(key) || found[key]!.service == '_http._tcp') found[key] = d;

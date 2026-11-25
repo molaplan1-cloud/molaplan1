@@ -8,6 +8,7 @@ import '../core/fields.dart';
 import '../core/template.dart';
 import 'digest_auth.dart';
 import 'driver.dart';
+import 'hue_hub.dart';
 
 http.Client makeHttpClient(bool allowSelfSigned, {Duration? timeout}) {
   final c = HttpClient();
@@ -38,7 +39,8 @@ Map<String, String> authHeaders(Map<String, dynamic> s) {
 class HttpDriver extends Driver {
   HttpDriver(super.config);
   http.Client? _client;
-  http.Client get client => _client ??= makeHttpClient(s.flag('allowSelfSigned'), timeout: _timeout);
+  static http.Client? testClient; // tests
+  http.Client get client => testClient ?? (_client ??= makeHttpClient(s.flag('allowSelfSigned'), timeout: _timeout));
   Duration get _timeout => Duration(seconds: s.integer('timeoutSec', 10));
 
   static const descriptor = DriverDescriptor(
@@ -108,8 +110,13 @@ class HttpDriver extends Driver {
   Future<http.Response> _request(Map<String, dynamic> spec, Object? value, String defMethod) async {
     final method = spec.str('method', defMethod).toUpperCase();
     // {{token}} in a path = the connection's secret token (e.g. the Hue bridge username).
-    final url = joinUrl(s.str('baseUrl'), applyTemplate(spec.str('path').replaceAll('{{token}}', s.str('token')), value));
-    final uri = url.hasQuery ? '${url.path.isEmpty ? '/' : url.path}?${url.query}' : (url.path.isEmpty ? '/' : url.path);
+    final url = joinUrl(
+      s.str('baseUrl'),
+      applyTemplate(spec.str('path').replaceAll('{{token}}', s.str('token')), value),
+    );
+    final uri = url.hasQuery
+        ? '${url.path.isEmpty ? '/' : url.path}?${url.query}'
+        : (url.path.isEmpty ? '/' : url.path);
     http.Request build() {
       final req = http.Request(method, url);
       req.headers.addAll(authHeaders(s));
@@ -137,7 +144,8 @@ class HttpDriver extends Driver {
         http.Response.fromStream(await client.send(build()).timeout(_timeout)).timeout(_timeout);
     var resp = await go();
     // Digest (Shelly Gen2+): answer the challenge once (also when the nonce went stale).
-    final wantsDigest = s.str('auth') == 'digest' || (s.str('password').isNotEmpty && s.str('auth', 'none') != 'bearer');
+    final wantsDigest =
+        s.str('auth') == 'digest' || (s.str('password').isNotEmpty && s.str('auth', 'none') != 'bearer');
     if (resp.statusCode == 401 && wantsDigest) {
       final ch = DigestChallenge.parse(resp.headers['www-authenticate']);
       if (ch != null) {
@@ -154,14 +162,45 @@ class HttpDriver extends Driver {
 
   String _short(String s) => s.length > 120 ? '${s.substring(0, 120)}…' : s;
 
+  /// Philips Hue bridge: one shared hub (bulk reads, event stream, command queue) – t141u.
+  HueHub? _hue;
+  static HueSse? hueSse; // tests
+
+  bool _isHue(Map<String, dynamic> spec) => s.str('token').isNotEmpty && isHuePath(spec.str('path'));
+  HueHub get hue => _hue ??= HueHub(
+    base: s.str('baseUrl').replaceAll(RegExp(r'/+$'), ''),
+    token: s.str('token'),
+    client: client,
+    sse: hueSse,
+  );
+
+  @override
+  Stream<Object?>? watch(Map<String, dynamic> spec) => _isHue(spec) ? hue.watch(spec) : null;
+
   @override
   Future<Object?> read(Map<String, dynamic> spec) async {
+    if (_isHue(spec)) return hue.read(spec);
     final r = await _request(spec, null, 'GET');
     return extractValue(r.body, spec);
   }
 
+  /// Shelly power readings (/rpc/Switch.GetStatus, /rpc/PM1.GetStatus, Gen1 /meter/N): the
+  /// device's own last-3-minutes energy, so a new trend does not start as a flat line.
+  @override
+  Future<List<(DateTime, double)>> history(Map<String, dynamic> spec) async {
+    final path = '${spec['path'] ?? ''}';
+    final jp = '${spec['jsonPath'] ?? ''}';
+    final shellyPower =
+        (path.contains('/rpc/Switch.GetStatus') || path.contains('/rpc/PM1.GetStatus')) && jp == 'apower' ||
+        RegExp(r'^/meter/\d+$').hasMatch(path) && (jp == 'power' || jp.isEmpty);
+    if (!shellyPower) return const [];
+    final r = await _request({...spec, 'method': 'GET'}, null, 'GET');
+    return shellyMinuteHistory(jsonDecode(r.body));
+  }
+
   @override
   Future<Object?> send(Map<String, dynamic> spec, {Object? value}) async {
+    if (_isHue(spec) && spec.str('method', 'POST').toUpperCase() == 'PUT') return hue.send(spec, value);
     final r = await _request(spec, value, 'POST');
     return r.body;
   }
@@ -183,16 +222,20 @@ class HttpDriver extends Driver {
     );
     final code = r.statusCode;
     if (code == 401 || code == 403) {
-      throw DriverException(dtx(
-        'HTTP $code: laite vastasi, mutta ei hyväksynyt kirjautumista. Tarkista käyttäjätunnus, salasana tai token. $what',
-        'HTTP $code: the device answered but refused the login. Check username, password or token. $what',
-      ));
+      throw DriverException(
+        dtx(
+          'HTTP $code: laite vastasi, mutta ei hyväksynyt kirjautumista. Tarkista käyttäjätunnus, salasana tai token. $what',
+          'HTTP $code: the device answered but refused the login. Check username, password or token. $what',
+        ),
+      );
     }
     if (code >= 500) {
-      throw DriverException(dtx(
-        'HTTP $code: laite vastasi virheellä (palvelinvirhe). $what',
-        'HTTP $code: the device answered with a server error. $what',
-      ));
+      throw DriverException(
+        dtx(
+          'HTTP $code: laite vastasi virheellä (palvelinvirhe). $what',
+          'HTTP $code: the device answered with a server error. $what',
+        ),
+      );
     }
     if (code == 404) {
       return dtx(
@@ -204,5 +247,8 @@ class HttpDriver extends Driver {
   }
 
   @override
-  Future<void> dispose() async => _client?.close();
+  Future<void> dispose() async {
+    _hue?.close();
+    _client?.close();
+  }
 }

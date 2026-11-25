@@ -180,9 +180,10 @@ void main() {
     expect(find.textContaining('Ei nettiyhteyttä', findRichText: true), findsOneWidget);
     expect(find.text('Osoitetta ei löydy'), findsNothing);
     expect(find.byKey(const ValueKey('tile-offline')), findsOneWidget);
-    // Real device problem: short chip. LAN device while on another network: the switch hint.
+    // Real device problem: short chip. LAN device while on another network: greyed in place (t131u).
     expect(find.text('Laite ei vastaa'), findsOneWidget);
-    expect(find.byKey(const ValueKey('tile-away')), findsOneWidget);
+    expect(find.byKey(const ValueKey('tile-away')), findsNothing);
+    expect(find.byKey(const ValueKey('tile-away-label')), findsOneWidget);
     await _shot(tester, 'normal');
 
     // Edit mode: same compact grid, small overlay buttons inside the tile.

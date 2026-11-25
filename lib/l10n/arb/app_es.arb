@@ -215,6 +215,70 @@
  },
  "s4899323b9a": "Potencia",
  "se78754330c": "potencia",
+ "s1a4eab1f51": "°C",
+ "s9e731440d8": "%",
+ "s77c638e731": "%",
+ "s96abb7f975": "",
+ "s91e5760e43": "",
+ "s2f76c2abd3": "",
+ "sc2b99541c7": "Interruptores y relés",
+ "sd85dbd8e5e": "Luces y reguladores",
+ "s38935a3c66": "Cortinas y persianas",
+ "s64c6ca7840": "Medidores de energía",
+ "s662fecdc8d": "Sensores",
+ "s027fcbe1b6": "Cambio",
+ "@s027fcbe1b6": {
+  "x-mt": true
+ },
+ "sa376ec78ec": "Luz",
+ "s6814e463b1": "Cubierta",
+ "@s6814e463b1": {
+  "x-mt": true
+ },
+ "s477d8b2c95": "Potencia total",
+ "sdaa374b331": "Fase {p0}",
+ "@sdaa374b331": {
+  "x-mt": true
+ },
+ "s32c88e5aa6": "Nivel de luz",
+ "sbb26f2192c": "Batería",
+ "s57b4effa42": "Puerta / ventana",
+ "s66350d8e7a": "Movimiento",
+ "s29045a726e": "Fuga de agua",
+ "s57c2113aee": "Humo",
+ "se8422f063f": "Sensor",
+ "@se8422f063f": {
+  "x-mt": true
+ },
+ "s609cb4c5f9": "encendido",
+ "s356d822497": "apagado",
+ "s0b2f7d7c80": "abierto",
+ "@s0b2f7d7c80": {
+  "x-mt": true
+ },
+ "s7009587b85": "cerrado",
+ "@s7009587b85": {
+  "x-mt": true
+ },
+ "s3b35de231e": "moción",
+ "@s3b35de231e": {
+  "x-mt": true
+ },
+ "s3dfa789b85": "ALARM",
+ "sd9b6de0a6a": "Otros",
+ "@sd9b6de0a6a": {
+  "x-mt": true
+ },
+ "se7520a3990": "durmiendo – último {p0}",
+ "@se7520a3990": {
+  "x-mt": true
+ },
+ "s3aaacf80d2": "sin conexión",
+ "see129fb410": "brillo",
+ "s5d888c1384": "true=Open;false=Closed",
+ "sd74ad36c31": "true=Motion;false=No motion",
+ "sfa12d7fdd7": "true=LEAK!;false=Dry",
+ "s1f18c0f400": "true=SMOKE!;false=OK",
  "s0bf7cb1613": "Philips Hue",
  "se17d4e4197": "Puente de Hue y sus luces (también las luces de Zigbee se unieron a él). Pareja con el botón puente.",
  "@se17d4e4197": {
@@ -229,15 +293,154 @@
   "x-mt": true
  },
  "s4dbb677293": "inalcanzable",
- "s609cb4c5f9": "encendido",
- "s356d822497": "apagado",
  "sf50732e8e8": "dimmable",
  "@sf50732e8e8": {
   "x-mt": true
  },
  "s3832b8c729": "toda la habitación",
- "see129fb410": "brillo",
  "sceabe202da": "camera_",
+ "s834e3e8c5d": "Apple",
+ "@s834e3e8c5d": {
+  "x-mt": true
+ },
+ "s11d8d321df": "Apple",
+ "@s11d8d321df": {
+  "x-mt": true
+ },
+ "sceefb34afd": "Apple",
+ "@sceefb34afd": {
+  "x-mt": true
+ },
+ "s24a447c14c": "Apple",
+ "@s24a447c14c": {
+  "x-mt": true
+ },
+ "s14418a4f88": "Apple",
+ "@s14418a4f88": {
+  "x-mt": true
+ },
+ "saab3e952a6": "Apple",
+ "@saab3e952a6": {
+  "x-mt": true
+ },
+ "s7fbbfbf469": "Apple",
+ "@s7fbbfbf469": {
+  "x-mt": true
+ },
+ "s045b27e316": "Samsung",
+ "@s045b27e316": {
+  "x-mt": true
+ },
+ "s2c0aede81e": "Samsung",
+ "@s2c0aede81e": {
+  "x-mt": true
+ },
+ "s7bd2005e15": "Google",
+ "@s7bd2005e15": {
+  "x-mt": true
+ },
+ "sdcec96b503": "Google",
+ "@sdcec96b503": {
+  "x-mt": true
+ },
+ "s49960d413e": "Google",
+ "@s49960d413e": {
+  "x-mt": true
+ },
+ "s99e5776a78": "Google",
+ "@s99e5776a78": {
+  "x-mt": true
+ },
+ "sea3c963b09": "Sonos",
+ "@sea3c963b09": {
+  "x-mt": true
+ },
+ "s1e7b1fc81c": "Sinología",
+ "@s1e7b1fc81c": {
+  "x-mt": true
+ },
+ "s7dc8f4cf35": "Sinología",
+ "@s7dc8f4cf35": {
+  "x-mt": true
+ },
+ "s161d78d79c": "QNAP",
+ "s2512122220": "Hermano",
+ "@s2512122220": {
+  "x-mt": true
+ },
+ "s127258a6f4": "Epson",
+ "@s127258a6f4": {
+  "x-mt": true
+ },
+ "s4e31401b4f": "Canon",
+ "@s4e31401b4f": {
+  "x-mt": true
+ },
+ "s933e21c819": "HP",
+ "sb309051c1f": "HP",
+ "s6f339c5c37": "HP",
+ "s5f8734f6e4": "HP",
+ "sceb247a904": "Xiaomi",
+ "@sceb247a904": {
+  "x-mt": true
+ },
+ "s10b7b68d6c": "Huawei",
+ "@s10b7b68d6c": {
+  "x-mt": true
+ },
+ "s3692c1d592": "LG",
+ "se7d945b970": "LG",
+ "s5a5044b5df": "Sony",
+ "@s5a5044b5df": {
+  "x-mt": true
+ },
+ "sd92d7da7d5": "Sony",
+ "@sd92d7da7d5": {
+  "x-mt": true
+ },
+ "saa909391c3": "Philips",
+ "@saa909391c3": {
+  "x-mt": true
+ },
+ "se39b8c84ab": "Raspberry Pi",
+ "@se39b8c84ab": {
+  "x-mt": true
+ },
+ "sec8808f414": "AVM",
+ "s0e225fb918": "TP-Link",
+ "@s0e225fb918": {
+  "x-mt": true
+ },
+ "sb34f35dce5": "ASUS",
+ "s7ea140809c": "Netgear",
+ "@s7ea140809c": {
+  "x-mt": true
+ },
+ "s284be225b7": "Ubiquiti",
+ "@s284be225b7": {
+  "x-mt": true
+ },
+ "sfbaeb6a17e": "Ubiquiti",
+ "@sfbaeb6a17e": {
+  "x-mt": true
+ },
+ "sa24e9ce91d": "MikroTik",
+ "sa1b725d397": "Espressif",
+ "@sa1b725d397": {
+  "x-mt": true
+ },
+ "sdf96423738": "Amazon",
+ "@sdf96423738": {
+  "x-mt": true
+ },
+ "sf253859589": "Amazon",
+ "@sf253859589": {
+  "x-mt": true
+ },
+ "sec4d80656d": "Roku",
+ "@sec4d80656d": {
+  "x-mt": true
+ },
  "sb9964cfb3b": "Potencia {p0}",
  "sfcb44be1a0": "Shelly",
  "sa6ff717527": "Relés y enchufes: Pro 4PM, Plus 1PM, Plug S, 2.5... encontrado automáticamente, fichas para cada canal.",
@@ -270,12 +473,8 @@
  "@sf30bb5d5e6": {
   "x-mt": true
  },
- "s3aaacf80d2": "sin conexión",
  "s252ebed5af": "Shelly Cloud",
  "s25399cd337": "Servidor",
- "@s25399cd337": {
-  "x-mt": true
- },
  "s246c7a46ff": "Aplicación Shelly → Configuración del usuario → Clave de la nube de autorización → Servidor URI.",
  "@s246c7a46ff": {
   "x-mt": true
@@ -301,7 +500,6 @@
  "@s73824fc3d0": {
   "x-mt": true
  },
- "sa376ec78ec": "Luz",
  "sda8d9bf1cd": "Enchufe",
  "s0185672be7": "El usuario de la cámara (generalmente admin) y la contraseña que se establece al activarla.",
  "@s0185672be7": {
@@ -381,6 +579,7 @@
   "x-mt": true
  },
  "s5b44cbe9c0": "Casa",
+ "s5a40f12b6a": "Añadir",
  "s58aaa6dade": "La vista está cerrada",
  "@s58aaa6dade": {
   "x-mt": true
@@ -958,10 +1157,15 @@
  "@s9aa9bc9679": {
   "x-mt": true
  },
- "s5a40f12b6a": "Añadir",
- "s7aa295f82d": "Fuera de casa – cambiar ›",
- "sdc74e0c0e7": "Fuera de la red de casa – cambiar a remoto ›",
  "s3a5c21004e": "Sin conexión",
+ "sbc7a87e591": "No podía conseguir precios – retrying",
+ "@sbc7a87e591": {
+  "x-mt": true
+ },
+ "s3f0837ec84": "No pude conseguir el tiempo – retrying",
+ "@s3f0837ec84": {
+  "x-mt": true
+ },
  "s68cbe596f8": "La sesión ha caducado",
  "s156aa7eeb3": "El dispositivo no responde",
  "s7abcbf1107": "Servidor no encontrado",
@@ -1130,6 +1334,20 @@
   "x-mt": true
  },
  "s13e301a66e": "Dispositivo desconocido",
+ "sddb2c2cb2b": "Teléfono",
+ "s16cd267576": "Tableta",
+ "sec4679ec39": "Ordenador",
+ "s798f9a0558": "Impresora",
+ "s06109b8e5c": "TV / reproductor",
+ "sc4655d321e": "Altavoz",
+ "sa9f2f85b3e": "Router",
+ "sf8360dcd74": "Almacenamiento en red",
+ "s8e21b6f258": "Dispositivo inteligente",
+ "sb38b582dab": "Puente de casa",
+ "sdf66171e91": "Este dispositivo",
+ "s76a76a654e": "Punto de acceso del iPhone",
+ "s15d4ca1672": "Punto de acceso del teléfono",
+ "sd54522fe39": "Router / punto de acceso",
  "s23f4820db7": "no controlable todavía",
  "@s23f4820db7": {
   "x-mt": true
@@ -1138,6 +1356,19 @@
  "@saae59a3865": {
   "x-mt": true
  },
+ "sdccd6e7f24": "Modelo",
+ "s891a4b434e": "')''}'",
+ "s43aba09687": "Puertos",
+ "@s43aba09687": {
+  "x-mt": true
+ },
+ "scee3511db6": "Fuentes",
+ "@scee3511db6": {
+  "x-mt": true
+ },
+ "sbc46a05125": "Nombrar el dispositivo",
+ "s1d5ed84aed": "Se recuerda en este dispositivo.",
+ "s59622d792b": "Renombrar",
  "s1169d2d093": "Buscar dispositivos",
  "s55b85f29a6": "Búsqueda de su red...",
  "@s55b85f29a6": {
@@ -1164,12 +1395,28 @@
  "@s9a018b8166": {
   "x-mt": true
  },
- "sc81d032be0": "{p0} dispositivos desconocidos",
- "@sc81d032be0": {
+ "sf16a25c313": "Otros dispositivos en la red ({p0})",
+ "@sf16a25c313": {
   "x-mt": true
  },
- "s7f3081821b": "Molaplan no puede controlar estos.",
- "@s7f3081821b": {
+ "s9e8430c37b": "Molaplan no controla estos. Los iPhones muestran su nombre sólo mientras están despiertos.",
+ "@s9e8430c37b": {
+  "x-mt": true
+ },
+ "s3c98732a8c": "Indicador",
+ "s6f29aeb685": "Tendencia",
+ "s3298699c1a": "Indicador + tendencia",
+ "sed593f53ed": "Valor",
+ "s9027c88cb7": "Recopilar datos...",
+ "@s9027c88cb7": {
+  "x-mt": true
+ },
+ "se38a9bb2ed": "El último",
+ "@se38a9bb2ed": {
+  "x-mt": true
+ },
+ "s049d71f971": "el último",
+ "@s049d71f971": {
   "x-mt": true
  },
  "s55d52c5ae1": "Este dispositivo no está en Wi-Fi",
@@ -1443,6 +1690,11 @@
  "@sac4debdb9c": {
   "x-mt": true
  },
+ "sfe5661e401": "No seleccionar ninguno",
+ "s2618555da0": "Seleccione todo ({p0})",
+ "@s2618555da0": {
+  "x-mt": true
+ },
  "s86c3f92546": "También añadir brillo / poder",
  "@s86c3f92546": {
   "x-mt": true
@@ -1648,6 +1900,73 @@
  "@sd55dd196f6": {
   "x-mt": true
  },
+ "s8e574c3313": "Potencia",
+ "sa9360bdda1": "Ventilador",
+ "sc7d02fbe84": "Bomba de calor",
+ "s8d06ee5308": "Alarma",
+ "sfb63e3c23f": "Cerradura",
+ "@sfb63e3c23f": {
+  "x-mt": true
+ },
+ "s2f42d90475": "Agua",
+ "@s2f42d90475": {
+  "x-mt": true
+ },
+ "sf2d10dd213": "Electricidad / potencia",
+ "@sf2d10dd213": {
+  "x-mt": true
+ },
+ "s291ca127d6": "Garaje",
+ "@s291ca127d6": {
+  "x-mt": true
+ },
+ "sb543af1c63": "Puerta",
+ "@sb543af1c63": {
+  "x-mt": true
+ },
+ "s60b1079d6c": "Ventana",
+ "@s60b1079d6c": {
+  "x-mt": true
+ },
+ "s66ce56ca38": "Comienzo",
+ "@s66ce56ca38": {
+  "x-mt": true
+ },
+ "s0ab3a44562": "Timer",
+ "@s0ab3a44562": {
+  "x-mt": true
+ },
+ "s3044a10005": "Red",
+ "@s3044a10005": {
+  "x-mt": true
+ },
+ "s1f67139f55": "Sauna / calefacción",
+ "@s1f67139f55": {
+  "x-mt": true
+ },
+ "sf21fd72396": "Outlet",
+ "@sf21fd72396": {
+  "x-mt": true
+ },
+ "s7783fe5fca": "Favorito",
+ "@s7783fe5fca": {
+  "x-mt": true
+ },
+ "sb2fa876c32": "Brillante",
+ "@sb2fa876c32": {
+  "x-mt": true
+ },
+ "s912ea5d2ec": "Enviar",
+ "se223375393": "Lista",
+ "@se223375393": {
+  "x-mt": true
+ },
+ "sfb0b971c01": "Oscilación",
+ "see42f2d999": "Remoto",
+ "s9126bf24a0": "Sol",
+ "@s9126bf24a0": {
+  "x-mt": true
+ },
  "s306729fe62": "No hay precios",
  "@s306729fe62": {
   "x-mt": true
@@ -1656,10 +1975,14 @@
  "sbfe79d1f5f": "Actualizado",
  "sb68e905fc4": "Consumo (kWh)",
  "s5fc5085143": "Coste",
+ "s2b2118a93b": "Datos antiguos",
+ "@s2b2118a93b": {
+  "x-mt": true
+ },
  "sb730159a01": "Precio ahora",
- "sbc8fb68b5d": "Más barato hoy",
+ "s68fcfcfed1": "Hora más barata hoy",
  "s86ff059f5e": "Precio medio hoy",
- "se3d8d53b4b": "Más caro hoy",
+ "s7b911d48c6": "Hora más cara hoy",
  "s29dbf49d92": "Coste instantáneo",
  "s723c887da6": "min",
  "@s723c887da6": {
@@ -1671,6 +1994,7 @@
   "x-mt": true
  },
  "s5f131c3ec4": "Consumo",
+ "s039bb374fe": "Las cifras son medias horarias",
  "sa5e6b1e0e3": "Mañana después de ~14:00",
  "s62cfd94468": "Horas más baratas por la noche",
  "@s62cfd94468": {
@@ -1779,6 +2103,27 @@
  "@s0a972aa85e": {
   "x-mt": true
  },
+ "sc51b1e0dc0": "¿Qué quieres añadir?",
+ "@sc51b1e0dc0": {
+  "x-mt": true
+ },
+ "s67584c9abf": "Dispositivo",
+ "@s67584c9abf": {
+  "x-mt": true
+ },
+ "s38f5b2ef26": "Shelly, Sonoff, Hue, cámara, bomba de calor... Busca tu red de inicio automáticamente.",
+ "@s38f5b2ef26": {
+  "x-mt": true
+ },
+ "s3b56b2cb8d": "Tarjeta",
+ "@s3b56b2cb8d": {
+  "x-mt": true
+ },
+ "sfc846c4cc5": "Precio de electricidad, tiempo, cámara, calibre, notificación o comando – ningún nuevo dispositivo necesario.",
+ "@sfc846c4cc5": {
+  "x-mt": true
+ },
+ "s147f47be4c": "Añadir tarjeta",
  "s229f981388": "Puente de casa en",
  "@s229f981388": {
   "x-mt": true
@@ -1949,7 +2294,6 @@
  "@s7132345f20": {
   "x-mt": true
  },
- "sb38b582dab": "Puente de casa",
  "se2e2af02ac": "El puente casero es un dispositivo que se mantiene en casa, por ejemplo una vieja tableta o un PC. Cuando usted está lejos, los comandos de su teléfono se encriptan a través de él a sus dispositivos.",
  "@se2e2af02ac": {
   "x-mt": true
@@ -2043,13 +2387,26 @@
  "sa684fd0716": "Editar tarjeta",
  "s8a8673aafe": "Título",
  "scf37cbeda8": "Icono",
- "sa444aab286": "Automático",
  "sfeab9bd26f": "Width",
  "@sfeab9bd26f": {
   "x-mt": true
  },
  "s58be670598": "Altura",
  "@s58be670598": {
+  "x-mt": true
+ },
+ "sd7314e8237": "Visualización",
+ "s1c72b8c56a": "Longitud de la tendencia",
+ "@s1c72b8c56a": {
+  "x-mt": true
+ },
+ "s6bb0c0c7e3": "Monto mínimo",
+ "@s6bb0c0c7e3": {
+  "x-mt": true
+ },
+ "sa444aab286": "Automático",
+ "sbf29caff87": "Montaje máximo",
+ "@sbf29caff87": {
   "x-mt": true
  },
  "sea30815e6a": "Los ajustes de baldosas técnicos aparecen cuando enciende \"Advanced\" en Ajustes.",
@@ -2077,9 +2434,6 @@
   "x-mt": true
  },
  "s5cbdea7f7e": "Visualización",
- "@s5cbdea7f7e": {
-  "x-mt": true
- },
  "se6af4b33df": "Unidad",
  "sd5498697da": "Decimales",
  "@sd5498697da": {
@@ -2352,7 +2706,6 @@
   "x-mt": true
  },
  "s0789f5f14f": "DASHBOARDS",
- "s59622d792b": "Renombrar",
  "sfb3e3c456c": "Suprímase el tablero",
  "@sfb3e3c456c": {
   "x-mt": true
@@ -2364,7 +2717,6 @@
   "x-mt": true
  },
  "s4229fb4103": "Añade tu primer dispositivo",
- "s147f47be4c": "Añadir tarjeta",
  "sf67e0d5752": "¿Eliminar la tarjeta?",
  "s97f46743e0": "Tile \"{p0}\" eliminado",
  "@s97f46743e0": {
@@ -2504,7 +2856,6 @@
  "@s10bf4eab8e": {
   "x-mt": true
  },
- "s912ea5d2ec": "Enviar",
  "s856418521a": "No hay comandos configurados",
  "@s856418521a": {
   "x-mt": true
@@ -2539,10 +2890,6 @@
  "s72a2328ddd": "Luces",
  "sca12be80ca": "Interruptores",
  "sa4c0eeea02": "Bombas de calor y A/A",
- "s662fecdc8d": "Sensores",
- "@s662fecdc8d": {
-  "x-mt": true
- },
  "sa8dbf04ad3": "Sensores binarios",
  "@sa8dbf04ad3": {
   "x-mt": true
@@ -2552,7 +2899,6 @@
  "@s487bf00fc7": {
   "x-mt": true
  },
- "s8d06ee5308": "Alarma",
  "s88ac47e6d1": "Cámaras",
  "@s88ac47e6d1": {
   "x-mt": true
@@ -2880,8 +3226,8 @@
   "x-mt": true
  },
  "s64f4d1e11a": "Indica la ubicación de casa",
- "s8ff5c58a5d": "No hay pronóstico del tiempo",
- "@s8ff5c58a5d": {
+ "sbf7cc3de9a": "Pruebe ahora",
+ "@sbf7cc3de9a": {
   "x-mt": true
  },
  "s1becc05ea1": "locked=Cerrado;unlocked=Abierto;jammed=ATASCADO",
@@ -3622,7 +3968,6 @@
   "x-mt": true
  },
  "s7fcea114f0": "¿Qué controla?",
- "sdccd6e7f24": "Modelo",
  "s864ba0233b": "Más reciente (Plus, Pro, Gen3) = Plus / Pro / Gen2+. Old Shelly 1, 2.5, Plug S = Gen1.",
  "@s864ba0233b": {
   "x-mt": true
@@ -3745,7 +4090,6 @@
  "@s05e2aaa15c": {
   "x-mt": true
  },
- "sc7d02fbe84": "Bomba de calor",
  "se699281c85": "Bomba de calor (MQTT)",
  "@se699281c85": {
   "x-mt": true
@@ -4097,9 +4441,36 @@
  "@seab2c72485": {
   "x-mt": true
  },
- "sfb0b971c01": "Oscilación",
  "s3a38b97f7b": "{p0} – room",
  "@s3a38b97f7b": {
+  "x-mt": true
+ },
+ "s12c2f8e6e4": "Red de hogar solamente",
+ "@s12c2f8e6e4": {
+  "x-mt": true
+ },
+ "s5f7c464e6d": "a {p0}",
+ "@s5f7c464e6d": {
+  "x-mt": true
+ },
+ "s21b64ae0a7": "{p0} sólo funciona en la red de la casa. La tarjeta regresa a la normalidad por sí misma cuando usted está en casa de nuevo.",
+ "@s21b64ae0a7": {
+  "x-mt": true
+ },
+ "s6b1a8249de": "Último estado",
+ "@s6b1a8249de": {
+  "x-mt": true
+ },
+ "s56650a18d5": "Hacer que funcione remotamente ›",
+ "@s56650a18d5": {
+  "x-mt": true
+ },
+ "s7c1cd8314e": "Ocultar tarjetas que no funcionan remotamente",
+ "@s7c1cd8314e": {
+  "x-mt": true
+ },
+ "sa0cbbafb4e": "Lejos de casa, las tarjetas que sólo funcionan en la red de la casa están ocultas. Por defecto se quedan en el lugar, grisados.",
+ "@sa0cbbafb4e": {
   "x-mt": true
  }
 }

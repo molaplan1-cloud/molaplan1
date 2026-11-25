@@ -54,9 +54,29 @@ class NetHealth extends ChangeNotifier {
     }
   }
 
-  /// Something worked: online again (cheap; re-checks only if we thought we were offline).
-  void reportOk() {
-    if (offline) check(force: true);
+  /// Something worked: online again (cheap; re-checks only if we thought we were offline, or
+  /// a LAN device we thought was out of reach answered – we're home again).
+  void reportOk([String? host]) {
+    if (offline || (host != null && awayFromLan(host))) check(force: true);
+  }
+
+  Timer? _lanWatch;
+
+  /// Re-reads only the local addresses every [every] (cheap, no network traffic), so LAN tiles
+  /// grey out / come back by themselves when moving between home Wi-Fi and mobile data.
+  void watchLan({Duration every = const Duration(seconds: 20)}) {
+    _lanWatch?.cancel();
+    _lanWatch = Timer.periodic(every, (_) async {
+      if (_running != null) return;
+      try {
+        final l = await _locals();
+        if (locals != null && !listEquals(l, locals)) {
+          locals = l;
+          notifyListeners();
+          unawaited(check(force: true));
+        }
+      } catch (_) {}
+    });
   }
 
   Future<void> check({bool force = false}) {
@@ -89,11 +109,15 @@ class NetHealth extends ChangeNotifier {
   }
 
   /// Stops the offline re-check timer (tests).
-  void stop() => _retry?.cancel();
+  void stop() {
+    _retry?.cancel();
+    _lanWatch?.cancel();
+  }
 
   @override
   void dispose() {
     _retry?.cancel();
+    _lanWatch?.cancel();
     super.dispose();
   }
 }

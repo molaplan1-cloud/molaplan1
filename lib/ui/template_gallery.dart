@@ -5,6 +5,7 @@ import 'weather_tile.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../core/discovery.dart';
+import '../devices/ha_setup.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
 import '../devices/cameras.dart';
@@ -421,13 +422,24 @@ class TemplateSetupPage extends StatefulWidget {
     this.dashboard,
     this.initialValues,
     this.discover = discoverDevices,
+    this.haProbe = probeHomeAssistant,
+    this.haResolve = resolveHaInstances,
   });
   final DeviceTemplate template;
   final Dashboard? dashboard;
 
   /// Prefilled fields (network scan: address and name).
   final Map<String, dynamic>? initialValues;
-  final Future<(List<FoundDevice>, String?)> Function({List<String> services, Duration timeout}) discover;
+  final Future<(List<FoundDevice>, String?)> Function({
+    List<String> services,
+    Duration timeout,
+    void Function(FoundDevice d, Map<String, String> txt)? onRecord,
+  })
+  discover;
+
+  /// Home Assistant (t132u/t133u): finds the working URL (http/https, self-signed on LAN).
+  final Future<HaProbeResult> Function(String input, String token, {List<String> more}) haProbe;
+  final Future<List<HaInstance>> Function(List<HaInstance> found) haResolve;
 
   @override
   State<TemplateSetupPage> createState() => _TemplateSetupPageState();
@@ -443,6 +455,128 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
   Object? _error;
 
   DeviceTemplate get t => widget.template;
+
+  bool get _isHa => t.connectionType == 'homeassistant';
+
+  /// Other addresses of the same HA (from the search) and the URL already verified.
+  List<String> _haMore = const [];
+  String? _haVerified;
+  String? _haNote;
+
+  /// Resolves the typed address to the URL that answers the HA API. False (with [_error]) if not.
+  Future<bool> _resolveHa() async {
+    final addr = '${values['address'] ?? ''}'.trim();
+    if (addr.isNotEmpty && addr == _haVerified) return true;
+    var token = '${values['token'] ?? ''}'.trim();
+    if (token.isEmpty) {
+      // Heat pump on an already added HA: reuse its token.
+      final ex = AppScope.read(context).config.connections.where((e) => e.type == 'homeassistant').where((e) {
+        final b = '${e.settings['baseUrl']}';
+        return haCandidates(addr).contains(b) || b == addr;
+      }).firstOrNull;
+      if (ex != null) {
+        values['address'] = ex.settings['baseUrl'];
+        _haVerified = '${ex.settings['baseUrl']}';
+        return true;
+      }
+    }
+    try {
+      final r = await widget.haProbe(addr, token, more: [..._haMore, 'homeassistant.local']);
+      if (!mounted) return false;
+      setState(() {
+        final changed = r.baseUrl != addr;
+        values['address'] = r.baseUrl;
+        if (r.selfSigned) values['allowSelfSigned'] = true;
+        _haVerified = r.baseUrl;
+        _haNote = [
+          if (changed) tx(context, 'Osoite: ${r.baseUrl}', 'Address: ${r.baseUrl}'),
+          if (r.selfSigned)
+            tx(
+              context,
+              'Home Assistant käyttää itse allekirjoitettua varmennetta. Se hyväksyttiin, koska osoite on kotiverkossa.',
+              'Home Assistant uses a self-signed certificate. It was accepted because the address is on the home network.',
+            ),
+        ].join('\n');
+        if (_haNote!.isEmpty) _haNote = null;
+        if (changed) _formKey++;
+      });
+      return true;
+    } catch (e) {
+      if (mounted) setState(() => _error = e);
+      return false;
+    }
+  }
+
+  /// "Etsi verkosta" for Home Assistant: one entry per instance (merged by uuid), with the
+  /// address that answers preselected.
+  Future<void> _searchHa() async {
+    setState(() {
+      _searching = true;
+      _error = null;
+    });
+    final seen = <HaSighting>[];
+    final (devices, _) = await widget.discover(
+      services: const ['_home-assistant._tcp'],
+      timeout: const Duration(seconds: 4),
+      onRecord: (d, txt) => seen.add(HaSighting(ip: d.ip, host: d.host, port: d.port, txt: txt)),
+    );
+    for (final d in devices.where((d) => d.service.startsWith('_home-assistant'))) {
+      if (!seen.any((s) => s.ip == d.ip && s.port == d.port)) {
+        seen.add(HaSighting(ip: d.ip, host: d.host, port: d.port));
+      }
+    }
+    final list = await widget.haResolve(groupHaSightings(seen));
+    if (!mounted) return;
+    setState(() => _searching = false);
+    HaInstance? pick;
+    if (list.length == 1 && list.first.best != null) {
+      pick = list.first;
+    } else {
+      pick = await showModalBottomSheet<HaInstance>(
+        context: context,
+        showDragHandle: true,
+        builder: (c) => SafeArea(
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
+                child: Text(
+                  list.isEmpty
+                      ? tx(
+                          c,
+                          'Home Assistantia ei löytynyt automaattisesti. Kirjoita osoite, jolla avaat sen selaimessa (esim. http://192.168.1.20:8123 tai Nabu Casa -osoite).',
+                          'Home Assistant was not found automatically. Type the address you open it with (e.g. http://192.168.1.20:8123 or the Nabu Casa address).',
+                        )
+                      : tx(c, 'Löydetyt Home Assistantit:', 'Found Home Assistants:'),
+                  style: Theme.of(c).textTheme.bodyLarge,
+                ),
+              ),
+              for (final i in list)
+                ListTile(
+                  key: ValueKey('ha-found-${i.key}'),
+                  leading: const Icon(Icons.home_outlined),
+                  title: Text(i.name),
+                  subtitle: Text(i.best ?? i.ordered.first),
+                  onTap: () => Navigator.pop(c, i),
+                ),
+              const SizedBox(height: 12),
+            ],
+          ),
+        ),
+      );
+    }
+    if (pick == null || !mounted) return;
+    final p = pick;
+    setState(() {
+      values['address'] = p.best ?? p.ordered.first;
+      if (p.selfSigned) values['allowSelfSigned'] = true;
+      _haMore = p.ordered;
+      _haVerified = null;
+      _haNote = tx(context, 'Löytyi: ${p.name} – ${values['address']}', 'Found: ${p.name} – ${values['address']}');
+      _formKey++;
+    });
+  }
 
   String? _missing() {
     final lang = AppScope.read(context).lang;
@@ -472,6 +606,11 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
       _ok = null;
       _error = null;
     });
+    if (_isHa && !await _resolveHa()) {
+      if (mounted) setState(() => _testing = false);
+      return;
+    }
+    if (!mounted) return;
     final st = AppScope.read(context);
     final r = t.build(values, st.lang);
     try {
@@ -508,6 +647,7 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
   }
 
   Future<void> _search() async {
+    if (_isHa) return _searchHa();
     setState(() => _searching = true);
     final (devices, err) = await widget.discover(timeout: const Duration(seconds: 4));
     if (!mounted) return;
@@ -567,6 +707,15 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
     if (m != null) {
       showSnack(context, '${tx(context, 'Täytä ensin', 'Fill in first')}: $m', error: true);
       return;
+    }
+    if (_isHa) {
+      setState(() {
+        _testing = true;
+        _error = null;
+      });
+      final ok = await _resolveHa();
+      if (mounted) setState(() => _testing = false);
+      if (!ok || !mounted) return;
     }
     final st = AppScope.read(context);
     final r = t.build(values, st.lang);
@@ -758,6 +907,12 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
                     : const Icon(Icons.network_check),
                 label: Text(tx(context, 'Testaa yhteys', 'Test connection')),
               ),
+              if (_haNote != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  key: const ValueKey('ha-note'),
+                  child: _Banner(icon: Icons.info_outline, color: cs.primary, text: _haNote!),
+                ),
               if (_ok != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 12),

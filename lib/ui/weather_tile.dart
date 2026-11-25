@@ -77,11 +77,24 @@ class _WeatherTileState extends State<WeatherTile> {
     }
   }
 
+  bool _loading = false;
+  Timer? _retry;
+
+  @override
+  void didUpdateWidget(WeatherTile old) {
+    super.didUpdateWidget(old);
+    if (_f == null && !_loading) _load();
+  }
+
+  /// Loads in edit mode too (it used to wait forever there), with an overall timeout and a retry
+  /// every 2 minutes after a failure.
   Future<void> _load() async {
     final home = AppScope.read(context).config.energy.home;
-    if (home == null || widget.editing) return;
+    if (home == null || _loading) return;
+    _loading = true;
+    _retry?.cancel();
     try {
-      final f = await _svc.forecast(home);
+      final f = await _svc.forecast(home).timeout(const Duration(seconds: 20));
       if (mounted) {
         setState(() {
           _f = f;
@@ -90,11 +103,15 @@ class _WeatherTileState extends State<WeatherTile> {
       }
     } catch (e) {
       if (mounted) setState(() => _err = e);
+      _retry = Timer(const Duration(minutes: 2), _load);
+    } finally {
+      _loading = false;
     }
   }
 
   @override
   void dispose() {
+    _retry?.cancel();
     _timer?.cancel();
     super.dispose();
   }
@@ -128,7 +145,27 @@ class _WeatherTileState extends State<WeatherTile> {
       body = Center(
         child: _err == null
             ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2))
-            : Text(tx(context, 'Sääennustetta ei saatu', 'No weather forecast'), style: TextStyle(color: cs.error)),
+            : Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.cloud_off, size: 20, color: cs.onSurfaceVariant),
+                  const SizedBox(height: 4),
+                  Text(
+                    tx(context, 'Säätietoja ei saatu – yritetään uudelleen', 'Could not get the weather – retrying'),
+                    key: const ValueKey('weather-error'),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: text.bodySmall?.copyWith(color: cs.onSurfaceVariant),
+                  ),
+                  if (!widget.editing)
+                    TextButton(
+                      key: const ValueKey('weather-retry'),
+                      onPressed: _load,
+                      child: Text(tx(context, 'Yritä nyt', 'Try now')),
+                    ),
+                ],
+              ),
       );
     } else {
       final hours = f.ahead(now, large ? 25 : 8);

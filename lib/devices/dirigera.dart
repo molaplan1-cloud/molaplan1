@@ -156,30 +156,20 @@ class DirigeraProvider extends DeviceProvider {
         read: {'path': '/devices/${it.key}', 'jsonPath': 'attributes.isOn'},
         onCommand: patch('{"isOn":true}'),
         offCommand: patch('{"isOn":false}'),
+        // t141u: dimmable lights keep brightness on the same tile.
+        commands: [if (it.kind == 'light' && it.hasPower) patch('{"isOn":true,"lightLevel":{{value_int}}}')],
       ));
-      if (power && it.hasPower) {
-        out.add(outlet[it.key] == true
-            ? TileConfig(
-                type: TileType.value,
-                title: '$title – ${tr(lang, 'teho', 'power')}',
-                icon: 'bolt',
-                connectionId: c.id,
-                unit: 'W',
-                decimals: 0,
-                pollSeconds: 10,
-                read: {'path': '/devices/${it.key}', 'jsonPath': 'attributes.currentActivePower'},
-              )
-            : TileConfig(
-                type: TileType.slider,
-                title: '$title – ${tr(lang, 'kirkkaus', 'brightness')}',
-                icon: 'brightness',
-                connectionId: c.id,
-                min: 1,
-                max: 100,
-                unit: '%',
-                read: {'path': '/devices/${it.key}', 'jsonPath': 'attributes.lightLevel'},
-                commands: [patch('{"lightLevel":{{value_int}}}')],
-              ));
+      if (power && it.hasPower && outlet[it.key] == true) {
+        out.add(TileConfig(
+          type: TileType.value,
+          title: '$title – ${tr(lang, 'teho', 'power')}',
+          icon: 'bolt',
+          connectionId: c.id,
+          unit: 'W',
+          decimals: 0,
+          pollSeconds: 10,
+          read: {'path': '/devices/${it.key}', 'jsonPath': 'attributes.currentActivePower'},
+        ));
       }
     }
     return out;

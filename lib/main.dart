@@ -7,6 +7,7 @@ import 'package:flutter_localizations/flutter_localizations.dart' show GlobalWid
 import 'package:material_ui/material_ui.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'prices/prices.dart';
 import 'state/app_state.dart';
 import 'state/storage.dart';
 import 'ui/rtsp_view.dart';
@@ -17,14 +18,19 @@ import 'ui/theme.dart';
 import 'l10n/gen/app_localizations.dart';
 
 Future<void> main() async {
+  final priceStore = PrefsConfigStore('molaplan.prices.v1');
+  PriceService.loadStore = priceStore.load;
+  PriceService.saveStore = priceStore.save;
   WidgetsFlutterBinding.ensureInitialized();
   initVideo();
   // Online? On the home Wi-Fi? (one banner instead of an error on every tile)
   NetHealth.instance.check(force: true);
+  NetHealth.instance.watchLan();
   final state = AppState(
     configStore: PrefsConfigStore(),
     secretStore: SecureSecretStore(),
     energyStore: PrefsConfigStore('molaplan.energy.v1'),
+    historyStore: PrefsConfigStore('molaplan.history.v1'),
     imageDir: () async => Directory('${(await getApplicationSupportDirectory()).path}/tile_images'),
   );
   state.account.autoSync = true; // background sync when signed in

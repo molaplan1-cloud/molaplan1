@@ -163,6 +163,8 @@ class PriceDriver extends Driver {
         final pts = [...today, ...se.day(now, 1)];
         return {
           'now': now.millisecondsSinceEpoch,
+          'fetched': se.fetched.millisecondsSinceEpoch,
+          if (se.stale) 'stale': true,
           'res': se.resolution,
           'unit': 'c/kWh',
           'points': [
@@ -187,9 +189,6 @@ class PriceDriver extends Driver {
     final tomorrow = se.hasTomorrow(now)
         ? dtx('Huominen: kyllä.', 'Tomorrow: yes.')
         : dtx('Huominen: ei vielä (julkaistaan n. klo 14).', 'Tomorrow: not yet (published around 14:00).');
-    return '${dtx(
-      '✓ Hinnat haettu alueelle $zone (${se.points.length} jaksoa, ${se.resolution ~/ 60} min, lähde ${se.source}).',
-      '✓ Prices for $zone (${se.points.length} slots, ${se.resolution ~/ 60} min, source ${se.source}).',
-    )} $tomorrow';
+    return '${dtx('✓ Hinnat haettu alueelle $zone (${se.points.length} jaksoa, ${se.resolution ~/ 60} min, lähde ${se.source}).', '✓ Prices for $zone (${se.points.length} slots, ${se.resolution ~/ 60} min, source ${se.source}).')} $tomorrow';
   }
 }

@@ -42,7 +42,8 @@ void main() {
       // Nothing technical or editable on screen.
       expect(find.byIcon(Icons.edit_outlined), findsNothing);
       expect(find.byIcon(Icons.drag_indicator), findsNothing);
-      expect(find.byType(FloatingActionButton), findsNothing);
+      // The always-visible add button is the only FAB (no edit tools).
+      expect(find.byKey(const ValueKey('add-fab')), findsOneWidget);
       expect(find.byType(Drawer), findsNothing);
       expect(find.text('Yhteydet'), findsNothing);
       // Gear menu -> edit -> done -> back to the control view.
@@ -52,7 +53,10 @@ void main() {
       expect(find.text('Asetukset'), findsOneWidget);
       await tester.tap(find.byKey(const ValueKey('control-edit')));
       await tester.pumpAndSettle();
-      expect(find.byIcon(Icons.drag_indicator), findsWidgets);
+      expect(
+        find.byWidgetPredicate((w) => w.key is ValueKey && '${(w.key! as ValueKey).value}'.startsWith('tile-resize-')),
+        findsWidgets,
+      );
       await tester.tap(find.text('Valmis'));
       await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('control-view')), findsOneWidget);

@@ -32,6 +32,23 @@ class MainActivity : FlutterActivity() {
                     lock?.release()
                     result.success(null)
                 }
+                // Network scan: this device's name and the default gateway.
+                "netInfo" -> {
+                    var gw: String? = null
+                    try {
+                        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as android.net.ConnectivityManager
+                        val lp = cm.getLinkProperties(cm.activeNetwork)
+                        gw = lp?.routes?.firstOrNull { it.isDefaultRoute && it.gateway is java.net.Inet4Address }?.gateway?.hostAddress
+                    } catch (e: Exception) {}
+                    val name = try { Settings.Global.getString(contentResolver, "device_name") } catch (e: Exception) { null }
+                    result.success(mapOf(
+                        "model" to Build.MODEL,
+                        "maker" to Build.MANUFACTURER,
+                        "name" to name,
+                        "gateway" to gw,
+                        "tablet" to (resources.configuration.smallestScreenWidthDp >= 600)
+                    ))
+                }
                 "wifiSettings" -> {
                     startActivity(Intent(Settings.ACTION_WIFI_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
                     result.success(null)

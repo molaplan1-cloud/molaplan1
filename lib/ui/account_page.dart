@@ -14,7 +14,7 @@ String accountErrorText(BuildContext context, Object e) {
       'The password does not match. Type your account password.',
     );
   }
-  if (e is! AccountError) return t('Jokin meni pieleen: $e', 'Something went wrong: $e');
+  if (e is! AccountError) return t('Yhteys ei onnistunut: $e', 'The connection did not work: $e');
   return switch (e.problem) {
     AccountProblem.offline => t(
       'Ei nettiyhteyttä. Tarkista wifi tai mobiilidata ja yritä uudelleen.',

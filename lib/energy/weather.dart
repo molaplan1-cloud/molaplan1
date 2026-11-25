@@ -132,6 +132,15 @@ class WeatherService {
     final key = '${l.lat.toStringAsFixed(2)},${l.lon.toStringAsFixed(2)}';
     final c = _cache[key];
     if (!force && c != null && DateTime.now().difference(c.fetched) < const Duration(minutes: 30)) return c;
+    try {
+      return await _fetch(l, key);
+    } catch (_) {
+      if (c != null) return c; // last forecast beats an error
+      rethrow;
+    }
+  }
+
+  Future<Forecast> _fetch(HomeLocation l, String key) async {
     final r = await _client
         .get(
           Uri.parse(

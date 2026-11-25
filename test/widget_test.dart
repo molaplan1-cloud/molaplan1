@@ -6,7 +6,9 @@ import 'package:molaplan/state/app_state.dart';
 import 'package:molaplan/state/storage.dart';
 
 void main() {
-  testWidgets('empty dashboard with a device (advanced mode): one big add-tile button opens the editor', (tester) async {
+  testWidgets('empty dashboard with a device (advanced mode): one big add-tile button opens the editor', (
+    tester,
+  ) async {
     final st = AppState(configStore: MemoryConfigStore(), secretStore: MemorySecretStore());
     await st.load();
     await st.setOnboardingDone(true);
@@ -75,12 +77,12 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('control-edit')));
     await tester.pump(const Duration(milliseconds: 300));
     expect(find.text('Valmis'), findsOneWidget);
-    expect(find.byIcon(Icons.drag_indicator), findsNWidgets(4));
-
-    // move first tile right
-    await tester.tap(find.byIcon(Icons.chevron_right).first);
-    await tester.pump(const Duration(milliseconds: 300));
-    expect(d.tiles.first.title, 'Tehostus');
+    // No arrow buttons any more: palette + delete + a resize handle per tile.
+    expect(find.byIcon(Icons.chevron_right), findsNothing);
+    expect(find.byIcon(Icons.drag_indicator), findsNothing);
+    expect(find.byKey(ValueKey('tile-delete-${d.tiles.first.id}')), findsOneWidget);
+    final first = d.tiles.first;
+    expect(find.byKey(ValueKey('tile-resize-${first.id}')), findsOneWidget);
 
     await tester.pumpWidget(const SizedBox());
   });

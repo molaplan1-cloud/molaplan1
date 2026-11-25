@@ -1,3 +1,7 @@
+import 'dart:math' as math;
+
+import '../state/net_health.dart';
+
 import 'tile_grid.dart';
 import 'tile_status.dart';
 import 'control_view.dart';
@@ -11,6 +15,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../models/models.dart';
 import 'account_nudge.dart';
+import 'add_sheet.dart';
 import 'app_scope.dart';
 import 'remote_pages.dart';
 import 'connections_page.dart';
@@ -62,7 +67,15 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state != AppLifecycleState.resumed || !mounted) return;
+    if (!mounted) return;
+    if (state == AppLifecycleState.paused) {
+      // Keep the measurement history (trends, last values for offline).
+      unawaited(AppScope.read(context).saveHistory());
+      return;
+    }
+    if (state != AppLifecycleState.resumed) return;
+    // Home Wi-Fi or away? (LAN tiles grey out / come back – t131u.)
+    unawaited(NetHealth.instance.check(force: true));
     final st = AppScope.read(context);
     unawaited(startupUpdateCheck(context));
     unawaited(st.account.syncNow(quiet: true));
@@ -384,9 +397,9 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                 ? null // the empty view has its own big button
                 : FloatingActionButton.extended(
                     key: const ValueKey('home-add-device'),
-                    onPressed: () => ConnectionsPage.addNew(context, dashboard: d),
+                    onPressed: () => showAddSheet(context, dashboard: d),
                     icon: const Icon(Icons.add, size: 28),
-                    label: Text(tx(context, 'Lisää laite', 'Add device'), style: const TextStyle(fontSize: 18)),
+                    label: Text(tx(context, 'Lisää', 'Add'), style: const TextStyle(fontSize: 18)),
                   )),
       body: body,
     );
@@ -405,7 +418,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   }
 }
 
-class _DashboardGrid extends StatelessWidget {
+class _DashboardGrid extends StatefulWidget {
   const _DashboardGrid({
     required this.dashboard,
     required this.editing,
@@ -417,7 +430,58 @@ class _DashboardGrid extends StatelessWidget {
   final VoidCallback onAddTile;
   final VoidCallback onStartEditing;
 
+  @override
+  State<_DashboardGrid> createState() => _DashboardGridState();
+}
+
+class _DashboardGridState extends State<_DashboardGrid> {
   static bool get _desktop => Platform.isWindows || Platform.isLinux || Platform.isMacOS;
+
+  /// While dragging: the live order (tile ids) – the other tiles reflow as you move.
+  List<String>? _order;
+  String? _dragging;
+
+  /// While resizing: (tile id, cols, rows) preview.
+  (String, int, int)? _resize;
+
+  Dashboard get dashboard => widget.dashboard;
+
+  void _hover(String target) {
+    final id = _dragging;
+    if (id == null || id == target) return;
+    final o = _order ?? [for (final t in dashboard.tiles) t.id];
+    final from = o.indexOf(id), to = o.indexOf(target);
+    if (from < 0 || to < 0) return;
+    setState(() {
+      o.removeAt(from);
+      o.insert(to, id);
+      _order = o;
+    });
+  }
+
+  Future<void> _commitDrag() async {
+    final id = _dragging, o = _order;
+    setState(() {
+      _dragging = null;
+      _order = null;
+    });
+    if (id == null || o == null) return;
+    final st = AppScope.read(context);
+    final from = dashboard.tiles.indexWhere((t) => t.id == id);
+    await st.moveTile(dashboard, from, o.indexOf(id));
+  }
+
+  Future<void> _commitResize() async {
+    final r = _resize;
+    setState(() => _resize = null);
+    if (r == null) return;
+    final t = dashboard.tiles.where((t) => t.id == r.$1).firstOrNull;
+    if (t == null || (t.colSpan == r.$2 && t.rowSpan == r.$3)) return;
+    final c = t.copy()
+      ..colSpan = r.$2
+      ..rowSpan = r.$3;
+    await AppScope.read(context).upsertTile(dashboard, c);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -461,8 +525,8 @@ class _DashboardGrid extends StatelessWidget {
                     : FilledButton.icon(
                         key: const ValueKey('empty-add-tile'),
                         onPressed: () {
-                          onStartEditing();
-                          onAddTile();
+                          widget.onStartEditing();
+                          widget.onAddTile();
                         },
                         icon: const Icon(Icons.add, size: 28),
                         label: Text(tx(context, 'Lisää ruutu', 'Add a tile'), style: const TextStyle(fontSize: 18)),
@@ -474,59 +538,125 @@ class _DashboardGrid extends StatelessWidget {
       );
     }
 
-    return LayoutBuilder(
-      builder: (context, box) {
-        final g = tileGridFor(box.maxWidth, AppScope.of(context).config.tileDensity);
-        return SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(g.gap, 4, g.gap, 96),
-          child: Wrap(
-            spacing: g.gap,
-            runSpacing: g.gap,
-            children: [for (var i = 0; i < dashboard.tiles.length; i++) _sized(context, i, g)],
-          ),
-        );
-      },
+    return ListenableBuilder(
+      listenable: NetHealth.instance,
+      builder: (context, _) => LayoutBuilder(
+        builder: (context, box) {
+          final g = tileGridFor(box.maxWidth, AppScope.of(context).config.tileDensity);
+          final byId = {for (final t in dashboard.tiles) t.id: t};
+          final ids = _order ?? [for (final t in dashboard.tiles) t.id];
+          return SingleChildScrollView(
+            padding: EdgeInsets.fromLTRB(g.gap, 4, g.gap, 96),
+            child: Wrap(
+              spacing: g.gap,
+              runSpacing: g.gap,
+              children: [
+                for (final id in ids)
+                  if (byId[id] != null &&
+                      (widget.editing || !st.config.hideAwayTiles || awayLanConnection(st, byId[id]!) == null))
+                    _sized(context, byId[id]!, g),
+                if (!widget.editing)
+                  SizedBox(
+                    width: g.width(1),
+                    height: g.height(1),
+                    child: AddPlaceholderTile(
+                      key: const ValueKey('add-placeholder'),
+                      onTap: () => showAddSheet(context, dashboard: dashboard),
+                    ),
+                  ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 
-  Widget _sized(BuildContext context, int index, TileGridMetrics g) {
-    final t = dashboard.tiles[index];
-    final w = g.width(t.colSpan);
-    final h = g.height(t.rowSpan);
-    final tile = SizedBox(
+  Widget _sized(BuildContext context, TileConfig t, TileGridMetrics g) {
+    final r = _resize != null && _resize!.$1 == t.id ? _resize : null;
+    final cols = (r?.$2 ?? t.colSpan).clamp(1, g.cols);
+    final rows = r?.$3 ?? t.rowSpan;
+    final w = g.width(cols);
+    final h = g.height(rows);
+    final tile = AnimatedContainer(
+      duration: const Duration(milliseconds: 120),
       width: w,
       height: h,
-      child: TileWidget(key: ValueKey(t.id), tile: t, editing: editing),
+      child: TileWidget(key: ValueKey(t.id), tile: t, editing: widget.editing),
     );
-    if (!editing) return tile;
-    return _EditableTile(dashboard: dashboard, index: index, width: w, height: h, desktop: _desktop, child: tile);
+    if (!widget.editing) return tile;
+    return _EditableTile(
+      key: ValueKey('edit-${t.id}'),
+      dashboard: dashboard,
+      tile: t,
+      width: w,
+      height: h,
+      desktop: _desktop,
+      dragging: _dragging == t.id,
+      onDragStart: () => setState(() {
+        _dragging = t.id;
+        _order = [for (final x in dashboard.tiles) x.id];
+      }),
+      onHover: () => _hover(t.id),
+      onDragEnd: _commitDrag,
+      onResize: (dx, dy) {
+        // Snap to grid units: 1–4 wide (as the grid allows), 1–3 tall.
+        final unitW = g.width(1) + g.gap, unitH = g.height(1) + g.gap;
+        final nc = ((g.width(t.colSpan) + dx + g.gap) / unitW).round().clamp(1, math.min(4, g.cols)).toInt();
+        final nr = ((g.height(t.rowSpan) + dy + g.gap) / unitH).round().clamp(1, 3).toInt();
+        if (_resize?.$2 != nc || _resize?.$3 != nr) setState(() => _resize = (t.id, nc, nr));
+      },
+      onResizeEnd: _commitResize,
+      child: tile,
+    );
   }
 }
 
-class _EditableTile extends StatelessWidget {
+class _EditableTile extends StatefulWidget {
   const _EditableTile({
+    super.key,
     required this.dashboard,
-    required this.index,
+    required this.tile,
     required this.width,
     required this.height,
     required this.desktop,
+    required this.dragging,
+    required this.onDragStart,
+    required this.onHover,
+    required this.onDragEnd,
+    required this.onResize,
+    required this.onResizeEnd,
     required this.child,
   });
   final Dashboard dashboard;
-  final int index;
+  final TileConfig tile;
   final double width;
   final double height;
   final bool desktop;
+  final bool dragging;
+  final VoidCallback onDragStart;
+  final VoidCallback onHover;
+  final VoidCallback onDragEnd;
+  final void Function(double dx, double dy) onResize;
+  final VoidCallback onResizeEnd;
   final Widget child;
+
+  @override
+  State<_EditableTile> createState() => _EditableTileState();
+}
+
+class _EditableTileState extends State<_EditableTile> {
+  Offset _drag = Offset.zero;
 
   @override
   Widget build(BuildContext context) {
     final st = AppScope.read(context);
     final cs = Theme.of(context).colorScheme;
-    final t = dashboard.tiles[index];
+    final t = widget.tile;
+    final d = widget.dashboard;
     final overlay = Stack(
       children: [
-        child,
+        widget.child,
         Positioned.fill(
           child: Material(
             color: Colors.transparent,
@@ -535,7 +665,7 @@ class _EditableTile extends StatelessWidget {
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => TileEditor(dashboard: dashboard, initial: t.copy()),
+                  builder: (_) => TileEditor(dashboard: d, initial: t.copy()),
                 ),
               ),
               child: Container(
@@ -553,15 +683,9 @@ class _EditableTile extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _mini(context, Icons.palette_outlined, () => showTileLook(context, t)),
-              _mini(context, Icons.chevron_left, () => st.moveTile(dashboard, index, index - 1), enabled: index > 0),
-              _mini(
-                context,
-                Icons.chevron_right,
-                () => st.moveTile(dashboard, index, index + 1),
-                enabled: index < dashboard.tiles.length - 1,
-              ),
+              _mini(context, Icons.palette_outlined, () => showTileLook(context, t), key: 'tile-look-${t.id}'),
               _mini(context, Icons.delete_outline, () async {
+                final index = d.tiles.indexWhere((x) => x.id == t.id);
                 final ok = await confirmDialog(
                   context,
                   tx(context, 'Poistetaanko ruutu?', 'Delete tile?'),
@@ -569,19 +693,18 @@ class _EditableTile extends StatelessWidget {
                   ok: tx(context, 'Poista', 'Delete'),
                 );
                 if (!ok) return;
-                await st.deleteTile(dashboard, t.id);
+                await st.deleteTile(d, t.id);
                 if (context.mounted) {
                   showUndo(
                     context,
                     tx(context, 'Ruutu "${t.title}" poistettu', 'Tile "${t.title}" deleted'),
-                    () => st.restoreTile(dashboard, t, index),
+                    () => st.restoreTile(d, t, index),
                   );
                 }
-              }),
+              }, key: 'tile-delete-${t.id}'),
             ],
           ),
         ),
-        Positioned(right: 6, bottom: 6, child: Icon(Icons.drag_indicator, size: 18, color: cs.primary)),
       ],
     );
 
@@ -589,48 +712,98 @@ class _EditableTile extends StatelessWidget {
       color: Colors.transparent,
       child: Opacity(
         opacity: 0.85,
-        child: SizedBox(width: width, height: height, child: child),
+        child: SizedBox(width: widget.width, height: widget.height, child: widget.child),
       ),
     );
-    final draggable = desktop
-        ? Draggable<int>(
-            data: index,
+    Widget drag(Widget child) => widget.desktop
+        ? Draggable<String>(
+            data: t.id,
             feedback: feedback,
-            childWhenDragging: Opacity(opacity: 0.3, child: overlay),
-            child: overlay,
+            onDragStarted: widget.onDragStart,
+            onDragEnd: (_) => widget.onDragEnd(),
+            childWhenDragging: Opacity(opacity: 0.25, child: overlay),
+            child: child,
           )
-        : LongPressDraggable<int>(
-            data: index,
+        : LongPressDraggable<String>(
+            data: t.id,
             feedback: feedback,
-            childWhenDragging: Opacity(opacity: 0.3, child: overlay),
-            child: overlay,
+            onDragStarted: widget.onDragStart,
+            onDragEnd: (_) => widget.onDragEnd(),
+            childWhenDragging: Opacity(opacity: 0.25, child: overlay),
+            child: child,
           );
 
-    return DragTarget<int>(
-      onWillAcceptWithDetails: (d) => d.data != index,
-      onAcceptWithDetails: (d) => st.moveTile(dashboard, d.data, index),
-      builder: (context, cand, _) => AnimatedScale(
-        duration: const Duration(milliseconds: 120),
-        scale: cand.isNotEmpty ? 0.95 : 1,
-        child: draggable,
+    // Corner handle: drag to resize (snaps to grid units).
+    final handle = Positioned(
+      right: 0,
+      bottom: 0,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.resizeDownRight,
+        child: GestureDetector(
+          key: ValueKey('tile-resize-${t.id}'),
+          behavior: HitTestBehavior.opaque,
+          onPanStart: (_) => _drag = Offset.zero,
+          onPanUpdate: (e) {
+            _drag += e.delta;
+            widget.onResize(_drag.dx, _drag.dy);
+          },
+          onPanEnd: (_) => widget.onResizeEnd(),
+          onPanCancel: widget.onResizeEnd,
+          child: SizedBox(
+            width: 34,
+            height: 34,
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: CustomPaint(size: const Size(14, 14), painter: _CornerPainter(cs.primary)),
+              ),
+            ),
+          ),
+        ),
       ),
+    );
+
+    return DragTarget<String>(
+      onWillAcceptWithDetails: (e) {
+        if (e.data != t.id) widget.onHover();
+        return e.data != t.id;
+      },
+      onAcceptWithDetails: (_) {},
+      builder: (context, cand, _) => Stack(clipBehavior: Clip.none, children: [drag(overlay), handle]),
     );
   }
 
-  Widget _mini(BuildContext context, IconData icon, VoidCallback onTap, {bool enabled = true}) => Padding(
+  Widget _mini(BuildContext context, IconData icon, VoidCallback onTap, {String? key}) => Padding(
     padding: const EdgeInsets.only(left: 2),
     child: Material(
       color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.92),
       shape: const CircleBorder(),
       elevation: 1,
       child: InkWell(
+        key: key == null ? null : ValueKey(key),
         customBorder: const CircleBorder(),
-        onTap: enabled ? onTap : null,
-        child: Padding(
-          padding: const EdgeInsets.all(4),
-          child: Icon(icon, size: 15, color: enabled ? null : Colors.grey),
-        ),
+        onTap: onTap,
+        child: Padding(padding: const EdgeInsets.all(5), child: Icon(icon, size: 15)),
       ),
     ),
   );
+}
+
+class _CornerPainter extends CustomPainter {
+  _CornerPainter(this.color);
+  final Color color;
+  @override
+  void paint(Canvas canvas, Size size) {
+    final p = Paint()
+      ..color = color
+      ..strokeWidth = 2
+      ..strokeCap = StrokeCap.round;
+    for (final f in const [0.35, 0.7, 1.0]) {
+      canvas.drawLine(Offset(size.width * (1 - f), size.height), Offset(size.width, size.height * (1 - f)), p);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_CornerPainter o) => o.color != color;
 }

@@ -2,6 +2,8 @@
 /// registries (websocket), ranking, filtering and domain-appropriate tiles.
 library;
 
+import 'dart:math' as math;
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -11,7 +13,7 @@ import 'package:web_socket_channel/io.dart';
 
 import '../l10n/l10n.dart';
 import '../models/models.dart';
-import '../templates/device_templates.dart';
+import '../devices/climate.dart';
 
 class HaEntity {
   HaEntity({
@@ -25,6 +27,7 @@ class HaEntity {
     this.entityCategory,
     this.hidden = false,
     this.attributes = const {},
+    this.deviceId,
   });
   final String entityId;
   final String name;
@@ -38,6 +41,9 @@ class HaEntity {
   final String? entityCategory;
   final bool hidden;
   final Map<String, dynamic> attributes;
+
+  /// HA device registry id (groups a thermostat's sensor + setpoint entities – t137u).
+  final String? deviceId;
 
   String get domain => entityId.split('.').first;
 
@@ -67,14 +73,12 @@ class HaEntity {
     'sensor' when deviceClass == 'temperature' => 3,
     'cover' || 'lock' || 'alarm_control_panel' || 'fan' => 4,
     'camera' => 5,
-    'sensor' when const {'humidity', 'power', 'energy'}.contains(deviceClass) =>
-      6,
+    'sensor' when const {'humidity', 'power', 'energy'}.contains(deviceClass) => 6,
     'binary_sensor' || 'scene' || 'script' || 'input_boolean' || 'button' => 7,
     _ => 9,
   };
 
-  String get search =>
-      '${name.toLowerCase()} ${entityId.toLowerCase()} ${(areaName ?? '').toLowerCase()}';
+  String get search => '${name.toLowerCase()} ${entityId.toLowerCase()} ${(areaName ?? '').toLowerCase()}';
 }
 
 class HaArea {
@@ -99,22 +103,12 @@ class HaCatalog {
     return d;
   }
 
-  List<HaEntity> filter({
-    String query = '',
-    String? area,
-    String? domain,
-    bool showAll = false,
-  }) {
-    final words = query
-        .toLowerCase()
-        .split(RegExp(r'\s+'))
-        .where((w) => w.isNotEmpty)
-        .toList();
+  List<HaEntity> filter({String query = '', String? area, String? domain, bool showAll = false}) {
+    final words = query.toLowerCase().split(RegExp(r'\s+')).where((w) => w.isNotEmpty).toList();
     final out = [
       for (final e in entities)
         if ((showAll || !e.technical) &&
-            (area == null ||
-                (area == '' ? e.areaId == null : e.areaId == area)) &&
+            (area == null || (area == '' ? e.areaId == null : e.areaId == area)) &&
             (domain == null || e.domain == domain) &&
             words.every(e.search.contains))
           e,
@@ -144,26 +138,17 @@ Future<HaCatalog> fetchHaCatalog(
   bool allowSelfSigned = false,
   Duration timeout = const Duration(seconds: 15),
 }) async {
-  final base = baseUrl.endsWith('/')
-      ? baseUrl.substring(0, baseUrl.length - 1)
-      : baseUrl;
+  final base = baseUrl.endsWith('/') ? baseUrl.substring(0, baseUrl.length - 1) : baseUrl;
   final c = client ?? http.Client();
   final http.Response r;
   try {
-    r = await c
-        .get(
-          Uri.parse('$base/api/states'),
-          headers: {'Authorization': 'Bearer $token'},
-        )
-        .timeout(timeout);
+    r = await c.get(Uri.parse('$base/api/states'), headers: {'Authorization': 'Bearer $token'}).timeout(timeout);
   } finally {
     if (client == null) c.close();
   }
   if (r.statusCode == 401) throw HaCatalogException('401');
   if (r.statusCode >= 400) throw HaCatalogException('HTTP ${r.statusCode}');
-  final states = (jsonDecode(utf8.decode(r.bodyBytes)) as List)
-      .whereType<Map>()
-      .toList();
+  final states = (jsonDecode(utf8.decode(r.bodyBytes)) as List).whereType<Map>().toList();
 
   var areas = <String, String>{};
   var entReg = <String, Map>{};
@@ -182,9 +167,7 @@ Future<HaCatalog> fetchHaCatalog(
   for (final s in states) {
     final id = '${s['entity_id'] ?? ''}';
     if (!id.contains('.')) continue;
-    final attr = Map<String, dynamic>.from(
-      (s['attributes'] as Map?) ?? const {},
-    );
+    final attr = Map<String, dynamic>.from((s['attributes'] as Map?) ?? const {});
     final reg = entReg[id];
     if (reg != null && reg['disabled_by'] != null) continue;
     final areaId = (reg?['area_id'] as String?) ?? devArea[reg?['device_id']];
@@ -195,18 +178,17 @@ Future<HaCatalog> fetchHaCatalog(
             '${attr['friendly_name'] ?? reg?['name'] ?? reg?['original_name'] ?? id.split('.').last.replaceAll('_', ' ')}',
         state: '${s['state'] ?? ''}',
         unit: '${attr['unit_of_measurement'] ?? ''}',
-        deviceClass:
-            '${attr['device_class'] ?? reg?['original_device_class'] ?? ''}',
+        deviceClass: '${attr['device_class'] ?? reg?['original_device_class'] ?? ''}',
         areaId: areas.containsKey(areaId) ? areaId : null,
         areaName: areas[areaId],
         entityCategory: reg?['entity_category'] as String?,
         hidden: reg?['hidden_by'] != null,
         attributes: attr,
+        deviceId: reg?['device_id'] as String?,
       ),
     );
   }
-  final areaList = [for (final e in areas.entries) HaArea(e.key, e.value)]
-    ..sort((a, b) => a.name.compareTo(b.name));
+  final areaList = [for (final e in areas.entries) HaArea(e.key, e.value)]..sort((a, b) => a.name.compareTo(b.name));
   return HaCatalog(list, areaList, registryOk: ok);
 }
 
@@ -236,15 +218,9 @@ Future<(List<Map>, List<Map>, List<Map>)> _registries(
           ch.sink.add(jsonEncode({'type': 'auth', 'access_token': token}));
         case 'auth_ok':
           authed.complete();
-          ch.sink.add(
-            jsonEncode({'id': 1, 'type': 'config/area_registry/list'}),
-          );
-          ch.sink.add(
-            jsonEncode({'id': 2, 'type': 'config/device_registry/list'}),
-          );
-          ch.sink.add(
-            jsonEncode({'id': 3, 'type': 'config/entity_registry/list'}),
-          );
+          ch.sink.add(jsonEncode({'id': 1, 'type': 'config/area_registry/list'}));
+          ch.sink.add(jsonEncode({'id': 2, 'type': 'config/device_registry/list'}));
+          ch.sink.add(jsonEncode({'id': 3, 'type': 'config/entity_registry/list'}));
         case 'auth_invalid':
           if (!authed.isCompleted) {
             authed.completeError(HaCatalogException('auth_invalid'));
@@ -276,20 +252,12 @@ Future<(List<Map>, List<Map>, List<Map>)> _registries(
 }
 
 String _svc(String domain, String fallback) =>
-    domain == 'light' ||
-        domain == 'switch' ||
-        domain == 'fan' ||
-        domain == 'input_boolean'
+    domain == 'light' || domain == 'switch' || domain == 'fan' || domain == 'input_boolean'
     ? 'homeassistant.$fallback'
     : '$domain.$fallback';
 
 /// Tiles for one entity ([cameraConnId]: a bearer-auth camera connection to the same HA).
-List<TileConfig> haTilesFor(
-  HaEntity e,
-  String connId,
-  String lang, {
-  String? cameraConnId,
-}) {
+List<TileConfig> haTilesFor(HaEntity e, String connId, String lang, {String? cameraConnId}) {
   final id = e.entityId;
   final read = {'entityId': id};
   TileConfig toggle({
@@ -308,36 +276,20 @@ List<TileConfig> haTilesFor(
     confirm: confirm,
     valueMap: valueMap,
     onValue: onValue,
-    onCommand: CommandStep(
-      connectionId: connId,
-      spec: {'service': on, 'entityId': id},
-    ),
-    offCommand: CommandStep(
-      connectionId: connId,
-      spec: {'service': off, 'entityId': id},
-    ),
+    onCommand: CommandStep(connectionId: connId, spec: {'service': on, 'entityId': id}),
+    offCommand: CommandStep(connectionId: connId, spec: {'service': off, 'entityId': id}),
   );
   switch (e.domain) {
     case 'light':
       final modes = e.attributes['supported_color_modes'];
-      final dims =
-          modes is List && modes.any((m) => m != 'onoff') ||
-          e.attributes['brightness'] != null;
+      final dims = modes is List && modes.any((m) => m != 'onoff') || e.attributes['brightness'] != null;
       return [
-        toggle(
-            icon: 'lightbulb',
-            on: 'homeassistant.turn_on',
-            off: 'homeassistant.turn_off',
-          )
+        toggle(icon: 'lightbulb', on: 'homeassistant.turn_on', off: 'homeassistant.turn_off')
           ..commands = [
             if (dims)
               CommandStep(
                 connectionId: connId,
-                spec: {
-                  'service': 'light.turn_on',
-                  'entityId': id,
-                  'data': '{"brightness_pct": {{value}}}',
-                },
+                spec: {'service': 'light.turn_on', 'entityId': id, 'data': '{"brightness_pct": {{value}}}'},
               ),
           ],
       ];
@@ -394,7 +346,7 @@ List<TileConfig> haTilesFor(
         ),
       ];
     case 'climate':
-      return heatPumpHaTiles(connId, id, e.name, lang);
+      return [haClimateTile(connId, id, e.name)];
     case 'scene' || 'script' || 'button' || 'input_button':
       final svc = switch (e.domain) {
         'button' => 'button.press',
@@ -407,10 +359,7 @@ List<TileConfig> haTilesFor(
           title: e.name,
           connectionId: connId,
           commands: [
-            CommandStep(
-              connectionId: connId,
-              spec: {'service': svc, 'entityId': id},
-            ),
+            CommandStep(connectionId: connId, spec: {'service': svc, 'entityId': id}),
           ],
         ),
       ];
@@ -431,11 +380,7 @@ List<TileConfig> haTilesFor(
           commands: [
             CommandStep(
               connectionId: connId,
-              spec: {
-                'service': '${e.domain}.set_value',
-                'entityId': id,
-                'data': '{"value": {{value}}}',
-              },
+              spec: {'service': '${e.domain}.set_value', 'entityId': id, 'data': '{"value": {{value}}}'},
             ),
           ],
         ),
@@ -463,9 +408,77 @@ List<TileConfig> haTilesFor(
       unit: e.unit,
       connectionId: connId,
       read: read,
-      valueMap: e.domain == 'binary_sensor'
-          ? tr(lang, 'on=Päällä;off=Pois', 'on=On;off=Off')
-          : '',
+      valueMap: e.domain == 'binary_sensor' ? tr(lang, 'on=Päällä;off=Pois', 'on=On;off=Off') : '',
     ),
   ];
+}
+
+/// Tiles for picked entities with thermostat parts combined (t137u): a climate entity takes its
+/// device's temperature/humidity sensors; a temperature sensor + a °C number/input_number of the
+/// same device become ONE thermostat tile (+ humidity if the device has it).
+List<TileConfig> haTilesForPicked(List<HaEntity> picked, String connId, String lang, {String? cameraConnId}) {
+  bool isTemp(HaEntity e) => e.domain == 'sensor' && (e.deviceClass == 'temperature' || e.unit.contains('°'));
+  bool isHum(HaEntity e) => e.domain == 'sensor' && e.deviceClass == 'humidity';
+  bool isSet(HaEntity e) => (e.domain == 'number' || e.domain == 'input_number') && e.unit.contains('°');
+  final used = <String>{};
+  final out = <TileConfig>[];
+  final byDev = <String, List<HaEntity>>{};
+  for (final e in picked) {
+    if (e.deviceId != null) byDev.putIfAbsent(e.deviceId!, () => []).add(e);
+  }
+  for (final e in picked) {
+    if (used.contains(e.entityId)) continue;
+    final dev = e.deviceId == null ? const <HaEntity>[] : byDev[e.deviceId]!;
+    if (e.domain == 'climate') {
+      // The climate entity has current_temperature (+ current_humidity): its sensors are redundant.
+      used.addAll([
+        for (final x in dev)
+          if (isTemp(x) || isHum(x)) x.entityId,
+      ]);
+      used.add(e.entityId);
+      out.add(haClimateTile(connId, e.entityId, e.name));
+      continue;
+    }
+    if (isTemp(e) || isSet(e)) {
+      final temp = isTemp(e) ? e : dev.where(isTemp).where((x) => !used.contains(x.entityId)).firstOrNull;
+      final set = isSet(e) ? e : dev.where(isSet).where((x) => !used.contains(x.entityId)).firstOrNull;
+      if (temp != null && set != null && !dev.any((x) => x.domain == 'climate')) {
+        final hum = dev.where(isHum).where((x) => !used.contains(x.entityId)).firstOrNull;
+        used.addAll([temp.entityId, set.entityId, ?hum?.entityId]);
+        final min = (set.attributes['min'] as num?)?.toDouble() ?? 5;
+        final max = (set.attributes['max'] as num?)?.toDouble() ?? 35;
+        out.add(
+          pairClimateTile(
+            connId: connId,
+            name: _commonName(temp.name, set.name),
+            temp: {'entityId': temp.entityId},
+            target: {'entityId': set.entityId},
+            humidity: hum == null ? null : {'entityId': hum.entityId},
+            min: min,
+            max: max > min ? max : min + 1,
+            step: (set.attributes['step'] as num?)?.toDouble() ?? 0.5,
+            set: CommandStep(
+              connectionId: connId,
+              spec: {'service': '${set.domain}.set_value', 'entityId': set.entityId, 'data': '{"value": {{value}}}'},
+            ),
+          ),
+        );
+        continue;
+      }
+    }
+    used.add(e.entityId);
+    out.addAll(haTilesFor(e, connId, lang, cameraConnId: cameraConnId));
+  }
+  return out;
+}
+
+/// "Glen lattialämmitys lämpötila" + "Glen lattialämmitys asetus" → "Glen lattialämmitys".
+String _commonName(String a, String b) {
+  final wa = a.split(' '), wb = b.split(' ');
+  final common = <String>[];
+  for (var i = 0; i < math.min(wa.length, wb.length) && wa[i] == wb[i]; i++) {
+    common.add(wa[i]);
+  }
+  final n = common.join(' ').trim();
+  return n.length >= 3 ? n : a;
 }

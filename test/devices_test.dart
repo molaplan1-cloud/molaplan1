@@ -145,13 +145,15 @@ void main() {
     expect(r.items.map((i) => i.name), ['Olohuone', 'Eteinen', 'Olohuone']);
     expect(r.items.last.preselect, isFalse);
     final tiles = p.tiles(r, skip: {'g1'});
-    expect(tiles.map((t) => t.type), [TileType.toggle, TileType.slider, TileType.toggle]);
+    // t141u: light + brightness = one tile.
+    expect(tiles.map((t) => t.type), [TileType.toggle, TileType.toggle]);
+    expect(tiles.first.commands.single.spec['body'], '{"on":true,"bri":{{value_bri254}}}');
     expect(tiles.first.read['path'], '/api/{{token}}/lights/1', reason: 'the username stays in secure storage');
     await runCmd(tiles.first.onCommand!, r.connection);
     expect((hue.lights['1']!['state'] as Map)['on'], true);
-    await runCmd(tiles[1].commands.first, r.connection, 200);
-    expect((hue.lights['1']!['state'] as Map)['bri'], 200);
-    expect(await readTile(tiles[2], r.connection), true);
+    await runCmd(tiles[0].commands.first, r.connection, 80); // 80 % → 203/254
+    expect((hue.lights['1']!['state'] as Map)['bri'], 203);
+    expect(await readTile(tiles[1], r.connection), true);
   });
 
   test('Hue: button not pressed in time -> clear problem', () async {
@@ -178,12 +180,12 @@ void main() {
     final r = await p.connect(ctx(), c, creds);
     expect(r.items.map((i) => i.name), ['Keittiö', 'Kahvinkeitin'], reason: 'sensors are not switches');
     final tiles = p.tiles(r);
-    expect(tiles.map((t) => t.type), [TileType.toggle, TileType.slider, TileType.toggle, TileType.value]);
+    expect(tiles.map((t) => t.type), [TileType.toggle, TileType.toggle, TileType.value]);
     await runCmd(tiles.first.onCommand!, r.connection);
     expect((hub.devices.first['attributes'] as Map)['isOn'], true);
-    await runCmd(tiles[1].commands.first, r.connection, 80);
+    await runCmd(tiles[0].commands.first, r.connection, 80);
     expect((hub.devices.first['attributes'] as Map)['lightLevel'], 80);
-    expect(await readTile(tiles[3], r.connection), 3.5);
+    expect(await readTile(tiles[2], r.connection), 3.5);
     final (v, ch) = pkce();
     expect(v.length, 128);
     expect(ch, isNot(contains('=')));

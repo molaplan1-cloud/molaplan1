@@ -9,6 +9,7 @@ enum ErrorKind {
   auth,
   notFound,
   deviceError,
+  wrongProtocol,
   modbusAddress,
   modbusFunction,
   modbusValue,
@@ -47,7 +48,17 @@ class FriendlyError {
   String toString() => '$title. $hint';
 }
 
+/// An error that already carries plain-language wording (e.g. the Home Assistant setup probe).
+class PlainError implements Exception {
+  const PlainError(this.kind, this.titleFi, this.titleEn, this.hintFi, this.hintEn, this.tech);
+  final ErrorKind kind;
+  final String titleFi, titleEn, hintFi, hintEn, tech;
+  @override
+  String toString() => '$titleFi ($tech)';
+}
+
 ErrorKind classifyError(Object e) {
+  if (e is PlainError) return e.kind;
   final s = e.toString().toLowerCase();
   bool any(List<String> xs) => xs.any(s.contains);
   if (s.contains('connection missing') || s.contains('yhteys puuttuu')) return ErrorKind.missingConnection;
@@ -80,7 +91,17 @@ ErrorKind classifyError(Object e) {
   ])) {
     return ErrorKind.dns;
   }
-  if (any(['handshake', 'certificate', 'wrong version number', 'tlsv1'])) return ErrorKind.tls;
+  // Something answered, but not with HTTP (e.g. https server asked over http, or not a web server).
+  if (any([
+    'invalid response line',
+    'invalid response status',
+    'invalid http',
+    'connection closed before full header',
+    'wrong version number',
+  ])) {
+    return ErrorKind.wrongProtocol;
+  }
+  if (any(['handshake', 'certificate', 'tlsv1'])) return ErrorKind.tls;
   if (any(['connection refused', 'errno = 111', 'errno = 10061', 'actively refused'])) return ErrorKind.refused;
   if (any([
     ' 401',
@@ -133,7 +154,21 @@ FriendlyError friendlyError(Object e, String lang) {
   final tech = e.toString().replaceFirst('Exception: ', '');
   final k = classifyError(e);
   String t(String a, String b) => tr(lang, a, b);
+  if (e is PlainError) return FriendlyError(k, t(e.titleFi, e.titleEn), t(e.hintFi, e.hintEn), e.tech);
   switch (k) {
+    case ErrorKind.wrongProtocol:
+      return FriendlyError(
+        k,
+        t(
+          'Osoitteessa ei vastaa odotettu laite – tarkista osoite (http vai https?)',
+          'The expected device does not answer at this address – check it (http or https?)',
+        ),
+        t(
+          'Osoitteessa vastaa jokin, mutta ei odotetulla tavalla. Kokeile https:// tai http:// osoitteen alkuun ja tarkista portti.',
+          'Something answers, but not as expected. Try https:// or http:// in front and check the port.',
+        ),
+        tech,
+      );
     case ErrorKind.dns:
       return FriendlyError(
         k,
@@ -354,8 +389,11 @@ FriendlyError friendlyError(Object e, String lang) {
     case ErrorKind.unknown:
       return FriendlyError(
         k,
-        t('Jokin meni pieleen', 'Something went wrong'),
-        t('Tarkista asetukset ja yritä uudelleen.', 'Check the settings and try again.'),
+        t('Yhteys ei onnistunut', 'The connection did not work'),
+        t(
+          'Tarkista osoite ja asetukset ja yritä uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.',
+          'Check the address and settings and try again. The technical details show the exact reason.',
+        ),
         tech,
       );
   }

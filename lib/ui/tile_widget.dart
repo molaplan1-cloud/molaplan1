@@ -7,9 +7,14 @@ import 'package:material_ui/material_ui.dart';
 import '../core/template.dart';
 import '../models/models.dart';
 import '../state/app_state.dart';
+import '../state/measure_history.dart';
 import '../state/net_health.dart';
 import '../state/tile_runtime.dart';
+import '../devices/light_color.dart';
 import 'app_scope.dart';
+import 'light_sheet.dart';
+import 'climate_tile.dart';
+import '../devices/climate.dart';
 import 'error_box.dart';
 import 'camera_view.dart';
 import 'icons.dart';
@@ -19,12 +24,185 @@ import 'price_rules_page.dart';
 import 'heatpump_pages.dart';
 import 'energy_pages.dart';
 import 'thermostat_pages.dart';
+import 'measure_view.dart';
 import 'tile_status.dart';
 import 'tile_visuals.dart';
 import 'weather_tile.dart';
 import '../energy/meters.dart';
 
 /// A live dashboard tile. Rebuilt (runtime restarted) when its config changes.
+/// A LAN-only tile while away from home (t131u): greyed and inert, with "Vain kotiverkossa",
+/// the last known state and its time. Tapping offers "Tee etäkäyttöiseksi ›".
+class AwayTile extends StatelessWidget {
+  const AwayTile({
+    super.key,
+    required this.tile,
+    required this.connection,
+    required this.child,
+    this.at,
+    this.lastValue,
+    this.editing = false,
+  });
+  final TileConfig tile;
+  final ConnectionConfig connection;
+  final Widget child;
+  final DateTime? at;
+  final String? lastValue;
+  final bool editing;
+
+  static const _grey = ColorFilter.matrix(<double>[
+    0.2126, 0.7152, 0.0722, 0, 0, //
+    0.2126, 0.7152, 0.0722, 0, 0,
+    0.2126, 0.7152, 0.0722, 0, 0,
+    0, 0, 0, 1, 0,
+  ]);
+
+  static String hm(DateTime t) {
+    final l = t.toLocal(), n = DateTime.now();
+    final time = '${l.hour.toString().padLeft(2, '0')}.${l.minute.toString().padLeft(2, '0')}';
+    return l.year == n.year && l.month == n.month && l.day == n.day ? time : '${l.day}.${l.month}. $time';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        IgnorePointer(
+          child: ColorFiltered(
+            colorFilter: _grey,
+            child: Opacity(opacity: 0.55, child: child),
+          ),
+        ),
+        Positioned(
+          left: 6,
+          right: 6,
+          top: 6,
+          child: LayoutBuilder(
+            builder: (context, box) {
+              final narrow = box.maxWidth < 200;
+              final where = tx(context, 'Vain kotiverkossa', 'Home network only');
+              final time = at == null ? null : hm(at!);
+              final style = TextStyle(fontSize: 11.5, fontWeight: FontWeight.w600, color: cs.onSurfaceVariant);
+              return Align(
+                alignment: Alignment.topLeft,
+                child: Container(
+                  key: const ValueKey('tile-away-label'),
+                  padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: cs.surfaceContainerHighest.withValues(alpha: 0.96),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.wifi_off, size: 13, color: cs.onSurfaceVariant),
+                          const SizedBox(width: 4),
+                          Flexible(
+                            child: Text(
+                              narrow || time == null ? where : '$where · $time',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: style,
+                            ),
+                          ),
+                        ],
+                      ),
+                      if (narrow && time != null)
+                        Padding(
+                          padding: const EdgeInsets.only(left: 17),
+                          child: Text(
+                            tx(context, 'klo $time', 'at $time'),
+                            maxLines: 1,
+                            style: style.copyWith(fontWeight: FontWeight.w500, fontSize: 11),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        if (!editing)
+          Positioned.fill(
+            child: Material(
+              type: MaterialType.transparency,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(20),
+                onTap: () => showAwaySheet(context, tile, connection, at: at, lastValue: lastValue),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+Future<void> showAwaySheet(
+  BuildContext context,
+  TileConfig tile,
+  ConnectionConfig c, {
+  DateTime? at,
+  String? lastValue,
+}) => showModalBottomSheet<void>(
+  context: context,
+  showDragHandle: true,
+  builder: (sheet) {
+    final text = Theme.of(sheet).textTheme;
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(tile.title, style: text.titleLarge),
+            const SizedBox(height: 8),
+            Text(
+              tx(
+                sheet,
+                '${c.name} toimii vain kotiverkossa. Ruutu palaa normaaliksi itsestään, kun olet taas kotona.',
+                '${c.name} only works on the home network. The tile returns to normal by itself when you are home again.',
+              ),
+            ),
+            if (lastValue != null || at != null) ...[
+              const SizedBox(height: 8),
+              Text(
+                [
+                  tx(sheet, 'Viimeisin tila', 'Last state'),
+                  if (lastValue != null) ': $lastValue',
+                  if (at != null) ' (${AwayTile.hm(at)})',
+                ].join(),
+                key: const ValueKey('away-last'),
+                style: text.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
+              ),
+            ],
+            const SizedBox(height: 16),
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton.icon(
+                key: const ValueKey('away-make-remote'),
+                onPressed: () {
+                  Navigator.pop(sheet);
+                  openRemoteSwitch(context, c);
+                },
+                icon: const Icon(Icons.public),
+                label: Text(tx(sheet, 'Tee etäkäyttöiseksi ›', 'Make it work remotely ›')),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  },
+);
+
 class TileWidget extends StatefulWidget {
   const TileWidget({super.key, required this.tile, this.editing = false, this.control = false});
   final TileConfig tile;
@@ -46,6 +224,22 @@ class _TileWidgetState extends State<TileWidget> {
   void initState() {
     super.initState();
     NetHealth.instance.addListener(_changed);
+    // t134u: find out once whether a light can do colours (shows the colour sheet on tap).
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || widget.editing || !isLightTile(widget.tile)) return;
+      // Detect once; dimmable tiles also read their current brightness for the on-tile slider
+      // (Hue: served from the shared bridge cache, no extra request per tile).
+      if (widget.tile.light.isNotEmpty && !hasBrightness(widget.tile)) return;
+      final st = AppScope.read(context);
+      if (lightTargetFor(widget.tile, st.connection(widget.tile.connectionId)) == null) return;
+      unawaited(
+        detectLight(st, widget.tile)
+            .then((s) {
+              if (mounted && s?.bri != null && _brightDrag == null) setState(() => _brightDrag = s!.bri!.toDouble());
+            })
+            .catchError((_) {}),
+      );
+    });
   }
 
   @override
@@ -402,11 +596,33 @@ class _TileWidgetState extends State<TileWidget> {
   }
 
   Widget _build(BuildContext context) {
+    if (isWeatherTile(t)) return WeatherTile(tile: t, editing: widget.editing);
+    final away = awayLanConnection(AppScope.of(context), t);
+    final body = _build2(context, away != null);
+    if (away == null) return body;
+    // t131u: keep the tile in place, greyed, controls off, last state + time; tap → make remote.
+    return AwayTile(
+      key: ValueKey('tile-away-${t.id}'),
+      tile: t,
+      connection: away,
+      at: rt!.reportedAt ?? rt!.updated,
+      lastValue: rt!.value == null
+          ? null
+          : t.type == TileType.toggle
+          ? (t.mapValue(rt!.value) ??
+                (isTruthy(rt!.value, onValue: t.onValue) ? tx(context, 'Päällä', 'On') : tx(context, 'Pois', 'Off')))
+          : '${_format(rt!.value)}${t.unit.isEmpty ? '' : ' ${t.unit}'}',
+      editing: widget.editing,
+      child: body,
+    );
+  }
+
+  Widget _build2(BuildContext context, bool away) {
     final cs = Theme.of(context).colorScheme;
     final r = rt!;
-    final err = r.error;
+    final err = away ? null : r.error;
     if (t.type == TileType.thermostat) return ThermostatTile(tile: t, editing: widget.editing);
-    if (isWeatherTile(t)) return WeatherTile(tile: t, editing: widget.editing);
+    if (isClimateTile(t)) return ClimateTile(tile: t, editing: widget.editing || away);
     if (t.type == TileType.camera) {
       return Card(
         clipBehavior: Clip.antiAlias,
@@ -426,7 +642,9 @@ class _TileWidgetState extends State<TileWidget> {
     }
 
     final on = isTruthy(r.value, onValue: t.onValue);
-    final look = t.color != null ? Color(t.color!) : null;
+    // Colour lights glow in their current colour (t134u).
+    final glow = t.light['glow'] is int && on ? Color(t.light['glow'] as int) : null;
+    final look = glow ?? (t.color != null ? Color(t.color!) : null);
     final accentInt = t.colorFor(r.value);
     final accent = accentInt != null
         ? Color(accentInt)
@@ -445,7 +663,7 @@ class _TileWidgetState extends State<TileWidget> {
     VoidCallback? onTap;
     switch (t.type) {
       case TileType.toggle:
-        onTap = _toggle;
+        onTap = hasColorControl(t) ? () => showLightSheet(context, t) : _toggle;
       case TileType.button:
         onTap = _button;
       case TileType.value:
@@ -535,6 +753,7 @@ class _TileWidgetState extends State<TileWidget> {
     required bool dial,
     required bool big,
   }) {
+    final mv = _measureView(context, r, err, accent);
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
@@ -555,7 +774,9 @@ class _TileWidgetState extends State<TileWidget> {
                       const SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2))
                     else if (err != null)
                       Tooltip(
-                        message: friendlyText(context, err),
+                        message: isServiceConnection(AppScope.read(context).connection(t.connectionId))
+                            ? _issueOf(err).text
+                            : friendlyText(context, err),
                         child: switch (_issueOf(err).kind) {
                           TileIssueKind.offline => Icon(Icons.cloud_off, size: 16, color: cs.onSurfaceVariant),
                           TileIssueKind.awayFromLan => Icon(Icons.wifi_off, size: 16, color: cs.onSurfaceVariant),
@@ -611,8 +832,8 @@ class _TileWidgetState extends State<TileWidget> {
                 )
               else if (dial)
                 Expanded(child: _dial(context, r))
-              else if (meter && r.value != null)
-                Expanded(child: _meter(context, r, accent))
+              else if (mv != null)
+                Expanded(child: mv)
               else if (_isChart && r.value is Map)
                 Expanded(
                   child: PriceTileBody(
@@ -641,10 +862,19 @@ class _TileWidgetState extends State<TileWidget> {
                 const Spacer(),
               if (t.type == TileType.slider && !dial)
                 const SizedBox.shrink()
-              else if (err != null && r.value == null)
+              else if (err != null && r.value == null && (mv == null || _issueOf(err).kind != TileIssueKind.offline))
                 _issue(context, err)
-              else if (t.type == TileType.value && !_isLog && !_isChart && !(meter && r.value != null))
+              else if (t.type == TileType.value && !_isLog && !_isChart && mv == null)
                 _valueText(context, r, accent, size: compact ? 0.8 : 1),
+              // Sleeping battery device: the value is its last report.
+              if (t.type == TileType.value && mv == null && r.reportedAt != null && r.value != null)
+                Text(
+                  '${tx(context, 'Viimeksi', 'Last')} ${_hm(r.reportedAt!)}',
+                  key: const ValueKey('tile-reported'),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(color: cs.onSurfaceVariant),
+                ),
               // Compact light with its brightness slider: the bulb already shows on/off.
               if (t.type == TileType.toggle &&
                   !(err != null && r.value == null) &&
@@ -672,23 +902,25 @@ class _TileWidgetState extends State<TileWidget> {
     );
   }
 
-  Widget _meter(BuildContext context, TileRuntime r, Color? accent) {
-    final cs = Theme.of(context).colorScheme;
-    final vals = [for (final h in r.history) h.$2];
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Spacer(),
-        Flexible(flex: 3, child: _valueText(context, r, accent, size: 1.25)),
-        if (vals.length >= 2)
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 4),
-              child: Sparkline(values: vals, color: accent ?? cs.primary),
-            ),
-          ),
-      ],
+  /// Measurement tiles: gauge / trend / last value while offline (null = plain value as before).
+  MeasureView? _measureView(BuildContext context, TileRuntime r, String? err, Color? accent) {
+    if (!isMeasureTile(t) || _isLog || _isChart) return null;
+    final hist = AppScope.read(context).measureHistory;
+    final key = measureKey(t);
+    final live = toDouble(r.value);
+    final last = hist.last(key);
+    if (live == null && last == null) return null;
+    final stale = ((live == null || err != null) && last != null) || r.reportedAt != null;
+    final display = resolvedDisplay(t, isMeterTile(t));
+    if (display == 'value' && !stale) return null;
+    return MeasureView(
+      tile: t,
+      display: display,
+      value: live ?? last!.$2,
+      series: trendPoints(hist.series(key, t.trendHours), r),
+      stats: hist.stats(key, t.trendHours),
+      color: accent ?? Theme.of(context).colorScheme.primary,
+      staleAt: stale ? (r.reportedAt ?? last!.$1) : null,
     );
   }
 
@@ -753,6 +985,12 @@ class _TileWidgetState extends State<TileWidget> {
       ],
     ),
   );
+
+  static String _hm(DateTime t) {
+    final hm = '${t.hour}.${t.minute.toString().padLeft(2, '0')}';
+    final now = DateTime.now();
+    return t.year == now.year && t.month == now.month && t.day == now.day ? hm : '${t.day}.${t.month}. $hm';
+  }
 
   Widget _valueText(BuildContext context, TileRuntime r, Color? accent, {double size = 1}) {
     final v = _sliderDrag ?? r.value;

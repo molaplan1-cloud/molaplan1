@@ -215,6 +215,70 @@
  },
  "s4899323b9a": "Effekt",
  "se78754330c": "effekt",
+ "s1a4eab1f51": "°C",
+ "s9e731440d8": "%",
+ "s77c638e731": "%",
+ "s96abb7f975": "",
+ "s91e5760e43": "",
+ "s2f76c2abd3": "",
+ "sc2b99541c7": "Brytare och reläer",
+ "sd85dbd8e5e": "Lampor och dimrar",
+ "s38935a3c66": "Gardiner och rullgardiner",
+ "s64c6ca7840": "Energimätare",
+ "s662fecdc8d": "Sensorer",
+ "s027fcbe1b6": "S<blank> s<blank> Sn",
+ "@s027fcbe1b6": {
+  "x-mt": true
+ },
+ "sa376ec78ec": "Lampa",
+ "s6814e463b1": "till<blank>",
+ "@s6814e463b1": {
+  "x-mt": true
+ },
+ "s477d8b2c95": "Total effekt",
+ "sdaa374b331": "Fas {p0}",
+ "@sdaa374b331": {
+  "x-mt": true
+ },
+ "s32c88e5aa6": "Ljusnivå",
+ "sbb26f2192c": "Batteri",
+ "s57b4effa42": "Dörr / fönster",
+ "s66350d8e7a": "Rörelse",
+ "s29045a726e": "Vattenläcka",
+ "s57c2113aee": "Rök",
+ "se8422f063f": "Senns Sensli Senled Sen Sen Sensor",
+ "@se8422f063f": {
+  "x-mt": true
+ },
+ "s609cb4c5f9": "på",
+ "s356d822497": "av",
+ "s0b2f7d7c80": "öppet öppet öppna",
+ "@s0b2f7d7c80": {
+  "x-mt": true
+ },
+ "s7009587b85": "Slutna",
+ "@s7009587b85": {
+  "x-mt": true
+ },
+ "s3b35de231e": "<blank> motslidledde sin grade-före-företa-motred-motstödsföre-före-före-före-före-före-före-före-före-före-före-föregående",
+ "@s3b35de231e": {
+  "x-mt": true
+ },
+ "s3dfa789b85": "ALARM",
+ "sd9b6de0a6a": "Andra andra",
+ "@sd9b6de0a6a": {
+  "x-mt": true
+ },
+ "se7520a3990": "sover - sista {p0}",
+ "@se7520a3990": {
+  "x-mt": true
+ },
+ "s3aaacf80d2": "offline",
+ "see129fb410": "ljusstyrka",
+ "s5d888c1384": "true=Open;false=Closed",
+ "sd74ad36c31": "true=Motion;false=No motion",
+ "sfa12d7fdd7": "true=LEAK!;false=Dry",
+ "s1f18c0f400": "true=SMOKE!;false=OK",
  "s0bf7cb1613": "Philips Hue",
  "se17d4e4197": "Hue Bridge och dess lampor (också Zigbee lampor parade till det). Par med bryggknappen.",
  "@se17d4e4197": {
@@ -229,15 +293,154 @@
   "x-mt": true
  },
  "s4dbb677293": "nås inte",
- "s609cb4c5f9": "på",
- "s356d822497": "av",
  "sf50732e8e8": "dimmable",
  "@sf50732e8e8": {
   "x-mt": true
  },
  "s3832b8c729": "hela rummet",
- "see129fb410": "ljusstyrka",
  "sceabe202da": "camera_",
+ "s834e3e8c5d": "Apple Apple Apple",
+ "@s834e3e8c5d": {
+  "x-mt": true
+ },
+ "s11d8d321df": "Apple Apple Apple",
+ "@s11d8d321df": {
+  "x-mt": true
+ },
+ "sceefb34afd": "Apple Apple Apple",
+ "@sceefb34afd": {
+  "x-mt": true
+ },
+ "s24a447c14c": "Apple Apple Apple",
+ "@s24a447c14c": {
+  "x-mt": true
+ },
+ "s14418a4f88": "Apple Apple Apple",
+ "@s14418a4f88": {
+  "x-mt": true
+ },
+ "saab3e952a6": "Apple Apple Apple",
+ "@saab3e952a6": {
+  "x-mt": true
+ },
+ "s7fbbfbf469": "Apple Apple Apple",
+ "@s7fbbfbf469": {
+  "x-mt": true
+ },
+ "s045b27e316": "Samsung Samsung Samsung",
+ "@s045b27e316": {
+  "x-mt": true
+ },
+ "s2c0aede81e": "Samsung Samsung Samsung",
+ "@s2c0aede81e": {
+  "x-mt": true
+ },
+ "s7bd2005e15": "Google Google Google Google",
+ "@s7bd2005e15": {
+  "x-mt": true
+ },
+ "sdcec96b503": "Google Google Google Google",
+ "@sdcec96b503": {
+  "x-mt": true
+ },
+ "s49960d413e": "Google Google Google Google",
+ "@s49960d413e": {
+  "x-mt": true
+ },
+ "s99e5776a78": "Google Google Google Google",
+ "@s99e5776a78": {
+  "x-mt": true
+ },
+ "sea3c963b09": "Sonsan Sonson Sonno Son Son Tillförs Son Sonen",
+ "@sea3c963b09": {
+  "x-mt": true
+ },
+ "s1e7b1fc81c": "Syn<blank> syns<blank> Smäktigt Föregående Synd-Sont-Son-Sänks-S",
+ "@s1e7b1fc81c": {
+  "x-mt": true
+ },
+ "s7dc8f4cf35": "Synology",
+ "@s7dc8f4cf35": {
+  "x-mt": true
+ },
+ "s161d78d79c": "QNAP",
+ "s2512122220": "Broder",
+ "@s2512122220": {
+  "x-mt": true
+ },
+ "s127258a6f4": "Epson",
+ "@s127258a6f4": {
+  "x-mt": true
+ },
+ "s4e31401b4f": "Canon",
+ "@s4e31401b4f": {
+  "x-mt": true
+ },
+ "s933e21c819": "HP",
+ "sb309051c1f": "HP",
+ "s6f339c5c37": "HP",
+ "s5f8734f6e4": "HP",
+ "sceb247a904": "Xiaomi",
+ "@sceb247a904": {
+  "x-mt": true
+ },
+ "s10b7b68d6c": "Huawei",
+ "@s10b7b68d6c": {
+  "x-mt": true
+ },
+ "s3692c1d592": "LG",
+ "se7d945b970": "LG",
+ "s5a5044b5df": "Sony",
+ "@s5a5044b5df": {
+  "x-mt": true
+ },
+ "sd92d7da7d5": "Sony",
+ "@sd92d7da7d5": {
+  "x-mt": true
+ },
+ "saa909391c3": "Philips",
+ "@saa909391c3": {
+  "x-mt": true
+ },
+ "se39b8c84ab": "Raspberry Pi",
+ "@se39b8c84ab": {
+  "x-mt": true
+ },
+ "sec8808f414": "AVM",
+ "s0e225fb918": "TP-Link",
+ "@s0e225fb918": {
+  "x-mt": true
+ },
+ "sb34f35dce5": "ASUS",
+ "s7ea140809c": "Netgear",
+ "@s7ea140809c": {
+  "x-mt": true
+ },
+ "s284be225b7": "Ubiquiti",
+ "@s284be225b7": {
+  "x-mt": true
+ },
+ "sfbaeb6a17e": "Ubiquiti",
+ "@sfbaeb6a17e": {
+  "x-mt": true
+ },
+ "sa24e9ce91d": "MikroTik",
+ "sa1b725d397": "Espressif",
+ "@sa1b725d397": {
+  "x-mt": true
+ },
+ "sdf96423738": "Amazon Amazon Amazon Amazon",
+ "@sdf96423738": {
+  "x-mt": true
+ },
+ "sf253859589": "Amazon Amazon Amazon Amazon",
+ "@sf253859589": {
+  "x-mt": true
+ },
+ "sec4d80656d": "Roku",
+ "@sec4d80656d": {
+  "x-mt": true
+ },
  "sb9964cfb3b": "Effekt {p0}",
  "sfcb44be1a0": "Shelly",
  "sa6ff717527": "Reläer och pluggar: Pro 4PM, Plus 1PM, Plug S, 2,5 ... Hittas automatiskt, kakel för varje kanal.",
@@ -270,12 +473,8 @@
  "@sf30bb5d5e6": {
   "x-mt": true
  },
- "s3aaacf80d2": "offline",
  "s252ebed5af": "Shelly Cloud",
- "s25399cd337": "Server Server Server",
- "@s25399cd337": {
-  "x-mt": true
- },
+ "s25399cd337": "Server",
  "s246c7a46ff": "Shelly app → Användarinställningar → Tillstånd molnnyckel → Server URI.",
  "@s246c7a46ff": {
   "x-mt": true
@@ -301,7 +500,6 @@
  "@s73824fc3d0": {
   "x-mt": true
  },
- "sa376ec78ec": "Lampa",
  "sda8d9bf1cd": "Uttag",
  "s0185672be7": "Kameraanvändaren (vanligtvis admin) och lösenordet du ställer in när du aktiverar det.",
  "@s0185672be7": {
@@ -381,6 +579,7 @@
   "x-mt": true
  },
  "s5b44cbe9c0": "Hem",
+ "s5a40f12b6a": "Lägg till",
  "s58aaa6dade": "Utsikten är låst",
  "@s58aaa6dade": {
   "x-mt": true
@@ -958,10 +1157,15 @@
  "@s9aa9bc9679": {
   "x-mt": true
  },
- "s5a40f12b6a": "Lägg till",
- "s7aa295f82d": "Inte hemma – byt ›",
- "sdc74e0c0e7": "Inte i hemnätverket – byt till fjärranslutning ›",
  "s3a5c21004e": "Offline",
+ "sbc7a87e591": "Kunde inte få priser - retrying",
+ "@sbc7a87e591": {
+  "x-mt": true
+ },
+ "s3f0837ec84": "Kunde inte få vädret - förtrytning",
+ "@s3f0837ec84": {
+  "x-mt": true
+ },
  "s68cbe596f8": "Inloggningen har gått ut",
  "s156aa7eeb3": "Enheten svarar inte",
  "s7abcbf1107": "Servern hittades inte",
@@ -1130,6 +1334,20 @@
   "x-mt": true
  },
  "s13e301a66e": "Okänd enhet",
+ "sddb2c2cb2b": "Telefon",
+ "s16cd267576": "Surfplatta",
+ "sec4679ec39": "Dator",
+ "s798f9a0558": "Skrivare",
+ "s06109b8e5c": "TV / mediaspelare",
+ "sc4655d321e": "Högtalare",
+ "sa9f2f85b3e": "Router",
+ "sf8360dcd74": "Nätverkslagring",
+ "s8e21b6f258": "Smart enhet",
+ "sb38b582dab": "Hembrygga",
+ "sdf66171e91": "Den här enheten",
+ "s76a76a654e": "iPhone-surfzon",
+ "s15d4ca1672": "Telefonens surfzon",
+ "sd54522fe39": "Router / surfzon",
  "s23f4820db7": "Inte kontrollerbar ännu",
  "@s23f4820db7": {
   "x-mt": true
@@ -1138,6 +1356,19 @@
  "@saae59a3865": {
   "x-mt": true
  },
+ "sdccd6e7f24": "Modell",
+ "s891a4b434e": "')''}'",
+ "s43aba09687": "Hamnar",
+ "@s43aba09687": {
+  "x-mt": true
+ },
+ "scee3511db6": "Källor",
+ "@scee3511db6": {
+  "x-mt": true
+ },
+ "sbc46a05125": "Namnge enheten",
+ "s1d5ed84aed": "Sparas på den här enheten.",
+ "s59622d792b": "Byt namn",
  "s1169d2d093": "Hitta enheter",
  "s55b85f29a6": "Söker ditt hemnätverk...",
  "@s55b85f29a6": {
@@ -1164,12 +1395,28 @@
  "@s9a018b8166": {
   "x-mt": true
  },
- "sc81d032be0": "{p0} okända enheter",
- "@sc81d032be0": {
+ "sf16a25c313": "Andra enheter i nätverket ({p0})",
+ "@sf16a25c313": {
   "x-mt": true
  },
- "s7f3081821b": "Molaplan kan inte kontrollera dessa.",
- "@s7f3081821b": {
+ "s9e8430c37b": "Molaplan styr inte dessa. iPhones visar sitt namn bara när de vakna.",
+ "@s9e8430c37b": {
+  "x-mt": true
+ },
+ "s3c98732a8c": "Mätare",
+ "s6f29aeb685": "Trend",
+ "s3298699c1a": "Mätare + trend",
+ "sed593f53ed": "Värde",
+ "s9027c88cb7": "Samla in data...",
+ "@s9027c88cb7": {
+  "x-mt": true
+ },
+ "se38a9bb2ed": "Senaste",
+ "@se38a9bb2ed": {
+  "x-mt": true
+ },
+ "s049d71f971": "Sista sista",
+ "@s049d71f971": {
   "x-mt": true
  },
  "s55d52c5ae1": "Denna enhet är inte på Wi-Fi",
@@ -1443,6 +1690,11 @@
  "@sac4debdb9c": {
   "x-mt": true
  },
+ "sfe5661e401": "Avmarkera alla",
+ "s2618555da0": "Välj alla ({p0})",
+ "@s2618555da0": {
+  "x-mt": true
+ },
  "s86c3f92546": "Lägg också till ljusstyrka / kraft",
  "@s86c3f92546": {
   "x-mt": true
@@ -1648,6 +1900,73 @@
  "@sd55dd196f6": {
   "x-mt": true
  },
+ "s8e574c3313": "Effekt",
+ "sa9360bdda1": "Fläkt",
+ "sc7d02fbe84": "Värmepump",
+ "s8d06ee5308": "Larm",
+ "sfb63e3c23f": "Lås",
+ "@sfb63e3c23f": {
+  "x-mt": true
+ },
+ "s2f42d90475": "Vattenvatten",
+ "@s2f42d90475": {
+  "x-mt": true
+ },
+ "sf2d10dd213": "El/kraft",
+ "@sf2d10dd213": {
+  "x-mt": true
+ },
+ "s291ca127d6": "Garage",
+ "@s291ca127d6": {
+  "x-mt": true
+ },
+ "sb543af1c63": "Dörr",
+ "@sb543af1c63": {
+  "x-mt": true
+ },
+ "s60b1079d6c": "Fönster",
+ "@s60b1079d6c": {
+  "x-mt": true
+ },
+ "s66ce56ca38": "Börja",
+ "@s66ce56ca38": {
+  "x-mt": true
+ },
+ "s0ab3a44562": "Timer",
+ "@s0ab3a44562": {
+  "x-mt": true
+ },
+ "s3044a10005": "Nätverk",
+ "@s3044a10005": {
+  "x-mt": true
+ },
+ "s1f67139f55": "Sauna / uppvärmning",
+ "@s1f67139f55": {
+  "x-mt": true
+ },
+ "sf21fd72396": "Outlet",
+ "@sf21fd72396": {
+  "x-mt": true
+ },
+ "s7783fe5fca": "Favorit",
+ "@s7783fe5fca": {
+  "x-mt": true
+ },
+ "sb2fa876c32": "Ljushet",
+ "@sb2fa876c32": {
+  "x-mt": true
+ },
+ "s912ea5d2ec": "Skicka",
+ "se223375393": "Lista List",
+ "@se223375393": {
+  "x-mt": true
+ },
+ "sfb0b971c01": "Svängning",
+ "see42f2d999": "Fjärr",
+ "s9126bf24a0": "Sol sol sol solen",
+ "@s9126bf24a0": {
+  "x-mt": true
+ },
  "s306729fe62": "Inga priser",
  "@s306729fe62": {
   "x-mt": true
@@ -1656,10 +1975,14 @@
  "sbfe79d1f5f": "Uppdaterad",
  "sb68e905fc4": "Förbrukning (kWh)",
  "s5fc5085143": "Kostnad",
+ "s2b2118a93b": "Gamla data",
+ "@s2b2118a93b": {
+  "x-mt": true
+ },
  "sb730159a01": "Pris nu",
- "sbc8fb68b5d": "Billigast i dag",
+ "s68fcfcfed1": "Billigaste timmen i dag",
  "s86ff059f5e": "Medelpris i dag",
- "se3d8d53b4b": "Dyrast i dag",
+ "s7b911d48c6": "Dyraste timmen i dag",
  "s29dbf49d92": "Kostnad just nu",
  "s723c887da6": "Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min",
  "@s723c887da6": {
@@ -1671,6 +1994,7 @@
   "x-mt": true
  },
  "s5f131c3ec4": "Förbrukning",
+ "s039bb374fe": "Siffrorna är timmedelvärden",
  "sa5e6b1e0e3": "I morgon efter ca 14:00",
  "s62cfd94468": "Billigaste timmar på natten",
  "@s62cfd94468": {
@@ -1779,6 +2103,27 @@
  "@s0a972aa85e": {
   "x-mt": true
  },
+ "sc51b1e0dc0": "Vad vill du lägga till?",
+ "@sc51b1e0dc0": {
+  "x-mt": true
+ },
+ "s67584c9abf": "Enhet",
+ "@s67584c9abf": {
+  "x-mt": true
+ },
+ "s38f5b2ef26": "Shelly, Sonoff, Hue, kamera, värmepump... Söker ditt hemnätverk automatiskt.",
+ "@s38f5b2ef26": {
+  "x-mt": true
+ },
+ "s3b56b2cb8d": "Kort",
+ "@s3b56b2cb8d": {
+  "x-mt": true
+ },
+ "sfc846c4cc5": "Elpris, väder, kamera, mätning, meddelande eller kommando – ingen ny enhet behövs.",
+ "@sfc846c4cc5": {
+  "x-mt": true
+ },
+ "s147f47be4c": "Lägg till kort",
  "s229f981388": "Home bridge på",
  "@s229f981388": {
   "x-mt": true
@@ -1949,7 +2294,6 @@
  "@s7132345f20": {
   "x-mt": true
  },
- "sb38b582dab": "Hembrygga",
  "se2e2af02ac": "Hembron är en enhet som stannar hemma, t.ex. en gammal surfplatta eller en dator. När du är borta, din telefons kommandon krypteras genom den till dina enheter.",
  "@se2e2af02ac": {
   "x-mt": true
@@ -2043,13 +2387,26 @@
  "sa684fd0716": "Redigera kort",
  "s8a8673aafe": "Rubrik",
  "scf37cbeda8": "Ikon",
- "sa444aab286": "Automatisk",
  "sfeab9bd26f": "Bredd",
  "@sfeab9bd26f": {
   "x-mt": true
  },
  "s58be670598": "Höjd",
  "@s58be670598": {
+  "x-mt": true
+ },
+ "sd7314e8237": "Visning",
+ "s1c72b8c56a": "Trendlängd",
+ "@s1c72b8c56a": {
+  "x-mt": true
+ },
+ "s6bb0c0c7e3": "Gauge minimum",
+ "@s6bb0c0c7e3": {
+  "x-mt": true
+ },
+ "sa444aab286": "Automatisk",
+ "sbf29caff87": "Gauge maximum",
+ "@sbf29caff87": {
   "x-mt": true
  },
  "sea30815e6a": "Tekniska kakelinställningar visas när du slår på \"Avancerad\" i Inställningar.",
@@ -2076,10 +2433,7 @@
  "@s937448ecf5": {
   "x-mt": true
  },
- "s5cbdea7f7e": "Display",
- "@s5cbdea7f7e": {
-  "x-mt": true
- },
+ "s5cbdea7f7e": "Visning",
  "se6af4b33df": "Enhet",
  "sd5498697da": "Decimaler",
  "@sd5498697da": {
@@ -2352,7 +2706,6 @@
   "x-mt": true
  },
  "s0789f5f14f": "DASHBOARDS",
- "s59622d792b": "Byt namn",
  "sfb3e3c456c": "Delete Dashboard",
  "@sfb3e3c456c": {
   "x-mt": true
@@ -2364,7 +2717,6 @@
   "x-mt": true
  },
  "s4229fb4103": "Lägg till din första enhet",
- "s147f47be4c": "Lägg till kort",
  "sf67e0d5752": "Radera kortet?",
  "s97f46743e0": "Tile \"{p0}\" raderad",
  "@s97f46743e0": {
@@ -2504,7 +2856,6 @@
  "@s10bf4eab8e": {
   "x-mt": true
  },
- "s912ea5d2ec": "Skicka",
  "s856418521a": "Inga kommandon konfigurerade",
  "@s856418521a": {
   "x-mt": true
@@ -2539,10 +2890,6 @@
  "s72a2328ddd": "Lampor",
  "sca12be80ca": "Brytare",
  "sa4c0eeea02": "Värmepumpar och AC",
- "s662fecdc8d": "Sensorer",
- "@s662fecdc8d": {
-  "x-mt": true
- },
  "sa8dbf04ad3": "Binära sensorer",
  "@sa8dbf04ad3": {
   "x-mt": true
@@ -2552,7 +2899,6 @@
  "@s487bf00fc7": {
   "x-mt": true
  },
- "s8d06ee5308": "Larm",
  "s88ac47e6d1": "Kameror",
  "@s88ac47e6d1": {
   "x-mt": true
@@ -2880,8 +3226,8 @@
   "x-mt": true
  },
  "s64f4d1e11a": "Ange hemmets plats",
- "s8ff5c58a5d": "Ingen väderprognos",
- "@s8ff5c58a5d": {
+ "sbf7cc3de9a": "Försök nu",
+ "@sbf7cc3de9a": {
   "x-mt": true
  },
  "s1becc05ea1": "locked=Låst;unlocked=Olåst;jammed=FASTNAT",
@@ -3622,7 +3968,6 @@
   "x-mt": true
  },
  "s7fcea114f0": "Vad styr den?",
- "sdccd6e7f24": "Modell",
  "s864ba0233b": "Nyare (Plus, Pro, Gen3) = Plus / Pro / Gen2 +. Old Shelly 1, 2.5, Plug S = Gen1.",
  "@s864ba0233b": {
   "x-mt": true
@@ -3745,7 +4090,6 @@
  "@s05e2aaa15c": {
   "x-mt": true
  },
- "sc7d02fbe84": "Värmepump",
  "se699281c85": "Värmepump (MQTT)",
  "@se699281c85": {
   "x-mt": true
@@ -4097,9 +4441,36 @@
  "@seab2c72485": {
   "x-mt": true
  },
- "sfb0b971c01": "Svängning",
  "s3a38b97f7b": "{p0} – rum",
  "@s3a38b97f7b": {
+  "x-mt": true
+ },
+ "s12c2f8e6e4": "Hemnätverk endast",
+ "@s12c2f8e6e4": {
+  "x-mt": true
+ },
+ "s5f7c464e6d": "På {p0}",
+ "@s5f7c464e6d": {
+  "x-mt": true
+ },
+ "s21b64ae0a7": "{p0} fungerar bara på hemnätverket. Kortet återvänder till det normala av sig själv när du är hemma igen.",
+ "@s21b64ae0a7": {
+  "x-mt": true
+ },
+ "s6b1a8249de": "Sista staten",
+ "@s6b1a8249de": {
+  "x-mt": true
+ },
+ "s56650a18d5": "Få det att fungera på distans ›",
+ "@s56650a18d5": {
+  "x-mt": true
+ },
+ "s7c1cd8314e": "Dölj kort som inte fungerar på distans",
+ "@s7c1cd8314e": {
+  "x-mt": true
+ },
+ "sa0cbbafb4e": "Borta hemifrån är kort som bara fungerar på hemnätverket dolda. Som standard stannar de på plats, gråtit ut.",
+ "@sa0cbbafb4e": {
   "x-mt": true
  }
 }

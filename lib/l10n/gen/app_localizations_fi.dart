@@ -225,6 +225,121 @@ class AppLocalizationsFi extends AppLocalizations {
   String get se78754330c => 'teho';
 
   @override
+  String get s1a4eab1f51 => 'temperature';
+
+  @override
+  String get s9e731440d8 => 'humidity';
+
+  @override
+  String get s77c638e731 => 'battery';
+
+  @override
+  String get s96abb7f975 => 'contact';
+
+  @override
+  String get s91e5760e43 => 'motion';
+
+  @override
+  String get s2f76c2abd3 => 'bthome';
+
+  @override
+  String get sc2b99541c7 => 'Kytkimet ja releet';
+
+  @override
+  String get sd85dbd8e5e => 'Valot ja himmentimet';
+
+  @override
+  String get s38935a3c66 => 'Verhot ja rullakaihtimet';
+
+  @override
+  String get s64c6ca7840 => 'Energiamittarit';
+
+  @override
+  String get s662fecdc8d => 'Anturit';
+
+  @override
+  String get s027fcbe1b6 => 'Kytkin';
+
+  @override
+  String get sa376ec78ec => 'Valo';
+
+  @override
+  String get s6814e463b1 => 'Rullakaihdin';
+
+  @override
+  String get s477d8b2c95 => 'Kokonaisteho';
+
+  @override
+  String sdaa374b331(String p0) {
+    return 'Vaihe $p0';
+  }
+
+  @override
+  String get s32c88e5aa6 => 'Valoisuus';
+
+  @override
+  String get sbb26f2192c => 'Akku';
+
+  @override
+  String get s57b4effa42 => 'Ovi / ikkuna';
+
+  @override
+  String get s66350d8e7a => 'Liike';
+
+  @override
+  String get s29045a726e => 'Vesivuoto';
+
+  @override
+  String get s57c2113aee => 'Savu';
+
+  @override
+  String get se8422f063f => 'Anturi';
+
+  @override
+  String get s609cb4c5f9 => 'päällä';
+
+  @override
+  String get s356d822497 => 'pois';
+
+  @override
+  String get s0b2f7d7c80 => 'auki';
+
+  @override
+  String get s7009587b85 => 'kiinni';
+
+  @override
+  String get s3b35de231e => 'liikettä';
+
+  @override
+  String get s3dfa789b85 => 'HÄLYTYS';
+
+  @override
+  String get sd9b6de0a6a => 'Muut';
+
+  @override
+  String se7520a3990(String p0) {
+    return 'nukkuu – viimeksi $p0';
+  }
+
+  @override
+  String get s3aaacf80d2 => 'ei yhteydessä pilveen';
+
+  @override
+  String get see129fb410 => 'kirkkaus';
+
+  @override
+  String get s5d888c1384 => 'true=Auki;false=Kiinni';
+
+  @override
+  String get sd74ad36c31 => 'true=Liikettä;false=Ei liikettä';
+
+  @override
+  String get sfa12d7fdd7 => 'true=VUOTO!;false=Kuiva';
+
+  @override
+  String get s1f18c0f400 => 'true=SAVUA!;false=OK';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -243,12 +358,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s4dbb677293 => 'ei tavoitettavissa';
 
   @override
-  String get s609cb4c5f9 => 'päällä';
-
-  @override
-  String get s356d822497 => 'pois';
-
-  @override
   String get sf50732e8e8 => 'himmennettävä';
 
   @override
@@ -257,10 +366,136 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get see129fb410 => 'kirkkaus';
+  String get sceabe202da => 'provider';
 
   @override
-  String get sceabe202da => 'provider';
+  String get s834e3e8c5d => 'iphone';
+
+  @override
+  String get s11d8d321df => 'ipad';
+
+  @override
+  String get sceefb34afd => 'macbook';
+
+  @override
+  String get s24a447c14c => 'imac';
+
+  @override
+  String get s14418a4f88 => 'mac mini';
+
+  @override
+  String get saab3e952a6 => 'appletv';
+
+  @override
+  String get s7fbbfbf469 => 'apple tv';
+
+  @override
+  String get s045b27e316 => 'galaxy';
+
+  @override
+  String get s2c0aede81e => 'samsung';
+
+  @override
+  String get s7bd2005e15 => 'pixel';
+
+  @override
+  String get sdcec96b503 => 'chromecast';
+
+  @override
+  String get s49960d413e => 'google';
+
+  @override
+  String get s99e5776a78 => 'nest';
+
+  @override
+  String get sea3c963b09 => 'sonos';
+
+  @override
+  String get s1e7b1fc81c => 'synology';
+
+  @override
+  String get s7dc8f4cf35 => 'diskstation';
+
+  @override
+  String get s161d78d79c => 'qnap';
+
+  @override
+  String get s2512122220 => 'brother';
+
+  @override
+  String get s127258a6f4 => 'epson';
+
+  @override
+  String get s4e31401b4f => 'canon';
+
+  @override
+  String get s933e21c819 => 'hp ';
+
+  @override
+  String get sb309051c1f => 'hewlett';
+
+  @override
+  String get s6f339c5c37 => 'officejet';
+
+  @override
+  String get s5f8734f6e4 => 'laserjet';
+
+  @override
+  String get sceb247a904 => 'xiaomi';
+
+  @override
+  String get s10b7b68d6c => 'huawei';
+
+  @override
+  String get s3692c1d592 => 'lg ';
+
+  @override
+  String get se7d945b970 => 'webos';
+
+  @override
+  String get s5a5044b5df => 'bravia';
+
+  @override
+  String get sd92d7da7d5 => 'sony';
+
+  @override
+  String get saa909391c3 => 'philips';
+
+  @override
+  String get se39b8c84ab => 'raspberry';
+
+  @override
+  String get sec8808f414 => 'fritz';
+
+  @override
+  String get s0e225fb918 => 'tp-link';
+
+  @override
+  String get sb34f35dce5 => 'asus';
+
+  @override
+  String get s7ea140809c => 'netgear';
+
+  @override
+  String get s284be225b7 => 'ubiquiti';
+
+  @override
+  String get sfbaeb6a17e => 'unifi';
+
+  @override
+  String get sa24e9ce91d => 'mikrotik';
+
+  @override
+  String get sa1b725d397 => 'espressif';
+
+  @override
+  String get sdf96423738 => 'amazon';
+
+  @override
+  String get sf253859589 => 'echo';
+
+  @override
+  String get sec4d80656d => 'roku';
 
   @override
   String sb9964cfb3b(String p0) {
@@ -304,9 +539,6 @@ class AppLocalizationsFi extends AppLocalizations {
       'Yleensä ei tarvita – laitteet haetaan automaattisesti. Jos ei löydy: Shelly-sovellus → laite → asetukset → Laitetiedot → Device ID. Useita pilkulla eroteltuna.';
 
   @override
-  String get s3aaacf80d2 => 'ei yhteydessä pilveen';
-
-  @override
   String get s252ebed5af => 'Shelly Cloud';
 
   @override
@@ -337,9 +569,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s73824fc3d0 =>
       'Paina nyt Dirigera-keskuksen pohjassa olevaa toimintopainiketta (pieni painike) kerran. Odota tässä.';
-
-  @override
-  String get sa376ec78ec => 'Valo';
 
   @override
   String get sda8d9bf1cd => 'Pistorasia';
@@ -424,6 +653,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s5b44cbe9c0 => 'Koti';
+
+  @override
+  String get s5a40f12b6a => 'Lisää';
 
   @override
   String get s58aaa6dade => 'Näkymä on lukittu';
@@ -1004,16 +1236,13 @@ class AppLocalizationsFi extends AppLocalizations {
       'Laite vastasi, mutta siinä ei ole ilmastointia (climate). Tarkista ESPHome-asetukset.';
 
   @override
-  String get s5a40f12b6a => 'Lisää';
-
-  @override
-  String get s7aa295f82d => 'Ei kotiverkossa – vaihda ›';
-
-  @override
-  String get sdc74e0c0e7 => 'Ei kotiverkossa – vaihda etäyhteyteen ›';
-
-  @override
   String get s3a5c21004e => 'Ei yhteyttä';
+
+  @override
+  String get sbc7a87e591 => 'Hintoja ei saatu – yritetään uudelleen';
+
+  @override
+  String get s3f0837ec84 => 'Säätietoja ei saatu – yritetään uudelleen';
 
   @override
   String get s68cbe596f8 => 'Kirjautuminen vanhentunut';
@@ -1293,10 +1522,73 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s13e301a66e => 'Tuntematon laite';
 
   @override
+  String get sddb2c2cb2b => 'Puhelin';
+
+  @override
+  String get s16cd267576 => 'Tabletti';
+
+  @override
+  String get sec4679ec39 => 'Tietokone';
+
+  @override
+  String get s798f9a0558 => 'Tulostin';
+
+  @override
+  String get s06109b8e5c => 'TV / mediatoistin';
+
+  @override
+  String get sc4655d321e => 'Kaiutin';
+
+  @override
+  String get sa9f2f85b3e => 'Reititin';
+
+  @override
+  String get sf8360dcd74 => 'Verkkolevy';
+
+  @override
+  String get s8e21b6f258 => 'Älylaite';
+
+  @override
+  String get sb38b582dab => 'Kotisilta';
+
+  @override
+  String get sdf66171e91 => 'Tämä laite';
+
+  @override
+  String get s76a76a654e => 'iPhonen hotspot';
+
+  @override
+  String get s15d4ca1672 => 'Puhelimen hotspot';
+
+  @override
+  String get sd54522fe39 => 'Reititin / hotspot';
+
+  @override
   String get s23f4820db7 => 'ei vielä ohjattavissa';
 
   @override
   String get saae59a3865 => 'kotisillan kautta';
+
+  @override
+  String get sdccd6e7f24 => 'Malli';
+
+  @override
+  String get s891a4b434e => 'MAC';
+
+  @override
+  String get s43aba09687 => 'Portit';
+
+  @override
+  String get scee3511db6 => 'Lähteet';
+
+  @override
+  String get sbc46a05125 => 'Nimeä laite';
+
+  @override
+  String get s1d5ed84aed => 'Nimi muistetaan tällä laitteella.';
+
+  @override
+  String get s59622d792b => 'Nimeä';
 
   @override
   String get s1169d2d093 => 'Etsi laitteet';
@@ -1328,12 +1620,34 @@ class AppLocalizationsFi extends AppLocalizations {
       'Et ole kotona: kotisilta etsi laitteet kotiverkosta.';
 
   @override
-  String sc81d032be0(String p0) {
-    return '$p0 tuntematonta laitetta';
+  String sf16a25c313(String p0) {
+    return 'Muut laitteet verkossa ($p0)';
   }
 
   @override
-  String get s7f3081821b => 'Näitä Molaplan ei osaa ohjata.';
+  String get s9e8430c37b =>
+      'Näitä Molaplan ei ohjaa. iPhonet näkyvät nimellä vain hereillä ollessaan.';
+
+  @override
+  String get s3c98732a8c => 'Mittari';
+
+  @override
+  String get s6f29aeb685 => 'Trendi';
+
+  @override
+  String get s3298699c1a => 'Mittari + trendi';
+
+  @override
+  String get sed593f53ed => 'Luku';
+
+  @override
+  String get s9027c88cb7 => 'Kerätään dataa…';
+
+  @override
+  String get se38a9bb2ed => 'Viimeksi';
+
+  @override
+  String get s049d71f971 => 'viimeksi';
 
   @override
   String get s55d52c5ae1 => 'Tämä laite ei ole yhteydessä wifiin';
@@ -1611,6 +1925,14 @@ class AppLocalizationsFi extends AppLocalizations {
       'Valitse mitkä tulevat kotinäkymään ja anna niille nimet (esim. Lämmitys, Ulkovalot).';
 
   @override
+  String get sfe5661e401 => 'Poista valinnat';
+
+  @override
+  String s2618555da0(String p0) {
+    return 'Valitse kaikki ($p0)';
+  }
+
+  @override
   String get s86c3f92546 => 'Lisää myös kirkkaus / teho';
 
   @override
@@ -1845,6 +2167,72 @@ class AppLocalizationsFi extends AppLocalizations {
       'Live-videota ei saatu. Tarkista, että olet kotiverkossa ja kameran RTSP on päällä.';
 
   @override
+  String get s8e574c3313 => 'Virta';
+
+  @override
+  String get sa9360bdda1 => 'Tuuletin';
+
+  @override
+  String get sc7d02fbe84 => 'Lämpöpumppu';
+
+  @override
+  String get s8d06ee5308 => 'Hälytys';
+
+  @override
+  String get sfb63e3c23f => 'Lukko';
+
+  @override
+  String get s2f42d90475 => 'Vesi';
+
+  @override
+  String get sf2d10dd213 => 'Sähkö / teho';
+
+  @override
+  String get s291ca127d6 => 'Autotalli';
+
+  @override
+  String get sb543af1c63 => 'Ovi';
+
+  @override
+  String get s60b1079d6c => 'Ikkuna';
+
+  @override
+  String get s66ce56ca38 => 'Käynnistä';
+
+  @override
+  String get s0ab3a44562 => 'Ajastin';
+
+  @override
+  String get s3044a10005 => 'Verkko';
+
+  @override
+  String get s1f67139f55 => 'Sauna / lämmitys';
+
+  @override
+  String get sf21fd72396 => 'Pistorasia';
+
+  @override
+  String get s7783fe5fca => 'Suosikki';
+
+  @override
+  String get sb2fa876c32 => 'Kirkkaus';
+
+  @override
+  String get s912ea5d2ec => 'Lähetä';
+
+  @override
+  String get se223375393 => 'Lista';
+
+  @override
+  String get sfb0b971c01 => 'Suuntaus';
+
+  @override
+  String get see42f2d999 => 'Kaukosäädin';
+
+  @override
+  String get s9126bf24a0 => 'Aurinko';
+
+  @override
   String get s306729fe62 => 'Ei hintoja';
 
   @override
@@ -1860,16 +2248,19 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s5fc5085143 => 'Kustannus';
 
   @override
+  String get s2b2118a93b => 'Vanha tieto';
+
+  @override
   String get sb730159a01 => 'Hinta nyt';
 
   @override
-  String get sbc8fb68b5d => 'Halvin hinta tänään';
+  String get s68fcfcfed1 => 'Halvin tunti tänään';
 
   @override
   String get s86ff059f5e => 'Tänään keskihinta';
 
   @override
-  String get se3d8d53b4b => 'Kallein hinta tänään';
+  String get s7b911d48c6 => 'Kallein tunti tänään';
 
   @override
   String get s29dbf49d92 => 'Hetkellinen kustannus';
@@ -1885,6 +2276,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s5f131c3ec4 => 'Kulutus';
+
+  @override
+  String get s039bb374fe => 'Luvut tuntikeskiarvoina';
 
   @override
   String get sa5e6b1e0e3 => 'Huominen n. klo 14 jälkeen';
@@ -2010,6 +2404,26 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s0a972aa85e =>
       'Salasanat ja tokenit tallennetaan laitteen suojattuun tallennustilaan.';
+
+  @override
+  String get sc51b1e0dc0 => 'Mitä lisätään?';
+
+  @override
+  String get s67584c9abf => 'Laite';
+
+  @override
+  String get s38f5b2ef26 =>
+      'Shelly, Sonoff, Hue, kamera, lämpöpumppu… Etsii kotiverkosta automaattisesti.';
+
+  @override
+  String get s3b56b2cb8d => 'Ruutu';
+
+  @override
+  String get sfc846c4cc5 =>
+      'Sähkön hinta, sää, kamera, mittari, ilmoitus tai komento – ei vaadi uutta laitetta.';
+
+  @override
+  String get s147f47be4c => 'Lisää ruutu';
 
   @override
   String get s229f981388 => 'Kotisilta päällä';
@@ -2183,9 +2597,6 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get sb38b582dab => 'Kotisilta';
-
-  @override
   String get se2e2af02ac =>
       'Kotisilta on kotona aina päällä oleva laite, esimerkiksi vanha tabletti tai PC. Kun olet poissa, puhelimesi komennot kulkevat salattuina sen kautta kodin laitteille.';
 
@@ -2293,13 +2704,25 @@ class AppLocalizationsFi extends AppLocalizations {
   String get scf37cbeda8 => 'Kuvake';
 
   @override
-  String get sa444aab286 => 'Automaattinen';
-
-  @override
   String get sfeab9bd26f => 'Leveys';
 
   @override
   String get s58be670598 => 'Korkeus';
+
+  @override
+  String get sd7314e8237 => 'Näyttötapa';
+
+  @override
+  String get s1c72b8c56a => 'Trendin pituus';
+
+  @override
+  String get s6bb0c0c7e3 => 'Mittarin minimi';
+
+  @override
+  String get sa444aab286 => 'Automaattinen';
+
+  @override
+  String get sbf29caff87 => 'Mittarin maksimi';
 
   @override
   String get sea30815e6a =>
@@ -2603,9 +3026,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s0789f5f14f => 'NÄKYMÄT';
 
   @override
-  String get s59622d792b => 'Nimeä';
-
-  @override
   String get sfb3e3c456c => 'Poista näkymä';
 
   @override
@@ -2620,9 +3040,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s4229fb4103 => 'Lisää ensimmäinen laite';
-
-  @override
-  String get s147f47be4c => 'Lisää ruutu';
 
   @override
   String get sf67e0d5752 => 'Poistetaanko ruutu?';
@@ -2830,6 +3247,25 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sa6212aaeb4 => 'Sijainti';
 
   @override
+  String get s12c2f8e6e4 => 'Vain kotiverkossa';
+
+  @override
+  String s5f7c464e6d(String p0) {
+    return 'klo $p0';
+  }
+
+  @override
+  String s21b64ae0a7(String p0) {
+    return '$p0 toimii vain kotiverkossa. Ruutu palaa normaaliksi itsestään, kun olet taas kotona.';
+  }
+
+  @override
+  String get s6b1a8249de => 'Viimeisin tila';
+
+  @override
+  String get s56650a18d5 => 'Tee etäkäyttöiseksi ›';
+
+  @override
   String get sa0d8c62e5a => 'Komentoa ei ole määritetty';
 
   @override
@@ -2844,9 +3280,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s10bf4eab8e =>
       'Tallennetaan suojattuna vain tähän laitteeseen. Oletuksena PIN-koodia ei tallenneta.';
-
-  @override
-  String get s912ea5d2ec => 'Lähetä';
 
   @override
   String get s856418521a => 'Komentoja ei ole määritetty';
@@ -2899,9 +3332,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sa4c0eeea02 => 'Lämpöpumput ja ilmastointi';
 
   @override
-  String get s662fecdc8d => 'Anturit';
-
-  @override
   String get sa8dbf04ad3 => 'Tila-anturit';
 
   @override
@@ -2909,9 +3339,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s487bf00fc7 => 'Lukot';
-
-  @override
-  String get s8d06ee5308 => 'Hälytys';
 
   @override
   String get s88ac47e6d1 => 'Kamerat';
@@ -3109,6 +3536,13 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s8382da3467 => 'Normaali';
 
   @override
+  String get s7c1cd8314e => 'Piilota etänä toimimattomat';
+
+  @override
+  String get sa0cbbafb4e =>
+      'Kotiverkon ulkopuolella vain kotiverkossa toimivat ruudut piilotetaan. Oletuksena ne näkyvät harmaina paikallaan.';
+
+  @override
   String get s21f870dbc2 =>
       'Näyttää tekniset asetukset: yhteydet (HTTP, MQTT, Modbus…), viestit, JSON-polut ja ruutujen lähteet. Useimmat eivät tarvitse näitä.';
 
@@ -3270,7 +3704,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s64f4d1e11a => 'Aseta kodin sijainti';
 
   @override
-  String get s8ff5c58a5d => 'Sääennustetta ei saatu';
+  String get sbf7cc3de9a => 'Yritä nyt';
 
   @override
   String get s1becc05ea1 => 'locked=Lukossa;unlocked=Auki;jammed=JUMISSA';
@@ -4017,9 +4451,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s7fcea114f0 => 'Mitä se ohjaa?';
 
   @override
-  String get sdccd6e7f24 => 'Malli';
-
-  @override
   String get s864ba0233b =>
       'Uudemmat (Shelly Plus, Pro, Gen3) = Plus / Pro / Gen2+. Vanhat Shelly 1, 2.5, Plug S = Gen1.';
 
@@ -4131,9 +4562,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s05e2aaa15c =>
       'Alkaa sanalla climate. Löytyy HA:sta Asetukset → Entiteetit.';
-
-  @override
-  String get sc7d02fbe84 => 'Lämpöpumppu';
 
   @override
   String get se699281c85 => 'Lämpöpumppu (MQTT)';
@@ -4484,9 +4912,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get seab2c72485 => 'Puhallin (0 = auto)';
-
-  @override
-  String get sfb0b971c01 => 'Suuntaus';
 
   @override
   String s3a38b97f7b(String p0) {

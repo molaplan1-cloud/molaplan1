@@ -1,3 +1,7 @@
+import 'tile_visuals.dart';
+import 'measure_view.dart';
+import '../state/measure_history.dart';
+
 import 'package:material_ui/material_ui.dart' hide Threshold;
 
 import '../drivers/registry.dart';
@@ -143,19 +147,25 @@ class _TileEditorState extends State<TileEditor> {
               Row(
                 children: [
                   Expanded(
-                    child: DropdownButtonFormField<String>(
-                      isExpanded: true,
-                      initialValue: tileIcons.containsKey(t.icon) ? t.icon : 'auto',
-                      decoration: InputDecoration(labelText: tx(context, 'Kuvake', 'Icon')),
-                      items: [
-                        DropdownMenuItem(value: 'auto', child: Text(tx(context, 'Automaattinen', 'Automatic'))),
-                        for (final e in tileIcons.entries)
-                          DropdownMenuItem(
-                            value: e.key,
-                            child: Row(children: [Icon(e.value, size: 18), const SizedBox(width: 8), Text(e.key)]),
-                          ),
-                      ],
-                      onChanged: (v) => setState(() => t.icon = v ?? 'auto'),
+                    child: InkWell(
+                      key: const ValueKey('icon-picker'),
+                      borderRadius: BorderRadius.circular(4),
+                      onTap: () async {
+                        final v = await pickTileIcon(context, t);
+                        if (v != null) setState(() => t.icon = v);
+                      },
+                      child: InputDecorator(
+                        decoration: InputDecoration(labelText: tx(context, 'Kuvake', 'Icon')),
+                        child: Row(
+                          children: [
+                            Icon(iconFor(t), size: 20),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(iconLabel(context, t.icon), maxLines: 1, overflow: TextOverflow.ellipsis),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -164,6 +174,81 @@ class _TileEditorState extends State<TileEditor> {
                   _sizeDrop(tx(context, 'Korkeus', 'Height'), t.rowSpan, 3, (v) => t.rowSpan = v),
                 ],
               ),
+              if (isMeasureTile(t)) ...[
+                const SizedBox(height: 20),
+                Text(tx(context, 'Näyttötapa', 'Display'), style: text.titleSmall),
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    for (final d in measureDisplays)
+                      ChoiceChip(
+                        key: ValueKey('display-$d'),
+                        avatar: Icon(switch (d) {
+                          'gauge' => Icons.speed,
+                          'trend' => Icons.show_chart,
+                          'gauge_trend' => Icons.insights,
+                          _ => Icons.pin_outlined,
+                        }, size: 18),
+                        label: Text(displayLabel(context, d)),
+                        selected: resolvedDisplay(t, isMeterTile(t)) == d,
+                        onSelected: (_) => setState(() => t.display = d),
+                      ),
+                  ],
+                ),
+                if (resolvedDisplay(t, isMeterTile(t)) != 'value') ...[
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      Text(tx(context, 'Trendin pituus', 'Trend length')),
+                      const SizedBox(width: 12),
+                      SegmentedButton<int>(
+                        key: const ValueKey('trend-hours'),
+                        segments: const [
+                          ButtonSegment(value: 1, label: Text('1 h')),
+                          ButtonSegment(value: 6, label: Text('6 h')),
+                          ButtonSegment(value: 24, label: Text('24 h')),
+                        ],
+                        selected: {t.trendHours},
+                        onSelectionChanged: (v) => setState(() => t.trendHours = v.first),
+                      ),
+                    ],
+                  ),
+                ],
+                if (resolvedDisplay(t, isMeterTile(t)).startsWith('gauge')) ...[
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          key: const ValueKey('gauge-min'),
+                          initialValue: t.gaugeMin == null ? '' : fmtMeasure(t.gaugeMin!, 1),
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
+                          decoration: InputDecoration(
+                            labelText: tx(context, 'Mittarin minimi', 'Gauge minimum'),
+                            hintText: tx(context, 'Automaattinen', 'Automatic'),
+                          ),
+                          onChanged: (v) => t.gaugeMin = double.tryParse(v.replaceAll(',', '.').trim()),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: TextFormField(
+                          key: const ValueKey('gauge-max'),
+                          initialValue: t.gaugeMax == null ? '' : fmtMeasure(t.gaugeMax!, 1),
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
+                          decoration: InputDecoration(
+                            labelText: tx(context, 'Mittarin maksimi', 'Gauge maximum'),
+                            hintText: tx(context, 'Automaattinen', 'Automatic'),
+                          ),
+                          onChanged: (v) => t.gaugeMax = double.tryParse(v.replaceAll(',', '.').trim()),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ],
               if (!st.config.advanced && !widget.isNew) ...[
                 const SizedBox(height: 20),
                 Text(
@@ -593,3 +678,62 @@ class _TileEditorState extends State<TileEditor> {
     );
   }
 }
+
+String iconLabel(BuildContext context, String key) {
+  final l = tileIconLabels[key];
+  if (l == null) return tx(context, 'Automaattinen', 'Automatic');
+  return tx(context, l.$1, l.$2);
+}
+
+/// Visual icon picker: a grid of icons with names.
+Future<String?> pickTileIcon(BuildContext context, TileConfig t) => showModalBottomSheet<String>(
+  context: context,
+  showDragHandle: true,
+  isScrollControlled: true,
+  builder: (c) {
+    final cs = Theme.of(c).colorScheme;
+    Widget cell(String key, IconData icon, String label) {
+      final sel = key == t.icon || (key == 'auto' && !tileIcons.containsKey(t.icon));
+      return InkWell(
+        key: ValueKey('icon-$key'),
+        borderRadius: BorderRadius.circular(12),
+        onTap: () => Navigator.pop(c, key),
+        child: Container(
+          decoration: BoxDecoration(color: sel ? cs.primaryContainer : null, borderRadius: BorderRadius.circular(12)),
+          padding: const EdgeInsets.all(6),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 28, color: sel ? cs.onPrimaryContainer : null),
+              const SizedBox(height: 4),
+              Text(
+                label,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(c).textTheme.bodySmall,
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return SafeArea(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: MediaQuery.sizeOf(c).height * 0.7),
+        child: GridView.extent(
+          shrinkWrap: true,
+          maxCrossAxisExtent: 96,
+          padding: const EdgeInsets.fromLTRB(12, 0, 12, 16),
+          mainAxisSpacing: 6,
+          crossAxisSpacing: 6,
+          children: [
+            cell('auto', iconFor(TileConfig(type: t.type)), tx(c, 'Automaattinen', 'Automatic')),
+            for (final e in tileIcons.entries) cell(e.key, e.value, iconLabel(c, e.key)),
+          ],
+        ),
+      ),
+    );
+  },
+);

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-/// Replaces `{{value}}` (and `{{value_int}}`) in [template].
+/// Replaces `{{value}}`, `{{value_int}}` and `{{value_bri254}}` (0–100 % → Hue 1–254) in [template].
 String applyTemplate(String template, Object? value) {
   final v = value ?? '';
   String asInt;
@@ -9,6 +9,10 @@ String applyTemplate(String template, Object? value) {
     asInt = v.round().toString();
   } else {
     asInt = num.tryParse(v.toString())?.round().toString() ?? v.toString();
+  }
+  if (template.contains('{{value_bri254}}')) {
+    final pct = toDouble(v) ?? 100;
+    template = template.replaceAll('{{value_bri254}}', '${(pct * 2.54).round().clamp(1, 254)}');
   }
   return template.replaceAll('{{value_int}}', asInt).replaceAll('{{value}}', _fmt(v));
 }

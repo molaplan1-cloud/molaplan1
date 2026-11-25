@@ -1,5 +1,9 @@
-/// Data for the 'Sähkön hinta' tile (t109u): today+tomorrow slots in c/kWh, today's stats and
+/// Data for the 'Sähkön hinta' tile and page: today+tomorrow slots in c/kWh, today's stats and
 /// a relative price level per slot. Pure Dart.
+///
+/// One calculation for every view (t127u): the stats (now / min / avg / max) always come from
+/// hourly averages of today's local calendar day, whatever the bars show (1 h or 15 min), so the
+/// tile and the full chart can never disagree.
 class PriceSlot {
   const PriceSlot(this.start, this.minutes, this.cents);
   final DateTime start;
@@ -10,28 +14,59 @@ class PriceSlot {
 }
 
 class PriceView {
-  PriceView._(this.slots, this.now, this.current, this.min, this.max, this.avg, this.levels, this.hasTomorrow);
+  PriceView._(
+    this.slots,
+    this.now,
+    this.current,
+    this.min,
+    this.max,
+    this.avg,
+    this.levels,
+    this.hasTomorrow,
+    this.sourceMinutes,
+  );
 
+  /// Bars at the chosen resolution.
   final List<PriceSlot> slots;
   final DateTime now;
+
+  /// The hour containing now (hourly average) – the same number on the tile and the page.
   final PriceSlot? current;
 
-  /// Today's cheapest / most expensive slot and average (null = no prices for today).
+  /// Today's cheapest / priciest hour and the average (null = no prices for today).
   final PriceSlot? min;
   final PriceSlot? max;
   final double? avg;
 
-  /// 0 green · 1 yellow · 2 orange · 3 red, by quartile of all shown prices.
+  /// 0 cheap · 1 mid · 2 expensive (terciles of the shown prices), parallel to [slots].
   final List<int> levels;
   final bool hasTomorrow;
 
-  /// [pts]: (slot start, c/kWh) at [resolutionSec]. [hourly]: average 15-min slots per hour.
-  factory PriceView.build(List<(DateTime, double)> pts, int resolutionSec, DateTime now, {bool hourly = false}) {
-    final res = (resolutionSec / 60).round().clamp(1, 1440);
-    var slots = [for (final p in pts) PriceSlot(p.$1, res, p.$2)]..sort((a, b) => a.start.compareTo(b.start));
-    if (hourly && res < 60) slots = toHourly(slots);
+  /// Resolution of the source data (15 or 60).
+  final int sourceMinutes;
+  bool get quarter => sourceMinutes < 60;
+
+  /// [pts]: (slot start, c/kWh). [resolutionSec] is a hint; the real slot length is read from the
+  /// spacing of the points (a tile may say 3600 while the contract prices are 15-min).
+  factory PriceView.build(List<(DateTime, double)> pts, int resolutionSec, DateTime now, {bool hourly = true}) {
+    final byStart = <int, (DateTime, double)>{};
+    for (final p in pts) {
+      final t = p.$1.toLocal();
+      byStart[t.millisecondsSinceEpoch] = (t, p.$2);
+    }
+    final sorted = byStart.values.toList()..sort((a, b) => a.$1.compareTo(b.$1));
+    var res = (resolutionSec / 60).round().clamp(1, 1440);
+    var gap = 0;
+    for (var i = 1; i < sorted.length; i++) {
+      final d = sorted[i].$1.difference(sorted[i - 1].$1).inMinutes;
+      if (d > 0 && (gap == 0 || d < gap)) gap = d;
+    }
+    if (gap > 0 && gap < res) res = gap;
+    final raw = [for (final p in sorted) PriceSlot(p.$1, res, p.$2)];
+    final hours = res < 60 ? toHourly(raw) : raw;
+    final slots = hourly ? hours : raw;
     final today = [
-      for (final s in slots)
+      for (final s in hours)
         if (_sameDay(s.start, now)) s,
     ];
     PriceSlot? lo, hi;
@@ -39,22 +74,21 @@ class PriceView {
       if (lo == null || s.cents < lo.cents) lo = s;
       if (hi == null || s.cents > hi.cents) hi = s;
     }
-    // Time-weighted average (slots may differ in length).
     final mins = today.fold<int>(0, (a, s) => a + s.minutes);
     final avg = today.isEmpty ? null : today.fold<double>(0, (a, s) => a + s.cents * s.minutes) / mins;
-    final sorted = [for (final s in slots) s.cents]..sort();
-    double q(double f) => sorted.isEmpty ? 0 : sorted[((sorted.length - 1) * f).round()];
-    final q1 = q(0.25), q2 = q(0.5), q3 = q(0.75);
-    final levels = [for (final s in slots) s.cents <= q1 ? 0 : (s.cents <= q2 ? 1 : (s.cents <= q3 ? 2 : 3))];
+    final cs = [for (final s in slots) s.cents]..sort();
+    double q(double f) => cs.isEmpty ? 0 : cs[((cs.length - 1) * f).round()];
+    final q1 = q(1 / 3), q2 = q(2 / 3);
     return PriceView._(
       slots,
       now,
-      slots.where((s) => s.contains(now)).firstOrNull,
+      hours.where((s) => s.contains(now)).firstOrNull,
       lo,
       hi,
       avg,
-      levels,
+      [for (final s in slots) s.cents <= q1 ? 0 : (s.cents <= q2 ? 1 : 2)],
       slots.any((s) => s.start.isAfter(now) && !_sameDay(s.start, now)),
+      res,
     );
   }
 
@@ -74,6 +108,12 @@ class PriceView {
         ),
     ]..sort((a, b) => a.start.compareTo(b.start));
   }
+
+  /// Slots (with their level) that overlap [from, to).
+  List<(PriceSlot, int)> window(DateTime from, DateTime to) => [
+    for (var i = 0; i < slots.length; i++)
+      if (slots[i].end.isAfter(from) && slots[i].start.isBefore(to)) (slots[i], levels[i]),
+  ];
 
   /// Instant cost in c/h at [kw] kilowatts (null when there is no current price).
   double? instantCost(double? kw) => kw == null || current == null ? null : kw * current!.cents;

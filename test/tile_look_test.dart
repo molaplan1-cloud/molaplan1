@@ -189,11 +189,11 @@ void main() {
       expect(find.byKey(const ValueKey('tile-switch')), findsOneWidget);
       expect(find.byKey(const ValueKey('setpoint-dial')), findsOneWidget);
       expect(find.text('21.5°'), findsOneWidget);
-      // Sparkline appears once there are two readings.
+      // A W meter shows a gauge (+ trend once there's data).
       drv.values['power'] = 180;
       await tester.pump(const Duration(seconds: 2));
       await tester.pumpAndSettle();
-      expect(find.byKey(const ValueKey('sparkline')), findsOneWidget);
+      expect(find.byKey(const ValueKey('gauge')), findsOneWidget);
       // Dial +: debounced send of 22.0.
       await tester.tap(find.byKey(const ValueKey('dial-plus')));
       await tester.pump();

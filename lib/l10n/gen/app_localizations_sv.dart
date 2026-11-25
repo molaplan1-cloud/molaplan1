@@ -226,6 +226,122 @@ class AppLocalizationsSv extends AppLocalizations {
   String get se78754330c => 'effekt';
 
   @override
+  String get s1a4eab1f51 => '°C';
+
+  @override
+  String get s9e731440d8 => '%';
+
+  @override
+  String get s77c638e731 => '%';
+
+  @override
+  String get s96abb7f975 => '';
+
+  @override
+  String get s91e5760e43 => '';
+
+  @override
+  String get s2f76c2abd3 => '';
+
+  @override
+  String get sc2b99541c7 => 'Brytare och reläer';
+
+  @override
+  String get sd85dbd8e5e => 'Lampor och dimrar';
+
+  @override
+  String get s38935a3c66 => 'Gardiner och rullgardiner';
+
+  @override
+  String get s64c6ca7840 => 'Energimätare';
+
+  @override
+  String get s662fecdc8d => 'Sensorer';
+
+  @override
+  String get s027fcbe1b6 => 'S<blank> s<blank> Sn';
+
+  @override
+  String get sa376ec78ec => 'Lampa';
+
+  @override
+  String get s6814e463b1 => 'till<blank>';
+
+  @override
+  String get s477d8b2c95 => 'Total effekt';
+
+  @override
+  String sdaa374b331(String p0) {
+    return 'Fas $p0';
+  }
+
+  @override
+  String get s32c88e5aa6 => 'Ljusnivå';
+
+  @override
+  String get sbb26f2192c => 'Batteri';
+
+  @override
+  String get s57b4effa42 => 'Dörr / fönster';
+
+  @override
+  String get s66350d8e7a => 'Rörelse';
+
+  @override
+  String get s29045a726e => 'Vattenläcka';
+
+  @override
+  String get s57c2113aee => 'Rök';
+
+  @override
+  String get se8422f063f => 'Senns Sensli Senled Sen Sen Sensor';
+
+  @override
+  String get s609cb4c5f9 => 'på';
+
+  @override
+  String get s356d822497 => 'av';
+
+  @override
+  String get s0b2f7d7c80 => 'öppet öppet öppna';
+
+  @override
+  String get s7009587b85 => 'Slutna';
+
+  @override
+  String get s3b35de231e =>
+      '<blank> motslidledde sin grade-före-företa-motred-motstödsföre-före-före-före-före-före-före-före-före-före-före-föregående';
+
+  @override
+  String get s3dfa789b85 => 'ALARM';
+
+  @override
+  String get sd9b6de0a6a => 'Andra andra';
+
+  @override
+  String se7520a3990(String p0) {
+    return 'sover - sista $p0';
+  }
+
+  @override
+  String get s3aaacf80d2 => 'offline';
+
+  @override
+  String get see129fb410 => 'ljusstyrka';
+
+  @override
+  String get s5d888c1384 => 'true=Open;false=Closed';
+
+  @override
+  String get sd74ad36c31 => 'true=Motion;false=No motion';
+
+  @override
+  String get sfa12d7fdd7 => 'true=LEAK!;false=Dry';
+
+  @override
+  String get s1f18c0f400 => 'true=SMOKE!;false=OK';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -244,12 +360,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s4dbb677293 => 'nås inte';
 
   @override
-  String get s609cb4c5f9 => 'på';
-
-  @override
-  String get s356d822497 => 'av';
-
-  @override
   String get sf50732e8e8 => 'dimmable';
 
   @override
@@ -258,10 +368,137 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get see129fb410 => 'ljusstyrka';
+  String get sceabe202da => 'camera_';
 
   @override
-  String get sceabe202da => 'camera_';
+  String get s834e3e8c5d => 'Apple Apple Apple';
+
+  @override
+  String get s11d8d321df => 'Apple Apple Apple';
+
+  @override
+  String get sceefb34afd => 'Apple Apple Apple';
+
+  @override
+  String get s24a447c14c => 'Apple Apple Apple';
+
+  @override
+  String get s14418a4f88 => 'Apple Apple Apple';
+
+  @override
+  String get saab3e952a6 => 'Apple Apple Apple';
+
+  @override
+  String get s7fbbfbf469 => 'Apple Apple Apple';
+
+  @override
+  String get s045b27e316 => 'Samsung Samsung Samsung';
+
+  @override
+  String get s2c0aede81e => 'Samsung Samsung Samsung';
+
+  @override
+  String get s7bd2005e15 => 'Google Google Google Google';
+
+  @override
+  String get sdcec96b503 => 'Google Google Google Google';
+
+  @override
+  String get s49960d413e => 'Google Google Google Google';
+
+  @override
+  String get s99e5776a78 => 'Google Google Google Google';
+
+  @override
+  String get sea3c963b09 => 'Sonsan Sonson Sonno Son Son Tillförs Son Sonen';
+
+  @override
+  String get s1e7b1fc81c =>
+      'Syn<blank> syns<blank> Smäktigt Föregående Synd-Sont-Son-Sänks-S';
+
+  @override
+  String get s7dc8f4cf35 => 'Synology';
+
+  @override
+  String get s161d78d79c => 'QNAP';
+
+  @override
+  String get s2512122220 => 'Broder';
+
+  @override
+  String get s127258a6f4 => 'Epson';
+
+  @override
+  String get s4e31401b4f => 'Canon';
+
+  @override
+  String get s933e21c819 => 'HP';
+
+  @override
+  String get sb309051c1f => 'HP';
+
+  @override
+  String get s6f339c5c37 => 'HP';
+
+  @override
+  String get s5f8734f6e4 => 'HP';
+
+  @override
+  String get sceb247a904 => 'Xiaomi';
+
+  @override
+  String get s10b7b68d6c => 'Huawei';
+
+  @override
+  String get s3692c1d592 => 'LG';
+
+  @override
+  String get se7d945b970 => 'LG';
+
+  @override
+  String get s5a5044b5df => 'Sony';
+
+  @override
+  String get sd92d7da7d5 => 'Sony';
+
+  @override
+  String get saa909391c3 => 'Philips';
+
+  @override
+  String get se39b8c84ab => 'Raspberry Pi';
+
+  @override
+  String get sec8808f414 => 'AVM';
+
+  @override
+  String get s0e225fb918 => 'TP-Link';
+
+  @override
+  String get sb34f35dce5 => 'ASUS';
+
+  @override
+  String get s7ea140809c => 'Netgear';
+
+  @override
+  String get s284be225b7 => 'Ubiquiti';
+
+  @override
+  String get sfbaeb6a17e => 'Ubiquiti';
+
+  @override
+  String get sa24e9ce91d => 'MikroTik';
+
+  @override
+  String get sa1b725d397 => 'Espressif';
+
+  @override
+  String get sdf96423738 => 'Amazon Amazon Amazon Amazon';
+
+  @override
+  String get sf253859589 => 'Amazon Amazon Amazon Amazon';
+
+  @override
+  String get sec4d80656d => 'Roku';
 
   @override
   String sb9964cfb3b(String p0) {
@@ -305,13 +542,10 @@ class AppLocalizationsSv extends AppLocalizations {
       'Vanligtvis inte behövs. Om ingenting finns: Shelly app → enhet → inställningar → Enhetsinformation → Enhets-ID. Separat flera med kommatecken.';
 
   @override
-  String get s3aaacf80d2 => 'offline';
-
-  @override
   String get s252ebed5af => 'Shelly Cloud';
 
   @override
-  String get s25399cd337 => 'Server Server Server';
+  String get s25399cd337 => 'Server';
 
   @override
   String get s246c7a46ff =>
@@ -338,9 +572,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s73824fc3d0 =>
       'Tryck på åtgärdsknappen på botten av Dirigera-navet en gång nu. Vänta här.';
-
-  @override
-  String get sa376ec78ec => 'Lampa';
 
   @override
   String get sda8d9bf1cd => 'Uttag';
@@ -425,6 +656,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s5b44cbe9c0 => 'Hem';
+
+  @override
+  String get s5a40f12b6a => 'Lägg till';
 
   @override
   String get s58aaa6dade => 'Utsikten är låst';
@@ -999,16 +1233,13 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s9aa9bc9679 => 'Enhet svarade men har ingen klimatenhet.';
 
   @override
-  String get s5a40f12b6a => 'Lägg till';
-
-  @override
-  String get s7aa295f82d => 'Inte hemma – byt ›';
-
-  @override
-  String get sdc74e0c0e7 => 'Inte i hemnätverket – byt till fjärranslutning ›';
-
-  @override
   String get s3a5c21004e => 'Offline';
+
+  @override
+  String get sbc7a87e591 => 'Kunde inte få priser - retrying';
+
+  @override
+  String get s3f0837ec84 => 'Kunde inte få vädret - förtrytning';
 
   @override
   String get s68cbe596f8 => 'Inloggningen har gått ut';
@@ -1287,10 +1518,73 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s13e301a66e => 'Okänd enhet';
 
   @override
+  String get sddb2c2cb2b => 'Telefon';
+
+  @override
+  String get s16cd267576 => 'Surfplatta';
+
+  @override
+  String get sec4679ec39 => 'Dator';
+
+  @override
+  String get s798f9a0558 => 'Skrivare';
+
+  @override
+  String get s06109b8e5c => 'TV / mediaspelare';
+
+  @override
+  String get sc4655d321e => 'Högtalare';
+
+  @override
+  String get sa9f2f85b3e => 'Router';
+
+  @override
+  String get sf8360dcd74 => 'Nätverkslagring';
+
+  @override
+  String get s8e21b6f258 => 'Smart enhet';
+
+  @override
+  String get sb38b582dab => 'Hembrygga';
+
+  @override
+  String get sdf66171e91 => 'Den här enheten';
+
+  @override
+  String get s76a76a654e => 'iPhone-surfzon';
+
+  @override
+  String get s15d4ca1672 => 'Telefonens surfzon';
+
+  @override
+  String get sd54522fe39 => 'Router / surfzon';
+
+  @override
   String get s23f4820db7 => 'Inte kontrollerbar ännu';
 
   @override
   String get saae59a3865 => 'via home bridge';
+
+  @override
+  String get sdccd6e7f24 => 'Modell';
+
+  @override
+  String get s891a4b434e => ')\'}';
+
+  @override
+  String get s43aba09687 => 'Hamnar';
+
+  @override
+  String get scee3511db6 => 'Källor';
+
+  @override
+  String get sbc46a05125 => 'Namnge enheten';
+
+  @override
+  String get s1d5ed84aed => 'Sparas på den här enheten.';
+
+  @override
+  String get s59622d792b => 'Byt namn';
 
   @override
   String get s1169d2d093 => 'Hitta enheter';
@@ -1321,12 +1615,34 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s9a018b8166 => 'Du är borta: hembron sökte ditt hemnätverk.';
 
   @override
-  String sc81d032be0(String p0) {
-    return '$p0 okända enheter';
+  String sf16a25c313(String p0) {
+    return 'Andra enheter i nätverket ($p0)';
   }
 
   @override
-  String get s7f3081821b => 'Molaplan kan inte kontrollera dessa.';
+  String get s9e8430c37b =>
+      'Molaplan styr inte dessa. iPhones visar sitt namn bara när de vakna.';
+
+  @override
+  String get s3c98732a8c => 'Mätare';
+
+  @override
+  String get s6f29aeb685 => 'Trend';
+
+  @override
+  String get s3298699c1a => 'Mätare + trend';
+
+  @override
+  String get sed593f53ed => 'Värde';
+
+  @override
+  String get s9027c88cb7 => 'Samla in data...';
+
+  @override
+  String get se38a9bb2ed => 'Senaste';
+
+  @override
+  String get s049d71f971 => 'Sista sista';
 
   @override
   String get s55d52c5ae1 => 'Denna enhet är inte på Wi-Fi';
@@ -1603,6 +1919,14 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sac4debdb9c => 'Välj vad som går på hemvyn och namnge dem.';
 
   @override
+  String get sfe5661e401 => 'Avmarkera alla';
+
+  @override
+  String s2618555da0(String p0) {
+    return 'Välj alla ($p0)';
+  }
+
+  @override
   String get s86c3f92546 => 'Lägg också till ljusstyrka / kraft';
 
   @override
@@ -1834,6 +2158,72 @@ class AppLocalizationsSv extends AppLocalizations {
       'Ingen live-video. Kontrollera att du är på hemmanätverket och RTSP är på i kameran.';
 
   @override
+  String get s8e574c3313 => 'Effekt';
+
+  @override
+  String get sa9360bdda1 => 'Fläkt';
+
+  @override
+  String get sc7d02fbe84 => 'Värmepump';
+
+  @override
+  String get s8d06ee5308 => 'Larm';
+
+  @override
+  String get sfb63e3c23f => 'Lås';
+
+  @override
+  String get s2f42d90475 => 'Vattenvatten';
+
+  @override
+  String get sf2d10dd213 => 'El/kraft';
+
+  @override
+  String get s291ca127d6 => 'Garage';
+
+  @override
+  String get sb543af1c63 => 'Dörr';
+
+  @override
+  String get s60b1079d6c => 'Fönster';
+
+  @override
+  String get s66ce56ca38 => 'Börja';
+
+  @override
+  String get s0ab3a44562 => 'Timer';
+
+  @override
+  String get s3044a10005 => 'Nätverk';
+
+  @override
+  String get s1f67139f55 => 'Sauna / uppvärmning';
+
+  @override
+  String get sf21fd72396 => 'Outlet';
+
+  @override
+  String get s7783fe5fca => 'Favorit';
+
+  @override
+  String get sb2fa876c32 => 'Ljushet';
+
+  @override
+  String get s912ea5d2ec => 'Skicka';
+
+  @override
+  String get se223375393 => 'Lista List';
+
+  @override
+  String get sfb0b971c01 => 'Svängning';
+
+  @override
+  String get see42f2d999 => 'Fjärr';
+
+  @override
+  String get s9126bf24a0 => 'Sol sol sol solen';
+
+  @override
   String get s306729fe62 => 'Inga priser';
 
   @override
@@ -1849,16 +2239,19 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s5fc5085143 => 'Kostnad';
 
   @override
+  String get s2b2118a93b => 'Gamla data';
+
+  @override
   String get sb730159a01 => 'Pris nu';
 
   @override
-  String get sbc8fb68b5d => 'Billigast i dag';
+  String get s68fcfcfed1 => 'Billigaste timmen i dag';
 
   @override
   String get s86ff059f5e => 'Medelpris i dag';
 
   @override
-  String get se3d8d53b4b => 'Dyrast i dag';
+  String get s7b911d48c6 => 'Dyraste timmen i dag';
 
   @override
   String get s29dbf49d92 => 'Kostnad just nu';
@@ -1875,6 +2268,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s5f131c3ec4 => 'Förbrukning';
+
+  @override
+  String get s039bb374fe => 'Siffrorna är timmedelvärden';
 
   @override
   String get sa5e6b1e0e3 => 'I morgon efter ca 14:00';
@@ -2000,6 +2396,26 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s0a972aa85e =>
       'Lösenord och tokens lagras i enhetens säkra lagring.';
+
+  @override
+  String get sc51b1e0dc0 => 'Vad vill du lägga till?';
+
+  @override
+  String get s67584c9abf => 'Enhet';
+
+  @override
+  String get s38f5b2ef26 =>
+      'Shelly, Sonoff, Hue, kamera, värmepump... Söker ditt hemnätverk automatiskt.';
+
+  @override
+  String get s3b56b2cb8d => 'Kort';
+
+  @override
+  String get sfc846c4cc5 =>
+      'Elpris, väder, kamera, mätning, meddelande eller kommando – ingen ny enhet behövs.';
+
+  @override
+  String get s147f47be4c => 'Lägg till kort';
 
   @override
   String get s229f981388 => 'Home bridge på';
@@ -2173,9 +2589,6 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get sb38b582dab => 'Hembrygga';
-
-  @override
   String get se2e2af02ac =>
       'Hembron är en enhet som stannar hemma, t.ex. en gammal surfplatta eller en dator. När du är borta, din telefons kommandon krypteras genom den till dina enheter.';
 
@@ -2283,13 +2696,25 @@ class AppLocalizationsSv extends AppLocalizations {
   String get scf37cbeda8 => 'Ikon';
 
   @override
-  String get sa444aab286 => 'Automatisk';
-
-  @override
   String get sfeab9bd26f => 'Bredd';
 
   @override
   String get s58be670598 => 'Höjd';
+
+  @override
+  String get sd7314e8237 => 'Visning';
+
+  @override
+  String get s1c72b8c56a => 'Trendlängd';
+
+  @override
+  String get s6bb0c0c7e3 => 'Gauge minimum';
+
+  @override
+  String get sa444aab286 => 'Automatisk';
+
+  @override
+  String get sbf29caff87 => 'Gauge maximum';
 
   @override
   String get sea30815e6a =>
@@ -2312,7 +2737,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s937448ecf5 => 'Testläsare';
 
   @override
-  String get s5cbdea7f7e => 'Display';
+  String get s5cbdea7f7e => 'Visning';
 
   @override
   String get se6af4b33df => 'Enhet';
@@ -2592,9 +3017,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s0789f5f14f => 'DASHBOARDS';
 
   @override
-  String get s59622d792b => 'Byt namn';
-
-  @override
   String get sfb3e3c456c => 'Delete Dashboard';
 
   @override
@@ -2609,9 +3031,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s4229fb4103 => 'Lägg till din första enhet';
-
-  @override
-  String get s147f47be4c => 'Lägg till kort';
 
   @override
   String get sf67e0d5752 => 'Radera kortet?';
@@ -2820,6 +3239,25 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sa6212aaeb4 => 'Plats';
 
   @override
+  String get s12c2f8e6e4 => 'Hemnätverk endast';
+
+  @override
+  String s5f7c464e6d(String p0) {
+    return 'På $p0';
+  }
+
+  @override
+  String s21b64ae0a7(String p0) {
+    return '$p0 fungerar bara på hemnätverket. Kortet återvänder till det normala av sig själv när du är hemma igen.';
+  }
+
+  @override
+  String get s6b1a8249de => 'Sista staten';
+
+  @override
+  String get s56650a18d5 => 'Få det att fungera på distans ›';
+
+  @override
   String get sa0d8c62e5a => 'Inget kommando konfigurerat';
 
   @override
@@ -2834,9 +3272,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s10bf4eab8e =>
       'Lagrad krypterad på den här enheten bara. Som standard lagras PIN-koden inte.';
-
-  @override
-  String get s912ea5d2ec => 'Skicka';
 
   @override
   String get s856418521a => 'Inga kommandon konfigurerade';
@@ -2889,9 +3324,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sa4c0eeea02 => 'Värmepumpar och AC';
 
   @override
-  String get s662fecdc8d => 'Sensorer';
-
-  @override
   String get sa8dbf04ad3 => 'Binära sensorer';
 
   @override
@@ -2899,9 +3331,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s487bf00fc7 => 'Lås';
-
-  @override
-  String get s8d06ee5308 => 'Larm';
 
   @override
   String get s88ac47e6d1 => 'Kameror';
@@ -3098,6 +3527,13 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s8382da3467 => 'Normal';
 
   @override
+  String get s7c1cd8314e => 'Dölj kort som inte fungerar på distans';
+
+  @override
+  String get sa0cbbafb4e =>
+      'Borta hemifrån är kort som bara fungerar på hemnätverket dolda. Som standard stannar de på plats, gråtit ut.';
+
+  @override
   String get s21f870dbc2 =>
       'Visar tekniska inställningar: anslutningar (HTTP, MQTT, Modbus...), nyttolast, JSON-vägar och kakelkällor. De flesta behöver inte dessa.';
 
@@ -3254,7 +3690,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s64f4d1e11a => 'Ange hemmets plats';
 
   @override
-  String get s8ff5c58a5d => 'Ingen väderprognos';
+  String get sbf7cc3de9a => 'Försök nu';
 
   @override
   String get s1becc05ea1 => 'locked=Låst;unlocked=Olåst;jammed=FASTNAT';
@@ -3991,9 +4427,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s7fcea114f0 => 'Vad styr den?';
 
   @override
-  String get sdccd6e7f24 => 'Modell';
-
-  @override
   String get s864ba0233b =>
       'Nyare (Plus, Pro, Gen3) = Plus / Pro / Gen2 +. Old Shelly 1, 2.5, Plug S = Gen1.';
 
@@ -4096,9 +4529,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s05e2aaa15c => 'Börjar med klimat.';
-
-  @override
-  String get sc7d02fbe84 => 'Värmepump';
 
   @override
   String get se699281c85 => 'Värmepump (MQTT)';
@@ -4437,9 +4867,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get seab2c72485 => 'Fan (0 = auto)';
-
-  @override
-  String get sfb0b971c01 => 'Svängning';
 
   @override
   String s3a38b97f7b(String p0) {
