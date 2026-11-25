@@ -20,8 +20,14 @@ void showSnack(BuildContext context, String msg, {bool error = false}) {
     ..hideCurrentSnackBar()
     ..showSnackBar(
       SnackBar(
-        content: Text(msg, maxLines: 4, overflow: TextOverflow.ellipsis),
-        backgroundColor: error ? cs.errorContainer : null,
+        content: Text(
+          msg,
+          maxLines: 4,
+          overflow: TextOverflow.ellipsis,
+          // Explicit colour: readable on both the normal (inverse surface) and the error background.
+          style: TextStyle(color: error ? cs.onErrorContainer : cs.onInverseSurface),
+        ),
+        backgroundColor: error ? cs.errorContainer : cs.inverseSurface,
         behavior: SnackBarBehavior.floating,
         duration: Duration(seconds: error ? 5 : 2),
       ),
@@ -30,14 +36,16 @@ void showSnack(BuildContext context, String msg, {bool error = false}) {
 
 /// Snackbar with an "Undo" (Kumoa) action.
 void showUndo(BuildContext context, String msg, VoidCallback undo) {
+  final cs = Theme.of(context).colorScheme;
   ScaffoldMessenger.of(context)
     ..hideCurrentSnackBar()
     ..showSnackBar(
       SnackBar(
-        content: Text(msg),
+        content: Text(msg, style: TextStyle(color: cs.onInverseSurface)),
+        backgroundColor: cs.inverseSurface,
         behavior: SnackBarBehavior.floating,
         duration: const Duration(seconds: 6),
-        action: SnackBarAction(label: tx(context, 'Kumoa', 'Undo'), onPressed: undo),
+        action: SnackBarAction(label: tx(context, 'Kumoa', 'Undo'), textColor: cs.inversePrimary, onPressed: undo),
       ),
     );
 }

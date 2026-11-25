@@ -36,7 +36,7 @@ class MolaplanApp extends StatelessWidget {
         title: 'Molaplan',
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
-        theme: molaplanTheme(),
+        theme: molaplanTheme(brightness: Brightness.light),
         darkTheme: molaplanTheme(),
         themeMode: ThemeMode.dark,
         home: const HomePage(),
