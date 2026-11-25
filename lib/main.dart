@@ -12,6 +12,7 @@ Future<void> main() async {
   final state = AppState(configStore: PrefsConfigStore(), secretStore: SecureSecretStore());
   await state.load();
   if (state.config.bridgeMode) await keepScreenOn(true);
+  state.update.autoCheck = true;
   runApp(MolaplanApp(state: state));
 }
 

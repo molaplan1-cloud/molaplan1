@@ -246,6 +246,10 @@ class AppConfig {
   /// Camera refresh over the remote link (seconds, throttled).
   int remoteCameraSeconds;
 
+  /// Last automatic update check (ms since epoch) and a version the user chose to skip.
+  int? updateCheckedAt;
+  String? updateSkip;
+
   AppConfig({
     List<ConnectionConfig>? connections,
     List<Dashboard>? dashboards,
@@ -254,6 +258,8 @@ class AppConfig {
     this.bridgeMode = false,
     this.relayUrl,
     this.remoteCameraSeconds = 2,
+    this.updateCheckedAt,
+    this.updateSkip,
   }) : connections = connections ?? [],
        dashboards = dashboards ?? [];
 
@@ -265,6 +271,8 @@ class AppConfig {
     if (bridgeMode) 'bridgeMode': true,
     'relayUrl': ?relayUrl,
     if (remoteCameraSeconds != 2) 'remoteCameraSeconds': remoteCameraSeconds,
+    'updateCheckedAt': ?updateCheckedAt,
+    'updateSkip': ?updateSkip,
     'connections': connections.map((c) => c.toJson(includeSecrets: includeSecrets)).toList(),
     'dashboards': dashboards.map((d) => d.toJson()).toList(),
   };
@@ -279,6 +287,8 @@ class AppConfig {
       bridgeMode: (j['bridgeMode'] ?? false) as bool,
       relayUrl: j['relayUrl'] as String?,
       remoteCameraSeconds: (j['remoteCameraSeconds'] as num?)?.toInt() ?? 2,
+      updateCheckedAt: (j['updateCheckedAt'] as num?)?.toInt(),
+      updateSkip: j['updateSkip'] as String?,
       connections: ((j['connections'] as List?) ?? []).map((e) => ConnectionConfig.fromJson(_map(e))).toList(),
       dashboards: ((j['dashboards'] as List?) ?? []).map((e) => Dashboard.fromJson(_map(e))).toList(),
     );

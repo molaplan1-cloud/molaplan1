@@ -9,12 +9,26 @@ import '../models/models.dart';
 import '../templates/device_templates.dart';
 import 'remote_state.dart';
 import 'storage.dart';
+import 'update_state.dart';
 
 class AppState extends ChangeNotifier {
   AppState({required this.configStore, required this.secretStore}) {
     remote = RemoteState(store: secretStore, configJson: () => exportJson(includeSecrets: true));
     remote.addListener(notifyListeners);
+    update = UpdateState(
+      checkedAt: () => config.updateCheckedAt,
+      skipped: () => config.updateSkip,
+      remember: ({int? checkedAt, String? skip}) async {
+        if (checkedAt != null) config.updateCheckedAt = checkedAt;
+        if (skip != null) config.updateSkip = skip;
+        await save();
+      },
+    );
+    update.addListener(notifyListeners);
   }
+
+  /// In-app updates (startup check is switched on by main()).
+  late final UpdateState update;
   final ConfigStore configStore;
   final SecretStore secretStore;
   late final RemoteState remote;
@@ -354,6 +368,8 @@ class AppState extends ChangeNotifier {
 
   @override
   void dispose() {
+    update.removeListener(notifyListeners);
+    update.dispose();
     remote.removeListener(notifyListeners);
     remote.dispose();
     for (final d in _drivers.values) {

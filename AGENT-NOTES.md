@@ -79,3 +79,16 @@ Relay: https://relay.molaplan.com (custom domain; also https://molaplan-relay.mo
   use refused ports, not fake hostnames, to simulate "away".
 - Limits: the in-app bridge only runs while Molaplan is open (no Android foreground service yet). Watch streams are polled remotely.
   Camera frames > 700 KB are refused remotely. Free plan quotas: see README.
+
+## v0.3.1 – in-app updates
+- `lib/update/update_core.dart` (pure Dart): SemVer compare, GitHub latest-release check (silent on offline/403/429),
+  asset pick (arm64 APK on arm64-v8a, else universal; Windows zip), SHA256SUMS parse + verify, download.
+- `lib/state/update_state.dart`: startup check at most every 6 h (`AppConfig.updateCheckedAt`), skip (`updateSkip`),
+  `autoCheck` is only switched on in main() so tests never hit the network. Android hooks via channel `molaplan/update`
+  (MainActivity.kt: abis, cacheDir, canInstall, openInstallSettings, install via FileProvider `${applicationId}.updates`).
+- `lib/ui/update_ui.dart`: dialog (Päivitä / Myöhemmin / Ohita tämä versio), bridge-mode banner, progress, install guide.
+- Version lives in `lib/version.dart` (test checks it equals pubspec).
+- Release signing: key at /workspace/molaplan-signing (NOT in git), GitHub secrets MOLAPLAN_KEYSTORE_B64 +
+  MOLAPLAN_KEYSTORE_PASSWORD; gradle reads env MOLAPLAN_KEYSTORE / MOLAPLAN_KEYSTORE_PASSWORD, else debug key.
+- CI release assets (stable names): molaplan-android-arm64.apk, molaplan-android-universal.apk,
+  molaplan-windows-x64.zip, SHA256SUMS. Release notes from docs/release-notes/<tag>.md.

@@ -74,12 +74,31 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           channel: stable
           cache: true
+      - name: Release signing key
+        env:
+          KEYSTORE_B64: ${{ secrets.MOLAPLAN_KEYSTORE_B64 }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/molaplan-release.jks"
+            echo "MOLAPLAN_KEYSTORE=$RUNNER_TEMP/molaplan-release.jks" >> "$GITHUB_ENV"
+          else
+            echo "::warning::MOLAPLAN_KEYSTORE_B64 not set - APKs are debug-signed and in-app updates will not install over them"
+          fi
       - run: flutter pub get
-      - run: flutter build apk --release
+      - name: Build APKs (universal + per-ABI)
+        env:
+          MOLAPLAN_KEYSTORE_PASSWORD: ${{ secrets.MOLAPLAN_KEYSTORE_PASSWORD }}
+        run: |
+          mkdir -p dist
+          flutter build apk --release
+          cp build/app/outputs/flutter-apk/app-release.apk dist/molaplan-android-universal.apk
+          flutter build apk --release --split-per-abi
+          cp build/app/outputs/flutter-apk/app-arm64-v8a-release.apk dist/molaplan-android-arm64.apk
+          ls -l dist
       - uses: actions/upload-artifact@v4
         with:
-          name: molaplan-android-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: molaplan-android
+          path: dist/*.apk
 
   release:
     if: startsWith(github.ref, 'refs/tags/v')
@@ -88,9 +107,25 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Collect assets with stable names + SHA256SUMS
+        run: |
+          mkdir -p dist
+          cp artifacts/molaplan-android/molaplan-android-arm64.apk dist/
+          cp artifacts/molaplan-android/molaplan-android-universal.apk dist/
+          cp artifacts/molaplan-windows-x64/molaplan-windows-x64.zip dist/
+          (cd dist && sha256sum molaplan-android-arm64.apk molaplan-android-universal.apk molaplan-windows-x64.zip > SHA256SUMS)
+          cat dist/SHA256SUMS
+          notes="docs/release-notes/${GITHUB_REF_NAME}.md"
+          if [ -f "$notes" ]; then cp "$notes" release-notes.md; else echo "Molaplan ${GITHUB_REF_NAME}" > release-notes.md; fi
       - uses: softprops/action-gh-release@v2
         with:
+          body_path: release-notes.md
           files: |
-            molaplan-windows-x64/molaplan-windows-x64.zip
-            molaplan-android-apk/app-release.apk
+            dist/molaplan-android-arm64.apk
+            dist/molaplan-android-universal.apk
+            dist/molaplan-windows-x64.zip
+            dist/SHA256SUMS

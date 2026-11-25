@@ -5,12 +5,16 @@ import 'package:file_picker/file_picker.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../state/examples.dart';
+import '../state/update_state.dart' show UpdatePhase;
 import 'app_scope.dart';
 import 'guides_page.dart';
 import 'onboarding_page.dart';
 import 'remote_pages.dart';
+import 'update_ui.dart';
+import '../version.dart';
 
-const appVersion = '0.3.0';
+export '../version.dart' show appVersion;
+
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -196,7 +200,19 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               const SizedBox(height: 28),
               Text('Molaplan $appVersion', style: text.titleMedium),
-              const SizedBox(height: 4),
+              const SizedBox(height: 8),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: OutlinedButton.icon(
+                  key: const ValueKey('settings-check-updates'),
+                  onPressed: st.update.phase == UpdatePhase.checking ? null : () => manualUpdateCheck(context),
+                  icon: st.update.phase == UpdatePhase.checking
+                      ? const SizedBox.square(dimension: 18, child: CircularProgressIndicator(strokeWidth: 2))
+                      : const Icon(Icons.system_update_alt),
+                  label: Text(tx(context, 'Tarkista päivitykset', 'Check for updates')),
+                ),
+              ),
+              const SizedBox(height: 8),
               Text(
                 tx(
                   context,

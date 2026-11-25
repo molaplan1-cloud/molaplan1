@@ -29,11 +29,23 @@ android {
         versionName = flutter.versionName
     }
 
+    // Release signing: CI (and local release builds) pass the Molaplan key via env,
+    // so every release has the same signature and in-app updates install over the old app.
+    val ks = System.getenv("MOLAPLAN_KEYSTORE")
+    signingConfigs {
+        if (ks != null && file(ks).exists()) {
+            create("molaplan") {
+                storeFile = file(ks)
+                storePassword = System.getenv("MOLAPLAN_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("MOLAPLAN_KEY_ALIAS") ?: "molaplan"
+                keyPassword = System.getenv("MOLAPLAN_KEY_PASSWORD") ?: System.getenv("MOLAPLAN_KEYSTORE_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.findByName("molaplan") ?: signingConfigs.getByName("debug")
         }
     }
 }
@@ -46,4 +58,8 @@ kotlin {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    implementation("androidx.core:core:1.13.1")
 }

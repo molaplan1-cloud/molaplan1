@@ -10,6 +10,7 @@ import 'onboarding_page.dart';
 import 'settings_page.dart';
 import 'tile_editor.dart';
 import 'tile_widget.dart';
+import 'update_ui.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -30,6 +31,8 @@ class _HomePageState extends State<HomePage> {
       final st = AppScope.read(context);
       if (st.loaded && !st.config.onboardingDone && st.config.connections.isEmpty) {
         Navigator.push(context, MaterialPageRoute(builder: (_) => const OnboardingPage()));
+      } else if (st.loaded) {
+        startupUpdateCheck(context);
       }
     });
   }
@@ -254,11 +257,18 @@ class _HomePageState extends State<HomePage> {
     final wide = MediaQuery.sizeOf(context).width >= 900;
     final cs = Theme.of(context).colorScheme;
 
-    final body = _DashboardGrid(
-      dashboard: d,
-      editing: _editing,
-      onAddTile: () => _addTile(d),
-      onStartEditing: () => setState(() => _editing = true),
+    final body = Column(
+      children: [
+        const UpdateBanner(),
+        Expanded(
+          child: _DashboardGrid(
+            dashboard: d,
+            editing: _editing,
+            onAddTile: () => _addTile(d),
+            onStartEditing: () => setState(() => _editing = true),
+          ),
+        ),
+      ],
     );
 
     final scaffold = Scaffold(
