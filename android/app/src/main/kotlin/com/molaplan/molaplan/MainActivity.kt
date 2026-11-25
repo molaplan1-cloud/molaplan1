@@ -14,9 +14,27 @@ import java.io.File
 
 class MainActivity : FlutterActivity() {
     private var lock: WifiManager.MulticastLock? = null
+    private var linkChannel: MethodChannel? = null
+    private var initialLink: String? = null
+
+    // molaplan://tile/<id> from a notification tap or the ntfy app (Click header).
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        val d = intent.dataString
+        if (d != null && d.startsWith("molaplan:")) linkChannel?.invokeMethod("open", d)
+    }
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
+        initialLink = intent?.dataString?.takeIf { it.startsWith("molaplan:") }
+        linkChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "molaplan/link").apply {
+            setMethodCallHandler { call, result ->
+                when (call.method) {
+                    "initial" -> { result.success(initialLink); initialLink = null }
+                    else -> result.notImplemented()
+                }
+            }
+        }
         // mDNS device discovery needs a multicast lock on Android.
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "molaplan/multicast").setMethodCallHandler { call, result ->
             when (call.method) {
@@ -71,18 +89,26 @@ class MainActivity : FlutterActivity() {
                 "show" -> {
                     try {
                         val nm = getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
+                        val prio = call.argument<Int>("priority") ?: 3
+                        val channel = if (prio >= 4) "alerts" else "replies"
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                             nm.createNotificationChannel(
-                                android.app.NotificationChannel("replies", "Vastaukset", android.app.NotificationManager.IMPORTANCE_HIGH)
+                                android.app.NotificationChannel("replies", "Ilmoitukset", android.app.NotificationManager.IMPORTANCE_DEFAULT)
+                            )
+                            nm.createNotificationChannel(
+                                android.app.NotificationChannel("alerts", "Tärkeät ilmoitukset", android.app.NotificationManager.IMPORTANCE_HIGH)
                             )
                         }
+                        val link = call.argument<String>("link")
+                        val tap = Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                        if (link != null) { tap.action = Intent.ACTION_VIEW; tap.data = Uri.parse(link) }
+                        val id = (System.currentTimeMillis() % 100000).toInt()
                         val open = android.app.PendingIntent.getActivity(
-                            this, 0,
-                            Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
-                            android.app.PendingIntent.FLAG_IMMUTABLE
+                            this, id, tap,
+                            android.app.PendingIntent.FLAG_IMMUTABLE or android.app.PendingIntent.FLAG_UPDATE_CURRENT
                         )
                         val b = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-                            android.app.Notification.Builder(this, "replies") else @Suppress("DEPRECATION") android.app.Notification.Builder(this)
+                            android.app.Notification.Builder(this, channel) else @Suppress("DEPRECATION") android.app.Notification.Builder(this)
                         val n = b.setSmallIcon(applicationInfo.icon)
                             .setContentTitle(call.argument<String>("title") ?: "Molaplan")
                             .setContentText(call.argument<String>("body") ?: "")
@@ -90,7 +116,7 @@ class MainActivity : FlutterActivity() {
                             .setContentIntent(open)
                             .setAutoCancel(true)
                             .build()
-                        nm.notify((System.currentTimeMillis() % 100000).toInt(), n)
+                        nm.notify(id, n)
                         result.success(true)
                     } catch (e: Exception) {
                         result.success(false)

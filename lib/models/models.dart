@@ -390,6 +390,12 @@ class AppConfig {
   /// v0.7.0: scenes, automations, scripts and push settings (synced with the account).
   AutomationSettings automation;
 
+  /// Device-local (v0.7.0): run automations on this device when there is no home bridge; show
+  /// push notifications in this app; Windows: closing the window keeps Molaplan in the tray.
+  bool autoLocal;
+  bool notifyInApp;
+  bool trayOnClose;
+
   AppConfig({
     List<ConnectionConfig>? connections,
     List<Dashboard>? dashboards,
@@ -409,6 +415,9 @@ class AppConfig {
     List<String>? favoriteColors,
     Map<String, String>? scanNames,
     AutomationSettings? automation,
+    this.autoLocal = true,
+    this.notifyInApp = true,
+    this.trayOnClose = true,
   }) : automation = automation ?? AutomationSettings(),
        favoriteColors = favoriteColors ?? ['#FF8A3D', '#FFD166', '#4D96FF', '#C77DFF', 'K2700', 'K5000'],
        scanNames = scanNames ?? {},
@@ -430,6 +439,9 @@ class AppConfig {
     'favoriteColors': favoriteColors,
     if (scanNames.isNotEmpty) 'scanNames': scanNames,
     'automation': automation.toJson(),
+    if (!autoLocal) 'autoLocal': false,
+    if (!notifyInApp) 'notifyInApp': false,
+    if (!trayOnClose) 'trayOnClose': false,
     'relayUrl': ?relayUrl,
     if (remoteCameraSeconds != 2) 'remoteCameraSeconds': remoteCameraSeconds,
     'updateCheckedAt': ?updateCheckedAt,
@@ -455,6 +467,9 @@ class AppConfig {
       favoriteColors: j['favoriteColors'] is List ? [for (final c in j['favoriteColors'] as List) '$c'] : null,
       scanNames: {for (final e in _map(j['scanNames'] ?? const {}).entries) e.key: '${e.value}'},
       automation: AutomationSettings.fromJson(j['automation']),
+      autoLocal: j['autoLocal'] != false,
+      notifyInApp: j['notifyInApp'] != false,
+      trayOnClose: j['trayOnClose'] != false,
       relayUrl: j['relayUrl'] as String?,
       remoteCameraSeconds: (j['remoteCameraSeconds'] as num?)?.toInt() ?? 2,
       updateCheckedAt: (j['updateCheckedAt'] as num?)?.toInt(),

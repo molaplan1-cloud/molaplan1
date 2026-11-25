@@ -31,6 +31,13 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            <!-- molaplan://tile/<id>: notification taps (also from the ntfy app) open the tile. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="molaplan"/>
+            </intent-filter>
         </activity>
         <!-- In-app updates: the downloaded APK is handed to the system installer. -->
         <provider
@@ -61,6 +68,11 @@
         <!-- "Ota kuva" for tile backgrounds (image_picker opens the camera app). -->
         <intent>
             <action android:name="android.media.action.IMAGE_CAPTURE"/>
+        </intent>
+        <!-- "Tilaa ntfy-sovelluksessa": ntfy://host/topic opens the ntfy app if installed. -->
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="ntfy"/>
         </intent>
     </queries>
 </manifest>

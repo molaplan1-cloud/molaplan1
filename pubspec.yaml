@@ -60,6 +60,9 @@ dependencies:
   media_kit_video: ^2.0.1
   media_kit_libs_video: ^1.0.7
   image_picker: ^1.2.4
+  local_notifier: ^0.1.6
+  tray_manager: ^0.5.0
+  window_manager: ^0.5.0
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +82,8 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   generate: true
+  assets:
+    - assets/tray_icon.ico
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

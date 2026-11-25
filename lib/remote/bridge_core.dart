@@ -6,6 +6,8 @@ import 'package:cryptography/cryptography.dart';
 
 import '../state/stores.dart';
 import 'e2e.dart';
+import '../automation/host.dart';
+import '../automation/runner.dart';
 import 'executor.dart';
 import '../prices/prices.dart';
 import '../energy/thermostat.dart';
@@ -78,6 +80,28 @@ class BridgeCore {
     },
   );
 
+  /// Automations, scenes and scripts pushed by the phones (v0.7.0): they run here, also when every
+  /// app is closed. Notifications go out through ntfy.
+  late final AutomationHost automations = AutomationHost(
+    log: log,
+    prices: prices,
+    read: (connId, spec) async {
+      final conn = automations.package.conns[connId];
+      if (conn == null) throw Exception('connection missing');
+      final r = await executor.run({'id': 0, 'op': 'read', 'conn': conn, 'spec': spec});
+      if (r['ok'] != true) throw Exception(r['e']);
+      return r['v'];
+    },
+    send: (connId, spec, value) async {
+      final conn = automations.package.conns[connId];
+      if (conn == null) throw Exception('connection missing');
+      final r = await executor.run({'id': 0, 'op': 'send', 'conn': conn, 'spec': spec, 'value': value});
+      if (r['ok'] != true) throw Exception(r['e']);
+      return r['v'];
+    },
+    saveHistory: (j) => unawaited(store.write('$storageKey.autolog', j)),
+  );
+
   final SecretStore store;
   final RemoteExecutor executor;
 
@@ -133,6 +157,13 @@ class BridgeCore {
           ];
         } catch (_) {}
       }
+      final aa = await store.read('$storageKey.auto');
+      if (aa != null) {
+        try {
+          automations.update(AutomationPackage.fromJson(Map<String, dynamic>.from(jsonDecode(aa) as Map)));
+        } catch (_) {}
+      }
+      automations.loadHistory(await store.read('$storageKey.autolog'));
       final tt = await store.read('$storageKey.thermo');
       if (tt != null) {
         try {
@@ -198,6 +229,40 @@ class BridgeCore {
     log?.call('thermostats: ${jobs.length}');
   }
 
+  /// Replaces the automation package (with connections) and stores it.
+  Future<void> setAutomations(AutomationPackage p) async {
+    await store.write('$storageKey.auto', jsonEncode(p.toJson()));
+    automations.update(p);
+  }
+
+  /// "automations" op: {package:{…}} replaces the set · {run:{kind,id}} runs a scene/script/
+  /// automation here · always returns the status (history, running scripts, last runs).
+  Future<Map<String, dynamic>> _automationsOp(Map<String, dynamic> r) async {
+    final id = r['id'];
+    final spec = Map<String, dynamic>.from((r['spec'] as Map?) ?? const {});
+    try {
+      if (spec['package'] is Map) {
+        await setAutomations(AutomationPackage.fromJson(Map<String, dynamic>.from(spec['package'] as Map)));
+      }
+      Object? out;
+      if (spec['run'] is Map) {
+        final run = spec['run'] as Map;
+        out = await automations.run('${run['kind']}', '${run['id']}');
+      }
+      return {
+        'id': id,
+        'ok': true,
+        'v': {
+          'bridge': homeName,
+          'result': out is num || out is String || out is bool ? out : null,
+          ...automations.status(),
+        },
+      };
+    } catch (e) {
+      return {'id': id, 'ok': false, 'e': '$e', 'k': 'unknown'};
+    }
+  }
+
   /// "rules" op: {jobs:[…], thermostats:[…]} replaces the sets; {status:true} only reads the status.
   Future<Map<String, dynamic>> _rulesOp(Map<String, dynamic> r) async {
     final id = r['id'];
@@ -231,6 +296,7 @@ class BridgeCore {
   void start() {
     rules.start();
     thermo.start();
+    automations.start();
     if (_running) return;
     _running = true;
     _connect();
@@ -467,6 +533,7 @@ class BridgeCore {
         (r) => switch (r['op']) {
           'enroll' => _enroll(r),
           'rules' => _rulesOp(r),
+          'automations' => _automationsOp(r),
           _ => executor.run(r),
         },
       ),
@@ -510,6 +577,7 @@ class BridgeCore {
   Future<void> dispose() async {
     rules.dispose();
     thermo.dispose();
+    await automations.dispose();
     await stop();
     await executor.dispose();
     await _changes.close();

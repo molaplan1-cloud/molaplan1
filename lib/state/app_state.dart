@@ -22,6 +22,7 @@ import '../account/supabase_api.dart' show AccountApi, Session;
 import 'tile_images.dart';
 import '../account/vault.dart' show defaultIterations;
 import 'account_state.dart';
+import 'automation_state.dart';
 import 'remote_state.dart';
 import 'storage.dart';
 import 'update_state.dart';
@@ -64,7 +65,13 @@ class AppState extends ChangeNotifier implements SyncHost {
       },
     );
     update.addListener(notifyListeners);
+    automations = AutomationState(this);
+    automations.addListener(notifyListeners);
+    remote.addListener(automations.changed);
   }
+
+  /// Automations, scenes, scripts and push notifications (v0.7.0).
+  late final AutomationState automations;
 
   /// In-app updates (startup check is switched on by main()).
   late final UpdateState update;
@@ -355,6 +362,7 @@ class AppState extends ChangeNotifier implements SyncHost {
       } catch (_) {}
     }
     _fixRawIdTitles();
+    unawaited(automations.start());
     loaded = true;
     notifyListeners();
   }
@@ -377,6 +385,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     await configStore.save(jsonEncode(config.toJson()));
     if (!_applyingSync) account.localChanged();
     _scheduleRulesPush();
+    automations.changed();
   }
 
   // ---- price rules: they run on the home bridge, so every change is pushed there.
@@ -456,6 +465,9 @@ class AppState extends ChangeNotifier implements SyncHost {
     'updateCheckedAt',
     'updateSkip',
     'viewLocked',
+    'autoLocal',
+    'notifyInApp',
+    'trayOnClose',
   ];
 
   @override
@@ -497,6 +509,8 @@ class AppState extends ChangeNotifier implements SyncHost {
     config.dashboards = other.dashboards;
     config.rules = other.rules;
     config.energy = other.energy;
+    // Older apps do not sync automations: keep ours instead of a fresh empty set.
+    if (cfg['automation'] is Map) config.automation = other.automation;
     if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     if (hasLocalSetup) config.onboardingDone = true;
     _applyingSync = true;
