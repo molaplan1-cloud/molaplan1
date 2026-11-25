@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:uuid/uuid.dart';
 
+import '../automation/model.dart';
 import '../rules/price_rules.dart';
 
 export '../rules/price_rules.dart' show PriceRule;
@@ -386,6 +387,9 @@ class AppConfig {
   /// Own names for devices the network scan found (key: MAC or IP).
   Map<String, String> scanNames;
 
+  /// v0.7.0: scenes, automations, scripts and push settings (synced with the account).
+  AutomationSettings automation;
+
   AppConfig({
     List<ConnectionConfig>? connections,
     List<Dashboard>? dashboards,
@@ -404,7 +408,9 @@ class AppConfig {
     this.hideAwayTiles = false,
     List<String>? favoriteColors,
     Map<String, String>? scanNames,
-  }) : favoriteColors = favoriteColors ?? ['#FF8A3D', '#FFD166', '#4D96FF', '#C77DFF', 'K2700', 'K5000'],
+    AutomationSettings? automation,
+  }) : automation = automation ?? AutomationSettings(),
+       favoriteColors = favoriteColors ?? ['#FF8A3D', '#FFD166', '#4D96FF', '#C77DFF', 'K2700', 'K5000'],
        scanNames = scanNames ?? {},
        rules = rules ?? [],
        energy = energy ?? EnergySettings(),
@@ -423,6 +429,7 @@ class AppConfig {
     if (hideAwayTiles) 'hideAwayTiles': true,
     'favoriteColors': favoriteColors,
     if (scanNames.isNotEmpty) 'scanNames': scanNames,
+    'automation': automation.toJson(),
     'relayUrl': ?relayUrl,
     if (remoteCameraSeconds != 2) 'remoteCameraSeconds': remoteCameraSeconds,
     'updateCheckedAt': ?updateCheckedAt,
@@ -447,6 +454,7 @@ class AppConfig {
       hideAwayTiles: j['hideAwayTiles'] == true,
       favoriteColors: j['favoriteColors'] is List ? [for (final c in j['favoriteColors'] as List) '$c'] : null,
       scanNames: {for (final e in _map(j['scanNames'] ?? const {}).entries) e.key: '${e.value}'},
+      automation: AutomationSettings.fromJson(j['automation']),
       relayUrl: j['relayUrl'] as String?,
       remoteCameraSeconds: (j['remoteCameraSeconds'] as num?)?.toInt() ?? 2,
       updateCheckedAt: (j['updateCheckedAt'] as num?)?.toInt(),

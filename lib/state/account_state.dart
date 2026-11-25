@@ -335,6 +335,10 @@ class AccountState extends ChangeNotifier {
   /// own setup (local mode).
   Future<void> deleteAccount() async {
     final s = await _fresh();
+    // Storage is not removed with the user row: delete this account's tile pictures first.
+    try {
+      await api.deleteImages(s, await api.listImages(s));
+    } catch (_) {}
     await api.deleteAccount(s);
     await signOut();
   }

@@ -312,6 +312,20 @@ class AccountApi {
     return r.bodyBytes;
   }
 
+  /// Names of this account's images (empty on any error).
+  Future<List<String>> listImages(Session s) async {
+    final r = await _do(
+      () => _http.post(
+        Uri.parse('$url/storage/v1/object/list/$imageBucket'),
+        headers: {..._h(s.access), 'Content-Type': 'application/json'},
+        body: jsonEncode({'prefix': '${s.userId}/', 'limit': 1000}),
+      ),
+    );
+    if (r.statusCode >= 300) return const [];
+    final l = jsonDecode(r.body);
+    return l is List ? [for (final e in l.whereType<Map>()) '${e['name']}'] : const [];
+  }
+
   Future<void> deleteImages(Session s, List<String> names) async {
     if (names.isEmpty) return;
     final r = await _do(

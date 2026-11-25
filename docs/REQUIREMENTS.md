@@ -70,7 +70,7 @@ Source = the request id (tNNNu) or the brief/round it came from. Version = the r
 | R090 | Control view: tiles only, by room, gear menu, lock with PIN | t107u | Done | 0.5.0 |
 | R091 | Home Assistant entity picker (search, room/type filters, suggestions, reopen later) | t108u | Done | 0.5.0 |
 | R092 | Per-type tile visuals + look editor (size, colour, icon, name) | t109u–t112u | Done | 0.5.0 |
-| R093 | Tile backgrounds (auto-shrunk, contrast scrim, dim when off, account sync) | t109u–t112u | Partial – image sync needs the Storage migration applied in Supabase | 0.5.0 |
+| R093 | Tile backgrounds (auto-shrunk, contrast scrim, dim when off, account sync) | t109u–t112u | Done – Storage bucket `tile-images` + own-folder policies verified live 2026-11-25; account deletion now also removes the images | 0.5.0 / 0.7.0 |
 | R094 | Take a photo for a tile background (camera) | t113u | Done | 0.6.0 |
 | R095 | Network scanner "Etsi laitteet" (mDNS, SSDP, ONVIF, subnet; via bridge when away) | t119u | Done | 0.6.1 |
 | R096 | Dense responsive grid + "Laattakoko" setting | t120u | Done | 0.6.1 |
