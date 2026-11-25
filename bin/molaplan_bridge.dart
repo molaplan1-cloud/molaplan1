@@ -3,7 +3,7 @@
 //   dart compile exe bin/molaplan_bridge.dart -o molaplan-bridge
 //   ./molaplan-bridge --name "Mökki" --pair
 //
-// Commands while running: pair | devices | remove <id> | status | quit
+// Commands while running: pair | devices | remove <id> | status | rules | quit
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -66,7 +66,7 @@ Options:
   --pair           show a pairing code right after start
   -h, --help
 
-While running, type: pair | devices | remove <id> | status | quit''');
+While running, type: pair | devices | remove <id> | status | rules | quit''');
 }
 
 Future<void> main(List<String> args) async {
@@ -140,12 +140,24 @@ Future<void> main(List<String> args) async {
       stdout.writeln('removed');
     } else if (cmd == 'status') {
       stdout.writeln('relay: ${bridge.link.name}${bridge.lastError == null ? '' : ' (${bridge.lastError})'}');
+    } else if (cmd == 'rules') {
+      // Price rules and thermostats pushed from the app; they run here every minute.
+      final jobs = bridge.rules.jobs;
+      if (jobs.isEmpty) stdout.writeln('(no price rules – add one in the app: long-press a tile → Price control)');
+      for (final j in jobs) {
+        final s = bridge.rules.status[j.rule.id];
+        final next = s == null || s.plan.isEmpty ? '' : '  next on ${_hm(s.plan.first.$1)}–${_hm(s.plan.first.$2)}';
+        final state = s?.on == null ? 'waiting for prices' : (s!.on! ? 'ON' : 'off');
+        stdout.writeln('${j.title}: ${j.rule.describe()}  [$state]${s?.error == null ? '' : '  error: ${s!.error}'}$next');
+      }
     } else if (cmd == 'quit' || cmd == 'exit') {
       break;
     } else if (cmd.isNotEmpty) {
-      stdout.writeln('commands: pair | devices | remove <id> | status | quit');
+      stdout.writeln('commands: pair | devices | remove <id> | status | rules | quit');
     }
   }
   await bridge.dispose();
   exit(0);
 }
+
+String _hm(DateTime t) => '${t.hour.toString().padLeft(2, '0')}:${t.minute.toString().padLeft(2, '0')}';

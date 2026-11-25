@@ -122,6 +122,7 @@ void main() {
       c.rules.add(PriceRule(tileId: tile.id, count: 4));
       final back = AppConfig.fromJson(jsonDecode(jsonEncode(c.toJson())) as Map<String, dynamic>);
       expect(back.rules.single.count, 4);
+      expect(back.rules.single.describe(), 'cheapest 4 h 00–24 (FI)');
       final jobs = RuleJob.fromConfig(back);
       expect(jobs.single.title, 'Varaaja');
       expect(jobs.single.on, {'path': '/on'});

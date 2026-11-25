@@ -46,6 +46,14 @@ class PriceRule {
 
   PriceSettings get settings => PriceSettings(vat: vat, margin: margin, transfer: transfer);
 
+  /// One line for logs and the bridge CLI, e.g. "cheapest 3 h 22–07 (FI)".
+  String describe() => switch (kind) {
+    'above' => 'off above ${threshold.toStringAsFixed(1)} c/kWh ($zone)',
+    'below' => 'on below ${threshold.toStringAsFixed(1)} c/kWh ($zone)',
+    _ => 'cheapest ${quarters ? '$count × 15 min' : '$count h'} '
+        '${fromHour.toString().padLeft(2, '0')}–${toHour.toString().padLeft(2, '0')} ($zone)',
+  };
+
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,

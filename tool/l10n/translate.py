@@ -79,7 +79,21 @@ def skip_mt(en):
     return False
 
 
-PROTECT = re.compile(r'\{\{\w+\}\}|\{p\d+\}|`[^`]+`')
+PROTECT = re.compile(r'\{\{\w+\}\}|\{p\d+\}|`[^`]+`|https?://\S+|\b\d+(?:\.\d+){1,3}\b|c/kWh|€/MWh')
+
+# MT-only wording: the models know these words in another sense (floor tile, explosive blaster, car dashboard).
+GLOSSARY = [
+    (r'\bIR blasters\b', 'IR transmitters'), (r'\bIR blaster\b', 'IR transmitter'),
+    (r'\bblasters\b', 'IR transmitters'), (r'\bblaster\b', 'IR transmitter'),
+    (r'\bTiles\b', 'Cards'), (r'\btiles\b', 'cards'), (r'\bTile\b', 'Card'), (r'\btile\b', 'card'),
+    (r'\bDashboards\b', 'Views'), (r'\bdashboards\b', 'views'), (r'\bDashboard\b', 'View'), (r'\bdashboard\b', 'view'),
+]
+
+
+def glossary(t):
+    for a, b in GLOSSARY:
+        t = re.sub(a, b, t)
+    return t
 
 
 def mt(lang, texts):
@@ -95,7 +109,7 @@ def mt(lang, texts):
         def sub(m):
             toks.append(m.group(0))
             return f'{{p{90 + len(toks) - 1}}}' if not m.group(0).startswith('{p') else m.group(0)
-        prepared.append(PROTECT.sub(sub, t))
+        prepared.append(PROTECT.sub(sub, glossary(t)))
         tokens.append(toks)
     out = []
     for i in range(0, len(prepared), 24):
@@ -205,6 +219,13 @@ def main():
         if todo:
             print(l, 'machine-translating', len(todo))
             res = mt(l, [e for _, e in todo])
+            # Second try for lost placeholders: numbers survive MT better than {p0}.
+            retry = [i for i, ((k, en), t) in enumerate(zip(todo, res)) if not t or not placeholders_ok(en, t)]
+            if retry:
+                num = lambda t: PH.sub(lambda m: str(9001 + int(m.group(1))), t)
+                again = mt(l, [num(todo[i][1]) for i in retry])
+                for i, t in zip(retry, again):
+                    res[i] = re.sub(r'900([1-9])', lambda m: '{p%d}' % (int(m.group(1)) - 1), t)
             bad = 0
             for (k, en), t in zip(todo, res):
                 # MT likes to add a full stop / change the trailing space of short labels.

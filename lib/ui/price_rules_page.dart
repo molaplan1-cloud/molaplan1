@@ -7,7 +7,14 @@ import '../l10n/l10n.dart';
 
 /// Simple presets for price control (one rule per tile).
 class PricePreset {
-  const PricePreset(this.id, this.fi, this.en, this.descFi, this.descEn, this.make);
+  const PricePreset(
+    this.id, {
+    required this.fi,
+    required this.en,
+    required this.descFi,
+    required this.descEn,
+    required this.make,
+  });
   final String id;
   final String fi;
   final String en;
@@ -19,35 +26,35 @@ class PricePreset {
 final pricePresets = <PricePreset>[
   PricePreset(
     'night',
-    'Halvimmat tunnit yöllä',
-    'Cheapest hours at night',
-    'Päällä yön (22–07) halvimpina tunteina. Sopii varaajalle ja sähköauton lataukseen.',
-    'On during the cheapest night hours (22–07). Good for water heaters and EV charging.',
-    (id) => PriceRule(tileId: id, kind: 'cheapest', count: 3, fromHour: 22, toHour: 7),
+    fi: 'Halvimmat tunnit yöllä',
+    en: 'Cheapest hours at night',
+    descFi: 'Päällä yön (22–07) halvimpina tunteina. Sopii varaajalle ja sähköauton lataukseen.',
+    descEn: 'On during the cheapest night hours (22–07). Good for water heaters and EV charging.',
+    make: (id) => PriceRule(tileId: id, kind: 'cheapest', count: 3, fromHour: 22, toHour: 7),
   ),
   PricePreset(
     'day',
-    'Halvimmat tunnit vuorokaudessa',
-    'Cheapest hours of the day',
-    'Päällä vuorokauden halvimpina tunteina.',
-    'On during the cheapest hours of the day.',
-    (id) => PriceRule(tileId: id, kind: 'cheapest', count: 4, fromHour: 0, toHour: 24),
+    fi: 'Halvimmat tunnit vuorokaudessa',
+    en: 'Cheapest hours of the day',
+    descFi: 'Päällä vuorokauden halvimpina tunteina.',
+    descEn: 'On during the cheapest hours of the day.',
+    make: (id) => PriceRule(tileId: id, kind: 'cheapest', count: 4, fromHour: 0, toHour: 24),
   ),
   PricePreset(
     'expensive',
-    'Pois, kun sähkö on kallis',
-    'Off when electricity is expensive',
-    'Sammuu, kun hinta ylittää rajan, ja palaa päälle, kun hinta laskee.',
-    'Turns off above the limit and back on when the price drops.',
-    (id) => PriceRule(tileId: id, kind: 'above', threshold: 20),
+    fi: 'Pois, kun sähkö on kallis',
+    en: 'Off when electricity is expensive',
+    descFi: 'Sammuu, kun hinta ylittää rajan, ja palaa päälle, kun hinta laskee.',
+    descEn: 'Turns off above the limit and back on when the price drops.',
+    make: (id) => PriceRule(tileId: id, kind: 'above', threshold: 20),
   ),
   PricePreset(
     'cheap',
-    'Päälle, kun sähkö on halpa',
-    'On when electricity is cheap',
-    'Päällä vain, kun hinta on rajan alla.',
-    'On only when the price is below the limit.',
-    (id) => PriceRule(tileId: id, kind: 'below', threshold: 5),
+    fi: 'Päälle, kun sähkö on halpa',
+    en: 'On when electricity is cheap',
+    descFi: 'Päällä vain, kun hinta on rajan alla.',
+    descEn: 'On only when the price is below the limit.',
+    make: (id) => PriceRule(tileId: id, kind: 'below', threshold: 5),
   ),
 ];
 

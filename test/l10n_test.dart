@@ -11,12 +11,25 @@ import 'package:molaplan/models/models.dart';
 import 'package:molaplan/state/app_state.dart';
 import 'package:molaplan/state/storage.dart';
 import 'package:molaplan/ui/app_scope.dart';
+import 'package:molaplan/devices/registry.dart';
+import 'package:molaplan/templates/device_templates.dart';
+import 'package:molaplan/ui/account_page.dart';
+import 'package:molaplan/ui/add_device_wizard.dart';
+import 'package:molaplan/ui/connections_page.dart';
+import 'package:molaplan/ui/guides_page.dart';
+import 'package:molaplan/ui/heatpump_pages.dart';
+import 'package:molaplan/ui/onboarding_page.dart';
 import 'package:molaplan/ui/price_rules_page.dart';
+import 'package:molaplan/ui/remote_pages.dart';
+import 'package:molaplan/ui/tile_editor.dart';
 import 'package:molaplan/ui/settings_page.dart';
 import 'package:molaplan/ui/template_gallery.dart';
 import 'package:molaplan/ui/theme.dart';
 
 import 'support/l10n_getters.g.dart';
+
+/// Energy-release pages (thermostat, contract, meters, heating) – filled in as they are added.
+List<Widget> extraL10nPages(AppState st) => const [];
 
 Future<AppState> _state({String language = 'auto', String locale = 'fi_FI'}) async {
   final st = AppState(
@@ -87,36 +100,51 @@ void main() {
     }
   });
 
-  testWidgets('Swedish UI: main screens have no untranslated pairs', (tester) async {
-    tester.view.physicalSize = const Size(900, 3200);
-    tester.view.devicePixelRatio = 1;
-    addTearDown(tester.view.reset);
-    final st = await _state(language: 'sv');
-    await st.upsertTile(st.config.dashboards.first, TileConfig(type: TileType.toggle, title: 'Varaaja'));
-    L10n.instance
-      ..missing.clear()
-      ..recordMissing = true;
-    addTearDown(() => L10n.instance.recordMissing = false);
-    await tester.pumpWidget(MolaplanApp(state: st));
-    await tester.pumpAndSettle();
-    expect(find.text('Lägg till enhet'), findsOneWidget);
-    for (final page in <Widget>[
-      const SettingsPage(),
-      const TemplateGalleryPage(),
-      PriceRulePage(tile: st.config.dashboards.first.tiles.first),
-    ]) {
-      await tester.pumpWidget(
-        AppScope(
-          state: st,
-          child: MaterialApp(theme: molaplanTheme(), locale: const Locale('sv'), home: page),
-        ),
-      );
+  for (final (lang, w) in [('sv', 900.0), ('et', 900.0), ('es', 900.0), ('es', 380.0), ('et', 380.0)]) {
+    testWidgets('$lang UI at ${w.toInt()} px: main screens and every template translated, no overflow', (tester) async {
+      tester.view.physicalSize = Size(w, 3200);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      final st = await _state(language: lang);
+      await st.setAdvanced(true); // show every template and form
+      await st.upsertTile(st.config.dashboards.first, TileConfig(type: TileType.toggle, title: 'Varaaja'));
+      L10n.instance
+        ..missing.clear()
+        ..recordMissing = true;
+      addTearDown(() => L10n.instance.recordMissing = false);
+      await tester.pumpWidget(MolaplanApp(state: st));
       await tester.pumpAndSettle();
-    }
-    expect(find.text('Elpris (spot)'), findsNothing); // gallery was replaced by the price page
-    expect(L10n.instance.missing, isEmpty);
-    await tester.pump(const Duration(seconds: 3));
-  });
+      expect(find.text(tr(lang, 'Lisää laite', 'Add a device')), findsWidgets);
+      final pages = <Widget>[
+        const SettingsPage(),
+        const TemplateGalleryPage(),
+        PriceRulePage(tile: st.config.dashboards.first.tiles.first),
+        const GuidesPage(),
+        const HeatPumpServiceGuidePage(),
+        const AccountPage(),
+        const ConnectionsPage(),
+        const RemoteHubPage(),
+        TileEditor(dashboard: st.config.dashboards.first, initial: TileConfig(type: TileType.toggle, title: ''), isNew: true),
+        for (final t in deviceTemplates) TemplateSetupPage(template: t),
+        const OnboardingPage(),
+        for (final p in deviceProviders)
+          AddDeviceWizard(provider: p, finder: (_) async => const [], locals: () async => const ['192.168.1.10']),
+        ...extraL10nPages(st),
+      ];
+      for (final page in pages) {
+        await tester.pumpWidget(
+          AppScope(
+            state: st,
+            child: MaterialApp(theme: molaplanTheme(), locale: Locale(lang), home: page),
+          ),
+        );
+        await tester.pump(const Duration(milliseconds: 300));
+      }
+      await tester.pumpWidget(const SizedBox());
+      expect(L10n.instance.missing, isEmpty);
+      await tester.pump(const Duration(seconds: 3));
+    });
+  }
 
   testWidgets('settings: language picker switches to Estonian', (tester) async {
     tester.view.physicalSize = const Size(900, 2400);

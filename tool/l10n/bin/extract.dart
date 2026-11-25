@@ -105,7 +105,7 @@ class V extends RecursiveAstVisitor<void> {
   void visitMethodInvocation(MethodInvocation n) {
     final name = n.methodName.name;
     final pos = n.argumentList.arguments.whereType<Expression>().toList();
-    if ({'tx', 'dtx', 'tr', '_t', 't'}.contains(name) && pos.length >= 2) {
+    if ({'tx', 'dtx', 'tr', '_t', 't', '_ip'}.contains(name) && pos.length >= 2) {
       pair(pos[pos.length - 2], pos[pos.length - 1], n);
     }
     if (name == 'FieldSpec' && pos.length >= 3) pair(pos[1], pos[2], n);
@@ -144,6 +144,22 @@ class V extends RecursiveAstVisitor<void> {
     if (f.length == 5) pair(f[2], f[3], n); // heat pump service ports: (brand, port, fi, en, url)
     if (f.length == 4) pair(f[2], f[3], n);
     super.visitRecordLiteral(n);
+  }
+
+  /// Top-level `const _ipHelpFi = '…'` / `_ipHelpEn`.
+  @override
+  void visitCompilationUnit(CompilationUnit n) {
+    final vals = <String, Expression>{};
+    for (final d in n.declarations.whereType<TopLevelVariableDeclaration>()) {
+      for (final v in d.variables.variables) {
+        if (v.initializer != null) vals[v.name.lexeme] = v.initializer!;
+      }
+    }
+    for (final k in vals.keys.where((k) => k.endsWith('Fi'))) {
+      final en = vals['${k.substring(0, k.length - 2)}En'];
+      if (en != null) pair(vals[k], en, vals[k]!);
+    }
+    super.visitCompilationUnit(n);
   }
 
   /// Class members `String get descFi => '…'` / `descEn`, `fi` / `en` (device providers etc.).
