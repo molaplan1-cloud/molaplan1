@@ -10,7 +10,13 @@ library;
 import 'dart:math' as math;
 
 class HeatingPreset {
-  const HeatingPreset(this.id, this.fi, this.en, this.descFi, this.descEn, {required this.upper, required this.lower, required this.sensitivity, required this.lookahead});
+  const HeatingPreset(
+    this.id, {
+    required this.fi,
+    required this.en,
+    required this.descFi,
+    required this.descEn,
+    required this.upper, required this.lower, required this.sensitivity, required this.lookahead});
   final String id;
   final String fi;
   final String en;
@@ -29,10 +35,10 @@ class HeatingPreset {
 const heatingPresets = [
   HeatingPreset(
     'eco',
-    'Säästävä',
-    'Saving',
-    'Lämpö saa vaihdella eniten (+1 / −2 °C). Suurin säästö.',
-    'Temperature may vary the most (+1 / −2 °C). Biggest savings.',
+    fi: 'Säästävä',
+    en: 'Saving',
+    descFi: 'Lämpö saa vaihdella eniten (+1 / −2 °C). Suurin säästö.',
+    descEn: 'Temperature may vary the most (+1 / −2 °C). Biggest savings.',
     upper: 1,
     lower: 2,
     sensitivity: 0.10,
@@ -40,10 +46,10 @@ const heatingPresets = [
   ),
   HeatingPreset(
     'balanced',
-    'Tasapainoinen',
-    'Balanced',
-    'Pieni vaihtelu (+1 / −1 °C). Hyvä oletus.',
-    'Small variation (+1 / −1 °C). A good default.',
+    fi: 'Tasapainoinen',
+    en: 'Balanced',
+    descFi: 'Pieni vaihtelu (+1 / −1 °C). Hyvä oletus.',
+    descEn: 'Small variation (+1 / −1 °C). A good default.',
     upper: 1,
     lower: 1,
     sensitivity: 0.15,
@@ -51,10 +57,10 @@ const heatingPresets = [
   ),
   HeatingPreset(
     'comfort',
-    'Mukavuus',
-    'Comfort',
-    'Lähes tasainen lämpö (+0,5 / −0,5 °C). Säästää vähän.',
-    'Almost even temperature (+0.5 / −0.5 °C). Saves a little.',
+    fi: 'Mukavuus',
+    en: 'Comfort',
+    descFi: 'Lähes tasainen lämpö (+0,5 / −0,5 °C). Säästää vähän.',
+    descEn: 'Almost even temperature (+0.5 / −0.5 °C). Saves a little.',
     upper: 0.5,
     lower: 0.5,
     sensitivity: 0.25,

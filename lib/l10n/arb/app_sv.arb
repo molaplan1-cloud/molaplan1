@@ -178,7 +178,25 @@
  "@sbb62433c2c": {
   "x-mt": true
  },
+ "sc27533ae83": "Sparsam",
+ "sdbcb85509b": "Temperaturen får variera mest (+1 / −2 °C). Störst besparing.",
+ "s380b20be36": "Balanserad",
+ "s66ea783264": "Liten variation (+1 / −1 °C). Ett bra standardval.",
+ "see96226e44": "Komfort",
+ "sb403e00b3d": "Nästan jämn temperatur (+0,5 / −0,5 °C). Sparar lite.",
  "s0bf7cb1613": "Philips Hue",
+ "se17d4e4197": "Hue Bridge och dess lampor (också Zigbee lampor parade till det). Par med bryggknappen.",
+ "@se17d4e4197": {
+  "x-mt": true
+ },
+ "sf83a145406": "I Hue-appen: Inställningar → Hue Bridges → (i) → IP-adress. Eller i routerns enhetslista: \"Philips-hue\".",
+ "@sf83a145406": {
+  "x-mt": true
+ },
+ "s80ee7a25a9": "Tryck på den stora runda knappen ovanpå Hue Bridge nu. Vänta här - det ansluter själv.",
+ "@s80ee7a25a9": {
+  "x-mt": true
+ },
  "s4dbb677293": "nås inte",
  "s609cb4c5f9": "på",
  "s356d822497": "av",
@@ -194,8 +212,24 @@
  },
  "se78754330c": "effekt",
  "sfcb44be1a0": "Shelly",
+ "sa6ff717527": "Reläer och pluggar: Pro 4PM, Plus 1PM, Plug S, 2,5 ... Hittas automatiskt, kakel för varje kanal.",
+ "@sa6ff717527": {
+  "x-mt": true
+ },
+ "sd7e123cd2f": "I Shelly-appen: öppna enheten → växel (inställningar) → Enhetsinformation → IP-adress. Eller i routerns enhetslista: namnet börjar med \"helt...\".",
+ "@sd7e123cd2f": {
+  "x-mt": true
+ },
  "s5f2b2ca5f5": "på nu",
  "s67f64cd925": "av nu",
+ "sd8dfb25d31": "Shelly Cloud (ingen bro)",
+ "@sd8dfb25d31": {
+  "x-mt": true
+ },
+ "s350215338a": "Styr Shellys genom Shelly-molnet från var som helst. Du behöver bara nyckeln från Shelly-appen.",
+ "@s350215338a": {
+  "x-mt": true
+ },
  "s64037991c2": "Shelly app → din profil → Användarinställningar → Auktoriseringsmolnnyckel → Få nyckel. Kopiera och klistra in den här.",
  "@s64037991c2": {
   "x-mt": true
@@ -227,6 +261,18 @@
   "x-mt": true
  },
  "sf34c97592f": "IKEA Dirigera",
+ "sb38eac6a87": "IKEA smart hub och dess lampor och pluggar (Zigbee). Par med knappen på navet.",
+ "@sb38eac6a87": {
+  "x-mt": true
+ },
+ "s4e92ab791e": "I IKEA Home smart app: Inställningar → Hub → IP-adress. Eller i routerns enhetslista: \"gw2-...\" eller \"dirigera\".",
+ "@s4e92ab791e": {
+  "x-mt": true
+ },
+ "s73824fc3d0": "Tryck på åtgärdsknappen på botten av Dirigera-navet en gång nu. Vänta här.",
+ "@s73824fc3d0": {
+  "x-mt": true
+ },
  "sa376ec78ec": "Lampa",
  "sda8d9bf1cd": "Uttag",
  "sb662db81d8": "Adressen ser ofullständig. Använd fyra nummer med prickar, t.ex. 192.168.1.50.",
@@ -752,11 +798,123 @@
   "x-mt": true
  },
  "s5a40f12b6a": "Lägg till",
+ "sa3a093e55e": "Värme",
+ "s8efb99df1d": "Kyla",
+ "s0b98d62330": "Värme och kyla",
+ "s33831dd49f": "Av",
+ "sa61efb9866": "värmer",
+ "s9a47ee3e3c": "kyler",
+ "s156712ac0c": "väntar",
+ "s8a1f52a37b": "Termostaten borttagen",
+ "s28dc9bc46a": "Ingen temperaturavläsning",
+ "s4f1166fe24": "Ingen hembro: termostaten styr ännu inte. Ställ in fjärråtkomst på hemmatabletten.",
+ "@s4f1166fe24": {
+  "x-mt": true
+ },
+ "see9111ba68": "Relä eller brytare (på/av)",
+ "seaed91ad78": "Värmepump eller AC (börvärde)",
+ "sb757921c13": "Värmer",
+ "s7407864734": "Kyler",
+ "s272aa3f1da": "Båda",
+ "sdadb6e3501": "Reservvärmare",
+ "se4e381334d": "Börjar först när det är tydligt under målet.",
+ "@se4e381334d": {
+  "x-mt": true
+ },
+ "s17c79c5f4e": "Power on/off (tillval)",
+ "@s17c79c5f4e": {
+  "x-mt": true
+ },
+ "s92d88612de": "Värmeläge knapp (valfritt)",
+ "@s92d88612de": {
+  "x-mt": true
+ },
+ "s75ac845bab": "Cool läge knapp (tillval)",
+ "@s75ac845bab": {
+  "x-mt": true
+ },
+ "se12fc46923": "Ingen",
+ "sc590a09db9": "Vad värmer eller kyler?",
+ "sa15ffe53d4": "Välj en eller flera. t.ex. en värmepump och en backup värmare.",
+ "@sa15ffe53d4": {
+  "x-mt": true
+ },
+ "sd47a7615a7": "Inga lämpliga enheter ännu",
+ "s3c7649a7f0": "Lägg först till ett relä (t.ex. Shelly) eller en värmepump (IR eller serviceport), sedan komma tillbaka.",
+ "@s3c7649a7f0": {
+  "x-mt": true
+ },
+ "see513572ea": "Varifrån läses temperaturen?",
+ "s5155522e83": "Välj en termometer. Flera = nedgång eller genomsnitt.",
+ "@s5155522e83": {
+  "x-mt": true
+ },
+ "s581fa290f3": "Valfritt: värmepumpen mäter sig själv. Välj en sensor för att se temperaturen.",
+ "@s581fa290f3": {
+  "x-mt": true
+ },
+ "s7e4d8d60a0": "Ingen termometer",
+ "s0787d80876": "Lägg först till en enhet som visar en temperatur.",
+ "@s0787d80876": {
+  "x-mt": true
+ },
+ "s89661203b7": "Första fungerande",
+ "s0da3005956": "Medelvärde",
+ "s0c6a008ffd": "Namn och läge",
+ "sb1924acbe7": "Namn",
+ "s1790a71e85": "t.ex. Vardagsrum",
+ "sd5f46903a1": "Måltemperatur",
+ "s6de95e582f": "Om temperaturen försvinner",
+ "s8ff25225b4": "Stäng av värme/kyla (säkrast)",
+ "s17cb86f49e": "Behåll som det är",
+ "sf4caddf894": "Avancerat",
+ "s9624f070ee": "Hysteres",
+ "sf070be2c1e": "Dödband (värme/kyla)",
+ "s64540136ff": "Minsta tid på",
+ "s21713a2177": "Minsta tid av",
+ "s8f7c8eb7d0": "Backup värmare när under målet genom",
+ "@s8f7c8eb7d0": {
+  "x-mt": true
+ },
+ "sf1eb3b2d34": "Sensor förlorad efter ingen läsning för",
+ "@sf1eb3b2d34": {
+  "x-mt": true
+ },
+ "s0ab1430151": "Ny termostat",
+ "sbbc98d573d": "Redigera termostat",
+ "s6c3e76828b": "Nästa",
+ "s187d328bb1": "Redigera",
+ "sc1845eb440": "Radera",
+ "s87984716cb": "Ta bort termostaten?",
+ "s29fd8d5b5e": "Nu",
+ "s79786b9f7d": "Mål",
+ "sdd309c0a63": "Termostaten körs på hembryggan",
+ "s9c1b5394df": "Ställ in fjärråtkomst på hemmatabletten (Inställningar → Fjärråtkomst). Tills dess kontrollerar det inte någonting.",
+ "@s9c1b5394df": {
+  "x-mt": true
+ },
+ "s06cda8c0de": "Körs på den här enheten (hembrygga).",
+ "s2342536aea": "Körs på hembryggan.",
+ "s798f7b2876": "Smart uppvärmning",
+ "s2c5993c1fd": "Förvärmning före dyr el och kallt väder, och låter temperaturen sjunka lite i dyra timmar.",
+ "@s2c5993c1fd": {
+  "x-mt": true
+ },
+ "s81c4abc1a5": "Övervärme +",
+ "sdea18b2b40": "Undervärme −",
+ "s523214c8db": "Linje = måltemperatur, barer = elpris, streckad = utomhustemperatur.",
+ "@s523214c8db": {
+  "x-mt": true
+ },
+ "s94b8f63aa7": "Lägg hem plats för vädret",
+ "@s94b8f63aa7": {
+  "x-mt": true
+ },
+ "s941fbb47fe": "Planen beräknas…",
  "s306729fe62": "Inga priser",
  "@s306729fe62": {
   "x-mt": true
  },
- "s29fd8d5b5e": "Nu",
  "s723c887da6": "Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min",
  "@s723c887da6": {
   "x-mt": true
@@ -915,7 +1073,6 @@
  "@sb160156a36": {
   "x-mt": true
  },
- "s6c3e76828b": "Nästa",
  "s43d448a950": "Lägg till i hemvyn",
  "sd890121a57": "Show home view",
  "@sd890121a57": {
@@ -1038,7 +1195,6 @@
  "@sac4debdb9c": {
   "x-mt": true
  },
- "sb1924acbe7": "Namn",
  "s86c3f92546": "Lägg också till ljusstyrka / kraft",
  "@s86c3f92546": {
   "x-mt": true
@@ -1047,10 +1203,7 @@
  "@s91571486e4": {
   "x-mt": true
  },
- "sf86536db42": "Gjort! {p0} kakel tillagda",
- "@sf86536db42": {
-  "x-mt": true
- },
+ "sf86536db42": "Klart! {p0} kort tillagda",
  "sbfaea66122": "Brickorna arbetar hemma och bort genom molnet - inget annat att göra.",
  "@sbfaea66122": {
   "x-mt": true
@@ -1091,6 +1244,15 @@
   "x-mt": true
  },
  "s846ee3bc67": "Andra enheter",
+ "sdeadd78d47": "Thermostat värme kylning",
+ "@sdeadd78d47": {
+  "x-mt": true
+ },
+ "s48264cfe32": "Termostat",
+ "s641a848754": "Håller den temperatur du vill ha: styr reläer eller en värmepump från en termometer. Kan spara med spotpriser.",
+ "@s641a848754": {
+  "x-mt": true
+ },
  "s2a9b6fedd9": "Kan inte hitta ditt varumärke?",
  "@s2a9b6fedd9": {
   "x-mt": true
@@ -1164,10 +1326,7 @@
  },
  "sceb8e47d07": "Testa anslutningen",
  "s02ce5f4a01": "Fungerar!",
- "sb9e9e55164": "Dessa plattor kommer att skapas",
- "@sb9e9e55164": {
-  "x-mt": true
- },
+ "sb9e9e55164": "Dessa kort skapas",
  "s1cb2891ef2": "Fyll i fälten märkta med * för att se plattorna.",
  "@s1cb2891ef2": {
   "x-mt": true
@@ -1201,6 +1360,38 @@
  },
  "sc95fb5440b": "Stream slutade",
  "@sc95fb5440b": {
+  "x-mt": true
+ },
+ "s62cfd94468": "Billigaste timmar på natten",
+ "@s62cfd94468": {
+  "x-mt": true
+ },
+ "s7995dff292": "Under de billigaste natttimmarna (22-07). Bra för vattenvärmare och EV-laddning.",
+ "@s7995dff292": {
+  "x-mt": true
+ },
+ "sf92675687a": "Billigaste timmar på dagen",
+ "@sf92675687a": {
+  "x-mt": true
+ },
+ "sf71a753c59": "Under de billigaste timmarna på dagen.",
+ "@sf71a753c59": {
+  "x-mt": true
+ },
+ "s6c070f7367": "Av när el är dyrt",
+ "@s6c070f7367": {
+  "x-mt": true
+ },
+ "s214f034099": "Stänger av ovanför gränsen och tillbaka på när priset sjunker.",
+ "@s214f034099": {
+  "x-mt": true
+ },
+ "s3939cfc37e": "När elektricitet är billigt",
+ "@s3939cfc37e": {
+  "x-mt": true
+ },
+ "scecc366bc4": "Endast när priset ligger under gränsen.",
+ "@scecc366bc4": {
   "x-mt": true
  },
  "s6e700ae773": "Prisstyrning borttagen",
@@ -1269,7 +1460,6 @@
  "@sccd1325381": {
   "x-mt": true
  },
- "sc1845eb440": "Radera",
  "s837e0fc5e6": "IR är envägs: värmepumpen bekräftar inte kommandon. Tiles visar det sista skickade tillståndet.",
  "@s837e0fc5e6": {
   "x-mt": true
@@ -1535,12 +1725,13 @@
  "@sacfc0c0b41": {
   "x-mt": true
  },
+ "s7172c54c2c": "Håller temperaturen på inställt värde.",
  "s76e7a995de": "Value read",
  "@s76e7a995de": {
   "x-mt": true
  },
- "sc5edd6d3d1": "Ny ruta",
- "sa684fd0716": "Redigera ruta",
+ "sc5edd6d3d1": "Nytt kort",
+ "sa684fd0716": "Redigera kort",
  "s8a8673aafe": "Rubrik",
  "scf37cbeda8": "Ikon",
  "sa444aab286": "Automatisk",
@@ -1846,20 +2037,20 @@
  "@scc5cf9957d": {
   "x-mt": true
  },
- "s7cf6340503": "Ny enhet med färdiga rutor",
+ "s7cf6340503": "Ny enhet med färdiga kort",
  "se6ca707cf3": "Lättast: Shelly, ESP32-CAM, Home Assistant",
  "@se6ca707cf3": {
   "x-mt": true
  },
  "s0789f5f14f": "DASHBOARDS",
+ "s49de879696": "Energi",
  "s1da81fd6c3": "Inställningar",
  "s59622d792b": "Byt namn",
  "sfb3e3c456c": "Delete Dashboard",
  "@sfb3e3c456c": {
   "x-mt": true
  },
- "s187d328bb1": "Redigera",
- "scdfd80f963": "Lägg till ruta",
+ "scdfd80f963": "Lägg till kort",
  "s41c3cebc48": "Lägg till enhet",
  "s71af34b8e9": "Tom vy",
  "s6a210970eb": "Din enhet plattor visas här: temperaturer, växlar, kameror och genvägar. Börja med att lägga till en enhet.",
@@ -1867,12 +2058,88 @@
   "x-mt": true
  },
  "s4229fb4103": "Lägg till din första enhet",
- "s147f47be4c": "Lägg till ruta",
- "sf67e0d5752": "Radera rutan?",
+ "s147f47be4c": "Lägg till kort",
+ "sf67e0d5752": "Radera kortet?",
  "s97f46743e0": "Tile \"{p0}\" raderad",
  "@s97f46743e0": {
   "x-mt": true
  },
+ "sb8934a5835": "Elförbrukning",
+ "s5409dc748f": "Räknas inte",
+ "sf0bbcc217b": "Hela fastigheten",
+ "s0ad1897b28": "Enhetsmätare",
+ "s99268b5a6c": "Hela fastigheten = huvudmätare. Enhetsmätare = en enhet (visas som en del av totalen, räknas aldrig två gånger).",
+ "se1174af557": "Del av mätare (valfritt)",
+ "s9773c92c92": "Energi och kostnader",
+ "s43dead6994": "Elavtal",
+ "sef4d24cdd4": "Dag",
+ "sa62dd794ce": "Månad",
+ "s6b2ebe5aca": "Välj dina mätare först",
+ "sde41f2fac9": "Markera nedan vilken mätare mäter hela webbplatsen och vilka enstaka enheter.",
+ "@sde41f2fac9": {
+  "x-mt": true
+ },
+ "s4ad000d885": "inkl. moms",
+ "s9e214b6e88": "exkl. moms",
+ "s73771d252c": "Uppmätta enheter totalt",
+ "s22d03356a9": "Övrig förbrukning",
+ "s48b08c5f5a": "Fasta avgifter (el + elnät)",
+ "s286e1cfb54": "Totalt",
+ "s2e8700e0cf": "En del av användningen hade inget pris (punktpriset saknades).",
+ "@s2e8700e0cf": {
+  "x-mt": true
+ },
+ "sbbd89fbc05": "Användning spelas in medan appen är öppen (hela tiden på hemmatabletten).",
+ "@sbbd89fbc05": {
+  "x-mt": true
+ },
+ "s64382718ff": "Mätare",
+ "s9a3a0d414e": "Inga kraft- eller energikort (W, kW, Wh, kWh). Lägg till t.ex. en Shelly-mätare.",
+ "@s9a3a0d414e": {
+  "x-mt": true
+ },
+ "sdb0484d728": "Sparat",
+ "se80021e22a": "Kopiera priserna från din räkning. Skriv dem med eller utan moms - kostnaderna visas båda sätten.",
+ "@se80021e22a": {
+  "x-mt": true
+ },
+ "sfb62156afe": "Prisområde",
+ "s1762fb70a7": "Energi",
+ "s2ed3e3cf28": "Spotpris",
+ "s5d1dd0f675": "Fast",
+ "sedb38796fb": "Natt/dag",
+ "s0774cea15a": "Påslag",
+ "s63370fe61a": "Elpris",
+ "s50a7dd89c6": "Dagel",
+ "sdeaa5ad900": "Nattel",
+ "se93c7bcd86": "Fast avgift (el)",
+ "sb7937e4b91": "Elnät",
+ "s0f89840226": "Enkeltariff",
+ "sa768f1b352": "Elnätspris",
+ "s9e5dde22cb": "Elnät dag",
+ "sdf7a4fd2e3": "Elnät natt",
+ "s4df0aee067": "Fast avgift (elnät)",
+ "s4c59c90975": "Natten börjar",
+ "s84decd042b": "Natten slutar",
+ "s90c26f1e37": "Skatter",
+ "s222cb348a0": "Energiskatt",
+ "sbe412dcaa6": "Moms",
+ "s43b55c13c5": "Sök misslyckades. kontrollera anslutningen.",
+ "@s43b55c13c5": {
+  "x-mt": true
+ },
+ "s171834ca33": "Hemmets plats",
+ "s6f6c2fe37a": "Väderprognosen (Open-Meteo) hjälper förvärmning före kallt väder.",
+ "@s6f6c2fe37a": {
+  "x-mt": true
+ },
+ "s5f663978d6": "Ort",
+ "s7be6460c54": "t.ex. Tammerfors",
+ "s1576b70590": "Elanvändning, kostnader, kontrakt och väder.",
+ "@s1576b70590": {
+  "x-mt": true
+ },
+ "sa6212aaeb4": "Plats",
  "sa0d8c62e5a": "Inget kommando konfigurerat",
  "@sa0d8c62e5a": {
   "x-mt": true
@@ -1929,7 +2196,6 @@
  "sf3d644dd4c": "Lär in en fjärrkontrollknapp",
  "sfb1a18d11f": "Uppdatera",
  "s4cbe24240f": "På",
- "s33831dd49f": "Av",
  "sdc398885dc": "Avancerade inställningar",
  "s5d477f3cd8": "Vanligtvis behöver du inte dessa",
  "@s5d477f3cd8": {
@@ -1975,7 +2241,6 @@
   "x-mt": true
  },
  "s9bb545e9b3": "Logga in eller skapa ett konto",
- "sf4caddf894": "Avancerat",
  "s21f870dbc2": "Visar tekniska inställningar: anslutningar (HTTP, MQTT, Modbus...), nyttolast, JSON-vägar och kakelkällor. De flesta behöver inte dessa.",
  "@s21f870dbc2": {
   "x-mt": true
@@ -2064,8 +2329,8 @@
   "x-mt": true
  },
  "sd6561a08ca": "Nu börjar vi",
- "se5be2a8386": "Dina rutor är klara",
- "s8162694dbe": "Lägg till din första ruta",
+ "se5be2a8386": "Dina kort är klara",
+ "s8162694dbe": "Lägg till ditt första kort",
  "s7b2a30b77c": "Dessa plattor gjordes för din enhet. Du kan ändra och ordna dem senare.",
  "@s7b2a30b77c": {
   "x-mt": true
@@ -2240,7 +2505,6 @@
   "x-mt": true
  },
  "sca7e088857": "Elpris",
- "sfb62156afe": "Prisområde",
  "s2525f9a4f5": "Finland är ett område (FI). I Sverige och Norge beror det på var du bor.",
  "@s2525f9a4f5": {
   "x-mt": true
@@ -2821,6 +3085,10 @@
  "sbb2adef009": "Fläkthastighet",
  "see46441329": "0=Off;1=Away;2=Home;3=Boost;4=Max",
  "sb25aad3bc2": "Jag går hemifrån",
+ "s7e461faf91": "Hitta det i routerns enhetslista eller enhetsappen. Du kan också trycka på \"Söknätverk\".",
+ "@s7e461faf91": {
+  "x-mt": true
+ },
  "saf4b222a68": "Enhetens IP-adress",
  "s1bbea216af": "ESP32-CAM-kameran",
  "@s1bbea216af": {
@@ -3054,6 +3322,10 @@
  "@sc899cf95db": {
   "x-mt": true
  },
+ "sc096a735fd": "IP av IR-sändaren. För MQTT, mäklaren adress.",
+ "@sc096a735fd": {
+  "x-mt": true
+ },
  "safc7f1325c": "Värmepumpens märke",
  "s7675ec1754": "Välj märket på enheten eller fjärrkontrollen. Om det inte reagerar, prova \"Övrigt\" med ett alternativt protokoll.",
  "@s7675ec1754": {
@@ -3149,6 +3421,10 @@
  "s84cd6a5180": "RF433-fjärrkontroll (Athom IR & RF)",
  "s4105198757": "Kontrollera RF433 radio-avlägsna enheter (sockor, markiser, garageportar) med Athom \"Tasmota IR & RF433 Controller\". Du lär knapparna direkt efter att ha lagt till.",
  "@s4105198757": {
+  "x-mt": true
+ },
+ "sbc2bf08889": "IP av Athom controller.",
+ "@sbc2bf08889": {
   "x-mt": true
  },
  "sc34430eec0": "t.ex. vad du kontrollerar.",
@@ -3352,46 +3628,6 @@
  "sfb0b971c01": "Svängning",
  "s3a38b97f7b": "{p0} – rum",
  "@s3a38b97f7b": {
-  "x-mt": true
- },
- "se17d4e4197": "Hue Bridge och dess lampor (också Zigbee lampor parade till det). Par med bryggknappen.",
- "@se17d4e4197": {
-  "x-mt": true
- },
- "sf83a145406": "I Hue-appen: Inställningar → Hue Bridges → (i) → IP-adress. Eller i routerns enhetslista: \"Philips-hue\".",
- "@sf83a145406": {
-  "x-mt": true
- },
- "s80ee7a25a9": "Tryck på den stora runda knappen ovanpå Hue Bridge nu. Vänta här - det ansluter själv.",
- "@s80ee7a25a9": {
-  "x-mt": true
- },
- "sa6ff717527": "Reläer och pluggar: Pro 4PM, Plus 1PM, Plug S, 2,5 ... Hittas automatiskt, kakel för varje kanal.",
- "@sa6ff717527": {
-  "x-mt": true
- },
- "sd7e123cd2f": "I Shelly-appen: öppna enheten → växel (inställningar) → Enhetsinformation → IP-adress. Eller i routerns enhetslista: namnet börjar med \"helt...\".",
- "@sd7e123cd2f": {
-  "x-mt": true
- },
- "sd8dfb25d31": "Shelly Cloud (ingen bro)",
- "@sd8dfb25d31": {
-  "x-mt": true
- },
- "s350215338a": "Styr Shellys genom Shelly-molnet från var som helst. Du behöver bara nyckeln från Shelly-appen.",
- "@s350215338a": {
-  "x-mt": true
- },
- "sb38eac6a87": "IKEA smart hub och dess lampor och pluggar (Zigbee). Par med knappen på navet.",
- "@sb38eac6a87": {
-  "x-mt": true
- },
- "s4e92ab791e": "I IKEA Home smart app: Inställningar → Hub → IP-adress. Eller i routerns enhetslista: \"gw2-...\" eller \"dirigera\".",
- "@s4e92ab791e": {
-  "x-mt": true
- },
- "s73824fc3d0": "Tryck på åtgärdsknappen på botten av Dirigera-navet en gång nu. Vänta här.",
- "@s73824fc3d0": {
   "x-mt": true
  }
 }

@@ -168,6 +168,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sbb62433c2c => 'Check the settings and try again.';
 
   @override
+  String get sc27533ae83 => 'Saving';
+
+  @override
+  String get sdbcb85509b =>
+      'Temperature may vary the most (+1 / −2 °C). Biggest savings.';
+
+  @override
+  String get s380b20be36 => 'Balanced';
+
+  @override
+  String get s66ea783264 => 'Small variation (+1 / −1 °C). A good default.';
+
+  @override
+  String get see96226e44 => 'Comfort';
+
+  @override
+  String get sb403e00b3d =>
+      'Almost even temperature (+0.5 / −0.5 °C). Saves a little.';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -815,10 +835,210 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s5a40f12b6a => 'Add';
 
   @override
-  String get s306729fe62 => 'No prices';
+  String get sa3a093e55e => 'Heating';
+
+  @override
+  String get s8efb99df1d => 'Cooling';
+
+  @override
+  String get s0b98d62330 => 'Heat and cool';
+
+  @override
+  String get s33831dd49f => 'Off';
+
+  @override
+  String get sa61efb9866 => 'heating';
+
+  @override
+  String get s9a47ee3e3c => 'cooling';
+
+  @override
+  String get s156712ac0c => 'idle';
+
+  @override
+  String get s8a1f52a37b => 'Thermostat removed';
+
+  @override
+  String get s28dc9bc46a => 'No temperature reading';
+
+  @override
+  String get s4f1166fe24 =>
+      'No home bridge: the thermostat is not controlling yet. Set up remote access on the home tablet.';
+
+  @override
+  String get see9111ba68 => 'Relay or switch (on/off)';
+
+  @override
+  String get seaed91ad78 => 'Heat pump or AC (setpoint)';
+
+  @override
+  String get sb757921c13 => 'Heats';
+
+  @override
+  String get s7407864734 => 'Cools';
+
+  @override
+  String get s272aa3f1da => 'Both';
+
+  @override
+  String get sdadb6e3501 => 'Backup heater';
+
+  @override
+  String get se4e381334d => 'Starts only when it is clearly below the target.';
+
+  @override
+  String get s17c79c5f4e => 'Power on/off (optional)';
+
+  @override
+  String get s92d88612de => 'Heat mode button (optional)';
+
+  @override
+  String get s75ac845bab => 'Cool mode button (optional)';
+
+  @override
+  String get se12fc46923 => 'None';
+
+  @override
+  String get sc590a09db9 => 'What heats or cools?';
+
+  @override
+  String get sa15ffe53d4 =>
+      'Pick one or more. E.g. a heat pump and a backup heater.';
+
+  @override
+  String get sd47a7615a7 => 'No suitable devices yet';
+
+  @override
+  String get s3c7649a7f0 =>
+      'First add a relay (e.g. Shelly) or a heat pump (IR or service port), then come back.';
+
+  @override
+  String get see513572ea => 'Where is the temperature read from?';
+
+  @override
+  String get s5155522e83 =>
+      'Pick a thermometer. Several = fallback or average.';
+
+  @override
+  String get s581fa290f3 =>
+      'Optional: the heat pump measures itself. Pick a sensor to see the temperature.';
+
+  @override
+  String get s7e4d8d60a0 => 'No thermometer';
+
+  @override
+  String get s0787d80876 => 'First add a device that shows a temperature.';
+
+  @override
+  String get s89661203b7 => 'First working';
+
+  @override
+  String get s0da3005956 => 'Average';
+
+  @override
+  String get s0c6a008ffd => 'Name and mode';
+
+  @override
+  String get sb1924acbe7 => 'Name';
+
+  @override
+  String get s1790a71e85 => 'e.g. Living room';
+
+  @override
+  String get sd5f46903a1 => 'Target temperature';
+
+  @override
+  String get s6de95e582f => 'If the temperature is lost';
+
+  @override
+  String get s8ff25225b4 => 'Switch heating/cooling off (safest)';
+
+  @override
+  String get s17cb86f49e => 'Keep as it is';
+
+  @override
+  String get sf4caddf894 => 'Advanced';
+
+  @override
+  String get s9624f070ee => 'Hysteresis';
+
+  @override
+  String get sf070be2c1e => 'Deadband (heat/cool)';
+
+  @override
+  String get s64540136ff => 'Minimum on time';
+
+  @override
+  String get s21713a2177 => 'Minimum off time';
+
+  @override
+  String get s8f7c8eb7d0 => 'Backup heater when below target by';
+
+  @override
+  String get sf1eb3b2d34 => 'Sensor lost after no reading for';
+
+  @override
+  String get s0ab1430151 => 'New thermostat';
+
+  @override
+  String get sbbc98d573d => 'Edit thermostat';
+
+  @override
+  String get s6c3e76828b => 'Next';
+
+  @override
+  String get s187d328bb1 => 'Edit';
+
+  @override
+  String get sc1845eb440 => 'Delete';
+
+  @override
+  String get s87984716cb => 'Delete the thermostat?';
 
   @override
   String get s29fd8d5b5e => 'Now';
+
+  @override
+  String get s79786b9f7d => 'Target';
+
+  @override
+  String get sdd309c0a63 => 'The thermostat runs on the home bridge';
+
+  @override
+  String get s9c1b5394df =>
+      'Set up remote access on the home tablet (Settings → Remote access). Until then it does not control anything.';
+
+  @override
+  String get s06cda8c0de => 'Runs on this device (home bridge).';
+
+  @override
+  String get s2342536aea => 'Runs on the home bridge.';
+
+  @override
+  String get s798f7b2876 => 'Smart heating';
+
+  @override
+  String get s2c5993c1fd =>
+      'Pre-heats before expensive electricity and cold weather, and lets the temperature drop a little in expensive hours.';
+
+  @override
+  String get s81c4abc1a5 => 'Overheat +';
+
+  @override
+  String get sdea18b2b40 => 'Underheat −';
+
+  @override
+  String get s523214c8db =>
+      'Line = target temperature, bars = electricity price, dashed = outdoor temperature.';
+
+  @override
+  String get s94b8f63aa7 => 'Add the home location for the weather';
+
+  @override
+  String get s941fbb47fe => 'Calculating the plan…';
+
+  @override
+  String get s306729fe62 => 'No prices';
 
   @override
   String get s723c887da6 => 'min';
@@ -970,9 +1190,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get s6c3e76828b => 'Next';
-
-  @override
   String get s43d448a950 => 'Add to home view';
 
   @override
@@ -1104,9 +1321,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sac4debdb9c => 'Pick what goes on the home view and name them.';
 
   @override
-  String get sb1924acbe7 => 'Name';
-
-  @override
   String get s86c3f92546 => 'Also add brightness / power';
 
   @override
@@ -1159,6 +1373,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s846ee3bc67 => 'Other devices';
+
+  @override
+  String get sdeadd78d47 => 'Thermostat heating cooling';
+
+  @override
+  String get s48264cfe32 => 'Thermostat';
+
+  @override
+  String get s641a848754 =>
+      'Keeps the temperature you want: controls relays or a heat pump from a thermometer. Can save with spot prices.';
 
   @override
   String get s2a9b6fedd9 => 'Can\'t find your brand?';
@@ -1292,6 +1516,32 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sc95fb5440b => 'Stream ended';
 
   @override
+  String get s62cfd94468 => 'Cheapest hours at night';
+
+  @override
+  String get s7995dff292 =>
+      'On during the cheapest night hours (22–07). Good for water heaters and EV charging.';
+
+  @override
+  String get sf92675687a => 'Cheapest hours of the day';
+
+  @override
+  String get sf71a753c59 => 'On during the cheapest hours of the day.';
+
+  @override
+  String get s6c070f7367 => 'Off when electricity is expensive';
+
+  @override
+  String get s214f034099 =>
+      'Turns off above the limit and back on when the price drops.';
+
+  @override
+  String get s3939cfc37e => 'On when electricity is cheap';
+
+  @override
+  String get scecc366bc4 => 'On only when the price is below the limit.';
+
+  @override
   String get s6e700ae773 => 'Price control removed';
 
   @override
@@ -1374,9 +1624,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sccd1325381 => 'The connection will be removed from this device.';
-
-  @override
-  String get sc1845eb440 => 'Delete';
 
   @override
   String get s837e0fc5e6 =>
@@ -1654,6 +1901,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sacfc0c0b41 => 'Shows a camera image.';
+
+  @override
+  String get s7172c54c2c => 'Keeps the temperature at the set value.';
 
   @override
   String get s76e7a995de => 'Value read';
@@ -1981,6 +2231,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s0789f5f14f => 'DASHBOARDS';
 
   @override
+  String get s49de879696 => 'Energy';
+
+  @override
   String get s1da81fd6c3 => 'Settings';
 
   @override
@@ -1988,9 +2241,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sfb3e3c456c => 'Delete dashboard';
-
-  @override
-  String get s187d328bb1 => 'Edit';
 
   @override
   String get scdfd80f963 => 'Add tile';
@@ -2018,6 +2268,169 @@ class AppLocalizationsEn extends AppLocalizations {
   String s97f46743e0(String p0) {
     return 'Tile \"$p0\" deleted';
   }
+
+  @override
+  String get sb8934a5835 => 'Electricity use';
+
+  @override
+  String get s5409dc748f => 'Not counted';
+
+  @override
+  String get sf0bbcc217b => 'Whole site';
+
+  @override
+  String get s0ad1897b28 => 'Device meter';
+
+  @override
+  String get s99268b5a6c =>
+      'Whole site = main meter. Device meter = one device (shown as part of the total, never counted twice).';
+
+  @override
+  String get se1174af557 => 'Part of meter (optional)';
+
+  @override
+  String get s9773c92c92 => 'Energy and costs';
+
+  @override
+  String get s43dead6994 => 'Electricity contract';
+
+  @override
+  String get sef4d24cdd4 => 'Day';
+
+  @override
+  String get sa62dd794ce => 'Month';
+
+  @override
+  String get s6b2ebe5aca => 'Pick your meters first';
+
+  @override
+  String get sde41f2fac9 =>
+      'Mark below which meter measures the whole site and which ones single devices.';
+
+  @override
+  String get s4ad000d885 => 'incl. VAT';
+
+  @override
+  String get s9e214b6e88 => 'excl. VAT';
+
+  @override
+  String get s73771d252c => 'Measured devices total';
+
+  @override
+  String get s22d03356a9 => 'Other use';
+
+  @override
+  String get s48b08c5f5a => 'Monthly fees (energy + transfer)';
+
+  @override
+  String get s286e1cfb54 => 'Total';
+
+  @override
+  String get s2e8700e0cf =>
+      'Part of the use had no price (the spot price was missing).';
+
+  @override
+  String get sbbd89fbc05 =>
+      'Use is recorded while the app is open (all the time on the home tablet).';
+
+  @override
+  String get s64382718ff => 'Meters';
+
+  @override
+  String get s9a3a0d414e =>
+      'No power or energy tiles (W, kW, Wh, kWh). Add e.g. a Shelly meter.';
+
+  @override
+  String get sdb0484d728 => 'Saved';
+
+  @override
+  String get se80021e22a =>
+      'Copy the prices from your bill. Type them with or without VAT – costs are shown both ways.';
+
+  @override
+  String get sfb62156afe => 'Price area';
+
+  @override
+  String get s1762fb70a7 => 'Energy';
+
+  @override
+  String get s2ed3e3cf28 => 'Spot price';
+
+  @override
+  String get s5d1dd0f675 => 'Fixed';
+
+  @override
+  String get sedb38796fb => 'Night/day';
+
+  @override
+  String get s0774cea15a => 'Margin';
+
+  @override
+  String get s63370fe61a => 'Energy price';
+
+  @override
+  String get s50a7dd89c6 => 'Day energy';
+
+  @override
+  String get sdeaa5ad900 => 'Night energy';
+
+  @override
+  String get se93c7bcd86 => 'Monthly fee (energy)';
+
+  @override
+  String get sb7937e4b91 => 'Transfer';
+
+  @override
+  String get s0f89840226 => 'Flat';
+
+  @override
+  String get sa768f1b352 => 'Transfer price';
+
+  @override
+  String get s9e5dde22cb => 'Day transfer';
+
+  @override
+  String get sdf7a4fd2e3 => 'Night transfer';
+
+  @override
+  String get s4df0aee067 => 'Monthly fee (transfer)';
+
+  @override
+  String get s4c59c90975 => 'Night starts';
+
+  @override
+  String get s84decd042b => 'Night ends';
+
+  @override
+  String get s90c26f1e37 => 'Taxes';
+
+  @override
+  String get s222cb348a0 => 'Electricity tax';
+
+  @override
+  String get sbe412dcaa6 => 'VAT';
+
+  @override
+  String get s43b55c13c5 => 'Search failed. Check the connection.';
+
+  @override
+  String get s171834ca33 => 'Home location';
+
+  @override
+  String get s6f6c2fe37a =>
+      'The weather forecast (Open-Meteo) helps pre-heat before cold weather. The town is enough.';
+
+  @override
+  String get s5f663978d6 => 'Town';
+
+  @override
+  String get s7be6460c54 => 'e.g. Tampere';
+
+  @override
+  String get s1576b70590 => 'Electricity use, costs, contract and weather.';
+
+  @override
+  String get sa6212aaeb4 => 'Location';
 
   @override
   String get sa0d8c62e5a => 'No command configured';
@@ -2083,9 +2496,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s4cbe24240f => 'On';
 
   @override
-  String get s33831dd49f => 'Off';
-
-  @override
   String get sdc398885dc => 'Advanced settings';
 
   @override
@@ -2131,9 +2541,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s9bb545e9b3 => 'Sign in or create an account';
-
-  @override
-  String get sf4caddf894 => 'Advanced';
 
   @override
   String get s21f870dbc2 =>
@@ -2401,9 +2808,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sca7e088857 => 'Electricity price';
-
-  @override
-  String get sfb62156afe => 'Price area';
 
   @override
   String get s2525f9a4f5 =>
@@ -2974,6 +3378,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sb25aad3bc2 => 'Leaving home';
 
   @override
+  String get s7e461faf91 =>
+      'Find it in your router\'s device list or the device app. You can also tap \"Search network\".';
+
+  @override
   String get saf4b222a68 => 'Device IP address';
 
   @override
@@ -3193,6 +3601,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'Most ready-made IR blasters run Tasmota (use the tasmota-ir build). ESPHome = your ESPHome device with climate_ir.';
 
   @override
+  String get sc096a735fd =>
+      'IP of the IR blaster. For MQTT, the broker address.';
+
+  @override
   String get safc7f1325c => 'Heat pump brand';
 
   @override
@@ -3283,6 +3695,9 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s4105198757 =>
       'Control RF433 radio-remote devices (sockets, awnings, garage doors) with the Athom \"Tasmota IR & RF433 Controller\". You teach the buttons right after adding.';
+
+  @override
+  String get sbc2bf08889 => 'IP of the Athom controller.';
 
   @override
   String get sc34430eec0 => 'E.g. what you control.';

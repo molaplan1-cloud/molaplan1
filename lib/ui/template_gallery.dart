@@ -1,3 +1,4 @@
+import 'thermostat_pages.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../core/discovery.dart';
@@ -40,6 +41,13 @@ class TemplateGalleryPage extends StatelessWidget {
           );
           if (added == true && context.mounted) Navigator.pop(context, true);
         },
+        onThermostat: () async {
+          final added = await Navigator.push<bool>(
+            context,
+            MaterialPageRoute(builder: (_) => ThermostatWizard(dashboard: dashboard)),
+          );
+          if (added == true && context.mounted) Navigator.pop(context, true);
+        },
         onManual: () async {
           final c = await ConnectionsPage.addManual(context);
           if (c != null && context.mounted) Navigator.pop(context, true);
@@ -50,13 +58,16 @@ class TemplateGalleryPage extends StatelessWidget {
 }
 
 class TemplateGrid extends StatefulWidget {
-  const TemplateGrid({super.key, required this.onPick, required this.onManual, this.header, this.onBrand});
+  const TemplateGrid({super.key, required this.onPick, required this.onManual, this.header, this.onBrand, this.onThermostat});
   final void Function(DeviceTemplate) onPick;
   final VoidCallback onManual;
   final Widget? header;
 
   /// Brand with the guided add flow (find -> pair -> tiles). Null = brands open their wizard here.
   final void Function(DeviceProvider)? onBrand;
+
+  /// Virtual thermostat picked (null = open the wizard here).
+  final VoidCallback? onThermostat;
 
   @override
   State<TemplateGrid> createState() => _TemplateGridState();
@@ -208,6 +219,20 @@ class _TemplateGridState extends State<TemplateGrid> {
                       desc: t.desc(lang),
                       example: t.examples,
                       onTap: () => widget.onPick(t),
+                    ),
+                  if (_match(tx(context, 'Termostaatti lämmitys jäähdytys', 'Thermostat heating cooling'), ['thermostat', 'termostaatti']))
+                    _TemplateCard(
+                      key: const ValueKey('gallery-thermostat'),
+                      icon: Icons.thermostat,
+                      color: Colors.deepOrange,
+                      title: tx(context, 'Termostaatti', 'Thermostat'),
+                      desc: tx(
+                        context,
+                        'Pitää lämmön halutussa: ohjaa releitä tai lämpöpumppua lämpömittarin mukaan. Voi säästää pörssisähköllä.',
+                        'Keeps the temperature you want: controls relays or a heat pump from a thermometer. Can save with spot prices.',
+                      ),
+                      onTap: widget.onThermostat ??
+                          () => Navigator.push<bool>(context, MaterialPageRoute(builder: (_) => const ThermostatWizard())),
                     ),
                   _TemplateCard(
                     icon: Icons.help_outline,

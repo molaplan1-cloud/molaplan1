@@ -77,9 +77,7 @@ class AppState extends ChangeNotifier implements SyncHost {
   Timer? _energySaveTimer;
 
   /// Price area for energy costs and heating plans.
-  String get energyZone =>
-      config.energy.zone ??
-      '${config.connections.where((c) => c.type == 'price').firstOrNull?.settings['zone'] ?? 'FI'}';
+  String get energyZone => energyZoneOf(config);
 
   /// The contract in use (a spot contract with typical values until the user sets one).
   ElectricityContract get contract => config.energy.contract ?? ElectricityContract(country: countryOfZone(energyZone));
@@ -122,6 +120,75 @@ class AppState extends ChangeNotifier implements SyncHost {
     } else {
       config.energy.meters[tileId] = m;
     }
+    await save();
+    notifyListeners();
+  }
+
+  // ---- virtual thermostats (run on the home bridge)
+  ThermostatConfig? thermostat(String id) => config.energy.thermostats.where((t) => t.id == id).firstOrNull;
+
+  /// Thermostat status from the bridge: id -> {temp, target, state, sensorOk, plan, …}.
+  Map<String, Map<String, dynamic>> thermoStatus = {};
+  DateTime? thermoStatusAt;
+
+  Future<void> refreshThermoStatus() async {
+    try {
+      final s = await rulesStatus();
+      final t = s?['thermostats'];
+      thermoStatus = t is Map
+          ? {for (final e in t.entries) '${e.key}': Map<String, dynamic>.from(e.value as Map)}
+          : {};
+      thermoStatusAt = DateTime.now();
+    } catch (_) {
+      thermoStatus = {};
+    }
+    notifyListeners();
+  }
+
+  /// Adds (or updates) a thermostat; a new one also gets a tile on [d].
+  Future<TileConfig?> saveThermostat(ThermostatConfig c, {Dashboard? d}) async {
+    final list = config.energy.thermostats;
+    final i = list.indexWhere((x) => x.id == c.id);
+    TileConfig? tile;
+    if (i >= 0) {
+      list[i] = c;
+      for (final db in config.dashboards) {
+        for (final t in db.tiles) {
+          if (t.type == TileType.thermostat && t.read['thermostat'] == c.id) t.title = c.name;
+        }
+      }
+    } else {
+      list.add(c);
+      tile = TileConfig(type: TileType.thermostat, title: c.name, read: {'thermostat': c.id}, colSpan: 2);
+      (d ?? config.dashboards.first).tiles.add(tile);
+    }
+    await save();
+    notifyListeners();
+    return tile;
+  }
+
+  Future<void> deleteThermostat(String id) async {
+    config.energy.thermostats.removeWhere((x) => x.id == id);
+    for (final db in config.dashboards) {
+      db.tiles.removeWhere((t) => t.type == TileType.thermostat && t.read['thermostat'] == id);
+    }
+    await save();
+    notifyListeners();
+  }
+
+  /// +/- buttons: steps of 0.5 °C within 5–35 °C. Pushed to the bridge after a short pause.
+  Future<void> nudgeSetpoint(String id, double delta) async {
+    final c = thermostat(id);
+    if (c == null) return;
+    c.setpoint = ((c.setpoint + delta) * 2).round().clamp(10, 70) / 2;
+    await save();
+    notifyListeners();
+  }
+
+  Future<void> setThermostatMode(String id, String mode) async {
+    final c = thermostat(id);
+    if (c == null) return;
+    c.mode = mode;
     await save();
     notifyListeners();
   }
@@ -482,6 +549,9 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   Future<void> deleteTile(Dashboard d, String tileId) async {
+    final gone = d.tiles.where((e) => e.id == tileId && e.type == TileType.thermostat).firstOrNull;
+    if (gone != null) config.energy.thermostats.removeWhere((x) => x.id == gone.read['thermostat']);
+    config.energy.meters.remove(tileId);
     d.tiles.removeWhere((e) => e.id == tileId);
     await save();
     notifyListeners();

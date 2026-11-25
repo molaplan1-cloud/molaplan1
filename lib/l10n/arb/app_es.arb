@@ -178,7 +178,25 @@
  "@sbb62433c2c": {
   "x-mt": true
  },
+ "sc27533ae83": "Ahorro",
+ "sdbcb85509b": "La temperatura puede variar más (+1 / −2 °C). Mayor ahorro.",
+ "s380b20be36": "Equilibrado",
+ "s66ea783264": "Poca variación (+1 / −1 °C). Una buena opción por defecto.",
+ "see96226e44": "Confort",
+ "sb403e00b3d": "Temperatura casi constante (+0,5 / −0,5 °C). Ahorra un poco.",
  "s0bf7cb1613": "Philips Hue",
+ "se17d4e4197": "Puente de Hue y sus luces (también las luces de Zigbee se unieron a él). Pareja con el botón puente.",
+ "@se17d4e4197": {
+  "x-mt": true
+ },
+ "sf83a145406": "En la aplicación Hue: Ajustes → Hue Bridges → (i) → Dirección IP. O en la lista de dispositivos del router: \"Philips-hue\".",
+ "@sf83a145406": {
+  "x-mt": true
+ },
+ "s80ee7a25a9": "Presione el gran botón redondo en la parte superior del puente de Hue. Espere aquí – se conecta por sí mismo.",
+ "@s80ee7a25a9": {
+  "x-mt": true
+ },
  "s4dbb677293": "inalcanzable",
  "s609cb4c5f9": "encendido",
  "s356d822497": "apagado",
@@ -194,8 +212,24 @@
  },
  "se78754330c": "potencia",
  "sfcb44be1a0": "Shelly",
+ "sa6ff717527": "Relés y enchufes: Pro 4PM, Plus 1PM, Plug S, 2.5... encontrado automáticamente, fichas para cada canal.",
+ "@sa6ff717527": {
+  "x-mt": true
+ },
+ "sd7e123cd2f": "En la aplicación Shelly: abre el dispositivo → engranaje (ajustes) → Información del dispositivo → Dirección IP. O en la lista del dispositivo del router: el nombre comienza con \"muelle...\".",
+ "@sd7e123cd2f": {
+  "x-mt": true
+ },
  "s5f2b2ca5f5": "encendido ahora",
  "s67f64cd925": "apagado ahora",
+ "sd8dfb25d31": "Shelly Cloud (sin puente)",
+ "@sd8dfb25d31": {
+  "x-mt": true
+ },
+ "s350215338a": "Control Shellys a través de la nube Shelly desde cualquier lugar. Sólo necesitas la clave de la aplicación Shelly.",
+ "@s350215338a": {
+  "x-mt": true
+ },
  "s64037991c2": "Aplicación Shelly → tu perfil → Ajustes de usuario → Clave de la nube de autorización → Obtener clave. Copiar y pegarlo aquí.",
  "@s64037991c2": {
   "x-mt": true
@@ -227,6 +261,18 @@
   "x-mt": true
  },
  "sf34c97592f": "IKEA Dirigera",
+ "sb38eac6a87": "IKEA smart hub y sus luces y enchufes (Zigbee). Pare con el botón en el centro.",
+ "@sb38eac6a87": {
+  "x-mt": true
+ },
+ "s4e92ab791e": "En la aplicación inteligente IKEA Home: Ajustes → Hub → Dirección IP. O en la lista de dispositivos del router: \"gw2-...\" o \"dirigera\".",
+ "@s4e92ab791e": {
+  "x-mt": true
+ },
+ "s73824fc3d0": "Presione el botón de acción en la parte inferior del centro de Dirigera una vez ahora.",
+ "@s73824fc3d0": {
+  "x-mt": true
+ },
  "sa376ec78ec": "Luz",
  "sda8d9bf1cd": "Enchufe",
  "sb662db81d8": "La dirección se ve incompleta. Use cuatro números con puntos, por ejemplo 192.168.1.50.",
@@ -752,11 +798,123 @@
   "x-mt": true
  },
  "s5a40f12b6a": "Añadir",
+ "sa3a093e55e": "Calefacción",
+ "s8efb99df1d": "Refrigeración",
+ "s0b98d62330": "Calor y frío",
+ "s33831dd49f": "Apagado",
+ "sa61efb9866": "calentando",
+ "s9a47ee3e3c": "enfriando",
+ "s156712ac0c": "en espera",
+ "s8a1f52a37b": "Termostato eliminado",
+ "s28dc9bc46a": "Sin lectura de temperatura",
+ "s4f1166fe24": "No hay puente casero: el termostato todavía no controla. Configurar acceso remoto en la tableta casera.",
+ "@s4f1166fe24": {
+  "x-mt": true
+ },
+ "see9111ba68": "Relé o interruptor (encendido/apagado)",
+ "seaed91ad78": "Bomba de calor o aire acondicionado (consigna)",
+ "sb757921c13": "Calienta",
+ "s7407864734": "Enfría",
+ "s272aa3f1da": "Ambos",
+ "sdadb6e3501": "Calefactor de respaldo",
+ "se4e381334d": "Comienza sólo cuando está claramente por debajo del objetivo.",
+ "@se4e381334d": {
+  "x-mt": true
+ },
+ "s17c79c5f4e": "Power on/off (opcional)",
+ "@s17c79c5f4e": {
+  "x-mt": true
+ },
+ "s92d88612de": "Botón de modo de calor (opcional)",
+ "@s92d88612de": {
+  "x-mt": true
+ },
+ "s75ac845bab": "Botón de modo fresco (opcional)",
+ "@s75ac845bab": {
+  "x-mt": true
+ },
+ "se12fc46923": "Ninguno",
+ "sc590a09db9": "¿Qué calienta o enfría?",
+ "sa15ffe53d4": "Escoge una o más. Por ejemplo, una bomba de calor y un calentador de respaldo.",
+ "@sa15ffe53d4": {
+  "x-mt": true
+ },
+ "sd47a7615a7": "Aún no hay dispositivos adecuados",
+ "s3c7649a7f0": "Primero añadir un relé (por ejemplo, Shelly) o una bomba de calor (IR o puerto de servicio), luego volver.",
+ "@s3c7649a7f0": {
+  "x-mt": true
+ },
+ "see513572ea": "¿De dónde se lee la temperatura?",
+ "s5155522e83": "Escoja un termómetro. Varios = retroceso o promedio.",
+ "@s5155522e83": {
+  "x-mt": true
+ },
+ "s581fa290f3": "Opcional: la bomba de calor se mide. Escoge un sensor para ver la temperatura.",
+ "@s581fa290f3": {
+  "x-mt": true
+ },
+ "s7e4d8d60a0": "Sin termómetro",
+ "s0787d80876": "Primero agrega un dispositivo que muestra una temperatura.",
+ "@s0787d80876": {
+  "x-mt": true
+ },
+ "s89661203b7": "El primero que funcione",
+ "s0da3005956": "Promedio",
+ "s0c6a008ffd": "Nombre y modo",
+ "sb1924acbe7": "Nombre",
+ "s1790a71e85": "p. ej. Salón",
+ "sd5f46903a1": "Temperatura objetivo",
+ "s6de95e582f": "Si se pierde la temperatura",
+ "s8ff25225b4": "Apagar calefacción/refrigeración (lo más seguro)",
+ "s17cb86f49e": "Mantener como está",
+ "sf4caddf894": "Avanzado",
+ "s9624f070ee": "Histéresis",
+ "sf070be2c1e": "Banda muerta (calor/frío)",
+ "s64540136ff": "Tiempo mínimo encendido",
+ "s21713a2177": "Tiempo mínimo apagado",
+ "s8f7c8eb7d0": "Calentador de respaldo cuando debajo del objetivo por",
+ "@s8f7c8eb7d0": {
+  "x-mt": true
+ },
+ "sf1eb3b2d34": "Sensor perdido después de no leer para",
+ "@sf1eb3b2d34": {
+  "x-mt": true
+ },
+ "s0ab1430151": "Nuevo termostato",
+ "sbbc98d573d": "Editar termostato",
+ "s6c3e76828b": "Siguiente",
+ "s187d328bb1": "Editar",
+ "sc1845eb440": "Eliminar",
+ "s87984716cb": "¿Eliminar el termostato?",
+ "s29fd8d5b5e": "Ahora",
+ "s79786b9f7d": "Objetivo",
+ "sdd309c0a63": "El termostato funciona en el puente de casa",
+ "s9c1b5394df": "Configurar acceso remoto en la tableta de inicio (Configuración → Acceso remoto). Hasta entonces no controla nada.",
+ "@s9c1b5394df": {
+  "x-mt": true
+ },
+ "s06cda8c0de": "Funciona en este dispositivo (puente de casa).",
+ "s2342536aea": "Funciona en el puente de casa.",
+ "s798f7b2876": "Calefacción inteligente",
+ "s2c5993c1fd": "Precalentamientos antes de la electricidad costosa y el clima frío, y permite que la temperatura baja un poco en horas costosas.",
+ "@s2c5993c1fd": {
+  "x-mt": true
+ },
+ "s81c4abc1a5": "Sobrecalentamiento +",
+ "sdea18b2b40": "Subcalentamiento −",
+ "s523214c8db": "Línea = temperatura de destino, barras = precio de la electricidad, raspado = temperatura exterior.",
+ "@s523214c8db": {
+  "x-mt": true
+ },
+ "s94b8f63aa7": "Añadir la ubicación de la casa para el clima",
+ "@s94b8f63aa7": {
+  "x-mt": true
+ },
+ "s941fbb47fe": "Calculando el plan…",
  "s306729fe62": "No hay precios",
  "@s306729fe62": {
   "x-mt": true
  },
- "s29fd8d5b5e": "Ahora",
  "s723c887da6": "min",
  "@s723c887da6": {
   "x-mt": true
@@ -915,7 +1073,6 @@
  "@sb160156a36": {
   "x-mt": true
  },
- "s6c3e76828b": "Siguiente",
  "s43d448a950": "Añadir a la vista de inicio",
  "sd890121a57": "Mostrar vista a casa",
  "@sd890121a57": {
@@ -1038,7 +1195,6 @@
  "@sac4debdb9c": {
   "x-mt": true
  },
- "sb1924acbe7": "Nombre",
  "s86c3f92546": "También añadir brillo / poder",
  "@s86c3f92546": {
   "x-mt": true
@@ -1047,10 +1203,7 @@
  "@s91571486e4": {
   "x-mt": true
  },
- "sf86536db42": "Done! {p0} tiles added",
- "@sf86536db42": {
-  "x-mt": true
- },
+ "sf86536db42": "¡Listo! {p0} tarjetas añadidas",
  "sbfaea66122": "Las baldosas funcionan en casa y lejos a través de la nube – nada más que hacer.",
  "@sbfaea66122": {
   "x-mt": true
@@ -1091,6 +1244,15 @@
   "x-mt": true
  },
  "s846ee3bc67": "Otros dispositivos",
+ "sdeadd78d47": "Refrigeración termostatica de calefacción",
+ "@sdeadd78d47": {
+  "x-mt": true
+ },
+ "s48264cfe32": "Termostato",
+ "s641a848754": "Mantiene la temperatura que desea: controla los relés o una bomba de calor de un termómetro. Puede ahorrar con los precios del spot.",
+ "@s641a848754": {
+  "x-mt": true
+ },
  "s2a9b6fedd9": "¿No puedes encontrar tu marca?",
  "@s2a9b6fedd9": {
   "x-mt": true
@@ -1164,10 +1326,7 @@
  },
  "sceb8e47d07": "Probar la conexión",
  "s02ce5f4a01": "¡Funciona!",
- "sb9e9e55164": "Estas fichas serán creadas",
- "@sb9e9e55164": {
-  "x-mt": true
- },
+ "sb9e9e55164": "Se crearán estas tarjetas",
  "s1cb2891ef2": "Llenar en los campos marcados con * para ver los azulejos.",
  "@s1cb2891ef2": {
   "x-mt": true
@@ -1201,6 +1360,38 @@
  },
  "sc95fb5440b": "Corriente terminada",
  "@sc95fb5440b": {
+  "x-mt": true
+ },
+ "s62cfd94468": "Horas más baratas por la noche",
+ "@s62cfd94468": {
+  "x-mt": true
+ },
+ "s7995dff292": "Durante las horas de noche más baratas (22–07). Bien por calentadores de agua y carga EV.",
+ "@s7995dff292": {
+  "x-mt": true
+ },
+ "sf92675687a": "Horas más baratas del día",
+ "@sf92675687a": {
+  "x-mt": true
+ },
+ "sf71a753c59": "Durante las horas más baratas del día.",
+ "@sf71a753c59": {
+  "x-mt": true
+ },
+ "s6c070f7367": "Cuando la electricidad es cara",
+ "@s6c070f7367": {
+  "x-mt": true
+ },
+ "s214f034099": "Apaga por encima del límite y vuelve cuando el precio baja.",
+ "@s214f034099": {
+  "x-mt": true
+ },
+ "s3939cfc37e": "Cuando la electricidad es barata",
+ "@s3939cfc37e": {
+  "x-mt": true
+ },
+ "scecc366bc4": "Sólo cuando el precio está por debajo del límite.",
+ "@scecc366bc4": {
   "x-mt": true
  },
  "s6e700ae773": "Control por precio eliminado",
@@ -1269,7 +1460,6 @@
  "@sccd1325381": {
   "x-mt": true
  },
- "sc1845eb440": "Eliminar",
  "s837e0fc5e6": "IR es unidireccional: la bomba de calor no confirma los comandos. Los azulejos muestran el último estado enviado.",
  "@s837e0fc5e6": {
   "x-mt": true
@@ -1535,12 +1725,13 @@
  "@sacfc0c0b41": {
   "x-mt": true
  },
+ "s7172c54c2c": "Mantiene la temperatura en el valor fijado.",
  "s76e7a995de": "Valor leído",
  "@s76e7a995de": {
   "x-mt": true
  },
- "sc5edd6d3d1": "Nuevo mosaico",
- "sa684fd0716": "Editar mosaico",
+ "sc5edd6d3d1": "Nueva tarjeta",
+ "sa684fd0716": "Editar tarjeta",
  "s8a8673aafe": "Título",
  "scf37cbeda8": "Icono",
  "sa444aab286": "Automático",
@@ -1821,7 +2012,7 @@
  "@sa35e37b4b4": {
   "x-mt": true
  },
- "scb28b11e70": "Nuevo panel",
+ "scb28b11e70": "Nueva vista",
  "s1f9799af4e": "e.g. Cottage",
  "@s1f9799af4e": {
   "x-mt": true
@@ -1846,33 +2037,109 @@
  "@scc5cf9957d": {
   "x-mt": true
  },
- "s7cf6340503": "Nuevo dispositivo con mosaicos listos",
+ "s7cf6340503": "Nuevo dispositivo con tarjetas listas",
  "se6ca707cf3": "Más fácil: Shelly, ESP32-CAM, Home Assistant...",
  "@se6ca707cf3": {
   "x-mt": true
  },
  "s0789f5f14f": "DASHBOARDS",
+ "s49de879696": "Energía",
  "s1da81fd6c3": "Ajustes",
  "s59622d792b": "Renombrar",
  "sfb3e3c456c": "Suprímase el tablero",
  "@sfb3e3c456c": {
   "x-mt": true
  },
- "s187d328bb1": "Editar",
- "scdfd80f963": "Añadir mosaico",
+ "scdfd80f963": "Añadir tarjeta",
  "s41c3cebc48": "Añadir dispositivo",
- "s71af34b8e9": "Panel vacío",
+ "s71af34b8e9": "Vista vacía",
  "s6a210970eb": "Las fichas del dispositivo aparecen aquí: temperaturas, interruptores, cámaras y atajos. Comience añadiendo un dispositivo.",
  "@s6a210970eb": {
   "x-mt": true
  },
  "s4229fb4103": "Añade tu primer dispositivo",
- "s147f47be4c": "Añadir mosaico",
- "sf67e0d5752": "¿Eliminar el mosaico?",
+ "s147f47be4c": "Añadir tarjeta",
+ "sf67e0d5752": "¿Eliminar la tarjeta?",
  "s97f46743e0": "Tile \"{p0}\" eliminado",
  "@s97f46743e0": {
   "x-mt": true
  },
+ "sb8934a5835": "Consumo eléctrico",
+ "s5409dc748f": "No se cuenta",
+ "sf0bbcc217b": "Toda la vivienda",
+ "s0ad1897b28": "Medidor del aparato",
+ "s99268b5a6c": "Toda la vivienda = contador principal. Medidor del aparato = un aparato (se muestra como parte del total, nunca se cuenta dos veces).",
+ "se1174af557": "Parte del medidor (opcional)",
+ "s9773c92c92": "Energía y costes",
+ "s43dead6994": "Contrato eléctrico",
+ "sef4d24cdd4": "Día",
+ "sa62dd794ce": "Mes",
+ "s6b2ebe5aca": "Elige primero tus medidores",
+ "sde41f2fac9": "Marcar abajo qué medidor mide todo el sitio y cuáles dispositivos individuales.",
+ "@sde41f2fac9": {
+  "x-mt": true
+ },
+ "s4ad000d885": "IVA incl.",
+ "s9e214b6e88": "sin IVA",
+ "s73771d252c": "Total de aparatos medidos",
+ "s22d03356a9": "Otros consumos",
+ "s48b08c5f5a": "Cuotas mensuales (energía + peajes)",
+ "s286e1cfb54": "Total",
+ "s2e8700e0cf": "Parte del uso no tenía precio (el precio del spot faltaba).",
+ "@s2e8700e0cf": {
+  "x-mt": true
+ },
+ "sbbd89fbc05": "El uso se registra mientras la aplicación está abierta (todo el tiempo en la tableta de inicio).",
+ "@sbbd89fbc05": {
+  "x-mt": true
+ },
+ "s64382718ff": "Medidores",
+ "s9a3a0d414e": "No hay tarjetas de alimentación o energía (W, kW, Wh, kWh). Añadir por ejemplo un medidor de Shelly.",
+ "@s9a3a0d414e": {
+  "x-mt": true
+ },
+ "sdb0484d728": "Guardado",
+ "se80021e22a": "Copie los precios de su factura. Introduzca con o sin IVA – los costos se muestran a ambos lados.",
+ "@se80021e22a": {
+  "x-mt": true
+ },
+ "sfb62156afe": "Zona de precio",
+ "s1762fb70a7": "Energía",
+ "s2ed3e3cf28": "Precio spot",
+ "s5d1dd0f675": "Fijo",
+ "sedb38796fb": "Noche/día",
+ "s0774cea15a": "Margen",
+ "s63370fe61a": "Precio de la energía",
+ "s50a7dd89c6": "Energía de día",
+ "sdeaa5ad900": "Energía de noche",
+ "se93c7bcd86": "Cuota mensual (energía)",
+ "sb7937e4b91": "Peajes",
+ "s0f89840226": "Tarifa única",
+ "sa768f1b352": "Precio de peajes",
+ "s9e5dde22cb": "Peajes de día",
+ "sdf7a4fd2e3": "Peajes de noche",
+ "s4df0aee067": "Cuota mensual (peajes)",
+ "s4c59c90975": "La noche empieza",
+ "s84decd042b": "La noche termina",
+ "s90c26f1e37": "Impuestos",
+ "s222cb348a0": "Impuesto eléctrico",
+ "sbe412dcaa6": "IVA",
+ "s43b55c13c5": "La búsqueda falló. Revisa la conexión.",
+ "@s43b55c13c5": {
+  "x-mt": true
+ },
+ "s171834ca33": "Ubicación de casa",
+ "s6f6c2fe37a": "El pronóstico del tiempo (Open-Meteo) ayuda a precalentarse antes del frío. La ciudad es suficiente.",
+ "@s6f6c2fe37a": {
+  "x-mt": true
+ },
+ "s5f663978d6": "Localidad",
+ "s7be6460c54": "p. ej. Tampere",
+ "s1576b70590": "Uso de electricidad, costes, contrato y tiempo.",
+ "@s1576b70590": {
+  "x-mt": true
+ },
+ "sa6212aaeb4": "Ubicación",
  "sa0d8c62e5a": "No hay ningún comando configurado",
  "@sa0d8c62e5a": {
   "x-mt": true
@@ -1929,7 +2196,6 @@
  "sf3d644dd4c": "Aprender un botón del mando",
  "sfb1a18d11f": "Actualizar",
  "s4cbe24240f": "Encendido",
- "s33831dd49f": "Apagado",
  "sdc398885dc": "Ajustes avanzados",
  "s5d477f3cd8": "Normalmente no necesitas estos",
  "@s5d477f3cd8": {
@@ -1975,7 +2241,6 @@
   "x-mt": true
  },
  "s9bb545e9b3": "Inicia sesión o crea una cuenta",
- "sf4caddf894": "Avanzado",
  "s21f870dbc2": "Muestra configuración técnica: conexiones (HTTP, MQTT, Modbus...), cargas de pago, caminos JSON y fuentes de baldosas. La mayoría de la gente no necesita estas.",
  "@s21f870dbc2": {
   "x-mt": true
@@ -2015,7 +2280,7 @@
  "@s412c666544": {
   "x-mt": true
  },
- "sec02c7c071": "Añadir panel de ejemplo",
+ "sec02c7c071": "Añadir vista de ejemplo",
  "s522d6584c5": "Buscar actualizaciones",
  "sd178a1d809": "Su propia terminal de control: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP y UDP. Sin una cuenta, todos los ajustes permanecen en este dispositivo.",
  "@sd178a1d809": {
@@ -2064,8 +2329,8 @@
   "x-mt": true
  },
  "sd6561a08ca": "Empecemos",
- "se5be2a8386": "Tus mosaicos están listos",
- "s8162694dbe": "Añade tu primer mosaico",
+ "se5be2a8386": "Tus tarjetas están listas",
+ "s8162694dbe": "Añade tu primera tarjeta",
  "s7b2a30b77c": "Estas fichas fueron hechas para tu dispositivo. Puedes cambiarlas y arreglarlas más tarde.",
  "@s7b2a30b77c": {
   "x-mt": true
@@ -2240,7 +2505,6 @@
   "x-mt": true
  },
  "sca7e088857": "Precio de la electricidad",
- "sfb62156afe": "Zona de precio",
  "s2525f9a4f5": "Finlandia es una zona (FI). En Suecia y Noruega depende de dónde vives.",
  "@s2525f9a4f5": {
   "x-mt": true
@@ -2821,6 +3085,10 @@
  "sbb2adef009": "Velocidad del ventilador",
  "see46441329": "0=Off;1=Away;2=Home;3=Boost;4=Max",
  "sb25aad3bc2": "Salgo de casa",
+ "s7e461faf91": "Encuéntrelo en la lista de dispositivos del router o en la aplicación del dispositivo. También puede pulsar \"Búsqueda de red\".",
+ "@s7e461faf91": {
+  "x-mt": true
+ },
  "saf4b222a68": "Dirección IP del dispositivo",
  "s1bbea216af": "Cámara ESP32-CAM",
  "@s1bbea216af": {
@@ -3054,6 +3322,10 @@
  "@sc899cf95db": {
   "x-mt": true
  },
+ "sc096a735fd": "IP del transmisor IR. Para MQTT, la dirección del corredor.",
+ "@sc096a735fd": {
+  "x-mt": true
+ },
  "safc7f1325c": "Marca de la bomba de calor",
  "s7675ec1754": "Escoja la marca de la unidad o remota. Si no reacciona, pruebe \"Otro\" con un protocolo alternativo.",
  "@s7675ec1754": {
@@ -3149,6 +3421,10 @@
  "s84cd6a5180": "Mando RF433 (Athom IR & RF)",
  "s4105198757": "Controlar dispositivos RF433 de radio-remote (sockets, toldos, puertas de garaje) con el Athom \"Tasmota IR & RF433 Controller\". Enseña los botones justo después de añadir.",
  "@s4105198757": {
+  "x-mt": true
+ },
+ "sbc2bf08889": "IP del controlador Athom.",
+ "@sbc2bf08889": {
   "x-mt": true
  },
  "sc34430eec0": "Por ejemplo, lo que controlas.",
@@ -3352,46 +3628,6 @@
  "sfb0b971c01": "Oscilación",
  "s3a38b97f7b": "{p0} – room",
  "@s3a38b97f7b": {
-  "x-mt": true
- },
- "se17d4e4197": "Puente de Hue y sus luces (también las luces de Zigbee se unieron a él). Pareja con el botón puente.",
- "@se17d4e4197": {
-  "x-mt": true
- },
- "sf83a145406": "En la aplicación Hue: Ajustes → Hue Bridges → (i) → Dirección IP. O en la lista de dispositivos del router: \"Philips-hue\".",
- "@sf83a145406": {
-  "x-mt": true
- },
- "s80ee7a25a9": "Presione el gran botón redondo en la parte superior del puente de Hue. Espere aquí – se conecta por sí mismo.",
- "@s80ee7a25a9": {
-  "x-mt": true
- },
- "sa6ff717527": "Relés y enchufes: Pro 4PM, Plus 1PM, Plug S, 2.5... encontrado automáticamente, fichas para cada canal.",
- "@sa6ff717527": {
-  "x-mt": true
- },
- "sd7e123cd2f": "En la aplicación Shelly: abre el dispositivo → engranaje (ajustes) → Información del dispositivo → Dirección IP. O en la lista del dispositivo del router: el nombre comienza con \"muelle...\".",
- "@sd7e123cd2f": {
-  "x-mt": true
- },
- "sd8dfb25d31": "Shelly Cloud (sin puente)",
- "@sd8dfb25d31": {
-  "x-mt": true
- },
- "s350215338a": "Control Shellys a través de la nube Shelly desde cualquier lugar. Sólo necesitas la clave de la aplicación Shelly.",
- "@s350215338a": {
-  "x-mt": true
- },
- "sb38eac6a87": "IKEA smart hub y sus luces y enchufes (Zigbee). Pare con el botón en el centro.",
- "@sb38eac6a87": {
-  "x-mt": true
- },
- "s4e92ab791e": "En la aplicación inteligente IKEA Home: Ajustes → Hub → Dirección IP. O en la lista de dispositivos del router: \"gw2-...\" o \"dirigera\".",
- "@s4e92ab791e": {
-  "x-mt": true
- },
- "s73824fc3d0": "Presione el botón de acción en la parte inferior del centro de Dirigera una vez ahora.",
- "@s73824fc3d0": {
   "x-mt": true
  }
 }

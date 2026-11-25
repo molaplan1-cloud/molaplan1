@@ -171,6 +171,27 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sbb62433c2c => 'Compruebe la configuración e inténtelo de nuevo.';
 
   @override
+  String get sc27533ae83 => 'Ahorro';
+
+  @override
+  String get sdbcb85509b =>
+      'La temperatura puede variar más (+1 / −2 °C). Mayor ahorro.';
+
+  @override
+  String get s380b20be36 => 'Equilibrado';
+
+  @override
+  String get s66ea783264 =>
+      'Poca variación (+1 / −1 °C). Una buena opción por defecto.';
+
+  @override
+  String get see96226e44 => 'Confort';
+
+  @override
+  String get sb403e00b3d =>
+      'Temperatura casi constante (+0,5 / −0,5 °C). Ahorra un poco.';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -827,10 +848,213 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s5a40f12b6a => 'Añadir';
 
   @override
-  String get s306729fe62 => 'No hay precios';
+  String get sa3a093e55e => 'Calefacción';
+
+  @override
+  String get s8efb99df1d => 'Refrigeración';
+
+  @override
+  String get s0b98d62330 => 'Calor y frío';
+
+  @override
+  String get s33831dd49f => 'Apagado';
+
+  @override
+  String get sa61efb9866 => 'calentando';
+
+  @override
+  String get s9a47ee3e3c => 'enfriando';
+
+  @override
+  String get s156712ac0c => 'en espera';
+
+  @override
+  String get s8a1f52a37b => 'Termostato eliminado';
+
+  @override
+  String get s28dc9bc46a => 'Sin lectura de temperatura';
+
+  @override
+  String get s4f1166fe24 =>
+      'No hay puente casero: el termostato todavía no controla. Configurar acceso remoto en la tableta casera.';
+
+  @override
+  String get see9111ba68 => 'Relé o interruptor (encendido/apagado)';
+
+  @override
+  String get seaed91ad78 => 'Bomba de calor o aire acondicionado (consigna)';
+
+  @override
+  String get sb757921c13 => 'Calienta';
+
+  @override
+  String get s7407864734 => 'Enfría';
+
+  @override
+  String get s272aa3f1da => 'Ambos';
+
+  @override
+  String get sdadb6e3501 => 'Calefactor de respaldo';
+
+  @override
+  String get se4e381334d =>
+      'Comienza sólo cuando está claramente por debajo del objetivo.';
+
+  @override
+  String get s17c79c5f4e => 'Power on/off (opcional)';
+
+  @override
+  String get s92d88612de => 'Botón de modo de calor (opcional)';
+
+  @override
+  String get s75ac845bab => 'Botón de modo fresco (opcional)';
+
+  @override
+  String get se12fc46923 => 'Ninguno';
+
+  @override
+  String get sc590a09db9 => '¿Qué calienta o enfría?';
+
+  @override
+  String get sa15ffe53d4 =>
+      'Escoge una o más. Por ejemplo, una bomba de calor y un calentador de respaldo.';
+
+  @override
+  String get sd47a7615a7 => 'Aún no hay dispositivos adecuados';
+
+  @override
+  String get s3c7649a7f0 =>
+      'Primero añadir un relé (por ejemplo, Shelly) o una bomba de calor (IR o puerto de servicio), luego volver.';
+
+  @override
+  String get see513572ea => '¿De dónde se lee la temperatura?';
+
+  @override
+  String get s5155522e83 =>
+      'Escoja un termómetro. Varios = retroceso o promedio.';
+
+  @override
+  String get s581fa290f3 =>
+      'Opcional: la bomba de calor se mide. Escoge un sensor para ver la temperatura.';
+
+  @override
+  String get s7e4d8d60a0 => 'Sin termómetro';
+
+  @override
+  String get s0787d80876 =>
+      'Primero agrega un dispositivo que muestra una temperatura.';
+
+  @override
+  String get s89661203b7 => 'El primero que funcione';
+
+  @override
+  String get s0da3005956 => 'Promedio';
+
+  @override
+  String get s0c6a008ffd => 'Nombre y modo';
+
+  @override
+  String get sb1924acbe7 => 'Nombre';
+
+  @override
+  String get s1790a71e85 => 'p. ej. Salón';
+
+  @override
+  String get sd5f46903a1 => 'Temperatura objetivo';
+
+  @override
+  String get s6de95e582f => 'Si se pierde la temperatura';
+
+  @override
+  String get s8ff25225b4 => 'Apagar calefacción/refrigeración (lo más seguro)';
+
+  @override
+  String get s17cb86f49e => 'Mantener como está';
+
+  @override
+  String get sf4caddf894 => 'Avanzado';
+
+  @override
+  String get s9624f070ee => 'Histéresis';
+
+  @override
+  String get sf070be2c1e => 'Banda muerta (calor/frío)';
+
+  @override
+  String get s64540136ff => 'Tiempo mínimo encendido';
+
+  @override
+  String get s21713a2177 => 'Tiempo mínimo apagado';
+
+  @override
+  String get s8f7c8eb7d0 =>
+      'Calentador de respaldo cuando debajo del objetivo por';
+
+  @override
+  String get sf1eb3b2d34 => 'Sensor perdido después de no leer para';
+
+  @override
+  String get s0ab1430151 => 'Nuevo termostato';
+
+  @override
+  String get sbbc98d573d => 'Editar termostato';
+
+  @override
+  String get s6c3e76828b => 'Siguiente';
+
+  @override
+  String get s187d328bb1 => 'Editar';
+
+  @override
+  String get sc1845eb440 => 'Eliminar';
+
+  @override
+  String get s87984716cb => '¿Eliminar el termostato?';
 
   @override
   String get s29fd8d5b5e => 'Ahora';
+
+  @override
+  String get s79786b9f7d => 'Objetivo';
+
+  @override
+  String get sdd309c0a63 => 'El termostato funciona en el puente de casa';
+
+  @override
+  String get s9c1b5394df =>
+      'Configurar acceso remoto en la tableta de inicio (Configuración → Acceso remoto). Hasta entonces no controla nada.';
+
+  @override
+  String get s06cda8c0de => 'Funciona en este dispositivo (puente de casa).';
+
+  @override
+  String get s2342536aea => 'Funciona en el puente de casa.';
+
+  @override
+  String get s798f7b2876 => 'Calefacción inteligente';
+
+  @override
+  String get s2c5993c1fd =>
+      'Precalentamientos antes de la electricidad costosa y el clima frío, y permite que la temperatura baja un poco en horas costosas.';
+
+  @override
+  String get s81c4abc1a5 => 'Sobrecalentamiento +';
+
+  @override
+  String get sdea18b2b40 => 'Subcalentamiento −';
+
+  @override
+  String get s523214c8db =>
+      'Línea = temperatura de destino, barras = precio de la electricidad, raspado = temperatura exterior.';
+
+  @override
+  String get s94b8f63aa7 => 'Añadir la ubicación de la casa para el clima';
+
+  @override
+  String get s941fbb47fe => 'Calculando el plan…';
+
+  @override
+  String get s306729fe62 => 'No hay precios';
 
   @override
   String get s723c887da6 => 'min';
@@ -982,9 +1206,6 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get s6c3e76828b => 'Siguiente';
-
-  @override
   String get s43d448a950 => 'Añadir a la vista de inicio';
 
   @override
@@ -1118,9 +1339,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'Escoge lo que pasa en la vista de casa y llámalos.';
 
   @override
-  String get sb1924acbe7 => 'Nombre';
-
-  @override
   String get s86c3f92546 => 'También añadir brillo / poder';
 
   @override
@@ -1128,7 +1346,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String sf86536db42(String p0) {
-    return 'Done! $p0 tiles added';
+    return '¡Listo! $p0 tarjetas añadidas';
   }
 
   @override
@@ -1174,6 +1392,16 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s846ee3bc67 => 'Otros dispositivos';
+
+  @override
+  String get sdeadd78d47 => 'Refrigeración termostatica de calefacción';
+
+  @override
+  String get s48264cfe32 => 'Termostato';
+
+  @override
+  String get s641a848754 =>
+      'Mantiene la temperatura que desea: controla los relés o una bomba de calor de un termómetro. Puede ahorrar con los precios del spot.';
 
   @override
   String get s2a9b6fedd9 => '¿No puedes encontrar tu marca?';
@@ -1259,7 +1487,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s02ce5f4a01 => '¡Funciona!';
 
   @override
-  String get sb9e9e55164 => 'Estas fichas serán creadas';
+  String get sb9e9e55164 => 'Se crearán estas tarjetas';
 
   @override
   String get s1cb2891ef2 =>
@@ -1305,6 +1533,32 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sc95fb5440b => 'Corriente terminada';
+
+  @override
+  String get s62cfd94468 => 'Horas más baratas por la noche';
+
+  @override
+  String get s7995dff292 =>
+      'Durante las horas de noche más baratas (22–07). Bien por calentadores de agua y carga EV.';
+
+  @override
+  String get sf92675687a => 'Horas más baratas del día';
+
+  @override
+  String get sf71a753c59 => 'Durante las horas más baratas del día.';
+
+  @override
+  String get s6c070f7367 => 'Cuando la electricidad es cara';
+
+  @override
+  String get s214f034099 =>
+      'Apaga por encima del límite y vuelve cuando el precio baja.';
+
+  @override
+  String get s3939cfc37e => 'Cuando la electricidad es barata';
+
+  @override
+  String get scecc366bc4 => 'Sólo cuando el precio está por debajo del límite.';
 
   @override
   String get s6e700ae773 => 'Control por precio eliminado';
@@ -1389,9 +1643,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sccd1325381 => 'La conexión se eliminará de este dispositivo.';
-
-  @override
-  String get sc1845eb440 => 'Eliminar';
 
   @override
   String get s837e0fc5e6 =>
@@ -1674,13 +1925,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sacfc0c0b41 => 'Muestra una imagen de cámara.';
 
   @override
+  String get s7172c54c2c => 'Mantiene la temperatura en el valor fijado.';
+
+  @override
   String get s76e7a995de => 'Valor leído';
 
   @override
-  String get sc5edd6d3d1 => 'Nuevo mosaico';
+  String get sc5edd6d3d1 => 'Nueva tarjeta';
 
   @override
-  String get sa684fd0716 => 'Editar mosaico';
+  String get sa684fd0716 => 'Editar tarjeta';
 
   @override
   String get s8a8673aafe => 'Título';
@@ -1966,7 +2220,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Se encuentra automáticamente.';
 
   @override
-  String get scb28b11e70 => 'Nuevo panel';
+  String get scb28b11e70 => 'Nueva vista';
 
   @override
   String get s1f9799af4e => 'e.g. Cottage';
@@ -1991,13 +2245,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get scc5cf9957d => 'Elija el tipo de azulejos';
 
   @override
-  String get s7cf6340503 => 'Nuevo dispositivo con mosaicos listos';
+  String get s7cf6340503 => 'Nuevo dispositivo con tarjetas listas';
 
   @override
   String get se6ca707cf3 => 'Más fácil: Shelly, ESP32-CAM, Home Assistant...';
 
   @override
   String get s0789f5f14f => 'DASHBOARDS';
+
+  @override
+  String get s49de879696 => 'Energía';
 
   @override
   String get s1da81fd6c3 => 'Ajustes';
@@ -2009,16 +2266,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sfb3e3c456c => 'Suprímase el tablero';
 
   @override
-  String get s187d328bb1 => 'Editar';
-
-  @override
-  String get scdfd80f963 => 'Añadir mosaico';
+  String get scdfd80f963 => 'Añadir tarjeta';
 
   @override
   String get s41c3cebc48 => 'Añadir dispositivo';
 
   @override
-  String get s71af34b8e9 => 'Panel vacío';
+  String get s71af34b8e9 => 'Vista vacía';
 
   @override
   String get s6a210970eb =>
@@ -2028,15 +2282,178 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s4229fb4103 => 'Añade tu primer dispositivo';
 
   @override
-  String get s147f47be4c => 'Añadir mosaico';
+  String get s147f47be4c => 'Añadir tarjeta';
 
   @override
-  String get sf67e0d5752 => '¿Eliminar el mosaico?';
+  String get sf67e0d5752 => '¿Eliminar la tarjeta?';
 
   @override
   String s97f46743e0(String p0) {
     return 'Tile \"$p0\" eliminado';
   }
+
+  @override
+  String get sb8934a5835 => 'Consumo eléctrico';
+
+  @override
+  String get s5409dc748f => 'No se cuenta';
+
+  @override
+  String get sf0bbcc217b => 'Toda la vivienda';
+
+  @override
+  String get s0ad1897b28 => 'Medidor del aparato';
+
+  @override
+  String get s99268b5a6c =>
+      'Toda la vivienda = contador principal. Medidor del aparato = un aparato (se muestra como parte del total, nunca se cuenta dos veces).';
+
+  @override
+  String get se1174af557 => 'Parte del medidor (opcional)';
+
+  @override
+  String get s9773c92c92 => 'Energía y costes';
+
+  @override
+  String get s43dead6994 => 'Contrato eléctrico';
+
+  @override
+  String get sef4d24cdd4 => 'Día';
+
+  @override
+  String get sa62dd794ce => 'Mes';
+
+  @override
+  String get s6b2ebe5aca => 'Elige primero tus medidores';
+
+  @override
+  String get sde41f2fac9 =>
+      'Marcar abajo qué medidor mide todo el sitio y cuáles dispositivos individuales.';
+
+  @override
+  String get s4ad000d885 => 'IVA incl.';
+
+  @override
+  String get s9e214b6e88 => 'sin IVA';
+
+  @override
+  String get s73771d252c => 'Total de aparatos medidos';
+
+  @override
+  String get s22d03356a9 => 'Otros consumos';
+
+  @override
+  String get s48b08c5f5a => 'Cuotas mensuales (energía + peajes)';
+
+  @override
+  String get s286e1cfb54 => 'Total';
+
+  @override
+  String get s2e8700e0cf =>
+      'Parte del uso no tenía precio (el precio del spot faltaba).';
+
+  @override
+  String get sbbd89fbc05 =>
+      'El uso se registra mientras la aplicación está abierta (todo el tiempo en la tableta de inicio).';
+
+  @override
+  String get s64382718ff => 'Medidores';
+
+  @override
+  String get s9a3a0d414e =>
+      'No hay tarjetas de alimentación o energía (W, kW, Wh, kWh). Añadir por ejemplo un medidor de Shelly.';
+
+  @override
+  String get sdb0484d728 => 'Guardado';
+
+  @override
+  String get se80021e22a =>
+      'Copie los precios de su factura. Introduzca con o sin IVA – los costos se muestran a ambos lados.';
+
+  @override
+  String get sfb62156afe => 'Zona de precio';
+
+  @override
+  String get s1762fb70a7 => 'Energía';
+
+  @override
+  String get s2ed3e3cf28 => 'Precio spot';
+
+  @override
+  String get s5d1dd0f675 => 'Fijo';
+
+  @override
+  String get sedb38796fb => 'Noche/día';
+
+  @override
+  String get s0774cea15a => 'Margen';
+
+  @override
+  String get s63370fe61a => 'Precio de la energía';
+
+  @override
+  String get s50a7dd89c6 => 'Energía de día';
+
+  @override
+  String get sdeaa5ad900 => 'Energía de noche';
+
+  @override
+  String get se93c7bcd86 => 'Cuota mensual (energía)';
+
+  @override
+  String get sb7937e4b91 => 'Peajes';
+
+  @override
+  String get s0f89840226 => 'Tarifa única';
+
+  @override
+  String get sa768f1b352 => 'Precio de peajes';
+
+  @override
+  String get s9e5dde22cb => 'Peajes de día';
+
+  @override
+  String get sdf7a4fd2e3 => 'Peajes de noche';
+
+  @override
+  String get s4df0aee067 => 'Cuota mensual (peajes)';
+
+  @override
+  String get s4c59c90975 => 'La noche empieza';
+
+  @override
+  String get s84decd042b => 'La noche termina';
+
+  @override
+  String get s90c26f1e37 => 'Impuestos';
+
+  @override
+  String get s222cb348a0 => 'Impuesto eléctrico';
+
+  @override
+  String get sbe412dcaa6 => 'IVA';
+
+  @override
+  String get s43b55c13c5 => 'La búsqueda falló. Revisa la conexión.';
+
+  @override
+  String get s171834ca33 => 'Ubicación de casa';
+
+  @override
+  String get s6f6c2fe37a =>
+      'El pronóstico del tiempo (Open-Meteo) ayuda a precalentarse antes del frío. La ciudad es suficiente.';
+
+  @override
+  String get s5f663978d6 => 'Localidad';
+
+  @override
+  String get s7be6460c54 => 'p. ej. Tampere';
+
+  @override
+  String get s1576b70590 => 'Uso de electricidad, costes, contrato y tiempo.';
+
+  @override
+  String get sa6212aaeb4 => 'Ubicación';
 
   @override
   String get sa0d8c62e5a => 'No hay ningún comando configurado';
@@ -2102,9 +2519,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s4cbe24240f => 'Encendido';
 
   @override
-  String get s33831dd49f => 'Apagado';
-
-  @override
   String get sdc398885dc => 'Ajustes avanzados';
 
   @override
@@ -2153,9 +2567,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s9bb545e9b3 => 'Inicia sesión o crea una cuenta';
 
   @override
-  String get sf4caddf894 => 'Avanzado';
-
-  @override
   String get s21f870dbc2 =>
       'Muestra configuración técnica: conexiones (HTTP, MQTT, Modbus...), cargas de pago, caminos JSON y fuentes de baldosas. La mayoría de la gente no necesita estas.';
 
@@ -2196,7 +2607,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Agregue un dashboard de ejemplo (camera, alarma, luces, ventilación). Reemplace las direcciones con el suyo.';
 
   @override
-  String get sec02c7c071 => 'Añadir panel de ejemplo';
+  String get sec02c7c071 => 'Añadir vista de ejemplo';
 
   @override
   String get s522d6584c5 => 'Buscar actualizaciones';
@@ -2250,10 +2661,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sd6561a08ca => 'Empecemos';
 
   @override
-  String get se5be2a8386 => 'Tus mosaicos están listos';
+  String get se5be2a8386 => 'Tus tarjetas están listas';
 
   @override
-  String get s8162694dbe => 'Añade tu primer mosaico';
+  String get s8162694dbe => 'Añade tu primera tarjeta';
 
   @override
   String get s7b2a30b77c =>
@@ -2424,9 +2835,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sca7e088857 => 'Precio de la electricidad';
-
-  @override
-  String get sfb62156afe => 'Zona de precio';
 
   @override
   String get s2525f9a4f5 =>
@@ -2998,6 +3406,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sb25aad3bc2 => 'Salgo de casa';
 
   @override
+  String get s7e461faf91 =>
+      'Encuéntrelo en la lista de dispositivos del router o en la aplicación del dispositivo. También puede pulsar \"Búsqueda de red\".';
+
+  @override
   String get saf4b222a68 => 'Dirección IP del dispositivo';
 
   @override
@@ -3222,6 +3634,10 @@ class AppLocalizationsEs extends AppLocalizations {
       'Los voladores IR más listos funcionan con Tasmota (utiliza la construcción de tasmota-ir). ESPHome = tu dispositivo ESPHome con climate_ir.';
 
   @override
+  String get sc096a735fd =>
+      'IP del transmisor IR. Para MQTT, la dirección del corredor.';
+
+  @override
   String get safc7f1325c => 'Marca de la bomba de calor';
 
   @override
@@ -3316,6 +3732,9 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s4105198757 =>
       'Controlar dispositivos RF433 de radio-remote (sockets, toldos, puertas de garaje) con el Athom \"Tasmota IR & RF433 Controller\". Enseña los botones justo después de añadir.';
+
+  @override
+  String get sbc2bf08889 => 'IP del controlador Athom.';
 
   @override
   String get sc34430eec0 => 'Por ejemplo, lo que controlas.';

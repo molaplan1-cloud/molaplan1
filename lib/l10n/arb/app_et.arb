@@ -178,7 +178,25 @@
  "@sbb62433c2c": {
   "x-mt": true
  },
+ "sc27533ae83": "Säästlik",
+ "sdbcb85509b": "Temperatuur võib kõikuda kõige rohkem (+1 / −2 °C). Suurim sääst.",
+ "s380b20be36": "Tasakaalus",
+ "s66ea783264": "Väike kõikumine (+1 / −1 °C). Hea vaikevalik.",
+ "see96226e44": "Mugavus",
+ "sb403e00b3d": "Peaaegu ühtlane temperatuur (+0,5 / −0,5 °C). Säästab veidi.",
  "s0bf7cb1613": "Philips Hue",
+ "se17d4e4197": "Hue sild ja selle tuled (ka Zigbee tuled paaris). Paari sillanupuga.",
+ "@se17d4e4197": {
+  "x-mt": true
+ },
+ "sf83a145406": "Hue rakenduses: Seadistused → Hue Bridges → (i) → IP- aadress. Või ruuteri seadmete loendis: \"Philips-hue\".",
+ "@sf83a145406": {
+  "x-mt": true
+ },
+ "s80ee7a25a9": "Klõpsa kohe Hue silla peal asuvale suurele ümmargusele nupule. Oota siin – see ühendub iseenesest.",
+ "@s80ee7a25a9": {
+  "x-mt": true
+ },
  "s4dbb677293": "kättesaamatu",
  "s609cb4c5f9": "sees",
  "s356d822497": "väljas",
@@ -194,8 +212,24 @@
  },
  "se78754330c": "võimsus",
  "sfcb44be1a0": "Shelly",
+ "sa6ff717527": "Releed ja pistikud: Pro 4PM, Plus 1PM, Plug S, 2.5... Leiti automaatselt, plaadid igale kanalile.",
+ "@sa6ff717527": {
+  "x-mt": true
+ },
+ "sd7e123cd2f": "Shelly rakenduses: open the device → gear (settings) → Device information → IP- aadress. Või ruuteri seadmete nimekirjas: nimi algab sõnaga \"shelly...\".",
+ "@sd7e123cd2f": {
+  "x-mt": true
+ },
  "s5f2b2ca5f5": "praegu sees",
  "s67f64cd925": "praegu väljas",
+ "sd8dfb25d31": "Shelly Cloud (sillata)",
+ "@sd8dfb25d31": {
+  "x-mt": true
+ },
+ "s350215338a": "Juhtige Shellyt kõikjalt läbi Shelly pilve. Selleks on vaja ainult Shelly rakenduse võtit.",
+ "@s350215338a": {
+  "x-mt": true
+ },
  "s64037991c2": "Shelly rakendus → sinu profiil → Kasutaja seaded → Autoriseerimispilve võti → Hangi võti. Kopeeri ja aseta siia.",
  "@s64037991c2": {
   "x-mt": true
@@ -227,6 +261,18 @@
   "x-mt": true
  },
  "sf34c97592f": "IKEA Dirigera",
+ "sb38eac6a87": "IKEA nutisõlm ja selle tuled ja pistikud (Zigbee) Paari rummuga.",
+ "@sb38eac6a87": {
+  "x-mt": true
+ },
+ "s4e92ab791e": "IKEA Home nutirakenduses: Seadistused → Hub → IP- aadress. Või ruuteri seadmete loendis: \"gw2-...\" või \"dirigera\".",
+ "@s4e92ab791e": {
+  "x-mt": true
+ },
+ "s73824fc3d0": "Vajuta kord Dirigera rummu allosas asuvat tegevusnuppu. Oota siin.",
+ "@s73824fc3d0": {
+  "x-mt": true
+ },
  "sa376ec78ec": "Valgusti",
  "sda8d9bf1cd": "Pistikupesa",
  "sb662db81d8": "Aadress näib olevat ebatäielik. Kasuta nelja numbrit koos punktidega, nt 192.168.1. 50.",
@@ -752,11 +798,123 @@
   "x-mt": true
  },
  "s5a40f12b6a": "Lisa",
+ "sa3a093e55e": "Küte",
+ "s8efb99df1d": "Jahutus",
+ "s0b98d62330": "Küte ja jahutus",
+ "s33831dd49f": "Väljas",
+ "sa61efb9866": "kütab",
+ "s9a47ee3e3c": "jahutab",
+ "s156712ac0c": "ootel",
+ "s8a1f52a37b": "Termostaat eemaldatud",
+ "s28dc9bc46a": "Temperatuurinäit puudub",
+ "s4f1166fe24": "Kodusild puudub: termostaat ei kontrolli veel. Seadke kaugjuurdepääs kodutahvlile.",
+ "@s4f1166fe24": {
+  "x-mt": true
+ },
+ "see9111ba68": "Relee või lüliti (sees/väljas)",
+ "seaed91ad78": "Soojuspump või konditsioneer (seadeväärtus)",
+ "sb757921c13": "Kütab",
+ "s7407864734": "Jahutab",
+ "s272aa3f1da": "Mõlemad",
+ "sdadb6e3501": "Varuküttekeha",
+ "se4e381334d": "Alustatakse ainult siis, kui see on selgelt allpool eesmärki.",
+ "@se4e381334d": {
+  "x-mt": true
+ },
+ "s17c79c5f4e": "Sisse/väljalülitatud (valikuline)",
+ "@s17c79c5f4e": {
+  "x-mt": true
+ },
+ "s92d88612de": "Soojusrežiimi nupp (ei ole kohustuslik)",
+ "@s92d88612de": {
+  "x-mt": true
+ },
+ "s75ac845bab": "Jahutusrežiimi nupp (ei ole kohustuslik)",
+ "@s75ac845bab": {
+  "x-mt": true
+ },
+ "se12fc46923": "Puudub",
+ "sc590a09db9": "Mis kütab või jahutab?",
+ "sa15ffe53d4": "Valige üks või mitu, nt soojuspump ja varukütteseade.",
+ "@sa15ffe53d4": {
+  "x-mt": true
+ },
+ "sd47a7615a7": "Sobivaid seadmeid veel pole",
+ "s3c7649a7f0": "Esmalt lisa relee (nt Shelly) või soojuspump (IR või teenindusport), seejärel tule tagasi.",
+ "@s3c7649a7f0": {
+  "x-mt": true
+ },
+ "see513572ea": "Kust temperatuuri loetakse?",
+ "s5155522e83": "Vali termomeeter. Mitu = varuvariant või keskmine.",
+ "@s5155522e83": {
+  "x-mt": true
+ },
+ "s581fa290f3": "Valikuline: soojuspump mõõdab ise. Vali temperatuuri nägemiseks andur.",
+ "@s581fa290f3": {
+  "x-mt": true
+ },
+ "s7e4d8d60a0": "Termomeetrit pole",
+ "s0787d80876": "Kõigepealt lisage seade, mis näitab temperatuuri.",
+ "@s0787d80876": {
+  "x-mt": true
+ },
+ "s89661203b7": "Esimene töötav",
+ "s0da3005956": "Keskmine",
+ "s0c6a008ffd": "Nimi ja režiim",
+ "sb1924acbe7": "Nimi",
+ "s1790a71e85": "nt Elutuba",
+ "sd5f46903a1": "Sihttemperatuur",
+ "s6de95e582f": "Kui temperatuur kaob",
+ "s8ff25225b4": "Lülita küte/jahutus välja (kõige ohutum)",
+ "s17cb86f49e": "Jäta nagu on",
+ "sf4caddf894": "Täpsem",
+ "s9624f070ee": "Hüsterees",
+ "sf070be2c1e": "Surnud tsoon (küte/jahutus)",
+ "s64540136ff": "Minimaalne sees-aeg",
+ "s21713a2177": "Minimaalne väljas-aeg",
+ "s8f7c8eb7d0": "Varukütteseade, kui see on allpool sihtmärki",
+ "@s8f7c8eb7d0": {
+  "x-mt": true
+ },
+ "sf1eb3b2d34": "Sensor kadus pärast lugemist",
+ "@sf1eb3b2d34": {
+  "x-mt": true
+ },
+ "s0ab1430151": "Uus termostaat",
+ "sbbc98d573d": "Muuda termostaati",
+ "s6c3e76828b": "Edasi",
+ "s187d328bb1": "Muuda",
+ "sc1845eb440": "Kustuta",
+ "s87984716cb": "Kustutada termostaat?",
+ "s29fd8d5b5e": "Praegu",
+ "s79786b9f7d": "Siht",
+ "sdd309c0a63": "Termostaat töötab kodusillal",
+ "s9c1b5394df": "Võrguühenduse loomine kodutahvlil (Seaded → Kaugjuurdepääs). Kuni selle ajani ei kontrolli see midagi.",
+ "@s9c1b5394df": {
+  "x-mt": true
+ },
+ "s06cda8c0de": "Töötab selles seadmes (kodusild).",
+ "s2342536aea": "Töötab kodusillal.",
+ "s798f7b2876": "Nutikas küte",
+ "s2c5993c1fd": "Soojeneb enne kallist elektrit ja külma ilma ning laseb kallitel tundidel temperatuuri veidi langeda.",
+ "@s2c5993c1fd": {
+  "x-mt": true
+ },
+ "s81c4abc1a5": "Ülekuumutus +",
+ "sdea18b2b40": "Alakuumutus −",
+ "s523214c8db": "Rida = sihttemperatuur, baarid = elektrihind, kriipsutatud = välistemperatuur.",
+ "@s523214c8db": {
+  "x-mt": true
+ },
+ "s94b8f63aa7": "Kodu asukoha lisamine ilmale",
+ "@s94b8f63aa7": {
+  "x-mt": true
+ },
+ "s941fbb47fe": "Plaani arvutatakse…",
  "s306729fe62": "Hindadeta",
  "@s306729fe62": {
   "x-mt": true
  },
- "s29fd8d5b5e": "Praegu",
  "s723c887da6": "min",
  "@s723c887da6": {
   "x-mt": true
@@ -915,7 +1073,6 @@
  "@sb160156a36": {
   "x-mt": true
  },
- "s6c3e76828b": "Edasi",
  "s43d448a950": "Lisa kodu vaatesse",
  "sd890121a57": "Koduvaate näitamine",
  "@sd890121a57": {
@@ -1038,7 +1195,6 @@
  "@sac4debdb9c": {
   "x-mt": true
  },
- "sb1924acbe7": "Nimi",
  "s86c3f92546": "Lisa ka heledust/võimsust",
  "@s86c3f92546": {
   "x-mt": true
@@ -1047,10 +1203,7 @@
  "@s91571486e4": {
   "x-mt": true
  },
- "sf86536db42": "Tehtud! {p0} lisatud plaadid",
- "@sf86536db42": {
-  "x-mt": true
- },
+ "sf86536db42": "Valmis! {p0} kaarti lisatud",
  "sbfaea66122": "Plaadid töötavad kodus ja eemal pilve kaudu - midagi muud ei ole teha.",
  "@sbfaea66122": {
   "x-mt": true
@@ -1091,6 +1244,15 @@
   "x-mt": true
  },
  "s846ee3bc67": "Muud seadmed",
+ "sdeadd78d47": "Termostaadi kütmise jahutus",
+ "@sdeadd78d47": {
+  "x-mt": true
+ },
+ "s48264cfe32": "Termostaat",
+ "s641a848754": "Säilitab soovitud temperatuuri: juhib releed või soojuspumpa termomeetrilt. Säästab hetkehindadega.",
+ "@s641a848754": {
+  "x-mt": true
+ },
  "s2a9b6fedd9": "Ei leia oma kaubamärki?",
  "@s2a9b6fedd9": {
   "x-mt": true
@@ -1164,10 +1326,7 @@
  },
  "sceb8e47d07": "Testi ühendust",
  "s02ce5f4a01": "Töötab!",
- "sb9e9e55164": "Need plaadid luuakse",
- "@sb9e9e55164": {
-  "x-mt": true
- },
+ "sb9e9e55164": "Need kaardid luuakse",
  "s1cb2891ef2": "Täitke väljad, mis on tähistatud *-ga, et näha plaate.",
  "@s1cb2891ef2": {
   "x-mt": true
@@ -1201,6 +1360,38 @@
  },
  "sc95fb5440b": "Stream lõppes",
  "@sc95fb5440b": {
+  "x-mt": true
+ },
+ "s62cfd94468": "Odavamad tunnid öösel",
+ "@s62cfd94468": {
+  "x-mt": true
+ },
+ "s7995dff292": "Kõige odavamatel öötundidel (22–07) sobib hästi veesoojenditele ja elektrisõidukite laadimisele.",
+ "@s7995dff292": {
+  "x-mt": true
+ },
+ "sf92675687a": "Odavaimad päevatunnid",
+ "@sf92675687a": {
+  "x-mt": true
+ },
+ "sf71a753c59": "Päeva kõige odavamatel tundidel.",
+ "@sf71a753c59": {
+  "x-mt": true
+ },
+ "s6c070f7367": "Väljas, kui elekter on kallis",
+ "@s6c070f7367": {
+  "x-mt": true
+ },
+ "s214f034099": "See lülitub üle piiri ja tagasi, kui hind langeb.",
+ "@s214f034099": {
+  "x-mt": true
+ },
+ "s3939cfc37e": "Millal elekter on odav",
+ "@s3939cfc37e": {
+  "x-mt": true
+ },
+ "scecc366bc4": "Ainult siis, kui hind on alla piiri.",
+ "@scecc366bc4": {
   "x-mt": true
  },
  "s6e700ae773": "Hinnajuhtimine eemaldatud",
@@ -1269,7 +1460,6 @@
  "@sccd1325381": {
   "x-mt": true
  },
- "sc1845eb440": "Kustuta",
  "s837e0fc5e6": "IR on ühesuunaline: soojuspump ei kinnita käske. Plaadid näitavad viimast saadetud olekut.",
  "@s837e0fc5e6": {
   "x-mt": true
@@ -1535,12 +1725,13 @@
  "@sacfc0c0b41": {
   "x-mt": true
  },
+ "s7172c54c2c": "Hoiab temperatuuri seatud väärtusel.",
  "s76e7a995de": "Väärtusloetelu",
  "@s76e7a995de": {
   "x-mt": true
  },
- "sc5edd6d3d1": "Uus paan",
- "sa684fd0716": "Muuda paani",
+ "sc5edd6d3d1": "Uus kaart",
+ "sa684fd0716": "Muuda kaarti",
  "s8a8673aafe": "Pealkiri",
  "scf37cbeda8": "Ikoon",
  "sa444aab286": "Automaatne",
@@ -1846,20 +2037,20 @@
  "@scc5cf9957d": {
   "x-mt": true
  },
- "s7cf6340503": "Uus seade valmis paanidega",
+ "s7cf6340503": "Uus seade valmis kaartidega",
  "se6ca707cf3": "Kõige lihtsam: Shelly, ESP32-CAM, Home Assistant...",
  "@se6ca707cf3": {
   "x-mt": true
  },
  "s0789f5f14f": "DASHBOARDS",
+ "s49de879696": "Energia",
  "s1da81fd6c3": "Seaded",
  "s59622d792b": "Nimeta ümber",
  "sfb3e3c456c": "Kustuta armatuurlaud",
  "@sfb3e3c456c": {
   "x-mt": true
  },
- "s187d328bb1": "Muuda",
- "scdfd80f963": "Lisa paan",
+ "scdfd80f963": "Lisa kaart",
  "s41c3cebc48": "Lisa seade",
  "s71af34b8e9": "Tühi vaade",
  "s6a210970eb": "Siin on näha seadme plaadid: temperatuurid, lülitid, kaamerad ja kiirklahvid. Alusta seadme lisamisega.",
@@ -1867,12 +2058,88 @@
   "x-mt": true
  },
  "s4229fb4103": "Lisa oma esimene seade",
- "s147f47be4c": "Lisa paan",
- "sf67e0d5752": "Kustutada paan?",
+ "s147f47be4c": "Lisa kaart",
+ "sf67e0d5752": "Kustutada kaart?",
  "s97f46743e0": "Kivi \"{p0}\" kustutatud",
  "@s97f46743e0": {
   "x-mt": true
  },
+ "sb8934a5835": "Elektritarbimine",
+ "s5409dc748f": "Ei arvestata",
+ "sf0bbcc217b": "Kogu objekt",
+ "s0ad1897b28": "Seadme arvesti",
+ "s99268b5a6c": "Kogu objekt = peaarvesti. Seadme arvesti = üks seade (näidatakse osana kogusummast, ei arvestata kaks korda).",
+ "se1174af557": "Osa arvestist (valikuline)",
+ "s9773c92c92": "Energia ja kulud",
+ "s43dead6994": "Elektrileping",
+ "sef4d24cdd4": "Päev",
+ "sa62dd794ce": "Kuu",
+ "s6b2ebe5aca": "Vali kõigepealt arvestid",
+ "sde41f2fac9": "Märkige allpool, milline meeter mõõdab kogu saiti ja millised üksikud seadmed.",
+ "@sde41f2fac9": {
+  "x-mt": true
+ },
+ "s4ad000d885": "km-ga",
+ "s9e214b6e88": "km-ta",
+ "s73771d252c": "Mõõdetud seadmed kokku",
+ "s22d03356a9": "Muu tarbimine",
+ "s48b08c5f5a": "Kuutasud (energia + võrk)",
+ "s286e1cfb54": "Kokku",
+ "s2e8700e0cf": "Osal kasutusest puudus hind (hetkhind puudus).",
+ "@s2e8700e0cf": {
+  "x-mt": true
+ },
+ "sbbd89fbc05": "Kasutamine registreeritakse, kui rakendus on avatud (kogu aeg kodus tahvelarvutis).",
+ "@sbbd89fbc05": {
+  "x-mt": true
+ },
+ "s64382718ff": "Arvestid",
+ "s9a3a0d414e": "Võimsus- või energiakaardid puuduvad (W, kW, Wh, kWh). Lisada näiteks Shelly arvesti.",
+ "@s9a3a0d414e": {
+  "x-mt": true
+ },
+ "sdb0484d728": "Salvestatud",
+ "se80021e22a": "Kopeeri oma arvelt hinnad. Kirjuta need kas käibemaksuga või ilma – kulusid näidatakse mõlemal viisil.",
+ "@se80021e22a": {
+  "x-mt": true
+ },
+ "sfb62156afe": "Hinnapiirkond",
+ "s1762fb70a7": "Energia",
+ "s2ed3e3cf28": "Börsihind",
+ "s5d1dd0f675": "Fikseeritud",
+ "sedb38796fb": "Öö/päev",
+ "s0774cea15a": "Marginaal",
+ "s63370fe61a": "Energia hind",
+ "s50a7dd89c6": "Päevane energia",
+ "sdeaa5ad900": "Öine energia",
+ "se93c7bcd86": "Kuutasu (energia)",
+ "sb7937e4b91": "Võrguteenus",
+ "s0f89840226": "Ühtne tariif",
+ "sa768f1b352": "Võrgutasu",
+ "s9e5dde22cb": "Võrgutasu päeval",
+ "sdf7a4fd2e3": "Võrgutasu öösel",
+ "s4df0aee067": "Kuutasu (võrk)",
+ "s4c59c90975": "Öö algab",
+ "s84decd042b": "Öö lõpeb",
+ "s90c26f1e37": "Maksud",
+ "s222cb348a0": "Elektriaktsiis",
+ "sbe412dcaa6": "Käibemaks",
+ "s43b55c13c5": "Otsimine nurjus. Kontrolli ühendust.",
+ "@s43b55c13c5": {
+  "x-mt": true
+ },
+ "s171834ca33": "Kodu asukoht",
+ "s6f6c2fe37a": "Ilmaprognoos (Open-Meteo) aitab eelkuumutada enne külma ilma.Linnast piisab.",
+ "@s6f6c2fe37a": {
+  "x-mt": true
+ },
+ "s5f663978d6": "Asula",
+ "s7be6460c54": "nt Tampere",
+ "s1576b70590": "Elektrikasutus, kulud, leping ja ilm.",
+ "@s1576b70590": {
+  "x-mt": true
+ },
+ "sa6212aaeb4": "Asukoht",
  "sa0d8c62e5a": "Käsku pole seadistatud",
  "@sa0d8c62e5a": {
   "x-mt": true
@@ -1929,7 +2196,6 @@
  "sf3d644dd4c": "Õpeta puldi nupp",
  "sfb1a18d11f": "Värskenda",
  "s4cbe24240f": "Sees",
- "s33831dd49f": "Väljas",
  "sdc398885dc": "Täpsemad seaded",
  "s5d477f3cd8": "Tavaliselt sa ei vaja neid",
  "@s5d477f3cd8": {
@@ -1975,7 +2241,6 @@
   "x-mt": true
  },
  "s9bb545e9b3": "Logi sisse või loo konto",
- "sf4caddf894": "Täpsem",
  "s21f870dbc2": "Näitab tehnilisi seadistusi: ühendused (HTTP, MQTT, Modbus...), nimikoormused, JSON- i rajad ja plaatide allikad. Enamik inimesi ei vaja neid.",
  "@s21f870dbc2": {
   "x-mt": true
@@ -2064,8 +2329,8 @@
   "x-mt": true
  },
  "sd6561a08ca": "Alustame",
- "se5be2a8386": "Sinu paanid on valmis",
- "s8162694dbe": "Lisa oma esimene paan",
+ "se5be2a8386": "Sinu kaardid on valmis",
+ "s8162694dbe": "Lisa oma esimene kaart",
  "s7b2a30b77c": "Need plaadid on tehtud sinu seadme jaoks. Sa võid neid hiljem vahetada ja korrastada.",
  "@s7b2a30b77c": {
   "x-mt": true
@@ -2240,7 +2505,6 @@
   "x-mt": true
  },
  "sca7e088857": "Elektri hind",
- "sfb62156afe": "Hinnapiirkond",
  "s2525f9a4f5": "Soome on üks piirkond (FI). Rootsis ja Norras sõltub see sellest, kus te elate.",
  "@s2525f9a4f5": {
   "x-mt": true
@@ -2821,6 +3085,10 @@
  "sbb2adef009": "Ventilaatori kiirus",
  "see46441329": "0=Off;1=Away;2=Home;3=Boost;4=Max",
  "sb25aad3bc2": "Lahkun kodust",
+ "s7e461faf91": "Leia see ruuteri seadmete nimekirjast või seadme rakendusest. Samuti võid puudutada nuppu \"Otsi võrku\".",
+ "@s7e461faf91": {
+  "x-mt": true
+ },
  "saf4b222a68": "Seadme IP-aadress",
  "s1bbea216af": "ESP32-CAM-kaamera",
  "@s1bbea216af": {
@@ -3054,6 +3322,10 @@
  "@sc899cf95db": {
   "x-mt": true
  },
+ "sc096a735fd": "IR-saatja IP. MQTT puhul maakleri aadress.",
+ "@sc096a735fd": {
+  "x-mt": true
+ },
  "safc7f1325c": "Soojuspumba kaubamärk",
  "s7675ec1754": "Vali seadme mark või pult. Kui see ei reageeri, proovi alternatiivse protokolliga \"Muu\".",
  "@s7675ec1754": {
@@ -3149,6 +3421,10 @@
  "s84cd6a5180": "RF433 pult (Athom IR & RF)",
  "s4105198757": "RF433 raadiokaugseadmete (pesad, varikatused, garaažiuksed) juhtimine Athomiga \"Tasmota IR & RF433 kontroller\". Nupud õpetatakse kohe pärast lisamist.",
  "@s4105198757": {
+  "x-mt": true
+ },
+ "sbc2bf08889": "Athomi kontrolleri IP.",
+ "@sbc2bf08889": {
   "x-mt": true
  },
  "sc34430eec0": "Nt mida sa kontrollid.",
@@ -3352,46 +3628,6 @@
  "sfb0b971c01": "Õõtsumine",
  "s3a38b97f7b": "{p0} – ruum",
  "@s3a38b97f7b": {
-  "x-mt": true
- },
- "se17d4e4197": "Hue sild ja selle tuled (ka Zigbee tuled paaris). Paari sillanupuga.",
- "@se17d4e4197": {
-  "x-mt": true
- },
- "sf83a145406": "Hue rakenduses: Seadistused → Hue Bridges → (i) → IP- aadress. Või ruuteri seadmete loendis: \"Philips-hue\".",
- "@sf83a145406": {
-  "x-mt": true
- },
- "s80ee7a25a9": "Klõpsa kohe Hue silla peal asuvale suurele ümmargusele nupule. Oota siin – see ühendub iseenesest.",
- "@s80ee7a25a9": {
-  "x-mt": true
- },
- "sa6ff717527": "Releed ja pistikud: Pro 4PM, Plus 1PM, Plug S, 2.5... Leiti automaatselt, plaadid igale kanalile.",
- "@sa6ff717527": {
-  "x-mt": true
- },
- "sd7e123cd2f": "Shelly rakenduses: open the device → gear (settings) → Device information → IP- aadress. Või ruuteri seadmete nimekirjas: nimi algab sõnaga \"shelly...\".",
- "@sd7e123cd2f": {
-  "x-mt": true
- },
- "sd8dfb25d31": "Shelly Cloud (sillata)",
- "@sd8dfb25d31": {
-  "x-mt": true
- },
- "s350215338a": "Juhtige Shellyt kõikjalt läbi Shelly pilve. Selleks on vaja ainult Shelly rakenduse võtit.",
- "@s350215338a": {
-  "x-mt": true
- },
- "sb38eac6a87": "IKEA nutisõlm ja selle tuled ja pistikud (Zigbee) Paari rummuga.",
- "@sb38eac6a87": {
-  "x-mt": true
- },
- "s4e92ab791e": "IKEA Home nutirakenduses: Seadistused → Hub → IP- aadress. Või ruuteri seadmete loendis: \"gw2-...\" või \"dirigera\".",
- "@s4e92ab791e": {
-  "x-mt": true
- },
- "s73824fc3d0": "Vajuta kord Dirigera rummu allosas asuvat tegevusnuppu. Oota siin.",
- "@s73824fc3d0": {
   "x-mt": true
  }
 }

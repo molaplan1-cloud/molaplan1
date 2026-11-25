@@ -17,6 +17,9 @@ import 'notify.dart';
 import 'price_chart.dart';
 import 'price_rules_page.dart';
 import 'heatpump_pages.dart';
+import 'energy_pages.dart';
+import 'thermostat_pages.dart';
+import '../energy/meters.dart';
 
 /// A live dashboard tile. Rebuilt (runtime restarted) when its config changes.
 class TileWidget extends StatefulWidget {
@@ -292,6 +295,10 @@ class _TileWidgetState extends State<TileWidget> {
             if (rt?.updated != null)
               Text('${tx(context, 'Päivitetty', 'Updated')}: ${rt!.updated!.toLocal().toString().substring(0, 19)}'),
             if (rt?.error != null) ...[const SizedBox(height: 8), ErrorBox(error: rt!.error!)],
+            if (t.type == TileType.value && meterKind(t.unit) != null) ...[
+              const SizedBox(height: 12),
+              AppScope(state: AppScope.read(context), child: MeterRoleEditor(tile: t)),
+            ],
           ],
         ),
         actions: [
@@ -341,6 +348,7 @@ class _TileWidgetState extends State<TileWidget> {
     final cs = Theme.of(context).colorScheme;
     final r = rt!;
     final err = r.error;
+    if (t.type == TileType.thermostat) return ThermostatTile(tile: t, editing: widget.editing);
     if (t.type == TileType.camera) {
       return Card(
         clipBehavior: Clip.antiAlias,
@@ -425,16 +433,33 @@ class _TileWidgetState extends State<TileWidget> {
                     child: Text('${r.value}', style: Theme.of(context).textTheme.bodyMedium),
                   ),
                 )
+              else if (t.type == TileType.slider)
+                // Slider tiles are the tallest: the value/error takes the free space and scales down.
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: err != null && r.value == null
+                        ? Text(
+                            friendlyError(err, AppScope.read(context).lang).title,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(color: cs.error, fontSize: 13.5, fontWeight: FontWeight.w500),
+                          )
+                        : _valueText(context, r, accent),
+                  ),
+                )
               else
                 const Spacer(),
-              if (err != null && r.value == null)
+              if (t.type == TileType.slider)
+                const SizedBox.shrink()
+              else if (err != null && r.value == null)
                 Text(
                   friendlyError(err, AppScope.read(context).lang).title,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(color: cs.error, fontSize: 13.5, fontWeight: FontWeight.w500),
                 )
-              else if ((t.type == TileType.value && !_isLog && !_isChart) || t.type == TileType.slider)
+              else if (t.type == TileType.value && !_isLog && !_isChart)
                 _valueText(context, r, accent),
               if (t.type == TileType.toggle && !(err != null && r.value == null))
                 Text(
@@ -447,7 +472,7 @@ class _TileWidgetState extends State<TileWidget> {
               const SizedBox(height: 2),
               Text(
                 t.title,
-                maxLines: 2,
+                maxLines: t.type == TileType.slider ? 1 : 2,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: cs.onSurfaceVariant),
               ),

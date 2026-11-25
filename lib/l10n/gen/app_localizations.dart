@@ -380,6 +380,42 @@ abstract class AppLocalizations {
   /// **'Check the settings and try again.'**
   String get sbb62433c2c;
 
+  /// fi: Säästävä
+  ///
+  /// In en, this message translates to:
+  /// **'Saving'**
+  String get sc27533ae83;
+
+  /// fi: Lämpö saa vaihdella eniten (+1 / −2 °C). Suurin säästö.
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature may vary the most (+1 / −2 °C). Biggest savings.'**
+  String get sdbcb85509b;
+
+  /// fi: Tasapainoinen
+  ///
+  /// In en, this message translates to:
+  /// **'Balanced'**
+  String get s380b20be36;
+
+  /// fi: Pieni vaihtelu (+1 / −1 °C). Hyvä oletus.
+  ///
+  /// In en, this message translates to:
+  /// **'Small variation (+1 / −1 °C). A good default.'**
+  String get s66ea783264;
+
+  /// fi: Mukavuus
+  ///
+  /// In en, this message translates to:
+  /// **'Comfort'**
+  String get see96226e44;
+
+  /// fi: Lähes tasainen lämpö (+0,5 / −0,5 °C). Säästää vähän.
+  ///
+  /// In en, this message translates to:
+  /// **'Almost even temperature (+0.5 / −0.5 °C). Saves a little.'**
+  String get sb403e00b3d;
+
   /// fi: Philips Hue
   ///
   /// In en, this message translates to:
@@ -1516,17 +1552,401 @@ abstract class AppLocalizations {
   /// **'Add'**
   String get s5a40f12b6a;
 
-  /// fi: Ei hintoja
+  /// fi: Lämmitys
   ///
   /// In en, this message translates to:
-  /// **'No prices'**
-  String get s306729fe62;
+  /// **'Heating'**
+  String get sa3a093e55e;
+
+  /// fi: Jäähdytys
+  ///
+  /// In en, this message translates to:
+  /// **'Cooling'**
+  String get s8efb99df1d;
+
+  /// fi: Lämmitys ja jäähdytys
+  ///
+  /// In en, this message translates to:
+  /// **'Heat and cool'**
+  String get s0b98d62330;
+
+  /// fi: Pois
+  ///
+  /// In en, this message translates to:
+  /// **'Off'**
+  String get s33831dd49f;
+
+  /// fi: lämmittää
+  ///
+  /// In en, this message translates to:
+  /// **'heating'**
+  String get sa61efb9866;
+
+  /// fi: jäähdyttää
+  ///
+  /// In en, this message translates to:
+  /// **'cooling'**
+  String get s9a47ee3e3c;
+
+  /// fi: odottaa
+  ///
+  /// In en, this message translates to:
+  /// **'idle'**
+  String get s156712ac0c;
+
+  /// fi: Termostaatti poistettu
+  ///
+  /// In en, this message translates to:
+  /// **'Thermostat removed'**
+  String get s8a1f52a37b;
+
+  /// fi: Lämpötilaa ei saada
+  ///
+  /// In en, this message translates to:
+  /// **'No temperature reading'**
+  String get s28dc9bc46a;
+
+  /// fi: Ei kotisiltaa: termostaatti ei ohjaa vielä. Ota etäyhteys käyttöön kodin tabletilla.
+  ///
+  /// In en, this message translates to:
+  /// **'No home bridge: the thermostat is not controlling yet. Set up remote access on the home tablet.'**
+  String get s4f1166fe24;
+
+  /// fi: Rele tai kytkin (päälle/pois)
+  ///
+  /// In en, this message translates to:
+  /// **'Relay or switch (on/off)'**
+  String get see9111ba68;
+
+  /// fi: Lämpöpumppu tai ilmastointi (asetusarvo)
+  ///
+  /// In en, this message translates to:
+  /// **'Heat pump or AC (setpoint)'**
+  String get seaed91ad78;
+
+  /// fi: Lämmittää
+  ///
+  /// In en, this message translates to:
+  /// **'Heats'**
+  String get sb757921c13;
+
+  /// fi: Jäähdyttää
+  ///
+  /// In en, this message translates to:
+  /// **'Cools'**
+  String get s7407864734;
+
+  /// fi: Molemmat
+  ///
+  /// In en, this message translates to:
+  /// **'Both'**
+  String get s272aa3f1da;
+
+  /// fi: Varalämmitin
+  ///
+  /// In en, this message translates to:
+  /// **'Backup heater'**
+  String get sdadb6e3501;
+
+  /// fi: Käynnistyy vain, kun lämpö on selvästi alle tavoitteen.
+  ///
+  /// In en, this message translates to:
+  /// **'Starts only when it is clearly below the target.'**
+  String get se4e381334d;
+
+  /// fi: Virta päälle/pois (valinnainen)
+  ///
+  /// In en, this message translates to:
+  /// **'Power on/off (optional)'**
+  String get s17c79c5f4e;
+
+  /// fi: Lämmitystilan painike (valinnainen)
+  ///
+  /// In en, this message translates to:
+  /// **'Heat mode button (optional)'**
+  String get s92d88612de;
+
+  /// fi: Jäähdytystilan painike (valinnainen)
+  ///
+  /// In en, this message translates to:
+  /// **'Cool mode button (optional)'**
+  String get s75ac845bab;
+
+  /// fi: Ei mitään
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get se12fc46923;
+
+  /// fi: Mikä lämmittää tai jäähdyttää?
+  ///
+  /// In en, this message translates to:
+  /// **'What heats or cools?'**
+  String get sc590a09db9;
+
+  /// fi: Valitse yksi tai useampi. Esim. lämpöpumppu ja varalämmitin.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick one or more. E.g. a heat pump and a backup heater.'**
+  String get sa15ffe53d4;
+
+  /// fi: Ei sopivia laitteita vielä
+  ///
+  /// In en, this message translates to:
+  /// **'No suitable devices yet'**
+  String get sd47a7615a7;
+
+  /// fi: Lisää ensin rele (esim. Shelly) tai lämpöpumppu (IR tai huoltoportti) ja palaa sitten tähän.
+  ///
+  /// In en, this message translates to:
+  /// **'First add a relay (e.g. Shelly) or a heat pump (IR or service port), then come back.'**
+  String get s3c7649a7f0;
+
+  /// fi: Mistä lämpötila luetaan?
+  ///
+  /// In en, this message translates to:
+  /// **'Where is the temperature read from?'**
+  String get see513572ea;
+
+  /// fi: Valitse lämpömittari. Useampi = varalla tai keskiarvo.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a thermometer. Several = fallback or average.'**
+  String get s5155522e83;
+
+  /// fi: Ei pakollinen: lämpöpumppu mittaa itse. Valitse mittari, jos haluat nähdä lämpötilan.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional: the heat pump measures itself. Pick a sensor to see the temperature.'**
+  String get s581fa290f3;
+
+  /// fi: Ei lämpömittaria
+  ///
+  /// In en, this message translates to:
+  /// **'No thermometer'**
+  String get s7e4d8d60a0;
+
+  /// fi: Lisää ensin laite, joka näyttää lämpötilan.
+  ///
+  /// In en, this message translates to:
+  /// **'First add a device that shows a temperature.'**
+  String get s0787d80876;
+
+  /// fi: Ensimmäinen toimiva
+  ///
+  /// In en, this message translates to:
+  /// **'First working'**
+  String get s89661203b7;
+
+  /// fi: Keskiarvo
+  ///
+  /// In en, this message translates to:
+  /// **'Average'**
+  String get s0da3005956;
+
+  /// fi: Nimi ja tila
+  ///
+  /// In en, this message translates to:
+  /// **'Name and mode'**
+  String get s0c6a008ffd;
+
+  /// fi: Nimi
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get sb1924acbe7;
+
+  /// fi: esim. Olohuone
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Living room'**
+  String get s1790a71e85;
+
+  /// fi: Tavoitelämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'Target temperature'**
+  String get sd5f46903a1;
+
+  /// fi: Jos lämpötilaa ei saada
+  ///
+  /// In en, this message translates to:
+  /// **'If the temperature is lost'**
+  String get s6de95e582f;
+
+  /// fi: Sammuta lämmitys/jäähdytys (turvallisin)
+  ///
+  /// In en, this message translates to:
+  /// **'Switch heating/cooling off (safest)'**
+  String get s8ff25225b4;
+
+  /// fi: Pidä ennallaan
+  ///
+  /// In en, this message translates to:
+  /// **'Keep as it is'**
+  String get s17cb86f49e;
+
+  /// fi: Edistyneet
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced'**
+  String get sf4caddf894;
+
+  /// fi: Hystereesi
+  ///
+  /// In en, this message translates to:
+  /// **'Hysteresis'**
+  String get s9624f070ee;
+
+  /// fi: Kuollut alue (lämmitys/jäähdytys)
+  ///
+  /// In en, this message translates to:
+  /// **'Deadband (heat/cool)'**
+  String get sf070be2c1e;
+
+  /// fi: Vähimmäisaika päällä
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum on time'**
+  String get s64540136ff;
+
+  /// fi: Vähimmäisaika pois
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum off time'**
+  String get s21713a2177;
+
+  /// fi: Varalämmitin, kun alle tavoitteen
+  ///
+  /// In en, this message translates to:
+  /// **'Backup heater when below target by'**
+  String get s8f7c8eb7d0;
+
+  /// fi: Mittari kadonnut, kun ei lukemaa
+  ///
+  /// In en, this message translates to:
+  /// **'Sensor lost after no reading for'**
+  String get sf1eb3b2d34;
+
+  /// fi: Uusi termostaatti
+  ///
+  /// In en, this message translates to:
+  /// **'New thermostat'**
+  String get s0ab1430151;
+
+  /// fi: Muokkaa termostaattia
+  ///
+  /// In en, this message translates to:
+  /// **'Edit thermostat'**
+  String get sbbc98d573d;
+
+  /// fi: Seuraava
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get s6c3e76828b;
+
+  /// fi: Muokkaa
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get s187d328bb1;
+
+  /// fi: Poista
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get sc1845eb440;
+
+  /// fi: Poistetaanko termostaatti?
+  ///
+  /// In en, this message translates to:
+  /// **'Delete the thermostat?'**
+  String get s87984716cb;
 
   /// fi: Nyt
   ///
   /// In en, this message translates to:
   /// **'Now'**
   String get s29fd8d5b5e;
+
+  /// fi: Tavoite
+  ///
+  /// In en, this message translates to:
+  /// **'Target'**
+  String get s79786b9f7d;
+
+  /// fi: Termostaatti toimii kotisillalla
+  ///
+  /// In en, this message translates to:
+  /// **'The thermostat runs on the home bridge'**
+  String get sdd309c0a63;
+
+  /// fi: Ota etäyhteys käyttöön kodin tabletilla (Asetukset → Etäyhteys). Siihen asti termostaatti ei ohjaa.
+  ///
+  /// In en, this message translates to:
+  /// **'Set up remote access on the home tablet (Settings → Remote access). Until then it does not control anything.'**
+  String get s9c1b5394df;
+
+  /// fi: Ohjaus toimii tällä laitteella (kotisilta).
+  ///
+  /// In en, this message translates to:
+  /// **'Runs on this device (home bridge).'**
+  String get s06cda8c0de;
+
+  /// fi: Ohjaus toimii kotisillalla.
+  ///
+  /// In en, this message translates to:
+  /// **'Runs on the home bridge.'**
+  String get s2342536aea;
+
+  /// fi: Älykäs lämmitys
+  ///
+  /// In en, this message translates to:
+  /// **'Smart heating'**
+  String get s798f7b2876;
+
+  /// fi: Lämmittää etukäteen ennen kallista sähköä ja pakkasta, ja antaa lämmön laskea hieman kalliina tunteina.
+  ///
+  /// In en, this message translates to:
+  /// **'Pre-heats before expensive electricity and cold weather, and lets the temperature drop a little in expensive hours.'**
+  String get s2c5993c1fd;
+
+  /// fi: Ylilämpö +
+  ///
+  /// In en, this message translates to:
+  /// **'Overheat +'**
+  String get s81c4abc1a5;
+
+  /// fi: Alilämpö −
+  ///
+  /// In en, this message translates to:
+  /// **'Underheat −'**
+  String get sdea18b2b40;
+
+  /// fi: Viiva = tavoitelämpötila, palkit = sähkön hinta, katkoviiva = ulkolämpötila.
+  ///
+  /// In en, this message translates to:
+  /// **'Line = target temperature, bars = electricity price, dashed = outdoor temperature.'**
+  String get s523214c8db;
+
+  /// fi: Lisää kodin sijainti säätä varten
+  ///
+  /// In en, this message translates to:
+  /// **'Add the home location for the weather'**
+  String get s94b8f63aa7;
+
+  /// fi: Suunnitelmaa lasketaan…
+  ///
+  /// In en, this message translates to:
+  /// **'Calculating the plan…'**
+  String get s941fbb47fe;
+
+  /// fi: Ei hintoja
+  ///
+  /// In en, this message translates to:
+  /// **'No prices'**
+  String get s306729fe62;
 
   /// fi: halvin
   ///
@@ -1776,12 +2196,6 @@ abstract class AppLocalizations {
   /// **'Add: {p0}'**
   String sb160156a36(String p0);
 
-  /// fi: Seuraava
-  ///
-  /// In en, this message translates to:
-  /// **'Next'**
-  String get s6c3e76828b;
-
   /// fi: Lisää kotinäkymään
   ///
   /// In en, this message translates to:
@@ -2010,12 +2424,6 @@ abstract class AppLocalizations {
   /// **'Pick what goes on the home view and name them.'**
   String get sac4debdb9c;
 
-  /// fi: Nimi
-  ///
-  /// In en, this message translates to:
-  /// **'Name'**
-  String get sb1924acbe7;
-
   /// fi: Lisää myös kirkkaus / teho
   ///
   /// In en, this message translates to:
@@ -2111,6 +2519,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Other devices'**
   String get s846ee3bc67;
+
+  /// fi: Termostaatti lämmitys jäähdytys
+  ///
+  /// In en, this message translates to:
+  /// **'Thermostat heating cooling'**
+  String get sdeadd78d47;
+
+  /// fi: Termostaatti
+  ///
+  /// In en, this message translates to:
+  /// **'Thermostat'**
+  String get s48264cfe32;
+
+  /// fi: Pitää lämmön halutussa: ohjaa releitä tai lämpöpumppua lämpömittarin mukaan. Voi säästää pörssisähköllä.
+  ///
+  /// In en, this message translates to:
+  /// **'Keeps the temperature you want: controls relays or a heat pump from a thermometer. Can save with spot prices.'**
+  String get s641a848754;
 
   /// fi: Etkö löydä merkkiäsi?
   ///
@@ -2352,6 +2778,54 @@ abstract class AppLocalizations {
   /// **'Stream ended'**
   String get sc95fb5440b;
 
+  /// fi: Halvimmat tunnit yöllä
+  ///
+  /// In en, this message translates to:
+  /// **'Cheapest hours at night'**
+  String get s62cfd94468;
+
+  /// fi: Päällä yön (22–07) halvimpina tunteina. Sopii varaajalle ja sähköauton lataukseen.
+  ///
+  /// In en, this message translates to:
+  /// **'On during the cheapest night hours (22–07). Good for water heaters and EV charging.'**
+  String get s7995dff292;
+
+  /// fi: Halvimmat tunnit vuorokaudessa
+  ///
+  /// In en, this message translates to:
+  /// **'Cheapest hours of the day'**
+  String get sf92675687a;
+
+  /// fi: Päällä vuorokauden halvimpina tunteina.
+  ///
+  /// In en, this message translates to:
+  /// **'On during the cheapest hours of the day.'**
+  String get sf71a753c59;
+
+  /// fi: Pois, kun sähkö on kallis
+  ///
+  /// In en, this message translates to:
+  /// **'Off when electricity is expensive'**
+  String get s6c070f7367;
+
+  /// fi: Sammuu, kun hinta ylittää rajan, ja palaa päälle, kun hinta laskee.
+  ///
+  /// In en, this message translates to:
+  /// **'Turns off above the limit and back on when the price drops.'**
+  String get s214f034099;
+
+  /// fi: Päälle, kun sähkö on halpa
+  ///
+  /// In en, this message translates to:
+  /// **'On when electricity is cheap'**
+  String get s3939cfc37e;
+
+  /// fi: Päällä vain, kun hinta on rajan alla.
+  ///
+  /// In en, this message translates to:
+  /// **'On only when the price is below the limit.'**
+  String get scecc366bc4;
+
   /// fi: Hintaohjaus poistettu
   ///
   /// In en, this message translates to:
@@ -2495,12 +2969,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The connection will be removed from this device.'**
   String get sccd1325381;
-
-  /// fi: Poista
-  ///
-  /// In en, this message translates to:
-  /// **'Delete'**
-  String get sc1845eb440;
 
   /// fi: IR on yksisuuntainen: lämpöpumppu ei kerro takaisin, menikö komento perille. Ruuduissa näkyy viimeksi lähetetty tila.
   ///
@@ -2993,6 +3461,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Shows a camera image.'**
   String get sacfc0c0b41;
+
+  /// fi: Pitää lämpötilan halutussa arvossa.
+  ///
+  /// In en, this message translates to:
+  /// **'Keeps the temperature at the set value.'**
+  String get s7172c54c2c;
 
   /// fi: Luettu arvo
   ///
@@ -3564,6 +4038,12 @@ abstract class AppLocalizations {
   /// **'DASHBOARDS'**
   String get s0789f5f14f;
 
+  /// fi: Energia
+  ///
+  /// In en, this message translates to:
+  /// **'Energy'**
+  String get s49de879696;
+
   /// fi: Asetukset
   ///
   /// In en, this message translates to:
@@ -3581,12 +4061,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Delete dashboard'**
   String get sfb3e3c456c;
-
-  /// fi: Muokkaa
-  ///
-  /// In en, this message translates to:
-  /// **'Edit'**
-  String get s187d328bb1;
 
   /// fi: Lisää ruutu
   ///
@@ -3635,6 +4109,318 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tile \"{p0}\" deleted'**
   String s97f46743e0(String p0);
+
+  /// fi: Sähkönkulutus
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity use'**
+  String get sb8934a5835;
+
+  /// fi: Ei mukana
+  ///
+  /// In en, this message translates to:
+  /// **'Not counted'**
+  String get s5409dc748f;
+
+  /// fi: Koko kohde
+  ///
+  /// In en, this message translates to:
+  /// **'Whole site'**
+  String get sf0bbcc217b;
+
+  /// fi: Laitteen mittaus
+  ///
+  /// In en, this message translates to:
+  /// **'Device meter'**
+  String get s0ad1897b28;
+
+  /// fi: Koko kohde = pääsähkömittari. Laitteen mittaus = yksi laite (näytetään osana kokonaisuutta, ei lasketa kahteen kertaan).
+  ///
+  /// In en, this message translates to:
+  /// **'Whole site = main meter. Device meter = one device (shown as part of the total, never counted twice).'**
+  String get s99268b5a6c;
+
+  /// fi: Osa mittaria (valinnainen)
+  ///
+  /// In en, this message translates to:
+  /// **'Part of meter (optional)'**
+  String get se1174af557;
+
+  /// fi: Energia ja kustannukset
+  ///
+  /// In en, this message translates to:
+  /// **'Energy and costs'**
+  String get s9773c92c92;
+
+  /// fi: Sähkösopimus
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity contract'**
+  String get s43dead6994;
+
+  /// fi: Päivä
+  ///
+  /// In en, this message translates to:
+  /// **'Day'**
+  String get sef4d24cdd4;
+
+  /// fi: Kuukausi
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get sa62dd794ce;
+
+  /// fi: Valitse ensin mittarit
+  ///
+  /// In en, this message translates to:
+  /// **'Pick your meters first'**
+  String get s6b2ebe5aca;
+
+  /// fi: Merkitse alta, mikä mittari mittaa koko kohdetta ja mitkä yksittäisiä laitteita.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark below which meter measures the whole site and which ones single devices.'**
+  String get sde41f2fac9;
+
+  /// fi: sis. ALV
+  ///
+  /// In en, this message translates to:
+  /// **'incl. VAT'**
+  String get s4ad000d885;
+
+  /// fi: ilman ALV
+  ///
+  /// In en, this message translates to:
+  /// **'excl. VAT'**
+  String get s9e214b6e88;
+
+  /// fi: Mitatut laitteet yhteensä
+  ///
+  /// In en, this message translates to:
+  /// **'Measured devices total'**
+  String get s73771d252c;
+
+  /// fi: Muu kulutus
+  ///
+  /// In en, this message translates to:
+  /// **'Other use'**
+  String get s22d03356a9;
+
+  /// fi: Perusmaksut (energia + siirto)
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly fees (energy + transfer)'**
+  String get s48b08c5f5a;
+
+  /// fi: Yhteensä
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get s286e1cfb54;
+
+  /// fi: Osalle kulutuksesta ei ollut hintaa (pörssihinta puuttui).
+  ///
+  /// In en, this message translates to:
+  /// **'Part of the use had no price (the spot price was missing).'**
+  String get s2e8700e0cf;
+
+  /// fi: Kulutus kirjataan, kun sovellus on auki (kodin tabletilla jatkuvasti).
+  ///
+  /// In en, this message translates to:
+  /// **'Use is recorded while the app is open (all the time on the home tablet).'**
+  String get sbbd89fbc05;
+
+  /// fi: Mittarit
+  ///
+  /// In en, this message translates to:
+  /// **'Meters'**
+  String get s64382718ff;
+
+  /// fi: Ei teho- tai energiaruutuja (W, kW, Wh, kWh). Lisää esim. Shelly-mittari.
+  ///
+  /// In en, this message translates to:
+  /// **'No power or energy tiles (W, kW, Wh, kWh). Add e.g. a Shelly meter.'**
+  String get s9a3a0d414e;
+
+  /// fi: Tallennettu
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get sdb0484d728;
+
+  /// fi: Katso hinnat sähkölaskusta. Voit kirjoittaa ne verollisina tai verottomina – kustannukset näytetään molempina.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy the prices from your bill. Type them with or without VAT – costs are shown both ways.'**
+  String get se80021e22a;
+
+  /// fi: Hinta-alue
+  ///
+  /// In en, this message translates to:
+  /// **'Price area'**
+  String get sfb62156afe;
+
+  /// fi: Sähköenergia
+  ///
+  /// In en, this message translates to:
+  /// **'Energy'**
+  String get s1762fb70a7;
+
+  /// fi: Pörssisähkö
+  ///
+  /// In en, this message translates to:
+  /// **'Spot price'**
+  String get s2ed3e3cf28;
+
+  /// fi: Kiinteä
+  ///
+  /// In en, this message translates to:
+  /// **'Fixed'**
+  String get s5d1dd0f675;
+
+  /// fi: Yö/päivä
+  ///
+  /// In en, this message translates to:
+  /// **'Night/day'**
+  String get sedb38796fb;
+
+  /// fi: Marginaali
+  ///
+  /// In en, this message translates to:
+  /// **'Margin'**
+  String get s0774cea15a;
+
+  /// fi: Energian hinta
+  ///
+  /// In en, this message translates to:
+  /// **'Energy price'**
+  String get s63370fe61a;
+
+  /// fi: Päiväenergia
+  ///
+  /// In en, this message translates to:
+  /// **'Day energy'**
+  String get s50a7dd89c6;
+
+  /// fi: Yöenergia
+  ///
+  /// In en, this message translates to:
+  /// **'Night energy'**
+  String get sdeaa5ad900;
+
+  /// fi: Perusmaksu (energia)
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly fee (energy)'**
+  String get se93c7bcd86;
+
+  /// fi: Siirto
+  ///
+  /// In en, this message translates to:
+  /// **'Transfer'**
+  String get sb7937e4b91;
+
+  /// fi: Yleissiirto
+  ///
+  /// In en, this message translates to:
+  /// **'Flat'**
+  String get s0f89840226;
+
+  /// fi: Siirtohinta
+  ///
+  /// In en, this message translates to:
+  /// **'Transfer price'**
+  String get sa768f1b352;
+
+  /// fi: Päiväsiirto
+  ///
+  /// In en, this message translates to:
+  /// **'Day transfer'**
+  String get s9e5dde22cb;
+
+  /// fi: Yösiirto
+  ///
+  /// In en, this message translates to:
+  /// **'Night transfer'**
+  String get sdf7a4fd2e3;
+
+  /// fi: Perusmaksu (siirto)
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly fee (transfer)'**
+  String get s4df0aee067;
+
+  /// fi: Yö alkaa
+  ///
+  /// In en, this message translates to:
+  /// **'Night starts'**
+  String get s4c59c90975;
+
+  /// fi: Yö päättyy
+  ///
+  /// In en, this message translates to:
+  /// **'Night ends'**
+  String get s84decd042b;
+
+  /// fi: Verot
+  ///
+  /// In en, this message translates to:
+  /// **'Taxes'**
+  String get s90c26f1e37;
+
+  /// fi: Sähkövero
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity tax'**
+  String get s222cb348a0;
+
+  /// fi: ALV
+  ///
+  /// In en, this message translates to:
+  /// **'VAT'**
+  String get sbe412dcaa6;
+
+  /// fi: Haku ei onnistunut. Tarkista verkkoyhteys.
+  ///
+  /// In en, this message translates to:
+  /// **'Search failed. Check the connection.'**
+  String get s43b55c13c5;
+
+  /// fi: Kodin sijainti
+  ///
+  /// In en, this message translates to:
+  /// **'Home location'**
+  String get s171834ca33;
+
+  /// fi: Sääennuste (Open-Meteo) auttaa lämmittämään etukäteen ennen pakkasta. Paikkakunta riittää.
+  ///
+  /// In en, this message translates to:
+  /// **'The weather forecast (Open-Meteo) helps pre-heat before cold weather. The town is enough.'**
+  String get s6f6c2fe37a;
+
+  /// fi: Paikkakunta
+  ///
+  /// In en, this message translates to:
+  /// **'Town'**
+  String get s5f663978d6;
+
+  /// fi: esim. Tampere
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Tampere'**
+  String get s7be6460c54;
+
+  /// fi: Sähkönkulutus, kustannukset, sopimus ja sää.
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity use, costs, contract and weather.'**
+  String get s1576b70590;
+
+  /// fi: Sijainti
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get sa6212aaeb4;
 
   /// fi: Komentoa ei ole määritetty
   ///
@@ -3756,12 +4542,6 @@ abstract class AppLocalizations {
   /// **'On'**
   String get s4cbe24240f;
 
-  /// fi: Pois
-  ///
-  /// In en, this message translates to:
-  /// **'Off'**
-  String get s33831dd49f;
-
   /// fi: Lisäasetukset
   ///
   /// In en, this message translates to:
@@ -3851,12 +4631,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign in or create an account'**
   String get s9bb545e9b3;
-
-  /// fi: Edistyneet
-  ///
-  /// In en, this message translates to:
-  /// **'Advanced'**
-  String get sf4caddf894;
 
   /// fi: Näyttää tekniset asetukset: yhteydet (HTTP, MQTT, Modbus…), viestit, JSON-polut ja ruutujen lähteet. Useimmat eivät tarv
   ///
@@ -4343,12 +5117,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Electricity price'**
   String get sca7e088857;
-
-  /// fi: Hinta-alue
-  ///
-  /// In en, this message translates to:
-  /// **'Price area'**
-  String get sfb62156afe;
 
   /// fi: Suomi on yksi alue (FI). Ruotsissa ja Norjassa alue riippuu asuinpaikasta.
   ///
@@ -5346,6 +6114,12 @@ abstract class AppLocalizations {
   /// **'Leaving home'**
   String get sb25aad3bc2;
 
+  /// fi: Löytyy reitittimen laitelistasta tai laitteen sovelluksesta. Voit myös painaa "Etsi verkosta".
+  ///
+  /// In en, this message translates to:
+  /// **'Find it in your router\'\'s device list or the device app. You can also tap \"Search network\".'**
+  String get s7e461faf91;
+
   /// fi: Laitteen IP-osoite
   ///
   /// In en, this message translates to:
@@ -5754,6 +6528,12 @@ abstract class AppLocalizations {
   /// **'Most ready-made IR blasters run Tasmota (use the tasmota-ir build). ESPHome = your ESPHome device with climate_ir.'**
   String get sc899cf95db;
 
+  /// fi: IR-lähettimen IP-osoite. Jos valitsit MQTT:n, kirjoita tähän MQTT-välittäjän osoite.
+  ///
+  /// In en, this message translates to:
+  /// **'IP of the IR blaster. For MQTT, the broker address.'**
+  String get sc096a735fd;
+
   /// fi: Lämpöpumpun merkki
   ///
   /// In en, this message translates to:
@@ -5921,6 +6701,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Control RF433 radio-remote devices (sockets, awnings, garage doors) with the Athom \"Tasmota IR & RF433 Controller\". You teach the buttons right after adding.'**
   String get s4105198757;
+
+  /// fi: Athom-ohjaimen IP-osoite (reitittimen laitelistasta).
+  ///
+  /// In en, this message translates to:
+  /// **'IP of the Athom controller.'**
+  String get sbc2bf08889;
 
   /// fi: Esim. huone tai laite, jota ohjaat.
   ///

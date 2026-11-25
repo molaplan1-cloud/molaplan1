@@ -378,7 +378,7 @@ class ThermostatJob {
       for (final th in e.thermostats)
         ThermostatJob(
           th,
-          zone: e.zone,
+          zone: energyZoneOf(c),
           contract: e.contract,
           home: e.home,
           commands: {

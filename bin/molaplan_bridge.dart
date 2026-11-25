@@ -150,6 +150,16 @@ Future<void> main(List<String> args) async {
         final state = s?.on == null ? 'waiting for prices' : (s!.on! ? 'ON' : 'off');
         stdout.writeln('${j.title}: ${j.rule.describe()}  [$state]${s?.error == null ? '' : '  error: ${s!.error}'}$next');
       }
+      for (final t in bridge.thermo.jobs) {
+        final c = t.config;
+        final s = bridge.thermo.status[c.id];
+        final temp = s?.temp == null ? '–' : '${s!.temp!.toStringAsFixed(1)} °C';
+        final target = (s?.target ?? c.setpoint).toStringAsFixed(1);
+        final plan = c.plan.enabled ? '  smart heating: ${c.plan.preset}' : '';
+        final lost = s != null && !s.sensorOk ? '  SENSOR LOST (${c.onSensorLost})' : '';
+        stdout.writeln('thermostat ${c.name}: $temp → $target °C  mode ${c.mode}  [${s?.state ?? 'idle'}]$plan$lost'
+            '${s?.error == null ? '' : '  error: ${s!.error}'}');
+      }
     } else if (cmd == 'quit' || cmd == 'exit') {
       break;
     } else if (cmd.isNotEmpty) {

@@ -26,10 +26,11 @@ import 'package:molaplan/ui/settings_page.dart';
 import 'package:molaplan/ui/template_gallery.dart';
 import 'package:molaplan/ui/theme.dart';
 
+import 'support/energy_seed.dart';
 import 'support/l10n_getters.g.dart';
 
 /// Energy-release pages (thermostat, contract, meters, heating) – filled in as they are added.
-List<Widget> extraL10nPages(AppState st) => const [];
+List<Widget> extraL10nPages(AppState st) => energyPages(st);
 
 Future<AppState> _state({String language = 'auto', String locale = 'fi_FI'}) async {
   final st = AppState(

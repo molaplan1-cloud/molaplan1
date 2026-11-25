@@ -11,6 +11,11 @@ import '../energy/thermostat.dart';
 import '../energy/weather.dart';
 
 /// Energy settings of a home: price area, contract, location (weather), meter roles, thermostats.
+/// Price area for energy costs and heating plans: set in energy settings, else from the
+/// electricity price device, else Finland.
+String energyZoneOf(AppConfig c) =>
+    c.energy.zone ?? '${c.connections.where((x) => x.type == 'price').firstOrNull?.settings['zone'] ?? 'FI'}';
+
 class EnergySettings {
   EnergySettings({this.zone, this.contract, this.home, Map<String, MeterInfo>? meters, List<ThermostatConfig>? thermostats})
     : meters = meters ?? {},

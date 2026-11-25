@@ -169,6 +169,26 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sbb62433c2c => 'Tarkista asetukset ja yritä uudelleen.';
 
   @override
+  String get sc27533ae83 => 'Säästävä';
+
+  @override
+  String get sdbcb85509b =>
+      'Lämpö saa vaihdella eniten (+1 / −2 °C). Suurin säästö.';
+
+  @override
+  String get s380b20be36 => 'Tasapainoinen';
+
+  @override
+  String get s66ea783264 => 'Pieni vaihtelu (+1 / −1 °C). Hyvä oletus.';
+
+  @override
+  String get see96226e44 => 'Mukavuus';
+
+  @override
+  String get sb403e00b3d =>
+      'Lähes tasainen lämpö (+0,5 / −0,5 °C). Säästää vähän.';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -826,10 +846,211 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s5a40f12b6a => 'Lisää';
 
   @override
-  String get s306729fe62 => 'Ei hintoja';
+  String get sa3a093e55e => 'Lämmitys';
+
+  @override
+  String get s8efb99df1d => 'Jäähdytys';
+
+  @override
+  String get s0b98d62330 => 'Lämmitys ja jäähdytys';
+
+  @override
+  String get s33831dd49f => 'Pois';
+
+  @override
+  String get sa61efb9866 => 'lämmittää';
+
+  @override
+  String get s9a47ee3e3c => 'jäähdyttää';
+
+  @override
+  String get s156712ac0c => 'odottaa';
+
+  @override
+  String get s8a1f52a37b => 'Termostaatti poistettu';
+
+  @override
+  String get s28dc9bc46a => 'Lämpötilaa ei saada';
+
+  @override
+  String get s4f1166fe24 =>
+      'Ei kotisiltaa: termostaatti ei ohjaa vielä. Ota etäyhteys käyttöön kodin tabletilla.';
+
+  @override
+  String get see9111ba68 => 'Rele tai kytkin (päälle/pois)';
+
+  @override
+  String get seaed91ad78 => 'Lämpöpumppu tai ilmastointi (asetusarvo)';
+
+  @override
+  String get sb757921c13 => 'Lämmittää';
+
+  @override
+  String get s7407864734 => 'Jäähdyttää';
+
+  @override
+  String get s272aa3f1da => 'Molemmat';
+
+  @override
+  String get sdadb6e3501 => 'Varalämmitin';
+
+  @override
+  String get se4e381334d =>
+      'Käynnistyy vain, kun lämpö on selvästi alle tavoitteen.';
+
+  @override
+  String get s17c79c5f4e => 'Virta päälle/pois (valinnainen)';
+
+  @override
+  String get s92d88612de => 'Lämmitystilan painike (valinnainen)';
+
+  @override
+  String get s75ac845bab => 'Jäähdytystilan painike (valinnainen)';
+
+  @override
+  String get se12fc46923 => 'Ei mitään';
+
+  @override
+  String get sc590a09db9 => 'Mikä lämmittää tai jäähdyttää?';
+
+  @override
+  String get sa15ffe53d4 =>
+      'Valitse yksi tai useampi. Esim. lämpöpumppu ja varalämmitin.';
+
+  @override
+  String get sd47a7615a7 => 'Ei sopivia laitteita vielä';
+
+  @override
+  String get s3c7649a7f0 =>
+      'Lisää ensin rele (esim. Shelly) tai lämpöpumppu (IR tai huoltoportti) ja palaa sitten tähän.';
+
+  @override
+  String get see513572ea => 'Mistä lämpötila luetaan?';
+
+  @override
+  String get s5155522e83 =>
+      'Valitse lämpömittari. Useampi = varalla tai keskiarvo.';
+
+  @override
+  String get s581fa290f3 =>
+      'Ei pakollinen: lämpöpumppu mittaa itse. Valitse mittari, jos haluat nähdä lämpötilan.';
+
+  @override
+  String get s7e4d8d60a0 => 'Ei lämpömittaria';
+
+  @override
+  String get s0787d80876 => 'Lisää ensin laite, joka näyttää lämpötilan.';
+
+  @override
+  String get s89661203b7 => 'Ensimmäinen toimiva';
+
+  @override
+  String get s0da3005956 => 'Keskiarvo';
+
+  @override
+  String get s0c6a008ffd => 'Nimi ja tila';
+
+  @override
+  String get sb1924acbe7 => 'Nimi';
+
+  @override
+  String get s1790a71e85 => 'esim. Olohuone';
+
+  @override
+  String get sd5f46903a1 => 'Tavoitelämpötila';
+
+  @override
+  String get s6de95e582f => 'Jos lämpötilaa ei saada';
+
+  @override
+  String get s8ff25225b4 => 'Sammuta lämmitys/jäähdytys (turvallisin)';
+
+  @override
+  String get s17cb86f49e => 'Pidä ennallaan';
+
+  @override
+  String get sf4caddf894 => 'Edistyneet';
+
+  @override
+  String get s9624f070ee => 'Hystereesi';
+
+  @override
+  String get sf070be2c1e => 'Kuollut alue (lämmitys/jäähdytys)';
+
+  @override
+  String get s64540136ff => 'Vähimmäisaika päällä';
+
+  @override
+  String get s21713a2177 => 'Vähimmäisaika pois';
+
+  @override
+  String get s8f7c8eb7d0 => 'Varalämmitin, kun alle tavoitteen';
+
+  @override
+  String get sf1eb3b2d34 => 'Mittari kadonnut, kun ei lukemaa';
+
+  @override
+  String get s0ab1430151 => 'Uusi termostaatti';
+
+  @override
+  String get sbbc98d573d => 'Muokkaa termostaattia';
+
+  @override
+  String get s6c3e76828b => 'Seuraava';
+
+  @override
+  String get s187d328bb1 => 'Muokkaa';
+
+  @override
+  String get sc1845eb440 => 'Poista';
+
+  @override
+  String get s87984716cb => 'Poistetaanko termostaatti?';
 
   @override
   String get s29fd8d5b5e => 'Nyt';
+
+  @override
+  String get s79786b9f7d => 'Tavoite';
+
+  @override
+  String get sdd309c0a63 => 'Termostaatti toimii kotisillalla';
+
+  @override
+  String get s9c1b5394df =>
+      'Ota etäyhteys käyttöön kodin tabletilla (Asetukset → Etäyhteys). Siihen asti termostaatti ei ohjaa.';
+
+  @override
+  String get s06cda8c0de => 'Ohjaus toimii tällä laitteella (kotisilta).';
+
+  @override
+  String get s2342536aea => 'Ohjaus toimii kotisillalla.';
+
+  @override
+  String get s798f7b2876 => 'Älykäs lämmitys';
+
+  @override
+  String get s2c5993c1fd =>
+      'Lämmittää etukäteen ennen kallista sähköä ja pakkasta, ja antaa lämmön laskea hieman kalliina tunteina.';
+
+  @override
+  String get s81c4abc1a5 => 'Ylilämpö +';
+
+  @override
+  String get sdea18b2b40 => 'Alilämpö −';
+
+  @override
+  String get s523214c8db =>
+      'Viiva = tavoitelämpötila, palkit = sähkön hinta, katkoviiva = ulkolämpötila.';
+
+  @override
+  String get s94b8f63aa7 => 'Lisää kodin sijainti säätä varten';
+
+  @override
+  String get s941fbb47fe => 'Suunnitelmaa lasketaan…';
+
+  @override
+  String get s306729fe62 => 'Ei hintoja';
 
   @override
   String get s723c887da6 => 'halvin';
@@ -982,9 +1203,6 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get s6c3e76828b => 'Seuraava';
-
-  @override
   String get s43d448a950 => 'Lisää kotinäkymään';
 
   @override
@@ -1117,9 +1335,6 @@ class AppLocalizationsFi extends AppLocalizations {
       'Valitse mitkä tulevat kotinäkymään ja anna niille nimet (esim. Lämmitys, Ulkovalot).';
 
   @override
-  String get sb1924acbe7 => 'Nimi';
-
-  @override
   String get s86c3f92546 => 'Lisää myös kirkkaus / teho';
 
   @override
@@ -1173,6 +1388,16 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s846ee3bc67 => 'Muut laitteet';
+
+  @override
+  String get sdeadd78d47 => 'Termostaatti lämmitys jäähdytys';
+
+  @override
+  String get s48264cfe32 => 'Termostaatti';
+
+  @override
+  String get s641a848754 =>
+      'Pitää lämmön halutussa: ohjaa releitä tai lämpöpumppua lämpömittarin mukaan. Voi säästää pörssisähköllä.';
 
   @override
   String get s2a9b6fedd9 => 'Etkö löydä merkkiäsi?';
@@ -1308,6 +1533,32 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sc95fb5440b => 'Virta päättyi';
 
   @override
+  String get s62cfd94468 => 'Halvimmat tunnit yöllä';
+
+  @override
+  String get s7995dff292 =>
+      'Päällä yön (22–07) halvimpina tunteina. Sopii varaajalle ja sähköauton lataukseen.';
+
+  @override
+  String get sf92675687a => 'Halvimmat tunnit vuorokaudessa';
+
+  @override
+  String get sf71a753c59 => 'Päällä vuorokauden halvimpina tunteina.';
+
+  @override
+  String get s6c070f7367 => 'Pois, kun sähkö on kallis';
+
+  @override
+  String get s214f034099 =>
+      'Sammuu, kun hinta ylittää rajan, ja palaa päälle, kun hinta laskee.';
+
+  @override
+  String get s3939cfc37e => 'Päälle, kun sähkö on halpa';
+
+  @override
+  String get scecc366bc4 => 'Päällä vain, kun hinta on rajan alla.';
+
+  @override
   String get s6e700ae773 => 'Hintaohjaus poistettu';
 
   @override
@@ -1391,9 +1642,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sccd1325381 => 'Yhteys poistetaan tältä laitteelta.';
-
-  @override
-  String get sc1845eb440 => 'Poista';
 
   @override
   String get s837e0fc5e6 =>
@@ -1671,6 +1919,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sacfc0c0b41 => 'Näyttää kameran kuvan.';
+
+  @override
+  String get s7172c54c2c => 'Pitää lämpötilan halutussa arvossa.';
 
   @override
   String get s76e7a995de => 'Luettu arvo';
@@ -1998,6 +2249,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s0789f5f14f => 'NÄKYMÄT';
 
   @override
+  String get s49de879696 => 'Energia';
+
+  @override
   String get s1da81fd6c3 => 'Asetukset';
 
   @override
@@ -2005,9 +2259,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sfb3e3c456c => 'Poista näkymä';
-
-  @override
-  String get s187d328bb1 => 'Muokkaa';
 
   @override
   String get scdfd80f963 => 'Lisää ruutu';
@@ -2035,6 +2286,169 @@ class AppLocalizationsFi extends AppLocalizations {
   String s97f46743e0(String p0) {
     return 'Ruutu \"$p0\" poistettu';
   }
+
+  @override
+  String get sb8934a5835 => 'Sähkönkulutus';
+
+  @override
+  String get s5409dc748f => 'Ei mukana';
+
+  @override
+  String get sf0bbcc217b => 'Koko kohde';
+
+  @override
+  String get s0ad1897b28 => 'Laitteen mittaus';
+
+  @override
+  String get s99268b5a6c =>
+      'Koko kohde = pääsähkömittari. Laitteen mittaus = yksi laite (näytetään osana kokonaisuutta, ei lasketa kahteen kertaan).';
+
+  @override
+  String get se1174af557 => 'Osa mittaria (valinnainen)';
+
+  @override
+  String get s9773c92c92 => 'Energia ja kustannukset';
+
+  @override
+  String get s43dead6994 => 'Sähkösopimus';
+
+  @override
+  String get sef4d24cdd4 => 'Päivä';
+
+  @override
+  String get sa62dd794ce => 'Kuukausi';
+
+  @override
+  String get s6b2ebe5aca => 'Valitse ensin mittarit';
+
+  @override
+  String get sde41f2fac9 =>
+      'Merkitse alta, mikä mittari mittaa koko kohdetta ja mitkä yksittäisiä laitteita.';
+
+  @override
+  String get s4ad000d885 => 'sis. ALV';
+
+  @override
+  String get s9e214b6e88 => 'ilman ALV';
+
+  @override
+  String get s73771d252c => 'Mitatut laitteet yhteensä';
+
+  @override
+  String get s22d03356a9 => 'Muu kulutus';
+
+  @override
+  String get s48b08c5f5a => 'Perusmaksut (energia + siirto)';
+
+  @override
+  String get s286e1cfb54 => 'Yhteensä';
+
+  @override
+  String get s2e8700e0cf =>
+      'Osalle kulutuksesta ei ollut hintaa (pörssihinta puuttui).';
+
+  @override
+  String get sbbd89fbc05 =>
+      'Kulutus kirjataan, kun sovellus on auki (kodin tabletilla jatkuvasti).';
+
+  @override
+  String get s64382718ff => 'Mittarit';
+
+  @override
+  String get s9a3a0d414e =>
+      'Ei teho- tai energiaruutuja (W, kW, Wh, kWh). Lisää esim. Shelly-mittari.';
+
+  @override
+  String get sdb0484d728 => 'Tallennettu';
+
+  @override
+  String get se80021e22a =>
+      'Katso hinnat sähkölaskusta. Voit kirjoittaa ne verollisina tai verottomina – kustannukset näytetään molempina.';
+
+  @override
+  String get sfb62156afe => 'Hinta-alue';
+
+  @override
+  String get s1762fb70a7 => 'Sähköenergia';
+
+  @override
+  String get s2ed3e3cf28 => 'Pörssisähkö';
+
+  @override
+  String get s5d1dd0f675 => 'Kiinteä';
+
+  @override
+  String get sedb38796fb => 'Yö/päivä';
+
+  @override
+  String get s0774cea15a => 'Marginaali';
+
+  @override
+  String get s63370fe61a => 'Energian hinta';
+
+  @override
+  String get s50a7dd89c6 => 'Päiväenergia';
+
+  @override
+  String get sdeaa5ad900 => 'Yöenergia';
+
+  @override
+  String get se93c7bcd86 => 'Perusmaksu (energia)';
+
+  @override
+  String get sb7937e4b91 => 'Siirto';
+
+  @override
+  String get s0f89840226 => 'Yleissiirto';
+
+  @override
+  String get sa768f1b352 => 'Siirtohinta';
+
+  @override
+  String get s9e5dde22cb => 'Päiväsiirto';
+
+  @override
+  String get sdf7a4fd2e3 => 'Yösiirto';
+
+  @override
+  String get s4df0aee067 => 'Perusmaksu (siirto)';
+
+  @override
+  String get s4c59c90975 => 'Yö alkaa';
+
+  @override
+  String get s84decd042b => 'Yö päättyy';
+
+  @override
+  String get s90c26f1e37 => 'Verot';
+
+  @override
+  String get s222cb348a0 => 'Sähkövero';
+
+  @override
+  String get sbe412dcaa6 => 'ALV';
+
+  @override
+  String get s43b55c13c5 => 'Haku ei onnistunut. Tarkista verkkoyhteys.';
+
+  @override
+  String get s171834ca33 => 'Kodin sijainti';
+
+  @override
+  String get s6f6c2fe37a =>
+      'Sääennuste (Open-Meteo) auttaa lämmittämään etukäteen ennen pakkasta. Paikkakunta riittää.';
+
+  @override
+  String get s5f663978d6 => 'Paikkakunta';
+
+  @override
+  String get s7be6460c54 => 'esim. Tampere';
+
+  @override
+  String get s1576b70590 => 'Sähkönkulutus, kustannukset, sopimus ja sää.';
+
+  @override
+  String get sa6212aaeb4 => 'Sijainti';
 
   @override
   String get sa0d8c62e5a => 'Komentoa ei ole määritetty';
@@ -2100,9 +2514,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s4cbe24240f => 'Päällä';
 
   @override
-  String get s33831dd49f => 'Pois';
-
-  @override
   String get sdc398885dc => 'Lisäasetukset';
 
   @override
@@ -2148,9 +2559,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s9bb545e9b3 => 'Kirjaudu tai luo tili';
-
-  @override
-  String get sf4caddf894 => 'Edistyneet';
 
   @override
   String get s21f870dbc2 =>
@@ -2422,9 +2830,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sca7e088857 => 'Sähkön hinta';
-
-  @override
-  String get sfb62156afe => 'Hinta-alue';
 
   @override
   String get s2525f9a4f5 =>
@@ -3004,6 +3409,10 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sb25aad3bc2 => 'Lähden kotoa';
 
   @override
+  String get s7e461faf91 =>
+      'Löytyy reitittimen laitelistasta tai laitteen sovelluksesta. Voit myös painaa \"Etsi verkosta\".';
+
+  @override
   String get saf4b222a68 => 'Laitteen IP-osoite';
 
   @override
@@ -3235,6 +3644,10 @@ class AppLocalizationsFi extends AppLocalizations {
       'Useimmat valmiit IR-lähettimet (esim. Athom, Moes) toimivat Tasmotalla. Asenna niihin tasmota-ir-versio. ESPHome = oma ESPHome-laite, jossa climate_ir.';
 
   @override
+  String get sc096a735fd =>
+      'IR-lähettimen IP-osoite. Jos valitsit MQTT:n, kirjoita tähän MQTT-välittäjän osoite.';
+
+  @override
   String get safc7f1325c => 'Lämpöpumpun merkki';
 
   @override
@@ -3328,6 +3741,10 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s4105198757 =>
       'Ohjaa radiokaukosäätimellä toimivia laitteita (pistorasiat, markiisit, autotallin ovet) Athom \"Tasmota IR & RF433 Controller\" -laitteella. Opetat napit kaukosäätimestä heti lisäämisen jälkeen.';
+
+  @override
+  String get sbc2bf08889 =>
+      'Athom-ohjaimen IP-osoite (reitittimen laitelistasta).';
 
   @override
   String get sc34430eec0 => 'Esim. huone tai laite, jota ohjaat.';

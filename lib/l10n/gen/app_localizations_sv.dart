@@ -169,6 +169,27 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sbb62433c2c => 'Kontrollera inställningarna och försök igen.';
 
   @override
+  String get sc27533ae83 => 'Sparsam';
+
+  @override
+  String get sdbcb85509b =>
+      'Temperaturen får variera mest (+1 / −2 °C). Störst besparing.';
+
+  @override
+  String get s380b20be36 => 'Balanserad';
+
+  @override
+  String get s66ea783264 =>
+      'Liten variation (+1 / −1 °C). Ett bra standardval.';
+
+  @override
+  String get see96226e44 => 'Komfort';
+
+  @override
+  String get sb403e00b3d =>
+      'Nästan jämn temperatur (+0,5 / −0,5 °C). Sparar lite.';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -821,10 +842,210 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s5a40f12b6a => 'Lägg till';
 
   @override
-  String get s306729fe62 => 'Inga priser';
+  String get sa3a093e55e => 'Värme';
+
+  @override
+  String get s8efb99df1d => 'Kyla';
+
+  @override
+  String get s0b98d62330 => 'Värme och kyla';
+
+  @override
+  String get s33831dd49f => 'Av';
+
+  @override
+  String get sa61efb9866 => 'värmer';
+
+  @override
+  String get s9a47ee3e3c => 'kyler';
+
+  @override
+  String get s156712ac0c => 'väntar';
+
+  @override
+  String get s8a1f52a37b => 'Termostaten borttagen';
+
+  @override
+  String get s28dc9bc46a => 'Ingen temperaturavläsning';
+
+  @override
+  String get s4f1166fe24 =>
+      'Ingen hembro: termostaten styr ännu inte. Ställ in fjärråtkomst på hemmatabletten.';
+
+  @override
+  String get see9111ba68 => 'Relä eller brytare (på/av)';
+
+  @override
+  String get seaed91ad78 => 'Värmepump eller AC (börvärde)';
+
+  @override
+  String get sb757921c13 => 'Värmer';
+
+  @override
+  String get s7407864734 => 'Kyler';
+
+  @override
+  String get s272aa3f1da => 'Båda';
+
+  @override
+  String get sdadb6e3501 => 'Reservvärmare';
+
+  @override
+  String get se4e381334d => 'Börjar först när det är tydligt under målet.';
+
+  @override
+  String get s17c79c5f4e => 'Power on/off (tillval)';
+
+  @override
+  String get s92d88612de => 'Värmeläge knapp (valfritt)';
+
+  @override
+  String get s75ac845bab => 'Cool läge knapp (tillval)';
+
+  @override
+  String get se12fc46923 => 'Ingen';
+
+  @override
+  String get sc590a09db9 => 'Vad värmer eller kyler?';
+
+  @override
+  String get sa15ffe53d4 =>
+      'Välj en eller flera. t.ex. en värmepump och en backup värmare.';
+
+  @override
+  String get sd47a7615a7 => 'Inga lämpliga enheter ännu';
+
+  @override
+  String get s3c7649a7f0 =>
+      'Lägg först till ett relä (t.ex. Shelly) eller en värmepump (IR eller serviceport), sedan komma tillbaka.';
+
+  @override
+  String get see513572ea => 'Varifrån läses temperaturen?';
+
+  @override
+  String get s5155522e83 =>
+      'Välj en termometer. Flera = nedgång eller genomsnitt.';
+
+  @override
+  String get s581fa290f3 =>
+      'Valfritt: värmepumpen mäter sig själv. Välj en sensor för att se temperaturen.';
+
+  @override
+  String get s7e4d8d60a0 => 'Ingen termometer';
+
+  @override
+  String get s0787d80876 => 'Lägg först till en enhet som visar en temperatur.';
+
+  @override
+  String get s89661203b7 => 'Första fungerande';
+
+  @override
+  String get s0da3005956 => 'Medelvärde';
+
+  @override
+  String get s0c6a008ffd => 'Namn och läge';
+
+  @override
+  String get sb1924acbe7 => 'Namn';
+
+  @override
+  String get s1790a71e85 => 't.ex. Vardagsrum';
+
+  @override
+  String get sd5f46903a1 => 'Måltemperatur';
+
+  @override
+  String get s6de95e582f => 'Om temperaturen försvinner';
+
+  @override
+  String get s8ff25225b4 => 'Stäng av värme/kyla (säkrast)';
+
+  @override
+  String get s17cb86f49e => 'Behåll som det är';
+
+  @override
+  String get sf4caddf894 => 'Avancerat';
+
+  @override
+  String get s9624f070ee => 'Hysteres';
+
+  @override
+  String get sf070be2c1e => 'Dödband (värme/kyla)';
+
+  @override
+  String get s64540136ff => 'Minsta tid på';
+
+  @override
+  String get s21713a2177 => 'Minsta tid av';
+
+  @override
+  String get s8f7c8eb7d0 => 'Backup värmare när under målet genom';
+
+  @override
+  String get sf1eb3b2d34 => 'Sensor förlorad efter ingen läsning för';
+
+  @override
+  String get s0ab1430151 => 'Ny termostat';
+
+  @override
+  String get sbbc98d573d => 'Redigera termostat';
+
+  @override
+  String get s6c3e76828b => 'Nästa';
+
+  @override
+  String get s187d328bb1 => 'Redigera';
+
+  @override
+  String get sc1845eb440 => 'Radera';
+
+  @override
+  String get s87984716cb => 'Ta bort termostaten?';
 
   @override
   String get s29fd8d5b5e => 'Nu';
+
+  @override
+  String get s79786b9f7d => 'Mål';
+
+  @override
+  String get sdd309c0a63 => 'Termostaten körs på hembryggan';
+
+  @override
+  String get s9c1b5394df =>
+      'Ställ in fjärråtkomst på hemmatabletten (Inställningar → Fjärråtkomst). Tills dess kontrollerar det inte någonting.';
+
+  @override
+  String get s06cda8c0de => 'Körs på den här enheten (hembrygga).';
+
+  @override
+  String get s2342536aea => 'Körs på hembryggan.';
+
+  @override
+  String get s798f7b2876 => 'Smart uppvärmning';
+
+  @override
+  String get s2c5993c1fd =>
+      'Förvärmning före dyr el och kallt väder, och låter temperaturen sjunka lite i dyra timmar.';
+
+  @override
+  String get s81c4abc1a5 => 'Övervärme +';
+
+  @override
+  String get sdea18b2b40 => 'Undervärme −';
+
+  @override
+  String get s523214c8db =>
+      'Linje = måltemperatur, barer = elpris, streckad = utomhustemperatur.';
+
+  @override
+  String get s94b8f63aa7 => 'Lägg hem plats för vädret';
+
+  @override
+  String get s941fbb47fe => 'Planen beräknas…';
+
+  @override
+  String get s306729fe62 => 'Inga priser';
 
   @override
   String get s723c887da6 =>
@@ -977,9 +1198,6 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get s6c3e76828b => 'Nästa';
-
-  @override
   String get s43d448a950 => 'Lägg till i hemvyn';
 
   @override
@@ -1112,9 +1330,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sac4debdb9c => 'Välj vad som går på hemvyn och namnge dem.';
 
   @override
-  String get sb1924acbe7 => 'Namn';
-
-  @override
   String get s86c3f92546 => 'Lägg också till ljusstyrka / kraft';
 
   @override
@@ -1122,7 +1337,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String sf86536db42(String p0) {
-    return 'Gjort! $p0 kakel tillagda';
+    return 'Klart! $p0 kort tillagda';
   }
 
   @override
@@ -1168,6 +1383,16 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s846ee3bc67 => 'Andra enheter';
+
+  @override
+  String get sdeadd78d47 => 'Thermostat värme kylning';
+
+  @override
+  String get s48264cfe32 => 'Termostat';
+
+  @override
+  String get s641a848754 =>
+      'Håller den temperatur du vill ha: styr reläer eller en värmepump från en termometer. Kan spara med spotpriser.';
 
   @override
   String get s2a9b6fedd9 => 'Kan inte hitta ditt varumärke?';
@@ -1253,7 +1478,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s02ce5f4a01 => 'Fungerar!';
 
   @override
-  String get sb9e9e55164 => 'Dessa plattor kommer att skapas';
+  String get sb9e9e55164 => 'Dessa kort skapas';
 
   @override
   String get s1cb2891ef2 => 'Fyll i fälten märkta med * för att se plattorna.';
@@ -1298,6 +1523,32 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sc95fb5440b => 'Stream slutade';
+
+  @override
+  String get s62cfd94468 => 'Billigaste timmar på natten';
+
+  @override
+  String get s7995dff292 =>
+      'Under de billigaste natttimmarna (22-07). Bra för vattenvärmare och EV-laddning.';
+
+  @override
+  String get sf92675687a => 'Billigaste timmar på dagen';
+
+  @override
+  String get sf71a753c59 => 'Under de billigaste timmarna på dagen.';
+
+  @override
+  String get s6c070f7367 => 'Av när el är dyrt';
+
+  @override
+  String get s214f034099 =>
+      'Stänger av ovanför gränsen och tillbaka på när priset sjunker.';
+
+  @override
+  String get s3939cfc37e => 'När elektricitet är billigt';
+
+  @override
+  String get scecc366bc4 => 'Endast när priset ligger under gränsen.';
 
   @override
   String get s6e700ae773 => 'Prisstyrning borttagen';
@@ -1383,9 +1634,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sccd1325381 =>
       'Anslutningen kommer att tas bort från den här enheten.';
-
-  @override
-  String get sc1845eb440 => 'Radera';
 
   @override
   String get s837e0fc5e6 =>
@@ -1665,13 +1913,16 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sacfc0c0b41 => 'Visar en kamerabild.';
 
   @override
+  String get s7172c54c2c => 'Håller temperaturen på inställt värde.';
+
+  @override
   String get s76e7a995de => 'Value read';
 
   @override
-  String get sc5edd6d3d1 => 'Ny ruta';
+  String get sc5edd6d3d1 => 'Nytt kort';
 
   @override
-  String get sa684fd0716 => 'Redigera ruta';
+  String get sa684fd0716 => 'Redigera kort';
 
   @override
   String get s8a8673aafe => 'Rubrik';
@@ -1980,13 +2231,16 @@ class AppLocalizationsSv extends AppLocalizations {
   String get scc5cf9957d => 'Välj kakeltyp';
 
   @override
-  String get s7cf6340503 => 'Ny enhet med färdiga rutor';
+  String get s7cf6340503 => 'Ny enhet med färdiga kort';
 
   @override
   String get se6ca707cf3 => 'Lättast: Shelly, ESP32-CAM, Home Assistant';
 
   @override
   String get s0789f5f14f => 'DASHBOARDS';
+
+  @override
+  String get s49de879696 => 'Energi';
 
   @override
   String get s1da81fd6c3 => 'Inställningar';
@@ -1998,10 +2252,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sfb3e3c456c => 'Delete Dashboard';
 
   @override
-  String get s187d328bb1 => 'Redigera';
-
-  @override
-  String get scdfd80f963 => 'Lägg till ruta';
+  String get scdfd80f963 => 'Lägg till kort';
 
   @override
   String get s41c3cebc48 => 'Lägg till enhet';
@@ -2017,15 +2268,178 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s4229fb4103 => 'Lägg till din första enhet';
 
   @override
-  String get s147f47be4c => 'Lägg till ruta';
+  String get s147f47be4c => 'Lägg till kort';
 
   @override
-  String get sf67e0d5752 => 'Radera rutan?';
+  String get sf67e0d5752 => 'Radera kortet?';
 
   @override
   String s97f46743e0(String p0) {
     return 'Tile \"$p0\" raderad';
   }
+
+  @override
+  String get sb8934a5835 => 'Elförbrukning';
+
+  @override
+  String get s5409dc748f => 'Räknas inte';
+
+  @override
+  String get sf0bbcc217b => 'Hela fastigheten';
+
+  @override
+  String get s0ad1897b28 => 'Enhetsmätare';
+
+  @override
+  String get s99268b5a6c =>
+      'Hela fastigheten = huvudmätare. Enhetsmätare = en enhet (visas som en del av totalen, räknas aldrig två gånger).';
+
+  @override
+  String get se1174af557 => 'Del av mätare (valfritt)';
+
+  @override
+  String get s9773c92c92 => 'Energi och kostnader';
+
+  @override
+  String get s43dead6994 => 'Elavtal';
+
+  @override
+  String get sef4d24cdd4 => 'Dag';
+
+  @override
+  String get sa62dd794ce => 'Månad';
+
+  @override
+  String get s6b2ebe5aca => 'Välj dina mätare först';
+
+  @override
+  String get sde41f2fac9 =>
+      'Markera nedan vilken mätare mäter hela webbplatsen och vilka enstaka enheter.';
+
+  @override
+  String get s4ad000d885 => 'inkl. moms';
+
+  @override
+  String get s9e214b6e88 => 'exkl. moms';
+
+  @override
+  String get s73771d252c => 'Uppmätta enheter totalt';
+
+  @override
+  String get s22d03356a9 => 'Övrig förbrukning';
+
+  @override
+  String get s48b08c5f5a => 'Fasta avgifter (el + elnät)';
+
+  @override
+  String get s286e1cfb54 => 'Totalt';
+
+  @override
+  String get s2e8700e0cf =>
+      'En del av användningen hade inget pris (punktpriset saknades).';
+
+  @override
+  String get sbbd89fbc05 =>
+      'Användning spelas in medan appen är öppen (hela tiden på hemmatabletten).';
+
+  @override
+  String get s64382718ff => 'Mätare';
+
+  @override
+  String get s9a3a0d414e =>
+      'Inga kraft- eller energikort (W, kW, Wh, kWh). Lägg till t.ex. en Shelly-mätare.';
+
+  @override
+  String get sdb0484d728 => 'Sparat';
+
+  @override
+  String get se80021e22a =>
+      'Kopiera priserna från din räkning. Skriv dem med eller utan moms - kostnaderna visas båda sätten.';
+
+  @override
+  String get sfb62156afe => 'Prisområde';
+
+  @override
+  String get s1762fb70a7 => 'Energi';
+
+  @override
+  String get s2ed3e3cf28 => 'Spotpris';
+
+  @override
+  String get s5d1dd0f675 => 'Fast';
+
+  @override
+  String get sedb38796fb => 'Natt/dag';
+
+  @override
+  String get s0774cea15a => 'Påslag';
+
+  @override
+  String get s63370fe61a => 'Elpris';
+
+  @override
+  String get s50a7dd89c6 => 'Dagel';
+
+  @override
+  String get sdeaa5ad900 => 'Nattel';
+
+  @override
+  String get se93c7bcd86 => 'Fast avgift (el)';
+
+  @override
+  String get sb7937e4b91 => 'Elnät';
+
+  @override
+  String get s0f89840226 => 'Enkeltariff';
+
+  @override
+  String get sa768f1b352 => 'Elnätspris';
+
+  @override
+  String get s9e5dde22cb => 'Elnät dag';
+
+  @override
+  String get sdf7a4fd2e3 => 'Elnät natt';
+
+  @override
+  String get s4df0aee067 => 'Fast avgift (elnät)';
+
+  @override
+  String get s4c59c90975 => 'Natten börjar';
+
+  @override
+  String get s84decd042b => 'Natten slutar';
+
+  @override
+  String get s90c26f1e37 => 'Skatter';
+
+  @override
+  String get s222cb348a0 => 'Energiskatt';
+
+  @override
+  String get sbe412dcaa6 => 'Moms';
+
+  @override
+  String get s43b55c13c5 => 'Sök misslyckades. kontrollera anslutningen.';
+
+  @override
+  String get s171834ca33 => 'Hemmets plats';
+
+  @override
+  String get s6f6c2fe37a =>
+      'Väderprognosen (Open-Meteo) hjälper förvärmning före kallt väder.';
+
+  @override
+  String get s5f663978d6 => 'Ort';
+
+  @override
+  String get s7be6460c54 => 't.ex. Tammerfors';
+
+  @override
+  String get s1576b70590 => 'Elanvändning, kostnader, kontrakt och väder.';
+
+  @override
+  String get sa6212aaeb4 => 'Plats';
 
   @override
   String get sa0d8c62e5a => 'Inget kommando konfigurerat';
@@ -2091,9 +2505,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s4cbe24240f => 'På';
 
   @override
-  String get s33831dd49f => 'Av';
-
-  @override
   String get sdc398885dc => 'Avancerade inställningar';
 
   @override
@@ -2139,9 +2550,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s9bb545e9b3 => 'Logga in eller skapa ett konto';
-
-  @override
-  String get sf4caddf894 => 'Avancerat';
 
   @override
   String get s21f870dbc2 =>
@@ -2236,10 +2644,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sd6561a08ca => 'Nu börjar vi';
 
   @override
-  String get se5be2a8386 => 'Dina rutor är klara';
+  String get se5be2a8386 => 'Dina kort är klara';
 
   @override
-  String get s8162694dbe => 'Lägg till din första ruta';
+  String get s8162694dbe => 'Lägg till ditt första kort';
 
   @override
   String get s7b2a30b77c =>
@@ -2408,9 +2816,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sca7e088857 => 'Elpris';
-
-  @override
-  String get sfb62156afe => 'Prisområde';
 
   @override
   String get s2525f9a4f5 =>
@@ -2980,6 +3385,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sb25aad3bc2 => 'Jag går hemifrån';
 
   @override
+  String get s7e461faf91 =>
+      'Hitta det i routerns enhetslista eller enhetsappen. Du kan också trycka på \"Söknätverk\".';
+
+  @override
   String get saf4b222a68 => 'Enhetens IP-adress';
 
   @override
@@ -3200,6 +3609,9 @@ class AppLocalizationsSv extends AppLocalizations {
       'De flesta färdiga IR-blastare kör Tasmota (använd tasmota-ir-byggnaden). ESPHome = din ESPHome-enhet med klimat_ir.';
 
   @override
+  String get sc096a735fd => 'IP av IR-sändaren. För MQTT, mäklaren adress.';
+
+  @override
   String get safc7f1325c => 'Värmepumpens märke';
 
   @override
@@ -3290,6 +3702,9 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s4105198757 =>
       'Kontrollera RF433 radio-avlägsna enheter (sockor, markiser, garageportar) med Athom \"Tasmota IR & RF433 Controller\". Du lär knapparna direkt efter att ha lagt till.';
+
+  @override
+  String get sbc2bf08889 => 'IP av Athom controller.';
 
   @override
   String get sc34430eec0 => 't.ex. vad du kontrollerar.';

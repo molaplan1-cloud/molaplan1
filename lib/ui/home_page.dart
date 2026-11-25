@@ -1,3 +1,4 @@
+import 'energy_pages.dart';
 import 'dart:async';
 
 import 'dart:io';
@@ -261,6 +262,16 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                     onTap: () {
                       close();
                       Navigator.push(context, MaterialPageRoute(builder: (_) => const ConnectionsPage()));
+                    },
+                  ),
+                if (st.config.energy.meters.isNotEmpty)
+                  ListTile(
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    leading: const Icon(Icons.bolt_outlined),
+                    title: Text(tx(context, 'Energia', 'Energy')),
+                    onTap: () {
+                      close();
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => const EnergyPage()));
                     },
                   ),
                 ListTile(

@@ -1,3 +1,4 @@
+import 'energy_pages.dart';
 import 'dart:convert';
 import 'dart:typed_data';
 
@@ -131,6 +132,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 value: st.config.advanced,
                 onChanged: st.setAdvanced,
               ),
+              const SizedBox(height: 20),
+              const EnergySettingsSection(),
               const SizedBox(height: 20),
               Text(tx(context, 'Etäyhteys', 'Remote access'), style: text.titleMedium),
               const SizedBox(height: 4),

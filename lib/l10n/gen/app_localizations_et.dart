@@ -168,6 +168,26 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sbb62433c2c => 'Kontrollige seadeid ja proovige uuesti.';
 
   @override
+  String get sc27533ae83 => 'Säästlik';
+
+  @override
+  String get sdbcb85509b =>
+      'Temperatuur võib kõikuda kõige rohkem (+1 / −2 °C). Suurim sääst.';
+
+  @override
+  String get s380b20be36 => 'Tasakaalus';
+
+  @override
+  String get s66ea783264 => 'Väike kõikumine (+1 / −1 °C). Hea vaikevalik.';
+
+  @override
+  String get see96226e44 => 'Mugavus';
+
+  @override
+  String get sb403e00b3d =>
+      'Peaaegu ühtlane temperatuur (+0,5 / −0,5 °C). Säästab veidi.';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -820,10 +840,211 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s5a40f12b6a => 'Lisa';
 
   @override
-  String get s306729fe62 => 'Hindadeta';
+  String get sa3a093e55e => 'Küte';
+
+  @override
+  String get s8efb99df1d => 'Jahutus';
+
+  @override
+  String get s0b98d62330 => 'Küte ja jahutus';
+
+  @override
+  String get s33831dd49f => 'Väljas';
+
+  @override
+  String get sa61efb9866 => 'kütab';
+
+  @override
+  String get s9a47ee3e3c => 'jahutab';
+
+  @override
+  String get s156712ac0c => 'ootel';
+
+  @override
+  String get s8a1f52a37b => 'Termostaat eemaldatud';
+
+  @override
+  String get s28dc9bc46a => 'Temperatuurinäit puudub';
+
+  @override
+  String get s4f1166fe24 =>
+      'Kodusild puudub: termostaat ei kontrolli veel. Seadke kaugjuurdepääs kodutahvlile.';
+
+  @override
+  String get see9111ba68 => 'Relee või lüliti (sees/väljas)';
+
+  @override
+  String get seaed91ad78 => 'Soojuspump või konditsioneer (seadeväärtus)';
+
+  @override
+  String get sb757921c13 => 'Kütab';
+
+  @override
+  String get s7407864734 => 'Jahutab';
+
+  @override
+  String get s272aa3f1da => 'Mõlemad';
+
+  @override
+  String get sdadb6e3501 => 'Varuküttekeha';
+
+  @override
+  String get se4e381334d =>
+      'Alustatakse ainult siis, kui see on selgelt allpool eesmärki.';
+
+  @override
+  String get s17c79c5f4e => 'Sisse/väljalülitatud (valikuline)';
+
+  @override
+  String get s92d88612de => 'Soojusrežiimi nupp (ei ole kohustuslik)';
+
+  @override
+  String get s75ac845bab => 'Jahutusrežiimi nupp (ei ole kohustuslik)';
+
+  @override
+  String get se12fc46923 => 'Puudub';
+
+  @override
+  String get sc590a09db9 => 'Mis kütab või jahutab?';
+
+  @override
+  String get sa15ffe53d4 =>
+      'Valige üks või mitu, nt soojuspump ja varukütteseade.';
+
+  @override
+  String get sd47a7615a7 => 'Sobivaid seadmeid veel pole';
+
+  @override
+  String get s3c7649a7f0 =>
+      'Esmalt lisa relee (nt Shelly) või soojuspump (IR või teenindusport), seejärel tule tagasi.';
+
+  @override
+  String get see513572ea => 'Kust temperatuuri loetakse?';
+
+  @override
+  String get s5155522e83 =>
+      'Vali termomeeter. Mitu = varuvariant või keskmine.';
+
+  @override
+  String get s581fa290f3 =>
+      'Valikuline: soojuspump mõõdab ise. Vali temperatuuri nägemiseks andur.';
+
+  @override
+  String get s7e4d8d60a0 => 'Termomeetrit pole';
+
+  @override
+  String get s0787d80876 => 'Kõigepealt lisage seade, mis näitab temperatuuri.';
+
+  @override
+  String get s89661203b7 => 'Esimene töötav';
+
+  @override
+  String get s0da3005956 => 'Keskmine';
+
+  @override
+  String get s0c6a008ffd => 'Nimi ja režiim';
+
+  @override
+  String get sb1924acbe7 => 'Nimi';
+
+  @override
+  String get s1790a71e85 => 'nt Elutuba';
+
+  @override
+  String get sd5f46903a1 => 'Sihttemperatuur';
+
+  @override
+  String get s6de95e582f => 'Kui temperatuur kaob';
+
+  @override
+  String get s8ff25225b4 => 'Lülita küte/jahutus välja (kõige ohutum)';
+
+  @override
+  String get s17cb86f49e => 'Jäta nagu on';
+
+  @override
+  String get sf4caddf894 => 'Täpsem';
+
+  @override
+  String get s9624f070ee => 'Hüsterees';
+
+  @override
+  String get sf070be2c1e => 'Surnud tsoon (küte/jahutus)';
+
+  @override
+  String get s64540136ff => 'Minimaalne sees-aeg';
+
+  @override
+  String get s21713a2177 => 'Minimaalne väljas-aeg';
+
+  @override
+  String get s8f7c8eb7d0 => 'Varukütteseade, kui see on allpool sihtmärki';
+
+  @override
+  String get sf1eb3b2d34 => 'Sensor kadus pärast lugemist';
+
+  @override
+  String get s0ab1430151 => 'Uus termostaat';
+
+  @override
+  String get sbbc98d573d => 'Muuda termostaati';
+
+  @override
+  String get s6c3e76828b => 'Edasi';
+
+  @override
+  String get s187d328bb1 => 'Muuda';
+
+  @override
+  String get sc1845eb440 => 'Kustuta';
+
+  @override
+  String get s87984716cb => 'Kustutada termostaat?';
 
   @override
   String get s29fd8d5b5e => 'Praegu';
+
+  @override
+  String get s79786b9f7d => 'Siht';
+
+  @override
+  String get sdd309c0a63 => 'Termostaat töötab kodusillal';
+
+  @override
+  String get s9c1b5394df =>
+      'Võrguühenduse loomine kodutahvlil (Seaded → Kaugjuurdepääs). Kuni selle ajani ei kontrolli see midagi.';
+
+  @override
+  String get s06cda8c0de => 'Töötab selles seadmes (kodusild).';
+
+  @override
+  String get s2342536aea => 'Töötab kodusillal.';
+
+  @override
+  String get s798f7b2876 => 'Nutikas küte';
+
+  @override
+  String get s2c5993c1fd =>
+      'Soojeneb enne kallist elektrit ja külma ilma ning laseb kallitel tundidel temperatuuri veidi langeda.';
+
+  @override
+  String get s81c4abc1a5 => 'Ülekuumutus +';
+
+  @override
+  String get sdea18b2b40 => 'Alakuumutus −';
+
+  @override
+  String get s523214c8db =>
+      'Rida = sihttemperatuur, baarid = elektrihind, kriipsutatud = välistemperatuur.';
+
+  @override
+  String get s94b8f63aa7 => 'Kodu asukoha lisamine ilmale';
+
+  @override
+  String get s941fbb47fe => 'Plaani arvutatakse…';
+
+  @override
+  String get s306729fe62 => 'Hindadeta';
 
   @override
   String get s723c887da6 => 'min';
@@ -974,9 +1195,6 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
-  String get s6c3e76828b => 'Edasi';
-
-  @override
   String get s43d448a950 => 'Lisa kodu vaatesse';
 
   @override
@@ -1108,9 +1326,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sac4debdb9c => 'Valige, mis toimub koduvaates ja nimetage need.';
 
   @override
-  String get sb1924acbe7 => 'Nimi';
-
-  @override
   String get s86c3f92546 => 'Lisa ka heledust/võimsust';
 
   @override
@@ -1118,7 +1333,7 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String sf86536db42(String p0) {
-    return 'Tehtud! $p0 lisatud plaadid';
+    return 'Valmis! $p0 kaarti lisatud';
   }
 
   @override
@@ -1164,6 +1379,16 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s846ee3bc67 => 'Muud seadmed';
+
+  @override
+  String get sdeadd78d47 => 'Termostaadi kütmise jahutus';
+
+  @override
+  String get s48264cfe32 => 'Termostaat';
+
+  @override
+  String get s641a848754 =>
+      'Säilitab soovitud temperatuuri: juhib releed või soojuspumpa termomeetrilt. Säästab hetkehindadega.';
 
   @override
   String get s2a9b6fedd9 => 'Ei leia oma kaubamärki?';
@@ -1249,7 +1474,7 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s02ce5f4a01 => 'Töötab!';
 
   @override
-  String get sb9e9e55164 => 'Need plaadid luuakse';
+  String get sb9e9e55164 => 'Need kaardid luuakse';
 
   @override
   String get s1cb2891ef2 =>
@@ -1295,6 +1520,31 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sc95fb5440b => 'Stream lõppes';
+
+  @override
+  String get s62cfd94468 => 'Odavamad tunnid öösel';
+
+  @override
+  String get s7995dff292 =>
+      'Kõige odavamatel öötundidel (22–07) sobib hästi veesoojenditele ja elektrisõidukite laadimisele.';
+
+  @override
+  String get sf92675687a => 'Odavaimad päevatunnid';
+
+  @override
+  String get sf71a753c59 => 'Päeva kõige odavamatel tundidel.';
+
+  @override
+  String get s6c070f7367 => 'Väljas, kui elekter on kallis';
+
+  @override
+  String get s214f034099 => 'See lülitub üle piiri ja tagasi, kui hind langeb.';
+
+  @override
+  String get s3939cfc37e => 'Millal elekter on odav';
+
+  @override
+  String get scecc366bc4 => 'Ainult siis, kui hind on alla piiri.';
 
   @override
   String get s6e700ae773 => 'Hinnajuhtimine eemaldatud';
@@ -1379,9 +1629,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sccd1325381 => 'Ühendus eemaldatakse sellest seadmest.';
-
-  @override
-  String get sc1845eb440 => 'Kustuta';
 
   @override
   String get s837e0fc5e6 =>
@@ -1662,13 +1909,16 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sacfc0c0b41 => 'Näitab kaamera pilti.';
 
   @override
+  String get s7172c54c2c => 'Hoiab temperatuuri seatud väärtusel.';
+
+  @override
   String get s76e7a995de => 'Väärtusloetelu';
 
   @override
-  String get sc5edd6d3d1 => 'Uus paan';
+  String get sc5edd6d3d1 => 'Uus kaart';
 
   @override
-  String get sa684fd0716 => 'Muuda paani';
+  String get sa684fd0716 => 'Muuda kaarti';
 
   @override
   String get s8a8673aafe => 'Pealkiri';
@@ -1976,7 +2226,7 @@ class AppLocalizationsEt extends AppLocalizations {
   String get scc5cf9957d => 'Vali plaaditüüp';
 
   @override
-  String get s7cf6340503 => 'Uus seade valmis paanidega';
+  String get s7cf6340503 => 'Uus seade valmis kaartidega';
 
   @override
   String get se6ca707cf3 =>
@@ -1984,6 +2234,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s0789f5f14f => 'DASHBOARDS';
+
+  @override
+  String get s49de879696 => 'Energia';
 
   @override
   String get s1da81fd6c3 => 'Seaded';
@@ -1995,10 +2248,7 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sfb3e3c456c => 'Kustuta armatuurlaud';
 
   @override
-  String get s187d328bb1 => 'Muuda';
-
-  @override
-  String get scdfd80f963 => 'Lisa paan';
+  String get scdfd80f963 => 'Lisa kaart';
 
   @override
   String get s41c3cebc48 => 'Lisa seade';
@@ -2014,15 +2264,177 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s4229fb4103 => 'Lisa oma esimene seade';
 
   @override
-  String get s147f47be4c => 'Lisa paan';
+  String get s147f47be4c => 'Lisa kaart';
 
   @override
-  String get sf67e0d5752 => 'Kustutada paan?';
+  String get sf67e0d5752 => 'Kustutada kaart?';
 
   @override
   String s97f46743e0(String p0) {
     return 'Kivi \"$p0\" kustutatud';
   }
+
+  @override
+  String get sb8934a5835 => 'Elektritarbimine';
+
+  @override
+  String get s5409dc748f => 'Ei arvestata';
+
+  @override
+  String get sf0bbcc217b => 'Kogu objekt';
+
+  @override
+  String get s0ad1897b28 => 'Seadme arvesti';
+
+  @override
+  String get s99268b5a6c =>
+      'Kogu objekt = peaarvesti. Seadme arvesti = üks seade (näidatakse osana kogusummast, ei arvestata kaks korda).';
+
+  @override
+  String get se1174af557 => 'Osa arvestist (valikuline)';
+
+  @override
+  String get s9773c92c92 => 'Energia ja kulud';
+
+  @override
+  String get s43dead6994 => 'Elektrileping';
+
+  @override
+  String get sef4d24cdd4 => 'Päev';
+
+  @override
+  String get sa62dd794ce => 'Kuu';
+
+  @override
+  String get s6b2ebe5aca => 'Vali kõigepealt arvestid';
+
+  @override
+  String get sde41f2fac9 =>
+      'Märkige allpool, milline meeter mõõdab kogu saiti ja millised üksikud seadmed.';
+
+  @override
+  String get s4ad000d885 => 'km-ga';
+
+  @override
+  String get s9e214b6e88 => 'km-ta';
+
+  @override
+  String get s73771d252c => 'Mõõdetud seadmed kokku';
+
+  @override
+  String get s22d03356a9 => 'Muu tarbimine';
+
+  @override
+  String get s48b08c5f5a => 'Kuutasud (energia + võrk)';
+
+  @override
+  String get s286e1cfb54 => 'Kokku';
+
+  @override
+  String get s2e8700e0cf => 'Osal kasutusest puudus hind (hetkhind puudus).';
+
+  @override
+  String get sbbd89fbc05 =>
+      'Kasutamine registreeritakse, kui rakendus on avatud (kogu aeg kodus tahvelarvutis).';
+
+  @override
+  String get s64382718ff => 'Arvestid';
+
+  @override
+  String get s9a3a0d414e =>
+      'Võimsus- või energiakaardid puuduvad (W, kW, Wh, kWh). Lisada näiteks Shelly arvesti.';
+
+  @override
+  String get sdb0484d728 => 'Salvestatud';
+
+  @override
+  String get se80021e22a =>
+      'Kopeeri oma arvelt hinnad. Kirjuta need kas käibemaksuga või ilma – kulusid näidatakse mõlemal viisil.';
+
+  @override
+  String get sfb62156afe => 'Hinnapiirkond';
+
+  @override
+  String get s1762fb70a7 => 'Energia';
+
+  @override
+  String get s2ed3e3cf28 => 'Börsihind';
+
+  @override
+  String get s5d1dd0f675 => 'Fikseeritud';
+
+  @override
+  String get sedb38796fb => 'Öö/päev';
+
+  @override
+  String get s0774cea15a => 'Marginaal';
+
+  @override
+  String get s63370fe61a => 'Energia hind';
+
+  @override
+  String get s50a7dd89c6 => 'Päevane energia';
+
+  @override
+  String get sdeaa5ad900 => 'Öine energia';
+
+  @override
+  String get se93c7bcd86 => 'Kuutasu (energia)';
+
+  @override
+  String get sb7937e4b91 => 'Võrguteenus';
+
+  @override
+  String get s0f89840226 => 'Ühtne tariif';
+
+  @override
+  String get sa768f1b352 => 'Võrgutasu';
+
+  @override
+  String get s9e5dde22cb => 'Võrgutasu päeval';
+
+  @override
+  String get sdf7a4fd2e3 => 'Võrgutasu öösel';
+
+  @override
+  String get s4df0aee067 => 'Kuutasu (võrk)';
+
+  @override
+  String get s4c59c90975 => 'Öö algab';
+
+  @override
+  String get s84decd042b => 'Öö lõpeb';
+
+  @override
+  String get s90c26f1e37 => 'Maksud';
+
+  @override
+  String get s222cb348a0 => 'Elektriaktsiis';
+
+  @override
+  String get sbe412dcaa6 => 'Käibemaks';
+
+  @override
+  String get s43b55c13c5 => 'Otsimine nurjus. Kontrolli ühendust.';
+
+  @override
+  String get s171834ca33 => 'Kodu asukoht';
+
+  @override
+  String get s6f6c2fe37a =>
+      'Ilmaprognoos (Open-Meteo) aitab eelkuumutada enne külma ilma.Linnast piisab.';
+
+  @override
+  String get s5f663978d6 => 'Asula';
+
+  @override
+  String get s7be6460c54 => 'nt Tampere';
+
+  @override
+  String get s1576b70590 => 'Elektrikasutus, kulud, leping ja ilm.';
+
+  @override
+  String get sa6212aaeb4 => 'Asukoht';
 
   @override
   String get sa0d8c62e5a => 'Käsku pole seadistatud';
@@ -2088,9 +2500,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s4cbe24240f => 'Sees';
 
   @override
-  String get s33831dd49f => 'Väljas';
-
-  @override
   String get sdc398885dc => 'Täpsemad seaded';
 
   @override
@@ -2136,9 +2545,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s9bb545e9b3 => 'Logi sisse või loo konto';
-
-  @override
-  String get sf4caddf894 => 'Täpsem';
 
   @override
   String get s21f870dbc2 =>
@@ -2234,10 +2640,10 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sd6561a08ca => 'Alustame';
 
   @override
-  String get se5be2a8386 => 'Sinu paanid on valmis';
+  String get se5be2a8386 => 'Sinu kaardid on valmis';
 
   @override
-  String get s8162694dbe => 'Lisa oma esimene paan';
+  String get s8162694dbe => 'Lisa oma esimene kaart';
 
   @override
   String get s7b2a30b77c =>
@@ -2406,9 +2812,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sca7e088857 => 'Elektri hind';
-
-  @override
-  String get sfb62156afe => 'Hinnapiirkond';
 
   @override
   String get s2525f9a4f5 =>
@@ -2977,6 +3380,10 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sb25aad3bc2 => 'Lahkun kodust';
 
   @override
+  String get s7e461faf91 =>
+      'Leia see ruuteri seadmete nimekirjast või seadme rakendusest. Samuti võid puudutada nuppu \"Otsi võrku\".';
+
+  @override
   String get saf4b222a68 => 'Seadme IP-aadress';
 
   @override
@@ -3196,6 +3603,9 @@ class AppLocalizationsEt extends AppLocalizations {
       'Enamik valmis IR-lõhkeseadmeid käivitab Tasmota (kasuta tasmota-ir ehitamist). ESPHome = sinu ESPHome- seade koos kliima_ ir- ga.';
 
   @override
+  String get sc096a735fd => 'IR-saatja IP. MQTT puhul maakleri aadress.';
+
+  @override
   String get safc7f1325c => 'Soojuspumba kaubamärk';
 
   @override
@@ -3287,6 +3697,9 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s4105198757 =>
       'RF433 raadiokaugseadmete (pesad, varikatused, garaažiuksed) juhtimine Athomiga \"Tasmota IR & RF433 kontroller\". Nupud õpetatakse kohe pärast lisamist.';
+
+  @override
+  String get sbc2bf08889 => 'Athomi kontrolleri IP.';
 
   @override
   String get sc34430eec0 => 'Nt mida sa kontrollid.';
