@@ -14,11 +14,13 @@ import 'error_box.dart';
 import 'camera_view.dart';
 import 'icons.dart';
 import 'notify.dart';
-import 'price_chart.dart';
+import 'price_tile.dart';
 import 'price_rules_page.dart';
 import 'heatpump_pages.dart';
 import 'energy_pages.dart';
 import 'thermostat_pages.dart';
+import 'tile_visuals.dart';
+import 'weather_tile.dart';
 import '../energy/meters.dart';
 
 /// A live dashboard tile. Rebuilt (runtime restarted) when its config changes.
@@ -69,6 +71,7 @@ class _TileWidgetState extends State<TileWidget> {
   @override
   void dispose() {
     _replyTimer?.cancel();
+    _dialTimer?.cancel();
     rt?.dispose();
     super.dispose();
   }
@@ -300,11 +303,24 @@ class _TileWidgetState extends State<TileWidget> {
             if (rt?.error != null) ...[const SizedBox(height: 8), ErrorBox(error: rt!.error!)],
             if (t.type == TileType.value && meterKind(t.unit) != null) ...[
               const SizedBox(height: 12),
-              AppScope(state: AppScope.read(context), child: MeterRoleEditor(tile: t)),
+              AppScope(
+                state: AppScope.read(context),
+                child: MeterRoleEditor(tile: t),
+              ),
             ],
           ],
         ),
         actions: [
+          TextButton(
+            key: const ValueKey('tile-rename'),
+            onPressed: () async {
+              Navigator.pop(c);
+              final st = AppScope.read(context);
+              final n = await promptText(context, tx(context, 'Nimeä uudelleen', 'Rename'), initial: t.title);
+              if (n != null && n.trim().isNotEmpty) await st.renameTile(t, n);
+            },
+            child: Text(tx(context, 'Nimeä uudelleen', 'Rename')),
+          ),
           if (_asksPin)
             TextButton(
               key: const ValueKey('pin-forget'),
@@ -346,12 +362,23 @@ class _TileWidgetState extends State<TileWidget> {
     );
   }
 
+  double? _brightDrag;
+
   @override
   Widget build(BuildContext context) {
+    if (t.bgImage == null || t.type == TileType.camera) return _build(context);
+    return Theme(
+      data: onImageTheme(Theme.of(context)),
+      child: Builder(builder: _build),
+    );
+  }
+
+  Widget _build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     final r = rt!;
     final err = r.error;
     if (t.type == TileType.thermostat) return ThermostatTile(tile: t, editing: widget.editing);
+    if (isWeatherTile(t)) return WeatherTile(tile: t, editing: widget.editing);
     if (t.type == TileType.camera) {
       return Card(
         clipBehavior: Clip.antiAlias,
@@ -371,9 +398,21 @@ class _TileWidgetState extends State<TileWidget> {
     }
 
     final on = isTruthy(r.value, onValue: t.onValue);
+    final look = t.color != null ? Color(t.color!) : null;
     final accentInt = t.colorFor(r.value);
-    final accent = accentInt != null ? Color(accentInt) : (on && t.type == TileType.toggle ? cs.primary : null);
-    final bg = t.type == TileType.toggle && on ? cs.primaryContainer.withValues(alpha: 0.55) : cs.surfaceContainer;
+    final accent = accentInt != null
+        ? Color(accentInt)
+        : (on && t.type == TileType.toggle ? (look ?? cs.primary) : (t.type != TileType.toggle ? look : null));
+    final hasBg = t.bgImage != null;
+    final bg = hasBg
+        ? Colors.black
+        : t.type == TileType.toggle && on
+        ? (look ?? cs.primaryContainer).withValues(alpha: look != null ? 0.28 : 0.55)
+        : (look != null ? Color.alphaBlend(look.withValues(alpha: 0.08), cs.surfaceContainer) : cs.surfaceContainer);
+    final light = isLightTile(t);
+    final meter = isMeterTile(t) && !_isLog && !_isChart;
+    final dial = isSetpointTile(t);
+    final big = t.colSpan >= 2 || t.rowSpan >= 2;
 
     VoidCallback? onTap;
     switch (t.type) {
@@ -382,7 +421,14 @@ class _TileWidgetState extends State<TileWidget> {
       case TileType.button:
         onTap = _button;
       case TileType.value:
-        onTap = r.refresh;
+        onTap = _isChart && r.value is Map
+            ? () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => PricePage(data: Map<String, dynamic>.from(r.value as Map), tile: t),
+                ),
+              )
+            : r.refresh;
       default:
         onTap = null;
     }
@@ -390,6 +436,37 @@ class _TileWidgetState extends State<TileWidget> {
     return Card(
       color: bg,
       clipBehavior: Clip.antiAlias,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          if (hasBg)
+            TileBackground(
+              name: t.bgImage!,
+              scrim: t.bgScrim,
+              dim: t.bgDimOff && t.type == TileType.toggle && r.value != null && !on,
+            ),
+          _content(context, r, err, on, accent, onTap, light: light, meter: meter, dial: dial, big: big),
+        ],
+      ),
+    );
+  }
+
+  Widget _content(
+    BuildContext context,
+    TileRuntime r,
+    String? err,
+    bool on,
+    Color? accent,
+    VoidCallback? onTap, {
+    required bool light,
+    required bool meter,
+    required bool dial,
+    required bool big,
+  }) {
+    final cs = Theme.of(context).colorScheme;
+    final errLine = err != null && r.value == null;
+    return Material(
+      type: MaterialType.transparency,
       child: InkWell(
         onTap: widget.editing ? null : onTap,
         onLongPress: widget.editing || (widget.control && AppScope.of(context).viewLocked) ? null : _details,
@@ -411,9 +488,13 @@ class _TileWidgetState extends State<TileWidget> {
                     )
                   else if (widget.editing)
                     const SizedBox(height: 24)
-                  else if (t.type == TileType.toggle)
+                  else if (t.type == TileType.toggle && !light && !big)
                     IgnorePointer(
-                      child: Switch(value: on, onChanged: (_) {}),
+                      child: Transform.scale(
+                        scale: 1.2,
+                        alignment: Alignment.centerRight,
+                        child: Switch(key: const ValueKey('tile-switch'), value: on, onChanged: (_) {}),
+                      ),
                     )
                   else if (t.type == TileType.button)
                     Container(
@@ -425,9 +506,37 @@ class _TileWidgetState extends State<TileWidget> {
               ),
               if (t.type == TileType.button && (_waiting || _reply != null))
                 Expanded(child: _replyView(context))
+              else if (light && !errLine)
+                Expanded(
+                  child: LightBulb(
+                    on: on && r.value != null,
+                    color: t.color != null ? Color(t.color!) : null,
+                    level: hasBrightness(t) ? (_brightDrag ?? 100) / 100 : null,
+                  ),
+                )
+              else if (t.type == TileType.toggle && big && !errLine)
+                Expanded(
+                  child: Center(
+                    child: IgnorePointer(
+                      child: Transform.scale(
+                        scale: 1.8,
+                        child: Switch(key: const ValueKey('tile-switch'), value: on, onChanged: (_) {}),
+                      ),
+                    ),
+                  ),
+                )
+              else if (dial)
+                Expanded(child: _dial(context, r))
+              else if (meter && r.value != null)
+                Expanded(child: _meter(context, r, accent))
               else if (_isChart && r.value is Map)
                 Expanded(
-                  child: PriceChart(key: const ValueKey('tile-chart'), data: Map<String, dynamic>.from(r.value as Map)),
+                  child: PriceTileBody(
+                    key: const ValueKey('tile-chart'),
+                    data: Map<String, dynamic>.from(r.value as Map),
+                    tile: t,
+                    expanded: t.rowSpan >= 2,
+                  ),
                 )
               else if (_isLog && r.value != null)
                 Expanded(
@@ -436,7 +545,7 @@ class _TileWidgetState extends State<TileWidget> {
                     child: Text('${r.value}', style: Theme.of(context).textTheme.bodyMedium),
                   ),
                 )
-              else if (t.type == TileType.slider)
+              else if (t.type == TileType.slider && !dial)
                 // Slider tiles are the tallest: the value/error takes the free space and scales down.
                 Expanded(
                   child: Align(
@@ -453,7 +562,7 @@ class _TileWidgetState extends State<TileWidget> {
                 )
               else
                 const Spacer(),
-              if (t.type == TileType.slider)
+              if (t.type == TileType.slider && !dial)
                 const SizedBox.shrink()
               else if (err != null && r.value == null)
                 Text(
@@ -462,7 +571,7 @@ class _TileWidgetState extends State<TileWidget> {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(color: cs.error, fontSize: 13.5, fontWeight: FontWeight.w500),
                 )
-              else if (t.type == TileType.value && !_isLog && !_isChart)
+              else if (t.type == TileType.value && !_isLog && !_isChart && !(meter && r.value != null))
                 _valueText(context, r, accent),
               if (t.type == TileType.toggle && !(err != null && r.value == null))
                 Text(
@@ -471,7 +580,8 @@ class _TileWidgetState extends State<TileWidget> {
                       : (t.mapValue(r.value) ?? (on ? tx(context, 'Päällä', 'On') : tx(context, 'Pois', 'Off'))),
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(color: accent),
                 ),
-              if (t.type == TileType.slider) _slider(context, r),
+              if (t.type == TileType.slider && !dial) _slider(context, r),
+              if (hasBrightness(t) && on && !widget.editing) _brightness(context),
               const SizedBox(height: 2),
               Text(
                 t.title,
@@ -486,7 +596,89 @@ class _TileWidgetState extends State<TileWidget> {
     );
   }
 
-  Widget _valueText(BuildContext context, TileRuntime r, Color? accent) {
+  Widget _meter(BuildContext context, TileRuntime r, Color? accent) {
+    final cs = Theme.of(context).colorScheme;
+    final vals = [for (final h in r.history) h.$2];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Spacer(),
+        Flexible(flex: 3, child: _valueText(context, r, accent, size: 1.25)),
+        if (vals.length >= 2)
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Sparkline(values: vals, color: accent ?? cs.primary),
+            ),
+          ),
+      ],
+    );
+  }
+
+  Widget _dial(BuildContext context, TileRuntime r) {
+    final v = _sliderDrag ?? toDouble(r.value);
+    final step = t.step > 0 ? t.step : 0.5;
+    void nudge(double d) {
+      final n = ((v ?? (t.min + t.max) / 2) + d).clamp(t.min, t.max).toDouble();
+      setState(() => _sliderDrag = n);
+      _dialTimer?.cancel();
+      _dialTimer = Timer(const Duration(milliseconds: 700), () async {
+        await _setSlider(n);
+        if (mounted) setState(() => _sliderDrag = null);
+      });
+    }
+
+    return Row(
+      children: [
+        if (!widget.editing)
+          IconButton(
+            key: const ValueKey('dial-minus'),
+            visualDensity: VisualDensity.compact,
+            onPressed: () => nudge(-step),
+            icon: const Icon(Icons.remove),
+          ),
+        Expanded(
+          child: Center(
+            child: SetpointDial(setpoint: v, min: t.min, max: t.max, color: t.color != null ? Color(t.color!) : null),
+          ),
+        ),
+        if (!widget.editing)
+          IconButton(
+            key: const ValueKey('dial-plus'),
+            visualDensity: VisualDensity.compact,
+            onPressed: () => nudge(step),
+            icon: const Icon(Icons.add),
+          ),
+      ],
+    );
+  }
+
+  Timer? _dialTimer;
+
+  Widget _brightness(BuildContext context) => SizedBox(
+    height: 30,
+    child: Row(
+      children: [
+        Icon(Icons.brightness_low, size: 16, color: Theme.of(context).colorScheme.onSurfaceVariant),
+        Expanded(
+          child: Slider(
+            key: const ValueKey('tile-brightness'),
+            value: _brightDrag ?? 100,
+            min: 1,
+            max: 100,
+            onChanged: (v) => setState(() => _brightDrag = v),
+            onChangeEnd: (v) async {
+              final st = AppScope.read(context);
+              await _run(() => st.runStep(t.commands.first, value: v.roundToDouble()));
+            },
+          ),
+        ),
+      ],
+    ),
+  );
+
+  Widget _valueText(BuildContext context, TileRuntime r, Color? accent, {double size = 1}) {
     final v = _sliderDrag ?? r.value;
     return FittedBox(
       fit: BoxFit.scaleDown,
@@ -502,7 +694,11 @@ class _TileWidgetState extends State<TileWidget> {
               ),
           ],
         ),
-        style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w600, color: accent),
+        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+          fontWeight: FontWeight.w600,
+          color: accent,
+          fontSize: (Theme.of(context).textTheme.headlineMedium?.fontSize ?? 28) * size,
+        ),
       ),
     );
   }

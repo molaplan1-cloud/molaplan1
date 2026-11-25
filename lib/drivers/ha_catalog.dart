@@ -222,6 +222,8 @@ Future<(List<Map>, List<Map>, List<Map>)> _registries(
     Uri.parse('${base.replaceFirst(RegExp('^http'), 'ws')}/api/websocket'),
     customClient: hc,
   );
+  // Fails fast (and handled by the caller) when HA has no websocket / a proxy blocks it.
+  await ch.ready.timeout(timeout);
   final results = <int, Completer<List<Map>>>{
     for (final i in [1, 2, 3]) i: Completer<List<Map>>(),
   };
@@ -317,12 +319,27 @@ List<TileConfig> haTilesFor(
   );
   switch (e.domain) {
     case 'light':
+      final modes = e.attributes['supported_color_modes'];
+      final dims =
+          modes is List && modes.any((m) => m != 'onoff') ||
+          e.attributes['brightness'] != null;
       return [
         toggle(
-          icon: 'lightbulb',
-          on: 'homeassistant.turn_on',
-          off: 'homeassistant.turn_off',
-        ),
+            icon: 'lightbulb',
+            on: 'homeassistant.turn_on',
+            off: 'homeassistant.turn_off',
+          )
+          ..commands = [
+            if (dims)
+              CommandStep(
+                connectionId: connId,
+                spec: {
+                  'service': 'light.turn_on',
+                  'entityId': id,
+                  'data': '{"brightness_pct": {{value}}}',
+                },
+              ),
+          ],
       ];
     case 'switch' || 'input_boolean' || 'fan' || 'automation':
       return [

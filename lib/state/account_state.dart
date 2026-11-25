@@ -19,6 +19,9 @@ abstract class SyncHost {
   /// Replaces the synced part of the local setup. [secrets] is null while the vault is locked.
   Future<void> applySynced(Map<String, dynamic> config, Map<String, Map<String, String>>? secrets);
 
+  /// Uploads/downloads files referenced by the config (tile background images). Best effort.
+  Future<void> syncFiles(AccountApi api, Session s);
+
   /// Adds the account's homes/devices to this device's own (first sign-in, "merge both").
   Future<void> mergeSynced(Map<String, dynamic> config, Map<String, Map<String, String>>? secrets);
 
@@ -431,6 +434,11 @@ class AccountState extends ChangeNotifier {
         }
       }
       await _maybeShareHome();
+      try {
+        await host.syncFiles(api, await _fresh());
+      } catch (_) {
+        // images are optional; the config itself is in sync
+      }
       lastSync = DateTime.now();
       _set(SyncStatus.ok);
     } on AccountError catch (e) {

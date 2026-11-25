@@ -53,12 +53,20 @@ class TileRuntime extends ChangeNotifier {
   /// Every fresh value of every visible tile (energy meters are logged from here).
   static void Function(TileConfig tile, Object? value)? observer;
 
+  /// Recent numeric values (for the sparkline on meter tiles); newest last.
+  final history = <(DateTime, double)>[];
+
   void _set(Object? v, String? err) {
     if (_disposed) return;
     value = v;
     error = err;
     if (err == null) {
       updated = DateTime.now();
+      final d = v is num ? v.toDouble() : double.tryParse('${v ?? ''}');
+      if (d != null && d.isFinite) {
+        history.add((updated!, d));
+        if (history.length > 60) history.removeAt(0);
+      }
       observer?.call(tile, v);
     }
     notifyListeners();

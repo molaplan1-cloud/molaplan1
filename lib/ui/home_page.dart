@@ -1,5 +1,6 @@
 import 'control_view.dart';
 import 'energy_pages.dart';
+
 import 'dart:async';
 
 import 'dart:io';
@@ -13,6 +14,7 @@ import 'connections_page.dart';
 import 'onboarding_page.dart';
 import 'settings_page.dart';
 import 'tile_editor.dart';
+import 'tile_look.dart';
 import 'tile_widget.dart';
 import 'update_ui.dart';
 
@@ -545,6 +547,7 @@ class _EditableTile extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
+              _mini(context, Icons.palette_outlined, () => showTileLook(context, t)),
               _mini(context, Icons.chevron_left, () => st.moveTile(dashboard, index, index - 1), enabled: index > 0),
               _mini(
                 context,

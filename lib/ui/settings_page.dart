@@ -1,4 +1,6 @@
+import 'ha_picker.dart';
 import 'energy_pages.dart';
+
 import 'dart:convert';
 import 'dart:typed_data';
 
@@ -134,6 +136,19 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               const SizedBox(height: 20),
               const EnergySettingsSection(),
+              for (final c in st.config.connections.where((c) => c.type == 'homeassistant')) ...[
+                const SizedBox(height: 12),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: OutlinedButton.icon(
+                    key: ValueKey('settings-ha-${c.id}'),
+                    onPressed: () =>
+                        Navigator.push(context, MaterialPageRoute(builder: (_) => HaEntityPickerPage(connection: c))),
+                    icon: const Icon(Icons.home_outlined),
+                    label: Text(tx(context, 'Home Assistant: lisää laitteita', 'Home Assistant: add devices')),
+                  ),
+                ),
+              ],
               const SizedBox(height: 20),
               Text(tx(context, 'Etäyhteys', 'Remote access'), style: text.titleMedium),
               const SizedBox(height: 4),

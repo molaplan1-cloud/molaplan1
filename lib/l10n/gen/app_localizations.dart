@@ -65,8 +65,7 @@ import 'app_localizations_sv.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -74,8 +73,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -87,13 +85,12 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -487,6 +484,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'power'**
   String get se78754330c;
+
+  /// fi: Teho
+  ///
+  /// In en, this message translates to:
+  /// **'Power'**
+  String get s4899323b9a;
+
+  /// fi: Teho {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Power {p0}'**
+  String sb9964cfb3b(String p0);
 
   /// fi: Shelly
   ///
@@ -1720,6 +1729,12 @@ abstract class AppLocalizations {
   /// **'No home bridge: the thermostat is not controlling yet. Set up remote access on the home tablet.'**
   String get s4f1166fe24;
 
+  /// fi: Nyt
+  ///
+  /// In en, this message translates to:
+  /// **'Now'**
+  String get s29fd8d5b5e;
+
   /// fi: Rele tai kytkin (päälle/pois)
   ///
   /// In en, this message translates to:
@@ -1972,12 +1987,6 @@ abstract class AppLocalizations {
   /// **'Delete the thermostat?'**
   String get s87984716cb;
 
-  /// fi: Nyt
-  ///
-  /// In en, this message translates to:
-  /// **'Now'**
-  String get s29fd8d5b5e;
-
   /// fi: Tavoite
   ///
   /// In en, this message translates to:
@@ -2049,36 +2058,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Calculating the plan…'**
   String get s941fbb47fe;
-
-  /// fi: Ei hintoja
-  ///
-  /// In en, this message translates to:
-  /// **'No prices'**
-  String get s306729fe62;
-
-  /// fi: halvin
-  ///
-  /// In en, this message translates to:
-  /// **'min'**
-  String get s723c887da6;
-
-  /// fi: kallein
-  ///
-  /// In en, this message translates to:
-  /// **'max'**
-  String get scaaff6345d;
-
-  /// fi: huomenna mukana
-  ///
-  /// In en, this message translates to:
-  /// **'incl. tomorrow'**
-  String get s65982a11bc;
-
-  /// fi: huominen klo 14 jälkeen
-  ///
-  /// In en, this message translates to:
-  /// **'tomorrow after 14:00'**
-  String get se79acaf837;
 
   /// fi: Tämä laite ei ole yhteydessä wifiin
   ///
@@ -2646,6 +2625,24 @@ abstract class AppLocalizations {
   /// **'Keeps the temperature you want: controls relays or a heat pump from a thermometer. Can save with spot prices.'**
   String get s641a848754;
 
+  /// fi: Sääennuste sää lämpötila sade tuuli
+  ///
+  /// In en, this message translates to:
+  /// **'Weather forecast temperature rain wind'**
+  String get s94493d01ca;
+
+  /// fi: Sääennuste
+  ///
+  /// In en, this message translates to:
+  /// **'Weather forecast'**
+  String get s262f9527aa;
+
+  /// fi: Sää nyt ja tunneittain: lämpötila, sade ja tuuli kotisi sijainnista. Ei vaadi laitetta.
+  ///
+  /// In en, this message translates to:
+  /// **'Weather now and hourly: temperature, rain and wind at your home. No device needed.'**
+  String get scb3570338f;
+
   /// fi: Etkö löydä merkkiäsi?
   ///
   /// In en, this message translates to:
@@ -2885,6 +2882,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Stream ended'**
   String get sc95fb5440b;
+
+  /// fi: Ei hintoja
+  ///
+  /// In en, this message translates to:
+  /// **'No prices'**
+  String get s306729fe62;
+
+  /// fi: huomenna
+  ///
+  /// In en, this message translates to:
+  /// **'tomorrow'**
+  String get s9a37dbb58a;
+
+  /// fi: halvin
+  ///
+  /// In en, this message translates to:
+  /// **'min'**
+  String get s723c887da6;
+
+  /// fi: ka
+  ///
+  /// In en, this message translates to:
+  /// **'avg'**
+  String get s3b36524e04;
+
+  /// fi: kallein
+  ///
+  /// In en, this message translates to:
+  /// **'max'**
+  String get scaaff6345d;
+
+  /// fi: Halvin tänään
+  ///
+  /// In en, this message translates to:
+  /// **'Cheapest today'**
+  String get sfafa5c8432;
+
+  /// fi: Kallein tänään
+  ///
+  /// In en, this message translates to:
+  /// **'Priciest today'**
+  String get s4b2e4dda05;
+
+  /// fi: 1 h
+  ///
+  /// In en, this message translates to:
+  /// **'1 h'**
+  String get s96093c8f41;
+
+  /// fi: 15 min
+  ///
+  /// In en, this message translates to:
+  /// **'15 min'**
+  String get sa6dc2ff399;
+
+  /// fi: Kulutus
+  ///
+  /// In en, this message translates to:
+  /// **'Usage'**
+  String get s5f131c3ec4;
+
+  /// fi: Kustannus
+  ///
+  /// In en, this message translates to:
+  /// **'Cost'**
+  String get s5fc5085143;
+
+  /// fi: Huominen mukana
+  ///
+  /// In en, this message translates to:
+  /// **'Tomorrow included'**
+  String get s2f06d232b5;
+
+  /// fi: Huominen n. klo 14 jälkeen
+  ///
+  /// In en, this message translates to:
+  /// **'Tomorrow after ~14:00'**
+  String get sa5e6b1e0e3;
 
   /// fi: Halvimmat tunnit yöllä
   ///
@@ -4590,6 +4665,12 @@ abstract class AppLocalizations {
   /// **'Updated'**
   String get sbfe79d1f5f;
 
+  /// fi: Nimeä uudelleen
+  ///
+  /// In en, this message translates to:
+  /// **'Rename'**
+  String get s59d55f8882;
+
   /// fi: Tallennettu PIN poistettu
   ///
   /// In en, this message translates to:
@@ -4626,6 +4707,210 @@ abstract class AppLocalizations {
   /// **'On'**
   String get s4cbe24240f;
 
+  /// fi: Valot
+  ///
+  /// In en, this message translates to:
+  /// **'Lights'**
+  String get s72a2328ddd;
+
+  /// fi: Kytkimet
+  ///
+  /// In en, this message translates to:
+  /// **'Switches'**
+  String get sca12be80ca;
+
+  /// fi: Lämpöpumput ja ilmastointi
+  ///
+  /// In en, this message translates to:
+  /// **'Heat pumps and AC'**
+  String get sa4c0eeea02;
+
+  /// fi: Anturit
+  ///
+  /// In en, this message translates to:
+  /// **'Sensors'**
+  String get s662fecdc8d;
+
+  /// fi: Tila-anturit
+  ///
+  /// In en, this message translates to:
+  /// **'Binary sensors'**
+  String get sa8dbf04ad3;
+
+  /// fi: Verhot ja ovet
+  ///
+  /// In en, this message translates to:
+  /// **'Covers and doors'**
+  String get sa7690acf57;
+
+  /// fi: Lukot
+  ///
+  /// In en, this message translates to:
+  /// **'Locks'**
+  String get s487bf00fc7;
+
+  /// fi: Hälytys
+  ///
+  /// In en, this message translates to:
+  /// **'Alarm'**
+  String get s8d06ee5308;
+
+  /// fi: Kamerat
+  ///
+  /// In en, this message translates to:
+  /// **'Cameras'**
+  String get s88ac47e6d1;
+
+  /// fi: Puhaltimet
+  ///
+  /// In en, this message translates to:
+  /// **'Fans'**
+  String get sbe76826428;
+
+  /// fi: Tilannekuvat
+  ///
+  /// In en, this message translates to:
+  /// **'Scenes'**
+  String get s6b7c1c52da;
+
+  /// fi: Skriptit
+  ///
+  /// In en, this message translates to:
+  /// **'Scripts'**
+  String get s9f1334d4e2;
+
+  /// fi: Painikkeet
+  ///
+  /// In en, this message translates to:
+  /// **'Buttons'**
+  String get s4b53bcaaf0;
+
+  /// fi: Säätimet
+  ///
+  /// In en, this message translates to:
+  /// **'Number inputs'**
+  String get s5c92d42edd;
+
+  /// fi: Apukytkimet
+  ///
+  /// In en, this message translates to:
+  /// **'Helper toggles'**
+  String get s3c2ed0c522;
+
+  /// fi: Automaatiot
+  ///
+  /// In en, this message translates to:
+  /// **'Automations'**
+  String get se9ca7cb470;
+
+  /// fi: Mediasoittimet
+  ///
+  /// In en, this message translates to:
+  /// **'Media players'**
+  String get sea20d169a3;
+
+  /// fi: Tunnus (token) ei kelpaa. Luo uusi Home Assistantissa.
+  ///
+  /// In en, this message translates to:
+  /// **'The token is not accepted. Create a new one in Home Assistant.'**
+  String get sbcb95e1e78;
+
+  /// fi: Home Assistantiin ei saatu yhteyttä. Tarkista osoite.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not reach Home Assistant. Check the address.'**
+  String get s0b80dc2642;
+
+  /// fi: kamerat
+  ///
+  /// In en, this message translates to:
+  /// **'cameras'**
+  String get sf32b7f15d8;
+
+  /// fi: {p0} ruutua lisätty
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} tiles added'**
+  String s095ca83913(String p0);
+
+  /// fi: Valitse Home Assistantin laitteet
+  ///
+  /// In en, this message translates to:
+  /// **'Pick Home Assistant devices'**
+  String get sa7a829cefb;
+
+  /// fi: Haetaan laitteita…
+  ///
+  /// In en, this message translates to:
+  /// **'Loading devices…'**
+  String get sefdf8e3316;
+
+  /// fi: Huoneittain omiin näkymiin
+  ///
+  /// In en, this message translates to:
+  /// **'One view per room'**
+  String get s26583a1933;
+
+  /// fi: Lisää {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Add {p0}'**
+  String sf1319d04d0(String p0);
+
+  /// fi: Hae nimellä tai tunnuksella
+  ///
+  /// In en, this message translates to:
+  /// **'Search by name or id'**
+  String get sb3e6b54bce;
+
+  /// fi: Kaikki huoneet
+  ///
+  /// In en, this message translates to:
+  /// **'All rooms'**
+  String get safedc10c48;
+
+  /// fi: Ei huonetta
+  ///
+  /// In en, this message translates to:
+  /// **'No room'**
+  String get s407f3f7a0c;
+
+  /// fi: Kaikki
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get sedb7b77645;
+
+  /// fi: Näytä kaikki
+  ///
+  /// In en, this message translates to:
+  /// **'Show all'**
+  String get sa765c9294a;
+
+  /// fi: {p0} teknistä kohdetta piilotettu (diagnostiikka, asetukset, päivitykset)
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} technical items hidden (diagnostics, configuration, updates)'**
+  String sdb088f47a8(String p0);
+
+  /// fi: Huoneita ei saatu luettua – näytetään laitteet ilman huoneita.
+  ///
+  /// In en, this message translates to:
+  /// **'Rooms could not be read – showing devices without rooms.'**
+  String get s3ee8d0a5e3;
+
+  /// fi: Ei osumia
+  ///
+  /// In en, this message translates to:
+  /// **'No matches'**
+  String get sf55fca7a32;
+
+  /// fi: jo lisätty
+  ///
+  /// In en, this message translates to:
+  /// **'already added'**
+  String get s78cdce874e;
+
   /// fi: Lisäasetukset
   ///
   /// In en, this message translates to:
@@ -4643,6 +4928,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'e.g.'**
   String get s2315e0e739;
+
+  /// fi: Valitse taustakuva
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a background picture'**
+  String get sc1c47d2474;
+
+  /// fi: Enintään {p0} taustakuvaa. Poista jokin ensin.
+  ///
+  /// In en, this message translates to:
+  /// **'At most {p0} background pictures. Remove one first.'**
+  String sa8ce5112ee(String p0);
+
+  /// fi: Tiedosto ei ole kuva
+  ///
+  /// In en, this message translates to:
+  /// **'The file is not a picture'**
+  String get sceafe9ce2a;
+
+  /// fi: Ulkoasu
+  ///
+  /// In en, this message translates to:
+  /// **'Look'**
+  String get s12a7d631af;
+
+  /// fi: Koko
+  ///
+  /// In en, this message translates to:
+  /// **'Size'**
+  String get s0d83798030;
+
+  /// fi: Pieni
+  ///
+  /// In en, this message translates to:
+  /// **'Small'**
+  String get s64c916e299;
+
+  /// fi: Leveä
+  ///
+  /// In en, this message translates to:
+  /// **'Wide'**
+  String get s5e3097232a;
+
+  /// fi: Iso
+  ///
+  /// In en, this message translates to:
+  /// **'Large'**
+  String get s8971788287;
+
+  /// fi: Väri
+  ///
+  /// In en, this message translates to:
+  /// **'Colour'**
+  String get s7400a53ab2;
+
+  /// fi: Taustakuva (valinnainen)
+  ///
+  /// In en, this message translates to:
+  /// **'Background picture (optional)'**
+  String get s254a1d8e12;
+
+  /// fi: Valitse kuva
+  ///
+  /// In en, this message translates to:
+  /// **'Choose picture'**
+  String get sc48f5f9bcf;
+
+  /// fi: Vaihda kuva
+  ///
+  /// In en, this message translates to:
+  /// **'Change picture'**
+  String get sf55eee73b8;
+
+  /// fi: Poista kuva
+  ///
+  /// In en, this message translates to:
+  /// **'Remove picture'**
+  String get sdd957ccc1b;
+
+  /// fi: Himmennä kun laite on pois päältä
+  ///
+  /// In en, this message translates to:
+  /// **'Dim when the device is off'**
+  String get s7ba9d453ed;
+
+  /// fi: Kuva pienennetään (≤ 200 kt) ja synkronoidaan tiliisi.
+  ///
+  /// In en, this message translates to:
+  /// **'The picture is shrunk (≤ 200 KB) and synced to your account.'**
+  String get s016ae7b580;
+
+  /// fi: Kuva pienennetään (≤ 200 kt) ja tallennetaan vain tälle laitteelle.
+  ///
+  /// In en, this message translates to:
+  /// **'The picture is shrunk (≤ 200 KB) and kept on this device only.'**
+  String get sabb10f8cb2;
 
   /// fi: Vie asetukset
   ///
@@ -4721,6 +5102,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Shows technical settings: connections (HTTP, MQTT, Modbus…), payloads, JSON paths and tile sources. Most people don\'\'t need these.'**
   String get s21f870dbc2;
+
+  /// fi: Home Assistant: lisää laitteita
+  ///
+  /// In en, this message translates to:
+  /// **'Home Assistant: add devices'**
+  String get sca4c8b88b7;
 
   /// fi: Ohjaa kotia myös kodin ulkopuolelta.
   ///
@@ -4997,6 +5384,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Go to my dashboard'**
   String get sae0fae7127;
+
+  /// fi: Aseta kodin sijainti
+  ///
+  /// In en, this message translates to:
+  /// **'Set the home location'**
+  String get s64f4d1e11a;
+
+  /// fi: Sääennustetta ei saatu
+  ///
+  /// In en, this message translates to:
+  /// **'No weather forecast'**
+  String get s8ff5c58a5d;
+
+  /// fi: locked=Lukossa;unlocked=Auki;jammed=JUMISSA
+  ///
+  /// In en, this message translates to:
+  /// **'locked=Locked;unlocked=Unlocked;jammed=JAMMED'**
+  String get s1becc05ea1;
+
+  /// fi: open=Auki;closed=Kiinni;opening=Aukeaa;closing=Sulkeutuu
+  ///
+  /// In en, this message translates to:
+  /// **'open=Open;closed=Closed;opening=Opening;closing=Closing'**
+  String get s259de02f33;
+
+  /// fi: disarmed=Pois;armed_away=Päällä;armed_home=Kotona;armed_night=Yö;triggered=HÄLYTYS;arming=Kytkeytyy
+  ///
+  /// In en, this message translates to:
+  /// **'disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming'**
+  String get s64d4364336;
+
+  /// fi: on=Päällä;off=Pois
+  ///
+  /// In en, this message translates to:
+  /// **'on=On;off=Off'**
+  String get s5b1e227dc4;
 
   /// fi: WebSocket
   ///
@@ -6150,12 +6573,6 @@ abstract class AppLocalizations {
   /// **'Yard'**
   String get s4b4fd14aaf;
 
-  /// fi: Hälytys
-  ///
-  /// In en, this message translates to:
-  /// **'Alarm'**
-  String get s8d06ee5308;
-
   /// fi: disarmed=Pois;armed_away=Päällä;armed_home=Kotona;triggered=HÄLYTYS
   ///
   /// In en, this message translates to:
@@ -6408,11 +6825,11 @@ abstract class AppLocalizations {
   /// **'Web username'**
   String get sb847f22473;
 
-  /// fi: Valot, hälytys, anturit – kaikki mitä Home Assistantissa on.
+  /// fi: Valot, hälytys, anturit – valitse listasta, mitkä haluat ruuduiksi.
   ///
   /// In en, this message translates to:
-  /// **'Lights, alarm, sensors – anything in Home Assistant.'**
-  String get s7f8e45ea74;
+  /// **'Lights, alarm, sensors – pick from a list which ones become tiles.'**
+  String get s76f6067b0f;
 
   /// fi: Home Assistantin osoite
   ///
@@ -6437,42 +6854,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Home Assistant → your profile → Security → Long-lived access tokens → Create token. Paste it here.'**
   String get s4e3f2052b2;
-
-  /// fi: Valo (valinnainen)
-  ///
-  /// In en, this message translates to:
-  /// **'Light (optional)'**
-  String get s75a056cf4d;
-
-  /// fi: Entiteetin tunnus, löytyy HA:sta Asetukset → Laitteet ja palvelut → Entiteetit.
-  ///
-  /// In en, this message translates to:
-  /// **'Entity id from Settings → Devices → Entities.'**
-  String get sdb9a90cb96;
-
-  /// fi: Hälytys (valinnainen)
-  ///
-  /// In en, this message translates to:
-  /// **'Alarm (optional)'**
-  String get sa9681c1a9a;
-
-  /// fi: Lämpötila-anturi (valinnainen)
-  ///
-  /// In en, this message translates to:
-  /// **'Temperature sensor (optional)'**
-  String get s64bd3ab3ff;
-
-  /// fi: Kytkin / pistorasia (valinnainen)
-  ///
-  /// In en, this message translates to:
-  /// **'Switch (optional)'**
-  String get sa6504f5712;
-
-  /// fi: disarmed=Pois;armed_away=Päällä;armed_home=Kotona;armed_night=Yö;triggered=HÄLYTYS;arming=Kytkeytyy
-  ///
-  /// In en, this message translates to:
-  /// **'disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming'**
-  String get s64d4364336;
 
   /// fi: Lämpöpumppu (Home Assistant)
   ///
@@ -6840,24 +7221,6 @@ abstract class AppLocalizations {
   /// **'Electricity price {p0}'**
   String s49dfca65a3(String p0);
 
-  /// fi: Sähkö nyt
-  ///
-  /// In en, this message translates to:
-  /// **'Electricity now'**
-  String get scf849c933b;
-
-  /// fi: Halvin tunti
-  ///
-  /// In en, this message translates to:
-  /// **'Cheapest hour'**
-  String get s53a951507b;
-
-  /// fi: Sähkön hinta tänään ja huomenna
-  ///
-  /// In en, this message translates to:
-  /// **'Price today and tomorrow'**
-  String get s3e99310fc0;
-
   /// fi: IV-kone (Modbus TCP)
   ///
   /// In en, this message translates to:
@@ -7159,8 +7522,7 @@ abstract class AppLocalizations {
   String s3a38b97f7b(String p0);
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -7169,8 +7531,7 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en', 'es', 'et', 'fi', 'sv'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'es', 'et', 'fi', 'sv'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;

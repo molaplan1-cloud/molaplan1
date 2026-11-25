@@ -1,4 +1,7 @@
+import 'ha_picker.dart';
 import 'thermostat_pages.dart';
+import 'weather_tile.dart';
+
 import 'package:material_ui/material_ui.dart';
 
 import '../core/discovery.dart';
@@ -48,6 +51,9 @@ class TemplateGalleryPage extends StatelessWidget {
           );
           if (added == true && context.mounted) Navigator.pop(context, true);
         },
+        onWeather: () async {
+          if (await addWeatherTile(context, dashboard) && context.mounted) Navigator.pop(context, true);
+        },
         onManual: () async {
           final c = await ConnectionsPage.addManual(context);
           if (c != null && context.mounted) Navigator.pop(context, true);
@@ -58,7 +64,15 @@ class TemplateGalleryPage extends StatelessWidget {
 }
 
 class TemplateGrid extends StatefulWidget {
-  const TemplateGrid({super.key, required this.onPick, required this.onManual, this.header, this.onBrand, this.onThermostat});
+  const TemplateGrid({
+    super.key,
+    required this.onPick,
+    required this.onManual,
+    this.header,
+    this.onBrand,
+    this.onThermostat,
+    this.onWeather,
+  });
   final void Function(DeviceTemplate) onPick;
   final VoidCallback onManual;
   final Widget? header;
@@ -68,6 +82,7 @@ class TemplateGrid extends StatefulWidget {
 
   /// Virtual thermostat picked (null = open the wizard here).
   final VoidCallback? onThermostat;
+  final VoidCallback? onWeather;
 
   @override
   State<TemplateGrid> createState() => _TemplateGridState();
@@ -220,7 +235,10 @@ class _TemplateGridState extends State<TemplateGrid> {
                       example: t.examples,
                       onTap: () => widget.onPick(t),
                     ),
-                  if (_match(tx(context, 'Termostaatti lämmitys jäähdytys', 'Thermostat heating cooling'), ['thermostat', 'termostaatti']))
+                  if (_match(tx(context, 'Termostaatti lämmitys jäähdytys', 'Thermostat heating cooling'), [
+                    'thermostat',
+                    'termostaatti',
+                  ]))
                     _TemplateCard(
                       key: const ValueKey('gallery-thermostat'),
                       icon: Icons.thermostat,
@@ -231,8 +249,28 @@ class _TemplateGridState extends State<TemplateGrid> {
                         'Pitää lämmön halutussa: ohjaa releitä tai lämpöpumppua lämpömittarin mukaan. Voi säästää pörssisähköllä.',
                         'Keeps the temperature you want: controls relays or a heat pump from a thermometer. Can save with spot prices.',
                       ),
-                      onTap: widget.onThermostat ??
-                          () => Navigator.push<bool>(context, MaterialPageRoute(builder: (_) => const ThermostatWizard())),
+                      onTap:
+                          widget.onThermostat ??
+                          () => Navigator.push<bool>(
+                            context,
+                            MaterialPageRoute(builder: (_) => const ThermostatWizard()),
+                          ),
+                    ),
+                  if (_match(
+                    tx(context, 'Sääennuste sää lämpötila sade tuuli', 'Weather forecast temperature rain wind'),
+                    ['weather', 'sää'],
+                  ))
+                    _TemplateCard(
+                      key: const ValueKey('gallery-weather'),
+                      icon: Icons.wb_sunny_outlined,
+                      color: Colors.lightBlue,
+                      title: tx(context, 'Sääennuste', 'Weather forecast'),
+                      desc: tx(
+                        context,
+                        'Sää nyt ja tunneittain: lämpötila, sade ja tuuli kotisi sijainnista. Ei vaadi laitetta.',
+                        'Weather now and hourly: temperature, rain and wind at your home. No device needed.',
+                      ),
+                      onTap: widget.onWeather ?? () => addWeatherTile(context),
                     ),
                   _TemplateCard(
                     icon: Icons.help_outline,
@@ -504,6 +542,18 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
     ];
     final used = await st.applyTemplate(r, into: widget.dashboard, tiles: tiles);
     if (!mounted) return;
+    // Home Assistant: next pick the entities that become tiles.
+    final ha = used.where((c) => c.type == 'homeassistant').firstOrNull;
+    if (t.id == 'homeassistant' && ha != null) {
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => HaEntityPickerPage(connection: ha, dashboard: widget.dashboard),
+        ),
+      );
+      if (mounted) Navigator.pop(context, true);
+      return;
+    }
     // Guided step: teach remote buttons right away (IR/RF blasters running Tasmota or ESPHome).
     final conn = used.where((c) => c.type == 'ir').firstOrNull;
     final tr = '${conn?.settings['transport'] ?? ''}';

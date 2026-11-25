@@ -468,8 +468,8 @@ final deviceTemplates = <DeviceTemplate>[
     id: 'homeassistant',
     fi: 'Home Assistant',
     en: 'Home Assistant',
-    descFi: 'Valot, hälytys, anturit – kaikki mitä Home Assistantissa on.',
-    descEn: 'Lights, alarm, sensors – anything in Home Assistant.',
+    descFi: 'Valot, hälytys, anturit – valitse listasta, mitkä haluat ruuduiksi.',
+    descEn: 'Lights, alarm, sensors – pick from a list which ones become tiles.',
     icon: Icons.home_outlined,
     color: const Color(0xFF29B6F6),
     connectionType: 'homeassistant',
@@ -493,22 +493,6 @@ final deviceTemplates = <DeviceTemplate>[
         helpFi: 'Home Assistant → klikkaa omaa nimeäsi vasemmalla alhaalla → Turvallisuus → Pitkäikäiset käyttöoikeustunnukset → Luo tunnus. Kopioi ja liitä tähän.',
         helpEn: 'Home Assistant → your profile → Security → Long-lived access tokens → Create token. Paste it here.',
       ),
-      FieldSpec(
-        'light',
-        'Valo (valinnainen)',
-        'Light (optional)',
-        hint: 'light.olohuone',
-        helpFi: 'Entiteetin tunnus, löytyy HA:sta Asetukset → Laitteet ja palvelut → Entiteetit.',
-        helpEn: 'Entity id from Settings → Devices → Entities.',
-      ),
-      FieldSpec('alarm', 'Hälytys (valinnainen)', 'Alarm (optional)', hint: 'alarm_control_panel.koti'),
-      FieldSpec(
-        'temperature',
-        'Lämpötila-anturi (valinnainen)',
-        'Temperature sensor (optional)',
-        hint: 'sensor.ulkolampotila',
-      ),
-      FieldSpec('switch', 'Kytkin / pistorasia (valinnainen)', 'Switch (optional)', hint: 'switch.kahvinkeitin'),
     ],
     build: (v, lang) {
       var url = normUrl(v['address']);
@@ -519,76 +503,8 @@ final deviceTemplates = <DeviceTemplate>[
         settings: {'baseUrl': url, 'liveUpdates': true},
         secrets: {if (_s(v, 'token').isNotEmpty) 'token': _s(v, 'token')},
       );
-      final tiles = <TileConfig>[];
-      String nice(String e) => e.contains('.') ? e.split('.').last.replaceAll('_', ' ') : e;
-      final light = _s(v, 'light');
-      if (light.isNotEmpty) {
-        tiles.add(
-          TileConfig(
-            type: TileType.toggle,
-            title: nice(light),
-            icon: 'lightbulb',
-            connectionId: c.id,
-            read: {'entityId': light},
-            onCommand: CommandStep(connectionId: c.id, spec: {'service': 'homeassistant.turn_on', 'entityId': light}),
-            offCommand: CommandStep(connectionId: c.id, spec: {'service': 'homeassistant.turn_off', 'entityId': light}),
-          ),
-        );
-      }
-      final alarm = _s(v, 'alarm');
-      if (alarm.isNotEmpty) {
-        tiles.add(
-          TileConfig(
-            type: TileType.toggle,
-            title: _t(lang, 'Hälytys', 'Alarm'),
-            icon: 'alarm',
-            connectionId: c.id,
-            confirm: true,
-            read: {'entityId': alarm},
-            valueMap: _t(
-              lang,
-              'disarmed=Pois;armed_away=Päällä;armed_home=Kotona;armed_night=Yö;triggered=HÄLYTYS;arming=Kytkeytyy',
-              'disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming',
-            ),
-            onCommand: CommandStep(
-              connectionId: c.id,
-              spec: {'service': 'alarm_control_panel.alarm_arm_away', 'entityId': alarm},
-            ),
-            offCommand: CommandStep(
-              connectionId: c.id,
-              spec: {'service': 'alarm_control_panel.alarm_disarm', 'entityId': alarm},
-            ),
-          ),
-        );
-      }
-      final temp = _s(v, 'temperature');
-      if (temp.isNotEmpty) {
-        tiles.add(
-          TileConfig(
-            type: TileType.value,
-            title: nice(temp),
-            icon: 'thermostat',
-            unit: '°C',
-            connectionId: c.id,
-            read: {'entityId': temp},
-          ),
-        );
-      }
-      final sw = _s(v, 'switch');
-      if (sw.isNotEmpty) {
-        tiles.add(
-          TileConfig(
-            type: TileType.toggle,
-            title: nice(sw),
-            icon: 'outlet',
-            connectionId: c.id,
-            read: {'entityId': sw},
-            onCommand: CommandStep(connectionId: c.id, spec: {'service': 'homeassistant.turn_on', 'entityId': sw}),
-            offCommand: CommandStep(connectionId: c.id, spec: {'service': 'homeassistant.turn_off', 'entityId': sw}),
-          ),
-        );
-      }
-      return TemplateResult([c], tiles);
+      // Tiles are picked next in the entity picker (HaEntityPickerPage) – never all at once.
+      return TemplateResult([c], const []);
     },
   ),
   DeviceTemplate(
@@ -1050,27 +966,9 @@ final deviceTemplates = <DeviceTemplate>[
         [
           TileConfig(
             type: TileType.value,
-            title: _t(lang, 'Sähkö nyt', 'Electricity now'),
+            title: _t(lang, 'Sähkön hinta', 'Electricity price'),
             icon: 'bolt',
-            unit: 'c/kWh',
-            decimals: 1,
-            connectionId: c.id,
-            pollSeconds: 60,
-            read: {'field': 'now'},
-          ),
-          TileConfig(
-            type: TileType.value,
-            title: _t(lang, 'Halvin tunti', 'Cheapest hour'),
-            icon: 'timer',
-            connectionId: c.id,
-            pollSeconds: 300,
-            read: {'field': 'next_cheap'},
-          ),
-          TileConfig(
-            type: TileType.value,
-            title: _t(lang, 'Sähkön hinta tänään ja huomenna', 'Price today and tomorrow'),
-            icon: 'bolt',
-            colSpan: 4,
+            colSpan: 2,
             rowSpan: 2,
             connectionId: c.id,
             pollSeconds: 300,

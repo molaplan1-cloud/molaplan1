@@ -211,6 +211,8 @@
   "x-mt": true
  },
  "se78754330c": "potencia",
+ "s4899323b9a": "Potencia",
+ "sb9964cfb3b": "Potencia {p0}",
  "sfcb44be1a0": "Shelly",
  "sa6ff717527": "Relés y enchufes: Pro 4PM, Plus 1PM, Plug S, 2.5... encontrado automáticamente, fichas para cada canal.",
  "@sa6ff717527": {
@@ -871,6 +873,7 @@
  "@s4f1166fe24": {
   "x-mt": true
  },
+ "s29fd8d5b5e": "Ahora",
  "see9111ba68": "Relé o interruptor (encendido/apagado)",
  "seaed91ad78": "Bomba de calor o aire acondicionado (consigna)",
  "sb757921c13": "Calienta",
@@ -946,7 +949,6 @@
  "s187d328bb1": "Editar",
  "sc1845eb440": "Eliminar",
  "s87984716cb": "¿Eliminar el termostato?",
- "s29fd8d5b5e": "Ahora",
  "s79786b9f7d": "Objetivo",
  "sdd309c0a63": "El termostato funciona en el puente de casa",
  "s9c1b5394df": "Configurar acceso remoto en la tableta de inicio (Configuración → Acceso remoto). Hasta entonces no controla nada.",
@@ -971,26 +973,6 @@
   "x-mt": true
  },
  "s941fbb47fe": "Calculando el plan…",
- "s306729fe62": "No hay precios",
- "@s306729fe62": {
-  "x-mt": true
- },
- "s723c887da6": "min",
- "@s723c887da6": {
-  "x-mt": true
- },
- "scaaff6345d": "max",
- "@scaaff6345d": {
-  "x-mt": true
- },
- "s65982a11bc": "incl. mañana",
- "@s65982a11bc": {
-  "x-mt": true
- },
- "se79acaf837": "mañana después de las 14:00",
- "@se79acaf837": {
-  "x-mt": true
- },
  "s55d52c5ae1": "Este dispositivo no está en Wi-Fi",
  "@s55d52c5ae1": {
   "x-mt": true
@@ -1313,6 +1295,15 @@
  "@s641a848754": {
   "x-mt": true
  },
+ "s94493d01ca": "Temperatura del tiempo lluvia viento",
+ "@s94493d01ca": {
+  "x-mt": true
+ },
+ "s262f9527aa": "Previsión meteorológica",
+ "@s262f9527aa": {
+  "x-mt": true
+ },
+ "scb3570338f": "El tiempo ahora y por horas: temperatura, lluvia y viento en tu casa. No necesitas ningún dispositivo.",
  "s2a9b6fedd9": "¿No puedes encontrar tu marca?",
  "@s2a9b6fedd9": {
   "x-mt": true
@@ -1422,6 +1413,28 @@
  "@sc95fb5440b": {
   "x-mt": true
  },
+ "s306729fe62": "No hay precios",
+ "@s306729fe62": {
+  "x-mt": true
+ },
+ "s9a37dbb58a": "mañana",
+ "s723c887da6": "min",
+ "@s723c887da6": {
+  "x-mt": true
+ },
+ "s3b36524e04": "media",
+ "scaaff6345d": "max",
+ "@scaaff6345d": {
+  "x-mt": true
+ },
+ "sfafa5c8432": "Más barato hoy",
+ "s4b2e4dda05": "Más caro hoy",
+ "s96093c8f41": "1 h",
+ "sa6dc2ff399": "15 min",
+ "s5f131c3ec4": "Consumo",
+ "s5fc5085143": "Coste",
+ "s2f06d232b5": "Incluye mañana",
+ "sa5e6b1e0e3": "Mañana después de ~14:00",
  "s62cfd94468": "Horas más baratas por la noche",
  "@s62cfd94468": {
   "x-mt": true
@@ -2237,6 +2250,7 @@
  "@sbfe79d1f5f": {
   "x-mt": true
  },
+ "s59d55f8882": "Renombrar",
  "s25580038cb": "Separación de PIN",
  "@s25580038cb": {
   "x-mt": true
@@ -2249,12 +2263,146 @@
  "sf3d644dd4c": "Aprender un botón del mando",
  "sfb1a18d11f": "Actualizar",
  "s4cbe24240f": "Encendido",
+ "s72a2328ddd": "Luces",
+ "sca12be80ca": "Interruptores",
+ "sa4c0eeea02": "Bombas de calor y A/A",
+ "s662fecdc8d": "Sensores",
+ "@s662fecdc8d": {
+  "x-mt": true
+ },
+ "sa8dbf04ad3": "Sensores binarios",
+ "@sa8dbf04ad3": {
+  "x-mt": true
+ },
+ "sa7690acf57": "Persianas y puertas",
+ "s487bf00fc7": "Cierre",
+ "@s487bf00fc7": {
+  "x-mt": true
+ },
+ "s8d06ee5308": "Alarma",
+ "s88ac47e6d1": "Cámaras",
+ "@s88ac47e6d1": {
+  "x-mt": true
+ },
+ "sbe76826428": "Ventiladores",
+ "s6b7c1c52da": "Escenas",
+ "@s6b7c1c52da": {
+  "x-mt": true
+ },
+ "s9f1334d4e2": "Scripts",
+ "s4b53bcaaf0": "Botones",
+ "@s4b53bcaaf0": {
+  "x-mt": true
+ },
+ "s5c92d42edd": "Entradas numéricas",
+ "s3c2ed0c522": "Interruptores auxiliares",
+ "se9ca7cb470": "Automatizaciones",
+ "@se9ca7cb470": {
+  "x-mt": true
+ },
+ "sea20d169a3": "Jugadores de medios",
+ "@sea20d169a3": {
+  "x-mt": true
+ },
+ "sbcb95e1e78": "La ficha no es aceptada. Cree una nueva en Home Assistant.",
+ "@sbcb95e1e78": {
+  "x-mt": true
+ },
+ "s0b80dc2642": "No podía llegar a Home Assistant. Compruebe la dirección.",
+ "@s0b80dc2642": {
+  "x-mt": true
+ },
+ "sf32b7f15d8": "cámaras",
+ "@sf32b7f15d8": {
+  "x-mt": true
+ },
+ "s095ca83913": "{p0} tarjetas agregadas",
+ "@s095ca83913": {
+  "x-mt": true
+ },
+ "sa7a829cefb": "Elige dispositivos de Home Assistant",
+ "sefdf8e3316": "Cargando dispositivos…",
+ "s26583a1933": "Una vista por habitación",
+ "@s26583a1933": {
+  "x-mt": true
+ },
+ "sf1319d04d0": "Añadir {p0}",
+ "@sf1319d04d0": {
+  "x-mt": true
+ },
+ "sb3e6b54bce": "Búsqueda por nombre o id",
+ "@sb3e6b54bce": {
+  "x-mt": true
+ },
+ "safedc10c48": "Todas las habitaciones",
+ "@safedc10c48": {
+  "x-mt": true
+ },
+ "s407f3f7a0c": "No hay habitación",
+ "@s407f3f7a0c": {
+  "x-mt": true
+ },
+ "sedb7b77645": "Todos",
+ "sa765c9294a": "Mostrar todo",
+ "@sa765c9294a": {
+  "x-mt": true
+ },
+ "sdb088f47a8": "{p0} elementos técnicos ocultos (diagnósticos, configuración, actualizaciones)",
+ "@sdb088f47a8": {
+  "x-mt": true
+ },
+ "s3ee8d0a5e3": "Las habitaciones no se pueden leer – mostrando dispositivos sin habitaciones.",
+ "@s3ee8d0a5e3": {
+  "x-mt": true
+ },
+ "sf55fca7a32": "Sin resultados",
+ "s78cdce874e": "ya añadido",
+ "@s78cdce874e": {
+  "x-mt": true
+ },
  "sdc398885dc": "Ajustes avanzados",
  "s5d477f3cd8": "Normalmente no necesitas estos",
  "@s5d477f3cd8": {
   "x-mt": true
  },
  "s2315e0e739": "p. ej.",
+ "sc1c47d2474": "Elija una imagen de fondo",
+ "@sc1c47d2474": {
+  "x-mt": true
+ },
+ "sa8ce5112ee": "Como máximo {p0} imágenes de fondo. Quita una primero.",
+ "sceafe9ce2a": "El archivo no es una imagen",
+ "@sceafe9ce2a": {
+  "x-mt": true
+ },
+ "s12a7d631af": "Aspecto",
+ "s0d83798030": "Tamaño",
+ "s64c916e299": "Pequeña",
+ "s5e3097232a": "Ancha",
+ "s8971788287": "Grande",
+ "s7400a53ab2": "Color",
+ "@s7400a53ab2": {
+  "x-mt": true
+ },
+ "s254a1d8e12": "Imagen de fondo (opcional)",
+ "sc48f5f9bcf": "Elegir imagen",
+ "sf55eee73b8": "Cambiar imagen",
+ "@sf55eee73b8": {
+  "x-mt": true
+ },
+ "sdd957ccc1b": "Quitar la imagen",
+ "@sdd957ccc1b": {
+  "x-mt": true
+ },
+ "s7ba9d453ed": "Atenuar cuando el dispositivo está apagado",
+ "s016ae7b580": "La imagen es deslumbrada (≤ 200 KB) y sincronizada con su cuenta.",
+ "@s016ae7b580": {
+  "x-mt": true
+ },
+ "sabb10f8cb2": "La imagen es arrugada (≤ 200 KB) y se mantiene en este dispositivo solamente.",
+ "@sabb10f8cb2": {
+  "x-mt": true
+ },
  "s4dab2d409b": "Configuración de las exportaciones",
  "@s4dab2d409b": {
   "x-mt": true
@@ -2296,6 +2444,10 @@
  "s9bb545e9b3": "Inicia sesión o crea una cuenta",
  "s21f870dbc2": "Muestra configuración técnica: conexiones (HTTP, MQTT, Modbus...), cargas de pago, caminos JSON y fuentes de baldosas. La mayoría de la gente no necesita estas.",
  "@s21f870dbc2": {
+  "x-mt": true
+ },
+ "sca4c8b88b7": "Home Assistant: add devices",
+ "@sca4c8b88b7": {
   "x-mt": true
  },
  "saec69088a5": "Controla tu casa desde fuera también.",
@@ -2449,6 +2601,15 @@
  "@sae0fae7127": {
   "x-mt": true
  },
+ "s64f4d1e11a": "Indica la ubicación de casa",
+ "s8ff5c58a5d": "No hay pronóstico del tiempo",
+ "@s8ff5c58a5d": {
+  "x-mt": true
+ },
+ "s1becc05ea1": "locked=Cerrado;unlocked=Abierto;jammed=ATASCADO",
+ "s259de02f33": "open=Abierta;closed=Cerrada;opening=Abriendo;closing=Cerrando",
+ "s64d4364336": "disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming",
+ "s5b1e227dc4": "on=Encendido;off=Apagado",
  "s3d43664fcc": "WebSocket",
  "sfcbb753f53": "URL",
  "s81479e1555": "Headers (Name: value per line)",
@@ -3130,7 +3291,6 @@
   "x-mt": true
  },
  "s4b4fd14aaf": "Patio",
- "s8d06ee5308": "Alarma",
  "s8ac16d45bc": "",
  "sbde42d83a3": "Luces del salón",
  "sb7c78c63b3": "Aire de impulsión",
@@ -3260,8 +3420,8 @@
  "@sb847f22473": {
   "x-mt": true
  },
- "s7f8e45ea74": "Luces, alarma, sensores, cualquier cosa en Home Assistant.",
- "@s7f8e45ea74": {
+ "s76f6067b0f": "Luces, alarma, sensores – elige una lista que se convierten en tarjetas.",
+ "@s76f6067b0f": {
   "x-mt": true
  },
  "s9f70681d3f": "Home Assistant address",
@@ -3280,24 +3440,6 @@
  "@s4e3f2052b2": {
   "x-mt": true
  },
- "s75a056cf4d": "Luz (opcional)",
- "@s75a056cf4d": {
-  "x-mt": true
- },
- "sdb9a90cb96": "Entidad id de Ajustes → Dispositivos → Entidades.",
- "@sdb9a90cb96": {
-  "x-mt": true
- },
- "sa9681c1a9a": "Alarma (opcional)",
- "@sa9681c1a9a": {
-  "x-mt": true
- },
- "s64bd3ab3ff": "Sensor de temperatura (opcional)",
- "sa6504f5712": "Interruptor (opcional)",
- "@sa6504f5712": {
-  "x-mt": true
- },
- "s64d4364336": "disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming",
  "s54e063bd9c": "Bomba de calor (Auxiliar)",
  "@s54e063bd9c": {
   "x-mt": true
@@ -3509,9 +3651,6 @@
  "@s49dfca65a3": {
   "x-mt": true
  },
- "scf849c933b": "Electricidad ahora",
- "s53a951507b": "Hora más barata",
- "s3e99310fc0": "Precio hoy y mañana",
  "s9af9526395": "Unidad de ventilación (Modbus TCP)",
  "@s9af9526395": {
   "x-mt": true

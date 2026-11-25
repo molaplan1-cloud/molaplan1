@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io' show Platform;
+import 'dart:io' show Directory, Platform;
 
 import 'package:flutter/foundation.dart';
 
@@ -14,7 +14,8 @@ import '../prices/prices.dart';
 import 'tile_runtime.dart';
 import '../rules/price_rules.dart';
 import '../templates/device_templates.dart';
-import '../account/supabase_api.dart' show AccountApi;
+import '../account/supabase_api.dart' show AccountApi, Session;
+import 'tile_images.dart';
 import '../account/vault.dart' show defaultIterations;
 import 'account_state.dart';
 import 'remote_state.dart';
@@ -30,6 +31,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     int kdfIterations = defaultIterations,
     String Function()? systemLocale,
     ConfigStore? energyStore,
+    this.imageDir,
   }) : systemLocale = systemLocale ?? _platformLocale,
        energyStore = energyStore ?? MemoryConfigStore() {
     TileRuntime.observer = onTileValue;
@@ -97,12 +99,78 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   /// Logs a reading of a meter tile (power W/kW or energy Wh/kWh).
+  /// Today+tomorrow consumer prices (c/kWh incl. VAT) from the user's spot contract – energy,
+  /// margin, transfer and tax – or null when no spot contract is set (the price connection's own
+  /// VAT/margin/transfer settings apply then).
+  List<(DateTime, double)>? contractPrices([String? zone]) {
+    final c = config.energy.contract;
+    if (c == null || c.energyType != 'spot') return null;
+    final s = PriceService.shared.cached(zone ?? energyZone);
+    if (s == null) return null;
+    final now = DateTime.now();
+    return [
+      for (final p in [...s.day(now, 0), ...s.day(now, 1)])
+        if (c.unitAt(p.start, spotEurMwh: p.eurMwh)?.inc case final v?) (p.start, v),
+    ];
+  }
+
+  /// Latest power reading per meter tile: (time, kW).
+  final livePower = <String, (DateTime, double)>{};
+
+  /// Current power (kW) of [meterId] – or of the site meter / sum of sub-meters – if fresh (< 10 min).
+  double? powerNowKw([String? meterId]) {
+    final now = DateTime.now();
+    double? fresh(String id) {
+      final p = livePower[id];
+      return p == null || now.difference(p.$1) > const Duration(minutes: 10) ? null : p.$2;
+    }
+
+    if (meterId != null) return fresh(meterId);
+    final ms = config.energy.meters;
+    final site = ms.entries.where((e) => e.value.role == 'site').map((e) => fresh(e.key)).nonNulls;
+    if (site.isNotEmpty) return site.reduce((a, b) => a + b);
+    final subs = ms.entries.where((e) => e.value.parent == null).map((e) => fresh(e.key)).nonNulls;
+    return subs.isEmpty ? null : subs.reduce((a, b) => a + b);
+  }
+
+  /// Hourly kWh and cost (c incl. VAT) today for [meterId] or the site total.
+  List<(DateTime, double, double)> hourlyUsageToday([String? meterId]) {
+    final now = DateTime.now();
+    final ms = config.energy.meters;
+    final ids = meterId != null
+        ? [meterId]
+        : (ms.entries.any((e) => e.value.role == 'site')
+              ? [
+                  for (final e in ms.entries)
+                    if (e.value.role == 'site') e.key,
+                ]
+              : [
+                  for (final e in ms.entries)
+                    if (e.value.parent == null) e.key,
+                ]);
+    return [
+      for (var h = 0; h <= now.hour; h++)
+        () {
+          final at = DateTime(now.year, now.month, now.day, h);
+          var k = 0.0, c = 0.0;
+          for (final id in ids) {
+            final b = energyLog.data[id]?[EnergyLog.hourKey(at)];
+            if (b == null) continue;
+            k += b.kwh;
+            c += b.inc * 100;
+          }
+          return (at, k, c);
+        }(),
+    ];
+  }
+
   void onTileValue(TileConfig t, Object? v, [DateTime? at]) {
     final m = config.energy.meters[t.id];
     if (m == null) return;
     final kind = meterKind(t.unit);
     final d = v is num ? v.toDouble() : double.tryParse('${v ?? ''}'.replaceAll(',', '.'));
     if (kind == null || d == null) return;
+    if (kind == 'power') livePower[t.id] = (at ?? DateTime.now(), toK(d, t.unit));
     energyLog.record(t.id, kind, toK(d, t.unit), at ?? DateTime.now(), unitPriceAt);
     _energySaveTimer ??= Timer(const Duration(seconds: 60), saveEnergy);
   }
@@ -135,9 +203,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     try {
       final s = await rulesStatus();
       final t = s?['thermostats'];
-      thermoStatus = t is Map
-          ? {for (final e in t.entries) '${e.key}': Map<String, dynamic>.from(e.value as Map)}
-          : {};
+      thermoStatus = t is Map ? {for (final e in t.entries) '${e.key}': Map<String, dynamic>.from(e.value as Map)} : {};
       thermoStatusAt = DateTime.now();
     } catch (_) {
       thermoStatus = {};
@@ -249,6 +315,12 @@ class AppState extends ChangeNotifier implements SyncHost {
     } catch (_) {}
     _lastHome = remote.paired?.home;
     await account.load();
+    if (images.dir == null && imageDir != null) {
+      try {
+        images.dir = await imageDir!();
+      } catch (_) {}
+    }
+    _fixRawIdTitles();
     loaded = true;
     notifyListeners();
   }
@@ -456,6 +528,9 @@ class AppState extends ChangeNotifier implements SyncHost {
     return null;
   }
 
+  @visibleForTesting
+  void debugSetDriver(String connId, Driver d) => _drivers[connId] = d;
+
   Driver? driverFor(String? connId) {
     final c = connection(connId);
     if (c == null) return null;
@@ -573,6 +648,100 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<void> setRule(String tileId, PriceRule? r) async {
     config.rules.removeWhere((x) => x.tileId == tileId);
     if (r != null) config.rules.add(r);
+    await save();
+    notifyListeners();
+  }
+
+  // ---- tile background images (t112u) ----
+  final images = TileImageStore();
+
+  /// Where image files live (app support dir); null in tests = memory only.
+  final Future<Directory?> Function()? imageDir;
+
+  Set<String> get usedImages => {
+    for (final d in config.dashboards)
+      for (final t in d.tiles) ?t.bgImage,
+  };
+
+  /// Compresses [raw] and sets it as the tile's background. Returns false when the account's
+  /// image limit is reached. Throws [FormatException] for files that are not images.
+  Future<bool> setTileImage(TileConfig t, Uint8List raw) async {
+    final p = await processTileImageAsync(raw);
+    final used = usedImages..remove(t.bgImage);
+    if (!used.contains(p.name) && used.length >= tileImageMaxCount) return false;
+    await images.write(p.name, p.bytes);
+    t.bgImage = p.name;
+    t.bgScrim = p.scrim;
+    await save();
+    notifyListeners();
+    unawaited(account.syncNow(quiet: true));
+    return true;
+  }
+
+  Future<void> clearTileImage(TileConfig t) async {
+    t.bgImage = null;
+    t.bgDimOff = false;
+    await save();
+    notifyListeners();
+    unawaited(account.syncNow(quiet: true));
+  }
+
+  Future<void> updateTileLook(TileConfig t, void Function(TileConfig t) change) async {
+    change(t);
+    await save();
+    notifyListeners();
+  }
+
+  @override
+  Future<void> syncFiles(AccountApi api, Session s) async {
+    final used = usedImages;
+    final done = await images.uploaded(s.userId);
+    final before = {...done};
+    var changed = false;
+    for (final n in used) {
+      if (await images.has(n)) {
+        if (done.contains(n)) continue;
+        final b = await images.read(n);
+        if (b == null || b.length > tileImageMaxBytes * 1.3) continue;
+        await api.uploadImage(s, n, b);
+        done.add(n);
+      } else {
+        final b = await api.downloadImage(s, n);
+        if (b == null) continue;
+        await images.write(n, b);
+        done.add(n);
+        changed = true;
+      }
+    }
+    // Remove account copies no tile uses any more (keeps the free-tier storage small).
+    final stale = done.difference(used).toList();
+    if (stale.isNotEmpty) {
+      await api.deleteImages(s, stale);
+      done.removeAll(stale);
+    }
+    if (done.length != before.length || !done.containsAll(before)) await images.setUploaded(s.userId, done);
+    if (changed) notifyListeners();
+  }
+
+  /// v0.4 Shelly Cloud tiles could be titled with the raw device id ("30c6f78384bc – teho").
+  void _fixRawIdTitles() {
+    final raw = RegExp(r'^(shelly[\w-]*-)?[0-9a-f]{12}( – (teho|power))?$', caseSensitive: false);
+    for (final d in config.dashboards) {
+      for (final t in d.tiles) {
+        if (!raw.hasMatch(t.title.trim())) continue;
+        final n = (int.tryParse('${t.read['channel'] ?? 0}') ?? 0) + 1;
+        t.title = t.read['field'] == 'power' || t.unit == 'W'
+            ? tr(lang, 'Teho $n', 'Power $n')
+            : tr(lang, 'Kanava $n', 'Channel $n');
+      }
+    }
+  }
+
+  Future<void> renameTile(TileConfig t, String title) async {
+    t.title = title.trim();
+    for (final th in config.energy.thermostats) {
+      if (t.type == TileType.thermostat && t.read['thermostat'] == th.id) th.name = t.title;
+    }
     await save();
     notifyListeners();
   }

@@ -211,6 +211,8 @@
   "x-mt": true
  },
  "se78754330c": "võimsus",
+ "s4899323b9a": "Võimsus",
+ "sb9964cfb3b": "Võimsus {p0}",
  "sfcb44be1a0": "Shelly",
  "sa6ff717527": "Releed ja pistikud: Pro 4PM, Plus 1PM, Plug S, 2.5... Leiti automaatselt, plaadid igale kanalile.",
  "@sa6ff717527": {
@@ -871,6 +873,7 @@
  "@s4f1166fe24": {
   "x-mt": true
  },
+ "s29fd8d5b5e": "Praegu",
  "see9111ba68": "Relee või lüliti (sees/väljas)",
  "seaed91ad78": "Soojuspump või konditsioneer (seadeväärtus)",
  "sb757921c13": "Kütab",
@@ -946,7 +949,6 @@
  "s187d328bb1": "Muuda",
  "sc1845eb440": "Kustuta",
  "s87984716cb": "Kustutada termostaat?",
- "s29fd8d5b5e": "Praegu",
  "s79786b9f7d": "Siht",
  "sdd309c0a63": "Termostaat töötab kodusillal",
  "s9c1b5394df": "Võrguühenduse loomine kodutahvlil (Seaded → Kaugjuurdepääs). Kuni selle ajani ei kontrolli see midagi.",
@@ -971,26 +973,6 @@
   "x-mt": true
  },
  "s941fbb47fe": "Plaani arvutatakse…",
- "s306729fe62": "Hindadeta",
- "@s306729fe62": {
-  "x-mt": true
- },
- "s723c887da6": "min",
- "@s723c887da6": {
-  "x-mt": true
- },
- "scaaff6345d": "max",
- "@scaaff6345d": {
-  "x-mt": true
- },
- "s65982a11bc": "sh homme",
- "@s65982a11bc": {
-  "x-mt": true
- },
- "se79acaf837": "homme pärast 14.00",
- "@se79acaf837": {
-  "x-mt": true
- },
  "s55d52c5ae1": "See seade ei ole Wi-Fi-s",
  "@s55d52c5ae1": {
   "x-mt": true
@@ -1313,6 +1295,15 @@
  "@s641a848754": {
   "x-mt": true
  },
+ "s94493d01ca": "Ilmaprognoos, temperatuur, vihmatuul",
+ "@s94493d01ca": {
+  "x-mt": true
+ },
+ "s262f9527aa": "Ilmaennustus",
+ "@s262f9527aa": {
+  "x-mt": true
+ },
+ "scb3570338f": "Ilm praegu ja tunniti: temperatuur, sademed ja tuul sinu kodus. Seadet pole vaja.",
  "s2a9b6fedd9": "Ei leia oma kaubamärki?",
  "@s2a9b6fedd9": {
   "x-mt": true
@@ -1422,6 +1413,28 @@
  "@sc95fb5440b": {
   "x-mt": true
  },
+ "s306729fe62": "Hindadeta",
+ "@s306729fe62": {
+  "x-mt": true
+ },
+ "s9a37dbb58a": "homme",
+ "s723c887da6": "min",
+ "@s723c887da6": {
+  "x-mt": true
+ },
+ "s3b36524e04": "kesk.",
+ "scaaff6345d": "max",
+ "@scaaff6345d": {
+  "x-mt": true
+ },
+ "sfafa5c8432": "Odavaim täna",
+ "s4b2e4dda05": "Kalleim täna",
+ "s96093c8f41": "1 h",
+ "sa6dc2ff399": "15 min",
+ "s5f131c3ec4": "Tarbimine",
+ "s5fc5085143": "Kulu",
+ "s2f06d232b5": "Homne päev kaasas",
+ "sa5e6b1e0e3": "Homne päev u kell 14 järel",
  "s62cfd94468": "Odavamad tunnid öösel",
  "@s62cfd94468": {
   "x-mt": true
@@ -2237,6 +2250,7 @@
  "@sbfe79d1f5f": {
   "x-mt": true
  },
+ "s59d55f8882": "Nimeta ümber",
  "s25580038cb": "Salvestatud PIN-kood eemaldatud",
  "@s25580038cb": {
   "x-mt": true
@@ -2249,12 +2263,146 @@
  "sf3d644dd4c": "Õpeta puldi nupp",
  "sfb1a18d11f": "Värskenda",
  "s4cbe24240f": "Sees",
+ "s72a2328ddd": "Valgustid",
+ "sca12be80ca": "Lülitid",
+ "sa4c0eeea02": "Soojuspumbad ja kliima",
+ "s662fecdc8d": "Andurid",
+ "@s662fecdc8d": {
+  "x-mt": true
+ },
+ "sa8dbf04ad3": "Binaarsed andurid",
+ "@sa8dbf04ad3": {
+  "x-mt": true
+ },
+ "sa7690acf57": "Katted, väravad ja uksed",
+ "s487bf00fc7": "Lukud",
+ "@s487bf00fc7": {
+  "x-mt": true
+ },
+ "s8d06ee5308": "Häire",
+ "s88ac47e6d1": "Kaamerad",
+ "@s88ac47e6d1": {
+  "x-mt": true
+ },
+ "sbe76826428": "Ventilaatorid",
+ "s6b7c1c52da": "Stseenid",
+ "@s6b7c1c52da": {
+  "x-mt": true
+ },
+ "s9f1334d4e2": "Skriptid",
+ "s4b53bcaaf0": "Nööbid",
+ "@s4b53bcaaf0": {
+  "x-mt": true
+ },
+ "s5c92d42edd": "Arvuväljad",
+ "s3c2ed0c522": "Abilülitid",
+ "se9ca7cb470": "Automatiseerimine",
+ "@se9ca7cb470": {
+  "x-mt": true
+ },
+ "sea20d169a3": "Meediamängijad",
+ "@sea20d169a3": {
+  "x-mt": true
+ },
+ "sbcb95e1e78": "Märki ei aktsepteerita. Loo uus koduabilises.",
+ "@sbcb95e1e78": {
+  "x-mt": true
+ },
+ "s0b80dc2642": "Koduabilise kättesaamine nurjus. Kontrolli aadressi.",
+ "@s0b80dc2642": {
+  "x-mt": true
+ },
+ "sf32b7f15d8": "kaamerad",
+ "@sf32b7f15d8": {
+  "x-mt": true
+ },
+ "s095ca83913": "{p0} kaardid lisatud",
+ "@s095ca83913": {
+  "x-mt": true
+ },
+ "sa7a829cefb": "Vali Home Assistanti seadmed",
+ "sefdf8e3316": "Laadin seadmeid…",
+ "s26583a1933": "Üks vaade toa kohta",
+ "@s26583a1933": {
+  "x-mt": true
+ },
+ "sf1319d04d0": "Lisa {p0}",
+ "@sf1319d04d0": {
+  "x-mt": true
+ },
+ "sb3e6b54bce": "Otsing nime või ID järgi",
+ "@sb3e6b54bce": {
+  "x-mt": true
+ },
+ "safedc10c48": "Kõik toad",
+ "@safedc10c48": {
+  "x-mt": true
+ },
+ "s407f3f7a0c": "Ruumi ei ole",
+ "@s407f3f7a0c": {
+  "x-mt": true
+ },
+ "sedb7b77645": "Kõik",
+ "sa765c9294a": "Näita kõiki",
+ "@sa765c9294a": {
+  "x-mt": true
+ },
+ "sdb088f47a8": "{p0} peidetud tehnilised elemendid (diagnostika, konfiguratsioon, uuendused)",
+ "@sdb088f47a8": {
+  "x-mt": true
+ },
+ "s3ee8d0a5e3": "Ruume ei olnud võimalik lugeda – näidati seadmeid ilma ruumideta.",
+ "@s3ee8d0a5e3": {
+  "x-mt": true
+ },
+ "sf55fca7a32": "Vasteid pole",
+ "s78cdce874e": "juba lisatud",
+ "@s78cdce874e": {
+  "x-mt": true
+ },
  "sdc398885dc": "Täpsemad seaded",
  "s5d477f3cd8": "Tavaliselt sa ei vaja neid",
  "@s5d477f3cd8": {
   "x-mt": true
  },
  "s2315e0e739": "nt",
+ "sc1c47d2474": "Taustapildi valimine",
+ "@sc1c47d2474": {
+  "x-mt": true
+ },
+ "sa8ce5112ee": "Kuni {p0} taustapilti. Eemalda enne üks.",
+ "sceafe9ce2a": "Fail ei ole pilt",
+ "@sceafe9ce2a": {
+  "x-mt": true
+ },
+ "s12a7d631af": "Välimus",
+ "s0d83798030": "Suurus",
+ "s64c916e299": "Väike",
+ "s5e3097232a": "Lai",
+ "s8971788287": "Suur",
+ "s7400a53ab2": "Värv",
+ "@s7400a53ab2": {
+  "x-mt": true
+ },
+ "s254a1d8e12": "Taustapilt (valikuline)",
+ "sc48f5f9bcf": "Vali pilt",
+ "sf55eee73b8": "Muuda pilti",
+ "@sf55eee73b8": {
+  "x-mt": true
+ },
+ "sdd957ccc1b": "Eemalda pilt",
+ "@sdd957ccc1b": {
+  "x-mt": true
+ },
+ "s7ba9d453ed": "Tumenda, kui seade on väljas",
+ "s016ae7b580": "Pilt on kahanenud (≤ 200 KB) ja sünkroonitud teie kontoga.",
+ "@s016ae7b580": {
+  "x-mt": true
+ },
+ "sabb10f8cb2": "Pilt on kahanenud (≤ 200 KB) ja seda hoitakse ainult sellel seadmel.",
+ "@sabb10f8cb2": {
+  "x-mt": true
+ },
  "s4dab2d409b": "Ekspordi konfiguratsioon",
  "@s4dab2d409b": {
   "x-mt": true
@@ -2296,6 +2444,10 @@
  "s9bb545e9b3": "Logi sisse või loo konto",
  "s21f870dbc2": "Näitab tehnilisi seadistusi: ühendused (HTTP, MQTT, Modbus...), nimikoormused, JSON- i rajad ja plaatide allikad. Enamik inimesi ei vaja neid.",
  "@s21f870dbc2": {
+  "x-mt": true
+ },
+ "sca4c8b88b7": "Koduabiline: lisa seadmeid",
+ "@sca4c8b88b7": {
   "x-mt": true
  },
  "saec69088a5": "Kontrollige oma kodu ka väljastpoolt.",
@@ -2449,6 +2601,15 @@
  "@sae0fae7127": {
   "x-mt": true
  },
+ "s64f4d1e11a": "Määra kodu asukoht",
+ "s8ff5c58a5d": "Ilmaennustust ei ole",
+ "@s8ff5c58a5d": {
+  "x-mt": true
+ },
+ "s1becc05ea1": "locked=Lukus;unlocked=Lahti;jammed=KINNI",
+ "s259de02f33": "open=Avatud;closed=Suletud;opening=Avaneb;closing=Sulgub",
+ "s64d4364336": "disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming",
+ "s5b1e227dc4": "on=Sees;off=Väljas",
  "s3d43664fcc": "WebSocket",
  "sfcbb753f53": "URL",
  "s81479e1555": "Päised (Nimi: väärtus rea kohta)",
@@ -3130,7 +3291,6 @@
   "x-mt": true
  },
  "s4b4fd14aaf": "Õu",
- "s8d06ee5308": "Häire",
  "s8ac16d45bc": "",
  "sbde42d83a3": "Elutoa valgustid",
  "sb7c78c63b3": "Sissepuhkeõhk",
@@ -3260,8 +3420,8 @@
  "@sb847f22473": {
   "x-mt": true
  },
- "s7f8e45ea74": "Tuled, alarm, andurid - kõike Home Assistantis.",
- "@s7f8e45ea74": {
+ "s76f6067b0f": "Tuled, alarm, andurid - vali nimekirjast, millised neist saavad kaardid.",
+ "@s76f6067b0f": {
   "x-mt": true
  },
  "s9f70681d3f": "Koduabilise aadress",
@@ -3280,24 +3440,6 @@
  "@s4e3f2052b2": {
   "x-mt": true
  },
- "s75a056cf4d": "Valgus (ei ole kohustuslik)",
- "@s75a056cf4d": {
-  "x-mt": true
- },
- "sdb9a90cb96": "Entity id from Settings → Devices → Entities.",
- "@sdb9a90cb96": {
-  "x-mt": true
- },
- "sa9681c1a9a": "Häire (valikuline)",
- "@sa9681c1a9a": {
-  "x-mt": true
- },
- "s64bd3ab3ff": "Temperatuuriandur (valikuline)",
- "sa6504f5712": "Lülitumine (valikuline)",
- "@sa6504f5712": {
-  "x-mt": true
- },
- "s64d4364336": "disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming",
  "s54e063bd9c": "Soojuspump (koduabiline)",
  "@s54e063bd9c": {
   "x-mt": true
@@ -3509,9 +3651,6 @@
  "@s49dfca65a3": {
   "x-mt": true
  },
- "scf849c933b": "Elekter praegu",
- "s53a951507b": "Odavaim tund",
- "s3e99310fc0": "Hind täna ja homme",
  "s9af9526395": "Ventilatsiooniseade (Modbus TCP)",
  "@s9af9526395": {
   "x-mt": true

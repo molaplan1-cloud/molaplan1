@@ -9,13 +9,7 @@ library;
 import 'strings.g.dart';
 
 /// Languages the app can show, in the order of the settings picker.
-const appLanguages = <String, String>{
-  'fi': 'Suomi',
-  'en': 'English',
-  'sv': 'Svenska',
-  'et': 'Eesti',
-  'es': 'Español',
-};
+const appLanguages = <String, String>{'fi': 'Suomi', 'en': 'English', 'sv': 'Svenska', 'et': 'Eesti', 'es': 'Español'};
 
 /// Picks the app language for a device locale like "sv_SE" / "et-EE" (English if unsupported).
 String languageForLocale(String? locale) {

@@ -17,9 +17,14 @@ String energyZoneOf(AppConfig c) =>
     c.energy.zone ?? '${c.connections.where((x) => x.type == 'price').firstOrNull?.settings['zone'] ?? 'FI'}';
 
 class EnergySettings {
-  EnergySettings({this.zone, this.contract, this.home, Map<String, MeterInfo>? meters, List<ThermostatConfig>? thermostats})
-    : meters = meters ?? {},
-      thermostats = thermostats ?? [];
+  EnergySettings({
+    this.zone,
+    this.contract,
+    this.home,
+    Map<String, MeterInfo>? meters,
+    List<ThermostatConfig>? thermostats,
+  }) : meters = meters ?? {},
+       thermostats = thermostats ?? [];
 
   /// Bidding zone ("FI", "SE3"…); null = from the electricity price tile, else FI.
   String? zone;
@@ -44,7 +49,9 @@ class EnergySettings {
     if (j is! Map) return EnergySettings();
     return EnergySettings(
       zone: j['zone'] as String?,
-      contract: j['contract'] is Map ? ElectricityContract.fromJson(Map<String, dynamic>.from(j['contract'] as Map)) : null,
+      contract: j['contract'] is Map
+          ? ElectricityContract.fromJson(Map<String, dynamic>.from(j['contract'] as Map))
+          : null,
       home: HomeLocation.fromJson(j['home']),
       meters: {
         for (final e in (j['meters'] as Map? ?? const {}).entries)
@@ -168,6 +175,13 @@ class TileConfig {
   double max;
   double step;
 
+  // Look (optional): accent colour (ARGB), background image (local file name, synced with the
+  // account), scrim opacity (from the image's brightness, keeps text readable), dim when off.
+  int? color;
+  String? bgImage;
+  double bgScrim;
+  bool bgDimOff;
+
   TileConfig({
     String? id,
     required this.type,
@@ -190,6 +204,10 @@ class TileConfig {
     this.min = 0,
     this.max = 100,
     this.step = 1,
+    this.color,
+    this.bgImage,
+    this.bgScrim = 0.45,
+    this.bgDimOff = false,
   }) : id = id ?? newId(),
        read = read ?? {},
        thresholds = thresholds ?? [],
@@ -217,6 +235,10 @@ class TileConfig {
     'min': min,
     'max': max,
     'step': step,
+    'color': ?color,
+    'bgImage': ?bgImage,
+    if (bgImage != null) 'bgScrim': bgScrim,
+    if (bgDimOff) 'bgDimOff': true,
   };
 
   factory TileConfig.fromJson(Map<String, dynamic> j) => TileConfig(
@@ -241,6 +263,10 @@ class TileConfig {
     min: (j['min'] as num?)?.toDouble() ?? 0,
     max: (j['max'] as num?)?.toDouble() ?? 100,
     step: (j['step'] as num?)?.toDouble() ?? 1,
+    color: (j['color'] as num?)?.toInt(),
+    bgImage: j['bgImage'] as String?,
+    bgScrim: (j['bgScrim'] as num?)?.toDouble() ?? 0.45,
+    bgDimOff: j['bgDimOff'] == true,
   );
 
   TileConfig copy() => TileConfig.fromJson(jsonDecode(jsonEncode(toJson())));
@@ -290,6 +316,7 @@ class AppConfig {
   static const formatVersion = 1;
   List<ConnectionConfig> connections;
   List<Dashboard> dashboards;
+
   /// 'auto' (device language) or one of fi, en, sv, et, es.
   String language;
   bool onboardingDone;

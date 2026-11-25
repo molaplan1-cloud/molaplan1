@@ -186,9 +186,13 @@ void main() {
       expect(st.config.connections.length, 1);
       final cid = st.config.connections.single.id;
       final tiles = st.config.dashboards.first.tiles;
-      expect(tiles.length, 4);
+      // The HA template itself adds no tiles any more (entities are picked in the HA picker, t108u).
+      expect(tiles.length, 3);
       expect(tiles.every((t) => t.connectionId == cid), isTrue);
-      expect(tiles[2].commands.single.connectionId, cid);
+      expect(
+        tiles.where((t) => t.commands.isNotEmpty).every((t) => t.commands.every((c) => c.connectionId == cid)),
+        isTrue,
+      );
       expect(st.config.connections.single.secrets['token'], 'T');
     });
   });

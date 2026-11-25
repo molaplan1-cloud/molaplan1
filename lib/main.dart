@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:cupertino_ui/cupertino_ui.dart' show GlobalCupertinoLocalizations;
 import 'package:flutter_localizations/flutter_localizations.dart' show GlobalWidgetsLocalizations;
 import 'package:material_ui/material_ui.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'state/app_state.dart';
 import 'state/storage.dart';
@@ -16,6 +19,7 @@ Future<void> main() async {
     configStore: PrefsConfigStore(),
     secretStore: SecureSecretStore(),
     energyStore: PrefsConfigStore('molaplan.energy.v1'),
+    imageDir: () async => Directory('${(await getApplicationSupportDirectory()).path}/tile_images'),
   );
   state.account.autoSync = true; // background sync when signed in
   await state.load();

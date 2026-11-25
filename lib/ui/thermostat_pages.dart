@@ -8,6 +8,7 @@ import '../energy/weather.dart';
 import '../models/models.dart';
 import '../prices/prices.dart';
 import 'app_scope.dart';
+import 'tile_visuals.dart';
 import 'energy_pages.dart';
 
 String thermoModeLabel(BuildContext context, String m) => switch (m) {
@@ -133,63 +134,39 @@ class _ThermostatTileState extends State<ThermostatTile> {
                     ),
                 ],
               ),
-              Expanded(
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  alignment: Alignment.bottomLeft,
+              if (widget.tile.rowSpan >= 2) ...[
+                // Large tile: round dial – arc to the setpoint, dot = current temperature.
+                Expanded(
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            temp == null ? '–' : '${temp.toStringAsFixed(1)}°',
-                            key: const ValueKey('thermo-temp'),
-                            style: text.headlineLarge,
-                          ),
-                          ConstrainedBox(
-                            constraints: const BoxConstraints(maxWidth: 140),
-                            child: Text(
-                              widget.tile.title.isEmpty
-                                  ? c.name
-                                  : widget.tile.title,
-                              style: text.bodySmall,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(width: 16),
-                      IconButton.filledTonal(
+                      IconButton(
                         key: const ValueKey('thermo-minus'),
                         onPressed: widget.editing
                             ? null
                             : () => st.nudgeSetpoint(id, -0.5),
                         icon: const Icon(Icons.remove),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              c.setpoint.toStringAsFixed(1),
-                              key: const ValueKey('thermo-setpoint'),
-                              style: text.titleLarge,
-                            ),
-                            if (target != null &&
-                                (target - c.setpoint).abs() >= 0.25)
-                              Text(
-                                '→ ${target.toStringAsFixed(1)}',
-                                style: text.labelSmall,
-                              ),
-                          ],
+                      Expanded(
+                        child: Center(
+                          child: SetpointDial(
+                            key: const ValueKey('thermo-setpoint'),
+                            setpoint: c.setpoint,
+                            current: temp,
+                            min: 10,
+                            max: 30,
+                            color: widget.tile.color != null
+                                ? Color(widget.tile.color!)
+                                : (c.mode == 'cool'
+                                      ? Colors.lightBlue
+                                      : Colors.deepOrange),
+                            label: temp == null
+                                ? null
+                                : '${tx(context, 'Nyt', 'Now')} ${temp.toStringAsFixed(1)}°'
+                                      '${target != null && (target - c.setpoint).abs() >= 0.25 ? ' · → ${target.toStringAsFixed(1)}°' : ''}',
+                          ),
                         ),
                       ),
-                      IconButton.filledTonal(
+                      IconButton(
                         key: const ValueKey('thermo-plus'),
                         onPressed: widget.editing
                             ? null
@@ -199,7 +176,82 @@ class _ThermostatTileState extends State<ThermostatTile> {
                     ],
                   ),
                 ),
-              ),
+                Text(
+                  widget.tile.title.isEmpty ? c.name : widget.tile.title,
+                  style: text.bodyMedium?.copyWith(color: cs.onSurfaceVariant),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ] else
+                Expanded(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.bottomLeft,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              temp == null
+                                  ? '–'
+                                  : '${temp.toStringAsFixed(1)}°',
+                              key: const ValueKey('thermo-temp'),
+                              style: text.headlineLarge,
+                            ),
+                            ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: 140),
+                              child: Text(
+                                widget.tile.title.isEmpty
+                                    ? c.name
+                                    : widget.tile.title,
+                                style: text.bodySmall,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(width: 16),
+                        IconButton.filledTonal(
+                          key: const ValueKey('thermo-minus'),
+                          onPressed: widget.editing
+                              ? null
+                              : () => st.nudgeSetpoint(id, -0.5),
+                          icon: const Icon(Icons.remove),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                c.setpoint.toStringAsFixed(1),
+                                key: const ValueKey('thermo-setpoint'),
+                                style: text.titleLarge,
+                              ),
+                              if (target != null &&
+                                  (target - c.setpoint).abs() >= 0.25)
+                                Text(
+                                  '→ ${target.toStringAsFixed(1)}',
+                                  style: text.labelSmall,
+                                ),
+                            ],
+                          ),
+                        ),
+                        IconButton.filledTonal(
+                          key: const ValueKey('thermo-plus'),
+                          onPressed: widget.editing
+                              ? null
+                              : () => st.nudgeSetpoint(id, 0.5),
+                          icon: const Icon(Icons.add),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
             ],
           ),
         ),

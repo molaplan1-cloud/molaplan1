@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'dart:async';
 import 'dart:convert';
 
@@ -32,7 +33,13 @@ class AccountError implements Exception {
 }
 
 class Session {
-  Session({required this.access, required this.refresh, required this.expiresAt, required this.userId, required this.email});
+  Session({
+    required this.access,
+    required this.refresh,
+    required this.expiresAt,
+    required this.userId,
+    required this.email,
+  });
   final String access;
   final String refresh;
   final DateTime expiresAt;
@@ -91,7 +98,8 @@ class SyncRow {
 
 /// Plain HTTP client for Supabase Auth (GoTrue) + PostgREST. Pure Dart (tests use a mock server).
 class AccountApi {
-  AccountApi({this.url = accountUrl, this.key = accountPublishableKey, http.Client? client}) : _http = client ?? http.Client();
+  AccountApi({this.url = accountUrl, this.key = accountPublishableKey, http.Client? client})
+    : _http = client ?? http.Client();
   final String url;
   final String key;
   final http.Client _http;
@@ -143,7 +151,10 @@ class AccountApi {
       p = AccountProblem.badEmail;
     } else if (code == 'otp_expired' || m.contains('token has expired') || m.contains('invalid') && m.contains('otp')) {
       p = AccountProblem.badCode;
-    } else if (code == 'refresh_token_not_found' || code == 'session_not_found' || code == 'bad_jwt' || r.statusCode == 401) {
+    } else if (code == 'refresh_token_not_found' ||
+        code == 'session_not_found' ||
+        code == 'bad_jwt' ||
+        r.statusCode == 401) {
       p = AccountProblem.sessionExpired;
     } else if (code == 'otp_disabled' || code == 'user_not_found' || m.contains('signups not allowed')) {
       p = AccountProblem.wrongPassword;
@@ -153,7 +164,12 @@ class AccountApi {
     return AccountError(p, '${r.statusCode} $code $msg'.trim());
   }
 
-  Future<Map<String, dynamic>> _auth(String path, Map<String, dynamic> body, {String? token, String method = 'POST'}) async {
+  Future<Map<String, dynamic>> _auth(
+    String path,
+    Map<String, dynamic> body, {
+    String? token,
+    String method = 'POST',
+  }) async {
     final u = Uri.parse('$url/auth/v1/$path');
     final r = await _do(
       () => method == 'PUT'
@@ -189,13 +205,15 @@ class AccountApi {
   Future<void> sendRecovery(String email) => _auth('recover', {'email': email});
 
   /// [type]: 'email' (sign-in code), 'signup' (confirmation) or 'recovery'.
-  Future<Session> verifyCode(String email, String code, {String type = 'email'}) async =>
-      Session.fromAuth(await _auth('verify', {'email': email, 'token': code.replaceAll(RegExp(r'\s'), ''), 'type': type}));
+  Future<Session> verifyCode(String email, String code, {String type = 'email'}) async => Session.fromAuth(
+    await _auth('verify', {'email': email, 'token': code.replaceAll(RegExp(r'\s'), ''), 'type': type}),
+  );
 
   Future<Session> refresh(String refreshToken) async =>
       Session.fromAuth(await _auth('token?grant_type=refresh_token', {'refresh_token': refreshToken}));
 
-  Future<void> setPassword(Session s, String password) => _auth('user', {'password': password}, token: s.access, method: 'PUT');
+  Future<void> setPassword(Session s, String password) =>
+      _auth('user', {'password': password}, token: s.access, method: 'PUT');
 
   Future<void> signOut(Session s) async {
     try {
@@ -240,20 +258,21 @@ class AccountApi {
     String? vault,
     String? device,
   }) async {
-    final body = {
-      'config': config,
-      'key_wrap': ?keyWrap,
-      'vault': ?vault,
-      'updated_by': ?device,
-    };
+    final body = {'config': config, 'key_wrap': ?keyWrap, 'vault': ?vault, 'updated_by': ?device};
     final headers = {..._h(s.access), 'Prefer': 'return=representation'};
     final http.Response r;
     if (baseRev == null) {
-      r = await _do(() => _http.post(_rest('user_sync'), headers: headers, body: jsonEncode({...body, 'user_id': s.userId})));
+      r = await _do(
+        () => _http.post(_rest('user_sync'), headers: headers, body: jsonEncode({...body, 'user_id': s.userId})),
+      );
       if (r.statusCode == 409) throw AccountError(AccountProblem.conflict, 'row exists');
     } else {
       r = await _do(
-        () => _http.patch(_rest('user_sync?user_id=eq.${s.userId}&rev=eq.$baseRev'), headers: headers, body: jsonEncode(body)),
+        () => _http.patch(
+          _rest('user_sync?user_id=eq.${s.userId}&rev=eq.$baseRev'),
+          headers: headers,
+          body: jsonEncode(body),
+        ),
       );
     }
     if (r.statusCode >= 300) _restError(r);
@@ -263,6 +282,49 @@ class AccountApi {
   }
 
   /// GDPR: deletes the account and everything stored with it.
+  // ---- Storage: tile background images (private bucket, own folder; see migration) ----
+  static const imageBucket = 'tile-images';
+  Uri _obj(Session s, String name, {bool read = false}) =>
+      Uri.parse('$url/storage/v1/object/${read ? 'authenticated/' : ''}$imageBucket/${s.userId}/$name');
+
+  Future<void> uploadImage(Session s, String name, Uint8List bytes) async {
+    final r = await _do(
+      () => _http.post(
+        _obj(s, name),
+        headers: {
+          ..._h(s.access),
+          'Content-Type': 'image/jpeg',
+          'x-upsert': 'true',
+          'cache-control': 'max-age=31536000',
+        },
+        body: bytes,
+      ),
+    );
+    if (r.statusCode >= 300) _restError(r);
+  }
+
+  /// Null when the file is not in the account.
+  Future<Uint8List?> downloadImage(Session s, String name) async {
+    final r = await _do(() => _http.get(_obj(s, name, read: true), headers: _h(s.access)));
+    if (r.statusCode == 400 || r.statusCode == 404) return null;
+    if (r.statusCode >= 300) _restError(r);
+    return r.bodyBytes;
+  }
+
+  Future<void> deleteImages(Session s, List<String> names) async {
+    if (names.isEmpty) return;
+    final r = await _do(
+      () => _http.delete(
+        Uri.parse('$url/storage/v1/object/$imageBucket'),
+        headers: _h(s.access),
+        body: jsonEncode({
+          'prefixes': [for (final n in names) '${s.userId}/$n'],
+        }),
+      ),
+    );
+    if (r.statusCode >= 300) _restError(r);
+  }
+
   Future<void> deleteAccount(Session s) async {
     final r = await _do(() => _http.post(_rest('rpc/delete_my_account'), headers: _h(s.access), body: '{}'));
     if (r.statusCode >= 300) _restError(r);

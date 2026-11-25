@@ -102,7 +102,11 @@ void main() {
     });
 
     test('without a main meter only the top-level sub-meters are summed', () {
-      final meters = {'a': MeterInfo(role: 'device'), 'b': MeterInfo(role: 'device'), 'b1': MeterInfo(role: 'device', parent: 'b')};
+      final meters = {
+        'a': MeterInfo(role: 'device'),
+        'b': MeterInfo(role: 'device'),
+        'b1': MeterInfo(role: 'device', parent: 'b'),
+      };
       final b = breakdown(meters, logWith({'a': 2, 'b': 5, 'b1': 3}), '20261125');
       expect(b.hasSite, isFalse);
       expect(b.total.kwh, 7);
@@ -114,7 +118,14 @@ void main() {
       await st.load();
       final tile = TileConfig(type: TileType.value, title: 'Talo', unit: 'W');
       await st.upsertTile(st.config.dashboards.first, tile);
-      await st.setEnergy((e) => e.contract = ElectricityContract(energyType: 'fixed', fixed: PriceInput(10), transfer: PriceInput(5), tax: PriceInput(0)));
+      await st.setEnergy(
+        (e) => e.contract = ElectricityContract(
+          energyType: 'fixed',
+          fixed: PriceInput(10),
+          transfer: PriceInput(5),
+          tax: PriceInput(0),
+        ),
+      );
       await st.setMeter(tile.id, MeterInfo(role: 'site'));
       final t = DateTime(2026, 11, 25, 12);
       st.onTileValue(tile, 1000, t);
@@ -152,12 +163,33 @@ void main() {
     test('a cold spell alone triggers pre-heating; price + cold together pre-heat more', () {
       double flat(DateTime h) => 10;
       double cold(DateTime h) => h.hour >= 18 && h.day == 25 ? -20 : 0;
-      final p1 = planHeating(now: now, comfort: 21, settings: HeatingPlanSettings(preset: 'eco'), price: flat, outdoor: cold, hours: 12);
+      final p1 = planHeating(
+        now: now,
+        comfort: 21,
+        settings: HeatingPlanSettings(preset: 'eco'),
+        price: flat,
+        outdoor: cold,
+        hours: 12,
+      );
       final pre1 = p1.firstWhere((p) => p.start.hour == 16);
       expect(pre1.reason, 'preheat');
       double rise(DateTime h) => h.hour >= 18 && h.day == 25 ? 14 : 10;
-      final p2 = planHeating(now: now, comfort: 21, settings: HeatingPlanSettings(preset: 'eco', upper: 2), price: rise, outdoor: cold, hours: 12);
-      final p3 = planHeating(now: now, comfort: 21, settings: HeatingPlanSettings(preset: 'eco', upper: 2), price: rise, outdoor: (_) => 0, hours: 12);
+      final p2 = planHeating(
+        now: now,
+        comfort: 21,
+        settings: HeatingPlanSettings(preset: 'eco', upper: 2),
+        price: rise,
+        outdoor: cold,
+        hours: 12,
+      );
+      final p3 = planHeating(
+        now: now,
+        comfort: 21,
+        settings: HeatingPlanSettings(preset: 'eco', upper: 2),
+        price: rise,
+        outdoor: (_) => 0,
+        hours: 12,
+      );
       final both = p2.firstWhere((p) => p.start.hour == 16).target;
       final priceOnly = p3.firstWhere((p) => p.start.hour == 16).target;
       expect(both, greaterThanOrEqualTo(priceOnly));
@@ -165,7 +197,14 @@ void main() {
     });
 
     test('unknown prices -> comfort; presets set the limits', () {
-      final p = planHeating(now: now, comfort: 20, settings: HeatingPlanSettings(preset: 'comfort'), price: (_) => null, outdoor: (_) => null, hours: 6);
+      final p = planHeating(
+        now: now,
+        comfort: 20,
+        settings: HeatingPlanSettings(preset: 'comfort'),
+        price: (_) => null,
+        outdoor: (_) => null,
+        hours: 6,
+      );
       expect(p.every((x) => x.target == 20 && x.reason == 'noprice'), isTrue);
       expect(HeatingPlanSettings(preset: 'eco').lower, 2);
       expect(HeatingPlanSettings(preset: 'comfort').upper, 0.5);
@@ -195,7 +234,12 @@ void main() {
 
     test('backup heater only when well below target', () {
       final c = ThermostatController(
-        cfg(sources: [ThermoSource(id: 'hp', kind: 'switch', tileId: 'a'), ThermoSource(id: 'bk', kind: 'switch', tileId: 'b', backup: true)]),
+        cfg(
+          sources: [
+            ThermoSource(id: 'hp', kind: 'switch', tileId: 'a'),
+            ThermoSource(id: 'bk', kind: 'switch', tileId: 'b', backup: true),
+          ],
+        ),
       );
       expect(c.step(m(0), 20.5, 21).map((a) => a.toString()), ['hp:on', 'bk:off']);
       expect(c.step(m(10), 19.0, 21).map((a) => a.toString()), ['bk:on']);
@@ -203,7 +247,13 @@ void main() {
 
     test('heat+cool with a deadband; cool-only ignores heaters', () {
       final c = ThermostatController(
-        cfg(mode: 'auto', sources: [ThermoSource(id: 'h', kind: 'switch', tileId: 'a'), ThermoSource(id: 'c', kind: 'switch', tileId: 'b', role: 'cool')]),
+        cfg(
+          mode: 'auto',
+          sources: [
+            ThermoSource(id: 'h', kind: 'switch', tileId: 'a'),
+            ThermoSource(id: 'c', kind: 'switch', tileId: 'b', role: 'cool'),
+          ],
+        ),
       );
       expect(c.step(m(0), 21, 21).map((a) => a.toString()), ['h:off', 'c:off']);
       expect(c.step(m(10), 19.5, 21).map((a) => a.toString()), ['h:on']);
@@ -211,7 +261,12 @@ void main() {
     });
 
     test('climate source gets mode + setpoint (only on change, resent hourly); auto picks heat/cool', () {
-      final c = ThermostatController(cfg(mode: 'auto', sources: [ThermoSource(id: 'ilp', kind: 'climate', tileId: 'sp', role: 'both')]));
+      final c = ThermostatController(
+        cfg(
+          mode: 'auto',
+          sources: [ThermoSource(id: 'ilp', kind: 'climate', tileId: 'sp', role: 'both')],
+        ),
+      );
       expect(c.step(m(0), 19.0, 21).map((a) => a.toString()), ['ilp:on', 'ilp:mode=heat', 'ilp:setpoint=21.0']);
       expect(c.step(m(1), 19.5, 21), isEmpty);
       expect(c.step(m(2), 19.5, 21.5).map((a) => a.toString()), ['ilp:setpoint=21.5']);
@@ -244,9 +299,11 @@ void main() {
     final sent = <String>[];
     final svc = PriceService(client: MockClient((_) async => http.Response('{}', 500)));
     final d0 = DateTime(2026, 11, 25);
-    svc.put(PriceSeries('FI', [
-      for (var i = 0; i < 48; i++) PricePoint(d0.add(Duration(hours: i)), 3600, (i >= 16 && i < 20) ? 400.0 : 50.0),
-    ]));
+    svc.put(
+      PriceSeries('FI', [
+        for (var i = 0; i < 48; i++) PricePoint(d0.add(Duration(hours: i)), 3600, (i >= 16 && i < 20) ? 400.0 : 50.0),
+      ]),
+    );
     final home = HomeLocation(name: 'Koti', lat: 60, lon: 25);
     final weather = WeatherService(client: MockClient((_) async => http.Response('{}', 500)));
     weather.put(home, Forecast([for (var i = 0; i < 72; i++) (d0.add(Duration(hours: i)), -5.0)]));
@@ -307,7 +364,7 @@ void main() {
           200,
         );
       }
-      expect(req.url.queryParameters['hourly'], 'temperature_2m');
+      expect(req.url.queryParameters['hourly'], startsWith('temperature_2m'));
       final t0 = DateTime(2026, 11, 25).millisecondsSinceEpoch ~/ 1000;
       return http.Response(
         jsonEncode({

@@ -20,7 +20,15 @@ class ShellyChannel {
 }
 
 class ShellyDevice {
-  ShellyDevice({required this.id, required this.model, required this.gen, required this.channels, this.app = '', this.name, this.authEnabled = false});
+  ShellyDevice({
+    required this.id,
+    required this.model,
+    required this.gen,
+    required this.channels,
+    this.app = '',
+    this.name,
+    this.authEnabled = false,
+  });
   final String id;
   final String model;
   final String app;
@@ -102,7 +110,15 @@ Future<ShellyDevice> probeShelly(Driver d, {bool havePassword = false}) async {
     final s = Map<String, dynamic>.from(st[k] as Map);
     final c = cfg[k] is Map ? Map<String, dynamic>.from(cfg[k] as Map) : const <String, dynamic>{};
     final n = (c['name'] ?? '').toString().trim();
-    chans.add(ShellyChannel(id, name: n.isEmpty ? null : n, hasPower: s.containsKey('apower'), on: s['output'] as bool?, power: s['apower'] as num?));
+    chans.add(
+      ShellyChannel(
+        id,
+        name: n.isEmpty ? null : n,
+        hasPower: s.containsKey('apower'),
+        on: s['output'] as bool?,
+        power: s['apower'] as num?,
+      ),
+    );
   }
   chans.sort((a, b) => a.id.compareTo(b.id));
   if (chans.isEmpty) throw AddDeviceError(AddProblem.nothingToAdd);
@@ -141,37 +157,85 @@ ConnectionConfig shellyConnection(String address, ShellyDevice d, {String? passw
   );
 }
 
+/// Friendly channel name: the name set in the device (Switch.GetConfig / relay name); a
+/// single-channel device uses its device name or model; else "Kanava N". Never the raw device id.
+String shellyChannelTitle(
+  String? channelName,
+  String? deviceName,
+  int channel,
+  int channels,
+  String lang, {
+  String model = 'Shelly',
+}) {
+  bool ok(String? s) =>
+      s != null &&
+      s.trim().isNotEmpty &&
+      !RegExp(r'^(shelly[\w-]*-)?[0-9a-f]{12}$', caseSensitive: false).hasMatch(s.trim());
+  if (ok(channelName)) return channelName!.trim();
+  if (channels <= 1) return ok(deviceName) ? deviceName!.trim() : model;
+  return tr(lang, 'Kanava ${channel + 1}', 'Channel ${channel + 1}');
+}
+
+/// Power tile: "NAME – teho" for named channels, else "Teho N" (or "Teho").
+String shellyPowerTitle(String title, bool named, int channel, int channels, String lang) {
+  if (named || channels <= 1 && title.isNotEmpty && !title.startsWith('Shelly')) {
+    return '$title – ${tr(lang, 'teho', 'power')}';
+  }
+  return channels <= 1 ? tr(lang, 'Teho', 'Power') : tr(lang, 'Teho ${channel + 1}', 'Power ${channel + 1}');
+}
+
 /// One on/off tile per channel, plus a power tile for metered channels.
-List<TileConfig> shellyTiles(ConnectionConfig c, ShellyDevice d, {Map<String, String> names = const {}, Set<String> skip = const {}, bool power = true, String lang = 'fi'}) {
+List<TileConfig> shellyTiles(
+  ConnectionConfig c,
+  ShellyDevice d, {
+  Map<String, String> names = const {},
+  Set<String> skip = const {},
+  bool power = true,
+  String lang = 'fi',
+}) {
   final tiles = <TileConfig>[];
   for (final ch in d.channels) {
     if (skip.contains('${ch.id}')) continue;
     final custom = names['${ch.id}']?.trim() ?? '';
     final title = custom.isNotEmpty
         ? custom
-        : ch.name ?? (d.channels.length == 1 ? (d.name ?? d.friendlyModel) : tr(lang, 'Kanava ${ch.id + 1}', 'Channel ${ch.id + 1}'));
+        : shellyChannelTitle(ch.name, d.name, ch.id, d.channels.length, lang, model: d.friendlyModel);
     final g1 = d.gen == 1;
-    tiles.add(TileConfig(
-      type: TileType.toggle,
-      title: title,
-      icon: 'outlet',
-      connectionId: c.id,
-      pollSeconds: 5,
-      read: g1 ? {'path': '/relay/${ch.id}', 'jsonPath': 'ison'} : {'path': '/rpc/Switch.GetStatus?id=${ch.id}', 'jsonPath': 'output'},
-      onCommand: CommandStep(connectionId: c.id, spec: {'method': 'GET', 'path': g1 ? '/relay/${ch.id}?turn=on' : '/rpc/Switch.Set?id=${ch.id}&on=true'}),
-      offCommand: CommandStep(connectionId: c.id, spec: {'method': 'GET', 'path': g1 ? '/relay/${ch.id}?turn=off' : '/rpc/Switch.Set?id=${ch.id}&on=false'}),
-    ));
-    if (power && ch.hasPower) {
-      tiles.add(TileConfig(
-        type: TileType.value,
-        title: '$title – ${tr(lang, 'teho', 'power')}',
-        icon: 'bolt',
+    tiles.add(
+      TileConfig(
+        type: TileType.toggle,
+        title: title,
+        icon: 'outlet',
         connectionId: c.id,
-        unit: 'W',
-        decimals: 0,
-        pollSeconds: 10,
-        read: g1 ? {'path': '/meter/${ch.id}', 'jsonPath': 'power'} : {'path': '/rpc/Switch.GetStatus?id=${ch.id}', 'jsonPath': 'apower'},
-      ));
+        pollSeconds: 5,
+        read: g1
+            ? {'path': '/relay/${ch.id}', 'jsonPath': 'ison'}
+            : {'path': '/rpc/Switch.GetStatus?id=${ch.id}', 'jsonPath': 'output'},
+        onCommand: CommandStep(
+          connectionId: c.id,
+          spec: {'method': 'GET', 'path': g1 ? '/relay/${ch.id}?turn=on' : '/rpc/Switch.Set?id=${ch.id}&on=true'},
+        ),
+        offCommand: CommandStep(
+          connectionId: c.id,
+          spec: {'method': 'GET', 'path': g1 ? '/relay/${ch.id}?turn=off' : '/rpc/Switch.Set?id=${ch.id}&on=false'},
+        ),
+      ),
+    );
+    if (power && ch.hasPower) {
+      tiles.add(
+        TileConfig(
+          type: TileType.value,
+          title: shellyPowerTitle(title, custom.isNotEmpty || ch.name != null, ch.id, d.channels.length, lang),
+          icon: 'bolt',
+          connectionId: c.id,
+          unit: 'W',
+          decimals: 0,
+          pollSeconds: 10,
+          read: g1
+              ? {'path': '/meter/${ch.id}', 'jsonPath': 'power'}
+              : {'path': '/rpc/Switch.GetStatus?id=${ch.id}', 'jsonPath': 'apower'},
+        ),
+      );
     }
   }
   return tiles;
@@ -202,13 +266,27 @@ class ShellyProvider extends DeviceProvider {
   @override
   String get en => 'Shelly';
   @override
-  String get descFi => 'Releet ja pistorasiat: Pro 4PM, Plus 1PM, Plug S, 2.5… Löytyy automaattisesti, ruudut tehdään joka kanavalle.';
+  String get descFi =>
+      'Releet ja pistorasiat: Pro 4PM, Plus 1PM, Plug S, 2.5… Löytyy automaattisesti, ruudut tehdään joka kanavalle.';
   @override
-  String get descEn => 'Relays and plugs: Pro 4PM, Plus 1PM, Plug S, 2.5… Found automatically, tiles for every channel.';
+  String get descEn =>
+      'Relays and plugs: Pro 4PM, Plus 1PM, Plug S, 2.5… Found automatically, tiles for every channel.';
   @override
   String get category => 'power';
   @override
-  List<String> get keywords => const ['shelly', 'rele', 'relay', 'pistorasia', 'plug', 'pro 4pm', 'plus', '1pm', '2pm', 'pm', 'kytkin'];
+  List<String> get keywords => const [
+    'shelly',
+    'rele',
+    'relay',
+    'pistorasia',
+    'plug',
+    'pro 4pm',
+    'plus',
+    '1pm',
+    '2pm',
+    'pm',
+    'kytkin',
+  ];
   @override
   PairMode get pairMode => PairMode.password;
   @override
@@ -232,7 +310,12 @@ class ShellyProvider extends DeviceProvider {
     final probeConn = ConnectionConfig(
       name: 'Shelly',
       type: 'http',
-      settings: {'baseUrl': _base(c.address), 'auth': pw.isEmpty ? 'none' : 'basic', if (pw.isNotEmpty) 'username': 'admin', 'timeoutSec': 6},
+      settings: {
+        'baseUrl': _base(c.address),
+        'auth': pw.isEmpty ? 'none' : 'basic',
+        if (pw.isNotEmpty) 'username': 'admin',
+        'timeoutSec': 6,
+      },
       secrets: {if (pw.isNotEmpty) 'password': pw},
     );
     final d = ctx.driver(probeConn);
@@ -247,7 +330,11 @@ class ShellyProvider extends DeviceProvider {
           for (final ch in dev.channels)
             AddItem(
               key: '${ch.id}',
-              name: ch.name ?? (dev.channels.length == 1 ? (dev.name ?? dev.friendlyModel) : tr(ctx.lang, 'Kanava ${ch.id + 1}', 'Channel ${ch.id + 1}')),
+              name:
+                  ch.name ??
+                  (dev.channels.length == 1
+                      ? (dev.name ?? dev.friendlyModel)
+                      : tr(ctx.lang, 'Kanava ${ch.id + 1}', 'Channel ${ch.id + 1}')),
               hasPower: ch.hasPower,
               subtitle: [
                 if (ch.on != null) ch.on! ? tr(ctx.lang, 'nyt päällä', 'on now') : tr(ctx.lang, 'nyt pois', 'off now'),
@@ -262,8 +349,13 @@ class ShellyProvider extends DeviceProvider {
   }
 
   @override
-  List<TileConfig> tiles(Connected r, {Map<String, String> names = const {}, Set<String> skip = const {}, bool power = true, String lang = 'fi'}) =>
-      shellyTiles(r.connection, r.data['device'] as ShellyDevice, names: names, skip: skip, power: power, lang: lang);
+  List<TileConfig> tiles(
+    Connected r, {
+    Map<String, String> names = const {},
+    Set<String> skip = const {},
+    bool power = true,
+    String lang = 'fi',
+  }) => shellyTiles(r.connection, r.data['device'] as ShellyDevice, names: names, skip: skip, power: power, lang: lang);
 }
 
 // ---------------------------------------------------------------- Shelly Cloud
@@ -279,7 +371,8 @@ class ShellyCloudProvider extends DeviceProvider {
   @override
   String get descFi => 'Ohjaa Shellyjä Shellyn pilven kautta mistä tahansa. Tarvitset vain Shelly-sovelluksen avaimen.';
   @override
-  String get descEn => 'Control Shellys through the Shelly cloud from anywhere. You only need the key from the Shelly app.';
+  String get descEn =>
+      'Control Shellys through the Shelly cloud from anywhere. You only need the key from the Shelly app.';
   @override
   String get category => 'cloud';
   @override
@@ -333,10 +426,19 @@ class ShellyCloudProvider extends DeviceProvider {
     final key = creds['authKey']?.trim() ?? '';
     final server = serverUrl(creds['server'] ?? '');
     if (key.isEmpty || server.isEmpty) throw AddDeviceError(AddProblem.cloudBadKey, 'missing');
-    final conn = ConnectionConfig(name: 'Shelly Cloud', type: 'shelly_cloud', settings: {'server': server}, secrets: {'authKey': key});
+    final conn = ConnectionConfig(
+      name: 'Shelly Cloud',
+      type: 'shelly_cloud',
+      settings: {'server': server},
+      secrets: {'authKey': key},
+    );
     final d = ctx.driver(conn);
     try {
-      final ids = (creds['deviceIds'] ?? '').split(RegExp(r'[,\s]+')).map((s) => s.trim().toLowerCase()).where((s) => s.isNotEmpty).toList();
+      final ids = (creds['deviceIds'] ?? '')
+          .split(RegExp(r'[,\s]+'))
+          .map((s) => s.trim().toLowerCase())
+          .where((s) => s.isNotEmpty)
+          .toList();
       List devices;
       try {
         final v = await d.send({'op': ids.isEmpty ? 'list' : 'get', 'ids': ids});
@@ -357,17 +459,32 @@ class ShellyCloudProvider extends DeviceProvider {
         final online = dev['online'] != false;
         for (final ch in chans.whereType<Map>()) {
           final key = '$id:${ch['channel']}';
-          meta[key] = {'id': id, 'channel': ch['channel'], 'gen': dev['gen'], 'power': ch['power'] != null};
-          items.add(AddItem(
-            key: key,
-            name: '${ch['name'] ?? dev['name'] ?? id}',
-            hasPower: ch['power'] != null,
-            subtitle: [
-              '${dev['model'] ?? ''}'.trim(),
-              if (!online) tr(ctx.lang, 'ei yhteydessä pilveen', 'offline'),
-              if (ch['on'] != null) ch['on'] == true ? tr(ctx.lang, 'päällä', 'on') : tr(ctx.lang, 'pois', 'off'),
-            ].where((s) => s.isNotEmpty).join(' · '),
-          ));
+          meta[key] = {
+            'id': id,
+            'channel': ch['channel'],
+            'gen': dev['gen'],
+            'power': ch['power'] != null,
+            'named': ch['name'] != null,
+          };
+          items.add(
+            AddItem(
+              key: key,
+              name: shellyChannelTitle(
+                ch['name'] as String?,
+                dev['name'] as String?,
+                ch['channel'] as int? ?? 0,
+                chans.length,
+                ctx.lang,
+                model: friendlyShellyModel('${dev['model'] ?? ''}', id),
+              ),
+              hasPower: ch['power'] != null,
+              subtitle: [
+                '${dev['model'] ?? ''}'.trim(),
+                if (!online) tr(ctx.lang, 'ei yhteydessä pilveen', 'offline'),
+                if (ch['on'] != null) ch['on'] == true ? tr(ctx.lang, 'päällä', 'on') : tr(ctx.lang, 'pois', 'off'),
+              ].where((s) => s.isNotEmpty).join(' · '),
+            ),
+          );
         }
       }
       if (items.isEmpty) throw AddDeviceError(AddProblem.nothingToAdd, ids.isEmpty ? 'list' : 'ids');
@@ -378,7 +495,13 @@ class ShellyCloudProvider extends DeviceProvider {
   }
 
   @override
-  List<TileConfig> tiles(Connected r, {Map<String, String> names = const {}, Set<String> skip = const {}, bool power = true, String lang = 'fi'}) {
+  List<TileConfig> tiles(
+    Connected r, {
+    Map<String, String> names = const {},
+    Set<String> skip = const {},
+    bool power = true,
+    String lang = 'fi',
+  }) {
     final meta = r.data['meta'] as Map<String, Map<String, dynamic>>;
     final c = r.connection;
     final out = <TileConfig>[];
@@ -387,27 +510,37 @@ class ShellyCloudProvider extends DeviceProvider {
       final m = meta[it.key]!;
       final title = (names[it.key]?.trim().isNotEmpty ?? false) ? names[it.key]!.trim() : it.name;
       final base = {'id': m['id'], 'channel': m['channel']};
-      out.add(TileConfig(
-        type: TileType.toggle,
-        title: title,
-        icon: 'outlet',
-        connectionId: c.id,
-        pollSeconds: 15,
-        read: {...base, 'field': 'output'},
-        onCommand: CommandStep(connectionId: c.id, spec: {...base, 'on': true}),
-        offCommand: CommandStep(connectionId: c.id, spec: {...base, 'on': false}),
-      ));
-      if (power && it.hasPower) {
-        out.add(TileConfig(
-          type: TileType.value,
-          title: '$title – ${tr(lang, 'teho', 'power')}',
-          icon: 'bolt',
+      out.add(
+        TileConfig(
+          type: TileType.toggle,
+          title: title,
+          icon: 'outlet',
           connectionId: c.id,
-          unit: 'W',
-          decimals: 0,
-          pollSeconds: 30,
-          read: {...base, 'field': 'power'},
-        ));
+          pollSeconds: 15,
+          read: {...base, 'field': 'output'},
+          onCommand: CommandStep(connectionId: c.id, spec: {...base, 'on': true}),
+          offCommand: CommandStep(connectionId: c.id, spec: {...base, 'on': false}),
+        ),
+      );
+      if (power && it.hasPower) {
+        out.add(
+          TileConfig(
+            type: TileType.value,
+            title: shellyPowerTitle(
+              title,
+              (names[it.key]?.trim().isNotEmpty ?? false) || (meta[it.key]!['named'] == true),
+              m['channel'] as int? ?? 0,
+              meta.values.where((x) => x['id'] == m['id']).length,
+              lang,
+            ),
+            icon: 'bolt',
+            connectionId: c.id,
+            unit: 'W',
+            decimals: 0,
+            pollSeconds: 30,
+            read: {...base, 'field': 'power'},
+          ),
+        );
       }
     }
     return out;
@@ -417,15 +550,34 @@ class ShellyCloudProvider extends DeviceProvider {
 /// Parses a v2 cloud device state into {id, name, model, gen, online, channels:[{channel,on,power,name}]}.
 Map<String, dynamic> parseCloudDevice(Map dev) {
   final st = dev['status'] is Map ? dev['status'] as Map : const {};
+  final cfg = dev['settings'] is Map ? dev['settings'] as Map : const {};
+  String? clean(Object? n) {
+    final s = '${n ?? ''}'.trim();
+    return s.isEmpty || s == 'null' ? null : s;
+  }
+
   final chans = <Map<String, dynamic>>[];
   for (final k in st.keys.map((k) => '$k').where((k) => k.startsWith('switch:'))) {
     final s = st[k] as Map;
-    chans.add({'channel': int.tryParse(k.substring(7)) ?? 0, 'on': s['output'], 'power': s['apower']});
+    // Gen2+: settings["switch:N"].name (Switch.GetConfig).
+    final c = cfg[k] is Map ? cfg[k] as Map : const {};
+    chans.add({
+      'channel': int.tryParse(k.substring(7)) ?? 0,
+      'on': s['output'],
+      'power': s['apower'],
+      'name': clean(c['name']),
+    });
   }
   final relays = st['relays'] is List ? st['relays'] as List : const [];
   final meters = st['meters'] is List ? st['meters'] as List : const [];
+  final relayCfg = cfg['relays'] is List ? cfg['relays'] as List : const [];
   for (var i = 0; i < relays.length; i++) {
-    chans.add({'channel': i, 'on': (relays[i] as Map)['ison'], 'power': i < meters.length ? (meters[i] as Map)['power'] : null});
+    chans.add({
+      'channel': i,
+      'on': (relays[i] as Map)['ison'],
+      'power': i < meters.length ? (meters[i] as Map)['power'] : null,
+      'name': i < relayCfg.length && relayCfg[i] is Map ? clean((relayCfg[i] as Map)['name']) : null,
+    });
   }
   chans.sort((a, b) => (a['channel'] as int).compareTo(b['channel'] as int));
   final info = st['_dev_info'] is Map ? st['_dev_info'] as Map : const {};
@@ -434,7 +586,14 @@ Map<String, dynamic> parseCloudDevice(Map dev) {
     'model': '${dev['code'] ?? info['code'] ?? dev['type'] ?? ''}',
     'gen': '${dev['gen'] ?? info['gen'] ?? ''}',
     'online': dev['online'] == null ? info['online'] != false : dev['online'] == 1 || dev['online'] == true,
-    'name': dev['name'],
+    'name':
+        clean(dev['name']) ??
+        clean(
+          cfg['sys'] is Map && (cfg['sys'] as Map)['device'] is Map
+              ? ((cfg['sys'] as Map)['device'] as Map)['name']
+              : null,
+        ) ??
+        clean(cfg['name']),
     'channels': chans,
   };
 }
@@ -450,8 +609,24 @@ class ShellyCloudDriver extends Driver {
     en: 'Shelly Cloud',
     create: ShellyCloudDriver.new,
     connectionFields: [
-      FieldSpec('server', 'Palvelin', 'Server', hint: 'shelly-103-eu.shelly.cloud', required: true, helpFi: 'Shelly-sovellus → Käyttäjäasetukset → Authorization cloud key → Server URI.', helpEn: 'Shelly app → User settings → Authorization cloud key → Server URI.'),
-      FieldSpec('authKey', 'Pilviavain', 'Cloud key', kind: FieldKind.secret, required: true, helpFi: 'Shelly-sovellus → Käyttäjäasetukset → Authorization cloud key → Get key.', helpEn: 'Shelly app → User settings → Authorization cloud key → Get key.'),
+      FieldSpec(
+        'server',
+        'Palvelin',
+        'Server',
+        hint: 'shelly-103-eu.shelly.cloud',
+        required: true,
+        helpFi: 'Shelly-sovellus → Käyttäjäasetukset → Authorization cloud key → Server URI.',
+        helpEn: 'Shelly app → User settings → Authorization cloud key → Server URI.',
+      ),
+      FieldSpec(
+        'authKey',
+        'Pilviavain',
+        'Cloud key',
+        kind: FieldKind.secret,
+        required: true,
+        helpFi: 'Shelly-sovellus → Käyttäjäasetukset → Authorization cloud key → Get key.',
+        helpEn: 'Shelly app → User settings → Authorization cloud key → Get key.',
+      ),
     ],
     readFields: [],
     commandFields: [],
@@ -473,7 +648,9 @@ class ShellyCloudDriver extends Driver {
       if (wait > Duration.zero) await Future<void>.delayed(wait);
       _last = DateTime.now();
       final sep = path.contains('?') ? '&' : '?';
-      final uri = Uri.parse('$_server$path${form == null ? '${sep}auth_key=${Uri.encodeQueryComponent(s.str('authKey'))}' : ''}');
+      final uri = Uri.parse(
+        '$_server$path${form == null ? '${sep}auth_key=${Uri.encodeQueryComponent(s.str('authKey'))}' : ''}',
+      );
       final req = await _client.postUrl(uri).timeout(const Duration(seconds: 15));
       if (form != null) {
         req.headers.contentType = ContentType('application', 'x-www-form-urlencoded', charset: 'utf-8');
@@ -484,17 +661,26 @@ class ShellyCloudDriver extends Driver {
       }
       final res = await req.close().timeout(const Duration(seconds: 15));
       final body = await res.transform(utf8.decoder).join();
-      if (res.statusCode >= 400) throw DriverException('HTTP ${res.statusCode}: ${body.length > 160 ? body.substring(0, 160) : body}');
+      if (res.statusCode >= 400) {
+        throw DriverException('HTTP ${res.statusCode}: ${body.length > 160 ? body.substring(0, 160) : body}');
+      }
       return body.isEmpty ? null : jsonDecode(body);
     });
     _gate = run.then((_) {}, onError: (_) {});
     return run;
   }
 
-  Future<List<Map<String, dynamic>>> _get(List<String> ids) async {
+  /// [settings]: also fetch device/channel names (only when adding; polls read status only).
+  Future<List<Map<String, dynamic>>> _get(List<String> ids, {bool settings = false}) async {
     final out = <Map<String, dynamic>>[];
     for (var i = 0; i < ids.length; i += 10) {
-      final v = await _post('/v2/devices/api/get', json: {'ids': ids.sublist(i, (i + 10).clamp(0, ids.length)), 'select': ['status']});
+      final v = await _post(
+        '/v2/devices/api/get',
+        json: {
+          'ids': ids.sublist(i, (i + 10).clamp(0, ids.length)),
+          'select': settings ? ['status', 'settings'] : ['status'],
+        },
+      );
       for (final d in (v is List ? v : const []).whereType<Map>()) {
         final p = parseCloudDevice(d);
         _cache[p['id'] as String] = (DateTime.now(), p);
@@ -504,7 +690,7 @@ class ShellyCloudDriver extends Driver {
     return out;
   }
 
-  Future<List<Map<String, dynamic>>> _list() async {
+  Future<List<Map<String, dynamic>>> _list({bool settings = false}) async {
     final v = await _post('/device/all_status', form: const {});
     final data = v is Map ? v['data'] : null;
     final all = data is Map ? data['devices_status'] : null;
@@ -512,9 +698,11 @@ class ShellyCloudDriver extends Driver {
     if (all is! Map) return const [];
     final ids = [
       for (final e in all.entries)
-        if (e.value is Map) '${(e.value as Map)['_dev_info'] is Map ? ((e.value as Map)['_dev_info'] as Map)['id'] ?? e.key : e.key}'.toLowerCase(),
+        if (e.value is Map)
+          '${(e.value as Map)['_dev_info'] is Map ? ((e.value as Map)['_dev_info'] as Map)['id'] ?? e.key : e.key}'
+              .toLowerCase(),
     ];
-    return ids.isEmpty ? const [] : _get(ids);
+    return ids.isEmpty ? const [] : _get(ids, settings: settings);
   }
 
   /// Polls of several tiles within ~1 s are merged into one request.
@@ -538,7 +726,10 @@ class ShellyCloudDriver extends Driver {
     final dev = await _status(id);
     if (dev == null) throw DriverException('Device $id not found in Shelly Cloud');
     if (dev['online'] == false) throw DriverException('Shelly Cloud: device offline');
-    final ch = (dev['channels'] as List).cast<Map>().where((c) => '${c['channel']}' == spec.str('channel', '0')).firstOrNull;
+    final ch = (dev['channels'] as List)
+        .cast<Map>()
+        .where((c) => '${c['channel']}' == spec.str('channel', '0'))
+        .firstOrNull;
     if (ch == null) throw DriverException('Channel ${spec.str('channel')} not found');
     return spec.str('field', 'output') == 'power' ? ch['power'] : ch['on'];
   }
@@ -547,13 +738,18 @@ class ShellyCloudDriver extends Driver {
   Future<Object?> send(Map<String, dynamic> spec, {Object? value}) async {
     switch (spec.str('op')) {
       case 'list':
-        return _list();
+        return _list(settings: true);
       case 'get':
-        return _get([for (final i in (spec['ids'] as List? ?? const [])) '$i']);
+        return _get([for (final i in (spec['ids'] as List? ?? const [])) '$i'], settings: true);
     }
     final id = spec.str('id').toLowerCase();
-    final on = spec.containsKey('on') ? spec['on'] == true || spec['on'] == 'true' : value == true || value == 1 || value == 'true';
-    await _post('/v2/devices/api/set/switch', json: {'id': id, 'channel': int.tryParse(spec.str('channel', '0')) ?? 0, 'on': on});
+    final on = spec.containsKey('on')
+        ? spec['on'] == true || spec['on'] == 'true'
+        : value == true || value == 1 || value == 'true';
+    await _post(
+      '/v2/devices/api/set/switch',
+      json: {'id': id, 'channel': int.tryParse(spec.str('channel', '0')) ?? 0, 'on': on},
+    );
     _cache.remove(id);
     return null;
   }
@@ -567,4 +763,3 @@ class ShellyCloudDriver extends Driver {
   @override
   Future<void> dispose() async => _client.close(force: true);
 }
-

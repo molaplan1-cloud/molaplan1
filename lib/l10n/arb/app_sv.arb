@@ -211,6 +211,8 @@
   "x-mt": true
  },
  "se78754330c": "effekt",
+ "s4899323b9a": "Effekt",
+ "sb9964cfb3b": "Effekt {p0}",
  "sfcb44be1a0": "Shelly",
  "sa6ff717527": "Reläer och pluggar: Pro 4PM, Plus 1PM, Plug S, 2,5 ... Hittas automatiskt, kakel för varje kanal.",
  "@sa6ff717527": {
@@ -871,6 +873,7 @@
  "@s4f1166fe24": {
   "x-mt": true
  },
+ "s29fd8d5b5e": "Nu",
  "see9111ba68": "Relä eller brytare (på/av)",
  "seaed91ad78": "Värmepump eller AC (börvärde)",
  "sb757921c13": "Värmer",
@@ -946,7 +949,6 @@
  "s187d328bb1": "Redigera",
  "sc1845eb440": "Radera",
  "s87984716cb": "Ta bort termostaten?",
- "s29fd8d5b5e": "Nu",
  "s79786b9f7d": "Mål",
  "sdd309c0a63": "Termostaten körs på hembryggan",
  "s9c1b5394df": "Ställ in fjärråtkomst på hemmatabletten (Inställningar → Fjärråtkomst). Tills dess kontrollerar det inte någonting.",
@@ -971,26 +973,6 @@
   "x-mt": true
  },
  "s941fbb47fe": "Planen beräknas…",
- "s306729fe62": "Inga priser",
- "@s306729fe62": {
-  "x-mt": true
- },
- "s723c887da6": "Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min",
- "@s723c887da6": {
-  "x-mt": true
- },
- "scaaff6345d": "max max max max max",
- "@scaaff6345d": {
-  "x-mt": true
- },
- "s65982a11bc": "Inkl. imorgon",
- "@s65982a11bc": {
-  "x-mt": true
- },
- "se79acaf837": "imorgon efter kl. 14.00",
- "@se79acaf837": {
-  "x-mt": true
- },
  "s55d52c5ae1": "Denna enhet är inte på Wi-Fi",
  "@s55d52c5ae1": {
   "x-mt": true
@@ -1313,6 +1295,15 @@
  "@s641a848754": {
   "x-mt": true
  },
+ "s94493d01ca": "Väderprognos temperatur regn vind",
+ "@s94493d01ca": {
+  "x-mt": true
+ },
+ "s262f9527aa": "Väderprognos",
+ "@s262f9527aa": {
+  "x-mt": true
+ },
+ "scb3570338f": "Vädret nu och per timme: temperatur, regn och vind där du bor. Ingen enhet behövs.",
  "s2a9b6fedd9": "Kan inte hitta ditt varumärke?",
  "@s2a9b6fedd9": {
   "x-mt": true
@@ -1422,6 +1413,28 @@
  "@sc95fb5440b": {
   "x-mt": true
  },
+ "s306729fe62": "Inga priser",
+ "@s306729fe62": {
+  "x-mt": true
+ },
+ "s9a37dbb58a": "i morgon",
+ "s723c887da6": "Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min",
+ "@s723c887da6": {
+  "x-mt": true
+ },
+ "s3b36524e04": "medel",
+ "scaaff6345d": "max max max max max",
+ "@scaaff6345d": {
+  "x-mt": true
+ },
+ "sfafa5c8432": "Billigast i dag",
+ "s4b2e4dda05": "Dyrast i dag",
+ "s96093c8f41": "1 h",
+ "sa6dc2ff399": "15 min",
+ "s5f131c3ec4": "Förbrukning",
+ "s5fc5085143": "Kostnad",
+ "s2f06d232b5": "I morgon ingår",
+ "sa5e6b1e0e3": "I morgon efter ca 14:00",
  "s62cfd94468": "Billigaste timmar på natten",
  "@s62cfd94468": {
   "x-mt": true
@@ -2237,6 +2250,7 @@
  "@sbfe79d1f5f": {
   "x-mt": true
  },
+ "s59d55f8882": "Byt namn",
  "s25580038cb": "Saved PIN bort",
  "@s25580038cb": {
   "x-mt": true
@@ -2249,12 +2263,146 @@
  "sf3d644dd4c": "Lär in en fjärrkontrollknapp",
  "sfb1a18d11f": "Uppdatera",
  "s4cbe24240f": "På",
+ "s72a2328ddd": "Lampor",
+ "sca12be80ca": "Brytare",
+ "sa4c0eeea02": "Värmepumpar och AC",
+ "s662fecdc8d": "Sensorer",
+ "@s662fecdc8d": {
+  "x-mt": true
+ },
+ "sa8dbf04ad3": "Binära sensorer",
+ "@sa8dbf04ad3": {
+  "x-mt": true
+ },
+ "sa7690acf57": "Markiser, portar och dörrar",
+ "s487bf00fc7": "Lås",
+ "@s487bf00fc7": {
+  "x-mt": true
+ },
+ "s8d06ee5308": "Larm",
+ "s88ac47e6d1": "Kameror",
+ "@s88ac47e6d1": {
+  "x-mt": true
+ },
+ "sbe76826428": "Fläktar",
+ "s6b7c1c52da": "Scener",
+ "@s6b7c1c52da": {
+  "x-mt": true
+ },
+ "s9f1334d4e2": "Skript",
+ "s4b53bcaaf0": "Knappar",
+ "@s4b53bcaaf0": {
+  "x-mt": true
+ },
+ "s5c92d42edd": "Talinmatningar",
+ "s3c2ed0c522": "Hjälpbrytare",
+ "se9ca7cb470": "Automatiseringar",
+ "@se9ca7cb470": {
+  "x-mt": true
+ },
+ "sea20d169a3": "Mediaspelare",
+ "@sea20d169a3": {
+  "x-mt": true
+ },
+ "sbcb95e1e78": "Token accepteras inte. Skapa en ny i Home Assistant.",
+ "@sbcb95e1e78": {
+  "x-mt": true
+ },
+ "s0b80dc2642": "Kunde inte nå Home Assistant. kontrollera adressen.",
+ "@s0b80dc2642": {
+  "x-mt": true
+ },
+ "sf32b7f15d8": "Kameror",
+ "@sf32b7f15d8": {
+  "x-mt": true
+ },
+ "s095ca83913": "{p0} kort tillagda",
+ "@s095ca83913": {
+  "x-mt": true
+ },
+ "sa7a829cefb": "Välj Home Assistant-enheter",
+ "sefdf8e3316": "Hämtar enheter…",
+ "s26583a1933": "En vy per rum",
+ "@s26583a1933": {
+  "x-mt": true
+ },
+ "sf1319d04d0": "Lägg till {p0}",
+ "@sf1319d04d0": {
+  "x-mt": true
+ },
+ "sb3e6b54bce": "Sök efter namn eller id",
+ "@sb3e6b54bce": {
+  "x-mt": true
+ },
+ "safedc10c48": "Alla rum",
+ "@safedc10c48": {
+  "x-mt": true
+ },
+ "s407f3f7a0c": "Inget rum",
+ "@s407f3f7a0c": {
+  "x-mt": true
+ },
+ "sedb7b77645": "Alla",
+ "sa765c9294a": "Visa alla",
+ "@sa765c9294a": {
+  "x-mt": true
+ },
+ "sdb088f47a8": "{p0} tekniska objekt dolda (diagnostik, konfiguration, uppdateringar)",
+ "@sdb088f47a8": {
+  "x-mt": true
+ },
+ "s3ee8d0a5e3": "Rummen kunde inte läsas - visar enheter utan rum.",
+ "@s3ee8d0a5e3": {
+  "x-mt": true
+ },
+ "sf55fca7a32": "Inga träffar",
+ "s78cdce874e": "redan tillagt",
+ "@s78cdce874e": {
+  "x-mt": true
+ },
  "sdc398885dc": "Avancerade inställningar",
  "s5d477f3cd8": "Vanligtvis behöver du inte dessa",
  "@s5d477f3cd8": {
   "x-mt": true
  },
  "s2315e0e739": "t.ex.",
+ "sc1c47d2474": "Välj en bakgrundsbild",
+ "@sc1c47d2474": {
+  "x-mt": true
+ },
+ "sa8ce5112ee": "Högst {p0} bakgrundsbilder. Ta bort en först.",
+ "sceafe9ce2a": "Filen är inte en bild",
+ "@sceafe9ce2a": {
+  "x-mt": true
+ },
+ "s12a7d631af": "Utseende",
+ "s0d83798030": "Storlek",
+ "s64c916e299": "Liten",
+ "s5e3097232a": "Bred",
+ "s8971788287": "Stor",
+ "s7400a53ab2": "Färg",
+ "@s7400a53ab2": {
+  "x-mt": true
+ },
+ "s254a1d8e12": "Bakgrundsbild (valfri)",
+ "sc48f5f9bcf": "Välj bild",
+ "sf55eee73b8": "Ändra bild",
+ "@sf55eee73b8": {
+  "x-mt": true
+ },
+ "sdd957ccc1b": "Ta bort bild",
+ "@sdd957ccc1b": {
+  "x-mt": true
+ },
+ "s7ba9d453ed": "Dämpa när enheten är av",
+ "s016ae7b580": "Bilden krymps (≤ 200 KB) och synkroniseras till ditt konto.",
+ "@s016ae7b580": {
+  "x-mt": true
+ },
+ "sabb10f8cb2": "Bilden krymps (≤ 200 KB) och hålls endast på den här enheten.",
+ "@sabb10f8cb2": {
+  "x-mt": true
+ },
  "s4dab2d409b": "Exportkonfiguration",
  "@s4dab2d409b": {
   "x-mt": true
@@ -2296,6 +2444,10 @@
  "s9bb545e9b3": "Logga in eller skapa ett konto",
  "s21f870dbc2": "Visar tekniska inställningar: anslutningar (HTTP, MQTT, Modbus...), nyttolast, JSON-vägar och kakelkällor. De flesta behöver inte dessa.",
  "@s21f870dbc2": {
+  "x-mt": true
+ },
+ "sca4c8b88b7": "Home Assistant: Lägg till enheter",
+ "@sca4c8b88b7": {
   "x-mt": true
  },
  "saec69088a5": "Styr ditt hem från utsidan också.",
@@ -2449,6 +2601,15 @@
  "@sae0fae7127": {
   "x-mt": true
  },
+ "s64f4d1e11a": "Ange hemmets plats",
+ "s8ff5c58a5d": "Ingen väderprognos",
+ "@s8ff5c58a5d": {
+  "x-mt": true
+ },
+ "s1becc05ea1": "locked=Låst;unlocked=Olåst;jammed=FASTNAT",
+ "s259de02f33": "open=Öppen;closed=Stängd;opening=Öppnas;closing=Stängs",
+ "s64d4364336": "disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming",
+ "s5b1e227dc4": "on=På;off=Av",
  "s3d43664fcc": "WebSocket",
  "sfcbb753f53": "URL",
  "s81479e1555": "Headers (Namn: värde per rad)",
@@ -3130,7 +3291,6 @@
   "x-mt": true
  },
  "s4b4fd14aaf": "Gård",
- "s8d06ee5308": "Larm",
  "s8ac16d45bc": "",
  "sbde42d83a3": "Vardagsrummets lampor",
  "sb7c78c63b3": "Tilluft",
@@ -3260,8 +3420,8 @@
  "@sb847f22473": {
   "x-mt": true
  },
- "s7f8e45ea74": "Ljus, larm, sensorer – allt i Home Assistant.",
- "@s7f8e45ea74": {
+ "s76f6067b0f": "Ljus, larm, sensorer – välj från en lista som blir kort.",
+ "@s76f6067b0f": {
   "x-mt": true
  },
  "s9f70681d3f": "Home Assistant Adress",
@@ -3280,24 +3440,6 @@
  "@s4e3f2052b2": {
   "x-mt": true
  },
- "s75a056cf4d": "Ljus (valfritt)",
- "@s75a056cf4d": {
-  "x-mt": true
- },
- "sdb9a90cb96": "Entity id från Inställningar → Enheter → Entiteter.",
- "@sdb9a90cb96": {
-  "x-mt": true
- },
- "sa9681c1a9a": "Alarm (valfritt)",
- "@sa9681c1a9a": {
-  "x-mt": true
- },
- "s64bd3ab3ff": "Temperaturgivare (valfritt)",
- "sa6504f5712": "Switch (tillval)",
- "@sa6504f5712": {
-  "x-mt": true
- },
- "s64d4364336": "disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming",
  "s54e063bd9c": "Värmepump (Home Assistant)",
  "@s54e063bd9c": {
   "x-mt": true
@@ -3509,9 +3651,6 @@
  "@s49dfca65a3": {
   "x-mt": true
  },
- "scf849c933b": "El just nu",
- "s53a951507b": "Billigaste timmen",
- "s3e99310fc0": "Pris i dag och i morgon",
  "s9af9526395": "Ventilationsenhet (Modbus TCP)",
  "@s9af9526395": {
   "x-mt": true

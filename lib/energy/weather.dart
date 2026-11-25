@@ -15,16 +15,44 @@ class HomeLocation {
   Map<String, dynamic> toJson() => {'name': name, 'lat': lat, 'lon': lon};
   static HomeLocation? fromJson(Object? j) {
     if (j is! Map || j['lat'] is! num || j['lon'] is! num) return null;
-    return HomeLocation(name: '${j['name'] ?? ''}', lat: (j['lat'] as num).toDouble(), lon: (j['lon'] as num).toDouble());
+    return HomeLocation(
+      name: '${j['name'] ?? ''}',
+      lat: (j['lat'] as num).toDouble(),
+      lon: (j['lon'] as num).toDouble(),
+    );
   }
 }
 
-class Forecast {
-  Forecast(this.points, {DateTime? fetched}) : fetched = fetched ?? DateTime.now();
+/// One forecast hour (precipitation mm/h, wind m/s, WMO weather code).
+class WeatherHour {
+  const WeatherHour(this.start, this.temp, {this.precip, this.wind, this.code});
+  final DateTime start;
+  final double temp;
+  final double? precip;
+  final double? wind;
+  final int? code;
+}
 
-  /// Hourly (hour start, °C), sorted.
+class Forecast {
+  Forecast(this.points, {DateTime? fetched, List<WeatherHour>? hours, this.current})
+    : fetched = fetched ?? DateTime.now(),
+      hours = hours ?? [for (final p in points) WeatherHour(p.$1, p.$2)];
+
+  /// Hourly (hour start, °C), sorted. Used by predictive heating.
   final List<(DateTime, double)> points;
+
+  /// The same hours with precipitation, wind and weather code (weather tile).
+  final List<WeatherHour> hours;
+
+  /// Current conditions (Open-Meteo "current"), if present.
+  final WeatherHour? current;
   final DateTime fetched;
+
+  /// [n] hours from the hour containing [now].
+  List<WeatherHour> ahead(DateTime now, int n) {
+    final h0 = DateTime(now.year, now.month, now.day, now.hour);
+    return hours.where((h) => !h.start.isBefore(h0)).take(n).toList();
+  }
 
   /// Temperature at [t] (the hour that contains it), null outside the forecast.
   double? at(DateTime t) {
@@ -39,14 +67,46 @@ class Forecast {
     final times = (h['time'] as List? ?? const []);
     final temps = (h['temperature_2m'] as List? ?? const []);
     // timeformat=unixtime: seconds since epoch (UTC) -> local DateTime.
-    final pts = <(DateTime, double)>[
-      for (var i = 0; i < times.length && i < temps.length; i++)
-        if (times[i] is num && temps[i] is num)
-          (DateTime.fromMillisecondsSinceEpoch((times[i] as num).toInt() * 1000), (temps[i] as num).toDouble()),
-    ];
-    return Forecast(pts);
+    final precip = (h['precipitation'] as List? ?? const []);
+    final wind = (h['wind_speed_10m'] as List? ?? const []);
+    final code = (h['weather_code'] as List? ?? const []);
+    double? at(List l, int i) => i < l.length && l[i] is num ? (l[i] as num).toDouble() : null;
+    final pts = <(DateTime, double)>[];
+    final hours = <WeatherHour>[];
+    for (var i = 0; i < times.length && i < temps.length; i++) {
+      if (times[i] is! num || temps[i] is! num) continue;
+      final t = DateTime.fromMillisecondsSinceEpoch((times[i] as num).toInt() * 1000);
+      final c = (temps[i] as num).toDouble();
+      pts.add((t, c));
+      hours.add(WeatherHour(t, c, precip: at(precip, i), wind: at(wind, i), code: at(code, i)?.toInt()));
+    }
+    final cur = j['current'];
+    WeatherHour? current;
+    if (cur is Map && cur['temperature_2m'] is num) {
+      current = WeatherHour(
+        cur['time'] is num ? DateTime.fromMillisecondsSinceEpoch((cur['time'] as num).toInt() * 1000) : DateTime.now(),
+        (cur['temperature_2m'] as num).toDouble(),
+        precip: (cur['precipitation'] as num?)?.toDouble(),
+        wind: (cur['wind_speed_10m'] as num?)?.toDouble(),
+        code: (cur['weather_code'] as num?)?.toInt(),
+      );
+    }
+    return Forecast(pts, hours: hours, current: current);
   }
 }
+
+/// WMO weather code -> (icon name, Finnish, English).
+(String, String, String) weatherCodeInfo(int? c) => switch (c) {
+  0 => ('sunny', 'Selkeää', 'Clear'),
+  1 || 2 => ('partly', 'Puolipilvistä', 'Partly cloudy'),
+  3 => ('cloud', 'Pilvistä', 'Cloudy'),
+  45 || 48 => ('fog', 'Sumua', 'Fog'),
+  51 || 53 || 55 || 56 || 57 => ('drizzle', 'Tihkua', 'Drizzle'),
+  61 || 63 || 65 || 66 || 67 || 80 || 81 || 82 => ('rain', 'Sadetta', 'Rain'),
+  71 || 73 || 75 || 77 || 85 || 86 => ('snow', 'Lumisadetta', 'Snow'),
+  95 || 96 || 99 => ('storm', 'Ukkosta', 'Thunderstorm'),
+  _ => ('cloud', '', ''),
+};
 
 class WeatherException implements Exception {
   WeatherException(this.message);
@@ -56,8 +116,11 @@ class WeatherException implements Exception {
 }
 
 class WeatherService {
-  WeatherService({http.Client? client, this.base = 'https://api.open-meteo.com', this.geoBase = 'https://geocoding-api.open-meteo.com'})
-    : _client = client ?? http.Client();
+  WeatherService({
+    http.Client? client,
+    this.base = 'https://api.open-meteo.com',
+    this.geoBase = 'https://geocoding-api.open-meteo.com',
+  }) : _client = client ?? http.Client();
   final http.Client _client;
   final String base;
   final String geoBase;
@@ -72,7 +135,8 @@ class WeatherService {
     final r = await _client
         .get(
           Uri.parse(
-            '$base/v1/forecast?latitude=${l.lat}&longitude=${l.lon}&hourly=temperature_2m&forecast_days=3&past_days=1&timeformat=unixtime',
+            '$base/v1/forecast?latitude=${l.lat}&longitude=${l.lon}&hourly=temperature_2m,precipitation,wind_speed_10m,weather_code'
+            '&current=temperature_2m,precipitation,wind_speed_10m,weather_code&wind_speed_unit=ms&forecast_days=3&past_days=1&timeformat=unixtime',
           ),
         )
         .timeout(const Duration(seconds: 15));
