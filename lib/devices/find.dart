@@ -18,8 +18,7 @@ Future<List<Candidate>> findLocal(DeviceProvider p, {List<String>? locals}) asyn
         final (found, _) = r;
         return [
           for (final d in found)
-            if (p.id != 'shelly' || d.kind == 'shelly')
-              Candidate(provider: p.id, address: d.address, id: d.label, name: d.label),
+            if (p.id != 'shelly' || d.kind == 'shelly') ?p.fromMdns(d.address, d.label, d.service),
         ];
       }).catchError((_) => <Candidate>[]),
   ]);

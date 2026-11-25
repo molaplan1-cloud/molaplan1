@@ -17,6 +17,7 @@ IconData providerIcon(DeviceProvider p) => switch (p.category) {
   'light' => Icons.lightbulb_outline,
   'hub' => Icons.hub_outlined,
   'cloud' => Icons.cloud_outlined,
+  'camera' => Icons.videocam_outlined,
   _ => Icons.power_outlined,
 };
 
@@ -24,6 +25,8 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
   'hue' => const Color(0xFFFFB74D),
   'dirigera' => const Color(0xFF42A5F5),
   'shelly_cloud' => const Color(0xFF7E57C2),
+  'sonoff' => const Color(0xFF1E88E5),
+  _ when p.category == 'camera' => const Color(0xFF5C6BC0),
   _ => const Color(0xFF26A69A),
 };
 
@@ -54,6 +57,10 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
     AddProblem.needsPassword => (
       t('Laite pyytää salasanaa', 'The device asks for a password'),
       t('Olet asettanut laitteeseen salasanan. Kirjoita se alle ja paina "Yhdistä".', 'A password is set on the device. Type it below and tap "Connect".'),
+    ),
+    AddProblem.needsDetails => (
+      t('Tarvitaan vielä yksi tieto', 'One more detail is needed'),
+      t('$brand ei kerro tätä itse. Kirjoita se alle ja paina "Yhdistä".', '$brand does not tell this by itself. Type it below and tap "Connect".'),
     ),
     AddProblem.wrongPassword => (
       t('Salasana ei kelpaa', 'Wrong password'),
@@ -290,6 +297,12 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         setState(() => countdown = null);
       }
       if (p.pairMode == PairMode.password && pwCtl.text.isNotEmpty) creds['password'] = pwCtl.text;
+      // Local devices: extra details typed with the password (camera user, Sonoff device id).
+      if (!cloud) {
+        for (final e in cred.entries) {
+          if (e.value.text.trim().isNotEmpty) creds[e.key] = e.value.text.trim();
+        }
+      }
       final r = await p.connect(ctx, c, creds);
       if (!mounted || _cancel) return;
       connected = r;
@@ -710,12 +723,38 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       return out;
     }
     if (e == null) return out;
-    final (title, body) = problemText(context, e.problem, brand: brand, address: cloud ? '' : c.address);
+    var (title, body) = problemText(context, e.problem, brand: brand, address: cloud ? '' : c.address);
     final st = AppScope.read(context);
+    final login = e.problem == AddProblem.needsPassword || e.problem == AddProblem.wrongPassword;
+    final details = !cloud && (login || e.problem == AddProblem.needsDetails);
+    if (p.category == 'camera' && e.problem == AddProblem.needsPassword) {
+      title = tx(context, 'Kirjaudu kameraan', 'Sign in to the camera');
+      body = tx(context, p.pairHelpFi, p.pairHelpEn);
+    } else if (details && p.pairHelpFi.isNotEmpty) {
+      body = '$body\n\n${tx(context, p.pairHelpFi, p.pairHelpEn)}';
+    }
     out.addAll([
       _title(context, title),
       _banner(context, icon: Icons.info_outline, color: Colors.orange, text: body),
-      if (e.problem == AddProblem.needsPassword || e.problem == AddProblem.wrongPassword) ...[
+      if (details)
+        for (final f in p.credFields)
+          if (e.problem == AddProblem.needsDetails || p.category == 'camera') ...[
+            TextField(
+              key: ValueKey('wiz-cred-${f.key}'),
+              controller: cred[f.key] ??= TextEditingController(),
+              obscureText: f.secret,
+              style: const TextStyle(fontSize: 18),
+              decoration: InputDecoration(
+                labelText: tx(context, f.fi, f.en),
+                hintText: f.hint,
+                helperText: f.helpFi.isEmpty ? null : tx(context, f.helpFi, f.helpEn),
+                helperMaxLines: 3,
+                border: const OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 12),
+          ],
+      if (login) ...[
         TextField(
           key: const ValueKey('wiz-password'),
           controller: pwCtl,
@@ -732,11 +771,12 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           key: const ValueKey('wiz-retry'),
           onPressed: () {
             if (e.problem == AddProblem.needsPassword && pwCtl.text.isEmpty) return;
+            if (e.problem == AddProblem.needsDetails && cred.values.every((c) => c.text.trim().isEmpty)) return;
             if (p.pairMode == PairMode.button && e.problem == AddProblem.needsPassword) creds.remove('token');
             _connect();
           },
-          icon: Icon(e.problem == AddProblem.needsPassword || e.problem == AddProblem.wrongPassword ? Icons.login : Icons.refresh),
-          label: Text(e.problem == AddProblem.needsPassword || e.problem == AddProblem.wrongPassword ? tx(context, 'Yhdistä', 'Connect') : tx(context, 'Yritä uudelleen', 'Try again')),
+          icon: Icon(details ? Icons.login : Icons.refresh),
+          label: Text(details ? tx(context, 'Yhdistä', 'Connect') : tx(context, 'Yritä uudelleen', 'Try again')),
         ),
         if ((e.problem == AddProblem.unreachable || e.problem == AddProblem.noNetwork) && !st.remote.isPaired && !st.remote.bridgeOn)
           OutlinedButton.icon(

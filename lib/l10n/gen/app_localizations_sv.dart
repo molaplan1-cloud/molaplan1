@@ -190,6 +190,42 @@ class AppLocalizationsSv extends AppLocalizations {
       'Nästan jämn temperatur (+0,5 / −0,5 °C). Sparar lite.';
 
   @override
+  String get sd86b823895 => 'Sonoff';
+
+  @override
+  String get s5f297ec9d8 =>
+      'BASIC, MINI, POW, TH, 4CH ... i DIY-läge, med Tasmota eller ESPHome. Kort är gjorda för dig; fjärranvändning via hembron.';
+
+  @override
+  String get s60e829b1b0 =>
+      'eWeLink app → enhet → Inställningar visar IP-adressen, eller routerns enhetslista. I DIY-läge behöver du också enhets-ID (10 tecken).';
+
+  @override
+  String get s6a46e8954d =>
+      'En Sonoff i DIY-läge svarar bara när den berättade sin enhet ID. Hitta den i eWeLink-appen: enhet → Inställningar → Enhets-ID. Tasmota: webblösenordet, om det är inställt.';
+
+  @override
+  String get sea057f1a02 =>
+      'Endast i DIY-läge när sökningen inte hittade enheten.';
+
+  @override
+  String s08d04d58a9(String p0) {
+    return 'Kanal $p0';
+  }
+
+  @override
+  String get s8653f173b6 => 'Temperatur';
+
+  @override
+  String get s9cb8820285 => 'Humidity';
+
+  @override
+  String get s4899323b9a => 'Effekt';
+
+  @override
+  String get se78754330c => 'effekt';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -223,17 +259,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get see129fb410 => 'ljusstyrka';
-
-  @override
-  String s08d04d58a9(String p0) {
-    return 'Kanal $p0';
-  }
-
-  @override
-  String get se78754330c => 'effekt';
-
-  @override
-  String get s4899323b9a => 'Effekt';
 
   @override
   String sb9964cfb3b(String p0) {
@@ -316,6 +341,65 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sda8d9bf1cd => 'Uttag';
+
+  @override
+  String get s0185672be7 =>
+      'Kameraanvändaren (vanligtvis admin) och lösenordet du ställer in när du aktiverar det.';
+
+  @override
+  String get s814f4633e3 =>
+      'Användaradmin. Imou: lösenordet är \"Safety-koden\" på kamerans etikett eller enhetens lösenord.';
+
+  @override
+  String get s4450807111 =>
+      'Kameraanvändaren i Reolink-appen (vanligtvis admin) och dess lösenord.';
+
+  @override
+  String get s1095c54819 =>
+      'Reolink app → kamera → Inställningar → Nätverk → Avancerade → Serverinställningar: slå på HTTP och RTSP. Batterikameror (Argus) stöds inte.';
+
+  @override
+  String get sc79a5fee2b =>
+      'Tapo app → kamera → Avancerade inställningar → Kamerakonto. Skapa en användare och lösenord där och skriv dem här (inte din Tapo molninloggning).';
+
+  @override
+  String get s174e06b97c =>
+      'Skapa först ett kamerakonto: Tapo app → kamera → Avancerade inställningar → Kamerakonto.';
+
+  @override
+  String get s21da6fb5dc =>
+      'Användaradmin; lösenordet är 6-brevsverifieringskoden på kamerans etikett.';
+
+  @override
+  String get s1866ef6dc8 =>
+      'Ezviz app → kamera → Inställningar → LAN Live View / RTSP: slå på den (om alternativet finns).';
+
+  @override
+  String get s1c2786e15f =>
+      'Kameraanvändaren och lösenordet (ofta admin). ONVIF kan behöva aktiveras i kamerainställningarna.';
+
+  @override
+  String get s32270de47a => 'Säkerhetskamera';
+
+  @override
+  String get s4d3ff251d6 =>
+      'Hikvision, Dahua, Reolink, Tapo, Ezviz eller någon ONVIF-kamera. Bild på ett kort, live video hemma.';
+
+  @override
+  String get se8ea97c5eb =>
+      'I kameraappen (enhetsinformation) eller routerns enhetslista.';
+
+  @override
+  String get s1577068729 => 'Kamera kamera';
+
+  @override
+  String get seeb6c38c8e => 'Kamera';
+
+  @override
+  String get s136c6f0d2b => 'Bild på kortet, live video hemma';
+
+  @override
+  String get s2101774157 => 'Live video hemma (ingen bild bort)';
 
   @override
   String get sb662db81d8 =>
@@ -1154,6 +1238,14 @@ class AppLocalizationsSv extends AppLocalizations {
       'Ett lösenord är inställt på enheten. Skriv det nedan och tryck på \"Konnect\".';
 
   @override
+  String get s9e22388413 => 'En mer detaljer behövs';
+
+  @override
+  String sc8702d4da2(String p0) {
+    return '$p0 berättar inte detta själv. Skriv det nedan och tryck på \"Konnect\".';
+  }
+
+  @override
   String get s83f57c7c24 => 'Fel lösenord';
 
   @override
@@ -1362,6 +1454,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sba10f23f03 => 'Ansluter…';
+
+  @override
+  String get s46c87a553f => 'Logga in på kameran';
 
   @override
   String get se4095d7d95 => 'Enhetens lösenord';
@@ -1580,6 +1675,21 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s9630135746 => 'Slå på';
 
   @override
+  String get sbcdff8f72a => 'Vilken kamera har du?';
+
+  @override
+  String get s67bf18fb6f => 'Övrig kamera (ONVIF)';
+
+  @override
+  String get s772c158a57 => 'TCP';
+
+  @override
+  String get sea00017814 => 'låg latens';
+
+  @override
+  String get s2d65587b87 => '8';
+
+  @override
   String get s2ad22696ca => 'Språk';
 
   @override
@@ -1589,7 +1699,18 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s4529c1010a => 'Välj en kameraanslutning';
 
   @override
+  String get s98bf81bba3 => 'Live video fungerar inte på den här enheten';
+
+  @override
+  String get seb2bb5cbce =>
+      'Live video visar bara på hemnätverket. Denna kamera har ingen stillbild för fjärranvändning.';
+
+  @override
   String get sc95fb5440b => 'Stream slutade';
+
+  @override
+  String get sd55dd196f6 =>
+      'Ingen live-video. Kontrollera att du är på hemmanätverket och RTSP är på i kameran.';
 
   @override
   String get s306729fe62 => 'Inga priser';
@@ -2006,9 +2127,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s357fc9c3fe => 'Slider / setpoint';
-
-  @override
-  String get seeb6c38c8e => 'Kamera';
 
   @override
   String get s14da6beba5 => 'Visar en läsning, t.ex. temperatur.';
@@ -2798,6 +2916,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sf55eee73b8 => 'Ändra bild';
 
   @override
+  String get sf6723451b9 => 'Ta foto';
+
+  @override
   String get sdd957ccc1b => 'Ta bort bild';
 
   @override
@@ -3121,10 +3242,16 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get sad3975b3c1 => 'Kamera (MJPEG / JPEG)';
+  String get s58648dc3fc => 'Kamera (MJPEG / JPEG / RTSP)';
 
   @override
   String get s1534821f4a => 'Kamerabas URL';
+
+  @override
+  String get s95533426a3 => 'RTSP-adress (levande video hemma)';
+
+  @override
+  String get sa1115d4b0b => 'RTSP-adress, ljus (kort)';
 
   @override
   String get se995a6862d => 'Läge';

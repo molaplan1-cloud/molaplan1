@@ -184,6 +184,37 @@
  "s66ea783264": "Liten variation (+1 / −1 °C). Ett bra standardval.",
  "see96226e44": "Komfort",
  "sb403e00b3d": "Nästan jämn temperatur (+0,5 / −0,5 °C). Sparar lite.",
+ "sd86b823895": "Sonoff",
+ "s5f297ec9d8": "BASIC, MINI, POW, TH, 4CH ... i DIY-läge, med Tasmota eller ESPHome. Kort är gjorda för dig; fjärranvändning via hembron.",
+ "@s5f297ec9d8": {
+  "x-mt": true
+ },
+ "s60e829b1b0": "eWeLink app → enhet → Inställningar visar IP-adressen, eller routerns enhetslista. I DIY-läge behöver du också enhets-ID (10 tecken).",
+ "@s60e829b1b0": {
+  "x-mt": true
+ },
+ "s6a46e8954d": "En Sonoff i DIY-läge svarar bara när den berättade sin enhet ID. Hitta den i eWeLink-appen: enhet → Inställningar → Enhets-ID. Tasmota: webblösenordet, om det är inställt.",
+ "@s6a46e8954d": {
+  "x-mt": true
+ },
+ "sea057f1a02": "Endast i DIY-läge när sökningen inte hittade enheten.",
+ "@sea057f1a02": {
+  "x-mt": true
+ },
+ "s08d04d58a9": "Kanal {p0}",
+ "@s08d04d58a9": {
+  "x-mt": true
+ },
+ "s8653f173b6": "Temperatur",
+ "@s8653f173b6": {
+  "x-mt": true
+ },
+ "s9cb8820285": "Humidity",
+ "@s9cb8820285": {
+  "x-mt": true
+ },
+ "s4899323b9a": "Effekt",
+ "se78754330c": "effekt",
  "s0bf7cb1613": "Philips Hue",
  "se17d4e4197": "Hue Bridge och dess lampor (också Zigbee lampor parade till det). Par med bryggknappen.",
  "@se17d4e4197": {
@@ -206,12 +237,6 @@
  },
  "s3832b8c729": "hela rummet",
  "see129fb410": "ljusstyrka",
- "s08d04d58a9": "Kanal {p0}",
- "@s08d04d58a9": {
-  "x-mt": true
- },
- "se78754330c": "effekt",
- "s4899323b9a": "Effekt",
  "sb9964cfb3b": "Effekt {p0}",
  "sfcb44be1a0": "Shelly",
  "sa6ff717527": "Reläer och pluggar: Pro 4PM, Plus 1PM, Plug S, 2,5 ... Hittas automatiskt, kakel för varje kanal.",
@@ -277,6 +302,67 @@
  },
  "sa376ec78ec": "Lampa",
  "sda8d9bf1cd": "Uttag",
+ "s0185672be7": "Kameraanvändaren (vanligtvis admin) och lösenordet du ställer in när du aktiverar det.",
+ "@s0185672be7": {
+  "x-mt": true
+ },
+ "s814f4633e3": "Användaradmin. Imou: lösenordet är \"Safety-koden\" på kamerans etikett eller enhetens lösenord.",
+ "@s814f4633e3": {
+  "x-mt": true
+ },
+ "s4450807111": "Kameraanvändaren i Reolink-appen (vanligtvis admin) och dess lösenord.",
+ "@s4450807111": {
+  "x-mt": true
+ },
+ "s1095c54819": "Reolink app → kamera → Inställningar → Nätverk → Avancerade → Serverinställningar: slå på HTTP och RTSP. Batterikameror (Argus) stöds inte.",
+ "@s1095c54819": {
+  "x-mt": true
+ },
+ "sc79a5fee2b": "Tapo app → kamera → Avancerade inställningar → Kamerakonto. Skapa en användare och lösenord där och skriv dem här (inte din Tapo molninloggning).",
+ "@sc79a5fee2b": {
+  "x-mt": true
+ },
+ "s174e06b97c": "Skapa först ett kamerakonto: Tapo app → kamera → Avancerade inställningar → Kamerakonto.",
+ "@s174e06b97c": {
+  "x-mt": true
+ },
+ "s21da6fb5dc": "Användaradmin; lösenordet är 6-brevsverifieringskoden på kamerans etikett.",
+ "@s21da6fb5dc": {
+  "x-mt": true
+ },
+ "s1866ef6dc8": "Ezviz app → kamera → Inställningar → LAN Live View / RTSP: slå på den (om alternativet finns).",
+ "@s1866ef6dc8": {
+  "x-mt": true
+ },
+ "s1c2786e15f": "Kameraanvändaren och lösenordet (ofta admin). ONVIF kan behöva aktiveras i kamerainställningarna.",
+ "@s1c2786e15f": {
+  "x-mt": true
+ },
+ "s32270de47a": "Säkerhetskamera",
+ "@s32270de47a": {
+  "x-mt": true
+ },
+ "s4d3ff251d6": "Hikvision, Dahua, Reolink, Tapo, Ezviz eller någon ONVIF-kamera. Bild på ett kort, live video hemma.",
+ "@s4d3ff251d6": {
+  "x-mt": true
+ },
+ "se8ea97c5eb": "I kameraappen (enhetsinformation) eller routerns enhetslista.",
+ "@se8ea97c5eb": {
+  "x-mt": true
+ },
+ "s1577068729": "Kamera kamera",
+ "@s1577068729": {
+  "x-mt": true
+ },
+ "seeb6c38c8e": "Kamera",
+ "s136c6f0d2b": "Bild på kortet, live video hemma",
+ "@s136c6f0d2b": {
+  "x-mt": true
+ },
+ "s2101774157": "Live video hemma (ingen bild bort)",
+ "@s2101774157": {
+  "x-mt": true
+ },
  "sb662db81d8": "Adressen ser ofullständig. Använd fyra nummer med prickar, t.ex. 192.168.1.50.",
  "@sb662db81d8": {
   "x-mt": true
@@ -598,8 +684,16 @@
   "x-mt": true
  },
  "scf7e14661c": "Tillbaka",
+ "s7d43ee2d5a": "lokalisering av beläggning av beläggningar",
+ "@s7d43ee2d5a": {
+  "x-mt": true
+ },
  "s22c960ff4f": "Logga in med en kod",
  "@s22c960ff4f": {
+  "x-mt": true
+ },
+ "scb167ce8b1": "o vi själva. vi.. Vi.. Vi. Vi.. Vi. Vi. Vi.. Vi.. Vi. Vi.. Vi.. Vi.. Vi.. Vi.. Vi. Vi.. Vi. Vi. Vi.. Vi. Vi. Vi.. Vi. Vi.. Vi.. Vi... Vi.. Vi... Vi.. Vi... Vi.. Vi.. Vi.. Vi. Vi.... Vi. Vi.. Vi... Vi.. Vi.... Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi.... Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi.. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi.",
+ "@scb167ce8b1": {
   "x-mt": true
  },
  "s7d29d1dfbd": "Vi mailar dig en kod. Inget lösenord som behövs för att logga in.",
@@ -617,6 +711,10 @@
  "s14d85b9e32": "Logga in",
  "saa1e3d1f13": "Skicka en ny kod",
  "@saa1e3d1f13": {
+  "x-mt": true
+ },
+ "se1be2ec8e5": "o-logga in med ett lösenord",
+ "@se1be2ec8e5": {
   "x-mt": true
  },
  "s8c48f847f6": "Återställ lösenord",
@@ -1009,6 +1107,14 @@
  "@sbf9ee8aaec": {
   "x-mt": true
  },
+ "s9e22388413": "En mer detaljer behövs",
+ "@s9e22388413": {
+  "x-mt": true
+ },
+ "sc8702d4da2": "{p0} berättar inte detta själv. Skriv det nedan och tryck på \"Konnect\".",
+ "@sc8702d4da2": {
+  "x-mt": true
+ },
  "s83f57c7c24": "Fel lösenord",
  "s32e85a0ba2": "Kontrollera lösenordet (fallet frågor). Du kan ändra det i enhetsappen.",
  "@s32e85a0ba2": {
@@ -1221,6 +1327,10 @@
   "x-mt": true
  },
  "sba10f23f03": "Ansluter…",
+ "s46c87a553f": "Logga in på kameran",
+ "@s46c87a553f": {
+  "x-mt": true
+ },
  "se4095d7d95": "Enhetens lösenord",
  "sdbdf676485": "Anslut",
  "s200542b930": "Försök igen",
@@ -1403,14 +1513,43 @@
   "x-mt": true
  },
  "s9630135746": "Slå på",
+ "sbcdff8f72a": "Vilken kamera har du?",
+ "@sbcdff8f72a": {
+  "x-mt": true
+ },
+ "s67bf18fb6f": "Övrig kamera (ONVIF)",
+ "@s67bf18fb6f": {
+  "x-mt": true
+ },
+ "s772c158a57": "TCP",
+ "@s772c158a57": {
+  "x-mt": true
+ },
+ "sea00017814": "låg latens",
+ "@sea00017814": {
+  "x-mt": true
+ },
+ "s2d65587b87": "8",
  "s2ad22696ca": "Språk",
  "s7efc5653d2": "Enhetens språk",
  "s4529c1010a": "Välj en kameraanslutning",
  "@s4529c1010a": {
   "x-mt": true
  },
+ "s98bf81bba3": "Live video fungerar inte på den här enheten",
+ "@s98bf81bba3": {
+  "x-mt": true
+ },
+ "seb2bb5cbce": "Live video visar bara på hemnätverket. Denna kamera har ingen stillbild för fjärranvändning.",
+ "@seb2bb5cbce": {
+  "x-mt": true
+ },
  "sc95fb5440b": "Stream slutade",
  "@sc95fb5440b": {
+  "x-mt": true
+ },
+ "sd55dd196f6": "Ingen live-video. Kontrollera att du är på hemmanätverket och RTSP är på i kameran.",
+ "@sd55dd196f6": {
   "x-mt": true
  },
  "s306729fe62": "Inga priser",
@@ -1779,7 +1918,6 @@
  "@s357fc9c3fe": {
   "x-mt": true
  },
- "seeb6c38c8e": "Kamera",
  "s14da6beba5": "Visar en läsning, t.ex. temperatur.",
  "@s14da6beba5": {
   "x-mt": true
@@ -2136,7 +2274,47 @@
  "@s97f46743e0": {
   "x-mt": true
  },
+ "sda9203de80": "lokaler och inställningar ",
+ "@sda9203de80": {
+  "x-mt": true
+ },
+ "s8b3e63da21": "o skapa kontot ›",
+ "@s8b3e63da21": {
+  "x-mt": true
+ },
+ "s887c293cad": "lokala grepp om odlingar för odlingar",
+ "@s887c293cad": {
+  "x-mt": true
+ },
+ "s84a087a679": "l.......",
+ "@s84a087a679": {
+  "x-mt": true
+ },
  "s907220900d": "Välkommen till Molaplan",
+ "s845ec6276f": "lokalisering av",
+ "@s845ec6276f": {
+  "x-mt": true
+ },
+ "s9dfa93453b": "o----------------------------------",
+ "@s9dfa93453b": {
+  "x-mt": true
+ },
+ "s6aa51b28a5": "lokaler och e-poster",
+ "@s6aa51b28a5": {
+  "x-mt": true
+ },
+ "sc6f02b69d3": "o inloggning/inloggning/inloggning/inloggning/inloggning/inloggning/ in",
+ "@sc6f02b69d3": {
+  "x-mt": true
+ },
+ "sc777bde66f": "lokala försvarslösningar Försvårigheter Försvårigheter Försvårigheter Försvårigheter Försvårigheter",
+ "@sc777bde66f": {
+  "x-mt": true
+ },
+ "se2e5ff2c8a": "lokalisering utan ett konto",
+ "@se2e5ff2c8a": {
+  "x-mt": true
+ },
  "sb8934a5835": "Elförbrukning",
  "s5409dc748f": "Räknas inte",
  "sf0bbcc217b": "Hela fastigheten",
@@ -2387,6 +2565,10 @@
  "sc48f5f9bcf": "Välj bild",
  "sf55eee73b8": "Ändra bild",
  "@sf55eee73b8": {
+  "x-mt": true
+ },
+ "sf6723451b9": "Ta foto",
+ "@sf6723451b9": {
   "x-mt": true
  },
  "sdd957ccc1b": "Ta bort bild",
@@ -2703,12 +2885,20 @@
  "@sb2821916bc": {
   "x-mt": true
  },
- "sad3975b3c1": "Kamera (MJPEG / JPEG)",
- "@sad3975b3c1": {
+ "s58648dc3fc": "Kamera (MJPEG / JPEG / RTSP)",
+ "@s58648dc3fc": {
   "x-mt": true
  },
  "s1534821f4a": "Kamerabas URL",
  "@s1534821f4a": {
+  "x-mt": true
+ },
+ "s95533426a3": "RTSP-adress (levande video hemma)",
+ "@s95533426a3": {
+  "x-mt": true
+ },
+ "sa1115d4b0b": "RTSP-adress, ljus (kort)",
+ "@sa1115d4b0b": {
   "x-mt": true
  },
  "se995a6862d": "Läge",
@@ -3817,58 +4007,6 @@
  "sfb0b971c01": "Svängning",
  "s3a38b97f7b": "{p0} – rum",
  "@s3a38b97f7b": {
-  "x-mt": true
- },
- "s7d43ee2d5a": "lokalisering av beläggning av beläggningar",
- "@s7d43ee2d5a": {
-  "x-mt": true
- },
- "scb167ce8b1": "o vi själva. vi.. Vi.. Vi. Vi.. Vi. Vi. Vi.. Vi.. Vi. Vi.. Vi.. Vi.. Vi.. Vi.. Vi. Vi.. Vi. Vi. Vi.. Vi. Vi. Vi.. Vi. Vi.. Vi.. Vi... Vi.. Vi... Vi.. Vi... Vi.. Vi.. Vi.. Vi. Vi.... Vi. Vi.. Vi... Vi.. Vi.... Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi.... Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi.. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi.",
- "@scb167ce8b1": {
-  "x-mt": true
- },
- "se1be2ec8e5": "o-logga in med ett lösenord",
- "@se1be2ec8e5": {
-  "x-mt": true
- },
- "sda9203de80": "lokaler och inställningar ",
- "@sda9203de80": {
-  "x-mt": true
- },
- "s8b3e63da21": "o skapa kontot ›",
- "@s8b3e63da21": {
-  "x-mt": true
- },
- "s887c293cad": "lokala grepp om odlingar för odlingar",
- "@s887c293cad": {
-  "x-mt": true
- },
- "s84a087a679": "l.......",
- "@s84a087a679": {
-  "x-mt": true
- },
- "s845ec6276f": "lokalisering av",
- "@s845ec6276f": {
-  "x-mt": true
- },
- "s9dfa93453b": "o----------------------------------",
- "@s9dfa93453b": {
-  "x-mt": true
- },
- "s6aa51b28a5": "lokaler och e-poster",
- "@s6aa51b28a5": {
-  "x-mt": true
- },
- "sc6f02b69d3": "o inloggning/inloggning/inloggning/inloggning/inloggning/inloggning/ in",
- "@sc6f02b69d3": {
-  "x-mt": true
- },
- "sc777bde66f": "lokala försvarslösningar Försvårigheter Försvårigheter Försvårigheter Försvårigheter Försvårigheter",
- "@sc777bde66f": {
-  "x-mt": true
- },
- "se2e5ff2c8a": "lokalisering utan ett konto",
- "@se2e5ff2c8a": {
   "x-mt": true
  }
 }

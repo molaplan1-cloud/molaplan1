@@ -1,6 +1,10 @@
 import '../devices/registry.dart';
 import 'dart:async';
 import 'dart:convert';
+import 'dart:isolate';
+import 'dart:typed_data';
+
+import 'package:image/image.dart' as img;
 
 import '../core/friendly_error.dart';
 import '../drivers/camera_driver.dart';
@@ -12,6 +16,20 @@ import 'protocol.dart';
 
 /// Largest camera frame sent over the relay (base64 must fit in a 1 MB frame).
 const maxRemoteImageBytes = 700 * 1024;
+
+/// A big camera picture (4–8 MP) made small enough for the relay: max 1280 px wide, JPEG.
+/// Returns null when it cannot be decoded.
+Future<Uint8List?> shrinkForRemote(Uint8List jpeg) => Isolate.run(() {
+  final im = img.decodeImage(jpeg);
+  if (im == null) return null;
+  var q = 75;
+  var out = img.encodeJpg(im.width > 1280 ? img.copyResize(im, width: 1280) : im, quality: q);
+  while (out.length > maxRemoteImageBytes && q > 35) {
+    q -= 15;
+    out = img.encodeJpg(img.copyResize(im, width: (im.width > 960 ? 960 : im.width)), quality: q);
+  }
+  return out.length > maxRemoteImageBytes ? null : out;
+});
 
 /// Runs remote requests with the normal drivers, on the bridge's LAN.
 /// Drivers are cached per connection config and closed after [idle].
@@ -95,9 +113,10 @@ class RemoteExecutor {
       case 'snapshot':
         if (d is! CameraDriver) throw DriverException('Not a camera');
         final path = (spec['path'] ?? '').toString();
-        final bytes = (spec['mode'] ?? 'mjpeg') == 'snapshot'
+        var bytes = (spec['mode'] ?? 'mjpeg') == 'snapshot'
             ? await d.snapshot(path)
             : await d.mjpeg(path).first.timeout(const Duration(seconds: 10));
+        if (bytes.length > maxRemoteImageBytes) bytes = await shrinkForRemote(bytes) ?? bytes;
         if (bytes.length > maxRemoteImageBytes) {
           throw DriverException(
             'Image too large for remote (${bytes.length ~/ 1024} KB) – lower the camera resolution',

@@ -11,6 +11,7 @@ import 'package:molaplan/models/models.dart';
 import 'package:molaplan/state/app_state.dart';
 import 'package:molaplan/state/storage.dart';
 import 'package:molaplan/state/tile_images.dart';
+import 'package:molaplan/ui/app_scope.dart';
 import 'package:molaplan/ui/tile_look.dart';
 import 'package:molaplan/ui/tile_visuals.dart';
 
@@ -258,5 +259,52 @@ void main() {
     expect(tester.takeException(), isNull);
     await tester.pumpWidget(const SizedBox());
     await tester.pump(const Duration(seconds: 3));
+  });
+
+  testWidgets('"Ota kuva": a camera photo becomes the tile background (Android/iOS only)', (tester) async {
+    tester.view.physicalSize = const Size(400, 900);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    final was = cameraCaptureAvailable;
+    cameraCaptureAvailable = true;
+    var asked = 0;
+    takeTilePhoto = () async {
+      asked++;
+      return _photo(1600, 1200, base: 90);
+    };
+    addTearDown(() => cameraCaptureAvailable = was);
+    final (st, _) = await state([light()], {'light': 'off'});
+    final t = st.config.dashboards.first.tiles.first;
+    await tester.pumpWidget(MolaplanApp(state: st));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('control-menu')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('control-edit')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byIcon(Icons.palette_outlined));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.byKey(const ValueKey('look-take-photo')));
+    await tester.tap(find.byKey(const ValueKey('look-take-photo')));
+    for (var i = 0; i < 20 && t.bgImage == null; i++) {
+      await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 100)));
+      await tester.pump();
+    }
+    expect(asked, 1);
+    expect(t.bgImage, isNotNull);
+    expect(st.images.cached(t.bgImage!)!.length, lessThanOrEqualTo(tileImageMaxBytes));
+    await tester.pumpWidget(const SizedBox());
+    await tester.pump(const Duration(seconds: 3));
+  });
+
+  testWidgets('no "Ota kuva" where there is no camera picker (Windows)', (tester) async {
+    final was = cameraCaptureAvailable;
+    cameraCaptureAvailable = false;
+    addTearDown(() => cameraCaptureAvailable = was);
+    final (st, _) = await state([light()], {'light': 'off'});
+    final t = st.config.dashboards.first.tiles.first;
+    await tester.pumpWidget(MaterialApp(home: AppScope(state: st, child: Scaffold(body: TileLookSheet(tile: t)))));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('look-pick-image')), findsOneWidget);
+    expect(find.byKey(const ValueKey('look-take-photo')), findsNothing);
   });
 }

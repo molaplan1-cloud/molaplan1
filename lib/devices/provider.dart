@@ -24,6 +24,8 @@ enum AddProblem {
   notThisBrand,
   needsPassword,
   wrongPassword,
+  /// A detail the device does not tell by itself (Sonoff DIY device id); see [DeviceProvider.credFields].
+  needsDetails,
   buttonNotPressed,
   nothingToAdd,
   cloudBadKey,
@@ -122,8 +124,13 @@ abstract class DeviceProvider {
   String get pairHelpEn => '';
   Duration get pairWindow => const Duration(seconds: 60);
 
-  /// Cloud login fields (server, key, ...).
+  /// Cloud login fields (server, key, ...). For local devices: extra fields shown together with
+  /// the password (camera username) or when [AddProblem.needsDetails] is raised.
   List<CredField> get credFields => const [];
+
+  /// A device found with mDNS ([label] = instance name without the service). Null = not this brand.
+  Candidate? fromMdns(String address, String label, String service) =>
+      Candidate(provider: id, address: address, id: label, name: label);
 
   String name(String lang) => tr(lang, fi, en);
   String desc(String lang) => tr(lang, descFi, descEn);

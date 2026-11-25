@@ -184,6 +184,37 @@
  "s66ea783264": "Poca variación (+1 / −1 °C). Una buena opción por defecto.",
  "see96226e44": "Confort",
  "sb403e00b3d": "Temperatura casi constante (+0,5 / −0,5 °C). Ahorra un poco.",
+ "sd86b823895": "Sonoff",
+ "s5f297ec9d8": "BASIC, MINI, POW, TH, 4CH... en modo DIY, con Tasmota o ESPHome. Las tarjetas están hechas para usted; uso remoto a través del puente casero.",
+ "@s5f297ec9d8": {
+  "x-mt": true
+ },
+ "s60e829b1b0": "eWeLink app → device → Ajustes muestra la dirección IP, o la lista de dispositivos de tu router. En modo DIY también necesitas el ID de dispositivo (10 caracteres).",
+ "@s60e829b1b0": {
+  "x-mt": true
+ },
+ "s6a46e8954d": "Un Sonoff en modo DIY sólo responde cuando se le dice a su ID de dispositivo. Encuéntralo en la aplicación eWeLink: dispositivo → Ajustes → ID de dispositivo. Tasmota: la contraseña web, si se establece.",
+ "@s6a46e8954d": {
+  "x-mt": true
+ },
+ "sea057f1a02": "Sólo en modo DIY cuando la búsqueda no encontró el dispositivo.",
+ "@sea057f1a02": {
+  "x-mt": true
+ },
+ "s08d04d58a9": "Canal {p0}",
+ "@s08d04d58a9": {
+  "x-mt": true
+ },
+ "s8653f173b6": "Temperatura",
+ "@s8653f173b6": {
+  "x-mt": true
+ },
+ "s9cb8820285": "Humedad",
+ "@s9cb8820285": {
+  "x-mt": true
+ },
+ "s4899323b9a": "Potencia",
+ "se78754330c": "potencia",
  "s0bf7cb1613": "Philips Hue",
  "se17d4e4197": "Puente de Hue y sus luces (también las luces de Zigbee se unieron a él). Pareja con el botón puente.",
  "@se17d4e4197": {
@@ -206,12 +237,6 @@
  },
  "s3832b8c729": "toda la habitación",
  "see129fb410": "brillo",
- "s08d04d58a9": "Canal {p0}",
- "@s08d04d58a9": {
-  "x-mt": true
- },
- "se78754330c": "potencia",
- "s4899323b9a": "Potencia",
  "sb9964cfb3b": "Potencia {p0}",
  "sfcb44be1a0": "Shelly",
  "sa6ff717527": "Relés y enchufes: Pro 4PM, Plus 1PM, Plug S, 2.5... encontrado automáticamente, fichas para cada canal.",
@@ -277,6 +302,67 @@
  },
  "sa376ec78ec": "Luz",
  "sda8d9bf1cd": "Enchufe",
+ "s0185672be7": "El usuario de la cámara (generalmente admin) y la contraseña que se establece al activarla.",
+ "@s0185672be7": {
+  "x-mt": true
+ },
+ "s814f4633e3": "Administrador de usuario. Imou: la contraseña es el \"código de seguridad\" en la etiqueta de la cámara o la contraseña del dispositivo.",
+ "@s814f4633e3": {
+  "x-mt": true
+ },
+ "s4450807111": "El usuario de la cámara en la aplicación Reolink (generalmente admin) y su contraseña.",
+ "@s4450807111": {
+  "x-mt": true
+ },
+ "s1095c54819": "Aplicación de enlace → cámara → Configuración → Red → Avanzado → Ajustes del servidor: encienda HTTP y RTSP. Las cámaras de batería (Argus) no son compatibles.",
+ "@s1095c54819": {
+  "x-mt": true
+ },
+ "sc79a5fee2b": "Tapo app → cámara → Ajustes avanzados → Cuenta de cámara. Crear un usuario y contraseña allí y escribirlos aquí (no tu login en la nube de Tapo).",
+ "@sc79a5fee2b": {
+  "x-mt": true
+ },
+ "s174e06b97c": "Primero crea una cuenta de cámara: Tapo app → cámara → Ajustes avanzados → Cuenta de cámara.",
+ "@s174e06b97c": {
+  "x-mt": true
+ },
+ "s21da6fb5dc": "Administrador de usuario; la contraseña es el código de verificación de 6 letras en la etiqueta de la cámara.",
+ "@s21da6fb5dc": {
+  "x-mt": true
+ },
+ "s1866ef6dc8": "Aplicación Ezviz → cámara → Ajustes → LAN Vista en vivo / RTSP: encienda (si la opción existe).",
+ "@s1866ef6dc8": {
+  "x-mt": true
+ },
+ "s1c2786e15f": "El usuario de la cámara y la contraseña (a menudo admin). ONVIF puede necesitar ser habilitado en la configuración de la cámara.",
+ "@s1c2786e15f": {
+  "x-mt": true
+ },
+ "s32270de47a": "Cámara de seguridad",
+ "@s32270de47a": {
+  "x-mt": true
+ },
+ "s4d3ff251d6": "Hikvision, Dahua, Reolink, Tapo, Ezviz o cualquier cámara ONVIF. Imagen en una tarjeta, video en vivo en casa.",
+ "@s4d3ff251d6": {
+  "x-mt": true
+ },
+ "se8ea97c5eb": "En la aplicación de cámara (información del dispositivo) o en la lista de dispositivos del router.",
+ "@se8ea97c5eb": {
+  "x-mt": true
+ },
+ "s1577068729": "cámara",
+ "@s1577068729": {
+  "x-mt": true
+ },
+ "seeb6c38c8e": "Cámara",
+ "s136c6f0d2b": "Imagen en la tarjeta, video en vivo en casa",
+ "@s136c6f0d2b": {
+  "x-mt": true
+ },
+ "s2101774157": "Video en vivo en casa (sin imagen)",
+ "@s2101774157": {
+  "x-mt": true
+ },
  "sb662db81d8": "La dirección se ve incompleta. Use cuatro números con puntos, por ejemplo 192.168.1.50.",
  "@sb662db81d8": {
   "x-mt": true
@@ -598,8 +684,16 @@
   "x-mt": true
  },
  "scf7e14661c": "Atrás",
+ "s7d43ee2d5a": "Crear una cuenta o iniciar sesión",
+ "@s7d43ee2d5a": {
+  "x-mt": true
+ },
  "s22c960ff4f": "Inicia sesión con un código",
  "@s22c960ff4f": {
+  "x-mt": true
+ },
+ "scb167ce8b1": "Escriba su correo electrónico y le enviaremos un código. No se necesita contraseña. Si aún no tiene cuenta, se crea uno y la configuración de este dispositivo se mueve en él.",
+ "@scb167ce8b1": {
   "x-mt": true
  },
  "s7d29d1dfbd": "Te enviamos un código. No hay contraseña necesaria para iniciar sesión.",
@@ -617,6 +711,10 @@
  "s14d85b9e32": "Iniciar sesión",
  "saa1e3d1f13": "Enviar un nuevo código",
  "@saa1e3d1f13": {
+  "x-mt": true
+ },
+ "se1be2ec8e5": "Inicia sesión con una contraseña",
+ "@se1be2ec8e5": {
   "x-mt": true
  },
  "s8c48f847f6": "Reiniciar contraseña",
@@ -1009,6 +1107,14 @@
  "@sbf9ee8aaec": {
   "x-mt": true
  },
+ "s9e22388413": "Se necesita un detalle más",
+ "@s9e22388413": {
+  "x-mt": true
+ },
+ "sc8702d4da2": "{p0} no lo dice por sí mismo. Escribe abajo y pulsa \"Connect\".",
+ "@sc8702d4da2": {
+  "x-mt": true
+ },
  "s83f57c7c24": "Contraseña incorrecta",
  "s32e85a0ba2": "Compruebe la contraseña (cuestión de casos). Puede cambiarla en la aplicación del dispositivo.",
  "@s32e85a0ba2": {
@@ -1221,6 +1327,10 @@
   "x-mt": true
  },
  "sba10f23f03": "Conectando…",
+ "s46c87a553f": "Inicia sesión en la cámara",
+ "@s46c87a553f": {
+  "x-mt": true
+ },
  "se4095d7d95": "Contraseña del dispositivo",
  "sdbdf676485": "Conectar",
  "s200542b930": "Reintentar",
@@ -1403,14 +1513,43 @@
   "x-mt": true
  },
  "s9630135746": "Activar",
+ "sbcdff8f72a": "¿Qué cámara tienes?",
+ "@sbcdff8f72a": {
+  "x-mt": true
+ },
+ "s67bf18fb6f": "Otra cámara (ONVIF)",
+ "@s67bf18fb6f": {
+  "x-mt": true
+ },
+ "s772c158a57": "tcp",
+ "@s772c158a57": {
+  "x-mt": true
+ },
+ "sea00017814": "baja latencia",
+ "@sea00017814": {
+  "x-mt": true
+ },
+ "s2d65587b87": "8",
  "s2ad22696ca": "Idioma",
  "s7efc5653d2": "Idioma del dispositivo",
  "s4529c1010a": "Elija una conexión de cámara",
  "@s4529c1010a": {
   "x-mt": true
  },
+ "s98bf81bba3": "El vídeo en vivo no funciona en este dispositivo",
+ "@s98bf81bba3": {
+  "x-mt": true
+ },
+ "seb2bb5cbce": "El vídeo en vivo sólo muestra en la red de la casa. Esta cámara no tiene todavía imagen para uso remoto.",
+ "@seb2bb5cbce": {
+  "x-mt": true
+ },
  "sc95fb5440b": "Corriente terminada",
  "@sc95fb5440b": {
+  "x-mt": true
+ },
+ "sd55dd196f6": "No hay video en vivo. Compruebe que usted está en la red de la casa y RTSP está en la cámara.",
+ "@sd55dd196f6": {
   "x-mt": true
  },
  "s306729fe62": "No hay precios",
@@ -1779,7 +1918,6 @@
  "@s357fc9c3fe": {
   "x-mt": true
  },
- "seeb6c38c8e": "Cámara",
  "s14da6beba5": "Muestra una lectura, por ejemplo, temperatura.",
  "@s14da6beba5": {
   "x-mt": true
@@ -2136,7 +2274,47 @@
  "@s97f46743e0": {
   "x-mt": true
  },
+ "sda9203de80": "No cuenta – sólo en este dispositivo. ",
+ "@sda9203de80": {
+  "x-mt": true
+ },
+ "s8b3e63da21": "Crear cuenta ›",
+ "@s8b3e63da21": {
+  "x-mt": true
+ },
+ "s887c293cad": "Dispositivo añadido!",
+ "@s887c293cad": {
+  "x-mt": true
+ },
+ "s84a087a679": "Cree una cuenta para que sus ajustes se mantengan y se muevan a sus otros dispositivos. Sólo toma un código de correo electrónico, no se necesita contraseña.",
+ "@s84a087a679": {
+  "x-mt": true
+ },
  "s907220900d": "Bienvenido a Molaplan",
+ "s845ec6276f": "Su configuración en todos sus dispositivos",
+ "@s845ec6276f": {
+  "x-mt": true
+ },
+ "s9dfa93453b": "Nada se pierde cuando cambias de teléfono",
+ "@s9dfa93453b": {
+  "x-mt": true
+ },
+ "s6aa51b28a5": "Las contraseñas de dispositivo están encriptadas",
+ "@s6aa51b28a5": {
+  "x-mt": true
+ },
+ "sc6f02b69d3": "Crear cuenta / Iniciar sesión",
+ "@sc6f02b69d3": {
+  "x-mt": true
+ },
+ "sc777bde66f": "Con un código de correo electrónico – sin contraseña.",
+ "@sc777bde66f": {
+  "x-mt": true
+ },
+ "se2e5ff2c8a": "Continuar sin una cuenta",
+ "@se2e5ff2c8a": {
+  "x-mt": true
+ },
  "sb8934a5835": "Consumo eléctrico",
  "s5409dc748f": "No se cuenta",
  "sf0bbcc217b": "Toda la vivienda",
@@ -2387,6 +2565,10 @@
  "sc48f5f9bcf": "Elegir imagen",
  "sf55eee73b8": "Cambiar imagen",
  "@sf55eee73b8": {
+  "x-mt": true
+ },
+ "sf6723451b9": "Toma la foto",
+ "@sf6723451b9": {
   "x-mt": true
  },
  "sdd957ccc1b": "Quitar la imagen",
@@ -2703,12 +2885,20 @@
  "@sb2821916bc": {
   "x-mt": true
  },
- "sad3975b3c1": "Cámara (MJPEG / JPEG)",
- "@sad3975b3c1": {
+ "s58648dc3fc": "Cámara (MJPEG / JPEG / RTSP)",
+ "@s58648dc3fc": {
   "x-mt": true
  },
  "s1534821f4a": "Base de la cámara URL",
  "@s1534821f4a": {
+  "x-mt": true
+ },
+ "s95533426a3": "Dirección RTSP (vídeo en vivo en casa)",
+ "@s95533426a3": {
+  "x-mt": true
+ },
+ "sa1115d4b0b": "Dirección RTSP, luz (tarjeta)",
+ "@sa1115d4b0b": {
   "x-mt": true
  },
  "se995a6862d": "Modo",
@@ -3817,58 +4007,6 @@
  "sfb0b971c01": "Oscilación",
  "s3a38b97f7b": "{p0} – room",
  "@s3a38b97f7b": {
-  "x-mt": true
- },
- "s7d43ee2d5a": "Crear una cuenta o iniciar sesión",
- "@s7d43ee2d5a": {
-  "x-mt": true
- },
- "scb167ce8b1": "Escriba su correo electrónico y le enviaremos un código. No se necesita contraseña. Si aún no tiene cuenta, se crea uno y la configuración de este dispositivo se mueve en él.",
- "@scb167ce8b1": {
-  "x-mt": true
- },
- "se1be2ec8e5": "Inicia sesión con una contraseña",
- "@se1be2ec8e5": {
-  "x-mt": true
- },
- "sda9203de80": "No cuenta – sólo en este dispositivo. ",
- "@sda9203de80": {
-  "x-mt": true
- },
- "s8b3e63da21": "Crear cuenta ›",
- "@s8b3e63da21": {
-  "x-mt": true
- },
- "s887c293cad": "Dispositivo añadido!",
- "@s887c293cad": {
-  "x-mt": true
- },
- "s84a087a679": "Cree una cuenta para que sus ajustes se mantengan y se muevan a sus otros dispositivos. Sólo toma un código de correo electrónico, no se necesita contraseña.",
- "@s84a087a679": {
-  "x-mt": true
- },
- "s845ec6276f": "Su configuración en todos sus dispositivos",
- "@s845ec6276f": {
-  "x-mt": true
- },
- "s9dfa93453b": "Nada se pierde cuando cambias de teléfono",
- "@s9dfa93453b": {
-  "x-mt": true
- },
- "s6aa51b28a5": "Las contraseñas de dispositivo están encriptadas",
- "@s6aa51b28a5": {
-  "x-mt": true
- },
- "sc6f02b69d3": "Crear cuenta / Iniciar sesión",
- "@sc6f02b69d3": {
-  "x-mt": true
- },
- "sc777bde66f": "Con un código de correo electrónico – sin contraseña.",
- "@sc777bde66f": {
-  "x-mt": true
- },
- "se2e5ff2c8a": "Continuar sin una cuenta",
- "@se2e5ff2c8a": {
   "x-mt": true
  }
 }

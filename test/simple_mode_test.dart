@@ -69,7 +69,12 @@ void main() {
     expect(find.byKey(const ValueKey('home-add-device')), findsOneWidget);
     await tester.tap(find.byKey(const ValueKey('home-add-device')));
     await tester.pumpAndSettle();
-    expect(find.text('Tasmota-laite'), findsOneWidget, reason: 'goes straight to brand/device picker');
+    expect(find.byKey(const ValueKey('brand-sonoff')), findsOneWidget, reason: 'goes straight to brand/device picker');
+    for (var i = 0; i < 8 && find.text('Tasmota-laite').evaluate().isEmpty; i++) {
+      await tester.drag(find.byType(CustomScrollView), const Offset(0, -300));
+      await tester.pumpAndSettle();
+    }
+    expect(find.text('Tasmota-laite'), findsOneWidget);
     expect(find.text('Muu wifi-laite (HTTP)'), findsNothing);
   });
 
@@ -89,7 +94,10 @@ void main() {
     await tester.pumpWidget(
       AppScope(
         state: st,
-        child: MaterialApp(theme: molaplanTheme(), home: PriceRulePage(tile: tile, prices: prices)),
+        child: MaterialApp(
+          theme: molaplanTheme(),
+          home: PriceRulePage(tile: tile, prices: prices),
+        ),
       ),
     );
     await tester.pumpAndSettle();

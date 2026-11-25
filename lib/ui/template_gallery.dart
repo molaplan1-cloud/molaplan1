@@ -7,6 +7,7 @@ import 'package:material_ui/material_ui.dart';
 import '../core/discovery.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
+import '../devices/cameras.dart';
 import '../devices/registry.dart';
 import '../templates/device_templates.dart';
 import 'add_device_wizard.dart';
@@ -195,10 +196,16 @@ class _TemplateGridState extends State<TemplateGrid> {
                         title: p.name(lang),
                         desc: p.desc(lang),
                         onTap: () async {
-                          if (widget.onBrand != null) return widget.onBrand!(p);
+                          var pick = p;
+                          if (p is CameraChooser) {
+                            final c = await pickCameraBrand(context);
+                            if (c == null || !context.mounted) return;
+                            pick = c;
+                          }
+                          if (widget.onBrand != null) return widget.onBrand!(pick);
                           await Navigator.push<bool>(
                             context,
-                            MaterialPageRoute(builder: (_) => AddDeviceWizard(provider: p)),
+                            MaterialPageRoute(builder: (_) => AddDeviceWizard(provider: pick)),
                           );
                         },
                       ),
@@ -831,3 +838,31 @@ Future<void> askAdvanced(BuildContext context) async {
   );
   if (ok == true && context.mounted) await AppScope.read(context).setAdvanced(true);
 }
+
+/// "Which camera do you have?" – one tap per brand, "Muu" = any ONVIF camera.
+Future<DeviceProvider?> pickCameraBrand(BuildContext context) => showModalBottomSheet<DeviceProvider>(
+  context: context,
+  showDragHandle: true,
+  isScrollControlled: true,
+  builder: (c) => SafeArea(
+    child: ListView(
+      key: const ValueKey('camera-brands'),
+      shrinkWrap: true,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
+          child: Text(tx(c, 'Mikä kamera sinulla on?', 'Which camera do you have?'), style: Theme.of(c).textTheme.titleLarge),
+        ),
+        for (final p in cameraProviders)
+          ListTile(
+            key: ValueKey('camera-brand-${p.preset.id}'),
+            leading: const Icon(Icons.videocam_outlined),
+            title: Text(p.preset.id == 'onvif' ? tx(c, 'Muu kamera (ONVIF)', 'Other camera (ONVIF)') : p.preset.name),
+            subtitle: p.preset.setupFi.isEmpty ? null : Text(tx(c, p.preset.setupFi, p.preset.setupEn), maxLines: 3),
+            onTap: () => Navigator.pop(c, p),
+          ),
+        const SizedBox(height: 8),
+      ],
+    ),
+  ),
+);

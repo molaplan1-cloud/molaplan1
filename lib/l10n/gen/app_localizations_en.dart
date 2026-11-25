@@ -188,6 +188,42 @@ class AppLocalizationsEn extends AppLocalizations {
       'Almost even temperature (+0.5 / −0.5 °C). Saves a little.';
 
   @override
+  String get sd86b823895 => 'Sonoff';
+
+  @override
+  String get s5f297ec9d8 =>
+      'BASIC, MINI, POW, TH, 4CH… in DIY mode, with Tasmota or ESPHome. Tiles are made for you; remote use via the home bridge.';
+
+  @override
+  String get s60e829b1b0 =>
+      'eWeLink app → device → Settings shows the IP address, or your router\'s device list. In DIY mode you also need the Device ID (10 characters).';
+
+  @override
+  String get s6a46e8954d =>
+      'A Sonoff in DIY mode only answers when told its Device ID. Find it in the eWeLink app: device → Settings → Device ID. Tasmota: the web password, if set.';
+
+  @override
+  String get sea057f1a02 =>
+      'Only in DIY mode when the search did not find the device.';
+
+  @override
+  String s08d04d58a9(String p0) {
+    return 'Channel $p0';
+  }
+
+  @override
+  String get s8653f173b6 => 'Temperature';
+
+  @override
+  String get s9cb8820285 => 'Humidity';
+
+  @override
+  String get s4899323b9a => 'Power';
+
+  @override
+  String get se78754330c => 'power';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -221,17 +257,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get see129fb410 => 'brightness';
-
-  @override
-  String s08d04d58a9(String p0) {
-    return 'Channel $p0';
-  }
-
-  @override
-  String get se78754330c => 'power';
-
-  @override
-  String get s4899323b9a => 'Power';
 
   @override
   String sb9964cfb3b(String p0) {
@@ -314,6 +339,65 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sda8d9bf1cd => 'Plug';
+
+  @override
+  String get s0185672be7 =>
+      'The camera user (usually admin) and the password you set when activating it.';
+
+  @override
+  String get s814f4633e3 =>
+      'User admin. Imou: the password is the \"Safety code\" on the camera label or the device password.';
+
+  @override
+  String get s4450807111 =>
+      'The camera user in the Reolink app (usually admin) and its password.';
+
+  @override
+  String get s1095c54819 =>
+      'Reolink app → camera → Settings → Network → Advanced → Server settings: turn on HTTP and RTSP. Battery cameras (Argus) are not supported.';
+
+  @override
+  String get sc79a5fee2b =>
+      'Tapo app → camera → Advanced settings → Camera account. Create a user and password there and type them here (not your Tapo cloud login).';
+
+  @override
+  String get s174e06b97c =>
+      'First create a camera account: Tapo app → camera → Advanced settings → Camera account.';
+
+  @override
+  String get s21da6fb5dc =>
+      'User admin; the password is the 6-letter verification code on the camera label.';
+
+  @override
+  String get s1866ef6dc8 =>
+      'Ezviz app → camera → Settings → LAN Live View / RTSP: turn it on (if the option exists).';
+
+  @override
+  String get s1c2786e15f =>
+      'The camera user and password (often admin). ONVIF may need to be enabled in the camera settings.';
+
+  @override
+  String get s32270de47a => 'Security camera';
+
+  @override
+  String get s4d3ff251d6 =>
+      'Hikvision, Dahua, Reolink, Tapo, Ezviz or any ONVIF camera. Picture on a tile, live video at home.';
+
+  @override
+  String get se8ea97c5eb =>
+      'In the camera app (device info) or your router\'s device list.';
+
+  @override
+  String get s1577068729 => 'camera';
+
+  @override
+  String get seeb6c38c8e => 'Camera';
+
+  @override
+  String get s136c6f0d2b => 'Picture on the tile, live video at home';
+
+  @override
+  String get s2101774157 => 'Live video at home (no picture away)';
 
   @override
   String get sb662db81d8 =>
@@ -1147,6 +1231,14 @@ class AppLocalizationsEn extends AppLocalizations {
       'A password is set on the device. Type it below and tap \"Connect\".';
 
   @override
+  String get s9e22388413 => 'One more detail is needed';
+
+  @override
+  String sc8702d4da2(String p0) {
+    return '$p0 does not tell this by itself. Type it below and tap \"Connect\".';
+  }
+
+  @override
   String get s83f57c7c24 => 'Wrong password';
 
   @override
@@ -1354,6 +1446,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sba10f23f03 => 'Connecting…';
+
+  @override
+  String get s46c87a553f => 'Sign in to the camera';
 
   @override
   String get se4095d7d95 => 'Device password';
@@ -1572,6 +1667,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s9630135746 => 'Turn on';
 
   @override
+  String get sbcdff8f72a => 'Which camera do you have?';
+
+  @override
+  String get s67bf18fb6f => 'Other camera (ONVIF)';
+
+  @override
+  String get s772c158a57 => 'tcp';
+
+  @override
+  String get sea00017814 => 'low-latency';
+
+  @override
+  String get s2d65587b87 => '8';
+
+  @override
   String get s2ad22696ca => 'Language';
 
   @override
@@ -1581,7 +1691,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s4529c1010a => 'Choose a camera connection';
 
   @override
+  String get s98bf81bba3 => 'Live video does not work on this device';
+
+  @override
+  String get seb2bb5cbce =>
+      'Live video shows only on the home network. This camera has no still picture for remote use.';
+
+  @override
   String get sc95fb5440b => 'Stream ended';
+
+  @override
+  String get sd55dd196f6 =>
+      'No live video. Check that you are on the home network and RTSP is on in the camera.';
 
   @override
   String get s306729fe62 => 'No prices';
@@ -1996,9 +2117,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s357fc9c3fe => 'Slider / setpoint';
-
-  @override
-  String get seeb6c38c8e => 'Camera';
 
   @override
   String get s14da6beba5 => 'Shows a reading, e.g. temperature.';
@@ -2789,6 +2907,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sf55eee73b8 => 'Change picture';
 
   @override
+  String get sf6723451b9 => 'Take photo';
+
+  @override
   String get sdd957ccc1b => 'Remove picture';
 
   @override
@@ -3113,10 +3234,16 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get sad3975b3c1 => 'Camera (MJPEG / JPEG)';
+  String get s58648dc3fc => 'Camera (MJPEG / JPEG / RTSP)';
 
   @override
   String get s1534821f4a => 'Camera base URL';
+
+  @override
+  String get s95533426a3 => 'RTSP address (live video at home)';
+
+  @override
+  String get sa1115d4b0b => 'RTSP address, light (tile)';
 
   @override
   String get se995a6862d => 'Mode';

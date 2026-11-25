@@ -188,6 +188,42 @@ class AppLocalizationsEt extends AppLocalizations {
       'Peaaegu ühtlane temperatuur (+0,5 / −0,5 °C). Säästab veidi.';
 
   @override
+  String get sd86b823895 => 'Sonoff';
+
+  @override
+  String get s5f297ec9d8 =>
+      'BASIC, MINI, POW, TH, 4CH... DIY režiimis koos Tasmota või ESPHome\' iga. Kaardid on loodud sinu eest; kaugkasutamine kodusilla kaudu.';
+
+  @override
+  String get s60e829b1b0 =>
+      'eWeLink app → device → Seadistused näitavad IP- aadressi või ruuteri seadmete nimekirja. DIY režiimis on vaja ka Seadme ID- d (10 märki).';
+
+  @override
+  String get s6a46e8954d =>
+      'Sonoff DIY režiimis vastab ainult siis, kui talle öeldakse selle seadme ID. Leia see rakendusest eWeLink: seade → Seadistused → Seadme ID. Tasmota: veebi parool, kui see on määratud.';
+
+  @override
+  String get sea057f1a02 =>
+      'Ainult DIY-režiimis, kui otsing seadet ei leidnud.';
+
+  @override
+  String s08d04d58a9(String p0) {
+    return 'Kanal $p0';
+  }
+
+  @override
+  String get s8653f173b6 => 'Õhutemperatuur';
+
+  @override
+  String get s9cb8820285 => 'Niiskus';
+
+  @override
+  String get s4899323b9a => 'Võimsus';
+
+  @override
+  String get se78754330c => 'võimsus';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -221,17 +257,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get see129fb410 => 'heledus';
-
-  @override
-  String s08d04d58a9(String p0) {
-    return 'Kanal $p0';
-  }
-
-  @override
-  String get se78754330c => 'võimsus';
-
-  @override
-  String get s4899323b9a => 'Võimsus';
 
   @override
   String sb9964cfb3b(String p0) {
@@ -314,6 +339,65 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sda8d9bf1cd => 'Pistikupesa';
+
+  @override
+  String get s0185672be7 =>
+      'Kaamera kasutaja (tavaliselt admin) ja selle aktiveerimisel määratud parool.';
+
+  @override
+  String get s814f4633e3 =>
+      'Kasutaja administraator. Imou: parool on \"Ohutuskood\" kaamera sildil või seadme parool.';
+
+  @override
+  String get s4450807111 =>
+      'Kaamera kasutaja Reolink rakenduses (tavaliselt admin) ja selle parool.';
+
+  @override
+  String get s1095c54819 =>
+      'Reolink app → camera → Settings → Network → Advanced → Serveri seaded: lülita sisse HTTP ja RTSP. Akukaamerad (Argus) ei ole toetatud.';
+
+  @override
+  String get sc79a5fee2b =>
+      'Tapo rakendus → camera → Muud seadistused → Kaamerakonto. Loo sinna kasutaja ja parool ning kirjuta need siia (mitte oma Tapo pilve sisselogimine).';
+
+  @override
+  String get s174e06b97c =>
+      'Esmalt looge kaamera konto: Tapo app → camera → Advanced settings → Camera konto.';
+
+  @override
+  String get s21da6fb5dc =>
+      'Kasutaja admin; parool on 6-täheline kontrollkood kaamera sildil.';
+
+  @override
+  String get s1866ef6dc8 =>
+      'Ezviz app → camera → Settings → LAN Live View / RTSP: lülita see sisse (kui see on olemas).';
+
+  @override
+  String get s1c2786e15f =>
+      'Kaamera kasutaja ja parool (sageli admin). Kaamera seadistustes võib olla vajalik sisse lülitada ONVIF.';
+
+  @override
+  String get s32270de47a => 'Turvakaamera';
+
+  @override
+  String get s4d3ff251d6 =>
+      'Hikvision, Dahua, Reolink, Tapo, Ezviz või ükskõik milline ONVIF-kaamera. Pilt kaardil, live-video kodus.';
+
+  @override
+  String get se8ea97c5eb =>
+      'Kaamera rakenduses (seadme info) või ruuteri seadmete loendis.';
+
+  @override
+  String get s1577068729 => 'kaamera';
+
+  @override
+  String get seeb6c38c8e => 'Kaamera';
+
+  @override
+  String get s136c6f0d2b => 'Pilt kaardil, live video kodus';
+
+  @override
+  String get s2101774157 => 'Video kodus (ilma pildita)';
 
   @override
   String get sb662db81d8 =>
@@ -1154,6 +1238,14 @@ class AppLocalizationsEt extends AppLocalizations {
       'Seadmele on määratud parool. Kirjuta see alla ja klõpsa nupule \"Ühenda\".';
 
   @override
+  String get s9e22388413 => 'Vaja on veel üht detaili';
+
+  @override
+  String sc8702d4da2(String p0) {
+    return '$p0 ei ütle seda ise. Kirjuta see alla ja puuduta \"Ühenda\".';
+  }
+
+  @override
   String get s83f57c7c24 => 'Vale parool';
 
   @override
@@ -1360,6 +1452,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sba10f23f03 => 'Ühendan…';
+
+  @override
+  String get s46c87a553f => 'Registreeru kaamerasse';
 
   @override
   String get se4095d7d95 => 'Seadme parool';
@@ -1579,6 +1674,21 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s9630135746 => 'Lülita sisse';
 
   @override
+  String get sbcdff8f72a => 'Milline kaamera sul on?';
+
+  @override
+  String get s67bf18fb6f => 'Muu kaamera (ONVIF)';
+
+  @override
+  String get s772c158a57 => 'tcp';
+
+  @override
+  String get sea00017814 => 'madala latentsusega';
+
+  @override
+  String get s2d65587b87 => '8';
+
+  @override
   String get s2ad22696ca => 'Keel';
 
   @override
@@ -1588,7 +1698,18 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s4529c1010a => 'Kaameraühenduse valimine';
 
   @override
+  String get s98bf81bba3 => 'Live video ei tööta selles seadmes';
+
+  @override
+  String get seb2bb5cbce =>
+      'Otseülekannet näidatakse ainult koduvõrgus. Kaameral ei ole kaugkasutamiseks ühtegi pilti.';
+
+  @override
   String get sc95fb5440b => 'Stream lõppes';
+
+  @override
+  String get sd55dd196f6 =>
+      'Otsevideo puudub. Kontrolli, kas oled koduvõrgus ja RTSP on kaameras sees.';
 
   @override
   String get s306729fe62 => 'Hindadeta';
@@ -2003,9 +2124,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s357fc9c3fe => 'Liugur / setpoint';
-
-  @override
-  String get seeb6c38c8e => 'Kaamera';
 
   @override
   String get s14da6beba5 => 'Näitab näitu, nt temperatuuri.';
@@ -2793,6 +2911,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sf55eee73b8 => 'Muuda pilti';
 
   @override
+  String get sf6723451b9 => 'Pildista';
+
+  @override
   String get sdd957ccc1b => 'Eemalda pilt';
 
   @override
@@ -3117,10 +3238,16 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
-  String get sad3975b3c1 => 'Kaamera (MJPEG / JPEG)';
+  String get s58648dc3fc => 'Kaamera (MJPEG / JPEG / RTSP)';
 
   @override
   String get s1534821f4a => 'Kaamera baas- URL';
+
+  @override
+  String get s95533426a3 => 'RTSP aadress (otsevideo kodus)';
+
+  @override
+  String get sa1115d4b0b => 'RTSP aadress, valgus (kaart)';
 
   @override
   String get se995a6862d => 'Režiim';

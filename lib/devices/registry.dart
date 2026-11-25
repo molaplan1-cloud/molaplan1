@@ -1,13 +1,23 @@
+import 'cameras.dart';
 import 'dirigera.dart';
 import 'hue.dart';
 import 'provider.dart';
 import 'shelly.dart';
+import 'sonoff.dart';
 
 export 'provider.dart';
 
-final deviceProviders = <DeviceProvider>[ShellyProvider(), HueProvider(), DirigeraProvider(), ShellyCloudProvider()];
+final deviceProviders = <DeviceProvider>[
+  ShellyProvider(),
+  SonoffProvider(),
+  CameraChooser(),
+  HueProvider(),
+  DirigeraProvider(),
+  ShellyCloudProvider(),
+];
 
-DeviceProvider? providerById(String id) => deviceProviders.where((p) => p.id == id).firstOrNull;
+DeviceProvider? providerById(String id) =>
+    deviceProviders.where((p) => p.id == id).firstOrNull ?? cameraProviders.where((p) => p.id == id).firstOrNull;
 
 /// Brands not built in yet: shown in the picker with the best way to use them today.
 class RoadmapBrand {
@@ -29,8 +39,6 @@ const roadmapBrands = <RoadmapBrand>[
   RoadmapBrand('Z-Wave JS', ['zwave', 'z-wave', 'zwave js'], 'Tulossa. Nyt: Home Assistantin kautta.', 'Coming. Today: via Home Assistant.', useTemplate: 'homeassistant'),
   RoadmapBrand('Tuya / Smart Life', ['tuya', 'smart life', 'smartlife'], 'Tulossa (vaatii Tuya-kehittäjätilin). Nyt: Home Assistantin kautta.',
       'Coming (needs a Tuya developer account). Today: via Home Assistant.', useTemplate: 'homeassistant'),
-  RoadmapBrand('Sonoff eWeLink', ['sonoff', 'ewelink'], 'Tulossa. Nyt: Tasmota-ohjelmistolla tai Home Assistantin kautta.',
-      'Coming. Today: with Tasmota firmware or via Home Assistant.', useTemplate: 'tasmota'),
   RoadmapBrand('Netatmo', ['netatmo', 'termostaatti', 'sää'], 'Tulossa (vaatii Netatmo-kehittäjäsovelluksen). Nyt: Home Assistantin kautta.',
       'Coming (needs a Netatmo developer app). Today: via Home Assistant.', useTemplate: 'homeassistant'),
   RoadmapBrand('NIBE / Thermia (lämpöpumppu)', ['nibe', 'thermia', 'lämpöpumppu', 'maalämpö', 'myuplink'],

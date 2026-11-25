@@ -183,6 +183,16 @@ const _h = <String, FieldHelp>{
   ),
   // ---- camera
   'camera.conn.baseUrl': FieldHelp('Kameran osoite. Esim. http://192.168.1.70', 'Camera address.'),
+  'camera.conn.rtsp': FieldHelp(
+    'Live-video kotiverkossa. {{host}} = kameran osoite; tunnus ja salasana lisätään itse. Esim. rtsp://{{host}}:554/stream1',
+    'Live video at home. {{host}} = the camera address; the login is added for you. E.g. rtsp://{{host}}:554/stream1',
+    advanced: true,
+  ),
+  'camera.conn.rtspSub': FieldHelp(
+    'Kevyempi video ruutuun (alivirta). Tyhjä = sama kuin yllä.',
+    'Lighter video for the tile (sub stream). Empty = same as above.',
+    advanced: true,
+  ),
   'camera.read.mode': FieldHelp(
     'mjpeg = liikkuva kuva, snapshot = still-kuva välein.',
     'mjpeg = live video, snapshot = still images.',

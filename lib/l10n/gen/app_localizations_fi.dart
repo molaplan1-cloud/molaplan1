@@ -189,6 +189,42 @@ class AppLocalizationsFi extends AppLocalizations {
       'Lähes tasainen lämpö (+0,5 / −0,5 °C). Säästää vähän.';
 
   @override
+  String get sd86b823895 => 'Sonoff';
+
+  @override
+  String get s5f297ec9d8 =>
+      'BASIC, MINI, POW, TH, 4CH… DIY-tilassa, Tasmotalla tai ESPHomella. Ruudut tehdään valmiiksi, etänä kotisillan kautta.';
+
+  @override
+  String get s60e829b1b0 =>
+      'eWeLink-sovellus → laite → Asetukset näyttää IP-osoitteen, tai reitittimen laitelista. DIY-tilassa tarvitset myös laitteen tunnuksen (Device ID, 10 merkkiä).';
+
+  @override
+  String get s6a46e8954d =>
+      'DIY-tilan Sonoff vastaa vain, kun sille kerrotaan sen tunnus (Device ID). Se näkyy eWeLink-sovelluksessa: laite → Asetukset → Laitteen tunnus. Tasmota: web-salasana, jos asetettu.';
+
+  @override
+  String get sea057f1a02 =>
+      'Vain DIY-tilassa, jos laitetta ei löytynyt haulla.';
+
+  @override
+  String s08d04d58a9(String p0) {
+    return 'Kanava $p0';
+  }
+
+  @override
+  String get s8653f173b6 => 'Lämpötila';
+
+  @override
+  String get s9cb8820285 => 'Kosteus';
+
+  @override
+  String get s4899323b9a => 'Teho';
+
+  @override
+  String get se78754330c => 'teho';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -222,17 +258,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get see129fb410 => 'kirkkaus';
-
-  @override
-  String s08d04d58a9(String p0) {
-    return 'Kanava $p0';
-  }
-
-  @override
-  String get se78754330c => 'teho';
-
-  @override
-  String get s4899323b9a => 'Teho';
 
   @override
   String sb9964cfb3b(String p0) {
@@ -315,6 +340,65 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sda8d9bf1cd => 'Pistorasia';
+
+  @override
+  String get s0185672be7 =>
+      'Kameran käyttäjä (yleensä admin) ja salasana, jonka asetit kameran aktivoinnissa.';
+
+  @override
+  String get s814f4633e3 =>
+      'Käyttäjä admin. Imou: salasana on kameran tarrassa oleva \"Safety code\" tai laitesalasana.';
+
+  @override
+  String get s4450807111 =>
+      'Reolink-sovelluksen kameran käyttäjä (yleensä admin) ja salasana.';
+
+  @override
+  String get s1095c54819 =>
+      'Reolink-sovellus → kamera → Asetukset → Verkko → Lisäasetukset → Palvelinasetukset: laita HTTP ja RTSP päälle. Akkukamerat (Argus) eivät tue tätä.';
+
+  @override
+  String get sc79a5fee2b =>
+      'Tapo-sovellus → kamera → Lisäasetukset → Kameran tili. Tee sinne käyttäjä ja salasana ja kirjoita ne tähän (ei Tapo-pilvitunnuksesi).';
+
+  @override
+  String get s174e06b97c =>
+      'Tee ensin kameran tili: Tapo-sovellus → kamera → Lisäasetukset → Kameran tili.';
+
+  @override
+  String get s21da6fb5dc =>
+      'Käyttäjä admin, salasana on kameran tarrassa oleva 6-kirjaiminen vahvistuskoodi (Verification code).';
+
+  @override
+  String get s1866ef6dc8 =>
+      'Ezviz-sovellus → kamera → Asetukset → LAN Live View / RTSP: laita päälle (jos valinta on).';
+
+  @override
+  String get s1c2786e15f =>
+      'Kameran käyttäjä ja salasana (usein admin). ONVIF pitää ehkä laittaa päälle kameran asetuksista.';
+
+  @override
+  String get s32270de47a => 'Valvontakamera';
+
+  @override
+  String get s4d3ff251d6 =>
+      'Hikvision, Dahua, Reolink, Tapo, Ezviz tai muu ONVIF-kamera. Kuva ruutuun, live-video kotona.';
+
+  @override
+  String get se8ea97c5eb =>
+      'Kameran sovelluksesta (laitetiedot) tai reitittimen laitelistasta.';
+
+  @override
+  String get s1577068729 => 'kamera';
+
+  @override
+  String get seeb6c38c8e => 'Kamera';
+
+  @override
+  String get s136c6f0d2b => 'Kuva ruutuun, live-video kotiverkossa';
+
+  @override
+  String get s2101774157 => 'Live-video kotiverkossa (ei kuvaa etänä)';
 
   @override
   String get sb662db81d8 =>
@@ -1160,6 +1244,14 @@ class AppLocalizationsFi extends AppLocalizations {
       'Olet asettanut laitteeseen salasanan. Kirjoita se alle ja paina \"Yhdistä\".';
 
   @override
+  String get s9e22388413 => 'Tarvitaan vielä yksi tieto';
+
+  @override
+  String sc8702d4da2(String p0) {
+    return '$p0 ei kerro tätä itse. Kirjoita se alle ja paina \"Yhdistä\".';
+  }
+
+  @override
   String get s83f57c7c24 => 'Salasana ei kelpaa';
 
   @override
@@ -1368,6 +1460,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sba10f23f03 => 'Yhdistetään…';
+
+  @override
+  String get s46c87a553f => 'Kirjaudu kameraan';
 
   @override
   String get se4095d7d95 => 'Laitteen salasana';
@@ -1590,6 +1685,21 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s9630135746 => 'Ota käyttöön';
 
   @override
+  String get sbcdff8f72a => 'Mikä kamera sinulla on?';
+
+  @override
+  String get s67bf18fb6f => 'Muu kamera (ONVIF)';
+
+  @override
+  String get s772c158a57 => 'rtsp-transport';
+
+  @override
+  String get sea00017814 => 'profile';
+
+  @override
+  String get s2d65587b87 => 'network-timeout';
+
+  @override
   String get s2ad22696ca => 'Kieli';
 
   @override
@@ -1599,7 +1709,18 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s4529c1010a => 'Valitse kamerayhteys';
 
   @override
+  String get s98bf81bba3 => 'Live-video ei toimi tällä laitteella';
+
+  @override
+  String get seb2bb5cbce =>
+      'Live-video näkyy vain kotiverkossa. Tällä kameralla ei ole still-kuvaa etäkäyttöön.';
+
+  @override
   String get sc95fb5440b => 'Virta päättyi';
+
+  @override
+  String get sd55dd196f6 =>
+      'Live-videota ei saatu. Tarkista, että olet kotiverkossa ja kameran RTSP on päällä.';
 
   @override
   String get s306729fe62 => 'Ei hintoja';
@@ -2015,9 +2136,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s357fc9c3fe => 'Liukusäädin / asetusarvo';
-
-  @override
-  String get seeb6c38c8e => 'Kamera';
 
   @override
   String get s14da6beba5 => 'Näyttää lukeman, esim. lämpötilan tai tehon.';
@@ -2808,6 +2926,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sf55eee73b8 => 'Vaihda kuva';
 
   @override
+  String get sf6723451b9 => 'Ota kuva';
+
+  @override
   String get sdd957ccc1b => 'Poista kuva';
 
   @override
@@ -3136,10 +3257,16 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get sad3975b3c1 => 'Kamera (MJPEG / JPEG)';
+  String get s58648dc3fc => 'Kamera (MJPEG / JPEG / RTSP)';
 
   @override
   String get s1534821f4a => 'Kameran osoite';
+
+  @override
+  String get s95533426a3 => 'RTSP-osoite (live-kuva kotiverkossa)';
+
+  @override
+  String get sa1115d4b0b => 'RTSP-osoite, kevyt (ruutu)';
 
   @override
   String get se995a6862d => 'Tila';

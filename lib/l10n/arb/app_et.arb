@@ -184,6 +184,37 @@
  "s66ea783264": "Väike kõikumine (+1 / −1 °C). Hea vaikevalik.",
  "see96226e44": "Mugavus",
  "sb403e00b3d": "Peaaegu ühtlane temperatuur (+0,5 / −0,5 °C). Säästab veidi.",
+ "sd86b823895": "Sonoff",
+ "s5f297ec9d8": "BASIC, MINI, POW, TH, 4CH... DIY režiimis koos Tasmota või ESPHome'' iga. Kaardid on loodud sinu eest; kaugkasutamine kodusilla kaudu.",
+ "@s5f297ec9d8": {
+  "x-mt": true
+ },
+ "s60e829b1b0": "eWeLink app → device → Seadistused näitavad IP- aadressi või ruuteri seadmete nimekirja. DIY režiimis on vaja ka Seadme ID- d (10 märki).",
+ "@s60e829b1b0": {
+  "x-mt": true
+ },
+ "s6a46e8954d": "Sonoff DIY režiimis vastab ainult siis, kui talle öeldakse selle seadme ID. Leia see rakendusest eWeLink: seade → Seadistused → Seadme ID. Tasmota: veebi parool, kui see on määratud.",
+ "@s6a46e8954d": {
+  "x-mt": true
+ },
+ "sea057f1a02": "Ainult DIY-režiimis, kui otsing seadet ei leidnud.",
+ "@sea057f1a02": {
+  "x-mt": true
+ },
+ "s08d04d58a9": "Kanal {p0}",
+ "@s08d04d58a9": {
+  "x-mt": true
+ },
+ "s8653f173b6": "Õhutemperatuur",
+ "@s8653f173b6": {
+  "x-mt": true
+ },
+ "s9cb8820285": "Niiskus",
+ "@s9cb8820285": {
+  "x-mt": true
+ },
+ "s4899323b9a": "Võimsus",
+ "se78754330c": "võimsus",
  "s0bf7cb1613": "Philips Hue",
  "se17d4e4197": "Hue sild ja selle tuled (ka Zigbee tuled paaris). Paari sillanupuga.",
  "@se17d4e4197": {
@@ -206,12 +237,6 @@
  },
  "s3832b8c729": "kogu tuba",
  "see129fb410": "heledus",
- "s08d04d58a9": "Kanal {p0}",
- "@s08d04d58a9": {
-  "x-mt": true
- },
- "se78754330c": "võimsus",
- "s4899323b9a": "Võimsus",
  "sb9964cfb3b": "Võimsus {p0}",
  "sfcb44be1a0": "Shelly",
  "sa6ff717527": "Releed ja pistikud: Pro 4PM, Plus 1PM, Plug S, 2.5... Leiti automaatselt, plaadid igale kanalile.",
@@ -277,6 +302,67 @@
  },
  "sa376ec78ec": "Valgusti",
  "sda8d9bf1cd": "Pistikupesa",
+ "s0185672be7": "Kaamera kasutaja (tavaliselt admin) ja selle aktiveerimisel määratud parool.",
+ "@s0185672be7": {
+  "x-mt": true
+ },
+ "s814f4633e3": "Kasutaja administraator. Imou: parool on \"Ohutuskood\" kaamera sildil või seadme parool.",
+ "@s814f4633e3": {
+  "x-mt": true
+ },
+ "s4450807111": "Kaamera kasutaja Reolink rakenduses (tavaliselt admin) ja selle parool.",
+ "@s4450807111": {
+  "x-mt": true
+ },
+ "s1095c54819": "Reolink app → camera → Settings → Network → Advanced → Serveri seaded: lülita sisse HTTP ja RTSP. Akukaamerad (Argus) ei ole toetatud.",
+ "@s1095c54819": {
+  "x-mt": true
+ },
+ "sc79a5fee2b": "Tapo rakendus → camera → Muud seadistused → Kaamerakonto. Loo sinna kasutaja ja parool ning kirjuta need siia (mitte oma Tapo pilve sisselogimine).",
+ "@sc79a5fee2b": {
+  "x-mt": true
+ },
+ "s174e06b97c": "Esmalt looge kaamera konto: Tapo app → camera → Advanced settings → Camera konto.",
+ "@s174e06b97c": {
+  "x-mt": true
+ },
+ "s21da6fb5dc": "Kasutaja admin; parool on 6-täheline kontrollkood kaamera sildil.",
+ "@s21da6fb5dc": {
+  "x-mt": true
+ },
+ "s1866ef6dc8": "Ezviz app → camera → Settings → LAN Live View / RTSP: lülita see sisse (kui see on olemas).",
+ "@s1866ef6dc8": {
+  "x-mt": true
+ },
+ "s1c2786e15f": "Kaamera kasutaja ja parool (sageli admin). Kaamera seadistustes võib olla vajalik sisse lülitada ONVIF.",
+ "@s1c2786e15f": {
+  "x-mt": true
+ },
+ "s32270de47a": "Turvakaamera",
+ "@s32270de47a": {
+  "x-mt": true
+ },
+ "s4d3ff251d6": "Hikvision, Dahua, Reolink, Tapo, Ezviz või ükskõik milline ONVIF-kaamera. Pilt kaardil, live-video kodus.",
+ "@s4d3ff251d6": {
+  "x-mt": true
+ },
+ "se8ea97c5eb": "Kaamera rakenduses (seadme info) või ruuteri seadmete loendis.",
+ "@se8ea97c5eb": {
+  "x-mt": true
+ },
+ "s1577068729": "kaamera",
+ "@s1577068729": {
+  "x-mt": true
+ },
+ "seeb6c38c8e": "Kaamera",
+ "s136c6f0d2b": "Pilt kaardil, live video kodus",
+ "@s136c6f0d2b": {
+  "x-mt": true
+ },
+ "s2101774157": "Video kodus (ilma pildita)",
+ "@s2101774157": {
+  "x-mt": true
+ },
  "sb662db81d8": "Aadress näib olevat ebatäielik. Kasuta nelja numbrit koos punktidega, nt 192.168.1. 50.",
  "@sb662db81d8": {
   "x-mt": true
@@ -598,8 +684,16 @@
   "x-mt": true
  },
  "scf7e14661c": "Tagasi",
+ "s7d43ee2d5a": "Konto või sisselogimise loomine",
+ "@s7d43ee2d5a": {
+  "x-mt": true
+ },
  "s22c960ff4f": "Sisselogimine koodiga",
  "@s22c960ff4f": {
+  "x-mt": true
+ },
+ "scb167ce8b1": "Kirjuta oma kiri ja me saadame sulle koodi. Paroolisuper bullshit reconciliation. Kui sul pole veel kontot, luuakse see ja selle seadme seadistused liiguvad sinna sisse.",
+ "@scb167ce8b1": {
   "x-mt": true
  },
  "s7d29d1dfbd": "Me saadame sulle koodi, sisselogimiseks pole vaja parooli.",
@@ -617,6 +711,10 @@
  "s14d85b9e32": "Logi sisse",
  "saa1e3d1f13": "Saada uus kood",
  "@saa1e3d1f13": {
+  "x-mt": true
+ },
+ "se1be2ec8e5": "Sisselogimine parooliga",
+ "@se1be2ec8e5": {
   "x-mt": true
  },
  "s8c48f847f6": "Parool lähtestatakse",
@@ -1009,6 +1107,14 @@
  "@sbf9ee8aaec": {
   "x-mt": true
  },
+ "s9e22388413": "Vaja on veel üht detaili",
+ "@s9e22388413": {
+  "x-mt": true
+ },
+ "sc8702d4da2": "{p0} ei ütle seda ise. Kirjuta see alla ja puuduta \"Ühenda\".",
+ "@sc8702d4da2": {
+  "x-mt": true
+ },
  "s83f57c7c24": "Vale parool",
  "s32e85a0ba2": "Kontrolli parooli (juhtumiküsimused). Seda saab muuta seadme rakenduses.",
  "@s32e85a0ba2": {
@@ -1221,6 +1327,10 @@
   "x-mt": true
  },
  "sba10f23f03": "Ühendan…",
+ "s46c87a553f": "Registreeru kaamerasse",
+ "@s46c87a553f": {
+  "x-mt": true
+ },
  "se4095d7d95": "Seadme parool",
  "sdbdf676485": "Ühenda",
  "s200542b930": "Proovi uuesti",
@@ -1403,14 +1513,43 @@
   "x-mt": true
  },
  "s9630135746": "Lülita sisse",
+ "sbcdff8f72a": "Milline kaamera sul on?",
+ "@sbcdff8f72a": {
+  "x-mt": true
+ },
+ "s67bf18fb6f": "Muu kaamera (ONVIF)",
+ "@s67bf18fb6f": {
+  "x-mt": true
+ },
+ "s772c158a57": "tcp",
+ "@s772c158a57": {
+  "x-mt": true
+ },
+ "sea00017814": "madala latentsusega",
+ "@sea00017814": {
+  "x-mt": true
+ },
+ "s2d65587b87": "8",
  "s2ad22696ca": "Keel",
  "s7efc5653d2": "Seadme keel",
  "s4529c1010a": "Kaameraühenduse valimine",
  "@s4529c1010a": {
   "x-mt": true
  },
+ "s98bf81bba3": "Live video ei tööta selles seadmes",
+ "@s98bf81bba3": {
+  "x-mt": true
+ },
+ "seb2bb5cbce": "Otseülekannet näidatakse ainult koduvõrgus. Kaameral ei ole kaugkasutamiseks ühtegi pilti.",
+ "@seb2bb5cbce": {
+  "x-mt": true
+ },
  "sc95fb5440b": "Stream lõppes",
  "@sc95fb5440b": {
+  "x-mt": true
+ },
+ "sd55dd196f6": "Otsevideo puudub. Kontrolli, kas oled koduvõrgus ja RTSP on kaameras sees.",
+ "@sd55dd196f6": {
   "x-mt": true
  },
  "s306729fe62": "Hindadeta",
@@ -1779,7 +1918,6 @@
  "@s357fc9c3fe": {
   "x-mt": true
  },
- "seeb6c38c8e": "Kaamera",
  "s14da6beba5": "Näitab näitu, nt temperatuuri.",
  "@s14da6beba5": {
   "x-mt": true
@@ -2136,7 +2274,47 @@
  "@s97f46743e0": {
   "x-mt": true
  },
+ "sda9203de80": "Konto puudub – seaded ainult selles seadmes. ",
+ "@sda9203de80": {
+  "x-mt": true
+ },
+ "s8b3e63da21": "Konto loomine ›",
+ "@s8b3e63da21": {
+  "x-mt": true
+ },
+ "s887c293cad": "Seade lisatud!  ⁇",
+ "@s887c293cad": {
+  "x-mt": true
+ },
+ "s84a087a679": "Loo konto nii, et sinu seadistused säiliksid jasuper bullshit reconciliation. Selleks on vaja ainult e- posti koodi, parooli pole vaja.",
+ "@s84a087a679": {
+  "x-mt": true
+ },
  "s907220900d": "Tere tulemast Molaplani",
+ "s845ec6276f": "Teie seadistamine kõigis teie seadmetes",
+ "@s845ec6276f": {
+  "x-mt": true
+ },
+ "s9dfa93453b": "Telefoni vahetamisel ei lähe midagi kaduma",
+ "@s9dfa93453b": {
+  "x-mt": true
+ },
+ "s6aa51b28a5": "Seadme paroolid on krüptitud",
+ "@s6aa51b28a5": {
+  "x-mt": true
+ },
+ "sc6f02b69d3": "Konto loomine / sisselogimine",
+ "@sc6f02b69d3": {
+  "x-mt": true
+ },
+ "sc777bde66f": "E-posti koodiga - ilma paroolita.",
+ "@sc777bde66f": {
+  "x-mt": true
+ },
+ "se2e5ff2c8a": "Jätka ilma kontota",
+ "@se2e5ff2c8a": {
+  "x-mt": true
+ },
  "sb8934a5835": "Elektritarbimine",
  "s5409dc748f": "Ei arvestata",
  "sf0bbcc217b": "Kogu objekt",
@@ -2387,6 +2565,10 @@
  "sc48f5f9bcf": "Vali pilt",
  "sf55eee73b8": "Muuda pilti",
  "@sf55eee73b8": {
+  "x-mt": true
+ },
+ "sf6723451b9": "Pildista",
+ "@sf6723451b9": {
   "x-mt": true
  },
  "sdd957ccc1b": "Eemalda pilt",
@@ -2703,12 +2885,20 @@
  "@sb2821916bc": {
   "x-mt": true
  },
- "sad3975b3c1": "Kaamera (MJPEG / JPEG)",
- "@sad3975b3c1": {
+ "s58648dc3fc": "Kaamera (MJPEG / JPEG / RTSP)",
+ "@s58648dc3fc": {
   "x-mt": true
  },
  "s1534821f4a": "Kaamera baas- URL",
  "@s1534821f4a": {
+  "x-mt": true
+ },
+ "s95533426a3": "RTSP aadress (otsevideo kodus)",
+ "@s95533426a3": {
+  "x-mt": true
+ },
+ "sa1115d4b0b": "RTSP aadress, valgus (kaart)",
+ "@sa1115d4b0b": {
   "x-mt": true
  },
  "se995a6862d": "Režiim",
@@ -3817,58 +4007,6 @@
  "sfb0b971c01": "Õõtsumine",
  "s3a38b97f7b": "{p0} – ruum",
  "@s3a38b97f7b": {
-  "x-mt": true
- },
- "s7d43ee2d5a": "Konto või sisselogimise loomine",
- "@s7d43ee2d5a": {
-  "x-mt": true
- },
- "scb167ce8b1": "Kirjuta oma kiri ja me saadame sulle koodi. Paroolisuper bullshit reconciliation. Kui sul pole veel kontot, luuakse see ja selle seadme seadistused liiguvad sinna sisse.",
- "@scb167ce8b1": {
-  "x-mt": true
- },
- "se1be2ec8e5": "Sisselogimine parooliga",
- "@se1be2ec8e5": {
-  "x-mt": true
- },
- "sda9203de80": "Konto puudub – seaded ainult selles seadmes. ",
- "@sda9203de80": {
-  "x-mt": true
- },
- "s8b3e63da21": "Konto loomine ›",
- "@s8b3e63da21": {
-  "x-mt": true
- },
- "s887c293cad": "Seade lisatud!  ⁇",
- "@s887c293cad": {
-  "x-mt": true
- },
- "s84a087a679": "Loo konto nii, et sinu seadistused säiliksid jasuper bullshit reconciliation. Selleks on vaja ainult e- posti koodi, parooli pole vaja.",
- "@s84a087a679": {
-  "x-mt": true
- },
- "s845ec6276f": "Teie seadistamine kõigis teie seadmetes",
- "@s845ec6276f": {
-  "x-mt": true
- },
- "s9dfa93453b": "Telefoni vahetamisel ei lähe midagi kaduma",
- "@s9dfa93453b": {
-  "x-mt": true
- },
- "s6aa51b28a5": "Seadme paroolid on krüptitud",
- "@s6aa51b28a5": {
-  "x-mt": true
- },
- "sc6f02b69d3": "Konto loomine / sisselogimine",
- "@sc6f02b69d3": {
-  "x-mt": true
- },
- "sc777bde66f": "E-posti koodiga - ilma paroolita.",
- "@sc777bde66f": {
-  "x-mt": true
- },
- "se2e5ff2c8a": "Jätka ilma kontota",
- "@se2e5ff2c8a": {
   "x-mt": true
  }
 }

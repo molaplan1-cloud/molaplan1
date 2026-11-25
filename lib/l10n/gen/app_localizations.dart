@@ -416,6 +416,66 @@ abstract class AppLocalizations {
   /// **'Almost even temperature (+0.5 / −0.5 °C). Saves a little.'**
   String get sb403e00b3d;
 
+  /// fi: Sonoff
+  ///
+  /// In en, this message translates to:
+  /// **'Sonoff'**
+  String get sd86b823895;
+
+  /// fi: BASIC, MINI, POW, TH, 4CH… DIY-tilassa, Tasmotalla tai ESPHomella. Ruudut tehdään valmiiksi, etänä kotisillan kautta.
+  ///
+  /// In en, this message translates to:
+  /// **'BASIC, MINI, POW, TH, 4CH… in DIY mode, with Tasmota or ESPHome. Tiles are made for you; remote use via the home bridge.'**
+  String get s5f297ec9d8;
+
+  /// fi: eWeLink-sovellus → laite → Asetukset näyttää IP-osoitteen, tai reitittimen laitelista. DIY-tilassa tarvitset myös laitte
+  ///
+  /// In en, this message translates to:
+  /// **'eWeLink app → device → Settings shows the IP address, or your router\'\'s device list. In DIY mode you also need the Device ID (10 characters).'**
+  String get s60e829b1b0;
+
+  /// fi: DIY-tilan Sonoff vastaa vain, kun sille kerrotaan sen tunnus (Device ID). Se näkyy eWeLink-sovelluksessa: laite → Asetuk
+  ///
+  /// In en, this message translates to:
+  /// **'A Sonoff in DIY mode only answers when told its Device ID. Find it in the eWeLink app: device → Settings → Device ID. Tasmota: the web password, if set.'**
+  String get s6a46e8954d;
+
+  /// fi: Vain DIY-tilassa, jos laitetta ei löytynyt haulla.
+  ///
+  /// In en, this message translates to:
+  /// **'Only in DIY mode when the search did not find the device.'**
+  String get sea057f1a02;
+
+  /// fi: Kanava {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Channel {p0}'**
+  String s08d04d58a9(String p0);
+
+  /// fi: Lämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature'**
+  String get s8653f173b6;
+
+  /// fi: Kosteus
+  ///
+  /// In en, this message translates to:
+  /// **'Humidity'**
+  String get s9cb8820285;
+
+  /// fi: Teho
+  ///
+  /// In en, this message translates to:
+  /// **'Power'**
+  String get s4899323b9a;
+
+  /// fi: teho
+  ///
+  /// In en, this message translates to:
+  /// **'power'**
+  String get se78754330c;
+
   /// fi: Philips Hue
   ///
   /// In en, this message translates to:
@@ -475,24 +535,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'brightness'**
   String get see129fb410;
-
-  /// fi: Kanava {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'Channel {p0}'**
-  String s08d04d58a9(String p0);
-
-  /// fi: teho
-  ///
-  /// In en, this message translates to:
-  /// **'power'**
-  String get se78754330c;
-
-  /// fi: Teho
-  ///
-  /// In en, this message translates to:
-  /// **'Power'**
-  String get s4899323b9a;
 
   /// fi: Teho {p0}
   ///
@@ -631,6 +673,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Plug'**
   String get sda8d9bf1cd;
+
+  /// fi: Kameran käyttäjä (yleensä admin) ja salasana, jonka asetit kameran aktivoinnissa.
+  ///
+  /// In en, this message translates to:
+  /// **'The camera user (usually admin) and the password you set when activating it.'**
+  String get s0185672be7;
+
+  /// fi: Käyttäjä admin. Imou: salasana on kameran tarrassa oleva "Safety code" tai laitesalasana.
+  ///
+  /// In en, this message translates to:
+  /// **'User admin. Imou: the password is the \"Safety code\" on the camera label or the device password.'**
+  String get s814f4633e3;
+
+  /// fi: Reolink-sovelluksen kameran käyttäjä (yleensä admin) ja salasana.
+  ///
+  /// In en, this message translates to:
+  /// **'The camera user in the Reolink app (usually admin) and its password.'**
+  String get s4450807111;
+
+  /// fi: Reolink-sovellus → kamera → Asetukset → Verkko → Lisäasetukset → Palvelinasetukset: laita HTTP ja RTSP päälle. Akkukamer
+  ///
+  /// In en, this message translates to:
+  /// **'Reolink app → camera → Settings → Network → Advanced → Server settings: turn on HTTP and RTSP. Battery cameras (Argus) are not supported.'**
+  String get s1095c54819;
+
+  /// fi: Tapo-sovellus → kamera → Lisäasetukset → Kameran tili. Tee sinne käyttäjä ja salasana ja kirjoita ne tähän (ei Tapo-pilv
+  ///
+  /// In en, this message translates to:
+  /// **'Tapo app → camera → Advanced settings → Camera account. Create a user and password there and type them here (not your Tapo cloud login).'**
+  String get sc79a5fee2b;
+
+  /// fi: Tee ensin kameran tili: Tapo-sovellus → kamera → Lisäasetukset → Kameran tili.
+  ///
+  /// In en, this message translates to:
+  /// **'First create a camera account: Tapo app → camera → Advanced settings → Camera account.'**
+  String get s174e06b97c;
+
+  /// fi: Käyttäjä admin, salasana on kameran tarrassa oleva 6-kirjaiminen vahvistuskoodi (Verification code).
+  ///
+  /// In en, this message translates to:
+  /// **'User admin; the password is the 6-letter verification code on the camera label.'**
+  String get s21da6fb5dc;
+
+  /// fi: Ezviz-sovellus → kamera → Asetukset → LAN Live View / RTSP: laita päälle (jos valinta on).
+  ///
+  /// In en, this message translates to:
+  /// **'Ezviz app → camera → Settings → LAN Live View / RTSP: turn it on (if the option exists).'**
+  String get s1866ef6dc8;
+
+  /// fi: Kameran käyttäjä ja salasana (usein admin). ONVIF pitää ehkä laittaa päälle kameran asetuksista.
+  ///
+  /// In en, this message translates to:
+  /// **'The camera user and password (often admin). ONVIF may need to be enabled in the camera settings.'**
+  String get s1c2786e15f;
+
+  /// fi: Valvontakamera
+  ///
+  /// In en, this message translates to:
+  /// **'Security camera'**
+  String get s32270de47a;
+
+  /// fi: Hikvision, Dahua, Reolink, Tapo, Ezviz tai muu ONVIF-kamera. Kuva ruutuun, live-video kotona.
+  ///
+  /// In en, this message translates to:
+  /// **'Hikvision, Dahua, Reolink, Tapo, Ezviz or any ONVIF camera. Picture on a tile, live video at home.'**
+  String get s4d3ff251d6;
+
+  /// fi: Kameran sovelluksesta (laitetiedot) tai reitittimen laitelistasta.
+  ///
+  /// In en, this message translates to:
+  /// **'In the camera app (device info) or your router\'\'s device list.'**
+  String get se8ea97c5eb;
+
+  /// fi: kamera
+  ///
+  /// In en, this message translates to:
+  /// **'camera'**
+  String get s1577068729;
+
+  /// fi: Kamera
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get seeb6c38c8e;
+
+  /// fi: Kuva ruutuun, live-video kotiverkossa
+  ///
+  /// In en, this message translates to:
+  /// **'Picture on the tile, live video at home'**
+  String get s136c6f0d2b;
+
+  /// fi: Live-video kotiverkossa (ei kuvaa etänä)
+  ///
+  /// In en, this message translates to:
+  /// **'Live video at home (no picture away)'**
+  String get s2101774157;
 
   /// fi: Osoite näyttää vajaalta. Muoto on neljä numeroa pisteillä, esim. 192.168.1.50.
   ///
@@ -2136,6 +2274,18 @@ abstract class AppLocalizations {
   /// **'A password is set on the device. Type it below and tap \"Connect\".'**
   String get sbf9ee8aaec;
 
+  /// fi: Tarvitaan vielä yksi tieto
+  ///
+  /// In en, this message translates to:
+  /// **'One more detail is needed'**
+  String get s9e22388413;
+
+  /// fi: {p0} ei kerro tätä itse. Kirjoita se alle ja paina "Yhdistä".
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} does not tell this by itself. Type it below and tap \"Connect\".'**
+  String sc8702d4da2(String p0);
+
   /// fi: Salasana ei kelpaa
   ///
   /// In en, this message translates to:
@@ -2489,6 +2639,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Connecting…'**
   String get sba10f23f03;
+
+  /// fi: Kirjaudu kameraan
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to the camera'**
+  String get s46c87a553f;
 
   /// fi: Laitteen salasana
   ///
@@ -2880,6 +3036,36 @@ abstract class AppLocalizations {
   /// **'Turn on'**
   String get s9630135746;
 
+  /// fi: Mikä kamera sinulla on?
+  ///
+  /// In en, this message translates to:
+  /// **'Which camera do you have?'**
+  String get sbcdff8f72a;
+
+  /// fi: Muu kamera (ONVIF)
+  ///
+  /// In en, this message translates to:
+  /// **'Other camera (ONVIF)'**
+  String get s67bf18fb6f;
+
+  /// fi: rtsp-transport
+  ///
+  /// In en, this message translates to:
+  /// **'tcp'**
+  String get s772c158a57;
+
+  /// fi: profile
+  ///
+  /// In en, this message translates to:
+  /// **'low-latency'**
+  String get sea00017814;
+
+  /// fi: network-timeout
+  ///
+  /// In en, this message translates to:
+  /// **'8'**
+  String get s2d65587b87;
+
   /// fi: Kieli
   ///
   /// In en, this message translates to:
@@ -2898,11 +3084,29 @@ abstract class AppLocalizations {
   /// **'Choose a camera connection'**
   String get s4529c1010a;
 
+  /// fi: Live-video ei toimi tällä laitteella
+  ///
+  /// In en, this message translates to:
+  /// **'Live video does not work on this device'**
+  String get s98bf81bba3;
+
+  /// fi: Live-video näkyy vain kotiverkossa. Tällä kameralla ei ole still-kuvaa etäkäyttöön.
+  ///
+  /// In en, this message translates to:
+  /// **'Live video shows only on the home network. This camera has no still picture for remote use.'**
+  String get seb2bb5cbce;
+
   /// fi: Virta päättyi
   ///
   /// In en, this message translates to:
   /// **'Stream ended'**
   String get sc95fb5440b;
+
+  /// fi: Live-videota ei saatu. Tarkista, että olet kotiverkossa ja kameran RTSP on päällä.
+  ///
+  /// In en, this message translates to:
+  /// **'No live video. Check that you are on the home network and RTSP is on in the camera.'**
+  String get sd55dd196f6;
 
   /// fi: Ei hintoja
   ///
@@ -3641,12 +3845,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Slider / setpoint'**
   String get s357fc9c3fe;
-
-  /// fi: Kamera
-  ///
-  /// In en, this message translates to:
-  /// **'Camera'**
-  String get seeb6c38c8e;
 
   /// fi: Näyttää lukeman, esim. lämpötilan tai tehon.
   ///
@@ -5094,6 +5292,12 @@ abstract class AppLocalizations {
   /// **'Change picture'**
   String get sf55eee73b8;
 
+  /// fi: Ota kuva
+  ///
+  /// In en, this message translates to:
+  /// **'Take photo'**
+  String get sf6723451b9;
+
   /// fi: Poista kuva
   ///
   /// In en, this message translates to:
@@ -5682,17 +5886,29 @@ abstract class AppLocalizations {
   /// **'✓ Connection works: HTTP {p0}. {p1} {p2}'**
   String sb2821916bc(String p0, String p1, String p2);
 
-  /// fi: Kamera (MJPEG / JPEG)
+  /// fi: Kamera (MJPEG / JPEG / RTSP)
   ///
   /// In en, this message translates to:
-  /// **'Camera (MJPEG / JPEG)'**
-  String get sad3975b3c1;
+  /// **'Camera (MJPEG / JPEG / RTSP)'**
+  String get s58648dc3fc;
 
   /// fi: Kameran osoite
   ///
   /// In en, this message translates to:
   /// **'Camera base URL'**
   String get s1534821f4a;
+
+  /// fi: RTSP-osoite (live-kuva kotiverkossa)
+  ///
+  /// In en, this message translates to:
+  /// **'RTSP address (live video at home)'**
+  String get s95533426a3;
+
+  /// fi: RTSP-osoite, kevyt (ruutu)
+  ///
+  /// In en, this message translates to:
+  /// **'RTSP address, light (tile)'**
+  String get sa1115d4b0b;
 
   /// fi: Tila
   ///

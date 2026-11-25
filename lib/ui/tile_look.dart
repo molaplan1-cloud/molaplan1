@@ -1,4 +1,8 @@
+import 'dart:io' show Platform;
+import 'dart:typed_data';
+
 import 'package:file_picker/file_picker.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../models/models.dart';
@@ -6,6 +10,15 @@ import '../state/tile_images.dart';
 import 'app_scope.dart';
 import 'icons.dart';
 import 'tile_visuals.dart';
+
+/// "Ota kuva": the phone/tablet camera (Android, iOS). Windows has no camera picker.
+bool cameraCaptureAvailable = Platform.isAndroid || Platform.isIOS;
+
+/// Takes a photo for a tile background (replaceable in tests). Null = cancelled.
+Future<Uint8List?> Function() takeTilePhoto = () async {
+  final x = await ImagePicker().pickImage(source: ImageSource.camera, maxWidth: 1600, imageQuality: 90);
+  return x?.readAsBytes();
+};
 
 /// Edit mode → "Ulkoasu": name, size, icon, colour and optional background picture.
 Future<void> showTileLook(BuildContext context, TileConfig t) => showModalBottomSheet<void>(
@@ -37,16 +50,23 @@ class _TileLookSheetState extends State<TileLookSheet> {
     if (mounted) setState(() {});
   }
 
-  Future<void> _pickImage() async {
+  Future<void> _pickImage() => _useImage(() async {
+    final f = await FilePicker.pickFile(
+      type: FileType.image,
+      dialogTitle: tx(context, 'Valitse taustakuva', 'Choose a background picture'),
+    );
+    return f?.readAsBytes();
+  });
+
+  Future<void> _takePhoto() => _useImage(takeTilePhoto);
+
+  Future<void> _useImage(Future<Uint8List?> Function() get) async {
     final st = AppScope.read(context);
     try {
-      final f = await FilePicker.pickFile(
-        type: FileType.image,
-        dialogTitle: tx(context, 'Valitse taustakuva', 'Choose a background picture'),
-      );
-      if (f == null || !mounted) return;
+      final bytes = await get();
+      if (bytes == null || !mounted) return;
       setState(() => _busy = true);
-      final ok = await st.setTileImage(t, await f.readAsBytes());
+      final ok = await st.setTileImage(t, bytes);
       if (!mounted) return;
       if (!ok) {
         showSnack(
@@ -184,6 +204,13 @@ class _TileLookSheetState extends State<TileLookSheet> {
                         : tx(context, 'Vaihda kuva', 'Change picture'),
                   ),
                 ),
+                if (cameraCaptureAvailable)
+                  FilledButton.tonalIcon(
+                    key: const ValueKey('look-take-photo'),
+                    onPressed: _busy ? null : _takePhoto,
+                    icon: const Icon(Icons.photo_camera_outlined),
+                    label: Text(tx(context, 'Ota kuva', 'Take photo')),
+                  ),
                 if (t.bgImage != null)
                   TextButton.icon(
                     key: const ValueKey('look-remove-image'),

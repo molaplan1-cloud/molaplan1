@@ -8,12 +8,18 @@ import '../drivers/camera_driver.dart';
 import '../models/models.dart';
 import 'app_scope.dart';
 import 'error_box.dart';
+import 'rtsp_view.dart';
 
-/// Shows an MJPEG stream or periodically refreshed snapshot.
+/// Shows an MJPEG stream, a periodically refreshed snapshot, or live RTSP video.
+/// RTSP plays only on the home network; away from home the picture comes as
+/// throttled snapshots through the relay (or a clear note when the camera has none).
 class CameraView extends StatefulWidget {
-  const CameraView({super.key, required this.tile, this.fit = BoxFit.cover});
+  const CameraView({super.key, required this.tile, this.fit = BoxFit.cover, this.live = false});
   final TileConfig tile;
   final BoxFit fit;
+
+  /// Full screen: prefer the full-quality live RTSP stream when there is one.
+  final bool live;
 
   @override
   State<CameraView> createState() => _CameraViewState();
@@ -26,6 +32,10 @@ class _CameraViewState extends State<CameraView> {
   Timer? _timer;
   Timer? _retry;
   bool _started = false;
+  String? _rtsp;
+
+  /// A plain note for the user (shown as is, not as an error to translate).
+  bool _plainNote = false;
 
   @override
   void didChangeDependencies() {
@@ -42,11 +52,38 @@ class _CameraViewState extends State<CameraView> {
   }
 
   void _start() {
+    _plainNote = false;
     final d = _driver;
     if (d == null) {
+      _plainNote = true;
       setState(() => _error = tx(context, 'Valitse kamerayhteys', 'Choose a camera connection'));
       return;
     }
+    final spec = widget.tile.read;
+    final mode = spec.str('mode', 'mjpeg');
+    final away = AppScope.read(context).remote.router.preferRemote;
+    final url = d.rtspUrl(sub: !widget.live);
+    if (url != null && (mode == 'rtsp' || widget.live) && rtspSupported && !away) {
+      setState(() => _rtsp = url);
+      return;
+    }
+    if (mode == 'rtsp') {
+      _plainNote = true;
+      setState(
+        () => _error = !rtspSupported
+            ? tx(context, 'Live-video ei toimi tällä laitteella', 'Live video does not work on this device')
+            : tx(
+                context,
+                'Live-video näkyy vain kotiverkossa. Tällä kameralla ei ole still-kuvaa etäkäyttöön.',
+                'Live video shows only on the home network. This camera has no still picture for remote use.',
+              ),
+      );
+      return;
+    }
+    _startStill(d);
+  }
+
+  void _startStill(CameraDriver d) {
     final spec = widget.tile.read;
     if (spec.str('mode', 'mjpeg') == 'snapshot') {
       _snap(d);
@@ -109,9 +146,36 @@ class _CameraViewState extends State<CameraView> {
       fit: StackFit.expand,
       children: [
         Container(color: Colors.black),
+        if (_rtsp != null)
+          RtspView(
+            key: ValueKey(_rtsp),
+            url: _rtsp!,
+            fit: widget.fit,
+            onError: (e) {
+              if (!mounted) return;
+              final hasSnap = widget.tile.read.str('mode', 'mjpeg') != 'rtsp';
+              setState(() {
+                _rtsp = null;
+                if (!hasSnap) {
+                  _plainNote = true;
+                  _error = tx(
+                    context,
+                    'Live-videota ei saatu. Tarkista, että olet kotiverkossa ja kameran RTSP on päällä.',
+                    'No live video. Check that you are on the home network and RTSP is on in the camera.',
+                  );
+                }
+              });
+              // Fall back to the still picture / MJPEG (e.g. RTSP switched off on the camera).
+              if (hasSnap) {
+                final d = _driver;
+                if (d != null) _startStill(d);
+              }
+            },
+          ),
         if (_frame != null)
           Image.memory(_frame!, fit: widget.fit, gaplessPlayback: true, errorBuilder: (_, _, _) => const SizedBox()),
-        if (_frame == null && _error == null) const Center(child: CircularProgressIndicator(strokeWidth: 2)),
+        if (_frame == null && _error == null && _rtsp == null)
+          const Center(child: CircularProgressIndicator(strokeWidth: 2)),
         if (_error != null)
           Positioned(
             left: 8,
@@ -124,8 +188,8 @@ class _CameraViewState extends State<CameraView> {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
-                friendlyText(context, _error!),
-                maxLines: 2,
+                _plainNote ? _error! : friendlyText(context, _error!),
+                maxLines: _plainNote ? 4 : 2,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(fontSize: 11),
               ),
@@ -145,7 +209,7 @@ class CameraFullscreen extends StatelessWidget {
     appBar: AppBar(backgroundColor: Colors.black, title: Text(tile.title)),
     body: InteractiveViewer(
       maxScale: 5,
-      child: CameraView(tile: tile, fit: BoxFit.contain),
+      child: CameraView(tile: tile, fit: BoxFit.contain, live: true),
     ),
   );
 }

@@ -7,6 +7,7 @@ import 'package:path_provider/path_provider.dart';
 
 import 'state/app_state.dart';
 import 'state/storage.dart';
+import 'ui/rtsp_view.dart';
 import 'ui/app_scope.dart';
 import 'ui/home_page.dart';
 import 'ui/remote_pages.dart';
@@ -15,6 +16,7 @@ import 'l10n/gen/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  initVideo();
   final state = AppState(
     configStore: PrefsConfigStore(),
     secretStore: SecureSecretStore(),

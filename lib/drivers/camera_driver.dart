@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 
 import '../core/fields.dart';
+import 'digest_auth.dart';
 import 'driver.dart';
 import 'http_driver.dart';
 
@@ -41,8 +42,9 @@ class MjpegParser {
   }
 }
 
-/// Camera: MJPEG stream or periodic JPEG snapshot over HTTP(S).
-/// (RTSP is not supported in v1; see AGENT-NOTES.)
+/// Camera: MJPEG stream or periodic JPEG snapshot over HTTP(S), Basic or Digest auth
+/// (Hikvision ISAPI, Dahua, Amcrest...), plus the RTSP address for live video on the LAN.
+/// Paths may contain {{username}} / {{password}} (Reolink puts them in the query).
 class CameraDriver extends Driver {
   CameraDriver(super.config);
   http.Client? _client;
@@ -50,8 +52,8 @@ class CameraDriver extends Driver {
 
   static const descriptor = DriverDescriptor(
     type: 'camera',
-    fi: 'Kamera (MJPEG / JPEG)',
-    en: 'Camera (MJPEG / JPEG)',
+    fi: 'Kamera (MJPEG / JPEG / RTSP)',
+    en: 'Camera (MJPEG / JPEG / RTSP)',
     create: CameraDriver.new,
     cameraOnly: true,
     connectionFields: [
@@ -61,12 +63,24 @@ class CameraDriver extends Driver {
         'Tunnistus',
         'Authentication',
         kind: FieldKind.choice,
-        options: ['none', 'basic', 'bearer'],
+        options: ['none', 'basic', 'digest', 'bearer'],
         defaultValue: 'none',
       ),
       FieldSpec('username', 'Käyttäjätunnus', 'Username'),
       FieldSpec('password', 'Salasana', 'Password', kind: FieldKind.secret),
       FieldSpec('token', 'Token', 'Token', kind: FieldKind.secret),
+      FieldSpec(
+        'rtsp',
+        'RTSP-osoite (live-kuva kotiverkossa)',
+        'RTSP address (live video at home)',
+        hint: 'rtsp://{{host}}:554/stream1',
+      ),
+      FieldSpec(
+        'rtspSub',
+        'RTSP-osoite, kevyt (ruutu)',
+        'RTSP address, light (tile)',
+        hint: 'rtsp://{{host}}:554/stream2',
+      ),
       FieldSpec(
         'allowSelfSigned',
         'Salli itse allekirjoitettu sertifikaatti',
@@ -75,7 +89,14 @@ class CameraDriver extends Driver {
       ),
     ],
     readFields: [
-      FieldSpec('mode', 'Tila', 'Mode', kind: FieldKind.choice, options: ['mjpeg', 'snapshot'], defaultValue: 'mjpeg'),
+      FieldSpec(
+        'mode',
+        'Tila',
+        'Mode',
+        kind: FieldKind.choice,
+        options: ['mjpeg', 'snapshot', 'rtsp'],
+        defaultValue: 'mjpeg',
+      ),
       FieldSpec('path', 'Polku', 'Path', hint: 'ESP32-CAM: :81/stream tai /capture'),
       FieldSpec(
         'refreshSeconds',
@@ -91,8 +112,13 @@ class CameraDriver extends Driver {
     ],
   );
 
+  String _fill(String path) => path
+      .replaceAll('{{username}}', Uri.encodeQueryComponent(s.str('username')))
+      .replaceAll('{{password}}', Uri.encodeQueryComponent(s.str('password')));
+
   /// Supports "base + path", absolute URLs and ":81/stream" port shortcuts.
   Uri url(String path) {
+    path = _fill(path);
     final base = s.str('baseUrl');
     if (path.startsWith(':')) {
       final b = Uri.parse(base);
@@ -105,10 +131,62 @@ class CameraDriver extends Driver {
 
   Map<String, String> get headers => authHeaders(s);
 
+  /// The RTSP address with the login filled in ([sub] = the light stream for tiles).
+  /// Null when the camera has no RTSP address.
+  String? rtspUrl({bool sub = false}) => cameraRtspUrl(s, sub: sub);
+
+  DigestChallenge? _digest;
+  int _nc = 0;
+
+  bool get _wantsDigest => s.str('auth') == 'digest';
+
+  http.BaseRequest _build(String method, Uri u, {String? body, String? contentType}) {
+    final req = http.Request(method, u)..headers.addAll(headers);
+    if (_digest != null) {
+      final uri = u.hasQuery ? '${u.path.isEmpty ? '/' : u.path}?${u.query}' : (u.path.isEmpty ? '/' : u.path);
+      req.headers['Authorization'] = digestAuthorization(
+        ch: _digest!,
+        username: s.str('username', 'admin'),
+        password: s.str('password'),
+        method: method,
+        uri: uri,
+        nc: ++_nc,
+      );
+    }
+    if (body != null) {
+      req.headers['Content-Type'] = contentType ?? 'application/soap+xml; charset=utf-8';
+      req.body = body;
+    }
+    return req;
+  }
+
+  /// Sends once; on a Digest challenge answers it and sends again.
+  Future<http.StreamedResponse> _send(
+    http.Client c,
+    String method,
+    Uri u, {
+    String? body,
+    String? contentType,
+    Duration timeout = const Duration(seconds: 10),
+  }) async {
+    var r = await c.send(_build(method, u, body: body, contentType: contentType)).timeout(timeout);
+    if (r.statusCode == 401 && (_wantsDigest || s.str('password').isNotEmpty)) {
+      final ch = DigestChallenge.parse(r.headers['www-authenticate']);
+      if (ch != null) {
+        await r.stream.drain<void>().catchError((_) {});
+        _digest = ch;
+        _nc = 0;
+        r = await c.send(_build(method, u, body: body, contentType: contentType)).timeout(timeout);
+      }
+    }
+    return r;
+  }
+
   Future<Uint8List> snapshot(String path) async {
-    final r = await client.get(url(path), headers: headers).timeout(const Duration(seconds: 10));
+    final r = await _send(client, 'GET', url(path));
+    final bytes = await r.stream.toBytes().timeout(const Duration(seconds: 15));
     if (r.statusCode >= 400) throw DriverException('Camera: HTTP ${r.statusCode}');
-    return r.bodyBytes;
+    return bytes;
   }
 
   /// Stream of JPEG frames. Cancel the subscription to stop.
@@ -119,8 +197,7 @@ class CameraDriver extends Driver {
     out = StreamController<Uint8List>(
       onListen: () async {
         try {
-          final req = http.Request('GET', url(path))..headers.addAll(headers);
-          final resp = await c.send(req).timeout(const Duration(seconds: 10));
+          final resp = await _send(c, 'GET', url(path));
           if (resp.statusCode >= 400) throw DriverException('Camera: HTTP ${resp.statusCode}');
           final parser = MjpegParser();
           sub = resp.stream.listen(
@@ -148,12 +225,24 @@ class CameraDriver extends Driver {
   @override
   Future<Object?> read(Map<String, dynamic> spec) => snapshot(spec.str('path'));
 
+  /// GET/POST a path. A 'body' is sent as is (ONVIF SOAP); the answer text is returned for bodies.
   @override
   Future<Object?> send(Map<String, dynamic> spec, {Object? value}) async {
     final p = spec.str('path').replaceAll('{{value}}', '${value ?? ''}');
-    final r = await client
-        .send(http.Request(spec.str('method', 'GET'), url(p))..headers.addAll(headers))
-        .timeout(const Duration(seconds: 10));
+    final body = spec.strOrNull('body');
+    final r = await _send(
+      client,
+      spec.str('method', body == null ? 'GET' : 'POST'),
+      url(p),
+      body: body,
+      contentType: spec.strOrNull('contentType'),
+    );
+    if (body != null) {
+      final text = await r.stream.bytesToString().timeout(const Duration(seconds: 10));
+      if (r.statusCode >= 400 && !text.contains('Envelope')) throw DriverException('Camera: HTTP ${r.statusCode}');
+      if (r.statusCode == 401) throw DriverException('Camera: HTTP 401');
+      return text;
+    }
     await r.stream.drain<void>();
     if (r.statusCode >= 400) throw DriverException('Camera: HTTP ${r.statusCode}');
     return r.statusCode;
@@ -161,11 +250,25 @@ class CameraDriver extends Driver {
 
   @override
   Future<String> test() async {
-    final r = await client.send(http.Request('GET', url(''))..headers.addAll(headers));
+    final r = await _send(client, 'GET', url(''));
     await r.stream.drain<void>().timeout(const Duration(seconds: 3), onTimeout: () {});
     return 'HTTP ${r.statusCode}';
   }
 
   @override
   Future<void> dispose() async => _client?.close();
+}
+
+/// rtsp://{{host}}:554/x -> rtsp://user:pass@192.168.1.70:554/x (null when not set).
+String? cameraRtspUrl(Map<String, dynamic> s, {bool sub = false}) {
+  var t = sub ? (s.strOrNull('rtspSub') ?? s.strOrNull('rtsp')) : s.strOrNull('rtsp');
+  if (t == null || t.trim().isEmpty) return null;
+  final host = Uri.tryParse(s.str('baseUrl'))?.host ?? '';
+  t = t.trim().replaceAll('{{host}}', host);
+  final u = Uri.tryParse(t);
+  if (u == null || u.userInfo.isNotEmpty) return t;
+  final user = s.str('username'), pw = s.str('password');
+  if (user.isEmpty && pw.isEmpty) return t;
+  final info = '${Uri.encodeComponent(user)}:${Uri.encodeComponent(pw)}';
+  return t.replaceFirst('rtsp://', 'rtsp://$info@');
 }

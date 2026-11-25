@@ -192,6 +192,42 @@ class AppLocalizationsEs extends AppLocalizations {
       'Temperatura casi constante (+0,5 / −0,5 °C). Ahorra un poco.';
 
   @override
+  String get sd86b823895 => 'Sonoff';
+
+  @override
+  String get s5f297ec9d8 =>
+      'BASIC, MINI, POW, TH, 4CH... en modo DIY, con Tasmota o ESPHome. Las tarjetas están hechas para usted; uso remoto a través del puente casero.';
+
+  @override
+  String get s60e829b1b0 =>
+      'eWeLink app → device → Ajustes muestra la dirección IP, o la lista de dispositivos de tu router. En modo DIY también necesitas el ID de dispositivo (10 caracteres).';
+
+  @override
+  String get s6a46e8954d =>
+      'Un Sonoff en modo DIY sólo responde cuando se le dice a su ID de dispositivo. Encuéntralo en la aplicación eWeLink: dispositivo → Ajustes → ID de dispositivo. Tasmota: la contraseña web, si se establece.';
+
+  @override
+  String get sea057f1a02 =>
+      'Sólo en modo DIY cuando la búsqueda no encontró el dispositivo.';
+
+  @override
+  String s08d04d58a9(String p0) {
+    return 'Canal $p0';
+  }
+
+  @override
+  String get s8653f173b6 => 'Temperatura';
+
+  @override
+  String get s9cb8820285 => 'Humedad';
+
+  @override
+  String get s4899323b9a => 'Potencia';
+
+  @override
+  String get se78754330c => 'potencia';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -225,17 +261,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get see129fb410 => 'brillo';
-
-  @override
-  String s08d04d58a9(String p0) {
-    return 'Canal $p0';
-  }
-
-  @override
-  String get se78754330c => 'potencia';
-
-  @override
-  String get s4899323b9a => 'Potencia';
 
   @override
   String sb9964cfb3b(String p0) {
@@ -318,6 +343,65 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sda8d9bf1cd => 'Enchufe';
+
+  @override
+  String get s0185672be7 =>
+      'El usuario de la cámara (generalmente admin) y la contraseña que se establece al activarla.';
+
+  @override
+  String get s814f4633e3 =>
+      'Administrador de usuario. Imou: la contraseña es el \"código de seguridad\" en la etiqueta de la cámara o la contraseña del dispositivo.';
+
+  @override
+  String get s4450807111 =>
+      'El usuario de la cámara en la aplicación Reolink (generalmente admin) y su contraseña.';
+
+  @override
+  String get s1095c54819 =>
+      'Aplicación de enlace → cámara → Configuración → Red → Avanzado → Ajustes del servidor: encienda HTTP y RTSP. Las cámaras de batería (Argus) no son compatibles.';
+
+  @override
+  String get sc79a5fee2b =>
+      'Tapo app → cámara → Ajustes avanzados → Cuenta de cámara. Crear un usuario y contraseña allí y escribirlos aquí (no tu login en la nube de Tapo).';
+
+  @override
+  String get s174e06b97c =>
+      'Primero crea una cuenta de cámara: Tapo app → cámara → Ajustes avanzados → Cuenta de cámara.';
+
+  @override
+  String get s21da6fb5dc =>
+      'Administrador de usuario; la contraseña es el código de verificación de 6 letras en la etiqueta de la cámara.';
+
+  @override
+  String get s1866ef6dc8 =>
+      'Aplicación Ezviz → cámara → Ajustes → LAN Vista en vivo / RTSP: encienda (si la opción existe).';
+
+  @override
+  String get s1c2786e15f =>
+      'El usuario de la cámara y la contraseña (a menudo admin). ONVIF puede necesitar ser habilitado en la configuración de la cámara.';
+
+  @override
+  String get s32270de47a => 'Cámara de seguridad';
+
+  @override
+  String get s4d3ff251d6 =>
+      'Hikvision, Dahua, Reolink, Tapo, Ezviz o cualquier cámara ONVIF. Imagen en una tarjeta, video en vivo en casa.';
+
+  @override
+  String get se8ea97c5eb =>
+      'En la aplicación de cámara (información del dispositivo) o en la lista de dispositivos del router.';
+
+  @override
+  String get s1577068729 => 'cámara';
+
+  @override
+  String get seeb6c38c8e => 'Cámara';
+
+  @override
+  String get s136c6f0d2b => 'Imagen en la tarjeta, video en vivo en casa';
+
+  @override
+  String get s2101774157 => 'Video en vivo en casa (sin imagen)';
 
   @override
   String get sb662db81d8 =>
@@ -1164,6 +1248,14 @@ class AppLocalizationsEs extends AppLocalizations {
       'Se establece una contraseña en el dispositivo. Escriba a continuación y pulse \"Connect\".';
 
   @override
+  String get s9e22388413 => 'Se necesita un detalle más';
+
+  @override
+  String sc8702d4da2(String p0) {
+    return '$p0 no lo dice por sí mismo. Escribe abajo y pulsa \"Connect\".';
+  }
+
+  @override
   String get s83f57c7c24 => 'Contraseña incorrecta';
 
   @override
@@ -1372,6 +1464,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sba10f23f03 => 'Conectando…';
+
+  @override
+  String get s46c87a553f => 'Inicia sesión en la cámara';
 
   @override
   String get se4095d7d95 => 'Contraseña del dispositivo';
@@ -1592,6 +1687,21 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s9630135746 => 'Activar';
 
   @override
+  String get sbcdff8f72a => '¿Qué cámara tienes?';
+
+  @override
+  String get s67bf18fb6f => 'Otra cámara (ONVIF)';
+
+  @override
+  String get s772c158a57 => 'tcp';
+
+  @override
+  String get sea00017814 => 'baja latencia';
+
+  @override
+  String get s2d65587b87 => '8';
+
+  @override
   String get s2ad22696ca => 'Idioma';
 
   @override
@@ -1601,7 +1711,18 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s4529c1010a => 'Elija una conexión de cámara';
 
   @override
+  String get s98bf81bba3 => 'El vídeo en vivo no funciona en este dispositivo';
+
+  @override
+  String get seb2bb5cbce =>
+      'El vídeo en vivo sólo muestra en la red de la casa. Esta cámara no tiene todavía imagen para uso remoto.';
+
+  @override
   String get sc95fb5440b => 'Corriente terminada';
+
+  @override
+  String get sd55dd196f6 =>
+      'No hay video en vivo. Compruebe que usted está en la red de la casa y RTSP está en la cámara.';
 
   @override
   String get s306729fe62 => 'No hay precios';
@@ -2019,9 +2140,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s357fc9c3fe => 'Slider / setpoint';
-
-  @override
-  String get seeb6c38c8e => 'Cámara';
 
   @override
   String get s14da6beba5 => 'Muestra una lectura, por ejemplo, temperatura.';
@@ -2814,6 +2932,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sf55eee73b8 => 'Cambiar imagen';
 
   @override
+  String get sf6723451b9 => 'Toma la foto';
+
+  @override
   String get sdd957ccc1b => 'Quitar la imagen';
 
   @override
@@ -3142,10 +3263,16 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get sad3975b3c1 => 'Cámara (MJPEG / JPEG)';
+  String get s58648dc3fc => 'Cámara (MJPEG / JPEG / RTSP)';
 
   @override
   String get s1534821f4a => 'Base de la cámara URL';
+
+  @override
+  String get s95533426a3 => 'Dirección RTSP (vídeo en vivo en casa)';
+
+  @override
+  String get sa1115d4b0b => 'Dirección RTSP, luz (tarjeta)';
 
   @override
   String get se995a6862d => 'Modo';

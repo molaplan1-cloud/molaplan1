@@ -143,3 +143,21 @@ Relay: https://relay.molaplan.com (custom domain; also https://molaplan-relay.mo
 - Weather tile `lib/ui/weather_tile.dart` (`read: {'kind': 'weather'}`, no connection; gallery card "Sääennuste").
 - Shelly names: `shellyChannelTitle` / `shellyPowerTitle`; cloud list/get select `settings` too; `AppState._fixRawIdTitles` repairs old raw-id titles on load; `renameTile`.
 - Visual check: `MOLAPLAN_SHOTS=1 flutter test test/tiles_screen_test.dart` → /tmp/tiles-*.png (skipped otherwise).
+
+## v0.6.0 – Sonoff, cameras, account nudges (t113u, t115u, t116u)
+- `lib/devices/sonoff.dart` `SonoffProvider`: mDNS `_ewelink._tcp` (id from `eWeLink_<id>`) + `_esphomelib._tcp` (name contains sonoff) + Tasmota LAN scan.
+  - connect order for a typed address: Tasmota (`/cm?cmnd=Status%200`) → ESPHome (common ids) → DIY on :8081 (needs Device ID → `AddProblem.needsDetails`).
+  - DIY tiles = HttpDriver POST `/zeroconf/info|getState` + jsonPath `data.switch` / `data.switches.N.switch`; commands `/zeroconf/switch(es)`.
+  - New firmware ignores requests with a wrong deviceid (no answer → unreachable + hint).
+  - Encrypted eWeLink LAN (non-DIY) and the eWeLink cloud are NOT supported (cloud needs an ITEAD developer appid/secret) → remote = home bridge.
+- Cameras: `lib/devices/cameras.dart` presets + `CameraChooser` (one card → brand sheet `pickCameraBrand`), `CameraProvider` per brand (`camera_<id>`, found by `providerById` for bridge discovery).
+  - `onvif.dart`: WS-Discovery (UDP 3702) + SOAP (GetDeviceInformation/GetCapabilities/GetProfiles/GetStreamUri/GetSnapshotUri, WS-Security PasswordDigest), sent through `CameraDriver.send({'path','body'})` so it works via the bridge.
+  - `rtsp_probe.dart`: one RTSP DESCRIBE with Digest/Basic to check a login (LAN only; skipped via bridge).
+  - `CameraDriver`: auth `digest`, `{{username}}/{{password}}` in paths (Reolink), settings `rtsp`/`rtspSub` with `{{host}}`; `cameraRtspUrl()` fills the login in.
+  - Tile read mode `rtsp` (no snapshot, e.g. Tapo).
+- RTSP playback: media_kit (`lib/ui/rtsp_view.dart`, `initVideo()` in main; `rtspSupported` false under FLUTTER_TEST).
+  - CameraView: tile = snapshot/MJPEG (or the RTSP sub stream for rtsp-only); full screen = main RTSP stream when at home (`router.preferRemote` false); falls back to stills on error.
+  - Plain notes (`_plainNote`) are shown as is, not through friendlyText.
+  - Remote: snapshots only; the executor shrinks >700 KB frames (`shrinkForRemote`, image pkg in an isolate).
+- Tile background: "Ota kuva" (image_picker camera) on Android/iOS only (`cameraCaptureAvailable`, `takeTilePhoto` replaceable in tests). Manifest has an IMAGE_CAPTURE `<queries>` entry; the CAMERA permission comes from mobile_scanner and image_picker asks for it at runtime.
+- Account nudges: `lib/ui/account_nudge.dart` (WelcomePage, NoAccountBanner, maybePromptAccount); `accountNudges` false under FLUTTER_TEST. Passwordless sign-up = `sendCode(create: true)`; a code-only account gets its vault on the first `changePassword`.
