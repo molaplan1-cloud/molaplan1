@@ -237,11 +237,23 @@ class AppConfig {
   String language;
   bool onboardingDone;
 
+  /// This device acts as the home bridge for remote access.
+  bool bridgeMode;
+
+  /// Custom relay (null = Molaplan's own relay).
+  String? relayUrl;
+
+  /// Camera refresh over the remote link (seconds, throttled).
+  int remoteCameraSeconds;
+
   AppConfig({
     List<ConnectionConfig>? connections,
     List<Dashboard>? dashboards,
     this.language = 'fi',
     this.onboardingDone = false,
+    this.bridgeMode = false,
+    this.relayUrl,
+    this.remoteCameraSeconds = 2,
   }) : connections = connections ?? [],
        dashboards = dashboards ?? [];
 
@@ -249,6 +261,10 @@ class AppConfig {
     'app': 'molaplan',
     'formatVersion': formatVersion,
     'language': language,
+    'onboardingDone': onboardingDone,
+    if (bridgeMode) 'bridgeMode': true,
+    'relayUrl': ?relayUrl,
+    if (remoteCameraSeconds != 2) 'remoteCameraSeconds': remoteCameraSeconds,
     'connections': connections.map((c) => c.toJson(includeSecrets: includeSecrets)).toList(),
     'dashboards': dashboards.map((d) => d.toJson()).toList(),
   };
@@ -260,6 +276,9 @@ class AppConfig {
     return AppConfig(
       language: (j['language'] ?? 'fi') as String,
       onboardingDone: (j['onboardingDone'] ?? false) as bool,
+      bridgeMode: (j['bridgeMode'] ?? false) as bool,
+      relayUrl: j['relayUrl'] as String?,
+      remoteCameraSeconds: (j['remoteCameraSeconds'] as num?)?.toInt() ?? 2,
       connections: ((j['connections'] as List?) ?? []).map((e) => ConnectionConfig.fromJson(_map(e))).toList(),
       dashboards: ((j['dashboards'] as List?) ?? []).map((e) => Dashboard.fromJson(_map(e))).toList(),
     );

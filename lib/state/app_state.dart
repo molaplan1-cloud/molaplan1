@@ -7,12 +7,17 @@ import '../drivers/driver.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
 import '../templates/device_templates.dart';
+import 'remote_state.dart';
 import 'storage.dart';
 
 class AppState extends ChangeNotifier {
-  AppState({required this.configStore, required this.secretStore});
+  AppState({required this.configStore, required this.secretStore}) {
+    remote = RemoteState(store: secretStore, configJson: () => exportJson(includeSecrets: true));
+    remote.addListener(notifyListeners);
+  }
   final ConfigStore configStore;
   final SecretStore secretStore;
+  late final RemoteState remote;
 
   AppConfig config = AppConfig();
   final _drivers = <String, Driver>{};
@@ -44,7 +49,28 @@ class AppState extends ChangeNotifier {
     if (config.dashboards.isEmpty) {
       config.dashboards.add(Dashboard(name: config.language == 'fi' ? 'Koti' : 'Home'));
     }
+    remote.relay = config.relayUrl ?? remote.relay;
+    remote.router.remoteCameraSeconds = config.remoteCameraSeconds;
+    try {
+      await remote.load(startBridge: config.bridgeMode);
+    } catch (e) {
+      debugPrint('remote load failed: $e');
+    }
     loaded = true;
+    notifyListeners();
+  }
+
+  Future<void> setBridgeMode(bool on) async {
+    on ? await remote.enableBridge(name: lang == 'fi' ? 'Koti' : 'Home') : await remote.disableBridge();
+    config.bridgeMode = on;
+    await save();
+    notifyListeners();
+  }
+
+  Future<void> setRemoteCameraSeconds(int s) async {
+    config.remoteCameraSeconds = s.clamp(1, 60);
+    remote.router.remoteCameraSeconds = config.remoteCameraSeconds;
+    await save();
     notifyListeners();
   }
 
@@ -77,7 +103,7 @@ class AppState extends ChangeNotifier {
   Driver? driverFor(String? connId) {
     final c = connection(connId);
     if (c == null) return null;
-    return _drivers[c.id] ??= createDriver(c);
+    return _drivers[c.id] ??= remote.router.wrap(c);
   }
 
   Future<void> upsertConnection(ConnectionConfig c) async {
@@ -109,7 +135,7 @@ class AppState extends ChangeNotifier {
 
   /// Tests a (possibly unsaved) connection with a throw-away driver.
   Future<String> testConnection(ConnectionConfig c) async {
-    final d = createDriver(c);
+    final d = remote.router.wrap(c);
     try {
       return await d.test().timeout(const Duration(seconds: 15));
     } finally {
@@ -284,6 +310,8 @@ class AppState extends ChangeNotifier {
 
   @override
   void dispose() {
+    remote.removeListener(notifyListeners);
+    remote.dispose();
     for (final d in _drivers.values) {
       unawaited(d.dispose());
     }

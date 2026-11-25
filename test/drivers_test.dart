@@ -370,11 +370,7 @@ void main() {
           throw StateError('mosquitto exited before listen: $logs');
         }
         try {
-          final c = await Socket.connect(
-            '127.0.0.1',
-            port,
-            timeout: const Duration(milliseconds: 200),
-          );
+          final c = await Socket.connect('127.0.0.1', port, timeout: const Duration(milliseconds: 200));
           await c.close();
           break;
         } on SocketException {
@@ -387,22 +383,26 @@ void main() {
     });
     tearDownAll(() => broker?.kill());
 
-    test('publish command, watch state, retained read', () async {
-      final d = MqttDriver(conn('mqtt', {'host': '127.0.0.1', 'port': port}));
-      final values = <Object?>[];
-      final sub = d.watch({'topic': 'home/iv/state', 'jsonPath': 'temp'})!.listen(values.add);
-      await Future<void>.delayed(const Duration(milliseconds: 300));
-      await d.send({'topic': 'home/iv/state', 'payload': '{"temp": {{value}}}', 'retain': true}, value: 20.5);
-      await _until(() => values.isNotEmpty);
-      expect(values.first, 20.5);
-      await sub.cancel();
-      await d.dispose();
+    test(
+      'publish command, watch state, retained read',
+      () async {
+        final d = MqttDriver(conn('mqtt', {'host': '127.0.0.1', 'port': port}));
+        final values = <Object?>[];
+        final sub = d.watch({'topic': 'home/iv/state', 'jsonPath': 'temp'})!.listen(values.add);
+        await Future<void>.delayed(const Duration(milliseconds: 300));
+        await d.send({'topic': 'home/iv/state', 'payload': '{"temp": {{value}}}', 'retain': true}, value: 20.5);
+        await _until(() => values.isNotEmpty);
+        expect(values.first, 20.5);
+        await sub.cancel();
+        await d.dispose();
 
-      final d2 = MqttDriver(conn('mqtt', {'host': '127.0.0.1', 'port': port}));
-      expect(await d2.read({'topic': 'home/iv/state', 'jsonPath': 'temp'}), 20.5);
-      expect(await d2.test(), startsWith('OK'));
-      await d2.dispose();
-    }, skip: (mosq.isEmpty && (Platform.environment['MQTT_TEST_PORT'] ?? '').isEmpty) ? 'mosquitto not installed' : null);
+        final d2 = MqttDriver(conn('mqtt', {'host': '127.0.0.1', 'port': port}));
+        expect(await d2.read({'topic': 'home/iv/state', 'jsonPath': 'temp'}), 20.5);
+        expect(await d2.test(), startsWith('OK'));
+        await d2.dispose();
+      },
+      skip: (mosq.isEmpty && (Platform.environment['MQTT_TEST_PORT'] ?? '').isEmpty) ? 'mosquitto not installed' : null,
+    );
   });
 }
 

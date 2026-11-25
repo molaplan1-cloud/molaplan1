@@ -44,6 +44,11 @@ dependencies:
   path_provider: ^2.1.6
   uuid: ^4.6.0
   multicast_dns: ^0.3.3+1
+  cryptography: ^2.9.0
+  qr: ^3.0.3
+  qr_flutter: ^4.1.0
+  mobile_scanner: ^7.5.0
+  wakelock_plus: ^1.8.2
 
 dev_dependencies:
   flutter_test:

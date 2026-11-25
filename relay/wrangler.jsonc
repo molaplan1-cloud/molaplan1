@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "molaplan-relay",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-25",
+  "workers_dev": true,
+  "observability": { "enabled": true },
+  "durable_objects": {
+    "bindings": [
+      { "name": "HOME", "class_name": "Home" },
+      { "name": "CODES", "class_name": "PairCode" }
+    ]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Home", "PairCode"] }]
+}
