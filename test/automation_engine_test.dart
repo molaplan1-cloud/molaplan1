@@ -143,9 +143,10 @@ void main() {
 
   test('sunset trigger uses computed sunset for the location', () async {
     final st = sunTimes(DateTime(2026, 11, 25), 60.17, 24.94)!;
-    // Helsinki late November: sunrise ≈ 8:50, sunset ≈ 15:20 local
-    expect(st.$1.hour, inInclusiveRange(8, 9));
-    expect(st.$2.hour, 15);
+    // Helsinki late November: sunrise ≈ 6:50, sunset ≈ 13:20 UTC (8:50 / 15:20 Finnish time).
+    // Checked in UTC so the test does not depend on the machine's time zone (CI runs in UTC).
+    expect(st.$1.toUtc().hour, inInclusiveRange(6, 7));
+    expect(st.$2.toUtc().hour, 13);
     eng.update(
       AutomationSettings(
         automations: [
