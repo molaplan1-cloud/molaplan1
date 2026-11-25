@@ -60,7 +60,7 @@ Source = the request id (tNNNu) or the brief/round it came from. Version = the r
 | R074 | Predictive heating (eco/balanced/comfort) using price + weather forecast, plan chart | v0.5 round | Done | 0.5.0 |
 | R075 | Thermostat wizard + virtual thermostat on the bridge | v0.5 round | Done | 0.5.0 |
 | R076 | Weather (Open-Meteo, home location) + weather tile | v0.5 round | Done | 0.5.0 |
-| R077 | Price tile = page numbers, correct Now line, calm hourly bars, nice y-max, readable axes, 12 h mini-chart with Now | t127u | Done 0.6.2; fix for overlapping y-axis labels in a short 4×2 tile (seen on the PC at 1280×800) is on main → 0.7.0 | 0.6.2 / 0.7.0 |
+| R077 | Price tile = page numbers, correct Now line, calm hourly bars, nice y-max, readable axes, 12 h mini-chart with Now | t127u | Done 0.6.2; fix for overlapping y-axis labels in a short 4×2 tile (seen on the PC at 1280×800) is on main → 0.7.1 | 0.6.2 / 0.7.1 |
 | R078 | Teho 1–4 tiles as gauge/trend | t127u | Done | 0.6.2 |
 | R079 | Windows price tile error fixed, old HTTP price tiles migrated, service wording + cached data | t129u | Done | 0.6.2 |
 
@@ -70,7 +70,7 @@ Source = the request id (tNNNu) or the brief/round it came from. Version = the r
 | R090 | Control view: tiles only, by room, gear menu, lock with PIN | t107u | Done | 0.5.0 |
 | R091 | Home Assistant entity picker (search, room/type filters, suggestions, reopen later) | t108u | Done | 0.5.0 |
 | R092 | Per-type tile visuals + look editor (size, colour, icon, name) | t109u–t112u | Done | 0.5.0 |
-| R093 | Tile backgrounds (auto-shrunk, contrast scrim, dim when off, account sync) | t109u–t112u | Done – Storage bucket `tile-images` + own-folder policies verified live 2026-11-25; account deletion now also removes the images | 0.5.0 / 0.7.0 |
+| R093 | Tile backgrounds (auto-shrunk, contrast scrim, dim when off, account sync) | t109u–t112u | Done – Storage bucket `tile-images` + own-folder policies verified live 2026-11-25; account deletion now also removes the images | 0.5.0 / 0.7.1 |
 | R094 | Take a photo for a tile background (camera) | t113u | Done | 0.6.0 |
 | R095 | Network scanner "Etsi laitteet" (mDNS, SSDP, ONVIF, subnet; via bridge when away) | t119u | Done | 0.6.1 |
 | R096 | Dense responsive grid + "Laattakoko" setting | t120u | Done | 0.6.1 |
@@ -92,26 +92,26 @@ Source = the request id (tNNNu) or the brief/round it came from. Version = the r
 | R112 | HA: one shared websocket, throttled service calls, debounced errors, light + brightness one tile, offer direct Hue | t139u, t140u | Done | 0.6.2 |
 | R113 | Hue direct: one shared bridge connection (v2 event stream), command queue within rate limits, debounced errors, light + brightness one tile + migration, tested with 25+ lights | t141u | Done (mock-tested, not on a real bridge) | 0.6.2 |
 
-## v0.7.0
+## v0.7.1
 | ID | Requirement | Source | Status | Version |
 |---|---|---|---|---|
-| R130 | Groups / rooms | t126u | Done – group tile ("Luo ryhmä"): one switch for its members, shows "n/m päällä"; runs on the bridge too (AutoTile members). Rooms = existing views/groups | 0.7.0 |
-| R131 | Scenes | t126u | Done – Tilannekuvat tab: capture from the current state or build by hand, run from a chip on the home screen, a tile, an automation or a script | 0.7.0 |
-| R132 | Livelier UI | t126u | Partial – greeting/morning card, scene chips on the home screen, light glow, leak pulse, trend colours. No animated backgrounds or room photos header yet | 0.7.0 |
-| R133 | Morning summary | t126u | Done – card 05–11: greeting, outdoor °C, price now, cheapest hour today, devices on / not answering; closable per day. Summary line is fi/en only (sv/et/es get English) | 0.7.0 |
-| R134 | "Automaatiot" section: list with on/off, last triggered, run history; "Luo automaatio" in "+ Lisää" | t135u | Done (widget tests) | 0.7.0 |
-| R135 | Automation builder Kun / Jos / Tee (device, time/sun, price, weather, offline → device, scene, notification); templates | t135u (refines t126u rules) | Done – builder + 'Testaa nyt' + templates filtered by your devices (widget tests) | 0.7.0 |
-| R136 | Push notifications: Android (FCM or UnifiedPush/ntfy fallback), Windows toasts + tray; rule evaluation on bridge/server; priorities, quiet hours, mute; tap opens tile; account-tied; report Firebase needs | t128u | Partial – done: ntfy push (works with Molaplan closed via the ntfy app), in-app banner, Android local notification, Windows toasts + tray (hide on close), evaluation on the home bridge, priorities, quiet hours, mute 1/8/24 h, tap opens the tile, topic stored in the synced account config. Missing: FCM (needs a Firebase project – list in the release notes) | 0.7.0 |
-| R137 | Simple scripts (steps: device, wait, wait-until, notify, scene, if/else) runnable from a button, an automation or remotely (ntfy / iPhone Shortcut URL+PIN) | t136u | Done (widget + engine tests) | 0.7.0 |
-| R138 | Advanced scripts (sandboxed language, timeout, Molaplan API only, variables/loops, device R/W, price, weather) on the bridge; run log | t136u | Done – behind Asetukset › Edistyneet; syntax check in the editor, step/time limits, run log | 0.7.0 |
-| R139 | Sensors are never lights: classify by HA device_class, Dirigera deviceType, Zigbee IAS zone / Hue sensor types, Shelly Flood; leak tile (water drop, Kuiva / VUOTO! pulsing red, battery, last alarm, no controls); "Vesivuoto → hälytys" template; migrate misclassified tiles; door/motion/smoke/temperature checked | t143u | Done (tests) | 0.7.0 |
-| R140 | Tile sizes in half steps 0,5–4 (half-units internally, existing sizes ×2), half-unit corner resize, Leveys/Korkeus with decimal comma, compact 0.5 variants, goldens 0.5×0.5 / 0.5×1 / 1.5×1 | t144u | Done (tests, goldens) | 0.7.0 |
-| R141 | Form helper texts never overlap the next field's label at any width / text scale 1.0–1.3 (helperText in the decoration, 18 dp spacing, labels inside the filled box); overlap widget test | t145u | Done (tests) | 0.7.0 |
-| R142 | SnackBars auto-dismiss (undo ≈5 s, info ≈3 s), persist: false, close icon, dismissed on navigation; test | t146u | Done (tests) | 0.7.0 |
-| R143 | No duplicated "Koti": group header hidden when it equals the view name or the view has one group (shown in edit mode), no duplicate app-bar title; widget test | t147u | Done (tests) | 0.7.0 |
-| R144 | Trend tile: change over the period ("−3,3 °C / 1 h", arrow + colour); range chips 1 h / 6 h / 24 h / 7 vrk on the tile (tap-to-cycle on small tiles), saved per tile; x-axis spans the whole window, latest point at the right edge, no gap; history backfill from HA recorder / Shelly; tests | t148u | Done (tests, goldens) | 0.7.0 |
-| R145 | Trend chart options per tile: guide lines (none / horizontal / grid), y-axis labels min/mid/max with unit, point markers, x-axis time labels (HH:mm, weekday for 7 vrk, "nyt"); auto = clean on small tiles, axes on ≥2×2; no label overlap/clipping at 0,5–3,5; goldens | t149u | Done (tests, goldens) | 0.7.0 |
-| R146 | Colour thresholds for value / gauge / trend: any number of ranges, colour presets + custom colour picker, liukuva / jyrkkä blending; applied to the trend line and fill (vertical gradient by value), gauge arc and the big number; simple choice in the main settings, limits under Edistyneet; tests | t150u | Done (tests, goldens) | 0.7.0 |
+| R130 | Groups / rooms | t126u | Done – group tile ("Luo ryhmä"): one switch for its members, shows "n/m päällä"; runs on the bridge too (AutoTile members). Rooms = existing views/groups | 0.7.1 |
+| R131 | Scenes | t126u | Done – Tilannekuvat tab: capture from the current state or build by hand, run from a chip on the home screen, a tile, an automation or a script | 0.7.1 |
+| R132 | Livelier UI | t126u | Partial – greeting/morning card, scene chips on the home screen, light glow, leak pulse, trend colours. No animated backgrounds or room photos header yet | 0.7.1 |
+| R133 | Morning summary | t126u | Done – card 05–11: greeting, outdoor °C, price now, cheapest hour today, devices on / not answering; closable per day. Summary line is fi/en only (sv/et/es get English) | 0.7.1 |
+| R134 | "Automaatiot" section: list with on/off, last triggered, run history; "Luo automaatio" in "+ Lisää" | t135u | Done (widget tests) | 0.7.1 |
+| R135 | Automation builder Kun / Jos / Tee (device, time/sun, price, weather, offline → device, scene, notification); templates | t135u (refines t126u rules) | Done – builder + 'Testaa nyt' + templates filtered by your devices (widget tests) | 0.7.1 |
+| R136 | Push notifications: Android (FCM or UnifiedPush/ntfy fallback), Windows toasts + tray; rule evaluation on bridge/server; priorities, quiet hours, mute; tap opens tile; account-tied; report Firebase needs | t128u | Partial – done: ntfy push (works with Molaplan closed via the ntfy app), in-app banner, Android local notification, Windows toasts + tray (hide on close), evaluation on the home bridge, priorities, quiet hours, mute 1/8/24 h, tap opens the tile, topic stored in the synced account config. Missing: FCM (needs a Firebase project – list in the release notes) | 0.7.1 |
+| R137 | Simple scripts (steps: device, wait, wait-until, notify, scene, if/else) runnable from a button, an automation or remotely (ntfy / iPhone Shortcut URL+PIN) | t136u | Done (widget + engine tests) | 0.7.1 |
+| R138 | Advanced scripts (sandboxed language, timeout, Molaplan API only, variables/loops, device R/W, price, weather) on the bridge; run log | t136u | Done – behind Asetukset › Edistyneet; syntax check in the editor, step/time limits, run log | 0.7.1 |
+| R139 | Sensors are never lights: classify by HA device_class, Dirigera deviceType, Zigbee IAS zone / Hue sensor types, Shelly Flood; leak tile (water drop, Kuiva / VUOTO! pulsing red, battery, last alarm, no controls); "Vesivuoto → hälytys" template; migrate misclassified tiles; door/motion/smoke/temperature checked | t143u | Done (tests) | 0.7.1 |
+| R140 | Tile sizes in half steps 0,5–4 (half-units internally, existing sizes ×2), half-unit corner resize, Leveys/Korkeus with decimal comma, compact 0.5 variants, goldens 0.5×0.5 / 0.5×1 / 1.5×1 | t144u | Done (tests, goldens) | 0.7.1 |
+| R141 | Form helper texts never overlap the next field's label at any width / text scale 1.0–1.3 (helperText in the decoration, 18 dp spacing, labels inside the filled box); overlap widget test | t145u | Done (tests) | 0.7.1 |
+| R142 | SnackBars auto-dismiss (undo ≈5 s, info ≈3 s), persist: false, close icon, dismissed on navigation; test | t146u | Done (tests) | 0.7.1 |
+| R143 | No duplicated "Koti": group header hidden when it equals the view name or the view has one group (shown in edit mode), no duplicate app-bar title; widget test | t147u | Done (tests) | 0.7.1 |
+| R144 | Trend tile: change over the period ("−3,3 °C / 1 h", arrow + colour); range chips 1 h / 6 h / 24 h / 7 vrk on the tile (tap-to-cycle on small tiles), saved per tile; x-axis spans the whole window, latest point at the right edge, no gap; history backfill from HA recorder / Shelly; tests | t148u | Done (tests, goldens) | 0.7.1 |
+| R145 | Trend chart options per tile: guide lines (none / horizontal / grid), y-axis labels min/mid/max with unit, point markers, x-axis time labels (HH:mm, weekday for 7 vrk, "nyt"); auto = clean on small tiles, axes on ≥2×2; no label overlap/clipping at 0,5–3,5; goldens | t149u | Done (tests, goldens) | 0.7.1 |
+| R146 | Colour thresholds for value / gauge / trend: any number of ranges, colour presets + custom colour picker, liukuva / jyrkkä blending; applied to the trend line and fill (vertical gradient by value), gauge arc and the big number; simple choice in the main settings, limits under Edistyneet; tests | t150u | Done (tests, goldens) | 0.7.1 |
 
 ## Later
 | ID | Requirement | Source | Status | Version |
