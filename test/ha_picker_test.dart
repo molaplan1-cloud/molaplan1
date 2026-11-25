@@ -115,4 +115,45 @@ void main() {
     expect(find.textContaining('jo lisätty'), findsWidgets);
     await tester.pump(const Duration(seconds: 3));
   });
+
+  testWidgets('picker: 30 Hue lights via HA → offer the direct Hue Bridge (t140u)', (tester) async {
+    tester.view.physicalSize = const Size(800, 1200);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    final s = AppState(configStore: MemoryConfigStore(), secretStore: MemorySecretStore());
+    await s.load();
+    await s.setOnboardingDone(true);
+    final conn = ConnectionConfig(
+      name: 'Home Assistant',
+      type: 'homeassistant',
+      settings: {'baseUrl': 'http://ha:8123'},
+      secrets: {'token': 't'},
+    );
+    s.config.connections.add(conn);
+    final cat = HaCatalog([
+      for (var i = 0; i < 30; i++)
+        HaEntity(
+          entityId: 'light.k$i',
+          name: 'Keittiö katto $i',
+          platform: 'hue',
+          attributes: const {'brightness': 128},
+        ),
+    ], const []);
+    await tester.pumpWidget(
+      AppScope(
+        state: s,
+        child: MaterialApp(
+          theme: molaplanTheme(),
+          home: HaEntityPickerPage(connection: conn, loader: () async => cat),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('ha-hue-direct')), findsOneWidget);
+    expect(find.text('30 valoa on Philips Hue -valoja'), findsOneWidget);
+    // Every light is one tile – no "– kirkkaus" companions.
+    final tiles = [for (final e in cat.entities) ...haTilesFor(e, 'c', 'fi')];
+    expect(tiles.length, 30);
+    expect(tiles.any((t) => t.title.contains('kirkkaus')), isFalse);
+  });
 }

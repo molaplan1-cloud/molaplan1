@@ -10,6 +10,14 @@ class AppLocalizationsFi extends AppLocalizations {
   AppLocalizationsFi([String locale = 'fi']) : super(locale);
 
   @override
+  String get sd0a2130950 =>
+      'Osoitteessa ei vastaa odotettu laite – tarkista osoite (http vai https?)';
+
+  @override
+  String get sdd5742468b =>
+      'Osoitteessa vastaa jokin, mutta ei odotetulla tavalla. Kokeile https:// tai http:// osoitteen alkuun ja tarkista portti.';
+
+  @override
   String get s03c0a5192b => 'Osoitetta ei löydy';
 
   @override
@@ -163,10 +171,11 @@ class AppLocalizationsFi extends AppLocalizations {
       'Hyväksy laite sillan näytöllä 3 minuutin sisällä, tai skannaa QR-koodi.';
 
   @override
-  String get s9dd2ff794f => 'Jokin meni pieleen';
+  String get s700b0ef4de => 'Yhteys ei onnistunut';
 
   @override
-  String get sbb62433c2c => 'Tarkista asetukset ja yritä uudelleen.';
+  String get s53a891e670 =>
+      'Tarkista osoite ja asetukset ja yritä uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.';
 
   @override
   String get sc27533ae83 => 'Säästävä';
@@ -807,8 +816,8 @@ class AppLocalizationsFi extends AppLocalizations {
       'Salasana ei täsmää. Kirjoita tilin salasana (sama jolla kirjauduit ensimmäisen kerran).';
 
   @override
-  String s11ee4426b2(String p0) {
-    return 'Jokin meni pieleen: $p0';
+  String sd0219ce512(String p0) {
+    return 'Yhteys ei onnistunut: $p0';
   }
 
   @override
@@ -1629,6 +1638,69 @@ class AppLocalizationsFi extends AppLocalizations {
       'Näitä Molaplan ei ohjaa. iPhonet näkyvät nimellä vain hereillä ollessaan.';
 
   @override
+  String get s7f308d40c8 => 'Lämmittää';
+
+  @override
+  String get s41de361b3e => 'Jäähdyttää';
+
+  @override
+  String get s4f7ccb7138 => 'Kuivaa';
+
+  @override
+  String get s9b2398228e => 'Puhaltaa';
+
+  @override
+  String get s533177c689 => 'Odottaa';
+
+  @override
+  String get sa3e8beed42 => 'Lämmitys';
+
+  @override
+  String get s6c9668fbd9 => 'Jäähdytys';
+
+  @override
+  String get sd032c3efec => 'Auto';
+
+  @override
+  String get s9db8aefc43 => 'Kuivaus';
+
+  @override
+  String get s0117dea8bc => 'Puhallus';
+
+  @override
+  String get s11a7c24b38 => 'Ei lukemaa';
+
+  @override
+  String get s28b7c227f0 => 'asetus';
+
+  @override
+  String get s81e0c3084b => 'Valon tilaa ei saatu – säätö voi silti toimia.';
+
+  @override
+  String get s7400a53ab2 => 'Väri';
+
+  @override
+  String get s09aec1d642 => 'Valkoinen';
+
+  @override
+  String get s16ff3849c9 => 'Värilämpötila';
+
+  @override
+  String get sf117c88d83 => 'Lämmin';
+
+  @override
+  String get secb1232aad => 'Kylmä';
+
+  @override
+  String get sb2fa876c32 => 'Kirkkaus';
+
+  @override
+  String get s34cc93ca61 => 'Suosikit';
+
+  @override
+  String get sdc485831ad => 'Pitkä painallus poistaa';
+
+  @override
   String get s3c98732a8c => 'Mittari';
 
   @override
@@ -1746,8 +1818,11 @@ class AppLocalizationsFi extends AppLocalizations {
       'Tarkista että kotona oleva kotisilta (tabletti tai PC) on päällä, Molaplan on auki ja sillä on netti.';
 
   @override
-  String get sce0949d6fc =>
-      'Yritä uudelleen. Jos ongelma toistuu, käynnistä laite uudelleen.';
+  String get se11f9b5084 => 'Laitteeseen ei saatu yhteyttä';
+
+  @override
+  String get s979376dca6 =>
+      'Tarkista osoite ja että laite on päällä, ja yritä uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.';
 
   @override
   String get sce6d01c270 => 'Kirjoita ensin osoite';
@@ -2032,6 +2107,27 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s6f1c11270c => 'Sisältää esimerkkiasetuksia';
 
   @override
+  String s1ea8fe913b(String p0) {
+    return 'Osoite: $p0';
+  }
+
+  @override
+  String get s16dc13070c =>
+      'Home Assistant käyttää itse allekirjoitettua varmennetta. Se hyväksyttiin, koska osoite on kotiverkossa.';
+
+  @override
+  String get sd531eb2fc2 =>
+      'Home Assistantia ei löytynyt automaattisesti. Kirjoita osoite, jolla avaat sen selaimessa (esim. http://192.168.1.20:8123 tai Nabu Casa -osoite).';
+
+  @override
+  String get s7def041e83 => 'Löydetyt Home Assistantit:';
+
+  @override
+  String s2967a37e01(String p0, String p1) {
+    return 'Löytyi: $p0 – $p1';
+  }
+
+  @override
   String get s8f4c0baf1a =>
       'Laitteita ei löytynyt automaattisesti. Kirjoita osoite itse – sen löydät reitittimen laitelistasta tai laitteen omasta sovelluksesta.';
 
@@ -2213,9 +2309,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s7783fe5fca => 'Suosikki';
-
-  @override
-  String get sb2fa876c32 => 'Kirkkaus';
 
   @override
   String get s912ea5d2ec => 'Lähetä';
@@ -3410,6 +3503,18 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sedb7b77645 => 'Kaikki';
 
   @override
+  String s140aba8cd7(String p0) {
+    return '$p0 valoa on Philips Hue -valoja';
+  }
+
+  @override
+  String get s16aee2aa30 =>
+      'Suoraan Hue-sillan kautta ne toimivat nopeammin ja ilman Home Assistantia.';
+
+  @override
+  String get s3816288db1 => 'Lisää Hue-silta';
+
+  @override
   String get sa765c9294a => 'Näytä kaikki';
 
   @override
@@ -3461,9 +3566,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s8971788287 => 'Iso';
-
-  @override
-  String get s7400a53ab2 => 'Väri';
 
   @override
   String get s254a1d8e12 => 'Taustakuva (valinnainen)';
@@ -4163,15 +4265,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s43c9b88580 => 'Automaatti';
-
-  @override
-  String get sa3e8beed42 => 'Lämmitys';
-
-  @override
-  String get s6c9668fbd9 => 'Jäähdytys';
-
-  @override
-  String get s9db8aefc43 => 'Kuivaus';
 
   @override
   String get s018d2e08f4 => 'Puhallin';
@@ -4894,10 +4987,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s57e684ac9e => 'Viestit';
-
-  @override
-  String get sdc84bf286f =>
-      'off=Pois;heat=Lämmitys;cool=Jäähdytys;auto=Auto;heat_cool=Auto;dry=Kuivaus;fan_only=Puhallus';
 
   @override
   String s3378eb2d0b(String p0) {

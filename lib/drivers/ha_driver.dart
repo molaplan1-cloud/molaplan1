@@ -185,8 +185,26 @@ class HomeAssistantDriver extends Driver {
     });
   }
 
+  /// Service calls go one at a time with a small gap, so 25+ tiles switched at once (a scene,
+  /// "all off") don't flood Home Assistant (t139u).
+  Future<void> _queue = Future.value();
+  static Duration callGap = const Duration(milliseconds: 60);
+
   @override
-  Future<Object?> send(Map<String, dynamic> spec, {Object? value}) async {
+  Future<Object?> send(Map<String, dynamic> spec, {Object? value}) {
+    final c = Completer<Object?>();
+    _queue = _queue.then((_) async {
+      try {
+        c.complete(await _send(spec, value));
+      } catch (e, st) {
+        c.completeError(e, st);
+      }
+      await Future<void>.delayed(callGap);
+    });
+    return c.future;
+  }
+
+  Future<Object?> _send(Map<String, dynamic> spec, Object? value) async {
     final svc = spec.str('service');
     final i = svc.indexOf('.');
     if (i <= 0) throw DriverException('Home Assistant: service must be domain.service');

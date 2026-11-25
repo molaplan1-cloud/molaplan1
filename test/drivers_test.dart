@@ -67,7 +67,14 @@ void main() {
       await d.send({'method': 'POST', 'path': '/set?v={{value}}', 'body': '{"sp": {{value}}}'}, value: 22.0);
       expect(received.last, 'POST /set?v=22 auth=null x=null {"sp": 22}');
       await expectLater(d.read({'path': '/fail'}), throwsA(isA<DriverException>()));
-      expect(await d.test(), allOf(startsWith('✓ Yhteys toimii: HTTP 200.'), contains('Testattiin: GET'), contains('Komentoja ei lähetetty')));
+      expect(
+        await d.test(),
+        allOf(
+          startsWith('✓ Yhteys toimii: HTTP 200.'),
+          contains('Testattiin: GET'),
+          contains('Komentoja ei lähetetty'),
+        ),
+      );
       await d.dispose();
     });
   });
@@ -184,6 +191,21 @@ void main() {
       }, value: 40.0);
       expect(calls.single, '/api/services/light/turn_on {"brightness_pct":40,"entity_id":"light.olohuone"}');
       expect(await d.test(), 'API running.');
+      await d.dispose();
+    });
+
+    test('30 service calls at once go in order through one queue (t139u)', () async {
+      final d = HomeAssistantDriver(
+        conn('homeassistant', {'baseUrl': 'http://127.0.0.1:${server.port}'}, {'token': 'good'}),
+      );
+      calls.clear();
+      await Future.wait([
+        for (var i = 0; i < 30; i++) d.send({'service': 'light.turn_off', 'entityId': 'light.l$i'}),
+      ]);
+      expect(calls.length, 30);
+      expect(calls.map((c) => RegExp(r'light\.l(\d+)').firstMatch(c)![1]).toList(), [
+        for (var i = 0; i < 30; i++) '$i',
+      ]);
       await d.dispose();
     });
 

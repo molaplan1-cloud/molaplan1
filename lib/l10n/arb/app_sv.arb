@@ -1,5 +1,7 @@
 {
  "@@locale": "sv",
+ "sd0a2130950": "Den väntade enheten svarar inte på den här adressen – kontrollera den (http eller https?)",
+ "sdd5742468b": "Något svarar, men inte som väntat. Prova https:// eller http:// först och kontrollera porten.",
  "s03c0a5192b": "Adress som inte hittats",
  "@s03c0a5192b": {
   "x-mt": true
@@ -173,11 +175,11 @@
  "@sceb894b9b3": {
   "x-mt": true
  },
- "s9dd2ff794f": "Något gick fel",
- "sbb62433c2c": "Kontrollera inställningarna och försök igen.",
- "@sbb62433c2c": {
+ "s700b0ef4de": "Anslutningen fungerade inte",
+ "@s700b0ef4de": {
   "x-mt": true
  },
+ "s53a891e670": "Kontrollera adressen och inställningarna och försök igen. De tekniska detaljerna visar den exakta orsaken.",
  "sc27533ae83": "Sparsam",
  "sdbcb85509b": "Temperaturen får variera mest (+1 / −2 °C). Störst besparing.",
  "s380b20be36": "Balanserad",
@@ -735,8 +737,8 @@
  "@sf1b5d0ffa6": {
   "x-mt": true
  },
- "s11ee4426b2": "Något gick fel: {p0}",
- "@s11ee4426b2": {
+ "sd0219ce512": "Anslutningen fungerade inte: {p0}",
+ "@sd0219ce512": {
   "x-mt": true
  },
  "sbf59e43c36": "Ingen internetanslutning. Kontrollera Wi-Fi eller mobildata och försök igen.",
@@ -1211,8 +1213,8 @@
   "x-mt": true
  },
  "s09f5da65e0": "Byt till Shelly Cloud",
- "sa3a093e55e": "Värme",
- "s8efb99df1d": "Kyla",
+ "sa3a093e55e": "Värmer",
+ "s8efb99df1d": "Kyler",
  "s0b98d62330": "Värme och kyla",
  "s33831dd49f": "Av",
  "sa61efb9866": "värmer",
@@ -1403,6 +1405,33 @@
  "@s9e8430c37b": {
   "x-mt": true
  },
+ "s7f308d40c8": "Värmer",
+ "s41de361b3e": "Kyler",
+ "s4f7ccb7138": "Avfuktar",
+ "s9b2398228e": "Fläkt",
+ "s533177c689": "Vilar",
+ "sa3e8beed42": "Värme",
+ "s6c9668fbd9": "Kyla",
+ "sd032c3efec": "Auto",
+ "s9db8aefc43": "Avfuktning",
+ "s0117dea8bc": "Fläkt",
+ "s11a7c24b38": "Inget värde",
+ "s28b7c227f0": "börvärde",
+ "s81e0c3084b": "Lampans läge kunde inte läsas – styrningen kan ändå fungera.",
+ "s7400a53ab2": "Färg",
+ "@s7400a53ab2": {
+  "x-mt": true
+ },
+ "s09aec1d642": "Vitt",
+ "s16ff3849c9": "Färgtemperatur",
+ "@s16ff3849c9": {
+  "x-mt": true
+ },
+ "sf117c88d83": "Varm",
+ "secb1232aad": "Kyla",
+ "sb2fa876c32": "Ljusstyrka",
+ "s34cc93ca61": "Favoriter",
+ "sdc485831ad": "Tryck länge för att ta bort",
  "s3c98732a8c": "Mätare",
  "s6f29aeb685": "Trend",
  "s3298699c1a": "Mätare + trend",
@@ -1520,8 +1549,9 @@
  "@scc1918f2dc": {
   "x-mt": true
  },
- "sce0949d6fc": "Försök igen. Om det fortsätter att hända, starta om enheten.",
- "@sce0949d6fc": {
+ "se11f9b5084": "Kunde inte ansluta till enheten",
+ "s979376dca6": "Kontrollera adressen och att enheten är på, försök sedan igen. De tekniska detaljerna visar exakt anledning.",
+ "@s979376dca6": {
   "x-mt": true
  },
  "sce6d01c270": "Skriv adressen först",
@@ -1784,6 +1814,14 @@
  "@s6f1c11270c": {
   "x-mt": true
  },
+ "s1ea8fe913b": "Adress: {p0}",
+ "@s1ea8fe913b": {
+  "x-mt": true
+ },
+ "s16dc13070c": "Home Assistant använder ett självsignerat certifikat. Det godkändes eftersom adressen finns i hemnätverket.",
+ "sd531eb2fc2": "Home Assistant hittades inte automatiskt. Skriv adressen du öppnar den med (t.ex. http://192.168.1.20:8123 eller Nabu Casa-adressen).",
+ "s7def041e83": "Hittade Home Assistant:",
+ "s2967a37e01": "Hittade: {p0} – {p1}",
  "s8f4c0baf1a": "Inga enheter hittades automatiskt. Skriv adressen själv - hitta den i routern eller enhetsappen.",
  "@s8f4c0baf1a": {
   "x-mt": true
@@ -1950,10 +1988,6 @@
  },
  "s7783fe5fca": "Favorit",
  "@s7783fe5fca": {
-  "x-mt": true
- },
- "sb2fa876c32": "Ljushet",
- "@sb2fa876c32": {
   "x-mt": true
  },
  "s912ea5d2ec": "Skicka",
@@ -2839,6 +2873,11 @@
   "x-mt": true
  },
  "sa6212aaeb4": "Plats",
+ "s12c2f8e6e4": "Endast hemnätverket",
+ "s5f7c464e6d": "kl. {p0}",
+ "s21b64ae0a7": "{p0} fungerar bara i hemnätverket. Rutan blir normal igen av sig själv när du är hemma.",
+ "s6b1a8249de": "Senaste läge",
+ "s56650a18d5": "Gör den fjärrstyrbar ›",
  "sa0d8c62e5a": "Inget kommando konfigurerat",
  "@sa0d8c62e5a": {
   "x-mt": true
@@ -2962,6 +3001,9 @@
   "x-mt": true
  },
  "sedb7b77645": "Alla",
+ "s140aba8cd7": "{p0} lampor är Philips Hue-lampor",
+ "s16aee2aa30": "Direkt via Hue Bridge svarar de snabbare och fungerar utan Home Assistant.",
+ "s3816288db1": "Lägg till Hue Bridge",
  "sa765c9294a": "Visa alla",
  "@sa765c9294a": {
   "x-mt": true
@@ -2999,10 +3041,6 @@
  "s64c916e299": "Liten",
  "s5e3097232a": "Bred",
  "s8971788287": "Stor",
- "s7400a53ab2": "Färg",
- "@s7400a53ab2": {
-  "x-mt": true
- },
  "s254a1d8e12": "Bakgrundsbild (valfri)",
  "sc48f5f9bcf": "Välj bild",
  "sf55eee73b8": "Ändra bild",
@@ -3067,6 +3105,8 @@
  "s9bb545e9b3": "Logga in eller skapa ett konto",
  "s0625d54b38": "Kortstorlek",
  "s8382da3467": "Normal",
+ "s7c1cd8314e": "Dölj rutor som inte fungerar på distans",
+ "sa0cbbafb4e": "Borta hemifrån döljs rutor som bara fungerar i hemnätverket. Som standard står de kvar, gråtonade.",
  "s21f870dbc2": "Visar tekniska inställningar: anslutningar (HTTP, MQTT, Modbus...), nyttolast, JSON-vägar och kakelkällor. De flesta behöver inte dessa.",
  "@s21f870dbc2": {
   "x-mt": true
@@ -3675,9 +3715,6 @@
   "x-mt": true
  },
  "s43c9b88580": "Auto",
- "sa3e8beed42": "Värme",
- "s6c9668fbd9": "Kyla",
- "s9db8aefc43": "Avfuktning",
  "s018d2e08f4": "Fläkt",
  "s36fb6ba26f": "Modbus TCP",
  "sa70cc38354": "Värd",
@@ -4427,7 +4464,6 @@
   "x-mt": true
  },
  "s57e684ac9e": "Meddelanden",
- "sdc84bf286f": "off=Off;heat=Heat;cool=Cool;auto=Auto;heat_cool=Auto;dry=Dry;fan_only=Fan",
  "s3378eb2d0b": "{p0} – temperatur",
  "@s3378eb2d0b": {
   "x-mt": true
@@ -4443,34 +4479,6 @@
  },
  "s3a38b97f7b": "{p0} – rum",
  "@s3a38b97f7b": {
-  "x-mt": true
- },
- "s12c2f8e6e4": "Hemnätverk endast",
- "@s12c2f8e6e4": {
-  "x-mt": true
- },
- "s5f7c464e6d": "På {p0}",
- "@s5f7c464e6d": {
-  "x-mt": true
- },
- "s21b64ae0a7": "{p0} fungerar bara på hemnätverket. Kortet återvänder till det normala av sig själv när du är hemma igen.",
- "@s21b64ae0a7": {
-  "x-mt": true
- },
- "s6b1a8249de": "Sista staten",
- "@s6b1a8249de": {
-  "x-mt": true
- },
- "s56650a18d5": "Få det att fungera på distans ›",
- "@s56650a18d5": {
-  "x-mt": true
- },
- "s7c1cd8314e": "Dölj kort som inte fungerar på distans",
- "@s7c1cd8314e": {
-  "x-mt": true
- },
- "sa0cbbafb4e": "Borta hemifrån är kort som bara fungerar på hemnätverket dolda. Som standard stannar de på plats, gråtit ut.",
- "@sa0cbbafb4e": {
   "x-mt": true
  }
 }

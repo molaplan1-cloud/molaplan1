@@ -1,5 +1,7 @@
 {
  "@@locale": "et",
+ "sd0a2130950": "Oodatud seade ei vasta sellel aadressil – kontrolli seda (http või https?)",
+ "sdd5742468b": "Midagi vastab, aga mitte ootuspäraselt. Proovi ette https:// või http:// ja kontrolli porti.",
  "s03c0a5192b": "Aadressi ei leitud",
  "@s03c0a5192b": {
   "x-mt": true
@@ -173,11 +175,11 @@
  "@sceb894b9b3": {
   "x-mt": true
  },
- "s9dd2ff794f": "Midagi läks valesti",
- "sbb62433c2c": "Kontrollige seadeid ja proovige uuesti.",
- "@sbb62433c2c": {
+ "s700b0ef4de": "Ühendus ei töötanud",
+ "@s700b0ef4de": {
   "x-mt": true
  },
+ "s53a891e670": "Kontrolli aadressi ja seadeid ning proovi uuesti. Tehnilised üksikasjad näitavad täpset põhjust.",
  "sc27533ae83": "Säästlik",
  "sdbcb85509b": "Temperatuur võib kõikuda kõige rohkem (+1 / −2 °C). Suurim sääst.",
  "s380b20be36": "Tasakaalus",
@@ -735,8 +737,8 @@
  "@sf1b5d0ffa6": {
   "x-mt": true
  },
- "s11ee4426b2": "Midagi läks valesti: {p0}",
- "@s11ee4426b2": {
+ "sd0219ce512": "Ühendus ei töötanud: {p0}",
+ "@sd0219ce512": {
   "x-mt": true
  },
  "sbf59e43c36": "Internetiühendus puudub. Kontrolli Wi-Fi või mobiilseid andmeid ja proovi uuesti.",
@@ -1211,8 +1213,8 @@
   "x-mt": true
  },
  "s09f5da65e0": "Lülita Shelly Cloudile",
- "sa3a093e55e": "Küte",
- "s8efb99df1d": "Jahutus",
+ "sa3a093e55e": "Kütab",
+ "s8efb99df1d": "Jahutab",
  "s0b98d62330": "Küte ja jahutus",
  "s33831dd49f": "Väljas",
  "sa61efb9866": "kütab",
@@ -1403,6 +1405,33 @@
  "@s9e8430c37b": {
   "x-mt": true
  },
+ "s7f308d40c8": "Kütab",
+ "s41de361b3e": "Jahutab",
+ "s4f7ccb7138": "Kuivatab",
+ "s9b2398228e": "Ventilaator",
+ "s533177c689": "Ootel",
+ "sa3e8beed42": "Küte",
+ "s6c9668fbd9": "Jahutus",
+ "sd032c3efec": "Auto",
+ "s9db8aefc43": "Kuivatus",
+ "s0117dea8bc": "Ventilaator",
+ "s11a7c24b38": "Näit puudub",
+ "s28b7c227f0": "seade",
+ "s81e0c3084b": "Valgusti olekut ei saanud lugeda – juhtimine võib siiski toimida.",
+ "s7400a53ab2": "Värv",
+ "@s7400a53ab2": {
+  "x-mt": true
+ },
+ "s09aec1d642": "Valge",
+ "s16ff3849c9": "Värvitemperatuur",
+ "@s16ff3849c9": {
+  "x-mt": true
+ },
+ "sf117c88d83": "Soe",
+ "secb1232aad": "Jahutus",
+ "sb2fa876c32": "Heledus",
+ "s34cc93ca61": "Lemmikud",
+ "sdc485831ad": "Eemaldamiseks vajuta pikalt",
  "s3c98732a8c": "Näidik",
  "s6f29aeb685": "Trend",
  "s3298699c1a": "Näidik + trend",
@@ -1520,8 +1549,9 @@
  "@scc1918f2dc": {
   "x-mt": true
  },
- "sce0949d6fc": "Kui see jätkub, käivitage seade uuesti.",
- "@sce0949d6fc": {
+ "se11f9b5084": "Seadmega ei õnnestunud ühendust luua",
+ "s979376dca6": "Kontrolli aadressi ja seda, kas seade on sisse lülitatud, ning proovi uuesti. Tehnilised üksikasjad näitavad täpset põhjust.",
+ "@s979376dca6": {
   "x-mt": true
  },
  "sce6d01c270": "Kirjuta aadress esimesena",
@@ -1784,6 +1814,14 @@
  "@s6f1c11270c": {
   "x-mt": true
  },
+ "s1ea8fe913b": "Aadress: {p0}",
+ "@s1ea8fe913b": {
+  "x-mt": true
+ },
+ "s16dc13070c": "Home Assistant kasutab iseallkirjastatud sertifikaati. See võeti vastu, sest aadress on koduvõrgus.",
+ "sd531eb2fc2": "Home Assistanti ei leitud automaatselt. Sisesta aadress, millega selle avad (nt http://192.168.1.20:8123 või Nabu Casa aadress).",
+ "s7def041e83": "Leitud Home Assistantid:",
+ "s2967a37e01": "Leitud: {p0} – {p1}",
  "s8f4c0baf1a": "Automaatselt ei leitud ühtegi seadet. Kirjuta aadress ise – leia see ruuterist või seadme rakendusest.",
  "@s8f4c0baf1a": {
   "x-mt": true
@@ -1950,10 +1988,6 @@
  },
  "s7783fe5fca": "Lemmik",
  "@s7783fe5fca": {
-  "x-mt": true
- },
- "sb2fa876c32": "Heledus",
- "@sb2fa876c32": {
   "x-mt": true
  },
  "s912ea5d2ec": "Saada",
@@ -2839,6 +2873,11 @@
   "x-mt": true
  },
  "sa6212aaeb4": "Asukoht",
+ "s12c2f8e6e4": "Ainult koduvõrgus",
+ "s5f7c464e6d": "kell {p0}",
+ "s21b64ae0a7": "{p0} töötab ainult koduvõrgus. Ruut muutub ise tavaliseks, kui oled jälle kodus.",
+ "s6b1a8249de": "Viimane olek",
+ "s56650a18d5": "Tee kaugjuhitavaks ›",
  "sa0d8c62e5a": "Käsku pole seadistatud",
  "@sa0d8c62e5a": {
   "x-mt": true
@@ -2962,6 +3001,9 @@
   "x-mt": true
  },
  "sedb7b77645": "Kõik",
+ "s140aba8cd7": "{p0} valgustit on Philips Hue valgustid",
+ "s16aee2aa30": "Otse Hue Bridge’i kaudu reageerivad need kiiremini ja töötavad ilma Home Assistantita.",
+ "s3816288db1": "Lisa Hue Bridge",
  "sa765c9294a": "Näita kõiki",
  "@sa765c9294a": {
   "x-mt": true
@@ -2999,10 +3041,6 @@
  "s64c916e299": "Väike",
  "s5e3097232a": "Lai",
  "s8971788287": "Suur",
- "s7400a53ab2": "Värv",
- "@s7400a53ab2": {
-  "x-mt": true
- },
  "s254a1d8e12": "Taustapilt (valikuline)",
  "sc48f5f9bcf": "Vali pilt",
  "sf55eee73b8": "Muuda pilti",
@@ -3067,6 +3105,8 @@
  "s9bb545e9b3": "Logi sisse või loo konto",
  "s0625d54b38": "Kaardi suurus",
  "s8382da3467": "Tavaline",
+ "s7c1cd8314e": "Peida ruudud, mis eemalt ei tööta",
+ "sa0cbbafb4e": "Kodust eemal peidetakse ruudud, mis töötavad ainult koduvõrgus. Vaikimisi jäävad need paigale hallina.",
  "s21f870dbc2": "Näitab tehnilisi seadistusi: ühendused (HTTP, MQTT, Modbus...), nimikoormused, JSON- i rajad ja plaatide allikad. Enamik inimesi ei vaja neid.",
  "@s21f870dbc2": {
   "x-mt": true
@@ -3675,9 +3715,6 @@
   "x-mt": true
  },
  "s43c9b88580": "Auto",
- "sa3e8beed42": "Küte",
- "s6c9668fbd9": "Jahutus",
- "s9db8aefc43": "Kuivatus",
  "s018d2e08f4": "Ventilaator",
  "s36fb6ba26f": "Modbus TCP",
  "sa70cc38354": "Peremees",
@@ -4427,7 +4464,6 @@
   "x-mt": true
  },
  "s57e684ac9e": "Sõnumid",
- "sdc84bf286f": "off=Off;heat=Heat;cool=Cool;auto=Auto;heat_cool=Auto;dry=Dry;fan_only=Fan",
  "s3378eb2d0b": "{p0} – temperatuur",
  "@s3378eb2d0b": {
   "x-mt": true
@@ -4443,34 +4479,6 @@
  },
  "s3a38b97f7b": "{p0} – ruum",
  "@s3a38b97f7b": {
-  "x-mt": true
- },
- "s12c2f8e6e4": "Ainult koduvõrk",
- "@s12c2f8e6e4": {
-  "x-mt": true
- },
- "s5f7c464e6d": "{p0}",
- "@s5f7c464e6d": {
-  "x-mt": true
- },
- "s21b64ae0a7": "{p0} töötab ainult koduvõrgus. Kaart muutub taas kodus olles normaalseks.",
- "@s21b64ae0a7": {
-  "x-mt": true
- },
- "s6b1a8249de": "Viimane sööst",
- "@s6b1a8249de": {
-  "x-mt": true
- },
- "s56650a18d5": "Tee see kaugtööks",
- "@s56650a18d5": {
-  "x-mt": true
- },
- "s7c1cd8314e": "Peida kaardid, mis ei tööta kaugjuhtimisega",
- "@s7c1cd8314e": {
-  "x-mt": true
- },
- "sa0cbbafb4e": "Kodust eemal peidetakse kaardid, mis töötavad ainult koduvõrgus. Vaikimisi jäävad need paigale, halliks.",
- "@sa0cbbafb4e": {
   "x-mt": true
  }
 }

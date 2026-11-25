@@ -104,6 +104,18 @@ abstract class AppLocalizations {
     Locale('sv'),
   ];
 
+  /// fi: Osoitteessa ei vastaa odotettu laite – tarkista osoite (http vai https?)
+  ///
+  /// In en, this message translates to:
+  /// **'The expected device does not answer at this address – check it (http or https?)'**
+  String get sd0a2130950;
+
+  /// fi: Osoitteessa vastaa jokin, mutta ei odotetulla tavalla. Kokeile https:// tai http:// osoitteen alkuun ja tarkista portti.
+  ///
+  /// In en, this message translates to:
+  /// **'Something answers, but not as expected. Try https:// or http:// in front and check the port.'**
+  String get sdd5742468b;
+
   /// fi: Osoitetta ei löydy
   ///
   /// In en, this message translates to:
@@ -368,17 +380,17 @@ abstract class AppLocalizations {
   /// **'Accept the device on the bridge screen within 3 minutes, or scan the QR code.'**
   String get sceb894b9b3;
 
-  /// fi: Jokin meni pieleen
+  /// fi: Yhteys ei onnistunut
   ///
   /// In en, this message translates to:
-  /// **'Something went wrong'**
-  String get s9dd2ff794f;
+  /// **'The connection did not work'**
+  String get s700b0ef4de;
 
-  /// fi: Tarkista asetukset ja yritä uudelleen.
+  /// fi: Tarkista osoite ja asetukset ja yritä uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.
   ///
   /// In en, this message translates to:
-  /// **'Check the settings and try again.'**
-  String get sbb62433c2c;
+  /// **'Check the address and settings and try again. The technical details show the exact reason.'**
+  String get s53a891e670;
 
   /// fi: Säästävä
   ///
@@ -1534,11 +1546,11 @@ abstract class AppLocalizations {
   /// **'The password does not match. Type your account password.'**
   String get sf1b5d0ffa6;
 
-  /// fi: Jokin meni pieleen: {p0}
+  /// fi: Yhteys ei onnistunut: {p0}
   ///
   /// In en, this message translates to:
-  /// **'Something went wrong: {p0}'**
-  String s11ee4426b2(String p0);
+  /// **'The connection did not work: {p0}'**
+  String sd0219ce512(String p0);
 
   /// fi: Ei nettiyhteyttä. Tarkista wifi tai mobiilidata ja yritä uudelleen.
   ///
@@ -3022,6 +3034,132 @@ abstract class AppLocalizations {
   /// **'Molaplan does not control these. iPhones show their name only while awake.'**
   String get s9e8430c37b;
 
+  /// fi: Lämmittää
+  ///
+  /// In en, this message translates to:
+  /// **'Heating'**
+  String get s7f308d40c8;
+
+  /// fi: Jäähdyttää
+  ///
+  /// In en, this message translates to:
+  /// **'Cooling'**
+  String get s41de361b3e;
+
+  /// fi: Kuivaa
+  ///
+  /// In en, this message translates to:
+  /// **'Drying'**
+  String get s4f7ccb7138;
+
+  /// fi: Puhaltaa
+  ///
+  /// In en, this message translates to:
+  /// **'Fan'**
+  String get s9b2398228e;
+
+  /// fi: Odottaa
+  ///
+  /// In en, this message translates to:
+  /// **'Idle'**
+  String get s533177c689;
+
+  /// fi: Lämmitys
+  ///
+  /// In en, this message translates to:
+  /// **'Heat'**
+  String get sa3e8beed42;
+
+  /// fi: Jäähdytys
+  ///
+  /// In en, this message translates to:
+  /// **'Cool'**
+  String get s6c9668fbd9;
+
+  /// fi: Auto
+  ///
+  /// In en, this message translates to:
+  /// **'Auto'**
+  String get sd032c3efec;
+
+  /// fi: Kuivaus
+  ///
+  /// In en, this message translates to:
+  /// **'Dry'**
+  String get s9db8aefc43;
+
+  /// fi: Puhallus
+  ///
+  /// In en, this message translates to:
+  /// **'Fan'**
+  String get s0117dea8bc;
+
+  /// fi: Ei lukemaa
+  ///
+  /// In en, this message translates to:
+  /// **'No reading'**
+  String get s11a7c24b38;
+
+  /// fi: asetus
+  ///
+  /// In en, this message translates to:
+  /// **'set'**
+  String get s28b7c227f0;
+
+  /// fi: Valon tilaa ei saatu – säätö voi silti toimia.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not read the light – control may still work.'**
+  String get s81e0c3084b;
+
+  /// fi: Väri
+  ///
+  /// In en, this message translates to:
+  /// **'Colour'**
+  String get s7400a53ab2;
+
+  /// fi: Valkoinen
+  ///
+  /// In en, this message translates to:
+  /// **'White'**
+  String get s09aec1d642;
+
+  /// fi: Värilämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'Colour temperature'**
+  String get s16ff3849c9;
+
+  /// fi: Lämmin
+  ///
+  /// In en, this message translates to:
+  /// **'Warm'**
+  String get sf117c88d83;
+
+  /// fi: Kylmä
+  ///
+  /// In en, this message translates to:
+  /// **'Cool'**
+  String get secb1232aad;
+
+  /// fi: Kirkkaus
+  ///
+  /// In en, this message translates to:
+  /// **'Brightness'**
+  String get sb2fa876c32;
+
+  /// fi: Suosikit
+  ///
+  /// In en, this message translates to:
+  /// **'Favourites'**
+  String get s34cc93ca61;
+
+  /// fi: Pitkä painallus poistaa
+  ///
+  /// In en, this message translates to:
+  /// **'Long-press to remove'**
+  String get sdc485831ad;
+
   /// fi: Mittari
   ///
   /// In en, this message translates to:
@@ -3222,11 +3360,17 @@ abstract class AppLocalizations {
   /// **'Check that the bridge at home is on, Molaplan is open and it has internet.'**
   String get scc1918f2dc;
 
-  /// fi: Yritä uudelleen. Jos ongelma toistuu, käynnistä laite uudelleen.
+  /// fi: Laitteeseen ei saatu yhteyttä
   ///
   /// In en, this message translates to:
-  /// **'Try again. If it keeps happening, restart the device.'**
-  String get sce0949d6fc;
+  /// **'Could not connect to the device'**
+  String get se11f9b5084;
+
+  /// fi: Tarkista osoite ja että laite on päällä, ja yritä uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the address and that the device is on, then try again. The technical details show the exact reason.'**
+  String get s979376dca6;
 
   /// fi: Kirjoita ensin osoite
   ///
@@ -3708,6 +3852,36 @@ abstract class AppLocalizations {
   /// **'Contains example settings'**
   String get s6f1c11270c;
 
+  /// fi: Osoite: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Address: {p0}'**
+  String s1ea8fe913b(String p0);
+
+  /// fi: Home Assistant käyttää itse allekirjoitettua varmennetta. Se hyväksyttiin, koska osoite on kotiverkossa.
+  ///
+  /// In en, this message translates to:
+  /// **'Home Assistant uses a self-signed certificate. It was accepted because the address is on the home network.'**
+  String get s16dc13070c;
+
+  /// fi: Home Assistantia ei löytynyt automaattisesti. Kirjoita osoite, jolla avaat sen selaimessa (esim. http://192.168.1.20:812
+  ///
+  /// In en, this message translates to:
+  /// **'Home Assistant was not found automatically. Type the address you open it with (e.g. http://192.168.1.20:8123 or the Nabu Casa address).'**
+  String get sd531eb2fc2;
+
+  /// fi: Löydetyt Home Assistantit:
+  ///
+  /// In en, this message translates to:
+  /// **'Found Home Assistants:'**
+  String get s7def041e83;
+
+  /// fi: Löytyi: {p0} – {p1}
+  ///
+  /// In en, this message translates to:
+  /// **'Found: {p0} – {p1}'**
+  String s2967a37e01(String p0, String p1);
+
   /// fi: Laitteita ei löytynyt automaattisesti. Kirjoita osoite itse – sen löydät reitittimen laitelistasta tai laitteen omasta s
   ///
   /// In en, this message translates to:
@@ -4049,12 +4223,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Favourite'**
   String get s7783fe5fca;
-
-  /// fi: Kirkkaus
-  ///
-  /// In en, this message translates to:
-  /// **'Brightness'**
-  String get sb2fa876c32;
 
   /// fi: Lähetä
   ///
@@ -6216,6 +6384,24 @@ abstract class AppLocalizations {
   /// **'All'**
   String get sedb7b77645;
 
+  /// fi: {p0} valoa on Philips Hue -valoja
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} lights are Philips Hue lights'**
+  String s140aba8cd7(String p0);
+
+  /// fi: Suoraan Hue-sillan kautta ne toimivat nopeammin ja ilman Home Assistantia.
+  ///
+  /// In en, this message translates to:
+  /// **'Directly through the Hue Bridge they respond faster and work without Home Assistant.'**
+  String get s16aee2aa30;
+
+  /// fi: Lisää Hue-silta
+  ///
+  /// In en, this message translates to:
+  /// **'Add Hue Bridge'**
+  String get s3816288db1;
+
   /// fi: Näytä kaikki
   ///
   /// In en, this message translates to:
@@ -6311,12 +6497,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Large'**
   String get s8971788287;
-
-  /// fi: Väri
-  ///
-  /// In en, this message translates to:
-  /// **'Colour'**
-  String get s7400a53ab2;
 
   /// fi: Taustakuva (valinnainen)
   ///
@@ -7535,24 +7715,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Auto'**
   String get s43c9b88580;
-
-  /// fi: Lämmitys
-  ///
-  /// In en, this message translates to:
-  /// **'Heat'**
-  String get sa3e8beed42;
-
-  /// fi: Jäähdytys
-  ///
-  /// In en, this message translates to:
-  /// **'Cool'**
-  String get s6c9668fbd9;
-
-  /// fi: Kuivaus
-  ///
-  /// In en, this message translates to:
-  /// **'Dry'**
-  String get s9db8aefc43;
 
   /// fi: Puhallin
   ///
@@ -8825,12 +8987,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Messages'**
   String get s57e684ac9e;
-
-  /// fi: off=Pois;heat=Lämmitys;cool=Jäähdytys;auto=Auto;heat_cool=Auto;dry=Kuivaus;fan_only=Puhallus
-  ///
-  /// In en, this message translates to:
-  /// **'off=Off;heat=Heat;cool=Cool;auto=Auto;heat_cool=Auto;dry=Dry;fan_only=Fan'**
-  String get sdc84bf286f;
 
   /// fi: {p0} – lämpötila
   ///

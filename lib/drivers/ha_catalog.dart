@@ -28,6 +28,7 @@ class HaEntity {
     this.hidden = false,
     this.attributes = const {},
     this.deviceId,
+    this.platform,
   });
   final String entityId;
   final String name;
@@ -41,6 +42,9 @@ class HaEntity {
   final String? entityCategory;
   final bool hidden;
   final Map<String, dynamic> attributes;
+
+  /// Integration that made the entity ('hue', 'shelly', …) from the entity registry.
+  final String? platform;
 
   /// HA device registry id (groups a thermostat's sensor + setpoint entities – t137u).
   final String? deviceId;
@@ -185,6 +189,7 @@ Future<HaCatalog> fetchHaCatalog(
         hidden: reg?['hidden_by'] != null,
         attributes: attr,
         deviceId: reg?['device_id'] as String?,
+        platform: reg?['platform'] as String?,
       ),
     );
   }

@@ -1,5 +1,7 @@
 {
  "@@locale": "es",
+ "sd0a2130950": "El dispositivo esperado no responde en esta dirección: compruébala (¿http o https?)",
+ "sdd5742468b": "Algo responde, pero no como se esperaba. Prueba https:// o http:// delante y comprueba el puerto.",
  "s03c0a5192b": "Dirección no encontrada",
  "@s03c0a5192b": {
   "x-mt": true
@@ -173,11 +175,11 @@
  "@sceb894b9b3": {
   "x-mt": true
  },
- "s9dd2ff794f": "Algo salió mal",
- "sbb62433c2c": "Compruebe la configuración e inténtelo de nuevo.",
- "@sbb62433c2c": {
+ "s700b0ef4de": "La conexión no funcionó",
+ "@s700b0ef4de": {
   "x-mt": true
  },
+ "s53a891e670": "Comprueba la dirección y los ajustes e inténtalo de nuevo. Los detalles técnicos muestran el motivo exacto.",
  "sc27533ae83": "Ahorro",
  "sdbcb85509b": "La temperatura puede variar más (+1 / −2 °C). Mayor ahorro.",
  "s380b20be36": "Equilibrado",
@@ -735,8 +737,8 @@
  "@sf1b5d0ffa6": {
   "x-mt": true
  },
- "s11ee4426b2": "Algo salió mal: {p0}",
- "@s11ee4426b2": {
+ "sd0219ce512": "La conexión no funcionó: {p0}",
+ "@sd0219ce512": {
   "x-mt": true
  },
  "sbf59e43c36": "No hay conexión a Internet. Compruebe la conexión Wi-Fi o datos móviles e inténtelo de nuevo.",
@@ -1211,8 +1213,8 @@
   "x-mt": true
  },
  "s09f5da65e0": "Cambiar a Shelly Cloud",
- "sa3a093e55e": "Calefacción",
- "s8efb99df1d": "Refrigeración",
+ "sa3a093e55e": "Calentando",
+ "s8efb99df1d": "Enfriando",
  "s0b98d62330": "Calor y frío",
  "s33831dd49f": "Apagado",
  "sa61efb9866": "calentando",
@@ -1403,6 +1405,33 @@
  "@s9e8430c37b": {
   "x-mt": true
  },
+ "s7f308d40c8": "Calentando",
+ "s41de361b3e": "Enfriando",
+ "s4f7ccb7138": "Deshumidificando",
+ "s9b2398228e": "Ventilador",
+ "s533177c689": "En reposo",
+ "sa3e8beed42": "Calor",
+ "s6c9668fbd9": "Frío",
+ "sd032c3efec": "Auto",
+ "s9db8aefc43": "Deshumidificar",
+ "s0117dea8bc": "Ventilador",
+ "s11a7c24b38": "Sin lectura",
+ "s28b7c227f0": "consigna",
+ "s81e0c3084b": "No se pudo leer la luz; el control puede funcionar igualmente.",
+ "s7400a53ab2": "Color",
+ "@s7400a53ab2": {
+  "x-mt": true
+ },
+ "s09aec1d642": "Blanco",
+ "s16ff3849c9": "Temperatura de color",
+ "@s16ff3849c9": {
+  "x-mt": true
+ },
+ "sf117c88d83": "Cálido",
+ "secb1232aad": "Frío",
+ "sb2fa876c32": "Brillo",
+ "s34cc93ca61": "Favoritos",
+ "sdc485831ad": "Mantén pulsado para quitar",
  "s3c98732a8c": "Indicador",
  "s6f29aeb685": "Tendencia",
  "s3298699c1a": "Indicador + tendencia",
@@ -1520,8 +1549,9 @@
  "@scc1918f2dc": {
   "x-mt": true
  },
- "sce0949d6fc": "Inténtalo de nuevo, si sigue sucediendo, reinicia el dispositivo.",
- "@sce0949d6fc": {
+ "se11f9b5084": "No se pudo conectar con el dispositivo",
+ "s979376dca6": "Compruebe la dirección y que el dispositivo está encendido, luego vuelva a intentarlo. Los detalles técnicos muestran la razón exacta.",
+ "@s979376dca6": {
   "x-mt": true
  },
  "sce6d01c270": "Introduzca la dirección primero",
@@ -1784,6 +1814,14 @@
  "@s6f1c11270c": {
   "x-mt": true
  },
+ "s1ea8fe913b": "Dirección: {p0}",
+ "@s1ea8fe913b": {
+  "x-mt": true
+ },
+ "s16dc13070c": "Home Assistant usa un certificado autofirmado. Se aceptó porque la dirección está en la red de casa.",
+ "sd531eb2fc2": "No se encontró Home Assistant automáticamente. Escribe la dirección con la que lo abres (p. ej. http://192.168.1.20:8123 o la dirección de Nabu Casa).",
+ "s7def041e83": "Home Assistant encontrados:",
+ "s2967a37e01": "Encontrado: {p0} – {p1}",
  "s8f4c0baf1a": "No hay dispositivos encontrados automáticamente. Introduzca la dirección usted mismo – encontrarla en su router o la aplicación del dispositivo.",
  "@s8f4c0baf1a": {
   "x-mt": true
@@ -1950,10 +1988,6 @@
  },
  "s7783fe5fca": "Favorito",
  "@s7783fe5fca": {
-  "x-mt": true
- },
- "sb2fa876c32": "Brillante",
- "@sb2fa876c32": {
   "x-mt": true
  },
  "s912ea5d2ec": "Enviar",
@@ -2839,6 +2873,11 @@
   "x-mt": true
  },
  "sa6212aaeb4": "Ubicación",
+ "s12c2f8e6e4": "Solo en la red de casa",
+ "s5f7c464e6d": "a las {p0}",
+ "s21b64ae0a7": "{p0} solo funciona en la red de casa. El recuadro vuelve a la normalidad solo cuando estés de nuevo en casa.",
+ "s6b1a8249de": "Último estado",
+ "s56650a18d5": "Hacerlo accesible a distancia ›",
  "sa0d8c62e5a": "No hay ningún comando configurado",
  "@sa0d8c62e5a": {
   "x-mt": true
@@ -2962,6 +3001,9 @@
   "x-mt": true
  },
  "sedb7b77645": "Todos",
+ "s140aba8cd7": "{p0} luces son Philips Hue",
+ "s16aee2aa30": "Directamente a través del Hue Bridge responden más rápido y funcionan sin Home Assistant.",
+ "s3816288db1": "Añadir Hue Bridge",
  "sa765c9294a": "Mostrar todo",
  "@sa765c9294a": {
   "x-mt": true
@@ -2999,10 +3041,6 @@
  "s64c916e299": "Pequeña",
  "s5e3097232a": "Ancha",
  "s8971788287": "Grande",
- "s7400a53ab2": "Color",
- "@s7400a53ab2": {
-  "x-mt": true
- },
  "s254a1d8e12": "Imagen de fondo (opcional)",
  "sc48f5f9bcf": "Elegir imagen",
  "sf55eee73b8": "Cambiar imagen",
@@ -3067,6 +3105,8 @@
  "s9bb545e9b3": "Inicia sesión o crea una cuenta",
  "s0625d54b38": "Tamaño de las tarjetas",
  "s8382da3467": "Normal",
+ "s7c1cd8314e": "Ocultar recuadros que no funcionan a distancia",
+ "sa0cbbafb4e": "Fuera de casa se ocultan los recuadros que solo funcionan en la red de casa. Por defecto se quedan en su sitio, en gris.",
  "s21f870dbc2": "Muestra configuración técnica: conexiones (HTTP, MQTT, Modbus...), cargas de pago, caminos JSON y fuentes de baldosas. La mayoría de la gente no necesita estas.",
  "@s21f870dbc2": {
   "x-mt": true
@@ -3675,9 +3715,6 @@
   "x-mt": true
  },
  "s43c9b88580": "Auto",
- "sa3e8beed42": "Calor",
- "s6c9668fbd9": "Frío",
- "s9db8aefc43": "Deshumidificar",
  "s018d2e08f4": "Ventilador",
  "s36fb6ba26f": "Modbus TCP",
  "sa70cc38354": "Host",
@@ -4427,7 +4464,6 @@
   "x-mt": true
  },
  "s57e684ac9e": "Mensajes",
- "sdc84bf286f": "off=Off;heat=Heat;cool=Cool;auto=Auto;heat_cool=Auto;dry=Dry;fan_only=Fan",
  "s3378eb2d0b": "{p0} – temperature",
  "@s3378eb2d0b": {
   "x-mt": true
@@ -4443,34 +4479,6 @@
  },
  "s3a38b97f7b": "{p0} – room",
  "@s3a38b97f7b": {
-  "x-mt": true
- },
- "s12c2f8e6e4": "Red de hogar solamente",
- "@s12c2f8e6e4": {
-  "x-mt": true
- },
- "s5f7c464e6d": "a {p0}",
- "@s5f7c464e6d": {
-  "x-mt": true
- },
- "s21b64ae0a7": "{p0} sólo funciona en la red de la casa. La tarjeta regresa a la normalidad por sí misma cuando usted está en casa de nuevo.",
- "@s21b64ae0a7": {
-  "x-mt": true
- },
- "s6b1a8249de": "Último estado",
- "@s6b1a8249de": {
-  "x-mt": true
- },
- "s56650a18d5": "Hacer que funcione remotamente ›",
- "@s56650a18d5": {
-  "x-mt": true
- },
- "s7c1cd8314e": "Ocultar tarjetas que no funcionan remotamente",
- "@s7c1cd8314e": {
-  "x-mt": true
- },
- "sa0cbbafb4e": "Lejos de casa, las tarjetas que sólo funcionan en la red de la casa están ocultas. Por defecto se quedan en el lugar, grisados.",
- "@sa0cbbafb4e": {
   "x-mt": true
  }
 }

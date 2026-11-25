@@ -10,6 +10,14 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
+  String get sd0a2130950 =>
+      'El dispositivo esperado no responde en esta dirección: compruébala (¿http o https?)';
+
+  @override
+  String get sdd5742468b =>
+      'Algo responde, pero no como se esperaba. Prueba https:// o http:// delante y comprueba el puerto.';
+
+  @override
   String get s03c0a5192b => 'Dirección no encontrada';
 
   @override
@@ -165,10 +173,11 @@ class AppLocalizationsEs extends AppLocalizations {
       'Aceptar el dispositivo en la pantalla del puente dentro de 3 minutos, o escanear el código QR.';
 
   @override
-  String get s9dd2ff794f => 'Algo salió mal';
+  String get s700b0ef4de => 'La conexión no funcionó';
 
   @override
-  String get sbb62433c2c => 'Compruebe la configuración e inténtelo de nuevo.';
+  String get s53a891e670 =>
+      'Comprueba la dirección y los ajustes e inténtalo de nuevo. Los detalles técnicos muestran el motivo exacto.';
 
   @override
   String get sc27533ae83 => 'Ahorro';
@@ -810,8 +819,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'La contraseña no coincide. Introduzca la contraseña de su cuenta.';
 
   @override
-  String s11ee4426b2(String p0) {
-    return 'Algo salió mal: $p0';
+  String sd0219ce512(String p0) {
+    return 'La conexión no funcionó: $p0';
   }
 
   @override
@@ -1309,10 +1318,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s09f5da65e0 => 'Cambiar a Shelly Cloud';
 
   @override
-  String get sa3a093e55e => 'Calefacción';
+  String get sa3a093e55e => 'Calentando';
 
   @override
-  String get s8efb99df1d => 'Refrigeración';
+  String get s8efb99df1d => 'Enfriando';
 
   @override
   String get s0b98d62330 => 'Calor y frío';
@@ -1634,6 +1643,70 @@ class AppLocalizationsEs extends AppLocalizations {
       'Molaplan no controla estos. Los iPhones muestran su nombre sólo mientras están despiertos.';
 
   @override
+  String get s7f308d40c8 => 'Calentando';
+
+  @override
+  String get s41de361b3e => 'Enfriando';
+
+  @override
+  String get s4f7ccb7138 => 'Deshumidificando';
+
+  @override
+  String get s9b2398228e => 'Ventilador';
+
+  @override
+  String get s533177c689 => 'En reposo';
+
+  @override
+  String get sa3e8beed42 => 'Calor';
+
+  @override
+  String get s6c9668fbd9 => 'Frío';
+
+  @override
+  String get sd032c3efec => 'Auto';
+
+  @override
+  String get s9db8aefc43 => 'Deshumidificar';
+
+  @override
+  String get s0117dea8bc => 'Ventilador';
+
+  @override
+  String get s11a7c24b38 => 'Sin lectura';
+
+  @override
+  String get s28b7c227f0 => 'consigna';
+
+  @override
+  String get s81e0c3084b =>
+      'No se pudo leer la luz; el control puede funcionar igualmente.';
+
+  @override
+  String get s7400a53ab2 => 'Color';
+
+  @override
+  String get s09aec1d642 => 'Blanco';
+
+  @override
+  String get s16ff3849c9 => 'Temperatura de color';
+
+  @override
+  String get sf117c88d83 => 'Cálido';
+
+  @override
+  String get secb1232aad => 'Frío';
+
+  @override
+  String get sb2fa876c32 => 'Brillo';
+
+  @override
+  String get s34cc93ca61 => 'Favoritos';
+
+  @override
+  String get sdc485831ad => 'Mantén pulsado para quitar';
+
+  @override
   String get s3c98732a8c => 'Indicador';
 
   @override
@@ -1750,8 +1823,11 @@ class AppLocalizationsEs extends AppLocalizations {
       'Compruebe que el puente en casa está encendido, Molaplan está abierto y tiene Internet.';
 
   @override
-  String get sce0949d6fc =>
-      'Inténtalo de nuevo, si sigue sucediendo, reinicia el dispositivo.';
+  String get se11f9b5084 => 'No se pudo conectar con el dispositivo';
+
+  @override
+  String get s979376dca6 =>
+      'Compruebe la dirección y que el dispositivo está encendido, luego vuelva a intentarlo. Los detalles técnicos muestran la razón exacta.';
 
   @override
   String get sce6d01c270 => 'Introduzca la dirección primero';
@@ -2035,6 +2111,27 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s6f1c11270c => 'Contiene configuración de ejemplo';
 
   @override
+  String s1ea8fe913b(String p0) {
+    return 'Dirección: $p0';
+  }
+
+  @override
+  String get s16dc13070c =>
+      'Home Assistant usa un certificado autofirmado. Se aceptó porque la dirección está en la red de casa.';
+
+  @override
+  String get sd531eb2fc2 =>
+      'No se encontró Home Assistant automáticamente. Escribe la dirección con la que lo abres (p. ej. http://192.168.1.20:8123 o la dirección de Nabu Casa).';
+
+  @override
+  String get s7def041e83 => 'Home Assistant encontrados:';
+
+  @override
+  String s2967a37e01(String p0, String p1) {
+    return 'Encontrado: $p0 – $p1';
+  }
+
+  @override
   String get s8f4c0baf1a =>
       'No hay dispositivos encontrados automáticamente. Introduzca la dirección usted mismo – encontrarla en su router o la aplicación del dispositivo.';
 
@@ -2216,9 +2313,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s7783fe5fca => 'Favorito';
-
-  @override
-  String get sb2fa876c32 => 'Brillante';
 
   @override
   String get s912ea5d2ec => 'Enviar';
@@ -3254,23 +3348,23 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sa6212aaeb4 => 'Ubicación';
 
   @override
-  String get s12c2f8e6e4 => 'Red de hogar solamente';
+  String get s12c2f8e6e4 => 'Solo en la red de casa';
 
   @override
   String s5f7c464e6d(String p0) {
-    return 'a $p0';
+    return 'a las $p0';
   }
 
   @override
   String s21b64ae0a7(String p0) {
-    return '$p0 sólo funciona en la red de la casa. La tarjeta regresa a la normalidad por sí misma cuando usted está en casa de nuevo.';
+    return '$p0 solo funciona en la red de casa. El recuadro vuelve a la normalidad solo cuando estés de nuevo en casa.';
   }
 
   @override
   String get s6b1a8249de => 'Último estado';
 
   @override
-  String get s56650a18d5 => 'Hacer que funcione remotamente ›';
+  String get s56650a18d5 => 'Hacerlo accesible a distancia ›';
 
   @override
   String get sa0d8c62e5a => 'No hay ningún comando configurado';
@@ -3417,6 +3511,18 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sedb7b77645 => 'Todos';
 
   @override
+  String s140aba8cd7(String p0) {
+    return '$p0 luces son Philips Hue';
+  }
+
+  @override
+  String get s16aee2aa30 =>
+      'Directamente a través del Hue Bridge responden más rápido y funcionan sin Home Assistant.';
+
+  @override
+  String get s3816288db1 => 'Añadir Hue Bridge';
+
+  @override
   String get sa765c9294a => 'Mostrar todo';
 
   @override
@@ -3468,9 +3574,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s8971788287 => 'Grande';
-
-  @override
-  String get s7400a53ab2 => 'Color';
 
   @override
   String get s254a1d8e12 => 'Imagen de fondo (opcional)';
@@ -3544,11 +3647,11 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s8382da3467 => 'Normal';
 
   @override
-  String get s7c1cd8314e => 'Ocultar tarjetas que no funcionan remotamente';
+  String get s7c1cd8314e => 'Ocultar recuadros que no funcionan a distancia';
 
   @override
   String get sa0cbbafb4e =>
-      'Lejos de casa, las tarjetas que sólo funcionan en la red de la casa están ocultas. Por defecto se quedan en el lugar, grisados.';
+      'Fuera de casa se ocultan los recuadros que solo funcionan en la red de casa. Por defecto se quedan en su sitio, en gris.';
 
   @override
   String get s21f870dbc2 =>
@@ -4165,15 +4268,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s43c9b88580 => 'Auto';
-
-  @override
-  String get sa3e8beed42 => 'Calor';
-
-  @override
-  String get s6c9668fbd9 => 'Frío';
-
-  @override
-  String get s9db8aefc43 => 'Deshumidificar';
 
   @override
   String get s018d2e08f4 => 'Ventilador';
@@ -4883,10 +4977,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s57e684ac9e => 'Mensajes';
-
-  @override
-  String get sdc84bf286f =>
-      'off=Off;heat=Heat;cool=Cool;auto=Auto;heat_cool=Auto;dry=Dry;fan_only=Fan';
 
   @override
   String s3378eb2d0b(String p0) {

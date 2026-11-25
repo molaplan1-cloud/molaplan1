@@ -10,6 +10,14 @@ class AppLocalizationsSv extends AppLocalizations {
   AppLocalizationsSv([String locale = 'sv']) : super(locale);
 
   @override
+  String get sd0a2130950 =>
+      'Den väntade enheten svarar inte på den här adressen – kontrollera den (http eller https?)';
+
+  @override
+  String get sdd5742468b =>
+      'Något svarar, men inte som väntat. Prova https:// eller http:// först och kontrollera porten.';
+
+  @override
   String get s03c0a5192b => 'Adress som inte hittats';
 
   @override
@@ -163,10 +171,11 @@ class AppLocalizationsSv extends AppLocalizations {
       'Acceptera enheten på bryggskärmen inom 3 minuter, eller skanna QR-koden.';
 
   @override
-  String get s9dd2ff794f => 'Något gick fel';
+  String get s700b0ef4de => 'Anslutningen fungerade inte';
 
   @override
-  String get sbb62433c2c => 'Kontrollera inställningarna och försök igen.';
+  String get s53a891e670 =>
+      'Kontrollera adressen och inställningarna och försök igen. De tekniska detaljerna visar den exakta orsaken.';
 
   @override
   String get sc27533ae83 => 'Sparsam';
@@ -809,8 +818,8 @@ class AppLocalizationsSv extends AppLocalizations {
       'Lösenordet matchar inte. Skriv ditt kontolösenord.';
 
   @override
-  String s11ee4426b2(String p0) {
-    return 'Något gick fel: $p0';
+  String sd0219ce512(String p0) {
+    return 'Anslutningen fungerade inte: $p0';
   }
 
   @override
@@ -1303,10 +1312,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s09f5da65e0 => 'Byt till Shelly Cloud';
 
   @override
-  String get sa3a093e55e => 'Värme';
+  String get sa3a093e55e => 'Värmer';
 
   @override
-  String get s8efb99df1d => 'Kyla';
+  String get s8efb99df1d => 'Kyler';
 
   @override
   String get s0b98d62330 => 'Värme och kyla';
@@ -1624,6 +1633,70 @@ class AppLocalizationsSv extends AppLocalizations {
       'Molaplan styr inte dessa. iPhones visar sitt namn bara när de vakna.';
 
   @override
+  String get s7f308d40c8 => 'Värmer';
+
+  @override
+  String get s41de361b3e => 'Kyler';
+
+  @override
+  String get s4f7ccb7138 => 'Avfuktar';
+
+  @override
+  String get s9b2398228e => 'Fläkt';
+
+  @override
+  String get s533177c689 => 'Vilar';
+
+  @override
+  String get sa3e8beed42 => 'Värme';
+
+  @override
+  String get s6c9668fbd9 => 'Kyla';
+
+  @override
+  String get sd032c3efec => 'Auto';
+
+  @override
+  String get s9db8aefc43 => 'Avfuktning';
+
+  @override
+  String get s0117dea8bc => 'Fläkt';
+
+  @override
+  String get s11a7c24b38 => 'Inget värde';
+
+  @override
+  String get s28b7c227f0 => 'börvärde';
+
+  @override
+  String get s81e0c3084b =>
+      'Lampans läge kunde inte läsas – styrningen kan ändå fungera.';
+
+  @override
+  String get s7400a53ab2 => 'Färg';
+
+  @override
+  String get s09aec1d642 => 'Vitt';
+
+  @override
+  String get s16ff3849c9 => 'Färgtemperatur';
+
+  @override
+  String get sf117c88d83 => 'Varm';
+
+  @override
+  String get secb1232aad => 'Kyla';
+
+  @override
+  String get sb2fa876c32 => 'Ljusstyrka';
+
+  @override
+  String get s34cc93ca61 => 'Favoriter';
+
+  @override
+  String get sdc485831ad => 'Tryck länge för att ta bort';
+
+  @override
   String get s3c98732a8c => 'Mätare';
 
   @override
@@ -1740,8 +1813,11 @@ class AppLocalizationsSv extends AppLocalizations {
       'Kontrollera att bron hemma är på, Molaplan är öppen och det har internet.';
 
   @override
-  String get sce0949d6fc =>
-      'Försök igen. Om det fortsätter att hända, starta om enheten.';
+  String get se11f9b5084 => 'Kunde inte ansluta till enheten';
+
+  @override
+  String get s979376dca6 =>
+      'Kontrollera adressen och att enheten är på, försök sedan igen. De tekniska detaljerna visar exakt anledning.';
 
   @override
   String get sce6d01c270 => 'Skriv adressen först';
@@ -2024,6 +2100,27 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s6f1c11270c => 'Innehåller exempelinställningar';
 
   @override
+  String s1ea8fe913b(String p0) {
+    return 'Adress: $p0';
+  }
+
+  @override
+  String get s16dc13070c =>
+      'Home Assistant använder ett självsignerat certifikat. Det godkändes eftersom adressen finns i hemnätverket.';
+
+  @override
+  String get sd531eb2fc2 =>
+      'Home Assistant hittades inte automatiskt. Skriv adressen du öppnar den med (t.ex. http://192.168.1.20:8123 eller Nabu Casa-adressen).';
+
+  @override
+  String get s7def041e83 => 'Hittade Home Assistant:';
+
+  @override
+  String s2967a37e01(String p0, String p1) {
+    return 'Hittade: $p0 – $p1';
+  }
+
+  @override
   String get s8f4c0baf1a =>
       'Inga enheter hittades automatiskt. Skriv adressen själv - hitta den i routern eller enhetsappen.';
 
@@ -2204,9 +2301,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s7783fe5fca => 'Favorit';
-
-  @override
-  String get sb2fa876c32 => 'Ljushet';
 
   @override
   String get s912ea5d2ec => 'Skicka';
@@ -3239,23 +3333,23 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sa6212aaeb4 => 'Plats';
 
   @override
-  String get s12c2f8e6e4 => 'Hemnätverk endast';
+  String get s12c2f8e6e4 => 'Endast hemnätverket';
 
   @override
   String s5f7c464e6d(String p0) {
-    return 'På $p0';
+    return 'kl. $p0';
   }
 
   @override
   String s21b64ae0a7(String p0) {
-    return '$p0 fungerar bara på hemnätverket. Kortet återvänder till det normala av sig själv när du är hemma igen.';
+    return '$p0 fungerar bara i hemnätverket. Rutan blir normal igen av sig själv när du är hemma.';
   }
 
   @override
-  String get s6b1a8249de => 'Sista staten';
+  String get s6b1a8249de => 'Senaste läge';
 
   @override
-  String get s56650a18d5 => 'Få det att fungera på distans ›';
+  String get s56650a18d5 => 'Gör den fjärrstyrbar ›';
 
   @override
   String get sa0d8c62e5a => 'Inget kommando konfigurerat';
@@ -3402,6 +3496,18 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sedb7b77645 => 'Alla';
 
   @override
+  String s140aba8cd7(String p0) {
+    return '$p0 lampor är Philips Hue-lampor';
+  }
+
+  @override
+  String get s16aee2aa30 =>
+      'Direkt via Hue Bridge svarar de snabbare och fungerar utan Home Assistant.';
+
+  @override
+  String get s3816288db1 => 'Lägg till Hue Bridge';
+
+  @override
   String get sa765c9294a => 'Visa alla';
 
   @override
@@ -3452,9 +3558,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s8971788287 => 'Stor';
-
-  @override
-  String get s7400a53ab2 => 'Färg';
 
   @override
   String get s254a1d8e12 => 'Bakgrundsbild (valfri)';
@@ -3527,11 +3630,11 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s8382da3467 => 'Normal';
 
   @override
-  String get s7c1cd8314e => 'Dölj kort som inte fungerar på distans';
+  String get s7c1cd8314e => 'Dölj rutor som inte fungerar på distans';
 
   @override
   String get sa0cbbafb4e =>
-      'Borta hemifrån är kort som bara fungerar på hemnätverket dolda. Som standard stannar de på plats, gråtit ut.';
+      'Borta hemifrån döljs rutor som bara fungerar i hemnätverket. Som standard står de kvar, gråtonade.';
 
   @override
   String get s21f870dbc2 =>
@@ -4142,15 +4245,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s43c9b88580 => 'Auto';
-
-  @override
-  String get sa3e8beed42 => 'Värme';
-
-  @override
-  String get s6c9668fbd9 => 'Kyla';
-
-  @override
-  String get s9db8aefc43 => 'Avfuktning';
 
   @override
   String get s018d2e08f4 => 'Fläkt';
@@ -4849,10 +4943,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s57e684ac9e => 'Meddelanden';
-
-  @override
-  String get sdc84bf286f =>
-      'off=Off;heat=Heat;cool=Cool;auto=Auto;heat_cool=Auto;dry=Dry;fan_only=Fan';
 
   @override
   String s3378eb2d0b(String p0) {

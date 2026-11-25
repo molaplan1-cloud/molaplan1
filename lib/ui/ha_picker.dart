@@ -1,8 +1,10 @@
 import 'package:material_ui/material_ui.dart';
 
+import '../devices/registry.dart';
 import '../drivers/ha_catalog.dart';
 import '../models/models.dart';
 import '../templates/device_templates.dart';
+import 'add_device_wizard.dart';
 import 'app_scope.dart';
 
 String haDomainLabel(BuildContext context, String d) => switch (d) {
@@ -87,6 +89,13 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
       );
     }
   }
+
+  int _hueLights(HaCatalog c) =>
+      c.entities.where((e) => e.platform == 'hue' && e.entityId.startsWith('light.')).length;
+
+  bool _hasHue() => AppScope.read(context).config.connections.any(
+    (x) => x.type == 'http' && x.name == 'Hue' && (x.secrets['token'] ?? '').isNotEmpty,
+  );
 
   Set<String> _existing() {
     final st = AppScope.read(context);
@@ -281,6 +290,39 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
             ],
           ),
         ),
+        if (_hueLights(c) > 0 && !_hasHue())
+          Card(
+            key: const ValueKey('ha-hue-direct'),
+            margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
+            child: ListTile(
+              leading: const Icon(Icons.lightbulb_outline),
+              title: Text(
+                tx(
+                  context,
+                  '${_hueLights(c)} valoa on Philips Hue -valoja',
+                  '${_hueLights(c)} lights are Philips Hue lights',
+                ),
+              ),
+              subtitle: Text(
+                tx(
+                  context,
+                  'Suoraan Hue-sillan kautta ne toimivat nopeammin ja ilman Home Assistantia.',
+                  'Directly through the Hue Bridge they respond faster and work without Home Assistant.',
+                ),
+              ),
+              trailing: TextButton(
+                key: const ValueKey('ha-hue-direct-add'),
+                onPressed: () {
+                  final p = providerById('hue');
+                  if (p == null) return;
+                  Navigator.of(context).push(
+                    MaterialPageRoute<void>(builder: (_) => AddDeviceWizard(provider: p, dashboard: widget.dashboard)),
+                  );
+                },
+                child: Text(tx(context, 'Lisää Hue-silta', 'Add Hue Bridge')),
+              ),
+            ),
+          ),
         SwitchListTile(
           key: const ValueKey('ha-show-all'),
           dense: true,
