@@ -12,6 +12,10 @@ class DriverException implements Exception {
   String toString() => message;
 }
 
+/// UI language for human-readable driver texts (connection test results). Set by AppState.
+String driverLang = 'fi';
+String dtx(String fi, String en) => driverLang == 'fi' ? fi : en;
+
 /// Common interface every connection type implements.
 ///
 /// * [read] returns the current value for a read spec (polling).

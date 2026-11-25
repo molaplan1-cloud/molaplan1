@@ -67,7 +67,7 @@ void main() {
       await d.send({'method': 'POST', 'path': '/set?v={{value}}', 'body': '{"sp": {{value}}}'}, value: 22.0);
       expect(received.last, 'POST /set?v=22 auth=null x=null {"sp": 22}');
       await expectLater(d.read({'path': '/fail'}), throwsA(isA<DriverException>()));
-      expect(await d.test(), startsWith('HTTP 200'));
+      expect(await d.test(), allOf(startsWith('✓ Yhteys toimii: HTTP 200.'), contains('Testattiin: GET'), contains('Komentoja ei lähetetty')));
       await d.dispose();
     });
   });

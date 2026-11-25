@@ -1,15 +1,19 @@
+import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../core/friendly_error.dart';
 import '../core/template.dart';
 import '../models/models.dart';
+import '../state/app_state.dart';
 import '../state/tile_runtime.dart';
 import 'app_scope.dart';
 import 'error_box.dart';
 import 'camera_view.dart';
 import 'icons.dart';
+import 'notify.dart';
 
 /// A live dashboard tile. Rebuilt (runtime restarted) when its config changes.
 class TileWidget extends StatefulWidget {
@@ -55,6 +59,7 @@ class _TileWidgetState extends State<TileWidget> {
 
   @override
   void dispose() {
+    _replyTimer?.cancel();
     rt?.dispose();
     super.dispose();
   }
@@ -98,6 +103,84 @@ class _TileWidgetState extends State<TileWidget> {
   Future<bool> _confirm() =>
       confirmDialog(context, t.title, tx(context, 'Suoritetaanko komento?', 'Run this command?'));
 
+  Map<String, dynamic>? _reply;
+  bool _waiting = false;
+  Timer? _replyTimer;
+
+  bool get _asksPin => t.commands.any((c) => c.spec['askPin'] == true || c.spec['askPin'] == 'true');
+
+  bool get _waitsReply {
+    final st = AppScope.read(context);
+    return t.commands.any(
+      (c) =>
+          st.connection(c.connectionId)?.type == 'ntfy' &&
+          c.spec['waitReply'] != false &&
+          c.spec['waitReply'] != 'false',
+    );
+  }
+
+  /// Masked numeric PIN prompt. Stored only if the user ticks "remember".
+  Future<String?> _pin() async {
+    final st = AppScope.read(context);
+    final saved = await st.secretStore.read(AppState.pinKey(t.id));
+    if (saved != null && saved.isNotEmpty) return saved;
+    if (!mounted) return null;
+    final ctl = TextEditingController();
+    var remember = false;
+    final pin = await showDialog<String>(
+      context: context,
+      builder: (c) => StatefulBuilder(
+        builder: (c, set) => AlertDialog(
+          title: Text('${t.title}: ${tx(c, 'PIN-koodi', 'PIN code')}'),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextField(
+                  key: const ValueKey('pin-field'),
+                  controller: ctl,
+                  autofocus: true,
+                  obscureText: true,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  style: const TextStyle(fontSize: 24, letterSpacing: 8),
+                  decoration: InputDecoration(labelText: tx(c, 'PIN', 'PIN'), border: const OutlineInputBorder()),
+                  onSubmitted: (v) => Navigator.pop(c, v),
+                ),
+                CheckboxListTile(
+                  key: const ValueKey('pin-remember'),
+                  contentPadding: EdgeInsets.zero,
+                  value: remember,
+                  onChanged: (v) => set(() => remember = v ?? false),
+                  title: Text(tx(c, 'Muista tällä laitteella', 'Remember on this device')),
+                  subtitle: Text(
+                    tx(
+                      c,
+                      'Tallennetaan suojattuna vain tähän laitteeseen. Oletuksena PIN-koodia ei tallenneta.',
+                      'Stored encrypted on this device only. By default the PIN is not stored.',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(c), child: Text(tx(c, 'Peru', 'Cancel'))),
+            FilledButton(
+              key: const ValueKey('pin-ok'),
+              onPressed: () => Navigator.pop(c, ctl.text),
+              child: Text(tx(c, 'Lähetä', 'Send')),
+            ),
+          ],
+        ),
+      ),
+    );
+    // (controller not disposed here: the dialog's closing animation still uses it)
+    if (pin == null || pin.isEmpty) return null;
+    if (remember) await st.secretStore.write(AppState.pinKey(t.id), pin);
+    return pin;
+  }
+
   Future<void> _button() async {
     final st = AppScope.read(context);
     if (t.commands.isEmpty) {
@@ -105,8 +188,75 @@ class _TileWidgetState extends State<TileWidget> {
       return;
     }
     if (t.confirm && !await _confirm()) return;
-    await _run(() => st.runSequence(t.commands), okMsg: '${t.title} ✓');
+    String? pin;
+    if (_asksPin) {
+      pin = await _pin();
+      if (pin == null || !mounted) return;
+    }
+    final waits = _waitsReply;
+    if (waits) unawaited(LocalNotify.askPermission());
+    _replyTimer?.cancel();
+    setState(() {
+      _reply = null;
+      _waiting = waits;
+    });
+    Object? res;
+    await _run(() async => res = await st.runSequence(t.commands, value: pin), okMsg: waits ? null : '${t.title} ✓');
+    if (!mounted) return;
+    setState(() => _waiting = false);
+    final r = res;
+    if (r is Map && r['ntfy'] == true) {
+      if (r['sentOnly'] == true) {
+        showSnack(context, tx(context, '${t.title}: lähetetty', '${t.title}: sent'));
+        return;
+      }
+      setState(() => _reply = Map<String, dynamic>.from(r));
+      final secs = (r['showSeconds'] as num?)?.toInt() ?? 60;
+      if (secs > 0) {
+        _replyTimer = Timer(Duration(seconds: secs), () {
+          if (mounted) setState(() => _reply = null);
+        });
+      }
+      if (LocalNotify.appInBackground) {
+        final title = '${r['title'] ?? ''}'.isEmpty ? t.title : '${t.title}: ${r['title']}';
+        unawaited(LocalNotify.show(title, '${r['message'] ?? ''}'));
+      }
+    }
   }
+
+  Widget _replyView(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    final text = Theme.of(context).textTheme;
+    if (_waiting) {
+      return Align(
+        alignment: Alignment.centerLeft,
+        child: Text(
+          tx(context, 'Lähetetty – odotetaan vastausta…', 'Sent – waiting for the reply…'),
+          style: text.bodyMedium?.copyWith(color: cs.onSurfaceVariant),
+        ),
+      );
+    }
+    final r = _reply!;
+    final at = DateTime.fromMillisecondsSinceEpoch(((r['time'] as num?)?.toInt() ?? 0) * 1000);
+    final hhmm = '${at.hour.toString().padLeft(2, '0')}:${at.minute.toString().padLeft(2, '0')}';
+    final title = '${r['title'] ?? ''}';
+    return SingleChildScrollView(
+      key: const ValueKey('tile-reply'),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (title.isNotEmpty) Text(title, style: text.titleSmall?.copyWith(color: cs.primary)),
+          Text('${r['message'] ?? ''}', style: text.bodyLarge),
+          Text(
+            '${tx(context, 'Vastaus klo', 'Reply at')} $hhmm',
+            style: text.bodySmall?.copyWith(color: cs.onSurfaceVariant),
+          ),
+        ],
+      ),
+    );
+  }
+
+  bool get _isLog => t.type == TileType.value && t.read['mode'] == 'log';
 
   Future<void> _setSlider(double v) async {
     final st = AppScope.read(context);
@@ -131,6 +281,16 @@ class _TileWidgetState extends State<TileWidget> {
           ],
         ),
         actions: [
+          if (_asksPin)
+            TextButton(
+              key: const ValueKey('pin-forget'),
+              onPressed: () async {
+                await AppScope.read(context).secretStore.delete(AppState.pinKey(t.id));
+                if (c.mounted) Navigator.pop(c);
+                if (mounted) showSnack(context, tx(context, 'Tallennettu PIN poistettu', 'Saved PIN removed'));
+              },
+              child: Text(tx(context, 'Unohda tallennettu PIN', 'Forget saved PIN')),
+            ),
           TextButton(
             onPressed: () {
               rt?.refresh();
@@ -220,7 +380,17 @@ class _TileWidgetState extends State<TileWidget> {
                     ),
                 ],
               ),
-              const Spacer(),
+              if (t.type == TileType.button && (_waiting || _reply != null))
+                Expanded(child: _replyView(context))
+              else if (_isLog && r.value != null)
+                Expanded(
+                  child: SingleChildScrollView(
+                    key: const ValueKey('tile-log'),
+                    child: Text('${r.value}', style: Theme.of(context).textTheme.bodyMedium),
+                  ),
+                )
+              else
+                const Spacer(),
               if (err != null && r.value == null)
                 Text(
                   friendlyError(err, AppScope.read(context).lang).title,
@@ -228,7 +398,7 @@ class _TileWidgetState extends State<TileWidget> {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(color: cs.error, fontSize: 13.5, fontWeight: FontWeight.w500),
                 )
-              else if (t.type == TileType.value || t.type == TileType.slider)
+              else if ((t.type == TileType.value && !_isLog) || t.type == TileType.slider)
                 _valueText(context, r, accent),
               if (t.type == TileType.toggle && !(err != null && r.value == null))
                 Text(

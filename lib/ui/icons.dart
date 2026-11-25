@@ -28,6 +28,8 @@ const tileIcons = <String, IconData>{
   'outlet': Icons.outlet_outlined,
   'star': Icons.star_outline,
   'brightness': Icons.brightness_6_outlined,
+  'send': Icons.send_outlined,
+  'list': Icons.list_alt,
 };
 
 IconData iconFor(TileConfig t) {

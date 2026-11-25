@@ -138,7 +138,12 @@ void main() {
             expect(ids, contains(s.connectionId), reason: '${t.id} ${tile.title}');
           }
         }
-        expect(t.inputs.where((f) => f.required).map((f) => f.key), contains('address'), reason: t.id);
+        // Device templates need an address; the ntfy template needs a topic instead.
+        expect(
+          t.inputs.where((f) => f.required).map((f) => f.key),
+          contains(t.id == 'ntfy' ? 'topic' : 'address'),
+          reason: t.id,
+        );
         // JSON-safe
         jsonEncode(r.tiles.map((x) => x.toJson()).toList());
       }

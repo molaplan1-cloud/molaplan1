@@ -40,6 +40,49 @@ class MainActivity : FlutterActivity() {
             }
         }
 
+        // Local notifications (ntfy replies while the app is in the background).
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "molaplan/notify").setMethodCallHandler { call, result ->
+            when (call.method) {
+                "ask" -> {
+                    if (Build.VERSION.SDK_INT >= 33 &&
+                        checkSelfPermission("android.permission.POST_NOTIFICATIONS") != android.content.pm.PackageManager.PERMISSION_GRANTED
+                    ) {
+                        requestPermissions(arrayOf("android.permission.POST_NOTIFICATIONS"), 7001)
+                    }
+                    result.success(null)
+                }
+                "show" -> {
+                    try {
+                        val nm = getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            nm.createNotificationChannel(
+                                android.app.NotificationChannel("replies", "Vastaukset", android.app.NotificationManager.IMPORTANCE_HIGH)
+                            )
+                        }
+                        val open = android.app.PendingIntent.getActivity(
+                            this, 0,
+                            Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
+                            android.app.PendingIntent.FLAG_IMMUTABLE
+                        )
+                        val b = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                            android.app.Notification.Builder(this, "replies") else @Suppress("DEPRECATION") android.app.Notification.Builder(this)
+                        val n = b.setSmallIcon(applicationInfo.icon)
+                            .setContentTitle(call.argument<String>("title") ?: "Molaplan")
+                            .setContentText(call.argument<String>("body") ?: "")
+                            .setStyle(android.app.Notification.BigTextStyle().bigText(call.argument<String>("body") ?: ""))
+                            .setContentIntent(open)
+                            .setAutoCancel(true)
+                            .build()
+                        nm.notify((System.currentTimeMillis() % 100000).toInt(), n)
+                        result.success(true)
+                    } catch (e: Exception) {
+                        result.success(false)
+                    }
+                }
+                else -> result.notImplemented()
+            }
+        }
+
         // In-app updates.
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "molaplan/update").setMethodCallHandler { call, result ->
             when (call.method) {

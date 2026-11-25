@@ -86,6 +86,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     } catch (e) {
       debugPrint('remote load failed: $e');
     }
+    driverLang = config.language;
     _lastHome = remote.paired?.home;
     await account.load();
     loaded = true;
@@ -151,6 +152,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     config.connections = other.connections;
     config.dashboards = other.dashboards;
     config.language = other.language;
+    driverLang = config.language;
     if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: lang == 'fi' ? 'Koti' : 'Home'));
     if (hasLocalSetup) config.onboardingDone = true;
     _applyingSync = true;
@@ -266,12 +268,17 @@ class AppState extends ChangeNotifier implements SyncHost {
     return d.send(step.spec, value: value);
   }
 
-  Future<void> runSequence(List<CommandStep> steps, {Object? value}) async {
+  /// Runs the steps in order; returns the last non-null result (e.g. an ntfy reply).
+  Future<Object?> runSequence(List<CommandStep> steps, {Object? value}) async {
+    Object? last;
     for (final s in steps) {
       if (s.delayMs > 0) await Future<void>.delayed(Duration(milliseconds: s.delayMs));
-      await runStep(s, value: value);
+      last = await runStep(s, value: value) ?? last;
     }
+    return last;
   }
+
+  static String pinKey(String tileId) => 'molaplan.pin.$tileId';
 
   // ---- dashboards / tiles
   Future<Dashboard> addDashboard(String name) async {
@@ -323,6 +330,7 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   Future<void> setLanguage(String l) async {
     config.language = l;
+    driverLang = l;
     await save();
     notifyListeners();
   }

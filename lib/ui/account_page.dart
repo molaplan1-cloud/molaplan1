@@ -9,22 +9,57 @@ import 'app_scope.dart';
 String accountErrorText(BuildContext context, Object e) {
   String t(String fi, String en) => tx(context, fi, en);
   if (e is WrongVaultPassword) {
-    return t('Salasana ei täsmää. Kirjoita tilin salasana (sama jolla kirjauduit ensimmäisen kerran).',
-        'The password does not match. Type your account password.');
+    return t(
+      'Salasana ei täsmää. Kirjoita tilin salasana (sama jolla kirjauduit ensimmäisen kerran).',
+      'The password does not match. Type your account password.',
+    );
   }
   if (e is! AccountError) return t('Jokin meni pieleen: $e', 'Something went wrong: $e');
   return switch (e.problem) {
-    AccountProblem.offline => t('Ei nettiyhteyttä. Tarkista wifi tai mobiilidata ja yritä uudelleen.', 'No internet connection. Check Wi-Fi or mobile data and try again.'),
-    AccountProblem.wrongPassword => t('Sähköposti tai salasana on väärin. Tarkista kirjoitusasu, tai paina "Unohdin salasanan".', 'Wrong email or password. Check them, or tap "Forgot password".'),
-    AccountProblem.emailNotConfirmed => t('Sähköpostia ei ole vielä vahvistettu. Katso sähköpostistasi koodi.', 'The email is not confirmed yet. Look for the code in your email.'),
-    AccountProblem.userExists => t('Tällä sähköpostilla on jo tili. Paina "Minulla on jo tili" ja kirjaudu.', 'This email already has an account. Sign in instead.'),
-    AccountProblem.weakPassword => t('Salasanan pitää olla vähintään 8 merkkiä.', 'The password must be at least 8 characters.'),
-    AccountProblem.badEmail => t('Sähköpostiosoite ei näytä oikealta (esim. nimi@esimerkki.fi).', 'That does not look like an email address.'),
-    AccountProblem.badCode => t('Koodi on väärä tai vanhentunut. Tarkista koodi tai pyydä uusi.', 'The code is wrong or expired. Check it or ask for a new one.'),
-    AccountProblem.rateLimited => t('Liian monta yritystä. Odota hetki (noin minuutti) ja yritä uudelleen.', 'Too many attempts. Wait a minute and try again.'),
-    AccountProblem.sessionExpired => t('Kirjautuminen on vanhentunut. Kirjaudu uudelleen.', 'Your sign-in expired. Please sign in again.'),
-    AccountProblem.conflict => t('Toinen laite muutti asetuksia samaan aikaan. Yritä uudelleen.', 'Another device changed the setup at the same time. Try again.'),
-    AccountProblem.server => t('Tilipalvelu ei vastannut oikein. Yritä hetken päästä uudelleen.', 'The account service did not answer properly. Try again shortly.'),
+    AccountProblem.offline => t(
+      'Ei nettiyhteyttä. Tarkista wifi tai mobiilidata ja yritä uudelleen.',
+      'No internet connection. Check Wi-Fi or mobile data and try again.',
+    ),
+    AccountProblem.wrongPassword => t(
+      'Sähköposti tai salasana on väärin. Tarkista kirjoitusasu, tai paina "Unohdin salasanan".',
+      'Wrong email or password. Check them, or tap "Forgot password".',
+    ),
+    AccountProblem.emailNotConfirmed => t(
+      'Sähköpostia ei ole vielä vahvistettu. Katso sähköpostistasi koodi.',
+      'The email is not confirmed yet. Look for the code in your email.',
+    ),
+    AccountProblem.userExists => t(
+      'Tällä sähköpostilla on jo tili. Paina "Minulla on jo tili" ja kirjaudu.',
+      'This email already has an account. Sign in instead.',
+    ),
+    AccountProblem.weakPassword => t(
+      'Salasanan pitää olla vähintään 8 merkkiä.',
+      'The password must be at least 8 characters.',
+    ),
+    AccountProblem.badEmail => t(
+      'Sähköpostiosoite ei näytä oikealta (esim. nimi@esimerkki.fi).',
+      'That does not look like an email address.',
+    ),
+    AccountProblem.badCode => t(
+      'Koodi on väärä tai vanhentunut. Tarkista koodi tai pyydä uusi.',
+      'The code is wrong or expired. Check it or ask for a new one.',
+    ),
+    AccountProblem.rateLimited => t(
+      'Liian monta yritystä. Odota hetki (noin minuutti) ja yritä uudelleen.',
+      'Too many attempts. Wait a minute and try again.',
+    ),
+    AccountProblem.sessionExpired => t(
+      'Kirjautuminen on vanhentunut. Kirjaudu uudelleen.',
+      'Your sign-in expired. Please sign in again.',
+    ),
+    AccountProblem.conflict => t(
+      'Toinen laite muutti asetuksia samaan aikaan. Yritä uudelleen.',
+      'Another device changed the setup at the same time. Try again.',
+    ),
+    AccountProblem.server => t(
+      'Tilipalvelu ei vastannut oikein. Yritä hetken päästä uudelleen.',
+      'The account service did not answer properly. Try again shortly.',
+    ),
   };
 }
 
@@ -38,14 +73,22 @@ Future<void> askFirstSync(BuildContext context) async {
     context: context,
     barrierDismissible: false,
     builder: (c) => AlertDialog(
-      title: Text(p.remoteHas
-          ? t('Tililläsi on jo kotinäkymä', 'Your account already has a setup')
-          : t('Tallennetaanko tämän laitteen kotinäkymä tiliisi?', 'Save this device\'s setup to your account?')),
-      content: Text(p.remoteHas
-          ? t('Myös tällä laitteella on omia laitteita ja ruutuja. Mitä tehdään?',
-              'This device has its own devices and tiles too. What should we do?')
-          : t('Silloin samat kodit, laitteet ja ruudut näkyvät kaikilla laitteillasi, joilla kirjaudut tälle tilille.',
-              'Then the same homes, devices and tiles appear on every device signed in to this account.')),
+      title: Text(
+        p.remoteHas
+            ? t('Tililläsi on jo kotinäkymä', 'Your account already has a setup')
+            : t('Tallennetaanko tämän laitteen kotinäkymä tiliisi?', 'Save this device\'s setup to your account?'),
+      ),
+      content: Text(
+        p.remoteHas
+            ? t(
+                'Myös tällä laitteella on omia laitteita ja ruutuja. Mitä tehdään?',
+                'This device has its own devices and tiles too. What should we do?',
+              )
+            : t(
+                'Silloin samat kodit, laitteet ja ruudut näkyvät kaikilla laitteillasi, joilla kirjaudut tälle tilille.',
+                'Then the same homes, devices and tiles appear on every device signed in to this account.',
+              ),
+      ),
       actions: [
         TextButton(
           key: const ValueKey('first-cancel'),
@@ -124,7 +167,9 @@ class _AccountPageState extends State<AccountPage> {
     if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(e)) {
       return t('Kirjoita sähköpostiosoitteesi (esim. nimi@esimerkki.fi).', 'Type your email address.');
     }
-    if (password && _password.text.length < 8) return t('Salasanan pitää olla vähintään 8 merkkiä.', 'At least 8 characters.');
+    if (password && _password.text.length < 8) {
+      return t('Salasanan pitää olla vähintään 8 merkkiä.', 'At least 8 characters.');
+    }
     return null;
   }
 
@@ -225,7 +270,10 @@ class _AccountPageState extends State<AccountPage> {
     style: const TextStyle(fontSize: 24, letterSpacing: 6),
     decoration: InputDecoration(
       labelText: t('Koodi sähköpostista', 'Code from the email'),
-      helperText: t('Koodi tulee muutamassa minuutissa. Katso myös roskapostikansio.', 'The code arrives in a few minutes. Check the spam folder too.'),
+      helperText: t(
+        'Koodi tulee muutamassa minuutissa. Katso myös roskapostikansio.',
+        'The code arrives in a few minutes. Check the spam folder too.',
+      ),
       border: const OutlineInputBorder(),
     ),
   );
@@ -251,7 +299,11 @@ class _AccountPageState extends State<AccountPage> {
           const SizedBox(height: 12),
           _passwordField(),
           ...errs,
-          _big(const ValueKey('acc-signin'), t('Kirjaudu sisään', 'Sign in'), () => _run(() => acc.signIn(_email.text, _password.text))),
+          _big(
+            const ValueKey('acc-signin'),
+            t('Kirjaudu sisään', 'Sign in'),
+            () => _run(() => acc.signIn(_email.text, _password.text)),
+          ),
           const SizedBox(height: 8),
           OutlinedButton(
             key: const ValueKey('acc-mode-signup'),
@@ -285,15 +337,22 @@ class _AccountPageState extends State<AccountPage> {
             ),
           ),
           ...errs,
-          _big(const ValueKey('acc-signup'), t('Luo tili', 'Create account'), () => _run(() async {
-            final ok = await acc.signUp(_email.text, _password.text);
-            if (!ok && mounted) {
-              setState(() {
-                mode = _Mode.confirm;
-                info = t('Lähetimme koodin osoitteeseen ${_email.text.trim()}. Kirjoita se alle.', 'We sent a code to ${_email.text.trim()}. Type it below.');
-              });
-            }
-          })),
+          _big(
+            const ValueKey('acc-signup'),
+            t('Luo tili', 'Create account'),
+            () => _run(() async {
+              final ok = await acc.signUp(_email.text, _password.text);
+              if (!ok && mounted) {
+                setState(() {
+                  mode = _Mode.confirm;
+                  info = t(
+                    'Lähetimme koodin osoitteeseen ${_email.text.trim()}. Kirjoita se alle.',
+                    'We sent a code to ${_email.text.trim()}. Type it below.',
+                  );
+                });
+              }
+            }),
+          ),
           const SizedBox(height: 8),
           OutlinedButton(
             key: const ValueKey('acc-mode-signin'),
@@ -307,13 +366,18 @@ class _AccountPageState extends State<AccountPage> {
           ...errs,
           const SizedBox(height: 16),
           _codeField(),
-          _big(const ValueKey('acc-verify'), t('Vahvista', 'Confirm'),
-              () => _run(() => acc.confirmSignUp(_email.text, _code.text), password: false)),
+          _big(
+            const ValueKey('acc-verify'),
+            t('Vahvista', 'Confirm'),
+            () => _run(() => acc.confirmSignUp(_email.text, _code.text), password: false),
+          ),
           TextButton(
-            onPressed: busy ? null : () => _run(() async {
-              await acc.api.resendConfirmation(_email.text.trim());
-              if (mounted) setState(() => info = t('Uusi koodi lähetetty.', 'A new code was sent.'));
-            }, password: false),
+            onPressed: busy
+                ? null
+                : () => _run(() async {
+                    await acc.api.resendConfirmation(_email.text.trim());
+                    if (mounted) setState(() => info = t('Uusi koodi lähetetty.', 'A new code was sent.'));
+                  }, password: false),
             child: Text(t('Koodi ei tullut – lähetä uusi', 'No code – send a new one')),
           ),
           TextButton(onPressed: busy ? null : () => _go(_Mode.signUp), child: Text(t('Takaisin', 'Back'))),
@@ -322,26 +386,44 @@ class _AccountPageState extends State<AccountPage> {
         return [
           Text(t('Kirjaudu koodilla', 'Sign in with a code'), style: text.headlineSmall),
           const SizedBox(height: 8),
-          Text(t('Lähetämme sähköpostiisi koodin. Salasanaa ei tarvita kirjautumiseen.', 'We email you a code. No password needed to sign in.')),
+          Text(
+            t(
+              'Lähetämme sähköpostiisi koodin. Salasanaa ei tarvita kirjautumiseen.',
+              'We email you a code. No password needed to sign in.',
+            ),
+          ),
           const SizedBox(height: 16),
           _emailField(),
           ...errs,
           if (!codeSent)
-            _big(const ValueKey('acc-send-code'), t('Lähetä koodi', 'Send code'), () => _run(() async {
-              await acc.sendCode(_email.text);
-              if (mounted) {
-                setState(() {
-                  codeSent = true;
-                  info = t('Koodi lähetetty osoitteeseen ${_email.text.trim()}.', 'Code sent to ${_email.text.trim()}.');
-                });
-              }
-            }, password: false))
+            _big(
+              const ValueKey('acc-send-code'),
+              t('Lähetä koodi', 'Send code'),
+              () => _run(() async {
+                await acc.sendCode(_email.text);
+                if (mounted) {
+                  setState(() {
+                    codeSent = true;
+                    info = t(
+                      'Koodi lähetetty osoitteeseen ${_email.text.trim()}.',
+                      'Code sent to ${_email.text.trim()}.',
+                    );
+                  });
+                }
+              }, password: false),
+            )
           else ...[
             const SizedBox(height: 16),
             _codeField(),
-            _big(const ValueKey('acc-verify'), t('Kirjaudu', 'Sign in'),
-                () => _run(() => acc.signInWithCode(_email.text, _code.text), password: false)),
-            TextButton(onPressed: busy ? null : () => setState(() => codeSent = false), child: Text(t('Lähetä uusi koodi', 'Send a new code'))),
+            _big(
+              const ValueKey('acc-verify'),
+              t('Kirjaudu', 'Sign in'),
+              () => _run(() => acc.signInWithCode(_email.text, _code.text), password: false),
+            ),
+            TextButton(
+              onPressed: busy ? null : () => setState(() => codeSent = false),
+              child: Text(t('Lähetä uusi koodi', 'Send a new code')),
+            ),
           ],
           TextButton(onPressed: busy ? null : () => _go(_Mode.signIn), child: Text(t('Takaisin', 'Back'))),
         ];
@@ -349,22 +431,34 @@ class _AccountPageState extends State<AccountPage> {
         return [
           Text(t('Vaihda salasana', 'Reset password'), style: text.headlineSmall),
           const SizedBox(height: 8),
-          Text(t('Lähetämme sähköpostiisi koodin. Sen jälkeen voit keksiä uuden salasanan.', 'We email you a code, then you choose a new password.')),
+          Text(
+            t(
+              'Lähetämme sähköpostiisi koodin. Sen jälkeen voit keksiä uuden salasanan.',
+              'We email you a code, then you choose a new password.',
+            ),
+          ),
           const SizedBox(height: 16),
           _emailField(),
           ...errs,
           if (!codeSent)
-            _big(const ValueKey('acc-send-code'), t('Lähetä koodi', 'Send code'), () => _run(() async {
-              await acc.sendRecovery(_email.text);
-              if (mounted) setState(() => codeSent = true);
-            }, password: false))
+            _big(
+              const ValueKey('acc-send-code'),
+              t('Lähetä koodi', 'Send code'),
+              () => _run(() async {
+                await acc.sendRecovery(_email.text);
+                if (mounted) setState(() => codeSent = true);
+              }, password: false),
+            )
           else ...[
             const SizedBox(height: 16),
             _codeField(),
             const SizedBox(height: 12),
             _passwordField(label: t('Uusi salasana (vähintään 8 merkkiä)', 'New password (8+ characters)')),
-            _big(const ValueKey('acc-verify'), t('Vaihda salasana ja kirjaudu', 'Change password and sign in'),
-                () => _run(() => acc.recoverWithCode(_email.text, _code.text, _password.text))),
+            _big(
+              const ValueKey('acc-verify'),
+              t('Vaihda salasana ja kirjaudu', 'Change password and sign in'),
+              () => _run(() => acc.recoverWithCode(_email.text, _code.text, _password.text)),
+            ),
           ],
           TextButton(onPressed: busy ? null : () => _go(_Mode.signIn), child: Text(t('Takaisin', 'Back'))),
         ];
@@ -376,15 +470,28 @@ class _AccountPageState extends State<AccountPage> {
     final cs = Theme.of(context).colorScheme;
     final (icon, label) = switch (acc.status) {
       SyncStatus.syncing => (Icons.sync, t('Synkronoidaan…', 'Syncing…')),
-      SyncStatus.ok => (Icons.cloud_done_outlined, t('Ajan tasalla – samat asetukset kaikilla laitteillasi', 'Up to date on all your devices')),
-      SyncStatus.offline => (Icons.cloud_off_outlined, t('Ei nettiä – muutokset siirtyvät, kun yhteys palaa', 'Offline – changes sync when back online')),
-      SyncStatus.error => (Icons.error_outline, t('Synkronointi epäonnistui – yritetään uudelleen', 'Sync failed – will retry')),
+      SyncStatus.ok => (
+        Icons.cloud_done_outlined,
+        t('Ajan tasalla – samat asetukset kaikilla laitteillasi', 'Up to date on all your devices'),
+      ),
+      SyncStatus.offline => (
+        Icons.cloud_off_outlined,
+        t('Ei nettiä – muutokset siirtyvät, kun yhteys palaa', 'Offline – changes sync when back online'),
+      ),
+      SyncStatus.error => (
+        Icons.error_outline,
+        t('Synkronointi epäonnistui – yritetään uudelleen', 'Sync failed – will retry'),
+      ),
       SyncStatus.off => (Icons.cloud_outlined, t('Ei synkronoitu vielä', 'Not synced yet')),
     };
     return [
       Row(
         children: [
-          CircleAvatar(radius: 26, backgroundColor: cs.primary, child: Icon(Icons.person, color: cs.onPrimary)),
+          CircleAvatar(
+            radius: 26,
+            backgroundColor: cs.primary,
+            child: Icon(Icons.person, color: cs.onPrimary),
+          ),
           const SizedBox(width: 14),
           Expanded(
             child: Column(
@@ -402,7 +509,9 @@ class _AccountPageState extends State<AccountPage> {
         contentPadding: EdgeInsets.zero,
         leading: Icon(icon, color: acc.status == SyncStatus.error ? cs.error : cs.primary),
         title: Text(label),
-        subtitle: acc.lastError != null && acc.status != SyncStatus.ok ? Text(accountErrorText(context, acc.lastError!)) : null,
+        subtitle: acc.lastError != null && acc.status != SyncStatus.ok
+            ? Text(accountErrorText(context, acc.lastError!))
+            : null,
         trailing: IconButton(
           key: const ValueKey('acc-sync-now'),
           tooltip: t('Synkronoi nyt', 'Sync now'),
@@ -411,18 +520,27 @@ class _AccountPageState extends State<AccountPage> {
         ),
       ),
       if (acc.needsUnlock) ...[
-        _banner(t(
-          'Laitteiden salasanat ja pilviavaimet ovat tilillä lukittuina. Kirjoita tilin salasana avataksesi ne tällä laitteella.',
-          'Device passwords and cloud keys are locked. Type your account password to open them on this device.',
-        )),
+        _banner(
+          t(
+            'Laitteiden salasanat ja pilviavaimet ovat tilillä lukittuina. Kirjoita tilin salasana avataksesi ne tällä laitteella.',
+            'Device passwords and cloud keys are locked. Type your account password to open them on this device.',
+          ),
+        ),
         const SizedBox(height: 12),
         TextField(
           key: const ValueKey('acc-unlock-password'),
           controller: _unlock,
           obscureText: true,
-          decoration: InputDecoration(labelText: t('Tilin salasana', 'Account password'), border: const OutlineInputBorder()),
+          decoration: InputDecoration(
+            labelText: t('Tilin salasana', 'Account password'),
+            border: const OutlineInputBorder(),
+          ),
         ),
-        _big(const ValueKey('acc-unlock'), t('Avaa salasanat', 'Unlock'), () => _run(() => acc.unlock(_unlock.text), checkInput: false)),
+        _big(
+          const ValueKey('acc-unlock'),
+          t('Avaa salasanat', 'Unlock'),
+          () => _run(() => acc.unlock(_unlock.text), checkInput: false),
+        ),
         TextButton(
           onPressed: busy ? null : () => _resetVault(acc),
           child: Text(t('En muista salasanaa – aloita salasanat alusta', 'I forgot it – start the passwords over')),
@@ -454,8 +572,10 @@ class _AccountPageState extends State<AccountPage> {
                 final ok = await confirmDialog(
                   context,
                   t('Kirjaudu ulos?', 'Sign out?'),
-                  t('Kodit ja ruudut jäävät tälle laitteelle, mutta muutokset eivät enää siirry muille laitteillesi.',
-                      'Homes and tiles stay on this device, but changes no longer reach your other devices.'),
+                  t(
+                    'Kodit ja ruudut jäävät tälle laitteelle, mutta muutokset eivät enää siirry muille laitteillesi.',
+                    'Homes and tiles stay on this device, but changes no longer reach your other devices.',
+                  ),
                   ok: t('Kirjaudu ulos', 'Sign out'),
                 );
                 if (ok) await acc.signOut();
@@ -467,14 +587,19 @@ class _AccountPageState extends State<AccountPage> {
       Text(t('Tilin poistaminen', 'Delete account'), style: text.titleMedium),
       const SizedBox(height: 4),
       Text(
-        t('Poistaa tilin ja kaikki palvelimelle tallennetut tiedot pysyvästi. Tämän laitteen kotinäkymä jää laitteelle.',
-            'Permanently deletes the account and everything stored on the server. This device keeps its own setup.'),
+        t(
+          'Poistaa tilin ja kaikki palvelimelle tallennetut tiedot pysyvästi. Tämän laitteen kotinäkymä jää laitteelle.',
+          'Permanently deletes the account and everything stored on the server. This device keeps its own setup.',
+        ),
         style: text.bodySmall,
       ),
       const SizedBox(height: 8),
       OutlinedButton.icon(
         key: const ValueKey('acc-delete'),
-        style: OutlinedButton.styleFrom(foregroundColor: cs.error, side: BorderSide(color: cs.error)),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: cs.error,
+          side: BorderSide(color: cs.error),
+        ),
         onPressed: busy ? null : () => _delete(acc),
         icon: const Icon(Icons.delete_forever_outlined),
         label: Text(t('Poista tili', 'Delete account')),
@@ -498,7 +623,9 @@ class _AccountPageState extends State<AccountPage> {
               key: const ValueKey('acc-new-password'),
               controller: c,
               obscureText: true,
-              decoration: InputDecoration(labelText: t('Uusi salasana (vähintään 8 merkkiä)', 'New password (8+ characters)')),
+              decoration: InputDecoration(
+                labelText: t('Uusi salasana (vähintään 8 merkkiä)', 'New password (8+ characters)'),
+              ),
             ),
           ],
         ),
@@ -512,7 +639,7 @@ class _AccountPageState extends State<AccountPage> {
         ],
       ),
     );
-    c.dispose();
+    // (controller not disposed here: the dialog's closing animation still uses it)
     if (r == null) return null;
     if (r.length < 8) {
       setState(() => error = t('Salasanan pitää olla vähintään 8 merkkiä.', 'At least 8 characters.'));
@@ -522,7 +649,10 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Future<void> _changePassword(AccountState acc) async {
-    final pw = await _askPassword(t('Vaihda salasana', 'Change password'), t('Keksi uusi salasana tilillesi.', 'Choose a new password.'));
+    final pw = await _askPassword(
+      t('Vaihda salasana', 'Change password'),
+      t('Keksi uusi salasana tilillesi.', 'Choose a new password.'),
+    );
     if (pw == null) return;
     await _run(() async {
       await acc.changePassword(pw);
@@ -533,8 +663,10 @@ class _AccountPageState extends State<AccountPage> {
   Future<void> _resetVault(AccountState acc) async {
     final pw = await _askPassword(
       t('Aloita salasanat alusta', 'Start passwords over'),
-      t('Tilille tallennetut laitteiden salasanat ja pilviavaimet katoavat, ja ne pitää kirjoittaa uudelleen. Kodit ja ruudut säilyvät. Kirjautumissalasana vaihtuu tähän uuteen.',
-          'Saved device passwords and cloud keys are lost and must be typed again. Homes and tiles stay. Your sign-in password changes to this new one.'),
+      t(
+        'Tilille tallennetut laitteiden salasanat ja pilviavaimet katoavat, ja ne pitää kirjoittaa uudelleen. Kodit ja ruudut säilyvät. Kirjautumissalasana vaihtuu tähän uuteen.',
+        'Saved device passwords and cloud keys are lost and must be typed again. Homes and tiles stay. Your sign-in password changes to this new one.',
+      ),
     );
     if (pw == null) return;
     await _run(() async {
@@ -548,10 +680,12 @@ class _AccountPageState extends State<AccountPage> {
       context: context,
       builder: (d) => AlertDialog(
         title: Text(t('Poistetaanko tili pysyvästi?', 'Delete the account permanently?')),
-        content: Text(t(
-          'Tili ${acc.email} ja kaikki palvelimelle tallennetut kodit, laitteet, ruudut ja salatut salasanat poistetaan. Tätä ei voi perua.\n\nTämä laite jatkaa toimintaa ilman tiliä. Muilla laitteillasi kirjautuminen päättyy.',
-          'The account ${acc.email} and everything stored on the server is deleted. This cannot be undone.\n\nThis device keeps working without an account.',
-        )),
+        content: Text(
+          t(
+            'Tili ${acc.email} ja kaikki palvelimelle tallennetut kodit, laitteet, ruudut ja salatut salasanat poistetaan. Tätä ei voi perua.\n\nTämä laite jatkaa toimintaa ilman tiliä. Muilla laitteillasi kirjautuminen päättyy.',
+            'The account ${acc.email} and everything stored on the server is deleted. This cannot be undone.\n\nThis device keeps working without an account.',
+          ),
+        ),
         actions: [
           TextButton(onPressed: () => Navigator.pop(d, false), child: Text(t('Peru', 'Cancel'))),
           FilledButton(

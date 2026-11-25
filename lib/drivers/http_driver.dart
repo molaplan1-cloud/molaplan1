@@ -167,9 +167,40 @@ class HttpDriver extends Driver {
   }
 
   @override
+  /// Says exactly what was tested: one GET to the base address, nothing is switched.
   Future<String> test() async {
+    final url = joinUrl(s.str('baseUrl'), '');
+    final sw = Stopwatch()..start();
     final r = await _request({'method': 'GET', 'path': ''}, null, 'GET');
-    return 'HTTP ${r.statusCode} (${r.bodyBytes.length} B)';
+    final ms = sw.elapsedMilliseconds;
+    final what = dtx(
+      'Testattiin: GET $url (perusosoite, ${r.bodyBytes.length} tavua, $ms ms).',
+      'Tested: GET $url (base address, ${r.bodyBytes.length} bytes, $ms ms).',
+    );
+    final note = dtx(
+      'Komentoja ei lähetetty eikä ruutujen polkuja testattu.',
+      'No commands were sent and tile paths were not tested.',
+    );
+    final code = r.statusCode;
+    if (code == 401 || code == 403) {
+      throw DriverException(dtx(
+        'HTTP $code: laite vastasi, mutta ei hyväksynyt kirjautumista. Tarkista käyttäjätunnus, salasana tai token. $what',
+        'HTTP $code: the device answered but refused the login. Check username, password or token. $what',
+      ));
+    }
+    if (code >= 500) {
+      throw DriverException(dtx(
+        'HTTP $code: laite vastasi virheellä (palvelinvirhe). $what',
+        'HTTP $code: the device answered with a server error. $what',
+      ));
+    }
+    if (code == 404) {
+      return dtx(
+        '✓ Laite vastasi osoitteessa $url (HTTP 404: perusosoitteessa ei ole sivua – se on normaalia monille laitteille). Yhteys toimii. $note',
+        '✓ The device answered at $url (HTTP 404: no page at the base address – normal for many devices). The connection works. $note',
+      );
+    }
+    return dtx('✓ Yhteys toimii: HTTP $code. $what $note', '✓ Connection works: HTTP $code. $what $note');
   }
 
   @override

@@ -945,6 +945,125 @@ final deviceTemplates = <DeviceTemplate>[
       );
     },
   ),
+  DeviceTemplate(
+    id: 'ntfy',
+    fi: 'Komento ja vastaus (ntfy)',
+    en: 'Command and reply (ntfy)',
+    descFi: 'Lähetä komento ntfy-viestinä (esim. "päivitä" + PIN) ja näe kotilaitteen vastaus samassa ruudussa. Sama kanava kuin iPhonen pikakomennossa.',
+    descEn: 'Send a command as an ntfy message (e.g. "update" + PIN) and see the home device\'s reply in the same tile. Same channel as an iPhone Shortcut.',
+    icon: Icons.forum_outlined,
+    color: const Color(0xFF26A69A),
+    connectionType: 'ntfy',
+    inputs: const [
+      FieldSpec(
+        'topic',
+        'Komentokanavan osoite',
+        'Command topic URL',
+        required: true,
+        hint: 'https://ntfy.sh/oma-aihe',
+        helpFi: 'Liitä sama osoite, johon pikakomento lähettää komennot (esim. https://ntfy.sh/kv-cmd-…). Pelkkä aiheen nimi riittää myös.',
+        helpEn: 'Paste the same URL your Shortcut posts commands to (e.g. https://ntfy.sh/kv-cmd-…). The topic name alone also works.',
+      ),
+      FieldSpec(
+        'replyTopic',
+        'Vastauskanava (vapaaehtoinen)',
+        'Reply topic (optional)',
+        helpFi: 'Täytä vain, jos kotilaite vastaa eri aiheeseen. Tyhjä = vastaus tulee samaan aiheeseen, ja oma komento ohitetaan.',
+        helpEn: 'Only if the home device replies on another topic. Empty = same topic, our own command is ignored.',
+      ),
+      FieldSpec(
+        'name',
+        'Napin nimi',
+        'Button name',
+        hint: 'Päivitä',
+        helpFi: 'Teksti, joka näkyy ruudussa, esim. "Päivitä" tai "Tila".',
+        helpEn: 'Text shown on the tile, e.g. "Update" or "Status".',
+      ),
+      FieldSpec(
+        'command',
+        'Komento',
+        'Command',
+        hint: 'päivitä',
+        defaultValue: 'päivitä',
+        helpFi: 'Lähetettävä teksti. PIN lisätään perään välilyönnillä, esim. "päivitä 1234".',
+        helpEn: 'The text to send. The PIN is appended after a space, e.g. "update 1234".',
+      ),
+      FieldSpec(
+        'askPin',
+        'Kysy PIN joka painalluksella',
+        'Ask for the PIN on every press',
+        kind: FieldKind.boolean,
+        defaultValue: true,
+        helpFi: 'PIN kysytään piilotettuna eikä sitä tallenneta, ellet valitse "Muista tällä laitteella".',
+        helpEn: 'The PIN is asked hidden and is not stored unless you choose "Remember on this device".',
+      ),
+      FieldSpec(
+        'token',
+        'Käyttöoikeustunnus (vapaaehtoinen)',
+        'Access token (optional)',
+        kind: FieldKind.secret,
+        hint: 'tk_…',
+        helpFi: 'Vain suojatulle aiheelle (ntfy-tili → Access tokens). Julkiseen aiheeseen jätä tyhjäksi.',
+        helpEn: 'Only for a protected topic. Leave empty for a public topic.',
+      ),
+      FieldSpec(
+        'log',
+        'Lisää myös viestiloki-ruutu',
+        'Also add a message log tile',
+        kind: FieldKind.boolean,
+        defaultValue: true,
+        helpFi: 'Näyttää aiheen viimeisimmät viestit (esim. kotilaitteen ilmoitukset) omassa ruudussaan.',
+        helpEn: 'Shows the latest messages of the topic in its own tile.',
+      ),
+    ],
+    build: (v, lang) {
+      final c = ConnectionConfig(
+        name: 'ntfy',
+        type: 'ntfy',
+        settings: {
+          'topic': _s(v, 'topic', ''),
+          if (_s(v, 'replyTopic', '').isNotEmpty) 'replyTopic': _s(v, 'replyTopic', ''),
+          'server': 'https://ntfy.sh',
+        },
+        secrets: {if (_s(v, 'token', '').isNotEmpty) 'token': _s(v, 'token', '')},
+      );
+      final ask = v['askPin'] == null ? true : (v['askPin'] == true || v['askPin'] == 'true');
+      return TemplateResult(
+        [c],
+        [
+          TileConfig(
+            type: TileType.button,
+            title: _s(v, 'name', _t(lang, 'Päivitä', 'Update')),
+            icon: 'send',
+            colSpan: 2,
+            commands: [
+              CommandStep(
+                connectionId: c.id,
+                spec: {
+                  'message': _s(v, 'command', 'päivitä'),
+                  'askPin': ask,
+                  'waitReply': true,
+                  'replySeconds': 30,
+                  'showSeconds': 60,
+                },
+              ),
+            ],
+          ),
+          if (v['log'] != false && v['log'] != 'false')
+            TileConfig(
+              type: TileType.value,
+              title: _t(lang, 'Viestit', 'Messages'),
+              icon: 'list',
+              colSpan: 2,
+              rowSpan: 2,
+              connectionId: c.id,
+              pollSeconds: 30,
+              read: {'mode': 'log', 'count': 5, 'since': '12h'},
+            ),
+        ],
+      );
+    },
+  ),
 ];
 
 List<TileConfig> _heatPumpHaTiles(String cid, String e, String name, String lang) => [

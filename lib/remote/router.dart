@@ -111,6 +111,8 @@ class RemoteRouter {
   /// Wraps a connection's driver so it can go through the relay.
   Driver wrap(ConnectionConfig c) {
     if (c.type == 'camera') return RoutedCameraDriver(c, this);
+    // Internet services work the same everywhere: never through the home bridge.
+    if (c.type == 'ntfy') return createDriver(c);
     return RoutedDriver(createDriver(c), this);
   }
 }

@@ -6,6 +6,7 @@ import 'ha_driver.dart';
 import 'http_driver.dart';
 import 'modbus.dart';
 import 'mqtt_driver.dart';
+import 'ntfy_driver.dart';
 import 'socket_driver.dart';
 import 'websocket_driver.dart';
 
@@ -19,6 +20,7 @@ const driverDescriptors = <DriverDescriptor>[
   TcpDriver.descriptor,
   UdpDriver.descriptor,
   ShellyCloudDriver.descriptor,
+  NtfyDriver.descriptor,
 ];
 
 DriverDescriptor descriptorFor(String type) =>
