@@ -27,6 +27,10 @@ class MockTasmota {
   void receive(Map<String, dynamic> irReceived) =>
       log.add('12:00:00.000 RSL: RESULT = ${jsonEncode({'IrReceived': irReceived})}');
 
+  /// An RF433 remote was pressed near the RF receiver (Athom IR & RF433 controller).
+  void receiveRf(Map<String, dynamic> rfReceived) =>
+      log.add('12:00:00.000 RSL: RESULT = ${jsonEncode({'RfReceived': rfReceived})}');
+
   Future<void> _handle(HttpRequest req) async {
     final q = req.uri.queryParameters;
     final res = req.response..headers.contentType = ContentType('application', 'json', charset: 'utf-8');
@@ -50,6 +54,8 @@ class MockTasmota {
               : {'IRHVAC': 'Wrong Vendor'};
         case 'irsend':
           out = {'IRSend': 'Done'};
+        case 'rfsend':
+          out = {'RfSend': 'Done'};
         case 'setoption58':
           out = {'SetOption58': 'ON'};
         case 'status':

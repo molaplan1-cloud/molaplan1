@@ -113,6 +113,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   }
 
   Future<void> _addTile(Dashboard d) async {
+    if (!AppScope.read(context).config.advanced) {
+      await ConnectionsPage.addNew(context, dashboard: d);
+      return;
+    }
     final type = await showModalBottomSheet<TileType>(
       context: context,
       showDragHandle: true,
@@ -248,16 +252,17 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             padding: const EdgeInsets.all(8),
             child: Column(
               children: [
-                ListTile(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  leading: const Icon(Icons.device_hub),
-                  title: Text(tx(context, 'Yhteydet', 'Connections')),
-                  trailing: Text('${st.config.connections.length}'),
-                  onTap: () {
-                    close();
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ConnectionsPage()));
-                  },
-                ),
+                if (st.config.advanced)
+                  ListTile(
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    leading: const Icon(Icons.device_hub),
+                    title: Text(tx(context, 'Yhteydet', 'Connections')),
+                    trailing: Text('${st.config.connections.length}'),
+                    onTap: () {
+                      close();
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => const ConnectionsPage()));
+                    },
+                  ),
                 ListTile(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   leading: const Icon(Icons.settings_outlined),
@@ -330,12 +335,21 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         ],
       ),
       floatingActionButton: _editing
-          ? FloatingActionButton.extended(
-              onPressed: () => _addTile(d),
-              icon: const Icon(Icons.add),
-              label: Text(tx(context, 'Lisää ruutu', 'Add tile')),
-            )
-          : null,
+          ? (st.config.advanced
+                ? FloatingActionButton.extended(
+                    onPressed: () => _addTile(d),
+                    icon: const Icon(Icons.add),
+                    label: Text(tx(context, 'Lisää ruutu', 'Add tile')),
+                  )
+                : null)
+          : (d.tiles.isEmpty
+                ? null // the empty view has its own big button
+                : FloatingActionButton.extended(
+                    key: const ValueKey('home-add-device'),
+                    onPressed: () => ConnectionsPage.addNew(context, dashboard: d),
+                    icon: const Icon(Icons.add, size: 28),
+                    label: Text(tx(context, 'Lisää laite', 'Add device'), style: const TextStyle(fontSize: 18)),
+                  )),
       body: body,
     );
 
@@ -394,13 +408,15 @@ class _DashboardGrid extends StatelessWidget {
               SizedBox(
                 width: 320,
                 height: 64,
-                child: st.config.connections.isEmpty
+                child: st.config.connections.isEmpty || !st.config.advanced
                     ? FilledButton.icon(
                         key: const ValueKey('empty-add-device'),
                         onPressed: () => ConnectionsPage.addNew(context, dashboard: dashboard),
                         icon: const Icon(Icons.add, size: 28),
                         label: Text(
-                          tx(context, 'Lisää ensimmäinen laite', 'Add your first device'),
+                          st.config.connections.isEmpty
+                              ? tx(context, 'Lisää ensimmäinen laite', 'Add your first device')
+                              : tx(context, 'Lisää laite', 'Add device'),
                           style: const TextStyle(fontSize: 18),
                         ),
                       )

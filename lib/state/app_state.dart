@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import '../drivers/driver.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
+import '../rules/price_rules.dart';
 import '../templates/device_templates.dart';
 import '../account/supabase_api.dart' show AccountApi;
 import '../account/vault.dart' show defaultIterations;
@@ -15,7 +16,12 @@ import 'storage.dart';
 import 'update_state.dart';
 
 class AppState extends ChangeNotifier implements SyncHost {
-  AppState({required this.configStore, required this.secretStore, AccountApi? accountApi, int kdfIterations = defaultIterations}) {
+  AppState({
+    required this.configStore,
+    required this.secretStore,
+    AccountApi? accountApi,
+    int kdfIterations = defaultIterations,
+  }) {
     account = AccountState(store: secretStore, host: this, api: accountApi, kdfIterations: kdfIterations);
     account.addListener(notifyListeners);
     remote = RemoteState(store: secretStore, configJson: () => exportJson(includeSecrets: true));
@@ -110,13 +116,72 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<void> save() async {
     await configStore.save(jsonEncode(config.toJson()));
     if (!_applyingSync) account.localChanged();
+    _scheduleRulesPush();
+  }
+
+  // ---- price rules: they run on the home bridge, so every change is pushed there.
+  Timer? _rulesTimer;
+  String? _rulesSent;
+
+  /// Where rules run: 'self' (this device is the bridge), 'bridge' (paired to a home bridge) or null (nowhere yet).
+  String? get rulesRunWhere => remote.bridge != null ? 'self' : (remote.router.client != null ? 'bridge' : null);
+
+  void _scheduleRulesPush() {
+    if (config.rules.isEmpty && _rulesSent == null) return;
+    _rulesTimer?.cancel();
+    _rulesTimer = Timer(
+      const Duration(seconds: 2),
+      () => pushRules().catchError((Object e) {
+        debugPrint('rules push failed: $e');
+        return false;
+      }),
+    );
+  }
+
+  /// Sends the rule set to the bridge. Returns false when nothing changed.
+  Future<bool> pushRules({bool force = false}) async {
+    final jobs = RuleJob.fromConfig(config);
+    final j = jsonEncode([for (final x in jobs) x.toJson()]);
+    if (!force && j == _rulesSent) return false;
+    final b = remote.bridge;
+    if (b != null) {
+      await b.setRules(jobs);
+    } else {
+      final c = remote.router.client;
+      if (c == null) throw StateError('no_bridge');
+      await c.call(
+        'rules',
+        spec: {
+          'jobs': [for (final x in jobs) x.toJson()],
+        },
+      );
+    }
+    _rulesSent = j;
+    return true;
+  }
+
+  /// Rule status from wherever the rules run: {bridge, count, status:{ruleId: RuleStatus json}}.
+  Future<Map<String, dynamic>?> rulesStatus() async {
+    final b = remote.bridge;
+    if (b != null) return {'bridge': b.homeName, 'count': b.rules.jobs.length, 'status': b.rules.statusJson()};
+    final c = remote.router.client;
+    if (c == null) return null;
+    final v = await c.call('rules', spec: {'status': true});
+    return v is Map ? Map<String, dynamic>.from(v) : null;
   }
 
   bool _applyingSync = false;
   String? _lastHome;
 
   // ---- account sync (SyncHost)
-  static const _deviceLocal = ['onboardingDone', 'bridgeMode', 'relayUrl', 'remoteCameraSeconds', 'updateCheckedAt', 'updateSkip'];
+  static const _deviceLocal = [
+    'onboardingDone',
+    'bridgeMode',
+    'relayUrl',
+    'remoteCameraSeconds',
+    'updateCheckedAt',
+    'updateSkip',
+  ];
 
   @override
   Map<String, dynamic> syncConfig() {
@@ -130,7 +195,11 @@ class AppState extends ChangeNotifier implements SyncHost {
   @override
   Map<String, Map<String, String>> syncSecrets() => {
     for (final c in config.connections)
-      if (c.secrets.values.any((v) => v.isNotEmpty)) c.id: {for (final e in c.secrets.entries) if (e.value.isNotEmpty) e.key: e.value},
+      if (c.secrets.values.any((v) => v.isNotEmpty))
+        c.id: {
+          for (final e in c.secrets.entries)
+            if (e.value.isNotEmpty) e.key: e.value,
+        },
   };
 
   @override
@@ -328,6 +397,20 @@ class AppState extends ChangeNotifier implements SyncHost {
     notifyListeners();
   }
 
+  /// One price rule per tile (null removes it). Saving pushes the rules to the home bridge.
+  Future<void> setRule(String tileId, PriceRule? r) async {
+    config.rules.removeWhere((x) => x.tileId == tileId);
+    if (r != null) config.rules.add(r);
+    await save();
+    notifyListeners();
+  }
+
+  Future<void> setAdvanced(bool v) async {
+    config.advanced = v;
+    await save();
+    notifyListeners();
+  }
+
   Future<void> setLanguage(String l) async {
     config.language = l;
     driverLang = l;
@@ -481,6 +564,7 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   @override
   void dispose() {
+    _rulesTimer?.cancel();
     account.removeListener(notifyListeners);
     account.dispose();
     update.removeListener(notifyListeners);

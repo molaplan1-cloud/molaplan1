@@ -7,6 +7,8 @@ import 'package:cryptography/cryptography.dart';
 import '../state/stores.dart';
 import 'e2e.dart';
 import 'executor.dart';
+import '../prices/prices.dart';
+import '../rules/price_rules.dart';
 import 'protocol.dart';
 
 enum BridgeLink { off, connecting, online, error }
@@ -44,7 +46,21 @@ class BridgeCore {
     this.approve,
     this.log,
     this.storageKey = 'molaplan.bridge.v1',
+    this.prices,
   });
+
+  /// Electricity prices for the rules (default: the shared service on relay.molaplan.com).
+  final PriceService? prices;
+
+  /// Price rules pushed by the phones ("rules" op). They run here, at home, without the phone.
+  late final RuleRunner rules = RuleRunner(
+    prices: prices,
+    log: log,
+    send: (conn, spec, value) async {
+      final r = await executor.run({'id': 0, 'op': 'send', 'conn': conn, 'spec': spec, 'value': value});
+      if (r['ok'] != true) throw Exception(r['e']);
+    },
+  );
 
   final SecretStore store;
   final RemoteExecutor executor;
@@ -93,6 +109,14 @@ class BridgeCore {
       devices
         ..clear()
         ..addAll([for (final d in (j['devices'] as List? ?? [])) PairedDevice.fromJson(Map<String, dynamic>.from(d))]);
+      final rr = await store.read('$storageKey.rules');
+      if (rr != null) {
+        try {
+          rules.jobs = [
+            for (final x in (jsonDecode(rr) as List)) RuleJob.fromJson(Map<String, dynamic>.from(x as Map)),
+          ];
+        } catch (_) {}
+      }
     } else {
       relay = relayUrl;
       home = randomHex(16);
@@ -136,7 +160,34 @@ class BridgeCore {
     if (!_changes.isClosed) _changes.add(null);
   }
 
+  /// Replaces the rule set (from a phone or from this app itself) and stores it.
+  Future<void> setRules(List<RuleJob> jobs) async {
+    await store.write('$storageKey.rules', jsonEncode([for (final j in jobs) j.toJson()]));
+    rules.update(jobs);
+    log?.call('price rules: ${jobs.length}');
+  }
+
+  /// "rules" op: {jobs:[…]} replaces the set; {status:true} only reads the status.
+  Future<Map<String, dynamic>> _rulesOp(Map<String, dynamic> r) async {
+    final id = r['id'];
+    final spec = Map<String, dynamic>.from((r['spec'] as Map?) ?? const {});
+    try {
+      if (spec['jobs'] is List) {
+        await setRules([for (final x in spec['jobs'] as List) RuleJob.fromJson(Map<String, dynamic>.from(x as Map))]);
+        await rules.tick();
+      }
+      return {
+        'id': id,
+        'ok': true,
+        'v': {'bridge': homeName, 'count': rules.jobs.length, 'status': rules.statusJson()},
+      };
+    } catch (e) {
+      return {'id': id, 'ok': false, 'e': '$e', 'k': 'unknown'};
+    }
+  }
+
   void start() {
+    rules.start();
     if (_running) return;
     _running = true;
     _connect();
@@ -368,7 +419,15 @@ class BridgeCore {
     if (_seen.containsKey(n)) return; // replay
     _seen[n] = now;
     final batch = [for (final r in (msg['b'] as List? ?? [])) Map<String, dynamic>.from(r as Map)];
-    final results = await Future.wait(batch.map((r) => r['op'] == 'enroll' ? _enroll(r) : executor.run(r)));
+    final results = await Future.wait(
+      batch.map(
+        (r) => switch (r['op']) {
+          'enroll' => _enroll(r),
+          'rules' => _rulesOp(r),
+          _ => executor.run(r),
+        },
+      ),
+    );
     await _reply(dev, key, {'r': results});
   }
 
@@ -406,6 +465,7 @@ class BridgeCore {
   }
 
   Future<void> dispose() async {
+    rules.dispose();
     await stop();
     await executor.dispose();
     await _changes.close();

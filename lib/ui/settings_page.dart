@@ -16,7 +16,6 @@ import '../version.dart';
 
 export '../version.dart' show appVersion;
 
-
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
   @override
@@ -86,7 +85,11 @@ class _SettingsPageState extends State<SettingsPage> {
               const SizedBox(height: 4),
               Text(
                 st.account.signedIn
-                    ? tx(context, 'Samat kodit ja ruudut kaikilla laitteillasi.', 'The same homes and tiles on all your devices.')
+                    ? tx(
+                        context,
+                        'Samat kodit ja ruudut kaikilla laitteillasi.',
+                        'The same homes and tiles on all your devices.',
+                      )
                     : tx(
                         context,
                         'Kirjaudu, niin kodit, laitteet ja ruudut ovat samat PC:llä, tabletilla ja puhelimella. Vapaaehtoinen.',
@@ -119,7 +122,22 @@ class _SettingsPageState extends State<SettingsPage> {
                 selected: {st.lang},
                 onSelectionChanged: (s) => st.setLanguage(s.first),
               ),
-              const SizedBox(height: 28),
+              const SizedBox(height: 20),
+              SwitchListTile(
+                key: const ValueKey('settings-advanced'),
+                contentPadding: EdgeInsets.zero,
+                title: Text(tx(context, 'Edistyneet', 'Advanced')),
+                subtitle: Text(
+                  tx(
+                    context,
+                    'Näyttää tekniset asetukset: yhteydet (HTTP, MQTT, Modbus…), viestit, JSON-polut ja ruutujen lähteet. Useimmat eivät tarvitse näitä.',
+                    'Shows technical settings: connections (HTTP, MQTT, Modbus…), payloads, JSON paths and tile sources. Most people don\'t need these.',
+                  ),
+                ),
+                value: st.config.advanced,
+                onChanged: st.setAdvanced,
+              ),
+              const SizedBox(height: 20),
               Text(tx(context, 'Etäyhteys', 'Remote access'), style: text.titleMedium),
               const SizedBox(height: 4),
               Text(

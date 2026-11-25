@@ -100,7 +100,11 @@ String _fmt(num n) => n == n.roundToDouble() ? n.toInt().toString() : n.toString
 
 /// A remote-control code captured with the blaster's IR receiver.
 class IrCode {
-  IrCode({required this.protocol, this.bits, this.data, this.raw, this.text});
+  IrCode({required this.protocol, this.bits, this.data, this.raw, this.text, this.rf = false, this.pulse});
+
+  /// RF433 code (Tasmota RfReceived / RfSend) instead of infrared.
+  final bool rf;
+  final int? pulse;
   final String protocol;
   final int? bits;
   final String? data;
@@ -112,6 +116,13 @@ class IrCode {
   final String? text;
 
   bool get known => protocol.isNotEmpty && protocol != 'UNKNOWN' && data != null;
+
+  /// Payload for Tasmota `RfSend`.
+  String get rfsend =>
+      jsonEncode({'Data': data, 'Bits': bits ?? 24, 'Protocol': int.tryParse(protocol) ?? 1, 'Pulse': pulse ?? 350});
+
+  /// Tile command spec that replays this code.
+  Map<String, dynamic> get command => rf ? {'rf': rfsend} : {'code': irsend};
 
   /// Payload for Tasmota `IRsend`.
   String get irsend {
@@ -125,15 +136,35 @@ class IrCode {
     );
   }
 
-  String describe() => known ? '$protocol, $bits bit, $data' : (text ?? raw ?? protocol);
+  String describe() => rf
+      ? 'RF433 $data ($bits bit, protokolla $protocol, pulssi $pulse)'
+      : known
+      ? '$protocol, $bits bit, $data'
+      : (text ?? raw ?? protocol);
 
   Map<String, dynamic> toJson() => {
+    if (rf) 'rf': true,
+    'pulse': ?pulse,
     'protocol': protocol,
     if (bits != null) 'bits': bits,
     if (data != null) 'data': data,
     if (raw != null) 'raw': raw,
     if (text != null) 'text': text,
   };
+
+  /// From a Tasmota `{"RfReceived":{…}}` message (RF433 receiver, e.g. Athom IR & RF controller).
+  static IrCode? fromTasmotaRf(Object? j) {
+    if (j is! Map || j['RfReceived'] is! Map) return null;
+    final r = j['RfReceived'] as Map;
+    return IrCode(
+      rf: true,
+      protocol: '${r['Protocol'] ?? 1}',
+      bits: (r['Bits'] as num?)?.toInt(),
+      data: r['Data']?.toString(),
+      pulse: (r['Pulse'] as num?)?.toInt(),
+      text: jsonEncode(r),
+    );
+  }
 
   /// From a Tasmota `{"IrReceived":{…}}` message.
   static IrCode? fromTasmota(Object? j) {
@@ -164,10 +195,11 @@ class IrCode {
   }
 }
 
-/// Finds every `{"IrReceived":{…}}` object in free text (Tasmota web console log).
-List<IrCode> irCodesInText(String text) {
+/// Finds every `{"IrReceived":{…}}` (or with [rf] `{"RfReceived":{…}}`) object in free text (Tasmota web console log).
+List<IrCode> irCodesInText(String text, {bool rf = false}) {
   final out = <IrCode>[];
-  var i = text.indexOf('{"IrReceived"');
+  final tag = rf ? '{"RfReceived"' : '{"IrReceived"';
+  var i = text.indexOf(tag);
   while (i >= 0) {
     var depth = 0;
     var end = -1;
@@ -191,10 +223,11 @@ List<IrCode> irCodesInText(String text) {
     }
     if (end < 0) break;
     try {
-      final c = IrCode.fromTasmota(jsonDecode(text.substring(i, end + 1)));
+      final j = jsonDecode(text.substring(i, end + 1));
+      final c = rf ? IrCode.fromTasmotaRf(j) : IrCode.fromTasmota(j);
       if (c != null) out.add(c);
     } catch (_) {}
-    i = text.indexOf('{"IrReceived"', end);
+    i = text.indexOf(tag, end);
   }
   return out;
 }
@@ -704,8 +737,17 @@ class IrDriver extends Driver {
   Future<Object?> send(Map<String, dynamic> spec, {Object? value}) async {
     final learn = spec['learn'];
     if (learn != null) {
-      final c = await this.learn(Duration(seconds: (learn is num ? learn : num.tryParse('$learn') ?? 30).toInt()));
+      final c = await this.learn(
+        Duration(seconds: (learn is num ? learn : num.tryParse('$learn') ?? 30).toInt()),
+        rf: spec['kind'] == 'rf',
+      );
       return c.toJson();
+    }
+    final rfCode = spec.strOrNull('rf');
+    if (rfCode != null) {
+      if (!isTasmota) throw DriverException(dtx('RF433-koodeja voi lähettää vain Tasmotalla.', 'RF433 needs Tasmota.'));
+      await tasmota('RfSend', rfCode);
+      return null;
     }
     final code = spec.strOrNull('code');
     if (code != null) {
@@ -737,7 +779,11 @@ class IrDriver extends Driver {
   // ------------------------------------------------------------ learning
 
   /// Waits for the next code from the blaster's IR receiver (point the remote at it and press a button).
-  Future<IrCode> learn(Duration timeout, {Duration pollEvery = const Duration(milliseconds: 700)}) async {
+  Future<IrCode> learn(
+    Duration timeout, {
+    Duration pollEvery = const Duration(milliseconds: 700),
+    bool rf = false,
+  }) async {
     final fail = DriverException(
       dtx(
         'Koodia ei tullut ${timeout.inSeconds} sekunnissa. Osoita kaukosäätimellä suoraan lähettimeen (alle 1 m) ja paina nappia uudelleen. Tarkista, että lähettimessä on IR-vastaanotin.',
@@ -748,17 +794,18 @@ class IrDriver extends Driver {
       case 'tasmota_mqtt':
         final sub = mqtt.listen('tele/$_topic/RESULT');
         // Raw timings for unknown protocols (harmless setting).
-        unawaited(tasmota('SetOption58', '1').catchError((_) => ''));
+        if (!rf) unawaited(tasmota('SetOption58', '1').catchError((_) => ''));
         return sub
-            .map((p) => irCodesInText(p))
+            .map((p) => irCodesInText(p, rf: rf))
             .where((l) => l.isNotEmpty)
             .map((l) => l.first)
             .first
             .timeout(timeout, onTimeout: () => throw fail);
       case 'tasmota_http':
-        await tasmota('SetOption58', '1');
-        return _learnHttp(timeout, pollEvery, fail);
+        if (!rf) await tasmota('SetOption58', '1');
+        return _learnHttp(timeout, pollEvery, fail, rf);
       case 'esphome':
+        if (rf) throw DriverException(dtx('RF433-opettelu toimii Tasmotalla.', 'RF433 learning needs Tasmota.'));
         return _learnEsphome(timeout, fail);
       default:
         throw DriverException(
@@ -768,7 +815,7 @@ class IrDriver extends Driver {
   }
 
   /// Tasmota web console log: `GET /cs?c2=<index>` returns new log lines since index.
-  Future<IrCode> _learnHttp(Duration timeout, Duration every, Exception fail) async {
+  Future<IrCode> _learnHttp(Duration timeout, Duration every, Exception fail, bool rf) async {
     final until = DateTime.now().add(timeout);
     var idx = 0;
     var first = true;
@@ -778,7 +825,7 @@ class IrDriver extends Driver {
       final head = RegExp(r'^\s*(\d+)').firstMatch(body);
       if (head != null) idx = int.parse(head.group(1)!);
       if (!first) {
-        final codes = irCodesInText(body);
+        final codes = irCodesInText(body, rf: rf);
         if (codes.isNotEmpty) return codes.last;
       }
       first = false; // skip what was in the log before we started

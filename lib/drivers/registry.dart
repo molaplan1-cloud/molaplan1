@@ -8,6 +8,7 @@ import 'ir_driver.dart';
 import 'modbus.dart';
 import 'mqtt_driver.dart';
 import 'ntfy_driver.dart';
+import 'price_driver.dart';
 import 'socket_driver.dart';
 import 'websocket_driver.dart';
 
@@ -23,6 +24,7 @@ const driverDescriptors = <DriverDescriptor>[
   ShellyCloudDriver.descriptor,
   NtfyDriver.descriptor,
   IrDriver.descriptor,
+  PriceDriver.descriptor,
 ];
 
 DriverDescriptor descriptorFor(String type) =>

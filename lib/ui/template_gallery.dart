@@ -95,10 +95,12 @@ class _TemplateGridState extends State<TemplateGrid> {
 
   @override
   Widget build(BuildContext context) {
-    final lang = AppScope.of(context).lang;
+    final st = AppScope.of(context);
+    final lang = st.lang;
+    final adv = st.config.advanced;
     final brands = deviceProviders.where((p) => _match('${p.fi} ${p.en} ${p.descFi}', p.keywords)).toList();
     final templates = deviceTemplates
-        .where((t) => t.id != 'shelly' && _match('${t.fi} ${t.en} ${t.descFi} ${t.id}'))
+        .where((t) => t.id != 'shelly' && (adv || !t.advanced) && _match('${t.fi} ${t.en} ${t.descFi} ${t.id}'))
         .toList();
     final roadmap = roadmapBrands.where((b) => q.isNotEmpty && _match('${b.name} ${b.fi}', b.keywords)).toList();
     return LayoutBuilder(
@@ -239,15 +241,20 @@ class _TemplateGridState extends State<TemplateGrid> {
                     ),
                   ),
                   _TemplateCard(
+                    key: const ValueKey('other-device'),
                     icon: Icons.build_outlined,
                     color: Colors.blueGrey,
-                    title: tx(context, 'Muu laite (oma asetus)', 'Other (manual setup)'),
-                    desc: tx(
-                      context,
-                      'Kaikki yhteystyypit: HTTP, MQTT, Modbus, WebSocket, TCP, UDP.',
-                      'All connection types.',
-                    ),
-                    onTap: widget.onManual,
+                    title: adv
+                        ? tx(context, 'Muu laite (oma asetus)', 'Other (manual setup)')
+                        : tx(context, 'Muu laite (edistynyt)', 'Other device (advanced)'),
+                    desc: adv
+                        ? tx(
+                            context,
+                            'Kaikki yhteystyypit: HTTP, MQTT, Modbus, WebSocket, TCP, UDP.',
+                            'All connection types.',
+                          )
+                        : tx(context, 'Teknisille käyttäjille. Vaatii edistyneet asetukset.', 'For technical users.'),
+                    onTap: adv ? widget.onManual : () => askAdvanced(context),
                   ),
                 ]),
               ),
@@ -470,8 +477,48 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
       for (var i = 0; i < r.tiles.length; i++)
         if (!_excluded.contains(i)) r.tiles[i],
     ];
-    await st.applyTemplate(r, into: widget.dashboard, tiles: tiles);
+    final used = await st.applyTemplate(r, into: widget.dashboard, tiles: tiles);
     if (!mounted) return;
+    // Guided step: teach remote buttons right away (IR/RF blasters running Tasmota or ESPHome).
+    final conn = used.where((c) => c.type == 'ir').firstOrNull;
+    final tr = '${conn?.settings['transport'] ?? ''}';
+    if (conn != null && (t.id == 'rf433' || (t.id == 'heatpump_ir' && tr != 'http' && tr != 'mqtt'))) {
+      final learn =
+          t.id == 'rf433' ||
+          await showDialog<bool>(
+                context: context,
+                builder: (c) => AlertDialog(
+                  title: Text(tx(c, 'Opetetaanko kaukosäätimen napit?', 'Teach remote buttons?')),
+                  content: Text(
+                    tx(
+                      c,
+                      'Perusohjaus (virta, lämpö, tila) toimii jo. Voit lisäksi opettaa kaukosäätimen muita nappeja, esim. "Turbo" tai "Hiljainen".',
+                      'Basic control works already. You can also teach other remote buttons, e.g. "Turbo".',
+                    ),
+                  ),
+                  actions: [
+                    TextButton(onPressed: () => Navigator.pop(c, false), child: Text(tx(c, 'Ei nyt', 'Not now'))),
+                    FilledButton(
+                      key: const ValueKey('learn-now'),
+                      onPressed: () => Navigator.pop(c, true),
+                      child: Text(tx(c, 'Opeta nyt', 'Teach now')),
+                    ),
+                  ],
+                ),
+              ) ==
+              true;
+      if (learn && mounted) {
+        await Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => IrLearnPage(connection: conn, rf: t.id == 'rf433', guided: true),
+          ),
+        );
+      }
+      if (!mounted) return;
+      Navigator.pop(context, true);
+      return;
+    }
     showSnack(
       context,
       tiles.isEmpty
@@ -681,4 +728,30 @@ class _Banner extends StatelessWidget {
       ],
     ),
   );
+}
+
+/// Simple mode: explains advanced mode and offers to switch it on.
+Future<void> askAdvanced(BuildContext context) async {
+  final ok = await showDialog<bool>(
+    context: context,
+    builder: (c) => AlertDialog(
+      title: Text(tx(c, 'Edistyneet asetukset', 'Advanced settings')),
+      content: Text(
+        tx(
+          c,
+          'Muu laite liitetään teknisillä asetuksilla (HTTP, MQTT, Modbus…). Jos laitteesi merkki löytyy listasta, käytä sitä – se on helpompaa.\n\nOtetaanko edistyneet asetukset käyttöön? Voit poistaa ne Asetuksista.',
+          'Other devices use technical settings (HTTP, MQTT, Modbus…). If your brand is listed, use it instead.\n\nTurn on advanced settings? You can turn them off in Settings.',
+        ),
+      ),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(c, false), child: Text(tx(c, 'Peruuta', 'Cancel'))),
+        FilledButton(
+          key: const ValueKey('advanced-on'),
+          onPressed: () => Navigator.pop(c, true),
+          child: Text(tx(c, 'Ota käyttöön', 'Turn on')),
+        ),
+      ],
+    ),
+  );
+  if (ok == true && context.mounted) await AppScope.read(context).setAdvanced(true);
 }

@@ -141,7 +141,11 @@ void main() {
         // Device templates need an address; the ntfy template needs a topic instead.
         expect(
           t.inputs.where((f) => f.required).map((f) => f.key),
-          contains(t.id == 'ntfy' ? 'topic' : 'address'),
+          contains(switch (t.id) {
+            'ntfy' => 'topic',
+            'electricity_price' => 'zone',
+            _ => 'address',
+          }),
           reason: t.id,
         );
         // JSON-safe
@@ -278,17 +282,14 @@ void main() {
       expect(find.text('Lisää ensimmäinen laite'), findsOneWidget);
       expect(find.byKey(const ValueKey('brand-shelly')), findsOneWidget);
       expect(find.byKey(const ValueKey('brand-hue')), findsOneWidget);
-      await tester.scrollUntilVisible(
-        find.text('Muu wifi-laite (HTTP)'),
-        200,
-        scrollable: find.byType(Scrollable).last,
-      );
-      await tester.tap(find.text('Muu wifi-laite (HTTP)'));
+      // Simple mode: technical templates (HTTP, MQTT…) are hidden; brands and devices only.
+      expect(find.text('Muu wifi-laite (HTTP)'), findsNothing);
+      await tester.scrollUntilVisible(find.text('Tasmota-laite'), 200, scrollable: find.byType(Scrollable).last);
+      await tester.tap(find.text('Tasmota-laite'));
       await tester.pumpAndSettle();
       // only a few simple fields
       await tester.enterText(find.widgetWithText(TextField, 'Laitteen IP-osoite *'), '192.168.1.77');
-      await tester.enterText(find.widgetWithText(TextField, 'Nimi'), 'Varaaja');
-      await tester.enterText(find.widgetWithText(TextField, 'Tilan osoite (polku)'), '/api/status');
+      await tester.enterText(find.widgetWithText(TextField, 'Mitä se ohjaa?'), 'Varaaja');
       await tester.pumpAndSettle();
       expect(find.text('Nämä ruudut luodaan'), findsOneWidget);
       expect(find.widgetWithText(CheckboxListTile, 'Varaaja'), findsOneWidget);

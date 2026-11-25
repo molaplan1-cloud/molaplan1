@@ -15,7 +15,11 @@ class _FakeLearnDriver extends IrDriver {
   _FakeLearnDriver(super.config, this.code);
   final IrCode code;
   @override
-  Future<IrCode> learn(Duration timeout, {Duration pollEvery = const Duration(milliseconds: 700)}) async => code;
+  Future<IrCode> learn(
+    Duration timeout, {
+    Duration pollEvery = const Duration(milliseconds: 700),
+    bool rf = false,
+  }) async => code;
 }
 
 Future<AppState> _state(WidgetTester tester) async {
@@ -121,5 +125,55 @@ void main() {
     expect(st.config.dashboards.first.tiles.map((t) => t.title), contains('Olohuone – huone'));
     await tester.pumpWidget(const SizedBox());
     await tester.pump(const Duration(seconds: 5));
+  });
+
+  testWidgets('guided RF433 step (Athom): RF chosen, learned code becomes an RfSend button, Valmis closes', (tester) async {
+    final st = await _state(tester);
+    final c = ConnectionConfig(
+      name: 'RF',
+      type: 'ir',
+      settings: {'transport': 'tasmota_http', 'baseUrl': 'http://x', 'rf': true},
+    );
+    st.config.connections.add(c);
+    final code = IrCode(rf: true, protocol: '1', bits: 24, data: '0xE5D1A2', pulse: 320);
+    await tester.pumpWidget(
+      _app(
+        st,
+        Builder(
+          builder: (ctx) => Scaffold(
+            body: TextButton(
+              onPressed: () => Navigator.push(
+                ctx,
+                MaterialPageRoute<void>(
+                  builder: (_) => IrLearnPage(
+                    connection: c,
+                    rf: true,
+                    guided: true,
+                    driverFactory: (cfg) => _FakeLearnDriver(cfg, code),
+                  ),
+                ),
+              ),
+              child: const Text('open'),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.tap(find.text('open'));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('ir-learn-kind')), findsOneWidget);
+    expect(find.byKey(const ValueKey('ir-learn-done')), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('ir-learn-start')));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byKey(const ValueKey('ir-learn-name')), 'Autotallin ovi');
+    await tester.tap(find.byKey(const ValueKey('ir-learn-save')));
+    await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 50)));
+    await tester.pump();
+    final tile = st.config.dashboards.first.tiles.last;
+    expect(tile.title, 'Autotallin ovi');
+    expect(tile.commands.single.spec.keys, ['rf']);
+    await tester.tap(find.byKey(const ValueKey('ir-learn-done')));
+    await tester.pumpAndSettle();
+    expect(find.text('open'), findsOneWidget);
   });
 }

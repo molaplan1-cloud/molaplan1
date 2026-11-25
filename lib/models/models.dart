@@ -2,6 +2,10 @@ import 'dart:convert';
 
 import 'package:uuid/uuid.dart';
 
+import '../rules/price_rules.dart';
+
+export '../rules/price_rules.dart' show PriceRule;
+
 const _uuid = Uuid();
 String newId() => _uuid.v4().substring(0, 8);
 
@@ -250,6 +254,12 @@ class AppConfig {
   int? updateCheckedAt;
   String? updateSkip;
 
+  /// Price-based automations (run on the home bridge).
+  List<PriceRule> rules;
+
+  /// "Edistyneet": shows technical settings (raw connection types, payloads, JSON paths…). Off for beginners.
+  bool advanced;
+
   AppConfig({
     List<ConnectionConfig>? connections,
     List<Dashboard>? dashboards,
@@ -260,7 +270,10 @@ class AppConfig {
     this.remoteCameraSeconds = 2,
     this.updateCheckedAt,
     this.updateSkip,
-  }) : connections = connections ?? [],
+    List<PriceRule>? rules,
+    this.advanced = false,
+  }) : rules = rules ?? [],
+       connections = connections ?? [],
        dashboards = dashboards ?? [];
 
   Map<String, dynamic> toJson({bool includeSecrets = false}) => {
@@ -269,12 +282,14 @@ class AppConfig {
     'language': language,
     'onboardingDone': onboardingDone,
     if (bridgeMode) 'bridgeMode': true,
+    if (advanced) 'advanced': true,
     'relayUrl': ?relayUrl,
     if (remoteCameraSeconds != 2) 'remoteCameraSeconds': remoteCameraSeconds,
     'updateCheckedAt': ?updateCheckedAt,
     'updateSkip': ?updateSkip,
     'connections': connections.map((c) => c.toJson(includeSecrets: includeSecrets)).toList(),
     'dashboards': dashboards.map((d) => d.toJson()).toList(),
+    if (rules.isNotEmpty) 'rules': rules.map((r) => r.toJson()).toList(),
   };
 
   factory AppConfig.fromJson(Map<String, dynamic> j) {
@@ -285,12 +300,14 @@ class AppConfig {
       language: (j['language'] ?? 'fi') as String,
       onboardingDone: (j['onboardingDone'] ?? false) as bool,
       bridgeMode: (j['bridgeMode'] ?? false) as bool,
+      advanced: j['advanced'] == true,
       relayUrl: j['relayUrl'] as String?,
       remoteCameraSeconds: (j['remoteCameraSeconds'] as num?)?.toInt() ?? 2,
       updateCheckedAt: (j['updateCheckedAt'] as num?)?.toInt(),
       updateSkip: j['updateSkip'] as String?,
       connections: ((j['connections'] as List?) ?? []).map((e) => ConnectionConfig.fromJson(_map(e))).toList(),
       dashboards: ((j['dashboards'] as List?) ?? []).map((e) => Dashboard.fromJson(_map(e))).toList(),
+      rules: ((j['rules'] as List?) ?? []).map((e) => PriceRule.fromJson(_map(e))).toList(),
     );
   }
 }

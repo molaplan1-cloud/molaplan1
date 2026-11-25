@@ -14,6 +14,9 @@ import 'error_box.dart';
 import 'camera_view.dart';
 import 'icons.dart';
 import 'notify.dart';
+import 'price_chart.dart';
+import 'price_rules_page.dart';
+import 'heatpump_pages.dart';
 
 /// A live dashboard tile. Rebuilt (runtime restarted) when its config changes.
 class TileWidget extends StatefulWidget {
@@ -257,12 +260,21 @@ class _TileWidgetState extends State<TileWidget> {
   }
 
   bool get _isLog => t.type == TileType.value && t.read['mode'] == 'log';
+  bool get _isChart => t.type == TileType.value && t.read['field'] == 'chart';
 
   Future<void> _setSlider(double v) async {
     final st = AppScope.read(context);
     final step = t.commands.isEmpty ? null : t.commands.first;
     if (step == null) return;
     await _run(() => st.runStep(step, value: v), optimistic: v);
+  }
+
+  /// The IR blaster behind this tile (Tasmota/ESPHome can learn remote buttons).
+  ConnectionConfig? get _irConnection {
+    final c = AppScope.read(context).connection(t.connectionId ?? t.commands.firstOrNull?.connectionId);
+    if (c == null || c.type != 'ir') return null;
+    final tr = '${c.settings['transport'] ?? ''}';
+    return tr == 'http' || tr == 'mqtt' ? null : c;
   }
 
   void _details() {
@@ -274,7 +286,9 @@ class _TileWidgetState extends State<TileWidget> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('${tx(context, 'Arvo', 'Value')}: ${rt?.value ?? '–'}'),
+            if (rt?.value is! Map) Text('${tx(context, 'Arvo', 'Value')}: ${rt?.value ?? '–'}'),
+            if (AppScope.read(context).config.rules.any((r) => r.tileId == t.id))
+              Text(tx(context, 'Hintaohjaus käytössä', 'Price control on')),
             if (rt?.updated != null)
               Text('${tx(context, 'Päivitetty', 'Updated')}: ${rt!.updated!.toLocal().toString().substring(0, 19)}'),
             if (rt?.error != null) ...[const SizedBox(height: 8), ErrorBox(error: rt!.error!)],
@@ -290,6 +304,24 @@ class _TileWidgetState extends State<TileWidget> {
                 if (mounted) showSnack(context, tx(context, 'Tallennettu PIN poistettu', 'Saved PIN removed'));
               },
               child: Text(tx(context, 'Unohda tallennettu PIN', 'Forget saved PIN')),
+            ),
+          if (t.type == TileType.toggle && t.onCommand != null)
+            TextButton(
+              key: const ValueKey('tile-price-rule'),
+              onPressed: () {
+                Navigator.pop(c);
+                Navigator.push(context, MaterialPageRoute(builder: (_) => PriceRulePage(tile: t)));
+              },
+              child: Text(tx(context, 'Hintaohjaus', 'Price control')),
+            ),
+          if (_irConnection != null)
+            TextButton(
+              key: const ValueKey('tile-ir-learn'),
+              onPressed: () {
+                Navigator.pop(c);
+                openIrLearn(context, _irConnection!);
+              },
+              child: Text(tx(context, 'Opettele kaukosäätimen nappi', 'Learn a remote button')),
             ),
           TextButton(
             onPressed: () {
@@ -382,6 +414,10 @@ class _TileWidgetState extends State<TileWidget> {
               ),
               if (t.type == TileType.button && (_waiting || _reply != null))
                 Expanded(child: _replyView(context))
+              else if (_isChart && r.value is Map)
+                Expanded(
+                  child: PriceChart(key: const ValueKey('tile-chart'), data: Map<String, dynamic>.from(r.value as Map)),
+                )
               else if (_isLog && r.value != null)
                 Expanded(
                   child: SingleChildScrollView(
@@ -398,7 +434,7 @@ class _TileWidgetState extends State<TileWidget> {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(color: cs.error, fontSize: 13.5, fontWeight: FontWeight.w500),
                 )
-              else if ((t.type == TileType.value && !_isLog) || t.type == TileType.slider)
+              else if ((t.type == TileType.value && !_isLog && !_isChart) || t.type == TileType.slider)
                 _valueText(context, r, accent),
               if (t.type == TileType.toggle && !(err != null && r.value == null))
                 Text(

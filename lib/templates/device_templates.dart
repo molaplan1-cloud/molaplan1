@@ -4,6 +4,7 @@ import 'package:material_ui/material_ui.dart' hide Threshold;
 
 import '../core/fields.dart';
 import '../drivers/ir_driver.dart';
+import '../prices/prices.dart';
 import '../models/models.dart';
 import 'iv_profiles_data.dart';
 
@@ -30,6 +31,9 @@ class DeviceTemplate {
 
   /// Register maps / topics are examples: the user must verify them.
   final bool examples;
+
+  /// Technical template (raw topics, URLs, payloads): only shown in advanced mode.
+  final bool advanced;
   final TemplateResult Function(Map<String, dynamic> v, String lang) build;
 
   const DeviceTemplate({
@@ -45,6 +49,7 @@ class DeviceTemplate {
     required this.build,
     this.mdnsTypes = const [],
     this.examples = false,
+    this.advanced = false,
   });
 
   String name(String lang) => lang == 'fi' ? fi : en;
@@ -640,6 +645,7 @@ final deviceTemplates = <DeviceTemplate>[
   ),
   DeviceTemplate(
     id: 'heatpump_mqtt',
+    advanced: true,
     fi: 'Lämpöpumppu (MQTT)',
     en: 'Heat pump (MQTT)',
     descFi: 'Esim. mitsubishi2mqtt- tai vastaava ESP-ohjain. Aiheet ovat esimerkkejä – tarkista omasi.',
@@ -870,6 +876,7 @@ final deviceTemplates = <DeviceTemplate>[
         settings: {
           'transport': transport,
           'vendor': vendor,
+          if (_s(v, 'transport').startsWith('Athom')) 'rf': true,
           if (!mqttT) 'baseUrl': normUrl(v['address']),
           if (mqttT) 'host': normHost(v['address']),
           if (mqttT) 'port': 1883,
@@ -944,6 +951,135 @@ final deviceTemplates = <DeviceTemplate>[
     build: (v, lang) => heatPumpEsphomeTemplate(v, lang),
   ),
   DeviceTemplate(
+    id: 'rf433',
+    fi: 'RF433-kaukosäädin (Athom IR & RF)',
+    en: 'RF433 remote (Athom IR & RF)',
+    descFi: 'Ohjaa radiokaukosäätimellä toimivia laitteita (pistorasiat, markiisit, autotallin ovet) Athom "Tasmota IR & RF433 Controller" -laitteella. Opetat napit kaukosäätimestä heti lisäämisen jälkeen.',
+    descEn: 'Control RF433 radio-remote devices (sockets, awnings, garage doors) with the Athom "Tasmota IR & RF433 Controller". You teach the buttons right after adding.',
+    icon: Icons.wifi_tethering,
+    color: const Color(0xFF7E57C2),
+    connectionType: 'ir',
+    inputs: [
+      _ip('Athom-ohjaimen IP-osoite (reitittimen laitelistasta).', 'IP of the Athom controller.', hint: '192.168.1.62'),
+      const FieldSpec(
+        'name',
+        'Nimi',
+        'Name',
+        hint: 'Markiisi',
+        helpFi: 'Esim. huone tai laite, jota ohjaat.',
+        helpEn: 'E.g. what you control.',
+      ),
+      const FieldSpec(
+        'password',
+        'Web-salasana',
+        'Web password',
+        kind: FieldKind.secret,
+        advanced: true,
+        helpFi: 'Vain jos Tasmotaan on asetettu web-salasana.',
+        helpEn: 'Only if a Tasmota web password is set.',
+      ),
+    ],
+    build: (v, lang) {
+      final name = _s(v, 'name', 'RF433');
+      final c = ConnectionConfig(
+        name: '$name (RF)',
+        type: 'ir',
+        settings: {'transport': 'tasmota_http', 'baseUrl': normUrl(v['address']), 'rf': true},
+        secrets: {if (_s(v, 'password').isNotEmpty) 'password': _s(v, 'password')},
+      );
+      return TemplateResult([c], const []);
+    },
+  ),
+  DeviceTemplate(
+    id: 'electricity_price',
+    fi: 'Sähkön hinta (pörssisähkö)',
+    en: 'Electricity price (spot)',
+    descFi: 'Tämän ja huomisen päivän pörssisähkön hinta kaaviona, 15 minuutin tarkkuudella. Hintaohjaus: paina laitteen ruutua pitkään → Hintaohjaus.',
+    descEn: 'Today\'s and tomorrow\'s spot price as a chart. Price control: long-press a device tile → Price control.',
+    icon: Icons.euro_outlined,
+    color: const Color(0xFFFFCA28),
+    connectionType: 'price',
+    inputs: [
+      FieldSpec(
+        'zone',
+        'Maa / hinta-alue',
+        'Country / price area',
+        kind: FieldKind.choice,
+        required: true,
+        options: [for (final e in priceZones.entries) '${e.key} – ${e.value.$1}'],
+        defaultValue: 'FI – Suomi',
+        helpFi: 'Suomessa FI. Ruotsissa ja Norjassa valitse alue, jolla asut.',
+        helpEn: 'Pick your country; in Sweden and Norway your area.',
+      ),
+      const FieldSpec(
+        'transfer',
+        'Siirto + sähkövero (c/kWh)',
+        'Transfer + tax (c/kWh)',
+        kind: FieldKind.number,
+        defaultValue: 0,
+        advanced: true,
+        helpFi: 'Laskustasi ALV:n kanssa. 0 = näytä pelkkä energian hinta.',
+        helpEn: 'From your bill incl. VAT. 0 = energy only.',
+      ),
+      const FieldSpec(
+        'margin',
+        'Myyjän marginaali (c/kWh)',
+        'Seller margin (c/kWh)',
+        kind: FieldKind.number,
+        defaultValue: 0,
+        advanced: true,
+        helpFi: 'Sopimuksesi marginaali ilman ALV:tä.',
+        helpEn: 'Your contract margin without VAT.',
+      ),
+    ],
+    build: (v, lang) {
+      final zone = _s(v, 'zone', 'FI').split(' ').first;
+      final c = ConnectionConfig(
+        name: _t(lang, 'Sähkön hinta $zone', 'Electricity price $zone'),
+        type: 'price',
+        settings: {
+          'zone': zone,
+          'vat': priceZones[zone]?.$2 ?? 25.5,
+          'margin': num.tryParse(_s(v, 'margin', '0').replaceAll(',', '.')) ?? 0,
+          'transfer': num.tryParse(_s(v, 'transfer', '0').replaceAll(',', '.')) ?? 0,
+        },
+      );
+      return TemplateResult(
+        [c],
+        [
+          TileConfig(
+            type: TileType.value,
+            title: _t(lang, 'Sähkö nyt', 'Electricity now'),
+            icon: 'bolt',
+            unit: 'c/kWh',
+            decimals: 1,
+            connectionId: c.id,
+            pollSeconds: 60,
+            read: {'field': 'now'},
+          ),
+          TileConfig(
+            type: TileType.value,
+            title: _t(lang, 'Halvin tunti', 'Cheapest hour'),
+            icon: 'timer',
+            connectionId: c.id,
+            pollSeconds: 300,
+            read: {'field': 'next_cheap'},
+          ),
+          TileConfig(
+            type: TileType.value,
+            title: _t(lang, 'Sähkön hinta tänään ja huomenna', 'Price today and tomorrow'),
+            icon: 'bolt',
+            colSpan: 4,
+            rowSpan: 2,
+            connectionId: c.id,
+            pollSeconds: 300,
+            read: {'field': 'chart'},
+          ),
+        ],
+      );
+    },
+  ),
+  DeviceTemplate(
     id: 'modbus_iv',
     fi: 'IV-kone (Modbus TCP)',
     en: 'Ventilation unit (Modbus TCP)',
@@ -1011,6 +1147,7 @@ final deviceTemplates = <DeviceTemplate>[
   ),
   DeviceTemplate(
     id: 'mqtt',
+    advanced: true,
     fi: 'MQTT-laite',
     en: 'MQTT device',
     descFi: 'Mikä tahansa laite, joka puhuu MQTT:tä (Zigbee2MQTT, oma ESP, ...).',
@@ -1112,6 +1249,7 @@ final deviceTemplates = <DeviceTemplate>[
   ),
   DeviceTemplate(
     id: 'http',
+    advanced: true,
     fi: 'Muu wifi-laite (HTTP)',
     en: 'Other Wi-Fi device (HTTP)',
     descFi: 'Laite, jolla on web-rajapinta. Näyttää yhden arvon, lisää muut ruudut myöhemmin.',
@@ -1165,6 +1303,7 @@ final deviceTemplates = <DeviceTemplate>[
   ),
   DeviceTemplate(
     id: 'ntfy',
+    advanced: true,
     fi: 'Komento ja vastaus (ntfy)',
     en: 'Command and reply (ntfy)',
     descFi: 'Lähetä komento ntfy-viestinä (esim. "päivitä" + PIN) ja näe kotilaitteen vastaus samassa ruudussa. Sama kanava kuin iPhonen pikakomennossa.',
@@ -1452,7 +1591,14 @@ DeviceTemplate? templateById(String id) => deviceTemplates.where((t) => t.id == 
 
 // ---------------------------------------------------------------- heat pump (IR / ESPHome)
 
-const irTransportLabels = ['Tasmota (IP-osoite)', 'Tasmota (MQTT)', 'ESPHome', 'Muu (HTTP)', 'Muu (MQTT)'];
+const irTransportLabels = [
+  'Tasmota (IP-osoite)',
+  'Athom IR & RF433 (Tasmota)',
+  'Tasmota (MQTT)',
+  'ESPHome',
+  'Muu (HTTP)',
+  'Muu (MQTT)',
+];
 
 String irTransportFromLabel(String l) => switch (l) {
   'Tasmota (MQTT)' => 'tasmota_mqtt',

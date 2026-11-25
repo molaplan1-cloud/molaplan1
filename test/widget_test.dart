@@ -6,10 +6,11 @@ import 'package:molaplan/state/app_state.dart';
 import 'package:molaplan/state/storage.dart';
 
 void main() {
-  testWidgets('empty dashboard with a device: one big add-tile button opens the editor', (tester) async {
+  testWidgets('empty dashboard with a device (advanced mode): one big add-tile button opens the editor', (tester) async {
     final st = AppState(configStore: MemoryConfigStore(), secretStore: MemorySecretStore());
     await st.load();
     await st.setOnboardingDone(true);
+    await st.setAdvanced(true);
     await st.upsertConnection(ConnectionConfig(name: 'API', type: 'http', settings: {'baseUrl': 'http://127.0.0.1:9'}));
     tester.view.physicalSize = const Size(1200, 900);
     tester.view.devicePixelRatio = 1;

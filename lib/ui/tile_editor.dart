@@ -110,26 +110,27 @@ class _TileEditorState extends State<TileEditor> {
           child: ListView(
             padding: const EdgeInsets.all(16),
             children: [
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  for (final ty in TileType.values)
-                    ChoiceChip(
-                      avatar: Icon(tileTypeIcon(ty), size: 18),
-                      label: Text(tileTypeLabel(context, ty)),
-                      selected: t.type == ty,
-                      onSelected: (_) => setState(() {
-                        if ((ty == TileType.camera) != (t.type == TileType.camera)) {
-                          t.connectionId = null;
-                          t.read = {};
-                          _readKey++;
-                        }
-                        t.type = ty;
-                      }),
-                    ),
-                ],
-              ),
+              if (st.config.advanced || widget.isNew)
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    for (final ty in TileType.values)
+                      ChoiceChip(
+                        avatar: Icon(tileTypeIcon(ty), size: 18),
+                        label: Text(tileTypeLabel(context, ty)),
+                        selected: t.type == ty,
+                        onSelected: (_) => setState(() {
+                          if ((ty == TileType.camera) != (t.type == TileType.camera)) {
+                            t.connectionId = null;
+                            t.read = {};
+                            _readKey++;
+                          }
+                          t.type = ty;
+                        }),
+                      ),
+                  ],
+                ),
               const SizedBox(height: 16),
               TextField(
                 controller: _title,
@@ -160,203 +161,220 @@ class _TileEditorState extends State<TileEditor> {
                   _sizeDrop(tx(context, 'Korkeus', 'Height'), t.rowSpan, 3, (v) => t.rowSpan = v),
                 ],
               ),
-              if (_hasRead) ...[
-                _section(
-                  text,
-                  t.type == TileType.camera
-                      ? tx(context, 'Kamera', 'Camera')
-                      : tx(context, 'Tilan luku', 'State source'),
-                  t.type == TileType.toggle || t.type == TileType.slider
-                      ? tx(
-                          context,
-                          'Valinnainen: mistä nykyinen tila luetaan.',
-                          'Optional: where the current state is read from.',
-                        )
-                      : null,
-                ),
-                _connectionPicker(
-                  t.connectionId,
-                  camera: t.type == TileType.camera,
-                  onChanged: (id) => setState(() {
-                    t.connectionId = id;
-                    t.read = {};
-                    _readKey++;
-                  }),
-                ),
-                if (st.connection(t.connectionId) != null) ...[
-                  const SizedBox(height: 10),
-                  SpecForm(
-                    key: ValueKey('read$_readKey${t.connectionId}'),
-                    fields: descriptorFor(st.connection(t.connectionId)!.type).readFields,
-                    values: t.read,
-                    scope: '${st.connection(t.connectionId)!.type}.read',
+              if (!st.config.advanced && !widget.isNew) ...[
+                const SizedBox(height: 20),
+                Text(
+                  tx(
+                    context,
+                    'Ruudun tekniset asetukset (mistä tila luetaan, mitä komento lähettää) näkyvät, kun otat Asetuksista käyttöön "Edistyneet".',
+                    'Technical tile settings appear when you turn on "Advanced" in Settings.',
                   ),
-                  if (t.type != TileType.camera) ...[
-                    _numField(
-                      tx(context, 'Päivitysväli (s, 0 = ei kyselyä)', 'Poll interval (s, 0 = none)'),
-                      t.pollSeconds,
-                      (v) => t.pollSeconds = v.toInt(),
+                  style: text.bodySmall,
+                ),
+              ] else ...[
+                if (_hasRead) ...[
+                  _section(
+                    text,
+                    t.type == TileType.camera
+                        ? tx(context, 'Kamera', 'Camera')
+                        : tx(context, 'Tilan luku', 'State source'),
+                    t.type == TileType.toggle || t.type == TileType.slider
+                        ? tx(
+                            context,
+                            'Valinnainen: mistä nykyinen tila luetaan.',
+                            'Optional: where the current state is read from.',
+                          )
+                        : null,
+                  ),
+                  _connectionPicker(
+                    t.connectionId,
+                    camera: t.type == TileType.camera,
+                    onChanged: (id) => setState(() {
+                      t.connectionId = id;
+                      t.read = {};
+                      _readKey++;
+                    }),
+                  ),
+                  if (st.connection(t.connectionId) != null) ...[
+                    const SizedBox(height: 10),
+                    SpecForm(
+                      key: ValueKey('read$_readKey${t.connectionId}'),
+                      fields: descriptorFor(st.connection(t.connectionId)!.type).readFields,
+                      values: t.read,
+                      scope: '${st.connection(t.connectionId)!.type}.read',
                     ),
-                    Text(
-                      tx(
-                        context,
-                        'MQTT, Home Assistant ja WebSocket päivittyvät reaaliajassa ilman kyselyä.',
-                        'MQTT, Home Assistant and WebSocket update live without polling.',
+                    if (t.type != TileType.camera) ...[
+                      _numField(
+                        tx(context, 'Päivitysväli (s, 0 = ei kyselyä)', 'Poll interval (s, 0 = none)'),
+                        t.pollSeconds,
+                        (v) => t.pollSeconds = v.toInt(),
                       ),
-                      style: text.bodySmall,
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        OutlinedButton.icon(
-                          onPressed: _testRead,
-                          icon: const Icon(Icons.play_arrow_outlined),
-                          label: Text(tx(context, 'Testaa luku', 'Test read')),
+                      Text(
+                        tx(
+                          context,
+                          'MQTT, Home Assistant ja WebSocket päivittyvät reaaliajassa ilman kyselyä.',
+                          'MQTT, Home Assistant and WebSocket update live without polling.',
                         ),
-                        const SizedBox(width: 12),
-                      ],
-                    ),
-                    if (_testResult != null)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: SuccessBox(text: _testResult!),
+                        style: text.bodySmall,
                       ),
-                    if (_testError != null)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: ErrorBox(error: _testError!),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          OutlinedButton.icon(
+                            onPressed: _testRead,
+                            icon: const Icon(Icons.play_arrow_outlined),
+                            label: Text(tx(context, 'Testaa luku', 'Test read')),
+                          ),
+                          const SizedBox(width: 12),
+                        ],
                       ),
+                      if (_testResult != null)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: SuccessBox(text: _testResult!),
+                        ),
+                      if (_testError != null)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: ErrorBox(error: _testError!),
+                        ),
+                    ],
                   ],
                 ],
-              ],
-              if (t.type == TileType.value || t.type == TileType.slider || t.type == TileType.toggle) ...[
-                _section(text, tx(context, 'Näyttö', 'Display'), null),
-                if (t.type != TileType.toggle)
+                if (t.type == TileType.value || t.type == TileType.slider || t.type == TileType.toggle) ...[
+                  _section(text, tx(context, 'Näyttö', 'Display'), null),
+                  if (t.type != TileType.toggle)
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            controller: _unit,
+                            decoration: InputDecoration(labelText: tx(context, 'Yksikkö', 'Unit'), hintText: '°C'),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        SizedBox(
+                          width: 140,
+                          child: _numField(
+                            tx(context, 'Desimaalit', 'Decimals'),
+                            t.decimals,
+                            (v) => t.decimals = v.toInt(),
+                            pad: false,
+                          ),
+                        ),
+                      ],
+                    ),
+                  const SizedBox(height: 10),
+                  TextField(
+                    controller: _valueMap,
+                    decoration: InputDecoration(
+                      labelText: tx(context, 'Arvojen nimet', 'Value names'),
+                      hintText: tx(context, '0=Pois;1=Kotona;2=Poissa', '0=Off;1=Home;2=Away'),
+                    ),
+                  ),
+                  if (t.type == TileType.value) _thresholds(text),
+                ],
+                if (t.type == TileType.toggle) ...[
+                  _section(text, tx(context, 'Kytkimen komennot', 'Toggle commands'), null),
+                  TextField(
+                    controller: _onValue,
+                    decoration: InputDecoration(
+                      labelText: tx(
+                        context,
+                        '"Päällä"-arvot (pilkuin, tyhjä = automaattinen)',
+                        '"On" values (comma separated, empty = auto)',
+                      ),
+                      hintText: 'on, 1, armed_away',
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  _stepCard(
+                    tx(context, 'PÄÄLLE-komento', 'ON command'),
+                    t.onCommand,
+                    (s) => setState(() => t.onCommand = s),
+                  ),
+                  const SizedBox(height: 12),
+                  _stepCard(
+                    tx(context, 'POIS-komento', 'OFF command'),
+                    t.offCommand,
+                    (s) => setState(() => t.offCommand = s),
+                  ),
+                ],
+                if (t.type == TileType.slider) ...[
+                  _section(
+                    text,
+                    tx(context, 'Säädin', 'Slider'),
+                    tx(
+                      context,
+                      'Komennossa {{value}} korvataan säätimen arvolla.',
+                      '{{value}} in the command is replaced by the slider value.',
+                    ),
+                  ),
                   Row(
                     children: [
-                      Expanded(
-                        child: TextField(
-                          controller: _unit,
-                          decoration: InputDecoration(labelText: tx(context, 'Yksikkö', 'Unit'), hintText: '°C'),
-                        ),
-                      ),
+                      Expanded(child: _numField('Min', t.min, (v) => t.min = v.toDouble(), pad: false)),
                       const SizedBox(width: 10),
-                      SizedBox(
-                        width: 140,
+                      Expanded(child: _numField('Max', t.max, (v) => t.max = v.toDouble(), pad: false)),
+                      const SizedBox(width: 10),
+                      Expanded(
                         child: _numField(
-                          tx(context, 'Desimaalit', 'Decimals'),
-                          t.decimals,
-                          (v) => t.decimals = v.toInt(),
+                          tx(context, 'Askel', 'Step'),
+                          t.step,
+                          (v) => t.step = v.toDouble(),
                           pad: false,
                         ),
                       ),
                     ],
                   ),
-                const SizedBox(height: 10),
-                TextField(
-                  controller: _valueMap,
-                  decoration: InputDecoration(
-                    labelText: tx(context, 'Arvojen nimet', 'Value names'),
-                    hintText: tx(context, '0=Pois;1=Kotona;2=Poissa', '0=Off;1=Home;2=Away'),
-                  ),
-                ),
-                if (t.type == TileType.value) _thresholds(text),
-              ],
-              if (t.type == TileType.toggle) ...[
-                _section(text, tx(context, 'Kytkimen komennot', 'Toggle commands'), null),
-                TextField(
-                  controller: _onValue,
-                  decoration: InputDecoration(
-                    labelText: tx(
-                      context,
-                      '"Päällä"-arvot (pilkuin, tyhjä = automaattinen)',
-                      '"On" values (comma separated, empty = auto)',
-                    ),
-                    hintText: 'on, 1, armed_away',
-                  ),
-                ),
-                const SizedBox(height: 12),
-                _stepCard(
-                  tx(context, 'PÄÄLLE-komento', 'ON command'),
-                  t.onCommand,
-                  (s) => setState(() => t.onCommand = s),
-                ),
-                const SizedBox(height: 12),
-                _stepCard(
-                  tx(context, 'POIS-komento', 'OFF command'),
-                  t.offCommand,
-                  (s) => setState(() => t.offCommand = s),
-                ),
-              ],
-              if (t.type == TileType.slider) ...[
-                _section(
-                  text,
-                  tx(context, 'Säädin', 'Slider'),
-                  tx(
-                    context,
-                    'Komennossa {{value}} korvataan säätimen arvolla.',
-                    '{{value}} in the command is replaced by the slider value.',
-                  ),
-                ),
-                Row(
-                  children: [
-                    Expanded(child: _numField('Min', t.min, (v) => t.min = v.toDouble(), pad: false)),
-                    const SizedBox(width: 10),
-                    Expanded(child: _numField('Max', t.max, (v) => t.max = v.toDouble(), pad: false)),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: _numField(tx(context, 'Askel', 'Step'), t.step, (v) => t.step = v.toDouble(), pad: false),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                _stepCard(
-                  tx(context, 'Asetuskomento', 'Set command'),
-                  t.commands.isEmpty ? null : t.commands.first,
-                  (s) => setState(() => t.commands = s == null ? [] : [s]),
-                ),
-              ],
-              if (t.type == TileType.button) ...[
-                _section(
-                  text,
-                  tx(context, 'Komennot (suoritetaan järjestyksessä)', 'Commands (run in order)'),
-                  tx(
-                    context,
-                    'Pikakomento voi ohjata useaa laitetta peräkkäin, viiveillä.',
-                    'A shortcut can control several devices in sequence, with delays.',
-                  ),
-                ),
-                for (var i = 0; i < t.commands.length; i++) ...[
+                  const SizedBox(height: 12),
                   _stepCard(
-                    '${i + 1}.',
-                    t.commands[i],
-                    (s) => setState(() {
-                      if (s == null) {
-                        t.commands.removeAt(i);
-                      } else {
-                        t.commands[i] = s;
-                      }
-                    }),
-                    withDelay: true,
-                    key: ValueKey('step${t.commands[i].hashCode}'),
+                    tx(context, 'Asetuskomento', 'Set command'),
+                    t.commands.isEmpty ? null : t.commands.first,
+                    (s) => setState(() => t.commands = s == null ? [] : [s]),
                   ),
-                  const SizedBox(height: 10),
                 ],
-                OutlinedButton.icon(
-                  onPressed: () => setState(
-                    () => t.commands.add(CommandStep(connectionId: _conns(camera: false).firstOrNull?.id ?? '')),
+                if (t.type == TileType.button) ...[
+                  _section(
+                    text,
+                    tx(context, 'Komennot (suoritetaan järjestyksessä)', 'Commands (run in order)'),
+                    tx(
+                      context,
+                      'Pikakomento voi ohjata useaa laitetta peräkkäin, viiveillä.',
+                      'A shortcut can control several devices in sequence, with delays.',
+                    ),
                   ),
-                  icon: const Icon(Icons.add),
-                  label: Text(tx(context, 'Lisää komento', 'Add command')),
-                ),
+                  for (var i = 0; i < t.commands.length; i++) ...[
+                    _stepCard(
+                      '${i + 1}.',
+                      t.commands[i],
+                      (s) => setState(() {
+                        if (s == null) {
+                          t.commands.removeAt(i);
+                        } else {
+                          t.commands[i] = s;
+                        }
+                      }),
+                      withDelay: true,
+                      key: ValueKey('step${t.commands[i].hashCode}'),
+                    ),
+                    const SizedBox(height: 10),
+                  ],
+                  OutlinedButton.icon(
+                    onPressed: () => setState(
+                      () => t.commands.add(CommandStep(connectionId: _conns(camera: false).firstOrNull?.id ?? '')),
+                    ),
+                    icon: const Icon(Icons.add),
+                    label: Text(tx(context, 'Lisää komento', 'Add command')),
+                  ),
+                ],
+                if (t.type != TileType.camera && t.type != TileType.value)
+                  SwitchListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(tx(context, 'Kysy vahvistus ennen komentoa', 'Ask for confirmation')),
+                    value: t.confirm,
+                    onChanged: (v) => setState(() => t.confirm = v),
+                  ),
               ],
-              if (t.type != TileType.camera && t.type != TileType.value)
-                SwitchListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(tx(context, 'Kysy vahvistus ennen komentoa', 'Ask for confirmation')),
-                  value: t.confirm,
-                  onChanged: (v) => setState(() => t.confirm = v),
-                ),
               const SizedBox(height: 40),
             ],
           ),

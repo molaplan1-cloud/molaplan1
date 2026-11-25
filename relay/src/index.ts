@@ -9,8 +9,10 @@
  *   GET /v1/h/<homeId>/c?d=<devId>&t=<token>  paired phone websocket
  *   GET /v1/h/<homeId>/p?c=<code>             pairing websocket (only while the bridge shows a code)
  *   GET /v1/code/<6 digits>                   -> {"home": "<homeId>"} while a pairing code is active
+ *   GET /v1/prices?zone=FI | /v1/prices/zones  day-ahead electricity prices (see prices.ts)
  */
 import { DurableObject } from "cloudflare:workers";
+import { prices } from "./prices";
 
 export interface Env {
   HOME: DurableObjectNamespace<Home>;
@@ -36,9 +38,10 @@ const json = (o: unknown, status = 200) =>
   new Response(JSON.stringify(o), { status, headers: { "content-type": "application/json", ...cors } });
 
 export default {
-  async fetch(req: Request, env: Env): Promise<Response> {
+  async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(req.url);
     const parts = url.pathname.split("/").filter(Boolean);
+    if (parts[0] === "v1" && parts[1] === "prices" && req.method === "GET") return prices(req, ctx);
     if (url.pathname === "/" || url.pathname === "/health") {
       return json({ ok: true, service: "molaplan-relay", v: 1 });
     }

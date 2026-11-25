@@ -221,6 +221,29 @@ void main() {
       expect(j['protocol'], 'NEC');
     });
 
+    test('RF433 (Athom IR & RF): learn RfReceived, replay with RfSend', () async {
+      t.receiveRf({'Sync': 9000, 'Low': 300, 'High': 900, 'Data': '0xOLD', 'Bits': 24, 'Protocol': 1, 'Pulse': 300});
+      t.receive({'Protocol': 'NEC', 'Bits': 32, 'Data': '0x2'}); // IR is ignored in RF mode
+      Timer(
+        const Duration(milliseconds: 250),
+        () => t.receiveRf({'Sync': 9000, 'Low': 300, 'High': 900, 'Data': '0xE5D1A2', 'Bits': 24, 'Protocol': 1, 'Pulse': 320}),
+      );
+      final c = await d.learn(const Duration(seconds: 5), pollEvery: const Duration(milliseconds: 50), rf: true);
+      expect(c.rf, isTrue);
+      expect(c.data, '0xE5D1A2');
+      expect(c.pulse, 320);
+      expect(t.commands, isNot(contains('SetOption58 1')), reason: 'raw IR option not needed for RF');
+      expect(c.command.keys, ['rf']);
+      await d.send(c.command);
+      expect(t.commands.last, startsWith('RfSend '));
+      expect(jsonDecode(t.commands.last.substring(7)), {'Data': '0xE5D1A2', 'Bits': 24, 'Protocol': 1, 'Pulse': 320});
+      // Through send() as the bridge would.
+      Timer(const Duration(milliseconds: 150), () => t.receiveRf({'Data': '0x7', 'Bits': 24, 'Protocol': 1, 'Pulse': 350}));
+      final j = await d.send({'learn': 3, 'kind': 'rf'}) as Map;
+      expect(j['rf'], isTrue);
+      expect(j['data'], '0x7');
+    });
+
     test('learning times out with plain advice', () async {
       await expectLater(
         d.learn(const Duration(milliseconds: 300), pollEvery: const Duration(milliseconds: 50)),

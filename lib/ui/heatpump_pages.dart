@@ -31,8 +31,14 @@ String esphomeButtonYaml(String name, IrCode code) {
 
 /// "Learn remote": captures a code with the blaster's IR receiver and saves it as a button tile.
 class IrLearnPage extends StatefulWidget {
-  const IrLearnPage({super.key, required this.connection, this.driverFactory});
+  const IrLearnPage({super.key, required this.connection, this.driverFactory, this.rf = false, this.guided = false});
   final ConnectionConfig connection;
+
+  /// Start in RF433 mode (Athom IR & RF controller / RF433 button template).
+  final bool rf;
+
+  /// Opened right after adding a device: shows a "Valmis" button instead of a back arrow.
+  final bool guided;
   final IrDriver Function(ConnectionConfig)? driverFactory;
 
   @override
@@ -44,8 +50,11 @@ class _IrLearnPageState extends State<IrLearnPage> {
   Object? _error;
   bool _listening = false;
   final _name = TextEditingController();
+  late bool _rf = widget.rf;
+  int _saved = 0;
 
   ConnectionConfig get c => widget.connection;
+  bool get hasRf => c.settings['rf'] == true;
   String get transport => '${c.settings['transport'] ?? 'tasmota_http'}';
   bool get esphome => transport == 'esphome';
 
@@ -58,7 +67,7 @@ class _IrLearnPageState extends State<IrLearnPage> {
     // Directly on the home network (learning takes longer than the remote route allows).
     final d = widget.driverFactory?.call(c) ?? createDriver(c) as IrDriver;
     try {
-      final code = await d.learn(const Duration(seconds: 30));
+      final code = await d.learn(const Duration(seconds: 30), rf: _rf);
       if (!mounted) return;
       setState(() => _code = code);
     } catch (e) {
@@ -78,7 +87,9 @@ class _IrLearnPageState extends State<IrLearnPage> {
       return;
     }
     final Map<String, dynamic> spec;
-    if (esphome) {
+    if (code.rf) {
+      spec = code.command;
+    } else if (esphome) {
       if (code.raw == null) {
         showSnack(
           context,
@@ -104,7 +115,7 @@ class _IrLearnPageState extends State<IrLearnPage> {
     final tile = TileConfig(
       type: TileType.button,
       title: name,
-      icon: 'remote',
+      icon: code.rf ? 'wifi' : 'remote',
       connectionId: c.id,
       commands: [CommandStep(connectionId: c.id, spec: spec)],
     );
@@ -114,6 +125,7 @@ class _IrLearnPageState extends State<IrLearnPage> {
     setState(() {
       _code = null;
       _name.clear();
+      _saved++;
     });
   }
 
@@ -123,7 +135,21 @@ class _IrLearnPageState extends State<IrLearnPage> {
     final cs = Theme.of(context).colorScheme;
     final code = _code;
     return Scaffold(
-      appBar: AppBar(title: Text(tx(context, 'Opettele kaukosäädin', 'Learn remote'))),
+      appBar: AppBar(
+        title: Text(tx(context, 'Opettele kaukosäädin', 'Learn remote')),
+        automaticallyImplyLeading: !widget.guided,
+        actions: [
+          if (widget.guided)
+            Padding(
+              padding: const EdgeInsets.only(right: 12),
+              child: FilledButton(
+                key: const ValueKey('ir-learn-done'),
+                onPressed: () => Navigator.pop(context, _saved),
+                child: Text(tx(context, 'Valmis', 'Done')),
+              ),
+            ),
+        ],
+      ),
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 640),
@@ -138,6 +164,35 @@ class _IrLearnPageState extends State<IrLearnPage> {
                 ),
                 style: text.bodyLarge,
               ),
+              if (hasRf) ...[
+                const SizedBox(height: 12),
+                SegmentedButton<bool>(
+                  key: const ValueKey('ir-learn-kind'),
+                  segments: [
+                    ButtonSegment(
+                      value: false,
+                      icon: const Icon(Icons.settings_remote_outlined),
+                      label: Text(tx(context, 'IR-kaukosäädin', 'IR remote')),
+                    ),
+                    ButtonSegment(
+                      value: true,
+                      icon: const Icon(Icons.wifi),
+                      label: Text(tx(context, 'RF433-kaukosäädin', 'RF433 remote')),
+                    ),
+                  ],
+                  selected: {_rf},
+                  onSelectionChanged: _listening ? null : (v) => setState(() => _rf = v.first),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  tx(
+                    context,
+                    'RF433 = radiokaukosäätimet (esim. pistorasiat, markiisit, autotallin ovet, kattotuulettimet). IR = infrapuna (lämpöpumput, TV:t).',
+                    'RF433 = radio remotes (sockets, awnings, garage doors, fans). IR = infrared (heat pumps, TVs).',
+                  ),
+                  style: text.bodySmall,
+                ),
+              ],
               const SizedBox(height: 12),
               for (final (i, step) in [
                 tx(context, 'Paina "Aloita kuuntelu".', 'Tap "Start listening".'),

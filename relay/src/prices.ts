@@ -1,0 +1,105 @@
+/**
+ * Day-ahead electricity spot prices, normalised for the Molaplan app.
+ *
+ *   GET /v1/prices?zone=FI            -> yesterday … tomorrow (what is published)
+ *   GET /v1/prices/zones              -> supported bidding zones
+ *
+ * Response: {zone, unit:"EUR/MWh", resolution:<seconds>, source, license, updated, points:[[unixSeconds, eurPerMWh], …]}
+ * Sources (no API keys): SE1-4 elprisetjustnu.se, DK1-2 Energi Data Service (CC BY 4.0), everything else
+ * api.energy-charts.info (Fraunhofer ISE; license per zone is passed through). Cached at the edge.
+ * No secrets live here.
+ */
+
+export const ZONES: Record<string, string> = {
+  FI: "Suomi", EE: "Eesti", LV: "Latvija", LT: "Lietuva",
+  SE1: "Sverige SE1 (Luleå)", SE2: "Sverige SE2 (Sundsvall)", SE3: "Sverige SE3 (Stockholm)", SE4: "Sverige SE4 (Malmö)",
+  NO1: "Norge NO1 (Oslo)", NO2: "Norge NO2 (Kristiansand)", NO3: "Norge NO3 (Trondheim)", NO4: "Norge NO4 (Tromsø)", NO5: "Norge NO5 (Bergen)",
+  DK1: "Danmark DK1 (vest)", DK2: "Danmark DK2 (øst)",
+  "DE-LU": "Deutschland / Luxemburg", NL: "Nederland", BE: "Belgique", FR: "France", AT: "Österreich", CH: "Schweiz",
+  PL: "Polska", CZ: "Česko", SK: "Slovensko", HU: "Magyarország", SI: "Slovenija", HR: "Hrvatska",
+  RO: "România", BG: "България", GR: "Ελλάδα", ES: "España", PT: "Portugal",
+  "IT-North": "Italia Nord", "IT-Centre-North": "Italia Centro-Nord", "IT-Centre-South": "Italia Centro-Sud",
+  "IT-South": "Italia Sud", "IT-Calabria": "Italia Calabria", "IT-Sicily": "Italia Sicilia", "IT-Sardinia": "Italia Sardegna",
+};
+
+type Out = { zone: string; unit: string; resolution: number; source: string; license: string; updated: number; points: [number, number][] };
+
+const day = (d: Date) => d.toISOString().slice(0, 10);
+
+async function energyCharts(zone: string, from: Date, to: Date): Promise<Out> {
+  const u = `https://api.energy-charts.info/price?bzn=${encodeURIComponent(zone)}&start=${day(from)}&end=${day(to)}`;
+  const r = await fetch(u, { headers: { "user-agent": "molaplan-relay" } });
+  if (!r.ok) throw new Error(`energy-charts ${r.status}`);
+  const j = (await r.json()) as { unix_seconds: number[]; price: (number | null)[]; license_info?: string };
+  const points: [number, number][] = [];
+  j.unix_seconds.forEach((t, i) => { const p = j.price[i]; if (typeof p === "number") points.push([t, p]); });
+  return { zone, unit: "EUR/MWh", resolution: guessRes(points), source: "energy-charts.info", license: j.license_info ?? "", updated: Date.now(), points };
+}
+
+async function elprisetjustnu(zone: string, days: Date[]): Promise<Out> {
+  const points: [number, number][] = [];
+  for (const d of days) {
+    const [y, m, dd] = day(d).split("-");
+    const r = await fetch(`https://www.elprisetjustnu.se/api/v1/prices/${y}/${m}-${dd}_${zone}.json`);
+    if (r.status === 404) continue; // not published yet
+    if (!r.ok) throw new Error(`elprisetjustnu ${r.status}`);
+    const j = (await r.json()) as { EUR_per_kWh: number; time_start: string }[];
+    for (const x of j) points.push([Math.floor(Date.parse(x.time_start) / 1000), Math.round(x.EUR_per_kWh * 1000 * 100) / 100]);
+  }
+  return { zone, unit: "EUR/MWh", resolution: guessRes(points), source: "elprisetjustnu.se", license: "Elpriser tillhandahålls av Elpriset just nu.se", updated: Date.now(), points };
+}
+
+async function energiDataService(zone: string, from: Date): Promise<Out> {
+  const filter = encodeURIComponent(JSON.stringify({ PriceArea: [zone] }));
+  const start = `${day(from)}T00:00`;
+  const r = await fetch(`https://api.energidataservice.dk/dataset/DayAheadPrices?start=${start}&filter=${filter}&sort=TimeUTC%20asc&limit=1000`);
+  if (!r.ok) throw new Error(`energidataservice ${r.status}`);
+  const j = (await r.json()) as { records: { TimeUTC: string; DayAheadPriceEUR: number | null }[] };
+  const points: [number, number][] = [];
+  for (const x of j.records) if (typeof x.DayAheadPriceEUR === "number") points.push([Math.floor(Date.parse(x.TimeUTC + "Z") / 1000), x.DayAheadPriceEUR]);
+  return { zone, unit: "EUR/MWh", resolution: guessRes(points), source: "energidataservice.dk", license: "CC BY 4.0, Energinet", updated: Date.now(), points };
+}
+
+function guessRes(p: [number, number][]): number {
+  return p.length > 1 ? p[1][0] - p[0][0] : 3600;
+}
+
+export async function prices(req: Request, ctx: ExecutionContext): Promise<Response> {
+  const url = new URL(req.url);
+  const cors = { "access-control-allow-origin": "*" };
+  const json = (o: unknown, status = 200, maxAge = 0) =>
+    new Response(JSON.stringify(o), {
+      status,
+      headers: { "content-type": "application/json", ...cors, ...(maxAge ? { "cache-control": `public, max-age=${maxAge}` } : {}) },
+    });
+  if (url.pathname.endsWith("/zones")) return json({ zones: ZONES }, 200, 86400);
+  const zone = url.searchParams.get("zone") ?? "";
+  if (!(zone in ZONES)) return json({ error: "unknown_zone", zones: Object.keys(ZONES) }, 400);
+
+  // One cache entry per zone per 15 minutes (tomorrow's prices appear ~12:45 CET).
+  const slot = Math.floor(Date.now() / 900_000);
+  const key = new Request(`https://cache.molaplan/prices/${zone}/${slot}`);
+  const cache = caches.default;
+  const hit = await cache.match(key);
+  if (hit) return new Response(hit.body, { headers: { "content-type": "application/json", ...cors, "x-cache": "hit" } });
+
+  const now = new Date();
+  const from = new Date(now.getTime() - 86_400_000);
+  const to = new Date(now.getTime() + 2 * 86_400_000);
+  let out: Out;
+  try {
+    if (zone.startsWith("SE")) out = await elprisetjustnu(zone, [from, now, new Date(now.getTime() + 86_400_000)]);
+    else if (zone.startsWith("DK")) out = await energiDataService(zone, from);
+    else out = await energyCharts(zone, from, to);
+    if (out.points.length === 0 && (zone.startsWith("SE") || zone.startsWith("DK"))) out = await energyCharts(zone, from, to);
+  } catch (e) {
+    try {
+      out = await energyCharts(zone, from, to);
+    } catch {
+      return json({ error: "source_failed", detail: String(e) }, 502);
+    }
+  }
+  const res = json(out, 200, 900);
+  ctx.waitUntil(cache.put(key, res.clone()));
+  return res;
+}

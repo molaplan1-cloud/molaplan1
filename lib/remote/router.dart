@@ -112,7 +112,7 @@ class RemoteRouter {
   Driver wrap(ConnectionConfig c) {
     if (c.type == 'camera') return RoutedCameraDriver(c, this);
     // Internet services work the same everywhere: never through the home bridge.
-    if (c.type == 'ntfy') return createDriver(c);
+    if (c.type == 'ntfy' || c.type == 'price') return createDriver(c);
     return RoutedDriver(createDriver(c), this);
   }
 }
