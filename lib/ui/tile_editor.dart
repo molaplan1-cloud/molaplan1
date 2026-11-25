@@ -14,6 +14,7 @@ String tileTypeLabel(BuildContext context, TileType t) => switch (t) {
   TileType.button => tx(context, 'Painike / pikakomento', 'Button / shortcut'),
   TileType.slider => tx(context, 'Liukusäädin / asetusarvo', 'Slider / setpoint'),
   TileType.camera => tx(context, 'Kamera', 'Camera'),
+  TileType.thermostat => tx(context, 'Termostaatti', 'Thermostat'),
 };
 
 String tileTypeHelp(BuildContext context, TileType t) => switch (t) {
@@ -22,6 +23,7 @@ String tileTypeHelp(BuildContext context, TileType t) => switch (t) {
   TileType.button => tx(context, 'Yksi painallus tekee yhden tai monta asiaa.', 'One tap does one or many things.'),
   TileType.slider => tx(context, 'Säädä arvoa, esim. lämpötilaa tai puhallinta.', 'Adjust a value, e.g. temperature.'),
   TileType.camera => tx(context, 'Näyttää kameran kuvan.', 'Shows a camera image.'),
+  TileType.thermostat => tx(context, 'Pitää lämpötilan halutussa arvossa.', 'Keeps the temperature at the set value.'),
 };
 
 IconData tileTypeIcon(TileType t) => switch (t) {
@@ -30,6 +32,7 @@ IconData tileTypeIcon(TileType t) => switch (t) {
   TileType.button => Icons.touch_app_outlined,
   TileType.slider => Icons.tune,
   TileType.camera => Icons.videocam_outlined,
+  TileType.thermostat => Icons.thermostat,
 };
 
 class TileEditor extends StatefulWidget {
@@ -115,7 +118,7 @@ class _TileEditorState extends State<TileEditor> {
                   spacing: 8,
                   runSpacing: 8,
                   children: [
-                    for (final ty in TileType.values)
+                    for (final ty in TileType.values.where((x) => x != TileType.thermostat))
                       ChoiceChip(
                         avatar: Icon(tileTypeIcon(ty), size: 18),
                         label: Text(tileTypeLabel(context, ty)),

@@ -295,7 +295,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               ),
             )
         else
-          for (final type in TileType.values)
+          for (final type in TileType.values.where((x) => x != TileType.thermostat))
             Padding(
               padding: const EdgeInsets.only(bottom: 8),
               child: Card(

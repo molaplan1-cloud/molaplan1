@@ -704,6 +704,7 @@ String _tileKind(BuildContext context, TileType t) => switch (t) {
   TileType.button => tx(context, 'Painike', 'Button'),
   TileType.slider => tx(context, 'Säädin', 'Slider'),
   TileType.camera => tx(context, 'Kamerakuva', 'Camera view'),
+  TileType.thermostat => tx(context, 'Termostaatti', 'Thermostat'),
 };
 
 class _Banner extends StatelessWidget {

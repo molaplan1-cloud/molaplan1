@@ -49,6 +49,8 @@ IconData iconFor(TileConfig t) {
       return Icons.tune;
     case TileType.camera:
       return Icons.videocam_outlined;
+    case TileType.thermostat:
+      return Icons.thermostat;
   }
 }
 

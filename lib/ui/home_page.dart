@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
               trailing: const Icon(Icons.chevron_right),
             ),
             const Divider(),
-            for (final t in TileType.values)
+            for (final t in TileType.values.where((x) => x != TileType.thermostat))
               ListTile(
                 leading: Icon(tileTypeIcon(t)),
                 title: Text(tileTypeLabel(context, t)),

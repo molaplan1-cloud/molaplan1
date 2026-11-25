@@ -8,6 +8,7 @@ import '../state/stores.dart';
 import 'e2e.dart';
 import 'executor.dart';
 import '../prices/prices.dart';
+import '../energy/thermostat.dart';
 import '../rules/price_rules.dart';
 import 'protocol.dart';
 
@@ -56,6 +57,21 @@ class BridgeCore {
   late final RuleRunner rules = RuleRunner(
     prices: prices,
     log: log,
+    send: (conn, spec, value) async {
+      final r = await executor.run({'id': 0, 'op': 'send', 'conn': conn, 'spec': spec, 'value': value});
+      if (r['ok'] != true) throw Exception(r['e']);
+    },
+  );
+
+  /// Thermostats pushed with the rules: they run here every minute (sensors, relays, heat pumps).
+  late final ThermostatRunner thermo = ThermostatRunner(
+    prices: prices,
+    log: log,
+    read: (conn, spec) async {
+      final r = await executor.run({'id': 0, 'op': 'read', 'conn': conn, 'spec': spec});
+      if (r['ok'] != true) throw Exception(r['e']);
+      return r['v'];
+    },
     send: (conn, spec, value) async {
       final r = await executor.run({'id': 0, 'op': 'send', 'conn': conn, 'spec': spec, 'value': value});
       if (r['ok'] != true) throw Exception(r['e']);
@@ -117,6 +133,14 @@ class BridgeCore {
           ];
         } catch (_) {}
       }
+      final tt = await store.read('$storageKey.thermo');
+      if (tt != null) {
+        try {
+          thermo.jobs = [
+            for (final x in (jsonDecode(tt) as List)) ThermostatJob.fromJson(Map<String, dynamic>.from(x as Map)),
+          ];
+        } catch (_) {}
+      }
     } else {
       relay = relayUrl;
       home = randomHex(16);
@@ -167,7 +191,14 @@ class BridgeCore {
     log?.call('price rules: ${jobs.length}');
   }
 
-  /// "rules" op: {jobs:[…]} replaces the set; {status:true} only reads the status.
+  /// Replaces the thermostats and stores them.
+  Future<void> setThermostats(List<ThermostatJob> jobs) async {
+    await store.write('$storageKey.thermo', jsonEncode([for (final j in jobs) j.toJson()]));
+    thermo.update(jobs);
+    log?.call('thermostats: ${jobs.length}');
+  }
+
+  /// "rules" op: {jobs:[…], thermostats:[…]} replaces the sets; {status:true} only reads the status.
   Future<Map<String, dynamic>> _rulesOp(Map<String, dynamic> r) async {
     final id = r['id'];
     final spec = Map<String, dynamic>.from((r['spec'] as Map?) ?? const {});
@@ -176,10 +207,21 @@ class BridgeCore {
         await setRules([for (final x in spec['jobs'] as List) RuleJob.fromJson(Map<String, dynamic>.from(x as Map))]);
         await rules.tick();
       }
+      if (spec['thermostats'] is List) {
+        await setThermostats([
+          for (final x in spec['thermostats'] as List) ThermostatJob.fromJson(Map<String, dynamic>.from(x as Map)),
+        ]);
+        await thermo.tick();
+      }
       return {
         'id': id,
         'ok': true,
-        'v': {'bridge': homeName, 'count': rules.jobs.length, 'status': rules.statusJson()},
+        'v': {
+          'bridge': homeName,
+          'count': rules.jobs.length,
+          'status': rules.statusJson(),
+          'thermostats': thermo.statusJson(),
+        },
       };
     } catch (e) {
       return {'id': id, 'ok': false, 'e': '$e', 'k': 'unknown'};
@@ -188,6 +230,7 @@ class BridgeCore {
 
   void start() {
     rules.start();
+    thermo.start();
     if (_running) return;
     _running = true;
     _connect();
@@ -466,6 +509,7 @@ class BridgeCore {
 
   Future<void> dispose() async {
     rules.dispose();
+    thermo.dispose();
     await stop();
     await executor.dispose();
     await _changes.close();

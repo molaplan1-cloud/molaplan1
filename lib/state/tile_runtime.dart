@@ -50,11 +50,17 @@ class TileRuntime extends ChangeNotifier {
     }
   }
 
+  /// Every fresh value of every visible tile (energy meters are logged from here).
+  static void Function(TileConfig tile, Object? value)? observer;
+
   void _set(Object? v, String? err) {
     if (_disposed) return;
     value = v;
     error = err;
-    if (err == null) updated = DateTime.now();
+    if (err == null) {
+      updated = DateTime.now();
+      observer?.call(tile, v);
+    }
     notifyListeners();
   }
 

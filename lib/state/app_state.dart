@@ -7,6 +7,11 @@ import 'package:flutter/foundation.dart';
 import '../drivers/driver.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
+import '../energy/contract.dart';
+import '../energy/meters.dart';
+import '../energy/thermostat.dart';
+import '../prices/prices.dart';
+import 'tile_runtime.dart';
 import '../rules/price_rules.dart';
 import '../templates/device_templates.dart';
 import '../account/supabase_api.dart' show AccountApi;
@@ -24,7 +29,10 @@ class AppState extends ChangeNotifier implements SyncHost {
     AccountApi? accountApi,
     int kdfIterations = defaultIterations,
     String Function()? systemLocale,
-  }) : systemLocale = systemLocale ?? _platformLocale {
+    ConfigStore? energyStore,
+  }) : systemLocale = systemLocale ?? _platformLocale,
+       energyStore = energyStore ?? MemoryConfigStore() {
+    TileRuntime.observer = onTileValue;
     account = AccountState(store: secretStore, host: this, api: accountApi, kdfIterations: kdfIterations);
     account.addListener(notifyListeners);
     remote = RemoteState(store: secretStore, configJson: () => exportJson(includeSecrets: true));
@@ -61,6 +69,68 @@ class AppState extends ChangeNotifier implements SyncHost {
   AppConfig config = AppConfig();
   final _drivers = <String, Driver>{};
   bool loaded = false;
+
+  // ---- energy: meters, contract, costs
+  /// Where the hourly meter log is kept (device-local, not synced).
+  final ConfigStore energyStore;
+  final energyLog = EnergyLog();
+  Timer? _energySaveTimer;
+
+  /// Price area for energy costs and heating plans.
+  String get energyZone =>
+      config.energy.zone ??
+      '${config.connections.where((c) => c.type == 'price').firstOrNull?.settings['zone'] ?? 'FI'}';
+
+  /// The contract in use (a spot contract with typical values until the user sets one).
+  ElectricityContract get contract => config.energy.contract ?? ElectricityContract(country: countryOfZone(energyZone));
+
+  /// Consumer price c/kWh at [t] from the contract and the cached spot prices.
+  Vat2? unitPriceAt(DateTime t) {
+    final c = contract;
+    double? spot;
+    if (c.energyType == 'spot') {
+      final s = PriceService.shared.cached(energyZone);
+      spot = s?.at(t)?.eurMwh;
+      if (s == null || spot == null) {
+        unawaited(PriceService.shared.get(energyZone).then((_) {}, onError: (_) {}));
+      }
+    }
+    return c.unitAt(t, spotEurMwh: spot);
+  }
+
+  /// Logs a reading of a meter tile (power W/kW or energy Wh/kWh).
+  void onTileValue(TileConfig t, Object? v, [DateTime? at]) {
+    final m = config.energy.meters[t.id];
+    if (m == null) return;
+    final kind = meterKind(t.unit);
+    final d = v is num ? v.toDouble() : double.tryParse('${v ?? ''}'.replaceAll(',', '.'));
+    if (kind == null || d == null) return;
+    energyLog.record(t.id, kind, toK(d, t.unit), at ?? DateTime.now(), unitPriceAt);
+    _energySaveTimer ??= Timer(const Duration(seconds: 60), saveEnergy);
+  }
+
+  Future<void> saveEnergy() async {
+    _energySaveTimer?.cancel();
+    _energySaveTimer = null;
+    energyLog.compact(DateTime.now());
+    await energyStore.save(jsonEncode(energyLog.toJson()));
+  }
+
+  Future<void> setMeter(String tileId, MeterInfo? m) async {
+    if (m == null) {
+      config.energy.meters.remove(tileId);
+    } else {
+      config.energy.meters[tileId] = m;
+    }
+    await save();
+    notifyListeners();
+  }
+
+  Future<void> setEnergy(void Function(EnergySettings e) change) async {
+    change(config.energy);
+    await save();
+    notifyListeners();
+  }
 
   /// Device locale, e.g. "sv_SE" (injectable for tests).
   final String Function() systemLocale;
@@ -106,6 +176,10 @@ class AppState extends ChangeNotifier implements SyncHost {
       debugPrint('remote load failed: $e');
     }
     driverLang = lang;
+    try {
+      final e = await energyStore.load();
+      if (e != null) energyLog.loadJson(Map<String, dynamic>.from(jsonDecode(e) as Map));
+    } catch (_) {}
     _lastHome = remote.paired?.home;
     await account.load();
     loaded = true;
@@ -140,7 +214,7 @@ class AppState extends ChangeNotifier implements SyncHost {
   String? get rulesRunWhere => remote.bridge != null ? 'self' : (remote.router.client != null ? 'bridge' : null);
 
   void _scheduleRulesPush() {
-    if (config.rules.isEmpty && _rulesSent == null) return;
+    if (config.rules.isEmpty && config.energy.thermostats.isEmpty && _rulesSent == null) return;
     _rulesTimer?.cancel();
     _rulesTimer = Timer(
       const Duration(seconds: 2),
@@ -154,11 +228,16 @@ class AppState extends ChangeNotifier implements SyncHost {
   /// Sends the rule set to the bridge. Returns false when nothing changed.
   Future<bool> pushRules({bool force = false}) async {
     final jobs = RuleJob.fromConfig(config);
-    final j = jsonEncode([for (final x in jobs) x.toJson()]);
+    final thermo = ThermostatJob.fromConfig(config);
+    final j = jsonEncode({
+      'jobs': [for (final x in jobs) x.toJson()],
+      'thermostats': [for (final x in thermo) x.toJson()],
+    });
     if (!force && j == _rulesSent) return false;
     final b = remote.bridge;
     if (b != null) {
       await b.setRules(jobs);
+      await b.setThermostats(thermo);
     } else {
       final c = remote.router.client;
       if (c == null) throw StateError('no_bridge');
@@ -166,6 +245,7 @@ class AppState extends ChangeNotifier implements SyncHost {
         'rules',
         spec: {
           'jobs': [for (final x in jobs) x.toJson()],
+          'thermostats': [for (final x in thermo) x.toJson()],
         },
       );
     }
@@ -176,7 +256,14 @@ class AppState extends ChangeNotifier implements SyncHost {
   /// Rule status from wherever the rules run: {bridge, count, status:{ruleId: RuleStatus json}}.
   Future<Map<String, dynamic>?> rulesStatus() async {
     final b = remote.bridge;
-    if (b != null) return {'bridge': b.homeName, 'count': b.rules.jobs.length, 'status': b.rules.statusJson()};
+    if (b != null) {
+      return {
+        'bridge': b.homeName,
+        'count': b.rules.jobs.length,
+        'status': b.rules.statusJson(),
+        'thermostats': b.thermo.statusJson(),
+      };
+    }
     final c = remote.router.client;
     if (c == null) return null;
     final v = await c.call('rules', spec: {'status': true});
@@ -577,6 +664,8 @@ class AppState extends ChangeNotifier implements SyncHost {
   @override
   void dispose() {
     _rulesTimer?.cancel();
+    _energySaveTimer?.cancel();
+    if (TileRuntime.observer == onTileValue) TileRuntime.observer = null;
     account.removeListener(notifyListeners);
     account.dispose();
     update.removeListener(notifyListeners);

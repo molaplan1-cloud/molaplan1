@@ -12,7 +12,11 @@ import 'l10n/gen/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final state = AppState(configStore: PrefsConfigStore(), secretStore: SecureSecretStore());
+  final state = AppState(
+    configStore: PrefsConfigStore(),
+    secretStore: SecureSecretStore(),
+    energyStore: PrefsConfigStore('molaplan.energy.v1'),
+  );
   state.account.autoSync = true; // background sync when signed in
   await state.load();
   if (state.config.bridgeMode) await keepScreenOn(true);

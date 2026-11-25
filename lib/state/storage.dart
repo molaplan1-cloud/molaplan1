@@ -16,7 +16,8 @@ class SecureSecretStore implements SecretStore {
 }
 
 class PrefsConfigStore implements ConfigStore {
-  static const key = 'molaplan.config.v1';
+  PrefsConfigStore([this.key = 'molaplan.config.v1']);
+  final String key;
   @override
   Future<String?> load() async => (await SharedPreferences.getInstance()).getString(key);
   @override

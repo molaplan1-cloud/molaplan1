@@ -160,6 +160,9 @@ class PriceService {
   }
 
   void put(PriceSeries s) => _cache[s.zone] = s;
+
+  /// Last fetched series (no network).
+  PriceSeries? cached(String zone) => _cache[zone];
 }
 
 class PriceException implements Exception {

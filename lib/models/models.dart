@@ -5,6 +5,53 @@ import 'package:uuid/uuid.dart';
 import '../rules/price_rules.dart';
 
 export '../rules/price_rules.dart' show PriceRule;
+import '../energy/contract.dart';
+import '../energy/meters.dart';
+import '../energy/thermostat.dart';
+import '../energy/weather.dart';
+
+/// Energy settings of a home: price area, contract, location (weather), meter roles, thermostats.
+class EnergySettings {
+  EnergySettings({this.zone, this.contract, this.home, Map<String, MeterInfo>? meters, List<ThermostatConfig>? thermostats})
+    : meters = meters ?? {},
+      thermostats = thermostats ?? [];
+
+  /// Bidding zone ("FI", "SE3"…); null = from the electricity price tile, else FI.
+  String? zone;
+  ElectricityContract? contract;
+  HomeLocation? home;
+
+  /// Power/energy tile id -> role.
+  Map<String, MeterInfo> meters;
+  List<ThermostatConfig> thermostats;
+
+  bool get isEmpty => zone == null && contract == null && home == null && meters.isEmpty && thermostats.isEmpty;
+
+  Map<String, dynamic> toJson() => {
+    'zone': ?zone,
+    if (contract != null) 'contract': contract!.toJson(),
+    if (home != null) 'home': home!.toJson(),
+    if (meters.isNotEmpty) 'meters': {for (final e in meters.entries) e.key: e.value.toJson()},
+    if (thermostats.isNotEmpty) 'thermostats': [for (final t in thermostats) t.toJson()],
+  };
+
+  factory EnergySettings.fromJson(Object? j) {
+    if (j is! Map) return EnergySettings();
+    return EnergySettings(
+      zone: j['zone'] as String?,
+      contract: j['contract'] is Map ? ElectricityContract.fromJson(Map<String, dynamic>.from(j['contract'] as Map)) : null,
+      home: HomeLocation.fromJson(j['home']),
+      meters: {
+        for (final e in (j['meters'] as Map? ?? const {}).entries)
+          if (e.value is Map) '${e.key}': MeterInfo.fromJson(Map<String, dynamic>.from(e.value as Map)),
+      },
+      thermostats: [
+        for (final t in (j['thermostats'] as List? ?? const []))
+          if (t is Map) ThermostatConfig.fromJson(Map<String, dynamic>.from(t)),
+      ],
+    );
+  }
+}
 
 const _uuid = Uuid();
 String newId() => _uuid.v4().substring(0, 8);
@@ -70,7 +117,7 @@ class CommandStep {
   );
 }
 
-enum TileType { value, toggle, button, slider, camera }
+enum TileType { value, toggle, button, slider, camera, thermostat }
 
 class Threshold {
   double above;
@@ -257,6 +304,7 @@ class AppConfig {
 
   /// Price-based automations (run on the home bridge).
   List<PriceRule> rules;
+  EnergySettings energy;
 
   /// "Edistyneet": shows technical settings (raw connection types, payloads, JSON paths…). Off for beginners.
   bool advanced;
@@ -272,8 +320,10 @@ class AppConfig {
     this.updateCheckedAt,
     this.updateSkip,
     List<PriceRule>? rules,
+    EnergySettings? energy,
     this.advanced = false,
   }) : rules = rules ?? [],
+       energy = energy ?? EnergySettings(),
        connections = connections ?? [],
        dashboards = dashboards ?? [];
 
@@ -291,6 +341,7 @@ class AppConfig {
     'connections': connections.map((c) => c.toJson(includeSecrets: includeSecrets)).toList(),
     'dashboards': dashboards.map((d) => d.toJson()).toList(),
     if (rules.isNotEmpty) 'rules': rules.map((r) => r.toJson()).toList(),
+    if (!energy.isEmpty) 'energy': energy.toJson(),
   };
 
   factory AppConfig.fromJson(Map<String, dynamic> j) {
@@ -309,6 +360,7 @@ class AppConfig {
       connections: ((j['connections'] as List?) ?? []).map((e) => ConnectionConfig.fromJson(_map(e))).toList(),
       dashboards: ((j['dashboards'] as List?) ?? []).map((e) => Dashboard.fromJson(_map(e))).toList(),
       rules: ((j['rules'] as List?) ?? []).map((e) => PriceRule.fromJson(_map(e))).toList(),
+      energy: EnergySettings.fromJson(j['energy']),
     );
   }
 }
