@@ -351,7 +351,31 @@ void main() {
       final conf = File('${Directory.systemTemp.createTempSync('mq').path}/m.conf')
         ..writeAsStringSync('listener $port 127.0.0.1\nallow_anonymous true\n');
       broker = await Process.start(mosq, ['-c', conf.path]);
-      await Future<void>.delayed(const Duration(milliseconds: 500));
+      final logs = StringBuffer();
+      var dead = false;
+      broker!.stdout.transform(utf8.decoder).listen(logs.write);
+      broker!.stderr.transform(utf8.decoder).listen(logs.write);
+      broker!.exitCode.then((_) => dead = true);
+      final end = DateTime.now().add(const Duration(seconds: 8));
+      while (true) {
+        if (dead) {
+          throw StateError('mosquitto exited before listen: $logs');
+        }
+        try {
+          final c = await Socket.connect(
+            '127.0.0.1',
+            port,
+            timeout: const Duration(milliseconds: 200),
+          );
+          await c.close();
+          break;
+        } on SocketException {
+          if (DateTime.now().isAfter(end)) {
+            throw TimeoutException('mosquitto did not listen on $port: $logs');
+          }
+          await Future<void>.delayed(const Duration(milliseconds: 50));
+        }
+      }
     });
     tearDownAll(() => broker?.kill());
 
