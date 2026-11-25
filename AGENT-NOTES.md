@@ -200,3 +200,5 @@ Pending: UI for Automaatiot/Skriptit/Tilannekuvat + 'Luo automaatio' in add shee
 
 Done 23:5x: t148u/t149u/t150u (measure_view TrendLayout/TrendOptions, measure_colors.dart, HA history backfill, test/trend_tile_test.dart + test/goldens/trend_*.png). REQUIREMENTS R139–R146 added (t143u–t150u). Translations for new strings still to run at release (tool/l10n/translate.py). Don't run `dart format` on the whole repo (churns 60 files).
 t144u done (7683b25): TileConfig.w2/h2 half-units, colSpan/rowSpan = ceil views, JSON writes both, isMiniTile → TileWidget._mini, snapResize in home_page, test/half_size_test.dart.
+
+v0.7.0 UI done (d99fe40): lib/ui/automation_pages.dart (AutomationsPage tabs, editors, notify settings, showAutomationStart), auto_driver.dart (`_auto` virtual conn for group/scene/script tiles), home_header.dart (morning card, scene chips; HomeHeader.clock for tests), push_listener.dart, desktop_tray.dart. test/automation_ui_test.dart; l10n_test covers automation pages. L10n._rx: repeated {pN} uses a backreference (duplicate named groups crashed). Released as v0.7.0.

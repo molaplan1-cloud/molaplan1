@@ -95,16 +95,16 @@ Source = the request id (tNNNu) or the brief/round it came from. Version = the r
 ## v0.7.0
 | ID | Requirement | Source | Status | Version |
 |---|---|---|---|---|
-| R130 | Groups / rooms | t126u | Planned | 0.7.0 |
-| R131 | Scenes | t126u | Planned | 0.7.0 |
-| R132 | Livelier UI | t126u | Planned | 0.7.0 |
-| R133 | Morning summary | t126u | Planned | 0.7.0 |
-| R134 | "Automaatiot" section: list with on/off, last triggered, run history; "Luo automaatio" in "+ Lisää" | t135u | Planned | 0.7.0 |
-| R135 | Automation builder Kun / Jos / Tee (device, time/sun, price, weather, offline → device, scene, notification); templates | t135u (refines t126u rules) | Planned | 0.7.0 |
-| R136 | Push notifications: Android (FCM or UnifiedPush/ntfy fallback), Windows toasts + tray; rule evaluation on bridge/server; priorities, quiet hours, mute; tap opens tile; account-tied; report Firebase needs | t128u | Planned | 0.7.0 |
-| R137 | Simple scripts (steps: device, wait, wait-until, notify, scene, if/else) runnable from a button, an automation or remotely (ntfy / iPhone Shortcut URL+PIN) | t136u | Planned | 0.7.0 |
-| R138 | Advanced scripts (sandboxed language, timeout, Molaplan API only, variables/loops, device R/W, price, weather) on the bridge; run log | t136u | Planned | 0.7.0 |
-| R139 | Sensors are never lights: classify by HA device_class, Dirigera deviceType, Zigbee IAS zone / Hue sensor types, Shelly Flood; leak tile (water drop, Kuiva / VUOTO! pulsing red, battery, last alarm, no controls); "Vesivuoto → hälytys" template; migrate misclassified tiles; door/motion/smoke/temperature checked | t143u | In progress (classification, tile, template, migration + tests done) | 0.7.0 |
+| R130 | Groups / rooms | t126u | Done – group tile ("Luo ryhmä"): one switch for its members, shows "n/m päällä"; runs on the bridge too (AutoTile members). Rooms = existing views/groups | 0.7.0 |
+| R131 | Scenes | t126u | Done – Tilannekuvat tab: capture from the current state or build by hand, run from a chip on the home screen, a tile, an automation or a script | 0.7.0 |
+| R132 | Livelier UI | t126u | Partial – greeting/morning card, scene chips on the home screen, light glow, leak pulse, trend colours. No animated backgrounds or room photos header yet | 0.7.0 |
+| R133 | Morning summary | t126u | Done – card 05–11: greeting, outdoor °C, price now, cheapest hour today, devices on / not answering; closable per day. Summary line is fi/en only (sv/et/es get English) | 0.7.0 |
+| R134 | "Automaatiot" section: list with on/off, last triggered, run history; "Luo automaatio" in "+ Lisää" | t135u | Done (widget tests) | 0.7.0 |
+| R135 | Automation builder Kun / Jos / Tee (device, time/sun, price, weather, offline → device, scene, notification); templates | t135u (refines t126u rules) | Done – builder + 'Testaa nyt' + templates filtered by your devices (widget tests) | 0.7.0 |
+| R136 | Push notifications: Android (FCM or UnifiedPush/ntfy fallback), Windows toasts + tray; rule evaluation on bridge/server; priorities, quiet hours, mute; tap opens tile; account-tied; report Firebase needs | t128u | Partial – done: ntfy push (works with Molaplan closed via the ntfy app), in-app banner, Android local notification, Windows toasts + tray (hide on close), evaluation on the home bridge, priorities, quiet hours, mute 1/8/24 h, tap opens the tile, topic stored in the synced account config. Missing: FCM (needs a Firebase project – list in the release notes) | 0.7.0 |
+| R137 | Simple scripts (steps: device, wait, wait-until, notify, scene, if/else) runnable from a button, an automation or remotely (ntfy / iPhone Shortcut URL+PIN) | t136u | Done (widget + engine tests) | 0.7.0 |
+| R138 | Advanced scripts (sandboxed language, timeout, Molaplan API only, variables/loops, device R/W, price, weather) on the bridge; run log | t136u | Done – behind Asetukset › Edistyneet; syntax check in the editor, step/time limits, run log | 0.7.0 |
+| R139 | Sensors are never lights: classify by HA device_class, Dirigera deviceType, Zigbee IAS zone / Hue sensor types, Shelly Flood; leak tile (water drop, Kuiva / VUOTO! pulsing red, battery, last alarm, no controls); "Vesivuoto → hälytys" template; migrate misclassified tiles; door/motion/smoke/temperature checked | t143u | Done (tests) | 0.7.0 |
 | R140 | Tile sizes in half steps 0,5–4 (half-units internally, existing sizes ×2), half-unit corner resize, Leveys/Korkeus with decimal comma, compact 0.5 variants, goldens 0.5×0.5 / 0.5×1 / 1.5×1 | t144u | Done (tests, goldens) | 0.7.0 |
 | R141 | Form helper texts never overlap the next field's label at any width / text scale 1.0–1.3 (helperText in the decoration, 18 dp spacing, labels inside the filled box); overlap widget test | t145u | Done (tests) | 0.7.0 |
 | R142 | SnackBars auto-dismiss (undo ≈5 s, info ≈3 s), persist: false, close icon, dismissed on navigation; test | t146u | Done (tests) | 0.7.0 |

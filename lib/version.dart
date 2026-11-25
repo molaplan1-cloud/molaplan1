@@ -1,3 +1,3 @@
 /// Keep in sync with `version:` in pubspec.yaml (a test checks this).
-const appVersion = '0.6.2';
+const appVersion = '0.7.0';
 const releaseRepo = 'molaplan1-cloud/molaplan1';
