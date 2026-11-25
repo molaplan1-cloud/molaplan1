@@ -17,6 +17,7 @@ import '../models/models.dart';
 import 'account_nudge.dart';
 import 'add_sheet.dart';
 import 'app_scope.dart';
+import 'automation_pages.dart';
 import 'remote_pages.dart';
 import 'connections_page.dart';
 import 'onboarding_page.dart';
@@ -288,6 +289,19 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                       Navigator.push(context, MaterialPageRoute(builder: (_) => const ConnectionsPage()));
                     },
                   ),
+                ListTile(
+                  key: const ValueKey('nav-automations'),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  leading: const Icon(Icons.auto_mode),
+                  title: Text(tx(context, 'Automaatiot', 'Automations')),
+                  trailing: st.config.automation.automations.isEmpty
+                      ? null
+                      : Text('${st.config.automation.automations.where((a) => a.enabled).length}'),
+                  onTap: () {
+                    close();
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const AutomationsPage()));
+                  },
+                ),
                 if (st.config.energy.meters.isNotEmpty)
                   ListTile(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

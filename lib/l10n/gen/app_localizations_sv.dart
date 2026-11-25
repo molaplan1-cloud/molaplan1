@@ -235,6 +235,36 @@ class AppLocalizationsSv extends AppLocalizations {
   String get se78754330c => 'effekt';
 
   @override
+  String get se317f59de2 => 'VUOTO!';
+
+  @override
+  String get se4c4201882 => 'LEAK!';
+
+  @override
+  String get sdbcf5515c1 => 'Auki';
+
+  @override
+  String get sb0af7213b5 => 'Öppet Öppet Öppet Öppet Öppet';
+
+  @override
+  String get sa3477dac6e => 'Liikettä';
+
+  @override
+  String get s280df88585 => 'Rörelse';
+
+  @override
+  String get s064a959911 => 'Savoa!';
+
+  @override
+  String get s50778e2eec => 'Smoke!';
+
+  @override
+  String get s1dfa5abe81 => 'Hälytys';
+
+  @override
+  String get s50c459fbff => 'Larm';
+
+  @override
   String get s1a4eab1f51 => '°C';
 
   @override
@@ -370,6 +400,12 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sf50732e8e8 => 'dimmable';
+
+  @override
+  String get s68e711123b => 'Temperatur';
+
+  @override
+  String get s4082a34467 => 'sensor';
 
   @override
   String s3832b8c729(String p0) {
@@ -515,6 +551,9 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String get s4233362d60 => 'Vattenläck sensor';
+
+  @override
   String get sfcb44be1a0 => 'Shelly';
 
   @override
@@ -524,6 +563,9 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sd7e123cd2f =>
       'I Shelly-appen: öppna enheten → växel (inställningar) → Enhetsinformation → IP-adress. Eller i routerns enhetslista: namnet börjar med \"helt...\".';
+
+  @override
+  String get s9ad7b0076b => 'läcksensor · batteri';
 
   @override
   String get s5f2b2ca5f5 => 'på nu';
@@ -683,6 +725,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get scd04aa5d9e => 'Redigera utsikten';
+
+  @override
+  String get se9ca7cb470 => 'Automatiseringar';
 
   @override
   String get s49de879696 => 'Energi';
@@ -1712,10 +1757,16 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s9027c88cb7 => 'Samla in data...';
 
   @override
+  String get sf05d2a09f1 => '7 d';
+
+  @override
   String get se38a9bb2ed => 'Senaste';
 
   @override
   String get s049d71f971 => 'Sista sista';
+
+  @override
+  String get sed9b5e52f6 => 'Numera nu';
 
   @override
   String get s55d52c5ae1 => 'Denna enhet är inte på Wi-Fi';
@@ -2029,7 +2080,634 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s856a422504 => 'Ställ in fjärråtkomst';
 
   @override
+  String get sc3abd09cd9 => 'Anpassad färg';
+
+  @override
+  String get s10e7cef8c1 => 'Hue Hue';
+
+  @override
+  String get s59b65e3322 => 'Mättnad';
+
+  @override
+  String get s750ed8d878 => 'Ljushet';
+
+  @override
+  String get sa39e78050c => 'Välj Välj Välj Välj';
+
+  @override
   String get sd9923cda70 => 'Inte hemma? Sväng på fjärråtkomst';
+
+  @override
+  String get sba1684ff6c => 'Inte ännu';
+
+  @override
+  String get sef20071510 => 'Kör historia';
+
+  @override
+  String get s9f1334d4e2 => 'Skript';
+
+  @override
+  String get s6b7c1c52da => 'Scener';
+
+  @override
+  String get s8613961a5a => 'Meddelanden';
+
+  @override
+  String get s4f745952b8 => 'Kör på denna hembro, även när appen är stängd.';
+
+  @override
+  String get s99cbed55fd =>
+      'Kör på hemmabron – fungerar även när appen är stängd.';
+
+  @override
+  String get s0247948956 =>
+      'Hembron är en gammal version: uppdatera den så automationer körs också medan appen är stängd. Kör i den här appen för tillfället.';
+
+  @override
+  String get s21fae60578 =>
+      'Kör i denna app medan den är öppen. En hembro kör dem medan appen är stängd.';
+
+  @override
+  String get s66c54e2286 => 'Automationer är avstängda på den här enheten.';
+
+  @override
+  String get s4057f67774 => 'Mon Tue Wed Thu Fri Sat Sun';
+
+  @override
+  String get s456d234874 => '(Enhet saknas)';
+
+  @override
+  String get sf3779b50c6 => 'på';
+
+  @override
+  String get s7c3e905972 =>
+      'på At at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at';
+
+  @override
+  String get s61637a44e4 => 'Soluppgång';
+
+  @override
+  String get sa0d5958b56 => 'Solnedgång';
+
+  @override
+  String s467fd3c653(String p0) {
+    return '$p0 billigaste timmar';
+  }
+
+  @override
+  String s65660a4b23(String p0) {
+    return 'Pris över $p0 c/kWh';
+  }
+
+  @override
+  String sba8fa4af37(String p0) {
+    return 'Pris under $p0 c/kWh';
+  }
+
+  @override
+  String get s3324b26519 => 'Utomhus';
+
+  @override
+  String sf3c2cf0323(String p0, String p1) {
+    return '$p0 offline $p1 min';
+  }
+
+  @override
+  String get s1b359d69e2 => 'Skapa automatisering';
+
+  @override
+  String get s835865fd04 => 'Mallar';
+
+  @override
+  String get s2b57f716aa =>
+      'Inga automationer ännu. Börja från en mall, t.ex. \"Lights on at sunset\" eller \"Water leak → alarm\".';
+
+  @override
+  String get s8039add5ed => 'Untitled';
+
+  @override
+  String get s5506524eac => 'När när när';
+
+  @override
+  String get sf2d3a43ee8 => 'Inga runs ännu.';
+
+  @override
+  String get s5c7338ab38 => 'Redogjorda automationer';
+
+  @override
+  String get s354eb362d8 => 'Välj enheten';
+
+  @override
+  String get s73a65d7dff => 'Välj enheterna';
+
+  @override
+  String get s6bc0df13b3 => 'Inga enheter ännu.';
+
+  @override
+  String get s90db0cb9e0 => 'Ny automation';
+
+  @override
+  String get s3aeb373060 => 'Redigera automation';
+
+  @override
+  String get sac3c555554 => 'Ta bort automationen?';
+
+  @override
+  String get s53879bce24 => 'Vad startar automatiseringen';
+
+  @override
+  String get s179f389617 => 'Endast om (valfritt)';
+
+  @override
+  String get s803ff4f73b => 'Alla villkor måste hålla';
+
+  @override
+  String get sd930bdad70 => 'Lägg till villkor';
+
+  @override
+  String get s6f21edea24 =>
+      'Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do';
+
+  @override
+  String get scbe17b6bf8 => 'Åtgärder i ordning';
+
+  @override
+  String get secee53bdd2 => 'Mer Mer';
+
+  @override
+  String get scb62f41105 => 'Minsta minuter mellan runs';
+
+  @override
+  String get s643b680e89 =>
+      'Slutar t.ex. en flapping sensor från att skicka dussintals meddelanden.';
+
+  @override
+  String get s4c4ab28899 => 'Testa nu';
+
+  @override
+  String s7956c29b83(String p0) {
+    return 'Ran: $p0';
+  }
+
+  @override
+  String get s6e85ff5983 => '(inga enheter)';
+
+  @override
+  String get sa627de5699 => '>';
+
+  @override
+  String get s24801cdec0 => '<';
+
+  @override
+  String get sef6eef049e => '≥';
+
+  @override
+  String get s5d759b1fd0 => '≤';
+
+  @override
+  String get sc67c2076cc => '=';
+
+  @override
+  String get sf69ef2bd3e => '≠';
+
+  @override
+  String get sc300fc12e3 => 'Enhetsvärde';
+
+  @override
+  String get sbab0e0dc9d => 'Enhetstillstånd (på/av, sensor)';
+
+  @override
+  String get s76de9025a1 => 'Dagens tid';
+
+  @override
+  String get s04c0bcdd51 => 'Soluppgång / solnedgång';
+
+  @override
+  String get sca7e088857 => 'Elpris';
+
+  @override
+  String get s869f0d57af => 'Vädret (utomhustemperatur)';
+
+  @override
+  String get sa4261f6e35 => 'Enhet som inte svarar';
+
+  @override
+  String get s67584c9abf => 'Enhet';
+
+  @override
+  String get se0a362c060 => 'Typ';
+
+  @override
+  String get s38ac222392 => 'Värde';
+
+  @override
+  String get s4f62fd1f09 => 'När den vänder';
+
+  @override
+  String get sab64be3b87 => 'på/larm';
+
+  @override
+  String get sbfd08915bd => 'Off / lugn';
+
+  @override
+  String get s0aaa16b331 => 'Tid (HH:MM)';
+
+  @override
+  String get s9b4b2b3129 => 'Event';
+
+  @override
+  String get s8c6de5d661 => 'Offset på några minuter (−60...60)';
+
+  @override
+  String get s59b3e665bf => 'När när när';
+
+  @override
+  String get s6a23c4a83f => 'Pris nedan';
+
+  @override
+  String get s49083cabf7 => 'Pris ovan';
+
+  @override
+  String get s411924155f => 'De billigaste timmarna på dagen';
+
+  @override
+  String get s04dc35851a => 'Antal timmar';
+
+  @override
+  String get s6f22fd8c19 => 'Minuter';
+
+  @override
+  String get s32fa6270c8 => 'Ingen vald = varje dag';
+
+  @override
+  String get s966e223f86 => 'Tid fönster';
+
+  @override
+  String get s45aae9c551 => 'Weekdays';
+
+  @override
+  String get sf05bf9c751 => 'Enhetstillstånd / värde';
+
+  @override
+  String get sb74370fc1e => 'Utomhustemperatur';
+
+  @override
+  String get s585b4c519f => 'Mörk / ljus';
+
+  @override
+  String get s6019108a01 => 'Villkor';
+
+  @override
+  String get s9593939a4c => 'Ta bort';
+
+  @override
+  String get sc26d444f90 => 'Från';
+
+  @override
+  String get s796739363a => 'för att';
+
+  @override
+  String get s39d9f766c6 => 'Jämför';
+
+  @override
+  String get sa56aea2cf9 => 'State on/off';
+
+  @override
+  String get sc2521b6b15 => 'Nummernummer';
+
+  @override
+  String get sfffb54daf4 => 'Tillstånd';
+
+  @override
+  String get se2b3e45118 => 'mörkt mörkt mörkt';
+
+  @override
+  String get s709da04ca2 => 'ljust ljust ljus';
+
+  @override
+  String get s723d015dc1 => 'Lägga till åtgärder';
+
+  @override
+  String get sae3489a6c9 => 'Kontrollera en enhet';
+
+  @override
+  String get s1f6962ba39 => 'Kör en scen';
+
+  @override
+  String get s02df6d430a => 'Kör ett skript';
+
+  @override
+  String get sed67c16508 => 'Skicka ett meddelande';
+
+  @override
+  String get s654489bb29 => 'Vänta';
+
+  @override
+  String get sf216517af2 => 'Vänta tills';
+
+  @override
+  String get sde1657b024 => 'Om / annat';
+
+  @override
+  String get sbc8e165fbf => 'Action';
+
+  @override
+  String get s4cd3d92d4c => 'På';
+
+  @override
+  String get s750f16460c => 'Av/på';
+
+  @override
+  String get s7a544fe304 => 'Ställ värde';
+
+  @override
+  String get s929344a68b => 'Presstryck';
+
+  @override
+  String get s02cfe06e04 => 'Scen';
+
+  @override
+  String get sdb235c3ced => '(inga scener)';
+
+  @override
+  String get sdced476aeb => 'Skript';
+
+  @override
+  String get s4f330bfcfb => '(inga skript)';
+
+  @override
+  String get s8a8673aafe => 'Rubrik';
+
+  @override
+  String get s34900f9d58 => 'Texttext';
+
+  @override
+  String get s3c2ee8fe0d => '{summary} = väder, pris och hemstat';
+
+  @override
+  String get sd84d87d156 => 'Prioritet';
+
+  @override
+  String get sb55a08c07c => '1 – tyst';
+
+  @override
+  String get s423418208e => '2 – låg';
+
+  @override
+  String get sbad27a6b89 => '3 – normalt';
+
+  @override
+  String get s8c17000b91 => '4 – hög';
+
+  @override
+  String get sa0738def3a => '5 – brådskande (även i tysta timmar)';
+
+  @override
+  String get sb33001c92e => 'Tryck öppnar';
+
+  @override
+  String get s07d7410408 => 'Appen';
+
+  @override
+  String get sfb10dd528e => 'Sekunder';
+
+  @override
+  String get sd7ab969914 => 'På de flesta sekunder';
+
+  @override
+  String get sccfe5a0d41 => 'Sedan dess,';
+
+  @override
+  String get s2d983e951b => 'Else';
+
+  @override
+  String get sf936d0b01d => 'Upp';
+
+  @override
+  String get s2c7a2bbac1 => 'Nytt manus';
+
+  @override
+  String get s5b2dd17cbc =>
+      'Ett skript är en lista över steg: styra en enhet, vänta, meddela, om / ring ... Kör den från en knapp, en automation eller på distans (iPhone Shortcut).';
+
+  @override
+  String get s6fe2320f3d => 'Stoppa';
+
+  @override
+  String get se9ee46a9c8 => 'Kör';
+
+  @override
+  String get sfd2d047cb2 => 'Avancerat';
+
+  @override
+  String s766b50721b(String p0) {
+    return '$p0 steg';
+  }
+
+  @override
+  String get s061d1b874b =>
+      'fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärrfjärr fjärrfjärr fjärrfjärr fjärr fjärrfjärr fjärrfjärr fjärrfjärrfjärrfjärr fjärr fjärr fjärr fjärrfjärrfjärrfjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr f';
+
+  @override
+  String get sb886978015 => 'Redigera script';
+
+  @override
+  String get scc2c1e2508 => 'Run log';
+
+  @override
+  String get sacf2fbc495 => 'Ta bort manuset?';
+
+  @override
+  String get s01de653429 => 'Steg';
+
+  @override
+  String get s01d3c353e2 => 'Kodkod';
+
+  @override
+  String get s637ae4dbf4 => 'Molaplan skript';
+
+  @override
+  String get sea09cb0d3b =>
+      'Funktioner: få igång toggle vänta meddela scenpriset billigast temp tid timme vardagslogg. Ingen fil eller nätverksåtkomst; 10 min tidsgräns.';
+
+  @override
+  String get s26e23ef341 => 'Tillåt fjärrstyrning (PIN)';
+
+  @override
+  String get sd573107aec =>
+      'Ett ntfy-meddelande eller en iPhone-genväg startar manuset.';
+
+  @override
+  String get s0a5410ea4f => 'Remote PIN (minst 4 tecken)';
+
+  @override
+  String sceba001122(String p0, String p1, String p2, String p3) {
+    return 'Skicka \"kör $p0 <PIN>\" till $p1\niPhone genvägar: \"Få innehåll av URL\" → $p1, metod POST, kropp: kör $p0 <PIN>';
+  }
+
+  @override
+  String get seff0aac16e => 'Kopiera URL';
+
+  @override
+  String get sff9b69c6ca => 'Klar';
+
+  @override
+  String get sf1ed05f7de => 'Knapp på utsikt';
+
+  @override
+  String sf1541ca978(String p0) {
+    return 'Knapp till $p0';
+  }
+
+  @override
+  String get s09f745552a => 'Spara nuvarande stat';
+
+  @override
+  String get s44367fdec5 => 'Tomma';
+
+  @override
+  String get sc41824585d =>
+      'En scen sätter många enheter samtidigt, t.ex. \"Movie night\" eller \"All off\".';
+
+  @override
+  String s7e7b0848fb(String p0) {
+    return '$p0 åtgärder';
+  }
+
+  @override
+  String get s7cdee3dc7d => 'Vilka enheter går i scenen?';
+
+  @override
+  String get sde0d544a4c => 'Scennamn';
+
+  @override
+  String get scff2a13871 => 't.ex. filmkväll';
+
+  @override
+  String get se3ba6a13bb => 'Ny scen';
+
+  @override
+  String get s020a1af0d8 => 'Edit Scen';
+
+  @override
+  String get s4dbd6f62bf => 'Ta bort scenen?';
+
+  @override
+  String get se250251ff0 => 'Push-meddelanden';
+
+  @override
+  String get s91a8948ad7 => 'Genom ntfy (inget Google-konto behövs)';
+
+  @override
+  String get sbdd6c9bad2 => 'Visa på den här enheten';
+
+  @override
+  String get se1e0d398d7 =>
+      'Appen lyssnar på meddelanden medan du kör (på Windows också från brickan).';
+
+  @override
+  String get s6993f32ed2 => 'Kör automationer i denna app';
+
+  @override
+  String get sc0f6ea8ebe =>
+      'När det inte finns någon hembro. En hemmabro kör alltid dem, även när appen är stängd.';
+
+  @override
+  String get sb35519f8e9 => 'Nära till brickan';
+
+  @override
+  String get s49ca9b6082 =>
+      'Stängning av fönstret håller Molaplan bredvid klockan så meddelanden anländer.';
+
+  @override
+  String get sc6d6d4016e => 'Telefon, när Molaplan är stängd';
+
+  @override
+  String get sb460bbf010 =>
+      'Installera ntfy-appen (Android: Google Play / F-Droid, iPhone: App Store) och prenumerera på detta ämne. Meddelanden anländer även när Molaplan är stängd.';
+
+  @override
+  String get saa54f34e98 => 'Copy prenumererar länk';
+
+  @override
+  String get s8f19ff1e21 => 'Tyst timmar';
+
+  @override
+  String get s1cc7f7a75f => 'Endast brådskande (5) kommer igenom.';
+
+  @override
+  String get s973f30f5e8 => 'Från (HH:MM)';
+
+  @override
+  String get sb13eeff3cd => 'För (HH:MM)';
+
+  @override
+  String get s2f7a5f57b1 => 'Mute Mute';
+
+  @override
+  String get sa81c1da011 => '1 timme';
+
+  @override
+  String get s0ca30924bd => '8 timmar';
+
+  @override
+  String get s38bb718aaf => '24 timmar';
+
+  @override
+  String s36ef8a86e1(String p0) {
+    return 'Unmute (tills $p0)';
+  }
+
+  @override
+  String get s0183ae0a12 => 'Skicka ett testmeddelande';
+
+  @override
+  String get sd95091858f => 'Molaplans meddelanden fungerar';
+
+  @override
+  String get s58a8bfdd9f => 'Test skickat';
+
+  @override
+  String get s5c380d76b6 => 'Senaste';
+
+  @override
+  String get s9d75942e41 => 'Redo automation';
+
+  @override
+  String get s70860413a1 =>
+      'Ljus vid solnedgången, vattenläckage → larm, billiga timmar...';
+
+  @override
+  String get s8b5be90c1e => 'Din egen automation';
+
+  @override
+  String get sa9402c105a => 'När / Om / Gör';
+
+  @override
+  String get s4102c7e085 => 'Scen från det nuvarande tillståndet';
+
+  @override
+  String get s21ee7e78ee => 'Många enheter med en knapp';
+
+  @override
+  String get s5afa6e08f2 => 'Steg i ordning, väntar, om/else';
+
+  @override
+  String get s8070a25da8 => 'Gruppkoncernen';
+
+  @override
+  String get sf5f1ae9c9e => 't.ex. alla vardagsrumsljus som ett kort';
+
+  @override
+  String get s73f89f4de7 => 'Vilka enheter går i gruppen?';
+
+  @override
+  String get s5b68340d84 => 'Gruppnamn';
+
+  @override
+  String s1b087cdbbd(String p0) {
+    return 'Allt: $p0';
+  }
 
   @override
   String get s876c7230a2 => 'Lägg till enhet';
@@ -2318,6 +2996,17 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s9126bf24a0 => 'Sol sol sol solen';
 
   @override
+  String get sdaa7d4de12 => 'Scen';
+
+  @override
+  String get sfe55fd97fa => 'All tyst.';
+
+  @override
+  String s162c54ed4c(String p0) {
+    return '$p0: gjort';
+  }
+
+  @override
   String get s306729fe62 => 'Inga priser';
 
   @override
@@ -2495,9 +3184,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sc51b1e0dc0 => 'Vad vill du lägga till?';
 
   @override
-  String get s67584c9abf => 'Enhet';
-
-  @override
   String get s38f5b2ef26 =>
       'Shelly, Sonoff, Hue, kamera, värmepump... Söker ditt hemnätverk automatiskt.';
 
@@ -2507,6 +3193,10 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sfc846c4cc5 =>
       'Elpris, väder, kamera, mätning, meddelande eller kommando – ingen ny enhet behövs.';
+
+  @override
+  String get sf00aa23cf6 =>
+      'När... gör: lampor vid solnedgången, en läckagevarning, de billigaste timmarna, skript och scener.';
 
   @override
   String get s147f47be4c => 'Lägg till kort';
@@ -2579,9 +3269,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sbc44ce6993 =>
       'Den här enheten kan sedan inte längre komma hem från utsidan. Du kan koppla ihop igen när som helst.';
-
-  @override
-  String get s9593939a4c => 'Ta bort';
 
   @override
   String get s3563cb1635 => 'Ta bort fjärråtkomst';
@@ -2784,9 +3471,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sa684fd0716 => 'Redigera kort';
 
   @override
-  String get s8a8673aafe => 'Rubrik';
-
-  @override
   String get scf37cbeda8 => 'Ikon';
 
   @override
@@ -2891,6 +3575,50 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s77d2309fd5 => 'Fördröjning före (ms)';
+
+  @override
+  String get s2b463f47ba => 'Gömd';
+
+  @override
+  String get s2594346d86 => 'Guide linjer';
+
+  @override
+  String get sfdffaffea4 => 'Ingen';
+
+  @override
+  String get sd6c2de0256 => 'Horisontell';
+
+  @override
+  String get sb8ef66c33e => 'Grid';
+
+  @override
+  String get s0bee1b8ed3 => 'Värdeskala';
+
+  @override
+  String get sd4e9b57931 => 'Tidsaxel';
+
+  @override
+  String get s7abdb12fef => 'Datapunkt markörer';
+
+  @override
+  String get s29135ed75a =>
+      'Auto: Axlar och guidelinjer visar när kortet är minst 2×2.';
+
+  @override
+  String get s939603242a => 'Färger med värde';
+
+  @override
+  String get s45f927bc62 => 'Anpassad';
+
+  @override
+  String get s319dab47d8 => 'Smooth';
+
+  @override
+  String get s613fbec20e => 'Steg';
+
+  @override
+  String get s25d9db075e =>
+      'Egna gränser och färger: Inställningar → Avancerade.';
 
   @override
   String get sc0f5a14d2b => 'Färgtrösklar (värde ≥gräns → färg)';
@@ -3333,6 +4061,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sa6212aaeb4 => 'Plats';
 
   @override
+  String get s902eaaff9f => 'Öppet Öppet Öppet Öppet Öppet';
+
+  @override
   String get s12c2f8e6e4 => 'Endast hemnätverket';
 
   @override
@@ -3380,9 +4111,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sd1c7d49360 => 'Svara på';
-
-  @override
-  String get s38ac222392 => 'Värde';
 
   @override
   String get s29fae6a0e8 => 'Prisstyrning på';
@@ -3433,12 +4161,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sbe76826428 => 'Fläktar';
 
   @override
-  String get s6b7c1c52da => 'Scener';
-
-  @override
-  String get s9f1334d4e2 => 'Skript';
-
-  @override
   String get s4b53bcaaf0 => 'Knappar';
 
   @override
@@ -3446,9 +4168,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s3c2ed0c522 => 'Hjälpbrytare';
-
-  @override
-  String get se9ca7cb470 => 'Automatiseringar';
 
   @override
   String get sea20d169a3 => 'Mediaspelare';
@@ -3586,6 +4305,12 @@ class AppLocalizationsSv extends AppLocalizations {
       'Bilden krymps (≤ 200 KB) och hålls endast på den här enheten.';
 
   @override
+  String get sc80648d495 => 'Visa Molaplan';
+
+  @override
+  String get sa4e9c86a86 => 'Quit';
+
+  @override
   String get s4dab2d409b => 'Exportkonfiguration';
 
   @override
@@ -3687,6 +4412,11 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sd178a1d809 =>
       'Din egen kontrollterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kameror, WebSocket, TCP och UDP. Utan ett konto stannar alla inställningar på den här enheten.';
+
+  @override
+  String s84819cca05(String p0) {
+    return 'Sista larmet $p0';
+  }
 
   @override
   String get se455dc672b => 'Steg Steg';
@@ -3924,9 +4654,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s4f356d158a => 'Refresh (s, snapshot)';
-
-  @override
-  String get sca7e088857 => 'Elpris';
 
   @override
   String get s2525f9a4f5 =>
@@ -4481,6 +5208,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sb25aad3bc2 => 'Jag går hemifrån';
 
   @override
+  String get s4cac4725b8 => 'Gruppens enheter svarar inte';
+
+  @override
   String get s7e461faf91 =>
       'Hitta det i routerns enhetslista eller enhetsappen. Du kan också trycka på \"Söknätverk\".';
 
@@ -4951,9 +5681,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get saa437260b8 => 'Sent State (IR är one-way)';
-
-  @override
-  String get sfffb54daf4 => 'Tillstånd';
 
   @override
   String get seab2c72485 => 'Fan (0 = auto)';

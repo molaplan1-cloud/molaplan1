@@ -233,6 +233,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get se78754330c => 'power';
 
   @override
+  String get se317f59de2 => 'VUOTO!';
+
+  @override
+  String get se4c4201882 => 'LEAK!';
+
+  @override
+  String get sdbcf5515c1 => 'Auki';
+
+  @override
+  String get sb0af7213b5 => 'Open';
+
+  @override
+  String get sa3477dac6e => 'Liikettä';
+
+  @override
+  String get s280df88585 => 'Motion';
+
+  @override
+  String get s064a959911 => 'SAVUA!';
+
+  @override
+  String get s50778e2eec => 'SMOKE!';
+
+  @override
+  String get s1dfa5abe81 => 'Hälytys';
+
+  @override
+  String get s50c459fbff => 'Alarm';
+
+  @override
   String get s1a4eab1f51 => '°C';
 
   @override
@@ -367,6 +397,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sf50732e8e8 => 'dimmable';
+
+  @override
+  String get s68e711123b => 'temperature';
+
+  @override
+  String get s4082a34467 => 'sensor';
 
   @override
   String s3832b8c729(String p0) {
@@ -511,6 +547,9 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get s4233362d60 => 'Water leak sensor';
+
+  @override
   String get sfcb44be1a0 => 'Shelly';
 
   @override
@@ -520,6 +559,9 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get sd7e123cd2f =>
       'In the Shelly app: open the device → gear (settings) → Device information → IP address. Or in your router\'s device list: the name starts with \"shelly…\".';
+
+  @override
+  String get s9ad7b0076b => 'leak sensor · battery';
 
   @override
   String get s5f2b2ca5f5 => 'on now';
@@ -679,6 +721,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get scd04aa5d9e => 'Edit the view';
+
+  @override
+  String get se9ca7cb470 => 'Automations';
 
   @override
   String get s49de879696 => 'Energy';
@@ -1703,10 +1748,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s9027c88cb7 => 'Collecting data…';
 
   @override
+  String get sf05d2a09f1 => '7 d';
+
+  @override
   String get se38a9bb2ed => 'Last';
 
   @override
   String get s049d71f971 => 'last';
+
+  @override
+  String get sed9b5e52f6 => 'now';
 
   @override
   String get s55d52c5ae1 => 'This device is not on Wi-Fi';
@@ -2019,7 +2070,632 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s856a422504 => 'Set up remote access';
 
   @override
+  String get sc3abd09cd9 => 'Custom colour';
+
+  @override
+  String get s10e7cef8c1 => 'Hue';
+
+  @override
+  String get s59b65e3322 => 'Saturation';
+
+  @override
+  String get s750ed8d878 => 'Lightness';
+
+  @override
+  String get sa39e78050c => 'Choose';
+
+  @override
   String get sd9923cda70 => 'Not at home? Turn on remote access';
+
+  @override
+  String get sba1684ff6c => 'not yet';
+
+  @override
+  String get sef20071510 => 'Run history';
+
+  @override
+  String get s9f1334d4e2 => 'Scripts';
+
+  @override
+  String get s6b7c1c52da => 'Scenes';
+
+  @override
+  String get s8613961a5a => 'Notifications';
+
+  @override
+  String get s4f745952b8 =>
+      'Running on this home bridge, also when the app is closed.';
+
+  @override
+  String get s99cbed55fd =>
+      'Running on the home bridge – works even when the app is closed.';
+
+  @override
+  String get s0247948956 =>
+      'The home bridge is an old version: update it so automations also run while the app is closed. Running in this app for now.';
+
+  @override
+  String get s21fae60578 =>
+      'Running in this app while it is open. A home bridge runs them while the app is closed.';
+
+  @override
+  String get s66c54e2286 => 'Automations are off on this device.';
+
+  @override
+  String get s4057f67774 => 'Mon Tue Wed Thu Fri Sat Sun';
+
+  @override
+  String get s456d234874 => '(device missing)';
+
+  @override
+  String get sf3779b50c6 => 'on';
+
+  @override
+  String get s7c3e905972 => 'At';
+
+  @override
+  String get s61637a44e4 => 'Sunrise';
+
+  @override
+  String get sa0d5958b56 => 'Sunset';
+
+  @override
+  String s467fd3c653(String p0) {
+    return '$p0 cheapest hours';
+  }
+
+  @override
+  String s65660a4b23(String p0) {
+    return 'Price above $p0 c/kWh';
+  }
+
+  @override
+  String sba8fa4af37(String p0) {
+    return 'Price below $p0 c/kWh';
+  }
+
+  @override
+  String get s3324b26519 => 'Outdoors';
+
+  @override
+  String sf3c2cf0323(String p0, String p1) {
+    return '$p0 offline $p1 min';
+  }
+
+  @override
+  String get s1b359d69e2 => 'Create automation';
+
+  @override
+  String get s835865fd04 => 'Templates';
+
+  @override
+  String get s2b57f716aa =>
+      'No automations yet. Start from a template, e.g. \"Lights on at sunset\" or \"Water leak → alarm\".';
+
+  @override
+  String get s8039add5ed => 'Untitled';
+
+  @override
+  String get s5506524eac => 'When';
+
+  @override
+  String get sf2d3a43ee8 => 'No runs yet.';
+
+  @override
+  String get s5c7338ab38 => 'Ready-made automations';
+
+  @override
+  String get s354eb362d8 => 'Choose the device';
+
+  @override
+  String get s73a65d7dff => 'Choose the devices';
+
+  @override
+  String get s6bc0df13b3 => 'No devices yet.';
+
+  @override
+  String get s90db0cb9e0 => 'New automation';
+
+  @override
+  String get s3aeb373060 => 'Edit automation';
+
+  @override
+  String get sac3c555554 => 'Delete the automation?';
+
+  @override
+  String get s53879bce24 => 'What starts the automation';
+
+  @override
+  String get s179f389617 => 'Only if (optional)';
+
+  @override
+  String get s803ff4f73b => 'All conditions must hold';
+
+  @override
+  String get sd930bdad70 => 'Add condition';
+
+  @override
+  String get s6f21edea24 => 'Do';
+
+  @override
+  String get scbe17b6bf8 => 'Actions in order';
+
+  @override
+  String get secee53bdd2 => 'More';
+
+  @override
+  String get scb62f41105 => 'Minimum minutes between runs';
+
+  @override
+  String get s643b680e89 =>
+      'Stops e.g. a flapping sensor from sending dozens of notifications.';
+
+  @override
+  String get s4c4ab28899 => 'Test now';
+
+  @override
+  String s7956c29b83(String p0) {
+    return 'Ran: $p0';
+  }
+
+  @override
+  String get s6e85ff5983 => '(no devices)';
+
+  @override
+  String get sa627de5699 => '>';
+
+  @override
+  String get s24801cdec0 => '<';
+
+  @override
+  String get sef6eef049e => '≥';
+
+  @override
+  String get s5d759b1fd0 => '≤';
+
+  @override
+  String get sc67c2076cc => '=';
+
+  @override
+  String get sf69ef2bd3e => '≠';
+
+  @override
+  String get sc300fc12e3 => 'Device value';
+
+  @override
+  String get sbab0e0dc9d => 'Device state (on/off, sensor)';
+
+  @override
+  String get s76de9025a1 => 'Time of day';
+
+  @override
+  String get s04c0bcdd51 => 'Sunrise / sunset';
+
+  @override
+  String get sca7e088857 => 'Electricity price';
+
+  @override
+  String get s869f0d57af => 'Weather (outdoor temperature)';
+
+  @override
+  String get sa4261f6e35 => 'Device not answering';
+
+  @override
+  String get s67584c9abf => 'Device';
+
+  @override
+  String get se0a362c060 => 'Type';
+
+  @override
+  String get s38ac222392 => 'Value';
+
+  @override
+  String get s4f62fd1f09 => 'When it turns';
+
+  @override
+  String get sab64be3b87 => 'on / alarm';
+
+  @override
+  String get sbfd08915bd => 'off / calm';
+
+  @override
+  String get s0aaa16b331 => 'Time (HH:MM)';
+
+  @override
+  String get s9b4b2b3129 => 'Event';
+
+  @override
+  String get s8c6de5d661 => 'Offset in minutes (−60…60)';
+
+  @override
+  String get s59b3e665bf => 'When';
+
+  @override
+  String get s6a23c4a83f => 'Price below';
+
+  @override
+  String get s49083cabf7 => 'Price above';
+
+  @override
+  String get s411924155f => 'The cheapest hours of the day';
+
+  @override
+  String get s04dc35851a => 'Number of hours';
+
+  @override
+  String get s6f22fd8c19 => 'Minutes';
+
+  @override
+  String get s32fa6270c8 => 'None selected = every day';
+
+  @override
+  String get s966e223f86 => 'Time window';
+
+  @override
+  String get s45aae9c551 => 'Weekdays';
+
+  @override
+  String get sf05bf9c751 => 'Device state / value';
+
+  @override
+  String get sb74370fc1e => 'Outdoor temperature';
+
+  @override
+  String get s585b4c519f => 'Dark / light';
+
+  @override
+  String get s6019108a01 => 'Condition';
+
+  @override
+  String get s9593939a4c => 'Remove';
+
+  @override
+  String get sc26d444f90 => 'From';
+
+  @override
+  String get s796739363a => 'To';
+
+  @override
+  String get s39d9f766c6 => 'Compare';
+
+  @override
+  String get sa56aea2cf9 => 'State on/off';
+
+  @override
+  String get sc2521b6b15 => 'Number';
+
+  @override
+  String get sfffb54daf4 => 'State';
+
+  @override
+  String get se2b3e45118 => 'dark';
+
+  @override
+  String get s709da04ca2 => 'light';
+
+  @override
+  String get s723d015dc1 => 'Add action';
+
+  @override
+  String get sae3489a6c9 => 'Control a device';
+
+  @override
+  String get s1f6962ba39 => 'Run a scene';
+
+  @override
+  String get s02df6d430a => 'Run a script';
+
+  @override
+  String get sed67c16508 => 'Send a notification';
+
+  @override
+  String get s654489bb29 => 'Wait';
+
+  @override
+  String get sf216517af2 => 'Wait until';
+
+  @override
+  String get sde1657b024 => 'If / else';
+
+  @override
+  String get sbc8e165fbf => 'Action';
+
+  @override
+  String get s4cd3d92d4c => 'On';
+
+  @override
+  String get s750f16460c => 'Toggle';
+
+  @override
+  String get s7a544fe304 => 'Set value';
+
+  @override
+  String get s929344a68b => 'Press';
+
+  @override
+  String get s02cfe06e04 => 'Scene';
+
+  @override
+  String get sdb235c3ced => '(no scenes)';
+
+  @override
+  String get sdced476aeb => 'Script';
+
+  @override
+  String get s4f330bfcfb => '(no scripts)';
+
+  @override
+  String get s8a8673aafe => 'Title';
+
+  @override
+  String get s34900f9d58 => 'Text';
+
+  @override
+  String get s3c2ee8fe0d => '{summary} = weather, price and home state';
+
+  @override
+  String get sd84d87d156 => 'Priority';
+
+  @override
+  String get sb55a08c07c => '1 – silent';
+
+  @override
+  String get s423418208e => '2 – low';
+
+  @override
+  String get sbad27a6b89 => '3 – normal';
+
+  @override
+  String get s8c17000b91 => '4 – high';
+
+  @override
+  String get sa0738def3a => '5 – urgent (also in quiet hours)';
+
+  @override
+  String get sb33001c92e => 'Tap opens';
+
+  @override
+  String get s07d7410408 => 'the app';
+
+  @override
+  String get sfb10dd528e => 'Seconds';
+
+  @override
+  String get sd7ab969914 => 'At most seconds';
+
+  @override
+  String get sccfe5a0d41 => 'Then';
+
+  @override
+  String get s2d983e951b => 'Else';
+
+  @override
+  String get sf936d0b01d => 'Up';
+
+  @override
+  String get s2c7a2bbac1 => 'New script';
+
+  @override
+  String get s5b2dd17cbc =>
+      'A script is a list of steps: control a device, wait, notify, if/else… Run it from a button, an automation or remotely (iPhone Shortcut).';
+
+  @override
+  String get s6fe2320f3d => 'Stop';
+
+  @override
+  String get se9ee46a9c8 => 'Run';
+
+  @override
+  String get sfd2d047cb2 => 'Advanced';
+
+  @override
+  String s766b50721b(String p0) {
+    return '$p0 steps';
+  }
+
+  @override
+  String get s061d1b874b => 'remote';
+
+  @override
+  String get sb886978015 => 'Edit script';
+
+  @override
+  String get scc2c1e2508 => 'Run log';
+
+  @override
+  String get sacf2fbc495 => 'Delete the script?';
+
+  @override
+  String get s01de653429 => 'Steps';
+
+  @override
+  String get s01d3c353e2 => 'Code';
+
+  @override
+  String get s637ae4dbf4 => 'Molaplan script';
+
+  @override
+  String get sea09cb0d3b =>
+      'Functions: get set on off toggle wait notify scene price cheapest temp time hour weekday log. No file or network access; 10 min time limit.';
+
+  @override
+  String get s26e23ef341 => 'Allow remote run (PIN)';
+
+  @override
+  String get sd573107aec =>
+      'An ntfy message or an iPhone Shortcut starts the script.';
+
+  @override
+  String get s0a5410ea4f => 'Remote PIN (at least 4 characters)';
+
+  @override
+  String sceba001122(String p0, String p1, String p2, String p3) {
+    return 'Send \"run $p0 <PIN>\" to $p1\niPhone Shortcuts: \"Get Contents of URL\" → $p1, method POST, body: run $p0 <PIN>';
+  }
+
+  @override
+  String get seff0aac16e => 'Copy URL';
+
+  @override
+  String get sff9b69c6ca => 'Done';
+
+  @override
+  String get sf1ed05f7de => 'Button on dashboard';
+
+  @override
+  String sf1541ca978(String p0) {
+    return 'Button added to $p0';
+  }
+
+  @override
+  String get s09f745552a => 'Save current state';
+
+  @override
+  String get s44367fdec5 => 'Empty';
+
+  @override
+  String get sc41824585d =>
+      'A scene sets many devices at once, e.g. \"Movie night\" or \"All off\".';
+
+  @override
+  String s7e7b0848fb(String p0) {
+    return '$p0 actions';
+  }
+
+  @override
+  String get s7cdee3dc7d => 'Which devices go in the scene?';
+
+  @override
+  String get sde0d544a4c => 'Scene name';
+
+  @override
+  String get scff2a13871 => 'e.g. Movie night';
+
+  @override
+  String get se3ba6a13bb => 'New scene';
+
+  @override
+  String get s020a1af0d8 => 'Edit scene';
+
+  @override
+  String get s4dbd6f62bf => 'Delete the scene?';
+
+  @override
+  String get se250251ff0 => 'Push notifications';
+
+  @override
+  String get s91a8948ad7 => 'Through ntfy (no Google account needed)';
+
+  @override
+  String get sbdd6c9bad2 => 'Show on this device';
+
+  @override
+  String get se1e0d398d7 =>
+      'The app listens for notifications while running (on Windows also from the tray).';
+
+  @override
+  String get s6993f32ed2 => 'Run automations in this app';
+
+  @override
+  String get sc0f6ea8ebe =>
+      'When there is no home bridge. A home bridge always runs them, also while the app is closed.';
+
+  @override
+  String get sb35519f8e9 => 'Close to the tray';
+
+  @override
+  String get s49ca9b6082 =>
+      'Closing the window keeps Molaplan next to the clock so notifications arrive.';
+
+  @override
+  String get sc6d6d4016e => 'Phone, when Molaplan is closed';
+
+  @override
+  String get sb460bbf010 =>
+      'Install the ntfy app (Android: Google Play / F-Droid, iPhone: App Store) and subscribe to this topic. Notifications arrive even when Molaplan is closed.';
+
+  @override
+  String get saa54f34e98 => 'Copy subscribe link';
+
+  @override
+  String get s8f19ff1e21 => 'Quiet hours';
+
+  @override
+  String get s1cc7f7a75f => 'Only urgent (5) come through.';
+
+  @override
+  String get s973f30f5e8 => 'From (HH:MM)';
+
+  @override
+  String get sb13eeff3cd => 'To (HH:MM)';
+
+  @override
+  String get s2f7a5f57b1 => 'Mute';
+
+  @override
+  String get sa81c1da011 => '1 hour';
+
+  @override
+  String get s0ca30924bd => '8 hours';
+
+  @override
+  String get s38bb718aaf => '24 hours';
+
+  @override
+  String s36ef8a86e1(String p0) {
+    return 'Unmute (until $p0)';
+  }
+
+  @override
+  String get s0183ae0a12 => 'Send a test notification';
+
+  @override
+  String get sd95091858f => 'Molaplan notifications work';
+
+  @override
+  String get s58a8bfdd9f => 'Test sent';
+
+  @override
+  String get s5c380d76b6 => 'Latest';
+
+  @override
+  String get s9d75942e41 => 'Ready-made automation';
+
+  @override
+  String get s70860413a1 =>
+      'Lights at sunset, water leak → alarm, cheap hours…';
+
+  @override
+  String get s8b5be90c1e => 'Your own automation';
+
+  @override
+  String get sa9402c105a => 'When / If / Do';
+
+  @override
+  String get s4102c7e085 => 'Scene from the current state';
+
+  @override
+  String get s21ee7e78ee => 'Many devices with one button';
+
+  @override
+  String get s5afa6e08f2 => 'Steps in order, waits, if/else';
+
+  @override
+  String get s8070a25da8 => 'Group';
+
+  @override
+  String get sf5f1ae9c9e => 'E.g. all living room lights as one tile';
+
+  @override
+  String get s73f89f4de7 => 'Which devices go in the group?';
+
+  @override
+  String get s5b68340d84 => 'Group name';
+
+  @override
+  String s1b087cdbbd(String p0) {
+    return 'All: $p0';
+  }
 
   @override
   String get s876c7230a2 => 'Add a device';
@@ -2308,6 +2984,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s9126bf24a0 => 'Sun';
 
   @override
+  String get sdaa7d4de12 => 'Scene';
+
+  @override
+  String get sfe55fd97fa => 'All quiet.';
+
+  @override
+  String s162c54ed4c(String p0) {
+    return '$p0: done';
+  }
+
+  @override
   String get s306729fe62 => 'No prices';
 
   @override
@@ -2483,9 +3170,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sc51b1e0dc0 => 'What do you want to add?';
 
   @override
-  String get s67584c9abf => 'Device';
-
-  @override
   String get s38f5b2ef26 =>
       'Shelly, Sonoff, Hue, camera, heat pump… Searches your home network automatically.';
 
@@ -2495,6 +3179,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get sfc846c4cc5 =>
       'Electricity price, weather, camera, gauge, notification or command – no new device needed.';
+
+  @override
+  String get sf00aa23cf6 =>
+      'When… if… do: lights at sunset, a leak alert, the cheapest hours, scripts and scenes.';
 
   @override
   String get s147f47be4c => 'Add a tile';
@@ -2567,9 +3255,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get sbc44ce6993 =>
       'This device can then no longer reach home from outside. You can pair again any time.';
-
-  @override
-  String get s9593939a4c => 'Remove';
 
   @override
   String get s3563cb1635 => 'Remove remote access';
@@ -2772,9 +3457,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sa684fd0716 => 'Edit tile';
 
   @override
-  String get s8a8673aafe => 'Title';
-
-  @override
   String get scf37cbeda8 => 'Icon';
 
   @override
@@ -2879,6 +3561,49 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s77d2309fd5 => 'Delay before (ms)';
+
+  @override
+  String get s2b463f47ba => 'Hide';
+
+  @override
+  String get s2594346d86 => 'Guide lines';
+
+  @override
+  String get sfdffaffea4 => 'None';
+
+  @override
+  String get sd6c2de0256 => 'Horizontal';
+
+  @override
+  String get sb8ef66c33e => 'Grid';
+
+  @override
+  String get s0bee1b8ed3 => 'Value scale';
+
+  @override
+  String get sd4e9b57931 => 'Time axis';
+
+  @override
+  String get s7abdb12fef => 'Data point markers';
+
+  @override
+  String get s29135ed75a =>
+      'Auto: axes and guide lines show when the tile is at least 2×2.';
+
+  @override
+  String get s939603242a => 'Colours by value';
+
+  @override
+  String get s45f927bc62 => 'Custom';
+
+  @override
+  String get s319dab47d8 => 'Smooth';
+
+  @override
+  String get s613fbec20e => 'Steps';
+
+  @override
+  String get s25d9db075e => 'Own limits and colours: Settings → Advanced.';
 
   @override
   String get sc0f5a14d2b => 'Color thresholds (value ≥ limit → color)';
@@ -3321,6 +4046,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sa6212aaeb4 => 'Location';
 
   @override
+  String get s902eaaff9f => 'Open';
+
+  @override
   String get s12c2f8e6e4 => 'Home network only';
 
   @override
@@ -3368,9 +4096,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sd1c7d49360 => 'Reply at';
-
-  @override
-  String get s38ac222392 => 'Value';
 
   @override
   String get s29fae6a0e8 => 'Price control on';
@@ -3421,12 +4146,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sbe76826428 => 'Fans';
 
   @override
-  String get s6b7c1c52da => 'Scenes';
-
-  @override
-  String get s9f1334d4e2 => 'Scripts';
-
-  @override
   String get s4b53bcaaf0 => 'Buttons';
 
   @override
@@ -3434,9 +4153,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s3c2ed0c522 => 'Helper toggles';
-
-  @override
-  String get se9ca7cb470 => 'Automations';
 
   @override
   String get sea20d169a3 => 'Media players';
@@ -3575,6 +4291,12 @@ class AppLocalizationsEn extends AppLocalizations {
       'The picture is shrunk (≤ 200 KB) and kept on this device only.';
 
   @override
+  String get sc80648d495 => 'Show Molaplan';
+
+  @override
+  String get sa4e9c86a86 => 'Quit';
+
+  @override
   String get s4dab2d409b => 'Export configuration';
 
   @override
@@ -3676,6 +4398,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get sd178a1d809 =>
       'Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. Without an account all settings stay on this device.';
+
+  @override
+  String s84819cca05(String p0) {
+    return 'Last alarm $p0';
+  }
 
   @override
   String get se455dc672b => 'Step';
@@ -3914,9 +4641,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s4f356d158a => 'Refresh (s, snapshot)';
-
-  @override
-  String get sca7e088857 => 'Electricity price';
 
   @override
   String get s2525f9a4f5 =>
@@ -4472,6 +5196,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sb25aad3bc2 => 'Leaving home';
 
   @override
+  String get s4cac4725b8 => 'The group\'s devices are not answering';
+
+  @override
   String get s7e461faf91 =>
       'Find it in your router\'s device list or the device app. You can also tap \"Search network\".';
 
@@ -4943,9 +5670,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get saa437260b8 => 'Sent state (IR is one-way)';
-
-  @override
-  String get sfffb54daf4 => 'State';
 
   @override
   String get seab2c72485 => 'Fan (0 = auto)';

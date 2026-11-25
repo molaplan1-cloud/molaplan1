@@ -237,6 +237,36 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se78754330c => 'potencia';
 
   @override
+  String get se317f59de2 => '¡VUOTO!';
+
+  @override
+  String get se4c4201882 => '¡Lea!';
+
+  @override
+  String get sdbcf5515c1 => 'Auki';
+
+  @override
+  String get sb0af7213b5 => 'Abierto';
+
+  @override
+  String get sa3477dac6e => 'Liikettä';
+
+  @override
+  String get s280df88585 => 'Movimiento';
+
+  @override
+  String get s064a959911 => 'SAVUA!';
+
+  @override
+  String get s50778e2eec => '¡SMOKE!';
+
+  @override
+  String get s1dfa5abe81 => 'Hälytys';
+
+  @override
+  String get s50c459fbff => 'Alarma';
+
+  @override
   String get s1a4eab1f51 => '°C';
 
   @override
@@ -371,6 +401,12 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sf50732e8e8 => 'dimmable';
+
+  @override
+  String get s68e711123b => 'temperatura';
+
+  @override
+  String get s4082a34467 => 'sensor';
 
   @override
   String s3832b8c729(String p0) {
@@ -515,6 +551,9 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get s4233362d60 => 'Sensor de fuga de agua';
+
+  @override
   String get sfcb44be1a0 => 'Shelly';
 
   @override
@@ -524,6 +563,9 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sd7e123cd2f =>
       'En la aplicación Shelly: abre el dispositivo → engranaje (ajustes) → Información del dispositivo → Dirección IP. O en la lista del dispositivo del router: el nombre comienza con \"muelle...\".';
+
+  @override
+  String get s9ad7b0076b => 'sensor de fuga · batería';
 
   @override
   String get s5f2b2ca5f5 => 'encendido ahora';
@@ -683,6 +725,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get scd04aa5d9e => 'Editar la vista';
+
+  @override
+  String get se9ca7cb470 => 'Automatizaciones';
 
   @override
   String get s49de879696 => 'Energía';
@@ -1722,10 +1767,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s9027c88cb7 => 'Recopilar datos...';
 
   @override
+  String get sf05d2a09f1 => '7 d';
+
+  @override
   String get se38a9bb2ed => 'El último';
 
   @override
   String get s049d71f971 => 'el último';
+
+  @override
+  String get sed9b5e52f6 => 'Ahora';
 
   @override
   String get s55d52c5ae1 => 'Este dispositivo no está en Wi-Fi';
@@ -2040,7 +2091,634 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s856a422504 => 'Configurar el acceso remoto';
 
   @override
+  String get sc3abd09cd9 => 'Color personalizado';
+
+  @override
+  String get s10e7cef8c1 => 'Hue';
+
+  @override
+  String get s59b65e3322 => 'Saturación';
+
+  @override
+  String get s750ed8d878 => 'Luz';
+
+  @override
+  String get sa39e78050c => 'Elija';
+
+  @override
   String get sd9923cda70 => '¿No en casa? Activa el acceso remoto';
+
+  @override
+  String get sba1684ff6c => 'aún no';
+
+  @override
+  String get sef20071510 => 'Historia de la carrera';
+
+  @override
+  String get s9f1334d4e2 => 'Scripts';
+
+  @override
+  String get s6b7c1c52da => 'Escenas';
+
+  @override
+  String get s8613961a5a => 'Notificaciones';
+
+  @override
+  String get s4f745952b8 =>
+      'Corriendo en este puente casero, también cuando la aplicación está cerrada.';
+
+  @override
+  String get s99cbed55fd =>
+      'Correr en el puente de inicio – funciona incluso cuando la aplicación está cerrada.';
+
+  @override
+  String get s0247948956 =>
+      'El puente de inicio es una versión antigua: actualizarlo así que las automatizaciones también funcionan mientras la aplicación está cerrada. Corriendo en esta aplicación por ahora.';
+
+  @override
+  String get s21fae60578 =>
+      'Corriendo en esta aplicación mientras está abierta. Un puente casero los ejecuta mientras la aplicación está cerrada.';
+
+  @override
+  String get s66c54e2286 => 'Las automatizaciones están en este dispositivo.';
+
+  @override
+  String get s4057f67774 => 'Mon Tue Wed Thu Fri Sat Sun';
+
+  @override
+  String get s456d234874 => '(dispositivo desaparecido)';
+
+  @override
+  String get sf3779b50c6 => 'encendido';
+
+  @override
+  String get s7c3e905972 => 'Atentos';
+
+  @override
+  String get s61637a44e4 => 'Sunrise';
+
+  @override
+  String get sa0d5958b56 => 'Sunset';
+
+  @override
+  String s467fd3c653(String p0) {
+    return '$p0 horas más baratas';
+  }
+
+  @override
+  String s65660a4b23(String p0) {
+    return 'Precio por encima de $p0 c/kWh';
+  }
+
+  @override
+  String sba8fa4af37(String p0) {
+    return 'Precio por debajo de $p0 c/kWh';
+  }
+
+  @override
+  String get s3324b26519 => 'Al aire libre';
+
+  @override
+  String sf3c2cf0323(String p0, String p1) {
+    return '$p0 offline $p1 min';
+  }
+
+  @override
+  String get s1b359d69e2 => 'Crear automatización';
+
+  @override
+  String get s835865fd04 => 'Plantillas';
+
+  @override
+  String get s2b57f716aa =>
+      'No automatización todavía. Comienza desde una plantilla, por ejemplo, \"Luces al atardecer\" o \"Water escape → alarm\".';
+
+  @override
+  String get s8039add5ed => 'Untitled';
+
+  @override
+  String get s5506524eac => 'Cuándo';
+
+  @override
+  String get sf2d3a43ee8 => 'Todavía no hay carreras.';
+
+  @override
+  String get s5c7338ab38 => 'Automatizaciones preparadas';
+
+  @override
+  String get s354eb362d8 => 'Elija el dispositivo';
+
+  @override
+  String get s73a65d7dff => 'Elija los dispositivos';
+
+  @override
+  String get s6bc0df13b3 => 'Todavía no hay dispositivos.';
+
+  @override
+  String get s90db0cb9e0 => 'Nueva automatización';
+
+  @override
+  String get s3aeb373060 => 'Editar la automatización';
+
+  @override
+  String get sac3c555554 => '¿Supir la automatización?';
+
+  @override
+  String get s53879bce24 => 'Lo que inicia la automatización';
+
+  @override
+  String get s179f389617 => 'Sólo si (opcional)';
+
+  @override
+  String get s803ff4f73b => 'Todas las condiciones deben contener';
+
+  @override
+  String get sd930bdad70 => 'Añada condición';
+
+  @override
+  String get s6f21edea24 => 'Do';
+
+  @override
+  String get scbe17b6bf8 => 'Acciones en orden';
+
+  @override
+  String get secee53bdd2 => 'Más';
+
+  @override
+  String get scb62f41105 => 'Mínimos minutos entre las carreras';
+
+  @override
+  String get s643b680e89 =>
+      'Detiene, por ejemplo, un sensor de acoplamiento de enviar docenas de notificaciones.';
+
+  @override
+  String get s4c4ab28899 => 'Prueba ahora';
+
+  @override
+  String s7956c29b83(String p0) {
+    return 'Ran: $p0';
+  }
+
+  @override
+  String get s6e85ff5983 => '(sin dispositivos)';
+
+  @override
+  String get sa627de5699 => '>';
+
+  @override
+  String get s24801cdec0 => '<';
+
+  @override
+  String get sef6eef049e => '≥';
+
+  @override
+  String get s5d759b1fd0 => '≤';
+
+  @override
+  String get sc67c2076cc => '=';
+
+  @override
+  String get sf69ef2bd3e => '≠';
+
+  @override
+  String get sc300fc12e3 => 'Valor de dispositivo';
+
+  @override
+  String get sbab0e0dc9d => 'Estado del dispositivo (on/off, sensor)';
+
+  @override
+  String get s76de9025a1 => 'Hora del día';
+
+  @override
+  String get s04c0bcdd51 => 'Salida del sol / puesta del sol';
+
+  @override
+  String get sca7e088857 => 'Precio de la electricidad';
+
+  @override
+  String get s869f0d57af => 'El tiempo (temperatura externa)';
+
+  @override
+  String get sa4261f6e35 => 'Dispositivo no contesta';
+
+  @override
+  String get s67584c9abf => 'Dispositivo';
+
+  @override
+  String get se0a362c060 => 'Tipo';
+
+  @override
+  String get s38ac222392 => 'Valor';
+
+  @override
+  String get s4f62fd1f09 => 'Cuando gira';
+
+  @override
+  String get sab64be3b87 => 'on / alarm';
+
+  @override
+  String get sbfd08915bd => 'fuera / calma';
+
+  @override
+  String get s0aaa16b331 => 'Hora (HH:MM)';
+
+  @override
+  String get s9b4b2b3129 => 'Evento';
+
+  @override
+  String get s8c6de5d661 => 'Offset en minutes (−60...60)';
+
+  @override
+  String get s59b3e665bf => 'Cuándo';
+
+  @override
+  String get s6a23c4a83f => 'Precio a continuación';
+
+  @override
+  String get s49083cabf7 => 'Precio por encima';
+
+  @override
+  String get s411924155f => 'Las horas más baratas del día';
+
+  @override
+  String get s04dc35851a => 'Número de horas';
+
+  @override
+  String get s6f22fd8c19 => 'Minutos';
+
+  @override
+  String get s32fa6270c8 => 'Ninguno seleccionado = todos los días';
+
+  @override
+  String get s966e223f86 => 'ventana del tiempo';
+
+  @override
+  String get s45aae9c551 => 'Días de semana';
+
+  @override
+  String get sf05bf9c751 => 'Estado del dispositivo / valor';
+
+  @override
+  String get sb74370fc1e => 'Temperatura exterior';
+
+  @override
+  String get s585b4c519f => 'Oscuro / luz';
+
+  @override
+  String get s6019108a01 => 'Estado';
+
+  @override
+  String get s9593939a4c => 'Quitar';
+
+  @override
+  String get sc26d444f90 => 'Desde';
+
+  @override
+  String get s796739363a => 'A';
+
+  @override
+  String get s39d9f766c6 => 'Compare';
+
+  @override
+  String get sa56aea2cf9 => 'Estado de despido/despido';
+
+  @override
+  String get sc2521b6b15 => 'Número';
+
+  @override
+  String get sfffb54daf4 => 'Estado';
+
+  @override
+  String get se2b3e45118 => 'oscuro';
+
+  @override
+  String get s709da04ca2 => 'luz';
+
+  @override
+  String get s723d015dc1 => 'Agregar acción';
+
+  @override
+  String get sae3489a6c9 => 'Controla un dispositivo';
+
+  @override
+  String get s1f6962ba39 => 'Ejecutar una escena';
+
+  @override
+  String get s02df6d430a => 'Ejecutar un script';
+
+  @override
+  String get sed67c16508 => 'Enviar una notificación';
+
+  @override
+  String get s654489bb29 => 'Espera';
+
+  @override
+  String get sf216517af2 => 'Espera';
+
+  @override
+  String get sde1657b024 => 'Si / si no';
+
+  @override
+  String get sbc8e165fbf => 'Medida';
+
+  @override
+  String get s4cd3d92d4c => 'Encendido';
+
+  @override
+  String get s750f16460c => 'Encender/apagar';
+
+  @override
+  String get s7a544fe304 => 'Valor de conjunto';
+
+  @override
+  String get s929344a68b => 'Prensa';
+
+  @override
+  String get s02cfe06e04 => 'Escena';
+
+  @override
+  String get sdb235c3ced => '(sin escenas)';
+
+  @override
+  String get sdced476aeb => 'Script';
+
+  @override
+  String get s4f330bfcfb => '(sin guiones)';
+
+  @override
+  String get s8a8673aafe => 'Título';
+
+  @override
+  String get s34900f9d58 => 'Texto';
+
+  @override
+  String get s3c2ee8fe0d => '{summary} = tiempo, precio y estado del hogar';
+
+  @override
+  String get sd84d87d156 => 'Prioridad';
+
+  @override
+  String get sb55a08c07c => '1 – silencio';
+
+  @override
+  String get s423418208e => '2 – bajo';
+
+  @override
+  String get sbad27a6b89 => '3 – normal';
+
+  @override
+  String get s8c17000b91 => '4 – alta';
+
+  @override
+  String get sa0738def3a => '5 – urgente (también en horas tranquilas)';
+
+  @override
+  String get sb33001c92e => 'Abre el grifo';
+
+  @override
+  String get s07d7410408 => 'la aplicación';
+
+  @override
+  String get sfb10dd528e => 'Segundos';
+
+  @override
+  String get sd7ab969914 => 'En la mayoría de los segundos';
+
+  @override
+  String get sccfe5a0d41 => 'Entonces...';
+
+  @override
+  String get s2d983e951b => 'Else';
+
+  @override
+  String get sf936d0b01d => 'Arriba';
+
+  @override
+  String get s2c7a2bbac1 => 'Nuevo guión';
+
+  @override
+  String get s5b2dd17cbc =>
+      'Un script es una lista de pasos: controle un dispositivo, espere, notifique, si/else... Ejecutelo desde un botón, una automatización o remotamente (iPhone Shortcut).';
+
+  @override
+  String get s6fe2320f3d => 'Para';
+
+  @override
+  String get se9ee46a9c8 => 'Corre';
+
+  @override
+  String get sfd2d047cb2 => 'Avanzado';
+
+  @override
+  String s766b50721b(String p0) {
+    return '$p0 pasos';
+  }
+
+  @override
+  String get s061d1b874b => 'remoto';
+
+  @override
+  String get sb886978015 => 'Editar script';
+
+  @override
+  String get scc2c1e2508 => 'Corrección de registro';
+
+  @override
+  String get sacf2fbc495 => '¿Supir el guión?';
+
+  @override
+  String get s01de653429 => 'Pasos';
+
+  @override
+  String get s01d3c353e2 => 'Código';
+
+  @override
+  String get s637ae4dbf4 => 'Molaplan script';
+
+  @override
+  String get sea09cb0d3b =>
+      'Funciones: ponerse en marcha toggle wait notify scene price cheap temp time hour weekday log. Ningún archivo o acceso a la red; 10 min time limit.';
+
+  @override
+  String get s26e23ef341 => 'Permitir el funcionamiento remoto (PIN)';
+
+  @override
+  String get sd573107aec =>
+      'Un mensaje ntfy o un atajo de iPhone comienza el script.';
+
+  @override
+  String get s0a5410ea4f => 'PIN remoto (al menos 4 caracteres)';
+
+  @override
+  String sceba001122(String p0, String p1, String p2, String p3) {
+    return 'Enviar \"corrido $p0 \"PIN confianza\" a $p1\nAtajos para iPhone: \"Obtenga contenido de URL\" → $p1, método POST, body: run $p0  ⁇ PIN confianza';
+  }
+
+  @override
+  String get seff0aac16e => 'Copiar URL';
+
+  @override
+  String get sff9b69c6ca => 'Listo';
+
+  @override
+  String get sf1ed05f7de => 'Button a la vista';
+
+  @override
+  String sf1541ca978(String p0) {
+    return 'Button añadió a $p0';
+  }
+
+  @override
+  String get s09f745552a => 'Guardar el estado actual';
+
+  @override
+  String get s44367fdec5 => 'Vacío';
+
+  @override
+  String get sc41824585d =>
+      'Una escena pone muchos dispositivos a la vez, por ejemplo, \"Noche de la luna\" o \"Todo fuera\".';
+
+  @override
+  String s7e7b0848fb(String p0) {
+    return '$p0 acciones';
+  }
+
+  @override
+  String get s7cdee3dc7d => '¿Qué dispositivos van en la escena?';
+
+  @override
+  String get sde0d544a4c => 'Nombre de escena';
+
+  @override
+  String get scff2a13871 => 'por ejemplo, noche de cine';
+
+  @override
+  String get se3ba6a13bb => 'Nueva escena';
+
+  @override
+  String get s020a1af0d8 => 'Editar escena';
+
+  @override
+  String get s4dbd6f62bf => '¿Supir la escena?';
+
+  @override
+  String get se250251ff0 => 'Notificaciones de empuje';
+
+  @override
+  String get s91a8948ad7 =>
+      'A través de ntfy (no se necesita cuenta de Google)';
+
+  @override
+  String get sbdd6c9bad2 => 'Mostrar en este dispositivo';
+
+  @override
+  String get se1e0d398d7 =>
+      'La aplicación escucha las notificaciones mientras se ejecuta (en Windows también desde la bandeja).';
+
+  @override
+  String get s6993f32ed2 => 'Ejecutar las automatizaciónes en esta aplicación';
+
+  @override
+  String get sc0f6ea8ebe =>
+      'Cuando no hay puente casero. Un puente casero siempre los dirige, también mientras la aplicación está cerrada.';
+
+  @override
+  String get sb35519f8e9 => 'Cerca de la bandeja';
+
+  @override
+  String get s49ca9b6082 =>
+      'Cerrar la ventana mantiene Molaplan al lado del reloj para que las notificaciones lleguen.';
+
+  @override
+  String get sc6d6d4016e => 'Teléfono, cuando Molaplan está cerrado';
+
+  @override
+  String get sb460bbf010 =>
+      'Instala la aplicación ntfy (Android: Google Play / F-Droid, iPhone: App Store) y suscríbete a este tema. Las notificaciones llegan incluso cuando Molaplan está cerrado.';
+
+  @override
+  String get saa54f34e98 => 'Copiar el enlace de suscripción';
+
+  @override
+  String get s8f19ff1e21 => 'Horas tranquilas';
+
+  @override
+  String get s1cc7f7a75f => 'Sólo urgente (5) vienen a través.';
+
+  @override
+  String get s973f30f5e8 => 'De (HH:MM)';
+
+  @override
+  String get sb13eeff3cd => 'A (HH:MM)';
+
+  @override
+  String get s2f7a5f57b1 => 'Mute';
+
+  @override
+  String get sa81c1da011 => '1 hora';
+
+  @override
+  String get s0ca30924bd => '8 horas';
+
+  @override
+  String get s38bb718aaf => '24 horas';
+
+  @override
+  String s36ef8a86e1(String p0) {
+    return 'Unmute (hasta $p0)';
+  }
+
+  @override
+  String get s0183ae0a12 => 'Enviar una notificación de prueba';
+
+  @override
+  String get sd95091858f => 'Molaplan notifications work';
+
+  @override
+  String get s58a8bfdd9f => 'Test enviado';
+
+  @override
+  String get s5c380d76b6 => 'Últimas';
+
+  @override
+  String get s9d75942e41 => 'Automatización lista';
+
+  @override
+  String get s70860413a1 =>
+      'Luces al atardecer, fuga de agua → alarma, horas baratas...';
+
+  @override
+  String get s8b5be90c1e => 'Su propia automatización';
+
+  @override
+  String get sa9402c105a => 'Cuándo / Si / Do';
+
+  @override
+  String get s4102c7e085 => 'Escena del estado actual';
+
+  @override
+  String get s21ee7e78ee => 'Muchos dispositivos con un botón';
+
+  @override
+  String get s5afa6e08f2 => 'Pasos en orden, espera, si/else';
+
+  @override
+  String get s8070a25da8 => 'Grupo';
+
+  @override
+  String get sf5f1ae9c9e =>
+      'Por ejemplo, todas las luces de la sala de estar como una tarjeta';
+
+  @override
+  String get s73f89f4de7 => '¿Qué dispositivos van en el grupo?';
+
+  @override
+  String get s5b68340d84 => 'Nombre del grupo';
+
+  @override
+  String s1b087cdbbd(String p0) {
+    return 'Todos: $p0';
+  }
 
   @override
   String get s876c7230a2 => 'Añadir dispositivo';
@@ -2330,6 +3008,17 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s9126bf24a0 => 'Sol';
 
   @override
+  String get sdaa7d4de12 => 'Escena';
+
+  @override
+  String get sfe55fd97fa => 'Todo tranquilo.';
+
+  @override
+  String s162c54ed4c(String p0) {
+    return '$p0: hecho';
+  }
+
+  @override
   String get s306729fe62 => 'No hay precios';
 
   @override
@@ -2505,9 +3194,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sc51b1e0dc0 => '¿Qué quieres añadir?';
 
   @override
-  String get s67584c9abf => 'Dispositivo';
-
-  @override
   String get s38f5b2ef26 =>
       'Shelly, Sonoff, Hue, cámara, bomba de calor... Busca tu red de inicio automáticamente.';
 
@@ -2517,6 +3203,10 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sfc846c4cc5 =>
       'Precio de electricidad, tiempo, cámara, calibre, notificación o comando – ningún nuevo dispositivo necesario.';
+
+  @override
+  String get sf00aa23cf6 =>
+      'Cuando... si... hacer: luces al atardecer, una alerta de fugas, las horas más baratas, guiones y escenas.';
 
   @override
   String get s147f47be4c => 'Añadir tarjeta';
@@ -2590,9 +3280,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sbc44ce6993 =>
       'Este dispositivo ya no puede llegar a casa desde fuera. Puedes emparejar de nuevo en cualquier momento.';
-
-  @override
-  String get s9593939a4c => 'Quitar';
 
   @override
   String get s3563cb1635 => 'Eliminar el acceso remoto';
@@ -2797,9 +3484,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sa684fd0716 => 'Editar tarjeta';
 
   @override
-  String get s8a8673aafe => 'Título';
-
-  @override
   String get scf37cbeda8 => 'Icono';
 
   @override
@@ -2904,6 +3588,49 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s77d2309fd5 => 'Retraso antes (ms)';
+
+  @override
+  String get s2b463f47ba => 'Escóndete';
+
+  @override
+  String get s2594346d86 => 'Directriz';
+
+  @override
+  String get sfdffaffea4 => 'Ninguno';
+
+  @override
+  String get sd6c2de0256 => 'Horizontal';
+
+  @override
+  String get sb8ef66c33e => 'Grid';
+
+  @override
+  String get s0bee1b8ed3 => 'Escala de valores';
+
+  @override
+  String get sd4e9b57931 => 'Eje del tiempo';
+
+  @override
+  String get s7abdb12fef => 'Marcadores de puntos de datos';
+
+  @override
+  String get s29135ed75a =>
+      'Auto: ejes y líneas de guía muestran cuando la tarjeta es al menos 2×2.';
+
+  @override
+  String get s939603242a => 'Colores por valor';
+
+  @override
+  String get s45f927bc62 => 'Aduanas';
+
+  @override
+  String get s319dab47d8 => 'Smooth';
+
+  @override
+  String get s613fbec20e => 'Pasos';
+
+  @override
+  String get s25d9db075e => 'Límites y colores propios: Ajustes → Avanzado.';
 
   @override
   String get sc0f5a14d2b => 'umbrales de color (valor ≥ límite → color)';
@@ -3348,6 +4075,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sa6212aaeb4 => 'Ubicación';
 
   @override
+  String get s902eaaff9f => 'Abierto';
+
+  @override
   String get s12c2f8e6e4 => 'Solo en la red de casa';
 
   @override
@@ -3395,9 +4125,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sd1c7d49360 => 'Respuesta a la respuesta';
-
-  @override
-  String get s38ac222392 => 'Valor';
 
   @override
   String get s29fae6a0e8 => 'Control por precio activado';
@@ -3448,12 +4175,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sbe76826428 => 'Ventiladores';
 
   @override
-  String get s6b7c1c52da => 'Escenas';
-
-  @override
-  String get s9f1334d4e2 => 'Scripts';
-
-  @override
   String get s4b53bcaaf0 => 'Botones';
 
   @override
@@ -3461,9 +4182,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s3c2ed0c522 => 'Interruptores auxiliares';
-
-  @override
-  String get se9ca7cb470 => 'Automatizaciones';
 
   @override
   String get sea20d169a3 => 'Jugadores de medios';
@@ -3602,6 +4320,12 @@ class AppLocalizationsEs extends AppLocalizations {
       'La imagen es arrugada (≤ 200 KB) y se mantiene en este dispositivo solamente.';
 
   @override
+  String get sc80648d495 => 'Show Molaplan';
+
+  @override
+  String get sa4e9c86a86 => 'Quit';
+
+  @override
   String get s4dab2d409b => 'Configuración de las exportaciones';
 
   @override
@@ -3705,6 +4429,11 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sd178a1d809 =>
       'Su propia terminal de control: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP y UDP. Sin una cuenta, todos los ajustes permanecen en este dispositivo.';
+
+  @override
+  String s84819cca05(String p0) {
+    return 'Última alarma $p0';
+  }
 
   @override
   String get se455dc672b => 'Paso';
@@ -3945,9 +4674,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s4f356d158a => 'Refresh (s, snapshot)';
-
-  @override
-  String get sca7e088857 => 'Precio de la electricidad';
 
   @override
   String get s2525f9a4f5 =>
@@ -4504,6 +5230,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sb25aad3bc2 => 'Salgo de casa';
 
   @override
+  String get s4cac4725b8 => 'Los dispositivos del grupo no responden';
+
+  @override
   String get s7e461faf91 =>
       'Encuéntrelo en la lista de dispositivos del router o en la aplicación del dispositivo. También puede pulsar \"Búsqueda de red\".';
 
@@ -4985,9 +5714,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get saa437260b8 => 'Estado enviado (IR es de una sola dirección)';
-
-  @override
-  String get sfffb54daf4 => 'Estado';
 
   @override
   String get seab2c72485 => 'Fan (0 = auto)';

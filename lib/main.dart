@@ -1,5 +1,6 @@
 import 'state/net_health.dart';
 
+import 'dart:async';
 import 'dart:io';
 
 import 'package:cupertino_ui/cupertino_ui.dart' show GlobalCupertinoLocalizations;
@@ -12,7 +13,10 @@ import 'state/app_state.dart';
 import 'state/storage.dart';
 import 'ui/rtsp_view.dart';
 import 'ui/app_scope.dart';
+import 'ui/desktop_tray.dart';
 import 'ui/home_page.dart';
+import 'ui/notify.dart';
+import 'ui/push_listener.dart';
 import 'ui/remote_pages.dart';
 import 'ui/theme.dart';
 import 'l10n/gen/app_localizations.dart';
@@ -37,6 +41,10 @@ Future<void> main() async {
   await state.load();
   if (state.config.bridgeMode) await keepScreenOn(true);
   state.update.autoCheck = true;
+  // t128u: notification taps (molaplan://tile/ID), the Windows tray, Android permission.
+  await DeepLinks.init();
+  await DesktopTray.init(state);
+  if (state.config.automation.automations.isNotEmpty) unawaited(LocalNotify.askPermission());
   runApp(MolaplanApp(state: state));
 }
 
@@ -72,7 +80,7 @@ class MolaplanApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
-        home: const HomePage(),
+        home: PushListener(navigator: navigatorKey, child: const HomePage()),
       ),
     );
   }

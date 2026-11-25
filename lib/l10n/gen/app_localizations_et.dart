@@ -233,6 +233,36 @@ class AppLocalizationsEt extends AppLocalizations {
   String get se78754330c => 'võimsus';
 
   @override
+  String get se317f59de2 => 'VUOTO!';
+
+  @override
+  String get se4c4201882 => 'Lekk!';
+
+  @override
+  String get sdbcf5515c1 => 'Auki';
+
+  @override
+  String get sb0af7213b5 => 'Avage';
+
+  @override
+  String get sa3477dac6e => 'Liikettä';
+
+  @override
+  String get s280df88585 => 'Liikumine';
+
+  @override
+  String get s064a959911 => 'SAVUA!';
+
+  @override
+  String get s50778e2eec => 'Suitsu!';
+
+  @override
+  String get s1dfa5abe81 => 'Hälytys';
+
+  @override
+  String get s50c459fbff => 'Häire';
+
+  @override
   String get s1a4eab1f51 => '°C';
 
   @override
@@ -367,6 +397,12 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sf50732e8e8 => 'hämardada';
+
+  @override
+  String get s68e711123b => 'temperatuur';
+
+  @override
+  String get s4082a34467 => 'sensor';
 
   @override
   String s3832b8c729(String p0) {
@@ -511,6 +547,9 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String get s4233362d60 => 'Veelekke andur';
+
+  @override
   String get sfcb44be1a0 => 'Shelly';
 
   @override
@@ -520,6 +559,9 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sd7e123cd2f =>
       'Shelly rakenduses: open the device → gear (settings) → Device information → IP- aadress. Või ruuteri seadmete nimekirjas: nimi algab sõnaga \"shelly...\".';
+
+  @override
+  String get s9ad7b0076b => 'lekkeandur · aku';
 
   @override
   String get s5f2b2ca5f5 => 'praegu sees';
@@ -679,6 +721,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get scd04aa5d9e => 'Muuda vaadet';
+
+  @override
+  String get se9ca7cb470 => 'Automatiseerimine';
 
   @override
   String get s49de879696 => 'Energia';
@@ -1709,10 +1754,16 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s9027c88cb7 => 'Andmete kogumine...';
 
   @override
+  String get sf05d2a09f1 => '7 d';
+
+  @override
   String get se38a9bb2ed => 'Viimane';
 
   @override
   String get s049d71f971 => 'viimase';
+
+  @override
+  String get sed9b5e52f6 => 'praegu';
 
   @override
   String get s55d52c5ae1 => 'See seade ei ole Wi-Fi-s';
@@ -2025,7 +2076,633 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s856a422504 => 'Kaugjuurdepääsu seadistamine';
 
   @override
+  String get sc3abd09cd9 => 'Kohandatud värv';
+
+  @override
+  String get s10e7cef8c1 => 'Hue';
+
+  @override
+  String get s59b65e3322 => 'Küllastus';
+
+  @override
+  String get s750ed8d878 => 'Heledus';
+
+  @override
+  String get sa39e78050c => 'Vali';
+
+  @override
   String get sd9923cda70 => 'Lülitage kaugjuurdepääs sisse';
+
+  @override
+  String get sba1684ff6c => 'veel mitte';
+
+  @override
+  String get sef20071510 => 'Käivita ajalugu';
+
+  @override
+  String get s9f1334d4e2 => 'Skriptid';
+
+  @override
+  String get s6b7c1c52da => 'Stseenid';
+
+  @override
+  String get s8613961a5a => 'Teated';
+
+  @override
+  String get s4f745952b8 =>
+      'Töötab sellel kodusillal, ka siis, kui rakendus on suletud.';
+
+  @override
+  String get s99cbed55fd =>
+      'Kodusillal töötamine - töötab isegi siis, kui rakendus on suletud.';
+
+  @override
+  String get s0247948956 =>
+      'Kodusild on vana versioon: uuenda seda, nii et rakenduse sulgemise ajal käivituvad ka automatiseerimised. Praegu töötab see rakendus.';
+
+  @override
+  String get s21fae60578 =>
+      'Selles rakenduses töötab, kui see on avatud. Kodusild käivitab need, kui rakendus on suletud.';
+
+  @override
+  String get s66c54e2286 =>
+      'Automatiseerimine on selles seadmes välja lülitatud.';
+
+  @override
+  String get s4057f67774 => 'Mon Tue Wed Thu Fri Sat Sun';
+
+  @override
+  String get s456d234874 => '(seade puudub)';
+
+  @override
+  String get sf3779b50c6 => 'sees';
+
+  @override
+  String get s7c3e905972 => 'At';
+
+  @override
+  String get s61637a44e4 => 'Sunrise';
+
+  @override
+  String get sa0d5958b56 => 'Sunset';
+
+  @override
+  String s467fd3c653(String p0) {
+    return '$p0 odavaim tööaeg';
+  }
+
+  @override
+  String s65660a4b23(String p0) {
+    return 'Hind üle $p0 c/kWh';
+  }
+
+  @override
+  String sba8fa4af37(String p0) {
+    return 'Hind alla $p0 c/kWh';
+  }
+
+  @override
+  String get s3324b26519 => 'Õues';
+
+  @override
+  String sf3c2cf0323(String p0, String p1) {
+    return '$p0 offline $p1 min';
+  }
+
+  @override
+  String get s1b359d69e2 => 'Automatiseerimise loomine';
+
+  @override
+  String get s835865fd04 => 'Mallid';
+
+  @override
+  String get s2b57f716aa =>
+      'Automaatikat veel ei ole. Alusta mallist, nt \"Valgused päikeseloojangu ajal\" või \"Veeleke → häire\".';
+
+  @override
+  String get s8039add5ed => 'Pealkirjata';
+
+  @override
+  String get s5506524eac => 'Millal';
+
+  @override
+  String get sf2d3a43ee8 => 'Jooksu veel pole.';
+
+  @override
+  String get s5c7338ab38 => 'Valmis automatiseerimine';
+
+  @override
+  String get s354eb362d8 => 'Seadme valimine';
+
+  @override
+  String get s73a65d7dff => 'Seadmete valimine';
+
+  @override
+  String get s6bc0df13b3 => 'Seadmeid veel pole.';
+
+  @override
+  String get s90db0cb9e0 => 'Uus automatiseerimine';
+
+  @override
+  String get s3aeb373060 => 'Muuda automatiseerimist';
+
+  @override
+  String get sac3c555554 => 'Kustuta automaatika?';
+
+  @override
+  String get s53879bce24 => 'Millest algab automatiseerimine';
+
+  @override
+  String get s179f389617 => 'Ainult juhul (vabatahtlik)';
+
+  @override
+  String get s803ff4f73b => 'Kõik tingimused peavad vastama';
+
+  @override
+  String get sd930bdad70 => 'Lisa tingimus';
+
+  @override
+  String get s6f21edea24 => 'Tee';
+
+  @override
+  String get scbe17b6bf8 => 'Nõuetekohased hagid';
+
+  @override
+  String get secee53bdd2 => 'Veel rohkem';
+
+  @override
+  String get scb62f41105 => 'Jooksudevaheline minimaalne minutite arv';
+
+  @override
+  String get s643b680e89 =>
+      'Peatab näiteks lehvitusanduri kümnete teadete saatmise.';
+
+  @override
+  String get s4c4ab28899 => 'Testi nüüd';
+
+  @override
+  String s7956c29b83(String p0) {
+    return 'Jooksus: $p0';
+  }
+
+  @override
+  String get s6e85ff5983 => '(Ilma seadmeteta)';
+
+  @override
+  String get sa627de5699 => '>';
+
+  @override
+  String get s24801cdec0 => '<';
+
+  @override
+  String get sef6eef049e => '≥';
+
+  @override
+  String get s5d759b1fd0 => '≤';
+
+  @override
+  String get sc67c2076cc => '=';
+
+  @override
+  String get sf69ef2bd3e => '≠';
+
+  @override
+  String get sc300fc12e3 => 'Seadme väärtus';
+
+  @override
+  String get sbab0e0dc9d => 'Seadme olek (sisse/välja lülitatud, andur)';
+
+  @override
+  String get s76de9025a1 => 'Kellaaeg';
+
+  @override
+  String get s04c0bcdd51 => 'Päikesetõus / päikeseloojang';
+
+  @override
+  String get sca7e088857 => 'Elektri hind';
+
+  @override
+  String get s869f0d57af => 'Ilm (välistemperatuur)';
+
+  @override
+  String get sa4261f6e35 => 'Seade ei vasta';
+
+  @override
+  String get s67584c9abf => 'Seade';
+
+  @override
+  String get se0a362c060 => 'Tüüp';
+
+  @override
+  String get s38ac222392 => 'Väärtus';
+
+  @override
+  String get s4f62fd1f09 => 'Kui see pöördub';
+
+  @override
+  String get sab64be3b87 => 'alarmis';
+
+  @override
+  String get sbfd08915bd => 'maha / rahulik';
+
+  @override
+  String get s0aaa16b331 => 'Aeg (TT:MM)';
+
+  @override
+  String get s9b4b2b3129 => 'Sündmus';
+
+  @override
+  String get s8c6de5d661 => 'Tasandus minutites (−60...60)';
+
+  @override
+  String get s59b3e665bf => 'Millal';
+
+  @override
+  String get s6a23c4a83f => 'Hind allpool';
+
+  @override
+  String get s49083cabf7 => 'Hinnatõus';
+
+  @override
+  String get s411924155f => 'Odavaimad tunnid päevas';
+
+  @override
+  String get s04dc35851a => 'Tundide arv';
+
+  @override
+  String get s6f22fd8c19 => 'Protokollid';
+
+  @override
+  String get s32fa6270c8 => 'Puudub valitud = iga päev';
+
+  @override
+  String get s966e223f86 => 'Ajaaken';
+
+  @override
+  String get s45aae9c551 => 'Nädalapäevad';
+
+  @override
+  String get sf05bf9c751 => 'Seadme olek / väärtus';
+
+  @override
+  String get sb74370fc1e => 'Välistemperatuur';
+
+  @override
+  String get s585b4c519f => 'Tume/valgus';
+
+  @override
+  String get s6019108a01 => 'Seisund';
+
+  @override
+  String get s9593939a4c => 'Eemalda';
+
+  @override
+  String get sc26d444f90 => 'Alates';
+
+  @override
+  String get s796739363a => 'To';
+
+  @override
+  String get s39d9f766c6 => 'Võrdle';
+
+  @override
+  String get sa56aea2cf9 => 'Olek on sisse/välja lülitatud';
+
+  @override
+  String get sc2521b6b15 => 'Number';
+
+  @override
+  String get sfffb54daf4 => 'Olek';
+
+  @override
+  String get se2b3e45118 => 'tume';
+
+  @override
+  String get s709da04ca2 => 'valgus';
+
+  @override
+  String get s723d015dc1 => 'Lisage toiming';
+
+  @override
+  String get sae3489a6c9 => 'Seadme juhtimine';
+
+  @override
+  String get s1f6962ba39 => 'Käivita stseen';
+
+  @override
+  String get s02df6d430a => 'Skripti käivitamine';
+
+  @override
+  String get sed67c16508 => 'Saatke teade';
+
+  @override
+  String get s654489bb29 => 'Oota';
+
+  @override
+  String get sf216517af2 => 'Oota';
+
+  @override
+  String get sde1657b024 => 'Kui / muidu';
+
+  @override
+  String get sbc8e165fbf => 'Action';
+
+  @override
+  String get s4cd3d92d4c => 'Sees';
+
+  @override
+  String get s750f16460c => 'Sisse/välja';
+
+  @override
+  String get s7a544fe304 => 'Määra väärtus';
+
+  @override
+  String get s929344a68b => 'Pressi';
+
+  @override
+  String get s02cfe06e04 => 'Stseen';
+
+  @override
+  String get sdb235c3ced => '(Pole stseene)';
+
+  @override
+  String get sdced476aeb => 'Skript';
+
+  @override
+  String get s4f330bfcfb => '(Skripte pole)';
+
+  @override
+  String get s8a8673aafe => 'Pealkiri';
+
+  @override
+  String get s34900f9d58 => 'Tekst';
+
+  @override
+  String get s3c2ee8fe0d => '{Kokkuvõte} = ilm, hind ja koduriik';
+
+  @override
+  String get sd84d87d156 => 'Prioriteet';
+
+  @override
+  String get sb55a08c07c => '1 – vaikiv';
+
+  @override
+  String get s423418208e => '2 – madal';
+
+  @override
+  String get sbad27a6b89 => '3 – normaalne';
+
+  @override
+  String get s8c17000b91 => '4 – kõrge';
+
+  @override
+  String get sa0738def3a => '5 – kiireloomuline (ka vaiksetel tundidel)';
+
+  @override
+  String get sb33001c92e => 'Kraan avaneb';
+
+  @override
+  String get s07d7410408 => 'äpp';
+
+  @override
+  String get sfb10dd528e => 'Sekundeid';
+
+  @override
+  String get sd7ab969914 => 'Kõige rohkem sekundeid';
+
+  @override
+  String get sccfe5a0d41 => 'Siis';
+
+  @override
+  String get s2d983e951b => 'Else';
+
+  @override
+  String get sf936d0b01d => 'Üles';
+
+  @override
+  String get s2c7a2bbac1 => 'Uus käsikiri';
+
+  @override
+  String get s5b2dd17cbc =>
+      'Skript on sammude loend: juhtige seadet, oodake, teavitage, kui / muidu ... käivitage see nupust, automatiseerimisest või kaugjuhtimisest (iPhone\'i kiirklahv).';
+
+  @override
+  String get s6fe2320f3d => 'Lõpeta';
+
+  @override
+  String get se9ee46a9c8 => 'Jookse';
+
+  @override
+  String get sfd2d047cb2 => 'Täpsem';
+
+  @override
+  String s766b50721b(String p0) {
+    return '$p0 samme';
+  }
+
+  @override
+  String get s061d1b874b => 'kaugjuhtimispult';
+
+  @override
+  String get sb886978015 => 'Skripti redigeerimine';
+
+  @override
+  String get scc2c1e2508 => 'Käivita logi';
+
+  @override
+  String get sacf2fbc495 => 'Kustuta skript?';
+
+  @override
+  String get s01de653429 => 'Sammud';
+
+  @override
+  String get s01d3c353e2 => 'Kood';
+
+  @override
+  String get s637ae4dbf4 => 'Molaplani skript';
+
+  @override
+  String get sea09cb0d3b =>
+      'Funktsioonid: lülita välja lülitamine ootamine teatamine stseeni hind odavaim temp aeg tunnis tööpäeva logi. Faili või võrgu kasutamine puudub; 10 min ajapiirang.';
+
+  @override
+  String get s26e23ef341 => 'Kaugkäivituse (PIN) lubamine';
+
+  @override
+  String get sd573107aec =>
+      'Ntfy sõnum või iPhone\'i otsetee käivitab skripti.';
+
+  @override
+  String get s0a5410ea4f => 'Kaugjuhitav PIN (vähemalt 4 märki)';
+
+  @override
+  String sceba001122(String p0, String p1, String p2, String p3) {
+    return 'Saada \"run $p0 <PIN>\" aadressile $p1\niPhone\'i kiirklahvid: \"Get Contents of URL\" → $p1, meetod POST, body: run $p0 <PIN>';
+  }
+
+  @override
+  String get seff0aac16e => 'Kopeeri URL';
+
+  @override
+  String get sff9b69c6ca => 'Valmis';
+
+  @override
+  String get sf1ed05f7de => 'Nupp vaateväljas';
+
+  @override
+  String sf1541ca978(String p0) {
+    return 'Nupp lisatud $p0';
+  }
+
+  @override
+  String get s09f745552a => 'Salvesta aktiivne olek';
+
+  @override
+  String get s44367fdec5 => 'Tühi';
+
+  @override
+  String get sc41824585d =>
+      'Stseen seab korraga mitu seadet, nt \"Movie Night\" või \"All off\".';
+
+  @override
+  String s7e7b0848fb(String p0) {
+    return '$p0 tegevused';
+  }
+
+  @override
+  String get s7cdee3dc7d => 'Millised seadmed sündmuskohal käivad?';
+
+  @override
+  String get sde0d544a4c => 'Stseen';
+
+  @override
+  String get scff2a13871 => 'Nt filmiõhtu';
+
+  @override
+  String get se3ba6a13bb => 'Uus stseen';
+
+  @override
+  String get s020a1af0d8 => 'Muuda stseeni';
+
+  @override
+  String get s4dbd6f62bf => 'Kustuta stseen?';
+
+  @override
+  String get se250251ff0 => 'Vajuta teateid';
+
+  @override
+  String get s91a8948ad7 => 'Läbi ntfy (Google\'i kontot pole vaja)';
+
+  @override
+  String get sbdd6c9bad2 => 'Näita seda seadet';
+
+  @override
+  String get se1e0d398d7 =>
+      'Rakendus kuulab töötamise ajal teateid (aknas ka salvest).';
+
+  @override
+  String get s6993f32ed2 => 'Automaatika käivitamine selles rakenduses';
+
+  @override
+  String get sc0f6ea8ebe =>
+      'Kui kodusilla ei ole. Kodusild töötab alati, ka siis, kui rakendus on suletud.';
+
+  @override
+  String get sb35519f8e9 => 'Salvi lähedal';
+
+  @override
+  String get s49ca9b6082 =>
+      'Akna sulgemine hoiab Molaplani kella kõrval, nii et teated saabuvad.';
+
+  @override
+  String get sc6d6d4016e => 'Telefon, kui Molaplan on suletud';
+
+  @override
+  String get sb460bbf010 =>
+      'Paigaldab ntfy rakenduse (Android: Google Play / F- Droid, iPhone: App Store) ja tellib selle teema. Teated saabuvad ka siis, kui Molaplan on suletud.';
+
+  @override
+  String get saa54f34e98 => 'Kopeeri tellimise link';
+
+  @override
+  String get s8f19ff1e21 => 'Vaiksed tunnid';
+
+  @override
+  String get s1cc7f7a75f => 'Ainult kiire (5) tuleb läbi.';
+
+  @override
+  String get s973f30f5e8 => '(HH:MM)';
+
+  @override
+  String get sb13eeff3cd => '(HH:MM)';
+
+  @override
+  String get s2f7a5f57b1 => 'Tumm';
+
+  @override
+  String get sa81c1da011 => '1 tund';
+
+  @override
+  String get s0ca30924bd => '8 tundi';
+
+  @override
+  String get s38bb718aaf => '24 tundi';
+
+  @override
+  String s36ef8a86e1(String p0) {
+    return 'Muttetu (kuni $p0)';
+  }
+
+  @override
+  String get s0183ae0a12 => 'Saada testteatis';
+
+  @override
+  String get sd95091858f => 'Molaplani teated töötavad';
+
+  @override
+  String get s58a8bfdd9f => 'Test saadeti';
+
+  @override
+  String get s5c380d76b6 => 'Viimane';
+
+  @override
+  String get s9d75942e41 => 'Valmis automatiseerimine';
+
+  @override
+  String get s70860413a1 =>
+      'Päikeseloojangu tuled, veeleke → alarm, odavad tunnid...';
+
+  @override
+  String get s8b5be90c1e => 'Sinu enda automatiseerimine';
+
+  @override
+  String get sa9402c105a => 'Millal / Kui / Do';
+
+  @override
+  String get s4102c7e085 => 'Stseen praegusest olekust';
+
+  @override
+  String get s21ee7e78ee => 'Paljud seadmed ühe nupuga';
+
+  @override
+  String get s5afa6e08f2 => 'Sammud järjekorras, ootavad, kui/muu';
+
+  @override
+  String get s8070a25da8 => 'Grupp';
+
+  @override
+  String get sf5f1ae9c9e => 'Nt kõik elutoa tuled ühe kaardina';
+
+  @override
+  String get s73f89f4de7 => 'Millised seadmed grupis käivad?';
+
+  @override
+  String get s5b68340d84 => 'Grupi nimi';
+
+  @override
+  String s1b087cdbbd(String p0) {
+    return 'Kõik: $p0';
+  }
 
   @override
   String get s876c7230a2 => 'Lisa seade';
@@ -2315,6 +2992,17 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s9126bf24a0 => 'Päike';
 
   @override
+  String get sdaa7d4de12 => 'Stseen';
+
+  @override
+  String get sfe55fd97fa => 'Kõik on vaikne.';
+
+  @override
+  String s162c54ed4c(String p0) {
+    return '$p0: tehtud';
+  }
+
+  @override
   String get s306729fe62 => 'Hindadeta';
 
   @override
@@ -2489,9 +3177,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sc51b1e0dc0 => 'Mida sa lisada tahad?';
 
   @override
-  String get s67584c9abf => 'Seade';
-
-  @override
   String get s38f5b2ef26 =>
       'Shelly, Sonoff, Hue, kaamera, soojuspump... otsib su koduvõrgust automaatselt läbi.';
 
@@ -2501,6 +3186,10 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sfc846c4cc5 =>
       'Elektri hind, ilm, kaamera, gabariit, märguanne või käsk – uut seadet pole vaja.';
+
+  @override
+  String get sf00aa23cf6 =>
+      'Millal... kui... teha: tuled päikeseloojangul, lekkehoiatus, odavaimad tunnid, skriptid ja stseenid.';
 
   @override
   String get s147f47be4c => 'Lisa kaart';
@@ -2573,9 +3262,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sbc44ce6993 =>
       'See seade ei saa siis enam väljastpoolt koju jõuda. Paarida võib igal ajal uuesti.';
-
-  @override
-  String get s9593939a4c => 'Eemalda';
 
   @override
   String get s3563cb1635 => 'Eemalda kaugjuurdepääs';
@@ -2779,9 +3465,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sa684fd0716 => 'Muuda kaarti';
 
   @override
-  String get s8a8673aafe => 'Pealkiri';
-
-  @override
   String get scf37cbeda8 => 'Ikoon';
 
   @override
@@ -2886,6 +3569,49 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s77d2309fd5 => 'Hilinemine enne (ms)';
+
+  @override
+  String get s2b463f47ba => 'Peida';
+
+  @override
+  String get s2594346d86 => 'Juhendid';
+
+  @override
+  String get sfdffaffea4 => 'Puudub';
+
+  @override
+  String get sd6c2de0256 => 'Horisontaalne';
+
+  @override
+  String get sb8ef66c33e => 'Võrk';
+
+  @override
+  String get s0bee1b8ed3 => 'Väärtusskaala';
+
+  @override
+  String get sd4e9b57931 => 'Ajatelg';
+
+  @override
+  String get s7abdb12fef => 'Andmepunktide markerid';
+
+  @override
+  String get s29135ed75a =>
+      'Automaatne: teljed ja juhtjooned näitavad, kui kaart on vähemalt 2×2.';
+
+  @override
+  String get s939603242a => 'Värvused väärtuse järgi';
+
+  @override
+  String get s45f927bc62 => 'Kohandatud';
+
+  @override
+  String get s319dab47d8 => 'Sujuv';
+
+  @override
+  String get s613fbec20e => 'Sammud';
+
+  @override
+  String get s25d9db075e => 'Oma piirid ja värvid: Seaded → Advanced.';
 
   @override
   String get sc0f5a14d2b => 'Värvikünnised (väärtus ≥ piir → värv)';
@@ -3326,6 +4052,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sa6212aaeb4 => 'Asukoht';
 
   @override
+  String get s902eaaff9f => 'Avage';
+
+  @override
   String get s12c2f8e6e4 => 'Ainult koduvõrgus';
 
   @override
@@ -3373,9 +4102,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sd1c7d49360 => 'Vasta';
-
-  @override
-  String get s38ac222392 => 'Väärtus';
 
   @override
   String get s29fae6a0e8 => 'Hinnajuhtimine sees';
@@ -3426,12 +4152,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sbe76826428 => 'Ventilaatorid';
 
   @override
-  String get s6b7c1c52da => 'Stseenid';
-
-  @override
-  String get s9f1334d4e2 => 'Skriptid';
-
-  @override
   String get s4b53bcaaf0 => 'Nööbid';
 
   @override
@@ -3439,9 +4159,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s3c2ed0c522 => 'Abilülitid';
-
-  @override
-  String get se9ca7cb470 => 'Automatiseerimine';
 
   @override
   String get sea20d169a3 => 'Meediamängijad';
@@ -3579,6 +4296,12 @@ class AppLocalizationsEt extends AppLocalizations {
       'Pilt on kahanenud (≤ 200 KB) ja seda hoitakse ainult sellel seadmel.';
 
   @override
+  String get sc80648d495 => 'Molaplani näitamine';
+
+  @override
+  String get sa4e9c86a86 => 'Lõpeta';
+
+  @override
   String get s4dab2d409b => 'Ekspordi konfiguratsioon';
 
   @override
@@ -3680,6 +4403,11 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sd178a1d809 =>
       'Oma juhtimisterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kaamerad, WebSocket, TCP ja UDP. Ilma kontota jäävad kõik seaded sellesse seadmesse.';
+
+  @override
+  String s84819cca05(String p0) {
+    return 'Viimane häire $p0';
+  }
 
   @override
   String get se455dc672b => 'Samm';
@@ -3918,9 +4646,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s4f356d158a => 'Värskendamine (s, hetktõmmis)';
-
-  @override
-  String get sca7e088857 => 'Elektri hind';
 
   @override
   String get s2525f9a4f5 =>
@@ -4474,6 +5199,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sb25aad3bc2 => 'Lahkun kodust';
 
   @override
+  String get s4cac4725b8 => 'Grupi seadmed ei vasta';
+
+  @override
   String get s7e461faf91 =>
       'Leia see ruuteri seadmete nimekirjast või seadme rakendusest. Samuti võid puudutada nuppu \"Otsi võrku\".';
 
@@ -4945,9 +5673,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get saa437260b8 => 'Saadetud olek (IR on ühesuunaline)';
-
-  @override
-  String get sfffb54daf4 => 'Olek';
 
   @override
   String get seab2c72485 => 'Ventilaator (0 = automaatne)';

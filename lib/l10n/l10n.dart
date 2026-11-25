@@ -48,9 +48,11 @@ class L10n {
   static RegExp _rx(String template) {
     final b = StringBuffer('^');
     var last = 0;
+    final seen = <String>{};
     for (final m in _ph.allMatches(template)) {
       b.write(RegExp.escape(template.substring(last, m.start)));
-      b.write('(?<p${m[1]}>.*?)');
+      // A placeholder used twice matches the same text again (named groups must be unique).
+      b.write(seen.add(m[1]!) ? '(?<p${m[1]}>.*?)' : '\\k<p${m[1]}>');
       last = m.end;
     }
     b.write(RegExp.escape(template.substring(last)));

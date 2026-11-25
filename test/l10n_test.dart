@@ -27,6 +27,8 @@ import 'package:molaplan/ui/template_gallery.dart';
 import 'package:molaplan/ui/theme.dart';
 
 import 'support/energy_seed.dart';
+import 'package:molaplan/automation/engine.dart';
+import 'package:molaplan/ui/automation_pages.dart';
 import 'support/l10n_getters.g.dart';
 
 /// Energy-release pages (thermostat, contract, meters, heating) – filled in as they are added.
@@ -137,6 +139,12 @@ void main() {
         for (final p in deviceProviders)
           AddDeviceWizard(provider: p, finder: (_) async => const [], locals: () async => const ['192.168.1.10']),
         ...extraL10nPages(st),
+        for (var i = 0; i < 4; i++) AutomationsPage(initialTab: i),
+        const AutomationEditor(),
+        for (final t in AutomationTemplate.all)
+          AutomationEditor(initial: t.build([st.config.dashboards.first.tiles.first.id], fi: lang == 'fi')),
+        const ScriptEditor(),
+        const SceneEditor(),
       ];
       for (final page in pages) {
         await tester.pumpWidget(

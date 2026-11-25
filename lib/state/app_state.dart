@@ -24,6 +24,7 @@ import '../account/supabase_api.dart' show AccountApi, Session;
 import 'tile_images.dart';
 import '../account/vault.dart' show defaultIterations;
 import 'account_state.dart';
+import 'auto_driver.dart';
 import 'automation_state.dart';
 import 'remote_state.dart';
 import 'storage.dart';
@@ -633,6 +634,7 @@ class AppState extends ChangeNotifier implements SyncHost {
   void debugSetDriver(String connId, Driver d) => _drivers[connId] = d;
 
   Driver? driverFor(String? connId) {
+    if (connId == autoConnId) return _drivers[autoConnId] ??= AutoDriver(this);
     final c = connection(connId);
     if (c == null) return null;
     return _drivers[c.id] ??= remote.router.wrap(c);
@@ -902,6 +904,21 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<void> setTileDensity(String v) async {
     config.tileDensity = v;
     await save();
+    notifyListeners();
+  }
+
+  /// Device-local switches (not synced): autoLocal, notifyInApp, trayOnClose.
+  Future<void> setDeviceFlag(String key, bool v) async {
+    switch (key) {
+      case 'autoLocal':
+        config.autoLocal = v;
+      case 'notifyInApp':
+        config.notifyInApp = v;
+      case 'trayOnClose':
+        config.trayOnClose = v;
+    }
+    await save();
+    automations.changed();
     notifyListeners();
   }
 

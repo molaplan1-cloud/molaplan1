@@ -12,6 +12,7 @@ import '../models/models.dart';
 import '../templates/device_templates.dart';
 import 'add_device_wizard.dart';
 import 'app_scope.dart';
+import 'automation_pages.dart';
 import 'connections_page.dart';
 import 'template_gallery.dart';
 import 'tile_editor.dart';
@@ -59,6 +60,18 @@ Future<void> showAddSheet(BuildContext context, {Dashboard? dashboard}) async {
               ),
               onTap: () => Navigator.pop(c, 'tile'),
             ),
+            const SizedBox(height: 10),
+            _Choice(
+              key: const ValueKey('add-choice-automation'),
+              icon: Icons.auto_mode,
+              title: tx(c, 'Luo automaatio', 'Create automation'),
+              desc: tx(
+                c,
+                'Kun… jos… tee: valot auringonlaskussa, ilmoitus vuodosta, halvimmat tunnit, skriptit ja tilannekuvat.',
+                'When… if… do: lights at sunset, a leak alert, the cheapest hours, scripts and scenes.',
+              ),
+              onTap: () => Navigator.pop(c, 'automation'),
+            ),
           ],
         ),
       ),
@@ -67,6 +80,8 @@ Future<void> showAddSheet(BuildContext context, {Dashboard? dashboard}) async {
   if (!context.mounted || pick == null) return;
   if (pick == 'device') {
     await ConnectionsPage.addNew(context, dashboard: d);
+  } else if (pick == 'automation') {
+    await showAutomationStart(context, dashboard: d);
   } else {
     await showServiceTileSheet(context, d);
   }

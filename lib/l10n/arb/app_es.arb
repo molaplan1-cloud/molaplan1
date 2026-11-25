@@ -217,6 +217,8 @@
  },
  "s4899323b9a": "Potencia",
  "se78754330c": "potencia",
+ "s280df88585": "Movimiento",
+ "s50c459fbff": "Alarma",
  "s1a4eab1f51": "°C",
  "s9e731440d8": "%",
  "s77c638e731": "%",
@@ -597,6 +599,10 @@
  "s41c3cebc48": "Añadir dispositivo",
  "scd04aa5d9e": "Editar la vista",
  "@scd04aa5d9e": {
+  "x-mt": true
+ },
+ "se9ca7cb470": "Automatizaciones",
+ "@se9ca7cb470": {
   "x-mt": true
  },
  "s49de879696": "Energía",
@@ -1440,6 +1446,7 @@
  "@s9027c88cb7": {
   "x-mt": true
  },
+ "sf05d2a09f1": "7 d",
  "se38a9bb2ed": "El último",
  "@se38a9bb2ed": {
   "x-mt": true
@@ -1754,6 +1761,31 @@
  "@sd9923cda70": {
   "x-mt": true
  },
+ "s9f1334d4e2": "Scripts",
+ "s6b7c1c52da": "Escenas",
+ "@s6b7c1c52da": {
+  "x-mt": true
+ },
+ "sf3779b50c6": "encendido",
+ "sa627de5699": ">",
+ "s24801cdec0": "<",
+ "sef6eef049e": "≥",
+ "s5d759b1fd0": "≤",
+ "sc67c2076cc": "=",
+ "sf69ef2bd3e": "≠",
+ "sca7e088857": "Precio de la electricidad",
+ "s67584c9abf": "Dispositivo",
+ "@s67584c9abf": {
+  "x-mt": true
+ },
+ "s38ac222392": "Valor",
+ "s9593939a4c": "Quitar",
+ "sfffb54daf4": "Estado",
+ "s4cd3d92d4c": "Encendido",
+ "s750f16460c": "Encender/apagar",
+ "s8a8673aafe": "Título",
+ "sfd2d047cb2": "Avanzado",
+ "sff9b69c6ca": "Listo",
  "s876c7230a2": "Añadir dispositivo",
  "s1e593aeca2": "Cerrar",
  "s3d00dee1a9": "Usar",
@@ -2141,10 +2173,6 @@
  "@sc51b1e0dc0": {
   "x-mt": true
  },
- "s67584c9abf": "Dispositivo",
- "@s67584c9abf": {
-  "x-mt": true
- },
  "s38f5b2ef26": "Shelly, Sonoff, Hue, cámara, bomba de calor... Busca tu red de inicio automáticamente.",
  "@s38f5b2ef26": {
   "x-mt": true
@@ -2227,7 +2255,6 @@
  "@sbc44ce6993": {
   "x-mt": true
  },
- "s9593939a4c": "Quitar",
  "s3563cb1635": "Eliminar el acceso remoto",
  "@s3563cb1635": {
   "x-mt": true
@@ -2419,7 +2446,6 @@
  },
  "sc5edd6d3d1": "Nueva tarjeta",
  "sa684fd0716": "Editar tarjeta",
- "s8a8673aafe": "Título",
  "scf37cbeda8": "Icono",
  "sfeab9bd26f": "Width",
  "@sfeab9bd26f": {
@@ -2529,6 +2555,7 @@
  "@s77d2309fd5": {
   "x-mt": true
  },
+ "sfdffaffea4": "Ninguno",
  "sc0f5a14d2b": "umbrales de color (valor ≥ límite → color)",
  "@sc0f5a14d2b": {
   "x-mt": true
@@ -2911,7 +2938,6 @@
  "@sd1c7d49360": {
   "x-mt": true
  },
- "s38ac222392": "Valor",
  "s29fae6a0e8": "Control por precio activado",
  "s59d55f8882": "Renombrar",
  "s25580038cb": "Separación de PIN",
@@ -2943,21 +2969,12 @@
   "x-mt": true
  },
  "sbe76826428": "Ventiladores",
- "s6b7c1c52da": "Escenas",
- "@s6b7c1c52da": {
-  "x-mt": true
- },
- "s9f1334d4e2": "Scripts",
  "s4b53bcaaf0": "Botones",
  "@s4b53bcaaf0": {
   "x-mt": true
  },
  "s5c92d42edd": "Entradas numéricas",
  "s3c2ed0c522": "Interruptores auxiliares",
- "se9ca7cb470": "Automatizaciones",
- "@se9ca7cb470": {
-  "x-mt": true
- },
  "sea20d169a3": "Jugadores de medios",
  "@sea20d169a3": {
   "x-mt": true
@@ -3390,7 +3407,6 @@
  "@s4f356d158a": {
   "x-mt": true
  },
- "sca7e088857": "Precio de la electricidad",
  "s2525f9a4f5": "Finlandia es una zona (FI). En Suecia y Noruega depende de dónde vives.",
  "@s2525f9a4f5": {
   "x-mt": true
@@ -4472,13 +4488,860 @@
  "@saa437260b8": {
   "x-mt": true
  },
- "sfffb54daf4": "Estado",
  "seab2c72485": "Fan (0 = auto)",
  "@seab2c72485": {
   "x-mt": true
  },
  "s3a38b97f7b": "{p0} – room",
  "@s3a38b97f7b": {
+  "x-mt": true
+ },
+ "se317f59de2": "¡VUOTO!",
+ "@se317f59de2": {
+  "x-mt": true
+ },
+ "se4c4201882": "¡Lea!",
+ "@se4c4201882": {
+  "x-mt": true
+ },
+ "sdbcf5515c1": "Auki",
+ "@sdbcf5515c1": {
+  "x-mt": true
+ },
+ "sb0af7213b5": "Abierto",
+ "@sb0af7213b5": {
+  "x-mt": true
+ },
+ "sa3477dac6e": "Liikettä",
+ "@sa3477dac6e": {
+  "x-mt": true
+ },
+ "s064a959911": "SAVUA!",
+ "@s064a959911": {
+  "x-mt": true
+ },
+ "s50778e2eec": "¡SMOKE!",
+ "@s50778e2eec": {
+  "x-mt": true
+ },
+ "s1dfa5abe81": "Hälytys",
+ "@s1dfa5abe81": {
+  "x-mt": true
+ },
+ "s68e711123b": "temperatura",
+ "@s68e711123b": {
+  "x-mt": true
+ },
+ "s4082a34467": "sensor",
+ "@s4082a34467": {
+  "x-mt": true
+ },
+ "s4233362d60": "Sensor de fuga de agua",
+ "@s4233362d60": {
+  "x-mt": true
+ },
+ "s9ad7b0076b": "sensor de fuga · batería",
+ "@s9ad7b0076b": {
+  "x-mt": true
+ },
+ "sed9b5e52f6": "Ahora",
+ "@sed9b5e52f6": {
+  "x-mt": true
+ },
+ "sc3abd09cd9": "Color personalizado",
+ "@sc3abd09cd9": {
+  "x-mt": true
+ },
+ "s10e7cef8c1": "Hue",
+ "@s10e7cef8c1": {
+  "x-mt": true
+ },
+ "s59b65e3322": "Saturación",
+ "@s59b65e3322": {
+  "x-mt": true
+ },
+ "s750ed8d878": "Luz",
+ "@s750ed8d878": {
+  "x-mt": true
+ },
+ "sa39e78050c": "Elija",
+ "@sa39e78050c": {
+  "x-mt": true
+ },
+ "sba1684ff6c": "aún no",
+ "@sba1684ff6c": {
+  "x-mt": true
+ },
+ "sef20071510": "Historia de la carrera",
+ "@sef20071510": {
+  "x-mt": true
+ },
+ "s8613961a5a": "Notificaciones",
+ "@s8613961a5a": {
+  "x-mt": true
+ },
+ "s4f745952b8": "Corriendo en este puente casero, también cuando la aplicación está cerrada.",
+ "@s4f745952b8": {
+  "x-mt": true
+ },
+ "s99cbed55fd": "Correr en el puente de inicio – funciona incluso cuando la aplicación está cerrada.",
+ "@s99cbed55fd": {
+  "x-mt": true
+ },
+ "s0247948956": "El puente de inicio es una versión antigua: actualizarlo así que las automatizaciones también funcionan mientras la aplicación está cerrada. Corriendo en esta aplicación por ahora.",
+ "@s0247948956": {
+  "x-mt": true
+ },
+ "s21fae60578": "Corriendo en esta aplicación mientras está abierta. Un puente casero los ejecuta mientras la aplicación está cerrada.",
+ "@s21fae60578": {
+  "x-mt": true
+ },
+ "s66c54e2286": "Las automatizaciones están en este dispositivo.",
+ "@s66c54e2286": {
+  "x-mt": true
+ },
+ "s4057f67774": "Mon Tue Wed Thu Fri Sat Sun",
+ "@s4057f67774": {
+  "x-mt": true
+ },
+ "s456d234874": "(dispositivo desaparecido)",
+ "@s456d234874": {
+  "x-mt": true
+ },
+ "s7c3e905972": "Atentos",
+ "@s7c3e905972": {
+  "x-mt": true
+ },
+ "s61637a44e4": "Sunrise",
+ "@s61637a44e4": {
+  "x-mt": true
+ },
+ "sa0d5958b56": "Sunset",
+ "@sa0d5958b56": {
+  "x-mt": true
+ },
+ "s467fd3c653": "{p0} horas más baratas",
+ "@s467fd3c653": {
+  "x-mt": true
+ },
+ "s65660a4b23": "Precio por encima de {p0} c/kWh",
+ "@s65660a4b23": {
+  "x-mt": true
+ },
+ "sba8fa4af37": "Precio por debajo de {p0} c/kWh",
+ "@sba8fa4af37": {
+  "x-mt": true
+ },
+ "s3324b26519": "Al aire libre",
+ "@s3324b26519": {
+  "x-mt": true
+ },
+ "sf3c2cf0323": "{p0} offline {p1} min",
+ "@sf3c2cf0323": {
+  "x-mt": true
+ },
+ "s1b359d69e2": "Crear automatización",
+ "@s1b359d69e2": {
+  "x-mt": true
+ },
+ "s835865fd04": "Plantillas",
+ "@s835865fd04": {
+  "x-mt": true
+ },
+ "s2b57f716aa": "No automatización todavía. Comienza desde una plantilla, por ejemplo, \"Luces al atardecer\" o \"Water escape → alarm\".",
+ "@s2b57f716aa": {
+  "x-mt": true
+ },
+ "s8039add5ed": "Untitled",
+ "@s8039add5ed": {
+  "x-mt": true
+ },
+ "s5506524eac": "Cuándo",
+ "@s5506524eac": {
+  "x-mt": true
+ },
+ "sf2d3a43ee8": "Todavía no hay carreras.",
+ "@sf2d3a43ee8": {
+  "x-mt": true
+ },
+ "s5c7338ab38": "Automatizaciones preparadas",
+ "@s5c7338ab38": {
+  "x-mt": true
+ },
+ "s354eb362d8": "Elija el dispositivo",
+ "@s354eb362d8": {
+  "x-mt": true
+ },
+ "s73a65d7dff": "Elija los dispositivos",
+ "@s73a65d7dff": {
+  "x-mt": true
+ },
+ "s6bc0df13b3": "Todavía no hay dispositivos.",
+ "@s6bc0df13b3": {
+  "x-mt": true
+ },
+ "s90db0cb9e0": "Nueva automatización",
+ "@s90db0cb9e0": {
+  "x-mt": true
+ },
+ "s3aeb373060": "Editar la automatización",
+ "@s3aeb373060": {
+  "x-mt": true
+ },
+ "sac3c555554": "¿Supir la automatización?",
+ "@sac3c555554": {
+  "x-mt": true
+ },
+ "s53879bce24": "Lo que inicia la automatización",
+ "@s53879bce24": {
+  "x-mt": true
+ },
+ "s179f389617": "Sólo si (opcional)",
+ "@s179f389617": {
+  "x-mt": true
+ },
+ "s803ff4f73b": "Todas las condiciones deben contener",
+ "@s803ff4f73b": {
+  "x-mt": true
+ },
+ "sd930bdad70": "Añada condición",
+ "@sd930bdad70": {
+  "x-mt": true
+ },
+ "s6f21edea24": "Do",
+ "@s6f21edea24": {
+  "x-mt": true
+ },
+ "scbe17b6bf8": "Acciones en orden",
+ "@scbe17b6bf8": {
+  "x-mt": true
+ },
+ "secee53bdd2": "Más",
+ "@secee53bdd2": {
+  "x-mt": true
+ },
+ "scb62f41105": "Mínimos minutos entre las carreras",
+ "@scb62f41105": {
+  "x-mt": true
+ },
+ "s643b680e89": "Detiene, por ejemplo, un sensor de acoplamiento de enviar docenas de notificaciones.",
+ "@s643b680e89": {
+  "x-mt": true
+ },
+ "s4c4ab28899": "Prueba ahora",
+ "@s4c4ab28899": {
+  "x-mt": true
+ },
+ "s7956c29b83": "Ran: {p0}",
+ "@s7956c29b83": {
+  "x-mt": true
+ },
+ "s6e85ff5983": "(sin dispositivos)",
+ "@s6e85ff5983": {
+  "x-mt": true
+ },
+ "sc300fc12e3": "Valor de dispositivo",
+ "@sc300fc12e3": {
+  "x-mt": true
+ },
+ "sbab0e0dc9d": "Estado del dispositivo (on/off, sensor)",
+ "@sbab0e0dc9d": {
+  "x-mt": true
+ },
+ "s76de9025a1": "Hora del día",
+ "@s76de9025a1": {
+  "x-mt": true
+ },
+ "s04c0bcdd51": "Salida del sol / puesta del sol",
+ "@s04c0bcdd51": {
+  "x-mt": true
+ },
+ "s869f0d57af": "El tiempo (temperatura externa)",
+ "@s869f0d57af": {
+  "x-mt": true
+ },
+ "sa4261f6e35": "Dispositivo no contesta",
+ "@sa4261f6e35": {
+  "x-mt": true
+ },
+ "se0a362c060": "Tipo",
+ "@se0a362c060": {
+  "x-mt": true
+ },
+ "s4f62fd1f09": "Cuando gira",
+ "@s4f62fd1f09": {
+  "x-mt": true
+ },
+ "sab64be3b87": "on / alarm",
+ "@sab64be3b87": {
+  "x-mt": true
+ },
+ "sbfd08915bd": "fuera / calma",
+ "@sbfd08915bd": {
+  "x-mt": true
+ },
+ "s0aaa16b331": "Hora (HH:MM)",
+ "@s0aaa16b331": {
+  "x-mt": true
+ },
+ "s9b4b2b3129": "Evento",
+ "@s9b4b2b3129": {
+  "x-mt": true
+ },
+ "s8c6de5d661": "Offset en minutes (−60...60)",
+ "@s8c6de5d661": {
+  "x-mt": true
+ },
+ "s59b3e665bf": "Cuándo",
+ "@s59b3e665bf": {
+  "x-mt": true
+ },
+ "s6a23c4a83f": "Precio a continuación",
+ "@s6a23c4a83f": {
+  "x-mt": true
+ },
+ "s49083cabf7": "Precio por encima",
+ "@s49083cabf7": {
+  "x-mt": true
+ },
+ "s411924155f": "Las horas más baratas del día",
+ "@s411924155f": {
+  "x-mt": true
+ },
+ "s04dc35851a": "Número de horas",
+ "@s04dc35851a": {
+  "x-mt": true
+ },
+ "s6f22fd8c19": "Minutos",
+ "@s6f22fd8c19": {
+  "x-mt": true
+ },
+ "s32fa6270c8": "Ninguno seleccionado = todos los días",
+ "@s32fa6270c8": {
+  "x-mt": true
+ },
+ "s966e223f86": "ventana del tiempo",
+ "@s966e223f86": {
+  "x-mt": true
+ },
+ "s45aae9c551": "Días de semana",
+ "@s45aae9c551": {
+  "x-mt": true
+ },
+ "sf05bf9c751": "Estado del dispositivo / valor",
+ "@sf05bf9c751": {
+  "x-mt": true
+ },
+ "sb74370fc1e": "Temperatura exterior",
+ "@sb74370fc1e": {
+  "x-mt": true
+ },
+ "s585b4c519f": "Oscuro / luz",
+ "@s585b4c519f": {
+  "x-mt": true
+ },
+ "s6019108a01": "Estado",
+ "@s6019108a01": {
+  "x-mt": true
+ },
+ "sc26d444f90": "Desde",
+ "@sc26d444f90": {
+  "x-mt": true
+ },
+ "s796739363a": "A",
+ "@s796739363a": {
+  "x-mt": true
+ },
+ "s39d9f766c6": "Compare",
+ "@s39d9f766c6": {
+  "x-mt": true
+ },
+ "sa56aea2cf9": "Estado de despido/despido",
+ "@sa56aea2cf9": {
+  "x-mt": true
+ },
+ "sc2521b6b15": "Número",
+ "@sc2521b6b15": {
+  "x-mt": true
+ },
+ "se2b3e45118": "oscuro",
+ "@se2b3e45118": {
+  "x-mt": true
+ },
+ "s709da04ca2": "luz",
+ "@s709da04ca2": {
+  "x-mt": true
+ },
+ "s723d015dc1": "Agregar acción",
+ "@s723d015dc1": {
+  "x-mt": true
+ },
+ "sae3489a6c9": "Controla un dispositivo",
+ "@sae3489a6c9": {
+  "x-mt": true
+ },
+ "s1f6962ba39": "Ejecutar una escena",
+ "@s1f6962ba39": {
+  "x-mt": true
+ },
+ "s02df6d430a": "Ejecutar un script",
+ "@s02df6d430a": {
+  "x-mt": true
+ },
+ "sed67c16508": "Enviar una notificación",
+ "@sed67c16508": {
+  "x-mt": true
+ },
+ "s654489bb29": "Espera",
+ "@s654489bb29": {
+  "x-mt": true
+ },
+ "sf216517af2": "Espera",
+ "@sf216517af2": {
+  "x-mt": true
+ },
+ "sde1657b024": "Si / si no",
+ "@sde1657b024": {
+  "x-mt": true
+ },
+ "sbc8e165fbf": "Medida",
+ "@sbc8e165fbf": {
+  "x-mt": true
+ },
+ "s7a544fe304": "Valor de conjunto",
+ "@s7a544fe304": {
+  "x-mt": true
+ },
+ "s929344a68b": "Prensa",
+ "@s929344a68b": {
+  "x-mt": true
+ },
+ "s02cfe06e04": "Escena",
+ "@s02cfe06e04": {
+  "x-mt": true
+ },
+ "sdb235c3ced": "(sin escenas)",
+ "@sdb235c3ced": {
+  "x-mt": true
+ },
+ "sdced476aeb": "Script",
+ "@sdced476aeb": {
+  "x-mt": true
+ },
+ "s4f330bfcfb": "(sin guiones)",
+ "@s4f330bfcfb": {
+  "x-mt": true
+ },
+ "s34900f9d58": "Texto",
+ "@s34900f9d58": {
+  "x-mt": true
+ },
+ "s3c2ee8fe0d": "'{summary} = tiempo, precio y estado del hogar'",
+ "@s3c2ee8fe0d": {
+  "x-mt": true
+ },
+ "sd84d87d156": "Prioridad",
+ "@sd84d87d156": {
+  "x-mt": true
+ },
+ "sb55a08c07c": "1 – silencio",
+ "@sb55a08c07c": {
+  "x-mt": true
+ },
+ "s423418208e": "2 – bajo",
+ "@s423418208e": {
+  "x-mt": true
+ },
+ "sbad27a6b89": "3 – normal",
+ "@sbad27a6b89": {
+  "x-mt": true
+ },
+ "s8c17000b91": "4 – alta",
+ "@s8c17000b91": {
+  "x-mt": true
+ },
+ "sa0738def3a": "5 – urgente (también en horas tranquilas)",
+ "@sa0738def3a": {
+  "x-mt": true
+ },
+ "sb33001c92e": "Abre el grifo",
+ "@sb33001c92e": {
+  "x-mt": true
+ },
+ "s07d7410408": "la aplicación",
+ "@s07d7410408": {
+  "x-mt": true
+ },
+ "sfb10dd528e": "Segundos",
+ "@sfb10dd528e": {
+  "x-mt": true
+ },
+ "sd7ab969914": "En la mayoría de los segundos",
+ "@sd7ab969914": {
+  "x-mt": true
+ },
+ "sccfe5a0d41": "Entonces...",
+ "@sccfe5a0d41": {
+  "x-mt": true
+ },
+ "s2d983e951b": "Else",
+ "@s2d983e951b": {
+  "x-mt": true
+ },
+ "sf936d0b01d": "Arriba",
+ "@sf936d0b01d": {
+  "x-mt": true
+ },
+ "s2c7a2bbac1": "Nuevo guión",
+ "@s2c7a2bbac1": {
+  "x-mt": true
+ },
+ "s5b2dd17cbc": "Un script es una lista de pasos: controle un dispositivo, espere, notifique, si/else... Ejecutelo desde un botón, una automatización o remotamente (iPhone Shortcut).",
+ "@s5b2dd17cbc": {
+  "x-mt": true
+ },
+ "s6fe2320f3d": "Para",
+ "@s6fe2320f3d": {
+  "x-mt": true
+ },
+ "se9ee46a9c8": "Corre",
+ "@se9ee46a9c8": {
+  "x-mt": true
+ },
+ "s766b50721b": "{p0} pasos",
+ "@s766b50721b": {
+  "x-mt": true
+ },
+ "s061d1b874b": "remoto",
+ "@s061d1b874b": {
+  "x-mt": true
+ },
+ "sb886978015": "Editar script",
+ "@sb886978015": {
+  "x-mt": true
+ },
+ "scc2c1e2508": "Corrección de registro",
+ "@scc2c1e2508": {
+  "x-mt": true
+ },
+ "sacf2fbc495": "¿Supir el guión?",
+ "@sacf2fbc495": {
+  "x-mt": true
+ },
+ "s01de653429": "Pasos",
+ "@s01de653429": {
+  "x-mt": true
+ },
+ "s01d3c353e2": "Código",
+ "@s01d3c353e2": {
+  "x-mt": true
+ },
+ "s637ae4dbf4": "Molaplan script",
+ "@s637ae4dbf4": {
+  "x-mt": true
+ },
+ "sea09cb0d3b": "Funciones: ponerse en marcha toggle wait notify scene price cheap temp time hour weekday log. Ningún archivo o acceso a la red; 10 min time limit.",
+ "@sea09cb0d3b": {
+  "x-mt": true
+ },
+ "s26e23ef341": "Permitir el funcionamiento remoto (PIN)",
+ "@s26e23ef341": {
+  "x-mt": true
+ },
+ "sd573107aec": "Un mensaje ntfy o un atajo de iPhone comienza el script.",
+ "@sd573107aec": {
+  "x-mt": true
+ },
+ "s0a5410ea4f": "PIN remoto (al menos 4 caracteres)",
+ "@s0a5410ea4f": {
+  "x-mt": true
+ },
+ "sceba001122": "Enviar \"corrido {p0} \"PIN confianza\" a {p1}\nAtajos para iPhone: \"Obtenga contenido de URL\" → {p1}, método POST, body: run {p0}  ⁇ PIN confianza",
+ "@sceba001122": {
+  "x-mt": true
+ },
+ "seff0aac16e": "Copiar URL",
+ "@seff0aac16e": {
+  "x-mt": true
+ },
+ "sf1ed05f7de": "Button a la vista",
+ "@sf1ed05f7de": {
+  "x-mt": true
+ },
+ "sf1541ca978": "Button añadió a {p0}",
+ "@sf1541ca978": {
+  "x-mt": true
+ },
+ "s09f745552a": "Guardar el estado actual",
+ "@s09f745552a": {
+  "x-mt": true
+ },
+ "s44367fdec5": "Vacío",
+ "@s44367fdec5": {
+  "x-mt": true
+ },
+ "sc41824585d": "Una escena pone muchos dispositivos a la vez, por ejemplo, \"Noche de la luna\" o \"Todo fuera\".",
+ "@sc41824585d": {
+  "x-mt": true
+ },
+ "s7e7b0848fb": "{p0} acciones",
+ "@s7e7b0848fb": {
+  "x-mt": true
+ },
+ "s7cdee3dc7d": "¿Qué dispositivos van en la escena?",
+ "@s7cdee3dc7d": {
+  "x-mt": true
+ },
+ "sde0d544a4c": "Nombre de escena",
+ "@sde0d544a4c": {
+  "x-mt": true
+ },
+ "scff2a13871": "por ejemplo, noche de cine",
+ "@scff2a13871": {
+  "x-mt": true
+ },
+ "se3ba6a13bb": "Nueva escena",
+ "@se3ba6a13bb": {
+  "x-mt": true
+ },
+ "s020a1af0d8": "Editar escena",
+ "@s020a1af0d8": {
+  "x-mt": true
+ },
+ "s4dbd6f62bf": "¿Supir la escena?",
+ "@s4dbd6f62bf": {
+  "x-mt": true
+ },
+ "se250251ff0": "Notificaciones de empuje",
+ "@se250251ff0": {
+  "x-mt": true
+ },
+ "s91a8948ad7": "A través de ntfy (no se necesita cuenta de Google)",
+ "@s91a8948ad7": {
+  "x-mt": true
+ },
+ "sbdd6c9bad2": "Mostrar en este dispositivo",
+ "@sbdd6c9bad2": {
+  "x-mt": true
+ },
+ "se1e0d398d7": "La aplicación escucha las notificaciones mientras se ejecuta (en Windows también desde la bandeja).",
+ "@se1e0d398d7": {
+  "x-mt": true
+ },
+ "s6993f32ed2": "Ejecutar las automatizaciónes en esta aplicación",
+ "@s6993f32ed2": {
+  "x-mt": true
+ },
+ "sc0f6ea8ebe": "Cuando no hay puente casero. Un puente casero siempre los dirige, también mientras la aplicación está cerrada.",
+ "@sc0f6ea8ebe": {
+  "x-mt": true
+ },
+ "sb35519f8e9": "Cerca de la bandeja",
+ "@sb35519f8e9": {
+  "x-mt": true
+ },
+ "s49ca9b6082": "Cerrar la ventana mantiene Molaplan al lado del reloj para que las notificaciones lleguen.",
+ "@s49ca9b6082": {
+  "x-mt": true
+ },
+ "sc6d6d4016e": "Teléfono, cuando Molaplan está cerrado",
+ "@sc6d6d4016e": {
+  "x-mt": true
+ },
+ "sb460bbf010": "Instala la aplicación ntfy (Android: Google Play / F-Droid, iPhone: App Store) y suscríbete a este tema. Las notificaciones llegan incluso cuando Molaplan está cerrado.",
+ "@sb460bbf010": {
+  "x-mt": true
+ },
+ "saa54f34e98": "Copiar el enlace de suscripción",
+ "@saa54f34e98": {
+  "x-mt": true
+ },
+ "s8f19ff1e21": "Horas tranquilas",
+ "@s8f19ff1e21": {
+  "x-mt": true
+ },
+ "s1cc7f7a75f": "Sólo urgente (5) vienen a través.",
+ "@s1cc7f7a75f": {
+  "x-mt": true
+ },
+ "s973f30f5e8": "De (HH:MM)",
+ "@s973f30f5e8": {
+  "x-mt": true
+ },
+ "sb13eeff3cd": "A (HH:MM)",
+ "@sb13eeff3cd": {
+  "x-mt": true
+ },
+ "s2f7a5f57b1": "Mute",
+ "@s2f7a5f57b1": {
+  "x-mt": true
+ },
+ "sa81c1da011": "1 hora",
+ "@sa81c1da011": {
+  "x-mt": true
+ },
+ "s0ca30924bd": "8 horas",
+ "@s0ca30924bd": {
+  "x-mt": true
+ },
+ "s38bb718aaf": "24 horas",
+ "@s38bb718aaf": {
+  "x-mt": true
+ },
+ "s36ef8a86e1": "Unmute (hasta {p0})",
+ "@s36ef8a86e1": {
+  "x-mt": true
+ },
+ "s0183ae0a12": "Enviar una notificación de prueba",
+ "@s0183ae0a12": {
+  "x-mt": true
+ },
+ "sd95091858f": "Molaplan notifications work",
+ "@sd95091858f": {
+  "x-mt": true
+ },
+ "s58a8bfdd9f": "Test enviado",
+ "@s58a8bfdd9f": {
+  "x-mt": true
+ },
+ "s5c380d76b6": "Últimas",
+ "@s5c380d76b6": {
+  "x-mt": true
+ },
+ "s9d75942e41": "Automatización lista",
+ "@s9d75942e41": {
+  "x-mt": true
+ },
+ "s70860413a1": "Luces al atardecer, fuga de agua → alarma, horas baratas...",
+ "@s70860413a1": {
+  "x-mt": true
+ },
+ "s8b5be90c1e": "Su propia automatización",
+ "@s8b5be90c1e": {
+  "x-mt": true
+ },
+ "sa9402c105a": "Cuándo / Si / Do",
+ "@sa9402c105a": {
+  "x-mt": true
+ },
+ "s4102c7e085": "Escena del estado actual",
+ "@s4102c7e085": {
+  "x-mt": true
+ },
+ "s21ee7e78ee": "Muchos dispositivos con un botón",
+ "@s21ee7e78ee": {
+  "x-mt": true
+ },
+ "s5afa6e08f2": "Pasos en orden, espera, si/else",
+ "@s5afa6e08f2": {
+  "x-mt": true
+ },
+ "s8070a25da8": "Grupo",
+ "@s8070a25da8": {
+  "x-mt": true
+ },
+ "sf5f1ae9c9e": "Por ejemplo, todas las luces de la sala de estar como una tarjeta",
+ "@sf5f1ae9c9e": {
+  "x-mt": true
+ },
+ "s73f89f4de7": "¿Qué dispositivos van en el grupo?",
+ "@s73f89f4de7": {
+  "x-mt": true
+ },
+ "s5b68340d84": "Nombre del grupo",
+ "@s5b68340d84": {
+  "x-mt": true
+ },
+ "s1b087cdbbd": "Todos: {p0}",
+ "@s1b087cdbbd": {
+  "x-mt": true
+ },
+ "sdaa7d4de12": "Escena",
+ "@sdaa7d4de12": {
+  "x-mt": true
+ },
+ "sfe55fd97fa": "Todo tranquilo.",
+ "@sfe55fd97fa": {
+  "x-mt": true
+ },
+ "s162c54ed4c": "{p0}: hecho",
+ "@s162c54ed4c": {
+  "x-mt": true
+ },
+ "sf00aa23cf6": "Cuando... si... hacer: luces al atardecer, una alerta de fugas, las horas más baratas, guiones y escenas.",
+ "@sf00aa23cf6": {
+  "x-mt": true
+ },
+ "s2b463f47ba": "Escóndete",
+ "@s2b463f47ba": {
+  "x-mt": true
+ },
+ "s2594346d86": "Directriz",
+ "@s2594346d86": {
+  "x-mt": true
+ },
+ "sd6c2de0256": "Horizontal",
+ "@sd6c2de0256": {
+  "x-mt": true
+ },
+ "sb8ef66c33e": "Grid",
+ "@sb8ef66c33e": {
+  "x-mt": true
+ },
+ "s0bee1b8ed3": "Escala de valores",
+ "@s0bee1b8ed3": {
+  "x-mt": true
+ },
+ "sd4e9b57931": "Eje del tiempo",
+ "@sd4e9b57931": {
+  "x-mt": true
+ },
+ "s7abdb12fef": "Marcadores de puntos de datos",
+ "@s7abdb12fef": {
+  "x-mt": true
+ },
+ "s29135ed75a": "Auto: ejes y líneas de guía muestran cuando la tarjeta es al menos 2×2.",
+ "@s29135ed75a": {
+  "x-mt": true
+ },
+ "s939603242a": "Colores por valor",
+ "@s939603242a": {
+  "x-mt": true
+ },
+ "s45f927bc62": "Aduanas",
+ "@s45f927bc62": {
+  "x-mt": true
+ },
+ "s319dab47d8": "Smooth",
+ "@s319dab47d8": {
+  "x-mt": true
+ },
+ "s613fbec20e": "Pasos",
+ "@s613fbec20e": {
+  "x-mt": true
+ },
+ "s25d9db075e": "Límites y colores propios: Ajustes → Avanzado.",
+ "@s25d9db075e": {
+  "x-mt": true
+ },
+ "s902eaaff9f": "Abierto",
+ "@s902eaaff9f": {
+  "x-mt": true
+ },
+ "sc80648d495": "Show Molaplan",
+ "@sc80648d495": {
+  "x-mt": true
+ },
+ "sa4e9c86a86": "Quit",
+ "@sa4e9c86a86": {
+  "x-mt": true
+ },
+ "s84819cca05": "Última alarma {p0}",
+ "@s84819cca05": {
+  "x-mt": true
+ },
+ "s4cac4725b8": "Los dispositivos del grupo no responden",
+ "@s4cac4725b8": {
   "x-mt": true
  }
 }

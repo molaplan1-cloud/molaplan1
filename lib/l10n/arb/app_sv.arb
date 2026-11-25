@@ -217,6 +217,8 @@
  },
  "s4899323b9a": "Effekt",
  "se78754330c": "effekt",
+ "s280df88585": "Rörelse",
+ "s50c459fbff": "Larm",
  "s1a4eab1f51": "°C",
  "s9e731440d8": "%",
  "s77c638e731": "%",
@@ -597,6 +599,10 @@
  "s41c3cebc48": "Lägg till enhet",
  "scd04aa5d9e": "Redigera utsikten",
  "@scd04aa5d9e": {
+  "x-mt": true
+ },
+ "se9ca7cb470": "Automatiseringar",
+ "@se9ca7cb470": {
   "x-mt": true
  },
  "s49de879696": "Energi",
@@ -1440,6 +1446,7 @@
  "@s9027c88cb7": {
   "x-mt": true
  },
+ "sf05d2a09f1": "7 d",
  "se38a9bb2ed": "Senaste",
  "@se38a9bb2ed": {
   "x-mt": true
@@ -1754,6 +1761,31 @@
  "@sd9923cda70": {
   "x-mt": true
  },
+ "s9f1334d4e2": "Skript",
+ "s6b7c1c52da": "Scener",
+ "@s6b7c1c52da": {
+  "x-mt": true
+ },
+ "sf3779b50c6": "på",
+ "sa627de5699": ">",
+ "s24801cdec0": "<",
+ "sef6eef049e": "≥",
+ "s5d759b1fd0": "≤",
+ "sc67c2076cc": "=",
+ "sf69ef2bd3e": "≠",
+ "sca7e088857": "Elpris",
+ "s67584c9abf": "Enhet",
+ "@s67584c9abf": {
+  "x-mt": true
+ },
+ "s38ac222392": "Värde",
+ "s9593939a4c": "Ta bort",
+ "sfffb54daf4": "Tillstånd",
+ "s4cd3d92d4c": "På",
+ "s750f16460c": "Av/på",
+ "s8a8673aafe": "Rubrik",
+ "sfd2d047cb2": "Avancerat",
+ "sff9b69c6ca": "Klar",
  "s876c7230a2": "Lägg till enhet",
  "s1e593aeca2": "Stäng",
  "s3d00dee1a9": "Använd",
@@ -2141,10 +2173,6 @@
  "@sc51b1e0dc0": {
   "x-mt": true
  },
- "s67584c9abf": "Enhet",
- "@s67584c9abf": {
-  "x-mt": true
- },
  "s38f5b2ef26": "Shelly, Sonoff, Hue, kamera, värmepump... Söker ditt hemnätverk automatiskt.",
  "@s38f5b2ef26": {
   "x-mt": true
@@ -2227,7 +2255,6 @@
  "@sbc44ce6993": {
   "x-mt": true
  },
- "s9593939a4c": "Ta bort",
  "s3563cb1635": "Ta bort fjärråtkomst",
  "@s3563cb1635": {
   "x-mt": true
@@ -2419,7 +2446,6 @@
  },
  "sc5edd6d3d1": "Nytt kort",
  "sa684fd0716": "Redigera kort",
- "s8a8673aafe": "Rubrik",
  "scf37cbeda8": "Ikon",
  "sfeab9bd26f": "Bredd",
  "@sfeab9bd26f": {
@@ -2529,6 +2555,7 @@
  "@s77d2309fd5": {
   "x-mt": true
  },
+ "sfdffaffea4": "Ingen",
  "sc0f5a14d2b": "Färgtrösklar (värde ≥gräns → färg)",
  "@sc0f5a14d2b": {
   "x-mt": true
@@ -2911,7 +2938,6 @@
  "@sd1c7d49360": {
   "x-mt": true
  },
- "s38ac222392": "Värde",
  "s29fae6a0e8": "Prisstyrning på",
  "s59d55f8882": "Byt namn",
  "s25580038cb": "Saved PIN bort",
@@ -2943,21 +2969,12 @@
   "x-mt": true
  },
  "sbe76826428": "Fläktar",
- "s6b7c1c52da": "Scener",
- "@s6b7c1c52da": {
-  "x-mt": true
- },
- "s9f1334d4e2": "Skript",
  "s4b53bcaaf0": "Knappar",
  "@s4b53bcaaf0": {
   "x-mt": true
  },
  "s5c92d42edd": "Talinmatningar",
  "s3c2ed0c522": "Hjälpbrytare",
- "se9ca7cb470": "Automatiseringar",
- "@se9ca7cb470": {
-  "x-mt": true
- },
  "sea20d169a3": "Mediaspelare",
  "@sea20d169a3": {
   "x-mt": true
@@ -3390,7 +3407,6 @@
  "@s4f356d158a": {
   "x-mt": true
  },
- "sca7e088857": "Elpris",
  "s2525f9a4f5": "Finland är ett område (FI). I Sverige och Norge beror det på var du bor.",
  "@s2525f9a4f5": {
   "x-mt": true
@@ -4472,13 +4488,860 @@
  "@saa437260b8": {
   "x-mt": true
  },
- "sfffb54daf4": "Tillstånd",
  "seab2c72485": "Fan (0 = auto)",
  "@seab2c72485": {
   "x-mt": true
  },
  "s3a38b97f7b": "{p0} – rum",
  "@s3a38b97f7b": {
+  "x-mt": true
+ },
+ "se317f59de2": "VUOTO!",
+ "@se317f59de2": {
+  "x-mt": true
+ },
+ "se4c4201882": "LEAK!",
+ "@se4c4201882": {
+  "x-mt": true
+ },
+ "sdbcf5515c1": "Auki",
+ "@sdbcf5515c1": {
+  "x-mt": true
+ },
+ "sb0af7213b5": "Öppet Öppet Öppet Öppet Öppet",
+ "@sb0af7213b5": {
+  "x-mt": true
+ },
+ "sa3477dac6e": "Liikettä",
+ "@sa3477dac6e": {
+  "x-mt": true
+ },
+ "s064a959911": "Savoa!",
+ "@s064a959911": {
+  "x-mt": true
+ },
+ "s50778e2eec": "Smoke!",
+ "@s50778e2eec": {
+  "x-mt": true
+ },
+ "s1dfa5abe81": "Hälytys",
+ "@s1dfa5abe81": {
+  "x-mt": true
+ },
+ "s68e711123b": "Temperatur",
+ "@s68e711123b": {
+  "x-mt": true
+ },
+ "s4082a34467": "sensor",
+ "@s4082a34467": {
+  "x-mt": true
+ },
+ "s4233362d60": "Vattenläck sensor",
+ "@s4233362d60": {
+  "x-mt": true
+ },
+ "s9ad7b0076b": "läcksensor · batteri",
+ "@s9ad7b0076b": {
+  "x-mt": true
+ },
+ "sed9b5e52f6": "Numera nu",
+ "@sed9b5e52f6": {
+  "x-mt": true
+ },
+ "sc3abd09cd9": "Anpassad färg",
+ "@sc3abd09cd9": {
+  "x-mt": true
+ },
+ "s10e7cef8c1": "Hue Hue",
+ "@s10e7cef8c1": {
+  "x-mt": true
+ },
+ "s59b65e3322": "Mättnad",
+ "@s59b65e3322": {
+  "x-mt": true
+ },
+ "s750ed8d878": "Ljushet",
+ "@s750ed8d878": {
+  "x-mt": true
+ },
+ "sa39e78050c": "Välj Välj Välj Välj",
+ "@sa39e78050c": {
+  "x-mt": true
+ },
+ "sba1684ff6c": "Inte ännu",
+ "@sba1684ff6c": {
+  "x-mt": true
+ },
+ "sef20071510": "Kör historia",
+ "@sef20071510": {
+  "x-mt": true
+ },
+ "s8613961a5a": "Meddelanden",
+ "@s8613961a5a": {
+  "x-mt": true
+ },
+ "s4f745952b8": "Kör på denna hembro, även när appen är stängd.",
+ "@s4f745952b8": {
+  "x-mt": true
+ },
+ "s99cbed55fd": "Kör på hemmabron – fungerar även när appen är stängd.",
+ "@s99cbed55fd": {
+  "x-mt": true
+ },
+ "s0247948956": "Hembron är en gammal version: uppdatera den så automationer körs också medan appen är stängd. Kör i den här appen för tillfället.",
+ "@s0247948956": {
+  "x-mt": true
+ },
+ "s21fae60578": "Kör i denna app medan den är öppen. En hembro kör dem medan appen är stängd.",
+ "@s21fae60578": {
+  "x-mt": true
+ },
+ "s66c54e2286": "Automationer är avstängda på den här enheten.",
+ "@s66c54e2286": {
+  "x-mt": true
+ },
+ "s4057f67774": "Mon Tue Wed Thu Fri Sat Sun",
+ "@s4057f67774": {
+  "x-mt": true
+ },
+ "s456d234874": "(Enhet saknas)",
+ "@s456d234874": {
+  "x-mt": true
+ },
+ "s7c3e905972": "på At at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at at",
+ "@s7c3e905972": {
+  "x-mt": true
+ },
+ "s61637a44e4": "Soluppgång",
+ "@s61637a44e4": {
+  "x-mt": true
+ },
+ "sa0d5958b56": "Solnedgång",
+ "@sa0d5958b56": {
+  "x-mt": true
+ },
+ "s467fd3c653": "{p0} billigaste timmar",
+ "@s467fd3c653": {
+  "x-mt": true
+ },
+ "s65660a4b23": "Pris över {p0} c/kWh",
+ "@s65660a4b23": {
+  "x-mt": true
+ },
+ "sba8fa4af37": "Pris under {p0} c/kWh",
+ "@sba8fa4af37": {
+  "x-mt": true
+ },
+ "s3324b26519": "Utomhus",
+ "@s3324b26519": {
+  "x-mt": true
+ },
+ "sf3c2cf0323": "{p0} offline {p1} min",
+ "@sf3c2cf0323": {
+  "x-mt": true
+ },
+ "s1b359d69e2": "Skapa automatisering",
+ "@s1b359d69e2": {
+  "x-mt": true
+ },
+ "s835865fd04": "Mallar",
+ "@s835865fd04": {
+  "x-mt": true
+ },
+ "s2b57f716aa": "Inga automationer ännu. Börja från en mall, t.ex. \"Lights on at sunset\" eller \"Water leak → alarm\".",
+ "@s2b57f716aa": {
+  "x-mt": true
+ },
+ "s8039add5ed": "Untitled",
+ "@s8039add5ed": {
+  "x-mt": true
+ },
+ "s5506524eac": "När när när",
+ "@s5506524eac": {
+  "x-mt": true
+ },
+ "sf2d3a43ee8": "Inga runs ännu.",
+ "@sf2d3a43ee8": {
+  "x-mt": true
+ },
+ "s5c7338ab38": "Redogjorda automationer",
+ "@s5c7338ab38": {
+  "x-mt": true
+ },
+ "s354eb362d8": "Välj enheten",
+ "@s354eb362d8": {
+  "x-mt": true
+ },
+ "s73a65d7dff": "Välj enheterna",
+ "@s73a65d7dff": {
+  "x-mt": true
+ },
+ "s6bc0df13b3": "Inga enheter ännu.",
+ "@s6bc0df13b3": {
+  "x-mt": true
+ },
+ "s90db0cb9e0": "Ny automation",
+ "@s90db0cb9e0": {
+  "x-mt": true
+ },
+ "s3aeb373060": "Redigera automation",
+ "@s3aeb373060": {
+  "x-mt": true
+ },
+ "sac3c555554": "Ta bort automationen?",
+ "@sac3c555554": {
+  "x-mt": true
+ },
+ "s53879bce24": "Vad startar automatiseringen",
+ "@s53879bce24": {
+  "x-mt": true
+ },
+ "s179f389617": "Endast om (valfritt)",
+ "@s179f389617": {
+  "x-mt": true
+ },
+ "s803ff4f73b": "Alla villkor måste hålla",
+ "@s803ff4f73b": {
+  "x-mt": true
+ },
+ "sd930bdad70": "Lägg till villkor",
+ "@sd930bdad70": {
+  "x-mt": true
+ },
+ "s6f21edea24": "Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do Do",
+ "@s6f21edea24": {
+  "x-mt": true
+ },
+ "scbe17b6bf8": "Åtgärder i ordning",
+ "@scbe17b6bf8": {
+  "x-mt": true
+ },
+ "secee53bdd2": "Mer Mer",
+ "@secee53bdd2": {
+  "x-mt": true
+ },
+ "scb62f41105": "Minsta minuter mellan runs",
+ "@scb62f41105": {
+  "x-mt": true
+ },
+ "s643b680e89": "Slutar t.ex. en flapping sensor från att skicka dussintals meddelanden.",
+ "@s643b680e89": {
+  "x-mt": true
+ },
+ "s4c4ab28899": "Testa nu",
+ "@s4c4ab28899": {
+  "x-mt": true
+ },
+ "s7956c29b83": "Ran: {p0}",
+ "@s7956c29b83": {
+  "x-mt": true
+ },
+ "s6e85ff5983": "(inga enheter)",
+ "@s6e85ff5983": {
+  "x-mt": true
+ },
+ "sc300fc12e3": "Enhetsvärde",
+ "@sc300fc12e3": {
+  "x-mt": true
+ },
+ "sbab0e0dc9d": "Enhetstillstånd (på/av, sensor)",
+ "@sbab0e0dc9d": {
+  "x-mt": true
+ },
+ "s76de9025a1": "Dagens tid",
+ "@s76de9025a1": {
+  "x-mt": true
+ },
+ "s04c0bcdd51": "Soluppgång / solnedgång",
+ "@s04c0bcdd51": {
+  "x-mt": true
+ },
+ "s869f0d57af": "Vädret (utomhustemperatur)",
+ "@s869f0d57af": {
+  "x-mt": true
+ },
+ "sa4261f6e35": "Enhet som inte svarar",
+ "@sa4261f6e35": {
+  "x-mt": true
+ },
+ "se0a362c060": "Typ",
+ "@se0a362c060": {
+  "x-mt": true
+ },
+ "s4f62fd1f09": "När den vänder",
+ "@s4f62fd1f09": {
+  "x-mt": true
+ },
+ "sab64be3b87": "på/larm",
+ "@sab64be3b87": {
+  "x-mt": true
+ },
+ "sbfd08915bd": "Off / lugn",
+ "@sbfd08915bd": {
+  "x-mt": true
+ },
+ "s0aaa16b331": "Tid (HH:MM)",
+ "@s0aaa16b331": {
+  "x-mt": true
+ },
+ "s9b4b2b3129": "Event",
+ "@s9b4b2b3129": {
+  "x-mt": true
+ },
+ "s8c6de5d661": "Offset på några minuter (−60...60)",
+ "@s8c6de5d661": {
+  "x-mt": true
+ },
+ "s59b3e665bf": "När när när",
+ "@s59b3e665bf": {
+  "x-mt": true
+ },
+ "s6a23c4a83f": "Pris nedan",
+ "@s6a23c4a83f": {
+  "x-mt": true
+ },
+ "s49083cabf7": "Pris ovan",
+ "@s49083cabf7": {
+  "x-mt": true
+ },
+ "s411924155f": "De billigaste timmarna på dagen",
+ "@s411924155f": {
+  "x-mt": true
+ },
+ "s04dc35851a": "Antal timmar",
+ "@s04dc35851a": {
+  "x-mt": true
+ },
+ "s6f22fd8c19": "Minuter",
+ "@s6f22fd8c19": {
+  "x-mt": true
+ },
+ "s32fa6270c8": "Ingen vald = varje dag",
+ "@s32fa6270c8": {
+  "x-mt": true
+ },
+ "s966e223f86": "Tid fönster",
+ "@s966e223f86": {
+  "x-mt": true
+ },
+ "s45aae9c551": "Weekdays",
+ "@s45aae9c551": {
+  "x-mt": true
+ },
+ "sf05bf9c751": "Enhetstillstånd / värde",
+ "@sf05bf9c751": {
+  "x-mt": true
+ },
+ "sb74370fc1e": "Utomhustemperatur",
+ "@sb74370fc1e": {
+  "x-mt": true
+ },
+ "s585b4c519f": "Mörk / ljus",
+ "@s585b4c519f": {
+  "x-mt": true
+ },
+ "s6019108a01": "Villkor",
+ "@s6019108a01": {
+  "x-mt": true
+ },
+ "sc26d444f90": "Från",
+ "@sc26d444f90": {
+  "x-mt": true
+ },
+ "s796739363a": "för att",
+ "@s796739363a": {
+  "x-mt": true
+ },
+ "s39d9f766c6": "Jämför",
+ "@s39d9f766c6": {
+  "x-mt": true
+ },
+ "sa56aea2cf9": "State on/off",
+ "@sa56aea2cf9": {
+  "x-mt": true
+ },
+ "sc2521b6b15": "Nummernummer",
+ "@sc2521b6b15": {
+  "x-mt": true
+ },
+ "se2b3e45118": "mörkt mörkt mörkt",
+ "@se2b3e45118": {
+  "x-mt": true
+ },
+ "s709da04ca2": "ljust ljust ljus",
+ "@s709da04ca2": {
+  "x-mt": true
+ },
+ "s723d015dc1": "Lägga till åtgärder",
+ "@s723d015dc1": {
+  "x-mt": true
+ },
+ "sae3489a6c9": "Kontrollera en enhet",
+ "@sae3489a6c9": {
+  "x-mt": true
+ },
+ "s1f6962ba39": "Kör en scen",
+ "@s1f6962ba39": {
+  "x-mt": true
+ },
+ "s02df6d430a": "Kör ett skript",
+ "@s02df6d430a": {
+  "x-mt": true
+ },
+ "sed67c16508": "Skicka ett meddelande",
+ "@sed67c16508": {
+  "x-mt": true
+ },
+ "s654489bb29": "Vänta",
+ "@s654489bb29": {
+  "x-mt": true
+ },
+ "sf216517af2": "Vänta tills",
+ "@sf216517af2": {
+  "x-mt": true
+ },
+ "sde1657b024": "Om / annat",
+ "@sde1657b024": {
+  "x-mt": true
+ },
+ "sbc8e165fbf": "Action",
+ "@sbc8e165fbf": {
+  "x-mt": true
+ },
+ "s7a544fe304": "Ställ värde",
+ "@s7a544fe304": {
+  "x-mt": true
+ },
+ "s929344a68b": "Presstryck",
+ "@s929344a68b": {
+  "x-mt": true
+ },
+ "s02cfe06e04": "Scen",
+ "@s02cfe06e04": {
+  "x-mt": true
+ },
+ "sdb235c3ced": "(inga scener)",
+ "@sdb235c3ced": {
+  "x-mt": true
+ },
+ "sdced476aeb": "Skript",
+ "@sdced476aeb": {
+  "x-mt": true
+ },
+ "s4f330bfcfb": "(inga skript)",
+ "@s4f330bfcfb": {
+  "x-mt": true
+ },
+ "s34900f9d58": "Texttext",
+ "@s34900f9d58": {
+  "x-mt": true
+ },
+ "s3c2ee8fe0d": "'{summary} = väder, pris och hemstat'",
+ "@s3c2ee8fe0d": {
+  "x-mt": true
+ },
+ "sd84d87d156": "Prioritet",
+ "@sd84d87d156": {
+  "x-mt": true
+ },
+ "sb55a08c07c": "1 – tyst",
+ "@sb55a08c07c": {
+  "x-mt": true
+ },
+ "s423418208e": "2 – låg",
+ "@s423418208e": {
+  "x-mt": true
+ },
+ "sbad27a6b89": "3 – normalt",
+ "@sbad27a6b89": {
+  "x-mt": true
+ },
+ "s8c17000b91": "4 – hög",
+ "@s8c17000b91": {
+  "x-mt": true
+ },
+ "sa0738def3a": "5 – brådskande (även i tysta timmar)",
+ "@sa0738def3a": {
+  "x-mt": true
+ },
+ "sb33001c92e": "Tryck öppnar",
+ "@sb33001c92e": {
+  "x-mt": true
+ },
+ "s07d7410408": "Appen",
+ "@s07d7410408": {
+  "x-mt": true
+ },
+ "sfb10dd528e": "Sekunder",
+ "@sfb10dd528e": {
+  "x-mt": true
+ },
+ "sd7ab969914": "På de flesta sekunder",
+ "@sd7ab969914": {
+  "x-mt": true
+ },
+ "sccfe5a0d41": "Sedan dess,",
+ "@sccfe5a0d41": {
+  "x-mt": true
+ },
+ "s2d983e951b": "Else",
+ "@s2d983e951b": {
+  "x-mt": true
+ },
+ "sf936d0b01d": "Upp",
+ "@sf936d0b01d": {
+  "x-mt": true
+ },
+ "s2c7a2bbac1": "Nytt manus",
+ "@s2c7a2bbac1": {
+  "x-mt": true
+ },
+ "s5b2dd17cbc": "Ett skript är en lista över steg: styra en enhet, vänta, meddela, om / ring ... Kör den från en knapp, en automation eller på distans (iPhone Shortcut).",
+ "@s5b2dd17cbc": {
+  "x-mt": true
+ },
+ "s6fe2320f3d": "Stoppa",
+ "@s6fe2320f3d": {
+  "x-mt": true
+ },
+ "se9ee46a9c8": "Kör",
+ "@se9ee46a9c8": {
+  "x-mt": true
+ },
+ "s766b50721b": "{p0} steg",
+ "@s766b50721b": {
+  "x-mt": true
+ },
+ "s061d1b874b": "fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärrfjärr fjärrfjärr fjärrfjärr fjärr fjärrfjärr fjärrfjärr fjärrfjärrfjärrfjärr fjärr fjärr fjärr fjärrfjärrfjärrfjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr f",
+ "@s061d1b874b": {
+  "x-mt": true
+ },
+ "sb886978015": "Redigera script",
+ "@sb886978015": {
+  "x-mt": true
+ },
+ "scc2c1e2508": "Run log",
+ "@scc2c1e2508": {
+  "x-mt": true
+ },
+ "sacf2fbc495": "Ta bort manuset?",
+ "@sacf2fbc495": {
+  "x-mt": true
+ },
+ "s01de653429": "Steg",
+ "@s01de653429": {
+  "x-mt": true
+ },
+ "s01d3c353e2": "Kodkod",
+ "@s01d3c353e2": {
+  "x-mt": true
+ },
+ "s637ae4dbf4": "Molaplan skript",
+ "@s637ae4dbf4": {
+  "x-mt": true
+ },
+ "sea09cb0d3b": "Funktioner: få igång toggle vänta meddela scenpriset billigast temp tid timme vardagslogg. Ingen fil eller nätverksåtkomst; 10 min tidsgräns.",
+ "@sea09cb0d3b": {
+  "x-mt": true
+ },
+ "s26e23ef341": "Tillåt fjärrstyrning (PIN)",
+ "@s26e23ef341": {
+  "x-mt": true
+ },
+ "sd573107aec": "Ett ntfy-meddelande eller en iPhone-genväg startar manuset.",
+ "@sd573107aec": {
+  "x-mt": true
+ },
+ "s0a5410ea4f": "Remote PIN (minst 4 tecken)",
+ "@s0a5410ea4f": {
+  "x-mt": true
+ },
+ "sceba001122": "Skicka \"kör {p0} <PIN>\" till {p1}\niPhone genvägar: \"Få innehåll av URL\" → {p1}, metod POST, kropp: kör {p0} <PIN>",
+ "@sceba001122": {
+  "x-mt": true
+ },
+ "seff0aac16e": "Kopiera URL",
+ "@seff0aac16e": {
+  "x-mt": true
+ },
+ "sf1ed05f7de": "Knapp på utsikt",
+ "@sf1ed05f7de": {
+  "x-mt": true
+ },
+ "sf1541ca978": "Knapp till {p0}",
+ "@sf1541ca978": {
+  "x-mt": true
+ },
+ "s09f745552a": "Spara nuvarande stat",
+ "@s09f745552a": {
+  "x-mt": true
+ },
+ "s44367fdec5": "Tomma",
+ "@s44367fdec5": {
+  "x-mt": true
+ },
+ "sc41824585d": "En scen sätter många enheter samtidigt, t.ex. \"Movie night\" eller \"All off\".",
+ "@sc41824585d": {
+  "x-mt": true
+ },
+ "s7e7b0848fb": "{p0} åtgärder",
+ "@s7e7b0848fb": {
+  "x-mt": true
+ },
+ "s7cdee3dc7d": "Vilka enheter går i scenen?",
+ "@s7cdee3dc7d": {
+  "x-mt": true
+ },
+ "sde0d544a4c": "Scennamn",
+ "@sde0d544a4c": {
+  "x-mt": true
+ },
+ "scff2a13871": "t.ex. filmkväll",
+ "@scff2a13871": {
+  "x-mt": true
+ },
+ "se3ba6a13bb": "Ny scen",
+ "@se3ba6a13bb": {
+  "x-mt": true
+ },
+ "s020a1af0d8": "Edit Scen",
+ "@s020a1af0d8": {
+  "x-mt": true
+ },
+ "s4dbd6f62bf": "Ta bort scenen?",
+ "@s4dbd6f62bf": {
+  "x-mt": true
+ },
+ "se250251ff0": "Push-meddelanden",
+ "@se250251ff0": {
+  "x-mt": true
+ },
+ "s91a8948ad7": "Genom ntfy (inget Google-konto behövs)",
+ "@s91a8948ad7": {
+  "x-mt": true
+ },
+ "sbdd6c9bad2": "Visa på den här enheten",
+ "@sbdd6c9bad2": {
+  "x-mt": true
+ },
+ "se1e0d398d7": "Appen lyssnar på meddelanden medan du kör (på Windows också från brickan).",
+ "@se1e0d398d7": {
+  "x-mt": true
+ },
+ "s6993f32ed2": "Kör automationer i denna app",
+ "@s6993f32ed2": {
+  "x-mt": true
+ },
+ "sc0f6ea8ebe": "När det inte finns någon hembro. En hemmabro kör alltid dem, även när appen är stängd.",
+ "@sc0f6ea8ebe": {
+  "x-mt": true
+ },
+ "sb35519f8e9": "Nära till brickan",
+ "@sb35519f8e9": {
+  "x-mt": true
+ },
+ "s49ca9b6082": "Stängning av fönstret håller Molaplan bredvid klockan så meddelanden anländer.",
+ "@s49ca9b6082": {
+  "x-mt": true
+ },
+ "sc6d6d4016e": "Telefon, när Molaplan är stängd",
+ "@sc6d6d4016e": {
+  "x-mt": true
+ },
+ "sb460bbf010": "Installera ntfy-appen (Android: Google Play / F-Droid, iPhone: App Store) och prenumerera på detta ämne. Meddelanden anländer även när Molaplan är stängd.",
+ "@sb460bbf010": {
+  "x-mt": true
+ },
+ "saa54f34e98": "Copy prenumererar länk",
+ "@saa54f34e98": {
+  "x-mt": true
+ },
+ "s8f19ff1e21": "Tyst timmar",
+ "@s8f19ff1e21": {
+  "x-mt": true
+ },
+ "s1cc7f7a75f": "Endast brådskande (5) kommer igenom.",
+ "@s1cc7f7a75f": {
+  "x-mt": true
+ },
+ "s973f30f5e8": "Från (HH:MM)",
+ "@s973f30f5e8": {
+  "x-mt": true
+ },
+ "sb13eeff3cd": "För (HH:MM)",
+ "@sb13eeff3cd": {
+  "x-mt": true
+ },
+ "s2f7a5f57b1": "Mute Mute",
+ "@s2f7a5f57b1": {
+  "x-mt": true
+ },
+ "sa81c1da011": "1 timme",
+ "@sa81c1da011": {
+  "x-mt": true
+ },
+ "s0ca30924bd": "8 timmar",
+ "@s0ca30924bd": {
+  "x-mt": true
+ },
+ "s38bb718aaf": "24 timmar",
+ "@s38bb718aaf": {
+  "x-mt": true
+ },
+ "s36ef8a86e1": "Unmute (tills {p0})",
+ "@s36ef8a86e1": {
+  "x-mt": true
+ },
+ "s0183ae0a12": "Skicka ett testmeddelande",
+ "@s0183ae0a12": {
+  "x-mt": true
+ },
+ "sd95091858f": "Molaplans meddelanden fungerar",
+ "@sd95091858f": {
+  "x-mt": true
+ },
+ "s58a8bfdd9f": "Test skickat",
+ "@s58a8bfdd9f": {
+  "x-mt": true
+ },
+ "s5c380d76b6": "Senaste",
+ "@s5c380d76b6": {
+  "x-mt": true
+ },
+ "s9d75942e41": "Redo automation",
+ "@s9d75942e41": {
+  "x-mt": true
+ },
+ "s70860413a1": "Ljus vid solnedgången, vattenläckage → larm, billiga timmar...",
+ "@s70860413a1": {
+  "x-mt": true
+ },
+ "s8b5be90c1e": "Din egen automation",
+ "@s8b5be90c1e": {
+  "x-mt": true
+ },
+ "sa9402c105a": "När / Om / Gör",
+ "@sa9402c105a": {
+  "x-mt": true
+ },
+ "s4102c7e085": "Scen från det nuvarande tillståndet",
+ "@s4102c7e085": {
+  "x-mt": true
+ },
+ "s21ee7e78ee": "Många enheter med en knapp",
+ "@s21ee7e78ee": {
+  "x-mt": true
+ },
+ "s5afa6e08f2": "Steg i ordning, väntar, om/else",
+ "@s5afa6e08f2": {
+  "x-mt": true
+ },
+ "s8070a25da8": "Gruppkoncernen",
+ "@s8070a25da8": {
+  "x-mt": true
+ },
+ "sf5f1ae9c9e": "t.ex. alla vardagsrumsljus som ett kort",
+ "@sf5f1ae9c9e": {
+  "x-mt": true
+ },
+ "s73f89f4de7": "Vilka enheter går i gruppen?",
+ "@s73f89f4de7": {
+  "x-mt": true
+ },
+ "s5b68340d84": "Gruppnamn",
+ "@s5b68340d84": {
+  "x-mt": true
+ },
+ "s1b087cdbbd": "Allt: {p0}",
+ "@s1b087cdbbd": {
+  "x-mt": true
+ },
+ "sdaa7d4de12": "Scen",
+ "@sdaa7d4de12": {
+  "x-mt": true
+ },
+ "sfe55fd97fa": "All tyst.",
+ "@sfe55fd97fa": {
+  "x-mt": true
+ },
+ "s162c54ed4c": "{p0}: gjort",
+ "@s162c54ed4c": {
+  "x-mt": true
+ },
+ "sf00aa23cf6": "När... gör: lampor vid solnedgången, en läckagevarning, de billigaste timmarna, skript och scener.",
+ "@sf00aa23cf6": {
+  "x-mt": true
+ },
+ "s2b463f47ba": "Gömd",
+ "@s2b463f47ba": {
+  "x-mt": true
+ },
+ "s2594346d86": "Guide linjer",
+ "@s2594346d86": {
+  "x-mt": true
+ },
+ "sd6c2de0256": "Horisontell",
+ "@sd6c2de0256": {
+  "x-mt": true
+ },
+ "sb8ef66c33e": "Grid",
+ "@sb8ef66c33e": {
+  "x-mt": true
+ },
+ "s0bee1b8ed3": "Värdeskala",
+ "@s0bee1b8ed3": {
+  "x-mt": true
+ },
+ "sd4e9b57931": "Tidsaxel",
+ "@sd4e9b57931": {
+  "x-mt": true
+ },
+ "s7abdb12fef": "Datapunkt markörer",
+ "@s7abdb12fef": {
+  "x-mt": true
+ },
+ "s29135ed75a": "Auto: Axlar och guidelinjer visar när kortet är minst 2×2.",
+ "@s29135ed75a": {
+  "x-mt": true
+ },
+ "s939603242a": "Färger med värde",
+ "@s939603242a": {
+  "x-mt": true
+ },
+ "s45f927bc62": "Anpassad",
+ "@s45f927bc62": {
+  "x-mt": true
+ },
+ "s319dab47d8": "Smooth",
+ "@s319dab47d8": {
+  "x-mt": true
+ },
+ "s613fbec20e": "Steg",
+ "@s613fbec20e": {
+  "x-mt": true
+ },
+ "s25d9db075e": "Egna gränser och färger: Inställningar → Avancerade.",
+ "@s25d9db075e": {
+  "x-mt": true
+ },
+ "s902eaaff9f": "Öppet Öppet Öppet Öppet Öppet",
+ "@s902eaaff9f": {
+  "x-mt": true
+ },
+ "sc80648d495": "Visa Molaplan",
+ "@sc80648d495": {
+  "x-mt": true
+ },
+ "sa4e9c86a86": "Quit",
+ "@sa4e9c86a86": {
+  "x-mt": true
+ },
+ "s84819cca05": "Sista larmet {p0}",
+ "@s84819cca05": {
+  "x-mt": true
+ },
+ "s4cac4725b8": "Gruppens enheter svarar inte",
+ "@s4cac4725b8": {
   "x-mt": true
  }
 }

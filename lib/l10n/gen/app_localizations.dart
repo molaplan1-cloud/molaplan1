@@ -488,6 +488,66 @@ abstract class AppLocalizations {
   /// **'power'**
   String get se78754330c;
 
+  /// fi: Kuiva
+  ///
+  /// In en, this message translates to:
+  /// **'VUOTO!'**
+  String get se317f59de2;
+
+  /// fi: Dry
+  ///
+  /// In en, this message translates to:
+  /// **'LEAK!'**
+  String get se4c4201882;
+
+  /// fi: Kiinni
+  ///
+  /// In en, this message translates to:
+  /// **'Auki'**
+  String get sdbcf5515c1;
+
+  /// fi: Closed
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get sb0af7213b5;
+
+  /// fi: Ei liikettä
+  ///
+  /// In en, this message translates to:
+  /// **'Liikettä'**
+  String get sa3477dac6e;
+
+  /// fi: No motion
+  ///
+  /// In en, this message translates to:
+  /// **'Motion'**
+  String get s280df88585;
+
+  /// fi: OK
+  ///
+  /// In en, this message translates to:
+  /// **'SAVUA!'**
+  String get s064a959911;
+
+  /// fi: OK
+  ///
+  /// In en, this message translates to:
+  /// **'SMOKE!'**
+  String get s50778e2eec;
+
+  /// fi: Rauhallinen
+  ///
+  /// In en, this message translates to:
+  /// **'Hälytys'**
+  String get s1dfa5abe81;
+
+  /// fi: Calm
+  ///
+  /// In en, this message translates to:
+  /// **'Alarm'**
+  String get s50c459fbff;
+
   /// fi: temperature
   ///
   /// In en, this message translates to:
@@ -745,6 +805,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'dimmable'**
   String get sf50732e8e8;
+
+  /// fi: lämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'temperature'**
+  String get s68e711123b;
+
+  /// fi: anturi
+  ///
+  /// In en, this message translates to:
+  /// **'sensor'**
+  String get s4082a34467;
 
   /// fi: koko huone ({p0} valoa)
   ///
@@ -1022,6 +1094,12 @@ abstract class AppLocalizations {
   /// **'Power {p0}'**
   String sb9964cfb3b(String p0);
 
+  /// fi: Vesivuotoanturi
+  ///
+  /// In en, this message translates to:
+  /// **'Water leak sensor'**
+  String get s4233362d60;
+
   /// fi: Shelly
   ///
   /// In en, this message translates to:
@@ -1039,6 +1117,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'In the Shelly app: open the device → gear (settings) → Device information → IP address. Or in your router\'\'s device list: the name starts with \"shelly…\".'**
   String get sd7e123cd2f;
+
+  /// fi: vuotoanturi · paristo
+  ///
+  /// In en, this message translates to:
+  /// **'leak sensor · battery'**
+  String get s9ad7b0076b;
 
   /// fi: nyt päällä
   ///
@@ -1303,6 +1387,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Edit the view'**
   String get scd04aa5d9e;
+
+  /// fi: Automaatiot
+  ///
+  /// In en, this message translates to:
+  /// **'Automations'**
+  String get se9ca7cb470;
 
   /// fi: Energia
   ///
@@ -3190,6 +3280,12 @@ abstract class AppLocalizations {
   /// **'Collecting data…'**
   String get s9027c88cb7;
 
+  /// fi: 7 vrk
+  ///
+  /// In en, this message translates to:
+  /// **'7 d'**
+  String get sf05d2a09f1;
+
   /// fi: Viimeksi
   ///
   /// In en, this message translates to:
@@ -3201,6 +3297,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'last'**
   String get s049d71f971;
+
+  /// fi: nyt
+  ///
+  /// In en, this message translates to:
+  /// **'now'**
+  String get sed9b5e52f6;
 
   /// fi: Tämä laite ei ole yhteydessä wifiin
   ///
@@ -3720,11 +3822,1188 @@ abstract class AppLocalizations {
   /// **'Set up remote access'**
   String get s856a422504;
 
+  /// fi: Oma väri
+  ///
+  /// In en, this message translates to:
+  /// **'Custom colour'**
+  String get sc3abd09cd9;
+
+  /// fi: Sävy
+  ///
+  /// In en, this message translates to:
+  /// **'Hue'**
+  String get s10e7cef8c1;
+
+  /// fi: Kylläisyys
+  ///
+  /// In en, this message translates to:
+  /// **'Saturation'**
+  String get s59b65e3322;
+
+  /// fi: Vaaleus
+  ///
+  /// In en, this message translates to:
+  /// **'Lightness'**
+  String get s750ed8d878;
+
+  /// fi: Valitse
+  ///
+  /// In en, this message translates to:
+  /// **'Choose'**
+  String get sa39e78050c;
+
   /// fi: Et ole kotona? Ota etäyhteys käyttöön
   ///
   /// In en, this message translates to:
   /// **'Not at home? Turn on remote access'**
   String get sd9923cda70;
+
+  /// fi: ei vielä
+  ///
+  /// In en, this message translates to:
+  /// **'not yet'**
+  String get sba1684ff6c;
+
+  /// fi: Ajohistoria
+  ///
+  /// In en, this message translates to:
+  /// **'Run history'**
+  String get sef20071510;
+
+  /// fi: Skriptit
+  ///
+  /// In en, this message translates to:
+  /// **'Scripts'**
+  String get s9f1334d4e2;
+
+  /// fi: Tilannekuvat
+  ///
+  /// In en, this message translates to:
+  /// **'Scenes'**
+  String get s6b7c1c52da;
+
+  /// fi: Ilmoitukset
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get s8613961a5a;
+
+  /// fi: Ajetaan tällä kotisillalla, myös kun sovellus on kiinni.
+  ///
+  /// In en, this message translates to:
+  /// **'Running on this home bridge, also when the app is closed.'**
+  String get s4f745952b8;
+
+  /// fi: Ajetaan kotisillalla – toimii, vaikka sovellus olisi kiinni.
+  ///
+  /// In en, this message translates to:
+  /// **'Running on the home bridge – works even when the app is closed.'**
+  String get s99cbed55fd;
+
+  /// fi: Kotisilta on vanha versio: päivitä se, niin automaatiot toimivat myös sovelluksen ollessa kiinni. Nyt ajetaan tässä sove
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge is an old version: update it so automations also run while the app is closed. Running in this app for now.'**
+  String get s0247948956;
+
+  /// fi: Ajetaan tässä sovelluksessa, kun se on auki. Kotisilta ajaa ne myös sovelluksen ollessa kiinni.
+  ///
+  /// In en, this message translates to:
+  /// **'Running in this app while it is open. A home bridge runs them while the app is closed.'**
+  String get s21fae60578;
+
+  /// fi: Automaatiot ovat pois päältä tällä laitteella.
+  ///
+  /// In en, this message translates to:
+  /// **'Automations are off on this device.'**
+  String get s66c54e2286;
+
+  /// fi: ma ti ke to pe la su
+  ///
+  /// In en, this message translates to:
+  /// **'Mon Tue Wed Thu Fri Sat Sun'**
+  String get s4057f67774;
+
+  /// fi: (laite puuttuu)
+  ///
+  /// In en, this message translates to:
+  /// **'(device missing)'**
+  String get s456d234874;
+
+  /// fi: päälle
+  ///
+  /// In en, this message translates to:
+  /// **'on'**
+  String get sf3779b50c6;
+
+  /// fi: Klo
+  ///
+  /// In en, this message translates to:
+  /// **'At'**
+  String get s7c3e905972;
+
+  /// fi: Auringonnousu
+  ///
+  /// In en, this message translates to:
+  /// **'Sunrise'**
+  String get s61637a44e4;
+
+  /// fi: Auringonlasku
+  ///
+  /// In en, this message translates to:
+  /// **'Sunset'**
+  String get sa0d5958b56;
+
+  /// fi: {p0} halvinta tuntia
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} cheapest hours'**
+  String s467fd3c653(String p0);
+
+  /// fi: Hinta yli {p0} c/kWh
+  ///
+  /// In en, this message translates to:
+  /// **'Price above {p0} c/kWh'**
+  String s65660a4b23(String p0);
+
+  /// fi: Hinta alle {p0} c/kWh
+  ///
+  /// In en, this message translates to:
+  /// **'Price below {p0} c/kWh'**
+  String sba8fa4af37(String p0);
+
+  /// fi: Ulkona
+  ///
+  /// In en, this message translates to:
+  /// **'Outdoors'**
+  String get s3324b26519;
+
+  /// fi: {p0} ei vastaa {p1} min
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} offline {p1} min'**
+  String sf3c2cf0323(String p0, String p1);
+
+  /// fi: Luo automaatio
+  ///
+  /// In en, this message translates to:
+  /// **'Create automation'**
+  String get s1b359d69e2;
+
+  /// fi: Valmiit
+  ///
+  /// In en, this message translates to:
+  /// **'Templates'**
+  String get s835865fd04;
+
+  /// fi: Ei vielä automaatioita. Aloita valmiista: esim. "Valot päälle auringonlaskussa" tai "Vesivuoto → hälytys".
+  ///
+  /// In en, this message translates to:
+  /// **'No automations yet. Start from a template, e.g. \"Lights on at sunset\" or \"Water leak → alarm\".'**
+  String get s2b57f716aa;
+
+  /// fi: Nimetön
+  ///
+  /// In en, this message translates to:
+  /// **'Untitled'**
+  String get s8039add5ed;
+
+  /// fi: Kun
+  ///
+  /// In en, this message translates to:
+  /// **'When'**
+  String get s5506524eac;
+
+  /// fi: Ei ajoja vielä.
+  ///
+  /// In en, this message translates to:
+  /// **'No runs yet.'**
+  String get sf2d3a43ee8;
+
+  /// fi: Valmiit automaatiot
+  ///
+  /// In en, this message translates to:
+  /// **'Ready-made automations'**
+  String get s5c7338ab38;
+
+  /// fi: Valitse laite
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the device'**
+  String get s354eb362d8;
+
+  /// fi: Valitse laitteet
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the devices'**
+  String get s73a65d7dff;
+
+  /// fi: Ei laitteita vielä.
+  ///
+  /// In en, this message translates to:
+  /// **'No devices yet.'**
+  String get s6bc0df13b3;
+
+  /// fi: Uusi automaatio
+  ///
+  /// In en, this message translates to:
+  /// **'New automation'**
+  String get s90db0cb9e0;
+
+  /// fi: Muokkaa automaatiota
+  ///
+  /// In en, this message translates to:
+  /// **'Edit automation'**
+  String get s3aeb373060;
+
+  /// fi: Poistetaanko automaatio?
+  ///
+  /// In en, this message translates to:
+  /// **'Delete the automation?'**
+  String get sac3c555554;
+
+  /// fi: Mikä käynnistää automaation
+  ///
+  /// In en, this message translates to:
+  /// **'What starts the automation'**
+  String get s53879bce24;
+
+  /// fi: Jos (valinnainen)
+  ///
+  /// In en, this message translates to:
+  /// **'Only if (optional)'**
+  String get s179f389617;
+
+  /// fi: Kaikkien ehtojen pitää täyttyä
+  ///
+  /// In en, this message translates to:
+  /// **'All conditions must hold'**
+  String get s803ff4f73b;
+
+  /// fi: Lisää ehto
+  ///
+  /// In en, this message translates to:
+  /// **'Add condition'**
+  String get sd930bdad70;
+
+  /// fi: Tee
+  ///
+  /// In en, this message translates to:
+  /// **'Do'**
+  String get s6f21edea24;
+
+  /// fi: Toiminnot järjestyksessä
+  ///
+  /// In en, this message translates to:
+  /// **'Actions in order'**
+  String get scbe17b6bf8;
+
+  /// fi: Lisäasetukset
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get secee53bdd2;
+
+  /// fi: Vähintään minuuttia ajojen välillä
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum minutes between runs'**
+  String get scb62f41105;
+
+  /// fi: Estää esim. heiluvaa anturia lähettämästä kymmeniä ilmoituksia.
+  ///
+  /// In en, this message translates to:
+  /// **'Stops e.g. a flapping sensor from sending dozens of notifications.'**
+  String get s643b680e89;
+
+  /// fi: Testaa nyt
+  ///
+  /// In en, this message translates to:
+  /// **'Test now'**
+  String get s4c4ab28899;
+
+  /// fi: Ajettu: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Ran: {p0}'**
+  String s7956c29b83(String p0);
+
+  /// fi: (ei laitteita)
+  ///
+  /// In en, this message translates to:
+  /// **'(no devices)'**
+  String get s6e85ff5983;
+
+  /// fi: >
+  ///
+  /// In en, this message translates to:
+  /// **'>'**
+  String get sa627de5699;
+
+  /// fi: <
+  ///
+  /// In en, this message translates to:
+  /// **'<'**
+  String get s24801cdec0;
+
+  /// fi: >=
+  ///
+  /// In en, this message translates to:
+  /// **'≥'**
+  String get sef6eef049e;
+
+  /// fi: <=
+  ///
+  /// In en, this message translates to:
+  /// **'≤'**
+  String get s5d759b1fd0;
+
+  /// fi: ==
+  ///
+  /// In en, this message translates to:
+  /// **'='**
+  String get sc67c2076cc;
+
+  /// fi: !=
+  ///
+  /// In en, this message translates to:
+  /// **'≠'**
+  String get sf69ef2bd3e;
+
+  /// fi: Laitteen arvo
+  ///
+  /// In en, this message translates to:
+  /// **'Device value'**
+  String get sc300fc12e3;
+
+  /// fi: Laitteen tila (päälle/pois, anturi)
+  ///
+  /// In en, this message translates to:
+  /// **'Device state (on/off, sensor)'**
+  String get sbab0e0dc9d;
+
+  /// fi: Kellonaika
+  ///
+  /// In en, this message translates to:
+  /// **'Time of day'**
+  String get s76de9025a1;
+
+  /// fi: Auringonnousu / -lasku
+  ///
+  /// In en, this message translates to:
+  /// **'Sunrise / sunset'**
+  String get s04c0bcdd51;
+
+  /// fi: Sähkön hinta
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity price'**
+  String get sca7e088857;
+
+  /// fi: Sää (ulkolämpötila)
+  ///
+  /// In en, this message translates to:
+  /// **'Weather (outdoor temperature)'**
+  String get s869f0d57af;
+
+  /// fi: Laite ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'Device not answering'**
+  String get sa4261f6e35;
+
+  /// fi: Laite
+  ///
+  /// In en, this message translates to:
+  /// **'Device'**
+  String get s67584c9abf;
+
+  /// fi: Tyyppi
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get se0a362c060;
+
+  /// fi: Arvo
+  ///
+  /// In en, this message translates to:
+  /// **'Value'**
+  String get s38ac222392;
+
+  /// fi: Kun se menee
+  ///
+  /// In en, this message translates to:
+  /// **'When it turns'**
+  String get s4f62fd1f09;
+
+  /// fi: päälle / hälyttää
+  ///
+  /// In en, this message translates to:
+  /// **'on / alarm'**
+  String get sab64be3b87;
+
+  /// fi: pois / rauhoittuu
+  ///
+  /// In en, this message translates to:
+  /// **'off / calm'**
+  String get sbfd08915bd;
+
+  /// fi: Kellonaika (HH:MM)
+  ///
+  /// In en, this message translates to:
+  /// **'Time (HH:MM)'**
+  String get s0aaa16b331;
+
+  /// fi: Tapahtuma
+  ///
+  /// In en, this message translates to:
+  /// **'Event'**
+  String get s9b4b2b3129;
+
+  /// fi: Siirto minuutteina (−60…60)
+  ///
+  /// In en, this message translates to:
+  /// **'Offset in minutes (−60…60)'**
+  String get s8c6de5d661;
+
+  /// fi: Milloin
+  ///
+  /// In en, this message translates to:
+  /// **'When'**
+  String get s59b3e665bf;
+
+  /// fi: Hinta alle
+  ///
+  /// In en, this message translates to:
+  /// **'Price below'**
+  String get s6a23c4a83f;
+
+  /// fi: Hinta yli
+  ///
+  /// In en, this message translates to:
+  /// **'Price above'**
+  String get s49083cabf7;
+
+  /// fi: Päivän halvimmat tunnit
+  ///
+  /// In en, this message translates to:
+  /// **'The cheapest hours of the day'**
+  String get s411924155f;
+
+  /// fi: Tuntien määrä
+  ///
+  /// In en, this message translates to:
+  /// **'Number of hours'**
+  String get s04dc35851a;
+
+  /// fi: Minuuttia
+  ///
+  /// In en, this message translates to:
+  /// **'Minutes'**
+  String get s6f22fd8c19;
+
+  /// fi: Ei valintaa = joka päivä
+  ///
+  /// In en, this message translates to:
+  /// **'None selected = every day'**
+  String get s32fa6270c8;
+
+  /// fi: Kellonaikaväli
+  ///
+  /// In en, this message translates to:
+  /// **'Time window'**
+  String get s966e223f86;
+
+  /// fi: Viikonpäivät
+  ///
+  /// In en, this message translates to:
+  /// **'Weekdays'**
+  String get s45aae9c551;
+
+  /// fi: Laitteen tila / arvo
+  ///
+  /// In en, this message translates to:
+  /// **'Device state / value'**
+  String get sf05bf9c751;
+
+  /// fi: Ulkolämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'Outdoor temperature'**
+  String get sb74370fc1e;
+
+  /// fi: Pimeää / valoisaa
+  ///
+  /// In en, this message translates to:
+  /// **'Dark / light'**
+  String get s585b4c519f;
+
+  /// fi: Ehto
+  ///
+  /// In en, this message translates to:
+  /// **'Condition'**
+  String get s6019108a01;
+
+  /// fi: Poista
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get s9593939a4c;
+
+  /// fi: Alkaen
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get sc26d444f90;
+
+  /// fi: Asti
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get s796739363a;
+
+  /// fi: Mitä verrataan
+  ///
+  /// In en, this message translates to:
+  /// **'Compare'**
+  String get s39d9f766c6;
+
+  /// fi: Tila päällä/pois
+  ///
+  /// In en, this message translates to:
+  /// **'State on/off'**
+  String get sa56aea2cf9;
+
+  /// fi: Lukuarvo
+  ///
+  /// In en, this message translates to:
+  /// **'Number'**
+  String get sc2521b6b15;
+
+  /// fi: Tila
+  ///
+  /// In en, this message translates to:
+  /// **'State'**
+  String get sfffb54daf4;
+
+  /// fi: pimeää
+  ///
+  /// In en, this message translates to:
+  /// **'dark'**
+  String get se2b3e45118;
+
+  /// fi: valoisaa
+  ///
+  /// In en, this message translates to:
+  /// **'light'**
+  String get s709da04ca2;
+
+  /// fi: Lisää toiminto
+  ///
+  /// In en, this message translates to:
+  /// **'Add action'**
+  String get s723d015dc1;
+
+  /// fi: Ohjaa laitetta
+  ///
+  /// In en, this message translates to:
+  /// **'Control a device'**
+  String get sae3489a6c9;
+
+  /// fi: Aja tilannekuva
+  ///
+  /// In en, this message translates to:
+  /// **'Run a scene'**
+  String get s1f6962ba39;
+
+  /// fi: Aja skripti
+  ///
+  /// In en, this message translates to:
+  /// **'Run a script'**
+  String get s02df6d430a;
+
+  /// fi: Lähetä ilmoitus
+  ///
+  /// In en, this message translates to:
+  /// **'Send a notification'**
+  String get sed67c16508;
+
+  /// fi: Odota
+  ///
+  /// In en, this message translates to:
+  /// **'Wait'**
+  String get s654489bb29;
+
+  /// fi: Odota kunnes
+  ///
+  /// In en, this message translates to:
+  /// **'Wait until'**
+  String get sf216517af2;
+
+  /// fi: Jos / muuten
+  ///
+  /// In en, this message translates to:
+  /// **'If / else'**
+  String get sde1657b024;
+
+  /// fi: Toiminto
+  ///
+  /// In en, this message translates to:
+  /// **'Action'**
+  String get sbc8e165fbf;
+
+  /// fi: Päälle
+  ///
+  /// In en, this message translates to:
+  /// **'On'**
+  String get s4cd3d92d4c;
+
+  /// fi: Vaihda
+  ///
+  /// In en, this message translates to:
+  /// **'Toggle'**
+  String get s750f16460c;
+
+  /// fi: Aseta arvo
+  ///
+  /// In en, this message translates to:
+  /// **'Set value'**
+  String get s7a544fe304;
+
+  /// fi: Paina
+  ///
+  /// In en, this message translates to:
+  /// **'Press'**
+  String get s929344a68b;
+
+  /// fi: Tilannekuva
+  ///
+  /// In en, this message translates to:
+  /// **'Scene'**
+  String get s02cfe06e04;
+
+  /// fi: (ei tilannekuvia)
+  ///
+  /// In en, this message translates to:
+  /// **'(no scenes)'**
+  String get sdb235c3ced;
+
+  /// fi: Skripti
+  ///
+  /// In en, this message translates to:
+  /// **'Script'**
+  String get sdced476aeb;
+
+  /// fi: (ei skriptejä)
+  ///
+  /// In en, this message translates to:
+  /// **'(no scripts)'**
+  String get s4f330bfcfb;
+
+  /// fi: Otsikko
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get s8a8673aafe;
+
+  /// fi: Teksti
+  ///
+  /// In en, this message translates to:
+  /// **'Text'**
+  String get s34900f9d58;
+
+  /// fi: {summary} = sää, sähkö ja kodin tila
+  ///
+  /// In en, this message translates to:
+  /// **'\'{summary} = weather, price and home state\''**
+  String get s3c2ee8fe0d;
+
+  /// fi: Tärkeys
+  ///
+  /// In en, this message translates to:
+  /// **'Priority'**
+  String get sd84d87d156;
+
+  /// fi: 1 – hiljainen
+  ///
+  /// In en, this message translates to:
+  /// **'1 – silent'**
+  String get sb55a08c07c;
+
+  /// fi: 2 – matala
+  ///
+  /// In en, this message translates to:
+  /// **'2 – low'**
+  String get s423418208e;
+
+  /// fi: 3 – normaali
+  ///
+  /// In en, this message translates to:
+  /// **'3 – normal'**
+  String get sbad27a6b89;
+
+  /// fi: 4 – korkea
+  ///
+  /// In en, this message translates to:
+  /// **'4 – high'**
+  String get s8c17000b91;
+
+  /// fi: 5 – kiireellinen (myös hiljaisena aikana)
+  ///
+  /// In en, this message translates to:
+  /// **'5 – urgent (also in quiet hours)'**
+  String get sa0738def3a;
+
+  /// fi: Napautus avaa
+  ///
+  /// In en, this message translates to:
+  /// **'Tap opens'**
+  String get sb33001c92e;
+
+  /// fi: sovelluksen
+  ///
+  /// In en, this message translates to:
+  /// **'the app'**
+  String get s07d7410408;
+
+  /// fi: Sekuntia
+  ///
+  /// In en, this message translates to:
+  /// **'Seconds'**
+  String get sfb10dd528e;
+
+  /// fi: Enintään sekuntia
+  ///
+  /// In en, this message translates to:
+  /// **'At most seconds'**
+  String get sd7ab969914;
+
+  /// fi: Niin
+  ///
+  /// In en, this message translates to:
+  /// **'Then'**
+  String get sccfe5a0d41;
+
+  /// fi: Muuten
+  ///
+  /// In en, this message translates to:
+  /// **'Else'**
+  String get s2d983e951b;
+
+  /// fi: Ylös
+  ///
+  /// In en, this message translates to:
+  /// **'Up'**
+  String get sf936d0b01d;
+
+  /// fi: Uusi skripti
+  ///
+  /// In en, this message translates to:
+  /// **'New script'**
+  String get s2c7a2bbac1;
+
+  /// fi: Skripti on lista vaiheita: ohjaa laitetta, odota, lähetä ilmoitus, jos/muuten… Aja se napista, automaatiosta tai etänä (
+  ///
+  /// In en, this message translates to:
+  /// **'A script is a list of steps: control a device, wait, notify, if/else… Run it from a button, an automation or remotely (iPhone Shortcut).'**
+  String get s5b2dd17cbc;
+
+  /// fi: Pysäytä
+  ///
+  /// In en, this message translates to:
+  /// **'Stop'**
+  String get s6fe2320f3d;
+
+  /// fi: Aja
+  ///
+  /// In en, this message translates to:
+  /// **'Run'**
+  String get se9ee46a9c8;
+
+  /// fi: Edistynyt
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced'**
+  String get sfd2d047cb2;
+
+  /// fi: {p0} vaihetta
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} steps'**
+  String s766b50721b(String p0);
+
+  /// fi: etäajo
+  ///
+  /// In en, this message translates to:
+  /// **'remote'**
+  String get s061d1b874b;
+
+  /// fi: Muokkaa skriptiä
+  ///
+  /// In en, this message translates to:
+  /// **'Edit script'**
+  String get sb886978015;
+
+  /// fi: Ajoloki
+  ///
+  /// In en, this message translates to:
+  /// **'Run log'**
+  String get scc2c1e2508;
+
+  /// fi: Poistetaanko skripti?
+  ///
+  /// In en, this message translates to:
+  /// **'Delete the script?'**
+  String get sacf2fbc495;
+
+  /// fi: Vaiheet
+  ///
+  /// In en, this message translates to:
+  /// **'Steps'**
+  String get s01de653429;
+
+  /// fi: Koodi
+  ///
+  /// In en, this message translates to:
+  /// **'Code'**
+  String get s01d3c353e2;
+
+  /// fi: Molaplan-skripti
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan script'**
+  String get s637ae4dbf4;
+
+  /// fi: Funktiot: get set on off toggle wait notify scene price cheapest temp time hour weekday log. Ei tiedosto- eikä verkkoyht
+  ///
+  /// In en, this message translates to:
+  /// **'Functions: get set on off toggle wait notify scene price cheapest temp time hour weekday log. No file or network access; 10 min time limit.'**
+  String get sea09cb0d3b;
+
+  /// fi: Salli etäajo (PIN)
+  ///
+  /// In en, this message translates to:
+  /// **'Allow remote run (PIN)'**
+  String get s26e23ef341;
+
+  /// fi: ntfy-viesti tai iPhonen Pikakomento käynnistää skriptin.
+  ///
+  /// In en, this message translates to:
+  /// **'An ntfy message or an iPhone Shortcut starts the script.'**
+  String get sd573107aec;
+
+  /// fi: Etäajon PIN (vähintään 4 merkkiä)
+  ///
+  /// In en, this message translates to:
+  /// **'Remote PIN (at least 4 characters)'**
+  String get s0a5410ea4f;
+
+  /// fi: Lähetä viesti "run {p0} <PIN>" osoitteeseen {p1}
+  /// iPhonen Pikakomennot: "Hae URL:n sisältö" → {p2}, menetelmä POST, runko
+  ///
+  /// In en, this message translates to:
+  /// **'Send \"run {p0} <PIN>\" to {p1}\niPhone Shortcuts: \"Get Contents of URL\" → {p1}, method POST, body: run {p0} <PIN>'**
+  String sceba001122(String p0, String p1, String p2, String p3);
+
+  /// fi: Kopioi URL
+  ///
+  /// In en, this message translates to:
+  /// **'Copy URL'**
+  String get seff0aac16e;
+
+  /// fi: Ajettu
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get sff9b69c6ca;
+
+  /// fi: Nappi näkymään
+  ///
+  /// In en, this message translates to:
+  /// **'Button on dashboard'**
+  String get sf1ed05f7de;
+
+  /// fi: Nappi lisätty näkymään {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Button added to {p0}'**
+  String sf1541ca978(String p0);
+
+  /// fi: Tallenna nykytila
+  ///
+  /// In en, this message translates to:
+  /// **'Save current state'**
+  String get s09f745552a;
+
+  /// fi: Tyhjä
+  ///
+  /// In en, this message translates to:
+  /// **'Empty'**
+  String get s44367fdec5;
+
+  /// fi: Tilannekuva asettaa monta laitetta kerralla, esim. "Elokuvailta" tai "Kaikki pois".
+  ///
+  /// In en, this message translates to:
+  /// **'A scene sets many devices at once, e.g. \"Movie night\" or \"All off\".'**
+  String get sc41824585d;
+
+  /// fi: {p0} toimintoa
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} actions'**
+  String s7e7b0848fb(String p0);
+
+  /// fi: Mitkä laitteet tilannekuvaan?
+  ///
+  /// In en, this message translates to:
+  /// **'Which devices go in the scene?'**
+  String get s7cdee3dc7d;
+
+  /// fi: Tilannekuvan nimi
+  ///
+  /// In en, this message translates to:
+  /// **'Scene name'**
+  String get sde0d544a4c;
+
+  /// fi: esim. Elokuvailta
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Movie night'**
+  String get scff2a13871;
+
+  /// fi: Uusi tilannekuva
+  ///
+  /// In en, this message translates to:
+  /// **'New scene'**
+  String get se3ba6a13bb;
+
+  /// fi: Muokkaa tilannekuvaa
+  ///
+  /// In en, this message translates to:
+  /// **'Edit scene'**
+  String get s020a1af0d8;
+
+  /// fi: Poistetaanko tilannekuva?
+  ///
+  /// In en, this message translates to:
+  /// **'Delete the scene?'**
+  String get s4dbd6f62bf;
+
+  /// fi: Push-ilmoitukset
+  ///
+  /// In en, this message translates to:
+  /// **'Push notifications'**
+  String get se250251ff0;
+
+  /// fi: ntfy-palvelun kautta (ei Google-tiliä)
+  ///
+  /// In en, this message translates to:
+  /// **'Through ntfy (no Google account needed)'**
+  String get s91a8948ad7;
+
+  /// fi: Näytä tällä laitteella
+  ///
+  /// In en, this message translates to:
+  /// **'Show on this device'**
+  String get sbdd6c9bad2;
+
+  /// fi: Sovellus kuuntelee ilmoituksia, kun se on käynnissä (Windowsissa myös ilmaisinalueella).
+  ///
+  /// In en, this message translates to:
+  /// **'The app listens for notifications while running (on Windows also from the tray).'**
+  String get se1e0d398d7;
+
+  /// fi: Aja automaatioita tässä sovelluksessa
+  ///
+  /// In en, this message translates to:
+  /// **'Run automations in this app'**
+  String get s6993f32ed2;
+
+  /// fi: Kun kotisiltaa ei ole. Kotisilta ajaa ne aina, myös sovelluksen ollessa kiinni.
+  ///
+  /// In en, this message translates to:
+  /// **'When there is no home bridge. A home bridge always runs them, also while the app is closed.'**
+  String get sc0f6ea8ebe;
+
+  /// fi: Sulje ilmaisinalueelle
+  ///
+  /// In en, this message translates to:
+  /// **'Close to the tray'**
+  String get sb35519f8e9;
+
+  /// fi: Ikkunan sulkeminen jättää Molaplanin kellon viereen, jotta ilmoitukset tulevat.
+  ///
+  /// In en, this message translates to:
+  /// **'Closing the window keeps Molaplan next to the clock so notifications arrive.'**
+  String get s49ca9b6082;
+
+  /// fi: Puhelin, kun Molaplan on kiinni
+  ///
+  /// In en, this message translates to:
+  /// **'Phone, when Molaplan is closed'**
+  String get sc6d6d4016e;
+
+  /// fi: Asenna ntfy-sovellus (Android: Google Play / F-Droid, iPhone: App Store) ja tilaa tämä aihe. Ilmoitukset tulevat silloin
+  ///
+  /// In en, this message translates to:
+  /// **'Install the ntfy app (Android: Google Play / F-Droid, iPhone: App Store) and subscribe to this topic. Notifications arrive even when Molaplan is closed.'**
+  String get sb460bbf010;
+
+  /// fi: Kopioi tilauslinkki
+  ///
+  /// In en, this message translates to:
+  /// **'Copy subscribe link'**
+  String get saa54f34e98;
+
+  /// fi: Hiljainen aika
+  ///
+  /// In en, this message translates to:
+  /// **'Quiet hours'**
+  String get s8f19ff1e21;
+
+  /// fi: Vain kiireelliset (5) tulevat läpi.
+  ///
+  /// In en, this message translates to:
+  /// **'Only urgent (5) come through.'**
+  String get s1cc7f7a75f;
+
+  /// fi: Alkaen (HH:MM)
+  ///
+  /// In en, this message translates to:
+  /// **'From (HH:MM)'**
+  String get s973f30f5e8;
+
+  /// fi: Asti (HH:MM)
+  ///
+  /// In en, this message translates to:
+  /// **'To (HH:MM)'**
+  String get sb13eeff3cd;
+
+  /// fi: Mykistä
+  ///
+  /// In en, this message translates to:
+  /// **'Mute'**
+  String get s2f7a5f57b1;
+
+  /// fi: 1 tunti
+  ///
+  /// In en, this message translates to:
+  /// **'1 hour'**
+  String get sa81c1da011;
+
+  /// fi: 8 tuntia
+  ///
+  /// In en, this message translates to:
+  /// **'8 hours'**
+  String get s0ca30924bd;
+
+  /// fi: Vuorokausi
+  ///
+  /// In en, this message translates to:
+  /// **'24 hours'**
+  String get s38bb718aaf;
+
+  /// fi: Poista mykistys ({p0} asti)
+  ///
+  /// In en, this message translates to:
+  /// **'Unmute (until {p0})'**
+  String s36ef8a86e1(String p0);
+
+  /// fi: Lähetä testi-ilmoitus
+  ///
+  /// In en, this message translates to:
+  /// **'Send a test notification'**
+  String get s0183ae0a12;
+
+  /// fi: Molaplan-ilmoitukset toimivat
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan notifications work'**
+  String get sd95091858f;
+
+  /// fi: Testi lähetetty
+  ///
+  /// In en, this message translates to:
+  /// **'Test sent'**
+  String get s58a8bfdd9f;
+
+  /// fi: Viimeisimmät
+  ///
+  /// In en, this message translates to:
+  /// **'Latest'**
+  String get s5c380d76b6;
+
+  /// fi: Valmis automaatio
+  ///
+  /// In en, this message translates to:
+  /// **'Ready-made automation'**
+  String get s9d75942e41;
+
+  /// fi: Valot auringonlaskussa, vesivuoto → hälytys, halvat tunnit…
+  ///
+  /// In en, this message translates to:
+  /// **'Lights at sunset, water leak → alarm, cheap hours…'**
+  String get s70860413a1;
+
+  /// fi: Oma automaatio
+  ///
+  /// In en, this message translates to:
+  /// **'Your own automation'**
+  String get s8b5be90c1e;
+
+  /// fi: Kun / Jos / Tee
+  ///
+  /// In en, this message translates to:
+  /// **'When / If / Do'**
+  String get sa9402c105a;
+
+  /// fi: Tilannekuva nykytilasta
+  ///
+  /// In en, this message translates to:
+  /// **'Scene from the current state'**
+  String get s4102c7e085;
+
+  /// fi: Monta laitetta yhdellä napilla
+  ///
+  /// In en, this message translates to:
+  /// **'Many devices with one button'**
+  String get s21ee7e78ee;
+
+  /// fi: Vaiheet järjestyksessä, odotukset, jos/muuten
+  ///
+  /// In en, this message translates to:
+  /// **'Steps in order, waits, if/else'**
+  String get s5afa6e08f2;
+
+  /// fi: Ryhmä
+  ///
+  /// In en, this message translates to:
+  /// **'Group'**
+  String get s8070a25da8;
+
+  /// fi: Esim. kaikki olohuoneen valot yhtenä ruutuna
+  ///
+  /// In en, this message translates to:
+  /// **'E.g. all living room lights as one tile'**
+  String get sf5f1ae9c9e;
+
+  /// fi: Mitkä laitteet ryhmään?
+  ///
+  /// In en, this message translates to:
+  /// **'Which devices go in the group?'**
+  String get s73f89f4de7;
+
+  /// fi: Ryhmän nimi
+  ///
+  /// In en, this message translates to:
+  /// **'Group name'**
+  String get s5b68340d84;
+
+  /// fi: Kaikki: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'All: {p0}'**
+  String s1b087cdbbd(String p0);
 
   /// fi: Lisää laite
   ///
@@ -4254,6 +5533,24 @@ abstract class AppLocalizations {
   /// **'Sun'**
   String get s9126bf24a0;
 
+  /// fi: Tilanne
+  ///
+  /// In en, this message translates to:
+  /// **'Scene'**
+  String get sdaa7d4de12;
+
+  /// fi: Kaikki rauhallista.
+  ///
+  /// In en, this message translates to:
+  /// **'All quiet.'**
+  String get sfe55fd97fa;
+
+  /// fi: {p0}: valmis
+  ///
+  /// In en, this message translates to:
+  /// **'{p0}: done'**
+  String s162c54ed4c(String p0);
+
   /// fi: Ei hintoja
   ///
   /// In en, this message translates to:
@@ -4572,12 +5869,6 @@ abstract class AppLocalizations {
   /// **'What do you want to add?'**
   String get sc51b1e0dc0;
 
-  /// fi: Laite
-  ///
-  /// In en, this message translates to:
-  /// **'Device'**
-  String get s67584c9abf;
-
   /// fi: Shelly, Sonoff, Hue, kamera, lämpöpumppu… Etsii kotiverkosta automaattisesti.
   ///
   /// In en, this message translates to:
@@ -4595,6 +5886,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Electricity price, weather, camera, gauge, notification or command – no new device needed.'**
   String get sfc846c4cc5;
+
+  /// fi: Kun… jos… tee: valot auringonlaskussa, ilmoitus vuodosta, halvimmat tunnit, skriptit ja tilannekuvat.
+  ///
+  /// In en, this message translates to:
+  /// **'When… if… do: lights at sunset, a leak alert, the cheapest hours, scripts and scenes.'**
+  String get sf00aa23cf6;
 
   /// fi: Lisää ruutu
   ///
@@ -4727,12 +6024,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This device can then no longer reach home from outside. You can pair again any time.'**
   String get sbc44ce6993;
-
-  /// fi: Poista
-  ///
-  /// In en, this message translates to:
-  /// **'Remove'**
-  String get s9593939a4c;
 
   /// fi: Poista etäyhteys
   ///
@@ -5088,12 +6379,6 @@ abstract class AppLocalizations {
   /// **'Edit tile'**
   String get sa684fd0716;
 
-  /// fi: Otsikko
-  ///
-  /// In en, this message translates to:
-  /// **'Title'**
-  String get s8a8673aafe;
-
   /// fi: Kuvake
   ///
   /// In en, this message translates to:
@@ -5297,6 +6582,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Delay before (ms)'**
   String get s77d2309fd5;
+
+  /// fi: Piilota
+  ///
+  /// In en, this message translates to:
+  /// **'Hide'**
+  String get s2b463f47ba;
+
+  /// fi: Apuviivat
+  ///
+  /// In en, this message translates to:
+  /// **'Guide lines'**
+  String get s2594346d86;
+
+  /// fi: Ei
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get sfdffaffea4;
+
+  /// fi: Vaaka
+  ///
+  /// In en, this message translates to:
+  /// **'Horizontal'**
+  String get sd6c2de0256;
+
+  /// fi: Ruudukko
+  ///
+  /// In en, this message translates to:
+  /// **'Grid'**
+  String get sb8ef66c33e;
+
+  /// fi: Arvoasteikko
+  ///
+  /// In en, this message translates to:
+  /// **'Value scale'**
+  String get s0bee1b8ed3;
+
+  /// fi: Aika-akseli
+  ///
+  /// In en, this message translates to:
+  /// **'Time axis'**
+  String get sd4e9b57931;
+
+  /// fi: Datapisteet viivalla
+  ///
+  /// In en, this message translates to:
+  /// **'Data point markers'**
+  String get s7abdb12fef;
+
+  /// fi: Auto: akselit ja apuviivat näkyvät, kun ruutu on vähintään 2×2.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto: axes and guide lines show when the tile is at least 2×2.'**
+  String get s29135ed75a;
+
+  /// fi: Värit arvon mukaan
+  ///
+  /// In en, this message translates to:
+  /// **'Colours by value'**
+  String get s939603242a;
+
+  /// fi: Omat rajat
+  ///
+  /// In en, this message translates to:
+  /// **'Custom'**
+  String get s45f927bc62;
+
+  /// fi: Liukuva
+  ///
+  /// In en, this message translates to:
+  /// **'Smooth'**
+  String get s319dab47d8;
+
+  /// fi: Jyrkkä
+  ///
+  /// In en, this message translates to:
+  /// **'Steps'**
+  String get s613fbec20e;
+
+  /// fi: Omat rajat ja värit: Asetukset → Edistyneet.
+  ///
+  /// In en, this message translates to:
+  /// **'Own limits and colours: Settings → Advanced.'**
+  String get s25d9db075e;
 
   /// fi: Värirajat (arvo ≥ raja → väri)
   ///
@@ -6084,6 +7453,12 @@ abstract class AppLocalizations {
   /// **'Location'**
   String get sa6212aaeb4;
 
+  /// fi: Avaa
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get s902eaaff9f;
+
   /// fi: Vain kotiverkossa
   ///
   /// In en, this message translates to:
@@ -6167,12 +7542,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Reply at'**
   String get sd1c7d49360;
-
-  /// fi: Arvo
-  ///
-  /// In en, this message translates to:
-  /// **'Value'**
-  String get s38ac222392;
 
   /// fi: Hintaohjaus käytössä
   ///
@@ -6270,18 +7639,6 @@ abstract class AppLocalizations {
   /// **'Fans'**
   String get sbe76826428;
 
-  /// fi: Tilannekuvat
-  ///
-  /// In en, this message translates to:
-  /// **'Scenes'**
-  String get s6b7c1c52da;
-
-  /// fi: Skriptit
-  ///
-  /// In en, this message translates to:
-  /// **'Scripts'**
-  String get s9f1334d4e2;
-
   /// fi: Painikkeet
   ///
   /// In en, this message translates to:
@@ -6299,12 +7656,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Helper toggles'**
   String get s3c2ed0c522;
-
-  /// fi: Automaatiot
-  ///
-  /// In en, this message translates to:
-  /// **'Automations'**
-  String get se9ca7cb470;
 
   /// fi: Mediasoittimet
   ///
@@ -6546,6 +7897,18 @@ abstract class AppLocalizations {
   /// **'The picture is shrunk (≤ 200 KB) and kept on this device only.'**
   String get sabb10f8cb2;
 
+  /// fi: Näytä Molaplan
+  ///
+  /// In en, this message translates to:
+  /// **'Show Molaplan'**
+  String get sc80648d495;
+
+  /// fi: Lopeta
+  ///
+  /// In en, this message translates to:
+  /// **'Quit'**
+  String get sa4e9c86a86;
+
   /// fi: Vie asetukset
   ///
   /// In en, this message translates to:
@@ -6737,6 +8100,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. Without an account all settings stay on this device.'**
   String get sd178a1d809;
+
+  /// fi: Viim. hälytys {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Last alarm {p0}'**
+  String s84819cca05(String p0);
 
   /// fi: Vaihe
   ///
@@ -7169,12 +8538,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Refresh (s, snapshot)'**
   String get s4f356d158a;
-
-  /// fi: Sähkön hinta
-  ///
-  /// In en, this message translates to:
-  /// **'Electricity price'**
-  String get sca7e088857;
 
   /// fi: Suomi on yksi alue (FI). Ruotsissa ja Norjassa alue riippuu asuinpaikasta.
   ///
@@ -8142,6 +9505,12 @@ abstract class AppLocalizations {
   /// **'Leaving home'**
   String get sb25aad3bc2;
 
+  /// fi: Ryhmän laitteet eivät vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'The group\'\'s devices are not answering'**
+  String get s4cac4725b8;
+
   /// fi: Löytyy reitittimen laitelistasta tai laitteen sovelluksesta. Voit myös painaa "Etsi verkosta".
   ///
   /// In en, this message translates to:
@@ -8999,12 +10368,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sent state (IR is one-way)'**
   String get saa437260b8;
-
-  /// fi: Tila
-  ///
-  /// In en, this message translates to:
-  /// **'State'**
-  String get sfffb54daf4;
 
   /// fi: Puhallin (0 = auto)
   ///

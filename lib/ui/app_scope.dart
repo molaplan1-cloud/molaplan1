@@ -43,7 +43,7 @@ void showSnack(BuildContext context, String msg, {bool error = false}) {
 }
 
 /// Snackbar with an "Undo" (Kumoa) action.
-void showUndo(BuildContext context, String msg, VoidCallback undo) {
+void showUndo(BuildContext context, String msg, VoidCallback undo, {String? label}) {
   final cs = Theme.of(context).colorScheme;
   ScaffoldMessenger.of(context)
     ..hideCurrentSnackBar()
@@ -57,7 +57,11 @@ void showUndo(BuildContext context, String msg, VoidCallback undo) {
         persist: false,
         showCloseIcon: true,
         closeIconColor: cs.onInverseSurface,
-        action: SnackBarAction(label: tx(context, 'Kumoa', 'Undo'), textColor: cs.inversePrimary, onPressed: undo),
+        action: SnackBarAction(
+          label: label ?? tx(context, 'Kumoa', 'Undo'),
+          textColor: cs.inversePrimary,
+          onPressed: undo,
+        ),
       ),
     );
 }

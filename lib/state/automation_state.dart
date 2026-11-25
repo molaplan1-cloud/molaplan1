@@ -343,6 +343,24 @@ class AutomationState extends ChangeNotifier {
     return s;
   }
 
+  /// Morning summary text (weather, price, home), cached for 10 minutes.
+  Future<String> summary() async {
+    final c = _summary;
+    if (c != null && DateTime.now().difference(c.$1).inMinutes < 10) return c.$2;
+    final env = local.env..pkg = AutomationPackage.fromConfig(app.config);
+    final s = await env.summaryText().timeout(const Duration(seconds: 20), onTimeout: () => '');
+    _summary = (DateTime.now(), s);
+    return s;
+  }
+
+  (DateTime, String)? _summary;
+
+  /// Repaint listeners after a UI-only change.
+  void changedUi() => notifyListeners();
+
+  /// The morning card was closed today (yyyy-mm-dd).
+  String? summaryDismissed;
+
   // ------------------------------------------------------------------ receiving
   void _subscribe() {
     final n = settings.notify;

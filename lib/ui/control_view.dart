@@ -9,6 +9,8 @@ import 'package:material_ui/material_ui.dart';
 import '../models/models.dart';
 import 'account_nudge.dart';
 import 'app_scope.dart';
+import 'automation_pages.dart';
+import 'home_header.dart';
 import 'tile_widget.dart';
 import 'remote_pages.dart';
 import 'update_ui.dart';
@@ -85,6 +87,7 @@ class ControlView extends StatelessWidget {
                   return ListView(
                     padding: EdgeInsets.fromLTRB(gap, 6, gap, st.viewLocked ? 32 : 96),
                     children: [
+                      const HomeHeader(),
                       for (final d in groups) ...[
                         if (!single && !sameAsTitle(d))
                           Padding(
@@ -151,6 +154,8 @@ class ControlView extends StatelessWidget {
             onEdit(groups.first);
           case 'energy':
             onEnergy?.call();
+          case 'automations':
+            await Navigator.push(context, MaterialPageRoute(builder: (_) => const AutomationsPage()));
           case 'settings':
             onSettings();
           case 'lock':
@@ -167,6 +172,11 @@ class ControlView extends StatelessWidget {
           key: const ValueKey('control-edit'),
           value: 'edit',
           child: _item(const Icon(Icons.edit_outlined), Text(tx(c, 'Muokkaa näkymää', 'Edit the view'))),
+        ),
+        PopupMenuItem(
+          key: const ValueKey('control-automations'),
+          value: 'automations',
+          child: _item(const Icon(Icons.auto_mode), Text(tx(c, 'Automaatiot', 'Automations'))),
         ),
         if (onEnergy != null)
           PopupMenuItem(
