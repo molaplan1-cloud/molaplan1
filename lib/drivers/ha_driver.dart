@@ -106,6 +106,27 @@ class HomeAssistantDriver extends Driver {
     return _pick(cached ?? await _getState(entity), spec);
   }
 
+  /// t148u: the recorder's history for the trend window (GET /api/history/period), so a new
+  /// tile or a longer range does not start empty. Attribute reads need the full states.
+  @override
+  Future<List<(DateTime, double)>> history(Map<String, dynamic> spec, {int hours = 1}) async {
+    final entity = spec.str('entityId');
+    if (entity.isEmpty || spec['full'] == true) return const [];
+    final attr = spec.strOrNull('attribute');
+    final now = DateTime.now().toUtc();
+    final start = now.subtract(Duration(hours: hours)).toIso8601String();
+    final q = {
+      'filter_entity_id': entity,
+      'end_time': now.toIso8601String(),
+      if (attr == null) 'minimal_response': '',
+      if (attr == null) 'no_attributes': '',
+    };
+    final uri = Uri.parse('$_base/api/history/period/$start').replace(queryParameters: q);
+    final r = await client.get(uri, headers: _headers).timeout(const Duration(seconds: 10));
+    if (r.statusCode >= 400) return const [];
+    return parseHaHistory(jsonDecode(r.body), attribute: attr);
+  }
+
   @override
   Stream<Object?>? watch(Map<String, dynamic> spec) {
     if (!s.flag('liveUpdates', true)) return null;
@@ -244,4 +265,20 @@ class HomeAssistantDriver extends Driver {
     _client?.close();
     await _events.close();
   }
+}
+
+/// [[{state, last_changed, attributes?}, …]] → numeric points, oldest first (non-numbers skipped).
+List<(DateTime, double)> parseHaHistory(Object? body, {String? attribute}) {
+  final out = <(DateTime, double)>[];
+  if (body is! List || body.isEmpty || body.first is! List) return out;
+  for (final e in body.first as List) {
+    if (e is! Map) continue;
+    final raw = attribute == null ? e['state'] : (e['attributes'] is Map ? (e['attributes'] as Map)[attribute] : null);
+    final v = raw is num ? raw.toDouble() : double.tryParse('${raw ?? ''}');
+    final at = DateTime.tryParse('${e['last_changed'] ?? e['last_updated'] ?? ''}');
+    if (v == null || !v.isFinite || at == null) continue;
+    out.add((at.toLocal(), v));
+  }
+  out.sort((a, b) => a.$1.compareTo(b.$1));
+  return out;
 }

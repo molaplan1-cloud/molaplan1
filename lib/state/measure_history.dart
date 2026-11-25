@@ -82,6 +82,19 @@ class MeasureHistory {
       l.last.add(v);
     } else if (l.isEmpty || l.last.minute < m) {
       l.add(MeasureBucket(m, v, v, v, 1));
+    } else {
+      // t148u: backfilled history (older than what we have) goes in its place.
+      var i = l.length;
+      while (i > 0 && l[i - 1].minute > m) {
+        i--;
+      }
+      if (i > 0 && l[i - 1].minute == m) {
+        l[i - 1].add(v);
+      } else {
+        l.insert(i, MeasureBucket(m, v, v, v, 1));
+      }
+      version++;
+      return;
     }
     _last[key] = (at, v);
     version++;
@@ -89,6 +102,22 @@ class MeasureHistory {
   }
 
   (DateTime, double)? last(String key) => _last[key];
+
+  /// Does the stored history reach back over most of the last [hours]?
+  bool covers(String key, int hours, {DateTime? now}) {
+    final l = _data[key];
+    if (l == null || l.isEmpty) return false;
+    final from = (now ?? DateTime.now()).millisecondsSinceEpoch ~/ 60000 - hours * 60;
+    return l.first.minute <= from + math.max(10, hours * 6);
+  }
+
+  /// Change over the window: last minus first value (null with under two samples).
+  double? change(String key, int hours, {DateTime? now}) {
+    final s = series(key, hours, now: now);
+    if (s.length < 2) return null;
+    final last = _last[key]?.$2 ?? s.last.avg;
+    return last - s.first.avg;
+  }
 
   /// Buckets inside the last [hours] (oldest first).
   List<MeasureBucket> series(String key, int hours, {DateTime? now}) {
@@ -106,7 +135,7 @@ class MeasureHistory {
     return MeasureStats(s.map((b) => b.min).reduce(math.min), s.map((b) => b.max).reduce(math.max), l.$2, l.$1);
   }
 
-  /// Older data in coarser buckets; drops data older than 24 h.
+  /// Older data in coarser buckets; drops data older than 7 days (t148u: the 7 vrk range).
   void compact([String? only, DateTime? now]) {
     final n = (now ?? DateTime.now()).millisecondsSinceEpoch ~/ 60000;
     for (final key in only == null ? _data.keys.toList() : [only]) {
@@ -115,8 +144,8 @@ class MeasureHistory {
       final out = <MeasureBucket>[];
       for (final b in l) {
         final age = n - b.minute;
-        if (age > 24 * 60) continue;
-        final size = age > 6 * 60 ? 15 : (age > 60 ? 5 : 1);
+        if (age > 7 * 24 * 60) continue;
+        final size = age > 24 * 60 ? 60 : (age > 6 * 60 ? 15 : (age > 60 ? 5 : 1));
         final start = b.minute - b.minute % size;
         if (out.isNotEmpty && out.last.minute == start && size > 1) {
           out.last.merge(b);

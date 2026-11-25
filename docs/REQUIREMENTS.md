@@ -104,6 +104,14 @@ Source = the request id (tNNNu) or the brief/round it came from. Version = the r
 | R136 | Push notifications: Android (FCM or UnifiedPush/ntfy fallback), Windows toasts + tray; rule evaluation on bridge/server; priorities, quiet hours, mute; tap opens tile; account-tied; report Firebase needs | t128u | Planned | 0.7.0 |
 | R137 | Simple scripts (steps: device, wait, wait-until, notify, scene, if/else) runnable from a button, an automation or remotely (ntfy / iPhone Shortcut URL+PIN) | t136u | Planned | 0.7.0 |
 | R138 | Advanced scripts (sandboxed language, timeout, Molaplan API only, variables/loops, device R/W, price, weather) on the bridge; run log | t136u | Planned | 0.7.0 |
+| R139 | Sensors are never lights: classify by HA device_class, Dirigera deviceType, Zigbee IAS zone / Hue sensor types, Shelly Flood; leak tile (water drop, Kuiva / VUOTO! pulsing red, battery, last alarm, no controls); "Vesivuoto → hälytys" template; migrate misclassified tiles; door/motion/smoke/temperature checked | t143u | In progress (classification, tile, template, migration + tests done) | 0.7.0 |
+| R140 | Tile sizes in half steps 0,5–4 (half-units internally, existing sizes ×2), half-unit corner resize, Leveys/Korkeus with decimal comma, compact 0.5 variants, goldens 0.5×0.5 / 0.5×1 / 1.5×1 | t144u | Planned | 0.7.0 |
+| R141 | Form helper texts never overlap the next field's label at any width / text scale 1.0–1.3 (helperText in the decoration, 18 dp spacing, labels inside the filled box); overlap widget test | t145u | Done (tests) | 0.7.0 |
+| R142 | SnackBars auto-dismiss (undo ≈5 s, info ≈3 s), persist: false, close icon, dismissed on navigation; test | t146u | Done (tests) | 0.7.0 |
+| R143 | No duplicated "Koti": group header hidden when it equals the view name or the view has one group (shown in edit mode), no duplicate app-bar title; widget test | t147u | Done (tests) | 0.7.0 |
+| R144 | Trend tile: change over the period ("−3,3 °C / 1 h", arrow + colour); range chips 1 h / 6 h / 24 h / 7 vrk on the tile (tap-to-cycle on small tiles), saved per tile; x-axis spans the whole window, latest point at the right edge, no gap; history backfill from HA recorder / Shelly; tests | t148u | Done (tests, goldens) | 0.7.0 |
+| R145 | Trend chart options per tile: guide lines (none / horizontal / grid), y-axis labels min/mid/max with unit, point markers, x-axis time labels (HH:mm, weekday for 7 vrk, "nyt"); auto = clean on small tiles, axes on ≥2×2; no label overlap/clipping at 0,5–3,5; goldens | t149u | Done (tests, goldens) | 0.7.0 |
+| R146 | Colour thresholds for value / gauge / trend: any number of ranges, colour presets + custom colour picker, liukuva / jyrkkä blending; applied to the trend line and fill (vertical gradient by value), gauge arc and the big number; simple choice in the main settings, limits under Edistyneet; tests | t150u | Done (tests, goldens) | 0.7.0 |
 
 ## Later
 | ID | Requirement | Source | Status | Version |

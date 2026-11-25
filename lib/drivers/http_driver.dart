@@ -187,7 +187,7 @@ class HttpDriver extends Driver {
   /// Shelly power readings (/rpc/Switch.GetStatus, /rpc/PM1.GetStatus, Gen1 /meter/N): the
   /// device's own last-3-minutes energy, so a new trend does not start as a flat line.
   @override
-  Future<List<(DateTime, double)>> history(Map<String, dynamic> spec) async {
+  Future<List<(DateTime, double)>> history(Map<String, dynamic> spec, {int hours = 1}) async {
     final path = '${spec['path'] ?? ''}';
     final jp = '${spec['jsonPath'] ?? ''}';
     final shellyPower =

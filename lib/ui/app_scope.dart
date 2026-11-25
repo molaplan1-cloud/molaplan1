@@ -13,6 +13,9 @@ class AppScope extends InheritedNotifier<AppState> {
 }
 
 /// Inline translation helper: tx(context, 'suomeksi', 'in English').
+/// The UI language, 'fi' outside an AppScope (widget previews/tests).
+String langOf(BuildContext context) => context.getInheritedWidgetOfExactType<AppScope>()?.notifier?.lang ?? 'fi';
+
 String tx(BuildContext context, String fi, String en) => tr(AppScope.read(context).lang, fi, en);
 
 void showSnack(BuildContext context, String msg, {bool error = false}) {
@@ -93,7 +96,6 @@ Future<String?> promptText(BuildContext context, String title, {String initial =
     ),
   );
 }
-
 
 /// t146u: SnackBars never outlive the page they were shown on.
 final snackMessengerKey = GlobalKey<ScaffoldMessengerState>();

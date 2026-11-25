@@ -64,7 +64,7 @@ class TileRuntime extends ChangeNotifier {
       _prefilled = true;
       if (needsPrefill?.call(tile) ?? false) {
         try {
-          final h = await d.history(tile.read).timeout(const Duration(seconds: 5));
+          final h = await d.history(tile.read, hours: tile.trendHours).timeout(const Duration(seconds: 12));
           for (final p in h) {
             observer?.call(tile, p.$2, p.$1);
           }

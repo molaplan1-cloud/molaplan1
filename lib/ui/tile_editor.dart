@@ -1,5 +1,7 @@
 import 'tile_visuals.dart';
 import 'measure_view.dart';
+import 'measure_colors.dart';
+import '../l10n/l10n.dart';
 import '../state/measure_history.dart';
 
 import 'package:material_ui/material_ui.dart' hide Threshold;
@@ -199,23 +201,27 @@ class _TileEditorState extends State<TileEditor> {
                 ),
                 if (resolvedDisplay(t, isMeterTile(t)) != 'value') ...[
                   const SizedBox(height: 12),
-                  Row(
+                  Wrap(
+                    spacing: 12,
+                    runSpacing: 8,
+                    crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       Text(tx(context, 'Trendin pituus', 'Trend length')),
-                      const SizedBox(width: 12),
                       SegmentedButton<int>(
                         key: const ValueKey('trend-hours'),
-                        segments: const [
-                          ButtonSegment(value: 1, label: Text('1 h')),
-                          ButtonSegment(value: 6, label: Text('6 h')),
-                          ButtonSegment(value: 24, label: Text('24 h')),
+                        segments: [
+                          for (final h in trendRanges)
+                            ButtonSegment(value: h, label: Text(rangeLabel(h, langOf(context)))),
                         ],
                         selected: {t.trendHours},
                         onSelectionChanged: (v) => setState(() => t.trendHours = v.first),
                       ),
                     ],
                   ),
+                  if (resolvedDisplay(t, isMeterTile(t)).contains('trend')) ..._trendLook(text),
                 ],
+                const SizedBox(height: 12),
+                _colorPresets(text),
                 if (resolvedDisplay(t, isMeterTile(t)).startsWith('gauge')) ...[
                   const SizedBox(height: 12),
                   Row(
@@ -611,6 +617,133 @@ class _TileEditorState extends State<TileEditor> {
     );
   }
 
+  /// t149u: grid, axis labels and point markers ("Automaattinen" = shown on ≥2×2 tiles).
+  List<Widget> _trendLook(TextTheme text) {
+    Widget seg(String key, String label, String value, List<(String, String)> opts, void Function(String) set) =>
+        Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: Wrap(
+            spacing: 12,
+            runSpacing: 6,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              SizedBox(width: 130, child: Text(label)),
+              SegmentedButton<String>(
+                key: ValueKey(key),
+                showSelectedIcon: false,
+                segments: [for (final (v, l) in opts) ButtonSegment(value: v, label: Text(l))],
+                selected: {value},
+                onSelectionChanged: (v) => setState(() => set(v.first)),
+              ),
+            ],
+          ),
+        );
+    final auto = ('auto', tx(context, 'Auto', 'Auto'));
+    final onOff = [auto, ('on', tx(context, 'Näytä', 'Show')), ('off', tx(context, 'Piilota', 'Hide'))];
+    return [
+      seg('trend-grid', tx(context, 'Apuviivat', 'Guide lines'), t.trendGrid, [
+        auto,
+        ('none', tx(context, 'Ei', 'None')),
+        ('h', tx(context, 'Vaaka', 'Horizontal')),
+        ('full', tx(context, 'Ruudukko', 'Grid')),
+      ], (v) => t.trendGrid = v),
+      seg('trend-yaxis', tx(context, 'Arvoasteikko', 'Value scale'), t.trendYAxis, onOff, (v) => t.trendYAxis = v),
+      seg('trend-xaxis', tx(context, 'Aika-akseli', 'Time axis'), t.trendXAxis, onOff, (v) => t.trendXAxis = v),
+      SwitchListTile(
+        key: const ValueKey('trend-dots'),
+        contentPadding: EdgeInsets.zero,
+        title: Text(tx(context, 'Datapisteet viivalla', 'Data point markers')),
+        value: t.trendDots,
+        onChanged: (v) => setState(() => t.trendDots = v),
+      ),
+      Text(
+        tx(
+          context,
+          'Auto: akselit ja apuviivat näkyvät, kun ruutu on vähintään 2×2.',
+          'Auto: axes and guide lines show when the tile is at least 2×2.',
+        ),
+        style: text.bodySmall,
+      ),
+    ];
+  }
+
+  /// t150u (simple part): a colour preset and liukuva / jyrkkä; the limits under Edistyneet.
+  Widget _colorPresets(TextTheme text) {
+    final lang = langOf(context);
+    final current = colorPresets.indexWhere((p) => sameThresholds(p.thresholds, t.thresholds));
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(tx(context, 'Värit arvon mukaan', 'Colours by value'), style: text.titleSmall),
+        const SizedBox(height: 8),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            ChoiceChip(
+              key: const ValueKey('color-preset-none'),
+              label: Text(tx(context, 'Ei', 'None')),
+              selected: t.thresholds.isEmpty,
+              onSelected: (_) => setState(() => t.thresholds.clear()),
+            ),
+            for (var i = 0; i < colorPresets.length; i++)
+              ChoiceChip(
+                key: ValueKey('color-preset-${colorPresets[i].id}'),
+                avatar: _gradientDot(colorPresets[i].thresholds),
+                label: Text(tr(lang, colorPresets[i].fi, colorPresets[i].en)),
+                selected: current == i,
+                onSelected: (_) => setState(() {
+                  t.thresholds
+                    ..clear()
+                    ..addAll(colorPresets[i].thresholds.map((x) => Threshold(x.above, x.color)));
+                }),
+              ),
+            if (t.thresholds.isNotEmpty && current < 0)
+              ChoiceChip(label: Text(tx(context, 'Omat rajat', 'Custom')), selected: true, onSelected: (_) {}),
+          ],
+        ),
+        if (t.thresholds.isNotEmpty) ...[
+          const SizedBox(height: 10),
+          SegmentedButton<bool>(
+            key: const ValueKey('color-smooth'),
+            segments: [
+              ButtonSegment(value: true, label: Text(tx(context, 'Liukuva', 'Smooth'))),
+              ButtonSegment(value: false, label: Text(tx(context, 'Jyrkkä', 'Steps'))),
+            ],
+            selected: {t.colorSmooth},
+            onSelectionChanged: (v) => setState(() => t.colorSmooth = v.first),
+          ),
+          if (!AppScope.read(context).config.advanced)
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: Text(
+                tx(
+                  context,
+                  'Omat rajat ja värit: Asetukset → Edistyneet.',
+                  'Own limits and colours: Settings → Advanced.',
+                ),
+                style: text.bodySmall,
+              ),
+            ),
+        ],
+      ],
+    );
+  }
+
+  Widget _gradientDot(List<Threshold> th) => Container(
+    width: 18,
+    height: 18,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      gradient: LinearGradient(colors: [for (final x in th) Color(x.color)]),
+    ),
+  );
+
+  Future<void> _customColor(int i) async {
+    final c = await pickCustomColor(context, Color(t.thresholds[i].color));
+    if (c != null) setState(() => t.thresholds[i].color = c.toARGB32());
+  }
+
   Widget _thresholds(TextTheme text) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -652,6 +785,17 @@ class _TileEditorState extends State<TileEditor> {
                                 : null,
                           ),
                         ),
+                      InkWell(
+                        key: ValueKey('th-custom-$i'),
+                        onTap: () => _customColor(i),
+                        child: CircleAvatar(
+                          radius: 13,
+                          backgroundColor: palette.contains(t.thresholds[i].color)
+                              ? Theme.of(context).colorScheme.surfaceContainerHighest
+                              : Color(t.thresholds[i].color),
+                          child: const Icon(Icons.colorize, size: 14),
+                        ),
+                      ),
                     ],
                   ),
                 ),

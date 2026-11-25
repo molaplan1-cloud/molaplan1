@@ -44,7 +44,8 @@ class AppState extends ChangeNotifier implements SyncHost {
        energyStore = energyStore ?? MemoryConfigStore(),
        historyStore = historyStore ?? MemoryConfigStore() {
     TileRuntime.observer = onTileValue;
-    TileRuntime.needsPrefill = (t) => isMeasureTile(t) && measureHistory.last(measureKey(t)) == null;
+    TileRuntime.needsPrefill = (t) =>
+        isMeasureTile(t) && !measureHistory.covers(measureKey(t), t.trendHours) && _backfilled.add(_bfKey(t));
     account = AccountState(store: secretStore, host: this, api: accountApi, kdfIterations: kdfIterations);
     account.addListener(notifyListeners);
     remote = RemoteState(store: secretStore, configJson: () => exportJson(includeSecrets: true));
@@ -186,6 +187,34 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   final _sensorPrev = <String, bool>{};
+
+  // t148u: history backfill (HA recorder / Shelly) once per measurement and window per session.
+  final _backfilled = <String>{};
+  String _bfKey(TileConfig t) => '${measureKey(t)}|${t.trendHours}';
+
+  /// Fetches the device's own history for [t]'s trend window into the measure history.
+  Future<void> backfillTrend(TileConfig t) async {
+    if (!isMeasureTile(t) || measureHistory.covers(measureKey(t), t.trendHours)) return;
+    if (!_backfilled.add(_bfKey(t))) return;
+    final d = driverFor(t.connectionId);
+    if (d == null) return;
+    try {
+      final h = await d.history(t.read, hours: t.trendHours).timeout(const Duration(seconds: 12));
+      for (final p in h) {
+        measureHistory.add(measureKey(t), p.$2, p.$1);
+      }
+      if (h.isNotEmpty) notifyListeners();
+    } catch (_) {}
+  }
+
+  /// t148u: the range chips on a trend tile (1 h / 6 h / 24 h / 7 vrk), saved per tile.
+  Future<void> setTrendHours(TileConfig t, int hours) async {
+    if (!trendRanges.contains(hours) || t.trendHours == hours) return;
+    t.trendHours = hours;
+    notifyListeners();
+    await save();
+    unawaited(backfillTrend(t));
+  }
 
   void onTileValue(TileConfig t, Object? v, [DateTime? at]) {
     if (t.sensor != null) {

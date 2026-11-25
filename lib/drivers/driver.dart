@@ -43,7 +43,7 @@ abstract class Driver {
 
   /// Recent history of a measurement the device keeps itself (e.g. Shelly per-minute energy),
   /// oldest first; used once to prefill a new trend. Empty = none.
-  Future<List<(DateTime, double)>> history(Map<String, dynamic> spec) async => const [];
+  Future<List<(DateTime, double)>> history(Map<String, dynamic> spec, {int hours = 1}) async => const [];
 
   /// Checks connectivity; returns a short human readable result.
   Future<String> test();

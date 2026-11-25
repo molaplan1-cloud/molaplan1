@@ -9,6 +9,7 @@ import 'package:material_ui/material_ui.dart';
 import '../models/models.dart';
 import '../state/measure_history.dart';
 import '../state/tile_runtime.dart';
+import '../l10n/l10n.dart';
 import 'app_scope.dart';
 
 const measureDisplays = ['value', 'gauge', 'trend', 'gauge_trend'];
@@ -87,6 +88,9 @@ class MeasureView extends StatelessWidget {
     required this.stats,
     required this.color,
     this.staleAt,
+    this.change,
+    this.onRange,
+    this.now,
   });
   final TileConfig tile;
   final String display;
@@ -100,18 +104,32 @@ class MeasureView extends StatelessWidget {
   /// Last value is old (offline / device not answering): shown dimmed with its time.
   final DateTime? staleAt;
 
+  /// t148u: last minus first value over the window.
+  final double? change;
+
+  /// t148u: the range chips / tap-to-cycle on the tile (null = read-only, e.g. previews).
+  final void Function(int hours)? onRange;
+
+  /// Clock for the chart (tests).
+  final DateTime? now;
+
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
+    final lang = langOf(context);
     return LayoutBuilder(
       builder: (context, box) {
         final w = box.maxWidth, h = box.maxHeight;
         final wide = w > h * 2.2;
+        final hasTrend = display == 'trend' || display == 'gauge_trend';
         final showStats = stats != null && h >= 64 && display != 'value';
+        // Chips on roomy tiles; small tiles cycle the range by tapping the "1 h" in the footer.
+        final chips = hasTrend && onRange != null && w >= 200 && h >= 150;
         final c = staleAt != null ? cs.onSurfaceVariant : color;
         Widget number({double scale = 1}) => _Number(tile: tile, value: value, color: c, scale: scale);
         // A flat line from one or two samples says nothing: wait for a few minutes of data.
         final enough = series.length >= 3 && series.last.$1 - series.first.$1 >= 2;
+        final opts = TrendOptions.resolve(tile, lang: lang);
         Widget trend() => !enough
             ? Center(
                 child: Text(
@@ -120,7 +138,20 @@ class MeasureView extends StatelessWidget {
                   style: TextStyle(fontSize: 11, color: cs.onSurfaceVariant),
                 ),
               )
-            : TrendChart(key: const ValueKey('sparkline'), series: series, hours: tile.trendHours, color: c);
+            : TrendChart(
+                key: const ValueKey('sparkline'),
+                series: series,
+                hours: tile.trendHours,
+                color: c,
+                options: opts,
+                now: now,
+                colorAt: staleAt == null && tile.thresholds.isNotEmpty
+                    ? (v) {
+                        final i = tile.colorFor(v);
+                        return i == null ? null : Color(i);
+                      }
+                    : null,
+              );
         Widget gauge({bool withValue = true}) {
           final (lo, hi) = gaugeRange(tile, value, stats);
           return Gauge(
@@ -136,7 +167,19 @@ class MeasureView extends StatelessWidget {
         }
 
         final statsLine = showStats
-            ? _StatsLine(stats: stats!, tile: tile, hours: tile.trendHours, staleAt: staleAt)
+            ? _StatsLine(
+                stats: stats!,
+                tile: tile,
+                hours: tile.trendHours,
+                staleAt: staleAt,
+                change: hasTrend ? change : null,
+                onCycle: hasTrend && !chips && onRange != null
+                    ? () {
+                        final i = trendRanges.indexOf(tile.trendHours);
+                        onRange!(trendRanges[(i + 1) % trendRanges.length]);
+                      }
+                    : null,
+              )
             : (staleAt != null ? _StaleLine(at: staleAt!) : null);
         final body = switch (display) {
           'gauge' =>
@@ -198,6 +241,7 @@ class MeasureView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(child: body),
+            if (chips) _RangeChips(hours: tile.trendHours, onRange: onRange!),
             ?statsLine,
           ],
         );
@@ -207,6 +251,24 @@ class MeasureView extends StatelessWidget {
 }
 
 String _plain(double? v, TileConfig t) => v == null ? '–' : fmtMeasure(v, t.decimals);
+
+/// fmtMeasure with the Finnish decimal comma.
+String fmtLocal(double v, int decimals, String lang) {
+  final s = fmtMeasure(v, decimals);
+  return const {'en'}.contains(lang) ? s : s.replaceAll('.', ',');
+}
+
+/// "1 h", "6 h", "24 h", "7 vrk".
+String rangeLabel(int hours, String lang) => hours >= 168 ? tr(lang, '7 vrk', '7 d') : '$hours h';
+
+/// t148u: "↓ −3,3 °C / 1 h" (proper minus sign, unit, window).
+String changeText(double d, TileConfig t, int hours, String lang) {
+  final mag = fmtLocal(d.abs(), t.decimals, lang);
+  final zero = double.parse(fmtMeasure(d.abs(), t.decimals).replaceAll(RegExp(r'[^0-9.]'), '')) == 0;
+  final sign = zero ? '±' : (d > 0 ? '+' : '−');
+  final unit = t.unit.trim().isEmpty ? '' : ' ${t.unit.trim()}';
+  return '$sign$mag$unit / ${rangeLabel(hours, lang)}';
+}
 
 class _Number extends StatelessWidget {
   const _Number({required this.tile, required this.value, required this.color, this.scale = 1});
@@ -261,119 +323,424 @@ class _StaleLine extends StatelessWidget {
   );
 }
 
+/// Rising = warm, falling = cool, no change = neutral.
+const changeUpColor = Color(0xFFE8703A), changeDownColor = Color(0xFF3D8FE0);
+
 class _StatsLine extends StatelessWidget {
-  const _StatsLine({required this.stats, required this.tile, required this.hours, this.staleAt});
+  const _StatsLine({
+    required this.stats,
+    required this.tile,
+    required this.hours,
+    this.staleAt,
+    this.change,
+    this.onCycle,
+  });
   final MeasureStats stats;
   final TileConfig tile;
   final int hours;
   final DateTime? staleAt;
+  final double? change;
+  final VoidCallback? onCycle;
 
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
-    final parts = [
-      '${hours}h',
-      'min ${fmtMeasure(stats.min, tile.decimals)}',
-      'max ${fmtMeasure(stats.max, tile.decimals)}',
+    final lang = langOf(context);
+    final style = TextStyle(fontSize: 11, color: cs.onSurfaceVariant);
+    final ch = change;
+    final eps = math.pow(10, -tile.decimals.clamp(0, 3)) / 2;
+    final dir = ch == null || ch.abs() < eps ? 0 : (ch > 0 ? 1 : -1);
+    final chColor = dir > 0 ? changeUpColor : (dir < 0 ? changeDownColor : cs.onSurfaceVariant);
+    final rest = [
+      'min ${fmtLocal(stats.min, tile.decimals, lang)}',
+      'max ${fmtLocal(stats.max, tile.decimals, lang)}',
       if (staleAt != null) '${tx(context, 'viimeksi', 'last')} ${_clock(staleAt!)}',
-    ];
+    ].join(' · ');
+    Widget range = Text(rangeLabel(hours, lang), key: const ValueKey('measure-range'), style: style);
+    if (onCycle != null) {
+      range = InkWell(
+        key: const ValueKey('trend-range-cycle'),
+        onTap: onCycle,
+        borderRadius: BorderRadius.circular(6),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          decoration: BoxDecoration(
+            border: Border.all(color: cs.outlineVariant),
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: range,
+        ),
+      );
+    }
     return Padding(
       padding: const EdgeInsets.only(top: 2),
-      child: Text(
-        parts.join(' · '),
+      child: Text.rich(
         key: const ValueKey('measure-stats'),
+        TextSpan(
+          children: [
+            WidgetSpan(alignment: PlaceholderAlignment.middle, child: range),
+            if (ch != null) ...[
+              const TextSpan(text: ' '),
+              WidgetSpan(
+                alignment: PlaceholderAlignment.middle,
+                child: Icon(
+                  dir > 0 ? Icons.arrow_upward : (dir < 0 ? Icons.arrow_downward : Icons.arrow_forward),
+                  key: ValueKey('trend-change-$dir'),
+                  size: 12,
+                  color: chColor,
+                ),
+              ),
+              TextSpan(
+                text: changeText(ch, tile, hours, lang),
+                style: style.copyWith(color: chColor, fontWeight: FontWeight.w600),
+              ),
+            ],
+            TextSpan(text: ' · $rest'),
+          ],
+        ),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
-        style: TextStyle(fontSize: 11, color: cs.onSurfaceVariant),
+        style: style,
       ),
     );
   }
 }
 
-/// Time-based trend line over the last [hours] (gaps where there is no data).
-class TrendChart extends StatelessWidget {
-  const TrendChart({super.key, required this.series, required this.hours, required this.color});
-  final List<(double, double)> series;
+/// t148u: 1 h / 6 h / 24 h / 7 vrk right on the tile.
+class _RangeChips extends StatelessWidget {
+  const _RangeChips({required this.hours, required this.onRange});
   final int hours;
-  final Color color;
+  final void Function(int) onRange;
 
   @override
-  Widget build(BuildContext context) =>
-      CustomPaint(painter: _TrendPainter(series, hours, color, DateTime.now()), size: Size.infinite);
+  Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    final lang = langOf(context);
+    return Padding(
+      padding: const EdgeInsets.only(top: 4),
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        alignment: Alignment.centerLeft,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (final r in trendRanges)
+              Padding(
+                padding: const EdgeInsets.only(right: 4),
+                child: InkWell(
+                  key: ValueKey('trend-range-$r'),
+                  onTap: () => onRange(r),
+                  borderRadius: BorderRadius.circular(10),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+                    decoration: BoxDecoration(
+                      color: r == hours ? cs.primary.withValues(alpha: 0.18) : null,
+                      border: Border.all(color: r == hours ? cs.primary : cs.outlineVariant),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      rangeLabel(r, lang),
+                      style: TextStyle(
+                        fontSize: 10.5,
+                        fontWeight: r == hours ? FontWeight.w700 : FontWeight.w400,
+                        color: r == hours ? cs.primary : cs.onSurfaceVariant,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
-class _TrendPainter extends CustomPainter {
-  _TrendPainter(this.s, this.hours, this.c, this.now);
-  final List<(double, double)> s;
-  final int hours;
-  final Color c;
-  final DateTime now;
+/// t149u: what the chart draws, resolved from the tile (auto = shown on ≥2×2 tiles).
+class TrendOptions {
+  const TrendOptions({
+    this.grid = 'none',
+    this.yAxis = false,
+    this.xAxis = false,
+    this.dots = false,
+    this.unit = '',
+    this.decimals = 1,
+    this.lang = 'fi',
+  });
+  final String grid; // none | h | full
+  final bool yAxis;
+  final bool xAxis;
+  final bool dots;
+  final String unit;
+  final int decimals;
+  final String lang;
 
-  @override
-  void paint(Canvas canvas, Size size) {
-    if (s.length < 2 || size.isEmpty) return;
+  static TrendOptions resolve(TileConfig t, {String lang = 'fi'}) {
+    final big = t.wUnits >= 2 && t.hUnits >= 2;
+    bool on(String v) => v == 'on' || (v == 'auto' && big);
+    return TrendOptions(
+      grid: t.trendGrid == 'auto' ? (big ? 'h' : 'none') : t.trendGrid,
+      yAxis: on(t.trendYAxis),
+      xAxis: on(t.trendXAxis),
+      dots: t.trendDots,
+      unit: t.unit.trim(),
+      decimals: t.decimals,
+      lang: lang,
+    );
+  }
+}
+
+/// Where the chart puts things (pure; tested): plot area, line points and labels.
+class TrendLayout {
+  TrendLayout._(this.plot, this.points, this.lo, this.hi, this.yLabels, this.xLabels);
+  final Rect plot;
+
+  /// Line vertices in canvas coordinates; the last one is at the plot's right edge (now).
+  final List<Offset> points;
+  final double lo;
+  final double hi;
+  final List<(String, Rect)> yLabels;
+  final List<(String, Rect)> xLabels;
+
+  static const labelStyle = TextStyle(fontSize: 9, height: 1.1);
+  static const _wd = {
+    'fi': ['ma', 'ti', 'ke', 'to', 'pe', 'la', 'su'],
+    'en': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+  };
+
+  static Size _measure(String s) {
+    final tp = TextPainter(
+      text: TextSpan(text: s, style: labelStyle),
+      textDirection: TextDirection.ltr,
+      maxLines: 1,
+    )..layout();
+    return tp.size;
+  }
+
+  static String timeLabel(DateTime t, int hours, String lang) {
+    if (hours >= 168) return (_wd[lang] ?? _wd['en']!)[t.weekday - 1];
+    return '${t.hour.toString().padLeft(2, '0')}:${t.minute.toString().padLeft(2, '0')}';
+  }
+
+  static TrendLayout compute(List<(double, double)> s, int hours, DateTime now, Size size, TrendOptions o) {
     final end = now.millisecondsSinceEpoch / 60000;
-    // Start at the first point if the window is not full yet, so short histories still fill the width.
-    final start = math.max(end - hours * 60, s.first.$1);
-    final span = math.max(end - start, 1 / 60);
-    var lo = s.map((b) => b.$2).reduce(math.min), hi = s.map((b) => b.$2).reduce(math.max);
+    // t148u: the x-axis is always the whole window, "now" at the right edge.
+    final start = end - hours * 60;
+    final pts = [
+      for (final p in s)
+        if (p.$1 >= start - 1e-9 && p.$1 <= end + 1) p,
+    ];
+    var lo = pts.isEmpty ? 0.0 : pts.map((b) => b.$2).reduce(math.min);
+    var hi = pts.isEmpty ? 1.0 : pts.map((b) => b.$2).reduce(math.max);
     if (hi - lo < 1e-9) {
       lo -= 1;
       hi += 1;
     }
-    final gap = hours <= 1 ? 4 : (hours <= 6 ? 12 : 40); // minutes without data = a gap
-    final line = Path(), fill = Path();
-    Offset? prev;
-    double? prevMin;
-    double? segStartX;
-    void closeFill(double x) {
-      if (segStartX == null) return;
-      fill
-        ..lineTo(x, size.height)
-        ..lineTo(segStartX, size.height)
-        ..close();
+    // Axis labels only where they fit (never clipped or overlapping on small tiles).
+    final lh = _measure('0').height;
+    final yOn = o.yAxis && size.height >= lh * 2 + 14 && size.width >= 90;
+    final xOn = o.xAxis && size.height >= lh * 2 + 18 && size.width >= 90;
+    String yl(double v) {
+      final s = fmtLocal(v, o.decimals, o.lang);
+      return o.unit.isEmpty ? s : '$s ${o.unit}';
     }
 
-    for (final b in s) {
-      final x = (b.$1 - start) / span * size.width;
-      final y = size.height - (b.$2 - lo) / (hi - lo) * (size.height - 3) - 1.5;
-      final p = Offset(x.clamp(0, size.width), y);
-      if (prev == null || b.$1 - prevMin! > gap) {
-        if (prev != null) closeFill(prev.dx);
-        line.moveTo(p.dx, p.dy);
-        fill.moveTo(p.dx, p.dy);
-        segStartX = p.dx;
-      } else {
-        line.lineTo(p.dx, p.dy);
-        fill.lineTo(p.dx, p.dy);
+    final midOk = size.height >= lh * 4 + 12;
+    final yTexts = yOn ? [yl(hi), if (midOk) yl((hi + lo) / 2), yl(lo)] : const <String>[];
+    final yW = yOn ? yTexts.map((t) => _measure(t).width).reduce(math.max) + 4 : 0.0;
+    final plot = Rect.fromLTRB(yW, yOn ? lh / 2 : 1.5, size.width, size.height - (xOn ? lh + 2 : 1.5));
+    double y(double v) => plot.bottom - (v - lo) / (hi - lo) * plot.height;
+    double x(double m) => plot.left + ((m - start) / (end - start)).clamp(0.0, 1.0) * plot.width;
+
+    final yLabels = <(String, Rect)>[];
+    if (yOn) {
+      final vals = [hi, if (midOk) (hi + lo) / 2, lo];
+      for (var i = 0; i < vals.length; i++) {
+        final sz = _measure(yTexts[i]);
+        final cy = y(vals[i]).clamp(sz.height / 2, size.height - (xOn ? lh + 2 : 0) - sz.height / 2);
+        yLabels.add((yTexts[i], Rect.fromLTWH(yW - 4 - sz.width, cy - sz.height / 2, sz.width, sz.height)));
       }
-      prev = p;
-      prevMin = b.$1;
     }
-    closeFill(prev!.dx);
+    final xLabels = <(String, Rect)>[];
+    if (xOn) {
+      final t0 = DateTime.fromMillisecondsSinceEpoch((start * 60000).round());
+      final tm = DateTime.fromMillisecondsSinceEpoch(((start + end) / 2 * 60000).round());
+      final first = timeLabel(t0, hours, o.lang), mid = timeLabel(tm, hours, o.lang);
+      final last = tr(o.lang, 'nyt', 'now');
+      final s0 = _measure(first), sm = _measure(mid), s1 = _measure(last);
+      final top = size.height - lh;
+      final r0 = Rect.fromLTWH(plot.left, top, s0.width, s0.height);
+      final r1 = Rect.fromLTWH(plot.right - s1.width, top, s1.width, s1.height);
+      final rm = Rect.fromLTWH(plot.center.dx - sm.width / 2, top, sm.width, sm.height);
+      xLabels.add((first, r0));
+      if (rm.left > r0.right + 6 && rm.right < r1.left - 6) xLabels.add((mid, rm));
+      if (r1.left > r0.right + 6) xLabels.add((last, r1));
+    }
+
+    // Values hold until the next sample (event-based sources only report changes), and the
+    // last value runs to "now", so there is never an empty gap before the latest point.
+    final gap = hours <= 1 ? 4 : (hours <= 6 ? 12 : (hours <= 24 ? 40 : 180));
+    final out = <Offset>[];
+    for (var i = 0; i < pts.length; i++) {
+      final p = Offset(x(pts[i].$1), y(pts[i].$2));
+      if (i > 0 && pts[i].$1 - pts[i - 1].$1 > gap) out.add(Offset(p.dx, out.last.dy));
+      out.add(p);
+    }
+    if (out.isNotEmpty && out.last.dx < plot.right) out.add(Offset(plot.right, out.last.dy));
+    return TrendLayout._(plot, out, lo, hi, yLabels, xLabels);
+  }
+}
+
+/// Time-based trend line over the last [hours]: full window, latest value at the right edge.
+class TrendChart extends StatelessWidget {
+  const TrendChart({
+    super.key,
+    required this.series,
+    required this.hours,
+    required this.color,
+    this.options = const TrendOptions(),
+    this.colorAt,
+    this.now,
+  });
+  final List<(double, double)> series;
+  final int hours;
+  final Color color;
+  final TrendOptions options;
+
+  /// t150u: the threshold colour for a value (line and fill get a vertical gradient by value).
+  final Color? Function(double v)? colorAt;
+  final DateTime? now;
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    return CustomPaint(
+      painter: _TrendPainter(
+        series,
+        hours,
+        color,
+        now ?? DateTime.now(),
+        options,
+        colorAt,
+        cs.onSurfaceVariant,
+        cs.onSurface.withValues(alpha: 0.10),
+      ),
+      size: Size.infinite,
+    );
+  }
+}
+
+class _TrendPainter extends CustomPainter {
+  _TrendPainter(this.s, this.hours, this.c, this.now, this.o, this.colorAt, this.labelColor, this.gridColor);
+  final List<(double, double)> s;
+  final int hours;
+  final Color c;
+  final DateTime now;
+  final TrendOptions o;
+  final Color? Function(double v)? colorAt;
+  final Color labelColor;
+  final Color gridColor;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    if (s.length < 2 || size.isEmpty) return;
+    final l = TrendLayout.compute(s, hours, now, size, o);
+    final plot = l.plot;
+    if (o.grid != 'none') {
+      final gp = Paint()
+        ..color = gridColor
+        ..strokeWidth = 1;
+      for (var i = 0; i <= 4; i++) {
+        final y = plot.top + plot.height * i / 4;
+        canvas.drawLine(Offset(plot.left, y), Offset(plot.right, y), gp);
+      }
+      if (o.grid == 'full') {
+        final cols = hours >= 168 ? 7 : 4;
+        for (var i = 0; i <= cols; i++) {
+          final x = plot.left + plot.width * i / cols;
+          canvas.drawLine(Offset(x, plot.top), Offset(x, plot.bottom), gp);
+        }
+      }
+    }
+    for (final (t, r) in [...l.yLabels, ...l.xLabels]) {
+      TextPainter(
+          text: TextSpan(
+            text: t,
+            style: TrendLayout.labelStyle.copyWith(color: labelColor),
+          ),
+          textDirection: TextDirection.ltr,
+          maxLines: 1,
+        )
+        ..layout()
+        ..paint(canvas, r.topLeft);
+    }
+    final pts = l.points;
+    if (pts.length < 2) return;
+    final line = Path()..moveTo(pts.first.dx, pts.first.dy);
+    for (final p in pts.skip(1)) {
+      line.lineTo(p.dx, p.dy);
+    }
+    final fill = Path.from(line)
+      ..lineTo(pts.last.dx, plot.bottom)
+      ..lineTo(pts.first.dx, plot.bottom)
+      ..close();
+    // t150u: colour by value → a vertical gradient (top = high values).
+    Shader? byValue(double alpha) {
+      final f = colorAt;
+      if (f == null) return null;
+      const n = 32;
+      final colors = <Color>[], stops = <double>[];
+      for (var i = 0; i <= n; i++) {
+        final v = l.hi - (l.hi - l.lo) * i / n;
+        colors.add((f(v) ?? c).withValues(alpha: alpha * (alpha < 1 ? (1 - i / n) : 1)));
+        stops.add(i / n);
+      }
+      return LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: colors,
+        stops: stops,
+      ).createShader(plot);
+    }
+
     canvas.drawPath(
       fill,
       Paint()
-        ..shader = LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [c.withValues(alpha: 0.32), c.withValues(alpha: 0)],
-        ).createShader(Offset.zero & size),
+        ..shader =
+            byValue(0.32) ??
+            LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [c.withValues(alpha: 0.32), c.withValues(alpha: 0)],
+            ).createShader(plot),
     );
-    canvas.drawPath(
-      line,
-      Paint()
-        ..color = c
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 2
-        ..strokeJoin = StrokeJoin.round
-        ..strokeCap = StrokeCap.round,
-    );
-    canvas.drawCircle(prev, 2.5, Paint()..color = c);
+    final lp = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2
+      ..strokeJoin = StrokeJoin.round
+      ..strokeCap = StrokeCap.round;
+    final sh = byValue(1);
+    if (sh != null) {
+      lp.shader = sh;
+    } else {
+      lp.color = c;
+    }
+    canvas.drawPath(line, lp);
+    if (o.dots) {
+      final dp = Paint();
+      final step = math.max(1, (pts.length / 40).ceil());
+      for (var i = 0; i < pts.length - 1; i += step) {
+        final v = l.hi - (pts[i].dy - plot.top) / plot.height * (l.hi - l.lo);
+        canvas.drawCircle(pts[i], 1.8, dp..color = colorAt?.call(v) ?? c);
+      }
+    }
+    final lastV = s.last.$2;
+    canvas.drawCircle(pts.last, 2.8, Paint()..color = colorAt?.call(lastV) ?? c);
   }
 
   @override
-  bool shouldRepaint(_TrendPainter o) => o.s != s || o.c != c || o.hours != hours || o.s.length != s.length;
+  bool shouldRepaint(_TrendPainter o2) =>
+      o2.s != s || o2.c != c || o2.hours != hours || o2.s.length != s.length || o2.o != o || o2.now != now;
 }
 
 /// Half-ring gauge (240°) with the value in the middle.

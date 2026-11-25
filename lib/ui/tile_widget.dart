@@ -921,6 +921,8 @@ class _TileWidgetState extends State<TileWidget> {
       value: live ?? last!.$2,
       series: trendPoints(hist.series(key, t.trendHours), r),
       stats: hist.stats(key, t.trendHours),
+      change: hist.change(key, t.trendHours),
+      onRange: (h) => AppScope.read(context).setTrendHours(t, h),
       color: accent ?? Theme.of(context).colorScheme.primary,
       staleAt: stale ? (r.reportedAt ?? last!.$1) : null,
     );

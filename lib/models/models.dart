@@ -141,6 +141,9 @@ class Threshold {
       Threshold((j['above'] as num).toDouble(), (j['color'] as num).toInt());
 }
 
+/// t148u: the trend windows offered on the tile (1 h / 6 h / 24 h / 7 vrk).
+const trendRanges = [1, 6, 24, 168];
+
 class TileConfig {
   String id;
   TileType type;
@@ -186,8 +189,22 @@ class TileConfig {
   /// Measurement tiles: "Näyttötapa" auto | value | gauge | trend | gauge_trend.
   String display;
 
-  /// Trend length in hours (1, 6, 24).
+  /// Trend length in hours (1, 6, 24, 168 = 7 vrk; t148u chips on the tile).
   int trendHours;
+
+  /// t149u trend chart options: grid auto | none | h (horizontal lines) | full;
+  /// y-axis / x-axis labels auto | on | off; dots = point markers. "auto" = shown on ≥2×2 tiles.
+  String trendGrid;
+  String trendYAxis;
+  String trendXAxis;
+  bool trendDots;
+
+  /// t150u: [thresholds] blended smoothly between limits ("liukuva") instead of hard steps.
+  bool colorSmooth;
+
+  /// Size in grid units (t144u stores half-units internally; read sizes through these).
+  double get wUnits => colSpan.toDouble();
+  double get hUnits => rowSpan.toDouble();
 
   /// Gauge range; null = automatic from the history.
   double? gaugeMin;
@@ -235,6 +252,11 @@ class TileConfig {
     this.bgDimOff = false,
     this.display = 'auto',
     this.trendHours = 1,
+    this.trendGrid = 'auto',
+    this.trendYAxis = 'auto',
+    this.trendXAxis = 'auto',
+    this.trendDots = false,
+    this.colorSmooth = false,
     this.gaugeMin,
     this.gaugeMax,
     Map<String, dynamic>? light,
@@ -275,6 +297,11 @@ class TileConfig {
     if (bgDimOff) 'bgDimOff': true,
     if (display != 'auto') 'display': display,
     if (trendHours != 1) 'trendHours': trendHours,
+    if (trendGrid != 'auto') 'trendGrid': trendGrid,
+    if (trendYAxis != 'auto') 'trendYAxis': trendYAxis,
+    if (trendXAxis != 'auto') 'trendXAxis': trendXAxis,
+    if (trendDots) 'trendDots': true,
+    if (colorSmooth) 'colorSmooth': true,
     'gaugeMin': ?gaugeMin,
     'gaugeMax': ?gaugeMax,
     if (light.isNotEmpty) 'light': light,
@@ -310,7 +337,12 @@ class TileConfig {
     bgScrim: (j['bgScrim'] as num?)?.toDouble() ?? 0.45,
     bgDimOff: j['bgDimOff'] == true,
     display: const ['value', 'gauge', 'trend', 'gauge_trend'].contains(j['display']) ? j['display'] as String : 'auto',
-    trendHours: const [1, 6, 24].contains(j['trendHours']) ? (j['trendHours'] as num).toInt() : 1,
+    trendHours: trendRanges.contains(j['trendHours']) ? (j['trendHours'] as num).toInt() : 1,
+    trendGrid: const ['none', 'h', 'full'].contains(j['trendGrid']) ? j['trendGrid'] as String : 'auto',
+    trendYAxis: const ['on', 'off'].contains(j['trendYAxis']) ? j['trendYAxis'] as String : 'auto',
+    trendXAxis: const ['on', 'off'].contains(j['trendXAxis']) ? j['trendXAxis'] as String : 'auto',
+    trendDots: j['trendDots'] == true,
+    colorSmooth: j['colorSmooth'] == true,
     gaugeMin: (j['gaugeMin'] as num?)?.toDouble(),
     gaugeMax: (j['gaugeMax'] as num?)?.toDouble(),
     light: j['light'] is Map ? Map<String, dynamic>.from(j['light'] as Map) : null,
@@ -338,13 +370,42 @@ class TileConfig {
   int? colorFor(Object? v) {
     final d = v is num ? v.toDouble() : double.tryParse(v?.toString() ?? '');
     if (d == null || thresholds.isEmpty) return null;
-    final sorted = [...thresholds]..sort((a, b) => a.above.compareTo(b.above));
+    return thresholdColor(thresholds, d, smooth: colorSmooth);
+  }
+}
+
+/// t150u: the colour for [d]: hard steps ("value ≥ limit → colour", below the first limit no
+/// colour) or, [smooth], blended between neighbouring limits (clamped at both ends).
+int? thresholdColor(List<Threshold> list, double d, {bool smooth = false}) {
+  if (list.isEmpty || !d.isFinite) return null;
+  final s = [...list]..sort((a, b) => a.above.compareTo(b.above));
+  if (!smooth) {
     int? c;
-    for (final t in sorted) {
+    for (final t in s) {
       if (d >= t.above) c = t.color;
     }
     return c;
   }
+  if (d <= s.first.above) return s.first.color;
+  if (d >= s.last.above) return s.last.color;
+  for (var i = 1; i < s.length; i++) {
+    final a = s[i - 1], b = s[i];
+    if (d <= b.above) {
+      final span = b.above - a.above;
+      final f = span <= 0 ? 1.0 : (d - a.above) / span;
+      return _lerpArgb(a.color, b.color, f);
+    }
+  }
+  return s.last.color;
+}
+
+int _lerpArgb(int a, int b, double f) {
+  int ch(int sh) {
+    final x = (a >> sh) & 0xFF, y = (b >> sh) & 0xFF;
+    return ((x + (y - x) * f).round().clamp(0, 255)) << sh;
+  }
+
+  return ch(24) | ch(16) | ch(8) | ch(0);
 }
 
 class Dashboard {

@@ -233,7 +233,9 @@ List<TileConfig> shellyTiles(
         title: custom.isNotEmpty ? custom : (d.name ?? tr(lang, 'Vesivuotoanturi', 'Water leak sensor')),
         connectionId: c.id,
         // Battery device: reachable only while awake – the last value is kept in between.
-        read: g1 ? {'path': '/status', 'jsonPath': 'flood'} : {'path': '/rpc/Flood.GetStatus?id=0', 'jsonPath': 'alarm'},
+        read: g1
+            ? {'path': '/status', 'jsonPath': 'flood'}
+            : {'path': '/rpc/Flood.GetStatus?id=0', 'jsonPath': 'alarm'},
         battery: g1
             ? {'path': '/status', 'jsonPath': 'bat.value'}
             : {'path': '/rpc/DevicePower.GetStatus?id=0', 'jsonPath': 'battery.percent'},
@@ -864,7 +866,7 @@ class ShellyCloudDriver extends Driver {
 
   /// Prefill for power tiles: the switch's last-3-minutes energy from the cloud status.
   @override
-  Future<List<(DateTime, double)>> history(Map<String, dynamic> spec) async {
+  Future<List<(DateTime, double)>> history(Map<String, dynamic> spec, {int hours = 1}) async {
     spec = _spec(spec);
     if (spec.str('field') != 'power') return const [];
     final id = spec.str('id').toLowerCase();
