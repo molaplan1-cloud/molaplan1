@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'app_scope.dart';
+import 'heatpump_pages.dart';
 import 'remote_pages.dart';
 
 typedef Txt = (String fi, String en);
@@ -235,6 +236,29 @@ class GuidesPage extends StatelessWidget {
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => GuideDetailPage(guide: g))),
                   ),
                 ),
+              const SizedBox(height: 12),
+              Text(tx(context, 'Laiteohjeet', 'Device guides'), style: Theme.of(context).textTheme.titleMedium),
+              const SizedBox(height: 6),
+              Card(
+                child: ListTile(
+                  key: const ValueKey('guide-heatpump-service'),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                  leading: Icon(Icons.heat_pump_outlined, size: 32, color: cs.primary),
+                  title: Text(
+                    tx(context, 'Ilmalämpöpumppu (huoltoliitäntä/ESPHome)', 'Heat pump (service port/ESPHome)'),
+                  ),
+                  subtitle: Text(
+                    tx(
+                      context,
+                      'Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Molaplan löytää lämpöpumpun itse.',
+                      'Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Found automatically.',
+                    ),
+                  ),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () =>
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => const HeatPumpServiceGuidePage())),
+                ),
+              ),
             ],
           ),
         ),

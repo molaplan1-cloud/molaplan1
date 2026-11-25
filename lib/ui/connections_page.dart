@@ -4,6 +4,7 @@ import '../core/fields.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
 import 'app_scope.dart';
+import 'heatpump_pages.dart';
 import 'error_box.dart';
 import 'spec_form.dart';
 import 'template_gallery.dart';
@@ -17,6 +18,8 @@ IconData connectionIcon(String type) => switch (type) {
   'websocket' => Icons.swap_horiz,
   'tcp' => Icons.cable,
   'udp' => Icons.podcasts,
+  'ir' => Icons.settings_remote_outlined,
+  'ntfy' => Icons.send_outlined,
   _ => Icons.device_hub,
 };
 
@@ -262,6 +265,29 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
                   ),
                 ],
               ),
+              if (c.type == 'ir') ...[
+                const SizedBox(height: 12),
+                Text(
+                  tx(
+                    context,
+                    'IR on yksisuuntainen: lämpöpumppu ei kerro takaisin, menikö komento perille. Ruuduissa näkyy viimeksi lähetetty tila.',
+                    'IR is one-way: the heat pump does not confirm commands. Tiles show the last sent state.',
+                  ),
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                if (st.config.connections.any((e) => e.id == c.id) &&
+                    '${values['transport'] ?? ''}' != 'http' &&
+                    '${values['transport'] ?? ''}' != 'mqtt')
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: OutlinedButton.icon(
+                      key: const ValueKey('ir-learn'),
+                      onPressed: () => openIrLearn(context, c),
+                      icon: const Icon(Icons.settings_remote_outlined),
+                      label: Text(tx(context, 'Opettele kaukosäädin', 'Learn remote')),
+                    ),
+                  ),
+              ],
               if (_result != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 12),

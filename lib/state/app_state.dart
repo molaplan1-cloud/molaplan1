@@ -381,7 +381,8 @@ class AppState extends ChangeNotifier implements SyncHost {
   static String _addrKey(ConnectionConfig c) {
     final s = c.settings;
     final a = (s['baseUrl'] ?? s['host'] ?? s['url'] ?? '').toString().toLowerCase().replaceAll(RegExp(r'/+$'), '');
-    return '${c.type}|$a|${s['port'] ?? ''}|${s['unitId'] ?? ''}';
+    final extra = c.type == 'ir' ? '|${s['entity'] ?? ''}|${s['topic'] ?? ''}' : '';
+    return '${c.type}|$a|${s['port'] ?? ''}|${s['unitId'] ?? ''}$extra';
   }
 
   /// Adds a template result. Connections that already exist (same type +

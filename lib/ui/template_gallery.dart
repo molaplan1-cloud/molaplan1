@@ -7,6 +7,7 @@ import '../devices/registry.dart';
 import '../templates/device_templates.dart';
 import 'add_device_wizard.dart';
 import 'app_scope.dart';
+import 'heatpump_pages.dart';
 import 'connections_page.dart';
 import 'error_box.dart';
 import 'spec_form.dart';
@@ -33,7 +34,9 @@ class TemplateGalleryPage extends StatelessWidget {
         onBrand: (p) async {
           final added = await Navigator.push<bool>(
             context,
-            MaterialPageRoute(builder: (_) => AddDeviceWizard(provider: p, dashboard: dashboard)),
+            MaterialPageRoute(
+              builder: (_) => AddDeviceWizard(provider: p, dashboard: dashboard),
+            ),
           );
           if (added == true && context.mounted) Navigator.pop(context, true);
         },
@@ -94,7 +97,9 @@ class _TemplateGridState extends State<TemplateGrid> {
   Widget build(BuildContext context) {
     final lang = AppScope.of(context).lang;
     final brands = deviceProviders.where((p) => _match('${p.fi} ${p.en} ${p.descFi}', p.keywords)).toList();
-    final templates = deviceTemplates.where((t) => t.id != 'shelly' && _match('${t.fi} ${t.en} ${t.descFi} ${t.id}')).toList();
+    final templates = deviceTemplates
+        .where((t) => t.id != 'shelly' && _match('${t.fi} ${t.en} ${t.descFi} ${t.id}'))
+        .toList();
     final roadmap = roadmapBrands.where((b) => q.isNotEmpty && _match('${b.name} ${b.fi}', b.keywords)).toList();
     return LayoutBuilder(
       builder: (context, box) {
@@ -107,7 +112,10 @@ class _TemplateGridState extends State<TemplateGrid> {
           mainAxisExtent: 128 + MediaQuery.textScalerOf(context).scale(100),
         );
         Widget section(String text) => SliverToBoxAdapter(
-          child: Padding(padding: const EdgeInsets.fromLTRB(16, 16, 16, 8), child: Text(text, style: Theme.of(context).textTheme.titleMedium)),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+            child: Text(text, style: Theme.of(context).textTheme.titleMedium),
+          ),
         );
         return CustomScrollView(
           slivers: [
@@ -134,7 +142,11 @@ class _TemplateGridState extends State<TemplateGrid> {
                   onChanged: (v) => setState(() => q = v.trim()),
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.search),
-                    hintText: tx(context, 'Hae merkkiä tai laitetta (esim. Shelly, Hue, IKEA)', 'Search brand or device (e.g. Shelly, Hue, IKEA)'),
+                    hintText: tx(
+                      context,
+                      'Hae merkkiä tai laitetta (esim. Shelly, Hue, IKEA)',
+                      'Search brand or device (e.g. Shelly, Hue, IKEA)',
+                    ),
                     border: const OutlineInputBorder(),
                   ),
                 ),
@@ -156,7 +168,10 @@ class _TemplateGridState extends State<TemplateGrid> {
                         desc: p.desc(lang),
                         onTap: () async {
                           if (widget.onBrand != null) return widget.onBrand!(p);
-                          await Navigator.push<bool>(context, MaterialPageRoute(builder: (_) => AddDeviceWizard(provider: p)));
+                          await Navigator.push<bool>(
+                            context,
+                            MaterialPageRoute(builder: (_) => AddDeviceWizard(provider: p)),
+                          );
                         },
                       ),
                   ]),
@@ -196,23 +211,30 @@ class _TemplateGridState extends State<TemplateGrid> {
                     icon: Icons.help_outline,
                     color: Colors.indigo,
                     title: tx(context, 'Etkö löydä merkkiäsi?', "Can't find your brand?"),
-                    desc: tx(context, 'Husqvarna, Zigbee, Tuya, Netatmo, lämpöpumput… katso miten ne toimivat jo nyt.', 'Husqvarna, Zigbee, Tuya, heat pumps… see how to use them today.'),
+                    desc: tx(
+                      context,
+                      'Husqvarna, Zigbee, Tuya, Netatmo, lämpöpumput… katso miten ne toimivat jo nyt.',
+                      'Husqvarna, Zigbee, Tuya, heat pumps… see how to use them today.',
+                    ),
                     onTap: () => showModalBottomSheet<void>(
                       context: context,
                       showDragHandle: true,
                       isScrollControlled: true,
                       builder: (c) => SafeArea(
-                        child: ListView(shrinkWrap: true, children: [
-                          for (final b in roadmapBrands)
-                            ListTile(
-                              title: Text(b.name),
-                              subtitle: Text(tx(c, b.fi, b.en)),
-                              onTap: () {
-                                Navigator.pop(c);
-                                _roadmap(context, b);
-                              },
-                            ),
-                        ]),
+                        child: ListView(
+                          shrinkWrap: true,
+                          children: [
+                            for (final b in roadmapBrands)
+                              ListTile(
+                                title: Text(b.name),
+                                subtitle: Text(tx(c, b.fi, b.en)),
+                                onTap: () {
+                                  Navigator.pop(c);
+                                  _roadmap(context, b);
+                                },
+                              ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -513,6 +535,30 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
                   ),
                 ),
               ],
+              if (t.id == 'heatpump_ir')
+                Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  child: _Banner(
+                    icon: Icons.info_outline,
+                    color: cs.tertiary,
+                    text: tx(
+                      context,
+                      'IR on yksisuuntainen: lämpöpumppu ei kerro takaisin, menikö komento perille. Molaplan lähettää aina koko tilan (virta, tila, lämpö, puhallin, suuntaus) kerralla ja näyttää, mitä se lähetti. Kaukosäätimen muita nappeja voit opettaa myöhemmin: Yhteydet → lähetin → "Opettele kaukosäädin".',
+                      'IR is one-way: the heat pump does not confirm. Molaplan always sends the whole state and shows what it sent. Learn other remote buttons later: Connections → blaster → "Learn remote".',
+                    ),
+                  ),
+                ),
+              if (t.id == 'heatpump_esphome')
+                Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  child: OutlinedButton.icon(
+                    key: const ValueKey('open-heatpump-guide'),
+                    onPressed: () =>
+                        Navigator.push(context, MaterialPageRoute(builder: (_) => const HeatPumpServiceGuidePage())),
+                    icon: const Icon(Icons.menu_book_outlined),
+                    label: Text(tx(context, 'Ohje ja automaattinen haku', 'Guide and automatic search')),
+                  ),
+                ),
               const SizedBox(height: 18),
               if (t.mdnsTypes.isNotEmpty)
                 Padding(

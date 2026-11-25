@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:material_ui/material_ui.dart' hide Threshold;
 
 import '../core/fields.dart';
+import '../drivers/ir_driver.dart';
 import '../models/models.dart';
 import 'iv_profiles_data.dart';
 
@@ -726,6 +727,223 @@ final deviceTemplates = <DeviceTemplate>[
     },
   ),
   DeviceTemplate(
+    id: 'heatpump_ir',
+    fi: 'Ilmalämpöpumppu (IR)',
+    en: 'Air heat pump (IR)',
+    descFi: 'Ohjaa mitä tahansa kaukosäätimellä toimivaa ilmalämpöpumppua IR-lähettimellä (Tasmota tai ESPHome). IR on yksisuuntainen: Molaplan näyttää, mitä se viimeksi lähetti.',
+    descEn: 'Control any remote-controlled heat pump with an IR blaster (Tasmota or ESPHome). IR is one-way: Molaplan shows what it last sent.',
+    icon: Icons.settings_remote_outlined,
+    color: const Color(0xFF29B6F6),
+    connectionType: 'ir',
+    inputs: [
+      const FieldSpec(
+        'transport',
+        'IR-lähetin',
+        'IR blaster',
+        kind: FieldKind.choice,
+        options: irTransportLabels,
+        defaultValue: 'Tasmota (IP-osoite)',
+        helpFi: 'Useimmat valmiit IR-lähettimet (esim. Athom, Moes) toimivat Tasmotalla. Asenna niihin tasmota-ir-versio. ESPHome = oma ESPHome-laite, jossa climate_ir.',
+        helpEn: 'Most ready-made IR blasters run Tasmota (use the tasmota-ir build). ESPHome = your ESPHome device with climate_ir.',
+      ),
+      _ip(
+        'IR-lähettimen IP-osoite. Jos valitsit MQTT:n, kirjoita tähän MQTT-välittäjän osoite.',
+        'IP of the IR blaster. For MQTT, the broker address.',
+        hint: '192.168.1.60',
+      ),
+      FieldSpec(
+        'brand',
+        'Lämpöpumpun merkki',
+        'Heat pump brand',
+        kind: FieldKind.choice,
+        options: [for (final b in irBrands) b.label, 'Muu (kirjoita protokolla)'],
+        defaultValue: irBrands.first.label,
+        helpFi: 'Valitse ulkoyksikön tai kaukosäätimen merkki. Jos lämpöpumppu ei reagoi, kokeile "Muu" ja jotain saman merkin vaihtoehtoista protokollaa.',
+        helpEn: 'Pick the brand of the unit or remote. If it does not react, try "Other" with an alternative protocol.',
+      ),
+      const FieldSpec(
+        'vendor',
+        'Protokolla (vain "Muu")',
+        'Protocol (only "Other")',
+        hint: 'DAIKIN2',
+        advanced: true,
+        helpFi: 'Tasmotan IRhvac-valmistajanimi, esim. DAIKIN2, LG2, COOLIX. Täytä vain, jos merkki on "Muu" tai haluat kokeilla toista.',
+        helpEn: 'Tasmota IRhvac vendor name. Only needed for "Other" or to try another.',
+      ),
+      const FieldSpec(
+        'name',
+        'Nimi',
+        'Name',
+        hint: 'Olohuoneen lämpöpumppu',
+        helpFi: 'Näkyy ruutujen otsikossa.',
+        helpEn: 'Shown in tile titles.',
+      ),
+      const FieldSpec(
+        'topic',
+        'Tasmotan aihe (vain MQTT)',
+        'Tasmota topic (MQTT only)',
+        hint: 'tasmota_ir',
+        helpFi: 'Tasmota → Configuration → MQTT → Topic. Muu MQTT-lähetin: aihe, johon komento lähetetään.',
+        helpEn: 'Tasmota → Configuration → MQTT → Topic. Other MQTT blaster: command topic.',
+      ),
+      const FieldSpec(
+        'entity',
+        'ESPHome-ilmastoinnin tunnus (vain ESPHome)',
+        'ESPHome climate id (ESPHome only)',
+        hint: 'ilmalampopumppu',
+        helpFi: 'climate_ir-entiteetin nimi pienillä kirjaimilla ja alaviivoilla. Näkyy ESPHome-laitteen web-sivulla.',
+        helpEn: 'The climate_ir object id, shown on the device web page.',
+      ),
+      const FieldSpec(
+        'username',
+        'Tunnus',
+        'Username',
+        advanced: true,
+        helpFi: 'MQTT-tunnus tai Tasmotan web-tunnus (yleensä admin). Jätä tyhjäksi, jos ei tarvita.',
+        helpEn: 'MQTT or web user.',
+      ),
+      const FieldSpec(
+        'password',
+        'Salasana',
+        'Password',
+        kind: FieldKind.secret,
+        advanced: true,
+        helpFi: 'Jätä tyhjäksi, jos ei tarvita.',
+        helpEn: 'Leave empty if not needed.',
+      ),
+      const FieldSpec(
+        'url',
+        'Komennon osoite (vain Muu HTTP)',
+        'Command URL (other HTTP only)',
+        advanced: true,
+        hint: 'http://192.168.1.60/ac?power={{power}}&mode={{mode}}&temp={{temp}}',
+        helpFi: 'Paikkamerkit: {{power}} {{mode}} {{temp}} {{fan}} {{swing}} {{vendor}} {{json}}.',
+        helpEn: 'Placeholders: {{power}} {{mode}} {{temp}} {{fan}} {{swing}} {{vendor}} {{json}}.',
+      ),
+      const FieldSpec(
+        'modes',
+        'Tilanapit (lämmitys, jäähdytys…)',
+        'Mode buttons',
+        kind: FieldKind.boolean,
+        defaultValue: true,
+        helpFi: 'Omat napit lämmitykselle, jäähdytykselle, automaatille, kuivaukselle ja puhallukselle.',
+        helpEn: 'Buttons for heat, cool, auto, dry and fan.',
+      ),
+      const FieldSpec(
+        'fan',
+        'Puhallinnopeus',
+        'Fan speed',
+        kind: FieldKind.boolean,
+        defaultValue: true,
+        helpFi: 'Liukusäädin 0–5 (0 = automaatti).',
+        helpEn: 'Slider 0–5 (0 = auto).',
+      ),
+      const FieldSpec(
+        'swing',
+        'Suuntaus (swing)',
+        'Swing',
+        kind: FieldKind.boolean,
+        defaultValue: true,
+        helpFi: 'Puhallussuunnan heilutus päälle/pois.',
+        helpEn: 'Louver swing on/off.',
+      ),
+      const FieldSpec(
+        'room',
+        'Huonelämpö lähettimen anturista',
+        'Room temperature from the blaster sensor',
+        kind: FieldKind.boolean,
+        defaultValue: false,
+        helpFi: 'Vain jos lähettimessä on lämpöanturi (Tasmota: näkyy Status 8:ssa; ESPHome: climate_ir:n sensor).',
+        helpEn: 'Only if the blaster has a temperature sensor.',
+      ),
+    ],
+    build: (v, lang) {
+      final transport = irTransportFromLabel(_s(v, 'transport', 'Tasmota (IP-osoite)'));
+      final brand = irBrandByLabel(_s(v, 'brand'));
+      final vendor = _s(v, 'vendor', brand?.vendor ?? 'MITSUBISHI_AC');
+      final name = _s(v, 'name', _t(lang, 'Lämpöpumppu', 'Heat pump'));
+      final mqttT = transport == 'tasmota_mqtt' || transport == 'mqtt';
+      final user = _s(v, 'username');
+      final c = ConnectionConfig(
+        name: '$name (IR)',
+        type: 'ir',
+        settings: {
+          'transport': transport,
+          'vendor': vendor,
+          if (!mqttT) 'baseUrl': normUrl(v['address']),
+          if (mqttT) 'host': normHost(v['address']),
+          if (mqttT) 'port': 1883,
+          if (_s(v, 'topic').isNotEmpty) 'topic': _s(v, 'topic'),
+          if (_s(v, 'entity').isNotEmpty) 'entity': _s(v, 'entity'),
+          if (user.isNotEmpty) 'username': user,
+          if (_s(v, 'url').isNotEmpty) 'url': _s(v, 'url'),
+        },
+        secrets: {if (_s(v, 'password').isNotEmpty) 'password': _s(v, 'password')},
+      );
+      return TemplateResult(
+        [c],
+        heatPumpIrTiles(
+          c.id,
+          name,
+          lang,
+          modes: _b(v, 'modes', true),
+          fan: _b(v, 'fan', true),
+          swing: _b(v, 'swing', true),
+          room: _b(v, 'room'),
+        ),
+      );
+    },
+  ),
+  DeviceTemplate(
+    id: 'heatpump_esphome',
+    fi: 'Ilmalämpöpumppu (huoltoliitäntä / ESPHome)',
+    en: 'Air heat pump (service port / ESPHome)',
+    descFi: 'Lämpöpumpun sisäyksikön huoltoliitäntään kytketty ESPHome-ohjain (Mitsubishi CN105, Daikin S21/X50A, Panasonic CN-CNT, Toshiba). Kaksisuuntainen: näet todellisen tilan ja huonelämmön.',
+    descEn: 'ESPHome controller on the indoor unit service port (Mitsubishi CN105, Daikin S21/X50A, Panasonic CN-CNT, Toshiba). Two-way: real state and room temperature.',
+    icon: Icons.heat_pump_outlined,
+    color: const Color(0xFFFFA726),
+    connectionType: 'ir',
+    mdnsTypes: const ['_esphomelib._tcp'],
+    inputs: [
+      _ip(_ipHelpFi, _ipHelpEn, hint: '192.168.1.61'),
+      const FieldSpec(
+        'entity',
+        'Ilmastoinnin tunnus',
+        'Climate id',
+        required: true,
+        hint: 'mitsubishi_heatpump',
+        helpFi: 'ESPHome-laitteen climate-entiteetti. Ohjeet-sivun "Etsi lämpöpumput" löytää sen itse.',
+        helpEn: 'The climate entity of the ESPHome device. "Find heat pumps" in the guide finds it for you.',
+      ),
+      const FieldSpec(
+        'name',
+        'Nimi',
+        'Name',
+        hint: 'Lämpöpumppu',
+        helpFi: 'Näkyy ruutujen otsikossa.',
+        helpEn: 'Shown in tile titles.',
+      ),
+      const FieldSpec(
+        'username',
+        'Web-tunnus',
+        'Web username',
+        advanced: true,
+        helpFi: 'Vain jos ESPHome web_serverissä on tunnus.',
+        helpEn: 'Only if web_server has auth.',
+      ),
+      const FieldSpec(
+        'password',
+        'Web-salasana',
+        'Web password',
+        kind: FieldKind.secret,
+        advanced: true,
+        helpFi: 'Vain jos ESPHome web_serverissä on salasana.',
+        helpEn: 'Only if web_server has auth.',
+      ),
+    ],
+    build: (v, lang) => heatPumpEsphomeTemplate(v, lang),
+  ),
+  DeviceTemplate(
     id: 'modbus_iv',
     fi: 'IV-kone (Modbus TCP)',
     en: 'Ventilation unit (Modbus TCP)',
@@ -1231,3 +1449,130 @@ final List<IvProfile> ivProfiles = (jsonDecode(ivProfilesJson) as List)
     .toList();
 
 DeviceTemplate? templateById(String id) => deviceTemplates.where((t) => t.id == id).firstOrNull;
+
+// ---------------------------------------------------------------- heat pump (IR / ESPHome)
+
+const irTransportLabels = ['Tasmota (IP-osoite)', 'Tasmota (MQTT)', 'ESPHome', 'Muu (HTTP)', 'Muu (MQTT)'];
+
+String irTransportFromLabel(String l) => switch (l) {
+  'Tasmota (MQTT)' => 'tasmota_mqtt',
+  'ESPHome' => 'esphome',
+  'Muu (HTTP)' => 'http',
+  'Muu (MQTT)' => 'mqtt',
+  _ => 'tasmota_http',
+};
+
+TemplateResult heatPumpEsphomeTemplate(Map<String, dynamic> v, String lang) {
+  final name = _s(v, 'name', _t(lang, 'Lämpöpumppu', 'Heat pump'));
+  final user = _s(v, 'username');
+  final c = ConnectionConfig(
+    name: name,
+    type: 'ir',
+    settings: {
+      'transport': 'esphome',
+      'baseUrl': normUrl(v['address']),
+      'entity': _s(v, 'entity'),
+      if (user.isNotEmpty) 'username': user,
+    },
+    secrets: {if (_s(v, 'password').isNotEmpty) 'password': _s(v, 'password')},
+  );
+  return TemplateResult([c], heatPumpIrTiles(c.id, name, lang, room: true, oneWay: false));
+}
+
+/// Tiles for a heat pump behind an `ir` connection: power, set temperature, state, modes, fan, swing, room.
+List<TileConfig> heatPumpIrTiles(
+  String cid,
+  String name,
+  String lang, {
+  bool modes = true,
+  bool fan = true,
+  bool swing = true,
+  bool room = false,
+  bool oneWay = true,
+}) {
+  CommandStep set(String what, [String? to]) => CommandStep(connectionId: cid, spec: {'set': what, 'to': ?to});
+  final poll = oneWay ? 0 : 10;
+  return [
+    TileConfig(
+      type: TileType.toggle,
+      title: name,
+      icon: 'power',
+      connectionId: cid,
+      pollSeconds: poll,
+      read: {'field': 'power'},
+      onCommand: set('power', 'on'),
+      offCommand: set('power', 'off'),
+    ),
+    TileConfig(
+      type: TileType.slider,
+      title: _t(lang, '$name – lämpötila', '$name – temperature'),
+      icon: 'thermostat',
+      unit: '°C',
+      decimals: 0,
+      colSpan: 2,
+      min: 16,
+      max: 31,
+      step: 1,
+      connectionId: cid,
+      pollSeconds: poll,
+      read: {'field': 'temp'},
+      commands: [set('temp')],
+    ),
+    TileConfig(
+      type: TileType.value,
+      title: oneWay
+          ? _t(lang, 'Lähetetty tila (IR on yksisuuntainen)', 'Sent state (IR is one-way)')
+          : _t(lang, 'Tila', 'State'),
+      icon: 'heatpump',
+      colSpan: 2,
+      connectionId: cid,
+      pollSeconds: poll,
+      read: {'field': 'summary'},
+    ),
+    if (modes)
+      for (final (m, icon) in [('heat', 'fire'), ('cool', 'snow'), ('auto', 'sun'), ('dry', 'water'), ('fan', 'fan')])
+        TileConfig(
+          type: TileType.button,
+          title: lang == 'fi' ? irModeFi(m) : irModeEn(m),
+          icon: icon,
+          connectionId: cid,
+          commands: [set('mode', m)],
+        ),
+    if (fan)
+      TileConfig(
+        type: TileType.slider,
+        title: _t(lang, 'Puhallin (0 = auto)', 'Fan (0 = auto)'),
+        icon: 'fan',
+        decimals: 0,
+        min: 0,
+        max: 5,
+        step: 1,
+        connectionId: cid,
+        pollSeconds: poll,
+        read: {'field': 'fan'},
+        commands: [set('fan')],
+      ),
+    if (swing)
+      TileConfig(
+        type: TileType.toggle,
+        title: _t(lang, 'Suuntaus', 'Swing'),
+        icon: 'swing',
+        connectionId: cid,
+        pollSeconds: poll,
+        read: {'field': 'swing'},
+        onCommand: set('swing', 'on'),
+        offCommand: set('swing', 'off'),
+      ),
+    if (room)
+      TileConfig(
+        type: TileType.value,
+        title: _t(lang, '$name – huone', '$name – room'),
+        icon: 'thermostat',
+        unit: '°C',
+        decimals: 1,
+        connectionId: cid,
+        pollSeconds: 60,
+        read: {'field': 'room'},
+      ),
+  ];
+}

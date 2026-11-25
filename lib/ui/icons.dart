@@ -30,6 +30,9 @@ const tileIcons = <String, IconData>{
   'brightness': Icons.brightness_6_outlined,
   'send': Icons.send_outlined,
   'list': Icons.list_alt,
+  'swing': Icons.swap_vert,
+  'remote': Icons.settings_remote_outlined,
+  'sun': Icons.wb_sunny_outlined,
 };
 
 IconData iconFor(TileConfig t) {

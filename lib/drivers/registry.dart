@@ -4,6 +4,7 @@ import 'camera_driver.dart';
 import 'driver.dart';
 import 'ha_driver.dart';
 import 'http_driver.dart';
+import 'ir_driver.dart';
 import 'modbus.dart';
 import 'mqtt_driver.dart';
 import 'ntfy_driver.dart';
@@ -21,6 +22,7 @@ const driverDescriptors = <DriverDescriptor>[
   UdpDriver.descriptor,
   ShellyCloudDriver.descriptor,
   NtfyDriver.descriptor,
+  IrDriver.descriptor,
 ];
 
 DriverDescriptor descriptorFor(String type) =>
