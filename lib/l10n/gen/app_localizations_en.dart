@@ -177,6 +177,30 @@ class AppLocalizationsEn extends AppLocalizations {
       'Check the address and settings and try again. The technical details show the exact reason.';
 
   @override
+  String get sdd5e97b1e2 => 'Clear';
+
+  @override
+  String get sad990c999d => 'Partly cloudy';
+
+  @override
+  String get s80bfe8f9ad => 'Cloudy';
+
+  @override
+  String get s46f3db8514 => 'Fog';
+
+  @override
+  String get sbd81101eb4 => 'Drizzle';
+
+  @override
+  String get s960a265544 => 'Rain';
+
+  @override
+  String get seab38c2b45 => 'Snow';
+
+  @override
+  String get sfc65eafa12 => 'Thunderstorm';
+
+  @override
   String get sc27533ae83 => 'Saving';
 
   @override
@@ -724,6 +748,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get se9ca7cb470 => 'Automations';
+
+  @override
+  String get sf98121cd3d => 'Room photo';
 
   @override
   String get s49de879696 => 'Energy';
@@ -1276,6 +1303,36 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s9aa9bc9679 => 'Device answered but has no climate entity.';
+
+  @override
+  String get sec88246e24 => 'Choose a room photo';
+
+  @override
+  String get s252b8e1289 => 'Photo for which room?';
+
+  @override
+  String get s9ae4e86ee7 =>
+      'The photo is shown as the room header above its tiles.';
+
+  @override
+  String get sc48f5f9bcf => 'Choose picture';
+
+  @override
+  String get sf55eee73b8 => 'Change picture';
+
+  @override
+  String get sf6723451b9 => 'Take photo';
+
+  @override
+  String get sdd957ccc1b => 'Remove picture';
+
+  @override
+  String s6c487e340b(String p0) {
+    return 'At most $p0 pictures. Remove one first.';
+  }
+
+  @override
+  String get sceafe9ce2a => 'The file is not a picture';
 
   @override
   String get s3a5c21004e => 'Offline';
@@ -2169,8 +2226,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s835865fd04 => 'Templates';
 
   @override
-  String get s2b57f716aa =>
-      'No automations yet. Start from a template, e.g. \"Lights on at sunset\" or \"Water leak → alarm\".';
+  String s73d042449b(String p0, String p1) {
+    return 'No automations yet. Start from a template, e.g. \"$p0\" or \"$p1\".';
+  }
 
   @override
   String get s8039add5ed => 'Untitled';
@@ -2993,6 +3051,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String s162c54ed4c(String p0) {
     return '$p0: done';
   }
+
+  @override
+  String get se26e839c2f => 'Monday';
+
+  @override
+  String get s763254941f => 'Tuesday';
+
+  @override
+  String get sf3448cdd52 => 'Wednesday';
+
+  @override
+  String get sc34ca7eddb => 'Thursday';
+
+  @override
+  String get sfa82438bec => 'Friday';
+
+  @override
+  String get s517c348371 => 'Saturday';
+
+  @override
+  String get sb1f0e72163 => 'Sunday';
 
   @override
   String get s306729fe62 => 'No prices';
@@ -4247,9 +4326,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get sceafe9ce2a => 'The file is not a picture';
-
-  @override
   String get s12a7d631af => 'Look';
 
   @override
@@ -4266,18 +4342,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s254a1d8e12 => 'Background picture (optional)';
-
-  @override
-  String get sc48f5f9bcf => 'Choose picture';
-
-  @override
-  String get sf55eee73b8 => 'Change picture';
-
-  @override
-  String get sf6723451b9 => 'Take photo';
-
-  @override
-  String get sdd957ccc1b => 'Remove picture';
 
   @override
   String get s7ba9d453ed => 'Dim when the device is off';
@@ -4346,6 +4410,20 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get sa0cbbafb4e =>
       'Away from home, tiles that only work on the home network are hidden. By default they stay in place, greyed out.';
+
+  @override
+  String get s419166b895 => 'Clock and weather on the home screen';
+
+  @override
+  String get sec30a8f23e =>
+      'Time, date, weather and electricity price at the top of the view. This device only.';
+
+  @override
+  String get sf7205b268f => 'Animations';
+
+  @override
+  String get s1535c6411d =>
+      'Soft transitions when a device changes state. Off = calmer and lighter for an older tablet. This device only.';
 
   @override
   String get s21f870dbc2 =>
@@ -5169,6 +5247,104 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s1dfeacd9f6 => 'UDP';
 
   @override
+  String get sd76aadb97c => 'Water leak → alarm';
+
+  @override
+  String get s0bd0724e83 =>
+      'An urgent notification as soon as a leak sensor detects water (also during quiet hours).';
+
+  @override
+  String get sa9f114c81d => 'Lights on at sunset';
+
+  @override
+  String get s02402a38eb => 'The chosen lights turn on when the sun sets.';
+
+  @override
+  String get s386fda8330 => 'Everything off at 23:00';
+
+  @override
+  String get s3508664550 => 'The chosen devices turn off in the evening.';
+
+  @override
+  String get s3775470669 => 'Notify when a device stops answering';
+
+  @override
+  String get s5c07969ac8 =>
+      'A notification when a device has been unreachable for 10 minutes.';
+
+  @override
+  String get s2cdd15be92 => 'Notify when the temperature drops';
+
+  @override
+  String get sa74faa4635 =>
+      'A notification when a sensor reading drops below a limit.';
+
+  @override
+  String get s94ed692877 => 'Cheapest hours: device on';
+
+  @override
+  String get s9b99909a7c =>
+      'A device on during the day’s cheapest hours (e.g. a water heater).';
+
+  @override
+  String get s90d5d2954d => 'Notify about expensive electricity';
+
+  @override
+  String get s876690515a =>
+      'A notification when the spot price goes above 20 c/kWh.';
+
+  @override
+  String get s1906ecb28c => 'Frost warning';
+
+  @override
+  String get s036ecd266d => 'A notification when it is below −15 °C outside.';
+
+  @override
+  String get sacf213e078 => 'Morning summary at 7:00';
+
+  @override
+  String get sef21ad6784 =>
+      'Weather, electricity price and the state of your home as a notification every morning.';
+
+  @override
+  String get s5d308e6986 => 'WATER LEAK!';
+
+  @override
+  String get s13017ce3b0 => 'Temperature dropped';
+
+  @override
+  String get s4c52f38c8b => 'Electricity is expensive';
+
+  @override
+  String get sc797ab9c4c => 'Good morning';
+
+  @override
+  String get scec02139b6 => 'Tile missing';
+
+  @override
+  String get s66f19d787b => 'Group not answering';
+
+  @override
+  String sed9788d6dc(String p0) {
+    return '$p0: no command';
+  }
+
+  @override
+  String sb23114b65d(String p0) {
+    return 'cheapest at $p0:00';
+  }
+
+  @override
+  String sd39874fbe2(String p0) {
+    return '$p0 devices on';
+  }
+
+  @override
+  String sbe208615d0(String p0) {
+    return '$p0 not answering';
+  }
+
+  @override
   String get s804e935440 => 'ESP32 camera';
 
   @override
@@ -5194,6 +5370,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sb25aad3bc2 => 'Leaving home';
+
+  @override
+  String get s7e5f6a29e3 => 'Good night';
+
+  @override
+  String get s253122823a => 'Good morning';
+
+  @override
+  String get s640293f08f => 'Good afternoon';
+
+  @override
+  String get sd8c5bed7de => 'Good evening';
 
   @override
   String get s4cac4725b8 => 'The group\'s devices are not answering';

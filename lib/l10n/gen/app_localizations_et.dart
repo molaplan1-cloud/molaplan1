@@ -177,6 +177,30 @@ class AppLocalizationsEt extends AppLocalizations {
       'Kontrolli aadressi ja seadeid ning proovi uuesti. Tehnilised üksikasjad näitavad täpset põhjust.';
 
   @override
+  String get sdd5e97b1e2 => 'Selge';
+
+  @override
+  String get sad990c999d => 'Osaliselt hägune';
+
+  @override
+  String get s80bfe8f9ad => 'Cloudy';
+
+  @override
+  String get s46f3db8514 => 'Fog';
+
+  @override
+  String get sbd81101eb4 => 'Drizzle';
+
+  @override
+  String get s960a265544 => 'Vihm';
+
+  @override
+  String get seab38c2b45 => 'Lumi';
+
+  @override
+  String get sfc65eafa12 => 'Äikesetorm';
+
+  @override
   String get sc27533ae83 => 'Säästlik';
 
   @override
@@ -724,6 +748,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get se9ca7cb470 => 'Automatiseerimine';
+
+  @override
+  String get sf98121cd3d => 'Toafoto';
 
   @override
   String get s49de879696 => 'Energia';
@@ -1282,6 +1309,35 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s9aa9bc9679 => 'Seade vastas, kuid sellel ei ole kliimaüksust.';
+
+  @override
+  String get sec88246e24 => 'Vali toafoto';
+
+  @override
+  String get s252b8e1289 => 'Millise toa foto?';
+
+  @override
+  String get s9ae4e86ee7 => 'Foto on kujutatud toa päisena kaartide kohal.';
+
+  @override
+  String get sc48f5f9bcf => 'Vali pilt';
+
+  @override
+  String get sf55eee73b8 => 'Muuda pilti';
+
+  @override
+  String get sf6723451b9 => 'Pildista';
+
+  @override
+  String get sdd957ccc1b => 'Eemalda pilt';
+
+  @override
+  String s6c487e340b(String p0) {
+    return 'Kõige rohkem $p0 pilte. Eemalda üks enne.';
+  }
+
+  @override
+  String get sceafe9ce2a => 'Fail ei ole pilt';
 
   @override
   String get s3a5c21004e => 'Võrguühenduseta';
@@ -2176,8 +2232,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s835865fd04 => 'Mallid';
 
   @override
-  String get s2b57f716aa =>
-      'Automaatikat veel ei ole. Alusta mallist, nt \"Valgused päikeseloojangu ajal\" või \"Veeleke → häire\".';
+  String s73d042449b(String p0, String p1) {
+    return 'Automaatikat veel ei ole. Alustatakse mallist, nt \"$p0\" või \"$p1\".';
+  }
 
   @override
   String get s8039add5ed => 'Pealkirjata';
@@ -3003,6 +3060,27 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String get se26e839c2f => 'Esmaspäev';
+
+  @override
+  String get s763254941f => 'Teisipäev';
+
+  @override
+  String get sf3448cdd52 => 'Kolmapäev';
+
+  @override
+  String get sc34ca7eddb => 'Neljapäev';
+
+  @override
+  String get sfa82438bec => 'Reede';
+
+  @override
+  String get s517c348371 => 'Laupäev';
+
+  @override
+  String get sb1f0e72163 => 'Pühapäev';
+
+  @override
   String get s306729fe62 => 'Hindadeta';
 
   @override
@@ -3416,7 +3494,7 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String s1d8bb7b0a6(String p0) {
-    return '\"$p0\" wants remote control of your home. Accept only if it is your own or a family member\'s device that just entered the code.';
+    return '\"$p0\" soovib sinu kodu kaugjuhtimist. Nõustu ainult siis, kui see on sinu enda või pereliikme seade, kuhu kood just sisestati.';
   }
 
   @override
@@ -4252,9 +4330,6 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
-  String get sceafe9ce2a => 'Fail ei ole pilt';
-
-  @override
   String get s12a7d631af => 'Välimus';
 
   @override
@@ -4271,18 +4346,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s254a1d8e12 => 'Taustapilt (valikuline)';
-
-  @override
-  String get sc48f5f9bcf => 'Vali pilt';
-
-  @override
-  String get sf55eee73b8 => 'Muuda pilti';
-
-  @override
-  String get sf6723451b9 => 'Pildista';
-
-  @override
-  String get sdd957ccc1b => 'Eemalda pilt';
 
   @override
   String get s7ba9d453ed => 'Tumenda, kui seade on väljas';
@@ -4351,6 +4414,20 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sa0cbbafb4e =>
       'Kodust eemal peidetakse ruudud, mis töötavad ainult koduvõrgus. Vaikimisi jäävad need paigale hallina.';
+
+  @override
+  String get s419166b895 => 'Kell ja ilm avaekraanil';
+
+  @override
+  String get sec30a8f23e =>
+      'Aeg, kuupäev, ilm ja elektrihind vaate ülaosas. Ainult see seade.';
+
+  @override
+  String get sf7205b268f => 'Animatsioonid';
+
+  @override
+  String get s1535c6411d =>
+      'Pehmed üleminekud, kui seade muudab olekut. Väljas = rahulikum ja kergem vanema tahvelarvuti puhul. Ainult see seade.';
 
   @override
   String get s21f870dbc2 =>
@@ -5172,6 +5249,102 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s1dfeacd9f6 => 'UDP';
 
   @override
+  String get sd76aadb97c => 'Veeleke → alarm';
+
+  @override
+  String get s0bd0724e83 =>
+      'Kiireloomuline teade niipea, kui lekkeandur tuvastab vee (ka vaiksel ajal).';
+
+  @override
+  String get sa9f114c81d => 'Tuled põlevad päikeseloojangul';
+
+  @override
+  String get s02402a38eb => 'Valitud tuled lülituvad sisse, kui päike loojub.';
+
+  @override
+  String get s386fda8330 => 'Kõik maha kell 23:00';
+
+  @override
+  String get s3508664550 => 'Valitud seadmed lülituvad välja õhtul.';
+
+  @override
+  String get s3775470669 => 'Teatamine, kui seade ei vasta enam';
+
+  @override
+  String get s5c07969ac8 =>
+      'Teade, kui seade on olnud 10 minutit kättesaamatu.';
+
+  @override
+  String get s2cdd15be92 => 'Märguanne, kui temperatuur langeb';
+
+  @override
+  String get sa74faa4635 => 'Märge, kui anduri näit langeb alla piiri.';
+
+  @override
+  String get s94ed692877 => 'Odavamad töötunnid: seade on sisse lülitatud';
+
+  @override
+  String get s9b99909a7c =>
+      'Seade päeva kõige odavamatel tundidel (nt veesoojendi).';
+
+  @override
+  String get s90d5d2954d => 'Teavitada kallist elektrist';
+
+  @override
+  String get s876690515a => 'Teade, kui hetkehind ületab 20 c/kWh.';
+
+  @override
+  String get s1906ecb28c => 'Külmumishoiatus';
+
+  @override
+  String get s036ecd266d => 'Märge, kui see on väljaspool −15 °C.';
+
+  @override
+  String get sacf213e078 => 'Hommikune kokkuvõte kell 7:00';
+
+  @override
+  String get sef21ad6784 =>
+      'Ilm, elektri hind ja teie kodu seisund teatena igal hommikul.';
+
+  @override
+  String get s5d308e6986 => 'VEELEK!';
+
+  @override
+  String get s13017ce3b0 => 'Temperatuur langes';
+
+  @override
+  String get s4c52f38c8b => 'Elekter on kallis';
+
+  @override
+  String get sc797ab9c4c => 'Tere hommikust';
+
+  @override
+  String get scec02139b6 => 'Kaart kadunud';
+
+  @override
+  String get s66f19d787b => 'Grupp ei vasta';
+
+  @override
+  String sed9788d6dc(String p0) {
+    return '$p0: käsku pole';
+  }
+
+  @override
+  String sb23114b65d(String p0) {
+    return 'odavaim kell $p0:00';
+  }
+
+  @override
+  String sd39874fbe2(String p0) {
+    return '$p0 seadmed';
+  }
+
+  @override
+  String sbe208615d0(String p0) {
+    return '$p0 ei vasta';
+  }
+
+  @override
   String get s804e935440 => 'ESP32 kaamera';
 
   @override
@@ -5197,6 +5370,18 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sb25aad3bc2 => 'Lahkun kodust';
+
+  @override
+  String get s7e5f6a29e3 => 'Head ööd';
+
+  @override
+  String get s253122823a => 'Tere hommikust';
+
+  @override
+  String get s640293f08f => 'Tere päevast';
+
+  @override
+  String get sd8c5bed7de => 'Tere õhtust';
 
   @override
   String get s4cac4725b8 => 'Grupi seadmed ei vasta';
@@ -5419,7 +5604,7 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s65529d5877 =>
-      'Tasmota → Configuration → MQTT → Topic. Other MQTT blaster: command topic.';
+      'Tasmota → Configuration → MQTT → Topic. Muu MQTT-saatja: käsuteema.';
 
   @override
   String get s321c1677e2 => 'Esfome climate id (ainult Esfome)';

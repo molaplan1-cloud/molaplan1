@@ -14,6 +14,7 @@ import '../automation/host.dart';
 import '../automation/model.dart';
 import '../automation/runner.dart';
 import '../core/template.dart';
+import '../l10n/l10n.dart';
 import '../ui/notify.dart';
 import 'app_state.dart';
 
@@ -107,7 +108,7 @@ class AutomationState extends ChangeNotifier {
 
   void _applyLocal() {
     final w = where;
-    local.update(AutomationPackage.fromConfig(app.config));
+    local.update(AutomationPackage.fromConfig(app.config, lang: app.lang));
     final busy = settings.automations.any((a) => a.enabled) || settings.scripts.any((x) => x.remote);
     w == 'local' && busy ? local.start() : local.stop();
     _subscribe();
@@ -115,7 +116,7 @@ class AutomationState extends ChangeNotifier {
 
   void _apply() {
     final w = where;
-    local.update(AutomationPackage.fromConfig(app.config));
+    local.update(AutomationPackage.fromConfig(app.config, lang: app.lang));
     final busy = settings.automations.any((a) => a.enabled) || settings.scripts.any((x) => x.remote);
     if (w == 'local' && busy) {
       local.start();
@@ -137,7 +138,7 @@ class AutomationState extends ChangeNotifier {
 
   /// Sends the package (with connections, end-to-end encrypted) to the bridge.
   Future<bool> push({bool force = false}) async {
-    final pkg = AutomationPackage.fromConfig(app.config, withConnections: true);
+    final pkg = AutomationPackage.fromConfig(app.config, withConnections: true, lang: app.lang);
     final j = jsonEncode(pkg.toJson());
     if (!force && j == _sent) return false;
     final b = app.remote.bridge;
@@ -241,7 +242,7 @@ class AutomationState extends ChangeNotifier {
       }
       return null;
     }
-    local.update(AutomationPackage.fromConfig(app.config));
+    local.update(AutomationPackage.fromConfig(app.config, lang: app.lang));
     try {
       return await local.run(kind, id);
     } finally {
@@ -317,7 +318,7 @@ class AutomationState extends ChangeNotifier {
 
   /// "Tallenna nykytila": a scene from the current state of [tileIds] (on/off; sliders' values).
   Future<Scene> captureScene(String name, List<String> tileIds, {String icon = 'scene'}) async {
-    final pkg = AutomationPackage.fromConfig(app.config);
+    final pkg = AutomationPackage.fromConfig(app.config, lang: app.lang);
     final env = local.env..pkg = pkg;
     final steps = <ActionStep>[];
     for (final id in tileIds) {
@@ -346,14 +347,14 @@ class AutomationState extends ChangeNotifier {
   /// Morning summary text (weather, price, home), cached for 10 minutes.
   Future<String> summary() async {
     final c = _summary;
-    if (c != null && DateTime.now().difference(c.$1).inMinutes < 10) return c.$2;
-    final env = local.env..pkg = AutomationPackage.fromConfig(app.config);
+    if (c != null && c.$3 == app.lang && DateTime.now().difference(c.$1).inMinutes < 10) return c.$2;
+    final env = local.env..pkg = AutomationPackage.fromConfig(app.config, lang: app.lang);
     final s = await env.summaryText().timeout(const Duration(seconds: 20), onTimeout: () => '');
-    _summary = (DateTime.now(), s);
+    _summary = (DateTime.now(), s, app.lang);
     return s;
   }
 
-  (DateTime, String)? _summary;
+  (DateTime, String, String)? _summary;
 
   /// Repaint listeners after a UI-only change.
   void changedUi() => notifyListeners();
@@ -414,25 +415,16 @@ class AutomationState extends ChangeNotifier {
   }
 }
 
-/// Sun / greeting helpers for the livelier home header.
-String greetingFi(DateTime t) => t.hour < 5
-    ? 'Hyvää yötä'
+/// Greeting for the livelier home header, in [lang] (fi/en/sv/et/es).
+String greeting(String lang, DateTime t) => t.hour < 5
+    ? tr(lang, 'Hyvää yötä', 'Good night')
     : t.hour < 10
-    ? 'Hyvää huomenta'
+    ? tr(lang, 'Hyvää huomenta', 'Good morning')
     : t.hour < 17
-    ? 'Hyvää päivää'
+    ? tr(lang, 'Hyvää päivää', 'Good afternoon')
     : t.hour < 22
-    ? 'Hyvää iltaa'
-    : 'Hyvää yötä';
-String greetingEn(DateTime t) => t.hour < 5
-    ? 'Good night'
-    : t.hour < 12
-    ? 'Good morning'
-    : t.hour < 17
-    ? 'Good afternoon'
-    : t.hour < 22
-    ? 'Good evening'
-    : 'Good night';
+    ? tr(lang, 'Hyvää iltaa', 'Good evening')
+    : tr(lang, 'Hyvää yötä', 'Good night');
 
 /// Morning summary is shown 05–11.
 bool morningTime(DateTime t) => t.hour >= 5 && t.hour < 11;

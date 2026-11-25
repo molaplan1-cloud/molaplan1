@@ -427,13 +427,28 @@ class Dashboard {
   String id;
   String name;
   List<TileConfig> tiles;
-  Dashboard({String? id, required this.name, List<TileConfig>? tiles}) : id = id ?? newId(), tiles = tiles ?? [];
 
-  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'tiles': tiles.map((t) => t.toJson()).toList()};
+  /// Room photo shown as the view's header (v0.7.2, R132): image name in the tile image store
+  /// (synced like tile backgrounds) and the scrim that keeps the white title readable.
+  String? headerImage;
+  double headerScrim;
+  Dashboard({String? id, required this.name, List<TileConfig>? tiles, this.headerImage, this.headerScrim = 0.45})
+    : id = id ?? newId(),
+      tiles = tiles ?? [];
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'name': name,
+    'headerImage': ?headerImage,
+    if (headerImage != null) 'headerScrim': headerScrim,
+    'tiles': tiles.map((t) => t.toJson()).toList(),
+  };
 
   factory Dashboard.fromJson(Map<String, dynamic> j) => Dashboard(
     id: j['id'] as String?,
     name: (j['name'] ?? '') as String,
+    headerImage: j['headerImage'] as String?,
+    headerScrim: (j['headerScrim'] as num?)?.toDouble() ?? 0.45,
     tiles: ((j['tiles'] as List?) ?? []).map((e) => TileConfig.fromJson(_map(e))).toList(),
   );
 }
@@ -491,6 +506,11 @@ class AppConfig {
   bool notifyInApp;
   bool trayOnClose;
 
+  /// Device-local (v0.7.2, R132): subtle animations (off = calmer / lighter on slow tablets) and
+  /// the clock + weather strip at the top of the home screen.
+  bool animations;
+  bool homeStrip;
+
   AppConfig({
     List<ConnectionConfig>? connections,
     List<Dashboard>? dashboards,
@@ -513,6 +533,8 @@ class AppConfig {
     this.autoLocal = true,
     this.notifyInApp = true,
     this.trayOnClose = true,
+    this.animations = true,
+    this.homeStrip = true,
   }) : automation = automation ?? AutomationSettings(),
        favoriteColors = favoriteColors ?? ['#FF8A3D', '#FFD166', '#4D96FF', '#C77DFF', 'K2700', 'K5000'],
        scanNames = scanNames ?? {},
@@ -537,6 +559,8 @@ class AppConfig {
     if (!autoLocal) 'autoLocal': false,
     if (!notifyInApp) 'notifyInApp': false,
     if (!trayOnClose) 'trayOnClose': false,
+    if (!animations) 'animations': false,
+    if (!homeStrip) 'homeStrip': false,
     'relayUrl': ?relayUrl,
     if (remoteCameraSeconds != 2) 'remoteCameraSeconds': remoteCameraSeconds,
     'updateCheckedAt': ?updateCheckedAt,
@@ -565,6 +589,8 @@ class AppConfig {
       autoLocal: j['autoLocal'] != false,
       notifyInApp: j['notifyInApp'] != false,
       trayOnClose: j['trayOnClose'] != false,
+      animations: j['animations'] != false,
+      homeStrip: j['homeStrip'] != false,
       relayUrl: j['relayUrl'] as String?,
       remoteCameraSeconds: (j['remoteCameraSeconds'] as num?)?.toInt() ?? 2,
       updateCheckedAt: (j['updateCheckedAt'] as num?)?.toInt(),

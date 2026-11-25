@@ -392,6 +392,54 @@ abstract class AppLocalizations {
   /// **'Check the address and settings and try again. The technical details show the exact reason.'**
   String get s53a891e670;
 
+  /// fi: Selkeää
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get sdd5e97b1e2;
+
+  /// fi: Puolipilvistä
+  ///
+  /// In en, this message translates to:
+  /// **'Partly cloudy'**
+  String get sad990c999d;
+
+  /// fi: Pilvistä
+  ///
+  /// In en, this message translates to:
+  /// **'Cloudy'**
+  String get s80bfe8f9ad;
+
+  /// fi: Sumua
+  ///
+  /// In en, this message translates to:
+  /// **'Fog'**
+  String get s46f3db8514;
+
+  /// fi: Tihkua
+  ///
+  /// In en, this message translates to:
+  /// **'Drizzle'**
+  String get sbd81101eb4;
+
+  /// fi: Sadetta
+  ///
+  /// In en, this message translates to:
+  /// **'Rain'**
+  String get s960a265544;
+
+  /// fi: Lumisadetta
+  ///
+  /// In en, this message translates to:
+  /// **'Snow'**
+  String get seab38c2b45;
+
+  /// fi: Ukkosta
+  ///
+  /// In en, this message translates to:
+  /// **'Thunderstorm'**
+  String get sfc65eafa12;
+
   /// fi: Säästävä
   ///
   /// In en, this message translates to:
@@ -1394,6 +1442,12 @@ abstract class AppLocalizations {
   /// **'Automations'**
   String get se9ca7cb470;
 
+  /// fi: Huoneen kuva
+  ///
+  /// In en, this message translates to:
+  /// **'Room photo'**
+  String get sf98121cd3d;
+
   /// fi: Energia
   ///
   /// In en, this message translates to:
@@ -2385,6 +2439,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Device answered but has no climate entity.'**
   String get s9aa9bc9679;
+
+  /// fi: Valitse huoneen kuva
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a room photo'**
+  String get sec88246e24;
+
+  /// fi: Minkä huoneen kuva?
+  ///
+  /// In en, this message translates to:
+  /// **'Photo for which room?'**
+  String get s252b8e1289;
+
+  /// fi: Kuva näkyy huoneen otsikkona laattojen yläpuolella.
+  ///
+  /// In en, this message translates to:
+  /// **'The photo is shown as the room header above its tiles.'**
+  String get s9ae4e86ee7;
+
+  /// fi: Valitse kuva
+  ///
+  /// In en, this message translates to:
+  /// **'Choose picture'**
+  String get sc48f5f9bcf;
+
+  /// fi: Vaihda kuva
+  ///
+  /// In en, this message translates to:
+  /// **'Change picture'**
+  String get sf55eee73b8;
+
+  /// fi: Ota kuva
+  ///
+  /// In en, this message translates to:
+  /// **'Take photo'**
+  String get sf6723451b9;
+
+  /// fi: Poista kuva
+  ///
+  /// In en, this message translates to:
+  /// **'Remove picture'**
+  String get sdd957ccc1b;
+
+  /// fi: Enintään {p0} kuvaa. Poista jokin ensin.
+  ///
+  /// In en, this message translates to:
+  /// **'At most {p0} pictures. Remove one first.'**
+  String s6c487e340b(String p0);
+
+  /// fi: Tiedosto ei ole kuva
+  ///
+  /// In en, this message translates to:
+  /// **'The file is not a picture'**
+  String get sceafe9ce2a;
 
   /// fi: Ei yhteyttä
   ///
@@ -3996,11 +4104,11 @@ abstract class AppLocalizations {
   /// **'Templates'**
   String get s835865fd04;
 
-  /// fi: Ei vielä automaatioita. Aloita valmiista: esim. "Valot päälle auringonlaskussa" tai "Vesivuoto → hälytys".
+  /// fi: Ei vielä automaatioita. Aloita valmiista: esim. "{p0}" tai "{p1}".
   ///
   /// In en, this message translates to:
-  /// **'No automations yet. Start from a template, e.g. \"Lights on at sunset\" or \"Water leak → alarm\".'**
-  String get s2b57f716aa;
+  /// **'No automations yet. Start from a template, e.g. \"{p0}\" or \"{p1}\".'**
+  String s73d042449b(String p0, String p1);
 
   /// fi: Nimetön
   ///
@@ -5550,6 +5658,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{p0}: done'**
   String s162c54ed4c(String p0);
+
+  /// fi: maanantai
+  ///
+  /// In en, this message translates to:
+  /// **'Monday'**
+  String get se26e839c2f;
+
+  /// fi: tiistai
+  ///
+  /// In en, this message translates to:
+  /// **'Tuesday'**
+  String get s763254941f;
+
+  /// fi: keskiviikko
+  ///
+  /// In en, this message translates to:
+  /// **'Wednesday'**
+  String get sf3448cdd52;
+
+  /// fi: torstai
+  ///
+  /// In en, this message translates to:
+  /// **'Thursday'**
+  String get sc34ca7eddb;
+
+  /// fi: perjantai
+  ///
+  /// In en, this message translates to:
+  /// **'Friday'**
+  String get sfa82438bec;
+
+  /// fi: lauantai
+  ///
+  /// In en, this message translates to:
+  /// **'Saturday'**
+  String get s517c348371;
+
+  /// fi: sunnuntai
+  ///
+  /// In en, this message translates to:
+  /// **'Sunday'**
+  String get sb1f0e72163;
 
   /// fi: Ei hintoja
   ///
@@ -7813,12 +7963,6 @@ abstract class AppLocalizations {
   /// **'At most {p0} background pictures. Remove one first.'**
   String sa8ce5112ee(String p0);
 
-  /// fi: Tiedosto ei ole kuva
-  ///
-  /// In en, this message translates to:
-  /// **'The file is not a picture'**
-  String get sceafe9ce2a;
-
   /// fi: Ulkoasu
   ///
   /// In en, this message translates to:
@@ -7854,30 +7998,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Background picture (optional)'**
   String get s254a1d8e12;
-
-  /// fi: Valitse kuva
-  ///
-  /// In en, this message translates to:
-  /// **'Choose picture'**
-  String get sc48f5f9bcf;
-
-  /// fi: Vaihda kuva
-  ///
-  /// In en, this message translates to:
-  /// **'Change picture'**
-  String get sf55eee73b8;
-
-  /// fi: Ota kuva
-  ///
-  /// In en, this message translates to:
-  /// **'Take photo'**
-  String get sf6723451b9;
-
-  /// fi: Poista kuva
-  ///
-  /// In en, this message translates to:
-  /// **'Remove picture'**
-  String get sdd957ccc1b;
 
   /// fi: Himmennä kun laite on pois päältä
   ///
@@ -8004,6 +8124,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Away from home, tiles that only work on the home network are hidden. By default they stay in place, greyed out.'**
   String get sa0cbbafb4e;
+
+  /// fi: Kello ja sää etusivulla
+  ///
+  /// In en, this message translates to:
+  /// **'Clock and weather on the home screen'**
+  String get s419166b895;
+
+  /// fi: Kellonaika, päivä, sää ja sähkön hinta näkymän yläreunassa. Koskee vain tätä laitetta.
+  ///
+  /// In en, this message translates to:
+  /// **'Time, date, weather and electricity price at the top of the view. This device only.'**
+  String get sec30a8f23e;
+
+  /// fi: Animaatiot
+  ///
+  /// In en, this message translates to:
+  /// **'Animations'**
+  String get sf7205b268f;
+
+  /// fi: Pehmeät siirtymät, kun laite vaihtaa tilaa. Pois päältä = rauhallisempi ja kevyempi vanhalle tabletille. Koskee vain tät
+  ///
+  /// In en, this message translates to:
+  /// **'Soft transitions when a device changes state. Off = calmer and lighter for an older tablet. This device only.'**
+  String get s1535c6411d;
 
   /// fi: Näyttää tekniset asetukset: yhteydet (HTTP, MQTT, Modbus…), viestit, JSON-polut ja ruutujen lähteet. Useimmat eivät tarv
   ///
@@ -9451,6 +9595,174 @@ abstract class AppLocalizations {
   /// **'UDP'**
   String get s1dfeacd9f6;
 
+  /// fi: Vesivuoto → hälytys
+  ///
+  /// In en, this message translates to:
+  /// **'Water leak → alarm'**
+  String get sd76aadb97c;
+
+  /// fi: Kiireellinen ilmoitus heti, kun vuotoanturi havaitsee vettä (myös hiljaisena aikana).
+  ///
+  /// In en, this message translates to:
+  /// **'An urgent notification as soon as a leak sensor detects water (also during quiet hours).'**
+  String get s0bd0724e83;
+
+  /// fi: Valot päälle auringonlaskulla
+  ///
+  /// In en, this message translates to:
+  /// **'Lights on at sunset'**
+  String get sa9f114c81d;
+
+  /// fi: Valitut valot syttyvät, kun aurinko laskee.
+  ///
+  /// In en, this message translates to:
+  /// **'The chosen lights turn on when the sun sets.'**
+  String get s02402a38eb;
+
+  /// fi: Kaikki pois klo 23
+  ///
+  /// In en, this message translates to:
+  /// **'Everything off at 23:00'**
+  String get s386fda8330;
+
+  /// fi: Valitut laitteet sammuvat illalla.
+  ///
+  /// In en, this message translates to:
+  /// **'The chosen devices turn off in the evening.'**
+  String get s3508664550;
+
+  /// fi: Ilmoita, kun laite ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'Notify when a device stops answering'**
+  String get s3775470669;
+
+  /// fi: Ilmoitus, jos laite on ollut tavoittamattomissa 10 minuuttia.
+  ///
+  /// In en, this message translates to:
+  /// **'A notification when a device has been unreachable for 10 minutes.'**
+  String get s5c07969ac8;
+
+  /// fi: Ilmoita, kun lämpötila laskee
+  ///
+  /// In en, this message translates to:
+  /// **'Notify when the temperature drops'**
+  String get s2cdd15be92;
+
+  /// fi: Ilmoitus, kun anturin lukema laskee rajan alle.
+  ///
+  /// In en, this message translates to:
+  /// **'A notification when a sensor reading drops below a limit.'**
+  String get sa74faa4635;
+
+  /// fi: Halvimmat tunnit: laite päälle
+  ///
+  /// In en, this message translates to:
+  /// **'Cheapest hours: device on'**
+  String get s94ed692877;
+
+  /// fi: Laite päälle päivän halvimpina tunteina (esim. varaaja).
+  ///
+  /// In en, this message translates to:
+  /// **'A device on during the day’s cheapest hours (e.g. a water heater).'**
+  String get s9b99909a7c;
+
+  /// fi: Ilmoita kalliista sähköstä
+  ///
+  /// In en, this message translates to:
+  /// **'Notify about expensive electricity'**
+  String get s90d5d2954d;
+
+  /// fi: Ilmoitus, kun pörssisähkö nousee yli 20 c/kWh.
+  ///
+  /// In en, this message translates to:
+  /// **'A notification when the spot price goes above 20 c/kWh.'**
+  String get s876690515a;
+
+  /// fi: Pakkasvaroitus
+  ///
+  /// In en, this message translates to:
+  /// **'Frost warning'**
+  String get s1906ecb28c;
+
+  /// fi: Ilmoitus, kun ulkona on alle −15 °C.
+  ///
+  /// In en, this message translates to:
+  /// **'A notification when it is below −15 °C outside.'**
+  String get s036ecd266d;
+
+  /// fi: Aamukatsaus klo 7
+  ///
+  /// In en, this message translates to:
+  /// **'Morning summary at 7:00'**
+  String get sacf213e078;
+
+  /// fi: Sää, sähkön hinta ja kodin tila ilmoituksena joka aamu.
+  ///
+  /// In en, this message translates to:
+  /// **'Weather, electricity price and the state of your home as a notification every morning.'**
+  String get sef21ad6784;
+
+  /// fi: VESIVUOTO!
+  ///
+  /// In en, this message translates to:
+  /// **'WATER LEAK!'**
+  String get s5d308e6986;
+
+  /// fi: Lämpötila laski
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature dropped'**
+  String get s13017ce3b0;
+
+  /// fi: Sähkö on kallista
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity is expensive'**
+  String get s4c52f38c8b;
+
+  /// fi: Huomenta
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning'**
+  String get sc797ab9c4c;
+
+  /// fi: Ruutu puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'Tile missing'**
+  String get scec02139b6;
+
+  /// fi: Ryhmän laitteet eivät vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'Group not answering'**
+  String get s66f19d787b;
+
+  /// fi: {p0}: komento puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'{p0}: no command'**
+  String sed9788d6dc(String p0);
+
+  /// fi: halvin klo {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'cheapest at {p0}:00'**
+  String sb23114b65d(String p0);
+
+  /// fi: {p0} laitetta päällä
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} devices on'**
+  String sd39874fbe2(String p0);
+
+  /// fi: {p0} ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} not answering'**
+  String sbe208615d0(String p0);
+
   /// fi: ESP32-kamera
   ///
   /// In en, this message translates to:
@@ -9504,6 +9816,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Leaving home'**
   String get sb25aad3bc2;
+
+  /// fi: Hyvää yötä
+  ///
+  /// In en, this message translates to:
+  /// **'Good night'**
+  String get s7e5f6a29e3;
+
+  /// fi: Hyvää huomenta
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning'**
+  String get s253122823a;
+
+  /// fi: Hyvää päivää
+  ///
+  /// In en, this message translates to:
+  /// **'Good afternoon'**
+  String get s640293f08f;
+
+  /// fi: Hyvää iltaa
+  ///
+  /// In en, this message translates to:
+  /// **'Good evening'**
+  String get sd8c5bed7de;
 
   /// fi: Ryhmän laitteet eivät vastaa
   ///

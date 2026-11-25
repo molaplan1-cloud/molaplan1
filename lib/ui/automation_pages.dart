@@ -249,11 +249,19 @@ class _AutomationList extends StatelessWidget {
         if (list.isEmpty)
           _Empty(
             icon: Icons.auto_mode,
-            text: tx(
-              context,
-              'Ei vielä automaatioita. Aloita valmiista: esim. "Valot päälle auringonlaskussa" tai "Vesivuoto → hälytys".',
-              'No automations yet. Start from a template, e.g. "Lights on at sunset" or "Water leak → alarm".',
-            ),
+            text: () {
+              String name(String id) {
+                final t = AutomationTemplate.all.firstWhere((x) => x.id == id);
+                return tr(langOf(context), t.fi, t.en);
+              }
+
+              final s1 = name('sunset_lights'), s2 = name('leak_alarm');
+              return tx(
+                context,
+                'Ei vielä automaatioita. Aloita valmiista: esim. "$s1" tai "$s2".',
+                'No automations yet. Start from a template, e.g. "$s1" or "$s2".',
+              );
+            }(),
           ),
         for (final x in list)
           Card(
@@ -330,7 +338,6 @@ Future<void> showRunHistory(BuildContext context, {String? onlyId}) => showModal
 
 Future<void> showTemplatePicker(BuildContext context) async {
   final st = AppScope.read(context);
-  final fi = langOf(context) == 'fi';
   final pick = await showModalBottomSheet<AutomationTemplate>(
     context: context,
     showDragHandle: true,
@@ -382,7 +389,7 @@ Future<void> showTemplatePicker(BuildContext context) async {
     if (picked == null || !context.mounted) return;
     targets = picked;
   }
-  await openAutomationEditor(context, existing: pick.build(targets, fi: fi), isNew: true);
+  await openAutomationEditor(context, existing: pick.build(targets, lang: langOf(context)), isNew: true);
 }
 
 Future<List<String>?> pickTiles(

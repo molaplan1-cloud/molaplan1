@@ -147,7 +147,7 @@ void main() {
   });
 
   test('template "Vesivuoto → hälytys": urgent notification with the sensor name, also in quiet hours', () {
-    final a = AutomationTemplate.all.firstWhere((x) => x.id == 'leak_alarm').build(['leak1'], fi: true);
+    final a = AutomationTemplate.all.firstWhere((x) => x.id == 'leak_alarm').build(['leak1'], lang: 'fi');
     expect(a.name, 'Vesivuoto → hälytys');
     expect(a.trigger.kind, 'state');
     expect(a.trigger.args['to'], 'on');

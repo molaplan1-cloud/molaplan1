@@ -418,7 +418,30 @@
   "unreachable": "inalcanzable",
   "whole room": "toda la habitación",
   "{p0} lights are Philips Hue lights": "{p0} luces son Philips Hue",
-  "{p0} only works on the home network. The tile returns to normal by itself when you are home again.": "{p0} solo funciona en la red de casa. El recuadro vuelve a la normalidad solo cuando estés de nuevo en casa."
+  "{p0} only works on the home network. The tile returns to normal by itself when you are home again.": "{p0} solo funciona en la red de casa. El recuadro vuelve a la normalidad solo cuando estés de nuevo en casa.",
+  "A notification when the spot price goes above 20 c/kWh.": "Una notificación cuando el precio spot supera los 20 c/kWh.",
+  "No Modbus reply": "Sin respuesta Modbus",
+  " Did you mean {p0}?": " ¿Querías decir {p0}?",
+  "Molaplan {p0} is available. The bridge keeps working.": "Molaplan {p0} está disponible. El puente sigue funcionando.",
+  "ESPHome device": "Dispositivo ESPHome",
+  "Did you mean {p0}?": "¿Querías decir {p0}?",
+  "Skip for now – add on the home network (remote access can be set up later)": "Omitir por ahora – añadir en la red de casa (el acceso remoto se puede configurar después)",
+  "Molaplan script": "Script de Molaplan",
+  "Molaplan notifications work": "Las notificaciones de Molaplan funcionan",
+  "Device and {p0} tiles added": "Dispositivo y {p0} tarjetas añadidos",
+  "{p0} tiles use this connection and will stop working.": "{p0} tarjetas usan esta conexión y dejarán de funcionar.",
+  "Relay server": "Servidor de retransmisión",
+  "MQTT, Home Assistant and WebSocket update live without polling.": "MQTT, Home Assistant y WebSocket se actualizan en directo sin sondeo.",
+  "Rename dashboard": "Renombrar panel",
+  "Home Assistant: add devices": "Home Assistant: añadir dispositivos",
+  "Headers (Name: value per line)": "Cabeceras (Nombre: valor por línea)",
+  "Tested: GET {p0} (base address, {p1} bytes, {p2} ms).": "Probado: GET {p0} (dirección base, {p1} bytes, {p2} ms).",
+  "Broker host": "Host del bróker",
+  "Blaster firmware": "Firmware del emisor",
+  "ESPHome climate id": "ID de clima de ESPHome",
+  "Could not reach {p0}.": "No se pudo conectar con {p0}.",
+  "Home Assistant address": "Dirección de Home Assistant",
+  "ESPHome climate id (ESPHome only)": "ID de clima de ESPHome (solo ESPHome)"
  },
  "et": {
   " (optional)": " (valikuline)",
@@ -839,7 +862,9 @@
   "unreachable": "kättesaamatu",
   "whole room": "kogu tuba",
   "{p0} lights are Philips Hue lights": "{p0} valgustit on Philips Hue valgustid",
-  "{p0} only works on the home network. The tile returns to normal by itself when you are home again.": "{p0} töötab ainult koduvõrgus. Ruut muutub ise tavaliseks, kui oled jälle kodus."
+  "{p0} only works on the home network. The tile returns to normal by itself when you are home again.": "{p0} töötab ainult koduvõrgus. Ruut muutub ise tavaliseks, kui oled jälle kodus.",
+  "\"{p0}\" wants remote control of your home. Accept only if it is your own or a family member's device that just entered the code.": "\"{p0}\" soovib sinu kodu kaugjuhtimist. Nõustu ainult siis, kui see on sinu enda või pereliikme seade, kuhu kood just sisestati.",
+  "Tasmota → Configuration → MQTT → Topic. Other MQTT blaster: command topic.": "Tasmota → Configuration → MQTT → Topic. Muu MQTT-saatja: käsuteema."
  },
  "sv": {
   " (optional)": " (valfritt)",
@@ -1260,6 +1285,24 @@
   "unreachable": "nås inte",
   "whole room": "hela rummet",
   "{p0} lights are Philips Hue lights": "{p0} lampor är Philips Hue-lampor",
-  "{p0} only works on the home network. The tile returns to normal by itself when you are home again.": "{p0} fungerar bara i hemnätverket. Rutan blir normal igen av sig själv när du är hemma."
+  "{p0} only works on the home network. The tile returns to normal by itself when you are home again.": "{p0} fungerar bara i hemnätverket. Rutan blir normal igen av sig själv när du är hemma.",
+  "This is not a home network address (they usually start with 192.168.).{p0}": "Det här är ingen hemnätsadress (de börjar oftast med 192.168.).{p0}",
+  "Release page": "Versionssida",
+  "ESPHome controller IP": "ESPHome-styrenhetens IP",
+  "via home bridge": "via hembryggan",
+  "Show home view": "Visa hemvyn",
+  "Copy home dashboards": "Kopiera hemmets vyer",
+  "Relay server": "Reläserver",
+  "Value read": "Läst värde",
+  "Gauge minimum": "Mätarens minimum",
+  "Gauge maximum": "Mätarens maximum",
+  "HTTP {p0}: the device answered but refused the login. Check username, password or token. {p1}": "HTTP {p0}: enheten svarade men nekade inloggningen. Kontrollera användarnamn, lösenord eller token. {p1}",
+  "HTTP {p0}: the device answered with a server error. {p1}": "HTTP {p0}: enheten svarade med ett serverfel. {p1}",
+  "✓ The device answered at {p0} (HTTP 404: no page at the base address – normal for many devices). The connection works. {p1}": "✓ Enheten svarade på {p0} (HTTP 404: ingen sida på basadressen – normalt för många enheter). Anslutningen fungerar. {p1}",
+  "Keep alive (s)": "Keep alive (s)",
+  "Blaster firmware": "Sändarens firmware",
+  "Broker OK but Tasmota \"{p0}\" did not answer.": "Brokern fungerar men Tasmota \"{p0}\" svarade inte.",
+  "✓ Tasmota \"{p0}\" answered via MQTT. Nothing sent to the heat pump.": "✓ Tasmota \"{p0}\" svarade via MQTT. Inget skickades till värmepumpen.",
+  "Live updates (websocket)": "Liveuppdateringar (websocket)"
  }
 }

@@ -309,7 +309,7 @@ return price()
 
   test('templates build valid automations', () {
     for (final t in AutomationTemplate.all) {
-      final a = t.build(['l1'], fi: true);
+      final a = t.build(['l1'], lang: 'fi');
       expect(a.name, isNotEmpty);
       expect(a.actions, isNotEmpty);
       final back = Automation.fromJson(a.toJson());

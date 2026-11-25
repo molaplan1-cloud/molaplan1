@@ -12,6 +12,7 @@ import '../core/template.dart';
 import '../drivers/driver.dart';
 import '../energy/contract.dart';
 import '../energy/weather.dart';
+import '../l10n/l10n.dart';
 import '../models/models.dart';
 import '../prices/prices.dart';
 import 'engine.dart';
@@ -123,7 +124,7 @@ class AutomationPackage {
   final HomeLocation? location;
   final String lang;
 
-  static AutomationPackage fromConfig(AppConfig c, {bool withConnections = false}) {
+  static AutomationPackage fromConfig(AppConfig c, {bool withConnections = false, String? lang}) {
     final tiles = <String, AutoTile>{
       for (final d in c.dashboards)
         for (final t in d.tiles) t.id: AutoTile.of(t),
@@ -136,7 +137,7 @@ class AutomationPackage {
       zone: zone,
       vat: c.energy.contract?.vat,
       location: c.energy.home,
-      lang: c.language,
+      lang: lang ?? (appLanguages.containsKey(c.language) ? c.language : 'fi'),
     );
   }
 
@@ -201,14 +202,14 @@ class PackageEnv implements AutoEnv {
   final WeatherService weather;
   final DateTime Function() clock;
 
-  bool get fi => pkg.lang != 'en';
+  bool get fi => pkg.lang == 'fi';
 
   @override
   DateTime now() => clock();
 
   AutoTile _tile(String id) {
     final t = pkg.tiles[id];
-    if (t == null) throw StateError(fi ? 'Ruutu puuttuu' : 'Tile missing');
+    if (t == null) throw StateError(tr(pkg.lang, 'Ruutu puuttuu', 'Tile missing'));
     return t;
   }
 
@@ -224,7 +225,7 @@ class PackageEnv implements AutoEnv {
         } catch (_) {}
       }
       if (ok == 0 && t.members.isNotEmpty) {
-        throw StateError(fi ? 'Ryhmän laitteet eivät vastaa' : 'Group not answering');
+        throw StateError(tr(pkg.lang, 'Ryhmän laitteet eivät vastaa', 'Group not answering'));
       }
       return on;
     }
@@ -289,7 +290,7 @@ class PackageEnv implements AutoEnv {
         }
         return;
       }
-      throw StateError(fi ? '${t.title}: komento puuttuu' : '${t.title}: no command');
+      throw StateError(tr(pkg.lang, '${t.title}: komento puuttuu', '${t.title}: no command'));
     }
     await _run(step, want == 'on' ? 1 : 0);
   }
@@ -363,7 +364,7 @@ class PackageEnv implements AutoEnv {
     final today = await pricesToday();
     if (today.isNotEmpty) {
       final best = today.entries.reduce((a, b) => a.value <= b.value ? a : b);
-      parts.add(fi ? 'halvin klo ${best.key}' : 'cheapest at ${best.key}:00');
+      parts.add(tr(pkg.lang, 'halvin klo ${best.key}', 'cheapest at ${best.key}:00'));
     }
     var on = 0, off = 0;
     for (final x in pkg.tiles.values.where((x) => x.type == 'toggle' && !x.isGroup)) {
@@ -373,8 +374,8 @@ class PackageEnv implements AutoEnv {
         off++;
       }
     }
-    if (on > 0) parts.add(fi ? '$on laitetta päällä' : '$on devices on');
-    if (off > 0) parts.add(fi ? '$off ei vastaa' : '$off not answering');
+    if (on > 0) parts.add(tr(pkg.lang, '$on laitetta päällä', '$on devices on'));
+    if (off > 0) parts.add(tr(pkg.lang, '$off ei vastaa', '$off not answering'));
     return parts.join(' · ');
   }
 }

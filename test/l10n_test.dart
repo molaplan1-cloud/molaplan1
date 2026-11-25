@@ -29,6 +29,8 @@ import 'package:molaplan/ui/theme.dart';
 import 'support/energy_seed.dart';
 import 'package:molaplan/automation/engine.dart';
 import 'package:molaplan/ui/automation_pages.dart';
+import 'package:molaplan/energy/weather.dart';
+import 'package:molaplan/ui/home_header.dart';
 import 'support/l10n_getters.g.dart';
 
 /// Energy-release pages (thermostat, contract, meters, heating) – filled in as they are added.
@@ -109,6 +111,20 @@ void main() {
       tester.view.devicePixelRatio = 1;
       addTearDown(tester.view.reset);
       final st = await _state(language: lang);
+      // v0.7.2: the clock/weather strip and the morning card are part of the main screen.
+      HomeHeader.showStripInTests = true;
+      HomeHeader.showSummaryInTests = true;
+      HomeHeader.clock = () => DateTime(2026, 11, 25, 9, 41);
+      addTearDown(() {
+        HomeHeader.showStripInTests = false;
+        HomeHeader.showSummaryInTests = false;
+        HomeHeader.clock = DateTime.now;
+      });
+      st.config.energy.home = HomeLocation(name: 'Tampere', lat: 61.5, lon: 23.76);
+      WeatherService.shared.put(
+        st.config.energy.home!,
+        Forecast([(DateTime(2026, 11, 25, 9), -3.0)], current: WeatherHour(DateTime(2026, 11, 25, 9), -3.2, code: 61)),
+      );
       await st.setAdvanced(true); // show every template and form
       await st.upsertTile(st.config.dashboards.first, TileConfig(type: TileType.toggle, title: 'Varaaja'));
       L10n.instance
@@ -142,7 +158,7 @@ void main() {
         for (var i = 0; i < 4; i++) AutomationsPage(initialTab: i),
         const AutomationEditor(),
         for (final t in AutomationTemplate.all)
-          AutomationEditor(initial: t.build([st.config.dashboards.first.tiles.first.id], fi: lang == 'fi')),
+          AutomationEditor(initial: t.build([st.config.dashboards.first.tiles.first.id], lang: lang)),
         const ScriptEditor(),
         const SceneEditor(),
       ];

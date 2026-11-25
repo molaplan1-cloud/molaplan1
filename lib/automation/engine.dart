@@ -8,6 +8,7 @@ import 'dart:math' as math;
 
 import 'package:crypto/crypto.dart';
 
+import '../l10n/l10n.dart';
 import 'model.dart';
 import 'script_lang.dart';
 
@@ -581,28 +582,27 @@ class AutomationTemplate {
   ];
 
   /// Builds the automation. [targets] = chosen tile ids (lights/switches/sensors).
-  Automation build(List<String> targets, {required bool fi}) {
-    String n(String a, String b) => fi ? a : b;
+  Automation build(List<String> targets, {required String lang}) {
     switch (id) {
       case 'leak_alarm':
         final t = targets.isEmpty ? '' : targets.first;
         return Automation(
-          name: n(this.fi, en),
+          name: tr(lang, fi, en),
           template: id,
           trigger: Trigger('state', {'tileId': t, 'to': 'on'}),
           cooldownMin: 5,
-          actions: [ActionStep.notify(n('VESIVUOTO!', 'WATER LEAK!'), '', priority: 5, tileId: t)],
+          actions: [ActionStep.notify(tr(lang, 'VESIVUOTO!', 'WATER LEAK!'), '', priority: 5, tileId: t)],
         );
       case 'sunset_lights':
         return Automation(
-          name: n(this.fi, en),
+          name: tr(lang, fi, en),
           template: id,
           trigger: Trigger('sun', {'event': 'sunset', 'offset': 0}),
           actions: [for (final t in targets) ActionStep.tile(t, 'on')],
         );
       case 'night_off':
         return Automation(
-          name: n(this.fi, en),
+          name: tr(lang, fi, en),
           template: id,
           trigger: Trigger('time', {'at': '23:00'}),
           actions: [for (final t in targets) ActionStep.tile(t, 'off')],
@@ -610,50 +610,50 @@ class AutomationTemplate {
       case 'offline_alert':
         final t = targets.isEmpty ? '' : targets.first;
         return Automation(
-          name: n(this.fi, en),
+          name: tr(lang, fi, en),
           template: id,
           trigger: Trigger('offline', {'tileId': t, 'minutes': 10}),
-          actions: [ActionStep.notify(n('Laite ei vastaa', 'Device not answering'), '', priority: 4, tileId: t)],
+          actions: [ActionStep.notify(tr(lang, 'Laite ei vastaa', 'Device not answering'), '', priority: 4, tileId: t)],
         );
       case 'temp_low':
         final t = targets.isEmpty ? '' : targets.first;
         return Automation(
-          name: n(this.fi, en),
+          name: tr(lang, fi, en),
           template: id,
           trigger: Trigger('value', {'tileId': t, 'cmp': '<', 'value': 18}),
           cooldownMin: 60,
-          actions: [ActionStep.notify(n('Lämpötila laski', 'Temperature dropped'), '', priority: 4, tileId: t)],
+          actions: [ActionStep.notify(tr(lang, 'Lämpötila laski', 'Temperature dropped'), '', priority: 4, tileId: t)],
         );
       case 'cheap_hours':
         return Automation(
-          name: n(this.fi, en),
+          name: tr(lang, fi, en),
           template: id,
           trigger: Trigger('price', {'mode': 'cheapest', 'hours': 3}),
           actions: [for (final t in targets) ActionStep.tile(t, 'on')],
         );
       case 'price_high':
         return Automation(
-          name: n(this.fi, en),
+          name: tr(lang, fi, en),
           template: id,
           trigger: Trigger('price', {'mode': 'above', 'value': 20}),
           cooldownMin: 120,
-          actions: [ActionStep.notify(n('Sähkö on kallista', 'Electricity is expensive'), '', priority: 3)],
+          actions: [ActionStep.notify(tr(lang, 'Sähkö on kallista', 'Electricity is expensive'), '', priority: 3)],
         );
       case 'frost':
         return Automation(
-          name: n(this.fi, en),
+          name: tr(lang, fi, en),
           template: id,
           trigger: Trigger('weather', {'cmp': '<', 'value': -15}),
           cooldownMin: 360,
-          actions: [ActionStep.notify(n('Pakkasvaroitus', 'Frost warning'), '', priority: 4)],
+          actions: [ActionStep.notify(tr(lang, 'Pakkasvaroitus', 'Frost warning'), '', priority: 4)],
         );
       default: // morning
         return Automation(
-          name: n(this.fi, en),
+          name: tr(lang, fi, en),
           template: id,
           trigger: Trigger('time', {'at': '07:00'}),
           actions: [
-            ActionStep('notify', {'title': n('Huomenta', 'Good morning'), 'body': '{summary}', 'priority': 2}),
+            ActionStep('notify', {'title': tr(lang, 'Huomenta', 'Good morning'), 'body': '{summary}', 'priority': 2}),
           ],
         );
     }

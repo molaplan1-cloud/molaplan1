@@ -522,6 +522,8 @@ class AppState extends ChangeNotifier implements SyncHost {
     'autoLocal',
     'notifyInApp',
     'trayOnClose',
+    'animations',
+    'homeStrip',
   ];
 
   @override
@@ -764,6 +766,7 @@ class AppState extends ChangeNotifier implements SyncHost {
   Set<String> get usedImages => {
     for (final d in config.dashboards)
       for (final t in d.tiles) ?t.bgImage,
+    for (final d in config.dashboards) ?d.headerImage,
   };
 
   /// Compresses [raw] and sets it as the tile's background. Returns false when the account's
@@ -779,6 +782,27 @@ class AppState extends ChangeNotifier implements SyncHost {
     notifyListeners();
     unawaited(account.syncNow(quiet: true));
     return true;
+  }
+
+  /// Room photo for a view's header (R132). Same limits and sync as tile backgrounds.
+  Future<bool> setHeaderImage(Dashboard d, Uint8List raw) async {
+    final p = await processTileImageAsync(raw);
+    final used = usedImages..remove(d.headerImage);
+    if (!used.contains(p.name) && used.length >= tileImageMaxCount) return false;
+    await images.write(p.name, p.bytes);
+    d.headerImage = p.name;
+    d.headerScrim = p.scrim;
+    await save();
+    notifyListeners();
+    unawaited(account.syncNow(quiet: true));
+    return true;
+  }
+
+  Future<void> clearHeaderImage(Dashboard d) async {
+    d.headerImage = null;
+    await save();
+    notifyListeners();
+    unawaited(account.syncNow(quiet: true));
   }
 
   Future<void> clearTileImage(TileConfig t) async {
@@ -916,6 +940,10 @@ class AppState extends ChangeNotifier implements SyncHost {
         config.notifyInApp = v;
       case 'trayOnClose':
         config.trayOnClose = v;
+      case 'animations':
+        config.animations = v;
+      case 'homeStrip':
+        config.homeStrip = v;
     }
     await save();
     automations.changed();

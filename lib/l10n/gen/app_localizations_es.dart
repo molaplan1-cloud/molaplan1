@@ -89,7 +89,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'El valor está probablemente fuera de rango. Revise la escala también.';
 
   @override
-  String get sb66bc0e677 => 'No Modbus reply';
+  String get sb66bc0e677 => 'Sin respuesta Modbus';
 
   @override
   String get s6ef5539bc2 =>
@@ -178,6 +178,30 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s53a891e670 =>
       'Comprueba la dirección y los ajustes e inténtalo de nuevo. Los detalles técnicos muestran el motivo exacto.';
+
+  @override
+  String get sdd5e97b1e2 => 'Despejado';
+
+  @override
+  String get sad990c999d => 'Parte nublada';
+
+  @override
+  String get s80bfe8f9ad => 'Cloudy';
+
+  @override
+  String get s46f3db8514 => 'Fog';
+
+  @override
+  String get sbd81101eb4 => 'Drizzle';
+
+  @override
+  String get s960a265544 => 'Lluvia';
+
+  @override
+  String get seab38c2b45 => 'Nieve';
+
+  @override
+  String get sfc65eafa12 => 'Thunderstorm';
 
   @override
   String get sc27533ae83 => 'Ahorro';
@@ -692,7 +716,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String s738ecfe2bc(String p0) {
-    return ' Did you mean $p0?';
+    return ' ¿Querías decir $p0?';
   }
 
   @override
@@ -728,6 +752,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get se9ca7cb470 => 'Automatizaciones';
+
+  @override
+  String get sf98121cd3d => 'Imagen de la habitación';
 
   @override
   String get s49de879696 => 'Energía';
@@ -853,7 +880,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String s0b68f81d82(String p0) {
-    return 'Molaplan $p0 is available. The bridge keeps working.';
+    return 'Molaplan $p0 está disponible. El puente sigue funcionando.';
   }
 
   @override
@@ -1292,6 +1319,36 @@ class AppLocalizationsEs extends AppLocalizations {
       'El dispositivo respondió pero no tiene una entidad climática.';
 
   @override
+  String get sec88246e24 => 'Elija una foto de la habitación';
+
+  @override
+  String get s252b8e1289 => '¿Foto para qué habitación?';
+
+  @override
+  String get s9ae4e86ee7 =>
+      'La foto se muestra como el encabezado de la habitación por encima de sus tarjetas.';
+
+  @override
+  String get sc48f5f9bcf => 'Elegir imagen';
+
+  @override
+  String get sf55eee73b8 => 'Cambiar imagen';
+
+  @override
+  String get sf6723451b9 => 'Toma la foto';
+
+  @override
+  String get sdd957ccc1b => 'Quitar la imagen';
+
+  @override
+  String s6c487e340b(String p0) {
+    return 'A la mayoría de $p0 fotos. Retire una primero.';
+  }
+
+  @override
+  String get sceafe9ce2a => 'El archivo no es una imagen';
+
+  @override
   String get s3a5c21004e => 'Sin conexión';
 
   @override
@@ -1572,7 +1629,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s702ca14235 => 'Dispositivo Tasmota';
 
   @override
-  String get se0e5f715ad => 'ESPHome device';
+  String get se0e5f715ad => 'Dispositivo ESPHome';
 
   @override
   String get s63b6e55469 => 'Dispositivo HomeKit';
@@ -1893,7 +1950,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String se60794c266(String p0) {
-    return 'Did you mean $p0?';
+    return '¿Querías decir $p0?';
   }
 
   @override
@@ -1975,7 +2032,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sda6a1e50e9 =>
-      'Skip for now – add on the home network (remote access can be set up later)';
+      'Omitir por ahora – añadir en la red de casa (el acceso remoto se puede configurar después)';
 
   @override
   String s6f326a48f9(String p0) {
@@ -2190,8 +2247,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s835865fd04 => 'Plantillas';
 
   @override
-  String get s2b57f716aa =>
-      'No automatización todavía. Comienza desde una plantilla, por ejemplo, \"Luces al atardecer\" o \"Water escape → alarm\".';
+  String s73d042449b(String p0, String p1) {
+    return 'No hay automatización todavía. Comienza desde una plantilla, por ejemplo \"$p0\" o \"$p1\".';
+  }
 
   @override
   String get s8039add5ed => 'Untitled';
@@ -2533,7 +2591,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s01d3c353e2 => 'Código';
 
   @override
-  String get s637ae4dbf4 => 'Molaplan script';
+  String get s637ae4dbf4 => 'Script de Molaplan';
 
   @override
   String get sea09cb0d3b =>
@@ -2672,7 +2730,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s0183ae0a12 => 'Enviar una notificación de prueba';
 
   @override
-  String get sd95091858f => 'Molaplan notifications work';
+  String get sd95091858f => 'Las notificaciones de Molaplan funcionan';
 
   @override
   String get s58a8bfdd9f => 'Test enviado';
@@ -2837,7 +2895,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String sda9574390f(String p0) {
-    return 'Device and $p0 tiles added';
+    return 'Dispositivo y $p0 tarjetas añadidos';
   }
 
   @override
@@ -3019,6 +3077,27 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get se26e839c2f => 'Lunes';
+
+  @override
+  String get s763254941f => 'Martes';
+
+  @override
+  String get sf3448cdd52 => 'Miércoles';
+
+  @override
+  String get sc34ca7eddb => 'Jueves';
+
+  @override
+  String get sfa82438bec => 'Viernes';
+
+  @override
+  String get s517c348371 => 'Sábado';
+
+  @override
+  String get sb1f0e72163 => 'Domingo';
+
+  @override
   String get s306729fe62 => 'No hay precios';
 
   @override
@@ -3173,7 +3252,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String s6b83de0ab9(String p0) {
-    return '$p0 tiles use this connection and will stop working.';
+    return '$p0 tarjetas usan esta conexión y dejarán de funcionar.';
   }
 
   @override
@@ -3299,7 +3378,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get s451ea613dd => 'Relay server';
+  String get s451ea613dd => 'Servidor de retransmisión';
 
   @override
   String get s72da730a42 => 'Servicio remoto: conectado';
@@ -3522,7 +3601,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s01f2b1ee0c =>
-      'MQTT, Home Assistant and WebSocket update live without polling.';
+      'MQTT, Home Assistant y WebSocket se actualizan en directo sin sondeo.';
 
   @override
   String get s937448ecf5 => 'Prueba de lectura';
@@ -3825,7 +3904,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1f9799af4e => 'e.g. Cottage';
 
   @override
-  String get s3a13f9d077 => 'Rename dashboard';
+  String get s3a13f9d077 => 'Renombrar panel';
 
   @override
   String get sa5bf37213b => '¿Supir el panel de control?';
@@ -4276,9 +4355,6 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get sceafe9ce2a => 'El archivo no es una imagen';
-
-  @override
   String get s12a7d631af => 'Aspecto';
 
   @override
@@ -4295,18 +4371,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s254a1d8e12 => 'Imagen de fondo (opcional)';
-
-  @override
-  String get sc48f5f9bcf => 'Elegir imagen';
-
-  @override
-  String get sf55eee73b8 => 'Cambiar imagen';
-
-  @override
-  String get sf6723451b9 => 'Toma la foto';
-
-  @override
-  String get sdd957ccc1b => 'Quitar la imagen';
 
   @override
   String get s7ba9d453ed => 'Atenuar cuando el dispositivo está apagado';
@@ -4378,11 +4442,25 @@ class AppLocalizationsEs extends AppLocalizations {
       'Fuera de casa se ocultan los recuadros que solo funcionan en la red de casa. Por defecto se quedan en su sitio, en gris.';
 
   @override
+  String get s419166b895 => 'Reloj y clima en la pantalla de inicio';
+
+  @override
+  String get sec30a8f23e =>
+      'Tiempo, fecha, tiempo y precio de electricidad en la parte superior de la vista.';
+
+  @override
+  String get sf7205b268f => 'Animaciones';
+
+  @override
+  String get s1535c6411d =>
+      'Transiciones suaves cuando un dispositivo cambia de estado. Off = más tranquilo y más ligero para una tableta mayor. Este dispositivo sólo.';
+
+  @override
   String get s21f870dbc2 =>
       'Muestra configuración técnica: conexiones (HTTP, MQTT, Modbus...), cargas de pago, caminos JSON y fuentes de baldosas. La mayoría de la gente no necesita estas.';
 
   @override
-  String get sca4c8b88b7 => 'Home Assistant: add devices';
+  String get sca4c8b88b7 => 'Home Assistant: añadir dispositivos';
 
   @override
   String get saec69088a5 => 'Controla tu casa desde fuera también.';
@@ -4566,7 +4644,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sfcbb753f53 => 'URL';
 
   @override
-  String get s81479e1555 => 'Headers (Name: value per line)';
+  String get s81479e1555 => 'Cabeceras (Nombre: valor por línea)';
 
   @override
   String get s5811b38d7b => 'Token (Authorization: Bearer)';
@@ -4630,7 +4708,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String s3c045f21ee(String p0, String p1, String p2) {
-    return 'Tested: GET $p0 (base address, $p1 bytes, $p2 ms).';
+    return 'Probado: GET $p0 (dirección base, $p1 bytes, $p2 ms).';
   }
 
   @override
@@ -4739,7 +4817,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se1bd60873c => 'MQTT';
 
   @override
-  String get s85b9781bb7 => 'Broker host';
+  String get s85b9781bb7 => 'Host del bróker';
 
   @override
   String get s800d13debd => 'Puerto';
@@ -4787,7 +4865,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s6207a45bff => 'Bomba de calor IR (bomba de calor)';
 
   @override
-  String get s859c2e7734 => 'Blaster firmware';
+  String get s859c2e7734 => 'Firmware del emisor';
 
   @override
   String get s3f8d3fb444 =>
@@ -4839,7 +4917,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s3bbd70773d => 'Deja vacío si no es necesario.';
 
   @override
-  String get s443fe6f350 => 'ESPHome climate id';
+  String get s443fe6f350 => 'ID de clima de ESPHome';
 
   @override
   String get s62feae1a9f => 'ESPHome solamente: el objeto climático id.';
@@ -4989,7 +5067,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String s120026628c(String p0) {
-    return 'Could not reach $p0.';
+    return 'No se pudo conectar con $p0.';
   }
 
   @override
@@ -5203,6 +5281,106 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1dfeacd9f6 => 'UDP';
 
   @override
+  String get sd76aadb97c => 'Filtro de agua → alarma';
+
+  @override
+  String get s0bd0724e83 =>
+      'Una notificación urgente tan pronto como un sensor de fuga detecta agua (también durante horas tranquilas).';
+
+  @override
+  String get sa9f114c81d => 'Luces en el atardecer';
+
+  @override
+  String get s02402a38eb =>
+      'Las luces elegidas se encienden cuando el sol se pone.';
+
+  @override
+  String get s386fda8330 => 'Todo a las 23:00';
+
+  @override
+  String get s3508664550 => 'Los dispositivos elegidos se apagan por la noche.';
+
+  @override
+  String get s3775470669 => 'Notificar cuando un dispositivo deja de responder';
+
+  @override
+  String get s5c07969ac8 =>
+      'Una notificación cuando un dispositivo ha sido inalcanzable durante 10 minutos.';
+
+  @override
+  String get s2cdd15be92 => 'Notificar cuando la temperatura baja';
+
+  @override
+  String get sa74faa4635 =>
+      'Una notificación cuando una lectura del sensor baja por debajo de un límite.';
+
+  @override
+  String get s94ed692877 => 'Horas más baratas: dispositivo en';
+
+  @override
+  String get s9b99909a7c =>
+      'Un dispositivo durante las horas más baratas del día (por ejemplo, un calentador de agua).';
+
+  @override
+  String get s90d5d2954d => 'Notificar acerca de la electricidad cara';
+
+  @override
+  String get s876690515a =>
+      'Una notificación cuando el precio spot supera los 20 c/kWh.';
+
+  @override
+  String get s1906ecb28c => 'Amonestaciones Frost';
+
+  @override
+  String get s036ecd266d =>
+      'Una notificación cuando está por debajo -15 °C fuera.';
+
+  @override
+  String get sacf213e078 => 'Resumen de la mañana a las 7:00';
+
+  @override
+  String get sef21ad6784 =>
+      'El tiempo, el precio de la electricidad y el estado de su casa como notificación todas las mañanas.';
+
+  @override
+  String get s5d308e6986 => '¡Water LEAK!';
+
+  @override
+  String get s13017ce3b0 => 'Temperatura bajada';
+
+  @override
+  String get s4c52f38c8b => 'La electricidad es cara';
+
+  @override
+  String get sc797ab9c4c => 'Buenos días';
+
+  @override
+  String get scec02139b6 => 'Tarjeta desaparecida';
+
+  @override
+  String get s66f19d787b => 'Grupo no contesta';
+
+  @override
+  String sed9788d6dc(String p0) {
+    return '$p0: ningún comando';
+  }
+
+  @override
+  String sb23114b65d(String p0) {
+    return 'más barato a $p0:00';
+  }
+
+  @override
+  String sd39874fbe2(String p0) {
+    return '$p0 dispositivos en';
+  }
+
+  @override
+  String sbe208615d0(String p0) {
+    return '$p0 no contesta';
+  }
+
+  @override
   String get s804e935440 => 'Cámara ESP32';
 
   @override
@@ -5228,6 +5406,18 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sb25aad3bc2 => 'Salgo de casa';
+
+  @override
+  String get s7e5f6a29e3 => 'Buenas noches';
+
+  @override
+  String get s253122823a => 'Buenos días';
+
+  @override
+  String get s640293f08f => 'Buenas tardes';
+
+  @override
+  String get sd8c5bed7de => 'Buenas noches';
 
   @override
   String get s4cac4725b8 => 'Los dispositivos del grupo no responden';
@@ -5347,7 +5537,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Luces, alarma, sensores – elige una lista que se convierten en tarjetas.';
 
   @override
-  String get s9f70681d3f => 'Home Assistant address';
+  String get s9f70681d3f => 'Dirección de Home Assistant';
 
   @override
   String get s123502628e => 'La dirección con la que abres Home Assistant.';
@@ -5458,7 +5648,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Tasmota → Configuración → MQTT → Tema. Otro blaster MQTT: tema de comandos.';
 
   @override
-  String get s321c1677e2 => 'ESPHome climate id (ESPHome only)';
+  String get s321c1677e2 => 'ID de clima de ESPHome (solo ESPHome)';
 
   @override
   String get s4c07dec7b5 =>

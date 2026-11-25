@@ -25,6 +25,7 @@ import 'heatpump_pages.dart';
 import 'energy_pages.dart';
 import 'thermostat_pages.dart';
 import 'measure_view.dart';
+import 'motion.dart';
 import 'tile_status.dart';
 import 'tile_visuals.dart';
 import 'weather_tile.dart';
@@ -648,12 +649,11 @@ class _TileWidgetState extends State<TileWidget> {
       _ => '${_format(r.value)}${t.unit.isEmpty || r.value == null ? '' : ' ${t.unit}'}',
     };
     final icon = Icon(iconFor(t), color: accent);
-    return Card(
+    return MotionCard(
       key: ValueKey('mini-${t.id}'),
       color: t.type == TileType.toggle && on
           ? (look ?? cs.primaryContainer).withValues(alpha: 0.45)
           : (sensorAlarm ? Colors.red.withValues(alpha: 0.18) : cs.surfaceContainer),
-      clipBehavior: Clip.antiAlias,
       child: Tooltip(
         message: t.title,
         child: InkWell(
@@ -764,9 +764,8 @@ class _TileWidgetState extends State<TileWidget> {
         onTap = null;
     }
 
-    return Card(
+    return MotionCard(
       color: bg,
-      clipBehavior: Clip.antiAlias,
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -964,12 +963,21 @@ class _TileWidgetState extends State<TileWidget> {
               if (t.type == TileType.toggle &&
                   !(err != null && r.value == null) &&
                   !(compact && light && hasBrightness(t) && on && !widget.editing))
-                Text(
-                  r.value == null
-                      ? '–'
-                      : (t.mapValue(r.value) ?? (on ? tx(context, 'Päällä', 'On') : tx(context, 'Pois', 'Off'))),
-                  style: (compact ? Theme.of(context).textTheme.titleSmall : Theme.of(context).textTheme.titleMedium)
-                      ?.copyWith(color: accent),
+                Builder(
+                  builder: (context) {
+                    final label = r.value == null
+                        ? '–'
+                        : (t.mapValue(r.value) ?? (on ? tx(context, 'Päällä', 'On') : tx(context, 'Pois', 'Off')));
+                    return MotionSwitch(
+                      id: label,
+                      child: Text(
+                        label,
+                        style:
+                            (compact ? Theme.of(context).textTheme.titleSmall : Theme.of(context).textTheme.titleMedium)
+                                ?.copyWith(color: accent),
+                      ),
+                    );
+                  },
                 ),
               if (t.type == TileType.slider && !dial) _slider(context, r),
               if (hasBrightness(t) && on && !widget.editing && !_tiny) _brightness(context),
@@ -1081,7 +1089,9 @@ class _TileWidgetState extends State<TileWidget> {
 
   Widget _valueText(BuildContext context, TileRuntime r, Color? accent, {double size = 1}) {
     final v = _sliderDrag ?? r.value;
-    return FittedBox(
+    return MotionSwitch(
+      id: _sliderDrag != null ? 'drag' : '${_format(v)}|${accent?.toARGB32()}',
+      child: FittedBox(
       fit: BoxFit.scaleDown,
       alignment: Alignment.centerLeft,
       child: Text.rich(
@@ -1100,6 +1110,7 @@ class _TileWidgetState extends State<TileWidget> {
           color: accent,
           fontSize: (Theme.of(context).textTheme.headlineMedium?.fontSize ?? 28) * size,
         ),
+      ),
       ),
     );
   }

@@ -109,6 +109,11 @@ class V extends RecursiveAstVisitor<void> {
       pair(pos[pos.length - 2], pos[pos.length - 1], n);
     }
     if (name == 'FieldSpec' && pos.length >= 3) pair(pos[1], pos[2], n);
+    // Inside a const list the parser sees constructor calls as method invocations.
+    if (name == 'AutomationTemplate' && pos.length >= 5) {
+      pair(pos[1], pos[2], n);
+      pair(pos[3], pos[4], n);
+    }
     super.visitMethodInvocation(n);
   }
 
@@ -117,6 +122,10 @@ class V extends RecursiveAstVisitor<void> {
     final name = n.constructorName.type.name.lexeme;
     final pos = n.argumentList.arguments.whereType<Expression>().toList();
     if (name == 'FieldSpec' && pos.length >= 3) pair(pos[1], pos[2], n);
+    if (name == 'AutomationTemplate' && pos.length >= 5) {
+      pair(pos[1], pos[2], n);
+      pair(pos[3], pos[4], n);
+    }
     super.visitInstanceCreationExpression(n);
   }
 
@@ -143,6 +152,10 @@ class V extends RecursiveAstVisitor<void> {
     if (f.length == 2 && !(f.every((e) => e is SimpleStringLiteral && id.hasMatch(e.value)))) pair(f[0], f[1], n);
     if (f.length == 5) pair(f[2], f[3], n); // heat pump service ports: (brand, port, fi, en, url)
     if (f.length == 4) pair(f[2], f[3], n);
+    // (icon, fi, en) in weatherCodeInfo.
+    if (f.length == 3 && n.thisOrAncestorOfType<FunctionDeclaration>()?.name.lexeme == 'weatherCodeInfo') {
+      pair(f[1], f[2], n);
+    }
     super.visitRecordLiteral(n);
   }
 

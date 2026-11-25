@@ -149,6 +149,34 @@ class _SettingsPageState extends State<SettingsPage> {
                 value: st.config.hideAwayTiles,
                 onChanged: st.setHideAwayTiles,
               ),
+              SwitchListTile(
+                key: const ValueKey('settings-strip'),
+                contentPadding: EdgeInsets.zero,
+                title: Text(tx(context, 'Kello ja sää etusivulla', 'Clock and weather on the home screen')),
+                subtitle: Text(
+                  tx(
+                    context,
+                    'Kellonaika, päivä, sää ja sähkön hinta näkymän yläreunassa. Koskee vain tätä laitetta.',
+                    'Time, date, weather and electricity price at the top of the view. This device only.',
+                  ),
+                ),
+                value: st.config.homeStrip,
+                onChanged: (v) => st.setDeviceFlag('homeStrip', v),
+              ),
+              SwitchListTile(
+                key: const ValueKey('settings-animations'),
+                contentPadding: EdgeInsets.zero,
+                title: Text(tx(context, 'Animaatiot', 'Animations')),
+                subtitle: Text(
+                  tx(
+                    context,
+                    'Pehmeät siirtymät, kun laite vaihtaa tilaa. Pois päältä = rauhallisempi ja kevyempi vanhalle tabletille. Koskee vain tätä laitetta.',
+                    'Soft transitions when a device changes state. Off = calmer and lighter for an older tablet. This device only.',
+                  ),
+                ),
+                value: st.config.animations,
+                onChanged: (v) => st.setDeviceFlag('animations', v),
+              ),
               const SizedBox(height: 8),
               SwitchListTile(
                 key: const ValueKey('settings-advanced'),

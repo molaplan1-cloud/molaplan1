@@ -217,7 +217,39 @@
  },
  "s4899323b9a": "Võimsus",
  "se78754330c": "võimsus",
+ "se317f59de2": "VUOTO!",
+ "@se317f59de2": {
+  "x-mt": true
+ },
+ "se4c4201882": "Lekk!",
+ "@se4c4201882": {
+  "x-mt": true
+ },
+ "sdbcf5515c1": "Auki",
+ "@sdbcf5515c1": {
+  "x-mt": true
+ },
+ "sb0af7213b5": "Avage",
+ "@sb0af7213b5": {
+  "x-mt": true
+ },
+ "sa3477dac6e": "Liikettä",
+ "@sa3477dac6e": {
+  "x-mt": true
+ },
  "s280df88585": "Liikumine",
+ "s064a959911": "SAVUA!",
+ "@s064a959911": {
+  "x-mt": true
+ },
+ "s50778e2eec": "Suitsu!",
+ "@s50778e2eec": {
+  "x-mt": true
+ },
+ "s1dfa5abe81": "Hälytys",
+ "@s1dfa5abe81": {
+  "x-mt": true
+ },
  "s50c459fbff": "Häire",
  "s1a4eab1f51": "°C",
  "s9e731440d8": "%",
@@ -299,6 +331,14 @@
  "s4dbb677293": "kättesaamatu",
  "sf50732e8e8": "hämardada",
  "@sf50732e8e8": {
+  "x-mt": true
+ },
+ "s68e711123b": "temperatuur",
+ "@s68e711123b": {
+  "x-mt": true
+ },
+ "s4082a34467": "sensor",
+ "@s4082a34467": {
   "x-mt": true
  },
  "s3832b8c729": "kogu tuba",
@@ -446,6 +486,10 @@
   "x-mt": true
  },
  "sb9964cfb3b": "Võimsus {p0}",
+ "s4233362d60": "Veelekke andur",
+ "@s4233362d60": {
+  "x-mt": true
+ },
  "sfcb44be1a0": "Shelly",
  "sa6ff717527": "Releed ja pistikud: Pro 4PM, Plus 1PM, Plug S, 2.5... Leiti automaatselt, plaadid igale kanalile.",
  "@sa6ff717527": {
@@ -453,6 +497,10 @@
  },
  "sd7e123cd2f": "Shelly rakenduses: open the device → gear (settings) → Device information → IP- aadress. Või ruuteri seadmete nimekirjas: nimi algab sõnaga \"shelly...\".",
  "@sd7e123cd2f": {
+  "x-mt": true
+ },
+ "s9ad7b0076b": "lekkeandur · aku",
+ "@s9ad7b0076b": {
   "x-mt": true
  },
  "s5f2b2ca5f5": "praegu sees",
@@ -603,6 +651,10 @@
  },
  "se9ca7cb470": "Automatiseerimine",
  "@se9ca7cb470": {
+  "x-mt": true
+ },
+ "sf98121cd3d": "Toafoto",
+ "@sf98121cd3d": {
   "x-mt": true
  },
  "s49de879696": "Energia",
@@ -1165,6 +1217,39 @@
  "@s9aa9bc9679": {
   "x-mt": true
  },
+ "sec88246e24": "Vali toafoto",
+ "@sec88246e24": {
+  "x-mt": true
+ },
+ "s252b8e1289": "Millise toa foto?",
+ "@s252b8e1289": {
+  "x-mt": true
+ },
+ "s9ae4e86ee7": "Foto on kujutatud toa päisena kaartide kohal.",
+ "@s9ae4e86ee7": {
+  "x-mt": true
+ },
+ "sc48f5f9bcf": "Vali pilt",
+ "sf55eee73b8": "Muuda pilti",
+ "@sf55eee73b8": {
+  "x-mt": true
+ },
+ "sf6723451b9": "Pildista",
+ "@sf6723451b9": {
+  "x-mt": true
+ },
+ "sdd957ccc1b": "Eemalda pilt",
+ "@sdd957ccc1b": {
+  "x-mt": true
+ },
+ "s6c487e340b": "Kõige rohkem {p0} pilte. Eemalda üks enne.",
+ "@s6c487e340b": {
+  "x-mt": true
+ },
+ "sceafe9ce2a": "Fail ei ole pilt",
+ "@sceafe9ce2a": {
+  "x-mt": true
+ },
  "s3a5c21004e": "Võrguühenduseta",
  "sbc7a87e591": "Hindade hankimine nurjus – uuesti proovimine",
  "@sbc7a87e591": {
@@ -1453,6 +1538,10 @@
  },
  "s049d71f971": "viimase",
  "@s049d71f971": {
+  "x-mt": true
+ },
+ "sed9b5e52f6": "praegu",
+ "@sed9b5e52f6": {
   "x-mt": true
  },
  "s55d52c5ae1": "See seade ei ole Wi-Fi-s",
@@ -1757,8 +1846,36 @@
  "@s856a422504": {
   "x-mt": true
  },
+ "sc3abd09cd9": "Kohandatud värv",
+ "@sc3abd09cd9": {
+  "x-mt": true
+ },
+ "s10e7cef8c1": "Hue",
+ "@s10e7cef8c1": {
+  "x-mt": true
+ },
+ "s59b65e3322": "Küllastus",
+ "@s59b65e3322": {
+  "x-mt": true
+ },
+ "s750ed8d878": "Heledus",
+ "@s750ed8d878": {
+  "x-mt": true
+ },
+ "sa39e78050c": "Vali",
+ "@sa39e78050c": {
+  "x-mt": true
+ },
  "sd9923cda70": "Lülitage kaugjuurdepääs sisse",
  "@sd9923cda70": {
+  "x-mt": true
+ },
+ "sba1684ff6c": "veel mitte",
+ "@sba1684ff6c": {
+  "x-mt": true
+ },
+ "sef20071510": "Käivita ajalugu",
+ "@sef20071510": {
   "x-mt": true
  },
  "s9f1334d4e2": "Skriptid",
@@ -1766,26 +1883,706 @@
  "@s6b7c1c52da": {
   "x-mt": true
  },
+ "s8613961a5a": "Teated",
+ "@s8613961a5a": {
+  "x-mt": true
+ },
+ "s4f745952b8": "Töötab sellel kodusillal, ka siis, kui rakendus on suletud.",
+ "@s4f745952b8": {
+  "x-mt": true
+ },
+ "s99cbed55fd": "Kodusillal töötamine - töötab isegi siis, kui rakendus on suletud.",
+ "@s99cbed55fd": {
+  "x-mt": true
+ },
+ "s0247948956": "Kodusild on vana versioon: uuenda seda, nii et rakenduse sulgemise ajal käivituvad ka automatiseerimised. Praegu töötab see rakendus.",
+ "@s0247948956": {
+  "x-mt": true
+ },
+ "s21fae60578": "Selles rakenduses töötab, kui see on avatud. Kodusild käivitab need, kui rakendus on suletud.",
+ "@s21fae60578": {
+  "x-mt": true
+ },
+ "s66c54e2286": "Automatiseerimine on selles seadmes välja lülitatud.",
+ "@s66c54e2286": {
+  "x-mt": true
+ },
+ "s4057f67774": "Mon Tue Wed Thu Fri Sat Sun",
+ "@s4057f67774": {
+  "x-mt": true
+ },
+ "s456d234874": "(seade puudub)",
+ "@s456d234874": {
+  "x-mt": true
+ },
  "sf3779b50c6": "sees",
+ "s7c3e905972": "At",
+ "@s7c3e905972": {
+  "x-mt": true
+ },
+ "s61637a44e4": "Sunrise",
+ "@s61637a44e4": {
+  "x-mt": true
+ },
+ "sa0d5958b56": "Sunset",
+ "@sa0d5958b56": {
+  "x-mt": true
+ },
+ "s467fd3c653": "{p0} odavaim tööaeg",
+ "@s467fd3c653": {
+  "x-mt": true
+ },
+ "s65660a4b23": "Hind üle {p0} c/kWh",
+ "@s65660a4b23": {
+  "x-mt": true
+ },
+ "sba8fa4af37": "Hind alla {p0} c/kWh",
+ "@sba8fa4af37": {
+  "x-mt": true
+ },
+ "s3324b26519": "Õues",
+ "@s3324b26519": {
+  "x-mt": true
+ },
+ "sf3c2cf0323": "{p0} offline {p1} min",
+ "@sf3c2cf0323": {
+  "x-mt": true
+ },
+ "s1b359d69e2": "Automatiseerimise loomine",
+ "@s1b359d69e2": {
+  "x-mt": true
+ },
+ "s835865fd04": "Mallid",
+ "@s835865fd04": {
+  "x-mt": true
+ },
+ "s73d042449b": "Automaatikat veel ei ole. Alustatakse mallist, nt \"{p0}\" või \"{p1}\".",
+ "@s73d042449b": {
+  "x-mt": true
+ },
+ "s8039add5ed": "Pealkirjata",
+ "@s8039add5ed": {
+  "x-mt": true
+ },
+ "s5506524eac": "Millal",
+ "@s5506524eac": {
+  "x-mt": true
+ },
+ "sf2d3a43ee8": "Jooksu veel pole.",
+ "@sf2d3a43ee8": {
+  "x-mt": true
+ },
+ "s5c7338ab38": "Valmis automatiseerimine",
+ "@s5c7338ab38": {
+  "x-mt": true
+ },
+ "s354eb362d8": "Seadme valimine",
+ "@s354eb362d8": {
+  "x-mt": true
+ },
+ "s73a65d7dff": "Seadmete valimine",
+ "@s73a65d7dff": {
+  "x-mt": true
+ },
+ "s6bc0df13b3": "Seadmeid veel pole.",
+ "@s6bc0df13b3": {
+  "x-mt": true
+ },
+ "s90db0cb9e0": "Uus automatiseerimine",
+ "@s90db0cb9e0": {
+  "x-mt": true
+ },
+ "s3aeb373060": "Muuda automatiseerimist",
+ "@s3aeb373060": {
+  "x-mt": true
+ },
+ "sac3c555554": "Kustuta automaatika?",
+ "@sac3c555554": {
+  "x-mt": true
+ },
+ "s53879bce24": "Millest algab automatiseerimine",
+ "@s53879bce24": {
+  "x-mt": true
+ },
+ "s179f389617": "Ainult juhul (vabatahtlik)",
+ "@s179f389617": {
+  "x-mt": true
+ },
+ "s803ff4f73b": "Kõik tingimused peavad vastama",
+ "@s803ff4f73b": {
+  "x-mt": true
+ },
+ "sd930bdad70": "Lisa tingimus",
+ "@sd930bdad70": {
+  "x-mt": true
+ },
+ "s6f21edea24": "Tee",
+ "@s6f21edea24": {
+  "x-mt": true
+ },
+ "scbe17b6bf8": "Nõuetekohased hagid",
+ "@scbe17b6bf8": {
+  "x-mt": true
+ },
+ "secee53bdd2": "Veel rohkem",
+ "@secee53bdd2": {
+  "x-mt": true
+ },
+ "scb62f41105": "Jooksudevaheline minimaalne minutite arv",
+ "@scb62f41105": {
+  "x-mt": true
+ },
+ "s643b680e89": "Peatab näiteks lehvitusanduri kümnete teadete saatmise.",
+ "@s643b680e89": {
+  "x-mt": true
+ },
+ "s4c4ab28899": "Testi nüüd",
+ "@s4c4ab28899": {
+  "x-mt": true
+ },
+ "s7956c29b83": "Jooksus: {p0}",
+ "@s7956c29b83": {
+  "x-mt": true
+ },
+ "s6e85ff5983": "(Ilma seadmeteta)",
+ "@s6e85ff5983": {
+  "x-mt": true
+ },
  "sa627de5699": ">",
  "s24801cdec0": "<",
  "sef6eef049e": "≥",
  "s5d759b1fd0": "≤",
  "sc67c2076cc": "=",
  "sf69ef2bd3e": "≠",
+ "sc300fc12e3": "Seadme väärtus",
+ "@sc300fc12e3": {
+  "x-mt": true
+ },
+ "sbab0e0dc9d": "Seadme olek (sisse/välja lülitatud, andur)",
+ "@sbab0e0dc9d": {
+  "x-mt": true
+ },
+ "s76de9025a1": "Kellaaeg",
+ "@s76de9025a1": {
+  "x-mt": true
+ },
+ "s04c0bcdd51": "Päikesetõus / päikeseloojang",
+ "@s04c0bcdd51": {
+  "x-mt": true
+ },
  "sca7e088857": "Elektri hind",
+ "s869f0d57af": "Ilm (välistemperatuur)",
+ "@s869f0d57af": {
+  "x-mt": true
+ },
+ "sa4261f6e35": "Seade ei vasta",
+ "@sa4261f6e35": {
+  "x-mt": true
+ },
  "s67584c9abf": "Seade",
  "@s67584c9abf": {
   "x-mt": true
  },
+ "se0a362c060": "Tüüp",
+ "@se0a362c060": {
+  "x-mt": true
+ },
  "s38ac222392": "Väärtus",
+ "s4f62fd1f09": "Kui see pöördub",
+ "@s4f62fd1f09": {
+  "x-mt": true
+ },
+ "sab64be3b87": "alarmis",
+ "@sab64be3b87": {
+  "x-mt": true
+ },
+ "sbfd08915bd": "maha / rahulik",
+ "@sbfd08915bd": {
+  "x-mt": true
+ },
+ "s0aaa16b331": "Aeg (TT:MM)",
+ "@s0aaa16b331": {
+  "x-mt": true
+ },
+ "s9b4b2b3129": "Sündmus",
+ "@s9b4b2b3129": {
+  "x-mt": true
+ },
+ "s8c6de5d661": "Tasandus minutites (−60...60)",
+ "@s8c6de5d661": {
+  "x-mt": true
+ },
+ "s59b3e665bf": "Millal",
+ "@s59b3e665bf": {
+  "x-mt": true
+ },
+ "s6a23c4a83f": "Hind allpool",
+ "@s6a23c4a83f": {
+  "x-mt": true
+ },
+ "s49083cabf7": "Hinnatõus",
+ "@s49083cabf7": {
+  "x-mt": true
+ },
+ "s411924155f": "Odavaimad tunnid päevas",
+ "@s411924155f": {
+  "x-mt": true
+ },
+ "s04dc35851a": "Tundide arv",
+ "@s04dc35851a": {
+  "x-mt": true
+ },
+ "s6f22fd8c19": "Protokollid",
+ "@s6f22fd8c19": {
+  "x-mt": true
+ },
+ "s32fa6270c8": "Puudub valitud = iga päev",
+ "@s32fa6270c8": {
+  "x-mt": true
+ },
+ "s966e223f86": "Ajaaken",
+ "@s966e223f86": {
+  "x-mt": true
+ },
+ "s45aae9c551": "Nädalapäevad",
+ "@s45aae9c551": {
+  "x-mt": true
+ },
+ "sf05bf9c751": "Seadme olek / väärtus",
+ "@sf05bf9c751": {
+  "x-mt": true
+ },
+ "sb74370fc1e": "Välistemperatuur",
+ "@sb74370fc1e": {
+  "x-mt": true
+ },
+ "s585b4c519f": "Tume/valgus",
+ "@s585b4c519f": {
+  "x-mt": true
+ },
+ "s6019108a01": "Seisund",
+ "@s6019108a01": {
+  "x-mt": true
+ },
  "s9593939a4c": "Eemalda",
+ "sc26d444f90": "Alates",
+ "@sc26d444f90": {
+  "x-mt": true
+ },
+ "s796739363a": "To",
+ "@s796739363a": {
+  "x-mt": true
+ },
+ "s39d9f766c6": "Võrdle",
+ "@s39d9f766c6": {
+  "x-mt": true
+ },
+ "sa56aea2cf9": "Olek on sisse/välja lülitatud",
+ "@sa56aea2cf9": {
+  "x-mt": true
+ },
+ "sc2521b6b15": "Number",
+ "@sc2521b6b15": {
+  "x-mt": true
+ },
  "sfffb54daf4": "Olek",
+ "se2b3e45118": "tume",
+ "@se2b3e45118": {
+  "x-mt": true
+ },
+ "s709da04ca2": "valgus",
+ "@s709da04ca2": {
+  "x-mt": true
+ },
+ "s723d015dc1": "Lisage toiming",
+ "@s723d015dc1": {
+  "x-mt": true
+ },
+ "sae3489a6c9": "Seadme juhtimine",
+ "@sae3489a6c9": {
+  "x-mt": true
+ },
+ "s1f6962ba39": "Käivita stseen",
+ "@s1f6962ba39": {
+  "x-mt": true
+ },
+ "s02df6d430a": "Skripti käivitamine",
+ "@s02df6d430a": {
+  "x-mt": true
+ },
+ "sed67c16508": "Saatke teade",
+ "@sed67c16508": {
+  "x-mt": true
+ },
+ "s654489bb29": "Oota",
+ "@s654489bb29": {
+  "x-mt": true
+ },
+ "sf216517af2": "Oota",
+ "@sf216517af2": {
+  "x-mt": true
+ },
+ "sde1657b024": "Kui / muidu",
+ "@sde1657b024": {
+  "x-mt": true
+ },
+ "sbc8e165fbf": "Action",
+ "@sbc8e165fbf": {
+  "x-mt": true
+ },
  "s4cd3d92d4c": "Sees",
  "s750f16460c": "Sisse/välja",
+ "s7a544fe304": "Määra väärtus",
+ "@s7a544fe304": {
+  "x-mt": true
+ },
+ "s929344a68b": "Pressi",
+ "@s929344a68b": {
+  "x-mt": true
+ },
+ "s02cfe06e04": "Stseen",
+ "@s02cfe06e04": {
+  "x-mt": true
+ },
+ "sdb235c3ced": "(Pole stseene)",
+ "@sdb235c3ced": {
+  "x-mt": true
+ },
+ "sdced476aeb": "Skript",
+ "@sdced476aeb": {
+  "x-mt": true
+ },
+ "s4f330bfcfb": "(Skripte pole)",
+ "@s4f330bfcfb": {
+  "x-mt": true
+ },
  "s8a8673aafe": "Pealkiri",
+ "s34900f9d58": "Tekst",
+ "@s34900f9d58": {
+  "x-mt": true
+ },
+ "s3c2ee8fe0d": "'{Kokkuvõte} = ilm, hind ja koduriik'",
+ "@s3c2ee8fe0d": {
+  "x-mt": true
+ },
+ "sd84d87d156": "Prioriteet",
+ "@sd84d87d156": {
+  "x-mt": true
+ },
+ "sb55a08c07c": "1 – vaikiv",
+ "@sb55a08c07c": {
+  "x-mt": true
+ },
+ "s423418208e": "2 – madal",
+ "@s423418208e": {
+  "x-mt": true
+ },
+ "sbad27a6b89": "3 – normaalne",
+ "@sbad27a6b89": {
+  "x-mt": true
+ },
+ "s8c17000b91": "4 – kõrge",
+ "@s8c17000b91": {
+  "x-mt": true
+ },
+ "sa0738def3a": "5 – kiireloomuline (ka vaiksetel tundidel)",
+ "@sa0738def3a": {
+  "x-mt": true
+ },
+ "sb33001c92e": "Kraan avaneb",
+ "@sb33001c92e": {
+  "x-mt": true
+ },
+ "s07d7410408": "äpp",
+ "@s07d7410408": {
+  "x-mt": true
+ },
+ "sfb10dd528e": "Sekundeid",
+ "@sfb10dd528e": {
+  "x-mt": true
+ },
+ "sd7ab969914": "Kõige rohkem sekundeid",
+ "@sd7ab969914": {
+  "x-mt": true
+ },
+ "sccfe5a0d41": "Siis",
+ "@sccfe5a0d41": {
+  "x-mt": true
+ },
+ "s2d983e951b": "Else",
+ "@s2d983e951b": {
+  "x-mt": true
+ },
+ "sf936d0b01d": "Üles",
+ "@sf936d0b01d": {
+  "x-mt": true
+ },
+ "s2c7a2bbac1": "Uus käsikiri",
+ "@s2c7a2bbac1": {
+  "x-mt": true
+ },
+ "s5b2dd17cbc": "Skript on sammude loend: juhtige seadet, oodake, teavitage, kui / muidu ... käivitage see nupust, automatiseerimisest või kaugjuhtimisest (iPhone''i kiirklahv).",
+ "@s5b2dd17cbc": {
+  "x-mt": true
+ },
+ "s6fe2320f3d": "Lõpeta",
+ "@s6fe2320f3d": {
+  "x-mt": true
+ },
+ "se9ee46a9c8": "Jookse",
+ "@se9ee46a9c8": {
+  "x-mt": true
+ },
  "sfd2d047cb2": "Täpsem",
+ "s766b50721b": "{p0} samme",
+ "@s766b50721b": {
+  "x-mt": true
+ },
+ "s061d1b874b": "kaugjuhtimispult",
+ "@s061d1b874b": {
+  "x-mt": true
+ },
+ "sb886978015": "Skripti redigeerimine",
+ "@sb886978015": {
+  "x-mt": true
+ },
+ "scc2c1e2508": "Käivita logi",
+ "@scc2c1e2508": {
+  "x-mt": true
+ },
+ "sacf2fbc495": "Kustuta skript?",
+ "@sacf2fbc495": {
+  "x-mt": true
+ },
+ "s01de653429": "Sammud",
+ "@s01de653429": {
+  "x-mt": true
+ },
+ "s01d3c353e2": "Kood",
+ "@s01d3c353e2": {
+  "x-mt": true
+ },
+ "s637ae4dbf4": "Molaplani skript",
+ "@s637ae4dbf4": {
+  "x-mt": true
+ },
+ "sea09cb0d3b": "Funktsioonid: lülita välja lülitamine ootamine teatamine stseeni hind odavaim temp aeg tunnis tööpäeva logi. Faili või võrgu kasutamine puudub; 10 min ajapiirang.",
+ "@sea09cb0d3b": {
+  "x-mt": true
+ },
+ "s26e23ef341": "Kaugkäivituse (PIN) lubamine",
+ "@s26e23ef341": {
+  "x-mt": true
+ },
+ "sd573107aec": "Ntfy sõnum või iPhone''i otsetee käivitab skripti.",
+ "@sd573107aec": {
+  "x-mt": true
+ },
+ "s0a5410ea4f": "Kaugjuhitav PIN (vähemalt 4 märki)",
+ "@s0a5410ea4f": {
+  "x-mt": true
+ },
+ "sceba001122": "Saada \"run {p0} <PIN>\" aadressile {p1}\niPhone''i kiirklahvid: \"Get Contents of URL\" → {p1}, meetod POST, body: run {p0} <PIN>",
+ "@sceba001122": {
+  "x-mt": true
+ },
+ "seff0aac16e": "Kopeeri URL",
+ "@seff0aac16e": {
+  "x-mt": true
+ },
  "sff9b69c6ca": "Valmis",
+ "sf1ed05f7de": "Nupp vaateväljas",
+ "@sf1ed05f7de": {
+  "x-mt": true
+ },
+ "sf1541ca978": "Nupp lisatud {p0}",
+ "@sf1541ca978": {
+  "x-mt": true
+ },
+ "s09f745552a": "Salvesta aktiivne olek",
+ "@s09f745552a": {
+  "x-mt": true
+ },
+ "s44367fdec5": "Tühi",
+ "@s44367fdec5": {
+  "x-mt": true
+ },
+ "sc41824585d": "Stseen seab korraga mitu seadet, nt \"Movie Night\" või \"All off\".",
+ "@sc41824585d": {
+  "x-mt": true
+ },
+ "s7e7b0848fb": "{p0} tegevused",
+ "@s7e7b0848fb": {
+  "x-mt": true
+ },
+ "s7cdee3dc7d": "Millised seadmed sündmuskohal käivad?",
+ "@s7cdee3dc7d": {
+  "x-mt": true
+ },
+ "sde0d544a4c": "Stseen",
+ "@sde0d544a4c": {
+  "x-mt": true
+ },
+ "scff2a13871": "Nt filmiõhtu",
+ "@scff2a13871": {
+  "x-mt": true
+ },
+ "se3ba6a13bb": "Uus stseen",
+ "@se3ba6a13bb": {
+  "x-mt": true
+ },
+ "s020a1af0d8": "Muuda stseeni",
+ "@s020a1af0d8": {
+  "x-mt": true
+ },
+ "s4dbd6f62bf": "Kustuta stseen?",
+ "@s4dbd6f62bf": {
+  "x-mt": true
+ },
+ "se250251ff0": "Vajuta teateid",
+ "@se250251ff0": {
+  "x-mt": true
+ },
+ "s91a8948ad7": "Läbi ntfy (Google''i kontot pole vaja)",
+ "@s91a8948ad7": {
+  "x-mt": true
+ },
+ "sbdd6c9bad2": "Näita seda seadet",
+ "@sbdd6c9bad2": {
+  "x-mt": true
+ },
+ "se1e0d398d7": "Rakendus kuulab töötamise ajal teateid (aknas ka salvest).",
+ "@se1e0d398d7": {
+  "x-mt": true
+ },
+ "s6993f32ed2": "Automaatika käivitamine selles rakenduses",
+ "@s6993f32ed2": {
+  "x-mt": true
+ },
+ "sc0f6ea8ebe": "Kui kodusilla ei ole. Kodusild töötab alati, ka siis, kui rakendus on suletud.",
+ "@sc0f6ea8ebe": {
+  "x-mt": true
+ },
+ "sb35519f8e9": "Salvi lähedal",
+ "@sb35519f8e9": {
+  "x-mt": true
+ },
+ "s49ca9b6082": "Akna sulgemine hoiab Molaplani kella kõrval, nii et teated saabuvad.",
+ "@s49ca9b6082": {
+  "x-mt": true
+ },
+ "sc6d6d4016e": "Telefon, kui Molaplan on suletud",
+ "@sc6d6d4016e": {
+  "x-mt": true
+ },
+ "sb460bbf010": "Paigaldab ntfy rakenduse (Android: Google Play / F- Droid, iPhone: App Store) ja tellib selle teema. Teated saabuvad ka siis, kui Molaplan on suletud.",
+ "@sb460bbf010": {
+  "x-mt": true
+ },
+ "saa54f34e98": "Kopeeri tellimise link",
+ "@saa54f34e98": {
+  "x-mt": true
+ },
+ "s8f19ff1e21": "Vaiksed tunnid",
+ "@s8f19ff1e21": {
+  "x-mt": true
+ },
+ "s1cc7f7a75f": "Ainult kiire (5) tuleb läbi.",
+ "@s1cc7f7a75f": {
+  "x-mt": true
+ },
+ "s973f30f5e8": "(HH:MM)",
+ "@s973f30f5e8": {
+  "x-mt": true
+ },
+ "sb13eeff3cd": "(HH:MM)",
+ "@sb13eeff3cd": {
+  "x-mt": true
+ },
+ "s2f7a5f57b1": "Tumm",
+ "@s2f7a5f57b1": {
+  "x-mt": true
+ },
+ "sa81c1da011": "1 tund",
+ "@sa81c1da011": {
+  "x-mt": true
+ },
+ "s0ca30924bd": "8 tundi",
+ "@s0ca30924bd": {
+  "x-mt": true
+ },
+ "s38bb718aaf": "24 tundi",
+ "@s38bb718aaf": {
+  "x-mt": true
+ },
+ "s36ef8a86e1": "Muttetu (kuni {p0})",
+ "@s36ef8a86e1": {
+  "x-mt": true
+ },
+ "s0183ae0a12": "Saada testteatis",
+ "@s0183ae0a12": {
+  "x-mt": true
+ },
+ "sd95091858f": "Molaplani teated töötavad",
+ "@sd95091858f": {
+  "x-mt": true
+ },
+ "s58a8bfdd9f": "Test saadeti",
+ "@s58a8bfdd9f": {
+  "x-mt": true
+ },
+ "s5c380d76b6": "Viimane",
+ "@s5c380d76b6": {
+  "x-mt": true
+ },
+ "s9d75942e41": "Valmis automatiseerimine",
+ "@s9d75942e41": {
+  "x-mt": true
+ },
+ "s70860413a1": "Päikeseloojangu tuled, veeleke → alarm, odavad tunnid...",
+ "@s70860413a1": {
+  "x-mt": true
+ },
+ "s8b5be90c1e": "Sinu enda automatiseerimine",
+ "@s8b5be90c1e": {
+  "x-mt": true
+ },
+ "sa9402c105a": "Millal / Kui / Do",
+ "@sa9402c105a": {
+  "x-mt": true
+ },
+ "s4102c7e085": "Stseen praegusest olekust",
+ "@s4102c7e085": {
+  "x-mt": true
+ },
+ "s21ee7e78ee": "Paljud seadmed ühe nupuga",
+ "@s21ee7e78ee": {
+  "x-mt": true
+ },
+ "s5afa6e08f2": "Sammud järjekorras, ootavad, kui/muu",
+ "@s5afa6e08f2": {
+  "x-mt": true
+ },
+ "s8070a25da8": "Grupp",
+ "@s8070a25da8": {
+  "x-mt": true
+ },
+ "sf5f1ae9c9e": "Nt kõik elutoa tuled ühe kaardina",
+ "@sf5f1ae9c9e": {
+  "x-mt": true
+ },
+ "s73f89f4de7": "Millised seadmed grupis käivad?",
+ "@s73f89f4de7": {
+  "x-mt": true
+ },
+ "s5b68340d84": "Grupi nimi",
+ "@s5b68340d84": {
+  "x-mt": true
+ },
+ "s1b087cdbbd": "Kõik: {p0}",
+ "@s1b087cdbbd": {
+  "x-mt": true
+ },
  "s876c7230a2": "Lisa seade",
  "s1e593aeca2": "Sulge",
  "s3d00dee1a9": "Kasuta",
@@ -2033,6 +2830,46 @@
  "@s9126bf24a0": {
   "x-mt": true
  },
+ "sdaa7d4de12": "Stseen",
+ "@sdaa7d4de12": {
+  "x-mt": true
+ },
+ "sfe55fd97fa": "Kõik on vaikne.",
+ "@sfe55fd97fa": {
+  "x-mt": true
+ },
+ "s162c54ed4c": "{p0}: tehtud",
+ "@s162c54ed4c": {
+  "x-mt": true
+ },
+ "se26e839c2f": "Esmaspäev",
+ "@se26e839c2f": {
+  "x-mt": true
+ },
+ "s763254941f": "Teisipäev",
+ "@s763254941f": {
+  "x-mt": true
+ },
+ "sf3448cdd52": "Kolmapäev",
+ "@sf3448cdd52": {
+  "x-mt": true
+ },
+ "sc34ca7eddb": "Neljapäev",
+ "@sc34ca7eddb": {
+  "x-mt": true
+ },
+ "sfa82438bec": "Reede",
+ "@sfa82438bec": {
+  "x-mt": true
+ },
+ "s517c348371": "Laupäev",
+ "@s517c348371": {
+  "x-mt": true
+ },
+ "sb1f0e72163": "Pühapäev",
+ "@sb1f0e72163": {
+  "x-mt": true
+ },
  "s306729fe62": "Hindadeta",
  "@s306729fe62": {
   "x-mt": true
@@ -2183,6 +3020,10 @@
  },
  "sfc846c4cc5": "Elektri hind, ilm, kaamera, gabariit, märguanne või käsk – uut seadet pole vaja.",
  "@sfc846c4cc5": {
+  "x-mt": true
+ },
+ "sf00aa23cf6": "Millal... kui... teha: tuled päikeseloojangul, lekkehoiatus, odavaimad tunnid, skriptid ja stseenid.",
+ "@sf00aa23cf6": {
   "x-mt": true
  },
  "s147f47be4c": "Lisa kaart",
@@ -2406,10 +3247,7 @@
  "@s5378bb3f05": {
   "x-mt": true
  },
- "s1d8bb7b0a6": "\"{p0}\" wants remote control of your home. Accept only if it is your own or a family member''s device that just entered the code.",
- "@s1d8bb7b0a6": {
-  "x-mt": true
- },
+ "s1d8bb7b0a6": "\"{p0}\" soovib sinu kodu kaugjuhtimist. Nõustu ainult siis, kui see on sinu enda või pereliikme seade, kuhu kood just sisestati.",
  "sa04c218f82": "Keeldu",
  "sdfaf8c242b": "Nõustu",
  "s1cf33c1fbc": "Väärtus",
@@ -2555,7 +3393,59 @@
  "@s77d2309fd5": {
   "x-mt": true
  },
+ "s2b463f47ba": "Peida",
+ "@s2b463f47ba": {
+  "x-mt": true
+ },
+ "s2594346d86": "Juhendid",
+ "@s2594346d86": {
+  "x-mt": true
+ },
  "sfdffaffea4": "Puudub",
+ "sd6c2de0256": "Horisontaalne",
+ "@sd6c2de0256": {
+  "x-mt": true
+ },
+ "sb8ef66c33e": "Võrk",
+ "@sb8ef66c33e": {
+  "x-mt": true
+ },
+ "s0bee1b8ed3": "Väärtusskaala",
+ "@s0bee1b8ed3": {
+  "x-mt": true
+ },
+ "sd4e9b57931": "Ajatelg",
+ "@sd4e9b57931": {
+  "x-mt": true
+ },
+ "s7abdb12fef": "Andmepunktide markerid",
+ "@s7abdb12fef": {
+  "x-mt": true
+ },
+ "s29135ed75a": "Automaatne: teljed ja juhtjooned näitavad, kui kaart on vähemalt 2×2.",
+ "@s29135ed75a": {
+  "x-mt": true
+ },
+ "s939603242a": "Värvused väärtuse järgi",
+ "@s939603242a": {
+  "x-mt": true
+ },
+ "s45f927bc62": "Kohandatud",
+ "@s45f927bc62": {
+  "x-mt": true
+ },
+ "s319dab47d8": "Sujuv",
+ "@s319dab47d8": {
+  "x-mt": true
+ },
+ "s613fbec20e": "Sammud",
+ "@s613fbec20e": {
+  "x-mt": true
+ },
+ "s25d9db075e": "Oma piirid ja värvid: Seaded → Advanced.",
+ "@s25d9db075e": {
+  "x-mt": true
+ },
  "sc0f5a14d2b": "Värvikünnised (väärtus ≥ piir → värv)",
  "@sc0f5a14d2b": {
   "x-mt": true
@@ -2900,6 +3790,10 @@
   "x-mt": true
  },
  "sa6212aaeb4": "Asukoht",
+ "s902eaaff9f": "Avage",
+ "@s902eaaff9f": {
+  "x-mt": true
+ },
  "s12c2f8e6e4": "Ainult koduvõrgus",
  "s5f7c464e6d": "kell {p0}",
  "s21b64ae0a7": "{p0} töötab ainult koduvõrgus. Ruut muutub ise tavaliseks, kui oled jälle kodus.",
@@ -3049,29 +3943,12 @@
   "x-mt": true
  },
  "sa8ce5112ee": "Kuni {p0} taustapilti. Eemalda enne üks.",
- "sceafe9ce2a": "Fail ei ole pilt",
- "@sceafe9ce2a": {
-  "x-mt": true
- },
  "s12a7d631af": "Välimus",
  "s0d83798030": "Suurus",
  "s64c916e299": "Väike",
  "s5e3097232a": "Lai",
  "s8971788287": "Suur",
  "s254a1d8e12": "Taustapilt (valikuline)",
- "sc48f5f9bcf": "Vali pilt",
- "sf55eee73b8": "Muuda pilti",
- "@sf55eee73b8": {
-  "x-mt": true
- },
- "sf6723451b9": "Pildista",
- "@sf6723451b9": {
-  "x-mt": true
- },
- "sdd957ccc1b": "Eemalda pilt",
- "@sdd957ccc1b": {
-  "x-mt": true
- },
  "s7ba9d453ed": "Tumenda, kui seade on väljas",
  "s016ae7b580": "Pilt on kahanenud (≤ 200 KB) ja sünkroonitud teie kontoga.",
  "@s016ae7b580": {
@@ -3079,6 +3956,14 @@
  },
  "sabb10f8cb2": "Pilt on kahanenud (≤ 200 KB) ja seda hoitakse ainult sellel seadmel.",
  "@sabb10f8cb2": {
+  "x-mt": true
+ },
+ "sc80648d495": "Molaplani näitamine",
+ "@sc80648d495": {
+  "x-mt": true
+ },
+ "sa4e9c86a86": "Lõpeta",
+ "@sa4e9c86a86": {
   "x-mt": true
  },
  "s4dab2d409b": "Ekspordi konfiguratsioon",
@@ -3124,6 +4009,22 @@
  "s8382da3467": "Tavaline",
  "s7c1cd8314e": "Peida ruudud, mis eemalt ei tööta",
  "sa0cbbafb4e": "Kodust eemal peidetakse ruudud, mis töötavad ainult koduvõrgus. Vaikimisi jäävad need paigale hallina.",
+ "s419166b895": "Kell ja ilm avaekraanil",
+ "@s419166b895": {
+  "x-mt": true
+ },
+ "sec30a8f23e": "Aeg, kuupäev, ilm ja elektrihind vaate ülaosas. Ainult see seade.",
+ "@sec30a8f23e": {
+  "x-mt": true
+ },
+ "sf7205b268f": "Animatsioonid",
+ "@sf7205b268f": {
+  "x-mt": true
+ },
+ "s1535c6411d": "Pehmed üleminekud, kui seade muudab olekut. Väljas = rahulikum ja kergem vanema tahvelarvuti puhul. Ainult see seade.",
+ "@s1535c6411d": {
+  "x-mt": true
+ },
  "s21f870dbc2": "Näitab tehnilisi seadistusi: ühendused (HTTP, MQTT, Modbus...), nimikoormused, JSON- i rajad ja plaatide allikad. Enamik inimesi ei vaja neid.",
  "@s21f870dbc2": {
   "x-mt": true
@@ -3171,6 +4072,10 @@
  "s522d6584c5": "Otsi uuendusi",
  "sd178a1d809": "Oma juhtimisterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kaamerad, WebSocket, TCP ja UDP. Ilma kontota jäävad kõik seaded sellesse seadmesse.",
  "@sd178a1d809": {
+  "x-mt": true
+ },
+ "s84819cca05": "Viimane häire {p0}",
+ "@s84819cca05": {
   "x-mt": true
  },
  "se455dc672b": "Samm",
@@ -3967,6 +4872,118 @@
   "x-mt": true
  },
  "s1dfeacd9f6": "UDP",
+ "sd76aadb97c": "Veeleke → alarm",
+ "@sd76aadb97c": {
+  "x-mt": true
+ },
+ "s0bd0724e83": "Kiireloomuline teade niipea, kui lekkeandur tuvastab vee (ka vaiksel ajal).",
+ "@s0bd0724e83": {
+  "x-mt": true
+ },
+ "sa9f114c81d": "Tuled põlevad päikeseloojangul",
+ "@sa9f114c81d": {
+  "x-mt": true
+ },
+ "s02402a38eb": "Valitud tuled lülituvad sisse, kui päike loojub.",
+ "@s02402a38eb": {
+  "x-mt": true
+ },
+ "s386fda8330": "Kõik maha kell 23:00",
+ "@s386fda8330": {
+  "x-mt": true
+ },
+ "s3508664550": "Valitud seadmed lülituvad välja õhtul.",
+ "@s3508664550": {
+  "x-mt": true
+ },
+ "s3775470669": "Teatamine, kui seade ei vasta enam",
+ "@s3775470669": {
+  "x-mt": true
+ },
+ "s5c07969ac8": "Teade, kui seade on olnud 10 minutit kättesaamatu.",
+ "@s5c07969ac8": {
+  "x-mt": true
+ },
+ "s2cdd15be92": "Märguanne, kui temperatuur langeb",
+ "@s2cdd15be92": {
+  "x-mt": true
+ },
+ "sa74faa4635": "Märge, kui anduri näit langeb alla piiri.",
+ "@sa74faa4635": {
+  "x-mt": true
+ },
+ "s94ed692877": "Odavamad töötunnid: seade on sisse lülitatud",
+ "@s94ed692877": {
+  "x-mt": true
+ },
+ "s9b99909a7c": "Seade päeva kõige odavamatel tundidel (nt veesoojendi).",
+ "@s9b99909a7c": {
+  "x-mt": true
+ },
+ "s90d5d2954d": "Teavitada kallist elektrist",
+ "@s90d5d2954d": {
+  "x-mt": true
+ },
+ "s876690515a": "Teade, kui hetkehind ületab 20 c/kWh.",
+ "@s876690515a": {
+  "x-mt": true
+ },
+ "s1906ecb28c": "Külmumishoiatus",
+ "@s1906ecb28c": {
+  "x-mt": true
+ },
+ "s036ecd266d": "Märge, kui see on väljaspool −15 °C.",
+ "@s036ecd266d": {
+  "x-mt": true
+ },
+ "sacf213e078": "Hommikune kokkuvõte kell 7:00",
+ "@sacf213e078": {
+  "x-mt": true
+ },
+ "sef21ad6784": "Ilm, elektri hind ja teie kodu seisund teatena igal hommikul.",
+ "@sef21ad6784": {
+  "x-mt": true
+ },
+ "s5d308e6986": "VEELEK!",
+ "@s5d308e6986": {
+  "x-mt": true
+ },
+ "s13017ce3b0": "Temperatuur langes",
+ "@s13017ce3b0": {
+  "x-mt": true
+ },
+ "s4c52f38c8b": "Elekter on kallis",
+ "@s4c52f38c8b": {
+  "x-mt": true
+ },
+ "sc797ab9c4c": "Tere hommikust",
+ "@sc797ab9c4c": {
+  "x-mt": true
+ },
+ "scec02139b6": "Kaart kadunud",
+ "@scec02139b6": {
+  "x-mt": true
+ },
+ "s66f19d787b": "Grupp ei vasta",
+ "@s66f19d787b": {
+  "x-mt": true
+ },
+ "sed9788d6dc": "{p0}: käsku pole",
+ "@sed9788d6dc": {
+  "x-mt": true
+ },
+ "sb23114b65d": "odavaim kell {p0}:00",
+ "@sb23114b65d": {
+  "x-mt": true
+ },
+ "sd39874fbe2": "{p0} seadmed",
+ "@sd39874fbe2": {
+  "x-mt": true
+ },
+ "sbe208615d0": "{p0} ei vasta",
+ "@sbe208615d0": {
+  "x-mt": true
+ },
  "s804e935440": "ESP32 kaamera",
  "@s804e935440": {
   "x-mt": true
@@ -3982,6 +4999,26 @@
  "sbb2adef009": "Ventilaatori kiirus",
  "see46441329": "0=Off;1=Away;2=Home;3=Boost;4=Max",
  "sb25aad3bc2": "Lahkun kodust",
+ "s7e5f6a29e3": "Head ööd",
+ "@s7e5f6a29e3": {
+  "x-mt": true
+ },
+ "s253122823a": "Tere hommikust",
+ "@s253122823a": {
+  "x-mt": true
+ },
+ "s640293f08f": "Tere päevast",
+ "@s640293f08f": {
+  "x-mt": true
+ },
+ "sd8c5bed7de": "Tere õhtust",
+ "@sd8c5bed7de": {
+  "x-mt": true
+ },
+ "s4cac4725b8": "Grupi seadmed ei vasta",
+ "@s4cac4725b8": {
+  "x-mt": true
+ },
  "s7e461faf91": "Leia see ruuteri seadmete nimekirjast või seadme rakendusest. Samuti võid puudutada nuppu \"Otsi võrku\".",
  "@s7e461faf91": {
   "x-mt": true
@@ -4219,10 +5256,7 @@
  "@sf1971ac29b": {
   "x-mt": true
  },
- "s65529d5877": "Tasmota → Configuration → MQTT → Topic. Other MQTT blaster: command topic.",
- "@s65529d5877": {
-  "x-mt": true
- },
+ "s65529d5877": "Tasmota → Configuration → MQTT → Topic. Muu MQTT-saatja: käsuteema.",
  "s321c1677e2": "Esfome climate id (ainult Esfome)",
  "@s321c1677e2": {
   "x-mt": true
@@ -4496,852 +5530,36 @@
  "@s3a38b97f7b": {
   "x-mt": true
  },
- "se317f59de2": "VUOTO!",
- "@se317f59de2": {
+ "sdd5e97b1e2": "Selge",
+ "@sdd5e97b1e2": {
   "x-mt": true
  },
- "se4c4201882": "Lekk!",
- "@se4c4201882": {
+ "sad990c999d": "Osaliselt hägune",
+ "@sad990c999d": {
   "x-mt": true
  },
- "sdbcf5515c1": "Auki",
- "@sdbcf5515c1": {
+ "s80bfe8f9ad": "Cloudy",
+ "@s80bfe8f9ad": {
   "x-mt": true
  },
- "sb0af7213b5": "Avage",
- "@sb0af7213b5": {
+ "s46f3db8514": "Fog",
+ "@s46f3db8514": {
   "x-mt": true
  },
- "sa3477dac6e": "Liikettä",
- "@sa3477dac6e": {
+ "sbd81101eb4": "Drizzle",
+ "@sbd81101eb4": {
   "x-mt": true
  },
- "s064a959911": "SAVUA!",
- "@s064a959911": {
+ "s960a265544": "Vihm",
+ "@s960a265544": {
   "x-mt": true
  },
- "s50778e2eec": "Suitsu!",
- "@s50778e2eec": {
+ "seab38c2b45": "Lumi",
+ "@seab38c2b45": {
   "x-mt": true
  },
- "s1dfa5abe81": "Hälytys",
- "@s1dfa5abe81": {
-  "x-mt": true
- },
- "s68e711123b": "temperatuur",
- "@s68e711123b": {
-  "x-mt": true
- },
- "s4082a34467": "sensor",
- "@s4082a34467": {
-  "x-mt": true
- },
- "s4233362d60": "Veelekke andur",
- "@s4233362d60": {
-  "x-mt": true
- },
- "s9ad7b0076b": "lekkeandur · aku",
- "@s9ad7b0076b": {
-  "x-mt": true
- },
- "sed9b5e52f6": "praegu",
- "@sed9b5e52f6": {
-  "x-mt": true
- },
- "sc3abd09cd9": "Kohandatud värv",
- "@sc3abd09cd9": {
-  "x-mt": true
- },
- "s10e7cef8c1": "Hue",
- "@s10e7cef8c1": {
-  "x-mt": true
- },
- "s59b65e3322": "Küllastus",
- "@s59b65e3322": {
-  "x-mt": true
- },
- "s750ed8d878": "Heledus",
- "@s750ed8d878": {
-  "x-mt": true
- },
- "sa39e78050c": "Vali",
- "@sa39e78050c": {
-  "x-mt": true
- },
- "sba1684ff6c": "veel mitte",
- "@sba1684ff6c": {
-  "x-mt": true
- },
- "sef20071510": "Käivita ajalugu",
- "@sef20071510": {
-  "x-mt": true
- },
- "s8613961a5a": "Teated",
- "@s8613961a5a": {
-  "x-mt": true
- },
- "s4f745952b8": "Töötab sellel kodusillal, ka siis, kui rakendus on suletud.",
- "@s4f745952b8": {
-  "x-mt": true
- },
- "s99cbed55fd": "Kodusillal töötamine - töötab isegi siis, kui rakendus on suletud.",
- "@s99cbed55fd": {
-  "x-mt": true
- },
- "s0247948956": "Kodusild on vana versioon: uuenda seda, nii et rakenduse sulgemise ajal käivituvad ka automatiseerimised. Praegu töötab see rakendus.",
- "@s0247948956": {
-  "x-mt": true
- },
- "s21fae60578": "Selles rakenduses töötab, kui see on avatud. Kodusild käivitab need, kui rakendus on suletud.",
- "@s21fae60578": {
-  "x-mt": true
- },
- "s66c54e2286": "Automatiseerimine on selles seadmes välja lülitatud.",
- "@s66c54e2286": {
-  "x-mt": true
- },
- "s4057f67774": "Mon Tue Wed Thu Fri Sat Sun",
- "@s4057f67774": {
-  "x-mt": true
- },
- "s456d234874": "(seade puudub)",
- "@s456d234874": {
-  "x-mt": true
- },
- "s7c3e905972": "At",
- "@s7c3e905972": {
-  "x-mt": true
- },
- "s61637a44e4": "Sunrise",
- "@s61637a44e4": {
-  "x-mt": true
- },
- "sa0d5958b56": "Sunset",
- "@sa0d5958b56": {
-  "x-mt": true
- },
- "s467fd3c653": "{p0} odavaim tööaeg",
- "@s467fd3c653": {
-  "x-mt": true
- },
- "s65660a4b23": "Hind üle {p0} c/kWh",
- "@s65660a4b23": {
-  "x-mt": true
- },
- "sba8fa4af37": "Hind alla {p0} c/kWh",
- "@sba8fa4af37": {
-  "x-mt": true
- },
- "s3324b26519": "Õues",
- "@s3324b26519": {
-  "x-mt": true
- },
- "sf3c2cf0323": "{p0} offline {p1} min",
- "@sf3c2cf0323": {
-  "x-mt": true
- },
- "s1b359d69e2": "Automatiseerimise loomine",
- "@s1b359d69e2": {
-  "x-mt": true
- },
- "s835865fd04": "Mallid",
- "@s835865fd04": {
-  "x-mt": true
- },
- "s2b57f716aa": "Automaatikat veel ei ole. Alusta mallist, nt \"Valgused päikeseloojangu ajal\" või \"Veeleke → häire\".",
- "@s2b57f716aa": {
-  "x-mt": true
- },
- "s8039add5ed": "Pealkirjata",
- "@s8039add5ed": {
-  "x-mt": true
- },
- "s5506524eac": "Millal",
- "@s5506524eac": {
-  "x-mt": true
- },
- "sf2d3a43ee8": "Jooksu veel pole.",
- "@sf2d3a43ee8": {
-  "x-mt": true
- },
- "s5c7338ab38": "Valmis automatiseerimine",
- "@s5c7338ab38": {
-  "x-mt": true
- },
- "s354eb362d8": "Seadme valimine",
- "@s354eb362d8": {
-  "x-mt": true
- },
- "s73a65d7dff": "Seadmete valimine",
- "@s73a65d7dff": {
-  "x-mt": true
- },
- "s6bc0df13b3": "Seadmeid veel pole.",
- "@s6bc0df13b3": {
-  "x-mt": true
- },
- "s90db0cb9e0": "Uus automatiseerimine",
- "@s90db0cb9e0": {
-  "x-mt": true
- },
- "s3aeb373060": "Muuda automatiseerimist",
- "@s3aeb373060": {
-  "x-mt": true
- },
- "sac3c555554": "Kustuta automaatika?",
- "@sac3c555554": {
-  "x-mt": true
- },
- "s53879bce24": "Millest algab automatiseerimine",
- "@s53879bce24": {
-  "x-mt": true
- },
- "s179f389617": "Ainult juhul (vabatahtlik)",
- "@s179f389617": {
-  "x-mt": true
- },
- "s803ff4f73b": "Kõik tingimused peavad vastama",
- "@s803ff4f73b": {
-  "x-mt": true
- },
- "sd930bdad70": "Lisa tingimus",
- "@sd930bdad70": {
-  "x-mt": true
- },
- "s6f21edea24": "Tee",
- "@s6f21edea24": {
-  "x-mt": true
- },
- "scbe17b6bf8": "Nõuetekohased hagid",
- "@scbe17b6bf8": {
-  "x-mt": true
- },
- "secee53bdd2": "Veel rohkem",
- "@secee53bdd2": {
-  "x-mt": true
- },
- "scb62f41105": "Jooksudevaheline minimaalne minutite arv",
- "@scb62f41105": {
-  "x-mt": true
- },
- "s643b680e89": "Peatab näiteks lehvitusanduri kümnete teadete saatmise.",
- "@s643b680e89": {
-  "x-mt": true
- },
- "s4c4ab28899": "Testi nüüd",
- "@s4c4ab28899": {
-  "x-mt": true
- },
- "s7956c29b83": "Jooksus: {p0}",
- "@s7956c29b83": {
-  "x-mt": true
- },
- "s6e85ff5983": "(Ilma seadmeteta)",
- "@s6e85ff5983": {
-  "x-mt": true
- },
- "sc300fc12e3": "Seadme väärtus",
- "@sc300fc12e3": {
-  "x-mt": true
- },
- "sbab0e0dc9d": "Seadme olek (sisse/välja lülitatud, andur)",
- "@sbab0e0dc9d": {
-  "x-mt": true
- },
- "s76de9025a1": "Kellaaeg",
- "@s76de9025a1": {
-  "x-mt": true
- },
- "s04c0bcdd51": "Päikesetõus / päikeseloojang",
- "@s04c0bcdd51": {
-  "x-mt": true
- },
- "s869f0d57af": "Ilm (välistemperatuur)",
- "@s869f0d57af": {
-  "x-mt": true
- },
- "sa4261f6e35": "Seade ei vasta",
- "@sa4261f6e35": {
-  "x-mt": true
- },
- "se0a362c060": "Tüüp",
- "@se0a362c060": {
-  "x-mt": true
- },
- "s4f62fd1f09": "Kui see pöördub",
- "@s4f62fd1f09": {
-  "x-mt": true
- },
- "sab64be3b87": "alarmis",
- "@sab64be3b87": {
-  "x-mt": true
- },
- "sbfd08915bd": "maha / rahulik",
- "@sbfd08915bd": {
-  "x-mt": true
- },
- "s0aaa16b331": "Aeg (TT:MM)",
- "@s0aaa16b331": {
-  "x-mt": true
- },
- "s9b4b2b3129": "Sündmus",
- "@s9b4b2b3129": {
-  "x-mt": true
- },
- "s8c6de5d661": "Tasandus minutites (−60...60)",
- "@s8c6de5d661": {
-  "x-mt": true
- },
- "s59b3e665bf": "Millal",
- "@s59b3e665bf": {
-  "x-mt": true
- },
- "s6a23c4a83f": "Hind allpool",
- "@s6a23c4a83f": {
-  "x-mt": true
- },
- "s49083cabf7": "Hinnatõus",
- "@s49083cabf7": {
-  "x-mt": true
- },
- "s411924155f": "Odavaimad tunnid päevas",
- "@s411924155f": {
-  "x-mt": true
- },
- "s04dc35851a": "Tundide arv",
- "@s04dc35851a": {
-  "x-mt": true
- },
- "s6f22fd8c19": "Protokollid",
- "@s6f22fd8c19": {
-  "x-mt": true
- },
- "s32fa6270c8": "Puudub valitud = iga päev",
- "@s32fa6270c8": {
-  "x-mt": true
- },
- "s966e223f86": "Ajaaken",
- "@s966e223f86": {
-  "x-mt": true
- },
- "s45aae9c551": "Nädalapäevad",
- "@s45aae9c551": {
-  "x-mt": true
- },
- "sf05bf9c751": "Seadme olek / väärtus",
- "@sf05bf9c751": {
-  "x-mt": true
- },
- "sb74370fc1e": "Välistemperatuur",
- "@sb74370fc1e": {
-  "x-mt": true
- },
- "s585b4c519f": "Tume/valgus",
- "@s585b4c519f": {
-  "x-mt": true
- },
- "s6019108a01": "Seisund",
- "@s6019108a01": {
-  "x-mt": true
- },
- "sc26d444f90": "Alates",
- "@sc26d444f90": {
-  "x-mt": true
- },
- "s796739363a": "To",
- "@s796739363a": {
-  "x-mt": true
- },
- "s39d9f766c6": "Võrdle",
- "@s39d9f766c6": {
-  "x-mt": true
- },
- "sa56aea2cf9": "Olek on sisse/välja lülitatud",
- "@sa56aea2cf9": {
-  "x-mt": true
- },
- "sc2521b6b15": "Number",
- "@sc2521b6b15": {
-  "x-mt": true
- },
- "se2b3e45118": "tume",
- "@se2b3e45118": {
-  "x-mt": true
- },
- "s709da04ca2": "valgus",
- "@s709da04ca2": {
-  "x-mt": true
- },
- "s723d015dc1": "Lisage toiming",
- "@s723d015dc1": {
-  "x-mt": true
- },
- "sae3489a6c9": "Seadme juhtimine",
- "@sae3489a6c9": {
-  "x-mt": true
- },
- "s1f6962ba39": "Käivita stseen",
- "@s1f6962ba39": {
-  "x-mt": true
- },
- "s02df6d430a": "Skripti käivitamine",
- "@s02df6d430a": {
-  "x-mt": true
- },
- "sed67c16508": "Saatke teade",
- "@sed67c16508": {
-  "x-mt": true
- },
- "s654489bb29": "Oota",
- "@s654489bb29": {
-  "x-mt": true
- },
- "sf216517af2": "Oota",
- "@sf216517af2": {
-  "x-mt": true
- },
- "sde1657b024": "Kui / muidu",
- "@sde1657b024": {
-  "x-mt": true
- },
- "sbc8e165fbf": "Action",
- "@sbc8e165fbf": {
-  "x-mt": true
- },
- "s7a544fe304": "Määra väärtus",
- "@s7a544fe304": {
-  "x-mt": true
- },
- "s929344a68b": "Pressi",
- "@s929344a68b": {
-  "x-mt": true
- },
- "s02cfe06e04": "Stseen",
- "@s02cfe06e04": {
-  "x-mt": true
- },
- "sdb235c3ced": "(Pole stseene)",
- "@sdb235c3ced": {
-  "x-mt": true
- },
- "sdced476aeb": "Skript",
- "@sdced476aeb": {
-  "x-mt": true
- },
- "s4f330bfcfb": "(Skripte pole)",
- "@s4f330bfcfb": {
-  "x-mt": true
- },
- "s34900f9d58": "Tekst",
- "@s34900f9d58": {
-  "x-mt": true
- },
- "s3c2ee8fe0d": "'{Kokkuvõte} = ilm, hind ja koduriik'",
- "@s3c2ee8fe0d": {
-  "x-mt": true
- },
- "sd84d87d156": "Prioriteet",
- "@sd84d87d156": {
-  "x-mt": true
- },
- "sb55a08c07c": "1 – vaikiv",
- "@sb55a08c07c": {
-  "x-mt": true
- },
- "s423418208e": "2 – madal",
- "@s423418208e": {
-  "x-mt": true
- },
- "sbad27a6b89": "3 – normaalne",
- "@sbad27a6b89": {
-  "x-mt": true
- },
- "s8c17000b91": "4 – kõrge",
- "@s8c17000b91": {
-  "x-mt": true
- },
- "sa0738def3a": "5 – kiireloomuline (ka vaiksetel tundidel)",
- "@sa0738def3a": {
-  "x-mt": true
- },
- "sb33001c92e": "Kraan avaneb",
- "@sb33001c92e": {
-  "x-mt": true
- },
- "s07d7410408": "äpp",
- "@s07d7410408": {
-  "x-mt": true
- },
- "sfb10dd528e": "Sekundeid",
- "@sfb10dd528e": {
-  "x-mt": true
- },
- "sd7ab969914": "Kõige rohkem sekundeid",
- "@sd7ab969914": {
-  "x-mt": true
- },
- "sccfe5a0d41": "Siis",
- "@sccfe5a0d41": {
-  "x-mt": true
- },
- "s2d983e951b": "Else",
- "@s2d983e951b": {
-  "x-mt": true
- },
- "sf936d0b01d": "Üles",
- "@sf936d0b01d": {
-  "x-mt": true
- },
- "s2c7a2bbac1": "Uus käsikiri",
- "@s2c7a2bbac1": {
-  "x-mt": true
- },
- "s5b2dd17cbc": "Skript on sammude loend: juhtige seadet, oodake, teavitage, kui / muidu ... käivitage see nupust, automatiseerimisest või kaugjuhtimisest (iPhone''i kiirklahv).",
- "@s5b2dd17cbc": {
-  "x-mt": true
- },
- "s6fe2320f3d": "Lõpeta",
- "@s6fe2320f3d": {
-  "x-mt": true
- },
- "se9ee46a9c8": "Jookse",
- "@se9ee46a9c8": {
-  "x-mt": true
- },
- "s766b50721b": "{p0} samme",
- "@s766b50721b": {
-  "x-mt": true
- },
- "s061d1b874b": "kaugjuhtimispult",
- "@s061d1b874b": {
-  "x-mt": true
- },
- "sb886978015": "Skripti redigeerimine",
- "@sb886978015": {
-  "x-mt": true
- },
- "scc2c1e2508": "Käivita logi",
- "@scc2c1e2508": {
-  "x-mt": true
- },
- "sacf2fbc495": "Kustuta skript?",
- "@sacf2fbc495": {
-  "x-mt": true
- },
- "s01de653429": "Sammud",
- "@s01de653429": {
-  "x-mt": true
- },
- "s01d3c353e2": "Kood",
- "@s01d3c353e2": {
-  "x-mt": true
- },
- "s637ae4dbf4": "Molaplani skript",
- "@s637ae4dbf4": {
-  "x-mt": true
- },
- "sea09cb0d3b": "Funktsioonid: lülita välja lülitamine ootamine teatamine stseeni hind odavaim temp aeg tunnis tööpäeva logi. Faili või võrgu kasutamine puudub; 10 min ajapiirang.",
- "@sea09cb0d3b": {
-  "x-mt": true
- },
- "s26e23ef341": "Kaugkäivituse (PIN) lubamine",
- "@s26e23ef341": {
-  "x-mt": true
- },
- "sd573107aec": "Ntfy sõnum või iPhone''i otsetee käivitab skripti.",
- "@sd573107aec": {
-  "x-mt": true
- },
- "s0a5410ea4f": "Kaugjuhitav PIN (vähemalt 4 märki)",
- "@s0a5410ea4f": {
-  "x-mt": true
- },
- "sceba001122": "Saada \"run {p0} <PIN>\" aadressile {p1}\niPhone''i kiirklahvid: \"Get Contents of URL\" → {p1}, meetod POST, body: run {p0} <PIN>",
- "@sceba001122": {
-  "x-mt": true
- },
- "seff0aac16e": "Kopeeri URL",
- "@seff0aac16e": {
-  "x-mt": true
- },
- "sf1ed05f7de": "Nupp vaateväljas",
- "@sf1ed05f7de": {
-  "x-mt": true
- },
- "sf1541ca978": "Nupp lisatud {p0}",
- "@sf1541ca978": {
-  "x-mt": true
- },
- "s09f745552a": "Salvesta aktiivne olek",
- "@s09f745552a": {
-  "x-mt": true
- },
- "s44367fdec5": "Tühi",
- "@s44367fdec5": {
-  "x-mt": true
- },
- "sc41824585d": "Stseen seab korraga mitu seadet, nt \"Movie Night\" või \"All off\".",
- "@sc41824585d": {
-  "x-mt": true
- },
- "s7e7b0848fb": "{p0} tegevused",
- "@s7e7b0848fb": {
-  "x-mt": true
- },
- "s7cdee3dc7d": "Millised seadmed sündmuskohal käivad?",
- "@s7cdee3dc7d": {
-  "x-mt": true
- },
- "sde0d544a4c": "Stseen",
- "@sde0d544a4c": {
-  "x-mt": true
- },
- "scff2a13871": "Nt filmiõhtu",
- "@scff2a13871": {
-  "x-mt": true
- },
- "se3ba6a13bb": "Uus stseen",
- "@se3ba6a13bb": {
-  "x-mt": true
- },
- "s020a1af0d8": "Muuda stseeni",
- "@s020a1af0d8": {
-  "x-mt": true
- },
- "s4dbd6f62bf": "Kustuta stseen?",
- "@s4dbd6f62bf": {
-  "x-mt": true
- },
- "se250251ff0": "Vajuta teateid",
- "@se250251ff0": {
-  "x-mt": true
- },
- "s91a8948ad7": "Läbi ntfy (Google''i kontot pole vaja)",
- "@s91a8948ad7": {
-  "x-mt": true
- },
- "sbdd6c9bad2": "Näita seda seadet",
- "@sbdd6c9bad2": {
-  "x-mt": true
- },
- "se1e0d398d7": "Rakendus kuulab töötamise ajal teateid (aknas ka salvest).",
- "@se1e0d398d7": {
-  "x-mt": true
- },
- "s6993f32ed2": "Automaatika käivitamine selles rakenduses",
- "@s6993f32ed2": {
-  "x-mt": true
- },
- "sc0f6ea8ebe": "Kui kodusilla ei ole. Kodusild töötab alati, ka siis, kui rakendus on suletud.",
- "@sc0f6ea8ebe": {
-  "x-mt": true
- },
- "sb35519f8e9": "Salvi lähedal",
- "@sb35519f8e9": {
-  "x-mt": true
- },
- "s49ca9b6082": "Akna sulgemine hoiab Molaplani kella kõrval, nii et teated saabuvad.",
- "@s49ca9b6082": {
-  "x-mt": true
- },
- "sc6d6d4016e": "Telefon, kui Molaplan on suletud",
- "@sc6d6d4016e": {
-  "x-mt": true
- },
- "sb460bbf010": "Paigaldab ntfy rakenduse (Android: Google Play / F- Droid, iPhone: App Store) ja tellib selle teema. Teated saabuvad ka siis, kui Molaplan on suletud.",
- "@sb460bbf010": {
-  "x-mt": true
- },
- "saa54f34e98": "Kopeeri tellimise link",
- "@saa54f34e98": {
-  "x-mt": true
- },
- "s8f19ff1e21": "Vaiksed tunnid",
- "@s8f19ff1e21": {
-  "x-mt": true
- },
- "s1cc7f7a75f": "Ainult kiire (5) tuleb läbi.",
- "@s1cc7f7a75f": {
-  "x-mt": true
- },
- "s973f30f5e8": "(HH:MM)",
- "@s973f30f5e8": {
-  "x-mt": true
- },
- "sb13eeff3cd": "(HH:MM)",
- "@sb13eeff3cd": {
-  "x-mt": true
- },
- "s2f7a5f57b1": "Tumm",
- "@s2f7a5f57b1": {
-  "x-mt": true
- },
- "sa81c1da011": "1 tund",
- "@sa81c1da011": {
-  "x-mt": true
- },
- "s0ca30924bd": "8 tundi",
- "@s0ca30924bd": {
-  "x-mt": true
- },
- "s38bb718aaf": "24 tundi",
- "@s38bb718aaf": {
-  "x-mt": true
- },
- "s36ef8a86e1": "Muttetu (kuni {p0})",
- "@s36ef8a86e1": {
-  "x-mt": true
- },
- "s0183ae0a12": "Saada testteatis",
- "@s0183ae0a12": {
-  "x-mt": true
- },
- "sd95091858f": "Molaplani teated töötavad",
- "@sd95091858f": {
-  "x-mt": true
- },
- "s58a8bfdd9f": "Test saadeti",
- "@s58a8bfdd9f": {
-  "x-mt": true
- },
- "s5c380d76b6": "Viimane",
- "@s5c380d76b6": {
-  "x-mt": true
- },
- "s9d75942e41": "Valmis automatiseerimine",
- "@s9d75942e41": {
-  "x-mt": true
- },
- "s70860413a1": "Päikeseloojangu tuled, veeleke → alarm, odavad tunnid...",
- "@s70860413a1": {
-  "x-mt": true
- },
- "s8b5be90c1e": "Sinu enda automatiseerimine",
- "@s8b5be90c1e": {
-  "x-mt": true
- },
- "sa9402c105a": "Millal / Kui / Do",
- "@sa9402c105a": {
-  "x-mt": true
- },
- "s4102c7e085": "Stseen praegusest olekust",
- "@s4102c7e085": {
-  "x-mt": true
- },
- "s21ee7e78ee": "Paljud seadmed ühe nupuga",
- "@s21ee7e78ee": {
-  "x-mt": true
- },
- "s5afa6e08f2": "Sammud järjekorras, ootavad, kui/muu",
- "@s5afa6e08f2": {
-  "x-mt": true
- },
- "s8070a25da8": "Grupp",
- "@s8070a25da8": {
-  "x-mt": true
- },
- "sf5f1ae9c9e": "Nt kõik elutoa tuled ühe kaardina",
- "@sf5f1ae9c9e": {
-  "x-mt": true
- },
- "s73f89f4de7": "Millised seadmed grupis käivad?",
- "@s73f89f4de7": {
-  "x-mt": true
- },
- "s5b68340d84": "Grupi nimi",
- "@s5b68340d84": {
-  "x-mt": true
- },
- "s1b087cdbbd": "Kõik: {p0}",
- "@s1b087cdbbd": {
-  "x-mt": true
- },
- "sdaa7d4de12": "Stseen",
- "@sdaa7d4de12": {
-  "x-mt": true
- },
- "sfe55fd97fa": "Kõik on vaikne.",
- "@sfe55fd97fa": {
-  "x-mt": true
- },
- "s162c54ed4c": "{p0}: tehtud",
- "@s162c54ed4c": {
-  "x-mt": true
- },
- "sf00aa23cf6": "Millal... kui... teha: tuled päikeseloojangul, lekkehoiatus, odavaimad tunnid, skriptid ja stseenid.",
- "@sf00aa23cf6": {
-  "x-mt": true
- },
- "s2b463f47ba": "Peida",
- "@s2b463f47ba": {
-  "x-mt": true
- },
- "s2594346d86": "Juhendid",
- "@s2594346d86": {
-  "x-mt": true
- },
- "sd6c2de0256": "Horisontaalne",
- "@sd6c2de0256": {
-  "x-mt": true
- },
- "sb8ef66c33e": "Võrk",
- "@sb8ef66c33e": {
-  "x-mt": true
- },
- "s0bee1b8ed3": "Väärtusskaala",
- "@s0bee1b8ed3": {
-  "x-mt": true
- },
- "sd4e9b57931": "Ajatelg",
- "@sd4e9b57931": {
-  "x-mt": true
- },
- "s7abdb12fef": "Andmepunktide markerid",
- "@s7abdb12fef": {
-  "x-mt": true
- },
- "s29135ed75a": "Automaatne: teljed ja juhtjooned näitavad, kui kaart on vähemalt 2×2.",
- "@s29135ed75a": {
-  "x-mt": true
- },
- "s939603242a": "Värvused väärtuse järgi",
- "@s939603242a": {
-  "x-mt": true
- },
- "s45f927bc62": "Kohandatud",
- "@s45f927bc62": {
-  "x-mt": true
- },
- "s319dab47d8": "Sujuv",
- "@s319dab47d8": {
-  "x-mt": true
- },
- "s613fbec20e": "Sammud",
- "@s613fbec20e": {
-  "x-mt": true
- },
- "s25d9db075e": "Oma piirid ja värvid: Seaded → Advanced.",
- "@s25d9db075e": {
-  "x-mt": true
- },
- "s902eaaff9f": "Avage",
- "@s902eaaff9f": {
-  "x-mt": true
- },
- "sc80648d495": "Molaplani näitamine",
- "@sc80648d495": {
-  "x-mt": true
- },
- "sa4e9c86a86": "Lõpeta",
- "@sa4e9c86a86": {
-  "x-mt": true
- },
- "s84819cca05": "Viimane häire {p0}",
- "@s84819cca05": {
-  "x-mt": true
- },
- "s4cac4725b8": "Grupi seadmed ei vasta",
- "@s4cac4725b8": {
+ "sfc65eafa12": "Äikesetorm",
+ "@sfc65eafa12": {
   "x-mt": true
  }
 }

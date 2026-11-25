@@ -13,6 +13,7 @@ import 'automation_pages.dart';
 import 'home_header.dart';
 import 'tile_widget.dart';
 import 'remote_pages.dart';
+import 'room_header.dart';
 import 'update_ui.dart';
 
 /// "Ohjausnäkymä": the everyday screen once something is set up. Only the tiles with their live
@@ -89,7 +90,9 @@ class ControlView extends StatelessWidget {
                     children: [
                       const HomeHeader(),
                       for (final d in groups) ...[
-                        if (!single && !sameAsTitle(d))
+                        if (d.headerImage != null)
+                          RoomHeader(dashboard: d)
+                        else if (!single && !sameAsTitle(d))
                           Padding(
                             padding: const EdgeInsets.fromLTRB(4, 14, 4, 10),
                             child: Text(
@@ -156,6 +159,8 @@ class ControlView extends StatelessWidget {
             onEnergy?.call();
           case 'automations':
             await Navigator.push(context, MaterialPageRoute(builder: (_) => const AutomationsPage()));
+          case 'room-photo':
+            await showRoomPhotoSheet(context, st.config.dashboards);
           case 'settings':
             onSettings();
           case 'lock':
@@ -177,6 +182,11 @@ class ControlView extends StatelessWidget {
           key: const ValueKey('control-automations'),
           value: 'automations',
           child: _item(const Icon(Icons.auto_mode), Text(tx(c, 'Automaatiot', 'Automations'))),
+        ),
+        PopupMenuItem(
+          key: const ValueKey('control-room-photo'),
+          value: 'room-photo',
+          child: _item(const Icon(Icons.photo_outlined), Text(tx(c, 'Huoneen kuva', 'Room photo'))),
         ),
         if (onEnergy != null)
           PopupMenuItem(

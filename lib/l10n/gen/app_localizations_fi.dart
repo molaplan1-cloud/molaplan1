@@ -178,6 +178,30 @@ class AppLocalizationsFi extends AppLocalizations {
       'Tarkista osoite ja asetukset ja yritä uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.';
 
   @override
+  String get sdd5e97b1e2 => 'Selkeää';
+
+  @override
+  String get sad990c999d => 'Puolipilvistä';
+
+  @override
+  String get s80bfe8f9ad => 'Pilvistä';
+
+  @override
+  String get s46f3db8514 => 'Sumua';
+
+  @override
+  String get sbd81101eb4 => 'Tihkua';
+
+  @override
+  String get s960a265544 => 'Sadetta';
+
+  @override
+  String get seab38c2b45 => 'Lumisadetta';
+
+  @override
+  String get sfc65eafa12 => 'Ukkosta';
+
+  @override
   String get sc27533ae83 => 'Säästävä';
 
   @override
@@ -725,6 +749,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get se9ca7cb470 => 'Automaatiot';
+
+  @override
+  String get sf98121cd3d => 'Huoneen kuva';
 
   @override
   String get s49de879696 => 'Energia';
@@ -1288,6 +1315,36 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s9aa9bc9679 =>
       'Laite vastasi, mutta siinä ei ole ilmastointia (climate). Tarkista ESPHome-asetukset.';
+
+  @override
+  String get sec88246e24 => 'Valitse huoneen kuva';
+
+  @override
+  String get s252b8e1289 => 'Minkä huoneen kuva?';
+
+  @override
+  String get s9ae4e86ee7 =>
+      'Kuva näkyy huoneen otsikkona laattojen yläpuolella.';
+
+  @override
+  String get sc48f5f9bcf => 'Valitse kuva';
+
+  @override
+  String get sf55eee73b8 => 'Vaihda kuva';
+
+  @override
+  String get sf6723451b9 => 'Ota kuva';
+
+  @override
+  String get sdd957ccc1b => 'Poista kuva';
+
+  @override
+  String s6c487e340b(String p0) {
+    return 'Enintään $p0 kuvaa. Poista jokin ensin.';
+  }
+
+  @override
+  String get sceafe9ce2a => 'Tiedosto ei ole kuva';
 
   @override
   String get s3a5c21004e => 'Ei yhteyttä';
@@ -2184,8 +2241,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s835865fd04 => 'Valmiit';
 
   @override
-  String get s2b57f716aa =>
-      'Ei vielä automaatioita. Aloita valmiista: esim. \"Valot päälle auringonlaskussa\" tai \"Vesivuoto → hälytys\".';
+  String s73d042449b(String p0, String p1) {
+    return 'Ei vielä automaatioita. Aloita valmiista: esim. \"$p0\" tai \"$p1\".';
+  }
 
   @override
   String get s8039add5ed => 'Nimetön';
@@ -3011,6 +3069,27 @@ class AppLocalizationsFi extends AppLocalizations {
   String s162c54ed4c(String p0) {
     return '$p0: valmis';
   }
+
+  @override
+  String get se26e839c2f => 'maanantai';
+
+  @override
+  String get s763254941f => 'tiistai';
+
+  @override
+  String get sf3448cdd52 => 'keskiviikko';
+
+  @override
+  String get sc34ca7eddb => 'torstai';
+
+  @override
+  String get sfa82438bec => 'perjantai';
+
+  @override
+  String get s517c348371 => 'lauantai';
+
+  @override
+  String get sb1f0e72163 => 'sunnuntai';
 
   @override
   String get s306729fe62 => 'Ei hintoja';
@@ -4266,9 +4345,6 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get sceafe9ce2a => 'Tiedosto ei ole kuva';
-
-  @override
   String get s12a7d631af => 'Ulkoasu';
 
   @override
@@ -4285,18 +4361,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s254a1d8e12 => 'Taustakuva (valinnainen)';
-
-  @override
-  String get sc48f5f9bcf => 'Valitse kuva';
-
-  @override
-  String get sf55eee73b8 => 'Vaihda kuva';
-
-  @override
-  String get sf6723451b9 => 'Ota kuva';
-
-  @override
-  String get sdd957ccc1b => 'Poista kuva';
 
   @override
   String get s7ba9d453ed => 'Himmennä kun laite on pois päältä';
@@ -4365,6 +4429,20 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get sa0cbbafb4e =>
       'Kotiverkon ulkopuolella vain kotiverkossa toimivat ruudut piilotetaan. Oletuksena ne näkyvät harmaina paikallaan.';
+
+  @override
+  String get s419166b895 => 'Kello ja sää etusivulla';
+
+  @override
+  String get sec30a8f23e =>
+      'Kellonaika, päivä, sää ja sähkön hinta näkymän yläreunassa. Koskee vain tätä laitetta.';
+
+  @override
+  String get sf7205b268f => 'Animaatiot';
+
+  @override
+  String get s1535c6411d =>
+      'Pehmeät siirtymät, kun laite vaihtaa tilaa. Pois päältä = rauhallisempi ja kevyempi vanhalle tabletille. Koskee vain tätä laitetta.';
 
   @override
   String get s21f870dbc2 =>
@@ -5200,6 +5278,102 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s1dfeacd9f6 => 'UDP';
 
   @override
+  String get sd76aadb97c => 'Vesivuoto → hälytys';
+
+  @override
+  String get s0bd0724e83 =>
+      'Kiireellinen ilmoitus heti, kun vuotoanturi havaitsee vettä (myös hiljaisena aikana).';
+
+  @override
+  String get sa9f114c81d => 'Valot päälle auringonlaskulla';
+
+  @override
+  String get s02402a38eb => 'Valitut valot syttyvät, kun aurinko laskee.';
+
+  @override
+  String get s386fda8330 => 'Kaikki pois klo 23';
+
+  @override
+  String get s3508664550 => 'Valitut laitteet sammuvat illalla.';
+
+  @override
+  String get s3775470669 => 'Ilmoita, kun laite ei vastaa';
+
+  @override
+  String get s5c07969ac8 =>
+      'Ilmoitus, jos laite on ollut tavoittamattomissa 10 minuuttia.';
+
+  @override
+  String get s2cdd15be92 => 'Ilmoita, kun lämpötila laskee';
+
+  @override
+  String get sa74faa4635 => 'Ilmoitus, kun anturin lukema laskee rajan alle.';
+
+  @override
+  String get s94ed692877 => 'Halvimmat tunnit: laite päälle';
+
+  @override
+  String get s9b99909a7c =>
+      'Laite päälle päivän halvimpina tunteina (esim. varaaja).';
+
+  @override
+  String get s90d5d2954d => 'Ilmoita kalliista sähköstä';
+
+  @override
+  String get s876690515a => 'Ilmoitus, kun pörssisähkö nousee yli 20 c/kWh.';
+
+  @override
+  String get s1906ecb28c => 'Pakkasvaroitus';
+
+  @override
+  String get s036ecd266d => 'Ilmoitus, kun ulkona on alle −15 °C.';
+
+  @override
+  String get sacf213e078 => 'Aamukatsaus klo 7';
+
+  @override
+  String get sef21ad6784 =>
+      'Sää, sähkön hinta ja kodin tila ilmoituksena joka aamu.';
+
+  @override
+  String get s5d308e6986 => 'VESIVUOTO!';
+
+  @override
+  String get s13017ce3b0 => 'Lämpötila laski';
+
+  @override
+  String get s4c52f38c8b => 'Sähkö on kallista';
+
+  @override
+  String get sc797ab9c4c => 'Huomenta';
+
+  @override
+  String get scec02139b6 => 'Ruutu puuttuu';
+
+  @override
+  String get s66f19d787b => 'Ryhmän laitteet eivät vastaa';
+
+  @override
+  String sed9788d6dc(String p0) {
+    return '$p0: komento puuttuu';
+  }
+
+  @override
+  String sb23114b65d(String p0) {
+    return 'halvin klo $p0';
+  }
+
+  @override
+  String sd39874fbe2(String p0) {
+    return '$p0 laitetta päällä';
+  }
+
+  @override
+  String sbe208615d0(String p0) {
+    return '$p0 ei vastaa';
+  }
+
+  @override
   String get s804e935440 => 'ESP32-kamera';
 
   @override
@@ -5226,6 +5400,18 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sb25aad3bc2 => 'Lähden kotoa';
+
+  @override
+  String get s7e5f6a29e3 => 'Hyvää yötä';
+
+  @override
+  String get s253122823a => 'Hyvää huomenta';
+
+  @override
+  String get s640293f08f => 'Hyvää päivää';
+
+  @override
+  String get sd8c5bed7de => 'Hyvää iltaa';
 
   @override
   String get s4cac4725b8 => 'Ryhmän laitteet eivät vastaa';
