@@ -11,7 +11,9 @@ import 'package:molaplan/models/models.dart';
 import 'package:molaplan/remote/bridge_core.dart';
 import 'package:molaplan/remote/executor.dart';
 import 'package:molaplan/remote/protocol.dart';
+import 'package:molaplan/drivers/registry.dart';
 import 'package:molaplan/remote/remote_client.dart';
+import 'package:molaplan/remote/router.dart';
 import 'package:molaplan/state/stores.dart';
 
 /// End-to-end: real relay (local `wrangler dev`, or MOLAPLAN_RELAY_URL) + bridge + phone client
@@ -204,6 +206,41 @@ void main() {
       throwsA(isA<PairingFailed>().having((e) => e.reason, 'reason', 'rejected')),
     );
     expect(bridge.devices, isEmpty);
+    await bridge.dispose();
+  });
+
+  test('router: phone away (home address unreachable) -> automatically through the relay', () async {
+    if (relay == null) return markTestSkipped('no relay');
+    // On the bridge, 127.0.0.1:1 is the device; for the phone it is unreachable (= away from home).
+    final bridge = BridgeCore(
+      store: MemorySecretStore(),
+      executor: RemoteExecutor(
+        create: (c) {
+          final s = Map<String, dynamic>.from(c.settings);
+          s['baseUrl'] = '${s['baseUrl']}'.replaceFirst('127.0.0.1:1', '127.0.0.1:${device.port}');
+          return createDriver(ConnectionConfig(id: c.id, name: c.name, type: c.type, settings: s, secrets: c.secrets));
+        },
+      ),
+    );
+    await bridge.init(relayUrl: relay!);
+    bridge.start();
+    await bridge.changes.firstWhere((_) => bridge.link == BridgeLink.online).timeout(const Duration(seconds: 20));
+    final w = await bridge.startPairing();
+    final paired = await pairWithHome(relay: relay!, invite: PairingInvite.parse(w.invite.toUri()), deviceName: 'P');
+    final router = RemoteRouter()..client = RemoteClient(paired);
+    final conn = ConnectionConfig(name: 'Valo', type: 'http', settings: {'baseUrl': 'http://127.0.0.1:1'});
+    final d = router.wrap(conn);
+    lamp = false;
+    expect(await d.read({'path': '/state', 'jsonPath': 'on'}), false);
+    expect(router.status, LinkStatus.remote);
+    await d.send({'method': 'GET', 'path': '/set?on=1'});
+    expect(lamp, true);
+    final cam = router.wrap(
+      ConnectionConfig(name: 'Kamera', type: 'camera', settings: {'baseUrl': 'http://127.0.0.1:1'}),
+    ) as RoutedCameraDriver;
+    expect(await cam.snapshot('/capture'), jpeg);
+    await d.dispose();
+    await router.client!.dispose();
     await bridge.dispose();
   });
 }

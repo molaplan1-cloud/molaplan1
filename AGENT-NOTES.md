@@ -15,7 +15,7 @@ Flutter, targets Windows + Android. UI default Finnish, English switchable in Se
   Linux secure storage aborts without a keyring -> that's why the shot copy uses MemorySecretStore.
 
 ## Commands
-- `flutter analyze` / `flutter test` (57 tests; real-socket template tests are in test/template_io_test.dart because testWidgets files mock HttpClient -> 400)
+- `flutter analyze` / `flutter test` (76 tests; real-socket template tests are in test/template_io_test.dart because testWidgets files mock HttpClient -> 400)
 - `flutter build apk --release` (+ `--split-per-abi`) -> copy to /workspace/molaplan-app-release/
 - Windows: only via CI (.github/workflows/build.yml) or on a Windows PC: `flutter build windows --release`
 
@@ -52,3 +52,30 @@ Flutter, targets Windows + Android. UI default Finnish, English switchable in Se
 - [x] mDNS discovery (lib/core/discovery.dart, multicast_dns); Android multicast lock in MainActivity.kt. NOT tested on a real phone / Windows.
 - [x] Bigger touch targets / text (theme.dart), gallery grid height scales with text size (tested at 320/360 px, text x1.3)
 - Template register maps / endpoints of Shelly/Tasmota/ESPHome tested against mocks only.
+
+## Status v0.3.0 (25.11.2026) – remote access ("ei vain lähiverkossa")
+Relay: https://relay.molaplan.com (custom domain; also https://molaplan-relay.molaplan1.workers.dev)
+- Cloudflare Worker `molaplan-relay` + Durable Objects `Home` (one per home, websocket hibernation, auto ping/pong)
+  and `PairCode` (6-digit code -> home lookup, 10 min TTL). Source: relay/ (wrangler 4.168, free plan, SQLite DO).
+  Deploy: `cd relay && npm install && bash -lc 'CLOUDFLARE_API_TOKEN="$MOLAPLAN_CLOUDFLARE_TOKEN" CLOUDFLARE_ACCOUNT_ID=289dfd5c3dad74a2c9632406634f1e80 npx wrangler deploy'`
+- Relay protocol (all JSON text frames): bridge `/v1/h/<home>/b?k=<bridgeKey>` (key trusted on first use),
+  phone `/v1/h/<home>/c?d=<dev>&t=<token>` (sha256(token) allow-listed by the bridge), pairing `/v1/h/<home>/p?c=<code>`
+  (max 5 wrong codes, single use), `/v1/code/<code>` -> home. Payload "d" is always ciphertext.
+- E2E (lib/remote/e2e.dart): X25519 identities, HKDF-SHA256 session key per phone, AES-256-GCM, AAD home|dev|direction,
+  nonce+timestamp replay guard on the bridge. Pairing proof HMAC keyed by QR secret (QR also pins the bridge key -> relay
+  can't MITM) or by the 6-digit code (then the bridge asks "Hyväksy laite?" – code-only pairing trusts the relay at pairing time).
+- lib/remote: protocol, e2e, executor (runs read/send/test/snapshot/config/ping with the normal drivers, cache 10 min),
+  bridge_core (pure Dart, used by app + CLI), remote_client (pairWithHome + batched RemoteClient), router
+  (LAN first, 6 s; on network error -> relay for 60 s, then LAN again; push streams -> 5 s polling; camera -> throttled snapshots).
+- App: AppState.driverFor wraps every driver with RemoteRouter.wrap (no-op until paired). RemoteState (lib/state/remote_state.dart)
+  holds pairing (secure storage key molaplan.remote.v1) and the in-app bridge (molaplan.bridge.v1, config.bridgeMode, wakelock).
+- UI: lib/ui/remote_pages.dart (RemoteHubPage, PairPage w/ mobile_scanner, BridgePage w/ QR, approval dialog, RemoteStatusChip
+  'Kotona'/'Etäyhteys'/'Ei yhteyttä'), lib/ui/guides_page.dart (Tailscale, WireGuard, Nabu Casa, HiveMQ Cloud),
+  ErrorBox "Et ole kotona? Ota etäyhteys käyttöön" for can't-reach errors, onboarding step 4 (remote).
+- Headless bridge: bin/molaplan_bridge.dart -> `dart build cli -o OUT` (dart compile exe refuses because of objective_c build hooks).
+  Data in ~/.molaplan-bridge/bridge.json (0600). Commands: pair | devices | remove <id> | status | quit.
+- Tests: test/v03_test.dart (crypto, router, UI), test/remote_e2e_test.dart (tag relay: spawns relay/node_modules/.bin/wrangler dev,
+  or MOLAPLAN_RELAY_URL=https://relay.molaplan.com; skips if neither). The box HTTP proxy answers unknown hosts with 500 –
+  use refused ports, not fake hostnames, to simulate "away".
+- Limits: the in-app bridge only runs while Molaplan is open (no Android foreground service yet). Watch streams are polled remotely.
+  Camera frames > 700 KB are refused remotely. Free plan quotas: see README.

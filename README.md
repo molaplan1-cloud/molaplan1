@@ -29,6 +29,14 @@ manual) and generic MQTT/HTTP: fill in the address (and token) and suggested til
 created. Optional local network search (mDNS). Every field has help text and an example;
 advanced options sit under "Lisäasetukset". Connection tests give plain-language errors.
 
+**Remote access (v0.3):** works outside the home network without port forwarding.
+An always-on tablet/PC at home runs *home bridge* mode (or the headless `molaplan_bridge` CLI on a
+Raspberry Pi), keeps an outbound websocket to the Molaplan relay (Cloudflare Worker + Durable Object,
+`relay/`) and runs the normal drivers for paired phones. Pairing: QR code or 6-digit code. Everything
+between phone and bridge is end-to-end encrypted (X25519 + AES-GCM); the relay only forwards
+ciphertext. The app uses the LAN when it can and the relay otherwise ("Kotona / Etäyhteys / Ei yhteyttä").
+In-app guides cover Tailscale, WireGuard, Home Assistant Cloud (Nabu Casa) and HiveMQ Cloud MQTT.
+
 Config is stored locally (shared_preferences); passwords/tokens in secure storage
 (Android Keystore / Windows Credential Manager). Import/export as JSON.
 
@@ -40,6 +48,8 @@ flutter analyze
 flutter test          # driver tests use local mock servers; MQTT test needs `mosquitto` on PATH (/usr/sbin)
 flutter run -d windows   # or an Android device
 ```
+
+Headless bridge: `dart build cli -o out` → `out/bundle/bin/molaplan_bridge --name Koti --pair`.
 
 Builds: `flutter build apk --release`, `flutter build windows --release` (Windows host only).
 CI: `.github/workflows/build.yml` builds the Windows zip and the APK.
