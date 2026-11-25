@@ -291,6 +291,67 @@
  "@sbae99909c4": {
   "x-mt": true
  },
+ "s5b44cbe9c0": "Kodu",
+ "s58aaa6dade": "Vaade on lukus",
+ "@s58aaa6dade": {
+  "x-mt": true
+ },
+ "sdf1af3409c": "Vabastage",
+ "@sdf1af3409c": {
+  "x-mt": true
+ },
+ "s4629a1695c": "Menüü",
+ "@s4629a1695c": {
+  "x-mt": true
+ },
+ "s41c3cebc48": "Lisa seade",
+ "scd04aa5d9e": "Muuda vaadet",
+ "@scd04aa5d9e": {
+  "x-mt": true
+ },
+ "s49de879696": "Energia",
+ "s1da81fd6c3": "Seaded",
+ "s365492a7d0": "Lukusta vaade",
+ "@s365492a7d0": {
+  "x-mt": true
+ },
+ "sb2f38410ee": "Seadmeid saab veel juhtida, kuid redigeerimis-, seadistus- ja lisamisseadmed on peidetud. Käigu ikoonilt ava lukustus.",
+ "@sb2f38410ee": {
+  "x-mt": true
+ },
+ "se497d27174": "PIN-kood (valikuline)",
+ "@se497d27174": {
+  "x-mt": true
+ },
+ "sd21180a166": "Ilma PIN-koodita avaneb üks kraan.",
+ "@sd21180a166": {
+  "x-mt": true
+ },
+ "s809d0eb368": "Tühista",
+ "sd86ff8e28a": "Lukusta",
+ "@sd86ff8e28a": {
+  "x-mt": true
+ },
+ "s872f93a062": "Avage uks?",
+ "@s872f93a062": {
+  "x-mt": true
+ },
+ "s0cd88e27f4": "Seadistused ja redigeerimine muutuvad taas nähtavaks.",
+ "@s0cd88e27f4": {
+  "x-mt": true
+ },
+ "sa5283191be": "Vabastage",
+ "@sa5283191be": {
+  "x-mt": true
+ },
+ "sdfc012fb4e": "PIN-kood",
+ "@sdfc012fb4e": {
+  "x-mt": true
+ },
+ "sca710b76b5": "Vale PIN-kood",
+ "@sca710b76b5": {
+  "x-mt": true
+ },
  "sa0c07ccd04": "Teil on kõige uuem versioon ({p0}).",
  "@sa0c07ccd04": {
   "x-mt": true
@@ -365,7 +426,6 @@
  "@sdc3bf71baf": {
   "x-mt": true
  },
- "s809d0eb368": "Tühista",
  "sa1bd8d2533": "Ava seaded",
  "s441683b7a8": "Kontrollin...",
  "@s441683b7a8": {
@@ -2043,15 +2103,12 @@
   "x-mt": true
  },
  "s0789f5f14f": "DASHBOARDS",
- "s49de879696": "Energia",
- "s1da81fd6c3": "Seaded",
  "s59622d792b": "Nimeta ümber",
  "sfb3e3c456c": "Kustuta armatuurlaud",
  "@sfb3e3c456c": {
   "x-mt": true
  },
  "scdfd80f963": "Lisa kaart",
- "s41c3cebc48": "Lisa seade",
  "s71af34b8e9": "Tühi vaade",
  "s6a210970eb": "Siin on näha seadme plaadid: temperatuurid, lülitid, kaamerad ja kiirklahvid. Alusta seadme lisamisega.",
  "@s6a210970eb": {
@@ -2146,10 +2203,6 @@
  },
  "s1e5d696a26": "Käivita seda käsku?",
  "@s1e5d696a26": {
-  "x-mt": true
- },
- "sdfc012fb4e": "PIN-kood",
- "@sdfc012fb4e": {
   "x-mt": true
  },
  "s1df6e2eaa7": "PIN",
@@ -3068,7 +3121,6 @@
   "x-mt": true
  },
  "s1dfeacd9f6": "UDP",
- "s5b44cbe9c0": "Kodu",
  "s804e935440": "ESP32 kaamera",
  "@s804e935440": {
   "x-mt": true

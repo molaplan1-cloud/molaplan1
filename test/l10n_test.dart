@@ -115,7 +115,13 @@ void main() {
       addTearDown(() => L10n.instance.recordMissing = false);
       await tester.pumpWidget(MolaplanApp(state: st));
       await tester.pumpAndSettle();
-      expect(find.text(tr(lang, 'Lisää laite', 'Add a device')), findsWidgets);
+      expect(find.byKey(const ValueKey('control-view')), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('control-menu')));
+      await tester.pumpAndSettle();
+      expect(find.text(tr(lang, 'Lisää laite', 'Add device')), findsWidgets);
+      await tester.tap(find.byKey(const ValueKey('control-edit')));
+      await tester.pumpAndSettle();
+      expect(find.text(tr(lang, 'Valmis', 'Done')), findsWidgets);
       final pages = <Widget>[
         const SettingsPage(),
         const TemplateGalleryPage(),

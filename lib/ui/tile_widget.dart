@@ -23,9 +23,12 @@ import '../energy/meters.dart';
 
 /// A live dashboard tile. Rebuilt (runtime restarted) when its config changes.
 class TileWidget extends StatefulWidget {
-  const TileWidget({super.key, required this.tile, this.editing = false});
+  const TileWidget({super.key, required this.tile, this.editing = false, this.control = false});
   final TileConfig tile;
   final bool editing;
+
+  /// Shown in the control view: no details dialog when the view is locked.
+  final bool control;
 
   @override
   State<TileWidget> createState() => _TileWidgetState();
@@ -389,7 +392,7 @@ class _TileWidgetState extends State<TileWidget> {
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: widget.editing ? null : onTap,
-        onLongPress: widget.editing ? null : _details,
+        onLongPress: widget.editing || (widget.control && AppScope.of(context).viewLocked) ? null : _details,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
           child: Column(

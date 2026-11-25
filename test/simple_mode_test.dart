@@ -63,6 +63,9 @@ void main() {
     await tester.pumpWidget(MolaplanApp(state: st));
     await tester.pumpAndSettle();
     expect(find.text('Valot'), findsOneWidget);
+    expect(find.byKey(const ValueKey('control-view')), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('control-menu')));
+    await tester.pumpAndSettle();
     expect(find.byKey(const ValueKey('home-add-device')), findsOneWidget);
     await tester.tap(find.byKey(const ValueKey('home-add-device')));
     await tester.pumpAndSettle();

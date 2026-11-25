@@ -314,6 +314,9 @@ class AppConfig {
   /// "Edistyneet": shows technical settings (raw connection types, payloads, JSON paths…). Off for beginners.
   bool advanced;
 
+  /// "Lukitse näkymä": the control view hides edit/settings/add (device-local, e.g. a customer's tablet).
+  bool viewLocked;
+
   AppConfig({
     List<ConnectionConfig>? connections,
     List<Dashboard>? dashboards,
@@ -327,6 +330,7 @@ class AppConfig {
     List<PriceRule>? rules,
     EnergySettings? energy,
     this.advanced = false,
+    this.viewLocked = false,
   }) : rules = rules ?? [],
        energy = energy ?? EnergySettings(),
        connections = connections ?? [],
@@ -339,6 +343,7 @@ class AppConfig {
     'onboardingDone': onboardingDone,
     if (bridgeMode) 'bridgeMode': true,
     if (advanced) 'advanced': true,
+    if (viewLocked) 'viewLocked': true,
     'relayUrl': ?relayUrl,
     if (remoteCameraSeconds != 2) 'remoteCameraSeconds': remoteCameraSeconds,
     'updateCheckedAt': ?updateCheckedAt,
@@ -358,6 +363,7 @@ class AppConfig {
       onboardingDone: (j['onboardingDone'] ?? false) as bool,
       bridgeMode: (j['bridgeMode'] ?? false) as bool,
       advanced: j['advanced'] == true,
+      viewLocked: j['viewLocked'] == true,
       relayUrl: j['relayUrl'] as String?,
       remoteCameraSeconds: (j['remoteCameraSeconds'] as num?)?.toInt() ?? 2,
       updateCheckedAt: (j['updateCheckedAt'] as num?)?.toInt(),

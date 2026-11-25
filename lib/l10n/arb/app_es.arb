@@ -291,6 +291,67 @@
  "@sbae99909c4": {
   "x-mt": true
  },
+ "s5b44cbe9c0": "Casa",
+ "s58aaa6dade": "La vista está cerrada",
+ "@s58aaa6dade": {
+  "x-mt": true
+ },
+ "sdf1af3409c": "Desbloquear",
+ "@sdf1af3409c": {
+  "x-mt": true
+ },
+ "s4629a1695c": "Menú",
+ "@s4629a1695c": {
+  "x-mt": true
+ },
+ "s41c3cebc48": "Añadir dispositivo",
+ "scd04aa5d9e": "Editar la vista",
+ "@scd04aa5d9e": {
+  "x-mt": true
+ },
+ "s49de879696": "Energía",
+ "s1da81fd6c3": "Ajustes",
+ "s365492a7d0": "Cierra la vista",
+ "@s365492a7d0": {
+  "x-mt": true
+ },
+ "sb2f38410ee": "Los dispositivos todavía pueden ser controlados, pero la edición, configuración y adición de dispositivos están ocultos. Desbloquear desde el icono del engranaje.",
+ "@sb2f38410ee": {
+  "x-mt": true
+ },
+ "se497d27174": "Código PIN (opcional)",
+ "@se497d27174": {
+  "x-mt": true
+ },
+ "sd21180a166": "Sin un PIN se desbloquea un grifo.",
+ "@sd21180a166": {
+  "x-mt": true
+ },
+ "s809d0eb368": "Cancelar",
+ "sd86ff8e28a": "Cerradura",
+ "@sd86ff8e28a": {
+  "x-mt": true
+ },
+ "s872f93a062": "¿Desbloquear?",
+ "@s872f93a062": {
+  "x-mt": true
+ },
+ "s0cd88e27f4": "La edición y la configuración vuelven a ser visibles.",
+ "@s0cd88e27f4": {
+  "x-mt": true
+ },
+ "sa5283191be": "Desbloquear",
+ "@sa5283191be": {
+  "x-mt": true
+ },
+ "sdfc012fb4e": "Código PIN",
+ "@sdfc012fb4e": {
+  "x-mt": true
+ },
+ "sca710b76b5": "Código PIN incorrecto",
+ "@sca710b76b5": {
+  "x-mt": true
+ },
  "sa0c07ccd04": "Usted tiene la última versión ({p0}).",
  "@sa0c07ccd04": {
   "x-mt": true
@@ -365,7 +426,6 @@
  "@sdc3bf71baf": {
   "x-mt": true
  },
- "s809d0eb368": "Cancelar",
  "sa1bd8d2533": "Abrir ajustes",
  "s441683b7a8": "Verificante...",
  "@s441683b7a8": {
@@ -2043,15 +2103,12 @@
   "x-mt": true
  },
  "s0789f5f14f": "DASHBOARDS",
- "s49de879696": "Energía",
- "s1da81fd6c3": "Ajustes",
  "s59622d792b": "Renombrar",
  "sfb3e3c456c": "Suprímase el tablero",
  "@sfb3e3c456c": {
   "x-mt": true
  },
  "scdfd80f963": "Añadir tarjeta",
- "s41c3cebc48": "Añadir dispositivo",
  "s71af34b8e9": "Vista vacía",
  "s6a210970eb": "Las fichas del dispositivo aparecen aquí: temperaturas, interruptores, cámaras y atajos. Comience añadiendo un dispositivo.",
  "@s6a210970eb": {
@@ -2146,10 +2203,6 @@
  },
  "s1e5d696a26": "¿Ejecutar este comando?",
  "@s1e5d696a26": {
-  "x-mt": true
- },
- "sdfc012fb4e": "Código PIN",
- "@sdfc012fb4e": {
   "x-mt": true
  },
  "s1df6e2eaa7": "PIN",
@@ -3068,7 +3121,6 @@
   "x-mt": true
  },
  "s1dfeacd9f6": "UDP",
- "s5b44cbe9c0": "Casa",
  "s804e935440": "Cámara ESP32",
  "@s804e935440": {
   "x-mt": true

@@ -329,6 +329,64 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String get s5b44cbe9c0 => 'Hem';
+
+  @override
+  String get s58aaa6dade => 'Utsikten är låst';
+
+  @override
+  String get sdf1af3409c => 'Lås upp';
+
+  @override
+  String get s4629a1695c => 'Menyn';
+
+  @override
+  String get s41c3cebc48 => 'Lägg till enhet';
+
+  @override
+  String get scd04aa5d9e => 'Redigera utsikten';
+
+  @override
+  String get s49de879696 => 'Energi';
+
+  @override
+  String get s1da81fd6c3 => 'Inställningar';
+
+  @override
+  String get s365492a7d0 => 'Lås utsikten';
+
+  @override
+  String get sb2f38410ee =>
+      'Enheter kan fortfarande styras, men redigering, inställningar och lägga till enheter är dolda. Lås upp från växelikonen.';
+
+  @override
+  String get se497d27174 => 'PIN-kod (tillval)';
+
+  @override
+  String get sd21180a166 => 'Utan en PIN en kran låser upp.';
+
+  @override
+  String get s809d0eb368 => 'Avbryt';
+
+  @override
+  String get sd86ff8e28a => 'Lås';
+
+  @override
+  String get s872f93a062 => 'Lås upp?';
+
+  @override
+  String get s0cd88e27f4 => 'Redigering och inställningar blir synliga igen.';
+
+  @override
+  String get sa5283191be => 'Lås upp';
+
+  @override
+  String get sdfc012fb4e => 'PIN-kod';
+
+  @override
+  String get sca710b76b5 => 'Fel PIN-kod';
+
+  @override
   String sa0c07ccd04(String p0) {
     return 'Du har den senaste versionen ($p0).';
   }
@@ -399,9 +457,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sdc3bf71baf =>
       'Android ber en gång om tillstånd så att Molaplan kan installera sina egna uppdateringar.\n\nTryck på \"Öppna inställningar\".\nSlå på \"Tillåt från den här källan\".\nKom tillbaka och tryck på \"Uppdatera\" igen.';
-
-  @override
-  String get s809d0eb368 => 'Avbryt';
 
   @override
   String get sa1bd8d2533 => 'Öppna inställningar';
@@ -2240,12 +2295,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s0789f5f14f => 'DASHBOARDS';
 
   @override
-  String get s49de879696 => 'Energi';
-
-  @override
-  String get s1da81fd6c3 => 'Inställningar';
-
-  @override
   String get s59622d792b => 'Byt namn';
 
   @override
@@ -2253,9 +2302,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get scdfd80f963 => 'Lägg till kort';
-
-  @override
-  String get s41c3cebc48 => 'Lägg till enhet';
 
   @override
   String get s71af34b8e9 => 'Tom vy';
@@ -2446,9 +2492,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s1e5d696a26 => 'Kör detta kommando?';
-
-  @override
-  String get sdfc012fb4e => 'PIN-kod';
 
   @override
   String get s1df6e2eaa7 => 'PIN';
@@ -3350,9 +3393,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s1dfeacd9f6 => 'UDP';
-
-  @override
-  String get s5b44cbe9c0 => 'Hem';
 
   @override
   String get s804e935440 => 'ESP32 kamera';

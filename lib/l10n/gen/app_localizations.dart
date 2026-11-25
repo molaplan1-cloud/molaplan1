@@ -644,6 +644,120 @@ abstract class AppLocalizations {
   /// **'Note: this device is on {p0}.x – the device may be on another Wi-Fi.'**
   String sbae99909c4(String p0);
 
+  /// fi: Koti
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get s5b44cbe9c0;
+
+  /// fi: Näkymä on lukittu
+  ///
+  /// In en, this message translates to:
+  /// **'The view is locked'**
+  String get s58aaa6dade;
+
+  /// fi: Avaa lukitus
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock'**
+  String get sdf1af3409c;
+
+  /// fi: Valikko
+  ///
+  /// In en, this message translates to:
+  /// **'Menu'**
+  String get s4629a1695c;
+
+  /// fi: Lisää laite
+  ///
+  /// In en, this message translates to:
+  /// **'Add device'**
+  String get s41c3cebc48;
+
+  /// fi: Muokkaa näkymää
+  ///
+  /// In en, this message translates to:
+  /// **'Edit the view'**
+  String get scd04aa5d9e;
+
+  /// fi: Energia
+  ///
+  /// In en, this message translates to:
+  /// **'Energy'**
+  String get s49de879696;
+
+  /// fi: Asetukset
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get s1da81fd6c3;
+
+  /// fi: Lukitse näkymä
+  ///
+  /// In en, this message translates to:
+  /// **'Lock the view'**
+  String get s365492a7d0;
+
+  /// fi: Laitteita voi edelleen ohjata, mutta muokkaus, asetukset ja laitteiden lisäys piilotetaan. Avaa lukitus rataskuvakkeesta
+  ///
+  /// In en, this message translates to:
+  /// **'Devices can still be controlled, but editing, settings and adding devices are hidden. Unlock from the gear icon.'**
+  String get sb2f38410ee;
+
+  /// fi: PIN-koodi (valinnainen)
+  ///
+  /// In en, this message translates to:
+  /// **'PIN code (optional)'**
+  String get se497d27174;
+
+  /// fi: Ilman PIN-koodia lukitus avataan yhdellä napautuksella.
+  ///
+  /// In en, this message translates to:
+  /// **'Without a PIN one tap unlocks.'**
+  String get sd21180a166;
+
+  /// fi: Peruuta
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get s809d0eb368;
+
+  /// fi: Lukitse
+  ///
+  /// In en, this message translates to:
+  /// **'Lock'**
+  String get sd86ff8e28a;
+
+  /// fi: Avaa lukitus?
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock?'**
+  String get s872f93a062;
+
+  /// fi: Muokkaus ja asetukset tulevat taas näkyviin.
+  ///
+  /// In en, this message translates to:
+  /// **'Editing and settings become visible again.'**
+  String get s0cd88e27f4;
+
+  /// fi: Avaa
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock'**
+  String get sa5283191be;
+
+  /// fi: PIN-koodi
+  ///
+  /// In en, this message translates to:
+  /// **'PIN code'**
+  String get sdfc012fb4e;
+
+  /// fi: Väärä PIN-koodi
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong PIN code'**
+  String get sca710b76b5;
+
   /// fi: Sinulla on uusin versio ({p0}).
   ///
   /// In en, this message translates to:
@@ -771,12 +885,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Android asks once for permission so Molaplan can install its own updates.\n\n1. Tap \"Open settings\".\n2. Turn on \"Allow from this source\".\n3. Come back and tap \"Update\" again.'**
   String get sdc3bf71baf;
-
-  /// fi: Peruuta
-  ///
-  /// In en, this message translates to:
-  /// **'Cancel'**
-  String get s809d0eb368;
 
   /// fi: Avaa asetukset
   ///
@@ -4038,18 +4146,6 @@ abstract class AppLocalizations {
   /// **'DASHBOARDS'**
   String get s0789f5f14f;
 
-  /// fi: Energia
-  ///
-  /// In en, this message translates to:
-  /// **'Energy'**
-  String get s49de879696;
-
-  /// fi: Asetukset
-  ///
-  /// In en, this message translates to:
-  /// **'Settings'**
-  String get s1da81fd6c3;
-
   /// fi: Nimeä
   ///
   /// In en, this message translates to:
@@ -4067,12 +4163,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add tile'**
   String get scdfd80f963;
-
-  /// fi: Lisää laite
-  ///
-  /// In en, this message translates to:
-  /// **'Add device'**
-  String get s41c3cebc48;
 
   /// fi: Tyhjä näkymä
   ///
@@ -4433,12 +4523,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Run this command?'**
   String get s1e5d696a26;
-
-  /// fi: PIN-koodi
-  ///
-  /// In en, this message translates to:
-  /// **'PIN code'**
-  String get sdfc012fb4e;
 
   /// fi: PIN
   ///
@@ -6047,12 +6131,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'UDP'**
   String get s1dfeacd9f6;
-
-  /// fi: Koti
-  ///
-  /// In en, this message translates to:
-  /// **'Home'**
-  String get s5b44cbe9c0;
 
   /// fi: ESP32-kamera
   ///

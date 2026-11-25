@@ -70,7 +70,9 @@ void main() {
     expect(find.byType(Switch), findsOneWidget);
     expect(find.byType(Slider), findsOneWidget);
 
-    await tester.tap(find.byIcon(Icons.edit_outlined));
+    await tester.tap(find.byKey(const ValueKey('control-menu')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const ValueKey('control-edit')));
     await tester.pump(const Duration(milliseconds: 300));
     expect(find.text('Valmis'), findsOneWidget);
     expect(find.byIcon(Icons.drag_indicator), findsNWidgets(4));

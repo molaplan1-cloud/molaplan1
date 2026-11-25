@@ -327,6 +327,65 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String get s5b44cbe9c0 => 'Kodu';
+
+  @override
+  String get s58aaa6dade => 'Vaade on lukus';
+
+  @override
+  String get sdf1af3409c => 'Vabastage';
+
+  @override
+  String get s4629a1695c => 'Menüü';
+
+  @override
+  String get s41c3cebc48 => 'Lisa seade';
+
+  @override
+  String get scd04aa5d9e => 'Muuda vaadet';
+
+  @override
+  String get s49de879696 => 'Energia';
+
+  @override
+  String get s1da81fd6c3 => 'Seaded';
+
+  @override
+  String get s365492a7d0 => 'Lukusta vaade';
+
+  @override
+  String get sb2f38410ee =>
+      'Seadmeid saab veel juhtida, kuid redigeerimis-, seadistus- ja lisamisseadmed on peidetud. Käigu ikoonilt ava lukustus.';
+
+  @override
+  String get se497d27174 => 'PIN-kood (valikuline)';
+
+  @override
+  String get sd21180a166 => 'Ilma PIN-koodita avaneb üks kraan.';
+
+  @override
+  String get s809d0eb368 => 'Tühista';
+
+  @override
+  String get sd86ff8e28a => 'Lukusta';
+
+  @override
+  String get s872f93a062 => 'Avage uks?';
+
+  @override
+  String get s0cd88e27f4 =>
+      'Seadistused ja redigeerimine muutuvad taas nähtavaks.';
+
+  @override
+  String get sa5283191be => 'Vabastage';
+
+  @override
+  String get sdfc012fb4e => 'PIN-kood';
+
+  @override
+  String get sca710b76b5 => 'Vale PIN-kood';
+
+  @override
   String sa0c07ccd04(String p0) {
     return 'Teil on kõige uuem versioon ($p0).';
   }
@@ -397,9 +456,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sdc3bf71baf =>
       'Android küsib luba, et Molaplan saaks oma värskendused installida.\n\n1. Puudutus \"Avatud seaded\".\n2. Lülita sisse \"Luba sellest allikast\".\n3. Tule tagasi ja puuduta uuesti \"Uuenda\".';
-
-  @override
-  String get s809d0eb368 => 'Tühista';
 
   @override
   String get sa1bd8d2533 => 'Ava seaded';
@@ -2236,12 +2292,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s0789f5f14f => 'DASHBOARDS';
 
   @override
-  String get s49de879696 => 'Energia';
-
-  @override
-  String get s1da81fd6c3 => 'Seaded';
-
-  @override
   String get s59622d792b => 'Nimeta ümber';
 
   @override
@@ -2249,9 +2299,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get scdfd80f963 => 'Lisa kaart';
-
-  @override
-  String get s41c3cebc48 => 'Lisa seade';
 
   @override
   String get s71af34b8e9 => 'Tühi vaade';
@@ -2441,9 +2488,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s1e5d696a26 => 'Käivita seda käsku?';
-
-  @override
-  String get sdfc012fb4e => 'PIN-kood';
 
   @override
   String get s1df6e2eaa7 => 'PIN';
@@ -3345,9 +3389,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s1dfeacd9f6 => 'UDP';
-
-  @override
-  String get s5b44cbe9c0 => 'Kodu';
 
   @override
   String get s804e935440 => 'ESP32 kaamera';

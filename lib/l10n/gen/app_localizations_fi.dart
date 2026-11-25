@@ -328,6 +328,65 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
+  String get s5b44cbe9c0 => 'Koti';
+
+  @override
+  String get s58aaa6dade => 'Näkymä on lukittu';
+
+  @override
+  String get sdf1af3409c => 'Avaa lukitus';
+
+  @override
+  String get s4629a1695c => 'Valikko';
+
+  @override
+  String get s41c3cebc48 => 'Lisää laite';
+
+  @override
+  String get scd04aa5d9e => 'Muokkaa näkymää';
+
+  @override
+  String get s49de879696 => 'Energia';
+
+  @override
+  String get s1da81fd6c3 => 'Asetukset';
+
+  @override
+  String get s365492a7d0 => 'Lukitse näkymä';
+
+  @override
+  String get sb2f38410ee =>
+      'Laitteita voi edelleen ohjata, mutta muokkaus, asetukset ja laitteiden lisäys piilotetaan. Avaa lukitus rataskuvakkeesta.';
+
+  @override
+  String get se497d27174 => 'PIN-koodi (valinnainen)';
+
+  @override
+  String get sd21180a166 =>
+      'Ilman PIN-koodia lukitus avataan yhdellä napautuksella.';
+
+  @override
+  String get s809d0eb368 => 'Peruuta';
+
+  @override
+  String get sd86ff8e28a => 'Lukitse';
+
+  @override
+  String get s872f93a062 => 'Avaa lukitus?';
+
+  @override
+  String get s0cd88e27f4 => 'Muokkaus ja asetukset tulevat taas näkyviin.';
+
+  @override
+  String get sa5283191be => 'Avaa';
+
+  @override
+  String get sdfc012fb4e => 'PIN-koodi';
+
+  @override
+  String get sca710b76b5 => 'Väärä PIN-koodi';
+
+  @override
   String sa0c07ccd04(String p0) {
     return 'Sinulla on uusin versio ($p0).';
   }
@@ -398,9 +457,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get sdc3bf71baf =>
       'Android kysyy kerran luvan, jotta Molaplan saa asentaa omat päivityksensä.\n\n1. Paina \"Avaa asetukset\".\n2. Kytke päälle \"Salli tästä lähteestä\".\n3. Palaa takaisin ja paina \"Päivitä\" uudelleen.';
-
-  @override
-  String get s809d0eb368 => 'Peruuta';
 
   @override
   String get sa1bd8d2533 => 'Avaa asetukset';
@@ -2249,12 +2305,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s0789f5f14f => 'NÄKYMÄT';
 
   @override
-  String get s49de879696 => 'Energia';
-
-  @override
-  String get s1da81fd6c3 => 'Asetukset';
-
-  @override
   String get s59622d792b => 'Nimeä';
 
   @override
@@ -2262,9 +2312,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get scdfd80f963 => 'Lisää ruutu';
-
-  @override
-  String get s41c3cebc48 => 'Lisää laite';
 
   @override
   String get s71af34b8e9 => 'Tyhjä näkymä';
@@ -2455,9 +2502,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s1e5d696a26 => 'Suoritetaanko komento?';
-
-  @override
-  String get sdfc012fb4e => 'PIN-koodi';
 
   @override
   String get s1df6e2eaa7 => 'PIN';
@@ -3373,9 +3417,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s1dfeacd9f6 => 'UDP';
-
-  @override
-  String get s5b44cbe9c0 => 'Koti';
 
   @override
   String get s804e935440 => 'ESP32-kamera';

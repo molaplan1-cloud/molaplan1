@@ -1,3 +1,4 @@
+import 'control_view.dart';
 import 'energy_pages.dart';
 import 'dart:async';
 
@@ -295,6 +296,20 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     final st = AppScope.of(context);
     if (!st.loaded) return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    // After setup: the clean control view (tiles only). Editing is one tap away in its gear menu.
+    if (!_editing && st.hasTiles) {
+      return ControlView(
+        onAddDevice: () => ConnectionsPage.addNew(context, dashboard: _current()),
+        onEdit: (d) => setState(() {
+          _dashId ??= d.id;
+          _editing = true;
+        }),
+        onSettings: _openSettings,
+        onEnergy: st.config.energy.meters.isEmpty
+            ? null
+            : () => Navigator.push(context, MaterialPageRoute(builder: (_) => const EnergyPage())),
+      );
+    }
     final d = _current();
     final wide = MediaQuery.sizeOf(context).width >= 900;
     final cs = Theme.of(context).colorScheme;

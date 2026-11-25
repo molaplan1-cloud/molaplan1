@@ -291,6 +291,67 @@
  "@sbae99909c4": {
   "x-mt": true
  },
+ "s5b44cbe9c0": "Hem",
+ "s58aaa6dade": "Utsikten är låst",
+ "@s58aaa6dade": {
+  "x-mt": true
+ },
+ "sdf1af3409c": "Lås upp",
+ "@sdf1af3409c": {
+  "x-mt": true
+ },
+ "s4629a1695c": "Menyn",
+ "@s4629a1695c": {
+  "x-mt": true
+ },
+ "s41c3cebc48": "Lägg till enhet",
+ "scd04aa5d9e": "Redigera utsikten",
+ "@scd04aa5d9e": {
+  "x-mt": true
+ },
+ "s49de879696": "Energi",
+ "s1da81fd6c3": "Inställningar",
+ "s365492a7d0": "Lås utsikten",
+ "@s365492a7d0": {
+  "x-mt": true
+ },
+ "sb2f38410ee": "Enheter kan fortfarande styras, men redigering, inställningar och lägga till enheter är dolda. Lås upp från växelikonen.",
+ "@sb2f38410ee": {
+  "x-mt": true
+ },
+ "se497d27174": "PIN-kod (tillval)",
+ "@se497d27174": {
+  "x-mt": true
+ },
+ "sd21180a166": "Utan en PIN en kran låser upp.",
+ "@sd21180a166": {
+  "x-mt": true
+ },
+ "s809d0eb368": "Avbryt",
+ "sd86ff8e28a": "Lås",
+ "@sd86ff8e28a": {
+  "x-mt": true
+ },
+ "s872f93a062": "Lås upp?",
+ "@s872f93a062": {
+  "x-mt": true
+ },
+ "s0cd88e27f4": "Redigering och inställningar blir synliga igen.",
+ "@s0cd88e27f4": {
+  "x-mt": true
+ },
+ "sa5283191be": "Lås upp",
+ "@sa5283191be": {
+  "x-mt": true
+ },
+ "sdfc012fb4e": "PIN-kod",
+ "@sdfc012fb4e": {
+  "x-mt": true
+ },
+ "sca710b76b5": "Fel PIN-kod",
+ "@sca710b76b5": {
+  "x-mt": true
+ },
  "sa0c07ccd04": "Du har den senaste versionen ({p0}).",
  "@sa0c07ccd04": {
   "x-mt": true
@@ -365,7 +426,6 @@
  "@sdc3bf71baf": {
   "x-mt": true
  },
- "s809d0eb368": "Avbryt",
  "sa1bd8d2533": "Öppna inställningar",
  "s441683b7a8": "Verifiera...",
  "@s441683b7a8": {
@@ -2043,15 +2103,12 @@
   "x-mt": true
  },
  "s0789f5f14f": "DASHBOARDS",
- "s49de879696": "Energi",
- "s1da81fd6c3": "Inställningar",
  "s59622d792b": "Byt namn",
  "sfb3e3c456c": "Delete Dashboard",
  "@sfb3e3c456c": {
   "x-mt": true
  },
  "scdfd80f963": "Lägg till kort",
- "s41c3cebc48": "Lägg till enhet",
  "s71af34b8e9": "Tom vy",
  "s6a210970eb": "Din enhet plattor visas här: temperaturer, växlar, kameror och genvägar. Börja med att lägga till en enhet.",
  "@s6a210970eb": {
@@ -2146,10 +2203,6 @@
  },
  "s1e5d696a26": "Kör detta kommando?",
  "@s1e5d696a26": {
-  "x-mt": true
- },
- "sdfc012fb4e": "PIN-kod",
- "@sdfc012fb4e": {
   "x-mt": true
  },
  "s1df6e2eaa7": "PIN",
@@ -3068,7 +3121,6 @@
   "x-mt": true
  },
  "s1dfeacd9f6": "UDP",
- "s5b44cbe9c0": "Hem",
  "s804e935440": "ESP32 kamera",
  "@s804e935440": {
   "x-mt": true

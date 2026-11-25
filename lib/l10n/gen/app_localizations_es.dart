@@ -331,6 +331,65 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get s5b44cbe9c0 => 'Casa';
+
+  @override
+  String get s58aaa6dade => 'La vista está cerrada';
+
+  @override
+  String get sdf1af3409c => 'Desbloquear';
+
+  @override
+  String get s4629a1695c => 'Menú';
+
+  @override
+  String get s41c3cebc48 => 'Añadir dispositivo';
+
+  @override
+  String get scd04aa5d9e => 'Editar la vista';
+
+  @override
+  String get s49de879696 => 'Energía';
+
+  @override
+  String get s1da81fd6c3 => 'Ajustes';
+
+  @override
+  String get s365492a7d0 => 'Cierra la vista';
+
+  @override
+  String get sb2f38410ee =>
+      'Los dispositivos todavía pueden ser controlados, pero la edición, configuración y adición de dispositivos están ocultos. Desbloquear desde el icono del engranaje.';
+
+  @override
+  String get se497d27174 => 'Código PIN (opcional)';
+
+  @override
+  String get sd21180a166 => 'Sin un PIN se desbloquea un grifo.';
+
+  @override
+  String get s809d0eb368 => 'Cancelar';
+
+  @override
+  String get sd86ff8e28a => 'Cerradura';
+
+  @override
+  String get s872f93a062 => '¿Desbloquear?';
+
+  @override
+  String get s0cd88e27f4 =>
+      'La edición y la configuración vuelven a ser visibles.';
+
+  @override
+  String get sa5283191be => 'Desbloquear';
+
+  @override
+  String get sdfc012fb4e => 'Código PIN';
+
+  @override
+  String get sca710b76b5 => 'Código PIN incorrecto';
+
+  @override
   String sa0c07ccd04(String p0) {
     return 'Usted tiene la última versión ($p0).';
   }
@@ -401,9 +460,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sdc3bf71baf =>
       'Android pide una vez permiso para que Molaplan pueda instalar sus propias actualizaciones.\n\n1. Pulsa \"Abran ajustes\".\n2. Enciende \"Permitir de esta fuente\".\n3. Vuelve y toca \"Actualizar\" otra vez.';
-
-  @override
-  String get s809d0eb368 => 'Cancelar';
 
   @override
   String get sa1bd8d2533 => 'Abrir ajustes';
@@ -2254,12 +2310,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s0789f5f14f => 'DASHBOARDS';
 
   @override
-  String get s49de879696 => 'Energía';
-
-  @override
-  String get s1da81fd6c3 => 'Ajustes';
-
-  @override
   String get s59622d792b => 'Renombrar';
 
   @override
@@ -2267,9 +2317,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get scdfd80f963 => 'Añadir tarjeta';
-
-  @override
-  String get s41c3cebc48 => 'Añadir dispositivo';
 
   @override
   String get s71af34b8e9 => 'Vista vacía';
@@ -2460,9 +2507,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s1e5d696a26 => '¿Ejecutar este comando?';
-
-  @override
-  String get sdfc012fb4e => 'Código PIN';
 
   @override
   String get s1df6e2eaa7 => 'PIN';
@@ -3371,9 +3415,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s1dfeacd9f6 => 'UDP';
-
-  @override
-  String get s5b44cbe9c0 => 'Casa';
 
   @override
   String get s804e935440 => 'Cámara ESP32';

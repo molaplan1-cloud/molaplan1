@@ -66,7 +66,13 @@ class _ThermostatTileState extends State<ThermostatTile> {
     final id = '${widget.tile.read['thermostat']}';
     final c = st.thermostat(id);
     if (c == null) {
-      return Card(child: Center(child: Text(tx(context, 'Termostaatti poistettu', 'Thermostat removed'))));
+      return Card(
+        child: Center(
+          child: Text(
+            tx(context, 'Termostaatti poistettu', 'Thermostat removed'),
+          ),
+        ),
+      );
     }
     final s = st.thermoStatus[id];
     final temp = (s?['temp'] as num?)?.toDouble();
@@ -75,12 +81,18 @@ class _ThermostatTileState extends State<ThermostatTile> {
     final active = state == 'heating' || state == 'cooling';
     final where = st.rulesRunWhere;
     return Card(
-      color: active ? (state == 'heating' ? Colors.deepOrange : Colors.lightBlue).withValues(alpha: 0.18) : cs.surfaceContainer,
+      color: active
+          ? (state == 'heating' ? Colors.deepOrange : Colors.lightBlue)
+                .withValues(alpha: 0.18)
+          : cs.surfaceContainer,
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: widget.editing
             ? null
-            : () => Navigator.push(context, MaterialPageRoute(builder: (_) => ThermostatPage(id: id))),
+            : () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => ThermostatPage(id: id)),
+              ),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(14, 10, 8, 8),
           child: Column(
@@ -88,7 +100,10 @@ class _ThermostatTileState extends State<ThermostatTile> {
             children: [
               Row(
                 children: [
-                  Icon(Icons.thermostat, color: active ? cs.primary : cs.onSurfaceVariant),
+                  Icon(
+                    Icons.thermostat,
+                    color: active ? cs.primary : cs.onSurfaceVariant,
+                  ),
                   const SizedBox(width: 6),
                   Expanded(
                     child: Text(
@@ -100,7 +115,11 @@ class _ThermostatTileState extends State<ThermostatTile> {
                   ),
                   if (s?['sensorOk'] == false)
                     Tooltip(
-                      message: tx(context, 'Lämpötilaa ei saada', 'No temperature reading'),
+                      message: tx(
+                        context,
+                        'Lämpötilaa ei saada',
+                        'No temperature reading',
+                      ),
                       child: Icon(Icons.sensors_off, size: 18, color: cs.error),
                     ),
                   if (where == null)
@@ -133,7 +152,9 @@ class _ThermostatTileState extends State<ThermostatTile> {
                           ConstrainedBox(
                             constraints: const BoxConstraints(maxWidth: 140),
                             child: Text(
-                              widget.tile.title.isEmpty ? c.name : widget.tile.title,
+                              widget.tile.title.isEmpty
+                                  ? c.name
+                                  : widget.tile.title,
                               style: text.bodySmall,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -144,7 +165,9 @@ class _ThermostatTileState extends State<ThermostatTile> {
                       const SizedBox(width: 16),
                       IconButton.filledTonal(
                         key: const ValueKey('thermo-minus'),
-                        onPressed: widget.editing ? null : () => st.nudgeSetpoint(id, -0.5),
+                        onPressed: widget.editing
+                            ? null
+                            : () => st.nudgeSetpoint(id, -0.5),
                         icon: const Icon(Icons.remove),
                       ),
                       Padding(
@@ -157,14 +180,20 @@ class _ThermostatTileState extends State<ThermostatTile> {
                               key: const ValueKey('thermo-setpoint'),
                               style: text.titleLarge,
                             ),
-                            if (target != null && (target - c.setpoint).abs() >= 0.25)
-                              Text('→ ${target.toStringAsFixed(1)}', style: text.labelSmall),
+                            if (target != null &&
+                                (target - c.setpoint).abs() >= 0.25)
+                              Text(
+                                '→ ${target.toStringAsFixed(1)}',
+                                style: text.labelSmall,
+                              ),
                           ],
                         ),
                       ),
                       IconButton.filledTonal(
                         key: const ValueKey('thermo-plus'),
-                        onPressed: widget.editing ? null : () => st.nudgeSetpoint(id, 0.5),
+                        onPressed: widget.editing
+                            ? null
+                            : () => st.nudgeSetpoint(id, 0.5),
                         icon: const Icon(Icons.add),
                       ),
                     ],
@@ -217,21 +246,35 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
     ];
   }
 
-  List<TileConfig> get switches => _tiles((t) => t.type == TileType.toggle && t.onCommand != null);
-  List<TileConfig> get setpoints => _tiles((t) => t.type == TileType.slider && t.commands.isNotEmpty);
-  List<TileConfig> get buttons => _tiles((t) => t.type == TileType.button && t.commands.isNotEmpty);
+  List<TileConfig> get switches =>
+      _tiles((t) => t.type == TileType.toggle && t.onCommand != null);
+  List<TileConfig> get setpoints =>
+      _tiles((t) => t.type == TileType.slider && t.commands.isNotEmpty);
+  List<TileConfig> get buttons =>
+      _tiles((t) => t.type == TileType.button && t.commands.isNotEmpty);
   List<TileConfig> get temps {
-    final all = _tiles((t) => t.type == TileType.value && t.connectionId != null);
-    final degrees = all.where((t) => t.unit.contains('°') || t.unit.toUpperCase() == 'C').toList();
+    final all = _tiles(
+      (t) => t.type == TileType.value && t.connectionId != null,
+    );
+    final degrees = all
+        .where((t) => t.unit.contains('°') || t.unit.toUpperCase() == 'C')
+        .toList();
     return degrees.isEmpty ? all : degrees;
   }
 
-  ThermoSource? _source(String tileId) => c.sources.where((s) => s.tileId == tileId).firstOrNull;
+  ThermoSource? _source(String tileId) =>
+      c.sources.where((s) => s.tileId == tileId).firstOrNull;
 
   void _toggleSource(TileConfig t, String kind, bool on) {
     setState(() {
       if (on) {
-        c.sources.add(ThermoSource(kind: kind, tileId: t.id, role: kind == 'climate' ? 'both' : 'heat'));
+        c.sources.add(
+          ThermoSource(
+            kind: kind,
+            tileId: t.id,
+            role: kind == 'climate' ? 'both' : 'heat',
+          ),
+        );
       } else {
         c.sources.removeWhere((s) => s.tileId == t.id);
       }
@@ -270,8 +313,16 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
               title: Text(t.title.isEmpty ? t.id : t.title),
               subtitle: Text(
                 kind == 'switch'
-                    ? tx(context, 'Rele tai kytkin (päälle/pois)', 'Relay or switch (on/off)')
-                    : tx(context, 'Lämpöpumppu tai ilmastointi (asetusarvo)', 'Heat pump or AC (setpoint)'),
+                    ? tx(
+                        context,
+                        'Rele tai kytkin (päälle/pois)',
+                        'Relay or switch (on/off)',
+                      )
+                    : tx(
+                        context,
+                        'Lämpöpumppu tai ilmastointi (asetusarvo)',
+                        'Heat pump or AC (setpoint)',
+                      ),
               ),
             ),
             if (s != null)
@@ -282,19 +333,32 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
                   children: [
                     SegmentedButton<String>(
                       segments: [
-                        ButtonSegment(value: 'heat', label: Text(tx(context, 'Lämmittää', 'Heats'))),
-                        ButtonSegment(value: 'cool', label: Text(tx(context, 'Jäähdyttää', 'Cools'))),
-                        if (kind == 'climate') ButtonSegment(value: 'both', label: Text(tx(context, 'Molemmat', 'Both'))),
+                        ButtonSegment(
+                          value: 'heat',
+                          label: Text(tx(context, 'Lämmittää', 'Heats')),
+                        ),
+                        ButtonSegment(
+                          value: 'cool',
+                          label: Text(tx(context, 'Jäähdyttää', 'Cools')),
+                        ),
+                        if (kind == 'climate')
+                          ButtonSegment(
+                            value: 'both',
+                            label: Text(tx(context, 'Molemmat', 'Both')),
+                          ),
                       ],
                       selected: {s.role},
-                      onSelectionChanged: (v) => setState(() => s.role = v.first),
+                      onSelectionChanged: (v) =>
+                          setState(() => s.role = v.first),
                     ),
                     if (c.sources.length > 1)
                       CheckboxListTile(
                         contentPadding: EdgeInsets.zero,
                         value: s.backup,
                         onChanged: (v) => setState(() => s.backup = v == true),
-                        title: Text(tx(context, 'Varalämmitin', 'Backup heater')),
+                        title: Text(
+                          tx(context, 'Varalämmitin', 'Backup heater'),
+                        ),
                         subtitle: Text(
                           tx(
                             context,
@@ -305,22 +369,37 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
                       ),
                     if (kind == 'climate') ...[
                       _pick(
-                        tx(context, 'Virta päälle/pois (valinnainen)', 'Power on/off (optional)'),
+                        tx(
+                          context,
+                          'Virta päälle/pois (valinnainen)',
+                          'Power on/off (optional)',
+                        ),
                         switches,
                         s.powerTileId,
                         (v) => setState(() => s.powerTileId = v),
                       ),
-                      if (adv || s.heatTileId != null || s.coolTileId != null || buttons.isNotEmpty) ...[
+                      if (adv ||
+                          s.heatTileId != null ||
+                          s.coolTileId != null ||
+                          buttons.isNotEmpty) ...[
                         if (s.role != 'cool')
                           _pick(
-                            tx(context, 'Lämmitystilan painike (valinnainen)', 'Heat mode button (optional)'),
+                            tx(
+                              context,
+                              'Lämmitystilan painike (valinnainen)',
+                              'Heat mode button (optional)',
+                            ),
                             buttons,
                             s.heatTileId,
                             (v) => setState(() => s.heatTileId = v),
                           ),
                         if (s.role != 'heat')
                           _pick(
-                            tx(context, 'Jäähdytystilan painike (valinnainen)', 'Cool mode button (optional)'),
+                            tx(
+                              context,
+                              'Jäähdytystilan painike (valinnainen)',
+                              'Cool mode button (optional)',
+                            ),
                             buttons,
                             s.coolTileId,
                             (v) => setState(() => s.coolTileId = v),
@@ -336,29 +415,53 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
     );
   }
 
-  Widget _pick(String label, List<TileConfig> options, String? value, void Function(String?) set) {
+  Widget _pick(
+    String label,
+    List<TileConfig> options,
+    String? value,
+    void Function(String?) set,
+  ) {
     if (options.isEmpty) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: DropdownButtonFormField<String?>(
         initialValue: options.any((t) => t.id == value) ? value : null,
         isExpanded: true,
-        decoration: InputDecoration(labelText: label, border: const OutlineInputBorder()),
+        decoration: InputDecoration(
+          labelText: label,
+          border: const OutlineInputBorder(),
+        ),
         items: [
-          DropdownMenuItem(value: null, child: Text(tx(context, 'Ei mitään', 'None'))),
-          for (final t in options) DropdownMenuItem(value: t.id, child: Text(t.title, overflow: TextOverflow.ellipsis)),
+          DropdownMenuItem(
+            value: null,
+            child: Text(tx(context, 'Ei mitään', 'None')),
+          ),
+          for (final t in options)
+            DropdownMenuItem(
+              value: t.id,
+              child: Text(t.title, overflow: TextOverflow.ellipsis),
+            ),
         ],
         onChanged: set,
       ),
     );
   }
 
-  Widget _num(String label, double v, void Function(double) set, {String unit = '°C'}) => Padding(
+  Widget _num(
+    String label,
+    double v,
+    void Function(double) set, {
+    String unit = '°C',
+  }) => Padding(
     padding: const EdgeInsets.only(top: 10),
     child: TextFormField(
       initialValue: v % 1 == 0 ? v.toStringAsFixed(0) : '$v',
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
-      decoration: InputDecoration(labelText: label, suffixText: unit, border: const OutlineInputBorder()),
+      decoration: InputDecoration(
+        labelText: label,
+        suffixText: unit,
+        border: const OutlineInputBorder(),
+      ),
       onChanged: (s) {
         final d = double.tryParse(s.replaceAll(',', '.'));
         if (d != null) set(d);
@@ -369,7 +472,10 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
   List<Widget> _step0() {
     final sw = switches, sp = setpoints;
     return [
-      Text(tx(context, 'Mikä lämmittää tai jäähdyttää?', 'What heats or cools?'), style: Theme.of(context).textTheme.titleLarge),
+      Text(
+        tx(context, 'Mikä lämmittää tai jäähdyttää?', 'What heats or cools?'),
+        style: Theme.of(context).textTheme.titleLarge,
+      ),
       const SizedBox(height: 6),
       Text(
         tx(
@@ -383,7 +489,13 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
         Card(
           child: ListTile(
             leading: const Icon(Icons.info_outline),
-            title: Text(tx(context, 'Ei sopivia laitteita vielä', 'No suitable devices yet')),
+            title: Text(
+              tx(
+                context,
+                'Ei sopivia laitteita vielä',
+                'No suitable devices yet',
+              ),
+            ),
             subtitle: Text(
               tx(
                 context,
@@ -401,11 +513,22 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
   List<Widget> _step1() {
     final ts = temps;
     return [
-      Text(tx(context, 'Mistä lämpötila luetaan?', 'Where is the temperature read from?'), style: Theme.of(context).textTheme.titleLarge),
+      Text(
+        tx(
+          context,
+          'Mistä lämpötila luetaan?',
+          'Where is the temperature read from?',
+        ),
+        style: Theme.of(context).textTheme.titleLarge,
+      ),
       const SizedBox(height: 6),
       Text(
         c.needsSensor
-            ? tx(context, 'Valitse lämpömittari. Useampi = varalla tai keskiarvo.', 'Pick a thermometer. Several = fallback or average.')
+            ? tx(
+                context,
+                'Valitse lämpömittari. Useampi = varalla tai keskiarvo.',
+                'Pick a thermometer. Several = fallback or average.',
+              )
             : tx(
                 context,
                 'Ei pakollinen: lämpöpumppu mittaa itse. Valitse mittari, jos haluat nähdä lämpötilan.',
@@ -418,14 +541,22 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
           child: ListTile(
             leading: const Icon(Icons.info_outline),
             title: Text(tx(context, 'Ei lämpömittaria', 'No thermometer')),
-            subtitle: Text(tx(context, 'Lisää ensin laite, joka näyttää lämpötilan.', 'First add a device that shows a temperature.')),
+            subtitle: Text(
+              tx(
+                context,
+                'Lisää ensin laite, joka näyttää lämpötilan.',
+                'First add a device that shows a temperature.',
+              ),
+            ),
           ),
         ),
       for (final t in ts)
         CheckboxListTile(
           key: ValueKey('sensor-${t.id}'),
           value: c.sensors.contains(t.id),
-          onChanged: (v) => setState(() => v == true ? c.sensors.add(t.id) : c.sensors.remove(t.id)),
+          onChanged: (v) => setState(
+            () => v == true ? c.sensors.add(t.id) : c.sensors.remove(t.id),
+          ),
           title: Text(t.title),
           subtitle: t.unit.isEmpty ? null : Text(t.unit),
         ),
@@ -433,8 +564,14 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
         const SizedBox(height: 8),
         SegmentedButton<String>(
           segments: [
-            ButtonSegment(value: 'first', label: Text(tx(context, 'Ensimmäinen toimiva', 'First working'))),
-            ButtonSegment(value: 'avg', label: Text(tx(context, 'Keskiarvo', 'Average'))),
+            ButtonSegment(
+              value: 'first',
+              label: Text(tx(context, 'Ensimmäinen toimiva', 'First working')),
+            ),
+            ButtonSegment(
+              value: 'avg',
+              label: Text(tx(context, 'Keskiarvo', 'Average')),
+            ),
           ],
           selected: {c.combine},
           onSelectionChanged: (v) => setState(() => c.combine = v.first),
@@ -448,7 +585,10 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
     final hasCool = c.sources.any((s) => s.role != 'heat');
     final hasHeat = c.sources.any((s) => s.role != 'cool');
     return [
-      Text(tx(context, 'Nimi ja tila', 'Name and mode'), style: Theme.of(context).textTheme.titleLarge),
+      Text(
+        tx(context, 'Nimi ja tila', 'Name and mode'),
+        style: Theme.of(context).textTheme.titleLarge,
+      ),
       const SizedBox(height: 10),
       TextField(
         key: const ValueKey('thermo-name'),
@@ -463,17 +603,36 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
       const SizedBox(height: 12),
       SegmentedButton<String>(
         segments: [
-          if (hasHeat) ButtonSegment(value: 'heat', label: Text(tx(context, 'Lämmitys', 'Heating'))),
-          if (hasCool) ButtonSegment(value: 'cool', label: Text(tx(context, 'Jäähdytys', 'Cooling'))),
-          if (hasHeat && hasCool) ButtonSegment(value: 'auto', label: Text(tx(context, 'Molemmat', 'Both'))),
+          if (hasHeat)
+            ButtonSegment(
+              value: 'heat',
+              label: Text(tx(context, 'Lämmitys', 'Heating')),
+            ),
+          if (hasCool)
+            ButtonSegment(
+              value: 'cool',
+              label: Text(tx(context, 'Jäähdytys', 'Cooling')),
+            ),
+          if (hasHeat && hasCool)
+            ButtonSegment(
+              value: 'auto',
+              label: Text(tx(context, 'Molemmat', 'Both')),
+            ),
         ],
         selected: {c.mode == 'off' ? (hasHeat ? 'heat' : 'cool') : c.mode},
         onSelectionChanged: (v) => setState(() => c.mode = v.first),
       ),
-      _num(tx(context, 'Tavoitelämpötila', 'Target temperature'), c.setpoint, (v) => c.setpoint = v),
+      _num(
+        tx(context, 'Tavoitelämpötila', 'Target temperature'),
+        c.setpoint,
+        (v) => c.setpoint = v,
+      ),
       if (c.needsSensor) ...[
         const SizedBox(height: 16),
-        Text(tx(context, 'Jos lämpötilaa ei saada', 'If the temperature is lost'), style: Theme.of(context).textTheme.titleSmall),
+        Text(
+          tx(context, 'Jos lämpötilaa ei saada', 'If the temperature is lost'),
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
         RadioGroup<String>(
           groupValue: c.onSensorLost,
           onChanged: (v) => setState(() => c.onSensorLost = v ?? 'off'),
@@ -481,7 +640,13 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
             children: [
               RadioListTile<String>(
                 value: 'off',
-                title: Text(tx(context, 'Sammuta lämmitys/jäähdytys (turvallisin)', 'Switch heating/cooling off (safest)')),
+                title: Text(
+                  tx(
+                    context,
+                    'Sammuta lämmitys/jäähdytys (turvallisin)',
+                    'Switch heating/cooling off (safest)',
+                  ),
+                ),
               ),
               RadioListTile<String>(
                 value: 'keep',
@@ -493,14 +658,57 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
       ],
       if (adv) ...[
         const SizedBox(height: 16),
-        Text(tx(context, 'Edistyneet', 'Advanced'), style: Theme.of(context).textTheme.titleSmall),
-        _num(tx(context, 'Hystereesi', 'Hysteresis'), c.hysteresis, (v) => c.hysteresis = v),
-        if (c.mode == 'auto') _num(tx(context, 'Kuollut alue (lämmitys/jäähdytys)', 'Deadband (heat/cool)'), c.deadband, (v) => c.deadband = v),
-        _num(tx(context, 'Vähimmäisaika päällä', 'Minimum on time'), c.minOnMinutes.toDouble(), (v) => c.minOnMinutes = v.round(), unit: 'min'),
-        _num(tx(context, 'Vähimmäisaika pois', 'Minimum off time'), c.minOffMinutes.toDouble(), (v) => c.minOffMinutes = v.round(), unit: 'min'),
+        Text(
+          tx(context, 'Edistyneet', 'Advanced'),
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        _num(
+          tx(context, 'Hystereesi', 'Hysteresis'),
+          c.hysteresis,
+          (v) => c.hysteresis = v,
+        ),
+        if (c.mode == 'auto')
+          _num(
+            tx(
+              context,
+              'Kuollut alue (lämmitys/jäähdytys)',
+              'Deadband (heat/cool)',
+            ),
+            c.deadband,
+            (v) => c.deadband = v,
+          ),
+        _num(
+          tx(context, 'Vähimmäisaika päällä', 'Minimum on time'),
+          c.minOnMinutes.toDouble(),
+          (v) => c.minOnMinutes = v.round(),
+          unit: 'min',
+        ),
+        _num(
+          tx(context, 'Vähimmäisaika pois', 'Minimum off time'),
+          c.minOffMinutes.toDouble(),
+          (v) => c.minOffMinutes = v.round(),
+          unit: 'min',
+        ),
         if (c.sources.any((s) => s.backup))
-          _num(tx(context, 'Varalämmitin, kun alle tavoitteen', 'Backup heater when below target by'), c.backupDelta, (v) => c.backupDelta = v),
-        _num(tx(context, 'Mittari kadonnut, kun ei lukemaa', 'Sensor lost after no reading for'), c.sensorTimeoutMinutes.toDouble(), (v) => c.sensorTimeoutMinutes = v.round(), unit: 'min'),
+          _num(
+            tx(
+              context,
+              'Varalämmitin, kun alle tavoitteen',
+              'Backup heater when below target by',
+            ),
+            c.backupDelta,
+            (v) => c.backupDelta = v,
+          ),
+        _num(
+          tx(
+            context,
+            'Mittari kadonnut, kun ei lukemaa',
+            'Sensor lost after no reading for',
+          ),
+          c.sensorTimeoutMinutes.toDouble(),
+          (v) => c.sensorTimeoutMinutes = v.round(),
+          unit: 'min',
+        ),
       ],
     ];
   }
@@ -510,13 +718,20 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
     final steps = [_step0, _step1, _step2];
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.edit == null ? tx(context, 'Uusi termostaatti', 'New thermostat') : tx(context, 'Muokkaa termostaattia', 'Edit thermostat')),
+        title: Text(
+          widget.edit == null
+              ? tx(context, 'Uusi termostaatti', 'New thermostat')
+              : tx(context, 'Muokkaa termostaattia', 'Edit thermostat'),
+        ),
       ),
       body: Column(
         children: [
           LinearProgressIndicator(value: (step + 1) / 3),
           Expanded(
-            child: ListView(padding: const EdgeInsets.all(16), children: steps[step]()),
+            child: ListView(
+              padding: const EdgeInsets.all(16),
+              children: steps[step](),
+            ),
           ),
           SafeArea(
             child: Padding(
@@ -524,12 +739,21 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
               child: Row(
                 children: [
                   if (step > 0)
-                    TextButton(onPressed: () => setState(() => step--), child: Text(tx(context, 'Takaisin', 'Back'))),
+                    TextButton(
+                      onPressed: () => setState(() => step--),
+                      child: Text(tx(context, 'Takaisin', 'Back')),
+                    ),
                   const Spacer(),
                   FilledButton(
                     key: const ValueKey('thermo-next'),
-                    onPressed: !_canNext ? null : (step < 2 ? () => setState(() => step++) : _finish),
-                    child: Text(step < 2 ? tx(context, 'Seuraava', 'Next') : tx(context, 'Valmis', 'Done')),
+                    onPressed: !_canNext
+                        ? null
+                        : (step < 2 ? () => setState(() => step++) : _finish),
+                    child: Text(
+                      step < 2
+                          ? tx(context, 'Seuraava', 'Next')
+                          : tx(context, 'Valmis', 'Done'),
+                    ),
                   ),
                 ],
               ),
@@ -543,7 +767,13 @@ class _ThermostatWizardState extends State<ThermostatWizard> {
 
 /// Thermostat details: setpoint, mode, smart heating preset and the 24–36 h plan.
 class ThermostatPage extends StatefulWidget {
-  const ThermostatPage({super.key, required this.id, this.prices, this.weather, this.clock});
+  const ThermostatPage({
+    super.key,
+    required this.id,
+    this.prices,
+    this.weather,
+    this.clock,
+  });
   final String id;
   final PriceService? prices;
   final WeatherService? weather;
@@ -587,20 +817,35 @@ class _ThermostatPageState extends State<ThermostatPage> {
       appBar: AppBar(
         title: Text(c.name),
         actions: [
-          IconButton(
-            tooltip: tx(context, 'Muokkaa', 'Edit'),
-            icon: const Icon(Icons.edit_outlined),
-            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => ThermostatWizard(edit: c))),
-          ),
-          IconButton(
-            tooltip: tx(context, 'Poista', 'Delete'),
-            icon: const Icon(Icons.delete_outline),
-            onPressed: () async {
-              if (!await confirmDialog(context, c.name, tx(context, 'Poistetaanko termostaatti?', 'Delete the thermostat?'))) return;
-              await st.deleteThermostat(c.id);
-              if (context.mounted) Navigator.pop(context);
-            },
-          ),
+          if (!st.viewLocked) ...[
+            IconButton(
+              tooltip: tx(context, 'Muokkaa', 'Edit'),
+              icon: const Icon(Icons.edit_outlined),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => ThermostatWizard(edit: c)),
+              ),
+            ),
+            IconButton(
+              tooltip: tx(context, 'Poista', 'Delete'),
+              icon: const Icon(Icons.delete_outline),
+              onPressed: () async {
+                if (!await confirmDialog(
+                  context,
+                  c.name,
+                  tx(
+                    context,
+                    'Poistetaanko termostaatti?',
+                    'Delete the thermostat?',
+                  ),
+                )) {
+                  return;
+                }
+                await st.deleteThermostat(c.id);
+                if (context.mounted) Navigator.pop(context);
+              },
+            ),
+          ],
         ],
       ),
       body: ListView(
@@ -614,21 +859,37 @@ class _ThermostatPageState extends State<ThermostatPage> {
                   children: [
                     Text(tx(context, 'Nyt', 'Now'), style: text.labelMedium),
                     Text(_deg(s?['temp'] as num?), style: text.headlineMedium),
-                    Text(thermoStateLabel(context, '${s?['state'] ?? 'idle'}'), style: text.bodySmall),
+                    Text(
+                      thermoStateLabel(context, '${s?['state'] ?? 'idle'}'),
+                      style: text.bodySmall,
+                    ),
                   ],
                 ),
               ),
-              IconButton.filledTonal(onPressed: () => st.nudgeSetpoint(c.id, -0.5), icon: const Icon(Icons.remove)),
+              IconButton.filledTonal(
+                onPressed: () => st.nudgeSetpoint(c.id, -0.5),
+                icon: const Icon(Icons.remove),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
                   children: [
-                    Text(tx(context, 'Tavoite', 'Target'), style: text.labelMedium),
-                    Text(c.setpoint.toStringAsFixed(1), key: const ValueKey('page-setpoint'), style: text.headlineMedium),
+                    Text(
+                      tx(context, 'Tavoite', 'Target'),
+                      style: text.labelMedium,
+                    ),
+                    Text(
+                      c.setpoint.toStringAsFixed(1),
+                      key: const ValueKey('page-setpoint'),
+                      style: text.headlineMedium,
+                    ),
                   ],
                 ),
               ),
-              IconButton.filledTonal(onPressed: () => st.nudgeSetpoint(c.id, 0.5), icon: const Icon(Icons.add)),
+              IconButton.filledTonal(
+                onPressed: () => st.nudgeSetpoint(c.id, 0.5),
+                icon: const Icon(Icons.add),
+              ),
             ],
           ),
           const SizedBox(height: 16),
@@ -640,7 +901,9 @@ class _ThermostatPageState extends State<ThermostatPage> {
                 if (m == 'off' ||
                     (m == 'heat' && c.sources.any((x) => x.role != 'cool')) ||
                     (m == 'cool' && c.sources.any((x) => x.role != 'heat')) ||
-                    (m == 'auto' && c.sources.any((x) => x.role != 'cool') && c.sources.any((x) => x.role != 'heat')))
+                    (m == 'auto' &&
+                        c.sources.any((x) => x.role != 'cool') &&
+                        c.sources.any((x) => x.role != 'heat')))
                   ChoiceChip(
                     label: Text(thermoModeLabel(context, m)),
                     selected: c.mode == m,
@@ -653,7 +916,13 @@ class _ThermostatPageState extends State<ThermostatPage> {
             Card(
               child: ListTile(
                 leading: const Icon(Icons.cloud_off),
-                title: Text(tx(context, 'Termostaatti toimii kotisillalla', 'The thermostat runs on the home bridge')),
+                title: Text(
+                  tx(
+                    context,
+                    'Termostaatti toimii kotisillalla',
+                    'The thermostat runs on the home bridge',
+                  ),
+                ),
                 subtitle: Text(
                   tx(
                     context,
@@ -668,14 +937,25 @@ class _ThermostatPageState extends State<ThermostatPage> {
               padding: const EdgeInsets.only(top: 8),
               child: Text(
                 st.rulesRunWhere == 'self'
-                    ? tx(context, 'Ohjaus toimii tällä laitteella (kotisilta).', 'Runs on this device (home bridge).')
-                    : tx(context, 'Ohjaus toimii kotisillalla.', 'Runs on the home bridge.'),
+                    ? tx(
+                        context,
+                        'Ohjaus toimii tällä laitteella (kotisilta).',
+                        'Runs on this device (home bridge).',
+                      )
+                    : tx(
+                        context,
+                        'Ohjaus toimii kotisillalla.',
+                        'Runs on the home bridge.',
+                      ),
                 style: text.bodySmall,
               ),
             ),
           if (c.mode != 'off') ...[
             const SizedBox(height: 24),
-            Text(tx(context, 'Älykäs lämmitys', 'Smart heating'), style: text.titleMedium),
+            Text(
+              tx(context, 'Älykäs lämmitys', 'Smart heating'),
+              style: text.titleMedium,
+            ),
             Text(
               tx(
                 context,
@@ -712,7 +992,14 @@ class _ThermostatPageState extends State<ThermostatPage> {
             ),
             if (c.plan.enabled) ...[
               const SizedBox(height: 6),
-              Text(tx(context, presetById(c.plan.preset).descFi, presetById(c.plan.preset).descEn), style: text.bodySmall),
+              Text(
+                tx(
+                  context,
+                  presetById(c.plan.preset).descFi,
+                  presetById(c.plan.preset).descEn,
+                ),
+                style: text.bodySmall,
+              ),
               if (adv) ...[
                 const SizedBox(height: 8),
                 Row(
@@ -721,9 +1008,14 @@ class _ThermostatPageState extends State<ThermostatPage> {
                       child: TextFormField(
                         key: ValueKey('upper-${c.plan.preset}'),
                         initialValue: '${c.plan.upper}',
-                        decoration: InputDecoration(labelText: tx(context, 'Ylilämpö +', 'Overheat +'), suffixText: '°C'),
+                        decoration: InputDecoration(
+                          labelText: tx(context, 'Ylilämpö +', 'Overheat +'),
+                          suffixText: '°C',
+                        ),
                         onFieldSubmitted: (v) async {
-                          c.plan.upper = double.tryParse(v.replaceAll(',', '.')) ?? c.plan.upper;
+                          c.plan.upper =
+                              double.tryParse(v.replaceAll(',', '.')) ??
+                              c.plan.upper;
                           await st.saveThermostat(c);
                         },
                       ),
@@ -733,9 +1025,14 @@ class _ThermostatPageState extends State<ThermostatPage> {
                       child: TextFormField(
                         key: ValueKey('lower-${c.plan.preset}'),
                         initialValue: '${c.plan.lower}',
-                        decoration: InputDecoration(labelText: tx(context, 'Alilämpö −', 'Underheat −'), suffixText: '°C'),
+                        decoration: InputDecoration(
+                          labelText: tx(context, 'Alilämpö −', 'Underheat −'),
+                          suffixText: '°C',
+                        ),
                         onFieldSubmitted: (v) async {
-                          c.plan.lower = double.tryParse(v.replaceAll(',', '.')) ?? c.plan.lower;
+                          c.plan.lower =
+                              double.tryParse(v.replaceAll(',', '.')) ??
+                              c.plan.lower;
                           await st.saveThermostat(c);
                         },
                       ),
@@ -744,7 +1041,13 @@ class _ThermostatPageState extends State<ThermostatPage> {
                 ),
               ],
               const SizedBox(height: 12),
-              SizedBox(height: 200, child: PlanChart(plan: _plan ?? const [], now: (widget.clock ?? DateTime.now)())),
+              SizedBox(
+                height: 200,
+                child: PlanChart(
+                  plan: _plan ?? const [],
+                  now: (widget.clock ?? DateTime.now)(),
+                ),
+              ),
               const SizedBox(height: 6),
               Text(
                 tx(
@@ -757,8 +1060,17 @@ class _ThermostatPageState extends State<ThermostatPage> {
               if (st.config.energy.home == null)
                 TextButton.icon(
                   icon: const Icon(Icons.place_outlined),
-                  label: Text(tx(context, 'Lisää kodin sijainti säätä varten', 'Add the home location for the weather')),
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const HomeLocationPage())),
+                  label: Text(
+                    tx(
+                      context,
+                      'Lisää kodin sijainti säätä varten',
+                      'Add the home location for the weather',
+                    ),
+                  ),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const HomeLocationPage()),
+                  ),
                 ),
             ],
           ],
@@ -777,7 +1089,14 @@ class PlanChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final text = Theme.of(context).textTheme;
-    if (plan.isEmpty) return Center(child: Text(tx(context, 'Suunnitelmaa lasketaan…', 'Calculating the plan…'), style: text.bodySmall));
+    if (plan.isEmpty) {
+      return Center(
+        child: Text(
+          tx(context, 'Suunnitelmaa lasketaan…', 'Calculating the plan…'),
+          style: text.bodySmall,
+        ),
+      );
+    }
     final sp = plan.map((p) => p.target);
     String hh(DateTime t) => t.hour.toString().padLeft(2, '0');
     return Column(
@@ -801,7 +1120,10 @@ class PlanChart extends StatelessWidget {
             const Spacer(),
             Text(hh(plan[plan.length ~/ 2].start), style: text.labelSmall),
             const Spacer(),
-            Text(hh(plan.last.start.add(const Duration(hours: 1))), style: text.labelSmall),
+            Text(
+              hh(plan.last.start.add(const Duration(hours: 1))),
+              style: text.labelSmall,
+            ),
           ],
         ),
       ],
@@ -821,7 +1143,9 @@ class _PlanPainter extends CustomPainter {
     final prices = plan.map((p) => p.price).whereType<double>().toList();
     if (prices.isNotEmpty) {
       final hi = prices.reduce((a, b) => a > b ? a : b);
-      final lo = prices.reduce((a, b) => a < b ? a : b).clamp(double.negativeInfinity, 0.0);
+      final lo = prices
+          .reduce((a, b) => a < b ? a : b)
+          .clamp(double.negativeInfinity, 0.0);
       final span = hi - lo == 0 ? 1.0 : hi - lo;
       for (var i = 0; i < n; i++) {
         final p = plan[i].price;
@@ -830,24 +1154,37 @@ class _PlanPainter extends CustomPainter {
         final h = size.height * 0.6 * f + 2;
         canvas.drawRect(
           Rect.fromLTWH(i * w, size.height - h, w - 1, h),
-          Paint()..color = Color.lerp(const Color(0xFF43A047), const Color(0xFFE53935), f)!.withValues(alpha: 0.45),
+          Paint()
+            ..color = Color.lerp(
+              const Color(0xFF43A047),
+              const Color(0xFFE53935),
+              f,
+            )!.withValues(alpha: 0.45),
         );
         if (plan[i].reason == 'preheat' || plan[i].reason == 'coast') {
           canvas.drawRect(
             Rect.fromLTWH(i * w, 0, w - 1, 4),
-            Paint()..color = plan[i].reason == 'preheat' ? Colors.deepOrange : Colors.lightBlue,
+            Paint()
+              ..color = plan[i].reason == 'preheat'
+                  ? Colors.deepOrange
+                  : Colors.lightBlue,
           );
         }
       }
     }
-    final temps = [for (final p in plan) p.target, for (final p in plan) ?p.outdoor];
+    final temps = [
+      for (final p in plan) p.target,
+      for (final p in plan) ?p.outdoor,
+    ];
     var tLo = temps.reduce((a, b) => a < b ? a : b) - 0.5;
     var tHi = temps.reduce((a, b) => a > b ? a : b) + 0.5;
     if (tHi - tLo < 3) {
       tLo -= 1.5;
       tHi += 1.5;
     }
-    double y(double t) => size.height * 0.05 + (size.height * 0.9) * (1 - (t - tLo) / (tHi - tLo));
+    double y(double t) =>
+        size.height * 0.05 +
+        (size.height * 0.9) * (1 - (t - tLo) / (tHi - tLo));
     final line = Path();
     for (var i = 0; i < n; i++) {
       final yy = y(plan[i].target);
@@ -871,11 +1208,19 @@ class _PlanPainter extends CustomPainter {
     for (var i = 0; i < n - 1; i++) {
       final a = plan[i].outdoor, b = plan[i + 1].outdoor;
       if (a == null || b == null || i.isOdd) continue;
-      canvas.drawLine(Offset((i + 0.5) * w, y(a)), Offset((i + 1.5) * w, y(b)), out);
+      canvas.drawLine(
+        Offset((i + 0.5) * w, y(a)),
+        Offset((i + 1.5) * w, y(b)),
+        out,
+      );
     }
     for (var i = 1; i < n; i++) {
       if (plan[i].start.hour == 0) {
-        canvas.drawLine(Offset(i * w, 0), Offset(i * w, size.height), Paint()..color = cs.outline);
+        canvas.drawLine(
+          Offset(i * w, 0),
+          Offset(i * w, size.height),
+          Paint()..color = cs.outline,
+        );
       }
     }
   }

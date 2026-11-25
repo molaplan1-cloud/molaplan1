@@ -327,6 +327,64 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get s5b44cbe9c0 => 'Home';
+
+  @override
+  String get s58aaa6dade => 'The view is locked';
+
+  @override
+  String get sdf1af3409c => 'Unlock';
+
+  @override
+  String get s4629a1695c => 'Menu';
+
+  @override
+  String get s41c3cebc48 => 'Add device';
+
+  @override
+  String get scd04aa5d9e => 'Edit the view';
+
+  @override
+  String get s49de879696 => 'Energy';
+
+  @override
+  String get s1da81fd6c3 => 'Settings';
+
+  @override
+  String get s365492a7d0 => 'Lock the view';
+
+  @override
+  String get sb2f38410ee =>
+      'Devices can still be controlled, but editing, settings and adding devices are hidden. Unlock from the gear icon.';
+
+  @override
+  String get se497d27174 => 'PIN code (optional)';
+
+  @override
+  String get sd21180a166 => 'Without a PIN one tap unlocks.';
+
+  @override
+  String get s809d0eb368 => 'Cancel';
+
+  @override
+  String get sd86ff8e28a => 'Lock';
+
+  @override
+  String get s872f93a062 => 'Unlock?';
+
+  @override
+  String get s0cd88e27f4 => 'Editing and settings become visible again.';
+
+  @override
+  String get sa5283191be => 'Unlock';
+
+  @override
+  String get sdfc012fb4e => 'PIN code';
+
+  @override
+  String get sca710b76b5 => 'Wrong PIN code';
+
+  @override
   String sa0c07ccd04(String p0) {
     return 'You have the latest version ($p0).';
   }
@@ -397,9 +455,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get sdc3bf71baf =>
       'Android asks once for permission so Molaplan can install its own updates.\n\n1. Tap \"Open settings\".\n2. Turn on \"Allow from this source\".\n3. Come back and tap \"Update\" again.';
-
-  @override
-  String get s809d0eb368 => 'Cancel';
 
   @override
   String get sa1bd8d2533 => 'Open settings';
@@ -2231,12 +2286,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s0789f5f14f => 'DASHBOARDS';
 
   @override
-  String get s49de879696 => 'Energy';
-
-  @override
-  String get s1da81fd6c3 => 'Settings';
-
-  @override
   String get s59622d792b => 'Rename';
 
   @override
@@ -2244,9 +2293,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get scdfd80f963 => 'Add tile';
-
-  @override
-  String get s41c3cebc48 => 'Add device';
 
   @override
   String get s71af34b8e9 => 'Empty dashboard';
@@ -2437,9 +2483,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s1e5d696a26 => 'Run this command?';
-
-  @override
-  String get sdfc012fb4e => 'PIN code';
 
   @override
   String get s1df6e2eaa7 => 'PIN';
@@ -3343,9 +3386,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s1dfeacd9f6 => 'UDP';
-
-  @override
-  String get s5b44cbe9c0 => 'Home';
 
   @override
   String get s804e935440 => 'ESP32 camera';

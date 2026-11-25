@@ -349,6 +349,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     'remoteCameraSeconds',
     'updateCheckedAt',
     'updateSkip',
+    'viewLocked',
   ];
 
   @override
@@ -388,6 +389,8 @@ class AppState extends ChangeNotifier implements SyncHost {
     final removed = oldSecrets.keys.toSet().difference({for (final c in other.connections) c.id});
     config.connections = other.connections;
     config.dashboards = other.dashboards;
+    config.rules = other.rules;
+    config.energy = other.energy;
     if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     if (hasLocalSetup) config.onboardingDone = true;
     _applyingSync = true;
@@ -572,6 +575,39 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (r != null) config.rules.add(r);
     await save();
     notifyListeners();
+  }
+
+  // ---- control view lock ("Lukitse näkymä")
+  static const lockPinKey = 'molaplan.view.lockPin';
+
+  bool get viewLocked => config.viewLocked;
+
+  /// Any tile anywhere -> the app opens in the clean control view.
+  bool get hasTiles => config.dashboards.any((d) => d.tiles.isNotEmpty);
+
+  /// Locks the control view; an optional PIN (stored in secure storage) is then needed to unlock.
+  Future<void> lockView({String? pin}) async {
+    if (pin != null && pin.isNotEmpty) {
+      await secretStore.write(lockPinKey, pin);
+    } else {
+      await secretStore.delete(lockPinKey);
+    }
+    config.viewLocked = true;
+    await save();
+    notifyListeners();
+  }
+
+  Future<bool> get lockHasPin async => ((await secretStore.read(lockPinKey)) ?? '').isNotEmpty;
+
+  /// Returns false when the PIN is wrong.
+  Future<bool> unlockView([String? pin]) async {
+    final saved = await secretStore.read(lockPinKey);
+    if (saved != null && saved.isNotEmpty && saved != pin) return false;
+    config.viewLocked = false;
+    await secretStore.delete(lockPinKey);
+    await save();
+    notifyListeners();
+    return true;
   }
 
   Future<void> setAdvanced(bool v) async {

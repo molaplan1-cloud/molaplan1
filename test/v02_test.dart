@@ -342,7 +342,9 @@ void main() {
       addTearDown(tester.view.reset);
       await tester.pumpWidget(MolaplanApp(state: st));
       await tester.pumpAndSettle();
-      await tester.tap(find.byIcon(Icons.edit_outlined));
+      await tester.tap(find.byKey(const ValueKey('control-menu')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('control-edit')));
       await tester.pumpAndSettle();
       await tester.tap(find.descendant(of: find.byType(Wrap), matching: find.byIcon(Icons.delete_outline)).last);
       await tester.pumpAndSettle();

@@ -641,7 +641,7 @@ final deviceTemplates = <DeviceTemplate>[
       );
       final e = _s(v, 'entity');
       final name = _s(v, 'name', _t(lang, 'Lämpöpumppu', 'Heat pump'));
-      return TemplateResult([c], _heatPumpHaTiles(c.id, e, name, lang));
+      return TemplateResult([c], heatPumpHaTiles(c.id, e, name, lang));
     },
   ),
   DeviceTemplate(
@@ -1424,7 +1424,7 @@ final deviceTemplates = <DeviceTemplate>[
   ),
 ];
 
-List<TileConfig> _heatPumpHaTiles(String cid, String e, String name, String lang) => [
+List<TileConfig> heatPumpHaTiles(String cid, String e, String name, String lang) => [
   TileConfig(
     type: TileType.value,
     title: '$name – ${_t(lang, 'huone', 'room')}',
