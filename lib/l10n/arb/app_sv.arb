@@ -237,6 +237,7 @@
  },
  "s3832b8c729": "hela rummet",
  "see129fb410": "ljusstyrka",
+ "sceabe202da": "camera_",
  "sb9964cfb3b": "Effekt {p0}",
  "sfcb44be1a0": "Shelly",
  "sa6ff717527": "Reläer och pluggar: Pro 4PM, Plus 1PM, Plug S, 2,5 ... Hittas automatiskt, kakel för varje kanal.",
@@ -958,6 +959,54 @@
   "x-mt": true
  },
  "s5a40f12b6a": "Lägg till",
+ "s7aa295f82d": "Inte hemma – byt ›",
+ "sdc74e0c0e7": "Inte i hemnätverket – byt till fjärranslutning ›",
+ "s3a5c21004e": "Offline",
+ "s68cbe596f8": "Inloggningen har gått ut",
+ "s156aa7eeb3": "Enheten svarar inte",
+ "s7abcbf1107": "Servern hittades inte",
+ "sca533b6f25": "Hembryggan svarar inte",
+ "s96ad0dc252": "Värde som inte finns på enheten",
+ "@s96ad0dc252": {
+  "x-mt": true
+ },
+ "s61cdd7287b": "Inställning saknas",
+ "s57d0940253": "Säkerhetsfel",
+ "@s57d0940253": {
+  "x-mt": true
+ },
+ "sfec025279e": "Enheten är offline",
+ "sa7d212f047": "Enheter i hemmets Wi-Fi fungerar ändå.",
+ "s24ccd151f2": "Försök igen",
+ "sc5f54cf3c8": "Fyll i nyckeln och servern.",
+ "@sc5f54cf3c8": {
+  "x-mt": true
+ },
+ "sb26dad8f73": "Inga enheter i molnet med denna nyckel.",
+ "@sb26dad8f73": {
+  "x-mt": true
+ },
+ "s2c6ce95ec2": "{p0} fungerar nu genom Shelly Cloud.",
+ "@s2c6ce95ec2": {
+  "x-mt": true
+ },
+ "s5629901cc4": "Kontrollera {p0} hemifrån",
+ "@s5629901cc4": {
+  "x-mt": true
+ },
+ "s064abc90af": "Enheten byts till Shelly Cloud. Alla dess kanaler, namn och kort stannar. Key: Shelly app → din profil → Användarinställningar → Auktoriseringsmolnnyckel.",
+ "@s064abc90af": {
+  "x-mt": true
+ },
+ "sf16961256b": "Server (Server URI)",
+ "@sf16961256b": {
+  "x-mt": true
+ },
+ "s28e10c6870": "Vilken av dessa är {p0}?",
+ "@s28e10c6870": {
+  "x-mt": true
+ },
+ "s09f5da65e0": "Byt till Shelly Cloud",
  "sa3a093e55e": "Värme",
  "s8efb99df1d": "Kyla",
  "s0b98d62330": "Värme och kyla",
@@ -1071,6 +1120,58 @@
   "x-mt": true
  },
  "s941fbb47fe": "Planen beräknas…",
+ "s702ca14235": "Tasmota-enhet",
+ "se0e5f715ad": "ESPHome-enhet",
+ "@se0e5f715ad": {
+  "x-mt": true
+ },
+ "s63b6e55469": "HomeKit-enhet",
+ "@s63b6e55469": {
+  "x-mt": true
+ },
+ "s13e301a66e": "Okänd enhet",
+ "s23f4820db7": "Inte kontrollerbar ännu",
+ "@s23f4820db7": {
+  "x-mt": true
+ },
+ "saae59a3865": "via home bridge",
+ "@saae59a3865": {
+  "x-mt": true
+ },
+ "s1169d2d093": "Hitta enheter",
+ "s55b85f29a6": "Söker ditt hemnätverk...",
+ "@s55b85f29a6": {
+  "x-mt": true
+ },
+ "se9c923ff0b": "Molaplan letar efter enheter som den känner igen på ditt hemnätverk.",
+ "@se9c923ff0b": {
+  "x-mt": true
+ },
+ "s3ff2220816": "Inga kända enheter hittades. Välj varumärket nedan.",
+ "@s3ff2220816": {
+  "x-mt": true
+ },
+ "s2a9142dc3e": "Hittade {p0}. Tryck på att lägga till.",
+ "@s2a9142dc3e": {
+  "x-mt": true
+ },
+ "s2fc39b0bd7": "Sök igen",
+ "s0a9acb5af1": "Sök efter Sök",
+ "@s0a9acb5af1": {
+  "x-mt": true
+ },
+ "s9a018b8166": "Du är borta: hembron sökte ditt hemnätverk.",
+ "@s9a018b8166": {
+  "x-mt": true
+ },
+ "sc81d032be0": "{p0} okända enheter",
+ "@sc81d032be0": {
+  "x-mt": true
+ },
+ "s7f3081821b": "Molaplan kan inte kontrollera dessa.",
+ "@s7f3081821b": {
+  "x-mt": true
+ },
  "s55d52c5ae1": "Denna enhet är inte på Wi-Fi",
  "@s55d52c5ae1": {
   "x-mt": true
@@ -1298,15 +1399,10 @@
  "@s13f0596b74": {
   "x-mt": true
  },
- "saae59a3865": "via home bridge",
- "@saae59a3865": {
-  "x-mt": true
- },
  "s8eabd27f68": "Ingenting hittas automatiskt. Kontrollera att {p0} är på och på samma Wi-Fi. Du kan också skriva adressen nedan.",
  "@s8eabd27f68": {
   "x-mt": true
  },
- "s2fc39b0bd7": "Sök igen",
  "sa616ab181e": "Skriv adressen",
  "@sa616ab181e": {
   "x-mt": true
@@ -2623,6 +2719,8 @@
   "x-mt": true
  },
  "s9bb545e9b3": "Logga in eller skapa ett konto",
+ "s0625d54b38": "Kortstorlek",
+ "s8382da3467": "Normal",
  "s21f870dbc2": "Visar tekniska inställningar: anslutningar (HTTP, MQTT, Modbus...), nyttolast, JSON-vägar och kakelkällor. De flesta behöver inte dessa.",
  "@s21f870dbc2": {
   "x-mt": true
@@ -3546,7 +3644,6 @@
  "@s259e46c59a": {
   "x-mt": true
  },
- "s702ca14235": "Tasmota-enhet",
  "sc130e073ba": "Relä eller plug kör Tasmota firmware.",
  "@sc130e073ba": {
   "x-mt": true
@@ -3569,10 +3666,6 @@
  },
  "s397e83233d": "Endast om ett webblösenord är inställt (användaradmin).",
  "@s397e83233d": {
-  "x-mt": true
- },
- "se0e5f715ad": "ESPHome-enhet",
- "@se0e5f715ad": {
   "x-mt": true
  },
  "sa0efcdf688": "Din egen ESP32/ESP8266 med ESPHome (web_server aktiverad).",

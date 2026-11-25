@@ -1,3 +1,5 @@
+import 'tile_grid.dart';
+import 'tile_status.dart';
 import 'control_view.dart';
 import 'energy_pages.dart';
 
@@ -325,6 +327,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     final body = Column(
       children: [
         const UpdateBanner(),
+        const OfflineBanner(),
         const NoAccountBanner(),
         Expanded(
           child: _DashboardGrid(
@@ -473,27 +476,23 @@ class _DashboardGrid extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, box) {
-        const gap = 12.0;
-        final cols = (box.maxWidth / 170).floor().clamp(2, 8);
-        final cell = (box.maxWidth - gap * (cols + 1)) / cols;
-        final cellH = (cell * 0.8).clamp(110.0, 170.0);
+        final g = tileGridFor(box.maxWidth, AppScope.of(context).config.tileDensity);
         return SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(gap, 4, gap, 96),
+          padding: EdgeInsets.fromLTRB(g.gap, 4, g.gap, 96),
           child: Wrap(
-            spacing: gap,
-            runSpacing: gap,
-            children: [for (var i = 0; i < dashboard.tiles.length; i++) _sized(context, i, cols, cell, cellH, gap)],
+            spacing: g.gap,
+            runSpacing: g.gap,
+            children: [for (var i = 0; i < dashboard.tiles.length; i++) _sized(context, i, g)],
           ),
         );
       },
     );
   }
 
-  Widget _sized(BuildContext context, int index, int cols, double cell, double cellH, double gap) {
+  Widget _sized(BuildContext context, int index, TileGridMetrics g) {
     final t = dashboard.tiles[index];
-    final span = t.colSpan.clamp(1, cols);
-    final w = span * cell + (span - 1) * gap;
-    final h = t.rowSpan * cellH + (t.rowSpan - 1) * gap;
+    final w = g.width(t.colSpan);
+    final h = g.height(t.rowSpan);
     final tile = SizedBox(
       width: w,
       height: h,
@@ -549,8 +548,8 @@ class _EditableTile extends StatelessWidget {
           ),
         ),
         Positioned(
-          right: 4,
-          top: 4,
+          right: 3,
+          top: 3,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -582,7 +581,7 @@ class _EditableTile extends StatelessWidget {
             ],
           ),
         ),
-        Positioned(right: 8, bottom: 8, child: Icon(Icons.drag_indicator, size: 22, color: cs.primary)),
+        Positioned(right: 6, bottom: 6, child: Icon(Icons.drag_indicator, size: 18, color: cs.primary)),
       ],
     );
 
@@ -621,14 +620,15 @@ class _EditableTile extends StatelessWidget {
   Widget _mini(BuildContext context, IconData icon, VoidCallback onTap, {bool enabled = true}) => Padding(
     padding: const EdgeInsets.only(left: 2),
     child: Material(
-      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+      color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.92),
       shape: const CircleBorder(),
+      elevation: 1,
       child: InkWell(
         customBorder: const CircleBorder(),
         onTap: enabled ? onTap : null,
         child: Padding(
-          padding: const EdgeInsets.all(9),
-          child: Icon(icon, size: 20, color: enabled ? null : Colors.grey),
+          padding: const EdgeInsets.all(4),
+          child: Icon(icon, size: 15, color: enabled ? null : Colors.grey),
         ),
       ),
     ),

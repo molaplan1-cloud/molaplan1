@@ -2,6 +2,22 @@
 # Run: python3 tool/l10n/overrides_src.py && python3 tool/l10n/translate.py
 import json, os
 T = {
+ 'Devices on your home Wi-Fi still work.': ('Enheter i hemmets Wi-Fi fungerar ändå.', 'Kodu Wi-Fi seadmed töötavad endiselt.', 'Los dispositivos del Wi-Fi de casa siguen funcionando.'),
+ 'Not on home network – switch to remote ›': ('Inte i hemnätverket – byt till fjärranslutning ›', 'Pole koduvõrgus – lülita kaugühendusele ›', 'Fuera de la red de casa – cambiar a remoto ›'),
+ 'Not at home – switch ›': ('Inte hemma – byt ›', 'Pole kodus – vaheta ›', 'Fuera de casa – cambiar ›'),
+ 'Device not responding': ('Enheten svarar inte', 'Seade ei vasta', 'El dispositivo no responde'),
+ 'Sign-in expired': ('Inloggningen har gått ut', 'Sisselogimine aegus', 'La sesión ha caducado'),
+ 'Home bridge not responding': ('Hembryggan svarar inte', 'Kodusild ei vasta', 'El puente de casa no responde'),
+ 'Server not found': ('Servern hittades inte', 'Serverit ei leitud', 'Servidor no encontrado'),
+ 'Setting missing': ('Inställning saknas', 'Seade puudub', 'Falta un ajuste'),
+ 'Device is offline': ('Enheten är offline', 'Seade ei ole võrgus', 'El dispositivo está desconectado'),
+ 'Tile size': ('Kortstorlek', 'Kaardi suurus', 'Tamaño de las tarjetas'),
+ 'Normal': ('Normal', 'Tavaline', 'Normal'),
+ 'Find devices': ('Hitta enheter', 'Leia seadmed', 'Buscar dispositivos'),
+ 'Unknown device': ('Okänd enhet', 'Tundmatu seade', 'Dispositivo desconocido'),
+ 'Switch to Shelly Cloud': ('Byt till Shelly Cloud', 'Lülita Shelly Cloudile', 'Cambiar a Shelly Cloud'),
+ 'Retry': ('Försök igen', 'Proovi uuesti', 'Reintentar'),
+ 'Offline': ('Offline', 'Võrguühenduseta', 'Sin conexión'),
  'Accept': ('Godkänn', 'Nõustu', 'Aceptar'),
  'Account': ('Konto', 'Konto', 'Cuenta'),
  'Add': ('Lägg till', 'Lisa', 'Añadir'),

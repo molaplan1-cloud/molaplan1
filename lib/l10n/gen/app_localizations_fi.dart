@@ -260,6 +260,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get see129fb410 => 'kirkkaus';
 
   @override
+  String get sceabe202da => 'provider';
+
+  @override
   String sb9964cfb3b(String p0) {
     return 'Teho $p0';
   }
@@ -1004,6 +1007,76 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s5a40f12b6a => 'Lisää';
 
   @override
+  String get s7aa295f82d => 'Ei kotiverkossa – vaihda ›';
+
+  @override
+  String get sdc74e0c0e7 => 'Ei kotiverkossa – vaihda etäyhteyteen ›';
+
+  @override
+  String get s3a5c21004e => 'Ei yhteyttä';
+
+  @override
+  String get s68cbe596f8 => 'Kirjautuminen vanhentunut';
+
+  @override
+  String get s156aa7eeb3 => 'Laite ei vastaa';
+
+  @override
+  String get s7abcbf1107 => 'Palvelinta ei löydy';
+
+  @override
+  String get sca533b6f25 => 'Kotisilta ei vastaa';
+
+  @override
+  String get s96ad0dc252 => 'Tietoa ei löydy laitteesta';
+
+  @override
+  String get s61cdd7287b => 'Asetus puuttuu';
+
+  @override
+  String get s57d0940253 => 'Suojausvirhe';
+
+  @override
+  String get sfec025279e => 'Laite ei ole verkossa';
+
+  @override
+  String get sa7d212f047 => 'Kotiverkon laitteet toimivat silti Wi-Fin kautta.';
+
+  @override
+  String get s24ccd151f2 => 'Yritä';
+
+  @override
+  String get sc5f54cf3c8 => 'Täytä avain ja palvelin.';
+
+  @override
+  String get sb26dad8f73 => 'Pilvessä ei ole laitteita tällä avaimella.';
+
+  @override
+  String s2c6ce95ec2(String p0) {
+    return '$p0 toimii nyt Shelly Cloudin kautta.';
+  }
+
+  @override
+  String s5629901cc4(String p0) {
+    return 'Ohjaa $p0 kodin ulkopuolelta';
+  }
+
+  @override
+  String get s064abc90af =>
+      'Laite vaihdetaan käyttämään Shelly Cloudia. Kaikki sen kanavat, nimet ja ruudut säilyvät. Avain: Shelly-sovellus → oma profiili → Käyttäjäasetukset → Authorization cloud key.';
+
+  @override
+  String get sf16961256b => 'Palvelin (Server URI)';
+
+  @override
+  String s28e10c6870(String p0) {
+    return 'Mikä näistä on $p0?';
+  }
+
+  @override
+  String get s09f5da65e0 => 'Vaihda Shelly Cloudiin';
+
+  @override
   String get sa3a093e55e => 'Lämmitys';
 
   @override
@@ -1206,6 +1279,61 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s941fbb47fe => 'Suunnitelmaa lasketaan…';
+
+  @override
+  String get s702ca14235 => 'Tasmota-laite';
+
+  @override
+  String get se0e5f715ad => 'ESPHome-laite';
+
+  @override
+  String get s63b6e55469 => 'HomeKit-laite';
+
+  @override
+  String get s13e301a66e => 'Tuntematon laite';
+
+  @override
+  String get s23f4820db7 => 'ei vielä ohjattavissa';
+
+  @override
+  String get saae59a3865 => 'kotisillan kautta';
+
+  @override
+  String get s1169d2d093 => 'Etsi laitteet';
+
+  @override
+  String get s55b85f29a6 => 'Etsitään kotiverkosta…';
+
+  @override
+  String get se9c923ff0b =>
+      'Molaplan etsii kotiverkosta laitteet, jotka se tunnistaa.';
+
+  @override
+  String get s3ff2220816 =>
+      'Tunnettuja laitteita ei löytynyt. Valitse merkki alta.';
+
+  @override
+  String s2a9142dc3e(String p0) {
+    return 'Löytyi $p0. Lisää napauttamalla.';
+  }
+
+  @override
+  String get s2fc39b0bd7 => 'Etsi uudelleen';
+
+  @override
+  String get s0a9acb5af1 => 'Etsi';
+
+  @override
+  String get s9a018b8166 =>
+      'Et ole kotona: kotisilta etsi laitteet kotiverkosta.';
+
+  @override
+  String sc81d032be0(String p0) {
+    return '$p0 tuntematonta laitetta';
+  }
+
+  @override
+  String get s7f3081821b => 'Näitä Molaplan ei osaa ohjata.';
 
   @override
   String get s55d52c5ae1 => 'Tämä laite ei ole yhteydessä wifiin';
@@ -1425,15 +1553,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s13f0596b74 => 'Etsitään… (noin 5 sekuntia)';
 
   @override
-  String get saae59a3865 => 'kotisillan kautta';
-
-  @override
   String s8eabd27f68(String p0, String p1) {
     return 'Laitteita ei löytynyt automaattisesti. Tarkista että $p0 on päällä ja samassa wifissä$p1. Voit myös kirjoittaa osoitteen alle.';
   }
-
-  @override
-  String get s2fc39b0bd7 => 'Etsi uudelleen';
 
   @override
   String get sa616ab181e => 'Kirjoita osoite itse';
@@ -2981,6 +3103,12 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s9bb545e9b3 => 'Kirjaudu tai luo tili';
 
   @override
+  String get s0625d54b38 => 'Laattakoko';
+
+  @override
+  String get s8382da3467 => 'Normaali';
+
+  @override
   String get s21f870dbc2 =>
       'Näyttää tekniset asetukset: yhteydet (HTTP, MQTT, Modbus…), viestit, JSON-polut ja ruutujen lähteet. Useimmat eivät tarvitse näitä.';
 
@@ -3914,9 +4042,6 @@ class AppLocalizationsFi extends AppLocalizations {
       'Vain jos olet asettanut Shellyyn salasanan (Gen1: admin).';
 
   @override
-  String get s702ca14235 => 'Tasmota-laite';
-
-  @override
   String get sc130e073ba =>
       'Tasmota-ohjelmistolla toimiva rele tai pistorasia.';
 
@@ -3935,9 +4060,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s397e83233d =>
       'Vain jos Tasmotaan on asetettu web-salasana (käyttäjä admin).';
-
-  @override
-  String get se0e5f715ad => 'ESPHome-laite';
 
   @override
   String get sa0efcdf688 =>

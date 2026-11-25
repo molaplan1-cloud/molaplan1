@@ -1,3 +1,6 @@
+import 'tile_grid.dart';
+import 'tile_status.dart';
+
 import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -50,17 +53,15 @@ class ControlView extends StatelessWidget {
       body: Column(
         children: [
           const UpdateBanner(),
+          const OfflineBanner(),
           const NoAccountBanner(),
           Expanded(
             child: LayoutBuilder(
               builder: (context, box) {
-                const gap = 14.0;
-                // Big tiles: ~220 px on tablets/PC, two columns on phones.
-                final cols = (box.maxWidth / 220).floor().clamp(2, 7);
-                final cell = (box.maxWidth - gap * (cols + 1)) / cols;
-                final cellH = (cell * 0.85).clamp(150.0, 210.0);
+                final g = tileGridFor(box.maxWidth, AppScope.of(context).config.tileDensity);
+                final gap = g.gap;
                 return ListView(
-                  padding: const EdgeInsets.fromLTRB(gap, 6, gap, 32),
+                  padding: EdgeInsets.fromLTRB(gap, 6, gap, 32),
                   children: [
                     for (final d in groups) ...[
                       if (!single)
@@ -78,8 +79,8 @@ class ControlView extends StatelessWidget {
                         children: [
                           for (final t in d.tiles)
                             SizedBox(
-                              width: t.colSpan.clamp(1, cols) * cell + (t.colSpan.clamp(1, cols) - 1) * gap,
-                              height: t.rowSpan * cellH + (t.rowSpan - 1) * gap,
+                              width: g.width(t.colSpan),
+                              height: g.height(t.rowSpan),
                               child: TileWidget(key: ValueKey('cv-${t.id}'), tile: t, control: true),
                             ),
                         ],
@@ -156,7 +157,11 @@ class ControlView extends StatelessWidget {
 
   static Widget _item(Widget icon, Widget label) => Row(
     mainAxisSize: MainAxisSize.min,
-    children: [icon, const SizedBox(width: 14), Flexible(child: label)],
+    children: [
+      icon,
+      const SizedBox(width: 14),
+      Flexible(child: label),
+    ],
   );
 
   /// Lock with an optional PIN (e.g. an installer handing the tablet over to a customer).
@@ -187,7 +192,11 @@ class ControlView extends StatelessWidget {
               inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(8)],
               decoration: InputDecoration(
                 labelText: tx(c, 'PIN-koodi (valinnainen)', 'PIN code (optional)'),
-                helperText: tx(c, 'Ilman PIN-koodia lukitus avataan yhdellä napautuksella.', 'Without a PIN one tap unlocks.'),
+                helperText: tx(
+                  c,
+                  'Ilman PIN-koodia lukitus avataan yhdellä napautuksella.',
+                  'Without a PIN one tap unlocks.',
+                ),
                 border: const OutlineInputBorder(),
               ),
             ),

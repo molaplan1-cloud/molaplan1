@@ -1,4 +1,6 @@
+import '../devices/scanner.dart';
 import '../devices/registry.dart';
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:isolate';
@@ -39,11 +41,17 @@ class RemoteExecutor {
     this.idle = const Duration(minutes: 10),
     Driver Function(ConnectionConfig)? create,
     this.discover,
+    this.scan,
   }) : _create = create ?? createDriver;
 
   /// "discover" op: finds devices of a brand on the bridge's LAN (phone away from home).
   /// Default: the brand's own LAN scan. The app adds mDNS on top.
   final Future<List<Map<String, dynamic>>> Function(String provider)? discover;
+
+  /// "scan" op: the whole-LAN "Etsi laitteet" scan on the bridge's network (reply is E2E encrypted).
+  final Future<List<Map<String, dynamic>>> Function()? scan;
+
+  static Future<List<Map<String, dynamic>>> defaultScan() async => [for (final h in await scanNetwork()) h.toJson()];
 
   static Future<List<Map<String, dynamic>>> defaultDiscover(String provider) async {
     final p = providerById(provider);
@@ -98,6 +106,8 @@ class RemoteExecutor {
       case 'discover':
         final provider = '${(r['spec'] as Map?)?['provider'] ?? ''}';
         return (discover ?? defaultDiscover)(provider);
+      case 'scan':
+        return (scan ?? defaultScan)();
     }
     final conn = r['conn'];
     if (conn is! Map) throw DriverException('Connection missing');

@@ -259,6 +259,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get see129fb410 => 'heledus';
 
   @override
+  String get sceabe202da => 'camera_';
+
+  @override
   String sb9964cfb3b(String p0) {
     return 'Võimsus $p0';
   }
@@ -998,6 +1001,76 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s5a40f12b6a => 'Lisa';
 
   @override
+  String get s7aa295f82d => 'Pole kodus – vaheta ›';
+
+  @override
+  String get sdc74e0c0e7 => 'Pole koduvõrgus – lülita kaugühendusele ›';
+
+  @override
+  String get s3a5c21004e => 'Võrguühenduseta';
+
+  @override
+  String get s68cbe596f8 => 'Sisselogimine aegus';
+
+  @override
+  String get s156aa7eeb3 => 'Seade ei vasta';
+
+  @override
+  String get s7abcbf1107 => 'Serverit ei leitud';
+
+  @override
+  String get sca533b6f25 => 'Kodusild ei vasta';
+
+  @override
+  String get s96ad0dc252 => 'Väärtust seadmes ei leitud';
+
+  @override
+  String get s61cdd7287b => 'Seade puudub';
+
+  @override
+  String get s57d0940253 => 'Turvaviga';
+
+  @override
+  String get sfec025279e => 'Seade ei ole võrgus';
+
+  @override
+  String get sa7d212f047 => 'Kodu Wi-Fi seadmed töötavad endiselt.';
+
+  @override
+  String get s24ccd151f2 => 'Proovi uuesti';
+
+  @override
+  String get sc5f54cf3c8 => 'Täida võti ja server.';
+
+  @override
+  String get sb26dad8f73 => 'Selle võtmega ei ole pilves ühtegi seadet.';
+
+  @override
+  String s2c6ce95ec2(String p0) {
+    return '$p0 töötab nüüd läbi Shelly Cloudi.';
+  }
+
+  @override
+  String s5629901cc4(String p0) {
+    return 'Kontroll $p0 kodust eemal';
+  }
+
+  @override
+  String get s064abc90af =>
+      'Seade lülitatakse Shelly Cloudile. Kõik selle kanalid, nimed ja kaardid jäävad alles. Võti: Shelly rakendus → sinu profiil → Kasutaja seaded → Autoriseerimispilve võti.';
+
+  @override
+  String get sf16961256b => 'Server (Server URI)';
+
+  @override
+  String s28e10c6870(String p0) {
+    return 'Milline neist on $p0?';
+  }
+
+  @override
+  String get s09f5da65e0 => 'Lülita Shelly Cloudile';
+
+  @override
   String get sa3a093e55e => 'Küte';
 
   @override
@@ -1200,6 +1273,60 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s941fbb47fe => 'Plaani arvutatakse…';
+
+  @override
+  String get s702ca14235 => 'Tasmota seade';
+
+  @override
+  String get se0e5f715ad => 'ESPHome seade';
+
+  @override
+  String get s63b6e55469 => 'HomeKiti seade';
+
+  @override
+  String get s13e301a66e => 'Tundmatu seade';
+
+  @override
+  String get s23f4820db7 => 'ei ole veel kontrollitav';
+
+  @override
+  String get saae59a3865 => 'kodusilla kaudu';
+
+  @override
+  String get s1169d2d093 => 'Leia seadmed';
+
+  @override
+  String get s55b85f29a6 => 'Koduvõrgu otsimine...';
+
+  @override
+  String get se9c923ff0b =>
+      'Molaplan otsib seadmeid, mida ta tunneb teie koduvõrgus.';
+
+  @override
+  String get s3ff2220816 =>
+      'Teadaolevaid seadmeid ei leitud. Vali allpool kaubamärk.';
+
+  @override
+  String s2a9142dc3e(String p0) {
+    return 'Leiti $p0. Lisatav kaart.';
+  }
+
+  @override
+  String get s2fc39b0bd7 => 'Otsi uuesti';
+
+  @override
+  String get s0a9acb5af1 => 'Otsi';
+
+  @override
+  String get s9a018b8166 => 'Sa oled ära: kodusild otsis läbi sinu koduvõrgu.';
+
+  @override
+  String sc81d032be0(String p0) {
+    return '$p0 tundmatud seadmed';
+  }
+
+  @override
+  String get s7f3081821b => 'Molaplan ei suuda neid kontrollida.';
 
   @override
   String get s55d52c5ae1 => 'See seade ei ole Wi-Fi-s';
@@ -1417,15 +1544,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s13f0596b74 => 'Otsimine... (umbes 5 sekundit)';
 
   @override
-  String get saae59a3865 => 'kodusilla kaudu';
-
-  @override
   String s8eabd27f68(String p0, String p1) {
     return 'Automaatselt ei leitud midagi. Kontrolli, kas $p0 on samal Wi-Fi- l. Allpool saab kirjutada ka aadressi.';
   }
-
-  @override
-  String get s2fc39b0bd7 => 'Otsi uuesti';
 
   @override
   String get sa616ab181e => 'Kirjuta aadress';
@@ -2966,6 +3087,12 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s9bb545e9b3 => 'Logi sisse või loo konto';
 
   @override
+  String get s0625d54b38 => 'Kaardi suurus';
+
+  @override
+  String get s8382da3467 => 'Tavaline';
+
+  @override
   String get s21f870dbc2 =>
       'Näitab tehnilisi seadistusi: ühendused (HTTP, MQTT, Modbus...), nimikoormused, JSON- i rajad ja plaatide allikad. Enamik inimesi ei vaja neid.';
 
@@ -3881,9 +4008,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s259e46c59a => 'Ainult siis, kui määrad parooli.';
 
   @override
-  String get s702ca14235 => 'Tasmota seade';
-
-  @override
   String get sc130e073ba => 'Relee või pistik töötab Tasmota firmware.';
 
   @override
@@ -3901,9 +4025,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s397e83233d =>
       'Ainult siis, kui veebiparool on seadistatud (kasutaja admin).';
-
-  @override
-  String get se0e5f715ad => 'ESPHome seade';
 
   @override
   String get sa0efcdf688 =>

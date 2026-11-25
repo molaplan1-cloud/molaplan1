@@ -52,51 +52,101 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
     ),
     AddProblem.notThisBrand => (
       t('Osoitteessa on jokin muu laite', 'A different device answered'),
-      t('Osoitteesta vastasi laite, joka ei ole $brand. Tarkista osoite ja kokeile uudelleen.', 'The device at that address is not $brand. Check the address.'),
+      t(
+        'Osoitteesta vastasi laite, joka ei ole $brand. Tarkista osoite ja kokeile uudelleen.',
+        'The device at that address is not $brand. Check the address.',
+      ),
     ),
     AddProblem.needsPassword => (
       t('Laite pyytää salasanaa', 'The device asks for a password'),
-      t('Olet asettanut laitteeseen salasanan. Kirjoita se alle ja paina "Yhdistä".', 'A password is set on the device. Type it below and tap "Connect".'),
+      t(
+        'Olet asettanut laitteeseen salasanan. Kirjoita se alle ja paina "Yhdistä".',
+        'A password is set on the device. Type it below and tap "Connect".',
+      ),
     ),
     AddProblem.needsDetails => (
       t('Tarvitaan vielä yksi tieto', 'One more detail is needed'),
-      t('$brand ei kerro tätä itse. Kirjoita se alle ja paina "Yhdistä".', '$brand does not tell this by itself. Type it below and tap "Connect".'),
+      t(
+        '$brand ei kerro tätä itse. Kirjoita se alle ja paina "Yhdistä".',
+        '$brand does not tell this by itself. Type it below and tap "Connect".',
+      ),
     ),
     AddProblem.wrongPassword => (
       t('Salasana ei kelpaa', 'Wrong password'),
-      t('Tarkista salasana (isot ja pienet kirjaimet). Sen voi vaihtaa laitteen omasta sovelluksesta.', 'Check the password (case matters). You can change it in the device app.'),
+      t(
+        'Tarkista salasana (isot ja pienet kirjaimet). Sen voi vaihtaa laitteen omasta sovelluksesta.',
+        'Check the password (case matters). You can change it in the device app.',
+      ),
     ),
     AddProblem.buttonNotPressed => (
       t('Painiketta ei painettu ajoissa', 'The button was not pressed in time'),
-      t('Paina "Yritä uudelleen" ja paina sitten painiketta heti.', 'Tap "Try again" and then press the button right away.'),
+      t(
+        'Paina "Yritä uudelleen" ja paina sitten painiketta heti.',
+        'Tap "Try again" and then press the button right away.',
+      ),
     ),
     AddProblem.nothingToAdd => (
       t('Laitteelta ei löytynyt ohjattavaa', 'Nothing to control was found'),
-      t('Laite vastasi, mutta siinä ei ollut kytkimiä tai valoja. Jos käytät pilveä, kirjoita laitteen tunnus (Device ID) käsin.', 'The device answered but has no switches or lights. For the cloud, type the Device ID.'),
+      t(
+        'Laite vastasi, mutta siinä ei ollut kytkimiä tai valoja. Jos käytät pilveä, kirjoita laitteen tunnus (Device ID) käsin.',
+        'The device answered but has no switches or lights. For the cloud, type the Device ID.',
+      ),
     ),
     AddProblem.cloudBadKey => (
       t('Pilviavain tai palvelin ei kelpaa', 'Cloud key or server not accepted'),
-      t('Kopioi avain ja palvelimen osoite uudelleen Shelly-sovelluksesta (Käyttäjäasetukset → Authorization cloud key).', 'Copy the key and server again from the Shelly app (User settings → Authorization cloud key).'),
+      t(
+        'Kopioi avain ja palvelimen osoite uudelleen Shelly-sovelluksesta (Käyttäjäasetukset → Authorization cloud key).',
+        'Copy the key and server again from the Shelly app (User settings → Authorization cloud key).',
+      ),
     ),
-    AddProblem.cloudOffline => (t('Pilveen ei saatu yhteyttä', 'Could not reach the cloud'), t('Tarkista nettiyhteys ja yritä uudelleen.', 'Check the internet connection.')),
-    AddProblem.cloudRateLimit => (t('Liian monta pyyntöä', 'Too many requests'), t('Pilvi rajoittaa pyyntöjä. Odota hetki ja yritä uudelleen.', 'The cloud limits requests. Wait a moment.')),
+    AddProblem.cloudOffline => (
+      t('Pilveen ei saatu yhteyttä', 'Could not reach the cloud'),
+      t('Tarkista nettiyhteys ja yritä uudelleen.', 'Check the internet connection.'),
+    ),
+    AddProblem.cloudRateLimit => (
+      t('Liian monta pyyntöä', 'Too many requests'),
+      t('Pilvi rajoittaa pyyntöjä. Odota hetki ja yritä uudelleen.', 'The cloud limits requests. Wait a moment.'),
+    ),
     AddProblem.bridgeOld => (
       t('Kotisilta on vanha versio', 'The home bridge is out of date'),
-      t('Päivitä kotisillan Molaplan (Asetukset → Tarkista päivitykset) ja yritä uudelleen.', 'Update Molaplan on the bridge (Settings → Check for updates).'),
+      t(
+        'Päivitä kotisillan Molaplan (Asetukset → Tarkista päivitykset) ja yritä uudelleen.',
+        'Update Molaplan on the bridge (Settings → Check for updates).',
+      ),
     ),
     AddProblem.bridgeOffline => (
       t('Kotisilta ei ole päällä', 'The home bridge is off'),
-      t('Tarkista että kotona oleva kotisilta (tabletti tai PC) on päällä, Molaplan on auki ja sillä on netti.', 'Check that the bridge at home is on, Molaplan is open and it has internet.'),
+      t(
+        'Tarkista että kotona oleva kotisilta (tabletti tai PC) on päällä, Molaplan on auki ja sillä on netti.',
+        'Check that the bridge at home is on, Molaplan is open and it has internet.',
+      ),
     ),
-    AddProblem.unknown => (t('Jokin meni pieleen', 'Something went wrong'), t('Yritä uudelleen. Jos ongelma toistuu, käynnistä laite uudelleen.', 'Try again. If it keeps happening, restart the device.')),
+    AddProblem.unknown => (
+      t('Jokin meni pieleen', 'Something went wrong'),
+      t(
+        'Yritä uudelleen. Jos ongelma toistuu, käynnistä laite uudelleen.',
+        'Try again. If it keeps happening, restart the device.',
+      ),
+    ),
   };
 }
 
 /// Step-by-step: (remote setup) -> find -> connect/pair -> choose tiles -> done.
 class AddDeviceWizard extends StatefulWidget {
-  const AddDeviceWizard({super.key, required this.provider, this.dashboard, this.finder, this.locals, this.driverFor});
+  const AddDeviceWizard({
+    super.key,
+    required this.provider,
+    this.dashboard,
+    this.initial,
+    this.finder,
+    this.locals,
+    this.driverFor,
+  });
   final DeviceProvider provider;
   final Dashboard? dashboard;
+
+  /// Already found (network scan "Etsi laitteet"): skip the search and connect to it.
+  final Candidate? initial;
 
   /// Test hooks.
   final Future<List<Candidate>> Function(DeviceProvider p)? finder;
@@ -139,6 +189,11 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final st = AppScope.read(context);
+      if (widget.initial != null) {
+        addrCtl.text = widget.initial!.address;
+        _pick(widget.initial!);
+        return;
+      }
       final needRemote = !cloud && !st.remote.isPaired && !st.remote.bridgeOn;
       setState(() => step = needRemote ? WizStep.remote : WizStep.find);
       if (!needRemote) _search();
@@ -174,7 +229,9 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
     AddDeviceError? err;
     final viaBridge = st.remote.isPaired && !st.remote.bridgeOn;
     await Future.wait([
-      (widget.finder != null ? widget.finder!(p) : findLocal(p, locals: locals)).then(results.addAll).catchError((_) {}),
+      (widget.finder != null ? widget.finder!(p) : findLocal(p, locals: locals))
+          .then(results.addAll)
+          .catchError((_) {}),
       if (viaBridge && widget.finder == null)
         findViaBridge(st.remote.router, p).then(results.addAll).catchError((Object e) {
           err = explain(e);
@@ -259,11 +316,13 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         builder: (c) => AlertDialog(
           icon: const Icon(Icons.wifi_off, size: 36),
           title: Text(tx(c, 'Osoite on eri verkossa', 'The address is on another network')),
-          content: Text(tx(
-            c,
-            'Osoite $h ei ole samassa verkossa kuin tämä laite ($mine.x). Yleensä se tarkoittaa, että tämä laite on eri wifissä kuin $brand.\n\nYhdistä tämä laite samaan wifiin kuin $brand, tai ota kotisilta käyttöön.',
-            'Address $h is not on the same network as this device ($mine.x). Usually this device is on a different Wi-Fi than $brand.\n\nJoin the same Wi-Fi, or set up the home bridge.',
-          )),
+          content: Text(
+            tx(
+              c,
+              'Osoite $h ei ole samassa verkossa kuin tämä laite ($mine.x). Yleensä se tarkoittaa, että tämä laite on eri wifissä kuin $brand.\n\nYhdistä tämä laite samaan wifiin kuin $brand, tai ota kotisilta käyttöön.',
+              'Address $h is not on the same network as this device ($mine.x). Usually this device is on a different Wi-Fi than $brand.\n\nJoin the same Wi-Fi, or set up the home bridge.',
+            ),
+          ),
           actions: [
             TextButton(onPressed: () => Navigator.pop(c, false), child: Text(tx(c, 'Takaisin', 'Back'))),
             FilledButton(onPressed: () => Navigator.pop(c, true), child: Text(tx(c, 'Kokeile silti', 'Try anyway'))),
@@ -290,9 +349,16 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       final ctx = _ctx();
       if (p.pairMode == PairMode.button && (creds['token'] ?? '').isEmpty) {
         setState(() => countdown = p.pairWindow.inSeconds);
-        creds = {...creds, ...await p.pair(ctx, c, tick: (s) {
-          if (mounted && !_cancel) setState(() => countdown = s);
-        })};
+        creds = {
+          ...creds,
+          ...await p.pair(
+            ctx,
+            c,
+            tick: (s) {
+              if (mounted && !_cancel) setState(() => countdown = s);
+            },
+          ),
+        };
         if (!mounted || _cancel) return;
         setState(() => countdown = null);
       }
@@ -404,9 +470,19 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         final st = AppScope.read(context);
         if (!cloud && !st.remote.isPaired && !st.remote.bridgeOn) back = () => _go(WizStep.remote);
         next = cloud
-            ? FilledButton.icon(key: const ValueKey('wiz-next'), onPressed: _cloudNext, icon: const Icon(Icons.arrow_forward), label: Text(tx(context, 'Seuraava', 'Next')))
+            ? FilledButton.icon(
+                key: const ValueKey('wiz-next'),
+                onPressed: _cloudNext,
+                icon: const Icon(Icons.arrow_forward),
+                label: Text(tx(context, 'Seuraava', 'Next')),
+              )
             : manual
-            ? FilledButton.icon(key: const ValueKey('wiz-next'), onPressed: _manualNext, icon: const Icon(Icons.arrow_forward), label: Text(tx(context, 'Seuraava', 'Next')))
+            ? FilledButton.icon(
+                key: const ValueKey('wiz-next'),
+                onPressed: _manualNext,
+                icon: const Icon(Icons.arrow_forward),
+                label: Text(tx(context, 'Seuraava', 'Next')),
+              )
             : null;
       case WizStep.connect:
         back = () {
@@ -436,7 +512,12 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       child: Row(
         children: [
           if (back != null)
-            OutlinedButton.icon(key: const ValueKey('wiz-back'), onPressed: back, icon: const Icon(Icons.arrow_back), label: Text(tx(context, 'Takaisin', 'Back'))),
+            OutlinedButton.icon(
+              key: const ValueKey('wiz-back'),
+              onPressed: back,
+              icon: const Icon(Icons.arrow_back),
+              label: Text(tx(context, 'Takaisin', 'Back')),
+            ),
           const Spacer(),
           ?next,
         ],
@@ -455,7 +536,14 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
     ),
   );
 
-  Widget _bigChoice(BuildContext context, {required Key key, required IconData icon, required String title, required String body, required VoidCallback onTap}) => Card(
+  Widget _bigChoice(
+    BuildContext context, {
+    required Key key,
+    required IconData icon,
+    required String title,
+    required String body,
+    required VoidCallback onTap,
+  }) => Card(
     key: key,
     margin: const EdgeInsets.only(bottom: 12),
     child: InkWell(
@@ -517,9 +605,9 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         context,
         tx(context, 'Miten ohjaat kotia muualta?', 'How will you control your home when away?'),
         tx(
-          context,
-          'Kotisilta on laite, joka on AINA kotona, päällä ja samassa wifissä kuin $brand – esim. vanha puhelin, tabletti tai PC. Muut laitteesi ottavat siihen yhteyden netin yli (salattu, ei porttiohjauksia). Jos laite lähtee mukaasi, se ei sovi kotisillaksi.',
-          'A home bridge is a device that ALWAYS stays at home, switched on and on the same Wi-Fi as $brand – e.g. an old phone, tablet or PC. Your other devices reach it over the internet (encrypted, no port forwarding). A device you carry around is not a good bridge.',
+              context,
+              'Kotisilta on laite, joka on AINA kotona, päällä ja samassa wifissä kuin $brand – esim. vanha puhelin, tabletti tai PC. Muut laitteesi ottavat siihen yhteyden netin yli (salattu, ei porttiohjauksia). Jos laite lähtee mukaasi, se ei sovi kotisillaksi.',
+              'A home bridge is a device that ALWAYS stays at home, switched on and on the same Wi-Fi as $brand – e.g. an old phone, tablet or PC. Your other devices reach it over the internet (encrypted, no port forwarding). A device you carry around is not a good bridge.',
             ) +
             (st.account.signedIn
                 ? ' ${tx(context, 'Koska olet kirjautunut, kotiyhteys siirtyy kaikille laitteillesi automaattisesti.', 'As you are signed in, the home connection reaches all your devices automatically.')}'
@@ -530,8 +618,16 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         context,
         key: const ValueKey('wiz-make-bridge'),
         icon: Icons.router_outlined,
-        title: tx(context, 'Tämä laite jää aina kotiin – tee siitä kotisilta', 'This device always stays home – make it the bridge'),
-        body: tx(context, 'Pidä laite laturissa ja Molaplan auki. Muut laitteet yhdistetään siihen QR-koodilla tai kirjautumalla samalle tilille.', 'Keep it charging with Molaplan open. Other devices connect with a QR code or by signing in to the same account.'),
+        title: tx(
+          context,
+          'Tämä laite jää aina kotiin – tee siitä kotisilta',
+          'This device always stays home – make it the bridge',
+        ),
+        body: tx(
+          context,
+          'Pidä laite laturissa ja Molaplan auki. Muut laitteet yhdistetään siihen QR-koodilla tai kirjautumalla samalle tilille.',
+          'Keep it charging with Molaplan open. Other devices connect with a QR code or by signing in to the same account.',
+        ),
         onTap: () async {
           await st.setBridgeMode(true);
           await keepScreenOn(true);
@@ -544,8 +640,16 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         context,
         key: const ValueKey('wiz-pair'),
         icon: Icons.qr_code_scanner,
-        title: tx(context, 'Kotisilta on jo toisella laitteella – yhdistä siihen', 'The bridge is on another device – connect to it'),
-        body: tx(context, 'Skannaa kotisillan QR-koodi. Sen jälkeen laitteet haetaan kotisillan kautta, vaikka olisit muualla.', 'Scan the bridge QR code. Devices are then found through the bridge, even when you are away.'),
+        title: tx(
+          context,
+          'Kotisilta on jo toisella laitteella – yhdistä siihen',
+          'The bridge is on another device – connect to it',
+        ),
+        body: tx(
+          context,
+          'Skannaa kotisillan QR-koodi. Sen jälkeen laitteet haetaan kotisillan kautta, vaikka olisit muualla.',
+          'Scan the bridge QR code. Devices are then found through the bridge, even when you are away.',
+        ),
         onTap: () async {
           await Navigator.push(context, MaterialPageRoute(builder: (_) => const PairPage()));
           if (!mounted) return;
@@ -559,24 +663,47 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           _go(WizStep.find);
           _search();
         },
-        child: Text(tx(context, 'Ohita nyt – lisään laitteen kotiverkossa (etäyhteyden voi ottaa käyttöön myöhemmin)', 'Skip for now – add on the home network (remote access can be set up later)')),
+        child: Text(
+          tx(
+            context,
+            'Ohita nyt – lisään laitteen kotiverkossa (etäyhteyden voi ottaa käyttöön myöhemmin)',
+            'Skip for now – add on the home network (remote access can be set up later)',
+          ),
+        ),
       ),
     ];
   }
 
-  Widget _banner(BuildContext context, {required IconData icon, required Color color, required String text, List<Widget> actions = const []}) => Container(
+  Widget _banner(
+    BuildContext context, {
+    required IconData icon,
+    required Color color,
+    required String text,
+    List<Widget> actions = const [],
+  }) => Container(
     margin: const EdgeInsets.only(bottom: 14),
     padding: const EdgeInsets.all(14),
-    decoration: BoxDecoration(color: color.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(12), border: Border.all(color: color.withValues(alpha: 0.5))),
+    decoration: BoxDecoration(
+      color: color.withValues(alpha: 0.12),
+      borderRadius: BorderRadius.circular(12),
+      border: Border.all(color: color.withValues(alpha: 0.5)),
+    ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Icon(icon, color: color),
-          const SizedBox(width: 10),
-          Expanded(child: Text(text, style: const TextStyle(fontSize: 15, height: 1.35))),
-        ]),
-        if (actions.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 8), child: Wrap(spacing: 8, runSpacing: 8, children: actions)),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(icon, color: color),
+            const SizedBox(width: 10),
+            Expanded(child: Text(text, style: const TextStyle(fontSize: 15, height: 1.35))),
+          ],
+        ),
+        if (actions.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Wrap(spacing: 8, runSpacing: 8, children: actions),
+          ),
       ],
     ),
   );
@@ -589,7 +716,11 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         context,
         tx(context, 'Etsitään: $brand', 'Finding: $brand'),
         searchedViaBridge || (st.remote.isPaired && searching)
-            ? tx(context, 'Haku tehdään kotisillan kautta, joten tämä toimii myös kodin ulkopuolella.', 'Searching through the home bridge, so this works away from home too.')
+            ? tx(
+                context,
+                'Haku tehdään kotisillan kautta, joten tämä toimii myös kodin ulkopuolella.',
+                'Searching through the home bridge, so this works away from home too.',
+              )
             : tx(context, 'Etsin laitteita kodin wifistä. Napauta omaasi.', 'Looking on your home Wi-Fi. Tap yours.'),
       ),
       if (noWifi)
@@ -597,7 +728,8 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           context,
           icon: Icons.wifi_off,
           color: Colors.redAccent,
-          text: '${problemText(context, AddProblem.noNetwork, brand: brand).$1}\n${problemText(context, AddProblem.noNetwork, brand: brand).$2}',
+          text:
+              '${problemText(context, AddProblem.noNetwork, brand: brand).$1}\n${problemText(context, AddProblem.noNetwork, brand: brand).$2}',
           actions: [
             if (Platform.isAndroid)
               FilledButton.tonalIcon(
@@ -606,7 +738,11 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
                 icon: const Icon(Icons.wifi),
                 label: Text(tx(context, 'Avaa wifi-asetukset', 'Open Wi-Fi settings')),
               ),
-            OutlinedButton.icon(onPressed: _search, icon: const Icon(Icons.refresh), label: Text(tx(context, 'Yhdistin – etsi uudelleen', 'Connected – search again'))),
+            OutlinedButton.icon(
+              onPressed: _search,
+              icon: const Icon(Icons.refresh),
+              label: Text(tx(context, 'Yhdistin – etsi uudelleen', 'Connected – search again')),
+            ),
           ],
         ),
       if (searchError != null)
@@ -614,16 +750,19 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           context,
           icon: Icons.error_outline,
           color: Colors.orange,
-          text: '${problemText(context, searchError!.problem, brand: brand).$1}\n${problemText(context, searchError!.problem, brand: brand).$2}',
+          text:
+              '${problemText(context, searchError!.problem, brand: brand).$1}\n${problemText(context, searchError!.problem, brand: brand).$2}',
         ),
       if (searching)
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 24),
-          child: Column(children: [
-            const CircularProgressIndicator(),
-            const SizedBox(height: 12),
-            Text(tx(context, 'Etsitään… (noin 5 sekuntia)', 'Searching… (about 5 seconds)')),
-          ]),
+          child: Column(
+            children: [
+              const CircularProgressIndicator(),
+              const SizedBox(height: 12),
+              Text(tx(context, 'Etsitään… (noin 5 sekuntia)', 'Searching… (about 5 seconds)')),
+            ],
+          ),
         )
       else ...[
         for (final c in found)
@@ -634,7 +773,13 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
               minVerticalPadding: 14,
               leading: Icon(providerIcon(p), size: 32, color: providerColor(p)),
               title: Text(c.title, style: Theme.of(context).textTheme.titleMedium),
-              subtitle: Text([if (c.model.isNotEmpty && c.model != c.title) c.model, c.address, if (c.viaBridge) tx(context, 'kotisillan kautta', 'via home bridge')].join(' · ')),
+              subtitle: Text(
+                [
+                  if (c.model.isNotEmpty && c.model != c.title) c.model,
+                  c.address,
+                  if (c.viaBridge) tx(context, 'kotisillan kautta', 'via home bridge'),
+                ].join(' · '),
+              ),
               trailing: const Icon(Icons.chevron_right),
               onTap: () => _pick(c),
             ),
@@ -650,20 +795,32 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
               'Nothing found automatically. Check that $brand is on and on the same Wi-Fi. You can also type the address below.',
             ),
           ),
-        Wrap(spacing: 8, runSpacing: 8, children: [
-          OutlinedButton.icon(key: const ValueKey('wiz-search-again'), onPressed: _search, icon: const Icon(Icons.refresh), label: Text(tx(context, 'Etsi uudelleen', 'Search again'))),
-          if (!manual)
-            TextButton.icon(
-              key: const ValueKey('wiz-manual'),
-              onPressed: () => setState(() => manual = true),
-              icon: const Icon(Icons.keyboard),
-              label: Text(tx(context, 'Kirjoita osoite itse', 'Type the address')),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            OutlinedButton.icon(
+              key: const ValueKey('wiz-search-again'),
+              onPressed: _search,
+              icon: const Icon(Icons.refresh),
+              label: Text(tx(context, 'Etsi uudelleen', 'Search again')),
             ),
-        ]),
+            if (!manual)
+              TextButton.icon(
+                key: const ValueKey('wiz-manual'),
+                onPressed: () => setState(() => manual = true),
+                icon: const Icon(Icons.keyboard),
+                label: Text(tx(context, 'Kirjoita osoite itse', 'Type the address')),
+              ),
+          ],
+        ),
       ],
       if (manual) ...[
         const SizedBox(height: 20),
-        Text(tx(context, 'Tai kirjoita osoite itse', 'Or type the address'), style: Theme.of(context).textTheme.titleMedium),
+        Text(
+          tx(context, 'Tai kirjoita osoite itse', 'Or type the address'),
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
         const SizedBox(height: 8),
         TextField(
           key: const ValueKey('wiz-address'),
@@ -682,7 +839,10 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           onSubmitted: (_) => _manualNext(),
         ),
         const SizedBox(height: 8),
-        Text('${tx(context, 'Mistä löydän sen?', 'Where do I find it?')} ${tx(context, p.addressHelpFi, p.addressHelpEn)}', style: Theme.of(context).textTheme.bodyMedium),
+        Text(
+          '${tx(context, 'Mistä löydän sen?', 'Where do I find it?')} ${tx(context, p.addressHelpFi, p.addressHelpEn)}',
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
       ],
     ];
   }
@@ -694,9 +854,16 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         key: ValueKey('wiz-cred-${f.key}'),
         controller: cred[f.key] ??= TextEditingController(),
         obscureText: f.secret,
-        decoration: InputDecoration(labelText: tx(context, f.fi, f.en) + (f.optional ? tx(context, ' (vapaaehtoinen)', ' (optional)') : ''), hintText: f.hint, border: const OutlineInputBorder()),
+        decoration: InputDecoration(
+          labelText: tx(context, f.fi, f.en) + (f.optional ? tx(context, ' (vapaaehtoinen)', ' (optional)') : ''),
+          hintText: f.hint,
+          border: const OutlineInputBorder(),
+        ),
       ),
-      Padding(padding: const EdgeInsets.fromLTRB(4, 6, 4, 16), child: Text(tx(context, f.helpFi, f.helpEn), style: Theme.of(context).textTheme.bodySmall)),
+      Padding(
+        padding: const EdgeInsets.fromLTRB(4, 6, 4, 16),
+        child: Text(tx(context, f.helpFi, f.helpEn), style: Theme.of(context).textTheme.bodySmall),
+      ),
     ],
   ];
 
@@ -706,19 +873,34 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
     final out = <Widget>[];
     if (countdown != null) {
       out.addAll([
-        _title(context, tx(context, 'Paina painiketta nyt', 'Press the button now'), tx(context, p.pairHelpFi, p.pairHelpEn)),
+        _title(
+          context,
+          tx(context, 'Paina painiketta nyt', 'Press the button now'),
+          tx(context, p.pairHelpFi, p.pairHelpEn),
+        ),
         Icon(Icons.touch_app, size: 96, color: providerColor(p)),
         const SizedBox(height: 16),
         LinearProgressIndicator(value: countdown! / p.pairWindow.inSeconds, minHeight: 10),
         const SizedBox(height: 8),
-        Center(child: Text(tx(context, 'Aikaa jäljellä $countdown s', '$countdown s left'), style: Theme.of(context).textTheme.titleMedium)),
+        Center(
+          child: Text(
+            tx(context, 'Aikaa jäljellä $countdown s', '$countdown s left'),
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+        ),
       ]);
       return out;
     }
     if (busy) {
       out.addAll([
-        _title(context, tx(context, 'Yhdistetään…', 'Connecting…'), '${c.title}${c.address != c.title && !cloud ? ' (${c.address})' : ''}'),
-        const Center(child: Padding(padding: EdgeInsets.all(24), child: CircularProgressIndicator())),
+        _title(
+          context,
+          tx(context, 'Yhdistetään…', 'Connecting…'),
+          '${c.title}${c.address != c.title && !cloud ? ' (${c.address})' : ''}',
+        ),
+        const Center(
+          child: Padding(padding: EdgeInsets.all(24), child: CircularProgressIndicator()),
+        ),
       ]);
       return out;
     }
@@ -761,41 +943,52 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           obscureText: true,
           autofocus: true,
           style: const TextStyle(fontSize: 18),
-          decoration: InputDecoration(labelText: tx(context, 'Laitteen salasana', 'Device password'), border: const OutlineInputBorder()),
+          decoration: InputDecoration(
+            labelText: tx(context, 'Laitteen salasana', 'Device password'),
+            border: const OutlineInputBorder(),
+          ),
           onSubmitted: (_) => _connect(),
         ),
         const SizedBox(height: 12),
       ],
-      Wrap(spacing: 8, runSpacing: 8, children: [
-        FilledButton.icon(
-          key: const ValueKey('wiz-retry'),
-          onPressed: () {
-            if (e.problem == AddProblem.needsPassword && pwCtl.text.isEmpty) return;
-            if (e.problem == AddProblem.needsDetails && cred.values.every((c) => c.text.trim().isEmpty)) return;
-            if (p.pairMode == PairMode.button && e.problem == AddProblem.needsPassword) creds.remove('token');
-            _connect();
-          },
-          icon: Icon(details ? Icons.login : Icons.refresh),
-          label: Text(details ? tx(context, 'Yhdistä', 'Connect') : tx(context, 'Yritä uudelleen', 'Try again')),
-        ),
-        if ((e.problem == AddProblem.unreachable || e.problem == AddProblem.noNetwork) && !st.remote.isPaired && !st.remote.bridgeOn)
-          OutlinedButton.icon(
-            onPressed: () => _go(WizStep.remote),
-            icon: const Icon(Icons.router_outlined),
-            label: Text(tx(context, 'Olen kodin ulkopuolella', 'I am away from home')),
+      Wrap(
+        spacing: 8,
+        runSpacing: 8,
+        children: [
+          FilledButton.icon(
+            key: const ValueKey('wiz-retry'),
+            onPressed: () {
+              if (e.problem == AddProblem.needsPassword && pwCtl.text.isEmpty) return;
+              if (e.problem == AddProblem.needsDetails && cred.values.every((c) => c.text.trim().isEmpty)) return;
+              if (p.pairMode == PairMode.button && e.problem == AddProblem.needsPassword) creds.remove('token');
+              _connect();
+            },
+            icon: Icon(details ? Icons.login : Icons.refresh),
+            label: Text(details ? tx(context, 'Yhdistä', 'Connect') : tx(context, 'Yritä uudelleen', 'Try again')),
           ),
-        if (e.problem == AddProblem.noNetwork && Platform.isAndroid)
-          OutlinedButton.icon(
-            onPressed: () => const MethodChannel('molaplan/multicast').invokeMethod('wifiSettings'),
-            icon: const Icon(Icons.wifi),
-            label: Text(tx(context, 'Avaa wifi-asetukset', 'Open Wi-Fi settings')),
-          ),
-      ]),
+          if ((e.problem == AddProblem.unreachable || e.problem == AddProblem.noNetwork) &&
+              !st.remote.isPaired &&
+              !st.remote.bridgeOn)
+            OutlinedButton.icon(
+              onPressed: () => _go(WizStep.remote),
+              icon: const Icon(Icons.router_outlined),
+              label: Text(tx(context, 'Olen kodin ulkopuolella', 'I am away from home')),
+            ),
+          if (e.problem == AddProblem.noNetwork && Platform.isAndroid)
+            OutlinedButton.icon(
+              onPressed: () => const MethodChannel('molaplan/multicast').invokeMethod('wifiSettings'),
+              icon: const Icon(Icons.wifi),
+              label: Text(tx(context, 'Avaa wifi-asetukset', 'Open Wi-Fi settings')),
+            ),
+        ],
+      ),
       const SizedBox(height: 12),
       ExpansionTile(
         tilePadding: EdgeInsets.zero,
         title: Text(tx(context, 'Tekniset tiedot', 'Technical details'), style: Theme.of(context).textTheme.bodySmall),
-        children: [SelectableText(e.detail.isEmpty ? e.problem.name : e.detail, style: Theme.of(context).textTheme.bodySmall)],
+        children: [
+          SelectableText(e.detail.isEmpty ? e.problem.name : e.detail, style: Theme.of(context).textTheme.bodySmall),
+        ],
       ),
     ]);
     return out;
@@ -806,30 +999,47 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
     final hasExtras = r.items.any((i) => i.hasPower);
     final light = r.items.any((i) => i.kind == 'light');
     return [
-      _title(context, tx(context, 'Löytyi: ${r.label}', 'Found: ${r.label}'), tx(context, 'Valitse mitkä tulevat kotinäkymään ja anna niille nimet (esim. Lämmitys, Ulkovalot).', 'Pick what goes on the home view and name them.')),
+      _title(
+        context,
+        tx(context, 'Löytyi: ${r.label}', 'Found: ${r.label}'),
+        tx(
+          context,
+          'Valitse mitkä tulevat kotinäkymään ja anna niille nimet (esim. Lämmitys, Ulkovalot).',
+          'Pick what goes on the home view and name them.',
+        ),
+      ),
       for (final it in r.items)
         Card(
           margin: const EdgeInsets.only(bottom: 10),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(4, 8, 12, 8),
-            child: Row(children: [
-              Checkbox(
-                key: ValueKey('wiz-item-${it.key}'),
-                value: !skip.contains(it.key),
-                onChanged: (v) => setState(() => v == true ? skip.remove(it.key) : skip.add(it.key)),
-              ),
-              Expanded(
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  TextField(
-                    key: ValueKey('wiz-name-${it.key}'),
-                    controller: names[it.key],
-                    style: const TextStyle(fontSize: 17),
-                    decoration: InputDecoration(isDense: true, labelText: tx(context, 'Nimi', 'Name')),
+            child: Row(
+              children: [
+                Checkbox(
+                  key: ValueKey('wiz-item-${it.key}'),
+                  value: !skip.contains(it.key),
+                  onChanged: (v) => setState(() => v == true ? skip.remove(it.key) : skip.add(it.key)),
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextField(
+                        key: ValueKey('wiz-name-${it.key}'),
+                        controller: names[it.key],
+                        style: const TextStyle(fontSize: 17),
+                        decoration: InputDecoration(isDense: true, labelText: tx(context, 'Nimi', 'Name')),
+                      ),
+                      if (it.subtitle.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 4),
+                          child: Text(it.subtitle, style: Theme.of(context).textTheme.bodySmall),
+                        ),
+                    ],
                   ),
-                  if (it.subtitle.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 4), child: Text(it.subtitle, style: Theme.of(context).textTheme.bodySmall)),
-                ]),
-              ),
-            ]),
+                ),
+              ],
+            ),
           ),
         ),
       if (hasExtras)
@@ -838,7 +1048,11 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           contentPadding: EdgeInsets.zero,
           value: extras,
           onChanged: (v) => setState(() => extras = v),
-          title: Text(light ? tx(context, 'Lisää myös kirkkaus / teho', 'Also add brightness / power') : tx(context, 'Näytä myös teho (W)', 'Also show power (W)')),
+          title: Text(
+            light
+                ? tx(context, 'Lisää myös kirkkaus / teho', 'Also add brightness / power')
+                : tx(context, 'Näytä myös teho (W)', 'Also show power (W)'),
+          ),
         ),
     ];
   }
@@ -854,9 +1068,21 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         tx(context, 'Valmis! $added ruutua lisätty', 'Done! $added tiles added'),
         remoteOk
             ? (cloud
-                  ? tx(context, 'Ruudut toimivat kotona ja kodin ulkopuolella pilven kautta – mitään muuta ei tarvitse tehdä.', 'The tiles work at home and away through the cloud – nothing else to do.')
-                  : tx(context, 'Ruudut toimivat kotona ja kodin ulkopuolella kotisillan kautta – mitään muuta ei tarvitse tehdä.', 'The tiles work at home and away through the home bridge – nothing else to do.'))
-            : tx(context, 'Ruudut toimivat nyt kotiverkossa. Jotta voit ohjata kotia mistä tahansa, ota kotisilta käyttöön.', 'The tiles work on your home network. To control from anywhere, set up the home bridge.'),
+                  ? tx(
+                      context,
+                      'Ruudut toimivat kotona ja kodin ulkopuolella pilven kautta – mitään muuta ei tarvitse tehdä.',
+                      'The tiles work at home and away through the cloud – nothing else to do.',
+                    )
+                  : tx(
+                      context,
+                      'Ruudut toimivat kotona ja kodin ulkopuolella kotisillan kautta – mitään muuta ei tarvitse tehdä.',
+                      'The tiles work at home and away through the home bridge – nothing else to do.',
+                    ))
+            : tx(
+                context,
+                'Ruudut toimivat nyt kotiverkossa. Jotta voit ohjata kotia mistä tahansa, ota kotisilta käyttöön.',
+                'The tiles work on your home network. To control from anywhere, set up the home bridge.',
+              ),
       ),
       if (!remoteOk)
         OutlinedButton.icon(
@@ -868,4 +1094,3 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
     ];
   }
 }
-

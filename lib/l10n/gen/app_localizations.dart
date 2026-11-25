@@ -536,6 +536,12 @@ abstract class AppLocalizations {
   /// **'brightness'**
   String get see129fb410;
 
+  /// fi: provider
+  ///
+  /// In en, this message translates to:
+  /// **'camera_'**
+  String get sceabe202da;
+
   /// fi: Teho {p0}
   ///
   /// In en, this message translates to:
@@ -1828,6 +1834,132 @@ abstract class AppLocalizations {
   /// **'Add'**
   String get s5a40f12b6a;
 
+  /// fi: Ei kotiverkossa – vaihda ›
+  ///
+  /// In en, this message translates to:
+  /// **'Not at home – switch ›'**
+  String get s7aa295f82d;
+
+  /// fi: Ei kotiverkossa – vaihda etäyhteyteen ›
+  ///
+  /// In en, this message translates to:
+  /// **'Not on home network – switch to remote ›'**
+  String get sdc74e0c0e7;
+
+  /// fi: Ei yhteyttä
+  ///
+  /// In en, this message translates to:
+  /// **'Offline'**
+  String get s3a5c21004e;
+
+  /// fi: Kirjautuminen vanhentunut
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in expired'**
+  String get s68cbe596f8;
+
+  /// fi: Laite ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'Device not responding'**
+  String get s156aa7eeb3;
+
+  /// fi: Palvelinta ei löydy
+  ///
+  /// In en, this message translates to:
+  /// **'Server not found'**
+  String get s7abcbf1107;
+
+  /// fi: Kotisilta ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'Home bridge not responding'**
+  String get sca533b6f25;
+
+  /// fi: Tietoa ei löydy laitteesta
+  ///
+  /// In en, this message translates to:
+  /// **'Value not found on device'**
+  String get s96ad0dc252;
+
+  /// fi: Asetus puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'Setting missing'**
+  String get s61cdd7287b;
+
+  /// fi: Suojausvirhe
+  ///
+  /// In en, this message translates to:
+  /// **'Security error'**
+  String get s57d0940253;
+
+  /// fi: Laite ei ole verkossa
+  ///
+  /// In en, this message translates to:
+  /// **'Device is offline'**
+  String get sfec025279e;
+
+  /// fi: Kotiverkon laitteet toimivat silti Wi-Fin kautta.
+  ///
+  /// In en, this message translates to:
+  /// **'Devices on your home Wi-Fi still work.'**
+  String get sa7d212f047;
+
+  /// fi: Yritä
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get s24ccd151f2;
+
+  /// fi: Täytä avain ja palvelin.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in the key and the server.'**
+  String get sc5f54cf3c8;
+
+  /// fi: Pilvessä ei ole laitteita tällä avaimella.
+  ///
+  /// In en, this message translates to:
+  /// **'No devices in the cloud with this key.'**
+  String get sb26dad8f73;
+
+  /// fi: {p0} toimii nyt Shelly Cloudin kautta.
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} now works through Shelly Cloud.'**
+  String s2c6ce95ec2(String p0);
+
+  /// fi: Ohjaa {p0} kodin ulkopuolelta
+  ///
+  /// In en, this message translates to:
+  /// **'Control {p0} away from home'**
+  String s5629901cc4(String p0);
+
+  /// fi: Laite vaihdetaan käyttämään Shelly Cloudia. Kaikki sen kanavat, nimet ja ruudut säilyvät. Avain: Shelly-sovellus → oma p
+  ///
+  /// In en, this message translates to:
+  /// **'The device is switched to Shelly Cloud. All its channels, names and tiles stay. Key: Shelly app → your profile → User settings → Authorization cloud key.'**
+  String get s064abc90af;
+
+  /// fi: Palvelin (Server URI)
+  ///
+  /// In en, this message translates to:
+  /// **'Server (Server URI)'**
+  String get sf16961256b;
+
+  /// fi: Mikä näistä on {p0}?
+  ///
+  /// In en, this message translates to:
+  /// **'Which of these is {p0}?'**
+  String s28e10c6870(String p0);
+
+  /// fi: Vaihda Shelly Cloudiin
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to Shelly Cloud'**
+  String get s09f5da65e0;
+
   /// fi: Lämmitys
   ///
   /// In en, this message translates to:
@@ -2218,6 +2350,102 @@ abstract class AppLocalizations {
   /// **'Calculating the plan…'**
   String get s941fbb47fe;
 
+  /// fi: Tasmota-laite
+  ///
+  /// In en, this message translates to:
+  /// **'Tasmota device'**
+  String get s702ca14235;
+
+  /// fi: ESPHome-laite
+  ///
+  /// In en, this message translates to:
+  /// **'ESPHome device'**
+  String get se0e5f715ad;
+
+  /// fi: HomeKit-laite
+  ///
+  /// In en, this message translates to:
+  /// **'HomeKit device'**
+  String get s63b6e55469;
+
+  /// fi: Tuntematon laite
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown device'**
+  String get s13e301a66e;
+
+  /// fi: ei vielä ohjattavissa
+  ///
+  /// In en, this message translates to:
+  /// **'not controllable yet'**
+  String get s23f4820db7;
+
+  /// fi: kotisillan kautta
+  ///
+  /// In en, this message translates to:
+  /// **'via home bridge'**
+  String get saae59a3865;
+
+  /// fi: Etsi laitteet
+  ///
+  /// In en, this message translates to:
+  /// **'Find devices'**
+  String get s1169d2d093;
+
+  /// fi: Etsitään kotiverkosta…
+  ///
+  /// In en, this message translates to:
+  /// **'Searching your home network…'**
+  String get s55b85f29a6;
+
+  /// fi: Molaplan etsii kotiverkosta laitteet, jotka se tunnistaa.
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan looks for devices it recognises on your home network.'**
+  String get se9c923ff0b;
+
+  /// fi: Tunnettuja laitteita ei löytynyt. Valitse merkki alta.
+  ///
+  /// In en, this message translates to:
+  /// **'No known devices found. Pick the brand below.'**
+  String get s3ff2220816;
+
+  /// fi: Löytyi {p0}. Lisää napauttamalla.
+  ///
+  /// In en, this message translates to:
+  /// **'Found {p0}. Tap to add.'**
+  String s2a9142dc3e(String p0);
+
+  /// fi: Etsi uudelleen
+  ///
+  /// In en, this message translates to:
+  /// **'Search again'**
+  String get s2fc39b0bd7;
+
+  /// fi: Etsi
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get s0a9acb5af1;
+
+  /// fi: Et ole kotona: kotisilta etsi laitteet kotiverkosta.
+  ///
+  /// In en, this message translates to:
+  /// **'You are away: the home bridge searched your home network.'**
+  String get s9a018b8166;
+
+  /// fi: {p0} tuntematonta laitetta
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} unknown devices'**
+  String sc81d032be0(String p0);
+
+  /// fi: Näitä Molaplan ei osaa ohjata.
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan cannot control these.'**
+  String get s7f3081821b;
+
   /// fi: Tämä laite ei ole yhteydessä wifiin
   ///
   /// In en, this message translates to:
@@ -2574,23 +2802,11 @@ abstract class AppLocalizations {
   /// **'Searching… (about 5 seconds)'**
   String get s13f0596b74;
 
-  /// fi: kotisillan kautta
-  ///
-  /// In en, this message translates to:
-  /// **'via home bridge'**
-  String get saae59a3865;
-
   /// fi: Laitteita ei löytynyt automaattisesti. Tarkista että {p0} on päällä ja samassa wifissä{p1}. Voit myös kirjoittaa osoitte
   ///
   /// In en, this message translates to:
   /// **'Nothing found automatically. Check that {p0} is on and on the same Wi-Fi. You can also type the address below.'**
   String s8eabd27f68(String p0, String p1);
-
-  /// fi: Etsi uudelleen
-  ///
-  /// In en, this message translates to:
-  /// **'Search again'**
-  String get s2fc39b0bd7;
 
   /// fi: Kirjoita osoite itse
   ///
@@ -5394,6 +5610,18 @@ abstract class AppLocalizations {
   /// **'Sign in or create an account'**
   String get s9bb545e9b3;
 
+  /// fi: Laattakoko
+  ///
+  /// In en, this message translates to:
+  /// **'Tile size'**
+  String get s0625d54b38;
+
+  /// fi: Normaali
+  ///
+  /// In en, this message translates to:
+  /// **'Normal'**
+  String get s8382da3467;
+
   /// fi: Näyttää tekniset asetukset: yhteydet (HTTP, MQTT, Modbus…), viestit, JSON-polut ja ruutujen lähteet. Useimmat eivät tarv
   ///
   /// In en, this message translates to:
@@ -7026,12 +7254,6 @@ abstract class AppLocalizations {
   /// **'Only if you set a password.'**
   String get s259e46c59a;
 
-  /// fi: Tasmota-laite
-  ///
-  /// In en, this message translates to:
-  /// **'Tasmota device'**
-  String get s702ca14235;
-
   /// fi: Tasmota-ohjelmistolla toimiva rele tai pistorasia.
   ///
   /// In en, this message translates to:
@@ -7067,12 +7289,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Only if a web password is set (user admin).'**
   String get s397e83233d;
-
-  /// fi: ESPHome-laite
-  ///
-  /// In en, this message translates to:
-  /// **'ESPHome device'**
-  String get se0e5f715ad;
 
   /// fi: Oma ESP32/ESP8266-laite ESPHome-ohjelmistolla (web_server päällä).
   ///

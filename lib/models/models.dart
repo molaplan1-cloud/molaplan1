@@ -344,6 +344,9 @@ class AppConfig {
   /// "Lukitse näkymä": the control view hides edit/settings/add (device-local, e.g. a customer's tablet).
   bool viewLocked;
 
+  /// "Laattakoko": small / normal / large dashboard tiles.
+  String tileDensity;
+
   AppConfig({
     List<ConnectionConfig>? connections,
     List<Dashboard>? dashboards,
@@ -358,6 +361,7 @@ class AppConfig {
     EnergySettings? energy,
     this.advanced = false,
     this.viewLocked = false,
+    this.tileDensity = 'normal',
   }) : rules = rules ?? [],
        energy = energy ?? EnergySettings(),
        connections = connections ?? [],
@@ -371,6 +375,7 @@ class AppConfig {
     if (bridgeMode) 'bridgeMode': true,
     if (advanced) 'advanced': true,
     if (viewLocked) 'viewLocked': true,
+    if (tileDensity != 'normal') 'tileDensity': tileDensity,
     'relayUrl': ?relayUrl,
     if (remoteCameraSeconds != 2) 'remoteCameraSeconds': remoteCameraSeconds,
     'updateCheckedAt': ?updateCheckedAt,
@@ -391,6 +396,7 @@ class AppConfig {
       bridgeMode: (j['bridgeMode'] ?? false) as bool,
       advanced: j['advanced'] == true,
       viewLocked: j['viewLocked'] == true,
+      tileDensity: const ['small', 'large'].contains(j['tileDensity']) ? j['tileDensity'] as String : 'normal',
       relayUrl: j['relayUrl'] as String?,
       remoteCameraSeconds: (j['remoteCameraSeconds'] as num?)?.toInt() ?? 2,
       updateCheckedAt: (j['updateCheckedAt'] as num?)?.toInt(),

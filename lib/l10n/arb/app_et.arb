@@ -237,6 +237,7 @@
  },
  "s3832b8c729": "kogu tuba",
  "see129fb410": "heledus",
+ "sceabe202da": "camera_",
  "sb9964cfb3b": "Võimsus {p0}",
  "sfcb44be1a0": "Shelly",
  "sa6ff717527": "Releed ja pistikud: Pro 4PM, Plus 1PM, Plug S, 2.5... Leiti automaatselt, plaadid igale kanalile.",
@@ -958,6 +959,54 @@
   "x-mt": true
  },
  "s5a40f12b6a": "Lisa",
+ "s7aa295f82d": "Pole kodus – vaheta ›",
+ "sdc74e0c0e7": "Pole koduvõrgus – lülita kaugühendusele ›",
+ "s3a5c21004e": "Võrguühenduseta",
+ "s68cbe596f8": "Sisselogimine aegus",
+ "s156aa7eeb3": "Seade ei vasta",
+ "s7abcbf1107": "Serverit ei leitud",
+ "sca533b6f25": "Kodusild ei vasta",
+ "s96ad0dc252": "Väärtust seadmes ei leitud",
+ "@s96ad0dc252": {
+  "x-mt": true
+ },
+ "s61cdd7287b": "Seade puudub",
+ "s57d0940253": "Turvaviga",
+ "@s57d0940253": {
+  "x-mt": true
+ },
+ "sfec025279e": "Seade ei ole võrgus",
+ "sa7d212f047": "Kodu Wi-Fi seadmed töötavad endiselt.",
+ "s24ccd151f2": "Proovi uuesti",
+ "sc5f54cf3c8": "Täida võti ja server.",
+ "@sc5f54cf3c8": {
+  "x-mt": true
+ },
+ "sb26dad8f73": "Selle võtmega ei ole pilves ühtegi seadet.",
+ "@sb26dad8f73": {
+  "x-mt": true
+ },
+ "s2c6ce95ec2": "{p0} töötab nüüd läbi Shelly Cloudi.",
+ "@s2c6ce95ec2": {
+  "x-mt": true
+ },
+ "s5629901cc4": "Kontroll {p0} kodust eemal",
+ "@s5629901cc4": {
+  "x-mt": true
+ },
+ "s064abc90af": "Seade lülitatakse Shelly Cloudile. Kõik selle kanalid, nimed ja kaardid jäävad alles. Võti: Shelly rakendus → sinu profiil → Kasutaja seaded → Autoriseerimispilve võti.",
+ "@s064abc90af": {
+  "x-mt": true
+ },
+ "sf16961256b": "Server (Server URI)",
+ "@sf16961256b": {
+  "x-mt": true
+ },
+ "s28e10c6870": "Milline neist on {p0}?",
+ "@s28e10c6870": {
+  "x-mt": true
+ },
+ "s09f5da65e0": "Lülita Shelly Cloudile",
  "sa3a093e55e": "Küte",
  "s8efb99df1d": "Jahutus",
  "s0b98d62330": "Küte ja jahutus",
@@ -1071,6 +1120,58 @@
   "x-mt": true
  },
  "s941fbb47fe": "Plaani arvutatakse…",
+ "s702ca14235": "Tasmota seade",
+ "se0e5f715ad": "ESPHome seade",
+ "@se0e5f715ad": {
+  "x-mt": true
+ },
+ "s63b6e55469": "HomeKiti seade",
+ "@s63b6e55469": {
+  "x-mt": true
+ },
+ "s13e301a66e": "Tundmatu seade",
+ "s23f4820db7": "ei ole veel kontrollitav",
+ "@s23f4820db7": {
+  "x-mt": true
+ },
+ "saae59a3865": "kodusilla kaudu",
+ "@saae59a3865": {
+  "x-mt": true
+ },
+ "s1169d2d093": "Leia seadmed",
+ "s55b85f29a6": "Koduvõrgu otsimine...",
+ "@s55b85f29a6": {
+  "x-mt": true
+ },
+ "se9c923ff0b": "Molaplan otsib seadmeid, mida ta tunneb teie koduvõrgus.",
+ "@se9c923ff0b": {
+  "x-mt": true
+ },
+ "s3ff2220816": "Teadaolevaid seadmeid ei leitud. Vali allpool kaubamärk.",
+ "@s3ff2220816": {
+  "x-mt": true
+ },
+ "s2a9142dc3e": "Leiti {p0}. Lisatav kaart.",
+ "@s2a9142dc3e": {
+  "x-mt": true
+ },
+ "s2fc39b0bd7": "Otsi uuesti",
+ "s0a9acb5af1": "Otsi",
+ "@s0a9acb5af1": {
+  "x-mt": true
+ },
+ "s9a018b8166": "Sa oled ära: kodusild otsis läbi sinu koduvõrgu.",
+ "@s9a018b8166": {
+  "x-mt": true
+ },
+ "sc81d032be0": "{p0} tundmatud seadmed",
+ "@sc81d032be0": {
+  "x-mt": true
+ },
+ "s7f3081821b": "Molaplan ei suuda neid kontrollida.",
+ "@s7f3081821b": {
+  "x-mt": true
+ },
  "s55d52c5ae1": "See seade ei ole Wi-Fi-s",
  "@s55d52c5ae1": {
   "x-mt": true
@@ -1298,15 +1399,10 @@
  "@s13f0596b74": {
   "x-mt": true
  },
- "saae59a3865": "kodusilla kaudu",
- "@saae59a3865": {
-  "x-mt": true
- },
  "s8eabd27f68": "Automaatselt ei leitud midagi. Kontrolli, kas {p0} on samal Wi-Fi- l. Allpool saab kirjutada ka aadressi.",
  "@s8eabd27f68": {
   "x-mt": true
  },
- "s2fc39b0bd7": "Otsi uuesti",
  "sa616ab181e": "Kirjuta aadress",
  "@sa616ab181e": {
   "x-mt": true
@@ -2623,6 +2719,8 @@
   "x-mt": true
  },
  "s9bb545e9b3": "Logi sisse või loo konto",
+ "s0625d54b38": "Kaardi suurus",
+ "s8382da3467": "Tavaline",
  "s21f870dbc2": "Näitab tehnilisi seadistusi: ühendused (HTTP, MQTT, Modbus...), nimikoormused, JSON- i rajad ja plaatide allikad. Enamik inimesi ei vaja neid.",
  "@s21f870dbc2": {
   "x-mt": true
@@ -3546,7 +3644,6 @@
  "@s259e46c59a": {
   "x-mt": true
  },
- "s702ca14235": "Tasmota seade",
  "sc130e073ba": "Relee või pistik töötab Tasmota firmware.",
  "@sc130e073ba": {
   "x-mt": true
@@ -3569,10 +3666,6 @@
  },
  "s397e83233d": "Ainult siis, kui veebiparool on seadistatud (kasutaja admin).",
  "@s397e83233d": {
-  "x-mt": true
- },
- "se0e5f715ad": "ESPHome seade",
- "@se0e5f715ad": {
   "x-mt": true
  },
  "sa0efcdf688": "ESP32/ESP8266 koos ESPHome''iga (web_server lubatud).",

@@ -154,6 +154,10 @@ void main() {
   });
 
   testWidgets('brand picker: search finds Shelly, Hue, IKEA and roadmap brands', (tester) async {
+    // "Etsi laitteet" sits above the brands: a taller screen keeps them all built.
+    tester.view.physicalSize = const Size(800, 1000);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
     final st = await appState(tester);
     await tester.pumpWidget(host(st, const TemplateGalleryPage()));
     await tester.pumpAndSettle();

@@ -779,6 +779,12 @@ class AppState extends ChangeNotifier implements SyncHost {
     return true;
   }
 
+  Future<void> setTileDensity(String v) async {
+    config.tileDensity = v;
+    await save();
+    notifyListeners();
+  }
+
   Future<void> setAdvanced(bool v) async {
     config.advanced = v;
     await save();

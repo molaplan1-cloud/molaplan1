@@ -263,6 +263,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get see129fb410 => 'brillo';
 
   @override
+  String get sceabe202da => 'camera_';
+
+  @override
   String sb9964cfb3b(String p0) {
     return 'Potencia $p0';
   }
@@ -1006,6 +1009,77 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s5a40f12b6a => 'Añadir';
 
   @override
+  String get s7aa295f82d => 'Fuera de casa – cambiar ›';
+
+  @override
+  String get sdc74e0c0e7 => 'Fuera de la red de casa – cambiar a remoto ›';
+
+  @override
+  String get s3a5c21004e => 'Sin conexión';
+
+  @override
+  String get s68cbe596f8 => 'La sesión ha caducado';
+
+  @override
+  String get s156aa7eeb3 => 'El dispositivo no responde';
+
+  @override
+  String get s7abcbf1107 => 'Servidor no encontrado';
+
+  @override
+  String get sca533b6f25 => 'El puente de casa no responde';
+
+  @override
+  String get s96ad0dc252 => 'Valor no encontrado en el dispositivo';
+
+  @override
+  String get s61cdd7287b => 'Falta un ajuste';
+
+  @override
+  String get s57d0940253 => 'Error de seguridad';
+
+  @override
+  String get sfec025279e => 'El dispositivo está desconectado';
+
+  @override
+  String get sa7d212f047 =>
+      'Los dispositivos del Wi-Fi de casa siguen funcionando.';
+
+  @override
+  String get s24ccd151f2 => 'Reintentar';
+
+  @override
+  String get sc5f54cf3c8 => 'Llene la llave y el servidor.';
+
+  @override
+  String get sb26dad8f73 => 'No hay dispositivos en la nube con esta llave.';
+
+  @override
+  String s2c6ce95ec2(String p0) {
+    return '$p0 ahora trabaja a través de Shelly Cloud.';
+  }
+
+  @override
+  String s5629901cc4(String p0) {
+    return 'Control $p0 lejos de casa';
+  }
+
+  @override
+  String get s064abc90af =>
+      'El dispositivo se cambia a Shelly Cloud. Todos sus canales, nombres y tarjetas se quedan. Clave: Aplicación Shelly → tu perfil → Ajustes de usuario → Clave de la nube de autorización.';
+
+  @override
+  String get sf16961256b => 'Servidor (Server URI)';
+
+  @override
+  String s28e10c6870(String p0) {
+    return '¿Cuál de estos es $p0?';
+  }
+
+  @override
+  String get s09f5da65e0 => 'Cambiar a Shelly Cloud';
+
+  @override
   String get sa3a093e55e => 'Calefacción';
 
   @override
@@ -1210,6 +1284,61 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s941fbb47fe => 'Calculando el plan…';
+
+  @override
+  String get s702ca14235 => 'Dispositivo Tasmota';
+
+  @override
+  String get se0e5f715ad => 'ESPHome device';
+
+  @override
+  String get s63b6e55469 => 'Dispositivo HomeKit';
+
+  @override
+  String get s13e301a66e => 'Dispositivo desconocido';
+
+  @override
+  String get s23f4820db7 => 'no controlable todavía';
+
+  @override
+  String get saae59a3865 => 'via casa puente';
+
+  @override
+  String get s1169d2d093 => 'Buscar dispositivos';
+
+  @override
+  String get s55b85f29a6 => 'Búsqueda de su red...';
+
+  @override
+  String get se9c923ff0b =>
+      'Molaplan busca dispositivos que reconoce en su red de inicio.';
+
+  @override
+  String get s3ff2220816 =>
+      'No se encontraron dispositivos conocidos. Elige la marca abajo.';
+
+  @override
+  String s2a9142dc3e(String p0) {
+    return 'Encontrado $p0.';
+  }
+
+  @override
+  String get s2fc39b0bd7 => 'Buscar de nuevo';
+
+  @override
+  String get s0a9acb5af1 => 'Búsqueda';
+
+  @override
+  String get s9a018b8166 =>
+      'Usted está lejos: el puente de la casa registró su red de la casa.';
+
+  @override
+  String sc81d032be0(String p0) {
+    return '$p0 dispositivos desconocidos';
+  }
+
+  @override
+  String get s7f3081821b => 'Molaplan no puede controlar estos.';
 
   @override
   String get s55d52c5ae1 => 'Este dispositivo no está en Wi-Fi';
@@ -1429,15 +1558,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s13f0596b74 => 'Buscando... (unos 5 segundos)';
 
   @override
-  String get saae59a3865 => 'via casa puente';
-
-  @override
   String s8eabd27f68(String p0, String p1) {
     return 'No se encuentra automáticamente. Compruebe que $p0 está en y en el mismo Wi-Fi. También puede escribir la dirección a continuación.';
   }
-
-  @override
-  String get s2fc39b0bd7 => 'Buscar de nuevo';
 
   @override
   String get sa616ab181e => 'Introduzca la dirección';
@@ -2988,6 +3111,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s9bb545e9b3 => 'Inicia sesión o crea una cuenta';
 
   @override
+  String get s0625d54b38 => 'Tamaño de las tarjetas';
+
+  @override
+  String get s8382da3467 => 'Normal';
+
+  @override
   String get s21f870dbc2 =>
       'Muestra configuración técnica: conexiones (HTTP, MQTT, Modbus...), cargas de pago, caminos JSON y fuentes de baldosas. La mayoría de la gente no necesita estas.';
 
@@ -3911,9 +4040,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s259e46c59a => 'Sólo si estableces una contraseña.';
 
   @override
-  String get s702ca14235 => 'Dispositivo Tasmota';
-
-  @override
   String get sc130e073ba => 'Relé o plug running Tasmota firmware.';
 
   @override
@@ -3931,9 +4057,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s397e83233d =>
       'Sólo si se establece una contraseña web (usuario admin).';
-
-  @override
-  String get se0e5f715ad => 'ESPHome device';
 
   @override
   String get sa0efcdf688 =>

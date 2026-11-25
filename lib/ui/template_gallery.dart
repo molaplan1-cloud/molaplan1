@@ -16,6 +16,7 @@ import 'heatpump_pages.dart';
 import 'connections_page.dart';
 import 'error_box.dart';
 import 'spec_form.dart';
+import 'network_scan.dart';
 
 /// Grid of ready-made device recipes. Pops with `true` when something was added.
 class TemplateGalleryPage extends StatelessWidget {
@@ -27,6 +28,10 @@ class TemplateGalleryPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(tx(context, 'Lisää laite', 'Add a device'))),
       body: TemplateGrid(
+        dashboard: dashboard,
+        onAdded: (_) {
+          if (context.mounted) Navigator.pop(context, true);
+        },
         onPick: (t) async {
           final added = await Navigator.push<bool>(
             context,
@@ -73,8 +78,18 @@ class TemplateGrid extends StatefulWidget {
     this.onBrand,
     this.onThermostat,
     this.onWeather,
+    this.onAdded,
+    this.dashboard,
+    this.scanner,
   });
   final void Function(DeviceTemplate) onPick;
+
+  /// Something was added from the network scan (true = brand wizard, tiles made).
+  final void Function(bool viaWizard)? onAdded;
+  final Dashboard? dashboard;
+
+  /// Test hook for "Etsi laitteet".
+  final NetworkScanner? scanner;
   final VoidCallback onManual;
   final Widget? header;
 
@@ -148,6 +163,9 @@ class _TemplateGridState extends State<TemplateGrid> {
         );
         return CustomScrollView(
           slivers: [
+            SliverToBoxAdapter(
+              child: NetworkScanCard(dashboard: widget.dashboard, onAdded: widget.onAdded, scanner: widget.scanner),
+            ),
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
@@ -397,9 +415,18 @@ class _TemplateCard extends StatelessWidget {
 
 /// Fill in a template's few inputs, test, preview tiles, add.
 class TemplateSetupPage extends StatefulWidget {
-  const TemplateSetupPage({super.key, required this.template, this.dashboard, this.discover = discoverDevices});
+  const TemplateSetupPage({
+    super.key,
+    required this.template,
+    this.dashboard,
+    this.initialValues,
+    this.discover = discoverDevices,
+  });
   final DeviceTemplate template;
   final Dashboard? dashboard;
+
+  /// Prefilled fields (network scan: address and name).
+  final Map<String, dynamic>? initialValues;
   final Future<(List<FoundDevice>, String?)> Function({List<String> services, Duration timeout}) discover;
 
   @override
@@ -407,7 +434,7 @@ class TemplateSetupPage extends StatefulWidget {
 }
 
 class _TemplateSetupPageState extends State<TemplateSetupPage> {
-  final values = <String, dynamic>{};
+  late final values = <String, dynamic>{...?widget.initialValues};
   final _excluded = <int>{};
   int _formKey = 0;
   bool _testing = false;
@@ -851,7 +878,10 @@ Future<DeviceProvider?> pickCameraBrand(BuildContext context) => showModalBottom
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
-          child: Text(tx(c, 'Mikä kamera sinulla on?', 'Which camera do you have?'), style: Theme.of(c).textTheme.titleLarge),
+          child: Text(
+            tx(c, 'Mikä kamera sinulla on?', 'Which camera do you have?'),
+            style: Theme.of(c).textTheme.titleLarge,
+          ),
         ),
         for (final p in cameraProviders)
           ListTile(

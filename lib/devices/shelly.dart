@@ -150,6 +150,8 @@ ConnectionConfig shellyConnection(String address, ShellyDevice d, {String? passw
     type: 'http',
     settings: {
       'baseUrl': _base(address),
+      // Kept for switching this device to Shelly Cloud later (cloud id = MAC part).
+      'shellyId': d.id,
       'auth': pw.isEmpty ? 'none' : (d.gen >= 2 ? 'digest' : 'basic'),
       if (pw.isNotEmpty) 'username': 'admin',
     },
@@ -634,8 +636,9 @@ class ShellyCloudDriver extends Driver {
 
   final _client = HttpClient()..connectionTimeout = const Duration(seconds: 10);
   final _cache = <String, (DateTime, Map<String, dynamic>)>{};
-  Future<void> _gate = Future.value();
-  DateTime _last = DateTime.fromMillisecondsSinceEpoch(0);
+  // Shared by all cloud connections: Shelly allows about one request per second per account.
+  static Future<void> _gate = Future.value();
+  static DateTime _last = DateTime.fromMillisecondsSinceEpoch(0);
   static Duration minGap = const Duration(milliseconds: 1100);
   final _pendingIds = <String>{};
   Future<void>? _batch;
@@ -720,8 +723,46 @@ class ShellyCloudDriver extends Driver {
     return _cache[id]?.$2;
   }
 
+  /// A device switched from LAN to cloud keeps its tiles: their LAN specs
+  /// (/relay/0, /rpc/Switch.GetStatus?id=0 …) are mapped to cloud calls here.
+  static Map<String, dynamic>? lanSpecToCloud(Map<String, dynamic> spec, String deviceId) {
+    final path = '${spec['path'] ?? ''}';
+    if (path.isEmpty || deviceId.isEmpty) return null;
+    final u = Uri.tryParse(path);
+    if (u == null) return null;
+    final q = u.queryParameters;
+    final jp = '${spec['jsonPath'] ?? ''}';
+    final base = <String, dynamic>{'id': deviceId};
+    final relay = RegExp(r'^/(relay|meter)/(\d+)$').firstMatch(u.path);
+    if (relay != null) {
+      base['channel'] = int.parse(relay[2]!);
+      if (relay[1] == 'meter') return base..['field'] = 'power';
+      final turn = q['turn'];
+      if (turn == 'on' || turn == 'off') return base..['on'] = turn == 'on';
+      return base..['field'] = 'output';
+    }
+    final ch = int.tryParse(q['id'] ?? '');
+    if (ch == null) return null;
+    base['channel'] = ch;
+    switch (u.path) {
+      case '/rpc/Switch.GetStatus':
+        return base..['field'] = jp == 'apower' ? 'power' : 'output';
+      case '/rpc/Switch.Set':
+        return base..['on'] = q['on'] == 'true';
+    }
+    return null;
+  }
+
+  Map<String, dynamic> _spec(Map<String, dynamic> spec) {
+    if (!spec.containsKey('path')) return spec;
+    final m = lanSpecToCloud(spec, s.str('deviceId').toLowerCase());
+    if (m == null) throw DriverException('Not available through Shelly Cloud: ${spec['path']}');
+    return m;
+  }
+
   @override
   Future<Object?> read(Map<String, dynamic> spec) async {
+    spec = _spec(spec);
     final id = spec.str('id').toLowerCase();
     final dev = await _status(id);
     if (dev == null) throw DriverException('Device $id not found in Shelly Cloud');
@@ -742,6 +783,7 @@ class ShellyCloudDriver extends Driver {
       case 'get':
         return _get([for (final i in (spec['ids'] as List? ?? const [])) '$i'], settings: true);
     }
+    spec = _spec(spec);
     final id = spec.str('id').toLowerCase();
     final on = spec.containsKey('on')
         ? spec['on'] == true || spec['on'] == 'true'

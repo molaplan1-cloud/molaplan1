@@ -58,6 +58,36 @@ bool deviceMatchesTemplate(FoundDevice d, String templateId) {
 
 const _lock = MethodChannel('molaplan/multicast');
 
+// Android's WifiManager.MulticastLock is not reference counted here, so nested users
+// (the network scan around mDNS) count in Dart.
+var _lockDepth = 0;
+
+Future<void> _acquireLock() async {
+  if (!Platform.isAndroid) return;
+  if (_lockDepth++ > 0) return;
+  try {
+    await _lock.invokeMethod<void>('acquire');
+  } catch (_) {}
+}
+
+Future<void> _releaseLock() async {
+  if (!Platform.isAndroid || _lockDepth == 0) return;
+  if (--_lockDepth > 0) return;
+  try {
+    await _lock.invokeMethod<void>('release');
+  } catch (_) {}
+}
+
+/// Holds the Android multicast lock while [body] runs (SSDP, WS-Discovery, mDNS).
+Future<T> withMulticastLock<T>(Future<T> Function() body) async {
+  await _acquireLock();
+  try {
+    return await body();
+  } finally {
+    await _releaseLock();
+  }
+}
+
 Future<RawDatagramSocket> _bind(
   dynamic host,
   int port, {
@@ -86,14 +116,8 @@ Future<(List<FoundDevice>, String?)> discoverDevices({
 }) async {
   final found = <String, FoundDevice>{};
   final client = MDnsClient(rawDatagramSocketFactory: _bind);
-  var locked = false;
+  await _acquireLock();
   try {
-    if (Platform.isAndroid) {
-      try {
-        await _lock.invokeMethod<void>('acquire');
-        locked = true;
-      } catch (_) {}
-    }
     await client.start();
     await Future.wait(
       services.map((svc) async {
@@ -133,10 +157,6 @@ Future<(List<FoundDevice>, String?)> discoverDevices({
     return (found.values.toList(), e.toString());
   } finally {
     client.stop();
-    if (locked) {
-      try {
-        await _lock.invokeMethod<void>('release');
-      } catch (_) {}
-    }
+    await _releaseLock();
   }
 }

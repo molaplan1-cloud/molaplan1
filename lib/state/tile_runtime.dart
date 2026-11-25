@@ -1,3 +1,4 @@
+import 'net_health.dart';
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -31,7 +32,13 @@ class TileRuntime extends ChangeNotifier {
     }
     final stream = d.watch(tile.read);
     if (stream != null) {
-      _sub = stream.listen((v) => _set(v, null), onError: (Object e) => _set(value, e.toString()));
+      _sub = stream.listen(
+        (v) => _set(v, null),
+        onError: (Object e) {
+          NetHealth.instance.report(e);
+          _set(value, e.toString());
+        },
+      );
     } else {
       refresh();
       final secs = tile.pollSeconds <= 0 ? 0 : tile.pollSeconds.clamp(1, 86400);
@@ -45,7 +52,9 @@ class TileRuntime extends ChangeNotifier {
     try {
       final v = await d.read(tile.read);
       _set(v, null);
+      NetHealth.instance.reportOk();
     } catch (e) {
+      NetHealth.instance.report(e);
       _set(value, e.toString());
     }
   }

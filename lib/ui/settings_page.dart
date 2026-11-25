@@ -122,6 +122,19 @@ class _SettingsPageState extends State<SettingsPage> {
               const SizedBox(height: 8),
               const LanguagePicker(),
               const SizedBox(height: 20),
+              Text(tx(context, 'Laattakoko', 'Tile size'), style: text.titleMedium),
+              const SizedBox(height: 8),
+              SegmentedButton<String>(
+                key: const ValueKey('settings-tile-density'),
+                segments: [
+                  ButtonSegment(value: 'small', label: Text(tx(context, 'Pieni', 'Small'))),
+                  ButtonSegment(value: 'normal', label: Text(tx(context, 'Normaali', 'Normal'))),
+                  ButtonSegment(value: 'large', label: Text(tx(context, 'Iso', 'Large'))),
+                ],
+                selected: {st.config.tileDensity},
+                onSelectionChanged: (v) => st.setTileDensity(v.first),
+              ),
+              const SizedBox(height: 20),
               SwitchListTile(
                 key: const ValueKey('settings-advanced'),
                 contentPadding: EdgeInsets.zero,

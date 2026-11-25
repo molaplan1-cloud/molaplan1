@@ -259,6 +259,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get see129fb410 => 'brightness';
 
   @override
+  String get sceabe202da => 'camera_';
+
+  @override
   String sb9964cfb3b(String p0) {
     return 'Power $p0';
   }
@@ -992,6 +995,76 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s5a40f12b6a => 'Add';
 
   @override
+  String get s7aa295f82d => 'Not at home – switch ›';
+
+  @override
+  String get sdc74e0c0e7 => 'Not on home network – switch to remote ›';
+
+  @override
+  String get s3a5c21004e => 'Offline';
+
+  @override
+  String get s68cbe596f8 => 'Sign-in expired';
+
+  @override
+  String get s156aa7eeb3 => 'Device not responding';
+
+  @override
+  String get s7abcbf1107 => 'Server not found';
+
+  @override
+  String get sca533b6f25 => 'Home bridge not responding';
+
+  @override
+  String get s96ad0dc252 => 'Value not found on device';
+
+  @override
+  String get s61cdd7287b => 'Setting missing';
+
+  @override
+  String get s57d0940253 => 'Security error';
+
+  @override
+  String get sfec025279e => 'Device is offline';
+
+  @override
+  String get sa7d212f047 => 'Devices on your home Wi-Fi still work.';
+
+  @override
+  String get s24ccd151f2 => 'Retry';
+
+  @override
+  String get sc5f54cf3c8 => 'Fill in the key and the server.';
+
+  @override
+  String get sb26dad8f73 => 'No devices in the cloud with this key.';
+
+  @override
+  String s2c6ce95ec2(String p0) {
+    return '$p0 now works through Shelly Cloud.';
+  }
+
+  @override
+  String s5629901cc4(String p0) {
+    return 'Control $p0 away from home';
+  }
+
+  @override
+  String get s064abc90af =>
+      'The device is switched to Shelly Cloud. All its channels, names and tiles stay. Key: Shelly app → your profile → User settings → Authorization cloud key.';
+
+  @override
+  String get sf16961256b => 'Server (Server URI)';
+
+  @override
+  String s28e10c6870(String p0) {
+    return 'Which of these is $p0?';
+  }
+
+  @override
+  String get s09f5da65e0 => 'Switch to Shelly Cloud';
+
+  @override
   String get sa3a093e55e => 'Heating';
 
   @override
@@ -1193,6 +1266,60 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s941fbb47fe => 'Calculating the plan…';
+
+  @override
+  String get s702ca14235 => 'Tasmota device';
+
+  @override
+  String get se0e5f715ad => 'ESPHome device';
+
+  @override
+  String get s63b6e55469 => 'HomeKit device';
+
+  @override
+  String get s13e301a66e => 'Unknown device';
+
+  @override
+  String get s23f4820db7 => 'not controllable yet';
+
+  @override
+  String get saae59a3865 => 'via home bridge';
+
+  @override
+  String get s1169d2d093 => 'Find devices';
+
+  @override
+  String get s55b85f29a6 => 'Searching your home network…';
+
+  @override
+  String get se9c923ff0b =>
+      'Molaplan looks for devices it recognises on your home network.';
+
+  @override
+  String get s3ff2220816 => 'No known devices found. Pick the brand below.';
+
+  @override
+  String s2a9142dc3e(String p0) {
+    return 'Found $p0. Tap to add.';
+  }
+
+  @override
+  String get s2fc39b0bd7 => 'Search again';
+
+  @override
+  String get s0a9acb5af1 => 'Search';
+
+  @override
+  String get s9a018b8166 =>
+      'You are away: the home bridge searched your home network.';
+
+  @override
+  String sc81d032be0(String p0) {
+    return '$p0 unknown devices';
+  }
+
+  @override
+  String get s7f3081821b => 'Molaplan cannot control these.';
 
   @override
   String get s55d52c5ae1 => 'This device is not on Wi-Fi';
@@ -1411,15 +1538,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s13f0596b74 => 'Searching… (about 5 seconds)';
 
   @override
-  String get saae59a3865 => 'via home bridge';
-
-  @override
   String s8eabd27f68(String p0, String p1) {
     return 'Nothing found automatically. Check that $p0 is on and on the same Wi-Fi. You can also type the address below.';
   }
-
-  @override
-  String get s2fc39b0bd7 => 'Search again';
 
   @override
   String get sa616ab181e => 'Type the address';
@@ -2962,6 +3083,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s9bb545e9b3 => 'Sign in or create an account';
 
   @override
+  String get s0625d54b38 => 'Tile size';
+
+  @override
+  String get s8382da3467 => 'Normal';
+
+  @override
   String get s21f870dbc2 =>
       'Shows technical settings: connections (HTTP, MQTT, Modbus…), payloads, JSON paths and tile sources. Most people don\'t need these.';
 
@@ -3879,9 +4006,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s259e46c59a => 'Only if you set a password.';
 
   @override
-  String get s702ca14235 => 'Tasmota device';
-
-  @override
   String get sc130e073ba => 'Relay or plug running Tasmota firmware.';
 
   @override
@@ -3898,9 +4022,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s397e83233d => 'Only if a web password is set (user admin).';
-
-  @override
-  String get se0e5f715ad => 'ESPHome device';
 
   @override
   String get sa0efcdf688 =>

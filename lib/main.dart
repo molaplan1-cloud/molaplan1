@@ -1,3 +1,5 @@
+import 'state/net_health.dart';
+
 import 'dart:io';
 
 import 'package:cupertino_ui/cupertino_ui.dart' show GlobalCupertinoLocalizations;
@@ -17,6 +19,8 @@ import 'l10n/gen/app_localizations.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   initVideo();
+  // Online? On the home Wi-Fi? (one banner instead of an error on every tile)
+  NetHealth.instance.check(force: true);
   final state = AppState(
     configStore: PrefsConfigStore(),
     secretStore: SecureSecretStore(),

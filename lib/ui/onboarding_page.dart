@@ -78,6 +78,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
         return _welcome(context);
       case 1:
         return TemplateGrid(
+          dashboard: _dash,
+          onAdded: (viaWizard) {
+            if (mounted) _go(viaWizard ? 3 : 2);
+          },
           header: _stepHeader(
             context,
             tx(context, 'Lisää ensimmäinen laite', 'Add your first device'),
@@ -99,7 +103,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
           onBrand: (p) async {
             final ok = await Navigator.push<bool>(
               context,
-              MaterialPageRoute(builder: (_) => AddDeviceWizard(provider: p, dashboard: _dash)),
+              MaterialPageRoute(
+                builder: (_) => AddDeviceWizard(provider: p, dashboard: _dash),
+              ),
             );
             // The wizard already created the tiles: skip the "first tile" step.
             if (ok == true && mounted) _go(3);
@@ -181,10 +187,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     return _page(
       context,
       [
-        Align(
-          alignment: Alignment.centerRight,
-          child: const LanguagePicker(),
-        ),
+        Align(alignment: Alignment.centerRight, child: const LanguagePicker()),
         const SizedBox(height: 16),
         Container(
           width: 80,
@@ -248,7 +251,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
             if (st.account.signedIn && st.hasLocalSetup) await _finish();
           },
           icon: const Icon(Icons.login),
-          label: Text(tx(context, 'Minulla on jo Molaplan-tili – kirjaudu', 'I already have a Molaplan account – sign in')),
+          label: Text(
+            tx(context, 'Minulla on jo Molaplan-tili – kirjaudu', 'I already have a Molaplan account – sign in'),
+          ),
         ),
       ],
       action: FilledButton(

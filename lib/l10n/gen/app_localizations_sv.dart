@@ -261,6 +261,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get see129fb410 => 'ljusstyrka';
 
   @override
+  String get sceabe202da => 'camera_';
+
+  @override
   String sb9964cfb3b(String p0) {
     return 'Effekt $p0';
   }
@@ -999,6 +1002,76 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s5a40f12b6a => 'Lägg till';
 
   @override
+  String get s7aa295f82d => 'Inte hemma – byt ›';
+
+  @override
+  String get sdc74e0c0e7 => 'Inte i hemnätverket – byt till fjärranslutning ›';
+
+  @override
+  String get s3a5c21004e => 'Offline';
+
+  @override
+  String get s68cbe596f8 => 'Inloggningen har gått ut';
+
+  @override
+  String get s156aa7eeb3 => 'Enheten svarar inte';
+
+  @override
+  String get s7abcbf1107 => 'Servern hittades inte';
+
+  @override
+  String get sca533b6f25 => 'Hembryggan svarar inte';
+
+  @override
+  String get s96ad0dc252 => 'Värde som inte finns på enheten';
+
+  @override
+  String get s61cdd7287b => 'Inställning saknas';
+
+  @override
+  String get s57d0940253 => 'Säkerhetsfel';
+
+  @override
+  String get sfec025279e => 'Enheten är offline';
+
+  @override
+  String get sa7d212f047 => 'Enheter i hemmets Wi-Fi fungerar ändå.';
+
+  @override
+  String get s24ccd151f2 => 'Försök igen';
+
+  @override
+  String get sc5f54cf3c8 => 'Fyll i nyckeln och servern.';
+
+  @override
+  String get sb26dad8f73 => 'Inga enheter i molnet med denna nyckel.';
+
+  @override
+  String s2c6ce95ec2(String p0) {
+    return '$p0 fungerar nu genom Shelly Cloud.';
+  }
+
+  @override
+  String s5629901cc4(String p0) {
+    return 'Kontrollera $p0 hemifrån';
+  }
+
+  @override
+  String get s064abc90af =>
+      'Enheten byts till Shelly Cloud. Alla dess kanaler, namn och kort stannar. Key: Shelly app → din profil → Användarinställningar → Auktoriseringsmolnnyckel.';
+
+  @override
+  String get sf16961256b => 'Server (Server URI)';
+
+  @override
+  String s28e10c6870(String p0) {
+    return 'Vilken av dessa är $p0?';
+  }
+
+  @override
+  String get s09f5da65e0 => 'Byt till Shelly Cloud';
+
+  @override
   String get sa3a093e55e => 'Värme';
 
   @override
@@ -1200,6 +1273,60 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s941fbb47fe => 'Planen beräknas…';
+
+  @override
+  String get s702ca14235 => 'Tasmota-enhet';
+
+  @override
+  String get se0e5f715ad => 'ESPHome-enhet';
+
+  @override
+  String get s63b6e55469 => 'HomeKit-enhet';
+
+  @override
+  String get s13e301a66e => 'Okänd enhet';
+
+  @override
+  String get s23f4820db7 => 'Inte kontrollerbar ännu';
+
+  @override
+  String get saae59a3865 => 'via home bridge';
+
+  @override
+  String get s1169d2d093 => 'Hitta enheter';
+
+  @override
+  String get s55b85f29a6 => 'Söker ditt hemnätverk...';
+
+  @override
+  String get se9c923ff0b =>
+      'Molaplan letar efter enheter som den känner igen på ditt hemnätverk.';
+
+  @override
+  String get s3ff2220816 =>
+      'Inga kända enheter hittades. Välj varumärket nedan.';
+
+  @override
+  String s2a9142dc3e(String p0) {
+    return 'Hittade $p0. Tryck på att lägga till.';
+  }
+
+  @override
+  String get s2fc39b0bd7 => 'Sök igen';
+
+  @override
+  String get s0a9acb5af1 => 'Sök efter Sök';
+
+  @override
+  String get s9a018b8166 => 'Du är borta: hembron sökte ditt hemnätverk.';
+
+  @override
+  String sc81d032be0(String p0) {
+    return '$p0 okända enheter';
+  }
+
+  @override
+  String get s7f3081821b => 'Molaplan kan inte kontrollera dessa.';
 
   @override
   String get s55d52c5ae1 => 'Denna enhet är inte på Wi-Fi';
@@ -1419,15 +1546,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s13f0596b74 => 'Söker... (ca 5 sekunder)';
 
   @override
-  String get saae59a3865 => 'via home bridge';
-
-  @override
   String s8eabd27f68(String p0, String p1) {
     return 'Ingenting hittas automatiskt. Kontrollera att $p0 är på och på samma Wi-Fi. Du kan också skriva adressen nedan.';
   }
-
-  @override
-  String get s2fc39b0bd7 => 'Sök igen';
 
   @override
   String get sa616ab181e => 'Skriv adressen';
@@ -2971,6 +3092,12 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s9bb545e9b3 => 'Logga in eller skapa ett konto';
 
   @override
+  String get s0625d54b38 => 'Kortstorlek';
+
+  @override
+  String get s8382da3467 => 'Normal';
+
+  @override
   String get s21f870dbc2 =>
       'Visar tekniska inställningar: anslutningar (HTTP, MQTT, Modbus...), nyttolast, JSON-vägar och kakelkällor. De flesta behöver inte dessa.';
 
@@ -3886,9 +4013,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s259e46c59a => 'Endast om du ställer in ett lösenord.';
 
   @override
-  String get s702ca14235 => 'Tasmota-enhet';
-
-  @override
   String get sc130e073ba => 'Relä eller plug kör Tasmota firmware.';
 
   @override
@@ -3906,9 +4030,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s397e83233d =>
       'Endast om ett webblösenord är inställt (användaradmin).';
-
-  @override
-  String get se0e5f715ad => 'ESPHome-enhet';
 
   @override
   String get sa0efcdf688 =>

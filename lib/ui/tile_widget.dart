@@ -4,10 +4,10 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../core/friendly_error.dart';
 import '../core/template.dart';
 import '../models/models.dart';
 import '../state/app_state.dart';
+import '../state/net_health.dart';
 import '../state/tile_runtime.dart';
 import 'app_scope.dart';
 import 'error_box.dart';
@@ -19,6 +19,7 @@ import 'price_rules_page.dart';
 import 'heatpump_pages.dart';
 import 'energy_pages.dart';
 import 'thermostat_pages.dart';
+import 'tile_status.dart';
 import 'tile_visuals.dart';
 import 'weather_tile.dart';
 import '../energy/meters.dart';
@@ -40,6 +41,12 @@ class _TileWidgetState extends State<TileWidget> {
   TileRuntime? rt;
   String _sig = '';
   double? _sliderDrag;
+
+  @override
+  void initState() {
+    super.initState();
+    NetHealth.instance.addListener(_changed);
+  }
 
   @override
   void didChangeDependencies() {
@@ -73,10 +80,31 @@ class _TileWidgetState extends State<TileWidget> {
     _replyTimer?.cancel();
     _dialTimer?.cancel();
     rt?.dispose();
+    NetHealth.instance.removeListener(_changed);
     super.dispose();
   }
 
   TileConfig get t => widget.tile;
+
+  TileIssue _issueOf(String err) => tileIssue(
+    context,
+    AppScope.read(context).connection(t.connectionId),
+    err,
+    NetHealth.instance,
+    narrow: t.colSpan < 2,
+  );
+
+  Widget _issue(BuildContext context, String err) {
+    final i = _issueOf(err);
+    final c = AppScope.read(context).connection(t.connectionId);
+    return TileIssueChip(
+      issue: i,
+      maxLines: _tiny ? 1 : 2,
+      onTap: i.kind == TileIssueKind.awayFromLan && c != null && !widget.editing
+          ? () => openRemoteSwitch(context, c)
+          : null,
+    );
+  }
 
   String _format(Object? v) {
     if (v == null) return '–';
@@ -465,44 +493,100 @@ class _TileWidgetState extends State<TileWidget> {
   }) {
     final cs = Theme.of(context).colorScheme;
     final errLine = err != null && r.value == null;
+    return LayoutBuilder(
+      builder: (context, box) {
+        // Compact grid cells (t120u): tighter padding, one-line title, a smaller switch.
+        final compact = box.maxHeight < 150;
+        final tiny = box.maxHeight < 100;
+        _tiny = tiny;
+        return _bodyContent(
+          context,
+          r,
+          err,
+          on,
+          accent,
+          onTap,
+          errLine,
+          cs,
+          compact,
+          light: light,
+          meter: meter,
+          dial: dial,
+          big: big,
+        );
+      },
+    );
+  }
+
+  bool _tiny = false;
+
+  Widget _bodyContent(
+    BuildContext context,
+    TileRuntime r,
+    String? err,
+    bool on,
+    Color? accent,
+    VoidCallback? onTap,
+    bool errLine,
+    ColorScheme cs,
+    bool compact, {
+    required bool light,
+    required bool meter,
+    required bool dial,
+    required bool big,
+  }) {
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
         onTap: widget.editing ? null : onTap,
         onLongPress: widget.editing || (widget.control && AppScope.of(context).viewLocked) ? null : _details,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+          padding: compact ? const EdgeInsets.fromLTRB(10, 8, 10, 8) : const EdgeInsets.fromLTRB(14, 12, 14, 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Icon(iconFor(t), size: 22, color: accent ?? cs.onSurfaceVariant),
-                  const Spacer(),
-                  if (r.busy)
-                    const SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2))
-                  else if (err != null)
-                    Tooltip(
-                      message: friendlyText(context, err),
-                      child: Icon(Icons.error_outline, size: 18, color: cs.error),
-                    )
-                  else if (widget.editing)
-                    const SizedBox(height: 24)
-                  else if (t.type == TileType.toggle && !light && !big)
-                    IgnorePointer(
-                      child: Transform.scale(
-                        scale: 1.2,
-                        alignment: Alignment.centerRight,
-                        child: Switch(key: const ValueKey('tile-switch'), value: on, onChanged: (_) {}),
+              SizedBox(
+                height: compact ? 26 : null,
+                child: Row(
+                  children: [
+                    Icon(iconFor(t), size: compact ? 18 : 22, color: accent ?? cs.onSurfaceVariant),
+                    const Spacer(),
+                    if (r.busy)
+                      const SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2))
+                    else if (err != null)
+                      Tooltip(
+                        message: friendlyText(context, err),
+                        child: switch (_issueOf(err).kind) {
+                          TileIssueKind.offline => Icon(Icons.cloud_off, size: 16, color: cs.onSurfaceVariant),
+                          TileIssueKind.awayFromLan => Icon(Icons.wifi_off, size: 16, color: cs.onSurfaceVariant),
+                          TileIssueKind.device => Icon(Icons.error_outline, size: 18, color: cs.error),
+                        },
+                      )
+                    else if (widget.editing)
+                      const SizedBox(height: 24)
+                    else if (t.type == TileType.toggle && !light && !big)
+                      IgnorePointer(
+                        child: compact
+                            ? SizedBox(
+                                height: 26,
+                                child: FittedBox(
+                                  child: Switch(key: const ValueKey('tile-switch'), value: on, onChanged: (_) {}),
+                                ),
+                              )
+                            : Transform.scale(
+                                scale: 1.2,
+                                alignment: Alignment.centerRight,
+                                child: Switch(key: const ValueKey('tile-switch'), value: on, onChanged: (_) {}),
+                              ),
+                      )
+                    else if (t.type == TileType.button)
+                      Container(
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(color: cs.primary.withValues(alpha: 0.18), shape: BoxShape.circle),
+                        child: Icon(Icons.play_arrow_rounded, size: 18, color: cs.primary),
                       ),
-                    )
-                  else if (t.type == TileType.button)
-                    Container(
-                      padding: const EdgeInsets.all(6),
-                      decoration: BoxDecoration(color: cs.primary.withValues(alpha: 0.18), shape: BoxShape.circle),
-                      child: Icon(Icons.play_arrow_rounded, size: 18, color: cs.primary),
-                    ),
-                ],
+                  ],
+                ),
               ),
               if (t.type == TileType.button && (_waiting || _reply != null))
                 Expanded(child: _replyView(context))
@@ -550,14 +634,7 @@ class _TileWidgetState extends State<TileWidget> {
                 Expanded(
                   child: Align(
                     alignment: Alignment.bottomLeft,
-                    child: err != null && r.value == null
-                        ? Text(
-                            friendlyError(err, AppScope.read(context).lang).title,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(color: cs.error, fontSize: 13.5, fontWeight: FontWeight.w500),
-                          )
-                        : _valueText(context, r, accent),
+                    child: err != null && r.value == null ? _issue(context, err) : _valueText(context, r, accent),
                   ),
                 )
               else
@@ -565,27 +642,26 @@ class _TileWidgetState extends State<TileWidget> {
               if (t.type == TileType.slider && !dial)
                 const SizedBox.shrink()
               else if (err != null && r.value == null)
-                Text(
-                  friendlyError(err, AppScope.read(context).lang).title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: cs.error, fontSize: 13.5, fontWeight: FontWeight.w500),
-                )
+                _issue(context, err)
               else if (t.type == TileType.value && !_isLog && !_isChart && !(meter && r.value != null))
-                _valueText(context, r, accent),
-              if (t.type == TileType.toggle && !(err != null && r.value == null))
+                _valueText(context, r, accent, size: compact ? 0.8 : 1),
+              // Compact light with its brightness slider: the bulb already shows on/off.
+              if (t.type == TileType.toggle &&
+                  !(err != null && r.value == null) &&
+                  !(compact && light && hasBrightness(t) && on && !widget.editing))
                 Text(
                   r.value == null
                       ? '–'
                       : (t.mapValue(r.value) ?? (on ? tx(context, 'Päällä', 'On') : tx(context, 'Pois', 'Off'))),
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(color: accent),
+                  style: (compact ? Theme.of(context).textTheme.titleSmall : Theme.of(context).textTheme.titleMedium)
+                      ?.copyWith(color: accent),
                 ),
               if (t.type == TileType.slider && !dial) _slider(context, r),
-              if (hasBrightness(t) && on && !widget.editing) _brightness(context),
-              const SizedBox(height: 2),
+              if (hasBrightness(t) && on && !widget.editing && !_tiny) _brightness(context),
+              SizedBox(height: compact ? 0 : 2),
               Text(
                 t.title,
-                maxLines: t.type == TileType.slider ? 1 : 2,
+                maxLines: t.type == TileType.slider || compact ? 1 : 2,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: cs.onSurfaceVariant),
               ),

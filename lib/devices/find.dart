@@ -1,6 +1,8 @@
 /// Finding devices from the app: own LAN (scan + mDNS) and, when paired, the home bridge's LAN.
 library;
 
+import 'scanner.dart';
+
 import 'dart:async';
 
 import '../core/discovery.dart';
@@ -14,13 +16,15 @@ Future<List<Candidate>> findLocal(DeviceProvider p, {List<String>? locals}) asyn
   final results = await Future.wait([
     p.scan(ips).catchError((_) => <Candidate>[]),
     if (p.mdnsTypes.isNotEmpty)
-      discoverDevices(services: p.mdnsTypes, timeout: const Duration(seconds: 3)).then((r) {
-        final (found, _) = r;
-        return [
-          for (final d in found)
-            if (p.id != 'shelly' || d.kind == 'shelly') ?p.fromMdns(d.address, d.label, d.service),
-        ];
-      }).catchError((_) => <Candidate>[]),
+      discoverDevices(services: p.mdnsTypes, timeout: const Duration(seconds: 3))
+          .then((r) {
+            final (found, _) = r;
+            return [
+              for (final d in found)
+                if (p.id != 'shelly' || d.kind == 'shelly') ?p.fromMdns(d.address, d.label, d.service),
+            ];
+          })
+          .catchError((_) => <Candidate>[]),
   ]);
   return mergeCandidates(results.expand((x) => x));
 }
@@ -47,4 +51,10 @@ Future<List<Map<String, dynamic>>> bridgeDiscover(String provider) async {
   final p = providerById(provider);
   if (p == null) return const [];
   return [for (final c in await findLocal(p)) c.toJson()];
+}
+
+/// "Etsi laitteet" through the home bridge: the bridge scans its LAN and returns the list.
+Future<List<ScanHit>> scanViaBridge(RemoteRouter router) async {
+  final v = await router.viaRemote((c) => c.call('scan'));
+  return [for (final m in (v is List ? v : const []).whereType<Map>()) ScanHit.fromJson(m, viaBridge: true)];
 }
