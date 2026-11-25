@@ -185,3 +185,11 @@ Relay: https://relay.molaplan.com (custom domain; also https://molaplan-relay.mo
 - t134u: lib/devices/light_color.dart (lightTargetFor from the tile's read spec; parseLightState; lightCommand per proto; xy/hsv/kelvin math). TileConfig.light {rgb, ct, bri, ctMin, ctMax, glow}; detectLight once per light tile (TileWidget initState); tap → showLightSheet (lib/ui/light_sheet.dart; ColorWheel, gradient sliders, AppConfig.favoriteColors). HA driver read {'full': true}; Shelly Cloud read field '*', cloudControlForm set:'color'. test/light_color_test.dart.
 - t137u: lib/devices/climate.dart (read {'kind':'climate', entityId | temp/target/humidity specs}, readClimate, migrateSplitClimateTiles at load), lib/ui/climate_tile.dart (ClimateTile; TileRuntime skips 'climate'/'weather' kinds). haTilesForPicked merges sensor + °C number by HA device_id; climate absorbs its sensors. heatPumpHaTiles → one tile.
 - t138u: ha_picker puts entities without an area into the current view / 'Koti'; deletes empty auto-created views; migrations.removeEmptyIntegrationViews at load.
+
+## Release push (since v0.6.2)
+- The box `gh` login is another account (remonttireitti) – do not touch it. Push/tag with MOLAPLAN_GITHUB_TOKEN only inside `bash -lc`:
+  `bash -lc '/workspace/molaplan-tools/mgpush.sh push https://github.com/molaplan1-cloud/molaplan1.git main vX.Y.Z'` (one-shot credential helper; token never printed or stored).
+  gh: `bash -lc 'GH_TOKEN="$MOLAPLAN_GITHUB_TOKEN" gh run list -R molaplan1-cloud/molaplan1'`.
+- Windows check: download the release zip on DESKTOP-V52NF2O, verify SHA256, replace Desktop\molaplan-windows-x64 (backup in %USERPROFILE%\molaplan-backup-<old>), start, screenshot.
+- Tablet: adb on the PC (C:\Users\Administrator\tools\android-sdk\platform-tools\adb.exe); needs USB or wireless debugging.
+- Requirements checklist: docs/REQUIREMENTS.md (t142u) – update every release, full table in every report.
