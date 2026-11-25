@@ -286,7 +286,7 @@ class _TileWidgetState extends State<TileWidget> {
     AppScope.read(context).connection(t.connectionId),
     err,
     NetHealth.instance,
-    narrow: t.colSpan < 2,
+    narrow: t.wUnits < 2,
   );
 
   Widget _issue(BuildContext context, String err) {
@@ -597,6 +597,8 @@ class _TileWidgetState extends State<TileWidget> {
   }
 
   Widget _build(BuildContext context) {
+    // t144u: 0,5-size tiles get a compact variant (icon + value, one button, a mini toggle).
+    if (isMiniTile(t)) return _mini(context);
     if (isWeatherTile(t)) return WeatherTile(tile: t, editing: widget.editing);
     final away = awayLanConnection(AppScope.of(context), t);
     final body = _build2(context, away != null);
@@ -615,6 +617,87 @@ class _TileWidgetState extends State<TileWidget> {
           : '${_format(rt!.value)}${t.unit.isEmpty ? '' : ' ${t.unit}'}',
       editing: widget.editing,
       child: body,
+    );
+  }
+
+  Widget _mini(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    final r = rt!;
+    final on = isTruthy(r.value, onValue: t.onValue);
+    final sensorAlarm = t.sensor != null && on;
+    final accentInt = t.colorFor(r.value);
+    final look = t.color != null ? Color(t.color!) : null;
+    final accent = sensorAlarm
+        ? Colors.red
+        : accentInt != null
+        ? Color(accentInt)
+        : (t.type == TileType.toggle ? (on ? (look ?? cs.primary) : cs.onSurfaceVariant) : (look ?? cs.primary));
+    VoidCallback? onTap;
+    if (!widget.editing) {
+      onTap = switch (t.type) {
+        TileType.toggle => _toggle,
+        TileType.button => _button,
+        TileType.camera => () => Navigator.push(context, MaterialPageRoute(builder: (_) => CameraFullscreen(tile: t))),
+        TileType.value => r.refresh,
+        _ => null,
+      };
+    }
+    final value = switch (t.type) {
+      TileType.toggle || TileType.button || TileType.camera => null,
+      _ when t.sensor != null => null,
+      _ => '${_format(r.value)}${t.unit.isEmpty || r.value == null ? '' : ' ${t.unit}'}',
+    };
+    final icon = Icon(iconFor(t), color: accent);
+    return Card(
+      key: ValueKey('mini-${t.id}'),
+      color: t.type == TileType.toggle && on
+          ? (look ?? cs.primaryContainer).withValues(alpha: 0.45)
+          : (sensorAlarm ? Colors.red.withValues(alpha: 0.18) : cs.surfaceContainer),
+      clipBehavior: Clip.antiAlias,
+      child: Tooltip(
+        message: t.title,
+        child: InkWell(
+          onTap: onTap,
+          onLongPress: widget.editing ? null : _details,
+          child: LayoutBuilder(
+            builder: (context, box) {
+              final wide = box.maxWidth > box.maxHeight * 1.6;
+              final tall = box.maxHeight > box.maxWidth * 1.6;
+              final toggle = t.type == TileType.toggle
+                  ? IgnorePointer(
+                      child: SizedBox(
+                        key: ValueKey('mini-toggle-${t.id}'),
+                        width: 34,
+                        height: 20,
+                        child: FittedBox(child: Switch(value: on, onChanged: (_) {})),
+                      ),
+                    )
+                  : null;
+              final text = value == null
+                  ? null
+                  : Text(
+                      value,
+                      key: ValueKey('mini-value-${t.id}'),
+                      maxLines: 1,
+                      style: TextStyle(fontWeight: FontWeight.w700, color: accentInt != null ? accent : cs.onSurface),
+                    );
+              final parts = <Widget>[
+                Flexible(child: FittedBox(child: icon)),
+                if (text != null) Flexible(flex: 2, child: FittedBox(child: text)),
+                if (toggle != null && (wide || tall)) Flexible(child: FittedBox(child: toggle)),
+              ];
+              return Padding(
+                padding: const EdgeInsets.all(6),
+                child: Center(
+                  child: wide
+                      ? Row(mainAxisAlignment: MainAxisAlignment.center, spacing: 6, children: parts)
+                      : Column(mainAxisAlignment: MainAxisAlignment.center, spacing: 2, children: parts),
+                ),
+              );
+            },
+          ),
+        ),
+      ),
     );
   }
 
@@ -660,7 +743,7 @@ class _TileWidgetState extends State<TileWidget> {
     final light = isLightTile(t);
     final meter = isMeterTile(t) && !_isLog && !_isChart;
     final dial = isSetpointTile(t);
-    final big = t.colSpan >= 2 || t.rowSpan >= 2;
+    final big = t.wUnits >= 2 || t.hUnits >= 2;
 
     VoidCallback? onTap;
     switch (t.type) {
@@ -842,7 +925,7 @@ class _TileWidgetState extends State<TileWidget> {
                     key: const ValueKey('tile-chart'),
                     data: Map<String, dynamic>.from(r.value as Map),
                     tile: t,
-                    expanded: t.rowSpan >= 2,
+                    expanded: t.hUnits >= 2,
                   ),
                 )
               else if (_isLog && r.value != null)

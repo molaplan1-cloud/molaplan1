@@ -1,6 +1,7 @@
 import 'tile_visuals.dart';
 import 'measure_view.dart';
 import 'measure_colors.dart';
+import 'tile_grid.dart';
 import '../l10n/l10n.dart';
 import '../state/measure_history.dart';
 
@@ -171,9 +172,9 @@ class _TileEditorState extends State<TileEditor> {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  _sizeDrop(tx(context, 'Leveys', 'Width'), t.colSpan, 4, (v) => t.colSpan = v),
+                  _sizeDrop(tx(context, 'Leveys', 'Width'), t.w2, (v) => t.w2 = v),
                   const SizedBox(width: 10),
-                  _sizeDrop(tx(context, 'Korkeus', 'Height'), t.rowSpan, 3, (v) => t.rowSpan = v),
+                  _sizeDrop(tx(context, 'Korkeus', 'Height'), t.h2, (v) => t.h2 = v),
                 ],
               ),
               if (isMeasureTile(t)) ...[
@@ -489,14 +490,18 @@ class _TileEditorState extends State<TileEditor> {
     ),
   );
 
-  Widget _sizeDrop(String label, int value, int max, void Function(int) set) => SizedBox(
+  /// t144u: 0,5 … 4 in half steps (stored as half-units 1…8).
+  Widget _sizeDrop(String label, int half, void Function(int) set) => SizedBox(
     width: 100,
     child: DropdownButtonFormField<int>(
+      key: ValueKey('size-$label'),
       isExpanded: true,
-      initialValue: value.clamp(1, max),
+      initialValue: half.clamp(1, 8),
       decoration: InputDecoration(labelText: label),
-      items: [for (var i = 1; i <= max; i++) DropdownMenuItem(value: i, child: Text('$i'))],
-      onChanged: (v) => setState(() => set(v ?? 1)),
+      items: [
+        for (var i = 1; i <= 8; i++) DropdownMenuItem(value: i, child: Text(halfLabel(i, langOf(context)))),
+      ],
+      onChanged: (v) => setState(() => set(v ?? 2)),
     ),
   );
 

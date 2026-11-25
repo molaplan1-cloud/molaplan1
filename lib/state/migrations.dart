@@ -34,7 +34,7 @@ bool migratePriceConnections(AppConfig cfg) {
       for (final t in d.tiles.where((t) => t.connectionId == c.id)) {
         t.type = TileType.value;
         t.read = {'field': 'chart'};
-        if (t.colSpan < 2) t.colSpan = 2;
+        if (t.wUnits < 2) t.w2 = 4;
         t.pollSeconds = 300;
       }
     }

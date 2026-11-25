@@ -149,8 +149,15 @@ class TileConfig {
   TileType type;
   String title;
   String icon;
-  int colSpan; // 1..4
-  int rowSpan; // 1..3
+  /// t144u: size in HALF grid units (1..8 = 0,5..4), so tiles can be 0,5 / 1,5 / … wide/tall.
+  int w2;
+  int h2;
+
+  /// Whole-unit view of the size (rounded up), for code that thinks in 1×1 / 2×1 / 2×2.
+  int get colSpan => (w2 + 1) ~/ 2;
+  set colSpan(int v) => w2 = (v * 2).clamp(1, 8);
+  int get rowSpan => (h2 + 1) ~/ 2;
+  set rowSpan(int v) => h2 = (v * 2).clamp(1, 8);
 
   /// Where the state is read from (value/toggle/slider/camera).
   String? connectionId;
@@ -203,8 +210,8 @@ class TileConfig {
   bool colorSmooth;
 
   /// Size in grid units (t144u stores half-units internally; read sizes through these).
-  double get wUnits => colSpan.toDouble();
-  double get hUnits => rowSpan.toDouble();
+  double get wUnits => w2 / 2;
+  double get hUnits => h2 / 2;
 
   /// Gauge range; null = automatic from the history.
   double? gaugeMin;
@@ -229,8 +236,10 @@ class TileConfig {
     required this.type,
     this.title = '',
     this.icon = 'auto',
-    this.colSpan = 1,
-    this.rowSpan = 1,
+    int colSpan = 1,
+    int rowSpan = 1,
+    int? w2,
+    int? h2,
     this.connectionId,
     Map<String, dynamic>? read,
     this.pollSeconds = 10,
@@ -264,6 +273,8 @@ class TileConfig {
     this.battery,
     this.lastAlarm,
   }) : id = id ?? newId(),
+       w2 = (w2 ?? colSpan * 2).clamp(1, 8),
+       h2 = (h2 ?? rowSpan * 2).clamp(1, 8),
        light = light ?? {},
        read = read ?? {},
        thresholds = thresholds ?? [],
@@ -274,6 +285,9 @@ class TileConfig {
     'type': type.name,
     'title': title,
     'icon': icon,
+    'w2': w2,
+    'h2': h2,
+    // Whole units for older apps / bridges that do not know w2/h2.
     'colSpan': colSpan,
     'rowSpan': rowSpan,
     'connectionId': connectionId,
@@ -315,8 +329,9 @@ class TileConfig {
     type: TileType.values.firstWhere((t) => t.name == j['type'], orElse: () => TileType.value),
     title: (j['title'] ?? '') as String,
     icon: (j['icon'] ?? 'auto') as String,
-    colSpan: (j['colSpan'] as num?)?.toInt() ?? 1,
-    rowSpan: (j['rowSpan'] as num?)?.toInt() ?? 1,
+    // t144u migration: old configs only have whole units → ×2.
+    w2: (j['w2'] as num?)?.toInt() ?? ((j['colSpan'] as num?)?.toInt() ?? 1) * 2,
+    h2: (j['h2'] as num?)?.toInt() ?? ((j['rowSpan'] as num?)?.toInt() ?? 1) * 2,
     connectionId: j['connectionId'] as String?,
     read: _map(j['read']),
     pollSeconds: (j['pollSeconds'] as num?)?.toInt() ?? 10,

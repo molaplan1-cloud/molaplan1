@@ -476,10 +476,10 @@ class _DashboardGridState extends State<_DashboardGrid> {
     setState(() => _resize = null);
     if (r == null) return;
     final t = dashboard.tiles.where((t) => t.id == r.$1).firstOrNull;
-    if (t == null || (t.colSpan == r.$2 && t.rowSpan == r.$3)) return;
+    if (t == null || (t.w2 == r.$2 && t.h2 == r.$3)) return;
     final c = t.copy()
-      ..colSpan = r.$2
-      ..rowSpan = r.$3;
+      ..w2 = r.$2
+      ..h2 = r.$3;
     await AppScope.read(context).upsertTile(dashboard, c);
   }
 
@@ -574,10 +574,8 @@ class _DashboardGridState extends State<_DashboardGrid> {
 
   Widget _sized(BuildContext context, TileConfig t, TileGridMetrics g) {
     final r = _resize != null && _resize!.$1 == t.id ? _resize : null;
-    final cols = (r?.$2 ?? t.colSpan).clamp(1, g.cols);
-    final rows = r?.$3 ?? t.rowSpan;
-    final w = g.width(cols);
-    final h = g.height(rows);
+    final w = g.width((r?.$2 ?? t.w2) / 2);
+    final h = g.height((r?.$3 ?? t.h2) / 2);
     final tile = AnimatedContainer(
       duration: const Duration(milliseconds: 120),
       width: w,
@@ -600,10 +598,8 @@ class _DashboardGridState extends State<_DashboardGrid> {
       onHover: () => _hover(t.id),
       onDragEnd: _commitDrag,
       onResize: (dx, dy) {
-        // Snap to grid units: 1–4 wide (as the grid allows), 1–3 tall.
-        final unitW = g.width(1) + g.gap, unitH = g.height(1) + g.gap;
-        final nc = ((g.width(t.colSpan) + dx + g.gap) / unitW).round().clamp(1, math.min(4, g.cols)).toInt();
-        final nr = ((g.height(t.rowSpan) + dy + g.gap) / unitH).round().clamp(1, 3).toInt();
+        // t144u: snap to HALF grid units: 0,5–4 wide (as the grid allows) and tall.
+        final (nc, nr) = snapResize(g, t, dx, dy);
         if (_resize?.$2 != nc || _resize?.$3 != nr) setState(() => _resize = (t.id, nc, nr));
       },
       onResizeEnd: _commitResize,
@@ -806,4 +802,12 @@ class _CornerPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_CornerPainter o) => o.color != color;
+}
+
+/// t144u: corner-drag result in half-units (w2, h2): 0,5–4 wide (max the grid's columns), 0,5–4 tall.
+(int, int) snapResize(TileGridMetrics g, TileConfig t, double dx, double dy) {
+  final unitW = g.cell + g.gap, unitH = g.cellH + g.gap;
+  final nc = ((g.width(t.wUnits) + dx + g.gap) / unitW * 2).round().clamp(1, math.min(8, g.cols * 2)).toInt();
+  final nr = ((g.height(t.hUnits) + dy + g.gap) / unitH * 2).round().clamp(1, 8).toInt();
+  return (nc, nr);
 }

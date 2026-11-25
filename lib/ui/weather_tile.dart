@@ -124,8 +124,8 @@ class _WeatherTileState extends State<WeatherTile> {
     final home = st.config.energy.home;
     final f = _f;
     final now = DateTime.now();
-    final large = widget.tile.rowSpan >= 2;
-    final wide = widget.tile.colSpan >= 2;
+    final large = widget.tile.hUnits >= 2;
+    final wide = widget.tile.wUnits >= 2;
     final cur = f?.current ?? f?.ahead(now, 1).firstOrNull;
     final info = weatherCodeInfo(cur?.code);
     final night = now.hour < 6 || now.hour >= 22;

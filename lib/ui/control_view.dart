@@ -102,8 +102,8 @@ class ControlView extends StatelessWidget {
                             for (final t in d.tiles)
                               if (!st.config.hideAwayTiles || awayLanConnection(st, t) == null)
                                 SizedBox(
-                                  width: g.width(t.colSpan),
-                                  height: g.height(t.rowSpan),
+                                  width: g.width(t.wUnits),
+                                  height: g.height(t.hUnits),
                                   child: TileWidget(key: ValueKey('cv-${t.id}'), tile: t, control: true),
                                 ),
                             if (!st.viewLocked && d == groups.last)

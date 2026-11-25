@@ -134,7 +134,7 @@ class _ThermostatTileState extends State<ThermostatTile> {
                     ),
                 ],
               ),
-              if (widget.tile.rowSpan >= 2) ...[
+              if (widget.tile.hUnits >= 2) ...[
                 // Large tile: round dial – arc to the setpoint, dot = current temperature.
                 Expanded(
                   child: Row(

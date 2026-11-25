@@ -25,7 +25,10 @@ bool isSetpointTile(TileConfig t) => t.type == TileType.slider && t.unit.contain
 /// The size presets offered in the tile look editor.
 enum TileSize { small, wide, large }
 
-TileSize sizeOf(TileConfig t) => t.rowSpan >= 2 ? TileSize.large : (t.colSpan >= 2 ? TileSize.wide : TileSize.small);
+/// t144u: a 0,5-wide or 0,5-tall tile renders the compact variant.
+bool isMiniTile(TileConfig t) => t.w2 <= 1 || t.h2 <= 1;
+
+TileSize sizeOf(TileConfig t) => t.hUnits >= 2 ? TileSize.large : (t.wUnits >= 2 ? TileSize.wide : TileSize.small);
 
 void applySize(TileConfig t, TileSize s) {
   final (c, r) = switch (s) {

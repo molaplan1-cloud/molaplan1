@@ -12,12 +12,16 @@ class TileGridMetrics {
 
   bool get compact => cellH < 150;
 
-  double width(int colSpan) {
-    final s = colSpan.clamp(1, cols);
+  /// [units] may be a half step (t144u): two 0,5 tiles + one gap = one 1×1 tile.
+  double width(num units) {
+    final s = units.clamp(0.5, cols).toDouble();
     return s * cell + (s - 1) * gap;
   }
 
-  double height(int rowSpan) => rowSpan * cellH + (rowSpan - 1) * gap;
+  double height(num units) {
+    final s = units.clamp(0.5, 8).toDouble();
+    return s * cellH + (s - 1) * gap;
+  }
 }
 
 const tileDensities = ['small', 'normal', 'large'];
@@ -32,4 +36,12 @@ TileGridMetrics tileGridFor(double width, String density) {
   final cell = (width - gap * (cols + 1)) / cols;
   final cellH = (cell * 0.82).clamp(100.0, 190.0);
   return TileGridMetrics(cols, cell, cellH, gap);
+}
+
+/// Half-units → "0,5", "1", "1,5" … (decimal point in English).
+String halfLabel(int half, String lang) {
+  final whole = half ~/ 2;
+  if (half.isEven) return '$whole';
+  final sep = const {'en'}.contains(lang) ? '.' : ',';
+  return '$whole${sep}5';
 }

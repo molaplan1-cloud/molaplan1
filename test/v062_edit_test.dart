@@ -123,14 +123,14 @@ void main() {
     await tester.pump(const Duration(milliseconds: 300));
     final b = d.tiles.firstWhere((t) => t.id == 'B');
     expect((b.colSpan, b.rowSpan), (2, 2));
-    // Clamped to 1..3 tall.
+    // Clamped to 0,5..4 (t144u).
     await tester.drag(find.byKey(const ValueKey('tile-resize-B')), const Offset(0, 2000));
     await tester.pump(const Duration(milliseconds: 300));
-    expect(d.tiles.firstWhere((t) => t.id == 'B').rowSpan, 3);
+    expect(d.tiles.firstWhere((t) => t.id == 'B').h2, 8); // t144u: up to 4 tall
     await tester.drag(find.byKey(const ValueKey('tile-resize-B')), const Offset(-2000, -2000));
     await tester.pump(const Duration(milliseconds: 300));
     final b2 = d.tiles.firstWhere((t) => t.id == 'B');
-    expect((b2.colSpan, b2.rowSpan), (1, 1));
+    expect((b2.w2, b2.h2), (1, 1)); // t144u: down to 0,5 × 0,5
     await tester.pumpWidget(const SizedBox());
   });
 
