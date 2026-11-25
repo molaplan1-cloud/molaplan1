@@ -335,6 +335,12 @@ T = {
  'locked=Locked;unlocked=Unlocked;jammed=JAMMED': ('locked=Låst;unlocked=Olåst;jammed=FASTNAT', 'locked=Lukus;unlocked=Lahti;jammed=KINNI', 'locked=Cerrado;unlocked=Abierto;jammed=ATASCADO'),
  'open=Open;closed=Closed;opening=Opening;closing=Closing': ('open=Öppen;closed=Stängd;opening=Öppnas;closing=Stängs', 'open=Avatud;closed=Suletud;opening=Avaneb;closing=Sulgub', 'open=Abierta;closed=Cerrada;opening=Abriendo;closing=Cerrando'),
  'on=On;off=Off': ('on=På;off=Av', 'on=Sees;off=Väljas', 'on=Encendido;off=Apagado'),
+ 'Price now': ('Pris nu', 'Hind praegu', 'Precio ahora'),
+ 'Average today': ('Medelpris i dag', 'Keskmine täna', 'Precio medio hoy'),
+ 'Instant cost': ('Kostnad just nu', 'Hetkekulu', 'Coste instantáneo'),
+ 'Updated': ('Uppdaterad', 'Uuendatud', 'Actualizado'),
+ 'Usage (kWh)': ('Förbrukning (kWh)', 'Tarbimine (kWh)', 'Consumo (kWh)'),
+ 'c/h': ('c/h', 'c/h', 'c/h'),
 }
 out = {'sv': {}, 'et': {}, 'es': {}}
 for en, (sv, et, es) in T.items():

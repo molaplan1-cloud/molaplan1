@@ -165,7 +165,7 @@ void main() {
   testWidgets('shot2', (tester) async {
     await _font('Roboto', 'Roboto-Regular.ttf');
     await _font('MaterialIcons', 'MaterialIcons-Regular.otf');
-    tester.view.physicalSize = const Size(820, 1000);
+    tester.view.physicalSize = const Size(1100, 1000);
     tester.view.devicePixelRatio = 1;
     final st = AppState(configStore: MemoryConfigStore(), secretStore: MemorySecretStore());
     await st.load();
@@ -189,6 +189,10 @@ void main() {
     final home = HomeLocation(name: 'Tampere, Pirkanmaa, FI', lat: 61.5, lon: 23.79);
     st.config.energy.home = home;
     st.config.energy.meters['m'] = MeterInfo(role: 'site');
+    for (var hh = 0; hh <= now.hour; hh++) {
+      final at = DateTime(now.year, now.month, now.day, hh, 30);
+      st.energyLog.data.putIfAbsent('m', () => {})[EnergyLog.hourKey(at)] = EnergyBucket(kwh: 1.0 + (hh % 5) * 0.4, ex: 0.1, inc: 0.12 + (hh % 5) * 0.05);
+    }
     final h0 = now.subtract(const Duration(hours: 1));
     final hours = [
       for (var i = 0; i < 60; i++)

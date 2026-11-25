@@ -46,6 +46,14 @@ Map<String, dynamic> _chart(DateTime now, {bool tomorrow = true}) => {
 };
 
 void main() {
+  test('price tile formats: decimal comma, short dates per language', () {
+    expect(priceNum(18.18, 'fi'), '18,18');
+    expect(priceNum(18.18, 'en'), '18.18');
+    expect(shortDate(DateTime(2026, 11, 26), 'fi'), '26 Marras');
+    expect(shortDate(DateTime(2026, 11, 26), 'en'), 'Nov 26');
+    expect(shortDate(DateTime(2026, 11, 26), 'sv'), '26 nov');
+  });
+
   test('price view: now, today min/avg/max, quartile colours, hourly averaging, instant cost', () {
     final now = DateTime(2026, 11, 25, 18, 7);
     final v = PriceView.build(_today(now), 900, now);
@@ -125,13 +133,17 @@ void main() {
       await tester.pumpWidget(MolaplanApp(state: st));
       await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('price-bars')), findsNWidgets(2));
-      expect(find.byKey(const ValueKey('price-stat-now')), findsOneWidget);
-      expect(find.byKey(const ValueKey('price-stat-max')), findsOneWidget);
+      // Expanded: 5 stats (now, cheapest, average, priciest, instant cost) + update time.
+      for (final k in ['now', 'min', 'avg', 'max', 'cost']) {
+        expect(find.byKey(ValueKey('price-stat-$k')), findsWidgets);
+      }
+      expect(find.text('Hinta nyt'), findsNWidgets(2));
+      expect(find.text('Hetkellinen kustannus'), findsOneWidget);
+      expect(find.byKey(const ValueKey('price-updated')), findsOneWidget);
       expect(find.byKey(const ValueKey('price-now')), findsOneWidget);
       expect(st.powerNowKw(), 2.0);
       // c/h shown in the compact header (2 kW × current price).
-      expect(find.textContaining('c/h'), findsWidgets);
-      expect(find.text('Huominen mukana'), findsOneWidget);
+      expect(find.textContaining('c/t'), findsWidgets);
       await tester.tap(find.byKey(const ValueKey('price-bars')).first);
       await tester.pumpAndSettle();
       expect(find.byType(PricePage), findsOneWidget);

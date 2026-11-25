@@ -973,6 +973,26 @@
   "x-mt": true
  },
  "s941fbb47fe": "Plaani arvutatakse…",
+ "s306729fe62": "Hindadeta",
+ "@s306729fe62": {
+  "x-mt": true
+ },
+ "s723c887da6": "min",
+ "@s723c887da6": {
+  "x-mt": true
+ },
+ "scaaff6345d": "max",
+ "@scaaff6345d": {
+  "x-mt": true
+ },
+ "s65982a11bc": "sh homme",
+ "@s65982a11bc": {
+  "x-mt": true
+ },
+ "se79acaf837": "homme pärast 14.00",
+ "@se79acaf837": {
+  "x-mt": true
+ },
  "s55d52c5ae1": "See seade ei ole Wi-Fi-s",
  "@s55d52c5ae1": {
   "x-mt": true
@@ -1413,27 +1433,17 @@
  "@sc95fb5440b": {
   "x-mt": true
  },
- "s306729fe62": "Hindadeta",
- "@s306729fe62": {
-  "x-mt": true
- },
- "s9a37dbb58a": "homme",
- "s723c887da6": "min",
- "@s723c887da6": {
-  "x-mt": true
- },
- "s3b36524e04": "kesk.",
- "scaaff6345d": "max",
- "@scaaff6345d": {
-  "x-mt": true
- },
- "sfafa5c8432": "Odavaim täna",
- "s4b2e4dda05": "Kalleim täna",
- "s96093c8f41": "1 h",
- "sa6dc2ff399": "15 min",
- "s5f131c3ec4": "Tarbimine",
+ "s80c4ecec94": "c/h",
+ "sbfe79d1f5f": "Uuendatud",
+ "sb68e905fc4": "Tarbimine (kWh)",
  "s5fc5085143": "Kulu",
- "s2f06d232b5": "Homne päev kaasas",
+ "sb730159a01": "Hind praegu",
+ "sbc8fb68b5d": "Odavaim täna",
+ "s86ff059f5e": "Keskmine täna",
+ "se3d8d53b4b": "Kalleim täna",
+ "s29dbf49d92": "Hetkekulu",
+ "s3b36524e04": "kesk.",
+ "s5f131c3ec4": "Tarbimine",
  "sa5e6b1e0e3": "Homne päev u kell 14 järel",
  "s62cfd94468": "Odavamad tunnid öösel",
  "@s62cfd94468": {
@@ -2246,10 +2256,6 @@
  },
  "s38ac222392": "Väärtus",
  "s29fae6a0e8": "Hinnajuhtimine sees",
- "sbfe79d1f5f": "Uuendatud",
- "@sbfe79d1f5f": {
-  "x-mt": true
- },
  "s59d55f8882": "Nimeta ümber",
  "s25580038cb": "Salvestatud PIN-kood eemaldatud",
  "@s25580038cb": {

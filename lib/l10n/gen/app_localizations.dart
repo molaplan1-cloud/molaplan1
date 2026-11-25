@@ -65,7 +65,8 @@ import 'app_localizations_sv.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale)
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -73,7 +74,8 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -85,12 +87,13 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -2059,6 +2062,36 @@ abstract class AppLocalizations {
   /// **'Calculating the plan…'**
   String get s941fbb47fe;
 
+  /// fi: Ei hintoja
+  ///
+  /// In en, this message translates to:
+  /// **'No prices'**
+  String get s306729fe62;
+
+  /// fi: halvin
+  ///
+  /// In en, this message translates to:
+  /// **'min'**
+  String get s723c887da6;
+
+  /// fi: kallein
+  ///
+  /// In en, this message translates to:
+  /// **'max'**
+  String get scaaff6345d;
+
+  /// fi: huomenna mukana
+  ///
+  /// In en, this message translates to:
+  /// **'incl. tomorrow'**
+  String get s65982a11bc;
+
+  /// fi: huominen klo 14 jälkeen
+  ///
+  /// In en, this message translates to:
+  /// **'tomorrow after 14:00'**
+  String get se79acaf837;
+
   /// fi: Tämä laite ei ole yhteydessä wifiin
   ///
   /// In en, this message translates to:
@@ -2883,65 +2916,23 @@ abstract class AppLocalizations {
   /// **'Stream ended'**
   String get sc95fb5440b;
 
-  /// fi: Ei hintoja
+  /// fi: c/t
   ///
   /// In en, this message translates to:
-  /// **'No prices'**
-  String get s306729fe62;
+  /// **'c/h'**
+  String get s80c4ecec94;
 
-  /// fi: huomenna
+  /// fi: Päivitetty
   ///
   /// In en, this message translates to:
-  /// **'tomorrow'**
-  String get s9a37dbb58a;
+  /// **'Updated'**
+  String get sbfe79d1f5f;
 
-  /// fi: halvin
+  /// fi: Kulutus (kWh)
   ///
   /// In en, this message translates to:
-  /// **'min'**
-  String get s723c887da6;
-
-  /// fi: ka
-  ///
-  /// In en, this message translates to:
-  /// **'avg'**
-  String get s3b36524e04;
-
-  /// fi: kallein
-  ///
-  /// In en, this message translates to:
-  /// **'max'**
-  String get scaaff6345d;
-
-  /// fi: Halvin tänään
-  ///
-  /// In en, this message translates to:
-  /// **'Cheapest today'**
-  String get sfafa5c8432;
-
-  /// fi: Kallein tänään
-  ///
-  /// In en, this message translates to:
-  /// **'Priciest today'**
-  String get s4b2e4dda05;
-
-  /// fi: 1 h
-  ///
-  /// In en, this message translates to:
-  /// **'1 h'**
-  String get s96093c8f41;
-
-  /// fi: 15 min
-  ///
-  /// In en, this message translates to:
-  /// **'15 min'**
-  String get sa6dc2ff399;
-
-  /// fi: Kulutus
-  ///
-  /// In en, this message translates to:
-  /// **'Usage'**
-  String get s5f131c3ec4;
+  /// **'Usage (kWh)'**
+  String get sb68e905fc4;
 
   /// fi: Kustannus
   ///
@@ -2949,11 +2940,47 @@ abstract class AppLocalizations {
   /// **'Cost'**
   String get s5fc5085143;
 
-  /// fi: Huominen mukana
+  /// fi: Hinta nyt
   ///
   /// In en, this message translates to:
-  /// **'Tomorrow included'**
-  String get s2f06d232b5;
+  /// **'Price now'**
+  String get sb730159a01;
+
+  /// fi: Halvin hinta tänään
+  ///
+  /// In en, this message translates to:
+  /// **'Cheapest today'**
+  String get sbc8fb68b5d;
+
+  /// fi: Tänään keskihinta
+  ///
+  /// In en, this message translates to:
+  /// **'Average today'**
+  String get s86ff059f5e;
+
+  /// fi: Kallein hinta tänään
+  ///
+  /// In en, this message translates to:
+  /// **'Priciest today'**
+  String get se3d8d53b4b;
+
+  /// fi: Hetkellinen kustannus
+  ///
+  /// In en, this message translates to:
+  /// **'Instant cost'**
+  String get s29dbf49d92;
+
+  /// fi: ka
+  ///
+  /// In en, this message translates to:
+  /// **'avg'**
+  String get s3b36524e04;
+
+  /// fi: Kulutus
+  ///
+  /// In en, this message translates to:
+  /// **'Usage'**
+  String get s5f131c3ec4;
 
   /// fi: Huominen n. klo 14 jälkeen
   ///
@@ -4658,12 +4685,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Price control on'**
   String get s29fae6a0e8;
-
-  /// fi: Päivitetty
-  ///
-  /// In en, this message translates to:
-  /// **'Updated'**
-  String get sbfe79d1f5f;
 
   /// fi: Nimeä uudelleen
   ///
@@ -7522,7 +7543,8 @@ abstract class AppLocalizations {
   String s3a38b97f7b(String p0);
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -7531,7 +7553,8 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en', 'es', 'et', 'fi', 'sv'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['en', 'es', 'et', 'fi', 'sv'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;

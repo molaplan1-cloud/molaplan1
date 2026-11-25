@@ -973,6 +973,26 @@
   "x-mt": true
  },
  "s941fbb47fe": "Planen beräknas…",
+ "s306729fe62": "Inga priser",
+ "@s306729fe62": {
+  "x-mt": true
+ },
+ "s723c887da6": "Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min",
+ "@s723c887da6": {
+  "x-mt": true
+ },
+ "scaaff6345d": "max max max max max",
+ "@scaaff6345d": {
+  "x-mt": true
+ },
+ "s65982a11bc": "Inkl. imorgon",
+ "@s65982a11bc": {
+  "x-mt": true
+ },
+ "se79acaf837": "imorgon efter kl. 14.00",
+ "@se79acaf837": {
+  "x-mt": true
+ },
  "s55d52c5ae1": "Denna enhet är inte på Wi-Fi",
  "@s55d52c5ae1": {
   "x-mt": true
@@ -1413,27 +1433,17 @@
  "@sc95fb5440b": {
   "x-mt": true
  },
- "s306729fe62": "Inga priser",
- "@s306729fe62": {
-  "x-mt": true
- },
- "s9a37dbb58a": "i morgon",
- "s723c887da6": "Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min",
- "@s723c887da6": {
-  "x-mt": true
- },
- "s3b36524e04": "medel",
- "scaaff6345d": "max max max max max",
- "@scaaff6345d": {
-  "x-mt": true
- },
- "sfafa5c8432": "Billigast i dag",
- "s4b2e4dda05": "Dyrast i dag",
- "s96093c8f41": "1 h",
- "sa6dc2ff399": "15 min",
- "s5f131c3ec4": "Förbrukning",
+ "s80c4ecec94": "c/h",
+ "sbfe79d1f5f": "Uppdaterad",
+ "sb68e905fc4": "Förbrukning (kWh)",
  "s5fc5085143": "Kostnad",
- "s2f06d232b5": "I morgon ingår",
+ "sb730159a01": "Pris nu",
+ "sbc8fb68b5d": "Billigast i dag",
+ "s86ff059f5e": "Medelpris i dag",
+ "se3d8d53b4b": "Dyrast i dag",
+ "s29dbf49d92": "Kostnad just nu",
+ "s3b36524e04": "medel",
+ "s5f131c3ec4": "Förbrukning",
  "sa5e6b1e0e3": "I morgon efter ca 14:00",
  "s62cfd94468": "Billigaste timmar på natten",
  "@s62cfd94468": {
@@ -2246,10 +2256,6 @@
  },
  "s38ac222392": "Värde",
  "s29fae6a0e8": "Prisstyrning på",
- "sbfe79d1f5f": "Uppdaterad",
- "@sbfe79d1f5f": {
-  "x-mt": true
- },
  "s59d55f8882": "Byt namn",
  "s25580038cb": "Saved PIN bort",
  "@s25580038cb": {

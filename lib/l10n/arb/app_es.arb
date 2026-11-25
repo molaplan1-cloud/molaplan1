@@ -973,6 +973,26 @@
   "x-mt": true
  },
  "s941fbb47fe": "Calculando el plan…",
+ "s306729fe62": "No hay precios",
+ "@s306729fe62": {
+  "x-mt": true
+ },
+ "s723c887da6": "min",
+ "@s723c887da6": {
+  "x-mt": true
+ },
+ "scaaff6345d": "max",
+ "@scaaff6345d": {
+  "x-mt": true
+ },
+ "s65982a11bc": "incl. mañana",
+ "@s65982a11bc": {
+  "x-mt": true
+ },
+ "se79acaf837": "mañana después de las 14:00",
+ "@se79acaf837": {
+  "x-mt": true
+ },
  "s55d52c5ae1": "Este dispositivo no está en Wi-Fi",
  "@s55d52c5ae1": {
   "x-mt": true
@@ -1413,27 +1433,17 @@
  "@sc95fb5440b": {
   "x-mt": true
  },
- "s306729fe62": "No hay precios",
- "@s306729fe62": {
-  "x-mt": true
- },
- "s9a37dbb58a": "mañana",
- "s723c887da6": "min",
- "@s723c887da6": {
-  "x-mt": true
- },
- "s3b36524e04": "media",
- "scaaff6345d": "max",
- "@scaaff6345d": {
-  "x-mt": true
- },
- "sfafa5c8432": "Más barato hoy",
- "s4b2e4dda05": "Más caro hoy",
- "s96093c8f41": "1 h",
- "sa6dc2ff399": "15 min",
- "s5f131c3ec4": "Consumo",
+ "s80c4ecec94": "c/h",
+ "sbfe79d1f5f": "Actualizado",
+ "sb68e905fc4": "Consumo (kWh)",
  "s5fc5085143": "Coste",
- "s2f06d232b5": "Incluye mañana",
+ "sb730159a01": "Precio ahora",
+ "sbc8fb68b5d": "Más barato hoy",
+ "s86ff059f5e": "Precio medio hoy",
+ "se3d8d53b4b": "Más caro hoy",
+ "s29dbf49d92": "Coste instantáneo",
+ "s3b36524e04": "media",
+ "s5f131c3ec4": "Consumo",
  "sa5e6b1e0e3": "Mañana después de ~14:00",
  "s62cfd94468": "Horas más baratas por la noche",
  "@s62cfd94468": {
@@ -2246,10 +2256,6 @@
  },
  "s38ac222392": "Valor",
  "s29fae6a0e8": "Control por precio activado",
- "sbfe79d1f5f": "Actualizado",
- "@sbfe79d1f5f": {
-  "x-mt": true
- },
  "s59d55f8882": "Renombrar",
  "s25580038cb": "Separación de PIN",
  "@s25580038cb": {
