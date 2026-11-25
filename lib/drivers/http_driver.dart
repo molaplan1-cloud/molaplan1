@@ -1,0 +1,122 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:http/http.dart' as http;
+import 'package:http/io_client.dart';
+
+import '../core/fields.dart';
+import '../core/template.dart';
+import 'driver.dart';
+
+http.Client makeHttpClient(bool allowSelfSigned, {Duration? timeout}) {
+  final c = HttpClient();
+  if (timeout != null) c.connectionTimeout = timeout;
+  if (allowSelfSigned) c.badCertificateCallback = (_, _, _) => true;
+  return IOClient(c);
+}
+
+Uri joinUrl(String base, String path) {
+  if (path.startsWith('http://') || path.startsWith('https://')) return Uri.parse(path);
+  if (base.isEmpty) return Uri.parse(path);
+  final b = base.endsWith('/') ? base.substring(0, base.length - 1) : base;
+  final p = path.isEmpty ? '' : (path.startsWith('/') ? path : '/$path');
+  return Uri.parse('$b$p');
+}
+
+Map<String, String> authHeaders(Map<String, dynamic> s) {
+  final h = <String, String>{};
+  switch (s.str('auth', 'none')) {
+    case 'basic':
+      h['Authorization'] =
+          'Basic ${base64Encode(utf8.encode('${s.str('username')}:${s.str('password')}'))}';
+    case 'bearer':
+      h['Authorization'] = 'Bearer ${s.str('token')}';
+  }
+  return h;
+}
+
+class HttpDriver extends Driver {
+  HttpDriver(super.config);
+  http.Client? _client;
+  http.Client get client =>
+      _client ??= makeHttpClient(s.flag('allowSelfSigned'), timeout: _timeout);
+  Duration get _timeout => Duration(seconds: s.integer('timeoutSec', 10));
+
+  static const descriptor = DriverDescriptor(
+    type: 'http',
+    fi: 'HTTP / REST',
+    en: 'HTTP / REST',
+    create: HttpDriver.new,
+    connectionFields: [
+      FieldSpec('baseUrl', 'Perusosoite', 'Base URL', hint: 'http://192.168.1.50', required: true),
+      FieldSpec('auth', 'Tunnistus', 'Authentication',
+          kind: FieldKind.choice, options: ['none', 'basic', 'bearer'], defaultValue: 'none'),
+      FieldSpec('username', 'Käyttäjätunnus', 'Username'),
+      FieldSpec('password', 'Salasana', 'Password', kind: FieldKind.secret),
+      FieldSpec('token', 'Token', 'Token', kind: FieldKind.secret),
+      FieldSpec('headers', 'Lisäotsakkeet (Nimi: arvo / rivi)', 'Extra headers (Name: value per line)',
+          kind: FieldKind.multiline),
+      FieldSpec('allowSelfSigned', 'Salli itse allekirjoitettu sertifikaatti', 'Allow self-signed certificate',
+          kind: FieldKind.boolean),
+      FieldSpec('timeoutSec', 'Aikakatkaisu (s)', 'Timeout (s)', kind: FieldKind.number, defaultValue: 10),
+    ],
+    readFields: [
+      FieldSpec('method', 'Metodi', 'Method',
+          kind: FieldKind.choice, options: ['GET', 'POST', 'PUT'], defaultValue: 'GET'),
+      FieldSpec('path', 'Polku', 'Path', hint: '/api/status'),
+      FieldSpec('body', 'Runko', 'Body', kind: FieldKind.multiline),
+      FieldSpec('jsonPath', 'JSON-polku', 'JSON path', hint: r'$.data.temperature'),
+      FieldSpec('regex', 'Regex (ryhmä 1)', 'Regex (group 1)'),
+    ],
+    commandFields: [
+      FieldSpec('method', 'Metodi', 'Method',
+          kind: FieldKind.choice, options: ['POST', 'GET', 'PUT', 'PATCH', 'DELETE'], defaultValue: 'POST'),
+      FieldSpec('path', 'Polku', 'Path', hint: '/api/relay?state={{value}}'),
+      FieldSpec('body', 'Runko ({{value}} = arvo)', 'Body ({{value}} = value)', kind: FieldKind.multiline),
+      FieldSpec('contentType', 'Content-Type', 'Content-Type', defaultValue: 'application/json'),
+    ],
+  );
+
+  Future<http.Response> _request(Map<String, dynamic> spec, Object? value, String defMethod) async {
+    final method = spec.str('method', defMethod).toUpperCase();
+    final url = joinUrl(s.str('baseUrl'), applyTemplate(spec.str('path'), value));
+    final req = http.Request(method, url);
+    req.headers.addAll(authHeaders(s));
+    req.headers.addAll(parseHeaders(s.strOrNull('headers')));
+    req.headers.addAll(parseHeaders(spec.strOrNull('headers')));
+    final body = spec.strOrNull('body');
+    if (body != null && method != 'GET') {
+      req.headers['Content-Type'] = spec.str('contentType', 'application/json');
+      req.body = applyTemplate(body, value);
+    }
+    final resp = await http.Response.fromStream(await client.send(req).timeout(_timeout))
+        .timeout(_timeout);
+    if (resp.statusCode >= 400) {
+      throw DriverException('HTTP ${resp.statusCode}: ${_short(resp.body)}');
+    }
+    return resp;
+  }
+
+  String _short(String s) => s.length > 120 ? '${s.substring(0, 120)}…' : s;
+
+  @override
+  Future<Object?> read(Map<String, dynamic> spec) async {
+    final r = await _request(spec, null, 'GET');
+    return extractValue(r.body, spec);
+  }
+
+  @override
+  Future<Object?> send(Map<String, dynamic> spec, {Object? value}) async {
+    final r = await _request(spec, value, 'POST');
+    return r.body;
+  }
+
+  @override
+  Future<String> test() async {
+    final r = await _request({'method': 'GET', 'path': ''}, null, 'GET');
+    return 'HTTP ${r.statusCode} (${r.bodyBytes.length} B)';
+  }
+
+  @override
+  Future<void> dispose() async => _client?.close();
+}
