@@ -197,6 +197,18 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Appends connections + dashboards from [other] (e.g. the example set).
+  Future<Dashboard?> merge(AppConfig other) async {
+    config.connections.addAll(other.connections);
+    config.dashboards.addAll(other.dashboards);
+    for (final c in other.connections) {
+      await _persistSecrets(c);
+    }
+    await save();
+    notifyListeners();
+    return other.dashboards.firstOrNull;
+  }
+
   @override
   void dispose() {
     for (final d in _drivers.values) {

@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.molaplan" "\0"
-            VALUE "FileDescription", "molaplan" "\0"
+            VALUE "CompanyName", "Molaplan" "\0"
+            VALUE "FileDescription", "Molaplan" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "molaplan" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2026 com.molaplan. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 Molaplan. All rights reserved." "\0"
             VALUE "OriginalFilename", "molaplan.exe" "\0"
-            VALUE "ProductName", "molaplan" "\0"
+            VALUE "ProductName", "Molaplan" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
