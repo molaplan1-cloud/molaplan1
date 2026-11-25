@@ -89,6 +89,7 @@ class FakeSupabase {
     }
     if (p == '/auth/v1/otp') {
       final email = '${body['email']}'.toLowerCase();
+      if (users[email] == null && body['create_user'] == true) users[email] = FakeUser('u${users.length + 1}-0000', email, '');
       if (users[email] == null) return _err(422, 'otp_disabled', 'Signups not allowed for otp');
       _code(email, 'email');
       return _j({});

@@ -172,7 +172,7 @@ class AccountState extends ChangeNotifier {
     await _afterSignIn(s, password: password);
   }
 
-  Future<void> sendCode(String email) => api.sendCode(email.trim());
+  Future<void> sendCode(String email, {bool create = false}) => api.sendCode(email.trim(), create: create);
 
   Future<void> signInWithCode(String email, String code) async {
     final s = await api.verifyCode(email.trim(), code);
@@ -226,14 +226,9 @@ class AccountState extends ChangeNotifier {
 
     final remoteHas = row != null && _hasSetup(row.config);
     final localHas = host.hasLocalSetup;
-    if (row == null) {
-      if (localHas) {
-        pendingFirstSync = PendingFirstSync(localHas: true, remoteHas: false, row: row);
-      } else {
-        await _upload(row);
-      }
-    } else if (!remoteHas && localHas && lastRev == null) {
-      pendingFirstSync = PendingFirstSync(localHas: true, remoteHas: false, row: row);
+    if (row == null || (!remoteHas && localHas && lastRev == null)) {
+      // New or empty account: this device's setup moves into it (nothing to choose).
+      await _upload(row);
     } else if (localHas && lastRev == null) {
       pendingFirstSync = PendingFirstSync(localHas: true, remoteHas: true, row: row);
     } else {
@@ -304,6 +299,11 @@ class AccountState extends ChangeNotifier {
   Future<void> changePassword(String newPassword) async {
     final s = await _fresh();
     await api.setPassword(s, newPassword);
+    // Account made with an email code only: the first password starts the encrypted vault.
+    if (_key == null && !needsUnlock) {
+      _key = newAccountKey();
+      await store.write(keyStorage(s.userId), b64(_key!));
+    }
     if (_key != null) {
       _pendingWrap = await wrapAccountKey(_key!, newPassword, s.userId, iter: kdfIterations);
       lastHash = null;

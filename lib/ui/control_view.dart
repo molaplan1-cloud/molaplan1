@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../models/models.dart';
+import 'account_nudge.dart';
 import 'app_scope.dart';
 import 'tile_widget.dart';
 import 'remote_pages.dart';
@@ -49,6 +50,7 @@ class ControlView extends StatelessWidget {
       body: Column(
         children: [
           const UpdateBanner(),
+          const NoAccountBanner(),
           Expanded(
             child: LayoutBuilder(
               builder: (context, box) {

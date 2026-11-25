@@ -637,7 +637,14 @@ class AppLocalizationsSv extends AppLocalizations {
   String get scf7e14661c => 'Tillbaka';
 
   @override
+  String get s7d43ee2d5a => 'lokalisering av beläggning av beläggningar';
+
+  @override
   String get s22c960ff4f => 'Logga in med en kod';
+
+  @override
+  String get scb167ce8b1 =>
+      'o vi själva. vi.. Vi.. Vi. Vi.. Vi. Vi. Vi.. Vi.. Vi. Vi.. Vi.. Vi.. Vi.. Vi.. Vi. Vi.. Vi. Vi. Vi.. Vi. Vi. Vi.. Vi. Vi.. Vi.. Vi... Vi.. Vi... Vi.. Vi... Vi.. Vi.. Vi.. Vi. Vi.... Vi. Vi.. Vi... Vi.. Vi.... Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi.... Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi.. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi. Vi.';
 
   @override
   String get s7d29d1dfbd =>
@@ -656,6 +663,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get saa1e3d1f13 => 'Skicka en ny kod';
+
+  @override
+  String get se1be2ec8e5 => 'o-logga in med ett lösenord';
 
   @override
   String get s8c48f847f6 => 'Återställ lösenord';
@@ -1106,22 +1116,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s941fbb47fe => 'Planen beräknas…';
-
-  @override
-  String get s306729fe62 => 'Inga priser';
-
-  @override
-  String get s723c887da6 =>
-      'Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min';
-
-  @override
-  String get scaaff6345d => 'max max max max max';
-
-  @override
-  String get s65982a11bc => 'Inkl. imorgon';
-
-  @override
-  String get se79acaf837 => 'imorgon efter kl. 14.00';
 
   @override
   String get s55d52c5ae1 => 'Denna enhet är inte på Wi-Fi';
@@ -1598,6 +1592,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sc95fb5440b => 'Stream slutade';
 
   @override
+  String get s306729fe62 => 'Inga priser';
+
+  @override
   String get s80c4ecec94 => 'c/h';
 
   @override
@@ -1625,7 +1622,14 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s29dbf49d92 => 'Kostnad just nu';
 
   @override
+  String get s723c887da6 =>
+      'Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min';
+
+  @override
   String get s3b36524e04 => 'medel';
+
+  @override
+  String get scaaff6345d => 'max max max max max';
 
   @override
   String get s5f131c3ec4 => 'Förbrukning';
@@ -2379,6 +2383,41 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String get sda9203de80 => 'lokaler och inställningar ';
+
+  @override
+  String get s8b3e63da21 => 'o skapa kontot ›';
+
+  @override
+  String get s887c293cad => 'lokala grepp om odlingar för odlingar';
+
+  @override
+  String get s84a087a679 => 'l.......';
+
+  @override
+  String get s907220900d => 'Välkommen till Molaplan';
+
+  @override
+  String get s845ec6276f => 'lokalisering av';
+
+  @override
+  String get s9dfa93453b => 'o----------------------------------';
+
+  @override
+  String get s6aa51b28a5 => 'lokaler och e-poster';
+
+  @override
+  String get sc6f02b69d3 =>
+      'o inloggning/inloggning/inloggning/inloggning/inloggning/inloggning/ in';
+
+  @override
+  String get sc777bde66f =>
+      'lokala försvarslösningar Försvårigheter Försvårigheter Försvårigheter Försvårigheter Försvårigheter';
+
+  @override
+  String get se2e5ff2c8a => 'lokalisering utan ett konto';
+
+  @override
   String get sb8934a5835 => 'Elförbrukning';
 
   @override
@@ -2871,9 +2910,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s171ac59e67 =>
       'Välj din enhet nedan. Du fyller bara i sin adress - resten görs för dig.';
-
-  @override
-  String get s907220900d => 'Välkommen till Molaplan';
 
   @override
   String get se722dfcec9 =>

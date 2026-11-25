@@ -634,7 +634,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scf7e14661c => 'Back';
 
   @override
+  String get s7d43ee2d5a => 'Create an account or sign in';
+
+  @override
   String get s22c960ff4f => 'Sign in with a code';
+
+  @override
+  String get scb167ce8b1 =>
+      'Type your email and we send you a code. No password needed. If you have no account yet, one is created and this device\'s setup moves into it.';
 
   @override
   String get s7d29d1dfbd =>
@@ -653,6 +660,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get saa1e3d1f13 => 'Send a new code';
+
+  @override
+  String get se1be2ec8e5 => 'Sign in with a password';
 
   @override
   String get s8c48f847f6 => 'Reset password';
@@ -1099,21 +1109,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s941fbb47fe => 'Calculating the plan…';
-
-  @override
-  String get s306729fe62 => 'No prices';
-
-  @override
-  String get s723c887da6 => 'min';
-
-  @override
-  String get scaaff6345d => 'max';
-
-  @override
-  String get s65982a11bc => 'incl. tomorrow';
-
-  @override
-  String get se79acaf837 => 'tomorrow after 14:00';
 
   @override
   String get s55d52c5ae1 => 'This device is not on Wi-Fi';
@@ -1589,6 +1584,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sc95fb5440b => 'Stream ended';
 
   @override
+  String get s306729fe62 => 'No prices';
+
+  @override
   String get s80c4ecec94 => 'c/h';
 
   @override
@@ -1616,7 +1614,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s29dbf49d92 => 'Instant cost';
 
   @override
+  String get s723c887da6 => 'min';
+
+  @override
   String get s3b36524e04 => 'avg';
+
+  @override
+  String get scaaff6345d => 'max';
 
   @override
   String get s5f131c3ec4 => 'Usage';
@@ -2370,6 +2374,40 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get sda9203de80 => 'No account – settings only on this device. ';
+
+  @override
+  String get s8b3e63da21 => 'Create account ›';
+
+  @override
+  String get s887c293cad => 'Device added! 🎉';
+
+  @override
+  String get s84a087a679 =>
+      'Create an account so your settings are kept and move to your other devices. It only takes an email code, no password needed.';
+
+  @override
+  String get s907220900d => 'Welcome to Molaplan';
+
+  @override
+  String get s845ec6276f => 'Your setup on all your devices';
+
+  @override
+  String get s9dfa93453b => 'Nothing is lost when you change phones';
+
+  @override
+  String get s6aa51b28a5 => 'Device passwords are encrypted';
+
+  @override
+  String get sc6f02b69d3 => 'Create account / Sign in';
+
+  @override
+  String get sc777bde66f => 'With an email code – no password.';
+
+  @override
+  String get se2e5ff2c8a => 'Continue without an account';
+
+  @override
   String get sb8934a5835 => 'Electricity use';
 
   @override
@@ -2863,9 +2901,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s171ac59e67 =>
       'Pick your device below. You only fill in its address – the rest is done for you.';
-
-  @override
-  String get s907220900d => 'Welcome to Molaplan';
 
   @override
   String get se722dfcec9 =>

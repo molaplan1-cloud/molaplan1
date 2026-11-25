@@ -636,7 +636,14 @@ class AppLocalizationsEt extends AppLocalizations {
   String get scf7e14661c => 'Tagasi';
 
   @override
+  String get s7d43ee2d5a => 'Konto või sisselogimise loomine';
+
+  @override
   String get s22c960ff4f => 'Sisselogimine koodiga';
+
+  @override
+  String get scb167ce8b1 =>
+      'Kirjuta oma kiri ja me saadame sulle koodi. Paroolisuper bullshit reconciliation. Kui sul pole veel kontot, luuakse see ja selle seadme seadistused liiguvad sinna sisse.';
 
   @override
   String get s7d29d1dfbd =>
@@ -655,6 +662,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get saa1e3d1f13 => 'Saada uus kood';
+
+  @override
+  String get se1be2ec8e5 => 'Sisselogimine parooliga';
 
   @override
   String get s8c48f847f6 => 'Parool lähtestatakse';
@@ -1106,21 +1116,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s941fbb47fe => 'Plaani arvutatakse…';
-
-  @override
-  String get s306729fe62 => 'Hindadeta';
-
-  @override
-  String get s723c887da6 => 'min';
-
-  @override
-  String get scaaff6345d => 'max';
-
-  @override
-  String get s65982a11bc => 'sh homme';
-
-  @override
-  String get se79acaf837 => 'homme pärast 14.00';
 
   @override
   String get s55d52c5ae1 => 'See seade ei ole Wi-Fi-s';
@@ -1596,6 +1591,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sc95fb5440b => 'Stream lõppes';
 
   @override
+  String get s306729fe62 => 'Hindadeta';
+
+  @override
   String get s80c4ecec94 => 'c/h';
 
   @override
@@ -1623,7 +1621,13 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s29dbf49d92 => 'Hetkekulu';
 
   @override
+  String get s723c887da6 => 'min';
+
+  @override
   String get s3b36524e04 => 'kesk.';
+
+  @override
+  String get scaaff6345d => 'max';
 
   @override
   String get s5f131c3ec4 => 'Tarbimine';
@@ -2376,6 +2380,40 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String get sda9203de80 => 'Konto puudub – seaded ainult selles seadmes. ';
+
+  @override
+  String get s8b3e63da21 => 'Konto loomine ›';
+
+  @override
+  String get s887c293cad => 'Seade lisatud!  ⁇';
+
+  @override
+  String get s84a087a679 =>
+      'Loo konto nii, et sinu seadistused säiliksid jasuper bullshit reconciliation. Selleks on vaja ainult e- posti koodi, parooli pole vaja.';
+
+  @override
+  String get s907220900d => 'Tere tulemast Molaplani';
+
+  @override
+  String get s845ec6276f => 'Teie seadistamine kõigis teie seadmetes';
+
+  @override
+  String get s9dfa93453b => 'Telefoni vahetamisel ei lähe midagi kaduma';
+
+  @override
+  String get s6aa51b28a5 => 'Seadme paroolid on krüptitud';
+
+  @override
+  String get sc6f02b69d3 => 'Konto loomine / sisselogimine';
+
+  @override
+  String get sc777bde66f => 'E-posti koodiga - ilma paroolita.';
+
+  @override
+  String get se2e5ff2c8a => 'Jätka ilma kontota';
+
+  @override
   String get sb8934a5835 => 'Elektritarbimine';
 
   @override
@@ -2867,9 +2905,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s171ac59e67 =>
       'Vali allpool oma seade. Kirjuta ainult selle aadress – ülejäänu on sinu eest tehtud.';
-
-  @override
-  String get s907220900d => 'Tere tulemast Molaplani';
 
   @override
   String get se722dfcec9 =>

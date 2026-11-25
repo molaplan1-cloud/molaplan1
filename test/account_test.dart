@@ -54,9 +54,8 @@ void main() {
     expect(await tablet.account.signUp(email, pw), isFalse, reason: 'email must be confirmed with the code');
     await tablet.account.confirmSignUp(email, sb.lastCode(email, 'signup'));
     expect(tablet.account.signedIn, isTrue);
-    // This device already had a setup: the app asks before uploading.
-    expect(tablet.account.pendingFirstSync?.localHas, isTrue);
-    await tablet.account.resolveFirstSync(FirstSyncChoice.uploadLocal);
+    // New, empty account: this device's setup moves into it without asking (t115u).
+    expect(tablet.account.pendingFirstSync, isNull);
 
     final row = sb.rows.values.single;
     final raw = jsonEncode(row);
@@ -207,5 +206,23 @@ void main() {
     expect(b.account.signedIn, isTrue);
     expect(b.account.email, email);
     expect(b.account.hasKey, isTrue);
+  });
+
+  test('passwordless sign-up with an email code moves this device\'s setup into the new account (t115u)', () async {
+    final sb = FakeSupabase();
+    final tablet = await device(sb);
+    await addShelly(tablet);
+    await tablet.account.sendCode(email, create: true);
+    await tablet.account.signInWithCode(email, sb.lastCode(email, 'email'));
+    expect(tablet.account.signedIn, isTrue);
+    expect(tablet.account.pendingFirstSync, isNull);
+    final row = sb.rows.values.single;
+    expect(jsonEncode(row).contains('Sauna'), isTrue);
+    expect(row['vault'], isNull, reason: 'no password yet: device passwords stay on this device');
+    // Setting a password later starts the encrypted vault.
+    await tablet.account.changePassword(pw);
+    expect(sb.rows.values.single['key_wrap'], isNotNull);
+    expect(sb.rows.values.single['vault'], isNotNull);
+    expect(jsonEncode(sb.rows.values.single).contains('salainen'), isFalse);
   });
 }

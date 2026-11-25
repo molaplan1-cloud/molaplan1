@@ -10,6 +10,7 @@ import 'package:material_ui/material_ui.dart';
 import '../state/examples.dart';
 import '../state/update_state.dart' show UpdatePhase;
 import 'account_page.dart';
+import 'account_nudge.dart';
 import 'app_scope.dart';
 import 'guides_page.dart';
 import 'onboarding_page.dart';
@@ -85,6 +86,7 @@ class _SettingsPageState extends State<SettingsPage> {
           child: ListView(
             padding: const EdgeInsets.all(16),
             children: [
+              const NoAccountBanner(margin: EdgeInsets.only(bottom: 14)),
               Text(tx(context, 'Tili', 'Account'), style: text.titleMedium),
               const SizedBox(height: 4),
               Text(

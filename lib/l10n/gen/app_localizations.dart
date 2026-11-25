@@ -1198,11 +1198,23 @@ abstract class AppLocalizations {
   /// **'Back'**
   String get scf7e14661c;
 
+  /// fi: Luo tili tai kirjaudu
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account or sign in'**
+  String get s7d43ee2d5a;
+
   /// fi: Kirjaudu koodilla
   ///
   /// In en, this message translates to:
   /// **'Sign in with a code'**
   String get s22c960ff4f;
+
+  /// fi: Kirjoita sähköpostiosoitteesi, niin lähetämme koodin. Salasanaa ei tarvita. Jos tiliä ei vielä ole, se luodaan, ja tämän
+  ///
+  /// In en, this message translates to:
+  /// **'Type your email and we send you a code. No password needed. If you have no account yet, one is created and this device\'\'s setup moves into it.'**
+  String get scb167ce8b1;
 
   /// fi: Lähetämme sähköpostiisi koodin. Salasanaa ei tarvita kirjautumiseen.
   ///
@@ -1233,6 +1245,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Send a new code'**
   String get saa1e3d1f13;
+
+  /// fi: Kirjaudu salasanalla
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in with a password'**
+  String get se1be2ec8e5;
 
   /// fi: Vaihda salasana
   ///
@@ -2062,36 +2080,6 @@ abstract class AppLocalizations {
   /// **'Calculating the plan…'**
   String get s941fbb47fe;
 
-  /// fi: Ei hintoja
-  ///
-  /// In en, this message translates to:
-  /// **'No prices'**
-  String get s306729fe62;
-
-  /// fi: halvin
-  ///
-  /// In en, this message translates to:
-  /// **'min'**
-  String get s723c887da6;
-
-  /// fi: kallein
-  ///
-  /// In en, this message translates to:
-  /// **'max'**
-  String get scaaff6345d;
-
-  /// fi: huomenna mukana
-  ///
-  /// In en, this message translates to:
-  /// **'incl. tomorrow'**
-  String get s65982a11bc;
-
-  /// fi: huominen klo 14 jälkeen
-  ///
-  /// In en, this message translates to:
-  /// **'tomorrow after 14:00'**
-  String get se79acaf837;
-
   /// fi: Tämä laite ei ole yhteydessä wifiin
   ///
   /// In en, this message translates to:
@@ -2916,6 +2904,12 @@ abstract class AppLocalizations {
   /// **'Stream ended'**
   String get sc95fb5440b;
 
+  /// fi: Ei hintoja
+  ///
+  /// In en, this message translates to:
+  /// **'No prices'**
+  String get s306729fe62;
+
   /// fi: c/t
   ///
   /// In en, this message translates to:
@@ -2970,11 +2964,23 @@ abstract class AppLocalizations {
   /// **'Instant cost'**
   String get s29dbf49d92;
 
+  /// fi: halvin
+  ///
+  /// In en, this message translates to:
+  /// **'min'**
+  String get s723c887da6;
+
   /// fi: ka
   ///
   /// In en, this message translates to:
   /// **'avg'**
   String get s3b36524e04;
+
+  /// fi: kallein
+  ///
+  /// In en, this message translates to:
+  /// **'max'**
+  String get scaaff6345d;
 
   /// fi: Kulutus
   ///
@@ -4302,6 +4308,72 @@ abstract class AppLocalizations {
   /// **'Tile \"{p0}\" deleted'**
   String s97f46743e0(String p0);
 
+  /// fi: Ei tiliä – asetukset vain tällä laitteella.
+  ///
+  /// In en, this message translates to:
+  /// **'No account – settings only on this device. '**
+  String get sda9203de80;
+
+  /// fi: Luo tili ›
+  ///
+  /// In en, this message translates to:
+  /// **'Create account ›'**
+  String get s8b3e63da21;
+
+  /// fi: Laite lisätty! 🎉
+  ///
+  /// In en, this message translates to:
+  /// **'Device added! 🎉'**
+  String get s887c293cad;
+
+  /// fi: Luo tili, niin asetukset säilyvät ja siirtyvät muille laitteille. Se käy sähköpostikoodilla, salasanaa ei tarvita.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account so your settings are kept and move to your other devices. It only takes an email code, no password needed.'**
+  String get s84a087a679;
+
+  /// fi: Tervetuloa Molaplaniin
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Molaplan'**
+  String get s907220900d;
+
+  /// fi: Asetukset kaikilla laitteillasi
+  ///
+  /// In en, this message translates to:
+  /// **'Your setup on all your devices'**
+  String get s845ec6276f;
+
+  /// fi: Mitään ei katoa, vaikka puhelin vaihtuu
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing is lost when you change phones'**
+  String get s9dfa93453b;
+
+  /// fi: Laitteiden salasanat salataan
+  ///
+  /// In en, this message translates to:
+  /// **'Device passwords are encrypted'**
+  String get s6aa51b28a5;
+
+  /// fi: Luo tili / Kirjaudu
+  ///
+  /// In en, this message translates to:
+  /// **'Create account / Sign in'**
+  String get sc6f02b69d3;
+
+  /// fi: Sähköpostikoodilla – ei salasanaa.
+  ///
+  /// In en, this message translates to:
+  /// **'With an email code – no password.'**
+  String get sc777bde66f;
+
+  /// fi: Jatka ilman tiliä
+  ///
+  /// In en, this message translates to:
+  /// **'Continue without an account'**
+  String get se2e5ff2c8a;
+
   /// fi: Sähkönkulutus
   ///
   /// In en, this message translates to:
@@ -5231,12 +5303,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Pick your device below. You only fill in its address – the rest is done for you.'**
   String get s171ac59e67;
-
-  /// fi: Tervetuloa Molaplaniin
-  ///
-  /// In en, this message translates to:
-  /// **'Welcome to Molaplan'**
-  String get s907220900d;
 
   /// fi: Molaplan on kotisi oma ohjauspaneeli. Kokoat siihen itse ne laitteet ja napit, joita tarvitset.
   ///

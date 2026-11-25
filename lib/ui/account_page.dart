@@ -125,14 +125,17 @@ Future<void> askFirstSync(BuildContext context) async {
 enum _Mode { signIn, signUp, code, forgot, confirm }
 
 class AccountPage extends StatefulWidget {
-  const AccountPage({super.key, this.startWithSignUp = false});
+  const AccountPage({super.key, this.startWithSignUp = false, this.startWithCode = false});
   final bool startWithSignUp;
+
+  /// Passwordless: email code that signs in or creates the account (welcome screen, reminders).
+  final bool startWithCode;
   @override
   State<AccountPage> createState() => _AccountPageState();
 }
 
 class _AccountPageState extends State<AccountPage> {
-  late _Mode mode = widget.startWithSignUp ? _Mode.signUp : _Mode.signIn;
+  late _Mode mode = widget.startWithCode ? _Mode.code : (widget.startWithSignUp ? _Mode.signUp : _Mode.signIn);
   final _email = TextEditingController();
   final _password = TextEditingController();
   final _code = TextEditingController();
@@ -384,13 +387,21 @@ class _AccountPageState extends State<AccountPage> {
         ];
       case _Mode.code:
         return [
-          Text(t('Kirjaudu koodilla', 'Sign in with a code'), style: text.headlineSmall),
+          Text(
+            widget.startWithCode ? t('Luo tili tai kirjaudu', 'Create an account or sign in') : t('Kirjaudu koodilla', 'Sign in with a code'),
+            style: text.headlineSmall,
+          ),
           const SizedBox(height: 8),
           Text(
-            t(
-              'Lähetämme sähköpostiisi koodin. Salasanaa ei tarvita kirjautumiseen.',
-              'We email you a code. No password needed to sign in.',
-            ),
+            widget.startWithCode
+                ? t(
+                    'Kirjoita sähköpostiosoitteesi, niin lähetämme koodin. Salasanaa ei tarvita. Jos tiliä ei vielä ole, se luodaan, ja tämän laitteen asetukset siirtyvät siihen.',
+                    'Type your email and we send you a code. No password needed. If you have no account yet, one is created and this device\'s setup moves into it.',
+                  )
+                : t(
+                    'Lähetämme sähköpostiisi koodin. Salasanaa ei tarvita kirjautumiseen.',
+                    'We email you a code. No password needed to sign in.',
+                  ),
           ),
           const SizedBox(height: 16),
           _emailField(),
@@ -400,7 +411,7 @@ class _AccountPageState extends State<AccountPage> {
               const ValueKey('acc-send-code'),
               t('Lähetä koodi', 'Send code'),
               () => _run(() async {
-                await acc.sendCode(_email.text);
+                await acc.sendCode(_email.text, create: widget.startWithCode);
                 if (mounted) {
                   setState(() {
                     codeSent = true;
@@ -425,7 +436,10 @@ class _AccountPageState extends State<AccountPage> {
               child: Text(t('Lähetä uusi koodi', 'Send a new code')),
             ),
           ],
-          TextButton(onPressed: busy ? null : () => _go(_Mode.signIn), child: Text(t('Takaisin', 'Back'))),
+          TextButton(
+            onPressed: busy ? null : () => _go(_Mode.signIn),
+            child: Text(widget.startWithCode ? t('Kirjaudu salasanalla', 'Sign in with a password') : t('Takaisin', 'Back')),
+          ),
         ];
       case _Mode.forgot:
         return [

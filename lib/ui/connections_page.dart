@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import '../core/fields.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
+import 'account_nudge.dart';
 import 'app_scope.dart';
 import 'heatpump_pages.dart';
 import 'error_box.dart';
@@ -27,8 +28,11 @@ class ConnectionsPage extends StatelessWidget {
   const ConnectionsPage({super.key});
 
   /// Opens the device template gallery (the easy way).
-  static Future<bool?> addNew(BuildContext context, {Dashboard? dashboard}) =>
-      Navigator.push<bool>(context, MaterialPageRoute(builder: (_) => TemplateGalleryPage(dashboard: dashboard)));
+  static Future<bool?> addNew(BuildContext context, {Dashboard? dashboard}) async {
+    final added = await Navigator.push<bool>(context, MaterialPageRoute(builder: (_) => TemplateGalleryPage(dashboard: dashboard)));
+    if (added == true && context.mounted) await maybePromptAccount(context);
+    return added;
+  }
 
   /// Raw connection type picker (for experts / "other device").
   static Future<ConnectionConfig?> addManual(BuildContext context) async {

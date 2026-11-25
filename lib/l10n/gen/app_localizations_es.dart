@@ -643,7 +643,14 @@ class AppLocalizationsEs extends AppLocalizations {
   String get scf7e14661c => 'Atrás';
 
   @override
+  String get s7d43ee2d5a => 'Crear una cuenta o iniciar sesión';
+
+  @override
   String get s22c960ff4f => 'Inicia sesión con un código';
+
+  @override
+  String get scb167ce8b1 =>
+      'Escriba su correo electrónico y le enviaremos un código. No se necesita contraseña. Si aún no tiene cuenta, se crea uno y la configuración de este dispositivo se mueve en él.';
 
   @override
   String get s7d29d1dfbd =>
@@ -662,6 +669,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get saa1e3d1f13 => 'Enviar un nuevo código';
+
+  @override
+  String get se1be2ec8e5 => 'Inicia sesión con una contraseña';
 
   @override
   String get s8c48f847f6 => 'Reiniciar contraseña';
@@ -1116,21 +1126,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s941fbb47fe => 'Calculando el plan…';
-
-  @override
-  String get s306729fe62 => 'No hay precios';
-
-  @override
-  String get s723c887da6 => 'min';
-
-  @override
-  String get scaaff6345d => 'max';
-
-  @override
-  String get s65982a11bc => 'incl. mañana';
-
-  @override
-  String get se79acaf837 => 'mañana después de las 14:00';
 
   @override
   String get s55d52c5ae1 => 'Este dispositivo no está en Wi-Fi';
@@ -1609,6 +1604,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sc95fb5440b => 'Corriente terminada';
 
   @override
+  String get s306729fe62 => 'No hay precios';
+
+  @override
   String get s80c4ecec94 => 'c/h';
 
   @override
@@ -1636,7 +1634,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s29dbf49d92 => 'Coste instantáneo';
 
   @override
+  String get s723c887da6 => 'min';
+
+  @override
   String get s3b36524e04 => 'media';
+
+  @override
+  String get scaaff6345d => 'max';
 
   @override
   String get s5f131c3ec4 => 'Consumo';
@@ -2394,6 +2398,41 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get sda9203de80 => 'No cuenta – sólo en este dispositivo. ';
+
+  @override
+  String get s8b3e63da21 => 'Crear cuenta ›';
+
+  @override
+  String get s887c293cad => 'Dispositivo añadido!';
+
+  @override
+  String get s84a087a679 =>
+      'Cree una cuenta para que sus ajustes se mantengan y se muevan a sus otros dispositivos. Sólo toma un código de correo electrónico, no se necesita contraseña.';
+
+  @override
+  String get s907220900d => 'Bienvenido a Molaplan';
+
+  @override
+  String get s845ec6276f => 'Su configuración en todos sus dispositivos';
+
+  @override
+  String get s9dfa93453b => 'Nada se pierde cuando cambias de teléfono';
+
+  @override
+  String get s6aa51b28a5 => 'Las contraseñas de dispositivo están encriptadas';
+
+  @override
+  String get sc6f02b69d3 => 'Crear cuenta / Iniciar sesión';
+
+  @override
+  String get sc777bde66f =>
+      'Con un código de correo electrónico – sin contraseña.';
+
+  @override
+  String get se2e5ff2c8a => 'Continuar sin una cuenta';
+
+  @override
   String get sb8934a5835 => 'Consumo eléctrico';
 
   @override
@@ -2889,9 +2928,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s171ac59e67 =>
       'Elija su dispositivo abajo. Sólo llena su dirección – el resto está hecho para usted.';
-
-  @override
-  String get s907220900d => 'Bienvenido a Molaplan';
 
   @override
   String get se722dfcec9 =>

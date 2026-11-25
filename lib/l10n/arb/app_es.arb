@@ -973,26 +973,6 @@
   "x-mt": true
  },
  "s941fbb47fe": "Calculando el plan…",
- "s306729fe62": "No hay precios",
- "@s306729fe62": {
-  "x-mt": true
- },
- "s723c887da6": "min",
- "@s723c887da6": {
-  "x-mt": true
- },
- "scaaff6345d": "max",
- "@scaaff6345d": {
-  "x-mt": true
- },
- "s65982a11bc": "incl. mañana",
- "@s65982a11bc": {
-  "x-mt": true
- },
- "se79acaf837": "mañana después de las 14:00",
- "@se79acaf837": {
-  "x-mt": true
- },
  "s55d52c5ae1": "Este dispositivo no está en Wi-Fi",
  "@s55d52c5ae1": {
   "x-mt": true
@@ -1433,6 +1413,10 @@
  "@sc95fb5440b": {
   "x-mt": true
  },
+ "s306729fe62": "No hay precios",
+ "@s306729fe62": {
+  "x-mt": true
+ },
  "s80c4ecec94": "c/h",
  "sbfe79d1f5f": "Actualizado",
  "sb68e905fc4": "Consumo (kWh)",
@@ -1442,7 +1426,15 @@
  "s86ff059f5e": "Precio medio hoy",
  "se3d8d53b4b": "Más caro hoy",
  "s29dbf49d92": "Coste instantáneo",
+ "s723c887da6": "min",
+ "@s723c887da6": {
+  "x-mt": true
+ },
  "s3b36524e04": "media",
+ "scaaff6345d": "max",
+ "@scaaff6345d": {
+  "x-mt": true
+ },
  "s5f131c3ec4": "Consumo",
  "sa5e6b1e0e3": "Mañana después de ~14:00",
  "s62cfd94468": "Horas más baratas por la noche",
@@ -2144,6 +2136,7 @@
  "@s97f46743e0": {
   "x-mt": true
  },
+ "s907220900d": "Bienvenido a Molaplan",
  "sb8934a5835": "Consumo eléctrico",
  "s5409dc748f": "No se cuenta",
  "sf0bbcc217b": "Toda la vivienda",
@@ -2506,7 +2499,6 @@
  "@s171ac59e67": {
   "x-mt": true
  },
- "s907220900d": "Bienvenido a Molaplan",
  "se722dfcec9": "Molaplan es el propio panel de control de tu casa. Pones exactamente los dispositivos y botones que necesitas.",
  "@se722dfcec9": {
   "x-mt": true
@@ -3825,6 +3817,58 @@
  "sfb0b971c01": "Oscilación",
  "s3a38b97f7b": "{p0} – room",
  "@s3a38b97f7b": {
+  "x-mt": true
+ },
+ "s7d43ee2d5a": "Crear una cuenta o iniciar sesión",
+ "@s7d43ee2d5a": {
+  "x-mt": true
+ },
+ "scb167ce8b1": "Escriba su correo electrónico y le enviaremos un código. No se necesita contraseña. Si aún no tiene cuenta, se crea uno y la configuración de este dispositivo se mueve en él.",
+ "@scb167ce8b1": {
+  "x-mt": true
+ },
+ "se1be2ec8e5": "Inicia sesión con una contraseña",
+ "@se1be2ec8e5": {
+  "x-mt": true
+ },
+ "sda9203de80": "No cuenta – sólo en este dispositivo. ",
+ "@sda9203de80": {
+  "x-mt": true
+ },
+ "s8b3e63da21": "Crear cuenta ›",
+ "@s8b3e63da21": {
+  "x-mt": true
+ },
+ "s887c293cad": "Dispositivo añadido!",
+ "@s887c293cad": {
+  "x-mt": true
+ },
+ "s84a087a679": "Cree una cuenta para que sus ajustes se mantengan y se muevan a sus otros dispositivos. Sólo toma un código de correo electrónico, no se necesita contraseña.",
+ "@s84a087a679": {
+  "x-mt": true
+ },
+ "s845ec6276f": "Su configuración en todos sus dispositivos",
+ "@s845ec6276f": {
+  "x-mt": true
+ },
+ "s9dfa93453b": "Nada se pierde cuando cambias de teléfono",
+ "@s9dfa93453b": {
+  "x-mt": true
+ },
+ "s6aa51b28a5": "Las contraseñas de dispositivo están encriptadas",
+ "@s6aa51b28a5": {
+  "x-mt": true
+ },
+ "sc6f02b69d3": "Crear cuenta / Iniciar sesión",
+ "@sc6f02b69d3": {
+  "x-mt": true
+ },
+ "sc777bde66f": "Con un código de correo electrónico – sin contraseña.",
+ "@sc777bde66f": {
+  "x-mt": true
+ },
+ "se2e5ff2c8a": "Continuar sin una cuenta",
+ "@se2e5ff2c8a": {
   "x-mt": true
  }
 }

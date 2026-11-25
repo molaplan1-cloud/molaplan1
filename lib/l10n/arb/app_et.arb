@@ -973,26 +973,6 @@
   "x-mt": true
  },
  "s941fbb47fe": "Plaani arvutatakse…",
- "s306729fe62": "Hindadeta",
- "@s306729fe62": {
-  "x-mt": true
- },
- "s723c887da6": "min",
- "@s723c887da6": {
-  "x-mt": true
- },
- "scaaff6345d": "max",
- "@scaaff6345d": {
-  "x-mt": true
- },
- "s65982a11bc": "sh homme",
- "@s65982a11bc": {
-  "x-mt": true
- },
- "se79acaf837": "homme pärast 14.00",
- "@se79acaf837": {
-  "x-mt": true
- },
  "s55d52c5ae1": "See seade ei ole Wi-Fi-s",
  "@s55d52c5ae1": {
   "x-mt": true
@@ -1433,6 +1413,10 @@
  "@sc95fb5440b": {
   "x-mt": true
  },
+ "s306729fe62": "Hindadeta",
+ "@s306729fe62": {
+  "x-mt": true
+ },
  "s80c4ecec94": "c/h",
  "sbfe79d1f5f": "Uuendatud",
  "sb68e905fc4": "Tarbimine (kWh)",
@@ -1442,7 +1426,15 @@
  "s86ff059f5e": "Keskmine täna",
  "se3d8d53b4b": "Kalleim täna",
  "s29dbf49d92": "Hetkekulu",
+ "s723c887da6": "min",
+ "@s723c887da6": {
+  "x-mt": true
+ },
  "s3b36524e04": "kesk.",
+ "scaaff6345d": "max",
+ "@scaaff6345d": {
+  "x-mt": true
+ },
  "s5f131c3ec4": "Tarbimine",
  "sa5e6b1e0e3": "Homne päev u kell 14 järel",
  "s62cfd94468": "Odavamad tunnid öösel",
@@ -2144,6 +2136,7 @@
  "@s97f46743e0": {
   "x-mt": true
  },
+ "s907220900d": "Tere tulemast Molaplani",
  "sb8934a5835": "Elektritarbimine",
  "s5409dc748f": "Ei arvestata",
  "sf0bbcc217b": "Kogu objekt",
@@ -2506,7 +2499,6 @@
  "@s171ac59e67": {
   "x-mt": true
  },
- "s907220900d": "Tere tulemast Molaplani",
  "se722dfcec9": "Molaplan on sinu kodu juhtpaneel. Sa paned sisse täpselt vajalikud seadmed ja nupud.",
  "@se722dfcec9": {
   "x-mt": true
@@ -3825,6 +3817,58 @@
  "sfb0b971c01": "Õõtsumine",
  "s3a38b97f7b": "{p0} – ruum",
  "@s3a38b97f7b": {
+  "x-mt": true
+ },
+ "s7d43ee2d5a": "Konto või sisselogimise loomine",
+ "@s7d43ee2d5a": {
+  "x-mt": true
+ },
+ "scb167ce8b1": "Kirjuta oma kiri ja me saadame sulle koodi. Paroolisuper bullshit reconciliation. Kui sul pole veel kontot, luuakse see ja selle seadme seadistused liiguvad sinna sisse.",
+ "@scb167ce8b1": {
+  "x-mt": true
+ },
+ "se1be2ec8e5": "Sisselogimine parooliga",
+ "@se1be2ec8e5": {
+  "x-mt": true
+ },
+ "sda9203de80": "Konto puudub – seaded ainult selles seadmes. ",
+ "@sda9203de80": {
+  "x-mt": true
+ },
+ "s8b3e63da21": "Konto loomine ›",
+ "@s8b3e63da21": {
+  "x-mt": true
+ },
+ "s887c293cad": "Seade lisatud!  ⁇",
+ "@s887c293cad": {
+  "x-mt": true
+ },
+ "s84a087a679": "Loo konto nii, et sinu seadistused säiliksid jasuper bullshit reconciliation. Selleks on vaja ainult e- posti koodi, parooli pole vaja.",
+ "@s84a087a679": {
+  "x-mt": true
+ },
+ "s845ec6276f": "Teie seadistamine kõigis teie seadmetes",
+ "@s845ec6276f": {
+  "x-mt": true
+ },
+ "s9dfa93453b": "Telefoni vahetamisel ei lähe midagi kaduma",
+ "@s9dfa93453b": {
+  "x-mt": true
+ },
+ "s6aa51b28a5": "Seadme paroolid on krüptitud",
+ "@s6aa51b28a5": {
+  "x-mt": true
+ },
+ "sc6f02b69d3": "Konto loomine / sisselogimine",
+ "@sc6f02b69d3": {
+  "x-mt": true
+ },
+ "sc777bde66f": "E-posti koodiga - ilma paroolita.",
+ "@sc777bde66f": {
+  "x-mt": true
+ },
+ "se2e5ff2c8a": "Jätka ilma kontota",
+ "@se2e5ff2c8a": {
   "x-mt": true
  }
 }

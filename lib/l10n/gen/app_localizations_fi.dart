@@ -639,7 +639,14 @@ class AppLocalizationsFi extends AppLocalizations {
   String get scf7e14661c => 'Takaisin';
 
   @override
+  String get s7d43ee2d5a => 'Luo tili tai kirjaudu';
+
+  @override
   String get s22c960ff4f => 'Kirjaudu koodilla';
+
+  @override
+  String get scb167ce8b1 =>
+      'Kirjoita sähköpostiosoitteesi, niin lähetämme koodin. Salasanaa ei tarvita. Jos tiliä ei vielä ole, se luodaan, ja tämän laitteen asetukset siirtyvät siihen.';
 
   @override
   String get s7d29d1dfbd =>
@@ -658,6 +665,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get saa1e3d1f13 => 'Lähetä uusi koodi';
+
+  @override
+  String get se1be2ec8e5 => 'Kirjaudu salasanalla';
 
   @override
   String get s8c48f847f6 => 'Vaihda salasana';
@@ -1112,21 +1122,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s941fbb47fe => 'Suunnitelmaa lasketaan…';
-
-  @override
-  String get s306729fe62 => 'Ei hintoja';
-
-  @override
-  String get s723c887da6 => 'halvin';
-
-  @override
-  String get scaaff6345d => 'kallein';
-
-  @override
-  String get s65982a11bc => 'huomenna mukana';
-
-  @override
-  String get se79acaf837 => 'huominen klo 14 jälkeen';
 
   @override
   String get s55d52c5ae1 => 'Tämä laite ei ole yhteydessä wifiin';
@@ -1607,6 +1602,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sc95fb5440b => 'Virta päättyi';
 
   @override
+  String get s306729fe62 => 'Ei hintoja';
+
+  @override
   String get s80c4ecec94 => 'c/t';
 
   @override
@@ -1634,7 +1632,13 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s29dbf49d92 => 'Hetkellinen kustannus';
 
   @override
+  String get s723c887da6 => 'halvin';
+
+  @override
   String get s3b36524e04 => 'ka';
+
+  @override
+  String get scaaff6345d => 'kallein';
 
   @override
   String get s5f131c3ec4 => 'Kulutus';
@@ -2389,6 +2393,40 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
+  String get sda9203de80 => 'Ei tiliä – asetukset vain tällä laitteella. ';
+
+  @override
+  String get s8b3e63da21 => 'Luo tili ›';
+
+  @override
+  String get s887c293cad => 'Laite lisätty! 🎉';
+
+  @override
+  String get s84a087a679 =>
+      'Luo tili, niin asetukset säilyvät ja siirtyvät muille laitteille. Se käy sähköpostikoodilla, salasanaa ei tarvita.';
+
+  @override
+  String get s907220900d => 'Tervetuloa Molaplaniin';
+
+  @override
+  String get s845ec6276f => 'Asetukset kaikilla laitteillasi';
+
+  @override
+  String get s9dfa93453b => 'Mitään ei katoa, vaikka puhelin vaihtuu';
+
+  @override
+  String get s6aa51b28a5 => 'Laitteiden salasanat salataan';
+
+  @override
+  String get sc6f02b69d3 => 'Luo tili / Kirjaudu';
+
+  @override
+  String get sc777bde66f => 'Sähköpostikoodilla – ei salasanaa.';
+
+  @override
+  String get se2e5ff2c8a => 'Jatka ilman tiliä';
+
+  @override
   String get sb8934a5835 => 'Sähkönkulutus';
 
   @override
@@ -2883,9 +2921,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s171ac59e67 =>
       'Valitse laitteesi alta. Täytät vain sen osoitteen – loput tehdään puolestasi.';
-
-  @override
-  String get s907220900d => 'Tervetuloa Molaplaniin';
 
   @override
   String get se722dfcec9 =>

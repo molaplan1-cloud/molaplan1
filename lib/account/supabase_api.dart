@@ -196,7 +196,8 @@ class AccountApi {
       Session.fromAuth(await _auth('token?grant_type=password', {'email': email, 'password': password}));
 
   /// Emails a one-time sign-in code (existing accounts only).
-  Future<void> sendCode(String email) => _auth('otp', {'email': email, 'create_user': false});
+  /// Email sign-in code. [create]: a new email gets a (passwordless) account.
+  Future<void> sendCode(String email, {bool create = false}) => _auth('otp', {'email': email, 'create_user': create});
 
   /// Emails a new sign-up confirmation code.
   Future<void> resendConfirmation(String email) => _auth('resend', {'type': 'signup', 'email': email});

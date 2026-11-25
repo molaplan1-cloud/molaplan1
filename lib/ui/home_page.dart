@@ -8,6 +8,7 @@ import 'dart:io';
 import 'package:material_ui/material_ui.dart';
 
 import '../models/models.dart';
+import 'account_nudge.dart';
 import 'app_scope.dart';
 import 'remote_pages.dart';
 import 'connections_page.dart';
@@ -38,7 +39,12 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       if (!mounted) return;
       final st = AppScope.read(context);
       if (st.loaded && !st.config.onboardingDone && st.config.connections.isEmpty) {
-        await Navigator.push(context, MaterialPageRoute(builder: (_) => const OnboardingPage()));
+        if (accountNudges && !st.account.signedIn) {
+          await Navigator.push(context, MaterialPageRoute(builder: (_) => const WelcomePage()));
+          if (!mounted) return;
+        }
+        // Signed in to an account that already has a setup: no device guide needed.
+        if (!st.hasTiles) await Navigator.push(context, MaterialPageRoute(builder: (_) => const OnboardingPage()));
       }
       if (mounted && st.loaded) {
         unawaited(startupUpdateCheck(context));
@@ -319,6 +325,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     final body = Column(
       children: [
         const UpdateBanner(),
+        const NoAccountBanner(),
         Expanded(
           child: _DashboardGrid(
             dashboard: d,
