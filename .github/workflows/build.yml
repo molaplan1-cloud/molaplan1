@@ -34,6 +34,12 @@ jobs:
           done
           echo "mosquitto did not listen on 18883" >&2
           exit 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Relay (wrangler dev) for the end-to-end test
+        working-directory: relay
+        run: npm ci && npx tsc --noEmit
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test

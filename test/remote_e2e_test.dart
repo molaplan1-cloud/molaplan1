@@ -21,7 +21,8 @@ import 'package:molaplan/state/stores.dart';
 void main() {
   String? relay = Platform.environment['MOLAPLAN_RELAY_URL'];
   Process? wrangler;
-  late HttpServer device;
+  HttpServer? server;
+  HttpServer device() => server!;
   var lamp = false;
   final jpeg = [0xFF, 0xD8, ...List.filled(5000, 7), 0xFF, 0xD9];
   const marker = 'SECRET-PLAINTEXT-MARKER-4711';
@@ -57,8 +58,8 @@ void main() {
       await ready.future.timeout(const Duration(seconds: 60), onTimeout: () => throw StateError('wrangler: $log'));
       relay = 'http://127.0.0.1:$port';
     }
-    device = await HttpServer.bind(InternetAddress.loopbackIPv4, 0);
-    device.listen((req) async {
+    server = await HttpServer.bind(InternetAddress.loopbackIPv4, 0);
+    server!.listen((req) async {
       if (req.uri.path == '/state') {
         req.response.write(jsonEncode({'on': lamp, 'note': marker}));
       } else if (req.uri.path == '/set') {
@@ -76,11 +77,11 @@ void main() {
 
   tearDownAll(() async {
     wrangler?.kill();
-    await device.close(force: true);
+    await server?.close(force: true);
   });
 
   ConnectionConfig httpConn() =>
-      ConnectionConfig(name: 'Valo', type: 'http', settings: {'baseUrl': 'http://127.0.0.1:${device.port}'});
+      ConnectionConfig(name: 'Valo', type: 'http', settings: {'baseUrl': 'http://127.0.0.1:${device().port}'});
 
   test('pair via QR, read/send/snapshot through the relay; relay sees only ciphertext', () async {
     if (relay == null) return markTestSkipped('no relay (npm install in relay/ or set MOLAPLAN_RELAY_URL)');
@@ -116,7 +117,7 @@ void main() {
     final cam = ConnectionConfig(
       name: 'Kamera',
       type: 'camera',
-      settings: {'baseUrl': 'http://127.0.0.1:${device.port}'},
+      settings: {'baseUrl': 'http://127.0.0.1:${device().port}'},
     );
     final img = await client.call(
       'snapshot',
@@ -217,7 +218,7 @@ void main() {
       executor: RemoteExecutor(
         create: (c) {
           final s = Map<String, dynamic>.from(c.settings);
-          s['baseUrl'] = '${s['baseUrl']}'.replaceFirst('127.0.0.1:1', '127.0.0.1:${device.port}');
+          s['baseUrl'] = '${s['baseUrl']}'.replaceFirst('127.0.0.1:1', '127.0.0.1:${device().port}');
           return createDriver(ConnectionConfig(id: c.id, name: c.name, type: c.type, settings: s, secrets: c.secrets));
         },
       ),
