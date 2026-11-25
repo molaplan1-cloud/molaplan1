@@ -21,6 +21,14 @@ commands + state), button (command sequence with delays = shortcut), slider/setp
 (`{{value}}` in commands), camera. Multiple dashboards, edit mode with drag & drop /
 arrows, per-tile poll interval.
 
+**Easy start (v0.2):** a first-run guide (Finnish/English) walks through adding the
+first device and tile. A template gallery covers ESP32-CAM, Shelly, Tasmota, ESPHome,
+Home Assistant, heat pumps (via HA or MQTT), Modbus ventilation units (example register
+presets for Airfi, Vallox, Enervent, Swegon, Flexit, Ilto – verify against your unit's
+manual) and generic MQTT/HTTP: fill in the address (and token) and suggested tiles are
+created. Optional local network search (mDNS). Every field has help text and an example;
+advanced options sit under "Lisäasetukset". Connection tests give plain-language errors.
+
 Config is stored locally (shared_preferences); passwords/tokens in secure storage
 (Android Keystore / Windows Credential Manager). Import/export as JSON.
 
