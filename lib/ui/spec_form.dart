@@ -1,25 +1,60 @@
 import 'package:material_ui/material_ui.dart';
 
+import '../core/field_help.dart';
 import '../core/fields.dart';
 import 'app_scope.dart';
 
 /// Generic form for a list of [FieldSpec]s editing [values] in place.
 class SpecForm extends StatelessWidget {
-  const SpecForm({super.key, required this.fields, required this.values, this.onChanged});
+  const SpecForm({super.key, required this.fields, required this.values, this.onChanged, this.scope});
   final List<FieldSpec> fields;
   final Map<String, dynamic> values;
   final VoidCallback? onChanged;
 
+  /// e.g. "modbus.read" – selects help texts and advanced fields.
+  final String? scope;
+
   @override
   Widget build(BuildContext context) {
     final lang = AppScope.of(context).lang;
+    final basic = fields.where((f) => !isAdvanced(f, scope: scope)).toList();
+    final adv = fields.where((f) => isAdvanced(f, scope: scope)).toList();
+    Widget input(FieldSpec f) => Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: _FieldInput(
+        key: ValueKey(f.key),
+        field: f,
+        lang: lang,
+        help: helpText(f, lang, scope: scope),
+        values: values,
+        onChanged: onChanged,
+      ),
+    );
+    // Open the advanced section if something there differs from its default.
+    final advUsed = adv.any((f) {
+      final v = values[f.key];
+      return v != null && v != false && v.toString().isNotEmpty && v.toString() != (f.defaultValue?.toString() ?? '');
+    });
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        for (final f in fields)
-          Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: _FieldInput(key: ValueKey(f.key), field: f, lang: lang, values: values, onChanged: onChanged),
+        for (final f in basic) input(f),
+        if (adv.isNotEmpty)
+          Theme(
+            data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+            child: ExpansionTile(
+              key: const ValueKey('advanced'),
+              initiallyExpanded: advUsed,
+              tilePadding: EdgeInsets.zero,
+              leading: const Icon(Icons.tune),
+              title: Text(lang == 'fi' ? 'Lisäasetukset' : 'Advanced settings'),
+              subtitle: Text(
+                lang == 'fi' ? 'Yleensä näihin ei tarvitse koskea' : "Usually you don't need these",
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              childrenPadding: const EdgeInsets.only(top: 4),
+              children: [for (final f in adv) input(f)],
+            ),
           ),
       ],
     );
@@ -27,9 +62,17 @@ class SpecForm extends StatelessWidget {
 }
 
 class _FieldInput extends StatefulWidget {
-  const _FieldInput({super.key, required this.field, required this.lang, required this.values, this.onChanged});
+  const _FieldInput({
+    super.key,
+    required this.field,
+    required this.lang,
+    required this.values,
+    this.onChanged,
+    this.help,
+  });
   final FieldSpec field;
   final String lang;
+  final String? help;
   final Map<String, dynamic> values;
   final VoidCallback? onChanged;
 
@@ -79,6 +122,7 @@ class _FieldInputState extends State<_FieldInput> {
         return SwitchListTile(
           contentPadding: EdgeInsets.zero,
           title: Text(label),
+          subtitle: widget.help == null ? null : Text(widget.help!, style: Theme.of(context).textTheme.bodySmall),
           value: v == true || v == 'true',
           onChanged: (b) {
             setState(() => widget.values[f.key] = b);
@@ -90,7 +134,7 @@ class _FieldInputState extends State<_FieldInput> {
         return DropdownButtonFormField<String>(
           isExpanded: true,
           initialValue: f.options.contains(cur) ? cur : f.options.first,
-          decoration: InputDecoration(labelText: label),
+          decoration: InputDecoration(labelText: label, helperText: widget.help),
           items: [for (final o in f.options) DropdownMenuItem(value: o, child: Text(o))],
           onChanged: (v) {
             widget.values[f.key] = v;
@@ -104,6 +148,7 @@ class _FieldInputState extends State<_FieldInput> {
           decoration: InputDecoration(
             labelText: label,
             hintText: f.hint,
+            helperText: widget.help,
             suffixIcon: IconButton(
               icon: Icon(_obscure ? Icons.visibility_outlined : Icons.visibility_off_outlined),
               onPressed: () => setState(() => _obscure = !_obscure),
@@ -121,7 +166,11 @@ class _FieldInputState extends State<_FieldInput> {
           keyboardType: f.kind == FieldKind.number
               ? const TextInputType.numberWithOptions(decimal: true, signed: true)
               : (f.kind == FieldKind.multiline ? TextInputType.multiline : TextInputType.text),
-          decoration: InputDecoration(labelText: label, hintText: f.hint),
+          decoration: InputDecoration(
+            labelText: label,
+            hintText: f.hint == null ? null : '${widget.lang == 'fi' ? 'esim.' : 'e.g.'} ${f.hint}',
+            helperText: widget.help,
+          ),
           onChanged: _setText,
         );
     }

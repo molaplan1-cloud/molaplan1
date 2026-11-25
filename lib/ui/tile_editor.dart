@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart' hide Threshold;
 import '../drivers/registry.dart';
 import '../models/models.dart';
 import 'app_scope.dart';
+import 'error_box.dart';
 import 'connections_page.dart';
 import 'icons.dart';
 import 'spec_form.dart';
@@ -13,6 +14,14 @@ String tileTypeLabel(BuildContext context, TileType t) => switch (t) {
   TileType.button => tx(context, 'Painike / pikakomento', 'Button / shortcut'),
   TileType.slider => tx(context, 'Liukusäädin / asetusarvo', 'Slider / setpoint'),
   TileType.camera => tx(context, 'Kamera', 'Camera'),
+};
+
+String tileTypeHelp(BuildContext context, TileType t) => switch (t) {
+  TileType.value => tx(context, 'Näyttää lukeman, esim. lämpötilan tai tehon.', 'Shows a reading, e.g. temperature.'),
+  TileType.toggle => tx(context, 'Päälle/pois, esim. valo tai hälytys.', 'On/off, e.g. a light or alarm.'),
+  TileType.button => tx(context, 'Yksi painallus tekee yhden tai monta asiaa.', 'One tap does one or many things.'),
+  TileType.slider => tx(context, 'Säädä arvoa, esim. lämpötilaa tai puhallinta.', 'Adjust a value, e.g. temperature.'),
+  TileType.camera => tx(context, 'Näyttää kameran kuvan.', 'Shows a camera image.'),
 };
 
 IconData tileTypeIcon(TileType t) => switch (t) {
@@ -41,6 +50,7 @@ class _TileEditorState extends State<TileEditor> {
   late final _onValue = TextEditingController(text: t.onValue);
   int _readKey = 0;
   String? _testResult;
+  Object? _testError;
 
   bool get _hasRead => t.type != TileType.button;
 
@@ -60,12 +70,20 @@ class _TileEditorState extends State<TileEditor> {
   Future<void> _testRead() async {
     final d = AppScope.read(context).driverFor(t.connectionId);
     if (d == null) return;
-    setState(() => _testResult = '…');
+    setState(() {
+      _testResult = '…';
+      _testError = null;
+    });
     try {
       final v = await d.read(t.read);
-      setState(() => _testResult = v is List<int> ? 'OK (${v.length} B)' : '→ $v');
+      setState(
+        () => _testResult = v is List<int> ? 'OK (${v.length} B)' : '${tx(context, 'Luettu arvo', 'Value read')}: $v',
+      );
     } catch (e) {
-      setState(() => _testResult = '✗ $e');
+      setState(() {
+        _testResult = null;
+        _testError = e;
+      });
     }
   }
 
@@ -171,6 +189,7 @@ class _TileEditorState extends State<TileEditor> {
                     key: ValueKey('read$_readKey${t.connectionId}'),
                     fields: descriptorFor(st.connection(t.connectionId)!.type).readFields,
                     values: t.read,
+                    scope: '${st.connection(t.connectionId)!.type}.read',
                   ),
                   if (t.type != TileType.camera) ...[
                     _numField(
@@ -195,10 +214,18 @@ class _TileEditorState extends State<TileEditor> {
                           label: Text(tx(context, 'Testaa luku', 'Test read')),
                         ),
                         const SizedBox(width: 12),
-                        if (_testResult != null)
-                          Expanded(child: Text(_testResult!, maxLines: 3, overflow: TextOverflow.ellipsis)),
                       ],
                     ),
+                    if (_testResult != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: SuccessBox(text: _testResult!),
+                      ),
+                    if (_testError != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: ErrorBox(error: _testError!),
+                      ),
                   ],
                 ],
               ],
@@ -407,7 +434,7 @@ class _TileEditorState extends State<TileEditor> {
           tooltip: tx(context, 'Uusi yhteys', 'New connection'),
           icon: const Icon(Icons.add_link),
           onPressed: () async {
-            final c = await ConnectionsPage.addNew(context);
+            final c = await ConnectionsPage.addManual(context);
             if (c != null) onChanged(c.id);
           },
         ),
@@ -443,7 +470,7 @@ class _TileEditorState extends State<TileEditor> {
                         await st.runStep(step, value: t.type == TileType.slider ? (t.min + t.max) / 2 : 1);
                         if (mounted) showSnack(context, tx(context, 'Komento lähetetty', 'Command sent'));
                       } catch (e) {
-                        if (mounted) showSnack(context, e.toString(), error: true);
+                        if (mounted) showSnack(context, friendlyText(context, e), error: true);
                       }
                     },
                     icon: const Icon(Icons.send_outlined, size: 16),
@@ -466,6 +493,7 @@ class _TileEditorState extends State<TileEditor> {
                 key: ValueKey('cmd${step.connectionId}${identityHashCode(step)}'),
                 fields: descriptorFor(con.type).commandFields,
                 values: step.spec,
+                scope: '${con.type}.cmd',
               ),
               if (withDelay)
                 _numField(

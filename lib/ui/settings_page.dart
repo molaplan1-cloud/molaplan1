@@ -6,8 +6,9 @@ import 'package:material_ui/material_ui.dart';
 
 import '../state/examples.dart';
 import 'app_scope.dart';
+import 'onboarding_page.dart';
 
-const appVersion = '0.1.0';
+const appVersion = '0.2.0';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -83,6 +84,18 @@ class _SettingsPageState extends State<SettingsPage> {
                 ],
                 selected: {st.lang},
                 onSelectionChanged: (s) => st.setLanguage(s.first),
+              ),
+              const SizedBox(height: 28),
+              Text(tx(context, 'Ohjeet', 'Help'), style: text.titleMedium),
+              const SizedBox(height: 8),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: FilledButton.tonalIcon(
+                  key: const ValueKey('settings-onboarding'),
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const OnboardingPage())),
+                  icon: const Icon(Icons.school_outlined),
+                  label: Text(tx(context, 'Näytä aloitusopas', 'Show the getting-started guide')),
+                ),
               ),
               const SizedBox(height: 28),
               Text(tx(context, 'Varmuuskopio ja siirto', 'Backup and transfer'), style: text.titleMedium),

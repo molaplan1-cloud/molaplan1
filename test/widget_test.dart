@@ -6,10 +6,12 @@ import 'package:molaplan/state/app_state.dart';
 import 'package:molaplan/state/storage.dart';
 
 void main() {
-  testWidgets('empty dashboard, add-tile flow opens editor', (tester) async {
+  testWidgets('empty dashboard with a device: one big add-tile button opens the editor', (tester) async {
     final st = AppState(configStore: MemoryConfigStore(), secretStore: MemorySecretStore());
     await st.load();
-    tester.view.physicalSize = const Size(1200, 800);
+    await st.setOnboardingDone(true);
+    await st.upsertConnection(ConnectionConfig(name: 'API', type: 'http', settings: {'baseUrl': 'http://127.0.0.1:9'}));
+    tester.view.physicalSize = const Size(1200, 900);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
     await tester.pumpWidget(MolaplanApp(state: st));
@@ -17,8 +19,9 @@ void main() {
     expect(find.text('Tyhjä näkymä'), findsOneWidget);
     expect(find.text('Molaplan'), findsOneWidget); // side nav on wide screen
 
-    await tester.tap(find.text('Lisää ruutu'));
+    await tester.tap(find.byKey(const ValueKey('empty-add-tile')));
     await tester.pumpAndSettle();
+    expect(find.text('Uusi laite valmiilla ruuduilla'), findsOneWidget);
     await tester.tap(find.text('Painike / pikakomento'));
     await tester.pumpAndSettle();
     expect(find.text('Uusi ruutu'), findsOneWidget);
@@ -28,6 +31,7 @@ void main() {
   testWidgets('tiles render in use mode and in edit mode', (tester) async {
     final st = AppState(configStore: MemoryConfigStore(), secretStore: MemorySecretStore());
     await st.load();
+    await st.setOnboardingDone(true);
     final c = ConnectionConfig(name: 'API', type: 'http', settings: {'baseUrl': 'http://127.0.0.1:9'});
     await st.upsertConnection(c);
     final d = st.config.dashboards.first;

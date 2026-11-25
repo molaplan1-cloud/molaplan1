@@ -7,6 +7,7 @@ import '../core/fields.dart';
 import '../drivers/camera_driver.dart';
 import '../models/models.dart';
 import 'app_scope.dart';
+import 'error_box.dart';
 
 /// Shows an MJPEG stream or periodically refreshed snapshot.
 class CameraView extends StatefulWidget {
@@ -122,7 +123,12 @@ class _CameraViewState extends State<CameraView> {
                 color: cs.errorContainer.withValues(alpha: 0.85),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Text(_error!, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 11)),
+              child: Text(
+                friendlyText(context, _error!),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontSize: 11),
+              ),
             ),
           ),
       ],

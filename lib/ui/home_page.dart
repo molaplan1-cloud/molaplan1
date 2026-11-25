@@ -5,6 +5,7 @@ import 'package:material_ui/material_ui.dart';
 import '../models/models.dart';
 import 'app_scope.dart';
 import 'connections_page.dart';
+import 'onboarding_page.dart';
 import 'settings_page.dart';
 import 'tile_editor.dart';
 import 'tile_widget.dart';
@@ -18,6 +19,19 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String? _dashId;
   bool _editing = false;
+  bool _pickedGallery = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final st = AppScope.read(context);
+      if (st.loaded && !st.config.onboardingDone && st.config.connections.isEmpty) {
+        Navigator.push(context, MaterialPageRoute(builder: (_) => const OnboardingPage()));
+      }
+    });
+  }
 
   Dashboard _current() {
     final ds = AppScope.of(context).config.dashboards;
@@ -57,9 +71,15 @@ class _HomePageState extends State<HomePage> {
       ),
       ok: tx(context, 'Poista', 'Delete'),
     );
-    if (!ok) return;
+    if (!ok || !mounted) return;
+    final index = st.config.dashboards.indexOf(d);
     await st.deleteDashboard(d);
     setState(() => _dashId = null);
+    if (!mounted) return;
+    showUndo(context, tx(context, 'Näkymä "${d.name}" poistettu', 'Dashboard "${d.name}" deleted'), () async {
+      await st.restoreDashboard(d, index);
+      if (mounted) setState(() => _dashId = d.id);
+    });
   }
 
   Future<void> _addTile(Dashboard d) async {
@@ -77,17 +97,43 @@ class _HomePageState extends State<HomePage> {
                 style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
+            ListTile(
+              leading: const Icon(Icons.auto_awesome_outlined),
+              title: Text(tx(context, 'Uusi laite valmiilla ruuduilla', 'New device with ready tiles')),
+              subtitle: Text(
+                tx(
+                  context,
+                  'Helpoin tapa: Shelly, ESP32-CAM, Home Assistant, IV-kone…',
+                  'Easiest: Shelly, ESP32-CAM, Home Assistant…',
+                ),
+              ),
+              onTap: () {
+                _pickedGallery = true;
+                Navigator.pop(c, null);
+              },
+              trailing: const Icon(Icons.chevron_right),
+            ),
+            const Divider(),
             for (final t in TileType.values)
               ListTile(
                 leading: Icon(tileTypeIcon(t)),
                 title: Text(tileTypeLabel(context, t)),
+                subtitle: Text(tileTypeHelp(context, t)),
                 onTap: () => Navigator.pop(c, t),
               ),
           ],
         ),
       ),
     );
-    if (type == null || !mounted) return;
+    if (!mounted) return;
+    if (type == null) {
+      // dismissed or "new device" chosen: distinguish by a flag
+      if (_pickedGallery) {
+        _pickedGallery = false;
+        await ConnectionsPage.addNew(context, dashboard: d);
+      }
+      return;
+    }
     final tile = TileConfig(
       type: type,
       colSpan: type == TileType.camera ? 2 : (type == TileType.slider ? 2 : 1),
@@ -301,32 +347,34 @@ class _DashboardGrid extends StatelessWidget {
               Text(
                 tx(
                   context,
-                  'Lisää laitteesi yhteydeksi (esim. IV-kone, lämpöpumppu, Home Assistant, kamera) ja rakenna siitä omat ruudut: tilatiedot, kytkimet, säätimet ja pikakomennot.',
-                  'Add your devices as connections (e.g. ventilation unit, heat pump, Home Assistant, camera) and build your own tiles: status values, switches, setpoints and shortcuts.',
+                  'Täällä näkyvät laitteidesi ruudut: lämpötilat, kytkimet, kamerat ja pikakomennot. Aloita lisäämällä laite.',
+                  'Your device tiles appear here: temperatures, switches, cameras and shortcuts. Start by adding a device.',
                 ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
-              Wrap(
-                spacing: 10,
-                runSpacing: 10,
-                alignment: WrapAlignment.center,
-                children: [
-                  if (st.config.connections.isEmpty)
-                    FilledButton.icon(
-                      onPressed: () => ConnectionsPage.addNew(context),
-                      icon: const Icon(Icons.add_link),
-                      label: Text(tx(context, 'Lisää yhteys', 'Add connection')),
-                    ),
-                  FilledButton.tonalIcon(
-                    onPressed: () {
-                      onStartEditing();
-                      onAddTile();
-                    },
-                    icon: const Icon(Icons.add),
-                    label: Text(tx(context, 'Lisää ruutu', 'Add tile')),
-                  ),
-                ],
+              SizedBox(
+                width: 320,
+                height: 64,
+                child: st.config.connections.isEmpty
+                    ? FilledButton.icon(
+                        key: const ValueKey('empty-add-device'),
+                        onPressed: () => ConnectionsPage.addNew(context, dashboard: dashboard),
+                        icon: const Icon(Icons.add, size: 28),
+                        label: Text(
+                          tx(context, 'Lisää ensimmäinen laite', 'Add your first device'),
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                      )
+                    : FilledButton.icon(
+                        key: const ValueKey('empty-add-tile'),
+                        onPressed: () {
+                          onStartEditing();
+                          onAddTile();
+                        },
+                        icon: const Icon(Icons.add, size: 28),
+                        label: Text(tx(context, 'Lisää ruutu', 'Add a tile'), style: const TextStyle(fontSize: 18)),
+                      ),
               ),
             ],
           ),
@@ -431,12 +479,20 @@ class _EditableTile extends StatelessWidget {
                   t.title,
                   ok: tx(context, 'Poista', 'Delete'),
                 );
-                if (ok) await st.deleteTile(dashboard, t.id);
+                if (!ok) return;
+                await st.deleteTile(dashboard, t.id);
+                if (context.mounted) {
+                  showUndo(
+                    context,
+                    tx(context, 'Ruutu "${t.title}" poistettu', 'Tile "${t.title}" deleted'),
+                    () => st.restoreTile(dashboard, t, index),
+                  );
+                }
               }),
             ],
           ),
         ),
-        Positioned(right: 8, bottom: 8, child: Icon(Icons.drag_indicator, size: 18, color: cs.primary)),
+        Positioned(right: 8, bottom: 8, child: Icon(Icons.drag_indicator, size: 22, color: cs.primary)),
       ],
     );
 
@@ -481,8 +537,8 @@ class _EditableTile extends StatelessWidget {
         customBorder: const CircleBorder(),
         onTap: enabled ? onTap : null,
         child: Padding(
-          padding: const EdgeInsets.all(5),
-          child: Icon(icon, size: 16, color: enabled ? null : Colors.grey),
+          padding: const EdgeInsets.all(9),
+          child: Icon(icon, size: 20, color: enabled ? null : Colors.grey),
         ),
       ),
     ),

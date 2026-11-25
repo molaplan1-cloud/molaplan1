@@ -221,7 +221,9 @@ class AppState extends ChangeNotifier {
   Future<void> restoreDashboard(Dashboard d, int index) async {
     config.dashboards.insert(index.clamp(0, config.dashboards.length), d);
     // drop the auto-created empty default, if deleting left one behind
-    config.dashboards.removeWhere((x) => x != d && x.tiles.isEmpty && config.dashboards.length > 1 && x.name == (lang == 'fi' ? 'Koti' : 'Home'));
+    config.dashboards.removeWhere(
+      (x) => x != d && x.tiles.isEmpty && config.dashboards.length > 1 && x.name == (lang == 'fi' ? 'Koti' : 'Home'),
+    );
     await save();
     notifyListeners();
   }

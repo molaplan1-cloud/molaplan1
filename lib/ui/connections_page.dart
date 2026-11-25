@@ -4,7 +4,9 @@ import '../core/fields.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
 import 'app_scope.dart';
+import 'error_box.dart';
 import 'spec_form.dart';
+import 'template_gallery.dart';
 
 IconData connectionIcon(String type) => switch (type) {
   'http' => Icons.http,
@@ -21,7 +23,12 @@ IconData connectionIcon(String type) => switch (type) {
 class ConnectionsPage extends StatelessWidget {
   const ConnectionsPage({super.key});
 
-  static Future<ConnectionConfig?> addNew(BuildContext context) async {
+  /// Opens the device template gallery (the easy way).
+  static Future<bool?> addNew(BuildContext context, {Dashboard? dashboard}) =>
+      Navigator.push<bool>(context, MaterialPageRoute(builder: (_) => TemplateGalleryPage(dashboard: dashboard)));
+
+  /// Raw connection type picker (for experts / "other device").
+  static Future<ConnectionConfig?> addManual(BuildContext context) async {
     final lang = AppScope.read(context).lang;
     final type = await showModalBottomSheet<String>(
       context: context,
@@ -121,7 +128,7 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
   late final _name = TextEditingController(text: c.name);
   bool _testing = false;
   String? _result;
-  bool _ok = false;
+  Object? _error;
 
   ConnectionConfig _build() {
     final d = descriptorFor(c.type);
@@ -141,17 +148,16 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
     setState(() {
       _testing = true;
       _result = null;
+      _error = null;
     });
     try {
       final r = await AppScope.read(context).testConnection(_build());
       setState(() {
-        _ok = true;
         _result = r;
       });
     } catch (e) {
       setState(() {
-        _ok = false;
-        _result = e.toString();
+        _error = e;
       });
     } finally {
       if (mounted) setState(() => _testing = false);
@@ -243,7 +249,7 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
                 decoration: InputDecoration(labelText: tx(context, 'Nimi', 'Name')),
               ),
               const SizedBox(height: 10),
-              SpecForm(fields: d.connectionFields, values: values),
+              SpecForm(fields: d.connectionFields, values: values, scope: '${c.type}.conn'),
               const SizedBox(height: 8),
               Row(
                 children: [
@@ -259,14 +265,12 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
               if (_result != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 12),
-                  child: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: _ok ? cs.primaryContainer : cs.errorContainer,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Text(_result!),
-                  ),
+                  child: SuccessBox(text: '${tx(context, 'Yhteys toimii!', 'Connection works!')} ($_result)'),
+                ),
+              if (_error != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  child: ErrorBox(error: _error!),
                 ),
               const SizedBox(height: 16),
               Text(

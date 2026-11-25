@@ -28,6 +28,20 @@ void showSnack(BuildContext context, String msg, {bool error = false}) {
     );
 }
 
+/// Snackbar with an "Undo" (Kumoa) action.
+void showUndo(BuildContext context, String msg, VoidCallback undo) {
+  ScaffoldMessenger.of(context)
+    ..hideCurrentSnackBar()
+    ..showSnackBar(
+      SnackBar(
+        content: Text(msg),
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 6),
+        action: SnackBarAction(label: tx(context, 'Kumoa', 'Undo'), onPressed: undo),
+      ),
+    );
+}
+
 Future<bool> confirmDialog(BuildContext context, String title, String body, {String? ok}) async {
   final r = await showDialog<bool>(
     context: context,

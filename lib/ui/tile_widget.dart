@@ -2,10 +2,12 @@ import 'dart:convert';
 
 import 'package:material_ui/material_ui.dart';
 
+import '../core/friendly_error.dart';
 import '../core/template.dart';
 import '../models/models.dart';
 import '../state/tile_runtime.dart';
 import 'app_scope.dart';
+import 'error_box.dart';
 import 'camera_view.dart';
 import 'icons.dart';
 
@@ -77,7 +79,7 @@ class _TileWidgetState extends State<TileWidget> {
       await rt!.act(action, optimistic: optimistic);
       if (okMsg != null && mounted) showSnack(context, okMsg);
     } catch (e) {
-      if (mounted) showSnack(context, '${t.title}: $e', error: true);
+      if (mounted) showSnack(context, '${t.title}: ${friendlyText(context, e)}', error: true);
     }
   }
 
@@ -125,10 +127,7 @@ class _TileWidgetState extends State<TileWidget> {
             Text('${tx(context, 'Arvo', 'Value')}: ${rt?.value ?? '–'}'),
             if (rt?.updated != null)
               Text('${tx(context, 'Päivitetty', 'Updated')}: ${rt!.updated!.toLocal().toString().substring(0, 19)}'),
-            if (rt?.error != null) ...[
-              const SizedBox(height: 8),
-              Text(rt!.error!, style: TextStyle(color: Theme.of(c).colorScheme.error)),
-            ],
+            if (rt?.error != null) ...[const SizedBox(height: 8), ErrorBox(error: rt!.error!)],
           ],
         ),
         actions: [
@@ -204,7 +203,7 @@ class _TileWidgetState extends State<TileWidget> {
                     const SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2))
                   else if (err != null)
                     Tooltip(
-                      message: err,
+                      message: friendlyText(context, err),
                       child: Icon(Icons.error_outline, size: 18, color: cs.error),
                     )
                   else if (widget.editing)
@@ -222,8 +221,16 @@ class _TileWidgetState extends State<TileWidget> {
                 ],
               ),
               const Spacer(),
-              if (t.type == TileType.value || t.type == TileType.slider) _valueText(context, r, accent),
-              if (t.type == TileType.toggle)
+              if (err != null && r.value == null)
+                Text(
+                  friendlyError(err, AppScope.read(context).lang).title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(color: cs.error, fontSize: 13.5, fontWeight: FontWeight.w500),
+                )
+              else if (t.type == TileType.value || t.type == TileType.slider)
+                _valueText(context, r, accent),
+              if (t.type == TileType.toggle && !(err != null && r.value == null))
                 Text(
                   r.value == null
                       ? '–'

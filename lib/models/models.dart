@@ -237,9 +237,13 @@ class AppConfig {
   String language;
   bool onboardingDone;
 
-  AppConfig({List<ConnectionConfig>? connections, List<Dashboard>? dashboards, this.language = 'fi', this.onboardingDone = false})
-    : connections = connections ?? [],
-      dashboards = dashboards ?? [];
+  AppConfig({
+    List<ConnectionConfig>? connections,
+    List<Dashboard>? dashboards,
+    this.language = 'fi',
+    this.onboardingDone = false,
+  }) : connections = connections ?? [],
+       dashboards = dashboards ?? [];
 
   Map<String, dynamic> toJson({bool includeSecrets = false}) => {
     'app': 'molaplan',

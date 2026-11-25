@@ -58,9 +58,21 @@ bool deviceMatchesTemplate(FoundDevice d, String templateId) {
 
 const _lock = MethodChannel('molaplan/multicast');
 
-Future<RawDatagramSocket> _bind(dynamic host, int port, {bool reuseAddress = true, bool reusePort = false, int ttl = 1}) async {
+Future<RawDatagramSocket> _bind(
+  dynamic host,
+  int port, {
+  bool reuseAddress = true,
+  bool reusePort = false,
+  int ttl = 1,
+}) async {
   try {
-    return await RawDatagramSocket.bind(host, port, reuseAddress: reuseAddress, reusePort: reusePort && !Platform.isWindows, ttl: ttl);
+    return await RawDatagramSocket.bind(
+      host,
+      port,
+      reuseAddress: reuseAddress,
+      reusePort: reusePort && !Platform.isWindows,
+      ttl: ttl,
+    );
   } catch (_) {
     return RawDatagramSocket.bind(host, port, reuseAddress: reuseAddress, reusePort: false, ttl: ttl);
   }
@@ -83,26 +95,39 @@ Future<(List<FoundDevice>, String?)> discoverDevices({
       } catch (_) {}
     }
     await client.start();
-    await Future.wait(services.map((svc) async {
-      final ptrs = await client
-          .lookup<PtrResourceRecord>(ResourceRecordQuery.serverPointer('$svc.local'), timeout: timeout)
-          .toList();
-      for (final ptr in ptrs) {
-        final srvs = await client
-            .lookup<SrvResourceRecord>(ResourceRecordQuery.service(ptr.domainName), timeout: const Duration(seconds: 2))
+    await Future.wait(
+      services.map((svc) async {
+        final ptrs = await client
+            .lookup<PtrResourceRecord>(ResourceRecordQuery.serverPointer('$svc.local'), timeout: timeout)
             .toList();
-        for (final srv in srvs) {
-          final ips = await client
-              .lookup<IPAddressResourceRecord>(ResourceRecordQuery.addressIPv4(srv.target), timeout: const Duration(seconds: 2))
+        for (final ptr in ptrs) {
+          final srvs = await client
+              .lookup<SrvResourceRecord>(
+                ResourceRecordQuery.service(ptr.domainName),
+                timeout: const Duration(seconds: 2),
+              )
               .toList();
-          final d = FoundDevice(
-              name: ptr.domainName, service: svc, host: srv.target, ip: ips.isEmpty ? null : ips.first.address.address, port: srv.port);
-          // Prefer the more specific service if a device advertises several.
-          final key = d.ip ?? d.host;
-          if (!found.containsKey(key) || found[key]!.service == '_http._tcp') found[key] = d;
+          for (final srv in srvs) {
+            final ips = await client
+                .lookup<IPAddressResourceRecord>(
+                  ResourceRecordQuery.addressIPv4(srv.target),
+                  timeout: const Duration(seconds: 2),
+                )
+                .toList();
+            final d = FoundDevice(
+              name: ptr.domainName,
+              service: svc,
+              host: srv.target,
+              ip: ips.isEmpty ? null : ips.first.address.address,
+              port: srv.port,
+            );
+            // Prefer the more specific service if a device advertises several.
+            final key = d.ip ?? d.host;
+            if (!found.containsKey(key) || found[key]!.service == '_http._tcp') found[key] = d;
+          }
         }
-      }
-    }));
+      }),
+    );
     return (found.values.toList()..sort((a, b) => a.label.compareTo(b.label)), null);
   } catch (e) {
     return (found.values.toList(), e.toString());
