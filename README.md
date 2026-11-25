@@ -37,6 +37,13 @@ between phone and bridge is end-to-end encrypted (X25519 + AES-GCM); the relay o
 ciphertext. The app uses the LAN when it can and the relay otherwise ("Kotona / Etäyhteys / Ei yhteyttä").
 In-app guides cover Tailscale, WireGuard, Home Assistant Cloud (Nabu Casa) and HiveMQ Cloud MQTT.
 
+Relay quotas (Cloudflare Workers Free plan, reset 00:00 UTC; when exceeded, calls fail until reset):
+Worker requests 100,000/day (only websocket connects + pairing lookups count); Durable Object requests
+100,000/day, where incoming websocket messages count 20:1 (≈ 2 million relayed messages/day for all homes);
+DO duration 13,000 GB-s/day (hibernation keeps idle homes free); SQLite rows 5 M read / 100 k written per day, 5 GB.
+A phone polling a dashboard every 5 s uses ≈ 1,700 DO requests/day per 24 h of open app. Upgrade to Workers Paid
+($5/month) before there are many always-on users.
+
 Config is stored locally (shared_preferences); passwords/tokens in secure storage
 (Android Keystore / Windows Credential Manager). Import/export as JSON.
 
