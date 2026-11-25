@@ -25,7 +25,8 @@ class TileRuntime extends ChangeNotifier {
     if (!readsState) return;
     final d = driverLookup(tile.connectionId);
     if (d == null) {
-      _set(null, 'no-connection');
+      // Not notifying here: start() may run during a build.
+      error = 'Connection missing / Yhteys puuttuu';
       return;
     }
     final stream = d.watch(tile.read);
