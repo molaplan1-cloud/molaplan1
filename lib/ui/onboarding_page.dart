@@ -5,6 +5,7 @@ import 'app_scope.dart';
 import 'connections_page.dart';
 import 'error_box.dart';
 import 'remote_pages.dart';
+import 'add_device_wizard.dart';
 import 'template_gallery.dart';
 import 'tile_editor.dart';
 
@@ -92,6 +93,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
               ),
             );
             if (ok == true && mounted) _go(2);
+          },
+          onBrand: (p) async {
+            final ok = await Navigator.push<bool>(
+              context,
+              MaterialPageRoute(builder: (_) => AddDeviceWizard(provider: p, dashboard: _dash)),
+            );
+            // The wizard already created the tiles: skip the "first tile" step.
+            if (ok == true && mounted) _go(3);
           },
           onManual: () async {
             final c = await ConnectionsPage.addManual(context);

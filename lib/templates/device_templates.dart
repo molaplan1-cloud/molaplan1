@@ -238,7 +238,8 @@ final deviceTemplates = <DeviceTemplate>[
         type: 'http',
         settings: {
           'baseUrl': normUrl(v['address']),
-          'auth': user.isEmpty ? 'none' : 'basic',
+          'auth': user.isEmpty && _s(v, 'password').isEmpty ? 'none' : (gen1 ? 'basic' : 'digest'),
+          if (user.isEmpty && !gen1 && _s(v, 'password').isNotEmpty) 'username': 'admin',
           if (user.isNotEmpty) 'username': user,
         },
         secrets: {if (_s(v, 'password').isNotEmpty) 'password': _s(v, 'password')},

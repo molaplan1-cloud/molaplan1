@@ -1,3 +1,4 @@
+import '../devices/registry.dart';
 import 'dart:async';
 import 'dart:convert';
 
@@ -19,7 +20,19 @@ class RemoteExecutor {
     this.configProvider,
     this.idle = const Duration(minutes: 10),
     Driver Function(ConnectionConfig)? create,
+    this.discover,
   }) : _create = create ?? createDriver;
+
+  /// "discover" op: finds devices of a brand on the bridge's LAN (phone away from home).
+  /// Default: the brand's own LAN scan. The app adds mDNS on top.
+  final Future<List<Map<String, dynamic>>> Function(String provider)? discover;
+
+  static Future<List<Map<String, dynamic>>> defaultDiscover(String provider) async {
+    final p = providerById(provider);
+    if (p == null) return const [];
+    final found = await p.scan(await localIPv4s());
+    return [for (final c in found) c.toJson()];
+  }
 
   /// Bridge-side setup the phone can copy ("config" op). Includes secrets.
   final Map<String, dynamic>? Function()? configProvider;
@@ -64,6 +77,9 @@ class RemoteExecutor {
         return {'v': remoteProtocolVersion};
       case 'config':
         return configProvider?.call();
+      case 'discover':
+        final provider = '${(r['spec'] as Map?)?['provider'] ?? ''}';
+        return (discover ?? defaultDiscover)(provider);
     }
     final conn = r['conn'];
     if (conn is! Map) throw DriverException('Connection missing');

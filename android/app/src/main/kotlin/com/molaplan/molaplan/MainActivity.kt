@@ -32,6 +32,10 @@ class MainActivity : FlutterActivity() {
                     lock?.release()
                     result.success(null)
                 }
+                "wifiSettings" -> {
+                    startActivity(Intent(Settings.ACTION_WIFI_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                    result.success(null)
+                }
                 else -> result.notImplemented()
             }
         }

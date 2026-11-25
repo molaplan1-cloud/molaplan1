@@ -1,3 +1,4 @@
+import '../devices/shelly.dart' show ShellyCloudDriver;
 import '../models/models.dart';
 import 'camera_driver.dart';
 import 'driver.dart';
@@ -17,6 +18,7 @@ const driverDescriptors = <DriverDescriptor>[
   WebSocketDriver.descriptor,
   TcpDriver.descriptor,
   UdpDriver.descriptor,
+  ShellyCloudDriver.descriptor,
 ];
 
 DriverDescriptor descriptorFor(String type) =>

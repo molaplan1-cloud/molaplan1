@@ -3,7 +3,9 @@ import 'package:material_ui/material_ui.dart';
 import '../core/discovery.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
+import '../devices/registry.dart';
 import '../templates/device_templates.dart';
+import 'add_device_wizard.dart';
 import 'app_scope.dart';
 import 'connections_page.dart';
 import 'error_box.dart';
@@ -28,6 +30,13 @@ class TemplateGalleryPage extends StatelessWidget {
           );
           if (added == true && context.mounted) Navigator.pop(context, true);
         },
+        onBrand: (p) async {
+          final added = await Navigator.push<bool>(
+            context,
+            MaterialPageRoute(builder: (_) => AddDeviceWizard(provider: p, dashboard: dashboard)),
+          );
+          if (added == true && context.mounted) Navigator.pop(context, true);
+        },
         onManual: () async {
           final c = await ConnectionsPage.addManual(context);
           if (c != null && context.mounted) Navigator.pop(context, true);
@@ -37,55 +46,176 @@ class TemplateGalleryPage extends StatelessWidget {
   }
 }
 
-class TemplateGrid extends StatelessWidget {
-  const TemplateGrid({super.key, required this.onPick, required this.onManual, this.header});
+class TemplateGrid extends StatefulWidget {
+  const TemplateGrid({super.key, required this.onPick, required this.onManual, this.header, this.onBrand});
   final void Function(DeviceTemplate) onPick;
   final VoidCallback onManual;
   final Widget? header;
 
+  /// Brand with the guided add flow (find -> pair -> tiles). Null = brands open their wizard here.
+  final void Function(DeviceProvider)? onBrand;
+
+  @override
+  State<TemplateGrid> createState() => _TemplateGridState();
+}
+
+class _TemplateGridState extends State<TemplateGrid> {
+  String q = '';
+
+  bool _match(String text, [List<String> kw = const []]) {
+    if (q.isEmpty) return true;
+    final t = '${text.toLowerCase()} ${kw.join(' ')}';
+    return q.toLowerCase().split(RegExp(r'\s+')).every(t.contains);
+  }
+
+  void _roadmap(BuildContext context, RoadmapBrand b) {
+    final tpl = b.useTemplate == null ? null : deviceTemplates.where((t) => t.id == b.useTemplate).firstOrNull;
+    showDialog<void>(
+      context: context,
+      builder: (c) => AlertDialog(
+        title: Text(b.name),
+        content: Text(tx(c, b.fi, b.en)),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(c), child: Text(tx(c, 'Sulje', 'Close'))),
+          if (tpl != null)
+            FilledButton(
+              onPressed: () {
+                Navigator.pop(c);
+                widget.onPick(tpl);
+              },
+              child: Text(tx(c, 'Käytä: ${tpl.name('fi')}', 'Use: ${tpl.name('en')}')),
+            ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final lang = AppScope.of(context).lang;
+    final brands = deviceProviders.where((p) => _match('${p.fi} ${p.en} ${p.descFi}', p.keywords)).toList();
+    final templates = deviceTemplates.where((t) => t.id != 'shelly' && _match('${t.fi} ${t.en} ${t.descFi} ${t.id}')).toList();
+    final roadmap = roadmapBrands.where((b) => q.isNotEmpty && _match('${b.name} ${b.fi}', b.keywords)).toList();
     return LayoutBuilder(
       builder: (context, box) {
         final cols = (box.maxWidth / 240).floor().clamp(2, 5);
+        final delegate = SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: cols,
+          mainAxisSpacing: 12,
+          crossAxisSpacing: 12,
+          // Fixed height that grows with the user's text size, so cards never overflow.
+          mainAxisExtent: 128 + MediaQuery.textScalerOf(context).scale(100),
+        );
+        Widget section(String text) => SliverToBoxAdapter(
+          child: Padding(padding: const EdgeInsets.fromLTRB(16, 16, 16, 8), child: Text(text, style: Theme.of(context).textTheme.titleMedium)),
+        );
         return CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 4, 16, 12),
+                padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
                 child:
-                    header ??
+                    widget.header ??
                     Text(
                       tx(
                         context,
-                        'Valitse laite, niin täytät vain osoitteen. Ruudut luodaan valmiiksi.',
-                        'Pick a device and just fill in the address. Tiles are created for you.',
+                        'Valitse laitteesi merkki. Molaplan etsii sen ja tekee ruudut valmiiksi.',
+                        'Pick your device brand. Molaplan finds it and creates the tiles.',
                       ),
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
               ),
             ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
+                child: TextField(
+                  key: const ValueKey('brand-search'),
+                  onChanged: (v) => setState(() => q = v.trim()),
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.search),
+                    hintText: tx(context, 'Hae merkkiä tai laitetta (esim. Shelly, Hue, IKEA)', 'Search brand or device (e.g. Shelly, Hue, IKEA)'),
+                    border: const OutlineInputBorder(),
+                  ),
+                ),
+              ),
+            ),
+            if (brands.isNotEmpty) ...[
+              section(tx(context, 'Löydä ja yhdistä automaattisesti', 'Find and connect automatically')),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                sliver: SliverGrid(
+                  gridDelegate: delegate,
+                  delegate: SliverChildListDelegate([
+                    for (final p in brands)
+                      _TemplateCard(
+                        key: ValueKey('brand-${p.id}'),
+                        icon: providerIcon(p),
+                        color: providerColor(p),
+                        title: p.name(lang),
+                        desc: p.desc(lang),
+                        onTap: () async {
+                          if (widget.onBrand != null) return widget.onBrand!(p);
+                          await Navigator.push<bool>(context, MaterialPageRoute(builder: (_) => AddDeviceWizard(provider: p)));
+                        },
+                      ),
+                  ]),
+                ),
+              ),
+            ],
+            if (roadmap.isNotEmpty) ...[
+              section(tx(context, 'Tulossa – näin käytät nyt', 'Coming – how to use it today')),
+              SliverList(
+                delegate: SliverChildListDelegate([
+                  for (final b in roadmap)
+                    ListTile(
+                      leading: const Icon(Icons.schedule),
+                      title: Text(b.name),
+                      subtitle: Text(tx(context, b.fi, b.en)),
+                      onTap: () => _roadmap(context, b),
+                    ),
+                ]),
+              ),
+            ],
+            section(tx(context, 'Muut laitteet', 'Other devices')),
             SliverPadding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
               sliver: SliverGrid(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: cols,
-                  mainAxisSpacing: 12,
-                  crossAxisSpacing: 12,
-                  // Fixed height that grows with the user's text size, so cards never overflow.
-                  mainAxisExtent: 128 + MediaQuery.textScalerOf(context).scale(100),
-                ),
+                gridDelegate: delegate,
                 delegate: SliverChildListDelegate([
-                  for (final t in deviceTemplates)
+                  for (final t in templates)
                     _TemplateCard(
                       icon: t.icon,
                       color: t.color,
                       title: t.name(lang),
                       desc: t.desc(lang),
                       example: t.examples,
-                      onTap: () => onPick(t),
+                      onTap: () => widget.onPick(t),
                     ),
+                  _TemplateCard(
+                    icon: Icons.help_outline,
+                    color: Colors.indigo,
+                    title: tx(context, 'Etkö löydä merkkiäsi?', "Can't find your brand?"),
+                    desc: tx(context, 'Husqvarna, Zigbee, Tuya, Netatmo, lämpöpumput… katso miten ne toimivat jo nyt.', 'Husqvarna, Zigbee, Tuya, heat pumps… see how to use them today.'),
+                    onTap: () => showModalBottomSheet<void>(
+                      context: context,
+                      showDragHandle: true,
+                      isScrollControlled: true,
+                      builder: (c) => SafeArea(
+                        child: ListView(shrinkWrap: true, children: [
+                          for (final b in roadmapBrands)
+                            ListTile(
+                              title: Text(b.name),
+                              subtitle: Text(tx(c, b.fi, b.en)),
+                              onTap: () {
+                                Navigator.pop(c);
+                                _roadmap(context, b);
+                              },
+                            ),
+                        ]),
+                      ),
+                    ),
+                  ),
                   _TemplateCard(
                     icon: Icons.build_outlined,
                     color: Colors.blueGrey,
@@ -95,7 +225,7 @@ class TemplateGrid extends StatelessWidget {
                       'Kaikki yhteystyypit: HTTP, MQTT, Modbus, WebSocket, TCP, UDP.',
                       'All connection types.',
                     ),
-                    onTap: onManual,
+                    onTap: widget.onManual,
                   ),
                 ]),
               ),
@@ -109,6 +239,7 @@ class TemplateGrid extends StatelessWidget {
 
 class _TemplateCard extends StatelessWidget {
   const _TemplateCard({
+    super.key,
     required this.icon,
     required this.color,
     required this.title,

@@ -271,8 +271,8 @@ void main() {
       await tester.tap(find.byKey(const ValueKey('onboarding-start')));
       await tester.pumpAndSettle();
       expect(find.text('Lisää ensimmäinen laite'), findsOneWidget);
-      expect(find.text('Shelly-rele / pistorasia'), findsOneWidget);
-      expect(find.text('ESP32-CAM-kamera'), findsOneWidget);
+      expect(find.byKey(const ValueKey('brand-shelly')), findsOneWidget);
+      expect(find.byKey(const ValueKey('brand-hue')), findsOneWidget);
       await tester.scrollUntilVisible(
         find.text('Muu wifi-laite (HTTP)'),
         200,

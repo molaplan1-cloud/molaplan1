@@ -27,6 +27,7 @@ const tileIcons = <String, IconData>{
   'snow': Icons.ac_unit,
   'outlet': Icons.outlet_outlined,
   'star': Icons.star_outline,
+  'brightness': Icons.brightness_6_outlined,
 };
 
 IconData iconFor(TileConfig t) {

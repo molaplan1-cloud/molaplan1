@@ -6,6 +6,7 @@ import 'package:http/io_client.dart';
 
 import '../core/fields.dart';
 import '../core/template.dart';
+import 'digest_auth.dart';
 import 'driver.dart';
 
 http.Client makeHttpClient(bool allowSelfSigned, {Duration? timeout}) {
@@ -52,7 +53,7 @@ class HttpDriver extends Driver {
         'Tunnistus',
         'Authentication',
         kind: FieldKind.choice,
-        options: ['none', 'basic', 'bearer'],
+        options: ['none', 'basic', 'digest', 'bearer'],
         defaultValue: 'none',
       ),
       FieldSpec('username', 'Käyttäjätunnus', 'Username'),
@@ -101,19 +102,50 @@ class HttpDriver extends Driver {
     ],
   );
 
+  DigestChallenge? _digest;
+  int _nc = 0;
+
   Future<http.Response> _request(Map<String, dynamic> spec, Object? value, String defMethod) async {
     final method = spec.str('method', defMethod).toUpperCase();
-    final url = joinUrl(s.str('baseUrl'), applyTemplate(spec.str('path'), value));
-    final req = http.Request(method, url);
-    req.headers.addAll(authHeaders(s));
-    req.headers.addAll(parseHeaders(s.strOrNull('headers')));
-    req.headers.addAll(parseHeaders(spec.strOrNull('headers')));
-    final body = spec.strOrNull('body');
-    if (body != null && method != 'GET') {
-      req.headers['Content-Type'] = spec.str('contentType', 'application/json');
-      req.body = applyTemplate(body, value);
+    // {{token}} in a path = the connection's secret token (e.g. the Hue bridge username).
+    final url = joinUrl(s.str('baseUrl'), applyTemplate(spec.str('path').replaceAll('{{token}}', s.str('token')), value));
+    final uri = url.hasQuery ? '${url.path.isEmpty ? '/' : url.path}?${url.query}' : (url.path.isEmpty ? '/' : url.path);
+    http.Request build() {
+      final req = http.Request(method, url);
+      req.headers.addAll(authHeaders(s));
+      if (_digest != null) {
+        req.headers['Authorization'] = digestAuthorization(
+          ch: _digest!,
+          username: s.str('username', 'admin'),
+          password: s.str('password'),
+          method: method,
+          uri: uri,
+          nc: ++_nc,
+        );
+      }
+      req.headers.addAll(parseHeaders(s.strOrNull('headers')));
+      req.headers.addAll(parseHeaders(spec.strOrNull('headers')));
+      final body = spec.strOrNull('body');
+      if (body != null && method != 'GET') {
+        req.headers['Content-Type'] = spec.str('contentType', 'application/json');
+        req.body = applyTemplate(body, value);
+      }
+      return req;
     }
-    final resp = await http.Response.fromStream(await client.send(req).timeout(_timeout)).timeout(_timeout);
+
+    Future<http.Response> go() async =>
+        http.Response.fromStream(await client.send(build()).timeout(_timeout)).timeout(_timeout);
+    var resp = await go();
+    // Digest (Shelly Gen2+): answer the challenge once (also when the nonce went stale).
+    final wantsDigest = s.str('auth') == 'digest' || (s.str('password').isNotEmpty && s.str('auth', 'none') != 'bearer');
+    if (resp.statusCode == 401 && wantsDigest) {
+      final ch = DigestChallenge.parse(resp.headers['www-authenticate']);
+      if (ch != null) {
+        _digest = ch;
+        _nc = 0;
+        resp = await go();
+      }
+    }
     if (resp.statusCode >= 400) {
       throw DriverException('HTTP ${resp.statusCode}: ${_short(resp.body)}');
     }

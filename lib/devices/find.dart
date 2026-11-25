@@ -1,0 +1,51 @@
+/// Finding devices from the app: own LAN (scan + mDNS) and, when paired, the home bridge's LAN.
+library;
+
+import 'dart:async';
+
+import '../core/discovery.dart';
+import '../remote/router.dart';
+import 'registry.dart';
+
+/// mDNS + LAN scan on this device's own network.
+Future<List<Candidate>> findLocal(DeviceProvider p, {List<String>? locals}) async {
+  final ips = locals ?? await localIPv4s();
+  if (ips.isEmpty || p.kind == ProviderKind.cloud) return const [];
+  final results = await Future.wait([
+    p.scan(ips).catchError((_) => <Candidate>[]),
+    if (p.mdnsTypes.isNotEmpty)
+      discoverDevices(services: p.mdnsTypes, timeout: const Duration(seconds: 3)).then((r) {
+        final (found, _) = r;
+        return [
+          for (final d in found)
+            if (p.id != 'shelly' || d.kind == 'shelly')
+              Candidate(provider: p.id, address: d.address, id: d.label, name: d.label),
+        ];
+      }).catchError((_) => <Candidate>[]),
+  ]);
+  return mergeCandidates(results.expand((x) => x));
+}
+
+/// Prefers entries with more detail (scan results carry the model).
+List<Candidate> mergeCandidates(Iterable<Candidate> all) {
+  final byAddr = <String, Candidate>{};
+  for (final c in all) {
+    final k = hostOf(c.address);
+    final old = byAddr[k];
+    if (old == null || (old.model.isEmpty && c.model.isNotEmpty)) byAddr[k] = c;
+  }
+  return byAddr.values.toList()..sort((a, b) => a.title.toLowerCase().compareTo(b.title.toLowerCase()));
+}
+
+/// Asks the home bridge to search its LAN (works from anywhere).
+Future<List<Candidate>> findViaBridge(RemoteRouter router, DeviceProvider p) async {
+  final v = await router.viaRemote((c) => c.call('discover', spec: {'provider': p.id}));
+  return [for (final m in (v is List ? v : const []).whereType<Map>()) Candidate.fromJson(m, viaBridge: true)];
+}
+
+/// Bridge side: the executor's discover hook (scan + mDNS).
+Future<List<Map<String, dynamic>>> bridgeDiscover(String provider) async {
+  final p = providerById(provider);
+  if (p == null) return const [];
+  return [for (final c in await findLocal(p)) c.toJson()];
+}

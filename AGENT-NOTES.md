@@ -92,3 +92,11 @@ Relay: https://relay.molaplan.com (custom domain; also https://molaplan-relay.mo
   MOLAPLAN_KEYSTORE_PASSWORD; gradle reads env MOLAPLAN_KEYSTORE / MOLAPLAN_KEYSTORE_PASSWORD, else debug key.
 - CI release assets (stable names): molaplan-android-arm64.apk, molaplan-android-universal.apk,
   molaplan-windows-x64.zip, SHA256SUMS. Release notes from docs/release-notes/<tag>.md.
+
+## v0.3.2 – generic "Add device" (remote-first)
+- `lib/devices/`: pure-Dart provider framework (`provider.dart`: DeviceProvider, Candidate, AddProblem → Finnish explanations), providers `shelly.dart` (Gen1/Gen2 local + Shelly Cloud driver `shelly_cloud`), `hue.dart` (v1 API, link button), `dirigera.dart` (PKCE, action button, self-signed TLS), `registry.dart` (providers + roadmap brands with advice), `find.dart` (Flutter-only: LAN scan + mDNS, `findViaBridge`).
+- All add-device I/O uses `router.wrap` drivers → LAN first, relay → home bridge fallback. The bridge executor has a `discover` op (`{'provider': id}`) that runs the provider scan on the home LAN; old bridges answer "Unknown op" → AddProblem.bridgeOld.
+- UI: `lib/ui/add_device_wizard.dart` (steps remote → find → connect → choose → done; test hooks finder/locals/driverFor), brand picker with search in `template_gallery.dart`.
+- HTTP driver: `auth: digest` (MD5/SHA-256, `lib/drivers/digest_auth.dart`); digest is also tried automatically on a 401 with a Digest challenge when a password is set.
+- Adding a brand: implement DeviceProvider (scan/pair/connect/tiles), add to `deviceProviders`, add a mock in `test/support/mock_devices.dart` + tests.
+- Roadmap (needs user's cloud dev keys/OAuth): Husqvarna (Automower Connect API key), Tuya (iot.tuya.com project), Netatmo (dev app), NIBE/Thermia (myUplink app), vendor AC clouds (best via Home Assistant). Local: Zigbee2MQTT (MQTT template), Z-Wave JS / Home Assistant (HA template).

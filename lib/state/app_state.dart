@@ -284,7 +284,9 @@ class AppState extends ChangeNotifier {
       final existing = config.connections.where((e) => _addrKey(e) == _addrKey(c)).firstOrNull;
       if (existing != null) {
         remap[c.id] = existing.id;
-        c.secrets.forEach((k, v) => existing.secrets.putIfAbsent(k, () => v));
+        // Newer settings/credentials win (e.g. a password added in the wizard).
+        existing.settings.addAll(c.settings);
+        c.secrets.forEach((k, v) => existing.secrets[k] = v);
         await _persistSecrets(existing);
         await _drivers.remove(existing.id)?.dispose();
         used.add(existing);

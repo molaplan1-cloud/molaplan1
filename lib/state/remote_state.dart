@@ -1,3 +1,4 @@
+import '../devices/find.dart' show bridgeDiscover;
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -104,6 +105,7 @@ class RemoteState extends ChangeNotifier {
       store: store,
       executor: RemoteExecutor(
         configProvider: configJson == null ? null : () => jsonDecode(configJson!()) as Map<String, dynamic>,
+        discover: bridgeDiscover,
       ),
       approve: (n) => approver?.call(n) ?? Future.value(false),
       log: (m) => debugPrint('[bridge] $m'),

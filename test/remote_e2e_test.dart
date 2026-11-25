@@ -7,6 +7,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:molaplan/devices/find.dart';
+import 'package:molaplan/devices/registry.dart';
+import 'package:molaplan/devices/shelly.dart';
 import 'package:molaplan/models/models.dart';
 import 'package:molaplan/remote/bridge_core.dart';
 import 'package:molaplan/remote/executor.dart';
@@ -15,6 +18,8 @@ import 'package:molaplan/drivers/registry.dart';
 import 'package:molaplan/remote/remote_client.dart';
 import 'package:molaplan/remote/router.dart';
 import 'package:molaplan/state/stores.dart';
+
+import 'support/mock_devices.dart';
 
 /// End-to-end: real relay (local `wrangler dev`, or MOLAPLAN_RELAY_URL) + bridge + phone client
 /// + a fake HTTP device and camera on the "home LAN".
@@ -243,5 +248,46 @@ void main() {
     await d.dispose();
     await router.client!.dispose();
     await bridge.dispose();
+  });
+
+  test('Shelly Pro 4PM added from away: bridge finds it, pairing + tiles go through the relay', () async {
+    if (relay == null) return markTestSkipped('no relay');
+    final shelly = await MockShellyPro4PM(password: 'salainen').start();
+    // The bridge sees the Shelly at home (127.0.0.1:1 is remapped to it); the phone cannot reach it.
+    final bridge = BridgeCore(
+      store: MemorySecretStore(),
+      executor: RemoteExecutor(
+        discover: (p) async => [Candidate(provider: p, address: '127.0.0.1:1', model: 'Shelly Pro 4PM', name: 'Tekninen tila').toJson()],
+        create: (c) {
+          final s = Map<String, dynamic>.from(c.settings);
+          s['baseUrl'] = '${s['baseUrl']}'.replaceFirst('127.0.0.1:1', shelly.address);
+          return createDriver(ConnectionConfig(id: c.id, name: c.name, type: c.type, settings: s, secrets: c.secrets));
+        },
+      ),
+    );
+    await bridge.init(relayUrl: relay!);
+    bridge.start();
+    await bridge.changes.firstWhere((_) => bridge.link == BridgeLink.online).timeout(const Duration(seconds: 20));
+    final w = await bridge.startPairing();
+    final paired = await pairWithHome(relay: relay!, invite: PairingInvite.parse(w.invite.toUri()), deviceName: 'Puhelin');
+    final router = RemoteRouter()..client = RemoteClient(paired);
+    final p = ShellyProvider();
+    final found = await findViaBridge(router, p);
+    expect(found.single.viaBridge, isTrue);
+    expect(found.single.model, 'Shelly Pro 4PM');
+    final ctx = AddContext(driver: router.wrap);
+    await expectLater(p.connect(ctx, found.single, {}), throwsA(isA<AddDeviceError>().having((e) => e.problem, 'p', AddProblem.needsPassword)));
+    final r = await p.connect(ctx, found.single, {'password': 'salainen'});
+    expect(r.items.length, 4);
+    final tiles = p.tiles(r);
+    final d = router.wrap(r.connection);
+    await d.send(tiles.first.onCommand!.spec);
+    expect(shelly.on[0], isTrue);
+    expect(await d.read(tiles[3].read), 1234.5);
+    expect(router.status, LinkStatus.remote);
+    await d.dispose();
+    await router.client!.dispose();
+    await bridge.dispose();
+    await shelly.stop();
   });
 }
