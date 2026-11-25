@@ -25,7 +25,12 @@ void main() {
   test('secrets go to secure store only and are restored on load', () async {
     final st = make();
     await st.load();
-    final c = ConnectionConfig(name: 'HA', type: 'homeassistant', settings: {'baseUrl': 'http://ha:8123'}, secrets: {'token': 'SECRET'});
+    final c = ConnectionConfig(
+      name: 'HA',
+      type: 'homeassistant',
+      settings: {'baseUrl': 'http://ha:8123'},
+      secrets: {'token': 'SECRET'},
+    );
     await st.upsertConnection(c);
     expect(cfg.data!.contains('SECRET'), isFalse);
     expect(sec.data[AppState.secretKey(c.id, 'token')], 'SECRET');

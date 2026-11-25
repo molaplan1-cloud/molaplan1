@@ -32,8 +32,12 @@ class AppState extends ChangeNotifier {
     }
     for (final c in config.connections) {
       for (final k in descriptorFor(c.type).secretKeys) {
-        final v = await secretStore.read(secretKey(c.id, k));
-        if (v != null) c.secrets[k] = v;
+        try {
+          final v = await secretStore.read(secretKey(c.id, k));
+          if (v != null) c.secrets[k] = v;
+        } catch (_) {
+          // Secure storage unavailable/corrupt: the user can re-enter the secret.
+        }
       }
     }
     if (config.dashboards.isEmpty) {
@@ -51,7 +55,9 @@ class AppState extends ChangeNotifier {
     for (final k in descriptorFor(c.type).secretKeys) {
       final v = c.secrets[k];
       if (v == null || v.isEmpty) {
-        await secretStore.delete(secretKey(c.id, k));
+        try {
+          await secretStore.delete(secretKey(c.id, k));
+        } catch (_) {}
       } else {
         await secretStore.write(secretKey(c.id, k), v);
       }

@@ -5,8 +5,7 @@ import 'package:uuid/uuid.dart';
 const _uuid = Uuid();
 String newId() => _uuid.v4().substring(0, 8);
 
-Map<String, dynamic> _map(Object? v) =>
-    v is Map ? Map<String, dynamic>.from(v) : <String, dynamic>{};
+Map<String, dynamic> _map(Object? v) => v is Map ? Map<String, dynamic>.from(v) : <String, dynamic>{};
 
 /// A user-defined device/service connection (HTTP API, MQTT broker, ...).
 class ConnectionConfig {
@@ -24,31 +23,30 @@ class ConnectionConfig {
     required this.type,
     Map<String, dynamic>? settings,
     Map<String, String>? secrets,
-  })  : id = id ?? newId(),
-        settings = settings ?? {},
-        secrets = secrets ?? {};
+  }) : id = id ?? newId(),
+       settings = settings ?? {},
+       secrets = secrets ?? {};
 
   /// Settings + secrets merged (what drivers read).
   Map<String, dynamic> get all => {...settings, ...secrets};
 
   Map<String, dynamic> toJson({bool includeSecrets = false}) => {
-        'id': id,
-        'name': name,
-        'type': type,
-        'settings': settings,
-        if (includeSecrets && secrets.isNotEmpty) 'secrets': secrets,
-      };
+    'id': id,
+    'name': name,
+    'type': type,
+    'settings': settings,
+    if (includeSecrets && secrets.isNotEmpty) 'secrets': secrets,
+  };
 
   factory ConnectionConfig.fromJson(Map<String, dynamic> j) => ConnectionConfig(
-        id: j['id'] as String?,
-        name: (j['name'] ?? '') as String,
-        type: (j['type'] ?? 'http') as String,
-        settings: _map(j['settings']),
-        secrets: _map(j['secrets']).map((k, v) => MapEntry(k, v.toString())),
-      );
+    id: j['id'] as String?,
+    name: (j['name'] ?? '') as String,
+    type: (j['type'] ?? 'http') as String,
+    settings: _map(j['settings']),
+    secrets: _map(j['secrets']).map((k, v) => MapEntry(k, v.toString())),
+  );
 
-  ConnectionConfig copy() =>
-      ConnectionConfig.fromJson(jsonDecode(jsonEncode(toJson(includeSecrets: true))));
+  ConnectionConfig copy() => ConnectionConfig.fromJson(jsonDecode(jsonEncode(toJson(includeSecrets: true))));
 }
 
 /// One command to execute: on a connection with a driver-specific spec.
@@ -57,17 +55,15 @@ class CommandStep {
   Map<String, dynamic> spec;
   int delayMs;
 
-  CommandStep({required this.connectionId, Map<String, dynamic>? spec, this.delayMs = 0})
-      : spec = spec ?? {};
+  CommandStep({required this.connectionId, Map<String, dynamic>? spec, this.delayMs = 0}) : spec = spec ?? {};
 
-  Map<String, dynamic> toJson() =>
-      {'connectionId': connectionId, 'spec': spec, 'delayMs': delayMs};
+  Map<String, dynamic> toJson() => {'connectionId': connectionId, 'spec': spec, 'delayMs': delayMs};
 
   factory CommandStep.fromJson(Map<String, dynamic> j) => CommandStep(
-        connectionId: (j['connectionId'] ?? '') as String,
-        spec: _map(j['spec']),
-        delayMs: (j['delayMs'] as num?)?.toInt() ?? 0,
-      );
+    connectionId: (j['connectionId'] ?? '') as String,
+    spec: _map(j['spec']),
+    delayMs: (j['delayMs'] as num?)?.toInt() ?? 0,
+  );
 }
 
 enum TileType { value, toggle, button, slider, camera }
@@ -138,64 +134,58 @@ class TileConfig {
     this.min = 0,
     this.max = 100,
     this.step = 1,
-  })  : id = id ?? newId(),
-        read = read ?? {},
-        thresholds = thresholds ?? [],
-        commands = commands ?? [];
+  }) : id = id ?? newId(),
+       read = read ?? {},
+       thresholds = thresholds ?? [],
+       commands = commands ?? [];
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'type': type.name,
-        'title': title,
-        'icon': icon,
-        'colSpan': colSpan,
-        'rowSpan': rowSpan,
-        'connectionId': connectionId,
-        'read': read,
-        'pollSeconds': pollSeconds,
-        'unit': unit,
-        'decimals': decimals,
-        'thresholds': thresholds.map((t) => t.toJson()).toList(),
-        'valueMap': valueMap,
-        'onValue': onValue,
-        'onCommand': onCommand?.toJson(),
-        'offCommand': offCommand?.toJson(),
-        'commands': commands.map((c) => c.toJson()).toList(),
-        'confirm': confirm,
-        'min': min,
-        'max': max,
-        'step': step,
-      };
+    'id': id,
+    'type': type.name,
+    'title': title,
+    'icon': icon,
+    'colSpan': colSpan,
+    'rowSpan': rowSpan,
+    'connectionId': connectionId,
+    'read': read,
+    'pollSeconds': pollSeconds,
+    'unit': unit,
+    'decimals': decimals,
+    'thresholds': thresholds.map((t) => t.toJson()).toList(),
+    'valueMap': valueMap,
+    'onValue': onValue,
+    'onCommand': onCommand?.toJson(),
+    'offCommand': offCommand?.toJson(),
+    'commands': commands.map((c) => c.toJson()).toList(),
+    'confirm': confirm,
+    'min': min,
+    'max': max,
+    'step': step,
+  };
 
   factory TileConfig.fromJson(Map<String, dynamic> j) => TileConfig(
-        id: j['id'] as String?,
-        type: TileType.values.firstWhere((t) => t.name == j['type'],
-            orElse: () => TileType.value),
-        title: (j['title'] ?? '') as String,
-        icon: (j['icon'] ?? 'auto') as String,
-        colSpan: (j['colSpan'] as num?)?.toInt() ?? 1,
-        rowSpan: (j['rowSpan'] as num?)?.toInt() ?? 1,
-        connectionId: j['connectionId'] as String?,
-        read: _map(j['read']),
-        pollSeconds: (j['pollSeconds'] as num?)?.toInt() ?? 10,
-        unit: (j['unit'] ?? '') as String,
-        decimals: (j['decimals'] as num?)?.toInt() ?? 1,
-        thresholds: ((j['thresholds'] as List?) ?? [])
-            .map((e) => Threshold.fromJson(_map(e)))
-            .toList(),
-        valueMap: (j['valueMap'] ?? '') as String,
-        onValue: (j['onValue'] ?? '') as String,
-        onCommand: j['onCommand'] == null ? null : CommandStep.fromJson(_map(j['onCommand'])),
-        offCommand:
-            j['offCommand'] == null ? null : CommandStep.fromJson(_map(j['offCommand'])),
-        commands: ((j['commands'] as List?) ?? [])
-            .map((e) => CommandStep.fromJson(_map(e)))
-            .toList(),
-        confirm: (j['confirm'] ?? false) as bool,
-        min: (j['min'] as num?)?.toDouble() ?? 0,
-        max: (j['max'] as num?)?.toDouble() ?? 100,
-        step: (j['step'] as num?)?.toDouble() ?? 1,
-      );
+    id: j['id'] as String?,
+    type: TileType.values.firstWhere((t) => t.name == j['type'], orElse: () => TileType.value),
+    title: (j['title'] ?? '') as String,
+    icon: (j['icon'] ?? 'auto') as String,
+    colSpan: (j['colSpan'] as num?)?.toInt() ?? 1,
+    rowSpan: (j['rowSpan'] as num?)?.toInt() ?? 1,
+    connectionId: j['connectionId'] as String?,
+    read: _map(j['read']),
+    pollSeconds: (j['pollSeconds'] as num?)?.toInt() ?? 10,
+    unit: (j['unit'] ?? '') as String,
+    decimals: (j['decimals'] as num?)?.toInt() ?? 1,
+    thresholds: ((j['thresholds'] as List?) ?? []).map((e) => Threshold.fromJson(_map(e))).toList(),
+    valueMap: (j['valueMap'] ?? '') as String,
+    onValue: (j['onValue'] ?? '') as String,
+    onCommand: j['onCommand'] == null ? null : CommandStep.fromJson(_map(j['onCommand'])),
+    offCommand: j['offCommand'] == null ? null : CommandStep.fromJson(_map(j['offCommand'])),
+    commands: ((j['commands'] as List?) ?? []).map((e) => CommandStep.fromJson(_map(e))).toList(),
+    confirm: (j['confirm'] ?? false) as bool,
+    min: (j['min'] as num?)?.toDouble() ?? 0,
+    max: (j['max'] as num?)?.toDouble() ?? 100,
+    step: (j['step'] as num?)?.toDouble() ?? 1,
+  );
 
   TileConfig copy() => TileConfig.fromJson(jsonDecode(jsonEncode(toJson())));
 
@@ -229,18 +219,15 @@ class Dashboard {
   String id;
   String name;
   List<TileConfig> tiles;
-  Dashboard({String? id, required this.name, List<TileConfig>? tiles})
-      : id = id ?? newId(),
-        tiles = tiles ?? [];
+  Dashboard({String? id, required this.name, List<TileConfig>? tiles}) : id = id ?? newId(), tiles = tiles ?? [];
 
-  Map<String, dynamic> toJson() =>
-      {'id': id, 'name': name, 'tiles': tiles.map((t) => t.toJson()).toList()};
+  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'tiles': tiles.map((t) => t.toJson()).toList()};
 
   factory Dashboard.fromJson(Map<String, dynamic> j) => Dashboard(
-        id: j['id'] as String?,
-        name: (j['name'] ?? '') as String,
-        tiles: ((j['tiles'] as List?) ?? []).map((e) => TileConfig.fromJson(_map(e))).toList(),
-      );
+    id: j['id'] as String?,
+    name: (j['name'] ?? '') as String,
+    tiles: ((j['tiles'] as List?) ?? []).map((e) => TileConfig.fromJson(_map(e))).toList(),
+  );
 }
 
 class AppConfig {
@@ -250,16 +237,16 @@ class AppConfig {
   String language;
 
   AppConfig({List<ConnectionConfig>? connections, List<Dashboard>? dashboards, this.language = 'fi'})
-      : connections = connections ?? [],
-        dashboards = dashboards ?? [];
+    : connections = connections ?? [],
+      dashboards = dashboards ?? [];
 
   Map<String, dynamic> toJson({bool includeSecrets = false}) => {
-        'app': 'molaplan',
-        'formatVersion': formatVersion,
-        'language': language,
-        'connections': connections.map((c) => c.toJson(includeSecrets: includeSecrets)).toList(),
-        'dashboards': dashboards.map((d) => d.toJson()).toList(),
-      };
+    'app': 'molaplan',
+    'formatVersion': formatVersion,
+    'language': language,
+    'connections': connections.map((c) => c.toJson(includeSecrets: includeSecrets)).toList(),
+    'dashboards': dashboards.map((d) => d.toJson()).toList(),
+  };
 
   factory AppConfig.fromJson(Map<String, dynamic> j) {
     if (j['app'] != null && j['app'] != 'molaplan') {
@@ -267,8 +254,7 @@ class AppConfig {
     }
     return AppConfig(
       language: (j['language'] ?? 'fi') as String,
-      connections:
-          ((j['connections'] as List?) ?? []).map((e) => ConnectionConfig.fromJson(_map(e))).toList(),
+      connections: ((j['connections'] as List?) ?? []).map((e) => ConnectionConfig.fromJson(_map(e))).toList(),
       dashboards: ((j['dashboards'] as List?) ?? []).map((e) => Dashboard.fromJson(_map(e))).toList(),
     );
   }

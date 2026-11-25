@@ -19,13 +19,7 @@ class SpecForm extends StatelessWidget {
         for (final f in fields)
           Padding(
             padding: const EdgeInsets.only(bottom: 10),
-            child: _FieldInput(
-              key: ValueKey(f.key),
-              field: f,
-              lang: lang,
-              values: values,
-              onChanged: onChanged,
-            ),
+            child: _FieldInput(key: ValueKey(f.key), field: f, lang: lang, values: values, onChanged: onChanged),
           ),
       ],
     );
@@ -94,6 +88,7 @@ class _FieldInputState extends State<_FieldInput> {
       case FieldKind.choice:
         final cur = widget.values[f.key]?.toString() ?? f.defaultValue?.toString() ?? f.options.first;
         return DropdownButtonFormField<String>(
+          isExpanded: true,
           initialValue: f.options.contains(cur) ? cur : f.options.first,
           decoration: InputDecoration(labelText: label),
           items: [for (final o in f.options) DropdownMenuItem(value: o, child: Text(o))],

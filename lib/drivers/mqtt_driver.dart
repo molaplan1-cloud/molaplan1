@@ -39,10 +39,18 @@ class MqttDriver extends Driver {
       FieldSpec('host', 'Välittäjän osoite', 'Broker host', hint: '192.168.1.10', required: true),
       FieldSpec('port', 'Portti', 'Port', kind: FieldKind.number, defaultValue: 1883, hint: '1883 / 8883 (TLS)'),
       FieldSpec('tls', 'TLS', 'TLS', kind: FieldKind.boolean),
-      FieldSpec('allowSelfSigned', 'Salli itse allekirjoitettu sertifikaatti', 'Allow self-signed certificate',
-          kind: FieldKind.boolean),
-      FieldSpec('websocket', 'WebSocket-yhteys (ws:// tai wss://)', 'Use WebSocket (ws:// or wss://)',
-          kind: FieldKind.boolean),
+      FieldSpec(
+        'allowSelfSigned',
+        'Salli itse allekirjoitettu sertifikaatti',
+        'Allow self-signed certificate',
+        kind: FieldKind.boolean,
+      ),
+      FieldSpec(
+        'websocket',
+        'WebSocket-yhteys (ws:// tai wss://)',
+        'Use WebSocket (ws:// or wss://)',
+        kind: FieldKind.boolean,
+      ),
       FieldSpec('username', 'Käyttäjätunnus', 'Username'),
       FieldSpec('password', 'Salasana', 'Password', kind: FieldKind.secret),
       FieldSpec('clientId', 'Client ID (tyhjä = automaattinen)', 'Client ID (empty = auto)'),
@@ -132,18 +140,21 @@ class MqttDriver extends Driver {
     final topic = spec.str('topic');
     late StreamController<Object?> out;
     StreamSubscription? sub;
-    out = StreamController<Object?>(onListen: () async {
-      sub = _events.stream
-          .where((e) => mqttTopicMatches(topic, e.key))
-          .listen((e) => out.add(extractValue(e.value, spec)));
-      try {
-        await _subscribe(topic);
-        final c = _cached(topic);
-        if (c != null) out.add(extractValue(c, spec));
-      } catch (e) {
-        out.addError(e);
-      }
-    }, onCancel: () => sub?.cancel());
+    out = StreamController<Object?>(
+      onListen: () async {
+        sub = _events.stream
+            .where((e) => mqttTopicMatches(topic, e.key))
+            .listen((e) => out.add(extractValue(e.value, spec)));
+        try {
+          await _subscribe(topic);
+          final c = _cached(topic);
+          if (c != null) out.add(extractValue(c, spec));
+        } catch (e) {
+          out.addError(e);
+        }
+      },
+      onCancel: () => sub?.cancel(),
+    );
     return out.stream;
   }
 
@@ -153,7 +164,10 @@ class MqttDriver extends Driver {
     final c = _cached(topic);
     if (c != null && _subscribed.contains(topic)) return extractValue(c, spec);
     final f = firstWithTimeout(
-        _events.stream.where((e) => mqttTopicMatches(topic, e.key)), const Duration(seconds: 5), topic);
+      _events.stream.where((e) => mqttTopicMatches(topic, e.key)),
+      const Duration(seconds: 5),
+      topic,
+    );
     await _subscribe(topic);
     final cached = _cached(topic);
     if (cached != null) {

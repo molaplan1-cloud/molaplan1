@@ -26,7 +26,11 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _addDashboard() async {
     final st = AppScope.read(context);
-    final name = await promptText(context, tx(context, 'Uusi näkymä', 'New dashboard'), hint: tx(context, 'esim. Mökki', 'e.g. Cottage'));
+    final name = await promptText(
+      context,
+      tx(context, 'Uusi näkymä', 'New dashboard'),
+      hint: tx(context, 'esim. Mökki', 'e.g. Cottage'),
+    );
     if (name == null || name.isEmpty) return;
     final d = await st.addDashboard(name);
     setState(() {
@@ -43,9 +47,16 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _deleteDashboard(Dashboard d) async {
     final st = AppScope.read(context);
-    final ok = await confirmDialog(context, tx(context, 'Poistetaanko näkymä?', 'Delete dashboard?'),
-        tx(context, '"${d.name}" ja sen ${d.tiles.length} ruutua poistetaan.', '"${d.name}" and its ${d.tiles.length} tiles will be deleted.'),
-        ok: tx(context, 'Poista', 'Delete'));
+    final ok = await confirmDialog(
+      context,
+      tx(context, 'Poistetaanko näkymä?', 'Delete dashboard?'),
+      tx(
+        context,
+        '"${d.name}" ja sen ${d.tiles.length} ruutua poistetaan.',
+        '"${d.name}" and its ${d.tiles.length} tiles will be deleted.',
+      ),
+      ok: tx(context, 'Poista', 'Delete'),
+    );
     if (!ok) return;
     await st.deleteDashboard(d);
     setState(() => _dashId = null);
@@ -56,14 +67,24 @@ class _HomePageState extends State<HomePage> {
       context: context,
       showDragHandle: true,
       builder: (c) => SafeArea(
-        child: ListView(shrinkWrap: true, children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
-            child: Text(tx(context, 'Valitse ruudun tyyppi', 'Choose tile type'), style: Theme.of(context).textTheme.titleMedium),
-          ),
-          for (final t in TileType.values)
-            ListTile(leading: Icon(tileTypeIcon(t)), title: Text(tileTypeLabel(context, t)), onTap: () => Navigator.pop(c, t)),
-        ]),
+        child: ListView(
+          shrinkWrap: true,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
+              child: Text(
+                tx(context, 'Valitse ruudun tyyppi', 'Choose tile type'),
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+            ),
+            for (final t in TileType.values)
+              ListTile(
+                leading: Icon(tileTypeIcon(t)),
+                title: Text(tileTypeLabel(context, t)),
+                onTap: () => Navigator.pop(c, t),
+              ),
+          ],
+        ),
       ),
     );
     if (type == null || !mounted) return;
@@ -72,7 +93,12 @@ class _HomePageState extends State<HomePage> {
       colSpan: type == TileType.camera ? 2 : (type == TileType.slider ? 2 : 1),
       rowSpan: type == TileType.camera ? 2 : 1,
     );
-    await Navigator.push(context, MaterialPageRoute(builder: (_) => TileEditor(dashboard: d, initial: tile, isNew: true)));
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => TileEditor(dashboard: d, initial: tile, isNew: true),
+      ),
+    );
   }
 
   Future<void> _openSettings() async {
@@ -91,75 +117,85 @@ class _HomePageState extends State<HomePage> {
     }
 
     return SafeArea(
-      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(20, 18, 12, 12),
-          child: Row(children: [
-            Container(
-              width: 34,
-              height: 34,
-              decoration: BoxDecoration(color: cs.primary, borderRadius: BorderRadius.circular(10)),
-              child: Icon(Icons.dashboard_customize_outlined, color: cs.onPrimary, size: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 18, 12, 12),
+            child: Row(
+              children: [
+                Container(
+                  width: 34,
+                  height: 34,
+                  decoration: BoxDecoration(color: cs.primary, borderRadius: BorderRadius.circular(10)),
+                  child: Icon(Icons.dashboard_customize_outlined, color: cs.onPrimary, size: 20),
+                ),
+                const SizedBox(width: 10),
+                Text('Molaplan', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700)),
+              ],
             ),
-            const SizedBox(width: 10),
-            Text('Molaplan', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700)),
-          ]),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(20, 8, 20, 4),
-          child: Text(tx(context, 'NÄKYMÄT', 'DASHBOARDS'), style: Theme.of(context).textTheme.labelSmall),
-        ),
-        Expanded(
-          child: ListView(padding: const EdgeInsets.symmetric(horizontal: 8), children: [
-            for (final d in st.config.dashboards)
-              ListTile(
-                selected: d.id == cur.id,
-                selectedTileColor: cs.secondaryContainer.withValues(alpha: 0.5),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                leading: const Icon(Icons.space_dashboard_outlined),
-                title: Text(d.name, overflow: TextOverflow.ellipsis),
-                onTap: () {
-                  setState(() => _dashId = d.id);
-                  close();
-                },
-              ),
-            ListTile(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-              leading: const Icon(Icons.add),
-              title: Text(tx(context, 'Uusi näkymä', 'New dashboard')),
-              onTap: () {
-                close();
-                _addDashboard();
-              },
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 8, 20, 4),
+            child: Text(tx(context, 'NÄKYMÄT', 'DASHBOARDS'), style: Theme.of(context).textTheme.labelSmall),
+          ),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              children: [
+                for (final d in st.config.dashboards)
+                  ListTile(
+                    selected: d.id == cur.id,
+                    selectedTileColor: cs.secondaryContainer.withValues(alpha: 0.5),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    leading: const Icon(Icons.space_dashboard_outlined),
+                    title: Text(d.name, overflow: TextOverflow.ellipsis),
+                    onTap: () {
+                      setState(() => _dashId = d.id);
+                      close();
+                    },
+                  ),
+                ListTile(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  leading: const Icon(Icons.add),
+                  title: Text(tx(context, 'Uusi näkymä', 'New dashboard')),
+                  onTap: () {
+                    close();
+                    _addDashboard();
+                  },
+                ),
+              ],
             ),
-          ]),
-        ),
-        const Divider(height: 1),
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: Column(children: [
-            ListTile(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-              leading: const Icon(Icons.device_hub),
-              title: Text(tx(context, 'Yhteydet', 'Connections')),
-              trailing: Text('${st.config.connections.length}'),
-              onTap: () {
-                close();
-                Navigator.push(context, MaterialPageRoute(builder: (_) => const ConnectionsPage()));
-              },
+          ),
+          const Divider(height: 1),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              children: [
+                ListTile(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  leading: const Icon(Icons.device_hub),
+                  title: Text(tx(context, 'Yhteydet', 'Connections')),
+                  trailing: Text('${st.config.connections.length}'),
+                  onTap: () {
+                    close();
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ConnectionsPage()));
+                  },
+                ),
+                ListTile(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  leading: const Icon(Icons.settings_outlined),
+                  title: Text(tx(context, 'Asetukset', 'Settings')),
+                  onTap: () {
+                    close();
+                    _openSettings();
+                  },
+                ),
+              ],
             ),
-            ListTile(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-              leading: const Icon(Icons.settings_outlined),
-              title: Text(tx(context, 'Asetukset', 'Settings')),
-              onTap: () {
-                close();
-                _openSettings();
-              },
-            ),
-          ]),
-        ),
-      ]),
+          ),
+        ],
+      ),
     );
   }
 
@@ -184,8 +220,16 @@ class _HomePageState extends State<HomePage> {
         title: Text(d.name),
         actions: [
           if (_editing) ...[
-            IconButton(tooltip: tx(context, 'Nimeä', 'Rename'), icon: const Icon(Icons.drive_file_rename_outline), onPressed: () => _renameDashboard(d)),
-            IconButton(tooltip: tx(context, 'Poista näkymä', 'Delete dashboard'), icon: const Icon(Icons.delete_outline), onPressed: () => _deleteDashboard(d)),
+            IconButton(
+              tooltip: tx(context, 'Nimeä', 'Rename'),
+              icon: const Icon(Icons.drive_file_rename_outline),
+              onPressed: () => _renameDashboard(d),
+            ),
+            IconButton(
+              tooltip: tx(context, 'Poista näkymä', 'Delete dashboard'),
+              icon: const Icon(Icons.delete_outline),
+              onPressed: () => _deleteDashboard(d),
+            ),
             const SizedBox(width: 4),
             FilledButton.icon(
               onPressed: () => setState(() => _editing = false),
@@ -212,16 +256,26 @@ class _HomePageState extends State<HomePage> {
     );
 
     if (!wide) return scaffold;
-    return Row(children: [
-      SizedBox(width: 260, child: Material(color: cs.surfaceContainerLowest, child: _nav(context, drawer: false))),
-      const VerticalDivider(width: 1),
-      Expanded(child: scaffold),
-    ]);
+    return Row(
+      children: [
+        SizedBox(
+          width: 260,
+          child: Material(color: cs.surfaceContainerLowest, child: _nav(context, drawer: false)),
+        ),
+        const VerticalDivider(width: 1),
+        Expanded(child: scaffold),
+      ],
+    );
   }
 }
 
 class _DashboardGrid extends StatelessWidget {
-  const _DashboardGrid({required this.dashboard, required this.editing, required this.onAddTile, required this.onStartEditing});
+  const _DashboardGrid({
+    required this.dashboard,
+    required this.editing,
+    required this.onAddTile,
+    required this.onStartEditing,
+  });
   final Dashboard dashboard;
   final bool editing;
   final VoidCallback onAddTile;
@@ -237,52 +291,65 @@ class _DashboardGrid extends StatelessWidget {
       return Center(
         child: Padding(
           padding: const EdgeInsets.all(32),
-          child: Column(mainAxisSize: MainAxisSize.min, children: [
-            Icon(Icons.dashboard_customize_outlined, size: 56, color: cs.primary),
-            const SizedBox(height: 16),
-            Text(tx(context, 'Tyhjä näkymä', 'Empty dashboard'), style: Theme.of(context).textTheme.titleLarge),
-            const SizedBox(height: 8),
-            Text(
-              tx(context,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.dashboard_customize_outlined, size: 56, color: cs.primary),
+              const SizedBox(height: 16),
+              Text(tx(context, 'Tyhjä näkymä', 'Empty dashboard'), style: Theme.of(context).textTheme.titleLarge),
+              const SizedBox(height: 8),
+              Text(
+                tx(
+                  context,
                   'Lisää laitteesi yhteydeksi (esim. IV-kone, lämpöpumppu, Home Assistant, kamera) ja rakenna siitä omat ruudut: tilatiedot, kytkimet, säätimet ja pikakomennot.',
-                  'Add your devices as connections (e.g. ventilation unit, heat pump, Home Assistant, camera) and build your own tiles: status values, switches, setpoints and shortcuts.'),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 20),
-            Wrap(spacing: 10, runSpacing: 10, alignment: WrapAlignment.center, children: [
-              if (st.config.connections.isEmpty)
-                FilledButton.icon(
-                  onPressed: () => ConnectionsPage.addNew(context),
-                  icon: const Icon(Icons.add_link),
-                  label: Text(tx(context, 'Lisää yhteys', 'Add connection')),
+                  'Add your devices as connections (e.g. ventilation unit, heat pump, Home Assistant, camera) and build your own tiles: status values, switches, setpoints and shortcuts.',
                 ),
-              FilledButton.tonalIcon(
-                onPressed: () {
-                  onStartEditing();
-                  onAddTile();
-                },
-                icon: const Icon(Icons.add),
-                label: Text(tx(context, 'Lisää ruutu', 'Add tile')),
+                textAlign: TextAlign.center,
               ),
-            ]),
-          ]),
+              const SizedBox(height: 20),
+              Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                alignment: WrapAlignment.center,
+                children: [
+                  if (st.config.connections.isEmpty)
+                    FilledButton.icon(
+                      onPressed: () => ConnectionsPage.addNew(context),
+                      icon: const Icon(Icons.add_link),
+                      label: Text(tx(context, 'Lisää yhteys', 'Add connection')),
+                    ),
+                  FilledButton.tonalIcon(
+                    onPressed: () {
+                      onStartEditing();
+                      onAddTile();
+                    },
+                    icon: const Icon(Icons.add),
+                    label: Text(tx(context, 'Lisää ruutu', 'Add tile')),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       );
     }
 
-    return LayoutBuilder(builder: (context, box) {
-      const gap = 12.0;
-      final cols = (box.maxWidth / 170).floor().clamp(2, 8);
-      final cell = (box.maxWidth - gap * (cols + 1)) / cols;
-      final cellH = (cell * 0.8).clamp(110.0, 170.0);
-      return SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(gap, 4, gap, 96),
-        child: Wrap(spacing: gap, runSpacing: gap, children: [
-          for (var i = 0; i < dashboard.tiles.length; i++)
-            _sized(context, i, cols, cell, cellH, gap),
-        ]),
-      );
-    });
+    return LayoutBuilder(
+      builder: (context, box) {
+        const gap = 12.0;
+        final cols = (box.maxWidth / 170).floor().clamp(2, 8);
+        final cell = (box.maxWidth - gap * (cols + 1)) / cols;
+        final cellH = (cell * 0.8).clamp(110.0, 170.0);
+        return SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(gap, 4, gap, 96),
+          child: Wrap(
+            spacing: gap,
+            runSpacing: gap,
+            children: [for (var i = 0; i < dashboard.tiles.length; i++) _sized(context, i, cols, cell, cellH, gap)],
+          ),
+        );
+      },
+    );
   }
 
   Widget _sized(BuildContext context, int index, int cols, double cell, double cellH, double gap) {
@@ -290,14 +357,25 @@ class _DashboardGrid extends StatelessWidget {
     final span = t.colSpan.clamp(1, cols);
     final w = span * cell + (span - 1) * gap;
     final h = t.rowSpan * cellH + (t.rowSpan - 1) * gap;
-    final tile = SizedBox(width: w, height: h, child: TileWidget(key: ValueKey(t.id), tile: t, editing: editing));
+    final tile = SizedBox(
+      width: w,
+      height: h,
+      child: TileWidget(key: ValueKey(t.id), tile: t, editing: editing),
+    );
     if (!editing) return tile;
     return _EditableTile(dashboard: dashboard, index: index, width: w, height: h, desktop: _desktop, child: tile);
   }
 }
 
 class _EditableTile extends StatelessWidget {
-  const _EditableTile({required this.dashboard, required this.index, required this.width, required this.height, required this.desktop, required this.child});
+  const _EditableTile({
+    required this.dashboard,
+    required this.index,
+    required this.width,
+    required this.height,
+    required this.desktop,
+    required this.child,
+  });
   final Dashboard dashboard;
   final int index;
   final double width;
@@ -310,45 +388,78 @@ class _EditableTile extends StatelessWidget {
     final st = AppScope.read(context);
     final cs = Theme.of(context).colorScheme;
     final t = dashboard.tiles[index];
-    final overlay = Stack(children: [
-      child,
-      Positioned.fill(
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            borderRadius: BorderRadius.circular(20),
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => TileEditor(dashboard: dashboard, initial: t.copy()))),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: cs.primary.withValues(alpha: 0.7), width: 1.5),
+    final overlay = Stack(
+      children: [
+        child,
+        Positioned.fill(
+          child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(20),
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => TileEditor(dashboard: dashboard, initial: t.copy()),
+                ),
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: cs.primary.withValues(alpha: 0.7), width: 1.5),
+                ),
               ),
             ),
           ),
         ),
-      ),
-      Positioned(
-        right: 4,
-        top: 4,
-        child: Row(mainAxisSize: MainAxisSize.min, children: [
-          _mini(context, Icons.chevron_left, () => st.moveTile(dashboard, index, index - 1), enabled: index > 0),
-          _mini(context, Icons.chevron_right, () => st.moveTile(dashboard, index, index + 1), enabled: index < dashboard.tiles.length - 1),
-          _mini(context, Icons.delete_outline, () async {
-            final ok = await confirmDialog(context, tx(context, 'Poistetaanko ruutu?', 'Delete tile?'), t.title, ok: tx(context, 'Poista', 'Delete'));
-            if (ok) await st.deleteTile(dashboard, t.id);
-          }),
-        ]),
-      ),
-      Positioned(left: 8, bottom: 8, child: Icon(Icons.drag_indicator, size: 18, color: cs.primary)),
-    ]);
+        Positioned(
+          right: 4,
+          top: 4,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _mini(context, Icons.chevron_left, () => st.moveTile(dashboard, index, index - 1), enabled: index > 0),
+              _mini(
+                context,
+                Icons.chevron_right,
+                () => st.moveTile(dashboard, index, index + 1),
+                enabled: index < dashboard.tiles.length - 1,
+              ),
+              _mini(context, Icons.delete_outline, () async {
+                final ok = await confirmDialog(
+                  context,
+                  tx(context, 'Poistetaanko ruutu?', 'Delete tile?'),
+                  t.title,
+                  ok: tx(context, 'Poista', 'Delete'),
+                );
+                if (ok) await st.deleteTile(dashboard, t.id);
+              }),
+            ],
+          ),
+        ),
+        Positioned(right: 8, bottom: 8, child: Icon(Icons.drag_indicator, size: 18, color: cs.primary)),
+      ],
+    );
 
     final feedback = Material(
       color: Colors.transparent,
-      child: Opacity(opacity: 0.85, child: SizedBox(width: width, height: height, child: child)),
+      child: Opacity(
+        opacity: 0.85,
+        child: SizedBox(width: width, height: height, child: child),
+      ),
     );
     final draggable = desktop
-        ? Draggable<int>(data: index, feedback: feedback, childWhenDragging: Opacity(opacity: 0.3, child: overlay), child: overlay)
-        : LongPressDraggable<int>(data: index, feedback: feedback, childWhenDragging: Opacity(opacity: 0.3, child: overlay), child: overlay);
+        ? Draggable<int>(
+            data: index,
+            feedback: feedback,
+            childWhenDragging: Opacity(opacity: 0.3, child: overlay),
+            child: overlay,
+          )
+        : LongPressDraggable<int>(
+            data: index,
+            feedback: feedback,
+            childWhenDragging: Opacity(opacity: 0.3, child: overlay),
+            child: overlay,
+          );
 
     return DragTarget<int>(
       onWillAcceptWithDetails: (d) => d.data != index,
@@ -362,15 +473,18 @@ class _EditableTile extends StatelessWidget {
   }
 
   Widget _mini(BuildContext context, IconData icon, VoidCallback onTap, {bool enabled = true}) => Padding(
-        padding: const EdgeInsets.only(left: 2),
-        child: Material(
-          color: Theme.of(context).colorScheme.surfaceContainerHighest,
-          shape: const CircleBorder(),
-          child: InkWell(
-            customBorder: const CircleBorder(),
-            onTap: enabled ? onTap : null,
-            child: Padding(padding: const EdgeInsets.all(5), child: Icon(icon, size: 16, color: enabled ? null : Colors.grey)),
-          ),
+    padding: const EdgeInsets.only(left: 2),
+    child: Material(
+      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+      shape: const CircleBorder(),
+      child: InkWell(
+        customBorder: const CircleBorder(),
+        onTap: enabled ? onTap : null,
+        child: Padding(
+          padding: const EdgeInsets.all(5),
+          child: Icon(icon, size: 16, color: enabled ? null : Colors.grey),
         ),
-      );
+      ),
+    ),
+  );
 }

@@ -3,11 +3,7 @@ import 'package:material_ui/material_ui.dart';
 const seed = Color(0xFF2EC4B6);
 
 ThemeData molaplanTheme() {
-  final cs = ColorScheme.fromSeed(
-    seedColor: seed,
-    brightness: Brightness.dark,
-    surface: const Color(0xFF101418),
-  );
+  final cs = ColorScheme.fromSeed(seedColor: seed, brightness: Brightness.dark, surface: const Color(0xFF101418));
   return ThemeData(
     useMaterial3: true,
     colorScheme: cs,

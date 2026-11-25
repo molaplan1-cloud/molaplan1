@@ -4,13 +4,20 @@ import '../models/models.dart';
 AppConfig exampleConfig(String lang) {
   final fi = lang == 'fi';
   final ha = ConnectionConfig(
-      name: 'Home Assistant', type: 'homeassistant', settings: {'baseUrl': 'http://homeassistant.local:8123', 'liveUpdates': true});
+    name: 'Home Assistant',
+    type: 'homeassistant',
+    settings: {'baseUrl': 'http://homeassistant.local:8123', 'liveUpdates': true},
+  );
   final cam = ConnectionConfig(
-      name: fi ? 'ESP32-kamera' : 'ESP32 camera', type: 'camera', settings: {'baseUrl': 'http://192.168.1.70', 'auth': 'none'});
+    name: fi ? 'ESP32-kamera' : 'ESP32 camera',
+    type: 'camera',
+    settings: {'baseUrl': 'http://192.168.1.70', 'auth': 'none'},
+  );
   final iv = ConnectionConfig(
-      name: fi ? 'IV-kone (Modbus)' : 'Ventilation unit (Modbus)',
-      type: 'modbus',
-      settings: {'host': '192.168.1.60', 'port': 502, 'unitId': 1});
+    name: fi ? 'IV-kone (Modbus)' : 'Ventilation unit (Modbus)',
+    type: 'modbus',
+    settings: {'host': '192.168.1.60', 'port': 502, 'unitId': 1},
+  );
   final tiles = <TileConfig>[
     TileConfig(
       type: TileType.camera,
@@ -27,8 +34,14 @@ AppConfig exampleConfig(String lang) {
       connectionId: ha.id,
       read: {'entityId': 'alarm_control_panel.koti'},
       valueMap: fi ? 'disarmed=Pois;armed_away=Päällä;armed_home=Kotona;triggered=HÄLYTYS' : '',
-      onCommand: CommandStep(connectionId: ha.id, spec: {'service': 'alarm_control_panel.alarm_arm_away', 'entityId': 'alarm_control_panel.koti'}),
-      offCommand: CommandStep(connectionId: ha.id, spec: {'service': 'alarm_control_panel.alarm_disarm', 'entityId': 'alarm_control_panel.koti'}),
+      onCommand: CommandStep(
+        connectionId: ha.id,
+        spec: {'service': 'alarm_control_panel.alarm_arm_away', 'entityId': 'alarm_control_panel.koti'},
+      ),
+      offCommand: CommandStep(
+        connectionId: ha.id,
+        spec: {'service': 'alarm_control_panel.alarm_disarm', 'entityId': 'alarm_control_panel.koti'},
+      ),
       confirm: true,
     ),
     TileConfig(
@@ -61,7 +74,9 @@ AppConfig exampleConfig(String lang) {
       step: 1,
       decimals: 0,
       valueMap: fi ? '0=Pois;1=Poissa;2=Kotona;3=Tehostus;4=Max' : '0=Off;1=Away;2=Home;3=Boost;4=Max',
-      commands: [CommandStep(connectionId: iv.id, spec: {'table': 'holding', 'address': 20, 'value': '{{value}}'})],
+      commands: [
+        CommandStep(connectionId: iv.id, spec: {'table': 'holding', 'address': 20, 'value': '{{value}}'}),
+      ],
     ),
     TileConfig(
       type: TileType.button,
@@ -72,7 +87,11 @@ AppConfig exampleConfig(String lang) {
       commands: [
         CommandStep(connectionId: ha.id, spec: {'service': 'light.turn_off', 'entityId': 'all'}),
         CommandStep(connectionId: iv.id, spec: {'table': 'holding', 'address': 20, 'value': '1'}, delayMs: 200),
-        CommandStep(connectionId: ha.id, spec: {'service': 'alarm_control_panel.alarm_arm_away', 'entityId': 'alarm_control_panel.koti'}, delayMs: 500),
+        CommandStep(
+          connectionId: ha.id,
+          spec: {'service': 'alarm_control_panel.alarm_arm_away', 'entityId': 'alarm_control_panel.koti'},
+          delayMs: 500,
+        ),
       ],
     ),
   ];

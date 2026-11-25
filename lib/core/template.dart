@@ -10,9 +10,7 @@ String applyTemplate(String template, Object? value) {
   } else {
     asInt = num.tryParse(v.toString())?.round().toString() ?? v.toString();
   }
-  return template
-      .replaceAll('{{value_int}}', asInt)
-      .replaceAll('{{value}}', _fmt(v));
+  return template.replaceAll('{{value_int}}', asInt).replaceAll('{{value}}', _fmt(v));
 }
 
 String _fmt(Object v) {
@@ -22,9 +20,7 @@ String _fmt(Object v) {
 
 /// "01 0A ff" / "010aff" / "0x01,0x0a" -> bytes.
 Uint8List parseHex(String s) {
-  final clean = s
-      .replaceAll(RegExp(r'0x', caseSensitive: false), '')
-      .replaceAll(RegExp(r'[^0-9a-fA-F]'), '');
+  final clean = s.replaceAll(RegExp(r'0x', caseSensitive: false), '').replaceAll(RegExp(r'[^0-9a-fA-F]'), '');
   if (clean.length.isOdd) {
     throw FormatException('Hex string has odd length: $s');
   }
@@ -35,8 +31,7 @@ Uint8List parseHex(String s) {
   return out;
 }
 
-String toHex(List<int> bytes) =>
-    bytes.map((b) => b.toRadixString(16).padLeft(2, '0')).join(' ');
+String toHex(List<int> bytes) => bytes.map((b) => b.toRadixString(16).padLeft(2, '0')).join(' ');
 
 /// Decodes escape sequences \n \r \t \xHH in a user typed string.
 String unescape(String s) {
@@ -58,8 +53,7 @@ String unescape(String s) {
 }
 
 /// Encodes payload either as hex or as (unescaped) utf8 text.
-List<int> encodePayload(String payload, {bool hex = false}) =>
-    hex ? parseHex(payload) : utf8.encode(unescape(payload));
+List<int> encodePayload(String payload, {bool hex = false}) => hex ? parseHex(payload) : utf8.encode(unescape(payload));
 
 /// Parses a response: optional regex (group 1 or whole match) then jsonPath
 /// is applied by the caller. Returns a num when the text looks numeric.
@@ -102,10 +96,27 @@ bool isTruthy(Object? v, {String? onValue}) {
   if (v is bool) return v;
   if (v is num) return v != 0;
   const truthy = {
-    '1', 'true', 'on', 'yes', 'open', 'opened', 'active', 'running',
-    'home', 'armed', 'armed_home', 'armed_away', 'armed_night',
-    'armed_vacation', 'armed_custom_bypass', 'heat', 'cool', 'auto',
-    'playing', 'unlocked', 'detected',
+    '1',
+    'true',
+    'on',
+    'yes',
+    'open',
+    'opened',
+    'active',
+    'running',
+    'home',
+    'armed',
+    'armed_home',
+    'armed_away',
+    'armed_night',
+    'armed_vacation',
+    'armed_custom_bypass',
+    'heat',
+    'cool',
+    'auto',
+    'playing',
+    'unlocked',
+    'detected',
   };
   return truthy.contains(v.toString().trim().toLowerCase());
 }

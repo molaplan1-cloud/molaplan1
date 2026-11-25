@@ -56,19 +56,34 @@ class CameraDriver extends Driver {
     cameraOnly: true,
     connectionFields: [
       FieldSpec('baseUrl', 'Kameran osoite', 'Camera base URL', hint: 'http://192.168.1.70', required: true),
-      FieldSpec('auth', 'Tunnistus', 'Authentication',
-          kind: FieldKind.choice, options: ['none', 'basic', 'bearer'], defaultValue: 'none'),
+      FieldSpec(
+        'auth',
+        'Tunnistus',
+        'Authentication',
+        kind: FieldKind.choice,
+        options: ['none', 'basic', 'bearer'],
+        defaultValue: 'none',
+      ),
       FieldSpec('username', 'Käyttäjätunnus', 'Username'),
       FieldSpec('password', 'Salasana', 'Password', kind: FieldKind.secret),
       FieldSpec('token', 'Token', 'Token', kind: FieldKind.secret),
-      FieldSpec('allowSelfSigned', 'Salli itse allekirjoitettu sertifikaatti', 'Allow self-signed certificate',
-          kind: FieldKind.boolean),
+      FieldSpec(
+        'allowSelfSigned',
+        'Salli itse allekirjoitettu sertifikaatti',
+        'Allow self-signed certificate',
+        kind: FieldKind.boolean,
+      ),
     ],
     readFields: [
       FieldSpec('mode', 'Tila', 'Mode', kind: FieldKind.choice, options: ['mjpeg', 'snapshot'], defaultValue: 'mjpeg'),
       FieldSpec('path', 'Polku', 'Path', hint: 'ESP32-CAM: :81/stream tai /capture'),
-      FieldSpec('refreshSeconds', 'Kuvan päivitysväli (s, snapshot)', 'Refresh (s, snapshot)',
-          kind: FieldKind.number, defaultValue: 2),
+      FieldSpec(
+        'refreshSeconds',
+        'Kuvan päivitysväli (s, snapshot)',
+        'Refresh (s, snapshot)',
+        kind: FieldKind.number,
+        defaultValue: 2,
+      ),
     ],
     commandFields: [
       FieldSpec('method', 'Metodi', 'Method', kind: FieldKind.choice, options: ['GET', 'POST'], defaultValue: 'GET'),
@@ -101,25 +116,32 @@ class CameraDriver extends Driver {
     late StreamController<Uint8List> out;
     StreamSubscription? sub;
     final c = makeHttpClient(s.flag('allowSelfSigned'));
-    out = StreamController<Uint8List>(onListen: () async {
-      try {
-        final req = http.Request('GET', url(path))..headers.addAll(headers);
-        final resp = await c.send(req).timeout(const Duration(seconds: 10));
-        if (resp.statusCode >= 400) throw DriverException('Camera: HTTP ${resp.statusCode}');
-        final parser = MjpegParser();
-        sub = resp.stream.listen((chunk) {
-          for (final f in parser.add(chunk)) {
-            out.add(f);
-          }
-        }, onError: out.addError, onDone: () => out.close());
-      } catch (e) {
-        out.addError(e);
-        await out.close();
-      }
-    }, onCancel: () async {
-      await sub?.cancel();
-      c.close();
-    });
+    out = StreamController<Uint8List>(
+      onListen: () async {
+        try {
+          final req = http.Request('GET', url(path))..headers.addAll(headers);
+          final resp = await c.send(req).timeout(const Duration(seconds: 10));
+          if (resp.statusCode >= 400) throw DriverException('Camera: HTTP ${resp.statusCode}');
+          final parser = MjpegParser();
+          sub = resp.stream.listen(
+            (chunk) {
+              for (final f in parser.add(chunk)) {
+                out.add(f);
+              }
+            },
+            onError: out.addError,
+            onDone: () => out.close(),
+          );
+        } catch (e) {
+          out.addError(e);
+          await out.close();
+        }
+      },
+      onCancel: () async {
+        await sub?.cancel();
+        c.close();
+      },
+    );
     return out.stream;
   }
 

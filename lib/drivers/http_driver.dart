@@ -27,8 +27,7 @@ Map<String, String> authHeaders(Map<String, dynamic> s) {
   final h = <String, String>{};
   switch (s.str('auth', 'none')) {
     case 'basic':
-      h['Authorization'] =
-          'Basic ${base64Encode(utf8.encode('${s.str('username')}:${s.str('password')}'))}';
+      h['Authorization'] = 'Basic ${base64Encode(utf8.encode('${s.str('username')}:${s.str('password')}'))}';
     case 'bearer':
       h['Authorization'] = 'Bearer ${s.str('token')}';
   }
@@ -38,8 +37,7 @@ Map<String, String> authHeaders(Map<String, dynamic> s) {
 class HttpDriver extends Driver {
   HttpDriver(super.config);
   http.Client? _client;
-  http.Client get client =>
-      _client ??= makeHttpClient(s.flag('allowSelfSigned'), timeout: _timeout);
+  http.Client get client => _client ??= makeHttpClient(s.flag('allowSelfSigned'), timeout: _timeout);
   Duration get _timeout => Duration(seconds: s.integer('timeoutSec', 10));
 
   static const descriptor = DriverDescriptor(
@@ -49,28 +47,54 @@ class HttpDriver extends Driver {
     create: HttpDriver.new,
     connectionFields: [
       FieldSpec('baseUrl', 'Perusosoite', 'Base URL', hint: 'http://192.168.1.50', required: true),
-      FieldSpec('auth', 'Tunnistus', 'Authentication',
-          kind: FieldKind.choice, options: ['none', 'basic', 'bearer'], defaultValue: 'none'),
+      FieldSpec(
+        'auth',
+        'Tunnistus',
+        'Authentication',
+        kind: FieldKind.choice,
+        options: ['none', 'basic', 'bearer'],
+        defaultValue: 'none',
+      ),
       FieldSpec('username', 'Käyttäjätunnus', 'Username'),
       FieldSpec('password', 'Salasana', 'Password', kind: FieldKind.secret),
       FieldSpec('token', 'Token', 'Token', kind: FieldKind.secret),
-      FieldSpec('headers', 'Lisäotsakkeet (Nimi: arvo / rivi)', 'Extra headers (Name: value per line)',
-          kind: FieldKind.multiline),
-      FieldSpec('allowSelfSigned', 'Salli itse allekirjoitettu sertifikaatti', 'Allow self-signed certificate',
-          kind: FieldKind.boolean),
+      FieldSpec(
+        'headers',
+        'Lisäotsakkeet (Nimi: arvo / rivi)',
+        'Extra headers (Name: value per line)',
+        kind: FieldKind.multiline,
+      ),
+      FieldSpec(
+        'allowSelfSigned',
+        'Salli itse allekirjoitettu sertifikaatti',
+        'Allow self-signed certificate',
+        kind: FieldKind.boolean,
+      ),
       FieldSpec('timeoutSec', 'Aikakatkaisu (s)', 'Timeout (s)', kind: FieldKind.number, defaultValue: 10),
     ],
     readFields: [
-      FieldSpec('method', 'Metodi', 'Method',
-          kind: FieldKind.choice, options: ['GET', 'POST', 'PUT'], defaultValue: 'GET'),
+      FieldSpec(
+        'method',
+        'Metodi',
+        'Method',
+        kind: FieldKind.choice,
+        options: ['GET', 'POST', 'PUT'],
+        defaultValue: 'GET',
+      ),
       FieldSpec('path', 'Polku', 'Path', hint: '/api/status'),
       FieldSpec('body', 'Runko', 'Body', kind: FieldKind.multiline),
       FieldSpec('jsonPath', 'JSON-polku', 'JSON path', hint: r'$.data.temperature'),
       FieldSpec('regex', 'Regex (ryhmä 1)', 'Regex (group 1)'),
     ],
     commandFields: [
-      FieldSpec('method', 'Metodi', 'Method',
-          kind: FieldKind.choice, options: ['POST', 'GET', 'PUT', 'PATCH', 'DELETE'], defaultValue: 'POST'),
+      FieldSpec(
+        'method',
+        'Metodi',
+        'Method',
+        kind: FieldKind.choice,
+        options: ['POST', 'GET', 'PUT', 'PATCH', 'DELETE'],
+        defaultValue: 'POST',
+      ),
       FieldSpec('path', 'Polku', 'Path', hint: '/api/relay?state={{value}}'),
       FieldSpec('body', 'Runko ({{value}} = arvo)', 'Body ({{value}} = value)', kind: FieldKind.multiline),
       FieldSpec('contentType', 'Content-Type', 'Content-Type', defaultValue: 'application/json'),
@@ -89,8 +113,7 @@ class HttpDriver extends Driver {
       req.headers['Content-Type'] = spec.str('contentType', 'application/json');
       req.body = applyTemplate(body, value);
     }
-    final resp = await http.Response.fromStream(await client.send(req).timeout(_timeout))
-        .timeout(_timeout);
+    final resp = await http.Response.fromStream(await client.send(req).timeout(_timeout)).timeout(_timeout);
     if (resp.statusCode >= 400) {
       throw DriverException('HTTP ${resp.statusCode}: ${_short(resp.body)}');
     }

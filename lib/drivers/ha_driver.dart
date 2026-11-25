@@ -31,12 +31,26 @@ class HomeAssistantDriver extends Driver {
     create: HomeAssistantDriver.new,
     connectionFields: [
       FieldSpec('baseUrl', 'Osoite', 'URL', hint: 'http://homeassistant.local:8123', required: true),
-      FieldSpec('token', 'Pitkäikäinen käyttöoikeustunnus', 'Long-lived access token',
-          kind: FieldKind.secret, required: true),
-      FieldSpec('liveUpdates', 'Reaaliaikaiset päivitykset (websocket)', 'Live updates (websocket)',
-          kind: FieldKind.boolean, defaultValue: true),
-      FieldSpec('allowSelfSigned', 'Salli itse allekirjoitettu sertifikaatti', 'Allow self-signed certificate',
-          kind: FieldKind.boolean),
+      FieldSpec(
+        'token',
+        'Pitkäikäinen käyttöoikeustunnus',
+        'Long-lived access token',
+        kind: FieldKind.secret,
+        required: true,
+      ),
+      FieldSpec(
+        'liveUpdates',
+        'Reaaliaikaiset päivitykset (websocket)',
+        'Live updates (websocket)',
+        kind: FieldKind.boolean,
+        defaultValue: true,
+      ),
+      FieldSpec(
+        'allowSelfSigned',
+        'Salli itse allekirjoitettu sertifikaatti',
+        'Allow self-signed certificate',
+        kind: FieldKind.boolean,
+      ),
     ],
     readFields: [
       FieldSpec('entityId', 'Entiteetti', 'Entity id', hint: 'light.olohuone', required: true),
@@ -45,15 +59,17 @@ class HomeAssistantDriver extends Driver {
     commandFields: [
       FieldSpec('service', 'Palvelu', 'Service', hint: 'light.turn_on', required: true),
       FieldSpec('entityId', 'Entiteetti', 'Entity id', hint: 'light.olohuone'),
-      FieldSpec('data', 'Lisädata JSON ({{value}} = arvo)', 'Extra data JSON ({{value}} = value)',
-          kind: FieldKind.multiline, hint: '{"brightness_pct": {{value}}}'),
+      FieldSpec(
+        'data',
+        'Lisädata JSON ({{value}} = arvo)',
+        'Extra data JSON ({{value}} = value)',
+        kind: FieldKind.multiline,
+        hint: '{"brightness_pct": {{value}}}',
+      ),
     ],
   );
 
-  Map<String, String> get _headers => {
-        'Authorization': 'Bearer ${s.str('token')}',
-        'Content-Type': 'application/json',
-      };
+  Map<String, String> get _headers => {'Authorization': 'Bearer ${s.str('token')}', 'Content-Type': 'application/json'};
 
   String get _base {
     final b = s.str('baseUrl');
@@ -94,17 +110,18 @@ class HomeAssistantDriver extends Driver {
     final entity = spec.str('entityId');
     late StreamController<Object?> out;
     StreamSubscription? sub;
-    out = StreamController<Object?>(onListen: () async {
-      sub = _events.stream
-          .where((e) => e['entity_id'] == entity)
-          .listen((e) => out.add(_pick(e, spec)));
-      try {
-        out.add(_pick(await _getState(entity), spec));
-        await _ensureWs();
-      } catch (e) {
-        out.addError(e);
-      }
-    }, onCancel: () => sub?.cancel());
+    out = StreamController<Object?>(
+      onListen: () async {
+        sub = _events.stream.where((e) => e['entity_id'] == entity).listen((e) => out.add(_pick(e, spec)));
+        try {
+          out.add(_pick(await _getState(entity), spec));
+          await _ensureWs();
+        } catch (e) {
+          out.addError(e);
+        }
+      },
+      onCancel: () => sub?.cancel(),
+    );
     return out.stream;
   }
 
@@ -120,30 +137,34 @@ class HomeAssistantDriver extends Driver {
     final ch = IOWebSocketChannel.connect(Uri.parse(wsUrl), customClient: hc);
     final authed = Completer<void>();
     final subId = _msgId++;
-    ch.stream.listen((raw) {
-      final m = jsonDecode(raw as String) as Map;
-      switch (m['type']) {
-        case 'auth_required':
-          ch.sink.add(jsonEncode({'type': 'auth', 'access_token': s.str('token')}));
-        case 'auth_ok':
-          ch.sink.add(jsonEncode({'id': subId, 'type': 'subscribe_events', 'event_type': 'state_changed'}));
-          if (!authed.isCompleted) authed.complete();
-        case 'auth_invalid':
-          if (!authed.isCompleted) authed.completeError(DriverException('Home Assistant: invalid token'));
-        case 'event':
-          final data = (m['event'] as Map?)?['data'] as Map?;
-          final ns = data?['new_state'];
-          if (data != null && ns is Map) {
-            final st = Map<String, dynamic>.from(ns);
-            st['entity_id'] = data['entity_id'];
-            _states[data['entity_id'] as String] = st;
-            _events.add(st);
-          }
-      }
-    }, onError: (Object e) {
-      if (!authed.isCompleted) authed.completeError(DriverException('Home Assistant ws: $e'));
-      _lost();
-    }, onDone: _lost);
+    ch.stream.listen(
+      (raw) {
+        final m = jsonDecode(raw as String) as Map;
+        switch (m['type']) {
+          case 'auth_required':
+            ch.sink.add(jsonEncode({'type': 'auth', 'access_token': s.str('token')}));
+          case 'auth_ok':
+            ch.sink.add(jsonEncode({'id': subId, 'type': 'subscribe_events', 'event_type': 'state_changed'}));
+            if (!authed.isCompleted) authed.complete();
+          case 'auth_invalid':
+            if (!authed.isCompleted) authed.completeError(DriverException('Home Assistant: invalid token'));
+          case 'event':
+            final data = (m['event'] as Map?)?['data'] as Map?;
+            final ns = data?['new_state'];
+            if (data != null && ns is Map) {
+              final st = Map<String, dynamic>.from(ns);
+              st['entity_id'] = data['entity_id'];
+              _states[data['entity_id'] as String] = st;
+              _events.add(st);
+            }
+        }
+      },
+      onError: (Object e) {
+        if (!authed.isCompleted) authed.completeError(DriverException('Home Assistant ws: $e'));
+        _lost();
+      },
+      onDone: _lost,
+    );
     try {
       await authed.future.timeout(const Duration(seconds: 10));
     } catch (_) {
@@ -176,8 +197,11 @@ class HomeAssistantDriver extends Driver {
     final entity = spec.strOrNull('entityId');
     if (entity != null) body['entity_id'] = entity;
     final r = await client
-        .post(Uri.parse('$_base/api/services/${svc.substring(0, i)}/${svc.substring(i + 1)}'),
-            headers: _headers, body: jsonEncode(body))
+        .post(
+          Uri.parse('$_base/api/services/${svc.substring(0, i)}/${svc.substring(i + 1)}'),
+          headers: _headers,
+          body: jsonEncode(body),
+        )
         .timeout(const Duration(seconds: 10));
     if (r.statusCode >= 400) throw DriverException('Home Assistant: HTTP ${r.statusCode} ${r.body}');
     return r.body;

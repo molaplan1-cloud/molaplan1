@@ -14,10 +14,13 @@ void main() {
   group('jsonPath', () {
     final doc = {
       'a': {
-        'b': [10, {'c': 'x'}]
+        'b': [
+          10,
+          {'c': 'x'},
+        ],
       },
       'temp': 21.5,
-      'with space': 1
+      'with space': 1,
     };
     test('dotted + index', () {
       expect(jsonPathGet(doc, r'$.a.b[0]'), 10);
@@ -65,7 +68,11 @@ void main() {
       for (final t in ['uint16', 'int16', 'uint32', 'int32']) {
         for (final swap in [false, true]) {
           final v = t.startsWith('u') ? 1234 : -1234;
-          expect(decodeRegisters(encodeRegisters(v, t, swapWords: swap), t, swapWords: swap), v, reason: '$t $swap');
+          expect(
+            decodeRegisters(encodeRegisters(v, t, swapWords: swap), t, swapWords: swap),
+            v,
+            reason: '$t $swap',
+          );
         }
       }
       final f = decodeRegisters(encodeRegisters(21.5, 'float32'), 'float32');
@@ -111,7 +118,12 @@ void main() {
         onCommand: CommandStep(connectionId: c.id, spec: {'service': 'light.turn_on'}),
         commands: [CommandStep(connectionId: c.id, delayMs: 100)],
       );
-      final cfg = AppConfig(connections: [c], dashboards: [Dashboard(name: 'Koti', tiles: [tile])]);
+      final cfg = AppConfig(
+        connections: [c],
+        dashboards: [
+          Dashboard(name: 'Koti', tiles: [tile]),
+        ],
+      );
       final j = jsonEncode(cfg.toJson());
       expect(j.contains('"password"'), isFalse);
       final back = AppConfig.fromJson(jsonDecode(j));
@@ -123,10 +135,11 @@ void main() {
       expect(jsonEncode(cfg.toJson(includeSecrets: true)).contains('"password"'), isTrue);
     });
     test('value map and thresholds', () {
-      final t = TileConfig(type: TileType.value, valueMap: '0=Pois;1=Päällä', thresholds: [
-        Threshold(25, 2),
-        Threshold(20, 1),
-      ]);
+      final t = TileConfig(
+        type: TileType.value,
+        valueMap: '0=Pois;1=Päällä',
+        thresholds: [Threshold(25, 2), Threshold(20, 1)],
+      );
       expect(t.mapValue(1), 'Päällä');
       expect(t.mapValue(1.0), 'Päällä');
       expect(t.mapValue(5), isNull);

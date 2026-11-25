@@ -27,10 +27,16 @@ void main() {
       server = await HttpServer.bind(InternetAddress.loopbackIPv4, 0);
       server.listen((req) async {
         final body = await utf8.decodeStream(req);
-        received.add('${req.method} ${req.uri} auth=${req.headers.value('authorization')} x=${req.headers.value('x-key')} $body');
+        received.add(
+          '${req.method} ${req.uri} auth=${req.headers.value('authorization')} x=${req.headers.value('x-key')} $body',
+        );
         if (req.uri.path == '/status') {
           req.response.headers.contentType = ContentType.json;
-          req.response.write(jsonEncode({'data': {'temp': 21.5, 'mode': 'auto'}}));
+          req.response.write(
+            jsonEncode({
+              'data': {'temp': 21.5, 'mode': 'auto'},
+            }),
+          );
         } else if (req.uri.path == '/fail') {
           req.response.statusCode = 500;
         } else {
@@ -42,11 +48,13 @@ void main() {
     tearDown(() => server.close(force: true));
 
     test('read with json path, bearer auth and headers', () async {
-      final d = HttpDriver(conn('http', {
-        'baseUrl': 'http://127.0.0.1:${server.port}',
-        'auth': 'bearer',
-        'headers': 'X-Key: abc',
-      }, {'token': 'T0K'}));
+      final d = HttpDriver(
+        conn(
+          'http',
+          {'baseUrl': 'http://127.0.0.1:${server.port}', 'auth': 'bearer', 'headers': 'X-Key: abc'},
+          {'token': 'T0K'},
+        ),
+      );
       expect(await d.read({'path': '/status', 'jsonPath': r'$.data.temp'}), 21.5);
       expect(await d.read({'path': 'status', 'jsonPath': 'data.mode'}), 'auto');
       expect(received.first, contains('auth=Bearer T0K'));
@@ -145,11 +153,13 @@ void main() {
         if (req.uri.path == '/api/') {
           req.response.write(jsonEncode({'message': 'API running.'}));
         } else if (req.uri.path == '/api/states/light.olohuone') {
-          req.response.write(jsonEncode({
-            'entity_id': 'light.olohuone',
-            'state': 'on',
-            'attributes': {'brightness': 128}
-          }));
+          req.response.write(
+            jsonEncode({
+              'entity_id': 'light.olohuone',
+              'state': 'on',
+              'attributes': {'brightness': 128},
+            }),
+          );
         } else if (req.uri.path.startsWith('/api/services/')) {
           calls.add('${req.uri.path} ${await utf8.decodeStream(req)}');
           req.response.write('[]');
@@ -162,39 +172,50 @@ void main() {
     tearDown(() => server.close(force: true));
 
     test('REST read, attribute, service call, test()', () async {
-      final d = HomeAssistantDriver(conn('homeassistant', {'baseUrl': 'http://127.0.0.1:${server.port}'}, {'token': 'good'}));
+      final d = HomeAssistantDriver(
+        conn('homeassistant', {'baseUrl': 'http://127.0.0.1:${server.port}'}, {'token': 'good'}),
+      );
       expect(await d.read({'entityId': 'light.olohuone'}), 'on');
       expect(await d.read({'entityId': 'light.olohuone', 'attribute': 'brightness'}), 128);
-      await d.send({'service': 'light.turn_on', 'entityId': 'light.olohuone', 'data': '{"brightness_pct": {{value}}}'},
-          value: 40.0);
+      await d.send({
+        'service': 'light.turn_on',
+        'entityId': 'light.olohuone',
+        'data': '{"brightness_pct": {{value}}}',
+      }, value: 40.0);
       expect(calls.single, '/api/services/light/turn_on {"brightness_pct":40,"entity_id":"light.olohuone"}');
       expect(await d.test(), 'API running.');
       await d.dispose();
     });
 
     test('bad token fails', () async {
-      final d = HomeAssistantDriver(conn('homeassistant', {'baseUrl': 'http://127.0.0.1:${server.port}'}, {'token': 'bad'}));
+      final d = HomeAssistantDriver(
+        conn('homeassistant', {'baseUrl': 'http://127.0.0.1:${server.port}'}, {'token': 'bad'}),
+      );
       await expectLater(d.read({'entityId': 'light.olohuone'}), throwsA(isA<DriverException>()));
       await d.dispose();
     });
 
     test('websocket live state', () async {
-      final d = HomeAssistantDriver(conn('homeassistant', {'baseUrl': 'http://127.0.0.1:${server.port}'}, {'token': 'good'}));
+      final d = HomeAssistantDriver(
+        conn('homeassistant', {'baseUrl': 'http://127.0.0.1:${server.port}'}, {'token': 'good'}),
+      );
       final values = <Object?>[];
       final sub = d.watch({'entityId': 'light.olohuone'})!.listen(values.add);
       await _until(() => values.isNotEmpty && socket != null);
       await Future<void>.delayed(const Duration(milliseconds: 200));
-      socket!.add(jsonEncode({
-        'id': 1,
-        'type': 'event',
-        'event': {
-          'event_type': 'state_changed',
-          'data': {
-            'entity_id': 'light.olohuone',
-            'new_state': {'state': 'off', 'attributes': {}}
-          }
-        }
-      }));
+      socket!.add(
+        jsonEncode({
+          'id': 1,
+          'type': 'event',
+          'event': {
+            'event_type': 'state_changed',
+            'data': {
+              'entity_id': 'light.olohuone',
+              'new_state': {'state': 'off', 'attributes': {}},
+            },
+          },
+        }),
+      );
       await _until(() => values.length >= 2);
       expect(values, ['on', 'off']);
       await sub.cancel();
@@ -238,14 +259,16 @@ void main() {
     test('TCP text with regex and hex', () async {
       final server = await ServerSocket.bind(InternetAddress.loopbackIPv4, 0);
       final got = <List<int>>[];
-      server.listen((s) => s.listen((d) {
-            got.add(d);
-            if (utf8.decode(d, allowMalformed: true).startsWith('STATUS')) {
-              s.write('TEMP=21.5;FAN=3\r\n');
-            } else if (d.isNotEmpty && d[0] == 0x01) {
-              s.add([0xAA, 0x01]);
-            }
-          }));
+      server.listen(
+        (s) => s.listen((d) {
+          got.add(d);
+          if (utf8.decode(d, allowMalformed: true).startsWith('STATUS')) {
+            s.write('TEMP=21.5;FAN=3\r\n');
+          } else if (d.isNotEmpty && d[0] == 0x01) {
+            s.add([0xAA, 0x01]);
+          }
+        }),
+      );
       final d = TcpDriver(conn('tcp', {'host': '127.0.0.1', 'port': server.port}));
       expect(await d.read({'payload': r'STATUS\r\n', 'regex': r'TEMP=([\d.]+)'}), 21.5);
       expect(await d.read({'payload': '01 02', 'hex': true, 'responseHex': true}), 'aa 01');
@@ -316,7 +339,10 @@ void main() {
   group('MQTT (local mosquitto)', () {
     Process? broker;
     late int port;
-    final mosq = ['/usr/sbin/mosquitto', '/usr/bin/mosquitto'].firstWhere((p) => File(p).existsSync(), orElse: () => '');
+    final mosq = [
+      '/usr/sbin/mosquitto',
+      '/usr/bin/mosquitto',
+    ].firstWhere((p) => File(p).existsSync(), orElse: () => '');
     setUpAll(() async {
       if (mosq.isEmpty) return;
       final s = await ServerSocket.bind(InternetAddress.loopbackIPv4, 0);

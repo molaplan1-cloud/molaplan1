@@ -37,15 +37,21 @@ class _SettingsPageState extends State<SettingsPage> {
   Future<void> _import() async {
     final st = AppScope.read(context);
     try {
-      final f = await FilePicker.pickFile(type: FileType.any, dialogTitle: tx(context, 'Tuo asetukset', 'Import configuration'));
+      final f = await FilePicker.pickFile(
+        type: FileType.any,
+        dialogTitle: tx(context, 'Tuo asetukset', 'Import configuration'),
+      );
       if (f == null || !mounted) return;
       final text = utf8.decode(await f.readAsBytes());
       if (!mounted) return;
       final ok = await confirmDialog(
         context,
         tx(context, 'Korvataanko nykyiset asetukset?', 'Replace current configuration?'),
-        tx(context, 'Kaikki nykyiset yhteydet ja näkymät korvataan tiedoston sisällöllä.',
-            'All current connections and dashboards are replaced by the file contents.'),
+        tx(
+          context,
+          'Kaikki nykyiset yhteydet ja näkymät korvataan tiedoston sisällöllä.',
+          'All current connections and dashboards are replaced by the file contents.',
+        ),
         ok: tx(context, 'Tuo', 'Import'),
       );
       if (!ok) return;
@@ -65,66 +71,95 @@ class _SettingsPageState extends State<SettingsPage> {
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 640),
-          child: ListView(padding: const EdgeInsets.all(16), children: [
-            Text(tx(context, 'Kieli', 'Language'), style: text.titleMedium),
-            const SizedBox(height: 8),
-            SegmentedButton<String>(
-              segments: const [
-                ButtonSegment(value: 'fi', label: Text('Suomi')),
-                ButtonSegment(value: 'en', label: Text('English')),
-              ],
-              selected: {st.lang},
-              onSelectionChanged: (s) => st.setLanguage(s.first),
-            ),
-            const SizedBox(height: 28),
-            Text(tx(context, 'Varmuuskopio ja siirto', 'Backup and transfer'), style: text.titleMedium),
-            const SizedBox(height: 4),
-            Text(
-              tx(context, 'Vie asetukset JSON-tiedostoon ja tuo ne toiselle laitteelle (esim. PC → puhelin).',
-                  'Export the configuration to a JSON file and import it on another device (e.g. PC → phone).'),
-              style: text.bodySmall,
-            ),
-            SwitchListTile(
-              contentPadding: EdgeInsets.zero,
-              title: Text(tx(context, 'Sisällytä salasanat ja tokenit', 'Include passwords and tokens')),
-              subtitle: Text(tx(context, 'Tiedosto on silloin salaamaton – säilytä se turvassa.',
-                  'The file is then unencrypted – keep it safe.')),
-              value: _includeSecrets,
-              onChanged: (v) => setState(() => _includeSecrets = v),
-            ),
-            Wrap(spacing: 10, runSpacing: 10, children: [
-              FilledButton.tonalIcon(onPressed: _export, icon: const Icon(Icons.upload_file), label: Text(tx(context, 'Vie', 'Export'))),
-              FilledButton.tonalIcon(onPressed: _import, icon: const Icon(Icons.download), label: Text(tx(context, 'Tuo', 'Import'))),
-            ]),
-            const SizedBox(height: 28),
-            Text(tx(context, 'Esimerkki', 'Example'), style: text.titleMedium),
-            const SizedBox(height: 4),
-            Text(
-              tx(context, 'Lisää esimerkkinäkymä (kamera, hälytys, valot, IV-kone). Vaihda osoitteet omiksesi.',
-                  'Add an example dashboard (camera, alarm, lights, ventilation). Replace the addresses with yours.'),
-              style: text.bodySmall,
-            ),
-            const SizedBox(height: 8),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: OutlinedButton.icon(
-                onPressed: () async {
-                  await st.merge(exampleConfig(st.lang));
-                  if (context.mounted) Navigator.pop(context, 'example');
-                },
-                icon: const Icon(Icons.auto_awesome_outlined),
-                label: Text(tx(context, 'Lisää esimerkkinäkymä', 'Add example dashboard')),
+          child: ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              Text(tx(context, 'Kieli', 'Language'), style: text.titleMedium),
+              const SizedBox(height: 8),
+              SegmentedButton<String>(
+                segments: const [
+                  ButtonSegment(value: 'fi', label: Text('Suomi')),
+                  ButtonSegment(value: 'en', label: Text('English')),
+                ],
+                selected: {st.lang},
+                onSelectionChanged: (s) => st.setLanguage(s.first),
               ),
-            ),
-            const SizedBox(height: 28),
-            Text('Molaplan $appVersion', style: text.titleMedium),
-            const SizedBox(height: 4),
-            Text(
-              tx(context, 'Oma ohjauspääte: HTTP, MQTT, Modbus TCP, Home Assistant, kamerat, WebSocket, TCP ja UDP. Kaikki asetukset pysyvät tällä laitteella.',
-                  'Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. All settings stay on this device.'),
-              style: text.bodySmall,
-            ),
-          ]),
+              const SizedBox(height: 28),
+              Text(tx(context, 'Varmuuskopio ja siirto', 'Backup and transfer'), style: text.titleMedium),
+              const SizedBox(height: 4),
+              Text(
+                tx(
+                  context,
+                  'Vie asetukset JSON-tiedostoon ja tuo ne toiselle laitteelle (esim. PC → puhelin).',
+                  'Export the configuration to a JSON file and import it on another device (e.g. PC → phone).',
+                ),
+                style: text.bodySmall,
+              ),
+              SwitchListTile(
+                contentPadding: EdgeInsets.zero,
+                title: Text(tx(context, 'Sisällytä salasanat ja tokenit', 'Include passwords and tokens')),
+                subtitle: Text(
+                  tx(
+                    context,
+                    'Tiedosto on silloin salaamaton – säilytä se turvassa.',
+                    'The file is then unencrypted – keep it safe.',
+                  ),
+                ),
+                value: _includeSecrets,
+                onChanged: (v) => setState(() => _includeSecrets = v),
+              ),
+              Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: [
+                  FilledButton.tonalIcon(
+                    onPressed: _export,
+                    icon: const Icon(Icons.upload_file),
+                    label: Text(tx(context, 'Vie', 'Export')),
+                  ),
+                  FilledButton.tonalIcon(
+                    onPressed: _import,
+                    icon: const Icon(Icons.download),
+                    label: Text(tx(context, 'Tuo', 'Import')),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 28),
+              Text(tx(context, 'Esimerkki', 'Example'), style: text.titleMedium),
+              const SizedBox(height: 4),
+              Text(
+                tx(
+                  context,
+                  'Lisää esimerkkinäkymä (kamera, hälytys, valot, IV-kone). Vaihda osoitteet omiksesi.',
+                  'Add an example dashboard (camera, alarm, lights, ventilation). Replace the addresses with yours.',
+                ),
+                style: text.bodySmall,
+              ),
+              const SizedBox(height: 8),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: OutlinedButton.icon(
+                  onPressed: () async {
+                    await st.merge(exampleConfig(st.lang));
+                    if (context.mounted) Navigator.pop(context, 'example');
+                  },
+                  icon: const Icon(Icons.auto_awesome_outlined),
+                  label: Text(tx(context, 'Lisää esimerkkinäkymä', 'Add example dashboard')),
+                ),
+              ),
+              const SizedBox(height: 28),
+              Text('Molaplan $appVersion', style: text.titleMedium),
+              const SizedBox(height: 4),
+              Text(
+                tx(
+                  context,
+                  'Oma ohjauspääte: HTTP, MQTT, Modbus TCP, Home Assistant, kamerat, WebSocket, TCP ja UDP. Kaikki asetukset pysyvät tällä laitteella.',
+                  'Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. All settings stay on this device.',
+                ),
+                style: text.bodySmall,
+              ),
+            ],
+          ),
         ),
       ),
     );

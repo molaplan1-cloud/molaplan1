@@ -51,18 +51,20 @@ class _CameraViewState extends State<CameraView> {
       _snap(d);
       _timer = Timer.periodic(Duration(seconds: spec.integer('refreshSeconds', 2).clamp(1, 3600)), (_) => _snap(d));
     } else {
-      _sub = d.mjpeg(spec.str('path')).listen(
-        (f) {
-          if (mounted) {
-            setState(() {
-              _frame = f;
-              _error = null;
-            });
-          }
-        },
-        onError: (Object e) => _fail(e),
-        onDone: () => _fail(mounted ? tx(context, 'Virta päättyi', 'Stream ended') : 'ended'),
-      );
+      _sub = d
+          .mjpeg(spec.str('path'))
+          .listen(
+            (f) {
+              if (mounted) {
+                setState(() {
+                  _frame = f;
+                  _error = null;
+                });
+              }
+            },
+            onError: (Object e) => _fail(e),
+            onDone: () => _fail(mounted ? tx(context, 'Virta päättyi', 'Stream ended') : 'ended'),
+          );
     }
   }
 
@@ -102,23 +104,29 @@ class _CameraViewState extends State<CameraView> {
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
-    return Stack(fit: StackFit.expand, children: [
-      Container(color: Colors.black),
-      if (_frame != null)
-        Image.memory(_frame!, fit: widget.fit, gaplessPlayback: true, errorBuilder: (_, _, _) => const SizedBox()),
-      if (_frame == null && _error == null) const Center(child: CircularProgressIndicator(strokeWidth: 2)),
-      if (_error != null)
-        Positioned(
-          left: 8,
-          right: 8,
-          bottom: 8,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            decoration: BoxDecoration(color: cs.errorContainer.withValues(alpha: 0.85), borderRadius: BorderRadius.circular(8)),
-            child: Text(_error!, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 11)),
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        Container(color: Colors.black),
+        if (_frame != null)
+          Image.memory(_frame!, fit: widget.fit, gaplessPlayback: true, errorBuilder: (_, _, _) => const SizedBox()),
+        if (_frame == null && _error == null) const Center(child: CircularProgressIndicator(strokeWidth: 2)),
+        if (_error != null)
+          Positioned(
+            left: 8,
+            right: 8,
+            bottom: 8,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: cs.errorContainer.withValues(alpha: 0.85),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Text(_error!, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 11)),
+            ),
           ),
-        ),
-    ]);
+      ],
+    );
   }
 }
 
@@ -127,8 +135,11 @@ class CameraFullscreen extends StatelessWidget {
   final TileConfig tile;
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: Colors.black,
-        appBar: AppBar(backgroundColor: Colors.black, title: Text(tile.title)),
-        body: InteractiveViewer(maxScale: 5, child: CameraView(tile: tile, fit: BoxFit.contain)),
-      );
+    backgroundColor: Colors.black,
+    appBar: AppBar(backgroundColor: Colors.black, title: Text(tile.title)),
+    body: InteractiveViewer(
+      maxScale: 5,
+      child: CameraView(tile: tile, fit: BoxFit.contain),
+    ),
+  );
 }

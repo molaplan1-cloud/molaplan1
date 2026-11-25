@@ -23,22 +23,40 @@ class WebSocketDriver extends Driver {
     create: WebSocketDriver.new,
     connectionFields: [
       FieldSpec('url', 'Osoite', 'URL', hint: 'ws://192.168.1.80/ws', required: true),
-      FieldSpec('headers', 'Otsakkeet (Nimi: arvo / rivi)', 'Headers (Name: value per line)', kind: FieldKind.multiline),
+      FieldSpec(
+        'headers',
+        'Otsakkeet (Nimi: arvo / rivi)',
+        'Headers (Name: value per line)',
+        kind: FieldKind.multiline,
+      ),
       FieldSpec('token', 'Token (Authorization: Bearer)', 'Token (Authorization: Bearer)', kind: FieldKind.secret),
       FieldSpec('onConnect', 'Viesti yhdistettäessä', 'Message on connect', kind: FieldKind.multiline),
-      FieldSpec('allowSelfSigned', 'Salli itse allekirjoitettu sertifikaatti', 'Allow self-signed certificate',
-          kind: FieldKind.boolean),
+      FieldSpec(
+        'allowSelfSigned',
+        'Salli itse allekirjoitettu sertifikaatti',
+        'Allow self-signed certificate',
+        kind: FieldKind.boolean,
+      ),
     ],
     readFields: [
       FieldSpec('filter', 'Suodatin (viesti sisältää)', 'Filter (message contains)'),
       FieldSpec('jsonPath', 'JSON-polku', 'JSON path', hint: r'$.temp'),
       FieldSpec('regex', 'Regex (ryhmä 1)', 'Regex (group 1)'),
-      FieldSpec('request', 'Kyselyviesti (lähetetään luettaessa)', 'Request message (sent on read)',
-          kind: FieldKind.multiline),
+      FieldSpec(
+        'request',
+        'Kyselyviesti (lähetetään luettaessa)',
+        'Request message (sent on read)',
+        kind: FieldKind.multiline,
+      ),
     ],
     commandFields: [
-      FieldSpec('payload', 'Viesti ({{value}} = arvo)', 'Message ({{value}} = value)',
-          kind: FieldKind.multiline, required: true),
+      FieldSpec(
+        'payload',
+        'Viesti ({{value}} = arvo)',
+        'Message ({{value}} = value)',
+        kind: FieldKind.multiline,
+        required: true,
+      ),
     ],
   );
 
@@ -53,19 +71,27 @@ class WebSocketDriver extends Driver {
     final headers = <String, dynamic>{...parseHeaders(s.strOrNull('headers'))};
     final tok = s.strOrNull('token');
     if (tok != null) headers['Authorization'] = 'Bearer $tok';
-    final ch = IOWebSocketChannel.connect(Uri.parse(s.str('url')),
-        headers: headers, customClient: hc, connectTimeout: const Duration(seconds: 8));
+    final ch = IOWebSocketChannel.connect(
+      Uri.parse(s.str('url')),
+      headers: headers,
+      customClient: hc,
+      connectTimeout: const Duration(seconds: 8),
+    );
     try {
       await ch.ready;
     } catch (e) {
       throw DriverException('WebSocket: $e');
     }
     _ch = ch;
-    ch.stream.listen((m) {
-      final text = m is String ? m : String.fromCharCodes(m as List<int>);
-      _last = text;
-      _events.add(text);
-    }, onError: (_) => _lost(), onDone: _lost);
+    ch.stream.listen(
+      (m) {
+        final text = m is String ? m : String.fromCharCodes(m as List<int>);
+        _last = text;
+        _events.add(text);
+      },
+      onError: (_) => _lost(),
+      onDone: _lost,
+    );
     final hello = s.strOrNull('onConnect');
     if (hello != null) ch.sink.add(unescape(hello));
   }
@@ -89,19 +115,22 @@ class WebSocketDriver extends Driver {
     if (spec.strOrNull('request') != null) return null; // request/response -> poll
     late StreamController<Object?> out;
     StreamSubscription? sub;
-    out = StreamController<Object?>(onListen: () async {
-      sub = _events.stream.where((m) => _matches(m, spec)).listen((m) {
-        final v = extractValue(m, spec);
-        if (v != null) out.add(v);
-      });
-      try {
-        await _ensure();
-        final l = _last;
-        if (l != null && _matches(l, spec)) out.add(extractValue(l, spec));
-      } catch (e) {
-        out.addError(e);
-      }
-    }, onCancel: () => sub?.cancel());
+    out = StreamController<Object?>(
+      onListen: () async {
+        sub = _events.stream.where((m) => _matches(m, spec)).listen((m) {
+          final v = extractValue(m, spec);
+          if (v != null) out.add(v);
+        });
+        try {
+          await _ensure();
+          final l = _last;
+          if (l != null && _matches(l, spec)) out.add(extractValue(l, spec));
+        } catch (e) {
+          out.addError(e);
+        }
+      },
+      onCancel: () => sub?.cancel(),
+    );
     return out.stream;
   }
 

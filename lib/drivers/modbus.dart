@@ -101,8 +101,8 @@ class ModbusTcpClient {
   Future<void> writeCoil(int unit, int address, bool on) =>
       request(unit, Uint8List.fromList([5, address >> 8, address & 0xFF, on ? 0xFF : 0, 0]));
 
-  Future<void> writeRegister(int unit, int address, int value) => request(
-      unit, Uint8List.fromList([6, address >> 8, address & 0xFF, (value >> 8) & 0xFF, value & 0xFF]));
+  Future<void> writeRegister(int unit, int address, int value) =>
+      request(unit, Uint8List.fromList([6, address >> 8, address & 0xFF, (value >> 8) & 0xFF, value & 0xFF]));
 
   Future<void> writeRegisters(int unit, int address, List<int> values) {
     final b = BytesBuilder()
@@ -162,8 +162,11 @@ int registerCount(String type) => type.endsWith('32') ? 2 : 1;
 class ModbusDriver extends Driver {
   ModbusDriver(super.config);
   ModbusTcpClient? _c;
-  ModbusTcpClient get client => _c ??= ModbusTcpClient(s.str('host'), s.integer('port', 502),
-      timeout: Duration(milliseconds: s.integer('timeoutMs', 3000)));
+  ModbusTcpClient get client => _c ??= ModbusTcpClient(
+    s.str('host'),
+    s.integer('port', 502),
+    timeout: Duration(milliseconds: s.integer('timeoutMs', 3000)),
+  );
 
   static const _tables = ['holding', 'input', 'coil', 'discrete'];
   static const _types = ['uint16', 'int16', 'uint32', 'int32', 'float32'];
@@ -180,22 +183,52 @@ class ModbusDriver extends Driver {
       FieldSpec('timeoutMs', 'Aikakatkaisu (ms)', 'Timeout (ms)', kind: FieldKind.number, defaultValue: 3000),
     ],
     readFields: [
-      FieldSpec('table', 'Rekisterityyppi', 'Register table',
-          kind: FieldKind.choice, options: _tables, defaultValue: 'holding'),
+      FieldSpec(
+        'table',
+        'Rekisterityyppi',
+        'Register table',
+        kind: FieldKind.choice,
+        options: _tables,
+        defaultValue: 'holding',
+      ),
       FieldSpec('address', 'Osoite (0-pohjainen)', 'Address (0-based)', kind: FieldKind.number, defaultValue: 0),
-      FieldSpec('dataType', 'Tietotyyppi', 'Data type', kind: FieldKind.choice, options: _types, defaultValue: 'uint16'),
+      FieldSpec(
+        'dataType',
+        'Tietotyyppi',
+        'Data type',
+        kind: FieldKind.choice,
+        options: _types,
+        defaultValue: 'uint16',
+      ),
       FieldSpec('swapWords', 'Sanajärjestys käänteinen (CDAB)', 'Swap words (CDAB)', kind: FieldKind.boolean),
       FieldSpec('scale', 'Kerroin', 'Scale', kind: FieldKind.number, defaultValue: 1, hint: '0.1'),
       FieldSpec('offset', 'Siirtymä', 'Offset', kind: FieldKind.number, defaultValue: 0),
       FieldSpec('unitId', 'Unit id (tyhjä = yhteyden)', 'Unit id (empty = connection)', kind: FieldKind.number),
     ],
     commandFields: [
-      FieldSpec('table', 'Kirjoitettava', 'Write to',
-          kind: FieldKind.choice, options: ['holding', 'coil'], defaultValue: 'holding'),
+      FieldSpec(
+        'table',
+        'Kirjoitettava',
+        'Write to',
+        kind: FieldKind.choice,
+        options: ['holding', 'coil'],
+        defaultValue: 'holding',
+      ),
       FieldSpec('address', 'Osoite (0-pohjainen)', 'Address (0-based)', kind: FieldKind.number, defaultValue: 0),
-      FieldSpec('value', 'Arvo ({{value}} = liukusäädin/kytkin)', 'Value ({{value}} = slider/toggle)',
-          defaultValue: '{{value}}'),
-      FieldSpec('dataType', 'Tietotyyppi', 'Data type', kind: FieldKind.choice, options: _types, defaultValue: 'uint16'),
+      FieldSpec(
+        'value',
+        'Arvo ({{value}} = liukusäädin/kytkin)',
+        'Value ({{value}} = slider/toggle)',
+        defaultValue: '{{value}}',
+      ),
+      FieldSpec(
+        'dataType',
+        'Tietotyyppi',
+        'Data type',
+        kind: FieldKind.choice,
+        options: _types,
+        defaultValue: 'uint16',
+      ),
       FieldSpec('swapWords', 'Sanajärjestys käänteinen (CDAB)', 'Swap words (CDAB)', kind: FieldKind.boolean),
       FieldSpec('scale', 'Kerroin', 'Scale', kind: FieldKind.number, defaultValue: 1),
       FieldSpec('offset', 'Siirtymä', 'Offset', kind: FieldKind.number, defaultValue: 0),

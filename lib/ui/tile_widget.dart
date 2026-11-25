@@ -93,7 +93,8 @@ class _TileWidgetState extends State<TileWidget> {
     await _run(() => st.runStep(step, value: on ? 0 : 1), optimistic: on ? 'off' : 'on');
   }
 
-  Future<bool> _confirm() => confirmDialog(context, t.title, tx(context, 'Suoritetaanko komento?', 'Run this command?'));
+  Future<bool> _confirm() =>
+      confirmDialog(context, t.title, tx(context, 'Suoritetaanko komento?', 'Run this command?'));
 
   Future<void> _button() async {
     final st = AppScope.read(context);
@@ -117,21 +118,27 @@ class _TileWidgetState extends State<TileWidget> {
       context: context,
       builder: (c) => AlertDialog(
         title: Text(t.title),
-        content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('${tx(context, 'Arvo', 'Value')}: ${rt?.value ?? '–'}'),
-          if (rt?.updated != null) Text('${tx(context, 'Päivitetty', 'Updated')}: ${rt!.updated!.toLocal().toString().substring(0, 19)}'),
-          if (rt?.error != null) ...[
-            const SizedBox(height: 8),
-            Text(rt!.error!, style: TextStyle(color: Theme.of(c).colorScheme.error)),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('${tx(context, 'Arvo', 'Value')}: ${rt?.value ?? '–'}'),
+            if (rt?.updated != null)
+              Text('${tx(context, 'Päivitetty', 'Updated')}: ${rt!.updated!.toLocal().toString().substring(0, 19)}'),
+            if (rt?.error != null) ...[
+              const SizedBox(height: 8),
+              Text(rt!.error!, style: TextStyle(color: Theme.of(c).colorScheme.error)),
+            ],
           ],
-        ]),
+        ),
         actions: [
           TextButton(
-              onPressed: () {
-                rt?.refresh();
-                Navigator.pop(c);
-              },
-              child: Text(tx(context, 'Päivitä', 'Refresh'))),
+            onPressed: () {
+              rt?.refresh();
+              Navigator.pop(c);
+            },
+            child: Text(tx(context, 'Päivitä', 'Refresh')),
+          ),
           TextButton(onPressed: () => Navigator.pop(c), child: const Text('OK')),
         ],
       ),
@@ -150,14 +157,13 @@ class _TileWidgetState extends State<TileWidget> {
           onTap: widget.editing
               ? null
               : () => Navigator.push(context, MaterialPageRoute(builder: (_) => CameraFullscreen(tile: t))),
-          child: Stack(fit: StackFit.expand, children: [
-            if (!widget.editing) CameraView(key: ValueKey(_sig), tile: t) else Container(color: Colors.black54),
-            Positioned(
-              left: 10,
-              top: 8,
-              child: _chip(context, t.title, Icons.videocam_outlined),
-            ),
-          ]),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              if (!widget.editing) CameraView(key: ValueKey(_sig), tile: t) else Container(color: Colors.black54),
+              Positioned(left: 10, top: 8, child: _chip(context, t.title, Icons.videocam_outlined)),
+            ],
+          ),
         ),
       );
     }
@@ -187,29 +193,53 @@ class _TileWidgetState extends State<TileWidget> {
         onLongPress: widget.editing ? null : _details,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Row(children: [
-              Icon(iconFor(t), size: 22, color: accent ?? cs.onSurfaceVariant),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Icon(iconFor(t), size: 22, color: accent ?? cs.onSurfaceVariant),
+                  const Spacer(),
+                  if (r.busy)
+                    const SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2))
+                  else if (err != null)
+                    Tooltip(
+                      message: err,
+                      child: Icon(Icons.error_outline, size: 18, color: cs.error),
+                    )
+                  else if (widget.editing)
+                    const SizedBox(height: 24)
+                  else if (t.type == TileType.toggle)
+                    IgnorePointer(
+                      child: Switch(value: on, onChanged: (_) {}),
+                    )
+                  else if (t.type == TileType.button)
+                    Container(
+                      padding: const EdgeInsets.all(6),
+                      decoration: BoxDecoration(color: cs.primary.withValues(alpha: 0.18), shape: BoxShape.circle),
+                      child: Icon(Icons.play_arrow_rounded, size: 18, color: cs.primary),
+                    ),
+                ],
+              ),
               const Spacer(),
-              if (r.busy)
-                const SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2))
-              else if (err != null)
-                Tooltip(message: err, child: Icon(Icons.error_outline, size: 18, color: cs.error))
-              else if (t.type == TileType.toggle)
-                IgnorePointer(child: Switch(value: on, onChanged: (_) {})),
-            ]),
-            const Spacer(),
-            if (t.type == TileType.value || t.type == TileType.slider) _valueText(context, r, accent),
-            if (t.type == TileType.toggle)
-              Text(r.value == null ? '–' : (t.mapValue(r.value) ?? (on ? tx(context, 'Päällä', 'On') : tx(context, 'Pois', 'Off'))),
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(color: accent)),
-            if (t.type == TileType.slider) _slider(context, r),
-            const SizedBox(height: 2),
-            Text(t.title,
+              if (t.type == TileType.value || t.type == TileType.slider) _valueText(context, r, accent),
+              if (t.type == TileType.toggle)
+                Text(
+                  r.value == null
+                      ? '–'
+                      : (t.mapValue(r.value) ?? (on ? tx(context, 'Päällä', 'On') : tx(context, 'Pois', 'Off'))),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(color: accent),
+                ),
+              if (t.type == TileType.slider) _slider(context, r),
+              const SizedBox(height: 2),
+              Text(
+                t.title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: cs.onSurfaceVariant)),
-          ]),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: cs.onSurfaceVariant),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -221,11 +251,16 @@ class _TileWidgetState extends State<TileWidget> {
       fit: BoxFit.scaleDown,
       alignment: Alignment.centerLeft,
       child: Text.rich(
-        TextSpan(children: [
-          TextSpan(text: _format(v)),
-          if (t.unit.isNotEmpty && v != null && t.mapValue(v) == null)
-            TextSpan(text: ' ${t.unit}', style: TextStyle(fontSize: 18, color: Theme.of(context).colorScheme.onSurfaceVariant)),
-        ]),
+        TextSpan(
+          children: [
+            TextSpan(text: _format(v)),
+            if (t.unit.isNotEmpty && v != null && t.mapValue(v) == null)
+              TextSpan(
+                text: ' ${t.unit}',
+                style: TextStyle(fontSize: 18, color: Theme.of(context).colorScheme.onSurfaceVariant),
+              ),
+          ],
+        ),
         style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w600, color: accent),
       ),
     );
@@ -255,12 +290,15 @@ class _TileWidgetState extends State<TileWidget> {
   }
 
   Widget _chip(BuildContext context, String text, IconData icon) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        decoration: BoxDecoration(color: Colors.black54, borderRadius: BorderRadius.circular(10)),
-        child: Row(mainAxisSize: MainAxisSize.min, children: [
-          Icon(icon, size: 14, color: Colors.white70),
-          const SizedBox(width: 4),
-          Text(text, style: const TextStyle(fontSize: 12, color: Colors.white)),
-        ]),
-      );
+    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+    decoration: BoxDecoration(color: Colors.black54, borderRadius: BorderRadius.circular(10)),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, size: 14, color: Colors.white70),
+        const SizedBox(width: 4),
+        Text(text, style: const TextStyle(fontSize: 12, color: Colors.white)),
+      ],
+    ),
+  );
 }

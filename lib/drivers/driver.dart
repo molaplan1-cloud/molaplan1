@@ -65,10 +65,7 @@ class DriverDescriptor {
 
   String label(String lang) => lang == 'fi' ? fi : en;
 
-  Set<String> get secretKeys => connectionFields
-      .where((f) => f.kind == FieldKind.secret)
-      .map((f) => f.key)
-      .toSet();
+  Set<String> get secretKeys => connectionFields.where((f) => f.kind == FieldKind.secret).map((f) => f.key).toSet();
 }
 
 /// Waits for the first event of a stream with a timeout.

@@ -7,16 +7,16 @@ import 'app_scope.dart';
 import 'spec_form.dart';
 
 IconData connectionIcon(String type) => switch (type) {
-      'http' => Icons.http,
-      'mqtt' => Icons.hub_outlined,
-      'modbus' => Icons.settings_input_component_outlined,
-      'homeassistant' => Icons.home_outlined,
-      'camera' => Icons.videocam_outlined,
-      'websocket' => Icons.swap_horiz,
-      'tcp' => Icons.cable,
-      'udp' => Icons.podcasts,
-      _ => Icons.device_hub,
-    };
+  'http' => Icons.http,
+  'mqtt' => Icons.hub_outlined,
+  'modbus' => Icons.settings_input_component_outlined,
+  'homeassistant' => Icons.home_outlined,
+  'camera' => Icons.videocam_outlined,
+  'websocket' => Icons.swap_horiz,
+  'tcp' => Icons.cable,
+  'udp' => Icons.podcasts,
+  _ => Icons.device_hub,
+};
 
 class ConnectionsPage extends StatelessWidget {
   const ConnectionsPage({super.key});
@@ -32,8 +32,10 @@ class ConnectionsPage extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
-              child: Text(tx(context, 'Valitse yhteystyyppi', 'Choose connection type'),
-                  style: Theme.of(context).textTheme.titleMedium),
+              child: Text(
+                tx(context, 'Valitse yhteystyyppi', 'Choose connection type'),
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
             ),
             for (final d in driverDescriptors)
               ListTile(
@@ -48,7 +50,9 @@ class ConnectionsPage extends StatelessWidget {
     if (type == null || !context.mounted) return null;
     final c = ConnectionConfig(name: descriptorFor(type).label(lang), type: type);
     return Navigator.push<ConnectionConfig>(
-        context, MaterialPageRoute(builder: (_) => ConnectionEditor(initial: c, isNew: true)));
+      context,
+      MaterialPageRoute(builder: (_) => ConnectionEditor(initial: c, isNew: true)),
+    );
   }
 
   @override
@@ -67,8 +71,11 @@ class ConnectionsPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(32),
                 child: Text(
-                  tx(context, 'Ei yhteyksiä vielä. Lisää laite tai palvelu, esim. IV-kone (Modbus), Home Assistant tai kamera.',
-                      'No connections yet. Add a device or service, e.g. ventilation unit (Modbus), Home Assistant or a camera.'),
+                  tx(
+                    context,
+                    'Ei yhteyksiä vielä. Lisää laite tai palvelu, esim. IV-kone (Modbus), Home Assistant tai kamera.',
+                    'No connections yet. Add a device or service, e.g. ventilation unit (Modbus), Home Assistant or a camera.',
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -88,7 +95,9 @@ class ConnectionsPage extends StatelessWidget {
                     subtitle: Text('${descriptorFor(con.type).label(st.lang)} · $addr'),
                     trailing: const Icon(Icons.chevron_right),
                     onTap: () => Navigator.push(
-                        context, MaterialPageRoute(builder: (_) => ConnectionEditor(initial: con.copy()))),
+                      context,
+                      MaterialPageRoute(builder: (_) => ConnectionEditor(initial: con.copy())),
+                    ),
                   ),
                 );
               },
@@ -153,8 +162,11 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
     final d = descriptorFor(c.type);
     for (final f in d.connectionFields.where((f) => f.required)) {
       if ((values[f.key]?.toString() ?? '').isEmpty) {
-        showSnack(context, '${tx(context, 'Pakollinen kenttä', 'Required field')}: ${f.label(AppScope.read(context).lang)}',
-            error: true);
+        showSnack(
+          context,
+          '${tx(context, 'Pakollinen kenttä', 'Required field')}: ${f.label(AppScope.read(context).lang)}',
+          error: true,
+        );
         return;
       }
     }
@@ -167,18 +179,23 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
     final st = AppScope.read(context);
     final used = st.config.dashboards
         .expand((d) => d.tiles)
-        .where((t) =>
-            t.connectionId == c.id ||
-            t.onCommand?.connectionId == c.id ||
-            t.offCommand?.connectionId == c.id ||
-            t.commands.any((s) => s.connectionId == c.id))
+        .where(
+          (t) =>
+              t.connectionId == c.id ||
+              t.onCommand?.connectionId == c.id ||
+              t.offCommand?.connectionId == c.id ||
+              t.commands.any((s) => s.connectionId == c.id),
+        )
         .length;
     final ok = await confirmDialog(
       context,
       tx(context, 'Poistetaanko yhteys?', 'Delete connection?'),
       used > 0
-          ? tx(context, '$used ruutua käyttää tätä yhteyttä, ne lakkaavat toimimasta.',
-              '$used tiles use this connection and will stop working.')
+          ? tx(
+              context,
+              '$used ruutua käyttää tätä yhteyttä, ne lakkaavat toimimasta.',
+              '$used tiles use this connection and will stop working.',
+            )
           : tx(context, 'Yhteys poistetaan tältä laitteelta.', 'The connection will be removed from this device.'),
       ok: tx(context, 'Poista', 'Delete'),
     );
@@ -197,7 +214,11 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
         title: Text(widget.isNew ? tx(context, 'Uusi yhteys', 'New connection') : c.name),
         actions: [
           if (!widget.isNew)
-            IconButton(tooltip: tx(context, 'Poista', 'Delete'), icon: const Icon(Icons.delete_outline), onPressed: _delete),
+            IconButton(
+              tooltip: tx(context, 'Poista', 'Delete'),
+              icon: const Icon(Icons.delete_outline),
+              onPressed: _delete,
+            ),
           const SizedBox(width: 4),
           FilledButton(onPressed: _save, child: Text(tx(context, 'Tallenna', 'Save'))),
           const SizedBox(width: 12),
@@ -209,25 +230,32 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
           child: ListView(
             padding: const EdgeInsets.all(16),
             children: [
-              Row(children: [
-                Icon(connectionIcon(c.type), color: cs.primary),
-                const SizedBox(width: 8),
-                Text(d.label(st.lang), style: Theme.of(context).textTheme.titleMedium),
-              ]),
+              Row(
+                children: [
+                  Icon(connectionIcon(c.type), color: cs.primary),
+                  const SizedBox(width: 8),
+                  Text(d.label(st.lang), style: Theme.of(context).textTheme.titleMedium),
+                ],
+              ),
               const SizedBox(height: 16),
-              TextField(controller: _name, decoration: InputDecoration(labelText: tx(context, 'Nimi', 'Name'))),
+              TextField(
+                controller: _name,
+                decoration: InputDecoration(labelText: tx(context, 'Nimi', 'Name')),
+              ),
               const SizedBox(height: 10),
               SpecForm(fields: d.connectionFields, values: values),
               const SizedBox(height: 8),
-              Row(children: [
-                OutlinedButton.icon(
-                  onPressed: _testing ? null : _test,
-                  icon: _testing
-                      ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2))
-                      : const Icon(Icons.network_check),
-                  label: Text(tx(context, 'Testaa yhteys', 'Test connection')),
-                ),
-              ]),
+              Row(
+                children: [
+                  OutlinedButton.icon(
+                    onPressed: _testing ? null : _test,
+                    icon: _testing
+                        ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2))
+                        : const Icon(Icons.network_check),
+                    label: Text(tx(context, 'Testaa yhteys', 'Test connection')),
+                  ),
+                ],
+              ),
               if (_result != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 12),
@@ -242,8 +270,11 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
                 ),
               const SizedBox(height: 16),
               Text(
-                tx(context, 'Salasanat ja tokenit tallennetaan laitteen suojattuun tallennustilaan.',
-                    'Passwords and tokens are stored in the device\'s secure storage.'),
+                tx(
+                  context,
+                  'Salasanat ja tokenit tallennetaan laitteen suojattuun tallennustilaan.',
+                  'Passwords and tokens are stored in the device\'s secure storage.',
+                ),
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ],

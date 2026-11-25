@@ -7,8 +7,14 @@ import '../core/template.dart';
 import 'driver.dart';
 
 const _sendFields = [
-  FieldSpec('payload', 'Viesti ({{value}} = arvo)', 'Payload ({{value}} = value)',
-      kind: FieldKind.multiline, hint: r'STATUS\r\n', required: true),
+  FieldSpec(
+    'payload',
+    'Viesti ({{value}} = arvo)',
+    'Payload ({{value}} = value)',
+    kind: FieldKind.multiline,
+    hint: r'STATUS\r\n',
+    required: true,
+  ),
   FieldSpec('hex', 'Viesti heksana', 'Payload is hex', kind: FieldKind.boolean),
   FieldSpec('expectResponse', 'Odota vastausta', 'Wait for response', kind: FieldKind.boolean, defaultValue: true),
   FieldSpec('responseHex', 'Vastaus heksana', 'Response as hex', kind: FieldKind.boolean),
@@ -52,17 +58,21 @@ class TcpDriver extends Driver {
       final deadline = Timer(timeout, () {
         if (!done.isCompleted) done.complete();
       });
-      final sub = sock.listen((d) {
-        out.addAll(d);
-        idle?.cancel();
-        idle = Timer(const Duration(milliseconds: 150), () {
+      final sub = sock.listen(
+        (d) {
+          out.addAll(d);
+          idle?.cancel();
+          idle = Timer(const Duration(milliseconds: 150), () {
+            if (!done.isCompleted) done.complete();
+          });
+        },
+        onDone: () {
           if (!done.isCompleted) done.complete();
-        });
-      }, onDone: () {
-        if (!done.isCompleted) done.complete();
-      }, onError: (_) {
-        if (!done.isCompleted) done.complete();
-      });
+        },
+        onError: (_) {
+          if (!done.isCompleted) done.complete();
+        },
+      );
       await done.future;
       idle?.cancel();
       deadline.cancel();
@@ -77,7 +87,11 @@ class TcpDriver extends Driver {
   Future<Object?> _run(Map<String, dynamic> spec, Object? value, bool defWait) async {
     final payload = encodePayload(applyTemplate(spec.str('payload'), value), hex: spec.flag('hex'));
     final wait = spec.flag('expectResponse', defWait);
-    final r = await exchange(payload, wait: wait, timeout: Duration(milliseconds: spec.integer('timeoutMs', 2000)));
+    final r = await exchange(
+      payload,
+      wait: wait,
+      timeout: Duration(milliseconds: spec.integer('timeoutMs', 2000)),
+    );
     return wait ? extractValue(_decode(r, spec), spec) : null;
   }
 
@@ -114,7 +128,9 @@ class UdpDriver extends Driver {
     if (addrs.isEmpty) throw DriverException('UDP: cannot resolve host');
     final target = addrs.first;
     final sock = await RawDatagramSocket.bind(
-        target.type == InternetAddressType.IPv6 ? InternetAddress.anyIPv6 : InternetAddress.anyIPv4, 0);
+      target.type == InternetAddressType.IPv6 ? InternetAddress.anyIPv6 : InternetAddress.anyIPv4,
+      0,
+    );
     try {
       sock.send(payload, target, s.integer('port', 0));
       if (!wait) return null;
@@ -125,8 +141,10 @@ class UdpDriver extends Driver {
           if (d != null && !c.isCompleted) c.complete(d.data);
         }
       });
-      final data = await c.future.timeout(Duration(milliseconds: spec.integer('timeoutMs', 2000)),
-          onTimeout: () => throw DriverException('UDP: no response'));
+      final data = await c.future.timeout(
+        Duration(milliseconds: spec.integer('timeoutMs', 2000)),
+        onTimeout: () => throw DriverException('UDP: no response'),
+      );
       return extractValue(_decode(data, spec), spec);
     } finally {
       sock.close();

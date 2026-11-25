@@ -31,8 +31,27 @@ void main() {
     final c = ConnectionConfig(name: 'API', type: 'http', settings: {'baseUrl': 'http://127.0.0.1:9'});
     await st.upsertConnection(c);
     final d = st.config.dashboards.first;
-    await st.upsertTile(d, TileConfig(type: TileType.value, title: 'Lämpötila', connectionId: c.id, read: {'path': '/t'}, pollSeconds: 0, unit: '°C'));
-    await st.upsertTile(d, TileConfig(type: TileType.button, title: 'Tehostus', commands: [CommandStep(connectionId: c.id, spec: {'path': '/boost'})]));
+    await st.upsertTile(
+      d,
+      TileConfig(
+        type: TileType.value,
+        title: 'Lämpötila',
+        connectionId: c.id,
+        read: {'path': '/t'},
+        pollSeconds: 0,
+        unit: '°C',
+      ),
+    );
+    await st.upsertTile(
+      d,
+      TileConfig(
+        type: TileType.button,
+        title: 'Tehostus',
+        commands: [
+          CommandStep(connectionId: c.id, spec: {'path': '/boost'}),
+        ],
+      ),
+    );
     await st.upsertTile(d, TileConfig(type: TileType.toggle, title: 'Valot'));
     await st.upsertTile(d, TileConfig(type: TileType.slider, title: 'Asetus', colSpan: 2));
 
