@@ -60,7 +60,7 @@ Source = the request id (tNNNu) or the brief/round it came from. Version = the r
 | R074 | Predictive heating (eco/balanced/comfort) using price + weather forecast, plan chart | v0.5 round | Done | 0.5.0 |
 | R075 | Thermostat wizard + virtual thermostat on the bridge | v0.5 round | Done | 0.5.0 |
 | R076 | Weather (Open-Meteo, home location) + weather tile | v0.5 round | Done | 0.5.0 |
-| R077 | Price tile = page numbers, correct Now line, calm hourly bars, nice y-max, readable axes, 12 h mini-chart with Now | t127u | Done 0.6.2; fix for overlapping y-axis labels in a short 4×2 tile (seen on the PC at 1280×800) is on main → 0.7.1 | 0.6.2 / 0.7.1 |
+| R077 | Price tile = page numbers, correct Now line, calm hourly bars, nice y-max, readable axes, 12 h mini-chart with Now | t127u | Done 0.6.2; overlapping y-axis labels in a short 4×2 tile (PC at 1280×800) fixed in 0.7.1 | 0.6.2 / 0.7.1 |
 | R078 | Teho 1–4 tiles as gauge/trend | t127u | Done | 0.6.2 |
 | R079 | Windows price tile error fixed, old HTTP price tiles migrated, service wording + cached data | t129u | Done | 0.6.2 |
 
@@ -92,7 +92,7 @@ Source = the request id (tNNNu) or the brief/round it came from. Version = the r
 | R112 | HA: one shared websocket, throttled service calls, debounced errors, light + brightness one tile, offer direct Hue | t139u, t140u | Done | 0.6.2 |
 | R113 | Hue direct: one shared bridge connection (v2 event stream), command queue within rate limits, debounced errors, light + brightness one tile + migration, tested with 25+ lights | t141u | Done (mock-tested, not on a real bridge) | 0.6.2 |
 
-## v0.7.1
+## v0.7.1 (the v0.7.0 batch)
 | ID | Requirement | Source | Status | Version |
 |---|---|---|---|---|
 | R130 | Groups / rooms | t126u | Done – group tile ("Luo ryhmä"): one switch for its members, shows "n/m päällä"; runs on the bridge too (AutoTile members). Rooms = existing views/groups | 0.7.1 |
