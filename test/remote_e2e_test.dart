@@ -39,7 +39,10 @@ void main() {
     if (relay == null) {
       final dir = Directory('relay');
       if (!File('relay/node_modules/.bin/wrangler').existsSync()) return;
-      final port = 18700 + DateTime.now().millisecond % 200;
+      // A free port from the OS (a fixed range once collided with the CI MQTT broker on 18883).
+      final probe = await ServerSocket.bind(InternetAddress.loopbackIPv4, 0);
+      final port = probe.port;
+      await probe.close();
       wrangler = await Process.start(
         'node_modules/.bin/wrangler',
         [
