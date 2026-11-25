@@ -196,7 +196,7 @@ Relay: https://relay.molaplan.com (custom domain; also https://molaplan-relay.mo
 
 ## v0.7.0 work log (2026-11-25)
 Done: automation model/engine/script language/host/bridge op/AutomationState/ntfy; t143u sensors; t146u snackbars; t147u duplicate title; t145u form overlap (inside labels, spacing, test).
-Pending: t144u half-step tile sizes (w/h half-units, migration ×2, resize snaps, Leveys/Korkeus 0,5…4, compact 0.5 variants, goldens 0.5×0.5 / 0.5×1 / 1.5×1);
-UI for Automaatiot/Skriptit/Tilannekuvat + 'Luo automaatio' in add sheet + templates; group tiles; scene/script tiles; livelier UI; morning summary card; notification settings page (ntfy link, quiet hours, mute, test); Windows tray/toasts init; deep link handling in app; translations; REQUIREMENTS R130–R138 + t143u–t148u; release notes; version bump; release.
+Pending: UI for Automaatiot/Skriptit/Tilannekuvat + 'Luo automaatio' in add sheet + templates; group tiles; scene/script tiles; livelier UI; morning summary card; notification settings page (ntfy link, quiet hours, mute, test); Windows tray/toasts init; deep link handling in app; translations; REQUIREMENTS R130–R138 + t143u–t148u; release notes; version bump; release.
 
 Done 23:5x: t148u/t149u/t150u (measure_view TrendLayout/TrendOptions, measure_colors.dart, HA history backfill, test/trend_tile_test.dart + test/goldens/trend_*.png). REQUIREMENTS R139–R146 added (t143u–t150u). Translations for new strings still to run at release (tool/l10n/translate.py). Don't run `dart format` on the whole repo (churns 60 files).
+t144u done (7683b25): TileConfig.w2/h2 half-units, colSpan/rowSpan = ceil views, JSON writes both, isMiniTile → TileWidget._mini, snapResize in home_page, test/half_size_test.dart.
