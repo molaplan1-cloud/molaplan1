@@ -46,3 +46,11 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+
+# Built app packages / release outputs (keep out of git)
+*.apk
+*.aab
+*.apks
+*.ipa
+molaplan-*.zip
+/molaplan-app-release/

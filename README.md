@@ -2,6 +2,8 @@
 
 Customisable remote control and status terminal for Windows and Android (Flutter).
 
+Users tailor it to their own gear — heat pumps, ventilation units, cameras, lighting, or anything reachable over HTTP, MQTT, Modbus, or similar — with dashboards and shortcuts they design themselves. The website at [molaplan.com](https://molaplan.com) is a placeholder; the product is the PC and Android apps.
+
 Add your own devices as **connections** and build **dashboards** of tiles:
 
 | Connection | Read state | Send commands |
