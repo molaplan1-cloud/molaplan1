@@ -40,12 +40,15 @@ insert into public.profiles (display_name, share_pub) values ('Asentaja', repeat
 reset role;
 -- A profile that was self-enabled under the old model (simulated as the DB owner, like a pre-0.13 row).
 insert into public.profiles (user_id, display_name, share_pub) values ('00000000-0000-0000-0000-0000000000d4', 'Itse', repeat('D', 43));
+alter table public.profiles disable trigger profiles_installer_init;
 update public.profiles set installer = true, company = 'Oma Oy' where user_id = '00000000-0000-0000-0000-0000000000d4';
+alter table public.profiles enable trigger profiles_installer_init;
 
 -- 1. Nobody can make themselves an installer.
 select pg_temp.as_user('00000000-0000-0000-0000-0000000000d4', 'selfmade@example.test');
-select pg_temp.expect_fail($q$ update public.profiles set installer = true $q$, 'self-enable via profile');
-select pg_temp.expect_fail($q$ update public.profiles set company = 'X' $q$, 'self-set company');
+-- (Old apps may still send the columns; the write is accepted but has no effect.)
+update public.profiles set installer = true, company = 'X';
+select pg_temp.expect($q$ select installer::text || '/' || company from public.profiles where user_id = auth.uid() $q$, 'false/', 'self-enable via profile has no effect');
 select pg_temp.expect_fail($q$ insert into public.installers (user_id, public_id, display_name) values (auth.uid(), 'MPL-AAA-AAA', 'x') $q$, 'insert installers row');
 select pg_temp.expect_fail($q$ select public.admin_grant_installer('selfmade@example.test', 'Itse') $q$, 'non-admin grant');
 select pg_temp.expect_fail($q$ select * from public.admin_list_installers() $q$, 'non-admin list');

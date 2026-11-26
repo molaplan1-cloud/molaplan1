@@ -97,9 +97,12 @@ create trigger installer_application_fill before insert on public.installer_appl
   for each row execute function public.installer_application_fill();
 
 -- profiles: the installer flag and company are no longer the user's to set ------------------------
+-- Apps older than 0.13.0 still send installer/company in their profile upsert, so the columns stay
+-- writable (no 403 for them) but a trigger always overwrites them from public.installers: what a
+-- user writes there has no effect.
 revoke insert, update on public.profiles from authenticated;
-grant insert (user_id, display_name, share_pub) on public.profiles to authenticated;
-grant update (display_name, share_pub) on public.profiles to authenticated;
+grant insert (user_id, display_name, share_pub, installer, company) on public.profiles to authenticated;
+grant update (display_name, share_pub, installer, company) on public.profiles to authenticated;
 
 create or replace function private.sync_profile_installer(p_uid uuid) returns void
 language sql security definer set search_path = '' as $$
@@ -144,7 +147,7 @@ revoke all on function public.installers_touch() from public, anon, authenticate
 drop trigger if exists installers_touch on public.installers;
 create trigger installers_touch before update on public.installers for each row execute function public.installers_touch();
 
--- A new profile row (first app start) picks up an existing approval.
+-- Every profile write takes installer/company from the approval (a new row picks up an existing one).
 create or replace function public.profiles_installer_init() returns trigger
 language plpgsql security definer set search_path = '' as $$
 begin
@@ -154,7 +157,7 @@ begin
 end $$;
 revoke all on function public.profiles_installer_init() from public, anon, authenticated;
 drop trigger if exists profiles_installer_init on public.profiles;
-create trigger profiles_installer_init before insert on public.profiles for each row execute function public.profiles_installer_init();
+create trigger profiles_installer_init before insert or update on public.profiles for each row execute function public.profiles_installer_init();
 
 -- Migration: self-enabled installer profiles without an approval lose the flag.
 update public.profiles p set installer = false, company = ''

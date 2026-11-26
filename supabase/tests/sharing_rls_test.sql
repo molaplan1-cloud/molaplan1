@@ -46,10 +46,11 @@ reset role;
 
 select pg_temp.as_user('00000000-0000-0000-0000-0000000000c3');
 -- R256: a user cannot make themselves an installer any more; an admin grants it (here: directly as the DB owner).
-select pg_temp.expect_fail($q$ insert into public.profiles (display_name, share_pub, installer) values ('Asentaja', repeat('C', 43), true) $q$,
-  'self-made installer profile');
-insert into public.profiles (display_name, share_pub) values ('Asentaja', repeat('C', 43));
-select pg_temp.expect_fail($q$ update public.profiles set installer = true, company = 'Fake Oy' $q$, 'self-enable installer');
+-- (Old apps still send installer/company: accepted, but the trigger keeps them from public.installers.)
+insert into public.profiles (display_name, share_pub, installer, company) values ('Asentaja', repeat('C', 43), true, 'Fake Oy');
+select pg_temp.expect_rows($q$ select * from public.profiles where installer or company <> '' $q$, 0, 'self-made installer profile has no effect');
+update public.profiles set installer = true, company = 'Fake Oy';
+select pg_temp.expect_rows($q$ select * from public.profiles where installer or company <> '' $q$, 0, 'self-enable installer has no effect');
 reset role;
 insert into public.installers (user_id, public_id, display_name, company)
 values ('00000000-0000-0000-0000-0000000000c3', 'MPL-AAA-CCC', 'Asentaja', 'Lämpö Oy');

@@ -256,16 +256,16 @@ class FakeSupabase {
       if (req.method == 'PATCH') {
         final r = eq('user_id') == uid ? profiles[uid] : null;
         if (r == null) return _j([]);
-        if (body.containsKey('installer') || body.containsKey('company')) return _pgErr('42501', 'permission denied for table profiles', 403);
+        // installer/company are accepted (old apps send them) but always come from the approval.
         for (final k in ['display_name', 'share_pub']) {
           if (body.containsKey(k)) r[k] = body[k];
         }
+        _syncProfile(uid);
         return _j([r]);
       }
       if (req.method == 'POST') {
         if (body['user_id'] != uid) return _pgErr('42501', 'new row violates row-level security policy', 403);
         if (profiles[uid] != null) return _pgErr('23505', 'duplicate key', 409);
-        if (body.containsKey('installer') || body.containsKey('company')) return _pgErr('42501', 'permission denied for table profiles', 403);
         profiles[uid] = {'user_id': uid, 'display_name': '', 'share_pub': null, 'installer': false, 'company': '', ...body};
         _syncProfile(uid);
         return _j([profiles[uid]], 201);

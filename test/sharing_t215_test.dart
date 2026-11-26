@@ -512,10 +512,10 @@ void main() {
 
     test('nobody can make themselves an installer; the old self-made flag means nothing', () async {
       final s = await installer.host.session();
-      await expectLater(
-        ownerHost.api.patch(s!, 'profiles?user_id=eq.${s.userId}', {'installer': true, 'company': 'Fake Oy'}),
-        throwsA(isA<AccountError>()),
-      );
+      // Apps older than 0.13.0 still send these columns: accepted, but they always come from the approval.
+      await ownerHost.api.patch(s!, 'profiles?user_id=eq.${s.userId}', {'installer': true, 'company': 'Fake Oy'});
+      expect(fake.profiles[s.userId]!['installer'], isFalse);
+      expect(fake.profiles[s.userId]!['company'], '');
       fake.profiles[s.userId]!['installer'] = true; // a pre-0.13 row
       await installer.refresh();
       expect(installer.installer, isFalse, reason: 'only an admin-approved installers row counts');
