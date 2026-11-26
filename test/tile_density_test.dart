@@ -176,8 +176,9 @@ void main() {
     expect(_w(tester, 'cv-k'), closeTo(2 * w + 10, 0.5));
     // One banner, no per-tile DNS error for the cloud tile.
     expect(find.byKey(const ValueKey('offline-banner')), findsOneWidget);
-    expect(find.text('Ei nettiyhteyttä'), findsNothing); // part of a rich text
-    expect(find.textContaining('Ei nettiyhteyttä', findRichText: true), findsOneWidget);
+    // t212u: on Wi-Fi without internet the banner says exactly that (home devices still work).
+    expect(find.text('Wi-Fissä ei ole nettiä'), findsNothing); // part of a rich text
+    expect(find.textContaining('Wi-Fissä ei ole nettiä', findRichText: true), findsOneWidget);
     expect(find.text('Osoitetta ei löydy'), findsNothing);
     expect(find.byKey(const ValueKey('tile-offline')), findsOneWidget);
     // Real device problem: short chip. LAN device while on another network: greyed in place (t131u).

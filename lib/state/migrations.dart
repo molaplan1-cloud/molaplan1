@@ -77,11 +77,7 @@ bool mergeBrightnessTiles(AppConfig cfg) {
                     ...step.spec,
                     'body': '${step.spec['body'] ?? ''}'.replaceFirst('{"lightLevel"', '{"isOn":true,"lightLevel"'),
                   }
-                : {
-                    'service': 'light.turn_on',
-                    'entityId': s.read['entityId'],
-                    'data': '{"brightness_pct": {{value}}}',
-                  },
+                : {'service': 'light.turn_on', 'entityId': s.read['entityId'], 'data': '{"brightness_pct": {{value}}}'},
           ),
         ];
       }
@@ -104,7 +100,6 @@ bool _sameLight(TileConfig a, TileConfig b) {
   if (b.read['entityId'] != null) return a.read['entityId'] == b.read['entityId'];
   return a.read['path'] != null && a.read['path'] == b.read['path'];
 }
-
 
 /// t143u: sensors that older versions added as lights/switches (a bulb icon, Pois, a brightness
 /// slider) become sensor tiles: no controls, a sensor icon, Kuiva / VUOTO! etc. The read source

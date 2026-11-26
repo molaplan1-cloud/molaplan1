@@ -2908,17 +2908,83 @@ abstract class AppLocalizations {
   /// **'Device is offline'**
   String get sfec025279e;
 
-  /// fi: Kotiverkon laitteet toimivat silti Wi-Fin kautta.
+  /// fi: Tarkista nyt
   ///
   /// In en, this message translates to:
-  /// **'Devices on your home Wi-Fi still work.'**
-  String get sa7d212f047;
+  /// **'Check now'**
+  String get s1ea16fc636;
 
-  /// fi: Yritä
+  /// fi: Ei verkkoyhteyttä
   ///
   /// In en, this message translates to:
-  /// **'Retry'**
-  String get s24ccd151f2;
+  /// **'No network'**
+  String get sbaf1a2b35e;
+
+  /// fi: Laite ei ole Wi-Fissä, eikä mobiilidata toimi. Ruuduissa näkyvät viimeksi saadut arvot.
+  ///
+  /// In en, this message translates to:
+  /// **'This device is not on Wi-Fi and mobile data does not work. Tiles show the last values received.'**
+  String get s3f750ce1d4;
+
+  /// fi: Wi-Fissä ei ole nettiä
+  ///
+  /// In en, this message translates to:
+  /// **'The Wi-Fi has no internet'**
+  String get s542a3e9332;
+
+  /// fi: Kotiverkon laitteet toimivat, pilvipalvelut ja etäyhteys eivät.
+  ///
+  /// In en, this message translates to:
+  /// **'Devices on this Wi-Fi work; cloud services and remote access do not.'**
+  String get sba13ded915;
+
+  /// fi: Etäpalvelin ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'Remote server not answering'**
+  String get se24bfd1257;
+
+  /// fi: Netti toimii, mutta Molaplanin etäpalvelin ei vastaa. Kotona kaikki toimii; etäkäyttö palaa itsestään.
+  ///
+  /// In en, this message translates to:
+  /// **'The internet works, but Molaplan\'\'s remote server does not answer. At home everything works; remote access comes back by itself.'**
+  String get s8584be9da3;
+
+  /// fi: Yhteys kunnossa
+  ///
+  /// In en, this message translates to:
+  /// **'Connection OK'**
+  String get s1e03ade992;
+
+  /// fi: Tarkistetaan itsestään 15 s välein, kunnes yhteys toimii. Ilmoitus poistuu silloin itsestään.
+  ///
+  /// In en, this message translates to:
+  /// **'Re-checked every 15 s until it works; this notice then disappears by itself.'**
+  String get s0fc5f4d788;
+
+  /// fi: Edistyneet
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced'**
+  String get sf4caddf894;
+
+  /// fi: Wi-Fi/Ethernet-osoitteet
+  ///
+  /// In en, this message translates to:
+  /// **'Wi-Fi/Ethernet addresses'**
+  String get s3e05e0efab;
+
+  /// fi: ei yhtään
+  ///
+  /// In en, this message translates to:
+  /// **'none'**
+  String get s6b59e217ba;
+
+  /// fi: Tarkistettu
+  ///
+  /// In en, this message translates to:
+  /// **'Checked'**
+  String get s3b7c55c4fc;
 
   /// fi: Olet poissa kotoa, eikä kotisilta vastaa. Kotiverkon laitteita ei voi nyt ohjata.
   ///
@@ -3273,12 +3339,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Keep as it is'**
   String get s17cb86f49e;
-
-  /// fi: Edistyneet
-  ///
-  /// In en, this message translates to:
-  /// **'Advanced'**
-  String get sf4caddf894;
 
   /// fi: Hystereesi
   ///
@@ -7009,6 +7069,78 @@ abstract class AppLocalizations {
   /// **'Relay server'**
   String get s451ea613dd;
 
+  /// fi: Kotisilta on jo uusin ({p0}).
+  ///
+  /// In en, this message translates to:
+  /// **'The bridge is up to date ({p0}).'**
+  String sc420bf77fa(String p0);
+
+  /// fi: Kotisilta asentaa version {p0} ja käynnistyy uudelleen (noin minuutti).
+  ///
+  /// In en, this message translates to:
+  /// **'The bridge is installing {p0} and restarts (about a minute).'**
+  String sb040f9f612(String p0);
+
+  /// fi: Versio {p0} ladattu. Kotisillan laitteessa pitää hyväksyä asennus ilmoituksesta.
+  ///
+  /// In en, this message translates to:
+  /// **'Version {p0} downloaded. Approve the install from the notification on the bridge device.'**
+  String s007c4f492d(String p0);
+
+  /// fi: Tämä kotisilta päivitetään käsin (versio {p0}).
+  ///
+  /// In en, this message translates to:
+  /// **'Update this bridge by hand (version {p0}).'**
+  String s602d8f4a18(String p0);
+
+  /// fi: Kotisilta ei saanut päivitystietoja nyt. Yritä myöhemmin.
+  ///
+  /// In en, this message translates to:
+  /// **'The bridge could not check for updates now.'**
+  String get se8704fa7a4;
+
+  /// fi: Päivitys epäonnistui: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Update failed: {p0}'**
+  String s2db971daf4(String p0);
+
+  /// fi:  · päivittyy etänä hiljaisesti
+  ///
+  /// In en, this message translates to:
+  /// **' · updates silently'**
+  String get s51fb400921;
+
+  /// fi:  · päivitys hyväksytään laitteella
+  ///
+  /// In en, this message translates to:
+  /// **' · updates need approval on the device'**
+  String get s3443bfc674;
+
+  /// fi: Kotisilta: vanhempi versio (ei versiotietoa)
+  ///
+  /// In en, this message translates to:
+  /// **'Home bridge: an older version (no version info)'**
+  String get scb47cbf8c2;
+
+  /// fi: Kotisillan versio: haetaan…
+  ///
+  /// In en, this message translates to:
+  /// **'Home bridge version: checking…'**
+  String get s6a02d97944;
+
+  /// fi: Kotisillan versio: ei tiedossa
+  ///
+  /// In en, this message translates to:
+  /// **'Home bridge version: unknown'**
+  String get s311c531a8e;
+
+  /// fi: Päivitä silta
+  ///
+  /// In en, this message translates to:
+  /// **'Update bridge'**
+  String get s70fe8d5ef3;
+
   /// fi: Yhteys etäpalveluun: kunnossa
   ///
   /// In en, this message translates to:
@@ -7206,6 +7338,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Allow'**
   String get sc8ef04815c;
+
+  /// fi: Päivitä automaattisesti
+  ///
+  /// In en, this message translates to:
+  /// **'Update automatically'**
+  String get s2fcba19ec3;
+
+  /// fi: Asentaa uuden Molaplan-version itse (tarkistus 6 tunnin välein). Vain Molaplanin allekirjoittamat, tarkistussummaltaan o
+  ///
+  /// In en, this message translates to:
+  /// **'Installs new Molaplan versions by itself (checked every 6 h). Only Molaplan-signed files with a matching checksum.'**
+  String get se7a1731ac0;
 
   /// fi: Yhdistä puhelin
   ///
@@ -10861,6 +11005,12 @@ abstract class AppLocalizations {
   /// **'Reply stays on the tile (s)'**
   String get sa53638cfea;
 
+  /// fi: Kuinka kauan vastaus näkyy ruudussa. 0 = kunnes painat uudelleen.
+  ///
+  /// In en, this message translates to:
+  /// **'How long the reply stays on the tile. 0 = until the next press.'**
+  String get se6d21484a8;
+
   /// fi: ntfy: komento puuttuu
   ///
   /// In en, this message translates to:
@@ -11202,12 +11352,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'How long to wait before saying that no reply came.'**
   String get s121542d6d7;
-
-  /// fi: Kuinka kauan vastaus näkyy ruudussa. 0 = kunnes painat uudelleen.
-  ///
-  /// In en, this message translates to:
-  /// **'How long the reply stays on the tile. 0 = until the next press.'**
-  String get se6d21484a8;
 
   /// fi: Viestin otsikko (vapaaehtoinen)
   ///

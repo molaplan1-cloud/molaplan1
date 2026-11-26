@@ -1587,10 +1587,47 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sfec025279e => 'Laite ei ole verkossa';
 
   @override
-  String get sa7d212f047 => 'Kotiverkon laitteet toimivat silti Wi-Fin kautta.';
+  String get s1ea16fc636 => 'Tarkista nyt';
 
   @override
-  String get s24ccd151f2 => 'Yritä';
+  String get sbaf1a2b35e => 'Ei verkkoyhteyttä';
+
+  @override
+  String get s3f750ce1d4 =>
+      'Laite ei ole Wi-Fissä, eikä mobiilidata toimi. Ruuduissa näkyvät viimeksi saadut arvot.';
+
+  @override
+  String get s542a3e9332 => 'Wi-Fissä ei ole nettiä';
+
+  @override
+  String get sba13ded915 =>
+      'Kotiverkon laitteet toimivat, pilvipalvelut ja etäyhteys eivät.';
+
+  @override
+  String get se24bfd1257 => 'Etäpalvelin ei vastaa';
+
+  @override
+  String get s8584be9da3 =>
+      'Netti toimii, mutta Molaplanin etäpalvelin ei vastaa. Kotona kaikki toimii; etäkäyttö palaa itsestään.';
+
+  @override
+  String get s1e03ade992 => 'Yhteys kunnossa';
+
+  @override
+  String get s0fc5f4d788 =>
+      'Tarkistetaan itsestään 15 s välein, kunnes yhteys toimii. Ilmoitus poistuu silloin itsestään.';
+
+  @override
+  String get sf4caddf894 => 'Edistyneet';
+
+  @override
+  String get s3e05e0efab => 'Wi-Fi/Ethernet-osoitteet';
+
+  @override
+  String get s6b59e217ba => 'ei yhtään';
+
+  @override
+  String get s3b7c55c4fc => 'Tarkistettu';
 
   @override
   String get sc26c52235c =>
@@ -1789,9 +1826,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s17cb86f49e => 'Pidä ennallaan';
-
-  @override
-  String get sf4caddf894 => 'Edistyneet';
 
   @override
   String get s9624f070ee => 'Hystereesi';
@@ -3843,6 +3877,53 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s451ea613dd => 'Välityspalvelin';
 
   @override
+  String sc420bf77fa(String p0) {
+    return 'Kotisilta on jo uusin ($p0).';
+  }
+
+  @override
+  String sb040f9f612(String p0) {
+    return 'Kotisilta asentaa version $p0 ja käynnistyy uudelleen (noin minuutti).';
+  }
+
+  @override
+  String s007c4f492d(String p0) {
+    return 'Versio $p0 ladattu. Kotisillan laitteessa pitää hyväksyä asennus ilmoituksesta.';
+  }
+
+  @override
+  String s602d8f4a18(String p0) {
+    return 'Tämä kotisilta päivitetään käsin (versio $p0).';
+  }
+
+  @override
+  String get se8704fa7a4 =>
+      'Kotisilta ei saanut päivitystietoja nyt. Yritä myöhemmin.';
+
+  @override
+  String s2db971daf4(String p0) {
+    return 'Päivitys epäonnistui: $p0';
+  }
+
+  @override
+  String get s51fb400921 => ' · päivittyy etänä hiljaisesti';
+
+  @override
+  String get s3443bfc674 => ' · päivitys hyväksytään laitteella';
+
+  @override
+  String get scb47cbf8c2 => 'Kotisilta: vanhempi versio (ei versiotietoa)';
+
+  @override
+  String get s6a02d97944 => 'Kotisillan versio: haetaan…';
+
+  @override
+  String get s311c531a8e => 'Kotisillan versio: ei tiedossa';
+
+  @override
+  String get s70fe8d5ef3 => 'Päivitä silta';
+
+  @override
   String get s72da730a42 => 'Yhteys etäpalveluun: kunnossa';
 
   @override
@@ -3957,6 +4038,13 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sc8ef04815c => 'Salli';
+
+  @override
+  String get s2fcba19ec3 => 'Päivitä automaattisesti';
+
+  @override
+  String get se7a1731ac0 =>
+      'Asentaa uuden Molaplan-version itse (tarkistus 6 tunnin välein). Vain Molaplanin allekirjoittamat, tarkistussummaltaan oikeat versiot.';
 
   @override
   String get s13995350ed => 'Yhdistä puhelin';
@@ -5999,6 +6087,10 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sa53638cfea => 'Vastaus näkyy ruudussa (s)';
 
   @override
+  String get se6d21484a8 =>
+      'Kuinka kauan vastaus näkyy ruudussa. 0 = kunnes painat uudelleen.';
+
+  @override
   String get sb56e7e9f81 => 'ntfy: komento puuttuu';
 
   @override
@@ -6189,10 +6281,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s121542d6d7 =>
       'Kuinka kauan vastausta odotetaan, ennen kuin kerrotaan ettei vastausta tullut.';
-
-  @override
-  String get se6d21484a8 =>
-      'Kuinka kauan vastaus näkyy ruudussa. 0 = kunnes painat uudelleen.';
 
   @override
   String get s74d68a98d6 => 'Viestin otsikko (vapaaehtoinen)';

@@ -389,7 +389,8 @@ class NtfyDeviceDriver extends NtfyDriver {
     if (text.isEmpty) throw DriverException(dtx('ntfy: komento puuttuu', 'ntfy: command missing'));
     final sh = _sh;
     // Rate limit: one command per [minInterval] to this device (also across tiles).
-    final gap = _gap;
+    // +0.5 s: ntfy delivery jitter must not make two commands arrive closer than the device allows.
+    final gap = _gap == Duration.zero ? Duration.zero : _gap + const Duration(milliseconds: 500);
     while (gap > Duration.zero && sh.lastSent != null) {
       final left = sh.lastSent!.add(gap).difference(DateTime.now());
       if (left <= Duration.zero) break;

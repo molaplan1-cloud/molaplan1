@@ -1575,10 +1575,47 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sfec025279e => 'Device is offline';
 
   @override
-  String get sa7d212f047 => 'Devices on your home Wi-Fi still work.';
+  String get s1ea16fc636 => 'Check now';
 
   @override
-  String get s24ccd151f2 => 'Retry';
+  String get sbaf1a2b35e => 'No network';
+
+  @override
+  String get s3f750ce1d4 =>
+      'This device is not on Wi-Fi and mobile data does not work. Tiles show the last values received.';
+
+  @override
+  String get s542a3e9332 => 'The Wi-Fi has no internet';
+
+  @override
+  String get sba13ded915 =>
+      'Devices on this Wi-Fi work; cloud services and remote access do not.';
+
+  @override
+  String get se24bfd1257 => 'Remote server not answering';
+
+  @override
+  String get s8584be9da3 =>
+      'The internet works, but Molaplan\'s remote server does not answer. At home everything works; remote access comes back by itself.';
+
+  @override
+  String get s1e03ade992 => 'Connection OK';
+
+  @override
+  String get s0fc5f4d788 =>
+      'Re-checked every 15 s until it works; this notice then disappears by itself.';
+
+  @override
+  String get sf4caddf894 => 'Advanced';
+
+  @override
+  String get s3e05e0efab => 'Wi-Fi/Ethernet addresses';
+
+  @override
+  String get s6b59e217ba => 'none';
+
+  @override
+  String get s3b7c55c4fc => 'Checked';
 
   @override
   String get sc26c52235c =>
@@ -1776,9 +1813,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s17cb86f49e => 'Keep as it is';
-
-  @override
-  String get sf4caddf894 => 'Advanced';
 
   @override
   String get s9624f070ee => 'Hysteresis';
@@ -3823,6 +3857,52 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s451ea613dd => 'Relay server';
 
   @override
+  String sc420bf77fa(String p0) {
+    return 'The bridge is up to date ($p0).';
+  }
+
+  @override
+  String sb040f9f612(String p0) {
+    return 'The bridge is installing $p0 and restarts (about a minute).';
+  }
+
+  @override
+  String s007c4f492d(String p0) {
+    return 'Version $p0 downloaded. Approve the install from the notification on the bridge device.';
+  }
+
+  @override
+  String s602d8f4a18(String p0) {
+    return 'Update this bridge by hand (version $p0).';
+  }
+
+  @override
+  String get se8704fa7a4 => 'The bridge could not check for updates now.';
+
+  @override
+  String s2db971daf4(String p0) {
+    return 'Update failed: $p0';
+  }
+
+  @override
+  String get s51fb400921 => ' · updates silently';
+
+  @override
+  String get s3443bfc674 => ' · updates need approval on the device';
+
+  @override
+  String get scb47cbf8c2 => 'Home bridge: an older version (no version info)';
+
+  @override
+  String get s6a02d97944 => 'Home bridge version: checking…';
+
+  @override
+  String get s311c531a8e => 'Home bridge version: unknown';
+
+  @override
+  String get s70fe8d5ef3 => 'Update bridge';
+
+  @override
   String get s72da730a42 => 'Remote service: connected';
 
   @override
@@ -3938,6 +4018,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sc8ef04815c => 'Allow';
+
+  @override
+  String get s2fcba19ec3 => 'Update automatically';
+
+  @override
+  String get se7a1731ac0 =>
+      'Installs new Molaplan versions by itself (checked every 6 h). Only Molaplan-signed files with a matching checksum.';
 
   @override
   String get s13995350ed => 'Pair a phone';
@@ -5967,6 +6054,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sa53638cfea => 'Reply stays on the tile (s)';
 
   @override
+  String get se6d21484a8 =>
+      'How long the reply stays on the tile. 0 = until the next press.';
+
+  @override
   String get sb56e7e9f81 => 'ntfy: command missing';
 
   @override
@@ -6156,10 +6247,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s121542d6d7 =>
       'How long to wait before saying that no reply came.';
-
-  @override
-  String get se6d21484a8 =>
-      'How long the reply stays on the tile. 0 = until the next press.';
 
   @override
   String get s74d68a98d6 => 'Message title (optional)';

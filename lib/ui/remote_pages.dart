@@ -287,6 +287,8 @@ class _RemoteHubPageState extends State<RemoteHubPage> {
                           ),
                           style: text.bodySmall,
                         ),
+                        const SizedBox(height: 8),
+                        const BridgeVersionTile(),
                         if (_checkResult != null) ...[const SizedBox(height: 10), SuccessBox(text: _checkResult!)],
                         const SizedBox(height: 12),
                         Wrap(
@@ -381,6 +383,132 @@ class _RemoteHubPageState extends State<RemoteHubPage> {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// t211u: the home bridge's Molaplan version on Etäkäyttö, and "Päivitä silta".
+class BridgeVersionTile extends StatefulWidget {
+  const BridgeVersionTile({super.key});
+  @override
+  State<BridgeVersionTile> createState() => _BridgeVersionTileState();
+}
+
+class _BridgeVersionTileState extends State<BridgeVersionTile> {
+  Map<String, dynamic>? _info;
+  bool _loading = false;
+  bool _updating = false;
+  String? _failed;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _load());
+  }
+
+  Future<void> _load() async {
+    if (!mounted) return;
+    setState(() => _loading = true);
+    try {
+      final i = await AppScope.read(context).remote.fetchBridgeInfo();
+      if (mounted) {
+        setState(() {
+          _info = i;
+          _failed = null;
+        });
+      }
+    } catch (e) {
+      if (mounted) setState(() => _failed = friendlyText(context, e));
+    } finally {
+      if (mounted) setState(() => _loading = false);
+    }
+  }
+
+  Future<void> _update() async {
+    setState(() => _updating = true);
+    try {
+      final r = await AppScope.read(context).remote.updateBridge() ?? const {};
+      if (!mounted) return;
+      final latest = r['latest'] ?? '';
+      showSnack(context, switch (r['status']) {
+        'up_to_date' => tx(
+          context,
+          'Kotisilta on jo uusin (${r['current']}).',
+          'The bridge is up to date (${r['current']}).',
+        ),
+        'installing' when r['silent'] == true => tx(
+          context,
+          'Kotisilta asentaa version $latest ja käynnistyy uudelleen (noin minuutti).',
+          'The bridge is installing $latest and restarts (about a minute).',
+        ),
+        'installing' => tx(
+          context,
+          'Versio $latest ladattu. Kotisillan laitteessa pitää hyväksyä asennus ilmoituksesta.',
+          'Version $latest downloaded. Approve the install from the notification on the bridge device.',
+        ),
+        'manual' => tx(
+          context,
+          'Tämä kotisilta päivitetään käsin (versio $latest).',
+          'Update this bridge by hand (version $latest).',
+        ),
+        'unavailable' => tx(
+          context,
+          'Kotisilta ei saanut päivitystietoja nyt. Yritä myöhemmin.',
+          'The bridge could not check for updates now.',
+        ),
+        _ => tx(
+          context,
+          'Päivitys epäonnistui: ${r['detail'] ?? r['status']}',
+          'Update failed: ${r['detail'] ?? r['status']}',
+        ),
+      }, error: r['status'] == 'failed' || r['status'] == 'no_asset' || r['status'] == 'no_checksum');
+      Future<void>.delayed(const Duration(seconds: 90), _load);
+    } catch (e) {
+      if (mounted) showSnack(context, friendlyText(context, e), error: true);
+    } finally {
+      if (mounted) setState(() => _updating = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final i = _info;
+    final text = Theme.of(context).textTheme;
+    final String line;
+    if (i != null && i['app'] != null) {
+      final how = i['platform'] != 'android'
+          ? ''
+          : i['deviceOwner'] == true
+          ? tx(context, ' · päivittyy etänä hiljaisesti', ' · updates silently')
+          : tx(context, ' · päivitys hyväksytään laitteella', ' · updates need approval on the device');
+      line = '${tx(context, 'Kotisilta', 'Home bridge')}: Molaplan ${i['app']} (${i['platform']})$how';
+    } else if (i != null) {
+      line = tx(
+        context,
+        'Kotisilta: vanhempi versio (ei versiotietoa)',
+        'Home bridge: an older version (no version info)',
+      );
+    } else if (_loading) {
+      line = tx(context, 'Kotisillan versio: haetaan…', 'Home bridge version: checking…');
+    } else {
+      line =
+          '${tx(context, 'Kotisillan versio: ei tiedossa', 'Home bridge version: unknown')}${_failed == null ? '' : ' – $_failed'}';
+    }
+    return Row(
+      key: const ValueKey('bridge-version'),
+      children: [
+        const Icon(Icons.system_update_alt, size: 22),
+        const SizedBox(width: 10),
+        Expanded(child: Text(line, style: text.bodyMedium)),
+        if (i != null && i['app'] != null && i['platform'] == 'android')
+          TextButton(
+            key: const ValueKey('bridge-update'),
+            onPressed: _updating ? null : _update,
+            child: _updating
+                ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2))
+                : Text(tx(context, 'Päivitä silta', 'Update bridge')),
+          ),
+      ],
     );
   }
 }
@@ -830,7 +958,11 @@ class _BridgePageState extends State<BridgePage> {
                       style: TextStyle(color: cs.onErrorContainer),
                     ),
                     subtitle: Text(
-                      tx(context, 'Salli Molaplanin toimia taustalla rajoituksetta.', 'Let Molaplan run in the background without restrictions.'),
+                      tx(
+                        context,
+                        'Salli Molaplanin toimia taustalla rajoituksetta.',
+                        'Let Molaplan run in the background without restrictions.',
+                      ),
                       style: TextStyle(color: cs.onErrorContainer),
                     ),
                     trailing: FilledButton(
@@ -841,6 +973,23 @@ class _BridgePageState extends State<BridgePage> {
                       },
                       child: Text(tx(context, 'Salli', 'Allow')),
                     ),
+                  ),
+                ),
+              if (b != null && st.bridgeService.supported)
+                Card(
+                  child: SwitchListTile(
+                    key: const ValueKey('bridge-autoupdate'),
+                    secondary: const Icon(Icons.system_update_alt),
+                    title: Text(tx(context, 'Päivitä automaattisesti', 'Update automatically')),
+                    subtitle: Text(
+                      tx(
+                        context,
+                        'Asentaa uuden Molaplan-version itse (tarkistus 6 tunnin välein). Vain Molaplanin allekirjoittamat, tarkistussummaltaan oikeat versiot.',
+                        'Installs new Molaplan versions by itself (checked every 6 h). Only Molaplan-signed files with a matching checksum.',
+                      ),
+                    ),
+                    value: st.config.bridgeAutoUpdate,
+                    onChanged: st.setBridgeAutoUpdate,
                   ),
                 ),
               if (b != null) ...[

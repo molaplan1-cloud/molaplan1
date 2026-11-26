@@ -1580,10 +1580,47 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sfec025279e => 'Seade ei ole võrgus';
 
   @override
-  String get sa7d212f047 => 'Kodu Wi-Fi seadmed töötavad endiselt.';
+  String get s1ea16fc636 => 'Kontrolli nüüd';
 
   @override
-  String get s24ccd151f2 => 'Proovi uuesti';
+  String get sbaf1a2b35e => 'Võrku pole';
+
+  @override
+  String get s3f750ce1d4 =>
+      'See seade ei ole Wi-Fis ja mobiilsed andmed ei tööta. Kaardid näitavad viimaseid saadud väärtusi.';
+
+  @override
+  String get s542a3e9332 => 'Wi-Fi-l pole internetti';
+
+  @override
+  String get sba13ded915 =>
+      'Selle Wi-Fi seadmed töötavad; pilveteenused ja kaugjuurdepääs ei tööta.';
+
+  @override
+  String get se24bfd1257 => 'Kaugserver ei vasta';
+
+  @override
+  String get s8584be9da3 =>
+      'Internet töötab, kuid Molaplani kaugserver ei vasta. Kodus töötab kõik, kaugjuurdepääs tuleb iseenesest tagasi.';
+
+  @override
+  String get s1e03ade992 => 'Ühendus korras';
+
+  @override
+  String get s0fc5f4d788 =>
+      'Kontrollitakse uuesti iga 15 sekundi järel, kuni see töötab; see teade kaob iseenesest.';
+
+  @override
+  String get sf4caddf894 => 'Täpsem';
+
+  @override
+  String get s3e05e0efab => 'Wi-Fi/Etherneti aadressid';
+
+  @override
+  String get s6b59e217ba => 'ükski';
+
+  @override
+  String get s3b7c55c4fc => 'Kontrollitud';
 
   @override
   String get sc26c52235c =>
@@ -1782,9 +1819,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s17cb86f49e => 'Jäta nagu on';
-
-  @override
-  String get sf4caddf894 => 'Täpsem';
 
   @override
   String get s9624f070ee => 'Hüsterees';
@@ -3829,6 +3863,52 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s451ea613dd => 'Redaktor';
 
   @override
+  String sc420bf77fa(String p0) {
+    return 'Sild on ajakohane ($p0).';
+  }
+
+  @override
+  String sb040f9f612(String p0) {
+    return 'Sild paigaldab $p0 ja taaskäivitab (umbes minut).';
+  }
+
+  @override
+  String s007c4f492d(String p0) {
+    return 'Allalaaditud versioon $p0. Lubab installi sildseadme märguandest.';
+  }
+
+  @override
+  String s602d8f4a18(String p0) {
+    return 'Uuenda seda silda käsitsi (versioon $p0).';
+  }
+
+  @override
+  String get se8704fa7a4 => 'Sild ei suutnud praegu värskendusi kontrollida.';
+
+  @override
+  String s2db971daf4(String p0) {
+    return 'Uuendamine nurjus: $p0';
+  }
+
+  @override
+  String get s51fb400921 => ' · uuendused vaikselt';
+
+  @override
+  String get s3443bfc674 => ' • värskendused vajavad seadmes kinnitamist';
+
+  @override
+  String get scb47cbf8c2 => 'Kodusild: vanem versioon (versiooniinfo puudub)';
+
+  @override
+  String get s6a02d97944 => 'Kodusilla versioon: kontroll...';
+
+  @override
+  String get s311c531a8e => 'Kodusilla versioon: teadmata';
+
+  @override
+  String get s70fe8d5ef3 => 'Uuenda silda';
+
+  @override
   String get s72da730a42 => 'Kaugteenus: ühendatud';
 
   @override
@@ -3945,6 +4025,13 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sc8ef04815c => 'Luba';
+
+  @override
+  String get s2fcba19ec3 => 'Uuenda automaatselt';
+
+  @override
+  String get se7a1731ac0 =>
+      'Paigaldab uued Molaplani versioonid ise (kontrollitakse iga 6 tunni järel). Ainult Molaplani signeeritud failid sobiva kontrollsummaga.';
 
   @override
   String get s13995350ed => 'Seo telefon';
@@ -5969,6 +6056,10 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sa53638cfea => 'Vastus jääb plaadile (plaatidele)';
 
   @override
+  String get se6d21484a8 =>
+      'Kui kaua vastus jääb plaadile. 0 = kuni järgmise vajutamiseni.';
+
+  @override
   String get sb56e7e9f81 => 'ntfy: käsk puudub';
 
   @override
@@ -6158,10 +6249,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s121542d6d7 =>
       'Kui kaua oodata, enne kui öelda, et vastust ei tulnud.';
-
-  @override
-  String get se6d21484a8 =>
-      'Kui kaua vastus jääb plaadile. 0 = kuni järgmise vajutamiseni.';
 
   @override
   String get s74d68a98d6 => 'Teate pealkiri (valikuline)';

@@ -522,6 +522,9 @@ class AppConfig {
   /// This device acts as the home bridge for remote access.
   bool bridgeMode;
 
+  /// t211u: an unattended Android bridge installs new releases by itself (opt-in).
+  bool bridgeAutoUpdate;
+
   /// Custom relay (null = Molaplan's own relay).
   String? relayUrl;
 
@@ -582,6 +585,7 @@ class AppConfig {
     this.language = 'auto',
     this.onboardingDone = false,
     this.bridgeMode = false,
+    this.bridgeAutoUpdate = false,
     this.relayUrl,
     this.remoteCameraSeconds = 2,
     this.updateCheckedAt,
@@ -616,6 +620,7 @@ class AppConfig {
     'language': language,
     'onboardingDone': onboardingDone,
     if (bridgeMode) 'bridgeMode': true,
+    if (bridgeAutoUpdate) 'bridgeAutoUpdate': true,
     if (advanced) 'advanced': true,
     if (viewLocked) 'viewLocked': true,
     if (tileDensity != 'normal') 'tileDensity': tileDensity,
@@ -648,6 +653,7 @@ class AppConfig {
       language: (j['language'] ?? 'auto') as String,
       onboardingDone: (j['onboardingDone'] ?? false) as bool,
       bridgeMode: (j['bridgeMode'] ?? false) as bool,
+      bridgeAutoUpdate: j['bridgeAutoUpdate'] == true,
       advanced: j['advanced'] == true,
       viewLocked: j['viewLocked'] == true,
       tileDensity: const ['small', 'large'].contains(j['tileDensity']) ? j['tileDensity'] as String : 'normal',

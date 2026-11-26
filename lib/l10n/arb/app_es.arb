@@ -1465,8 +1465,7 @@
   "x-mt": true
  },
  "sfec025279e": "El dispositivo está desconectado",
- "sa7d212f047": "Los dispositivos del Wi-Fi de casa siguen funcionando.",
- "s24ccd151f2": "Reintentar",
+ "sf4caddf894": "Avanzado",
  "sc26c52235c": "Usted está lejos y el puente casero no está contestando. Los dispositivos de red casero no pueden ser controlados ahora.",
  "@sc26c52235c": {
   "x-mt": true
@@ -1607,7 +1606,6 @@
  "s6de95e582f": "Si se pierde la temperatura",
  "s8ff25225b4": "Apagar calefacción/refrigeración (lo más seguro)",
  "s17cb86f49e": "Mantener como está",
- "sf4caddf894": "Avanzado",
  "s9624f070ee": "Histéresis",
  "sf070be2c1e": "Banda muerta (calor/frío)",
  "s64540136ff": "Tiempo mínimo encendido",
@@ -3636,6 +3634,18 @@
  "@s5d717bb2c5": {
   "x-mt": true
  },
+ "s12d40eedd5": "Permitir correr en el fondo",
+ "@s12d40eedd5": {
+  "x-mt": true
+ },
+ "s8e1fcae1fe": "Para que el puente funcione con la pantalla apagada, Android debe dejar que Molaplan funcione en el fondo sin restricciones de la batería. Elija \"Permitir\" en la siguiente ventana.",
+ "@s8e1fcae1fe": {
+  "x-mt": true
+ },
+ "sd62c460e3d": "Continuar",
+ "@sd62c460e3d": {
+  "x-mt": true
+ },
  "s7132345f20": "Dispositivo \"{p0}\" conectado!",
  "@s7132345f20": {
   "x-mt": true
@@ -3648,12 +3658,28 @@
  "@sd64f52490d": {
   "x-mt": true
  },
+ "seb25c46911": "El puente funciona en el fondo: la pantalla puede estar apagada y Molaplan cerrado. Comienza por sí mismo después de un reinicio y reconecta cuando la red regresa.",
+ "@seb25c46911": {
+  "x-mt": true
+ },
  "sbb23f25581": "Mantén a Molaplan abierto. La pantalla se mantiene mientras el puente está encendido.",
  "@sbb23f25581": {
   "x-mt": true
  },
  "sbfed096278": "Utilice este dispositivo como puente casero",
  "@sbfed096278": {
+  "x-mt": true
+ },
+ "s374a096cb9": "El ahorro de batería puede detener el puente",
+ "@s374a096cb9": {
+  "x-mt": true
+ },
+ "s9b1298f7c6": "Deja que Molaplan funcione en el fondo sin restricciones.",
+ "@s9b1298f7c6": {
+  "x-mt": true
+ },
+ "sc8ef04815c": "Permiso",
+ "@sc8ef04815c": {
   "x-mt": true
  },
  "s13995350ed": "Vincular un teléfono",
@@ -5348,29 +5374,181 @@
  },
  "s120026628c": "No se pudo conectar con {p0}.",
  "s43c9b88580": "Auto",
+ "s30ae7f76e6": "dispositivo de comando ntfy (commands + state)",
+ "@s30ae7f76e6": {
+  "x-mt": true
+ },
  "s6a4516e0fe": "Tema de comando (nombre o URL completa)",
  "@s6a4516e0fe": {
+  "x-mt": true
+ },
+ "s6cfd0d8be1": "El tema que el dispositivo de casa escucha. El nombre del tema funciona como una contraseña: mantenerlo largo y aleatorio.",
+ "@s6cfd0d8be1": {
   "x-mt": true
  },
  "s800cd08229": "Tema de respuesta (opcional)",
  "@s800cd08229": {
   "x-mt": true
  },
+ "s7e8c7a0cfc": "Si el dispositivo responde a otro tema (por ejemplo, su tema de notificación personal), escríbalo aquí. Vacío = el tema del comando.",
+ "@s7e8c7a0cfc": {
+  "x-mt": true
+ },
+ "s7ea9d85150": "Código PIN (opcional)",
+ "@s7ea9d85150": {
+  "x-mt": true
+ },
+ "s0694fe4d2b": "'Guardado encriptado en este dispositivo. Insertado donde la plantilla dice {pin}.'",
+ "@s0694fe4d2b": {
+  "x-mt": true
+ },
+ "s4313c720cc": "Plantilla de comandos",
+ "@s4313c720cc": {
+  "x-mt": true
+ },
+ "sd904dac1cc": "'{cmd} = el comando del botón, {pin} = PIN, {cid} = un id el dispositivo se hace eco en su respuesta, {valor} = el valor (on/off o un número). E.g. \"{cmd} {pin}\" → \"light on 1234\".'",
+ "@sd904dac1cc": {
+  "x-mt": true
+ },
+ "sa45b65f571": "Control de estado",
+ "@sa45b65f571": {
+  "x-mt": true
+ },
+ "se464d5ed51": "El comando el dispositivo responde con su estado (por ejemplo, \"status\" o \"status json\"). Todas las tarjetas de este dispositivo comparten la respuesta.",
+ "@se464d5ed51": {
+  "x-mt": true
+ },
+ "s821e8d2d9d": "Título de la respuesta contiene (opcional)",
+ "@s821e8d2d9d": {
+  "x-mt": true
+ },
+ "s949ee12ae6": "Sólo los mensajes cuyo título contiene este texto cuentan como respuesta – útil cuando el tema de respuesta lleva otras notificaciones también.",
+ "@s949ee12ae6": {
+  "x-mt": true
+ },
+ "sfbcb5f18bd": "La respuesta debe contener (regex, opcional)",
+ "@sfbcb5f18bd": {
+  "x-mt": true
+ },
+ "s79c983aa94": "Una expresión regular la respuesta (título + mensaje) debe contener.",
+ "@s79c983aa94": {
+  "x-mt": true
+ },
+ "s081eff543d": "Texto al mapa del estado",
+ "@s081eff543d": {
+  "x-mt": true
+ },
+ "s2afc1f1fb8": "Una regla por línea: \"pattern = valor\". El patrón es un regex que coincide con todo el texto capturado (caso insensible). Vacío = palabras integradas en finlandés e inglés on/off.",
+ "@s2afc1f1fb8": {
+  "x-mt": true
+ },
+ "s0976f767e2": "Respuesta de error (regex)",
+ "@s0976f767e2": {
+  "x-mt": true
+ },
+ "sc0fd47e896": "Una respuesta que significa un error (shown in red). Vacío = default (wrong PIN, error, negado...). Para JSON: ok:false o un campo de error.",
+ "@sc0fd47e896": {
+  "x-mt": true
+ },
+ "s98d9efa888": "Tiempo mínimo entre los comandos (s)",
+ "@s98d9efa888": {
+  "x-mt": true
+ },
+ "sa893722568": "Si el dispositivo responde sólo por ejemplo cada 30 segundos, escriba 30: el siguiente comando espera su turno en lugar de perderse.",
+ "@sa893722568": {
+  "x-mt": true
+ },
  "sbdcbe301b9": "Esperar respuesta (s)",
  "@sbdcbe301b9": {
+  "x-mt": true
+ },
+ "s5e8e483f10": "Cuánto tiempo para esperar a la respuesta antes de mostrar un error.",
+ "@s5e8e483f10": {
+  "x-mt": true
+ },
+ "s31312f141c": "Respuesta del Estado válida para s)",
+ "@s31312f141c": {
+  "x-mt": true
+ },
+ "s0611790300": "Las tarjetas del mismo dispositivo comparten una respuesta de estado durante tanto tiempo – el dispositivo no se le pide sin necesidad.",
+ "@s0611790300": {
   "x-mt": true
  },
  "s5bc736c04a": "Acceso a la ficha (opcional)",
  "@s5bc736c04a": {
   "x-mt": true
  },
+ "scece580659": "Sólo para un tema protegido (cuenta n ostensible → Acceso a fichas).",
+ "@scece580659": {
+  "x-mt": true
+ },
+ "s7e91b10006": "Default es el público ntfy.sh. Una URL completa sobresale esto.",
+ "@s7e91b10006": {
+  "x-mt": true
+ },
+ "s1b5501c73f": "JSON path (JSON reply)",
+ "@s1b5501c73f": {
+  "x-mt": true
+ },
+ "s1320bcddf2": "Cuando el dispositivo responde con JSON, por ejemplo $.light o $.outputs.siren.",
+ "@s1320bcddf2": {
+  "x-mt": true
+ },
+ "s4dc975c1cd": "Del texto (regex, grupo 1)",
+ "@s4dc975c1cd": {
+  "x-mt": true
+ },
+ "s21c23314ed": "Para una respuesta de texto: una expresión regular cuyo primer grupo es el estado, por ejemplo la luz:\\s*(\\S+).",
+ "@s21c23314ed": {
+  "x-mt": true
+ },
+ "s63a305f2ab": "Comando de estado para esta tarjeta (opcional)",
+ "@s63a305f2ab": {
+  "x-mt": true
+ },
+ "s89ad1c43b4": "Vacío = el comando de estado del dispositivo.",
+ "@s89ad1c43b4": {
+  "x-mt": true
+ },
  "s5bed8bff00": "Comando",
+ "sec7af7b376": "Por ejemplo, \"light on\". El PIN y otras partes se añaden por la plantilla de comando del dispositivo.",
+ "@sec7af7b376": {
+  "x-mt": true
+ },
  "sfee393b70e": "Esperar la respuesta",
  "@sfee393b70e": {
   "x-mt": true
  },
+ "s3f4dda1fb9": "Muestra la respuesta del dispositivo (o un error claro) en la tarjeta.",
+ "@s3f4dda1fb9": {
+  "x-mt": true
+ },
  "sa53638cfea": "Responder permanece en la baldosa (s)",
  "@sa53638cfea": {
+  "x-mt": true
+ },
+ "se6d21484a8": "Cuanto tiempo la respuesta se mantiene en la baldosa. 0 = hasta la siguiente prensa.",
+ "@se6d21484a8": {
+  "x-mt": true
+ },
+ "sb56e7e9f81": "ntfy: el comando desaparecido",
+ "@sb56e7e9f81": {
+  "x-mt": true
+ },
+ "s09f79d4fda": "No hay respuesta (PIN?) – el dispositivo no respondió dentro {p0} s (topic \"{p1}\"). Compruebe el PIN: muchos dispositivos no responden a un PIN equivocado en absoluto.",
+ "@s09f79d4fda": {
+  "x-mt": true
+ },
+ "sf25dcf262f": "El dispositivo no respondió dentro {p0} s (topic \"{p1}\"). Si sólo responde a intervalos, aumenta \"Esperar respuesta\" o \"Tiempo mínimo entre comandos\".",
+ "@sf25dcf262f": {
+  "x-mt": true
+ },
+ "s1257447096": "El dispositivo respondió: {p0}",
+ "@s1257447096": {
+  "x-mt": true
+ },
+ "sf03877dd0a": " Se almacena un PIN.",
+ "@sf03877dd0a": {
   "x-mt": true
  },
  "s36fb6ba26f": "Modbus TCP",
@@ -5576,10 +5754,6 @@
  },
  "s121542d6d7": "Cuánto tiempo para esperar antes de decir que no hubo respuesta.",
  "@s121542d6d7": {
-  "x-mt": true
- },
- "se6d21484a8": "Cuanto tiempo la respuesta se mantiene en la baldosa. 0 = hasta la siguiente prensa.",
- "@se6d21484a8": {
   "x-mt": true
  },
  "s74d68a98d6": "Título del mensaje (opcional)",
@@ -6347,205 +6521,6 @@
   "x-mt": true
  },
  "s57e684ac9e": "Mensajes",
- "sb1f9470ebd": "'JSON: {\"light\": 1, …}. Text: \"Light: ON, …\" – the state is read after the name.'",
- "s96a5a283cf": "JSON",
- "s2179eef80d": "'If the switches sit under a group in the JSON, e.g. {\"relays\":{\"light\":1}}, type \"relays.\" – the key is then read from relays.light.'",
- "s3378eb2d0b": "{p0} – temperature",
- "@s3378eb2d0b": {
-  "x-mt": true
- },
- "saa437260b8": "Estado enviado (IR es de una sola dirección)",
- "@saa437260b8": {
-  "x-mt": true
- },
- "seab2c72485": "Fan (0 = auto)",
- "@seab2c72485": {
-  "x-mt": true
- },
- "s3a38b97f7b": "{p0} – room",
- "@s3a38b97f7b": {
-  "x-mt": true
- },
- "s0ceafaa97c": "energía",
- "@s0ceafaa97c": {
-  "x-mt": true
- },
- "s12d40eedd5": "Permitir correr en el fondo",
- "@s12d40eedd5": {
-  "x-mt": true
- },
- "s8e1fcae1fe": "Para que el puente funcione con la pantalla apagada, Android debe dejar que Molaplan funcione en el fondo sin restricciones de la batería. Elija \"Permitir\" en la siguiente ventana.",
- "@s8e1fcae1fe": {
-  "x-mt": true
- },
- "sd62c460e3d": "Continuar",
- "@sd62c460e3d": {
-  "x-mt": true
- },
- "seb25c46911": "El puente funciona en el fondo: la pantalla puede estar apagada y Molaplan cerrado. Comienza por sí mismo después de un reinicio y reconecta cuando la red regresa.",
- "@seb25c46911": {
-  "x-mt": true
- },
- "s374a096cb9": "El ahorro de batería puede detener el puente",
- "@s374a096cb9": {
-  "x-mt": true
- },
- "s9b1298f7c6": "Deja que Molaplan funcione en el fondo sin restricciones.",
- "@s9b1298f7c6": {
-  "x-mt": true
- },
- "sc8ef04815c": "Permiso",
- "@sc8ef04815c": {
-  "x-mt": true
- },
- "s30ae7f76e6": "dispositivo de comando ntfy (commands + state)",
- "@s30ae7f76e6": {
-  "x-mt": true
- },
- "s6cfd0d8be1": "El tema que el dispositivo de casa escucha. El nombre del tema funciona como una contraseña: mantenerlo largo y aleatorio.",
- "@s6cfd0d8be1": {
-  "x-mt": true
- },
- "s7e8c7a0cfc": "Si el dispositivo responde a otro tema (por ejemplo, su tema de notificación personal), escríbalo aquí. Vacío = el tema del comando.",
- "@s7e8c7a0cfc": {
-  "x-mt": true
- },
- "s7ea9d85150": "Código PIN (opcional)",
- "@s7ea9d85150": {
-  "x-mt": true
- },
- "s0694fe4d2b": "'Guardado encriptado en este dispositivo. Insertado donde la plantilla dice {pin}.'",
- "@s0694fe4d2b": {
-  "x-mt": true
- },
- "s4313c720cc": "Plantilla de comandos",
- "@s4313c720cc": {
-  "x-mt": true
- },
- "sd904dac1cc": "'{cmd} = el comando del botón, {pin} = PIN, {cid} = un id el dispositivo se hace eco en su respuesta, {valor} = el valor (on/off o un número). E.g. \"{cmd} {pin}\" → \"light on 1234\".'",
- "@sd904dac1cc": {
-  "x-mt": true
- },
- "sa45b65f571": "Control de estado",
- "@sa45b65f571": {
-  "x-mt": true
- },
- "se464d5ed51": "El comando el dispositivo responde con su estado (por ejemplo, \"status\" o \"status json\"). Todas las tarjetas de este dispositivo comparten la respuesta.",
- "@se464d5ed51": {
-  "x-mt": true
- },
- "s821e8d2d9d": "Título de la respuesta contiene (opcional)",
- "@s821e8d2d9d": {
-  "x-mt": true
- },
- "s949ee12ae6": "Sólo los mensajes cuyo título contiene este texto cuentan como respuesta – útil cuando el tema de respuesta lleva otras notificaciones también.",
- "@s949ee12ae6": {
-  "x-mt": true
- },
- "sfbcb5f18bd": "La respuesta debe contener (regex, opcional)",
- "@sfbcb5f18bd": {
-  "x-mt": true
- },
- "s79c983aa94": "Una expresión regular la respuesta (título + mensaje) debe contener.",
- "@s79c983aa94": {
-  "x-mt": true
- },
- "s081eff543d": "Texto al mapa del estado",
- "@s081eff543d": {
-  "x-mt": true
- },
- "s2afc1f1fb8": "Una regla por línea: \"pattern = valor\". El patrón es un regex que coincide con todo el texto capturado (caso insensible). Vacío = palabras integradas en finlandés e inglés on/off.",
- "@s2afc1f1fb8": {
-  "x-mt": true
- },
- "s0976f767e2": "Respuesta de error (regex)",
- "@s0976f767e2": {
-  "x-mt": true
- },
- "sc0fd47e896": "Una respuesta que significa un error (shown in red). Vacío = default (wrong PIN, error, negado...). Para JSON: ok:false o un campo de error.",
- "@sc0fd47e896": {
-  "x-mt": true
- },
- "s98d9efa888": "Tiempo mínimo entre los comandos (s)",
- "@s98d9efa888": {
-  "x-mt": true
- },
- "sa893722568": "Si el dispositivo responde sólo por ejemplo cada 30 segundos, escriba 30: el siguiente comando espera su turno en lugar de perderse.",
- "@sa893722568": {
-  "x-mt": true
- },
- "s5e8e483f10": "Cuánto tiempo para esperar a la respuesta antes de mostrar un error.",
- "@s5e8e483f10": {
-  "x-mt": true
- },
- "s31312f141c": "Respuesta del Estado válida para s)",
- "@s31312f141c": {
-  "x-mt": true
- },
- "s0611790300": "Las tarjetas del mismo dispositivo comparten una respuesta de estado durante tanto tiempo – el dispositivo no se le pide sin necesidad.",
- "@s0611790300": {
-  "x-mt": true
- },
- "scece580659": "Sólo para un tema protegido (cuenta n ostensible → Acceso a fichas).",
- "@scece580659": {
-  "x-mt": true
- },
- "s7e91b10006": "Default es el público ntfy.sh. Una URL completa sobresale esto.",
- "@s7e91b10006": {
-  "x-mt": true
- },
- "s1b5501c73f": "JSON path (JSON reply)",
- "@s1b5501c73f": {
-  "x-mt": true
- },
- "s1320bcddf2": "Cuando el dispositivo responde con JSON, por ejemplo $.light o $.outputs.siren.",
- "@s1320bcddf2": {
-  "x-mt": true
- },
- "s4dc975c1cd": "Del texto (regex, grupo 1)",
- "@s4dc975c1cd": {
-  "x-mt": true
- },
- "s21c23314ed": "Para una respuesta de texto: una expresión regular cuyo primer grupo es el estado, por ejemplo la luz:\\s*(\\S+).",
- "@s21c23314ed": {
-  "x-mt": true
- },
- "s63a305f2ab": "Comando de estado para esta tarjeta (opcional)",
- "@s63a305f2ab": {
-  "x-mt": true
- },
- "s89ad1c43b4": "Vacío = el comando de estado del dispositivo.",
- "@s89ad1c43b4": {
-  "x-mt": true
- },
- "sec7af7b376": "Por ejemplo, \"light on\". El PIN y otras partes se añaden por la plantilla de comando del dispositivo.",
- "@sec7af7b376": {
-  "x-mt": true
- },
- "s3f4dda1fb9": "Muestra la respuesta del dispositivo (o un error claro) en la tarjeta.",
- "@s3f4dda1fb9": {
-  "x-mt": true
- },
- "sb56e7e9f81": "ntfy: el comando desaparecido",
- "@sb56e7e9f81": {
-  "x-mt": true
- },
- "s09f79d4fda": "No hay respuesta (PIN?) – el dispositivo no respondió dentro {p0} s (topic \"{p1}\"). Compruebe el PIN: muchos dispositivos no responden a un PIN equivocado en absoluto.",
- "@s09f79d4fda": {
-  "x-mt": true
- },
- "sf25dcf262f": "El dispositivo no respondió dentro {p0} s (topic \"{p1}\"). Si sólo responde a intervalos, aumenta \"Esperar respuesta\" o \"Tiempo mínimo entre comandos\".",
- "@sf25dcf262f": {
-  "x-mt": true
- },
- "s1257447096": "El dispositivo respondió: {p0}",
- "@s1257447096": {
-  "x-mt": true
- },
- "sf03877dd0a": " Se almacena un PIN.",
- "@sf03877dd0a": {
-  "x-mt": true
- },
  "s021372fd08": "ntfy dispositivo de comando",
  "@s021372fd08": {
   "x-mt": true
@@ -6586,6 +6561,8 @@
  "@s5f019b05f1": {
   "x-mt": true
  },
+ "sb1f9470ebd": "'JSON: {\"light\": 1, …}. Text: \"Light: ON, …\" – the state is read after the name.'",
+ "s96a5a283cf": "JSON",
  "s3f8b9eaf4b": "Interruptores (uno por línea: Nombre = clave)",
  "@s3f8b9eaf4b": {
   "x-mt": true
@@ -6610,6 +6587,7 @@
  "@s93698f5ccb": {
   "x-mt": true
  },
+ "s2179eef80d": "'If the switches sit under a group in the JSON, e.g. {\"relays\":{\"light\":1}}, type \"relays.\" – the key is then read from relays.light.'",
  "s50ade0ed0a": "Tarjeta de estado JSON path (opcional)",
  "@s50ade0ed0a": {
   "x-mt": true
@@ -6636,6 +6614,130 @@
  },
  "sfeb36cc60a": "{p0} – estado",
  "@sfeb36cc60a": {
+  "x-mt": true
+ },
+ "s3378eb2d0b": "{p0} – temperature",
+ "@s3378eb2d0b": {
+  "x-mt": true
+ },
+ "saa437260b8": "Estado enviado (IR es de una sola dirección)",
+ "@saa437260b8": {
+  "x-mt": true
+ },
+ "seab2c72485": "Fan (0 = auto)",
+ "@seab2c72485": {
+  "x-mt": true
+ },
+ "s3a38b97f7b": "{p0} – room",
+ "@s3a38b97f7b": {
+  "x-mt": true
+ },
+ "s0ceafaa97c": "energía",
+ "@s0ceafaa97c": {
+  "x-mt": true
+ },
+ "s1ea16fc636": "Mira ahora",
+ "@s1ea16fc636": {
+  "x-mt": true
+ },
+ "sbaf1a2b35e": "No hay red",
+ "@sbaf1a2b35e": {
+  "x-mt": true
+ },
+ "s3f750ce1d4": "Este dispositivo no está en Wi-Fi y los datos móviles no funcionan. Las tarjetas muestran los últimos valores recibidos.",
+ "@s3f750ce1d4": {
+  "x-mt": true
+ },
+ "s542a3e9332": "El Wi-Fi no tiene internet",
+ "@s542a3e9332": {
+  "x-mt": true
+ },
+ "sba13ded915": "Los dispositivos en este trabajo Wi-Fi; los servicios en la nube y el acceso remoto no lo hacen.",
+ "@sba13ded915": {
+  "x-mt": true
+ },
+ "se24bfd1257": "Servidor remoto no contesta",
+ "@se24bfd1257": {
+  "x-mt": true
+ },
+ "s8584be9da3": "El Internet funciona, pero el servidor remoto de Molaplan no responde. En casa todo funciona; el acceso remoto vuelve por sí mismo.",
+ "@s8584be9da3": {
+  "x-mt": true
+ },
+ "s1e03ade992": "Conexión OK",
+ "@s1e03ade992": {
+  "x-mt": true
+ },
+ "s0fc5f4d788": "Revisó cada 15 s hasta que funciona; este aviso entonces desaparece por sí mismo.",
+ "@s0fc5f4d788": {
+  "x-mt": true
+ },
+ "s3e05e0efab": "Dirección de Wi-Fi/Ethernet",
+ "@s3e05e0efab": {
+  "x-mt": true
+ },
+ "s6b59e217ba": "ninguno",
+ "@s6b59e217ba": {
+  "x-mt": true
+ },
+ "s3b7c55c4fc": "Comprobado",
+ "@s3b7c55c4fc": {
+  "x-mt": true
+ },
+ "sc420bf77fa": "El puente está actualizado ({p0}).",
+ "@sc420bf77fa": {
+  "x-mt": true
+ },
+ "sb040f9f612": "El puente está instalando {p0} y se reinicia (alrededor de un minuto).",
+ "@sb040f9f612": {
+  "x-mt": true
+ },
+ "s007c4f492d": "Versión {p0} descargado. Aprobar la instalación desde la notificación en el dispositivo puente.",
+ "@s007c4f492d": {
+  "x-mt": true
+ },
+ "s602d8f4a18": "Actualice este puente a mano (versión {p0}).",
+ "@s602d8f4a18": {
+  "x-mt": true
+ },
+ "se8704fa7a4": "El puente no pudo comprobar las actualizaciones ahora.",
+ "@se8704fa7a4": {
+  "x-mt": true
+ },
+ "s2db971daf4": "Actualización fallida: {p0}",
+ "@s2db971daf4": {
+  "x-mt": true
+ },
+ "s51fb400921": " · actualizaciones silenciosamente",
+ "@s51fb400921": {
+  "x-mt": true
+ },
+ "s3443bfc674": " · Las actualizaciones necesitan aprobación en el dispositivo",
+ "@s3443bfc674": {
+  "x-mt": true
+ },
+ "scb47cbf8c2": "Puente de inicio: una versión anterior (sin información de la versión)",
+ "@scb47cbf8c2": {
+  "x-mt": true
+ },
+ "s6a02d97944": "Versión de puente de inicio: cheque...",
+ "@s6a02d97944": {
+  "x-mt": true
+ },
+ "s311c531a8e": "Home bridge version: unknown",
+ "@s311c531a8e": {
+  "x-mt": true
+ },
+ "s70fe8d5ef3": "Puente de actualización",
+ "@s70fe8d5ef3": {
+  "x-mt": true
+ },
+ "s2fcba19ec3": "Actualizar automáticamente",
+ "@s2fcba19ec3": {
+  "x-mt": true
+ },
+ "se7a1731ac0": "Instala las nuevas versiones de Molaplan por sí solas (revisado cada 6 h). Sólo los archivos firmados por Molaplan con un chequesum coincidente.",
+ "@se7a1731ac0": {
   "x-mt": true
  }
 }

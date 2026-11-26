@@ -1465,8 +1465,7 @@
   "x-mt": true
  },
  "sfec025279e": "Enheten är offline",
- "sa7d212f047": "Enheter i hemmets Wi-Fi fungerar ändå.",
- "s24ccd151f2": "Försök igen",
+ "sf4caddf894": "Avancerat",
  "sc26c52235c": "Du är borta och hembron svarar inte. Hemnätverksenheter kan inte styras nu.",
  "@sc26c52235c": {
   "x-mt": true
@@ -1607,7 +1606,6 @@
  "s6de95e582f": "Om temperaturen försvinner",
  "s8ff25225b4": "Stäng av värme/kyla (säkrast)",
  "s17cb86f49e": "Behåll som det är",
- "sf4caddf894": "Avancerat",
  "s9624f070ee": "Hysteres",
  "sf070be2c1e": "Dödband (värme/kyla)",
  "s64540136ff": "Minsta tid på",
@@ -3648,6 +3646,18 @@
  "@s5d717bb2c5": {
   "x-mt": true
  },
+ "s12d40eedd5": "Låt springa i bakgrunden",
+ "@s12d40eedd5": {
+  "x-mt": true
+ },
+ "s8e1fcae1fe": "För att bron ska fungera med skärmen måste Android låta Molaplan köras i bakgrunden utan batteribegränsningar. Välj \"Tillåt\" i nästa fönster.",
+ "@s8e1fcae1fe": {
+  "x-mt": true
+ },
+ "sd62c460e3d": "Fortsätt",
+ "@sd62c460e3d": {
+  "x-mt": true
+ },
  "s7132345f20": "Enhet \"{p0}\" ansluten!",
  "@s7132345f20": {
   "x-mt": true
@@ -3660,12 +3670,28 @@
  "@sd64f52490d": {
   "x-mt": true
  },
+ "seb25c46911": "Bron körs i bakgrunden: skärmen kan vara avstängd och Molaplan stängd. Det börjar själv efter en omstart och återansluter när nätverket återvänder.",
+ "@seb25c46911": {
+  "x-mt": true
+ },
  "sbb23f25581": "Håll Molaplan öppen. Skärmen stannar kvar medan bron är på.",
  "@sbb23f25581": {
   "x-mt": true
  },
  "sbfed096278": "Använd den här enheten som hemmabron",
  "@sbfed096278": {
+  "x-mt": true
+ },
+ "s374a096cb9": "Batteribesparing kan stoppa bron",
+ "@s374a096cb9": {
+  "x-mt": true
+ },
+ "s9b1298f7c6": "Låt Molaplan springa i bakgrunden utan begränsningar.",
+ "@s9b1298f7c6": {
+  "x-mt": true
+ },
+ "sc8ef04815c": "Tillåt",
+ "@sc8ef04815c": {
   "x-mt": true
  },
  "s13995350ed": "Para ihop en telefon",
@@ -5360,29 +5386,181 @@
   "x-mt": true
  },
  "s43c9b88580": "Auto",
+ "s30ae7f76e6": "ntfy kommandoenhet (kommandon + stat)",
+ "@s30ae7f76e6": {
+  "x-mt": true
+ },
  "s6a4516e0fe": "Kommandoämne (namn eller fullständig URL)",
  "@s6a4516e0fe": {
+  "x-mt": true
+ },
+ "s6cfd0d8be1": "Ämnet som hemmet enheten lyssnar på. Ämnet namn fungerar som ett lösenord: hålla det lång och slumpmässig.",
+ "@s6cfd0d8be1": {
   "x-mt": true
  },
  "s800cd08229": "Svara på ämne (valfritt)",
  "@s800cd08229": {
   "x-mt": true
  },
+ "s7e8c7a0cfc": "Om enheten svarar på ett annat ämne (t.ex. ditt personliga meddelandeämne), skriv det här. Empty = kommandoämnet.",
+ "@s7e8c7a0cfc": {
+  "x-mt": true
+ },
+ "s7ea9d85150": "PIN-kod (tillval)",
+ "@s7ea9d85150": {
+  "x-mt": true
+ },
+ "s0694fe4d2b": "'Förvarad krypterad på den här enheten. Infogad där mallen säger {pin}.'",
+ "@s0694fe4d2b": {
+  "x-mt": true
+ },
+ "s4313c720cc": "Kommando mall",
+ "@s4313c720cc": {
+  "x-mt": true
+ },
+ "sd904dac1cc": "'{cmd} = knappens kommando, {pin} = PIN, {cid} = ett id enheten echoes i sitt svar, {värde} = värdet (på / av eller ett nummer). t.ex. \"{cmd} {pin}\" → \"ljus på 1234\".'",
+ "@sd904dac1cc": {
+  "x-mt": true
+ },
+ "sa45b65f571": "Status kommando",
+ "@sa45b65f571": {
+  "x-mt": true
+ },
+ "se464d5ed51": "Kommandot enheten svarar med sitt tillstånd (t.ex. \"status\" eller \"status json\"). Alla kort av denna enhet delar svaret.",
+ "@se464d5ed51": {
+  "x-mt": true
+ },
+ "s821e8d2d9d": "Svara titeln innehåller (valfritt)",
+ "@s821e8d2d9d": {
+  "x-mt": true
+ },
+ "s949ee12ae6": "Endast meddelanden vars titel innehåller denna text räknas som svaret - användbart när svarsämnet bär andra meddelanden också.",
+ "@s949ee12ae6": {
+  "x-mt": true
+ },
+ "sfbcb5f18bd": "Svaret måste innehålla (regex, valfritt)",
+ "@sfbcb5f18bd": {
+  "x-mt": true
+ },
+ "s79c983aa94": "Ett vanligt uttryck som svaret (titel + meddelande) måste innehålla.",
+ "@s79c983aa94": {
+  "x-mt": true
+ },
+ "s081eff543d": "Text till statlig karta",
+ "@s081eff543d": {
+  "x-mt": true
+ },
+ "s2afc1f1fb8": "En regel per rad: \"mönster = värde\". Mönstret är en regex som matchar hela den fångade texten (fall-insensitiv). Empty = inbyggd finska och engelska på/av ord.",
+ "@s2afc1f1fb8": {
+  "x-mt": true
+ },
+ "s0976f767e2": "Fel svar (regex)",
+ "@s0976f767e2": {
+  "x-mt": true
+ },
+ "sc0fd47e896": "Ett svar som betyder ett fel (visas i rött) Empty = standard (fel PIN, fel, nekad ...). För JSON: ok:false eller ett felfält.",
+ "@sc0fd47e896": {
+  "x-mt": true
+ },
+ "s98d9efa888": "Minimitid mellan kommandon (s)",
+ "@s98d9efa888": {
+  "x-mt": true
+ },
+ "sa893722568": "Om enheten svarar endast t.ex. var 30:e sekund, typ 30: nästa kommando väntar sin tur istället för att gå vilse.",
+ "@sa893722568": {
+  "x-mt": true
+ },
  "sbdcbe301b9": "Vänta på svar (s)",
  "@sbdcbe301b9": {
+  "x-mt": true
+ },
+ "s5e8e483f10": "Hur lång tid att vänta på svaret innan du visar ett fel.",
+ "@s5e8e483f10": {
+  "x-mt": true
+ },
+ "s31312f141c": "Status svar giltigt för (s)",
+ "@s31312f141c": {
+  "x-mt": true
+ },
+ "s0611790300": "Kort av samma enhet delar en status svar så länge - enheten är inte ombedd onödigt.",
+ "@s0611790300": {
   "x-mt": true
  },
  "s5bc736c04a": "Access token (tillval)",
  "@s5bc736c04a": {
   "x-mt": true
  },
+ "scece580659": "Endast för ett skyddat ämne (ntfy-konto → Access-tokens).",
+ "@scece580659": {
+  "x-mt": true
+ },
+ "s7e91b10006": "Standard är den offentliga ntfy.sh. En fullständig URL ovan åsidosätter detta.",
+ "@s7e91b10006": {
+  "x-mt": true
+ },
+ "s1b5501c73f": "JSON väg (JSON svar)",
+ "@s1b5501c73f": {
+  "x-mt": true
+ },
+ "s1320bcddf2": "När enheten svarar med JSON, t.ex. $.light eller $.outputs.siren.",
+ "@s1320bcddf2": {
+  "x-mt": true
+ },
+ "s4dc975c1cd": "Från text (regex, grupp 1)",
+ "@s4dc975c1cd": {
+  "x-mt": true
+ },
+ "s21c23314ed": "För ett textsvar: ett vanligt uttryck vars första grupp är staten, t.ex. ljus:\\s*(\\S+).",
+ "@s21c23314ed": {
+  "x-mt": true
+ },
+ "s63a305f2ab": "Statuskommando för detta kort (valfritt)",
+ "@s63a305f2ab": {
+  "x-mt": true
+ },
+ "s89ad1c43b4": "Tomt = enhetens statuskommando.",
+ "@s89ad1c43b4": {
+  "x-mt": true
+ },
  "s5bed8bff00": "Kommando",
+ "sec7af7b376": "t.ex. \"ljus på\". PIN och andra delar läggs till av enhetens kommandomall.",
+ "@sec7af7b376": {
+  "x-mt": true
+ },
  "sfee393b70e": "Vänta på svaret",
  "@sfee393b70e": {
   "x-mt": true
  },
+ "s3f4dda1fb9": "Visar enhetens svar (eller ett tydligt fel) på kortet.",
+ "@s3f4dda1fb9": {
+  "x-mt": true
+ },
  "sa53638cfea": "Svaret stannar på plattan (s)",
  "@sa53638cfea": {
+  "x-mt": true
+ },
+ "se6d21484a8": "Hur länge svaret stannar på kakeln. 0 = tills nästa press.",
+ "@se6d21484a8": {
+  "x-mt": true
+ },
+ "sb56e7e9f81": "ntfy: kommandot saknas",
+ "@sb56e7e9f81": {
+  "x-mt": true
+ },
+ "s09f79d4fda": "Inget svar (PIN?) - enheten svarade inte inom {p0} s (topiskt \"{p1}\"). Kontrollera PIN: många enheter svarar inte på fel PIN alls.",
+ "@s09f79d4fda": {
+  "x-mt": true
+ },
+ "sf25dcf262f": "Enheten svarade inte inom {p0} s (topisk \"{p1}\"). Om den svarar endast vid intervaller, öka \"Vänta på svar\" eller \"Minimum tid mellan kommandon\".",
+ "@sf25dcf262f": {
+  "x-mt": true
+ },
+ "s1257447096": "Enheten svarade: {p0}",
+ "@s1257447096": {
+  "x-mt": true
+ },
+ "sf03877dd0a": " En PIN lagras.",
+ "@sf03877dd0a": {
   "x-mt": true
  },
  "s36fb6ba26f": "Modbus TCP",
@@ -5588,10 +5766,6 @@
  },
  "s121542d6d7": "Hur lång tid att vänta innan du säger att inget svar kom.",
  "@s121542d6d7": {
-  "x-mt": true
- },
- "se6d21484a8": "Hur länge svaret stannar på kakeln. 0 = tills nästa press.",
- "@se6d21484a8": {
   "x-mt": true
  },
  "s74d68a98d6": "Meddelande titel (valfritt)",
@@ -6365,205 +6539,6 @@
   "x-mt": true
  },
  "s57e684ac9e": "Meddelanden",
- "sb1f9470ebd": "'JSON: {\"light\": 1, …}. Text: \"Light: ON, …\" – the state is read after the name.'",
- "s96a5a283cf": "JSON",
- "s2179eef80d": "'If the switches sit under a group in the JSON, e.g. {\"relays\":{\"light\":1}}, type \"relays.\" – the key is then read from relays.light.'",
- "s3378eb2d0b": "{p0} – temperatur",
- "@s3378eb2d0b": {
-  "x-mt": true
- },
- "saa437260b8": "Sent State (IR är one-way)",
- "@saa437260b8": {
-  "x-mt": true
- },
- "seab2c72485": "Fan (0 = auto)",
- "@seab2c72485": {
-  "x-mt": true
- },
- "s3a38b97f7b": "{p0} – rum",
- "@s3a38b97f7b": {
-  "x-mt": true
- },
- "s0ceafaa97c": "Energi energi",
- "@s0ceafaa97c": {
-  "x-mt": true
- },
- "s12d40eedd5": "Låt springa i bakgrunden",
- "@s12d40eedd5": {
-  "x-mt": true
- },
- "s8e1fcae1fe": "För att bron ska fungera med skärmen måste Android låta Molaplan köras i bakgrunden utan batteribegränsningar. Välj \"Tillåt\" i nästa fönster.",
- "@s8e1fcae1fe": {
-  "x-mt": true
- },
- "sd62c460e3d": "Fortsätt",
- "@sd62c460e3d": {
-  "x-mt": true
- },
- "seb25c46911": "Bron körs i bakgrunden: skärmen kan vara avstängd och Molaplan stängd. Det börjar själv efter en omstart och återansluter när nätverket återvänder.",
- "@seb25c46911": {
-  "x-mt": true
- },
- "s374a096cb9": "Batteribesparing kan stoppa bron",
- "@s374a096cb9": {
-  "x-mt": true
- },
- "s9b1298f7c6": "Låt Molaplan springa i bakgrunden utan begränsningar.",
- "@s9b1298f7c6": {
-  "x-mt": true
- },
- "sc8ef04815c": "Tillåt",
- "@sc8ef04815c": {
-  "x-mt": true
- },
- "s30ae7f76e6": "ntfy kommandoenhet (kommandon + stat)",
- "@s30ae7f76e6": {
-  "x-mt": true
- },
- "s6cfd0d8be1": "Ämnet som hemmet enheten lyssnar på. Ämnet namn fungerar som ett lösenord: hålla det lång och slumpmässig.",
- "@s6cfd0d8be1": {
-  "x-mt": true
- },
- "s7e8c7a0cfc": "Om enheten svarar på ett annat ämne (t.ex. ditt personliga meddelandeämne), skriv det här. Empty = kommandoämnet.",
- "@s7e8c7a0cfc": {
-  "x-mt": true
- },
- "s7ea9d85150": "PIN-kod (tillval)",
- "@s7ea9d85150": {
-  "x-mt": true
- },
- "s0694fe4d2b": "'Förvarad krypterad på den här enheten. Infogad där mallen säger {pin}.'",
- "@s0694fe4d2b": {
-  "x-mt": true
- },
- "s4313c720cc": "Kommando mall",
- "@s4313c720cc": {
-  "x-mt": true
- },
- "sd904dac1cc": "'{cmd} = knappens kommando, {pin} = PIN, {cid} = ett id enheten echoes i sitt svar, {värde} = värdet (på / av eller ett nummer). t.ex. \"{cmd} {pin}\" → \"ljus på 1234\".'",
- "@sd904dac1cc": {
-  "x-mt": true
- },
- "sa45b65f571": "Status kommando",
- "@sa45b65f571": {
-  "x-mt": true
- },
- "se464d5ed51": "Kommandot enheten svarar med sitt tillstånd (t.ex. \"status\" eller \"status json\"). Alla kort av denna enhet delar svaret.",
- "@se464d5ed51": {
-  "x-mt": true
- },
- "s821e8d2d9d": "Svara titeln innehåller (valfritt)",
- "@s821e8d2d9d": {
-  "x-mt": true
- },
- "s949ee12ae6": "Endast meddelanden vars titel innehåller denna text räknas som svaret - användbart när svarsämnet bär andra meddelanden också.",
- "@s949ee12ae6": {
-  "x-mt": true
- },
- "sfbcb5f18bd": "Svaret måste innehålla (regex, valfritt)",
- "@sfbcb5f18bd": {
-  "x-mt": true
- },
- "s79c983aa94": "Ett vanligt uttryck som svaret (titel + meddelande) måste innehålla.",
- "@s79c983aa94": {
-  "x-mt": true
- },
- "s081eff543d": "Text till statlig karta",
- "@s081eff543d": {
-  "x-mt": true
- },
- "s2afc1f1fb8": "En regel per rad: \"mönster = värde\". Mönstret är en regex som matchar hela den fångade texten (fall-insensitiv). Empty = inbyggd finska och engelska på/av ord.",
- "@s2afc1f1fb8": {
-  "x-mt": true
- },
- "s0976f767e2": "Fel svar (regex)",
- "@s0976f767e2": {
-  "x-mt": true
- },
- "sc0fd47e896": "Ett svar som betyder ett fel (visas i rött) Empty = standard (fel PIN, fel, nekad ...). För JSON: ok:false eller ett felfält.",
- "@sc0fd47e896": {
-  "x-mt": true
- },
- "s98d9efa888": "Minimitid mellan kommandon (s)",
- "@s98d9efa888": {
-  "x-mt": true
- },
- "sa893722568": "Om enheten svarar endast t.ex. var 30:e sekund, typ 30: nästa kommando väntar sin tur istället för att gå vilse.",
- "@sa893722568": {
-  "x-mt": true
- },
- "s5e8e483f10": "Hur lång tid att vänta på svaret innan du visar ett fel.",
- "@s5e8e483f10": {
-  "x-mt": true
- },
- "s31312f141c": "Status svar giltigt för (s)",
- "@s31312f141c": {
-  "x-mt": true
- },
- "s0611790300": "Kort av samma enhet delar en status svar så länge - enheten är inte ombedd onödigt.",
- "@s0611790300": {
-  "x-mt": true
- },
- "scece580659": "Endast för ett skyddat ämne (ntfy-konto → Access-tokens).",
- "@scece580659": {
-  "x-mt": true
- },
- "s7e91b10006": "Standard är den offentliga ntfy.sh. En fullständig URL ovan åsidosätter detta.",
- "@s7e91b10006": {
-  "x-mt": true
- },
- "s1b5501c73f": "JSON väg (JSON svar)",
- "@s1b5501c73f": {
-  "x-mt": true
- },
- "s1320bcddf2": "När enheten svarar med JSON, t.ex. $.light eller $.outputs.siren.",
- "@s1320bcddf2": {
-  "x-mt": true
- },
- "s4dc975c1cd": "Från text (regex, grupp 1)",
- "@s4dc975c1cd": {
-  "x-mt": true
- },
- "s21c23314ed": "För ett textsvar: ett vanligt uttryck vars första grupp är staten, t.ex. ljus:\\s*(\\S+).",
- "@s21c23314ed": {
-  "x-mt": true
- },
- "s63a305f2ab": "Statuskommando för detta kort (valfritt)",
- "@s63a305f2ab": {
-  "x-mt": true
- },
- "s89ad1c43b4": "Tomt = enhetens statuskommando.",
- "@s89ad1c43b4": {
-  "x-mt": true
- },
- "sec7af7b376": "t.ex. \"ljus på\". PIN och andra delar läggs till av enhetens kommandomall.",
- "@sec7af7b376": {
-  "x-mt": true
- },
- "s3f4dda1fb9": "Visar enhetens svar (eller ett tydligt fel) på kortet.",
- "@s3f4dda1fb9": {
-  "x-mt": true
- },
- "sb56e7e9f81": "ntfy: kommandot saknas",
- "@sb56e7e9f81": {
-  "x-mt": true
- },
- "s09f79d4fda": "Inget svar (PIN?) - enheten svarade inte inom {p0} s (topiskt \"{p1}\"). Kontrollera PIN: många enheter svarar inte på fel PIN alls.",
- "@s09f79d4fda": {
-  "x-mt": true
- },
- "sf25dcf262f": "Enheten svarade inte inom {p0} s (topisk \"{p1}\"). Om den svarar endast vid intervaller, öka \"Vänta på svar\" eller \"Minimum tid mellan kommandon\".",
- "@sf25dcf262f": {
-  "x-mt": true
- },
- "s1257447096": "Enheten svarade: {p0}",
- "@s1257447096": {
-  "x-mt": true
- },
- "sf03877dd0a": " En PIN lagras.",
- "@sf03877dd0a": {
-  "x-mt": true
- },
  "s021372fd08": "ntfy kommandoenhet",
  "@s021372fd08": {
   "x-mt": true
@@ -6604,6 +6579,8 @@
  "@s5f019b05f1": {
   "x-mt": true
  },
+ "sb1f9470ebd": "'JSON: {\"light\": 1, …}. Text: \"Light: ON, …\" – the state is read after the name.'",
+ "s96a5a283cf": "JSON",
  "s3f8b9eaf4b": "Switches (en per rad: Namn = nyckel)",
  "@s3f8b9eaf4b": {
   "x-mt": true
@@ -6628,6 +6605,7 @@
  "@s93698f5ccb": {
   "x-mt": true
  },
+ "s2179eef80d": "'If the switches sit under a group in the JSON, e.g. {\"relays\":{\"light\":1}}, type \"relays.\" – the key is then read from relays.light.'",
  "s50ade0ed0a": "Statuskort JSON-banan (valfritt)",
  "@s50ade0ed0a": {
   "x-mt": true
@@ -6654,6 +6632,130 @@
  },
  "sfeb36cc60a": "{p0} – staten",
  "@sfeb36cc60a": {
+  "x-mt": true
+ },
+ "s3378eb2d0b": "{p0} – temperatur",
+ "@s3378eb2d0b": {
+  "x-mt": true
+ },
+ "saa437260b8": "Sent State (IR är one-way)",
+ "@saa437260b8": {
+  "x-mt": true
+ },
+ "seab2c72485": "Fan (0 = auto)",
+ "@seab2c72485": {
+  "x-mt": true
+ },
+ "s3a38b97f7b": "{p0} – rum",
+ "@s3a38b97f7b": {
+  "x-mt": true
+ },
+ "s0ceafaa97c": "Energi energi",
+ "@s0ceafaa97c": {
+  "x-mt": true
+ },
+ "s1ea16fc636": "Kolla nu",
+ "@s1ea16fc636": {
+  "x-mt": true
+ },
+ "sbaf1a2b35e": "Inget nätverk",
+ "@sbaf1a2b35e": {
+  "x-mt": true
+ },
+ "s3f750ce1d4": "Den här enheten är inte på Wi-Fi och mobildata fungerar inte. Kort visar de sista värden som mottagits.",
+ "@s3f750ce1d4": {
+  "x-mt": true
+ },
+ "s542a3e9332": "Wi-Fi har inget internet",
+ "@s542a3e9332": {
+  "x-mt": true
+ },
+ "sba13ded915": "Enheter på detta Wi-Fi-arbete; molntjänster och fjärråtkomst gör det inte.",
+ "@sba13ded915": {
+  "x-mt": true
+ },
+ "se24bfd1257": "Fjärrserver som inte svarar",
+ "@se24bfd1257": {
+  "x-mt": true
+ },
+ "s8584be9da3": "Internet fungerar, men Molaplans fjärrserver svarar inte hemma allt fungerar; fjärråtkomst kommer tillbaka av sig själv.",
+ "@s8584be9da3": {
+  "x-mt": true
+ },
+ "s1e03ade992": "Anslutning OK",
+ "@s1e03ade992": {
+  "x-mt": true
+ },
+ "s0fc5f4d788": "Re-checkade var 15: e tills det fungerar; detta meddelande försvinner sedan av sig själv.",
+ "@s0fc5f4d788": {
+  "x-mt": true
+ },
+ "s3e05e0efab": "Wi-Fi/Ethernet-adresser",
+ "@s3e05e0efab": {
+  "x-mt": true
+ },
+ "s6b59e217ba": "Ingen",
+ "@s6b59e217ba": {
+  "x-mt": true
+ },
+ "s3b7c55c4fc": "Kontrollerad",
+ "@s3b7c55c4fc": {
+  "x-mt": true
+ },
+ "sc420bf77fa": "Bron är uppdaterad ({p0}).",
+ "@sc420bf77fa": {
+  "x-mt": true
+ },
+ "sb040f9f612": "Bron installerar {p0} och startar om (cirka en minut).",
+ "@sb040f9f612": {
+  "x-mt": true
+ },
+ "s007c4f492d": "Version {p0} nedladdad. Godkänn installationen från meddelandet på bryggenheten.",
+ "@s007c4f492d": {
+  "x-mt": true
+ },
+ "s602d8f4a18": "Uppdatera denna bro för hand (version {p0}).",
+ "@s602d8f4a18": {
+  "x-mt": true
+ },
+ "se8704fa7a4": "Bron kunde inte söka efter uppdateringar nu.",
+ "@se8704fa7a4": {
+  "x-mt": true
+ },
+ "s2db971daf4": "Uppdatering misslyckades: {p0}",
+ "@s2db971daf4": {
+  "x-mt": true
+ },
+ "s51fb400921": " · uppdateringar tyst",
+ "@s51fb400921": {
+  "x-mt": true
+ },
+ "s3443bfc674": " · uppdateringar behöver godkännande på enheten",
+ "@s3443bfc674": {
+  "x-mt": true
+ },
+ "scb47cbf8c2": "Home bridge: en äldre version (ingen version info)",
+ "@scb47cbf8c2": {
+  "x-mt": true
+ },
+ "s6a02d97944": "Home bridge version: checking...",
+ "@s6a02d97944": {
+  "x-mt": true
+ },
+ "s311c531a8e": "Home bridge version: okänd",
+ "@s311c531a8e": {
+  "x-mt": true
+ },
+ "s70fe8d5ef3": "Uppdatera bridge",
+ "@s70fe8d5ef3": {
+  "x-mt": true
+ },
+ "s2fcba19ec3": "Uppdatera automatiskt",
+ "@s2fcba19ec3": {
+  "x-mt": true
+ },
+ "se7a1731ac0": "Installerar nya Molaplan-versioner av sig själv (kontrolleras var 6: e). Endast Molaplan-signerade filer med en matchande kontrollsumma.",
+ "@se7a1731ac0": {
   "x-mt": true
  }
 }

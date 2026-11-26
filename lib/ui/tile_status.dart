@@ -133,7 +133,10 @@ class TileIssueChip extends StatelessWidget {
   }
 }
 
-/// The whole-app "Ei nettiyhteyttä" banner.
+/// The whole-app connectivity banner (t212u/t213u): says concretely what failed, re-checks by
+/// itself (every 15 s while there is a problem, every 2 min otherwise, and on network changes) and
+/// disappears as soon as the connection works. No "Yritä" button; a small refresh icon and
+/// tap-for-details (under "Edistyneet").
 class OfflineBanner extends StatelessWidget {
   const OfflineBanner({super.key});
 
@@ -141,42 +144,63 @@ class OfflineBanner extends StatelessWidget {
   Widget build(BuildContext context) => ListenableBuilder(
     listenable: NetHealth.instance,
     builder: (context, _) {
-      if (!NetHealth.instance.offline) return const SizedBox.shrink();
+      final h = NetHealth.instance;
+      final issue = h.issue;
+      if (issue == NetIssue.none) return const SizedBox.shrink();
+      if (issue == NetIssue.relayDown) {
+        // Only matters when remote access is in use.
+        final st = context.getInheritedWidgetOfExactType<AppScope>()?.notifier;
+        if (st == null || (!st.remote.isPaired && !st.remote.bridgeOn)) return const SizedBox.shrink();
+      }
       final cs = Theme.of(context).colorScheme;
+      final (title, body) = netIssueText(context, issue);
       return Material(
         key: const ValueKey('offline-banner'),
         color: cs.inverseSurface,
-        child: SafeArea(
-          bottom: false,
-          top: false,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            child: Row(
-              children: [
-                Icon(Icons.cloud_off, color: cs.onInverseSurface, size: 20),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: tx(context, 'Ei nettiyhteyttä', 'No internet connection'),
-                          style: const TextStyle(fontWeight: FontWeight.w700),
-                        ),
-                        TextSpan(
-                          text:
-                              '  ${tx(context, 'Kotiverkon laitteet toimivat silti Wi-Fin kautta.', 'Devices on your home Wi-Fi still work.')}',
-                        ),
-                      ],
-                    ),
-                    style: TextStyle(color: cs.onInverseSurface),
+        child: InkWell(
+          onTap: () => showNetDetails(context),
+          child: SafeArea(
+            bottom: false,
+            top: false,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 6, 4, 6),
+              child: Row(
+                children: [
+                  Icon(
+                    issue == NetIssue.relayDown ? Icons.cloud_queue : Icons.cloud_off,
+                    color: cs.onInverseSurface,
+                    size: 20,
                   ),
-                ),
-                TextButton(
-                  onPressed: () => NetHealth.instance.check(force: true),
-                  child: Text(tx(context, 'Yritä', 'Retry'), style: TextStyle(color: cs.onInverseSurface)),
-                ),
-              ],
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: title,
+                            style: const TextStyle(fontWeight: FontWeight.w700),
+                          ),
+                          TextSpan(text: '  $body'),
+                        ],
+                      ),
+                      style: TextStyle(color: cs.onInverseSurface),
+                    ),
+                  ),
+                  IconButton(
+                    key: const ValueKey('offline-refresh'),
+                    tooltip: tx(context, 'Tarkista nyt', 'Check now'),
+                    visualDensity: VisualDensity.compact,
+                    onPressed: h.checking ? null : () => h.check(force: true),
+                    icon: h.checking
+                        ? SizedBox(
+                            width: 16,
+                            height: 16,
+                            child: CircularProgressIndicator(strokeWidth: 2, color: cs.onInverseSurface),
+                          )
+                        : Icon(Icons.refresh, size: 20, color: cs.onInverseSurface),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -184,6 +208,94 @@ class OfflineBanner extends StatelessWidget {
     },
   );
 }
+
+/// (title, explanation) for a connectivity problem.
+(String, String) netIssueText(BuildContext context, NetIssue i) => switch (i) {
+  NetIssue.noNetwork => (
+    tx(context, 'Ei verkkoyhteyttä', 'No network'),
+    tx(
+      context,
+      'Laite ei ole Wi-Fissä, eikä mobiilidata toimi. Ruuduissa näkyvät viimeksi saadut arvot.',
+      'This device is not on Wi-Fi and mobile data does not work. Tiles show the last values received.',
+    ),
+  ),
+  NetIssue.lanOnly => (
+    tx(context, 'Wi-Fissä ei ole nettiä', 'The Wi-Fi has no internet'),
+    tx(
+      context,
+      'Kotiverkon laitteet toimivat, pilvipalvelut ja etäyhteys eivät.',
+      'Devices on this Wi-Fi work; cloud services and remote access do not.',
+    ),
+  ),
+  NetIssue.relayDown => (
+    tx(context, 'Etäpalvelin ei vastaa', 'Remote server not answering'),
+    tx(
+      context,
+      'Netti toimii, mutta Molaplanin etäpalvelin ei vastaa. Kotona kaikki toimii; etäkäyttö palaa itsestään.',
+      'The internet works, but Molaplan\'s remote server does not answer. At home everything works; remote access comes back by itself.',
+    ),
+  ),
+  NetIssue.none => (tx(context, 'Yhteys kunnossa', 'Connection OK'), ''),
+};
+
+/// Tap on the banner: what was checked, under "Edistyneet".
+Future<void> showNetDetails(BuildContext context) => showModalBottomSheet<void>(
+  context: context,
+  showDragHandle: true,
+  builder: (context) => ListenableBuilder(
+    listenable: NetHealth.instance,
+    builder: (context, _) {
+      final h = NetHealth.instance;
+      final p = h.last;
+      final (title, body) = netIssueText(context, h.issue);
+      String two(int n) => n.toString().padLeft(2, '0');
+      return SafeArea(
+        child: ListView(
+          shrinkWrap: true,
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          children: [
+            Text(title, style: Theme.of(context).textTheme.titleLarge),
+            if (body.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 6), child: Text(body)),
+            const SizedBox(height: 6),
+            Text(
+              tx(
+                context,
+                'Tarkistetaan itsestään 15 s välein, kunnes yhteys toimii. Ilmoitus poistuu silloin itsestään.',
+                'Re-checked every 15 s until it works; this notice then disappears by itself.',
+              ),
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            ExpansionTile(
+              key: const ValueKey('net-advanced'),
+              tilePadding: EdgeInsets.zero,
+              title: Text(tx(context, 'Edistyneet', 'Advanced')),
+              children: [
+                ListTile(
+                  dense: true,
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(tx(context, 'Wi-Fi/Ethernet-osoitteet', 'Wi-Fi/Ethernet addresses')),
+                  subtitle: Text(
+                    (h.locals ?? const []).isEmpty ? tx(context, 'ei yhtään', 'none') : h.locals!.join(', '),
+                  ),
+                ),
+                if (p != null) ...[
+                  for (final e in p.results.entries)
+                    ListTile(dense: true, contentPadding: EdgeInsets.zero, title: Text(e.key), subtitle: Text(e.value)),
+                  ListTile(
+                    dense: true,
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(tx(context, 'Tarkistettu', 'Checked')),
+                    subtitle: Text('${two(p.at.hour)}:${two(p.at.minute)}:${two(p.at.second)}'),
+                  ),
+                ],
+              ],
+            ),
+          ],
+        ),
+      );
+    },
+  ),
+);
 
 /// t174u: away from home with LAN-only tiles and no home bridge online – say so once, with a
 /// link to Etäkäyttö, instead of a wall of "Laite ei vastaa".

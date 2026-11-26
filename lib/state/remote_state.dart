@@ -154,6 +154,26 @@ class RemoteState extends ChangeNotifier {
     return v == null ? null : jsonEncode(v);
   }
 
+  /// t211u hooks for the bridge (set by AppState).
+  Future<Map<String, dynamic>> Function()? bridgeInfo;
+  Future<Map<String, dynamic>> Function(Map<String, dynamic> spec)? bridgeUpdater;
+
+  /// Phone side: the home bridge's version and update state.
+  Future<Map<String, dynamic>?> fetchBridgeInfo() async {
+    final c = router.client;
+    if (c == null) return null;
+    final v = await c.call('bridge_info', timeout: const Duration(seconds: 15));
+    return v is Map ? Map<String, dynamic>.from(v) : null;
+  }
+
+  /// Phone side: "Päivitä silta".
+  Future<Map<String, dynamic>?> updateBridge() async {
+    final c = router.client;
+    if (c == null) return null;
+    final v = await c.call('bridge_update', spec: {'install': true}, timeout: const Duration(minutes: 3));
+    return v is Map ? Map<String, dynamic>.from(v) : null;
+  }
+
   Future<bool> checkRemote() async {
     final c = router.client;
     if (c == null) return false;
@@ -177,6 +197,8 @@ class RemoteState extends ChangeNotifier {
       log: (m) => debugPrint('[bridge] $m'),
     );
     await b.init(relayUrl: relay, name: name);
+    b.info = bridgeInfo;
+    b.updater = bridgeUpdater;
     bridge = b;
     _bridgeSub = b.changes.listen((_) => _changed());
     b.start();

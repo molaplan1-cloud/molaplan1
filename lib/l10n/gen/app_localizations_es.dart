@@ -1590,11 +1590,47 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sfec025279e => 'El dispositivo está desconectado';
 
   @override
-  String get sa7d212f047 =>
-      'Los dispositivos del Wi-Fi de casa siguen funcionando.';
+  String get s1ea16fc636 => 'Mira ahora';
 
   @override
-  String get s24ccd151f2 => 'Reintentar';
+  String get sbaf1a2b35e => 'No hay red';
+
+  @override
+  String get s3f750ce1d4 =>
+      'Este dispositivo no está en Wi-Fi y los datos móviles no funcionan. Las tarjetas muestran los últimos valores recibidos.';
+
+  @override
+  String get s542a3e9332 => 'El Wi-Fi no tiene internet';
+
+  @override
+  String get sba13ded915 =>
+      'Los dispositivos en este trabajo Wi-Fi; los servicios en la nube y el acceso remoto no lo hacen.';
+
+  @override
+  String get se24bfd1257 => 'Servidor remoto no contesta';
+
+  @override
+  String get s8584be9da3 =>
+      'El Internet funciona, pero el servidor remoto de Molaplan no responde. En casa todo funciona; el acceso remoto vuelve por sí mismo.';
+
+  @override
+  String get s1e03ade992 => 'Conexión OK';
+
+  @override
+  String get s0fc5f4d788 =>
+      'Revisó cada 15 s hasta que funciona; este aviso entonces desaparece por sí mismo.';
+
+  @override
+  String get sf4caddf894 => 'Avanzado';
+
+  @override
+  String get s3e05e0efab => 'Dirección de Wi-Fi/Ethernet';
+
+  @override
+  String get s6b59e217ba => 'ninguno';
+
+  @override
+  String get s3b7c55c4fc => 'Comprobado';
 
   @override
   String get sc26c52235c =>
@@ -1794,9 +1830,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s17cb86f49e => 'Mantener como está';
-
-  @override
-  String get sf4caddf894 => 'Avanzado';
 
   @override
   String get s9624f070ee => 'Histéresis';
@@ -3850,6 +3883,55 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s451ea613dd => 'Servidor de retransmisión';
 
   @override
+  String sc420bf77fa(String p0) {
+    return 'El puente está actualizado ($p0).';
+  }
+
+  @override
+  String sb040f9f612(String p0) {
+    return 'El puente está instalando $p0 y se reinicia (alrededor de un minuto).';
+  }
+
+  @override
+  String s007c4f492d(String p0) {
+    return 'Versión $p0 descargado. Aprobar la instalación desde la notificación en el dispositivo puente.';
+  }
+
+  @override
+  String s602d8f4a18(String p0) {
+    return 'Actualice este puente a mano (versión $p0).';
+  }
+
+  @override
+  String get se8704fa7a4 =>
+      'El puente no pudo comprobar las actualizaciones ahora.';
+
+  @override
+  String s2db971daf4(String p0) {
+    return 'Actualización fallida: $p0';
+  }
+
+  @override
+  String get s51fb400921 => ' · actualizaciones silenciosamente';
+
+  @override
+  String get s3443bfc674 =>
+      ' · Las actualizaciones necesitan aprobación en el dispositivo';
+
+  @override
+  String get scb47cbf8c2 =>
+      'Puente de inicio: una versión anterior (sin información de la versión)';
+
+  @override
+  String get s6a02d97944 => 'Versión de puente de inicio: cheque...';
+
+  @override
+  String get s311c531a8e => 'Home bridge version: unknown';
+
+  @override
+  String get s70fe8d5ef3 => 'Puente de actualización';
+
+  @override
   String get s72da730a42 => 'Servicio remoto: conectado';
 
   @override
@@ -3967,6 +4049,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sc8ef04815c => 'Permiso';
+
+  @override
+  String get s2fcba19ec3 => 'Actualizar automáticamente';
+
+  @override
+  String get se7a1731ac0 =>
+      'Instala las nuevas versiones de Molaplan por sí solas (revisado cada 6 h). Sólo los archivos firmados por Molaplan con un chequesum coincidente.';
 
   @override
   String get s13995350ed => 'Vincular un teléfono';
@@ -6009,6 +6098,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sa53638cfea => 'Responder permanece en la baldosa (s)';
 
   @override
+  String get se6d21484a8 =>
+      'Cuanto tiempo la respuesta se mantiene en la baldosa. 0 = hasta la siguiente prensa.';
+
+  @override
   String get sb56e7e9f81 => 'ntfy: el comando desaparecido';
 
   @override
@@ -6198,10 +6291,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s121542d6d7 =>
       'Cuánto tiempo para esperar antes de decir que no hubo respuesta.';
-
-  @override
-  String get se6d21484a8 =>
-      'Cuanto tiempo la respuesta se mantiene en la baldosa. 0 = hasta la siguiente prensa.';
 
   @override
   String get s74d68a98d6 => 'Título del mensaje (opcional)';

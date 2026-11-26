@@ -1583,10 +1583,47 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sfec025279e => 'Enheten är offline';
 
   @override
-  String get sa7d212f047 => 'Enheter i hemmets Wi-Fi fungerar ändå.';
+  String get s1ea16fc636 => 'Kolla nu';
 
   @override
-  String get s24ccd151f2 => 'Försök igen';
+  String get sbaf1a2b35e => 'Inget nätverk';
+
+  @override
+  String get s3f750ce1d4 =>
+      'Den här enheten är inte på Wi-Fi och mobildata fungerar inte. Kort visar de sista värden som mottagits.';
+
+  @override
+  String get s542a3e9332 => 'Wi-Fi har inget internet';
+
+  @override
+  String get sba13ded915 =>
+      'Enheter på detta Wi-Fi-arbete; molntjänster och fjärråtkomst gör det inte.';
+
+  @override
+  String get se24bfd1257 => 'Fjärrserver som inte svarar';
+
+  @override
+  String get s8584be9da3 =>
+      'Internet fungerar, men Molaplans fjärrserver svarar inte hemma allt fungerar; fjärråtkomst kommer tillbaka av sig själv.';
+
+  @override
+  String get s1e03ade992 => 'Anslutning OK';
+
+  @override
+  String get s0fc5f4d788 =>
+      'Re-checkade var 15: e tills det fungerar; detta meddelande försvinner sedan av sig själv.';
+
+  @override
+  String get sf4caddf894 => 'Avancerat';
+
+  @override
+  String get s3e05e0efab => 'Wi-Fi/Ethernet-adresser';
+
+  @override
+  String get s6b59e217ba => 'Ingen';
+
+  @override
+  String get s3b7c55c4fc => 'Kontrollerad';
 
   @override
   String get sc26c52235c =>
@@ -1784,9 +1821,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s17cb86f49e => 'Behåll som det är';
-
-  @override
-  String get sf4caddf894 => 'Avancerat';
 
   @override
   String get s9624f070ee => 'Hysteres';
@@ -3836,6 +3870,53 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s451ea613dd => 'Reläserver';
 
   @override
+  String sc420bf77fa(String p0) {
+    return 'Bron är uppdaterad ($p0).';
+  }
+
+  @override
+  String sb040f9f612(String p0) {
+    return 'Bron installerar $p0 och startar om (cirka en minut).';
+  }
+
+  @override
+  String s007c4f492d(String p0) {
+    return 'Version $p0 nedladdad. Godkänn installationen från meddelandet på bryggenheten.';
+  }
+
+  @override
+  String s602d8f4a18(String p0) {
+    return 'Uppdatera denna bro för hand (version $p0).';
+  }
+
+  @override
+  String get se8704fa7a4 => 'Bron kunde inte söka efter uppdateringar nu.';
+
+  @override
+  String s2db971daf4(String p0) {
+    return 'Uppdatering misslyckades: $p0';
+  }
+
+  @override
+  String get s51fb400921 => ' · uppdateringar tyst';
+
+  @override
+  String get s3443bfc674 => ' · uppdateringar behöver godkännande på enheten';
+
+  @override
+  String get scb47cbf8c2 =>
+      'Home bridge: en äldre version (ingen version info)';
+
+  @override
+  String get s6a02d97944 => 'Home bridge version: checking...';
+
+  @override
+  String get s311c531a8e => 'Home bridge version: okänd';
+
+  @override
+  String get s70fe8d5ef3 => 'Uppdatera bridge';
+
+  @override
   String get s72da730a42 => 'Fjärrservice: ansluten';
 
   @override
@@ -3951,6 +4032,13 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sc8ef04815c => 'Tillåt';
+
+  @override
+  String get s2fcba19ec3 => 'Uppdatera automatiskt';
+
+  @override
+  String get se7a1731ac0 =>
+      'Installerar nya Molaplan-versioner av sig själv (kontrolleras var 6: e). Endast Molaplan-signerade filer med en matchande kontrollsumma.';
 
   @override
   String get s13995350ed => 'Para ihop en telefon';
@@ -5979,6 +6067,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sa53638cfea => 'Svaret stannar på plattan (s)';
 
   @override
+  String get se6d21484a8 =>
+      'Hur länge svaret stannar på kakeln. 0 = tills nästa press.';
+
+  @override
   String get sb56e7e9f81 => 'ntfy: kommandot saknas';
 
   @override
@@ -6168,10 +6260,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s121542d6d7 =>
       'Hur lång tid att vänta innan du säger att inget svar kom.';
-
-  @override
-  String get se6d21484a8 =>
-      'Hur länge svaret stannar på kakeln. 0 = tills nästa press.';
 
   @override
   String get s74d68a98d6 => 'Meddelande titel (valfritt)';

@@ -264,6 +264,23 @@ class BridgeCore {
   }
 
   /// "rules" op: {jobs:[…], thermostats:[…]} replaces the sets; {status:true} only reads the status.
+  /// t211u: the bridge's app version / platform / update state (shown on the phone's Etäkäyttö).
+  Future<Map<String, dynamic>> Function()? info;
+
+  /// t211u: "Päivitä silta" from a paired phone – checks the latest release and installs it.
+  Future<Map<String, dynamic>> Function(Map<String, dynamic> spec)? updater;
+
+  Future<Map<String, dynamic>> _hookOp(
+    Map<String, dynamic> r,
+    Future<Map<String, dynamic>> Function(Map<String, dynamic> spec) f,
+  ) async {
+    try {
+      return {'id': r['id'], 'ok': true, 'v': await f(Map<String, dynamic>.from((r['spec'] as Map?) ?? const {}))};
+    } catch (e) {
+      return {'id': r['id'], 'ok': false, 'e': '$e', 'k': 'unknown'};
+    }
+  }
+
   Future<Map<String, dynamic>> _rulesOp(Map<String, dynamic> r) async {
     final id = r['id'];
     final spec = Map<String, dynamic>.from((r['spec'] as Map?) ?? const {});
@@ -582,6 +599,12 @@ class BridgeCore {
           'enroll' => _enroll(r),
           'rules' => _rulesOp(r),
           'automations' => _automationsOp(r),
+          'bridge_info' => _hookOp(r, (_) async => await info?.call() ?? {'app': null}),
+          'bridge_update' => _hookOp(r, (spec) async {
+            final u = updater;
+            if (u == null) throw StateError('Tämä kotisilta ei osaa päivittää itseään.');
+            return u(spec);
+          }),
           _ => executor.run(r),
         },
       ),

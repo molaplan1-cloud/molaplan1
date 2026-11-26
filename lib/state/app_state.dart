@@ -28,7 +28,9 @@ import '../account/vault.dart' show defaultIterations;
 import 'account_state.dart';
 import 'auto_driver.dart';
 import 'automation_state.dart';
+import '../version.dart';
 import 'bridge_service.dart';
+import 'net_health.dart';
 import 'remote_state.dart';
 import 'storage.dart';
 import 'update_state.dart';
@@ -56,7 +58,10 @@ class AppState extends ChangeNotifier implements SyncHost {
     account.addListener(notifyListeners);
     remote = RemoteState(store: secretStore, configJson: () => exportJson(includeSecrets: true));
     remote.addListener(notifyListeners);
-    this.bridgeService.listen((up) => remote.bridge?.networkChanged(up));
+    this.bridgeService.listen((up) {
+      remote.bridge?.networkChanged(up);
+      unawaited(NetHealth.instance.check(force: true)); // t213u: banner follows network changes
+    });
     remote.addListener(() {
       final p = remote.paired;
       if (p != null && p.home != _lastHome) {
@@ -75,6 +80,15 @@ class AppState extends ChangeNotifier implements SyncHost {
       },
     );
     update.addListener(notifyListeners);
+    // t211u: the phone can ask the bridge for its version and tell it to update itself.
+    remote.bridgeInfo = () async => {
+      'app': appVersion,
+      'platform': Platform.operatingSystem,
+      'deviceOwner': await update.platform.deviceOwner(),
+      'autoUpdate': config.bridgeAutoUpdate,
+      'lastUpdate': await update.platform.lastUpdate(),
+    };
+    remote.bridgeUpdater = (spec) => update.unattendedUpdate(install: spec['install'] != false);
     automations = AutomationState(this);
     automations.addListener(notifyListeners);
     remote.addListener(automations.changed);
@@ -404,6 +418,10 @@ class AppState extends ChangeNotifier implements SyncHost {
       config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     }
     remote.relay = config.relayUrl ?? remote.relay;
+    NetHealth.instance.relayHost = switch (Uri.tryParse(remote.relay)?.host) {
+      final String h when h.isNotEmpty => h,
+      _ => NetHealth.instance.relayHost,
+    };
     remote.router.remoteCameraSeconds = config.remoteCameraSeconds;
     try {
       await remote.load(startBridge: config.bridgeMode);
@@ -412,6 +430,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     }
     // Bridge mode on (also after an update from a version without the service) → service on.
     if (config.bridgeMode) unawaited(bridgeService.setEnabled(true));
+    _scheduleBridgeUpdates();
     driverLang = lang;
     try {
       final e = await energyStore.load();
@@ -447,7 +466,32 @@ class AppState extends ChangeNotifier implements SyncHost {
     config.bridgeMode = on;
     await bridgeService.setEnabled(on);
     await save();
+    _scheduleBridgeUpdates();
     notifyListeners();
+  }
+
+  Timer? _autoUpdate;
+
+  /// t211u: opt-in automatic updates for an unattended bridge (checked every 6 h).
+  Future<void> setBridgeAutoUpdate(bool on) async {
+    config.bridgeAutoUpdate = on;
+    await save();
+    _scheduleBridgeUpdates();
+    notifyListeners();
+  }
+
+  void _scheduleBridgeUpdates() {
+    _autoUpdate?.cancel();
+    _autoUpdate = null;
+    if (!config.bridgeMode || !config.bridgeAutoUpdate || !bridgeService.supported) return;
+    _autoUpdate = Timer.periodic(const Duration(hours: 6), (_) async {
+      if (!config.bridgeMode || !config.bridgeAutoUpdate) return;
+      try {
+        debugPrint('bridge auto-update: ${await update.unattendedUpdate()}');
+      } catch (e) {
+        debugPrint('bridge auto-update failed: $e');
+      }
+    });
   }
 
   Future<void> setRemoteCameraSeconds(int s) async {
@@ -1219,6 +1263,7 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   @override
   void dispose() {
+    _autoUpdate?.cancel();
     _rulesTimer?.cancel();
     _energySaveTimer?.cancel();
     _historySaveTimer?.cancel();

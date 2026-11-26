@@ -29,6 +29,32 @@ class UpdatePlatform {
   Future<bool> canInstall() async => os != 'android' || ((await _ch.invokeMethod<bool>('canInstall')) ?? false);
   Future<void> openInstallSettings() => _ch.invokeMethod('openInstallSettings');
   Future<void> installApk(String path) => _ch.invokeMethod('install', {'path': path});
+
+  // t211u: the bridge-service channel works without an activity (headless bridge).
+  static const _svc = MethodChannel('molaplan/bridge_service');
+  Future<bool> deviceOwner() async {
+    if (os != 'android') return false;
+    try {
+      return await _svc.invokeMethod<bool>('deviceOwner') ?? false;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  /// Native install: re-checks the SHA-256 and that the APK is signed with the app's own key;
+  /// silent as device owner, otherwise a notification asks the user.
+  Future<String> installUpdate(String path, String sha256) async =>
+      await _svc.invokeMethod<String>('installUpdate', {'path': path, 'sha256': sha256}) ?? 'error';
+
+  Future<String?> lastUpdate() async {
+    if (os != 'android') return null;
+    try {
+      return await _svc.invokeMethod<String>('lastUpdate');
+    } catch (_) {
+      return null;
+    }
+  }
+
   Future<bool> openFolder(String path) => launchUrl(Uri.directory(path));
   Future<bool> openFile(String path) => launchUrl(Uri.file(path));
   Future<bool> openUrl(String url) => launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
@@ -117,6 +143,32 @@ class UpdateState extends ChangeNotifier {
     await remember(skip: r.version);
     available = null;
     notifyListeners();
+  }
+
+  /// t211u: unattended update of a bridge (remote "Päivitä silta" or the opt-in schedule).
+  /// Only a newer release is installed; the file must match SHA256SUMS and (natively) the app's
+  /// signing certificate. Returns a short status for the phone.
+  Future<Map<String, dynamic>> unattendedUpdate({bool install = true}) async {
+    final r = await _check();
+    if (r.outcome == CheckOutcome.unavailable) return {'status': 'unavailable', 'current': current};
+    if (r.outcome != CheckOutcome.newer) return {'status': 'up_to_date', 'current': current};
+    final rel = r.release!;
+    if (!install) return {'status': 'available', 'current': current, 'latest': rel.version};
+    if (platform.os != 'android') return {'status': 'manual', 'current': current, 'latest': rel.version};
+    final f = await downloadVerified(rel);
+    if (f == null) return {'status': 'no_asset', 'current': current, 'latest': rel.version};
+    final sums = await fetchSums(rel, client: client);
+    final name = f.uri.pathSegments.last;
+    final sha = sums[name];
+    if (sha == null) return {'status': 'no_checksum', 'current': current, 'latest': rel.version};
+    final res = await platform.installUpdate(f.path, sha);
+    return {
+      'status': res.startsWith('started') ? 'installing' : 'failed',
+      'detail': res,
+      'silent': await platform.deviceOwner(),
+      'current': current,
+      'latest': rel.version,
+    };
   }
 
   /// Downloads the right asset and checks it against SHA256SUMS.

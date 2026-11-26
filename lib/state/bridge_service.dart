@@ -14,6 +14,7 @@ class BridgeServiceLink {
     : _channel = channel ?? const MethodChannel('molaplan/bridge_service');
 
   final MethodChannel _channel;
+
   /// Tests: force the platform check.
   final bool? supportedOverride;
 
