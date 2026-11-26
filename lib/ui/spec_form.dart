@@ -118,7 +118,7 @@ class _FieldInputState extends State<_FieldInput> {
 
   bool get _isAddress => const {'host', 'baseUrl', 'url', 'broker'}.contains(f.key);
 
-  /// Warns about typos like 191.168.50.172 (not a home network address).
+  /// Warns about typos like 191.168.1.20 (not a home network address).
   String? get _addrHint {
     if (!_isAddress) return null;
     final t = _ctl.text.trim();

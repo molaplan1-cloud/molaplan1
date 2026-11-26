@@ -1,8 +1,11 @@
+import '../prices/price_summary.dart';
+
 import 'package:material_ui/material_ui.dart';
 
 import '../models/models.dart';
 import '../prices/prices.dart';
 import 'app_scope.dart';
+import 'remote_pages.dart' show RemoteHubPage;
 import '../l10n/l10n.dart';
 
 /// Simple presets for price control (one rule per tile).
@@ -124,6 +127,13 @@ class _PriceRulePageState extends State<PriceRulePage> {
   void _pick(PricePreset p) {
     final r = p.make(widget.tile.id);
     _applyZone(r);
+    // t168u: new "cheapest" rules pick 15-min slots (used where the area's data has them,
+    // whole hours otherwise) unless "Näytä tuntikeskiarvona" is on.
+    if (r.kind == 'cheapest' && !priceHourlyOf(AppScope.read(context).config)) {
+      r
+        ..quarters = true
+        ..count = r.count * 4;
+    }
     setState(() => rule = r);
     _load();
   }
@@ -169,7 +179,7 @@ class _PriceRulePageState extends State<PriceRulePage> {
         Icons.warning_amber_rounded,
         tx(
           context,
-          'Kotisiltaa ei ole. Sääntö tallentuu, mutta alkaa toimia vasta kun kotona on aina päällä oleva tabletti tai PC kotisiltana (Asetukset → Etäyhteys).',
+          'Kotisiltaa ei ole. Sääntö tallentuu, mutta alkaa toimia vasta kun kotona on aina päällä oleva tabletti tai PC kotisiltana (Asetukset → Etäkäyttö).',
           'No home bridge yet. The rule is saved but runs only once an always-on tablet or PC at home is the bridge (Settings → Remote access).',
         ),
         false,
@@ -187,7 +197,20 @@ class _PriceRulePageState extends State<PriceRulePage> {
           Icon(icon, color: ok ? cs.onSecondaryContainer : cs.onErrorContainer),
           const SizedBox(width: 10),
           Expanded(
-            child: Text(text, style: TextStyle(color: ok ? cs.onSecondaryContainer : cs.onErrorContainer)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(text, style: TextStyle(color: ok ? cs.onSecondaryContainer : cs.onErrorContainer)),
+                // t174u: plain-words explanation and one-tap setup on the Etäkäyttö page.
+                if (!ok)
+                  TextButton(
+                    key: const ValueKey('rule-where-help'),
+                    style: TextButton.styleFrom(padding: EdgeInsets.zero, visualDensity: VisualDensity.compact),
+                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RemoteHubPage())),
+                    child: Text(tx(context, 'Etäkäyttö', 'Remote access')),
+                  ),
+              ],
+            ),
           ),
         ],
       ),
@@ -257,12 +280,13 @@ class _PriceRulePageState extends State<PriceRulePage> {
                     IconButton.filledTonal(
                       key: const ValueKey('rule-minus'),
                       onPressed: r.count > 1 ? () => setState(() => r.count--) : null,
+                      tooltip: r.quarters ? '−15 min' : '−1 h',
                       icon: const Icon(Icons.remove),
                     ),
                     SizedBox(
-                      width: 48,
+                      width: 56,
                       child: Text(
-                        '${r.count}',
+                        r.quarters ? _hoursText(r.count) : '${r.count}',
                         key: const ValueKey('rule-count'),
                         textAlign: TextAlign.center,
                         style: text.titleLarge,
@@ -270,7 +294,7 @@ class _PriceRulePageState extends State<PriceRulePage> {
                     ),
                     IconButton.filledTonal(
                       key: const ValueKey('rule-plus'),
-                      onPressed: r.count < 23 ? () => setState(() => r.count++) : null,
+                      onPressed: r.count < (r.quarters ? 92 : 23) ? () => setState(() => r.count++) : null,
                       icon: const Icon(Icons.add),
                     ),
                   ],
@@ -309,19 +333,23 @@ class _PriceRulePageState extends State<PriceRulePage> {
                 else if (s == null)
                   const LinearProgressIndicator()
                 else if (plan.isEmpty)
-                  Text(
-                    tx(
-                      context,
-                      'Ei päälläoloa seuraavan vuorokauden aikana (tai huomisen hinnat puuttuvat vielä).',
-                      'No on-times in the next day (or tomorrow\'s prices are not out yet).',
-                    ),
-                  )
+                  Text(tx(context, 'Ei päälläoloa seuraavan vuorokauden aikana.', 'No on-times in the next day.'))
                 else
                   for (final (a, b) in plan.take(8))
                     Text(
                       '${a.day == DateTime.now().day ? tx(context, 'Tänään', 'Today') : tx(context, 'Huomenna', 'Tomorrow')} ${hhmm(a)}–${hhmm(b)}',
                       key: ValueKey('plan-${a.millisecondsSinceEpoch}'),
                     ),
+                // t171u: tomorrow's part of the plan waits for the prices.
+                if (s != null && tomorrowStatus(s, DateTime.now(), lang).isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: Text(
+                      tomorrowStatus(s, DateTime.now(), lang),
+                      key: const ValueKey('rule-tomorrow-pending'),
+                      style: text.bodySmall,
+                    ),
+                  ),
                 const SizedBox(height: 12),
                 Text(
                   tx(
@@ -338,4 +366,11 @@ class _PriceRulePageState extends State<PriceRulePage> {
       ),
     );
   }
+}
+
+/// 9 quarters → "2¼", 8 → "2" (hours, for the "how many hours on" stepper).
+String _hoursText(int quarters) {
+  final h = quarters ~/ 4;
+  const frac = ['', '¼', '½', '¾'];
+  return '${h == 0 && quarters % 4 != 0 ? '' : h}${frac[quarters % 4]}';
 }

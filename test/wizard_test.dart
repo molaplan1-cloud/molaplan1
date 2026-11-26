@@ -63,8 +63,8 @@ void main() {
       st,
       AddDeviceWizard(
         provider: ShellyProvider(),
-        locals: () async => ['192.168.50.20'],
-        finder: (_) async => [Candidate(provider: 'shelly', address: '192.168.50.172', model: 'Shelly Pro 4PM', name: 'Tekninen tila')],
+        locals: () async => ['192.168.88.20'],
+        finder: (_) async => [Candidate(provider: 'shelly', address: '192.168.88.172', model: 'Shelly Pro 4PM', name: 'Tekninen tila')],
         driverFor: (_) => AddContext(driver: FakeShelly.new),
       ),
     ));
@@ -76,7 +76,7 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('wiz-skip-remote')));
     await tester.pumpAndSettle();
     expect(find.text('Tekninen tila'), findsOneWidget);
-    await tester.tap(find.byKey(const ValueKey('wiz-found-192.168.50.172')));
+    await tester.tap(find.byKey(const ValueKey('wiz-found-192.168.88.172')));
     await tester.pumpAndSettle();
     expect(find.text('Löytyi: Shelly Pro 4PM'), findsOneWidget);
     expect(find.byKey(const ValueKey('wiz-item-3')), findsOneWidget);
@@ -88,7 +88,7 @@ void main() {
     final tiles = st.config.dashboards.first.tiles;
     expect(tiles.length, 8);
     expect(tiles.where((t) => t.type == TileType.toggle).map((t) => t.title), ['Lämmitys', 'Sauna', 'Kanava 3', 'Kanava 4']);
-    expect(st.config.connections.single.settings['baseUrl'], 'http://192.168.50.172');
+    expect(st.config.connections.single.settings['baseUrl'], 'http://192.168.88.172');
   });
 
   testWidgets('manual address on another network -> warning; password asked in plain Finnish', (tester) async {
@@ -110,7 +110,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.textContaining('Laitteita ei löytynyt automaattisesti'), findsOneWidget);
     expect(find.textContaining('Shelly-sovelluksessa'), findsOneWidget, reason: 'tells where the IP is');
-    await tester.enterText(find.byKey(const ValueKey('wiz-address')), '192.168.50.172');
+    await tester.enterText(find.byKey(const ValueKey('wiz-address')), '192.168.88.172');
     await tester.tap(find.byKey(const ValueKey('wiz-next')));
     await tester.pumpAndSettle();
     expect(find.text('Osoite on eri verkossa'), findsOneWidget);

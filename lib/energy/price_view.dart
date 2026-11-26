@@ -65,8 +65,9 @@ class PriceView {
     final raw = [for (final p in sorted) PriceSlot(p.$1, res, p.$2)];
     final hours = res < 60 ? toHourly(raw) : raw;
     final slots = hourly ? hours : raw;
+    // t168u: stats at the shown resolution (15-min min / max when 15-min bars are shown).
     final today = [
-      for (final s in hours)
+      for (final s in slots)
         if (_sameDay(s.start, now)) s,
     ];
     PriceSlot? lo, hi;
@@ -82,7 +83,7 @@ class PriceView {
     return PriceView._(
       slots,
       now,
-      hours.where((s) => s.contains(now)).firstOrNull,
+      slots.where((s) => s.contains(now)).firstOrNull,
       lo,
       hi,
       avg,

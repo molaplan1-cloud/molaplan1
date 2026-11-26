@@ -69,7 +69,8 @@ void main() {
     expect(snapResize(g, t, unitW / 2, 0), (3, 2)); // +0,5 wide
     expect(snapResize(g, t, -unitW / 2, -unitH / 2), (1, 1)); // 0,5×0,5
     expect(snapResize(g, t, unitW * 0.3, unitH * 0.2), (3, 2)); // rounds to the nearest half
-    expect(snapResize(g, t, unitW * 10, unitH * 10), (8, 8)); // max 4×4 (grid has ≥4 cols)
+    // t169u: past 4 wide snaps to "Koko leveys"; up to 6 tall.
+    expect(snapResize(g, t, unitW * 10, unitH * 10), (fullWidthW2, maxH2));
     expect(snapResize(g, t, -unitW * 10, -unitH * 10), (1, 1));
   });
 

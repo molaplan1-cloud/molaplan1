@@ -1,5 +1,3 @@
-import 'dart:math' as math;
-
 import '../state/net_health.dart';
 
 import 'tile_grid.dart';
@@ -24,6 +22,7 @@ import 'onboarding_page.dart';
 import 'settings_page.dart';
 import 'tile_editor.dart';
 import 'tile_look.dart';
+import 'tile_visuals.dart' show RoomBackdrop;
 import 'tile_widget.dart';
 import 'update_ui.dart';
 
@@ -355,6 +354,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       children: [
         const UpdateBanner(),
         const OfflineBanner(),
+          const AwayNoBridgeBanner(),
         const NoAccountBanner(),
         Expanded(
           child: _DashboardGrid(
@@ -559,26 +559,30 @@ class _DashboardGridState extends State<_DashboardGrid> {
           final g = tileGridFor(box.maxWidth, AppScope.of(context).config.tileDensity);
           final byId = {for (final t in dashboard.tiles) t.id: t};
           final ids = _order ?? [for (final t in dashboard.tiles) t.id];
-          return SingleChildScrollView(
-            padding: EdgeInsets.fromLTRB(g.gap, 4, g.gap, 96),
-            child: Wrap(
-              spacing: g.gap,
-              runSpacing: g.gap,
-              children: [
-                for (final id in ids)
-                  if (byId[id] != null &&
-                      (widget.editing || !st.config.hideAwayTiles || awayLanConnection(st, byId[id]!) == null))
-                    _sized(context, byId[id]!, g),
-                if (!widget.editing)
-                  SizedBox(
-                    width: g.width(1),
-                    height: g.height(1),
-                    child: AddPlaceholderTile(
-                      key: const ValueKey('add-placeholder'),
-                      onTap: () => showAddSheet(context, dashboard: dashboard),
+          // t172u: "Koko näkymän tausta" also while editing.
+          return RoomBackdrop(
+            dashboard: dashboard,
+            child: SingleChildScrollView(
+              padding: EdgeInsets.fromLTRB(g.gap, 4, g.gap, 96),
+              child: Wrap(
+                spacing: g.gap,
+                runSpacing: g.gap,
+                children: [
+                  for (final id in ids)
+                    if (byId[id] != null &&
+                        (widget.editing || !st.config.hideAwayTiles || awayLanConnection(st, byId[id]!) == null))
+                      _sized(context, byId[id]!, g),
+                  if (!widget.editing)
+                    SizedBox(
+                      width: g.width(1),
+                      height: g.height(1),
+                      child: AddPlaceholderTile(
+                        key: const ValueKey('add-placeholder'),
+                        onTap: () => showAddSheet(context, dashboard: dashboard),
+                      ),
                     ),
-                  ),
-              ],
+                ],
+              ),
             ),
           );
         },
@@ -588,7 +592,7 @@ class _DashboardGridState extends State<_DashboardGrid> {
 
   Widget _sized(BuildContext context, TileConfig t, TileGridMetrics g) {
     final r = _resize != null && _resize!.$1 == t.id ? _resize : null;
-    final w = g.width((r?.$2 ?? t.w2) / 2);
+    final w = g.widthOf(r?.$2 ?? t.w2);
     final h = g.height((r?.$3 ?? t.h2) / 2);
     final tile = AnimatedContainer(
       duration: const Duration(milliseconds: 120),
@@ -818,10 +822,12 @@ class _CornerPainter extends CustomPainter {
   bool shouldRepaint(_CornerPainter o) => o.color != color;
 }
 
-/// t144u: corner-drag result in half-units (w2, h2): 0,5–4 wide (max the grid's columns), 0,5–4 tall.
+/// t144u / t169u: corner-drag result in half-units (w2, h2): 0,5–4 wide, snapping to "Koko leveys"
+/// ([fullWidthW2]) when dragged past 4 units or to the row's edge; 0,5–6 tall.
 (int, int) snapResize(TileGridMetrics g, TileConfig t, double dx, double dy) {
   final unitW = g.cell + g.gap, unitH = g.cellH + g.gap;
-  final nc = ((g.width(t.wUnits) + dx + g.gap) / unitW * 2).round().clamp(1, math.min(8, g.cols * 2)).toInt();
-  final nr = ((g.height(t.hUnits) + dy + g.gap) / unitH * 2).round().clamp(1, 8).toInt();
+  final raw = ((g.widthOf(t.w2) + dx + g.gap) / unitW * 2).round();
+  final nc = raw > 8 || raw >= g.cols * 2 ? fullWidthW2 : raw.clamp(1, 8);
+  final nr = ((g.height(t.hUnits) + dy + g.gap) / unitH * 2).round().clamp(1, maxH2).toInt();
   return (nc, nr);
 }

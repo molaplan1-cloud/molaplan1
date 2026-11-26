@@ -213,6 +213,56 @@ PriceSeries _series(String zone, List<(int, double)> pairs, String source, Strin
 }
 
 /// Fetches and caches prices (one request per zone per 10 minutes, shared by all tiles and rules).
+/// t170u / t171u: when tomorrow's day-ahead prices are published. SDAC (all EU bidding zones,
+/// incl. the Nordics and Baltics) publishes around 12:45–13:00 Brussels time (CET / CEST);
+/// returned in the device's local time – in Finland about 14:00.
+DateTime tomorrowPublication(DateTime now, {String zone = 'FI'}) {
+  final u = now.toUtc();
+  // EU summer time: last Sunday of March 01:00 UTC … last Sunday of October 01:00 UTC.
+  DateTime lastSunday(int y, int m) {
+    final d = DateTime.utc(y, m + 1, 0);
+    return DateTime.utc(y, m, d.day - d.weekday % 7, 1);
+  }
+
+  final summer = !u.isBefore(lastSunday(u.year, 3)) && u.isBefore(lastSunday(u.year, 10));
+  // 13:00 Brussels time (rounded up from ~12:45 so the label never promises too early).
+  final local = now.toLocal();
+  return DateTime.utc(local.year, local.month, local.day, summer ? 11 : 12).toLocal();
+}
+
+/// "n. klo 14" / "around 14:00" for [tomorrowPublication].
+String publicationLabel(DateTime now, String lang, {String zone = 'FI'}) {
+  final t = tomorrowPublication(now, zone: zone);
+  final hm = t.minute == 0 ? '${t.hour}' : '${t.hour}:${t.minute.toString().padLeft(2, '0')}';
+  return switch (lang) {
+    'fi' => 'n. klo $hm',
+    'sv' => 'ca kl. $hm',
+    'et' => 'u kell $hm',
+    'es' => 'hacia las $hm h',
+    _ => 'around ${t.hour.toString().padLeft(2, '0')}:${t.minute.toString().padLeft(2, '0')}',
+  };
+}
+
+/// "Huomisen hinnat julkaistaan n. klo 14" (t171u), localised.
+String tomorrowPendingText(DateTime now, String lang, {String zone = 'FI'}) {
+  final at = publicationLabel(now, lang, zone: zone);
+  return switch (lang) {
+    'fi' => 'Huomisen hinnat julkaistaan $at',
+    'sv' => 'Morgondagens priser publiceras $at',
+    'et' => 'Homsed hinnad avaldatakse $at',
+    'es' => 'Los precios de mañana se publican $at',
+    _ => 'Tomorrow\'s prices are published $at',
+  };
+}
+
+/// t170u: how long a cached series is fresh – short (2 min, i.e. retry) once tomorrow's prices
+/// are due but not in yet, 10 min otherwise.
+Duration priceCacheTtl(PriceSeries? c, DateTime now) {
+  if (c == null) return Duration.zero;
+  final due = tomorrowPublication(now, zone: c.zone).subtract(const Duration(minutes: 15));
+  return !c.hasTomorrow(now) && !now.isBefore(due) ? const Duration(minutes: 2) : const Duration(minutes: 10);
+}
+
 class PriceService {
   PriceService({http.Client? client, this.server = defaultPriceServer}) : _client = client ?? http.Client();
   final http.Client _client;
@@ -225,7 +275,7 @@ class PriceService {
     final c = _cache[zone];
     final now = DateTime.now();
     // Refresh every 10 min, and sooner in the afternoon when tomorrow is still missing.
-    if (!force && c != null && now.difference(c.fetched) < const Duration(minutes: 10)) return Future.value(c);
+    if (!force && c != null && now.difference(c.fetched) < priceCacheTtl(c, now)) return Future.value(c);
     return _inflight[zone] ??= _fetch(zone).whenComplete(() {
       // Block body on purpose: remove() returns this very future, and whenComplete would await it (deadlock).
       _inflight.remove(zone);

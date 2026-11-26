@@ -1,10 +1,12 @@
 import 'dart:math' as math;
 import 'dart:typed_data';
+import 'dart:ui' show ImageFilter;
 
 import 'package:material_ui/material_ui.dart';
 
 import '../models/models.dart';
 import 'app_scope.dart';
+import 'room_presets.dart';
 
 /// Per-type tile visuals (t111u) and the optional background image (t112u).
 
@@ -55,8 +57,11 @@ const tileColors = <int>[
 /// Picture + dark gradient scrim (opacity from the picture's brightness, so white text keeps
 /// ≥ 4.5:1 contrast). [dim]: device is off → greyscale and darker.
 class TileBackground extends StatefulWidget {
-  const TileBackground({super.key, required this.name, required this.scrim, this.dim = false});
+  const TileBackground({super.key, required this.name, required this.scrim, this.dim = false, this.plain = false});
   final String name;
+
+  /// t172u: no dark gradient (the room backdrop puts its own theme-coloured veil on top).
+  final bool plain;
   final double scrim;
   final bool dim;
 
@@ -81,6 +86,7 @@ class _TileBackgroundState extends State<TileBackground> {
   }
 
   void _load() {
+    if (roomPreset(widget.name) != null) return; // t172u: a built-in asset
     final st = AppScope.read(context);
     if (_loaded == widget.name) return;
     _loaded = widget.name;
@@ -96,7 +102,15 @@ class _TileBackgroundState extends State<TileBackground> {
   Widget build(BuildContext context) {
     final b = _bytes;
     final a = widget.scrim.clamp(0.35, 0.9);
-    Widget pic = b == null
+    final preset = roomPreset(widget.name);
+    Widget pic = preset != null
+        ? Image.asset(
+            preset.asset(Theme.of(context).brightness),
+            fit: BoxFit.cover,
+            gaplessPlayback: true,
+            filterQuality: FilterQuality.medium,
+          )
+        : b == null
         ? Container(color: Colors.blueGrey.shade800)
         : Image.memory(b, fit: BoxFit.cover, gaplessPlayback: true, filterQuality: FilterQuality.medium);
     if (widget.dim) {
@@ -115,20 +129,21 @@ class _TileBackgroundState extends State<TileBackground> {
       fit: StackFit.expand,
       children: [
         pic,
-        DecoratedBox(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.black.withValues(alpha: (a * 0.85 + (widget.dim ? 0.15 : 0)).clamp(0, 0.95)),
-                Colors.black.withValues(alpha: (a * 0.7 + (widget.dim ? 0.15 : 0)).clamp(0, 0.95)),
-                Colors.black.withValues(alpha: (a + (widget.dim ? 0.15 : 0)).clamp(0, 0.95)),
-              ],
-              stops: const [0, 0.45, 1],
+        if (!widget.plain)
+          DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.black.withValues(alpha: (a * 0.85 + (widget.dim ? 0.15 : 0)).clamp(0, 0.95)),
+                  Colors.black.withValues(alpha: (a * 0.7 + (widget.dim ? 0.15 : 0)).clamp(0, 0.95)),
+                  Colors.black.withValues(alpha: (a + (widget.dim ? 0.15 : 0)).clamp(0, 0.95)),
+                ],
+                stops: const [0, 0.45, 1],
+              ),
             ),
           ),
-        ),
       ],
     );
   }
@@ -339,4 +354,42 @@ class _DialPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_DialPainter o) => o.sp != sp || o.cur != cur || o.c != c || o.track != track;
+}
+
+/// t172u "Koko näkymän tausta": the room picture behind a view's tiles, blurred and dimmed
+/// with the theme's surface colour so tiles and text stay readable in light and dark mode.
+class RoomBackdrop extends StatelessWidget {
+  const RoomBackdrop({super.key, required this.dashboard, required this.child, this.radius = 0});
+  final Dashboard dashboard;
+  final Widget child;
+  final double radius;
+
+  @override
+  Widget build(BuildContext context) {
+    final d = dashboard;
+    if (!d.photoBackground) return child;
+    final cs = Theme.of(context).colorScheme;
+    final dim = d.bgDim.clamp(0.0, 0.9);
+    Widget pic = TileBackground(name: d.headerImage!, scrim: 0.35, plain: true);
+    if (d.bgBlur > 0) {
+      pic = ImageFiltered(
+        imageFilter: ImageFilter.blur(sigmaX: d.bgBlur, sigmaY: d.bgBlur),
+        child: pic,
+      );
+    }
+    return ClipRRect(
+      key: ValueKey('room-backdrop-${d.id}'),
+      borderRadius: BorderRadius.circular(radius),
+      child: Stack(
+        children: [
+          Positioned.fill(child: pic),
+          // Theme-coloured veil: a dark surface in dark mode, a light one in light mode.
+          Positioned.fill(
+            child: ColoredBox(color: cs.surface.withValues(alpha: 0.25 + dim * 0.75)),
+          ),
+          child,
+        ],
+      ),
+    );
+  }
 }

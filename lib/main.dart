@@ -1,3 +1,4 @@
+import 'drivers/airthings_ble.dart';
 import 'state/net_health.dart';
 
 import 'dart:async';
@@ -26,6 +27,7 @@ Future<void> main() async {
   PriceService.loadStore = priceStore.load;
   PriceService.saveStore = priceStore.save;
   WidgetsFlutterBinding.ensureInitialized();
+  initAirthingsBle();
   initVideo();
   // Online? On the home Wi-Fi? (one banner instead of an error on every tile)
   NetHealth.instance.check(force: true);
@@ -50,9 +52,49 @@ Future<void> main() async {
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
-class MolaplanApp extends StatelessWidget {
+class MolaplanApp extends StatefulWidget {
   const MolaplanApp({super.key, required this.state});
   final AppState state;
+
+  @override
+  State<MolaplanApp> createState() => _MolaplanAppState();
+}
+
+class _MolaplanAppState extends State<MolaplanApp> {
+  AppState get state => widget.state;
+  late ThemeMode _mode = _resolve();
+  Timer? _sun;
+
+  ThemeMode _resolve() {
+    final h = state.config.energy.home;
+    return resolveThemeMode(state.themeChoice, home: h == null ? null : (h.lat, h.lon));
+  }
+
+  /// t162u: follows the theme setting; 'sun' is re-checked every minute.
+  void _update() {
+    final m = _resolve();
+    if (m != _mode && mounted) setState(() => _mode = m);
+    if (state.themeChoice == 'sun') {
+      _sun ??= Timer.periodic(const Duration(minutes: 1), (_) => _update());
+    } else {
+      _sun?.cancel();
+      _sun = null;
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    state.addListener(_update);
+    _update();
+  }
+
+  @override
+  void dispose() {
+    state.removeListener(_update);
+    _sun?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,9 +111,9 @@ class MolaplanApp extends StatelessWidget {
         scaffoldMessengerKey: snackMessengerKey,
         navigatorObservers: [SnackDismissObserver()],
         debugShowCheckedModeBanner: false,
-        theme: molaplanTheme(brightness: Brightness.light),
-        darkTheme: molaplanTheme(),
-        themeMode: ThemeMode.dark,
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        themeMode: _mode,
         locale: Locale(state.lang),
         supportedLocales: AppLocalizations.supportedLocales,
         localizationsDelegates: const [

@@ -26,7 +26,7 @@ Future<void> addShelly(AppState st) async {
     id: 'shelly1',
     name: 'Shelly Pro 4PM',
     type: 'http',
-    settings: {'baseUrl': 'http://192.168.50.172', 'auth': 'digest', 'username': 'admin'},
+    settings: {'baseUrl': 'http://192.168.88.172', 'auth': 'digest', 'username': 'admin'},
     secrets: {'password': 'salainen'},
   );
   await st.upsertConnection(c);

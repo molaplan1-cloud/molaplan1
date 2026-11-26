@@ -5,7 +5,7 @@ import 'package:molaplan/models/models.dart';
 
 import 'support/mock_ntfy.dart';
 
-NtfyDriver drv(MockNtfy m, {String topic = 'kv-cmd', String? reply, String? token}) => NtfyDriver(
+NtfyDriver drv(MockNtfy m, {String topic = 'koti-cmd', String? reply, String? token}) => NtfyDriver(
   ConnectionConfig(
     name: 'ntfy',
     type: 'ntfy',
@@ -23,7 +23,7 @@ NtfyDriver drv(MockNtfy m, {String topic = 'kv-cmd', String? reply, String? toke
 
 void main() {
   test('topic parsing: full URL, host/topic, plain name', () {
-    expect(parseNtfyTopic('https://ntfy.sh/kv-cmd-fa29n9zc7e22vbcw', ''), ('https://ntfy.sh', 'kv-cmd-fa29n9zc7e22vbcw'));
+    expect(parseNtfyTopic('https://ntfy.sh/koti-cmd-abc123xyz', ''), ('https://ntfy.sh', 'koti-cmd-abc123xyz'));
     expect(parseNtfyTopic('ntfy.example.com/abc', ''), ('https://ntfy.example.com', 'abc'));
     expect(parseNtfyTopic('abc', ''), ('https://ntfy.sh', 'abc'));
     expect(parseNtfyTopic('abc', 'http://10.0.0.2:8080/'), ('http://10.0.0.2:8080', 'abc'));
@@ -33,7 +33,7 @@ void main() {
     final m = await MockNtfy(responder: (t, msg) => home(t, msg)).start();
     final d = drv(m);
     final r = await d.send({'message': 'päivitä', 'askPin': true, 'waitReply': true, 'replySeconds': 10}, value: '1234') as Map;
-    expect(m.published, ['kv-cmd:päivitä 1234']);
+    expect(m.published, ['koti-cmd:päivitä 1234']);
     expect(r['message'], 'Päivitetty: 3 laitetta OK');
     expect(r['title'], 'Kotilaite');
     expect(r['showSeconds'], 60);
@@ -48,7 +48,7 @@ void main() {
     final d = drv(m, reply: 'kv-reply');
     final r = await d.send({'message': 'päivitä', 'askPin': true}, value: '1234') as Map;
     expect(r['message'], startsWith('Päivitetty'));
-    expect(m.topics['kv-cmd']!.single['message'], 'päivitä 1234');
+    expect(m.topics['koti-cmd']!.single['message'], 'päivitä 1234');
     await d.dispose();
     await m.stop();
   });
@@ -61,10 +61,10 @@ void main() {
       d.send({'message': 'tila', 'replySeconds': 3}),
       throwsA(isA<DriverException>().having((e) => e.message, 'm', contains('vastausta ei tullut 3 sekunnissa'))),
     );
-    expect(m.published.single, 'kv-cmd:tila');
+    expect(m.published.single, 'koti-cmd:tila');
     final r = await d.send({'message': 'valot pois', 'waitReply': false}, value: '99') as Map;
     expect(r['sentOnly'], isTrue);
-    expect(m.published.last, 'kv-cmd:valot pois', reason: 'value is appended only with askPin');
+    expect(m.published.last, 'koti-cmd:valot pois', reason: 'value is appended only with askPin');
     await d.dispose();
     await m.stop();
   });
@@ -84,8 +84,8 @@ void main() {
   test('value/log tile reads the latest messages; test() says what it tested', () async {
     driverLang = 'fi';
     final m = await MockNtfy().start();
-    m.add('kv-cmd', 'Ovi auki', title: 'Hälytys');
-    m.add('kv-cmd', 'Lämpö 21,5');
+    m.add('koti-cmd', 'Ovi auki', title: 'Hälytys');
+    m.add('koti-cmd', 'Lämpö 21,5');
     final d = drv(m);
     expect(await d.read({'mode': 'latest'}), 'Lämpö 21,5');
     final log = await d.read({'mode': 'log', 'count': 5}) as String;
@@ -93,7 +93,7 @@ void main() {
     expect(log.split('\n').first, endsWith('Lämpö 21,5'), reason: 'newest first');
     expect(log, contains('Hälytys: Ovi auki'));
     final t = await d.test();
-    expect(t, contains('aihe "kv-cmd" on luettavissa (2 viestiä'));
+    expect(t, contains('aihe "koti-cmd" on luettavissa (2 viestiä'));
     expect(t, contains('Testi ei lähettänyt komentoa'));
     expect(m.published, isEmpty);
     await d.dispose();

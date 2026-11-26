@@ -21,7 +21,8 @@ class LanguagePicker extends StatelessWidget {
       dropdownMenuEntries: [
         DropdownMenuEntry(
           value: 'auto',
-          label: '${tx(context, 'Laitteen kieli', 'Device language')} (${appLanguages[languageForLocale(st.systemLocale())]})',
+          label:
+              '${tx(context, 'Laitteen kieli', 'Device language')} (${appLanguages[languageForLocale(st.systemLocale())]})',
         ),
         for (final e in appLanguages.entries) DropdownMenuEntry(value: e.key, label: e.value),
       ],

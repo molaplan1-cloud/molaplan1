@@ -76,8 +76,8 @@ void main() {
         st,
         AddDeviceWizard(
           provider: p,
-          locals: () async => ['192.168.50.20'],
-          finder: (_) async => [Candidate(provider: p.id, address: '192.168.50.80', name: 'Eteinen')],
+          locals: () async => ['192.168.88.20'],
+          finder: (_) async => [Candidate(provider: p.id, address: '192.168.88.80', name: 'Eteinen')],
           driverFor: (_) => AddContext(driver: CameraDriver.new),
         ),
       ),
@@ -85,7 +85,7 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(const ValueKey('wiz-skip-remote')));
     await settle(tester);
-    await tester.tap(find.byKey(const ValueKey('wiz-found-192.168.50.80')));
+    await tester.tap(find.byKey(const ValueKey('wiz-found-192.168.88.80')));
     await settle(tester);
     expect(find.text('Kirjaudu kameraan'), findsOneWidget);
     expect(find.textContaining('Kameran tili'), findsOneWidget);
@@ -119,7 +119,7 @@ void main() {
         st,
         AddDeviceWizard(
           provider: SonoffProvider(),
-          locals: () async => ['192.168.50.20'],
+          locals: () async => ['192.168.88.20'],
           finder: (_) async => [],
           driverFor: (_) => AddContext(driver: (c) => FakeSonoff(c)),
         ),
@@ -128,7 +128,7 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(const ValueKey('wiz-skip-remote')));
     await settle(tester);
-    await tester.enterText(find.byKey(const ValueKey('wiz-address')), '192.168.50.40');
+    await tester.enterText(find.byKey(const ValueKey('wiz-address')), '192.168.88.40');
     await tester.tap(find.byKey(const ValueKey('wiz-next')));
     await settle(tester);
     expect(find.text('Tarvitaan vielä yksi tieto'), findsOneWidget);
@@ -140,7 +140,7 @@ void main() {
     await settle(tester);
     final tiles = st.config.dashboards.first.tiles;
     expect(tiles.first.type, TileType.toggle);
-    expect(st.config.connections.single.settings['baseUrl'], 'http://192.168.50.40:8081');
+    expect(st.config.connections.single.settings['baseUrl'], 'http://192.168.88.40:8081');
     expect(providerById('sonoff'), isNotNull);
   });
 
@@ -149,7 +149,7 @@ void main() {
     final c = ConnectionConfig(
       name: 'Tapo',
       type: 'camera',
-      settings: {'baseUrl': 'http://192.168.50.80', 'rtsp': 'rtsp://{{host}}/stream1'},
+      settings: {'baseUrl': 'http://192.168.88.80', 'rtsp': 'rtsp://{{host}}/stream1'},
     );
     final t = TileConfig(type: TileType.camera, title: 'Eteinen', connectionId: c.id, read: {'mode': 'rtsp'});
     await tester.runAsync(() => st.applyTemplate(TemplateResult([c], [t])));

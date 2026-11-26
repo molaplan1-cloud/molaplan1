@@ -27,6 +27,7 @@ import 'energy_pages.dart';
 import 'thermostat_pages.dart';
 import 'measure_view.dart';
 import 'motion.dart';
+import 'theme.dart';
 import 'tile_status.dart';
 import 'tile_visuals.dart';
 import 'weather_tile.dart';
@@ -629,11 +630,14 @@ class _TileWidgetState extends State<TileWidget> {
     final sensorAlarm = t.sensor != null && on;
     final accentInt = t.colorFor(r.value);
     final look = t.color != null ? Color(t.color!) : null;
-    final accent = sensorAlarm
-        ? Colors.red
-        : accentInt != null
-        ? Color(accentInt)
-        : (t.type == TileType.toggle ? (on ? (look ?? cs.primary) : cs.onSurfaceVariant) : (look ?? cs.primary));
+    final accent = readableAccent(
+      context,
+      sensorAlarm
+          ? Colors.red
+          : accentInt != null
+          ? Color(accentInt)
+          : (t.type == TileType.toggle ? (on ? (look ?? cs.primary) : cs.onSurfaceVariant) : (look ?? cs.primary)),
+    );
     VoidCallback? onTap;
     if (!widget.editing) {
       onTap = switch (t.type) {
@@ -734,10 +738,12 @@ class _TileWidgetState extends State<TileWidget> {
     final glow = t.light['glow'] is int && on ? Color(t.light['glow'] as int) : null;
     final look = glow ?? (t.color != null ? Color(t.color!) : null);
     final accentInt = t.colorFor(r.value);
-    final accent = accentInt != null
+    final hasBg = t.bgImage != null;
+    final rawAccent = accentInt != null
         ? Color(accentInt)
         : (on && t.type == TileType.toggle ? (look ?? cs.primary) : (t.type != TileType.toggle ? look : null));
-    final hasBg = t.bgImage != null;
+    // t162u: threshold / look colours stay readable on the light theme (WCAG AA).
+    final accent = rawAccent == null || hasBg ? rawAccent : readableAccent(context, rawAccent);
     final bg = hasBg
         ? Colors.black
         : t.type == TileType.toggle && on
@@ -888,10 +894,19 @@ class _TileWidgetState extends State<TileWidget> {
                               ),
                       )
                     else if (t.type == TileType.button)
+                      // t173u: spinner while the script / scene / command runs, then ✓ or the
+                      // error as a snackbar (see _run).
                       Container(
                         padding: const EdgeInsets.all(6),
                         decoration: BoxDecoration(color: cs.primary.withValues(alpha: 0.18), shape: BoxShape.circle),
-                        child: Icon(Icons.play_arrow_rounded, size: 18, color: cs.primary),
+                        child: rt?.busy == true
+                            ? SizedBox(
+                                key: const ValueKey('tile-running'),
+                                width: 18,
+                                height: 18,
+                                child: CircularProgressIndicator(strokeWidth: 2, color: cs.primary),
+                              )
+                            : Icon(Icons.play_arrow_rounded, size: 18, color: cs.primary),
                       ),
                   ],
                 ),

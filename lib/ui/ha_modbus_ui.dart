@@ -163,7 +163,7 @@ Future<bool> showHaModbusImport(BuildContext context, {Dashboard? into}) async {
                     minLines: 6,
                     maxLines: 14,
                     style: const TextStyle(fontFamily: 'monospace', fontSize: 13),
-                    decoration: const InputDecoration(hintText: 'modbus:\n  - name: AirFi\n    type: tcp\n    host: …'),
+                    decoration: const InputDecoration(hintText: 'modbus:\n  - name: …\n    type: tcp\n    host: …'),
                     onChanged: (_) => setD(() {}),
                   ),
                   const SizedBox(height: 8),

@@ -22,6 +22,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s10edebf3fa => 'ntfy-palvelin';
 
   @override
+  String get sc08176420f => 'Airthings-pilvi';
+
+  @override
   String get sd3d9c263ed => 'Palvelu';
 
   @override
@@ -274,6 +277,15 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s53a891e670 =>
       'Tarkista osoite ja asetukset ja yritä uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.';
+
+  @override
+  String get s02480e4c13 => 'Mittaukset';
+
+  @override
+  String get sd1c778324e => 'Ohjaukset';
+
+  @override
+  String get s88ac47e6d1 => 'Kamerat';
 
   @override
   String get sdd5e97b1e2 => 'Selkeää';
@@ -674,6 +686,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sec4d80656d => 'roku';
 
   @override
+  String get s286e1cfb54 => 'Yhteensä';
+
+  @override
   String sb9964cfb3b(String p0) {
     return 'Teho $p0';
   }
@@ -696,10 +711,19 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s9ad7b0076b => 'vuotoanturi · paristo';
 
   @override
+  String get s815bfa19dc => 'Kontaktorin ohjaus';
+
+  @override
+  String get sb9209fee74 => 'lisää vain, jos rele on käytössä';
+
+  @override
   String get s5f2b2ca5f5 => 'nyt päällä';
 
   @override
   String get s67f64cd925 => 'nyt pois';
+
+  @override
+  String get s8b35cc884f => 'Mittaus';
 
   @override
   String get sd8dfb25d31 => 'Shelly Cloud (ilman kotisiltaa)';
@@ -1473,17 +1497,29 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s252b8e1289 => 'Minkä huoneen kuva?';
 
   @override
-  String get s9ae4e86ee7 =>
-      'Kuva näkyy huoneen otsikkona laattojen yläpuolella.';
+  String get sa27e5362de =>
+      'Valitse valmis huonekuva tai oma kuva. Kuva näkyy otsikkona tai koko näkymän taustana.';
 
   @override
-  String get sc48f5f9bcf => 'Valitse kuva';
+  String get s84ef77e1ca => 'Valitse oma kuva';
 
   @override
   String get sf55eee73b8 => 'Vaihda kuva';
 
   @override
   String get sf6723451b9 => 'Ota kuva';
+
+  @override
+  String get s0bec34cd24 => 'Otsikkokuva';
+
+  @override
+  String get s7b1e22fca7 => 'Koko näkymän tausta';
+
+  @override
+  String get s229e29f9ee => 'Himmennys';
+
+  @override
+  String get s38285117e6 => 'Sumennus';
 
   @override
   String get sdd957ccc1b => 'Poista kuva';
@@ -1555,6 +1591,17 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s24ccd151f2 => 'Yritä';
+
+  @override
+  String get sc26c52235c =>
+      'Olet poissa kotoa, eikä kotisilta vastaa. Kotiverkon laitteita ei voi nyt ohjata.';
+
+  @override
+  String get s0fc1c9f296 =>
+      'Olet poissa kotoa. Kotiverkon laitteet toimivat etänä vain kotisillan kautta.';
+
+  @override
+  String get se50ed56454 => 'Etäkäyttö';
 
   @override
   String get sc5f54cf3c8 => 'Täytä avain ja palvelin.';
@@ -1789,8 +1836,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sdd309c0a63 => 'Termostaatti toimii kotisillalla';
 
   @override
-  String get s9c1b5394df =>
-      'Ota etäyhteys käyttöön kodin tabletilla (Asetukset → Etäyhteys). Siihen asti termostaatti ei ohjaa.';
+  String get s2a7e9fe291 =>
+      'Ota etäyhteys käyttöön kodin tabletilla (Asetukset → Etäkäyttö). Siihen asti termostaatti ei ohjaa.';
 
   @override
   String get s06cda8c0de => 'Ohjaus toimii tällä laitteella (kotisilta).';
@@ -1879,6 +1926,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s23f4820db7 => 'ei vielä ohjattavissa';
 
   @override
+  String get sdeeabebed9 => 'Airthings: lisää pilven tai Bluetoothin kautta';
+
+  @override
   String get saae59a3865 => 'kotisillan kautta';
 
   @override
@@ -1942,6 +1992,29 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s9e8430c37b =>
       'Näitä Molaplan ei ohjaa. iPhonet näkyvät nimellä vain hereillä ollessaan.';
+
+  @override
+  String s095ca83913(String p0) {
+    return '$p0 ruutua lisätty';
+  }
+
+  @override
+  String get sd53b0c4edc => 'Airthings-mittarit';
+
+  @override
+  String sc401e05b53(String p0) {
+    return 'Lisää $p0 ruutua';
+  }
+
+  @override
+  String get s212e35a61b => 'Laitteita ei saatu';
+
+  @override
+  String get s039683f4a5 =>
+      'Tililläsi ei ole mittareita. Lisää mittari ensin Airthings-sovelluksessa.';
+
+  @override
+  String get sdfff64e4c3 => 'Hubin kautta';
 
   @override
   String get s7f308d40c8 => 'Lämmittää';
@@ -2417,7 +2490,7 @@ class AppLocalizationsFi extends AppLocalizations {
       'Ruudut toimivat nyt kotiverkossa. Jotta voit ohjata kotia mistä tahansa, ota kotisilta käyttöön.';
 
   @override
-  String get s856a422504 => 'Ota etäyhteys käyttöön';
+  String get s417eb9a875 => 'Ota etäkäyttö käyttöön';
 
   @override
   String get sc3abd09cd9 => 'Oma väri';
@@ -2470,6 +2543,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s66c54e2286 => 'Automaatiot ovat pois päältä tällä laitteella.';
+
+  @override
+  String get s57f6ce1c7f => 'Mikä on kotisilta?';
 
   @override
   String get s4057f67774 => 'ma ti ke to pe la su';
@@ -2870,11 +2946,18 @@ class AppLocalizationsFi extends AppLocalizations {
       'Funktiot: get set on off toggle wait notify scene price cheapest temp time hour weekday log. Ei tiedosto- eikä verkkoyhteyksiä; aikaraja 10 min.';
 
   @override
-  String get s26e23ef341 => 'Salli etäajo (PIN)';
+  String get s420f3ec828 => 'Ulkoinen käynnistys (valinnainen)';
 
   @override
-  String get sd573107aec =>
-      'ntfy-viesti tai iPhonen Pikakomento käynnistää skriptin.';
+  String get sb3cef805ee =>
+      'Skriptin nappi toimii ilman tätä: se ajaa skriptin sovelluksessa, ja kodin ulkopuolelta automaattisesti etäkäytön kautta. Tarvitset tätä vain, jos haluat käynnistää skriptin Molaplanin ulkopuolelta, esim. iPhonen Pikakomennoilla.';
+
+  @override
+  String get sb6e92eacba => 'Salli käynnistys ulkopuolelta (PIN)';
+
+  @override
+  String get sa1692aa719 =>
+      'Viesti ntfy-osoitteeseen tai iPhonen Pikakomento käynnistää skriptin PIN-koodilla.';
 
   @override
   String get s0a5410ea4f => 'Etäajon PIN (vähintään 4 merkkiä)';
@@ -3119,6 +3202,23 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s6f1c11270c => 'Sisältää esimerkkiasetuksia';
 
   @override
+  String s4f55f417b1(String p0) {
+    return 'Laitteessa on $p0 relettä';
+  }
+
+  @override
+  String get sab3ebba17a => 'Laitteessa on 1 rele';
+
+  @override
+  String get sfa48c40832 => 'energiamittaus';
+
+  @override
+  String get sc8d1abbd21 => 'Ruudun nimi';
+
+  @override
+  String get s183ed60009 => 'OK';
+
+  @override
   String s1ea8fe913b(String p0) {
     return 'Osoite: $p0';
   }
@@ -3186,6 +3286,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s47d409fddd => 'Etsi verkosta';
+
+  @override
+  String get sa62eebe6bd => 'Tunnista releet';
 
   @override
   String get s7196b72140 =>
@@ -3258,6 +3361,36 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s7efc5653d2 => 'Laitteen kieli';
 
   @override
+  String s3e5741712a(String p0) {
+    return 'Tämä Shelly on energiamittari – vaihdetaanko kytkin $p0 mittausruutuun?';
+  }
+
+  @override
+  String sfe2074ae81(String p0) {
+    return 'Laitteessa on $p0 relettä – lisää loput?';
+  }
+
+  @override
+  String sf1319d04d0(String p0) {
+    return 'Lisää $p0';
+  }
+
+  @override
+  String get s95f80e9bdf => 'Korjaa';
+
+  @override
+  String get s140acccb81 => 'Tänään';
+
+  @override
+  String get s66ad384363 => '24 h eteenpäin';
+
+  @override
+  String get s6df3187e65 => 'Tänään + huomenna';
+
+  @override
+  String get s76379cf7c6 => '48h';
+
+  @override
   String get s306729fe62 => 'Ei hintoja';
 
   @override
@@ -3265,18 +3398,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sf9e22ac5e7 => 'vanhat hinnat';
-
-  @override
-  String get s40fbbc4d00 => '12h';
-
-  @override
-  String get s140acccb81 => 'Tänään';
-
-  @override
-  String get s76379cf7c6 => '48h';
-
-  @override
-  String get s252f182d27 => 'huominen n. klo 14';
 
   @override
   String get sa0bd9ad5b1 =>
@@ -3319,6 +3440,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sf2d10dd213 => 'Sähkö / teho';
+
+  @override
+  String get s4594c7448e => 'Säästö / halvin';
 
   @override
   String get s291ca127d6 => 'Autotalli';
@@ -3364,6 +3488,15 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sdaa7d4de12 => 'Tilanne';
+
+  @override
+  String get s11cc92bdc3 => 'Radon';
+
+  @override
+  String get s095db91dfb => 'Hiilidioksidi';
+
+  @override
+  String get s4b1eda4282 => 'Ilmanlaatu';
 
   @override
   String get sfe55fd97fa => 'Kaikki rauhallista.';
@@ -3440,9 +3573,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s039bb374fe => 'Luvut tuntikeskiarvoina';
 
   @override
-  String get sa5e6b1e0e3 => 'Huominen n. klo 14 jälkeen';
-
-  @override
   String get s62cfd94468 => 'Halvimmat tunnit yöllä';
 
   @override
@@ -3484,8 +3614,8 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get s4e35ba5321 =>
-      'Kotisiltaa ei ole. Sääntö tallentuu, mutta alkaa toimia vasta kun kotona on aina päällä oleva tabletti tai PC kotisiltana (Asetukset → Etäyhteys).';
+  String get s538517b71b =>
+      'Kotisiltaa ei ole. Sääntö tallentuu, mutta alkaa toimia vasta kun kotona on aina päällä oleva tabletti tai PC kotisiltana (Asetukset → Etäkäyttö).';
 
   @override
   String s1a9e9bead3(String p0) {
@@ -3512,8 +3642,7 @@ class AppLocalizationsFi extends AppLocalizations {
       'Hintoja ei saatu juuri nyt. Sääntö toimii, kun hinnat saadaan.';
 
   @override
-  String get s406e599999 =>
-      'Ei päälläoloa seuraavan vuorokauden aikana (tai huomisen hinnat puuttuvat vielä).';
+  String get s15b42b592c => 'Ei päälläoloa seuraavan vuorokauden aikana.';
 
   @override
   String get s0de6e75a52 => 'Huomenna';
@@ -3622,14 +3751,15 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sa3e78d5c4e => 'Kotisilta vastaa – etäyhteys toimii.';
 
   @override
-  String get s370acd310d => 'Etäyhteys';
-
-  @override
   String get s0b57661c18 => 'Ohjaa kotia myös kodin ulkopuolelta';
 
   @override
   String get sb43ef4094c =>
       'Kotona Molaplan puhuu laitteille suoraan. Muualla yhteys kulkee salattuna kotisillan kautta – porttiohjauksia tai reititinasetuksia ei tarvita. Sovellus valitsee automaattisesti nopeimman tien.';
+
+  @override
+  String get se96e60e36c =>
+      'Kotisilta on mikä tahansa kotona aina päällä oleva Molaplan: PC, vanha tabletti tai puhelin, tai erillinen kotisiltaohjelma esim. Raspberry Pillä tai Home Assistant -koneella. Kun olet poissa kotoa, puhelimesi komennot kulkevat sen kautta kodin laitteille päästä päähän salattuina. Reitittimeen ei tarvitse tehdä mitään (ei porttiohjauksia).';
 
   @override
   String get s075e5a4864 => 'Yhdistetty kotiin';
@@ -3714,8 +3844,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s410655fd47 => 'Näin yhdistät';
 
   @override
-  String get s3a141e0c32 =>
-      'Avaa kotona olevalla kotisillalla (tabletti tai PC) Molaplan → Asetukset → Etäyhteys → Tee tästä laitteesta kotisilta.';
+  String get s7c541b8e91 =>
+      'Avaa kotona olevalla kotisillalla (tabletti tai PC) Molaplan → Asetukset → Etäkäyttö → Tee tästä laitteesta kotisilta.';
 
   @override
   String get sc7c83b2f58 =>
@@ -3792,8 +3922,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s9715416100 => 'Skannaa puhelimella';
 
   @override
-  String get sf54c6d871c =>
-      'Puhelimessa: Molaplan → Asetukset → Etäyhteys → Yhdistä tämä laite kotiin';
+  String get s4e877aeafe =>
+      'Puhelimessa: Molaplan → Asetukset → Etäkäyttö → Yhdistä tämä laite kotiin';
 
   @override
   String get sf7fa9632f3 => 'Voimassa';
@@ -3811,6 +3941,21 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sdfaf8c242b => 'Hyväksy';
+
+  @override
+  String get sd64229b6d8 => 'ei vielä valittu';
+
+  @override
+  String get s088e792ee3 => 'Etäkäyttö ei ole käytössä';
+
+  @override
+  String get s85543bf885 => 'Yhteydessä';
+
+  @override
+  String get s3f17564f18 => 'viimeksi nähty';
+
+  @override
+  String get s9ba8cafced => 'Mikä on etäkäyttö?';
 
   @override
   String get s1cf33c1fbc => 'Tila / arvo';
@@ -3846,10 +3991,40 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s76e7a995de => 'Luettu arvo';
 
   @override
+  String get s4e1f25d257 => 'Oma komento';
+
+  @override
+  String get sea15760b77 => 'Mitä nappi tekee?';
+
+  @override
+  String get s630ee9894e =>
+      'Valitse skripti, tilanne tai laite. Nappi toimii sovelluksessa ja kodin ulkopuolelta etäkäytön kautta.';
+
+  @override
+  String get s1173c2dbf9 =>
+      'Skriptejä ei vielä ole. Tee skripti kohdassa Automaatiot.';
+
+  @override
+  String get s7b42ecba51 =>
+      'Tilanteita ei vielä ole. Tallenna tilanne kohdassa Automaatiot.';
+
+  @override
+  String get s589d73245e =>
+      'Ohjattavia laitteita ei vielä ole. Lisää ensin kytkin.';
+
+  @override
   String get sc5edd6d3d1 => 'Uusi ruutu';
 
   @override
   String get sa684fd0716 => 'Muokkaa ruutua';
+
+  @override
+  String get sa7b6366b62 =>
+      'Mittaus: näyttötapa, trendi, värirajat, hälytykset, desimaalit ja skaalaus.';
+
+  @override
+  String get sae41bebdab =>
+      'Ohjaus: vahvistus, lukitus / PIN, min / max / askel, käänteinen ja hetkellinen.';
 
   @override
   String get scf37cbeda8 => 'Kuvake';
@@ -3868,6 +4043,16 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sc0e069225b => 'Trendi + Nyt-viiva';
+
+  @override
+  String get s07647fa07d => 'Aikaväli';
+
+  @override
+  String get s8feeef3110 => 'Näytä huomenna kun saatavilla';
+
+  @override
+  String get sad692e6ae5 =>
+      'Huomisen hinnat tulevat näkyviin itsestään, kun ne julkaistaan (n. klo 14).';
 
   @override
   String get s1c72b8c56a => 'Trendin pituus';
@@ -3890,6 +4075,16 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s581aee3e96 => 'Valinnainen: mistä nykyinen tila luetaan.';
+
+  @override
+  String get s3adc51170c => 'Raaka yhdistelmä (Edistyneet)';
+
+  @override
+  String get s5f542e17e2 =>
+      '⚠ Kaikki ruututyypit sallitaan kaikille yhteyksille. Väärä yhdistelmä voi näyttää harhaanjohtavaa tietoa, esim. \"Päällä\" sähkön hinnalle.';
+
+  @override
+  String get scb988b1a4a => 'Pois: vain yhteyden tukemat ruututyypit.';
 
   @override
   String get se6b18b17d9 => 'Päivitysväli (s, 0 = ei kyselyä)';
@@ -4345,9 +4540,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s48b08c5f5a => 'Perusmaksut (energia + siirto)';
 
   @override
-  String get s286e1cfb54 => 'Yhteensä';
-
-  @override
   String get s2e8700e0cf =>
       'Osalle kulutuksesta ei ollut hintaa (pörssihinta puuttui).';
 
@@ -4455,6 +4647,17 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sa6212aaeb4 => 'Sijainti';
 
   @override
+  String get sa0eeb22daa => 'On jo näkymässä – lisätäänkö silti?';
+
+  @override
+  String s3507210a2a(String p0, String p1) {
+    return '$p0 on jo näkymässä $p1.';
+  }
+
+  @override
+  String get s0e655a209f => 'Lisää silti';
+
+  @override
   String get s902eaaff9f => 'Avaa';
 
   @override
@@ -4546,9 +4749,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s487bf00fc7 => 'Lukot';
 
   @override
-  String get s88ac47e6d1 => 'Kamerat';
-
-  @override
   String get sbe76826428 => 'Puhaltimet';
 
   @override
@@ -4575,11 +4775,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sf32b7f15d8 => 'kamerat';
 
   @override
-  String s095ca83913(String p0) {
-    return '$p0 ruutua lisätty';
-  }
-
-  @override
   String get sa7a829cefb => 'Valitse Home Assistantin laitteet';
 
   @override
@@ -4587,11 +4782,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s26583a1933 => 'Huoneittain omiin näkymiin';
-
-  @override
-  String sf1319d04d0(String p0) {
-    return 'Lisää $p0';
-  }
 
   @override
   String get sb3e6b54bce => 'Hae nimellä tai tunnuksella';
@@ -4636,6 +4826,39 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s78cdce874e => 'jo lisätty';
 
   @override
+  String get s7ba50ea69e => 'Makuuhuone';
+
+  @override
+  String get s9e9723b263 => 'Keittiö';
+
+  @override
+  String get scce769451b => 'Olohuone';
+
+  @override
+  String get s9d5dca2dee => 'Kylpyhuone';
+
+  @override
+  String get s2569505205 => 'Sauna';
+
+  @override
+  String get s1c65dad1f5 => 'Eteinen';
+
+  @override
+  String get sa4d90bb5da => 'Piha / puutarha';
+
+  @override
+  String get s4a7be17a36 => 'Tekninen tila';
+
+  @override
+  String get s01e404f15f => 'Työhuone';
+
+  @override
+  String get sfd8305add2 => 'Lastenhuone';
+
+  @override
+  String get scd87fb4dd7 => 'Mökki';
+
+  @override
   String get sdc398885dc => 'Lisäasetukset';
 
   @override
@@ -4669,6 +4892,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s254a1d8e12 => 'Taustakuva (valinnainen)';
+
+  @override
+  String get sc48f5f9bcf => 'Valitse kuva';
 
   @override
   String get s7ba9d453ed => 'Himmennä kun laite on pois päältä';
@@ -4721,6 +4947,47 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s9bb545e9b3 => 'Kirjaudu tai luo tili';
+
+  @override
+  String get s08d62fd281 => 'Ulkoasu';
+
+  @override
+  String get s2b8a2754c6 => 'Teema';
+
+  @override
+  String get s79f67deb42 => 'Vaalea';
+
+  @override
+  String get s0d6fb52039 => 'Tumma';
+
+  @override
+  String get s70dd7fdd58 => 'Auringonnousun ja -laskun mukaan';
+
+  @override
+  String get s21206b61f7 =>
+      'Vaatii kodin sijainnin (Energia › Koti). Siihen asti seurataan laitteen asetusta.';
+
+  @override
+  String get s4e23920823 =>
+      'Vaalea päivällä, tumma illalla. Pois päältä: seuraa laitteen asetusta.';
+
+  @override
+  String get s4b847ce63e =>
+      'Valinta koskee tätä laitetta ja tallentuu tiliisi uusien laitteiden oletukseksi.';
+
+  @override
+  String get s5ebc02022b => 'Näytä tuntikeskiarvona';
+
+  @override
+  String get s68b4d332ca =>
+      'Sähkön hinta, halvimmat tunnit ja hintaohjaukset tunneittain (tuntihinnoiteltu sopimus). Pois: 15 min, kun alueen hinnat ovat 15 min.';
+
+  @override
+  String get saf496a12a3 => 'Aamukortti: näytä myös kallein tunti';
+
+  @override
+  String get sc53b1b78c0 =>
+      'Halvin tunti näytetään aina seuraavalta 24 tunnilta hintoineen.';
 
   @override
   String get s0625d54b38 => 'Laattakoko';
@@ -4913,6 +5180,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sae0fae7127 => 'Siirry omaan näkymään';
 
   @override
+  String get s2a28790ea2 => 'Koko leveys';
+
+  @override
   String get s64f4d1e11a => 'Aseta kodin sijainti';
 
   @override
@@ -4973,6 +5243,18 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s38d0517a8d => 'Tunnistus';
+
+  @override
+  String get sade17bf83e => 'Ei tunnistusta';
+
+  @override
+  String get s9cbb9f048d => 'Käyttäjä + salasana (Basic)';
+
+  @override
+  String get s3cb806781e => 'Käyttäjä + salasana (Digest)';
+
+  @override
+  String get sb1920b9d9b => 'Avain / token (Bearer)';
 
   @override
   String get sed995f57b8 => 'Käyttäjätunnus';
@@ -5046,7 +5328,103 @@ class AppLocalizationsFi extends AppLocalizations {
   String get se995a6862d => 'Tila';
 
   @override
+  String get s7cf6da2822 => 'Liikkuva kuva (MJPEG)';
+
+  @override
+  String get s4cb8ad767b => 'Still-kuva välein';
+
+  @override
+  String get s15f9cd477c => 'RTSP-video';
+
+  @override
   String get s4f356d158a => 'Kuvan päivitysväli (s, snapshot)';
+
+  @override
+  String get scbc6aa5e63 => 'Bq/m³';
+
+  @override
+  String get sfc402d7bce => 'ppm';
+
+  @override
+  String get s7410329f6d => 'ppb';
+
+  @override
+  String get s05ff8e0c34 => '°C';
+
+  @override
+  String get s26e6d96d7e => '%';
+
+  @override
+  String get sfabcfc0188 => 'hPa';
+
+  @override
+  String get s12a1c5653a => 'µg/m³';
+
+  @override
+  String get s2f37dd80ed => '%';
+
+  @override
+  String get sd4025b7a32 => 'Airthings (pilvi)';
+
+  @override
+  String get sf7d012472a => 'Client ID';
+
+  @override
+  String get s94bccb8598 =>
+      'dashboard.airthings.com → Integrations → API → Create client (Client credentials).';
+
+  @override
+  String get sb1a9b21d4f => 'Client secret';
+
+  @override
+  String get s2403198fe5 =>
+      'Näkyy samassa paikassa kuin Client ID. Pidä se salassa.';
+
+  @override
+  String get s21b52207e8 => 'Päivitysväli (min)';
+
+  @override
+  String get saad5ced5fe =>
+      'Mittarit päivittävät arvot 5 minuutin välein; tiheämpi kysely ei tuo uutta tietoa.';
+
+  @override
+  String get sc844e90e0f => 'Sarjanumero';
+
+  @override
+  String get s8cee566dd7 =>
+      'Mittarin sarjanumero (10 numeroa) – täyttyy itse, kun lisäät mittarin listasta.';
+
+  @override
+  String get s2d79014611 => 'Mittaus';
+
+  @override
+  String get s852b4e5c75 =>
+      'Mikä mittauksen arvo ruudussa näkyy (radon Bq/m³, CO₂ ppm, VOC ppb, °C, %, hPa, µg/m³, akku %).';
+
+  @override
+  String get s6cd83fc216 => 'Radon (lyhyt keskiarvo)';
+
+  @override
+  String get s0c4b6446cd => 'Radon (pitkä keskiarvo)';
+
+  @override
+  String get s96cc1b3741 => 'VOC';
+
+  @override
+  String get sf8496cb6dc => 'Ilmanpaine';
+
+  @override
+  String get s99e44237af => 'Pienhiukkaset PM2.5';
+
+  @override
+  String get s951d501a1a => 'Pienhiukkaset PM1';
+
+  @override
+  String get sb6d80b9662 => 'Airthings Wave (Bluetooth)';
+
+  @override
+  String get s83d2446b44 =>
+      'Mittarin takana tai pohjassa (10 numeroa, esim. 2930xxxxxx).';
 
   @override
   String get s2525f9a4f5 =>
@@ -5073,6 +5451,10 @@ class AppLocalizationsFi extends AppLocalizations {
       'Laskun mukaan ALV:n kanssa. Jätä 0, jos haluat nähdä pelkän energian hinnan.';
 
   @override
+  String get s1d9eabe472 =>
+      'Tuntihinnoitellulle sopimukselle. Pois: 15 min hinnat, kun alueen data on 15 min (EU:n päivämarkkina 1.10.2025 alkaen).';
+
+  @override
   String get s515da3a9dd => 'Hintapalvelin';
 
   @override
@@ -5083,14 +5465,26 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s271885dc8b => 'Mitä näytetään';
 
   @override
-  String get s46282f452b =>
-      'now = hinta nyt, chart = kaavio tälle ja huomiselle päivälle.';
+  String get s1edb6be142 =>
+      'Mikä hinnan tieto ruudussa näkyy: hinta nyt, päivän halvin / kallein / keskihinta, seuraava halpa tunti tai kaavio.';
+
+  @override
+  String get s46aab99b27 => 'Päivän halvin';
+
+  @override
+  String get sf6295f1182 => 'Päivän kallein';
+
+  @override
+  String get s1aa7abbf72 => 'Päivän keskihinta';
+
+  @override
+  String get s65f496b2dc => 'Seuraava halpa tunti';
+
+  @override
+  String get se446dc324a => 'Hintakaavio (tänään ja huomenna)';
 
   @override
   String get s2f754e8ab4 => 'Tämän päivän hintoja ei ole vielä saatavilla.';
-
-  @override
-  String get sd575462da3 => 'huomenna ';
 
   @override
   String get s18faad19ed => 'Hintaa ei ole tälle hetkelle.';
@@ -5168,6 +5562,21 @@ class AppLocalizationsFi extends AppLocalizations {
       'tasmota_http = Tasmota (tasmota-ir) suoraan IP-osoitteella. tasmota_mqtt = Tasmota MQTT-välittäjän kautta. esphome = ESPHome climate_ir. http/mqtt = muu lähetin omilla osoitteilla.';
 
   @override
+  String get s4fb133b1c8 => 'Tasmota (HTTP)';
+
+  @override
+  String get sdd5d31034c => 'Tasmota (MQTT)';
+
+  @override
+  String get see30b7398b => 'ESPHome';
+
+  @override
+  String get scb2d23e10b => 'Oma HTTP';
+
+  @override
+  String get s5c6c30aac6 => 'Oma MQTT';
+
+  @override
   String get s38471ae691 => 'Lähettimen osoite';
 
   @override
@@ -5238,6 +5647,18 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s8567c5faa6 =>
       'summary = koko tila tekstinä. room = lähettimen lämpöanturi (jos on). Muut = viimeksi lähetetty asetus.';
+
+  @override
+  String get s5d329a0fea => 'Yhteenveto';
+
+  @override
+  String get s5db6506824 => 'Asetuslämpö';
+
+  @override
+  String get s018d2e08f4 => 'Puhallin';
+
+  @override
+  String get s051944392f => 'Huonelämpö';
 
   @override
   String get sdd8cd8132c => 'Mitä muutetaan';
@@ -5374,9 +5795,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s43c9b88580 => 'Automaatti';
 
   @override
-  String get s018d2e08f4 => 'Puhallin';
-
-  @override
   String get s36fb6ba26f => 'Modbus TCP';
 
   @override
@@ -5440,6 +5858,18 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s943b8b6bf3 => 'Rekisterityyppi';
 
   @override
+  String get s8283ed1c89 => 'Pitorekisteri (4x)';
+
+  @override
+  String get s94cf36d710 => 'Kela (0x)';
+
+  @override
+  String get sfb6d4a8639 => 'Syöttörekisteri (3x)';
+
+  @override
+  String get s0bbedf814a => 'Diskreetti tulo (1x)';
+
+  @override
   String get sf51ad986eb => 'Osoite (0-pohjainen)';
 
   @override
@@ -5494,6 +5924,12 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get sddbea594a4 =>
       'latest = viimeisin viesti, log = useita viimeisimpiä viestejä allekkain (uusin ylimpänä).';
+
+  @override
+  String get s580abde883 => 'Viimeisin viesti';
+
+  @override
+  String get sf6455b6631 => 'Viestiloki';
 
   @override
   String get s2bd0e69d44 => 'Aihe (vapaaehtoinen)';
@@ -5712,11 +6148,6 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String sb23114b65d(String p0) {
-    return 'halvin klo $p0';
-  }
-
-  @override
   String sd39874fbe2(String p0) {
     return '$p0 laitetta päällä';
   }
@@ -5771,6 +6202,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s4cac4725b8 => 'Ryhmän laitteet eivät vastaa';
+
+  @override
+  String get s13a91fe322 => 'Ohjattavaa laitetta ei löydy';
 
   @override
   String get s7e461faf91 =>
@@ -5839,13 +6273,11 @@ class AppLocalizationsFi extends AppLocalizations {
       'Tasmota-ohjelmistolla toimiva rele tai pistorasia.';
 
   @override
-  String get s16be1831d6 => 'Vain energiamittauksella varustetuille.';
+  String get s70d8cb97e6 => 'Releet';
 
   @override
-  String get s8890d26ef2 => 'Releen numero';
-
-  @override
-  String get s7e6d21d466 => 'Monireleisissä 1, 2, 3...';
+  String get s7a4c459c3a =>
+      'Tyhjä = kaikki laitteen ilmoittamat releet (tunnistetaan automaattisesti). Voit rajata: \"1\", \"1,2,4\", \"1-4\" tai \"kaikki\".';
 
   @override
   String get s5f1e4a036e => 'Web-salasana';
@@ -6099,19 +6531,6 @@ class AppLocalizationsFi extends AppLocalizations {
       'Suomessa FI. Ruotsissa ja Norjassa valitse alue, jolla asut.';
 
   @override
-  String get s5e8c8e4273 => 'Näkymä';
-
-  @override
-  String get s9f6d9ce1bf =>
-      'Trendi näyttää tämän päivän ja huomisen hinnan viivana ja Nyt-kohdan.';
-
-  @override
-  String get s51f1184efb => 'Trendi ja pylväät (2 ruutua)';
-
-  @override
-  String get sa77af9de19 => 'Hinnan trendi (viiva, Nyt-viiva)';
-
-  @override
   String get sf3a8631d14 =>
       'Laskustasi ALV:n kanssa. 0 = näytä pelkkä energian hinta.';
 
@@ -6124,14 +6543,50 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get s9772b9b5c4 => 'Sähkön hinnan trendi';
+  String get sfb2b7ccc87 => 'Hintatrendi';
 
   @override
-  String get s9af9526395 => 'IV-kone (Modbus TCP)';
+  String get s4790164c94 => 'Tämän ja huomisen kaavio';
 
   @override
-  String get s29dc0baf55 =>
-      'Lämpötilat ja puhallinnopeus. Valmiit rekisterilistat esimerkkeinä – tarkista oman koneesi ohjeesta.';
+  String get sd408a5dbe9 => 'Halvimmat tunnit';
+
+  @override
+  String get s7ba83434d1 => 'Airthings (radon ja ilmanlaatu, pilvi)';
+
+  @override
+  String get s39e8df2552 =>
+      'View Plus, View Radon, Hub ja kaikki tiliisi liitetyt mittarit. Wi-Fi-malleissa ei ole paikallista rajapintaa, joten arvot luetaan Airthingsin virallisesta rajapinnasta omalla tunnuksellasi.';
+
+  @override
+  String get sbafe369760 =>
+      '1) Avaa dashboard.airthings.com ja kirjaudu Airthings-tunnuksillasi. 2) Integrations → API → Create client (tai \"New API client\"). 3) Anna nimeksi esim. Molaplan, valitse Flow type \"Client credentials\" ja ota se käyttöön. 4) Kopioi Client ID tähän.';
+
+  @override
+  String get sb6a852ab13 =>
+      '5) Kopioi samasta näkymästä Client secret. Se tallennetaan vain tähän laitteeseen ja tiliisi salattuna.';
+
+  @override
+  String get sc76f519144 =>
+      'Wave, Wave Plus, Wave Mini ja Wave Radon toimivat vain Bluetoothilla. Lukee Android-laite tai kotisilta (esim. seinätabletti) enintään 10 m päässä.';
+
+  @override
+  String get sff5f25f96f =>
+      'Mittarin takana (10 numeroa). Alku kertoo mallin: 2930 = Wave Plus, 2950 = Wave Radon, 2920 = Wave Mini.';
+
+  @override
+  String get s8de2de9178 => 'Lue kotisillan kautta';
+
+  @override
+  String get s5e605a88ef =>
+      'Päälle, kun Bluetooth-lukija on kotisilta (esim. seinätabletti mittarin lähellä).';
+
+  @override
+  String get s3330126b01 => 'IV-kone tai lämpöpumppu (Modbus TCP)';
+
+  @override
+  String get sc16ab2836c =>
+      'Lämpötilat, puhallinnopeus ja asetukset. Valmiit rekisterikartat merkeille (Airfi, Vallox, Enervent, Swegon, Flexit, Ilto, Nilan, NIBE, Thermia) – tarkista oman laitteesi ohjeesta.';
 
   @override
   String get sb75966bb58 => 'IV-koneen tai yhdyskäytävän IP-osoite';
@@ -6234,8 +6689,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s8231329360 => 'Komentokanavan osoite';
 
   @override
-  String get sd82d127f05 =>
-      'Liitä sama osoite, johon pikakomento lähettää komennot (esim. https://ntfy.sh/kv-cmd-…). Pelkkä aiheen nimi riittää myös.';
+  String get s206ac44298 =>
+      'Liitä sama osoite, johon pikakomento lähettää komennot (esim. https://ntfy.sh/oma-aihe). Pelkkä aiheen nimi riittää myös.';
 
   @override
   String get s1b3bbae234 =>
@@ -6288,4 +6743,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String s3a38b97f7b(String p0) {
     return '$p0 – huone';
   }
+
+  @override
+  String get s0ceafaa97c => 'energia';
 }

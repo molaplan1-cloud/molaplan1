@@ -308,7 +308,7 @@ class _ContractPageState extends State<ContractPage> {
       e.zone = zone;
     });
     if (mounted) {
-      showSnack(context, tx(context, 'Tallennettu', 'Saved'));
+      showSnack(context, tx(context, 'Tallennettu', 'Saved'), kind: SnackKind.success);
       Navigator.pop(context);
     }
   }

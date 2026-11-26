@@ -50,8 +50,9 @@ class PriceRule {
   String describe() => switch (kind) {
     'above' => 'off above ${threshold.toStringAsFixed(1)} c/kWh ($zone)',
     'below' => 'on below ${threshold.toStringAsFixed(1)} c/kWh ($zone)',
-    _ => 'cheapest ${quarters ? '$count × 15 min' : '$count h'} '
-        '${fromHour.toString().padLeft(2, '0')}–${toHour.toString().padLeft(2, '0')} ($zone)',
+    _ =>
+      'cheapest ${quarters ? '$count × 15 min' : '$count h'} '
+          '${fromHour.toString().padLeft(2, '0')}–${toHour.toString().padLeft(2, '0')} ($zone)',
   };
 
   Map<String, dynamic> toJson() => {
@@ -109,12 +110,15 @@ class PriceRule {
   /// Slots chosen by a `cheapest` rule in the window containing [t] (empty if prices are missing).
   List<PricePoint> chosen(PriceSeries s, DateTime t) {
     final (ws, we) = windowAt(t);
-    final src = quarters ? s : s.hourly();
+    // t168u: 15-min only where the area's data has it; hourly data → whole hours.
+    final q = quarters && s.resolution < 3600;
+    final src = q ? s : s.hourly();
     final slots = src.between(ws, we);
-    final expected = we.difference(ws).inSeconds ~/ (quarters ? 900 : 3600);
+    final expected = we.difference(ws).inSeconds ~/ (q ? 900 : 3600);
     if (slots.length < expected * 0.9) return const []; // window not fully published yet
+    final n = quarters && !q ? (count / 4).ceil() : count;
     final sorted = [...slots]..sort((a, b) => a.eurMwh.compareTo(b.eurMwh));
-    return sorted.take(count.clamp(0, slots.length)).toList()..sort((a, b) => a.start.compareTo(b.start));
+    return sorted.take(n.clamp(0, slots.length)).toList()..sort((a, b) => a.start.compareTo(b.start));
   }
 
   /// true = ON, false = OFF, null = no decision (prices missing).

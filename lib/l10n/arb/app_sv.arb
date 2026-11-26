@@ -7,6 +7,10 @@
  "@s10edebf3fa": {
   "x-mt": true
  },
+ "sc08176420f": "Airthings moln",
+ "@sc08176420f": {
+  "x-mt": true
+ },
  "sd3d9c263ed": "Tjänsten",
  "sdfb639365a": "Ingen internetanslutning",
  "s390dd51af3": "{p0} är på internet och kan inte nås. Kontrollera den här enhetens internetanslutning. De senaste uppgifterna visas när de är tillgängliga.",
@@ -115,6 +119,34 @@
  },
  "s7746921882": "Enhet hittas, men Modbus TCP är avstängd",
  "@s7746921882": {
+  "x-mt": true
+ },
+ "s7e552bd146": "Det finns en enhet på denna adress, men det accepterar inte Modbus på denna port. Slå på Modbus TCP i enhetsinställningarna (ofta under nätverk / Modbus / fjärrkontroll) och kontrollera hamnen (vanligtvis 502). Du kan också trycka på \"Scan Modbus\". Om enheten fungerar i Home Assistant, kan det redan ha en anslutning (många tillåter bara en) - läs värdena genom HA.",
+ "@s7e552bd146": {
+  "x-mt": true
+ },
+ "s0ebc613f20": "Enheten är i lockout, retrying på {p0}",
+ "@s0ebc613f20": {
+  "x-mt": true
+ },
+ "s317b2b59af": "Enheten svarade inte, så det lämnas ensam ett tag - många enheter låser ut klienter som omröstar för ofta. Pausen växer från 30 sekunder till 5 minuter. Om enheten redan har en anslutning (t.ex. Home Assistant), läs värdena genom HA. Läsintervallet och pauserna är under Avancerade i anslutningen.",
+ "@s317b2b59af": {
+  "x-mt": true
+ },
+ "s33e09089b2": "Enheten adress saknas",
+ "@s33e09089b2": {
+  "x-mt": true
+ },
+ "s6180bd540e": "Öppna anslutningen och ange enhet IP-adressen eller tryck på \"Scan Modbus\" för att hitta enheten i nätverket.",
+ "@s6180bd540e": {
+  "x-mt": true
+ },
+ "sd73581c910": "Enheten kanske redan har en anslutning",
+ "@sd73581c910": {
+  "x-mt": true
+ },
+ "scee8d982a2": "Enheten släppte Modbus-anslutningen direkt. Många enheter tillåter endast en Modbus TCP-anslutning i taget. Om enheten redan finns i Home Assistant (t.ex. modbus.yaml), läs värdena genom HA.",
+ "@scee8d982a2": {
   "x-mt": true
  },
  "s6ca672a111": "Ingenting på denna adress",
@@ -238,6 +270,18 @@
   "x-mt": true
  },
  "s53a891e670": "Kontrollera adressen och inställningarna och försök igen. De tekniska detaljerna visar den exakta orsaken.",
+ "s02480e4c13": "Mätningar",
+ "@s02480e4c13": {
+  "x-mt": true
+ },
+ "sd1c778324e": "kontroller",
+ "@sd1c778324e": {
+  "x-mt": true
+ },
+ "s88ac47e6d1": "Kameror",
+ "@s88ac47e6d1": {
+  "x-mt": true
+ },
  "sdd5e97b1e2": "Klart",
  "sad990c999d": "Halvklart",
  "s80bfe8f9ad": "Mulet",
@@ -563,6 +607,7 @@
  "@sec4d80656d": {
   "x-mt": true
  },
+ "s286e1cfb54": "Totalt",
  "sb9964cfb3b": "Effekt {p0}",
  "s4233362d60": "Vattenläck sensor",
  "@s4233362d60": {
@@ -581,8 +626,20 @@
  "@s9ad7b0076b": {
   "x-mt": true
  },
+ "s815bfa19dc": "Kontaktorkontroll",
+ "@s815bfa19dc": {
+  "x-mt": true
+ },
+ "sb9209fee74": "lägg till endast om reläet används",
+ "@sb9209fee74": {
+  "x-mt": true
+ },
  "s5f2b2ca5f5": "på nu",
  "s67f64cd925": "av nu",
+ "s8b35cc884f": "Metering",
+ "@s8b35cc884f": {
+  "x-mt": true
+ },
  "sd8dfb25d31": "Shelly Cloud (ingen bro)",
  "@sd8dfb25d31": {
   "x-mt": true
@@ -703,9 +760,29 @@
  "@s2101774157": {
   "x-mt": true
  },
+ "sd63d34bfe9": "Kan inte läsa YAML: {p0}",
+ "@sd63d34bfe9": {
+  "x-mt": true
+ },
+ "sc5c9e5e2fc": "\"{p0}\" använder en seriell port (USB / RS485) - du behöver en RS485 → TCP gateway.",
+ "@sc5c9e5e2fc": {
+  "x-mt": true
+ },
  "s77bf3b424f": "0=Off;1=On",
  "s4cbe24240f": "På",
  "s33831dd49f": "Av",
+ "s69135546c8": "{p0} – mål",
+ "@s69135546c8": {
+  "x-mt": true
+ },
+ "sd88c13e972": "\"{p0}\" var hoppade - lägg till dem för hand.",
+ "@sd88c13e972": {
+  "x-mt": true
+ },
+ "sceebf690e3": "Inget Modbus TCP-nav som finns i YAML (modbus: ... typ: tcp, värd: ...).",
+ "@sceebf690e3": {
+  "x-mt": true
+ },
  "sb662db81d8": "Adressen ser ofullständig. Använd fyra nummer med prickar, t.ex. 192.168.1.50.",
  "@sb662db81d8": {
   "x-mt": true
@@ -1308,11 +1385,11 @@
  "@s252b8e1289": {
   "x-mt": true
  },
- "s9ae4e86ee7": "Fotot visas som rumsrubrik ovanför sina kort.",
- "@s9ae4e86ee7": {
+ "sa27e5362de": "Välj en inbyggd rumsbild eller ditt eget foto. Det visas som rubriken eller bakom hela vyn.",
+ "@sa27e5362de": {
   "x-mt": true
  },
- "sc48f5f9bcf": "Välj bild",
+ "s84ef77e1ca": "Välj en egen bild",
  "sf55eee73b8": "Ändra bild",
  "@sf55eee73b8": {
   "x-mt": true
@@ -1321,6 +1398,10 @@
  "@sf6723451b9": {
   "x-mt": true
  },
+ "s0bec34cd24": "Rubrikbild",
+ "s7b1e22fca7": "Bakgrund för hela vyn",
+ "s229e29f9ee": "Dämpning",
+ "s38285117e6": "Oskärpa",
  "sdd957ccc1b": "Ta bort bild",
  "@sdd957ccc1b": {
   "x-mt": true
@@ -1356,6 +1437,18 @@
  "@sbf2cfbb102": {
   "x-mt": true
  },
+ "s9be06479ff": "Lockout",
+ "@s9be06479ff": {
+  "x-mt": true
+ },
+ "s613938b0b3": "Ingen adress",
+ "@s613938b0b3": {
+  "x-mt": true
+ },
+ "s252d8628c7": "Upptagen (HA?)",
+ "@s252d8628c7": {
+  "x-mt": true
+ },
  "s0e3a6bafbf": "Tjänst som inte svarar",
  "@s0e3a6bafbf": {
   "x-mt": true
@@ -1374,6 +1467,15 @@
  "sfec025279e": "Enheten är offline",
  "sa7d212f047": "Enheter i hemmets Wi-Fi fungerar ändå.",
  "s24ccd151f2": "Försök igen",
+ "sc26c52235c": "Du är borta och hembron svarar inte. Hemnätverksenheter kan inte styras nu.",
+ "@sc26c52235c": {
+  "x-mt": true
+ },
+ "s0fc1c9f296": "Du är borta. Hemnätverksenheter fungerar på distans endast genom en hembro.",
+ "@s0fc1c9f296": {
+  "x-mt": true
+ },
+ "se50ed56454": "Fjärråtkomst",
  "sc5f54cf3c8": "Fyll i nyckeln och servern.",
  "@sc5f54cf3c8": {
   "x-mt": true
@@ -1403,7 +1505,39 @@
   "x-mt": true
  },
  "s09f5da65e0": "Byt till Shelly Cloud",
+ "sa846059775": "Home Assistant läser redan den här enheten",
+ "@sa846059775": {
+  "x-mt": true
+ },
+ "s18a1844439": "Enheten kanske redan har en anslutning (t.ex. Home Assistant) - läs värdena genom HA. Många enheter tillåter endast en Modbus TCP-anslutning.",
+ "@s18a1844439": {
+  "x-mt": true
+ },
+ "sa29df4fc6b": "{p0} Modbus värden som finns i Home Assistant. Många enheter tillåter endast en Modbus TCP-anslutning, så läsning genom HA är det säkraste sättet.",
+ "@sa29df4fc6b": {
+  "x-mt": true
+ },
+ "sb8c40d2c20": "Användning via Home Assistant",
+ "@sb8c40d2c20": {
+  "x-mt": true
+ },
+ "s810014ca02": "Importera en hemassistent modbus.yaml",
+ "@s810014ca02": {
+  "x-mt": true
+ },
+ "sfbf34ee532": "Paste modbus.yaml (eller modbus: en del av konfiguration.yaml). Anslutningen och korten använder samma register och timing.",
+ "@sfbf34ee532": {
+  "x-mt": true
+ },
+ "s2d4fbaade1": "{p0} anslutning(s), {p1} kort",
+ "@s2d4fbaade1": {
+  "x-mt": true
+ },
  "s580678cb10": "Importera",
+ "s108e078c0c": "Modbus-enhet som importeras från Home Assistant",
+ "@s108e078c0c": {
+  "x-mt": true
+ },
  "sa3a093e55e": "Värmer",
  "s8efb99df1d": "Kyler",
  "s0b98d62330": "Värme och kyla",
@@ -1494,8 +1628,8 @@
  "s87984716cb": "Ta bort termostaten?",
  "s79786b9f7d": "Mål",
  "sdd309c0a63": "Termostaten körs på hembryggan",
- "s9c1b5394df": "Ställ in fjärråtkomst på hemmatabletten (Inställningar → Fjärråtkomst). Tills dess kontrollerar det inte någonting.",
- "@s9c1b5394df": {
+ "s2a7e9fe291": "Ställ in fjärråtkomst på hemmatabletten (Inställningar → Fjärråtkomst). Tills dess kontrollerar det inte någonting.",
+ "@s2a7e9fe291": {
   "x-mt": true
  },
  "s06cda8c0de": "Körs på den här enheten (hembrygga).",
@@ -1542,6 +1676,10 @@
  "sd54522fe39": "Router / surfzon",
  "s23f4820db7": "Inte kontrollerbar ännu",
  "@s23f4820db7": {
+  "x-mt": true
+ },
+ "sdeeabebed9": "Airthings: lägg till via molnet eller Bluetooth",
+ "@sdeeabebed9": {
   "x-mt": true
  },
  "saae59a3865": "via hembryggan",
@@ -1591,6 +1729,30 @@
  },
  "s9e8430c37b": "Molaplan styr inte dessa. iPhones visar sitt namn bara när de vakna.",
  "@s9e8430c37b": {
+  "x-mt": true
+ },
+ "s095ca83913": "{p0} kort tillagda",
+ "@s095ca83913": {
+  "x-mt": true
+ },
+ "sd53b0c4edc": "Airthings övervakar",
+ "@sd53b0c4edc": {
+  "x-mt": true
+ },
+ "sc401e05b53": "Lägg till {p0} kort",
+ "@sc401e05b53": {
+  "x-mt": true
+ },
+ "s212e35a61b": "Kunde inte lista enheterna",
+ "@s212e35a61b": {
+  "x-mt": true
+ },
+ "s039683f4a5": "Det finns inga bildskärmar i ditt konto. Lägg till en i Airthings-appen först.",
+ "@s039683f4a5": {
+  "x-mt": true
+ },
+ "sdfff64e4c3": "via Hub",
+ "@sdfff64e4c3": {
   "x-mt": true
  },
  "s7f308d40c8": "Värmer",
@@ -1683,6 +1845,22 @@
  },
  "sf0462b25ac": "gateway",
  "@sf0462b25ac": {
+  "x-mt": true
+ },
+ "s28d9c4c7dc": "{p0} förinställd",
+ "@s28d9c4c7dc": {
+  "x-mt": true
+ },
+ "sc6cde0d476": "från dess tillkännagivande",
+ "@sc6cde0d476": {
+  "x-mt": true
+ },
+ "s166da70285": "Enheten accepterar inte en anslutning",
+ "@s166da70285": {
+  "x-mt": true
+ },
+ "sbe97262d91": "Enheten kanske redan har en anslutning (t.ex. Home Assistant) - läs värdena genom HA. Många enheter tillåter endast en Modbus TCP-anslutning.",
+ "@sbe97262d91": {
   "x-mt": true
  },
  "s24e5139123": "Port öppna, ingen Modbus svar",
@@ -2008,8 +2186,8 @@
  "@sbc8469cce1": {
   "x-mt": true
  },
- "s856a422504": "Ställ in fjärråtkomst",
- "@s856a422504": {
+ "s417eb9a875": "Ställ in fjärråtkomst",
+ "@s417eb9a875": {
   "x-mt": true
  },
  "sc3abd09cd9": "Anpassad färg",
@@ -2073,6 +2251,7 @@
  "@s66c54e2286": {
   "x-mt": true
  },
+ "s57f6ce1c7f": "Vad är en hembrygga?",
  "s4057f67774": "Mon Tue Wed Thu Fri Sat Sun",
  "@s4057f67774": {
   "x-mt": true
@@ -2536,12 +2715,17 @@
  "@sea09cb0d3b": {
   "x-mt": true
  },
- "s26e23ef341": "Tillåt fjärrstyrning (PIN)",
- "@s26e23ef341": {
+ "s420f3ec828": "Extern start (valfritt)",
+ "sb3cef805ee": "Skriptets knapp fungerar utan detta: den kör skriptet i appen, och genom fjärråtkomst automatiskt när du är borta. Du behöver bara detta för att starta skriptet från utanför Molaplan, t.ex. iPhone genvägar.",
+ "@sb3cef805ee": {
   "x-mt": true
  },
- "sd573107aec": "Ett ntfy-meddelande eller en iPhone-genväg startar manuset.",
- "@sd573107aec": {
+ "sb6e92eacba": "Tillåt start från utsidan (PIN)",
+ "@sb6e92eacba": {
+  "x-mt": true
+ },
+ "sa1692aa719": "Ett meddelande till ntfy-adressen eller en iPhone-genväg startar manuset med PIN.",
+ "@sa1692aa719": {
   "x-mt": true
  },
  "s0a5410ea4f": "Remote PIN (minst 4 tecken)",
@@ -2809,6 +2993,23 @@
  "@s6f1c11270c": {
   "x-mt": true
  },
+ "s4f55f417b1": "Enheten har {p0} reläer",
+ "@s4f55f417b1": {
+  "x-mt": true
+ },
+ "sab3ebba17a": "Enheten har 1 relä",
+ "@sab3ebba17a": {
+  "x-mt": true
+ },
+ "sfa48c40832": "Energimätning",
+ "@sfa48c40832": {
+  "x-mt": true
+ },
+ "sc8d1abbd21": "Kortnamn",
+ "@sc8d1abbd21": {
+  "x-mt": true
+ },
+ "s183ed60009": "OK",
  "s1ea8fe913b": "Adress: {p0}",
  "@s1ea8fe913b": {
   "x-mt": true
@@ -2856,6 +3057,10 @@
  "s695a011cc1": "Söker…",
  "s47d409fddd": "Sök nätverk",
  "@s47d409fddd": {
+  "x-mt": true
+ },
+ "sa62eebe6bd": "Detektera reläer",
+ "@sa62eebe6bd": {
   "x-mt": true
  },
  "s7196b72140": "Inga infödda Modbus TCP - en RS485 → TCP-gateway behövs.",
@@ -2913,6 +3118,32 @@
  "s2d65587b87": "8",
  "s2ad22696ca": "Språk",
  "s7efc5653d2": "Enhetens språk",
+ "s3e5741712a": "Denna Shelly är en energimätare - ersätt växeln med {p0} mätkort?",
+ "@s3e5741712a": {
+  "x-mt": true
+ },
+ "sfe2074ae81": "Enheten har {p0} reläer - lägg till resten?",
+ "@sfe2074ae81": {
+  "x-mt": true
+ },
+ "sf1319d04d0": "Lägg till {p0}",
+ "@sf1319d04d0": {
+  "x-mt": true
+ },
+ "s95f80e9bdf": "Fix",
+ "@s95f80e9bdf": {
+  "x-mt": true
+ },
+ "s140acccb81": "I dag",
+ "s66ad384363": "24h framåt",
+ "@s66ad384363": {
+  "x-mt": true
+ },
+ "s6df3187e65": "Idag + imorgon",
+ "@s6df3187e65": {
+  "x-mt": true
+ },
+ "s76379cf7c6": "48 h",
  "s306729fe62": "Inga priser",
  "@s306729fe62": {
   "x-mt": true
@@ -2925,11 +3156,8 @@
  "@sf9e22ac5e7": {
   "x-mt": true
  },
- "s40fbbc4d00": "12 h",
- "s140acccb81": "I dag",
- "s76379cf7c6": "48 h",
- "s252f182d27": "Imorgon ~14:00",
- "@s252f182d27": {
+ "sa0bd9ad5b1": "Exempelkamera - lägg till din egen med Add-enhet",
+ "@sa0bd9ad5b1": {
   "x-mt": true
  },
  "s4529c1010a": "Välj en kameraanslutning",
@@ -2968,10 +3196,11 @@
  "@sf2d10dd213": {
   "x-mt": true
  },
- "s291ca127d6": "Garage",
- "@s291ca127d6": {
+ "s4594c7448e": "Besparingar / billigast",
+ "@s4594c7448e": {
   "x-mt": true
  },
+ "s291ca127d6": "Garage",
  "sb543af1c63": "Dörr",
  "@sb543af1c63": {
   "x-mt": true
@@ -3017,6 +3246,12 @@
  },
  "sdaa7d4de12": "Scen",
  "@sdaa7d4de12": {
+  "x-mt": true
+ },
+ "s11cc92bdc3": "Radon",
+ "s095db91dfb": "CO₂",
+ "s4b1eda4282": "Luftkvalitet",
+ "@s4b1eda4282": {
   "x-mt": true
  },
  "sfe55fd97fa": "All tyst.",
@@ -3079,7 +3314,6 @@
  },
  "s5f131c3ec4": "Förbrukning",
  "s039bb374fe": "Siffrorna är timmedelvärden",
- "sa5e6b1e0e3": "I morgon efter ca 14:00",
  "s62cfd94468": "Billigaste timmar på natten",
  "@s62cfd94468": {
   "x-mt": true
@@ -3122,8 +3356,8 @@
  "@sb86a43361f": {
   "x-mt": true
  },
- "s4e35ba5321": "Ingen hembro ännu. Regeln sparas men körs bara en gång en alltid-på tablett eller PC hemma är bron (Inställningar → Fjärråtkomst).",
- "@s4e35ba5321": {
+ "s538517b71b": "Ingen hembro ännu. Regeln sparas men körs bara en gång en alltid-på tablett eller PC hemma är bron (Inställningar → Fjärråtkomst).",
+ "@s538517b71b": {
   "x-mt": true
  },
  "s1a9e9bead3": "Priskontroll: {p0}",
@@ -3139,8 +3373,8 @@
  "@s2f7c00a89e": {
   "x-mt": true
  },
- "s406e599999": "Inga tider under nästa dag (eller morgondagens priser är inte ute ännu).",
- "@s406e599999": {
+ "s15b42b592c": "Inga tider nästa dag.",
+ "@s15b42b592c": {
   "x-mt": true
  },
  "s0de6e75a52": "I morgon",
@@ -3226,10 +3460,7 @@
  "@sdae0305965": {
   "x-mt": true
  },
- "s5f8284b98f": "Gör den här enheten hembron",
- "@s5f8284b98f": {
-  "x-mt": true
- },
+ "s5f8284b98f": "Gör den här enheten till hembrygga",
  "s6a95f7843b": "Den här enheten stannar hemma, alltid på (laddare + Wi-Fi) och passerar fjärrkommandon till dina enheter.",
  "@s6a95f7843b": {
   "x-mt": true
@@ -3246,13 +3477,16 @@
  "@sa3e78d5c4e": {
   "x-mt": true
  },
- "s370acd310d": "Fjärråtkomst",
  "s0b57661c18": "Kontrollera ditt hem var som helst",
  "@s0b57661c18": {
   "x-mt": true
  },
  "sb43ef4094c": "Hemma pratar Molaplan med dina enheter direkt. På andra ställen krypteras det genom din hemmabro - ingen port vidarebefordran eller routerinställningar. Appen plockar rätt väg automatiskt.",
  "@sb43ef4094c": {
+  "x-mt": true
+ },
+ "se96e60e36c": "En hembro är någon Molaplan som alltid är hemma: en dator, en gammal surfplatta eller telefon, eller det separata broprogrammet på t.ex. en Raspberry Pi eller en Home Assistant-maskin. När du är borta, går telefonens kommandon igenom det till dina enheter, end-to-end krypterad. Ingenting att ställa in på routern (ingen port vidarebefordran).",
+ "@se96e60e36c": {
   "x-mt": true
  },
  "s075e5a4864": "Ansluten till hemmet",
@@ -3330,8 +3564,8 @@
  "@s410655fd47": {
   "x-mt": true
  },
- "s3a141e0c32": "På hembron (tablett eller PC hemma) öppna Molaplan → Inställningar → Fjärråtkomst → Gör den här enheten hembroen.",
- "@s3a141e0c32": {
+ "s7c541b8e91": "På hembron (tablett eller PC hemma) öppna Molaplan → Inställningar → Fjärråtkomst → Gör den här enheten hembroen.",
+ "@s7c541b8e91": {
   "x-mt": true
  },
  "sc7c83b2f58": "Tryck på \"Pair a phone\" där. En QR-kod och 6 siffror visas.",
@@ -3409,8 +3643,8 @@
  "@s9715416100": {
   "x-mt": true
  },
- "sf54c6d871c": "På telefonen: Molaplan → Inställningar → Fjärråtkomst → Anslut den här enheten hem",
- "@sf54c6d871c": {
+ "s4e877aeafe": "På telefonen: Molaplan → Inställningar → Fjärråtkomst → Anslut den här enheten hem",
+ "@s4e877aeafe": {
   "x-mt": true
  },
  "sf7fa9632f3": "Giltigt för",
@@ -3427,6 +3661,26 @@
  },
  "sa04c218f82": "Avvisa",
  "sdfaf8c242b": "Godkänn",
+ "sd64229b6d8": "Inte inrätta ännu",
+ "@sd64229b6d8": {
+  "x-mt": true
+ },
+ "s088e792ee3": "Fjärråtkomst är avstängd",
+ "@s088e792ee3": {
+  "x-mt": true
+ },
+ "s85543bf885": "Online Online Online",
+ "@s85543bf885": {
+  "x-mt": true
+ },
+ "s3f17564f18": "Senaste sett",
+ "@s3f17564f18": {
+  "x-mt": true
+ },
+ "s9ba8cafced": "Vad är fjärråtkomst?",
+ "@s9ba8cafced": {
+  "x-mt": true
+ },
  "s1cf33c1fbc": "Värde",
  "s86029171be": "Av/på",
  "s4ddce888df": "Knapp / genväg",
@@ -3456,8 +3710,37 @@
  },
  "s7172c54c2c": "Håller temperaturen på inställt värde.",
  "s76e7a995de": "Läst värde",
+ "s4e1f25d257": "Eget kommando",
+ "@s4e1f25d257": {
+  "x-mt": true
+ },
+ "sea15760b77": "Vad gör knappen?",
+ "s630ee9894e": "Välj ett skript, en scen eller en enhet. Knappen fungerar i appen och när du är borta, genom fjärråtkomst.",
+ "@s630ee9894e": {
+  "x-mt": true
+ },
+ "s1173c2dbf9": "Inga skript ännu. Gör en under Automations.",
+ "@s1173c2dbf9": {
+  "x-mt": true
+ },
+ "s7b42ecba51": "Inga scener ännu. Spara en under Automations.",
+ "@s7b42ecba51": {
+  "x-mt": true
+ },
+ "s589d73245e": "Inga växelbara enheter ännu. Lägg till en switch först.",
+ "@s589d73245e": {
+  "x-mt": true
+ },
  "sc5edd6d3d1": "Nytt kort",
  "sa684fd0716": "Redigera kort",
+ "sa7b6366b62": "Mätning: display, trend, färggränser, larm, decimaler och skalning.",
+ "@sa7b6366b62": {
+  "x-mt": true
+ },
+ "sae41bebdab": "Kontroll: bekräftelse, lås / PIN, min / max / steg, invert och momentary.",
+ "@sae41bebdab": {
+  "x-mt": true
+ },
  "scf37cbeda8": "Ikon",
  "sfeab9bd26f": "Bredd",
  "@sfeab9bd26f": {
@@ -3474,6 +3757,18 @@
  },
  "sc0e069225b": "Trend + Nu linje",
  "@sc0e069225b": {
+  "x-mt": true
+ },
+ "s07647fa07d": "Range",
+ "@s07647fa07d": {
+  "x-mt": true
+ },
+ "s8feeef3110": "Visa imorgon när tillgängligt",
+ "@s8feeef3110": {
+  "x-mt": true
+ },
+ "sad692e6ae5": "Morgondagens priser visas av sig själva en gång publicerad (cirka 14:00).",
+ "@sad692e6ae5": {
   "x-mt": true
  },
  "s1c72b8c56a": "Trendlängd",
@@ -3493,6 +3788,18 @@
  },
  "s581aee3e96": "Valfritt: där det nuvarande tillståndet läses av.",
  "@s581aee3e96": {
+  "x-mt": true
+ },
+ "s3adc51170c": "Rå kombination (avancerad)",
+ "@s3adc51170c": {
+  "x-mt": true
+ },
+ "s5f542e17e2": "Varje korttyp är tillåten på varje anslutning. En felaktig kombination kan visa vilseledande data, t.ex. \"På\" för elpriset.",
+ "@s5f542e17e2": {
+  "x-mt": true
+ },
+ "scb988b1a4a": "Av: endast korttyperna stöder anslutningen.",
+ "@scb988b1a4a": {
   "x-mt": true
  },
  "se6b18b17d9": "omröstningsintervall (s, 0 = none)",
@@ -3918,7 +4225,6 @@
  "s73771d252c": "Uppmätta enheter totalt",
  "s22d03356a9": "Övrig förbrukning",
  "s48b08c5f5a": "Fasta avgifter (el + elnät)",
- "s286e1cfb54": "Totalt",
  "s2e8700e0cf": "En del av användningen hade inget pris (punktpriset saknades).",
  "@s2e8700e0cf": {
   "x-mt": true
@@ -3974,6 +4280,12 @@
   "x-mt": true
  },
  "sa6212aaeb4": "Plats",
+ "sa0eeb22daa": "Finns redan i vyn – lägga till ändå?",
+ "s3507210a2a": "{p0} är redan i synen {p1}.",
+ "@s3507210a2a": {
+  "x-mt": true
+ },
+ "s0e655a209f": "Lägg till ändå",
  "s902eaaff9f": "Öppet Öppet Öppet Öppet Öppet",
  "@s902eaaff9f": {
   "x-mt": true
@@ -4041,10 +4353,6 @@
  "@s487bf00fc7": {
   "x-mt": true
  },
- "s88ac47e6d1": "Kameror",
- "@s88ac47e6d1": {
-  "x-mt": true
- },
  "sbe76826428": "Fläktar",
  "s4b53bcaaf0": "Knappar",
  "@s4b53bcaaf0": {
@@ -4068,18 +4376,10 @@
  "@sf32b7f15d8": {
   "x-mt": true
  },
- "s095ca83913": "{p0} kort tillagda",
- "@s095ca83913": {
-  "x-mt": true
- },
  "sa7a829cefb": "Välj Home Assistant-enheter",
  "sefdf8e3316": "Hämtar enheter…",
  "s26583a1933": "En vy per rum",
  "@s26583a1933": {
-  "x-mt": true
- },
- "sf1319d04d0": "Lägg till {p0}",
- "@sf1319d04d0": {
   "x-mt": true
  },
  "sb3e6b54bce": "Sök efter namn eller id",
@@ -4115,6 +4415,17 @@
  "@s78cdce874e": {
   "x-mt": true
  },
+ "s7ba50ea69e": "Sovrum",
+ "s9e9723b263": "Kök",
+ "scce769451b": "Vardagsrum",
+ "s9d5dca2dee": "Badrum",
+ "s2569505205": "Sauna",
+ "s1c65dad1f5": "Hall",
+ "sa4d90bb5da": "Gård / trädgård",
+ "s4a7be17a36": "Teknikrum",
+ "s01e404f15f": "Arbetsrum",
+ "sfd8305add2": "Barnrum",
+ "scd87fb4dd7": "Stuga",
  "sdc398885dc": "Avancerade inställningar",
  "s5d477f3cd8": "Vanligtvis behöver du inte dessa",
  "@s5d477f3cd8": {
@@ -4132,6 +4443,7 @@
  "s5e3097232a": "Bred",
  "s8971788287": "Stor",
  "s254a1d8e12": "Bakgrundsbild (valfri)",
+ "sc48f5f9bcf": "Välj bild",
  "s7ba9d453ed": "Dämpa när enheten är av",
  "s016ae7b580": "Bilden krymps (≤ 200 KB) och synkroniseras till ditt konto.",
  "@s016ae7b580": {
@@ -4187,6 +4499,51 @@
   "x-mt": true
  },
  "s9bb545e9b3": "Logga in eller skapa ett konto",
+ "s08d62fd281": "Utseende",
+ "@s08d62fd281": {
+  "x-mt": true
+ },
+ "s2b8a2754c6": "Tema",
+ "@s2b8a2754c6": {
+  "x-mt": true
+ },
+ "s79f67deb42": "Lampa",
+ "s0d6fb52039": "Mörk",
+ "@s0d6fb52039": {
+  "x-mt": true
+ },
+ "s70dd7fdd58": "Genom soluppgång och solnedgång",
+ "@s70dd7fdd58": {
+  "x-mt": true
+ },
+ "s21206b61f7": "Behov av hemorten (Energy › Hem). Fram till dess följs enhetsinställningen.",
+ "@s21206b61f7": {
+  "x-mt": true
+ },
+ "s4e23920823": "Ljus om dagen, mörkt på kvällen. Av: följer enhetens inställning.",
+ "@s4e23920823": {
+  "x-mt": true
+ },
+ "s4b847ce63e": "Valet gäller för den här enheten och sparas på ditt konto som standard för nya enheter.",
+ "@s4b847ce63e": {
+  "x-mt": true
+ },
+ "s5ebc02022b": "Visa som timligt genomsnitt",
+ "@s5ebc02022b": {
+  "x-mt": true
+ },
+ "s68b4d332ca": "Pris, billigaste timmar och priskontroll per timme (timme förkortat kontrakt). Av: 15 min där området publicerar 15-mins priser.",
+ "@s68b4d332ca": {
+  "x-mt": true
+ },
+ "saf496a12a3": "Morgonkort: Visa också den dyraste timmen",
+ "@saf496a12a3": {
+  "x-mt": true
+ },
+ "sc53b1b78c0": "Den billigaste timmen av nästa 24 h visas alltid med sitt pris.",
+ "@sc53b1b78c0": {
+  "x-mt": true
+ },
  "s0625d54b38": "Kortstorlek",
  "s8382da3467": "Normal",
  "s7c1cd8314e": "Dölj rutor som inte fungerar på distans",
@@ -4246,6 +4603,10 @@
  },
  "sdb12678e52": "Exportera",
  "s34686ffb09": "Exempel",
+ "sc8327738b3": "Lägg till en exempelvy (kamera, larm, lampor, ventilation). Exempelenheterna ansluter aldrig någonstans - lägg till din egen med Lägg till enhet.",
+ "@sc8327738b3": {
+  "x-mt": true
+ },
  "sec02c7c071": "Lägg till exempelvy",
  "s522d6584c5": "Sök efter uppdateringar",
  "sd178a1d809": "Din egen kontrollterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kameror, WebSocket, TCP och UDP. Utan ett konto stannar alla inställningar på den här enheten.",
@@ -4365,6 +4726,10 @@
  "@sae0fae7127": {
   "x-mt": true
  },
+ "s2a28790ea2": "Full bredd",
+ "@s2a28790ea2": {
+  "x-mt": true
+ },
  "s64f4d1e11a": "Ange hemmets plats",
  "sbf7cc3de9a": "Försök nu",
  "@sbf7cc3de9a": {
@@ -4416,6 +4781,19 @@
  },
  "s38d0517a8d": "Autentisering",
  "@s38d0517a8d": {
+  "x-mt": true
+ },
+ "sade17bf83e": "Ingen",
+ "s9cbb9f048d": "Användare + lösenord (Basic)",
+ "@s9cbb9f048d": {
+  "x-mt": true
+ },
+ "s3cb806781e": "Användare + lösenord (Digest)",
+ "@s3cb806781e": {
+  "x-mt": true
+ },
+ "sb1920b9d9b": "Token (bärare)",
+ "@sb1920b9d9b": {
   "x-mt": true
  },
  "sed995f57b8": "Användarnamn",
@@ -4477,8 +4855,98 @@
   "x-mt": true
  },
  "se995a6862d": "Läge",
+ "s7cf6da2822": "Live (MJPEG)",
+ "@s7cf6da2822": {
+  "x-mt": true
+ },
+ "s4cb8ad767b": "Snapshots",
+ "@s4cb8ad767b": {
+  "x-mt": true
+ },
+ "s15f9cd477c": "RTSP video",
+ "@s15f9cd477c": {
+  "x-mt": true
+ },
  "s4f356d158a": "Refresh (s, snapshot)",
  "@s4f356d158a": {
+  "x-mt": true
+ },
+ "scbc6aa5e63": "radon",
+ "@scbc6aa5e63": {
+  "x-mt": true
+ },
+ "sfc402d7bce": "co2",
+ "s7410329f6d": "air_quality",
+ "s05ff8e0c34": "Termostat",
+ "@s05ff8e0c34": {
+  "x-mt": true
+ },
+ "s26e6d96d7e": "Fuktighet",
+ "@s26e6d96d7e": {
+  "x-mt": true
+ },
+ "sfabcfc0188": "hastighet",
+ "@sfabcfc0188": {
+  "x-mt": true
+ },
+ "s12a1c5653a": "air_quality",
+ "s2f37dd80ed": "batteribatteri",
+ "@s2f37dd80ed": {
+  "x-mt": true
+ },
+ "sd4025b7a32": "Airthings (moln)",
+ "@sd4025b7a32": {
+  "x-mt": true
+ },
+ "sf7d012472a": "Client ID",
+ "s94bccb8598": "dashboard.airthings.com → Integrations → API → Create client (Client credentials).",
+ "sb1a9b21d4f": "Client secret",
+ "s2403198fe5": "Visas bredvid kundens ID. Håll den hemlig.",
+ "@s2403198fe5": {
+  "x-mt": true
+ },
+ "s21b52207e8": "Uppdateringsintervall (min)",
+ "@s21b52207e8": {
+  "x-mt": true
+ },
+ "saad5ced5fe": "Monitorerna uppdateras var 5: e minut och frågar oftare inte något nytt.",
+ "@saad5ced5fe": {
+  "x-mt": true
+ },
+ "sc844e90e0f": "Serienummer",
+ "@sc844e90e0f": {
+  "x-mt": true
+ },
+ "s8cee566dd7": "Monitorns serienummer (10 siffror) - fylld i när du lägger till den från listan.",
+ "@s8cee566dd7": {
+  "x-mt": true
+ },
+ "s2d79014611": "Mätning",
+ "@s2d79014611": {
+  "x-mt": true
+ },
+ "s852b4e5c75": "Vilken mätning kortet visar (radon Bq/m3, CO2 ppm, VOC ppb, °C, %, hPa, μg/m3, batteri %).",
+ "@s852b4e5c75": {
+  "x-mt": true
+ },
+ "s6cd83fc216": "Radon (kortsiktig)",
+ "@s6cd83fc216": {
+  "x-mt": true
+ },
+ "s0c4b6446cd": "Radon (långsiktigt)",
+ "@s0c4b6446cd": {
+  "x-mt": true
+ },
+ "s96cc1b3741": "VOC",
+ "sf8496cb6dc": "Tryck",
+ "@sf8496cb6dc": {
+  "x-mt": true
+ },
+ "s99e44237af": "PM2.5",
+ "s951d501a1a": "PM1",
+ "sb6d80b9662": "Airthings Wave (Bluetooth)",
+ "s83d2446b44": "På baksidan eller botten av bildskärmen (10 siffror, t.ex. 2930xxxxxxx).",
+ "@s83d2446b44": {
   "x-mt": true
  },
  "s2525f9a4f5": "Finland är ett område (FI). I Sverige och Norge beror det på var du bor.",
@@ -4500,6 +4968,10 @@
  "@s2a3498fb0f": {
   "x-mt": true
  },
+ "s1d9eabe472": "För timmerbillade kontrakt. Av: 15-min priserna där området publicerar dem (EU dag framåt sedan 1 oktober 2025).",
+ "@s1d9eabe472": {
+  "x-mt": true
+ },
  "s515da3a9dd": "Prisserver",
  "@s515da3a9dd": {
   "x-mt": true
@@ -4512,15 +4984,31 @@
  "@s271885dc8b": {
   "x-mt": true
  },
- "s46282f452b": "Nu = aktuellt pris, diagram = idag och imorgon.",
- "@s46282f452b": {
+ "s1edb6be142": "Vilket pris siffra kortet visar: nu, dagens lägsta / högsta / genomsnittet, nästa billiga timme eller diagrammet.",
+ "@s1edb6be142": {
+  "x-mt": true
+ },
+ "s46aab99b27": "Lägsta idag",
+ "@s46aab99b27": {
+  "x-mt": true
+ },
+ "sf6295f1182": "Högst idag",
+ "@sf6295f1182": {
+  "x-mt": true
+ },
+ "s1aa7abbf72": "Medelpris i dag",
+ "s65f496b2dc": "Nästa billiga timme",
+ "@s65f496b2dc": {
+  "x-mt": true
+ },
+ "se446dc324a": "Prislista (idag och i morgon)",
+ "@se446dc324a": {
   "x-mt": true
  },
  "s2f754e8ab4": "Inga priser för idag ännu.",
  "@s2f754e8ab4": {
   "x-mt": true
  },
- "sd575462da3": "i morgon ",
  "s18faad19ed": "Inget pris för nu.",
  "@s18faad19ed": {
   "x-mt": true
@@ -4590,6 +5078,17 @@
  "s859c2e7734": "Sändarens firmware",
  "s3f8d3fb444": "tasmota_http = Tasmota (tasmota-ir) av IP. tasmota_mqtt = Tasmota via en MQTT-mäklare. esphome = ESPHome klimat_ir. http/mqtt = annan blaster med dina egna mallar.",
  "@s3f8d3fb444": {
+  "x-mt": true
+ },
+ "s4fb133b1c8": "Tasmota (HTTP)",
+ "sdd5d31034c": "Tasmota (MQTT)",
+ "see30b7398b": "ESPHome",
+ "scb2d23e10b": "Anpassad HTTP",
+ "@scb2d23e10b": {
+  "x-mt": true
+ },
+ "s5c6c30aac6": "Anpassad MQTT",
+ "@s5c6c30aac6": {
   "x-mt": true
  },
  "s38471ae691": "Blaster adress",
@@ -4671,6 +5170,19 @@
  },
  "s8567c5faa6": "sammanfattning = fullt tillstånd som text. rum = blastarens temperatursensor. Andra = sista skickad inställning.",
  "@s8567c5faa6": {
+  "x-mt": true
+ },
+ "s5d329a0fea": "Sammanfattning",
+ "@s5d329a0fea": {
+  "x-mt": true
+ },
+ "s5db6506824": "Sätt temperatur",
+ "@s5db6506824": {
+  "x-mt": true
+ },
+ "s018d2e08f4": "Fläkt",
+ "s051944392f": "Rumstemperatur",
+ "@s051944392f": {
   "x-mt": true
  },
  "sdd8cd8132c": "Vad man ska ändra",
@@ -4796,7 +5308,6 @@
   "x-mt": true
  },
  "s43c9b88580": "Auto",
- "s018d2e08f4": "Fläkt",
  "s36fb6ba26f": "Modbus TCP",
  "sa70cc38354": "Värd",
  "@sa70cc38354": {
@@ -4826,8 +5337,68 @@
  "@s731c92978b": {
   "x-mt": true
  },
+ "s570f11bec8": "Minsta läsintervall (s)",
+ "@s570f11bec8": {
+  "x-mt": true
+ },
+ "s13e54dbff1": "Samma register läses aldrig oftare, men många kort visar det.",
+ "@s13e54dbff1": {
+  "x-mt": true
+ },
+ "s95d4c6dd5b": "Paus mellan förfrågningar (ms)",
+ "@s95d4c6dd5b": {
+  "x-mt": true
+ },
+ "s77b6667fdb": "Vänta efter anslutning (ms)",
+ "@s77b6667fdb": {
+  "x-mt": true
+ },
+ "sf4b0409574": "Batch intilliggande läser",
+ "@sf4b0409574": {
+  "x-mt": true
+ },
+ "sc011aad1a9": "Max register per läs",
+ "@sc011aad1a9": {
+  "x-mt": true
+ },
+ "s942a690567": "Lockout paus vid första (s)",
+ "@s942a690567": {
+  "x-mt": true
+ },
+ "s3746551251": "När enheten inte svarar lämnas den ensam ett tag. Pausen fördubblas upp till maximum.",
+ "@s3746551251": {
+  "x-mt": true
+ },
+ "sf71d800450": "Lockout paus på de flesta (s)",
+ "@sf71d800450": {
+  "x-mt": true
+ },
+ "sbce68f8691": "Stäng anslutningen efter ett fel",
+ "@sbce68f8691": {
+  "x-mt": true
+ },
+ "sf96bb0c03d": "Försök på ett tomt svar",
+ "@sf96bb0c03d": {
+  "x-mt": true
+ },
  "s943b8b6bf3": "Registrera tabell",
  "@s943b8b6bf3": {
+  "x-mt": true
+ },
+ "s8283ed1c89": "Innehavsregister (4x)",
+ "@s8283ed1c89": {
+  "x-mt": true
+ },
+ "s94cf36d710": "Coil (0x)",
+ "@s94cf36d710": {
+  "x-mt": true
+ },
+ "sfb6d4a8639": "Ingångsregister (3x)",
+ "@sfb6d4a8639": {
+  "x-mt": true
+ },
+ "s0bbedf814a": "Diskret ingång (1x)",
+ "@s0bbedf814a": {
   "x-mt": true
  },
  "sf51ad986eb": "Adress (0-baserad)",
@@ -4896,6 +5467,14 @@
  },
  "sddbea594a4": "senaste = det senaste meddelandet, log = flera senaste meddelanden (nyaste först).",
  "@sddbea594a4": {
+  "x-mt": true
+ },
+ "s580abde883": "Senaste meddelandet",
+ "@s580abde883": {
+  "x-mt": true
+ },
+ "sf6455b6631": "Meddelandelogg",
+ "@sf6455b6631": {
   "x-mt": true
  },
  "s2bd0e69d44": "Ämne (valfritt)",
@@ -5145,16 +5724,24 @@
  "@sed9788d6dc": {
   "x-mt": true
  },
- "sb23114b65d": "Billigast på {p0}:00",
- "@sb23114b65d": {
-  "x-mt": true
- },
  "sd39874fbe2": "{p0} enheter på",
  "@sd39874fbe2": {
   "x-mt": true
  },
  "sbe208615d0": "{p0} inte svara",
  "@sbe208615d0": {
+  "x-mt": true
+ },
+ "s589eb1bcd3": "Home Assistant (exempel)",
+ "@s589eb1bcd3": {
+  "x-mt": true
+ },
+ "sc4fdb87cd7": "Kamera (exempel)",
+ "@sc4fdb87cd7": {
+  "x-mt": true
+ },
+ "sd50566a706": "Ventilationsenhet (exempel)",
+ "@sd50566a706": {
   "x-mt": true
  },
  "s4b4fd14aaf": "Gård",
@@ -5182,6 +5769,10 @@
  },
  "s4cac4725b8": "Gruppens enheter svarar inte",
  "@s4cac4725b8": {
+  "x-mt": true
+ },
+ "s13a91fe322": "Enheten att styra saknas",
+ "@s13a91fe322": {
   "x-mt": true
  },
  "s7e461faf91": "Hitta det i routerns enhetslista eller enhetsappen. Du kan också trycka på \"Söknätverk\".",
@@ -5248,16 +5839,12 @@
  "@sc130e073ba": {
   "x-mt": true
  },
- "s16be1831d6": "Endast för enheter med energimätning.",
- "@s16be1831d6": {
+ "s70d8cb97e6": "Reläer",
+ "@s70d8cb97e6": {
   "x-mt": true
  },
- "s8890d26ef2": "Relä nummer",
- "@s8890d26ef2": {
-  "x-mt": true
- },
- "s7e6d21d466": "För multireläenheter 1, 2, 3...",
- "@s7e6d21d466": {
+ "s7a4c459c3a": "Tomma = varje relä enhetsrapporter (upptäcks automatiskt). Smal det: \"1\", \"1,2,4\", \"1-4\" eller \"alla\".",
+ "@s7a4c459c3a": {
   "x-mt": true
  },
  "s5f1e4a036e": "Web lösenord",
@@ -5519,19 +6106,6 @@
  "@sef4f509f9f": {
   "x-mt": true
  },
- "s5e8c8e4273": "Utseende",
- "s9f6d9ce1bf": "Trenden visar idag och i morgon som en linje med nuläget.",
- "@s9f6d9ce1bf": {
-  "x-mt": true
- },
- "s51f1184efb": "Trend och barer (2 kort)",
- "@s51f1184efb": {
-  "x-mt": true
- },
- "sa77af9de19": "Prisutveckling (linje, nu linje)",
- "@sa77af9de19": {
-  "x-mt": true
- },
  "sf3a8631d14": "Från din faktura inkl. moms. 0 = endast energi.",
  "@sf3a8631d14": {
   "x-mt": true
@@ -5544,13 +6118,56 @@
  "@s49dfca65a3": {
   "x-mt": true
  },
- "s9772b9b5c4": "Elpristrend",
- "s9af9526395": "Ventilationsenhet (Modbus TCP)",
- "@s9af9526395": {
+ "sfb2b7ccc87": "Pris trend",
+ "@sfb2b7ccc87": {
   "x-mt": true
  },
- "s29dc0baf55": "Temperaturer och fläkthastighet. Registrera förinställningar är exempel - verifiera med din handbok.",
- "@s29dc0baf55": {
+ "s4790164c94": "Idag och imorgon diagram",
+ "@s4790164c94": {
+  "x-mt": true
+ },
+ "sd408a5dbe9": "Billigaste timmar",
+ "@sd408a5dbe9": {
+  "x-mt": true
+ },
+ "s7ba83434d1": "Airthings (radon och luftkvalitet, moln)",
+ "@s7ba83434d1": {
+  "x-mt": true
+ },
+ "s39e8df2552": "View Plus, View Radon, Hub och varje bildskärm på ditt konto. Wi-Fi-modellerna har ingen lokal API, så värdena kommer från den officiella Airthings API med dina egna referenser.",
+ "@s39e8df2552": {
+  "x-mt": true
+ },
+ "sbafe369760": "1) Öppen vy.airthings.com och logga in med ditt Airthings-konto. 2) Integrationer → API → Skapa klient (\"Nya API-klient\"). 3) Namn det t.ex. Molaplan, välj Flow-typ \"Klientuppgifter\" och aktivera det. 4) Kopiera Klient-ID här.",
+ "@sbafe369760": {
+  "x-mt": true
+ },
+ "sb6a852ab13": "5) Kopiera kundens hemlighet från samma vy. Den lagras endast på den här enheten och krypteras i ditt konto.",
+ "@sb6a852ab13": {
+  "x-mt": true
+ },
+ "sc76f519144": "Wave, Wave Plus, Wave Mini och Wave Radon använder endast Bluetooth. Läs av en Android-enhet eller hembron (t.ex. en väggtablett) inom cirka 10 m.",
+ "@sc76f519144": {
+  "x-mt": true
+ },
+ "sff5f25f96f": "På baksidan av bildskärmen (10 siffror). Början berättar modellen: 2930 = Wave Plus, 2950 = Wave Radon, 2920 = Wave Mini.",
+ "@sff5f25f96f": {
+  "x-mt": true
+ },
+ "s8de2de9178": "Läs igenom hembron",
+ "@s8de2de9178": {
+  "x-mt": true
+ },
+ "s5e605a88ef": "När hembron (t.ex. en väggtablett nära bildskärmen) läser Bluetooth-läsningen.",
+ "@s5e605a88ef": {
+  "x-mt": true
+ },
+ "s3330126b01": "Ventilationsenhet eller värmepump (Modbus TCP)",
+ "@s3330126b01": {
+  "x-mt": true
+ },
+ "sc16ab2836c": "Temperaturer, fläkthastighet och inställningar. Ready registerkartor för varumärken (Airfi, Vallox, Enervent, Swegon, Flexit, Ilto, Nilan, NIBE, Thermia) - verifiera med din manual.",
+ "@sc16ab2836c": {
   "x-mt": true
  },
  "sb75966bb58": "Enhet eller gateway IP",
@@ -5658,10 +6275,6 @@
  "@s8231329360": {
   "x-mt": true
  },
- "sd82d127f05": "Klistra på samma URL dina genvägsposter kommandon till (t.ex. https://ntfy.sh/kv-cmd-...). Ämnet ensam fungerar också.",
- "@sd82d127f05": {
-  "x-mt": true
- },
  "s1b3bbae234": "Endast om hemenheten svarar på ett annat ämne.Empty = samma ämne ignoreras vårt eget kommando.",
  "@s1b3bbae234": {
   "x-mt": true
@@ -5712,176 +6325,12 @@
  "@s3a38b97f7b": {
   "x-mt": true
  },
- "s7e552bd146": "Det finns en enhet på denna adress, men det accepterar inte Modbus på denna port. Slå på Modbus TCP i enhetsinställningarna (ofta under nätverk / Modbus / fjärrkontroll) och kontrollera hamnen (vanligtvis 502). Du kan också trycka på \"Scan Modbus\". Om enheten fungerar i Home Assistant, kan det redan ha en anslutning (många tillåter bara en) - läs värdena genom HA.",
- "@s7e552bd146": {
+ "s0ceafaa97c": "Energi energi",
+ "@s0ceafaa97c": {
   "x-mt": true
  },
- "s0ebc613f20": "Enheten är i lockout, retrying på {p0}",
- "@s0ebc613f20": {
-  "x-mt": true
- },
- "s317b2b59af": "Enheten svarade inte, så det lämnas ensam ett tag - många enheter låser ut klienter som omröstar för ofta. Pausen växer från 30 sekunder till 5 minuter. Om enheten redan har en anslutning (t.ex. Home Assistant), läs värdena genom HA. Läsintervallet och pauserna är under Avancerade i anslutningen.",
- "@s317b2b59af": {
-  "x-mt": true
- },
- "s33e09089b2": "Enheten adress saknas",
- "@s33e09089b2": {
-  "x-mt": true
- },
- "s6180bd540e": "Öppna anslutningen och ange enhet IP-adressen eller tryck på \"Scan Modbus\" för att hitta enheten i nätverket.",
- "@s6180bd540e": {
-  "x-mt": true
- },
- "sd73581c910": "Enheten kanske redan har en anslutning",
- "@sd73581c910": {
-  "x-mt": true
- },
- "scee8d982a2": "Enheten släppte Modbus-anslutningen direkt. Många enheter tillåter endast en Modbus TCP-anslutning i taget. Om enheten redan finns i Home Assistant (t.ex. modbus.yaml), läs värdena genom HA.",
- "@scee8d982a2": {
-  "x-mt": true
- },
- "sd63d34bfe9": "Kan inte läsa YAML: {p0}",
- "@sd63d34bfe9": {
-  "x-mt": true
- },
- "sc5c9e5e2fc": "\"{p0}\" använder en seriell port (USB / RS485) - du behöver en RS485 → TCP gateway.",
- "@sc5c9e5e2fc": {
-  "x-mt": true
- },
- "s69135546c8": "{p0} – mål",
- "@s69135546c8": {
-  "x-mt": true
- },
- "sd88c13e972": "\"{p0}\" var hoppade - lägg till dem för hand.",
- "@sd88c13e972": {
-  "x-mt": true
- },
- "sceebf690e3": "Inget Modbus TCP-nav som finns i YAML (modbus: ... typ: tcp, värd: ...).",
- "@sceebf690e3": {
-  "x-mt": true
- },
- "s9be06479ff": "Lockout",
- "@s9be06479ff": {
-  "x-mt": true
- },
- "s613938b0b3": "Ingen adress",
- "@s613938b0b3": {
-  "x-mt": true
- },
- "s252d8628c7": "Upptagen (HA?)",
- "@s252d8628c7": {
-  "x-mt": true
- },
- "sa846059775": "Home Assistant läser redan den här enheten",
- "@sa846059775": {
-  "x-mt": true
- },
- "s18a1844439": "Enheten kanske redan har en anslutning (t.ex. Home Assistant) - läs värdena genom HA. Många enheter tillåter endast en Modbus TCP-anslutning.",
- "@s18a1844439": {
-  "x-mt": true
- },
- "sa29df4fc6b": "{p0} Modbus värden som finns i Home Assistant. Många enheter tillåter endast en Modbus TCP-anslutning, så läsning genom HA är det säkraste sättet.",
- "@sa29df4fc6b": {
-  "x-mt": true
- },
- "sb8c40d2c20": "Användning via Home Assistant",
- "@sb8c40d2c20": {
-  "x-mt": true
- },
- "s810014ca02": "Importera en hemassistent modbus.yaml",
- "@s810014ca02": {
-  "x-mt": true
- },
- "sfbf34ee532": "Paste modbus.yaml (eller modbus: en del av konfiguration.yaml). Anslutningen och korten använder samma register och timing.",
- "@sfbf34ee532": {
-  "x-mt": true
- },
- "s2d4fbaade1": "{p0} anslutning(s), {p1} kort",
- "@s2d4fbaade1": {
-  "x-mt": true
- },
- "s108e078c0c": "Modbus-enhet som importeras från Home Assistant",
- "@s108e078c0c": {
-  "x-mt": true
- },
- "s28d9c4c7dc": "{p0} förinställd",
- "@s28d9c4c7dc": {
-  "x-mt": true
- },
- "sc6cde0d476": "från dess tillkännagivande",
- "@sc6cde0d476": {
-  "x-mt": true
- },
- "s166da70285": "Enheten accepterar inte en anslutning",
- "@s166da70285": {
-  "x-mt": true
- },
- "sbe97262d91": "Enheten kanske redan har en anslutning (t.ex. Home Assistant) - läs värdena genom HA. Många enheter tillåter endast en Modbus TCP-anslutning.",
- "@sbe97262d91": {
-  "x-mt": true
- },
- "sa0bd9ad5b1": "Exempelkamera - lägg till din egen med Add-enhet",
- "@sa0bd9ad5b1": {
-  "x-mt": true
- },
- "sc8327738b3": "Lägg till en exempelvy (kamera, larm, lampor, ventilation). Exempelenheterna ansluter aldrig någonstans - lägg till din egen med Lägg till enhet.",
- "@sc8327738b3": {
-  "x-mt": true
- },
- "s570f11bec8": "Minsta läsintervall (s)",
- "@s570f11bec8": {
-  "x-mt": true
- },
- "s13e54dbff1": "Samma register läses aldrig oftare, men många kort visar det.",
- "@s13e54dbff1": {
-  "x-mt": true
- },
- "s95d4c6dd5b": "Paus mellan förfrågningar (ms)",
- "@s95d4c6dd5b": {
-  "x-mt": true
- },
- "s77b6667fdb": "Vänta efter anslutning (ms)",
- "@s77b6667fdb": {
-  "x-mt": true
- },
- "sf4b0409574": "Batch intilliggande läser",
- "@sf4b0409574": {
-  "x-mt": true
- },
- "sc011aad1a9": "Max register per läs",
- "@sc011aad1a9": {
-  "x-mt": true
- },
- "s942a690567": "Lockout paus vid första (s)",
- "@s942a690567": {
-  "x-mt": true
- },
- "s3746551251": "När enheten inte svarar lämnas den ensam ett tag. Pausen fördubblas upp till maximum.",
- "@s3746551251": {
-  "x-mt": true
- },
- "sf71d800450": "Lockout paus på de flesta (s)",
- "@sf71d800450": {
-  "x-mt": true
- },
- "sbce68f8691": "Stäng anslutningen efter ett fel",
- "@sbce68f8691": {
-  "x-mt": true
- },
- "sf96bb0c03d": "Försök på ett tomt svar",
- "@sf96bb0c03d": {
-  "x-mt": true
- },
- "s589eb1bcd3": "Home Assistant (exempel)",
- "@s589eb1bcd3": {
-  "x-mt": true
- },
- "sc4fdb87cd7": "Kamera (exempel)",
- "@sc4fdb87cd7": {
-  "x-mt": true
- },
- "sd50566a706": "Ventilationsenhet (exempel)",
- "@sd50566a706": {
+ "s206ac44298": "Klistra på samma URL dina genvägsposter kommandon till (t.ex. https://ntfy.sh/oma-aihe). Ämnet ensam fungerar också.",
+ "@s206ac44298": {
   "x-mt": true
  }
 }

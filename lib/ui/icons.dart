@@ -14,6 +14,7 @@ const tileIcons = <String, IconData>{
   'water': Icons.water_drop_outlined,
   'humidity': Icons.opacity,
   'bolt': Icons.bolt,
+  'savings': Icons.savings_outlined,
   'home': Icons.home_outlined,
   'garage': Icons.garage_outlined,
   'door': Icons.door_front_door_outlined,
@@ -39,6 +40,9 @@ const tileIcons = <String, IconData>{
   'scene': Icons.auto_awesome_outlined,
   'script': Icons.code,
   'group': Icons.workspaces_outline,
+  'radon': Icons.warning_amber_rounded,
+  'co2': Icons.co2,
+  'air_quality': Icons.air_outlined,
 };
 
 /// Names shown in the icon picker (fi, en).
@@ -54,6 +58,7 @@ const tileIconLabels = <String, (String, String)>{
   'water': ('Vesi', 'Water'),
   'humidity': ('Kosteus', 'Humidity'),
   'bolt': ('Sähkö / teho', 'Electricity / power'),
+  'savings': ('Säästö / halvin', 'Savings / cheapest'),
   'home': ('Koti', 'Home'),
   'garage': ('Autotalli', 'Garage'),
   'door': ('Ovi', 'Door'),
@@ -79,6 +84,9 @@ const tileIconLabels = <String, (String, String)>{
   'scene': ('Tilanne', 'Scene'),
   'script': ('Skripti', 'Script'),
   'group': ('Ryhmä', 'Group'),
+  'radon': ('Radon', 'Radon'),
+  'co2': ('Hiilidioksidi', 'CO₂'),
+  'air_quality': ('Ilmanlaatu', 'Air quality'),
 };
 
 IconData iconFor(TileConfig t) {

@@ -3,6 +3,9 @@
 /// 4 columns at "normal", landscape and PCs more; 2×1 / 2×2 tiles stay proportional.
 library;
 
+import '../l10n/l10n.dart';
+import '../models/models.dart';
+
 class TileGridMetrics {
   const TileGridMetrics(this.cols, this.cell, this.cellH, this.gap);
   final int cols;
@@ -22,6 +25,12 @@ class TileGridMetrics {
     final s = units.clamp(0.5, 8).toDouble();
     return s * cellH + (s - 1) * gap;
   }
+
+  /// t169u: the whole row (what "Koko leveys" uses), whatever the window width.
+  double get rowWidth => width(cols);
+
+  /// Width for half-units [w2] ([fullWidthW2] = the whole row).
+  double widthOf(int w2) => w2 == fullWidthW2 ? rowWidth : width(w2 / 2);
 }
 
 const tileDensities = ['small', 'normal', 'large'];
@@ -40,6 +49,7 @@ TileGridMetrics tileGridFor(double width, String density) {
 
 /// Half-units → "0,5", "1", "1,5" … (decimal point in English).
 String halfLabel(int half, String lang) {
+  if (half == fullWidthW2) return tr(lang, 'Koko leveys', 'Full width');
   final whole = half ~/ 2;
   if (half.isEven) return '$whole';
   final sep = const {'en'}.contains(lang) ? '.' : ',';

@@ -4,7 +4,9 @@ import 'package:material_ui/material_ui.dart';
 
 import '../energy/price_view.dart';
 import '../models/models.dart';
+import '../prices/prices.dart' show tomorrowPendingText;
 import 'app_scope.dart';
+import 'theme.dart';
 
 /// 'Sähkön hinta' tile (t109u), laid out like the reference card: a row of big stats with small
 /// labels below (now · cheapest · average · priciest · instant cost), then today+tomorrow bars
@@ -72,7 +74,8 @@ class _PriceTileBodyState extends State<PriceTileBody> {
     final updated = DateTime.fromMillisecondsSinceEpoch(
       (widget.data['fetched'] as num?)?.toInt() ?? (widget.data['now'] as num?)?.toInt() ?? now.millisecondsSinceEpoch,
     );
-    final hourly = _hourly ?? true;
+    // t168u: 15 min by default wherever the data has it; "Näytä tuntikeskiarvona" → hours.
+    final hourly = _hourly ?? (widget.data['hourly'] == true || priceHourlyOf(st.config));
     final v = PriceView.build(pts, res, now, hourly: hourly);
     final quarter = v.quarter;
     if (v.slots.isEmpty) return Center(child: Text(tx(context, 'Ei hintoja', 'No prices'), style: text.bodySmall));
@@ -102,35 +105,40 @@ class _PriceTileBodyState extends State<PriceTileBody> {
             ? tx(context, 'Kulutus (kWh)', 'Usage (kWh)')
             : '${tx(context, 'Kustannus', 'Cost')} ($perHour)',
         overlay: usage == null ? null : [for (final u in usage) (u.$1, overlay == 'kwh' ? u.$2 : u.$3)],
+        pendingLabel: v.hasTomorrow ? null : tomorrowPendingText(now, lang),
       ),
       child: const SizedBox.expand(),
     );
 
-    Widget stat(String key, String value, String unit, String label, Color? color, {bool big = true}) => Column(
-      key: ValueKey('price-stat-$key'),
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text.rich(
-          TextSpan(
-            children: [
-              TextSpan(
-                text: value,
-                style: (big ? text.headlineSmall : text.titleMedium)?.copyWith(
-                  fontWeight: FontWeight.w700,
-                  color: color,
+    Widget stat(String key, String value, String unit, String label, Color? rawColor, {bool big = true}) {
+      // t162u: price-level colours stay readable on the light theme.
+      final color = rawColor == null ? null : readableAccent(context, rawColor);
+      return Column(
+        key: ValueKey('price-stat-$key'),
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: value,
+                  style: (big ? text.headlineSmall : text.titleMedium)?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: color,
+                  ),
                 ),
-              ),
-              TextSpan(
-                text: ' $unit',
-                style: text.labelMedium?.copyWith(color: color),
-              ),
-            ],
+                TextSpan(
+                  text: ' $unit',
+                  style: text.labelMedium?.copyWith(color: color),
+                ),
+              ],
+            ),
           ),
-        ),
-        Text(label, style: text.labelSmall?.copyWith(color: cs.onSurfaceVariant)),
-      ],
-    );
+          Text(label, style: text.labelSmall?.copyWith(color: cs.onSurfaceVariant)),
+        ],
+      );
+    }
 
     final stats = <Widget>[
       stat(
@@ -318,14 +326,15 @@ class _PriceTileBodyState extends State<PriceTileBody> {
                               selected: overlay == o,
                               onSelected: (s) => setState(() => _overlay = s ? o : 'none'),
                             ),
-                        if (quarter && widget.page)
+                        if (quarter && hourly && widget.page)
                           Text(
                             tx(context, 'Luvut tuntikeskiarvoina', 'Figures are hourly averages'),
                             style: text.labelSmall?.copyWith(color: cs.onSurfaceVariant),
                           ),
                         if (!v.hasTomorrow)
                           Text(
-                            tx(context, 'Huominen n. klo 14 jälkeen', 'Tomorrow after ~14:00'),
+                            tomorrowPendingText(now, lang),
+                            key: const ValueKey('price-tomorrow-note'),
                             style: text.labelSmall?.copyWith(color: cs.onSurfaceVariant),
                           ),
                       ],
@@ -376,9 +385,14 @@ class PriceBarsPainter extends CustomPainter {
     this.overlay,
     this.from,
     this.to,
+    this.pendingLabel,
   });
   final PriceView v;
   final ColorScheme cs;
+
+  /// t171u: tomorrow not published yet – the chart reaches to tomorrow's end, that part
+  /// dimmed and hatched with this label ("Huomisen hinnat julkaistaan n. klo 14").
+  final String? pendingLabel;
   final bool axes;
   final String nowLabel;
   final String lang;
@@ -392,6 +406,9 @@ class PriceBarsPainter extends CustomPainter {
 
   /// Where the Now line was drawn (for tests): x in px and the time it stands for.
   double? debugNowX;
+
+  /// The "not published yet" label drawn in the last paint (tests).
+  static String? debugPendingLabel;
 
   /// Pixel distance between y gridlines in the last paint (tests: labels never overlap).
   double? debugGridGap;
@@ -433,7 +450,10 @@ class PriceBarsPainter extends CustomPainter {
     final bottom = axes ? 30.0 : 13.0;
     final w = size.width - left - right, h = size.height - top - bottom;
     if (w <= 0 || h <= 4) return;
-    final t0 = from ?? win.first.$1.start, t1 = to ?? win.last.$1.end;
+    final t0 = from ?? win.first.$1.start;
+    final midnight0 = DateTime(v.now.year, v.now.month, v.now.day + 1);
+    final pending = pendingLabel != null && from == null && !v.hasTomorrow && !win.last.$1.end.isAfter(midnight0);
+    final t1 = to ?? (pending ? DateTime(v.now.year, v.now.month, v.now.day + 2) : win.last.$1.end);
     final span = t1.difference(t0).inSeconds.toDouble();
     double x(DateTime t) => left + w * (t.difference(t0).inSeconds / span).clamp(0.0, 1.0);
     final (lo, hi, step) = priceAxis(
@@ -470,10 +490,34 @@ class PriceBarsPainter extends CustomPainter {
     // Tomorrow: a faint band instead of a hard midnight line.
     final midnight = DateTime(t0.year, t0.month, t0.day + 1);
     if (midnight.isAfter(t0) && midnight.isBefore(t1)) {
-      canvas.drawRect(
-        Rect.fromLTRB(x(midnight), top, left + w, top + h),
-        Paint()..color = cs.onSurface.withValues(alpha: 0.025),
-      );
+      final band = Rect.fromLTRB(x(midnight), top, left + w, top + h);
+      canvas.drawRect(band, Paint()..color = cs.onSurface.withValues(alpha: pending ? 0.06 : 0.025));
+      if (pending) {
+        // t171u: not published yet – hatched, with the publication time.
+        debugPendingLabel = pendingLabel;
+        final hp = Paint()
+          ..color = cs.onSurfaceVariant.withValues(alpha: 0.22)
+          ..strokeWidth = 1;
+        canvas.save();
+        canvas.clipRect(band);
+        for (var hx = band.left - band.height; hx < band.right; hx += 8) {
+          canvas.drawLine(Offset(hx, band.bottom), Offset(hx + band.height, band.top), hp);
+        }
+        canvas.restore();
+        if (band.width > 60) {
+          final tp = TextPainter(
+            text: TextSpan(
+              text: pendingLabel,
+              style: TextStyle(fontSize: 10.5, color: labelColor, fontFamily: fontFamily),
+            ),
+            textDirection: TextDirection.ltr,
+            textAlign: TextAlign.center,
+            maxLines: 3,
+            ellipsis: '…',
+          )..layout(maxWidth: band.width - 8);
+          tp.paint(canvas, Offset(band.center.dx - tp.width / 2, band.center.dy - tp.height / 2));
+        }
+      }
     }
 
     // Bars: rounded tops, no gaps for 15 min, a hairline between hours.

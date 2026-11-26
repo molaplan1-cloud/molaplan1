@@ -11,6 +11,7 @@ import '../devices/climate.dart';
 import '../models/models.dart';
 import 'app_scope.dart';
 import 'error_box.dart';
+import 'theme.dart';
 
 const heatColor = Color(0xFFE8833A);
 const coolColor = Color(0xFF4FA3E0);
@@ -194,7 +195,7 @@ class _ClimateTileState extends State<ClimateTile> {
     final text = Theme.of(context).textTheme;
     final s = _s;
     final activity = s?.activity ?? 'idle';
-    final col = climateColor(activity, cs);
+    final col = readableAccent(context, climateColor(activity, cs));
     final target = _pending ?? s?.target;
     return Card(
       color: activity == 'heating' || activity == 'cooling'

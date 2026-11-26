@@ -1,0 +1,8 @@
+{"em:0":{"id":0,"a_current":2.1,"a_voltage":230.1,"a_act_power":420.5,"a_aprt_power":450,"a_pf":0.93,
+         "b_current":0.5,"b_voltage":231.0,"b_act_power":95.0,"b_aprt_power":110,"b_pf":0.86,
+         "c_current":1.0,"c_voltage":229.5,"c_act_power":-180.0,"c_aprt_power":200,"c_pf":-0.9,
+         "n_current":null,"total_current":3.6,"total_act_power":335.5,"total_aprt_power":760},
+ "emdata:0":{"id":0,"a_total_act_energy":10500.0,"a_total_act_ret_energy":0.0,"b_total_act_energy":2500.0,
+             "b_total_act_ret_energy":0.0,"c_total_act_energy":800.0,"c_total_act_ret_energy":3200.0,
+             "total_act":13800.0,"total_act_ret":3200.0},
+ "sys":{"mac":"A0B1C2D3E4F6"}}

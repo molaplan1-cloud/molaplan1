@@ -12,11 +12,13 @@ String plainNotes(String md) {
   final lines = md
       .replaceAll('\r', '')
       .split('\n')
-      .map((l) => l
-          .replaceFirst(RegExp(r'^\s{0,3}#{1,6}\s*'), '')
-          .replaceFirst(RegExp(r'^\s*[-*+]\s+'), '• ')
-          .replaceAll(RegExp(r'\*\*|__|`'), '')
-          .replaceAllMapped(RegExp(r'\[([^\]]+)\]\([^)]+\)'), (m) => m[1]!))
+      .map(
+        (l) => l
+            .replaceFirst(RegExp(r'^\s{0,3}#{1,6}\s*'), '')
+            .replaceFirst(RegExp(r'^\s*[-*+]\s+'), '• ')
+            .replaceAll(RegExp(r'\*\*|__|`'), '')
+            .replaceAllMapped(RegExp(r'\[([^\]]+)\]\([^)]+\)'), (m) => m[1]!),
+      )
       .toList();
   return lines.join('\n').replaceAll(RegExp(r'\n{3,}'), '\n\n').trim();
 }
@@ -39,7 +41,10 @@ Future<void> manualUpdateCheck(BuildContext context) async {
     case CheckOutcome.newer:
       await showUpdateDialog(context, r.release!, manual: true);
     case CheckOutcome.upToDate:
-      showSnack(context, tx(context, 'Sinulla on uusin versio ($appVersion).', 'You have the latest version ($appVersion).'));
+      showSnack(
+        context,
+        tx(context, 'Sinulla on uusin versio ($appVersion).', 'You have the latest version ($appVersion).'),
+      );
     case CheckOutcome.unavailable:
       showSnack(
         context,
@@ -143,16 +148,29 @@ Future<void> runUpdate(BuildContext context, ReleaseInfo r) async {
       context: context,
       builder: (c) => AlertDialog(
         icon: const Icon(Icons.error_outline, size: 40),
-        title: Text(bad ? tx(c, 'Lataus oli viallinen', 'The download was corrupted') : tx(c, 'Lataus ei onnistunut', 'Download failed')),
+        title: Text(
+          bad
+              ? tx(c, 'Lataus oli viallinen', 'The download was corrupted')
+              : tx(c, 'Lataus ei onnistunut', 'Download failed'),
+        ),
         content: Text(
           bad
-              ? tx(c, 'Tiedoston tarkistussumma ei täsmännyt, joten mitään ei asennettu. Yritä hetken päästä uudelleen.',
-                  'The file checksum did not match, so nothing was installed. Please try again in a moment.')
-              : tx(c, 'Tarkista nettiyhteys ja yritä uudelleen. Voit myös ladata päivityksen julkaisusivulta.',
-                  'Check the internet connection and try again. You can also download the update from the release page.'),
+              ? tx(
+                  c,
+                  'Tiedoston tarkistussumma ei täsmännyt, joten mitään ei asennettu. Yritä hetken päästä uudelleen.',
+                  'The file checksum did not match, so nothing was installed. Please try again in a moment.',
+                )
+              : tx(
+                  c,
+                  'Tarkista nettiyhteys ja yritä uudelleen. Voit myös ladata päivityksen julkaisusivulta.',
+                  'Check the internet connection and try again. You can also download the update from the release page.',
+                ),
         ),
         actions: [
-          TextButton(onPressed: () => p.openUrl(r.pageUrl), child: Text(tx(c, 'Avaa julkaisusivu', 'Open release page'))),
+          TextButton(
+            onPressed: () => p.openUrl(r.pageUrl),
+            child: Text(tx(c, 'Avaa julkaisusivu', 'Open release page')),
+          ),
           FilledButton(onPressed: () => Navigator.pop(c), child: const Text('OK')),
         ],
       ),
@@ -237,7 +255,11 @@ class _ProgressDialog extends StatelessWidget {
     return PopScope(
       canPop: false,
       child: AlertDialog(
-        title: Text(verifying ? tx(context, 'Tarkistetaan…', 'Verifying…') : tx(context, 'Ladataan päivitystä…', 'Downloading update…')),
+        title: Text(
+          verifying
+              ? tx(context, 'Tarkistetaan…', 'Verifying…')
+              : tx(context, 'Ladataan päivitystä…', 'Downloading update…'),
+        ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -271,8 +293,11 @@ class UpdateBanner extends StatelessWidget {
             const SizedBox(width: 12),
             Expanded(
               child: Text(
-                tx(context, 'Molaplan ${r.version} on saatavilla. Silta toimii normaalisti.',
-                    'Molaplan ${r.version} is available. The bridge keeps working.'),
+                tx(
+                  context,
+                  'Molaplan ${r.version} on saatavilla. Silta toimii normaalisti.',
+                  'Molaplan ${r.version} is available. The bridge keeps working.',
+                ),
                 style: TextStyle(color: cs.onSecondaryContainer),
               ),
             ),

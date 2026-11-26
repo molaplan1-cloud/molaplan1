@@ -386,7 +386,9 @@ class _AccountPageState extends State<AccountPage> {
       case _Mode.code:
         return [
           Text(
-            widget.startWithCode ? t('Luo tili tai kirjaudu', 'Create an account or sign in') : t('Kirjaudu koodilla', 'Sign in with a code'),
+            widget.startWithCode
+                ? t('Luo tili tai kirjaudu', 'Create an account or sign in')
+                : t('Kirjaudu koodilla', 'Sign in with a code'),
             style: text.headlineSmall,
           ),
           const SizedBox(height: 8),
@@ -436,7 +438,9 @@ class _AccountPageState extends State<AccountPage> {
           ],
           TextButton(
             onPressed: busy ? null : () => _go(_Mode.signIn),
-            child: Text(widget.startWithCode ? t('Kirjaudu salasanalla', 'Sign in with a password') : t('Takaisin', 'Back')),
+            child: Text(
+              widget.startWithCode ? t('Kirjaudu salasanalla', 'Sign in with a password') : t('Takaisin', 'Back'),
+            ),
           ),
         ];
       case _Mode.forgot:
@@ -543,9 +547,7 @@ class _AccountPageState extends State<AccountPage> {
           key: const ValueKey('acc-unlock-password'),
           controller: _unlock,
           obscureText: true,
-          decoration: InputDecoration(
-            labelText: t('Tilin salasana', 'Account password'),
-          ),
+          decoration: InputDecoration(labelText: t('Tilin salasana', 'Account password')),
         ),
         _big(
           const ValueKey('acc-unlock'),

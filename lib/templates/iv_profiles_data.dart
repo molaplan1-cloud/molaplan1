@@ -597,6 +597,313 @@ const ivProfilesJson = r'''
     "unit": "°C"
    }
   ]
+ },
+ {
+  "id": "nibe_s",
+  "brand": "NIBE",
+  "model": "NIBE S1155 / S1255 (Modbus TCP, M12676EN)",
+  "verified": true,
+  "src": "https://www.nibe.eu/download/18.3db69dc1795e0d992c5722/1622634529178/Modbus%20S-series%20EN%20M12676EN-1.pdf",
+  "tcp": {
+   "port": 502,
+   "unit": 1
+  },
+  "offset": 0,
+  "kind": "heatpump",
+  "notes": [
+   "Virallinen NIBE M12676EN. Modbus TCP päälle valikosta 7.5.9, portti 502. Lukurekisterit FC04, kerroin 10 (×0,1 °C).",
+   "SMO S40, VVM S320/S325 ja F2120 käyttävät eri numeroita – tarkista oman mallisi lista (valikko 7.5.9 → vie USB:lle)."
+  ],
+  "conn": {
+   "minIntervalS": 15,
+   "requestDelayMs": 100
+  },
+  "regs": [
+   {
+    "key": "temperature_out",
+    "name": "Ulkolämpötila (BT1)",
+    "fn": "ir",
+    "a": 1,
+    "t": "s16",
+    "s": 0.1,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "hp_supply",
+    "name": "Menovesi (BT2)",
+    "fn": "ir",
+    "a": 5,
+    "t": "s16",
+    "s": 0.1,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "hp_return",
+    "name": "Paluuvesi (BT3)",
+    "fn": "ir",
+    "a": 7,
+    "t": "s16",
+    "s": 0.1,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "hp_dhw_top",
+    "name": "Käyttövesi ylä (BT7)",
+    "fn": "ir",
+    "a": 8,
+    "t": "s16",
+    "s": 0.1,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "hp_dhw_charge",
+    "name": "Käyttöveden lataus (BT6)",
+    "fn": "ir",
+    "a": 9,
+    "t": "s16",
+    "s": 0.1,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "hp_brine_in",
+    "name": "Keruuliuos sisään (BT10)",
+    "fn": "ir",
+    "a": 10,
+    "t": "s16",
+    "s": 0.1,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "hp_brine_out",
+    "name": "Keruuliuos ulos (BT11)",
+    "fn": "ir",
+    "a": 11,
+    "t": "s16",
+    "s": 0.1,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "hp_room",
+    "name": "Huonelämpötila (BT50)",
+    "fn": "ir",
+    "a": 26,
+    "t": "s16",
+    "s": 0.1,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   }
+  ]
+ },
+ {
+  "id": "thermia_genesis",
+  "brand": "Thermia",
+  "model": "Thermia Genesis: Atlas, Calibra, Diplomat Inverter (Modbus 17.1)",
+  "verified": true,
+  "src": "https://www.geotherma.be/wp-content/uploads/2026/02/Modbus-protocol-for-Genesis-platform-17.1-Calibra.pdf",
+  "tcp": {
+   "port": 502,
+   "unit": 1
+  },
+  "offset": 0,
+  "kind": "heatpump",
+  "notes": [
+   "Virallinen Thermia Genesis Modbus 17.1. Modbus TCP: Asetukset / BMS, portti 502; unit id:llä ei ole väliä TCP:llä.",
+   "Lämpötilat kertoimella 100 (×0,01 °C). Osoitteet ilman 30001-siirtymää (13 = 30014)."
+  ],
+  "conn": {
+   "minIntervalS": 15,
+   "requestDelayMs": 100
+  },
+  "regs": [
+   {
+    "key": "temperature_out",
+    "name": "Ulkolämpötila",
+    "fn": "ir",
+    "a": 13,
+    "t": "s16",
+    "s": 0.01,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "hp_supply",
+    "name": "Menovesi (järjestelmä)",
+    "fn": "ir",
+    "a": 12,
+    "t": "s16",
+    "s": 0.01,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "hp_cond_out",
+    "name": "Lauhdutin ulos",
+    "fn": "ir",
+    "a": 9,
+    "t": "s16",
+    "s": 0.01,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "hp_cond_in",
+    "name": "Lauhdutin sisään",
+    "fn": "ir",
+    "a": 8,
+    "t": "s16",
+    "s": 0.01,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "hp_brine_in",
+    "name": "Keruuliuos sisään",
+    "fn": "ir",
+    "a": 10,
+    "t": "s16",
+    "s": 0.01,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "hp_brine_out",
+    "name": "Keruuliuos ulos",
+    "fn": "ir",
+    "a": 11,
+    "t": "s16",
+    "s": 0.01,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "hp_dhw_top",
+    "name": "Käyttövesi ylä",
+    "fn": "ir",
+    "a": 15,
+    "t": "s16",
+    "s": 0.01,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "hp_discharge",
+    "name": "Kuumakaasu",
+    "fn": "ir",
+    "a": 7,
+    "t": "s16",
+    "s": 0.01,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   }
+  ]
+ },
+ {
+  "id": "nilan_cts602",
+  "brand": "Nilan",
+  "model": "Nilan CTS602 (HMI350T, Modbus versio 23) RS485-yhdyskäytävän kautta",
+  "verified": true,
+  "src": "https://www.en.nilan.dk/Files/Files/Engelsk/Downloads/7.%20Modbus%20-%20BACnet/CTS602_w_HMI350T_Modbus.pdf",
+  "offset": 0,
+  "kind": "ventilation",
+  "notes": [
+   "Virallinen Nilan 52173104 (rev. 22.11.2023). CTS602 on RS485 (19200 8E1, osoite oletuksena 30): tarvitset RS485 → Modbus TCP -yhdyskäytävän.",
+   "Lämpötilat ×0,01 °C. Laite ei tue FC6:ta (kirjoitus vain FC16), joten esiasetus on vain luku."
+  ],
+  "conn": {
+   "minIntervalS": 15,
+   "requestDelayMs": 100
+  },
+  "regs": [
+   {
+    "key": "temperature_out",
+    "name": "Ulkoilma (T1)",
+    "fn": "ir",
+    "a": 201,
+    "t": "s16",
+    "s": 0.01,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "iv_supply",
+    "name": "Tuloilma ennen lämmitintä (T2)",
+    "fn": "ir",
+    "a": 202,
+    "t": "s16",
+    "s": 0.01,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "iv_extract",
+    "name": "Poistoilma (T3)",
+    "fn": "ir",
+    "a": 203,
+    "t": "s16",
+    "s": 0.01,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "iv_exhaust",
+    "name": "Jäteilma (T4)",
+    "fn": "ir",
+    "a": 204,
+    "t": "s16",
+    "s": 0.01,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "iv_supply_room",
+    "name": "Tuloilma lämmittimen jälkeen (T7)",
+    "fn": "ir",
+    "a": 207,
+    "t": "s16",
+    "s": 0.01,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "temperature_outdoor",
+    "name": "Ulkolämpötila (T8)",
+    "fn": "ir",
+    "a": 208,
+    "t": "s16",
+    "s": 0.01,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   }
+  ]
  }
 ]
 ''';

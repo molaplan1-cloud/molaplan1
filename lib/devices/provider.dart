@@ -259,7 +259,7 @@ bool isVirtualAdapter(String name) {
       n.contains('vmware') ||
       n.startsWith('docker') ||
       n.startsWith('br-') ||
-      n.startsWith('veth');
+      (n.startsWith('veth') && !n.startsWith('vethernet'));
 }
 
 bool isPrivateIPv4(String ip) {
@@ -347,8 +347,8 @@ Future<Object?> probeJson(HttpClient c, Uri uri, {Duration timeout = const Durat
 
 enum AddressIssue { ok, badFormat, notPrivate, otherSubnet }
 
-/// Checks a typed device address ("192.168.50.172", "http://shelly.local").
-/// [suggestion] is a likely intended address for typos like 191.168.50.172.
+/// Checks a typed device address ("192.168.0.172", "http://shelly.local").
+/// [suggestion] is a likely intended address for typos like 191.168.1.20.
 ({AddressIssue issue, String? suggestion}) checkAddress(String input, List<String> locals) {
   final h = hostOf(input);
   if (h.isEmpty) return (issue: AddressIssue.badFormat, suggestion: null);
@@ -374,7 +374,7 @@ enum AddressIssue { ok, badFormat, notPrivate, otherSubnet }
 }
 
 /// One-line plain-Finnish/English hint for [checkAddress], or null when fine.
-/// t156u: an obviously-placeholder address hint: the detected subnet ("192.168.50.x") or
+/// t156u: an obviously-placeholder address hint: the detected subnet (e.g. "10.0.0.x") or
 /// [fallback] ("192.168.x.x"). Hints are hintText only – never copied into a value.
 String subnetHint(List<String> locals, [String fallback = '192.168.x.x']) {
   for (final l in locals) {

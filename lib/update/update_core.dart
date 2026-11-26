@@ -66,7 +66,13 @@ class ReleaseAsset {
 }
 
 class ReleaseInfo {
-  ReleaseInfo({required this.tag, required this.name, required this.notes, required this.pageUrl, required this.assets});
+  ReleaseInfo({
+    required this.tag,
+    required this.name,
+    required this.notes,
+    required this.pageUrl,
+    required this.assets,
+  });
   final String tag;
   final String name;
   final String notes;

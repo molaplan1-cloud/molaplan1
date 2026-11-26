@@ -114,7 +114,7 @@ void main() {
     expect(migrateSplitClimateTiles(cfg), isFalse);
   });
 
-  test('HA import: sensor + number of one device → one thermostat; climate absorbs its sensors', () {
+  test('HA import: sensor + number → a thermostat control + the sensors as own measurements (t165u)', () {
     HaEntity e(
       String id,
       String name, {
@@ -141,7 +141,16 @@ void main() {
       'c',
       'fi',
     );
-    expect(tiles.map((t) => t.title), ['Glen lattialämmitys', 'Ilmalämpöpumppu', 'Valo']);
+    expect(tiles.map((t) => t.title), [
+      'Glen lattialämmitys',
+      'Glen lattialämmitys lämpötila',
+      'Glen kosteus',
+      'Ilmalämpöpumppu',
+      'ILP lämpötila',
+      'Valo',
+    ]);
+    expect(tiles[1].type, TileType.value);
+    expect(tiles[1].commands, isEmpty);
     expect(tiles[0].read['humidity'], {'entityId': 'sensor.glen_hum'});
     expect(tiles[0].commands.first.spec['service'], 'number.set_value');
   });

@@ -30,9 +30,11 @@ class SonoffProvider extends DeviceProvider {
   @override
   String get en => 'Sonoff';
   @override
-  String get descFi => 'BASIC, MINI, POW, TH, 4CH… DIY-tilassa, Tasmotalla tai ESPHomella. Ruudut tehdään valmiiksi, etänä kotisillan kautta.';
+  String get descFi =>
+      'BASIC, MINI, POW, TH, 4CH… DIY-tilassa, Tasmotalla tai ESPHomella. Ruudut tehdään valmiiksi, etänä kotisillan kautta.';
   @override
-  String get descEn => 'BASIC, MINI, POW, TH, 4CH… in DIY mode, with Tasmota or ESPHome. Tiles are made for you; remote use via the home bridge.';
+  String get descEn =>
+      'BASIC, MINI, POW, TH, 4CH… in DIY mode, with Tasmota or ESPHome. Tiles are made for you; remote use via the home bridge.';
   @override
   String get category => 'power';
   @override

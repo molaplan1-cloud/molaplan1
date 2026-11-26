@@ -1,5 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 
+import '../automation/engine.dart' show sunTimes;
+
 const seed = Color(0xFF2EC4B6);
 
 ThemeData molaplanTheme({Brightness brightness = Brightness.dark}) {
@@ -80,12 +82,20 @@ ThemeData molaplanTheme({Brightness brightness = Brightness.dark}) {
     ),
     // Popups always set BOTH background and text colour, so they stay readable in light and dark themes.
     // (A text style without a colour here used to give pale text on a light snackbar.)
+    // t163u: notifications follow the theme – a dark surface in dark mode, a light one in light
+    // mode – floating, rounded, max 480 px (placement in snackPlacement), accent-coloured action.
     snackBarTheme: SnackBarThemeData(
-      backgroundColor: cs.inverseSurface,
-      contentTextStyle: TextStyle(fontSize: 15.5, color: cs.onInverseSurface, height: 1.3),
-      actionTextColor: cs.inversePrimary,
-      closeIconColor: cs.onInverseSurface,
+      backgroundColor: cs.surfaceContainerHighest,
+      contentTextStyle: TextStyle(fontSize: 15.5, color: cs.onSurface, height: 1.3),
+      actionTextColor: cs.primary,
+      closeIconColor: cs.onSurfaceVariant,
       behavior: SnackBarBehavior.floating,
+      elevation: 6,
+      insetPadding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(14),
+        side: BorderSide(color: cs.outlineVariant),
+      ),
     ),
     dialogTheme: DialogThemeData(
       backgroundColor: cs.surfaceContainerHigh,
@@ -94,8 +104,8 @@ ThemeData molaplanTheme({Brightness brightness = Brightness.dark}) {
       iconColor: cs.onSurface,
     ),
     bannerTheme: MaterialBannerThemeData(
-      backgroundColor: cs.secondaryContainer,
-      contentTextStyle: text.bodyMedium?.copyWith(color: cs.onSecondaryContainer),
+      backgroundColor: cs.surfaceContainerHighest,
+      contentTextStyle: text.bodyMedium?.copyWith(color: cs.onSurface),
     ),
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: cs.surfaceContainerLow,
@@ -113,3 +123,58 @@ ThemeData molaplanTheme({Brightness brightness = Brightness.dark}) {
     visualDensity: VisualDensity.standard,
   );
 }
+
+/// WCAG 2.1 contrast ratio of two opaque colours (1…21).
+double contrastRatio(Color a, Color b) {
+  final la = a.computeLuminance(), lb = b.computeLuminance();
+  final hi = la > lb ? la : lb, lo = la > lb ? lb : la;
+  return (hi + 0.05) / (lo + 0.05);
+}
+
+/// t162u: [fg] adjusted (same hue, darker on light / lighter on dark backgrounds) until it
+/// reaches [ratio] against [bg] – WCAG AA is 4.5 for text, 3.0 for large text and graphics.
+/// Threshold and price colours keep their meaning but stay readable in both themes.
+Color readableOn(Color fg, Color bg, {double ratio = 4.5}) {
+  final opaque = fg.withValues(alpha: 1);
+  if (contrastRatio(opaque, bg) >= ratio) return fg;
+  final darken = bg.computeLuminance() > 0.4;
+  var hsl = HSLColor.fromColor(opaque);
+  for (var i = 0; i < 40; i++) {
+    final l = (hsl.lightness + (darken ? -0.025 : 0.025)).clamp(0.0, 1.0);
+    hsl = hsl.withLightness(l);
+    final c = hsl.toColor();
+    if (contrastRatio(c, bg) >= ratio || l == 0 || l == 1) return c.withValues(alpha: fg.a);
+  }
+  return hsl.toColor().withValues(alpha: fg.a);
+}
+
+/// Text colour for a value coloured by thresholds / price level on a tile surface.
+/// The dark theme's palette already meets AA on its surfaces (theme_contrast_test), so only
+/// the light theme adjusts colours.
+Color readableAccent(BuildContext context, Color fg, {double ratio = 4.5, Color? background}) {
+  final cs = Theme.of(context).colorScheme;
+  if (cs.brightness == Brightness.dark && background == null) return fg;
+  return readableOn(fg, background ?? cs.surfaceContainer, ratio: ratio);
+}
+
+/// t162u: the Material theme mode for a choice. 'sun' is light between sunrise and sunset
+/// at the home location (Asetukset › Energia › koti), else follows the system.
+ThemeMode resolveThemeMode(String choice, {DateTime? now, (double, double)? home}) {
+  switch (choice) {
+    case 'light':
+      return ThemeMode.light;
+    case 'dark':
+      return ThemeMode.dark;
+    case 'sun':
+      if (home == null) return ThemeMode.system;
+      final t = now ?? DateTime.now();
+      final s = sunTimes(t, home.$1, home.$2);
+      if (s == null) return ThemeMode.system; // polar day / night
+      return t.isAfter(s.$1) && t.isBefore(s.$2) ? ThemeMode.light : ThemeMode.dark;
+    default:
+      return ThemeMode.system;
+  }
+}
+
+final lightTheme = molaplanTheme(brightness: Brightness.light);
+final darkTheme = molaplanTheme();

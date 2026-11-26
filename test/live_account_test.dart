@@ -50,7 +50,7 @@ void main() {
 
     final tablet = await device();
     await tablet.upsertConnection(
-      ConnectionConfig(id: 'sh1', name: 'Shelly', type: 'http', settings: {'baseUrl': 'http://192.168.50.172'}, secrets: {'password': 'salainen-live'}),
+      ConnectionConfig(id: 'sh1', name: 'Shelly', type: 'http', settings: {'baseUrl': 'http://192.168.88.172'}, secrets: {'password': 'salainen-live'}),
     );
     await tablet.upsertTile(tablet.config.dashboards.first, TileConfig(type: TileType.toggle, title: 'Sauna', connectionId: 'sh1'));
     final sw = Stopwatch()..start();

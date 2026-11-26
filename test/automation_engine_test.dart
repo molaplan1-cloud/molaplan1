@@ -44,6 +44,12 @@ class FakeEnv implements AutoEnv {
   @override
   Future<Map<int, double>> pricesToday() async => today;
   @override
+  Future<List<(DateTime, int, double)>> priceSlotsToday() async {
+    final d = now();
+    return [for (final e in today.entries) (DateTime(d.year, d.month, d.day, e.key), 60, e.value)];
+  }
+
+  @override
   Future<double?> outdoorTemp() async => temp;
   @override
   Future<void> notify(String t, String b, int p, String? tile) async => sent.add('$t|$b|$p|${tile ?? ''}');

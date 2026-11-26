@@ -28,6 +28,10 @@ void main() {
     await tester.tap(find.text('Painike / pikakomento'));
     await tester.pumpAndSettle();
     expect(find.text('Uusi ruutu'), findsOneWidget);
+    // t173u: a button picks what it runs (script / scene / device); own commands in advanced mode.
+    expect(find.text('Mitä nappi tekee?'), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('button-mode-custom')));
+    await tester.pumpAndSettle();
     expect(find.text('Lisää komento'), findsOneWidget);
   });
 

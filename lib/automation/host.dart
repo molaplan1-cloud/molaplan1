@@ -14,6 +14,7 @@ import '../energy/contract.dart';
 import '../energy/weather.dart';
 import '../l10n/l10n.dart';
 import '../models/models.dart';
+import '../prices/price_summary.dart';
 import '../prices/prices.dart';
 import 'engine.dart';
 import 'model.dart';
@@ -113,7 +114,11 @@ class AutomationPackage {
     this.vat,
     this.location,
     this.lang = 'fi',
+    this.hourly = false,
   });
+
+  /// t168u: "Näytä tuntikeskiarvona" – automations and the summary work per hour.
+  final bool hourly;
   final AutomationSettings settings;
   final Map<String, AutoTile> tiles;
 
@@ -138,6 +143,7 @@ class AutomationPackage {
       vat: c.energy.contract?.vat,
       location: c.energy.home,
       lang: lang ?? (appLanguages.containsKey(c.language) ? c.language : 'fi'),
+      hourly: priceHourlyOf(c),
     );
   }
 
@@ -152,6 +158,7 @@ class AutomationPackage {
     'vat': ?vat,
     if (location != null) 'location': location!.toJson(),
     'lang': lang,
+    if (hourly) 'hourly': true,
   };
 
   factory AutomationPackage.fromJson(Map<String, dynamic> j) => AutomationPackage(
@@ -167,6 +174,7 @@ class AutomationPackage {
     vat: (j['vat'] as num?)?.toDouble(),
     location: HomeLocation.fromJson(j['location']),
     lang: '${j['lang'] ?? 'fi'}',
+    hourly: j['hourly'] == true,
   );
 }
 
@@ -265,10 +273,19 @@ class PackageEnv implements AutoEnv {
     }
     if (t.sceneId != null) return scene?.call(t.sceneId!);
     if (t.scriptId != null) return script?.call(t.scriptId!);
+    // t173u: a button that controls another tile (also on the bridge, which has no '_auto').
+    if (t.read['kind'] == 'tile') return act('${t.read['tileId']}', '${t.read['op'] ?? 'toggle'}', null);
     if (t.type == 'button' || (t.type == 'slider' && op == 'set')) {
       for (final c in t.commands) {
         await _run(c, value);
       }
+      return;
+    }
+    // t173u: a device with a native toggle (Tasmota `Power<n> TOGGLE`) is toggled in one
+    // request – no read-then-write race, and it works even when the state read fails.
+    final native = op == 'toggle' ? nativeToggleStep(t.on) : null;
+    if (native != null) {
+      await _run(native, null);
       return;
     }
     var want = op;
@@ -336,6 +353,17 @@ class PackageEnv implements AutoEnv {
   }
 
   @override
+  Future<List<(DateTime, int, double)>> priceSlotsToday() async {
+    try {
+      final raw = await prices.get(pkg.zone);
+      final s = pkg.hourly && raw.resolution < 3600 ? raw.hourly() : raw;
+      return [for (final p in s.day(now(), 0)) (p.start, p.seconds ~/ 60, _cents(p.eurMwh))];
+    } catch (_) {
+      return const [];
+    }
+  }
+
+  @override
   Future<double?> outdoorTemp() async {
     final l = pkg.location;
     if (l == null) return null;
@@ -361,11 +389,22 @@ class PackageEnv implements AutoEnv {
     if (t != null) parts.add('${t.round()} °C');
     final p = await priceNow();
     if (p != null) parts.add('${p.toStringAsFixed(1)} c/kWh');
-    final today = await pricesToday();
-    if (today.isNotEmpty) {
-      final best = today.entries.reduce((a, b) => a.value <= b.value ? a : b);
-      parts.add(tr(pkg.lang, 'halvin klo ${best.key}', 'cheapest at ${best.key}:00'));
-    }
+    // t166u / t167u: the cheapest hour still ahead (next 24 h) with its price.
+    try {
+      final s = await prices.get(pkg.zone);
+      final line = priceSummaryLine(
+        s.points,
+        now(),
+        pkg.lang,
+        priciest: pkg.settings.morningPriciest,
+        quarters: !pkg.hourly && s.resolution < 3600,
+        toCents: _cents,
+      );
+      if (line.isNotEmpty) parts.add(line);
+      // t171u: tomorrow not out yet → when it will be.
+      final tm = tomorrowStatus(s, now(), pkg.lang);
+      if (tm.isNotEmpty) parts.add(tm);
+    } catch (_) {}
     var on = 0, off = 0;
     for (final x in pkg.tiles.values.where((x) => x.type == 'toggle' && !x.isGroup)) {
       try {
@@ -463,3 +502,25 @@ class NtfyPush {
 
 /// iPhone Shortcut / any HTTP client: run a remote script by posting `run NAME PIN` here.
 String remoteRunUrl(NotifySettings n) => NtfyPush.topicUrl(n, n.commandTopic);
+
+/// t173u: the one-request toggle for a step whose device has one, else null. Tasmota:
+/// `/cm?cmnd=Power3%20On[&user=…]` → `/cm?cmnd=Power3%20TOGGLE[&user=…]` (relay N only).
+Map<String, dynamic>? nativeToggleStep(Map<String, dynamic>? on) {
+  if (on == null) return null;
+  final spec = on['spec'];
+  if (spec is! Map) return null;
+  // Shelly Cloud switch channel: {id, channel, on: true} → {id, channel, toggle: true}.
+  if (spec['path'] == null && spec['id'] != null && spec['on'] == true && spec['comp'] == null) {
+    return {
+      ...on,
+      'spec': {...Map<String, dynamic>.from(spec)..remove('on'), 'toggle': true},
+    };
+  }
+  final path = '${spec['path'] ?? ''}';
+  final m = RegExp(r'^(/cm\?cmnd=Power\d*)(?:%20|\+| )(?:On|1)(&.*)?$', caseSensitive: false).firstMatch(path);
+  if (m == null) return null;
+  return {
+    ...on,
+    'spec': {...Map<String, dynamic>.from(spec), 'path': '${m.group(1)}%20TOGGLE${m.group(2) ?? ''}'},
+  };
+}

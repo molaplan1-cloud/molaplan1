@@ -21,12 +21,20 @@ class WrongVaultPassword implements Exception {
   String toString() => 'WrongVaultPassword';
 }
 
-Future<SecretKey> _kek(String password, List<int> salt, int iter) =>
-    Pbkdf2(macAlgorithm: Hmac.sha256(), iterations: iter, bits: 256).deriveKeyFromPassword(password: password, nonce: salt);
+Future<SecretKey> _kek(String password, List<int> salt, int iter) => Pbkdf2(
+  macAlgorithm: Hmac.sha256(),
+  iterations: iter,
+  bits: 256,
+).deriveKeyFromPassword(password: password, nonce: salt);
 
 List<int> newAccountKey() => randomBytes(32);
 
-Future<Map<String, dynamic>> wrapAccountKey(List<int> key, String password, String userId, {int iter = defaultIterations}) async {
+Future<Map<String, dynamic>> wrapAccountKey(
+  List<int> key,
+  String password,
+  String userId, {
+  int iter = defaultIterations,
+}) async {
   final salt = randomBytes(16);
   final box = await _aes.encrypt(
     key,

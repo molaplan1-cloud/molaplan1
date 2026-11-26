@@ -1,3 +1,5 @@
+import 'price_trend.dart' show priceWindowChoices;
+import '../core/capabilities.dart';
 import 'tile_visuals.dart';
 import 'measure_view.dart';
 import 'measure_colors.dart';
@@ -8,6 +10,7 @@ import '../state/measure_history.dart';
 import 'package:material_ui/material_ui.dart' hide Threshold;
 
 import '../drivers/registry.dart';
+import '../state/auto_driver.dart' show autoConnId;
 import '../models/models.dart';
 import 'app_scope.dart';
 import 'error_box.dart';
@@ -59,6 +62,9 @@ class _TileEditorState extends State<TileEditor> {
   late final _valueMap = TextEditingController(text: t.valueMap);
   late final _onValue = TextEditingController(text: t.onValue);
   int _readKey = 0;
+
+  /// t164u: Edistyneet › "Raaka yhdistelmä" – any tile type on any connection, with a warning.
+  late bool _raw = t.read['raw'] == true;
   String? _testResult;
   Object? _testError;
 
@@ -71,7 +77,13 @@ class _TileEditorState extends State<TileEditor> {
     t.onValue = _onValue.text.trim();
     if (!_hasRead) {
       t.connectionId = null;
-      t.read = {};
+      // t173u: a button keeps what it runs (script / scene / controlled tile).
+      final k = t.read['kind'];
+      t.read = k == 'script' || k == 'scene' || k == 'tile' ? t.read : {};
+    } else if (_raw) {
+      t.read['raw'] = true;
+    } else {
+      t.read.remove('raw');
     }
     await AppScope.read(context).upsertTile(widget.dashboard, t);
     if (mounted) Navigator.pop(context);
@@ -99,7 +111,206 @@ class _TileEditorState extends State<TileEditor> {
 
   List<ConnectionConfig> _conns({required bool camera}) {
     final st = AppScope.of(context);
-    return st.config.connections.where((c) => (c.type == 'camera') == camera).toList();
+    return st.config.connections
+        .where((c) => (c.type == 'camera') == camera)
+        // t164u: only connections that can carry this tile type (e.g. no price for a switch).
+        .where((c) => _raw || camera || connectionCapabilities(c).allows(t.type) || c.id == t.connectionId)
+        .toList();
+  }
+
+  /// t173u: connections a button's own command can use – anything that can be controlled
+  /// (switches, sliders, actions), not only the ones that 'allow' a button tile.
+  List<ConnectionConfig> _cmdConns() {
+    final st = AppScope.of(context);
+    return st.config.connections.where((c) {
+      if (c.type == 'camera') return false;
+      if (_raw) return true;
+      final k = connectionCapabilities(c);
+      return k.allows(TileType.button) || k.allows(TileType.toggle) || k.allows(TileType.slider);
+    }).toList();
+  }
+
+  /// t173u: what a button does – 'script' | 'scene' | 'control' (another tile) | 'custom'.
+  late String _buttonMode = switch (t.read['kind']) {
+    'script' => 'script',
+    'scene' => 'scene',
+    'tile' => 'control',
+    _ => t.commands.isNotEmpty ? 'custom' : 'script',
+  };
+
+  void _setRun(String kind, String id, String title) {
+    final c = CommandStep(connectionId: autoConnId, spec: {'kind': kind, '${kind}Id': id});
+    t
+      ..connectionId = null
+      ..read = {'kind': kind, '${kind}Id': id}
+      ..commands = [c];
+    if (_title.text.trim().isEmpty) _title.text = title;
+  }
+
+  void _setControl(String tileId, String op) {
+    t
+      ..connectionId = null
+      ..read = {'kind': 'tile', 'tileId': tileId, 'op': op}
+      ..commands = [
+        CommandStep(connectionId: autoConnId, spec: {'kind': 'tile', 'tileId': tileId, 'op': op}),
+      ];
+  }
+
+  List<Widget> _buttonAction(BuildContext context, TextTheme text) {
+    final st = AppScope.of(context);
+    final a = st.automations.settings;
+    // Only tiles that can be switched (capability: an on / off command).
+    final controls = [
+      for (final d in st.config.dashboards)
+        for (final x in d.tiles)
+          if (x.id != t.id && x.type == TileType.toggle && x.onCommand != null && x.connectionId != null) x,
+    ];
+    final modes = [
+      ('script', Icons.code, tx(context, 'Skripti', 'Script')),
+      ('scene', Icons.auto_awesome_outlined, tx(context, 'Tilanne', 'Scene')),
+      ('control', Icons.toggle_on_outlined, tx(context, 'Ohjaa laitetta', 'Control a device')),
+      if (st.config.advanced || _buttonMode == 'custom')
+        ('custom', Icons.tune, tx(context, 'Oma komento', 'Own command')),
+    ];
+    final scriptId = t.read['kind'] == 'script' ? '${t.read['scriptId']}' : null;
+    final sceneId = t.read['kind'] == 'scene' ? '${t.read['sceneId']}' : null;
+    final tileId = t.read['kind'] == 'tile' ? '${t.read['tileId']}' : null;
+    final op = '${t.read['op'] ?? 'toggle'}';
+    return [
+      _section(
+        text,
+        tx(context, 'Mitä nappi tekee?', 'What does the button do?'),
+        tx(
+          context,
+          'Valitse skripti, tilanne tai laite. Nappi toimii sovelluksessa ja kodin ulkopuolelta etäkäytön kautta.',
+          'Pick a script, a scene or a device. The button works in the app and, when you are away, through remote access.',
+        ),
+      ),
+      Wrap(
+        spacing: 8,
+        runSpacing: 8,
+        children: [
+          for (final (id, icon, label) in modes)
+            ChoiceChip(
+              key: ValueKey('button-mode-$id'),
+              avatar: Icon(icon, size: 18),
+              label: Text(label),
+              selected: _buttonMode == id,
+              onSelected: (_) => setState(() {
+                _buttonMode = id;
+                if (id == 'custom') {
+                  t.read = {};
+                  t.commands = [
+                    for (final c in t.commands)
+                      if (c.connectionId != autoConnId) c,
+                  ];
+                } else {
+                  t.commands = [];
+                  t.read = {};
+                }
+              }),
+            ),
+        ],
+      ),
+      const SizedBox(height: 12),
+      if (_buttonMode == 'script')
+        a.scripts.isEmpty
+            ? Text(
+                tx(
+                  context,
+                  'Skriptejä ei vielä ole. Tee skripti kohdassa Automaatiot.',
+                  'No scripts yet. Make one under Automations.',
+                ),
+                key: const ValueKey('button-no-scripts'),
+              )
+            : DropdownButtonFormField<String>(
+                key: const ValueKey('button-script'),
+                isExpanded: true,
+                initialValue: a.scripts.any((s) => s.id == scriptId) ? scriptId : null,
+                decoration: InputDecoration(labelText: tx(context, 'Skripti', 'Script')),
+                items: [for (final s in a.scripts) DropdownMenuItem(value: s.id, child: Text(s.name))],
+                onChanged: (v) => setState(() {
+                  final s = a.scripts.firstWhere((s) => s.id == v);
+                  _setRun('script', s.id, s.name);
+                }),
+              ),
+      if (_buttonMode == 'scene')
+        a.scenes.isEmpty
+            ? Text(
+                tx(
+                  context,
+                  'Tilanteita ei vielä ole. Tallenna tilanne kohdassa Automaatiot.',
+                  'No scenes yet. Save one under Automations.',
+                ),
+                key: const ValueKey('button-no-scenes'),
+              )
+            : DropdownButtonFormField<String>(
+                key: const ValueKey('button-scene'),
+                isExpanded: true,
+                initialValue: a.scenes.any((s) => s.id == sceneId) ? sceneId : null,
+                decoration: InputDecoration(labelText: tx(context, 'Tilanne', 'Scene')),
+                items: [for (final s in a.scenes) DropdownMenuItem(value: s.id, child: Text(s.name))],
+                onChanged: (v) => setState(() {
+                  final s = a.scenes.firstWhere((s) => s.id == v);
+                  _setRun('scene', s.id, s.name);
+                }),
+              ),
+      if (_buttonMode == 'control') ...[
+        if (controls.isEmpty)
+          Text(
+            tx(
+              context,
+              'Ohjattavia laitteita ei vielä ole. Lisää ensin kytkin.',
+              'No switchable devices yet. Add a switch first.',
+            ),
+            key: const ValueKey('button-no-controls'),
+          )
+        else ...[
+          DropdownButtonFormField<String>(
+            key: const ValueKey('button-control'),
+            isExpanded: true,
+            initialValue: controls.any((x) => x.id == tileId) ? tileId : null,
+            decoration: InputDecoration(labelText: tx(context, 'Laite', 'Device')),
+            items: [for (final x in controls) DropdownMenuItem(value: x.id, child: Text(x.title))],
+            onChanged: (v) => setState(() {
+              _setControl(v!, op);
+              if (_title.text.trim().isEmpty) _title.text = controls.firstWhere((x) => x.id == v).title;
+            }),
+          ),
+          const SizedBox(height: 10),
+          SegmentedButton<String>(
+            key: const ValueKey('button-op'),
+            segments: [
+              ButtonSegment(value: 'on', label: Text(tx(context, 'Päälle', 'On'))),
+              ButtonSegment(value: 'off', label: Text(tx(context, 'Pois', 'Off'))),
+              ButtonSegment(value: 'toggle', label: Text(tx(context, 'Vaihda', 'Toggle'))),
+            ],
+            selected: {op},
+            onSelectionChanged: tileId == null ? null : (v) => setState(() => _setControl(tileId, v.first)),
+          ),
+        ],
+      ],
+      const SizedBox(height: 12),
+    ];
+  }
+
+  /// What the chosen connection / entity can do (everything when none is chosen yet).
+  Capabilities get _caps {
+    final c = AppScope.read(context).connection(t.connectionId);
+    return c == null ? Capabilities.any.copyWithCamera() : tileCapabilities(c, t.read);
+  }
+
+  /// Tile types offered: only the ones the connection supports (t164u), all in raw mode.
+  List<TileType> get _types => [
+    for (final ty in TileType.values.where((x) => x != TileType.thermostat))
+      if (_raw || ty == t.type || _caps.allows(ty) || (ty == TileType.button && t.connectionId == null)) ty,
+  ];
+
+  /// After choosing a connection / entity: keep the type if it fits, else the best one.
+  void _fitType() {
+    if (_raw) return;
+    final c = _caps;
+    if (!c.allows(t.type)) t.type = c.best;
   }
 
   @override
@@ -125,8 +336,9 @@ class _TileEditorState extends State<TileEditor> {
                   spacing: 8,
                   runSpacing: 8,
                   children: [
-                    for (final ty in TileType.values.where((x) => x != TileType.thermostat))
+                    for (final ty in _types)
                       ChoiceChip(
+                        key: ValueKey('type-${ty.name}'),
                         avatar: Icon(tileTypeIcon(ty), size: 18),
                         label: Text(tileTypeLabel(context, ty)),
                         selected: t.type == ty,
@@ -141,6 +353,27 @@ class _TileEditorState extends State<TileEditor> {
                       ),
                   ],
                 ),
+              // t165u: one tile = one entity; its settings are measurement OR control, never both.
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Text(
+                  switch (tileRole(t)) {
+                    EntityRole.measurement => tx(
+                      context,
+                      'Mittaus: näyttötapa, trendi, värirajat, hälytykset, desimaalit ja skaalaus.',
+                      'Measurement: display, trend, colour limits, alarms, decimals and scaling.',
+                    ),
+                    EntityRole.control => tx(
+                      context,
+                      'Ohjaus: vahvistus, lukitus / PIN, min / max / askel, käänteinen ja hetkellinen.',
+                      'Control: confirmation, lock / PIN, min / max / step, invert and momentary.',
+                    ),
+                    EntityRole.media => tx(context, 'Kamera', 'Camera'),
+                  },
+                  key: ValueKey('tile-role-${tileRole(t).name}'),
+                  style: text.bodySmall?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
+                ),
+              ),
               const SizedBox(height: 16),
               TextField(
                 controller: _title,
@@ -172,9 +405,9 @@ class _TileEditorState extends State<TileEditor> {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  _sizeDrop(tx(context, 'Leveys', 'Width'), t.w2, (v) => t.w2 = v),
+                  _sizeDrop(tx(context, 'Leveys', 'Width'), t.w2, (v) => t.w2 = v, full: true),
                   const SizedBox(width: 10),
-                  _sizeDrop(tx(context, 'Korkeus', 'Height'), t.h2, (v) => t.h2 = v),
+                  _sizeDrop(tx(context, 'Korkeus', 'Height'), t.h2, (v) => t.h2 = v, max: maxH2),
                 ],
               ),
               ..._cameraStreams(text),
@@ -202,9 +435,41 @@ class _TileEditorState extends State<TileEditor> {
                     ),
                   ],
                 ),
-                if (t.display == 'trend') ...[..._trendLook(text), const SizedBox(height: 12), _colorPresets(text)],
+                if (t.display == 'trend') ...[
+                  // t170u: the price trend's range (same choices as the on-tile chips).
+                  const SizedBox(height: 12),
+                  DropdownButtonFormField<String>(
+                    key: const ValueKey('price-window'),
+                    initialValue: const ['today', '24h', 'auto', '48h'].contains(t.priceWindow)
+                        ? t.priceWindow
+                        : 'auto',
+                    decoration: InputDecoration(labelText: tx(context, 'Aikaväli', 'Range')),
+                    items: [
+                      for (final (id, label) in priceWindowChoices(langOf(context)))
+                        DropdownMenuItem(value: id, child: Text(label)),
+                    ],
+                    onChanged: (v) => setState(() => t.priceWindow = v ?? 'auto'),
+                  ),
+                  SwitchListTile(
+                    key: const ValueKey('price-tomorrow'),
+                    contentPadding: EdgeInsets.zero,
+                    value: t.priceTomorrow,
+                    onChanged: (v) => setState(() => t.priceTomorrow = v),
+                    title: Text(tx(context, 'Näytä huomenna kun saatavilla', 'Show tomorrow when available')),
+                    subtitle: Text(
+                      tx(
+                        context,
+                        'Huomisen hinnat tulevat näkyviin itsestään, kun ne julkaistaan (n. klo 14).',
+                        'Tomorrow\'s prices appear by themselves once published (around 14:00).',
+                      ),
+                    ),
+                  ),
+                  ..._trendLook(text),
+                  const SizedBox(height: 12),
+                  _colorPresets(text),
+                ],
               ],
-              if (isMeasureTile(t)) ...[
+              if (isMeasureTile(t) && tileRole(t) == EntityRole.measurement) ...[
                 const SizedBox(height: 20),
                 Text(tx(context, 'Näyttötapa', 'Display'), style: text.titleSmall),
                 const SizedBox(height: 8),
@@ -315,6 +580,7 @@ class _TileEditorState extends State<TileEditor> {
                       t.connectionId = id;
                       t.read = {};
                       _readKey++;
+                      _fitType();
                     }),
                   ),
                   if (st.connection(t.connectionId) != null) ...[
@@ -324,7 +590,30 @@ class _TileEditorState extends State<TileEditor> {
                       fields: descriptorFor(st.connection(t.connectionId)!.type).readFields,
                       values: t.read,
                       scope: '${st.connection(t.connectionId)!.type}.read',
+                      // HA: the entity decides the type (a sensor is never a switch).
+                      onChanged: () => setState(_fitType),
                     ),
+                    if (st.config.advanced)
+                      SwitchListTile(
+                        key: const ValueKey('tile-raw'),
+                        contentPadding: EdgeInsets.zero,
+                        value: _raw,
+                        onChanged: (v) => setState(() => _raw = v),
+                        title: Text(tx(context, 'Raaka yhdistelmä (Edistyneet)', 'Raw combination (Advanced)')),
+                        subtitle: Text(
+                          _raw
+                              ? tx(
+                                  context,
+                                  '⚠ Kaikki ruututyypit sallitaan kaikille yhteyksille. Väärä yhdistelmä voi näyttää harhaanjohtavaa tietoa, esim. "Päällä" sähkön hinnalle.',
+                                  '⚠ Every tile type is allowed on every connection. A wrong combination can show misleading data, e.g. "On" for the electricity price.',
+                                )
+                              : tx(
+                                  context,
+                                  'Pois: vain yhteyden tukemat ruututyypit.',
+                                  'Off: only the tile types the connection supports.',
+                                ),
+                        ),
+                      ),
                     if (t.type != TileType.camera) ...[
                       _numField(
                         tx(context, 'Päivitysväli (s, 0 = ei kyselyä)', 'Poll interval (s, 0 = none)'),
@@ -452,7 +741,8 @@ class _TileEditorState extends State<TileEditor> {
                     (s) => setState(() => t.commands = s == null ? [] : [s]),
                   ),
                 ],
-                if (t.type == TileType.button) ...[
+                if (t.type == TileType.button) ..._buttonAction(context, text),
+                if (t.type == TileType.button && _buttonMode == 'custom') ...[
                   _section(
                     text,
                     tx(context, 'Komennot (suoritetaan järjestyksessä)', 'Commands (run in order)'),
@@ -479,9 +769,8 @@ class _TileEditorState extends State<TileEditor> {
                     const SizedBox(height: 10),
                   ],
                   OutlinedButton.icon(
-                    onPressed: () => setState(
-                      () => t.commands.add(CommandStep(connectionId: _conns(camera: false).firstOrNull?.id ?? '')),
-                    ),
+                    onPressed: () =>
+                        setState(() => t.commands.add(CommandStep(connectionId: _cmdConns().firstOrNull?.id ?? ''))),
                     icon: const Icon(Icons.add),
                     label: Text(tx(context, 'Lisää komento', 'Add command')),
                   ),
@@ -518,14 +807,23 @@ class _TileEditorState extends State<TileEditor> {
   );
 
   /// t144u: 0,5 … 4 in half steps (stored as half-units 1…8).
-  Widget _sizeDrop(String label, int half, void Function(int) set) => SizedBox(
-    width: 100,
+  /// t169u: width 0,5–4 + "Koko leveys" (the whole row); height 0,5–6.
+  Widget _sizeDrop(String label, int half, void Function(int) set, {int max = 8, bool full = false}) => SizedBox(
+    width: full ? 150 : 100,
     child: DropdownButtonFormField<int>(
       key: ValueKey('size-$label'),
       isExpanded: true,
-      initialValue: half.clamp(1, 8),
+      initialValue: full && half == fullWidthW2 ? half : half.clamp(1, max),
       decoration: InputDecoration(labelText: label),
-      items: [for (var i = 1; i <= 8; i++) DropdownMenuItem(value: i, child: Text(halfLabel(i, langOf(context))))],
+      items: [
+        for (var i = 1; i <= max; i++) DropdownMenuItem(value: i, child: Text(halfLabel(i, langOf(context)))),
+        if (full)
+          DropdownMenuItem(
+            key: const ValueKey('size-full'),
+            value: fullWidthW2,
+            child: Text(halfLabel(fullWidthW2, langOf(context))),
+          ),
+      ],
       onChanged: (v) => setState(() => set(v ?? 2)),
     ),
   );

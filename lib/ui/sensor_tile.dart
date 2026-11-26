@@ -174,7 +174,11 @@ class _SensorTileState extends State<SensorTile> with SingleTickerProviderStateM
                               ),
                             if (last != null)
                               Text(
-                                tx(context, 'Viim. hälytys ${_time(context, last)}', 'Last alarm ${_time(context, last)}'),
+                                tx(
+                                  context,
+                                  'Viim. hälytys ${_time(context, last)}',
+                                  'Last alarm ${_time(context, last)}',
+                                ),
                                 key: ValueKey('sensor-last-${t.id}'),
                                 style: small,
                               ),

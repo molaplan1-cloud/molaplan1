@@ -511,11 +511,8 @@ List<TileConfig> haTilesForPicked(
       continue;
     }
     if (e.domain == 'climate') {
-      // The climate entity has current_temperature (+ current_humidity): its sensors are redundant.
-      used.addAll([
-        for (final x in dev)
-          if (isTemp(x) || isHum(x)) x.entityId,
-      ]);
+      // t165u: the climate entity is the CONTROL; its temperature / humidity sensors stay
+      // their own MEASUREMENT tiles (own trend, thresholds, alarms) when picked.
       used.add(e.entityId);
       out.add(haClimateTile(connId, e.entityId, e.name));
       continue;
@@ -544,6 +541,9 @@ List<TileConfig> haTilesForPicked(
             ),
           ),
         );
+        // t165u: the measurements stay separate entities next to the setpoint control.
+        out.addAll(haTilesFor(temp, connId, lang));
+        if (hum != null) out.addAll(haTilesFor(hum, connId, lang));
         continue;
       }
     }

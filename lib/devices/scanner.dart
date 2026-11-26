@@ -105,6 +105,7 @@ class ScanHit {
     'tasmota' => ('template', 'tasmota'),
     'esphome' => ('template', 'esphome'),
     'homeassistant' => ('template', 'homeassistant'),
+    'airthings' => ('template', 'airthings'),
     _ => null,
   };
 
@@ -194,6 +195,7 @@ const _kindRank = {
   'shelly': 5,
   'hue': 5,
   'dirigera': 5,
+  'airthings': 5,
 };
 
 const scanServices = [
@@ -517,7 +519,23 @@ const _oui = {
   'd0:73:d5': 'LIFX',
 };
 
+/// t159u: Airthings' own IEEE blocks (MA-M D0:14:11:9, MA-S 70:B3:D5:53:C / 70:B3:D5:2A:0).
+bool isAirthingsMac(String? mac) {
+  if (mac == null) return false;
+  final m = mac.replaceAll(RegExp('[^0-9a-fA-F]'), '').toLowerCase();
+  return m.startsWith('d014119') || m.startsWith('70b3d553c') || m.startsWith('70b3d52a0');
+}
+
+/// Airthings Wi-Fi monitor / Hub: MAC block, or "airthings" in any of its names (DHCP
+/// hostname, mDNS, PTR) or mDNS service.
+bool isAirthingsHit(ScanHit h) {
+  if (isAirthingsMac(h.mac)) return true;
+  final texts = [h.name, h.model, h.vendor ?? '', h.maker, ...h.names.values, ...h.services];
+  return texts.any((t) => t.toLowerCase().contains('airthings'));
+}
+
 String? macVendor(String? mac) {
+  if (isAirthingsMac(mac)) return 'Airthings';
   if (mac == null || mac.length < 8) return null;
   final first = int.tryParse(mac.substring(0, 2), radix: 16) ?? 0;
   if (first & 0x02 != 0) return null; // randomised (private) address: no vendor
@@ -587,6 +605,7 @@ Future<List<ScanHit>> scanNetwork({
       final v = (h.vendor ?? '').toLowerCase();
       if (v.contains('shelly')) h.kind = 'shelly';
     }
+    if (isAirthingsHit(h)) h.kind = 'airthings';
   }
   if (identify) await identifyHits(all, ips, await info);
   await dedupeHaHits(all);

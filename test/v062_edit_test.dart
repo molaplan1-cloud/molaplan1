@@ -126,7 +126,7 @@ void main() {
     // Clamped to 0,5..4 (t144u).
     await tester.drag(find.byKey(const ValueKey('tile-resize-B')), const Offset(0, 2000));
     await tester.pump(const Duration(milliseconds: 300));
-    expect(d.tiles.firstWhere((t) => t.id == 'B').h2, 8); // t144u: up to 4 tall
+    expect(d.tiles.firstWhere((t) => t.id == 'B').h2, 12); // t169u: up to 6 tall
     await tester.drag(find.byKey(const ValueKey('tile-resize-B')), const Offset(-2000, -2000));
     await tester.pump(const Duration(milliseconds: 300));
     final b2 = d.tiles.firstWhere((t) => t.id == 'B');

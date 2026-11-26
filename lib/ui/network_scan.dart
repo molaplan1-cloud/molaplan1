@@ -50,6 +50,7 @@ String scanKindLabel(BuildContext context, ScanHit h) => switch (h.kind) {
   'homeassistant' => 'Home Assistant',
   'camera' => '${tx(context, 'Kamera', 'Camera')}${h.id.isEmpty || h.id == 'onvif' ? '' : ' (${_brand(h.id)})'}',
   'homekit' => tx(context, 'HomeKit-laite', 'HomeKit device'),
+  'airthings' => 'Airthings',
   _ => tx(context, 'Tuntematon laite', 'Unknown device'),
 };
 
@@ -120,6 +121,7 @@ IconData scanIcon(String kind) => switch (kind) {
   'dirigera' => Icons.hub_outlined,
   'homeassistant' => Icons.home_outlined,
   'homekit' => Icons.devices_other,
+  'airthings' => Icons.sensors,
   'unknown' || 'http' => Icons.device_unknown_outlined,
   _ => Icons.power_outlined,
 };
@@ -177,7 +179,8 @@ class _NetworkScanCardState extends State<NetworkScanCard> {
       page = TemplateSetupPage(
         template: t,
         dashboard: widget.dashboard,
-        initialValues: {'address': h.address, if (h.name.isNotEmpty) 'name': h.name},
+        // Cloud-only devices (Airthings) have no address to fill.
+        initialValues: t.id == 'airthings' ? const {} : {'address': h.address, if (h.name.isNotEmpty) 'name': h.name},
       );
     }
     final ok = await Navigator.push<bool>(context, MaterialPageRoute(builder: (_) => page!));
@@ -196,6 +199,8 @@ class _NetworkScanCardState extends State<NetworkScanCard> {
         h.vendor!,
       if (!h.known && h.model.isNotEmpty && !title.contains(h.model) && h.role != 'self') h.model,
       if (h.known && h.addFlow == null) tx(context, 'ei vielä ohjattavissa', 'not controllable yet'),
+      if (h.kind == 'airthings')
+        tx(context, 'Airthings: lisää pilven tai Bluetoothin kautta', 'Airthings: add via the cloud or Bluetooth'),
       if (!h.known || adv) h.known ? h.address : h.ip,
       if (h.viaBridge) tx(context, 'kotisillan kautta', 'via home bridge'),
     ];

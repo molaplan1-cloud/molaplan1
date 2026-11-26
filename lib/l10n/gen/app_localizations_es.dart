@@ -22,6 +22,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s10edebf3fa => 'El servidor ntfy';
 
   @override
+  String get sc08176420f => 'La nube de Airthings';
+
+  @override
   String get sd3d9c263ed => 'El servicio';
 
   @override
@@ -277,6 +280,15 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s53a891e670 =>
       'Comprueba la dirección y los ajustes e inténtalo de nuevo. Los detalles técnicos muestran el motivo exacto.';
+
+  @override
+  String get s02480e4c13 => 'Medidas';
+
+  @override
+  String get sd1c778324e => 'Controles';
+
+  @override
+  String get s88ac47e6d1 => 'Cámaras';
 
   @override
   String get sdd5e97b1e2 => 'Despejado';
@@ -678,6 +690,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sec4d80656d => 'Roku';
 
   @override
+  String get s286e1cfb54 => 'Total';
+
+  @override
   String sb9964cfb3b(String p0) {
     return 'Potencia $p0';
   }
@@ -700,10 +715,19 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s9ad7b0076b => 'sensor de fuga · batería';
 
   @override
+  String get s815bfa19dc => 'Control de contactos';
+
+  @override
+  String get sb9209fee74 => 'añadir sólo si el relé está en uso';
+
+  @override
   String get s5f2b2ca5f5 => 'encendido ahora';
 
   @override
   String get s67f64cd925 => 'apagado ahora';
+
+  @override
+  String get s8b35cc884f => 'Medición';
 
   @override
   String get sd8dfb25d31 => 'Shelly Cloud (sin puente)';
@@ -1476,17 +1500,29 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s252b8e1289 => '¿Foto para qué habitación?';
 
   @override
-  String get s9ae4e86ee7 =>
-      'La foto se muestra como el encabezado de la habitación por encima de sus tarjetas.';
+  String get sa27e5362de =>
+      'Escoja una imagen de habitación incorporada o su propia foto. Se muestra como el encabezado o detrás de toda la vista.';
 
   @override
-  String get sc48f5f9bcf => 'Elegir imagen';
+  String get s84ef77e1ca => 'Elegir tu propia imagen';
 
   @override
   String get sf55eee73b8 => 'Cambiar imagen';
 
   @override
   String get sf6723451b9 => 'Toma la foto';
+
+  @override
+  String get s0bec34cd24 => 'Imagen de cabecera';
+
+  @override
+  String get s7b1e22fca7 => 'Fondo de toda la vista';
+
+  @override
+  String get s229e29f9ee => 'Atenuación';
+
+  @override
+  String get s38285117e6 => 'Desenfoque';
 
   @override
   String get sdd957ccc1b => 'Quitar la imagen';
@@ -1559,6 +1595,17 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s24ccd151f2 => 'Reintentar';
+
+  @override
+  String get sc26c52235c =>
+      'Usted está lejos y el puente casero no está contestando. Los dispositivos de red casero no pueden ser controlados ahora.';
+
+  @override
+  String get s0fc1c9f296 =>
+      'Usted está lejos. Los dispositivos de red doméstica funcionan remotamente sólo a través de un puente casero.';
+
+  @override
+  String get se50ed56454 => 'Acceso remoto';
 
   @override
   String get sc5f54cf3c8 => 'Llene la llave y el servidor.';
@@ -1795,7 +1842,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sdd309c0a63 => 'El termostato funciona en el puente de casa';
 
   @override
-  String get s9c1b5394df =>
+  String get s2a7e9fe291 =>
       'Configurar acceso remoto en la tableta de inicio (Configuración → Acceso remoto). Hasta entonces no controla nada.';
 
   @override
@@ -1885,6 +1932,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s23f4820db7 => 'no controlable todavía';
 
   @override
+  String get sdeeabebed9 =>
+      'Aire acondicionado: añadir a través de la nube o Bluetooth';
+
+  @override
   String get saae59a3865 => 'via casa puente';
 
   @override
@@ -1948,6 +1999,29 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s9e8430c37b =>
       'Molaplan no controla estos. Los iPhones muestran su nombre sólo mientras están despiertos.';
+
+  @override
+  String s095ca83913(String p0) {
+    return '$p0 tarjetas agregadas';
+  }
+
+  @override
+  String get sd53b0c4edc => 'Monitores de aires';
+
+  @override
+  String sc401e05b53(String p0) {
+    return 'Añadir $p0 tarjetas';
+  }
+
+  @override
+  String get s212e35a61b => 'No podía enumerar los dispositivos';
+
+  @override
+  String get s039683f4a5 =>
+      'No hay monitores en su cuenta. Añadir uno en la aplicación Airthings primero.';
+
+  @override
+  String get sdfff64e4c3 => 'a través del Hub';
 
   @override
   String get s7f308d40c8 => 'Calentando';
@@ -2424,7 +2498,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Los azulejos funcionan en su red de casa. Para controlar desde cualquier lugar, establecer el puente de inicio.';
 
   @override
-  String get s856a422504 => 'Configurar el acceso remoto';
+  String get s417eb9a875 => 'Configurar el acceso remoto';
 
   @override
   String get sc3abd09cd9 => 'Color personalizado';
@@ -2477,6 +2551,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s66c54e2286 => 'Las automatizaciones están en este dispositivo.';
+
+  @override
+  String get s57f6ce1c7f => '¿Qué es un puente doméstico?';
 
   @override
   String get s4057f67774 => 'Mon Tue Wed Thu Fri Sat Sun';
@@ -2877,11 +2954,18 @@ class AppLocalizationsEs extends AppLocalizations {
       'Funciones: ponerse en marcha toggle wait notify scene price cheap temp time hour weekday log. Ningún archivo o acceso a la red; 10 min time limit.';
 
   @override
-  String get s26e23ef341 => 'Permitir el funcionamiento remoto (PIN)';
+  String get s420f3ec828 => 'Activación externa (opcional)';
 
   @override
-  String get sd573107aec =>
-      'Un mensaje ntfy o un atajo de iPhone comienza el script.';
+  String get sb3cef805ee =>
+      'El botón del script funciona sin esto: se ejecuta el script en la aplicación, y a través del acceso remoto automáticamente cuando estás lejos. Sólo necesitas esto para iniciar el script desde fuera de Molaplan, por ejemplo, iPhone Shortcuts.';
+
+  @override
+  String get sb6e92eacba => 'Permite comenzar desde fuera (PIN)';
+
+  @override
+  String get sa1692aa719 =>
+      'Un mensaje a la dirección ntfy o un atajo de iPhone comienza el script con el PIN.';
 
   @override
   String get s0a5410ea4f => 'PIN remoto (al menos 4 caracteres)';
@@ -3126,6 +3210,23 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s6f1c11270c => 'Contiene configuración de ejemplo';
 
   @override
+  String s4f55f417b1(String p0) {
+    return 'El dispositivo tiene $p0 relés';
+  }
+
+  @override
+  String get sab3ebba17a => 'El dispositivo tiene 1 relé';
+
+  @override
+  String get sfa48c40832 => 'medición de la energía';
+
+  @override
+  String get sc8d1abbd21 => 'Nombre de la tarjeta';
+
+  @override
+  String get s183ed60009 => 'OK';
+
+  @override
   String s1ea8fe913b(String p0) {
     return 'Dirección: $p0';
   }
@@ -3193,6 +3294,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s47d409fddd => 'Red de búsqueda';
+
+  @override
+  String get sa62eebe6bd => 'Detectar relés';
 
   @override
   String get s7196b72140 =>
@@ -3265,6 +3369,36 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s7efc5653d2 => 'Idioma del dispositivo';
 
   @override
+  String s3e5741712a(String p0) {
+    return 'Este Shelly es un medidor de energía – reemplazar el interruptor con $p0 tarjetas de medición?';
+  }
+
+  @override
+  String sfe2074ae81(String p0) {
+    return 'El dispositivo tiene $p0 relés – añadir el resto?';
+  }
+
+  @override
+  String sf1319d04d0(String p0) {
+    return 'Añadir $p0';
+  }
+
+  @override
+  String get s95f80e9bdf => 'Corrección';
+
+  @override
+  String get s140acccb81 => 'Hoy';
+
+  @override
+  String get s66ad384363 => '24 horas antes';
+
+  @override
+  String get s6df3187e65 => 'Hoy + mañana';
+
+  @override
+  String get s76379cf7c6 => '48 h';
+
+  @override
   String get s306729fe62 => 'No hay precios';
 
   @override
@@ -3272,18 +3406,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sf9e22ac5e7 => 'precios antiguos';
-
-  @override
-  String get s40fbbc4d00 => '12 h';
-
-  @override
-  String get s140acccb81 => 'Hoy';
-
-  @override
-  String get s76379cf7c6 => '48 h';
-
-  @override
-  String get s252f182d27 => 'mañana ~ 14:00';
 
   @override
   String get sa0bd9ad5b1 => 'Cámara de ejemplo: agregue el suyo con Add device';
@@ -3325,6 +3447,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sf2d10dd213 => 'Electricidad / potencia';
+
+  @override
+  String get s4594c7448e => 'Ahorros / más baratos';
 
   @override
   String get s291ca127d6 => 'Garaje';
@@ -3370,6 +3495,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sdaa7d4de12 => 'Escena';
+
+  @override
+  String get s11cc92bdc3 => 'Radon';
+
+  @override
+  String get s095db91dfb => 'CO₂';
+
+  @override
+  String get s4b1eda4282 => 'Calidad del aire';
 
   @override
   String get sfe55fd97fa => 'Todo tranquilo.';
@@ -3446,9 +3580,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s039bb374fe => 'Las cifras son medias horarias';
 
   @override
-  String get sa5e6b1e0e3 => 'Mañana después de ~14:00';
-
-  @override
   String get s62cfd94468 => 'Horas más baratas por la noche';
 
   @override
@@ -3490,7 +3621,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get s4e35ba5321 =>
+  String get s538517b71b =>
       'Aún no hay puente de inicio. La regla se guarda pero funciona sólo una vez una tableta o PC siempre en casa es el puente (Configuración → Acceso remoto).';
 
   @override
@@ -3517,8 +3648,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s2f7c00a89e => 'Los precios no están disponibles ahora mismo.';
 
   @override
-  String get s406e599999 =>
-      'No hay horas al día siguiente (o los precios de mañana todavía no están apagados).';
+  String get s15b42b592c => 'No a tiempo al día siguiente.';
 
   @override
   String get s0de6e75a52 => 'Mañana';
@@ -3610,7 +3740,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Hay un puente casero (tablet o PC) en casa ya. Escanee su código QR o escriba los 6 dígitos.';
 
   @override
-  String get s5f8284b98f => 'Haga este dispositivo el puente casero';
+  String get s5f8284b98f => 'Convertir este dispositivo en puente doméstico';
 
   @override
   String get s6a95f7843b =>
@@ -3628,14 +3758,15 @@ class AppLocalizationsEs extends AppLocalizations {
       'El puente del hogar responde – el acceso remoto funciona.';
 
   @override
-  String get s370acd310d => 'Acceso remoto';
-
-  @override
   String get s0b57661c18 => 'Controla tu hogar desde cualquier lugar';
 
   @override
   String get sb43ef4094c =>
       'En casa Molaplan habla directamente con sus dispositivos. En otro lugar se encripta a través de su puente de inicio – ningún puerto de reenvío o configuración de router. La aplicación elige el camino correcto automáticamente.';
+
+  @override
+  String get se96e60e36c =>
+      'Un puente casero es cualquier Molaplan que siempre está en casa: un PC, una vieja tableta o teléfono, o el programa de puentes separado en por ejemplo un Raspberry Pi o una máquina Home Assistant. Cuando usted está lejos, los comandos de su teléfono pasan a través de él a sus dispositivos, encriptado de extremo a extremo. Nada para configurar en el router (sin reenvío de puerto).';
 
   @override
   String get s075e5a4864 => 'Conectado a casa';
@@ -3720,7 +3851,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s410655fd47 => 'Cómo conectarse';
 
   @override
-  String get s3a141e0c32 =>
+  String get s7c541b8e91 =>
       'En el puente de inicio (tabla o PC en casa) abra Molaplan → Ajustes → Acceso remoto → Haga de este dispositivo el puente de inicio.';
 
   @override
@@ -3800,7 +3931,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s9715416100 => 'Escanear con el teléfono';
 
   @override
-  String get sf54c6d871c =>
+  String get s4e877aeafe =>
       'En el teléfono: Molaplan → Ajustes → Acceso remoto → Conectar este dispositivo a casa';
 
   @override
@@ -3819,6 +3950,21 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sdfaf8c242b => 'Aceptar';
+
+  @override
+  String get sd64229b6d8 => 'aún no se ha establecido';
+
+  @override
+  String get s088e792ee3 => 'El acceso remoto está apagado';
+
+  @override
+  String get s85543bf885 => 'Online';
+
+  @override
+  String get s3f17564f18 => 'última vez visto';
+
+  @override
+  String get s9ba8cafced => '¿Qué es el acceso remoto?';
 
   @override
   String get s1cf33c1fbc => 'Valor';
@@ -3854,10 +4000,40 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s76e7a995de => 'Valor leído';
 
   @override
+  String get s4e1f25d257 => 'Own command';
+
+  @override
+  String get sea15760b77 => '¿Qué hace el botón?';
+
+  @override
+  String get s630ee9894e =>
+      'Elija un script, una escena o un dispositivo. El botón funciona en la aplicación y, cuando esté lejos, a través del acceso remoto.';
+
+  @override
+  String get s1173c2dbf9 =>
+      'No hay scripts todavía, haz uno bajo Automatizaciones.';
+
+  @override
+  String get s7b42ecba51 =>
+      'Aún no hay escenas, guarda uno bajo Automatizaciones.';
+
+  @override
+  String get s589d73245e =>
+      'No hay dispositivos conmutables todavía. Agregue un interruptor primero.';
+
+  @override
   String get sc5edd6d3d1 => 'Nueva tarjeta';
 
   @override
   String get sa684fd0716 => 'Editar tarjeta';
+
+  @override
+  String get sa7b6366b62 =>
+      'Medición: visualización, tendencia, límites de color, alarmas, decimales y escalado.';
+
+  @override
+  String get sae41bebdab =>
+      'Control: confirmación, bloqueo / PIN, min / max / step, invertido y momentáneo.';
 
   @override
   String get scf37cbeda8 => 'Icono';
@@ -3876,6 +4052,16 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sc0e069225b => 'Trend + línea Ahora';
+
+  @override
+  String get s07647fa07d => 'Rango';
+
+  @override
+  String get s8feeef3110 => 'Mostrar mañana cuando esté disponible';
+
+  @override
+  String get sad692e6ae5 =>
+      'Los precios del mañana aparecen por sí mismos una vez publicados (alrededor de las 14:00).';
 
   @override
   String get s1c72b8c56a => 'Longitud de la tendencia';
@@ -3898,6 +4084,17 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s581aee3e96 => 'Opcional: de dónde se lee el estado actual.';
+
+  @override
+  String get s3adc51170c => 'Combinación cruda (Advanced)';
+
+  @override
+  String get s5f542e17e2 =>
+      'Cada tipo de tarjeta se permite en cada conexión. Una combinación incorrecta puede mostrar datos engañosos, por ejemplo \"On\" por el precio de la electricidad.';
+
+  @override
+  String get scb988b1a4a =>
+      'Off: sólo la tarjeta escribe los soportes de conexión.';
 
   @override
   String get se6b18b17d9 => 'Intervalo de la encuesta (s, 0 = ninguno)';
@@ -4355,9 +4552,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s48b08c5f5a => 'Cuotas mensuales (energía + peajes)';
 
   @override
-  String get s286e1cfb54 => 'Total';
-
-  @override
   String get s2e8700e0cf =>
       'Parte del uso no tenía precio (el precio del spot faltaba).';
 
@@ -4465,6 +4659,17 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sa6212aaeb4 => 'Ubicación';
 
   @override
+  String get sa0eeb22daa => 'Ya está en la vista: ¿añadir de todos modos?';
+
+  @override
+  String s3507210a2a(String p0, String p1) {
+    return '$p0 ya está en la vista $p1.';
+  }
+
+  @override
+  String get s0e655a209f => 'Añadir de todos modos';
+
+  @override
   String get s902eaaff9f => 'Abierto';
 
   @override
@@ -4556,9 +4761,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s487bf00fc7 => 'Cierre';
 
   @override
-  String get s88ac47e6d1 => 'Cámaras';
-
-  @override
   String get sbe76826428 => 'Ventiladores';
 
   @override
@@ -4585,11 +4787,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sf32b7f15d8 => 'cámaras';
 
   @override
-  String s095ca83913(String p0) {
-    return '$p0 tarjetas agregadas';
-  }
-
-  @override
   String get sa7a829cefb => 'Elige dispositivos de Home Assistant';
 
   @override
@@ -4597,11 +4794,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s26583a1933 => 'Una vista por habitación';
-
-  @override
-  String sf1319d04d0(String p0) {
-    return 'Añadir $p0';
-  }
 
   @override
   String get sb3e6b54bce => 'Búsqueda por nombre o id';
@@ -4646,6 +4838,39 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s78cdce874e => 'ya añadido';
 
   @override
+  String get s7ba50ea69e => 'Dormitorio';
+
+  @override
+  String get s9e9723b263 => 'Cocina';
+
+  @override
+  String get scce769451b => 'Sala de estar';
+
+  @override
+  String get s9d5dca2dee => 'Baño';
+
+  @override
+  String get s2569505205 => 'Sauna';
+
+  @override
+  String get s1c65dad1f5 => 'Recibidor';
+
+  @override
+  String get sa4d90bb5da => 'Patio / jardín';
+
+  @override
+  String get s4a7be17a36 => 'Sala técnica';
+
+  @override
+  String get s01e404f15f => 'Despacho';
+
+  @override
+  String get sfd8305add2 => 'Habitación infantil';
+
+  @override
+  String get scd87fb4dd7 => 'Casa de campo';
+
+  @override
   String get sdc398885dc => 'Ajustes avanzados';
 
   @override
@@ -4679,6 +4904,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s254a1d8e12 => 'Imagen de fondo (opcional)';
+
+  @override
+  String get sc48f5f9bcf => 'Elegir imagen';
 
   @override
   String get s7ba9d453ed => 'Atenuar cuando el dispositivo está apagado';
@@ -4732,6 +4960,48 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s9bb545e9b3 => 'Inicia sesión o crea una cuenta';
+
+  @override
+  String get s08d62fd281 => 'Apariencia';
+
+  @override
+  String get s2b8a2754c6 => 'Tema';
+
+  @override
+  String get s79f67deb42 => 'Luz';
+
+  @override
+  String get s0d6fb52039 => 'Oscuro';
+
+  @override
+  String get s70dd7fdd58 => 'Al amanecer y al atardecer';
+
+  @override
+  String get s21206b61f7 =>
+      'Necesita la ubicación de la casa (Energía › Home). Hasta entonces se sigue el ajuste del dispositivo.';
+
+  @override
+  String get s4e23920823 =>
+      'Luz por día, oscura por la noche. Off: sigue el ajuste del dispositivo.';
+
+  @override
+  String get s4b847ce63e =>
+      'La elección se aplica a este dispositivo y se guarda en su cuenta como el predeterminado para nuevos dispositivos.';
+
+  @override
+  String get s5ebc02022b => 'Mostrar como promedio por hora';
+
+  @override
+  String get s68b4d332ca =>
+      'Precio, horas más baratas y control de precios por hora (contrato fijo por hora). Off: 15 min donde la zona publica precios de 15 minutos.';
+
+  @override
+  String get saf496a12a3 =>
+      'Tarjeta de la mañana: también mostrar la hora más bonita';
+
+  @override
+  String get sc53b1b78c0 =>
+      'La hora más barata de las próximas 24 h se muestra siempre con su precio.';
 
   @override
   String get s0625d54b38 => 'Tamaño de las tarjetas';
@@ -4923,6 +5193,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sae0fae7127 => 'Ve a mi salpicadero';
 
   @override
+  String get s2a28790ea2 => 'Ancho completo';
+
+  @override
   String get s64f4d1e11a => 'Indica la ubicación de casa';
 
   @override
@@ -4983,6 +5256,18 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s38d0517a8d => 'Autenticación';
+
+  @override
+  String get sade17bf83e => 'Ninguno';
+
+  @override
+  String get s9cbb9f048d => 'Usuario + contraseña (Basic)';
+
+  @override
+  String get s3cb806781e => 'Usuario + contraseña (Digest)';
+
+  @override
+  String get sb1920b9d9b => 'Token (Bearer)';
 
   @override
   String get sed995f57b8 => 'Usuario';
@@ -5056,7 +5341,103 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se995a6862d => 'Modo';
 
   @override
+  String get s7cf6da2822 => 'Live (MJPEG)';
+
+  @override
+  String get s4cb8ad767b => 'Juegos de rol';
+
+  @override
+  String get s15f9cd477c => 'RTSP video';
+
+  @override
   String get s4f356d158a => 'Refresh (s, snapshot)';
+
+  @override
+  String get scbc6aa5e63 => 'radón';
+
+  @override
+  String get sfc402d7bce => 'co2';
+
+  @override
+  String get s7410329f6d => 'air_quality';
+
+  @override
+  String get s05ff8e0c34 => 'termostato';
+
+  @override
+  String get s26e6d96d7e => 'humedad';
+
+  @override
+  String get sfabcfc0188 => 'velocidad';
+
+  @override
+  String get s12a1c5653a => 'air_quality';
+
+  @override
+  String get s2f37dd80ed => 'batería';
+
+  @override
+  String get sd4025b7a32 => 'Airthings (cloud)';
+
+  @override
+  String get sf7d012472a => 'Client ID';
+
+  @override
+  String get s94bccb8598 =>
+      'dashboard.airthings.com → Integrations → API → Create client (Client credentials).';
+
+  @override
+  String get sb1a9b21d4f => 'Client secret';
+
+  @override
+  String get s2403198fe5 =>
+      'Mostrado junto al ID del cliente. Mantenlo en secreto.';
+
+  @override
+  String get s21b52207e8 => 'Intervalo de actualización (min)';
+
+  @override
+  String get saad5ced5fe =>
+      'Los monitores actualizan cada 5 minutos; pedir más a menudo no trae nada nuevo.';
+
+  @override
+  String get sc844e90e0f => 'Número de serie';
+
+  @override
+  String get s8cee566dd7 =>
+      'El número de serie del monitor (10 dígitos) – se llena cuando se agrega de la lista.';
+
+  @override
+  String get s2d79014611 => 'Medición';
+
+  @override
+  String get s852b4e5c75 =>
+      'Que medición muestra la tarjeta (radon Bq/m3, CO2 ppm, VOC ppb, °C, %, hPa, μg/m3, batería %).';
+
+  @override
+  String get s6cd83fc216 => 'Radon (de corto plazo)';
+
+  @override
+  String get s0c4b6446cd => 'Radon (long-term)';
+
+  @override
+  String get s96cc1b3741 => 'VOC';
+
+  @override
+  String get sf8496cb6dc => 'Presión';
+
+  @override
+  String get s99e44237af => 'PM2.5';
+
+  @override
+  String get s951d501a1a => 'PM1';
+
+  @override
+  String get sb6d80b9662 => 'Airthings Wave (Bluetooth)';
+
+  @override
+  String get s83d2446b44 =>
+      'En la parte posterior o inferior del monitor (10 dígitos, por ejemplo 2930xxxxxxxxx).';
 
   @override
   String get s2525f9a4f5 =>
@@ -5082,6 +5463,10 @@ class AppLocalizationsEs extends AppLocalizations {
       'De tu factura, incl. IVA. Deja 0 solo para energía.';
 
   @override
+  String get s1d9eabe472 =>
+      'Para contratos por hora. Off: 15-min precios en los que la zona los publica (EU day-ahead desde 1 Oct 2025).';
+
+  @override
   String get s515da3a9dd => 'Servidor de precio';
 
   @override
@@ -5092,13 +5477,26 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s271885dc8b => 'Qué mostrar';
 
   @override
-  String get s46282f452b => 'ahora = precio actual, gráfico = hoy y mañana.';
+  String get s1edb6be142 =>
+      'Que precio figura la tarjeta muestra: ahora, el más bajo / más alto / promedio de hoy, la próxima hora barata o el gráfico.';
+
+  @override
+  String get s46aab99b27 => 'Más bajo hoy';
+
+  @override
+  String get sf6295f1182 => 'Más alto hoy';
+
+  @override
+  String get s1aa7abbf72 => 'Precio medio hoy';
+
+  @override
+  String get s65f496b2dc => 'Siguiente hora barata';
+
+  @override
+  String get se446dc324a => 'Gráfico de precios (hoy y mañana)';
 
   @override
   String get s2f754e8ab4 => 'Todavía no hay precios para hoy.';
-
-  @override
-  String get sd575462da3 => 'mañana ';
 
   @override
   String get s18faad19ed => 'No hay precio por ahora.';
@@ -5177,6 +5575,21 @@ class AppLocalizationsEs extends AppLocalizations {
       'tasmota_http = Tasmota (tasmota-ir) por IP. tasmota_mqtt = Tasmota a través de un broker MQTT. esphome = ESPHome climate_ir. http/mqtt = otro blaster con tus propias plantillas.';
 
   @override
+  String get s4fb133b1c8 => 'Tasmota (HTTP)';
+
+  @override
+  String get sdd5d31034c => 'Tasmota (MQTT)';
+
+  @override
+  String get see30b7398b => 'ESPHome';
+
+  @override
+  String get scb2d23e10b => 'HTTP personalizado';
+
+  @override
+  String get s5c6c30aac6 => 'Custom MQTT';
+
+  @override
   String get s38471ae691 => 'Dirección de Blaster';
 
   @override
@@ -5244,6 +5657,18 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s8567c5faa6 =>
       'sumario = estado completo como texto. habitación = sensor de temperatura del interruptor. Otros = último ajuste enviado.';
+
+  @override
+  String get s5d329a0fea => 'Resumen';
+
+  @override
+  String get s5db6506824 => 'Temperatura de montaje';
+
+  @override
+  String get s018d2e08f4 => 'Ventilador';
+
+  @override
+  String get s051944392f => 'Temperatura ambiente';
 
   @override
   String get sdd8cd8132c => 'Qué cambiar';
@@ -5379,9 +5804,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s43c9b88580 => 'Auto';
 
   @override
-  String get s018d2e08f4 => 'Ventilador';
-
-  @override
   String get s36fb6ba26f => 'Modbus TCP';
 
   @override
@@ -5445,6 +5867,18 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s943b8b6bf3 => 'Cuadro de registro';
 
   @override
+  String get s8283ed1c89 => 'Registro de tenencia (4x)';
+
+  @override
+  String get s94cf36d710 => 'Coil (0x)';
+
+  @override
+  String get sfb6d4a8639 => 'Registro de entrada (3x)';
+
+  @override
+  String get s0bbedf814a => 'Entrada discreta (1x)';
+
+  @override
   String get sf51ad986eb => 'Address (0-based)';
 
   @override
@@ -5499,6 +5933,12 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sddbea594a4 =>
       'último = el mensaje más reciente, log = varios mensajes recientes (no menor primero).';
+
+  @override
+  String get s580abde883 => 'Último mensaje';
+
+  @override
+  String get sf6455b6631 => 'Registro de mensajes';
 
   @override
   String get s2bd0e69d44 => 'Tema (opcional)';
@@ -5719,11 +6159,6 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String sb23114b65d(String p0) {
-    return 'más barato a $p0:00';
-  }
-
-  @override
   String sd39874fbe2(String p0) {
     return '$p0 dispositivos en';
   }
@@ -5777,6 +6212,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s4cac4725b8 => 'Los dispositivos del grupo no responden';
+
+  @override
+  String get s13a91fe322 => 'Falta el dispositivo para controlar';
 
   @override
   String get s7e461faf91 =>
@@ -5843,13 +6281,11 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sc130e073ba => 'Relé o plug running Tasmota firmware.';
 
   @override
-  String get s16be1831d6 => 'Sólo para dispositivos con medición de energía.';
+  String get s70d8cb97e6 => 'Relays';
 
   @override
-  String get s8890d26ef2 => 'Número de relé';
-
-  @override
-  String get s7e6d21d466 => 'Para dispositivos multirrelés 1, 2, 3...';
+  String get s7a4c459c3a =>
+      'Vacío = cada relé de los informes del dispositivo (detectado automáticamente). Reducirlo: \"1\", \"1,2,4\", \"1-4\" o \"todo\".';
 
   @override
   String get s5f1e4a036e => 'Contraseña web';
@@ -6099,19 +6535,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sef4f509f9f => 'Escoja su país; en Suecia y Noruega su área.';
 
   @override
-  String get s5e8c8e4273 => 'Aspecto';
-
-  @override
-  String get s9f6d9ce1bf =>
-      'La tendencia muestra hoy y mañana como una línea con la posición Ahora.';
-
-  @override
-  String get s51f1184efb => 'Tendencia y barras (2 tarjetas)';
-
-  @override
-  String get sa77af9de19 => 'Tendencia de precios (línea, línea Ahora)';
-
-  @override
   String get sf3a8631d14 => 'De su factura incl. IVA. 0 = energía solamente.';
 
   @override
@@ -6123,14 +6546,52 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get s9772b9b5c4 => 'Tendencia del precio de la electricidad';
+  String get sfb2b7ccc87 => 'Tendencia de precios';
 
   @override
-  String get s9af9526395 => 'Unidad de ventilación (Modbus TCP)';
+  String get s4790164c94 => 'Hoy y mañana';
 
   @override
-  String get s29dc0baf55 =>
-      'Temperaturas y velocidad de los ventiladores. Los presets de registro son ejemplos – verifique con su manual.';
+  String get sd408a5dbe9 => 'Horas más baratas';
+
+  @override
+  String get s7ba83434d1 =>
+      'Aire acondicionado (calor y calidad del aire, nube)';
+
+  @override
+  String get s39e8df2552 =>
+      'View Plus, View Radon, Hub y cada monitor en su cuenta. Los modelos Wi-Fi no tienen API local, así que los valores provienen de la API oficial de Airthings con sus propias credenciales.';
+
+  @override
+  String get sbafe369760 =>
+      '1) Open view.airthings.com y iniciar sesión con su cuenta de Airthings. 2) Integraciones → API → Crear cliente (\"Nuevo cliente de API\"). 3) Diríjalo por ejemplo Molaplan, elija el tipo de flujo \"Clasificación de cliente\" y lo active. 4) Copiar el ID de cliente aquí.';
+
+  @override
+  String get sb6a852ab13 =>
+      '5) Copiar el secreto del Cliente desde la misma vista. Se almacena sólo en este dispositivo y se encripta en su cuenta.';
+
+  @override
+  String get sc76f519144 =>
+      'Wave, Wave Plus, Wave Mini y Wave Radon solo utilizan Bluetooth. Lea por un dispositivo Android o el puente de inicio (por ejemplo, una tableta de pared) en unos 10 m.';
+
+  @override
+  String get sff5f25f96f =>
+      'En la parte posterior del monitor (10 dígitos). El inicio indica el modelo: 2930 = Wave Plus, 2950 = Wave Radon, 2920 = Wave Mini.';
+
+  @override
+  String get s8de2de9178 => 'Lea a través del puente casero';
+
+  @override
+  String get s5e605a88ef =>
+      'En cuando el puente casero (p. ej. una tableta de pared cerca del monitor) hace la lectura Bluetooth.';
+
+  @override
+  String get s3330126b01 =>
+      'Unidad de ventilación o bomba de calor (Modbus TCP)';
+
+  @override
+  String get sc16ab2836c =>
+      'Temperaturas, velocidad de los ventiladores y ajustes. Mapas de registro listos para las marcas (Airfi, Vallox, Enervent, Swegon, Flexit, Ilto, Nilan, NIBE, Thermia) – verifique con su manual.';
 
   @override
   String get sb75966bb58 => 'Unidad o puerta de entrada IP';
@@ -6230,8 +6691,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s8231329360 => 'Tema de comando URL';
 
   @override
-  String get sd82d127f05 =>
-      'Pruebe la misma URL que sus mensajes de acceso directo se ordenan (p. ej. https://ntfy.sh/kv-cmd-...).';
+  String get s206ac44298 =>
+      'Pruebe la misma URL que sus posts de acceso directo comandos a (por ejemplo https://ntfy.sh/oma-aihe). El nombre de tema solo también funciona.';
 
   @override
   String get s1b3bbae234 =>
@@ -6284,4 +6745,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String s3a38b97f7b(String p0) {
     return '$p0 – room';
   }
+
+  @override
+  String get s0ceafaa97c => 'energía';
 }

@@ -151,7 +151,7 @@ void main() {
     }
     expect(find.byType(PricePage), findsOneWidget);
     final page = find.descendant(of: find.byType(PricePage), matching: find.byKey(const ValueKey('price-bars')));
-    for (final res in ['1 h', '15 min']) {
+    for (final res in ['15 min', '1 h']) {
       for (final k in tile.keys) {
         final t = tester
             .widgetList<Text>(
@@ -161,7 +161,17 @@ void main() {
               ),
             )
             .first;
-        expect((t.textSpan?.toPlainText() ?? t.data ?? '').split(' ').first, tile[k], reason: '$k at $res');
+        final shown = (t.textSpan?.toPlainText() ?? t.data ?? '').split(' ').first;
+        double n(String s) => double.parse(s.replaceAll(',', '.'));
+        // t168u: the stats follow the shown resolution – identical at the tile's (15-min, as the
+        // data) one; hourly averages narrow the extremes.
+        if (res == '15 min' || k == 'avg') {
+          expect(shown, tile[k], reason: '$k at $res');
+        } else if (k == 'min') {
+          expect(n(shown), greaterThanOrEqualTo(n(tile[k]!)), reason: '$k at $res');
+        } else if (k == 'max') {
+          expect(n(shown), lessThanOrEqualTo(n(tile[k]!)), reason: '$k at $res');
+        }
       }
       // Now line: at the local time on a today+tomorrow axis (t0 = local midnight).
       final p = tester.widget<CustomPaint>(page).painter! as PriceBarsPainter;
@@ -169,7 +179,7 @@ void main() {
       final frac = now.difference(DateTime(now.year, now.month, now.day)).inSeconds / (48 * 3600);
       expect(p.debugNowX, closeTo(36 + (size.width - 36) * frac, 2.0), reason: res);
       await _shot(tester, res == '1 h' ? 'chart' : 'chart15');
-      if (res == '1 h') {
+      if (res == '15 min') {
         await tester.tap(find.byKey(const ValueKey('price-res')));
         await tester.pump(const Duration(milliseconds: 300));
       }

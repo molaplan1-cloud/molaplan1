@@ -6,6 +6,7 @@
 /// Script tile: button, command {'kind': 'script', 'scriptId': id}.
 library;
 
+import '../automation/host.dart' show nativeToggleStep;
 import '../core/template.dart';
 import '../drivers/driver.dart';
 import '../models/models.dart';
@@ -85,6 +86,32 @@ class AutoDriver extends Driver {
         return app.automations.runScript('${spec['scriptId']}');
       case 'automation':
         return app.automations.runAutomation('${spec['automationId']}');
+      case 'tile':
+        // t173u: a button that controls another tile (Päälle / Pois / Vaihda).
+        final t = _tile('${spec['tileId']}');
+        if (t == null) throw DriverException(dtx('Ohjattavaa laitetta ei löydy', 'The device to control is missing'));
+        var op = '${spec['op'] ?? 'toggle'}';
+        if (op == 'toggle') {
+          final native = nativeToggleStep(
+            t.onCommand == null ? null : {'connectionId': t.onCommand!.connectionId, 'spec': t.onCommand!.spec},
+          );
+          if (native != null) {
+            await app.runStep(
+              CommandStep(
+                connectionId: '${native['connectionId']}',
+                spec: Map<String, dynamic>.from(native['spec'] as Map),
+              ),
+            );
+            return null;
+          }
+          final d = app.driverFor(t.connectionId);
+          final v = d == null || t.read.isEmpty ? null : await d.read(t.read);
+          op = isTruthy(v is TimedValue ? v.value : v, onValue: t.onValue) ? 'off' : 'on';
+        }
+        final step = op == 'on' ? t.onCommand : t.offCommand;
+        if (step == null) throw DriverException(dtx('${t.title}: komento puuttuu', '${t.title}: no command'));
+        await app.runStep(step, value: op == 'on' ? 1 : 0);
+        return null;
     }
     return null;
   }
@@ -114,5 +141,17 @@ TileConfig runTile(String title, String kind, String id, {String icon = 'scene'}
   read: {'kind': kind, '${kind}Id': id},
   commands: [
     CommandStep(connectionId: autoConnId, spec: {'kind': kind, '${kind}Id': id}),
+  ],
+);
+
+/// t173u: a button tile that switches another tile on / off / over.
+TileConfig controlTile(String title, String tileId, String op, {String icon = 'touch'}) => TileConfig(
+  type: TileType.button,
+  title: title,
+  icon: icon,
+  pollSeconds: 0,
+  read: {'kind': 'tile', 'tileId': tileId, 'op': op},
+  commands: [
+    CommandStep(connectionId: autoConnId, spec: {'kind': 'tile', 'tileId': tileId, 'op': op}),
   ],
 );

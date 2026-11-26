@@ -4,6 +4,7 @@ import '../core/fields.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
 import 'account_nudge.dart';
+import 'channel_repair.dart';
 import 'app_scope.dart';
 import 'heatpump_pages.dart';
 import 'error_box.dart';
@@ -107,15 +108,21 @@ class ConnectionsPage extends StatelessWidget {
                 final s = con.settings;
                 final addr = s.str('baseUrl', s.str('host', s.str('url')));
                 return Card(
-                  child: ListTile(
-                    leading: Icon(connectionIcon(con.type)),
-                    title: Text(con.name),
-                    subtitle: Text('${descriptorFor(con.type).label(st.lang)} · $addr'),
-                    trailing: const Icon(Icons.chevron_right),
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => ConnectionEditor(initial: con.copy())),
-                    ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ListTile(
+                        leading: Icon(connectionIcon(con.type)),
+                        title: Text(con.name),
+                        subtitle: Text('${descriptorFor(con.type).label(st.lang)} · $addr'),
+                        trailing: const Icon(Icons.chevron_right),
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => ConnectionEditor(initial: con.copy())),
+                        ),
+                      ),
+                      ChannelRepairBanner(key: ValueKey('repair-${con.id}'), connection: con),
+                    ],
                   ),
                 );
               },

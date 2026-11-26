@@ -221,7 +221,7 @@ void main() {
   });
 
   test('bridge "discover" op: brand search runs on the bridge', () async {
-    final ex = RemoteExecutor(discover: (p) async => [Candidate(provider: p, address: '192.168.50.172', model: 'Shelly Pro 4PM').toJson()]);
+    final ex = RemoteExecutor(discover: (p) async => [Candidate(provider: p, address: '192.168.88.172', model: 'Shelly Pro 4PM').toJson()]);
     final res = await ex.run({'id': 1, 'op': 'discover', 'spec': {'provider': 'shelly'}});
     expect(res['ok'], true);
     expect(Candidate.fromJson((res['v'] as List).first as Map, viaBridge: true).model, 'Shelly Pro 4PM');
@@ -230,9 +230,9 @@ void main() {
   });
 
   test('network helpers', () {
-    expect(isPrivateIPv4('192.168.50.172'), isTrue);
+    expect(isPrivateIPv4('192.168.88.172'), isTrue);
     expect(isPrivateIPv4('8.8.8.8'), isFalse);
-    expect(sameSubnet('192.168.50.172', ['192.168.1.34']), isFalse);
+    expect(sameSubnet('192.168.88.172', ['192.168.1.34']), isFalse);
     expect(sameSubnet('192.168.1.60', ['192.168.1.34']), isTrue);
     expect(hostOf('http://192.168.1.5:80/x'), '192.168.1.5');
     expect(explain(Exception('HTTP 401: x')).problem, AddProblem.needsPassword);

@@ -185,6 +185,58 @@ class OfflineBanner extends StatelessWidget {
   );
 }
 
+/// t174u: away from home with LAN-only tiles and no home bridge online – say so once, with a
+/// link to Etäkäyttö, instead of a wall of "Laite ei vastaa".
+class AwayNoBridgeBanner extends StatelessWidget {
+  const AwayNoBridgeBanner({super.key});
+
+  @override
+  Widget build(BuildContext context) => ListenableBuilder(
+    listenable: NetHealth.instance,
+    builder: (context, _) {
+      final st = AppScope.of(context);
+      if (st.remote.bridgeOnline) return const SizedBox.shrink();
+      final away = st.config.dashboards.any((d) => d.tiles.any((t) => awayLanConnection(st, t) != null));
+      if (!away) return const SizedBox.shrink();
+      final cs = Theme.of(context).colorScheme;
+      return Material(
+        key: const ValueKey('away-no-bridge'),
+        color: cs.tertiaryContainer,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: Row(
+            children: [
+              Icon(Icons.router_outlined, color: cs.onTertiaryContainer, size: 20),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  st.remote.isPaired
+                      ? tx(
+                          context,
+                          'Olet poissa kotoa, eikä kotisilta vastaa. Kotiverkon laitteita ei voi nyt ohjata.',
+                          'You are away and the home bridge is not answering. Home network devices cannot be controlled now.',
+                        )
+                      : tx(
+                          context,
+                          'Olet poissa kotoa. Kotiverkon laitteet toimivat etänä vain kotisillan kautta.',
+                          'You are away. Home network devices work remotely only through a home bridge.',
+                        ),
+                  style: TextStyle(color: cs.onTertiaryContainer),
+                ),
+              ),
+              TextButton(
+                key: const ValueKey('away-no-bridge-open'),
+                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RemoteHubPage())),
+                child: Text(tx(context, 'Etäkäyttö', 'Remote access')),
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
 /// True when the connection is a Shelly on the LAN (its tiles use Shelly HTTP paths).
 bool isShellyLan(BuildContext context, ConnectionConfig c) {
   if (c.type != 'http') return false;

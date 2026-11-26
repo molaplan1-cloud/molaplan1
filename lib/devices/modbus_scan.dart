@@ -148,8 +148,11 @@ bool looksLikeAirfi(List<int> v) {
   bool inR(int x, int lo, int hi) => x >= lo && x <= hi;
   int s16(int x) => x >= 0x8000 ? x - 0x10000 : x;
   final versions = inR(v[0], 1, 999) && inR(v[1], 1, 999) && inR(v[2], 30, 999);
+  // T1–T5: one missing / unused sensor may read nonsense (e.g. −61.3 °C on a real unit), so
+  // all but one temperature must be plausible (−50…80 °C) and not all zero.
   final temps = [for (final x in v.sublist(3, v.length.clamp(0, 8))) s16(x)];
-  return versions && temps.every((t) => inR(t, -500, 800)) && temps.any((t) => t != 0);
+  final plausible = temps.where((t) => inR(t, -500, 800)).length;
+  return versions && plausible >= temps.length - 1 && temps.any((t) => t != 0);
 }
 
 class ModbusFound {
@@ -359,7 +362,11 @@ Future<List<ModbusFound>> probeModbusHost(
         // A direct device: one answer is enough (it ignores the unit id or uses this one).
         if (!gateway && !allUnits) {
           // t157u: one more request – the IV presets' register signature (Airfi…).
-          if (id.isEmpty || out.last.vendor.isEmpty) {
+          // FC43 vendor / product naming a preset brand (generic, any brand with a preset).
+          final idText = '${out.last.vendor} ${out.last.product}'.toLowerCase();
+          final byName = ivProfiles.where((p) => idText.contains(p.brand.toLowerCase())).firstOrNull;
+          if (byName != null) out[out.length - 1] = out.last.copyWith(profile: byName.brand);
+          if (byName == null && (id.isEmpty || out.last.vendor.isEmpty)) {
             final known = await identifyModbusProfile(c, out.last);
             if (known != null) out[out.length - 1] = known;
           }

@@ -1,3 +1,4 @@
+import '../ui/measure_colors.dart' show defaultPriceThresholds;
 import '../devices/climate.dart';
 
 import 'dart:convert';
@@ -5,6 +6,8 @@ import 'dart:convert';
 import 'package:material_ui/material_ui.dart' hide Threshold;
 
 import '../core/fields.dart';
+import '../drivers/airthings.dart';
+import '../devices/multichannel.dart';
 import '../drivers/ir_driver.dart';
 import '../prices/prices.dart';
 import '../models/models.dart';
@@ -14,7 +17,10 @@ import '../l10n/l10n.dart';
 class TemplateResult {
   final List<ConnectionConfig> connections;
   final List<TileConfig> tiles;
-  TemplateResult(this.connections, this.tiles);
+
+  /// Indexes of [tiles] that start unticked in the add checklist (e.g. the 'Kaikki' group).
+  final Set<int> optional;
+  TemplateResult(this.connections, this.tiles, {this.optional = const {}});
 }
 
 /// A ready-made device recipe: the user fills only a few simple inputs.
@@ -313,23 +319,14 @@ final deviceTemplates = <DeviceTemplate>[
         helpEn: 'Shown as the tile title.',
       ),
       const FieldSpec(
-        'power',
-        'Näytä teho (W)',
-        'Show power (W)',
-        kind: FieldKind.boolean,
-        defaultValue: false,
-        helpFi: 'Vain energiamittauksella varustetuille.',
-        helpEn: 'Only for devices with energy metering.',
-      ),
-      const FieldSpec(
         'relay',
-        'Releen numero',
-        'Relay number',
-        kind: FieldKind.number,
-        defaultValue: 1,
+        'Releet',
+        'Relays',
+        hint: '1-4',
         advanced: true,
-        helpFi: 'Monireleisissä 1, 2, 3...',
-        helpEn: 'For multi-relay devices 1, 2, 3...',
+        helpFi: 'Tyhjä = kaikki laitteen ilmoittamat releet (tunnistetaan automaattisesti). Voit rajata: "1", "1,2,4", "1-4" tai "kaikki".',
+        helpEn:
+            'Empty = every relay the device reports (detected automatically). Narrow it: "1", "1,2,4", "1-4" or "all".',
       ),
       const FieldSpec(
         'password',
@@ -341,43 +338,7 @@ final deviceTemplates = <DeviceTemplate>[
         helpEn: 'Only if a web password is set (user admin).',
       ),
     ],
-    build: (v, lang) {
-      final name = _s(v, 'name', 'Tasmota');
-      final n = int.tryParse(_s(v, 'relay', '1')) ?? 1;
-      final pw = _s(v, 'password');
-      final auth = pw.isEmpty ? '' : '&user=admin&password=${Uri.encodeQueryComponent(pw)}';
-      final c = ConnectionConfig(
-        name: name,
-        type: 'http',
-        settings: {'baseUrl': normUrl(v['address']), 'auth': 'none'},
-      );
-      final tiles = <TileConfig>[
-        TileConfig(
-          type: TileType.toggle,
-          title: name,
-          icon: 'outlet',
-          connectionId: c.id,
-          pollSeconds: 5,
-          read: {'path': '/cm?cmnd=Power$n$auth', 'regex': r'"POWER\d*"\s*:\s*"(\w+)"'},
-          onCommand: CommandStep(connectionId: c.id, spec: {'method': 'GET', 'path': '/cm?cmnd=Power$n%20On$auth'}),
-          offCommand: CommandStep(connectionId: c.id, spec: {'method': 'GET', 'path': '/cm?cmnd=Power$n%20Off$auth'}),
-        ),
-      ];
-      if (_b(v, 'power')) {
-        tiles.add(
-          TileConfig(
-            type: TileType.value,
-            title: '$name – ${_t(lang, 'teho', 'power')}',
-            icon: 'bolt',
-            unit: 'W',
-            decimals: 0,
-            connectionId: c.id,
-            read: {'path': '/cm?cmnd=Status%208$auth', 'jsonPath': 'StatusSNS.ENERGY.Power'},
-          ),
-        );
-      }
-      return TemplateResult([c], tiles);
-    },
+    build: (v, lang) => buildTasmota(v, lang),
   ),
   DeviceTemplate(
     id: 'esphome',
@@ -931,21 +892,6 @@ final deviceTemplates = <DeviceTemplate>[
         helpEn: 'Pick your country; in Sweden and Norway your area.',
       ),
       const FieldSpec(
-        'look',
-        'Näkymä',
-        'Look',
-        kind: FieldKind.choice,
-        options: ['both', 'trend', 'bars'],
-        defaultValue: 'both',
-        optionLabels: {
-          'both': ('Trendi ja pylväät (2 ruutua)', 'Trend and bars (2 tiles)'),
-          'trend': ('Hinnan trendi (viiva, Nyt-viiva)', 'Price trend (line, Now line)'),
-          'bars': ('Pylväät (15 min)', 'Bars (15 min)'),
-        },
-        helpFi: 'Trendi näyttää tämän päivän ja huomisen hinnan viivana ja Nyt-kohdan.',
-        helpEn: 'The trend shows today and tomorrow as a line with the Now position.',
-      ),
-      const FieldSpec(
         'transfer',
         'Siirto + sähkövero (c/kWh)',
         'Transfer + tax (c/kWh)',
@@ -978,44 +924,140 @@ final deviceTemplates = <DeviceTemplate>[
           'transfer': num.tryParse(_s(v, 'transfer', '0').replaceAll(',', '.')) ?? 0,
         },
       );
-      final look = _s(v, 'look', 'both');
+      // t166u: one entity per tile, shown as a checklist – only the chart (index 2) is ticked by default.
       return TemplateResult(
         [c],
         [
-          if (look != 'bars')
-            TileConfig(
-              type: TileType.value,
-              title: _t(lang, 'Sähkön hinnan trendi', 'Electricity price trend'),
-              icon: 'show_chart',
-              colSpan: 2,
-              rowSpan: 2,
-              connectionId: c.id,
-              pollSeconds: 300,
-              display: 'trend',
-              trendGrid: 'h',
-              read: {'field': 'chart'},
-            ),
-          if (look != 'trend')
-            TileConfig(
-              type: TileType.value,
-              title: _t(lang, 'Sähkön hinta', 'Electricity price'),
-              icon: 'bolt',
-              colSpan: 2,
-              rowSpan: 2,
-              connectionId: c.id,
-              pollSeconds: 300,
-              read: {'field': 'chart'},
-            ),
+          TileConfig(
+            type: TileType.value,
+            title: _t(lang, 'Hinta nyt', 'Price now'),
+            icon: 'bolt',
+            unit: 'c/kWh',
+            connectionId: c.id,
+            pollSeconds: 300,
+            decimals: 2,
+            thresholds: defaultPriceThresholds,
+            read: {'field': 'now'},
+          ),
+          TileConfig(
+            type: TileType.value,
+            title: _t(lang, 'Hintatrendi', 'Price trend'),
+            icon: 'show_chart',
+            colSpan: 2,
+            rowSpan: 2,
+            connectionId: c.id,
+            pollSeconds: 300,
+            display: 'trend',
+            trendGrid: 'h',
+            read: {'field': 'chart'},
+          ),
+          TileConfig(
+            type: TileType.value,
+            title: _t(lang, 'Tämän ja huomisen kaavio', 'Today and tomorrow chart'),
+            icon: 'bolt',
+            colSpan: 2,
+            rowSpan: 2,
+            connectionId: c.id,
+            pollSeconds: 300,
+            read: {'field': 'chart'},
+          ),
+          TileConfig(
+            type: TileType.value,
+            title: _t(lang, 'Halvimmat tunnit', 'Cheapest hours'),
+            icon: 'savings',
+            connectionId: c.id,
+            pollSeconds: 300,
+            read: {'field': 'next_cheap'},
+          ),
         ],
+        optional: const {0, 1, 3},
       );
+    },
+  ),
+  // t159u: Airthings – cloud for Wi-Fi models, Bluetooth for Wave models.
+  DeviceTemplate(
+    id: 'airthings',
+    fi: 'Airthings (radon ja ilmanlaatu, pilvi)',
+    en: 'Airthings (radon and air quality, cloud)',
+    descFi: 'View Plus, View Radon, Hub ja kaikki tiliisi liitetyt mittarit. Wi-Fi-malleissa ei ole paikallista rajapintaa, joten arvot luetaan Airthingsin virallisesta rajapinnasta omalla tunnuksellasi.',
+    descEn: 'View Plus, View Radon, Hub and every monitor in your account. The Wi-Fi models have no local API, so values come from the official Airthings API with your own credentials.',
+    icon: Icons.sensors,
+    color: const Color(0xFF00897B),
+    connectionType: 'airthings',
+    inputs: [
+      const FieldSpec(
+        'clientId',
+        'Client ID',
+        'Client ID',
+        required: true,
+        helpFi: '1) Avaa dashboard.airthings.com ja kirjaudu Airthings-tunnuksillasi. 2) Integrations → API → Create client (tai "New API client"). 3) Anna nimeksi esim. Molaplan, valitse Flow type "Client credentials" ja ota se käyttöön. 4) Kopioi Client ID tähän.',
+        helpEn: '1) Open dashboard.airthings.com and sign in with your Airthings account. 2) Integrations → API → Create client ("New API client"). 3) Name it e.g. Molaplan, choose Flow type "Client credentials" and enable it. 4) Copy the Client ID here.',
+      ),
+      const FieldSpec(
+        'clientSecret',
+        'Client secret',
+        'Client secret',
+        kind: FieldKind.secret,
+        required: true,
+        helpFi:
+            '5) Kopioi samasta näkymästä Client secret. Se tallennetaan vain tähän laitteeseen ja tiliisi salattuna.',
+        helpEn: '5) Copy the Client secret from the same view. It is stored only on this device and encrypted in your account.',
+      ),
+      const FieldSpec('name', 'Nimi', 'Name', hint: 'Airthings', advanced: true),
+    ],
+    build: (v, lang) => TemplateResult([
+      ConnectionConfig(
+        name: _s(v, 'name', 'Airthings'),
+        type: 'airthings',
+        settings: {'clientId': _s(v, 'clientId').trim()},
+        secrets: {if (_s(v, 'clientSecret').isNotEmpty) 'clientSecret': _s(v, 'clientSecret').trim()},
+      ),
+    ], const []),
+  ),
+  DeviceTemplate(
+    id: 'airthings_wave',
+    fi: 'Airthings Wave (Bluetooth)',
+    en: 'Airthings Wave (Bluetooth)',
+    descFi: 'Wave, Wave Plus, Wave Mini ja Wave Radon toimivat vain Bluetoothilla. Lukee Android-laite tai kotisilta (esim. seinätabletti) enintään 10 m päässä.',
+    descEn: 'Wave, Wave Plus, Wave Mini and Wave Radon use Bluetooth only. Read by an Android device or the home bridge (e.g. a wall tablet) within about 10 m.',
+    icon: Icons.bluetooth,
+    color: const Color(0xFF00897B),
+    connectionType: 'airthings_ble',
+    inputs: [
+      const FieldSpec(
+        'serial',
+        'Sarjanumero',
+        'Serial number',
+        required: true,
+        helpFi:
+            'Mittarin takana (10 numeroa). Alku kertoo mallin: 2930 = Wave Plus, 2950 = Wave Radon, 2920 = Wave Mini.',
+        helpEn: 'On the back of the monitor (10 digits). The start tells the model: 2930 = Wave Plus, 2950 = Wave Radon, 2920 = Wave Mini.',
+      ),
+      const FieldSpec(
+        'viaBridge',
+        'Lue kotisillan kautta',
+        'Read through the home bridge',
+        kind: FieldKind.boolean,
+        helpFi: 'Päälle, kun Bluetooth-lukija on kotisilta (esim. seinätabletti mittarin lähellä).',
+        helpEn: 'On when the home bridge (e.g. a wall tablet near the monitor) does the Bluetooth reading.',
+      ),
+    ],
+    build: (v, lang) {
+      final serial = _s(v, 'serial').replaceAll(RegExp(r'\s'), '');
+      final c = ConnectionConfig(
+        name: 'Airthings ${airthingsModel(serial)}',
+        type: 'airthings_ble',
+        settings: {'serial': serial, if (v['viaBridge'] == true) 'viaBridge': true},
+      );
+      return TemplateResult([c], airthingsTiles(c.id, serial, waveSensors(serial), lang));
     },
   ),
   DeviceTemplate(
     id: 'modbus_iv',
-    fi: 'IV-kone (Modbus TCP)',
-    en: 'Ventilation unit (Modbus TCP)',
-    descFi: 'Lämpötilat ja puhallinnopeus. Valmiit rekisterilistat esimerkkeinä – tarkista oman koneesi ohjeesta.',
-    descEn: 'Temperatures and fan speed. Register presets are examples – verify with your manual.',
+    fi: 'IV-kone tai lämpöpumppu (Modbus TCP)',
+    en: 'Ventilation unit or heat pump (Modbus TCP)',
+    descFi: 'Lämpötilat, puhallinnopeus ja asetukset. Valmiit rekisterikartat merkeille (Airfi, Vallox, Enervent, Swegon, Flexit, Ilto, Nilan, NIBE, Thermia) – tarkista oman laitteesi ohjeesta.',
+    descEn: 'Temperatures, fan speed and settings. Ready register maps for brands (Airfi, Vallox, Enervent, Swegon, Flexit, Ilto, Nilan, NIBE, Thermia) – verify with your manual.',
     icon: Icons.air,
     color: const Color(0xFF7E57C2),
     connectionType: 'modbus',
@@ -1075,7 +1117,8 @@ final deviceTemplates = <DeviceTemplate>[
       const FieldSpec('name', 'Nimi', 'Name', hint: 'IV-kone', advanced: true),
     ],
     build: (v, lang) {
-      final name = _s(v, 'name', _t(lang, 'IV-kone', 'Ventilation'));
+      final brand = ivProfiles.where((p) => p.brand == _s(v, 'profile')).firstOrNull;
+      final name = _s(v, 'name', brand?.brand ?? _t(lang, 'IV-kone', 'Ventilation'));
       final c = ConnectionConfig(
         name: name,
         type: 'modbus',
@@ -1264,8 +1307,8 @@ final deviceTemplates = <DeviceTemplate>[
         'Command topic URL',
         required: true,
         hint: 'https://ntfy.sh/oma-aihe',
-        helpFi: 'Liitä sama osoite, johon pikakomento lähettää komennot (esim. https://ntfy.sh/kv-cmd-…). Pelkkä aiheen nimi riittää myös.',
-        helpEn: 'Paste the same URL your Shortcut posts commands to (e.g. https://ntfy.sh/kv-cmd-…). The topic name alone also works.',
+        helpFi: 'Liitä sama osoite, johon pikakomento lähettää komennot (esim. https://ntfy.sh/oma-aihe). Pelkkä aiheen nimi riittää myös.',
+        helpEn: 'Paste the same URL your Shortcut posts commands to (e.g. https://ntfy.sh/oma-aihe). The topic name alone also works.',
       ),
       FieldSpec(
         'replyTopic',
@@ -1660,3 +1703,90 @@ List<TileConfig> heatPumpIrTiles(
       ),
   ];
 }
+
+/// t160u: Tasmota with N relays. Uses what [detectTasmota] found (values '_relays',
+/// '_names', '_energy', '_energyChannels'): one tile per relay named from FriendlyName,
+/// an optional 'Kaikki' group tile and power / energy tiles when the device meters.
+TemplateResult buildTasmota(Map<String, dynamic> v, String lang) {
+  final base = _s(v, 'name');
+  final count = v['_relays'] is int ? v['_relays'] as int : null;
+  final names = [for (final n in (v['_names'] as List? ?? const [])) '$n'];
+  final relays = parseRelayList(_s(v, 'relay'), count: count);
+  final pw = _s(v, 'password');
+  final auth = pw.isEmpty ? '' : '&user=admin&password=${Uri.encodeQueryComponent(pw)}';
+  final c = ConnectionConfig(
+    name: base.isEmpty ? 'Tasmota' : base,
+    type: 'http',
+    settings: {'baseUrl': normUrl(v['address']), 'auth': 'none', 'relays': ?count},
+    secrets: {if (pw.isNotEmpty) 'password': pw},
+  );
+  final multi = relays.length > 1 || (count ?? 1) > 1;
+  String title(int n) {
+    final f = n - 1 < names.length ? names[n - 1] : '';
+    if (f.isNotEmpty && !isDefaultTasmotaName(f)) return f;
+    final b = base.isEmpty ? 'Tasmota' : base;
+    return multi ? '$b $n' : b;
+  }
+
+  final tiles = <TileConfig>[for (final n in relays) tasmotaRelayTile(c.id, n, title(n), auth)];
+  final optional = <int>{};
+  if (relays.length > 1) {
+    optional.add(tiles.length);
+    tiles.add(
+      TileConfig(
+        type: TileType.toggle,
+        title: '${base.isEmpty ? 'Tasmota' : base} – ${_t(lang, 'Kaikki', 'All')}',
+        icon: 'group',
+        connectionId: c.id,
+        pollSeconds: 5,
+        read: {'path': '/cm?cmnd=Power0$auth', 'regex': r'"POWER\d*"\s*:\s*"(ON)"'},
+        onCommand: CommandStep(connectionId: c.id, spec: {'method': 'GET', 'path': '/cm?cmnd=Power0%20On$auth'}),
+        offCommand: CommandStep(connectionId: c.id, spec: {'method': 'GET', 'path': '/cm?cmnd=Power0%20Off$auth'}),
+      ),
+    );
+  }
+  // Energy metering: detected (or the old 'power' switch from saved forms).
+  if (v['_energy'] == true || _b(v, 'power')) {
+    final ch = v['_energyChannels'] is int ? v['_energyChannels'] as int : 1;
+    for (var i = 0; i < (ch > 1 ? ch : 1); i++) {
+      final idx = ch > 1 ? '[$i]' : '';
+      tiles.add(
+        TileConfig(
+          type: TileType.value,
+          title: ch > 1 ? '${title(i + 1)} – ${_t(lang, 'teho', 'power')}' : '${c.name} – ${_t(lang, 'teho', 'power')}',
+          icon: 'bolt',
+          unit: 'W',
+          decimals: 0,
+          display: 'trend',
+          connectionId: c.id,
+          read: {'path': '/cm?cmnd=Status%208$auth', 'jsonPath': 'StatusSNS.ENERGY.Power$idx'},
+        ),
+      );
+    }
+    tiles.add(
+      TileConfig(
+        type: TileType.value,
+        title: '${c.name} – ${_t(lang, 'energia', 'energy')}',
+        icon: 'bolt',
+        unit: 'kWh',
+        decimals: 2,
+        connectionId: c.id,
+        pollSeconds: 60,
+        read: {'path': '/cm?cmnd=Status%208$auth', 'jsonPath': 'StatusSNS.ENERGY.Total'},
+      ),
+    );
+  }
+  return TemplateResult([c], tiles, optional: optional);
+}
+
+/// One Tasmota relay switch (`Power<n>`; works for single-relay devices too).
+TileConfig tasmotaRelayTile(String cid, int n, String title, [String auth = '']) => TileConfig(
+  type: TileType.toggle,
+  title: title,
+  icon: 'outlet',
+  connectionId: cid,
+  pollSeconds: 5,
+  read: {'path': '/cm?cmnd=Power$n$auth', 'regex': r'"POWER\d*"\s*:\s*"(\w+)"'},
+  onCommand: CommandStep(connectionId: cid, spec: {'method': 'GET', 'path': '/cm?cmnd=Power$n%20On$auth'}),
+  offCommand: CommandStep(connectionId: cid, spec: {'method': 'GET', 'path': '/cm?cmnd=Power$n%20Off$auth'}),
+);

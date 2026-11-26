@@ -25,7 +25,7 @@ void main() {
       id: 'c1',
       name: 'Varasto',
       type: 'http',
-      settings: {'baseUrl': 'http://192.168.50.172', 'shellyId': 'shellypro4pm-A8032AB12345'},
+      settings: {'baseUrl': 'http://192.168.88.172', 'shellyId': 'shellypro4pm-A8032AB12345'},
       secrets: {'password': 'x'},
     );
     final devices = [
@@ -39,7 +39,7 @@ void main() {
     final c = shellyLanToCloud(lan, server: 'https://shelly-103-eu.shelly.cloud', key: 'k', deviceId: 'a8032ab12345');
     expect(
       (c.id, c.name, c.type, c.settings['deviceId'], c.settings['lanBaseUrl']),
-      ('c1', 'Varasto', 'shelly_cloud', 'a8032ab12345', 'http://192.168.50.172'),
+      ('c1', 'Varasto', 'shelly_cloud', 'a8032ab12345', 'http://192.168.88.172'),
     );
     expect(c.secrets, {'authKey': 'k'});
   });

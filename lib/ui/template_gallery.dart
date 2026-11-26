@@ -4,6 +4,7 @@ import 'weather_tile.dart';
 
 import 'package:material_ui/material_ui.dart';
 
+import '../core/fields.dart';
 import '../core/friendly_error.dart';
 import '../core/discovery.dart';
 import '../devices/ha_setup.dart';
@@ -14,9 +15,12 @@ import '../devices/registry.dart';
 import '../templates/device_templates.dart';
 import 'add_device_wizard.dart';
 import 'app_scope.dart';
+import 'duplicate_check.dart';
 import 'heatpump_pages.dart';
 import 'connections_page.dart';
 import 'error_box.dart';
+import '../devices/multichannel.dart';
+import 'airthings_page.dart';
 import 'ha_modbus_ui.dart';
 import 'modbus_scan_page.dart';
 import 'spec_form.dart';
@@ -448,7 +452,13 @@ class TemplateSetupPage extends StatefulWidget {
 }
 
 class _TemplateSetupPageState extends State<TemplateSetupPage> {
-  late final values = <String, dynamic>{...?widget.initialValues};
+  // t166u: a choice shown with its default value counts as filled (the price area "FI – Suomi"
+  // used to show "Täytä tähdellä merkityt kentät" until it was picked again).
+  late final values = <String, dynamic>{
+    for (final f in widget.template.inputs)
+      if (f.kind == FieldKind.choice && f.defaultValue != null) f.key: f.defaultValue,
+    ...?widget.initialValues,
+  };
   final _excluded = <int>{};
   int _formKey = 0;
   late bool _haBusy = values.remove('_haBusy') == true;
@@ -458,6 +468,75 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
   Object? _error;
 
   DeviceTemplate get t => widget.template;
+
+  /// t160u: tile renames in the add checklist (index → title) and the relay detection.
+  final _renames = <int, String>{};
+  bool _detecting = false;
+  String? _detected;
+  String? _buildError;
+  String? _checklistSig;
+
+  @override
+  void initState() {
+    super.initState();
+    if (t.id == 'tasmota' && '${values['address'] ?? ''}'.trim().isNotEmpty) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => _detect());
+    }
+  }
+
+  /// Read-only `Status 0`: how many relays, their FriendlyNames, energy metering.
+  Future<void> _detect() async {
+    final addr = '${values['address'] ?? ''}'.trim();
+    if (t.id != 'tasmota' || addr.isEmpty || _detecting) return;
+    setState(() => _detecting = true);
+    try {
+      final caps = await detectTasmota(normUrl(addr), password: '${values['password'] ?? ''}');
+      if (!mounted) return;
+      setState(() {
+        values['_relays'] = caps.relays;
+        values['_names'] = caps.names;
+        values['_energy'] = caps.energy;
+        values['_energyChannels'] = caps.energyChannels;
+        _detected = caps.relays > 1
+            ? tx(context, 'Laitteessa on ${caps.relays} relettä', 'The device has ${caps.relays} relays')
+            : tx(context, 'Laitteessa on 1 rele', 'The device has 1 relay');
+        if (caps.energy) _detected = '$_detected · ${tx(context, 'energiamittaus', 'energy metering')}';
+        _renames.clear();
+        _excluded
+          ..clear()
+          ..addAll(_preview()?.optional ?? const {});
+      });
+    } catch (e) {
+      if (mounted) setState(() => _detected = null);
+    } finally {
+      if (mounted) setState(() => _detecting = false);
+    }
+  }
+
+  Future<void> _rename(int i, String current) async {
+    final c = TextEditingController(text: _renames[i] ?? current);
+    final v = await showDialog<String>(
+      context: context,
+      builder: (d) => AlertDialog(
+        title: Text(tx(d, 'Ruudun nimi', 'Tile name')),
+        content: TextField(
+          key: const ValueKey('tile-rename-field'),
+          controller: c,
+          autofocus: true,
+          onSubmitted: (x) => Navigator.pop(d, x),
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(d), child: Text(tx(d, 'Peruuta', 'Cancel'))),
+          FilledButton(
+            key: const ValueKey('tile-rename-ok'),
+            onPressed: () => Navigator.pop(d, c.text),
+            child: Text(tx(d, 'OK', 'OK')),
+          ),
+        ],
+      ),
+    );
+    if (v != null && v.trim().isNotEmpty && mounted) setState(() => _renames[i] = v.trim());
+  }
 
   bool get _isHa => t.connectionType == 'homeassistant';
 
@@ -590,9 +669,13 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
   }
 
   TemplateResult? _preview() {
+    _buildError = null;
     if (_missing() != null) return null;
     try {
       return t.build(values, AppScope.read(context).lang);
+    } on FormatException catch (e) {
+      _buildError = e.message;
+      return null;
     } catch (_) {
       return null;
     }
@@ -613,9 +696,19 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
       if (mounted) setState(() => _testing = false);
       return;
     }
+    if (t.id == 'tasmota') await _detect();
     if (!mounted) return;
     final st = AppScope.read(context);
-    final r = t.build(values, st.lang);
+    final TemplateResult r;
+    try {
+      r = t.build(values, st.lang);
+    } on FormatException catch (e) {
+      setState(() {
+        _error = e.message;
+        _testing = false;
+      });
+      return;
+    }
     try {
       // If an existing connection is reused, test with its stored secrets.
       final c = r.connections.first;
@@ -731,11 +824,19 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
       if (!ok || !mounted) return;
     }
     final st = AppScope.read(context);
-    final r = t.build(values, st.lang);
+    final TemplateResult r;
+    try {
+      r = t.build(values, st.lang);
+    } on FormatException catch (e) {
+      showSnack(context, e.message, error: true);
+      return;
+    }
     final tiles = [
       for (var i = 0; i < r.tiles.length; i++)
-        if (!_excluded.contains(i)) r.tiles[i],
+        if (!_excluded.contains(i)) r.tiles[i]..title = _renames[i] ?? r.tiles[i].title,
     ];
+    final into = widget.dashboard ?? st.config.dashboards.first;
+    if (!await confirmNoDuplicates(context, into, tiles, extra: r.connections) || !mounted) return;
     final used = await st.applyTemplate(r, into: widget.dashboard, tiles: tiles);
     if (!mounted) return;
     // Home Assistant: next pick the entities that become tiles.
@@ -745,6 +846,18 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
         context,
         MaterialPageRoute(
           builder: (_) => HaEntityPickerPage(connection: ha, dashboard: widget.dashboard),
+        ),
+      );
+      if (mounted) Navigator.pop(context, true);
+      return;
+    }
+    // t159u: Airthings – pick the account's monitors and sensors next.
+    final air = used.where((c) => c.type == 'airthings').firstOrNull;
+    if (t.id == 'airthings' && air != null) {
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => AirthingsDevicesPage(connection: air, dashboard: widget.dashboard),
         ),
       );
       if (mounted) Navigator.pop(context, true);
@@ -806,6 +919,15 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
     final text = Theme.of(context).textTheme;
     final cs = Theme.of(context).colorScheme;
     final preview = _preview();
+    // t166u: the checklist starts with only the sensible default ticked (the template's
+    // `optional` tiles unticked) – no surprise tiles. Reset when the tile set changes.
+    final sig = preview == null ? null : [for (final x in preview.tiles) x.title].join('|');
+    if (preview != null && sig != _checklistSig) {
+      _checklistSig = sig;
+      _excluded
+        ..clear()
+        ..addAll(preview.optional);
+    }
     final profile = t.id == 'modbus_iv' ? ivProfiles.where((p) => p.brand == values['profile']).firstOrNull : null;
     return Scaffold(
       appBar: AppBar(title: Text(t.name(lang))),
@@ -942,6 +1064,26 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
                 values: values,
                 onChanged: () => setState(() {}),
               ),
+              if (t.id == 'tasmota')
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: Wrap(
+                    spacing: 12,
+                    runSpacing: 8,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      OutlinedButton.icon(
+                        key: const ValueKey('tasmota-detect'),
+                        onPressed: _detecting ? null : _detect,
+                        icon: _detecting
+                            ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2))
+                            : const Icon(Icons.manage_search),
+                        label: Text(tx(context, 'Tunnista releet', 'Detect relays')),
+                      ),
+                      if (_detected != null) Text(_detected!, key: const ValueKey('tasmota-detected')),
+                    ],
+                  ),
+                ),
               if (profile != null) ...[
                 _Banner(
                   icon: Icons.menu_book_outlined,
@@ -982,7 +1124,13 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
               const SizedBox(height: 22),
               Text(tx(context, 'Nämä ruudut luodaan', 'These tiles will be created'), style: text.titleMedium),
               const SizedBox(height: 6),
-              if (preview == null)
+              if (preview == null && _buildError != null)
+                Text(
+                  _buildError!,
+                  key: const ValueKey('template-build-error'),
+                  style: TextStyle(color: cs.error),
+                )
+              else if (preview == null)
                 Text(
                   tx(
                     context,
@@ -1003,11 +1151,18 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
               else
                 for (var i = 0; i < preview.tiles.length; i++)
                   CheckboxListTile(
+                    key: ValueKey('tile-check-$i'),
                     contentPadding: EdgeInsets.zero,
                     value: !_excluded.contains(i),
                     onChanged: (v) => setState(() => v == true ? _excluded.remove(i) : _excluded.add(i)),
-                    title: Text(preview.tiles[i].title),
+                    title: Text(_renames[i] ?? preview.tiles[i].title),
                     subtitle: Text(_tileKind(context, preview.tiles[i].type)),
+                    secondary: IconButton(
+                      key: ValueKey('tile-rename-$i'),
+                      tooltip: tx(context, 'Nimeä', 'Rename'),
+                      icon: const Icon(Icons.edit_outlined),
+                      onPressed: () => _rename(i, preview.tiles[i].title),
+                    ),
                   ),
               const SizedBox(height: 24),
             ],

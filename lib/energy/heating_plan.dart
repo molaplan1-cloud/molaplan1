@@ -16,7 +16,11 @@ class HeatingPreset {
     required this.en,
     required this.descFi,
     required this.descEn,
-    required this.upper, required this.lower, required this.sensitivity, required this.lookahead});
+    required this.upper,
+    required this.lower,
+    required this.sensitivity,
+    required this.lookahead,
+  });
   final String id;
   final String fi;
   final String en;
@@ -133,7 +137,9 @@ List<PlanHour> planHeating({
 }) {
   final p = presetById(settings.preset);
   final start = DateTime(now.year, now.month, now.day, now.hour);
-  final hs = [for (var i = 0; i < hours + p.lookahead; i++) DateTime(start.year, start.month, start.day, start.hour + i)];
+  final hs = [
+    for (var i = 0; i < hours + p.lookahead; i++) DateTime(start.year, start.month, start.day, start.hour + i),
+  ];
   final pr = [for (final h in hs) price(h)];
   final out = [for (final h in hs) outdoor(h)];
   // Heat demand: degrees below the comfort temperature (cooling: above), at least 1.
@@ -154,7 +160,9 @@ List<PlanHour> planHeating({
       plan.add(PlanHour(hs[i], comfort, outdoor: out[i], reason: 'noprice'));
       continue;
     }
-    final ahead = [for (var k = i + 1; k <= i + p.lookahead && k < hs.length; k++) cost(k)].whereType<double>().toList();
+    final ahead = [for (var k = i + 1; k <= i + p.lookahead && k < hs.length; k++) cost(k)]
+        .whereType<double>()
+        .toList();
     if (ahead.isEmpty) {
       plan.add(PlanHour(hs[i], comfort, price: pr[i], outdoor: out[i]));
       continue;

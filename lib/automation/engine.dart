@@ -32,6 +32,10 @@ abstract class AutoEnv {
   /// Spot price now (c/kWh) and today's prices per local hour (null = unknown).
   Future<double?> priceNow();
   Future<Map<int, double>> pricesToday();
+
+  /// t168u: today's slots at the area's resolution (15 min where published; hours when
+  /// "Näytä tuntikeskiarvona" is on): (start, minutes, c/kWh).
+  Future<List<(DateTime, int, double)>> priceSlotsToday();
   Future<double?> outdoorTemp();
 
   /// Home location for sunrise/sunset (null = unknown).
@@ -42,6 +46,19 @@ abstract class AutoEnv {
 
   /// Morning summary text (weather, price, home) for the `{summary}` placeholder.
   Future<String> summaryText();
+}
+
+/// t168u: the start of the slot containing [now] if it is among today's [hours] cheapest
+/// hours' worth of slots (n × 4 quarters on 15-min data), else null.
+DateTime? cheapestSlotNow(List<(DateTime, int, double)> slots, int hours, DateTime now) {
+  if (slots.isEmpty) return null;
+  final minutes = slots.first.$2;
+  final take = (hours * 60 / minutes).round();
+  final cheap = ([...slots]..sort((x, y) => x.$3.compareTo(y.$3))).take(take);
+  for (final s in cheap) {
+    if (!now.isBefore(s.$1) && now.isBefore(s.$1.add(Duration(minutes: s.$2)))) return s.$1;
+  }
+  return null;
 }
 
 String hashPin(String pin) => sha256.convert(utf8.encode('molaplan-pin:${pin.trim()}')).toString();
@@ -221,11 +238,9 @@ class AutomationEngine {
         final mode = '${t.args['mode'] ?? 'below'}';
         if (mode == 'cheapest') {
           final n = (t.args['hours'] as num?)?.toInt() ?? 3;
-          final today = await env.pricesToday();
-          if (today.isEmpty) return false;
-          final cheap = (today.entries.toList()..sort((x, y) => x.value.compareTo(y.value))).take(n).map((e) => e.key);
-          if (!cheap.contains(now.hour)) return false;
-          final key = '$day h${now.hour}';
+          final slot = cheapestSlotNow(await env.priceSlotsToday(), n, now);
+          if (slot == null) return false;
+          final key = '$day h${slot.hour}:${slot.minute}';
           if (s.firedKey == key) return false;
           s.firedKey = key;
           return true;
@@ -480,10 +495,7 @@ class AutomationEngine {
       'price': (a) => env.priceNow(),
       'cheapest': (a) async {
         final n = a.isEmpty ? 3 : (a.first as num).toInt();
-        final today = await env.pricesToday();
-        if (today.isEmpty) return false;
-        final cheap = (today.entries.toList()..sort((x, y) => x.value.compareTo(y.value))).take(n).map((e) => e.key);
-        return cheap.contains(env.now().hour);
+        return cheapestSlotNow(await env.priceSlotsToday(), n, env.now()) != null;
       },
       'temp': (a) => env.outdoorTemp(),
       'time': (a) => hmText(env.now().hour * 60 + env.now().minute),

@@ -1,4 +1,5 @@
 import '../devices/find.dart' show bridgeDiscover;
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -44,6 +45,12 @@ class RemoteState extends ChangeNotifier {
 
   bool get isPaired => paired != null;
   bool get bridgeOn => bridge != null;
+
+  /// t174u: is a home bridge reachable right now – this device (connected to the relay) or the
+  /// paired one (not reported offline).
+  bool get bridgeOnline =>
+      (bridge != null && bridge!.link == BridgeLink.online) ||
+      (paired != null && router.status != LinkStatus.offline && router.client?.link != RemoteLink.bridgeOffline);
   LinkStatus? get status => router.status;
   RemoteLink? get clientLink => router.client?.link;
 
@@ -151,6 +158,7 @@ class RemoteState extends ChangeNotifier {
     final c = router.client;
     if (c == null) return false;
     final ok = await c.check();
+    if (ok) router.bridgeSeen = DateTime.now();
     _changed();
     return ok;
   }

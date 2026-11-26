@@ -256,6 +256,9 @@ class MockShellyCloud {
   static const key = 'CLOUDKEY123';
   final on = {'a0b1c2d3e4f5': [false, true, false, false]};
   final calls = <String>[];
+
+  /// t173u: answer set/switch with HTTP 200 + isok:false (as the real cloud does when it refuses).
+  bool refuse = false;
   String get url => 'http://127.0.0.1:${server.port}';
   Future<MockShellyCloud> start() async {
     server = await _serve((r) async {
@@ -274,6 +277,7 @@ class MockShellyCloud {
           final ids = ((jsonDecode(body) as Map)['ids'] as List).cast<String>();
           return _json(r, [for (final id in ids.where(on.containsKey)) {'id': id, 'type': 'relay', 'code': 'SPSW-104PE16EU', 'gen': 'G2', 'online': 1, 'status': st(id)}]);
         case '/v2/devices/api/set/switch':
+          if (refuse) return _json(r, {'isok': false, 'errors': {'max_req': 'Request limit reached'}});
           final b = jsonDecode(body) as Map;
           on[b['id']]![(b['channel'] as num).toInt()] = b['on'] == true;
           return;

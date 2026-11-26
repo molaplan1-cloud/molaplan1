@@ -30,7 +30,7 @@ void main() {
       );
       await tester.runAsync(st.load);
       final tpl = deviceTemplates.firstWhere((t) => t.id == 'ntfy');
-      final r = tpl.build({'topic': '${m.url}/kv-cmd-test', 'name': 'Päivitä'}, 'fi');
+      final r = tpl.build({'topic': '${m.url}/koti-cmd-test', 'name': 'Päivitä'}, 'fi');
       expect(r.tiles, hasLength(2));
       await tester.runAsync(() => st.applyTemplate(r));
       final button = st.config.dashboards.first.tiles.first;
@@ -68,7 +68,7 @@ void main() {
       expect(find.text('Päivitetty: 3 laitetta OK'), findsOneWidget);
       expect(find.text('Kotilaite'), findsOneWidget);
       expect(find.textContaining('Vastaus klo'), findsOneWidget);
-      expect(m.published, ['kv-cmd-test:päivitä 1234']);
+      expect(m.published, ['koti-cmd-test:päivitä 1234']);
       expect(LocalNotify.recorded, [('Päivitä: Kotilaite', 'Päivitetty: 3 laitetta OK')]);
       expect(
         await tester.runAsync(() => st.secretStore.read(AppState.pinKey(button.id))),

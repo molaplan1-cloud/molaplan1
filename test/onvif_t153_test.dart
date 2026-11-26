@@ -235,8 +235,8 @@ void main() {
         st,
         AddDeviceWizard(
           provider: p,
-          locals: () async => ['192.168.50.20'],
-          finder: (_) async => [Candidate(provider: p.id, address: '192.168.50.80', name: 'Piha')],
+          locals: () async => ['192.168.88.20'],
+          finder: (_) async => [Candidate(provider: p.id, address: '192.168.88.80', name: 'Piha')],
           driverFor: (_) => AddContext(driver: (c) => FakeCamDriver(c, sonoffNoProfiles())),
         ),
       ),
@@ -244,7 +244,7 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(const ValueKey('wiz-skip-remote')));
     await settle(tester);
-    await tester.tap(find.byKey(const ValueKey('wiz-found-192.168.50.80')));
+    await tester.tap(find.byKey(const ValueKey('wiz-found-192.168.88.80')));
     await settle(tester);
     await tester.enterText(find.byKey(const ValueKey('wiz-password')), 'Kamera123');
     await tester.tap(find.byKey(const ValueKey('wiz-retry')));
@@ -253,8 +253,8 @@ void main() {
     expect(find.text('Osoitteessa on jokin muu laite'), findsNothing);
     await tester.tap(find.byKey(const ValueKey('rtsp-preset-/av_stream/ch0')));
     await tester.pump();
-    expect(find.text('rtsp://192.168.50.80:554/av_stream/ch0'), findsOneWidget);
-    await tester.enterText(find.byKey(const ValueKey('wiz-cred-rtsp')), 'rtsp://192.168.50.80:554/live/main');
+    expect(find.text('rtsp://192.168.88.80:554/av_stream/ch0'), findsOneWidget);
+    await tester.enterText(find.byKey(const ValueKey('wiz-cred-rtsp')), 'rtsp://192.168.88.80:554/live/main');
     await tester.tap(find.byKey(const ValueKey('wiz-retry')));
     await settle(tester);
     await tester.tap(find.byKey(const ValueKey('wiz-add')));

@@ -21,6 +21,20 @@ class ShellyChannel {
   final num? power;
 }
 
+/// t161u: one energy-meter channel (Gen1 emeter, Gen2+ EM phase / EM1 / PM1, or a
+/// metered switch) and the measurements it reports.
+class ShellyMeter {
+  ShellyMeter(this.comp, this.id, this.fields, {this.phase = '', this.name, this.power});
+  final String comp; // emeter | em | em1 | pm1 | switch
+  final int id;
+  final String phase; // em: a, b, c or t (total)
+  final Set<String> fields; // power, energy, returned, voltage, current, pf
+  final String? name;
+  final num? power;
+
+  String get key => '$comp:$id${phase.isEmpty ? '' : ':$phase'}';
+}
+
 class ShellyDevice {
   ShellyDevice({
     required this.id,
@@ -31,7 +45,13 @@ class ShellyDevice {
     this.name,
     this.authEnabled = false,
     this.flood = false,
+    this.meters = const [],
   });
+
+  /// t161u: energy-meter channels. When the device is a meter (EM, 3EM, Pro EM…) its
+  /// relay only drives a contactor and is not added unless the user ticks it.
+  final List<ShellyMeter> meters;
+  bool get isMeter => meters.any((m) => m.comp != 'switch');
 
   /// t143u: Shelly Flood (leak sensor, battery, sleeps between reports) – no relays.
   final bool flood;
@@ -94,11 +114,13 @@ Future<ShellyDevice> probeShelly(Driver d, {bool havePassword = false}) async {
         flood: true,
       );
     }
-    if (relays.isEmpty) throw AddDeviceError(AddProblem.nothingToAdd);
+    final em = shellyGen1Meters(st);
+    if (relays.isEmpty && em.isEmpty) throw AddDeviceError(AddProblem.nothingToAdd);
     return ShellyDevice(
       id: 'shelly-${info['mac'] ?? ''}'.toLowerCase(),
       model: '${info['type'] ?? ''}',
       gen: 1,
+      meters: em,
       authEnabled: info['auth'] == true,
       channels: [
         for (var i = 0; i < relays.length; i++)
@@ -151,15 +173,204 @@ Future<ShellyDevice> probeShelly(Driver d, {bool havePassword = false}) async {
       flood: true,
     );
   }
-  if (chans.isEmpty) throw AddDeviceError(AddProblem.nothingToAdd);
+  final em = shellyGen2Meters(st, cfg);
+  if (chans.isEmpty && em.isEmpty) throw AddDeviceError(AddProblem.nothingToAdd);
   return ShellyDevice(
     id: '${info['id'] ?? 'shelly'}',
     model: '${info['model'] ?? ''}',
     app: '${info['app'] ?? ''}',
     gen: gen,
+    meters: em,
     name: devName.isEmpty ? null : devName,
     authEnabled: info['auth_en'] == true,
     channels: chans,
+  );
+}
+
+/// Gen1 `/status` emeters[] (EM / SHEM, 3EM / SHEM-3).
+List<ShellyMeter> shellyGen1Meters(Map st) {
+  final em = st['emeters'] is List ? st['emeters'] as List : const [];
+  return [
+    for (var i = 0; i < em.length; i++)
+      if (em[i] is Map)
+        ShellyMeter('emeter', i, {
+          'power',
+          if ((em[i] as Map).containsKey('total')) 'energy',
+          if ((em[i] as Map).containsKey('total_returned')) 'returned',
+          if ((em[i] as Map).containsKey('voltage')) 'voltage',
+          if ((em[i] as Map).containsKey('current')) 'current',
+          if ((em[i] as Map).containsKey('pf')) 'pf',
+        }, power: (em[i] as Map)['power'] as num?),
+  ];
+}
+
+/// Gen2+ `Shelly.GetStatus`: em:N (3-phase, + emdata:N), em1:N (+ em1data:N), pm1:N and
+/// metered switch:N (voltage / current / energy beyond the power tile).
+List<ShellyMeter> shellyGen2Meters(Map st, [Map cfg = const {}]) {
+  Map m(Object? v) => v is Map ? v : const {};
+  String? name(String k) {
+    final n = '${m(cfg[k])['name'] ?? ''}'.trim();
+    return n.isEmpty ? null : n;
+  }
+
+  int? idOf(String k, String prefix) => k.startsWith(prefix) ? int.tryParse(k.substring(prefix.length)) : null;
+  final out = <ShellyMeter>[];
+  final keys = st.keys.map((k) => '$k').toList()..sort();
+  for (final k in keys) {
+    final s = m(st[k]);
+    if (idOf(k, 'em:') case final id?) {
+      final data = m(st['emdata:$id']);
+      for (final p in const ['a', 'b', 'c']) {
+        if (!s.containsKey('${p}_act_power')) continue;
+        out.add(
+          ShellyMeter(
+            'em',
+            id,
+            {
+              'power',
+              if (data.containsKey('${p}_total_act_energy')) 'energy',
+              if (data.containsKey('${p}_total_act_ret_energy')) 'returned',
+              if (s.containsKey('${p}_voltage')) 'voltage',
+              if (s.containsKey('${p}_current')) 'current',
+              if (s.containsKey('${p}_pf')) 'pf',
+            },
+            phase: p,
+            power: s['${p}_act_power'] as num?,
+          ),
+        );
+      }
+      if (s.containsKey('total_act_power')) {
+        out.add(
+          ShellyMeter(
+            'em',
+            id,
+            {'power', if (data.containsKey('total_act')) 'energy', if (data.containsKey('total_act_ret')) 'returned'},
+            phase: 't',
+            power: s['total_act_power'] as num?,
+          ),
+        );
+      }
+    } else if (idOf(k, 'em1:') case final id?) {
+      final data = m(st['em1data:$id']);
+      out.add(
+        ShellyMeter(
+          'em1',
+          id,
+          {
+            'power',
+            if (data.containsKey('total_act_energy')) 'energy',
+            if (data.containsKey('total_act_ret_energy')) 'returned',
+            if (s.containsKey('voltage')) 'voltage',
+            if (s.containsKey('current')) 'current',
+            if (s.containsKey('pf')) 'pf',
+          },
+          name: name(k),
+          power: s['act_power'] as num?,
+        ),
+      );
+    } else if (idOf(k, 'pm1:') case final id?) {
+      out.add(
+        ShellyMeter(
+          'pm1',
+          id,
+          {
+            'power',
+            if (s['aenergy'] is Map) 'energy',
+            if (s['ret_aenergy'] is Map) 'returned',
+            if (s.containsKey('voltage')) 'voltage',
+            if (s.containsKey('current')) 'current',
+            if (s.containsKey('pf')) 'pf',
+          },
+          name: name(k),
+          power: s['apower'] as num?,
+        ),
+      );
+    }
+  }
+  return out;
+}
+
+/// (path, jsonPath, scale) for one measurement of [m] (energies in kWh).
+(String, String, double) shellyMeasurePath(ShellyMeter m, String field) {
+  final i = m.id;
+  String fld(String g1, String em, String one, String pm) => switch (m.comp) {
+    'emeter' => g1,
+    'em' => em,
+    'em1' => one,
+    _ => pm,
+  };
+  final energyField = field == 'energy' || field == 'returned';
+  final path = switch (m.comp) {
+    'emeter' => '/emeter/$i',
+    'em' => energyField ? '/rpc/EMData.GetStatus?id=$i' : '/rpc/EM.GetStatus?id=$i',
+    'em1' => energyField ? '/rpc/EM1Data.GetStatus?id=$i' : '/rpc/EM1.GetStatus?id=$i',
+    'pm1' => '/rpc/PM1.GetStatus?id=$i',
+    _ => '/rpc/Switch.GetStatus?id=$i',
+  };
+  final p = m.phase;
+  final jp = switch (field) {
+    'power' => p == 't' ? 'total_act_power' : fld('power', '${p}_act_power', 'act_power', 'apower'),
+    'energy' => p == 't' ? 'total_act' : fld('total', '${p}_total_act_energy', 'total_act_energy', 'aenergy.total'),
+    'returned' =>
+      p == 't'
+          ? 'total_act_ret'
+          : fld('total_returned', '${p}_total_act_ret_energy', 'total_act_ret_energy', 'ret_aenergy.total'),
+    'voltage' => m.comp == 'em' ? '${p}_voltage' : 'voltage',
+    'current' => m.comp == 'em' ? '${p}_current' : 'current',
+    _ => m.comp == 'em' ? '${p}_pf' : 'pf',
+  };
+  return (path, jp, energyField ? 0.001 : 1);
+}
+
+/// Measurement labels: (fi, en, unit, decimals, icon).
+const shellyMeasures = <String, (String, String, String, int, String)>{
+  'power': ('teho', 'power', 'W', 0, 'bolt'),
+  'energy': ('energia', 'energy', 'kWh', 2, 'bolt'),
+  'returned': ('palautettu energia', 'returned energy', 'kWh', 2, 'solar'),
+  'voltage': ('jännite', 'voltage', 'V', 1, 'bolt'),
+  'current': ('virta', 'current', 'A', 2, 'bolt'),
+  'pf': ('tehokerroin', 'power factor', '', 2, 'bolt'),
+};
+
+/// Channel label: its own name, else "Vaihe A" / "Yhteensä" / "Kanava N" / the device name.
+String shellyMeterTitle(ShellyDevice d, ShellyMeter m, String lang) {
+  if (m.name != null) return m.name!;
+  if (m.comp == 'switch') {
+    final ch = d.channels.where((c) => c.id == m.id).firstOrNull;
+    return shellyChannelTitle(ch?.name, d.name, m.id, d.channels.length, lang, model: d.friendlyModel);
+  }
+  if (m.phase == 't') return tr(lang, 'Yhteensä', 'Total');
+  if (m.phase.isNotEmpty) return tr(lang, 'Vaihe ${m.phase.toUpperCase()}', 'Phase ${m.phase.toUpperCase()}');
+  final n = d.meters.where((x) => x.comp == m.comp).length;
+  if (n <= 1) return d.name ?? d.friendlyModel;
+  return tr(lang, 'Kanava ${m.id + 1}', 'Channel ${m.id + 1}');
+}
+
+/// Is this measurement ticked by default? Power and energy yes; returned energy when the
+/// meter has seen any; voltage / current / PF can be ticked.
+bool shellyMeasurePreselect(String field) => field == 'power' || field == 'energy';
+
+/// The tile for one measurement: trend/gauge by default (t161u).
+TileConfig shellyMeasureTile(
+  ConnectionConfig c,
+  ShellyDevice d,
+  ShellyMeter m,
+  String field,
+  String lang, {
+  String? title,
+}) {
+  final (path, jp, scale) = shellyMeasurePath(m, field);
+  final (fi, en, unit, dec, icon) = shellyMeasures[field]!;
+  return TileConfig(
+    type: TileType.value,
+    title: title ?? '${shellyMeterTitle(d, m, lang)} – ${tr(lang, fi, en)}',
+    icon: icon,
+    connectionId: c.id,
+    unit: unit,
+    decimals: dec,
+    pollSeconds: field == 'energy' || field == 'returned' ? 60 : 10,
+    display: field == 'power' ? 'gauge_trend' : 'trend',
+    read: {'path': path, 'jsonPath': jp, if (scale != 1) 'scale': scale},
   );
 }
 
@@ -288,6 +499,15 @@ List<TileConfig> shellyTiles(
       );
     }
   }
+  for (final m in d.meters) {
+    for (final f in const ['power', 'energy', 'returned', 'voltage', 'current', 'pf']) {
+      if (!m.fields.contains(f)) continue;
+      final key = 'm:${m.key}:$f';
+      if (skip.contains(key)) continue;
+      final custom = names[key]?.trim() ?? '';
+      tiles.add(shellyMeasureTile(c, d, m, f, lang, title: custom.isEmpty ? null : custom));
+    }
+  }
   return tiles;
 }
 
@@ -387,6 +607,9 @@ class ShellyProvider extends DeviceProvider {
           for (final ch in dev.channels)
             AddItem(
               key: '${ch.id}',
+              // t161u: an energy meter's relay only drives a contactor – add it only on request.
+              preselect: !dev.isMeter,
+              group: dev.isMeter ? tr(ctx.lang, 'Kontaktorin ohjaus', 'Contactor control') : '',
               name:
                   ch.name ??
                   (dev.channels.length == 1
@@ -394,10 +617,25 @@ class ShellyProvider extends DeviceProvider {
                       : tr(ctx.lang, 'Kanava ${ch.id + 1}', 'Channel ${ch.id + 1}')),
               hasPower: ch.hasPower,
               subtitle: [
+                if (dev.isMeter) tr(ctx.lang, 'lisää vain, jos rele on käytössä', 'add only if the relay is in use'),
                 if (ch.on != null) ch.on! ? tr(ctx.lang, 'nyt päällä', 'on now') : tr(ctx.lang, 'nyt pois', 'off now'),
-                if (ch.power != null) '${ch.power!.round()} W',
+                if (ch.power != null && !dev.isMeter) '${ch.power!.round()} W',
               ].join(' · '),
             ),
+          for (final m in dev.meters)
+            for (final f in const ['power', 'energy', 'returned', 'voltage', 'current', 'pf'])
+              if (m.fields.contains(f))
+                AddItem(
+                  key: 'm:${m.key}:$f',
+                  kind: 'meter',
+                  group: dev.meters.length > 1 || dev.isMeter
+                      ? '${tr(ctx.lang, 'Mittaus', 'Metering')}: ${shellyMeterTitle(dev, m, ctx.lang)}'
+                      : '',
+                  name:
+                      '${shellyMeterTitle(dev, m, ctx.lang)} – ${tr(ctx.lang, shellyMeasures[f]!.$1, shellyMeasures[f]!.$2)}',
+                  preselect: shellyMeasurePreselect(f) && (m.comp != 'switch' || f == 'energy'),
+                  subtitle: f == 'power' && m.power != null ? '${m.power!.round()} W' : shellyMeasures[f]!.$3,
+                ),
         ],
       );
     } finally {
@@ -670,7 +908,14 @@ class ShellyCloudDriver extends Driver {
       if (res.statusCode >= 400) {
         throw DriverException('HTTP ${res.statusCode}: ${body.length > 160 ? body.substring(0, 160) : body}');
       }
-      return body.isEmpty ? null : jsonDecode(body);
+      final out = body.isEmpty ? null : jsonDecode(body);
+      // t173u: Shelly Cloud answers HTTP 200 with {"isok": false, "errors": {…}} when a command
+      // is refused (rate limit, device offline, wrong channel) – that is an error, not a ✓.
+      if (out is Map && out['isok'] == false) {
+        final e = out['errors'] ?? out['error'] ?? out['data'];
+        throw DriverException('Shelly Cloud: ${e is Map ? e.keys.join(', ') : e ?? 'refused'}');
+      }
+      return out;
     });
     _gate = run.then((_) {}, onError: (_) {});
     return run;
@@ -853,9 +1098,22 @@ class ShellyCloudDriver extends Driver {
       _cache.remove(id);
       return null;
     }
-    final on = spec.containsKey('on')
+    var on = spec.containsKey('on')
         ? spec['on'] == true || spec['on'] == 'true'
         : value == true || value == 1 || value == 'true';
+    if (spec['toggle'] == true) {
+      // t173u: toggle from the device's current state, not from a cached poll.
+      _cache.remove(id);
+      final dev = await _status(id);
+      if (dev == null) throw DriverException('Device $id not found in Shelly Cloud');
+      if (dev['online'] == false) throw DriverException('Shelly Cloud: device offline');
+      final ch = ((dev['channels'] as List?) ?? const [])
+          .cast<Map>()
+          .where((c) => '${c['channel']}' == spec.str('channel', '0'))
+          .firstOrNull;
+      if (ch == null) throw DriverException('Channel ${spec.str('channel')} not found');
+      on = ch['on'] != true;
+    }
     await _post(
       '/v2/devices/api/set/switch',
       json: {'id': id, 'channel': int.tryParse(spec.str('channel', '0')) ?? 0, 'on': on},

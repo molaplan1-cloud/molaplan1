@@ -108,6 +108,7 @@ class NtfyDriver extends Driver {
         'Show',
         kind: FieldKind.choice,
         options: ['latest', 'log'],
+        optionLabels: {'latest': ('Viimeisin viesti', 'Latest message'), 'log': ('Viestiloki', 'Message log')},
         defaultValue: 'latest',
         helpFi: 'latest = viimeisin viesti, log = useita viimeisimpiä viestejä allekkain (uusin ylimpänä).',
         helpEn: 'latest = the newest message, log = several recent messages (newest first).',

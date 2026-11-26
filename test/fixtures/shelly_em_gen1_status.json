@@ -1,0 +1,4 @@
+{"relays":[{"ison":false,"has_timer":false,"overpower":false,"is_valid":true,"source":"input"}],
+ "emeters":[{"power":512.34,"reactive":-20.1,"pf":0.93,"voltage":231.4,"is_valid":true,"total":123456.7,"total_returned":12.0},
+            {"power":0.0,"reactive":0.0,"pf":0.0,"voltage":231.4,"is_valid":true,"total":4567.0,"total_returned":0.0}],
+ "update":{"status":"idle"},"ram_total":51064}

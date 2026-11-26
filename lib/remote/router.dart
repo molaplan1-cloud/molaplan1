@@ -37,6 +37,9 @@ class RemoteRouter {
 
   LinkStatus? status;
   DateTime? _remoteUntil;
+
+  /// t174u: when the home bridge last answered (status page "viimeksi nähty").
+  DateTime? bridgeSeen;
   void Function()? onChange;
 
   bool get enabled => client != null;
@@ -90,10 +93,12 @@ class RemoteRouter {
   Future<T> _viaRemote<T>(RemoteClient c, Future<T> Function(RemoteClient) remote, Object? localError) async {
     try {
       final v = await remote(c);
+      bridgeSeen = DateTime.now();
       _remoteUntil = DateTime.now().add(remoteHold);
       _status(LinkStatus.remote);
       return v;
     } on RemoteDeviceError {
+      bridgeSeen = DateTime.now();
       // The bridge answered; the device at home did not.
       if (localError == null) {
         _remoteUntil = DateTime.now().add(remoteHold);
@@ -112,12 +117,34 @@ class RemoteRouter {
   Driver wrap(ConnectionConfig c) {
     if (c.type == 'camera') return RoutedCameraDriver(c, this);
     // Internet services work the same everywhere: never through the home bridge.
-    if (c.type == 'ntfy' || c.type == 'price') return createDriver(c);
+    if (c.type == 'ntfy' || c.type == 'price' || c.type == 'airthings') return createDriver(c);
+    // t159u: a Bluetooth sensor read by the home bridge (it is the one near the sensor).
+    if (c.settings['viaBridge'] == true && client != null) return BridgeOnlyDriver(createDriver(c), this);
     return RoutedDriver(createDriver(c), this);
   }
 }
 
 Map<String, dynamic> _wire(ConnectionConfig c) => c.toJson(includeSecrets: true);
+
+/// Always through the home bridge (e.g. Airthings Wave over the bridge's Bluetooth).
+class BridgeOnlyDriver extends Driver {
+  BridgeOnlyDriver(this.inner, this.router) : super(inner.config);
+  final Driver inner;
+  final RemoteRouter router;
+  Map<String, dynamic> get _conn {
+    final j = _wire(config);
+    (j['settings'] as Map)['viaBridge'] = false; // the bridge reads it itself
+    return j;
+  }
+
+  @override
+  Future<Object?> read(Map<String, dynamic> spec) => router.viaRemote((c) => c.call('read', conn: _conn, spec: spec));
+  @override
+  Future<Object?> send(Map<String, dynamic> spec, {Object? value}) =>
+      router.viaRemote((c) => c.call('send', conn: _conn, spec: spec, value: value));
+  @override
+  Future<String> test() async => '${await router.viaRemote((c) => c.call('test', conn: _conn))} (kotisilta / bridge)';
+}
 
 class RoutedDriver extends Driver {
   RoutedDriver(this.inner, this.router) : super(inner.config);

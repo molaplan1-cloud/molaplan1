@@ -9,6 +9,7 @@ import 'package:material_ui/material_ui.dart' hide Threshold;
 
 import '../l10n/l10n.dart';
 import '../models/models.dart';
+import '../prices/prices.dart' show tomorrowPendingText;
 import 'app_scope.dart';
 import 'measure_colors.dart';
 import 'measure_view.dart';
@@ -17,20 +18,47 @@ import 'price_tile.dart' show priceAxis, priceNum;
 /// Test hook for "now".
 DateTime Function() priceTrendClock = DateTime.now;
 
-/// The window for [w] ('auto' → 48 h when tomorrow is known, else today).
-(DateTime, DateTime, String) priceWindowFor(String w, DateTime now, {required bool hasTomorrow}) {
+/// The window for [w] and the chip to highlight (t170u):
+/// * 'today' – today 00–24
+/// * '24h'   – from this hour 24 h ahead
+/// * 'auto'  – "Tänään + huomenna": today, and tomorrow as soon as it is published
+/// * '48h'   – today + tomorrow; tomorrow stays an empty "julkaistaan n. klo 14" area until published
+/// * '12h'   – older chip, 2 h back + 10 h ahead
+/// [tomorrow] = "Näytä huomenna kun saatavilla"; off → never past today's midnight.
+(DateTime, DateTime, String) priceWindowFor(String w, DateTime now, {required bool hasTomorrow, bool tomorrow = true}) {
   final day0 = DateTime(now.year, now.month, now.day);
-  final eff = w == 'auto' ? (hasTomorrow ? '48h' : 'today') : w;
-  return switch (eff) {
+  final day1 = DateTime(now.year, now.month, now.day + 1);
+  final day2 = DateTime(now.year, now.month, now.day + 2);
+  DateTime cap(DateTime e) => !tomorrow && e.isAfter(day1) ? day1 : e;
+  final (ws, we) = switch (w) {
     '12h' => (
       DateTime(now.year, now.month, now.day, now.hour - 2),
       DateTime(now.year, now.month, now.day, now.hour + 10),
-      eff,
     ),
-    '48h' => (day0, DateTime(now.year, now.month, now.day + 2), eff),
-    _ => (day0, DateTime(now.year, now.month, now.day + 1), 'today'),
+    '24h' => (DateTime(now.year, now.month, now.day, now.hour), DateTime(now.year, now.month, now.day, now.hour + 24)),
+    '48h' => (day0, day2),
+    'today' => (day0, day1),
+    _ => (day0, hasTomorrow ? day2 : day1),
   };
+  return (ws, cap(we), priceWindows.contains(w) ? w : 'auto');
 }
+
+/// t171u: the part of [ws]–[we] that is tomorrow while its prices are not published yet.
+(DateTime, DateTime)? pendingTomorrow(DateTime ws, DateTime we, DateTime now, {required bool hasTomorrow}) {
+  if (hasTomorrow) return null;
+  final day1 = DateTime(now.year, now.month, now.day + 1);
+  final day2 = DateTime(now.year, now.month, now.day + 2);
+  if (!we.isAfter(day1)) return null;
+  return (ws.isAfter(day1) ? ws : day1, we.isBefore(day2) ? we : day2);
+}
+
+/// The on-tile chips (same choices as the tile settings' "Aikaväli").
+List<(String, String)> priceWindowChoices(String lang) => [
+  ('today', tr(lang, 'Tänään', 'Today')),
+  ('24h', tr(lang, '24 h eteenpäin', '24 h ahead')),
+  ('auto', tr(lang, 'Tänään + huomenna', 'Today + tomorrow')),
+  ('48h', '48 h'),
+];
 
 /// Price slot covering [t] (start ≤ t < start + step).
 double? priceAt(List<(DateTime, double)> pts, DateTime t, Duration step) {
@@ -63,7 +91,8 @@ class PriceTrendBody extends StatelessWidget {
     }
     final tomorrow0 = DateTime(now.year, now.month, now.day + 1);
     final hasTomorrow = pts.any((p) => !p.$1.isBefore(tomorrow0));
-    final (ws, we, eff) = priceWindowFor(tile.priceWindow, now, hasTomorrow: hasTomorrow);
+    final (ws, we, eff) = priceWindowFor(tile.priceWindow, now, hasTomorrow: hasTomorrow, tomorrow: tile.priceTomorrow);
+    final pending = pendingTomorrow(ws, we, now, hasTomorrow: hasTomorrow);
     final win = [
       for (final p in pts)
         if (p.$1.add(step).isAfter(ws) && p.$1.isBefore(we)) p,
@@ -164,7 +193,7 @@ class PriceTrendBody extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                for (final (id, label) in [('12h', '12 h'), ('today', tr(lang, 'Tänään', 'Today')), ('48h', '48 h')])
+                for (final (id, label) in priceWindowChoices(lang))
                   Padding(
                     padding: const EdgeInsets.only(right: 4),
                     child: InkWell(
@@ -189,26 +218,68 @@ class PriceTrendBody extends StatelessWidget {
                       ),
                     ),
                   ),
-                if (eff == '48h' && !hasTomorrow)
-                  Text(tr(lang, 'huominen n. klo 14', 'tomorrow ~14:00'), style: small.copyWith(fontSize: 10)),
               ],
             ),
           ),
         ),
         Expanded(
-          child: TrendChart(
-            key: const ValueKey('price-trend-chart'),
-            series: [for (final p in win) (p.$1.millisecondsSinceEpoch / 60000, p.$2)],
-            hours: we.difference(ws).inHours,
-            color: cs.primary,
-            options: o,
-            colorAt: colorAt,
-            now: now,
-            windowStart: ws,
-            windowEnd: we,
-            stepMinutes: res / 60,
-            yRange: (lo, hi),
-            nowColor: cs.onSurface,
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: TrendChart(
+                  key: const ValueKey('price-trend-chart'),
+                  series: [for (final p in win) (p.$1.millisecondsSinceEpoch / 60000, p.$2)],
+                  hours: we.difference(ws).inHours,
+                  color: cs.primary,
+                  options: o,
+                  colorAt: colorAt,
+                  now: now,
+                  windowStart: ws,
+                  windowEnd: we,
+                  stepMinutes: res / 60,
+                  yRange: (lo, hi),
+                  nowColor: cs.onSurface,
+                  pendingFrom: pending?.$1,
+                ),
+              ),
+              // t171u: tomorrow not published yet – a dimmed, hatched area with the publication time.
+              if (pending != null)
+                Positioned.fill(
+                  child: LayoutBuilder(
+                    builder: (context, box) {
+                      final span = we.difference(ws).inMinutes;
+                      final a = pending.$1.difference(ws).inMinutes / span;
+                      final b = pending.$2.difference(ws).inMinutes / span;
+                      return Stack(
+                        children: [
+                          Positioned(
+                            key: const ValueKey('price-tomorrow-pending'),
+                            left: box.maxWidth * a,
+                            width: box.maxWidth * (b - a),
+                            top: 0,
+                            bottom: 0,
+                            child: IgnorePointer(
+                              child: Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4),
+                                  child: Text(
+                                    tomorrowPendingText(now, lang),
+                                    key: const ValueKey('price-tomorrow-label'),
+                                    textAlign: TextAlign.center,
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: small.copyWith(fontSize: 10.5),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+            ],
           ),
         ),
       ],

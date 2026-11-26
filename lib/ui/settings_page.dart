@@ -7,6 +7,7 @@ import 'dart:typed_data';
 import 'package:file_picker/file_picker.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../models/models.dart' hide Threshold;
 import '../state/examples.dart';
 import '../state/update_state.dart' show UpdatePhase;
 import 'account_page.dart';
@@ -121,6 +122,100 @@ class _SettingsPageState extends State<SettingsPage> {
               Text(tx(context, 'Kieli', 'Language'), style: text.titleMedium),
               const SizedBox(height: 8),
               const LanguagePicker(),
+              const SizedBox(height: 28),
+              // t162u: Ulkoasu › Teema.
+              Text(tx(context, 'Ulkoasu', 'Appearance'), style: text.titleMedium),
+              const SizedBox(height: 8),
+              Text(tx(context, 'Teema', 'Theme'), style: text.bodyMedium),
+              const SizedBox(height: 6),
+              SegmentedButton<String>(
+                key: const ValueKey('settings-theme'),
+                segments: [
+                  ButtonSegment(
+                    value: 'light',
+                    icon: const Icon(Icons.light_mode_outlined),
+                    label: Text(tx(context, 'Vaalea', 'Light')),
+                  ),
+                  ButtonSegment(
+                    value: 'dark',
+                    icon: const Icon(Icons.dark_mode_outlined),
+                    label: Text(tx(context, 'Tumma', 'Dark')),
+                  ),
+                  ButtonSegment(
+                    value: 'system',
+                    icon: const Icon(Icons.brightness_auto_outlined),
+                    label: Text(tx(context, 'Automaattinen', 'Automatic')),
+                  ),
+                ],
+                selected: {st.themeChoice == 'sun' ? 'system' : st.themeChoice},
+                onSelectionChanged: (v) => st.setTheme(v.first),
+              ),
+              if (st.themeChoice == 'system' || st.themeChoice == 'sun')
+                SwitchListTile(
+                  key: const ValueKey('settings-theme-sun'),
+                  contentPadding: EdgeInsets.zero,
+                  value: st.themeChoice == 'sun',
+                  onChanged: (v) => st.setTheme(v ? 'sun' : 'system'),
+                  title: Text(tx(context, 'Auringonnousun ja -laskun mukaan', 'By sunrise and sunset')),
+                  subtitle: Text(
+                    st.config.energy.home == null
+                        ? tx(
+                            context,
+                            'Vaatii kodin sijainnin (Energia › Koti). Siihen asti seurataan laitteen asetusta.',
+                            'Needs the home location (Energy › Home). Until then the device setting is followed.',
+                          )
+                        : tx(
+                            context,
+                            'Vaalea päivällä, tumma illalla. Pois päältä: seuraa laitteen asetusta.',
+                            'Light by day, dark in the evening. Off: follows the device setting.',
+                          ),
+                  ),
+                ),
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(
+                  tx(
+                    context,
+                    'Valinta koskee tätä laitetta ja tallentuu tiliisi uusien laitteiden oletukseksi.',
+                    'The choice applies to this device and is saved to your account as the default for new devices.',
+                  ),
+                  style: text.bodySmall,
+                ),
+              ),
+              if (st.config.connections.any((c) => c.type == 'price'))
+                SwitchListTile(
+                  key: const ValueKey('settings-price-hourly'),
+                  contentPadding: EdgeInsets.zero,
+                  value: priceHourlyOf(st.config),
+                  onChanged: (v) => st.setPriceHourly(v),
+                  title: Text(tx(context, 'Näytä tuntikeskiarvona', 'Show as hourly average')),
+                  subtitle: Text(
+                    tx(
+                      context,
+                      'Sähkön hinta, halvimmat tunnit ja hintaohjaukset tunneittain (tuntihinnoiteltu sopimus). Pois: 15 min, kun alueen hinnat ovat 15 min.',
+                      'Price, cheapest hours and price control per hour (hourly-billed contract). Off: 15 min where the area publishes 15-min prices.',
+                    ),
+                  ),
+                ),
+              SwitchListTile(
+                key: const ValueKey('settings-morning-priciest'),
+                contentPadding: EdgeInsets.zero,
+                value: st.automations.settings.morningPriciest,
+                onChanged: (v) async {
+                  await st.automations.setMorningPriciest(v);
+                  if (context.mounted) setState(() {});
+                },
+                title: Text(
+                  tx(context, 'Aamukortti: näytä myös kallein tunti', 'Morning card: also show the priciest hour'),
+                ),
+                subtitle: Text(
+                  tx(
+                    context,
+                    'Halvin tunti näytetään aina seuraavalta 24 tunnilta hintoineen.',
+                    'The cheapest hour of the next 24 h is always shown with its price.',
+                  ),
+                ),
+              ),
               const SizedBox(height: 20),
               Text(tx(context, 'Laattakoko', 'Tile size'), style: text.titleMedium),
               const SizedBox(height: 8),
@@ -208,12 +303,15 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ],
               const SizedBox(height: 20),
-              Text(tx(context, 'Etäyhteys', 'Remote access'), style: text.titleMedium),
+              Text(tx(context, 'Etäkäyttö', 'Remote access'), style: text.titleMedium),
               const SizedBox(height: 4),
               Text(
                 tx(context, 'Ohjaa kotia myös kodin ulkopuolelta.', 'Control your home from outside too.'),
                 style: text.bodySmall,
               ),
+              const SizedBox(height: 8),
+              // t174u: which device is the bridge, online / offline, last seen.
+              const BridgeStatusLine(),
               const SizedBox(height: 8),
               Wrap(
                 spacing: 10,
@@ -225,8 +323,8 @@ class _SettingsPageState extends State<SettingsPage> {
                     icon: const Icon(Icons.cloud_outlined),
                     label: Text(
                       st.remote.isPaired || st.remote.bridgeOn
-                          ? '${tx(context, 'Etäyhteys', 'Remote access')}: ${RemoteStatusChip.describe(context).$3}'
-                          : tx(context, 'Ota etäyhteys käyttöön', 'Set up remote access'),
+                          ? '${tx(context, 'Etäkäyttö', 'Remote access')}: ${RemoteStatusChip.describe(context).$3}'
+                          : tx(context, 'Ota etäkäyttö käyttöön', 'Set up remote access'),
                     ),
                   ),
                   OutlinedButton.icon(

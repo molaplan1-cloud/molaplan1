@@ -220,6 +220,56 @@ void main() {
     await _end(tester, st);
   });
 
+  testWidgets('t172u: built-in room picture, whole-view background with dimming, both themes', (tester) async {
+    final st = await _state(tester, size: const Size(1000, 1400));
+    await tester.pumpWidget(MolaplanApp(state: st));
+    await _settle(tester);
+    final d = st.config.dashboards.first; // "Olohuone"
+    await tester.tap(find.byKey(const ValueKey('control-menu')));
+    await _settle(tester);
+    await tester.tap(find.byKey(const ValueKey('control-room-photo')));
+    await _settle(tester);
+    // Thumbnails; the one matching the view's name is first and starred.
+    expect(find.byKey(const ValueKey('room-presets')), findsOneWidget);
+    expect(find.text('★ Olohuone'), findsOneWidget);
+    final first = tester.getTopLeft(find.byKey(const ValueKey('room-preset-living')));
+    expect(first.dx, lessThan(tester.getTopLeft(find.byKey(const ValueKey('room-preset-bedroom'))).dx));
+    await tester.tap(find.byKey(const ValueKey('room-preset-living')));
+    await _settle(tester);
+    expect(d.headerImage, 'preset:living');
+    expect(st.usedImages, isNot(contains('preset:living')), reason: 'no upload, no image slot');
+    // Header mode by default, then the whole view.
+    expect(d.photoMode, 'header');
+    await tester.tap(find.byKey(const ValueKey('room-mode-background')));
+    await _settle(tester);
+    expect(d.photoMode, 'background');
+    expect(find.byKey(const ValueKey('room-bg-dim')), findsOneWidget);
+    expect(find.byKey(const ValueKey('room-bg-blur')), findsOneWidget);
+    await tester.drag(find.byKey(const ValueKey('room-bg-dim')), const Offset(-2000, 0));
+    await _settle(tester);
+    expect(d.bgDim, 0);
+    await tester.tapAt(const Offset(500, 20)); // close the sheet
+    await _settle(tester);
+    expect(find.byKey(ValueKey('room-backdrop-${d.id}')), findsOneWidget);
+    expect(find.byKey(ValueKey('room-header-${d.id}')), findsNothing);
+    // The tile stays above the picture and is drawn in the theme's colours.
+    expect(
+      find.descendant(of: find.byKey(ValueKey('room-backdrop-${d.id}')), matching: find.text('Lattiavalo')),
+      findsOneWidget,
+    );
+    final j = Dashboard.fromJson(d.toJson());
+    expect((j.headerImage, j.photoMode, j.bgDim, j.bgBlur), (d.headerImage, 'background', d.bgDim, d.bgBlur));
+    // Dark theme: the dark variant of the picture.
+    await tester.runAsync(() => st.setTheme('dark'));
+    await _settle(tester);
+    final img0 = tester.widget<Image>(
+      find.descendant(of: find.byKey(ValueKey('room-backdrop-${d.id}')), matching: find.byType(Image)).first,
+    );
+    expect((img0.image as AssetImage).assetName, 'assets/rooms/living_dark.webp');
+    expect(tester.takeException(), isNull);
+    await _end(tester, st);
+  });
+
   test('morning summary, greeting and automation templates in sv / et / es', () async {
     for (final lang in ['sv', 'et', 'es']) {
       expect(greeting(lang, DateTime(2026, 11, 26, 7)), isNot('Good morning'), reason: lang);
@@ -229,7 +279,7 @@ void main() {
         expect(a.name, isNot(t.fi), reason: '$lang ${t.id}');
         expect(tr(lang, t.descFi, t.descEn), isNot(t.descEn), reason: '$lang ${t.id} desc');
       }
-      expect(tr(lang, 'halvin klo 3', 'cheapest at 3:00'), isNot('cheapest at 3:00'), reason: lang);
+      expect(tr(lang, 'Koko näkymän tausta', 'Whole view background'), isNot('Whole view background'), reason: lang);
       expect(tr(lang, '2 laitetta päällä', '2 devices on'), isNot('2 devices on'), reason: lang);
       expect(tr(lang, '1 ei vastaa', '1 not answering'), isNot('1 not answering'), reason: lang);
     }

@@ -11,6 +11,7 @@ import '../models/models.dart';
 import '../state/tile_images.dart';
 import 'app_scope.dart';
 import 'motion.dart';
+import 'room_presets.dart';
 import 'tile_look.dart';
 import 'tile_visuals.dart';
 
@@ -122,48 +123,173 @@ Future<void> showRoomPhotoSheet(BuildContext context, List<Dashboard> views) asy
     d = pick;
   }
   if (!context.mounted) return;
+  final view = d;
+  final suggested = suggestRoomPreset(view.name);
+  final presets = [?suggested, ...roomPresets.where((p) => p != suggested)];
   final action = await showModalBottomSheet<String>(
     context: context,
     showDragHandle: true,
-    builder: (c) => SafeArea(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ListTile(
-            title: Text(d.name, style: Theme.of(c).textTheme.titleMedium),
-            subtitle: Text(
-              tx(
-                c,
-                'Kuva näkyy huoneen otsikkona laattojen yläpuolella.',
-                'The photo is shown as the room header above its tiles.',
-              ),
+    isScrollControlled: true,
+    builder: (c) => StatefulBuilder(
+      builder: (c, setSheet) {
+        final lang = langOf(c);
+        final dark = Theme.of(c).brightness;
+        final current = roomPreset(view.headerImage);
+        return SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                ListTile(
+                  title: Text(view.name, style: Theme.of(c).textTheme.titleMedium),
+                  subtitle: Text(
+                    tx(
+                      c,
+                      'Valitse valmis huonekuva tai oma kuva. Kuva näkyy otsikkona tai koko näkymän taustana.',
+                      'Pick a built-in room picture or your own photo. It is shown as the header or behind the whole view.',
+                    ),
+                  ),
+                ),
+                // t172u: built-in pictures with thumbnails; the one matching the view's name first.
+                SizedBox(
+                  height: 104,
+                  child: ListView(
+                    key: const ValueKey('room-presets'),
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    children: [
+                      for (final p in presets)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          child: InkWell(
+                            key: ValueKey('room-preset-${p.id}'),
+                            borderRadius: BorderRadius.circular(10),
+                            onTap: () async {
+                              await st.setHeaderPreset(view, p.id);
+                              setSheet(() {});
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 120,
+                                  height: 68,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      width: current == p ? 3 : 1,
+                                      color: current == p
+                                          ? Theme.of(c).colorScheme.primary
+                                          : Theme.of(c).colorScheme.outlineVariant,
+                                    ),
+                                  ),
+                                  clipBehavior: Clip.antiAlias,
+                                  child: Image.asset(p.asset(dark, thumb: true), fit: BoxFit.cover),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  p == suggested ? '★ ${p.label(lang)}' : p.label(lang),
+                                  key: p == suggested ? const ValueKey('room-preset-suggested') : null,
+                                  style: Theme.of(c).textTheme.labelSmall,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+                ListTile(
+                  key: const ValueKey('room-photo-choose'),
+                  leading: const Icon(Icons.image_outlined),
+                  title: Text(
+                    view.headerImage == null || current != null
+                        ? tx(c, 'Valitse oma kuva', 'Choose your own picture')
+                        : tx(c, 'Vaihda kuva', 'Change picture'),
+                  ),
+                  onTap: () => Navigator.pop(c, 'choose'),
+                ),
+                if (cameraCaptureAvailable)
+                  ListTile(
+                    key: const ValueKey('room-photo-take'),
+                    leading: const Icon(Icons.photo_camera_outlined),
+                    title: Text(tx(c, 'Ota kuva', 'Take photo')),
+                    onTap: () => Navigator.pop(c, 'take'),
+                  ),
+                if (view.headerImage != null) ...[
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+                    child: SegmentedButton<String>(
+                      key: const ValueKey('room-photo-mode'),
+                      segments: [
+                        ButtonSegment(
+                          value: 'header',
+                          icon: const Icon(Icons.vertical_align_top),
+                          label: Text(tx(c, 'Otsikkokuva', 'Header picture'), key: const ValueKey('room-mode-header')),
+                        ),
+                        ButtonSegment(
+                          value: 'background',
+                          icon: const Icon(Icons.wallpaper),
+                          label: Text(
+                            tx(c, 'Koko näkymän tausta', 'Whole view background'),
+                            key: const ValueKey('room-mode-background'),
+                          ),
+                        ),
+                      ],
+                      selected: {view.photoMode},
+                      onSelectionChanged: (v) async {
+                        await st.setRoomPhotoMode(view, mode: v.first);
+                        setSheet(() {});
+                      },
+                    ),
+                  ),
+                  if (view.photoMode == 'background') ...[
+                    ListTile(
+                      dense: true,
+                      title: Text(tx(c, 'Himmennys', 'Dimming')),
+                      subtitle: Slider(
+                        key: const ValueKey('room-bg-dim'),
+                        value: view.bgDim,
+                        max: 0.9,
+                        divisions: 9,
+                        label: '${(view.bgDim * 100).round()} %',
+                        onChanged: (v) {
+                          view.bgDim = v;
+                          setSheet(() {});
+                        },
+                        onChangeEnd: (v) => st.setRoomPhotoMode(view, dim: v),
+                      ),
+                    ),
+                    ListTile(
+                      dense: true,
+                      title: Text(tx(c, 'Sumennus', 'Blur')),
+                      subtitle: Slider(
+                        key: const ValueKey('room-bg-blur'),
+                        value: view.bgBlur,
+                        max: 20,
+                        divisions: 10,
+                        label: view.bgBlur.round().toString(),
+                        onChanged: (v) {
+                          view.bgBlur = v;
+                          setSheet(() {});
+                        },
+                        onChangeEnd: (v) => st.setRoomPhotoMode(view, blur: v),
+                      ),
+                    ),
+                  ],
+                  ListTile(
+                    key: const ValueKey('room-photo-remove'),
+                    leading: const Icon(Icons.hide_image_outlined),
+                    title: Text(tx(c, 'Poista kuva', 'Remove picture')),
+                    onTap: () => Navigator.pop(c, 'remove'),
+                  ),
+                ],
+                const SizedBox(height: 8),
+              ],
             ),
           ),
-          ListTile(
-            key: const ValueKey('room-photo-choose'),
-            leading: const Icon(Icons.image_outlined),
-            title: Text(
-              d.headerImage == null ? tx(c, 'Valitse kuva', 'Choose picture') : tx(c, 'Vaihda kuva', 'Change picture'),
-            ),
-            onTap: () => Navigator.pop(c, 'choose'),
-          ),
-          if (cameraCaptureAvailable)
-            ListTile(
-              key: const ValueKey('room-photo-take'),
-              leading: const Icon(Icons.photo_camera_outlined),
-              title: Text(tx(c, 'Ota kuva', 'Take photo')),
-              onTap: () => Navigator.pop(c, 'take'),
-            ),
-          if (d.headerImage != null)
-            ListTile(
-              key: const ValueKey('room-photo-remove'),
-              leading: const Icon(Icons.hide_image_outlined),
-              title: Text(tx(c, 'Poista kuva', 'Remove picture')),
-              onTap: () => Navigator.pop(c, 'remove'),
-            ),
-          const SizedBox(height: 8),
-        ],
-      ),
+        );
+      },
     ),
   );
   if (action == null || !context.mounted) return;

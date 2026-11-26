@@ -219,6 +219,10 @@ class AutomationState extends ChangeNotifier {
     final w = where;
     if (w == 'self') {
       final b = app.remote.bridge!;
+      // t173u: this device is the bridge – give it the latest scripts / tiles first (a script
+      // saved a moment ago was still waiting for the 2-s debounced push: "Skriptiä ei löydy").
+      _pushTimer?.cancel();
+      await push();
       try {
         return await b.automations.run(kind, id);
       } finally {
@@ -305,6 +309,13 @@ class AutomationState extends ChangeNotifier {
 
   Future<void> saveNotify(void Function(NotifySettings n) edit) async {
     edit(settings.notify);
+    await _save();
+  }
+
+  /// t167u: show the priciest hour too on the morning card.
+  Future<void> setMorningPriciest(bool v) async {
+    settings.morningPriciest = v;
+    _summary = null;
     await _save();
   }
 

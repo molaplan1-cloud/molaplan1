@@ -1,0 +1,6 @@
+{"em1:0":{"id":0,"current":4.2,"voltage":232.0,"act_power":950.0,"aprt_power":980.0,"pf":0.97,"freq":50.0},
+ "em1:1":{"id":1,"current":0.1,"voltage":232.0,"act_power":12.0,"aprt_power":20.0,"pf":0.6,"freq":50.0},
+ "em1data:0":{"id":0,"total_act_energy":250000.0,"total_act_ret_energy":0.0},
+ "em1data:1":{"id":1,"total_act_energy":3000.0,"total_act_ret_energy":0.0},
+ "switch:0":{"id":0,"source":"init","output":false},
+ "sys":{"mac":"A0B1C2D3E4F7"}}

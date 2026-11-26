@@ -1,5 +1,6 @@
 import '../devices/shelly.dart' show ShellyCloudDriver;
 import '../models/models.dart';
+import 'airthings.dart';
 import 'camera_driver.dart';
 import 'driver.dart';
 import 'ha_driver.dart';
@@ -25,6 +26,8 @@ const driverDescriptors = <DriverDescriptor>[
   NtfyDriver.descriptor,
   IrDriver.descriptor,
   PriceDriver.descriptor,
+  AirthingsCloudDriver.descriptor,
+  AirthingsBleDriver.descriptor,
 ];
 
 DriverDescriptor descriptorFor(String type) =>

@@ -16,7 +16,11 @@ import 'package:molaplan/ui/update_ui.dart';
 import 'package:molaplan/update/update_core.dart';
 import 'package:molaplan/version.dart';
 
-Map<String, dynamic> ghRelease(String tag, {List<String>? assets, String body = '## Uutta\n- **Päivitykset** sovelluksessa'}) => {
+Map<String, dynamic> ghRelease(
+  String tag, {
+  List<String>? assets,
+  String body = '## Uutta\n- **Päivitykset** sovelluksessa',
+}) => {
   'tag_name': tag,
   'name': 'Molaplan $tag',
   'body': body,
@@ -58,11 +62,13 @@ class FakePlatform extends UpdatePlatform {
     opened.add(path);
     return true;
   }
+
   @override
   Future<bool> openFile(String path) async {
     opened.add(path);
     return true;
   }
+
   @override
   Future<bool> openUrl(String url) async {
     opened.add(url);
@@ -91,7 +97,10 @@ void main() {
     });
 
     test('appVersion matches pubspec.yaml', () {
-      final v = RegExp(r'^version:\s*([^\s+]+)', multiLine: true).firstMatch(File('pubspec.yaml').readAsStringSync())![1];
+      final v = RegExp(
+        r'^version:\s*([^\s+]+)',
+        multiLine: true,
+      ).firstMatch(File('pubspec.yaml').readAsStringSync())![1];
       expect(v, appVersion);
     });
   });
@@ -134,17 +143,24 @@ void main() {
 
   group('GitHub check', () {
     test('newer / up to date / rate limited / offline / garbage', () async {
-      Future<CheckResult> withResp(http.Response Function() r) =>
-          checkLatest(current: '0.3.1', client: MockClient((req) async {
-            expect(req.url.toString(), 'https://api.github.com/repos/molaplan1-cloud/molaplan1/releases/latest');
-            return r();
-          }));
+      Future<CheckResult> withResp(http.Response Function() r) => checkLatest(
+        current: '0.3.1',
+        client: MockClient((req) async {
+          expect(req.url.toString(), 'https://api.github.com/repos/molaplan1-cloud/molaplan1/releases/latest');
+          return r();
+        }),
+      );
       final n = await withResp(() => http.Response(jsonEncode(ghRelease('v0.3.2')), 200));
       expect(n.outcome, CheckOutcome.newer);
       expect(n.release!.version, '0.3.2');
-      expect((await withResp(() => http.Response(jsonEncode(ghRelease('v0.3.1')), 200))).outcome, CheckOutcome.upToDate);
       expect(
-        (await withResp(() => http.Response('{"message":"API rate limit exceeded"}', 403, headers: {'x-ratelimit-remaining': '0'}))).outcome,
+        (await withResp(() => http.Response(jsonEncode(ghRelease('v0.3.1')), 200))).outcome,
+        CheckOutcome.upToDate,
+      );
+      expect(
+        (await withResp(
+          () => http.Response('{"message":"API rate limit exceeded"}', 403, headers: {'x-ratelimit-remaining': '0'}),
+        )).outcome,
         CheckOutcome.unavailable,
       );
       expect((await withResp(() => http.Response('', 429))).outcome, CheckOutcome.unavailable);
@@ -256,7 +272,10 @@ void main() {
 
     test('corrupted download is rejected and deleted', () async {
       final (u, _, dir) = await dl('android', corrupt: true);
-      await expectLater(u.downloadVerified(ReleaseInfo.fromGitHub(ghRelease('v0.3.2'))), throwsA(isA<ChecksumMismatch>()));
+      await expectLater(
+        u.downloadVerified(ReleaseInfo.fromGitHub(ghRelease('v0.3.2'))),
+        throwsA(isA<ChecksumMismatch>()),
+      );
       expect(File('${dir.path}/$androidArm64Asset').existsSync(), isFalse);
       expect(u.phase, UpdatePhase.failed);
     });
@@ -269,7 +288,10 @@ void main() {
   });
 
   test('release notes become plain text', () {
-    expect(plainNotes('## Uutta\r\n- **Päivitykset** [lue](https://x)\n\n\n\n* `koodi`'), 'Uutta\n• Päivitykset lue\n\n• koodi');
+    expect(
+      plainNotes('## Uutta\r\n- **Päivitykset** [lue](https://x)\n\n\n\n* `koodi`'),
+      'Uutta\n• Päivitykset lue\n\n• koodi',
+    );
   });
 
   group('UI', () {
@@ -334,10 +356,14 @@ void main() {
       final st = await app(tester, tag: 'v$appVersion');
       await tester.pumpWidget(MolaplanApp(state: st));
       await tester.pumpAndSettle();
-      tester.state<NavigatorState>(find.byType(Navigator).first).push(MaterialPageRoute(builder: (_) => const SettingsPage()));
+      tester
+          .state<NavigatorState>(find.byType(Navigator).first)
+          .push(MaterialPageRoute(builder: (_) => const SettingsPage()));
       await tester.pumpAndSettle();
       final btn = find.byKey(const ValueKey('settings-check-updates'));
       await tester.scrollUntilVisible(btn, 200, scrollable: find.byType(Scrollable).first);
+      await tester.ensureVisible(btn);
+      await tester.pumpAndSettle();
       expect(find.text('Molaplan $appVersion'), findsOneWidget);
       await tester.tap(btn);
       await tester.pumpAndSettle();

@@ -22,6 +22,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s10edebf3fa => 'The ntfy server';
 
   @override
+  String get sc08176420f => 'The Airthings cloud';
+
+  @override
   String get sd3d9c263ed => 'The service';
 
   @override
@@ -273,6 +276,15 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s53a891e670 =>
       'Check the address and settings and try again. The technical details show the exact reason.';
+
+  @override
+  String get s02480e4c13 => 'Measurements';
+
+  @override
+  String get sd1c778324e => 'Controls';
+
+  @override
+  String get s88ac47e6d1 => 'Cameras';
 
   @override
   String get sdd5e97b1e2 => 'Clear';
@@ -673,6 +685,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sec4d80656d => 'Roku';
 
   @override
+  String get s286e1cfb54 => 'Total';
+
+  @override
   String sb9964cfb3b(String p0) {
     return 'Power $p0';
   }
@@ -695,10 +710,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s9ad7b0076b => 'leak sensor · battery';
 
   @override
+  String get s815bfa19dc => 'Contactor control';
+
+  @override
+  String get sb9209fee74 => 'add only if the relay is in use';
+
+  @override
   String get s5f2b2ca5f5 => 'on now';
 
   @override
   String get s67f64cd925 => 'off now';
+
+  @override
+  String get s8b35cc884f => 'Metering';
 
   @override
   String get sd8dfb25d31 => 'Shelly Cloud (no bridge)';
@@ -1461,17 +1485,29 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s252b8e1289 => 'Photo for which room?';
 
   @override
-  String get s9ae4e86ee7 =>
-      'The photo is shown as the room header above its tiles.';
+  String get sa27e5362de =>
+      'Pick a built-in room picture or your own photo. It is shown as the header or behind the whole view.';
 
   @override
-  String get sc48f5f9bcf => 'Choose picture';
+  String get s84ef77e1ca => 'Choose your own picture';
 
   @override
   String get sf55eee73b8 => 'Change picture';
 
   @override
   String get sf6723451b9 => 'Take photo';
+
+  @override
+  String get s0bec34cd24 => 'Header picture';
+
+  @override
+  String get s7b1e22fca7 => 'Whole view background';
+
+  @override
+  String get s229e29f9ee => 'Dimming';
+
+  @override
+  String get s38285117e6 => 'Blur';
 
   @override
   String get sdd957ccc1b => 'Remove picture';
@@ -1543,6 +1579,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s24ccd151f2 => 'Retry';
+
+  @override
+  String get sc26c52235c =>
+      'You are away and the home bridge is not answering. Home network devices cannot be controlled now.';
+
+  @override
+  String get s0fc1c9f296 =>
+      'You are away. Home network devices work remotely only through a home bridge.';
+
+  @override
+  String get se50ed56454 => 'Remote access';
 
   @override
   String get sc5f54cf3c8 => 'Fill in the key and the server.';
@@ -1776,7 +1823,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sdd309c0a63 => 'The thermostat runs on the home bridge';
 
   @override
-  String get s9c1b5394df =>
+  String get s2a7e9fe291 =>
       'Set up remote access on the home tablet (Settings → Remote access). Until then it does not control anything.';
 
   @override
@@ -1866,6 +1913,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s23f4820db7 => 'not controllable yet';
 
   @override
+  String get sdeeabebed9 => 'Airthings: add via the cloud or Bluetooth';
+
+  @override
   String get saae59a3865 => 'via home bridge';
 
   @override
@@ -1928,6 +1978,29 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s9e8430c37b =>
       'Molaplan does not control these. iPhones show their name only while awake.';
+
+  @override
+  String s095ca83913(String p0) {
+    return '$p0 tiles added';
+  }
+
+  @override
+  String get sd53b0c4edc => 'Airthings monitors';
+
+  @override
+  String sc401e05b53(String p0) {
+    return 'Add $p0 tiles';
+  }
+
+  @override
+  String get s212e35a61b => 'Could not list the devices';
+
+  @override
+  String get s039683f4a5 =>
+      'There are no monitors in your account. Add one in the Airthings app first.';
+
+  @override
+  String get sdfff64e4c3 => 'via the Hub';
 
   @override
   String get s7f308d40c8 => 'Heating';
@@ -2402,7 +2475,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'The tiles work on your home network. To control from anywhere, set up the home bridge.';
 
   @override
-  String get s856a422504 => 'Set up remote access';
+  String get s417eb9a875 => 'Set up remote access';
 
   @override
   String get sc3abd09cd9 => 'Custom colour';
@@ -2455,6 +2528,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s66c54e2286 => 'Automations are off on this device.';
+
+  @override
+  String get s57f6ce1c7f => 'What is a home bridge?';
 
   @override
   String get s4057f67774 => 'Mon Tue Wed Thu Fri Sat Sun';
@@ -2855,11 +2931,18 @@ class AppLocalizationsEn extends AppLocalizations {
       'Functions: get set on off toggle wait notify scene price cheapest temp time hour weekday log. No file or network access; 10 min time limit.';
 
   @override
-  String get s26e23ef341 => 'Allow remote run (PIN)';
+  String get s420f3ec828 => 'External trigger (optional)';
 
   @override
-  String get sd573107aec =>
-      'An ntfy message or an iPhone Shortcut starts the script.';
+  String get sb3cef805ee =>
+      'The script\'s button works without this: it runs the script in the app, and through remote access automatically when you are away. You only need this to start the script from outside Molaplan, e.g. iPhone Shortcuts.';
+
+  @override
+  String get sb6e92eacba => 'Allow starting from outside (PIN)';
+
+  @override
+  String get sa1692aa719 =>
+      'A message to the ntfy address or an iPhone Shortcut starts the script with the PIN.';
 
   @override
   String get s0a5410ea4f => 'Remote PIN (at least 4 characters)';
@@ -3101,6 +3184,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s6f1c11270c => 'Contains example settings';
 
   @override
+  String s4f55f417b1(String p0) {
+    return 'The device has $p0 relays';
+  }
+
+  @override
+  String get sab3ebba17a => 'The device has 1 relay';
+
+  @override
+  String get sfa48c40832 => 'energy metering';
+
+  @override
+  String get sc8d1abbd21 => 'Tile name';
+
+  @override
+  String get s183ed60009 => 'OK';
+
+  @override
   String s1ea8fe913b(String p0) {
     return 'Address: $p0';
   }
@@ -3168,6 +3268,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s47d409fddd => 'Search network';
+
+  @override
+  String get sa62eebe6bd => 'Detect relays';
 
   @override
   String get s7196b72140 =>
@@ -3240,6 +3343,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s7efc5653d2 => 'Device language';
 
   @override
+  String s3e5741712a(String p0) {
+    return 'This Shelly is an energy meter – replace the switch with $p0 metering tiles?';
+  }
+
+  @override
+  String sfe2074ae81(String p0) {
+    return 'The device has $p0 relays – add the rest?';
+  }
+
+  @override
+  String sf1319d04d0(String p0) {
+    return 'Add $p0';
+  }
+
+  @override
+  String get s95f80e9bdf => 'Fix';
+
+  @override
+  String get s140acccb81 => 'Today';
+
+  @override
+  String get s66ad384363 => '24 h ahead';
+
+  @override
+  String get s6df3187e65 => 'Today + tomorrow';
+
+  @override
+  String get s76379cf7c6 => '48 h';
+
+  @override
   String get s306729fe62 => 'No prices';
 
   @override
@@ -3247,18 +3380,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sf9e22ac5e7 => 'old prices';
-
-  @override
-  String get s40fbbc4d00 => '12 h';
-
-  @override
-  String get s140acccb81 => 'Today';
-
-  @override
-  String get s76379cf7c6 => '48 h';
-
-  @override
-  String get s252f182d27 => 'tomorrow ~14:00';
 
   @override
   String get sa0bd9ad5b1 => 'Example camera – add your own with Add device';
@@ -3300,6 +3421,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sf2d10dd213 => 'Electricity / power';
+
+  @override
+  String get s4594c7448e => 'Savings / cheapest';
 
   @override
   String get s291ca127d6 => 'Garage';
@@ -3345,6 +3469,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sdaa7d4de12 => 'Scene';
+
+  @override
+  String get s11cc92bdc3 => 'Radon';
+
+  @override
+  String get s095db91dfb => 'CO₂';
+
+  @override
+  String get s4b1eda4282 => 'Air quality';
 
   @override
   String get sfe55fd97fa => 'All quiet.';
@@ -3421,9 +3554,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s039bb374fe => 'Figures are hourly averages';
 
   @override
-  String get sa5e6b1e0e3 => 'Tomorrow after ~14:00';
-
-  @override
   String get s62cfd94468 => 'Cheapest hours at night';
 
   @override
@@ -3465,7 +3595,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get s4e35ba5321 =>
+  String get s538517b71b =>
       'No home bridge yet. The rule is saved but runs only once an always-on tablet or PC at home is the bridge (Settings → Remote access).';
 
   @override
@@ -3492,8 +3622,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s2f7c00a89e => 'Prices unavailable right now.';
 
   @override
-  String get s406e599999 =>
-      'No on-times in the next day (or tomorrow\'s prices are not out yet).';
+  String get s15b42b592c => 'No on-times in the next day.';
 
   @override
   String get s0de6e75a52 => 'Tomorrow';
@@ -3602,14 +3731,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sa3e78d5c4e => 'The home bridge answers – remote access works.';
 
   @override
-  String get s370acd310d => 'Remote access';
-
-  @override
   String get s0b57661c18 => 'Control your home from anywhere';
 
   @override
   String get sb43ef4094c =>
       'At home Molaplan talks to your devices directly. Elsewhere it goes encrypted through your home bridge – no port forwarding or router settings. The app picks the right path automatically.';
+
+  @override
+  String get se96e60e36c =>
+      'A home bridge is any Molaplan that is always on at home: a PC, an old tablet or phone, or the separate bridge program on e.g. a Raspberry Pi or a Home Assistant machine. When you are away, your phone\'s commands go through it to your devices, end-to-end encrypted. Nothing to set up on the router (no port forwarding).';
 
   @override
   String get s075e5a4864 => 'Connected to home';
@@ -3694,7 +3824,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s410655fd47 => 'How to connect';
 
   @override
-  String get s3a141e0c32 =>
+  String get s7c541b8e91 =>
       'On the home bridge (tablet or PC at home) open Molaplan → Settings → Remote access → Make this device the home bridge.';
 
   @override
@@ -3772,7 +3902,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s9715416100 => 'Scan with the phone';
 
   @override
-  String get sf54c6d871c =>
+  String get s4e877aeafe =>
       'On the phone: Molaplan → Settings → Remote access → Connect this device to home';
 
   @override
@@ -3791,6 +3921,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sdfaf8c242b => 'Accept';
+
+  @override
+  String get sd64229b6d8 => 'not set up yet';
+
+  @override
+  String get s088e792ee3 => 'Remote access is off';
+
+  @override
+  String get s85543bf885 => 'Online';
+
+  @override
+  String get s3f17564f18 => 'last seen';
+
+  @override
+  String get s9ba8cafced => 'What is remote access?';
 
   @override
   String get s1cf33c1fbc => 'Value';
@@ -3826,10 +3971,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s76e7a995de => 'Value read';
 
   @override
+  String get s4e1f25d257 => 'Own command';
+
+  @override
+  String get sea15760b77 => 'What does the button do?';
+
+  @override
+  String get s630ee9894e =>
+      'Pick a script, a scene or a device. The button works in the app and, when you are away, through remote access.';
+
+  @override
+  String get s1173c2dbf9 => 'No scripts yet. Make one under Automations.';
+
+  @override
+  String get s7b42ecba51 => 'No scenes yet. Save one under Automations.';
+
+  @override
+  String get s589d73245e => 'No switchable devices yet. Add a switch first.';
+
+  @override
   String get sc5edd6d3d1 => 'New tile';
 
   @override
   String get sa684fd0716 => 'Edit tile';
+
+  @override
+  String get sa7b6366b62 =>
+      'Measurement: display, trend, colour limits, alarms, decimals and scaling.';
+
+  @override
+  String get sae41bebdab =>
+      'Control: confirmation, lock / PIN, min / max / step, invert and momentary.';
 
   @override
   String get scf37cbeda8 => 'Icon';
@@ -3848,6 +4020,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sc0e069225b => 'Trend + Now line';
+
+  @override
+  String get s07647fa07d => 'Range';
+
+  @override
+  String get s8feeef3110 => 'Show tomorrow when available';
+
+  @override
+  String get sad692e6ae5 =>
+      'Tomorrow\'s prices appear by themselves once published (around 14:00).';
 
   @override
   String get s1c72b8c56a => 'Trend length';
@@ -3870,6 +4052,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s581aee3e96 => 'Optional: where the current state is read from.';
+
+  @override
+  String get s3adc51170c => 'Raw combination (Advanced)';
+
+  @override
+  String get s5f542e17e2 =>
+      '⚠ Every tile type is allowed on every connection. A wrong combination can show misleading data, e.g. \"On\" for the electricity price.';
+
+  @override
+  String get scb988b1a4a => 'Off: only the tile types the connection supports.';
 
   @override
   String get se6b18b17d9 => 'Poll interval (s, 0 = none)';
@@ -4325,9 +4517,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s48b08c5f5a => 'Monthly fees (energy + transfer)';
 
   @override
-  String get s286e1cfb54 => 'Total';
-
-  @override
   String get s2e8700e0cf =>
       'Part of the use had no price (the spot price was missing).';
 
@@ -4435,6 +4624,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sa6212aaeb4 => 'Location';
 
   @override
+  String get sa0eeb22daa => 'Already in the view – add anyway?';
+
+  @override
+  String s3507210a2a(String p0, String p1) {
+    return '$p0 is already in the view $p1.';
+  }
+
+  @override
+  String get s0e655a209f => 'Add anyway';
+
+  @override
   String get s902eaaff9f => 'Open';
 
   @override
@@ -4526,9 +4726,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s487bf00fc7 => 'Locks';
 
   @override
-  String get s88ac47e6d1 => 'Cameras';
-
-  @override
   String get sbe76826428 => 'Fans';
 
   @override
@@ -4555,11 +4752,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sf32b7f15d8 => 'cameras';
 
   @override
-  String s095ca83913(String p0) {
-    return '$p0 tiles added';
-  }
-
-  @override
   String get sa7a829cefb => 'Pick Home Assistant devices';
 
   @override
@@ -4567,11 +4759,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s26583a1933 => 'One view per room';
-
-  @override
-  String sf1319d04d0(String p0) {
-    return 'Add $p0';
-  }
 
   @override
   String get sb3e6b54bce => 'Search by name or id';
@@ -4616,6 +4803,39 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s78cdce874e => 'already added';
 
   @override
+  String get s7ba50ea69e => 'Bedroom';
+
+  @override
+  String get s9e9723b263 => 'Kitchen';
+
+  @override
+  String get scce769451b => 'Living room';
+
+  @override
+  String get s9d5dca2dee => 'Bathroom';
+
+  @override
+  String get s2569505205 => 'Sauna';
+
+  @override
+  String get s1c65dad1f5 => 'Hallway';
+
+  @override
+  String get sa4d90bb5da => 'Yard / garden';
+
+  @override
+  String get s4a7be17a36 => 'Technical room';
+
+  @override
+  String get s01e404f15f => 'Office';
+
+  @override
+  String get sfd8305add2 => 'Kids\' room';
+
+  @override
+  String get scd87fb4dd7 => 'Cottage';
+
+  @override
   String get sdc398885dc => 'Advanced settings';
 
   @override
@@ -4649,6 +4869,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s254a1d8e12 => 'Background picture (optional)';
+
+  @override
+  String get sc48f5f9bcf => 'Choose picture';
 
   @override
   String get s7ba9d453ed => 'Dim when the device is off';
@@ -4701,6 +4924,47 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s9bb545e9b3 => 'Sign in or create an account';
+
+  @override
+  String get s08d62fd281 => 'Appearance';
+
+  @override
+  String get s2b8a2754c6 => 'Theme';
+
+  @override
+  String get s79f67deb42 => 'Light';
+
+  @override
+  String get s0d6fb52039 => 'Dark';
+
+  @override
+  String get s70dd7fdd58 => 'By sunrise and sunset';
+
+  @override
+  String get s21206b61f7 =>
+      'Needs the home location (Energy › Home). Until then the device setting is followed.';
+
+  @override
+  String get s4e23920823 =>
+      'Light by day, dark in the evening. Off: follows the device setting.';
+
+  @override
+  String get s4b847ce63e =>
+      'The choice applies to this device and is saved to your account as the default for new devices.';
+
+  @override
+  String get s5ebc02022b => 'Show as hourly average';
+
+  @override
+  String get s68b4d332ca =>
+      'Price, cheapest hours and price control per hour (hourly-billed contract). Off: 15 min where the area publishes 15-min prices.';
+
+  @override
+  String get saf496a12a3 => 'Morning card: also show the priciest hour';
+
+  @override
+  String get sc53b1b78c0 =>
+      'The cheapest hour of the next 24 h is always shown with its price.';
 
   @override
   String get s0625d54b38 => 'Tile size';
@@ -4889,6 +5153,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sae0fae7127 => 'Go to my dashboard';
 
   @override
+  String get s2a28790ea2 => 'Full width';
+
+  @override
   String get s64f4d1e11a => 'Set the home location';
 
   @override
@@ -4949,6 +5216,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s38d0517a8d => 'Authentication';
+
+  @override
+  String get sade17bf83e => 'None';
+
+  @override
+  String get s9cbb9f048d => 'User + password (Basic)';
+
+  @override
+  String get s3cb806781e => 'User + password (Digest)';
+
+  @override
+  String get sb1920b9d9b => 'Token (Bearer)';
 
   @override
   String get sed995f57b8 => 'Username';
@@ -5022,7 +5301,102 @@ class AppLocalizationsEn extends AppLocalizations {
   String get se995a6862d => 'Mode';
 
   @override
+  String get s7cf6da2822 => 'Live (MJPEG)';
+
+  @override
+  String get s4cb8ad767b => 'Snapshots';
+
+  @override
+  String get s15f9cd477c => 'RTSP video';
+
+  @override
   String get s4f356d158a => 'Refresh (s, snapshot)';
+
+  @override
+  String get scbc6aa5e63 => 'radon';
+
+  @override
+  String get sfc402d7bce => 'co2';
+
+  @override
+  String get s7410329f6d => 'air_quality';
+
+  @override
+  String get s05ff8e0c34 => 'thermostat';
+
+  @override
+  String get s26e6d96d7e => 'humidity';
+
+  @override
+  String get sfabcfc0188 => 'speed';
+
+  @override
+  String get s12a1c5653a => 'air_quality';
+
+  @override
+  String get s2f37dd80ed => 'battery';
+
+  @override
+  String get sd4025b7a32 => 'Airthings (cloud)';
+
+  @override
+  String get sf7d012472a => 'Client ID';
+
+  @override
+  String get s94bccb8598 =>
+      'dashboard.airthings.com → Integrations → API → Create client (Client credentials).';
+
+  @override
+  String get sb1a9b21d4f => 'Client secret';
+
+  @override
+  String get s2403198fe5 => 'Shown next to the Client ID. Keep it secret.';
+
+  @override
+  String get s21b52207e8 => 'Update interval (min)';
+
+  @override
+  String get saad5ced5fe =>
+      'The monitors update every 5 minutes; asking more often brings nothing new.';
+
+  @override
+  String get sc844e90e0f => 'Serial number';
+
+  @override
+  String get s8cee566dd7 =>
+      'The monitor\'s serial number (10 digits) – filled in when you add it from the list.';
+
+  @override
+  String get s2d79014611 => 'Measurement';
+
+  @override
+  String get s852b4e5c75 =>
+      'Which measurement the tile shows (radon Bq/m³, CO₂ ppm, VOC ppb, °C, %, hPa, µg/m³, battery %).';
+
+  @override
+  String get s6cd83fc216 => 'Radon (short-term)';
+
+  @override
+  String get s0c4b6446cd => 'Radon (long-term)';
+
+  @override
+  String get s96cc1b3741 => 'VOC';
+
+  @override
+  String get sf8496cb6dc => 'Pressure';
+
+  @override
+  String get s99e44237af => 'PM2.5';
+
+  @override
+  String get s951d501a1a => 'PM1';
+
+  @override
+  String get sb6d80b9662 => 'Airthings Wave (Bluetooth)';
+
+  @override
+  String get s83d2446b44 =>
+      'On the back or bottom of the monitor (10 digits, e.g. 2930xxxxxx).';
 
   @override
   String get s2525f9a4f5 =>
@@ -5048,6 +5422,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'From your bill, incl. VAT. Leave 0 for energy only.';
 
   @override
+  String get s1d9eabe472 =>
+      'For hourly-billed contracts. Off: 15-min prices where the area publishes them (EU day-ahead since 1 Oct 2025).';
+
+  @override
   String get s515da3a9dd => 'Price server';
 
   @override
@@ -5058,13 +5436,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s271885dc8b => 'What to show';
 
   @override
-  String get s46282f452b => 'now = current price, chart = today and tomorrow.';
+  String get s1edb6be142 =>
+      'Which price figure the tile shows: now, today\'s lowest / highest / average, the next cheap hour or the chart.';
+
+  @override
+  String get s46aab99b27 => 'Lowest today';
+
+  @override
+  String get sf6295f1182 => 'Highest today';
+
+  @override
+  String get s1aa7abbf72 => 'Average today';
+
+  @override
+  String get s65f496b2dc => 'Next cheap hour';
+
+  @override
+  String get se446dc324a => 'Price chart (today and tomorrow)';
 
   @override
   String get s2f754e8ab4 => 'No prices for today yet.';
-
-  @override
-  String get sd575462da3 => 'tomorrow ';
 
   @override
   String get s18faad19ed => 'No price for now.';
@@ -5142,6 +5533,21 @@ class AppLocalizationsEn extends AppLocalizations {
       'tasmota_http = Tasmota (tasmota-ir) by IP. tasmota_mqtt = Tasmota via an MQTT broker. esphome = ESPHome climate_ir. http/mqtt = other blaster with your own templates.';
 
   @override
+  String get s4fb133b1c8 => 'Tasmota (HTTP)';
+
+  @override
+  String get sdd5d31034c => 'Tasmota (MQTT)';
+
+  @override
+  String get see30b7398b => 'ESPHome';
+
+  @override
+  String get scb2d23e10b => 'Custom HTTP';
+
+  @override
+  String get s5c6c30aac6 => 'Custom MQTT';
+
+  @override
   String get s38471ae691 => 'Blaster address';
 
   @override
@@ -5210,6 +5616,18 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s8567c5faa6 =>
       'summary = full state as text. room = the blaster\'s temperature sensor. Others = last sent setting.';
+
+  @override
+  String get s5d329a0fea => 'Summary';
+
+  @override
+  String get s5db6506824 => 'Set temperature';
+
+  @override
+  String get s018d2e08f4 => 'Fan';
+
+  @override
+  String get s051944392f => 'Room temperature';
 
   @override
   String get sdd8cd8132c => 'What to change';
@@ -5344,9 +5762,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s43c9b88580 => 'Auto';
 
   @override
-  String get s018d2e08f4 => 'Fan';
-
-  @override
   String get s36fb6ba26f => 'Modbus TCP';
 
   @override
@@ -5410,6 +5825,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s943b8b6bf3 => 'Register table';
 
   @override
+  String get s8283ed1c89 => 'Holding register (4x)';
+
+  @override
+  String get s94cf36d710 => 'Coil (0x)';
+
+  @override
+  String get sfb6d4a8639 => 'Input register (3x)';
+
+  @override
+  String get s0bbedf814a => 'Discrete input (1x)';
+
+  @override
   String get sf51ad986eb => 'Address (0-based)';
 
   @override
@@ -5464,6 +5891,12 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get sddbea594a4 =>
       'latest = the newest message, log = several recent messages (newest first).';
+
+  @override
+  String get s580abde883 => 'Latest message';
+
+  @override
+  String get sf6455b6631 => 'Message log';
 
   @override
   String get s2bd0e69d44 => 'Topic (optional)';
@@ -5682,11 +6115,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String sb23114b65d(String p0) {
-    return 'cheapest at $p0:00';
-  }
-
-  @override
   String sd39874fbe2(String p0) {
     return '$p0 devices on';
   }
@@ -5740,6 +6168,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s4cac4725b8 => 'The group\'s devices are not answering';
+
+  @override
+  String get s13a91fe322 => 'The device to control is missing';
 
   @override
   String get s7e461faf91 =>
@@ -5804,13 +6235,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sc130e073ba => 'Relay or plug running Tasmota firmware.';
 
   @override
-  String get s16be1831d6 => 'Only for devices with energy metering.';
+  String get s70d8cb97e6 => 'Relays';
 
   @override
-  String get s8890d26ef2 => 'Relay number';
-
-  @override
-  String get s7e6d21d466 => 'For multi-relay devices 1, 2, 3...';
+  String get s7a4c459c3a =>
+      'Empty = every relay the device reports (detected automatically). Narrow it: \"1\", \"1,2,4\", \"1-4\" or \"all\".';
 
   @override
   String get s5f1e4a036e => 'Web password';
@@ -6053,19 +6482,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'Pick your country; in Sweden and Norway your area.';
 
   @override
-  String get s5e8c8e4273 => 'Look';
-
-  @override
-  String get s9f6d9ce1bf =>
-      'The trend shows today and tomorrow as a line with the Now position.';
-
-  @override
-  String get s51f1184efb => 'Trend and bars (2 tiles)';
-
-  @override
-  String get sa77af9de19 => 'Price trend (line, Now line)';
-
-  @override
   String get sf3a8631d14 => 'From your bill incl. VAT. 0 = energy only.';
 
   @override
@@ -6077,14 +6493,50 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get s9772b9b5c4 => 'Electricity price trend';
+  String get sfb2b7ccc87 => 'Price trend';
 
   @override
-  String get s9af9526395 => 'Ventilation unit (Modbus TCP)';
+  String get s4790164c94 => 'Today and tomorrow chart';
 
   @override
-  String get s29dc0baf55 =>
-      'Temperatures and fan speed. Register presets are examples – verify with your manual.';
+  String get sd408a5dbe9 => 'Cheapest hours';
+
+  @override
+  String get s7ba83434d1 => 'Airthings (radon and air quality, cloud)';
+
+  @override
+  String get s39e8df2552 =>
+      'View Plus, View Radon, Hub and every monitor in your account. The Wi-Fi models have no local API, so values come from the official Airthings API with your own credentials.';
+
+  @override
+  String get sbafe369760 =>
+      '1) Open dashboard.airthings.com and sign in with your Airthings account. 2) Integrations → API → Create client (\"New API client\"). 3) Name it e.g. Molaplan, choose Flow type \"Client credentials\" and enable it. 4) Copy the Client ID here.';
+
+  @override
+  String get sb6a852ab13 =>
+      '5) Copy the Client secret from the same view. It is stored only on this device and encrypted in your account.';
+
+  @override
+  String get sc76f519144 =>
+      'Wave, Wave Plus, Wave Mini and Wave Radon use Bluetooth only. Read by an Android device or the home bridge (e.g. a wall tablet) within about 10 m.';
+
+  @override
+  String get sff5f25f96f =>
+      'On the back of the monitor (10 digits). The start tells the model: 2930 = Wave Plus, 2950 = Wave Radon, 2920 = Wave Mini.';
+
+  @override
+  String get s8de2de9178 => 'Read through the home bridge';
+
+  @override
+  String get s5e605a88ef =>
+      'On when the home bridge (e.g. a wall tablet near the monitor) does the Bluetooth reading.';
+
+  @override
+  String get s3330126b01 => 'Ventilation unit or heat pump (Modbus TCP)';
+
+  @override
+  String get sc16ab2836c =>
+      'Temperatures, fan speed and settings. Ready register maps for brands (Airfi, Vallox, Enervent, Swegon, Flexit, Ilto, Nilan, NIBE, Thermia) – verify with your manual.';
 
   @override
   String get sb75966bb58 => 'Unit or gateway IP';
@@ -6183,8 +6635,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s8231329360 => 'Command topic URL';
 
   @override
-  String get sd82d127f05 =>
-      'Paste the same URL your Shortcut posts commands to (e.g. https://ntfy.sh/kv-cmd-…). The topic name alone also works.';
+  String get s206ac44298 =>
+      'Paste the same URL your Shortcut posts commands to (e.g. https://ntfy.sh/oma-aihe). The topic name alone also works.';
 
   @override
   String get s1b3bbae234 =>
@@ -6237,4 +6689,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String s3a38b97f7b(String p0) {
     return '$p0 – room';
   }
+
+  @override
+  String get s0ceafaa97c => 'energy';
 }

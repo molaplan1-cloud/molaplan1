@@ -1,6 +1,8 @@
 /// t150u: colour presets for measurement tiles and a small custom colour picker.
 library;
 
+import '../drivers/airthings.dart';
+
 import 'package:material_ui/material_ui.dart' hide Threshold;
 
 import '../models/models.dart';
@@ -38,6 +40,7 @@ final colorPresets = <ColorPreset>[
   ColorPreset('co2', 'CO₂', 'CO₂', [Threshold(600, _green), Threshold(1000, _yellow), Threshold(1500, _red)]),
   ColorPreset('power', 'Teho', 'Power', [Threshold(0, _green), Threshold(2000, _yellow), Threshold(5000, _red)]),
   ColorPreset('price', 'Sähkön hinta c/kWh', 'Electricity price c/kWh', defaultPriceThresholds),
+  ColorPreset('radon', 'Radon Bq/m³ (WHO)', 'Radon Bq/m³ (WHO)', radonThresholds()),
 ];
 
 /// t151u: price trend colours when none are set: green < 5, amber 5–15, red ≥ 15 c/kWh.

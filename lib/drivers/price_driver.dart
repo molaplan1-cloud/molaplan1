@@ -1,3 +1,4 @@
+import '../prices/price_summary.dart';
 import '../core/fields.dart';
 import '../core/friendly_error.dart';
 import '../prices/prices.dart';
@@ -95,6 +96,15 @@ class PriceDriver extends Driver {
         helpEn: 'From your bill, incl. VAT. Leave 0 for energy only.',
       ),
       FieldSpec(
+        'hourly',
+        'Näytä tuntikeskiarvona',
+        'Show as hourly average',
+        kind: FieldKind.boolean,
+        defaultValue: false,
+        helpFi: 'Tuntihinnoitellulle sopimukselle. Pois: 15 min hinnat, kun alueen data on 15 min (EU:n päivämarkkina 1.10.2025 alkaen).',
+        helpEn: 'For hourly-billed contracts. Off: 15-min prices where the area publishes them (EU day-ahead since 1 Oct 2025).',
+      ),
+      FieldSpec(
         'server',
         'Hintapalvelin',
         'Price server',
@@ -112,8 +122,16 @@ class PriceDriver extends Driver {
         kind: FieldKind.choice,
         options: ['now', 'min', 'max', 'avg', 'next_cheap', 'chart'],
         defaultValue: 'now',
-        helpFi: 'now = hinta nyt, chart = kaavio tälle ja huomiselle päivälle.',
-        helpEn: 'now = current price, chart = today and tomorrow.',
+        optionLabels: {
+          'now': ('Hinta nyt', 'Price now'),
+          'min': ('Päivän halvin', 'Lowest today'),
+          'max': ('Päivän kallein', 'Highest today'),
+          'avg': ('Päivän keskihinta', 'Average today'),
+          'next_cheap': ('Seuraava halpa tunti', 'Next cheap hour'),
+          'chart': ('Hintakaavio (tänään ja huomenna)', 'Price chart (today and tomorrow)'),
+        },
+        helpFi: 'Mikä hinnan tieto ruudussa näkyy: hinta nyt, päivän halvin / kallein / keskihinta, seuraava halpa tunti tai kaavio.',
+        helpEn: 'Which price figure the tile shows: now, today\'s lowest / highest / average, the next cheap hour or the chart.',
       ),
     ],
     commandFields: [],
@@ -156,7 +174,10 @@ class PriceDriver extends Driver {
 
   @override
   Future<Object?> read(Map<String, dynamic> spec) async {
-    final se = await _series();
+    final raw = await _series();
+    // t168u: the data's own resolution (15 min where published) unless "Näytä tuntikeskiarvona".
+    final hourly = s['hourly'] == true;
+    final se = hourly && raw.resolution < 3600 ? raw.hourly() : raw;
     final now = DateTime.now();
     final st = settings;
     final today = se.day(now, 0);
@@ -172,20 +193,19 @@ class PriceDriver extends Driver {
       case 'avg':
         return _r(cents.reduce((a, b) => a + b) / cents.length);
       case 'next_cheap':
-        final ahead = se.hourly().between(now.subtract(const Duration(hours: 1)), now.add(const Duration(hours: 36)))
-          ..retainWhere((p) => p.end.isAfter(now));
-        if (ahead.isEmpty) return '–';
-        ahead.sort((a, b) => a.eurMwh.compareTo(b.eurMwh));
-        final b = ahead.first;
-        final day = b.start.day == now.day ? '' : dtx('huomenna ', 'tomorrow ');
-        return '$day${b.start.hour.toString().padLeft(2, '0')}–${b.end.hour.toString().padLeft(2, '0')} (${st.cents(b.eurMwh).toStringAsFixed(1)} c)';
+        // t166u / t168u: the cheapest slot still ahead (next 24 h) at the shown resolution.
+        final w = priceWindowAhead(se.points, now, quarters: se.resolution < 3600, toCents: st.cents);
+        if (w == null) return '–';
+        return '${windowRange(w, now, driverLang)} (${centsText(w.cents, driverLang)} c)';
       case 'chart':
-        final pts = [...today, ...se.day(now, 1)];
+        // Raw points: the tile averages them itself when "hourly" is set (and can still show 15 min).
+        final pts = [...raw.day(now, 0), ...raw.day(now, 1)];
         return {
           'now': now.millisecondsSinceEpoch,
           'fetched': se.fetched.millisecondsSinceEpoch,
           if (se.stale) 'stale': true,
-          'res': se.resolution,
+          'res': raw.resolution,
+          if (hourly) 'hourly': true,
           'unit': 'c/kWh',
           'points': [
             for (final p in pts) [p.start.millisecondsSinceEpoch, _r(st.cents(p.eurMwh))],

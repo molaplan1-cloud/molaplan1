@@ -144,6 +144,8 @@ void main() {
           contains(switch (t.id) {
             'ntfy' => 'topic',
             'electricity_price' => 'zone',
+            'airthings' => 'clientId', // cloud only
+            'airthings_wave' => 'serial', // Bluetooth
             _ => 'address',
           }),
           reason: t.id,
@@ -331,6 +333,8 @@ void main() {
       expect(find.byKey(const ValueKey('empty-add-device')), findsOneWidget);
       await tester.tap(find.text('Asetukset'));
       await tester.pumpAndSettle();
+      // t162u: Ulkoasu made the page longer.
+      await tester.scrollUntilVisible(find.byKey(const ValueKey('settings-onboarding')), 200, scrollable: find.byType(Scrollable).first);
       await tester.tap(find.byKey(const ValueKey('settings-onboarding')));
       await tester.pumpAndSettle();
       expect(find.text('Tervetuloa Molaplaniin'), findsOneWidget);

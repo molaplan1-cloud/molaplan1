@@ -17,6 +17,10 @@ import '../energy/weather.dart';
 String energyZoneOf(AppConfig c) =>
     c.energy.zone ?? '${c.connections.where((x) => x.type == 'price').firstOrNull?.settings['zone'] ?? 'FI'}';
 
+/// t168u: "Näytä tuntikeskiarvona" (hourly-billed contracts) – set on the price connection(s).
+/// Off (default) = the data's own resolution, 15 min wherever the area publishes it.
+bool priceHourlyOf(AppConfig c) => c.connections.any((x) => x.type == 'price' && x.settings['hourly'] == true);
+
 class EnergySettings {
   EnergySettings({
     this.zone,
@@ -144,6 +148,17 @@ class Threshold {
 /// t148u: the trend windows offered on the tile (1 h / 6 h / 24 h / 7 vrk).
 const trendRanges = [1, 6, 24, 168];
 
+/// t170u: the price trend windows (see [TileConfig.priceWindow]).
+const priceWindows = ['auto', 'today', '24h', '48h', '12h'];
+
+/// t169u: `w2` value for "Koko leveys" – the tile spans the whole row at any window width.
+const fullWidthW2 = 99;
+
+/// t169u: tallest tile in half-units (6 grid units).
+const maxH2 = 12;
+
+int _clampW2(int v) => v == fullWidthW2 ? v : v.clamp(1, 8);
+
 class TileConfig {
   String id;
   TileType type;
@@ -154,11 +169,14 @@ class TileConfig {
   int w2;
   int h2;
 
+  /// t169u: spans the whole row (responsive to the window / screen).
+  bool get fullWidth => w2 == fullWidthW2;
+
   /// Whole-unit view of the size (rounded up), for code that thinks in 1×1 / 2×1 / 2×2.
-  int get colSpan => (w2 + 1) ~/ 2;
+  int get colSpan => fullWidth ? 4 : (w2 + 1) ~/ 2;
   set colSpan(int v) => w2 = (v * 2).clamp(1, 8);
   int get rowSpan => (h2 + 1) ~/ 2;
-  set rowSpan(int v) => h2 = (v * 2).clamp(1, 8);
+  set rowSpan(int v) => h2 = (v * 2).clamp(1, maxH2);
 
   /// Where the state is read from (value/toggle/slider/camera).
   String? connectionId;
@@ -204,8 +222,13 @@ class TileConfig {
   /// y-axis / x-axis labels auto | on | off; dots = point markers. "auto" = shown on ≥2×2 tiles.
   String trendGrid;
 
-  /// t151u price trend window: auto (48 h when tomorrow is known, else today) | 12h | today | 48h.
+  /// t151u / t170u price trend window: auto = "Tänään + huomenna" (tomorrow added as soon as it
+  /// is published) | today | 24h (24 h ahead) | 48h (today + tomorrow, tomorrow empty until
+  /// published) | 12h (older chip).
   String priceWindow;
+
+  /// t170u "Näytä huomenna kun saatavilla" (default on): off = never past today's midnight.
+  bool priceTomorrow;
   String trendYAxis;
   String trendXAxis;
   bool trendDots;
@@ -214,7 +237,8 @@ class TileConfig {
   bool colorSmooth;
 
   /// Size in grid units (t144u stores half-units internally; read sizes through these).
-  double get wUnits => w2 / 2;
+  /// A full-width tile counts as 4 wide for layout choices (wide / large looks).
+  double get wUnits => fullWidth ? 4 : w2 / 2;
   double get hUnits => h2 / 2;
 
   /// Gauge range; null = automatic from the history.
@@ -267,6 +291,7 @@ class TileConfig {
     this.trendHours = 1,
     this.trendGrid = 'auto',
     this.priceWindow = 'auto',
+    this.priceTomorrow = true,
     this.trendYAxis = 'auto',
     this.trendXAxis = 'auto',
     this.trendDots = false,
@@ -278,8 +303,8 @@ class TileConfig {
     this.battery,
     this.lastAlarm,
   }) : id = id ?? newId(),
-       w2 = (w2 ?? colSpan * 2).clamp(1, 8),
-       h2 = (h2 ?? rowSpan * 2).clamp(1, 8),
+       w2 = _clampW2(w2 ?? colSpan * 2),
+       h2 = (h2 ?? rowSpan * 2).clamp(1, maxH2),
        light = light ?? {},
        read = read ?? {},
        thresholds = thresholds ?? [],
@@ -318,6 +343,7 @@ class TileConfig {
     if (trendHours != 1) 'trendHours': trendHours,
     if (trendGrid != 'auto') 'trendGrid': trendGrid,
     if (priceWindow != 'auto') 'priceWindow': priceWindow,
+    if (!priceTomorrow) 'priceTomorrow': false,
     if (trendYAxis != 'auto') 'trendYAxis': trendYAxis,
     if (trendXAxis != 'auto') 'trendXAxis': trendXAxis,
     if (trendDots) 'trendDots': true,
@@ -360,7 +386,8 @@ class TileConfig {
     display: const ['value', 'gauge', 'trend', 'gauge_trend'].contains(j['display']) ? j['display'] as String : 'auto',
     trendHours: trendRanges.contains(j['trendHours']) ? (j['trendHours'] as num).toInt() : 1,
     trendGrid: const ['none', 'h', 'full'].contains(j['trendGrid']) ? j['trendGrid'] as String : 'auto',
-    priceWindow: const ['12h', 'today', '48h'].contains(j['priceWindow']) ? j['priceWindow'] as String : 'auto',
+    priceWindow: priceWindows.contains(j['priceWindow']) ? j['priceWindow'] as String : 'auto',
+    priceTomorrow: j['priceTomorrow'] != false,
     trendYAxis: const ['on', 'off'].contains(j['trendYAxis']) ? j['trendYAxis'] as String : 'auto',
     trendXAxis: const ['on', 'off'].contains(j['trendXAxis']) ? j['trendXAxis'] as String : 'auto',
     trendDots: j['trendDots'] == true,
@@ -439,15 +466,35 @@ class Dashboard {
   /// (synced like tile backgrounds) and the scrim that keeps the white title readable.
   String? headerImage;
   double headerScrim;
-  Dashboard({String? id, required this.name, List<TileConfig>? tiles, this.headerImage, this.headerScrim = 0.45})
-    : id = id ?? newId(),
-      tiles = tiles ?? [];
+
+  /// t172u: 'header' (Otsikkokuva, above the tiles) | 'background' (Koko näkymän tausta, behind
+  /// the tiles) with an adjustable dimming overlay [bgDim] (0–0.9, in the theme's surface
+  /// colour) and blur [bgBlur] (0–20 px).
+  String photoMode;
+  double bgDim;
+  double bgBlur;
+  bool get photoBackground => headerImage != null && photoMode == 'background';
+
+  Dashboard({
+    String? id,
+    required this.name,
+    List<TileConfig>? tiles,
+    this.headerImage,
+    this.headerScrim = 0.45,
+    this.photoMode = 'header',
+    this.bgDim = 0.55,
+    this.bgBlur = 6,
+  }) : id = id ?? newId(),
+       tiles = tiles ?? [];
 
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'headerImage': ?headerImage,
     if (headerImage != null) 'headerScrim': headerScrim,
+    if (photoMode != 'header') 'photoMode': photoMode,
+    if (photoMode != 'header') 'bgDim': bgDim,
+    if (photoMode != 'header') 'bgBlur': bgBlur,
     'tiles': tiles.map((t) => t.toJson()).toList(),
   };
 
@@ -456,6 +503,9 @@ class Dashboard {
     name: (j['name'] ?? '') as String,
     headerImage: j['headerImage'] as String?,
     headerScrim: (j['headerScrim'] as num?)?.toDouble() ?? 0.45,
+    photoMode: j['photoMode'] == 'background' ? 'background' : 'header',
+    bgDim: ((j['bgDim'] as num?)?.toDouble() ?? 0.55).clamp(0, 0.9),
+    bgBlur: ((j['bgBlur'] as num?)?.toDouble() ?? 6).clamp(0, 20),
     tiles: ((j['tiles'] as List?) ?? []).map((e) => TileConfig.fromJson(_map(e))).toList(),
   );
 }
@@ -495,6 +545,14 @@ class AppConfig {
   /// "Laattakoko": small / normal / large dashboard tiles.
   String tileDensity;
 
+  /// t162u: "Teema" of THIS device: light / dark / system / sun ('' = not chosen here,
+  /// use [defaultTheme]). Device-local, never overwritten by account sync.
+  String theme;
+
+  /// The last theme chosen on any device; synced to the account so a new device starts
+  /// with it.
+  String defaultTheme;
+
   /// t131u: hide LAN-only tiles while away from home (off by default – they're greyed instead).
   bool hideAwayTiles;
 
@@ -533,6 +591,8 @@ class AppConfig {
     this.advanced = false,
     this.viewLocked = false,
     this.tileDensity = 'normal',
+    this.theme = '',
+    this.defaultTheme = 'dark',
     this.hideAwayTiles = false,
     List<String>? favoriteColors,
     Map<String, String>? scanNames,
@@ -559,6 +619,8 @@ class AppConfig {
     if (advanced) 'advanced': true,
     if (viewLocked) 'viewLocked': true,
     if (tileDensity != 'normal') 'tileDensity': tileDensity,
+    if (theme.isNotEmpty) 'theme': theme,
+    if (defaultTheme != 'dark') 'defaultTheme': defaultTheme,
     if (hideAwayTiles) 'hideAwayTiles': true,
     'favoriteColors': favoriteColors,
     if (scanNames.isNotEmpty) 'scanNames': scanNames,
@@ -589,6 +651,8 @@ class AppConfig {
       advanced: j['advanced'] == true,
       viewLocked: j['viewLocked'] == true,
       tileDensity: const ['small', 'large'].contains(j['tileDensity']) ? j['tileDensity'] as String : 'normal',
+      theme: themeChoices.contains(j['theme']) ? j['theme'] as String : '',
+      defaultTheme: themeChoices.contains(j['defaultTheme']) ? j['defaultTheme'] as String : 'dark',
       hideAwayTiles: j['hideAwayTiles'] == true,
       favoriteColors: j['favoriteColors'] is List ? [for (final c in j['favoriteColors'] as List) '$c'] : null,
       scanNames: {for (final e in _map(j['scanNames'] ?? const {}).entries) e.key: '${e.value}'},
@@ -650,3 +714,6 @@ ConnectionConfig clearPlaceholderHost(ConnectionConfig c) {
   }
   return c;
 }
+
+/// t162u: the theme options (Vaalea / Tumma / Automaattinen: järjestelmä tai aurinko).
+const themeChoices = ['light', 'dark', 'system', 'sun'];

@@ -1,3 +1,5 @@
+import '../core/capabilities.dart';
+
 import 'dart:async';
 import 'dart:io';
 
@@ -10,6 +12,7 @@ import '../devices/rtsp_catalog.dart';
 import '../models/models.dart';
 import '../templates/device_templates.dart' show TemplateResult;
 import 'app_scope.dart';
+import 'duplicate_check.dart';
 import 'remote_pages.dart';
 
 enum WizStep { remote, find, connect, choose, done }
@@ -185,6 +188,9 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
   final names = <String, TextEditingController>{};
   final skip = <String>{};
   bool extras = true;
+
+  /// t165u: one row per entity (measurement or control), each becoming its own tile.
+  List<WizEntity> entities = const [];
   int added = 0;
   Map<String, String> creds = {};
   bool _cancel = false;
@@ -380,11 +386,12 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       final r = await p.connect(ctx, c, creds);
       if (!mounted || _cancel) return;
       connected = r;
+      entities = wizEntities(p, r, AppScope.read(context).lang);
       skip
         ..clear()
-        ..addAll(r.items.where((i) => !i.preselect).map((i) => i.key));
-      for (final it in r.items) {
-        (names[it.key] ??= TextEditingController()).text = it.name;
+        ..addAll(entities.where((e) => !e.preselect).map((e) => e.key));
+      for (final e in entities) {
+        (names[e.key] ??= TextEditingController()).text = e.name;
       }
       _go(WizStep.choose);
     } catch (e) {
@@ -416,17 +423,20 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
   Future<void> _add() async {
     final st = AppScope.read(context);
     final r = connected!;
-    final tiles = p.tiles(
+    final tiles = wizTiles(
+      p,
       r,
-      names: {for (final e in names.entries) e.key: e.value.text},
+      entities,
       skip: skip,
-      power: extras,
+      names: {for (final e in names.entries) e.key: e.value.text},
       lang: st.lang,
     );
     if (tiles.isEmpty) {
       showSnack(context, tx(context, 'Valitse vähintään yksi', 'Pick at least one'), error: true);
       return;
     }
+    final d = widget.dashboard ?? st.config.dashboards.first;
+    if (!await confirmNoDuplicates(context, d, tiles, extra: [r.connection]) || !mounted) return;
     await st.applyTemplate(TemplateResult([r.connection], tiles), into: widget.dashboard);
     added = tiles.length;
     _go(WizStep.done);
@@ -499,7 +509,7 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
         };
       case WizStep.choose:
         back = () => _go(WizStep.find);
-        final n = connected!.items.where((i) => !skip.contains(i.key)).length;
+        final n = entities.where((e) => !skip.contains(e.key)).length;
         next = FilledButton.icon(
           key: const ValueKey('wiz-add'),
           onPressed: n == 0 ? null : _add,
@@ -1037,8 +1047,19 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
 
   List<Widget> _choose(BuildContext context) {
     final r = connected!;
-    final hasExtras = r.items.any((i) => i.hasPower);
+    final lang = AppScope.read(context).lang;
+    final extrasList = entities.where((e) => e.index > 0).toList();
     final light = r.items.any((i) => i.kind == 'light');
+    // t165u: devices with both get 'Mittaukset' and 'Ohjaukset' as separate groups.
+    final split =
+        entities.any((e) => e.role == EntityRole.measurement) && entities.any((e) => e.role == EntityRole.control);
+    final ordered = split
+        ? [
+            for (final role in const [EntityRole.control, EntityRole.measurement, EntityRole.media])
+              ...entities.where((e) => e.role == role),
+          ]
+        : entities;
+    String heading(WizEntity e) => split ? entityRoleLabel(e.role, lang) : e.group;
     return [
       _title(
         context,
@@ -1049,26 +1070,26 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           'Pick what goes on the home view and name them.',
         ),
       ),
-      if (r.items.length > 3)
+      if (entities.length > 3)
         Align(
           alignment: Alignment.centerRight,
           child: TextButton(
             key: const ValueKey('wiz-select-all'),
-            onPressed: () => setState(() => skip.isEmpty ? skip.addAll(r.items.map((i) => i.key)) : skip.clear()),
+            onPressed: () => setState(() => skip.isEmpty ? skip.addAll(entities.map((e) => e.key)) : skip.clear()),
             child: Text(
               skip.isEmpty
                   ? tx(context, 'Poista valinnat', 'Select none')
-                  : tx(context, 'Valitse kaikki (${r.items.length})', 'Select all (${r.items.length})'),
+                  : tx(context, 'Valitse kaikki (${entities.length})', 'Select all (${entities.length})'),
             ),
           ),
         ),
-      for (final (i, it) in r.items.indexed) ...[
-        if (it.group.isNotEmpty && (i == 0 || r.items[i - 1].group != it.group))
+      for (final (i, e) in ordered.indexed) ...[
+        if (heading(e).isNotEmpty && (i == 0 || heading(ordered[i - 1]) != heading(e)))
           Padding(
-            key: ValueKey('wiz-group-${it.group}'),
+            key: ValueKey('wiz-group-${heading(e)}'),
             padding: const EdgeInsets.fromLTRB(4, 12, 4, 6),
             child: Text(
-              it.group,
+              heading(e),
               style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Theme.of(context).colorScheme.primary),
             ),
           ),
@@ -1079,39 +1100,45 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
             child: Row(
               children: [
                 Checkbox(
-                  key: ValueKey('wiz-item-${it.key}'),
-                  value: !skip.contains(it.key),
-                  onChanged: (v) => setState(() => v == true ? skip.remove(it.key) : skip.add(it.key)),
+                  key: ValueKey('wiz-item-${e.key}'),
+                  value: !skip.contains(e.key),
+                  onChanged: (v) => setState(() => v == true ? skip.remove(e.key) : skip.add(e.key)),
                 ),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextField(
-                        key: ValueKey('wiz-name-${it.key}'),
-                        controller: names[it.key],
+                        key: ValueKey('wiz-name-${e.key}'),
+                        controller: names[e.key],
                         style: const TextStyle(fontSize: 17),
                         decoration: InputDecoration(isDense: true, labelText: tx(context, 'Nimi', 'Name')),
                       ),
-                      if (it.subtitle.isNotEmpty)
+                      if (e.subtitle.isNotEmpty)
                         Padding(
                           padding: const EdgeInsets.only(top: 4),
-                          child: Text(it.subtitle, style: Theme.of(context).textTheme.bodySmall),
+                          child: Text(e.subtitle, style: Theme.of(context).textTheme.bodySmall),
                         ),
                     ],
                   ),
                 ),
+                Icon(e.icon, size: 20, color: Theme.of(context).colorScheme.onSurfaceVariant),
               ],
             ),
           ),
         ),
       ],
-      if (hasExtras)
+      if (extrasList.isNotEmpty)
         SwitchListTile(
           key: const ValueKey('wiz-extras'),
           contentPadding: EdgeInsets.zero,
           value: extras,
-          onChanged: (v) => setState(() => extras = v),
+          onChanged: (v) => setState(() {
+            extras = v;
+            for (final e in extrasList) {
+              v ? skip.remove(e.key) : skip.add(e.key);
+            }
+          }),
           title: Text(
             light
                 ? tx(context, 'Lisää myös kirkkaus / teho', 'Also add brightness / power')
@@ -1153,8 +1180,91 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           key: const ValueKey('wiz-setup-remote'),
           onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RemoteHubPage())),
           icon: const Icon(Icons.cloud_outlined),
-          label: Text(tx(context, 'Ota etäyhteys käyttöön', 'Set up remote access')),
+          label: Text(tx(context, 'Ota etäkäyttö käyttöön', 'Set up remote access')),
         ),
     ];
   }
+}
+
+/// t165u: one checklist row = one entity = one tile.
+class WizEntity {
+  WizEntity({
+    required this.item,
+    required this.index,
+    required this.tile,
+    required this.name,
+    required this.preselect,
+    this.group = '',
+    this.subtitle = '',
+  });
+  final String item;
+  final int index; // 0 = the item's main tile; 1… = its extra entities (power, brightness…)
+  final TileConfig tile;
+  final String name, group, subtitle;
+  final bool preselect;
+
+  String get key => index == 0 ? item : '$item#$index';
+  EntityRole get role => tileRole(tile);
+  IconData get icon => switch (role) {
+    EntityRole.measurement => Icons.show_chart,
+    EntityRole.control => Icons.toggle_on_outlined,
+    EntityRole.media => Icons.videocam_outlined,
+  };
+}
+
+/// Splits a connected device into entities: every tile the provider makes for an item is
+/// its own row (the switch and its power meter separately).
+List<WizEntity> wizEntities(DeviceProvider p, Connected r, String lang) {
+  final out = <WizEntity>[];
+  final keys = r.items.map((i) => i.key).toSet();
+  for (final it in r.items) {
+    final tiles = p.tiles(r, names: {it.key: it.name}, skip: keys.difference({it.key}), power: true, lang: lang);
+    for (final (j, t) in tiles.indexed) {
+      out.add(
+        WizEntity(
+          item: it.key,
+          index: j,
+          tile: t,
+          name: j == 0 ? it.name : t.title,
+          preselect: it.preselect,
+          group: it.group,
+          subtitle: j == 0 ? it.subtitle : [if (t.unit.isNotEmpty) t.unit].join(),
+        ),
+      );
+    }
+  }
+  return out;
+}
+
+/// The tiles for the ticked entities, with the names typed in the checklist.
+List<TileConfig> wizTiles(
+  DeviceProvider p,
+  Connected r,
+  List<WizEntity> entities, {
+  required Set<String> skip,
+  required Map<String, String> names,
+  required String lang,
+}) {
+  final keys = r.items.map((i) => i.key).toSet();
+  final out = <TileConfig>[];
+  for (final it in r.items) {
+    final mine = entities.where((e) => e.item == it.key).toList();
+    if (mine.every((e) => skip.contains(e.key))) continue;
+    final main = names[it.key]?.trim() ?? '';
+    final tiles = p.tiles(
+      r,
+      names: {it.key: main.isEmpty ? it.name : main},
+      skip: keys.difference({it.key}),
+      power: true,
+      lang: lang,
+    );
+    for (final (j, t) in tiles.indexed) {
+      final e = mine.where((x) => x.index == j).firstOrNull;
+      if (e == null || skip.contains(e.key)) continue;
+      final typed = names[e.key]?.trim() ?? '';
+      if (j > 0 && typed.isNotEmpty && typed != e.name) t.title = typed;
+      out.add(t);
+    }
+  }
+  return out;
 }

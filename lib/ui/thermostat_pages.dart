@@ -975,7 +975,7 @@ class _ThermostatPageState extends State<ThermostatPage> {
                 subtitle: Text(
                   tx(
                     context,
-                    'Ota etäyhteys käyttöön kodin tabletilla (Asetukset → Etäyhteys). Siihen asti termostaatti ei ohjaa.',
+                    'Ota etäyhteys käyttöön kodin tabletilla (Asetukset → Etäkäyttö). Siihen asti termostaatti ei ohjaa.',
                     'Set up remote access on the home tablet (Settings → Remote access). Until then it does not control anything.',
                   ),
                 ),

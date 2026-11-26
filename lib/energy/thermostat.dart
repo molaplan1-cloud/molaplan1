@@ -353,7 +353,9 @@ class ThermostatJob {
         if (ThermoCommand.fromJson(r) != null) ThermoCommand.fromJson(r)!,
     ],
     zone: j['zone'] as String?,
-    contract: j['contract'] is Map ? ElectricityContract.fromJson(Map<String, dynamic>.from(j['contract'] as Map)) : null,
+    contract: j['contract'] is Map
+        ? ElectricityContract.fromJson(Map<String, dynamic>.from(j['contract'] as Map))
+        : null,
     home: HomeLocation.fromJson(j['home']),
   );
 
@@ -371,7 +373,10 @@ class ThermostatJob {
 
     ThermoCommand? firstCmd(TileConfig? t) => t == null
         ? null
-        : cmd(t.commands.firstOrNull ?? (t.connectionId == null ? null : CommandStep(connectionId: t.connectionId!, spec: t.read)));
+        : cmd(
+            t.commands.firstOrNull ??
+                (t.connectionId == null ? null : CommandStep(connectionId: t.connectionId!, spec: t.read)),
+          );
 
     final e = c.energy;
     return [
@@ -557,7 +562,15 @@ class ThermostatRunner {
           // Plan (every 15 min).
           final pa = _planAt[c.id];
           if (c.plan.enabled && (pa == null || now.difference(pa) >= const Duration(minutes: 15))) {
-            st.plan = await buildPlan(c, now, prices: prices, weather: weather, zone: j.zone, contract: j.contract, home: j.home);
+            st.plan = await buildPlan(
+              c,
+              now,
+              prices: prices,
+              weather: weather,
+              zone: j.zone,
+              contract: j.contract,
+              home: j.home,
+            );
             _planAt[c.id] = now;
           }
           if (!c.plan.enabled) st.plan = [];

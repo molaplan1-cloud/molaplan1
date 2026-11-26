@@ -14,6 +14,8 @@ import '../models/models.dart';
 import '../state/app_state.dart';
 import '../state/auto_driver.dart';
 import 'app_scope.dart';
+import 'remote_pages.dart' show RemoteHubPage;
+import 'duplicate_check.dart';
 import 'icons.dart';
 
 List<TileConfig> _allTiles(AppState st) => [for (final d in st.config.dashboards) ...d.tiles];
@@ -139,7 +141,22 @@ class _WhereBanner extends StatelessWidget {
         children: [
           Icon(icon, size: 18),
           const SizedBox(width: 10),
-          Expanded(child: Text(text, style: Theme.of(context).textTheme.bodySmall)),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(text, style: Theme.of(context).textTheme.bodySmall),
+                // t174u: what "kotisilta" means, and one-tap setup.
+                if (where != 'self' && where != 'bridge')
+                  TextButton(
+                    key: const ValueKey('auto-where-help'),
+                    style: TextButton.styleFrom(padding: EdgeInsets.zero, visualDensity: VisualDensity.compact),
+                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RemoteHubPage())),
+                    child: Text(tx(context, 'Mikä on kotisilta?', 'What is a home bridge?')),
+                  ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -1481,15 +1498,32 @@ class _ScriptEditorState extends State<ScriptEditor> {
               },
             ),
           const Divider(height: 32),
+          // t173u: the button runs the script in the app (and through the home bridge when you
+          // are away) – this is only an extra, optional trigger from outside Molaplan.
+          Text(
+            tx(context, 'Ulkoinen käynnistys (valinnainen)', 'External trigger (optional)'),
+            key: const ValueKey('script-external-title'),
+            style: Theme.of(context).textTheme.titleSmall,
+          ),
+          const SizedBox(height: 4),
+          Text(
+            tx(
+              context,
+              'Skriptin nappi toimii ilman tätä: se ajaa skriptin sovelluksessa, ja kodin ulkopuolelta automaattisesti etäkäytön kautta. Tarvitset tätä vain, jos haluat käynnistää skriptin Molaplanin ulkopuolelta, esim. iPhonen Pikakomennoilla.',
+              'The script\'s button works without this: it runs the script in the app, and through remote access automatically when you are away. You only need this to start the script from outside Molaplan, e.g. iPhone Shortcuts.',
+            ),
+            key: const ValueKey('script-external-help'),
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
           SwitchListTile(
             key: const ValueKey('script-remote'),
             contentPadding: EdgeInsets.zero,
-            title: Text(tx(context, 'Salli etäajo (PIN)', 'Allow remote run (PIN)')),
+            title: Text(tx(context, 'Salli käynnistys ulkopuolelta (PIN)', 'Allow starting from outside (PIN)')),
             subtitle: Text(
               tx(
                 context,
-                'ntfy-viesti tai iPhonen Pikakomento käynnistää skriptin.',
-                'An ntfy message or an iPhone Shortcut starts the script.',
+                'Viesti ntfy-osoitteeseen tai iPhonen Pikakomento käynnistää skriptin PIN-koodilla.',
+                'A message to the ntfy address or an iPhone Shortcut starts the script with the PIN.',
               ),
             ),
             value: s.remote,
@@ -1564,7 +1598,9 @@ class _ScriptEditorState extends State<ScriptEditor> {
                         _normalise();
                         await a.saveScript(s);
                         final d = st.config.dashboards.first;
-                        await st.upsertTile(d, runTile(s.name, 'script', s.id, icon: 'play'));
+                        final tile = runTile(s.name, 'script', s.id, icon: 'play');
+                        if (!context.mounted || !await confirmNoDuplicates(context, d, [tile])) return;
+                        await st.upsertTile(d, tile);
                         if (context.mounted) {
                           showSnack(
                             context,
@@ -1747,7 +1783,9 @@ class _SceneEditorState extends State<SceneEditor> {
                   _normalise();
                   await a.saveScene(s);
                   final d = st.config.dashboards.first;
-                  await st.upsertTile(d, runTile(s.name, 'scene', s.id));
+                  final tile = runTile(s.name, 'scene', s.id);
+                  if (!context.mounted || !await confirmNoDuplicates(context, d, [tile])) return;
+                  await st.upsertTile(d, tile);
                   if (context.mounted) {
                     showSnack(context, tx(context, 'Nappi lisätty näkymään ${d.name}', 'Button added to ${d.name}'));
                   }
@@ -2038,7 +2076,9 @@ Future<void> showAutomationStart(BuildContext context, {Dashboard? dashboard}) a
       final s = await captureSceneFlow(context);
       if (s != null && context.mounted) {
         final d = dashboard ?? st.config.dashboards.first;
-        await st.upsertTile(d, runTile(s.name, 'scene', s.id));
+        final tile = runTile(s.name, 'scene', s.id);
+        if (!context.mounted || !await confirmNoDuplicates(context, d, [tile])) return;
+        await st.upsertTile(d, tile);
       }
     case 'script':
       await Navigator.push(context, MaterialPageRoute(builder: (_) => const ScriptEditor()));

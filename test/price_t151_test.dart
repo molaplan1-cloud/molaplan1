@@ -198,24 +198,23 @@ void main() {
     },
   );
 
-  test('template: "Trendi ja pylväät" adds a trend tile (display trend) and the bar tile', () {
+  test('template: the trend tile keeps display trend (t166u: picked from the checklist)', () {
     final t = deviceTemplates.firstWhere((t) => t.id == 'electricity_price');
-    final both = t.build({'zone': 'FI – Suomi'}, 'fi');
-    expect(both.tiles.map((x) => x.title), ['Sähkön hinnan trendi', 'Sähkön hinta']);
-    expect(both.tiles.first.display, 'trend');
-    expect(both.tiles.first.read['field'], 'chart');
-    expect(TileConfig.fromJson(both.tiles.first.toJson()).display, 'trend');
-    expect(t.build({'zone': 'FI – Suomi', 'look': 'bars'}, 'fi').tiles.single.display, 'auto');
-    expect(t.build({'zone': 'FI – Suomi', 'look': 'trend'}, 'fi').tiles.single.display, 'trend');
+    final r = t.build({'zone': 'FI – Suomi'}, 'fi');
+    final trend = r.tiles.firstWhere((x) => x.title == 'Hintatrendi');
+    expect(trend.display, 'trend');
+    expect(trend.read['field'], 'chart');
+    expect(TileConfig.fromJson(trend.toJson()).display, 'trend');
+    expect(r.tiles.firstWhere((x) => x.title == 'Tämän ja huomisen kaavio').display, 'auto');
   });
 
   test('trend window: today + tomorrow, step line, Now line inside the window, y-axis from 0', () {
     final now = DateTime(2026, 11, 26, 13, 40);
     final (ws, we, eff) = priceWindowFor('auto', now, hasTomorrow: true);
-    expect(eff, '48h');
+    expect(eff, 'auto'); // t170u: the "Tänään + huomenna" chip
     expect(ws, DateTime(2026, 11, 26));
     expect(we, DateTime(2026, 11, 28));
-    expect(priceWindowFor('auto', now, hasTomorrow: false).$3, 'today');
+    expect(priceWindowFor('auto', now, hasTomorrow: false).$2, DateTime(2026, 11, 27));
     final w12 = priceWindowFor('12h', now, hasTomorrow: true);
     expect(w12.$1, DateTime(2026, 11, 26, 11));
     expect(w12.$2, DateTime(2026, 11, 26, 23));
@@ -279,8 +278,8 @@ void main() {
     expect(find.byKey(const ValueKey('price-change-1')), findsOneWidget);
     expect(find.textContaining('+1,0 c tunnin päästä'), findsOneWidget);
     expect(find.byKey(const ValueKey('price-trend-chart')), findsOneWidget);
-    await tester.tap(find.byKey(const ValueKey('price-window-12h')));
+    await tester.tap(find.byKey(const ValueKey('price-window-24h')));
     await tester.pumpAndSettle();
-    expect(tile.priceWindow, '12h');
+    expect(tile.priceWindow, '24h');
   });
 }

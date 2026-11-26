@@ -41,7 +41,7 @@ enum ErrorKind {
 
 /// Connection types that are internet services, never devices on the home network (t151u):
 /// their errors never get LAN / IP / "turn on remote access" hints.
-const cloudConnectionTypes = {'price', 'weather', 'shelly_cloud', 'ntfy'};
+const cloudConnectionTypes = {'price', 'weather', 'shelly_cloud', 'ntfy', 'airthings'};
 
 /// Plain service names for [cloudConnectionTypes].
 (String, String) cloudServiceName(String type) => switch (type) {
@@ -49,6 +49,7 @@ const cloudConnectionTypes = {'price', 'weather', 'shelly_cloud', 'ntfy'};
   'weather' => ('Sääpalvelu', 'The weather service'),
   'shelly_cloud' => ('Shelly Cloud', 'Shelly Cloud'),
   'ntfy' => ('ntfy-palvelin', 'The ntfy server'),
+  'airthings' => ('Airthings-pilvi', 'The Airthings cloud'),
   _ => ('Palvelu', 'The service'),
 };
 

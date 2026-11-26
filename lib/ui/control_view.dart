@@ -1,6 +1,7 @@
 import '../state/net_health.dart';
 import 'add_sheet.dart';
 import 'tile_grid.dart';
+import 'tile_visuals.dart' show RoomBackdrop;
 import 'tile_status.dart';
 
 import 'package:flutter/services.dart';
@@ -77,6 +78,7 @@ class ControlView extends StatelessWidget {
         children: [
           const UpdateBanner(),
           const OfflineBanner(),
+          const AwayNoBridgeBanner(),
           const NoAccountBanner(),
           Expanded(
             child: ListenableBuilder(
@@ -85,53 +87,89 @@ class ControlView extends StatelessWidget {
                 builder: (context, box) {
                   final g = tileGridFor(box.maxWidth, AppScope.of(context).config.tileDensity);
                   final gap = g.gap;
-                  return ListView(
+                  final whole = single && groups.isNotEmpty && groups.first.photoBackground;
+                  final list = ListView(
                     padding: EdgeInsets.fromLTRB(gap, 6, gap, st.viewLocked ? 32 : 96),
                     children: [
                       const HomeHeader(),
-                      for (final d in groups) ...[
-                        if (d.headerImage != null)
-                          RoomHeader(dashboard: d)
-                        else if (!single && !sameAsTitle(d))
+                      for (final d in groups)
+                        if (d.photoBackground && !single)
+                          // t172u: this room's picture behind its own tiles.
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(4, 14, 4, 10),
-                            child: Text(
-                              d.name,
-                              key: ValueKey('group-${d.id}'),
-                              style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                        Wrap(
-                          spacing: gap,
-                          runSpacing: gap,
-                          children: [
-                            for (final t in d.tiles)
-                              if (!st.config.hideAwayTiles || awayLanConnection(st, t) == null)
-                                SizedBox(
-                                  width: g.width(t.wUnits),
-                                  height: g.height(t.hUnits),
-                                  child: TileWidget(key: ValueKey('cv-${t.id}'), tile: t, control: true),
-                                ),
-                            if (!st.viewLocked && d == groups.last)
-                              SizedBox(
-                                width: g.width(1),
-                                height: g.height(1),
-                                child: AddPlaceholderTile(
-                                  key: const ValueKey('add-placeholder'),
-                                  onTap: () => showAddSheet(context, dashboard: d),
+                            padding: const EdgeInsets.only(top: 10, bottom: 4),
+                            child: RoomBackdrop(
+                              dashboard: d,
+                              radius: 16,
+                              child: Padding(
+                                padding: EdgeInsets.all(gap),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(4, 4, 4, 10),
+                                      child: Text(
+                                        d.name,
+                                        key: ValueKey('group-${d.id}'),
+                                        style: Theme.of(context).textTheme.titleLarge
+                                            ?.copyWith(fontWeight: FontWeight.w600),
+                                      ),
+                                    ),
+                                    _tiles(context, d, groups, g),
+                                  ],
                                 ),
                               ),
-                          ],
-                        ),
-                      ],
+                            ),
+                          )
+                        else ...[
+                          if (d.headerImage != null && !d.photoBackground)
+                            RoomHeader(dashboard: d)
+                          else if (!single && !sameAsTitle(d))
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(4, 14, 4, 10),
+                              child: Text(
+                                d.name,
+                                key: ValueKey('group-${d.id}'),
+                                style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          _tiles(context, d, groups, g),
+                        ],
                     ],
                   );
+                  // t172u "Koko näkymän tausta": the whole view behind its tiles.
+                  return whole ? RoomBackdrop(dashboard: groups.first, child: list) : list;
                 },
               ),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _tiles(BuildContext context, Dashboard d, List<Dashboard> groups, TileGridMetrics g) {
+    final st = AppScope.of(context);
+    return Wrap(
+      spacing: g.gap,
+      runSpacing: g.gap,
+      children: [
+        for (final t in d.tiles)
+          if (!st.config.hideAwayTiles || awayLanConnection(st, t) == null)
+            SizedBox(
+              width: g.widthOf(t.w2),
+              height: g.height(t.hUnits),
+              child: TileWidget(key: ValueKey('cv-${t.id}'), tile: t, control: true),
+            ),
+        if (!st.viewLocked && d == groups.last)
+          SizedBox(
+            width: g.width(1),
+            height: g.height(1),
+            child: AddPlaceholderTile(
+              key: const ValueKey('add-placeholder'),
+              onTap: () => showAddSheet(context, dashboard: d),
+            ),
+          ),
+      ],
     );
   }
 
@@ -296,10 +334,7 @@ class ControlView extends StatelessWidget {
             obscureText: true,
             keyboardType: TextInputType.number,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration: InputDecoration(
-              labelText: tx(c, 'PIN-koodi', 'PIN code'),
-              errorText: error,
-            ),
+            decoration: InputDecoration(labelText: tx(c, 'PIN-koodi', 'PIN code'), errorText: error),
           ),
           actions: [
             TextButton(onPressed: () => Navigator.pop(c), child: Text(tx(c, 'Peruuta', 'Cancel'))),

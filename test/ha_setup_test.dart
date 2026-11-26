@@ -42,7 +42,7 @@ void main() {
     expect(removeEmptyIntegrationViews(AppConfig(dashboards: [Dashboard(name: 'HA')])), isFalse);
   });
   test('candidates: bare LAN address → http then https on 8123; Nabu Casa → https first', () {
-    expect(haCandidates('192.168.50.1:8123'), ['http://192.168.50.1:8123', 'https://192.168.50.1:8123']);
+    expect(haCandidates('192.168.88.1:8123'), ['http://192.168.88.1:8123', 'https://192.168.88.1:8123']);
     expect(haCandidates('homeassistant.local'), [
       'http://homeassistant.local:8123',
       'https://homeassistant.local:8123',
@@ -66,14 +66,14 @@ void main() {
       if (!ss) throw http.ClientException('HandshakeException: CERTIFICATE_VERIFY_FAILED', r.url);
       return http.Response('{"message":"API running."}', 200);
     });
-    final res = await probeHomeAssistant('192.168.50.10:8123', 'tok', clients: clients);
-    expect(res.baseUrl, 'https://192.168.50.10:8123');
+    final res = await probeHomeAssistant('192.168.88.10:8123', 'tok', clients: clients);
+    expect(res.baseUrl, 'https://192.168.88.10:8123');
     expect(res.selfSigned, isTrue);
     expect(used, ['http', 'https', 'https+ss']);
   });
 
   test('plain errors: wrong service, bad token, unreachable – never "Jokin meni pieleen"', () async {
-    Future<HaSetupError> err(Future<http.Response> Function(http.Request r) h, [String a = '192.168.50.1:8123']) async {
+    Future<HaSetupError> err(Future<http.Response> Function(http.Request r) h, [String a = '192.168.88.1:8123']) async {
       try {
         await probeHomeAssistant(a, 'tok', clients: (_) => MockClient(h));
       } on HaSetupError catch (e) {
@@ -101,7 +101,7 @@ void main() {
 
   test('generic errors: invalid response line → readable, unknown is never bare', () {
     final f = friendlyError(
-      Exception('ClientException: Invalid response line, uri=http://192.168.50.1:8123/api/'),
+      Exception('ClientException: Invalid response line, uri=http://192.168.88.1:8123/api/'),
       'fi',
     );
     expect(f.kind, ErrorKind.wrongProtocol);
@@ -112,11 +112,11 @@ void main() {
   test('discovery: three records of one HA collapse to one entry, the answering LAN IP preselected', () async {
     final seen = [
       HaSighting(
-        ip: '192.168.50.1',
+        ip: '192.168.88.1',
         host: 'homeassistant.local.',
         txt: {'uuid': 'u1', 'location_name': 'Koti', 'external_url': 'https://abc.ui.nabu.casa'},
       ),
-      HaSighting(ip: '192.168.50.20', host: 'homeassistant.local.', txt: {'uuid': 'u1', 'location_name': 'Koti'}),
+      HaSighting(ip: '192.168.88.20', host: 'homeassistant.local.', txt: {'uuid': 'u1', 'location_name': 'Koti'}),
       HaSighting(ip: '172.30.32.1', host: 'homeassistant.local.', txt: {'uuid': 'u1'}),
     ];
     final g = groupHaSightings(seen);
@@ -126,26 +126,26 @@ void main() {
       g,
       clients: (_) => MockClient((r) async {
         // Only the real HA box answers; .1 is the router.
-        if (r.url.host == '192.168.50.20' && r.url.path == '/manifest.json') return http.Response(_manifest, 200);
+        if (r.url.host == '192.168.88.20' && r.url.path == '/manifest.json') return http.Response(_manifest, 200);
         return http.Response('nope', 404);
       }),
     );
     expect(res, hasLength(1));
-    expect(res.first.best, 'http://192.168.50.20:8123');
+    expect(res.first.best, 'http://192.168.88.20:8123');
     expect(res.first.ordered.last, 'https://abc.ui.nabu.casa');
   });
 
   test('discovery without uuid: duplicates confirmed by /api/discovery_info merge; non-HA dropped', () async {
     final g = groupHaSightings([
-      HaSighting(ip: '192.168.50.20'),
-      HaSighting(ip: '192.168.50.21'),
-      HaSighting(ip: '192.168.50.1'),
+      HaSighting(ip: '192.168.88.20'),
+      HaSighting(ip: '192.168.88.21'),
+      HaSighting(ip: '192.168.88.1'),
     ]);
     expect(g, hasLength(3));
     final res = await resolveHaInstances(
       g,
       clients: (_) => MockClient((r) async {
-        if (r.url.path == '/api/discovery_info' && r.url.host != '192.168.50.1') {
+        if (r.url.path == '/api/discovery_info' && r.url.host != '192.168.88.1') {
           return http.Response('{"uuid":"u9","location_name":"Mökki"}', 200);
         }
         return http.Response('nope', 404);
@@ -157,8 +157,8 @@ void main() {
 
   test('scanner: port-forwarded 8123 on the router is not HA; same-uuid hits collapse', () async {
     final all = {
-      '192.168.50.1': ScanHit(ip: '192.168.50.1', kind: 'homeassistant', port: 8123, via: {'port'}, role: 'router'),
-      '192.168.50.20': ScanHit(ip: '192.168.50.20', kind: 'homeassistant', port: 8123, via: {'mDNS'})..haUuid = 'u1',
+      '192.168.88.1': ScanHit(ip: '192.168.88.1', kind: 'homeassistant', port: 8123, via: {'port'}, role: 'router'),
+      '192.168.88.20': ScanHit(ip: '192.168.88.20', kind: 'homeassistant', port: 8123, via: {'mDNS'})..haUuid = 'u1',
       '172.30.32.1': ScanHit(ip: '172.30.32.1', kind: 'homeassistant', port: 8123, via: {'mDNS'})..haUuid = 'u1',
     };
     await dedupeHaHits(all, confirm: (ip, port) async => false);
@@ -167,9 +167,9 @@ void main() {
         for (final h in all.values)
           if (h.kind == 'homeassistant') h.ip,
       ],
-      ['192.168.50.20'],
+      ['192.168.88.20'],
     );
-    expect(all['192.168.50.1']!.kind, 'unknown');
+    expect(all['192.168.88.1']!.kind, 'unknown');
   });
 }
 
@@ -186,7 +186,7 @@ Widget _page(AppState st, TemplateSetupPage p) => AppScope(
 );
 
 void widgetTests() {
-  testWidgets('HA form: the wrong 192.168.50.1:8123 gives the plain HA message, not "Jokin meni pieleen"', (
+  testWidgets('HA form: the wrong 192.168.88.1:8123 gives the plain HA message, not "Jokin meni pieleen"', (
     tester,
   ) async {
     final st = await _st();
@@ -198,7 +198,7 @@ void widgetTests() {
         st,
         TemplateSetupPage(
           template: templateById('homeassistant')!,
-          initialValues: const {'address': '192.168.50.1:8123', 'token': 'tok'},
+          initialValues: const {'address': '192.168.88.1:8123', 'token': 'tok'},
           haProbe: (a, t, {more = const []}) async =>
               throw HaSetupError(HaProblem.wrongProtocol, 'Invalid response line'),
         ),
@@ -223,7 +223,7 @@ void widgetTests() {
         TemplateSetupPage(
           template: templateById('homeassistant')!,
           discover: ({services = const [], timeout = const Duration(seconds: 4), onRecord}) async {
-            for (final ip in ['192.168.50.1', '192.168.50.20']) {
+            for (final ip in ['192.168.88.1', '192.168.88.20']) {
               onRecord?.call(
                 FoundDevice(
                   name: 'Koti._home-assistant._tcp.local',
@@ -239,7 +239,7 @@ void widgetTests() {
           },
           haResolve: (found) async {
             expect(found, hasLength(1));
-            return [found.first..best = 'http://192.168.50.20:8123'];
+            return [found.first..best = 'http://192.168.88.20:8123'];
           },
         ),
       ),
@@ -247,7 +247,7 @@ void widgetTests() {
     await tester.pump();
     await tester.tap(find.text('Etsi verkosta'));
     await tester.pump(const Duration(milliseconds: 100));
-    expect(find.text('http://192.168.50.20:8123'), findsOneWidget);
+    expect(find.text('http://192.168.88.20:8123'), findsOneWidget);
     expect(find.byKey(const ValueKey('ha-note')), findsOneWidget);
   });
 }

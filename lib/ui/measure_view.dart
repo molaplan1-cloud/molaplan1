@@ -492,8 +492,21 @@ class TrendOptions {
 
 /// Where the chart puts things (pure; tested): plot area, line points and labels.
 class TrendLayout {
-  TrendLayout._(this.plot, this.points, this.lo, this.hi, this.yLabels, this.xLabels, [this.nowX, this.nowY]);
+  TrendLayout._(
+    this.plot,
+    this.points,
+    this.lo,
+    this.hi,
+    this.yLabels,
+    this.xLabels, [
+    this.nowX,
+    this.nowY,
+    this.dayX = const [],
+  ]);
   final Rect plot;
+
+  /// t170u window mode: x of each midnight inside the window (the today / tomorrow boundary).
+  final List<double> dayX;
 
   /// t151u window mode: where "now" is on the x-axis (null when outside the window) and the
   /// line's height there.
@@ -652,7 +665,14 @@ class TrendLayout {
         out.add(Offset(x(b), yv));
         if (nowM >= pts[i].$1 && nowM < pts[i].$1 + step) nowY = yv;
       }
-      return TrendLayout._(plot, out, lo, hi, yLabels, xLabels, nowX, nowY);
+      final days = <double>[];
+      final s0 = DateTime.fromMillisecondsSinceEpoch((start * 60000).round());
+      for (var d = DateTime(s0.year, s0.month, s0.day + 1); ; d = DateTime(d.year, d.month, d.day + 1)) {
+        final m = d.millisecondsSinceEpoch / 60000;
+        if (m >= end) break;
+        if (m > start) days.add(x(m));
+      }
+      return TrendLayout._(plot, out, lo, hi, yLabels, xLabels, nowX, nowY, days);
     }
     for (var i = 0; i < pts.length; i++) {
       final p = Offset(x(pts[i].$1), y(pts[i].$2));
@@ -679,8 +699,13 @@ class TrendChart extends StatelessWidget {
     this.stepMinutes,
     this.yRange,
     this.nowColor,
+    this.pendingFrom,
   });
   final List<(double, double)> series;
+
+  /// t171u window mode: from here to the window end the prices are not published yet
+  /// (drawn dimmed and hatched).
+  final DateTime? pendingFrom;
   final int hours;
   final Color color;
   final TrendOptions options;
@@ -713,6 +738,7 @@ class TrendChart extends StatelessWidget {
         stepMinutes: stepMinutes,
         yRange: yRange,
         nowColor: nowColor ?? cs.onSurface,
+        pendingFrom: pendingFrom,
       ),
       size: Size.infinite,
     );
@@ -734,7 +760,9 @@ class _TrendPainter extends CustomPainter {
     this.stepMinutes,
     this.yRange,
     this.nowColor = const Color(0xFF000000),
+    this.pendingFrom,
   });
+  final DateTime? pendingFrom;
   final DateTime? windowStart, windowEnd;
   final double? stepMinutes;
   final (double, double)? yRange;
@@ -853,6 +881,30 @@ class _TrendPainter extends CustomPainter {
       }
     }
     if (windowed) {
+      // t170u: the day boundary – a solid hairline at each midnight (today | tomorrow).
+      final dp = Paint()
+        ..color = gridColor.withValues(alpha: 0.9)
+        ..strokeWidth = 1.2;
+      for (final dx in l.dayX) {
+        canvas.drawLine(Offset(dx, plot.top), Offset(dx, plot.bottom), dp);
+      }
+      // t171u: tomorrow not published yet – dimmed and hatched.
+      final pf = pendingFrom;
+      if (pf != null) {
+        final a = windowStart!.millisecondsSinceEpoch, b = windowEnd!.millisecondsSinceEpoch;
+        final f = ((pf.millisecondsSinceEpoch - a) / (b - a)).clamp(0.0, 1.0);
+        final r = Rect.fromLTRB(plot.left + plot.width * f, plot.top, plot.right, plot.bottom);
+        canvas.drawRect(r, Paint()..color = labelColor.withValues(alpha: 0.08));
+        final hp = Paint()
+          ..color = labelColor.withValues(alpha: 0.22)
+          ..strokeWidth = 1;
+        canvas.save();
+        canvas.clipRect(r);
+        for (var x = r.left - r.height; x < r.right; x += 8) {
+          canvas.drawLine(Offset(x, r.bottom), Offset(x + r.height, r.top), hp);
+        }
+        canvas.restore();
+      }
       // The "Nyt" line: where we are in the day, with a dot on the current price.
       final nx = l.nowX;
       if (nx != null) {
@@ -877,6 +929,7 @@ class _TrendPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_TrendPainter o2) =>
+      o2.pendingFrom != pendingFrom ||
       o2.s != s ||
       o2.c != c ||
       o2.hours != hours ||

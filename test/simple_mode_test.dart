@@ -112,7 +112,7 @@ void main() {
     final r = st.config.rules.single;
     expect(r.tileId, tile.id);
     expect(r.kind, 'cheapest');
-    expect(r.count, 4);
+    expect(r.count, 13, reason: 't168u: 15-min data → count in quarters (3 h + ¼ step)');
     expect((r.fromHour, r.toHour), (22, 7));
     await tester.pump(const Duration(seconds: 3)); // debounced push to the bridge (none here)
   });

@@ -1,0 +1,3 @@
+{"Status":{"Module":23,"DeviceName":"Sonoff 4CH Pro","FriendlyName":["Pumppu","Tasmota2","Valot","Tasmota4"],"Topic":"tasmota_X","ButtonTopic":"0","Power":5,"PowerOnState":3,"LedState":1,"SaveData":1,"SaveState":1},
+ "StatusFWR":{"Version":"13.4.0(tasmota)","Hardware":"ESP8266EX"},
+ "StatusSTS":{"Time":"2026-11-26T07:00:00","Uptime":"3T01:02:03","POWER1":"ON","POWER2":"OFF","POWER3":"ON","POWER4":"OFF","Wifi":{"AP":1,"RSSI":70}}}

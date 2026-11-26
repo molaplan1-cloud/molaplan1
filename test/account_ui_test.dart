@@ -106,7 +106,7 @@ void main() {
     expect(st.config.dashboards.expand((d) => d.tiles), isNotEmpty);
   });
 
-  testWidgets('typo 191.168.50.172 → "Did you mean 192.168.50.172?" → found', (tester) async {
+  testWidgets('typo 191.168.88.172 → "Did you mean 192.168.88.172?" → found', (tester) async {
     tester.view.physicalSize = const Size(1000, 1800);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
@@ -115,7 +115,7 @@ void main() {
       st,
       AddDeviceWizard(
         provider: ShellyProvider(),
-        locals: () async => ['192.168.50.20'],
+        locals: () async => ['192.168.88.20'],
         finder: (_) async => [],
         driverFor: (_) => AddContext(driver: FakeShelly.new),
       ),
@@ -125,9 +125,9 @@ void main() {
     expect(find.text('A) Ilman kotisiltaa'), findsOneWidget);
     await tester.tap(find.byKey(const ValueKey('wiz-skip-remote')));
     await tester.pumpAndSettle();
-    await tester.enterText(find.byKey(const ValueKey('wiz-address')), '191.168.50.172');
+    await tester.enterText(find.byKey(const ValueKey('wiz-address')), '191.168.88.172');
     await tester.pump();
-    expect(find.textContaining('Tarkoititko 192.168.50.172?'), findsOneWidget);
+    expect(find.textContaining('Tarkoititko 192.168.88.172?'), findsOneWidget);
     await tester.tap(find.byKey(const ValueKey('wiz-next')));
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(const ValueKey('wiz-use-fix')));
@@ -136,11 +136,11 @@ void main() {
   });
 
   test('address checks', () {
-    expect(checkAddress('191.168.50.172', []).suggestion, '192.168.50.172');
-    expect(checkAddress('192.168.50.172', ['192.168.50.3']).issue, AddressIssue.ok);
-    expect(checkAddress('192.168.50.172', ['192.168.1.3']).issue, AddressIssue.otherSubnet);
-    expect(checkAddress('192.168.50', []).issue, AddressIssue.badFormat);
-    expect(checkAddress('192.168.50.1722', []).issue, AddressIssue.badFormat);
+    expect(checkAddress('191.168.88.172', []).suggestion, '192.168.88.172');
+    expect(checkAddress('192.168.88.172', ['192.168.88.3']).issue, AddressIssue.ok);
+    expect(checkAddress('192.168.88.172', ['192.168.1.3']).issue, AddressIssue.otherSubnet);
+    expect(checkAddress('192.168.88', []).issue, AddressIssue.badFormat);
+    expect(checkAddress('192.168.88.1722', []).issue, AddressIssue.badFormat);
     expect(checkAddress('http://shelly.local', []).issue, AddressIssue.ok);
     expect(checkAddress('10.0.0.5', []).issue, AddressIssue.ok);
     expect(checkAddress('8.8.8.8', ['192.168.1.3']).suggestion, '192.168.1.8');

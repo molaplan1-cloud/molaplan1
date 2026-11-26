@@ -54,14 +54,19 @@ void main() {
     expect(shortDate(DateTime(2026, 11, 26), 'sv'), '26 nov');
   });
 
-  test('price view: ONE calculation – hourly stats whatever the bars show, levels, instant cost', () {
+  test('price view: ONE calculation – stats follow the shown resolution (t168u), levels, instant cost', () {
     final now = DateTime(2026, 11, 25, 18, 7);
     final q = PriceView.build(_today(now), 900, now, hourly: false);
     final h = PriceView.build(_today(now), 900, now);
     expect(q.slots.length, 96);
     expect(h.slots.length, 24);
-    // Same numbers on the tile (hourly bars) and the chart (15-min bars).
-    for (final v in [q, h]) {
+    // t168u: the 15-min view's numbers are the quarters themselves.
+    final cur = q.slots.firstWhere((s) => s.start == DateTime(2026, 11, 25, 18));
+    expect(q.current!.start, DateTime(2026, 11, 25, 18));
+    expect(q.current!.cents, cur.cents);
+    expect(q.max!.cents, q.slots.map((s) => s.cents).reduce((a, b) => a > b ? a : b));
+    expect(q.min!.cents, q.slots.map((s) => s.cents).reduce((a, b) => a < b ? a : b));
+    for (final v in [h]) {
       expect(v.current!.start, DateTime(2026, 11, 25, 18));
       expect(v.current!.cents, 21.5);
       expect(v.min!.cents, 2.0);
@@ -74,7 +79,7 @@ void main() {
     // A tile that claims hourly data but gets 15-min points still reads the spacing.
     final wrongRes = PriceView.build(_today(now), 3600, now, hourly: false);
     expect((wrongRes.sourceMinutes, wrongRes.slots.first.minutes), (15, 15));
-    expect(wrongRes.current!.cents, 21.5);
+    expect(wrongRes.current!.cents, cur.cents);
     // UTC timestamps are bucketed by local (Helsinki) hours.
     final utc = PriceView.build([for (final p in _today(now)) (p.$1.toUtc(), p.$2)], 900, now);
     expect(utc.current!.start, DateTime(2026, 11, 25, 18));

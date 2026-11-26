@@ -10,6 +10,7 @@ import 'package:molaplan/core/fields.dart';
 import 'package:molaplan/core/friendly_error.dart';
 import 'package:molaplan/devices/ha_modbus_import.dart';
 import 'package:molaplan/devices/modbus_scan.dart';
+import 'package:molaplan/devices/provider.dart' show subnetHint, isVirtualAdapter;
 import 'package:molaplan/drivers/ha_catalog.dart';
 import 'package:molaplan/drivers/modbus.dart';
 import 'package:molaplan/drivers/registry.dart';
@@ -121,7 +122,7 @@ const userHaYaml = '''
 modbus:
   - name: AirFi
     type: tcp
-    host: 192.168.50.26
+    host: 192.168.88.26
     port: 502
     timeout: 3
     delay: 1
@@ -289,9 +290,9 @@ void main() {
     test('register map: address = register number, T1–T5 ×0.1, holding 1/5/8/10/11 written with FC6', () async {
       final airfi = ivProfiles.firstWhere((p) => p.id == 'airfi');
       expect(airfi.offset, 0);
-      final r = templateById('modbus_iv')!.build({'address': '192.168.50.26', 'profile': 'Airfi'}, 'fi');
+      final r = templateById('modbus_iv')!.build({'address': '192.168.88.26', 'profile': 'Airfi'}, 'fi');
       final c = r.connections.single;
-      expect(c.settings['host'], '192.168.50.26');
+      expect(c.settings['host'], '192.168.88.26');
       expect(c.settings['minIntervalS'], 15);
       expect(c.settings['maxBatch'], 20);
       expect(c.settings['closeOnError'], false);
@@ -338,7 +339,7 @@ void main() {
     test('the user\'s AirFi config: hub timing, input registers ×0.1, switch with FC6 on/off', () {
       final r = importHaModbusYaml(userHaYaml, 'fi');
       final c = r.result.connections.single;
-      expect(c.settings['host'], '192.168.50.26');
+      expect(c.settings['host'], '192.168.88.26');
       expect(c.settings['port'], 502);
       expect(c.settings['timeoutMs'], 3000);
       expect(c.settings['connectDelayMs'], 1000);
@@ -388,6 +389,10 @@ void main() {
       }
       expect(looksLikeAirfi([190, 400, 360, 21, 182, 221, 54, 190]), isTrue);
       expect(looksLikeAirfi([42, 0, 0, 0, 0, 0, 0, 0]), isFalse);
+      // Read once (FC4 1..8, read-only) from a real unit on 2026-11-26: HW 1.60, SW 4.10, map
+      // 360, T1 −0.8 °C, T2 −61.3 °C (sensor not in use), T3 15.8, T4 8.9, T5 21.8.
+      expect(looksLikeAirfi([160, 410, 360, 65528, 64923, 158, 89, 218]), isTrue);
+      expect(looksLikeAirfi([160, 410, 360, 64923, 64923, 64923, 89, 218]), isFalse);
     });
 
     test('a device that drops the connection (HA holds it) is "busy" – one connection, no RTU retry', () async {
@@ -410,17 +415,17 @@ void main() {
       // Captured passively from the user's unit on 2026-11-26 (UDP 239.255.100.200:3000).
       final real = parseAirfiAnnouncement([
         0x1A, 0x32, 0xA8, 0xC0, 0xA0, 0x0F, 0xFD, 0xC3, 0x98, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, //
-      ], '192.168.50.26')!;
+      ], '192.168.88.26')!;
       expect(real.product, 'Model 60 L');
       expect(real.note, 'serial 10011645');
-      final f = parseAirfiAnnouncement(pkt.buffer.asUint8List(), '192.168.50.26')!;
+      final f = parseAirfiAnnouncement(pkt.buffer.asUint8List(), '192.168.88.26')!;
       expect(f.product, 'Model 130 L');
       expect(f.profile, 'Airfi');
       expect(f.note, 'serial 123456');
       final probed = <String>[];
       final l = await scanModbus(
-        locals: ['192.168.50.10'],
-        hosts: ['192.168.50.26'],
+        locals: ['192.168.88.10'],
+        hosts: ['192.168.88.26'],
         probe: (ip, p) async => p == 502,
         client: (ip, port, {required rtu}) {
           probed.add(ip);
@@ -428,7 +433,7 @@ void main() {
         },
         listen: (_) async => [f],
       );
-      expect(l.single.ip, '192.168.50.26');
+      expect(l.single.ip, '192.168.88.26');
       expect(l.single.announced, isTrue);
       expect(probed, isEmpty);
       expect(ModbusFound.fromJson(jsonDecode(jsonEncode(l.single.toJson())) as Map).profile, 'Airfi');
@@ -441,14 +446,14 @@ void main() {
       modbusScanner = (context, {port, onFound}) async => (
         [
           ModbusFound(
-            ip: '192.168.50.26',
+            ip: '192.168.88.26',
             port: 502,
             unit: 1,
             vendor: 'Airfi',
             product: 'Model 130 L',
             profile: 'Airfi',
           ),
-          ModbusFound(ip: '192.168.50.40', port: 502, unit: 1, busy: true, note: 'connection dropped'),
+          ModbusFound(ip: '192.168.88.40', port: 502, unit: 1, busy: true, note: 'connection dropped'),
         ],
         false,
       );
@@ -468,9 +473,9 @@ void main() {
       await tester.tap(find.text('go'));
       await settle(tester);
       expect(find.textContaining('Airfi-esiasetus'), findsOneWidget);
-      expect(find.byKey(const ValueKey('modbus-busy-192.168.50.40-502')), findsOneWidget);
+      expect(find.byKey(const ValueKey('modbus-busy-192.168.88.40-502')), findsOneWidget);
       expect(find.textContaining('Laitteella voi olla jo yhteys (esim. Home Assistant)'), findsOneWidget);
-      await tester.tap(find.byKey(const ValueKey('modbus-hit-192.168.50.26-502-1')));
+      await tester.tap(find.byKey(const ValueKey('modbus-hit-192.168.88.26-502-1')));
       await settle(tester);
       expect(picked?.profile, 'Airfi');
     });
@@ -501,7 +506,7 @@ void main() {
           ConnectionConfig(name: 'IV-kone (Modbus)', type: 'modbus', settings: {'host': '192.168.1.60', 'port': 502}),
           ConnectionConfig(name: 'Oma IV', type: 'modbus', settings: {'host': '192.168.1.60'}),
           ConnectionConfig(name: 'Shelly', type: 'http', settings: {'baseUrl': 'http://192.168.1.60'}),
-          ConnectionConfig(name: 'Oikea', type: 'modbus', settings: {'host': '192.168.50.26'}),
+          ConnectionConfig(name: 'Oikea', type: 'modbus', settings: {'host': '192.168.88.26'}),
         ],
       ).toJson();
       final c = AppConfig.fromJson(j).connections;
@@ -509,7 +514,7 @@ void main() {
       expect(c[0].settings['needsHost'], isTrue);
       expect(c[1].settings['host'], isNull);
       expect(c[2].settings['baseUrl'], 'http://192.168.1.60', reason: 'not ours: an HTTP device there is real');
-      expect(c[3].settings['host'], '192.168.50.26');
+      expect(c[3].settings['host'], '192.168.88.26');
       // The user types the address again → kept on the next load.
       c[1].settings['host'] = '192.168.1.60';
       final again = AppConfig.fromJson(AppConfig(connections: c).toJson()).connections;
@@ -539,6 +544,77 @@ void main() {
       }
       final r = templateById('modbus_iv')!.build({'profile': 'Airfi'}, 'fi');
       expect(r.connections.single.settings['host'], anyOf(isNull, ''));
+    });
+  });
+
+  group('t158u built for everyone', () {
+    test('brand presets with public sources: ventilation + heat pumps', () {
+      final brands = {for (final p in ivProfiles) p.brand};
+      expect(brands, containsAll(['Airfi', 'Vallox', 'Enervent', 'NIBE', 'Thermia', 'Nilan']));
+      for (final p in ivProfiles.where((p) => ['nibe_s', 'thermia_genesis', 'nilan_cts602'].contains(p.id))) {
+        expect(p.src, startsWith('https://'), reason: p.id);
+        expect(p.documented, isTrue);
+        expect(p.regs, isNotEmpty);
+      }
+      final nibe = templateById('modbus_iv')!.build({'address': '10.1.3.10', 'profile': 'NIBE'}, 'en');
+      final bt1 = nibe.tiles.firstWhere((t) => t.read['address'] == 1);
+      expect(bt1.read, {'table': 'input', 'address': 1, 'dataType': 'int16', 'scale': 0.1});
+      expect(nibe.connections.single.name, 'NIBE');
+      final thermia = ivProfiles.firstWhere((p) => p.id == 'thermia_genesis');
+      expect(thermia.regs.firstWhere((r) => r.key == 'temperature_out').address, 13);
+      expect(thermia.regs.first.scale, 0.01);
+    });
+
+    test('FC43 vendor names map to any preset (not just Airfi)', () async {
+      final srv = await ServerSocket.bind(InternetAddress.loopbackIPv4, 0);
+      addTearDown(srv.close);
+      srv.listen((sock) {
+        sock.listen((b) {
+          final head = b.sublist(0, 4), unit = b[6], fn = b[7];
+          final objs = [
+            [0, ...'NIBE Energy Systems'.codeUnits],
+            [1, ...'S1255'.codeUnits],
+          ];
+          var resp = <int>[0x2B, 0x0E, 0x01, 0x01, 0x00, 0x00, objs.length];
+          for (final o in objs) {
+            resp.addAll([o[0], o.length - 1, ...o.sublist(1)]);
+          }
+          if (fn != 0x2B) resp = [fn | 0x80, 2];
+          final frame = [unit, ...resp];
+          sock.add([...head, frame.length >> 8, frame.length & 0xFF, ...frame]);
+        });
+      });
+      final l = await probeModbusHost('127.0.0.1', srv.port, client: (ip, port, {required rtu}) => _Redirect(srv.port));
+      expect(l.single.profile, 'NIBE');
+    });
+
+    test('any private range, several adapters; virtual adapters skipped; hint from the subnet', () async {
+      final probed = <String>{};
+      await scanModbus(
+        locals: ['10.20.30.40', '172.20.1.5', '192.168.0.9'],
+        probe: (ip, p) async {
+          probed.add(ip.substring(0, ip.lastIndexOf('.')));
+          return false;
+        },
+        listen: (_) async => const [],
+      );
+      expect(probed, {'10.20.30', '172.20.1', '192.168.0'});
+      expect(subnetHint(['10.20.30.40']), '10.20.30.x');
+      expect(subnetHint(const []), '192.168.x.x');
+      expect(isVirtualAdapter('vEthernet (WSL (Hyper-V firewall))'), isTrue);
+      expect(isVirtualAdapter('vEthernet (Default Switch)'), isTrue);
+      expect(isVirtualAdapter('vEthernet (External LAN)'), isFalse);
+      expect(isVirtualAdapter('Wi-Fi'), isFalse);
+      expect(isVirtualAdapter('eth0'), isFalse);
+    });
+
+    test('no test-home values in the app code', () {
+      final bad = RegExp(r'192\.168\.50\.|10011645');
+      for (final f in Directory('lib').listSync(recursive: true).whereType<File>()) {
+        if (!f.path.endsWith('.dart') || f.path.contains('l10n')) continue;
+        final text = f.readAsStringSync();
+        expect(bad.hasMatch(text), isFalse, reason: f.path);
+      }
     });
   });
 }

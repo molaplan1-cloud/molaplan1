@@ -233,6 +233,7 @@ class AutomationSettings {
     List<Script>? scripts,
     NotifySettings? notify,
     this.morningSummary,
+    this.morningPriciest = false,
   }) : scenes = scenes ?? [],
        automations = automations ?? [],
        scripts = scripts ?? [],
@@ -245,6 +246,9 @@ class AutomationSettings {
   /// 'HH:MM' for the morning summary notification (null = only the card on the home screen).
   String? morningSummary;
 
+  /// t167u: the morning card / summary also names the priciest hour ahead.
+  bool morningPriciest;
+
   bool get isEmpty => scenes.isEmpty && automations.isEmpty && scripts.isEmpty;
 
   Scene? scene(String id) => scenes.where((s) => s.id == id).firstOrNull;
@@ -256,6 +260,7 @@ class AutomationSettings {
     if (scripts.isNotEmpty) 'scripts': [for (final s in scripts) s.toJson()],
     'notify': notify.toJson(),
     'morningSummary': ?morningSummary,
+    if (morningPriciest) 'morningPriciest': true,
   };
   factory AutomationSettings.fromJson(Object? o) {
     final j = _m(o);
@@ -265,6 +270,7 @@ class AutomationSettings {
       scripts: [for (final e in _l(j['scripts'])) Script.fromJson(e)],
       notify: j['notify'] is Map ? NotifySettings.fromJson(_m(j['notify'])) : null,
       morningSummary: j['morningSummary'] as String?,
+      morningPriciest: j['morningPriciest'] == true,
     );
   }
 

@@ -140,7 +140,12 @@ Widget remoteChoices(BuildContext context, {bool showOthers = true}) => Column(
         'Tämä laite jää kotiin aina päälle (laturiin ja wifiin) ja välittää etänä annetut komennot kodin laitteille.',
         'This device stays at home, always on (charger + Wi-Fi), and passes remote commands to your devices.',
       ),
-      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const BridgePage())),
+      // t174u: one tap – this device becomes the bridge right away, then its pairing page.
+      onTap: () async {
+        final st = AppScope.read(context);
+        if (!st.remote.bridgeOn) await st.setBridgeMode(true);
+        if (context.mounted) await Navigator.push(context, MaterialPageRoute(builder: (_) => const BridgePage()));
+      },
     ),
     if (showOthers)
       _ChoiceCard(
@@ -207,7 +212,7 @@ class _RemoteHubPageState extends State<RemoteHubPage> {
     final r = st.remote;
     final text = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: AppBar(title: Text(tx(context, 'Etäyhteys', 'Remote access'))),
+      appBar: AppBar(title: Text(tx(context, 'Etäkäyttö', 'Remote access'))),
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 640),
@@ -226,6 +231,30 @@ class _RemoteHubPageState extends State<RemoteHubPage> {
                   'At home Molaplan talks to your devices directly. Elsewhere it goes encrypted through your home bridge – no port forwarding or router settings. The app picks the right path automatically.',
                 ),
                 style: text.bodyLarge,
+              ),
+              const SizedBox(height: 12),
+              // t174u: what a home bridge is, in plain words, and its status.
+              Card(
+                key: const ValueKey('remote-what'),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(tx(context, 'Mikä on kotisilta?', 'What is a home bridge?'), style: text.titleMedium),
+                      const SizedBox(height: 6),
+                      Text(
+                        tx(
+                          context,
+                          'Kotisilta on mikä tahansa kotona aina päällä oleva Molaplan: PC, vanha tabletti tai puhelin, tai erillinen kotisiltaohjelma esim. Raspberry Pillä tai Home Assistant -koneella. Kun olet poissa kotoa, puhelimesi komennot kulkevat sen kautta kodin laitteille päästä päähän salattuina. Reitittimeen ei tarvitse tehdä mitään (ei porttiohjauksia).',
+                          'A home bridge is any Molaplan that is always on at home: a PC, an old tablet or phone, or the separate bridge program on e.g. a Raspberry Pi or a Home Assistant machine. When you are away, your phone\'s commands go through it to your devices, end-to-end encrypted. Nothing to set up on the router (no port forwarding).',
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      const BridgeStatusLine(),
+                    ],
+                  ),
+                ),
               ),
               const SizedBox(height: 16),
               if (r.isPaired) ...[
@@ -486,7 +515,7 @@ class _PairPageState extends State<PairPage> {
                 1,
                 tx(
                   context,
-                  'Avaa kotona olevalla kotisillalla (tabletti tai PC) Molaplan → Asetukset → Etäyhteys → Tee tästä laitteesta kotisilta.',
+                  'Avaa kotona olevalla kotisillalla (tabletti tai PC) Molaplan → Asetukset → Etäkäyttö → Tee tästä laitteesta kotisilta.',
                   'On the home bridge (tablet or PC at home) open Molaplan → Settings → Remote access → Make this device the home bridge.',
                 ),
               ),
@@ -861,7 +890,7 @@ class _PairingPanel extends StatelessWidget {
             Text(
               tx(
                 context,
-                'Puhelimessa: Molaplan → Asetukset → Etäyhteys → Yhdistä tämä laite kotiin',
+                'Puhelimessa: Molaplan → Asetukset → Etäkäyttö → Yhdistä tämä laite kotiin',
                 'On the phone: Molaplan → Settings → Remote access → Connect this device to home',
               ),
               textAlign: TextAlign.center,
@@ -916,3 +945,63 @@ Future<bool> askApproval(BuildContext context, String deviceName) async {
   );
   return r ?? false;
 }
+
+/// t174u: which device is the bridge, online / offline and when it was last seen.
+class BridgeStatusLine extends StatelessWidget {
+  const BridgeStatusLine({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final st = AppScope.of(context);
+    final r = st.remote;
+    final cs = Theme.of(context).colorScheme;
+    final String who;
+    if (r.bridgeOn) {
+      who = tx(context, 'Tämä laite', 'This device');
+    } else if (r.isPaired) {
+      who = r.paired!.name;
+    } else {
+      who = tx(context, 'ei vielä valittu', 'not set up yet');
+    }
+    final online = r.bridgeOnline;
+    final seen = r.bridgeOn && online ? DateTime.now() : r.router.bridgeSeen;
+    final state = !r.bridgeOn && !r.isPaired
+        ? tx(context, 'Etäkäyttö ei ole käytössä', 'Remote access is off')
+        : online
+        ? tx(context, 'Yhteydessä', 'Online')
+        : tx(context, 'Ei yhteyttä', 'Offline');
+    String two(int n) => n.toString().padLeft(2, '0');
+    final seenText = seen == null
+        ? ''
+        : ' · ${tx(context, 'viimeksi nähty', 'last seen')} ${two(seen.hour)}:${two(seen.minute)}'
+              '${DateTime.now().difference(seen).inHours >= 20 ? ' ${seen.day}.${seen.month}.' : ''}';
+    return Row(
+      key: const ValueKey('bridge-status-line'),
+      children: [
+        Icon(
+          Icons.circle,
+          size: 12,
+          color: !r.bridgeOn && !r.isPaired ? cs.outline : (online ? Colors.green.shade500 : cs.error),
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            '${tx(context, 'Kotisilta', 'Home bridge')}: $who · $state$seenText',
+            key: const ValueKey('bridge-status-text'),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// t174u: a small "Mikä on etäkäyttö?" link to the Etäkäyttö page (instead of jargon).
+Widget remoteHelpLink(BuildContext context) => Align(
+  alignment: Alignment.centerLeft,
+  child: TextButton.icon(
+    key: const ValueKey('remote-help-link'),
+    icon: const Icon(Icons.help_outline, size: 18),
+    label: Text(tx(context, 'Mikä on etäkäyttö?', 'What is remote access?')),
+    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RemoteHubPage())),
+  ),
+);

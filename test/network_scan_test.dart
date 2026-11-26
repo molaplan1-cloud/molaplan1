@@ -39,30 +39,30 @@ Future<void> settle(WidgetTester tester) async {
 }
 
 List<ScanHit> sampleHits() => [
-  ScanHit(ip: '192.168.50.172', kind: 'shelly', id: 'shellypro4pm-abc', model: 'Pro4PM', name: 'Sauna', via: {'mDNS'}),
-  ScanHit(ip: '192.168.50.40', kind: 'sonoff', id: '1000abcd12', port: 8081, model: 'DIY', via: {'mDNS'}),
-  ScanHit(ip: '192.168.50.41', kind: 'tasmota', name: 'Kahvinkeitin', model: 'Tasmota', via: {'probe'}),
-  ScanHit(ip: '192.168.50.80', kind: 'camera', id: 'hikvision', name: 'Piha', via: {'ONVIF'}),
-  ScanHit(ip: '192.168.50.90', kind: 'homekit', name: 'Ecobee', via: {'mDNS'}),
-  ScanHit(ip: '192.168.50.9', mac: 'b8:27:eb:12:34:56', vendor: 'Raspberry Pi', via: {'probe'}),
-  ScanHit(ip: '192.168.50.10', via: {'SSDP'}),
+  ScanHit(ip: '192.168.88.172', kind: 'shelly', id: 'shellypro4pm-abc', model: 'Pro4PM', name: 'Sauna', via: {'mDNS'}),
+  ScanHit(ip: '192.168.88.40', kind: 'sonoff', id: '1000abcd12', port: 8081, model: 'DIY', via: {'mDNS'}),
+  ScanHit(ip: '192.168.88.41', kind: 'tasmota', name: 'Kahvinkeitin', model: 'Tasmota', via: {'probe'}),
+  ScanHit(ip: '192.168.88.80', kind: 'camera', id: 'hikvision', name: 'Piha', via: {'ONVIF'}),
+  ScanHit(ip: '192.168.88.90', kind: 'homekit', name: 'Ecobee', via: {'mDNS'}),
+  ScanHit(ip: '192.168.88.9', mac: 'b8:27:eb:12:34:56', vendor: 'Raspberry Pi', via: {'probe'}),
+  ScanHit(ip: '192.168.88.10', via: {'SSDP'}),
 ];
 
 void main() {
   group('scanner parsing', () {
     test('mDNS services map to kinds and add flows', () {
       ScanHit h(String name, String svc, {int port = 80}) => hitFromMdns(
-        FoundDevice(name: '$name.$svc.local', service: svc, host: 'x.local', ip: '192.168.50.5', port: port),
+        FoundDevice(name: '$name.$svc.local', service: svc, host: 'x.local', ip: '192.168.88.5', port: port),
       )!;
       expect(h('shellyplus1-a8032ab1', '_shelly._tcp').addFlow, ('provider', 'shelly'));
       final diy = h('eWeLink_1000abcd12', '_ewelink._tcp', port: 8081);
-      expect((diy.kind, diy.id, diy.address, diy.model), ('sonoff', '1000abcd12', '192.168.50.5:8081', 'DIY'));
+      expect((diy.kind, diy.id, diy.address, diy.model), ('sonoff', '1000abcd12', '192.168.88.5:8081', 'DIY'));
       expect(diy.candidate('sonoff').model, 'DIY');
       expect(h('Hue Bridge - 1A2B3C', '_hue._tcp').addFlow, ('provider', 'hue'));
       expect(h('dirigera', '_ihsp._tcp').addFlow, ('provider', 'dirigera'));
       expect(h('kitchen', '_esphomelib._tcp').addFlow, ('template', 'esphome'));
       expect(h('sonoff-basic', '_esphomelib._tcp').kind, 'sonoff');
-      expect(h('Home', '_home-assistant._tcp', port: 8123).address, '192.168.50.5:8123');
+      expect(h('Home', '_home-assistant._tcp', port: 8123).address, '192.168.88.5:8123');
       expect(h('Ecobee', '_hap._tcp').addFlow, isNull);
       expect(h('tasmota-1234', '_http._tcp').addFlow, ('template', 'tasmota'));
       expect(h('printer', '_http._tcp').known, isFalse);
@@ -71,16 +71,16 @@ void main() {
     test('SSDP: Hue bridge and cameras recognised, others unknown', () {
       const hue =
           'HTTP/1.1 200 OK\r\nSERVER: Hue/1.0 UPnP/1.0 IpBridge/1.60.0\r\nhue-bridgeid: 001788FFFE123456\r\nST: upnp:rootdevice\r\n\r\n';
-      final h = hitFromSsdp('192.168.50.2', parseSsdp(hue));
+      final h = hitFromSsdp('192.168.88.2', parseSsdp(hue));
       expect((h.kind, h.id), ('hue', '001788FFFE123456'));
       final cam = hitFromSsdp(
-        '192.168.50.3',
+        '192.168.88.3',
         parseSsdp('HTTP/1.1 200 OK\r\nSERVER: Linux UPnP/1.0 Hikvision-Webs\r\n\r\n'),
       );
       expect((cam.kind, cam.id), ('camera', 'hikvision'));
       expect(
         hitFromSsdp(
-          '192.168.50.4',
+          '192.168.88.4',
           parseSsdp('HTTP/1.1 200 OK\r\nSERVER: Linux/3.4 UPnP/1.0 MiniDLNA/1.2\r\n\r\n'),
         ).known,
         isFalse,
@@ -88,8 +88,8 @@ void main() {
     });
 
     test('merge keeps the most specific kind; JSON round trip; MAC vendors', () {
-      final a = ScanHit(ip: '192.168.50.7', kind: 'http', via: {'probe'}, mac: 'b8:27:eb:00:00:01');
-      a.merge(ScanHit(ip: '192.168.50.7', kind: 'shelly', id: 'shelly1-x', name: 'Valo', via: {'mDNS'}));
+      final a = ScanHit(ip: '192.168.88.7', kind: 'http', via: {'probe'}, mac: 'b8:27:eb:00:00:01');
+      a.merge(ScanHit(ip: '192.168.88.7', kind: 'shelly', id: 'shelly1-x', name: 'Valo', via: {'mDNS'}));
       expect((a.kind, a.id, a.name), ('shelly', 'shelly1-x', 'Valo'));
       expect(a.via, {'probe', 'mDNS'});
       final b = ScanHit.fromJson(jsonDecode(jsonEncode(a.toJson())) as Map, viaBridge: true);
@@ -141,7 +141,7 @@ void main() {
     await settle(tester);
     expect(find.text('Sauna'), findsOneWidget);
     expect(find.text('Löytyi 5. Lisää napauttamalla.'), findsOneWidget);
-    expect(find.byKey(const ValueKey('scan-add-192.168.50.90')), findsNothing); // HomeKit: not controllable
+    expect(find.byKey(const ValueKey('scan-add-192.168.88.90')), findsNothing); // HomeKit: not controllable
     expect(find.textContaining('ei vielä ohjattavissa'), findsOneWidget);
     expect(find.text('Muut laitteet verkossa (2)'), findsOneWidget);
     await tester.tap(find.text('Muut laitteet verkossa (2)'));
@@ -149,10 +149,10 @@ void main() {
     expect(find.textContaining('Raspberry Pi'), findsOneWidget);
     expect(find.text('Tuntematon laite'), findsNWidgets(2));
     // Tasmota -> template with the address prefilled.
-    await tester.tap(find.byKey(const ValueKey('scan-add-192.168.50.41')));
+    await tester.tap(find.byKey(const ValueKey('scan-add-192.168.88.41')));
     await settle(tester);
     expect(find.byType(TemplateSetupPage), findsOneWidget);
-    expect(find.text('192.168.50.41'), findsOneWidget);
+    expect(find.text('192.168.88.41'), findsOneWidget);
     expect(find.text('Kahvinkeitin'), findsWidgets);
   });
 
@@ -178,6 +178,6 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('wiz-add')));
     await settle(tester);
     expect(st.config.dashboards.first.tiles.first.type, TileType.toggle);
-    expect(st.config.connections.single.settings['baseUrl'], 'http://192.168.50.40:8081');
+    expect(st.config.connections.single.settings['baseUrl'], 'http://192.168.88.40:8081');
   });
 }

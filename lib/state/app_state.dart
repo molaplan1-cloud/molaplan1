@@ -1,3 +1,4 @@
+import '../core/capabilities.dart';
 import 'measure_history.dart';
 import '../core/friendly_error.dart';
 import '../devices/climate.dart';
@@ -220,7 +221,7 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   /// t151u: the 12 h / Tänään / 48 h chips on a price trend tile, saved per tile.
   Future<void> setPriceWindow(TileConfig t, String w) async {
-    if (!const ['auto', '12h', 'today', '48h'].contains(w) || t.priceWindow == w) return;
+    if (!priceWindows.contains(w) || t.priceWindow == w) return;
     t.priceWindow = w;
     notifyListeners();
     await save();
@@ -375,7 +376,9 @@ class AppState extends ChangeNotifier implements SyncHost {
         final c = migrateSplitClimateTiles(config);
         final e = mergeBrightnessTiles(config);
         final f = fixMisclassifiedSensors(config);
-        if (a || b || c || e || f) unawaited(configStore.save(jsonEncode(config.toJson())));
+        // t164u: e.g. a switch on the electricity price becomes a value tile.
+        final g = repairIncompatibleTiles(config).isNotEmpty;
+        if (a || b || c || e || f || g) unawaited(configStore.save(jsonEncode(config.toJson())));
       } catch (_) {
         config = AppConfig();
       }
@@ -533,6 +536,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     'trayOnClose',
     'animations',
     'homeStrip',
+    'theme',
   ];
 
   @override
@@ -574,6 +578,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     config.dashboards = other.dashboards;
     config.rules = other.rules;
     config.energy = other.energy;
+    if (themeChoices.contains(cfg['defaultTheme'])) config.defaultTheme = other.defaultTheme;
     // Older apps do not sync automations: keep ours instead of a fresh empty set.
     if (cfg['automation'] is Map) config.automation = other.automation;
     if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
@@ -781,8 +786,27 @@ class AppState extends ChangeNotifier implements SyncHost {
   Set<String> get usedImages => {
     for (final d in config.dashboards)
       for (final t in d.tiles) ?t.bgImage,
-    for (final d in config.dashboards) ?d.headerImage,
+    for (final d in config.dashboards)
+      if (d.headerImage != null && !d.headerImage!.startsWith('preset:')) d.headerImage!,
   };
+
+  /// t172u: a built-in room picture ([id] from roomPresets) – no upload, no image slot.
+  Future<void> setHeaderPreset(Dashboard d, String id) async {
+    d.headerImage = 'preset:$id';
+    d.headerScrim = 0.45;
+    await save();
+    notifyListeners();
+    unawaited(account.syncNow(quiet: true));
+  }
+
+  /// t172u: Otsikkokuva / Koko näkymän tausta, and the background's dimming and blur.
+  Future<void> setRoomPhotoMode(Dashboard d, {String? mode, double? dim, double? blur}) async {
+    if (mode != null) d.photoMode = mode == 'background' ? 'background' : 'header';
+    if (dim != null) d.bgDim = dim.clamp(0, 0.9);
+    if (blur != null) d.bgBlur = blur.clamp(0, 20);
+    await save();
+    notifyListeners();
+  }
 
   /// Compresses [raw] and sets it as the tile's background. Returns false when the account's
   /// image limit is reached. Throws [FormatException] for files that are not images.
@@ -865,7 +889,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (changed) notifyListeners();
   }
 
-  /// v0.4 Shelly Cloud tiles could be titled with the raw device id ("30c6f78384bc – teho").
+  /// v0.4 Shelly Cloud tiles could be titled with the raw device id (`"<laitetunnus> – teho"`).
   void _fixRawIdTitles() {
     final raw = RegExp(r'^(shelly[\w-]*-)?[0-9a-f]{12}( – (teho|power))?$', caseSensitive: false);
     for (final d in config.dashboards) {
@@ -938,6 +962,31 @@ class AppState extends ChangeNotifier implements SyncHost {
     config.hideAwayTiles = v;
     await save();
     notifyListeners();
+  }
+
+  /// t162u: the theme in use on this device (its own choice, else the account default).
+  String get themeChoice => config.theme.isNotEmpty ? config.theme : config.defaultTheme;
+
+  Future<void> setTheme(String v) async {
+    if (!themeChoices.contains(v)) return;
+    config.theme = v;
+    config.defaultTheme = v;
+    await save();
+    notifyListeners();
+  }
+
+  /// t168u: "Näytä tuntikeskiarvona" on every price connection (hourly-billed contracts).
+  Future<void> setPriceHourly(bool v) async {
+    for (final c in config.connections.where((c) => c.type == 'price')) {
+      if (v) {
+        c.settings['hourly'] = true;
+      } else {
+        c.settings.remove('hourly');
+      }
+    }
+    await save();
+    notifyListeners();
+    automations.changed();
   }
 
   Future<void> setTileDensity(String v) async {
@@ -1026,6 +1075,42 @@ class AppState extends ChangeNotifier implements SyncHost {
     final a = (s['baseUrl'] ?? s['host'] ?? s['url'] ?? '').toString().toLowerCase().replaceAll(RegExp(r'/+$'), '');
     final extra = c.type == 'ir' ? '|${s['entity'] ?? ''}|${s['topic'] ?? ''}' : '';
     return '${c.type}|$a|${s['port'] ?? ''}|${s['unitId'] ?? ''}$extra';
+  }
+
+  /// t173u: what a tile does, independent of ids – a script / scene button, a group, or the
+  /// device (by address) + what it reads and sends. Two tiles with the same key are duplicates.
+  String tileKey(TileConfig t, {List<ConnectionConfig> extra = const []}) {
+    final k = t.read['kind'];
+    if (k == 'script' || k == 'scene' || k == 'automation') return '$k:${t.read['${k}Id']}';
+    if (k == 'tile') return 'tile:${t.read['tileId']}:${t.read['op']}';
+    if (k == 'group') {
+      final m = [for (final m in (t.read['members'] as List? ?? const [])) '$m']..sort();
+      return 'group:${m.join(',')}';
+    }
+    String conn(String? id) {
+      if (id == null) return '';
+      final c = connection(id) ?? extra.where((e) => e.id == id).firstOrNull;
+      return c == null ? id : _addrKey(c);
+    }
+
+    String step(CommandStep? s) => s == null ? '' : '${conn(s.connectionId)}${jsonEncode(s.spec)}';
+    final read = Map<String, dynamic>.from(t.read)..remove('raw');
+    return [
+      t.type.name,
+      conn(t.connectionId),
+      jsonEncode(read),
+      step(t.onCommand),
+      for (final c in t.commands) step(c),
+    ].join('|');
+  }
+
+  /// Tiles of [tiles] that [d] already has (t173u "On jo näkymässä").
+  List<TileConfig> duplicatesIn(Dashboard d, Iterable<TileConfig> tiles, {List<ConnectionConfig> extra = const []}) {
+    final have = {for (final t in d.tiles) tileKey(t)};
+    return [
+      for (final t in tiles)
+        if (have.contains(tileKey(t, extra: extra))) t,
+    ];
   }
 
   /// Adds a template result. Connections that already exist (same type +

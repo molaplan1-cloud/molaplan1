@@ -56,6 +56,12 @@ class HttpDriver extends Driver {
         'Authentication',
         kind: FieldKind.choice,
         options: ['none', 'basic', 'digest', 'bearer'],
+        optionLabels: {
+          'none': ('Ei tunnistusta', 'None'),
+          'basic': ('Käyttäjä + salasana (Basic)', 'User + password (Basic)'),
+          'digest': ('Käyttäjä + salasana (Digest)', 'User + password (Digest)'),
+          'bearer': ('Avain / token (Bearer)', 'Token (Bearer)'),
+        },
         defaultValue: 'none',
       ),
       FieldSpec('username', 'Käyttäjätunnus', 'Username'),

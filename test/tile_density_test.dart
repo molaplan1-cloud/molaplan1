@@ -56,7 +56,7 @@ Future<AppState> _state(WidgetTester tester, {String density = 'normal'}) async 
       id: 'away',
       name: 'Varasto',
       type: 'http',
-      settings: {'baseUrl': 'http://192.168.50.172', 'shellyId': 'shellypro4pm-a8032ab12345'},
+      settings: {'baseUrl': 'http://192.168.88.172', 'shellyId': 'shellypro4pm-a8032ab12345'},
     ),
     ConnectionConfig(
       id: 'cloud',
@@ -218,11 +218,11 @@ void main() {
 
   test('tile issue texts: the away hint only for private-IP devices off the home LAN', () {
     final h = NetHealth(internet: () async => true, locals: () async => ['192.168.1.20'])..locals = ['192.168.1.20'];
-    expect(h.awayFromLan('192.168.50.172'), isTrue);
+    expect(h.awayFromLan('192.168.88.172'), isTrue);
     expect(h.awayFromLan('192.168.1.50'), isFalse);
     expect(h.awayFromLan('shelly-103-eu.shelly.cloud'), isFalse);
     expect((h..locals = []).awayFromLan('192.168.1.50'), isTrue); // mobile data only
     expect(isLanHost('kiuas.local'), isTrue);
-    expect(connectionHost({'baseUrl': 'http://192.168.50.172:8080'}), '192.168.50.172');
+    expect(connectionHost({'baseUrl': 'http://192.168.88.172:8080'}), '192.168.88.172');
   });
 }
