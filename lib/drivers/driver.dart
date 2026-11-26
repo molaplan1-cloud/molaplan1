@@ -13,6 +13,11 @@ class DriverException implements Exception {
   String toString() => message;
 }
 
+/// t235u: the command was published but no (matching) reply came in time.
+class NtfyNoReply extends DriverException {
+  NtfyNoReply(super.message);
+}
+
 /// UI language for human-readable driver texts (connection test results). Set by AppState.
 String driverLang = 'fi';
 String dtx(String fi, String en) => tr(driverLang, fi, en);

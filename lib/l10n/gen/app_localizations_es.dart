@@ -7340,6 +7340,10 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get sc112a20bf5 =>
+      'Si el dispositivo responde a otro tema (por ejemplo, el tema de la notificación), establecelo como \"Tema de respuesta\".';
+
+  @override
   String get sf03877dd0a => ' Se almacena un PIN.';
 
   @override

@@ -1576,22 +1576,26 @@ const ntfyKvPanelPreset = <String, Object>{
   'statusCommand': 'tila json',
   'format': 'json',
   'outputs': 'Sisävalo = sisavalo\nPihavalo = pihavalo\nLisävalo = lisavalo\nSireeni = sireeni',
-  'onCommand': '{key} on',
-  'offCommand': '{key} off',
-  'statusPath': 'tila',
+  // The panel's JSON status: {"state": "home", "relays": {"sisavalo": 0|1, …}}, title "Tila JSON".
+  'onCommand': '{key} päälle',
+  'offCommand': '{key} pois',
+  'statePrefix': 'relays.',
+  'statusPath': 'state',
+  'replyTitle': 'Tila JSON',
+  'minInterval': '5',
 };
 
 /// The kv panel's alarm buttons: (title, command, icon).
 const ntfyKvAlarmButtons = [
-  ('Hälytys päälle', 'halytys on', 'alarm'),
-  ('Hälytys pois', 'halytys off', 'lock'),
+  ('Hälytys päälle', 'halytys päälle', 'alarm'),
+  ('Hälytys pois', 'halytys pois', 'lock'),
   ('Kuittaa hälytys', 'kuittaa', 'send'),
 ];
 
 /// Fills the preset's values into [v] where the user has not typed anything else yet.
 void applyNtfyPreset(Map<String, dynamic> v) {
   if (v['preset'] != 'kv_panel') return;
-  const defaults = {'name': 'Komentolaite', 'template': '{cmd} {pin}', 'statusCommand': 'tila', 'format': 'json', 'outputs': 'Valo = valo', 'onCommand': '{key} on', 'offCommand': '{key} off', 'statusPath': ''};
+  const defaults = {'name': 'Komentolaite', 'template': '{cmd} {pin}', 'statusCommand': 'tila', 'format': 'json', 'outputs': 'Valo = valo', 'onCommand': '{key} on', 'offCommand': '{key} off', 'statusPath': '', 'statePrefix': '', 'replyTitle': '', 'minInterval': '0'};
   ntfyKvPanelPreset.forEach((k, val) {
     final cur = '${v[k] ?? ''}'.trim();
     if (cur.isEmpty || cur == defaults[k]) v[k] = val;
@@ -1640,10 +1644,14 @@ TemplateResult ntfyDeviceTemplate(Map<String, dynamic> input, String lang) {
         connectionId: c.id,
         pollSeconds: poll,
         read: json ? {'jsonPath': '\$.$prefix$key'} : {'regex': '${RegExp.escape(key)}\\s*[:=]?\\s*([^,;\\n]+)'},
-        onCommand: CommandStep(connectionId: c.id, spec: {'command': cmd('onCommand', '{key} on'), 'waitReply': true}),
+        // statePath: the state shown after a command the device did not answer (t235u).
+        onCommand: CommandStep(
+          connectionId: c.id,
+          spec: {'command': cmd('onCommand', '{key} on'), 'waitReply': true, 'statePath': json ? '\$.$prefix$key' : key},
+        ),
         offCommand: CommandStep(
           connectionId: c.id,
-          spec: {'command': cmd('offCommand', '{key} off'), 'waitReply': true},
+          spec: {'command': cmd('offCommand', '{key} off'), 'waitReply': true, 'statePath': json ? '\$.$prefix$key' : key},
         ),
       ),
     );

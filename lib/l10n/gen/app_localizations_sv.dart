@@ -7303,6 +7303,10 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String get sc112a20bf5 =>
+      'Om enheten svarar på ett annat ämne (t.ex. ditt meddelandeämne), ange det som \"Reply ämne\".';
+
+  @override
   String get sf03877dd0a => ' En PIN lagras.';
 
   @override

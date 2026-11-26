@@ -11657,212 +11657,212 @@
  "s30ae7f76e6": "ntfy command device (commands + state)",
  "@s30ae7f76e6": {
   "description": "fi: ntfy-komentolaite (komennot + tila)",
-  "x-where": "drivers/ntfy_device.dart:172"
+  "x-where": "drivers/ntfy_device.dart:176"
  },
  "s6a4516e0fe": "Command topic (name or full URL)",
  "@s6a4516e0fe": {
   "description": "fi: Komentokanava (aihe tai koko osoite)",
-  "x-where": "drivers/ntfy_device.dart:178"
+  "x-where": "drivers/ntfy_device.dart:182"
  },
  "s6cfd0d8be1": "The topic the home device listens to. The topic name works like a password: keep it long and random.",
  "@s6cfd0d8be1": {
   "description": "fi: Aihe, jota kotilaite kuuntelee. Aiheen nimi on kuin salasana: pidä se pitkänä ja satunnaisena.",
-  "x-where": "drivers/ntfy_device.dart:178"
+  "x-where": "drivers/ntfy_device.dart:182"
  },
  "s800cd08229": "Reply topic (optional)",
  "@s800cd08229": {
   "description": "fi: Vastauskanava (vapaaehtoinen)",
-  "x-where": "drivers/ntfy_device.dart:187"
+  "x-where": "drivers/ntfy_device.dart:191"
  },
  "s7e8c7a0cfc": "If the device answers on another topic (e.g. your personal notification topic), type it here. Empty = the command topic.",
  "@s7e8c7a0cfc": {
   "description": "fi: Jos laite vastaa toiseen aiheeseen (esim. henkilökohtaiseen ilmoitusaiheeseen), kirjoita se tähän. Tyhjä = sama kuin kom",
-  "x-where": "drivers/ntfy_device.dart:187"
+  "x-where": "drivers/ntfy_device.dart:191"
  },
  "s7ea9d85150": "PIN code (optional)",
  "@s7ea9d85150": {
   "description": "fi: PIN-koodi (vapaaehtoinen)",
-  "x-where": "drivers/ntfy_device.dart:195"
+  "x-where": "drivers/ntfy_device.dart:199"
  },
  "s0694fe4d2b": "'Stored encrypted on this device. Inserted where the template says {pin}.'",
  "@s0694fe4d2b": {
   "description": "fi: Tallennetaan salattuna tähän laitteeseen. Lisätään komentoon mallin {pin}-kohtaan.",
-  "x-where": "drivers/ntfy_device.dart:195"
+  "x-where": "drivers/ntfy_device.dart:199"
  },
  "s4313c720cc": "Command template",
  "@s4313c720cc": {
   "description": "fi: Komennon malli",
-  "x-where": "drivers/ntfy_device.dart:203"
+  "x-where": "drivers/ntfy_device.dart:207"
  },
  "sd904dac1cc": "'{cmd} = the button''s command, {pin} = PIN, {cid} = an id the device echoes in its reply, {value} = the value (on/off or a number). E.g. \"{cmd} {pin}\" → \"light on 1234\".'",
  "@sd904dac1cc": {
   "description": "fi: {cmd} = painikkeen komento, {pin} = PIN, {cid} = tunniste jonka laite toistaa vastauksessa, {value} = arvo (on/off tai l",
-  "x-where": "drivers/ntfy_device.dart:203"
+  "x-where": "drivers/ntfy_device.dart:207"
  },
  "sa45b65f571": "Status command",
  "@sa45b65f571": {
   "description": "fi: Tilakomento",
-  "x-where": "drivers/ntfy_device.dart:212"
+  "x-where": "drivers/ntfy_device.dart:216"
  },
  "se464d5ed51": "The command the device answers with its state (e.g. \"status\" or \"status json\"). All tiles of this device share the reply.",
  "@se464d5ed51": {
   "description": "fi: Komento, johon laite vastaa tilallaan (esim. \"tila\" tai \"tila json\"). Kaikki tämän laitteen ruudut käyttävät samaa vasta",
-  "x-where": "drivers/ntfy_device.dart:212"
+  "x-where": "drivers/ntfy_device.dart:216"
  },
  "s821e8d2d9d": "Reply title contains (optional)",
  "@s821e8d2d9d": {
   "description": "fi: Vastauksen otsikko sisältää (vapaaehtoinen)",
-  "x-where": "drivers/ntfy_device.dart:221"
+  "x-where": "drivers/ntfy_device.dart:225"
  },
  "s949ee12ae6": "Only messages whose title contains this text count as the reply – useful when the reply topic carries other notifications too.",
  "@s949ee12ae6": {
   "description": "fi: Vain viestit, joiden otsikossa on tämä teksti, lasketaan vastaukseksi – hyödyllinen, kun vastauskanavalla on muitakin il",
-  "x-where": "drivers/ntfy_device.dart:221"
+  "x-where": "drivers/ntfy_device.dart:225"
  },
  "sfbcb5f18bd": "Reply must contain (regex, optional)",
  "@sfbcb5f18bd": {
   "description": "fi: Vastauksen tunniste (regex, vapaaehtoinen)",
-  "x-where": "drivers/ntfy_device.dart:229"
+  "x-where": "drivers/ntfy_device.dart:233"
  },
  "s79c983aa94": "A regular expression the reply (title + message) must contain.",
  "@s79c983aa94": {
   "description": "fi: Säännöllinen lauseke, joka vastauksessa pitää olla (otsikko + viesti).",
-  "x-where": "drivers/ntfy_device.dart:229"
+  "x-where": "drivers/ntfy_device.dart:233"
  },
  "s081eff543d": "Text to state map",
  "@s081eff543d": {
   "description": "fi: Tekstin tulkinta tiloiksi",
-  "x-where": "drivers/ntfy_device.dart:237"
+  "x-where": "drivers/ntfy_device.dart:241"
  },
  "s2afc1f1fb8": "One rule per line: \"pattern = value\". The pattern is a regex matching the whole captured text (case-insensitive). Empty = built-in Finnish and English on/off words.",
  "@s2afc1f1fb8": {
   "description": "fi: Rivi per sääntö: \"kuvio = arvo\". Kuvio on regex, jonka pitää vastata koko luettua tekstiä (kirjainkoolla ei väliä). Tyhj",
-  "x-where": "drivers/ntfy_device.dart:237"
+  "x-where": "drivers/ntfy_device.dart:241"
  },
  "s0976f767e2": "Error reply (regex)",
  "@s0976f767e2": {
   "description": "fi: Virhevastaus (regex)",
-  "x-where": "drivers/ntfy_device.dart:247"
+  "x-where": "drivers/ntfy_device.dart:251"
  },
  "sc0fd47e896": "A reply meaning an error (shown in red). Empty = default (wrong PIN, error, denied…). For JSON: ok:false or an error field.",
  "@sc0fd47e896": {
   "description": "fi: Vastaus, joka tarkoittaa virhettä (näytetään punaisena). Tyhjä = oletus (väärä PIN, virhe, error, denied…). JSON-vastauk",
-  "x-where": "drivers/ntfy_device.dart:247"
+  "x-where": "drivers/ntfy_device.dart:251"
  },
  "s98d9efa888": "Minimum time between commands (s)",
  "@s98d9efa888": {
   "description": "fi: Komentojen väli vähintään (s)",
-  "x-where": "drivers/ntfy_device.dart:256"
+  "x-where": "drivers/ntfy_device.dart:260"
  },
  "sa893722568": "If the device answers only e.g. every 30 seconds, type 30: the next command waits its turn instead of being lost.",
  "@sa893722568": {
   "description": "fi: Jos laite vastaa vain esim. 30 sekunnin välein, kirjoita 30: seuraava komento odottaa vuoroaan eikä huku.",
-  "x-where": "drivers/ntfy_device.dart:256"
+  "x-where": "drivers/ntfy_device.dart:260"
  },
  "sbdcbe301b9": "Wait for reply (s)",
  "@sbdcbe301b9": {
   "description": "fi: Vastauksen odotus (s)",
-  "x-where": "drivers/ntfy_device.dart:265"
+  "x-where": "drivers/ntfy_device.dart:269"
  },
  "s5e8e483f10": "How long to wait for the reply before showing an error.",
  "@s5e8e483f10": {
   "description": "fi: Kuinka kauan vastausta odotetaan ennen virheilmoitusta.",
-  "x-where": "drivers/ntfy_device.dart:265"
+  "x-where": "drivers/ntfy_device.dart:269"
  },
  "s31312f141c": "Status reply valid for (s)",
  "@s31312f141c": {
   "description": "fi: Tilavastaus voimassa (s)",
-  "x-where": "drivers/ntfy_device.dart:274"
+  "x-where": "drivers/ntfy_device.dart:278"
  },
  "s0611790300": "Tiles of the same device share one status reply for this long – the device is not asked needlessly.",
  "@s0611790300": {
   "description": "fi: Saman laitteen ruudut käyttävät samaa tilavastausta tämän ajan – laitetta ei kysytä turhaan.",
-  "x-where": "drivers/ntfy_device.dart:274"
+  "x-where": "drivers/ntfy_device.dart:278"
  },
  "s5bc736c04a": "Access token (optional)",
  "@s5bc736c04a": {
   "description": "fi: Käyttöoikeustunnus (vapaaehtoinen)",
-  "x-where": "drivers/ntfy_device.dart:284"
+  "x-where": "drivers/ntfy_device.dart:288"
  },
  "scece580659": "Only for a protected topic (ntfy account → Access tokens).",
  "@scece580659": {
   "description": "fi: Vain suojatulle aiheelle (ntfy-tili → Access tokens).",
-  "x-where": "drivers/ntfy_device.dart:284"
+  "x-where": "drivers/ntfy_device.dart:288"
  },
  "s7e91b10006": "Default is the public ntfy.sh. A full URL above overrides this.",
  "@s7e91b10006": {
   "description": "fi: Oletus on julkinen ntfy.sh. Jos liitit yllä koko osoitteen, palvelin luetaan siitä.",
-  "x-where": "drivers/ntfy_device.dart:293"
+  "x-where": "drivers/ntfy_device.dart:297"
  },
  "s1b5501c73f": "JSON path (JSON reply)",
  "@s1b5501c73f": {
   "description": "fi: JSON-polku (JSON-vastaus)",
-  "x-where": "drivers/ntfy_device.dart:304"
+  "x-where": "drivers/ntfy_device.dart:308"
  },
  "s1320bcddf2": "When the device answers with JSON, e.g. $.light or $.outputs.siren.",
  "@s1320bcddf2": {
   "description": "fi: Kun laite vastaa JSONilla, esim. $.pihavalo tai $.lahdot.sireeni.",
-  "x-where": "drivers/ntfy_device.dart:304"
+  "x-where": "drivers/ntfy_device.dart:308"
  },
  "s4dc975c1cd": "From text (regex, group 1)",
  "@s4dc975c1cd": {
   "description": "fi: Tekstistä (regex, ryhmä 1)",
-  "x-where": "drivers/ntfy_device.dart:312"
+  "x-where": "drivers/ntfy_device.dart:316"
  },
  "s21c23314ed": "For a text reply: a regular expression whose first group is the state, e.g. light:\\s*(\\S+).",
  "@s21c23314ed": {
   "description": "fi: Kun vastaus on tekstiä: säännöllinen lauseke, jonka ensimmäinen sulkuryhmä on tila, esim. pihavalo:\\s*(\\S+).",
-  "x-where": "drivers/ntfy_device.dart:312"
+  "x-where": "drivers/ntfy_device.dart:316"
  },
  "s63a305f2ab": "Status command for this tile (optional)",
  "@s63a305f2ab": {
   "description": "fi: Tilakomento tälle ruudulle (vapaaehtoinen)",
-  "x-where": "drivers/ntfy_device.dart:320"
+  "x-where": "drivers/ntfy_device.dart:324"
  },
  "s89ad1c43b4": "Empty = the device''s status command.",
  "@s89ad1c43b4": {
   "description": "fi: Tyhjä = laitteen tilakomento.",
-  "x-where": "drivers/ntfy_device.dart:320"
+  "x-where": "drivers/ntfy_device.dart:324"
  },
  "s5bed8bff00": "Command",
  "@s5bed8bff00": {
   "description": "fi: Komento",
-  "x-where": "drivers/ntfy_device.dart:330"
+  "x-where": "drivers/ntfy_device.dart:334"
  },
  "sec7af7b376": "E.g. \"light on\". The PIN and other parts are added by the device''s command template.",
  "@sec7af7b376": {
   "description": "fi: Esim. \"pihavalo on\". PIN ja muut kohdat lisätään laitteen komentomallin mukaan.",
-  "x-where": "drivers/ntfy_device.dart:330"
+  "x-where": "drivers/ntfy_device.dart:334"
  },
  "sfee393b70e": "Wait for the reply",
  "@sfee393b70e": {
   "description": "fi: Odota vastausta",
-  "x-where": "drivers/ntfy_device.dart:339"
+  "x-where": "drivers/ntfy_device.dart:343"
  },
  "s3f4dda1fb9": "Shows the device''s reply (or a clear error) on the tile.",
  "@s3f4dda1fb9": {
   "description": "fi: Näyttää laitteen vastauksen (tai selkeän virheen) ruudussa.",
-  "x-where": "drivers/ntfy_device.dart:339"
+  "x-where": "drivers/ntfy_device.dart:343"
  },
  "sa53638cfea": "Reply stays on the tile (s)",
  "@sa53638cfea": {
   "description": "fi: Vastaus näkyy ruudussa (s)",
-  "x-where": "drivers/ntfy_device.dart:348"
+  "x-where": "drivers/ntfy_device.dart:352"
  },
  "se6d21484a8": "How long the reply stays on the tile. 0 = until the next press.",
  "@se6d21484a8": {
   "description": "fi: Kuinka kauan vastaus näkyy ruudussa. 0 = kunnes painat uudelleen.",
-  "x-where": "drivers/ntfy_device.dart:348"
+  "x-where": "drivers/ntfy_device.dart:352"
  },
  "sb56e7e9f81": "ntfy: command missing",
  "@sb56e7e9f81": {
   "description": "fi: ntfy: komento puuttuu",
-  "x-where": "drivers/ntfy_device.dart:389"
+  "x-where": "drivers/ntfy_device.dart:393"
  },
  "s02e16b2c5c": "The command was sent, but the device did not answer within {p0} s – is the device online? Also check the PIN: many devices do not answer a wrong PIN at all (topic \"{p1}\").",
  "@s02e16b2c5c": {
   "description": "fi: Komento lähti, mutta laite ei vastannut {p0} s:ssa – onko laite verkossa? Tarkista myös PIN-koodi: moni laite ei vastaa ",
-  "x-where": "drivers/ntfy_device.dart:407",
+  "x-where": "drivers/ntfy_device.dart:412",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -11875,7 +11875,7 @@
  "sdf4ecde616": "The command was sent, but the device did not answer within {p0} s – is the device online? If it answers only at intervals, increase \"Minimum time between commands\" (topic \"{p1}\").",
  "@sdf4ecde616": {
   "description": "fi: Komento lähti, mutta laite ei vastannut {p0} s:ssa – onko laite verkossa? Jos laite vastaa vain tietyin väliajoin, kasva",
-  "x-where": "drivers/ntfy_device.dart:411",
+  "x-where": "drivers/ntfy_device.dart:416",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -11888,22 +11888,27 @@
  "s1257447096": "The device answered: {p0}",
  "@s1257447096": {
   "description": "fi: Laite vastasi: {p0}",
-  "x-where": "drivers/ntfy_device.dart:422",
+  "x-where": "drivers/ntfy_device.dart:428",
   "placeholders": {
    "p0": {
     "type": "String"
    }
   }
  },
+ "sc112a20bf5": "If the device replies on another topic (e.g. your notification topic), set it as \"Reply topic\".",
+ "@sc112a20bf5": {
+  "description": "fi: Jos laite vastaa toiselle kanavalle (esim. ilmoituskanavallesi), aseta se kohtaan \"Vastauskanava\".",
+  "x-where": "drivers/ntfy_device.dart:454"
+ },
  "sf03877dd0a": " A PIN is stored.",
  "@sf03877dd0a": {
   "description": "fi:  PIN on tallennettu.",
-  "x-where": "drivers/ntfy_device.dart:468"
+  "x-where": "drivers/ntfy_device.dart:530"
  },
  "s33cfb86f9f": "The command was sent, but the device did not answer in time – is the device online? (The ntfy server works.)",
  "@s33cfb86f9f": {
   "description": "fi: Komento lähti, mutta laite ei vastannut ajoissa – onko laite verkossa? (ntfy-palvelin toimii.)",
-  "x-where": "drivers/ntfy_device.dart:481"
+  "x-where": "drivers/ntfy_device.dart:543"
  },
  "s36fb6ba26f": "Modbus TCP",
  "@s36fb6ba26f": {
@@ -13518,12 +13523,12 @@
  "s23f70f51ff": "Command device",
  "@s23f70f51ff": {
   "description": "fi: Komentolaite",
-  "x-where": "templates/device_templates.dart:1605"
+  "x-where": "templates/device_templates.dart:1609"
  },
  "sfeb36cc60a": "{p0} – state",
  "@sfeb36cc60a": {
   "description": "fi: {p0} – tila",
-  "x-where": "templates/device_templates.dart:1667",
+  "x-where": "templates/device_templates.dart:1675",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13533,7 +13538,7 @@
  "s3378eb2d0b": "{p0} – temperature",
  "@s3378eb2d0b": {
   "description": "fi: {p0} – lämpötila",
-  "x-where": "templates/device_templates.dart:1907",
+  "x-where": "templates/device_templates.dart:1915",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13543,22 +13548,22 @@
  "sdfa0c29399": "Last sent (IR is one-way)",
  "@sdfa0c29399": {
   "description": "fi: Viimeksi lähetetty (IR on yksisuuntainen)",
-  "x-where": "templates/device_templates.dart:1923"
+  "x-where": "templates/device_templates.dart:1931"
  },
  "seab2c72485": "Fan (0 = auto)",
  "@seab2c72485": {
   "description": "fi: Puhallin (0 = auto)",
-  "x-where": "templates/device_templates.dart:1943"
+  "x-where": "templates/device_templates.dart:1951"
  },
  "s7847d8821b": "Vane (0 = auto, 5 = lowest)",
  "@s7847d8821b": {
   "description": "fi: Siivekkeet (0 = auto, 5 = alas)",
-  "x-where": "templates/device_templates.dart:1969"
+  "x-where": "templates/device_templates.dart:1977"
  },
  "s3a38b97f7b": "{p0} – room",
  "@s3a38b97f7b": {
   "description": "fi: {p0} – huone",
-  "x-where": "templates/device_templates.dart:1983",
+  "x-where": "templates/device_templates.dart:1991",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13568,6 +13573,6 @@
  "s0ceafaa97c": "energy",
  "@s0ceafaa97c": {
   "description": "fi: energia",
-  "x-where": "templates/device_templates.dart:2056"
+  "x-where": "templates/device_templates.dart:2064"
  }
 }

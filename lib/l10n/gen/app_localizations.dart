@@ -13169,6 +13169,12 @@ abstract class AppLocalizations {
   /// **'The device answered: {p0}'**
   String s1257447096(String p0);
 
+  /// fi: Jos laite vastaa toiselle kanavalle (esim. ilmoituskanavallesi), aseta se kohtaan "Vastauskanava".
+  ///
+  /// In en, this message translates to:
+  /// **'If the device replies on another topic (e.g. your notification topic), set it as \"Reply topic\".'**
+  String get sc112a20bf5;
+
   /// fi:  PIN on tallennettu.
   ///
   /// In en, this message translates to:

@@ -7092,12 +7092,24 @@
  "@sb56e7e9f81": {
   "x-mt": true
  },
+ "s02e16b2c5c": "Käsk saadeti, kuid seade ei vastanud {p0} s jooksul – kas seade on võrgus? Kontrolli ka PIN-koodi: paljud seadmed ei vasta üldse valele PIN-koodile (teema \"{p1}\").",
+ "@s02e16b2c5c": {
+  "x-mt": true
+ },
+ "sdf4ecde616": "Käsk saadeti, kuid seade ei vastanud {p0} s jooksul – kas seade on võrgus? Kui see vastab ainult intervallidega, suurenda \"Käskudevaheline minimaalne aeg\" (teema \"{p1}\").",
+ "@sdf4ecde616": {
+  "x-mt": true
+ },
  "s1257447096": "Seade vastas: {p0}",
  "@s1257447096": {
   "x-mt": true
  },
  "sf03877dd0a": " PIN-kood salvestatakse.",
  "@sf03877dd0a": {
+  "x-mt": true
+ },
+ "s33cfb86f9f": "Käsk saadeti, kuid seade ei vastanud õigeaegselt - kas seade on võrgus? (ntfy server töötab.)",
+ "@s33cfb86f9f": {
   "x-mt": true
  },
  "s36fb6ba26f": "Modbus TCP",
@@ -8134,6 +8146,22 @@
  "@s120a222880": {
   "x-mt": true
  },
+ "s6f139b5bcc": "Eelseadistus",
+ "@s6f139b5bcc": {
+  "x-mt": true
+ },
+ "sa149146483": "Kaamera jälgimine: tuled, sireen, häire sisse/ välja/ aktsept ja olek. Teema ja PIN on sinu enda omad.",
+ "@sa149146483": {
+  "x-mt": true
+ },
+ "sb6b101dd23": "Oma seadeldis",
+ "@sb6b101dd23": {
+  "x-mt": true
+ },
+ "s1ffb53e7f3": "Kaamera jälgimine (kv paneel)",
+ "@s1ffb53e7f3": {
+  "x-mt": true
+ },
  "s7a46c8c335": "Käsuteema",
  "@s7a46c8c335": {
   "x-mt": true
@@ -8245,32 +8273,8 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "s02e16b2c5c": "Käsk saadeti, kuid seade ei vastanud {p0} s jooksul – kas seade on võrgus? Kontrolli ka PIN-koodi: paljud seadmed ei vasta üldse valele PIN-koodile (teema \"{p1}\").",
- "@s02e16b2c5c": {
-  "x-mt": true
- },
- "sdf4ecde616": "Käsk saadeti, kuid seade ei vastanud {p0} s jooksul – kas seade on võrgus? Kui see vastab ainult intervallidega, suurenda \"Käskudevaheline minimaalne aeg\" (teema \"{p1}\").",
- "@sdf4ecde616": {
-  "x-mt": true
- },
- "s33cfb86f9f": "Käsk saadeti, kuid seade ei vastanud õigeaegselt - kas seade on võrgus? (ntfy server töötab.)",
- "@s33cfb86f9f": {
-  "x-mt": true
- },
- "s6f139b5bcc": "Eelseadistus",
- "@s6f139b5bcc": {
-  "x-mt": true
- },
- "sa149146483": "Kaamera jälgimine: tuled, sireen, häire sisse/ välja/ aktsept ja olek. Teema ja PIN on sinu enda omad.",
- "@sa149146483": {
-  "x-mt": true
- },
- "sb6b101dd23": "Oma seadeldis",
- "@sb6b101dd23": {
-  "x-mt": true
- },
- "s1ffb53e7f3": "Kaamera jälgimine (kv paneel)",
- "@s1ffb53e7f3": {
+ "sc112a20bf5": "Kui seade vastab teisele teemale (nt teie teavitusteema), määrake see \"Vasta teema\".",
+ "@sc112a20bf5": {
   "x-mt": true
  }
 }

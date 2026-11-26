@@ -342,7 +342,7 @@ class NtfyDriver extends Driver {
       check();
       return await reply.future.timeout(
         wait,
-        onTimeout: () => throw DriverException(
+        onTimeout: () => throw NtfyNoReply(
           timeoutText?.call(t, wait.inSeconds) ??
               dtx(
                 'Komento lähetettiin, mutta vastausta ei tullut ${wait.inSeconds} sekunnissa. Tarkista, että kotilaite on päällä ja kuuntelee aihetta "$t".',

@@ -2177,6 +2177,7 @@ final l10nGetters = <String Function(AppLocalizations)>[
   (l) => l.s02e16b2c5c('{p0}', '{p1}'),
   (l) => l.sdf4ecde616('{p0}', '{p1}'),
   (l) => l.s1257447096('{p0}'),
+  (l) => l.sc112a20bf5,
   (l) => l.sf03877dd0a,
   (l) => l.s33cfb86f9f,
   (l) => l.s36fb6ba26f,

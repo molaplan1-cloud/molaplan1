@@ -2175,6 +2175,7 @@
  "s02e16b2c5c": "Komento lähti, mutta laite ei vastannut {p0} s:ssa – onko laite verkossa? Tarkista myös PIN-koodi: moni laite ei vastaa lainkaan väärään PIN-koodiin (aihe \"{p1}\").",
  "sdf4ecde616": "Komento lähti, mutta laite ei vastannut {p0} s:ssa – onko laite verkossa? Jos laite vastaa vain tietyin väliajoin, kasvata \"Komentojen väli\" -asetusta (aihe \"{p1}\").",
  "s1257447096": "Laite vastasi: {p0}",
+ "sc112a20bf5": "Jos laite vastaa toiselle kanavalle (esim. ilmoituskanavallesi), aseta se kohtaan \"Vastauskanava\".",
  "sf03877dd0a": " PIN on tallennettu.",
  "s33cfb86f9f": "Komento lähti, mutta laite ei vastannut ajoissa – onko laite verkossa? (ntfy-palvelin toimii.)",
  "s36fb6ba26f": "Modbus TCP",

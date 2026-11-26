@@ -7323,6 +7323,10 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
+  String get sc112a20bf5 =>
+      'Jos laite vastaa toiselle kanavalle (esim. ilmoituskanavallesi), aseta se kohtaan \"Vastauskanava\".';
+
+  @override
   String get sf03877dd0a => ' PIN on tallennettu.';
 
   @override

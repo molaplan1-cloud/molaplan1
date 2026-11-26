@@ -7047,12 +7047,24 @@
  "@sb56e7e9f81": {
   "x-mt": true
  },
+ "s02e16b2c5c": "Kommandot skickades, men enheten svarade inte inom {p0} s - är enheten online? Kontrollera också PIN: många enheter svarar inte på fel PIN alls (topiskt \"{p1}\").",
+ "@s02e16b2c5c": {
+  "x-mt": true
+ },
+ "sdf4ecde616": "Kommandot skickades, men enheten svarade inte inom {p0} s - är enheten online? Om det svarar endast vid intervall, öka \"Minimum tid mellan kommandon\" (topisk \"{p1}\").",
+ "@sdf4ecde616": {
+  "x-mt": true
+ },
  "s1257447096": "Enheten svarade: {p0}",
  "@s1257447096": {
   "x-mt": true
  },
  "sf03877dd0a": " En PIN lagras.",
  "@sf03877dd0a": {
+  "x-mt": true
+ },
+ "s33cfb86f9f": "Kommandot skickades, men enheten svarade inte i tid - är enheten online? (Nfy-servern fungerar.)",
+ "@s33cfb86f9f": {
   "x-mt": true
  },
  "s36fb6ba26f": "Modbus TCP",
@@ -8089,6 +8101,22 @@
  "@s120a222880": {
   "x-mt": true
  },
+ "s6f139b5bcc": "Preset",
+ "@s6f139b5bcc": {
+  "x-mt": true
+ },
+ "sa149146483": "Kameraövervakning: ljus, siren, larm på / av / bekräftelse och stat. Ämnet och PIN är dina egna.",
+ "@sa149146483": {
+  "x-mt": true
+ },
+ "sb6b101dd23": "Egen enhet",
+ "@sb6b101dd23": {
+  "x-mt": true
+ },
+ "s1ffb53e7f3": "Kameraövervakning (kv panel)",
+ "@s1ffb53e7f3": {
+  "x-mt": true
+ },
  "s7a46c8c335": "Kommandoämne",
  "@s7a46c8c335": {
   "x-mt": true
@@ -8200,32 +8228,8 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "s02e16b2c5c": "Kommandot skickades, men enheten svarade inte inom {p0} s - är enheten online? Kontrollera också PIN: många enheter svarar inte på fel PIN alls (topiskt \"{p1}\").",
- "@s02e16b2c5c": {
-  "x-mt": true
- },
- "sdf4ecde616": "Kommandot skickades, men enheten svarade inte inom {p0} s - är enheten online? Om det svarar endast vid intervall, öka \"Minimum tid mellan kommandon\" (topisk \"{p1}\").",
- "@sdf4ecde616": {
-  "x-mt": true
- },
- "s33cfb86f9f": "Kommandot skickades, men enheten svarade inte i tid - är enheten online? (Nfy-servern fungerar.)",
- "@s33cfb86f9f": {
-  "x-mt": true
- },
- "s6f139b5bcc": "Preset",
- "@s6f139b5bcc": {
-  "x-mt": true
- },
- "sa149146483": "Kameraövervakning: ljus, siren, larm på / av / bekräftelse och stat. Ämnet och PIN är dina egna.",
- "@sa149146483": {
-  "x-mt": true
- },
- "sb6b101dd23": "Egen enhet",
- "@sb6b101dd23": {
-  "x-mt": true
- },
- "s1ffb53e7f3": "Kameraövervakning (kv panel)",
- "@s1ffb53e7f3": {
+ "sc112a20bf5": "Om enheten svarar på ett annat ämne (t.ex. ditt meddelandeämne), ange det som \"Reply ämne\".",
+ "@sc112a20bf5": {
   "x-mt": true
  }
 }

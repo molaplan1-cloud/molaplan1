@@ -7035,12 +7035,24 @@
  "@sb56e7e9f81": {
   "x-mt": true
  },
+ "s02e16b2c5c": "El comando fue enviado, pero el dispositivo no respondió dentro {p0} s - es el dispositivo en línea? También comprobar el PIN: muchos dispositivos no responden a un PIN equivocado en absoluto (topic \"{p1}\").",
+ "@s02e16b2c5c": {
+  "x-mt": true
+ },
+ "sdf4ecde616": "El comando fue enviado, pero el dispositivo no respondió dentro {p0} s - es el dispositivo en línea? Si responde sólo a intervalos, aumentar \"Tiempo mínimo entre comandos\" (tema \"{p1}\").",
+ "@sdf4ecde616": {
+  "x-mt": true
+ },
  "s1257447096": "El dispositivo respondió: {p0}",
  "@s1257447096": {
   "x-mt": true
  },
  "sf03877dd0a": " Se almacena un PIN.",
  "@sf03877dd0a": {
+  "x-mt": true
+ },
+ "s33cfb86f9f": "El comando fue enviado, pero el dispositivo no respondió en el tiempo – ¿está el dispositivo en línea? (El servidor ntfy funciona.)",
+ "@s33cfb86f9f": {
   "x-mt": true
  },
  "s36fb6ba26f": "Modbus TCP",
@@ -8071,6 +8083,22 @@
  "@s120a222880": {
   "x-mt": true
  },
+ "s6f139b5bcc": "Preset",
+ "@s6f139b5bcc": {
+  "x-mt": true
+ },
+ "sa149146483": "Vigilancia de la cámara: luces, sirena, alarma en/off/acknowledge y estado. Tema y PIN son suyos.",
+ "@sa149146483": {
+  "x-mt": true
+ },
+ "sb6b101dd23": "Dispositivo propio",
+ "@sb6b101dd23": {
+  "x-mt": true
+ },
+ "s1ffb53e7f3": "Vigilancia de la cámara (panel kv)",
+ "@s1ffb53e7f3": {
+  "x-mt": true
+ },
  "s7a46c8c335": "Tema del comando",
  "@s7a46c8c335": {
   "x-mt": true
@@ -8182,32 +8210,8 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "s02e16b2c5c": "El comando fue enviado, pero el dispositivo no respondió dentro {p0} s - es el dispositivo en línea? También comprobar el PIN: muchos dispositivos no responden a un PIN equivocado en absoluto (topic \"{p1}\").",
- "@s02e16b2c5c": {
-  "x-mt": true
- },
- "sdf4ecde616": "El comando fue enviado, pero el dispositivo no respondió dentro {p0} s - es el dispositivo en línea? Si responde sólo a intervalos, aumentar \"Tiempo mínimo entre comandos\" (tema \"{p1}\").",
- "@sdf4ecde616": {
-  "x-mt": true
- },
- "s33cfb86f9f": "El comando fue enviado, pero el dispositivo no respondió en el tiempo – ¿está el dispositivo en línea? (El servidor ntfy funciona.)",
- "@s33cfb86f9f": {
-  "x-mt": true
- },
- "s6f139b5bcc": "Preset",
- "@s6f139b5bcc": {
-  "x-mt": true
- },
- "sa149146483": "Vigilancia de la cámara: luces, sirena, alarma en/off/acknowledge y estado. Tema y PIN son suyos.",
- "@sa149146483": {
-  "x-mt": true
- },
- "sb6b101dd23": "Dispositivo propio",
- "@sb6b101dd23": {
-  "x-mt": true
- },
- "s1ffb53e7f3": "Vigilancia de la cámara (panel kv)",
- "@s1ffb53e7f3": {
+ "sc112a20bf5": "Si el dispositivo responde a otro tema (por ejemplo, el tema de la notificación), establecelo como \"Tema de respuesta\".",
+ "@sc112a20bf5": {
   "x-mt": true
  }
 }

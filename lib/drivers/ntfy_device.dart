@@ -162,6 +162,10 @@ String? ntfyDeviceError(NtfyMessage m, String? pattern) {
 class _Shared {
   NtfyMessage? last;
   DateTime? at;
+  /// t235u: when the last status reply really arrived (not reset by commands).
+  DateTime? okAt;
+  /// t235u: state after a command that was published but not answered: JSON path → (value, when).
+  final optimistic = <String, (bool, DateTime)>{};
   Future<NtfyMessage>? inFlight;
   DateTime? lastSent;
 }
@@ -381,7 +385,7 @@ class NtfyDeviceDriver extends NtfyDriver {
   String _newCid() => List.generate(6, (_) => _rnd.nextInt(16).toRadixString(16)).join();
 
   /// Builds the text, waits for the device's rate limit, sends and waits for the matching reply.
-  Future<NtfyMessage> _ask(String cmd, {Object? value}) async {
+  Future<NtfyMessage> _ask(String cmd, {Object? value, Duration? waitFor}) async {
     final tpl = s.str('template', '{cmd} {pin}');
     final cid = tpl.contains('{cid}') || cmd.contains('{cid}') ? _newCid() : '';
     final text = buildNtfyCommand(tpl, cmd: cmd, pin: s.str('pin'), cid: cid, value: value);
@@ -397,13 +401,14 @@ class NtfyDeviceDriver extends NtfyDriver {
       await Future<void>.delayed(left);
     }
     sh.lastSent = DateTime.now();
-    final wait = _wait;
+    final wait = waitFor ?? _wait;
+    final noTopic = (s.strOrNull('replyTopic') ?? '').trim().isEmpty;
     final m = await exchange(
       text,
       wait: wait,
       accept: (m) => ntfyReplyMatches(m, title: s.strOrNull('replyTitle'), match: s.strOrNull('replyMatch'), cid: cid),
       // t235u: the publish already succeeded here – a missing reply is the device's.
-      timeoutText: (topic, secs) => usesPin
+      timeoutText: (topic, secs) => _replyHint(noTopic, usesPin
           ? dtx(
               'Komento lähti, mutta laite ei vastannut $secs s:ssa – onko laite verkossa? Tarkista myös PIN-koodi: moni laite ei vastaa lainkaan väärään PIN-koodiin (aihe "$topic").',
               'The command was sent, but the device did not answer within $secs s – is the device online? Also check the PIN: many devices do not answer a wrong PIN at all (topic "$topic").',
@@ -411,12 +416,13 @@ class NtfyDeviceDriver extends NtfyDriver {
           : dtx(
               'Komento lähti, mutta laite ei vastannut $secs s:ssa – onko laite verkossa? Jos laite vastaa vain tietyin väliajoin, kasvata "Komentojen väli" -asetusta (aihe "$topic").',
               'The command was sent, but the device did not answer within $secs s – is the device online? If it answers only at intervals, increase "Minimum time between commands" (topic "$topic").',
-            ),
+            )),
     );
     // A JSON reply carries the whole state even when the command was refused: share it first.
     if (ntfyJsonPayload(m.message) is Map) {
       sh.last = m;
-      sh.at = DateTime.now();
+      sh.at = sh.okAt = DateTime.now();
+      sh.optimistic.clear();
     }
     final err = ntfyDeviceError(m, s.strOrNull('errorMatch'));
     if (err != null) throw DriverException(dtx('Laite vastasi: $err', 'The device answered: $err'));
@@ -433,33 +439,89 @@ class NtfyDeviceDriver extends NtfyDriver {
     return sh.inFlight ??= _ask(command ?? s.str('statusCommand', 'tila'))
         .then((m) {
           sh.last = m;
-          sh.at = DateTime.now();
+          sh.at = sh.okAt = DateTime.now();
+          sh.optimistic.clear();
           return m;
         })
         .whenComplete(() => sh.inFlight = null);
   }
 
+  /// How long a published-but-unanswered command or the last status keeps the tile without '!'.
+  static const staleAfter = Duration(minutes: 15);
+
+  String _replyHint(bool noTopic, String text) => !noTopic
+      ? text
+      : '$text ${dtx('Jos laite vastaa toiselle kanavalle (esim. ilmoituskanavallesi), aseta se kohtaan "Vastauskanava".', 'If the device replies on another topic (e.g. your notification topic), set it as "Reply topic".')}';
+
+  static String? _pathOf(Map<String, dynamic> spec) => spec.strOrNull('statePath') ?? spec.strOrNull('jsonPath');
+
   @override
   Future<Object?> read(Map<String, dynamic> spec) async {
-    final m = await status(command: spec.strOrNull('command'));
-    return ntfyStateFrom(m, spec, _rules);
+    final sh = _sh;
+    final path = _pathOf(spec);
+    // Exact path (new tiles carry statePath) or the command's first word (older tiles: "sisavalo on").
+    (bool, DateTime)? opt;
+    if (path != null) {
+      opt = sh.optimistic[path];
+      if (opt == null) {
+        for (final e in sh.optimistic.entries) {
+          if (!e.key.startsWith(r'$') && (path.endsWith('.${e.key}') || path == e.key)) opt = e.value;
+        }
+      }
+    }
+    final now = DateTime.now();
+    try {
+      final m = await status(command: spec.strOrNull('command'));
+      return ntfyStateFrom(m, spec, _rules);
+    } on NtfyNoReply {
+      // t235u: no status reply – keep the commanded / last known state for a while instead of '!'.
+      if (opt != null && now.difference(opt.$2) < staleAfter) return opt.$1;
+      final last = sh.last;
+      if (last != null && sh.okAt != null && now.difference(sh.okAt!) < staleAfter) return ntfyStateFrom(last, spec, _rules);
+      rethrow;
+    }
   }
 
   @override
   Future<Object?> send(Map<String, dynamic> spec, {Object? value}) async {
-    final cmd = spec.str('command', spec.str('message'));
+    final cmd = spec.str('command');
     if (cmd.trim().isEmpty) throw DriverException(dtx('ntfy: komento puuttuu', 'ntfy: command missing'));
     if (!spec.flag('waitReply', true)) {
       final tpl = s.str('template', '{cmd} {pin}');
       final text = buildNtfyCommand(tpl, cmd: cmd, pin: s.str('pin'), value: value);
       _sh.lastSent = DateTime.now();
-      return (await publish(text)).toReply()..['sentOnly'] = true;
+      final r = (await publish(text)).toReply()..['sentOnly'] = true;
+      _remember(spec, value);
+      return r;
     }
-    final m = await _ask(cmd, value: value);
+    // t235u: success = the publish worked. Wait a short while for the device's answer (its JSON
+    // state, or an error such as a wrong PIN); no answer is not an error – the state then comes
+    // from the next status poll.
+    final ack = Duration(seconds: spec.integer('ackSeconds', 10).clamp(2, 120));
+    final NtfyMessage m;
+    try {
+      m = await _ask(cmd, value: value, waitFor: ack < _wait ? ack : _wait);
+    } on NtfyNoReply {
+      _remember(spec, value);
+      return {'ntfy': true, 'sentOnly': true, 'noReply': true};
+    }
     // A JSON reply (the state) already refreshed every tile in _ask; after a text reply the
     // next read asks again.
-    if (ntfyJsonPayload(m.message) is! Map) _sh.at = null;
+    if (ntfyJsonPayload(m.message) is! Map) {
+      _remember(spec, value);
+    }
     return m.toReply()..['showSeconds'] = spec.integer('showSeconds', 30);
+  }
+
+  /// Remembers the commanded state for the tile's JSON path and asks a fresh status next time.
+  void _remember(Map<String, dynamic> spec, Object? value) {
+    final sh = _sh;
+    sh.at = null;
+    final first = spec.str('command').trim().split(RegExp(r'\s+')).first;
+    final path = spec.strOrNull('statePath') ?? (first.isEmpty || first.startsWith('{') ? null : first);
+    if (path == null || value == null) return;
+    final on = value == true || (value is num && value != 0) || isTruthy(value);
+    sh.optimistic[path] = (on, DateTime.now());
   }
 
   @override

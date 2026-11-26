@@ -7292,6 +7292,10 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String get sc112a20bf5 =>
+      'Kui seade vastab teisele teemale (nt teie teavitusteema), määrake see \"Vasta teema\".';
+
+  @override
   String get sf03877dd0a => ' PIN-kood salvestatakse.';
 
   @override

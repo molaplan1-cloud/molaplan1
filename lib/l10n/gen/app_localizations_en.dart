@@ -7290,6 +7290,10 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get sc112a20bf5 =>
+      'If the device replies on another topic (e.g. your notification topic), set it as \"Reply topic\".';
+
+  @override
   String get sf03877dd0a => ' A PIN is stored.';
 
   @override
