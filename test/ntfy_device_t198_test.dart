@@ -189,9 +189,9 @@ void main() {
     expect(valo.type, TileType.toggle);
     expect(valo.onCommand!.spec['command'], 'valo on');
     expect(valo.offCommand!.spec['command'], 'valo off');
-    expect(RegExp(valo.read!['regex'] as String, caseSensitive: false).firstMatch('Valo: PÄÄLLÄ, Sireeni: POIS')!.group(1), 'PÄÄLLÄ');
+    expect(RegExp(valo.read['regex'] as String, caseSensitive: false).firstMatch('Valo: PÄÄLLÄ, Sireeni: POIS')!.group(1), 'PÄÄLLÄ');
     final j = t.build({'topic': 'x', 'outputs': 'A = a'}, 'fi');
-    expect(j.tiles.first.read!['jsonPath'], r'$.a');
+    expect(j.tiles.first.read['jsonPath'], r'$.a');
     expect(descriptorFor('ntfy_device').secretKeys, containsAll(['pin', 'token']));
     expect(RemoteRouter.internetOnlyTypes, contains('ntfy_device'));
   });
