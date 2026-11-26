@@ -146,7 +146,7 @@ void main() {
     final silent = drv(m, extra: {'topic': '${m.url}/nobody-listens', 'replySeconds': 3});
     await expectLater(
       silent.read({}),
-      throwsA(isA<DriverException>().having((e) => e.message, 'm', contains('ei vastannut 3 sekunnissa'))),
+      throwsA(isA<DriverException>().having((e) => e.message, 'm', contains('Komento lähti, mutta laite ei vastannut 3 s:ssa – onko laite verkossa?'))),
     );
     await wrong.dispose();
     await silent.dispose();

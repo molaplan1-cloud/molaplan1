@@ -158,7 +158,7 @@ void main() {
     NtfyDeviceDriver.resetShared();
     await expectLater(
       wrong.read(status.read),
-      throwsA(isA<DriverException>().having((e) => e.message, 'm', contains('Ei vastausta (PIN?)'))),
+      throwsA(isA<DriverException>().having((e) => e.message, 'm', contains('Tarkista myös PIN-koodi'))),
     );
     await d.dispose();
     await wrong.dispose();

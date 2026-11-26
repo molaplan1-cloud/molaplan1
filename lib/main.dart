@@ -59,6 +59,7 @@ Future<void> main() async {
   );
   state.account.autoSync = true; // background sync when signed in
   state.shareAuto = true; // R215: shares / invites refresh in the background
+  state.remote.autoNetworkCheck = true; // t232u: verify 'Kotona' against the bridge's own LAN
   await state.load();
   if (state.config.bridgeMode) await keepScreenOn(true);
   state.update.autoCheck = true;

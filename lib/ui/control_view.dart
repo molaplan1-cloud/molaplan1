@@ -223,6 +223,18 @@ class ControlView extends StatelessWidget {
           child: _item(const Icon(Icons.edit_outlined), Text(tx(c, 'Muokkaa näkymää', 'Edit the view'))),
         ),
         PopupMenuItem(
+          key: const ValueKey('control-room-photo'),
+          value: 'room-photo',
+          child: _item(const Icon(Icons.photo_outlined), Text(tx(c, 'Huoneen kuva', 'Room photo'))),
+        ),
+        // t231u: grouped – the view, then the smart parts, then settings.
+        const PopupMenuDivider(),
+        if (onEnergy != null)
+          PopupMenuItem(
+            value: 'energy',
+            child: _item(const Icon(Icons.bolt_outlined), Text(tx(c, 'Energia', 'Energy'))),
+          ),
+        PopupMenuItem(
           key: const ValueKey('control-automations'),
           value: 'automations',
           child: _item(const Icon(Icons.auto_mode), Text(tx(c, 'Automaatiot', 'Automations'))),
@@ -241,22 +253,12 @@ class ControlView extends StatelessWidget {
             Text(tx(c, 'Ilmoitukset ja muistutukset', 'Notifications and reminders')),
           ),
         ),
-        PopupMenuItem(
-          key: const ValueKey('control-room-photo'),
-          value: 'room-photo',
-          child: _item(const Icon(Icons.photo_outlined), Text(tx(c, 'Huoneen kuva', 'Room photo'))),
-        ),
-        if (onEnergy != null)
-          PopupMenuItem(
-            value: 'energy',
-            child: _item(const Icon(Icons.bolt_outlined), Text(tx(c, 'Energia', 'Energy'))),
-          ),
+        const PopupMenuDivider(),
         PopupMenuItem(
           key: const ValueKey('control-settings'),
           value: 'settings',
           child: _item(const Icon(Icons.tune), Text(tx(c, 'Asetukset', 'Settings'))),
         ),
-        const PopupMenuDivider(),
         PopupMenuItem(
           key: const ValueKey('control-lock'),
           value: 'lock',

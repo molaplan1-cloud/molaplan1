@@ -984,16 +984,16 @@ class AppLocalizationsFi extends AppLocalizations {
   String get scd04aa5d9e => 'Muokkaa näkymää';
 
   @override
-  String get se9ca7cb470 => 'Automaatiot';
-
-  @override
-  String get s41bb837a83 => 'Ilmoitukset ja muistutukset';
-
-  @override
   String get sf98121cd3d => 'Huoneen kuva';
 
   @override
   String get s49de879696 => 'Energia';
+
+  @override
+  String get se9ca7cb470 => 'Automaatiot';
+
+  @override
+  String get s41bb837a83 => 'Ilmoitukset ja muistutukset';
 
   @override
   String get s1da81fd6c3 => 'Asetukset';
@@ -1109,14 +1109,30 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s6e1ebc8baa => 'Avaa kansio';
 
   @override
+  String get sa2e921ca79 =>
+      'Asennus peruttiin. Voit yrittää uudelleen: Päivitä.';
+
+  @override
+  String get s29e92898c6 =>
+      'Vahvista asennus Androidin ikkunasta tai ilmoituksesta.';
+
+  @override
+  String get sd1cdbd3630 => 'Asennus ei käynnistynyt';
+
+  @override
+  String s21972e23c1(String p0, String p1) {
+    return 'Android ei aloittanut päivityksen $p0 asennusta.\n\nTarkista, että \"Salli tästä lähteestä\" on päällä Molaplanille, ja paina Päivitä uudelleen. Voit myös ladata APK:n julkaisusivulta.\n\nTieto: $p1';
+  }
+
+  @override
+  String get sa1bd8d2533 => 'Avaa asetukset';
+
+  @override
   String get sa065e7f650 => 'Salli päivitysten asennus';
 
   @override
   String get sdc3bf71baf =>
       'Android kysyy kerran luvan, jotta Molaplan saa asentaa omat päivityksensä.\n\n1. Paina \"Avaa asetukset\".\n2. Kytke päälle \"Salli tästä lähteestä\".\n3. Palaa takaisin ja paina \"Päivitä\" uudelleen.';
-
-  @override
-  String get sa1bd8d2533 => 'Avaa asetukset';
 
   @override
   String get s441683b7a8 => 'Tarkistetaan…';
@@ -2259,6 +2275,12 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sd54522fe39 => 'Reititin / hotspot';
 
   @override
+  String get s3294a9422d => 'Valvontapaneeli';
+
+  @override
+  String get sb97a2b7ed6 => 'ESP32-laite';
+
+  @override
   String get s23f4820db7 => 'ei vielä ohjattavissa';
 
   @override
@@ -2266,6 +2288,13 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get saae59a3865 => 'kotisillan kautta';
+
+  @override
+  String get sf226dd023a => 'ohjataan ntfy-viesteillä';
+
+  @override
+  String get s0e6aa5168c =>
+      'jos tämä on valvontapaneeli, lisää se ntfy-komentolaitteena';
 
   @override
   String get sdccd6e7f24 => 'Malli';
@@ -2286,7 +2315,13 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s1d5ed84aed => 'Nimi muistetaan tällä laitteella.';
 
   @override
+  String get s3e6dd6ff2d => 'Lisää komentolaitteena';
+
+  @override
   String get s59622d792b => 'Nimeä';
+
+  @override
+  String get sa0fccfbcab => 'kotisillan kautta';
 
   @override
   String get s1169d2d093 => 'Etsi laitteet';
@@ -2319,6 +2354,14 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s9a018b8166 =>
       'Et ole kotona: kotisilta etsi laitteet kotiverkosta.';
+
+  @override
+  String get s55d0b95fd2 => 'Tämä verkko';
+
+  @override
+  String s955b44aaa4(String p0) {
+    return 'Nämä ovat tämän laitteen omassa verkossa, eivät kodissa $p0. Niitä ei lisätä siihen kotiin.';
+  }
 
   @override
   String sf16a25c313(String p0) {
@@ -4844,30 +4887,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sa3e78d5c4e => 'Kotisilta vastaa – etäyhteys toimii.';
 
   @override
-  String get s0b57661c18 => 'Ohjaa kotia myös kodin ulkopuolelta';
-
-  @override
-  String get sb43ef4094c =>
-      'Kotona Molaplan puhuu laitteille suoraan. Muualla yhteys kulkee salattuna kotisillan kautta – porttiohjauksia tai reititinasetuksia ei tarvita. Sovellus valitsee automaattisesti nopeimman tien.';
-
-  @override
-  String get se96e60e36c =>
-      'Kotisilta on mikä tahansa kotona aina päällä oleva Molaplan: PC, vanha tabletti tai puhelin, tai erillinen kotisiltaohjelma esim. Raspberry Pillä tai Home Assistant -koneella. Kun olet poissa kotoa, puhelimesi komennot kulkevat sen kautta kodin laitteille päästä päähän salattuina. Reitittimeen ei tarvitse tehdä mitään (ei porttiohjauksia).';
-
-  @override
-  String get s075e5a4864 => 'Yhdistetty kotiin';
-
-  @override
-  String get sa7679488fb =>
-      'Kotona = suoraan laitteille. Etäyhteys = kotisillan kautta. Ei yhteyttä = kumpikaan ei vastaa.';
-
-  @override
-  String get s19cec9667e => 'Testaa etäyhteys';
-
-  @override
-  String get s86ad95fa48 => 'Kopioi kodin näkymät';
-
-  @override
   String get sfaa5185b74 => 'Poistetaanko etäyhteys?';
 
   @override
@@ -4875,13 +4894,50 @@ class AppLocalizationsFi extends AppLocalizations {
       'Tämä laite ei sen jälkeen saa yhteyttä kotiin kodin ulkopuolelta. Voit yhdistää uudelleen milloin vain.';
 
   @override
+  String get s0b57661c18 => 'Ohjaa kotia myös kodin ulkopuolelta';
+
+  @override
+  String get s07dc42dc7a =>
+      'Kotona Molaplan puhuu laitteille suoraan, muualla salattuna kotisillan kautta. Mitään ei tarvitse säätää reitittimestä.';
+
+  @override
+  String sdde4ff19ce(String p0) {
+    return 'Näytä kodin $p0 laitteet täällä';
+  }
+
+  @override
+  String get sc5328cbb8f =>
+      'Kopioi kotisillan näkymät tähän laitteeseen. Lukemat ja ohjaukset kulkevat sen jälkeen kotisillan kautta.';
+
+  @override
+  String get s86ad95fa48 => 'Kopioi kodin näkymät';
+
+  @override
+  String get s9b8f1f4a7e => 'Lisää kotisilta';
+
+  @override
+  String get sa8c35b8bfb => 'Aloita näin';
+
+  @override
+  String get s5683f9f7e4 =>
+      'Kotisilta on mikä tahansa kotona aina päällä oleva Molaplan: PC, vanha tabletti tai puhelin, Molaplan Bridge -laite tai erillinen kotisiltaohjelma. Kun olet poissa kotoa, komennot kulkevat sen kautta päästä päähän salattuina.';
+
+  @override
+  String get sa75a955933 =>
+      'Kotona = tämä laite on kotisillan omassa verkossa ja puhuu laitteille suoraan. Etäyhteys = kotisillan kautta. Ei yhteyttä = kumpikaan ei vastaa.';
+
+  @override
+  String get s90460344ec =>
+      'Kotisilta on vanha versio eikä kerro verkkoaan, joten yhteys kulkee aina sen kautta. Päivitä kotisilta, niin Kotona-tila tunnistuu.';
+
+  @override
+  String get s19cec9667e => 'Testaa etäyhteys';
+
+  @override
   String get s3563cb1635 => 'Poista etäyhteys';
 
   @override
   String get s528c4f3a4c => 'Tämä laite on kotisilta';
-
-  @override
-  String get se7b8d659b5 => 'Lisäasetukset';
 
   @override
   String get sfd263f3e04 => 'Kamerakuvan päivitys etänä';
@@ -5001,34 +5057,44 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sb9e406274e => 'päällä';
 
   @override
-  String sd5fc9353f9(String p0) {
-    return 'vanhempi kuin 0.8.0 · $p0 · ei etäpäivitystä (päivitä kerran laitteella)';
-  }
+  String get sb981e102f1 => 'vanha Molaplan (0.8.0-testiversio tai vanhempi)';
 
   @override
-  String get se9d573787e => ' · hiljainen päivitys: kyllä';
-
-  @override
-  String get s82043faaa4 => ' · hiljainen päivitys: ei';
-
-  @override
-  String get s42b97a989b => 'versio ei tiedossa';
+  String get s706ee3ad91 => 'päivitä kerran laitteella';
 
   @override
   String get sca90c9c253 => ' (ei yhteystietoa tälle laitteelle)';
 
   @override
-  String get sfd88be2409 => 'Omat kotisillat';
+  String get s42b97a989b => 'versio ei tiedossa';
+
+  @override
+  String get se76155b6bd => 'päivittyy hiljaisesti';
+
+  @override
+  String s20889b3dc9(String p0) {
+    return 'Päivitä $p0 kerran laitteella';
+  }
+
+  @override
+  String get secbc1cfea3 =>
+      'Tämä kotisilta käyttää vanhaa Molaplania, joka ei vielä osaa päivittää itseään etänä.\n\nKerran tehtävä päivitys: avaa Molaplan kotisillan laitteella → Asetukset → Tarkista päivitykset → Päivitä ja hyväksy asennus. Vaihtoehtoisesti asenna uusin APK USB-kaapelilla.\n\nSen jälkeen Päivitä toimii tästä listasta etänä.';
+
+  @override
+  String get s356b6d4d13 => 'Kotisillat';
 
   @override
   String get s57117babe8 => 'Päivitä tiedot';
 
   @override
-  String get s40dab032ce =>
-      'Kaikki tiliisi kuuluvat kotisillat, myös muissa kohteissa. Yhteys kulkee aina etäpalvelun kautta.';
+  String get s5160bf55ae =>
+      'Avaa = näytä se koti tällä laitteella. Päivitä = asenna kotisillalle uusin Molaplan.';
 
   @override
   String get s9b2c8181e4 => 'tämä laite';
+
+  @override
+  String get s902eaaff9f => 'Avaa';
 
   @override
   String get s72da730a42 => 'Yhteys etäpalveluun: kunnossa';
@@ -5912,9 +5978,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s0e655a209f => 'Lisää silti';
-
-  @override
-  String get s902eaaff9f => 'Avaa';
 
   @override
   String get s12c2f8e6e4 => 'Vain kotiverkossa';
@@ -7245,13 +7308,13 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sb56e7e9f81 => 'ntfy: komento puuttuu';
 
   @override
-  String s09f79d4fda(String p0, String p1) {
-    return 'Ei vastausta (PIN?) – laite ei vastannut $p0 sekunnissa (aihe \"$p1\"). Tarkista PIN-koodi: moni laite ei vastaa lainkaan väärään PIN-koodiin.';
+  String s02e16b2c5c(String p0, String p1) {
+    return 'Komento lähti, mutta laite ei vastannut $p0 s:ssa – onko laite verkossa? Tarkista myös PIN-koodi: moni laite ei vastaa lainkaan väärään PIN-koodiin (aihe \"$p1\").';
   }
 
   @override
-  String sf25dcf262f(String p0, String p1) {
-    return 'Laite ei vastannut $p0 sekunnissa (aihe \"$p1\"). Jos laite vastaa vain tietyin väliajoin, kasvata \"Vastauksen odotus\" tai \"Komentojen väli\" -asetusta.';
+  String sdf4ecde616(String p0, String p1) {
+    return 'Komento lähti, mutta laite ei vastannut $p0 s:ssa – onko laite verkossa? Jos laite vastaa vain tietyin väliajoin, kasvata \"Komentojen väli\" -asetusta (aihe \"$p1\").';
   }
 
   @override
@@ -7261,6 +7324,10 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sf03877dd0a => ' PIN on tallennettu.';
+
+  @override
+  String get s33cfb86f9f =>
+      'Komento lähti, mutta laite ei vastannut ajoissa – onko laite verkossa? (ntfy-palvelin toimii.)';
 
   @override
   String get s36fb6ba26f => 'Modbus TCP';
@@ -8230,6 +8297,19 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s120a222880 =>
       'Laite, jota ohjataan ntfy-viesteillä: päälle/pois-kytkimet, tilan luku ja PIN. Toimii kotona ja muualla ilman kotisiltaa.';
+
+  @override
+  String get s6f139b5bcc => 'Valmis malli';
+
+  @override
+  String get sa149146483 =>
+      'Kameravalvonta: valot, sireeni, hälytys päälle/pois/kuittaa ja tila. Aihe ja PIN täytetään itse.';
+
+  @override
+  String get sb6b101dd23 => 'Oma laite';
+
+  @override
+  String get s1ffb53e7f3 => 'Kameravalvonta (kv-paneeli)';
 
   @override
   String get s7a46c8c335 => 'Komentokanava';

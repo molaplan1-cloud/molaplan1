@@ -1,4 +1,5 @@
 import '../core/capabilities.dart';
+import '../core/home_network.dart';
 import 'measure_history.dart';
 import '../core/friendly_error.dart';
 import '../devices/climate.dart';
@@ -99,6 +100,8 @@ class AppState extends ChangeNotifier implements SyncHost {
     remote.bridgeInfo = () async => {
       'app': appVersion,
       'platform': Platform.operatingSystem,
+      'model': await update.platform.model(),
+      'nets': await localNets(), // t232u: lets a paired device verify it is on this LAN
       'deviceOwner': await update.platform.deviceOwner(),
       'autoUpdate': config.bridgeAutoUpdate,
       'lastUpdate': await update.platform.lastUpdate(),
@@ -837,6 +840,7 @@ class AppState extends ChangeNotifier implements SyncHost {
       'name': b.homeName,
       'platform': i['platform'],
       'app': i['app'],
+      'model': ?i['model'],
       'deviceOwner': i['deviceOwner'] == true,
       'grant': grant,
     };

@@ -43,7 +43,33 @@ class RemoteRouter {
   void Function()? onChange;
 
   bool get enabled => client != null;
-  bool get preferRemote => enabled && _remoteUntil != null && DateTime.now().isBefore(_remoteUntil!);
+
+  /// t232u: is this device on the home bridge's own network? null = not checked yet (LAN first,
+  /// as before); true = verified (same private network); false = another network, or the bridge
+  /// cannot tell (old version). Reachability of some local IP alone never means "at home":
+  /// with false everything goes through the bridge first and the status never says 'Kotona'.
+  bool? sameNetwork;
+  bool get awayFromBridge => enabled && sameNetwork == false;
+
+  /// Connections that only this device reaches (its own LAN devices while paired to another site).
+  final _localHere = <String, DateTime>{};
+
+  bool get preferRemote =>
+      enabled && (awayFromBridge || (_remoteUntil != null && DateTime.now().isBefore(_remoteUntil!)));
+
+  /// t232u: result of the network check (see RemoteState.checkHomeNetwork).
+  void applySameNetwork(bool v) {
+    sameNetwork = v;
+    if (!v && status == LinkStatus.home) _status(LinkStatus.remote);
+    if (v) _localHere.clear();
+    onChange?.call();
+  }
+
+  /// Watch streams: this connection answers on this device's own LAN (see [_localHere]).
+  bool localHere(String? key) {
+    final t = key == null ? null : _localHere[key];
+    return t != null && DateTime.now().isBefore(t);
+  }
 
   void _status(LinkStatus s) {
     if (status == s) return;
@@ -53,13 +79,32 @@ class RemoteRouter {
 
   void reset() {
     _remoteUntil = null;
+    sameNetwork = null;
+    _localHere.clear();
     status = null;
     onChange?.call();
   }
 
-  Future<T> run<T>(Future<T> Function() local, Future<T> Function(RemoteClient) remote) async {
+  Future<T> run<T>(Future<T> Function() local, Future<T> Function(RemoteClient) remote, {String? key}) async {
     final c = client;
     if (c == null) return local();
+    if (awayFromBridge) {
+      // Not on the bridge's network: the bridge first. A device the bridge cannot reach but this
+      // device can (its own LAN) still works, without claiming 'Kotona'.
+      if (localHere(key)) return local();
+      try {
+        return await _viaRemote(c, remote, null);
+      } catch (e) {
+        if (e is! RemoteDeviceError && e is! RemoteUnavailable) rethrow;
+        try {
+          final v = await local().timeout(localTimeout);
+          if (key != null) _localHere[key] = DateTime.now().add(const Duration(minutes: 10));
+          return v;
+        } catch (_) {
+          throw e;
+        }
+      }
+    }
     if (preferRemote) return _viaRemote(c, remote, null);
     Object localError;
     try {
@@ -87,7 +132,7 @@ class RemoteRouter {
   /// A LAN push value arrived: we are home.
   void markHome() {
     _remoteUntil = null;
-    if (enabled) _status(LinkStatus.home);
+    if (enabled && !awayFromBridge) _status(LinkStatus.home);
   }
 
   Future<T> _viaRemote<T>(RemoteClient c, Future<T> Function(RemoteClient) remote, Object? localError) async {
@@ -155,17 +200,18 @@ class RoutedDriver extends Driver {
 
   @override
   Future<Object?> read(Map<String, dynamic> spec) =>
-      router.run(() => inner.read(spec), (c) => c.call('read', conn: _wire(config), spec: spec));
+      router.run(() => inner.read(spec), (c) => c.call('read', conn: _wire(config), spec: spec), key: config.id);
 
   @override
   Future<Object?> send(Map<String, dynamic> spec, {Object? value}) => router.run(
     () => inner.send(spec, value: value),
     (c) => c.call('send', conn: _wire(config), spec: spec, value: value),
+    key: config.id,
   );
 
   @override
   Future<String> test() async {
-    final v = await router.run<Object?>(inner.test, (c) => c.call('test', conn: _wire(config)));
+    final v = await router.run<Object?>(inner.test, (c) => c.call('test', conn: _wire(config)), key: config.id);
     return router.status == LinkStatus.remote ? '$v (etäyhteys / remote)' : '$v';
   }
 
@@ -184,7 +230,7 @@ class RoutedDriver extends Driver {
         final v = await read(spec);
         if (closed) return;
         out.add(v);
-        if (!router.preferRemote && router.status == LinkStatus.home) {
+        if ((!router.preferRemote && router.status == LinkStatus.home) || router.localHere(config.id)) {
           poll?.cancel();
           poll = null;
           startLocal();
@@ -221,7 +267,7 @@ class RoutedDriver extends Driver {
     };
 
     out = StreamController<Object?>(
-      onListen: () => router.preferRemote ? startRemote() : startLocal(),
+      onListen: () => router.preferRemote && !router.localHere(config.id) ? startRemote() : startLocal(),
       onCancel: () async {
         closed = true;
         poll?.cancel();

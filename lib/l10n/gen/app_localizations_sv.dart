@@ -986,16 +986,16 @@ class AppLocalizationsSv extends AppLocalizations {
   String get scd04aa5d9e => 'Redigera utsikten';
 
   @override
-  String get se9ca7cb470 => 'Automatiseringar';
-
-  @override
-  String get s41bb837a83 => 'Meddelanden och påminnelser';
-
-  @override
   String get sf98121cd3d => 'Rum foto';
 
   @override
   String get s49de879696 => 'Energi';
+
+  @override
+  String get se9ca7cb470 => 'Automatiseringar';
+
+  @override
+  String get s41bb837a83 => 'Meddelanden och påminnelser';
 
   @override
   String get s1da81fd6c3 => 'Inställningar';
@@ -1110,14 +1110,30 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s6e1ebc8baa => 'Öppen mapp';
 
   @override
+  String get sa2e921ca79 =>
+      'Installera inställd. Du kan prova igen: Uppdatera.';
+
+  @override
+  String get s29e92898c6 =>
+      'Bekräfta installationen i Android-fönstret eller meddelandet.';
+
+  @override
+  String get sd1cdbd3630 => 'Installationen startade inte';
+
+  @override
+  String s21972e23c1(String p0, String p1) {
+    return 'Android började inte installera $p0.\n\nKontrollera att \"Tillåt från den här källan\" är på för Molaplan och tryck på Uppdatera igen. Du kan också ladda ner APK från releasesidan.\n\nDetalj: $p1';
+  }
+
+  @override
+  String get sa1bd8d2533 => 'Öppna inställningar';
+
+  @override
   String get sa065e7f650 => 'Tillåt att installera uppdateringar';
 
   @override
   String get sdc3bf71baf =>
       'Android ber en gång om tillstånd så att Molaplan kan installera sina egna uppdateringar.\n\nTryck på \"Öppna inställningar\".\nSlå på \"Tillåt från den här källan\".\nKom tillbaka och tryck på \"Uppdatera\" igen.';
-
-  @override
-  String get sa1bd8d2533 => 'Öppna inställningar';
 
   @override
   String get s441683b7a8 => 'Verifiera...';
@@ -2253,6 +2269,12 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sd54522fe39 => 'Router / surfzon';
 
   @override
+  String get s3294a9422d => 'Säkerhetspanel';
+
+  @override
+  String get sb97a2b7ed6 => 'ESP32-enhet';
+
+  @override
   String get s23f4820db7 => 'Inte kontrollerbar ännu';
 
   @override
@@ -2260,6 +2282,13 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get saae59a3865 => 'via hembryggan';
+
+  @override
+  String get sf226dd023a => 'Kontrollerad med ntfy-meddelanden';
+
+  @override
+  String get s0e6aa5168c =>
+      'om detta är en säkerhetspanel, lägg till den som en ntfy kommandoenhet';
 
   @override
   String get sdccd6e7f24 => 'Modell';
@@ -2280,7 +2309,13 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s1d5ed84aed => 'Sparas på den här enheten.';
 
   @override
+  String get s3e6dd6ff2d => 'Lägg till som kommandoenhet';
+
+  @override
   String get s59622d792b => 'Byt namn';
+
+  @override
+  String get sa0fccfbcab => 'via hembron';
 
   @override
   String get s1169d2d093 => 'Hitta enheter';
@@ -2312,6 +2347,14 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s9a018b8166 => 'Du är borta: hembron sökte ditt hemnätverk.';
+
+  @override
+  String get s55d0b95fd2 => 'Detta nätverk';
+
+  @override
+  String s955b44aaa4(String p0) {
+    return 'Dessa är på den här enhetens eget nätverk, inte på $p0. De läggs inte till i det hemmet.';
+  }
 
   @override
   String sf16a25c313(String p0) {
@@ -4838,30 +4881,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sa3e78d5c4e => 'Hembron svarar – fjärråtkomst fungerar.';
 
   @override
-  String get s0b57661c18 => 'Kontrollera ditt hem var som helst';
-
-  @override
-  String get sb43ef4094c =>
-      'Hemma pratar Molaplan med dina enheter direkt. På andra ställen krypteras det genom din hemmabro - ingen port vidarebefordran eller routerinställningar. Appen plockar rätt väg automatiskt.';
-
-  @override
-  String get se96e60e36c =>
-      'En hembro är någon Molaplan som alltid är hemma: en dator, en gammal surfplatta eller telefon, eller det separata broprogrammet på t.ex. en Raspberry Pi eller en Home Assistant-maskin. När du är borta, går telefonens kommandon igenom det till dina enheter, end-to-end krypterad. Ingenting att ställa in på routern (ingen port vidarebefordran).';
-
-  @override
-  String get s075e5a4864 => 'Ansluten till hemmet';
-
-  @override
-  String get sa7679488fb =>
-      'Hemma = direkt. Fjärr = genom hembron. Ingen anslutning = varken svar.';
-
-  @override
-  String get s19cec9667e => 'Test fjärråtkomst';
-
-  @override
-  String get s86ad95fa48 => 'Kopiera hemmets vyer';
-
-  @override
   String get sfaa5185b74 => 'Ta bort fjärråtkomst?';
 
   @override
@@ -4869,13 +4888,50 @@ class AppLocalizationsSv extends AppLocalizations {
       'Den här enheten kan sedan inte längre komma hem från utsidan. Du kan koppla ihop igen när som helst.';
 
   @override
+  String get s0b57661c18 => 'Kontrollera ditt hem var som helst';
+
+  @override
+  String get s07dc42dc7a =>
+      'Hemma pratar Molaplan med dina enheter direkt, någon annanstans krypterad genom din hembro. Ingenting att ställa in på routern.';
+
+  @override
+  String sdde4ff19ce(String p0) {
+    return 'Visa enheterna av $p0 här';
+  }
+
+  @override
+  String get sc5328cbb8f =>
+      'Kopiera hembroens vyer till den här enheten. Läsningar och kontroller går sedan igenom hembron.';
+
+  @override
+  String get s86ad95fa48 => 'Kopiera hemmets vyer';
+
+  @override
+  String get s9b8f1f4a7e => 'Lägg till en hembro';
+
+  @override
+  String get sa8c35b8bfb => 'Kom igång';
+
+  @override
+  String get s5683f9f7e4 =>
+      'En hembro är någon Molaplan som alltid finns hemma: en dator, en gammal surfplatta eller telefon, en Molaplan Bridge-enhet eller det separata broprogrammet. När du är borta, går kommandon genom den end-to-end krypterad.';
+
+  @override
+  String get sa75a955933 =>
+      'Hemma = den här enheten är på hemmabrons eget nätverk och pratar direkt med enheter. Remote = genom hemmabron. Ingen anslutning = varken svar.';
+
+  @override
+  String get s90460344ec =>
+      'Hembron är en gammal version och rapporterar inte sitt nätverk, så allt går igenom det. Uppdatera bron för att upptäcka hemma.';
+
+  @override
+  String get s19cec9667e => 'Test fjärråtkomst';
+
+  @override
   String get s3563cb1635 => 'Ta bort fjärråtkomst';
 
   @override
   String get s528c4f3a4c => 'Den här enheten är hembron';
-
-  @override
-  String get se7b8d659b5 => 'Avancerat';
 
   @override
   String get sfd263f3e04 => 'Kamera uppdateras när fjärrkontrollen';
@@ -4994,34 +5050,44 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sb9e406274e => 'Online online online';
 
   @override
-  String sd5fc9353f9(String p0) {
-    return 'äldre än 0.8.0 $p0 · ingen fjärruppdatering (uppdatering en gång på enheten)';
-  }
+  String get sb981e102f1 => 'gamla Molaplan (0.8.0 testbygge eller äldre)';
 
   @override
-  String get se9d573787e => ' tyst uppdatering: ja';
-
-  @override
-  String get s82043faaa4 => ' · tyst uppdatering: Nej';
-
-  @override
-  String get s42b97a989b => 'version okänd';
+  String get s706ee3ad91 => 'Uppdatera en gång på enheten';
 
   @override
   String get sca90c9c253 => ' (ingen referens på den här enheten)';
 
   @override
-  String get sfd88be2409 => 'Mitt hem broar';
+  String get s42b97a989b => 'version okänd';
+
+  @override
+  String get se76155b6bd => 'Uppdateringar tyst';
+
+  @override
+  String s20889b3dc9(String p0) {
+    return 'Uppdatera $p0 en gång på enheten';
+  }
+
+  @override
+  String get secbc1cfea3 =>
+      'Denna hembro kör en gammal Molaplan som inte kan uppdatera sig på distans ännu.\n\nEngångsuppdatering: Öppna Molaplan på bryggan → Inställningar → Kontrollera för uppdateringar → Uppdatera och godkänna installationen. Eller installera det senaste APK över USB.\n\nDärefter fungerar Update från den här listan på distans.';
+
+  @override
+  String get s356b6d4d13 => 'Hem broar';
 
   @override
   String get s57117babe8 => 'Uppdatera';
 
   @override
-  String get s40dab032ce =>
-      'Alla hembroar på ditt konto, även på andra webbplatser. Alltid via fjärrtjänsten.';
+  String get s5160bf55ae =>
+      'Öppna = använd det hemmet på den här enheten. Uppdatera = installera den senaste Molaplan på bron.';
 
   @override
   String get s9b2c8181e4 => 'Denna enhet';
+
+  @override
+  String get s902eaaff9f => 'Öppet Öppet Öppet Öppet Öppet';
 
   @override
   String get s72da730a42 => 'Fjärrservice: ansluten';
@@ -5905,9 +5971,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s0e655a209f => 'Lägg till ändå';
-
-  @override
-  String get s902eaaff9f => 'Öppet Öppet Öppet Öppet Öppet';
 
   @override
   String get s12c2f8e6e4 => 'Endast hemnätverket';
@@ -7225,13 +7288,13 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sb56e7e9f81 => 'ntfy: kommandot saknas';
 
   @override
-  String s09f79d4fda(String p0, String p1) {
-    return 'Inget svar (PIN?) - enheten svarade inte inom $p0 s (topiskt \"$p1\"). Kontrollera PIN: många enheter svarar inte på fel PIN alls.';
+  String s02e16b2c5c(String p0, String p1) {
+    return 'Kommandot skickades, men enheten svarade inte inom $p0 s - är enheten online? Kontrollera också PIN: många enheter svarar inte på fel PIN alls (topiskt \"$p1\").';
   }
 
   @override
-  String sf25dcf262f(String p0, String p1) {
-    return 'Enheten svarade inte inom $p0 s (topisk \"$p1\"). Om den svarar endast vid intervaller, öka \"Vänta på svar\" eller \"Minimum tid mellan kommandon\".';
+  String sdf4ecde616(String p0, String p1) {
+    return 'Kommandot skickades, men enheten svarade inte inom $p0 s - är enheten online? Om det svarar endast vid intervall, öka \"Minimum tid mellan kommandon\" (topisk \"$p1\").';
   }
 
   @override
@@ -7241,6 +7304,10 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sf03877dd0a => ' En PIN lagras.';
+
+  @override
+  String get s33cfb86f9f =>
+      'Kommandot skickades, men enheten svarade inte i tid - är enheten online? (Nfy-servern fungerar.)';
 
   @override
   String get s36fb6ba26f => 'Modbus TCP';
@@ -8186,6 +8253,19 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s120a222880 =>
       'En enhet som styrs med ntfy-meddelanden: on/off switchar, stat och PIN. Arbetar hemma och bort utan en hembro.';
+
+  @override
+  String get s6f139b5bcc => 'Preset';
+
+  @override
+  String get sa149146483 =>
+      'Kameraövervakning: ljus, siren, larm på / av / bekräftelse och stat. Ämnet och PIN är dina egna.';
+
+  @override
+  String get sb6b101dd23 => 'Egen enhet';
+
+  @override
+  String get s1ffb53e7f3 => 'Kameraövervakning (kv panel)';
 
   @override
   String get s7a46c8c335 => 'Kommandoämne';

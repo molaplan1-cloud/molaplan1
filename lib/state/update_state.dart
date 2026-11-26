@@ -50,6 +50,23 @@ class UpdatePlatform {
   Future<String> installUpdate(String path, String sha256) async =>
       await _svc.invokeMethod<String>('installUpdate', {'path': path, 'sha256': sha256}) ?? 'error';
 
+  /// t230u: device model for the bridge list ("HTC 5G Hub"; the host name on a PC).
+  Future<String?> model() async {
+    if (os == 'android') {
+      try {
+        return await _svc.invokeMethod<String>('model');
+      } catch (_) {
+        return null;
+      }
+    }
+    if (kIsWeb) return null;
+    try {
+      return Platform.localHostname;
+    } catch (_) {
+      return null;
+    }
+  }
+
   Future<String?> lastUpdate() async {
     if (os != 'android') return null;
     try {

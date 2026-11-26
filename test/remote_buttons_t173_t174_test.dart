@@ -140,14 +140,18 @@ void main() {
     await tester.pumpWidget(_app(st, const RemoteHubPage()));
     await tester.pumpAndSettle();
     expect(find.text('Etäkäyttö'), findsOneWidget);
-    expect(find.text('Mikä on kotisilta?'), findsOneWidget);
-    expect(find.textContaining('Raspberry Pi'), findsOneWidget);
-    expect(find.textContaining('ei porttiohjauksia'), findsOneWidget);
+    expect(find.textContaining('Mitään ei tarvitse säätää reitittimestä'), findsOneWidget);
+    // t231u: the explanation and status live under Edistyneet.
+    await tester.scrollUntilVisible(find.byKey(const ValueKey('remote-advanced')), 200, scrollable: find.byType(Scrollable).first);
+    await tester.tap(find.byKey(const ValueKey('remote-advanced')));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('remote-what')), findsOneWidget);
+    expect(find.textContaining('kotisiltaohjelma'), findsOneWidget);
     final status = tester.widget<Text>(find.byKey(const ValueKey('bridge-status-text'))).data!;
     expect(status, contains('ei vielä valittu'));
     expect(status, contains('Etäkäyttö ei ole käytössä'));
-    expect(find.byKey(const ValueKey('remote-bridge')), findsOneWidget);
-    expect(find.text('Tee tästä laitteesta kotisilta'), findsOneWidget);
+    expect(find.byKey(const ValueKey('remote-bridge'), skipOffstage: false), findsOneWidget);
+    expect(find.text('Tee tästä laitteesta kotisilta', skipOffstage: false), findsOneWidget);
   });
 
   testWidgets('t174u: away from home with LAN tiles and no bridge → one banner linking to Etäkäyttö', (tester) async {

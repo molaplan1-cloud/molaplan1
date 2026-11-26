@@ -874,15 +874,19 @@
  "@scd04aa5d9e": {
   "x-mt": true
  },
- "se9ca7cb470": "Automatizaciones",
- "@se9ca7cb470": {
-  "x-mt": true
- },
  "sf98121cd3d": "Imagen de la habitación",
  "@sf98121cd3d": {
   "x-mt": true
  },
  "s49de879696": "Energía",
+ "se9ca7cb470": "Automatizaciones",
+ "@se9ca7cb470": {
+  "x-mt": true
+ },
+ "s41bb837a83": "Notificaciones y recordatorios",
+ "@s41bb837a83": {
+  "x-mt": true
+ },
  "s1da81fd6c3": "Ajustes",
  "s365492a7d0": "Cierra la vista",
  "@s365492a7d0": {
@@ -999,6 +1003,23 @@
  "@s6e1ebc8baa": {
   "x-mt": true
  },
+ "sa2e921ca79": "Instalar cancelado. Puedes intentarlo de nuevo: Actualizar.",
+ "@sa2e921ca79": {
+  "x-mt": true
+ },
+ "s29e92898c6": "Confirme la instalación en la ventana Android o notificación.",
+ "@s29e92898c6": {
+  "x-mt": true
+ },
+ "sd1cdbd3630": "La instalación no comenzó",
+ "@sd1cdbd3630": {
+  "x-mt": true
+ },
+ "s21972e23c1": "Android no comenzó a instalar {p0}.\n\nCompruebe que \"Permitir de esta fuente\" está en para Molaplan y grifo Actualizar de nuevo. También puede descargar el APK de la página de lanzamiento.\n\nDetalle: {p1}",
+ "@s21972e23c1": {
+  "x-mt": true
+ },
+ "sa1bd8d2533": "Abrir ajustes",
  "sa065e7f650": "Permitir la instalación de actualizaciones",
  "@sa065e7f650": {
   "x-mt": true
@@ -1007,7 +1028,6 @@
  "@sdc3bf71baf": {
   "x-mt": true
  },
- "sa1bd8d2533": "Abrir ajustes",
  "s441683b7a8": "Verificante...",
  "@s441683b7a8": {
   "x-mt": true
@@ -1313,13 +1333,133 @@
   "x-mt": true
  },
  "sca7e088857": "Precio de la electricidad",
+ "s83f816fbe3": "Electricidad excepcionalmente costosa",
+ "@s83f816fbe3": {
+  "x-mt": true
+ },
  "s262f9527aa": "Previsión meteorológica",
  "@s262f9527aa": {
   "x-mt": true
  },
+ "sfc404aec8b": "Valor sensor",
+ "@sfc404aec8b": {
+  "x-mt": true
+ },
+ "s58d2896c42": "Estado del dispositivo",
+ "@s58d2896c42": {
+  "x-mt": true
+ },
+ "s7def336f41": "Hora o fecha",
+ "@s7def336f41": {
+  "x-mt": true
+ },
+ "sf80835a318": "Llegada (precalentamiento)",
+ "@sf80835a318": {
+  "x-mt": true
+ },
  "s9a37dbb58a": "mañana",
+ "s1fe084d61b": "hoy",
+ "@s1fe084d61b": {
+  "x-mt": true
+ },
+ "safd8f4dddf": "más alto",
+ "@safd8f4dddf": {
+  "x-mt": true
+ },
+ "s484731d968": "más bajo",
+ "@s484731d968": {
+  "x-mt": true
+ },
+ "s77f9bfc303": "promedio",
+ "@s77f9bfc303": {
+  "x-mt": true
+ },
+ "sc017c085e4": "(pick a device)",
+ "@sc017c085e4": {
+  "x-mt": true
+ },
+ "s3f09da81b6": "{p0}: promedio ≥ {p1} c o pico ≥ {p2} c o {p3}× el día anterior",
+ "@s3f09da81b6": {
+  "x-mt": true
+ },
  "s900c886f50": "{p0}  {p2} {p3} °C",
+ "s81c88dabf7": "{p0} not answering {p1} min",
+ "@s81c88dabf7": {
+  "x-mt": true
+ },
+ "s5414e9e5fd": "{p0} apagado",
+ "@s5414e9e5fd": {
+  "x-mt": true
+ },
+ "s09a43fc401": "{p0} turn on",
+ "@s09a43fc401": {
+  "x-mt": true
+ },
+ "s56ef33ee50": "llegada {p0} · recordatorio {p1} h antes · {p2} °C",
+ "@s56ef33ee50": {
+  "x-mt": true
+ },
+ "sdeb38e3907": "Mi notificación",
+ "@sdeb38e3907": {
+  "x-mt": true
+ },
+ "s5e9a552fe6": "Mi propia notificación",
+ "@s5e9a552fe6": {
+  "x-mt": true
+ },
+ "se2e6db5acc": "Cualquier condición y tu propio mensaje.",
+ "@se2e6db5acc": {
+  "x-mt": true
+ },
+ "sc6bec5e6cb": "Corre en este puente de inicio, también con la aplicación cerrada.",
+ "@sc6bec5e6cb": {
+  "x-mt": true
+ },
+ "se17e32a5c9": "El puente casero es más antiguo que 0.11.0: los recordatorios funcionan sólo mientras esta aplicación está abierta. Actualizar el puente (Acceso remoto → Mis puentes caseros).",
+ "@se17e32a5c9": {
+  "x-mt": true
+ },
+ "s5fd9e146bf": "Corre en el puente de inicio, también con la aplicación cerrada.",
+ "@s5fd9e146bf": {
+  "x-mt": true
+ },
+ "s563ba24005": "No hay puente casero: los recordatorios funcionan mientras la aplicación está abierta. Un puente casero los mantiene funcionando todo el tiempo.",
+ "@s563ba24005": {
+  "x-mt": true
+ },
+ "sf378d832a1": "Agregar recordatorio",
+ "@sf378d832a1": {
+  "x-mt": true
+ },
+ "s034093c675": "Obtenga una notificación cuando se cumple una condición: precio de electricidad (también mañana), pronóstico del tiempo, un valor sensor, un estado del dispositivo o un tiempo.",
+ "@s034093c675": {
+  "x-mt": true
+ },
+ "s49a26ce1f2": "Escoge una plantilla lista",
+ "@s49a26ce1f2": {
+  "x-mt": true
+ },
+ "sc0597b9029": "Últimas notificaciones",
+ "@sc0597b9029": {
+  "x-mt": true
+ },
+ "sac8af0108d": "Aún no hay notificaciones.",
+ "@sac8af0108d": {
+  "x-mt": true
+ },
  "sf4caddf894": "Avanzado",
+ "sbb2b4bdfc8": "Notificaciones de teléfono (nfy), horas tranquilas, mudo",
+ "@sbb2b4bdfc8": {
+  "x-mt": true
+ },
+ "s13d942a5a9": "Escoge un dispositivo.",
+ "@s13d942a5a9": {
+  "x-mt": true
+ },
+ "sac782d209c": "Aviso de prueba enviado.",
+ "@sac782d209c": {
+  "x-mt": true
+ },
  "s67584c9abf": "Dispositivo",
  "@s67584c9abf": {
   "x-mt": true
@@ -1327,23 +1467,115 @@
  "s140acccb81": "Hoy",
  "s0de6e75a52": "Mañana",
  "sbbf8b7a598": "Promedio",
+ "s43b4c610f8": "Más alto",
+ "@s43b4c610f8": {
+  "x-mt": true
+ },
+ "s9dd0f70be6": "Lo más bajo",
+ "@s9dd0f70be6": {
+  "x-mt": true
+ },
  "scd65d31d4c": "Limitación",
  "@scd65d31d4c": {
   "x-mt": true
  },
+ "s543838d91f": "Promedio por lo menos",
+ "@s543838d91f": {
+  "x-mt": true
+ },
+ "s087a7e1b24": "o pico al menos",
+ "@s087a7e1b24": {
+  "x-mt": true
+ },
+ "s8463e08e0b": "o × el promedio del día anterior",
+ "@s8463e08e0b": {
+  "x-mt": true
+ },
+ "sd8332d82ec": "Min",
+ "@sd8332d82ec": {
+  "x-mt": true
+ },
+ "s109b35551a": "Max",
+ "@s109b35551a": {
+  "x-mt": true
+ },
  "sf2c65c5aeb": "Promedio",
+ "s68b942c864": "Establecer la ubicación de la casa (Energía → Ajustes) para el pronóstico.",
+ "@s68b942c864": {
+  "x-mt": true
+ },
  "s38ac222392": "Valor",
  "s4cd3d92d4c": "Encendido",
  "sa8e43f2b0e": "Sin conexión",
+ "s65f512f499": "Cuando está fuera de línea",
+ "@s65f512f499": {
+  "x-mt": true
+ },
+ "sa224d2f5f9": "Hora",
+ "@sa224d2f5f9": {
+  "x-mt": true
+ },
+ "s96b7e2c62c": "Todos los días (pick a date for once)",
+ "@s96b7e2c62c": {
+  "x-mt": true
+ },
+ "s593004184e": "Llegada",
+ "@s593004184e": {
+  "x-mt": true
+ },
+ "sa9faf47356": "Recordad antes",
+ "@sa9faf47356": {
+  "x-mt": true
+ },
  "sf527ec4275": "Temperatura objetivo",
+ "s009a96409a": "Nuevo recordatorio",
+ "@s009a96409a": {
+  "x-mt": true
+ },
+ "sb346b2b647": "Recordatorio",
+ "@sb346b2b647": {
+  "x-mt": true
+ },
  "sc1845eb440": "Eliminar",
  "sb1924acbe7": "Nombre",
  "s5506524eac": "Cuándo",
  "@s5506524eac": {
   "x-mt": true
  },
+ "s86c5d7fa73": "Mensaje",
+ "@s86c5d7fa73": {
+  "x-mt": true
+ },
+ "s8dda7ee75e": "'Puedes usar: {avg} {max} { min} {h} {valor} {target} {arrival} {date}'",
+ "@s8dda7ee75e": {
+  "x-mt": true
+ },
+ "sec1bdb2451": "También a los teléfonos (nfy)",
+ "@sec1bdb2451": {
+  "x-mt": true
+ },
+ "se2de73b535": "Siempre se muestra en la aplicación también.",
+ "@se2de73b535": {
+  "x-mt": true
+ },
  "sd84d87d156": "Prioridad",
  "@sd84d87d156": {
+  "x-mt": true
+ },
+ "s7a09198c53": "5 (también en horas tranquilas)",
+ "@s7a09198c53": {
+  "x-mt": true
+ },
+ "se8e58d6206": "No otra vez dentro",
+ "@se8e58d6206": {
+  "x-mt": true
+ },
+ "s7d773a4dc9": "No antes",
+ "@s7d773a4dc9": {
+  "x-mt": true
+ },
+ "sb86dc1b7bf": "Prueba",
+ "@sb86dc1b7bf": {
   "x-mt": true
  },
  "sfb4df77773": "Dale un nombre al botón.",
@@ -1821,6 +2053,14 @@
  "s76a76a654e": "Punto de acceso del iPhone",
  "s15d4ca1672": "Punto de acceso del teléfono",
  "sd54522fe39": "Router / punto de acceso",
+ "s3294a9422d": "Panel de seguridad",
+ "@s3294a9422d": {
+  "x-mt": true
+ },
+ "sb97a2b7ed6": "Dispositivo ESP32",
+ "@sb97a2b7ed6": {
+  "x-mt": true
+ },
  "s23f4820db7": "no controlable todavía",
  "@s23f4820db7": {
   "x-mt": true
@@ -1831,6 +2071,14 @@
  },
  "saae59a3865": "via casa puente",
  "@saae59a3865": {
+  "x-mt": true
+ },
+ "sf226dd023a": "controlado con mensajes de ntfy",
+ "@sf226dd023a": {
+  "x-mt": true
+ },
+ "s0e6aa5168c": "si es un panel de seguridad, agréguelo como un dispositivo de comando ntfy",
+ "@s0e6aa5168c": {
   "x-mt": true
  },
  "sdccd6e7f24": "Modelo",
@@ -1845,7 +2093,15 @@
  },
  "sbc46a05125": "Nombrar el dispositivo",
  "s1d5ed84aed": "Se recuerda en este dispositivo.",
+ "s3e6dd6ff2d": "Agregar como dispositivo de comando",
+ "@s3e6dd6ff2d": {
+  "x-mt": true
+ },
  "s59622d792b": "Renombrar",
+ "sa0fccfbcab": "a través del puente casero",
+ "@sa0fccfbcab": {
+  "x-mt": true
+ },
  "s1169d2d093": "Buscar dispositivos",
  "s55b85f29a6": "Búsqueda de su red...",
  "@s55b85f29a6": {
@@ -1871,6 +2127,14 @@
  "se3ef5a5658": "Escanear Modbus",
  "s9a018b8166": "Usted está lejos: el puente de la casa registró su red de la casa.",
  "@s9a018b8166": {
+  "x-mt": true
+ },
+ "s55d0b95fd2": "Esta red",
+ "@s55d0b95fd2": {
+  "x-mt": true
+ },
+ "s955b44aaa4": "Estos están en la propia red de este dispositivo, no en {p0}. No se añaden a esa casa.",
+ "@s955b44aaa4": {
   "x-mt": true
  },
  "sf16a25c313": "Otros dispositivos en la red ({p0})",
@@ -4520,37 +4784,56 @@
  "@sa3e78d5c4e": {
   "x-mt": true
  },
- "s0b57661c18": "Controla tu hogar desde cualquier lugar",
- "@s0b57661c18": {
-  "x-mt": true
- },
- "sb43ef4094c": "En casa Molaplan habla directamente con sus dispositivos. En otro lugar se encripta a través de su puente de inicio – ningún puerto de reenvío o configuración de router. La aplicación elige el camino correcto automáticamente.",
- "@sb43ef4094c": {
-  "x-mt": true
- },
- "se96e60e36c": "Un puente casero es cualquier Molaplan que siempre está en casa: un PC, una vieja tableta o teléfono, o el programa de puentes separado en por ejemplo un Raspberry Pi o una máquina Home Assistant. Cuando usted está lejos, los comandos de su teléfono pasan a través de él a sus dispositivos, encriptado de extremo a extremo. Nada para configurar en el router (sin reenvío de puerto).",
- "@se96e60e36c": {
-  "x-mt": true
- },
- "s075e5a4864": "Conectado a casa",
- "sa7679488fb": "En casa = directamente. Remoto = a través del puente casero. Sin conexión = ni respuestas.",
- "@sa7679488fb": {
-  "x-mt": true
- },
- "s19cec9667e": "Acceso remoto de prueba",
- "@s19cec9667e": {
-  "x-mt": true
- },
- "s86ad95fa48": "Copiar los tableros caseros",
- "@s86ad95fa48": {
-  "x-mt": true
- },
  "sfaa5185b74": "¿Eliminar el acceso remoto?",
  "@sfaa5185b74": {
   "x-mt": true
  },
  "sbc44ce6993": "Este dispositivo ya no puede llegar a casa desde fuera. Puedes emparejar de nuevo en cualquier momento.",
  "@sbc44ce6993": {
+  "x-mt": true
+ },
+ "s0b57661c18": "Controla tu hogar desde cualquier lugar",
+ "@s0b57661c18": {
+  "x-mt": true
+ },
+ "s07dc42dc7a": "En casa Molaplan habla con sus dispositivos directamente, en otro lugar encriptado a través de su puente de inicio. Nada que configurar en el router.",
+ "@s07dc42dc7a": {
+  "x-mt": true
+ },
+ "sdde4ff19ce": "Mostrar los dispositivos de {p0} aquí",
+ "@sdde4ff19ce": {
+  "x-mt": true
+ },
+ "sc5328cbb8f": "Copia las vistas del puente casero a este dispositivo. Lecturas y controles luego pasan por el puente casero.",
+ "@sc5328cbb8f": {
+  "x-mt": true
+ },
+ "s86ad95fa48": "Copiar los tableros caseros",
+ "@s86ad95fa48": {
+  "x-mt": true
+ },
+ "s9b8f1f4a7e": "Añadir un puente casero",
+ "@s9b8f1f4a7e": {
+  "x-mt": true
+ },
+ "sa8c35b8bfb": "Empieza",
+ "@sa8c35b8bfb": {
+  "x-mt": true
+ },
+ "s5683f9f7e4": "Un puente casero es cualquier Molaplan que siempre está en casa: un PC, una vieja tableta o teléfono, un dispositivo Molaplan Bridge o el programa puente separado. Cuando usted está lejos, los comandos pasan a través de él encriptado de extremo a extremo.",
+ "@s5683f9f7e4": {
+  "x-mt": true
+ },
+ "sa75a955933": "En casa = este dispositivo está en la propia red del puente de inicio y habla con dispositivos directamente. Remoto = a través del puente de inicio. Ninguna conexión = ni respuestas.",
+ "@sa75a955933": {
+  "x-mt": true
+ },
+ "s90460344ec": "El puente casero es una versión antigua y no reporta su red, por lo que todo pasa a través de ella. Actualizar el puente para detectar En casa.",
+ "@s90460344ec": {
+  "x-mt": true
+ },
+ "s19cec9667e": "Acceso remoto de prueba",
+ "@s19cec9667e": {
   "x-mt": true
  },
  "s3563cb1635": "Eliminar el acceso remoto",
@@ -4561,7 +4844,6 @@
  "@s528c4f3a4c": {
   "x-mt": true
  },
- "se7b8d659b5": "Avanzado",
  "sfd263f3e04": "Refrigerio de la cámara cuando está remoto",
  "@sfd263f3e04": {
   "x-mt": true
@@ -4671,37 +4953,49 @@
  "@sb9e406274e": {
   "x-mt": true
  },
- "sd5fc9353f9": "mayor que 0.8.0 · {p0} · ninguna actualización remota (actualizar una vez en el dispositivo)",
- "@sd5fc9353f9": {
+ "sb981e102f1": "viejo Molaplan (0.8.0 test build or older)",
+ "@sb981e102f1": {
   "x-mt": true
  },
- "se9d573787e": " · actualización silenciosa: sí",
- "@se9d573787e": {
-  "x-mt": true
- },
- "s82043faaa4": " · actualización silenciosa: no",
- "@s82043faaa4": {
-  "x-mt": true
- },
- "s42b97a989b": "versión desconocida",
- "@s42b97a989b": {
+ "s706ee3ad91": "actualizar una vez en el dispositivo",
+ "@s706ee3ad91": {
   "x-mt": true
  },
  "sca90c9c253": " (sin credencial en este dispositivo)",
  "@sca90c9c253": {
   "x-mt": true
  },
- "sfd88be2409": "Mis puentes de casa",
- "@sfd88be2409": {
+ "s42b97a989b": "versión desconocida",
+ "@s42b97a989b": {
+  "x-mt": true
+ },
+ "se76155b6bd": "actualizaciones silenciosamente",
+ "@se76155b6bd": {
+  "x-mt": true
+ },
+ "s20889b3dc9": "Actualizar {p0} una vez en el dispositivo",
+ "@s20889b3dc9": {
+  "x-mt": true
+ },
+ "secbc1cfea3": "Este puente de casa corre un viejo Molaplan que no puede actualizarse a distancia todavía.\n\nActualización de una sola vez: abrir Molaplan en el dispositivo de puente → Ajustes → Consultar actualizaciones → Actualizar y aprobar la instalación. O instalar el último APK sobre USB.\n\nDespués de eso, Update funciona desde esta lista de forma remota.",
+ "@secbc1cfea3": {
+  "x-mt": true
+ },
+ "s356b6d4d13": "Puentes caseros",
+ "@s356b6d4d13": {
   "x-mt": true
  },
  "s57117babe8": "Actualizar",
- "s40dab032ce": "Todos los puentes caseros de su cuenta, también en otros sitios. Siempre a través del servicio remoto.",
- "@s40dab032ce": {
+ "s5160bf55ae": "Abrir = usar esa casa en este dispositivo. Actualizar = instalar el último Molaplan en el puente.",
+ "@s5160bf55ae": {
   "x-mt": true
  },
  "s9b2c8181e4": "este dispositivo",
  "@s9b2c8181e4": {
+  "x-mt": true
+ },
+ "s902eaaff9f": "Abierto",
+ "@s902eaaff9f": {
   "x-mt": true
  },
  "s72da730a42": "Servicio remoto: conectado",
@@ -5503,10 +5797,6 @@
   "x-mt": true
  },
  "s0e655a209f": "Añadir de todos modos",
- "s902eaaff9f": "Abierto",
- "@s902eaaff9f": {
-  "x-mt": true
- },
  "s12c2f8e6e4": "Solo en la red de casa",
  "s5f7c464e6d": "a las {p0}",
  "s21b64ae0a7": "{p0} solo funciona en la red de casa. El recuadro vuelve a la normalidad solo cuando estés de nuevo en casa.",
@@ -6745,14 +7035,6 @@
  "@sb56e7e9f81": {
   "x-mt": true
  },
- "s09f79d4fda": "No hay respuesta (PIN?) – el dispositivo no respondió dentro {p0} s (topic \"{p1}\"). Compruebe el PIN: muchos dispositivos no responden a un PIN equivocado en absoluto.",
- "@s09f79d4fda": {
-  "x-mt": true
- },
- "sf25dcf262f": "El dispositivo no respondió dentro {p0} s (topic \"{p1}\"). Si sólo responde a intervalos, aumenta \"Esperar respuesta\" o \"Tiempo mínimo entre comandos\".",
- "@sf25dcf262f": {
-  "x-mt": true
- },
  "s1257447096": "El dispositivo respondió: {p0}",
  "@s1257447096": {
   "x-mt": true
@@ -7052,7 +7334,15 @@
   "x-mt": true
  },
  "s1dfeacd9f6": "UDP",
+ "s6c33f19716": "no contesta ({p0} min)",
+ "@s6c33f19716": {
+  "x-mt": true
+ },
  "scebcdabe25": "apagado",
+ "sd4be8bca5f": "Prueba",
+ "@sd4be8bca5f": {
+  "x-mt": true
+ },
  "sd76aadb97c": "Filtro de agua → alarma",
  "@sd76aadb97c": {
   "x-mt": true
@@ -7138,7 +7428,43 @@
  "@sc797ab9c4c": {
   "x-mt": true
  },
+ "seec5bf7f8d": "'Mañana la electricidad promedio {avg} c/kWh (peak {max} a {hora}). Enciende la chimenea.'",
+ "@seec5bf7f8d": {
+  "x-mt": true
+ },
+ "s4a7ea7d7f1": "'La electricidad es excepcionalmente caro hoy: promedio {avg} c/kWh, pico {max} a {hora}.'",
+ "@s4a7ea7d7f1": {
+  "x-mt": true
+ },
+ "se8a2912e3e": "'La electricidad es excepcionalmente costosa mañana: promedio {avg} c/kWh, pico {max} a {hora}.'",
+ "@se8a2912e3e": {
+  "x-mt": true
+ },
+ "s0818fd54b1": "'Llegando a la cabaña {arrival}. Enciende la calefacción ahora, blanco {target} °C.'",
+ "@s0818fd54b1": {
+  "x-mt": true
+ },
+ "s57aad0f6c3": "'Mañana: promedio {avg} c/kWh, pico {max} a {hora}.'",
+ "@s57aad0f6c3": {
+  "x-mt": true
+ },
+ "s05394a7333": "'Hoy: promedio {avg} c/kWh, pico {max} a {hora}.'",
+ "@s05394a7333": {
+  "x-mt": true
+ },
+ "s412e06dba4": "'Electricidad excepcionalmente costosa {fecha}: promedio {avg} c/kWh, pico {max} a {hora}.'",
+ "@s412e06dba4": {
+  "x-mt": true
+ },
+ "s7f8a4ab629": "'Predicción {fecha}: {temp} °C.'",
+ "@s7f8a4ab629": {
+  "x-mt": true
+ },
  "s326f105e40": "'{tile}: {value}'",
+ "s65afe3ff6f": "'Conduciendo {arrival}. Enciende la calefacción, blanco {target} °C.'",
+ "@s65afe3ff6f": {
+  "x-mt": true
+ },
  "scec02139b6": "Tarjeta desaparecida",
  "@scec02139b6": {
   "x-mt": true
@@ -7856,264 +8182,32 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "s41bb837a83": "Notificaciones y recordatorios",
- "@s41bb837a83": {
+ "s02e16b2c5c": "El comando fue enviado, pero el dispositivo no respondió dentro {p0} s - es el dispositivo en línea? También comprobar el PIN: muchos dispositivos no responden a un PIN equivocado en absoluto (topic \"{p1}\").",
+ "@s02e16b2c5c": {
   "x-mt": true
  },
- "s83f816fbe3": "Electricidad excepcionalmente costosa",
- "@s83f816fbe3": {
+ "sdf4ecde616": "El comando fue enviado, pero el dispositivo no respondió dentro {p0} s - es el dispositivo en línea? Si responde sólo a intervalos, aumentar \"Tiempo mínimo entre comandos\" (tema \"{p1}\").",
+ "@sdf4ecde616": {
   "x-mt": true
  },
- "sfc404aec8b": "Valor sensor",
- "@sfc404aec8b": {
+ "s33cfb86f9f": "El comando fue enviado, pero el dispositivo no respondió en el tiempo – ¿está el dispositivo en línea? (El servidor ntfy funciona.)",
+ "@s33cfb86f9f": {
   "x-mt": true
  },
- "s58d2896c42": "Estado del dispositivo",
- "@s58d2896c42": {
+ "s6f139b5bcc": "Preset",
+ "@s6f139b5bcc": {
   "x-mt": true
  },
- "s7def336f41": "Hora o fecha",
- "@s7def336f41": {
+ "sa149146483": "Vigilancia de la cámara: luces, sirena, alarma en/off/acknowledge y estado. Tema y PIN son suyos.",
+ "@sa149146483": {
   "x-mt": true
  },
- "sf80835a318": "Llegada (precalentamiento)",
- "@sf80835a318": {
+ "sb6b101dd23": "Dispositivo propio",
+ "@sb6b101dd23": {
   "x-mt": true
  },
- "s1fe084d61b": "hoy",
- "@s1fe084d61b": {
-  "x-mt": true
- },
- "safd8f4dddf": "más alto",
- "@safd8f4dddf": {
-  "x-mt": true
- },
- "s484731d968": "más bajo",
- "@s484731d968": {
-  "x-mt": true
- },
- "s77f9bfc303": "promedio",
- "@s77f9bfc303": {
-  "x-mt": true
- },
- "sc017c085e4": "(pick a device)",
- "@sc017c085e4": {
-  "x-mt": true
- },
- "s3f09da81b6": "{p0}: promedio ≥ {p1} c o pico ≥ {p2} c o {p3}× el día anterior",
- "@s3f09da81b6": {
-  "x-mt": true
- },
- "s81c88dabf7": "{p0} not answering {p1} min",
- "@s81c88dabf7": {
-  "x-mt": true
- },
- "s5414e9e5fd": "{p0} apagado",
- "@s5414e9e5fd": {
-  "x-mt": true
- },
- "s09a43fc401": "{p0} turn on",
- "@s09a43fc401": {
-  "x-mt": true
- },
- "s56ef33ee50": "llegada {p0} · recordatorio {p1} h antes · {p2} °C",
- "@s56ef33ee50": {
-  "x-mt": true
- },
- "sdeb38e3907": "Mi notificación",
- "@sdeb38e3907": {
-  "x-mt": true
- },
- "s5e9a552fe6": "Mi propia notificación",
- "@s5e9a552fe6": {
-  "x-mt": true
- },
- "se2e6db5acc": "Cualquier condición y tu propio mensaje.",
- "@se2e6db5acc": {
-  "x-mt": true
- },
- "sc6bec5e6cb": "Corre en este puente de inicio, también con la aplicación cerrada.",
- "@sc6bec5e6cb": {
-  "x-mt": true
- },
- "se17e32a5c9": "El puente casero es más antiguo que 0.11.0: los recordatorios funcionan sólo mientras esta aplicación está abierta. Actualizar el puente (Acceso remoto → Mis puentes caseros).",
- "@se17e32a5c9": {
-  "x-mt": true
- },
- "s5fd9e146bf": "Corre en el puente de inicio, también con la aplicación cerrada.",
- "@s5fd9e146bf": {
-  "x-mt": true
- },
- "s563ba24005": "No hay puente casero: los recordatorios funcionan mientras la aplicación está abierta. Un puente casero los mantiene funcionando todo el tiempo.",
- "@s563ba24005": {
-  "x-mt": true
- },
- "sf378d832a1": "Agregar recordatorio",
- "@sf378d832a1": {
-  "x-mt": true
- },
- "s034093c675": "Obtenga una notificación cuando se cumple una condición: precio de electricidad (también mañana), pronóstico del tiempo, un valor sensor, un estado del dispositivo o un tiempo.",
- "@s034093c675": {
-  "x-mt": true
- },
- "s49a26ce1f2": "Escoge una plantilla lista",
- "@s49a26ce1f2": {
-  "x-mt": true
- },
- "sc0597b9029": "Últimas notificaciones",
- "@sc0597b9029": {
-  "x-mt": true
- },
- "sac8af0108d": "Aún no hay notificaciones.",
- "@sac8af0108d": {
-  "x-mt": true
- },
- "sbb2b4bdfc8": "Notificaciones de teléfono (nfy), horas tranquilas, mudo",
- "@sbb2b4bdfc8": {
-  "x-mt": true
- },
- "s13d942a5a9": "Escoge un dispositivo.",
- "@s13d942a5a9": {
-  "x-mt": true
- },
- "sac782d209c": "Aviso de prueba enviado.",
- "@sac782d209c": {
-  "x-mt": true
- },
- "s43b4c610f8": "Más alto",
- "@s43b4c610f8": {
-  "x-mt": true
- },
- "s9dd0f70be6": "Lo más bajo",
- "@s9dd0f70be6": {
-  "x-mt": true
- },
- "s543838d91f": "Promedio por lo menos",
- "@s543838d91f": {
-  "x-mt": true
- },
- "s087a7e1b24": "o pico al menos",
- "@s087a7e1b24": {
-  "x-mt": true
- },
- "s8463e08e0b": "o × el promedio del día anterior",
- "@s8463e08e0b": {
-  "x-mt": true
- },
- "sd8332d82ec": "Min",
- "@sd8332d82ec": {
-  "x-mt": true
- },
- "s109b35551a": "Max",
- "@s109b35551a": {
-  "x-mt": true
- },
- "s68b942c864": "Establecer la ubicación de la casa (Energía → Ajustes) para el pronóstico.",
- "@s68b942c864": {
-  "x-mt": true
- },
- "s65f512f499": "Cuando está fuera de línea",
- "@s65f512f499": {
-  "x-mt": true
- },
- "sa224d2f5f9": "Hora",
- "@sa224d2f5f9": {
-  "x-mt": true
- },
- "s96b7e2c62c": "Todos los días (pick a date for once)",
- "@s96b7e2c62c": {
-  "x-mt": true
- },
- "s593004184e": "Llegada",
- "@s593004184e": {
-  "x-mt": true
- },
- "sa9faf47356": "Recordad antes",
- "@sa9faf47356": {
-  "x-mt": true
- },
- "s009a96409a": "Nuevo recordatorio",
- "@s009a96409a": {
-  "x-mt": true
- },
- "sb346b2b647": "Recordatorio",
- "@sb346b2b647": {
-  "x-mt": true
- },
- "s86c5d7fa73": "Mensaje",
- "@s86c5d7fa73": {
-  "x-mt": true
- },
- "s8dda7ee75e": "'Puedes usar: {avg} {max} { min} {h} {valor} {target} {arrival} {date}'",
- "@s8dda7ee75e": {
-  "x-mt": true
- },
- "sec1bdb2451": "También a los teléfonos (nfy)",
- "@sec1bdb2451": {
-  "x-mt": true
- },
- "se2de73b535": "Siempre se muestra en la aplicación también.",
- "@se2de73b535": {
-  "x-mt": true
- },
- "s7a09198c53": "5 (también en horas tranquilas)",
- "@s7a09198c53": {
-  "x-mt": true
- },
- "se8e58d6206": "No otra vez dentro",
- "@se8e58d6206": {
-  "x-mt": true
- },
- "s7d773a4dc9": "No antes",
- "@s7d773a4dc9": {
-  "x-mt": true
- },
- "sb86dc1b7bf": "Prueba",
- "@sb86dc1b7bf": {
-  "x-mt": true
- },
- "s6c33f19716": "no contesta ({p0} min)",
- "@s6c33f19716": {
-  "x-mt": true
- },
- "sd4be8bca5f": "Prueba",
- "@sd4be8bca5f": {
-  "x-mt": true
- },
- "seec5bf7f8d": "'Mañana la electricidad promedio {avg} c/kWh (peak {max} a {hora}). Enciende la chimenea.'",
- "@seec5bf7f8d": {
-  "x-mt": true
- },
- "s4a7ea7d7f1": "'La electricidad es excepcionalmente caro hoy: promedio {avg} c/kWh, pico {max} a {hora}.'",
- "@s4a7ea7d7f1": {
-  "x-mt": true
- },
- "se8a2912e3e": "'La electricidad es excepcionalmente costosa mañana: promedio {avg} c/kWh, pico {max} a {hora}.'",
- "@se8a2912e3e": {
-  "x-mt": true
- },
- "s0818fd54b1": "'Llegando a la cabaña {arrival}. Enciende la calefacción ahora, blanco {target} °C.'",
- "@s0818fd54b1": {
-  "x-mt": true
- },
- "s57aad0f6c3": "'Mañana: promedio {avg} c/kWh, pico {max} a {hora}.'",
- "@s57aad0f6c3": {
-  "x-mt": true
- },
- "s05394a7333": "'Hoy: promedio {avg} c/kWh, pico {max} a {hora}.'",
- "@s05394a7333": {
-  "x-mt": true
- },
- "s412e06dba4": "'Electricidad excepcionalmente costosa {fecha}: promedio {avg} c/kWh, pico {max} a {hora}.'",
- "@s412e06dba4": {
-  "x-mt": true
- },
- "s7f8a4ab629": "'Predicción {fecha}: {temp} °C.'",
- "@s7f8a4ab629": {
-  "x-mt": true
- },
- "s65afe3ff6f": "'Conduciendo {arrival}. Enciende la calefacción, blanco {target} °C.'",
- "@s65afe3ff6f": {
+ "s1ffb53e7f3": "Vigilancia de la cámara (panel kv)",
+ "@s1ffb53e7f3": {
   "x-mt": true
  }
 }

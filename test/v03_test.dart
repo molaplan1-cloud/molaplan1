@@ -254,6 +254,11 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('Ohjaa kotia myös kodin ulkopuolelta'), findsOneWidget);
       expect(find.byKey(const ValueKey('remote-pair')), findsOneWidget);
+      // t231u: 'Muut tavat' is under Edistyneet.
+      await tester.scrollUntilVisible(find.byKey(const ValueKey('remote-advanced')), 200, scrollable: find.byType(Scrollable).first);
+      await tester.tap(find.byKey(const ValueKey('remote-advanced')));
+      await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(find.byKey(const ValueKey('remote-guides')), 200, scrollable: find.byType(Scrollable).first);
       await tester.tap(find.byKey(const ValueKey('remote-guides')));
       await tester.pumpAndSettle();
       for (final id in ['tailscale', 'wireguard', 'nabucasa', 'hivemq']) {
@@ -305,7 +310,9 @@ void main() {
       expect(find.text('Ei yhteyttä'), findsOneWidget);
       await tester.tap(find.byKey(const ValueKey('remote-status')));
       await tester.pumpAndSettle();
-      expect(find.text('Yhdistetty kotiin: Mökki'), findsOneWidget);
+      // t231u: the paired home is a row of the one bridge list.
+      expect(find.byKey(const ValueKey('own-bridges')), findsOneWidget);
+      expect(find.text('Mökki'), findsOneWidget);
       await tester.pumpWidget(const SizedBox());
     });
 

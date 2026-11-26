@@ -16,6 +16,7 @@ import '../remote/executor.dart';
 import '../remote/protocol.dart';
 import '../remote/remote_client.dart';
 import '../remote/router.dart';
+import '../core/home_network.dart';
 import 'stores.dart';
 
 /// t224u: one row of 'Omat kotisillat'. [grant] = a client credential for the relay (null when
@@ -72,7 +73,53 @@ class RemoteState extends ChangeNotifier {
   LinkStatus? get status => router.status;
   RemoteLink? get clientLink => router.client?.link;
 
+  /// Off by default so tests never touch the relay; main() turns it on.
+  bool autoNetworkCheck = false;
+
+  /// t232u: the bridge did not report its networks (older than 0.11.1), so 'Kotona' cannot be verified.
+  bool homeNetworkUnverified = false;
+  bool _netChecking = false;
+
+  /// Is this device on the paired bridge's own LAN? Asks the bridge (always via the relay) for its
+  /// private networks and compares them with this device's. Not on it -> the router goes through
+  /// the bridge first and the status never says 'Kotona'.
+  Future<bool?> checkHomeNetwork({List<String>? mine}) async {
+    final c = router.client;
+    if (c == null || _netChecking) return router.sameNetwork;
+    _netChecking = true;
+    try {
+      final i = await bridgeInfoVia(c);
+      final theirs = (i?['nets'] as List?)?.map((e) => '$e').toList();
+      homeNetworkUnverified = theirs == null;
+      router.bridgeSeen = DateTime.now();
+      router.applySameNetwork(sameHomeNetwork(mine ?? await localNets(), theirs));
+    } catch (_) {
+      // Bridge not reachable: keep the previous answer.
+    } finally {
+      _netChecking = false;
+    }
+    _changed();
+    return router.sameNetwork;
+  }
+
+  /// t232u: homes whose dashboards were copied to this device (the 'Näytä kodin laitteet täällä'
+  /// card is shown until then).
+  final Set<String> copiedHomes = {};
+  static const _copiedKey = 'molaplan.remote.copied';
+
+  Future<void> markCopied(String home) async {
+    if (!copiedHomes.add(home)) return;
+    try {
+      await store.write(_copiedKey, jsonEncode(copiedHomes.toList()));
+    } catch (_) {}
+    _changed();
+  }
+
   Future<void> load({bool startBridge = false}) async {
+    try {
+      final raw = await store.read(_copiedKey);
+      if (raw != null) copiedHomes.addAll((jsonDecode(raw) as List).map((e) => '$e'));
+    } catch (_) {}
     paired = await PairedHome.load(store);
     if (paired != null) _setClient(RemoteClient(paired!));
     if (startBridge) await enableBridge();
@@ -85,6 +132,8 @@ class RemoteState extends ChangeNotifier {
     router.reset();
     if (old != null) unawaited(old.dispose());
     _clientSub = c?.changes.listen((_) => _changed());
+    homeNetworkUnverified = false;
+    if (c != null && autoNetworkCheck) unawaited(checkHomeNetwork());
   }
 
   /// Pairs this device with a home bridge (QR [invite] or typed [code]).

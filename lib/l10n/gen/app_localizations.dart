@@ -1820,18 +1820,6 @@ abstract class AppLocalizations {
   /// **'Edit the view'**
   String get scd04aa5d9e;
 
-  /// fi: Automaatiot
-  ///
-  /// In en, this message translates to:
-  /// **'Automations'**
-  String get se9ca7cb470;
-
-  /// fi: Ilmoitukset ja muistutukset
-  ///
-  /// In en, this message translates to:
-  /// **'Notifications and reminders'**
-  String get s41bb837a83;
-
   /// fi: Huoneen kuva
   ///
   /// In en, this message translates to:
@@ -1843,6 +1831,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Energy'**
   String get s49de879696;
+
+  /// fi: Automaatiot
+  ///
+  /// In en, this message translates to:
+  /// **'Automations'**
+  String get se9ca7cb470;
+
+  /// fi: Ilmoitukset ja muistutukset
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications and reminders'**
+  String get s41bb837a83;
 
   /// fi: Asetukset
   ///
@@ -2041,6 +2041,38 @@ abstract class AppLocalizations {
   /// **'Open folder'**
   String get s6e1ebc8baa;
 
+  /// fi: Asennus peruttiin. Voit yrittää uudelleen: Päivitä.
+  ///
+  /// In en, this message translates to:
+  /// **'Install cancelled. You can try again: Update.'**
+  String get sa2e921ca79;
+
+  /// fi: Vahvista asennus Androidin ikkunasta tai ilmoituksesta.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm the install in the Android window or notification.'**
+  String get s29e92898c6;
+
+  /// fi: Asennus ei käynnistynyt
+  ///
+  /// In en, this message translates to:
+  /// **'The install did not start'**
+  String get sd1cdbd3630;
+
+  /// fi: Android ei aloittanut päivityksen {p0} asennusta.
+  ///
+  /// Tarkista, että "Salli tästä lähteestä" on päällä Molaplanille, ja pai
+  ///
+  /// In en, this message translates to:
+  /// **'Android did not start installing {p0}.\n\nCheck that \"Allow from this source\" is on for Molaplan and tap Update again. You can also download the APK from the release page.\n\nDetail: {p1}'**
+  String s21972e23c1(String p0, String p1);
+
+  /// fi: Avaa asetukset
+  ///
+  /// In en, this message translates to:
+  /// **'Open settings'**
+  String get sa1bd8d2533;
+
   /// fi: Salli päivitysten asennus
   ///
   /// In en, this message translates to:
@@ -2055,12 +2087,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Android asks once for permission so Molaplan can install its own updates.\n\n1. Tap \"Open settings\".\n2. Turn on \"Allow from this source\".\n3. Come back and tap \"Update\" again.'**
   String get sdc3bf71baf;
-
-  /// fi: Avaa asetukset
-  ///
-  /// In en, this message translates to:
-  /// **'Open settings'**
-  String get sa1bd8d2533;
 
   /// fi: Tarkistetaan…
   ///
@@ -4126,6 +4152,18 @@ abstract class AppLocalizations {
   /// **'Router / hotspot'**
   String get sd54522fe39;
 
+  /// fi: Valvontapaneeli
+  ///
+  /// In en, this message translates to:
+  /// **'Security panel'**
+  String get s3294a9422d;
+
+  /// fi: ESP32-laite
+  ///
+  /// In en, this message translates to:
+  /// **'ESP32 device'**
+  String get sb97a2b7ed6;
+
   /// fi: ei vielä ohjattavissa
   ///
   /// In en, this message translates to:
@@ -4143,6 +4181,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'via home bridge'**
   String get saae59a3865;
+
+  /// fi: ohjataan ntfy-viesteillä
+  ///
+  /// In en, this message translates to:
+  /// **'controlled with ntfy messages'**
+  String get sf226dd023a;
+
+  /// fi: jos tämä on valvontapaneeli, lisää se ntfy-komentolaitteena
+  ///
+  /// In en, this message translates to:
+  /// **'if this is a security panel, add it as an ntfy command device'**
+  String get s0e6aa5168c;
 
   /// fi: Malli
   ///
@@ -4180,11 +4230,23 @@ abstract class AppLocalizations {
   /// **'Remembered on this device.'**
   String get s1d5ed84aed;
 
+  /// fi: Lisää komentolaitteena
+  ///
+  /// In en, this message translates to:
+  /// **'Add as command device'**
+  String get s3e6dd6ff2d;
+
   /// fi: Nimeä
   ///
   /// In en, this message translates to:
   /// **'Rename'**
   String get s59622d792b;
+
+  /// fi: kotisillan kautta
+  ///
+  /// In en, this message translates to:
+  /// **'via the home bridge'**
+  String get sa0fccfbcab;
 
   /// fi: Etsi laitteet
   ///
@@ -4239,6 +4301,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You are away: the home bridge searched your home network.'**
   String get s9a018b8166;
+
+  /// fi: Tämä verkko
+  ///
+  /// In en, this message translates to:
+  /// **'This network'**
+  String get s55d0b95fd2;
+
+  /// fi: Nämä ovat tämän laitteen omassa verkossa, eivät kodissa {p0}. Niitä ei lisätä siihen kotiin.
+  ///
+  /// In en, this message translates to:
+  /// **'These are on this device\'\'s own network, not at {p0}. They are not added to that home.'**
+  String s955b44aaa4(String p0);
 
   /// fi: Muut laitteet verkossa ({p0})
   ///
@@ -8803,48 +8877,6 @@ abstract class AppLocalizations {
   /// **'The home bridge answers – remote access works.'**
   String get sa3e78d5c4e;
 
-  /// fi: Ohjaa kotia myös kodin ulkopuolelta
-  ///
-  /// In en, this message translates to:
-  /// **'Control your home from anywhere'**
-  String get s0b57661c18;
-
-  /// fi: Kotona Molaplan puhuu laitteille suoraan. Muualla yhteys kulkee salattuna kotisillan kautta – porttiohjauksia tai reitit
-  ///
-  /// In en, this message translates to:
-  /// **'At home Molaplan talks to your devices directly. Elsewhere it goes encrypted through your home bridge – no port forwarding or router settings. The app picks the right path automatically.'**
-  String get sb43ef4094c;
-
-  /// fi: Kotisilta on mikä tahansa kotona aina päällä oleva Molaplan: PC, vanha tabletti tai puhelin, tai erillinen kotisiltaohje
-  ///
-  /// In en, this message translates to:
-  /// **'A home bridge is any Molaplan that is always on at home: a PC, an old tablet or phone, or the separate bridge program on e.g. a Raspberry Pi or a Home Assistant machine. When you are away, your phone\'\'s commands go through it to your devices, end-to-end encrypted. Nothing to set up on the router (no port forwarding).'**
-  String get se96e60e36c;
-
-  /// fi: Yhdistetty kotiin
-  ///
-  /// In en, this message translates to:
-  /// **'Connected to home'**
-  String get s075e5a4864;
-
-  /// fi: Kotona = suoraan laitteille. Etäyhteys = kotisillan kautta. Ei yhteyttä = kumpikaan ei vastaa.
-  ///
-  /// In en, this message translates to:
-  /// **'At home = directly. Remote = through the home bridge. No connection = neither answers.'**
-  String get sa7679488fb;
-
-  /// fi: Testaa etäyhteys
-  ///
-  /// In en, this message translates to:
-  /// **'Test remote access'**
-  String get s19cec9667e;
-
-  /// fi: Kopioi kodin näkymät
-  ///
-  /// In en, this message translates to:
-  /// **'Copy home dashboards'**
-  String get s86ad95fa48;
-
   /// fi: Poistetaanko etäyhteys?
   ///
   /// In en, this message translates to:
@@ -8857,6 +8889,72 @@ abstract class AppLocalizations {
   /// **'This device can then no longer reach home from outside. You can pair again any time.'**
   String get sbc44ce6993;
 
+  /// fi: Ohjaa kotia myös kodin ulkopuolelta
+  ///
+  /// In en, this message translates to:
+  /// **'Control your home from anywhere'**
+  String get s0b57661c18;
+
+  /// fi: Kotona Molaplan puhuu laitteille suoraan, muualla salattuna kotisillan kautta. Mitään ei tarvitse säätää reitittimestä.
+  ///
+  /// In en, this message translates to:
+  /// **'At home Molaplan talks to your devices directly, elsewhere encrypted through your home bridge. Nothing to set up on the router.'**
+  String get s07dc42dc7a;
+
+  /// fi: Näytä kodin {p0} laitteet täällä
+  ///
+  /// In en, this message translates to:
+  /// **'Show the devices of {p0} here'**
+  String sdde4ff19ce(String p0);
+
+  /// fi: Kopioi kotisillan näkymät tähän laitteeseen. Lukemat ja ohjaukset kulkevat sen jälkeen kotisillan kautta.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy the home bridge\'\'s dashboards to this device. Readings and controls then go through the home bridge.'**
+  String get sc5328cbb8f;
+
+  /// fi: Kopioi kodin näkymät
+  ///
+  /// In en, this message translates to:
+  /// **'Copy home dashboards'**
+  String get s86ad95fa48;
+
+  /// fi: Lisää kotisilta
+  ///
+  /// In en, this message translates to:
+  /// **'Add a home bridge'**
+  String get s9b8f1f4a7e;
+
+  /// fi: Aloita näin
+  ///
+  /// In en, this message translates to:
+  /// **'Get started'**
+  String get sa8c35b8bfb;
+
+  /// fi: Kotisilta on mikä tahansa kotona aina päällä oleva Molaplan: PC, vanha tabletti tai puhelin, Molaplan Bridge -laite tai
+  ///
+  /// In en, this message translates to:
+  /// **'A home bridge is any Molaplan that is always on at home: a PC, an old tablet or phone, a Molaplan Bridge device or the separate bridge program. When you are away, commands go through it end-to-end encrypted.'**
+  String get s5683f9f7e4;
+
+  /// fi: Kotona = tämä laite on kotisillan omassa verkossa ja puhuu laitteille suoraan. Etäyhteys = kotisillan kautta. Ei yhteytt
+  ///
+  /// In en, this message translates to:
+  /// **'At home = this device is on the home bridge\'\'s own network and talks to devices directly. Remote = through the home bridge. No connection = neither answers.'**
+  String get sa75a955933;
+
+  /// fi: Kotisilta on vanha versio eikä kerro verkkoaan, joten yhteys kulkee aina sen kautta. Päivitä kotisilta, niin Kotona-tila
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge is an old version and does not report its network, so everything goes through it. Update the bridge to detect At home.'**
+  String get s90460344ec;
+
+  /// fi: Testaa etäyhteys
+  ///
+  /// In en, this message translates to:
+  /// **'Test remote access'**
+  String get s19cec9667e;
+
   /// fi: Poista etäyhteys
   ///
   /// In en, this message translates to:
@@ -8868,12 +8966,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This device is the home bridge'**
   String get s528c4f3a4c;
-
-  /// fi: Lisäasetukset
-  ///
-  /// In en, this message translates to:
-  /// **'Advanced'**
-  String get se7b8d659b5;
 
   /// fi: Kamerakuvan päivitys etänä
   ///
@@ -9043,29 +9135,17 @@ abstract class AppLocalizations {
   /// **'online'**
   String get sb9e406274e;
 
-  /// fi: vanhempi kuin 0.8.0 · {p0} · ei etäpäivitystä (päivitä kerran laitteella)
+  /// fi: vanha Molaplan (0.8.0-testiversio tai vanhempi)
   ///
   /// In en, this message translates to:
-  /// **'older than 0.8.0 · {p0} · no remote update (update once on the device)'**
-  String sd5fc9353f9(String p0);
+  /// **'old Molaplan (0.8.0 test build or older)'**
+  String get sb981e102f1;
 
-  /// fi:  · hiljainen päivitys: kyllä
+  /// fi: päivitä kerran laitteella
   ///
   /// In en, this message translates to:
-  /// **' · silent update: yes'**
-  String get se9d573787e;
-
-  /// fi:  · hiljainen päivitys: ei
-  ///
-  /// In en, this message translates to:
-  /// **' · silent update: no'**
-  String get s82043faaa4;
-
-  /// fi: versio ei tiedossa
-  ///
-  /// In en, this message translates to:
-  /// **'version unknown'**
-  String get s42b97a989b;
+  /// **'update once on the device'**
+  String get s706ee3ad91;
 
   /// fi:  (ei yhteystietoa tälle laitteelle)
   ///
@@ -9073,11 +9153,37 @@ abstract class AppLocalizations {
   /// **' (no credential on this device)'**
   String get sca90c9c253;
 
-  /// fi: Omat kotisillat
+  /// fi: versio ei tiedossa
   ///
   /// In en, this message translates to:
-  /// **'My home bridges'**
-  String get sfd88be2409;
+  /// **'version unknown'**
+  String get s42b97a989b;
+
+  /// fi: päivittyy hiljaisesti
+  ///
+  /// In en, this message translates to:
+  /// **'updates silently'**
+  String get se76155b6bd;
+
+  /// fi: Päivitä {p0} kerran laitteella
+  ///
+  /// In en, this message translates to:
+  /// **'Update {p0} once on the device'**
+  String s20889b3dc9(String p0);
+
+  /// fi: Tämä kotisilta käyttää vanhaa Molaplania, joka ei vielä osaa päivittää itseään etänä.
+  ///
+  /// Kerran tehtävä päivitys: avaa Mol
+  ///
+  /// In en, this message translates to:
+  /// **'This home bridge runs an old Molaplan that cannot update itself remotely yet.\n\nOne-time update: open Molaplan on the bridge device → Settings → Check for updates → Update and approve the install. Or install the latest APK over USB.\n\nAfter that, Update works from this list remotely.'**
+  String get secbc1cfea3;
+
+  /// fi: Kotisillat
+  ///
+  /// In en, this message translates to:
+  /// **'Home bridges'**
+  String get s356b6d4d13;
 
   /// fi: Päivitä tiedot
   ///
@@ -9085,17 +9191,23 @@ abstract class AppLocalizations {
   /// **'Refresh'**
   String get s57117babe8;
 
-  /// fi: Kaikki tiliisi kuuluvat kotisillat, myös muissa kohteissa. Yhteys kulkee aina etäpalvelun kautta.
+  /// fi: Avaa = näytä se koti tällä laitteella. Päivitä = asenna kotisillalle uusin Molaplan.
   ///
   /// In en, this message translates to:
-  /// **'All home bridges of your account, also at other sites. Always through the remote service.'**
-  String get s40dab032ce;
+  /// **'Open = use that home on this device. Update = install the latest Molaplan on the bridge.'**
+  String get s5160bf55ae;
 
   /// fi: tämä laite
   ///
   /// In en, this message translates to:
   /// **'this device'**
   String get s9b2c8181e4;
+
+  /// fi: Avaa
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get s902eaaff9f;
 
   /// fi: Yhteys etäpalveluun: kunnossa
   ///
@@ -10686,12 +10798,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add anyway'**
   String get s0e655a209f;
-
-  /// fi: Avaa
-  ///
-  /// In en, this message translates to:
-  /// **'Open'**
-  String get s902eaaff9f;
 
   /// fi: Vain kotiverkossa
   ///
@@ -13045,17 +13151,17 @@ abstract class AppLocalizations {
   /// **'ntfy: command missing'**
   String get sb56e7e9f81;
 
-  /// fi: Ei vastausta (PIN?) – laite ei vastannut {p0} sekunnissa (aihe "{p1}"). Tarkista PIN-koodi: moni laite ei vastaa lainkaa
+  /// fi: Komento lähti, mutta laite ei vastannut {p0} s:ssa – onko laite verkossa? Tarkista myös PIN-koodi: moni laite ei vastaa
   ///
   /// In en, this message translates to:
-  /// **'No reply (PIN?) – the device did not answer within {p0} s (topic \"{p1}\"). Check the PIN: many devices do not answer a wrong PIN at all.'**
-  String s09f79d4fda(String p0, String p1);
+  /// **'The command was sent, but the device did not answer within {p0} s – is the device online? Also check the PIN: many devices do not answer a wrong PIN at all (topic \"{p1}\").'**
+  String s02e16b2c5c(String p0, String p1);
 
-  /// fi: Laite ei vastannut {p0} sekunnissa (aihe "{p1}"). Jos laite vastaa vain tietyin väliajoin, kasvata "Vastauksen odotus" t
+  /// fi: Komento lähti, mutta laite ei vastannut {p0} s:ssa – onko laite verkossa? Jos laite vastaa vain tietyin väliajoin, kasva
   ///
   /// In en, this message translates to:
-  /// **'The device did not answer within {p0} s (topic \"{p1}\"). If it answers only at intervals, increase \"Wait for reply\" or \"Minimum time between commands\".'**
-  String sf25dcf262f(String p0, String p1);
+  /// **'The command was sent, but the device did not answer within {p0} s – is the device online? If it answers only at intervals, increase \"Minimum time between commands\" (topic \"{p1}\").'**
+  String sdf4ecde616(String p0, String p1);
 
   /// fi: Laite vastasi: {p0}
   ///
@@ -13068,6 +13174,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **' A PIN is stored.'**
   String get sf03877dd0a;
+
+  /// fi: Komento lähti, mutta laite ei vastannut ajoissa – onko laite verkossa? (ntfy-palvelin toimii.)
+  ///
+  /// In en, this message translates to:
+  /// **'The command was sent, but the device did not answer in time – is the device online? (The ntfy server works.)'**
+  String get s33cfb86f9f;
 
   /// fi: Modbus TCP
   ///
@@ -14772,6 +14884,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'A device controlled with ntfy messages: on/off switches, state and PIN. Works at home and away without a home bridge.'**
   String get s120a222880;
+
+  /// fi: Valmis malli
+  ///
+  /// In en, this message translates to:
+  /// **'Preset'**
+  String get s6f139b5bcc;
+
+  /// fi: Kameravalvonta: valot, sireeni, hälytys päälle/pois/kuittaa ja tila. Aihe ja PIN täytetään itse.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera surveillance: lights, siren, alarm on/off/acknowledge and state. Topic and PIN are your own.'**
+  String get sa149146483;
+
+  /// fi: Oma laite
+  ///
+  /// In en, this message translates to:
+  /// **'Own device'**
+  String get sb6b101dd23;
+
+  /// fi: Kameravalvonta (kv-paneeli)
+  ///
+  /// In en, this message translates to:
+  /// **'Camera surveillance (kv panel)'**
+  String get s1ffb53e7f3;
 
   /// fi: Komentokanava
   ///

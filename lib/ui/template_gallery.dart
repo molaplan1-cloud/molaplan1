@@ -9,6 +9,8 @@ import '../core/friendly_error.dart';
 import '../core/discovery.dart';
 import '../devices/ha_setup.dart';
 import '../drivers/registry.dart';
+import '../drivers/ntfy_device.dart' show ntfyNoReplyText;
+import '../drivers/driver.dart' show DriverException;
 import '../models/models.dart';
 import '../devices/cameras.dart';
 import '../devices/registry.dart';
@@ -461,6 +463,7 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
   };
   final _excluded = <int>{};
   int _formKey = 0;
+  Object? _preset;
   late bool _haBusy = values.remove('_haBusy') == true;
   bool _testing = false;
   bool _searching = false;
@@ -727,9 +730,19 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
       String extra = '';
       if (first != null) {
         final d = createDriver(c);
+        // t235u: an ntfy command device answers on its own schedule – wait for its reply budget,
+        // and a missing reply is the device's, not the ntfy service's (the publish worked).
+        final ntfyDev = c.type == 'ntfy_device';
+        final budget = ntfyDev
+            ? Duration(seconds: ((c.settings['replySeconds'] as num?)?.toInt() ?? 45).clamp(3, 600) + 20)
+            : Duration(seconds: cloudConnectionTypes.contains(c.type) ? 30 : 8);
         try {
-          final v = await d.read(first.read).timeout(Duration(seconds: cloudConnectionTypes.contains(c.type) ? 30 : 8));
+          final v = await d.read(first.read).timeout(budget);
           extra = ' · ${first.title}: $v${first.unit.isEmpty ? '' : ' ${first.unit}'}';
+        } catch (e) {
+          if (!ntfyDev) rethrow;
+          if (mounted) setState(() => _error = DriverException(ntfyNoReplyText(e, res)));
+          return;
         } finally {
           await d.dispose();
         }
@@ -1062,7 +1075,14 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
                 key: ValueKey('tpl$_formKey'),
                 fields: t.inputs,
                 values: values,
-                onChanged: () => setState(() {}),
+                onChanged: () => setState(() {
+                  // t235u: picking the kv-panel preset fills its commands into the form.
+                  if (t.id == 'ntfy_device' && values['preset'] != _preset) {
+                    _preset = values['preset'];
+                    applyNtfyPreset(values);
+                    _formKey++;
+                  }
+                }),
               ),
               if (t.id == 'tasmota')
                 Padding(

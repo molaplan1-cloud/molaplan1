@@ -988,16 +988,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get scd04aa5d9e => 'Editar la vista';
 
   @override
-  String get se9ca7cb470 => 'Automatizaciones';
-
-  @override
-  String get s41bb837a83 => 'Notificaciones y recordatorios';
-
-  @override
   String get sf98121cd3d => 'Imagen de la habitación';
 
   @override
   String get s49de879696 => 'Energía';
+
+  @override
+  String get se9ca7cb470 => 'Automatizaciones';
+
+  @override
+  String get s41bb837a83 => 'Notificaciones y recordatorios';
 
   @override
   String get s1da81fd6c3 => 'Ajustes';
@@ -1113,14 +1113,30 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s6e1ebc8baa => 'Carpeta abierta';
 
   @override
+  String get sa2e921ca79 =>
+      'Instalar cancelado. Puedes intentarlo de nuevo: Actualizar.';
+
+  @override
+  String get s29e92898c6 =>
+      'Confirme la instalación en la ventana Android o notificación.';
+
+  @override
+  String get sd1cdbd3630 => 'La instalación no comenzó';
+
+  @override
+  String s21972e23c1(String p0, String p1) {
+    return 'Android no comenzó a instalar $p0.\n\nCompruebe que \"Permitir de esta fuente\" está en para Molaplan y grifo Actualizar de nuevo. También puede descargar el APK de la página de lanzamiento.\n\nDetalle: $p1';
+  }
+
+  @override
+  String get sa1bd8d2533 => 'Abrir ajustes';
+
+  @override
   String get sa065e7f650 => 'Permitir la instalación de actualizaciones';
 
   @override
   String get sdc3bf71baf =>
       'Android pide una vez permiso para que Molaplan pueda instalar sus propias actualizaciones.\n\n1. Pulsa \"Abran ajustes\".\n2. Enciende \"Permitir de esta fuente\".\n3. Vuelve y toca \"Actualizar\" otra vez.';
-
-  @override
-  String get sa1bd8d2533 => 'Abrir ajustes';
 
   @override
   String get s441683b7a8 => 'Verificante...';
@@ -2265,6 +2281,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sd54522fe39 => 'Router / punto de acceso';
 
   @override
+  String get s3294a9422d => 'Panel de seguridad';
+
+  @override
+  String get sb97a2b7ed6 => 'Dispositivo ESP32';
+
+  @override
   String get s23f4820db7 => 'no controlable todavía';
 
   @override
@@ -2273,6 +2295,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get saae59a3865 => 'via casa puente';
+
+  @override
+  String get sf226dd023a => 'controlado con mensajes de ntfy';
+
+  @override
+  String get s0e6aa5168c =>
+      'si es un panel de seguridad, agréguelo como un dispositivo de comando ntfy';
 
   @override
   String get sdccd6e7f24 => 'Modelo';
@@ -2293,7 +2322,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1d5ed84aed => 'Se recuerda en este dispositivo.';
 
   @override
+  String get s3e6dd6ff2d => 'Agregar como dispositivo de comando';
+
+  @override
   String get s59622d792b => 'Renombrar';
+
+  @override
+  String get sa0fccfbcab => 'a través del puente casero';
 
   @override
   String get s1169d2d093 => 'Buscar dispositivos';
@@ -2326,6 +2361,14 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s9a018b8166 =>
       'Usted está lejos: el puente de la casa registró su red de la casa.';
+
+  @override
+  String get s55d0b95fd2 => 'Esta red';
+
+  @override
+  String s955b44aaa4(String p0) {
+    return 'Estos están en la propia red de este dispositivo, no en $p0. No se añaden a esa casa.';
+  }
 
   @override
   String sf16a25c313(String p0) {
@@ -4856,30 +4899,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'El puente del hogar responde – el acceso remoto funciona.';
 
   @override
-  String get s0b57661c18 => 'Controla tu hogar desde cualquier lugar';
-
-  @override
-  String get sb43ef4094c =>
-      'En casa Molaplan habla directamente con sus dispositivos. En otro lugar se encripta a través de su puente de inicio – ningún puerto de reenvío o configuración de router. La aplicación elige el camino correcto automáticamente.';
-
-  @override
-  String get se96e60e36c =>
-      'Un puente casero es cualquier Molaplan que siempre está en casa: un PC, una vieja tableta o teléfono, o el programa de puentes separado en por ejemplo un Raspberry Pi o una máquina Home Assistant. Cuando usted está lejos, los comandos de su teléfono pasan a través de él a sus dispositivos, encriptado de extremo a extremo. Nada para configurar en el router (sin reenvío de puerto).';
-
-  @override
-  String get s075e5a4864 => 'Conectado a casa';
-
-  @override
-  String get sa7679488fb =>
-      'En casa = directamente. Remoto = a través del puente casero. Sin conexión = ni respuestas.';
-
-  @override
-  String get s19cec9667e => 'Acceso remoto de prueba';
-
-  @override
-  String get s86ad95fa48 => 'Copiar los tableros caseros';
-
-  @override
   String get sfaa5185b74 => '¿Eliminar el acceso remoto?';
 
   @override
@@ -4887,13 +4906,50 @@ class AppLocalizationsEs extends AppLocalizations {
       'Este dispositivo ya no puede llegar a casa desde fuera. Puedes emparejar de nuevo en cualquier momento.';
 
   @override
+  String get s0b57661c18 => 'Controla tu hogar desde cualquier lugar';
+
+  @override
+  String get s07dc42dc7a =>
+      'En casa Molaplan habla con sus dispositivos directamente, en otro lugar encriptado a través de su puente de inicio. Nada que configurar en el router.';
+
+  @override
+  String sdde4ff19ce(String p0) {
+    return 'Mostrar los dispositivos de $p0 aquí';
+  }
+
+  @override
+  String get sc5328cbb8f =>
+      'Copia las vistas del puente casero a este dispositivo. Lecturas y controles luego pasan por el puente casero.';
+
+  @override
+  String get s86ad95fa48 => 'Copiar los tableros caseros';
+
+  @override
+  String get s9b8f1f4a7e => 'Añadir un puente casero';
+
+  @override
+  String get sa8c35b8bfb => 'Empieza';
+
+  @override
+  String get s5683f9f7e4 =>
+      'Un puente casero es cualquier Molaplan que siempre está en casa: un PC, una vieja tableta o teléfono, un dispositivo Molaplan Bridge o el programa puente separado. Cuando usted está lejos, los comandos pasan a través de él encriptado de extremo a extremo.';
+
+  @override
+  String get sa75a955933 =>
+      'En casa = este dispositivo está en la propia red del puente de inicio y habla con dispositivos directamente. Remoto = a través del puente de inicio. Ninguna conexión = ni respuestas.';
+
+  @override
+  String get s90460344ec =>
+      'El puente casero es una versión antigua y no reporta su red, por lo que todo pasa a través de ella. Actualizar el puente para detectar En casa.';
+
+  @override
+  String get s19cec9667e => 'Acceso remoto de prueba';
+
+  @override
   String get s3563cb1635 => 'Eliminar el acceso remoto';
 
   @override
   String get s528c4f3a4c => 'Este dispositivo es el puente casero';
-
-  @override
-  String get se7b8d659b5 => 'Avanzado';
 
   @override
   String get sfd263f3e04 => 'Refrigerio de la cámara cuando está remoto';
@@ -5014,34 +5070,44 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sb9e406274e => 'en línea';
 
   @override
-  String sd5fc9353f9(String p0) {
-    return 'mayor que 0.8.0 · $p0 · ninguna actualización remota (actualizar una vez en el dispositivo)';
-  }
+  String get sb981e102f1 => 'viejo Molaplan (0.8.0 test build or older)';
 
   @override
-  String get se9d573787e => ' · actualización silenciosa: sí';
-
-  @override
-  String get s82043faaa4 => ' · actualización silenciosa: no';
-
-  @override
-  String get s42b97a989b => 'versión desconocida';
+  String get s706ee3ad91 => 'actualizar una vez en el dispositivo';
 
   @override
   String get sca90c9c253 => ' (sin credencial en este dispositivo)';
 
   @override
-  String get sfd88be2409 => 'Mis puentes de casa';
+  String get s42b97a989b => 'versión desconocida';
+
+  @override
+  String get se76155b6bd => 'actualizaciones silenciosamente';
+
+  @override
+  String s20889b3dc9(String p0) {
+    return 'Actualizar $p0 una vez en el dispositivo';
+  }
+
+  @override
+  String get secbc1cfea3 =>
+      'Este puente de casa corre un viejo Molaplan que no puede actualizarse a distancia todavía.\n\nActualización de una sola vez: abrir Molaplan en el dispositivo de puente → Ajustes → Consultar actualizaciones → Actualizar y aprobar la instalación. O instalar el último APK sobre USB.\n\nDespués de eso, Update funciona desde esta lista de forma remota.';
+
+  @override
+  String get s356b6d4d13 => 'Puentes caseros';
 
   @override
   String get s57117babe8 => 'Actualizar';
 
   @override
-  String get s40dab032ce =>
-      'Todos los puentes caseros de su cuenta, también en otros sitios. Siempre a través del servicio remoto.';
+  String get s5160bf55ae =>
+      'Abrir = usar esa casa en este dispositivo. Actualizar = instalar el último Molaplan en el puente.';
 
   @override
   String get s9b2c8181e4 => 'este dispositivo';
+
+  @override
+  String get s902eaaff9f => 'Abierto';
 
   @override
   String get s72da730a42 => 'Servicio remoto: conectado';
@@ -5931,9 +5997,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s0e655a209f => 'Añadir de todos modos';
-
-  @override
-  String get s902eaaff9f => 'Abierto';
 
   @override
   String get s12c2f8e6e4 => 'Solo en la red de casa';
@@ -7262,13 +7325,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sb56e7e9f81 => 'ntfy: el comando desaparecido';
 
   @override
-  String s09f79d4fda(String p0, String p1) {
-    return 'No hay respuesta (PIN?) – el dispositivo no respondió dentro $p0 s (topic \"$p1\"). Compruebe el PIN: muchos dispositivos no responden a un PIN equivocado en absoluto.';
+  String s02e16b2c5c(String p0, String p1) {
+    return 'El comando fue enviado, pero el dispositivo no respondió dentro $p0 s - es el dispositivo en línea? También comprobar el PIN: muchos dispositivos no responden a un PIN equivocado en absoluto (topic \"$p1\").';
   }
 
   @override
-  String sf25dcf262f(String p0, String p1) {
-    return 'El dispositivo no respondió dentro $p0 s (topic \"$p1\"). Si sólo responde a intervalos, aumenta \"Esperar respuesta\" o \"Tiempo mínimo entre comandos\".';
+  String sdf4ecde616(String p0, String p1) {
+    return 'El comando fue enviado, pero el dispositivo no respondió dentro $p0 s - es el dispositivo en línea? Si responde sólo a intervalos, aumentar \"Tiempo mínimo entre comandos\" (tema \"$p1\").';
   }
 
   @override
@@ -7278,6 +7341,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sf03877dd0a => ' Se almacena un PIN.';
+
+  @override
+  String get s33cfb86f9f =>
+      'El comando fue enviado, pero el dispositivo no respondió en el tiempo – ¿está el dispositivo en línea? (El servidor ntfy funciona.)';
 
   @override
   String get s36fb6ba26f => 'Modbus TCP';
@@ -8239,6 +8306,19 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s120a222880 =>
       'Un dispositivo controlado con mensajes de ntfy: interruptores de encendido / apagado, estado y PIN. Funciona en casa y lejos sin un puente casero.';
+
+  @override
+  String get s6f139b5bcc => 'Preset';
+
+  @override
+  String get sa149146483 =>
+      'Vigilancia de la cámara: luces, sirena, alarma en/off/acknowledge y estado. Tema y PIN son suyos.';
+
+  @override
+  String get sb6b101dd23 => 'Dispositivo propio';
+
+  @override
+  String get s1ffb53e7f3 => 'Vigilancia de la cámara (panel kv)';
 
   @override
   String get s7a46c8c335 => 'Tema del comando';

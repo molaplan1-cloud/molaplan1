@@ -197,6 +197,8 @@ object EngineHolder {
                     }
                     // t211u: silent self-update (device owner) / prompt fallback.
                     "deviceOwner" -> result.success(SilentUpdater.isDeviceOwner(app))
+                    // t230u: shown in 'Omat kotisillat' (e.g. "HTC 5G Hub", "SM-T575").
+                    "model" -> result.success(listOf(android.os.Build.MANUFACTURER, android.os.Build.MODEL).joinToString(" ").trim())
                     "installUpdate" -> {
                         val path = call.argument<String>("path")
                         if (path == null) result.error("args", "path missing", null)

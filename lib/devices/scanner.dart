@@ -67,6 +67,25 @@ class ScanHit {
     return name;
   }
 
+  /// t233u: what an otherwise unknown host most likely is, from data any bridge version reports
+  /// (HTTP title / Server header, names, MAC vendor, mDNS services): 'ntfy_panel' (a security /
+  /// camera panel, typically an ESP32 display controlled over ntfy), 'esp' (an ESP32/ESP8266
+  /// board) or ''. Known kinds keep their own add flow.
+  String get hint {
+    if (known || role.isNotEmpty) return '';
+    final text = [
+      ...names.values,
+      name,
+      model,
+      maker,
+      vendor ?? '',
+      ...services,
+    ].join(' ').toLowerCase();
+    if (RegExp(r'valvonta|hälytys|halytys|alarm|security|ntfy').hasMatch(text)) return 'ntfy_panel';
+    if (RegExp(r'esp32|esp8266|espressif|esp-idf|arduino|\besp[-_]').hasMatch(text)) return 'esp';
+    return '';
+  }
+
   /// Key for a user's own name: the MAC if known (survives DHCP changes), else the IP.
   String get nameKey => mac ?? ip;
 
@@ -680,7 +699,8 @@ Future<void> identifyHits(Map<String, ScanHit> all, List<String> locals, Map<Str
       if (g != ip && all.containsKey(g)) gw = g;
     }
   }
-  if (gw != null && !locals.contains(gw)) {
+  bool onOurLan(String ip) => locals.any((l) => l.substring(0, l.lastIndexOf('.')) == ip.substring(0, ip.lastIndexOf('.')));
+  if (gw != null && !locals.contains(gw) && onOurLan(gw)) {
     final h = all.putIfAbsent(gw, () => ScanHit(ip: gw!, via: {'gateway'}));
     final k = gatewayKind(gw);
     h.role = k;

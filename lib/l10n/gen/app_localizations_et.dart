@@ -982,16 +982,16 @@ class AppLocalizationsEt extends AppLocalizations {
   String get scd04aa5d9e => 'Muuda vaadet';
 
   @override
-  String get se9ca7cb470 => 'Automatiseerimine';
-
-  @override
-  String get s41bb837a83 => 'Teated ja meeldetuletused';
-
-  @override
   String get sf98121cd3d => 'Toafoto';
 
   @override
   String get s49de879696 => 'Energia';
+
+  @override
+  String get se9ca7cb470 => 'Automatiseerimine';
+
+  @override
+  String get s41bb837a83 => 'Teated ja meeldetuletused';
 
   @override
   String get s1da81fd6c3 => 'Seaded';
@@ -1107,14 +1107,30 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s6e1ebc8baa => 'Ava kataloog';
 
   @override
+  String get sa2e921ca79 =>
+      'Paigaldamine on tühistatud. Proovi uuesti: Uuenda.';
+
+  @override
+  String get s29e92898c6 =>
+      'Kinnitage installimine Android-aknas või teavituses.';
+
+  @override
+  String get sd1cdbd3630 => 'Paigaldamine ei käivitunud';
+
+  @override
+  String s21972e23c1(String p0, String p1) {
+    return 'Android ei hakanud installima $p0.\n\nKontrolli, kas \"Luba sellest allikast\" on Molaplani jaoks sisse lülitatud, ja klõpsa uuesti värskendust. APK saab alla laadida ka väljalaskeleheküljelt.\n\nDetail: $p1';
+  }
+
+  @override
+  String get sa1bd8d2533 => 'Ava seaded';
+
+  @override
   String get sa065e7f650 => 'Värskenduste paigaldamise lubamine';
 
   @override
   String get sdc3bf71baf =>
       'Android küsib luba, et Molaplan saaks oma värskendused installida.\n\n1. Puudutus \"Avatud seaded\".\n2. Lülita sisse \"Luba sellest allikast\".\n3. Tule tagasi ja puuduta uuesti \"Uuenda\".';
-
-  @override
-  String get sa1bd8d2533 => 'Ava seaded';
 
   @override
   String get s441683b7a8 => 'Kontrollin...';
@@ -2251,6 +2267,12 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sd54522fe39 => 'Ruuter / kuumkoht';
 
   @override
+  String get s3294a9422d => 'Turvapaneel';
+
+  @override
+  String get sb97a2b7ed6 => 'ESP32 seade';
+
+  @override
   String get s23f4820db7 => 'ei ole veel kontrollitav';
 
   @override
@@ -2258,6 +2280,13 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get saae59a3865 => 'kodusilla kaudu';
+
+  @override
+  String get sf226dd023a => 'Kontrollitakse ntfy- kirjadega';
+
+  @override
+  String get s0e6aa5168c =>
+      'kui tegemist on turvapaneeliga, lisa see ntfy käsuseadmena';
 
   @override
   String get sdccd6e7f24 => 'Mudel';
@@ -2278,7 +2307,13 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s1d5ed84aed => 'Jäetakse selles seadmes meelde.';
 
   @override
+  String get s3e6dd6ff2d => 'Lisa käsuseadmena';
+
+  @override
   String get s59622d792b => 'Nimeta ümber';
+
+  @override
+  String get sa0fccfbcab => 'kodusilla kaudu';
 
   @override
   String get s1169d2d093 => 'Leia seadmed';
@@ -2310,6 +2345,14 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s9a018b8166 => 'Sa oled ära: kodusild otsis läbi sinu koduvõrgu.';
+
+  @override
+  String get s55d0b95fd2 => 'Võrgustik';
+
+  @override
+  String s955b44aaa4(String p0) {
+    return 'Need asuvad seadme enda võrgus, mitte $p0 juures. Neid ei lisata sellesse kodusse.';
+  }
 
   @override
   String sf16a25c313(String p0) {
@@ -4829,30 +4872,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sa3e78d5c4e => 'Kodusild vastab - kaugjuurdepääs töötab.';
 
   @override
-  String get s0b57661c18 => 'Kontrolli oma kodu igal pool';
-
-  @override
-  String get sb43ef4094c =>
-      'Kodus suhtleb Molaplan otse sinu seadmetega. Mujal krüptitakse see läbi sinu kodusilla – pordi edasisuunamist ega ruuteri seadistusi ei ole. Rakendus valib automaatselt õige tee.';
-
-  @override
-  String get se96e60e36c =>
-      'Kodusild on igasugune Molaplan, mis on alati kodus: arvuti, vana tahvelarvuti või telefon või eraldi sildprogramm näiteks Raspberry Pi või koduabilise masinal. Kui oled eemal, lähevad telefoni käsud sellest läbi sinu seadmetesse, otsast otsani krüptitud. Ruuteril pole midagi seadistada (porti ei edastata).';
-
-  @override
-  String get s075e5a4864 => 'Ühendatud koduga';
-
-  @override
-  String get sa7679488fb =>
-      'Kodus = otse. Kaugus = läbi kodusilla. Ühendus puudub = ei vastused.';
-
-  @override
-  String get s19cec9667e => 'Kaugjuurdepääsu testimine';
-
-  @override
-  String get s86ad95fa48 => 'Kopeeri kodu armatuurlauad';
-
-  @override
   String get sfaa5185b74 => 'Eemaldage kaugjuurdepääs?';
 
   @override
@@ -4860,13 +4879,50 @@ class AppLocalizationsEt extends AppLocalizations {
       'See seade ei saa siis enam väljastpoolt koju jõuda. Paarida võib igal ajal uuesti.';
 
   @override
+  String get s0b57661c18 => 'Kontrolli oma kodu igal pool';
+
+  @override
+  String get s07dc42dc7a =>
+      'Kodus räägib Molaplan otse sinu seadmetega, mujal sinu kodusilla kaudu krüptitud. Ruuterile pole midagi seadistada.';
+
+  @override
+  String sdde4ff19ce(String p0) {
+    return '$p0 seadmete näitamine siin';
+  }
+
+  @override
+  String get sc5328cbb8f =>
+      'Kopeeri kodusilla vaated sellesse seadmesse. Lugemid ja juhtelemendid lähevad seejärel läbi kodusilla.';
+
+  @override
+  String get s86ad95fa48 => 'Kopeeri kodu armatuurlauad';
+
+  @override
+  String get s9b8f1f4a7e => 'Lisa kodusild';
+
+  @override
+  String get sa8c35b8bfb => 'Alusta';
+
+  @override
+  String get s5683f9f7e4 =>
+      'Kodusild on mis tahes Molaplan, mis on alati kodus: arvuti, vana tahvelarvuti või telefon, Molaplan Bridge\'i seade või eraldi sillaprogramm. Kui oled eemal, käivad käsud sellest otsast otsani krüptituna läbi.';
+
+  @override
+  String get sa75a955933 =>
+      'Kodus = see seade asub kodusilla enda võrgus ja räägib otse seadmetega. Kaugjuhtimispult = läbi kodusilla. Ühendus puudub = kumbki ei vasta.';
+
+  @override
+  String get s90460344ec =>
+      'Kodusild on vana versioon ega anna teada oma võrgust, nii et kõik läbib seda. Uuenda silda, et tuvastada kodus.';
+
+  @override
+  String get s19cec9667e => 'Kaugjuurdepääsu testimine';
+
+  @override
   String get s3563cb1635 => 'Eemalda kaugjuurdepääs';
 
   @override
   String get s528c4f3a4c => 'See seade on kodusild';
-
-  @override
-  String get se7b8d659b5 => 'Täpsem';
 
   @override
   String get sfd263f3e04 => 'Kaamera värskendab kaugjuhtimispuldi korral';
@@ -4985,34 +5041,44 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sb9e406274e => 'online';
 
   @override
-  String sd5fc9353f9(String p0) {
-    return 'vanem kui 0.8.0 · $p0 · kaugvärskenduseta (uuendada üks kord seadmes)';
-  }
+  String get sb981e102f1 => 'vana Molaplan (0.8.0 testkoostis või vanem)';
 
   @override
-  String get se9d573787e => ' · vaikiv värskendus: jah';
-
-  @override
-  String get s82043faaa4 => ' · Vaikne värskendus: ei';
-
-  @override
-  String get s42b97a989b => 'tundmatu versioon';
+  String get s706ee3ad91 => 'uuenda üks kord seadmes';
 
   @override
   String get sca90c9c253 => ' (käesoleval seadmel mandaati ei ole)';
 
   @override
-  String get sfd88be2409 => 'Mu kodusillad';
+  String get s42b97a989b => 'tundmatu versioon';
+
+  @override
+  String get se76155b6bd => 'uuendab vaikselt';
+
+  @override
+  String s20889b3dc9(String p0) {
+    return 'Uuenda $p0 üks kord seadmes';
+  }
+
+  @override
+  String get secbc1cfea3 =>
+      'See kodusild jookseb vana Molaplani, mis ei suuda end veel kaugjuhtimisega värskendada.\n\nÜhekordne värskendus: ava Molaplan sillaseadmes → Seadistused → Kontrolli värskendusi → Uuenda ja kinnita install. Või paigalda uusim APK USB kaudu.\n\nPärast seda töötab värskendus sellest loendist kaugjuhtimisega.';
+
+  @override
+  String get s356b6d4d13 => 'Kodusillad';
 
   @override
   String get s57117babe8 => 'Värskenda';
 
   @override
-  String get s40dab032ce =>
-      'Kõik sinu konto kodusillad, ka teistel saitidel, alati kaugteenuse kaudu.';
+  String get s5160bf55ae =>
+      'Ava = kasuta seda kodu selles seadmes. Uuenda = paigalda sillale uusim Molaplan.';
 
   @override
   String get s9b2c8181e4 => 'seadeldist';
+
+  @override
+  String get s902eaaff9f => 'Avage';
 
   @override
   String get s72da730a42 => 'Kaugteenus: ühendatud';
@@ -5894,9 +5960,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s0e655a209f => 'Lisa ikkagi';
-
-  @override
-  String get s902eaaff9f => 'Avage';
 
   @override
   String get s12c2f8e6e4 => 'Ainult koduvõrgus';
@@ -7214,13 +7277,13 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sb56e7e9f81 => 'ntfy: käsk puudub';
 
   @override
-  String s09f79d4fda(String p0, String p1) {
-    return 'Vastamata (PIN?) – seade ei vastanud $p0 s jooksul (teema \"$p1\"). Kontrolli PIN- koodi: paljud seadmed ei vasta üldse valele PIN-koodile.';
+  String s02e16b2c5c(String p0, String p1) {
+    return 'Käsk saadeti, kuid seade ei vastanud $p0 s jooksul – kas seade on võrgus? Kontrolli ka PIN-koodi: paljud seadmed ei vasta üldse valele PIN-koodile (teema \"$p1\").';
   }
 
   @override
-  String sf25dcf262f(String p0, String p1) {
-    return 'Seade ei vastanud $p0 s jooksul (teema \"$p1\"). Kui see vastab ainult intervallidega, suurenda \"Oota vastuseks\" või \"Vähim aeg käskude vahel\".';
+  String sdf4ecde616(String p0, String p1) {
+    return 'Käsk saadeti, kuid seade ei vastanud $p0 s jooksul – kas seade on võrgus? Kui see vastab ainult intervallidega, suurenda \"Käskudevaheline minimaalne aeg\" (teema \"$p1\").';
   }
 
   @override
@@ -7230,6 +7293,10 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sf03877dd0a => ' PIN-kood salvestatakse.';
+
+  @override
+  String get s33cfb86f9f =>
+      'Käsk saadeti, kuid seade ei vastanud õigeaegselt - kas seade on võrgus? (ntfy server töötab.)';
 
   @override
   String get s36fb6ba26f => 'Modbus TCP';
@@ -8175,6 +8242,19 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s120a222880 =>
       'Seade, mida juhitakse ntfy sõnumitega: sisse/ välja lülitamine, olek ja PIN. Töötab kodus ja eemal ilma kodusillata.';
+
+  @override
+  String get s6f139b5bcc => 'Eelseadistus';
+
+  @override
+  String get sa149146483 =>
+      'Kaamera jälgimine: tuled, sireen, häire sisse/ välja/ aktsept ja olek. Teema ja PIN on sinu enda omad.';
+
+  @override
+  String get sb6b101dd23 => 'Oma seadeldis';
+
+  @override
+  String get s1ffb53e7f3 => 'Kaamera jälgimine (kv paneel)';
 
   @override
   String get s7a46c8c335 => 'Käsuteema';

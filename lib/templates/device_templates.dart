@@ -1436,6 +1436,21 @@ final deviceTemplates = <DeviceTemplate>[
     color: const Color(0xFF26A69A),
     connectionType: 'ntfy_device',
     inputs: const [
+      // t235u: a generic preset fills the usual commands and tiles (never a topic or PIN).
+      FieldSpec(
+        'preset',
+        'Valmis malli',
+        'Preset',
+        kind: FieldKind.choice,
+        options: ['generic', 'kv_panel'],
+        optionLabels: {
+          'generic': ('Oma laite', 'Own device'),
+          'kv_panel': ('Kameravalvonta (kv-paneeli)', 'Camera surveillance (kv panel)'),
+        },
+        defaultValue: 'generic',
+        helpFi: 'Kameravalvonta: valot, sireeni, hälytys päälle/pois/kuittaa ja tila. Aihe ja PIN täytetään itse.',
+        helpEn: 'Camera surveillance: lights, siren, alarm on/off/acknowledge and state. Topic and PIN are your own.',
+      ),
       FieldSpec('name', 'Laitteen nimi', 'Device name', hint: 'Valvonta', defaultValue: 'Komentolaite'),
       FieldSpec(
         'topic',
@@ -1553,8 +1568,40 @@ final deviceTemplates = <DeviceTemplate>[
   ),
 ];
 
+/// t235u: 'Kameravalvonta (kv-paneeli)' – generic values for an ESP32 security / camera panel
+/// controlled over ntfy. Only commands and tiles: the topic and the PIN are always the user's own.
+const ntfyKvPanelPreset = <String, Object>{
+  'name': 'Kameravalvonta',
+  'template': '{cmd} {pin}',
+  'statusCommand': 'tila json',
+  'format': 'json',
+  'outputs': 'Sisävalo = sisavalo\nPihavalo = pihavalo\nLisävalo = lisavalo\nSireeni = sireeni',
+  'onCommand': '{key} on',
+  'offCommand': '{key} off',
+  'statusPath': 'tila',
+};
+
+/// The kv panel's alarm buttons: (title, command, icon).
+const ntfyKvAlarmButtons = [
+  ('Hälytys päälle', 'halytys on', 'alarm'),
+  ('Hälytys pois', 'halytys off', 'lock'),
+  ('Kuittaa hälytys', 'kuittaa', 'send'),
+];
+
+/// Fills the preset's values into [v] where the user has not typed anything else yet.
+void applyNtfyPreset(Map<String, dynamic> v) {
+  if (v['preset'] != 'kv_panel') return;
+  const defaults = {'name': 'Komentolaite', 'template': '{cmd} {pin}', 'statusCommand': 'tila', 'format': 'json', 'outputs': 'Valo = valo', 'onCommand': '{key} on', 'offCommand': '{key} off', 'statusPath': ''};
+  ntfyKvPanelPreset.forEach((k, val) {
+    final cur = '${v[k] ?? ''}'.trim();
+    if (cur.isEmpty || cur == defaults[k]) v[k] = val;
+  });
+}
+
 /// t198u: connection + one switch tile per "Name = key" line + a status tile.
-TemplateResult ntfyDeviceTemplate(Map<String, dynamic> v, String lang) {
+TemplateResult ntfyDeviceTemplate(Map<String, dynamic> input, String lang) {
+  final v = Map<String, dynamic>.from(input);
+  applyNtfyPreset(v);
   final name = _s(v, 'name', _t(lang, 'Komentolaite', 'Command device'));
   final minGap = num.tryParse(_s(v, 'minInterval', '0'))?.toInt() ?? 0;
   final c = ConnectionConfig(
@@ -1589,7 +1636,7 @@ TemplateResult ntfyDeviceTemplate(Map<String, dynamic> v, String lang) {
       TileConfig(
         type: TileType.toggle,
         title: title,
-        icon: 'power',
+        icon: key.contains('valo') ? 'lightbulb' : (key.contains('sireeni') ? 'alarm' : 'power'),
         connectionId: c.id,
         pollSeconds: poll,
         read: json ? {'jsonPath': '\$.$prefix$key'} : {'regex': '${RegExp.escape(key)}\\s*[:=]?\\s*([^,;\\n]+)'},
@@ -1600,6 +1647,19 @@ TemplateResult ntfyDeviceTemplate(Map<String, dynamic> v, String lang) {
         ),
       ),
     );
+  }
+  if (v['preset'] == 'kv_panel') {
+    for (final (title, cmd, icon) in ntfyKvAlarmButtons) {
+      tiles.add(
+        TileConfig(
+          type: TileType.button,
+          title: title,
+          icon: icon,
+          connectionId: c.id,
+          commands: [CommandStep(connectionId: c.id, spec: {'command': cmd, 'waitReply': true})],
+        ),
+      );
+    }
   }
   tiles.add(
     TileConfig(

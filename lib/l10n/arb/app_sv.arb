@@ -877,15 +877,19 @@
  "@scd04aa5d9e": {
   "x-mt": true
  },
- "se9ca7cb470": "Automatiseringar",
- "@se9ca7cb470": {
-  "x-mt": true
- },
  "sf98121cd3d": "Rum foto",
  "@sf98121cd3d": {
   "x-mt": true
  },
  "s49de879696": "Energi",
+ "se9ca7cb470": "Automatiseringar",
+ "@se9ca7cb470": {
+  "x-mt": true
+ },
+ "s41bb837a83": "Meddelanden och påminnelser",
+ "@s41bb837a83": {
+  "x-mt": true
+ },
  "s1da81fd6c3": "Inställningar",
  "s365492a7d0": "Lås utsikten",
  "@s365492a7d0": {
@@ -999,6 +1003,23 @@
  "@s6e1ebc8baa": {
   "x-mt": true
  },
+ "sa2e921ca79": "Installera inställd. Du kan prova igen: Uppdatera.",
+ "@sa2e921ca79": {
+  "x-mt": true
+ },
+ "s29e92898c6": "Bekräfta installationen i Android-fönstret eller meddelandet.",
+ "@s29e92898c6": {
+  "x-mt": true
+ },
+ "sd1cdbd3630": "Installationen startade inte",
+ "@sd1cdbd3630": {
+  "x-mt": true
+ },
+ "s21972e23c1": "Android började inte installera {p0}.\n\nKontrollera att \"Tillåt från den här källan\" är på för Molaplan och tryck på Uppdatera igen. Du kan också ladda ner APK från releasesidan.\n\nDetalj: {p1}",
+ "@s21972e23c1": {
+  "x-mt": true
+ },
+ "sa1bd8d2533": "Öppna inställningar",
  "sa065e7f650": "Tillåt att installera uppdateringar",
  "@sa065e7f650": {
   "x-mt": true
@@ -1007,7 +1028,6 @@
  "@sdc3bf71baf": {
   "x-mt": true
  },
- "sa1bd8d2533": "Öppna inställningar",
  "s441683b7a8": "Verifiera...",
  "@s441683b7a8": {
   "x-mt": true
@@ -1316,13 +1336,133 @@
   "x-mt": true
  },
  "sca7e088857": "Elpris",
+ "s83f816fbe3": "Exceptionellt dyr el",
+ "@s83f816fbe3": {
+  "x-mt": true
+ },
  "s262f9527aa": "Väderprognos",
  "@s262f9527aa": {
   "x-mt": true
  },
+ "sfc404aec8b": "Sensorvärde",
+ "@sfc404aec8b": {
+  "x-mt": true
+ },
+ "s58d2896c42": "Enhetsstatus",
+ "@s58d2896c42": {
+  "x-mt": true
+ },
+ "s7def336f41": "Tid eller datum",
+ "@s7def336f41": {
+  "x-mt": true
+ },
+ "sf80835a318": "Ankomst (förvärmning)",
+ "@sf80835a318": {
+  "x-mt": true
+ },
  "s9a37dbb58a": "i morgon",
+ "s1fe084d61b": "idag idag idag idag",
+ "@s1fe084d61b": {
+  "x-mt": true
+ },
+ "safd8f4dddf": "högsta högsta högsta",
+ "@safd8f4dddf": {
+  "x-mt": true
+ },
+ "s484731d968": "lägsta",
+ "@s484731d968": {
+  "x-mt": true
+ },
+ "s77f9bfc303": "genomsnittet",
+ "@s77f9bfc303": {
+  "x-mt": true
+ },
+ "sc017c085e4": "(Plocka en enhet)",
+ "@sc017c085e4": {
+  "x-mt": true
+ },
+ "s3f09da81b6": "{p0}: genomsnittligt ≥ {p1} c eller topp ≥ {p2} c eller {p3} × dagen före",
+ "@s3f09da81b6": {
+  "x-mt": true
+ },
  "s900c886f50": "{p0}  {p2} {p3} °C",
+ "s81c88dabf7": "{p0} inte svara {p1} min",
+ "@s81c88dabf7": {
+  "x-mt": true
+ },
+ "s5414e9e5fd": "{p0} stänger av",
+ "@s5414e9e5fd": {
+  "x-mt": true
+ },
+ "s09a43fc401": "{p0} slår på",
+ "@s09a43fc401": {
+  "x-mt": true
+ },
+ "s56ef33ee50": "ankomst {p0} · påminnelse {p1} h innan {p2} °C",
+ "@s56ef33ee50": {
+  "x-mt": true
+ },
+ "sdeb38e3907": "Min anmälan",
+ "@sdeb38e3907": {
+  "x-mt": true
+ },
+ "s5e9a552fe6": "Min egen anmälan",
+ "@s5e9a552fe6": {
+  "x-mt": true
+ },
+ "se2e6db5acc": "Alla villkor och ditt eget budskap.",
+ "@se2e6db5acc": {
+  "x-mt": true
+ },
+ "sc6bec5e6cb": "Körs på denna hembro, även med appen stängd.",
+ "@sc6bec5e6cb": {
+  "x-mt": true
+ },
+ "se17e32a5c9": "Hembron är äldre än 0.11.0: påminnelser fungerar bara medan den här appen är öppen. Uppdatera bron (Fjärråtkomst → Mina hembroar).",
+ "@se17e32a5c9": {
+  "x-mt": true
+ },
+ "s5fd9e146bf": "Körs på hembron, även med appen stängd.",
+ "@s5fd9e146bf": {
+  "x-mt": true
+ },
+ "s563ba24005": "Ingen hemmabro: påminnelser fungerar medan appen är öppen. En hemmabro håller dem igång hela tiden.",
+ "@s563ba24005": {
+  "x-mt": true
+ },
+ "sf378d832a1": "Lägg till påminnelse",
+ "@sf378d832a1": {
+  "x-mt": true
+ },
+ "s034093c675": "Få ett meddelande när ett tillstånd är uppfyllt: elpris (till exempel i morgon), väderprognos, ett sensorvärde, ett enhetstillstånd eller en tid.",
+ "@s034093c675": {
+  "x-mt": true
+ },
+ "s49a26ce1f2": "Välj en färdig mall",
+ "@s49a26ce1f2": {
+  "x-mt": true
+ },
+ "sc0597b9029": "Senaste meddelanden",
+ "@sc0597b9029": {
+  "x-mt": true
+ },
+ "sac8af0108d": "Inga meddelanden ännu.",
+ "@sac8af0108d": {
+  "x-mt": true
+ },
  "sf4caddf894": "Avancerat",
+ "sbb2b4bdfc8": "Telefonmeddelanden (ntfy), tysta timmar, mute",
+ "@sbb2b4bdfc8": {
+  "x-mt": true
+ },
+ "s13d942a5a9": "Välj en enhet.",
+ "@s13d942a5a9": {
+  "x-mt": true
+ },
+ "sac782d209c": "Testmeddelande skickas.",
+ "@sac782d209c": {
+  "x-mt": true
+ },
  "s67584c9abf": "Enhet",
  "@s67584c9abf": {
   "x-mt": true
@@ -1330,23 +1470,115 @@
  "s140acccb81": "I dag",
  "s0de6e75a52": "I morgon",
  "sbbf8b7a598": "Medelvärde",
+ "s43b4c610f8": "Högsta",
+ "@s43b4c610f8": {
+  "x-mt": true
+ },
+ "s9dd0f70be6": "Lägsta",
+ "@s9dd0f70be6": {
+  "x-mt": true
+ },
  "scd65d31d4c": "Begränsning",
  "@scd65d31d4c": {
   "x-mt": true
  },
+ "s543838d91f": "Genomsnitt åtminstone",
+ "@s543838d91f": {
+  "x-mt": true
+ },
+ "s087a7e1b24": "eller peak åtminstone",
+ "@s087a7e1b24": {
+  "x-mt": true
+ },
+ "s8463e08e0b": "eller × föregående dags genomsnitt",
+ "@s8463e08e0b": {
+  "x-mt": true
+ },
+ "sd8332d82ec": "Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min",
+ "@sd8332d82ec": {
+  "x-mt": true
+ },
+ "s109b35551a": "Max Max Max Max Max",
+ "@s109b35551a": {
+  "x-mt": true
+ },
  "sf2c65c5aeb": "Medelvärde",
+ "s68b942c864": "Ställ in hemorten (Energy → Inställningar) för prognosen.",
+ "@s68b942c864": {
+  "x-mt": true
+ },
  "s38ac222392": "Värde",
  "s4cd3d92d4c": "På",
  "sa8e43f2b0e": "Offline",
+ "s65f512f499": "När offline för",
+ "@s65f512f499": {
+  "x-mt": true
+ },
+ "sa224d2f5f9": "Tid",
+ "@sa224d2f5f9": {
+  "x-mt": true
+ },
+ "s96b7e2c62c": "Varje dag (plocka ett datum för en gång)",
+ "@s96b7e2c62c": {
+  "x-mt": true
+ },
+ "s593004184e": "Ankomst",
+ "@s593004184e": {
+  "x-mt": true
+ },
+ "sa9faf47356": "Påminn före",
+ "@sa9faf47356": {
+  "x-mt": true
+ },
  "sf527ec4275": "Måltemperatur",
+ "s009a96409a": "Ny påminnelse",
+ "@s009a96409a": {
+  "x-mt": true
+ },
+ "sb346b2b647": "Påminnelse",
+ "@sb346b2b647": {
+  "x-mt": true
+ },
  "sc1845eb440": "Radera",
  "sb1924acbe7": "Namn",
  "s5506524eac": "När när när",
  "@s5506524eac": {
   "x-mt": true
  },
+ "s86c5d7fa73": "Meddelande",
+ "@s86c5d7fa73": {
+  "x-mt": true
+ },
+ "s8dda7ee75e": "'Du kan använda: {avg} {max} {min} {tim} {värde} {kort} {mål} { ankomst} {datum}'",
+ "@s8dda7ee75e": {
+  "x-mt": true
+ },
+ "sec1bdb2451": "Även till telefoner (ntfy)",
+ "@sec1bdb2451": {
+  "x-mt": true
+ },
+ "se2de73b535": "Alltid visas i appen också.",
+ "@se2de73b535": {
+  "x-mt": true
+ },
  "sd84d87d156": "Prioritet",
  "@sd84d87d156": {
+  "x-mt": true
+ },
+ "s7a09198c53": "5 (även i tysta timmar)",
+ "@s7a09198c53": {
+  "x-mt": true
+ },
+ "se8e58d6206": "Inte igen inom",
+ "@se8e58d6206": {
+  "x-mt": true
+ },
+ "s7d773a4dc9": "Inte förrän",
+ "@s7d773a4dc9": {
+  "x-mt": true
+ },
+ "sb86dc1b7bf": "Testa testtest",
+ "@sb86dc1b7bf": {
   "x-mt": true
  },
  "sfb4df77773": "Ge knappen ett namn.",
@@ -1824,6 +2056,14 @@
  "s76a76a654e": "iPhone-surfzon",
  "s15d4ca1672": "Telefonens surfzon",
  "sd54522fe39": "Router / surfzon",
+ "s3294a9422d": "Säkerhetspanel",
+ "@s3294a9422d": {
+  "x-mt": true
+ },
+ "sb97a2b7ed6": "ESP32-enhet",
+ "@sb97a2b7ed6": {
+  "x-mt": true
+ },
  "s23f4820db7": "Inte kontrollerbar ännu",
  "@s23f4820db7": {
   "x-mt": true
@@ -1833,6 +2073,14 @@
   "x-mt": true
  },
  "saae59a3865": "via hembryggan",
+ "sf226dd023a": "Kontrollerad med ntfy-meddelanden",
+ "@sf226dd023a": {
+  "x-mt": true
+ },
+ "s0e6aa5168c": "om detta är en säkerhetspanel, lägg till den som en ntfy kommandoenhet",
+ "@s0e6aa5168c": {
+  "x-mt": true
+ },
  "sdccd6e7f24": "Modell",
  "s891a4b434e": "')''}'",
  "s43aba09687": "Hamnar",
@@ -1845,7 +2093,15 @@
  },
  "sbc46a05125": "Namnge enheten",
  "s1d5ed84aed": "Sparas på den här enheten.",
+ "s3e6dd6ff2d": "Lägg till som kommandoenhet",
+ "@s3e6dd6ff2d": {
+  "x-mt": true
+ },
  "s59622d792b": "Byt namn",
+ "sa0fccfbcab": "via hembron",
+ "@sa0fccfbcab": {
+  "x-mt": true
+ },
  "s1169d2d093": "Hitta enheter",
  "s55b85f29a6": "Söker ditt hemnätverk...",
  "@s55b85f29a6": {
@@ -1871,6 +2127,14 @@
  "se3ef5a5658": "Skanna Modbus",
  "s9a018b8166": "Du är borta: hembron sökte ditt hemnätverk.",
  "@s9a018b8166": {
+  "x-mt": true
+ },
+ "s55d0b95fd2": "Detta nätverk",
+ "@s55d0b95fd2": {
+  "x-mt": true
+ },
+ "s955b44aaa4": "Dessa är på den här enhetens eget nätverk, inte på {p0}. De läggs inte till i det hemmet.",
+ "@s955b44aaa4": {
   "x-mt": true
  },
  "sf16a25c313": "Andra enheter i nätverket ({p0})",
@@ -4535,34 +4799,53 @@
  "@sa3e78d5c4e": {
   "x-mt": true
  },
- "s0b57661c18": "Kontrollera ditt hem var som helst",
- "@s0b57661c18": {
-  "x-mt": true
- },
- "sb43ef4094c": "Hemma pratar Molaplan med dina enheter direkt. På andra ställen krypteras det genom din hemmabro - ingen port vidarebefordran eller routerinställningar. Appen plockar rätt väg automatiskt.",
- "@sb43ef4094c": {
-  "x-mt": true
- },
- "se96e60e36c": "En hembro är någon Molaplan som alltid är hemma: en dator, en gammal surfplatta eller telefon, eller det separata broprogrammet på t.ex. en Raspberry Pi eller en Home Assistant-maskin. När du är borta, går telefonens kommandon igenom det till dina enheter, end-to-end krypterad. Ingenting att ställa in på routern (ingen port vidarebefordran).",
- "@se96e60e36c": {
-  "x-mt": true
- },
- "s075e5a4864": "Ansluten till hemmet",
- "sa7679488fb": "Hemma = direkt. Fjärr = genom hembron. Ingen anslutning = varken svar.",
- "@sa7679488fb": {
-  "x-mt": true
- },
- "s19cec9667e": "Test fjärråtkomst",
- "@s19cec9667e": {
-  "x-mt": true
- },
- "s86ad95fa48": "Kopiera hemmets vyer",
  "sfaa5185b74": "Ta bort fjärråtkomst?",
  "@sfaa5185b74": {
   "x-mt": true
  },
  "sbc44ce6993": "Den här enheten kan sedan inte längre komma hem från utsidan. Du kan koppla ihop igen när som helst.",
  "@sbc44ce6993": {
+  "x-mt": true
+ },
+ "s0b57661c18": "Kontrollera ditt hem var som helst",
+ "@s0b57661c18": {
+  "x-mt": true
+ },
+ "s07dc42dc7a": "Hemma pratar Molaplan med dina enheter direkt, någon annanstans krypterad genom din hembro. Ingenting att ställa in på routern.",
+ "@s07dc42dc7a": {
+  "x-mt": true
+ },
+ "sdde4ff19ce": "Visa enheterna av {p0} här",
+ "@sdde4ff19ce": {
+  "x-mt": true
+ },
+ "sc5328cbb8f": "Kopiera hembroens vyer till den här enheten. Läsningar och kontroller går sedan igenom hembron.",
+ "@sc5328cbb8f": {
+  "x-mt": true
+ },
+ "s86ad95fa48": "Kopiera hemmets vyer",
+ "s9b8f1f4a7e": "Lägg till en hembro",
+ "@s9b8f1f4a7e": {
+  "x-mt": true
+ },
+ "sa8c35b8bfb": "Kom igång",
+ "@sa8c35b8bfb": {
+  "x-mt": true
+ },
+ "s5683f9f7e4": "En hembro är någon Molaplan som alltid finns hemma: en dator, en gammal surfplatta eller telefon, en Molaplan Bridge-enhet eller det separata broprogrammet. När du är borta, går kommandon genom den end-to-end krypterad.",
+ "@s5683f9f7e4": {
+  "x-mt": true
+ },
+ "sa75a955933": "Hemma = den här enheten är på hemmabrons eget nätverk och pratar direkt med enheter. Remote = genom hemmabron. Ingen anslutning = varken svar.",
+ "@sa75a955933": {
+  "x-mt": true
+ },
+ "s90460344ec": "Hembron är en gammal version och rapporterar inte sitt nätverk, så allt går igenom det. Uppdatera bron för att upptäcka hemma.",
+ "@s90460344ec": {
+  "x-mt": true
+ },
+ "s19cec9667e": "Test fjärråtkomst",
+ "@s19cec9667e": {
   "x-mt": true
  },
  "s3563cb1635": "Ta bort fjärråtkomst",
@@ -4573,7 +4856,6 @@
  "@s528c4f3a4c": {
   "x-mt": true
  },
- "se7b8d659b5": "Avancerat",
  "sfd263f3e04": "Kamera uppdateras när fjärrkontrollen",
  "@sfd263f3e04": {
   "x-mt": true
@@ -4683,37 +4965,49 @@
  "@sb9e406274e": {
   "x-mt": true
  },
- "sd5fc9353f9": "äldre än 0.8.0 {p0} · ingen fjärruppdatering (uppdatering en gång på enheten)",
- "@sd5fc9353f9": {
+ "sb981e102f1": "gamla Molaplan (0.8.0 testbygge eller äldre)",
+ "@sb981e102f1": {
   "x-mt": true
  },
- "se9d573787e": " tyst uppdatering: ja",
- "@se9d573787e": {
-  "x-mt": true
- },
- "s82043faaa4": " · tyst uppdatering: Nej",
- "@s82043faaa4": {
-  "x-mt": true
- },
- "s42b97a989b": "version okänd",
- "@s42b97a989b": {
+ "s706ee3ad91": "Uppdatera en gång på enheten",
+ "@s706ee3ad91": {
   "x-mt": true
  },
  "sca90c9c253": " (ingen referens på den här enheten)",
  "@sca90c9c253": {
   "x-mt": true
  },
- "sfd88be2409": "Mitt hem broar",
- "@sfd88be2409": {
+ "s42b97a989b": "version okänd",
+ "@s42b97a989b": {
+  "x-mt": true
+ },
+ "se76155b6bd": "Uppdateringar tyst",
+ "@se76155b6bd": {
+  "x-mt": true
+ },
+ "s20889b3dc9": "Uppdatera {p0} en gång på enheten",
+ "@s20889b3dc9": {
+  "x-mt": true
+ },
+ "secbc1cfea3": "Denna hembro kör en gammal Molaplan som inte kan uppdatera sig på distans ännu.\n\nEngångsuppdatering: Öppna Molaplan på bryggan → Inställningar → Kontrollera för uppdateringar → Uppdatera och godkänna installationen. Eller installera det senaste APK över USB.\n\nDärefter fungerar Update från den här listan på distans.",
+ "@secbc1cfea3": {
+  "x-mt": true
+ },
+ "s356b6d4d13": "Hem broar",
+ "@s356b6d4d13": {
   "x-mt": true
  },
  "s57117babe8": "Uppdatera",
- "s40dab032ce": "Alla hembroar på ditt konto, även på andra webbplatser. Alltid via fjärrtjänsten.",
- "@s40dab032ce": {
+ "s5160bf55ae": "Öppna = använd det hemmet på den här enheten. Uppdatera = installera den senaste Molaplan på bron.",
+ "@s5160bf55ae": {
   "x-mt": true
  },
  "s9b2c8181e4": "Denna enhet",
  "@s9b2c8181e4": {
+  "x-mt": true
+ },
+ "s902eaaff9f": "Öppet Öppet Öppet Öppet Öppet",
+ "@s902eaaff9f": {
   "x-mt": true
  },
  "s72da730a42": "Fjärrservice: ansluten",
@@ -5512,10 +5806,6 @@
   "x-mt": true
  },
  "s0e655a209f": "Lägg till ändå",
- "s902eaaff9f": "Öppet Öppet Öppet Öppet Öppet",
- "@s902eaaff9f": {
-  "x-mt": true
- },
  "s12c2f8e6e4": "Endast hemnätverket",
  "s5f7c464e6d": "kl. {p0}",
  "s21b64ae0a7": "{p0} fungerar bara i hemnätverket. Rutan blir normal igen av sig själv när du är hemma.",
@@ -6757,14 +7047,6 @@
  "@sb56e7e9f81": {
   "x-mt": true
  },
- "s09f79d4fda": "Inget svar (PIN?) - enheten svarade inte inom {p0} s (topiskt \"{p1}\"). Kontrollera PIN: många enheter svarar inte på fel PIN alls.",
- "@s09f79d4fda": {
-  "x-mt": true
- },
- "sf25dcf262f": "Enheten svarade inte inom {p0} s (topisk \"{p1}\"). Om den svarar endast vid intervaller, öka \"Vänta på svar\" eller \"Minimum tid mellan kommandon\".",
- "@sf25dcf262f": {
-  "x-mt": true
- },
  "s1257447096": "Enheten svarade: {p0}",
  "@s1257447096": {
   "x-mt": true
@@ -7061,7 +7343,15 @@
   "x-mt": true
  },
  "s1dfeacd9f6": "UDP",
+ "s6c33f19716": "inte svara ({p0} min)",
+ "@s6c33f19716": {
+  "x-mt": true
+ },
  "scebcdabe25": "av",
+ "sd4be8bca5f": "Testa testtest",
+ "@sd4be8bca5f": {
+  "x-mt": true
+ },
  "sd76aadb97c": "Vattenläcka → larm",
  "@sd76aadb97c": {
   "x-mt": true
@@ -7150,7 +7440,43 @@
  "@sc797ab9c4c": {
   "x-mt": true
  },
+ "seec5bf7f8d": "'I morgon elgenomsnitt {avg} c/kWh (topp {max} på {hour}). Ljus eldstaden.'",
+ "@seec5bf7f8d": {
+  "x-mt": true
+ },
+ "s4a7ea7d7f1": "'Elektricitet är exceptionellt dyrt idag: genomsnittligt {vg} c/kWh, topp {max} på {tim}.'",
+ "@s4a7ea7d7f1": {
+  "x-mt": true
+ },
+ "se8a2912e3e": "'Elektricitet är exceptionellt dyrt i morgon: genomsnitt {avg} c/kWh, topp {max} på {tim}.'",
+ "@se8a2912e3e": {
+  "x-mt": true
+ },
+ "s0818fd54b1": "'Ankomst till stugan {ankomst}. Vänd värmen på nu, mål {mål} ° C.'",
+ "@s0818fd54b1": {
+  "x-mt": true
+ },
+ "s57aad0f6c3": "'I morgon: genomsnitt {avg} c/kWh, topp {max} på {tim}.'",
+ "@s57aad0f6c3": {
+  "x-mt": true
+ },
+ "s05394a7333": "'I dag: genomsnitt {avg} c/kWh, topp {max} på {hour}.'",
+ "@s05394a7333": {
+  "x-mt": true
+ },
+ "s412e06dba4": "'Exceptionellt dyr el {datum}: genomsnitt {avg} c/kWh, topp {max} på {tim}.'",
+ "@s412e06dba4": {
+  "x-mt": true
+ },
+ "s7f8a4ab629": "'Prognos {datum}: {temp} °C.'",
+ "@s7f8a4ab629": {
+  "x-mt": true
+ },
  "s326f105e40": "'{tile}: {value}'",
+ "s65afe3ff6f": "'Ankomst { ankomst}. Vänd värmen på, mål {mål} °C.'",
+ "@s65afe3ff6f": {
+  "x-mt": true
+ },
  "scec02139b6": "Kort saknas",
  "@scec02139b6": {
   "x-mt": true
@@ -7874,264 +8200,32 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "s41bb837a83": "Meddelanden och påminnelser",
- "@s41bb837a83": {
+ "s02e16b2c5c": "Kommandot skickades, men enheten svarade inte inom {p0} s - är enheten online? Kontrollera också PIN: många enheter svarar inte på fel PIN alls (topiskt \"{p1}\").",
+ "@s02e16b2c5c": {
   "x-mt": true
  },
- "s83f816fbe3": "Exceptionellt dyr el",
- "@s83f816fbe3": {
+ "sdf4ecde616": "Kommandot skickades, men enheten svarade inte inom {p0} s - är enheten online? Om det svarar endast vid intervall, öka \"Minimum tid mellan kommandon\" (topisk \"{p1}\").",
+ "@sdf4ecde616": {
   "x-mt": true
  },
- "sfc404aec8b": "Sensorvärde",
- "@sfc404aec8b": {
+ "s33cfb86f9f": "Kommandot skickades, men enheten svarade inte i tid - är enheten online? (Nfy-servern fungerar.)",
+ "@s33cfb86f9f": {
   "x-mt": true
  },
- "s58d2896c42": "Enhetsstatus",
- "@s58d2896c42": {
+ "s6f139b5bcc": "Preset",
+ "@s6f139b5bcc": {
   "x-mt": true
  },
- "s7def336f41": "Tid eller datum",
- "@s7def336f41": {
+ "sa149146483": "Kameraövervakning: ljus, siren, larm på / av / bekräftelse och stat. Ämnet och PIN är dina egna.",
+ "@sa149146483": {
   "x-mt": true
  },
- "sf80835a318": "Ankomst (förvärmning)",
- "@sf80835a318": {
+ "sb6b101dd23": "Egen enhet",
+ "@sb6b101dd23": {
   "x-mt": true
  },
- "s1fe084d61b": "idag idag idag idag",
- "@s1fe084d61b": {
-  "x-mt": true
- },
- "safd8f4dddf": "högsta högsta högsta",
- "@safd8f4dddf": {
-  "x-mt": true
- },
- "s484731d968": "lägsta",
- "@s484731d968": {
-  "x-mt": true
- },
- "s77f9bfc303": "genomsnittet",
- "@s77f9bfc303": {
-  "x-mt": true
- },
- "sc017c085e4": "(Plocka en enhet)",
- "@sc017c085e4": {
-  "x-mt": true
- },
- "s3f09da81b6": "{p0}: genomsnittligt ≥ {p1} c eller topp ≥ {p2} c eller {p3} × dagen före",
- "@s3f09da81b6": {
-  "x-mt": true
- },
- "s81c88dabf7": "{p0} inte svara {p1} min",
- "@s81c88dabf7": {
-  "x-mt": true
- },
- "s5414e9e5fd": "{p0} stänger av",
- "@s5414e9e5fd": {
-  "x-mt": true
- },
- "s09a43fc401": "{p0} slår på",
- "@s09a43fc401": {
-  "x-mt": true
- },
- "s56ef33ee50": "ankomst {p0} · påminnelse {p1} h innan {p2} °C",
- "@s56ef33ee50": {
-  "x-mt": true
- },
- "sdeb38e3907": "Min anmälan",
- "@sdeb38e3907": {
-  "x-mt": true
- },
- "s5e9a552fe6": "Min egen anmälan",
- "@s5e9a552fe6": {
-  "x-mt": true
- },
- "se2e6db5acc": "Alla villkor och ditt eget budskap.",
- "@se2e6db5acc": {
-  "x-mt": true
- },
- "sc6bec5e6cb": "Körs på denna hembro, även med appen stängd.",
- "@sc6bec5e6cb": {
-  "x-mt": true
- },
- "se17e32a5c9": "Hembron är äldre än 0.11.0: påminnelser fungerar bara medan den här appen är öppen. Uppdatera bron (Fjärråtkomst → Mina hembroar).",
- "@se17e32a5c9": {
-  "x-mt": true
- },
- "s5fd9e146bf": "Körs på hembron, även med appen stängd.",
- "@s5fd9e146bf": {
-  "x-mt": true
- },
- "s563ba24005": "Ingen hemmabro: påminnelser fungerar medan appen är öppen. En hemmabro håller dem igång hela tiden.",
- "@s563ba24005": {
-  "x-mt": true
- },
- "sf378d832a1": "Lägg till påminnelse",
- "@sf378d832a1": {
-  "x-mt": true
- },
- "s034093c675": "Få ett meddelande när ett tillstånd är uppfyllt: elpris (till exempel i morgon), väderprognos, ett sensorvärde, ett enhetstillstånd eller en tid.",
- "@s034093c675": {
-  "x-mt": true
- },
- "s49a26ce1f2": "Välj en färdig mall",
- "@s49a26ce1f2": {
-  "x-mt": true
- },
- "sc0597b9029": "Senaste meddelanden",
- "@sc0597b9029": {
-  "x-mt": true
- },
- "sac8af0108d": "Inga meddelanden ännu.",
- "@sac8af0108d": {
-  "x-mt": true
- },
- "sbb2b4bdfc8": "Telefonmeddelanden (ntfy), tysta timmar, mute",
- "@sbb2b4bdfc8": {
-  "x-mt": true
- },
- "s13d942a5a9": "Välj en enhet.",
- "@s13d942a5a9": {
-  "x-mt": true
- },
- "sac782d209c": "Testmeddelande skickas.",
- "@sac782d209c": {
-  "x-mt": true
- },
- "s43b4c610f8": "Högsta",
- "@s43b4c610f8": {
-  "x-mt": true
- },
- "s9dd0f70be6": "Lägsta",
- "@s9dd0f70be6": {
-  "x-mt": true
- },
- "s543838d91f": "Genomsnitt åtminstone",
- "@s543838d91f": {
-  "x-mt": true
- },
- "s087a7e1b24": "eller peak åtminstone",
- "@s087a7e1b24": {
-  "x-mt": true
- },
- "s8463e08e0b": "eller × föregående dags genomsnitt",
- "@s8463e08e0b": {
-  "x-mt": true
- },
- "sd8332d82ec": "Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min",
- "@sd8332d82ec": {
-  "x-mt": true
- },
- "s109b35551a": "Max Max Max Max Max",
- "@s109b35551a": {
-  "x-mt": true
- },
- "s68b942c864": "Ställ in hemorten (Energy → Inställningar) för prognosen.",
- "@s68b942c864": {
-  "x-mt": true
- },
- "s65f512f499": "När offline för",
- "@s65f512f499": {
-  "x-mt": true
- },
- "sa224d2f5f9": "Tid",
- "@sa224d2f5f9": {
-  "x-mt": true
- },
- "s96b7e2c62c": "Varje dag (plocka ett datum för en gång)",
- "@s96b7e2c62c": {
-  "x-mt": true
- },
- "s593004184e": "Ankomst",
- "@s593004184e": {
-  "x-mt": true
- },
- "sa9faf47356": "Påminn före",
- "@sa9faf47356": {
-  "x-mt": true
- },
- "s009a96409a": "Ny påminnelse",
- "@s009a96409a": {
-  "x-mt": true
- },
- "sb346b2b647": "Påminnelse",
- "@sb346b2b647": {
-  "x-mt": true
- },
- "s86c5d7fa73": "Meddelande",
- "@s86c5d7fa73": {
-  "x-mt": true
- },
- "s8dda7ee75e": "'Du kan använda: {avg} {max} {min} {tim} {värde} {kort} {mål} { ankomst} {datum}'",
- "@s8dda7ee75e": {
-  "x-mt": true
- },
- "sec1bdb2451": "Även till telefoner (ntfy)",
- "@sec1bdb2451": {
-  "x-mt": true
- },
- "se2de73b535": "Alltid visas i appen också.",
- "@se2de73b535": {
-  "x-mt": true
- },
- "s7a09198c53": "5 (även i tysta timmar)",
- "@s7a09198c53": {
-  "x-mt": true
- },
- "se8e58d6206": "Inte igen inom",
- "@se8e58d6206": {
-  "x-mt": true
- },
- "s7d773a4dc9": "Inte förrän",
- "@s7d773a4dc9": {
-  "x-mt": true
- },
- "sb86dc1b7bf": "Testa testtest",
- "@sb86dc1b7bf": {
-  "x-mt": true
- },
- "s6c33f19716": "inte svara ({p0} min)",
- "@s6c33f19716": {
-  "x-mt": true
- },
- "sd4be8bca5f": "Testa testtest",
- "@sd4be8bca5f": {
-  "x-mt": true
- },
- "seec5bf7f8d": "'I morgon elgenomsnitt {avg} c/kWh (topp {max} på {hour}). Ljus eldstaden.'",
- "@seec5bf7f8d": {
-  "x-mt": true
- },
- "s4a7ea7d7f1": "'Elektricitet är exceptionellt dyrt idag: genomsnittligt {vg} c/kWh, topp {max} på {tim}.'",
- "@s4a7ea7d7f1": {
-  "x-mt": true
- },
- "se8a2912e3e": "'Elektricitet är exceptionellt dyrt i morgon: genomsnitt {avg} c/kWh, topp {max} på {tim}.'",
- "@se8a2912e3e": {
-  "x-mt": true
- },
- "s0818fd54b1": "'Ankomst till stugan {ankomst}. Vänd värmen på nu, mål {mål} ° C.'",
- "@s0818fd54b1": {
-  "x-mt": true
- },
- "s57aad0f6c3": "'I morgon: genomsnitt {avg} c/kWh, topp {max} på {tim}.'",
- "@s57aad0f6c3": {
-  "x-mt": true
- },
- "s05394a7333": "'I dag: genomsnitt {avg} c/kWh, topp {max} på {hour}.'",
- "@s05394a7333": {
-  "x-mt": true
- },
- "s412e06dba4": "'Exceptionellt dyr el {datum}: genomsnitt {avg} c/kWh, topp {max} på {tim}.'",
- "@s412e06dba4": {
-  "x-mt": true
- },
- "s7f8a4ab629": "'Prognos {datum}: {temp} °C.'",
- "@s7f8a4ab629": {
-  "x-mt": true
- },
- "s65afe3ff6f": "'Ankomst { ankomst}. Vänd värmen på, mål {mål} °C.'",
- "@s65afe3ff6f": {
+ "s1ffb53e7f3": "Kameraövervakning (kv panel)",
+ "@s1ffb53e7f3": {
   "x-mt": true
  }
 }

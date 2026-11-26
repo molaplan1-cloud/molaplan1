@@ -31,13 +31,28 @@ Future<(List<ScanHit>, bool)> defaultNetworkScan(BuildContext context) async {
     if (locals.isNotEmpty) scanNetwork(locals: locals).catchError((_) => <ScanHit>[]),
     if (viaBridge) scanViaBridge(router).catchError((_) => <ScanHit>[]),
   ]);
-  final byIp = <String, ScanHit>{};
-  for (final h in r.expand((l) => l)) {
-    // Local results first: same IP from the bridge only adds details.
-    byIp.containsKey(h.ip) ? byIp[h.ip]!.merge(h) : byIp[h.ip] = h;
+  return (mergeScanResults(r.expand((l) => l), sameNetwork: router.sameNetwork == true), viaBridge && locals.isEmpty);
+}
+
+/// t233u: this device's results and the bridge's are merged by IP only when this device is
+/// verified to be on the bridge's own network; otherwise 192.168.1.10 here and 192.168.1.10 at
+/// the bridge's site are different devices and stay apart.
+List<ScanHit> mergeScanResults(Iterable<ScanHit> all, {required bool sameNetwork}) {
+  final list = all.toList();
+  // A "router" that is not on the scanning device's own LAN (e.g. a mobile router's carrier-side
+  // gateway 10.x) is not a home device – older bridges still report it.
+  String net(String ip) => ip.contains('.') ? ip.substring(0, ip.lastIndexOf('.')) : ip;
+  for (final side in [true, false]) {
+    final own = {for (final h in list) if (h.viaBridge == side && h.role == 'self') net(h.ip)};
+    if (own.isNotEmpty) list.removeWhere((h) => h.viaBridge == side && h.role == 'router' && !own.contains(net(h.ip)));
   }
-  final out = byIp.values.toList()..sort((a, b) => (b.known ? 1 : 0) - (a.known ? 1 : 0));
-  return (out, viaBridge && locals.isEmpty);
+  final byKey = <String, ScanHit>{};
+  for (final h in list) {
+    final k = sameNetwork ? h.ip : '${h.viaBridge ? 'b' : 'l'}|${h.ip}';
+    // Local results first: same IP from the bridge only adds details.
+    byKey.containsKey(k) ? byKey[k]!.merge(h) : byKey[k] = h;
+  }
+  return byKey.values.toList()..sort((a, b) => (b.known ? 1 : 0) - (a.known ? 1 : 0));
 }
 
 String scanKindLabel(BuildContext context, ScanHit h) => switch (h.kind) {
@@ -111,6 +126,8 @@ String scanTitle(BuildContext context, ScanHit h, Map<String, String> own) {
   }
   if (h.known) return h.name.isNotEmpty ? h.name : scanKindLabel(context, h);
   if (best.isNotEmpty) return best;
+  if (h.hint == 'ntfy_panel') return tx(context, 'Valvontapaneeli', 'Security panel');
+  if (h.hint == 'esp') return tx(context, 'ESP32-laite', 'ESP32 device');
   final t = deviceTypeLabel(context, h.type);
   return t.isNotEmpty ? t : scanKindLabel(context, h);
 }
@@ -187,6 +204,19 @@ class _NetworkScanCardState extends State<NetworkScanCard> {
     if (ok == true) widget.onAdded?.call(flow.$1 == 'provider');
   }
 
+  Future<void> _addNtfy(ScanHit h) async {
+    final t = deviceTemplates.where((t) => t.id == 'ntfy_device').firstOrNull;
+    if (t == null) return;
+    final best = scanTitle(context, h, AppScope.read(context).config.scanNames);
+    final ok = await Navigator.push<bool>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => TemplateSetupPage(template: t, dashboard: widget.dashboard, initialValues: {...ntfyKvPanelPreset, 'preset': 'kv_panel', 'name': best}),
+      ),
+    );
+    if (ok == true) widget.onAdded?.call(false);
+  }
+
   Widget _details(BuildContext context, ScanHit h, bool adv) {
     final title = scanTitle(context, h, AppScope.read(context).config.scanNames);
     final type = deviceTypeLabel(context, h.type);
@@ -203,6 +233,10 @@ class _NetworkScanCardState extends State<NetworkScanCard> {
         tx(context, 'Airthings: lisää pilven tai Bluetoothin kautta', 'Airthings: add via the cloud or Bluetooth'),
       if (!h.known || adv) h.known ? h.address : h.ip,
       if (h.viaBridge) tx(context, 'kotisillan kautta', 'via home bridge'),
+      if (h.hint == 'ntfy_panel')
+        tx(context, 'ohjataan ntfy-viesteillä', 'controlled with ntfy messages')
+      else if (h.hint == 'esp')
+        tx(context, 'jos tämä on valvontapaneeli, lisää se ntfy-komentolaitteena', 'if this is a security panel, add it as an ntfy command device'),
     ];
     return Text(parts.join(' · '), maxLines: 2, overflow: TextOverflow.ellipsis);
   }
@@ -257,9 +291,10 @@ class _NetworkScanCardState extends State<NetworkScanCard> {
     if (v != null) await st.setScanName(h.nameKey, v);
   }
 
-  Widget _tile(BuildContext context, ScanHit h, bool adv) {
+  Widget _tile(BuildContext context, ScanHit h, bool adv, {bool addable = true}) {
     final own = AppScope.of(context).config.scanNames;
     final unknown = !h.known;
+    final ntfy = addable && unknown && h.hint.isNotEmpty;
     final line = ListTile(
       key: ValueKey('scan-hit-${h.ip}'),
       leading: Icon(
@@ -267,11 +302,18 @@ class _NetworkScanCardState extends State<NetworkScanCard> {
       ),
       title: Text(scanTitle(context, h, own), key: ValueKey('scan-title-${h.ip}')),
       subtitle: _details(context, h, adv),
-      trailing: h.addFlow != null
+      trailing: addable && h.addFlow != null
           ? FilledButton.tonal(
               key: ValueKey('scan-add-${h.ip}'),
               onPressed: () => _add(h),
               child: Text(tx(context, 'Lisää', 'Add')),
+            )
+          : ntfy
+          // t233u: an ESP32 panel (e.g. 'kamera valvonta') is controlled over ntfy, not by IP.
+          ? TextButton(
+              key: ValueKey('scan-ntfy-${h.ip}'),
+              onPressed: () => _addNtfy(h),
+              child: Text(tx(context, 'Lisää komentolaitteena', 'Add as command device')),
             )
           : (unknown && h.role != 'self'
                 ? IconButton(
@@ -281,7 +323,7 @@ class _NetworkScanCardState extends State<NetworkScanCard> {
                     onPressed: () => _rename(h),
                   )
                 : null),
-      onTap: h.addFlow != null
+      onTap: addable && h.addFlow != null
           ? () => _add(h)
           : (adv ? () => setState(() => open.contains(h.ip) ? open.remove(h.ip) : open.add(h.ip)) : null),
     );
@@ -295,10 +337,19 @@ class _NetworkScanCardState extends State<NetworkScanCard> {
 
   @override
   Widget build(BuildContext context) {
-    final adv = AppScope.of(context).config.advanced;
+    final st = AppScope.of(context);
+    final adv = st.config.advanced;
     final known = hits.where((h) => h.known).toList();
     final unknown = hits.where((h) => !h.known).toList();
     final theme = Theme.of(context);
+    // t233u: paired with a home elsewhere -> 'Tämä verkko' and '<home> (<bridge>) – kotisillan kautta'.
+    int order(ScanHit h) => h.role == 'self' ? 0 : (h.known ? 1 : (h.hint.isNotEmpty ? 2 : 3));
+    final local = hits.where((h) => !h.viaBridge).toList()..sort((a, b) => order(a) - order(b));
+    final bridged = hits.where((h) => h.viaBridge).toList()..sort((a, b) => order(a) - order(b));
+    final split = bridged.isNotEmpty && st.remote.router.sameNetwork != true;
+    final bridgeModel = bridged.where((h) => h.role == 'self').map((h) => h.names['Tämä laite'] ?? h.model).firstOrNull ?? '';
+    final homeLabel =
+        '${st.remote.paired?.name ?? tx(context, 'Koti', 'Home')}${bridgeModel.isEmpty ? '' : ' ($bridgeModel)'} – ${tx(context, 'kotisillan kautta', 'via the home bridge')}';
     return Card(
       key: const ValueKey('network-scan'),
       margin: const EdgeInsets.fromLTRB(16, 8, 16, 4),
@@ -383,6 +434,32 @@ class _NetworkScanCardState extends State<NetworkScanCard> {
                   style: theme.textTheme.bodySmall,
                 ),
               ),
+            if (split) ...[
+              for (final g in [(false, local), (true, bridged)])
+                if (g.$2.isNotEmpty) ...[
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+                    child: Text(
+                      g.$1 ? homeLabel : tx(context, 'Tämä verkko', 'This network'),
+                      key: ValueKey(g.$1 ? 'scan-group-bridge' : 'scan-group-local'),
+                      style: theme.textTheme.titleSmall?.copyWith(color: theme.colorScheme.primary),
+                    ),
+                  ),
+                  if (!g.$1)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(
+                        tx(
+                          context,
+                          'Nämä ovat tämän laitteen omassa verkossa, eivät kodissa ${st.remote.paired?.name ?? ''}. Niitä ei lisätä siihen kotiin.',
+                          'These are on this device\'s own network, not at ${st.remote.paired?.name ?? ''}. They are not added to that home.',
+                        ),
+                        style: theme.textTheme.bodySmall,
+                      ),
+                    ),
+                  for (final h in g.$2) _tile(context, h, adv, addable: g.$1),
+                ],
+            ] else ...[
             for (final h in known) _tile(context, h, adv),
             if (unknown.isNotEmpty)
               ExpansionTile(
@@ -404,6 +481,7 @@ class _NetworkScanCardState extends State<NetworkScanCard> {
                 ),
                 children: [for (final h in unknown) _tile(context, h, adv)],
               ),
+            ],
           ],
         ),
       ),

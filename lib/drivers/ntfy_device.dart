@@ -402,14 +402,15 @@ class NtfyDeviceDriver extends NtfyDriver {
       text,
       wait: wait,
       accept: (m) => ntfyReplyMatches(m, title: s.strOrNull('replyTitle'), match: s.strOrNull('replyMatch'), cid: cid),
+      // t235u: the publish already succeeded here – a missing reply is the device's.
       timeoutText: (topic, secs) => usesPin
           ? dtx(
-              'Ei vastausta (PIN?) – laite ei vastannut $secs sekunnissa (aihe "$topic"). Tarkista PIN-koodi: moni laite ei vastaa lainkaan väärään PIN-koodiin.',
-              'No reply (PIN?) – the device did not answer within $secs s (topic "$topic"). Check the PIN: many devices do not answer a wrong PIN at all.',
+              'Komento lähti, mutta laite ei vastannut $secs s:ssa – onko laite verkossa? Tarkista myös PIN-koodi: moni laite ei vastaa lainkaan väärään PIN-koodiin (aihe "$topic").',
+              'The command was sent, but the device did not answer within $secs s – is the device online? Also check the PIN: many devices do not answer a wrong PIN at all (topic "$topic").',
             )
           : dtx(
-              'Laite ei vastannut $secs sekunnissa (aihe "$topic"). Jos laite vastaa vain tietyin väliajoin, kasvata "Vastauksen odotus" tai "Komentojen väli" -asetusta.',
-              'The device did not answer within $secs s (topic "$topic"). If it answers only at intervals, increase "Wait for reply" or "Minimum time between commands".',
+              'Komento lähti, mutta laite ei vastannut $secs s:ssa – onko laite verkossa? Jos laite vastaa vain tietyin väliajoin, kasvata "Komentojen väli" -asetusta (aihe "$topic").',
+              'The command was sent, but the device did not answer within $secs s – is the device online? If it answers only at intervals, increase "Minimum time between commands" (topic "$topic").',
             ),
     );
     // A JSON reply carries the whole state even when the command was refused: share it first.
@@ -467,4 +468,20 @@ class NtfyDeviceDriver extends NtfyDriver {
     final pin = s.str('pin').isEmpty ? '' : dtx(' PIN on tallennettu.', ' A PIN is stored.');
     return '$base$pin';
   }
+}
+
+/// t235u: the setup test's message when the status read failed after the server test passed.
+/// A publish failure keeps its own (server) message; a missing reply never blames the service.
+String ntfyNoReplyText(Object e, String serverOk) {
+  final m = e is DriverException ? e.message : '';
+  if (m.startsWith('Komento lähti') || m.startsWith('The command was sent') || m.startsWith('Laite vastasi') || m.startsWith('The device answered')) {
+    return m;
+  }
+  if (e is TimeoutException) {
+    return dtx(
+      'Komento lähti, mutta laite ei vastannut ajoissa – onko laite verkossa? (ntfy-palvelin toimii.)',
+      'The command was sent, but the device did not answer in time – is the device online? (The ntfy server works.)',
+    );
+  }
+  return m.isNotEmpty ? m : '$e';
 }

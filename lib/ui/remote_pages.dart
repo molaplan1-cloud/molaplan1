@@ -221,11 +221,30 @@ class _RemoteHubPageState extends State<RemoteHubPage> {
     }
   }
 
+  Future<void> _unpair(BuildContext context) async {
+    final r = AppScope.read(context).remote;
+    final ok = await confirmDialog(
+      context,
+      tx(context, 'Poistetaanko etäyhteys?', 'Remove remote access?'),
+      tx(
+        context,
+        'Tämä laite ei sen jälkeen saa yhteyttä kotiin kodin ulkopuolelta. Voit yhdistää uudelleen milloin vain.',
+        'This device can then no longer reach home from outside. You can pair again any time.',
+      ),
+      ok: tx(context, 'Poista', 'Remove'),
+    );
+    if (ok) await r.unpair();
+  }
+
+  // t231u: one clear list of home bridges (each: Avaa + Päivitä); adding a bridge and everything
+  // else live under '+ Lisää kotisilta' and 'Edistyneet'.
   @override
   Widget build(BuildContext context) {
     final st = AppScope.of(context);
     final r = st.remote;
     final text = Theme.of(context).textTheme;
+    final hasHome = r.isPaired || r.bridgeOn || st.ownBridges.isNotEmpty;
+    final p = r.paired;
     return Scaffold(
       appBar: AppBar(title: Text(tx(context, 'Etäkäyttö', 'Remote access'))),
       body: Center(
@@ -242,159 +261,183 @@ class _RemoteHubPageState extends State<RemoteHubPage> {
               Text(
                 tx(
                   context,
-                  'Kotona Molaplan puhuu laitteille suoraan. Muualla yhteys kulkee salattuna kotisillan kautta – porttiohjauksia tai reititinasetuksia ei tarvita. Sovellus valitsee automaattisesti nopeimman tien.',
-                  'At home Molaplan talks to your devices directly. Elsewhere it goes encrypted through your home bridge – no port forwarding or router settings. The app picks the right path automatically.',
+                  'Kotona Molaplan puhuu laitteille suoraan, muualla salattuna kotisillan kautta. Mitään ei tarvitse säätää reitittimestä.',
+                  'At home Molaplan talks to your devices directly, elsewhere encrypted through your home bridge. Nothing to set up on the router.',
                 ),
                 style: text.bodyLarge,
               ),
               const SizedBox(height: 12),
-              // t174u: what a home bridge is, in plain words, and its status.
+              if (hasHome) ...[
+                const OwnBridgesCard(),
+                // t232u: paired with a home whose views are not on this device yet.
+                if (p != null && !r.copiedHomes.contains(p.home)) ...[
+                  const SizedBox(height: 12),
+                  Card(
+                    key: const ValueKey('remote-show-home'),
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            tx(context, 'Näytä kodin ${p.name} laitteet täällä', 'Show the devices of ${p.name} here'),
+                            style: text.titleMedium,
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            tx(
+                              context,
+                              'Kopioi kotisillan näkymät tähän laitteeseen. Lukemat ja ohjaukset kulkevat sen jälkeen kotisillan kautta.',
+                              "Copy the home bridge's dashboards to this device. Readings and controls then go through the home bridge.",
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          FilledButton.icon(
+                            key: const ValueKey('remote-copy-main'),
+                            onPressed: () => copyHomeSetup(context),
+                            icon: const Icon(Icons.download_outlined),
+                            label: Text(tx(context, 'Kopioi kodin näkymät', 'Copy home dashboards')),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+                const SizedBox(height: 12),
+                Card(
+                  child: ExpansionTile(
+                    key: const ValueKey('remote-add'),
+                    leading: const Icon(Icons.add),
+                    title: Text(tx(context, 'Lisää kotisilta', 'Add a home bridge')),
+                    childrenPadding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                    children: [remoteChoices(context, showOthers: false)],
+                  ),
+                ),
+              ] else ...[
+                Text(tx(context, 'Aloita näin', 'Get started'), style: text.titleMedium),
+                const SizedBox(height: 6),
+                remoteChoices(context, showOthers: false),
+              ],
+              const SizedBox(height: 8),
               Card(
-                key: const ValueKey('remote-what'),
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(tx(context, 'Mikä on kotisilta?', 'What is a home bridge?'), style: text.titleMedium),
-                      const SizedBox(height: 6),
+                child: ExpansionTile(
+                  key: const ValueKey('remote-advanced'),
+                  leading: const Icon(Icons.tune),
+                  title: Text(tx(context, 'Edistyneet', 'Advanced')),
+                  childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+                  expandedCrossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      key: const ValueKey('remote-what'),
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Text(
+                        tx(
+                          context,
+                          'Kotisilta on mikä tahansa kotona aina päällä oleva Molaplan: PC, vanha tabletti tai puhelin, Molaplan Bridge -laite tai erillinen kotisiltaohjelma. Kun olet poissa kotoa, komennot kulkevat sen kautta päästä päähän salattuina.',
+                          'A home bridge is any Molaplan that is always on at home: a PC, an old tablet or phone, a Molaplan Bridge device or the separate bridge program. When you are away, commands go through it end-to-end encrypted.',
+                        ),
+                        style: text.bodySmall,
+                      ),
+                    ),
+                    const BridgeStatusLine(),
+                    if (p != null) ...[
+                      const SizedBox(height: 8),
                       Text(
                         tx(
                           context,
-                          'Kotisilta on mikä tahansa kotona aina päällä oleva Molaplan: PC, vanha tabletti tai puhelin, tai erillinen kotisiltaohjelma esim. Raspberry Pillä tai Home Assistant -koneella. Kun olet poissa kotoa, puhelimesi komennot kulkevat sen kautta kodin laitteille päästä päähän salattuina. Reitittimeen ei tarvitse tehdä mitään (ei porttiohjauksia).',
-                          'A home bridge is any Molaplan that is always on at home: a PC, an old tablet or phone, or the separate bridge program on e.g. a Raspberry Pi or a Home Assistant machine. When you are away, your phone\'s commands go through it to your devices, end-to-end encrypted. Nothing to set up on the router (no port forwarding).',
+                          'Kotona = tämä laite on kotisillan omassa verkossa ja puhuu laitteille suoraan. Etäyhteys = kotisillan kautta. Ei yhteyttä = kumpikaan ei vastaa.',
+                          "At home = this device is on the home bridge's own network and talks to devices directly. Remote = through the home bridge. No connection = neither answers.",
                         ),
+                        style: text.bodySmall,
                       ),
-                      const SizedBox(height: 12),
-                      const BridgeStatusLine(),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
-              const OwnBridgesCard(),
-              if (AppScope.of(context).ownBridges.isNotEmpty) const SizedBox(height: 16),
-              if (r.isPaired) ...[
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            const Icon(Icons.home_work_outlined, size: 30),
-                            const SizedBox(width: 12),
-                            Expanded(
-                              child: Text(
-                                '${tx(context, 'Yhdistetty kotiin', 'Connected to home')}: ${r.paired!.name}',
-                                style: text.titleMedium,
-                              ),
+                      if (r.homeNetworkUnverified)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 6),
+                          child: Text(
+                            tx(
+                              context,
+                              'Kotisilta on vanha versio eikä kerro verkkoaan, joten yhteys kulkee aina sen kautta. Päivitä kotisilta, niin Kotona-tila tunnistuu.',
+                              'The home bridge is an old version and does not report its network, so everything goes through it. Update the bridge to detect At home.',
                             ),
-                          ],
-                        ),
-                        const SizedBox(height: 10),
-                        const RemoteStatusChip(big: true),
-                        const SizedBox(height: 6),
-                        Text(
-                          tx(
-                            context,
-                            'Kotona = suoraan laitteille. Etäyhteys = kotisillan kautta. Ei yhteyttä = kumpikaan ei vastaa.',
-                            'At home = directly. Remote = through the home bridge. No connection = neither answers.',
+                            key: const ValueKey('remote-net-unverified'),
+                            style: text.bodySmall,
                           ),
-                          style: text.bodySmall,
                         ),
-                        const SizedBox(height: 8),
-                        const BridgeVersionTile(),
-                        if (_checkResult != null) ...[const SizedBox(height: 10), SuccessBox(text: _checkResult!)],
-                        const SizedBox(height: 12),
-                        Wrap(
-                          spacing: 10,
-                          runSpacing: 10,
-                          children: [
-                            FilledButton.tonalIcon(
-                              key: const ValueKey('remote-check'),
-                              onPressed: _checking ? null : _check,
-                              icon: _checking
-                                  ? const SizedBox(
-                                      width: 18,
-                                      height: 18,
-                                      child: CircularProgressIndicator(strokeWidth: 2),
-                                    )
-                                  : const Icon(Icons.wifi_tethering),
-                              label: Text(tx(context, 'Testaa etäyhteys', 'Test remote access')),
-                            ),
-                            FilledButton.tonalIcon(
-                              key: const ValueKey('remote-copy'),
-                              onPressed: () => copyHomeSetup(context),
-                              icon: const Icon(Icons.download_outlined),
-                              label: Text(tx(context, 'Kopioi kodin näkymät', 'Copy home dashboards')),
-                            ),
-                            OutlinedButton.icon(
-                              key: const ValueKey('remote-unpair'),
-                              onPressed: () async {
-                                final ok = await confirmDialog(
-                                  context,
-                                  tx(context, 'Poistetaanko etäyhteys?', 'Remove remote access?'),
-                                  tx(
-                                    context,
-                                    'Tämä laite ei sen jälkeen saa yhteyttä kotiin kodin ulkopuolelta. Voit yhdistää uudelleen milloin vain.',
-                                    'This device can then no longer reach home from outside. You can pair again any time.',
-                                  ),
-                                  ok: tx(context, 'Poista', 'Remove'),
-                                );
-                                if (ok) await r.unpair();
-                              },
-                              icon: const Icon(Icons.link_off),
-                              label: Text(tx(context, 'Poista etäyhteys', 'Remove remote access')),
-                            ),
-                          ],
-                        ),
-                      ],
+                      const SizedBox(height: 8),
+                      const BridgeVersionTile(),
+                      if (_checkResult != null) ...[const SizedBox(height: 10), SuccessBox(text: _checkResult!)],
+                      const SizedBox(height: 8),
+                      Wrap(
+                        spacing: 10,
+                        runSpacing: 10,
+                        children: [
+                          FilledButton.tonalIcon(
+                            key: const ValueKey('remote-check'),
+                            onPressed: _checking ? null : _check,
+                            icon: _checking
+                                ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2))
+                                : const Icon(Icons.wifi_tethering),
+                            label: Text(tx(context, 'Testaa etäyhteys', 'Test remote access')),
+                          ),
+                          FilledButton.tonalIcon(
+                            key: const ValueKey('remote-copy'),
+                            onPressed: () => copyHomeSetup(context),
+                            icon: const Icon(Icons.download_outlined),
+                            label: Text(tx(context, 'Kopioi kodin näkymät', 'Copy home dashboards')),
+                          ),
+                          OutlinedButton.icon(
+                            key: const ValueKey('remote-unpair'),
+                            onPressed: () => _unpair(context),
+                            icon: const Icon(Icons.link_off),
+                            label: Text(tx(context, 'Poista etäyhteys', 'Remove remote access')),
+                          ),
+                        ],
+                      ),
+                    ],
+                    if (r.bridgeOn)
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        leading: const Icon(Icons.router_outlined),
+                        title: Text(tx(context, 'Tämä laite on kotisilta', 'This device is the home bridge')),
+                        subtitle: Text(_bridgeText(context, r.bridge!)),
+                        trailing: const Icon(Icons.chevron_right),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const BridgePage())),
+                      ),
+                    ListTile(
+                      key: const ValueKey('remote-guides'),
+                      contentPadding: EdgeInsets.zero,
+                      leading: const Icon(Icons.menu_book_outlined),
+                      title: Text(tx(context, 'Muut tavat: VPN, Nabu Casa, pilvi-MQTT', 'Other ways: VPN, Nabu Casa, cloud MQTT')),
+                      trailing: const Icon(Icons.chevron_right),
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const GuidesPage())),
                     ),
-                  ),
-                ),
-                const SizedBox(height: 8),
-              ],
-              if (r.bridgeOn)
-                Card(
-                  child: ListTile(
-                    leading: const Icon(Icons.router_outlined),
-                    title: Text(tx(context, 'Tämä laite on kotisilta', 'This device is the home bridge')),
-                    subtitle: Text(_bridgeText(context, r.bridge!)),
-                    trailing: const Icon(Icons.chevron_right),
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const BridgePage())),
-                  ),
-                ),
-              remoteChoices(context),
-              const SizedBox(height: 8),
-              ExpansionTile(
-                leading: const Icon(Icons.tune),
-                title: Text(tx(context, 'Lisäasetukset', 'Advanced')),
-                children: [
-                  ListTile(
-                    title: Text(tx(context, 'Kamerakuvan päivitys etänä', 'Camera refresh when remote')),
-                    subtitle: Text(
-                      tx(
-                        context,
-                        'Etänä kamera näyttää kuvan ${st.config.remoteCameraSeconds} s välein (säästää dataa).',
-                        'Remotely the camera shows a picture every ${st.config.remoteCameraSeconds} s (saves data).',
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: Text(tx(context, 'Kamerakuvan päivitys etänä', 'Camera refresh when remote')),
+                      subtitle: Text(
+                        tx(
+                          context,
+                          'Etänä kamera näyttää kuvan ${st.config.remoteCameraSeconds} s välein (säästää dataa).',
+                          'Remotely the camera shows a picture every ${st.config.remoteCameraSeconds} s (saves data).',
+                        ),
                       ),
                     ),
-                  ),
-                  Slider(
-                    min: 1,
-                    max: 10,
-                    divisions: 9,
-                    value: st.config.remoteCameraSeconds.toDouble().clamp(1, 10),
-                    label: '${st.config.remoteCameraSeconds} s',
-                    onChanged: (v) => st.setRemoteCameraSeconds(v.round()),
-                  ),
-                  ListTile(
-                    title: Text(tx(context, 'Välityspalvelin', 'Relay server')),
-                    subtitle: SelectableText(r.paired?.relay ?? r.relay),
-                  ),
-                ],
+                    Slider(
+                      min: 1,
+                      max: 10,
+                      divisions: 9,
+                      value: st.config.remoteCameraSeconds.toDouble().clamp(1, 10),
+                      label: '${st.config.remoteCameraSeconds} s',
+                      onChanged: (v) => st.setRemoteCameraSeconds(v.round()),
+                    ),
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: Text(tx(context, 'Välityspalvelin', 'Relay server')),
+                      subtitle: SelectableText(r.paired?.relay ?? r.relay),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -658,46 +701,82 @@ class _OwnBridgesCardState extends State<OwnBridgesCard> {
     }
   }
 
+  /// t230u: "model · platform · Molaplan version · päällä".
   String _line(BuildContext context, OwnBridge b) {
     final i = _info[b.home];
     final k = b.known;
+    String join(List<Object?> parts) => parts.where((p) => p != null && '$p'.isNotEmpty).join(' · ');
+    final model = i?['model'] ?? k?['model'];
+    final platform = i?['platform'] ?? k?['platform'];
     if (i == null) {
       final v = k?['app'];
       return _loading.contains(b.home)
           ? tx(context, 'haetaan…', 'checking…')
-          : v == null
-          ? tx(context, 'ei tietoa', 'unknown')
-          : 'Molaplan $v (${k?['platform'] ?? ''})';
+          : join([model, platform, v == null ? tx(context, 'ei tietoa', 'unknown') : 'Molaplan $v']);
     }
     final online = i['online'] == true;
     final status = online ? tx(context, 'päällä', 'online') : tx(context, 'ei vastaa', 'not answering');
-    if (i['platform'] == 'esp32') return 'Molaplan Bridge ${i['fw'] ?? ''} · $status';
+    if (i['platform'] == 'esp32') return join(['Molaplan Bridge ${i['fw'] ?? ''}', i['boardName'] ?? i['board'], status]);
     if (i['old'] == true) {
-      return tx(
-        context,
-        'vanhempi kuin 0.8.0 · $status · ei etäpäivitystä (päivitä kerran laitteella)',
-        'older than 0.8.0 · $status · no remote update (update once on the device)',
-      );
+      // Answers the relay but has no 'bridge_info': a 0.8.0 test build (e.g. versionCode 2018 from
+      // before the release) or older – not necessarily "older than 0.8.0".
+      return join([
+        model,
+        platform,
+        tx(context, 'vanha Molaplan (0.8.0-testiversio tai vanhempi)', 'old Molaplan (0.8.0 test build or older)'),
+        status,
+        tx(context, 'päivitä kerran laitteella', 'update once on the device'),
+      ]);
     }
     final app = i['app'] ?? k?['app'];
-    final platform = i['platform'] ?? k?['platform'];
     final owner = i['deviceOwner'] ?? k?['deviceOwner'];
-    final silent = platform != 'android'
-        ? ''
-        : owner == true
-        ? tx(context, ' · hiljainen päivitys: kyllä', ' · silent update: yes')
-        : tx(context, ' · hiljainen päivitys: ei', ' · silent update: no');
-    final ver = app == null ? tx(context, 'versio ei tiedossa', 'version unknown') : 'Molaplan $app';
     final why = online
         ? ''
         : i['reason'] == 'not_paired'
         ? tx(context, ' (ei yhteystietoa tälle laitteelle)', ' (no credential on this device)')
         : '';
-    return '$ver${platform == null ? '' : ' ($platform)'} · $status$why$silent';
+    return join([
+      model,
+      platform,
+      app == null ? tx(context, 'versio ei tiedossa', 'version unknown') : 'Molaplan $app',
+      '$status$why',
+      if (platform == 'android' && owner == true) tx(context, 'päivittyy hiljaisesti', 'updates silently'),
+    ]);
   }
+
+  /// t231u: 'Päivitä' on a bridge that cannot update remotely explains what to do instead.
+  Future<void> _oldHelp(OwnBridge b) => showDialog<void>(
+    context: context,
+    builder: (c) => AlertDialog(
+      key: const ValueKey('own-bridge-old-help'),
+      icon: const Icon(Icons.system_update, size: 40),
+      title: Text(tx(c, 'Päivitä ${b.name} kerran laitteella', 'Update ${b.name} once on the device')),
+      content: Text(
+        tx(
+          c,
+          'Tämä kotisilta käyttää vanhaa Molaplania, joka ei vielä osaa päivittää itseään etänä.\n\nKerran tehtävä päivitys: avaa Molaplan kotisillan laitteella → Asetukset → Tarkista päivitykset → Päivitä ja hyväksy asennus. Vaihtoehtoisesti asenna uusin APK USB-kaapelilla.\n\nSen jälkeen Päivitä toimii tästä listasta etänä.',
+          'This home bridge runs an old Molaplan that cannot update itself remotely yet.\n\nOne-time update: open Molaplan on the bridge device → Settings → Check for updates → Update and approve the install. Or install the latest APK over USB.\n\nAfter that, Update works from this list remotely.',
+        ),
+      ),
+      actions: [FilledButton(onPressed: () => Navigator.pop(c), child: const Text('OK'))],
+    ),
+  );
 
   bool _canPair(AppState st, OwnBridge b) =>
       !b.self && b.grant != null && st.remote.paired?.home != b.home && _info[b.home]?['online'] == true;
+
+  bool _isOld(OwnBridge b) => _info[b.home]?['old'] == true;
+
+  /// 'Avaa': switch this device to that home. Own account bridge -> no code; otherwise the code page.
+  Future<void> _open(AppState st, OwnBridge b) async {
+    if (b.self) {
+      await Navigator.push(context, MaterialPageRoute(builder: (_) => const BridgePage()));
+    } else if (_canPair(st, b)) {
+      await _pair(b);
+    } else {
+      await Navigator.push(context, MaterialPageRoute(builder: (_) => const PairPage()));
+    }
+  }
 
   bool _canUpdate(OwnBridge b) {
     final i = _info[b.home];
@@ -720,7 +799,7 @@ class _OwnBridgesCardState extends State<OwnBridgesCard> {
           children: [
             Row(
               children: [
-                Expanded(child: Text(tx(context, 'Omat kotisillat', 'My home bridges'), style: text.titleMedium)),
+                Expanded(child: Text(tx(context, 'Kotisillat', 'Home bridges'), style: text.titleMedium)),
                 IconButton(
                   key: const ValueKey('own-bridges-refresh'),
                   tooltip: tx(context, 'Päivitä tiedot', 'Refresh'),
@@ -732,8 +811,8 @@ class _OwnBridgesCardState extends State<OwnBridgesCard> {
             Text(
               tx(
                 context,
-                'Kaikki tiliisi kuuluvat kotisillat, myös muissa kohteissa. Yhteys kulkee aina etäpalvelun kautta.',
-                'All home bridges of your account, also at other sites. Always through the remote service.',
+                'Avaa = näytä se koti tällä laitteella. Päivitä = asenna kotisillalle uusin Molaplan.',
+                'Open = use that home on this device. Update = install the latest Molaplan on the bridge.',
               ),
               style: text.bodySmall,
             ),
@@ -748,17 +827,20 @@ class _OwnBridgesCardState extends State<OwnBridgesCard> {
                     ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2))
                     : Wrap(
                         spacing: 4,
+                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
-                          if (_canPair(st, b))
+                          if (!b.self && st.remote.paired?.home == b.home)
+                            const RemoteStatusChip()
+                          else
                             TextButton(
-                              key: ValueKey('own-bridge-pair-${b.home}'),
-                              onPressed: () => _pair(b),
-                              child: Text(tx(context, 'Yhdistä', 'Connect')),
+                              key: ValueKey('own-bridge-open-${b.home}'),
+                              onPressed: () => _open(st, b),
+                              child: Text(tx(context, 'Avaa', 'Open')),
                             ),
-                          if (_canUpdate(b))
+                          if (_canUpdate(b) || _isOld(b))
                             TextButton(
                               key: ValueKey('own-bridge-update-${b.home}'),
-                              onPressed: () => _update(b),
+                              onPressed: () => _isOld(b) ? _oldHelp(b) : _update(b),
                               child: Text(tx(context, 'Päivitä', 'Update')),
                             ),
                         ],
@@ -796,6 +878,8 @@ Future<void> copyHomeSetup(BuildContext context) async {
       return;
     }
     final n = await st.adoptHomeSetup(json);
+    final home = st.remote.paired?.home;
+    if (home != null) await st.remote.markCopied(home);
     if (context.mounted) {
       showSnack(context, tx(context, 'Kopioitu: $n näkymää', 'Copied: $n dashboards'));
     }

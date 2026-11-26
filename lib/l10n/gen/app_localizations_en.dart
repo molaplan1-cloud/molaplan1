@@ -983,16 +983,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scd04aa5d9e => 'Edit the view';
 
   @override
-  String get se9ca7cb470 => 'Automations';
-
-  @override
-  String get s41bb837a83 => 'Notifications and reminders';
-
-  @override
   String get sf98121cd3d => 'Room photo';
 
   @override
   String get s49de879696 => 'Energy';
+
+  @override
+  String get se9ca7cb470 => 'Automations';
+
+  @override
+  String get s41bb837a83 => 'Notifications and reminders';
 
   @override
   String get s1da81fd6c3 => 'Settings';
@@ -1107,14 +1107,29 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s6e1ebc8baa => 'Open folder';
 
   @override
+  String get sa2e921ca79 => 'Install cancelled. You can try again: Update.';
+
+  @override
+  String get s29e92898c6 =>
+      'Confirm the install in the Android window or notification.';
+
+  @override
+  String get sd1cdbd3630 => 'The install did not start';
+
+  @override
+  String s21972e23c1(String p0, String p1) {
+    return 'Android did not start installing $p0.\n\nCheck that \"Allow from this source\" is on for Molaplan and tap Update again. You can also download the APK from the release page.\n\nDetail: $p1';
+  }
+
+  @override
+  String get sa1bd8d2533 => 'Open settings';
+
+  @override
   String get sa065e7f650 => 'Allow installing updates';
 
   @override
   String get sdc3bf71baf =>
       'Android asks once for permission so Molaplan can install its own updates.\n\n1. Tap \"Open settings\".\n2. Turn on \"Allow from this source\".\n3. Come back and tap \"Update\" again.';
-
-  @override
-  String get sa1bd8d2533 => 'Open settings';
 
   @override
   String get s441683b7a8 => 'Verifying…';
@@ -2246,6 +2261,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sd54522fe39 => 'Router / hotspot';
 
   @override
+  String get s3294a9422d => 'Security panel';
+
+  @override
+  String get sb97a2b7ed6 => 'ESP32 device';
+
+  @override
   String get s23f4820db7 => 'not controllable yet';
 
   @override
@@ -2253,6 +2274,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get saae59a3865 => 'via home bridge';
+
+  @override
+  String get sf226dd023a => 'controlled with ntfy messages';
+
+  @override
+  String get s0e6aa5168c =>
+      'if this is a security panel, add it as an ntfy command device';
 
   @override
   String get sdccd6e7f24 => 'Model';
@@ -2273,7 +2301,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s1d5ed84aed => 'Remembered on this device.';
 
   @override
+  String get s3e6dd6ff2d => 'Add as command device';
+
+  @override
   String get s59622d792b => 'Rename';
+
+  @override
+  String get sa0fccfbcab => 'via the home bridge';
 
   @override
   String get s1169d2d093 => 'Find devices';
@@ -2305,6 +2339,14 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s9a018b8166 =>
       'You are away: the home bridge searched your home network.';
+
+  @override
+  String get s55d0b95fd2 => 'This network';
+
+  @override
+  String s955b44aaa4(String p0) {
+    return 'These are on this device\'s own network, not at $p0. They are not added to that home.';
+  }
 
   @override
   String sf16a25c313(String p0) {
@@ -4825,30 +4867,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sa3e78d5c4e => 'The home bridge answers – remote access works.';
 
   @override
-  String get s0b57661c18 => 'Control your home from anywhere';
-
-  @override
-  String get sb43ef4094c =>
-      'At home Molaplan talks to your devices directly. Elsewhere it goes encrypted through your home bridge – no port forwarding or router settings. The app picks the right path automatically.';
-
-  @override
-  String get se96e60e36c =>
-      'A home bridge is any Molaplan that is always on at home: a PC, an old tablet or phone, or the separate bridge program on e.g. a Raspberry Pi or a Home Assistant machine. When you are away, your phone\'s commands go through it to your devices, end-to-end encrypted. Nothing to set up on the router (no port forwarding).';
-
-  @override
-  String get s075e5a4864 => 'Connected to home';
-
-  @override
-  String get sa7679488fb =>
-      'At home = directly. Remote = through the home bridge. No connection = neither answers.';
-
-  @override
-  String get s19cec9667e => 'Test remote access';
-
-  @override
-  String get s86ad95fa48 => 'Copy home dashboards';
-
-  @override
   String get sfaa5185b74 => 'Remove remote access?';
 
   @override
@@ -4856,13 +4874,50 @@ class AppLocalizationsEn extends AppLocalizations {
       'This device can then no longer reach home from outside. You can pair again any time.';
 
   @override
+  String get s0b57661c18 => 'Control your home from anywhere';
+
+  @override
+  String get s07dc42dc7a =>
+      'At home Molaplan talks to your devices directly, elsewhere encrypted through your home bridge. Nothing to set up on the router.';
+
+  @override
+  String sdde4ff19ce(String p0) {
+    return 'Show the devices of $p0 here';
+  }
+
+  @override
+  String get sc5328cbb8f =>
+      'Copy the home bridge\'s dashboards to this device. Readings and controls then go through the home bridge.';
+
+  @override
+  String get s86ad95fa48 => 'Copy home dashboards';
+
+  @override
+  String get s9b8f1f4a7e => 'Add a home bridge';
+
+  @override
+  String get sa8c35b8bfb => 'Get started';
+
+  @override
+  String get s5683f9f7e4 =>
+      'A home bridge is any Molaplan that is always on at home: a PC, an old tablet or phone, a Molaplan Bridge device or the separate bridge program. When you are away, commands go through it end-to-end encrypted.';
+
+  @override
+  String get sa75a955933 =>
+      'At home = this device is on the home bridge\'s own network and talks to devices directly. Remote = through the home bridge. No connection = neither answers.';
+
+  @override
+  String get s90460344ec =>
+      'The home bridge is an old version and does not report its network, so everything goes through it. Update the bridge to detect At home.';
+
+  @override
+  String get s19cec9667e => 'Test remote access';
+
+  @override
   String get s3563cb1635 => 'Remove remote access';
 
   @override
   String get s528c4f3a4c => 'This device is the home bridge';
-
-  @override
-  String get se7b8d659b5 => 'Advanced';
 
   @override
   String get sfd263f3e04 => 'Camera refresh when remote';
@@ -4981,34 +5036,44 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sb9e406274e => 'online';
 
   @override
-  String sd5fc9353f9(String p0) {
-    return 'older than 0.8.0 · $p0 · no remote update (update once on the device)';
-  }
+  String get sb981e102f1 => 'old Molaplan (0.8.0 test build or older)';
 
   @override
-  String get se9d573787e => ' · silent update: yes';
-
-  @override
-  String get s82043faaa4 => ' · silent update: no';
-
-  @override
-  String get s42b97a989b => 'version unknown';
+  String get s706ee3ad91 => 'update once on the device';
 
   @override
   String get sca90c9c253 => ' (no credential on this device)';
 
   @override
-  String get sfd88be2409 => 'My home bridges';
+  String get s42b97a989b => 'version unknown';
+
+  @override
+  String get se76155b6bd => 'updates silently';
+
+  @override
+  String s20889b3dc9(String p0) {
+    return 'Update $p0 once on the device';
+  }
+
+  @override
+  String get secbc1cfea3 =>
+      'This home bridge runs an old Molaplan that cannot update itself remotely yet.\n\nOne-time update: open Molaplan on the bridge device → Settings → Check for updates → Update and approve the install. Or install the latest APK over USB.\n\nAfter that, Update works from this list remotely.';
+
+  @override
+  String get s356b6d4d13 => 'Home bridges';
 
   @override
   String get s57117babe8 => 'Refresh';
 
   @override
-  String get s40dab032ce =>
-      'All home bridges of your account, also at other sites. Always through the remote service.';
+  String get s5160bf55ae =>
+      'Open = use that home on this device. Update = install the latest Molaplan on the bridge.';
 
   @override
   String get s9b2c8181e4 => 'this device';
+
+  @override
+  String get s902eaaff9f => 'Open';
 
   @override
   String get s72da730a42 => 'Remote service: connected';
@@ -5890,9 +5955,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s0e655a209f => 'Add anyway';
-
-  @override
-  String get s902eaaff9f => 'Open';
 
   @override
   String get s12c2f8e6e4 => 'Home network only';
@@ -7213,13 +7275,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sb56e7e9f81 => 'ntfy: command missing';
 
   @override
-  String s09f79d4fda(String p0, String p1) {
-    return 'No reply (PIN?) – the device did not answer within $p0 s (topic \"$p1\"). Check the PIN: many devices do not answer a wrong PIN at all.';
+  String s02e16b2c5c(String p0, String p1) {
+    return 'The command was sent, but the device did not answer within $p0 s – is the device online? Also check the PIN: many devices do not answer a wrong PIN at all (topic \"$p1\").';
   }
 
   @override
-  String sf25dcf262f(String p0, String p1) {
-    return 'The device did not answer within $p0 s (topic \"$p1\"). If it answers only at intervals, increase \"Wait for reply\" or \"Minimum time between commands\".';
+  String sdf4ecde616(String p0, String p1) {
+    return 'The command was sent, but the device did not answer within $p0 s – is the device online? If it answers only at intervals, increase \"Minimum time between commands\" (topic \"$p1\").';
   }
 
   @override
@@ -7229,6 +7291,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sf03877dd0a => ' A PIN is stored.';
+
+  @override
+  String get s33cfb86f9f =>
+      'The command was sent, but the device did not answer in time – is the device online? (The ntfy server works.)';
 
   @override
   String get s36fb6ba26f => 'Modbus TCP';
@@ -8176,6 +8242,19 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s120a222880 =>
       'A device controlled with ntfy messages: on/off switches, state and PIN. Works at home and away without a home bridge.';
+
+  @override
+  String get s6f139b5bcc => 'Preset';
+
+  @override
+  String get sa149146483 =>
+      'Camera surveillance: lights, siren, alarm on/off/acknowledge and state. Topic and PIN are your own.';
+
+  @override
+  String get sb6b101dd23 => 'Own device';
+
+  @override
+  String get s1ffb53e7f3 => 'Camera surveillance (kv panel)';
 
   @override
   String get s7a46c8c335 => 'Command topic';

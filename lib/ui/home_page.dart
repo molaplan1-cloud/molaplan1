@@ -64,6 +64,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     // runs at most once per UpdateState.interval and retries soon when offline).
     _hourly = Timer.periodic(const Duration(minutes: 20), (_) {
       if (mounted) unawaited(startupUpdateCheck(context));
+      if (mounted) _checkHomeNet();
     });
   }
 
@@ -81,6 +82,13 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     final st = AppScope.read(context);
     unawaited(startupUpdateCheck(context));
     unawaited(st.account.syncNow(quiet: true));
+    _checkHomeNet();
+  }
+
+  /// t232u: moved to another network (resume / every 20 min)? Re-check 'Kotona'.
+  void _checkHomeNet() {
+    final r = AppScope.read(context).remote;
+    if (r.autoNetworkCheck && r.isPaired) unawaited(r.checkHomeNetwork());
   }
 
   @override
