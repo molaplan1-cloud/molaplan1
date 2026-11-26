@@ -1110,12 +1110,32 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s6e1ebc8baa => 'Öppen mapp';
 
   @override
-  String get sa2e921ca79 =>
-      'Installera inställd. Du kan prova igen: Uppdatera.';
+  String get s6d9de3f94b => 'Installationen fortsatte inte';
+
+  @override
+  String get s25a6f00343 =>
+      'Om du annullerade det själv, allt är bra. Om Androids installationsfönster inte visas, tryck på Prova igen.';
+
+  @override
+  String get s1e593aeca2 => 'Stäng';
+
+  @override
+  String get s200542b930 => 'Försök igen';
 
   @override
   String get s29e92898c6 =>
       'Bekräfta installationen i Android-fönstret eller meddelandet.';
+
+  @override
+  String get s48093a1369 => 'Bekräfta uppdatering';
+
+  @override
+  String s6d50eeae10(String p0) {
+    return 'Uppdatera $p0 väntar på din bekräftelse. Tryck på Open-installation (eller meddelandet \"Molaplan-päivitys\").';
+  }
+
+  @override
+  String get s1a5c09b6e4 => 'Öppen installation';
 
   @override
   String get sd1cdbd3630 => 'Installationen startade inte';
@@ -2804,9 +2824,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sdbdf676485 => 'Anslut';
 
   @override
-  String get s200542b930 => 'Försök igen';
-
-  @override
   String get s8f610a3bb2 => 'Jag är hemifrån';
 
   @override
@@ -3835,9 +3852,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s876c7230a2 => 'Lägg till enhet';
-
-  @override
-  String get s1e593aeca2 => 'Stäng';
 
   @override
   String get sa252f06bff =>
@@ -7336,6 +7350,20 @@ class AppLocalizationsSv extends AppLocalizations {
       'Kommandot skickades, men enheten svarade inte i tid - är enheten online? (Nfy-servern fungerar.)';
 
   @override
+  String get s7087533324 =>
+      'Inte tillåtet i dagsljus (day_blocked) - ljuset följer dagsljus';
+
+  @override
+  String sf3066f08eb(String p0) {
+    return 'fel PIN ($p0)';
+  }
+
+  @override
+  String s14fac6d719(String p0) {
+    return 'För många kommandon – vänta ett ögonblick ($p0)';
+  }
+
+  @override
   String get s36fb6ba26f => 'Modbus TCP';
 
   @override
@@ -8368,6 +8396,10 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s91158c0de5 => 'Om enheten svarar endast t.ex. var 30: e, typ 30.';
+
+  @override
+  String get s07f819fc55 =>
+      'Kameraövervakning: fyll i svarsämnet - panelen svarar på användarens eget anmälningsämne (på panelen: Inställningar → Användare → anmälningsämne).';
 
   @override
   String get s23f70f51ff => 'Kommando enhet';

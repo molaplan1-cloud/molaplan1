@@ -65,6 +65,13 @@ class FakePlatform extends UpdatePlatform {
 
   @override
   Future<String?> lastUpdate() async => last;
+  int confirms = 0;
+  bool confirmOk = true;
+  @override
+  Future<bool> confirmInstall() async {
+    confirms++;
+    return confirmOk;
+  }
   @override
   Future<bool> deviceOwner() async => false;
   @override

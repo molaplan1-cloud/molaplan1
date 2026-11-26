@@ -33,6 +33,8 @@ object SilentUpdater {
 
     /** t228u: set while MainActivity is resumed – shows the install confirmation directly. */
     @Volatile var foreground: ((Intent) -> Boolean)? = null
+    /** t240u: the confirmation the session is waiting for, so the app can open it again. */
+    @Volatile var pendingConfirm: Intent? = null
 
     fun isDeviceOwner(ctx: Context): Boolean {
         val dpm = ctx.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
@@ -141,12 +143,20 @@ class InstallResultReceiver : BroadcastReceiver() {
                 // Not device owner: Android must ask. Notification works with the screen off too.
                 @Suppress("DEPRECATION")
                 val confirm = intent.getParcelableExtra<Intent>(Intent.EXTRA_INTENT)
-                if (confirm != null && SilentUpdater.foreground?.invoke(confirm) != true) {
-                    SilentUpdater.promptNotification(context, confirm)
+                if (confirm != null) {
+                    SilentUpdater.pendingConfirm = confirm
+                    // t240u: the notification is always posted too – if the direct start is
+                    // swallowed (stale installer task), the user still has a way to confirm.
+                    SilentUpdater.foreground?.invoke(Intent(confirm))
+                    SilentUpdater.promptNotification(context, Intent(confirm))
                 }
                 SilentUpdater.record(context, "waiting for user")
             }
-            PackageInstaller.STATUS_SUCCESS -> SilentUpdater.record(context, "installed")
+            PackageInstaller.STATUS_SUCCESS -> {
+                SilentUpdater.pendingConfirm = null
+                (context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).cancel(4712)
+                SilentUpdater.record(context, "installed")
+            }
             else -> SilentUpdater.record(
                 context, "failed $status ${intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE) ?: ""}".trim()
             )

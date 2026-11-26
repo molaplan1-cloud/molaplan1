@@ -220,6 +220,17 @@ class MainActivity : FlutterActivity() {
                     }
                     result.success(null)
                 }
+                // t240u: re-opens the install confirmation the session is waiting for.
+                "confirmInstall" -> {
+                    val c = SilentUpdater.pendingConfirm
+                    result.success(
+                        if (c == null) false else try {
+                            startActivity(Intent(c)); true
+                        } catch (e: Exception) {
+                            false
+                        }
+                    )
+                }
                 "install" -> {
                     // t228u: never NEW_TASK here. With NEW_TASK the installer joined a stale package
                     // installer task on Samsung (SM-T575) and nothing was shown. Started for a result

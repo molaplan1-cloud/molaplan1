@@ -254,7 +254,31 @@ Future<void> showInstallResult(BuildContext context, ReleaseInfo r, String res) 
   if (res == 'needs_permission') return _allowInstallsGuide(context);
   if (res == 'installed' || res == 'superseded') return;
   if (res == 'cancelled') {
-    showSnack(context, tx(context, 'Asennus peruttiin. Voit yrittää uudelleen: Päivitä.', 'Install cancelled. You can try again: Update.'));
+    // t240u: a prompt that was swallowed also looks like "cancelled" – offer the retry here.
+    final again = await showDialog<bool>(
+      context: context,
+      builder: (c) => AlertDialog(
+        key: const ValueKey('update-install-cancelled'),
+        icon: const Icon(Icons.system_update, size: 40),
+        title: Text(tx(c, 'Asennus ei jatkunut', 'The install did not continue')),
+        content: Text(
+          tx(
+            c,
+            'Jos perut asennuksen itse, kaikki on kunnossa. Jos Androidin Asenna-ikkunaa ei näkynyt, paina Yritä uudelleen.',
+            'If you cancelled it yourself, all is well. If Android\'s Install window did not appear, tap Try again.',
+          ),
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(c, false), child: Text(tx(c, 'Sulje', 'Close'))),
+          FilledButton(
+            key: const ValueKey('update-retry'),
+            onPressed: () => Navigator.pop(c, true),
+            child: Text(tx(c, 'Yritä uudelleen', 'Try again')),
+          ),
+        ],
+      ),
+    );
+    if (again == true && context.mounted) await runUpdate(context, r);
     return;
   }
   if (res.startsWith('session')) {
@@ -264,6 +288,7 @@ Future<void> showInstallResult(BuildContext context, ReleaseInfo r, String res) 
     );
     // The session reports a failure asynchronously (InstallResultReceiver -> lastUpdate).
     final since = DateTime.now().millisecondsSinceEpoch - 1000;
+    var waiting = false;
     for (var i = 0; i < 15; i++) {
       final last = await p.lastUpdate();
       final parts = (last ?? '').split('|');
@@ -274,8 +299,37 @@ Future<void> showInstallResult(BuildContext context, ReleaseInfo r, String res) 
         break;
       }
       if (at >= since && st == 'installed') return;
+      waiting = at >= since && st.startsWith('waiting');
       await Future<void>.delayed(const Duration(seconds: 2));
       if (!context.mounted) return;
+    }
+    // t240u: still waiting for the user and we are in front – the confirmation did not show.
+    if (!res.startsWith('failed') && waiting && context.mounted) {
+      final open = await showDialog<bool>(
+        context: context,
+        builder: (c) => AlertDialog(
+          key: const ValueKey('update-confirm-pending'),
+          icon: const Icon(Icons.system_update, size: 40),
+          title: Text(tx(c, 'Vahvista päivitys', 'Confirm the update')),
+          content: Text(
+            tx(
+              c,
+              'Päivitys ${r.version} odottaa vahvistusta. Paina Avaa asennus (tai napauta ilmoitusta "Molaplan-päivitys valmis").',
+              'Update ${r.version} is waiting for your confirmation. Tap Open install (or the "Molaplan-päivitys valmis" notification).',
+            ),
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(c, false), child: Text(tx(c, 'Myöhemmin', 'Later'))),
+            FilledButton(
+              key: const ValueKey('update-open-confirm'),
+              onPressed: () => Navigator.pop(c, true),
+              child: Text(tx(c, 'Avaa asennus', 'Open install')),
+            ),
+          ],
+        ),
+      );
+      if (open == true && !await p.confirmInstall()) await p.openUrl(r.pageUrl);
+      return;
     }
     if (!res.startsWith('failed')) return;
   }

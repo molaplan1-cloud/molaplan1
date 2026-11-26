@@ -1009,10 +1009,8 @@
  "@s6e1ebc8baa": {
   "x-mt": true
  },
- "sa2e921ca79": "Paigaldamine on tühistatud. Proovi uuesti: Uuenda.",
- "@sa2e921ca79": {
-  "x-mt": true
- },
+ "s1e593aeca2": "Sulge",
+ "s200542b930": "Proovi uuesti",
  "s29e92898c6": "Kinnitage installimine Android-aknas või teavituses.",
  "@s29e92898c6": {
   "x-mt": true
@@ -2563,7 +2561,6 @@
  },
  "se4095d7d95": "Seadme parool",
  "sdbdf676485": "Ühenda",
- "s200542b930": "Proovi uuesti",
  "s8f610a3bb2": "Ma olen kodust eemal",
  "@s8f610a3bb2": {
   "x-mt": true
@@ -3757,7 +3754,6 @@
   "x-mt": true
  },
  "s876c7230a2": "Lisa seade",
- "s1e593aeca2": "Sulge",
  "sa252f06bff": "Vali oma seadme kaubamärk, Molaplan leiab selle ja loob plaadid.",
  "@sa252f06bff": {
   "x-mt": true
@@ -6113,6 +6109,10 @@
  "@s21f870dbc2": {
   "x-mt": true
  },
+ "sc84689a549": "Seadmed ja integratsioonid",
+ "@sc84689a549": {
+  "x-mt": true
+ },
  "sca4c8b88b7": "Koduabiline: lisa seadmeid",
  "@sca4c8b88b7": {
   "x-mt": true
@@ -6164,6 +6164,30 @@
  "s522d6584c5": "Otsi uuendusi",
  "sd178a1d809": "Oma juhtimisterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kaamerad, WebSocket, TCP ja UDP. Ilma kontota jäävad kõik seaded sellesse seadmesse.",
  "@sd178a1d809": {
+  "x-mt": true
+ },
+ "sf5bfc4217c": "Milline koduabiline?",
+ "@sf5bfc4217c": {
+  "x-mt": true
+ },
+ "sbc210f9634": "Sul on rohkem kui üks koduabilise ühendus. Kasutamata ühenduse (kaarte pole) saab eemaldada.",
+ "@sbc210f9634": {
+  "x-mt": true
+ },
+ "s4f62c41cb3": "kaarte",
+ "@s4f62c41cb3": {
+  "x-mt": true
+ },
+ "s92c338c3bd": "kaarte",
+ "@s92c338c3bd": {
+  "x-mt": true
+ },
+ "sd3089f07cc": "Kasutamata ühenduse eemaldamine",
+ "@sd3089f07cc": {
+  "x-mt": true
+ },
+ "s1333776c9f": "Eemaldage ühendus?",
+ "@s1333776c9f": {
   "x-mt": true
  },
  "s84819cca05": "Viimane häire {p0}",
@@ -8277,32 +8301,40 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "sc84689a549": "Seadmed ja integratsioonid",
- "@sc84689a549": {
+ "s6d9de3f94b": "Paigaldamine ei jätkunud",
+ "@s6d9de3f94b": {
   "x-mt": true
  },
- "sf5bfc4217c": "Milline koduabiline?",
- "@sf5bfc4217c": {
+ "s25a6f00343": "Kui tühistasid selle ise, on kõik hästi. Kui Androidi paigaldamisakent ei ilmunud, klõpsa uuesti.",
+ "@s25a6f00343": {
   "x-mt": true
  },
- "sbc210f9634": "Sul on rohkem kui üks koduabilise ühendus. Kasutamata ühenduse (kaarte pole) saab eemaldada.",
- "@sbc210f9634": {
+ "s48093a1369": "Värskenduse kinnitamine",
+ "@s48093a1369": {
   "x-mt": true
  },
- "s4f62c41cb3": "kaarte",
- "@s4f62c41cb3": {
+ "s6d50eeae10": "Uuendamine {p0} ootab sinu kinnitust. Puuduta Ava paigaldust (või märguannet \"Molaplan- päivitys valmis\").",
+ "@s6d50eeae10": {
   "x-mt": true
  },
- "s92c338c3bd": "kaarte",
- "@s92c338c3bd": {
+ "s1a5c09b6e4": "Avage install",
+ "@s1a5c09b6e4": {
   "x-mt": true
  },
- "sd3089f07cc": "Kasutamata ühenduse eemaldamine",
- "@sd3089f07cc": {
+ "s7087533324": "Ei ole lubatud päevavalguses (day_blocked) - valgus järgneb päevavalgusele",
+ "@s7087533324": {
   "x-mt": true
  },
- "s1333776c9f": "Eemaldage ühendus?",
- "@s1333776c9f": {
+ "sf3066f08eb": "vale PIN ({p0})",
+ "@sf3066f08eb": {
+  "x-mt": true
+ },
+ "s14fac6d719": "liiga palju käske – oota hetk ({p0})",
+ "@s14fac6d719": {
+  "x-mt": true
+ },
+ "s07f819fc55": "Kaamera jälgimine: täitke vastuse teema – paneel vastab teie kasutaja enda teavitusteemale (paneelil: Seaded → Kasutajad → teavitusteema).",
+ "@s07f819fc55": {
   "x-mt": true
  }
 }

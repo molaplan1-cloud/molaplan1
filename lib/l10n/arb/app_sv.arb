@@ -1003,10 +1003,8 @@
  "@s6e1ebc8baa": {
   "x-mt": true
  },
- "sa2e921ca79": "Installera inställd. Du kan prova igen: Uppdatera.",
- "@sa2e921ca79": {
-  "x-mt": true
- },
+ "s1e593aeca2": "Stäng",
+ "s200542b930": "Försök igen",
  "s29e92898c6": "Bekräfta installationen i Android-fönstret eller meddelandet.",
  "@s29e92898c6": {
   "x-mt": true
@@ -2548,7 +2546,6 @@
  },
  "se4095d7d95": "Enhetens lösenord",
  "sdbdf676485": "Anslut",
- "s200542b930": "Försök igen",
  "s8f610a3bb2": "Jag är hemifrån",
  "@s8f610a3bb2": {
   "x-mt": true
@@ -3742,7 +3739,6 @@
   "x-mt": true
  },
  "s876c7230a2": "Lägg till enhet",
- "s1e593aeca2": "Stäng",
  "sa252f06bff": "Välj ditt enhetsmärke. Molaplan hittar det och skapar plattorna.",
  "@sa252f06bff": {
   "x-mt": true
@@ -6086,6 +6082,10 @@
  "@s21f870dbc2": {
   "x-mt": true
  },
+ "sc84689a549": "Enheter och integrationer",
+ "@sc84689a549": {
+  "x-mt": true
+ },
  "sca4c8b88b7": "Home Assistant: Lägg till enheter",
  "@sca4c8b88b7": {
   "x-mt": true
@@ -6137,6 +6137,30 @@
  "s522d6584c5": "Sök efter uppdateringar",
  "sd178a1d809": "Din egen kontrollterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kameror, WebSocket, TCP och UDP. Utan ett konto stannar alla inställningar på den här enheten.",
  "@sd178a1d809": {
+  "x-mt": true
+ },
+ "sf5bfc4217c": "Vilken hemassistent?",
+ "@sf5bfc4217c": {
+  "x-mt": true
+ },
+ "sbc210f9634": "Du har mer än en Home Assistant-anslutning. En oanvänd (inga kort) kan tas bort.",
+ "@sbc210f9634": {
+  "x-mt": true
+ },
+ "s4f62c41cb3": "Inga kort",
+ "@s4f62c41cb3": {
+  "x-mt": true
+ },
+ "s92c338c3bd": "kort",
+ "@s92c338c3bd": {
+  "x-mt": true
+ },
+ "sd3089f07cc": "Ta bort oanvänd anslutning",
+ "@sd3089f07cc": {
+  "x-mt": true
+ },
+ "s1333776c9f": "Ta bort anslutningen?",
+ "@s1333776c9f": {
   "x-mt": true
  },
  "s84819cca05": "Sista larmet {p0}",
@@ -8232,32 +8256,40 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "sc84689a549": "Enheter och integrationer",
- "@sc84689a549": {
+ "s6d9de3f94b": "Installationen fortsatte inte",
+ "@s6d9de3f94b": {
   "x-mt": true
  },
- "sf5bfc4217c": "Vilken hemassistent?",
- "@sf5bfc4217c": {
+ "s25a6f00343": "Om du annullerade det själv, allt är bra. Om Androids installationsfönster inte visas, tryck på Prova igen.",
+ "@s25a6f00343": {
   "x-mt": true
  },
- "sbc210f9634": "Du har mer än en Home Assistant-anslutning. En oanvänd (inga kort) kan tas bort.",
- "@sbc210f9634": {
+ "s48093a1369": "Bekräfta uppdatering",
+ "@s48093a1369": {
   "x-mt": true
  },
- "s4f62c41cb3": "Inga kort",
- "@s4f62c41cb3": {
+ "s6d50eeae10": "Uppdatera {p0} väntar på din bekräftelse. Tryck på Open-installation (eller meddelandet \"Molaplan-päivitys\").",
+ "@s6d50eeae10": {
   "x-mt": true
  },
- "s92c338c3bd": "kort",
- "@s92c338c3bd": {
+ "s1a5c09b6e4": "Öppen installation",
+ "@s1a5c09b6e4": {
   "x-mt": true
  },
- "sd3089f07cc": "Ta bort oanvänd anslutning",
- "@sd3089f07cc": {
+ "s7087533324": "Inte tillåtet i dagsljus (day_blocked) - ljuset följer dagsljus",
+ "@s7087533324": {
   "x-mt": true
  },
- "s1333776c9f": "Ta bort anslutningen?",
- "@s1333776c9f": {
+ "sf3066f08eb": "fel PIN ({p0})",
+ "@sf3066f08eb": {
+  "x-mt": true
+ },
+ "s14fac6d719": "För många kommandon – vänta ett ögonblick ({p0})",
+ "@s14fac6d719": {
+  "x-mt": true
+ },
+ "s07f819fc55": "Kameraövervakning: fyll i svarsämnet - panelen svarar på användarens eget anmälningsämne (på panelen: Inställningar → Användare → anmälningsämne).",
+ "@s07f819fc55": {
   "x-mt": true
  }
 }

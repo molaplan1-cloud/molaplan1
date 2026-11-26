@@ -34,6 +34,16 @@ class UpdatePlatform {
   Future<String> installApk(String path) async =>
       (await _ch.invokeMethod<String>('install', {'path': path})) ?? 'failed: no answer';
 
+  /// t240u: opens the install confirmation a PackageInstaller session is waiting for again.
+  Future<bool> confirmInstall() async {
+    if (os != 'android') return false;
+    try {
+      return await _ch.invokeMethod<bool>('confirmInstall') ?? false;
+    } catch (_) {
+      return false;
+    }
+  }
+
   // t211u: the bridge-service channel works without an activity (headless bridge).
   static const _svc = MethodChannel('molaplan/bridge_service');
   Future<bool> deviceOwner() async {

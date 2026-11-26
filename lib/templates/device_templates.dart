@@ -1573,7 +1573,8 @@ final deviceTemplates = <DeviceTemplate>[
 const ntfyKvPanelPreset = <String, Object>{
   'name': 'Kameravalvonta',
   'template': '{cmd} {pin}',
-  'statusCommand': 'tila json',
+  // cid: the panel echoes it, so another phone's status reply on the shared topic is skipped.
+  'statusCommand': 'tila json {pin} cid:{cid}',
   'format': 'json',
   'outputs': 'Sisävalo = sisavalo\nPihavalo = pihavalo\nLisävalo = lisavalo\nSireeni = sireeni',
   // The panel's JSON status: {"state": "home", "relays": {"sisavalo": 0|1, …}}, title "Tila JSON".
@@ -1585,12 +1586,18 @@ const ntfyKvPanelPreset = <String, Object>{
   'minInterval': '5',
 };
 
-/// The kv panel's alarm buttons: (title, command, icon).
+/// The kv panel's alarm buttons: (title, command, icon). They answer with human text (title
+/// 'Tila'), not JSON – so each one is followed by a fresh 'tila json' status.
 const ntfyKvAlarmButtons = [
-  ('Hälytys päälle', 'halytys päälle', 'alarm'),
-  ('Hälytys pois', 'halytys pois', 'lock'),
+  ('Hälytys päälle', 'päälle', 'alarm'),
+  ('Hälytys pois', 'pois', 'lock'),
   ('Kuittaa hälytys', 'kuittaa', 'send'),
+  ('Kuittaa ja hälytys pois', 'kuittaa pois', 'lock'),
 ];
+
+/// The panel's alarm states (JSON 'state') as readable text on the status tile.
+const ntfyKvStateMap =
+    'home = Hälytys pois (kotona)\nexit_delay = Poistumisviive\naway = Hälytys päällä\nentry_delay = Tuloviive\nalarm = HÄLYTYS';
 
 /// Fills the preset's values into [v] where the user has not typed anything else yet.
 void applyNtfyPreset(Map<String, dynamic> v) {
@@ -1606,6 +1613,16 @@ void applyNtfyPreset(Map<String, dynamic> v) {
 TemplateResult ntfyDeviceTemplate(Map<String, dynamic> input, String lang) {
   final v = Map<String, dynamic>.from(input);
   applyNtfyPreset(v);
+  // The kv panel answers on the user's own notification topic, never on the command topic.
+  if (v['preset'] == 'kv_panel' && _s(v, 'replyTopic').isEmpty) {
+    throw FormatException(
+      _t(
+        lang,
+        'Kameravalvonta: täytä Vastauskanava – paneeli vastaa käyttäjäsi omaan ilmoituskanavaan (paneelilla Asetukset → Käyttäjät → ilmoituskanava).',
+        'Camera surveillance: fill in the reply topic – the panel answers on your user\'s own notification topic (on the panel: Settings → Users → notification topic).',
+      ),
+    );
+  }
   final name = _s(v, 'name', _t(lang, 'Komentolaite', 'Command device'));
   final minGap = num.tryParse(_s(v, 'minInterval', '0'))?.toInt() ?? 0;
   final c = ConnectionConfig(
@@ -1664,7 +1681,13 @@ TemplateResult ntfyDeviceTemplate(Map<String, dynamic> input, String lang) {
           title: title,
           icon: icon,
           connectionId: c.id,
-          commands: [CommandStep(connectionId: c.id, spec: {'command': cmd, 'waitReply': true})],
+          confirm: true,
+          commands: [
+            CommandStep(
+              connectionId: c.id,
+              spec: {'command': cmd, 'waitReply': true, 'replyTitle': 'Tila', 'followStatus': true, 'showSeconds': 30},
+            ),
+          ],
         ),
       );
     }
@@ -1680,6 +1703,7 @@ TemplateResult ntfyDeviceTemplate(Map<String, dynamic> input, String lang) {
       read: {
         if (json && _s(v, 'statusPath').isNotEmpty)
           'jsonPath': '\$.${_s(v, 'statusPath').replaceAll(RegExp(r'^\$?\.?'), '')}',
+        if (v['preset'] == 'kv_panel') 'stateMap': ntfyKvStateMap,
       },
     ),
   );

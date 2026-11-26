@@ -1109,12 +1109,32 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s6e1ebc8baa => 'Avaa kansio';
 
   @override
-  String get sa2e921ca79 =>
-      'Asennus peruttiin. Voit yrittää uudelleen: Päivitä.';
+  String get s6d9de3f94b => 'Asennus ei jatkunut';
+
+  @override
+  String get s25a6f00343 =>
+      'Jos perut asennuksen itse, kaikki on kunnossa. Jos Androidin Asenna-ikkunaa ei näkynyt, paina Yritä uudelleen.';
+
+  @override
+  String get s1e593aeca2 => 'Sulje';
+
+  @override
+  String get s200542b930 => 'Yritä uudelleen';
 
   @override
   String get s29e92898c6 =>
       'Vahvista asennus Androidin ikkunasta tai ilmoituksesta.';
+
+  @override
+  String get s48093a1369 => 'Vahvista päivitys';
+
+  @override
+  String s6d50eeae10(String p0) {
+    return 'Päivitys $p0 odottaa vahvistusta. Paina Avaa asennus (tai napauta ilmoitusta \"Molaplan-päivitys valmis\").';
+  }
+
+  @override
+  String get s1a5c09b6e4 => 'Avaa asennus';
 
   @override
   String get sd1cdbd3630 => 'Asennus ei käynnistynyt';
@@ -2810,9 +2830,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sdbdf676485 => 'Yhdistä';
 
   @override
-  String get s200542b930 => 'Yritä uudelleen';
-
-  @override
   String get s8f610a3bb2 => 'Olen kodin ulkopuolella';
 
   @override
@@ -3838,9 +3855,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s876c7230a2 => 'Lisää laite';
-
-  @override
-  String get s1e593aeca2 => 'Sulje';
 
   @override
   String get sa252f06bff =>
@@ -7356,6 +7370,20 @@ class AppLocalizationsFi extends AppLocalizations {
       'Komento lähti, mutta laite ei vastannut ajoissa – onko laite verkossa? (ntfy-palvelin toimii.)';
 
   @override
+  String get s7087533324 =>
+      'ei sallittu päivällä (day_blocked) – valo ohjautuu päivänvalon mukaan';
+
+  @override
+  String sf3066f08eb(String p0) {
+    return 'väärä PIN-koodi ($p0)';
+  }
+
+  @override
+  String s14fac6d719(String p0) {
+    return 'liian monta komentoa – odota hetki ($p0)';
+  }
+
+  @override
   String get s36fb6ba26f => 'Modbus TCP';
 
   @override
@@ -8414,6 +8442,10 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s91158c0de5 =>
       'Jos laite vastaa vain esim. 30 s välein, kirjoita 30.';
+
+  @override
+  String get s07f819fc55 =>
+      'Kameravalvonta: täytä Vastauskanava – paneeli vastaa käyttäjäsi omaan ilmoituskanavaan (paneelilla Asetukset → Käyttäjät → ilmoituskanava).';
 
   @override
   String get s23f70f51ff => 'Komentolaite';

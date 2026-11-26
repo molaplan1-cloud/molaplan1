@@ -2041,17 +2041,53 @@ abstract class AppLocalizations {
   /// **'Open folder'**
   String get s6e1ebc8baa;
 
-  /// fi: Asennus peruttiin. Voit yrittää uudelleen: Päivitä.
+  /// fi: Asennus ei jatkunut
   ///
   /// In en, this message translates to:
-  /// **'Install cancelled. You can try again: Update.'**
-  String get sa2e921ca79;
+  /// **'The install did not continue'**
+  String get s6d9de3f94b;
+
+  /// fi: Jos perut asennuksen itse, kaikki on kunnossa. Jos Androidin Asenna-ikkunaa ei näkynyt, paina Yritä uudelleen.
+  ///
+  /// In en, this message translates to:
+  /// **'If you cancelled it yourself, all is well. If Android\'\'s Install window did not appear, tap Try again.'**
+  String get s25a6f00343;
+
+  /// fi: Sulje
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get s1e593aeca2;
+
+  /// fi: Yritä uudelleen
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get s200542b930;
 
   /// fi: Vahvista asennus Androidin ikkunasta tai ilmoituksesta.
   ///
   /// In en, this message translates to:
   /// **'Confirm the install in the Android window or notification.'**
   String get s29e92898c6;
+
+  /// fi: Vahvista päivitys
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm the update'**
+  String get s48093a1369;
+
+  /// fi: Päivitys {p0} odottaa vahvistusta. Paina Avaa asennus (tai napauta ilmoitusta "Molaplan-päivitys valmis").
+  ///
+  /// In en, this message translates to:
+  /// **'Update {p0} is waiting for your confirmation. Tap Open install (or the \"Molaplan-päivitys valmis\" notification).'**
+  String s6d50eeae10(String p0);
+
+  /// fi: Avaa asennus
+  ///
+  /// In en, this message translates to:
+  /// **'Open install'**
+  String get s1a5c09b6e4;
 
   /// fi: Asennus ei käynnistynyt
   ///
@@ -5090,12 +5126,6 @@ abstract class AppLocalizations {
   /// **'Connect'**
   String get sdbdf676485;
 
-  /// fi: Yritä uudelleen
-  ///
-  /// In en, this message translates to:
-  /// **'Try again'**
-  String get s200542b930;
-
   /// fi: Olen kodin ulkopuolella
   ///
   /// In en, this message translates to:
@@ -6998,12 +7028,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add a device'**
   String get s876c7230a2;
-
-  /// fi: Sulje
-  ///
-  /// In en, this message translates to:
-  /// **'Close'**
-  String get s1e593aeca2;
 
   /// fi: Valitse laitteesi merkki. Molaplan etsii sen ja tekee ruudut valmiiksi.
   ///
@@ -13229,6 +13253,24 @@ abstract class AppLocalizations {
   /// **'The command was sent, but the device did not answer in time – is the device online? (The ntfy server works.)'**
   String get s33cfb86f9f;
 
+  /// fi: ei sallittu päivällä (day_blocked) – valo ohjautuu päivänvalon mukaan
+  ///
+  /// In en, this message translates to:
+  /// **'not allowed in daylight (day_blocked) – the light follows daylight'**
+  String get s7087533324;
+
+  /// fi: väärä PIN-koodi ({p0})
+  ///
+  /// In en, this message translates to:
+  /// **'wrong PIN ({p0})'**
+  String sf3066f08eb(String p0);
+
+  /// fi: liian monta komentoa – odota hetki ({p0})
+  ///
+  /// In en, this message translates to:
+  /// **'too many commands – wait a moment ({p0})'**
+  String s14fac6d719(String p0);
+
   /// fi: Modbus TCP
   ///
   /// In en, this message translates to:
@@ -15088,6 +15130,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'If the device answers only e.g. every 30 s, type 30.'**
   String get s91158c0de5;
+
+  /// fi: Kameravalvonta: täytä Vastauskanava – paneeli vastaa käyttäjäsi omaan ilmoituskanavaan (paneelilla Asetukset → Käyttäjät
+  ///
+  /// In en, this message translates to:
+  /// **'Camera surveillance: fill in the reply topic – the panel answers on your user\'\'s own notification topic (on the panel: Settings → Users → notification topic).'**
+  String get s07f819fc55;
 
   /// fi: Komentolaite
   ///

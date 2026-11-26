@@ -1107,11 +1107,32 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s6e1ebc8baa => 'Open folder';
 
   @override
-  String get sa2e921ca79 => 'Install cancelled. You can try again: Update.';
+  String get s6d9de3f94b => 'The install did not continue';
+
+  @override
+  String get s25a6f00343 =>
+      'If you cancelled it yourself, all is well. If Android\'s Install window did not appear, tap Try again.';
+
+  @override
+  String get s1e593aeca2 => 'Close';
+
+  @override
+  String get s200542b930 => 'Try again';
 
   @override
   String get s29e92898c6 =>
       'Confirm the install in the Android window or notification.';
+
+  @override
+  String get s48093a1369 => 'Confirm the update';
+
+  @override
+  String s6d50eeae10(String p0) {
+    return 'Update $p0 is waiting for your confirmation. Tap Open install (or the \"Molaplan-päivitys valmis\" notification).';
+  }
+
+  @override
+  String get s1a5c09b6e4 => 'Open install';
 
   @override
   String get sd1cdbd3630 => 'The install did not start';
@@ -2795,9 +2816,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sdbdf676485 => 'Connect';
 
   @override
-  String get s200542b930 => 'Try again';
-
-  @override
   String get s8f610a3bb2 => 'I am away from home';
 
   @override
@@ -3822,9 +3840,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s876c7230a2 => 'Add a device';
-
-  @override
-  String get s1e593aeca2 => 'Close';
 
   @override
   String get sa252f06bff =>
@@ -7323,6 +7338,20 @@ class AppLocalizationsEn extends AppLocalizations {
       'The command was sent, but the device did not answer in time – is the device online? (The ntfy server works.)';
 
   @override
+  String get s7087533324 =>
+      'not allowed in daylight (day_blocked) – the light follows daylight';
+
+  @override
+  String sf3066f08eb(String p0) {
+    return 'wrong PIN ($p0)';
+  }
+
+  @override
+  String s14fac6d719(String p0) {
+    return 'too many commands – wait a moment ($p0)';
+  }
+
+  @override
   String get s36fb6ba26f => 'Modbus TCP';
 
   @override
@@ -8359,6 +8388,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s91158c0de5 =>
       'If the device answers only e.g. every 30 s, type 30.';
+
+  @override
+  String get s07f819fc55 =>
+      'Camera surveillance: fill in the reply topic – the panel answers on your user\'s own notification topic (on the panel: Settings → Users → notification topic).';
 
   @override
   String get s23f70f51ff => 'Command device';

@@ -1003,10 +1003,8 @@
  "@s6e1ebc8baa": {
   "x-mt": true
  },
- "sa2e921ca79": "Instalar cancelado. Puedes intentarlo de nuevo: Actualizar.",
- "@sa2e921ca79": {
-  "x-mt": true
- },
+ "s1e593aeca2": "Cerrar",
+ "s200542b930": "Reintentar",
  "s29e92898c6": "Confirme la instalación en la ventana Android o notificación.",
  "@s29e92898c6": {
   "x-mt": true
@@ -2545,7 +2543,6 @@
  },
  "se4095d7d95": "Contraseña del dispositivo",
  "sdbdf676485": "Conectar",
- "s200542b930": "Reintentar",
  "s8f610a3bb2": "Estoy lejos de casa",
  "@s8f610a3bb2": {
   "x-mt": true
@@ -3733,7 +3730,6 @@
   "x-mt": true
  },
  "s876c7230a2": "Añadir dispositivo",
- "s1e593aeca2": "Cerrar",
  "sa252f06bff": "Escoge la marca del dispositivo. Molaplan la encuentra y crea las fichas.",
  "@sa252f06bff": {
   "x-mt": true
@@ -6077,6 +6073,10 @@
  "@s21f870dbc2": {
   "x-mt": true
  },
+ "sc84689a549": "Dispositivos e integraciones",
+ "@sc84689a549": {
+  "x-mt": true
+ },
  "sca4c8b88b7": "Home Assistant: añadir dispositivos",
  "saec69088a5": "Controla tu casa desde fuera también.",
  "@saec69088a5": {
@@ -6125,6 +6125,30 @@
  "s522d6584c5": "Buscar actualizaciones",
  "sd178a1d809": "Su propia terminal de control: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP y UDP. Sin una cuenta, todos los ajustes permanecen en este dispositivo.",
  "@sd178a1d809": {
+  "x-mt": true
+ },
+ "sf5bfc4217c": "¿Qué asistente de casa?",
+ "@sf5bfc4217c": {
+  "x-mt": true
+ },
+ "sbc210f9634": "Usted tiene más de una conexión Home Assistant. Una no usada (sin tarjetas) se puede eliminar.",
+ "@sbc210f9634": {
+  "x-mt": true
+ },
+ "s4f62c41cb3": "No hay cartas",
+ "@s4f62c41cb3": {
+  "x-mt": true
+ },
+ "s92c338c3bd": "tarjetas",
+ "@s92c338c3bd": {
+  "x-mt": true
+ },
+ "sd3089f07cc": "Eliminar la conexión no utilizada",
+ "@sd3089f07cc": {
+  "x-mt": true
+ },
+ "s1333776c9f": "¿Retirar la conexión?",
+ "@s1333776c9f": {
   "x-mt": true
  },
  "s84819cca05": "Última alarma {p0}",
@@ -8214,32 +8238,40 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "sc84689a549": "Dispositivos e integraciones",
- "@sc84689a549": {
+ "s6d9de3f94b": "La instalación no continuó",
+ "@s6d9de3f94b": {
   "x-mt": true
  },
- "sf5bfc4217c": "¿Qué asistente de casa?",
- "@sf5bfc4217c": {
+ "s25a6f00343": "Si usted lo canceló usted mismo, todo está bien. Si la ventana de Install de Android no apareció, grifo Prueba de nuevo.",
+ "@s25a6f00343": {
   "x-mt": true
  },
- "sbc210f9634": "Usted tiene más de una conexión Home Assistant. Una no usada (sin tarjetas) se puede eliminar.",
- "@sbc210f9634": {
+ "s48093a1369": "Confirme la actualización",
+ "@s48093a1369": {
   "x-mt": true
  },
- "s4f62c41cb3": "No hay cartas",
- "@s4f62c41cb3": {
+ "s6d50eeae10": "Actualizar {p0} está esperando su confirmación. Pulse Open install (o la notificación \"Molaplan-päivitys valmis\").",
+ "@s6d50eeae10": {
   "x-mt": true
  },
- "s92c338c3bd": "tarjetas",
- "@s92c338c3bd": {
+ "s1a5c09b6e4": "Abra la instalación",
+ "@s1a5c09b6e4": {
   "x-mt": true
  },
- "sd3089f07cc": "Eliminar la conexión no utilizada",
- "@sd3089f07cc": {
+ "s7087533324": "no se permite en la luz del día (day_blocked) – la luz sigue la luz del día",
+ "@s7087533324": {
   "x-mt": true
  },
- "s1333776c9f": "¿Retirar la conexión?",
- "@s1333776c9f": {
+ "sf3066f08eb": "PIN ({p0})",
+ "@sf3066f08eb": {
+  "x-mt": true
+ },
+ "s14fac6d719": "demasiados comandos – espera un momento ({p0})",
+ "@s14fac6d719": {
+  "x-mt": true
+ },
+ "s07f819fc55": "Vigilancia de cámara: rellenar el tema de respuesta – el panel responde sobre el tema de notificación de su usuario (en el panel: Ajustes → Usuarios → tema de notificación).",
+ "@s07f819fc55": {
   "x-mt": true
  }
 }

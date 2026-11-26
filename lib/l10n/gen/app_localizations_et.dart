@@ -1107,12 +1107,32 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s6e1ebc8baa => 'Ava kataloog';
 
   @override
-  String get sa2e921ca79 =>
-      'Paigaldamine on tühistatud. Proovi uuesti: Uuenda.';
+  String get s6d9de3f94b => 'Paigaldamine ei jätkunud';
+
+  @override
+  String get s25a6f00343 =>
+      'Kui tühistasid selle ise, on kõik hästi. Kui Androidi paigaldamisakent ei ilmunud, klõpsa uuesti.';
+
+  @override
+  String get s1e593aeca2 => 'Sulge';
+
+  @override
+  String get s200542b930 => 'Proovi uuesti';
 
   @override
   String get s29e92898c6 =>
       'Kinnitage installimine Android-aknas või teavituses.';
+
+  @override
+  String get s48093a1369 => 'Värskenduse kinnitamine';
+
+  @override
+  String s6d50eeae10(String p0) {
+    return 'Uuendamine $p0 ootab sinu kinnitust. Puuduta Ava paigaldust (või märguannet \"Molaplan- päivitys valmis\").';
+  }
+
+  @override
+  String get s1a5c09b6e4 => 'Avage install';
 
   @override
   String get sd1cdbd3630 => 'Paigaldamine ei käivitunud';
@@ -2800,9 +2820,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sdbdf676485 => 'Ühenda';
 
   @override
-  String get s200542b930 => 'Proovi uuesti';
-
-  @override
   String get s8f610a3bb2 => 'Ma olen kodust eemal';
 
   @override
@@ -3828,9 +3845,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s876c7230a2 => 'Lisa seade';
-
-  @override
-  String get s1e593aeca2 => 'Sulge';
 
   @override
   String get sa252f06bff =>
@@ -7325,6 +7339,20 @@ class AppLocalizationsEt extends AppLocalizations {
       'Käsk saadeti, kuid seade ei vastanud õigeaegselt - kas seade on võrgus? (ntfy server töötab.)';
 
   @override
+  String get s7087533324 =>
+      'Ei ole lubatud päevavalguses (day_blocked) - valgus järgneb päevavalgusele';
+
+  @override
+  String sf3066f08eb(String p0) {
+    return 'vale PIN ($p0)';
+  }
+
+  @override
+  String s14fac6d719(String p0) {
+    return 'liiga palju käske – oota hetk ($p0)';
+  }
+
+  @override
   String get s36fb6ba26f => 'Modbus TCP';
 
   @override
@@ -8359,6 +8387,10 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s91158c0de5 =>
       'Kui seade vastab ainult näiteks iga 30 sekundi järel, tüüp 30.';
+
+  @override
+  String get s07f819fc55 =>
+      'Kaamera jälgimine: täitke vastuse teema – paneel vastab teie kasutaja enda teavitusteemale (paneelil: Seaded → Kasutajad → teavitusteema).';
 
   @override
   String get s23f70f51ff => 'Juhtimisseade';

@@ -147,12 +147,30 @@ void main() {
     expect(p.settingsOpened, 1);
   });
 
-  testWidgets('cancelled -> a hint, no error dialog', (tester) async {
-    await app(tester);
+  testWidgets('cancelled (or a swallowed prompt) -> retry offered, retry runs the same update path', (tester) async {
+    final (_, p) = await app(tester);
     showInstallResult(ctx(tester), rel, 'cancelled');
     await tester.pumpAndSettle();
-    expect(find.textContaining('Asennus peruttiin'), findsOneWidget);
+    expect(find.byKey(const ValueKey('update-install-cancelled')), findsOneWidget);
     expect(find.byKey(const ValueKey('update-install-failed')), findsNothing);
+    await tester.tap(find.text('Sulje'));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('update-install-cancelled')), findsNothing);
+    expect(p.installed, isEmpty);
+  });
+
+  testWidgets('t240u: session still waiting while the app is in front -> "Avaa asennus" re-opens it', (tester) async {
+    final (_, p) = await app(tester);
+    p.last = '${DateTime.now().millisecondsSinceEpoch + 5000}|waiting for user';
+    showInstallResult(ctx(tester), rel, 'session (installer returned at once)');
+    for (var i = 0; i < 17; i++) {
+      await tester.pump(const Duration(seconds: 2));
+    }
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('update-confirm-pending')), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('update-open-confirm')));
+    await tester.pumpAndSettle();
+    expect(p.confirms, 1);
   });
 
   testWidgets('session fallback that fails later is still reported', (tester) async {

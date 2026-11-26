@@ -962,7 +962,17 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<Object?> runStep(CommandStep step, {Object? value}) async {
     final d = driverFor(step.connectionId);
     if (d == null) throw DriverException('Connection missing');
-    return d.send(step.spec, value: value);
+    final r = await d.send(step.spec, value: value);
+    // t238u: one ntfy command device shares one state – show it on all of its tiles right away.
+    if (connection(step.connectionId)?.type == 'ntfy_device') {
+      final ids = [
+        for (final db in config.dashboards)
+          for (final t in db.tiles)
+            if (t.connectionId == step.connectionId) t.id,
+      ];
+      TileRuntime.refreshSoon(ids, after: const [Duration(milliseconds: 700)]);
+    }
+    return r;
   }
 
   /// Runs the steps in order; returns the last non-null result (e.g. an ntfy reply).

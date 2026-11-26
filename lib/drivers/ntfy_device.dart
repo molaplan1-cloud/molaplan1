@@ -385,7 +385,7 @@ class NtfyDeviceDriver extends NtfyDriver {
   String _newCid() => List.generate(6, (_) => _rnd.nextInt(16).toRadixString(16)).join();
 
   /// Builds the text, waits for the device's rate limit, sends and waits for the matching reply.
-  Future<NtfyMessage> _ask(String cmd, {Object? value, Duration? waitFor}) async {
+  Future<NtfyMessage> _ask(String cmd, {Object? value, Duration? waitFor, String? replyTitle}) async {
     final tpl = s.str('template', '{cmd} {pin}');
     final cid = tpl.contains('{cid}') || cmd.contains('{cid}') ? _newCid() : '';
     final text = buildNtfyCommand(tpl, cmd: cmd, pin: s.str('pin'), cid: cid, value: value);
@@ -406,7 +406,7 @@ class NtfyDeviceDriver extends NtfyDriver {
     final m = await exchange(
       text,
       wait: wait,
-      accept: (m) => ntfyReplyMatches(m, title: s.strOrNull('replyTitle'), match: s.strOrNull('replyMatch'), cid: cid),
+      accept: (m) => ntfyReplyMatches(m, title: replyTitle ?? s.strOrNull('replyTitle'), match: s.strOrNull('replyMatch'), cid: cid),
       // t235u: the publish already succeeded here – a missing reply is the device's.
       timeoutText: (topic, secs) => _replyHint(noTopic, usesPin
           ? dtx(
@@ -425,7 +425,7 @@ class NtfyDeviceDriver extends NtfyDriver {
       sh.optimistic.clear();
     }
     final err = ntfyDeviceError(m, s.strOrNull('errorMatch'));
-    if (err != null) throw DriverException(dtx('Laite vastasi: $err', 'The device answered: $err'));
+    if (err != null) throw DriverException(dtx('Laite vastasi: ${ntfyErrorText(err)}', 'The device answered: ${ntfyErrorText(err)}'));
     return m;
   }
 
@@ -470,14 +470,16 @@ class NtfyDeviceDriver extends NtfyDriver {
       }
     }
     final now = DateTime.now();
+    final own = parseNtfyStateMap(spec.strOrNull('stateMap'));
+    final rules = own.isEmpty ? _rules : [...own, ..._rules];
     try {
       final m = await status(command: spec.strOrNull('command'));
-      return ntfyStateFrom(m, spec, _rules);
+      return ntfyStateFrom(m, spec, rules);
     } on NtfyNoReply {
       // t235u: no status reply – keep the commanded / last known state for a while instead of '!'.
       if (opt != null && now.difference(opt.$2) < staleAfter) return opt.$1;
       final last = sh.last;
-      if (last != null && sh.okAt != null && now.difference(sh.okAt!) < staleAfter) return ntfyStateFrom(last, spec, _rules);
+      if (last != null && sh.okAt != null && now.difference(sh.okAt!) < staleAfter) return ntfyStateFrom(last, spec, rules);
       rethrow;
     }
   }
@@ -500,17 +502,30 @@ class NtfyDeviceDriver extends NtfyDriver {
     final ack = Duration(seconds: spec.integer('ackSeconds', 10).clamp(2, 120));
     final NtfyMessage m;
     try {
-      m = await _ask(cmd, value: value, waitFor: ack < _wait ? ack : _wait);
+      m = await _ask(cmd, value: value, waitFor: ack < _wait ? ack : _wait, replyTitle: spec.strOrNull('replyTitle'));
     } on NtfyNoReply {
       _remember(spec, value);
+      await _follow(spec);
       return {'ntfy': true, 'sentOnly': true, 'noReply': true};
     }
+    if (ntfyJsonPayload(m.message) is! Map) await _follow(spec);
     // A JSON reply (the state) already refreshed every tile in _ask; after a text reply the
     // next read asks again.
     if (ntfyJsonPayload(m.message) is! Map) {
       _remember(spec, value);
     }
     return m.toReply()..['showSeconds'] = spec.integer('showSeconds', 30);
+  }
+
+  /// t238u: commands that answer with text only (alarm on/off/acknowledge) are followed by a
+  /// fresh status, so every tile of the device shows the new state at once (rate limit kept).
+  Future<void> _follow(Map<String, dynamic> spec) async {
+    if (!spec.flag('followStatus', false)) return;
+    try {
+      await status(fresh: true);
+    } on DriverException {
+      // No status now: the tiles' next poll asks again.
+    }
   }
 
   /// Remembers the commanded state for the tile's JSON path and asks a fresh status next time.
@@ -546,4 +561,20 @@ String ntfyNoReplyText(Object e, String serverOk) {
     );
   }
   return m.isNotEmpty ? m : '$e';
+}
+
+/// t238u: device error codes in plain words (the code stays visible for support).
+String ntfyErrorText(String err) {
+  final e = err.trim();
+  switch (e.toLowerCase()) {
+    case 'day_blocked':
+      return dtx('ei sallittu päivällä (day_blocked) – valo ohjautuu päivänvalon mukaan', 'not allowed in daylight (day_blocked) – the light follows daylight');
+    case 'bad_pin':
+    case 'wrong_pin':
+      return dtx('väärä PIN-koodi ($e)', 'wrong PIN ($e)');
+    case 'rate_limited':
+    case 'busy':
+      return dtx('liian monta komentoa – odota hetki ($e)', 'too many commands – wait a moment ($e)');
+  }
+  return e;
 }

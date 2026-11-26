@@ -1113,12 +1113,32 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s6e1ebc8baa => 'Carpeta abierta';
 
   @override
-  String get sa2e921ca79 =>
-      'Instalar cancelado. Puedes intentarlo de nuevo: Actualizar.';
+  String get s6d9de3f94b => 'La instalación no continuó';
+
+  @override
+  String get s25a6f00343 =>
+      'Si usted lo canceló usted mismo, todo está bien. Si la ventana de Install de Android no apareció, grifo Prueba de nuevo.';
+
+  @override
+  String get s1e593aeca2 => 'Cerrar';
+
+  @override
+  String get s200542b930 => 'Reintentar';
 
   @override
   String get s29e92898c6 =>
       'Confirme la instalación en la ventana Android o notificación.';
+
+  @override
+  String get s48093a1369 => 'Confirme la actualización';
+
+  @override
+  String s6d50eeae10(String p0) {
+    return 'Actualizar $p0 está esperando su confirmación. Pulse Open install (o la notificación \"Molaplan-päivitys valmis\").';
+  }
+
+  @override
+  String get s1a5c09b6e4 => 'Abra la instalación';
 
   @override
   String get sd1cdbd3630 => 'La instalación no comenzó';
@@ -2818,9 +2838,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sdbdf676485 => 'Conectar';
 
   @override
-  String get s200542b930 => 'Reintentar';
-
-  @override
   String get s8f610a3bb2 => 'Estoy lejos de casa';
 
   @override
@@ -3849,9 +3866,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s876c7230a2 => 'Añadir dispositivo';
-
-  @override
-  String get s1e593aeca2 => 'Cerrar';
 
   @override
   String get sa252f06bff =>
@@ -7373,6 +7387,20 @@ class AppLocalizationsEs extends AppLocalizations {
       'El comando fue enviado, pero el dispositivo no respondió en el tiempo – ¿está el dispositivo en línea? (El servidor ntfy funciona.)';
 
   @override
+  String get s7087533324 =>
+      'no se permite en la luz del día (day_blocked) – la luz sigue la luz del día';
+
+  @override
+  String sf3066f08eb(String p0) {
+    return 'PIN ($p0)';
+  }
+
+  @override
+  String s14fac6d719(String p0) {
+    return 'demasiados comandos – espera un momento ($p0)';
+  }
+
+  @override
   String get s36fb6ba26f => 'Modbus TCP';
 
   @override
@@ -8424,6 +8452,10 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s91158c0de5 =>
       'Si el dispositivo responde sólo por ejemplo cada 30 s, escriba 30.';
+
+  @override
+  String get s07f819fc55 =>
+      'Vigilancia de cámara: rellenar el tema de respuesta – el panel responde sobre el tema de notificación de su usuario (en el panel: Ajustes → Usuarios → tema de notificación).';
 
   @override
   String get s23f70f51ff => 'Dispositivo de mando';

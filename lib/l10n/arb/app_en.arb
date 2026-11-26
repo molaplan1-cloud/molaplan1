@@ -1738,25 +1738,60 @@
   "description": "fi: Avaa kansio",
   "x-where": "ui/update_ui.dart:244"
  },
- "sa2e921ca79": "Install cancelled. You can try again: Update.",
- "@sa2e921ca79": {
-  "description": "fi: Asennus peruttiin. Voit yrittää uudelleen: Päivitä.",
-  "x-where": "ui/update_ui.dart:257"
+ "s6d9de3f94b": "The install did not continue",
+ "@s6d9de3f94b": {
+  "description": "fi: Asennus ei jatkunut",
+  "x-where": "ui/update_ui.dart:263"
+ },
+ "s25a6f00343": "If you cancelled it yourself, all is well. If Android''s Install window did not appear, tap Try again.",
+ "@s25a6f00343": {
+  "description": "fi: Jos perut asennuksen itse, kaikki on kunnossa. Jos Androidin Asenna-ikkunaa ei näkynyt, paina Yritä uudelleen.",
+  "x-where": "ui/update_ui.dart:265"
+ },
+ "s1e593aeca2": "Close",
+ "@s1e593aeca2": {
+  "description": "fi: Sulje",
+  "x-where": "ui/update_ui.dart:272"
+ },
+ "s200542b930": "Try again",
+ "@s200542b930": {
+  "description": "fi: Yritä uudelleen",
+  "x-where": "ui/update_ui.dart:276"
  },
  "s29e92898c6": "Confirm the install in the Android window or notification.",
  "@s29e92898c6": {
   "description": "fi: Vahvista asennus Androidin ikkunasta tai ilmoituksesta.",
-  "x-where": "ui/update_ui.dart:263"
+  "x-where": "ui/update_ui.dart:287"
+ },
+ "s48093a1369": "Confirm the update",
+ "@s48093a1369": {
+  "description": "fi: Vahvista päivitys",
+  "x-where": "ui/update_ui.dart:313"
+ },
+ "s6d50eeae10": "Update {p0} is waiting for your confirmation. Tap Open install (or the \"Molaplan-päivitys valmis\" notification).",
+ "@s6d50eeae10": {
+  "description": "fi: Päivitys {p0} odottaa vahvistusta. Paina Avaa asennus (tai napauta ilmoitusta \"Molaplan-päivitys valmis\").",
+  "x-where": "ui/update_ui.dart:315",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s1a5c09b6e4": "Open install",
+ "@s1a5c09b6e4": {
+  "description": "fi: Avaa asennus",
+  "x-where": "ui/update_ui.dart:326"
  },
  "sd1cdbd3630": "The install did not start",
  "@sd1cdbd3630": {
   "description": "fi: Asennus ei käynnistynyt",
-  "x-where": "ui/update_ui.dart:289"
+  "x-where": "ui/update_ui.dart:343"
  },
  "s21972e23c1": "Android did not start installing {p0}.\n\nCheck that \"Allow from this source\" is on for Molaplan and tap Update again. You can also download the APK from the release page.\n\nDetail: {p1}",
  "@s21972e23c1": {
   "description": "fi: Android ei aloittanut päivityksen {p0} asennusta.\n\nTarkista, että \"Salli tästä lähteestä\" on päällä Molaplanille, ja pai",
-  "x-where": "ui/update_ui.dart:291",
+  "x-where": "ui/update_ui.dart:345",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -1769,32 +1804,32 @@
  "sa1bd8d2533": "Open settings",
  "@sa1bd8d2533": {
   "description": "fi: Avaa asetukset",
-  "x-where": "ui/update_ui.dart:305"
+  "x-where": "ui/update_ui.dart:359"
  },
  "sa065e7f650": "Allow installing updates",
  "@sa065e7f650": {
   "description": "fi: Salli päivitysten asennus",
-  "x-where": "ui/update_ui.dart:319"
+  "x-where": "ui/update_ui.dart:373"
  },
  "sdc3bf71baf": "Android asks once for permission so Molaplan can install its own updates.\n\n1. Tap \"Open settings\".\n2. Turn on \"Allow from this source\".\n3. Come back and tap \"Update\" again.",
  "@sdc3bf71baf": {
   "description": "fi: Android kysyy kerran luvan, jotta Molaplan saa asentaa omat päivityksensä.\n\n1. Paina \"Avaa asetukset\".\n2. Kytke päälle \"",
-  "x-where": "ui/update_ui.dart:321"
+  "x-where": "ui/update_ui.dart:375"
  },
  "s441683b7a8": "Verifying…",
  "@s441683b7a8": {
   "description": "fi: Tarkistetaan…",
-  "x-where": "ui/update_ui.dart:354"
+  "x-where": "ui/update_ui.dart:408"
  },
  "se83b7fb2ac": "Downloading update…",
  "@se83b7fb2ac": {
   "description": "fi: Ladataan päivitystä…",
-  "x-where": "ui/update_ui.dart:355"
+  "x-where": "ui/update_ui.dart:409"
  },
  "s0b68f81d82": "Molaplan {p0} is available. The bridge keeps working.",
  "@s0b68f81d82": {
   "description": "fi: Molaplan {p0} on saatavilla. Silta toimii normaalisti.",
-  "x-where": "ui/update_ui.dart:390",
+  "x-where": "ui/update_ui.dart:444",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -1804,7 +1839,7 @@
  "sb06bee9921": "Show",
  "@sb06bee9921": {
   "description": "fi: Näytä",
-  "x-where": "ui/update_ui.dart:398"
+  "x-where": "ui/update_ui.dart:452"
  },
  "sf1b5d0ffa6": "The password does not match. Type your account password.",
  "@sf1b5d0ffa6": {
@@ -4527,11 +4562,6 @@
   "description": "fi: Yhdistä",
   "x-where": "ui/add_device_wizard.dart:981"
  },
- "s200542b930": "Try again",
- "@s200542b930": {
-  "description": "fi: Yritä uudelleen",
-  "x-where": "ui/add_device_wizard.dart:981"
- },
  "s8f610a3bb2": "I am away from home",
  "@s8f610a3bb2": {
   "description": "fi: Olen kodin ulkopuolella",
@@ -6221,11 +6251,6 @@
  "@s876c7230a2": {
   "description": "fi: Lisää laite",
   "x-where": "ui/template_gallery.dart:39"
- },
- "s1e593aeca2": "Close",
- "@s1e593aeca2": {
-  "description": "fi: Sulje",
-  "x-where": "ui/template_gallery.dart:134"
  },
  "sa252f06bff": "Pick your device brand. Molaplan finds it and creates the tiles.",
  "@sa252f06bff": {
@@ -11938,12 +11963,37 @@
  "sf03877dd0a": " A PIN is stored.",
  "@sf03877dd0a": {
   "description": "fi:  PIN on tallennettu.",
-  "x-where": "drivers/ntfy_device.dart:530"
+  "x-where": "drivers/ntfy_device.dart:545"
  },
  "s33cfb86f9f": "The command was sent, but the device did not answer in time – is the device online? (The ntfy server works.)",
  "@s33cfb86f9f": {
   "description": "fi: Komento lähti, mutta laite ei vastannut ajoissa – onko laite verkossa? (ntfy-palvelin toimii.)",
-  "x-where": "drivers/ntfy_device.dart:543"
+  "x-where": "drivers/ntfy_device.dart:558"
+ },
+ "s7087533324": "not allowed in daylight (day_blocked) – the light follows daylight",
+ "@s7087533324": {
+  "description": "fi: ei sallittu päivällä (day_blocked) – valo ohjautuu päivänvalon mukaan",
+  "x-where": "drivers/ntfy_device.dart:571"
+ },
+ "sf3066f08eb": "wrong PIN ({p0})",
+ "@sf3066f08eb": {
+  "description": "fi: väärä PIN-koodi ({p0})",
+  "x-where": "drivers/ntfy_device.dart:574",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s14fac6d719": "too many commands – wait a moment ({p0})",
+ "@s14fac6d719": {
+  "description": "fi: liian monta komentoa – odota hetki ({p0})",
+  "x-where": "drivers/ntfy_device.dart:577",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
  },
  "s36fb6ba26f": "Modbus TCP",
  "@s36fb6ba26f": {
@@ -13555,15 +13605,20 @@
   "description": "fi: Jos laite vastaa vain esim. 30 s välein, kirjoita 30.",
   "x-where": "templates/device_templates.dart:1557"
  },
+ "s07f819fc55": "Camera surveillance: fill in the reply topic – the panel answers on your user''s own notification topic (on the panel: Settings → Users → notification topic).",
+ "@s07f819fc55": {
+  "description": "fi: Kameravalvonta: täytä Vastauskanava – paneeli vastaa käyttäjäsi omaan ilmoituskanavaan (paneelilla Asetukset → Käyttäjät",
+  "x-where": "templates/device_templates.dart:1619"
+ },
  "s23f70f51ff": "Command device",
  "@s23f70f51ff": {
   "description": "fi: Komentolaite",
-  "x-where": "templates/device_templates.dart:1609"
+  "x-where": "templates/device_templates.dart:1626"
  },
  "sfeb36cc60a": "{p0} – state",
  "@sfeb36cc60a": {
   "description": "fi: {p0} – tila",
-  "x-where": "templates/device_templates.dart:1675",
+  "x-where": "templates/device_templates.dart:1698",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13573,7 +13628,7 @@
  "s3378eb2d0b": "{p0} – temperature",
  "@s3378eb2d0b": {
   "description": "fi: {p0} – lämpötila",
-  "x-where": "templates/device_templates.dart:1915",
+  "x-where": "templates/device_templates.dart:1939",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13583,22 +13638,22 @@
  "sdfa0c29399": "Last sent (IR is one-way)",
  "@sdfa0c29399": {
   "description": "fi: Viimeksi lähetetty (IR on yksisuuntainen)",
-  "x-where": "templates/device_templates.dart:1931"
+  "x-where": "templates/device_templates.dart:1955"
  },
  "seab2c72485": "Fan (0 = auto)",
  "@seab2c72485": {
   "description": "fi: Puhallin (0 = auto)",
-  "x-where": "templates/device_templates.dart:1951"
+  "x-where": "templates/device_templates.dart:1975"
  },
  "s7847d8821b": "Vane (0 = auto, 5 = lowest)",
  "@s7847d8821b": {
   "description": "fi: Siivekkeet (0 = auto, 5 = alas)",
-  "x-where": "templates/device_templates.dart:1977"
+  "x-where": "templates/device_templates.dart:2001"
  },
  "s3a38b97f7b": "{p0} – room",
  "@s3a38b97f7b": {
   "description": "fi: {p0} – huone",
-  "x-where": "templates/device_templates.dart:1991",
+  "x-where": "templates/device_templates.dart:2015",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13608,6 +13663,6 @@
  "s0ceafaa97c": "energy",
  "@s0ceafaa97c": {
   "description": "fi: energia",
-  "x-where": "templates/device_templates.dart:2064"
+  "x-where": "templates/device_templates.dart:2088"
  }
 }

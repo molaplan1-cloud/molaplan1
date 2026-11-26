@@ -13,10 +13,11 @@ import 'support/mock_ntfy.dart';
 
 void main() {
   test('kv-panel preset: commands, 4 switches, alarm on/off/acknowledge, status – no topic or PIN', () {
-    final r = ntfyDeviceTemplate({'preset': 'kv_panel', 'topic': 'my-topic'}, 'fi');
+    final r = ntfyDeviceTemplate({'preset': 'kv_panel', 'topic': 'my-topic', 'replyTopic': 'my-replies'}, 'fi');
     final c = r.connections.single;
     expect(c.settings['template'], '{cmd} {pin}');
-    expect(c.settings['statusCommand'], 'tila json');
+    expect(c.settings['statusCommand'], 'tila json {pin} cid:{cid}');
+    expect(c.settings['replyTopic'], 'my-replies');
     expect(c.settings['topic'], 'my-topic');
     expect(c.secrets, isEmpty, reason: 'no PIN is ever pre-filled');
     final toggles = r.tiles.where((t) => t.type == TileType.toggle).map((t) => t.title).toList();
@@ -29,7 +30,13 @@ void main() {
     expect(c.settings['replyTitle'], 'Tila JSON');
     expect(c.settings['minInterval'], 5);
     final buttons = r.tiles.where((t) => t.type == TileType.button).toList();
-    expect(buttons.map((t) => t.commands.single.spec['command']), ['halytys päälle', 'halytys pois', 'kuittaa']);
+    expect(buttons.map((t) => t.commands.single.spec['command']), ['päälle', 'pois', 'kuittaa', 'kuittaa pois']);
+    expect(buttons.every((t) => t.confirm && t.commands.single.spec['followStatus'] == true), isTrue);
+    expect(r.tiles.last.read['stateMap'], contains('home = Hälytys pois'));
+    expect(
+      () => ntfyDeviceTemplate({'preset': 'kv_panel', 'topic': 'x'}, 'fi'),
+      throwsA(isA<FormatException>().having((e) => e.message, 'm', contains('Vastauskanava'))),
+    );
     expect(r.tiles.last.title, 'Kameravalvonta – tila');
     expect(r.tiles.last.read['jsonPath'], r'$.state');
   });
@@ -39,7 +46,7 @@ void main() {
     applyNtfyPreset(v);
     expect(v['outputs'], 'Ovi = ovi', reason: 'the user typed own switches');
     expect(v['name'], 'Kameravalvonta');
-    expect(v['statusCommand'], 'tila json');
+    expect(v['statusCommand'], 'tila json {pin} cid:{cid}');
     final g = ntfyDeviceTemplate({'topic': 't'}, 'fi');
     expect(g.tiles.map((t) => t.title), ['Valo', 'Komentolaite – tila']);
     expect(g.connections.single.settings['statusCommand'], 'tila');
@@ -76,9 +83,9 @@ void main() {
         if (msg.startsWith('sisavalo ')) relays['sisavalo'] = msg.contains('päälle') ? 1 : 0;
         return ('somewhere-else', 'Tila JSON', jsonEncode({'state': 'home', 'relays': relays}));
       }).start();
-      final r = ntfyDeviceTemplate({'preset': 'kv_panel', 'topic': '${m.url}/cmd', 'minInterval': '0'}, 'fi');
+      final r = ntfyDeviceTemplate({'preset': 'kv_panel', 'topic': '${m.url}/cmd', 'replyTopic': 'not-listened', 'minInterval': '0'}, 'fi');
       final sisa = r.tiles.first;
-      final d = drv(m, {...r.connections.single.settings, 'replySeconds': 3, 'minInterval': 0});
+      final d = drv(m, {...r.connections.single.settings, 'replyTopic': 'nobody', 'replySeconds': 3, 'minInterval': 0});
       final res = await d.send({...sisa.onCommand!.spec, 'ackSeconds': 2}, value: 1) as Map;
       expect(res['sentOnly'], true);
       expect(res['noReply'], true);
