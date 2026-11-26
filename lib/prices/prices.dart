@@ -212,7 +212,7 @@ PriceSeries _series(String zone, List<(int, double)> pairs, String source, Strin
   );
 }
 
-/// Fetches and caches prices (one request per zone per 10 minutes, shared by all tiles and rules).
+/// Fetches and caches prices (shared by all tiles and rules; when the network is used: see [pricesNeedFetch]).
 /// t170u / t171u: when tomorrow's day-ahead prices are published. SDAC (all EU bidding zones,
 /// incl. the Nordics and Baltics) publishes around 12:45–13:00 Brussels time (CET / CEST);
 /// returned in the device's local time – in Finland about 14:00.
@@ -255,12 +255,43 @@ String tomorrowPendingText(DateTime now, String lang, {String zone = 'FI'}) {
   };
 }
 
-/// t170u: how long a cached series is fresh – short (2 min, i.e. retry) once tomorrow's prices
-/// are due but not in yet, 10 min otherwise.
+/// t186u: published day-ahead prices never change, so they are fetched once and kept (memory +
+/// disk, per area). The network is used only when
+/// - there is nothing cached, or the cache does not cover the current time (a new day without
+///   prices – retried every [pricesRetryFirst] after a failure), or
+/// - tomorrow's prices are missing and it is past [tomorrowDue] (≈ 13:45 CET): retried with
+///   back-off ([pricesRetryFirst], then [pricesRetryLater]) until they arrive, then never again
+///   that day.
+/// Before 13:45 a complete "today" cache makes no network calls at all; tiles, the current
+/// price and the cheapest windows are computed locally from it as time passes.
+const pricesRetryFirst = Duration(minutes: 15);
+const pricesRetryLater = Duration(minutes: 30);
+
+/// When to start asking for tomorrow's prices: 45 min after the SDAC publication (13:45 CET).
+DateTime tomorrowDue(DateTime now, {String zone = 'FI'}) =>
+    tomorrowPublication(now, zone: zone).add(const Duration(minutes: 45));
+
+/// Should the price service go to the network now? [lastTry] = the last network attempt for
+/// this area, [misses] = attempts since then that came back without the wanted day.
+bool pricesNeedFetch(PriceSeries? c, DateTime now, {DateTime? lastTry, int misses = 0}) {
+  bool waited(Duration d) => lastTry == null || !now.isBefore(lastTry.add(d));
+  if (c == null || c.points.isEmpty || c.at(now) == null) return waited(pricesRetryFirst);
+  if (c.hasTomorrow(now)) return false;
+  if (now.isBefore(tomorrowDue(now, zone: c.zone))) return false;
+  return waited(misses <= 1 ? pricesRetryFirst : pricesRetryLater);
+}
+
+/// Kept for callers / tests of t170u: the time until the next network check is allowed.
 Duration priceCacheTtl(PriceSeries? c, DateTime now) {
   if (c == null) return Duration.zero;
-  final due = tomorrowPublication(now, zone: c.zone).subtract(const Duration(minutes: 15));
-  return !c.hasTomorrow(now) && !now.isBefore(due) ? const Duration(minutes: 2) : const Duration(minutes: 10);
+  if (pricesNeedFetch(c, now, lastTry: c.fetched)) return Duration.zero;
+  if (c.at(now) == null) return pricesRetryFirst;
+  if (c.hasTomorrow(now)) {
+    final end = DateTime(now.year, now.month, now.day + 1);
+    return tomorrowDue(end, zone: c.zone).difference(now);
+  }
+  final due = tomorrowDue(now, zone: c.zone);
+  return now.isBefore(due) ? due.difference(now) : pricesRetryFirst;
 }
 
 class PriceService {
@@ -269,17 +300,45 @@ class PriceService {
   final String server;
   final _cache = <String, PriceSeries>{};
   final _inflight = <String, Future<PriceSeries>>{};
+  final _lastTry = <String, DateTime>{};
+  final _misses = <String, int>{};
+  final _diskChecked = <String>{};
   static PriceService shared = PriceService();
 
+  /// Test hook for the time of day.
+  static DateTime Function() clock = DateTime.now;
+
+  /// Network requests made per area (tests and "Tekniset tiedot").
+  final fetches = <String, int>{};
+
   Future<PriceSeries> get(String zone, {bool force = false}) {
-    final c = _cache[zone];
-    final now = DateTime.now();
-    // Refresh every 10 min, and sooner in the afternoon when tomorrow is still missing.
-    if (!force && c != null && now.difference(c.fetched) < priceCacheTtl(c, now)) return Future.value(c);
-    return _inflight[zone] ??= _fetch(zone).whenComplete(() {
+    return _inflight[zone] ??= _get(zone, force).whenComplete(() {
       // Block body on purpose: remove() returns this very future, and whenComplete would await it (deadlock).
       _inflight.remove(zone);
     });
+  }
+
+  Future<PriceSeries> _get(String zone, bool force) async {
+    // The persistent copy first: after a restart the prices are already known.
+    if (_cache[zone] == null && _diskChecked.add(zone)) {
+      final d = await _fromStore(zone, stale: false);
+      if (d != null) _cache[zone] = d;
+    }
+    final c = _cache[zone];
+    final now = clock();
+    if (!force && c != null && !pricesNeedFetch(c, now, lastTry: _lastTry[zone], misses: _misses[zone] ?? 0)) {
+      return c;
+    }
+    _lastTry[zone] = now;
+    fetches[zone] = (fetches[zone] ?? 0) + 1;
+    final got = await _fetch(zone);
+    final want = !now.isBefore(tomorrowDue(now, zone: zone));
+    if (!got.stale && got.at(now) != null && (!want || got.hasTomorrow(now))) {
+      _misses.remove(zone);
+    } else {
+      _misses[zone] = (_misses[zone] ?? 0) + 1;
+    }
+    return got;
   }
 
   /// Optional persistent copy of the last good answer per zone (set in main.dart); used when
@@ -387,7 +446,7 @@ class PriceService {
   /// Fetch window for the direct sources: yesterday 00:00 .. day after tomorrow 00:00 (local), so
   /// today and tomorrow are covered whatever the device's time zone.
   static (DateTime, DateTime) _window() {
-    final n = DateTime.now();
+    final n = clock();
     return (DateTime(n.year, n.month, n.day - 1), DateTime(n.year, n.month, n.day + 2));
   }
 
@@ -426,7 +485,7 @@ class PriceService {
     } catch (_) {}
   }
 
-  Future<PriceSeries?> _fromStore(String zone) async {
+  Future<PriceSeries?> _fromStore(String zone, {bool stale = true}) async {
     try {
       final raw = await loadStore?.call();
       if (raw == null) return null;
@@ -435,7 +494,7 @@ class PriceService {
       return PriceSeries.fromJson(
         jsonDecode(e['body'] as String) as Map<String, dynamic>,
         fetched: DateTime.fromMillisecondsSinceEpoch((e['at'] as num).toInt()),
-        stale: true,
+        stale: stale,
         tried: List.of(lastTried[zone] ?? const []),
       );
     } catch (_) {

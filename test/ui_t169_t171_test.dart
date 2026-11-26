@@ -172,14 +172,15 @@ void main() {
       expect(tomorrowPendingText(DateTime(2026, 11, 26, 9), 'sv'), startsWith('Morgondagens priser publiceras'));
     });
 
-    test('refetch: every 2 min once tomorrow is due but missing, else every 10 min', () {
+    test('refetch policy (t186u): nothing before ~13:45 CET, then every 15 / 30 min until tomorrow arrives', () {
       final d0 = DateTime(2026, 11, 26);
       final today = PriceSeries('FI', [for (var h = 0; h < 24; h++) PricePoint(d0.add(Duration(hours: h)), 3600, 50)]);
-      final due = tomorrowPublication(DateTime(2026, 11, 26, 9));
-      expect(priceCacheTtl(today, due.subtract(const Duration(hours: 2))), const Duration(minutes: 10));
-      expect(priceCacheTtl(today, due.add(const Duration(minutes: 5))), const Duration(minutes: 2));
+      final due = tomorrowDue(DateTime(2026, 11, 26, 9));
+      expect(pricesNeedFetch(today, due.subtract(const Duration(hours: 2))), isFalse);
+      expect(pricesNeedFetch(today, due.add(const Duration(minutes: 5))), isTrue);
       final both = PriceSeries('FI', [for (var h = 0; h < 48; h++) PricePoint(d0.add(Duration(hours: h)), 3600, 50)]);
-      expect(priceCacheTtl(both, due.add(const Duration(minutes: 5))), const Duration(minutes: 10));
+      expect(pricesNeedFetch(both, due.add(const Duration(minutes: 5))), isFalse);
+      expect(priceCacheTtl(today, due.subtract(const Duration(hours: 2))), const Duration(hours: 2));
     });
 
     test('ranges: Tänään / 24 h / Tänään + huomenna / 48 h; "Näytä huomenna" off caps at midnight', () {

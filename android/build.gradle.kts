@@ -15,6 +15,17 @@ subprojects {
     val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
     project.layout.buildDirectory.value(newSubprojectBuildDir)
 }
+// flutter_blue_plus 1.34.x (newest that resolves with wakelock_plus' dbus) still says
+// compileSdkVersion 33, but its androidx dependencies need 34+. Raise it for that plugin only.
+subprojects {
+    if (name == "flutter_blue_plus") {
+        val raise = {
+            val android = extensions.findByName("android")
+            android?.javaClass?.getMethod("compileSdkVersion", Int::class.javaPrimitiveType)?.invoke(android, 36)
+        }
+        if (state.executed) raise() else afterEvaluate { raise() }
+    }
+}
 subprojects {
     project.evaluationDependsOn(":app")
 }
