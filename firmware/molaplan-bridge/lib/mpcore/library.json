@@ -1,0 +1,7 @@
+{
+  "name": "mpcore",
+  "version": "0.8.0",
+  "description": "Molaplan Bridge portable core (protocol, crypto, drivers' request building)",
+  "build": { "flags": ["-std=gnu++17"] },
+  "dependencies": [{ "owner": "bblanchon", "name": "ArduinoJson", "version": "^7.2.1" }]
+}
