@@ -171,6 +171,17 @@ class UpdateState extends ChangeNotifier {
     };
   }
 
+  /// t225u: the in-app "Päivitä" on a device-owner Android (a bridge like the HTC 5G Hub) goes
+  /// through the native installer – it re-checks the SHA-256 and the signing key and installs
+  /// without any prompt. Returns null when this device is not a device owner (normal prompt).
+  Future<String?> installSilentlyIfOwner(ReleaseInfo r, File f) async {
+    if (platform.os != 'android' || !await platform.deviceOwner()) return null;
+    final sums = await fetchSums(r, client: client);
+    final sha = sums[f.uri.pathSegments.last];
+    if (sha == null) return 'no_checksum';
+    return platform.installUpdate(f.path, sha);
+  }
+
   /// Downloads the right asset and checks it against SHA256SUMS.
   /// Throws [ChecksumMismatch] or a network error; nothing is installed on failure.
   Future<File?> downloadVerified(ReleaseInfo r) async {

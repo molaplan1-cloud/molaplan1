@@ -1077,6 +1077,16 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s5dd4c9671f => 'Avamislehekülg';
 
   @override
+  String s8f5be45ff1(String p0) {
+    return 'Paigaldamine $p0 - rakendus käivitub hetke pärast uuesti.';
+  }
+
+  @override
+  String sf207ef6dc2(String p0) {
+    return 'Paigaldamine nurjus: $p0';
+  }
+
+  @override
   String get s49ddc3c3b6 => 'Allalaaditud uuendamine';
 
   @override
@@ -4703,7 +4713,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s3443bfc674 => ' • värskendused vajavad seadmes kinnitamist';
 
   @override
-  String get scb47cbf8c2 => 'Kodusild: vanem versioon (versiooniinfo puudub)';
+  String get s8ae159d87a =>
+      'Kodusild: vanem kui 0.8.0 (versiooniinfo puudub). Seda ei saa kauguuendada – uuenda seda üks kord sillaseadmes.';
 
   @override
   String get s6a02d97944 => 'Kodusilla versioon: kontroll...';
@@ -4713,6 +4724,94 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s70fe8d5ef3 => 'Uuenda silda';
+
+  @override
+  String s7897a0f8e0(String p0, String p1) {
+    return '$p0: ajakohane ($p1).';
+  }
+
+  @override
+  String sbcef05dad9(String p0, String p1) {
+    return '$p0 on installimine $p1 ja taaskäivitamine (umbes minut).';
+  }
+
+  @override
+  String s1aee092e31(String p0, String p1) {
+    return '$p0: allalaaditud versioon $p1. Lubab paigaldada sillaseadmesse.';
+  }
+
+  @override
+  String s72774aece1(String p0, String p1) {
+    return '$p0 uuendatakse käsitsi (versioon $p1).';
+  }
+
+  @override
+  String s238af47c1e(String p0) {
+    return '$p0 is older than 0.8.0 and cannot update itself remotely.';
+  }
+
+  @override
+  String sb9bee63c5e(String p0) {
+    return '$p0 ei suutnud nüüd värskendusi kontrollida.';
+  }
+
+  @override
+  String sd9103f5cee(String p0) {
+    return 'Ühendus sillaga $p0?';
+  }
+
+  @override
+  String s6046b9ff9c(String p0, String p1) {
+    return 'See seade on nüüd ühendatud $p0 - ga. Lülitab sisse $p1. Kood või QR ei ole vajalik – mõlemad on sinu kontol.';
+  }
+
+  @override
+  String get s053b2f1211 =>
+      'Koodi või QR-i pole vaja - mõlemad seadmed on teie kontol.';
+
+  @override
+  String s948bfb1114(String p0) {
+    return 'Ühendatud $p0-ga.';
+  }
+
+  @override
+  String get sc4abf59272 => 'kontrollin...';
+
+  @override
+  String get s12b3d49235 => 'tundmatu';
+
+  @override
+  String get sb9e406274e => 'online';
+
+  @override
+  String sd5fc9353f9(String p0) {
+    return 'vanem kui 0.8.0 · $p0 · kaugvärskenduseta (uuendada üks kord seadmes)';
+  }
+
+  @override
+  String get se9d573787e => ' · vaikiv värskendus: jah';
+
+  @override
+  String get s82043faaa4 => ' · Vaikne värskendus: ei';
+
+  @override
+  String get s42b97a989b => 'tundmatu versioon';
+
+  @override
+  String get sca90c9c253 => ' (käesoleval seadmel mandaati ei ole)';
+
+  @override
+  String get sfd88be2409 => 'Mu kodusillad';
+
+  @override
+  String get s57117babe8 => 'Värskenda';
+
+  @override
+  String get s40dab032ce =>
+      'Kõik sinu konto kodusillad, ka teistel saitidel, alati kaugteenuse kaudu.';
+
+  @override
+  String get s9b2c8181e4 => 'seadeldist';
 
   @override
   String get s72da730a42 => 'Kaugteenus: ühendatud';
@@ -4773,6 +4872,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get se97cc157ef => 'või sisestage kood';
+
+  @override
+  String get s3143eb70e1 => '6 numbrit kodusilla ekraanilt';
 
   @override
   String get s643434044c =>
@@ -4861,14 +4963,14 @@ class AppLocalizationsEt extends AppLocalizations {
       'Seade ei saa siis enam kaugühendust luua. Seda saab uuesti paari panna.';
 
   @override
-  String get s9715416100 => 'Skaneeri telefoniga';
+  String get sf7fa9632f3 => 'Kehtib';
 
   @override
   String get s4e877aeafe =>
       'Telefonis: Molaplan → Seaded → Kaugjuurdepääs → Ühendage see seade kodus';
 
   @override
-  String get sf7fa9632f3 => 'Kehtib';
+  String get s9715416100 => 'Skaneeri telefoniga';
 
   @override
   String get s5378bb3f05 => 'Nõustuge selle seadmega?';

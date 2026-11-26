@@ -37,6 +37,11 @@ abstract class SyncHost {
   Future<Map<String, dynamic>?> makeHomeGrant();
 
   String deviceName();
+
+  /// t224u: if this device is a home bridge, its entry for the account's 'Omat kotisillat' list:
+  /// {home, name, platform, app, deviceOwner, grant} (grant = a client credential made once by
+  /// this bridge for the account). Null when this device is not a bridge.
+  Future<Map<String, dynamic>?> bridgeEntry();
 }
 
 enum SyncStatus { off, syncing, ok, offline, error }
@@ -412,7 +417,7 @@ class AccountState extends ChangeNotifier {
       for (var attempt = 0; attempt < 3; attempt++) {
         final s = await _fresh();
         final hash = await _localHash();
-        final dirty = hash != lastHash || _pendingWrap != null;
+        final dirty = hash != lastHash || _pendingWrap != null || _ownBridgeStale;
         final rev = await api.remoteRev(s);
         if (rev == null) {
           await _upload(null);
@@ -424,7 +429,7 @@ class AccountState extends ChangeNotifier {
               dirty && lastRev != null && (localChangedAt ?? 0) > (row.updatedAt?.millisecondsSinceEpoch ?? 0);
           if (!localNewer) {
             await _adopt(row);
-            if (_pendingWrap == null) break;
+            if (_pendingWrap == null && !_ownBridgeStale) break;
             continue;
           }
           try {
@@ -461,11 +466,54 @@ class AccountState extends ChangeNotifier {
   }
 
   Map<String, dynamic>? _vaultHome;
+  Map<String, dynamic>? get vaultHome => _vaultHome;
 
-  Future<Map<String, dynamic>> _vaultData() async => {
-    'secrets': host.syncSecrets(),
-    'home': ?(_vaultHome ?? host.homeCredential()),
-  };
+  /// t224u: every home bridge registered to the account (end-to-end encrypted in the vault),
+  /// keyed by home id. Each bridge adds / refreshes its own entry.
+  final Map<String, Map<String, dynamic>> vaultBridges = {};
+  bool _ownBridgeStale = false;
+
+  /// The account's bridges for the UI, sorted by name.
+  List<Map<String, dynamic>> get accountBridges =>
+      vaultBridges.values.toList()..sort((a, b) => '${a['name']}'.compareTo('${b['name']}'));
+
+  Future<Map<String, Map<String, dynamic>>> _bridgesForVault() async {
+    final out = {for (final e in vaultBridges.entries) e.key: e.value};
+    Map<String, dynamic>? own;
+    try {
+      own = await host.bridgeEntry();
+    } catch (e) {
+      debugPrint('bridge entry: $e');
+    }
+    if (own != null && own['home'] is String) out[own['home'] as String] = own;
+    return out;
+  }
+
+  Future<Map<String, dynamic>> _vaultData() async {
+    final bridges = await _bridgesForVault();
+    return {'secrets': host.syncSecrets(), 'home': ?(_vaultHome ?? host.homeCredential()), 'bridges': ?(bridges.isEmpty ? null : bridges)};
+  }
+
+  void _readBridges(Map<String, dynamic>? v) {
+    final b = v?['bridges'];
+    if (b is! Map) return;
+    vaultBridges
+      ..clear()
+      ..addAll({
+        for (final e in b.entries)
+          if (e.value is Map) '${e.key}': Map<String, dynamic>.from(e.value as Map),
+      });
+  }
+
+  Future<void> _checkOwnBridge() async {
+    Map<String, dynamic>? own;
+    try {
+      own = await host.bridgeEntry();
+    } catch (_) {}
+    if (own == null) return;
+    final have = vaultBridges[own['home']];
+    if (have == null || jsonEncode(have) != jsonEncode(own)) _ownBridgeStale = true;
+  }
 
   Future<String> _localHash() async => sha256Hex(jsonEncode({'c': host.syncConfig(), 'v': await _vaultData()}));
 
@@ -479,7 +527,8 @@ class AccountState extends ChangeNotifier {
 
   Future<void> _push2(Session s, int? baseRev) async {
     final hash = await _localHash();
-    final vault = _key == null ? null : await sealVault(_key!, await _vaultData(), s.userId);
+    final data = _key == null ? null : await _vaultData();
+    final vault = data == null ? null : await sealVault(_key!, data, s.userId);
     final row = await api.put(
       s,
       baseRev: baseRev,
@@ -489,6 +538,10 @@ class AccountState extends ChangeNotifier {
       device: host.deviceName(),
     );
     _pendingWrap = null;
+    if (data != null) {
+      _ownBridgeStale = false;
+      _readBridges(data);
+    }
     lastRev = row.rev;
     lastHash = hash;
     await _persist();
@@ -542,6 +595,8 @@ class AccountState extends ChangeNotifier {
   Future<void> _adoptHome(SyncRow row) async => _useHome(await _openVault(row));
 
   Future<void> _useHome(Map<String, dynamic>? v) async {
+    _readBridges(v);
+    if (v != null) await _checkOwnBridge();
     final home = v?['home'];
     if (home is! Map) return;
     _vaultHome = Map<String, dynamic>.from(home);

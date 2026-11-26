@@ -1079,6 +1079,16 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s5dd4c9671f => 'Avaa julkaisusivu';
 
   @override
+  String s8f5be45ff1(String p0) {
+    return 'Asennetaan versio $p0 – sovellus käynnistyy uudelleen hetken kuluttua.';
+  }
+
+  @override
+  String sf207ef6dc2(String p0) {
+    return 'Asennus epäonnistui: $p0';
+  }
+
+  @override
   String get s49ddc3c3b6 => 'Päivitys ladattu';
 
   @override
@@ -4718,7 +4728,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s3443bfc674 => ' · päivitys hyväksytään laitteella';
 
   @override
-  String get scb47cbf8c2 => 'Kotisilta: vanhempi versio (ei versiotietoa)';
+  String get s8ae159d87a =>
+      'Kotisilta: vanhempi versio kuin 0.8.0 (ei versiotietoa). Sitä ei voi päivittää etänä – päivitä se kerran sillan laitteella.';
 
   @override
   String get s6a02d97944 => 'Kotisillan versio: haetaan…';
@@ -4728,6 +4739,94 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s70fe8d5ef3 => 'Päivitä silta';
+
+  @override
+  String s7897a0f8e0(String p0, String p1) {
+    return '$p0: jo uusin ($p1).';
+  }
+
+  @override
+  String sbcef05dad9(String p0, String p1) {
+    return '$p0 asentaa version $p1 ja käynnistyy uudelleen (noin minuutti).';
+  }
+
+  @override
+  String s1aee092e31(String p0, String p1) {
+    return '$p0: versio $p1 ladattu. Asennus pitää hyväksyä sillan laitteella.';
+  }
+
+  @override
+  String s72774aece1(String p0, String p1) {
+    return '$p0 päivitetään käsin (versio $p1).';
+  }
+
+  @override
+  String s238af47c1e(String p0) {
+    return '$p0 on vanhempi kuin 0.8.0 eikä osaa päivittää itseään etänä.';
+  }
+
+  @override
+  String sb9bee63c5e(String p0) {
+    return '$p0 ei saanut päivitystietoja nyt.';
+  }
+
+  @override
+  String sd9103f5cee(String p0) {
+    return 'Yhdistä kotisiltaan $p0?';
+  }
+
+  @override
+  String s6046b9ff9c(String p0, String p1) {
+    return 'Tämä laite on nyt yhdistetty kotiin $p0. Se vaihtuu kotisiltaan $p1. Koodia tai QR:ää ei tarvita, koska molemmat ovat omalla tililläsi.';
+  }
+
+  @override
+  String get s053b2f1211 =>
+      'Koodia tai QR:ää ei tarvita, koska molemmat laitteet ovat omalla tililläsi.';
+
+  @override
+  String s948bfb1114(String p0) {
+    return 'Yhdistetty kotiin $p0.';
+  }
+
+  @override
+  String get sc4abf59272 => 'haetaan…';
+
+  @override
+  String get s12b3d49235 => 'ei tietoa';
+
+  @override
+  String get sb9e406274e => 'päällä';
+
+  @override
+  String sd5fc9353f9(String p0) {
+    return 'vanhempi kuin 0.8.0 · $p0 · ei etäpäivitystä (päivitä kerran laitteella)';
+  }
+
+  @override
+  String get se9d573787e => ' · hiljainen päivitys: kyllä';
+
+  @override
+  String get s82043faaa4 => ' · hiljainen päivitys: ei';
+
+  @override
+  String get s42b97a989b => 'versio ei tiedossa';
+
+  @override
+  String get sca90c9c253 => ' (ei yhteystietoa tälle laitteelle)';
+
+  @override
+  String get sfd88be2409 => 'Omat kotisillat';
+
+  @override
+  String get s57117babe8 => 'Päivitä tiedot';
+
+  @override
+  String get s40dab032ce =>
+      'Kaikki tiliisi kuuluvat kotisillat, myös muissa kohteissa. Yhteys kulkee aina etäpalvelun kautta.';
+
+  @override
+  String get s9b2c8181e4 => 'tämä laite';
 
   @override
   String get s72da730a42 => 'Yhteys etäpalveluun: kunnossa';
@@ -4787,6 +4886,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get se97cc157ef => 'tai kirjoita koodi';
+
+  @override
+  String get s3143eb70e1 => '6 numeroa kotisillan näytöltä';
 
   @override
   String get s643434044c =>
@@ -4874,14 +4976,14 @@ class AppLocalizationsFi extends AppLocalizations {
       'Laite ei sen jälkeen pääse kotiin etänä. Sen voi yhdistää uudelleen.';
 
   @override
-  String get s9715416100 => 'Skannaa puhelimella';
+  String get sf7fa9632f3 => 'Voimassa';
 
   @override
   String get s4e877aeafe =>
       'Puhelimessa: Molaplan → Asetukset → Etäkäyttö → Yhdistä tämä laite kotiin';
 
   @override
-  String get sf7fa9632f3 => 'Voimassa';
+  String get s9715416100 => 'Skannaa puhelimella';
 
   @override
   String get s5378bb3f05 => 'Hyväksytäänkö laite?';

@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:molaplan/version.dart';
 import 'package:molaplan/devices/find.dart';
 import 'package:molaplan/devices/registry.dart';
 import 'package:molaplan/devices/shelly.dart';
@@ -317,6 +318,15 @@ void main() {
     expect(await pc.remote.usesSharedCredential(), isFalse, reason: 'the PC enrolled its own key');
     expect(home.remote.bridge!.devices.map((d) => d.name), contains(defaultDeviceName()));
     expect(await pc.remote.checkRemote(), isTrue);
+    // t224u/t227u: the bridge is in the account's 'Omat kotisillat' with its version, and a device
+    // can pair with it from the list (no code / QR) through the relay.
+    final row = pc.ownBridges.single;
+    expect(row.home, home.remote.bridge!.home);
+    expect(row.known!['app'], appVersion);
+    expect((await pc.remote.probeBridge(row))['online'], isTrue);
+    await pc.remote.unpair();
+    await pc.pairOwnBridge(pc.ownBridges.single);
+    expect(pc.remote.paired!.home, home.remote.bridge!.home);
     await pc.remote.unpair();
     pc.dispose();
     await home.setBridgeMode(false);

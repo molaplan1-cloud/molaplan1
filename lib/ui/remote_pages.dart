@@ -10,6 +10,8 @@ import '../remote/bridge_core.dart';
 import '../remote/protocol.dart';
 import '../remote/remote_client.dart';
 import '../remote/router.dart';
+import '../state/app_state.dart' show AppState;
+import '../state/remote_state.dart' show OwnBridge;
 import 'add_bridge_page.dart';
 import 'app_scope.dart';
 import 'error_box.dart';
@@ -270,6 +272,8 @@ class _RemoteHubPageState extends State<RemoteHubPage> {
                 ),
               ),
               const SizedBox(height: 16),
+              const OwnBridgesCard(),
+              if (AppScope.of(context).ownBridges.isNotEmpty) const SizedBox(height: 16),
               if (r.isPaired) ...[
                 Card(
                   child: Padding(
@@ -501,8 +505,8 @@ class _BridgeVersionTileState extends State<BridgeVersionTile> {
     } else if (i != null) {
       line = tx(
         context,
-        'Kotisilta: vanhempi versio (ei versiotietoa)',
-        'Home bridge: an older version (no version info)',
+        'Kotisilta: vanhempi versio kuin 0.8.0 (ei versiotietoa). Sitä ei voi päivittää etänä – päivitä se kerran sillan laitteella.',
+        'Home bridge: older than 0.8.0 (no version info). It cannot be updated remotely – update it once on the bridge device.',
       );
     } else if (_loading) {
       line = tx(context, 'Kotisillan versio: haetaan…', 'Home bridge version: checking…');
@@ -525,6 +529,244 @@ class _BridgeVersionTileState extends State<BridgeVersionTile> {
                 : Text(tx(context, 'Päivitä silta', 'Update bridge')),
           ),
       ],
+    );
+  }
+}
+
+/// t224u: 'Omat kotisillat' – every home bridge of the account with its own 'Päivitä', whichever
+/// home this device is paired to. Requests always go through the relay.
+class OwnBridgesCard extends StatefulWidget {
+  const OwnBridgesCard({super.key});
+  @override
+  State<OwnBridgesCard> createState() => _OwnBridgesCardState();
+}
+
+class _OwnBridgesCardState extends State<OwnBridgesCard> {
+  final Map<String, Map<String, dynamic>> _info = {};
+  final Set<String> _loading = {};
+  final Set<String> _updating = {};
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _loadAll());
+  }
+
+  void _loadAll() {
+    if (!mounted) return;
+    for (final b in AppScope.read(context).ownBridges) {
+      _load(b);
+    }
+  }
+
+  Future<void> _load(OwnBridge b) async {
+    setState(() => _loading.add(b.home));
+    try {
+      final i = await AppScope.read(context).remote.probeBridge(b);
+      if (mounted) setState(() => _info[b.home] = i);
+    } catch (e) {
+      if (mounted) setState(() => _info[b.home] = {'online': false, 'error': friendlyText(context, e)});
+    } finally {
+      if (mounted) setState(() => _loading.remove(b.home));
+    }
+  }
+
+  Future<void> _update(OwnBridge b) async {
+    setState(() => _updating.add(b.home));
+    try {
+      final r = await AppScope.read(context).remote.updateOwnBridge(b, info: _info[b.home]) ?? const {};
+      if (!mounted) return;
+      final latest = r['latest'] ?? '';
+      showSnack(context, switch (r['status']) {
+        'up_to_date' => tx(context, '${b.name}: jo uusin (${r['current']}).', '${b.name}: up to date (${r['current']}).'),
+        'installing' when r['silent'] == true => tx(
+          context,
+          '${b.name} asentaa version $latest ja käynnistyy uudelleen (noin minuutti).',
+          '${b.name} is installing $latest and restarts (about a minute).',
+        ),
+        'installing' => tx(
+          context,
+          '${b.name}: versio $latest ladattu. Asennus pitää hyväksyä sillan laitteella.',
+          '${b.name}: version $latest downloaded. Approve the install on the bridge device.',
+        ),
+        'manual' => tx(
+          context,
+          '${b.name} päivitetään käsin (versio $latest).',
+          '${b.name} is updated by hand (version $latest).',
+        ),
+        'too_old' => tx(
+          context,
+          '${b.name} on vanhempi kuin 0.8.0 eikä osaa päivittää itseään etänä.',
+          '${b.name} is older than 0.8.0 and cannot update itself remotely.',
+        ),
+        'unavailable' => tx(context, '${b.name} ei saanut päivitystietoja nyt.', '${b.name} could not check for updates now.'),
+        _ => tx(
+          context,
+          'Päivitys epäonnistui: ${r['detail'] ?? r['status']}',
+          'Update failed: ${r['detail'] ?? r['status']}',
+        ),
+      }, error: const {'failed', 'no_asset', 'no_checksum', 'too_old'}.contains(r['status']));
+      Future<void>.delayed(const Duration(seconds: 90), () {
+        if (mounted) _load(b);
+      });
+    } catch (e) {
+      if (mounted) showSnack(context, friendlyText(context, e), error: true);
+    } finally {
+      if (mounted) setState(() => _updating.remove(b.home));
+    }
+  }
+
+  Future<void> _pair(OwnBridge b) async {
+    final st = AppScope.read(context);
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (c) => AlertDialog(
+        icon: const Icon(Icons.add_link, size: 40),
+        title: Text(tx(c, 'Yhdistä kotisiltaan ${b.name}?', 'Connect to the bridge ${b.name}?')),
+        content: Text(
+          st.remote.isPaired
+              ? tx(
+                  c,
+                  'Tämä laite on nyt yhdistetty kotiin ${st.remote.paired!.name}. Se vaihtuu kotisiltaan ${b.name}. Koodia tai QR:ää ei tarvita, koska molemmat ovat omalla tililläsi.',
+                  'This device is now connected to ${st.remote.paired!.name}. It switches to ${b.name}. No code or QR needed – both are on your account.',
+                )
+              : tx(
+                  c,
+                  'Koodia tai QR:ää ei tarvita, koska molemmat laitteet ovat omalla tililläsi.',
+                  'No code or QR needed – both devices are on your account.',
+                ),
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(c, false), child: Text(tx(c, 'Peruuta', 'Cancel'))),
+          FilledButton(
+            key: const ValueKey('own-bridge-pair-ok'),
+            onPressed: () => Navigator.pop(c, true),
+            child: Text(tx(c, 'Yhdistä', 'Connect')),
+          ),
+        ],
+      ),
+    );
+    if (ok != true || !mounted) return;
+    setState(() => _updating.add(b.home));
+    try {
+      await st.pairOwnBridge(b);
+      if (mounted) showSnack(context, tx(context, 'Yhdistetty kotiin ${b.name}.', 'Connected to ${b.name}.'));
+    } catch (e) {
+      if (mounted) showSnack(context, friendlyText(context, e), error: true);
+    } finally {
+      if (mounted) setState(() => _updating.remove(b.home));
+    }
+  }
+
+  String _line(BuildContext context, OwnBridge b) {
+    final i = _info[b.home];
+    final k = b.known;
+    if (i == null) {
+      final v = k?['app'];
+      return _loading.contains(b.home)
+          ? tx(context, 'haetaan…', 'checking…')
+          : v == null
+          ? tx(context, 'ei tietoa', 'unknown')
+          : 'Molaplan $v (${k?['platform'] ?? ''})';
+    }
+    final online = i['online'] == true;
+    final status = online ? tx(context, 'päällä', 'online') : tx(context, 'ei vastaa', 'not answering');
+    if (i['platform'] == 'esp32') return 'Molaplan Bridge ${i['fw'] ?? ''} · $status';
+    if (i['old'] == true) {
+      return tx(
+        context,
+        'vanhempi kuin 0.8.0 · $status · ei etäpäivitystä (päivitä kerran laitteella)',
+        'older than 0.8.0 · $status · no remote update (update once on the device)',
+      );
+    }
+    final app = i['app'] ?? k?['app'];
+    final platform = i['platform'] ?? k?['platform'];
+    final owner = i['deviceOwner'] ?? k?['deviceOwner'];
+    final silent = platform != 'android'
+        ? ''
+        : owner == true
+        ? tx(context, ' · hiljainen päivitys: kyllä', ' · silent update: yes')
+        : tx(context, ' · hiljainen päivitys: ei', ' · silent update: no');
+    final ver = app == null ? tx(context, 'versio ei tiedossa', 'version unknown') : 'Molaplan $app';
+    final why = online
+        ? ''
+        : i['reason'] == 'not_paired'
+        ? tx(context, ' (ei yhteystietoa tälle laitteelle)', ' (no credential on this device)')
+        : '';
+    return '$ver${platform == null ? '' : ' ($platform)'} · $status$why$silent';
+  }
+
+  bool _canPair(AppState st, OwnBridge b) =>
+      !b.self && b.grant != null && st.remote.paired?.home != b.home && _info[b.home]?['online'] == true;
+
+  bool _canUpdate(OwnBridge b) {
+    final i = _info[b.home];
+    if (i == null || i['online'] != true || i['old'] == true) return false;
+    return i['platform'] == 'android' || i['platform'] == 'esp32';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final st = AppScope.of(context);
+    final list = st.ownBridges;
+    if (list.isEmpty) return const SizedBox.shrink();
+    final text = Theme.of(context).textTheme;
+    return Card(
+      key: const ValueKey('own-bridges'),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Expanded(child: Text(tx(context, 'Omat kotisillat', 'My home bridges'), style: text.titleMedium)),
+                IconButton(
+                  key: const ValueKey('own-bridges-refresh'),
+                  tooltip: tx(context, 'Päivitä tiedot', 'Refresh'),
+                  onPressed: _loadAll,
+                  icon: const Icon(Icons.refresh),
+                ),
+              ],
+            ),
+            Text(
+              tx(
+                context,
+                'Kaikki tiliisi kuuluvat kotisillat, myös muissa kohteissa. Yhteys kulkee aina etäpalvelun kautta.',
+                'All home bridges of your account, also at other sites. Always through the remote service.',
+              ),
+              style: text.bodySmall,
+            ),
+            for (final b in list)
+              ListTile(
+                key: ValueKey('own-bridge-${b.home}'),
+                contentPadding: EdgeInsets.zero,
+                leading: Icon(b.self ? Icons.computer : Icons.router_outlined),
+                title: Text(b.self ? '${b.name} (${tx(context, 'tämä laite', 'this device')})' : b.name),
+                subtitle: Text(_line(context, b)),
+                trailing: _updating.contains(b.home)
+                    ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2))
+                    : Wrap(
+                        spacing: 4,
+                        children: [
+                          if (_canPair(st, b))
+                            TextButton(
+                              key: ValueKey('own-bridge-pair-${b.home}'),
+                              onPressed: () => _pair(b),
+                              child: Text(tx(context, 'Yhdistä', 'Connect')),
+                            ),
+                          if (_canUpdate(b))
+                            TextButton(
+                              key: ValueKey('own-bridge-update-${b.home}'),
+                              onPressed: () => _update(b),
+                              child: Text(tx(context, 'Päivitä', 'Update')),
+                            ),
+                        ],
+                      ),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -707,7 +949,8 @@ class _PairPageState extends State<PairPage> {
                 maxLength: 7,
                 style: const TextStyle(fontSize: 32, letterSpacing: 6, fontWeight: FontWeight.w600),
                 decoration: InputDecoration(
-                  hintText: '123 456',
+                  hintText: tx(context, '6 numeroa kotisillan näytöltä', '6 digits from the home bridge screen'),
+                  hintStyle: const TextStyle(fontSize: 16, letterSpacing: 0, fontWeight: FontWeight.w400),
                   counterText: '',
                   helperText: tx(
                     context,
@@ -1026,7 +1269,7 @@ class _BridgePageState extends State<BridgePage> {
                     ),
                   )
                 else
-                  _PairingPanel(
+                  BridgePairingPanel(
                     window: w,
                     onCancel: () async {
                       await b.stopPairing();
@@ -1097,52 +1340,101 @@ class _BridgePageState extends State<BridgePage> {
   );
 }
 
-class _PairingPanel extends StatelessWidget {
-  const _PairingPanel({required this.window, required this.onCancel});
+/// t227u: on a short / landscape screen (e.g. the HTC 5G Hub, about 640×360 dp) the code sits
+/// big beside the QR, so both are visible without scrolling.
+class BridgePairingPanel extends StatefulWidget {
+  const BridgePairingPanel({super.key, required this.window, required this.onCancel});
   final PairingWindow window;
   final VoidCallback onCancel;
 
   @override
+  State<BridgePairingPanel> createState() => BridgePairingPanelState();
+}
+
+class BridgePairingPanelState extends State<BridgePairingPanel> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) Scrollable.ensureVisible(context, duration: const Duration(milliseconds: 250));
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final window = widget.window;
     final left = window.until.difference(DateTime.now());
     final mm = left.inMinutes.clamp(0, 99);
     final ss = (left.inSeconds % 60).clamp(0, 59).toString().padLeft(2, '0');
     final code = '${window.code.substring(0, 3)} ${window.code.substring(3)}';
     final text = Theme.of(context).textTheme;
+    final size = MediaQuery.sizeOf(context);
+    final wideShort = size.width > size.height || size.height < 600;
+    final qrSize = wideShort ? (size.height - 150).clamp(120.0, 220.0) : 240.0;
+    final qr = Container(
+      color: Colors.white,
+      padding: const EdgeInsets.all(10),
+      child: QrImageView(data: window.invite.toUri(), size: qrSize, backgroundColor: Colors.white),
+    );
+    final codeBlock = Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(tx(context, 'tai kirjoita koodi', 'or type the code')),
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: SelectableText(
+            code,
+            key: const ValueKey('bridge-code'),
+            style: TextStyle(fontSize: wideShort ? 52 : 44, fontWeight: FontWeight.w700, letterSpacing: 4),
+          ),
+        ),
+        Text('${tx(context, 'Voimassa', 'Valid for')} $mm:$ss', style: text.bodyMedium),
+        TextButton(onPressed: widget.onCancel, child: Text(tx(context, 'Peruuta', 'Cancel'))),
+      ],
+    );
+    final howTo = Text(
+      tx(
+        context,
+        'Puhelimessa: Molaplan → Asetukset → Etäkäyttö → Yhdistä tämä laite kotiin',
+        'On the phone: Molaplan → Settings → Remote access → Connect this device to home',
+      ),
+      textAlign: TextAlign.center,
+      style: wideShort ? text.bodySmall : null,
+    );
     return Card(
       key: const ValueKey('bridge-pairing'),
       child: Padding(
-        padding: const EdgeInsets.all(18),
-        child: Column(
-          children: [
-            Text(tx(context, 'Skannaa puhelimella', 'Scan with the phone'), style: text.titleLarge),
-            const SizedBox(height: 4),
-            Text(
-              tx(
-                context,
-                'Puhelimessa: Molaplan → Asetukset → Etäkäyttö → Yhdistä tämä laite kotiin',
-                'On the phone: Molaplan → Settings → Remote access → Connect this device to home',
+        padding: EdgeInsets.all(wideShort ? 12 : 18),
+        child: wideShort
+            ? Row(
+                key: const ValueKey('bridge-pairing-row'),
+                children: [
+                  qr,
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(tx(context, 'Skannaa puhelimella', 'Scan with the phone'), style: text.titleMedium),
+                        howTo,
+                        const SizedBox(height: 6),
+                        codeBlock,
+                      ],
+                    ),
+                  ),
+                ],
+              )
+            : Column(
+                children: [
+                  Text(tx(context, 'Skannaa puhelimella', 'Scan with the phone'), style: text.titleLarge),
+                  const SizedBox(height: 4),
+                  howTo,
+                  const SizedBox(height: 14),
+                  qr,
+                  const SizedBox(height: 14),
+                  codeBlock,
+                ],
               ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 14),
-            Container(
-              color: Colors.white,
-              padding: const EdgeInsets.all(12),
-              child: QrImageView(data: window.invite.toUri(), size: 240, backgroundColor: Colors.white),
-            ),
-            const SizedBox(height: 14),
-            Text(tx(context, 'tai kirjoita koodi', 'or type the code')),
-            SelectableText(
-              code,
-              key: const ValueKey('bridge-code'),
-              style: const TextStyle(fontSize: 44, fontWeight: FontWeight.w700, letterSpacing: 4),
-            ),
-            Text('${tx(context, 'Voimassa', 'Valid for')} $mm:$ss', style: text.bodyMedium),
-            const SizedBox(height: 10),
-            TextButton(onPressed: onCancel, child: Text(tx(context, 'Peruuta', 'Cancel'))),
-          ],
-        ),
       ),
     );
   }

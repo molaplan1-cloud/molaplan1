@@ -125,7 +125,9 @@ Future<void> runUpdate(BuildContext context, ReleaseInfo r) async {
     await p.openUrl(r.pageUrl);
     return;
   }
-  if (p.os == 'android' && !await p.canInstall()) {
+  // A device owner (bridge) installs silently and needs no "unknown sources" permission.
+  final owner = p.os == 'android' && await p.deviceOwner();
+  if (p.os == 'android' && !owner && !await p.canInstall()) {
     if (!context.mounted) return;
     await _allowInstallsGuide(context);
     return;
@@ -175,6 +177,28 @@ Future<void> runUpdate(BuildContext context, ReleaseInfo r) async {
         ],
       ),
     );
+    return;
+  }
+  if (owner) {
+    String res;
+    try {
+      res = await up.installSilentlyIfOwner(r, f) ?? 'error';
+    } catch (e) {
+      res = 'error: $e';
+    }
+    if (context.mounted) {
+      showSnack(
+        context,
+        res.startsWith('started')
+            ? tx(
+                context,
+                'Asennetaan versio ${r.version} – sovellus käynnistyy uudelleen hetken kuluttua.',
+                'Installing ${r.version} – the app restarts in a moment.',
+              )
+            : tx(context, 'Asennus epäonnistui: $res', 'Install failed: $res'),
+        error: !res.startsWith('started'),
+      );
+    }
     return;
   }
   if (p.os == 'android') {

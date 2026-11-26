@@ -1077,6 +1077,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s5dd4c9671f => 'Open release page';
 
   @override
+  String s8f5be45ff1(String p0) {
+    return 'Installing $p0 – the app restarts in a moment.';
+  }
+
+  @override
+  String sf207ef6dc2(String p0) {
+    return 'Install failed: $p0';
+  }
+
+  @override
   String get s49ddc3c3b6 => 'Update downloaded';
 
   @override
@@ -4698,7 +4708,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s3443bfc674 => ' · updates need approval on the device';
 
   @override
-  String get scb47cbf8c2 => 'Home bridge: an older version (no version info)';
+  String get s8ae159d87a =>
+      'Home bridge: older than 0.8.0 (no version info). It cannot be updated remotely – update it once on the bridge device.';
 
   @override
   String get s6a02d97944 => 'Home bridge version: checking…';
@@ -4708,6 +4719,94 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s70fe8d5ef3 => 'Update bridge';
+
+  @override
+  String s7897a0f8e0(String p0, String p1) {
+    return '$p0: up to date ($p1).';
+  }
+
+  @override
+  String sbcef05dad9(String p0, String p1) {
+    return '$p0 is installing $p1 and restarts (about a minute).';
+  }
+
+  @override
+  String s1aee092e31(String p0, String p1) {
+    return '$p0: version $p1 downloaded. Approve the install on the bridge device.';
+  }
+
+  @override
+  String s72774aece1(String p0, String p1) {
+    return '$p0 is updated by hand (version $p1).';
+  }
+
+  @override
+  String s238af47c1e(String p0) {
+    return '$p0 is older than 0.8.0 and cannot update itself remotely.';
+  }
+
+  @override
+  String sb9bee63c5e(String p0) {
+    return '$p0 could not check for updates now.';
+  }
+
+  @override
+  String sd9103f5cee(String p0) {
+    return 'Connect to the bridge $p0?';
+  }
+
+  @override
+  String s6046b9ff9c(String p0, String p1) {
+    return 'This device is now connected to $p0. It switches to $p1. No code or QR needed – both are on your account.';
+  }
+
+  @override
+  String get s053b2f1211 =>
+      'No code or QR needed – both devices are on your account.';
+
+  @override
+  String s948bfb1114(String p0) {
+    return 'Connected to $p0.';
+  }
+
+  @override
+  String get sc4abf59272 => 'checking…';
+
+  @override
+  String get s12b3d49235 => 'unknown';
+
+  @override
+  String get sb9e406274e => 'online';
+
+  @override
+  String sd5fc9353f9(String p0) {
+    return 'older than 0.8.0 · $p0 · no remote update (update once on the device)';
+  }
+
+  @override
+  String get se9d573787e => ' · silent update: yes';
+
+  @override
+  String get s82043faaa4 => ' · silent update: no';
+
+  @override
+  String get s42b97a989b => 'version unknown';
+
+  @override
+  String get sca90c9c253 => ' (no credential on this device)';
+
+  @override
+  String get sfd88be2409 => 'My home bridges';
+
+  @override
+  String get s57117babe8 => 'Refresh';
+
+  @override
+  String get s40dab032ce =>
+      'All home bridges of your account, also at other sites. Always through the remote service.';
+
+  @override
+  String get s9b2c8181e4 => 'this device';
 
   @override
   String get s72da730a42 => 'Remote service: connected';
@@ -4767,6 +4866,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get se97cc157ef => 'or type the code';
+
+  @override
+  String get s3143eb70e1 => '6 digits from the home bridge screen';
 
   @override
   String get s643434044c =>
@@ -4855,14 +4957,14 @@ class AppLocalizationsEn extends AppLocalizations {
       'The device can then no longer connect remotely. It can be paired again.';
 
   @override
-  String get s9715416100 => 'Scan with the phone';
+  String get sf7fa9632f3 => 'Valid for';
 
   @override
   String get s4e877aeafe =>
       'On the phone: Molaplan → Settings → Remote access → Connect this device to home';
 
   @override
-  String get sf7fa9632f3 => 'Valid for';
+  String get s9715416100 => 'Scan with the phone';
 
   @override
   String get s5378bb3f05 => 'Accept this device?';

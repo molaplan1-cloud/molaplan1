@@ -58,6 +58,8 @@ class FakePlatform extends UpdatePlatform {
   @override
   Future<void> installApk(String path) async => installed.add(path);
   @override
+  Future<bool> deviceOwner() async => false;
+  @override
   Future<bool> openFolder(String path) async {
     opened.add(path);
     return true;

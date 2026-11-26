@@ -802,10 +802,61 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<bool> adoptHome(Map<String, dynamic> grant) => remote.adoptAccountHome(grant);
 
   @override
-  Future<Map<String, dynamic>?> makeHomeGrant() => remote.createAccountGrant();
+  Future<Map<String, dynamic>?> makeHomeGrant() => _accountGrant();
+
+  /// One client credential per bridge for the account (vault home and 'Omat kotisillat').
+  Future<Map<String, dynamic>?> _accountGrant() async {
+    final b = remote.bridge;
+    if (b == null) return null;
+    final saved = await secretStore.read(_accountGrantKey);
+    if (saved != null) {
+      final g = Map<String, dynamic>.from(jsonDecode(saved) as Map);
+      if (g['home'] == b.home) return g;
+    }
+    final g = await remote.createAccountGrant();
+    if (g != null) await secretStore.write(_accountGrantKey, jsonEncode(g));
+    return g;
+  }
 
   @override
   String deviceName() => defaultDeviceName();
+
+  static const _accountGrantKey = 'molaplan.remote.accountgrant';
+
+  /// t224u: this bridge's row for the account's 'Omat kotisillat' (made once, kept in the secret
+  /// store; the credential only travels inside the end-to-end encrypted account vault).
+  @override
+  Future<Map<String, dynamic>?> bridgeEntry() async {
+    final b = remote.bridge;
+    if (b == null) return null;
+    final grant = await _accountGrant();
+    if (grant == null) return null;
+    final i = await remote.bridgeInfo?.call() ?? const {};
+    return {
+      'home': b.home,
+      'name': b.homeName,
+      'platform': i['platform'],
+      'app': i['app'],
+      'deviceOwner': i['deviceOwner'] == true,
+      'grant': grant,
+    };
+  }
+
+  /// t227u: pair this device with another bridge of the same account, without a code or QR. The
+  /// account credential (end-to-end encrypted in the vault, made by that bridge for the account)
+  /// lets this device enroll its own key; the bridge checks it. Fails if the bridge does not
+  /// answer (no silent fallback to the shared credential here).
+  Future<void> pairOwnBridge(OwnBridge b) async {
+    final g = b.grant;
+    if (g == null || b.self) throw StateError('no_grant');
+    final info = await remote.probeBridge(b);
+    if (info['online'] != true) throw RemoteUnavailable('bridge_offline');
+    await remote.adoptAccountHome(g);
+    if (remote.paired?.home != b.home) throw StateError('pair_failed');
+  }
+
+  /// The account's bridges plus this device's own home(s), one row per home.
+  List<OwnBridge> get ownBridges => remote.ownBridges(vault: account.accountBridges, accountHome: account.vaultHome);
 
   Future<void> _persistSecrets(ConnectionConfig c) async {
     for (final k in descriptorFor(c.type).secretKeys) {

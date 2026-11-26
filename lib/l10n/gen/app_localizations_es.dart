@@ -1083,6 +1083,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s5dd4c9671f => 'Página de lanzamiento abierta';
 
   @override
+  String s8f5be45ff1(String p0) {
+    return 'Instalar $p0 – la aplicación se reinicia en un momento.';
+  }
+
+  @override
+  String sf207ef6dc2(String p0) {
+    return 'La instalación falló: $p0';
+  }
+
+  @override
   String get s49ddc3c3b6 => 'Actualización descargada';
 
   @override
@@ -4730,8 +4740,8 @@ class AppLocalizationsEs extends AppLocalizations {
       ' · Las actualizaciones necesitan aprobación en el dispositivo';
 
   @override
-  String get scb47cbf8c2 =>
-      'Puente de inicio: una versión anterior (sin información de la versión)';
+  String get s8ae159d87a =>
+      'Puente de inicio: más viejo que 0.8.0 (sin información de versión). No se puede actualizar remotamente – actualizarlo una vez en el dispositivo del puente.';
 
   @override
   String get s6a02d97944 => 'Versión de puente de inicio: cheque...';
@@ -4741,6 +4751,94 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s70fe8d5ef3 => 'Puente de actualización';
+
+  @override
+  String s7897a0f8e0(String p0, String p1) {
+    return '$p0: hasta la fecha ($p1).';
+  }
+
+  @override
+  String sbcef05dad9(String p0, String p1) {
+    return '$p0 está instalando $p1 y reinicia (alrededor de un minuto).';
+  }
+
+  @override
+  String s1aee092e31(String p0, String p1) {
+    return '$p0: versión $p1 descargado. Aprobar la instalación en el dispositivo puente.';
+  }
+
+  @override
+  String s72774aece1(String p0, String p1) {
+    return '$p0 se actualiza a mano (versión $p1).';
+  }
+
+  @override
+  String s238af47c1e(String p0) {
+    return '$p0 es mayor que 0.8.0 y no puede actualizarse remotamente.';
+  }
+
+  @override
+  String sb9bee63c5e(String p0) {
+    return '$p0 no pudo comprobar las actualizaciones ahora.';
+  }
+
+  @override
+  String sd9103f5cee(String p0) {
+    return '¿Conectar al puente $p0?';
+  }
+
+  @override
+  String s6046b9ff9c(String p0, String p1) {
+    return 'Este dispositivo está conectado a $p0. Se cambia a $p1. No se necesita ningún código o QR – ambos están en su cuenta.';
+  }
+
+  @override
+  String get s053b2f1211 =>
+      'No se necesita ningún código o QR – ambos dispositivos están en su cuenta.';
+
+  @override
+  String s948bfb1114(String p0) {
+    return 'Conectado a $p0.';
+  }
+
+  @override
+  String get sc4abf59272 => 'comprobando...';
+
+  @override
+  String get s12b3d49235 => 'desconocida';
+
+  @override
+  String get sb9e406274e => 'en línea';
+
+  @override
+  String sd5fc9353f9(String p0) {
+    return 'mayor que 0.8.0 · $p0 · ninguna actualización remota (actualizar una vez en el dispositivo)';
+  }
+
+  @override
+  String get se9d573787e => ' · actualización silenciosa: sí';
+
+  @override
+  String get s82043faaa4 => ' · actualización silenciosa: no';
+
+  @override
+  String get s42b97a989b => 'versión desconocida';
+
+  @override
+  String get sca90c9c253 => ' (sin credencial en este dispositivo)';
+
+  @override
+  String get sfd88be2409 => 'Mis puentes de casa';
+
+  @override
+  String get s57117babe8 => 'Actualizar';
+
+  @override
+  String get s40dab032ce =>
+      'Todos los puentes caseros de su cuenta, también en otros sitios. Siempre a través del servicio remoto.';
+
+  @override
+  String get s9b2c8181e4 => 'este dispositivo';
 
   @override
   String get s72da730a42 => 'Servicio remoto: conectado';
@@ -4801,6 +4899,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get se97cc157ef => 'o escriba el código';
+
+  @override
+  String get s3143eb70e1 => '6 dígitos de la pantalla del puente casero';
 
   @override
   String get s643434044c =>
@@ -4890,14 +4991,14 @@ class AppLocalizationsEs extends AppLocalizations {
       'El dispositivo ya no puede conectarse remotamente. Puede ser emparejado de nuevo.';
 
   @override
-  String get s9715416100 => 'Escanear con el teléfono';
+  String get sf7fa9632f3 => 'Válido para';
 
   @override
   String get s4e877aeafe =>
       'En el teléfono: Molaplan → Ajustes → Acceso remoto → Conectar este dispositivo a casa';
 
   @override
-  String get sf7fa9632f3 => 'Válido para';
+  String get s9715416100 => 'Escanear con el teléfono';
 
   @override
   String get s5378bb3f05 => '¿Aceptar este dispositivo?';

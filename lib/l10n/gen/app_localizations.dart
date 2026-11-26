@@ -1988,6 +1988,18 @@ abstract class AppLocalizations {
   /// **'Open release page'**
   String get s5dd4c9671f;
 
+  /// fi: Asennetaan versio {p0} – sovellus käynnistyy uudelleen hetken kuluttua.
+  ///
+  /// In en, this message translates to:
+  /// **'Installing {p0} – the app restarts in a moment.'**
+  String s8f5be45ff1(String p0);
+
+  /// fi: Asennus epäonnistui: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Install failed: {p0}'**
+  String sf207ef6dc2(String p0);
+
   /// fi: Päivitys ladattu
   ///
   /// In en, this message translates to:
@@ -8563,11 +8575,11 @@ abstract class AppLocalizations {
   /// **' · updates need approval on the device'**
   String get s3443bfc674;
 
-  /// fi: Kotisilta: vanhempi versio (ei versiotietoa)
+  /// fi: Kotisilta: vanhempi versio kuin 0.8.0 (ei versiotietoa). Sitä ei voi päivittää etänä – päivitä se kerran sillan laitteel
   ///
   /// In en, this message translates to:
-  /// **'Home bridge: an older version (no version info)'**
-  String get scb47cbf8c2;
+  /// **'Home bridge: older than 0.8.0 (no version info). It cannot be updated remotely – update it once on the bridge device.'**
+  String get s8ae159d87a;
 
   /// fi: Kotisillan versio: haetaan…
   ///
@@ -8586,6 +8598,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Update bridge'**
   String get s70fe8d5ef3;
+
+  /// fi: {p0}: jo uusin ({p1}).
+  ///
+  /// In en, this message translates to:
+  /// **'{p0}: up to date ({p1}).'**
+  String s7897a0f8e0(String p0, String p1);
+
+  /// fi: {p0} asentaa version {p1} ja käynnistyy uudelleen (noin minuutti).
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} is installing {p1} and restarts (about a minute).'**
+  String sbcef05dad9(String p0, String p1);
+
+  /// fi: {p0}: versio {p1} ladattu. Asennus pitää hyväksyä sillan laitteella.
+  ///
+  /// In en, this message translates to:
+  /// **'{p0}: version {p1} downloaded. Approve the install on the bridge device.'**
+  String s1aee092e31(String p0, String p1);
+
+  /// fi: {p0} päivitetään käsin (versio {p1}).
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} is updated by hand (version {p1}).'**
+  String s72774aece1(String p0, String p1);
+
+  /// fi: {p0} on vanhempi kuin 0.8.0 eikä osaa päivittää itseään etänä.
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} is older than 0.8.0 and cannot update itself remotely.'**
+  String s238af47c1e(String p0);
+
+  /// fi: {p0} ei saanut päivitystietoja nyt.
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} could not check for updates now.'**
+  String sb9bee63c5e(String p0);
+
+  /// fi: Yhdistä kotisiltaan {p0}?
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to the bridge {p0}?'**
+  String sd9103f5cee(String p0);
+
+  /// fi: Tämä laite on nyt yhdistetty kotiin {p0}. Se vaihtuu kotisiltaan {p1}. Koodia tai QR:ää ei tarvita, koska molemmat ovat
+  ///
+  /// In en, this message translates to:
+  /// **'This device is now connected to {p0}. It switches to {p1}. No code or QR needed – both are on your account.'**
+  String s6046b9ff9c(String p0, String p1);
+
+  /// fi: Koodia tai QR:ää ei tarvita, koska molemmat laitteet ovat omalla tililläsi.
+  ///
+  /// In en, this message translates to:
+  /// **'No code or QR needed – both devices are on your account.'**
+  String get s053b2f1211;
+
+  /// fi: Yhdistetty kotiin {p0}.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected to {p0}.'**
+  String s948bfb1114(String p0);
+
+  /// fi: haetaan…
+  ///
+  /// In en, this message translates to:
+  /// **'checking…'**
+  String get sc4abf59272;
+
+  /// fi: ei tietoa
+  ///
+  /// In en, this message translates to:
+  /// **'unknown'**
+  String get s12b3d49235;
+
+  /// fi: päällä
+  ///
+  /// In en, this message translates to:
+  /// **'online'**
+  String get sb9e406274e;
+
+  /// fi: vanhempi kuin 0.8.0 · {p0} · ei etäpäivitystä (päivitä kerran laitteella)
+  ///
+  /// In en, this message translates to:
+  /// **'older than 0.8.0 · {p0} · no remote update (update once on the device)'**
+  String sd5fc9353f9(String p0);
+
+  /// fi:  · hiljainen päivitys: kyllä
+  ///
+  /// In en, this message translates to:
+  /// **' · silent update: yes'**
+  String get se9d573787e;
+
+  /// fi:  · hiljainen päivitys: ei
+  ///
+  /// In en, this message translates to:
+  /// **' · silent update: no'**
+  String get s82043faaa4;
+
+  /// fi: versio ei tiedossa
+  ///
+  /// In en, this message translates to:
+  /// **'version unknown'**
+  String get s42b97a989b;
+
+  /// fi:  (ei yhteystietoa tälle laitteelle)
+  ///
+  /// In en, this message translates to:
+  /// **' (no credential on this device)'**
+  String get sca90c9c253;
+
+  /// fi: Omat kotisillat
+  ///
+  /// In en, this message translates to:
+  /// **'My home bridges'**
+  String get sfd88be2409;
+
+  /// fi: Päivitä tiedot
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
+  String get s57117babe8;
+
+  /// fi: Kaikki tiliisi kuuluvat kotisillat, myös muissa kohteissa. Yhteys kulkee aina etäpalvelun kautta.
+  ///
+  /// In en, this message translates to:
+  /// **'All home bridges of your account, also at other sites. Always through the remote service.'**
+  String get s40dab032ce;
+
+  /// fi: tämä laite
+  ///
+  /// In en, this message translates to:
+  /// **'this device'**
+  String get s9b2c8181e4;
 
   /// fi: Yhteys etäpalveluun: kunnossa
   ///
@@ -8688,6 +8832,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'or type the code'**
   String get se97cc157ef;
+
+  /// fi: 6 numeroa kotisillan näytöltä
+  ///
+  /// In en, this message translates to:
+  /// **'6 digits from the home bridge screen'**
+  String get s3143eb70e1;
 
   /// fi: Koodilla yhdistettäessä paina vielä kotisillalla "Hyväksy".
   ///
@@ -8833,11 +8983,11 @@ abstract class AppLocalizations {
   /// **'The device can then no longer connect remotely. It can be paired again.'**
   String get s84572f642e;
 
-  /// fi: Skannaa puhelimella
+  /// fi: Voimassa
   ///
   /// In en, this message translates to:
-  /// **'Scan with the phone'**
-  String get s9715416100;
+  /// **'Valid for'**
+  String get sf7fa9632f3;
 
   /// fi: Puhelimessa: Molaplan → Asetukset → Etäkäyttö → Yhdistä tämä laite kotiin
   ///
@@ -8845,11 +8995,11 @@ abstract class AppLocalizations {
   /// **'On the phone: Molaplan → Settings → Remote access → Connect this device to home'**
   String get s4e877aeafe;
 
-  /// fi: Voimassa
+  /// fi: Skannaa puhelimella
   ///
   /// In en, this message translates to:
-  /// **'Valid for'**
-  String get sf7fa9632f3;
+  /// **'Scan with the phone'**
+  String get s9715416100;
 
   /// fi: Hyväksytäänkö laite?
   ///

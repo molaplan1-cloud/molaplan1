@@ -1080,6 +1080,16 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s5dd4c9671f => 'Öppen release page';
 
   @override
+  String s8f5be45ff1(String p0) {
+    return 'Installera $p0 - appen startar om ett ögonblick.';
+  }
+
+  @override
+  String sf207ef6dc2(String p0) {
+    return 'Installera misslyckade: $p0';
+  }
+
+  @override
   String get s49ddc3c3b6 => 'Uppdatering nedladdad';
 
   @override
@@ -4712,8 +4722,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s3443bfc674 => ' · uppdateringar behöver godkännande på enheten';
 
   @override
-  String get scb47cbf8c2 =>
-      'Home bridge: en äldre version (ingen version info)';
+  String get s8ae159d87a =>
+      'Hembro: Äldre än 0.8.0 (ingen version info) Det kan inte uppdateras på distans - uppdatera den en gång på bryggan.';
 
   @override
   String get s6a02d97944 => 'Home bridge version: checking...';
@@ -4723,6 +4733,94 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s70fe8d5ef3 => 'Uppdatera bridge';
+
+  @override
+  String s7897a0f8e0(String p0, String p1) {
+    return '$p0: up to date ($p1).';
+  }
+
+  @override
+  String sbcef05dad9(String p0, String p1) {
+    return '$p0 installerar $p1 och startar om (cirka en minut).';
+  }
+
+  @override
+  String s1aee092e31(String p0, String p1) {
+    return '$p0: version $p1 nedladdad. Godkänn installationen på broenheten.';
+  }
+
+  @override
+  String s72774aece1(String p0, String p1) {
+    return '$p0 uppdateras för hand (version $p1).';
+  }
+
+  @override
+  String s238af47c1e(String p0) {
+    return '$p0 är äldre än 0.8.0 och kan inte uppdatera sig på distans.';
+  }
+
+  @override
+  String sb9bee63c5e(String p0) {
+    return '$p0 kunde inte kontrollera om uppdateringar nu.';
+  }
+
+  @override
+  String sd9103f5cee(String p0) {
+    return 'Anslut till bron $p0?';
+  }
+
+  @override
+  String s6046b9ff9c(String p0, String p1) {
+    return 'Den här enheten är nu ansluten till $p0. Den växlar till $p1. Ingen kod eller QR behövs - båda är på ditt konto.';
+  }
+
+  @override
+  String get s053b2f1211 =>
+      'Ingen kod eller QR behövs – båda enheterna finns på ditt konto.';
+
+  @override
+  String s948bfb1114(String p0) {
+    return 'Ansluten till $p0.';
+  }
+
+  @override
+  String get sc4abf59272 => 'kontrollera...';
+
+  @override
+  String get s12b3d49235 => 'Okänd';
+
+  @override
+  String get sb9e406274e => 'Online online online';
+
+  @override
+  String sd5fc9353f9(String p0) {
+    return 'äldre än 0.8.0 $p0 · ingen fjärruppdatering (uppdatering en gång på enheten)';
+  }
+
+  @override
+  String get se9d573787e => ' tyst uppdatering: ja';
+
+  @override
+  String get s82043faaa4 => ' · tyst uppdatering: Nej';
+
+  @override
+  String get s42b97a989b => 'version okänd';
+
+  @override
+  String get sca90c9c253 => ' (ingen referens på den här enheten)';
+
+  @override
+  String get sfd88be2409 => 'Mitt hem broar';
+
+  @override
+  String get s57117babe8 => 'Uppdatera';
+
+  @override
+  String get s40dab032ce =>
+      'Alla hembroar på ditt konto, även på andra webbplatser. Alltid via fjärrtjänsten.';
+
+  @override
+  String get s9b2c8181e4 => 'Denna enhet';
 
   @override
   String get s72da730a42 => 'Fjärrservice: ansluten';
@@ -4782,6 +4880,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get se97cc157ef => 'eller skriva koden';
+
+  @override
+  String get s3143eb70e1 => '6 siffror från hembroskärmen';
 
   @override
   String get s643434044c =>
@@ -4870,14 +4971,14 @@ class AppLocalizationsSv extends AppLocalizations {
       'Enheten kan sedan inte längre anslutas på distans. Det kan paras igen.';
 
   @override
-  String get s9715416100 => 'Skanna med telefonen';
+  String get sf7fa9632f3 => 'Giltigt för';
 
   @override
   String get s4e877aeafe =>
       'På telefonen: Molaplan → Inställningar → Fjärråtkomst → Anslut den här enheten hem';
 
   @override
-  String get sf7fa9632f3 => 'Giltigt för';
+  String get s9715416100 => 'Skanna med telefonen';
 
   @override
   String get s5378bb3f05 => 'Acceptera den här enheten?';
