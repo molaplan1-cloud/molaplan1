@@ -30,6 +30,8 @@ import 'ntfy_driver.dart';
 String buildNtfyCommand(String template, {required String cmd, String pin = '', String cid = '', Object? value}) {
   var t = template.trim().isEmpty ? '{cmd} {pin}' : template;
   if (!t.contains('{cmd}')) t = '{cmd} $t';
+  // A command that places its own PIN / cid ("pihavalo päälle {pin}") is used as is.
+  if (cmd.contains('{pin}') || cmd.contains('{cid}')) t = cmd;
   final v = value == null ? '' : (value is bool ? (value ? 'on' : 'off') : '$value');
   final out = t
       .replaceAll('{cmd}', cmd.trim())
@@ -115,8 +117,8 @@ bool ntfyReplyMatches(NtfyMessage m, {String? title, String? match, String? cid}
   }
   if (cid != null && cid.isNotEmpty) {
     final j = ntfyJsonPayload(m.message);
-    // A JSON reply that names a cid must name ours; replies without one are accepted.
-    if (j is Map && j.containsKey('cid') && '${j['cid']}' != cid) return false;
+    // A JSON reply that names a cid must name ours; replies without one (or cid: null) are accepted.
+    if (j is Map && j['cid'] != null && '${j['cid']}' != cid) return false;
   }
   return true;
 }
@@ -144,7 +146,7 @@ Object? ntfyStateFrom(NtfyMessage m, Map<String, dynamic> spec, List<NtfyStateRu
 String? ntfyDeviceError(NtfyMessage m, String? pattern) {
   final j = ntfyJsonPayload(m.message);
   if (j is Map) {
-    if (j['ok'] == false || j['error'] != null) return '${j['error'] ?? j['message'] ?? m.message}';
+    if (j['ok'] == false || j['error'] != null) return '${j['err'] ?? j['error'] ?? j['message'] ?? m.message}';
     return null;
   }
   final p = pattern ?? r'väärä pin|wrong pin|invalid pin|virhe|error|denied|kielletty|ei sallittu';
@@ -379,8 +381,9 @@ class NtfyDeviceDriver extends NtfyDriver {
   /// Builds the text, waits for the device's rate limit, sends and waits for the matching reply.
   Future<NtfyMessage> _ask(String cmd, {Object? value}) async {
     final tpl = s.str('template', '{cmd} {pin}');
-    final cid = tpl.contains('{cid}') ? _newCid() : '';
+    final cid = tpl.contains('{cid}') || cmd.contains('{cid}') ? _newCid() : '';
     final text = buildNtfyCommand(tpl, cmd: cmd, pin: s.str('pin'), cid: cid, value: value);
+    final usesPin = s.str('pin').isNotEmpty && (tpl.contains('{pin}') || cmd.contains('{pin}'));
     if (text.isEmpty) throw DriverException(dtx('ntfy: komento puuttuu', 'ntfy: command missing'));
     final sh = _sh;
     // Rate limit: one command per [minInterval] to this device (also across tiles).
@@ -396,11 +399,21 @@ class NtfyDeviceDriver extends NtfyDriver {
       text,
       wait: wait,
       accept: (m) => ntfyReplyMatches(m, title: s.strOrNull('replyTitle'), match: s.strOrNull('replyMatch'), cid: cid),
-      timeoutText: (topic, secs) => dtx(
-        'Laite ei vastannut $secs sekunnissa (aihe "$topic"). Jos laite vastaa vain tietyin väliajoin, kasvata "Vastauksen odotus" tai "Komentojen väli" -asetusta.',
-        'The device did not answer within $secs s (topic "$topic"). If it answers only at intervals, increase "Wait for reply" or "Minimum time between commands".',
-      ),
+      timeoutText: (topic, secs) => usesPin
+          ? dtx(
+              'Ei vastausta (PIN?) – laite ei vastannut $secs sekunnissa (aihe "$topic"). Tarkista PIN-koodi: moni laite ei vastaa lainkaan väärään PIN-koodiin.',
+              'No reply (PIN?) – the device did not answer within $secs s (topic "$topic"). Check the PIN: many devices do not answer a wrong PIN at all.',
+            )
+          : dtx(
+              'Laite ei vastannut $secs sekunnissa (aihe "$topic"). Jos laite vastaa vain tietyin väliajoin, kasvata "Vastauksen odotus" tai "Komentojen väli" -asetusta.',
+              'The device did not answer within $secs s (topic "$topic"). If it answers only at intervals, increase "Wait for reply" or "Minimum time between commands".',
+            ),
     );
+    // A JSON reply carries the whole state even when the command was refused: share it first.
+    if (ntfyJsonPayload(m.message) is Map) {
+      sh.last = m;
+      sh.at = DateTime.now();
+    }
     final err = ntfyDeviceError(m, s.strOrNull('errorMatch'));
     if (err != null) throw DriverException(dtx('Laite vastasi: $err', 'The device answered: $err'));
     return m;
@@ -439,15 +452,9 @@ class NtfyDeviceDriver extends NtfyDriver {
       return (await publish(text)).toReply()..['sentOnly'] = true;
     }
     final m = await _ask(cmd, value: value);
-    // A reply that carries the state (JSON or a status text) refreshes every tile at once;
-    // otherwise the next read asks again.
-    final sh = _sh;
-    if (ntfyJsonPayload(m.message) is Map) {
-      sh.last = m;
-      sh.at = DateTime.now();
-    } else {
-      sh.at = null;
-    }
+    // A JSON reply (the state) already refreshed every tile in _ask; after a text reply the
+    // next read asks again.
+    if (ntfyJsonPayload(m.message) is! Map) _sh.at = null;
     return m.toReply()..['showSeconds'] = spec.integer('showSeconds', 30);
   }
 

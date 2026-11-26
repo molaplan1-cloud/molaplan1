@@ -69,5 +69,6 @@ bool otaBusy();
 bool otaStart(JsonVariantConst manifest, std::string& err, JsonObject info);
 void otaLayout(JsonObject out);  // "ab" / "tasmota_safeboot" / "single" + slot sizes
 bool otaToSafeboot(std::string& err);
+void otaLoop();
 
 }  // namespace app

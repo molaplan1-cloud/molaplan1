@@ -1501,6 +1501,31 @@ final deviceTemplates = <DeviceTemplate>[
       ),
       FieldSpec('offCommand', 'Pois-komento', 'Off command', defaultValue: '{key} off'),
       FieldSpec(
+        'statePrefix',
+        'Kytkimien JSON-polun alku (vapaaehtoinen)',
+        'JSON path prefix of the switches (optional)',
+        hint: 'relays.',
+        helpFi: 'Jos kytkimet ovat JSONissa ryhmän alla, esim. {"relays":{"valo":1}}, kirjoita "relays." – avain luetaan silloin polusta relays.valo.',
+        helpEn: 'If the switches sit under a group in the JSON, e.g. {"relays":{"light":1}}, type "relays." – the key is then read from relays.light.',
+      ),
+      FieldSpec(
+        'statusPath',
+        'Tilaruudun JSON-polku (vapaaehtoinen)',
+        'Status tile JSON path (optional)',
+        hint: 'state',
+        helpFi: 'Mitä tilaruutu näyttää JSON-vastauksesta, esim. "state". Tyhjä = koko vastaus.',
+        helpEn: 'What the status tile shows from a JSON reply, e.g. "state". Empty = the whole reply.',
+      ),
+      FieldSpec(
+        'pollSeconds',
+        'Tilan päivitysväli (s)',
+        'State refresh interval (s)',
+        kind: FieldKind.number,
+        defaultValue: 60,
+        helpFi: 'Kuinka usein tila kysytään. Ei koskaan lyhyempi kuin laitteen komentojen väli.',
+        helpEn: 'How often the state is asked. Never shorter than the device\'s minimum command interval.',
+      ),
+      FieldSpec(
         'minInterval',
         'Komentojen väli vähintään (s)',
         'Minimum time between commands (s)',
@@ -1538,7 +1563,9 @@ TemplateResult ntfyDeviceTemplate(Map<String, dynamic> v, String lang) {
     },
   );
   final json = _s(v, 'format', 'json') != 'text';
-  final poll = max(60, minGap * 2);
+  final prefix = _s(v, 'statePrefix').replaceAll(RegExp(r'^\$?\.?'), '');
+  final asked = num.tryParse(_s(v, 'pollSeconds', '60'))?.toInt() ?? 60;
+  final poll = max(max(asked, minGap), 5);
   final tiles = <TileConfig>[];
   for (final line in _s(v, 'outputs', 'Valo = valo').split(RegExp(r'[\r\n]+'))) {
     if (line.trim().isEmpty) continue;
@@ -1554,7 +1581,7 @@ TemplateResult ntfyDeviceTemplate(Map<String, dynamic> v, String lang) {
         icon: 'power',
         connectionId: c.id,
         pollSeconds: poll,
-        read: json ? {'jsonPath': '\$.$key'} : {'regex': '${RegExp.escape(key)}\\s*[:=]?\\s*([^,;\\n]+)'},
+        read: json ? {'jsonPath': '\$.$prefix$key'} : {'regex': '${RegExp.escape(key)}\\s*[:=]?\\s*([^,;\\n]+)'},
         onCommand: CommandStep(connectionId: c.id, spec: {'command': cmd('onCommand', '{key} on'), 'waitReply': true}),
         offCommand: CommandStep(connectionId: c.id, spec: {'command': cmd('offCommand', '{key} off'), 'waitReply': true}),
       ),
@@ -1568,7 +1595,10 @@ TemplateResult ntfyDeviceTemplate(Map<String, dynamic> v, String lang) {
       colSpan: 2,
       connectionId: c.id,
       pollSeconds: poll,
-      read: const {},
+      read: {
+        if (json && _s(v, 'statusPath').isNotEmpty)
+          'jsonPath': '\$.${_s(v, 'statusPath').replaceAll(RegExp(r'^\$?\.?'), '')}',
+      },
     ),
   );
   return TemplateResult([c], tiles);

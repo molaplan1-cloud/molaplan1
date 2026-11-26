@@ -135,6 +135,7 @@ void loop() {
   provLoop();
   localApiLoop();
   execLoop();
+  otaLoop();
   if (restartAt && (int32_t)(millis() - restartAt) >= 0) {
     Serial.println("restart");
     delay(100);
