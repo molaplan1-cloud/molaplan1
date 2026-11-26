@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "molaplan-ntfy",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-25",
+  "workers_dev": true,
+  "routes": [{ "pattern": "ntfy.molaplan.com", "custom_domain": true }],
+  "observability": { "enabled": true },
+  "vars": {
+    "BASE_URL": "https://ntfy.molaplan.com",
+    "UPSTREAM_BASE_URL": "https://ntfy.sh",
+    "CACHE_SECONDS": "43200",
+    "STREAM_MAX_SECONDS": "1200",
+    "KEEPALIVE_SECONDS": "45"
+  },
+  "ratelimits": [
+    { "name": "PUBLISH_LIMIT", "namespace_id": "4101", "simple": { "limit": 60, "period": 60 } },
+    { "name": "REQUEST_LIMIT", "namespace_id": "4102", "simple": { "limit": 300, "period": 60 } }
+  ],
+  "durable_objects": {
+    "bindings": [
+      { "name": "TOPIC", "class_name": "Topic" },
+      { "name": "FILE", "class_name": "FileStore" }
+    ]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Topic", "FileStore"] }]
+}
