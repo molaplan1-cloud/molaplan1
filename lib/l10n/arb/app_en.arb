@@ -10108,242 +10108,277 @@
  "s4dab2d409b": "Export configuration",
  "@s4dab2d409b": {
   "description": "fi: Vie asetukset",
-  "x-where": "ui/settings_page.dart:43"
+  "x-where": "ui/settings_page.dart:45"
  },
  "s149c1e54d6": "Configuration exported",
  "@s149c1e54d6": {
   "description": "fi: Asetukset viety",
-  "x-where": "ui/settings_page.dart:45"
+  "x-where": "ui/settings_page.dart:47"
  },
  "s35f445793b": "Import configuration",
  "@s35f445793b": {
   "description": "fi: Tuo asetukset",
-  "x-where": "ui/settings_page.dart:56"
+  "x-where": "ui/settings_page.dart:58"
  },
  "sd55be829e3": "Replace current configuration?",
  "@sd55be829e3": {
   "description": "fi: Korvataanko nykyiset asetukset?",
-  "x-where": "ui/settings_page.dart:63"
+  "x-where": "ui/settings_page.dart:65"
  },
  "s852dd1795e": "All current connections and dashboards are replaced by the file contents.",
  "@s852dd1795e": {
   "description": "fi: Kaikki nykyiset yhteydet ja näkymät korvataan tiedoston sisällöllä.",
-  "x-where": "ui/settings_page.dart:64"
+  "x-where": "ui/settings_page.dart:66"
  },
  "s5f2ec17730": "Configuration imported",
  "@s5f2ec17730": {
   "description": "fi: Asetukset tuotu",
-  "x-where": "ui/settings_page.dart:73"
+  "x-where": "ui/settings_page.dart:75"
  },
  "sa87fff54f3": "Import failed",
  "@sa87fff54f3": {
   "description": "fi: Tuonti epäonnistui",
-  "x-where": "ui/settings_page.dart:75"
+  "x-where": "ui/settings_page.dart:77"
  },
  "s2fd2bfedb8": "Account",
  "@s2fd2bfedb8": {
   "description": "fi: Tili",
-  "x-where": "ui/settings_page.dart:92"
+  "x-where": "ui/settings_page.dart:94"
  },
  "s4c0ff416ab": "The same homes and tiles on all your devices.",
  "@s4c0ff416ab": {
   "description": "fi: Samat kodit ja ruudut kaikilla laitteillasi.",
-  "x-where": "ui/settings_page.dart:96"
+  "x-where": "ui/settings_page.dart:98"
  },
  "scc7e418ee3": "Sign in to have the same homes, devices and tiles on PC, tablet and phone. Optional.",
  "@scc7e418ee3": {
   "description": "fi: Kirjaudu, niin kodit, laitteet ja ruudut ovat samat PC:llä, tabletilla ja puhelimella. Vapaaehtoinen.",
-  "x-where": "ui/settings_page.dart:101"
+  "x-where": "ui/settings_page.dart:103"
  },
  "s08d62fd281": "Appearance",
  "@s08d62fd281": {
   "description": "fi: Ulkoasu",
-  "x-where": "ui/settings_page.dart:128"
+  "x-where": "ui/settings_page.dart:130"
  },
  "s2b8a2754c6": "Theme",
  "@s2b8a2754c6": {
   "description": "fi: Teema",
-  "x-where": "ui/settings_page.dart:130"
+  "x-where": "ui/settings_page.dart:132"
  },
  "s79f67deb42": "Light",
  "@s79f67deb42": {
   "description": "fi: Vaalea",
-  "x-where": "ui/settings_page.dart:138"
+  "x-where": "ui/settings_page.dart:140"
  },
  "s0d6fb52039": "Dark",
  "@s0d6fb52039": {
   "description": "fi: Tumma",
-  "x-where": "ui/settings_page.dart:143"
+  "x-where": "ui/settings_page.dart:145"
  },
  "s70dd7fdd58": "By sunrise and sunset",
  "@s70dd7fdd58": {
   "description": "fi: Auringonnousun ja -laskun mukaan",
-  "x-where": "ui/settings_page.dart:160"
+  "x-where": "ui/settings_page.dart:162"
  },
  "s21206b61f7": "Needs the home location (Energy › Home). Until then the device setting is followed.",
  "@s21206b61f7": {
   "description": "fi: Vaatii kodin sijainnin (Energia › Koti). Siihen asti seurataan laitteen asetusta.",
-  "x-where": "ui/settings_page.dart:163"
+  "x-where": "ui/settings_page.dart:165"
  },
  "s4e23920823": "Light by day, dark in the evening. Off: follows the device setting.",
  "@s4e23920823": {
   "description": "fi: Vaalea päivällä, tumma illalla. Pois päältä: seuraa laitteen asetusta.",
-  "x-where": "ui/settings_page.dart:168"
+  "x-where": "ui/settings_page.dart:170"
  },
  "s4b847ce63e": "The choice applies to this device and is saved to your account as the default for new devices.",
  "@s4b847ce63e": {
   "description": "fi: Valinta koskee tätä laitetta ja tallentuu tiliisi uusien laitteiden oletukseksi.",
-  "x-where": "ui/settings_page.dart:178"
+  "x-where": "ui/settings_page.dart:180"
  },
  "s5ebc02022b": "Show as hourly average",
  "@s5ebc02022b": {
   "description": "fi: Näytä tuntikeskiarvona",
-  "x-where": "ui/settings_page.dart:192"
+  "x-where": "ui/settings_page.dart:194"
  },
  "s68b4d332ca": "Price, cheapest hours and price control per hour (hourly-billed contract). Off: 15 min where the area publishes 15-min prices.",
  "@s68b4d332ca": {
   "description": "fi: Sähkön hinta, halvimmat tunnit ja hintaohjaukset tunneittain (tuntihinnoiteltu sopimus). Pois: 15 min, kun alueen hinnat",
-  "x-where": "ui/settings_page.dart:194"
+  "x-where": "ui/settings_page.dart:196"
  },
  "saf496a12a3": "Morning card: also show the priciest hour",
  "@saf496a12a3": {
   "description": "fi: Aamukortti: näytä myös kallein tunti",
-  "x-where": "ui/settings_page.dart:210"
+  "x-where": "ui/settings_page.dart:212"
  },
  "sc53b1b78c0": "The cheapest hour of the next 24 h is always shown with its price.",
  "@sc53b1b78c0": {
   "description": "fi: Halvin tunti näytetään aina seuraavalta 24 tunnilta hintoineen.",
-  "x-where": "ui/settings_page.dart:213"
+  "x-where": "ui/settings_page.dart:215"
  },
  "s0625d54b38": "Tile size",
  "@s0625d54b38": {
   "description": "fi: Laattakoko",
-  "x-where": "ui/settings_page.dart:221"
+  "x-where": "ui/settings_page.dart:223"
  },
  "s8382da3467": "Normal",
  "@s8382da3467": {
   "description": "fi: Normaali",
-  "x-where": "ui/settings_page.dart:227"
+  "x-where": "ui/settings_page.dart:229"
  },
  "s7c1cd8314e": "Hide tiles that don''t work remotely",
  "@s7c1cd8314e": {
   "description": "fi: Piilota etänä toimimattomat",
-  "x-where": "ui/settings_page.dart:237"
+  "x-where": "ui/settings_page.dart:239"
  },
  "sa0cbbafb4e": "Away from home, tiles that only work on the home network are hidden. By default they stay in place, greyed out.",
  "@sa0cbbafb4e": {
   "description": "fi: Kotiverkon ulkopuolella vain kotiverkossa toimivat ruudut piilotetaan. Oletuksena ne näkyvät harmaina paikallaan.",
-  "x-where": "ui/settings_page.dart:239"
+  "x-where": "ui/settings_page.dart:241"
  },
  "s419166b895": "Clock and weather on the home screen",
  "@s419166b895": {
   "description": "fi: Kello ja sää etusivulla",
-  "x-where": "ui/settings_page.dart:251"
+  "x-where": "ui/settings_page.dart:253"
  },
  "sec30a8f23e": "Time, date, weather and electricity price at the top of the view. This device only.",
  "@sec30a8f23e": {
   "description": "fi: Kellonaika, päivä, sää ja sähkön hinta näkymän yläreunassa. Koskee vain tätä laitetta.",
-  "x-where": "ui/settings_page.dart:253"
+  "x-where": "ui/settings_page.dart:255"
  },
  "sf7205b268f": "Animations",
  "@sf7205b268f": {
   "description": "fi: Animaatiot",
-  "x-where": "ui/settings_page.dart:265"
+  "x-where": "ui/settings_page.dart:267"
  },
  "s1535c6411d": "Soft transitions when a device changes state. Off = calmer and lighter for an older tablet. This device only.",
  "@s1535c6411d": {
   "description": "fi: Pehmeät siirtymät, kun laite vaihtaa tilaa. Pois päältä = rauhallisempi ja kevyempi vanhalle tabletille. Koskee vain tät",
-  "x-where": "ui/settings_page.dart:267"
+  "x-where": "ui/settings_page.dart:269"
  },
  "s21f870dbc2": "Shows technical settings: connections (HTTP, MQTT, Modbus…), payloads, JSON paths and tile sources. Most people don''t need these.",
  "@s21f870dbc2": {
   "description": "fi: Näyttää tekniset asetukset: yhteydet (HTTP, MQTT, Modbus…), viestit, JSON-polut ja ruutujen lähteet. Useimmat eivät tarv",
-  "x-where": "ui/settings_page.dart:282"
+  "x-where": "ui/settings_page.dart:284"
+ },
+ "sc84689a549": "Devices and integrations",
+ "@sc84689a549": {
+  "description": "fi: Laitteet ja integraatiot",
+  "x-where": "ui/settings_page.dart:299"
  },
  "sca4c8b88b7": "Home Assistant: add devices",
  "@sca4c8b88b7": {
   "description": "fi: Home Assistant: lisää laitteita",
-  "x-where": "ui/settings_page.dart:302"
+  "x-where": "ui/settings_page.dart:307"
  },
  "saec69088a5": "Control your home from outside too.",
  "@saec69088a5": {
   "description": "fi: Ohjaa kotia myös kodin ulkopuolelta.",
-  "x-where": "ui/settings_page.dart:310"
+  "x-where": "ui/settings_page.dart:315"
  },
  "scc3d01ee5e": "Guides: VPN, Nabu Casa, cloud MQTT",
  "@scc3d01ee5e": {
   "description": "fi: Ohjeet: VPN, Nabu Casa, pilvi-MQTT",
-  "x-where": "ui/settings_page.dart:336"
+  "x-where": "ui/settings_page.dart:341"
  },
  "s0fe7b15d15": "Give someone access to the devices you choose.",
  "@s0fe7b15d15": {
   "description": "fi: Anna toiselle pääsy valitsemiisi laitteisiin.",
-  "x-where": "ui/settings_page.dart:346"
+  "x-where": "ui/settings_page.dart:351"
  },
  "s25c286a743": "Sharing – new invite",
  "@s25c286a743": {
   "description": "fi: Jakaminen – uusi kutsu",
-  "x-where": "ui/settings_page.dart:364"
+  "x-where": "ui/settings_page.dart:373"
  },
  "s90ba544719": "Help",
  "@s90ba544719": {
   "description": "fi: Ohjeet",
-  "x-where": "ui/settings_page.dart:378"
+  "x-where": "ui/settings_page.dart:388"
  },
  "sb915c42792": "Show the getting-started guide",
  "@sb915c42792": {
   "description": "fi: Näytä aloitusopas",
-  "x-where": "ui/settings_page.dart:386"
+  "x-where": "ui/settings_page.dart:396"
  },
  "sd337a7ddd5": "Backup and transfer",
  "@sd337a7ddd5": {
   "description": "fi: Varmuuskopio ja siirto",
-  "x-where": "ui/settings_page.dart:390"
+  "x-where": "ui/settings_page.dart:400"
  },
  "s07c1048b4f": "Export the configuration to a JSON file and import it on another device (e.g. PC → phone).",
  "@s07c1048b4f": {
   "description": "fi: Vie asetukset JSON-tiedostoon ja tuo ne toiselle laitteelle (esim. PC → puhelin).",
-  "x-where": "ui/settings_page.dart:393"
+  "x-where": "ui/settings_page.dart:403"
  },
  "s2f797098e7": "Include passwords and tokens",
  "@s2f797098e7": {
   "description": "fi: Sisällytä salasanat ja tokenit",
-  "x-where": "ui/settings_page.dart:402"
+  "x-where": "ui/settings_page.dart:412"
  },
  "s26f72949e3": "The file is then unencrypted – keep it safe.",
  "@s26f72949e3": {
   "description": "fi: Tiedosto on silloin salaamaton – säilytä se turvassa.",
-  "x-where": "ui/settings_page.dart:404"
+  "x-where": "ui/settings_page.dart:414"
  },
  "sdb12678e52": "Export",
  "@sdb12678e52": {
   "description": "fi: Vie",
-  "x-where": "ui/settings_page.dart:420"
+  "x-where": "ui/settings_page.dart:430"
  },
  "s34686ffb09": "Example",
  "@s34686ffb09": {
   "description": "fi: Esimerkki",
-  "x-where": "ui/settings_page.dart:430"
+  "x-where": "ui/settings_page.dart:440"
  },
  "sc8327738b3": "Add an example dashboard (camera, alarm, lights, ventilation). The example devices never connect anywhere – add your own with Add device.",
  "@sc8327738b3": {
   "description": "fi: Lisää esimerkkinäkymä (kamera, hälytys, valot, IV-kone). Esimerkkilaitteet eivät ota yhteyttä mihinkään – lisää omat lai",
-  "x-where": "ui/settings_page.dart:433"
+  "x-where": "ui/settings_page.dart:443"
  },
  "sec02c7c071": "Add example dashboard",
  "@sec02c7c071": {
   "description": "fi: Lisää esimerkkinäkymä",
-  "x-where": "ui/settings_page.dart:449"
+  "x-where": "ui/settings_page.dart:459"
  },
  "s522d6584c5": "Check for updates",
  "@s522d6584c5": {
   "description": "fi: Tarkista päivitykset",
-  "x-where": "ui/settings_page.dart:463"
+  "x-where": "ui/settings_page.dart:473"
  },
  "sd178a1d809": "Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. Without an account all settings stay on this device.",
  "@sd178a1d809": {
   "description": "fi: Oma ohjauspääte: HTTP, MQTT, Modbus TCP, Home Assistant, kamerat, WebSocket, TCP ja UDP. Ilman tiliä kaikki asetukset py",
-  "x-where": "ui/settings_page.dart:468"
+  "x-where": "ui/settings_page.dart:478"
+ },
+ "sf5bfc4217c": "Which Home Assistant?",
+ "@sf5bfc4217c": {
+  "description": "fi: Mistä Home Assistantista?",
+  "x-where": "ui/settings_page.dart:514"
+ },
+ "sbc210f9634": "You have more than one Home Assistant connection. An unused one (no tiles) can be removed.",
+ "@sbc210f9634": {
+  "description": "fi: Sinulla on useampi Home Assistant -yhteys. Käyttämättömän (ei ruutuja) voi poistaa.",
+  "x-where": "ui/settings_page.dart:516"
+ },
+ "s4f62c41cb3": "no tiles",
+ "@s4f62c41cb3": {
+  "description": "fi: ei ruutuja",
+  "x-where": "ui/settings_page.dart:529"
+ },
+ "s92c338c3bd": "tiles",
+ "@s92c338c3bd": {
+  "description": "fi: ruutua",
+  "x-where": "ui/settings_page.dart:529"
+ },
+ "sd3089f07cc": "Remove unused connection",
+ "@sd3089f07cc": {
+  "description": "fi: Poista käyttämätön yhteys",
+  "x-where": "ui/settings_page.dart:535"
+ },
+ "s1333776c9f": "Remove the connection?",
+ "@s1333776c9f": {
+  "description": "fi: Poistetaanko yhteys?",
+  "x-where": "ui/settings_page.dart:540"
  },
  "s84819cca05": "Last alarm {p0}",
  "@s84819cca05": {

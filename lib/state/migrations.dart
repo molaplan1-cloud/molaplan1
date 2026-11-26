@@ -135,3 +135,66 @@ bool fixMisclassifiedSensors(AppConfig cfg) {
   }
   return changed;
 }
+
+/// t237u: the normalized address of a Home Assistant connection ('' for a demo / no address).
+String haAddress(ConnectionConfig c) {
+  final u = '${c.settings['baseUrl'] ?? ''}'.trim().toLowerCase().replaceAll(RegExp(r'/+$'), '');
+  final p = Uri.tryParse(u);
+  if (p == null || !p.hasScheme || p.host.isEmpty) return u;
+  return '${p.scheme}://${p.host}:${p.hasPort ? p.port : (p.scheme == 'https' ? 443 : 80)}${p.path}';
+}
+
+/// How many tile references (tile source or command) point at connection [id].
+int connectionUses(AppConfig cfg, String id) {
+  var n = 0;
+  for (final d in cfg.dashboards) {
+    for (final t in d.tiles) {
+      if (t.connectionId == id ||
+          t.onCommand?.connectionId == id ||
+          t.offCommand?.connectionId == id ||
+          t.commands.any((c) => c.connectionId == id)) {
+        n++;
+      }
+    }
+  }
+  return n;
+}
+
+/// Points every tile reference from connection id [from] to [to].
+void repointConnection(AppConfig cfg, String from, String to) {
+  for (final d in cfg.dashboards) {
+    for (final t in d.tiles) {
+      if (t.connectionId == from) t.connectionId = to;
+      if (t.onCommand?.connectionId == from) t.onCommand!.connectionId = to;
+      if (t.offCommand?.connectionId == from) t.offCommand!.connectionId = to;
+      for (final c in t.commands) {
+        if (c.connectionId == from) c.connectionId = to;
+      }
+    }
+  }
+}
+
+/// t237u: identical Home Assistant connections (same address + same token – e.g. saved twice by
+/// sync / copying the home's views / running the setup again) become one: the first one stays,
+/// tiles of the others point to it. Different servers or different tokens stay separate.
+/// Needs the secrets loaded. Returns the removed connections (their stored secrets can go).
+List<ConnectionConfig> dedupeHaConnections(AppConfig cfg) {
+  final keep = <String, ConnectionConfig>{};
+  final removed = <ConnectionConfig>[];
+  for (final c in List.of(cfg.connections)) {
+    if (c.type != 'homeassistant') continue;
+    final demo = c.settings['demo'] == true;
+    final addr = haAddress(c);
+    if (!demo && addr.isEmpty) continue; // not set up yet: nothing to compare
+    final key = demo ? 'demo' : '$addr|${c.secrets['token'] ?? ''}';
+    final first = keep[key];
+    if (first == null) {
+      keep[key] = c;
+      continue;
+    }
+    repointConnection(cfg, c.id, first.id);
+    cfg.connections.remove(c);
+    removed.add(c);
+  }
+  return removed;
+}

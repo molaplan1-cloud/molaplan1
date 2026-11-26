@@ -7104,6 +7104,10 @@
  "@s1257447096": {
   "x-mt": true
  },
+ "sc112a20bf5": "Kui seade vastab teisele teemale (nt teie teavitusteema), määrake see \"Vasta teema\".",
+ "@sc112a20bf5": {
+  "x-mt": true
+ },
  "sf03877dd0a": " PIN-kood salvestatakse.",
  "@sf03877dd0a": {
   "x-mt": true
@@ -8273,8 +8277,32 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "sc112a20bf5": "Kui seade vastab teisele teemale (nt teie teavitusteema), määrake see \"Vasta teema\".",
- "@sc112a20bf5": {
+ "sc84689a549": "Seadmed ja integratsioonid",
+ "@sc84689a549": {
+  "x-mt": true
+ },
+ "sf5bfc4217c": "Milline koduabiline?",
+ "@sf5bfc4217c": {
+  "x-mt": true
+ },
+ "sbc210f9634": "Sul on rohkem kui üks koduabilise ühendus. Kasutamata ühenduse (kaarte pole) saab eemaldada.",
+ "@sbc210f9634": {
+  "x-mt": true
+ },
+ "s4f62c41cb3": "kaarte",
+ "@s4f62c41cb3": {
+  "x-mt": true
+ },
+ "s92c338c3bd": "kaarte",
+ "@s92c338c3bd": {
+  "x-mt": true
+ },
+ "sd3089f07cc": "Kasutamata ühenduse eemaldamine",
+ "@sd3089f07cc": {
+  "x-mt": true
+ },
+ "s1333776c9f": "Eemaldage ühendus?",
+ "@s1333776c9f": {
   "x-mt": true
  }
 }

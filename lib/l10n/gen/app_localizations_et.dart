@@ -6320,6 +6320,9 @@ class AppLocalizationsEt extends AppLocalizations {
       'Näitab tehnilisi seadistusi: ühendused (HTTP, MQTT, Modbus...), nimikoormused, JSON- i rajad ja plaatide allikad. Enamik inimesi ei vaja neid.';
 
   @override
+  String get sc84689a549 => 'Seadmed ja integratsioonid';
+
+  @override
   String get sca4c8b88b7 => 'Koduabiline: lisa seadmeid';
 
   @override
@@ -6373,6 +6376,25 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sd178a1d809 =>
       'Oma juhtimisterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kaamerad, WebSocket, TCP ja UDP. Ilma kontota jäävad kõik seaded sellesse seadmesse.';
+
+  @override
+  String get sf5bfc4217c => 'Milline koduabiline?';
+
+  @override
+  String get sbc210f9634 =>
+      'Sul on rohkem kui üks koduabilise ühendus. Kasutamata ühenduse (kaarte pole) saab eemaldada.';
+
+  @override
+  String get s4f62c41cb3 => 'kaarte';
+
+  @override
+  String get s92c338c3bd => 'kaarte';
+
+  @override
+  String get sd3089f07cc => 'Kasutamata ühenduse eemaldamine';
+
+  @override
+  String get s1333776c9f => 'Eemaldage ühendus?';
 
   @override
   String s84819cca05(String p0) {

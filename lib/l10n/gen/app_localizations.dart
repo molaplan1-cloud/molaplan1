@@ -11453,6 +11453,12 @@ abstract class AppLocalizations {
   /// **'Shows technical settings: connections (HTTP, MQTT, Modbus…), payloads, JSON paths and tile sources. Most people don\'\'t need these.'**
   String get s21f870dbc2;
 
+  /// fi: Laitteet ja integraatiot
+  ///
+  /// In en, this message translates to:
+  /// **'Devices and integrations'**
+  String get sc84689a549;
+
   /// fi: Home Assistant: lisää laitteita
   ///
   /// In en, this message translates to:
@@ -11554,6 +11560,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. Without an account all settings stay on this device.'**
   String get sd178a1d809;
+
+  /// fi: Mistä Home Assistantista?
+  ///
+  /// In en, this message translates to:
+  /// **'Which Home Assistant?'**
+  String get sf5bfc4217c;
+
+  /// fi: Sinulla on useampi Home Assistant -yhteys. Käyttämättömän (ei ruutuja) voi poistaa.
+  ///
+  /// In en, this message translates to:
+  /// **'You have more than one Home Assistant connection. An unused one (no tiles) can be removed.'**
+  String get sbc210f9634;
+
+  /// fi: ei ruutuja
+  ///
+  /// In en, this message translates to:
+  /// **'no tiles'**
+  String get s4f62c41cb3;
+
+  /// fi: ruutua
+  ///
+  /// In en, this message translates to:
+  /// **'tiles'**
+  String get s92c338c3bd;
+
+  /// fi: Poista käyttämätön yhteys
+  ///
+  /// In en, this message translates to:
+  /// **'Remove unused connection'**
+  String get sd3089f07cc;
+
+  /// fi: Poistetaanko yhteys?
+  ///
+  /// In en, this message translates to:
+  /// **'Remove the connection?'**
+  String get s1333776c9f;
 
   /// fi: Viim. hälytys {p0}
   ///

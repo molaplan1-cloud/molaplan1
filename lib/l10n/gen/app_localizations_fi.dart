@@ -6339,6 +6339,9 @@ class AppLocalizationsFi extends AppLocalizations {
       'Näyttää tekniset asetukset: yhteydet (HTTP, MQTT, Modbus…), viestit, JSON-polut ja ruutujen lähteet. Useimmat eivät tarvitse näitä.';
 
   @override
+  String get sc84689a549 => 'Laitteet ja integraatiot';
+
+  @override
   String get sca4c8b88b7 => 'Home Assistant: lisää laitteita';
 
   @override
@@ -6392,6 +6395,25 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get sd178a1d809 =>
       'Oma ohjauspääte: HTTP, MQTT, Modbus TCP, Home Assistant, kamerat, WebSocket, TCP ja UDP. Ilman tiliä kaikki asetukset pysyvät tällä laitteella.';
+
+  @override
+  String get sf5bfc4217c => 'Mistä Home Assistantista?';
+
+  @override
+  String get sbc210f9634 =>
+      'Sinulla on useampi Home Assistant -yhteys. Käyttämättömän (ei ruutuja) voi poistaa.';
+
+  @override
+  String get s4f62c41cb3 => 'ei ruutuja';
+
+  @override
+  String get s92c338c3bd => 'ruutua';
+
+  @override
+  String get sd3089f07cc => 'Poista käyttämätön yhteys';
+
+  @override
+  String get s1333776c9f => 'Poistetaanko yhteys?';
 
   @override
   String s84819cca05(String p0) {

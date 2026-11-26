@@ -6360,6 +6360,9 @@ class AppLocalizationsEs extends AppLocalizations {
       'Muestra configuración técnica: conexiones (HTTP, MQTT, Modbus...), cargas de pago, caminos JSON y fuentes de baldosas. La mayoría de la gente no necesita estas.';
 
   @override
+  String get sc84689a549 => 'Dispositivos e integraciones';
+
+  @override
   String get sca4c8b88b7 => 'Home Assistant: añadir dispositivos';
 
   @override
@@ -6414,6 +6417,25 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sd178a1d809 =>
       'Su propia terminal de control: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP y UDP. Sin una cuenta, todos los ajustes permanecen en este dispositivo.';
+
+  @override
+  String get sf5bfc4217c => '¿Qué asistente de casa?';
+
+  @override
+  String get sbc210f9634 =>
+      'Usted tiene más de una conexión Home Assistant. Una no usada (sin tarjetas) se puede eliminar.';
+
+  @override
+  String get s4f62c41cb3 => 'No hay cartas';
+
+  @override
+  String get s92c338c3bd => 'tarjetas';
+
+  @override
+  String get sd3089f07cc => 'Eliminar la conexión no utilizada';
+
+  @override
+  String get s1333776c9f => '¿Retirar la conexión?';
 
   @override
   String s84819cca05(String p0) {

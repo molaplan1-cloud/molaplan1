@@ -494,6 +494,8 @@ class AppState extends ChangeNotifier implements SyncHost {
         }
       }
     }
+    // t237u: the same Home Assistant saved more than once becomes one connection.
+    if (await _dedupeHa()) unawaited(configStore.save(jsonEncode(config.toJson())));
     if (config.dashboards.isEmpty) {
       config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     }
@@ -769,6 +771,11 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (cfg['automation'] is Map) config.automation = other.automation;
     if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     if (hasLocalSetup) config.onboardingDone = true;
+    final dupes = dedupeHaConnections(config);
+    removed.addAll(dupes.map((c) => c.id));
+    for (final c in dupes) {
+      oldSecrets[c.id] ??= c.secrets;
+    }
     _applyingSync = true;
     try {
       for (final c in config.connections) {
@@ -919,6 +926,20 @@ class AppState extends ChangeNotifier implements SyncHost {
     }
     await save();
     notifyListeners();
+  }
+
+  /// t237u: merges identical Home Assistant connections; drops the extras' stored secrets.
+  Future<bool> _dedupeHa() async {
+    final gone = dedupeHaConnections(config);
+    for (final c in gone) {
+      await _drivers.remove(c.id)?.dispose();
+      for (final k in descriptorFor(c.type).secretKeys) {
+        try {
+          await secretStore.delete(secretKey(c.id, k));
+        } catch (_) {}
+      }
+    }
+    return gone.isNotEmpty;
   }
 
   /// Tests a (possibly unsaved) connection with a throw-away driver.
@@ -1277,6 +1298,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     _drivers.clear();
     config = imported;
     if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
+    dedupeHaConnections(config);
     for (final c in config.connections) {
       await _persistSecrets(c);
     }
@@ -1428,6 +1450,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     for (final c in add) {
       await _persistSecrets(c);
     }
+    await _dedupeHa();
     await save();
     notifyListeners();
     return other.dashboards.length;

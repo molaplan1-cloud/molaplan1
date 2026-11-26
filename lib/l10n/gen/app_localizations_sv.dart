@@ -6331,6 +6331,9 @@ class AppLocalizationsSv extends AppLocalizations {
       'Visar tekniska inställningar: anslutningar (HTTP, MQTT, Modbus...), nyttolast, JSON-vägar och kakelkällor. De flesta behöver inte dessa.';
 
   @override
+  String get sc84689a549 => 'Enheter och integrationer';
+
+  @override
   String get sca4c8b88b7 => 'Home Assistant: Lägg till enheter';
 
   @override
@@ -6383,6 +6386,25 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sd178a1d809 =>
       'Din egen kontrollterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kameror, WebSocket, TCP och UDP. Utan ett konto stannar alla inställningar på den här enheten.';
+
+  @override
+  String get sf5bfc4217c => 'Vilken hemassistent?';
+
+  @override
+  String get sbc210f9634 =>
+      'Du har mer än en Home Assistant-anslutning. En oanvänd (inga kort) kan tas bort.';
+
+  @override
+  String get s4f62c41cb3 => 'Inga kort';
+
+  @override
+  String get s92c338c3bd => 'kort';
+
+  @override
+  String get sd3089f07cc => 'Ta bort oanvänd anslutning';
+
+  @override
+  String get s1333776c9f => 'Ta bort anslutningen?';
 
   @override
   String s84819cca05(String p0) {

@@ -6316,6 +6316,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'Shows technical settings: connections (HTTP, MQTT, Modbus…), payloads, JSON paths and tile sources. Most people don\'t need these.';
 
   @override
+  String get sc84689a549 => 'Devices and integrations';
+
+  @override
   String get sca4c8b88b7 => 'Home Assistant: add devices';
 
   @override
@@ -6368,6 +6371,25 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get sd178a1d809 =>
       'Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. Without an account all settings stay on this device.';
+
+  @override
+  String get sf5bfc4217c => 'Which Home Assistant?';
+
+  @override
+  String get sbc210f9634 =>
+      'You have more than one Home Assistant connection. An unused one (no tiles) can be removed.';
+
+  @override
+  String get s4f62c41cb3 => 'no tiles';
+
+  @override
+  String get s92c338c3bd => 'tiles';
+
+  @override
+  String get sd3089f07cc => 'Remove unused connection';
+
+  @override
+  String get s1333776c9f => 'Remove the connection?';
 
   @override
   String s84819cca05(String p0) {

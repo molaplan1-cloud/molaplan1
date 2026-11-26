@@ -9,6 +9,8 @@ import 'package:material_ui/material_ui.dart';
 
 import '../models/models.dart' hide Threshold;
 import '../state/examples.dart';
+import '../state/app_state.dart' show AppState;
+import '../state/migrations.dart' show connectionUses;
 import '../state/update_state.dart' show UpdatePhase;
 import 'account_page.dart';
 import 'account_nudge.dart';
@@ -290,14 +292,17 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               const SizedBox(height: 20),
               const EnergySettingsSection(),
-              for (final c in st.config.connections.where((c) => c.type == 'homeassistant')) ...[
-                const SizedBox(height: 12),
+              // t237u: ONE Home Assistant button (a picker when there are several servers),
+              // under its own "Laitteet ja integraatiot" heading instead of inside Energia.
+              if (haServers(st).isNotEmpty) ...[
+                const SizedBox(height: 20),
+                Text(tx(context, 'Laitteet ja integraatiot', 'Devices and integrations'), style: text.titleMedium),
+                const SizedBox(height: 8),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: OutlinedButton.icon(
-                    key: ValueKey('settings-ha-${c.id}'),
-                    onPressed: () =>
-                        Navigator.push(context, MaterialPageRoute(builder: (_) => HaEntityPickerPage(connection: c))),
+                    key: const ValueKey('settings-ha'),
+                    onPressed: () => openHaPicker(context),
                     icon: const Icon(Icons.home_outlined),
                     label: Text(tx(context, 'Home Assistant: lisää laitteita', 'Home Assistant: add devices')),
                   ),
@@ -343,7 +348,11 @@ class _SettingsPageState extends State<SettingsPage> {
               Text(tx(context, 'Jakaminen', 'Sharing'), style: text.titleMedium),
               const SizedBox(height: 4),
               Text(
-                tx(context, 'Anna toiselle pääsy valitsemiisi laitteisiin.', 'Give someone access to the devices you choose.'),
+                tx(
+                  context,
+                  'Anna toiselle pääsy valitsemiisi laitteisiin.',
+                  'Give someone access to the devices you choose.',
+                ),
                 style: text.bodySmall,
               ),
               const SizedBox(height: 8),
@@ -368,7 +377,8 @@ class _SettingsPageState extends State<SettingsPage> {
                   if (st.sharing.installer)
                     OutlinedButton.icon(
                       key: const ValueKey('settings-installer'),
-                      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const InstallerPage())),
+                      onPressed: () =>
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => const InstallerPage())),
                       icon: const Icon(Icons.engineering_outlined),
                       label: Text(tx(context, 'Asentaja', 'Installer')),
                     ),
@@ -478,4 +488,82 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
     );
   }
+}
+
+/// t237u: the Home Assistant servers you can add devices from (demo examples excluded).
+List<ConnectionConfig> haServers(AppState st) =>
+    st.config.connections.where((c) => c.type == 'homeassistant' && c.settings['demo'] != true).toList();
+
+/// Opens the entity picker; with several HA servers first asks which one (by name + address).
+Future<void> openHaPicker(BuildContext context) async {
+  final st = AppScope.read(context);
+  final list = haServers(st);
+  if (list.isEmpty) return;
+  ConnectionConfig? pick = list.length == 1 ? list.first : null;
+  pick ??= await showModalBottomSheet<ConnectionConfig>(
+    context: context,
+    builder: (ctx) => StatefulBuilder(
+      builder: (ctx, setSheet) {
+        final now = haServers(st);
+        return SafeArea(
+          child: ListView(
+            key: const ValueKey('ha-picker'),
+            shrinkWrap: true,
+            children: [
+              ListTile(
+                title: Text(tx(ctx, 'Mistä Home Assistantista?', 'Which Home Assistant?')),
+                subtitle: Text(
+                  tx(
+                    ctx,
+                    'Sinulla on useampi Home Assistant -yhteys. Käyttämättömän (ei ruutuja) voi poistaa.',
+                    'You have more than one Home Assistant connection. An unused one (no tiles) can be removed.',
+                  ),
+                ),
+              ),
+              for (final c in now)
+                ListTile(
+                  key: ValueKey('ha-pick-${c.id}'),
+                  leading: const Icon(Icons.home_outlined),
+                  title: Text(c.name),
+                  subtitle: Text(
+                    '${_haHost(c)} · ${connectionUses(st.config, c.id) == 0 ? tx(ctx, 'ei ruutuja', 'no tiles') : '${connectionUses(st.config, c.id)} ${tx(ctx, 'ruutua', 'tiles')}'}',
+                  ),
+                  onTap: () => Navigator.pop(ctx, c),
+                  trailing: connectionUses(st.config, c.id) == 0 && now.length > 1
+                      ? IconButton(
+                          key: ValueKey('ha-remove-${c.id}'),
+                          tooltip: tx(ctx, 'Poista käyttämätön yhteys', 'Remove unused connection'),
+                          icon: const Icon(Icons.delete_outline),
+                          onPressed: () async {
+                            final ok = await confirmDialog(
+                              ctx,
+                              tx(ctx, 'Poistetaanko yhteys?', 'Remove the connection?'),
+                              '${c.name} (${_haHost(c)})',
+                            );
+                            if (!ok) return;
+                            await st.deleteConnection(c.id);
+                            if (haServers(st).isEmpty && ctx.mounted) {
+                              Navigator.pop(ctx);
+                            } else {
+                              setSheet(() {});
+                            }
+                          },
+                        )
+                      : null,
+                ),
+            ],
+          ),
+        );
+      },
+    ),
+  );
+  if (pick == null || !context.mounted) return;
+  final c = pick;
+  await Navigator.push(context, MaterialPageRoute(builder: (_) => HaEntityPickerPage(connection: c)));
+}
+
+String _haHost(ConnectionConfig c) {
+  final u = Uri.tryParse('${c.settings['baseUrl'] ?? ''}');
+  if (u == null || u.host.isEmpty) return '${c.settings['baseUrl'] ?? '-'}';
+  return u.hasPort ? '${u.host}:${u.port}' : u.host;
 }
