@@ -28,9 +28,9 @@ void main() {
           ('Ethernet', '8.8.8.8'),
           ('wlan0', '10.0.0.5'),
         ]),
-        ['10.0.0', '192.168.50'],
+        ['10.0.0', '192.168.77'],
       );
-      expect(sameHomeNetwork(['192.168.50'], ['192.168.1']), isFalse);
+      expect(sameHomeNetwork(['192.168.77'], ['192.168.1']), isFalse);
       expect(sameHomeNetwork(['192.168.1'], ['192.168.1', '10.0.0']), isTrue);
       expect(sameHomeNetwork(['192.168.1'], null), isFalse, reason: 'unverifiable is not "at home"');
       expect(sameHomeNetwork(['192.168.1'], const []), isFalse);
@@ -73,7 +73,7 @@ void main() {
       final rs = RemoteState(store: MemorySecretStore());
       var nets = <String>['192.168.1'];
       rs.router.client = FakeRemote((op, _) => op == 'bridge_info' ? {'app': '0.11.1', 'nets': nets} : null);
-      expect(await rs.checkHomeNetwork(mine: ['192.168.50']), isFalse);
+      expect(await rs.checkHomeNetwork(mine: ['192.168.77']), isFalse);
       expect(rs.router.awayFromBridge, isTrue);
       expect(await rs.checkHomeNetwork(mine: ['192.168.1']), isTrue);
       rs.router.client = FakeRemote((_, _) => throw RemoteDeviceError('Connection missing'));
