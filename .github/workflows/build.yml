@@ -53,6 +53,14 @@ jobs:
       - uses: actions/checkout@v4
       - run: bash tool/rls_test.sh
 
+  shop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node --test web-site/shop-worker/test/*.test.mjs
+
   windows:
     needs: test
     runs-on: windows-latest
