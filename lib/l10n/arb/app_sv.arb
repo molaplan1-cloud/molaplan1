@@ -4316,6 +4316,18 @@
  "@s07c82cb0af": {
   "x-mt": true
  },
+ "see3fd4862d": "Samma ämne två gånger?",
+ "@see3fd4862d": {
+  "x-mt": true
+ },
+ "sb80a9b6813": "Kommandoämnet och svarsämnet är detsamma. De flesta enheter (t.ex. kameraövervakningspanelen) lyssnar på sitt eget kommandoämne och svarar på ditt anmälningsämne - sedan kommer kommandon aldrig. Spara ändå?",
+ "@sb80a9b6813": {
+  "x-mt": true
+ },
+ "s70f720de6d": "Spara ändå",
+ "@s70f720de6d": {
+  "x-mt": true
+ },
  "sf702cf0ac6": "Radera anslutning?",
  "@sf702cf0ac6": {
   "x-mt": true
@@ -6970,6 +6982,10 @@
  "@s6a4516e0fe": {
   "x-mt": true
  },
+ "scab58fae92": "Ämnet som hemmet enheten lyssnar på (enhetens eget ämne - inte ditt meddelande ämne). ämnesnamnet fungerar som ett lösenord: hålla det lång och slumpmässig.",
+ "@scab58fae92": {
+  "x-mt": true
+ },
  "s800cd08229": "Svara på ämne (valfritt)",
  "@s800cd08229": {
   "x-mt": true
@@ -7370,10 +7386,6 @@
  },
  "s54ea45f27f": "ntfy: ämne \"{p0}\" skyddas (HTTP {p1}). Lägg till en åtkomsttoken (tk_...) till anslutningen.",
  "@s54ea45f27f": {
-  "x-mt": true
- },
- "s72c37e530d": "ntfy: för många meddelanden (HTTP 429) Vänta ett ögonblick och försök igen.",
- "@s72c37e530d": {
   "x-mt": true
  },
  "s0870daf796": "ntfy: kommandoämne saknas",
@@ -8209,6 +8221,10 @@
  "@s7a46c8c335": {
   "x-mt": true
  },
+ "safaab25703": "Ämnet (eller full URL) enheten lyssnar på - enhetens eget ämne, inte ditt meddelande ämne.",
+ "@safaab25703": {
+  "x-mt": true
+ },
  "sc1ddf7feb4": "Om enheten svarar på ett annat ämne (t.ex. ditt anmälningsämne). Empty = samma ämne.",
  "@sc1ddf7feb4": {
   "x-mt": true
@@ -8284,6 +8300,10 @@
  "@s07f819fc55": {
   "x-mt": true
  },
+ "sa4a5b0baa1": "Kameraövervakning: kommandoämnet och svarsämnet kan inte vara detsamma. Kommandoämnet är panelens eget ämne (på panelen: Inställningar → ntfy), svarsämnet är ditt anmälningsämne.",
+ "@sa4a5b0baa1": {
+  "x-mt": true
+ },
  "s23f70f51ff": "Kommando enhet",
  "@s23f70f51ff": {
   "x-mt": true
@@ -8316,28 +8336,24 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "see3fd4862d": "Samma ämne två gånger?",
- "@see3fd4862d": {
+ "sedeaf26f8a": "ntfy meddelande gräns nådde",
+ "@sedeaf26f8a": {
   "x-mt": true
  },
- "sb80a9b6813": "Kommandoämnet och svarsämnet är detsamma. De flesta enheter (t.ex. kameraövervakningspanelen) lyssnar på sitt eget kommandoämne och svarar på ditt anmälningsämne - sedan kommer kommandon aldrig. Spara ändå?",
- "@sb80a9b6813": {
+ "s5d151d0815": "ntfy.sh tillåter 250 meddelanden per 12 timmar från ditt hems offentliga IP (alla telefoner, surfplattor, datorer och enhetens egna svar tillsammans). Meddelanden frigörs några minuter - appen frågar nu för staten mindre ofta. En bestående fix: din egen ntfy-server eller ett ntfy-konto med en högre gräns.",
+ "@s5d151d0815": {
   "x-mt": true
  },
- "s70f720de6d": "Spara ändå",
- "@s70f720de6d": {
+ "s63971a3ad4": "Fråga staten på högst alla (s)",
+ "@s63971a3ad4": {
   "x-mt": true
  },
- "scab58fae92": "Ämnet som hemmet enheten lyssnar på (enhetens eget ämne - inte ditt meddelande ämne). ämnesnamnet fungerar som ett lösenord: hålla det lång och slumpmässig.",
- "@scab58fae92": {
+ "scf38de4909": "Automatisk statusbegäran oftast (alla enheter återanvänder det senaste svaret). Varje förfrågan är två meddelanden; ntfy.sh tillåter 250 meddelanden / 12 h för hela hemnätverket. Tryck och kommandon frågar samtidigt.",
+ "@scf38de4909": {
   "x-mt": true
  },
- "safaab25703": "Ämnet (eller full URL) enheten lyssnar på - enhetens eget ämne, inte ditt meddelande ämne.",
- "@safaab25703": {
-  "x-mt": true
- },
- "sa4a5b0baa1": "Kameraövervakning: kommandoämnet och svarsämnet kan inte vara detsamma. Kommandoämnet är panelens eget ämne (på panelen: Inställningar → ntfy), svarsämnet är ditt anmälningsämne.",
- "@sa4a5b0baa1": {
+ "sb9c91fd519": "ntfy: meddelandegräns nått (HTTP 429). Servern tar inga fler meddelanden från detta nätverk (ntfy.sh: 250 meddelanden / 12 h för alla enheter bakom samma offentliga IP, enhetens egna svar också). Nya meddelanden frigör varje minut.",
+ "@sb9c91fd519": {
   "x-mt": true
  }
 }

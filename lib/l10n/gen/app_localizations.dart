@@ -140,6 +140,18 @@ abstract class AppLocalizations {
   /// **'The service'**
   String get sd3d9c263ed;
 
+  /// fi: ntfy-viestiraja täynnä
+  ///
+  /// In en, this message translates to:
+  /// **'ntfy message limit reached'**
+  String get sedeaf26f8a;
+
+  /// fi: ntfy.sh sallii 250 viestiä 12 tunnissa kotisi julkisesta IP-osoitteesta (kaikki puhelimet, tabletit, PC ja laitteen omat
+  ///
+  /// In en, this message translates to:
+  /// **'ntfy.sh allows 250 messages per 12 hours from your home\'\'s public IP (all phones, tablets, PCs and the device\'\'s own replies together). Messages free up every few minutes – the app now asks for the state less often. A lasting fix: your own ntfy server or an ntfy account with a higher limit.'**
+  String get s5d151d0815;
+
   /// fi: Ei vastausta laitteelta
   ///
   /// In en, this message translates to:
@@ -13079,6 +13091,18 @@ abstract class AppLocalizations {
   /// **'\'Stored encrypted on this device. Inserted where the template says {pin}.\''**
   String get s0694fe4d2b;
 
+  /// fi: Tilan kysely enintään (s)
+  ///
+  /// In en, this message translates to:
+  /// **'Ask the state at most every (s)'**
+  String get s63971a3ad4;
+
+  /// fi: Automaattinen tilakysely korkeintaan näin usein (kaikki laitteet yhteensä käyttävät viimeisintä vastausta). Jokainen kys
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic status request at most this often (all devices reuse the latest reply). Each request is two messages; ntfy.sh allows 250 messages / 12 h for the whole home network. Presses and commands ask at once.'**
+  String get scf38de4909;
+
   /// fi: Komennon malli
   ///
   /// In en, this message translates to:
@@ -13667,12 +13691,6 @@ abstract class AppLocalizations {
   /// **'ntfy: topic \"{p0}\" is protected (HTTP {p1}). Add an access token (tk_…) to the connection.'**
   String s54ea45f27f(String p0, String p1);
 
-  /// fi: ntfy: liian monta viestiä lyhyessä ajassa (HTTP 429). Odota hetki ja yritä uudelleen.
-  ///
-  /// In en, this message translates to:
-  /// **'ntfy: too many messages (HTTP 429). Wait a moment and try again.'**
-  String get s72c37e530d;
-
   /// fi: ntfy: komentokanava puuttuu
   ///
   /// In en, this message translates to:
@@ -13714,6 +13732,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'✓ ntfy server {p0} answered and topic \"{p1}\" is readable ({p2} messages in the last hour).{p3} No command was sent – tap the tile to try.'**
   String s9ed9eb7f92(String p0, String p1, String p2, String p3);
+
+  /// fi: ntfy: viestiraja täynnä (HTTP 429). Palvelin ei ota vastaan enempää viestejä tästä verkosta (ntfy.sh: 250 viestiä / 12 h
+  ///
+  /// In en, this message translates to:
+  /// **'\'ntfy: message limit reached (HTTP 429). The server takes no more messages from this network (ntfy.sh: 250 messages / 12 h for all devices behind the same public IP, the device\'\'s own replies too). New messages free up every few minutes\'\'}.\''**
+  String sb9c91fd519(String p0);
 
   /// fi: Home Assistant
   ///

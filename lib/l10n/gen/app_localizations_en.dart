@@ -28,6 +28,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sd3d9c263ed => 'The service';
 
   @override
+  String get sedeaf26f8a => 'ntfy message limit reached';
+
+  @override
+  String get s5d151d0815 =>
+      'ntfy.sh allows 250 messages per 12 hours from your home\'s public IP (all phones, tablets, PCs and the device\'s own replies together). Messages free up every few minutes – the app now asks for the state less often. A lasting fix: your own ntfy server or an ntfy account with a higher limit.';
+
+  @override
   String get s349ca716f2 => 'No reply from the device';
 
   @override
@@ -7231,6 +7238,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'Stored encrypted on this device. Inserted where the template says {pin}.';
 
   @override
+  String get s63971a3ad4 => 'Ask the state at most every (s)';
+
+  @override
+  String get scf38de4909 =>
+      'Automatic status request at most this often (all devices reuse the latest reply). Each request is two messages; ntfy.sh allows 250 messages / 12 h for the whole home network. Presses and commands ask at once.';
+
+  @override
   String get s4313c720cc => 'Command template';
 
   @override
@@ -7570,10 +7584,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get s72c37e530d =>
-      'ntfy: too many messages (HTTP 429). Wait a moment and try again.';
-
-  @override
   String get s0870daf796 => 'ntfy: command topic missing';
 
   @override
@@ -7598,6 +7608,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String s9ed9eb7f92(String p0, String p1, String p2, String p3) {
     return '✓ ntfy server $p0 answered and topic \"$p1\" is readable ($p2 messages in the last hour).$p3 No command was sent – tap the tile to try.';
+  }
+
+  @override
+  String sb9c91fd519(String p0) {
+    return 'ntfy: message limit reached (HTTP 429). The server takes no more messages from this network (ntfy.sh: 250 messages / 12 h for all devices behind the same public IP, the device\'s own replies too). New messages free up every few minutes\'}.';
   }
 
   @override

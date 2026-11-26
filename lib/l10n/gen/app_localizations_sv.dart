@@ -28,6 +28,13 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sd3d9c263ed => 'Tjänsten';
 
   @override
+  String get sedeaf26f8a => 'ntfy meddelande gräns nådde';
+
+  @override
+  String get s5d151d0815 =>
+      'ntfy.sh tillåter 250 meddelanden per 12 timmar från ditt hems offentliga IP (alla telefoner, surfplattor, datorer och enhetens egna svar tillsammans). Meddelanden frigörs några minuter - appen frågar nu för staten mindre ofta. En bestående fix: din egen ntfy-server eller ett ntfy-konto med en högre gräns.';
+
+  @override
   String get s349ca716f2 => 'Inget svar från enheten';
 
   @override
@@ -7243,6 +7250,13 @@ class AppLocalizationsSv extends AppLocalizations {
       'Förvarad krypterad på den här enheten. Infogad där mallen säger {pin}.';
 
   @override
+  String get s63971a3ad4 => 'Fråga staten på högst alla (s)';
+
+  @override
+  String get scf38de4909 =>
+      'Automatisk statusbegäran oftast (alla enheter återanvänder det senaste svaret). Varje förfrågan är två meddelanden; ntfy.sh tillåter 250 meddelanden / 12 h för hela hemnätverket. Tryck och kommandon frågar samtidigt.';
+
+  @override
   String get s4313c720cc => 'Kommando mall';
 
   @override
@@ -7582,10 +7596,6 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get s72c37e530d =>
-      'ntfy: för många meddelanden (HTTP 429) Vänta ett ögonblick och försök igen.';
-
-  @override
   String get s0870daf796 => 'ntfy: kommandoämne saknas';
 
   @override
@@ -7610,6 +7620,11 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String s9ed9eb7f92(String p0, String p1, String p2, String p3) {
     return '✓ ntfy server $p0 svarade och ämne \"$p1\" är läsbart ($p2 meddelanden i sista timmen). $p3 Inget kommando skickades - tryck på kakeln för att försöka.';
+  }
+
+  @override
+  String sb9c91fd519(String p0) {
+    return 'ntfy: meddelandegräns nått (HTTP 429). Servern tar inga fler meddelanden från detta nätverk (ntfy.sh: 250 meddelanden / 12 h för alla enheter bakom samma offentliga IP, enhetens egna svar också). Nya meddelanden frigör varje minut.';
   }
 
   @override

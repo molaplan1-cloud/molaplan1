@@ -16,6 +16,11 @@ class MockNtfy {
   final topics = <String, List<Map<String, dynamic>>>{};
   final _subs = <String, List<HttpResponse>>{};
   final published = <String>[];
+
+  /// t246u: messages left for this "IP" (-1 = no limit); 0 -> HTTP 429 like ntfy.sh.
+  int quotaLeft = -1;
+  int refused = 0;
+  int resetAt = 0;
   var _n = 0;
 
   String get url => 'http://127.0.0.1:${_server.port}';
@@ -64,7 +69,24 @@ class MockNtfy {
       req.response.write('{"code":40301,"http":403,"error":"forbidden"}');
       return req.response.close();
     }
+    if (req.method == 'GET' && seg.length == 2 && seg[0] == 'v1' && seg[1] == 'account') {
+      req.response.headers.contentType = ContentType.json;
+      req.response.write(
+        jsonEncode({
+          'stats': {'messages_remaining': quotaLeft < 0 ? 250 : quotaLeft, 'reset_at': resetAt},
+        }),
+      );
+      return req.response.close();
+    }
+    if (req.method == 'POST' && seg.length == 1 && quotaLeft == 0) {
+      await utf8.decodeStream(req);
+      refused++;
+      req.response.statusCode = 429;
+      req.response.write('{"code":42908,"http":429,"error":"limit reached: daily message quota reached"}');
+      return req.response.close();
+    }
     if (req.method == 'POST' && seg.length == 1) {
+      if (quotaLeft > 0) quotaLeft--;
       final body = await utf8.decodeStream(req);
       published.add('${seg[0]}:$body');
       final m = add(seg[0], body, title: req.headers.value('title') ?? '');
@@ -84,7 +106,9 @@ class MockNtfy {
       // Like ntfy: without "since" a subscription gets only new messages.
       final since = q['since'];
       final n = int.tryParse(since ?? '');
-      final old = since == null ? const <Map<String, dynamic>>[] : (topics[topic] ?? const []).where((m) => n == null || (m['time'] as int) >= n);
+      final old = since == null
+          ? const <Map<String, dynamic>>[]
+          : (topics[topic] ?? const []).where((m) => n == null || (m['time'] as int) >= n);
       if (q['poll'] == '1') {
         for (final m in old) {
           req.response.write('${jsonEncode(m)}\n');

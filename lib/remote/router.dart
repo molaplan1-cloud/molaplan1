@@ -129,6 +129,21 @@ class RemoteRouter {
     return _viaRemote(c, remote, null);
   }
 
+  /// t246u: the bridge answered a check (ping / network check). Before any device request went
+  /// through the router the status was still null ('Yhdistetään…' forever on a device whose tiles
+  /// are all internet services): now it says where requests would go.
+  void bridgeAnswered() {
+    bridgeSeen = DateTime.now();
+    if (status == null || status == LinkStatus.offline) {
+      _status(sameNetwork == true ? LinkStatus.home : LinkStatus.remote);
+    }
+  }
+
+  /// The bridge check failed and nothing has worked yet.
+  void bridgeUnreachable() {
+    if (status == null) _status(LinkStatus.offline);
+  }
+
   /// A LAN push value arrived: we are home.
   void markHome() {
     _remoteUntil = null;
@@ -199,8 +214,11 @@ class RoutedDriver extends Driver {
   final RemoteRouter router;
 
   @override
-  Future<Object?> read(Map<String, dynamic> spec) =>
-      router.run(() => inner.read(spec), (c) => c.call('read', conn: _wire(config), spec: spec), key: config.id);
+  Future<Object?> read(Map<String, dynamic> spec) => router.run(
+    () => inner.read(spec),
+    (c) => c.call('read', conn: _wire(config), spec: spec),
+    key: config.id,
+  );
 
   @override
   Future<Object?> send(Map<String, dynamic> spec, {Object? value}) => router.run(

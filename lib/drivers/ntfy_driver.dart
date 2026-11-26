@@ -218,19 +218,24 @@ class NtfyDriver extends Driver {
         'ntfy: topic "$topic" is protected (HTTP $code). Add an access token (tk_…) to the connection.',
       );
     }
-    if (code == 429) {
-      return dtx(
-        'ntfy: liian monta viestiä lyhyessä ajassa (HTTP 429). Odota hetki ja yritä uudelleen.',
-        'ntfy: too many messages (HTTP 429). Wait a moment and try again.',
-      );
-    }
+    if (code == 429) return ntfyQuotaText(null);
     return 'ntfy: HTTP $code ${body.length > 120 ? body.substring(0, 120) : body}';
   }
+
+  /// t246u: the server refused messages from this network (HTTP 429, e.g. ntfy.sh's 250 messages
+  /// per public IP): no new publishes to it until then – every refused try only delays the refill.
+  static final quotaUntil = <String, DateTime>{};
+  static final quotaFullAt = <String, DateTime>{};
+
+  /// Waits after a 429 before the next try (one message refills about every 3 min on ntfy.sh).
+  static Duration quotaPause = const Duration(minutes: 3);
 
   /// Publishes [text]; returns the stored message (id, time).
   Future<NtfyMessage> publish(String text, {String? title}) async {
     final (srv, topic) = _cmd;
     if (topic.isEmpty) throw DriverException(dtx('ntfy: komentokanava puuttuu', 'ntfy: command topic missing'));
+    final until = quotaUntil[srv];
+    if (until != null && DateTime.now().isBefore(until)) throw NtfyQuotaFull(ntfyQuotaText(quotaFullAt[srv]));
     final req = await _client.postUrl(Uri.parse('$srv/$topic')).timeout(const Duration(seconds: 15));
     _auth(req);
     if (title != null && title.isNotEmpty) req.headers.set('Title', title);
@@ -238,12 +243,34 @@ class NtfyDriver extends Driver {
     req.add(utf8.encode(text));
     final res = await req.close().timeout(const Duration(seconds: 15));
     final body = await utf8.decodeStream(res);
+    if (res.statusCode == 429) {
+      final full = await _quotaFullAt(srv);
+      quotaUntil[srv] = DateTime.now().add(quotaPause);
+      if (full != null) quotaFullAt[srv] = full;
+      throw NtfyQuotaFull(ntfyQuotaText(full));
+    }
     if (res.statusCode >= 300) throw DriverException(_httpError(res.statusCode, body, topic));
+    quotaUntil.remove(srv);
     try {
       return NtfyMessage.fromJson(jsonDecode(body)) ??
           NtfyMessage(id: '', time: DateTime.now().millisecondsSinceEpoch ~/ 1000, message: text);
     } catch (_) {
       return NtfyMessage(id: '', time: DateTime.now().millisecondsSinceEpoch ~/ 1000, message: text);
+    }
+  }
+
+  /// When the server's message quota for this network is full again (`GET /v1/account`, read only).
+  Future<DateTime?> _quotaFullAt(String srv) async {
+    try {
+      final req = await _client.getUrl(Uri.parse('$srv/v1/account')).timeout(const Duration(seconds: 8));
+      _auth(req);
+      final res = await req.close().timeout(const Duration(seconds: 8));
+      final j = jsonDecode(await utf8.decodeStream(res).timeout(const Duration(seconds: 8)));
+      final stats = j is Map ? j['stats'] : null;
+      final at = stats is Map ? stats['reset_at'] : null;
+      return at is num && at > 0 ? DateTime.fromMillisecondsSinceEpoch(at.toInt() * 1000) : null;
+    } catch (_) {
+      return null;
     }
   }
 
@@ -402,3 +429,19 @@ class NtfyDriver extends Driver {
   @override
   Future<void> dispose() async => _client.close(force: true);
 }
+
+/// t246u: HTTP 429 from the ntfy server: this network's message quota is used up.
+class NtfyQuotaFull extends DriverException {
+  NtfyQuotaFull(super.message);
+}
+
+String _hhmm(DateTime t) => '${t.hour.toString().padLeft(2, '0')}.${t.minute.toString().padLeft(2, '0')}';
+
+String ntfyQuotaText(DateTime? fullAt) => dtx(
+  'ntfy: viestiraja täynnä (HTTP 429). Palvelin ei ota vastaan enempää viestejä tästä verkosta (ntfy.sh: 250 viestiä / 12 h saman julkisen IP-osoitteen kaikilta laitteilta, myös laitteen omat vastaukset). Uusia viestejä vapautuu muutaman minuutin välein${fullAt == null ? '' : ', koko kiintiö noin klo ${_hhmm(fullAt.toLocal())}'}.',
+  'ntfy: message limit reached (HTTP 429). The server takes no more messages from this network (ntfy.sh: 250 messages / 12 h for all devices behind the same public IP, the device\'s own replies too). New messages free up every few minutes${fullAt == null ? '' : ', the full quota around ${_hhmm(fullAt.toLocal())}'}.',
+);
+
+/// The text of [ntfyQuotaText] (any language).
+bool isNtfyQuota(String msg) =>
+    msg.startsWith('ntfy: viestiraja täynnä') || msg.startsWith('ntfy: message limit reached');

@@ -30,7 +30,10 @@ Future<void> addShelly(AppState st) async {
     secrets: {'password': 'salainen'},
   );
   await st.upsertConnection(c);
-  await st.upsertTile(st.config.dashboards.first, TileConfig(type: TileType.toggle, title: 'Sauna', connectionId: c.id));
+  await st.upsertTile(
+    st.config.dashboards.first,
+    TileConfig(type: TileType.toggle, title: 'Sauna', connectionId: c.id),
+  );
 }
 
 void main() {
@@ -42,8 +45,14 @@ void main() {
     expect(await unwrapAccountKey(w, pw, 'u1'), k);
     await expectLater(unwrapAccountKey(w, 'väärä', 'u1'), throwsA(isA<WrongVaultPassword>()));
     await expectLater(unwrapAccountKey(w, pw, 'u2'), throwsA(isA<WrongVaultPassword>()));
-    final v = await sealVault(k, {'secrets': {'a': {'password': 'x'}}}, 'u1');
-    expect((await openVault(k, v, 'u1'))['secrets'], {'a': {'password': 'x'}});
+    final v = await sealVault(k, {
+      'secrets': {
+        'a': {'password': 'x'},
+      },
+    }, 'u1');
+    expect((await openVault(k, v, 'u1'))['secrets'], {
+      'a': {'password': 'x'},
+    });
     await expectLater(openVault(newAccountKey(), v, 'u1'), throwsA(isA<WrongVaultPassword>()));
   });
 
@@ -115,7 +124,10 @@ void main() {
     await a.account.sendRecovery(email);
     await a.account.recoverWithCode(email, sb.lastCode(email, 'recovery'), 'Uusi-Salasana2');
     final b = await device(sb);
-    await expectLater(b.account.signIn(email, pw), throwsA(isA<AccountError>().having((e) => e.problem, 'p', AccountProblem.wrongPassword)));
+    await expectLater(
+      b.account.signIn(email, pw),
+      throwsA(isA<AccountError>().having((e) => e.problem, 'p', AccountProblem.wrongPassword)),
+    );
     await b.account.signIn(email, 'Uusi-Salasana2');
     expect(b.connection('shelly1')!.secrets['password'], 'salainen', reason: 'key re-wrapped with the new password');
   });
@@ -143,11 +155,23 @@ void main() {
     final a = await device(sb);
     await a.account.signUp(email, pw);
     final b = await device(sb);
-    await expectLater(b.account.signIn(email, 'väärä-salasana'), throwsA(isA<AccountError>().having((e) => e.problem, 'p', AccountProblem.wrongPassword)));
-    await expectLater(b.account.signUp(email, pw), throwsA(isA<AccountError>().having((e) => e.problem, 'p', AccountProblem.userExists)));
-    await expectLater(b.account.signUp('x@y.fi', 'lyhyt'), throwsA(isA<AccountError>().having((e) => e.problem, 'p', AccountProblem.weakPassword)));
+    await expectLater(
+      b.account.signIn(email, 'väärä-salasana'),
+      throwsA(isA<AccountError>().having((e) => e.problem, 'p', AccountProblem.wrongPassword)),
+    );
+    await expectLater(
+      b.account.signUp(email, pw),
+      throwsA(isA<AccountError>().having((e) => e.problem, 'p', AccountProblem.userExists)),
+    );
+    await expectLater(
+      b.account.signUp('x@y.fi', 'lyhyt'),
+      throwsA(isA<AccountError>().having((e) => e.problem, 'p', AccountProblem.weakPassword)),
+    );
     sb.offline = true;
-    await expectLater(b.account.signIn(email, pw), throwsA(isA<AccountError>().having((e) => e.problem, 'p', AccountProblem.offline)));
+    await expectLater(
+      b.account.signIn(email, pw),
+      throwsA(isA<AccountError>().having((e) => e.problem, 'p', AccountProblem.offline)),
+    );
     await a.upsertTile(a.config.dashboards.first, TileConfig(type: TileType.value, title: 'X'));
     await a.account.syncNow(quiet: true);
     expect(a.account.status, SyncStatus.offline);
@@ -157,7 +181,7 @@ void main() {
     expect(jsonEncode(sb.rows.values.single).contains('"X"'), isTrue);
   });
 
-  test('expired session is refreshed; conflicting edits: newest wins, nothing crashes', () async {
+  test('expired session is refreshed; edits on two devices are both kept (t246u merge), nothing crashes', () async {
     final sb = FakeSupabase(autoconfirm: true)..expiresIn = 1;
     final a = await device(sb);
     await a.account.signUp(email, pw);
@@ -169,8 +193,50 @@ void main() {
     await b.upsertTile(b.config.dashboards.first, TileConfig(type: TileType.value, title: 'B'));
     await b.account.syncNow();
     await a.account.syncNow();
-    expect(a.config.dashboards.first.tiles.map((t) => t.title), ['B']);
+    expect(a.config.dashboards.first.tiles.map((t) => t.title), ['A', 'B']);
+    expect(b.config.dashboards.first.tiles.map((t) => t.title), ['A', 'B']);
     expect(b.account.status, SyncStatus.ok);
+  });
+
+  test('t246u: a stale device saving something else never undoes a fix made elsewhere', () async {
+    final sb = FakeSupabase(autoconfirm: true);
+    final pc = await device(sb);
+    await pc.account.signUp(email, pw);
+    final conn = ConnectionConfig(
+      id: 'kv1',
+      name: 'Kameravalvonta',
+      type: 'ntfy_device',
+      settings: {'topic': 'user-topic', 'replyTopic': 'user-topic', 'template': '{cmd} {pin}'},
+    );
+    await pc.upsertConnection(conn);
+    await pc.upsertTile(
+      pc.config.dashboards.first,
+      TileConfig(type: TileType.toggle, title: 'Sisävalo', connectionId: 'kv1'),
+    );
+    await pc.account.syncNow();
+    final phone = await device(sb);
+    await phone.account.signIn(email, pw);
+    // The fix is made on the phone (or straight in the account) …
+    final fixed = phone.connection('kv1')!..settings['topic'] = 'panel-cmd-topic';
+    await phone.upsertConnection(fixed);
+    await phone.account.syncNow();
+    // … while the PC, not synced yet, saves a PIN and renames a tile.
+    await Future<void>.delayed(const Duration(milliseconds: 5));
+    final c = pc.connection('kv1')!..secrets['pin'] = '2468';
+    await pc.upsertConnection(c);
+    final t = pc.config.dashboards.first.tiles.single..title = 'Sisävalo 1';
+    await pc.upsertTile(pc.config.dashboards.first, t);
+    await pc.account.syncNow();
+    expect(pc.connection('kv1')!.settings['topic'], 'panel-cmd-topic', reason: 'the fix survives');
+    expect(pc.connection('kv1')!.settings['replyTopic'], 'user-topic');
+    expect(pc.connection('kv1')!.secrets['pin'], '2468', reason: 'the PC\'s own change survives');
+    expect(pc.config.dashboards.first.tiles.single.title, 'Sisävalo 1');
+    await phone.account.syncNow();
+    expect(phone.connection('kv1')!.settings['topic'], 'panel-cmd-topic');
+    expect(phone.config.dashboards.first.tiles.single.title, 'Sisävalo 1');
+    final row = sb.rows.values.single;
+    final conns = (row['config'] as Map)['connections'] as List;
+    expect((conns.single as Map)['settings']['topic'], 'panel-cmd-topic');
   });
 
   test('sign out keeps this device working; delete account removes everything on the server', () async {

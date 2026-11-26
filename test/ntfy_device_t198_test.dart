@@ -29,13 +29,19 @@ class Panel {
     final parts = msg.split(' ');
     String? cid;
     if (parts.length > 1 && parts.last.startsWith('c:')) cid = parts.removeLast().substring(2);
-    if (parts.isEmpty || parts.last != '4321') return ('user-notify', 'Paneeli', json ? '{"ok":false,"error":"Väärä PIN"}' : 'Väärä PIN');
+    if (parts.isEmpty || parts.last != '4321') {
+      return ('user-notify', 'Paneeli', json ? '{"ok":false,"error":"Väärä PIN"}' : 'Väärä PIN');
+    }
     parts.removeLast();
     lastAnswer = now;
     answered++;
     if (parts.length == 2 && state.containsKey(parts[0])) state[parts[0]] = parts[1] == 'on';
     if (json) {
-      return ('user-notify', 'Paneeli', jsonEncode({'cid': ?cid, 'valo': state['valo']! ? 1 : 0, 'sireeni': state['sireeni']! ? 1 : 0}));
+      return (
+        'user-notify',
+        'Paneeli',
+        jsonEncode({'cid': ?cid, 'valo': state['valo']! ? 1 : 0, 'sireeni': state['sireeni']! ? 1 : 0}),
+      );
     }
     String w(bool b) => b ? 'PÄÄLLÄ' : 'POIS';
     return ('user-notify', 'Paneeli', 'Valo: ${w(state['valo']!)}, Sireeni: ${w(state['sireeni']!)}');
@@ -51,6 +57,7 @@ NtfyDeviceDriver drv(MockNtfy m, {Map<String, dynamic> extra = const {}}) => Ntf
       'replyTopic': 'user-notify',
       'replyTitle': 'paneeli',
       'replySeconds': 5,
+      'statusEvery': 0,
       ...extra,
     },
     secrets: {'pin': '4321'},
@@ -65,7 +72,10 @@ void main() {
     expect(buildNtfyCommand('{cmd} {pin}', cmd: 'tila'), 'tila');
     expect(buildNtfyCommand('', cmd: 'valo on', pin: '9'), 'valo on 9');
     expect(buildNtfyCommand('PIN={pin}', cmd: 'x', pin: '1'), 'x PIN=1');
-    expect(buildNtfyCommand('{cmd} {value} {pin} c:{cid}', cmd: 'valo', pin: '1', cid: 'ab12', value: true), 'valo on 1 c:ab12');
+    expect(
+      buildNtfyCommand('{cmd} {value} {pin} c:{cid}', cmd: 'valo', pin: '1', cid: 'ab12', value: true),
+      'valo on 1 c:ab12',
+    );
   });
 
   test('text → state map: defaults, custom rules, whole-text match', () {
@@ -84,7 +94,13 @@ void main() {
     expect(ntfyReplyMatches(m, title: 'valvonta', cid: 'bb'), isFalse);
     expect(ntfyReplyMatches(m, title: 'Ovikello'), isFalse);
     expect(ntfyReplyMatches(m, match: r'"valo"'), isTrue);
-    expect(ntfyReplyMatches(NtfyMessage(id: '2', time: 0, message: 'Valo: POIS'), cid: 'aa'), isTrue);
+    expect(
+      ntfyReplyMatches(
+        NtfyMessage(id: '2', time: 0, message: 'Valo: POIS'),
+        cid: 'aa',
+      ),
+      isTrue,
+    );
   });
 
   test('text replies on another topic: other notifications ignored, states via regex + map', () async {
@@ -115,7 +131,10 @@ void main() {
       return p(t, msg);
     };
     final d = drv(m, extra: {'template': '{cmd} {pin} c:{cid}', 'statusCommand': 'tila json'});
-    final reads = await Future.wait([d.read({'jsonPath': r'$.valo'}), d.read({'jsonPath': r'$.sireeni'})]);
+    final reads = await Future.wait([
+      d.read({'jsonPath': r'$.valo'}),
+      d.read({'jsonPath': r'$.sireeni'}),
+    ]);
     expect(reads, [false, false]);
     expect(m.published.length, 1, reason: 'two tiles, one status command');
     expect(m.published.single, matches(RegExp(r'^panel-cmd:tila json 4321 c:[0-9a-f]{6}$')));
@@ -134,7 +153,7 @@ void main() {
       ConnectionConfig(
         name: 'x',
         type: 'ntfy_device',
-        settings: {'topic': '${m.url}/panel-cmd', 'replyTopic': 'user-notify', 'replySeconds': 5},
+        settings: {'topic': '${m.url}/panel-cmd', 'replyTopic': 'user-notify', 'replySeconds': 5, 'statusEvery': 0},
         secrets: {'pin': '0000'},
       ),
     );
@@ -146,7 +165,13 @@ void main() {
     final silent = drv(m, extra: {'topic': '${m.url}/nobody-listens', 'replySeconds': 3});
     await expectLater(
       silent.read({}),
-      throwsA(isA<DriverException>().having((e) => e.message, 'm', contains('Komento lähti, mutta laite ei vastannut 3 s:ssa – onko laite verkossa?'))),
+      throwsA(
+        isA<DriverException>().having(
+          (e) => e.message,
+          'm',
+          contains('Komento lähti, mutta laite ei vastannut 3 s:ssa – onko laite verkossa?'),
+        ),
+      ),
     );
     await wrong.dispose();
     await silent.dispose();
@@ -189,7 +214,10 @@ void main() {
     expect(valo.type, TileType.toggle);
     expect(valo.onCommand!.spec['command'], 'valo on');
     expect(valo.offCommand!.spec['command'], 'valo off');
-    expect(RegExp(valo.read['regex'] as String, caseSensitive: false).firstMatch('Valo: PÄÄLLÄ, Sireeni: POIS')!.group(1), 'PÄÄLLÄ');
+    expect(
+      RegExp(valo.read['regex'] as String, caseSensitive: false).firstMatch('Valo: PÄÄLLÄ, Sireeni: POIS')!.group(1),
+      'PÄÄLLÄ',
+    );
     final j = t.build({'topic': 'x', 'outputs': 'A = a'}, 'fi');
     expect(j.tiles.first.read['jsonPath'], r'$.a');
     expect(descriptorFor('ntfy_device').secretKeys, containsAll(['pin', 'token']));

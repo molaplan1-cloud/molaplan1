@@ -162,16 +162,22 @@ String? ntfyDeviceError(NtfyMessage m, String? pattern) {
 class _Shared {
   NtfyMessage? last;
   DateTime? at;
+
   /// t235u: when the last status reply really arrived (not reset by commands).
   DateTime? okAt;
+
   /// t235u: state after a command that was published but not answered: JSON path → (value, when).
   final optimistic = <String, (bool, DateTime)>{};
+
   /// t243u: status requests that got no reply in a row, and when to ask again.
   int noReply = 0;
   DateTime? backoffUntil;
   NtfyNoReply? lastNoReply;
   Future<NtfyMessage>? inFlight;
   DateTime? lastSent;
+
+  /// t246u: when this device last asked for the state on its own (a poll, not after a command).
+  DateTime? autoAt;
 }
 
 class NtfyDeviceDriver extends NtfyDriver {
@@ -207,6 +213,16 @@ class NtfyDeviceDriver extends NtfyDriver {
         kind: FieldKind.secret,
         helpFi: 'Tallennetaan salattuna tähän laitteeseen. Lisätään komentoon mallin {pin}-kohtaan.',
         helpEn: 'Stored encrypted on this device. Inserted where the template says {pin}.',
+      ),
+      FieldSpec(
+        'statusEvery',
+        'Tilan kysely enintään (s)',
+        'Ask the state at most every (s)',
+        kind: FieldKind.number,
+        defaultValue: 900,
+        advanced: true,
+        helpFi: 'Automaattinen tilakysely korkeintaan näin usein (kaikki laitteet yhteensä käyttävät viimeisintä vastausta). Jokainen kysely on kaksi viestiä; ntfy.sh sallii 250 viestiä / 12 h koko kodin verkosta. Painallukset ja komennot kysyvät heti.',
+        helpEn: 'Automatic status request at most this often (all devices reuse the latest reply). Each request is two messages; ntfy.sh allows 250 messages / 12 h for the whole home network. Presses and commands ask at once.',
       ),
       FieldSpec(
         'template',
@@ -267,7 +283,8 @@ class NtfyDeviceDriver extends NtfyDriver {
         'Minimum time between commands (s)',
         kind: FieldKind.number,
         defaultValue: 0,
-        helpFi: 'Jos laite vastaa vain esim. 30 sekunnin välein, kirjoita 30: seuraava komento odottaa vuoroaan eikä huku.',
+        helpFi:
+            'Jos laite vastaa vain esim. 30 sekunnin välein, kirjoita 30: seuraava komento odottaa vuoroaan eikä huku.',
         helpEn: 'If the device answers only e.g. every 30 seconds, type 30: the next command waits its turn instead of being lost.',
       ),
       FieldSpec(
@@ -370,7 +387,11 @@ class NtfyDeviceDriver extends NtfyDriver {
   static final _rnd = Random.secure();
 
   /// Test hook: forget shared state between tests.
-  static void resetShared() => _shared.clear();
+  static void resetShared() {
+    _shared.clear();
+    NtfyDriver.quotaUntil.clear();
+    NtfyDriver.quotaFullAt.clear();
+  }
 
   _Shared get _sh {
     final (srv, t) = commandTopicPair;
@@ -410,17 +431,25 @@ class NtfyDeviceDriver extends NtfyDriver {
     final m = await exchange(
       text,
       wait: wait,
-      accept: (m) => ntfyReplyMatches(m, title: replyTitle ?? s.strOrNull('replyTitle'), match: s.strOrNull('replyMatch'), cid: cid),
+      accept: (m) => ntfyReplyMatches(
+        m,
+        title: replyTitle ?? s.strOrNull('replyTitle'),
+        match: s.strOrNull('replyMatch'),
+        cid: cid,
+      ),
       // t235u: the publish already succeeded here – a missing reply is the device's.
-      timeoutText: (topic, secs) => _replyHint(noTopic, usesPin
-          ? dtx(
-              'Komento lähti, mutta laite ei vastannut $secs s:ssa – onko laite verkossa? Tarkista myös PIN-koodi: moni laite ei vastaa lainkaan väärään PIN-koodiin (aihe "$topic").',
-              'The command was sent, but the device did not answer within $secs s – is the device online? Also check the PIN: many devices do not answer a wrong PIN at all (topic "$topic").',
-            )
-          : dtx(
-              'Komento lähti, mutta laite ei vastannut $secs s:ssa – onko laite verkossa? Jos laite vastaa vain tietyin väliajoin, kasvata "Komentojen väli" -asetusta (aihe "$topic").',
-              'The command was sent, but the device did not answer within $secs s – is the device online? If it answers only at intervals, increase "Minimum time between commands" (topic "$topic").',
-            )),
+      timeoutText: (topic, secs) => _replyHint(
+        noTopic,
+        usesPin
+            ? dtx(
+                'Komento lähti, mutta laite ei vastannut $secs s:ssa – onko laite verkossa? Tarkista myös PIN-koodi: moni laite ei vastaa lainkaan väärään PIN-koodiin (aihe "$topic").',
+                'The command was sent, but the device did not answer within $secs s – is the device online? Also check the PIN: many devices do not answer a wrong PIN at all (topic "$topic").',
+              )
+            : dtx(
+                'Komento lähti, mutta laite ei vastannut $secs s:ssa – onko laite verkossa? Jos laite vastaa vain tietyin väliajoin, kasvata "Komentojen väli" -asetusta (aihe "$topic").',
+                'The command was sent, but the device did not answer within $secs s – is the device online? If it answers only at intervals, increase "Minimum time between commands" (topic "$topic").',
+              ),
+      ),
     );
     // A JSON reply carries the whole state even when the command was refused: share it first.
     if (ntfyJsonPayload(m.message) is Map) {
@@ -429,15 +458,27 @@ class NtfyDeviceDriver extends NtfyDriver {
       sh.optimistic.clear();
     }
     final err = ntfyDeviceError(m, s.strOrNull('errorMatch'));
-    if (err != null) throw DriverException(dtx('Laite vastasi: ${ntfyErrorText(err)}', 'The device answered: ${ntfyErrorText(err)}'));
+    if (err != null) {
+      throw DriverException(dtx('Laite vastasi: ${ntfyErrorText(err)}', 'The device answered: ${ntfyErrorText(err)}'));
+    }
     return m;
   }
 
   /// The shared status reply (one request at a time, reused for [cacheSeconds]).
+  /// t246u: shortest time between automatic status requests (polls). Every request costs two
+  /// messages (request + reply) from the home's public IP, and ntfy.sh allows 250 per 12 h for the
+  /// whole home – polling every minute used it all up. Commands and presses still ask at once.
+  Duration get statusEvery => Duration(seconds: s.integer('statusEvery', 900).clamp(0, 86400));
+
   Future<NtfyMessage> status({String? command, bool fresh = false}) {
     final sh = _sh;
     final ttl = Duration(seconds: s.integer('cacheSeconds', 30).clamp(0, 3600));
-    if (!fresh && sh.last != null && sh.at != null && DateTime.now().difference(sh.at!) < ttl) {
+    final now = DateTime.now();
+    if (!fresh && sh.last != null && sh.at != null && now.difference(sh.at!) < ttl) {
+      return Future.value(sh.last!);
+    }
+    // t246u: a poll within [statusEvery] of the last one keeps the last answer.
+    if (!fresh && sh.last != null && sh.autoAt != null && now.difference(sh.autoAt!) < statusEvery) {
       return Future.value(sh.last!);
     }
     return sh.inFlight ??= _statusNow(command, fresh, ttl)
@@ -473,14 +514,22 @@ class NtfyDeviceDriver extends NtfyDriver {
     // moment ago (on the shared reply topic) is used instead of asking again – the panel drops
     // status requests closer than its rate limit.
     if (!fresh) {
-      final shared = await _recentShared(ttl);
-      if (shared != null) return shared;
+      // t246u: any device's status within the poll interval will do (never older than our command).
+      final window = statusEvery > ttl ? statusEvery : ttl;
+      final shared = await _recentShared(window);
+      if (shared != null) {
+        sh.autoAt = DateTime.now();
+        return shared;
+      }
+      sh.autoAt = DateTime.now();
     }
     try {
       final m = await _ask(command ?? s.str('statusCommand', 'tila'));
       sh.noReply = 0;
       sh.backoffUntil = null;
       return m;
+    } on NtfyQuotaFull {
+      rethrow; // publish is paused by the driver itself (quotaUntil)
     } on NtfyNoReply catch (e) {
       sh.noReply++;
       final secs = min(maxBackoff.inSeconds, 30 * pow(2, sh.noReply - 1).toInt());
@@ -537,7 +586,9 @@ class NtfyDeviceDriver extends NtfyDriver {
       // t235u: no status reply – keep the commanded / last known state for a while instead of '!'.
       if (opt != null && now.difference(opt.$2) < staleAfter) return opt.$1;
       final last = sh.last;
-      if (last != null && sh.okAt != null && now.difference(sh.okAt!) < staleAfter) return ntfyStateFrom(last, spec, rules);
+      if (last != null && sh.okAt != null && now.difference(sh.okAt!) < staleAfter) {
+        return ntfyStateFrom(last, spec, rules);
+      }
       rethrow;
     }
   }
@@ -609,7 +660,10 @@ class NtfyDeviceDriver extends NtfyDriver {
 /// A publish failure keeps its own (server) message; a missing reply never blames the service.
 String ntfyNoReplyText(Object e, String serverOk) {
   final m = e is DriverException ? e.message : '';
-  if (m.startsWith('Komento lähti') || m.startsWith('The command was sent') || m.startsWith('Laite vastasi') || m.startsWith('The device answered')) {
+  if (m.startsWith('Komento lähti') ||
+      m.startsWith('The command was sent') ||
+      m.startsWith('Laite vastasi') ||
+      m.startsWith('The device answered')) {
     return m;
   }
   if (e is TimeoutException) {
@@ -626,7 +680,10 @@ String ntfyErrorText(String err) {
   final e = err.trim();
   switch (e.toLowerCase()) {
     case 'day_blocked':
-      return dtx('ei sallittu päivällä (day_blocked) – valo ohjautuu päivänvalon mukaan', 'not allowed in daylight (day_blocked) – the light follows daylight');
+      return dtx(
+        'ei sallittu päivällä (day_blocked) – valo ohjautuu päivänvalon mukaan',
+        'not allowed in daylight (day_blocked) – the light follows daylight',
+      );
     case 'bad_pin':
     case 'wrong_pin':
       return dtx('väärä PIN-koodi ($e)', 'wrong PIN ($e)');

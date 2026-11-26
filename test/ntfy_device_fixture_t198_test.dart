@@ -71,22 +71,23 @@ class FixturePanel {
 void main() {
   setUp(NtfyDeviceDriver.resetShared);
 
-  TemplateResult build(MockNtfy m, {String pin = '2468'}) => deviceTemplates.firstWhere((t) => t.id == 'ntfy_device').build({
-    'name': 'Paneeli',
-    'topic': '${m.url}/cmd-topic',
-    'replyTopic': 'reply-topic',
-    'replyTitle': 'Tila JSON',
-    'pin': pin,
-    'template': '{cmd} {pin}',
-    'statusCommand': 'tila json {pin} cid:{cid}',
-    'format': 'json',
-    'statePrefix': 'relays.',
-    'statusPath': 'state',
-    'outputs': 'Sisävalo = sisavalo\nPihavalo = pihavalo\nSireeni = sireeni\nLisävalo = lisavalo',
-    'onCommand': '{key} päälle',
-    'offCommand': '{key} pois',
-    'minInterval': '5',
-  }, 'fi');
+  TemplateResult build(MockNtfy m, {String pin = '2468'}) =>
+      deviceTemplates.firstWhere((t) => t.id == 'ntfy_device').build({
+        'name': 'Paneeli',
+        'topic': '${m.url}/cmd-topic',
+        'replyTopic': 'reply-topic',
+        'replyTitle': 'Tila JSON',
+        'pin': pin,
+        'template': '{cmd} {pin}',
+        'statusCommand': 'tila json {pin} cid:{cid}',
+        'format': 'json',
+        'statePrefix': 'relays.',
+        'statusPath': 'state',
+        'outputs': 'Sisävalo = sisavalo\nPihavalo = pihavalo\nSireeni = sireeni\nLisävalo = lisavalo',
+        'onCommand': '{key} päälle',
+        'offCommand': '{key} pois',
+        'minInterval': '5',
+      }, 'fi');
 
   test('template maps the schema: relays.* → switches, state → status tile, poll ≥ rate limit', () {
     final r = deviceTemplates.firstWhere((t) => t.id == 'ntfy_device').build({
@@ -121,6 +122,7 @@ void main() {
     };
     final t = build(m);
     final conn = t.connections.single;
+    conn.settings['statusEvery'] = 0; // t246u: every poll asks here
     final d = NtfyDeviceDriver(conn);
     final piha = t.tiles[1], lisa = t.tiles[3], status = t.tiles.last;
 
@@ -151,7 +153,7 @@ void main() {
       ConnectionConfig(
         name: 'x',
         type: 'ntfy_device',
-        settings: {...conn.settings, 'replySeconds': 3, 'minInterval': 0, 'cacheSeconds': 0},
+        settings: {...conn.settings, 'replySeconds': 3, 'minInterval': 0, 'cacheSeconds': 0, 'statusEvery': 0},
         secrets: {'pin': '0000'},
       ),
     );
@@ -171,7 +173,12 @@ void main() {
     m.responder = panel.call;
     final t = build(m);
     final d = NtfyDeviceDriver(
-      ConnectionConfig(name: 'p', type: 'ntfy_device', settings: {...t.connections.single.settings, 'cacheSeconds': 0}, secrets: {'pin': '2468'}),
+      ConnectionConfig(
+        name: 'p',
+        type: 'ntfy_device',
+        settings: {...t.connections.single.settings, 'cacheSeconds': 0, 'statusEvery': 0},
+        secrets: {'pin': '2468'},
+      ),
     );
     await d.read(t.tiles.last.read);
     panel.state = 'away';

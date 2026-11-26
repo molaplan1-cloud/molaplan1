@@ -28,6 +28,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sd3d9c263ed => 'El servicio';
 
   @override
+  String get sedeaf26f8a => 'ntfy límite de mensaje alcanzado';
+
+  @override
+  String get s5d151d0815 =>
+      'ntfy.sh permite 250 mensajes por cada 12 horas de la IP pública de su hogar (todos los teléfonos, tabletas, PCs y las propias respuestas del dispositivo juntos). Mensajes gratuitos cada pocos minutos – la aplicación ahora pide el estado menos a menudo. Una solución duradera: su propio servidor ntfy o una cuenta ntfy con un límite superior.';
+
+  @override
   String get s349ca716f2 => 'No hay respuesta desde el dispositivo';
 
   @override
@@ -7280,6 +7287,13 @@ class AppLocalizationsEs extends AppLocalizations {
       'Guardado encriptado en este dispositivo. Insertado donde la plantilla dice {pin}.';
 
   @override
+  String get s63971a3ad4 => 'Pregunte al estado en la mayoría de cada (s)';
+
+  @override
+  String get scf38de4909 =>
+      'Solicitud de estado automático a lo sumo (todos los dispositivos reutilizan la última respuesta). Cada solicitud es dos mensajes; ntfy.sh permite 250 mensajes / 12 h para toda la red de la casa.';
+
+  @override
   String get s4313c720cc => 'Plantilla de comandos';
 
   @override
@@ -7619,10 +7633,6 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get s72c37e530d =>
-      'ntfy: demasiados mensajes (HTTP 429). Espera un momento y prueba de nuevo.';
-
-  @override
   String get s0870daf796 => 'ntfy: tema de comando desaparecido';
 
   @override
@@ -7647,6 +7657,11 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String s9ed9eb7f92(String p0, String p1, String p2, String p3) {
     return '✓ ntfy server $p0 contestado y el tema \"$p1\" es legible ($p2 mensajes en la última hora).$p3 No se envió ningún comando – toque la ficha para probar.';
+  }
+
+  @override
+  String sb9c91fd519(String p0) {
+    return 'ntfy: límite de mensaje alcanzado (HTTP 429). El servidor no toma más mensajes de esta red (ntfy.sh: 250 mensajes / 12 h para todos los dispositivos detrás de la misma IP pública, las propias respuestas del dispositivo también).';
   }
 
   @override

@@ -28,6 +28,13 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sd3d9c263ed => 'Palvelu';
 
   @override
+  String get sedeaf26f8a => 'ntfy-viestiraja täynnä';
+
+  @override
+  String get s5d151d0815 =>
+      'ntfy.sh sallii 250 viestiä 12 tunnissa kotisi julkisesta IP-osoitteesta (kaikki puhelimet, tabletit, PC ja laitteen omat vastaukset yhteensä). Viestejä vapautuu muutaman minuutin välein – sovellus kysyy tilaa nyt harvemmin. Pysyvä ratkaisu: oma ntfy-palvelin tai ntfy-tili, jolla on suurempi raja.';
+
+  @override
   String get s349ca716f2 => 'Ei vastausta laitteelta';
 
   @override
@@ -7263,6 +7270,13 @@ class AppLocalizationsFi extends AppLocalizations {
       'Tallennetaan salattuna tähän laitteeseen. Lisätään komentoon mallin {pin}-kohtaan.';
 
   @override
+  String get s63971a3ad4 => 'Tilan kysely enintään (s)';
+
+  @override
+  String get scf38de4909 =>
+      'Automaattinen tilakysely korkeintaan näin usein (kaikki laitteet yhteensä käyttävät viimeisintä vastausta). Jokainen kysely on kaksi viestiä; ntfy.sh sallii 250 viestiä / 12 h koko kodin verkosta. Painallukset ja komennot kysyvät heti.';
+
+  @override
   String get s4313c720cc => 'Komennon malli';
 
   @override
@@ -7604,10 +7618,6 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get s72c37e530d =>
-      'ntfy: liian monta viestiä lyhyessä ajassa (HTTP 429). Odota hetki ja yritä uudelleen.';
-
-  @override
   String get s0870daf796 => 'ntfy: komentokanava puuttuu';
 
   @override
@@ -7632,6 +7642,11 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String s9ed9eb7f92(String p0, String p1, String p2, String p3) {
     return '✓ ntfy-palvelin $p0 vastasi ja aihe \"$p1\" on luettavissa ($p2 viestiä viimeisen tunnin aikana).$p3 Testi ei lähettänyt komentoa – paina ruutua kokeillaksesi.';
+  }
+
+  @override
+  String sb9c91fd519(String p0) {
+    return 'ntfy: viestiraja täynnä (HTTP 429). Palvelin ei ota vastaan enempää viestejä tästä verkosta (ntfy.sh: 250 viestiä / 12 h saman julkisen IP-osoitteen kaikilta laitteilta, myös laitteen omat vastaukset). Uusia viestejä vapautuu muutaman minuutin välein$p0.';
   }
 
   @override

@@ -28,6 +28,13 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sd3d9c263ed => 'Teenus';
 
   @override
+  String get sedeaf26f8a => 'ntff sõnumi limiit on saavutatud';
+
+  @override
+  String get s5d151d0815 =>
+      'ntfy.sh võimaldab kodu avalikust IP- st (kõik telefonid, tahvelarvutid, arvutid ja seadme enda vastused koos) 250 sõnumit 12 tunni jooksul. Sõnumid vabanevad iga paari minuti tagant – äpp küsib nüüd olekut harvemini. Püsiv parandus: sinu enda ntfy server või kõrgema limiitiga ntfy konto.';
+
+  @override
   String get s349ca716f2 => 'Seadmelt vastust ei ole';
 
   @override
@@ -7234,6 +7241,13 @@ class AppLocalizationsEt extends AppLocalizations {
       'Salvestatud krüptituna sellesse seadmesse. Lisatakse sinna, kus mall ütleb {pin}.';
 
   @override
+  String get s63971a3ad4 => 'Küsi riigilt kõige rohkem igat (s)';
+
+  @override
+  String get scf38de4909 =>
+      'Automaatne olekunõue kõige sagedamini (kõik seadmed taaskasutavad viimast vastust). Iga päring koosneb kahest kirjast; ntfy.sh lubab 250 sõnumit 12 tunni kohta kogu koduvõrgus. Vajutused ja käsud küsivad korraga.';
+
+  @override
   String get s4313c720cc => 'Käsu mall';
 
   @override
@@ -7571,10 +7585,6 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
-  String get s72c37e530d =>
-      'ntfy: liiga palju kirju (HTTP 429). Oota üks hetk ja proovi uuesti.';
-
-  @override
   String get s0870daf796 => 'ntfy: käsuteema puudub';
 
   @override
@@ -7599,6 +7609,11 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String s9ed9eb7f92(String p0, String p1, String p2, String p3) {
     return '✓ ntfy server $p0 vastas ja teema \"$p1\" on loetav ($p2 sõnumid viimases tunnis).$p3 Käsku ei saadetud - koputage plaati proovida.';
+  }
+
+  @override
+  String sb9c91fd519(String p0) {
+    return 'ntfy: sõnumite limiit (HTTP 429). Server ei võta sellest võrgust enam sõnumeid (ntfy.sh: 250 sõnumit 12 tunni kohta kõigi seadmete puhul, mis on sama avaliku IP taga, samuti seadme enda vastused). Uued kirjad vabanevad iga paari minuti tagant\'}.';
   }
 
   @override

@@ -4304,6 +4304,18 @@
  "@s07c82cb0af": {
   "x-mt": true
  },
+ "see3fd4862d": "¿El mismo tema dos veces?",
+ "@see3fd4862d": {
+  "x-mt": true
+ },
+ "sb80a9b6813": "El tema de comandos y el tema de respuesta son los mismos. La mayoría de los dispositivos (por ejemplo, el panel de vigilancia de la cámara) escuchan en su propio tema de comando y responden en su tema de notificación – entonces los comandos nunca llegan. ¿Ahorrar de todos modos?",
+ "@sb80a9b6813": {
+  "x-mt": true
+ },
+ "s70f720de6d": "Guardar de todos modos",
+ "@s70f720de6d": {
+  "x-mt": true
+ },
  "sf702cf0ac6": "Eliminar la conexión?",
  "@sf702cf0ac6": {
   "x-mt": true
@@ -6958,6 +6970,10 @@
  "@s6a4516e0fe": {
   "x-mt": true
  },
+ "scab58fae92": "El tema que el dispositivo de casa escucha (el propio tema del dispositivo – no el tema de la notificación). El nombre del tema funciona como una contraseña: mantenerlo largo y aleatorio.",
+ "@scab58fae92": {
+  "x-mt": true
+ },
  "s800cd08229": "Tema de respuesta (opcional)",
  "@s800cd08229": {
   "x-mt": true
@@ -7358,10 +7374,6 @@
  },
  "s54ea45f27f": "ntfy: tema \"{p0}\" está protegido (HTTP {p1}). Añadir un acceso token (tk_...) a la conexión.",
  "@s54ea45f27f": {
-  "x-mt": true
- },
- "s72c37e530d": "ntfy: demasiados mensajes (HTTP 429). Espera un momento y prueba de nuevo.",
- "@s72c37e530d": {
   "x-mt": true
  },
  "s0870daf796": "ntfy: tema de comando desaparecido",
@@ -8191,6 +8203,10 @@
  "@s7a46c8c335": {
   "x-mt": true
  },
+ "safaab25703": "El tema (o URL completa) que el dispositivo escucha – el propio tema del dispositivo, no el tema de notificación.",
+ "@safaab25703": {
+  "x-mt": true
+ },
  "sc1ddf7feb4": "Si el dispositivo responde a otro tema (por ejemplo, el tema de la notificación). Vacío = el mismo tema.",
  "@sc1ddf7feb4": {
   "x-mt": true
@@ -8266,6 +8282,10 @@
  "@s07f819fc55": {
   "x-mt": true
  },
+ "sa4a5b0baa1": "La vigilancia de la cámara: el tema del comando y el tema de respuesta no pueden ser los mismos. El tema del comando es el propio tema del panel (en el panel: Ajustes → ntfy), el tema de respuesta es su tema de notificación.",
+ "@sa4a5b0baa1": {
+  "x-mt": true
+ },
  "s23f70f51ff": "Dispositivo de mando",
  "@s23f70f51ff": {
   "x-mt": true
@@ -8298,28 +8318,24 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "see3fd4862d": "¿El mismo tema dos veces?",
- "@see3fd4862d": {
+ "sedeaf26f8a": "ntfy límite de mensaje alcanzado",
+ "@sedeaf26f8a": {
   "x-mt": true
  },
- "sb80a9b6813": "El tema de comandos y el tema de respuesta son los mismos. La mayoría de los dispositivos (por ejemplo, el panel de vigilancia de la cámara) escuchan en su propio tema de comando y responden en su tema de notificación – entonces los comandos nunca llegan. ¿Ahorrar de todos modos?",
- "@sb80a9b6813": {
+ "s5d151d0815": "ntfy.sh permite 250 mensajes por cada 12 horas de la IP pública de su hogar (todos los teléfonos, tabletas, PCs y las propias respuestas del dispositivo juntos). Mensajes gratuitos cada pocos minutos – la aplicación ahora pide el estado menos a menudo. Una solución duradera: su propio servidor ntfy o una cuenta ntfy con un límite superior.",
+ "@s5d151d0815": {
   "x-mt": true
  },
- "s70f720de6d": "Guardar de todos modos",
- "@s70f720de6d": {
+ "s63971a3ad4": "Pregunte al estado en la mayoría de cada (s)",
+ "@s63971a3ad4": {
   "x-mt": true
  },
- "scab58fae92": "El tema que el dispositivo de casa escucha (el propio tema del dispositivo – no el tema de la notificación). El nombre del tema funciona como una contraseña: mantenerlo largo y aleatorio.",
- "@scab58fae92": {
+ "scf38de4909": "Solicitud de estado automático a lo sumo (todos los dispositivos reutilizan la última respuesta). Cada solicitud es dos mensajes; ntfy.sh permite 250 mensajes / 12 h para toda la red de la casa.",
+ "@scf38de4909": {
   "x-mt": true
  },
- "safaab25703": "El tema (o URL completa) que el dispositivo escucha – el propio tema del dispositivo, no el tema de notificación.",
- "@safaab25703": {
-  "x-mt": true
- },
- "sa4a5b0baa1": "La vigilancia de la cámara: el tema del comando y el tema de respuesta no pueden ser los mismos. El tema del comando es el propio tema del panel (en el panel: Ajustes → ntfy), el tema de respuesta es su tema de notificación.",
- "@sa4a5b0baa1": {
+ "sb9c91fd519": "ntfy: límite de mensaje alcanzado (HTTP 429). El servidor no toma más mensajes de esta red (ntfy.sh: 250 mensajes / 12 h para todos los dispositivos detrás de la misma IP pública, las propias respuestas del dispositivo también).",
+ "@sb9c91fd519": {
   "x-mt": true
  }
 }

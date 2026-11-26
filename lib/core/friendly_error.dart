@@ -264,6 +264,18 @@ FriendlyError friendlyError(Object e, String lang) {
   final k = classifyError(e);
   String t(String a, String b) => tr(lang, a, b);
   if (e is PlainError) return FriendlyError(k, t(e.titleFi, e.titleEn), t(e.hintFi, e.hintEn), e.tech);
+  // t246u: the ntfy server's message quota for this network is full.
+  if (tech.contains('ntfy: viestiraja täynnä') || tech.contains('ntfy: message limit reached')) {
+    return FriendlyError(
+      ErrorKind.noResponse,
+      t('ntfy-viestiraja täynnä', 'ntfy message limit reached'),
+      t(
+        'ntfy.sh sallii 250 viestiä 12 tunnissa kotisi julkisesta IP-osoitteesta (kaikki puhelimet, tabletit, PC ja laitteen omat vastaukset yhteensä). Viestejä vapautuu muutaman minuutin välein – sovellus kysyy tilaa nyt harvemmin. Pysyvä ratkaisu: oma ntfy-palvelin tai ntfy-tili, jolla on suurempi raja.',
+        'ntfy.sh allows 250 messages per 12 hours from your home\'s public IP (all phones, tablets, PCs and the device\'s own replies together). Messages free up every few minutes – the app now asks for the state less often. A lasting fix: your own ntfy server or an ntfy account with a higher limit.',
+      ),
+      tech,
+    );
+  }
   // t243u: an ntfy command that was published but got no reply is not a connection failure.
   if (isNoDeviceReply(tech)) {
     return FriendlyError(
@@ -631,4 +643,5 @@ FriendlyError friendlyError(Object e, String lang) {
 
 /// t243u: the ntfy device driver's "published, but no reply" message (NtfyNoReply).
 bool isNoDeviceReply(String msg) =>
-    msg.startsWith('Komento lähti, mutta laite ei vastannut') || msg.startsWith('The command was sent, but the device did not answer');
+    msg.startsWith('Komento lähti, mutta laite ei vastannut') ||
+    msg.startsWith('The command was sent, but the device did not answer');

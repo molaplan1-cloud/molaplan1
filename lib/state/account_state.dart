@@ -1,3 +1,5 @@
+import '../account/merge3.dart';
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -127,6 +129,25 @@ class AccountState extends ChangeNotifier {
     }
     if (signedIn) _startTimers();
     notifyListeners();
+  }
+
+  /// t246u: the synced config + secrets as this device last saw them in the account (for the
+  /// three-way merge). Kept in the secure store (it holds secrets).
+  static const baseKey = 'molaplan.account.base.v1';
+
+  Future<void> _saveBase() async {
+    try {
+      await store.write(baseKey, jsonEncode({'c': host.syncConfig(), 's': host.syncSecrets()}));
+    } catch (_) {}
+  }
+
+  Future<Map<String, dynamic>?> _readBase() async {
+    try {
+      final raw = await store.read(baseKey);
+      return raw == null ? null : Map<String, dynamic>.from(jsonDecode(raw) as Map);
+    } catch (_) {
+      return null;
+    }
   }
 
   Future<void> _persist() async {
@@ -432,6 +453,13 @@ class AccountState extends ChangeNotifier {
             if (_pendingWrap == null && !_ownBridgeStale) break;
             continue;
           }
+          // t246u: never upload this device's whole config over newer account changes – only
+          // what changed here since the last sync goes on top of the account's version.
+          if (!await _mergeInto(row)) {
+            await _adopt(row); // no base known (first sync after the update): the account wins
+            if (_pendingWrap == null && !_ownBridgeStale) break;
+            continue;
+          }
           try {
             await _push2(s, row.rev);
             break;
@@ -491,7 +519,11 @@ class AccountState extends ChangeNotifier {
 
   Future<Map<String, dynamic>> _vaultData() async {
     final bridges = await _bridgesForVault();
-    return {'secrets': host.syncSecrets(), 'home': ?(_vaultHome ?? host.homeCredential()), 'bridges': ?(bridges.isEmpty ? null : bridges)};
+    return {
+      'secrets': host.syncSecrets(),
+      'home': ?(_vaultHome ?? host.homeCredential()),
+      'bridges': ?(bridges.isEmpty ? null : bridges),
+    };
   }
 
   void _readBridges(Map<String, dynamic>? v) {
@@ -545,6 +577,7 @@ class AccountState extends ChangeNotifier {
     lastRev = row.rev;
     lastHash = hash;
     await _persist();
+    await _saveBase();
   }
 
   Future<Map<String, Map<String, String>>?> _vaultSecrets(SyncRow row) async {
@@ -587,9 +620,36 @@ class AccountState extends ChangeNotifier {
     lastRev = row.rev;
     lastHash = await _localHash();
     await _persist();
+    await _saveBase();
     lastSync = DateTime.now();
     status = SyncStatus.ok;
     notifyListeners();
+  }
+
+  /// Lays this device's own changes (since [baseKey]) over [row]; false without a base.
+  Future<bool> _mergeInto(SyncRow row) async {
+    final base = await _readBase();
+    if (base == null) return false;
+    final v = await _openVault(row);
+    final remoteSecrets = v == null
+        ? null
+        : {
+            for (final e in ((v['secrets'] as Map?) ?? const {}).entries)
+              '${e.key}': {for (final x in (e.value as Map).entries) '${x.key}': '${x.value}'},
+          };
+    final cfg = merge3(base['c'], host.syncConfig(), row.config);
+    final sec = remoteSecrets == null ? null : merge3(base['s'], host.syncSecrets(), remoteSecrets) as Map?;
+    await host.applySynced(
+      Map<String, dynamic>.from(cfg as Map),
+      sec == null
+          ? null
+          : {
+              for (final e in sec.entries)
+                '${e.key}': {for (final x in (e.value as Map).entries) '${x.key}': '${x.value}'},
+            },
+    );
+    await _useHome(v);
+    return true;
   }
 
   Future<void> _adoptHome(SyncRow row) async => _useHome(await _openVault(row));

@@ -78,6 +78,9 @@ class RemoteState extends ChangeNotifier {
 
   /// t232u: the bridge did not report its networks (older than 0.11.1), so 'Kotona' cannot be verified.
   bool homeNetworkUnverified = false;
+
+  /// How long the bridge check may take before the status says 'Ei yhteyttä' (t246u).
+  static Duration bridgeCheckTimeout = const Duration(seconds: 20);
   bool _netChecking = false;
 
   /// Is this device on the paired bridge's own LAN? Asks the bridge (always via the relay) for its
@@ -88,13 +91,15 @@ class RemoteState extends ChangeNotifier {
     if (c == null || _netChecking) return router.sameNetwork;
     _netChecking = true;
     try {
-      final i = await bridgeInfoVia(c);
+      // t246u: an old / silent bridge must not leave the status at 'Yhdistetään…' forever.
+      final i = await bridgeInfoVia(c).timeout(bridgeCheckTimeout);
       final theirs = (i?['nets'] as List?)?.map((e) => '$e').toList();
       homeNetworkUnverified = theirs == null;
-      router.bridgeSeen = DateTime.now();
       router.applySameNetwork(sameHomeNetwork(mine ?? await localNets(), theirs));
+      router.bridgeAnswered();
     } catch (_) {
-      // Bridge not reachable: keep the previous answer.
+      // Bridge not reachable: keep the previous answer ('Ei yhteyttä' if there was none).
+      router.bridgeUnreachable();
     } finally {
       _netChecking = false;
     }
@@ -369,8 +374,12 @@ class RemoteState extends ChangeNotifier {
   Future<bool> checkRemote() async {
     final c = router.client;
     if (c == null) return false;
-    final ok = await c.check();
-    if (ok) router.bridgeSeen = DateTime.now();
+    final ok = await c.check().timeout(bridgeCheckTimeout, onTimeout: () => false);
+    if (ok) {
+      router.bridgeAnswered();
+    } else {
+      router.bridgeUnreachable();
+    }
     _changed();
     return ok;
   }
