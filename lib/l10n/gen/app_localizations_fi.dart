@@ -28,6 +28,13 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sd3d9c263ed => 'Palvelu';
 
   @override
+  String get s349ca716f2 => 'Ei vastausta laitteelta';
+
+  @override
+  String get s7aa9e16c41 =>
+      'Komento lähti ntfy-palvelimelle, mutta laitteen vastausta ei tullut. Tarkista yhteyden \"Vastauskanava\" – laite voi vastata omaan ilmoituskanavaasi – ja että laite on verkossa.';
+
+  @override
   String get sdfb639365a => 'Ei nettiyhteyttä';
 
   @override
@@ -4456,6 +4463,16 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s07c82cb0af => 'Pakollinen kenttä';
 
   @override
+  String get see3fd4862d => 'Sama kanava kahdesti?';
+
+  @override
+  String get sb80a9b6813 =>
+      'Komentokanava ja Vastauskanava ovat samat. Useimmat laitteet (esim. kameravalvonnan paneeli) kuuntelevat komentoja omalla komentokanavallaan ja vastaavat sinun ilmoituskanavaasi – silloin komennot eivät mene perille. Tallennetaanko silti?';
+
+  @override
+  String get s70f720de6d => 'Tallenna silti';
+
+  @override
   String get sf702cf0ac6 => 'Poistetaanko yhteys?';
 
   @override
@@ -5765,6 +5782,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s0789f5f14f => 'NÄKYMÄT';
 
   @override
+  String get sedb7b77645 => 'Kaikki';
+
+  @override
   String get sfb3e3c456c => 'Poista näkymä';
 
   @override
@@ -6019,10 +6039,24 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s1e5d696a26 => 'Suoritetaanko komento?';
 
   @override
+  String get sa5ee6618a3 => 'vaihda PIN-koodi';
+
+  @override
+  String get s66f8ce67ed => 'syötä PIN-koodi';
+
+  @override
+  String get sb7b0c97cfa =>
+      'Laite tarvitsee PIN-koodin jokaiseen komentoon ja tilakyselyyn. Syötä se kerran tässä.';
+
+  @override
   String get s1df6e2eaa7 => 'PIN';
 
   @override
   String get secab66c046 => 'Muista tällä laitteella';
+
+  @override
+  String get s2a15ea2eab =>
+      'Tallennetaan salattuna vain tähän laitteeseen – ei tilille eikä muille laitteille. Pois päältä = kysytään taas, kun sovellus käynnistyy.';
 
   @override
   String get s10bf4eab8e =>
@@ -6054,6 +6088,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s59d55f8882 => 'Nimeä uudelleen';
 
   @override
+  String get s84ada1ae69 => 'Vaihda PIN';
+
+  @override
   String get s25580038cb => 'Tallennettu PIN poistettu';
 
   @override
@@ -6064,6 +6101,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sf3d644dd4c => 'Opettele kaukosäätimen nappi';
+
+  @override
+  String get sbb9e9b1229 => 'Syötä PIN';
 
   @override
   String get s72a2328ddd => 'Valot';
@@ -6126,9 +6166,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s407f3f7a0c => 'Ei huonetta';
-
-  @override
-  String get sedb7b77645 => 'Kaikki';
 
   @override
   String s140aba8cd7(String p0) {
@@ -7208,8 +7245,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s6a4516e0fe => 'Komentokanava (aihe tai koko osoite)';
 
   @override
-  String get s6cfd0d8be1 =>
-      'Aihe, jota kotilaite kuuntelee. Aiheen nimi on kuin salasana: pidä se pitkänä ja satunnaisena.';
+  String get scab58fae92 =>
+      'Aihe, jota kotilaite kuuntelee (laitteen oma kanava – ei sinun ilmoituskanavasi). Aiheen nimi on kuin salasana: pidä se pitkänä ja satunnaisena.';
 
   @override
   String get s800cd08229 => 'Vastauskanava (vapaaehtoinen)';
@@ -8369,7 +8406,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s7a46c8c335 => 'Komentokanava';
 
   @override
-  String get s324f5e3b74 => 'Aihe (tai koko osoite), jota laite kuuntelee.';
+  String get safaab25703 =>
+      'Aihe (tai koko osoite), jota laite kuuntelee – laitteen oma kanava, ei sinun ilmoituskanavasi.';
 
   @override
   String get sc1ddf7feb4 =>
@@ -8446,6 +8484,10 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s07f819fc55 =>
       'Kameravalvonta: täytä Vastauskanava – paneeli vastaa käyttäjäsi omaan ilmoituskanavaan (paneelilla Asetukset → Käyttäjät → ilmoituskanava).';
+
+  @override
+  String get sa4a5b0baa1 =>
+      'Kameravalvonta: Komentokanava ja Vastauskanava eivät voi olla samat. Komentokanava on paneelin oma kanava (paneelilla Asetukset → ntfy), Vastauskanava on sinun ilmoituskanavasi.';
 
   @override
   String get s23f70f51ff => 'Komentolaite';

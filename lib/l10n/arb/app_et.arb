@@ -12,6 +12,14 @@
   "x-mt": true
  },
  "sd3d9c263ed": "Teenus",
+ "s349ca716f2": "Seadmelt vastust ei ole",
+ "@s349ca716f2": {
+  "x-mt": true
+ },
+ "s7aa9e16c41": "Käsk jõudis ntfy serverisse, kuid seadmelt vastust ei tulnud. Kontrolli ühenduse \"Vasta teemale\" - seade võib vastata sinu enda märguannete teemale - ja kas seade on võrgus.",
+ "@s7aa9e16c41": {
+  "x-mt": true
+ },
  "sdfb639365a": "Internetiühendus puudub",
  "s390dd51af3": "{p0} on internetis ja seda ei ole võimalik kasutada. Kontrolli seadme internetiühendust. Kui see on saadaval, näidatakse uusimaid andmeid.",
  "@s390dd51af3": {
@@ -1009,10 +1017,30 @@
  "@s6e1ebc8baa": {
   "x-mt": true
  },
+ "s6d9de3f94b": "Paigaldamine ei jätkunud",
+ "@s6d9de3f94b": {
+  "x-mt": true
+ },
+ "s25a6f00343": "Kui tühistasid selle ise, on kõik hästi. Kui Androidi paigaldamisakent ei ilmunud, klõpsa uuesti.",
+ "@s25a6f00343": {
+  "x-mt": true
+ },
  "s1e593aeca2": "Sulge",
  "s200542b930": "Proovi uuesti",
  "s29e92898c6": "Kinnitage installimine Android-aknas või teavituses.",
  "@s29e92898c6": {
+  "x-mt": true
+ },
+ "s48093a1369": "Värskenduse kinnitamine",
+ "@s48093a1369": {
+  "x-mt": true
+ },
+ "s6d50eeae10": "Uuendamine {p0} ootab sinu kinnitust. Puuduta Ava paigaldust (või märguannet \"Molaplan- päivitys valmis\").",
+ "@s6d50eeae10": {
+  "x-mt": true
+ },
+ "s1a5c09b6e4": "Avage install",
+ "@s1a5c09b6e4": {
   "x-mt": true
  },
  "sd1cdbd3630": "Paigaldamine ei käivitunud",
@@ -5691,6 +5719,7 @@
   "x-mt": true
  },
  "s0789f5f14f": "DASHBOARDS",
+ "sedb7b77645": "Kõik",
  "sfb3e3c456c": "Kustuta armatuurlaud",
  "@sfb3e3c456c": {
   "x-mt": true
@@ -5842,9 +5871,25 @@
  "@s1e5d696a26": {
   "x-mt": true
  },
+ "sa5ee6618a3": "PIN",
+ "@sa5ee6618a3": {
+  "x-mt": true
+ },
+ "s66f8ce67ed": "PIN",
+ "@s66f8ce67ed": {
+  "x-mt": true
+ },
+ "sb7b0c97cfa": "Seade vajab oma PIN-koodi iga käsu ja oleku päringu jaoks. Kirjuta see siia.",
+ "@sb7b0c97cfa": {
+  "x-mt": true
+ },
  "s1df6e2eaa7": "PIN",
  "secab66c046": "Selle seadme meeldejätmine",
  "@secab66c046": {
+  "x-mt": true
+ },
+ "s2a15ea2eab": "Salvestatud krüptituna ainult sellesse seadmesse – mitte kontole ega teistesse seadmetesse. Off = küsitakse uuesti, kui rakendus taaskäivitatakse.",
+ "@s2a15ea2eab": {
   "x-mt": true
  },
  "s10bf4eab8e": "Salvestatud krüptituna ainult sellesse seadmesse. Vaikimisi PIN- koodi ei salvestata.",
@@ -5873,6 +5918,10 @@
  },
  "s29fae6a0e8": "Hinnajuhtimine sees",
  "s59d55f8882": "Nimeta ümber",
+ "s84ada1ae69": "Muuda PIN-koodi",
+ "@s84ada1ae69": {
+  "x-mt": true
+ },
  "s25580038cb": "Salvestatud PIN-kood eemaldatud",
  "@s25580038cb": {
   "x-mt": true
@@ -5883,6 +5932,10 @@
  },
  "safe0429a90": "Hinnajuhtimine",
  "sf3d644dd4c": "Õpeta puldi nupp",
+ "sbb9e9b1229": "Sisesta PIN",
+ "@sbb9e9b1229": {
+  "x-mt": true
+ },
  "s72a2328ddd": "Valgustid",
  "sca12be80ca": "Lülitid",
  "sa4c0eeea02": "Soojuspumbad ja kliima",
@@ -5936,7 +5989,6 @@
  "@s407f3f7a0c": {
   "x-mt": true
  },
- "sedb7b77645": "Kõik",
  "s140aba8cd7": "{p0} valgustit on Philips Hue valgustid",
  "s16aee2aa30": "Otse Hue Bridge’i kaudu reageerivad need kiiremini ja töötavad ilma Home Assistantita.",
  "s3816288db1": "Lisa Hue Bridge",
@@ -6963,10 +7015,6 @@
  "@s6a4516e0fe": {
   "x-mt": true
  },
- "s6cfd0d8be1": "Teema, mida koduseade kuulab. Teema nimi töötab nagu parool: hoia see pikk ja juhuslik.",
- "@s6cfd0d8be1": {
-  "x-mt": true
- },
  "s800cd08229": "Vastamise teema (valikuline)",
  "@s800cd08229": {
   "x-mt": true
@@ -7138,6 +7186,18 @@
  },
  "s33cfb86f9f": "Käsk saadeti, kuid seade ei vastanud õigeaegselt - kas seade on võrgus? (ntfy server töötab.)",
  "@s33cfb86f9f": {
+  "x-mt": true
+ },
+ "s7087533324": "Ei ole lubatud päevavalguses (day_blocked) - valgus järgneb päevavalgusele",
+ "@s7087533324": {
+  "x-mt": true
+ },
+ "sf3066f08eb": "vale PIN ({p0})",
+ "@sf3066f08eb": {
+  "x-mt": true
+ },
+ "s14fac6d719": "liiga palju käske – oota hetk ({p0})",
+ "@s14fac6d719": {
   "x-mt": true
  },
  "s36fb6ba26f": "Modbus TCP",
@@ -8194,10 +8254,6 @@
  "@s7a46c8c335": {
   "x-mt": true
  },
- "s324f5e3b74": "Teema (või täielik URL), mida seade kuulab.",
- "@s324f5e3b74": {
-  "x-mt": true
- },
  "sc1ddf7feb4": "Kui seade vastab mõnele muule teemale (nt teie teavitusteema). Tühjus = sama teema.",
  "@sc1ddf7feb4": {
   "x-mt": true
@@ -8269,6 +8325,10 @@
  "@s91158c0de5": {
   "x-mt": true
  },
+ "s07f819fc55": "Kaamera jälgimine: täitke vastuse teema – paneel vastab teie kasutaja enda teavitusteemale (paneelil: Seaded → Kasutajad → teavitusteema).",
+ "@s07f819fc55": {
+  "x-mt": true
+ },
  "s23f70f51ff": "Juhtimisseade",
  "@s23f70f51ff": {
   "x-mt": true
@@ -8301,40 +8361,28 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "s6d9de3f94b": "Paigaldamine ei jätkunud",
- "@s6d9de3f94b": {
+ "see3fd4862d": "Sama teema kaks korda?",
+ "@see3fd4862d": {
   "x-mt": true
  },
- "s25a6f00343": "Kui tühistasid selle ise, on kõik hästi. Kui Androidi paigaldamisakent ei ilmunud, klõpsa uuesti.",
- "@s25a6f00343": {
+ "sb80a9b6813": "Käsu teema ja vastuse teema on samad. Enamik seadmeid (nt kaamera jälgimispaneel) kuulab oma käsuteemat ja vastab sinu märguande teemale – siis käske ei jõuagi kohale. Salvesta ikkagi?",
+ "@sb80a9b6813": {
   "x-mt": true
  },
- "s48093a1369": "Värskenduse kinnitamine",
- "@s48093a1369": {
+ "s70f720de6d": "Säästa ikkagi",
+ "@s70f720de6d": {
   "x-mt": true
  },
- "s6d50eeae10": "Uuendamine {p0} ootab sinu kinnitust. Puuduta Ava paigaldust (või märguannet \"Molaplan- päivitys valmis\").",
- "@s6d50eeae10": {
+ "scab58fae92": "Teema, mida koduseade kuulab (seadme enda teema, mitte sinu märguannete teema). Teema nimi töötab nagu parool: hoia see pikk ja juhuslik.",
+ "@scab58fae92": {
   "x-mt": true
  },
- "s1a5c09b6e4": "Avage install",
- "@s1a5c09b6e4": {
+ "safaab25703": "Teema (või täielik URL), mida seade kuulab - seadme enda teema, mitte teie teavitusteema.",
+ "@safaab25703": {
   "x-mt": true
  },
- "s7087533324": "Ei ole lubatud päevavalguses (day_blocked) - valgus järgneb päevavalgusele",
- "@s7087533324": {
-  "x-mt": true
- },
- "sf3066f08eb": "vale PIN ({p0})",
- "@sf3066f08eb": {
-  "x-mt": true
- },
- "s14fac6d719": "liiga palju käske – oota hetk ({p0})",
- "@s14fac6d719": {
-  "x-mt": true
- },
- "s07f819fc55": "Kaamera jälgimine: täitke vastuse teema – paneel vastab teie kasutaja enda teavitusteemale (paneelil: Seaded → Kasutajad → teavitusteema).",
- "@s07f819fc55": {
+ "sa4a5b0baa1": "Kaamera jälgimine: käsuteema ja vastuse teema ei saa olla samad. Käsuteema on paneeli enda teema (paneelil Seadistused → ntfy), vastuse teemaks on sinu märguannete teema.",
+ "@sa4a5b0baa1": {
   "x-mt": true
  }
 }

@@ -1,3 +1,5 @@
+import '../templates/device_templates.dart';
+
 import 'package:material_ui/material_ui.dart';
 
 import '../core/fields.dart';
@@ -196,6 +198,23 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
         return;
       }
     }
+    // t244u: the command topic overwritten with the reply topic = commands go where the device
+    // never listens (it only answers there).
+    if (c.type == 'ntfy_device') {
+      if (ntfySameTopic('${values['topic'] ?? ''}', '${values['replyTopic'] ?? ''}')) {
+        final ok = await confirmDialog(
+          context,
+          tx(context, 'Sama kanava kahdesti?', 'The same topic twice?'),
+          tx(
+            context,
+            'Komentokanava ja Vastauskanava ovat samat. Useimmat laitteet (esim. kameravalvonnan paneeli) kuuntelevat komentoja omalla komentokanavallaan ja vastaavat sinun ilmoituskanavaasi – silloin komennot eivät mene perille. Tallennetaanko silti?',
+            'The command topic and the reply topic are the same. Most devices (e.g. the camera surveillance panel) listen on their own command topic and answer on your notification topic – then commands never arrive. Save anyway?',
+          ),
+          ok: tx(context, 'Tallenna silti', 'Save anyway'),
+        );
+        if (!ok || !mounted) return;
+      }
+    }
     final built = _build();
     await AppScope.read(context).upsertConnection(built);
     if (mounted) Navigator.pop(context, built);
@@ -260,7 +279,7 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
                 children: [
                   Icon(connectionIcon(c.type), color: cs.primary),
                   const SizedBox(width: 8),
-                  Text(d.label(st.lang), style: Theme.of(context).textTheme.titleMedium),
+                  Flexible(child: Text(d.label(st.lang), style: Theme.of(context).textTheme.titleMedium)),
                 ],
               ),
               const SizedBox(height: 16),

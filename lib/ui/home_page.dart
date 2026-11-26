@@ -223,7 +223,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     }
   }
 
-  Widget _nav(BuildContext context, {required bool drawer}) {
+  /// t245u: in the normal (control) view the side menu shows one view or all of them.
+  String? _viewFilter;
+
+  Widget _nav(BuildContext context, {required bool drawer, bool control = false}) {
     final st = AppScope.of(context);
     final cs = Theme.of(context).colorScheme;
     final cur = _current();
@@ -258,15 +261,32 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               children: [
+                if (control)
+                  ListTile(
+                    key: const ValueKey('nav-all-views'),
+                    selected: _viewFilter == null,
+                    selectedTileColor: cs.secondaryContainer.withValues(alpha: 0.5),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    leading: const Icon(Icons.home_outlined),
+                    title: Text(tx(context, 'Kaikki', 'All')),
+                    onTap: () {
+                      setState(() => _viewFilter = null);
+                      close();
+                    },
+                  ),
                 for (final d in st.config.dashboards)
                   ListTile(
-                    selected: d.id == cur.id,
+                    key: ValueKey('nav-view-${d.id}'),
+                    selected: control ? _viewFilter == d.id : d.id == cur.id,
                     selectedTileColor: cs.secondaryContainer.withValues(alpha: 0.5),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                     leading: const Icon(Icons.space_dashboard_outlined),
                     title: Text(d.name, overflow: TextOverflow.ellipsis),
                     onTap: () {
-                      setState(() => _dashId = d.id);
+                      setState(() {
+                        _dashId = d.id;
+                        if (control) _viewFilter = d.id;
+                      });
                       close();
                     },
                   ),
@@ -287,17 +307,18 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             padding: const EdgeInsets.all(8),
             child: Column(
               children: [
-                if (st.config.advanced)
-                  ListTile(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                    leading: const Icon(Icons.device_hub),
-                    title: Text(tx(context, 'Yhteydet', 'Connections')),
-                    trailing: Text('${st.config.connections.length}'),
-                    onTap: () {
-                      close();
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => const ConnectionsPage()));
-                    },
-                  ),
+                // t245u: always reachable (PINs, reply topics) – not only in Edistyneet.
+                ListTile(
+                  key: const ValueKey('nav-connections'),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  leading: const Icon(Icons.device_hub),
+                  title: Text(tx(context, 'Yhteydet', 'Connections')),
+                  trailing: Text('${st.config.connections.length}'),
+                  onTap: () {
+                    close();
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ConnectionsPage()));
+                  },
+                ),
                 ListTile(
                   key: const ValueKey('nav-automations'),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -375,7 +396,13 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     if (!st.loaded) return const Scaffold(body: Center(child: CircularProgressIndicator()));
     // After setup: the clean control view (tiles only). Editing is one tap away in its gear menu.
     if (!_editing && st.hasTiles) {
-      return ControlView(
+      // t245u: the main menu is always there in normal use – a side menu on wide screens, the
+      // ☰ button otherwise (a locked kiosk view keeps it hidden). Editing only edits tiles.
+      final wideCv = MediaQuery.sizeOf(context).width >= 900;
+      final showNav = !st.viewLocked;
+      final cv = ControlView(
+        only: _viewFilter,
+        drawer: showNav && !wideCv ? Drawer(child: _nav(context, drawer: true, control: true)) : null,
         onAddDevice: () => ConnectionsPage.addNew(context, dashboard: _current()),
         onEdit: (d) => setState(() {
           _dashId ??= d.id;
@@ -386,6 +413,19 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             ? null
             : () => Navigator.push(context, MaterialPageRoute(builder: (_) => const EnergyPage())),
       );
+      if (!showNav || !wideCv) return cv;
+      final cs0 = Theme.of(context).colorScheme;
+      return Row(
+        children: [
+          SizedBox(
+            key: const ValueKey('side-nav'),
+            width: 260,
+            child: Material(color: cs0.surfaceContainerLowest, child: _nav(context, drawer: false, control: true)),
+          ),
+          const VerticalDivider(width: 1),
+          Expanded(child: cv),
+        ],
+      );
     }
     final d = _current();
     final wide = MediaQuery.sizeOf(context).width >= 900;
@@ -395,7 +435,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       children: [
         const UpdateBanner(),
         const OfflineBanner(),
-          const AwayNoBridgeBanner(),
+        const AwayNoBridgeBanner(),
         const NoAccountBanner(),
         Expanded(
           child: _DashboardGrid(

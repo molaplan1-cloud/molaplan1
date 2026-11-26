@@ -43,6 +43,7 @@ TileIssue tileIssue(BuildContext context, ConnectionConfig? c, String err, NetHe
           : tx(context, 'Säätietoja ei saatu – yritetään uudelleen', 'Could not get the weather – retrying'),
     );
   }
+  if (isNoDeviceReply(err)) return TileIssue(TileIssueKind.device, tx(context, 'Ei vastausta laitteelta', 'No reply from the device'));
   final text = switch (k) {
     ErrorKind.auth || ErrorKind.cloudAuth => tx(context, 'Kirjautuminen vanhentunut', 'Sign-in expired'),
     ErrorKind.cloudOffline => tx(context, 'Ei nettiyhteyttä', 'No internet'),

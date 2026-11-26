@@ -264,6 +264,18 @@ FriendlyError friendlyError(Object e, String lang) {
   final k = classifyError(e);
   String t(String a, String b) => tr(lang, a, b);
   if (e is PlainError) return FriendlyError(k, t(e.titleFi, e.titleEn), t(e.hintFi, e.hintEn), e.tech);
+  // t243u: an ntfy command that was published but got no reply is not a connection failure.
+  if (isNoDeviceReply(tech)) {
+    return FriendlyError(
+      ErrorKind.noResponse,
+      t('Ei vastausta laitteelta', 'No reply from the device'),
+      t(
+        'Komento lähti ntfy-palvelimelle, mutta laitteen vastausta ei tullut. Tarkista yhteyden "Vastauskanava" – laite voi vastata omaan ilmoituskanavaasi – ja että laite on verkossa.',
+        'The command reached the ntfy server, but no reply came from the device. Check the connection\'s "Reply topic" – the device may answer on your own notification topic – and that the device is online.',
+      ),
+      tech,
+    );
+  }
   final c = e is CloudError ? e : null;
   // One placeholder for both languages (the l10n extractor matches them by expression).
   final svc = t(c?.serviceFi ?? 'Palvelu', c?.serviceEn ?? 'The service');
@@ -616,3 +628,7 @@ FriendlyError friendlyError(Object e, String lang) {
       );
   }
 }
+
+/// t243u: the ntfy device driver's "published, but no reply" message (NtfyNoReply).
+bool isNoDeviceReply(String msg) =>
+    msg.startsWith('Komento lähti, mutta laite ei vastannut') || msg.startsWith('The command was sent, but the device did not answer');

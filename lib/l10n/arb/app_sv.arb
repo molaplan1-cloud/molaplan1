@@ -12,6 +12,14 @@
   "x-mt": true
  },
  "sd3d9c263ed": "Tjänsten",
+ "s349ca716f2": "Inget svar från enheten",
+ "@s349ca716f2": {
+  "x-mt": true
+ },
+ "s7aa9e16c41": "Kommandot nådde ntfy-servern, men inget svar kom från enheten. Kontrollera anslutningens \"Reply-ämne\" - enheten kan svara på ditt eget anmälningsämne - och att enheten är online.",
+ "@s7aa9e16c41": {
+  "x-mt": true
+ },
  "sdfb639365a": "Ingen internetanslutning",
  "s390dd51af3": "{p0} är på internet och kan inte nås. Kontrollera den här enhetens internetanslutning. De senaste uppgifterna visas när de är tillgängliga.",
  "@s390dd51af3": {
@@ -1003,10 +1011,30 @@
  "@s6e1ebc8baa": {
   "x-mt": true
  },
+ "s6d9de3f94b": "Installationen fortsatte inte",
+ "@s6d9de3f94b": {
+  "x-mt": true
+ },
+ "s25a6f00343": "Om du annullerade det själv, allt är bra. Om Androids installationsfönster inte visas, tryck på Prova igen.",
+ "@s25a6f00343": {
+  "x-mt": true
+ },
  "s1e593aeca2": "Stäng",
  "s200542b930": "Försök igen",
  "s29e92898c6": "Bekräfta installationen i Android-fönstret eller meddelandet.",
  "@s29e92898c6": {
+  "x-mt": true
+ },
+ "s48093a1369": "Bekräfta uppdatering",
+ "@s48093a1369": {
+  "x-mt": true
+ },
+ "s6d50eeae10": "Uppdatera {p0} väntar på din bekräftelse. Tryck på Open-installation (eller meddelandet \"Molaplan-päivitys\").",
+ "@s6d50eeae10": {
+  "x-mt": true
+ },
+ "s1a5c09b6e4": "Öppen installation",
+ "@s1a5c09b6e4": {
   "x-mt": true
  },
  "sd1cdbd3630": "Installationen startade inte",
@@ -5664,6 +5692,7 @@
   "x-mt": true
  },
  "s0789f5f14f": "DASHBOARDS",
+ "sedb7b77645": "Alla",
  "sfb3e3c456c": "Delete Dashboard",
  "@sfb3e3c456c": {
   "x-mt": true
@@ -5815,9 +5844,25 @@
  "@s1e5d696a26": {
   "x-mt": true
  },
+ "sa5ee6618a3": "Ändra PIN",
+ "@sa5ee6618a3": {
+  "x-mt": true
+ },
+ "s66f8ce67ed": "Gå in i PIN",
+ "@s66f8ce67ed": {
+  "x-mt": true
+ },
+ "sb7b0c97cfa": "Enheten behöver sin PIN för varje kommando och statusbegäran. Ange den en gång här.",
+ "@sb7b0c97cfa": {
+  "x-mt": true
+ },
  "s1df6e2eaa7": "PIN",
  "secab66c046": "Kom ihåg på denna enhet",
  "@secab66c046": {
+  "x-mt": true
+ },
+ "s2a15ea2eab": "Lagrad krypterad på den här enheten bara - inte på kontot eller på andra enheter. Off = frågade igen när appen startar om.",
+ "@s2a15ea2eab": {
   "x-mt": true
  },
  "s10bf4eab8e": "Lagrad krypterad på den här enheten bara. Som standard lagras PIN-koden inte.",
@@ -5846,6 +5891,10 @@
  },
  "s29fae6a0e8": "Prisstyrning på",
  "s59d55f8882": "Byt namn",
+ "s84ada1ae69": "Ändra PIN",
+ "@s84ada1ae69": {
+  "x-mt": true
+ },
  "s25580038cb": "Saved PIN bort",
  "@s25580038cb": {
   "x-mt": true
@@ -5856,6 +5905,10 @@
  },
  "safe0429a90": "Prisstyrning",
  "sf3d644dd4c": "Lär in en fjärrkontrollknapp",
+ "sbb9e9b1229": "Ange PIN",
+ "@sbb9e9b1229": {
+  "x-mt": true
+ },
  "s72a2328ddd": "Lampor",
  "sca12be80ca": "Brytare",
  "sa4c0eeea02": "Värmepumpar och AC",
@@ -5909,7 +5962,6 @@
  "@s407f3f7a0c": {
   "x-mt": true
  },
- "sedb7b77645": "Alla",
  "s140aba8cd7": "{p0} lampor är Philips Hue-lampor",
  "s16aee2aa30": "Direkt via Hue Bridge svarar de snabbare och fungerar utan Home Assistant.",
  "s3816288db1": "Lägg till Hue Bridge",
@@ -6918,10 +6970,6 @@
  "@s6a4516e0fe": {
   "x-mt": true
  },
- "s6cfd0d8be1": "Ämnet som hemmet enheten lyssnar på. Ämnet namn fungerar som ett lösenord: hålla det lång och slumpmässig.",
- "@s6cfd0d8be1": {
-  "x-mt": true
- },
  "s800cd08229": "Svara på ämne (valfritt)",
  "@s800cd08229": {
   "x-mt": true
@@ -7093,6 +7141,18 @@
  },
  "s33cfb86f9f": "Kommandot skickades, men enheten svarade inte i tid - är enheten online? (Nfy-servern fungerar.)",
  "@s33cfb86f9f": {
+  "x-mt": true
+ },
+ "s7087533324": "Inte tillåtet i dagsljus (day_blocked) - ljuset följer dagsljus",
+ "@s7087533324": {
+  "x-mt": true
+ },
+ "sf3066f08eb": "fel PIN ({p0})",
+ "@sf3066f08eb": {
+  "x-mt": true
+ },
+ "s14fac6d719": "För många kommandon – vänta ett ögonblick ({p0})",
+ "@s14fac6d719": {
   "x-mt": true
  },
  "s36fb6ba26f": "Modbus TCP",
@@ -8149,10 +8209,6 @@
  "@s7a46c8c335": {
   "x-mt": true
  },
- "s324f5e3b74": "Ämnet (eller full URL) som enheten lyssnar på.",
- "@s324f5e3b74": {
-  "x-mt": true
- },
  "sc1ddf7feb4": "Om enheten svarar på ett annat ämne (t.ex. ditt anmälningsämne). Empty = samma ämne.",
  "@sc1ddf7feb4": {
   "x-mt": true
@@ -8224,6 +8280,10 @@
  "@s91158c0de5": {
   "x-mt": true
  },
+ "s07f819fc55": "Kameraövervakning: fyll i svarsämnet - panelen svarar på användarens eget anmälningsämne (på panelen: Inställningar → Användare → anmälningsämne).",
+ "@s07f819fc55": {
+  "x-mt": true
+ },
  "s23f70f51ff": "Kommando enhet",
  "@s23f70f51ff": {
   "x-mt": true
@@ -8256,40 +8316,28 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "s6d9de3f94b": "Installationen fortsatte inte",
- "@s6d9de3f94b": {
+ "see3fd4862d": "Samma ämne två gånger?",
+ "@see3fd4862d": {
   "x-mt": true
  },
- "s25a6f00343": "Om du annullerade det själv, allt är bra. Om Androids installationsfönster inte visas, tryck på Prova igen.",
- "@s25a6f00343": {
+ "sb80a9b6813": "Kommandoämnet och svarsämnet är detsamma. De flesta enheter (t.ex. kameraövervakningspanelen) lyssnar på sitt eget kommandoämne och svarar på ditt anmälningsämne - sedan kommer kommandon aldrig. Spara ändå?",
+ "@sb80a9b6813": {
   "x-mt": true
  },
- "s48093a1369": "Bekräfta uppdatering",
- "@s48093a1369": {
+ "s70f720de6d": "Spara ändå",
+ "@s70f720de6d": {
   "x-mt": true
  },
- "s6d50eeae10": "Uppdatera {p0} väntar på din bekräftelse. Tryck på Open-installation (eller meddelandet \"Molaplan-päivitys\").",
- "@s6d50eeae10": {
+ "scab58fae92": "Ämnet som hemmet enheten lyssnar på (enhetens eget ämne - inte ditt meddelande ämne). ämnesnamnet fungerar som ett lösenord: hålla det lång och slumpmässig.",
+ "@scab58fae92": {
   "x-mt": true
  },
- "s1a5c09b6e4": "Öppen installation",
- "@s1a5c09b6e4": {
+ "safaab25703": "Ämnet (eller full URL) enheten lyssnar på - enhetens eget ämne, inte ditt meddelande ämne.",
+ "@safaab25703": {
   "x-mt": true
  },
- "s7087533324": "Inte tillåtet i dagsljus (day_blocked) - ljuset följer dagsljus",
- "@s7087533324": {
-  "x-mt": true
- },
- "sf3066f08eb": "fel PIN ({p0})",
- "@sf3066f08eb": {
-  "x-mt": true
- },
- "s14fac6d719": "För många kommandon – vänta ett ögonblick ({p0})",
- "@s14fac6d719": {
-  "x-mt": true
- },
- "s07f819fc55": "Kameraövervakning: fyll i svarsämnet - panelen svarar på användarens eget anmälningsämne (på panelen: Inställningar → Användare → anmälningsämne).",
- "@s07f819fc55": {
+ "sa4a5b0baa1": "Kameraövervakning: kommandoämnet och svarsämnet kan inte vara detsamma. Kommandoämnet är panelens eget ämne (på panelen: Inställningar → ntfy), svarsämnet är ditt anmälningsämne.",
+ "@sa4a5b0baa1": {
   "x-mt": true
  }
 }

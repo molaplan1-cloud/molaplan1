@@ -1458,8 +1458,8 @@ final deviceTemplates = <DeviceTemplate>[
         'Command topic',
         required: true,
         hint: 'https://ntfy.sh/oma-komentoaihe',
-        helpFi: 'Aihe (tai koko osoite), jota laite kuuntelee.',
-        helpEn: 'The topic (or full URL) the device listens to.',
+        helpFi: 'Aihe (tai koko osoite), jota laite kuuntelee – laitteen oma kanava, ei sinun ilmoituskanavasi.',
+        helpEn: 'The topic (or full URL) the device listens to – the device\'s own topic, not your notification topic.',
       ),
       FieldSpec(
         'replyTopic',
@@ -1599,10 +1599,28 @@ const ntfyKvAlarmButtons = [
 const ntfyKvStateMap =
     'home = Hälytys pois (kotona)\nexit_delay = Poistumisviive\naway = Hälytys päällä\nentry_delay = Tuloviive\nalarm = HÄLYTYS';
 
+/// t244u: the same ntfy topic, whether written as a name or a full URL.
+bool ntfySameTopic(String a, String b) {
+  String n(String t) => t.trim().replaceAll(RegExp(r'^https?://[^/]+/'), '').replaceAll(RegExp(r'/+$'), '');
+  return n(a).isNotEmpty && n(a) == n(b);
+}
+
 /// Fills the preset's values into [v] where the user has not typed anything else yet.
 void applyNtfyPreset(Map<String, dynamic> v) {
   if (v['preset'] != 'kv_panel') return;
-  const defaults = {'name': 'Komentolaite', 'template': '{cmd} {pin}', 'statusCommand': 'tila', 'format': 'json', 'outputs': 'Valo = valo', 'onCommand': '{key} on', 'offCommand': '{key} off', 'statusPath': '', 'statePrefix': '', 'replyTitle': '', 'minInterval': '0'};
+  const defaults = {
+    'name': 'Komentolaite',
+    'template': '{cmd} {pin}',
+    'statusCommand': 'tila',
+    'format': 'json',
+    'outputs': 'Valo = valo',
+    'onCommand': '{key} on',
+    'offCommand': '{key} off',
+    'statusPath': '',
+    'statePrefix': '',
+    'replyTitle': '',
+    'minInterval': '0',
+  };
   ntfyKvPanelPreset.forEach((k, val) {
     final cur = '${v[k] ?? ''}'.trim();
     if (cur.isEmpty || cur == defaults[k]) v[k] = val;
@@ -1620,6 +1638,16 @@ TemplateResult ntfyDeviceTemplate(Map<String, dynamic> input, String lang) {
         lang,
         'Kameravalvonta: täytä Vastauskanava – paneeli vastaa käyttäjäsi omaan ilmoituskanavaan (paneelilla Asetukset → Käyttäjät → ilmoituskanava).',
         'Camera surveillance: fill in the reply topic – the panel answers on your user\'s own notification topic (on the panel: Settings → Users → notification topic).',
+      ),
+    );
+  }
+  // t244u: the reply topic typed into the command field too = commands never reach the panel.
+  if (v['preset'] == 'kv_panel' && ntfySameTopic(_s(v, 'topic'), _s(v, 'replyTopic'))) {
+    throw FormatException(
+      _t(
+        lang,
+        'Kameravalvonta: Komentokanava ja Vastauskanava eivät voi olla samat. Komentokanava on paneelin oma kanava (paneelilla Asetukset → ntfy), Vastauskanava on sinun ilmoituskanavasi.',
+        'Camera surveillance: the command topic and the reply topic cannot be the same. The command topic is the panel\'s own topic (on the panel: Settings → ntfy), the reply topic is your notification topic.',
       ),
     );
   }
@@ -1664,11 +1692,19 @@ TemplateResult ntfyDeviceTemplate(Map<String, dynamic> input, String lang) {
         // statePath: the state shown after a command the device did not answer (t235u).
         onCommand: CommandStep(
           connectionId: c.id,
-          spec: {'command': cmd('onCommand', '{key} on'), 'waitReply': true, 'statePath': json ? '\$.$prefix$key' : key},
+          spec: {
+            'command': cmd('onCommand', '{key} on'),
+            'waitReply': true,
+            'statePath': json ? '\$.$prefix$key' : key,
+          },
         ),
         offCommand: CommandStep(
           connectionId: c.id,
-          spec: {'command': cmd('offCommand', '{key} off'), 'waitReply': true, 'statePath': json ? '\$.$prefix$key' : key},
+          spec: {
+            'command': cmd('offCommand', '{key} off'),
+            'waitReply': true,
+            'statePath': json ? '\$.$prefix$key' : key,
+          },
         ),
       ),
     );

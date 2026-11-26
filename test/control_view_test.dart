@@ -35,8 +35,9 @@ void main() {
       await tester.pumpWidget(MolaplanApp(state: st));
       await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('control-view')), findsOneWidget);
-      expect(find.text('Olohuone'), findsOneWidget);
-      expect(find.text('Keittiö'), findsOneWidget);
+      Finder inCv(String t) => find.descendant(of: find.byKey(const ValueKey('control-view')), matching: find.text(t));
+      expect(inCv('Olohuone'), findsOneWidget);
+      expect(inCv('Keittiö'), findsOneWidget);
       expect(find.text('Valot'), findsOneWidget);
       expect(find.text('Kahvinkeitin'), findsOneWidget);
       // Nothing technical or editable on screen.
@@ -45,12 +46,13 @@ void main() {
       // The always-visible add button is the only FAB (no edit tools).
       expect(find.byKey(const ValueKey('add-fab')), findsOneWidget);
       expect(find.byType(Drawer), findsNothing);
-      expect(find.text('Yhteydet'), findsNothing);
+      // t245u: the main menu is always there – side menu when wide, ☰ otherwise.
+      expect(find.byKey(const ValueKey('side-nav')), size.width >= 900 ? findsOneWidget : findsNothing);
       // Gear menu -> edit -> done -> back to the control view.
       await tester.tap(find.byKey(const ValueKey('control-menu')));
       await tester.pumpAndSettle();
       expect(find.text('Lisää laite'), findsOneWidget);
-      expect(find.text('Asetukset'), findsOneWidget);
+      expect(find.text('Asetukset'), findsWidgets);
       await tester.tap(find.byKey(const ValueKey('control-edit')));
       await tester.pumpAndSettle();
       expect(

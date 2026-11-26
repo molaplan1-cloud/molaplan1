@@ -1,3 +1,4 @@
+import 'connections_page.dart';
 import 'ha_picker.dart';
 import 'energy_pages.dart';
 
@@ -294,9 +295,20 @@ class _SettingsPageState extends State<SettingsPage> {
               const EnergySettingsSection(),
               // t237u: ONE Home Assistant button (a picker when there are several servers),
               // under its own "Laitteet ja integraatiot" heading instead of inside Energia.
+              const SizedBox(height: 20),
+              Text(tx(context, 'Laitteet ja integraatiot', 'Devices and integrations'), style: text.titleMedium),
+              const SizedBox(height: 8),
+              // t245u: connections (PIN, reply topic…) without the Edistyneet switch.
+              Align(
+                alignment: Alignment.centerLeft,
+                child: OutlinedButton.icon(
+                  key: const ValueKey('settings-connections'),
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ConnectionsPage())),
+                  icon: const Icon(Icons.device_hub),
+                  label: Text('${tx(context, 'Yhteydet', 'Connections')} (${st.config.connections.length})'),
+                ),
+              ),
               if (haServers(st).isNotEmpty) ...[
-                const SizedBox(height: 20),
-                Text(tx(context, 'Laitteet ja integraatiot', 'Devices and integrations'), style: text.titleMedium),
                 const SizedBox(height: 8),
                 Align(
                   alignment: Alignment.centerLeft,

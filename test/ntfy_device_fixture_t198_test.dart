@@ -151,7 +151,7 @@ void main() {
       ConnectionConfig(
         name: 'x',
         type: 'ntfy_device',
-        settings: {...conn.settings, 'replySeconds': 3, 'minInterval': 0},
+        settings: {...conn.settings, 'replySeconds': 3, 'minInterval': 0, 'cacheSeconds': 0},
         secrets: {'pin': '0000'},
       ),
     );

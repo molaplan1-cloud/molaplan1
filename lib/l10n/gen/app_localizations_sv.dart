@@ -28,6 +28,13 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sd3d9c263ed => 'Tjänsten';
 
   @override
+  String get s349ca716f2 => 'Inget svar från enheten';
+
+  @override
+  String get s7aa9e16c41 =>
+      'Kommandot nådde ntfy-servern, men inget svar kom från enheten. Kontrollera anslutningens \"Reply-ämne\" - enheten kan svara på ditt eget anmälningsämne - och att enheten är online.';
+
+  @override
   String get sdfb639365a => 'Ingen internetanslutning';
 
   @override
@@ -4449,6 +4456,16 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s07c82cb0af => 'Krävt fält';
 
   @override
+  String get see3fd4862d => 'Samma ämne två gånger?';
+
+  @override
+  String get sb80a9b6813 =>
+      'Kommandoämnet och svarsämnet är detsamma. De flesta enheter (t.ex. kameraövervakningspanelen) lyssnar på sitt eget kommandoämne och svarar på ditt anmälningsämne - sedan kommer kommandon aldrig. Spara ändå?';
+
+  @override
+  String get s70f720de6d => 'Spara ändå';
+
+  @override
   String get sf702cf0ac6 => 'Radera anslutning?';
 
   @override
@@ -5757,6 +5774,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s0789f5f14f => 'DASHBOARDS';
 
   @override
+  String get sedb7b77645 => 'Alla';
+
+  @override
   String get sfb3e3c456c => 'Delete Dashboard';
 
   @override
@@ -6012,10 +6032,24 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s1e5d696a26 => 'Kör detta kommando?';
 
   @override
+  String get sa5ee6618a3 => 'Ändra PIN';
+
+  @override
+  String get s66f8ce67ed => 'Gå in i PIN';
+
+  @override
+  String get sb7b0c97cfa =>
+      'Enheten behöver sin PIN för varje kommando och statusbegäran. Ange den en gång här.';
+
+  @override
   String get s1df6e2eaa7 => 'PIN';
 
   @override
   String get secab66c046 => 'Kom ihåg på denna enhet';
+
+  @override
+  String get s2a15ea2eab =>
+      'Lagrad krypterad på den här enheten bara - inte på kontot eller på andra enheter. Off = frågade igen när appen startar om.';
 
   @override
   String get s10bf4eab8e =>
@@ -6047,6 +6081,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s59d55f8882 => 'Byt namn';
 
   @override
+  String get s84ada1ae69 => 'Ändra PIN';
+
+  @override
   String get s25580038cb => 'Saved PIN bort';
 
   @override
@@ -6057,6 +6094,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sf3d644dd4c => 'Lär in en fjärrkontrollknapp';
+
+  @override
+  String get sbb9e9b1229 => 'Ange PIN';
 
   @override
   String get s72a2328ddd => 'Lampor';
@@ -6119,9 +6159,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s407f3f7a0c => 'Inget rum';
-
-  @override
-  String get sedb7b77645 => 'Alla';
 
   @override
   String s140aba8cd7(String p0) {
@@ -7188,8 +7225,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s6a4516e0fe => 'Kommandoämne (namn eller fullständig URL)';
 
   @override
-  String get s6cfd0d8be1 =>
-      'Ämnet som hemmet enheten lyssnar på. Ämnet namn fungerar som ett lösenord: hålla det lång och slumpmässig.';
+  String get scab58fae92 =>
+      'Ämnet som hemmet enheten lyssnar på (enhetens eget ämne - inte ditt meddelande ämne). ämnesnamnet fungerar som ett lösenord: hålla det lång och slumpmässig.';
 
   @override
   String get s800cd08229 => 'Svara på ämne (valfritt)';
@@ -8325,7 +8362,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s7a46c8c335 => 'Kommandoämne';
 
   @override
-  String get s324f5e3b74 => 'Ämnet (eller full URL) som enheten lyssnar på.';
+  String get safaab25703 =>
+      'Ämnet (eller full URL) enheten lyssnar på - enhetens eget ämne, inte ditt meddelande ämne.';
 
   @override
   String get sc1ddf7feb4 =>
@@ -8400,6 +8438,10 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s07f819fc55 =>
       'Kameraövervakning: fyll i svarsämnet - panelen svarar på användarens eget anmälningsämne (på panelen: Inställningar → Användare → anmälningsämne).';
+
+  @override
+  String get sa4a5b0baa1 =>
+      'Kameraövervakning: kommandoämnet och svarsämnet kan inte vara detsamma. Kommandoämnet är panelens eget ämne (på panelen: Inställningar → ntfy), svarsämnet är ditt anmälningsämne.';
 
   @override
   String get s23f70f51ff => 'Kommando enhet';

@@ -29,7 +29,15 @@ class ControlView extends StatelessWidget {
     required this.onEdit,
     required this.onSettings,
     this.onEnergy,
+    this.only,
+    this.drawer,
   });
+
+  /// t245u: show only this view (from the side menu); null = all views.
+  final String? only;
+
+  /// t245u: the main menu on narrow screens (the app bar shows the ☰ button).
+  final Widget? drawer;
   final VoidCallback onAddDevice;
   final void Function(Dashboard d) onEdit;
   final VoidCallback onSettings;
@@ -38,13 +46,17 @@ class ControlView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final st = AppScope.of(context);
-    final groups = st.config.dashboards.where((d) => d.tiles.isNotEmpty).toList();
+    final all = st.config.dashboards.where((d) => d.tiles.isNotEmpty).toList();
+    final groups = only == null
+        ? all
+        : (all.where((d) => d.id == only).toList().isEmpty ? all : all.where((d) => d.id == only).toList());
     final single = groups.length == 1;
     final title = single ? groups.first.name : tx(context, 'Koti', 'Home');
     // t147u: never "Koti" in the app bar and again as the first section header.
     bool sameAsTitle(Dashboard d) => d.name.trim().toLowerCase() == title.trim().toLowerCase();
     return Scaffold(
       key: const ValueKey('control-view'),
+      drawer: drawer,
       appBar: AppBar(
         title: Text(title, key: const ValueKey('cv-title')),
         actions: [
@@ -243,7 +255,10 @@ class ControlView extends StatelessWidget {
         PopupMenuItem(
           key: const ValueKey('control-heating'),
           value: 'heating',
-          child: _item(const Icon(Icons.local_fire_department_outlined), Text(tx(c, 'Älykäs lämmitys', 'Smart heating'))),
+          child: _item(
+            const Icon(Icons.local_fire_department_outlined),
+            Text(tx(c, 'Älykäs lämmitys', 'Smart heating')),
+          ),
         ),
         PopupMenuItem(
           key: const ValueKey('control-reminders'),

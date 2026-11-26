@@ -28,6 +28,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sd3d9c263ed => 'The service';
 
   @override
+  String get s349ca716f2 => 'No reply from the device';
+
+  @override
+  String get s7aa9e16c41 =>
+      'The command reached the ntfy server, but no reply came from the device. Check the connection\'s \"Reply topic\" – the device may answer on your own notification topic – and that the device is online.';
+
+  @override
   String get sdfb639365a => 'No internet connection';
 
   @override
@@ -4436,6 +4443,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s07c82cb0af => 'Required field';
 
   @override
+  String get see3fd4862d => 'The same topic twice?';
+
+  @override
+  String get sb80a9b6813 =>
+      'The command topic and the reply topic are the same. Most devices (e.g. the camera surveillance panel) listen on their own command topic and answer on your notification topic – then commands never arrive. Save anyway?';
+
+  @override
+  String get s70f720de6d => 'Save anyway';
+
+  @override
   String get sf702cf0ac6 => 'Delete connection?';
 
   @override
@@ -5743,6 +5760,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s0789f5f14f => 'DASHBOARDS';
 
   @override
+  String get sedb7b77645 => 'All';
+
+  @override
   String get sfb3e3c456c => 'Delete dashboard';
 
   @override
@@ -5997,10 +6017,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s1e5d696a26 => 'Run this command?';
 
   @override
+  String get sa5ee6618a3 => 'change PIN';
+
+  @override
+  String get s66f8ce67ed => 'enter PIN';
+
+  @override
+  String get sb7b0c97cfa =>
+      'The device needs its PIN for every command and status request. Enter it once here.';
+
+  @override
   String get s1df6e2eaa7 => 'PIN';
 
   @override
   String get secab66c046 => 'Remember on this device';
+
+  @override
+  String get s2a15ea2eab =>
+      'Stored encrypted on this device only – not in the account or on other devices. Off = asked again when the app restarts.';
 
   @override
   String get s10bf4eab8e =>
@@ -6032,6 +6066,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s59d55f8882 => 'Rename';
 
   @override
+  String get s84ada1ae69 => 'Change PIN';
+
+  @override
   String get s25580038cb => 'Saved PIN removed';
 
   @override
@@ -6042,6 +6079,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sf3d644dd4c => 'Learn a remote button';
+
+  @override
+  String get sbb9e9b1229 => 'Enter PIN';
 
   @override
   String get s72a2328ddd => 'Lights';
@@ -6104,9 +6144,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s407f3f7a0c => 'No room';
-
-  @override
-  String get sedb7b77645 => 'All';
 
   @override
   String s140aba8cd7(String p0) {
@@ -7176,8 +7213,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s6a4516e0fe => 'Command topic (name or full URL)';
 
   @override
-  String get s6cfd0d8be1 =>
-      'The topic the home device listens to. The topic name works like a password: keep it long and random.';
+  String get scab58fae92 =>
+      'The topic the home device listens to (the device\'s own topic – not your notification topic). The topic name works like a password: keep it long and random.';
 
   @override
   String get s800cd08229 => 'Reply topic (optional)';
@@ -8315,7 +8352,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s7a46c8c335 => 'Command topic';
 
   @override
-  String get s324f5e3b74 => 'The topic (or full URL) the device listens to.';
+  String get safaab25703 =>
+      'The topic (or full URL) the device listens to – the device\'s own topic, not your notification topic.';
 
   @override
   String get sc1ddf7feb4 =>
@@ -8392,6 +8430,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s07f819fc55 =>
       'Camera surveillance: fill in the reply topic – the panel answers on your user\'s own notification topic (on the panel: Settings → Users → notification topic).';
+
+  @override
+  String get sa4a5b0baa1 =>
+      'Camera surveillance: the command topic and the reply topic cannot be the same. The command topic is the panel\'s own topic (on the panel: Settings → ntfy), the reply topic is your notification topic.';
 
   @override
   String get s23f70f51ff => 'Command device';

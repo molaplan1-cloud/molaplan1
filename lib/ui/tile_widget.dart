@@ -350,6 +350,104 @@ class _TileWidgetState extends State<TileWidget> {
 
   bool get _asksPin => t.commands.any((c) => c.spec['askPin'] == true || c.spec['askPin'] == 'true');
 
+  /// t241u: the device connection behind this tile (source or first command).
+  String? get _pinConn {
+    final st = AppScope.read(context);
+    for (final id in [t.connectionId, t.onCommand?.connectionId, ...t.commands.map((c) => c.connectionId)]) {
+      final c = st.connection(id);
+      if (c != null && st.connectionUsesPin(c)) return c.id;
+    }
+    return null;
+  }
+
+  bool get _needsPin {
+    final id = _pinConn;
+    return id != null && AppScope.read(context).needsPin(id);
+  }
+
+  /// t241u: the device's PIN, asked at the tile (masked). Remembered on this device by default.
+  Future<bool> _enterConnPin({bool change = false}) async {
+    final st = AppScope.read(context);
+    final id = _pinConn;
+    final conn = st.connection(id);
+    if (conn == null) return false;
+    final ctl = TextEditingController();
+    var remember = true;
+    final pin = await showDialog<String>(
+      context: context,
+      builder: (c) => StatefulBuilder(
+        builder: (c, set) => AlertDialog(
+          key: const ValueKey('conn-pin-dialog'),
+          icon: const Icon(Icons.pin_outlined, size: 36),
+          title: Text(
+            change
+                ? '${conn.name}: ${tx(c, 'vaihda PIN-koodi', 'change PIN')}'
+                : '${conn.name}: ${tx(c, 'syötä PIN-koodi', 'enter PIN')}',
+          ),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  tx(
+                    c,
+                    'Laite tarvitsee PIN-koodin jokaiseen komentoon ja tilakyselyyn. Syötä se kerran tässä.',
+                    'The device needs its PIN for every command and status request. Enter it once here.',
+                  ),
+                ),
+                TextField(
+                  key: const ValueKey('conn-pin-field'),
+                  controller: ctl,
+                  autofocus: true,
+                  obscureText: true,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  style: const TextStyle(fontSize: 24, letterSpacing: 8),
+                  decoration: InputDecoration(labelText: tx(c, 'PIN', 'PIN')),
+                  onSubmitted: (v) => Navigator.pop(c, v),
+                ),
+                CheckboxListTile(
+                  key: const ValueKey('conn-pin-remember'),
+                  contentPadding: EdgeInsets.zero,
+                  value: remember,
+                  onChanged: (v) => set(() => remember = v ?? false),
+                  title: Text(tx(c, 'Muista tällä laitteella', 'Remember on this device')),
+                  subtitle: Text(
+                    tx(
+                      c,
+                      'Tallennetaan salattuna vain tähän laitteeseen – ei tilille eikä muille laitteille. Pois päältä = kysytään taas, kun sovellus käynnistyy.',
+                      'Stored encrypted on this device only – not in the account or on other devices. Off = asked again when the app restarts.',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(c), child: Text(tx(c, 'Peru', 'Cancel'))),
+            FilledButton(
+              key: const ValueKey('conn-pin-ok'),
+              onPressed: () => Navigator.pop(c, ctl.text),
+              child: Text(tx(c, 'Tallenna', 'Save')),
+            ),
+          ],
+        ),
+      ),
+    );
+    if (pin == null || pin.trim().isEmpty) return false;
+    await st.setConnectionPin(conn.id, pin.trim(), remember: remember);
+    return true;
+  }
+
+  /// Wraps a tap: asks the device PIN first when it is missing, then does the action.
+  VoidCallback? _pinGuard(VoidCallback? action) {
+    if (action == null || !_needsPin) return action;
+    return () async {
+      if (await _enterConnPin() && mounted) action();
+    };
+  }
+
   bool get _waitsReply {
     final st = AppScope.read(context);
     return t.commands.any(
@@ -597,6 +695,15 @@ class _TileWidgetState extends State<TileWidget> {
             },
             child: Text(tx(context, 'Nimeä uudelleen', 'Rename')),
           ),
+          if (_pinConn != null)
+            TextButton(
+              key: const ValueKey('tile-change-pin'),
+              onPressed: () async {
+                Navigator.pop(c);
+                await _enterConnPin(change: true);
+              },
+              child: Text(tx(context, 'Vaihda PIN', 'Change PIN')),
+            ),
           if (_asksPin)
             TextButton(
               key: const ValueKey('pin-forget'),
@@ -698,6 +805,7 @@ class _TileWidgetState extends State<TileWidget> {
         _ => null,
       };
     }
+    onTap = _pinGuard(onTap);
     final value = switch (t.type) {
       TileType.toggle || TileType.button || TileType.camera => null,
       _ when t.sensor != null => null,
@@ -822,6 +930,7 @@ class _TileWidgetState extends State<TileWidget> {
       default:
         onTap = null;
     }
+    onTap = _pinGuard(onTap);
 
     return MotionCard(
       color: bg,
@@ -881,6 +990,21 @@ class _TileWidgetState extends State<TileWidget> {
 
   bool _tiny = false;
 
+  /// t241u: 'Syötä PIN' instead of a red '!' while the device's PIN is missing.
+  Widget _pinBadge(BuildContext context, ColorScheme cs) => Container(
+    key: ValueKey('tile-pin-needed-${t.id}'),
+    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+    decoration: BoxDecoration(color: cs.tertiaryContainer, borderRadius: BorderRadius.circular(12)),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(Icons.pin_outlined, size: 14, color: cs.onTertiaryContainer),
+        const SizedBox(width: 4),
+        Text(tx(context, 'Syötä PIN', 'Enter PIN'), style: TextStyle(fontSize: 12, color: cs.onTertiaryContainer)),
+      ],
+    ),
+  );
+
   Widget _bodyContent(
     BuildContext context,
     TileRuntime r,
@@ -915,6 +1039,8 @@ class _TileWidgetState extends State<TileWidget> {
                     const Spacer(),
                     if (r.busy)
                       const SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2))
+                    else if (!widget.editing && _needsPin)
+                      _pinBadge(context, cs)
                     else if (err != null)
                       Tooltip(
                         message: isServiceConnection(AppScope.read(context).connection(t.connectionId))

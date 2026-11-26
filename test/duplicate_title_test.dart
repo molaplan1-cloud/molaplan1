@@ -29,9 +29,15 @@ void main() {
       final st = await _state(['Koti', 'Takkahuone']);
       await tester.pumpWidget(MolaplanApp(state: st));
       await tester.pumpAndSettle();
-      expect(find.text('Koti'), findsOneWidget);
+      expect(
+        find.descendant(of: find.byKey(const ValueKey('control-view')), matching: find.text('Koti')),
+        findsOneWidget,
+      );
       expect(find.descendant(of: find.byType(AppBar), matching: find.text('Koti')), findsOneWidget);
-      expect(find.text('Takkahuone'), findsOneWidget);
+      expect(
+        find.descendant(of: find.byKey(const ValueKey('control-view')), matching: find.text('Takkahuone')),
+        findsOneWidget,
+      );
     });
   }
 

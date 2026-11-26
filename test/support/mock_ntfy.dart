@@ -22,7 +22,8 @@ class MockNtfy {
 
   Future<MockNtfy> start() async {
     _server = await HttpServer.bind(InternetAddress.loopbackIPv4, 0);
-    _server.listen(_handle);
+    // A client that disconnects mid-request (driver disposed) is not a test failure.
+    _server.listen((r) => _handle(r).catchError((Object _) {}));
     return this;
   }
 

@@ -28,6 +28,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sd3d9c263ed => 'El servicio';
 
   @override
+  String get s349ca716f2 => 'No hay respuesta desde el dispositivo';
+
+  @override
+  String get s7aa9e16c41 =>
+      'El comando alcanzó el servidor ntfy, pero ninguna respuesta vino del dispositivo. Compruebe el \"tópico de respuesta\" de la conexión – el dispositivo puede responder en su propio tema de notificación – y que el dispositivo está en línea.';
+
+  @override
   String get sdfb639365a => 'Sin conexión a internet';
 
   @override
@@ -4463,6 +4470,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s07c82cb0af => 'Campo obligatorio';
 
   @override
+  String get see3fd4862d => '¿El mismo tema dos veces?';
+
+  @override
+  String get sb80a9b6813 =>
+      'El tema de comandos y el tema de respuesta son los mismos. La mayoría de los dispositivos (por ejemplo, el panel de vigilancia de la cámara) escuchan en su propio tema de comando y responden en su tema de notificación – entonces los comandos nunca llegan. ¿Ahorrar de todos modos?';
+
+  @override
+  String get s70f720de6d => 'Guardar de todos modos';
+
+  @override
   String get sf702cf0ac6 => 'Eliminar la conexión?';
 
   @override
@@ -5783,6 +5800,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s0789f5f14f => 'DASHBOARDS';
 
   @override
+  String get sedb7b77645 => 'Todos';
+
+  @override
   String get sfb3e3c456c => 'Suprímase el tablero';
 
   @override
@@ -6038,10 +6058,24 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1e5d696a26 => '¿Ejecutar este comando?';
 
   @override
+  String get sa5ee6618a3 => 'cambio PIN';
+
+  @override
+  String get s66f8ce67ed => 'Entrar PIN';
+
+  @override
+  String get sb7b0c97cfa =>
+      'El dispositivo necesita su PIN para cada comando y solicitud de estado. Ingrese una vez aquí.';
+
+  @override
   String get s1df6e2eaa7 => 'PIN';
 
   @override
   String get secab66c046 => 'Recuerde en este dispositivo';
+
+  @override
+  String get s2a15ea2eab =>
+      'Almacenado encriptado en este dispositivo sólo – no en la cuenta o en otros dispositivos. Off = preguntado de nuevo cuando la aplicación se reinicia.';
 
   @override
   String get s10bf4eab8e =>
@@ -6073,6 +6107,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s59d55f8882 => 'Renombrar';
 
   @override
+  String get s84ada1ae69 => 'Cambio PIN';
+
+  @override
   String get s25580038cb => 'Separación de PIN';
 
   @override
@@ -6083,6 +6120,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sf3d644dd4c => 'Aprender un botón del mando';
+
+  @override
+  String get sbb9e9b1229 => 'Entra PIN';
 
   @override
   String get s72a2328ddd => 'Luces';
@@ -6145,9 +6185,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s407f3f7a0c => 'No hay habitación';
-
-  @override
-  String get sedb7b77645 => 'Todos';
 
   @override
   String s140aba8cd7(String p0) {
@@ -7225,8 +7262,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s6a4516e0fe => 'Tema de comando (nombre o URL completa)';
 
   @override
-  String get s6cfd0d8be1 =>
-      'El tema que el dispositivo de casa escucha. El nombre del tema funciona como una contraseña: mantenerlo largo y aleatorio.';
+  String get scab58fae92 =>
+      'El tema que el dispositivo de casa escucha (el propio tema del dispositivo – no el tema de la notificación). El nombre del tema funciona como una contraseña: mantenerlo largo y aleatorio.';
 
   @override
   String get s800cd08229 => 'Tema de respuesta (opcional)';
@@ -8378,8 +8415,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s7a46c8c335 => 'Tema del comando';
 
   @override
-  String get s324f5e3b74 =>
-      'El tema (o URL completa) que el dispositivo escucha.';
+  String get safaab25703 =>
+      'El tema (o URL completa) que el dispositivo escucha – el propio tema del dispositivo, no el tema de notificación.';
 
   @override
   String get sc1ddf7feb4 =>
@@ -8456,6 +8493,10 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s07f819fc55 =>
       'Vigilancia de cámara: rellenar el tema de respuesta – el panel responde sobre el tema de notificación de su usuario (en el panel: Ajustes → Usuarios → tema de notificación).';
+
+  @override
+  String get sa4a5b0baa1 =>
+      'La vigilancia de la cámara: el tema del comando y el tema de respuesta no pueden ser los mismos. El tema del comando es el propio tema del panel (en el panel: Ajustes → ntfy), el tema de respuesta es su tema de notificación.';
 
   @override
   String get s23f70f51ff => 'Dispositivo de mando';

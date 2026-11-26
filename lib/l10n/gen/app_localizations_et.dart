@@ -28,6 +28,13 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sd3d9c263ed => 'Teenus';
 
   @override
+  String get s349ca716f2 => 'Seadmelt vastust ei ole';
+
+  @override
+  String get s7aa9e16c41 =>
+      'Käsk jõudis ntfy serverisse, kuid seadmelt vastust ei tulnud. Kontrolli ühenduse \"Vasta teemale\" - seade võib vastata sinu enda märguannete teemale - ja kas seade on võrgus.';
+
+  @override
   String get sdfb639365a => 'Internetiühendus puudub';
 
   @override
@@ -4441,6 +4448,16 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s07c82cb0af => 'Nõutav väli';
 
   @override
+  String get see3fd4862d => 'Sama teema kaks korda?';
+
+  @override
+  String get sb80a9b6813 =>
+      'Käsu teema ja vastuse teema on samad. Enamik seadmeid (nt kaamera jälgimispaneel) kuulab oma käsuteemat ja vastab sinu märguande teemale – siis käske ei jõuagi kohale. Salvesta ikkagi?';
+
+  @override
+  String get s70f720de6d => 'Säästa ikkagi';
+
+  @override
   String get sf702cf0ac6 => 'Kustuta ühendus?';
 
   @override
@@ -5748,6 +5765,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s0789f5f14f => 'DASHBOARDS';
 
   @override
+  String get sedb7b77645 => 'Kõik';
+
+  @override
   String get sfb3e3c456c => 'Kustuta armatuurlaud';
 
   @override
@@ -6001,10 +6021,24 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s1e5d696a26 => 'Käivita seda käsku?';
 
   @override
+  String get sa5ee6618a3 => 'PIN';
+
+  @override
+  String get s66f8ce67ed => 'PIN';
+
+  @override
+  String get sb7b0c97cfa =>
+      'Seade vajab oma PIN-koodi iga käsu ja oleku päringu jaoks. Kirjuta see siia.';
+
+  @override
   String get s1df6e2eaa7 => 'PIN';
 
   @override
   String get secab66c046 => 'Selle seadme meeldejätmine';
+
+  @override
+  String get s2a15ea2eab =>
+      'Salvestatud krüptituna ainult sellesse seadmesse – mitte kontole ega teistesse seadmetesse. Off = küsitakse uuesti, kui rakendus taaskäivitatakse.';
 
   @override
   String get s10bf4eab8e =>
@@ -6036,6 +6070,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s59d55f8882 => 'Nimeta ümber';
 
   @override
+  String get s84ada1ae69 => 'Muuda PIN-koodi';
+
+  @override
   String get s25580038cb => 'Salvestatud PIN-kood eemaldatud';
 
   @override
@@ -6046,6 +6083,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sf3d644dd4c => 'Õpeta puldi nupp';
+
+  @override
+  String get sbb9e9b1229 => 'Sisesta PIN';
 
   @override
   String get s72a2328ddd => 'Valgustid';
@@ -6107,9 +6147,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s407f3f7a0c => 'Ruumi ei ole';
-
-  @override
-  String get sedb7b77645 => 'Kõik';
 
   @override
   String s140aba8cd7(String p0) {
@@ -7179,8 +7216,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s6a4516e0fe => 'Käsu teema (nimi või täielik URL)';
 
   @override
-  String get s6cfd0d8be1 =>
-      'Teema, mida koduseade kuulab. Teema nimi töötab nagu parool: hoia see pikk ja juhuslik.';
+  String get scab58fae92 =>
+      'Teema, mida koduseade kuulab (seadme enda teema, mitte sinu märguannete teema). Teema nimi töötab nagu parool: hoia see pikk ja juhuslik.';
 
   @override
   String get s800cd08229 => 'Vastamise teema (valikuline)';
@@ -8314,7 +8351,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s7a46c8c335 => 'Käsuteema';
 
   @override
-  String get s324f5e3b74 => 'Teema (või täielik URL), mida seade kuulab.';
+  String get safaab25703 =>
+      'Teema (või täielik URL), mida seade kuulab - seadme enda teema, mitte teie teavitusteema.';
 
   @override
   String get sc1ddf7feb4 =>
@@ -8391,6 +8429,10 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s07f819fc55 =>
       'Kaamera jälgimine: täitke vastuse teema – paneel vastab teie kasutaja enda teavitusteemale (paneelil: Seaded → Kasutajad → teavitusteema).';
+
+  @override
+  String get sa4a5b0baa1 =>
+      'Kaamera jälgimine: käsuteema ja vastuse teema ei saa olla samad. Käsuteema on paneeli enda teema (paneelil Seadistused → ntfy), vastuse teemaks on sinu märguannete teema.';
 
   @override
   String get s23f70f51ff => 'Juhtimisseade';

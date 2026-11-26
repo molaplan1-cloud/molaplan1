@@ -81,9 +81,19 @@ class TileRuntime extends ChangeNotifier {
   static bool Function(TileConfig tile)? needsPrefill;
   bool _prefilled = false;
 
+  /// t241u: true while the tile must not read (e.g. its device's PIN is not entered yet).
+  static bool Function(TileConfig tile)? paused;
+
   Future<void> refresh() async {
     final d = driverLookup(tile.connectionId);
     if (d == null || !readsState) return;
+    if (paused?.call(tile) ?? false) {
+      if (error != null) {
+        error = null;
+        if (!_disposed) notifyListeners();
+      }
+      return;
+    }
     if (!_prefilled) {
       _prefilled = true;
       if (needsPrefill?.call(tile) ?? false) {

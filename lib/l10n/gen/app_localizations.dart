@@ -140,6 +140,18 @@ abstract class AppLocalizations {
   /// **'The service'**
   String get sd3d9c263ed;
 
+  /// fi: Ei vastausta laitteelta
+  ///
+  /// In en, this message translates to:
+  /// **'No reply from the device'**
+  String get s349ca716f2;
+
+  /// fi: Komento lähti ntfy-palvelimelle, mutta laitteen vastausta ei tullut. Tarkista yhteyden "Vastauskanava" – laite voi vasta
+  ///
+  /// In en, this message translates to:
+  /// **'The command reached the ntfy server, but no reply came from the device. Check the connection\'\'s \"Reply topic\" – the device may answer on your own notification topic – and that the device is online.'**
+  String get s7aa9e16c41;
+
   /// fi: Ei nettiyhteyttä
   ///
   /// In en, this message translates to:
@@ -8109,6 +8121,24 @@ abstract class AppLocalizations {
   /// **'Required field'**
   String get s07c82cb0af;
 
+  /// fi: Sama kanava kahdesti?
+  ///
+  /// In en, this message translates to:
+  /// **'The same topic twice?'**
+  String get see3fd4862d;
+
+  /// fi: Komentokanava ja Vastauskanava ovat samat. Useimmat laitteet (esim. kameravalvonnan paneeli) kuuntelevat komentoja omall
+  ///
+  /// In en, this message translates to:
+  /// **'The command topic and the reply topic are the same. Most devices (e.g. the camera surveillance panel) listen on their own command topic and answer on your notification topic – then commands never arrive. Save anyway?'**
+  String get sb80a9b6813;
+
+  /// fi: Tallenna silti
+  ///
+  /// In en, this message translates to:
+  /// **'Save anyway'**
+  String get s70f720de6d;
+
   /// fi: Poistetaanko yhteys?
   ///
   /// In en, this message translates to:
@@ -10391,6 +10421,12 @@ abstract class AppLocalizations {
   /// **'DASHBOARDS'**
   String get s0789f5f14f;
 
+  /// fi: Kaikki
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get sedb7b77645;
+
   /// fi: Poista näkymä
   ///
   /// In en, this message translates to:
@@ -10865,6 +10901,24 @@ abstract class AppLocalizations {
   /// **'Run this command?'**
   String get s1e5d696a26;
 
+  /// fi: vaihda PIN-koodi
+  ///
+  /// In en, this message translates to:
+  /// **'change PIN'**
+  String get sa5ee6618a3;
+
+  /// fi: syötä PIN-koodi
+  ///
+  /// In en, this message translates to:
+  /// **'enter PIN'**
+  String get s66f8ce67ed;
+
+  /// fi: Laite tarvitsee PIN-koodin jokaiseen komentoon ja tilakyselyyn. Syötä se kerran tässä.
+  ///
+  /// In en, this message translates to:
+  /// **'The device needs its PIN for every command and status request. Enter it once here.'**
+  String get sb7b0c97cfa;
+
   /// fi: PIN
   ///
   /// In en, this message translates to:
@@ -10876,6 +10930,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Remember on this device'**
   String get secab66c046;
+
+  /// fi: Tallennetaan salattuna vain tähän laitteeseen – ei tilille eikä muille laitteille. Pois päältä = kysytään taas, kun sove
+  ///
+  /// In en, this message translates to:
+  /// **'Stored encrypted on this device only – not in the account or on other devices. Off = asked again when the app restarts.'**
+  String get s2a15ea2eab;
 
   /// fi: Tallennetaan suojattuna vain tähän laitteeseen. Oletuksena PIN-koodia ei tallenneta.
   ///
@@ -10925,6 +10985,12 @@ abstract class AppLocalizations {
   /// **'Rename'**
   String get s59d55f8882;
 
+  /// fi: Vaihda PIN
+  ///
+  /// In en, this message translates to:
+  /// **'Change PIN'**
+  String get s84ada1ae69;
+
   /// fi: Tallennettu PIN poistettu
   ///
   /// In en, this message translates to:
@@ -10948,6 +11014,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Learn a remote button'**
   String get sf3d644dd4c;
+
+  /// fi: Syötä PIN
+  ///
+  /// In en, this message translates to:
+  /// **'Enter PIN'**
+  String get sbb9e9b1229;
 
   /// fi: Valot
   ///
@@ -11068,12 +11140,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No room'**
   String get s407f3f7a0c;
-
-  /// fi: Kaikki
-  ///
-  /// In en, this message translates to:
-  /// **'All'**
-  String get sedb7b77645;
 
   /// fi: {p0} valoa on Philips Hue -valoja
   ///
@@ -12983,11 +13049,11 @@ abstract class AppLocalizations {
   /// **'Command topic (name or full URL)'**
   String get s6a4516e0fe;
 
-  /// fi: Aihe, jota kotilaite kuuntelee. Aiheen nimi on kuin salasana: pidä se pitkänä ja satunnaisena.
+  /// fi: Aihe, jota kotilaite kuuntelee (laitteen oma kanava – ei sinun ilmoituskanavasi). Aiheen nimi on kuin salasana: pidä se
   ///
   /// In en, this message translates to:
-  /// **'The topic the home device listens to. The topic name works like a password: keep it long and random.'**
-  String get s6cfd0d8be1;
+  /// **'The topic the home device listens to (the device\'\'s own topic – not your notification topic). The topic name works like a password: keep it long and random.'**
+  String get scab58fae92;
 
   /// fi: Vastauskanava (vapaaehtoinen)
   ///
@@ -15005,11 +15071,11 @@ abstract class AppLocalizations {
   /// **'Command topic'**
   String get s7a46c8c335;
 
-  /// fi: Aihe (tai koko osoite), jota laite kuuntelee.
+  /// fi: Aihe (tai koko osoite), jota laite kuuntelee – laitteen oma kanava, ei sinun ilmoituskanavasi.
   ///
   /// In en, this message translates to:
-  /// **'The topic (or full URL) the device listens to.'**
-  String get s324f5e3b74;
+  /// **'The topic (or full URL) the device listens to – the device\'\'s own topic, not your notification topic.'**
+  String get safaab25703;
 
   /// fi: Jos laite vastaa toiseen aiheeseen (esim. omaan ilmoitusaiheeseesi). Tyhjä = sama aihe.
   ///
@@ -15136,6 +15202,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Camera surveillance: fill in the reply topic – the panel answers on your user\'\'s own notification topic (on the panel: Settings → Users → notification topic).'**
   String get s07f819fc55;
+
+  /// fi: Kameravalvonta: Komentokanava ja Vastauskanava eivät voi olla samat. Komentokanava on paneelin oma kanava (paneelilla As
+  ///
+  /// In en, this message translates to:
+  /// **'Camera surveillance: the command topic and the reply topic cannot be the same. The command topic is the panel\'\'s own topic (on the panel: Settings → ntfy), the reply topic is your notification topic.'**
+  String get sa4a5b0baa1;
 
   /// fi: Komentolaite
   ///

@@ -297,6 +297,9 @@ class NtfyDriver extends Driver {
     final opened = Completer<void>();
     final got = <NtfyMessage>[];
     final reply = Completer<NtfyMessage>();
+    // t241u: an error before anyone awaits (driver disposed mid-request) must not go unhandled.
+    reply.future.then((_) {}, onError: (Object _) {});
+    opened.future.then((_) {}, onError: (Object _) {});
     NtfyMessage? sent;
     void check() {
       final me = sent;

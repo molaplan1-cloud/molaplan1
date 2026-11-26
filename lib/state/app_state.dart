@@ -58,6 +58,8 @@ class AppState extends ChangeNotifier implements SyncHost {
        energyStore = energyStore ?? MemoryConfigStore(),
        historyStore = historyStore ?? MemoryConfigStore() {
     TileRuntime.observer = onTileValue;
+    // t241u: no status polls for a device whose commands need a PIN that is not entered yet.
+    TileRuntime.paused = (t) => needsPin(t.connectionId);
     TileRuntime.needsPrefill = (t) =>
         isMeasureTile(t) && !measureHistory.covers(measureKey(t), t.trendHours) && _backfilled.add(_bfKey(t));
     account = AccountState(store: secretStore, host: this, api: accountApi, kdfIterations: kdfIterations);
@@ -494,6 +496,7 @@ class AppState extends ChangeNotifier implements SyncHost {
         }
       }
     }
+    await _loadDevicePins();
     // t237u: the same Home Assistant saved more than once becomes one connection.
     if (await _dedupeHa()) unawaited(configStore.save(jsonEncode(config.toJson())));
     if (config.dashboards.isEmpty) {
@@ -737,14 +740,101 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   @override
-  Map<String, Map<String, String>> syncSecrets() => {
-    for (final c in config.connections)
-      if (c.secrets.values.any((v) => v.isNotEmpty))
-        c.id: {
-          for (final e in c.secrets.entries)
-            if (e.value.isNotEmpty) e.key: e.value,
-        },
-  };
+  Map<String, Map<String, String>> syncSecrets() {
+    final out = <String, Map<String, String>>{};
+    for (final c in config.connections) {
+      final m = {
+        for (final e in c.secrets.entries)
+          // t241u: a PIN typed on this device stays on this device.
+          if (e.value.isNotEmpty && !(e.key == 'pin' && _devicePin.contains(c.id))) e.key: e.value,
+      };
+      if (m.isNotEmpty) out[c.id] = m;
+    }
+    return out;
+  }
+
+  // ---- t241u: connection PINs entered at the tile (device-local)
+  final _devicePin = <String>{};
+  static String devicePinKey(String connId) => 'molaplan.connpin.$connId';
+
+  /// Does this connection send a PIN ({pin} in its command template / status command / a
+  /// tile command) while none is entered on this device? Then the tiles ask for it first.
+  bool needsPin(String? connId) {
+    final c = connection(connId);
+    if (c == null || !descriptorFor(c.type).secretKeys.contains('pin')) return false;
+    if ((c.secrets['pin'] ?? '').isNotEmpty) return false;
+    return connectionUsesPin(c);
+  }
+
+  bool connectionUsesPin(ConnectionConfig c) {
+    if (!descriptorFor(c.type).secretKeys.contains('pin')) return false;
+    if (c.type == 'ntfy_device' && (c.settings['template'] == null || '${c.settings['template']}'.trim().isEmpty)) {
+      return true; // default template '{cmd} {pin}'
+    }
+    if (c.settings.values.any((v) => '$v'.contains('{pin}'))) return true;
+    for (final d in config.dashboards) {
+      for (final t in d.tiles) {
+        for (final s in [t.onCommand, t.offCommand, ...t.commands]) {
+          if (s != null && s.connectionId == c.id && '${s.spec['command'] ?? ''}'.contains('{pin}')) return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  /// Saves a PIN typed at a tile: [remember] = encrypted secure storage on this device only
+  /// (never synced to the account); otherwise only until the app closes.
+  Future<void> setConnectionPin(String connId, String pin, {required bool remember}) async {
+    final c = connection(connId);
+    if (c == null) return;
+    c.secrets['pin'] = pin;
+    _devicePin.add(c.id);
+    try {
+      if (remember) {
+        await secretStore.write(devicePinKey(c.id), pin);
+      } else {
+        await secretStore.delete(devicePinKey(c.id));
+      }
+    } catch (_) {}
+    await _drivers.remove(c.id)?.dispose();
+    notifyListeners();
+    TileRuntime.refreshSoon(
+      [
+        for (final d in config.dashboards)
+          for (final t in d.tiles)
+            if (t.connectionId == c.id) t.id,
+      ],
+      after: const [Duration(milliseconds: 300)],
+    );
+  }
+
+  /// 'Vaihda PIN': forgets this device's PIN (also a synced one), so the next press asks again.
+  Future<void> forgetConnectionPin(String connId) async {
+    final c = connection(connId);
+    if (c == null) return;
+    c.secrets.remove('pin');
+    _devicePin.add(c.id);
+    try {
+      await secretStore.delete(devicePinKey(c.id));
+      await secretStore.delete(secretKey(c.id, 'pin'));
+    } catch (_) {}
+    await _drivers.remove(c.id)?.dispose();
+    notifyListeners();
+  }
+
+  Future<void> _loadDevicePins() async {
+    for (final c in config.connections) {
+      if (!descriptorFor(c.type).secretKeys.contains('pin')) continue;
+      String? v;
+      try {
+        v = await secretStore.read(devicePinKey(c.id));
+      } catch (_) {}
+      if (v != null && v.isNotEmpty) {
+        c.secrets['pin'] = v;
+        _devicePin.add(c.id);
+      }
+    }
+  }
 
   @override
   bool get hasLocalSetup => config.connections.isNotEmpty || config.dashboards.any((d) => d.tiles.isNotEmpty);
@@ -771,6 +861,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (cfg['automation'] is Map) config.automation = other.automation;
     if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     if (hasLocalSetup) config.onboardingDone = true;
+    await _loadDevicePins();
     final dupes = dedupeHaConnections(config);
     removed.addAll(dupes.map((c) => c.id));
     for (final c in dupes) {
@@ -871,6 +962,7 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   Future<void> _persistSecrets(ConnectionConfig c) async {
     for (final k in descriptorFor(c.type).secretKeys) {
+      if (k == 'pin' && _devicePin.contains(c.id)) continue; // t241u: kept under devicePinKey
       final v = c.secrets[k];
       if (v == null || v.isEmpty) {
         try {
@@ -1490,6 +1582,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (TileRuntime.observer == onTileValue) {
       TileRuntime.observer = null;
       TileRuntime.needsPrefill = null;
+      TileRuntime.paused = null;
     }
     account.removeListener(notifyListeners);
     account.dispose();

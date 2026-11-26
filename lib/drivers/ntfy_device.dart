@@ -166,6 +166,10 @@ class _Shared {
   DateTime? okAt;
   /// t235u: state after a command that was published but not answered: JSON path → (value, when).
   final optimistic = <String, (bool, DateTime)>{};
+  /// t243u: status requests that got no reply in a row, and when to ask again.
+  int noReply = 0;
+  DateTime? backoffUntil;
+  NtfyNoReply? lastNoReply;
   Future<NtfyMessage>? inFlight;
   DateTime? lastSent;
 }
@@ -185,8 +189,8 @@ class NtfyDeviceDriver extends NtfyDriver {
         'Command topic (name or full URL)',
         required: true,
         hint: 'https://ntfy.sh/oma-komentoaihe',
-        helpFi: 'Aihe, jota kotilaite kuuntelee. Aiheen nimi on kuin salasana: pidä se pitkänä ja satunnaisena.',
-        helpEn: 'The topic the home device listens to. The topic name works like a password: keep it long and random.',
+        helpFi: 'Aihe, jota kotilaite kuuntelee (laitteen oma kanava – ei sinun ilmoituskanavasi). Aiheen nimi on kuin salasana: pidä se pitkänä ja satunnaisena.',
+        helpEn: 'The topic the home device listens to (the device\'s own topic – not your notification topic). The topic name works like a password: keep it long and random.',
       ),
       FieldSpec(
         'replyTopic',
@@ -436,7 +440,7 @@ class NtfyDeviceDriver extends NtfyDriver {
     if (!fresh && sh.last != null && sh.at != null && DateTime.now().difference(sh.at!) < ttl) {
       return Future.value(sh.last!);
     }
-    return sh.inFlight ??= _ask(command ?? s.str('statusCommand', 'tila'))
+    return sh.inFlight ??= _statusNow(command, fresh, ttl)
         .then((m) {
           sh.last = m;
           sh.at = sh.okAt = DateTime.now();
@@ -454,6 +458,60 @@ class NtfyDeviceDriver extends NtfyDriver {
       : '$text ${dtx('Jos laite vastaa toiselle kanavalle (esim. ilmoituskanavallesi), aseta se kohtaan "Vastauskanava".', 'If the device replies on another topic (e.g. your notification topic), set it as "Reply topic".')}';
 
   static String? _pathOf(Map<String, dynamic> spec) => spec.strOrNull('statePath') ?? spec.strOrNull('jsonPath');
+
+  /// Longest wait between status requests while the device does not answer.
+  static const maxBackoff = Duration(minutes: 5);
+
+  Future<NtfyMessage> _statusNow(String? command, bool fresh, Duration ttl) async {
+    final sh = _sh;
+    final now = DateTime.now();
+    // t243u: no replies lately – ask less often (30 s, 1 min, 2 min … 5 min) instead of every poll.
+    if (!fresh && sh.backoffUntil != null && now.isBefore(sh.backoffUntil!) && sh.lastNoReply != null) {
+      throw sh.lastNoReply!;
+    }
+    // t243u: several phones / tablets / PCs share the device: a status another one asked for a
+    // moment ago (on the shared reply topic) is used instead of asking again – the panel drops
+    // status requests closer than its rate limit.
+    if (!fresh) {
+      final shared = await _recentShared(ttl);
+      if (shared != null) return shared;
+    }
+    try {
+      final m = await _ask(command ?? s.str('statusCommand', 'tila'));
+      sh.noReply = 0;
+      sh.backoffUntil = null;
+      return m;
+    } on NtfyNoReply catch (e) {
+      sh.noReply++;
+      final secs = min(maxBackoff.inSeconds, 30 * pow(2, sh.noReply - 1).toInt());
+      sh.backoffUntil = DateTime.now().add(Duration(seconds: secs));
+      sh.lastNoReply = e;
+      rethrow;
+    }
+  }
+
+  /// The newest JSON status on the reply topic from the last [ttl] (any device's request).
+  Future<NtfyMessage?> _recentShared(Duration ttl) async {
+    if (ttl <= Duration.zero || (s.strOrNull('replyTopic') ?? '').trim().isEmpty) return null;
+    try {
+      final since = DateTime.now().subtract(ttl).millisecondsSinceEpoch ~/ 1000;
+      final msgs = await poll(since: '${ttl.inSeconds}s');
+      NtfyMessage? best;
+      for (final m in msgs) {
+        if (m.time < since) continue;
+        // Never older than our own last command: it may have changed the state.
+        final sent = _sh.lastSent;
+        if (sent != null && m.time < sent.millisecondsSinceEpoch ~/ 1000) continue;
+        if (!ntfyReplyMatches(m, title: s.strOrNull('replyTitle'), match: s.strOrNull('replyMatch'))) continue;
+        final j = ntfyJsonPayload(m.message);
+        if (j is! Map || j['ok'] == false) continue;
+        if (best == null || m.time >= best.time) best = m;
+      }
+      return best;
+    } catch (_) {
+      return null;
+    }
+  }
 
   @override
   Future<Object?> read(Map<String, dynamic> spec) async {
