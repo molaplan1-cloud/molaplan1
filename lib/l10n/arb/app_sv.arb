@@ -962,10 +962,6 @@
  "@sd0219ce512": {
   "x-mt": true
  },
- "sbf59e43c36": "Ingen internetanslutning. Kontrollera Wi-Fi eller mobildata och försök igen.",
- "@sbf59e43c36": {
-  "x-mt": true
- },
  "s9ba7e7a8e6": "Fel e-post eller lösenord. Kontrollera dem eller tryck på \"Glöm lösenord\".",
  "@s9ba7e7a8e6": {
   "x-mt": true
@@ -2236,6 +2232,367 @@
  "@s417eb9a875": {
   "x-mt": true
  },
+ "sb4bd4baa5c": "Ingen Molaplan-användare med den adressen. De måste logga in på Molaplan 0.9 en gång - eller skicka dem en inbjudningskod.",
+ "@sb4bd4baa5c": {
+  "x-mt": true
+ },
+ "s7ed2aecb01": "Ingen delbar utvald (tävlingar kan inte delas ännu).",
+ "@s7ed2aecb01": {
+  "x-mt": true
+ },
+ "s707b7ff598": "Inbjudan finns inte längre.",
+ "@s707b7ff598": {
+  "x-mt": true
+ },
+ "s5ea320fb1c": "Lås upp kontohemligheterna på den här enheten först (Konto → Lås upp med lösenord). Delning använder kontonyckeln.",
+ "@s5ea320fb1c": {
+  "x-mt": true
+ },
+ "s5aee30a4e4": "Denna inbjudan är för en installatör: slå på installationsprofilen (Sharing → Advanced).",
+ "@s5aee30a4e4": {
+  "x-mt": true
+ },
+ "sa562754cb5": "Koden är fel, löpt ut eller redan använt.",
+ "@sa562754cb5": {
+  "x-mt": true
+ },
+ "s9c37d7a89c": "Hembron svarar inte. Delningen behöver hembron (fjärråtkomst) - behörigheter verkställs där.",
+ "@s9c37d7a89c": {
+  "x-mt": true
+ },
+ "sc858a8f851": "Hembron är för gammal för att dela. Uppdatera den (Fjärråtkomst → Uppdatera bro).",
+ "@sc858a8f851": {
+  "x-mt": true
+ },
+ "s1a52f53861": "Ingen anslutning till Molaplan-kontot.",
+ "@s1a52f53861": {
+  "x-mt": true
+ },
+ "s2457ec4502": "Kontotjänsten vägrade: {p0}",
+ "@s2457ec4502": {
+  "x-mt": true
+ },
+ "s4bc537975e": "Hembron är offline.",
+ "@s4bc537975e": {
+  "x-mt": true
+ },
+ "s2fb5fe14e4": "Andelen återkallades.",
+ "@s2fb5fe14e4": {
+  "x-mt": true
+ },
+ "s7b44d47d45": "Hembron svarar inte.",
+ "@s7b44d47d45": {
+  "x-mt": true
+ },
+ "s8eddd585bc": "Ingen anslutning.",
+ "@s8eddd585bc": {
+  "x-mt": true
+ },
+ "s47998395f5": "Inte tillåtet.",
+ "@s47998395f5": {
+  "x-mt": true
+ },
+ "s7f504a8c64": "Visa endast",
+ "@s7f504a8c64": {
+  "x-mt": true
+ },
+ "s9c067115ef": "Kontrollkontroll",
+ "@s9c067115ef": {
+  "x-mt": true
+ },
+ "s8343921765": "Full (kontroll + inställningar)",
+ "@s8343921765": {
+  "x-mt": true
+ },
+ "s211d9f0a3a": "Kod som inte används än",
+ "@s211d9f0a3a": {
+  "x-mt": true
+ },
+ "s1e6b3fe5dc": "Väntar på acceptans",
+ "@s1e6b3fe5dc": {
+  "x-mt": true
+ },
+ "sb13063b8cd": "Bekräftas...",
+ "@sb13063b8cd": {
+  "x-mt": true
+ },
+ "s13b6f87b0a": "Aktivt",
+ "@s13b6f87b0a": {
+  "x-mt": true
+ },
+ "sed1d8dbf2b": "Declined",
+ "@sed1d8dbf2b": {
+  "x-mt": true
+ },
+ "s0123f33869": "Återkallad",
+ "@s0123f33869": {
+  "x-mt": true
+ },
+ "s844e081db8": "Delande",
+ "@s844e081db8": {
+  "x-mt": true
+ },
+ "sfb1a18d11f": "Uppdatera",
+ "scdfdf5d233": "Att dela behöver ett Molaplan-konto så att inbjudningar kan nå människor och krypteringsarbeten.",
+ "@scdfdf5d233": {
+  "x-mt": true
+ },
+ "s9bb545e9b3": "Logga in eller skapa ett konto",
+ "s85abc4496d": "Ge en familjemedlem, granne eller installatör tillgång till de enheter du väljer. Lösenord och adresser lämnar aldrig hem, och du kan återkalla när som helst.",
+ "@s85abc4496d": {
+  "x-mt": true
+ },
+ "sb4602bb0a6": "Dela enheter",
+ "@sb4602bb0a6": {
+  "x-mt": true
+ },
+ "sffe19ad543": "Använd en inbjudningskod",
+ "@sffe19ad543": {
+  "x-mt": true
+ },
+ "s61036a5d51": "Inbjudningar till dig",
+ "@s61036a5d51": {
+  "x-mt": true
+ },
+ "s8af08eb19e": "Enheter",
+ "@s8af08eb19e": {
+  "x-mt": true
+ },
+ "sbb84536839": "Accepterad",
+ "@sbb84536839": {
+  "x-mt": true
+ },
+ "sdfaf8c242b": "Godkänn",
+ "s493a1eaf08": "Decline",
+ "@s493a1eaf08": {
+  "x-mt": true
+ },
+ "s2fd1394b33": "Delad med mig",
+ "@s2fd1394b33": {
+  "x-mt": true
+ },
+ "seaa0c13606": "Dina aktier",
+ "@seaa0c13606": {
+  "x-mt": true
+ },
+ "s450c60afd0": "Du har inte delat något.",
+ "@s450c60afd0": {
+  "x-mt": true
+ },
+ "s33f41d417c": "Inbjuda kod",
+ "@s33f41d417c": {
+  "x-mt": true
+ },
+ "s23baecde5b": "Enheter",
+ "@s23baecde5b": {
+  "x-mt": true
+ },
+ "s9cdf3dcc87": "Återkalla aktien?",
+ "@s9cdf3dcc87": {
+  "x-mt": true
+ },
+ "s9d0ac1d1ee": "Tillgången slutar så snart hembron hör av den (vanligtvis på en gång).",
+ "@s9d0ac1d1ee": {
+  "x-mt": true
+ },
+ "s4417570cbb": "Revoke",
+ "@s4417570cbb": {
+  "x-mt": true
+ },
+ "s280e22cbc9": "Dela återkallad",
+ "@s280e22cbc9": {
+  "x-mt": true
+ },
+ "s84a6d73d1e": "Ändra enheter eller rättigheter",
+ "@s84a6d73d1e": {
+  "x-mt": true
+ },
+ "s1cf5e3d702": "Installationsprofil",
+ "@s1cf5e3d702": {
+  "x-mt": true
+ },
+ "s22f8bccc91": "Visar installationsmenyn: kunder, deras enheter och larm. En kund ger åtkomst till en kod och kan återkalla den.",
+ "@s22f8bccc91": {
+  "x-mt": true
+ },
+ "se19c5fe8aa": "Företagsnamn",
+ "@se19c5fe8aa": {
+  "x-mt": true
+ },
+ "sd742357fc8": "Ditt namn i aktier",
+ "@sd742357fc8": {
+  "x-mt": true
+ },
+ "sfe0000a1a9": "Säkerhet: hembron kontrollerar rättigheterna för varje begäran. Anslutningsuppgifterna reser krypterade till mottagarens nyckel endast; enhetslösenord och adresser lämnar aldrig hemmet.",
+ "@sfe0000a1a9": {
+  "x-mt": true
+ },
+ "s0577e25cbe": "Lägg till en kund med en kod",
+ "@s0577e25cbe": {
+  "x-mt": true
+ },
+ "s3d00dee1a9": "Använd",
+ "sce4c69f42c": "Kod accepterad. Access öppnas när ägarens Molaplan bekräftar det (vanligtvis inom några minuter).",
+ "@sce4c69f42c": {
+  "x-mt": true
+ },
+ "sd1520d6367": "Ge koden (eller länken) till mottagaren: Molaplan → Dela → Använd en inbjudningskod. Giltig i 7 dagar, en gång.",
+ "@sd1520d6367": {
+  "x-mt": true
+ },
+ "s563abff5ad": "Kopiera länk",
+ "@s563abff5ad": {
+  "x-mt": true
+ },
+ "s0daf5e9cb6": "Inbjudan skickas – mottagaren accepterar den i Molaplan.",
+ "@s0daf5e9cb6": {
+  "x-mt": true
+ },
+ "s707a062202": "Förändringsandelar",
+ "@s707a062202": {
+  "x-mt": true
+ },
+ "s79f72dbe13": "1. vad man ska dela",
+ "@s79f72dbe13": {
+  "x-mt": true
+ },
+ "s58e14dc230": "Tryck på en vy för att dela alla dess enheter, eller välj dem en efter en.",
+ "@s58e14dc230": {
+  "x-mt": true
+ },
+ "sdb49fc5671": "Hela utsikten",
+ "@sdb49fc5671": {
+  "x-mt": true
+ },
+ "sa7cf1a01d7": "2. Rättigheter",
+ "@sa7cf1a01d7": {
+  "x-mt": true
+ },
+ "s3b2376ac74": "Visa vy",
+ "@s3b2376ac74": {
+  "x-mt": true
+ },
+ "s6605942623": "Full Full Full Full Full Full Full Full Full Full",
+ "@s6605942623": {
+  "x-mt": true
+ },
+ "s9ccbd78d51": "Ser stater och avläsningar, kan inte kontrollera.",
+ "@s9ccbd78d51": {
+  "x-mt": true
+ },
+ "sb143b5c9f1": "Kan växla och justera, kan inte ändra inställningar (t.ex. temperaturinställningar).",
+ "@sb143b5c9f1": {
+  "x-mt": true
+ },
+ "s32dc2aa139": "Kontroll- och enhetsinställningar. Aldrig dina egna vyer eller lösenord.",
+ "@s32dc2aa139": {
+  "x-mt": true
+ },
+ "se153d3c421": "3 till vem",
+ "@se153d3c421": {
+  "x-mt": true
+ },
+ "s62e68022e1": "En Molaplan-användare (e-post)",
+ "@s62e68022e1": {
+  "x-mt": true
+ },
+ "s447da2f746": "Inbjuda kod eller länk",
+ "@s447da2f746": {
+  "x-mt": true
+ },
+ "sdd0f19c6b8": "E-post",
+ "@sdd0f19c6b8": {
+  "x-mt": true
+ },
+ "s6be36f4219": "Till en installatör (visar i deras installationsmeny)",
+ "@s6be36f4219": {
+  "x-mt": true
+ },
+ "se7272a5713": "Namn för aktien (valfritt)",
+ "@se7272a5713": {
+  "x-mt": true
+ },
+ "s1f9799af4e": "t.ex. stuga",
+ "@s1f9799af4e": {
+  "x-mt": true
+ },
+ "s03f60936b0": "Rättigheter per enhet",
+ "@s03f60936b0": {
+  "x-mt": true
+ },
+ "s385022d526": "Visa vy",
+ "@s385022d526": {
+  "x-mt": true
+ },
+ "s482464ebd5": "Kontrollkontroll",
+ "@s482464ebd5": {
+  "x-mt": true
+ },
+ "s5897aaa050": "Meddela ett ntfy-ämne (valfritt)",
+ "@s5897aaa050": {
+  "x-mt": true
+ },
+ "sd4faf9db62": "Meddelandet innehåller inga kod- eller enhetsdetaljer.",
+ "@sd4faf9db62": {
+  "x-mt": true
+ },
+ "sdec87898c3": "Skapa inbjudningskod",
+ "@sdec87898c3": {
+  "x-mt": true
+ },
+ "s19c2104a9d": "Skicka inbjudan",
+ "@s19c2104a9d": {
+  "x-mt": true
+ },
+ "s8b4d48dfaf": "Ägare",
+ "@s8b4d48dfaf": {
+  "x-mt": true
+ },
+ "sbfe79d1f5f": "Uppdaterad",
+ "s90944b5e7c": "Uppmärksamhet",
+ "@s90944b5e7c": {
+  "x-mt": true
+ },
+ "scf2e61da2c": "inte svara",
+ "@scf2e61da2c": {
+  "x-mt": true
+ },
+ "s1364743ec7": "larm",
+ "@s1364743ec7": {
+  "x-mt": true
+ },
+ "s5416a5cdf7": "Kör",
+ "@s5416a5cdf7": {
+  "x-mt": true
+ },
+ "s8debff3196": "Visa bild",
+ "@s8debff3196": {
+  "x-mt": true
+ },
+ "sbd907def5b": "Installatör",
+ "@sbd907def5b": {
+  "x-mt": true
+ },
+ "sddd83db201": "Lägg till kund",
+ "@sddd83db201": {
+  "x-mt": true
+ },
+ "s2220ce611a": "Kunder som gav dig tillgång. Du ser bara de delade enheterna och agerar inom de rättigheter som kunden gav – aldrig deras lösenord.",
+ "@s2220ce611a": {
+  "x-mt": true
+ },
+ "s98a90339f4": "Inga kunder ännu. Fråga kunden att skapa en installationskod: Dela → Dela enheter → Inbjude kod + Till en installatör.",
+ "@s98a90339f4": {
+  "x-mt": true
+ },
+ "sa52cf49adc": "Väntar på kundens Molaplan för att bekräfta",
+ "@sa52cf49adc": {
+  "x-mt": true
+ },
+ "s35e8813a82": "Varningar",
+ "@s35e8813a82": {
+  "x-mt": true
+ },
  "sc3abd09cd9": "Anpassad färg",
  "@sc3abd09cd9": {
   "x-mt": true
@@ -3029,7 +3386,6 @@
  },
  "s876c7230a2": "Lägg till enhet",
  "s1e593aeca2": "Stäng",
- "s3d00dee1a9": "Använd",
  "sa252f06bff": "Välj ditt enhetsmärke. Molaplan hittar det och skapar plattorna.",
  "@sa252f06bff": {
   "x-mt": true
@@ -3385,7 +3741,6 @@
   "x-mt": true
  },
  "s80c4ecec94": "c/h",
- "sbfe79d1f5f": "Uppdaterad",
  "sb68e905fc4": "Förbrukning (kWh)",
  "s5fc5085143": "Kostnad",
  "s2b2118a93b": "Gamla data",
@@ -3476,7 +3831,99 @@
  "@sf87d92faf4": {
   "x-mt": true
  },
+ "saa4df8e877": "Bridge hittades inte. Är telefonen på brons Wi-Fi \"Molaplan-XXXX\"? Om nätverket saknas, håll bronknappen för 3 s (inställningen öppnas i 15 minuter).",
+ "@saa4df8e877": {
+  "x-mt": true
+ },
+ "sf5293b1989": "Bron är inte i installationsläge. Håll knappen för 3 s och försök igen.",
+ "@sf5293b1989": {
+  "x-mt": true
+ },
+ "s839deeab41": "Detta är inte bron på etiketten / QR-koden (nyckelbrist). Ingenting skickades.",
+ "@s839deeab41": {
+  "x-mt": true
+ },
+ "s3694ce006b": "Brons svar är inte giltigt (krypteringsmissmatch). Ingenting sparades.",
+ "@s3694ce006b": {
+  "x-mt": true
+ },
+ "s61aea0b713": "Bron avvisade installationen: {p0}",
+ "@s61aea0b713": {
+  "x-mt": true
+ },
+ "s63551081b0": "Lägg hem bridge",
+ "@s63551081b0": {
+  "x-mt": true
+ },
+ "s592edd94e7": "Molaplan Bridge-enhet",
+ "@s592edd94e7": {
+  "x-mt": true
+ },
+ "sa329968355": "En liten alltid-på-enhet (t.ex. Athom IR / RF-kontrollen) som passerar fjärrkommandon till dina enheter och styr värmepumpen genom infraröd.",
+ "@sa329968355": {
+  "x-mt": true
+ },
+ "sd8790684a6": "Ström bron. En ny bro öppnar inställningen själv (slow blink, en gång i sekunden).",
+ "@sd8790684a6": {
+  "x-mt": true
+ },
+ "s087004d26c": "Öppna telefonens Wi-Fi-inställningar och gå med i \"Molaplan-XXXX\" (inget lösenord).",
+ "@s087004d26c": {
+  "x-mt": true
+ },
+ "sf85e449cd8": "Kom tillbaka hit och tryck på \"Find bridge\".",
+ "@sf85e449cd8": {
+  "x-mt": true
+ },
+ "s57466387fc": "Hitta bridge",
+ "@s57466387fc": {
+  "x-mt": true
+ },
+ "sd166e3cf6f": "Bridge hittade",
+ "@sd166e3cf6f": {
+  "x-mt": true
+ },
+ "s6b841de5dd": "Brandvaring",
+ "@s6b841de5dd": {
+  "x-mt": true
+ },
+ "s88fa323548": "Home Wi-Fi",
+ "@s88fa323548": {
+  "x-mt": true
+ },
+ "sf48dd63b0a": "Nätverksnamn",
+ "@sf48dd63b0a": {
+  "x-mt": true
+ },
+ "s9f9c574cf9": "Wi-Fi lösenord",
+ "@s9f9c574cf9": {
+  "x-mt": true
+ },
  "sc58a7d7121": "Hemmets namn",
+ "sc452460b0f": "Styrelsestyrelsen",
+ "@sc452460b0f": {
+  "x-mt": true
+ },
+ "s4bdd633042": "Otestade",
+ "@s4bdd633042": {
+  "x-mt": true
+ },
+ "sbe6a859b63": "Detaljerna skickas krypterad - bron Wi-Fi är öppen, men lösenordet kan inte läsas av det.",
+ "@sbe6a859b63": {
+  "x-mt": true
+ },
+ "s77af0820de": "Anslut bron",
+ "@s77af0820de": {
+  "x-mt": true
+ },
+ "s1ec01d8473": "Bridge ansluten!",
+ "@s1ec01d8473": {
+  "x-mt": true
+ },
+ "s88bc217a1b": "Bron går nu med i hemmet Wi-Fi (ljus på med ett kort dopp var tredje när den är ansluten). Byt telefonen tillbaka till hemmet Wi-Fi eller mobildata - Fjärråtkomst visar brostatus.",
+ "@s88bc217a1b": {
+  "x-mt": true
+ },
  "s2adc3a77ed": "Välj anslutningstyp",
  "@s2adc3a77ed": {
   "x-mt": true
@@ -3558,6 +4005,14 @@
  "s5f8284b98f": "Gör den här enheten till hembrygga",
  "s6a95f7843b": "Den här enheten stannar hemma, alltid på (laddare + Wi-Fi) och passerar fjärrkommandon till dina enheter.",
  "@s6a95f7843b": {
+  "x-mt": true
+ },
+ "sa949a952bf": "Lägg till hembro (Molaplan Bridge-enhet)",
+ "@sa949a952bf": {
+  "x-mt": true
+ },
+ "sb641af74b7": "En liten alltid-på-enhet, t.ex. Athom IR/RF, styr också värmepumpen. Ställ in med telefonen om några minuter.",
+ "@sb641af74b7": {
   "x-mt": true
  },
  "s2c3ae5833b": "Andra sätt: VPN, Nabu Casa, moln MQTT",
@@ -3838,7 +4293,6 @@
   "x-mt": true
  },
  "sa04c218f82": "Avvisa",
- "sdfaf8c242b": "Godkänn",
  "sd64229b6d8": "Inte inrätta ännu",
  "@sd64229b6d8": {
   "x-mt": true
@@ -3919,7 +4373,15 @@
  "@sae41bebdab": {
   "x-mt": true
  },
+ "sf83143ae23": "Rumstemperatur sensor",
+ "@sf83143ae23": {
+  "x-mt": true
+ },
  "s19485c79b2": "Ingen",
+ "s0483226428": "Välj en temperatursensor",
+ "@s0483226428": {
+  "x-mt": true
+ },
  "scf37cbeda8": "Ikon",
  "sfeab9bd26f": "Bredd",
  "@sfeab9bd26f": {
@@ -4297,10 +4759,6 @@
   "x-mt": true
  },
  "scb28b11e70": "Ny vy",
- "s1f9799af4e": "t.ex. stuga",
- "@s1f9799af4e": {
-  "x-mt": true
- },
  "s3a13f9d077": "Rename Dashboard",
  "@s3a13f9d077": {
   "x-mt": true
@@ -4523,7 +4981,6 @@
  },
  "safe0429a90": "Prisstyrning",
  "sf3d644dd4c": "Lär in en fjärrkontrollknapp",
- "sfb1a18d11f": "Uppdatera",
  "s72a2328ddd": "Lampor",
  "sca12be80ca": "Brytare",
  "sa4c0eeea02": "Värmepumpar och AC",
@@ -4681,7 +5138,6 @@
  "@scc7e418ee3": {
   "x-mt": true
  },
- "s9bb545e9b3": "Logga in eller skapa ett konto",
  "s08d62fd281": "Utseende",
  "@s08d62fd281": {
   "x-mt": true
@@ -4761,6 +5217,14 @@
  },
  "scc3d01ee5e": "Guider: VPN, Nabu Casa, moln MQTT",
  "@scc3d01ee5e": {
+  "x-mt": true
+ },
+ "s0fe7b15d15": "Ge någon tillgång till de enheter du väljer.",
+ "@s0fe7b15d15": {
+  "x-mt": true
+ },
+ "s25c286a743": "Delning – ny inbjudan",
+ "@s25c286a743": {
   "x-mt": true
  },
  "s90ba544719": "Hjälp",
@@ -5250,6 +5714,22 @@
  "@s40032ddea9": {
   "x-mt": true
  },
+ "s7dcc5e6c76": ", vane ",
+ "@s7dcc5e6c76": {
+  "x-mt": true
+ },
+ "s7c815852f2": "Inte sänt ännu",
+ "@s7c815852f2": {
+  "x-mt": true
+ },
+ "s4795d331a5": "Skickat på {p0}",
+ "@s4795d331a5": {
+  "x-mt": true
+ },
+ "sff577ce033": "Sänd {p0}. {p1}. på {p2}",
+ "@sff577ce033": {
+  "x-mt": true
+ },
  "s7068e8892e": "Okänd kod utan rådata. Aktivera rådata i Tasmota (SetOption58 1) och försök igen.",
  "@s7068e8892e": {
   "x-mt": true
@@ -5364,6 +5844,14 @@
   "x-mt": true
  },
  "s018d2e08f4": "Fläkt",
+ "sa00d64c920": "Vane",
+ "@sa00d64c920": {
+  "x-mt": true
+ },
+ "s39f8bf0f76": "Sent at",
+ "@s39f8bf0f76": {
+  "x-mt": true
+ },
  "s051944392f": "Rumstemperatur",
  "@s051944392f": {
   "x-mt": true
@@ -5426,6 +5914,10 @@
  },
  "s04e4777aea": "Temperatur saknas.",
  "@s04e4777aea": {
+  "x-mt": true
+ },
+ "s91e5fff1f0": "rum {p0} °C",
+ "@s91e5fff1f0": {
   "x-mt": true
  },
  "sfce1a094cb": "Ingen temperatursensor på blastaren.",
@@ -5491,6 +5983,30 @@
   "x-mt": true
  },
  "s43c9b88580": "Auto",
+ "sd3cd4220ae": "auto auto auto auto auto",
+ "@sd3cd4220ae": {
+  "x-mt": true
+ },
+ "s640687fc2d": "högsta högsta högsta",
+ "@s640687fc2d": {
+  "x-mt": true
+ },
+ "s3516ee9f50": "Hög högt",
+ "@s3516ee9f50": {
+  "x-mt": true
+ },
+ "sb847c3774e": "Mitten",
+ "@sb847c3774e": {
+  "x-mt": true
+ },
+ "sc4ebe5627c": "lågt lågt lågt",
+ "@sc4ebe5627c": {
+  "x-mt": true
+ },
+ "saacae8d5c5": "lägsta",
+ "@saacae8d5c5": {
+  "x-mt": true
+ },
  "s30ae7f76e6": "ntfy kommandoenhet (kommandon + stat)",
  "@s30ae7f76e6": {
   "x-mt": true
@@ -6379,6 +6895,14 @@
  "@s8bcb8433f9": {
   "x-mt": true
  },
+ "sc5d938e26e": "Vane position",
+ "@sc5d938e26e": {
+  "x-mt": true
+ },
+ "s5ce3991e13": "Slider för luftriktningen (0 = enheten bestämmer, 5 = lägst).",
+ "@s5ce3991e13": {
+  "x-mt": true
+ },
  "s78a5e5fa61": "Rumstemperatur från blaster sensor",
  "@s78a5e5fa61": {
   "x-mt": true
@@ -6743,8 +7267,16 @@
  "@s3378eb2d0b": {
   "x-mt": true
  },
+ "sdfa0c29399": "Senast skickad (IR är envägs)",
+ "@sdfa0c29399": {
+  "x-mt": true
+ },
  "seab2c72485": "Fan (0 = auto)",
  "@seab2c72485": {
+  "x-mt": true
+ },
+ "s7847d8821b": "Vane (0 = auto, 5 = lägst)",
+ "@s7847d8821b": {
   "x-mt": true
  },
  "s3a38b97f7b": "{p0} – rum",
@@ -6755,180 +7287,12 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "saa4df8e877": "Bridge hittades inte. Är telefonen på brons Wi-Fi \"Molaplan-XXXX\"? Om nätverket saknas, håll bronknappen för 3 s (inställningen öppnas i 15 minuter).",
- "@saa4df8e877": {
+ "sfad8715d97": "Kunde inte nå kontotjänsten. Kontrollera Wi-Fi eller mobildata och försök igen.",
+ "@sfad8715d97": {
   "x-mt": true
  },
- "sf5293b1989": "Bron är inte i installationsläge. Håll knappen för 3 s och försök igen.",
- "@sf5293b1989": {
-  "x-mt": true
- },
- "s839deeab41": "Detta är inte bron på etiketten / QR-koden (nyckelbrist). Ingenting skickades.",
- "@s839deeab41": {
-  "x-mt": true
- },
- "s3694ce006b": "Brons svar är inte giltigt (krypteringsmissmatch). Ingenting sparades.",
- "@s3694ce006b": {
-  "x-mt": true
- },
- "s61aea0b713": "Bron avvisade installationen: {p0}",
- "@s61aea0b713": {
-  "x-mt": true
- },
- "s63551081b0": "Lägg hem bridge",
- "@s63551081b0": {
-  "x-mt": true
- },
- "s592edd94e7": "Molaplan Bridge-enhet",
- "@s592edd94e7": {
-  "x-mt": true
- },
- "sa329968355": "En liten alltid-på-enhet (t.ex. Athom IR / RF-kontrollen) som passerar fjärrkommandon till dina enheter och styr värmepumpen genom infraröd.",
- "@sa329968355": {
-  "x-mt": true
- },
- "sd8790684a6": "Ström bron. En ny bro öppnar inställningen själv (slow blink, en gång i sekunden).",
- "@sd8790684a6": {
-  "x-mt": true
- },
- "s087004d26c": "Öppna telefonens Wi-Fi-inställningar och gå med i \"Molaplan-XXXX\" (inget lösenord).",
- "@s087004d26c": {
-  "x-mt": true
- },
- "sf85e449cd8": "Kom tillbaka hit och tryck på \"Find bridge\".",
- "@sf85e449cd8": {
-  "x-mt": true
- },
- "s57466387fc": "Hitta bridge",
- "@s57466387fc": {
-  "x-mt": true
- },
- "sd166e3cf6f": "Bridge hittade",
- "@sd166e3cf6f": {
-  "x-mt": true
- },
- "s6b841de5dd": "Brandvaring",
- "@s6b841de5dd": {
-  "x-mt": true
- },
- "s88fa323548": "Home Wi-Fi",
- "@s88fa323548": {
-  "x-mt": true
- },
- "sf48dd63b0a": "Nätverksnamn",
- "@sf48dd63b0a": {
-  "x-mt": true
- },
- "s9f9c574cf9": "Wi-Fi lösenord",
- "@s9f9c574cf9": {
-  "x-mt": true
- },
- "sc452460b0f": "Styrelsestyrelsen",
- "@sc452460b0f": {
-  "x-mt": true
- },
- "s4bdd633042": "Otestade",
- "@s4bdd633042": {
-  "x-mt": true
- },
- "sbe6a859b63": "Detaljerna skickas krypterad - bron Wi-Fi är öppen, men lösenordet kan inte läsas av det.",
- "@sbe6a859b63": {
-  "x-mt": true
- },
- "s77af0820de": "Anslut bron",
- "@s77af0820de": {
-  "x-mt": true
- },
- "s1ec01d8473": "Bridge ansluten!",
- "@s1ec01d8473": {
-  "x-mt": true
- },
- "s88bc217a1b": "Bron går nu med i hemmet Wi-Fi (ljus på med ett kort dopp var tredje när den är ansluten). Byt telefonen tillbaka till hemmet Wi-Fi eller mobildata - Fjärråtkomst visar brostatus.",
- "@s88bc217a1b": {
-  "x-mt": true
- },
- "sa949a952bf": "Lägg till hembro (Molaplan Bridge-enhet)",
- "@sa949a952bf": {
-  "x-mt": true
- },
- "sb641af74b7": "En liten alltid-på-enhet, t.ex. Athom IR/RF, styr också värmepumpen. Ställ in med telefonen om några minuter.",
- "@sb641af74b7": {
-  "x-mt": true
- },
- "sf83143ae23": "Rumstemperatur sensor",
- "@sf83143ae23": {
-  "x-mt": true
- },
- "s0483226428": "Välj en temperatursensor",
- "@s0483226428": {
-  "x-mt": true
- },
- "s7dcc5e6c76": ", vane ",
- "@s7dcc5e6c76": {
-  "x-mt": true
- },
- "s7c815852f2": "Inte sänt ännu",
- "@s7c815852f2": {
-  "x-mt": true
- },
- "s4795d331a5": "Skickat på {p0}",
- "@s4795d331a5": {
-  "x-mt": true
- },
- "sff577ce033": "Sänd {p0}. {p1}. på {p2}",
- "@sff577ce033": {
-  "x-mt": true
- },
- "sa00d64c920": "Vane",
- "@sa00d64c920": {
-  "x-mt": true
- },
- "s39f8bf0f76": "Sent at",
- "@s39f8bf0f76": {
-  "x-mt": true
- },
- "s91e5fff1f0": "rum {p0} °C",
- "@s91e5fff1f0": {
-  "x-mt": true
- },
- "sd3cd4220ae": "auto auto auto auto auto",
- "@sd3cd4220ae": {
-  "x-mt": true
- },
- "s640687fc2d": "högsta högsta högsta",
- "@s640687fc2d": {
-  "x-mt": true
- },
- "s3516ee9f50": "Hög högt",
- "@s3516ee9f50": {
-  "x-mt": true
- },
- "sb847c3774e": "Mitten",
- "@sb847c3774e": {
-  "x-mt": true
- },
- "sc4ebe5627c": "lågt lågt lågt",
- "@sc4ebe5627c": {
-  "x-mt": true
- },
- "saacae8d5c5": "lägsta",
- "@saacae8d5c5": {
-  "x-mt": true
- },
- "sc5d938e26e": "Vane position",
- "@sc5d938e26e": {
-  "x-mt": true
- },
- "s5ce3991e13": "Slider för luftriktningen (0 = enheten bestämmer, 5 = lägst).",
- "@s5ce3991e13": {
-  "x-mt": true
- },
- "sdfa0c29399": "Senast skickad (IR är envägs)",
- "@sdfa0c29399": {
-  "x-mt": true
- },
- "s7847d8821b": "Vane (0 = auto, 5 = lägst)",
- "@s7847d8821b": {
+ "sa052abd601": "Internet fungerar, men den säkra anslutningen till kontotjänsten misslyckades. Kontrollera enhetsdatum och tid.",
+ "@sa052abd601": {
   "x-mt": true
  }
 }

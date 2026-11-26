@@ -95,6 +95,12 @@ class AccountState extends ChangeNotifier {
   String? get email => session?.email;
   bool get hasKey => _key != null;
 
+  /// R215: the account key (only on the user's own devices) – sharing derives its key from it.
+  List<int>? get accountKey => _key;
+
+  /// A valid session (refreshed when needed), for features that call the account service.
+  Future<Session> freshSession() => _fresh();
+
   // ---------------------------------------------------------------- persistence
 
   Future<void> load() async {

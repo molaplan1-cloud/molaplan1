@@ -5,6 +5,7 @@ import 'dart:math';
 
 import 'package:cryptography/cryptography.dart';
 
+import '../core/net_fallback.dart';
 import '../state/stores.dart';
 import 'e2e.dart';
 import 'protocol.dart';
@@ -75,7 +76,8 @@ class PairingFailed implements Exception {
 
 Future<WebSocket> _connectWs(String url) async {
   try {
-    return await WebSocket.connect(url).timeout(const Duration(seconds: 15));
+    // t219u: on a network-level failure try another route (Android fallback) once.
+    return await NetFallback.run(() => WebSocket.connect(url).timeout(const Duration(seconds: 15)));
   } on TimeoutException {
     throw RemoteUnavailable('no_internet', 'timeout');
   } on SocketException catch (e) {

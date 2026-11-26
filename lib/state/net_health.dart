@@ -8,6 +8,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 
 import '../core/friendly_error.dart';
+import '../core/net_fallback.dart';
 import '../devices/provider.dart' show localIPv4s, isPrivateIPv4;
 
 /// t212u/t213u: what exactly was checked and what failed.
@@ -113,7 +114,20 @@ class NetHealth extends ChangeNotifier {
       timed('TCP 8.8.8.8:53', () => tcp('8.8.8.8', 53)),
       timed('Relay $relayHost:443', () => tcp(relayHost, 443)),
     ]);
-    final internet = checks.take(4).any((x) => x) || checks[4];
+    var internet = checks.take(4).any((x) => x) || checks[4];
+    // t219u: all failed → maybe this process has no default network (HTC 5G Hub): ask for a
+    // route over any internet-capable network and test once more.
+    if (!internet && await NetFallback.recover()) {
+      results['Fallback'] = '${NetFallback.last?.action} ${NetFallback.last?.diag ?? ''}'.trim();
+      final again = await Future.wait([
+        timed('TCP 1.1.1.1:443 (fallback)', () => tcp('1.1.1.1', 443)),
+        timed('Relay $relayHost:443 (fallback)', () => tcp(relayHost, 443)),
+      ]);
+      if (again.any((x) => x)) {
+        internet = true;
+        checks[4] = again[1];
+      }
+    }
     return NetProbe(internet: internet, relay: internet ? checks[4] : null, results: results);
   }
 

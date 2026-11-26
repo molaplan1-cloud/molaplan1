@@ -169,6 +169,7 @@ object EngineHolder {
                 channel = null
             }
         })
+        NetBinder.register(app, e.dartExecutor.binaryMessenger) // t219u
         channel = MethodChannel(e.dartExecutor.binaryMessenger, "molaplan/bridge_service").apply {
             setMethodCallHandler { call, result ->
                 when (call.method) {

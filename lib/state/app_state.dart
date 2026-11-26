@@ -33,6 +33,9 @@ import '../version.dart';
 import 'bridge_service.dart';
 import 'net_health.dart';
 import 'remote_state.dart';
+import '../sharing/share_api.dart';
+import '../sharing/share_state.dart';
+import '../remote/protocol.dart' show RemoteDeviceError, RemoteUnavailable;
 import 'storage.dart';
 import 'update_state.dart';
 import '../l10n/l10n.dart';
@@ -57,6 +60,14 @@ class AppState extends ChangeNotifier implements SyncHost {
         isMeasureTile(t) && !measureHistory.covers(measureKey(t), t.trendHours) && _backfilled.add(_bfKey(t));
     account = AccountState(store: secretStore, host: this, api: accountApi, kdfIterations: kdfIterations);
     account.addListener(notifyListeners);
+    sharing = ShareState(host: _AppShareHost(this), api: account.api);
+    sharing.addListener(notifyListeners);
+    account.addListener(() {
+      if (account.signedIn != _shareSignedIn) {
+        _shareSignedIn = account.signedIn;
+        if (shareAuto) unawaited(sharing.refresh(quiet: true));
+      }
+    });
     remote = RemoteState(store: secretStore, configJson: () => exportJson(includeSecrets: true));
     remote.addListener(notifyListeners);
     this.bridgeService.listen((up) {
@@ -111,6 +122,14 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   /// Molaplan account (optional): sync between the user's devices.
   late final AccountState account;
+
+  /// R215–R217: sharing devices with other users, installer access.
+  late final ShareState sharing;
+
+  /// main() turns on background share refresh (tests drive it by hand).
+  bool shareAuto = false;
+  bool _shareSignedIn = false;
+  Timer? _sharePush;
 
   AppConfig config = AppConfig();
   final _drivers = <String, Driver>{};
@@ -459,6 +478,11 @@ class AppState extends ChangeNotifier implements SyncHost {
       } catch (_) {}
     }
     _fixRawIdTitles();
+    _shareSignedIn = account.signedIn;
+    if (shareAuto) {
+      sharing.startPolling();
+      unawaited(sharing.refresh(quiet: true));
+    }
     unawaited(automations.start());
     unawaited(
       repairSensorTiles(config, driverFor).then((c) async {
@@ -519,6 +543,41 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (!_applyingSync) account.localChanged();
     _scheduleRulesPush();
     automations.changed();
+    if (sharing.mine.any((r) => r.status == ShareStatus.active)) {
+      _sharePush?.cancel();
+      _sharePush = Timer(const Duration(seconds: 3), () => unawaited(sharing.pushPackages()));
+    }
+  }
+
+  /// Owner side of sharing: this device's bridge, or the paired one over the relay.
+  Future<Map<String, dynamic>> shareBridgeCall(String op, Map<String, dynamic> spec) async {
+    final b = remote.bridge;
+    if (b != null) {
+      if (op == 'share_put') {
+        return b.putShare(
+          id: '${spec['id']}',
+          label: '${spec['label'] ?? ''}',
+          package: Map<String, dynamic>.from(spec['package'] as Map),
+          recipientPub: spec['pub'] as String?,
+          recipientName: '${spec['name'] ?? 'Molaplan'}',
+        );
+      }
+      if (op == 'share_revoke') {
+        await b.revokeShare('${spec['id']}');
+        return {'revoked': true};
+      }
+    }
+    final c = remote.router.client;
+    if (c == null) throw ShareError(ShareProblem.noBridge);
+    try {
+      final v = await c.call(op, spec: spec, timeout: const Duration(seconds: 25));
+      return Map<String, dynamic>.from(v as Map);
+    } on RemoteDeviceError catch (e) {
+      if (e.message.contains('Unknown op')) throw ShareError(ShareProblem.bridgeOld, e.message);
+      rethrow;
+    } on RemoteUnavailable catch (e) {
+      throw ShareError(ShareProblem.noBridge, e.reason);
+    }
   }
 
   // ---- price rules: they run on the home bridge, so every change is pushed there.
@@ -1276,6 +1335,9 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   @override
   void dispose() {
+    _sharePush?.cancel();
+    sharing.removeListener(notifyListeners);
+    sharing.dispose();
     _autoUpdate?.cancel();
     _rulesTimer?.cancel();
     _energySaveTimer?.cancel();
@@ -1295,4 +1357,25 @@ class AppState extends ChangeNotifier implements SyncHost {
     }
     super.dispose();
   }
+}
+
+class _AppShareHost implements ShareHost {
+  _AppShareHost(this.app);
+  final AppState app;
+  @override
+  SecretStore get store => app.secretStore;
+  @override
+  AppConfig get config => app.config;
+  @override
+  Future<Session?> session() async => app.account.signedIn ? app.account.freshSession() : null;
+  @override
+  List<int>? get accountKey => app.account.accountKey;
+  @override
+  String get myName {
+    final e = app.account.email ?? '';
+    return e.contains('@') ? e.substring(0, e.indexOf('@')) : app.deviceName();
+  }
+
+  @override
+  Future<Map<String, dynamic>> bridgeCall(String op, Map<String, dynamic> spec) => app.shareBridgeCall(op, spec);
 }

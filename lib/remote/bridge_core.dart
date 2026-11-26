@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:cryptography/cryptography.dart';
 
+import '../core/net_fallback.dart';
 import '../state/stores.dart';
 import 'e2e.dart';
 import '../automation/host.dart';
@@ -13,21 +14,33 @@ import '../prices/prices.dart';
 import '../energy/thermostat.dart';
 import '../rules/price_rules.dart';
 import 'protocol.dart';
+import '../models/models.dart';
+import '../sharing/share_core.dart';
 
 enum BridgeLink { off, connecting, online, error }
 
 class PairedDevice {
-  PairedDevice({required this.id, required this.name, required this.pub, required this.added});
+  PairedDevice({required this.id, required this.name, required this.pub, required this.added, this.share});
   final String id;
   final String name;
   final String pub; // base64url X25519
   final DateTime added;
-  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'pub': pub, 'added': added.toIso8601String()};
+
+  /// R215: set for a shared user / installer – this device may only use the tiles of that share.
+  final String? share;
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'name': name,
+    'pub': pub,
+    'added': added.toIso8601String(),
+    'share': ?share,
+  };
   factory PairedDevice.fromJson(Map<String, dynamic> j) => PairedDevice(
     id: j['id'] as String,
     name: (j['name'] ?? '') as String,
     pub: j['pub'] as String,
     added: DateTime.tryParse('${j['added']}') ?? DateTime.now(),
+    share: j['share'] as String?,
   );
 }
 
@@ -116,6 +129,10 @@ class BridgeCore {
   late String _bridgeKey;
   late Identity _id;
   final devices = <PairedDevice>[];
+
+  /// R215: share id -> {label, scope, tiles (full TileConfig json), conns (with secrets)}. Stays here.
+  final shares = <String, Map<String, dynamic>>{};
+  final _shareSeen = <String, DateTime>{};
   final _keys = <String, SecretKey>{};
   final _seen = <String, DateTime>{};
 
@@ -149,6 +166,14 @@ class BridgeCore {
       devices
         ..clear()
         ..addAll([for (final d in (j['devices'] as List? ?? [])) PairedDevice.fromJson(Map<String, dynamic>.from(d))]);
+      final sh = await store.read('$storageKey.shares');
+      if (sh != null) {
+        try {
+          shares
+            ..clear()
+            ..addAll(Map<String, dynamic>.from(jsonDecode(sh) as Map).map((k, v) => MapEntry(k, Map<String, dynamic>.from(v as Map))));
+        } catch (_) {}
+      }
       final rr = await store.read('$storageKey.rules');
       if (rr != null) {
         try {
@@ -396,6 +421,14 @@ class BridgeCore {
         cancelOnError: true,
       );
     } catch (e) {
+      // t219u: the socket failed before reaching the relay → try another route right away.
+      if (NetFallback.isNetworkFailure(e) && await NetFallback.recover()) {
+        log?.call('relay connect failed ($e) – retrying via ${NetFallback.last?.network ?? 'fallback network'}');
+        _connecting = false;
+        _retry?.cancel();
+        _retry = Timer(Duration.zero, _connect);
+        return;
+      }
       _lost('$e');
     } finally {
       _connecting = false;
@@ -521,10 +554,10 @@ class BridgeCore {
     };
   }
 
-  Future<void> _allow(String dev, String name, String pub, String token) async {
+  Future<void> _allow(String dev, String name, String pub, String token, {String? share}) async {
     _send({'t': 'allow', 'dev': dev, 'h': await sha256Hex(token)});
     devices.removeWhere((e) => e.id == dev);
-    final pd = PairedDevice(id: dev, name: name, pub: pub, added: DateTime.now());
+    final pd = PairedDevice(id: dev, name: name, pub: pub, added: DateTime.now(), share: share);
     devices.add(pd);
     _keys.remove(dev);
     await _save();
@@ -557,6 +590,177 @@ class BridgeCore {
     _send({'t': 'revoke', 'dev': dev});
     await _save();
     _changes.add(null);
+  }
+
+  // ---------------------------------------------------------------- R215 sharing
+
+  Future<void> _saveShares() => store.write('$storageKey.shares', jsonEncode(shares));
+
+  /// "share_put" from the owner: stores / replaces the share's tiles and permission. The first time
+  /// it also lets the recipient's share key in (a device limited to this share) and returns the
+  /// credential; the owner's app seals it to the recipient – the token is never stored in clear
+  /// text outside this bridge and the recipient.
+  Future<Map<String, dynamic>> _sharePut(Map<String, dynamic> spec) => putShare(
+    id: '${spec['id']}',
+    label: '${spec['label'] ?? ''}',
+    package: Map<String, dynamic>.from((spec['package'] as Map?) ?? const {}),
+    recipientPub: spec['pub'] as String?,
+    recipientName: '${spec['name'] ?? 'Molaplan'}',
+  );
+
+  Future<Map<String, dynamic>> putShare({
+    required String id,
+    required String label,
+    required Map<String, dynamic> package,
+    String? recipientPub,
+    String recipientName = 'Molaplan',
+  }) async {
+    if (!RegExp(r'^[0-9a-f-]{8,40}$').hasMatch(id)) throw ArgumentError('bad share id');
+    if (package['scope'] is! Map || package['tiles'] is! Map) throw ArgumentError('bad share package');
+    shares[id] = {'label': label, 'updated': DateTime.now().toIso8601String(), ...package};
+    await _saveShares();
+    final have = devices.where((d) => d.share == id).firstOrNull;
+    Map<String, dynamic> out = {'id': id, 'updated': true};
+    if (have == null || (recipientPub != null && recipientPub != have.pub)) {
+      if (recipientPub == null || recipientPub.length < 40) throw ArgumentError('recipient key missing');
+      if (have != null) await removeDevice(have.id);
+      final dev = randomHex(16);
+      final token = b64(randomBytes(32));
+      await _allow(dev, recipientName, recipientPub, token, share: id);
+      log?.call('share $id: device $dev allowed (${(package['tiles'] as Map).length} tiles)');
+      out = {'id': id, 'relay': relay, 'home': home, 'dev': dev, 'bridgePub': publicKey, 'token': token, 'name': homeName};
+    }
+    _changes.add(null);
+    return out;
+  }
+
+  /// Revoking removes the device at once (the relay drops its token) and forgets the tiles.
+  Future<void> revokeShare(String id) async {
+    for (final d in devices.where((d) => d.share == id).toList()) {
+      await removeDevice(d.id);
+    }
+    shares.remove(id);
+    await _saveShares();
+    _changes.add(null);
+  }
+
+  List<Map<String, dynamic>> shareList() => [
+    for (final e in shares.entries)
+      {
+        'id': e.key,
+        'label': e.value['label'],
+        'tiles': (e.value['tiles'] as Map?)?.length ?? 0,
+        'device': devices.where((d) => d.share == e.key).firstOrNull?.name,
+        'seen': _shareSeen[e.key]?.toIso8601String(),
+      },
+  ];
+
+  static Map<String, dynamic> _forbidden(Object? id, [String e = 'Ei oikeutta']) => {
+    'id': id,
+    'ok': false,
+    'e': e,
+    'k': 'forbidden',
+  };
+
+  /// Every request of a shared user / installer goes through here. Only tile ids of the share are
+  /// accepted; the connection, address and secrets come from the stored package, never from the
+  /// request, and each action is checked against the permission.
+  Future<Map<String, dynamic>> sharedOp(String shareId, Map<String, dynamic> r) async {
+    final id = r['id'];
+    final pkg = shares[shareId];
+    if (pkg == null) return _forbidden(id, 'Jako on peruttu');
+    final scope = ShareScope.fromJson(Map<String, dynamic>.from(pkg['scope'] as Map));
+    final tiles = Map<String, dynamic>.from(pkg['tiles'] as Map);
+    final conns = Map<String, dynamic>.from((pkg['conns'] as Map?) ?? const {});
+    final spec = Map<String, dynamic>.from((r['spec'] as Map?) ?? const {});
+    TileConfig? tile(String tid) =>
+        tiles[tid] is Map ? TileConfig.fromJson(Map<String, dynamic>.from(tiles[tid] as Map)) : null;
+    Map<String, dynamic>? conn(String? cid) => cid == null || conns[cid] is! Map ? null : Map<String, dynamic>.from(conns[cid] as Map);
+
+    Future<Map<String, dynamic>> readTile(TileConfig t, Object? rid) async {
+      final c = conn(t.connectionId);
+      if (c == null) return {'id': rid, 'ok': false, 'e': 'Ei luettavaa tilaa', 'k': 'unknown'};
+      if (t.type == TileType.camera) return executor.run({'id': rid, 'op': 'snapshot', 'conn': c, 'spec': t.read});
+      return executor.run({'id': rid, 'op': 'read', 'conn': c, 'spec': t.read});
+    }
+
+    switch (r['op']) {
+      case 'ping':
+        return {'id': id, 'ok': true, 'v': {'v': remoteProtocolVersion}};
+      case 's_config':
+        return {
+          'id': id,
+          'ok': true,
+          'v': {
+            'home': homeName,
+            'label': pkg['label'],
+            'level': scope.level,
+            'tiles': [
+              for (final tid in tiles.keys)
+                if (tile(tid) case final t?) publicTile(t, {for (final c in ShareCap.values) if (scope.allows(tid, c)) c}),
+            ],
+          },
+        };
+      case 's_status':
+        final out = <String, dynamic>{};
+        final alarms = <Map<String, dynamic>>[];
+        await Future.wait([
+          for (final tid in tiles.keys)
+            if (tile(tid) case final t? when scope.allows(tid, ShareCap.view) && t.type != TileType.camera)
+              readTile(t, tid).then((v) {
+                out[tid] = v['ok'] == true ? {'v': v['v']} : {'e': v['e']};
+                final x = v['v'];
+                if (t.sensor != null && v['ok'] == true && (x == true || x == 1 || x == '1' || x == 'on' || x == 'true')) {
+                  alarms.add({'tile': tid, 'title': t.title, 'sensor': t.sensor});
+                }
+                if (v['ok'] != true) alarms.add({'tile': tid, 'title': t.title, 'error': v['e']});
+              }),
+        ]);
+        return {
+          'id': id,
+          'ok': true,
+          'v': {'tiles': out, 'alarms': alarms, 'link': link.name, 'ts': DateTime.now().millisecondsSinceEpoch},
+        };
+      case 's_read':
+        final tid = '${spec['tile']}';
+        final t = tile(tid);
+        if (t == null || !scope.allows(tid, ShareCap.view)) return _forbidden(id);
+        return readTile(t, id);
+      case 's_send':
+        final tid = '${spec['tile']}';
+        final t = tile(tid);
+        final action = '${spec['action'] ?? ''}';
+        if (t == null || !scope.allows(tid, capFor(t, action))) return _forbidden(id);
+        final steps = switch (action) {
+          'on' => [?t.onCommand],
+          'off' => [?t.offCommand],
+          'press' || 'set' => t.commands,
+          _ => const <CommandStep>[],
+        };
+        if (steps.isEmpty) return _forbidden(id, 'Toimintoa ei ole tässä laatassa');
+        if (action == 'set') {
+          final v = (r['value'] as num?)?.toDouble();
+          if (v == null || v < t.min || v > t.max) return _forbidden(id, 'Arvo sallitun alueen ulkopuolella');
+        }
+        Map<String, dynamic> last = {'id': id, 'ok': true, 'v': null};
+        for (final s in steps) {
+          final c = conn(s.connectionId);
+          if (c == null) return _forbidden(id, 'Yhteys puuttuu');
+          if (s.delayMs > 0) await Future<void>.delayed(Duration(milliseconds: s.delayMs.clamp(0, 30000)));
+          last = await executor.run({'id': id, 'op': 'send', 'conn': c, 'spec': s.spec, 'value': r['value']});
+          if (last['ok'] != true) return last;
+        }
+        log?.call('share $shareId: $action on "${t.title}"');
+        return last;
+      case 'bridge_info':
+        return _hookOp(r, (_) async {
+          final i = await info?.call() ?? {};
+          return {'app': i['app'], 'platform': i['platform']};
+        });
+    }
+    // config, scan, read/send with a connection, rules, automations, enroll, updates, shares … –
+    // owner only.
+    return _forbidden(id);
   }
 
   // ---------------------------------------------------------------- requests
@@ -593,9 +797,21 @@ class BridgeCore {
     if (_seen.containsKey(n)) return; // replay
     _seen[n] = now;
     final batch = [for (final r in (msg['b'] as List? ?? [])) Map<String, dynamic>.from(r as Map)];
+    final scoped = devices.where((e) => e.id == dev).firstOrNull?.share;
+    if (scoped != null) {
+      _shareSeen[scoped] = now;
+      final results = await Future.wait(batch.map((r) => sharedOp(scoped, r)));
+      return _reply(dev, key, {'r': results});
+    }
     final results = await Future.wait(
       batch.map(
         (r) => switch (r['op']) {
+          'share_put' => _hookOp(r, _sharePut),
+          'share_revoke' => _hookOp(r, (spec) async {
+            await revokeShare('${spec['id']}');
+            return {'revoked': true};
+          }),
+          'share_list' => _hookOp(r, (_) async => {'shares': shareList()}),
           'enroll' => _enroll(r),
           'rules' => _rulesOp(r),
           'automations' => _automationsOp(r),

@@ -16,6 +16,7 @@ import 'app_scope.dart';
 import 'guides_page.dart';
 import 'onboarding_page.dart';
 import 'remote_pages.dart';
+import 'share_pages.dart';
 import 'update_ui.dart';
 import '../version.dart';
 import 'language_picker.dart';
@@ -335,6 +336,42 @@ class _SettingsPageState extends State<SettingsPage> {
                       tx(context, 'Ohjeet: VPN, Nabu Casa, pilvi-MQTT', 'Guides: VPN, Nabu Casa, cloud MQTT'),
                     ),
                   ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              // R215–R217: sharing + installer.
+              Text(tx(context, 'Jakaminen', 'Sharing'), style: text.titleMedium),
+              const SizedBox(height: 4),
+              Text(
+                tx(context, 'Anna toiselle pääsy valitsemiisi laitteisiin.', 'Give someone access to the devices you choose.'),
+                style: text.bodySmall,
+              ),
+              const SizedBox(height: 8),
+              Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: [
+                  FilledButton.tonalIcon(
+                    key: const ValueKey('settings-sharing'),
+                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SharingPage())),
+                    icon: Badge(
+                      isLabelVisible: st.sharing.badge > 0,
+                      label: Text('${st.sharing.badge}'),
+                      child: const Icon(Icons.share_outlined),
+                    ),
+                    label: Text(
+                      st.sharing.badge > 0
+                          ? tx(context, 'Jakaminen – uusi kutsu', 'Sharing – new invite')
+                          : tx(context, 'Jakaminen', 'Sharing'),
+                    ),
+                  ),
+                  if (st.sharing.installer)
+                    OutlinedButton.icon(
+                      key: const ValueKey('settings-installer'),
+                      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const InstallerPage())),
+                      icon: const Icon(Icons.engineering_outlined),
+                      label: Text(tx(context, 'Asentaja', 'Installer')),
+                    ),
                 ],
               ),
               const SizedBox(height: 28),

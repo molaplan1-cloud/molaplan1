@@ -18,6 +18,9 @@ class FakeSupabase {
   bool autoconfirm;
   final users = <String, FakeUser>{}; // by email
   final rows = <String, Map<String, dynamic>>{}; // by user id
+  // R215: sharing tables (mirroring supabase/migrations/20261126120000_sharing.sql + its RLS).
+  final profiles = <String, Map<String, dynamic>>{}; // by user id
+  final shares = <String, Map<String, dynamic>>{}; // by share id
   final codes = <String, String>{}; // email|type -> code
   final _tokens = <String, String>{}; // access -> uid
   final _refresh = <String, String>{}; // refresh -> uid
@@ -27,6 +30,9 @@ class FakeSupabase {
   final sent = <String>[]; // "type:email"
 
   AccountApi api() => AccountApi(url: 'https://fake.supabase', key: 'pk', client: MockClient(_handle));
+
+  /// The raw handler (t219u: wrap it to simulate a broken route).
+  Future<http.Response> handle(http.Request r) => _handle(r);
 
   String lastCode(String email, String type) => codes['$email|$type']!;
 
@@ -167,6 +173,145 @@ class FakeSupabase {
         return _j([row]);
       }
     }
+    final shareReply = _sharing(req, p, uid, body);
+    if (shareReply != null) return shareReply;
     return _j({'message': 'not found $p'}, 404);
+  }
+
+  http.Response _pgErr(String code, String msg, [int status = 400]) => _j({'code': code, 'message': msg}, status);
+
+  http.Response? _sharing(http.Request req, String p, String uid, Map<String, dynamic> body) {
+    final q = req.url.queryParameters;
+    String? eq(String k) => q[k]?.replaceFirst('eq.', '');
+    final now = DateTime.now().toUtc().toIso8601String();
+    if (p == '/rest/v1/profiles') {
+      if (req.method == 'GET') return _j([if (eq('user_id') == uid && profiles[uid] != null) profiles[uid]]);
+      if (req.method == 'PATCH') {
+        final r = eq('user_id') == uid ? profiles[uid] : null;
+        if (r == null) return _j([]);
+        for (final k in ['display_name', 'share_pub', 'installer', 'company']) {
+          if (body.containsKey(k)) r[k] = body[k];
+        }
+        return _j([r]);
+      }
+      if (req.method == 'POST') {
+        if (body['user_id'] != uid) return _pgErr('42501', 'new row violates row-level security policy', 403);
+        if (profiles[uid] != null) return _pgErr('23505', 'duplicate key', 409);
+        profiles[uid] = {'user_id': uid, 'display_name': '', 'share_pub': null, 'installer': false, 'company': '', ...body};
+        return _j([profiles[uid]], 201);
+      }
+    }
+    if (p == '/rest/v1/rpc/find_share_recipient') {
+      final u = users['${body['p_email']}'.trim().toLowerCase()];
+      final pr = u == null ? null : profiles[u.id];
+      if (u == null || u.id == uid || pr == null || pr['share_pub'] == null) return _j([]);
+      return _j([
+        {'user_id': u.id, 'display_name': pr['display_name'], 'share_pub': pr['share_pub'], 'installer': pr['installer']},
+      ]);
+    }
+    if (p == '/rest/v1/shares') {
+      final id = eq('id');
+      final r = id == null ? null : shares[id];
+      final visible = r != null && (r['owner_id'] == uid || r['recipient_id'] == uid);
+      if (req.method == 'GET') {
+        final l = [for (final x in shares.values) if (x['owner_id'] == uid || x['recipient_id'] == uid) x];
+        l.sort((a, b) => '${b['created_at']}'.compareTo('${a['created_at']}'));
+        return _j(l);
+      }
+      if (req.method == 'POST') {
+        if ((body['status'] ?? 'pending') != 'pending' || body.containsKey('owner_id') && body['owner_id'] != uid) {
+          return _pgErr('42501', 'new row violates row-level security policy', 403);
+        }
+        if (body['recipient_id'] == uid) return _pgErr('23514', 'shares_not_self');
+        final sid = '${body['id'] ?? 'gen-${++_n}'}';
+        shares[sid] = {
+          'id': sid,
+          'owner_id': uid,
+          'recipient_id': null,
+          'kind': 'share',
+          'status': 'pending',
+          'label': '',
+          'level': 'limited',
+          'summary': {},
+          'owner_name': '',
+          'recipient_name': '',
+          'recipient_pub': null,
+          'payload': null,
+          'code_hash': null,
+          'code_expires_at': null,
+          ...body,
+          'created_at': '$now#${_n++}',
+          'updated_at': now,
+        };
+        return _j([shares[sid]], 201);
+      }
+      if (req.method == 'PATCH') {
+        if (r == null || r['owner_id'] != uid) return _j([]);
+        for (final k in body.keys) {
+          if (!const {'status', 'label', 'level', 'summary', 'owner_name', 'payload'}.contains(k)) {
+            return _pgErr('42501', 'permission denied for table shares', 403);
+          }
+        }
+        final from = r['status'], to = body['status'] ?? from;
+        if (from == 'revoked' || from == 'declined') return _pgErr('42501', 'a closed share cannot be changed', 403);
+        if (to != from &&
+            !((from == 'pending' && to == 'revoked') ||
+                (from == 'claimed' && (to == 'active' || to == 'revoked')) ||
+                (from == 'active' && to == 'revoked'))) {
+          return _pgErr('42501', 'share status $from -> $to not allowed', 403);
+        }
+        if (to == 'active' && (body['payload'] ?? r['payload']) == null) return _pgErr('23514', 'needs credential');
+        r.addAll(body);
+        if (to == 'revoked') {
+          r['payload'] = null;
+          r['code_hash'] = null;
+        }
+        r['updated_at'] = now;
+        return _j([r]);
+      }
+      if (req.method == 'DELETE') {
+        if (r != null && r['owner_id'] == uid) shares.remove(id);
+        return http.Response('', 204);
+      }
+      if (!visible) return _j([]);
+    }
+    if (p == '/rest/v1/rpc/accept_share') {
+      final r = shares['${body['p_id']}'];
+      if (r == null || r['recipient_id'] != uid || r['status'] != 'pending' || r['payload'] == null) {
+        return _pgErr('P0002', 'no such invite');
+      }
+      if (r['kind'] == 'installer' && profiles[uid]?['installer'] != true) return _pgErr('42501', 'installer profile required');
+      r['status'] = 'active';
+      return http.Response('', 204);
+    }
+    if (p == '/rest/v1/rpc/leave_share') {
+      final r = shares['${body['p_id']}'];
+      if (r == null || r['recipient_id'] != uid || !const {'pending', 'claimed', 'active'}.contains(r['status'])) {
+        return _pgErr('P0002', 'no such share');
+      }
+      r
+        ..['status'] = 'declined'
+        ..['payload'] = null;
+      return http.Response('', 204);
+    }
+    if (p == '/rest/v1/rpc/claim_invite') {
+      final me = profiles[uid];
+      if (me == null || me['share_pub'] == null) return _pgErr('P0001', 'profile key missing');
+      final r = shares.values.where((x) => x['code_hash'] != null && x['code_hash'] == body['p_code_hash']).firstOrNull;
+      final exp = DateTime.tryParse('${r?['code_expires_at']}');
+      if (r == null || r['status'] != 'pending' || r['recipient_id'] != null || (exp != null && exp.isBefore(DateTime.now()))) {
+        return _pgErr('P0002', 'invalid or expired code');
+      }
+      if (r['owner_id'] == uid) return _pgErr('42501', 'own invite');
+      if (r['kind'] == 'installer' && me['installer'] != true) return _pgErr('42501', 'installer profile required');
+      r
+        ..['recipient_id'] = uid
+        ..['recipient_pub'] = me['share_pub']
+        ..['recipient_name'] = '${me['company'] ?? ''}'.isNotEmpty ? me['company'] : me['display_name']
+        ..['status'] = 'claimed'
+        ..['code_hash'] = null;
+      return _j(r['id']);
+    }
+    return null;
   }
 }

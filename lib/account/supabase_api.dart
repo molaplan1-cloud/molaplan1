@@ -4,6 +4,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../core/net_fallback.dart';
+
 /// Molaplan's account service (Supabase, free tier). The publishable key is public by design;
 /// every row is protected by RLS (a user can only read/write their own row).
 const accountUrl = 'https://fhuqbzdumxlqmgibhobl.supabase.co';
@@ -12,6 +14,9 @@ const accountPublishableKey = 'sb_publishable_37EfuCKp5F9x5AieZH3qvA__oP-Z82a';
 /// Why an account call failed, in a form the UI can explain in plain Finnish.
 enum AccountProblem {
   offline,
+
+  /// t219u: the network works but the secure (TLS) connection failed, e.g. the clock is wrong.
+  secureConnection,
   wrongPassword,
   emailNotConfirmed,
   userExists,
@@ -113,15 +118,23 @@ class AccountApi {
 
   Future<http.Response> _do(Future<http.Response> Function() f) async {
     try {
-      return await f().timeout(timeout);
+      // t219u: the real request decides; on a network-level failure try another route once.
+      return await NetFallback.run(() => f().timeout(timeout));
     } on TimeoutException {
       throw AccountError(AccountProblem.offline, 'timeout');
     } on http.ClientException catch (e) {
+      if (e.message.contains('Handshake') || e.message.contains('CERTIFICATE')) {
+        throw AccountError(AccountProblem.secureConnection, e.message);
+      }
       throw AccountError(AccountProblem.offline, e.message);
     } catch (e) {
       if (e is AccountError) rethrow;
       final s = '$e';
-      if (s.contains('SocketException') || s.contains('HandshakeException') || s.contains('Failed host lookup')) {
+      // t219u: a TLS failure is not "no internet" (often a wrong clock on the device).
+      if (s.contains('HandshakeException') || s.contains('CERTIFICATE')) {
+        throw AccountError(AccountProblem.secureConnection, s);
+      }
+      if (s.contains('SocketException') || s.contains('Failed host lookup')) {
         throw AccountError(AccountProblem.offline, s);
       }
       rethrow;
@@ -343,6 +356,61 @@ class AccountApi {
   Future<void> deleteAccount(Session s) async {
     final r = await _do(() => _http.post(_rest('rpc/delete_my_account'), headers: _h(s.access), body: '{}'));
     if (r.statusCode >= 300) _restError(r);
+  }
+
+  // ---- R215–R217: generic table / function access (used by lib/sharing/share_api.dart) ----
+
+  /// Supabase error code (`P0002` …) from a PostgREST error body, for plain-language messages.
+  static String restCode(String body) {
+    try {
+      return '${(jsonDecode(body) as Map)['code'] ?? ''}';
+    } catch (_) {
+      return '';
+    }
+  }
+
+  Future<List<Map<String, dynamic>>> select(Session s, String query) async {
+    final r = await _do(() => _http.get(_rest(query), headers: _h(s.access)));
+    if (r.statusCode != 200) _restError(r);
+    return [for (final e in jsonDecode(r.body) as List) Map<String, dynamic>.from(e as Map)];
+  }
+
+  Future<List<Map<String, dynamic>>> insert(Session s, String table, Map<String, dynamic> row, {bool upsert = false}) async {
+    final r = await _do(
+      () => _http.post(
+        _rest(table),
+        headers: {
+          ..._h(s.access),
+          'Prefer': upsert ? 'return=representation,resolution=merge-duplicates' : 'return=representation',
+        },
+        body: jsonEncode(row),
+      ),
+    );
+    if (r.statusCode >= 300) _restError(r);
+    return [for (final e in jsonDecode(r.body) as List) Map<String, dynamic>.from(e as Map)];
+  }
+
+  Future<List<Map<String, dynamic>>> patch(Session s, String query, Map<String, dynamic> values) async {
+    final r = await _do(
+      () => _http.patch(
+        _rest(query),
+        headers: {..._h(s.access), 'Prefer': 'return=representation'},
+        body: jsonEncode(values),
+      ),
+    );
+    if (r.statusCode >= 300) _restError(r);
+    return [for (final e in jsonDecode(r.body) as List) Map<String, dynamic>.from(e as Map)];
+  }
+
+  Future<void> remove(Session s, String query) async {
+    final r = await _do(() => _http.delete(_rest(query), headers: _h(s.access)));
+    if (r.statusCode >= 300) _restError(r);
+  }
+
+  Future<Object?> rpc(Session s, String fn, Map<String, dynamic> args) async {
+    final r = await _do(() => _http.post(_rest('rpc/$fn'), headers: _h(s.access), body: jsonEncode(args)));
+    if (r.statusCode >= 300) _restError(r);
+    return r.body.isEmpty ? null : jsonDecode(r.body);
   }
 
   void close() => _http.close();

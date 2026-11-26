@@ -65,7 +65,8 @@ import 'app_localizations_sv.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale)
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -73,7 +74,8 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -85,12 +87,13 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -1975,11 +1978,17 @@ abstract class AppLocalizations {
   /// **'The connection did not work: {p0}'**
   String sd0219ce512(String p0);
 
-  /// fi: Ei nettiyhteyttä. Tarkista wifi tai mobiilidata ja yritä uudelleen.
+  /// fi: Tilipalveluun ei saatu yhteyttä. Tarkista wifi tai mobiilidata ja yritä uudelleen.
   ///
   /// In en, this message translates to:
-  /// **'No internet connection. Check Wi-Fi or mobile data and try again.'**
-  String get sbf59e43c36;
+  /// **'Could not reach the account service. Check Wi-Fi or mobile data and try again.'**
+  String get sfad8715d97;
+
+  /// fi: Netti toimii, mutta suojattu yhteys tilipalveluun epäonnistui. Tarkista laitteen päivämäärä ja kellonaika.
+  ///
+  /// In en, this message translates to:
+  /// **'The internet works, but the secure connection to the account service failed. Check the device date and time.'**
+  String get sa052abd601;
 
   /// fi: Sähköposti tai salasana on väärin. Tarkista kirjoitusasu, tai paina "Unohdin salasanan".
   ///
@@ -4581,6 +4590,570 @@ abstract class AppLocalizations {
   /// **'Set up remote access'**
   String get s417eb9a875;
 
+  /// fi: Osoitteella ei löytynyt Molaplan-käyttäjää. Hänen pitää kirjautua Molaplan 0.9:ään kerran – tai lähetä hänelle kutsukood
+  ///
+  /// In en, this message translates to:
+  /// **'No Molaplan user with that address. They need to sign in to Molaplan 0.9 once – or send them an invite code.'**
+  String get sb4bd4baa5c;
+
+  /// fi: Valituissa ei ole jaettavia laitteita (termostaatteja ei voi vielä jakaa).
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing shareable selected (thermostats cannot be shared yet).'**
+  String get s7ed2aecb01;
+
+  /// fi: Kutsua ei enää ole.
+  ///
+  /// In en, this message translates to:
+  /// **'The invite no longer exists.'**
+  String get s707b7ff598;
+
+  /// fi: Avaa ensin tilin salaukset tällä laitteella (Tili → Avaa salasanalla). Jakaminen käyttää tilin avainta.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock the account secrets on this device first (Account → Unlock with password). Sharing uses the account key.'**
+  String get s5ea320fb1c;
+
+  /// fi: Tämä on asentajan kutsu: ota asentajaprofiili käyttöön (Jakaminen → Edistyneet).
+  ///
+  /// In en, this message translates to:
+  /// **'This invite is for an installer: turn on the installer profile (Sharing → Advanced).'**
+  String get s5aee30a4e4;
+
+  /// fi: Koodi on väärä, vanhentunut tai jo käytetty.
+  ///
+  /// In en, this message translates to:
+  /// **'The code is wrong, expired or already used.'**
+  String get sa562754cb5;
+
+  /// fi: Kotisilta ei vastaa. Jakaminen tarvitsee kotisillan (Etäkäyttö), koska oikeudet valvotaan siellä.
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge does not answer. Sharing needs the home bridge (Remote access) – permissions are enforced there.'**
+  String get s9c37d7a89c;
+
+  /// fi: Kotisilta on vanha eikä osaa jakamista. Päivitä silta (Etäkäyttö → Päivitä silta).
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge is too old for sharing. Update it (Remote access → Update bridge).'**
+  String get sc858a8f851;
+
+  /// fi: Ei yhteyttä Molaplan-tiliin.
+  ///
+  /// In en, this message translates to:
+  /// **'No connection to the Molaplan account.'**
+  String get s1a52f53861;
+
+  /// fi: Tilipalvelu ei hyväksynyt pyyntöä: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'The account service refused: {p0}'**
+  String s2457ec4502(String p0);
+
+  /// fi: Kodin silta ei ole yhteydessä.
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge is offline.'**
+  String get s4bc537975e;
+
+  /// fi: Jako on peruttu.
+  ///
+  /// In en, this message translates to:
+  /// **'The share was revoked.'**
+  String get s2fb5fe14e4;
+
+  /// fi: Kotisilta ei vastaa.
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge does not answer.'**
+  String get s7b44d47d45;
+
+  /// fi: Ei yhteyttä.
+  ///
+  /// In en, this message translates to:
+  /// **'No connection.'**
+  String get s8eddd585bc;
+
+  /// fi: Ei oikeutta tähän toimintoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Not allowed.'**
+  String get s47998395f5;
+
+  /// fi: Vain katselu
+  ///
+  /// In en, this message translates to:
+  /// **'View only'**
+  String get s7f504a8c64;
+
+  /// fi: Ohjaus
+  ///
+  /// In en, this message translates to:
+  /// **'Control'**
+  String get s9c067115ef;
+
+  /// fi: Täysi (ohjaus + asetukset)
+  ///
+  /// In en, this message translates to:
+  /// **'Full (control + settings)'**
+  String get s8343921765;
+
+  /// fi: Koodi odottaa käyttöä
+  ///
+  /// In en, this message translates to:
+  /// **'Code not used yet'**
+  String get s211d9f0a3a;
+
+  /// fi: Odottaa hyväksyntää
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for acceptance'**
+  String get s1e6b3fe5dc;
+
+  /// fi: Vahvistetaan…
+  ///
+  /// In en, this message translates to:
+  /// **'Being confirmed…'**
+  String get sb13063b8cd;
+
+  /// fi: Käytössä
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get s13b6f87b0a;
+
+  /// fi: Hylätty
+  ///
+  /// In en, this message translates to:
+  /// **'Declined'**
+  String get sed1d8dbf2b;
+
+  /// fi: Peruttu
+  ///
+  /// In en, this message translates to:
+  /// **'Revoked'**
+  String get s0123f33869;
+
+  /// fi: Jakaminen
+  ///
+  /// In en, this message translates to:
+  /// **'Sharing'**
+  String get s844e081db8;
+
+  /// fi: Päivitä
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
+  String get sfb1a18d11f;
+
+  /// fi: Jakaminen tarvitsee Molaplan-tilin, jotta kutsut löytävät perille ja salaus toimii.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharing needs a Molaplan account so invites can reach people and encryption works.'**
+  String get scdfdf5d233;
+
+  /// fi: Kirjaudu tai luo tili
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in or create an account'**
+  String get s9bb545e9b3;
+
+  /// fi: Anna perheenjäsenelle, naapurille tai asentajalle pääsy valitsemiisi laitteisiin. Salasanat ja osoitteet eivät lähde kot
+  ///
+  /// In en, this message translates to:
+  /// **'Give a family member, neighbour or installer access to the devices you choose. Passwords and addresses never leave home, and you can revoke at any time.'**
+  String get s85abc4496d;
+
+  /// fi: Jaa laitteita
+  ///
+  /// In en, this message translates to:
+  /// **'Share devices'**
+  String get sb4602bb0a6;
+
+  /// fi: Käytä kutsukoodia
+  ///
+  /// In en, this message translates to:
+  /// **'Use an invite code'**
+  String get sffe19ad543;
+
+  /// fi: Kutsut sinulle
+  ///
+  /// In en, this message translates to:
+  /// **'Invites for you'**
+  String get s61036a5d51;
+
+  /// fi: laitteita
+  ///
+  /// In en, this message translates to:
+  /// **'devices'**
+  String get s8af08eb19e;
+
+  /// fi: Hyväksytty
+  ///
+  /// In en, this message translates to:
+  /// **'Accepted'**
+  String get sbb84536839;
+
+  /// fi: Hyväksy
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get sdfaf8c242b;
+
+  /// fi: Hylkää
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get s493a1eaf08;
+
+  /// fi: Jaettu minulle
+  ///
+  /// In en, this message translates to:
+  /// **'Shared with me'**
+  String get s2fd1394b33;
+
+  /// fi: Jakamasi
+  ///
+  /// In en, this message translates to:
+  /// **'Your shares'**
+  String get seaa0c13606;
+
+  /// fi: Et ole jakanut mitään.
+  ///
+  /// In en, this message translates to:
+  /// **'You have not shared anything.'**
+  String get s450c60afd0;
+
+  /// fi: Kutsukoodi
+  ///
+  /// In en, this message translates to:
+  /// **'Invite code'**
+  String get s33f41d417c;
+
+  /// fi: laitetta
+  ///
+  /// In en, this message translates to:
+  /// **'devices'**
+  String get s23baecde5b;
+
+  /// fi: Perutaanko jako?
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke the share?'**
+  String get s9cdf3dcc87;
+
+  /// fi: Pääsy loppuu heti, kun kotisilta saa tiedon (yleensä saman tien).
+  ///
+  /// In en, this message translates to:
+  /// **'Access ends as soon as the home bridge hears of it (usually at once).'**
+  String get s9d0ac1d1ee;
+
+  /// fi: Peru jako
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke'**
+  String get s4417570cbb;
+
+  /// fi: Jako peruttu
+  ///
+  /// In en, this message translates to:
+  /// **'Share revoked'**
+  String get s280e22cbc9;
+
+  /// fi: Muuta laitteita tai oikeuksia
+  ///
+  /// In en, this message translates to:
+  /// **'Change devices or rights'**
+  String get s84a6d73d1e;
+
+  /// fi: Asentajaprofiili
+  ///
+  /// In en, this message translates to:
+  /// **'Installer profile'**
+  String get s1cf5e3d702;
+
+  /// fi: Näyttää Asentaja-valikon: asiakkaat, heidän laitteensa ja hälytykset. Asiakas antaa pääsyn koodilla ja voi perua sen.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows the Installer menu: customers, their devices and alarms. A customer grants access with a code and can revoke it.'**
+  String get s22f8bccc91;
+
+  /// fi: Yrityksen nimi
+  ///
+  /// In en, this message translates to:
+  /// **'Company name'**
+  String get se19c5fe8aa;
+
+  /// fi: Nimesi jaoissa
+  ///
+  /// In en, this message translates to:
+  /// **'Your name in shares'**
+  String get sd742357fc8;
+
+  /// fi: Turvallisuus: kotisilta tarkistaa jokaisen pyynnön oikeudet. Yhteystunnus kulkee salattuna vain vastaanottajan avaimelle
+  ///
+  /// In en, this message translates to:
+  /// **'Security: the home bridge checks the rights of every request. The connection credential travels encrypted to the recipient\'\'s key only; device passwords and addresses never leave home.'**
+  String get sfe0000a1a9;
+
+  /// fi: Lisää asiakas koodilla
+  ///
+  /// In en, this message translates to:
+  /// **'Add a customer with a code'**
+  String get s0577e25cbe;
+
+  /// fi: Käytä
+  ///
+  /// In en, this message translates to:
+  /// **'Use'**
+  String get s3d00dee1a9;
+
+  /// fi: Koodi hyväksytty. Pääsy aukeaa, kun omistajan Molaplan vahvistaa sen (yleensä parissa minuutissa).
+  ///
+  /// In en, this message translates to:
+  /// **'Code accepted. Access opens when the owner\'\'s Molaplan confirms it (usually within a couple of minutes).'**
+  String get sce4c69f42c;
+
+  /// fi: Anna koodi (tai linkki) vastaanottajalle: Molaplan → Jakaminen → Käytä kutsukoodia. Voimassa 7 päivää, kerran.
+  ///
+  /// In en, this message translates to:
+  /// **'Give the code (or link) to the recipient: Molaplan → Sharing → Use an invite code. Valid for 7 days, once.'**
+  String get sd1520d6367;
+
+  /// fi: Kopioi linkki
+  ///
+  /// In en, this message translates to:
+  /// **'Copy link'**
+  String get s563abff5ad;
+
+  /// fi: Kutsu lähetetty – vastaanottaja hyväksyy sen Molaplanissa.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite sent – the recipient accepts it in Molaplan.'**
+  String get s0daf5e9cb6;
+
+  /// fi: Muuta jakoa
+  ///
+  /// In en, this message translates to:
+  /// **'Change share'**
+  String get s707a062202;
+
+  /// fi: 1. Mitä jaetaan
+  ///
+  /// In en, this message translates to:
+  /// **'1. What to share'**
+  String get s79f72dbe13;
+
+  /// fi: Napauta näkymää jakaaksesi sen kaikki laitteet, tai valitse yksittäin.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap a view to share all its devices, or pick them one by one.'**
+  String get s58e14dc230;
+
+  /// fi: Koko näkymä
+  ///
+  /// In en, this message translates to:
+  /// **'Whole view'**
+  String get sdb49fc5671;
+
+  /// fi: 2. Oikeudet
+  ///
+  /// In en, this message translates to:
+  /// **'2. Rights'**
+  String get sa7cf1a01d7;
+
+  /// fi: Katselu
+  ///
+  /// In en, this message translates to:
+  /// **'View'**
+  String get s3b2376ac74;
+
+  /// fi: Täysi
+  ///
+  /// In en, this message translates to:
+  /// **'Full'**
+  String get s6605942623;
+
+  /// fi: Näkee tilat ja mittaukset, ei voi ohjata.
+  ///
+  /// In en, this message translates to:
+  /// **'Sees states and readings, cannot control.'**
+  String get s9ccbd78d51;
+
+  /// fi: Voi kytkeä ja säätää, ei muuttaa asetuksia (esim. lämpötilan asetusarvoja).
+  ///
+  /// In en, this message translates to:
+  /// **'Can switch and adjust, cannot change settings (e.g. temperature setpoints).'**
+  String get sb143b5c9f1;
+
+  /// fi: Ohjaus ja laitteiden asetukset. Omia näkymiäsi tai salasanoja hän ei näe.
+  ///
+  /// In en, this message translates to:
+  /// **'Control and device settings. Never your own views or passwords.'**
+  String get s32dc2aa139;
+
+  /// fi: 3. Kenelle
+  ///
+  /// In en, this message translates to:
+  /// **'3. To whom'**
+  String get se153d3c421;
+
+  /// fi: Molaplan-käyttäjälle (sähköposti)
+  ///
+  /// In en, this message translates to:
+  /// **'A Molaplan user (e-mail)'**
+  String get s62e68022e1;
+
+  /// fi: Kutsukoodi tai -linkki
+  ///
+  /// In en, this message translates to:
+  /// **'Invite code or link'**
+  String get s447da2f746;
+
+  /// fi: Sähköposti
+  ///
+  /// In en, this message translates to:
+  /// **'E-mail'**
+  String get sdd0f19c6b8;
+
+  /// fi: Asentajalle (näkyy hänen Asentaja-valikossaan)
+  ///
+  /// In en, this message translates to:
+  /// **'To an installer (shows in their Installer menu)'**
+  String get s6be36f4219;
+
+  /// fi: Nimi jaolle (valinnainen)
+  ///
+  /// In en, this message translates to:
+  /// **'Name for the share (optional)'**
+  String get se7272a5713;
+
+  /// fi: esim. Mökki
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Cottage'**
+  String get s1f9799af4e;
+
+  /// fi: Oikeudet laitekohtaisesti
+  ///
+  /// In en, this message translates to:
+  /// **'Rights per device'**
+  String get s03f60936b0;
+
+  /// fi: Näe
+  ///
+  /// In en, this message translates to:
+  /// **'View'**
+  String get s385022d526;
+
+  /// fi: Ohjaa
+  ///
+  /// In en, this message translates to:
+  /// **'Control'**
+  String get s482464ebd5;
+
+  /// fi: Ilmoita ntfy-aiheeseen (valinnainen)
+  ///
+  /// In en, this message translates to:
+  /// **'Notify an ntfy topic (optional)'**
+  String get s5897aaa050;
+
+  /// fi: Viestissä ei ole koodia eikä laitetietoja.
+  ///
+  /// In en, this message translates to:
+  /// **'The message contains no code or device details.'**
+  String get sd4faf9db62;
+
+  /// fi: Luo kutsukoodi
+  ///
+  /// In en, this message translates to:
+  /// **'Create invite code'**
+  String get sdec87898c3;
+
+  /// fi: Lähetä kutsu
+  ///
+  /// In en, this message translates to:
+  /// **'Send invite'**
+  String get s19c2104a9d;
+
+  /// fi: Omistaja
+  ///
+  /// In en, this message translates to:
+  /// **'Owner'**
+  String get s8b4d48dfaf;
+
+  /// fi: Päivitetty
+  ///
+  /// In en, this message translates to:
+  /// **'Updated'**
+  String get sbfe79d1f5f;
+
+  /// fi: Huomioitavaa
+  ///
+  /// In en, this message translates to:
+  /// **'Attention'**
+  String get s90944b5e7c;
+
+  /// fi: ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'not answering'**
+  String get scf2e61da2c;
+
+  /// fi: hälytys
+  ///
+  /// In en, this message translates to:
+  /// **'alarm'**
+  String get s1364743ec7;
+
+  /// fi: Suorita
+  ///
+  /// In en, this message translates to:
+  /// **'Run'**
+  String get s5416a5cdf7;
+
+  /// fi: Näytä kuva
+  ///
+  /// In en, this message translates to:
+  /// **'Show picture'**
+  String get s8debff3196;
+
+  /// fi: Asentaja
+  ///
+  /// In en, this message translates to:
+  /// **'Installer'**
+  String get sbd907def5b;
+
+  /// fi: Lisää asiakas
+  ///
+  /// In en, this message translates to:
+  /// **'Add customer'**
+  String get sddd83db201;
+
+  /// fi: Asiakkaasi, jotka ovat antaneet sinulle pääsyn. Näet vain jaetut laitteet ja toimit asiakkaan antamin oikeuksin – salasa
+  ///
+  /// In en, this message translates to:
+  /// **'Customers who gave you access. You see only the shared devices and act within the rights the customer gave – never their passwords.'**
+  String get s2220ce611a;
+
+  /// fi: Ei asiakkaita vielä. Pyydä asiakasta luomaan asentajakoodi: Jakaminen → Jaa laitteita → Kutsukoodi + Asentajalle.
+  ///
+  /// In en, this message translates to:
+  /// **'No customers yet. Ask the customer to create an installer code: Sharing → Share devices → Invite code + To an installer.'**
+  String get s98a90339f4;
+
+  /// fi: Odottaa asiakkaan Molaplanin vahvistusta
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for the customer\'\'s Molaplan to confirm'**
+  String get sa52cf49adc;
+
+  /// fi: huomiota
+  ///
+  /// In en, this message translates to:
+  /// **'alerts'**
+  String get s35e8813a82;
+
   /// fi: Oma väri
   ///
   /// In en, this message translates to:
@@ -5866,12 +6439,6 @@ abstract class AppLocalizations {
   /// **'Close'**
   String get s1e593aeca2;
 
-  /// fi: Käytä
-  ///
-  /// In en, this message translates to:
-  /// **'Use'**
-  String get s3d00dee1a9;
-
   /// fi: Valitse laitteesi merkki. Molaplan etsii sen ja tekee ruudut valmiiksi.
   ///
   /// In en, this message translates to:
@@ -6579,12 +7146,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'c/h'**
   String get s80c4ecec94;
-
-  /// fi: Päivitetty
-  ///
-  /// In en, this message translates to:
-  /// **'Updated'**
-  String get sbfe79d1f5f;
 
   /// fi: Kulutus (kWh)
   ///
@@ -7576,12 +8137,6 @@ abstract class AppLocalizations {
   /// **'Reject'**
   String get sa04c218f82;
 
-  /// fi: Hyväksy
-  ///
-  /// In en, this message translates to:
-  /// **'Accept'**
-  String get sdfaf8c242b;
-
   /// fi: ei vielä valittu
   ///
   /// In en, this message translates to:
@@ -8416,12 +8971,6 @@ abstract class AppLocalizations {
   /// **'New dashboard'**
   String get scb28b11e70;
 
-  /// fi: esim. Mökki
-  ///
-  /// In en, this message translates to:
-  /// **'e.g. Cottage'**
-  String get s1f9799af4e;
-
   /// fi: Nimeä näkymä
   ///
   /// In en, this message translates to:
@@ -9034,12 +9583,6 @@ abstract class AppLocalizations {
   /// **'Learn a remote button'**
   String get sf3d644dd4c;
 
-  /// fi: Päivitä
-  ///
-  /// In en, this message translates to:
-  /// **'Refresh'**
-  String get sfb1a18d11f;
-
   /// fi: Valot
   ///
   /// In en, this message translates to:
@@ -9442,12 +9985,6 @@ abstract class AppLocalizations {
   /// **'Sign in to have the same homes, devices and tiles on PC, tablet and phone. Optional.'**
   String get scc7e418ee3;
 
-  /// fi: Kirjaudu tai luo tili
-  ///
-  /// In en, this message translates to:
-  /// **'Sign in or create an account'**
-  String get s9bb545e9b3;
-
   /// fi: Ulkoasu
   ///
   /// In en, this message translates to:
@@ -9591,6 +10128,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Guides: VPN, Nabu Casa, cloud MQTT'**
   String get scc3d01ee5e;
+
+  /// fi: Anna toiselle pääsy valitsemiisi laitteisiin.
+  ///
+  /// In en, this message translates to:
+  /// **'Give someone access to the devices you choose.'**
+  String get s0fe7b15d15;
+
+  /// fi: Jakaminen – uusi kutsu
+  ///
+  /// In en, this message translates to:
+  /// **'Sharing – new invite'**
+  String get s25c286a743;
 
   /// fi: Ohjeet
   ///
@@ -13097,7 +13646,8 @@ abstract class AppLocalizations {
   String get s0ceafaa97c;
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -13106,7 +13656,8 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en', 'es', 'et', 'fi', 'sv'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['en', 'es', 'et', 'fi', 'sv'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;

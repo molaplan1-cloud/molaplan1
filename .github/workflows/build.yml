@@ -46,6 +46,13 @@ jobs:
         env:
           MQTT_TEST_PORT: '18883'
 
+  # R215–R217: Supabase migrations + RLS tests on a throw-away Postgres (runner has PostgreSQL).
+  rls:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash tool/rls_test.sh
+
   windows:
     needs: test
     runs-on: windows-latest
@@ -146,7 +153,7 @@ jobs:
 
   release:
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [windows, android, firmware]
+    needs: [rls, windows, android, firmware]
     runs-on: ubuntu-latest
     permissions:
       contents: write

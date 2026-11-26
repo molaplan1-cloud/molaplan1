@@ -16,10 +16,15 @@ String accountErrorText(BuildContext context, Object e) {
   }
   if (e is! AccountError) return t('Yhteys ei onnistunut: $e', 'The connection did not work: $e');
   return switch (e.problem) {
-    AccountProblem.offline => t(
-      'Ei nettiyhteyttä. Tarkista wifi tai mobiilidata ja yritä uudelleen.',
-      'No internet connection. Check Wi-Fi or mobile data and try again.',
-    ),
+    // t219u: say what actually failed (the request was really made, also over a fallback route).
+    AccountProblem.offline => '${t(
+      'Tilipalveluun ei saatu yhteyttä. Tarkista wifi tai mobiilidata ja yritä uudelleen.',
+      'Could not reach the account service. Check Wi-Fi or mobile data and try again.',
+    )}${e.detail.isEmpty ? '' : '\n(${e.detail})'}',
+    AccountProblem.secureConnection => '${t(
+      'Netti toimii, mutta suojattu yhteys tilipalveluun epäonnistui. Tarkista laitteen päivämäärä ja kellonaika.',
+      'The internet works, but the secure connection to the account service failed. Check the device date and time.',
+    )}${e.detail.isEmpty ? '' : '\n(${e.detail})'}',
     AccountProblem.wrongPassword => t(
       'Sähköposti tai salasana on väärin. Tarkista kirjoitusasu, tai paina "Unohdin salasanan".',
       'Wrong email or password. Check them, or tap "Forgot password".',

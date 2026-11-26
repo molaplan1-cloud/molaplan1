@@ -9,6 +9,9 @@ import 'package:flutter_localizations/flutter_localizations.dart' show GlobalWid
 import 'package:material_ui/material_ui.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'package:flutter/services.dart' show MethodChannel;
+
+import 'core/net_fallback.dart';
 import 'prices/prices.dart';
 import 'state/app_state.dart';
 import 'state/storage.dart';
@@ -29,6 +32,21 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   initAirthingsBle();
   initVideo();
+  // t219u: a failed real request may switch the process to any internet-capable network.
+  if (Platform.isAndroid) {
+    const net = MethodChannel('molaplan/net');
+    NetFallback.ensure = () async {
+      final m = await net.invokeMapMethod<String, dynamic>('ensureInternet') ?? const {};
+      final r = NetRecovery(
+        changed: m['changed'] == true,
+        action: '${m['action'] ?? ''}',
+        network: '${m['network'] ?? ''}',
+        diag: '${m['diag'] ?? ''}',
+      );
+      debugPrint('t219u net fallback: ${r.action} ${r.network} ${r.diag}');
+      return r;
+    };
+  }
   // Online? On the home Wi-Fi? (one banner instead of an error on every tile)
   NetHealth.instance.check(force: true);
   NetHealth.instance.watchLan();
@@ -40,6 +58,7 @@ Future<void> main() async {
     imageDir: () async => Directory('${(await getApplicationSupportDirectory()).path}/tile_images'),
   );
   state.account.autoSync = true; // background sync when signed in
+  state.shareAuto = true; // R215: shares / invites refresh in the background
   await state.load();
   if (state.config.bridgeMode) await keepScreenOn(true);
   state.update.autoCheck = true;

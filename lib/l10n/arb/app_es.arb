@@ -959,10 +959,6 @@
  "@sd0219ce512": {
   "x-mt": true
  },
- "sbf59e43c36": "No hay conexión a Internet. Compruebe la conexión Wi-Fi o datos móviles e inténtelo de nuevo.",
- "@sbf59e43c36": {
-  "x-mt": true
- },
  "s9ba7e7a8e6": "Correo electrónico o contraseña incorrecta. Compruébalos, o pulsa \"Contraseña olvidada\".",
  "@s9ba7e7a8e6": {
   "x-mt": true
@@ -2233,6 +2229,367 @@
  "@s417eb9a875": {
   "x-mt": true
  },
+ "sb4bd4baa5c": "No hay usuario Molaplan con esa dirección. Necesitan iniciar sesión en Molaplan 0.9 una vez – o enviarles un código de invitación.",
+ "@sb4bd4baa5c": {
+  "x-mt": true
+ },
+ "s7ed2aecb01": "Nada compartido seleccionado (los termostatos todavía no pueden ser compartidos).",
+ "@s7ed2aecb01": {
+  "x-mt": true
+ },
+ "s707b7ff598": "La invitación ya no existe.",
+ "@s707b7ff598": {
+  "x-mt": true
+ },
+ "s5ea320fb1c": "Desbloquear los secretos de la cuenta en este dispositivo primero (cuenta → Desbloquear con contraseña). Compartir utiliza la clave de la cuenta.",
+ "@s5ea320fb1c": {
+  "x-mt": true
+ },
+ "s5aee30a4e4": "Esta invitación es para un instalador: encienda el perfil del instalador (Sharing → Avanzado).",
+ "@s5aee30a4e4": {
+  "x-mt": true
+ },
+ "sa562754cb5": "El código es incorrecto, expirado o ya utilizado.",
+ "@sa562754cb5": {
+  "x-mt": true
+ },
+ "s9c37d7a89c": "El puente casero no responde. Compartir necesita el puente casero (Acceso remoto) – los permisos se aplican allí.",
+ "@s9c37d7a89c": {
+  "x-mt": true
+ },
+ "sc858a8f851": "El puente casero es demasiado viejo para compartirlo. Actualizarlo (Remote access → Update bridge).",
+ "@sc858a8f851": {
+  "x-mt": true
+ },
+ "s1a52f53861": "No hay conexión con la cuenta Molaplan.",
+ "@s1a52f53861": {
+  "x-mt": true
+ },
+ "s2457ec4502": "El servicio de cuenta se negó: {p0}",
+ "@s2457ec4502": {
+  "x-mt": true
+ },
+ "s4bc537975e": "El puente de casa está fuera de línea.",
+ "@s4bc537975e": {
+  "x-mt": true
+ },
+ "s2fb5fe14e4": "La parte fue revocada.",
+ "@s2fb5fe14e4": {
+  "x-mt": true
+ },
+ "s7b44d47d45": "El puente de casa no responde.",
+ "@s7b44d47d45": {
+  "x-mt": true
+ },
+ "s8eddd585bc": "No hay conexión.",
+ "@s8eddd585bc": {
+  "x-mt": true
+ },
+ "s47998395f5": "No está permitido.",
+ "@s47998395f5": {
+  "x-mt": true
+ },
+ "s7f504a8c64": "Ver sólo",
+ "@s7f504a8c64": {
+  "x-mt": true
+ },
+ "s9c067115ef": "Control",
+ "@s9c067115ef": {
+  "x-mt": true
+ },
+ "s8343921765": "Completo (control + ajustes)",
+ "@s8343921765": {
+  "x-mt": true
+ },
+ "s211d9f0a3a": "Código que aún no se ha utilizado",
+ "@s211d9f0a3a": {
+  "x-mt": true
+ },
+ "s1e6b3fe5dc": "Esperando la aceptación",
+ "@s1e6b3fe5dc": {
+  "x-mt": true
+ },
+ "sb13063b8cd": "Ser confirmado...",
+ "@sb13063b8cd": {
+  "x-mt": true
+ },
+ "s13b6f87b0a": "Activo",
+ "@s13b6f87b0a": {
+  "x-mt": true
+ },
+ "sed1d8dbf2b": "Declind",
+ "@sed1d8dbf2b": {
+  "x-mt": true
+ },
+ "s0123f33869": "Revocado",
+ "@s0123f33869": {
+  "x-mt": true
+ },
+ "s844e081db8": "Compartir",
+ "@s844e081db8": {
+  "x-mt": true
+ },
+ "sfb1a18d11f": "Actualizar",
+ "scdfdf5d233": "Compartir necesita una cuenta Molaplan para que las invitaciones puedan llegar a las personas y los trabajos de encriptación.",
+ "@scdfdf5d233": {
+  "x-mt": true
+ },
+ "s9bb545e9b3": "Inicia sesión o crea una cuenta",
+ "s85abc4496d": "Dar a un miembro de la familia, vecino o instalador acceso a los dispositivos que elija. Las contraseñas y direcciones nunca salen de casa, y usted puede revocar en cualquier momento.",
+ "@s85abc4496d": {
+  "x-mt": true
+ },
+ "sb4602bb0a6": "Compartir dispositivos",
+ "@sb4602bb0a6": {
+  "x-mt": true
+ },
+ "sffe19ad543": "Use un código de invitación",
+ "@sffe19ad543": {
+  "x-mt": true
+ },
+ "s61036a5d51": "Invita a usted",
+ "@s61036a5d51": {
+  "x-mt": true
+ },
+ "s8af08eb19e": "dispositivos",
+ "@s8af08eb19e": {
+  "x-mt": true
+ },
+ "sbb84536839": "Aceptado",
+ "@sbb84536839": {
+  "x-mt": true
+ },
+ "sdfaf8c242b": "Aceptar",
+ "s493a1eaf08": "Declin",
+ "@s493a1eaf08": {
+  "x-mt": true
+ },
+ "s2fd1394b33": "Compartido conmigo",
+ "@s2fd1394b33": {
+  "x-mt": true
+ },
+ "seaa0c13606": "Tus acciones",
+ "@seaa0c13606": {
+  "x-mt": true
+ },
+ "s450c60afd0": "No has compartido nada.",
+ "@s450c60afd0": {
+  "x-mt": true
+ },
+ "s33f41d417c": "Invitar código",
+ "@s33f41d417c": {
+  "x-mt": true
+ },
+ "s23baecde5b": "dispositivos",
+ "@s23baecde5b": {
+  "x-mt": true
+ },
+ "s9cdf3dcc87": "¿Revocar la parte?",
+ "@s9cdf3dcc87": {
+  "x-mt": true
+ },
+ "s9d0ac1d1ee": "El acceso termina tan pronto como el puente casero lo oye (generalmente a la vez).",
+ "@s9d0ac1d1ee": {
+  "x-mt": true
+ },
+ "s4417570cbb": "Revocación",
+ "@s4417570cbb": {
+  "x-mt": true
+ },
+ "s280e22cbc9": "Compartir revocado",
+ "@s280e22cbc9": {
+  "x-mt": true
+ },
+ "s84a6d73d1e": "Cambio de dispositivos o derechos",
+ "@s84a6d73d1e": {
+  "x-mt": true
+ },
+ "s1cf5e3d702": "Perfil de instalación",
+ "@s1cf5e3d702": {
+  "x-mt": true
+ },
+ "s22f8bccc91": "Muestra el menú Installer: clientes, sus dispositivos y alarmas. Un cliente otorga acceso con un código y puede revocarlo.",
+ "@s22f8bccc91": {
+  "x-mt": true
+ },
+ "se19c5fe8aa": "Nombre de la empresa",
+ "@se19c5fe8aa": {
+  "x-mt": true
+ },
+ "sd742357fc8": "Su nombre en acciones",
+ "@sd742357fc8": {
+  "x-mt": true
+ },
+ "sfe0000a1a9": "Seguridad: el puente de inicio verifica los derechos de cada solicitud. La conexión credencial viaja encriptada sólo a la clave del destinatario; contraseñas y direcciones de dispositivo nunca salen de casa.",
+ "@sfe0000a1a9": {
+  "x-mt": true
+ },
+ "s0577e25cbe": "Añadir un cliente con un código",
+ "@s0577e25cbe": {
+  "x-mt": true
+ },
+ "s3d00dee1a9": "Usar",
+ "sce4c69f42c": "Código aceptado. El acceso se abre cuando el Molaplan del propietario lo confirma (normalmente dentro de un par de minutos).",
+ "@sce4c69f42c": {
+  "x-mt": true
+ },
+ "sd1520d6367": "Dar el código (o enlace) al destinatario: Molaplan → Compartir → Usar un código de invitación. Válido durante 7 días, una vez.",
+ "@sd1520d6367": {
+  "x-mt": true
+ },
+ "s563abff5ad": "Copiar el enlace",
+ "@s563abff5ad": {
+  "x-mt": true
+ },
+ "s0daf5e9cb6": "Invitar enviado – el destinatario lo acepta en Molaplan.",
+ "@s0daf5e9cb6": {
+  "x-mt": true
+ },
+ "s707a062202": "Porcentaje de cambio",
+ "@s707a062202": {
+  "x-mt": true
+ },
+ "s79f72dbe13": "1. Qué compartir",
+ "@s79f72dbe13": {
+  "x-mt": true
+ },
+ "s58e14dc230": "Toque una vista para compartir todos sus dispositivos, o escoja uno por uno.",
+ "@s58e14dc230": {
+  "x-mt": true
+ },
+ "sdb49fc5671": "Vista completa",
+ "@sdb49fc5671": {
+  "x-mt": true
+ },
+ "sa7cf1a01d7": "2. Derechos",
+ "@sa7cf1a01d7": {
+  "x-mt": true
+ },
+ "s3b2376ac74": "Vista",
+ "@s3b2376ac74": {
+  "x-mt": true
+ },
+ "s6605942623": "Completo",
+ "@s6605942623": {
+  "x-mt": true
+ },
+ "s9ccbd78d51": "Ve estados y lecturas, no pueden controlar.",
+ "@s9ccbd78d51": {
+  "x-mt": true
+ },
+ "sb143b5c9f1": "Puede cambiar y ajustar, no puede cambiar la configuración (por ejemplo, los puntos de configuración de temperatura).",
+ "@sb143b5c9f1": {
+  "x-mt": true
+ },
+ "s32dc2aa139": "Ajustes de control y dispositivo. Nunca tus propias vistas o contraseñas.",
+ "@s32dc2aa139": {
+  "x-mt": true
+ },
+ "se153d3c421": "3. A quién",
+ "@se153d3c421": {
+  "x-mt": true
+ },
+ "s62e68022e1": "Un usuario Molaplan (e-mail)",
+ "@s62e68022e1": {
+  "x-mt": true
+ },
+ "s447da2f746": "Invitar código o enlace",
+ "@s447da2f746": {
+  "x-mt": true
+ },
+ "sdd0f19c6b8": "E-mail",
+ "@sdd0f19c6b8": {
+  "x-mt": true
+ },
+ "s6be36f4219": "A un instalador (shows in their Installer menu)",
+ "@s6be36f4219": {
+  "x-mt": true
+ },
+ "se7272a5713": "Nombre de la parte (opcional)",
+ "@se7272a5713": {
+  "x-mt": true
+ },
+ "s1f9799af4e": "e.g. Cottage",
+ "@s1f9799af4e": {
+  "x-mt": true
+ },
+ "s03f60936b0": "Derechos por dispositivo",
+ "@s03f60936b0": {
+  "x-mt": true
+ },
+ "s385022d526": "Vista",
+ "@s385022d526": {
+  "x-mt": true
+ },
+ "s482464ebd5": "Control",
+ "@s482464ebd5": {
+  "x-mt": true
+ },
+ "s5897aaa050": "Notificar un tema ntfy (opcional)",
+ "@s5897aaa050": {
+  "x-mt": true
+ },
+ "sd4faf9db62": "El mensaje no contiene ningún código o detalles del dispositivo.",
+ "@sd4faf9db62": {
+  "x-mt": true
+ },
+ "sdec87898c3": "Crear código de invitación",
+ "@sdec87898c3": {
+  "x-mt": true
+ },
+ "s19c2104a9d": "Enviar invitación",
+ "@s19c2104a9d": {
+  "x-mt": true
+ },
+ "s8b4d48dfaf": "Propietario",
+ "@s8b4d48dfaf": {
+  "x-mt": true
+ },
+ "sbfe79d1f5f": "Actualizado",
+ "s90944b5e7c": "Atención",
+ "@s90944b5e7c": {
+  "x-mt": true
+ },
+ "scf2e61da2c": "no contestando",
+ "@scf2e61da2c": {
+  "x-mt": true
+ },
+ "s1364743ec7": "alarma",
+ "@s1364743ec7": {
+  "x-mt": true
+ },
+ "s5416a5cdf7": "Corre",
+ "@s5416a5cdf7": {
+  "x-mt": true
+ },
+ "s8debff3196": "Mostrar foto",
+ "@s8debff3196": {
+  "x-mt": true
+ },
+ "sbd907def5b": "Installer",
+ "@sbd907def5b": {
+  "x-mt": true
+ },
+ "sddd83db201": "Agregar cliente",
+ "@sddd83db201": {
+  "x-mt": true
+ },
+ "s2220ce611a": "Los clientes que le dieron acceso. Usted ve sólo los dispositivos compartidos y actuar dentro de los derechos que el cliente dio – nunca sus contraseñas.",
+ "@s2220ce611a": {
+  "x-mt": true
+ },
+ "s98a90339f4": "No hay clientes todavía. Pregunte al cliente para crear un código de instalación: Compartir → Compartir dispositivos → Invitar código + A un instalador.",
+ "@s98a90339f4": {
+  "x-mt": true
+ },
+ "sa52cf49adc": "Esperando al Molaplan del cliente para confirmar",
+ "@sa52cf49adc": {
+  "x-mt": true
+ },
+ "s35e8813a82": "alertas",
+ "@s35e8813a82": {
+  "x-mt": true
+ },
  "sc3abd09cd9": "Color personalizado",
  "@sc3abd09cd9": {
   "x-mt": true
@@ -3020,7 +3377,6 @@
  },
  "s876c7230a2": "Añadir dispositivo",
  "s1e593aeca2": "Cerrar",
- "s3d00dee1a9": "Usar",
  "sa252f06bff": "Escoge la marca del dispositivo. Molaplan la encuentra y crea las fichas.",
  "@sa252f06bff": {
   "x-mt": true
@@ -3373,7 +3729,6 @@
   "x-mt": true
  },
  "s80c4ecec94": "c/h",
- "sbfe79d1f5f": "Actualizado",
  "sb68e905fc4": "Consumo (kWh)",
  "s5fc5085143": "Coste",
  "s2b2118a93b": "Datos antiguos",
@@ -3464,7 +3819,99 @@
  "@sf87d92faf4": {
   "x-mt": true
  },
+ "saa4df8e877": "Puente no encontrado. ¿Está el teléfono en el Wi-Fi del puente \"Molaplan-XXXX\"? Si la red está desaparecida, mantenga el botón del puente durante 3 s (se abre durante 15 minutos).",
+ "@saa4df8e877": {
+  "x-mt": true
+ },
+ "sf5293b1989": "El puente no está en modo de configuración. Mantenga su botón para 3 s e inténtelo de nuevo.",
+ "@sf5293b1989": {
+  "x-mt": true
+ },
+ "s839deeab41": "Este no es el puente en la etiqueta / código QR (desajuste de tecla). Nada fue enviado.",
+ "@s839deeab41": {
+  "x-mt": true
+ },
+ "s3694ce006b": "La respuesta del puente no es válida (desajuste de cifrado). Nada fue guardado.",
+ "@s3694ce006b": {
+  "x-mt": true
+ },
+ "s61aea0b713": "El puente rechazó la configuración: {p0}",
+ "@s61aea0b713": {
+  "x-mt": true
+ },
+ "s63551081b0": "Agregar puente casero",
+ "@s63551081b0": {
+  "x-mt": true
+ },
+ "s592edd94e7": "Molaplan Bridge device",
+ "@s592edd94e7": {
+  "x-mt": true
+ },
+ "sa329968355": "Un pequeño dispositivo siempre conectado (por ejemplo, el controlador Athom IR/RF) que pasa comandos remotos a sus dispositivos y controla la bomba de calor por infrarrojos.",
+ "@sa329968355": {
+  "x-mt": true
+ },
+ "sd8790684a6": "Potencia el puente. Un nuevo puente abre la configuración por sí mismo (slow blink, una vez por segundo).",
+ "@sd8790684a6": {
+  "x-mt": true
+ },
+ "s087004d26c": "Abra la configuración Wi-Fi del teléfono y únase a \"Molaplan-XXXX\" (sin contraseña).",
+ "@s087004d26c": {
+  "x-mt": true
+ },
+ "sf85e449cd8": "Vuelve aquí y presiona \"Encontrar puente\".",
+ "@sf85e449cd8": {
+  "x-mt": true
+ },
+ "s57466387fc": "Encontrar puente",
+ "@s57466387fc": {
+  "x-mt": true
+ },
+ "sd166e3cf6f": "Puente encontrado",
+ "@sd166e3cf6f": {
+  "x-mt": true
+ },
+ "s6b841de5dd": "Firmware",
+ "@s6b841de5dd": {
+  "x-mt": true
+ },
+ "s88fa323548": "Home Wi-Fi",
+ "@s88fa323548": {
+  "x-mt": true
+ },
+ "sf48dd63b0a": "Nombre de la red",
+ "@sf48dd63b0a": {
+  "x-mt": true
+ },
+ "s9f9c574cf9": "Contraseña Wi-Fi",
+ "@s9f9c574cf9": {
+  "x-mt": true
+ },
  "sc58a7d7121": "Nombre de la casa",
+ "sc452460b0f": "Junta",
+ "@sc452460b0f": {
+  "x-mt": true
+ },
+ "s4bdd633042": "no probados",
+ "@s4bdd633042": {
+  "x-mt": true
+ },
+ "sbe6a859b63": "Los detalles se envían encriptados – el puente Wi-Fi está abierto, pero la contraseña no se puede leer de ella.",
+ "@sbe6a859b63": {
+  "x-mt": true
+ },
+ "s77af0820de": "Conecta el puente",
+ "@s77af0820de": {
+  "x-mt": true
+ },
+ "s1ec01d8473": "¡Puente conectado!",
+ "@s1ec01d8473": {
+  "x-mt": true
+ },
+ "s88bc217a1b": "El puente se une ahora a la conexión Wi-Fi (enciende la luz con un corto espacio cada 3 s cuando se conecta). Conecte el teléfono de vuelta a la casa Wi-Fi o datos móviles – El acceso remoto muestra el estado del puente.",
+ "@s88bc217a1b": {
+  "x-mt": true
+ },
  "s2adc3a77ed": "Elija el tipo de conexión",
  "@s2adc3a77ed": {
   "x-mt": true
@@ -3543,6 +3990,14 @@
  "s5f8284b98f": "Convertir este dispositivo en puente doméstico",
  "s6a95f7843b": "Este dispositivo se mantiene en casa, siempre en (cargar + Wi-Fi), y pasa comandos remotos a sus dispositivos.",
  "@s6a95f7843b": {
+  "x-mt": true
+ },
+ "sa949a952bf": "Añadir puente casero (dispositivo del puente Molaplan)",
+ "@sa949a952bf": {
+  "x-mt": true
+ },
+ "sb641af74b7": "Un pequeño dispositivo siempre conectado, por ejemplo, Athom IR/RF – también controla la bomba de calor. Configurar con el teléfono en un par de minutos.",
+ "@sb641af74b7": {
   "x-mt": true
  },
  "s2c3ae5833b": "Otras formas: VPN, Nabu Casa, nube MQTT",
@@ -3826,7 +4281,6 @@
   "x-mt": true
  },
  "sa04c218f82": "Rechazar",
- "sdfaf8c242b": "Aceptar",
  "sd64229b6d8": "aún no se ha establecido",
  "@sd64229b6d8": {
   "x-mt": true
@@ -3910,7 +4364,15 @@
  "@sae41bebdab": {
   "x-mt": true
  },
+ "sf83143ae23": "Sensor de temperatura ambiente",
+ "@sf83143ae23": {
+  "x-mt": true
+ },
  "s19485c79b2": "Ninguno",
+ "s0483226428": "Elija un sensor de temperatura",
+ "@s0483226428": {
+  "x-mt": true
+ },
  "scf37cbeda8": "Icono",
  "sfeab9bd26f": "Width",
  "@sfeab9bd26f": {
@@ -4291,10 +4753,6 @@
   "x-mt": true
  },
  "scb28b11e70": "Nueva vista",
- "s1f9799af4e": "e.g. Cottage",
- "@s1f9799af4e": {
-  "x-mt": true
- },
  "s3a13f9d077": "Renombrar panel",
  "sa5bf37213b": "¿Supir el panel de control?",
  "@sa5bf37213b": {
@@ -4514,7 +4972,6 @@
  },
  "safe0429a90": "Control por precio",
  "sf3d644dd4c": "Aprender un botón del mando",
- "sfb1a18d11f": "Actualizar",
  "s72a2328ddd": "Luces",
  "sca12be80ca": "Interruptores",
  "sa4c0eeea02": "Bombas de calor y A/A",
@@ -4672,7 +5129,6 @@
  "@scc7e418ee3": {
   "x-mt": true
  },
- "s9bb545e9b3": "Inicia sesión o crea una cuenta",
  "s08d62fd281": "Apariencia",
  "@s08d62fd281": {
   "x-mt": true
@@ -4749,6 +5205,14 @@
  },
  "scc3d01ee5e": "Guías: VPN, Nabu Casa, nube MQTT",
  "@scc3d01ee5e": {
+  "x-mt": true
+ },
+ "s0fe7b15d15": "Dar a alguien acceso a los dispositivos que elija.",
+ "@s0fe7b15d15": {
+  "x-mt": true
+ },
+ "s25c286a743": "Compartir – nueva invitación",
+ "@s25c286a743": {
   "x-mt": true
  },
  "s90ba544719": "Ayuda",
@@ -5238,6 +5702,22 @@
  "@s40032ddea9": {
   "x-mt": true
  },
+ "s7dcc5e6c76": ", vane ",
+ "@s7dcc5e6c76": {
+  "x-mt": true
+ },
+ "s7c815852f2": "no enviado aún",
+ "@s7c815852f2": {
+  "x-mt": true
+ },
+ "s4795d331a5": "enviado a {p0}",
+ "@s4795d331a5": {
+  "x-mt": true
+ },
+ "sff577ce033": "{p0} {p1} a {p2}",
+ "@sff577ce033": {
+  "x-mt": true
+ },
  "s7068e8892e": "Código desconocido sin datos brutos. Habilitar datos brutos en Tasmota (SetOption581) e inténtelo de nuevo.",
  "@s7068e8892e": {
   "x-mt": true
@@ -5349,6 +5829,14 @@
   "x-mt": true
  },
  "s018d2e08f4": "Ventilador",
+ "sa00d64c920": "Vane",
+ "@sa00d64c920": {
+  "x-mt": true
+ },
+ "s39f8bf0f76": "Enviada",
+ "@s39f8bf0f76": {
+  "x-mt": true
+ },
  "s051944392f": "Temperatura ambiente",
  "@s051944392f": {
   "x-mt": true
@@ -5411,6 +5899,10 @@
  },
  "s04e4777aea": "Falta la temperatura.",
  "@s04e4777aea": {
+  "x-mt": true
+ },
+ "s91e5fff1f0": "habitación {p0} °C",
+ "@s91e5fff1f0": {
   "x-mt": true
  },
  "sfce1a094cb": "No hay sensor de temperatura en el interruptor.",
@@ -5479,6 +5971,30 @@
  },
  "s120026628c": "No se pudo conectar con {p0}.",
  "s43c9b88580": "Auto",
+ "sd3cd4220ae": "auto",
+ "@sd3cd4220ae": {
+  "x-mt": true
+ },
+ "s640687fc2d": "más alto",
+ "@s640687fc2d": {
+  "x-mt": true
+ },
+ "s3516ee9f50": "alto",
+ "@s3516ee9f50": {
+  "x-mt": true
+ },
+ "sb847c3774e": "Medio",
+ "@sb847c3774e": {
+  "x-mt": true
+ },
+ "sc4ebe5627c": "bajo",
+ "@sc4ebe5627c": {
+  "x-mt": true
+ },
+ "saacae8d5c5": "más bajo",
+ "@saacae8d5c5": {
+  "x-mt": true
+ },
  "s30ae7f76e6": "dispositivo de comando ntfy (commands + state)",
  "@s30ae7f76e6": {
   "x-mt": true
@@ -6361,6 +6877,14 @@
  "@s8bcb8433f9": {
   "x-mt": true
  },
+ "sc5d938e26e": "Posición de Vane",
+ "@sc5d938e26e": {
+  "x-mt": true
+ },
+ "s5ce3991e13": "Deslizador para la dirección del aire (0 = la unidad decide, 5 = menor).",
+ "@s5ce3991e13": {
+  "x-mt": true
+ },
  "s78a5e5fa61": "Temperatura de la habitación del sensor de la explosión",
  "@s78a5e5fa61": {
   "x-mt": true
@@ -6725,8 +7249,16 @@
  "@s3378eb2d0b": {
   "x-mt": true
  },
+ "sdfa0c29399": "Último enviado (IR es de una sola dirección)",
+ "@sdfa0c29399": {
+  "x-mt": true
+ },
  "seab2c72485": "Fan (0 = auto)",
  "@seab2c72485": {
+  "x-mt": true
+ },
+ "s7847d8821b": "Vane (0 = auto, 5 = más bajo)",
+ "@s7847d8821b": {
   "x-mt": true
  },
  "s3a38b97f7b": "{p0} – room",
@@ -6737,180 +7269,12 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "saa4df8e877": "Puente no encontrado. ¿Está el teléfono en el Wi-Fi del puente \"Molaplan-XXXX\"? Si la red está desaparecida, mantenga el botón del puente durante 3 s (se abre durante 15 minutos).",
- "@saa4df8e877": {
+ "sfad8715d97": "No se puede llegar al servicio de cuenta. Compruebe Wi-Fi o datos móviles e inténtelo de nuevo.",
+ "@sfad8715d97": {
   "x-mt": true
  },
- "sf5293b1989": "El puente no está en modo de configuración. Mantenga su botón para 3 s e inténtelo de nuevo.",
- "@sf5293b1989": {
-  "x-mt": true
- },
- "s839deeab41": "Este no es el puente en la etiqueta / código QR (desajuste de tecla). Nada fue enviado.",
- "@s839deeab41": {
-  "x-mt": true
- },
- "s3694ce006b": "La respuesta del puente no es válida (desajuste de cifrado). Nada fue guardado.",
- "@s3694ce006b": {
-  "x-mt": true
- },
- "s61aea0b713": "El puente rechazó la configuración: {p0}",
- "@s61aea0b713": {
-  "x-mt": true
- },
- "s63551081b0": "Agregar puente casero",
- "@s63551081b0": {
-  "x-mt": true
- },
- "s592edd94e7": "Molaplan Bridge device",
- "@s592edd94e7": {
-  "x-mt": true
- },
- "sa329968355": "Un pequeño dispositivo siempre conectado (por ejemplo, el controlador Athom IR/RF) que pasa comandos remotos a sus dispositivos y controla la bomba de calor por infrarrojos.",
- "@sa329968355": {
-  "x-mt": true
- },
- "sd8790684a6": "Potencia el puente. Un nuevo puente abre la configuración por sí mismo (slow blink, una vez por segundo).",
- "@sd8790684a6": {
-  "x-mt": true
- },
- "s087004d26c": "Abra la configuración Wi-Fi del teléfono y únase a \"Molaplan-XXXX\" (sin contraseña).",
- "@s087004d26c": {
-  "x-mt": true
- },
- "sf85e449cd8": "Vuelve aquí y presiona \"Encontrar puente\".",
- "@sf85e449cd8": {
-  "x-mt": true
- },
- "s57466387fc": "Encontrar puente",
- "@s57466387fc": {
-  "x-mt": true
- },
- "sd166e3cf6f": "Puente encontrado",
- "@sd166e3cf6f": {
-  "x-mt": true
- },
- "s6b841de5dd": "Firmware",
- "@s6b841de5dd": {
-  "x-mt": true
- },
- "s88fa323548": "Home Wi-Fi",
- "@s88fa323548": {
-  "x-mt": true
- },
- "sf48dd63b0a": "Nombre de la red",
- "@sf48dd63b0a": {
-  "x-mt": true
- },
- "s9f9c574cf9": "Contraseña Wi-Fi",
- "@s9f9c574cf9": {
-  "x-mt": true
- },
- "sc452460b0f": "Junta",
- "@sc452460b0f": {
-  "x-mt": true
- },
- "s4bdd633042": "no probados",
- "@s4bdd633042": {
-  "x-mt": true
- },
- "sbe6a859b63": "Los detalles se envían encriptados – el puente Wi-Fi está abierto, pero la contraseña no se puede leer de ella.",
- "@sbe6a859b63": {
-  "x-mt": true
- },
- "s77af0820de": "Conecta el puente",
- "@s77af0820de": {
-  "x-mt": true
- },
- "s1ec01d8473": "¡Puente conectado!",
- "@s1ec01d8473": {
-  "x-mt": true
- },
- "s88bc217a1b": "El puente se une ahora a la conexión Wi-Fi (enciende la luz con un corto espacio cada 3 s cuando se conecta). Conecte el teléfono de vuelta a la casa Wi-Fi o datos móviles – El acceso remoto muestra el estado del puente.",
- "@s88bc217a1b": {
-  "x-mt": true
- },
- "sa949a952bf": "Añadir puente casero (dispositivo del puente Molaplan)",
- "@sa949a952bf": {
-  "x-mt": true
- },
- "sb641af74b7": "Un pequeño dispositivo siempre conectado, por ejemplo, Athom IR/RF – también controla la bomba de calor. Configurar con el teléfono en un par de minutos.",
- "@sb641af74b7": {
-  "x-mt": true
- },
- "sf83143ae23": "Sensor de temperatura ambiente",
- "@sf83143ae23": {
-  "x-mt": true
- },
- "s0483226428": "Elija un sensor de temperatura",
- "@s0483226428": {
-  "x-mt": true
- },
- "s7dcc5e6c76": ", vane ",
- "@s7dcc5e6c76": {
-  "x-mt": true
- },
- "s7c815852f2": "no enviado aún",
- "@s7c815852f2": {
-  "x-mt": true
- },
- "s4795d331a5": "enviado a {p0}",
- "@s4795d331a5": {
-  "x-mt": true
- },
- "sff577ce033": "{p0} {p1} a {p2}",
- "@sff577ce033": {
-  "x-mt": true
- },
- "sa00d64c920": "Vane",
- "@sa00d64c920": {
-  "x-mt": true
- },
- "s39f8bf0f76": "Enviada",
- "@s39f8bf0f76": {
-  "x-mt": true
- },
- "s91e5fff1f0": "habitación {p0} °C",
- "@s91e5fff1f0": {
-  "x-mt": true
- },
- "sd3cd4220ae": "auto",
- "@sd3cd4220ae": {
-  "x-mt": true
- },
- "s640687fc2d": "más alto",
- "@s640687fc2d": {
-  "x-mt": true
- },
- "s3516ee9f50": "alto",
- "@s3516ee9f50": {
-  "x-mt": true
- },
- "sb847c3774e": "Medio",
- "@sb847c3774e": {
-  "x-mt": true
- },
- "sc4ebe5627c": "bajo",
- "@sc4ebe5627c": {
-  "x-mt": true
- },
- "saacae8d5c5": "más bajo",
- "@saacae8d5c5": {
-  "x-mt": true
- },
- "sc5d938e26e": "Posición de Vane",
- "@sc5d938e26e": {
-  "x-mt": true
- },
- "s5ce3991e13": "Deslizador para la dirección del aire (0 = la unidad decide, 5 = menor).",
- "@s5ce3991e13": {
-  "x-mt": true
- },
- "sdfa0c29399": "Último enviado (IR es de una sola dirección)",
- "@sdfa0c29399": {
-  "x-mt": true
- },
- "s7847d8821b": "Vane (0 = auto, 5 = más bajo)",
- "@s7847d8821b": {
+ "sa052abd601": "El Internet funciona, pero la conexión segura al servicio de cuenta falló. Compruebe la fecha y hora del dispositivo.",
+ "@sa052abd601": {
   "x-mt": true
  }
 }

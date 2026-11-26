@@ -50,7 +50,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Las fuentes de copia de seguridad tampoco contestaron ahora mismo. El problema es más probable en los servicios, no en su red de origen.';
 
   @override
-  String get se21c801ba6 => 'El servicio tiene un problema, lo más probable en el servicio y no en su red de inicio.';
+  String get se21c801ba6 =>
+      'El servicio tiene un problema, lo más probable en el servicio y no en su red de inicio.';
 
   @override
   String get s35e0766add => 'Firmar en el servicio falló';
@@ -61,7 +62,8 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get sd0a2130950 => 'El dispositivo esperado no responde en esta dirección: compruébala (¿http o https?)';
+  String get sd0a2130950 =>
+      'El dispositivo esperado no responde en esta dirección: compruébala (¿http o https?)';
 
   @override
   String get sdd5742468b =>
@@ -82,7 +84,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Compruebe que el dispositivo está encendido y que su teléfono o PC está en el mismo Wi-Fi. También revise la dirección IP – puede cambiar, por lo que reserve una dirección fija en su router.';
 
   @override
-  String get sff9ca463e3 => 'Dispositivo encontrado pero el puerto está cerrado';
+  String get sff9ca463e3 =>
+      'Dispositivo encontrado pero el puerto está cerrado';
 
   @override
   String get s1d4f4506de =>
@@ -92,7 +95,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s8523a9cfd0 => 'La conexión segura (https) falló';
 
   @override
-  String get sdfd499c1f1 => 'Pruebe http:// en su lugar, o active \"Allow self-signed certificate\" bajo Advanced.';
+  String get sdfd499c1f1 =>
+      'Pruebe http:// en su lugar, o active \"Allow self-signed certificate\" bajo Advanced.';
 
   @override
   String get s3fabccc1cd => 'Login, contraseña o token rechazado';
@@ -102,10 +106,12 @@ class AppLocalizationsEs extends AppLocalizations {
       'Consulta las credenciales. En Home Assistant puedes crear un nuevo token de larga vida en tu perfil.';
 
   @override
-  String get se0a7cef6c4 => 'El dispositivo respondió pero el artículo no fue encontrado';
+  String get se0a7cef6c4 =>
+      'El dispositivo respondió pero el artículo no fue encontrado';
 
   @override
-  String get see02239a35 => 'Compruebe el camino o nombre de entidad (por ejemplo, light.living_room).';
+  String get see02239a35 =>
+      'Compruebe el camino o nombre de entidad (por ejemplo, light.living_room).';
 
   @override
   String get sdec83d1e90 => 'El dispositivo reportó un error';
@@ -124,16 +130,19 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s2c303f6774 => 'Tipo de registro no compatible';
 
   @override
-  String get s945685fcda => 'Pruebe el otro tipo de registro (mantener  entrada de la mercancía).';
+  String get s945685fcda =>
+      'Pruebe el otro tipo de registro (mantener  entrada de la mercancía).';
 
   @override
   String get s07ffbc349a => 'Valor rechazado por el dispositivo';
 
   @override
-  String get s76b95eef9f => 'El valor está probablemente fuera de rango. Revise la escala también.';
+  String get s76b95eef9f =>
+      'El valor está probablemente fuera de rango. Revise la escala también.';
 
   @override
-  String get s7746921882 => 'Dispositivo encontrado, pero Modbus TCP está apagado';
+  String get s7746921882 =>
+      'Dispositivo encontrado, pero Modbus TCP está apagado';
 
   @override
   String get s7e552bd146 =>
@@ -177,7 +186,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'No se puede abrir el puerto. Causas más comunes: IP incorrecta, el dispositivo está en otra red (wi-Fi invitado), Modbus TCP está apagado o un cortafuegos bloquea el puerto. Compruebe la dirección y el puerto o pulsar \"Scan Modbus\".';
 
   @override
-  String get sefba540275 => 'La puerta de entrada no puede llegar a un dispositivo con esta unidad id';
+  String get sefba540275 =>
+      'La puerta de entrada no puede llegar a un dispositivo con esta unidad id';
 
   @override
   String get s6e4ed361f3 =>
@@ -194,7 +204,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s17ea4c52d5 => 'No hay respuesta desde el dispositivo';
 
   @override
-  String get s50ecf9ba6f => 'Conectado pero sin respuesta a tiempo. Revisa el mensaje.';
+  String get s50ecf9ba6f =>
+      'Conectado pero sin respuesta a tiempo. Revisa el mensaje.';
 
   @override
   String get sf93db545a1 => 'Hay un error en la configuración';
@@ -207,7 +218,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s3976954bef => 'Esta baldosa no tiene dispositivo';
 
   @override
-  String get sc025e0a1f4 => 'Abrir modo de edición (pencil) y elegir un dispositivo para la ficha.';
+  String get sc025e0a1f4 =>
+      'Abrir modo de edición (pencil) y elegir un dispositivo para la ficha.';
 
   @override
   String get s7e11595f9e => 'El puente de casa está apagado';
@@ -231,7 +243,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s5b3116ed94 => 'El puente de casa no respondió a tiempo';
 
   @override
-  String get se082095a34 => 'La conexión puede ser lenta. Intente de nuevo en un momento.';
+  String get se082095a34 =>
+      'La conexión puede ser lenta. Intente de nuevo en un momento.';
 
   @override
   String get s688a4f4ccb => 'El código no es válido';
@@ -305,19 +318,22 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sc27533ae83 => 'Ahorro';
 
   @override
-  String get sdbcb85509b => 'La temperatura puede variar más (+1 / −2 °C). Mayor ahorro.';
+  String get sdbcb85509b =>
+      'La temperatura puede variar más (+1 / −2 °C). Mayor ahorro.';
 
   @override
   String get s380b20be36 => 'Equilibrado';
 
   @override
-  String get s66ea783264 => 'Poca variación (+1 / −1 °C). Una buena opción por defecto.';
+  String get s66ea783264 =>
+      'Poca variación (+1 / −1 °C). Una buena opción por defecto.';
 
   @override
   String get see96226e44 => 'Confort';
 
   @override
-  String get sb403e00b3d => 'Temperatura casi constante (+0,5 / −0,5 °C). Ahorra un poco.';
+  String get sb403e00b3d =>
+      'Temperatura casi constante (+0,5 / −0,5 °C). Ahorra un poco.';
 
   @override
   String get sd86b823895 => 'Sonoff';
@@ -335,7 +351,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Un Sonoff en modo DIY sólo responde cuando se le dice a su ID de dispositivo. Encuéntralo en la aplicación eWeLink: dispositivo → Ajustes → ID de dispositivo. Tasmota: la contraseña web, si se establece.';
 
   @override
-  String get sea057f1a02 => 'Sólo en modo DIY cuando la búsqueda no encontró el dispositivo.';
+  String get sea057f1a02 =>
+      'Sólo en modo DIY cuando la búsqueda no encontró el dispositivo.';
 
   @override
   String s08d04d58a9(String p0) {
@@ -724,7 +741,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Aplicación Shelly → tu perfil → Ajustes de usuario → Clave de la nube de autorización → Obtener clave. Copiar y pegarlo aquí.';
 
   @override
-  String get s062b21969d => 'Se muestra en la misma página debajo de la llave (\"Server URI\").';
+  String get s062b21969d =>
+      'Se muestra en la misma página debajo de la llave (\"Server URI\").';
 
   @override
   String get sf30bb5d5e6 =>
@@ -748,14 +766,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sf34c97592f => 'IKEA Dirigera';
 
   @override
-  String get sb38eac6a87 => 'IKEA smart hub y sus luces y enchufes (Zigbee). Pare con el botón en el centro.';
+  String get sb38eac6a87 =>
+      'IKEA smart hub y sus luces y enchufes (Zigbee). Pare con el botón en el centro.';
 
   @override
   String get s4e92ab791e =>
       'En la aplicación inteligente IKEA Home: Ajustes → Hub → Dirección IP. O en la lista de dispositivos del router: \"gw2-...\" o \"dirigera\".';
 
   @override
-  String get s73824fc3d0 => 'Presione el botón de acción en la parte inferior del centro de Dirigera una vez ahora.';
+  String get s73824fc3d0 =>
+      'Presione el botón de acción en la parte inferior del centro de Dirigera una vez ahora.';
 
   @override
   String get sda8d9bf1cd => 'Enchufe';
@@ -769,7 +789,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Administrador de usuario. Imou: la contraseña es el \"código de seguridad\" en la etiqueta de la cámara o la contraseña del dispositivo.';
 
   @override
-  String get s4450807111 => 'El usuario de la cámara en la aplicación Reolink (generalmente admin) y su contraseña.';
+  String get s4450807111 =>
+      'El usuario de la cámara en la aplicación Reolink (generalmente admin) y su contraseña.';
 
   @override
   String get s1095c54819 =>
@@ -861,10 +882,12 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get sceebf690e3 => 'No Modbus TCP hub encontrado en el YAML (modbus: ... tipo: tcp, host: ...).';
+  String get sceebf690e3 =>
+      'No Modbus TCP hub encontrado en el YAML (modbus: ... tipo: tcp, host: ...).';
 
   @override
-  String get sb662db81d8 => 'La dirección se ve incompleta. Use cuatro números con puntos, por ejemplo 192.168.1.50.';
+  String get sb662db81d8 =>
+      'La dirección se ve incompleta. Use cuatro números con puntos, por ejemplo 192.168.1.50.';
 
   @override
   String s738ecfe2bc(String p0) {
@@ -937,7 +960,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s872f93a062 => '¿Desbloquear?';
 
   @override
-  String get s0cd88e27f4 => 'La edición y la configuración vuelven a ser visibles.';
+  String get s0cd88e27f4 =>
+      'La edición y la configuración vuelven a ser visibles.';
 
   @override
   String get sa5283191be => 'Desbloquear';
@@ -1038,7 +1062,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sb06bee9921 => 'Show';
 
   @override
-  String get sf1b5d0ffa6 => 'La contraseña no coincide. Introduzca la contraseña de su cuenta.';
+  String get sf1b5d0ffa6 =>
+      'La contraseña no coincide. Introduzca la contraseña de su cuenta.';
 
   @override
   String sd0219ce512(String p0) {
@@ -1046,8 +1071,12 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get sbf59e43c36 =>
-      'No hay conexión a Internet. Compruebe la conexión Wi-Fi o datos móviles e inténtelo de nuevo.';
+  String get sfad8715d97 =>
+      'No se puede llegar al servicio de cuenta. Compruebe Wi-Fi o datos móviles e inténtelo de nuevo.';
+
+  @override
+  String get sa052abd601 =>
+      'El Internet funciona, pero la conexión segura al servicio de cuenta falló. Compruebe la fecha y hora del dispositivo.';
 
   @override
   String get s9ba7e7a8e6 =>
@@ -1058,37 +1087,45 @@ class AppLocalizationsEs extends AppLocalizations {
       'El correo electrónico no está confirmado todavía. Busque el código en su correo electrónico.';
 
   @override
-  String get s3fb651ebf3 => 'Este email ya tiene una cuenta. Inicie sesión en su lugar.';
+  String get s3fb651ebf3 =>
+      'Este email ya tiene una cuenta. Inicie sesión en su lugar.';
 
   @override
   String get s1eddf46047 => 'La contraseña debe ser por lo menos 8 caracteres.';
 
   @override
-  String get sca19a10c02 => 'Eso no parece una dirección de correo electrónico.';
+  String get sca19a10c02 =>
+      'Eso no parece una dirección de correo electrónico.';
 
   @override
-  String get s736463f0d2 => 'El código está mal o expirado. Revise o pida uno nuevo.';
+  String get s736463f0d2 =>
+      'El código está mal o expirado. Revise o pida uno nuevo.';
 
   @override
-  String get s4800010fa4 => 'Demasiados intentos, espera un minuto y vuelve a intentarlo.';
+  String get s4800010fa4 =>
+      'Demasiados intentos, espera un minuto y vuelve a intentarlo.';
 
   @override
   String get sf1a6e42ab0 => 'Su registro caducó, por favor ingrese de nuevo.';
 
   @override
-  String get sf597621fdd => 'Otro dispositivo cambió la configuración al mismo tiempo. Prueba de nuevo.';
+  String get sf597621fdd =>
+      'Otro dispositivo cambió la configuración al mismo tiempo. Prueba de nuevo.';
 
   @override
-  String get se16eef219e => 'El servicio de cuenta no respondió correctamente. Inténtelo de nuevo en breve.';
+  String get se16eef219e =>
+      'El servicio de cuenta no respondió correctamente. Inténtelo de nuevo en breve.';
 
   @override
   String get s2ab0ff38c1 => 'Tu cuenta ya tiene una configuración';
 
   @override
-  String get s3ce644ca86 => '¿Ahorrar la configuración de este dispositivo en tu cuenta?';
+  String get s3ce644ca86 =>
+      '¿Ahorrar la configuración de este dispositivo en tu cuenta?';
 
   @override
-  String get s43d6286f35 => 'Este dispositivo también tiene sus propios dispositivos y baldosas. ¿Qué debemos hacer?';
+  String get s43d6286f35 =>
+      'Este dispositivo también tiene sus propios dispositivos y baldosas. ¿Qué debemos hacer?';
 
   @override
   String get sd8a380a86d =>
@@ -1128,7 +1165,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s4d212254bc => 'Código del correo electrónico';
 
   @override
-  String get s3b86a618be => 'El código llega en unos minutos. Compruebe la carpeta de spam también.';
+  String get s3b86a618be =>
+      'El código llega en unos minutos. Compruebe la carpeta de spam también.';
 
   @override
   String get sb35c5ba0fc =>
@@ -1141,7 +1179,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sec4d25a98e => 'No tengo una cuenta – crear uno';
 
   @override
-  String get s860d0269e0 => 'Inicia sesión con un código enviado por correo electrónico';
+  String get s860d0269e0 =>
+      'Inicia sesión con un código enviado por correo electrónico';
 
   @override
   String get s755639049e => 'He olvidado la contraseña';
@@ -1193,7 +1232,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Escriba su correo electrónico y le enviaremos un código. No se necesita contraseña. Si aún no tiene cuenta, se crea uno y la configuración de este dispositivo se mueve en él.';
 
   @override
-  String get s7d29d1dfbd => 'Te enviamos un código. No hay contraseña necesaria para iniciar sesión.';
+  String get s7d29d1dfbd =>
+      'Te enviamos un código. No hay contraseña necesaria para iniciar sesión.';
 
   @override
   String get sc350da6f19 => 'Enviar código';
@@ -1216,7 +1256,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s8c48f847f6 => 'Reiniciar contraseña';
 
   @override
-  String get safd591d9b6 => 'Te enviamos un código, y luego eliges una nueva contraseña.';
+  String get safd591d9b6 =>
+      'Te enviamos un código, y luego eliges una nueva contraseña.';
 
   @override
   String get s6807ac704e => 'Nueva contraseña (8+ caracteres)';
@@ -1231,7 +1272,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s94d5ea139c => 'Hasta la fecha en todos sus dispositivos';
 
   @override
-  String get sc6f1932436 => 'Sin conexión – cambio de sincronización al volver en línea';
+  String get sc6f1932436 =>
+      'Sin conexión – cambio de sincronización al volver en línea';
 
   @override
   String get s16ab688a9b => 'El sincronismo falló - volverá a entrar';
@@ -1319,7 +1361,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sfb4df77773 => 'Dale un nombre al botón.';
 
   @override
-  String get s986eb41068 => 'Use Pronto: agregue el basurero: rápido a remoto_receptor.';
+  String get s986eb41068 =>
+      'Use Pronto: agregue el basurero: rápido a remoto_receptor.';
 
   @override
   String s0d353281af(String p0) {
@@ -1350,7 +1393,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s63c57060b6 => 'Toca \"Empieza a escuchar\".';
 
   @override
-  String get s439f6f3869 => 'Apunte el control remoto en el interruptor (menos de 1 m) y presione el botón una vez.';
+  String get s439f6f3869 =>
+      'Apunte el control remoto en el interruptor (menos de 1 m) y presione el botón una vez.';
 
   @override
   String get sd8667596c3 => 'Dirígelo y pulsa \"Guardar como botón\".';
@@ -1385,17 +1429,20 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s0a7c7a151a => 'Guardar como botón';
 
   @override
-  String get s29adc71f1c => 'Conector CN105 en el tablero interior. ESPHome: esphome-mitsubishiheatpump.';
+  String get s29adc71f1c =>
+      'Conector CN105 en el tablero interior. ESPHome: esphome-mitsubishiheatpump.';
 
   @override
   String get s1d17c9fc6e =>
       'S21 (más unidades de pared) o X50A. Enchufes Faikin directamente; ESPHome: esphome-daikin-s21.';
 
   @override
-  String get s07767f6a03 => 'Conector CN-CNT (donde va el adaptador WLAN de Panasonic). ESPHome: esphome-panasonic-ac.';
+  String get s07767f6a03 =>
+      'Conector CN-CNT (donde va el adaptador WLAN de Panasonic). ESPHome: esphome-panasonic-ac.';
 
   @override
-  String get s659b742754 => 'Puerto de servicio interior Toshiba. ESPHome: esphome-toshiba_ac.';
+  String get s659b742754 =>
+      'Puerto de servicio interior Toshiba. ESPHome: esphome-toshiba_ac.';
 
   @override
   String get s7c3bf9542b => 'Introduzca el dispositivo IP.';
@@ -1426,25 +1473,29 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s2f9c5f3130 => 'Consigue un controlador ESP32 y cable.';
 
   @override
-  String get s2675e49423 => 'Flash ESPHome por la guía del proyecto. Incluye \"web_server:\" – Molaplan lo usa.';
+  String get s2675e49423 =>
+      'Flash ESPHome por la guía del proyecto. Incluye \"web_server:\" – Molaplan lo usa.';
 
   @override
   String get scd70d27319 => 'Conéctelo con la energía apagada.';
 
   @override
-  String get s56b0cb63ea => 'Escribe su IP debajo y pulsa \"Busca bombas de calor\".';
+  String get s56b0cb63ea =>
+      'Escribe su IP debajo y pulsa \"Busca bombas de calor\".';
 
   @override
   String get sdd1cd7bdd5 => 'Controlador ESPHome IP';
 
   @override
-  String get sa1e21d236a => 'Desde la lista de dispositivos del router o el panel ESPHome.';
+  String get sa1e21d236a =>
+      'Desde la lista de dispositivos del router o el panel ESPHome.';
 
   @override
   String get s1bef32afe0 => 'Encontrar bombas de calor';
 
   @override
-  String get s9aa9bc9679 => 'El dispositivo respondió pero no tiene una entidad climática.';
+  String get s9aa9bc9679 =>
+      'El dispositivo respondió pero no tiene una entidad climática.';
 
   @override
   String get sec88246e24 => 'Elija una foto de la habitación';
@@ -1570,7 +1621,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1e03ade992 => 'Conexión OK';
 
   @override
-  String get s0fc5f4d788 => 'Revisó cada 15 s hasta que funciona; este aviso entonces desaparece por sí mismo.';
+  String get s0fc5f4d788 =>
+      'Revisó cada 15 s hasta que funciona; este aviso entonces desaparece por sí mismo.';
 
   @override
   String get sf4caddf894 => 'Avanzado';
@@ -1709,7 +1761,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sdadb6e3501 => 'Calefactor de respaldo';
 
   @override
-  String get se4e381334d => 'Comienza sólo cuando está claramente por debajo del objetivo.';
+  String get se4e381334d =>
+      'Comienza sólo cuando está claramente por debajo del objetivo.';
 
   @override
   String get s17c79c5f4e => 'Power on/off (opcional)';
@@ -1727,7 +1780,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sc590a09db9 => '¿Qué calienta o enfría?';
 
   @override
-  String get sa15ffe53d4 => 'Escoge una o más. Por ejemplo, una bomba de calor y un calentador de respaldo.';
+  String get sa15ffe53d4 =>
+      'Escoge una o más. Por ejemplo, una bomba de calor y un calentador de respaldo.';
 
   @override
   String get sd47a7615a7 => 'Aún no hay dispositivos adecuados';
@@ -1740,16 +1794,19 @@ class AppLocalizationsEs extends AppLocalizations {
   String get see513572ea => '¿De dónde se lee la temperatura?';
 
   @override
-  String get s5155522e83 => 'Escoja un termómetro. Varios = retroceso o promedio.';
+  String get s5155522e83 =>
+      'Escoja un termómetro. Varios = retroceso o promedio.';
 
   @override
-  String get s581fa290f3 => 'Opcional: la bomba de calor se mide. Escoge un sensor para ver la temperatura.';
+  String get s581fa290f3 =>
+      'Opcional: la bomba de calor se mide. Escoge un sensor para ver la temperatura.';
 
   @override
   String get s7e4d8d60a0 => 'Sin termómetro';
 
   @override
-  String get s0787d80876 => 'Primero agrega un dispositivo que muestra una temperatura.';
+  String get s0787d80876 =>
+      'Primero agrega un dispositivo que muestra una temperatura.';
 
   @override
   String get s89661203b7 => 'El primero que funcione';
@@ -1791,7 +1848,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s21713a2177 => 'Tiempo mínimo apagado';
 
   @override
-  String get s8f7c8eb7d0 => 'Calentador de respaldo cuando debajo del objetivo por';
+  String get s8f7c8eb7d0 =>
+      'Calentador de respaldo cuando debajo del objetivo por';
 
   @override
   String get sf1eb3b2d34 => 'Sensor perdido después de no leer para';
@@ -1911,7 +1969,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s23f4820db7 => 'no controlable todavía';
 
   @override
-  String get sdeeabebed9 => 'Aire acondicionado: añadir a través de la nube o Bluetooth';
+  String get sdeeabebed9 =>
+      'Aire acondicionado: añadir a través de la nube o Bluetooth';
 
   @override
   String get saae59a3865 => 'via casa puente';
@@ -1944,10 +2003,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s55b85f29a6 => 'Búsqueda de su red...';
 
   @override
-  String get se9c923ff0b => 'Molaplan busca dispositivos que reconoce en su red de inicio.';
+  String get se9c923ff0b =>
+      'Molaplan busca dispositivos que reconoce en su red de inicio.';
 
   @override
-  String get s3ff2220816 => 'No se encontraron dispositivos conocidos. Elige la marca abajo.';
+  String get s3ff2220816 =>
+      'No se encontraron dispositivos conocidos. Elige la marca abajo.';
 
   @override
   String s2a9142dc3e(String p0) {
@@ -1964,7 +2025,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se3ef5a5658 => 'Escanear Modbus';
 
   @override
-  String get s9a018b8166 => 'Usted está lejos: el puente de la casa registró su red de la casa.';
+  String get s9a018b8166 =>
+      'Usted está lejos: el puente de la casa registró su red de la casa.';
 
   @override
   String sf16a25c313(String p0) {
@@ -1992,7 +2054,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s212e35a61b => 'No podía enumerar los dispositivos';
 
   @override
-  String get s039683f4a5 => 'No hay monitores en su cuenta. Añadir uno en la aplicación Airthings primero.';
+  String get s039683f4a5 =>
+      'No hay monitores en su cuenta. Añadir uno en la aplicación Airthings primero.';
 
   @override
   String get sdfff64e4c3 => 'a través del Hub';
@@ -2034,7 +2097,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s28b7c227f0 => 'consigna';
 
   @override
-  String get s81e0c3084b => 'No se pudo leer la luz; el control puede funcionar igualmente.';
+  String get s81e0c3084b =>
+      'No se pudo leer la luz; el control puede funcionar igualmente.';
 
   @override
   String get s7400a53ab2 => 'Color';
@@ -2141,7 +2205,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s24e5139123 => 'Port open, no Modbus reply';
 
   @override
-  String get s9041c140be => 'Compruebe la configuración id y Modbus de la unidad. Pulse para usar esta dirección.';
+  String get s9041c140be =>
+      'Compruebe la configuración id y Modbus de la unidad. Pulse para usar esta dirección.';
 
   @override
   String get s55d52c5ae1 => 'Este dispositivo no está en Wi-Fi';
@@ -2198,7 +2263,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sb1d36bfdd3 => 'El botón no se apretó en el tiempo';
 
   @override
-  String get sc994f6ec6e => 'Pulse \"Prueba de nuevo\" y luego presione el botón de inmediato.';
+  String get sc994f6ec6e =>
+      'Pulse \"Prueba de nuevo\" y luego presione el botón de inmediato.';
 
   @override
   String get s663202243e => 'No se encontró nada que controlar';
@@ -2237,10 +2303,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s516dbdd784 => 'El puente de la casa está fuera de la fecha';
 
   @override
-  String get s70089507bf => 'Actualizar Molaplan en el puente (Configuración → Compruebe las actualizaciones).';
+  String get s70089507bf =>
+      'Actualizar Molaplan en el puente (Configuración → Compruebe las actualizaciones).';
 
   @override
-  String get scc1918f2dc => 'Compruebe que el puente en casa está encendido, Molaplan está abierto y tiene Internet.';
+  String get scc1918f2dc =>
+      'Compruebe que el puente en casa está encendido, Molaplan está abierto y tiene Internet.';
 
   @override
   String get se11f9b5084 => 'No se pudo conectar con el dispositivo';
@@ -2327,14 +2395,16 @@ class AppLocalizationsEs extends AppLocalizations {
       'Como se ha firmado, la conexión a domicilio llega a todos sus dispositivos automáticamente.';
 
   @override
-  String get s96feb2f60a => 'Este dispositivo siempre se queda en casa – hazlo el puente';
+  String get s96feb2f60a =>
+      'Este dispositivo siempre se queda en casa – hazlo el puente';
 
   @override
   String get sb2a33a1ec4 =>
       'Mantenga la carga con Molaplan abierto. Otros dispositivos se conectan con un código QR o mediante la firma en la misma cuenta.';
 
   @override
-  String get s1b9f4ae6d5 => 'El puente está en otro dispositivo – conectarse a él';
+  String get s1b9f4ae6d5 =>
+      'El puente está en otro dispositivo – conectarse a él';
 
   @override
   String get s13d739b710 =>
@@ -2350,7 +2420,8 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get sc788897ba0 => 'Buscando a través del puente de casa, así que esto funciona lejos de casa también.';
+  String get sc788897ba0 =>
+      'Buscando a través del puente de casa, así que esto funciona lejos de casa también.';
 
   @override
   String get s0f7361f40c => 'Mirando tu Wi-Fi en casa, toca el tuyo.';
@@ -2420,7 +2491,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se3aa0f7164 => 'Dirección de RTSP';
 
   @override
-  String get s722ac06c6d => 'Sin el login – el usuario y la contraseña se añaden automáticamente.';
+  String get s722ac06c6d =>
+      'Sin el login – el usuario y la contraseña se añaden automáticamente.';
 
   @override
   String s77ec7b376b(String p0) {
@@ -2428,7 +2500,8 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get sac4debdb9c => 'Escoge lo que pasa en la vista de casa y llámalos.';
+  String get sac4debdb9c =>
+      'Escoge lo que pasa en la vista de casa y llámalos.';
 
   @override
   String get sfe5661e401 => 'No seleccionar ninguno';
@@ -2450,10 +2523,12 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get sbfaea66122 => 'Las baldosas funcionan en casa y lejos a través de la nube – nada más que hacer.';
+  String get sbfaea66122 =>
+      'Las baldosas funcionan en casa y lejos a través de la nube – nada más que hacer.';
 
   @override
-  String get se7c68b3bed => 'Los azulejos trabajan en casa y lejos a través del puente de casa – nada más que hacer.';
+  String get se7c68b3bed =>
+      'Los azulejos trabajan en casa y lejos a través del puente de casa – nada más que hacer.';
 
   @override
   String get sbc8469cce1 =>
@@ -2461,6 +2536,310 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s417eb9a875 => 'Configurar el acceso remoto';
+
+  @override
+  String get sb4bd4baa5c =>
+      'No hay usuario Molaplan con esa dirección. Necesitan iniciar sesión en Molaplan 0.9 una vez – o enviarles un código de invitación.';
+
+  @override
+  String get s7ed2aecb01 =>
+      'Nada compartido seleccionado (los termostatos todavía no pueden ser compartidos).';
+
+  @override
+  String get s707b7ff598 => 'La invitación ya no existe.';
+
+  @override
+  String get s5ea320fb1c =>
+      'Desbloquear los secretos de la cuenta en este dispositivo primero (cuenta → Desbloquear con contraseña). Compartir utiliza la clave de la cuenta.';
+
+  @override
+  String get s5aee30a4e4 =>
+      'Esta invitación es para un instalador: encienda el perfil del instalador (Sharing → Avanzado).';
+
+  @override
+  String get sa562754cb5 => 'El código es incorrecto, expirado o ya utilizado.';
+
+  @override
+  String get s9c37d7a89c =>
+      'El puente casero no responde. Compartir necesita el puente casero (Acceso remoto) – los permisos se aplican allí.';
+
+  @override
+  String get sc858a8f851 =>
+      'El puente casero es demasiado viejo para compartirlo. Actualizarlo (Remote access → Update bridge).';
+
+  @override
+  String get s1a52f53861 => 'No hay conexión con la cuenta Molaplan.';
+
+  @override
+  String s2457ec4502(String p0) {
+    return 'El servicio de cuenta se negó: $p0';
+  }
+
+  @override
+  String get s4bc537975e => 'El puente de casa está fuera de línea.';
+
+  @override
+  String get s2fb5fe14e4 => 'La parte fue revocada.';
+
+  @override
+  String get s7b44d47d45 => 'El puente de casa no responde.';
+
+  @override
+  String get s8eddd585bc => 'No hay conexión.';
+
+  @override
+  String get s47998395f5 => 'No está permitido.';
+
+  @override
+  String get s7f504a8c64 => 'Ver sólo';
+
+  @override
+  String get s9c067115ef => 'Control';
+
+  @override
+  String get s8343921765 => 'Completo (control + ajustes)';
+
+  @override
+  String get s211d9f0a3a => 'Código que aún no se ha utilizado';
+
+  @override
+  String get s1e6b3fe5dc => 'Esperando la aceptación';
+
+  @override
+  String get sb13063b8cd => 'Ser confirmado...';
+
+  @override
+  String get s13b6f87b0a => 'Activo';
+
+  @override
+  String get sed1d8dbf2b => 'Declind';
+
+  @override
+  String get s0123f33869 => 'Revocado';
+
+  @override
+  String get s844e081db8 => 'Compartir';
+
+  @override
+  String get sfb1a18d11f => 'Actualizar';
+
+  @override
+  String get scdfdf5d233 =>
+      'Compartir necesita una cuenta Molaplan para que las invitaciones puedan llegar a las personas y los trabajos de encriptación.';
+
+  @override
+  String get s9bb545e9b3 => 'Inicia sesión o crea una cuenta';
+
+  @override
+  String get s85abc4496d =>
+      'Dar a un miembro de la familia, vecino o instalador acceso a los dispositivos que elija. Las contraseñas y direcciones nunca salen de casa, y usted puede revocar en cualquier momento.';
+
+  @override
+  String get sb4602bb0a6 => 'Compartir dispositivos';
+
+  @override
+  String get sffe19ad543 => 'Use un código de invitación';
+
+  @override
+  String get s61036a5d51 => 'Invita a usted';
+
+  @override
+  String get s8af08eb19e => 'dispositivos';
+
+  @override
+  String get sbb84536839 => 'Aceptado';
+
+  @override
+  String get sdfaf8c242b => 'Aceptar';
+
+  @override
+  String get s493a1eaf08 => 'Declin';
+
+  @override
+  String get s2fd1394b33 => 'Compartido conmigo';
+
+  @override
+  String get seaa0c13606 => 'Tus acciones';
+
+  @override
+  String get s450c60afd0 => 'No has compartido nada.';
+
+  @override
+  String get s33f41d417c => 'Invitar código';
+
+  @override
+  String get s23baecde5b => 'dispositivos';
+
+  @override
+  String get s9cdf3dcc87 => '¿Revocar la parte?';
+
+  @override
+  String get s9d0ac1d1ee =>
+      'El acceso termina tan pronto como el puente casero lo oye (generalmente a la vez).';
+
+  @override
+  String get s4417570cbb => 'Revocación';
+
+  @override
+  String get s280e22cbc9 => 'Compartir revocado';
+
+  @override
+  String get s84a6d73d1e => 'Cambio de dispositivos o derechos';
+
+  @override
+  String get s1cf5e3d702 => 'Perfil de instalación';
+
+  @override
+  String get s22f8bccc91 =>
+      'Muestra el menú Installer: clientes, sus dispositivos y alarmas. Un cliente otorga acceso con un código y puede revocarlo.';
+
+  @override
+  String get se19c5fe8aa => 'Nombre de la empresa';
+
+  @override
+  String get sd742357fc8 => 'Su nombre en acciones';
+
+  @override
+  String get sfe0000a1a9 =>
+      'Seguridad: el puente de inicio verifica los derechos de cada solicitud. La conexión credencial viaja encriptada sólo a la clave del destinatario; contraseñas y direcciones de dispositivo nunca salen de casa.';
+
+  @override
+  String get s0577e25cbe => 'Añadir un cliente con un código';
+
+  @override
+  String get s3d00dee1a9 => 'Usar';
+
+  @override
+  String get sce4c69f42c =>
+      'Código aceptado. El acceso se abre cuando el Molaplan del propietario lo confirma (normalmente dentro de un par de minutos).';
+
+  @override
+  String get sd1520d6367 =>
+      'Dar el código (o enlace) al destinatario: Molaplan → Compartir → Usar un código de invitación. Válido durante 7 días, una vez.';
+
+  @override
+  String get s563abff5ad => 'Copiar el enlace';
+
+  @override
+  String get s0daf5e9cb6 =>
+      'Invitar enviado – el destinatario lo acepta en Molaplan.';
+
+  @override
+  String get s707a062202 => 'Porcentaje de cambio';
+
+  @override
+  String get s79f72dbe13 => '1. Qué compartir';
+
+  @override
+  String get s58e14dc230 =>
+      'Toque una vista para compartir todos sus dispositivos, o escoja uno por uno.';
+
+  @override
+  String get sdb49fc5671 => 'Vista completa';
+
+  @override
+  String get sa7cf1a01d7 => '2. Derechos';
+
+  @override
+  String get s3b2376ac74 => 'Vista';
+
+  @override
+  String get s6605942623 => 'Completo';
+
+  @override
+  String get s9ccbd78d51 => 'Ve estados y lecturas, no pueden controlar.';
+
+  @override
+  String get sb143b5c9f1 =>
+      'Puede cambiar y ajustar, no puede cambiar la configuración (por ejemplo, los puntos de configuración de temperatura).';
+
+  @override
+  String get s32dc2aa139 =>
+      'Ajustes de control y dispositivo. Nunca tus propias vistas o contraseñas.';
+
+  @override
+  String get se153d3c421 => '3. A quién';
+
+  @override
+  String get s62e68022e1 => 'Un usuario Molaplan (e-mail)';
+
+  @override
+  String get s447da2f746 => 'Invitar código o enlace';
+
+  @override
+  String get sdd0f19c6b8 => 'E-mail';
+
+  @override
+  String get s6be36f4219 => 'A un instalador (shows in their Installer menu)';
+
+  @override
+  String get se7272a5713 => 'Nombre de la parte (opcional)';
+
+  @override
+  String get s1f9799af4e => 'e.g. Cottage';
+
+  @override
+  String get s03f60936b0 => 'Derechos por dispositivo';
+
+  @override
+  String get s385022d526 => 'Vista';
+
+  @override
+  String get s482464ebd5 => 'Control';
+
+  @override
+  String get s5897aaa050 => 'Notificar un tema ntfy (opcional)';
+
+  @override
+  String get sd4faf9db62 =>
+      'El mensaje no contiene ningún código o detalles del dispositivo.';
+
+  @override
+  String get sdec87898c3 => 'Crear código de invitación';
+
+  @override
+  String get s19c2104a9d => 'Enviar invitación';
+
+  @override
+  String get s8b4d48dfaf => 'Propietario';
+
+  @override
+  String get sbfe79d1f5f => 'Actualizado';
+
+  @override
+  String get s90944b5e7c => 'Atención';
+
+  @override
+  String get scf2e61da2c => 'no contestando';
+
+  @override
+  String get s1364743ec7 => 'alarma';
+
+  @override
+  String get s5416a5cdf7 => 'Corre';
+
+  @override
+  String get s8debff3196 => 'Mostrar foto';
+
+  @override
+  String get sbd907def5b => 'Installer';
+
+  @override
+  String get sddd83db201 => 'Agregar cliente';
+
+  @override
+  String get s2220ce611a =>
+      'Los clientes que le dieron acceso. Usted ve sólo los dispositivos compartidos y actuar dentro de los derechos que el cliente dio – nunca sus contraseñas.';
+
+  @override
+  String get s98a90339f4 =>
+      'No hay clientes todavía. Pregunte al cliente para crear un código de instalación: Compartir → Compartir dispositivos → Invitar código + A un instalador.';
+
+  @override
+  String get sa52cf49adc => 'Esperando al Molaplan del cliente para confirmar';
+
+  @override
+  String get s35e8813a82 => 'alertas';
 
   @override
   String get sc3abd09cd9 => 'Color personalizado';
@@ -2496,10 +2875,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s8613961a5a => 'Notificaciones';
 
   @override
-  String get s4f745952b8 => 'Corriendo en este puente casero, también cuando la aplicación está cerrada.';
+  String get s4f745952b8 =>
+      'Corriendo en este puente casero, también cuando la aplicación está cerrada.';
 
   @override
-  String get s99cbed55fd => 'Correr en el puente de inicio – funciona incluso cuando la aplicación está cerrada.';
+  String get s99cbed55fd =>
+      'Correr en el puente de inicio – funciona incluso cuando la aplicación está cerrada.';
 
   @override
   String get s0247948956 =>
@@ -2622,7 +3003,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get scb62f41105 => 'Mínimos minutos entre las carreras';
 
   @override
-  String get s643b680e89 => 'Detiene, por ejemplo, un sensor de acoplamiento de enviar docenas de notificaciones.';
+  String get s643b680e89 =>
+      'Detiene, por ejemplo, un sensor de acoplamiento de enviar docenas de notificaciones.';
 
   @override
   String get s4c4ab28899 => 'Prueba ahora';
@@ -2940,7 +3322,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sb6e92eacba => 'Permite comenzar desde fuera (PIN)';
 
   @override
-  String get sa1692aa719 => 'Un mensaje a la dirección ntfy o un atajo de iPhone comienza el script con el PIN.';
+  String get sa1692aa719 =>
+      'Un mensaje a la dirección ntfy o un atajo de iPhone comienza el script con el PIN.';
 
   @override
   String get s0a5410ea4f => 'PIN remoto (al menos 4 caracteres)';
@@ -3025,7 +3408,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se250251ff0 => 'Notificaciones de empuje';
 
   @override
-  String get s91a8948ad7 => 'A través de ntfy (no se necesita cuenta de Google)';
+  String get s91a8948ad7 =>
+      'A través de ntfy (no se necesita cuenta de Google)';
 
   @override
   String get sbdd6c9bad2 => 'Mostrar en este dispositivo';
@@ -3103,7 +3487,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s9d75942e41 => 'Automatización lista';
 
   @override
-  String get s70860413a1 => 'Luces al atardecer, fuga de agua → alarma, horas baratas...';
+  String get s70860413a1 =>
+      'Luces al atardecer, fuga de agua → alarma, horas baratas...';
 
   @override
   String get s8b5be90c1e => 'Su propia automatización';
@@ -3124,7 +3509,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s8070a25da8 => 'Grupo';
 
   @override
-  String get sf5f1ae9c9e => 'Por ejemplo, todas las luces de la sala de estar como una tarjeta';
+  String get sf5f1ae9c9e =>
+      'Por ejemplo, todas las luces de la sala de estar como una tarjeta';
 
   @override
   String get s73f89f4de7 => '¿Qué dispositivos van en el grupo?';
@@ -3144,13 +3530,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1e593aeca2 => 'Cerrar';
 
   @override
-  String get s3d00dee1a9 => 'Usar';
+  String get sa252f06bff =>
+      'Escoge la marca del dispositivo. Molaplan la encuentra y crea las fichas.';
 
   @override
-  String get sa252f06bff => 'Escoge la marca del dispositivo. Molaplan la encuentra y crea las fichas.';
-
-  @override
-  String get s5b3b5e5a24 => 'Buscar marca o dispositivo (por ejemplo, Shelly, Hue, IKEA)';
+  String get s5b3b5e5a24 =>
+      'Buscar marca o dispositivo (por ejemplo, Shelly, Hue, IKEA)';
 
   @override
   String get sa427be10c9 => 'Encontrar y conectar automáticamente';
@@ -3185,7 +3570,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s2a9b6fedd9 => '¿No puedes encontrar tu marca?';
 
   @override
-  String get scfc7244d06 => 'Husqvarna, Zigbee, Tuya, bombas de calor... ver cómo utilizarlas hoy.';
+  String get scfc7244d06 =>
+      'Husqvarna, Zigbee, Tuya, bombas de calor... ver cómo utilizarlas hoy.';
 
   @override
   String get sf7b77783e5 => 'Otro (configuración manual)';
@@ -3292,7 +3678,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sa62eebe6bd => 'Detectar relés';
 
   @override
-  String get s7196b72140 => 'Г No nativo Modbus TCP – un RS485 → La puerta de entrada TCP es necesaria.';
+  String get s7196b72140 =>
+      'Г No nativo Modbus TCP – un RS485 → La puerta de entrada TCP es necesaria.';
 
   @override
   String get s2e8ba44677 => 'Fuente';
@@ -3307,10 +3694,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sb9e9e55164 => 'Se crearán estas tarjetas';
 
   @override
-  String get s1cb2891ef2 => 'Llenar en los campos marcados con * para ver los azulejos.';
+  String get s1cb2891ef2 =>
+      'Llenar en los campos marcados con * para ver los azulejos.';
 
   @override
-  String get s504861ee78 => 'No hay fichas listas – puedes añadirlas más tarde con el botón del lápiz.';
+  String get s504861ee78 =>
+      'No hay fichas listas – puedes añadirlas más tarde con el botón del lápiz.';
 
   @override
   String get s1094266d4c => 'Muestra un valor';
@@ -3528,9 +3917,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s80c4ecec94 => 'c/h';
 
   @override
-  String get sbfe79d1f5f => 'Actualizado';
-
-  @override
   String get sb68e905fc4 => 'Consumo (kWh)';
 
   @override
@@ -3573,7 +3959,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s62cfd94468 => 'Horas más baratas por la noche';
 
   @override
-  String get s7995dff292 => 'Durante las horas de noche más baratas (22–07). Bien por calentadores de agua y carga EV.';
+  String get s7995dff292 =>
+      'Durante las horas de noche más baratas (22–07). Bien por calentadores de agua y carga EV.';
 
   @override
   String get sf92675687a => 'Horas más baratas del día';
@@ -3585,7 +3972,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s6c070f7367 => 'Cuando la electricidad es cara';
 
   @override
-  String get s214f034099 => 'Apaga por encima del límite y vuelve cuando el precio baja.';
+  String get s214f034099 =>
+      'Apaga por encima del límite y vuelve cuando el precio baja.';
 
   @override
   String get s3939cfc37e => 'Cuando la electricidad es barata';
@@ -3600,7 +3988,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s5aa3400a7a => 'Control por precio guardado';
 
   @override
-  String get s2f5410429b => 'La regla se ejecuta en este dispositivo (puente de casa). Mantenlo en casa.';
+  String get s2f5410429b =>
+      'La regla se ejecuta en este dispositivo (puente de casa). Mantenlo en casa.';
 
   @override
   String sb86a43361f(String p0) {
@@ -3654,10 +4043,12 @@ class AppLocalizationsEs extends AppLocalizations {
       'El puente no está en modo de configuración. Mantenga su botón para 3 s e inténtelo de nuevo.';
 
   @override
-  String get s839deeab41 => 'Este no es el puente en la etiqueta / código QR (desajuste de tecla). Nada fue enviado.';
+  String get s839deeab41 =>
+      'Este no es el puente en la etiqueta / código QR (desajuste de tecla). Nada fue enviado.';
 
   @override
-  String get s3694ce006b => 'La respuesta del puente no es válida (desajuste de cifrado). Nada fue guardado.';
+  String get s3694ce006b =>
+      'La respuesta del puente no es válida (desajuste de cifrado). Nada fue guardado.';
 
   @override
   String s61aea0b713(String p0) {
@@ -3679,7 +4070,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Potencia el puente. Un nuevo puente abre la configuración por sí mismo (slow blink, una vez por segundo).';
 
   @override
-  String get s087004d26c => 'Abra la configuración Wi-Fi del teléfono y únase a \"Molaplan-XXXX\" (sin contraseña).';
+  String get s087004d26c =>
+      'Abra la configuración Wi-Fi del teléfono y únase a \"Molaplan-XXXX\" (sin contraseña).';
 
   @override
   String get sf85e449cd8 => 'Vuelve aquí y presiona \"Encontrar puente\".';
@@ -3760,13 +4152,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s09737988fd => '¡La conexión funciona!';
 
   @override
-  String get s0a972aa85e => 'Las contraseñas y las fichas se almacenan en el almacenamiento seguro del dispositivo.';
+  String get s0a972aa85e =>
+      'Las contraseñas y las fichas se almacenan en el almacenamiento seguro del dispositivo.';
 
   @override
   String get sc51b1e0dc0 => '¿Qué quieres añadir?';
 
   @override
-  String get s38f5b2ef26 => 'Shelly, Sonoff, Hue, cámara, bomba de calor... Busca tu red de inicio automáticamente.';
+  String get s38f5b2ef26 =>
+      'Shelly, Sonoff, Hue, cámara, bomba de calor... Busca tu red de inicio automáticamente.';
 
   @override
   String get s3b56b2cb8d => 'Tarjeta';
@@ -3812,7 +4206,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Este dispositivo se mantiene en casa, siempre en (cargar + Wi-Fi), y pasa comandos remotos a sus dispositivos.';
 
   @override
-  String get sa949a952bf => 'Añadir puente casero (dispositivo del puente Molaplan)';
+  String get sa949a952bf =>
+      'Añadir puente casero (dispositivo del puente Molaplan)';
 
   @override
   String get sb641af74b7 =>
@@ -3822,10 +4217,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s2c3ae5833b => 'Otras formas: VPN, Nabu Casa, nube MQTT';
 
   @override
-  String get s807e3a32f3 => 'Guías paso a paso si ya utiliza Tailscale, WireGuard, Home Assistant Cloud o cloud MQTT.';
+  String get s807e3a32f3 =>
+      'Guías paso a paso si ya utiliza Tailscale, WireGuard, Home Assistant Cloud o cloud MQTT.';
 
   @override
-  String get sa3e78d5c4e => 'El puente del hogar responde – el acceso remoto funciona.';
+  String get sa3e78d5c4e =>
+      'El puente del hogar responde – el acceso remoto funciona.';
 
   @override
   String get s0b57661c18 => 'Controla tu hogar desde cualquier lugar';
@@ -3899,7 +4296,8 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get se8704fa7a4 => 'El puente no pudo comprobar las actualizaciones ahora.';
+  String get se8704fa7a4 =>
+      'El puente no pudo comprobar las actualizaciones ahora.';
 
   @override
   String s2db971daf4(String p0) {
@@ -3910,10 +4308,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s51fb400921 => ' · actualizaciones silenciosamente';
 
   @override
-  String get s3443bfc674 => ' · Las actualizaciones necesitan aprobación en el dispositivo';
+  String get s3443bfc674 =>
+      ' · Las actualizaciones necesitan aprobación en el dispositivo';
 
   @override
-  String get scb47cbf8c2 => 'Puente de inicio: una versión anterior (sin información de la versión)';
+  String get scb47cbf8c2 =>
+      'Puente de inicio: una versión anterior (sin información de la versión)';
 
   @override
   String get s6a02d97944 => 'Versión de puente de inicio: cheque...';
@@ -3971,10 +4371,12 @@ class AppLocalizationsEs extends AppLocalizations {
       'En el puente de inicio (tabla o PC en casa) abra Molaplan → Ajustes → Acceso remoto → Haga de este dispositivo el puente de inicio.';
 
   @override
-  String get sc7c83b2f58 => 'Presione \"Pair un teléfono\" allí. Aparece un código QR y 6 dígitos.';
+  String get sc7c83b2f58 =>
+      'Presione \"Pair un teléfono\" allí. Aparece un código QR y 6 dígitos.';
 
   @override
-  String get s35284509d4 => 'Escríbase el código QR o escriba los dígitos a continuación.';
+  String get s35284509d4 =>
+      'Escríbase el código QR o escriba los dígitos a continuación.';
 
   @override
   String get s66bb65d8e8 => 'Escanear el código QR';
@@ -3983,10 +4385,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se97cc157ef => 'o escriba el código';
 
   @override
-  String get s643434044c => 'Al usar el código, presione \"Aceptar\" en el puente de inicio también.';
+  String get s643434044c =>
+      'Al usar el código, presione \"Aceptar\" en el puente de inicio también.';
 
   @override
-  String get s9753766742 => 'Presione \"Acepto\" en la pantalla del puente casero...';
+  String get s9753766742 =>
+      'Presione \"Acepto\" en la pantalla del puente casero...';
 
   @override
   String get s50e49dd1df => 'Apunte la cámara en el código QR';
@@ -4023,7 +4427,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'El puente funciona en el fondo: la pantalla puede estar apagada y Molaplan cerrado. Comienza por sí mismo después de un reinicio y reconecta cuando la red regresa.';
 
   @override
-  String get sbb23f25581 => 'Mantén a Molaplan abierto. La pantalla se mantiene mientras el puente está encendido.';
+  String get sbb23f25581 =>
+      'Mantén a Molaplan abierto. La pantalla se mantiene mientras el puente está encendido.';
 
   @override
   String get sbfed096278 => 'Utilice este dispositivo como puente casero';
@@ -4032,7 +4437,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s374a096cb9 => 'El ahorro de batería puede detener el puente';
 
   @override
-  String get s9b1298f7c6 => 'Deja que Molaplan funcione en el fondo sin restricciones.';
+  String get s9b1298f7c6 =>
+      'Deja que Molaplan funcione en el fondo sin restricciones.';
 
   @override
   String get sc8ef04815c => 'Permiso';
@@ -4062,13 +4468,15 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get s84572f642e => 'El dispositivo ya no puede conectarse remotamente. Puede ser emparejado de nuevo.';
+  String get s84572f642e =>
+      'El dispositivo ya no puede conectarse remotamente. Puede ser emparejado de nuevo.';
 
   @override
   String get s9715416100 => 'Escanear con el teléfono';
 
   @override
-  String get s4e877aeafe => 'En el teléfono: Molaplan → Ajustes → Acceso remoto → Conectar este dispositivo a casa';
+  String get s4e877aeafe =>
+      'En el teléfono: Molaplan → Ajustes → Acceso remoto → Conectar este dispositivo a casa';
 
   @override
   String get sf7fa9632f3 => 'Válido para';
@@ -4083,9 +4491,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sa04c218f82 => 'Rechazar';
-
-  @override
-  String get sdfaf8c242b => 'Aceptar';
 
   @override
   String get sd64229b6d8 => 'aún no se ha establecido';
@@ -4146,13 +4551,16 @@ class AppLocalizationsEs extends AppLocalizations {
       'Elija un script, una escena o un dispositivo. El botón funciona en la aplicación y, cuando esté lejos, a través del acceso remoto.';
 
   @override
-  String get s1173c2dbf9 => 'No hay scripts todavía, haz uno bajo Automatizaciones.';
+  String get s1173c2dbf9 =>
+      'No hay scripts todavía, haz uno bajo Automatizaciones.';
 
   @override
-  String get s7b42ecba51 => 'Aún no hay escenas, guarda uno bajo Automatizaciones.';
+  String get s7b42ecba51 =>
+      'Aún no hay escenas, guarda uno bajo Automatizaciones.';
 
   @override
-  String get s589d73245e => 'No hay dispositivos conmutables todavía. Agregue un interruptor primero.';
+  String get s589d73245e =>
+      'No hay dispositivos conmutables todavía. Agregue un interruptor primero.';
 
   @override
   String get sc5edd6d3d1 => 'Nueva tarjeta';
@@ -4161,10 +4569,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sa684fd0716 => 'Editar tarjeta';
 
   @override
-  String get sa7b6366b62 => 'Medición: visualización, tendencia, límites de color, alarmas, decimales y escalado.';
+  String get sa7b6366b62 =>
+      'Medición: visualización, tendencia, límites de color, alarmas, decimales y escalado.';
 
   @override
-  String get sae41bebdab => 'Control: confirmación, bloqueo / PIN, min / max / step, invertido y momentáneo.';
+  String get sae41bebdab =>
+      'Control: confirmación, bloqueo / PIN, min / max / step, invertido y momentáneo.';
 
   @override
   String get sf83143ae23 => 'Sensor de temperatura ambiente';
@@ -4216,7 +4626,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sbf29caff87 => 'Montaje máximo';
 
   @override
-  String get sea30815e6a => 'Los ajustes de baldosas técnicos aparecen cuando enciende \"Advanced\" en Ajustes.';
+  String get sea30815e6a =>
+      'Los ajustes de baldosas técnicos aparecen cuando enciende \"Advanced\" en Ajustes.';
 
   @override
   String get s382afc832f => 'Fuente del Estado';
@@ -4232,13 +4643,15 @@ class AppLocalizationsEs extends AppLocalizations {
       'Cada tipo de tarjeta se permite en cada conexión. Una combinación incorrecta puede mostrar datos engañosos, por ejemplo \"On\" por el precio de la electricidad.';
 
   @override
-  String get scb988b1a4a => 'Off: sólo la tarjeta escribe los soportes de conexión.';
+  String get scb988b1a4a =>
+      'Off: sólo la tarjeta escribe los soportes de conexión.';
 
   @override
   String get se6b18b17d9 => 'Intervalo de la encuesta (s, 0 = ninguno)';
 
   @override
-  String get s01f2b1ee0c => 'MQTT, Home Assistant y WebSocket se actualizan en directo sin sondeo.';
+  String get s01f2b1ee0c =>
+      'MQTT, Home Assistant y WebSocket se actualizan en directo sin sondeo.';
 
   @override
   String get s937448ecf5 => 'Prueba de lectura';
@@ -4271,7 +4684,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s2a1e131afd => 'OFF command';
 
   @override
-  String get s0201de52c0 => '{\'{value}\'} en el comando es reemplazado por el valor deslizante.';
+  String get s0201de52c0 =>
+      '{\'{value}\'} en el comando es reemplazado por el valor deslizante.';
 
   @override
   String get sc30c9a7e51 => 'Paso';
@@ -4283,7 +4697,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sa4082e1a79 => 'Comandos (corridos en orden)';
 
   @override
-  String get s467488e572 => 'Un acceso directo puede controlar varios dispositivos en secuencia, con retrasos.';
+  String get s467488e572 =>
+      'Un acceso directo puede controlar varios dispositivos en secuencia, con retrasos.';
 
   @override
   String get sad43973fb3 => 'Añadir comando';
@@ -4328,7 +4743,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s7abdb12fef => 'Marcadores de puntos de datos';
 
   @override
-  String get s29135ed75a => 'Auto: ejes y líneas de guía muestran cuando la tarjeta es al menos 2×2.';
+  String get s29135ed75a =>
+      'Auto: ejes y líneas de guía muestran cuando la tarjeta es al menos 2×2.';
 
   @override
   String get s638c648b40 => 'Corriente';
@@ -4373,10 +4789,12 @@ class AppLocalizationsEs extends AppLocalizations {
       'Gratis para uso personal. Su teléfono y su hogar actúan como una red – Molaplan trabaja con las mismas direcciones que en casa.';
 
   @override
-  String get s444ca5d58f => 'Bien si tienes un PC siempre conectado, Raspberry Pi o Home Assistant en casa.';
+  String get s444ca5d58f =>
+      'Bien si tienes un PC siempre conectado, Raspberry Pi o Home Assistant en casa.';
 
   @override
-  String get sec7b4d1d7a => 'Crear una cuenta de Tailscale en tailscale.com (Google, Microsoft o Apple-in).';
+  String get sec7b4d1d7a =>
+      'Crear una cuenta de Tailscale en tailscale.com (Google, Microsoft o Apple-in).';
 
   @override
   String get s178c57446d =>
@@ -4391,10 +4809,12 @@ class AppLocalizationsEs extends AppLocalizations {
       'Aprobar la ruta en la consola de administración Tailscale (Machines → dispositivo → Editar configuración de la ruta).';
 
   @override
-  String get s921f981bda => 'Instala la aplicación Tailscale en tu teléfono y accede con la misma cuenta.';
+  String get s921f981bda =>
+      'Instala la aplicación Tailscale en tu teléfono y accede con la misma cuenta.';
 
   @override
-  String get s8ae7e7b2a4 => '¡Hecho! Molaplan utiliza las mismas direcciones que en casa. Nada más que cambiar.';
+  String get s8ae7e7b2a4 =>
+      '¡Hecho! Molaplan utiliza las mismas direcciones que en casa. Nada más que cambiar.';
 
   @override
   String get se92301ff0a => 'https://tailscale.com/download';
@@ -4410,13 +4830,16 @@ class AppLocalizationsEs extends AppLocalizations {
       'Si su router admite WireGuard (por ejemplo ASUS, FRITZ!Box, UniFi, OpenWrt), su teléfono se une a la red de inicio directamente.';
 
   @override
-  String get s986d264604 => 'Bien si el router tiene WireGuard y su conexión tiene una dirección IP pública.';
+  String get s986d264604 =>
+      'Bien si el router tiene WireGuard y su conexión tiene una dirección IP pública.';
 
   @override
-  String get sf24b16dc12 => 'Abra la configuración del router y busque \"servidor VPN\" → \"WireGuard\".';
+  String get sf24b16dc12 =>
+      'Abra la configuración del router y busque \"servidor VPN\" → \"WireGuard\".';
 
   @override
-  String get s1e5d1eb832 => 'Habilitar el servidor y añadir un nuevo dispositivo (peer) para el teléfono.';
+  String get s1e5d1eb832 =>
+      'Habilitar el servidor y añadir un nuevo dispositivo (peer) para el teléfono.';
 
   @override
   String get s8e0252a2b4 =>
@@ -4427,7 +4850,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Comprueba que \"Protectores permitidos\" incluye la red doméstica (por ejemplo, 192.168.1.0/24).';
 
   @override
-  String get sd2e8523b28 => 'Cambiar el VPN en el teléfono – Molaplan funciona como en casa.';
+  String get sd2e8523b28 =>
+      'Cambiar el VPN en el teléfono – Molaplan funciona como en casa.';
 
   @override
   String get saa17c5a456 => 'https://www.wireguard.com/install/';
@@ -4444,23 +4868,27 @@ class AppLocalizationsEs extends AppLocalizations {
       'Una suscripción mensual pagada de los fabricantes de Home Assistant. Da una dirección remota segura a Home Assistant.';
 
   @override
-  String get s534e7ec95e => 'Bien si sus dispositivos ya están en Home Assistant.';
+  String get s534e7ec95e =>
+      'Bien si sus dispositivos ya están en Home Assistant.';
 
   @override
-  String get s0f7533967d => 'En Home Assistant: Settings → Home Assistant Cloud → iniciar el ensayo o iniciar sesión.';
+  String get s0f7533967d =>
+      'En Home Assistant: Settings → Home Assistant Cloud → iniciar el ensayo o iniciar sesión.';
 
   @override
   String get s2e60dd8178 => 'Gire \"Remote control\" en.';
 
   @override
-  String get s7a73024451 => 'Copiar la dirección remota, que parece: https://abcd1234.ui.nabu.casa';
+  String get s7a73024451 =>
+      'Copiar la dirección remota, que parece: https://abcd1234.ui.nabu.casa';
 
   @override
   String get sd4873612f7 =>
       'En Molaplan: Conexiones → Home Assistant → cambiar la dirección a la dirección remota. El token se mantiene igual.';
 
   @override
-  String get s15223b0e32 => '¡Hecho! Las baldosas de Home Assistant ahora funcionan en todas partes.';
+  String get s15223b0e32 =>
+      '¡Hecho! Las baldosas de Home Assistant ahora funcionan en todas partes.';
 
   @override
   String get s9b3201b1fa => 'https://www.nabucasa.com/';
@@ -4485,7 +4913,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Cree una cuenta gratuita en consola.hivemq.cloud y cree un clúster libre (gratuito/sin soporte).';
 
   @override
-  String get s04fe436d1e => 'Bajo \"Access Management\" crea un nombre de usuario y contraseña.';
+  String get s04fe436d1e =>
+      'Bajo \"Access Management\" crea un nombre de usuario y contraseña.';
 
   @override
   String get sdf0075eab5 =>
@@ -4503,7 +4932,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s77bf29f2f5 => 'https://console.hivemq.cloud/';
 
   @override
-  String get safd2cd2b7b => 'Elija una contraseña fuerte: cualquiera que sepa que puede controlar sus dispositivos.';
+  String get safd2cd2b7b =>
+      'Elija una contraseña fuerte: cualquiera que sepa que puede controlar sus dispositivos.';
 
   @override
   String get s9557c0ef28 => 'Guías de acceso remoto';
@@ -4527,9 +4957,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get scb28b11e70 => 'Nueva vista';
-
-  @override
-  String get s1f9799af4e => 'e.g. Cottage';
 
   @override
   String get s3a13f9d077 => 'Renombrar panel';
@@ -4612,7 +5039,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sc6f02b69d3 => 'Crear cuenta / Iniciar sesión';
 
   @override
-  String get sc777bde66f => 'Con un código de correo electrónico – sin contraseña.';
+  String get sc777bde66f =>
+      'Con un código de correo electrónico – sin contraseña.';
 
   @override
   String get se2e5ff2c8a => 'Continuar sin una cuenta';
@@ -4652,7 +5080,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s6b2ebe5aca => 'Elige primero tus medidores';
 
   @override
-  String get sde41f2fac9 => 'Marcar abajo qué medidor mide todo el sitio y cuáles dispositivos individuales.';
+  String get sde41f2fac9 =>
+      'Marcar abajo qué medidor mide todo el sitio y cuáles dispositivos individuales.';
 
   @override
   String get s4ad000d885 => 'IVA incl.';
@@ -4670,7 +5099,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s48b08c5f5a => 'Cuotas mensuales (energía + peajes)';
 
   @override
-  String get s2e8700e0cf => 'Parte del uso no tenía precio (el precio del spot faltaba).';
+  String get s2e8700e0cf =>
+      'Parte del uso no tenía precio (el precio del spot faltaba).';
 
   @override
   String get sbbd89fbc05 =>
@@ -4821,7 +5251,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get secab66c046 => 'Recuerde en este dispositivo';
 
   @override
-  String get s10bf4eab8e => 'Almacenado encriptado en este dispositivo solamente. Por defecto el PIN no se almacena.';
+  String get s10bf4eab8e =>
+      'Almacenado encriptado en este dispositivo solamente. Por defecto el PIN no se almacena.';
 
   @override
   String get s856418521a => 'No hay comandos configurados';
@@ -4861,9 +5292,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sf3d644dd4c => 'Aprender un botón del mando';
 
   @override
-  String get sfb1a18d11f => 'Actualizar';
-
-  @override
   String get s72a2328ddd => 'Luces';
 
   @override
@@ -4897,10 +5325,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sea20d169a3 => 'Jugadores de medios';
 
   @override
-  String get sbcb95e1e78 => 'La ficha no es aceptada. Cree una nueva en Home Assistant.';
+  String get sbcb95e1e78 =>
+      'La ficha no es aceptada. Cree una nueva en Home Assistant.';
 
   @override
-  String get s0b80dc2642 => 'No podía llegar a Home Assistant. Compruebe la dirección.';
+  String get s0b80dc2642 =>
+      'No podía llegar a Home Assistant. Compruebe la dirección.';
 
   @override
   String get sf32b7f15d8 => 'cámaras';
@@ -4932,7 +5362,8 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get s16aee2aa30 => 'Directamente a través del Hue Bridge responden más rápido y funcionan sin Home Assistant.';
+  String get s16aee2aa30 =>
+      'Directamente a través del Hue Bridge responden más rápido y funcionan sin Home Assistant.';
 
   @override
   String get s3816288db1 => 'Añadir Hue Bridge';
@@ -4946,7 +5377,8 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get s3ee8d0a5e3 => 'Las habitaciones no se pueden leer – mostrando dispositivos sin habitaciones.';
+  String get s3ee8d0a5e3 =>
+      'Las habitaciones no se pueden leer – mostrando dispositivos sin habitaciones.';
 
   @override
   String get sf55fca7a32 => 'Sin resultados';
@@ -5029,10 +5461,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s7ba9d453ed => 'Atenuar cuando el dispositivo está apagado';
 
   @override
-  String get s016ae7b580 => 'La imagen es deslumbrada (≤ 200 KB) y sincronizada con su cuenta.';
+  String get s016ae7b580 =>
+      'La imagen es deslumbrada (≤ 200 KB) y sincronizada con su cuenta.';
 
   @override
-  String get sabb10f8cb2 => 'La imagen es arrugada (≤ 200 KB) y se mantiene en este dispositivo solamente.';
+  String get sabb10f8cb2 =>
+      'La imagen es arrugada (≤ 200 KB) y se mantiene en este dispositivo solamente.';
 
   @override
   String get sc80648d495 => 'Show Molaplan';
@@ -5053,7 +5487,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sd55be829e3 => '¿Reemplazar la configuración actual?';
 
   @override
-  String get s852dd1795e => 'Todas las conexiones y paneles actuales son reemplazadas por el contenido del archivo.';
+  String get s852dd1795e =>
+      'Todas las conexiones y paneles actuales son reemplazadas por el contenido del archivo.';
 
   @override
   String get s5f2ec17730 => 'Configuración importada';
@@ -5065,14 +5500,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s2fd2bfedb8 => 'Cuenta';
 
   @override
-  String get s4c0ff416ab => 'Las mismas casas y fichas en todos tus dispositivos.';
+  String get s4c0ff416ab =>
+      'Las mismas casas y fichas en todos tus dispositivos.';
 
   @override
   String get scc7e418ee3 =>
       'Inicie sesión para tener las mismas casas, dispositivos y fichas en PC, tableta y teléfono. Opcional.';
-
-  @override
-  String get s9bb545e9b3 => 'Inicia sesión o crea una cuenta';
 
   @override
   String get s08d62fd281 => 'Apariencia';
@@ -5094,7 +5527,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Necesita la ubicación de la casa (Energía › Home). Hasta entonces se sigue el ajuste del dispositivo.';
 
   @override
-  String get s4e23920823 => 'Luz por día, oscura por la noche. Off: sigue el ajuste del dispositivo.';
+  String get s4e23920823 =>
+      'Luz por día, oscura por la noche. Off: sigue el ajuste del dispositivo.';
 
   @override
   String get s4b847ce63e =>
@@ -5108,10 +5542,12 @@ class AppLocalizationsEs extends AppLocalizations {
       'Precio, horas más baratas y control de precios por hora (contrato fijo por hora). Off: 15 min donde la zona publica precios de 15 minutos.';
 
   @override
-  String get saf496a12a3 => 'Tarjeta de la mañana: también mostrar la hora más bonita';
+  String get saf496a12a3 =>
+      'Tarjeta de la mañana: también mostrar la hora más bonita';
 
   @override
-  String get sc53b1b78c0 => 'La hora más barata de las próximas 24 h se muestra siempre con su precio.';
+  String get sc53b1b78c0 =>
+      'La hora más barata de las próximas 24 h se muestra siempre con su precio.';
 
   @override
   String get s0625d54b38 => 'Tamaño de las tarjetas';
@@ -5130,7 +5566,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s419166b895 => 'Reloj y clima en la pantalla de inicio';
 
   @override
-  String get sec30a8f23e => 'Tiempo, fecha, tiempo y precio de electricidad en la parte superior de la vista.';
+  String get sec30a8f23e =>
+      'Tiempo, fecha, tiempo y precio de electricidad en la parte superior de la vista.';
 
   @override
   String get sf7205b268f => 'Animaciones';
@@ -5153,6 +5590,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get scc3d01ee5e => 'Guías: VPN, Nabu Casa, nube MQTT';
 
   @override
+  String get s0fe7b15d15 =>
+      'Dar a alguien acceso a los dispositivos que elija.';
+
+  @override
+  String get s25c286a743 => 'Compartir – nueva invitación';
+
+  @override
   String get s90ba544719 => 'Ayuda';
 
   @override
@@ -5169,7 +5613,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s2f797098e7 => 'Incluye contraseñas y fichas';
 
   @override
-  String get s26f72949e3 => 'El archivo entonces no está encriptado – mantenerlo a salvo.';
+  String get s26f72949e3 =>
+      'El archivo entonces no está encriptado – mantenerlo a salvo.';
 
   @override
   String get sdb12678e52 => 'Exportar';
@@ -5203,7 +5648,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s3ddd2678bf => 'Saltar la guía';
 
   @override
-  String get s171ac59e67 => 'Elija su dispositivo abajo. Sólo llena su dirección – el resto está hecho para usted.';
+  String get s171ac59e67 =>
+      'Elija su dispositivo abajo. Sólo llena su dirección – el resto está hecho para usted.';
 
   @override
   String get se722dfcec9 =>
@@ -5213,7 +5659,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get scbac938ead => 'Mira todo de un vistazo';
 
   @override
-  String get se25f930e31 => 'Temperaturas, luces, alarma y cámara en una sola vista.';
+  String get se25f930e31 =>
+      'Temperaturas, luces, alarma y cámara en una sola vista.';
 
   @override
   String get s3e450dba98 => 'Control con un grifo';
@@ -5246,7 +5693,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Estas fichas fueron hechas para tu dispositivo. Puedes cambiarlas y arreglarlas más tarde.';
 
   @override
-  String get s39e163fa49 => 'Una baldosa muestra información o controla un dispositivo. Elige qué tipo de baldosas:';
+  String get s39e163fa49 =>
+      'Una baldosa muestra información o controla un dispositivo. Elige qué tipo de baldosas:';
 
   @override
   String get s4bfb026e45 => 'Lo haré más tarde';
@@ -5274,13 +5722,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1359035b73 => 'Pulsa una baldosa';
 
   @override
-  String get sfd26c8e50b => 'Un interruptor se mueve, un botón ejecuta su comando.';
+  String get sfd26c8e50b =>
+      'Un interruptor se mueve, un botón ejecuta su comando.';
 
   @override
   String get s416c8184a7 => 'Botón de lápiz en la parte superior';
 
   @override
-  String get s2ba275defe => 'Editar, añadir, eliminar y arrastrar las fichas alrededor.';
+  String get s2ba275defe =>
+      'Editar, añadir, eliminar y arrastrar las fichas alrededor.';
 
   @override
   String get se872eeb0f5 => 'Long-press a tile';
@@ -5289,7 +5739,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s63496941fc => 'Ver detalles y una explicación si algo está mal.';
 
   @override
-  String get s080be778d5 => 'Encuentra esta guía, acceso remoto y copias de seguridad allí.';
+  String get s080be778d5 =>
+      'Encuentra esta guía, acceso remoto y copias de seguridad allí.';
 
   @override
   String get sae0fae7127 => 'Ve a mi salpicadero';
@@ -5307,7 +5758,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1becc05ea1 => 'locked=Cerrado;unlocked=Abierto;jammed=ATASCADO';
 
   @override
-  String get s259de02f33 => 'open=Abierta;closed=Cerrada;opening=Abriendo;closing=Cerrando';
+  String get s259de02f33 =>
+      'open=Abierta;closed=Cerrada;opening=Abriendo;closing=Cerrando';
 
   @override
   String get s64d4364336 =>
@@ -5403,7 +5855,8 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get s7797602869 => 'No se enviaron órdenes y no se probaron caminos de azulejos.';
+  String get s7797602869 =>
+      'No se enviaron órdenes y no se probaron caminos de azulejos.';
 
   @override
   String sbf349dfcbd(String p0, String p1) {
@@ -5483,25 +5936,29 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sf7d012472a => 'Client ID';
 
   @override
-  String get s94bccb8598 => 'dashboard.airthings.com → Integrations → API → Create client (Client credentials).';
+  String get s94bccb8598 =>
+      'dashboard.airthings.com → Integrations → API → Create client (Client credentials).';
 
   @override
   String get sb1a9b21d4f => 'Client secret';
 
   @override
-  String get s2403198fe5 => 'Mostrado junto al ID del cliente. Mantenlo en secreto.';
+  String get s2403198fe5 =>
+      'Mostrado junto al ID del cliente. Mantenlo en secreto.';
 
   @override
   String get s21b52207e8 => 'Intervalo de actualización (min)';
 
   @override
-  String get saad5ced5fe => 'Los monitores actualizan cada 5 minutos; pedir más a menudo no trae nada nuevo.';
+  String get saad5ced5fe =>
+      'Los monitores actualizan cada 5 minutos; pedir más a menudo no trae nada nuevo.';
 
   @override
   String get sc844e90e0f => 'Número de serie';
 
   @override
-  String get s8cee566dd7 => 'El número de serie del monitor (10 dígitos) – se llena cuando se agrega de la lista.';
+  String get s8cee566dd7 =>
+      'El número de serie del monitor (10 dígitos) – se llena cuando se agrega de la lista.';
 
   @override
   String get s2d79014611 => 'Medición';
@@ -5532,10 +5989,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sb6d80b9662 => 'Airthings Wave (Bluetooth)';
 
   @override
-  String get s83d2446b44 => 'En la parte posterior o inferior del monitor (10 dígitos, por ejemplo 2930xxxxxxxxx).';
+  String get s83d2446b44 =>
+      'En la parte posterior o inferior del monitor (10 dígitos, por ejemplo 2930xxxxxxxxx).';
 
   @override
-  String get s2525f9a4f5 => 'Finlandia es una zona (FI). En Suecia y Noruega depende de dónde vives.';
+  String get s2525f9a4f5 =>
+      'Finlandia es una zona (FI). En Suecia y Noruega depende de dónde vives.';
 
   @override
   String get s8f4a683abf => 'IVA %';
@@ -5553,7 +6012,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s923f9739de => 'Peajes + impuestos (c/kWh)';
 
   @override
-  String get s2a3498fb0f => 'De tu factura, incl. IVA. Deja 0 solo para energía.';
+  String get s2a3498fb0f =>
+      'De tu factura, incl. IVA. Deja 0 solo para energía.';
 
   @override
   String get s1d9eabe472 =>
@@ -5563,7 +6023,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s515da3a9dd => 'Servidor de precio';
 
   @override
-  String get s98cc9f1c14 => 'Los precios del servidor de Molaplan son de fuentes abiertas.';
+  String get s98cc9f1c14 =>
+      'Los precios del servidor de Molaplan son de fuentes abiertas.';
 
   @override
   String get s271885dc8b => 'Qué mostrar';
@@ -5600,7 +6061,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1a707f2788 => 'Mañana: sí.';
 
   @override
-  String get sb85af981c1 => 'Mañana: aún no (publicado alrededor de las 14:00).';
+  String get sb85af981c1 =>
+      'Mañana: aún no (publicado alrededor de las 14:00).';
 
   @override
   String s6270faf138(String p0, String p1, String p2, String p3) {
@@ -5715,13 +6177,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s74ff2fd8a8 => 'Modelo (opcional)';
 
   @override
-  String get sef4c0e5d90 => 'Número de modelo IRhvac para algunas marcas. Dejar vacío si no está seguro.';
+  String get sef4c0e5d90 =>
+      'Número de modelo IRhvac para algunas marcas. Dejar vacío si no está seguro.';
 
   @override
   String get s8e7962c184 => 'Tema de Tasmota';
 
   @override
-  String get s5ae4cc50db => 'MQTT sólo: de Tasmota (Configuración → MQTT → Tema).';
+  String get s5ae4cc50db =>
+      'MQTT sólo: de Tasmota (Configuración → MQTT → Tema).';
 
   @override
   String get sed30580f59 => 'Dirección de corredores de MQTT';
@@ -5751,13 +6215,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se0efd6dfb3 => 'URL del comando (otro blaster)';
 
   @override
-  String get s5366cbd4df => 'http solamente: URL que recibe el estado completo.';
+  String get s5366cbd4df =>
+      'http solamente: URL que recibe el estado completo.';
 
   @override
   String get sce533db7c1 => 'Plantilla de carga de pago (otro blaster)';
 
   @override
-  String get s0fa691e7c7 => 'Cuerpo http o mqtt payload. Vacío = IRhvac JSON ({\'{json}\'}).';
+  String get s0fa691e7c7 =>
+      'Cuerpo http o mqtt payload. Vacío = IRhvac JSON ({\'{json}\'}).';
 
   @override
   String get s8567c5faa6 =>
@@ -5785,10 +6251,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sdd8cd8132c => 'Qué cambiar';
 
   @override
-  String get s2e8b846390 => 'Todo el estado es enviado a la vez. El valor viene de la baldosa o \"Value\".';
+  String get s2e8b846390 =>
+      'Todo el estado es enviado a la vez. El valor viene de la baldosa o \"Value\".';
 
   @override
-  String get sb517d97868 => 'E.g. calor, fresco, auto, seco, ventilador o encendido/off. Vacío = valor de baldosas.';
+  String get sb517d97868 =>
+      'E.g. calor, fresco, auto, seco, ventilador o encendido/off. Vacío = valor de baldosas.';
 
   @override
   String get sda4a1b2eee => 'Código de aprendizaje';
@@ -5800,7 +6268,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s3f26cb7602 => 'ESPHome botón';
 
   @override
-  String get sc71964f422 => 'ESPHome solamente: id del botón de plantilla para un código aprendido.';
+  String get sc71964f422 =>
+      'ESPHome solamente: id del botón de plantilla para un código aprendido.';
 
   @override
   String get s852a166240 => 'Falta la dirección de Blaster.';
@@ -5848,7 +6317,8 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get s9b5bbfa2c6 => 'Temperatura de la habitación sólo desde Tasmota/ESPHome.';
+  String get s9b5bbfa2c6 =>
+      'Temperatura de la habitación sólo desde Tasmota/ESPHome.';
 
   @override
   String get s5acc16dafb => 'RF433 necesita Tasmota.';
@@ -5870,7 +6340,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1e73ba395d => 'RF433 necesidades de aprendizaje Tasmota.';
 
   @override
-  String get scc47b4b225 => 'Aprender trabaja con los blasters de Tasmota y ESPHome.';
+  String get scc47b4b225 =>
+      'Aprender trabaja con los blasters de Tasmota y ESPHome.';
 
   @override
   String s96adaaf2b6(String p0, String p1, String p2) {
@@ -5953,7 +6424,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s7ea9d85150 => 'Código PIN (opcional)';
 
   @override
-  String get s0694fe4d2b => 'Guardado encriptado en este dispositivo. Insertado donde la plantilla dice {pin}.';
+  String get s0694fe4d2b =>
+      'Guardado encriptado en este dispositivo. Insertado donde la plantilla dice {pin}.';
 
   @override
   String get s4313c720cc => 'Plantilla de comandos';
@@ -5980,7 +6452,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sfbcb5f18bd => 'La respuesta debe contener (regex, opcional)';
 
   @override
-  String get s79c983aa94 => 'Una expresión regular la respuesta (título + mensaje) debe contener.';
+  String get s79c983aa94 =>
+      'Una expresión regular la respuesta (título + mensaje) debe contener.';
 
   @override
   String get s081eff543d => 'Texto al mapa del estado';
@@ -6007,7 +6480,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sbdcbe301b9 => 'Esperar respuesta (s)';
 
   @override
-  String get s5e8e483f10 => 'Cuánto tiempo para esperar a la respuesta antes de mostrar un error.';
+  String get s5e8e483f10 =>
+      'Cuánto tiempo para esperar a la respuesta antes de mostrar un error.';
 
   @override
   String get s31312f141c => 'Respuesta del Estado válida para s)';
@@ -6020,16 +6494,19 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s5bc736c04a => 'Acceso a la ficha (opcional)';
 
   @override
-  String get scece580659 => 'Sólo para un tema protegido (cuenta n ostensible → Acceso a fichas).';
+  String get scece580659 =>
+      'Sólo para un tema protegido (cuenta n ostensible → Acceso a fichas).';
 
   @override
-  String get s7e91b10006 => 'Default es el público ntfy.sh. Una URL completa sobresale esto.';
+  String get s7e91b10006 =>
+      'Default es el público ntfy.sh. Una URL completa sobresale esto.';
 
   @override
   String get s1b5501c73f => 'JSON path (JSON reply)';
 
   @override
-  String get s1320bcddf2 => 'Cuando el dispositivo responde con JSON, por ejemplo \$.light o \$.outputs.siren.';
+  String get s1320bcddf2 =>
+      'Cuando el dispositivo responde con JSON, por ejemplo \$.light o \$.outputs.siren.';
 
   @override
   String get s4dc975c1cd => 'Del texto (regex, grupo 1)';
@@ -6055,13 +6532,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sfee393b70e => 'Esperar la respuesta';
 
   @override
-  String get s3f4dda1fb9 => 'Muestra la respuesta del dispositivo (o un error claro) en la tarjeta.';
+  String get s3f4dda1fb9 =>
+      'Muestra la respuesta del dispositivo (o un error claro) en la tarjeta.';
 
   @override
   String get sa53638cfea => 'Responder permanece en la baldosa (s)';
 
   @override
-  String get se6d21484a8 => 'Cuanto tiempo la respuesta se mantiene en la baldosa. 0 = hasta la siguiente prensa.';
+  String get se6d21484a8 =>
+      'Cuanto tiempo la respuesta se mantiene en la baldosa. 0 = hasta la siguiente prensa.';
 
   @override
   String get sb56e7e9f81 => 'ntfy: el comando desaparecido';
@@ -6100,7 +6579,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s666811be3d => 'Framing';
 
   @override
-  String get s0f2d3b7a42 => 'Un convertidor RS485 barato a Wi-Fi/Ethernet en modo transparente utiliza marcos RTU.';
+  String get s0f2d3b7a42 =>
+      'Un convertidor RS485 barato a Wi-Fi/Ethernet en modo transparente utiliza marcos RTU.';
 
   @override
   String get s12ca822cd8 => 'Modbus TCP (normal)';
@@ -6112,7 +6592,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s570f11bec8 => 'Intervalo mínimo de lectura (s)';
 
   @override
-  String get s13e54dbff1 => 'El mismo registro nunca se lee más a menudo, sin embargo muchas tarjetas lo muestran.';
+  String get s13e54dbff1 =>
+      'El mismo registro nunca se lee más a menudo, sin embargo muchas tarjetas lo muestran.';
 
   @override
   String get s95d4c6dd5b => 'Pausa entre solicitudes (ms)';
@@ -6201,7 +6682,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Default es el público ntfy.sh. Cambiar sólo para su propio servidor ntfy. Una URL completa sobresigue esto.';
 
   @override
-  String get sddbea594a4 => 'último = el mensaje más reciente, log = varios mensajes recientes (no menor primero).';
+  String get sddbea594a4 =>
+      'último = el mensaje más reciente, log = varios mensajes recientes (no menor primero).';
 
   @override
   String get s580abde883 => 'Último mensaje';
@@ -6213,7 +6695,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s2bd0e69d44 => 'Tema (opcional)';
 
   @override
-  String get s4eb1e8ac15 => 'Tema a leer. Vacío = el tema de respuesta de la conexión (o el tema de comando).';
+  String get s4eb1e8ac15 =>
+      'Tema a leer. Vacío = el tema de respuesta de la conexión (o el tema de comando).';
 
   @override
   String get s09fa5c0332 => 'Número de mensajes (log)';
@@ -6247,7 +6730,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Escucha la respuesta del dispositivo de inicio y lo muestra en esta ficha (y como notificación cuando la aplicación está en el fondo).';
 
   @override
-  String get s121542d6d7 => 'Cuánto tiempo para esperar antes de decir que no hubo respuesta.';
+  String get s121542d6d7 =>
+      'Cuánto tiempo para esperar antes de decir que no hubo respuesta.';
 
   @override
   String get s74d68a98d6 => 'Título del mensaje (opcional)';
@@ -6261,7 +6745,8 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get s72c37e530d => 'ntfy: demasiados mensajes (HTTP 429). Espera un momento y prueba de nuevo.';
+  String get s72c37e530d =>
+      'ntfy: demasiados mensajes (HTTP 429). Espera un momento y prueba de nuevo.';
 
   @override
   String get s0870daf796 => 'ntfy: tema de comando desaparecido';
@@ -6337,7 +6822,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sa9f114c81d => 'Luces en el atardecer';
 
   @override
-  String get s02402a38eb => 'Las luces elegidas se encienden cuando el sol se pone.';
+  String get s02402a38eb =>
+      'Las luces elegidas se encienden cuando el sol se pone.';
 
   @override
   String get s386fda8330 => 'Todo a las 23:00';
@@ -6349,13 +6835,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s3775470669 => 'Notificar cuando un dispositivo deja de responder';
 
   @override
-  String get s5c07969ac8 => 'Una notificación cuando un dispositivo ha sido inalcanzable durante 10 minutos.';
+  String get s5c07969ac8 =>
+      'Una notificación cuando un dispositivo ha sido inalcanzable durante 10 minutos.';
 
   @override
   String get s2cdd15be92 => 'Notificar cuando la temperatura baja';
 
   @override
-  String get sa74faa4635 => 'Una notificación cuando una lectura del sensor baja por debajo de un límite.';
+  String get sa74faa4635 =>
+      'Una notificación cuando una lectura del sensor baja por debajo de un límite.';
 
   @override
   String get s94ed692877 => 'Horas más baratas: dispositivo en';
@@ -6368,13 +6856,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s90d5d2954d => 'Notificar acerca de la electricidad cara';
 
   @override
-  String get s876690515a => 'Una notificación cuando el precio spot supera los 20 c/kWh.';
+  String get s876690515a =>
+      'Una notificación cuando el precio spot supera los 20 c/kWh.';
 
   @override
   String get s1906ecb28c => 'Amonestaciones Frost';
 
   @override
-  String get s036ecd266d => 'Una notificación cuando está por debajo -15 °C fuera.';
+  String get s036ecd266d =>
+      'Una notificación cuando está por debajo -15 °C fuera.';
 
   @override
   String get sacf213e078 => 'Resumen de la mañana a las 7:00';
@@ -6475,7 +6965,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1bbea216af => 'Cámara ESP32-CAM';
 
   @override
-  String get saaaeccd0cc => 'Cámara Wi-Fi de bajo costo. Muestra vídeo en vivo.';
+  String get saaaeccd0cc =>
+      'Cámara Wi-Fi de bajo costo. Muestra vídeo en vivo.';
 
   @override
   String get saaea39b2de => 'Dirección IP de cámara';
@@ -6491,25 +6982,29 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s2dd165b39f => 'Tipo de imagen';
 
   @override
-  String get sb66b153f36 => 'mjpeg = video en vivo (recomendado). snapshot = imagen todavía cada pocos segundos.';
+  String get sb66b153f36 =>
+      'mjpeg = video en vivo (recomendado). snapshot = imagen todavía cada pocos segundos.';
 
   @override
   String get sf81257929d => 'Relé / enchufe Shelly';
 
   @override
-  String get s2b8ab6defc => 'Cambiar una luz o un dispositivo encendido / apagado y mostrar potencia.';
+  String get s2b8ab6defc =>
+      'Cambiar una luz o un dispositivo encendido / apagado y mostrar potencia.';
 
   @override
   String get s7fcea114f0 => '¿Qué controla?';
 
   @override
-  String get s864ba0233b => 'Más reciente (Plus, Pro, Gen3) = Plus / Pro / Gen2+. Old Shelly 1, 2.5, Plug S = Gen1.';
+  String get s864ba0233b =>
+      'Más reciente (Plus, Pro, Gen3) = Plus / Pro / Gen2+. Old Shelly 1, 2.5, Plug S = Gen1.';
 
   @override
   String get s92f97cd95e => 'Mostrar potencia (W)';
 
   @override
-  String get s54c71d86aa => 'Sólo para modelos con medición (por ejemplo, más 1PM).';
+  String get s54c71d86aa =>
+      'Sólo para modelos con medición (por ejemplo, más 1PM).';
 
   @override
   String get s49671fc56f => 'Canal';
@@ -6534,10 +7029,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s5f1e4a036e => 'Contraseña web';
 
   @override
-  String get s397e83233d => 'Sólo si se establece una contraseña web (usuario admin).';
+  String get s397e83233d =>
+      'Sólo si se establece una contraseña web (usuario admin).';
 
   @override
-  String get sa0efcdf688 => 'Su propio ESP32/ESP8266 con ESPHome (web_server habilitado).';
+  String get sa0efcdf688 =>
+      'Su propio ESP32/ESP8266 con ESPHome (web_server habilitado).';
 
   @override
   String get s631420589f => 'Nombre del dispositivo';
@@ -6546,13 +7043,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1db899640b => 'Interruptor id (opcional)';
 
   @override
-  String get sb2e87033fc => 'El nombre del interruptor de YAML en el caso inferior con subrayados.';
+  String get sb2e87033fc =>
+      'El nombre del interruptor de YAML en el caso inferior con subrayados.';
 
   @override
   String get s978ae8f1d6 => 'Sensor id (opcional)';
 
   @override
-  String get s4ba12c5866 => 'Nombre del sensor de la misma manera (ver la página web del dispositivo).';
+  String get s4ba12c5866 =>
+      'Nombre del sensor de la misma manera (ver la página web del dispositivo).';
 
   @override
   String get s945273ef29 => 'Unidad de sensor';
@@ -6564,7 +7063,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sb847f22473 => 'Nombre de usuario web';
 
   @override
-  String get s76f6067b0f => 'Luces, alarma, sensores – elige una lista que se convierten en tarjetas.';
+  String get s76f6067b0f =>
+      'Luces, alarma, sensores – elige una lista que se convierten en tarjetas.';
 
   @override
   String get s9f70681d3f => 'Dirección de Home Assistant';
@@ -6583,10 +7083,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s54e063bd9c => 'Bomba de calor (Auxiliar)';
 
   @override
-  String get s2afe650320 => 'Bomba de calor de aire mostrada en Home Assistant como entidad climática.';
+  String get s2afe650320 =>
+      'Bomba de calor de aire mostrada en Home Assistant como entidad climática.';
 
   @override
-  String get s48fdd98530 => 'Si ya se ha añadido, se reutiliza la misma conexión.';
+  String get s48fdd98530 =>
+      'Si ya se ha añadido, se reutiliza la misma conexión.';
 
   @override
   String get sfe5ad3202f => 'No es necesario si HA ya está añadido.';
@@ -6608,7 +7110,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s2a1148ee77 => 'Interventor MQTT IP';
 
   @override
-  String get s53e472c976 => 'Máquina de correr Mosquitto (a menudo la caja HA).';
+  String get s53e472c976 =>
+      'Máquina de correr Mosquitto (a menudo la caja HA).';
 
   @override
   String get s29aff3d2a0 => 'MQTT nombre de usuario';
@@ -6647,7 +7150,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Los voladores IR más listos funcionan con Tasmota (utiliza la construcción de tasmota-ir). ESPHome = tu dispositivo ESPHome con climate_ir.';
 
   @override
-  String get sc096a735fd => 'IP del transmisor IR. Para MQTT, la dirección del corredor.';
+  String get sc096a735fd =>
+      'IP del transmisor IR. Para MQTT, la dirección del corredor.';
 
   @override
   String get safc7f1325c => 'Marca de la bomba de calor';
@@ -6660,7 +7164,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s9702830f91 => 'Protocolo (sólo \"otro\")';
 
   @override
-  String get s6df0837908 => 'Tasmota IRhvac nombre del vendedor. Sólo se necesita para \"Otros\" o para probar otro.';
+  String get s6df0837908 =>
+      'Tasmota IRhvac nombre del vendedor. Sólo se necesita para \"Otros\" o para probar otro.';
 
   @override
   String get saa49bfdb90 => 'Se muestran en títulos de baldosas.';
@@ -6669,13 +7174,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sf1971ac29b => 'Tema de Tasmota (sólo MQTT)';
 
   @override
-  String get s65529d5877 => 'Tasmota → Configuración → MQTT → Tema. Otro blaster MQTT: tema de comandos.';
+  String get s65529d5877 =>
+      'Tasmota → Configuración → MQTT → Tema. Otro blaster MQTT: tema de comandos.';
 
   @override
   String get s321c1677e2 => 'ID de clima de ESPHome (solo ESPHome)';
 
   @override
-  String get s4c07dec7b5 => 'El objeto climate_ir id, mostrado en la página web del dispositivo.';
+  String get s4c07dec7b5 =>
+      'El objeto climate_ir id, mostrado en la página web del dispositivo.';
 
   @override
   String get s2229e548f3 => 'MQTT o usuario web.';
@@ -6691,7 +7198,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s9a60c2026e => 'Botones de modo';
 
   @override
-  String get sd119ce3382 => 'Botones para calor, fresco, auto, seco y ventilador.';
+  String get sd119ce3382 =>
+      'Botones para calor, fresco, auto, seco y ventilador.';
 
   @override
   String get s9b8dd7076a => 'Velocidad del ventilador';
@@ -6709,16 +7217,20 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sc5d938e26e => 'Posición de Vane';
 
   @override
-  String get s5ce3991e13 => 'Deslizador para la dirección del aire (0 = la unidad decide, 5 = menor).';
+  String get s5ce3991e13 =>
+      'Deslizador para la dirección del aire (0 = la unidad decide, 5 = menor).';
 
   @override
-  String get s78a5e5fa61 => 'Temperatura de la habitación del sensor de la explosión';
+  String get s78a5e5fa61 =>
+      'Temperatura de la habitación del sensor de la explosión';
 
   @override
-  String get s2dd6395602 => 'Sólo si el blaster tiene un sensor de temperatura.';
+  String get s2dd6395602 =>
+      'Sólo si el blaster tiene un sensor de temperatura.';
 
   @override
-  String get s4ff78f06ab => 'Bomba de calor de aire (porto de servicio / ESPHome)';
+  String get s4ff78f06ab =>
+      'Bomba de calor de aire (porto de servicio / ESPHome)';
 
   @override
   String get s6cc7b6b499 =>
@@ -6751,7 +7263,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sc34430eec0 => 'Por ejemplo, lo que controlas.';
 
   @override
-  String get s12447972e0 => 'Sólo si se establece una contraseña web de Tasmota.';
+  String get s12447972e0 =>
+      'Sólo si se establece una contraseña web de Tasmota.';
 
   @override
   String get s6385f1487e => 'Precio de la electricidad (spot)';
@@ -6787,7 +7300,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sd408a5dbe9 => 'Horas más baratas';
 
   @override
-  String get s7ba83434d1 => 'Aire acondicionado (calor y calidad del aire, nube)';
+  String get s7ba83434d1 =>
+      'Aire acondicionado (calor y calidad del aire, nube)';
 
   @override
   String get s39e8df2552 =>
@@ -6817,7 +7331,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'En cuando el puente casero (p. ej. una tableta de pared cerca del monitor) hace la lectura Bluetooth.';
 
   @override
-  String get s3330126b01 => 'Unidad de ventilación o bomba de calor (Modbus TCP)';
+  String get s3330126b01 =>
+      'Unidad de ventilación o bomba de calor (Modbus TCP)';
 
   @override
   String get sc16ab2836c =>
@@ -6827,13 +7342,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sb75966bb58 => 'Unidad o puerta de entrada IP';
 
   @override
-  String get s751331a84a => 'Si la unidad tiene sólo RS485, necesita una puerta RS485 → Modbus TCP. Ingrese su IP.';
+  String get s751331a84a =>
+      'Si la unidad tiene sólo RS485, necesita una puerta RS485 → Modbus TCP. Ingrese su IP.';
 
   @override
   String get s658cdb6ff8 => 'Marca';
 
   @override
-  String get s785c0c264c => 'Escoja una marca para prefijar registros como ejemplo. \"—\" = vacío.';
+  String get s785c0c264c =>
+      'Escoja una marca para prefijar registros como ejemplo. \"—\" = vacío.';
 
   @override
   String get s7e9c785c20 => 'A menudo 1.';
@@ -6848,7 +7365,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se7dfa3594e => 'Dispositivo MQTT';
 
   @override
-  String get s12ab103795 => 'Cualquier dispositivo que hable MQTT (Zigbee2MQTT, su propio ESP, ...).';
+  String get s12ab103795 =>
+      'Cualquier dispositivo que hable MQTT (Zigbee2MQTT, su propio ESP, ...).';
 
   @override
   String get sffcfefd91c => 'Máquina que dirige el corredor de MQTT.';
@@ -6857,7 +7375,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s6ac05d979c => '¿Qué es?';
 
   @override
-  String get s460d48d0cc => 'interruptor = encendido / apagado, sensor = muestra un valor.';
+  String get s460d48d0cc =>
+      'interruptor = encendido / apagado, sensor = muestra un valor.';
 
   @override
   String get s850c7e1194 => 'Tema de estado';
@@ -6890,13 +7409,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s3cd541d271 => 'Otro dispositivo Wi-Fi (HTTP)';
 
   @override
-  String get s69885630aa => 'Un dispositivo con una API web. Muestra un valor; añade más fichas más tarde.';
+  String get s69885630aa =>
+      'Un dispositivo con una API web. Muestra un valor; añade más fichas más tarde.';
 
   @override
   String get s200320e245 => 'Ruta de estado';
 
   @override
-  String get sc5872d2e30 => 'Donde el dispositivo reporta su estado. Vacío = ninguna baldosa ahora.';
+  String get sc5872d2e30 =>
+      'Donde el dispositivo reporta su estado. Vacío = ninguna baldosa ahora.';
 
   @override
   String get s5564de12b2 => 'Campo para mostrar';
@@ -6923,7 +7444,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Sólo si el dispositivo de casa responde sobre otro tema. Vacío = mismo tema, nuestro propio comando es ignorado.';
 
   @override
-  String get s1b08aa4646 => 'Texto mostrado en la baldosa, por ejemplo \"Actualizar\" o \"Estatus\".';
+  String get s1b08aa4646 =>
+      'Texto mostrado en la baldosa, por ejemplo \"Actualizar\" o \"Estatus\".';
 
   @override
   String get se2a81ae67d =>
@@ -6937,13 +7459,15 @@ class AppLocalizationsEs extends AppLocalizations {
       'El PIN se le pide oculto y no se almacena a menos que elija \"Recuerde en este dispositivo\".';
 
   @override
-  String get sb5e914eaf7 => 'Sólo para un tema protegido. Dejar vacío para un tema público.';
+  String get sb5e914eaf7 =>
+      'Sólo para un tema protegido. Dejar vacío para un tema público.';
 
   @override
   String get s1a98a7e424 => 'También agregue una ficha de registro de mensajes';
 
   @override
-  String get s5ab6348524 => 'Muestra los mensajes más recientes del tema en su propia ficha.';
+  String get s5ab6348524 =>
+      'Muestra los mensajes más recientes del tema en su propia ficha.';
 
   @override
   String get s57e684ac9e => 'Mensajes';
@@ -6959,7 +7483,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s7a46c8c335 => 'Tema del comando';
 
   @override
-  String get s324f5e3b74 => 'El tema (o URL completa) que el dispositivo escucha.';
+  String get s324f5e3b74 =>
+      'El tema (o URL completa) que el dispositivo escucha.';
 
   @override
   String get sc1ddf7feb4 =>
@@ -6970,10 +7495,12 @@ class AppLocalizationsEs extends AppLocalizations {
       'Si el tema de la respuesta tiene otros mensajes también: sólo los mensajes con este título son respuestas.';
 
   @override
-  String get s17c9df50af => 'Almacenado encriptado. Añadido a comandos por la plantilla.';
+  String get s17c9df50af =>
+      'Almacenado encriptado. Añadido a comandos por la plantilla.';
 
   @override
-  String get s4427fd3bd1 => '{cmd} = comando, {pin} = PIN, {cid} = an id the device echoes. E.g. \"{cmd} {pin}\".';
+  String get s4427fd3bd1 =>
+      '{cmd} = comando, {pin} = PIN, {cid} = an id the device echoes. E.g. \"{cmd} {pin}\".';
 
   @override
   String get s4549a9cb7f =>
@@ -6983,7 +7510,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s5f019b05f1 => 'Formato de respuesta a la situación';
 
   @override
-  String get sb1f9470ebd => 'JSON: {\"light\": 1, …}. Text: \"Light: ON, …\" – the state is read after the name.';
+  String get sb1f9470ebd =>
+      'JSON: {\"light\": 1, …}. Text: \"Light: ON, …\" – the state is read after the name.';
 
   @override
   String get s96a5a283cf => 'JSON';
@@ -6999,7 +7527,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s9efd151ae8 => 'En el comando';
 
   @override
-  String get s29d460cd3b => '{key} = la llave del interruptor. E.g. \"{key} on\" → \"light on\".';
+  String get s29d460cd3b =>
+      '{key} = la llave del interruptor. E.g. \"{key} on\" → \"light on\".';
 
   @override
   String get s8dab09a808 => 'Descargo el comando';
@@ -7026,7 +7555,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Cuán a menudo se pregunta al estado. Nunca más corto que el intervalo mínimo de comando del dispositivo.';
 
   @override
-  String get s91158c0de5 => 'Si el dispositivo responde sólo por ejemplo cada 30 s, escriba 30.';
+  String get s91158c0de5 =>
+      'Si el dispositivo responde sólo por ejemplo cada 30 s, escriba 30.';
 
   @override
   String get s23f70f51ff => 'Dispositivo de mando';

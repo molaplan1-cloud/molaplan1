@@ -54,3 +54,4 @@ app.*.map.json
 *.ipa
 molaplan-*.zip
 /molaplan-app-release/
+supabase/.temp/
