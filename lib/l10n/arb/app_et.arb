@@ -290,6 +290,8 @@
  "s960a265544": "Vihm",
  "seab38c2b45": "Lumesadu",
  "sfc65eafa12": "Äike",
+ "s404f230c13": "",
+ "s798f7b2876": "Nutikas küte",
  "sc27533ae83": "Säästlik",
  "sdbcb85509b": "Temperatuur võib kõikuda kõige rohkem (+1 / −2 °C). Suurim sääst.",
  "s380b20be36": "Tasakaalus",
@@ -966,6 +968,14 @@
  },
  "sd0219ce512": "Ühendus ei töötanud: {p0}",
  "@sd0219ce512": {
+  "x-mt": true
+ },
+ "sfad8715d97": "Kontoteenuse kasutamine nurjus. Kontrolli Wi-Fi või mobiiliandmeid ja proovi uuesti.",
+ "@sfad8715d97": {
+  "x-mt": true
+ },
+ "sa052abd601": "Internet töötab, kuid turvaline ühendus kontoteenusega nurjus. Kontrolli seadme kuupäeva ja kellaaega.",
+ "@sa052abd601": {
   "x-mt": true
  },
  "s9ba7e7a8e6": "Vale e- kiri või parool. Kontrolli neid või klõpsa nupule \"Unusta parool\".",
@@ -1685,7 +1695,6 @@
  },
  "s06cda8c0de": "Töötab selles seadmes (kodusild).",
  "s2342536aea": "Töötab kodusillal.",
- "s798f7b2876": "Nutikas küte",
  "s2c5993c1fd": "Soojeneb enne kallist elektrit ja külma ilma ning laseb kallitel tundidel temperatuuri veidi langeda.",
  "@s2c5993c1fd": {
   "x-mt": true
@@ -3977,6 +3986,15 @@
  "@s0a972aa85e": {
   "x-mt": true
  },
+ "sd408a5dbe9": "Odavamad tunnid",
+ "@sd408a5dbe9": {
+  "x-mt": true
+ },
+ "sf83143ae23": "Toatemperatuuri andur",
+ "@sf83143ae23": {
+  "x-mt": true
+ },
+ "sd51256a0f5": "Keskmine",
  "sc51b1e0dc0": "Mida sa lisada tahad?",
  "@sc51b1e0dc0": {
   "x-mt": true
@@ -4392,10 +4410,6 @@
  },
  "sae41bebdab": "Kontroll: kinnitus, lukustus / PIN, min / max / samm, invert ja momentaarne.",
  "@sae41bebdab": {
-  "x-mt": true
- },
- "sf83143ae23": "Toatemperatuuri andur",
- "@sf83143ae23": {
   "x-mt": true
  },
  "s19485c79b2": "Puudub",
@@ -7027,10 +7041,6 @@
  "@s4790164c94": {
   "x-mt": true
  },
- "sd408a5dbe9": "Odavamad tunnid",
- "@sd408a5dbe9": {
-  "x-mt": true
- },
  "s7ba83434d1": "Õhk (radoon ja õhukvaliteet, pilv)",
  "@s7ba83434d1": {
   "x-mt": true
@@ -7332,12 +7342,476 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "sfad8715d97": "Kontoteenuse kasutamine nurjus. Kontrolli Wi-Fi või mobiiliandmeid ja proovi uuesti.",
- "@sfad8715d97": {
+ "s2a3f705876": "Ladustuspõrandaküte (betoon)",
+ "@s2a3f705876": {
   "x-mt": true
  },
- "sa052abd601": "Internet töötab, kuid turvaline ühendus kontoteenusega nurjus. Kontrolli seadme kuupäeva ja kellaaega.",
- "@sa052abd601": {
+ "se02b21f2e5": "Betoonplaat salvestab soojust pikka aega: küte viiakse kõige odavamatele tundidele ja tundide arv järgib prognoosi.",
+ "@se02b21f2e5": {
+  "x-mt": true
+ },
+ "sed77dcfc1a": "Kerge põrandaküte",
+ "@sed77dcfc1a": {
+  "x-mt": true
+ },
+ "s4699e792b9": "Kerge põrand hoiab vähe soojust: kõige kallimad tunnid jäetakse vahele, ainult lühikeste vaheaegadega.",
+ "@s4699e792b9": {
+  "x-mt": true
+ },
+ "s5d46662c4e": "Otsesed elektriradiaatorid",
+ "@s5d46662c4e": {
+  "x-mt": true
+ },
+ "s12e9bbf847": "Radiaatorid ei salvesta soojust: vahele jäetakse ainult kõige kallimad tunnid, üks tund korraga.",
+ "@s12e9bbf847": {
+  "x-mt": true
+ },
+ "s1c0bf9b38b": "Õhksoojuspump",
+ "@s1c0bf9b38b": {
+  "x-mt": true
+ },
+ "s6896be80e0": "Soojuspump töötab kõige paremini ühtlasel temperatuuril: sihtmärk tõuseb veidi enne kallist või külma loitsu ja langeb kallitel tundidel.",
+ "@s6896be80e0": {
+  "x-mt": true
+ },
+ "s765f87536c": "Maasoojuspump",
+ "@s765f87536c": {
+  "x-mt": true
+ },
+ "s33536024e7": "Maapealne soojus koos veeringlusega talletab veidi soojust: kõige kallimad tunnid jäetakse vahele kõige rohkem mõnetunniste vaheaegadega.",
+ "@s33536024e7": {
+  "x-mt": true
+ },
+ "s3a7d2e6848": "Veesoojendi",
+ "@s3a7d2e6848": {
+  "x-mt": true
+ },
+ "s4eec9a0479": "Veesoojendi püsib kuumana päevaks: seda soojendatakse kõige odavamatel tundidel päevas.",
+ "@s4eec9a0479": {
+  "x-mt": true
+ },
+ "sa2dc343545": "Kaminarežiim lõppes: ruum jahtub. Kütmine on taas normaalne.",
+ "@sa2dc343545": {
+  "x-mt": true
+ },
+ "s78afbd052c": "Kaminarežiim on lõppenud (aeg on läbi). Kütmine on taas normaalne.",
+ "@s78afbd052c": {
+  "x-mt": true
+ },
+ "s1f08341033": "Kamina režiim peatatud. Kuumutamine on taas normaalne.",
+ "@s1f08341033": {
+  "x-mt": true
+ },
+ "sa26ae27039": "Jäta vahele kalleimad tunnid",
+ "@sa26ae27039": {
+  "x-mt": true
+ },
+ "scfd1a72ed5": "Ilmapõhine eelsoojendamine",
+ "@scfd1a72ed5": {
+  "x-mt": true
+ },
+ "s2bd403874c": "Kuumutatakse kõige odavamatel kellaaegadel, hoidlate kütmiseks ja veesoojendite jaoks.",
+ "@s2bd403874c": {
+  "x-mt": true
+ },
+ "se759c14061": "Kuumab tavaliselt, kuid jätab kõige kallimad tunnid lühikeste vaheaegadega vahele.",
+ "@se759c14061": {
+  "x-mt": true
+ },
+ "s5cab118d44": "Eelsoojendamine enne kulukaid või külmaaegu ja kokkuhoid kulukatel tundidel. tunnid järgivad prognoosi.",
+ "@s5cab118d44": {
+  "x-mt": true
+ },
+ "sa7480a9930": "odavtund",
+ "@sa7480a9930": {
+  "x-mt": true
+ },
+ "s50812672e5": "odavat tundi ootamas",
+ "@s50812672e5": {
+  "x-mt": true
+ },
+ "seb1c64d9f8": "kallist tundi vahele jätta",
+ "@seb1c64d9f8": {
+  "x-mt": true
+ },
+ "s2e52a3d40e": "normaalne",
+ "@s2e52a3d40e": {
+  "x-mt": true
+ },
+ "sf6d34efdd6": "hinnad puuduvad – tavaline kütmine",
+ "@sf6d34efdd6": {
+  "x-mt": true
+ },
+ "s8c42ad8541": "puhkuserežiim",
+ "@s8c42ad8541": {
+  "x-mt": true
+ },
+ "sc3d8828060": "tagasitulekuks",
+ "@sc3d8828060": {
+  "x-mt": true
+ },
+ "s577b8c3cf1": "kamin kuumeneb",
+ "@s577b8c3cf1": {
+  "x-mt": true
+ },
+ "sbcd02dce0a": "soe",
+ "@sbcd02dce0a": {
+  "x-mt": true
+ },
+ "s22678639dc": "ohutuspiirang: liiga külm",
+ "@s22678639dc": {
+  "x-mt": true
+ },
+ "s1e3f154a0a": "külmakaitse",
+ "@s1e3f154a0a": {
+  "x-mt": true
+ },
+ "s1f2938edec": "ohutuspiirang: liiga pikk",
+ "@s1f2938edec": {
+  "x-mt": true
+ },
+ "s54fce2a7e8": "eelkuumutamine",
+ "@s54fce2a7e8": {
+  "x-mt": true
+ },
+ "s6b35f75e80": "säästmine kallis",
+ "@s6b35f75e80": {
+  "x-mt": true
+ },
+ "sdde7adcb29": "Nutikas kütmine juhib kütmist elektrihinna ja ilma järgi viisil, mis sobib sinu küttetüübiga. Soovitatud seadistuste saamiseks vasta paarile küsimusele.",
+ "@sdde7adcb29": {
+  "x-mt": true
+ },
+ "s3d29895a40": "Küsitluse käivitamine",
+ "@s3d29895a40": {
+  "x-mt": true
+ },
+ "sb0d738492d": "Kaminarežiim",
+ "@sb0d738492d": {
+  "x-mt": true
+ },
+ "sd1af5ba10d": "Kaminarežiim on sisse lülitatud kuni {p0}",
+ "@sd1af5ba10d": {
+  "x-mt": true
+ },
+ "s48a7ba4933": "Puhkuserežiim",
+ "@s48a7ba4933": {
+  "x-mt": true
+ },
+ "s10a95132ce": "Nutikas küte on välja lülitatud",
+ "@s10a95132ce": {
+  "x-mt": true
+ },
+ "s035459d8bb": "Kütmine järgib hinda ja ilma",
+ "@s035459d8bb": {
+  "x-mt": true
+ },
+ "s6b83aed534": "Vajab kodusilla: seadistage kaugjuurdepääs kodus tahvelarvutis või arvutis (Seaded → Kaugjuurdepääs).",
+ "@s6b83aed534": {
+  "x-mt": true
+ },
+ "s830cace8fe": "Uuenda kodusilla (vajab Molaplan 0.10.0).",
+ "@s830cace8fe": {
+  "x-mt": true
+ },
+ "s495c887d23": "Töötab kodusillal, samuti on rakendus suletud.",
+ "@s495c887d23": {
+  "x-mt": true
+ },
+ "s7954d5fca9": "Kamina seiskamine",
+ "@s7954d5fca9": {
+  "x-mt": true
+ },
+ "sf44db20422": "Kamin süttis",
+ "@sf44db20422": {
+  "x-mt": true
+ },
+ "sd172900c2d": "Puhkus: redigeerimine",
+ "@sd172900c2d": {
+  "x-mt": true
+ },
+ "s5da1e65941": "Puhkuserežiim",
+ "@s5da1e65941": {
+  "x-mt": true
+ },
+ "sdca3ad13dd": "Kütteseadmed",
+ "@sdca3ad13dd": {
+  "x-mt": true
+ },
+ "sc8c5e37f5d": "Ei mingeid seadmeid, lisage need uuringusse.",
+ "@sc8c5e37f5d": {
+  "x-mt": true
+ },
+ "sc6976fa352": "Kütteteatised",
+ "@sc6976fa352": {
+  "x-mt": true
+ },
+ "s1abda8b8f3": "Kodusild on liiga vana: uuenda seda (Molaplan 0.10.0).",
+ "@s1abda8b8f3": {
+  "x-mt": true
+ },
+ "s8c3353e896": "Ükski kodusild pole paaris.",
+ "@s8c3353e896": {
+  "x-mt": true
+ },
+ "s38ccb420a7": "Ei toiminud: {p0}",
+ "@s38ccb420a7": {
+  "x-mt": true
+ },
+ "s8847ee78e0": "Eesmärk {p0} °C",
+ "@s8847ee78e0": {
+  "x-mt": true
+ },
+ "s4b761dad85": "Järgmisena: {p0}",
+ "@s4b761dad85": {
+  "x-mt": true
+ },
+ "s622f5654cd": "Viga: {p0}",
+ "@s622f5654cd": {
+  "x-mt": true
+ },
+ "s697b47220e": "Nutikas kütmine",
+ "@s697b47220e": {
+  "x-mt": true
+ },
+ "s45cf6423f8": "Muuda uuringut",
+ "@s45cf6423f8": {
+  "x-mt": true
+ },
+ "sf5dbb363af": "Ohutuspiirid",
+ "@sf5dbb363af": {
+  "x-mt": true
+ },
+ "sf9cd32fb4f": "Minimaalne temperatuur",
+ "@sf9cd32fb4f": {
+  "x-mt": true
+ },
+ "sfb0553315b": "Külmakaitse",
+ "@sfb0553315b": {
+  "x-mt": true
+ },
+ "s9097fb518a": "Kuumutamine alati temperatuuril alla {p0} °C.",
+ "@s9097fb518a": {
+  "x-mt": true
+ },
+ "s5d37a7088b": "Pikim lubatud vaheaeg (kõik)",
+ "@s5d37a7088b": {
+  "x-mt": true
+ },
+ "sb0bb55d6e5": "seadme kohta",
+ "@sb0bb55d6e5": {
+  "x-mt": true
+ },
+ "s17bf76025c": "Ohutuspiirangud on hinna, puhkuse ja kaminarežiimi suhtes ülimuslikud. Minimaalne temperatuuri- ja külmakaitse vajab temperatuuriandurit.",
+ "@s17bf76025c": {
+  "x-mt": true
+ },
+ "s109c7fb7a2": "Kamin",
+ "@s109c7fb7a2": {
+  "x-mt": true
+ },
+ "s1c15091948": "Kaminarežiimi pikkus",
+ "@s1c15091948": {
+  "x-mt": true
+ },
+ "se150ae5acd": "Kaminarežiimis langetatud termostaadid",
+ "@se150ae5acd": {
+  "x-mt": true
+ },
+ "s161f61412e": "Temperatuuriandur kamina lähedal",
+ "@s161f61412e": {
+  "x-mt": true
+ },
+ "s81b30d570b": "Seadmeandur",
+ "@s81b30d570b": {
+  "x-mt": true
+ },
+ "s71e80a04a2": "Kütteteatised (ntfy)",
+ "@s71e80a04a2": {
+  "x-mt": true
+ },
+ "s5ab83c2574": "Sama teavituskanal ja vaiksed tunnid kui automatiseerimine.",
+ "@s5ab83c2574": {
+  "x-mt": true
+ },
+ "s32d9d66ffd": "Eemaldage nutikas küte",
+ "@s32d9d66ffd": {
+  "x-mt": true
+ },
+ "s0f995f3d5d": "Kas eemaldada nutikas küte?",
+ "@s0f995f3d5d": {
+  "x-mt": true
+ },
+ "scc27c1739f": "Seadmed jäävad oma praegusesse olekusse.",
+ "@scc27c1739f": {
+  "x-mt": true
+ },
+ "s3bf2d3643c": "Elektriküte väheneb, kui kamin soojeneb. Ohutuspiirangud kehtivad endiselt.",
+ "@s3bf2d3643c": {
+  "x-mt": true
+ },
+ "s58b2cdb4e2": "Lõpetage varem, kui ruum hakkab jahtuma",
+ "@s58b2cdb4e2": {
+  "x-mt": true
+ },
+ "s632723d95f": "Kui olete eemal, hoitakse ruume jahedamalt ja veesoojendit soojendatakse ainult ööl enne naasmist.",
+ "@s632723d95f": {
+  "x-mt": true
+ },
+ "s2ebf172fad": "Alustab",
+ "@s2ebf172fad": {
+  "x-mt": true
+ },
+ "s0ba54fbd61": "Tagasitulekupäev",
+ "@s0ba54fbd61": {
+  "x-mt": true
+ },
+ "s025d1c3db1": "Temperatuur eemaloleku ajal",
+ "@s025d1c3db1": {
+  "x-mt": true
+ },
+ "s11e21d4f75": "Kuidas seda kontrollitakse",
+ "@s11e21d4f75": {
+  "x-mt": true
+ },
+ "s8e6c8ffabb": " (soovitatav)",
+ "@s8e6c8ffabb": {
+  "x-mt": true
+ },
+ "sa35e3e99f4": "Kontroll",
+ "@sa35e3e99f4": {
+  "x-mt": true
+ },
+ "s86c45674db": "Küttetunnid päevas",
+ "@s86c45674db": {
+  "x-mt": true
+ },
+ "sbd3dbfd7e9": "Kõige kallimad tunnid jäid vahele",
+ "@sbd3dbfd7e9": {
+  "x-mt": true
+ },
+ "s1f3d8e19f4": "Pikim paus korraga",
+ "@s1f3d8e19f4": {
+  "x-mt": true
+ },
+ "s017c87df20": "Mugav temperatuur",
+ "@s017c87df20": {
+  "x-mt": true
+ },
+ "se68cc54085": "Andurit pole",
+ "@se68cc54085": {
+  "x-mt": true
+ },
+ "s347ce4c3d2": "Vähendamine kaminarežiimis",
+ "@s347ce4c3d2": {
+  "x-mt": true
+ },
+ "s6f88da6bab": "Termostaadi sihtmärk on määratud sellega; termostaadi enda temperatuur on mugavustemperatuur.",
+ "@s6f88da6bab": {
+  "x-mt": true
+ },
+ "s87cdb30352": "Hinnanguline: umbes {p0} kWh päevas temperatuuril 0 °C (kogu maja).",
+ "@s87cdb30352": {
+  "x-mt": true
+ },
+ "sc161d1f9d9": "Kuidas maja köetakse? Vali kõik.",
+ "@sc161d1f9d9": {
+  "x-mt": true
+ },
+ "saac00e587b": "Isolatsioon",
+ "@saac00e587b": {
+  "x-mt": true
+ },
+ "s9f103f81c0": "Vaesed",
+ "@s9f103f81c0": {
+  "x-mt": true
+ },
+ "sd5ebaf8a4c": "Hästi",
+ "@sd5ebaf8a4c": {
+  "x-mt": true
+ },
+ "sf584870588": "Soojendusala",
+ "@sf584870588": {
+  "x-mt": true
+ },
+ "s97235bfadb": "Lubatud temperatuurimuutus",
+ "@s97235bfadb": {
+  "x-mt": true
+ },
+ "s6df5f06d38": "Mida rohkem temperatuur võib varieeruda, seda rohkem võib küte liikuda odavatele tundidele.",
+ "@s6df5f06d38": {
+  "x-mt": true
+ },
+ "s07077e2778": "Majas on kamin või hoiupliit",
+ "@s07077e2778": {
+  "x-mt": true
+ },
+ "sab28f61fad": "Valige, mis kontrollib iga kuumutamist: relee või pistik (sisse/välja) või Molaplani termostaat (sihttemperatuur).",
+ "@sab28f61fad": {
+  "x-mt": true
+ },
+ "s90ae2f4451": "Kontrollitavaid seadmeid veel ei ole. Lisa kõigepealt relee või termostaat, mille juurde võid hiljem tagasi tulla.",
+ "@s90ae2f4451": {
+  "x-mt": true
+ },
+ "sf7b3494ee1": "Juhtseadis",
+ "@sf7b3494ee1": {
+  "x-mt": true
+ },
+ "se7ffc07763": "Kontrollimata",
+ "@se7ffc07763": {
+  "x-mt": true
+ },
+ "s5835dc3308": "Termostaat: {p0}",
+ "@s5835dc3308": {
+  "x-mt": true
+ },
+ "s075ddc6f0d": "Toatemperatuuri andur (soovitatav)",
+ "@s075ddc6f0d": {
+  "x-mt": true
+ },
+ "s016c02be08": "Soovitatavad seadistused",
+ "@s016c02be08": {
+  "x-mt": true
+ },
+ "s013bbafbec": "Jäta vahele {p0} kõige kallimat tundi päevas, maksimaalselt {p1} tundi korraga.",
+ "@s013bbafbec": {
+  "x-mt": true
+ },
+ "se67c73d855": "Umbes {p0} küttetunnid päevas temperatuuril 0 °C.",
+ "@se67c73d855": {
+  "x-mt": true
+ },
+ "sb7524487f9": "Kontrollseade puudub – ei ole kontrollitav.",
+ "@sb7524487f9": {
+  "x-mt": true
+ },
+ "sad1fbf7d03": "Pärast selle valgustamist koputage \"Tulease süttib\": elektrikütet vähendatakse 12–24 tunni jooksul või kuni andur näitab jahutust.",
+ "@sad1fbf7d03": {
+  "x-mt": true
+ },
+ "sfb41f90571": "Meetodit ja numbreid saate hiljem muuta seadme lehel Advanced.",
+ "@sfb41f90571": {
+  "x-mt": true
+ },
+ "s1706667040": "Maja",
+ "@s1706667040": {
+  "x-mt": true
+ },
+ "s84005ad77c": "Seadmed",
+ "@s84005ad77c": {
+  "x-mt": true
+ },
+ "s023d14fd87": "Soovitus",
+ "@s023d14fd87": {
+  "x-mt": true
+ },
+ "sfde6663859": "Uuring {p0}/4: {p1}",
+ "@sfde6663859": {
+  "x-mt": true
+ },
+ "sda588a203b": "Kasuta neid",
+ "@sda588a203b": {
   "x-mt": true
  }
 }

@@ -311,6 +311,68 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sfc65eafa12 => 'Åska';
 
   @override
+  String get s2a3f705876 => 'Lagring av golvvärme (konkret)';
+
+  @override
+  String get se02b21f2e5 =>
+      'En betongplatta lagrar värme under lång tid: uppvärmning flyttas till de billigaste timmarna, och antalet timmar följer prognosen.';
+
+  @override
+  String get sed77dcfc1a => 'Lätt golvvärme';
+
+  @override
+  String get s4699e792b9 =>
+      'En lätt golv lagrar liten värme: de dyraste timmarna är hoppade, med korta pauser bara.';
+
+  @override
+  String get s5d46662c4e => 'Direkta elektriska radiatorer';
+
+  @override
+  String get s12e9bbf847 =>
+      'Radiatorer lagrar inte värme: endast de dyraste timmarna är hoppade, en timme i taget.';
+
+  @override
+  String get s1c0bf9b38b => 'Air-source värmepump';
+
+  @override
+  String get s6896be80e0 =>
+      'En värmepump fungerar bäst vid en jämn temperatur: målet stiger lite före dyra eller kalla trollformler och sjunker i dyra timmar.';
+
+  @override
+  String get s765f87536c => 'Ground-source värmepump';
+
+  @override
+  String get s33536024e7 =>
+      'Ground-source värme med vattencirkulationen lagrar lite värme: de dyraste timmarna hoppas i pauser på några timmar högst.';
+
+  @override
+  String get s3a7d2e6848 => 'Vattenvärmare';
+
+  @override
+  String get s4eec9a0479 =>
+      'En varmvattenberedare stannar varmt för en dag: den värms upp i de billigaste timmarna på dagen.';
+
+  @override
+  String s404f230c13(String p0) {
+    return '';
+  }
+
+  @override
+  String get s798f7b2876 => 'Smart uppvärmning';
+
+  @override
+  String get sa2dc343545 =>
+      'Fireplace läge slutar: rummet kyls. Uppvärmning är tillbaka till det normala.';
+
+  @override
+  String get s78afbd052c =>
+      'Fireplace läge slutade (tid är upp). Uppvärmning är tillbaka till det normala.';
+
+  @override
+  String get s1f08341033 =>
+      'Fireplace läge stoppas. Uppvärmning är tillbaka till det normala.';
+
+  @override
   String get sc27533ae83 => 'Sparsam';
 
   @override
@@ -1877,9 +1939,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s2342536aea => 'Körs på hembryggan.';
-
-  @override
-  String get s798f7b2876 => 'Smart uppvärmning';
 
   @override
   String get s2c5993c1fd =>
@@ -4145,6 +4204,362 @@ class AppLocalizationsSv extends AppLocalizations {
       'Lösenord och tokens lagras i enhetens säkra lagring.';
 
   @override
+  String get sd408a5dbe9 => 'Billigaste timmar';
+
+  @override
+  String get sa26ae27039 => 'Hoppa över de dyraste timmarna';
+
+  @override
+  String get scfd1a72ed5 => 'Väderbaserad pre-värme';
+
+  @override
+  String get s2bd403874c =>
+      'Värme i de billigaste timmarna på dagen. För lagringsvärme och vattenvärmare.';
+
+  @override
+  String get se759c14061 =>
+      'Värme normalt men hoppar över de dyraste timmarna i korta pauser.';
+
+  @override
+  String get s5cab118d44 =>
+      'Pre-heats före dyra eller kalla trollformler och sparar i dyra timmar. Timmarna följer prognosen.';
+
+  @override
+  String get sa7480a9930 => 'Billig timme';
+
+  @override
+  String get s50812672e5 => 'Väntar på en billig timme';
+
+  @override
+  String get seb1c64d9f8 => 'hoppa över en dyr timme';
+
+  @override
+  String get s2e52a3d40e => 'normalt normalt normalt normalt';
+
+  @override
+  String get sf6d34efdd6 => 'Inga priser – normal uppvärmning';
+
+  @override
+  String get s8c42ad8541 => 'Semester läge';
+
+  @override
+  String get sc3d8828060 => 'Värme för din retur';
+
+  @override
+  String get s577b8c3cf1 => 'Brandplace värmer';
+
+  @override
+  String get sbcd02dce0a => 'varmt tillräckligt';
+
+  @override
+  String get s22678639dc => 'Säkerhetsgräns: för kall';
+
+  @override
+  String get s1e3f154a0a => 'frostskydd';
+
+  @override
+  String get s1f2938edec => 'Säkerhetsgräns: för länge';
+
+  @override
+  String get s54fce2a7e8 => 'Förvärmning';
+
+  @override
+  String get s6b35f75e80 => 'spara medan dyrt';
+
+  @override
+  String get sdde7adcb29 =>
+      'Smart värme styr värme genom elpris och väder, på ett sätt som passar din uppvärmning typ. Svara på några frågor för att få rekommenderade inställningar.';
+
+  @override
+  String get s3d29895a40 => 'Starta undersökningen';
+
+  @override
+  String get sb0d738492d => 'Fireplace läge på';
+
+  @override
+  String sd1af5ba10d(String p0) {
+    return 'Fireplace läge tills $p0';
+  }
+
+  @override
+  String get s48a7ba4933 => 'Semester läge på';
+
+  @override
+  String get s10a95132ce => 'Smart värme är avstängd';
+
+  @override
+  String get s035459d8bb => 'Värme följer pris och väder';
+
+  @override
+  String get s6b83aed534 =>
+      'Behov av en hembro: ställa in fjärråtkomst på hem surfplattan eller PC (inställningar → fjärråtkomst).';
+
+  @override
+  String get s830cace8fe => 'Uppdatera hembron (behöver Molaplan 0.10.0).';
+
+  @override
+  String get s495c887d23 => 'Körs på hembron, även med appen stängd.';
+
+  @override
+  String get s7954d5fca9 => 'Stoppa eldstad läge';
+
+  @override
+  String get sf44db20422 => 'Fireplace lit';
+
+  @override
+  String get sd172900c2d => 'Semester: edit';
+
+  @override
+  String get s5da1e65941 => 'Holiday läge';
+
+  @override
+  String get sdca3ad13dd => 'Värmeanordningar';
+
+  @override
+  String get sc8c5e37f5d => 'Inga enheter. Lägg till dem i undersökningen.';
+
+  @override
+  String get sc6976fa352 => 'Uppvärmningsmeddelanden';
+
+  @override
+  String get s1abda8b8f3 =>
+      'Hembron är för gammal: uppdatera den (Molaplan 0.10.0).';
+
+  @override
+  String get s8c3353e896 => 'Ingen hembro är parad.';
+
+  @override
+  String s38ccb420a7(String p0) {
+    return 'Fungerade inte: $p0';
+  }
+
+  @override
+  String s8847ee78e0(String p0) {
+    return 'Mål $p0 °C';
+  }
+
+  @override
+  String s4b761dad85(String p0) {
+    return 'Nästa: $p0';
+  }
+
+  @override
+  String s622f5654cd(String p0) {
+    return 'Fel: $p0';
+  }
+
+  @override
+  String get s697b47220e => 'Smart värme på';
+
+  @override
+  String get s45cf6423f8 => 'Redigera undersökningen';
+
+  @override
+  String get sf5dbb363af => 'Säkerhetsgränser';
+
+  @override
+  String get sf9cd32fb4f => 'Minsta temperaturen';
+
+  @override
+  String get sfb0553315b => 'Frostskydd';
+
+  @override
+  String s9097fb518a(String p0) {
+    return 'Uppvärmning alltid under $p0 °C.';
+  }
+
+  @override
+  String get s5d37a7088b => 'Längsta tillåtna paus (alla)';
+
+  @override
+  String get sb0bb55d6e5 => 'per enhet';
+
+  @override
+  String get s17bf76025c =>
+      'Säkerhetsgränser åsidosätter pris, semester och eldstadsläge. Minimitemperatur och frostskydd behöver en temperatursensor.';
+
+  @override
+  String get s109c7fb7a2 => 'Fireplace';
+
+  @override
+  String get s1c15091948 => 'Fireplace läge längd';
+
+  @override
+  String get se150ae5acd => 'Thermostats sänktes i eldstadsläge';
+
+  @override
+  String get s161f61412e => 'Temperatursensor nära eldstaden';
+
+  @override
+  String get s81b30d570b => 'Enhetens sensor';
+
+  @override
+  String get s71e80a04a2 => 'Uppvärmningsmeddelanden (ntfy)';
+
+  @override
+  String get s5ab83c2574 =>
+      'Samma meddelandekanal och tysta timmar som automationer.';
+
+  @override
+  String get s32d9d66ffd => 'Ta bort smart uppvärmning';
+
+  @override
+  String get s0f995f3d5d => 'Ta bort smart uppvärmning?';
+
+  @override
+  String get scc27c1739f => 'Enheterna stannar i sitt nuvarande tillstånd.';
+
+  @override
+  String get s3bf2d3643c =>
+      'Elektrisk uppvärmning minskas medan eldstaden värmer. Säkerhetsgränser gäller fortfarande.';
+
+  @override
+  String get s58b2cdb4e2 => 'Avsluta tidigare när rummet börjar svalna';
+
+  @override
+  String get s632723d95f =>
+      'Medan du är borta rum hålls svalare, och vattenvärmaren värms bara natten innan du återvänder. Säkerhetsgränser och frostskydd gäller.';
+
+  @override
+  String get s2ebf172fad => 'Börjar';
+
+  @override
+  String get s0ba54fbd61 => 'Återkomstdag';
+
+  @override
+  String get s025d1c3db1 => 'Temperatur medan borta';
+
+  @override
+  String get s11e21d4f75 => 'Hur den är kontrollerad';
+
+  @override
+  String get s8e6c8ffabb => ' (rekommenderas)';
+
+  @override
+  String get sa35e3e99f4 => 'Kontroll på';
+
+  @override
+  String get s86c45674db => 'Värme timmar om dagen';
+
+  @override
+  String get sbd3dbfd7e9 => 'De flesta dyra timmar hoppade över';
+
+  @override
+  String get s1f3d8e19f4 => 'Längsta paus i taget';
+
+  @override
+  String get s017c87df20 => 'Komforttemperatur';
+
+  @override
+  String get sf83143ae23 => 'Rumstemperatur sensor';
+
+  @override
+  String get se68cc54085 => 'Ingen sensor';
+
+  @override
+  String get s347ce4c3d2 => 'Minska i eldstad läge';
+
+  @override
+  String get s6f88da6bab =>
+      'Termostatmålet fastställs av detta; termostatens egen temperatur är komforttemperaturen.';
+
+  @override
+  String s87cdb30352(String p0) {
+    return 'Uppskattning: om $p0 kWh per dag vid 0 ° C (hela huset).';
+  }
+
+  @override
+  String get sc161d1f9d9 => 'Hur är huset uppvärmt? Välj allt.';
+
+  @override
+  String get saac00e587b => 'isolering';
+
+  @override
+  String get s9f103f81c0 => 'Dålig';
+
+  @override
+  String get sd51256a0f5 => 'Medelvärde';
+
+  @override
+  String get sd5ebaf8a4c => 'Bra bra bra';
+
+  @override
+  String get sf584870588 => 'Uppvärmt område';
+
+  @override
+  String get s97235bfadb => 'Tillåten temperatur swing';
+
+  @override
+  String get s6df5f06d38 =>
+      'Ju mer temperaturen kan variera, desto mer värme kan flytta till billiga timmar.';
+
+  @override
+  String get s07077e2778 => 'Huset har en spis eller lagra spis';
+
+  @override
+  String get sab28f61fad =>
+      'Välj vad som styr varje uppvärmning: ett relä eller plugg (på/av) eller en Molaplan termostat (måltemperatur).';
+
+  @override
+  String get s90ae2f4451 =>
+      'Inga kontrollerbara enheter ännu. Lägg till ett relä eller en termostat först; du kan komma tillbaka till undersökningen senare.';
+
+  @override
+  String get sf7b3494ee1 => 'Kontrollera enheten';
+
+  @override
+  String get se7ffc07763 => 'Inte kontrollerad';
+
+  @override
+  String s5835dc3308(String p0) {
+    return 'Thermostat: $p0';
+  }
+
+  @override
+  String get s075ddc6f0d => 'Rumstemperatursensor (rekommenderad)';
+
+  @override
+  String get s016c02be08 => 'Rekommenderade inställningar';
+
+  @override
+  String s013bbafbec(String p0, String p1) {
+    return 'Hoppa över $p0 dyraste timmar om dagen, högst $p1 h i taget.';
+  }
+
+  @override
+  String se67c73d855(String p0) {
+    return 'Om $p0 värme timmar per dag vid 0 °C.';
+  }
+
+  @override
+  String get sb7524487f9 => 'Ingen styrenhet – inte kontrollerad.';
+
+  @override
+  String get sad1fbf7d03 =>
+      'Tryck på \"Fireplace lit\" efter belysning: elektrisk uppvärmning minskas för 12-24 h eller tills sensorn visar kylning.';
+
+  @override
+  String get sfb41f90571 =>
+      'Du kan ändra metoden och siffrorna senare på enhetssidan under Avancerad.';
+
+  @override
+  String get s1706667040 => 'Hus Hus Hus';
+
+  @override
+  String get s84005ad77c => 'Enheter';
+
+  @override
+  String get s023d14fd87 => 'Rekommendation';
+
+  @override
+  String sfde6663859(String p0, String p1) {
+    return 'Undersökning $p0/4: $p1';
+  }
+
+  @override
+  String get sda588a203b => 'Använd dessa';
+
+  @override
   String get sc51b1e0dc0 => 'Vad vill du lägga till?';
 
   @override
@@ -4556,9 +4971,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sae41bebdab =>
       'Kontroll: bekräftelse, lås / PIN, min / max / steg, invert och momentary.';
-
-  @override
-  String get sf83143ae23 => 'Rumstemperatur sensor';
 
   @override
   String get s19485c79b2 => 'Ingen';
@@ -7250,9 +7662,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s4790164c94 => 'Idag och imorgon diagram';
-
-  @override
-  String get sd408a5dbe9 => 'Billigaste timmar';
 
   @override
   String get s7ba83434d1 => 'Airthings (radon och luftkvalitet, moln)';

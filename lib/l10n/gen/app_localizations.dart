@@ -620,6 +620,108 @@ abstract class AppLocalizations {
   /// **'Thunderstorm'**
   String get sfc65eafa12;
 
+  /// fi: Varaava lattialämmitys (betoni)
+  ///
+  /// In en, this message translates to:
+  /// **'Storage floor heating (concrete)'**
+  String get s2a3f705876;
+
+  /// fi: Betonilaatta varaa lämpöä pitkään: lämmitys keskitetään päivän halvimpiin tunteihin, ja tuntimäärä seuraa sääennustetta.
+  ///
+  /// In en, this message translates to:
+  /// **'A concrete slab stores heat for a long time: heating is moved to the cheapest hours, and the number of hours follows the forecast.'**
+  String get se02b21f2e5;
+
+  /// fi: Kevyt lattialämmitys
+  ///
+  /// In en, this message translates to:
+  /// **'Light floor heating'**
+  String get sed77dcfc1a;
+
+  /// fi: Kevyt lattia varaa vähän: ohitetaan päivän kalleimmat tunnit, mutta katko on lyhyt.
+  ///
+  /// In en, this message translates to:
+  /// **'A light floor stores little heat: the most expensive hours are skipped, with short breaks only.'**
+  String get s4699e792b9;
+
+  /// fi: Suorat sähköpatterit
+  ///
+  /// In en, this message translates to:
+  /// **'Direct electric radiators'**
+  String get s5d46662c4e;
+
+  /// fi: Patterit eivät varaa lämpöä: vain kalleimmat tunnit ohitetaan, yksi tunti kerrallaan.
+  ///
+  /// In en, this message translates to:
+  /// **'Radiators do not store heat: only the most expensive hours are skipped, one hour at a time.'**
+  String get s12e9bbf847;
+
+  /// fi: Ilmalämpöpumppu
+  ///
+  /// In en, this message translates to:
+  /// **'Air-source heat pump'**
+  String get s1c0bf9b38b;
+
+  /// fi: Ilmalämpöpumppu toimii parhaiten tasaisella lämmöllä: tavoitelämpö nousee hieman ennen kallista tai kylmää jaksoa ja las
+  ///
+  /// In en, this message translates to:
+  /// **'A heat pump works best at an even temperature: the target rises a little before expensive or cold spells and drops in expensive hours.'**
+  String get s6896be80e0;
+
+  /// fi: Maalämpöpumppu
+  ///
+  /// In en, this message translates to:
+  /// **'Ground-source heat pump'**
+  String get s765f87536c;
+
+  /// fi: Maalämpö ja vesikiertoinen lämmitys varaavat jonkin verran: kalleimmat tunnit ohitetaan enintään muutaman tunnin katkoin
+  ///
+  /// In en, this message translates to:
+  /// **'Ground-source heat with water circulation stores some heat: the most expensive hours are skipped in breaks of a few hours at most.'**
+  String get s33536024e7;
+
+  /// fi: Lämminvesivaraaja
+  ///
+  /// In en, this message translates to:
+  /// **'Water heater'**
+  String get s3a7d2e6848;
+
+  /// fi: Varaaja pysyy lämpimänä vuorokauden: se lämmitetään päivän halvimpina tunteina.
+  ///
+  /// In en, this message translates to:
+  /// **'A water heater stays hot for a day: it is heated in the cheapest hours of the day.'**
+  String get s4eec9a0479;
+
+  /// fi: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **''**
+  String s404f230c13(String p0);
+
+  /// fi: Älykäs lämmitys
+  ///
+  /// In en, this message translates to:
+  /// **'Smart heating'**
+  String get s798f7b2876;
+
+  /// fi: Takka-tila päättyi: huone on alkanut jäähtyä. Lämmitys palaa normaaliksi.
+  ///
+  /// In en, this message translates to:
+  /// **'Fireplace mode ended: the room is cooling. Heating is back to normal.'**
+  String get sa2dc343545;
+
+  /// fi: Takka-tila päättyi (aika täynnä). Lämmitys palaa normaaliksi.
+  ///
+  /// In en, this message translates to:
+  /// **'Fireplace mode ended (time is up). Heating is back to normal.'**
+  String get s78afbd052c;
+
+  /// fi: Takka-tila lopetettiin. Lämmitys palaa normaaliksi.
+  ///
+  /// In en, this message translates to:
+  /// **'Fireplace mode stopped. Heating is back to normal.'**
+  String get s1f08341033;
+
   /// fi: Säästävä
   ///
   /// In en, this message translates to:
@@ -3447,12 +3549,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Runs on the home bridge.'**
   String get s2342536aea;
-
-  /// fi: Älykäs lämmitys
-  ///
-  /// In en, this message translates to:
-  /// **'Smart heating'**
-  String get s798f7b2876;
 
   /// fi: Lämmittää etukäteen ennen kallista sähköä ja pakkasta, ja antaa lämmön laskea hieman kalliina tunteina.
   ///
@@ -7573,6 +7669,642 @@ abstract class AppLocalizations {
   /// **'Passwords and tokens are stored in the device\'\'s secure storage.'**
   String get s0a972aa85e;
 
+  /// fi: Halvimmat tunnit
+  ///
+  /// In en, this message translates to:
+  /// **'Cheapest hours'**
+  String get sd408a5dbe9;
+
+  /// fi: Ohita kalleimmat tunnit
+  ///
+  /// In en, this message translates to:
+  /// **'Skip the most expensive hours'**
+  String get sa26ae27039;
+
+  /// fi: Sään mukaan ennakoiva
+  ///
+  /// In en, this message translates to:
+  /// **'Weather-based pre-heating'**
+  String get scfd1a72ed5;
+
+  /// fi: Lämmittää päivän halvimpina tunteina. Sopii varaavaan lämmitykseen ja lämminvesivaraajaan.
+  ///
+  /// In en, this message translates to:
+  /// **'Heats in the cheapest hours of the day. For storage heating and water heaters.'**
+  String get s2bd403874c;
+
+  /// fi: Lämmittää normaalisti, mutta ohittaa päivän kalleimmat tunnit lyhyinä katkoina.
+  ///
+  /// In en, this message translates to:
+  /// **'Heats normally but skips the most expensive hours in short breaks.'**
+  String get se759c14061;
+
+  /// fi: Esilämmittää ennen kallista tai kylmää jaksoa ja säästää kalliina tunteina. Tuntimäärä seuraa sääennustetta.
+  ///
+  /// In en, this message translates to:
+  /// **'Pre-heats before expensive or cold spells and saves in expensive hours. The hours follow the forecast.'**
+  String get s5cab118d44;
+
+  /// fi: halpa tunti
+  ///
+  /// In en, this message translates to:
+  /// **'cheap hour'**
+  String get sa7480a9930;
+
+  /// fi: odottaa halpaa tuntia
+  ///
+  /// In en, this message translates to:
+  /// **'waiting for a cheap hour'**
+  String get s50812672e5;
+
+  /// fi: kallis tunti ohitetaan
+  ///
+  /// In en, this message translates to:
+  /// **'skipping an expensive hour'**
+  String get seb1c64d9f8;
+
+  /// fi: normaali
+  ///
+  /// In en, this message translates to:
+  /// **'normal'**
+  String get s2e52a3d40e;
+
+  /// fi: ei hintoja – normaali lämmitys
+  ///
+  /// In en, this message translates to:
+  /// **'no prices – normal heating'**
+  String get sf6d34efdd6;
+
+  /// fi: lomatila
+  ///
+  /// In en, this message translates to:
+  /// **'holiday mode'**
+  String get s8c42ad8541;
+
+  /// fi: lämmitetään paluuta varten
+  ///
+  /// In en, this message translates to:
+  /// **'heating for your return'**
+  String get sc3d8828060;
+
+  /// fi: takka lämmittää
+  ///
+  /// In en, this message translates to:
+  /// **'the fireplace heats'**
+  String get s577b8c3cf1;
+
+  /// fi: tarpeeksi lämmin
+  ///
+  /// In en, this message translates to:
+  /// **'warm enough'**
+  String get sbcd02dce0a;
+
+  /// fi: turvaraja: liian kylmä
+  ///
+  /// In en, this message translates to:
+  /// **'safety limit: too cold'**
+  String get s22678639dc;
+
+  /// fi: jäätymissuoja
+  ///
+  /// In en, this message translates to:
+  /// **'frost protection'**
+  String get s1e3f154a0a;
+
+  /// fi: turvaraja: liian pitkä tauko
+  ///
+  /// In en, this message translates to:
+  /// **'safety limit: off too long'**
+  String get s1f2938edec;
+
+  /// fi: esilämmitys
+  ///
+  /// In en, this message translates to:
+  /// **'pre-heating'**
+  String get s54fce2a7e8;
+
+  /// fi: säästö kalliina aikana
+  ///
+  /// In en, this message translates to:
+  /// **'saving while expensive'**
+  String get s6b35f75e80;
+
+  /// fi: Älykäs lämmitys ohjaa lämmitystä sähkön hinnan ja sään mukaan talosi lämmitystavalle sopivalla tavalla. Vastaa muutamaan
+  ///
+  /// In en, this message translates to:
+  /// **'Smart heating controls heating by electricity price and weather, in a way that suits your heating type. Answer a few questions to get recommended settings.'**
+  String get sdde7adcb29;
+
+  /// fi: Aloita kartoitus
+  ///
+  /// In en, this message translates to:
+  /// **'Start the survey'**
+  String get s3d29895a40;
+
+  /// fi: Takka-tila päällä
+  ///
+  /// In en, this message translates to:
+  /// **'Fireplace mode on'**
+  String get sb0d738492d;
+
+  /// fi: Takka-tila päällä klo {p0} asti
+  ///
+  /// In en, this message translates to:
+  /// **'Fireplace mode on until {p0}'**
+  String sd1af5ba10d(String p0);
+
+  /// fi: Lomatila päällä
+  ///
+  /// In en, this message translates to:
+  /// **'Holiday mode on'**
+  String get s48a7ba4933;
+
+  /// fi: Älykäs lämmitys on pois päältä
+  ///
+  /// In en, this message translates to:
+  /// **'Smart heating is off'**
+  String get s10a95132ce;
+
+  /// fi: Lämmitys toimii hinnan ja sään mukaan
+  ///
+  /// In en, this message translates to:
+  /// **'Heating follows price and weather'**
+  String get s035459d8bb;
+
+  /// fi: Tarvitsee kotisillan: ota etäyhteys käyttöön kodin tabletilla tai PC:llä (Asetukset → Etäkäyttö).
+  ///
+  /// In en, this message translates to:
+  /// **'Needs a home bridge: set up remote access on the home tablet or PC (Settings → Remote access).'**
+  String get s6b83aed534;
+
+  /// fi: Päivitä kotisilta (vaatii Molaplan 0.10.0).
+  ///
+  /// In en, this message translates to:
+  /// **'Update the home bridge (needs Molaplan 0.10.0).'**
+  String get s830cace8fe;
+
+  /// fi: Toimii kotisillalla myös sovellus suljettuna.
+  ///
+  /// In en, this message translates to:
+  /// **'Runs on the home bridge, also with the app closed.'**
+  String get s495c887d23;
+
+  /// fi: Lopeta takka-tila
+  ///
+  /// In en, this message translates to:
+  /// **'Stop fireplace mode'**
+  String get s7954d5fca9;
+
+  /// fi: Takka lämmitetty
+  ///
+  /// In en, this message translates to:
+  /// **'Fireplace lit'**
+  String get sf44db20422;
+
+  /// fi: Lomatila: muokkaa
+  ///
+  /// In en, this message translates to:
+  /// **'Holiday: edit'**
+  String get sd172900c2d;
+
+  /// fi: Lomatila
+  ///
+  /// In en, this message translates to:
+  /// **'Holiday mode'**
+  String get s5da1e65941;
+
+  /// fi: Lämmityslaitteet
+  ///
+  /// In en, this message translates to:
+  /// **'Heating devices'**
+  String get sdca3ad13dd;
+
+  /// fi: Ei laitteita. Lisää ne kartoituksessa.
+  ///
+  /// In en, this message translates to:
+  /// **'No devices. Add them in the survey.'**
+  String get sc8c5e37f5d;
+
+  /// fi: Lämmityksen ilmoitukset
+  ///
+  /// In en, this message translates to:
+  /// **'Heating notifications'**
+  String get sc6976fa352;
+
+  /// fi: Kotisilta on liian vanha: päivitä se (Molaplan 0.10.0).
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge is too old: update it (Molaplan 0.10.0).'**
+  String get s1abda8b8f3;
+
+  /// fi: Kotisiltaa ei ole yhdistetty.
+  ///
+  /// In en, this message translates to:
+  /// **'No home bridge is paired.'**
+  String get s8c3353e896;
+
+  /// fi: Ei onnistunut: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Did not work: {p0}'**
+  String s38ccb420a7(String p0);
+
+  /// fi: Tavoite {p0} °C
+  ///
+  /// In en, this message translates to:
+  /// **'Target {p0} °C'**
+  String s8847ee78e0(String p0);
+
+  /// fi: Seuraavaksi päällä: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Next on: {p0}'**
+  String s4b761dad85(String p0);
+
+  /// fi: Virhe: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Error: {p0}'**
+  String s622f5654cd(String p0);
+
+  /// fi: Älykäs lämmitys käytössä
+  ///
+  /// In en, this message translates to:
+  /// **'Smart heating on'**
+  String get s697b47220e;
+
+  /// fi: Muokkaa kartoitusta
+  ///
+  /// In en, this message translates to:
+  /// **'Edit the survey'**
+  String get s45cf6423f8;
+
+  /// fi: Turvarajat
+  ///
+  /// In en, this message translates to:
+  /// **'Safety limits'**
+  String get sf5dbb363af;
+
+  /// fi: Vähimmäislämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum temperature'**
+  String get sf9cd32fb4f;
+
+  /// fi: Jäätymissuoja
+  ///
+  /// In en, this message translates to:
+  /// **'Frost protection'**
+  String get sfb0553315b;
+
+  /// fi: Lämmitys aina päälle alle {p0} °C:ssa.
+  ///
+  /// In en, this message translates to:
+  /// **'Heating always on below {p0} °C.'**
+  String s9097fb518a(String p0);
+
+  /// fi: Pisin sallittu tauko (kaikki)
+  ///
+  /// In en, this message translates to:
+  /// **'Longest allowed break (all)'**
+  String get s5d37a7088b;
+
+  /// fi: laitteen mukaan
+  ///
+  /// In en, this message translates to:
+  /// **'per device'**
+  String get sb0bb55d6e5;
+
+  /// fi: Turvarajat ohittavat hinnan, lomatilan ja takka-tilan. Vähimmäislämpötila ja jäätymissuoja tarvitsevat lämpöanturin.
+  ///
+  /// In en, this message translates to:
+  /// **'Safety limits override price, holiday and fireplace mode. The minimum temperature and frost protection need a temperature sensor.'**
+  String get s17bf76025c;
+
+  /// fi: Takka
+  ///
+  /// In en, this message translates to:
+  /// **'Fireplace'**
+  String get s109c7fb7a2;
+
+  /// fi: Takka-tilan kesto
+  ///
+  /// In en, this message translates to:
+  /// **'Fireplace mode length'**
+  String get s1c15091948;
+
+  /// fi: Termostaattien lasku takka-tilassa
+  ///
+  /// In en, this message translates to:
+  /// **'Thermostats lowered in fireplace mode'**
+  String get se150ae5acd;
+
+  /// fi: Takan lähellä oleva lämpöanturi
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature sensor near the fireplace'**
+  String get s161f61412e;
+
+  /// fi: Laitteen anturi
+  ///
+  /// In en, this message translates to:
+  /// **'The device sensor'**
+  String get s81b30d570b;
+
+  /// fi: Lämmityksen ilmoitukset (ntfy)
+  ///
+  /// In en, this message translates to:
+  /// **'Heating notifications (ntfy)'**
+  String get s71e80a04a2;
+
+  /// fi: Sama ilmoituskanava ja hiljaiset ajat kuin automaatioissa.
+  ///
+  /// In en, this message translates to:
+  /// **'The same notification channel and quiet hours as automations.'**
+  String get s5ab83c2574;
+
+  /// fi: Poista älykäs lämmitys
+  ///
+  /// In en, this message translates to:
+  /// **'Remove smart heating'**
+  String get s32d9d66ffd;
+
+  /// fi: Poistetaanko älykäs lämmitys?
+  ///
+  /// In en, this message translates to:
+  /// **'Remove smart heating?'**
+  String get s0f995f3d5d;
+
+  /// fi: Laitteet jäävät siihen tilaan, jossa ne ovat nyt.
+  ///
+  /// In en, this message translates to:
+  /// **'The devices stay in their current state.'**
+  String get scc27c1739f;
+
+  /// fi: Sähkölämmitystä vähennetään, koska takka lämmittää. Turvarajat ovat silti voimassa.
+  ///
+  /// In en, this message translates to:
+  /// **'Electric heating is reduced while the fireplace heats. Safety limits still apply.'**
+  String get s3bf2d3643c;
+
+  /// fi: Lopeta aiemmin, kun huone alkaa jäähtyä
+  ///
+  /// In en, this message translates to:
+  /// **'End earlier when the room starts to cool'**
+  String get s58b2cdb4e2;
+
+  /// fi: Poissa ollessa huoneet pidetään viileämpinä, ja lämminvesivaraaja lämmitetään vasta paluuta edeltävänä yönä. Turvarajat
+  ///
+  /// In en, this message translates to:
+  /// **'While you are away rooms are kept cooler, and the water heater is heated only the night before you return. Safety limits and frost protection apply.'**
+  String get s632723d95f;
+
+  /// fi: Alkaa
+  ///
+  /// In en, this message translates to:
+  /// **'Starts'**
+  String get s2ebf172fad;
+
+  /// fi: Paluupäivä
+  ///
+  /// In en, this message translates to:
+  /// **'Return day'**
+  String get s0ba54fbd61;
+
+  /// fi: Lämpötila poissa ollessa
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature while away'**
+  String get s025d1c3db1;
+
+  /// fi: Ohjaustapa
+  ///
+  /// In en, this message translates to:
+  /// **'How it is controlled'**
+  String get s11e21d4f75;
+
+  /// fi:  (suositus)
+  ///
+  /// In en, this message translates to:
+  /// **' (recommended)'**
+  String get s8e6c8ffabb;
+
+  /// fi: Ohjaus käytössä
+  ///
+  /// In en, this message translates to:
+  /// **'Control on'**
+  String get sa35e3e99f4;
+
+  /// fi: Lämmitystunteja päivässä
+  ///
+  /// In en, this message translates to:
+  /// **'Heating hours a day'**
+  String get s86c45674db;
+
+  /// fi: Ohitettavia kalleimpia tunteja
+  ///
+  /// In en, this message translates to:
+  /// **'Most expensive hours skipped'**
+  String get sbd3dbfd7e9;
+
+  /// fi: Pisin tauko kerrallaan
+  ///
+  /// In en, this message translates to:
+  /// **'Longest break at a time'**
+  String get s1f3d8e19f4;
+
+  /// fi: Mukavuuslämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'Comfort temperature'**
+  String get s017c87df20;
+
+  /// fi: Huoneen lämpöanturi
+  ///
+  /// In en, this message translates to:
+  /// **'Room temperature sensor'**
+  String get sf83143ae23;
+
+  /// fi: Ei anturia
+  ///
+  /// In en, this message translates to:
+  /// **'No sensor'**
+  String get se68cc54085;
+
+  /// fi: Vähennä takka-tilassa
+  ///
+  /// In en, this message translates to:
+  /// **'Reduce in fireplace mode'**
+  String get s347ce4c3d2;
+
+  /// fi: Termostaatin tavoitelämpö asetetaan tämän mukaan; termostaatin oma lämpötila on mukavuuslämpötila.
+  ///
+  /// In en, this message translates to:
+  /// **'The thermostat target is set by this; the thermostat\'\'s own temperature is the comfort temperature.'**
+  String get s6f88da6bab;
+
+  /// fi: Arvio: noin {p0} kWh vuorokaudessa 0 °C:n pakkasella (koko talo).
+  ///
+  /// In en, this message translates to:
+  /// **'Estimate: about {p0} kWh a day at 0 °C (whole house).'**
+  String s87cdb30352(String p0);
+
+  /// fi: Millä talo lämpiää? Valitse kaikki.
+  ///
+  /// In en, this message translates to:
+  /// **'How is the house heated? Choose all.'**
+  String get sc161d1f9d9;
+
+  /// fi: Eristys
+  ///
+  /// In en, this message translates to:
+  /// **'Insulation'**
+  String get saac00e587b;
+
+  /// fi: Heikko
+  ///
+  /// In en, this message translates to:
+  /// **'Poor'**
+  String get s9f103f81c0;
+
+  /// fi: Tavallinen
+  ///
+  /// In en, this message translates to:
+  /// **'Average'**
+  String get sd51256a0f5;
+
+  /// fi: Hyvä
+  ///
+  /// In en, this message translates to:
+  /// **'Good'**
+  String get sd5ebaf8a4c;
+
+  /// fi: Lämmitetty pinta-ala
+  ///
+  /// In en, this message translates to:
+  /// **'Heated area'**
+  String get sf584870588;
+
+  /// fi: Sallittu lämpötilan vaihtelu
+  ///
+  /// In en, this message translates to:
+  /// **'Allowed temperature swing'**
+  String get s97235bfadb;
+
+  /// fi: Mitä enemmän lämpö saa vaihdella, sitä enemmän lämmitystä voidaan siirtää halvoille tunneille.
+  ///
+  /// In en, this message translates to:
+  /// **'The more the temperature may vary, the more heating can move to cheap hours.'**
+  String get s6df5f06d38;
+
+  /// fi: Talossa on takka tai varaava uuni
+  ///
+  /// In en, this message translates to:
+  /// **'The house has a fireplace or storing stove'**
+  String get s07077e2778;
+
+  /// fi: Valitse, mikä laite ohjaa kutakin lämmitystä: rele tai pistorasia (päälle/pois) tai Molaplanin termostaatti (tavoitelämp
+  ///
+  /// In en, this message translates to:
+  /// **'Choose what controls each heating: a relay or plug (on/off) or a Molaplan thermostat (target temperature).'**
+  String get sab28f61fad;
+
+  /// fi: Ei vielä ohjattavia laitteita. Lisää ensin rele tai termostaatti; voit palata kartoitukseen myöhemmin.
+  ///
+  /// In en, this message translates to:
+  /// **'No controllable devices yet. Add a relay or a thermostat first; you can come back to the survey later.'**
+  String get s90ae2f4451;
+
+  /// fi: Ohjaava laite
+  ///
+  /// In en, this message translates to:
+  /// **'Controlling device'**
+  String get sf7b3494ee1;
+
+  /// fi: Ei ohjata
+  ///
+  /// In en, this message translates to:
+  /// **'Not controlled'**
+  String get se7ffc07763;
+
+  /// fi: Termostaatti: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Thermostat: {p0}'**
+  String s5835dc3308(String p0);
+
+  /// fi: Huoneen lämpöanturi (suositus)
+  ///
+  /// In en, this message translates to:
+  /// **'Room temperature sensor (recommended)'**
+  String get s075ddc6f0d;
+
+  /// fi: Suositellut asetukset
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended settings'**
+  String get s016c02be08;
+
+  /// fi: Ohitetaan {p0} kalleinta tuntia päivässä, enintään {p1} h kerrallaan.
+  ///
+  /// In en, this message translates to:
+  /// **'Skips the {p0} most expensive hours a day, at most {p1} h at a time.'**
+  String s013bbafbec(String p0, String p1);
+
+  /// fi: Noin {p0} lämmitystuntia päivässä 0 °C:ssa.
+  ///
+  /// In en, this message translates to:
+  /// **'About {p0} heating hours a day at 0 °C.'**
+  String se67c73d855(String p0);
+
+  /// fi: Ei ohjaavaa laitetta – ei ohjata.
+  ///
+  /// In en, this message translates to:
+  /// **'No controlling device – not controlled.'**
+  String get sb7524487f9;
+
+  /// fi: Paina "Takka lämmitetty", kun takka on lämmitetty: sähkölämmitystä vähennetään 12–24 tunniksi tai kunnes anturi näyttää
+  ///
+  /// In en, this message translates to:
+  /// **'Tap \"Fireplace lit\" after lighting it: electric heating is reduced for 12–24 h or until the sensor shows cooling.'**
+  String get sad1fbf7d03;
+
+  /// fi: Voit muuttaa ohjaustapaa ja lukuja myöhemmin laitteen sivulla kohdassa Edistyneet.
+  ///
+  /// In en, this message translates to:
+  /// **'You can change the method and numbers later on the device page under Advanced.'**
+  String get sfb41f90571;
+
+  /// fi: Talo
+  ///
+  /// In en, this message translates to:
+  /// **'House'**
+  String get s1706667040;
+
+  /// fi: Laitteet
+  ///
+  /// In en, this message translates to:
+  /// **'Devices'**
+  String get s84005ad77c;
+
+  /// fi: Suositus
+  ///
+  /// In en, this message translates to:
+  /// **'Recommendation'**
+  String get s023d14fd87;
+
+  /// fi: Kartoitus {p0}/4: {p1}
+  ///
+  /// In en, this message translates to:
+  /// **'Survey {p0}/4: {p1}'**
+  String sfde6663859(String p0, String p1);
+
+  /// fi: Ota käyttöön
+  ///
+  /// In en, this message translates to:
+  /// **'Use these'**
+  String get sda588a203b;
+
   /// fi: Mitä lisätään?
   ///
   /// In en, this message translates to:
@@ -8292,12 +9024,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Control: confirmation, lock / PIN, min / max / step, invert and momentary.'**
   String get sae41bebdab;
-
-  /// fi: Huoneen lämpöanturi
-  ///
-  /// In en, this message translates to:
-  /// **'Room temperature sensor'**
-  String get sf83143ae23;
 
   /// fi: Ei valittu
   ///
@@ -13146,12 +13872,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Today and tomorrow chart'**
   String get s4790164c94;
-
-  /// fi: Halvimmat tunnit
-  ///
-  /// In en, this message translates to:
-  /// **'Cheapest hours'**
-  String get sd408a5dbe9;
 
   /// fi: Airthings (radon ja ilmanlaatu, pilvi)
   ///

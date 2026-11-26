@@ -310,6 +310,68 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sfc65eafa12 => 'Äike';
 
   @override
+  String get s2a3f705876 => 'Ladustuspõrandaküte (betoon)';
+
+  @override
+  String get se02b21f2e5 =>
+      'Betoonplaat salvestab soojust pikka aega: küte viiakse kõige odavamatele tundidele ja tundide arv järgib prognoosi.';
+
+  @override
+  String get sed77dcfc1a => 'Kerge põrandaküte';
+
+  @override
+  String get s4699e792b9 =>
+      'Kerge põrand hoiab vähe soojust: kõige kallimad tunnid jäetakse vahele, ainult lühikeste vaheaegadega.';
+
+  @override
+  String get s5d46662c4e => 'Otsesed elektriradiaatorid';
+
+  @override
+  String get s12e9bbf847 =>
+      'Radiaatorid ei salvesta soojust: vahele jäetakse ainult kõige kallimad tunnid, üks tund korraga.';
+
+  @override
+  String get s1c0bf9b38b => 'Õhksoojuspump';
+
+  @override
+  String get s6896be80e0 =>
+      'Soojuspump töötab kõige paremini ühtlasel temperatuuril: sihtmärk tõuseb veidi enne kallist või külma loitsu ja langeb kallitel tundidel.';
+
+  @override
+  String get s765f87536c => 'Maasoojuspump';
+
+  @override
+  String get s33536024e7 =>
+      'Maapealne soojus koos veeringlusega talletab veidi soojust: kõige kallimad tunnid jäetakse vahele kõige rohkem mõnetunniste vaheaegadega.';
+
+  @override
+  String get s3a7d2e6848 => 'Veesoojendi';
+
+  @override
+  String get s4eec9a0479 =>
+      'Veesoojendi püsib kuumana päevaks: seda soojendatakse kõige odavamatel tundidel päevas.';
+
+  @override
+  String s404f230c13(String p0) {
+    return '';
+  }
+
+  @override
+  String get s798f7b2876 => 'Nutikas küte';
+
+  @override
+  String get sa2dc343545 =>
+      'Kaminarežiim lõppes: ruum jahtub. Kütmine on taas normaalne.';
+
+  @override
+  String get s78afbd052c =>
+      'Kaminarežiim on lõppenud (aeg on läbi). Kütmine on taas normaalne.';
+
+  @override
+  String get s1f08341033 =>
+      'Kamina režiim peatatud. Kuumutamine on taas normaalne.';
+
+  @override
   String get sc27533ae83 => 'Säästlik';
 
   @override
@@ -1875,9 +1937,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s2342536aea => 'Töötab kodusillal.';
-
-  @override
-  String get s798f7b2876 => 'Nutikas küte';
 
   @override
   String get s2c5993c1fd =>
@@ -4136,6 +4195,362 @@ class AppLocalizationsEt extends AppLocalizations {
       'Paroolid ja märgid salvestatakse seadme turvalises hoiuruumis.';
 
   @override
+  String get sd408a5dbe9 => 'Odavamad tunnid';
+
+  @override
+  String get sa26ae27039 => 'Jäta vahele kalleimad tunnid';
+
+  @override
+  String get scfd1a72ed5 => 'Ilmapõhine eelsoojendamine';
+
+  @override
+  String get s2bd403874c =>
+      'Kuumutatakse kõige odavamatel kellaaegadel, hoidlate kütmiseks ja veesoojendite jaoks.';
+
+  @override
+  String get se759c14061 =>
+      'Kuumab tavaliselt, kuid jätab kõige kallimad tunnid lühikeste vaheaegadega vahele.';
+
+  @override
+  String get s5cab118d44 =>
+      'Eelsoojendamine enne kulukaid või külmaaegu ja kokkuhoid kulukatel tundidel. tunnid järgivad prognoosi.';
+
+  @override
+  String get sa7480a9930 => 'odavtund';
+
+  @override
+  String get s50812672e5 => 'odavat tundi ootamas';
+
+  @override
+  String get seb1c64d9f8 => 'kallist tundi vahele jätta';
+
+  @override
+  String get s2e52a3d40e => 'normaalne';
+
+  @override
+  String get sf6d34efdd6 => 'hinnad puuduvad – tavaline kütmine';
+
+  @override
+  String get s8c42ad8541 => 'puhkuserežiim';
+
+  @override
+  String get sc3d8828060 => 'tagasitulekuks';
+
+  @override
+  String get s577b8c3cf1 => 'kamin kuumeneb';
+
+  @override
+  String get sbcd02dce0a => 'soe';
+
+  @override
+  String get s22678639dc => 'ohutuspiirang: liiga külm';
+
+  @override
+  String get s1e3f154a0a => 'külmakaitse';
+
+  @override
+  String get s1f2938edec => 'ohutuspiirang: liiga pikk';
+
+  @override
+  String get s54fce2a7e8 => 'eelkuumutamine';
+
+  @override
+  String get s6b35f75e80 => 'säästmine kallis';
+
+  @override
+  String get sdde7adcb29 =>
+      'Nutikas kütmine juhib kütmist elektrihinna ja ilma järgi viisil, mis sobib sinu küttetüübiga. Soovitatud seadistuste saamiseks vasta paarile küsimusele.';
+
+  @override
+  String get s3d29895a40 => 'Küsitluse käivitamine';
+
+  @override
+  String get sb0d738492d => 'Kaminarežiim';
+
+  @override
+  String sd1af5ba10d(String p0) {
+    return 'Kaminarežiim on sisse lülitatud kuni $p0';
+  }
+
+  @override
+  String get s48a7ba4933 => 'Puhkuserežiim';
+
+  @override
+  String get s10a95132ce => 'Nutikas küte on välja lülitatud';
+
+  @override
+  String get s035459d8bb => 'Kütmine järgib hinda ja ilma';
+
+  @override
+  String get s6b83aed534 =>
+      'Vajab kodusilla: seadistage kaugjuurdepääs kodus tahvelarvutis või arvutis (Seaded → Kaugjuurdepääs).';
+
+  @override
+  String get s830cace8fe => 'Uuenda kodusilla (vajab Molaplan 0.10.0).';
+
+  @override
+  String get s495c887d23 => 'Töötab kodusillal, samuti on rakendus suletud.';
+
+  @override
+  String get s7954d5fca9 => 'Kamina seiskamine';
+
+  @override
+  String get sf44db20422 => 'Kamin süttis';
+
+  @override
+  String get sd172900c2d => 'Puhkus: redigeerimine';
+
+  @override
+  String get s5da1e65941 => 'Puhkuserežiim';
+
+  @override
+  String get sdca3ad13dd => 'Kütteseadmed';
+
+  @override
+  String get sc8c5e37f5d => 'Ei mingeid seadmeid, lisage need uuringusse.';
+
+  @override
+  String get sc6976fa352 => 'Kütteteatised';
+
+  @override
+  String get s1abda8b8f3 =>
+      'Kodusild on liiga vana: uuenda seda (Molaplan 0.10.0).';
+
+  @override
+  String get s8c3353e896 => 'Ükski kodusild pole paaris.';
+
+  @override
+  String s38ccb420a7(String p0) {
+    return 'Ei toiminud: $p0';
+  }
+
+  @override
+  String s8847ee78e0(String p0) {
+    return 'Eesmärk $p0 °C';
+  }
+
+  @override
+  String s4b761dad85(String p0) {
+    return 'Järgmisena: $p0';
+  }
+
+  @override
+  String s622f5654cd(String p0) {
+    return 'Viga: $p0';
+  }
+
+  @override
+  String get s697b47220e => 'Nutikas kütmine';
+
+  @override
+  String get s45cf6423f8 => 'Muuda uuringut';
+
+  @override
+  String get sf5dbb363af => 'Ohutuspiirid';
+
+  @override
+  String get sf9cd32fb4f => 'Minimaalne temperatuur';
+
+  @override
+  String get sfb0553315b => 'Külmakaitse';
+
+  @override
+  String s9097fb518a(String p0) {
+    return 'Kuumutamine alati temperatuuril alla $p0 °C.';
+  }
+
+  @override
+  String get s5d37a7088b => 'Pikim lubatud vaheaeg (kõik)';
+
+  @override
+  String get sb0bb55d6e5 => 'seadme kohta';
+
+  @override
+  String get s17bf76025c =>
+      'Ohutuspiirangud on hinna, puhkuse ja kaminarežiimi suhtes ülimuslikud. Minimaalne temperatuuri- ja külmakaitse vajab temperatuuriandurit.';
+
+  @override
+  String get s109c7fb7a2 => 'Kamin';
+
+  @override
+  String get s1c15091948 => 'Kaminarežiimi pikkus';
+
+  @override
+  String get se150ae5acd => 'Kaminarežiimis langetatud termostaadid';
+
+  @override
+  String get s161f61412e => 'Temperatuuriandur kamina lähedal';
+
+  @override
+  String get s81b30d570b => 'Seadmeandur';
+
+  @override
+  String get s71e80a04a2 => 'Kütteteatised (ntfy)';
+
+  @override
+  String get s5ab83c2574 =>
+      'Sama teavituskanal ja vaiksed tunnid kui automatiseerimine.';
+
+  @override
+  String get s32d9d66ffd => 'Eemaldage nutikas küte';
+
+  @override
+  String get s0f995f3d5d => 'Kas eemaldada nutikas küte?';
+
+  @override
+  String get scc27c1739f => 'Seadmed jäävad oma praegusesse olekusse.';
+
+  @override
+  String get s3bf2d3643c =>
+      'Elektriküte väheneb, kui kamin soojeneb. Ohutuspiirangud kehtivad endiselt.';
+
+  @override
+  String get s58b2cdb4e2 => 'Lõpetage varem, kui ruum hakkab jahtuma';
+
+  @override
+  String get s632723d95f =>
+      'Kui olete eemal, hoitakse ruume jahedamalt ja veesoojendit soojendatakse ainult ööl enne naasmist.';
+
+  @override
+  String get s2ebf172fad => 'Alustab';
+
+  @override
+  String get s0ba54fbd61 => 'Tagasitulekupäev';
+
+  @override
+  String get s025d1c3db1 => 'Temperatuur eemaloleku ajal';
+
+  @override
+  String get s11e21d4f75 => 'Kuidas seda kontrollitakse';
+
+  @override
+  String get s8e6c8ffabb => ' (soovitatav)';
+
+  @override
+  String get sa35e3e99f4 => 'Kontroll';
+
+  @override
+  String get s86c45674db => 'Küttetunnid päevas';
+
+  @override
+  String get sbd3dbfd7e9 => 'Kõige kallimad tunnid jäid vahele';
+
+  @override
+  String get s1f3d8e19f4 => 'Pikim paus korraga';
+
+  @override
+  String get s017c87df20 => 'Mugav temperatuur';
+
+  @override
+  String get sf83143ae23 => 'Toatemperatuuri andur';
+
+  @override
+  String get se68cc54085 => 'Andurit pole';
+
+  @override
+  String get s347ce4c3d2 => 'Vähendamine kaminarežiimis';
+
+  @override
+  String get s6f88da6bab =>
+      'Termostaadi sihtmärk on määratud sellega; termostaadi enda temperatuur on mugavustemperatuur.';
+
+  @override
+  String s87cdb30352(String p0) {
+    return 'Hinnanguline: umbes $p0 kWh päevas temperatuuril 0 °C (kogu maja).';
+  }
+
+  @override
+  String get sc161d1f9d9 => 'Kuidas maja köetakse? Vali kõik.';
+
+  @override
+  String get saac00e587b => 'Isolatsioon';
+
+  @override
+  String get s9f103f81c0 => 'Vaesed';
+
+  @override
+  String get sd51256a0f5 => 'Keskmine';
+
+  @override
+  String get sd5ebaf8a4c => 'Hästi';
+
+  @override
+  String get sf584870588 => 'Soojendusala';
+
+  @override
+  String get s97235bfadb => 'Lubatud temperatuurimuutus';
+
+  @override
+  String get s6df5f06d38 =>
+      'Mida rohkem temperatuur võib varieeruda, seda rohkem võib küte liikuda odavatele tundidele.';
+
+  @override
+  String get s07077e2778 => 'Majas on kamin või hoiupliit';
+
+  @override
+  String get sab28f61fad =>
+      'Valige, mis kontrollib iga kuumutamist: relee või pistik (sisse/välja) või Molaplani termostaat (sihttemperatuur).';
+
+  @override
+  String get s90ae2f4451 =>
+      'Kontrollitavaid seadmeid veel ei ole. Lisa kõigepealt relee või termostaat, mille juurde võid hiljem tagasi tulla.';
+
+  @override
+  String get sf7b3494ee1 => 'Juhtseadis';
+
+  @override
+  String get se7ffc07763 => 'Kontrollimata';
+
+  @override
+  String s5835dc3308(String p0) {
+    return 'Termostaat: $p0';
+  }
+
+  @override
+  String get s075ddc6f0d => 'Toatemperatuuri andur (soovitatav)';
+
+  @override
+  String get s016c02be08 => 'Soovitatavad seadistused';
+
+  @override
+  String s013bbafbec(String p0, String p1) {
+    return 'Jäta vahele $p0 kõige kallimat tundi päevas, maksimaalselt $p1 tundi korraga.';
+  }
+
+  @override
+  String se67c73d855(String p0) {
+    return 'Umbes $p0 küttetunnid päevas temperatuuril 0 °C.';
+  }
+
+  @override
+  String get sb7524487f9 => 'Kontrollseade puudub – ei ole kontrollitav.';
+
+  @override
+  String get sad1fbf7d03 =>
+      'Pärast selle valgustamist koputage \"Tulease süttib\": elektrikütet vähendatakse 12–24 tunni jooksul või kuni andur näitab jahutust.';
+
+  @override
+  String get sfb41f90571 =>
+      'Meetodit ja numbreid saate hiljem muuta seadme lehel Advanced.';
+
+  @override
+  String get s1706667040 => 'Maja';
+
+  @override
+  String get s84005ad77c => 'Seadmed';
+
+  @override
+  String get s023d14fd87 => 'Soovitus';
+
+  @override
+  String sfde6663859(String p0, String p1) {
+    return 'Uuring $p0/4: $p1';
+  }
+
+  @override
+  String get sda588a203b => 'Kasuta neid';
+
+  @override
   String get sc51b1e0dc0 => 'Mida sa lisada tahad?';
 
   @override
@@ -4547,9 +4962,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sae41bebdab =>
       'Kontroll: kinnitus, lukustus / PIN, min / max / samm, invert ja momentaarne.';
-
-  @override
-  String get sf83143ae23 => 'Toatemperatuuri andur';
 
   @override
   String get s19485c79b2 => 'Puudub';
@@ -7239,9 +7651,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s4790164c94 => 'Täna ja homme graafik';
-
-  @override
-  String get sd408a5dbe9 => 'Odavamad tunnid';
 
   @override
   String get s7ba83434d1 => 'Õhk (radoon ja õhukvaliteet, pilv)';

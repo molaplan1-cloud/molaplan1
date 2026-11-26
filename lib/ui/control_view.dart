@@ -11,6 +11,7 @@ import '../models/models.dart';
 import 'account_nudge.dart';
 import 'app_scope.dart';
 import 'automation_pages.dart';
+import 'smart_heating_pages.dart';
 import 'home_header.dart';
 import 'tile_widget.dart';
 import 'remote_pages.dart';
@@ -197,6 +198,8 @@ class ControlView extends StatelessWidget {
             onEnergy?.call();
           case 'automations':
             await Navigator.push(context, MaterialPageRoute(builder: (_) => const AutomationsPage()));
+          case 'heating':
+            await Navigator.push(context, MaterialPageRoute(builder: (_) => const SmartHeatingPage()));
           case 'room-photo':
             await showRoomPhotoSheet(context, st.config.dashboards);
           case 'settings':
@@ -220,6 +223,12 @@ class ControlView extends StatelessWidget {
           key: const ValueKey('control-automations'),
           value: 'automations',
           child: _item(const Icon(Icons.auto_mode), Text(tx(c, 'Automaatiot', 'Automations'))),
+        ),
+        // R194: its own section, separate from automations.
+        PopupMenuItem(
+          key: const ValueKey('control-heating'),
+          value: 'heating',
+          child: _item(const Icon(Icons.local_fire_department_outlined), Text(tx(c, 'Älykäs lämmitys', 'Smart heating'))),
         ),
         PopupMenuItem(
           key: const ValueKey('control-room-photo'),

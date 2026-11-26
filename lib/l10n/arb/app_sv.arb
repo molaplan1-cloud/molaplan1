@@ -290,6 +290,8 @@
  "s960a265544": "Regn",
  "seab38c2b45": "Snöfall",
  "sfc65eafa12": "Åska",
+ "s404f230c13": "",
+ "s798f7b2876": "Smart uppvärmning",
  "sc27533ae83": "Sparsam",
  "sdbcb85509b": "Temperaturen får variera mest (+1 / −2 °C). Störst besparing.",
  "s380b20be36": "Balanserad",
@@ -960,6 +962,14 @@
  },
  "sd0219ce512": "Anslutningen fungerade inte: {p0}",
  "@sd0219ce512": {
+  "x-mt": true
+ },
+ "sfad8715d97": "Kunde inte nå kontotjänsten. Kontrollera Wi-Fi eller mobildata och försök igen.",
+ "@sfad8715d97": {
+  "x-mt": true
+ },
+ "sa052abd601": "Internet fungerar, men den säkra anslutningen till kontotjänsten misslyckades. Kontrollera enhetsdatum och tid.",
+ "@sa052abd601": {
   "x-mt": true
  },
  "s9ba7e7a8e6": "Fel e-post eller lösenord. Kontrollera dem eller tryck på \"Glöm lösenord\".",
@@ -1676,7 +1686,6 @@
  },
  "s06cda8c0de": "Körs på den här enheten (hembrygga).",
  "s2342536aea": "Körs på hembryggan.",
- "s798f7b2876": "Smart uppvärmning",
  "s2c5993c1fd": "Förvärmning före dyr el och kallt väder, och låter temperaturen sjunka lite i dyra timmar.",
  "@s2c5993c1fd": {
   "x-mt": true
@@ -3962,6 +3971,15 @@
  "@s0a972aa85e": {
   "x-mt": true
  },
+ "sd408a5dbe9": "Billigaste timmar",
+ "@sd408a5dbe9": {
+  "x-mt": true
+ },
+ "sf83143ae23": "Rumstemperatur sensor",
+ "@sf83143ae23": {
+  "x-mt": true
+ },
+ "sd51256a0f5": "Medelvärde",
  "sc51b1e0dc0": "Vad vill du lägga till?",
  "@sc51b1e0dc0": {
   "x-mt": true
@@ -4371,10 +4389,6 @@
  },
  "sae41bebdab": "Kontroll: bekräftelse, lås / PIN, min / max / steg, invert och momentary.",
  "@sae41bebdab": {
-  "x-mt": true
- },
- "sf83143ae23": "Rumstemperatur sensor",
- "@sf83143ae23": {
   "x-mt": true
  },
  "s19485c79b2": "Ingen",
@@ -6982,10 +6996,6 @@
  "@s4790164c94": {
   "x-mt": true
  },
- "sd408a5dbe9": "Billigaste timmar",
- "@sd408a5dbe9": {
-  "x-mt": true
- },
  "s7ba83434d1": "Airthings (radon och luftkvalitet, moln)",
  "@s7ba83434d1": {
   "x-mt": true
@@ -7287,12 +7297,476 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "sfad8715d97": "Kunde inte nå kontotjänsten. Kontrollera Wi-Fi eller mobildata och försök igen.",
- "@sfad8715d97": {
+ "s2a3f705876": "Lagring av golvvärme (konkret)",
+ "@s2a3f705876": {
   "x-mt": true
  },
- "sa052abd601": "Internet fungerar, men den säkra anslutningen till kontotjänsten misslyckades. Kontrollera enhetsdatum och tid.",
- "@sa052abd601": {
+ "se02b21f2e5": "En betongplatta lagrar värme under lång tid: uppvärmning flyttas till de billigaste timmarna, och antalet timmar följer prognosen.",
+ "@se02b21f2e5": {
+  "x-mt": true
+ },
+ "sed77dcfc1a": "Lätt golvvärme",
+ "@sed77dcfc1a": {
+  "x-mt": true
+ },
+ "s4699e792b9": "En lätt golv lagrar liten värme: de dyraste timmarna är hoppade, med korta pauser bara.",
+ "@s4699e792b9": {
+  "x-mt": true
+ },
+ "s5d46662c4e": "Direkta elektriska radiatorer",
+ "@s5d46662c4e": {
+  "x-mt": true
+ },
+ "s12e9bbf847": "Radiatorer lagrar inte värme: endast de dyraste timmarna är hoppade, en timme i taget.",
+ "@s12e9bbf847": {
+  "x-mt": true
+ },
+ "s1c0bf9b38b": "Air-source värmepump",
+ "@s1c0bf9b38b": {
+  "x-mt": true
+ },
+ "s6896be80e0": "En värmepump fungerar bäst vid en jämn temperatur: målet stiger lite före dyra eller kalla trollformler och sjunker i dyra timmar.",
+ "@s6896be80e0": {
+  "x-mt": true
+ },
+ "s765f87536c": "Ground-source värmepump",
+ "@s765f87536c": {
+  "x-mt": true
+ },
+ "s33536024e7": "Ground-source värme med vattencirkulationen lagrar lite värme: de dyraste timmarna hoppas i pauser på några timmar högst.",
+ "@s33536024e7": {
+  "x-mt": true
+ },
+ "s3a7d2e6848": "Vattenvärmare",
+ "@s3a7d2e6848": {
+  "x-mt": true
+ },
+ "s4eec9a0479": "En varmvattenberedare stannar varmt för en dag: den värms upp i de billigaste timmarna på dagen.",
+ "@s4eec9a0479": {
+  "x-mt": true
+ },
+ "sa2dc343545": "Fireplace läge slutar: rummet kyls. Uppvärmning är tillbaka till det normala.",
+ "@sa2dc343545": {
+  "x-mt": true
+ },
+ "s78afbd052c": "Fireplace läge slutade (tid är upp). Uppvärmning är tillbaka till det normala.",
+ "@s78afbd052c": {
+  "x-mt": true
+ },
+ "s1f08341033": "Fireplace läge stoppas. Uppvärmning är tillbaka till det normala.",
+ "@s1f08341033": {
+  "x-mt": true
+ },
+ "sa26ae27039": "Hoppa över de dyraste timmarna",
+ "@sa26ae27039": {
+  "x-mt": true
+ },
+ "scfd1a72ed5": "Väderbaserad pre-värme",
+ "@scfd1a72ed5": {
+  "x-mt": true
+ },
+ "s2bd403874c": "Värme i de billigaste timmarna på dagen. För lagringsvärme och vattenvärmare.",
+ "@s2bd403874c": {
+  "x-mt": true
+ },
+ "se759c14061": "Värme normalt men hoppar över de dyraste timmarna i korta pauser.",
+ "@se759c14061": {
+  "x-mt": true
+ },
+ "s5cab118d44": "Pre-heats före dyra eller kalla trollformler och sparar i dyra timmar. Timmarna följer prognosen.",
+ "@s5cab118d44": {
+  "x-mt": true
+ },
+ "sa7480a9930": "Billig timme",
+ "@sa7480a9930": {
+  "x-mt": true
+ },
+ "s50812672e5": "Väntar på en billig timme",
+ "@s50812672e5": {
+  "x-mt": true
+ },
+ "seb1c64d9f8": "hoppa över en dyr timme",
+ "@seb1c64d9f8": {
+  "x-mt": true
+ },
+ "s2e52a3d40e": "normalt normalt normalt normalt",
+ "@s2e52a3d40e": {
+  "x-mt": true
+ },
+ "sf6d34efdd6": "Inga priser – normal uppvärmning",
+ "@sf6d34efdd6": {
+  "x-mt": true
+ },
+ "s8c42ad8541": "Semester läge",
+ "@s8c42ad8541": {
+  "x-mt": true
+ },
+ "sc3d8828060": "Värme för din retur",
+ "@sc3d8828060": {
+  "x-mt": true
+ },
+ "s577b8c3cf1": "Brandplace värmer",
+ "@s577b8c3cf1": {
+  "x-mt": true
+ },
+ "sbcd02dce0a": "varmt tillräckligt",
+ "@sbcd02dce0a": {
+  "x-mt": true
+ },
+ "s22678639dc": "Säkerhetsgräns: för kall",
+ "@s22678639dc": {
+  "x-mt": true
+ },
+ "s1e3f154a0a": "frostskydd",
+ "@s1e3f154a0a": {
+  "x-mt": true
+ },
+ "s1f2938edec": "Säkerhetsgräns: för länge",
+ "@s1f2938edec": {
+  "x-mt": true
+ },
+ "s54fce2a7e8": "Förvärmning",
+ "@s54fce2a7e8": {
+  "x-mt": true
+ },
+ "s6b35f75e80": "spara medan dyrt",
+ "@s6b35f75e80": {
+  "x-mt": true
+ },
+ "sdde7adcb29": "Smart värme styr värme genom elpris och väder, på ett sätt som passar din uppvärmning typ. Svara på några frågor för att få rekommenderade inställningar.",
+ "@sdde7adcb29": {
+  "x-mt": true
+ },
+ "s3d29895a40": "Starta undersökningen",
+ "@s3d29895a40": {
+  "x-mt": true
+ },
+ "sb0d738492d": "Fireplace läge på",
+ "@sb0d738492d": {
+  "x-mt": true
+ },
+ "sd1af5ba10d": "Fireplace läge tills {p0}",
+ "@sd1af5ba10d": {
+  "x-mt": true
+ },
+ "s48a7ba4933": "Semester läge på",
+ "@s48a7ba4933": {
+  "x-mt": true
+ },
+ "s10a95132ce": "Smart värme är avstängd",
+ "@s10a95132ce": {
+  "x-mt": true
+ },
+ "s035459d8bb": "Värme följer pris och väder",
+ "@s035459d8bb": {
+  "x-mt": true
+ },
+ "s6b83aed534": "Behov av en hembro: ställa in fjärråtkomst på hem surfplattan eller PC (inställningar → fjärråtkomst).",
+ "@s6b83aed534": {
+  "x-mt": true
+ },
+ "s830cace8fe": "Uppdatera hembron (behöver Molaplan 0.10.0).",
+ "@s830cace8fe": {
+  "x-mt": true
+ },
+ "s495c887d23": "Körs på hembron, även med appen stängd.",
+ "@s495c887d23": {
+  "x-mt": true
+ },
+ "s7954d5fca9": "Stoppa eldstad läge",
+ "@s7954d5fca9": {
+  "x-mt": true
+ },
+ "sf44db20422": "Fireplace lit",
+ "@sf44db20422": {
+  "x-mt": true
+ },
+ "sd172900c2d": "Semester: edit",
+ "@sd172900c2d": {
+  "x-mt": true
+ },
+ "s5da1e65941": "Holiday läge",
+ "@s5da1e65941": {
+  "x-mt": true
+ },
+ "sdca3ad13dd": "Värmeanordningar",
+ "@sdca3ad13dd": {
+  "x-mt": true
+ },
+ "sc8c5e37f5d": "Inga enheter. Lägg till dem i undersökningen.",
+ "@sc8c5e37f5d": {
+  "x-mt": true
+ },
+ "sc6976fa352": "Uppvärmningsmeddelanden",
+ "@sc6976fa352": {
+  "x-mt": true
+ },
+ "s1abda8b8f3": "Hembron är för gammal: uppdatera den (Molaplan 0.10.0).",
+ "@s1abda8b8f3": {
+  "x-mt": true
+ },
+ "s8c3353e896": "Ingen hembro är parad.",
+ "@s8c3353e896": {
+  "x-mt": true
+ },
+ "s38ccb420a7": "Fungerade inte: {p0}",
+ "@s38ccb420a7": {
+  "x-mt": true
+ },
+ "s8847ee78e0": "Mål {p0} °C",
+ "@s8847ee78e0": {
+  "x-mt": true
+ },
+ "s4b761dad85": "Nästa: {p0}",
+ "@s4b761dad85": {
+  "x-mt": true
+ },
+ "s622f5654cd": "Fel: {p0}",
+ "@s622f5654cd": {
+  "x-mt": true
+ },
+ "s697b47220e": "Smart värme på",
+ "@s697b47220e": {
+  "x-mt": true
+ },
+ "s45cf6423f8": "Redigera undersökningen",
+ "@s45cf6423f8": {
+  "x-mt": true
+ },
+ "sf5dbb363af": "Säkerhetsgränser",
+ "@sf5dbb363af": {
+  "x-mt": true
+ },
+ "sf9cd32fb4f": "Minsta temperaturen",
+ "@sf9cd32fb4f": {
+  "x-mt": true
+ },
+ "sfb0553315b": "Frostskydd",
+ "@sfb0553315b": {
+  "x-mt": true
+ },
+ "s9097fb518a": "Uppvärmning alltid under {p0} °C.",
+ "@s9097fb518a": {
+  "x-mt": true
+ },
+ "s5d37a7088b": "Längsta tillåtna paus (alla)",
+ "@s5d37a7088b": {
+  "x-mt": true
+ },
+ "sb0bb55d6e5": "per enhet",
+ "@sb0bb55d6e5": {
+  "x-mt": true
+ },
+ "s17bf76025c": "Säkerhetsgränser åsidosätter pris, semester och eldstadsläge. Minimitemperatur och frostskydd behöver en temperatursensor.",
+ "@s17bf76025c": {
+  "x-mt": true
+ },
+ "s109c7fb7a2": "Fireplace",
+ "@s109c7fb7a2": {
+  "x-mt": true
+ },
+ "s1c15091948": "Fireplace läge längd",
+ "@s1c15091948": {
+  "x-mt": true
+ },
+ "se150ae5acd": "Thermostats sänktes i eldstadsläge",
+ "@se150ae5acd": {
+  "x-mt": true
+ },
+ "s161f61412e": "Temperatursensor nära eldstaden",
+ "@s161f61412e": {
+  "x-mt": true
+ },
+ "s81b30d570b": "Enhetens sensor",
+ "@s81b30d570b": {
+  "x-mt": true
+ },
+ "s71e80a04a2": "Uppvärmningsmeddelanden (ntfy)",
+ "@s71e80a04a2": {
+  "x-mt": true
+ },
+ "s5ab83c2574": "Samma meddelandekanal och tysta timmar som automationer.",
+ "@s5ab83c2574": {
+  "x-mt": true
+ },
+ "s32d9d66ffd": "Ta bort smart uppvärmning",
+ "@s32d9d66ffd": {
+  "x-mt": true
+ },
+ "s0f995f3d5d": "Ta bort smart uppvärmning?",
+ "@s0f995f3d5d": {
+  "x-mt": true
+ },
+ "scc27c1739f": "Enheterna stannar i sitt nuvarande tillstånd.",
+ "@scc27c1739f": {
+  "x-mt": true
+ },
+ "s3bf2d3643c": "Elektrisk uppvärmning minskas medan eldstaden värmer. Säkerhetsgränser gäller fortfarande.",
+ "@s3bf2d3643c": {
+  "x-mt": true
+ },
+ "s58b2cdb4e2": "Avsluta tidigare när rummet börjar svalna",
+ "@s58b2cdb4e2": {
+  "x-mt": true
+ },
+ "s632723d95f": "Medan du är borta rum hålls svalare, och vattenvärmaren värms bara natten innan du återvänder. Säkerhetsgränser och frostskydd gäller.",
+ "@s632723d95f": {
+  "x-mt": true
+ },
+ "s2ebf172fad": "Börjar",
+ "@s2ebf172fad": {
+  "x-mt": true
+ },
+ "s0ba54fbd61": "Återkomstdag",
+ "@s0ba54fbd61": {
+  "x-mt": true
+ },
+ "s025d1c3db1": "Temperatur medan borta",
+ "@s025d1c3db1": {
+  "x-mt": true
+ },
+ "s11e21d4f75": "Hur den är kontrollerad",
+ "@s11e21d4f75": {
+  "x-mt": true
+ },
+ "s8e6c8ffabb": " (rekommenderas)",
+ "@s8e6c8ffabb": {
+  "x-mt": true
+ },
+ "sa35e3e99f4": "Kontroll på",
+ "@sa35e3e99f4": {
+  "x-mt": true
+ },
+ "s86c45674db": "Värme timmar om dagen",
+ "@s86c45674db": {
+  "x-mt": true
+ },
+ "sbd3dbfd7e9": "De flesta dyra timmar hoppade över",
+ "@sbd3dbfd7e9": {
+  "x-mt": true
+ },
+ "s1f3d8e19f4": "Längsta paus i taget",
+ "@s1f3d8e19f4": {
+  "x-mt": true
+ },
+ "s017c87df20": "Komforttemperatur",
+ "@s017c87df20": {
+  "x-mt": true
+ },
+ "se68cc54085": "Ingen sensor",
+ "@se68cc54085": {
+  "x-mt": true
+ },
+ "s347ce4c3d2": "Minska i eldstad läge",
+ "@s347ce4c3d2": {
+  "x-mt": true
+ },
+ "s6f88da6bab": "Termostatmålet fastställs av detta; termostatens egen temperatur är komforttemperaturen.",
+ "@s6f88da6bab": {
+  "x-mt": true
+ },
+ "s87cdb30352": "Uppskattning: om {p0} kWh per dag vid 0 ° C (hela huset).",
+ "@s87cdb30352": {
+  "x-mt": true
+ },
+ "sc161d1f9d9": "Hur är huset uppvärmt? Välj allt.",
+ "@sc161d1f9d9": {
+  "x-mt": true
+ },
+ "saac00e587b": "isolering",
+ "@saac00e587b": {
+  "x-mt": true
+ },
+ "s9f103f81c0": "Dålig",
+ "@s9f103f81c0": {
+  "x-mt": true
+ },
+ "sd5ebaf8a4c": "Bra bra bra",
+ "@sd5ebaf8a4c": {
+  "x-mt": true
+ },
+ "sf584870588": "Uppvärmt område",
+ "@sf584870588": {
+  "x-mt": true
+ },
+ "s97235bfadb": "Tillåten temperatur swing",
+ "@s97235bfadb": {
+  "x-mt": true
+ },
+ "s6df5f06d38": "Ju mer temperaturen kan variera, desto mer värme kan flytta till billiga timmar.",
+ "@s6df5f06d38": {
+  "x-mt": true
+ },
+ "s07077e2778": "Huset har en spis eller lagra spis",
+ "@s07077e2778": {
+  "x-mt": true
+ },
+ "sab28f61fad": "Välj vad som styr varje uppvärmning: ett relä eller plugg (på/av) eller en Molaplan termostat (måltemperatur).",
+ "@sab28f61fad": {
+  "x-mt": true
+ },
+ "s90ae2f4451": "Inga kontrollerbara enheter ännu. Lägg till ett relä eller en termostat först; du kan komma tillbaka till undersökningen senare.",
+ "@s90ae2f4451": {
+  "x-mt": true
+ },
+ "sf7b3494ee1": "Kontrollera enheten",
+ "@sf7b3494ee1": {
+  "x-mt": true
+ },
+ "se7ffc07763": "Inte kontrollerad",
+ "@se7ffc07763": {
+  "x-mt": true
+ },
+ "s5835dc3308": "Thermostat: {p0}",
+ "@s5835dc3308": {
+  "x-mt": true
+ },
+ "s075ddc6f0d": "Rumstemperatursensor (rekommenderad)",
+ "@s075ddc6f0d": {
+  "x-mt": true
+ },
+ "s016c02be08": "Rekommenderade inställningar",
+ "@s016c02be08": {
+  "x-mt": true
+ },
+ "s013bbafbec": "Hoppa över {p0} dyraste timmar om dagen, högst {p1} h i taget.",
+ "@s013bbafbec": {
+  "x-mt": true
+ },
+ "se67c73d855": "Om {p0} värme timmar per dag vid 0 °C.",
+ "@se67c73d855": {
+  "x-mt": true
+ },
+ "sb7524487f9": "Ingen styrenhet – inte kontrollerad.",
+ "@sb7524487f9": {
+  "x-mt": true
+ },
+ "sad1fbf7d03": "Tryck på \"Fireplace lit\" efter belysning: elektrisk uppvärmning minskas för 12-24 h eller tills sensorn visar kylning.",
+ "@sad1fbf7d03": {
+  "x-mt": true
+ },
+ "sfb41f90571": "Du kan ändra metoden och siffrorna senare på enhetssidan under Avancerad.",
+ "@sfb41f90571": {
+  "x-mt": true
+ },
+ "s1706667040": "Hus Hus Hus",
+ "@s1706667040": {
+  "x-mt": true
+ },
+ "s84005ad77c": "Enheter",
+ "@s84005ad77c": {
+  "x-mt": true
+ },
+ "s023d14fd87": "Rekommendation",
+ "@s023d14fd87": {
+  "x-mt": true
+ },
+ "sfde6663859": "Undersökning {p0}/4: {p1}",
+ "@sfde6663859": {
+  "x-mt": true
+ },
+ "sda588a203b": "Använd dessa",
+ "@sda588a203b": {
   "x-mt": true
  }
 }

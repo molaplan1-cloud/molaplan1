@@ -312,6 +312,68 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sfc65eafa12 => 'Ukkosta';
 
   @override
+  String get s2a3f705876 => 'Varaava lattialämmitys (betoni)';
+
+  @override
+  String get se02b21f2e5 =>
+      'Betonilaatta varaa lämpöä pitkään: lämmitys keskitetään päivän halvimpiin tunteihin, ja tuntimäärä seuraa sääennustetta.';
+
+  @override
+  String get sed77dcfc1a => 'Kevyt lattialämmitys';
+
+  @override
+  String get s4699e792b9 =>
+      'Kevyt lattia varaa vähän: ohitetaan päivän kalleimmat tunnit, mutta katko on lyhyt.';
+
+  @override
+  String get s5d46662c4e => 'Suorat sähköpatterit';
+
+  @override
+  String get s12e9bbf847 =>
+      'Patterit eivät varaa lämpöä: vain kalleimmat tunnit ohitetaan, yksi tunti kerrallaan.';
+
+  @override
+  String get s1c0bf9b38b => 'Ilmalämpöpumppu';
+
+  @override
+  String get s6896be80e0 =>
+      'Ilmalämpöpumppu toimii parhaiten tasaisella lämmöllä: tavoitelämpö nousee hieman ennen kallista tai kylmää jaksoa ja laskee kalliina tunteina.';
+
+  @override
+  String get s765f87536c => 'Maalämpöpumppu';
+
+  @override
+  String get s33536024e7 =>
+      'Maalämpö ja vesikiertoinen lämmitys varaavat jonkin verran: kalleimmat tunnit ohitetaan enintään muutaman tunnin katkoina.';
+
+  @override
+  String get s3a7d2e6848 => 'Lämminvesivaraaja';
+
+  @override
+  String get s4eec9a0479 =>
+      'Varaaja pysyy lämpimänä vuorokauden: se lämmitetään päivän halvimpina tunteina.';
+
+  @override
+  String s404f230c13(String p0) {
+    return '$p0';
+  }
+
+  @override
+  String get s798f7b2876 => 'Älykäs lämmitys';
+
+  @override
+  String get sa2dc343545 =>
+      'Takka-tila päättyi: huone on alkanut jäähtyä. Lämmitys palaa normaaliksi.';
+
+  @override
+  String get s78afbd052c =>
+      'Takka-tila päättyi (aika täynnä). Lämmitys palaa normaaliksi.';
+
+  @override
+  String get s1f08341033 =>
+      'Takka-tila lopetettiin. Lämmitys palaa normaaliksi.';
+
+  @override
   String get sc27533ae83 => 'Säästävä';
 
   @override
@@ -1882,9 +1944,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s2342536aea => 'Ohjaus toimii kotisillalla.';
-
-  @override
-  String get s798f7b2876 => 'Älykäs lämmitys';
 
   @override
   String get s2c5993c1fd =>
@@ -4150,6 +4209,362 @@ class AppLocalizationsFi extends AppLocalizations {
       'Salasanat ja tokenit tallennetaan laitteen suojattuun tallennustilaan.';
 
   @override
+  String get sd408a5dbe9 => 'Halvimmat tunnit';
+
+  @override
+  String get sa26ae27039 => 'Ohita kalleimmat tunnit';
+
+  @override
+  String get scfd1a72ed5 => 'Sään mukaan ennakoiva';
+
+  @override
+  String get s2bd403874c =>
+      'Lämmittää päivän halvimpina tunteina. Sopii varaavaan lämmitykseen ja lämminvesivaraajaan.';
+
+  @override
+  String get se759c14061 =>
+      'Lämmittää normaalisti, mutta ohittaa päivän kalleimmat tunnit lyhyinä katkoina.';
+
+  @override
+  String get s5cab118d44 =>
+      'Esilämmittää ennen kallista tai kylmää jaksoa ja säästää kalliina tunteina. Tuntimäärä seuraa sääennustetta.';
+
+  @override
+  String get sa7480a9930 => 'halpa tunti';
+
+  @override
+  String get s50812672e5 => 'odottaa halpaa tuntia';
+
+  @override
+  String get seb1c64d9f8 => 'kallis tunti ohitetaan';
+
+  @override
+  String get s2e52a3d40e => 'normaali';
+
+  @override
+  String get sf6d34efdd6 => 'ei hintoja – normaali lämmitys';
+
+  @override
+  String get s8c42ad8541 => 'lomatila';
+
+  @override
+  String get sc3d8828060 => 'lämmitetään paluuta varten';
+
+  @override
+  String get s577b8c3cf1 => 'takka lämmittää';
+
+  @override
+  String get sbcd02dce0a => 'tarpeeksi lämmin';
+
+  @override
+  String get s22678639dc => 'turvaraja: liian kylmä';
+
+  @override
+  String get s1e3f154a0a => 'jäätymissuoja';
+
+  @override
+  String get s1f2938edec => 'turvaraja: liian pitkä tauko';
+
+  @override
+  String get s54fce2a7e8 => 'esilämmitys';
+
+  @override
+  String get s6b35f75e80 => 'säästö kalliina aikana';
+
+  @override
+  String get sdde7adcb29 =>
+      'Älykäs lämmitys ohjaa lämmitystä sähkön hinnan ja sään mukaan talosi lämmitystavalle sopivalla tavalla. Vastaa muutamaan kysymykseen, niin saat suositellut asetukset.';
+
+  @override
+  String get s3d29895a40 => 'Aloita kartoitus';
+
+  @override
+  String get sb0d738492d => 'Takka-tila päällä';
+
+  @override
+  String sd1af5ba10d(String p0) {
+    return 'Takka-tila päällä klo $p0 asti';
+  }
+
+  @override
+  String get s48a7ba4933 => 'Lomatila päällä';
+
+  @override
+  String get s10a95132ce => 'Älykäs lämmitys on pois päältä';
+
+  @override
+  String get s035459d8bb => 'Lämmitys toimii hinnan ja sään mukaan';
+
+  @override
+  String get s6b83aed534 =>
+      'Tarvitsee kotisillan: ota etäyhteys käyttöön kodin tabletilla tai PC:llä (Asetukset → Etäkäyttö).';
+
+  @override
+  String get s830cace8fe => 'Päivitä kotisilta (vaatii Molaplan 0.10.0).';
+
+  @override
+  String get s495c887d23 => 'Toimii kotisillalla myös sovellus suljettuna.';
+
+  @override
+  String get s7954d5fca9 => 'Lopeta takka-tila';
+
+  @override
+  String get sf44db20422 => 'Takka lämmitetty';
+
+  @override
+  String get sd172900c2d => 'Lomatila: muokkaa';
+
+  @override
+  String get s5da1e65941 => 'Lomatila';
+
+  @override
+  String get sdca3ad13dd => 'Lämmityslaitteet';
+
+  @override
+  String get sc8c5e37f5d => 'Ei laitteita. Lisää ne kartoituksessa.';
+
+  @override
+  String get sc6976fa352 => 'Lämmityksen ilmoitukset';
+
+  @override
+  String get s1abda8b8f3 =>
+      'Kotisilta on liian vanha: päivitä se (Molaplan 0.10.0).';
+
+  @override
+  String get s8c3353e896 => 'Kotisiltaa ei ole yhdistetty.';
+
+  @override
+  String s38ccb420a7(String p0) {
+    return 'Ei onnistunut: $p0';
+  }
+
+  @override
+  String s8847ee78e0(String p0) {
+    return 'Tavoite $p0 °C';
+  }
+
+  @override
+  String s4b761dad85(String p0) {
+    return 'Seuraavaksi päällä: $p0';
+  }
+
+  @override
+  String s622f5654cd(String p0) {
+    return 'Virhe: $p0';
+  }
+
+  @override
+  String get s697b47220e => 'Älykäs lämmitys käytössä';
+
+  @override
+  String get s45cf6423f8 => 'Muokkaa kartoitusta';
+
+  @override
+  String get sf5dbb363af => 'Turvarajat';
+
+  @override
+  String get sf9cd32fb4f => 'Vähimmäislämpötila';
+
+  @override
+  String get sfb0553315b => 'Jäätymissuoja';
+
+  @override
+  String s9097fb518a(String p0) {
+    return 'Lämmitys aina päälle alle $p0 °C:ssa.';
+  }
+
+  @override
+  String get s5d37a7088b => 'Pisin sallittu tauko (kaikki)';
+
+  @override
+  String get sb0bb55d6e5 => 'laitteen mukaan';
+
+  @override
+  String get s17bf76025c =>
+      'Turvarajat ohittavat hinnan, lomatilan ja takka-tilan. Vähimmäislämpötila ja jäätymissuoja tarvitsevat lämpöanturin.';
+
+  @override
+  String get s109c7fb7a2 => 'Takka';
+
+  @override
+  String get s1c15091948 => 'Takka-tilan kesto';
+
+  @override
+  String get se150ae5acd => 'Termostaattien lasku takka-tilassa';
+
+  @override
+  String get s161f61412e => 'Takan lähellä oleva lämpöanturi';
+
+  @override
+  String get s81b30d570b => 'Laitteen anturi';
+
+  @override
+  String get s71e80a04a2 => 'Lämmityksen ilmoitukset (ntfy)';
+
+  @override
+  String get s5ab83c2574 =>
+      'Sama ilmoituskanava ja hiljaiset ajat kuin automaatioissa.';
+
+  @override
+  String get s32d9d66ffd => 'Poista älykäs lämmitys';
+
+  @override
+  String get s0f995f3d5d => 'Poistetaanko älykäs lämmitys?';
+
+  @override
+  String get scc27c1739f => 'Laitteet jäävät siihen tilaan, jossa ne ovat nyt.';
+
+  @override
+  String get s3bf2d3643c =>
+      'Sähkölämmitystä vähennetään, koska takka lämmittää. Turvarajat ovat silti voimassa.';
+
+  @override
+  String get s58b2cdb4e2 => 'Lopeta aiemmin, kun huone alkaa jäähtyä';
+
+  @override
+  String get s632723d95f =>
+      'Poissa ollessa huoneet pidetään viileämpinä, ja lämminvesivaraaja lämmitetään vasta paluuta edeltävänä yönä. Turvarajat ja jäätymissuoja ovat voimassa.';
+
+  @override
+  String get s2ebf172fad => 'Alkaa';
+
+  @override
+  String get s0ba54fbd61 => 'Paluupäivä';
+
+  @override
+  String get s025d1c3db1 => 'Lämpötila poissa ollessa';
+
+  @override
+  String get s11e21d4f75 => 'Ohjaustapa';
+
+  @override
+  String get s8e6c8ffabb => ' (suositus)';
+
+  @override
+  String get sa35e3e99f4 => 'Ohjaus käytössä';
+
+  @override
+  String get s86c45674db => 'Lämmitystunteja päivässä';
+
+  @override
+  String get sbd3dbfd7e9 => 'Ohitettavia kalleimpia tunteja';
+
+  @override
+  String get s1f3d8e19f4 => 'Pisin tauko kerrallaan';
+
+  @override
+  String get s017c87df20 => 'Mukavuuslämpötila';
+
+  @override
+  String get sf83143ae23 => 'Huoneen lämpöanturi';
+
+  @override
+  String get se68cc54085 => 'Ei anturia';
+
+  @override
+  String get s347ce4c3d2 => 'Vähennä takka-tilassa';
+
+  @override
+  String get s6f88da6bab =>
+      'Termostaatin tavoitelämpö asetetaan tämän mukaan; termostaatin oma lämpötila on mukavuuslämpötila.';
+
+  @override
+  String s87cdb30352(String p0) {
+    return 'Arvio: noin $p0 kWh vuorokaudessa 0 °C:n pakkasella (koko talo).';
+  }
+
+  @override
+  String get sc161d1f9d9 => 'Millä talo lämpiää? Valitse kaikki.';
+
+  @override
+  String get saac00e587b => 'Eristys';
+
+  @override
+  String get s9f103f81c0 => 'Heikko';
+
+  @override
+  String get sd51256a0f5 => 'Tavallinen';
+
+  @override
+  String get sd5ebaf8a4c => 'Hyvä';
+
+  @override
+  String get sf584870588 => 'Lämmitetty pinta-ala';
+
+  @override
+  String get s97235bfadb => 'Sallittu lämpötilan vaihtelu';
+
+  @override
+  String get s6df5f06d38 =>
+      'Mitä enemmän lämpö saa vaihdella, sitä enemmän lämmitystä voidaan siirtää halvoille tunneille.';
+
+  @override
+  String get s07077e2778 => 'Talossa on takka tai varaava uuni';
+
+  @override
+  String get sab28f61fad =>
+      'Valitse, mikä laite ohjaa kutakin lämmitystä: rele tai pistorasia (päälle/pois) tai Molaplanin termostaatti (tavoitelämpö).';
+
+  @override
+  String get s90ae2f4451 =>
+      'Ei vielä ohjattavia laitteita. Lisää ensin rele tai termostaatti; voit palata kartoitukseen myöhemmin.';
+
+  @override
+  String get sf7b3494ee1 => 'Ohjaava laite';
+
+  @override
+  String get se7ffc07763 => 'Ei ohjata';
+
+  @override
+  String s5835dc3308(String p0) {
+    return 'Termostaatti: $p0';
+  }
+
+  @override
+  String get s075ddc6f0d => 'Huoneen lämpöanturi (suositus)';
+
+  @override
+  String get s016c02be08 => 'Suositellut asetukset';
+
+  @override
+  String s013bbafbec(String p0, String p1) {
+    return 'Ohitetaan $p0 kalleinta tuntia päivässä, enintään $p1 h kerrallaan.';
+  }
+
+  @override
+  String se67c73d855(String p0) {
+    return 'Noin $p0 lämmitystuntia päivässä 0 °C:ssa.';
+  }
+
+  @override
+  String get sb7524487f9 => 'Ei ohjaavaa laitetta – ei ohjata.';
+
+  @override
+  String get sad1fbf7d03 =>
+      'Paina \"Takka lämmitetty\", kun takka on lämmitetty: sähkölämmitystä vähennetään 12–24 tunniksi tai kunnes anturi näyttää jäähtymistä.';
+
+  @override
+  String get sfb41f90571 =>
+      'Voit muuttaa ohjaustapaa ja lukuja myöhemmin laitteen sivulla kohdassa Edistyneet.';
+
+  @override
+  String get s1706667040 => 'Talo';
+
+  @override
+  String get s84005ad77c => 'Laitteet';
+
+  @override
+  String get s023d14fd87 => 'Suositus';
+
+  @override
+  String sfde6663859(String p0, String p1) {
+    return 'Kartoitus $p0/4: $p1';
+  }
+
+  @override
+  String get sda588a203b => 'Ota käyttöön';
+
+  @override
   String get sc51b1e0dc0 => 'Mitä lisätään?';
 
   @override
@@ -4562,9 +4977,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get sae41bebdab =>
       'Ohjaus: vahvistus, lukitus / PIN, min / max / askel, käänteinen ja hetkellinen.';
-
-  @override
-  String get sf83143ae23 => 'Huoneen lämpöanturi';
 
   @override
   String get s19485c79b2 => 'Ei valittu';
@@ -7287,9 +7699,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s4790164c94 => 'Tämän ja huomisen kaavio';
-
-  @override
-  String get sd408a5dbe9 => 'Halvimmat tunnit';
 
   @override
   String get s7ba83434d1 => 'Airthings (radon ja ilmanlaatu, pilvi)';

@@ -311,6 +311,68 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sfc65eafa12 => 'Thunderstorm';
 
   @override
+  String get s2a3f705876 => 'Storage floor heating (concrete)';
+
+  @override
+  String get se02b21f2e5 =>
+      'A concrete slab stores heat for a long time: heating is moved to the cheapest hours, and the number of hours follows the forecast.';
+
+  @override
+  String get sed77dcfc1a => 'Light floor heating';
+
+  @override
+  String get s4699e792b9 =>
+      'A light floor stores little heat: the most expensive hours are skipped, with short breaks only.';
+
+  @override
+  String get s5d46662c4e => 'Direct electric radiators';
+
+  @override
+  String get s12e9bbf847 =>
+      'Radiators do not store heat: only the most expensive hours are skipped, one hour at a time.';
+
+  @override
+  String get s1c0bf9b38b => 'Air-source heat pump';
+
+  @override
+  String get s6896be80e0 =>
+      'A heat pump works best at an even temperature: the target rises a little before expensive or cold spells and drops in expensive hours.';
+
+  @override
+  String get s765f87536c => 'Ground-source heat pump';
+
+  @override
+  String get s33536024e7 =>
+      'Ground-source heat with water circulation stores some heat: the most expensive hours are skipped in breaks of a few hours at most.';
+
+  @override
+  String get s3a7d2e6848 => 'Water heater';
+
+  @override
+  String get s4eec9a0479 =>
+      'A water heater stays hot for a day: it is heated in the cheapest hours of the day.';
+
+  @override
+  String s404f230c13(String p0) {
+    return '';
+  }
+
+  @override
+  String get s798f7b2876 => 'Smart heating';
+
+  @override
+  String get sa2dc343545 =>
+      'Fireplace mode ended: the room is cooling. Heating is back to normal.';
+
+  @override
+  String get s78afbd052c =>
+      'Fireplace mode ended (time is up). Heating is back to normal.';
+
+  @override
+  String get s1f08341033 =>
+      'Fireplace mode stopped. Heating is back to normal.';
+
+  @override
   String get sc27533ae83 => 'Saving';
 
   @override
@@ -1869,9 +1931,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s2342536aea => 'Runs on the home bridge.';
-
-  @override
-  String get s798f7b2876 => 'Smart heating';
 
   @override
   String get s2c5993c1fd =>
@@ -4130,6 +4189,363 @@ class AppLocalizationsEn extends AppLocalizations {
       'Passwords and tokens are stored in the device\'s secure storage.';
 
   @override
+  String get sd408a5dbe9 => 'Cheapest hours';
+
+  @override
+  String get sa26ae27039 => 'Skip the most expensive hours';
+
+  @override
+  String get scfd1a72ed5 => 'Weather-based pre-heating';
+
+  @override
+  String get s2bd403874c =>
+      'Heats in the cheapest hours of the day. For storage heating and water heaters.';
+
+  @override
+  String get se759c14061 =>
+      'Heats normally but skips the most expensive hours in short breaks.';
+
+  @override
+  String get s5cab118d44 =>
+      'Pre-heats before expensive or cold spells and saves in expensive hours. The hours follow the forecast.';
+
+  @override
+  String get sa7480a9930 => 'cheap hour';
+
+  @override
+  String get s50812672e5 => 'waiting for a cheap hour';
+
+  @override
+  String get seb1c64d9f8 => 'skipping an expensive hour';
+
+  @override
+  String get s2e52a3d40e => 'normal';
+
+  @override
+  String get sf6d34efdd6 => 'no prices – normal heating';
+
+  @override
+  String get s8c42ad8541 => 'holiday mode';
+
+  @override
+  String get sc3d8828060 => 'heating for your return';
+
+  @override
+  String get s577b8c3cf1 => 'the fireplace heats';
+
+  @override
+  String get sbcd02dce0a => 'warm enough';
+
+  @override
+  String get s22678639dc => 'safety limit: too cold';
+
+  @override
+  String get s1e3f154a0a => 'frost protection';
+
+  @override
+  String get s1f2938edec => 'safety limit: off too long';
+
+  @override
+  String get s54fce2a7e8 => 'pre-heating';
+
+  @override
+  String get s6b35f75e80 => 'saving while expensive';
+
+  @override
+  String get sdde7adcb29 =>
+      'Smart heating controls heating by electricity price and weather, in a way that suits your heating type. Answer a few questions to get recommended settings.';
+
+  @override
+  String get s3d29895a40 => 'Start the survey';
+
+  @override
+  String get sb0d738492d => 'Fireplace mode on';
+
+  @override
+  String sd1af5ba10d(String p0) {
+    return 'Fireplace mode on until $p0';
+  }
+
+  @override
+  String get s48a7ba4933 => 'Holiday mode on';
+
+  @override
+  String get s10a95132ce => 'Smart heating is off';
+
+  @override
+  String get s035459d8bb => 'Heating follows price and weather';
+
+  @override
+  String get s6b83aed534 =>
+      'Needs a home bridge: set up remote access on the home tablet or PC (Settings → Remote access).';
+
+  @override
+  String get s830cace8fe => 'Update the home bridge (needs Molaplan 0.10.0).';
+
+  @override
+  String get s495c887d23 =>
+      'Runs on the home bridge, also with the app closed.';
+
+  @override
+  String get s7954d5fca9 => 'Stop fireplace mode';
+
+  @override
+  String get sf44db20422 => 'Fireplace lit';
+
+  @override
+  String get sd172900c2d => 'Holiday: edit';
+
+  @override
+  String get s5da1e65941 => 'Holiday mode';
+
+  @override
+  String get sdca3ad13dd => 'Heating devices';
+
+  @override
+  String get sc8c5e37f5d => 'No devices. Add them in the survey.';
+
+  @override
+  String get sc6976fa352 => 'Heating notifications';
+
+  @override
+  String get s1abda8b8f3 =>
+      'The home bridge is too old: update it (Molaplan 0.10.0).';
+
+  @override
+  String get s8c3353e896 => 'No home bridge is paired.';
+
+  @override
+  String s38ccb420a7(String p0) {
+    return 'Did not work: $p0';
+  }
+
+  @override
+  String s8847ee78e0(String p0) {
+    return 'Target $p0 °C';
+  }
+
+  @override
+  String s4b761dad85(String p0) {
+    return 'Next on: $p0';
+  }
+
+  @override
+  String s622f5654cd(String p0) {
+    return 'Error: $p0';
+  }
+
+  @override
+  String get s697b47220e => 'Smart heating on';
+
+  @override
+  String get s45cf6423f8 => 'Edit the survey';
+
+  @override
+  String get sf5dbb363af => 'Safety limits';
+
+  @override
+  String get sf9cd32fb4f => 'Minimum temperature';
+
+  @override
+  String get sfb0553315b => 'Frost protection';
+
+  @override
+  String s9097fb518a(String p0) {
+    return 'Heating always on below $p0 °C.';
+  }
+
+  @override
+  String get s5d37a7088b => 'Longest allowed break (all)';
+
+  @override
+  String get sb0bb55d6e5 => 'per device';
+
+  @override
+  String get s17bf76025c =>
+      'Safety limits override price, holiday and fireplace mode. The minimum temperature and frost protection need a temperature sensor.';
+
+  @override
+  String get s109c7fb7a2 => 'Fireplace';
+
+  @override
+  String get s1c15091948 => 'Fireplace mode length';
+
+  @override
+  String get se150ae5acd => 'Thermostats lowered in fireplace mode';
+
+  @override
+  String get s161f61412e => 'Temperature sensor near the fireplace';
+
+  @override
+  String get s81b30d570b => 'The device sensor';
+
+  @override
+  String get s71e80a04a2 => 'Heating notifications (ntfy)';
+
+  @override
+  String get s5ab83c2574 =>
+      'The same notification channel and quiet hours as automations.';
+
+  @override
+  String get s32d9d66ffd => 'Remove smart heating';
+
+  @override
+  String get s0f995f3d5d => 'Remove smart heating?';
+
+  @override
+  String get scc27c1739f => 'The devices stay in their current state.';
+
+  @override
+  String get s3bf2d3643c =>
+      'Electric heating is reduced while the fireplace heats. Safety limits still apply.';
+
+  @override
+  String get s58b2cdb4e2 => 'End earlier when the room starts to cool';
+
+  @override
+  String get s632723d95f =>
+      'While you are away rooms are kept cooler, and the water heater is heated only the night before you return. Safety limits and frost protection apply.';
+
+  @override
+  String get s2ebf172fad => 'Starts';
+
+  @override
+  String get s0ba54fbd61 => 'Return day';
+
+  @override
+  String get s025d1c3db1 => 'Temperature while away';
+
+  @override
+  String get s11e21d4f75 => 'How it is controlled';
+
+  @override
+  String get s8e6c8ffabb => ' (recommended)';
+
+  @override
+  String get sa35e3e99f4 => 'Control on';
+
+  @override
+  String get s86c45674db => 'Heating hours a day';
+
+  @override
+  String get sbd3dbfd7e9 => 'Most expensive hours skipped';
+
+  @override
+  String get s1f3d8e19f4 => 'Longest break at a time';
+
+  @override
+  String get s017c87df20 => 'Comfort temperature';
+
+  @override
+  String get sf83143ae23 => 'Room temperature sensor';
+
+  @override
+  String get se68cc54085 => 'No sensor';
+
+  @override
+  String get s347ce4c3d2 => 'Reduce in fireplace mode';
+
+  @override
+  String get s6f88da6bab =>
+      'The thermostat target is set by this; the thermostat\'s own temperature is the comfort temperature.';
+
+  @override
+  String s87cdb30352(String p0) {
+    return 'Estimate: about $p0 kWh a day at 0 °C (whole house).';
+  }
+
+  @override
+  String get sc161d1f9d9 => 'How is the house heated? Choose all.';
+
+  @override
+  String get saac00e587b => 'Insulation';
+
+  @override
+  String get s9f103f81c0 => 'Poor';
+
+  @override
+  String get sd51256a0f5 => 'Average';
+
+  @override
+  String get sd5ebaf8a4c => 'Good';
+
+  @override
+  String get sf584870588 => 'Heated area';
+
+  @override
+  String get s97235bfadb => 'Allowed temperature swing';
+
+  @override
+  String get s6df5f06d38 =>
+      'The more the temperature may vary, the more heating can move to cheap hours.';
+
+  @override
+  String get s07077e2778 => 'The house has a fireplace or storing stove';
+
+  @override
+  String get sab28f61fad =>
+      'Choose what controls each heating: a relay or plug (on/off) or a Molaplan thermostat (target temperature).';
+
+  @override
+  String get s90ae2f4451 =>
+      'No controllable devices yet. Add a relay or a thermostat first; you can come back to the survey later.';
+
+  @override
+  String get sf7b3494ee1 => 'Controlling device';
+
+  @override
+  String get se7ffc07763 => 'Not controlled';
+
+  @override
+  String s5835dc3308(String p0) {
+    return 'Thermostat: $p0';
+  }
+
+  @override
+  String get s075ddc6f0d => 'Room temperature sensor (recommended)';
+
+  @override
+  String get s016c02be08 => 'Recommended settings';
+
+  @override
+  String s013bbafbec(String p0, String p1) {
+    return 'Skips the $p0 most expensive hours a day, at most $p1 h at a time.';
+  }
+
+  @override
+  String se67c73d855(String p0) {
+    return 'About $p0 heating hours a day at 0 °C.';
+  }
+
+  @override
+  String get sb7524487f9 => 'No controlling device – not controlled.';
+
+  @override
+  String get sad1fbf7d03 =>
+      'Tap \"Fireplace lit\" after lighting it: electric heating is reduced for 12–24 h or until the sensor shows cooling.';
+
+  @override
+  String get sfb41f90571 =>
+      'You can change the method and numbers later on the device page under Advanced.';
+
+  @override
+  String get s1706667040 => 'House';
+
+  @override
+  String get s84005ad77c => 'Devices';
+
+  @override
+  String get s023d14fd87 => 'Recommendation';
+
+  @override
+  String sfde6663859(String p0, String p1) {
+    return 'Survey $p0/4: $p1';
+  }
+
+  @override
+  String get sda588a203b => 'Use these';
+
+  @override
   String get sc51b1e0dc0 => 'What do you want to add?';
 
   @override
@@ -4539,9 +4955,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get sae41bebdab =>
       'Control: confirmation, lock / PIN, min / max / step, invert and momentary.';
-
-  @override
-  String get sf83143ae23 => 'Room temperature sensor';
 
   @override
   String get s19485c79b2 => 'None';
@@ -7237,9 +7650,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s4790164c94 => 'Today and tomorrow chart';
-
-  @override
-  String get sd408a5dbe9 => 'Cheapest hours';
 
   @override
   String get s7ba83434d1 => 'Airthings (radon and air quality, cloud)';

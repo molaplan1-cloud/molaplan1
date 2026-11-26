@@ -18,6 +18,7 @@ import '../drivers/registry.dart';
 import '../models/models.dart';
 import '../energy/contract.dart';
 import '../energy/meters.dart';
+import '../energy/smart_heating.dart';
 import '../energy/thermostat.dart';
 import '../prices/prices.dart';
 import 'tile_runtime.dart';
@@ -326,6 +327,56 @@ class AppState extends ChangeNotifier implements SyncHost {
     notifyListeners();
   }
 
+  // ---- R194: smart heating ('Älykäs lämmitys', runs on the home bridge)
+  SmartHeatingConfig? get smartHeating => config.energy.smartHeating;
+
+  /// Status from the bridge: {enabled, mode, fireplace, loads:{id:{on,target,reason,…}}, notices}.
+  Map<String, dynamic>? heatingStatus;
+  DateTime? heatingStatusAt;
+
+  /// The paired bridge is older than 0.10.0 (does not run smart heating).
+  bool heatingBridgeOld = false;
+
+  Future<void> refreshHeatingStatus() async {
+    try {
+      final s = await rulesStatus();
+      final h = s?['heating'];
+      heatingStatus = h is Map ? Map<String, dynamic>.from(h) : null;
+      if (s != null && h == null && smartHeating != null && rulesRunWhere == 'bridge') heatingBridgeOld = true;
+      if (h != null) heatingBridgeOld = false;
+      heatingStatusAt = DateTime.now();
+    } catch (_) {
+      heatingStatus = null;
+    }
+    notifyListeners();
+  }
+
+  Future<void> saveSmartHeating(SmartHeatingConfig? c) async {
+    config.energy.smartHeating = c;
+    await save();
+    notifyListeners();
+  }
+
+  /// 'Takka lämmitetty': fireplace mode on the bridge for [hours] (12–24) or until the room cools.
+  Future<void> fireplace({bool stop = false, int? hours, bool? untilCool}) async {
+    final f = stop ? {'stop': true} : {'start': true, 'hours': ?hours, 'untilCool': ?untilCool};
+    final b = remote.bridge;
+    if (b != null) {
+      b.fireplaceOp(f);
+    } else {
+      final c = remote.router.client;
+      if (c == null) throw StateError('no_bridge');
+      await pushRules();
+      final v = await c.call('rules', spec: {'fireplace': f});
+      if (v is Map && !v.containsKey('heating')) {
+        heatingBridgeOld = true;
+        notifyListeners();
+        throw StateError('bridge_old');
+      }
+    }
+    await refreshHeatingStatus();
+  }
+
   // ---- virtual thermostats (run on the home bridge)
   ThermostatConfig? thermostat(String id) => config.energy.thermostats.where((t) => t.id == id).firstOrNull;
 
@@ -588,7 +639,12 @@ class AppState extends ChangeNotifier implements SyncHost {
   String? get rulesRunWhere => remote.bridge != null ? 'self' : (remote.router.client != null ? 'bridge' : null);
 
   void _scheduleRulesPush() {
-    if (config.rules.isEmpty && config.energy.thermostats.isEmpty && _rulesSent == null) return;
+    if (config.rules.isEmpty &&
+        config.energy.thermostats.isEmpty &&
+        config.energy.smartHeating == null &&
+        _rulesSent == null) {
+      return;
+    }
     _rulesTimer?.cancel();
     _rulesTimer = Timer(
       const Duration(seconds: 2),
@@ -603,25 +659,25 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<bool> pushRules({bool force = false}) async {
     final jobs = RuleJob.fromConfig(config);
     final thermo = ThermostatJob.fromConfig(config);
-    final j = jsonEncode({
+    final heating = SmartHeatingJob.fromConfig(config);
+    final spec = {
       'jobs': [for (final x in jobs) x.toJson()],
       'thermostats': [for (final x in thermo) x.toJson()],
-    });
+      'heating': heating?.toJson(),
+    };
+    final j = jsonEncode(spec);
     if (!force && j == _rulesSent) return false;
     final b = remote.bridge;
     if (b != null) {
       await b.setRules(jobs);
       await b.setThermostats(thermo);
+      await b.setSmartHeating(heating);
     } else {
       final c = remote.router.client;
       if (c == null) throw StateError('no_bridge');
-      await c.call(
-        'rules',
-        spec: {
-          'jobs': [for (final x in jobs) x.toJson()],
-          'thermostats': [for (final x in thermo) x.toJson()],
-        },
-      );
+      final v = await c.call('rules', spec: spec);
+      // R194: a bridge older than 0.10.0 ignores 'heating' and does not report it.
+      heatingBridgeOld = heating != null && !(v is Map && v.containsKey('heating'));
     }
     _rulesSent = j;
     return true;
@@ -636,6 +692,7 @@ class AppState extends ChangeNotifier implements SyncHost {
         'count': b.rules.jobs.length,
         'status': b.rules.statusJson(),
         'thermostats': b.thermo.statusJson(),
+        'heating': b.smart.statusJson(),
       };
     }
     final c = remote.router.client;

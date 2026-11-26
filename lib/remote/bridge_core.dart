@@ -11,6 +11,7 @@ import '../automation/host.dart';
 import '../automation/runner.dart';
 import 'executor.dart';
 import '../prices/prices.dart';
+import '../energy/smart_heating.dart';
 import '../energy/thermostat.dart';
 import '../rules/price_rules.dart';
 import 'protocol.dart';
@@ -93,6 +94,25 @@ class BridgeCore {
     },
   );
 
+  /// R194: smart heating pushed with the rules; runs here every minute. Notifications go out
+  /// through the automations' ntfy settings (same topic and quiet hours).
+  late final SmartHeatingRunner smart = SmartHeatingRunner(
+    prices: prices,
+    log: log,
+    read: (conn, spec) async {
+      final r = await executor.run({'id': 0, 'op': 'read', 'conn': conn, 'spec': spec});
+      if (r['ok'] != true) throw Exception(r['e']);
+      return r['v'];
+    },
+    send: (conn, spec, value) async {
+      final r = await executor.run({'id': 0, 'op': 'send', 'conn': conn, 'spec': spec, 'value': value});
+      if (r['ok'] != true) throw Exception(r['e']);
+    },
+    notify: (title, body, priority) => automations.engine.sendNotification(title, body, priority: priority),
+    saveState: (st) => unawaited(store.write('$storageKey.heatstate', jsonEncode(st))),
+    thermoTemp: (id) => thermo.status[id]?.temp,
+  );
+
   /// Automations, scenes and scripts pushed by the phones (v0.7.0): they run here, also when every
   /// app is closed. Notifications go out through ntfy.
   late final AutomationHost automations = AutomationHost(
@@ -155,6 +175,7 @@ class BridgeCore {
 
   /// Loads or creates the bridge identity.
   Future<void> init({String relayUrl = defaultRelayUrl, String name = 'Koti'}) async {
+    thermo.adjust = smart.thermostatTarget; // R194: smart heating sets thermostat targets
     final raw = await store.read(storageKey);
     if (raw != null) {
       final j = jsonDecode(raw) as Map<String, dynamic>;
@@ -189,6 +210,18 @@ class BridgeCore {
         } catch (_) {}
       }
       automations.loadHistory(await store.read('$storageKey.autolog'));
+      final hh = await store.read('$storageKey.heating');
+      if (hh != null) {
+        try {
+          smart.job = SmartHeatingJob.fromJson(Map<String, dynamic>.from(jsonDecode(hh) as Map));
+        } catch (_) {}
+      }
+      final hs = await store.read('$storageKey.heatstate');
+      if (hs != null) {
+        try {
+          smart.loadState(Map<String, dynamic>.from(jsonDecode(hs) as Map));
+        } catch (_) {}
+      }
       final tt = await store.read('$storageKey.thermo');
       if (tt != null) {
         try {
@@ -254,6 +287,26 @@ class BridgeCore {
     log?.call('thermostats: ${jobs.length}');
   }
 
+  /// R194: replaces the smart heating job (null = off) and stores it.
+  Future<void> setSmartHeating(SmartHeatingJob? job) async {
+    if (job == null) {
+      await store.delete('$storageKey.heating');
+    } else {
+      await store.write('$storageKey.heating', jsonEncode(job.toJson()));
+    }
+    smart.update(job);
+    log?.call('smart heating: ${job == null ? 'off' : '${job.config.loads.length} loads'}');
+  }
+
+  /// R194: 'Takka lämmitetty' – {start:true, hours, untilCool} or {stop:true}.
+  void fireplaceOp(Map<String, dynamic> f) {
+    if (f['stop'] == true) {
+      smart.stopFireplace();
+    } else {
+      smart.startFireplace(hours: (f['hours'] as num?)?.toInt(), untilCool: f['untilCool'] as bool?);
+    }
+  }
+
   /// Replaces the automation package (with connections) and stores it.
   Future<void> setAutomations(AutomationPackage p) async {
     await store.write('$storageKey.auto', jsonEncode(p.toJson()));
@@ -306,7 +359,8 @@ class BridgeCore {
     }
   }
 
-  Future<Map<String, dynamic>> _rulesOp(Map<String, dynamic> r) async {
+  /// The owner's "rules" op (public for tests: price rules, thermostats, smart heating, fireplace).
+  Future<Map<String, dynamic>> rulesOp(Map<String, dynamic> r) async {
     final id = r['id'];
     final spec = Map<String, dynamic>.from((r['spec'] as Map?) ?? const {});
     try {
@@ -320,6 +374,11 @@ class BridgeCore {
         ]);
         await thermo.tick();
       }
+      if (spec.containsKey('heating')) {
+        final h = spec['heating'];
+        await setSmartHeating(h is Map ? SmartHeatingJob.fromJson(Map<String, dynamic>.from(h)) : null);
+      }
+      if (spec['fireplace'] is Map) fireplaceOp(Map<String, dynamic>.from(spec['fireplace'] as Map));
       return {
         'id': id,
         'ok': true,
@@ -328,6 +387,7 @@ class BridgeCore {
           'count': rules.jobs.length,
           'status': rules.statusJson(),
           'thermostats': thermo.statusJson(),
+          'heating': smart.statusJson(),
         },
       };
     } catch (e) {
@@ -338,6 +398,7 @@ class BridgeCore {
   void start() {
     rules.start();
     thermo.start();
+    smart.start();
     automations.start();
     if (_running) return;
     _running = true;
@@ -813,7 +874,7 @@ class BridgeCore {
           }),
           'share_list' => _hookOp(r, (_) async => {'shares': shareList()}),
           'enroll' => _enroll(r),
-          'rules' => _rulesOp(r),
+          'rules' => rulesOp(r),
           'automations' => _automationsOp(r),
           'bridge_info' => _hookOp(r, (_) async => await info?.call() ?? {'app': null}),
           'bridge_update' => _hookOp(r, (spec) async {
@@ -864,6 +925,7 @@ class BridgeCore {
   Future<void> dispose() async {
     rules.dispose();
     thermo.dispose();
+    smart.dispose();
     await automations.dispose();
     await stop();
     await executor.dispose();

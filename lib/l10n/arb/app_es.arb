@@ -287,6 +287,8 @@
  "s960a265544": "Lluvia",
  "seab38c2b45": "Nieve",
  "sfc65eafa12": "Tormenta",
+ "s404f230c13": "",
+ "s798f7b2876": "Calefacción inteligente",
  "sc27533ae83": "Ahorro",
  "sdbcb85509b": "La temperatura puede variar más (+1 / −2 °C). Mayor ahorro.",
  "s380b20be36": "Equilibrado",
@@ -957,6 +959,14 @@
  },
  "sd0219ce512": "La conexión no funcionó: {p0}",
  "@sd0219ce512": {
+  "x-mt": true
+ },
+ "sfad8715d97": "No se puede llegar al servicio de cuenta. Compruebe Wi-Fi o datos móviles e inténtelo de nuevo.",
+ "@sfad8715d97": {
+  "x-mt": true
+ },
+ "sa052abd601": "El Internet funciona, pero la conexión segura al servicio de cuenta falló. Compruebe la fecha y hora del dispositivo.",
+ "@sa052abd601": {
   "x-mt": true
  },
  "s9ba7e7a8e6": "Correo electrónico o contraseña incorrecta. Compruébalos, o pulsa \"Contraseña olvidada\".",
@@ -1676,7 +1686,6 @@
  },
  "s06cda8c0de": "Funciona en este dispositivo (puente de casa).",
  "s2342536aea": "Funciona en el puente de casa.",
- "s798f7b2876": "Calefacción inteligente",
  "s2c5993c1fd": "Precalentamientos antes de la electricidad costosa y el clima frío, y permite que la temperatura baja un poco en horas costosas.",
  "@s2c5993c1fd": {
   "x-mt": true
@@ -3947,6 +3956,15 @@
  "@s0a972aa85e": {
   "x-mt": true
  },
+ "sd408a5dbe9": "Horas más baratas",
+ "@sd408a5dbe9": {
+  "x-mt": true
+ },
+ "sf83143ae23": "Sensor de temperatura ambiente",
+ "@sf83143ae23": {
+  "x-mt": true
+ },
+ "sd51256a0f5": "Promedio",
  "sc51b1e0dc0": "¿Qué quieres añadir?",
  "@sc51b1e0dc0": {
   "x-mt": true
@@ -4362,10 +4380,6 @@
  },
  "sae41bebdab": "Control: confirmación, bloqueo / PIN, min / max / step, invertido y momentáneo.",
  "@sae41bebdab": {
-  "x-mt": true
- },
- "sf83143ae23": "Sensor de temperatura ambiente",
- "@sf83143ae23": {
   "x-mt": true
  },
  "s19485c79b2": "Ninguno",
@@ -6964,10 +6978,6 @@
  "@s4790164c94": {
   "x-mt": true
  },
- "sd408a5dbe9": "Horas más baratas",
- "@sd408a5dbe9": {
-  "x-mt": true
- },
  "s7ba83434d1": "Aire acondicionado (calor y calidad del aire, nube)",
  "@s7ba83434d1": {
   "x-mt": true
@@ -7269,12 +7279,476 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "sfad8715d97": "No se puede llegar al servicio de cuenta. Compruebe Wi-Fi o datos móviles e inténtelo de nuevo.",
- "@sfad8715d97": {
+ "s2a3f705876": "Calefacción de suelo de almacenamiento (concreto)",
+ "@s2a3f705876": {
   "x-mt": true
  },
- "sa052abd601": "El Internet funciona, pero la conexión segura al servicio de cuenta falló. Compruebe la fecha y hora del dispositivo.",
- "@sa052abd601": {
+ "se02b21f2e5": "Una losa de hormigón almacena calor durante mucho tiempo: la calefacción se mueve a las horas más baratas, y el número de horas sigue el pronóstico.",
+ "@se02b21f2e5": {
+  "x-mt": true
+ },
+ "sed77dcfc1a": "Calefacción en suelo radiante",
+ "@sed77dcfc1a": {
+  "x-mt": true
+ },
+ "s4699e792b9": "Un piso ligero almacena poco calor: las horas más caras se saltan, con pausas cortas solamente.",
+ "@s4699e792b9": {
+  "x-mt": true
+ },
+ "s5d46662c4e": "Radiadores eléctricos directos",
+ "@s5d46662c4e": {
+  "x-mt": true
+ },
+ "s12e9bbf847": "Los radiadores no almacenan el calor: sólo las horas más caras se saltan, una hora a la vez.",
+ "@s12e9bbf847": {
+  "x-mt": true
+ },
+ "s1c0bf9b38b": "Bomba de calor de fuente de aire",
+ "@s1c0bf9b38b": {
+  "x-mt": true
+ },
+ "s6896be80e0": "Una bomba de calor funciona mejor a una temperatura uniforme: el objetivo aumenta un poco antes de hechizos caros o fríos y cae en horas caras.",
+ "@s6896be80e0": {
+  "x-mt": true
+ },
+ "s765f87536c": "Bomba de calor de fuente terrestre",
+ "@s765f87536c": {
+  "x-mt": true
+ },
+ "s33536024e7": "Calor de fuente baja con la circulación de agua almacena un poco de calor: las horas más caras se saltan en pausas de unas pocas horas a la mayoría.",
+ "@s33536024e7": {
+  "x-mt": true
+ },
+ "s3a7d2e6848": "Calentador de agua",
+ "@s3a7d2e6848": {
+  "x-mt": true
+ },
+ "s4eec9a0479": "Un calentador de agua permanece caliente durante un día: se calienta en las horas más baratas del día.",
+ "@s4eec9a0479": {
+  "x-mt": true
+ },
+ "sa2dc343545": "El modo Fireplace terminó: la habitación está enfriando. La calefacción está de vuelta a la normalidad.",
+ "@sa2dc343545": {
+  "x-mt": true
+ },
+ "s78afbd052c": "Modo Fireplace terminado (tiempo es arriba). La calefacción está de vuelta a la normalidad.",
+ "@s78afbd052c": {
+  "x-mt": true
+ },
+ "s1f08341033": "El modo Fireplace se detuvo. La calefacción vuelve a la normalidad.",
+ "@s1f08341033": {
+  "x-mt": true
+ },
+ "sa26ae27039": "Pasar las horas más caras",
+ "@sa26ae27039": {
+  "x-mt": true
+ },
+ "scfd1a72ed5": "Precalentamiento basado en el clima",
+ "@scfd1a72ed5": {
+  "x-mt": true
+ },
+ "s2bd403874c": "Calentadores en las horas más baratas del día. Para calefacción de almacenamiento y calentadores de agua.",
+ "@s2bd403874c": {
+  "x-mt": true
+ },
+ "se759c14061": "Calentar normalmente pero salta las horas más caras en pausas cortas.",
+ "@se759c14061": {
+  "x-mt": true
+ },
+ "s5cab118d44": "Precalentamientos antes de hechizos caros o fríos y ahorra en horas costosas. Las horas siguen el pronóstico.",
+ "@s5cab118d44": {
+  "x-mt": true
+ },
+ "sa7480a9930": "hora barata",
+ "@sa7480a9930": {
+  "x-mt": true
+ },
+ "s50812672e5": "esperando una hora barata",
+ "@s50812672e5": {
+  "x-mt": true
+ },
+ "seb1c64d9f8": "saltando una hora cara",
+ "@seb1c64d9f8": {
+  "x-mt": true
+ },
+ "s2e52a3d40e": "normal",
+ "@s2e52a3d40e": {
+  "x-mt": true
+ },
+ "sf6d34efdd6": "no precios – calefacción normal",
+ "@sf6d34efdd6": {
+  "x-mt": true
+ },
+ "s8c42ad8541": "modo de vacaciones",
+ "@s8c42ad8541": {
+  "x-mt": true
+ },
+ "sc3d8828060": "calefacción para su retorno",
+ "@sc3d8828060": {
+  "x-mt": true
+ },
+ "s577b8c3cf1": "el fuego de la chimenea",
+ "@s577b8c3cf1": {
+  "x-mt": true
+ },
+ "sbcd02dce0a": "suficiente calor",
+ "@sbcd02dce0a": {
+  "x-mt": true
+ },
+ "s22678639dc": "límite de seguridad: demasiado frío",
+ "@s22678639dc": {
+  "x-mt": true
+ },
+ "s1e3f154a0a": "protección contra las heladas",
+ "@s1e3f154a0a": {
+  "x-mt": true
+ },
+ "s1f2938edec": "límite de seguridad: fuera demasiado largo",
+ "@s1f2938edec": {
+  "x-mt": true
+ },
+ "s54fce2a7e8": "precalentamiento",
+ "@s54fce2a7e8": {
+  "x-mt": true
+ },
+ "s6b35f75e80": "ahorro mientras que caro",
+ "@s6b35f75e80": {
+  "x-mt": true
+ },
+ "sdde7adcb29": "El calentamiento inteligente controla la calefacción por el precio de la electricidad y el clima, de una manera que se adapte a su tipo de calefacción.Responde algunas preguntas para obtener ajustes recomendados.",
+ "@sdde7adcb29": {
+  "x-mt": true
+ },
+ "s3d29895a40": "Iniciar la encuesta",
+ "@s3d29895a40": {
+  "x-mt": true
+ },
+ "sb0d738492d": "Modo Fireplace en",
+ "@sb0d738492d": {
+  "x-mt": true
+ },
+ "sd1af5ba10d": "Modo de chimenea en hasta {p0}",
+ "@sd1af5ba10d": {
+  "x-mt": true
+ },
+ "s48a7ba4933": "Modo de vacaciones en",
+ "@s48a7ba4933": {
+  "x-mt": true
+ },
+ "s10a95132ce": "Calefacción inteligente está apagada",
+ "@s10a95132ce": {
+  "x-mt": true
+ },
+ "s035459d8bb": "Calefacción sigue precio y tiempo",
+ "@s035459d8bb": {
+  "x-mt": true
+ },
+ "s6b83aed534": "Necesita un puente casero: configurar el acceso remoto en la tableta o PC (Configuración → Acceso remoto).",
+ "@s6b83aed534": {
+  "x-mt": true
+ },
+ "s830cace8fe": "Actualizar el puente de inicio (necesita Molaplan 0.10.0).",
+ "@s830cace8fe": {
+  "x-mt": true
+ },
+ "s495c887d23": "Corre en el puente de inicio, también con la aplicación cerrada.",
+ "@s495c887d23": {
+  "x-mt": true
+ },
+ "s7954d5fca9": "Parar el modo de chimenea",
+ "@s7954d5fca9": {
+  "x-mt": true
+ },
+ "sf44db20422": "Chimenea iluminada",
+ "@sf44db20422": {
+  "x-mt": true
+ },
+ "sd172900c2d": "Vacaciones: edición",
+ "@sd172900c2d": {
+  "x-mt": true
+ },
+ "s5da1e65941": "Modo de vacaciones",
+ "@s5da1e65941": {
+  "x-mt": true
+ },
+ "sdca3ad13dd": "Calefacción dispositivos",
+ "@sdca3ad13dd": {
+  "x-mt": true
+ },
+ "sc8c5e37f5d": "No hay dispositivos, agréguelos en la encuesta.",
+ "@sc8c5e37f5d": {
+  "x-mt": true
+ },
+ "sc6976fa352": "Notificaciones de calefacción",
+ "@sc6976fa352": {
+  "x-mt": true
+ },
+ "s1abda8b8f3": "El puente casero es demasiado viejo: actualizarlo (Molaplan 0.10.0).",
+ "@s1abda8b8f3": {
+  "x-mt": true
+ },
+ "s8c3353e896": "No hay puente casero emparejado.",
+ "@s8c3353e896": {
+  "x-mt": true
+ },
+ "s38ccb420a7": "No funcionó: {p0}",
+ "@s38ccb420a7": {
+  "x-mt": true
+ },
+ "s8847ee78e0": "Objetivo {p0} °C",
+ "@s8847ee78e0": {
+  "x-mt": true
+ },
+ "s4b761dad85": "Siguiente on: {p0}",
+ "@s4b761dad85": {
+  "x-mt": true
+ },
+ "s622f5654cd": "Error: {p0}",
+ "@s622f5654cd": {
+  "x-mt": true
+ },
+ "s697b47220e": "Calefacción inteligente en",
+ "@s697b47220e": {
+  "x-mt": true
+ },
+ "s45cf6423f8": "Editar la encuesta",
+ "@s45cf6423f8": {
+  "x-mt": true
+ },
+ "sf5dbb363af": "Límites de seguridad",
+ "@sf5dbb363af": {
+  "x-mt": true
+ },
+ "sf9cd32fb4f": "Temperatura mínima",
+ "@sf9cd32fb4f": {
+  "x-mt": true
+ },
+ "sfb0553315b": "Protección contra la escotilla",
+ "@sfb0553315b": {
+  "x-mt": true
+ },
+ "s9097fb518a": "Calefacción siempre por debajo {p0} °C.",
+ "@s9097fb518a": {
+  "x-mt": true
+ },
+ "s5d37a7088b": "El descanso más largo permitido (todas)",
+ "@s5d37a7088b": {
+  "x-mt": true
+ },
+ "sb0bb55d6e5": "por dispositivo",
+ "@sb0bb55d6e5": {
+  "x-mt": true
+ },
+ "s17bf76025c": "Los límites de seguridad anulan el precio, las vacaciones y el modo chimenea. La temperatura mínima y la protección de las heladas necesitan un sensor de temperatura.",
+ "@s17bf76025c": {
+  "x-mt": true
+ },
+ "s109c7fb7a2": "Chimenea",
+ "@s109c7fb7a2": {
+  "x-mt": true
+ },
+ "s1c15091948": "Longitud del modo Fireplace",
+ "@s1c15091948": {
+  "x-mt": true
+ },
+ "se150ae5acd": "Los termostatos bajaron en modo chimenea",
+ "@se150ae5acd": {
+  "x-mt": true
+ },
+ "s161f61412e": "Sensor de temperatura cerca de la chimenea",
+ "@s161f61412e": {
+  "x-mt": true
+ },
+ "s81b30d570b": "El sensor del dispositivo",
+ "@s81b30d570b": {
+  "x-mt": true
+ },
+ "s71e80a04a2": "Notificaciones de calefacción",
+ "@s71e80a04a2": {
+  "x-mt": true
+ },
+ "s5ab83c2574": "El mismo canal de notificación y horas tranquilas como automatizaciones.",
+ "@s5ab83c2574": {
+  "x-mt": true
+ },
+ "s32d9d66ffd": "Eliminar la calefacción inteligente",
+ "@s32d9d66ffd": {
+  "x-mt": true
+ },
+ "s0f995f3d5d": "¿Retirar la calefacción inteligente?",
+ "@s0f995f3d5d": {
+  "x-mt": true
+ },
+ "scc27c1739f": "Los dispositivos permanecen en su estado actual.",
+ "@scc27c1739f": {
+  "x-mt": true
+ },
+ "s3bf2d3643c": "El calentamiento eléctrico se reduce mientras el calor de la chimenea. Los límites de seguridad todavía se aplican.",
+ "@s3bf2d3643c": {
+  "x-mt": true
+ },
+ "s58b2cdb4e2": "Fin antes cuando la habitación comienza a enfriar",
+ "@s58b2cdb4e2": {
+  "x-mt": true
+ },
+ "s632723d95f": "Mientras usted está lejos las habitaciones se mantienen más frías, y el calentador de agua se calienta sólo la noche antes de regresar. Se aplican límites de seguridad y protección contra la helada.",
+ "@s632723d95f": {
+  "x-mt": true
+ },
+ "s2ebf172fad": "Comienzo",
+ "@s2ebf172fad": {
+  "x-mt": true
+ },
+ "s0ba54fbd61": "Día de regreso",
+ "@s0ba54fbd61": {
+  "x-mt": true
+ },
+ "s025d1c3db1": "Temperatura mientras se aleja",
+ "@s025d1c3db1": {
+  "x-mt": true
+ },
+ "s11e21d4f75": "Cómo se controla",
+ "@s11e21d4f75": {
+  "x-mt": true
+ },
+ "s8e6c8ffabb": " (recomendado)",
+ "@s8e6c8ffabb": {
+  "x-mt": true
+ },
+ "sa35e3e99f4": "Control en",
+ "@sa35e3e99f4": {
+  "x-mt": true
+ },
+ "s86c45674db": "Horas de calefacción al día",
+ "@s86c45674db": {
+  "x-mt": true
+ },
+ "sbd3dbfd7e9": "Horas más caras saltadas",
+ "@sbd3dbfd7e9": {
+  "x-mt": true
+ },
+ "s1f3d8e19f4": "El descanso más largo a la vez",
+ "@s1f3d8e19f4": {
+  "x-mt": true
+ },
+ "s017c87df20": "Temperatura de confort",
+ "@s017c87df20": {
+  "x-mt": true
+ },
+ "se68cc54085": "No sensor",
+ "@se68cc54085": {
+  "x-mt": true
+ },
+ "s347ce4c3d2": "Reducir en modo chimenea",
+ "@s347ce4c3d2": {
+  "x-mt": true
+ },
+ "s6f88da6bab": "El objetivo termostato está fijado por esto; la temperatura del termostato es la temperatura de confort.",
+ "@s6f88da6bab": {
+  "x-mt": true
+ },
+ "s87cdb30352": "Estimación: aproximadamente {p0} kWh al día a 0 °C (casa entera).",
+ "@s87cdb30352": {
+  "x-mt": true
+ },
+ "sc161d1f9d9": "¿Cómo se calienta la casa? Elige todo.",
+ "@sc161d1f9d9": {
+  "x-mt": true
+ },
+ "saac00e587b": "Aislamiento",
+ "@saac00e587b": {
+  "x-mt": true
+ },
+ "s9f103f81c0": "Pobres",
+ "@s9f103f81c0": {
+  "x-mt": true
+ },
+ "sd5ebaf8a4c": "Bien",
+ "@sd5ebaf8a4c": {
+  "x-mt": true
+ },
+ "sf584870588": "Zona climatizada",
+ "@sf584870588": {
+  "x-mt": true
+ },
+ "s97235bfadb": "Cambio de temperatura permitido",
+ "@s97235bfadb": {
+  "x-mt": true
+ },
+ "s6df5f06d38": "Cuanto más la temperatura puede variar, más calefacción puede moverse a horas baratas.",
+ "@s6df5f06d38": {
+  "x-mt": true
+ },
+ "s07077e2778": "La casa tiene una chimenea o estufa de almacenamiento",
+ "@s07077e2778": {
+  "x-mt": true
+ },
+ "sab28f61fad": "Elija lo que controla cada calefacción: un relé o enchufe (on/off) o un termostato Molaplan (temperatura del objetivo).",
+ "@sab28f61fad": {
+  "x-mt": true
+ },
+ "s90ae2f4451": "No hay dispositivos controlables todavía. Agregue un relé o un termostato primero; puede volver a la encuesta más tarde.",
+ "@s90ae2f4451": {
+  "x-mt": true
+ },
+ "sf7b3494ee1": "Dispositivo de control",
+ "@sf7b3494ee1": {
+  "x-mt": true
+ },
+ "se7ffc07763": "No controlado",
+ "@se7ffc07763": {
+  "x-mt": true
+ },
+ "s5835dc3308": "Thermostat: {p0}",
+ "@s5835dc3308": {
+  "x-mt": true
+ },
+ "s075ddc6f0d": "Sensor de temperatura ambiente (recomendado)",
+ "@s075ddc6f0d": {
+  "x-mt": true
+ },
+ "s016c02be08": "Ajustes recomendados",
+ "@s016c02be08": {
+  "x-mt": true
+ },
+ "s013bbafbec": "Pasa las {p0} horas más caras al día, a la mayoría {p1} h a la vez.",
+ "@s013bbafbec": {
+  "x-mt": true
+ },
+ "se67c73d855": "Sobre {p0} horas de calefacción al día a 0 °C.",
+ "@se67c73d855": {
+  "x-mt": true
+ },
+ "sb7524487f9": "No hay dispositivo controlador – no controlado.",
+ "@sb7524487f9": {
+  "x-mt": true
+ },
+ "sad1fbf7d03": "Pulse \"Fireplace lit\" después de encenderlo: la calefacción eléctrica se reduce durante 12–24 h o hasta que el sensor muestre enfriamiento.",
+ "@sad1fbf7d03": {
+  "x-mt": true
+ },
+ "sfb41f90571": "Puede cambiar el método y los números más adelante en la página del dispositivo bajo Advanced.",
+ "@sfb41f90571": {
+  "x-mt": true
+ },
+ "s1706667040": "House",
+ "@s1706667040": {
+  "x-mt": true
+ },
+ "s84005ad77c": "Dispositivos",
+ "@s84005ad77c": {
+  "x-mt": true
+ },
+ "s023d14fd87": "Recomendación",
+ "@s023d14fd87": {
+  "x-mt": true
+ },
+ "sfde6663859": "Survey {p0}/4: {p1}",
+ "@sfde6663859": {
+  "x-mt": true
+ },
+ "sda588a203b": "Use estos",
+ "@sda588a203b": {
   "x-mt": true
  }
 }

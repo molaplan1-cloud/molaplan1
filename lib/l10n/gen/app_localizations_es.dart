@@ -315,6 +315,68 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sfc65eafa12 => 'Tormenta';
 
   @override
+  String get s2a3f705876 => 'Calefacción de suelo de almacenamiento (concreto)';
+
+  @override
+  String get se02b21f2e5 =>
+      'Una losa de hormigón almacena calor durante mucho tiempo: la calefacción se mueve a las horas más baratas, y el número de horas sigue el pronóstico.';
+
+  @override
+  String get sed77dcfc1a => 'Calefacción en suelo radiante';
+
+  @override
+  String get s4699e792b9 =>
+      'Un piso ligero almacena poco calor: las horas más caras se saltan, con pausas cortas solamente.';
+
+  @override
+  String get s5d46662c4e => 'Radiadores eléctricos directos';
+
+  @override
+  String get s12e9bbf847 =>
+      'Los radiadores no almacenan el calor: sólo las horas más caras se saltan, una hora a la vez.';
+
+  @override
+  String get s1c0bf9b38b => 'Bomba de calor de fuente de aire';
+
+  @override
+  String get s6896be80e0 =>
+      'Una bomba de calor funciona mejor a una temperatura uniforme: el objetivo aumenta un poco antes de hechizos caros o fríos y cae en horas caras.';
+
+  @override
+  String get s765f87536c => 'Bomba de calor de fuente terrestre';
+
+  @override
+  String get s33536024e7 =>
+      'Calor de fuente baja con la circulación de agua almacena un poco de calor: las horas más caras se saltan en pausas de unas pocas horas a la mayoría.';
+
+  @override
+  String get s3a7d2e6848 => 'Calentador de agua';
+
+  @override
+  String get s4eec9a0479 =>
+      'Un calentador de agua permanece caliente durante un día: se calienta en las horas más baratas del día.';
+
+  @override
+  String s404f230c13(String p0) {
+    return '';
+  }
+
+  @override
+  String get s798f7b2876 => 'Calefacción inteligente';
+
+  @override
+  String get sa2dc343545 =>
+      'El modo Fireplace terminó: la habitación está enfriando. La calefacción está de vuelta a la normalidad.';
+
+  @override
+  String get s78afbd052c =>
+      'Modo Fireplace terminado (tiempo es arriba). La calefacción está de vuelta a la normalidad.';
+
+  @override
+  String get s1f08341033 =>
+      'El modo Fireplace se detuvo. La calefacción vuelve a la normalidad.';
+
+  @override
   String get sc27533ae83 => 'Ahorro';
 
   @override
@@ -1887,9 +1949,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s2342536aea => 'Funciona en el puente de casa.';
-
-  @override
-  String get s798f7b2876 => 'Calefacción inteligente';
 
   @override
   String get s2c5993c1fd =>
@@ -4156,6 +4215,365 @@ class AppLocalizationsEs extends AppLocalizations {
       'Las contraseñas y las fichas se almacenan en el almacenamiento seguro del dispositivo.';
 
   @override
+  String get sd408a5dbe9 => 'Horas más baratas';
+
+  @override
+  String get sa26ae27039 => 'Pasar las horas más caras';
+
+  @override
+  String get scfd1a72ed5 => 'Precalentamiento basado en el clima';
+
+  @override
+  String get s2bd403874c =>
+      'Calentadores en las horas más baratas del día. Para calefacción de almacenamiento y calentadores de agua.';
+
+  @override
+  String get se759c14061 =>
+      'Calentar normalmente pero salta las horas más caras en pausas cortas.';
+
+  @override
+  String get s5cab118d44 =>
+      'Precalentamientos antes de hechizos caros o fríos y ahorra en horas costosas. Las horas siguen el pronóstico.';
+
+  @override
+  String get sa7480a9930 => 'hora barata';
+
+  @override
+  String get s50812672e5 => 'esperando una hora barata';
+
+  @override
+  String get seb1c64d9f8 => 'saltando una hora cara';
+
+  @override
+  String get s2e52a3d40e => 'normal';
+
+  @override
+  String get sf6d34efdd6 => 'no precios – calefacción normal';
+
+  @override
+  String get s8c42ad8541 => 'modo de vacaciones';
+
+  @override
+  String get sc3d8828060 => 'calefacción para su retorno';
+
+  @override
+  String get s577b8c3cf1 => 'el fuego de la chimenea';
+
+  @override
+  String get sbcd02dce0a => 'suficiente calor';
+
+  @override
+  String get s22678639dc => 'límite de seguridad: demasiado frío';
+
+  @override
+  String get s1e3f154a0a => 'protección contra las heladas';
+
+  @override
+  String get s1f2938edec => 'límite de seguridad: fuera demasiado largo';
+
+  @override
+  String get s54fce2a7e8 => 'precalentamiento';
+
+  @override
+  String get s6b35f75e80 => 'ahorro mientras que caro';
+
+  @override
+  String get sdde7adcb29 =>
+      'El calentamiento inteligente controla la calefacción por el precio de la electricidad y el clima, de una manera que se adapte a su tipo de calefacción.Responde algunas preguntas para obtener ajustes recomendados.';
+
+  @override
+  String get s3d29895a40 => 'Iniciar la encuesta';
+
+  @override
+  String get sb0d738492d => 'Modo Fireplace en';
+
+  @override
+  String sd1af5ba10d(String p0) {
+    return 'Modo de chimenea en hasta $p0';
+  }
+
+  @override
+  String get s48a7ba4933 => 'Modo de vacaciones en';
+
+  @override
+  String get s10a95132ce => 'Calefacción inteligente está apagada';
+
+  @override
+  String get s035459d8bb => 'Calefacción sigue precio y tiempo';
+
+  @override
+  String get s6b83aed534 =>
+      'Necesita un puente casero: configurar el acceso remoto en la tableta o PC (Configuración → Acceso remoto).';
+
+  @override
+  String get s830cace8fe =>
+      'Actualizar el puente de inicio (necesita Molaplan 0.10.0).';
+
+  @override
+  String get s495c887d23 =>
+      'Corre en el puente de inicio, también con la aplicación cerrada.';
+
+  @override
+  String get s7954d5fca9 => 'Parar el modo de chimenea';
+
+  @override
+  String get sf44db20422 => 'Chimenea iluminada';
+
+  @override
+  String get sd172900c2d => 'Vacaciones: edición';
+
+  @override
+  String get s5da1e65941 => 'Modo de vacaciones';
+
+  @override
+  String get sdca3ad13dd => 'Calefacción dispositivos';
+
+  @override
+  String get sc8c5e37f5d => 'No hay dispositivos, agréguelos en la encuesta.';
+
+  @override
+  String get sc6976fa352 => 'Notificaciones de calefacción';
+
+  @override
+  String get s1abda8b8f3 =>
+      'El puente casero es demasiado viejo: actualizarlo (Molaplan 0.10.0).';
+
+  @override
+  String get s8c3353e896 => 'No hay puente casero emparejado.';
+
+  @override
+  String s38ccb420a7(String p0) {
+    return 'No funcionó: $p0';
+  }
+
+  @override
+  String s8847ee78e0(String p0) {
+    return 'Objetivo $p0 °C';
+  }
+
+  @override
+  String s4b761dad85(String p0) {
+    return 'Siguiente on: $p0';
+  }
+
+  @override
+  String s622f5654cd(String p0) {
+    return 'Error: $p0';
+  }
+
+  @override
+  String get s697b47220e => 'Calefacción inteligente en';
+
+  @override
+  String get s45cf6423f8 => 'Editar la encuesta';
+
+  @override
+  String get sf5dbb363af => 'Límites de seguridad';
+
+  @override
+  String get sf9cd32fb4f => 'Temperatura mínima';
+
+  @override
+  String get sfb0553315b => 'Protección contra la escotilla';
+
+  @override
+  String s9097fb518a(String p0) {
+    return 'Calefacción siempre por debajo $p0 °C.';
+  }
+
+  @override
+  String get s5d37a7088b => 'El descanso más largo permitido (todas)';
+
+  @override
+  String get sb0bb55d6e5 => 'por dispositivo';
+
+  @override
+  String get s17bf76025c =>
+      'Los límites de seguridad anulan el precio, las vacaciones y el modo chimenea. La temperatura mínima y la protección de las heladas necesitan un sensor de temperatura.';
+
+  @override
+  String get s109c7fb7a2 => 'Chimenea';
+
+  @override
+  String get s1c15091948 => 'Longitud del modo Fireplace';
+
+  @override
+  String get se150ae5acd => 'Los termostatos bajaron en modo chimenea';
+
+  @override
+  String get s161f61412e => 'Sensor de temperatura cerca de la chimenea';
+
+  @override
+  String get s81b30d570b => 'El sensor del dispositivo';
+
+  @override
+  String get s71e80a04a2 => 'Notificaciones de calefacción';
+
+  @override
+  String get s5ab83c2574 =>
+      'El mismo canal de notificación y horas tranquilas como automatizaciones.';
+
+  @override
+  String get s32d9d66ffd => 'Eliminar la calefacción inteligente';
+
+  @override
+  String get s0f995f3d5d => '¿Retirar la calefacción inteligente?';
+
+  @override
+  String get scc27c1739f => 'Los dispositivos permanecen en su estado actual.';
+
+  @override
+  String get s3bf2d3643c =>
+      'El calentamiento eléctrico se reduce mientras el calor de la chimenea. Los límites de seguridad todavía se aplican.';
+
+  @override
+  String get s58b2cdb4e2 => 'Fin antes cuando la habitación comienza a enfriar';
+
+  @override
+  String get s632723d95f =>
+      'Mientras usted está lejos las habitaciones se mantienen más frías, y el calentador de agua se calienta sólo la noche antes de regresar. Se aplican límites de seguridad y protección contra la helada.';
+
+  @override
+  String get s2ebf172fad => 'Comienzo';
+
+  @override
+  String get s0ba54fbd61 => 'Día de regreso';
+
+  @override
+  String get s025d1c3db1 => 'Temperatura mientras se aleja';
+
+  @override
+  String get s11e21d4f75 => 'Cómo se controla';
+
+  @override
+  String get s8e6c8ffabb => ' (recomendado)';
+
+  @override
+  String get sa35e3e99f4 => 'Control en';
+
+  @override
+  String get s86c45674db => 'Horas de calefacción al día';
+
+  @override
+  String get sbd3dbfd7e9 => 'Horas más caras saltadas';
+
+  @override
+  String get s1f3d8e19f4 => 'El descanso más largo a la vez';
+
+  @override
+  String get s017c87df20 => 'Temperatura de confort';
+
+  @override
+  String get sf83143ae23 => 'Sensor de temperatura ambiente';
+
+  @override
+  String get se68cc54085 => 'No sensor';
+
+  @override
+  String get s347ce4c3d2 => 'Reducir en modo chimenea';
+
+  @override
+  String get s6f88da6bab =>
+      'El objetivo termostato está fijado por esto; la temperatura del termostato es la temperatura de confort.';
+
+  @override
+  String s87cdb30352(String p0) {
+    return 'Estimación: aproximadamente $p0 kWh al día a 0 °C (casa entera).';
+  }
+
+  @override
+  String get sc161d1f9d9 => '¿Cómo se calienta la casa? Elige todo.';
+
+  @override
+  String get saac00e587b => 'Aislamiento';
+
+  @override
+  String get s9f103f81c0 => 'Pobres';
+
+  @override
+  String get sd51256a0f5 => 'Promedio';
+
+  @override
+  String get sd5ebaf8a4c => 'Bien';
+
+  @override
+  String get sf584870588 => 'Zona climatizada';
+
+  @override
+  String get s97235bfadb => 'Cambio de temperatura permitido';
+
+  @override
+  String get s6df5f06d38 =>
+      'Cuanto más la temperatura puede variar, más calefacción puede moverse a horas baratas.';
+
+  @override
+  String get s07077e2778 =>
+      'La casa tiene una chimenea o estufa de almacenamiento';
+
+  @override
+  String get sab28f61fad =>
+      'Elija lo que controla cada calefacción: un relé o enchufe (on/off) o un termostato Molaplan (temperatura del objetivo).';
+
+  @override
+  String get s90ae2f4451 =>
+      'No hay dispositivos controlables todavía. Agregue un relé o un termostato primero; puede volver a la encuesta más tarde.';
+
+  @override
+  String get sf7b3494ee1 => 'Dispositivo de control';
+
+  @override
+  String get se7ffc07763 => 'No controlado';
+
+  @override
+  String s5835dc3308(String p0) {
+    return 'Thermostat: $p0';
+  }
+
+  @override
+  String get s075ddc6f0d => 'Sensor de temperatura ambiente (recomendado)';
+
+  @override
+  String get s016c02be08 => 'Ajustes recomendados';
+
+  @override
+  String s013bbafbec(String p0, String p1) {
+    return 'Pasa las $p0 horas más caras al día, a la mayoría $p1 h a la vez.';
+  }
+
+  @override
+  String se67c73d855(String p0) {
+    return 'Sobre $p0 horas de calefacción al día a 0 °C.';
+  }
+
+  @override
+  String get sb7524487f9 => 'No hay dispositivo controlador – no controlado.';
+
+  @override
+  String get sad1fbf7d03 =>
+      'Pulse \"Fireplace lit\" después de encenderlo: la calefacción eléctrica se reduce durante 12–24 h o hasta que el sensor muestre enfriamiento.';
+
+  @override
+  String get sfb41f90571 =>
+      'Puede cambiar el método y los números más adelante en la página del dispositivo bajo Advanced.';
+
+  @override
+  String get s1706667040 => 'House';
+
+  @override
+  String get s84005ad77c => 'Dispositivos';
+
+  @override
+  String get s023d14fd87 => 'Recomendación';
+
+  @override
+  String sfde6663859(String p0, String p1) {
+    return 'Survey $p0/4: $p1';
+  }
+
+  @override
+  String get sda588a203b => 'Use estos';
+
+  @override
   String get sc51b1e0dc0 => '¿Qué quieres añadir?';
 
   @override
@@ -4575,9 +4993,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sae41bebdab =>
       'Control: confirmación, bloqueo / PIN, min / max / step, invertido y momentáneo.';
-
-  @override
-  String get sf83143ae23 => 'Sensor de temperatura ambiente';
 
   @override
   String get s19485c79b2 => 'Ninguno';
@@ -7295,9 +7710,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s4790164c94 => 'Hoy y mañana';
-
-  @override
-  String get sd408a5dbe9 => 'Horas más baratas';
 
   @override
   String get s7ba83434d1 =>

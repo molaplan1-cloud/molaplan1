@@ -20,6 +20,7 @@ import 'remote_pages.dart';
 import 'connections_page.dart';
 import 'onboarding_page.dart';
 import 'settings_page.dart';
+import 'smart_heating_pages.dart';
 import 'tile_editor.dart';
 import 'tile_look.dart';
 import 'tile_visuals.dart' show RoomBackdrop;
@@ -299,6 +300,23 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   onTap: () {
                     close();
                     Navigator.push(context, MaterialPageRoute(builder: (_) => const AutomationsPage()));
+                  },
+                ),
+                // R194: its own section, separate from automations.
+                ListTile(
+                  key: const ValueKey('nav-smart-heating'),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  leading: const Icon(Icons.local_fire_department_outlined),
+                  title: Text(tx(context, 'Älykäs lämmitys', 'Smart heating')),
+                  trailing: switch (st.smartHeating) {
+                    null => null,
+                    final c when c.holiday.on => const Icon(Icons.luggage, size: 18),
+                    final c when !c.enabled => Text(tx(context, 'pois', 'off')),
+                    _ => const Icon(Icons.check, size: 18),
+                  },
+                  onTap: () {
+                    close();
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const SmartHeatingPage()));
                   },
                 ),
                 if (st.config.energy.meters.isNotEmpty)

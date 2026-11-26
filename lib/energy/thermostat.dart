@@ -501,6 +501,9 @@ class ThermostatRunner {
   final DateTime Function() clock;
   final void Function(String)? log;
   List<ThermostatJob> jobs = [];
+
+  /// R194: smart heating's target for a thermostat (null = keep the thermostat's own target).
+  double? Function(ThermostatConfig c, DateTime now, double base, double? temp)? adjust;
   final controllers = <String, ThermostatController>{};
   final status = <String, ThermostatStatus>{};
   final _lastReading = <String, List<(double?, DateTime?)>>{};
@@ -574,7 +577,9 @@ class ThermostatRunner {
             _planAt[c.id] = now;
           }
           if (!c.plan.enabled) st.plan = [];
-          final target = targetFor(c, st.plan, now);
+          final base = targetFor(c, st.plan, now);
+          // R194: smart heating may set the target (templates, holiday, fireplace, safety).
+          final target = adjust?.call(c, now, base, temp) ?? base;
           final actions = ctl.step(now, temp, target);
           st.error = null;
           for (final a in actions) {

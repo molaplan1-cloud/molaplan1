@@ -8,6 +8,7 @@ import '../rules/price_rules.dart';
 export '../rules/price_rules.dart' show PriceRule;
 import '../energy/contract.dart';
 import '../energy/meters.dart';
+import '../energy/smart_heating.dart';
 import '../energy/thermostat.dart';
 import '../energy/weather.dart';
 
@@ -28,6 +29,7 @@ class EnergySettings {
     this.home,
     Map<String, MeterInfo>? meters,
     List<ThermostatConfig>? thermostats,
+    this.smartHeating,
   }) : meters = meters ?? {},
        thermostats = thermostats ?? [];
 
@@ -40,7 +42,11 @@ class EnergySettings {
   Map<String, MeterInfo> meters;
   List<ThermostatConfig> thermostats;
 
-  bool get isEmpty => zone == null && contract == null && home == null && meters.isEmpty && thermostats.isEmpty;
+  /// R194: 'Älykäs lämmitys' (null = not set up).
+  SmartHeatingConfig? smartHeating;
+
+  bool get isEmpty =>
+      zone == null && contract == null && home == null && meters.isEmpty && thermostats.isEmpty && smartHeating == null;
 
   Map<String, dynamic> toJson() => {
     'zone': ?zone,
@@ -48,6 +54,7 @@ class EnergySettings {
     if (home != null) 'home': home!.toJson(),
     if (meters.isNotEmpty) 'meters': {for (final e in meters.entries) e.key: e.value.toJson()},
     if (thermostats.isNotEmpty) 'thermostats': [for (final t in thermostats) t.toJson()],
+    if (smartHeating != null) 'smartHeating': smartHeating!.toJson(),
   };
 
   factory EnergySettings.fromJson(Object? j) {
@@ -66,6 +73,7 @@ class EnergySettings {
         for (final t in (j['thermostats'] as List? ?? const []))
           if (t is Map) ThermostatConfig.fromJson(Map<String, dynamic>.from(t)),
       ],
+      smartHeating: j['smartHeating'] is Map ? SmartHeatingConfig.fromJson(j['smartHeating']) : null,
     );
   }
 }
