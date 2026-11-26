@@ -2693,6 +2693,14 @@
  "@se9ee46a9c8": {
   "x-mt": true
  },
+ "s45fbc06cdf": "Veel rohkem",
+ "@s45fbc06cdf": {
+  "x-mt": true
+ },
+ "s0557e03436": "Nupu lisamine esilehele",
+ "@s0557e03436": {
+  "x-mt": true
+ },
  "sfd2d047cb2": "Täpsem",
  "s766b50721b": "{p0} samme",
  "@s766b50721b": {
@@ -2700,6 +2708,10 @@
  },
  "s061d1b874b": "kaugjuhtimispult",
  "@s061d1b874b": {
+  "x-mt": true
+ },
+ "sdae343a445": "Nupp lisatud {p0}",
+ "@sdae343a445": {
   "x-mt": true
  },
  "sb886978015": "Skripti redigeerimine",
@@ -2730,6 +2742,14 @@
  "@sea09cb0d3b": {
   "x-mt": true
  },
+ "s4436dfd836": "Väline käivitaja (PIN) on sisse lülitatud",
+ "@s4436dfd836": {
+  "x-mt": true
+ },
+ "s759ff4cada": "Väline päästik, nt iPhone''i kiirklahvid",
+ "@s759ff4cada": {
+  "x-mt": true
+ },
  "s420f3ec828": "Väline käivitamine (valikuline)",
  "sb3cef805ee": "Skripti nupp töötab ilma selleta: see käivitab rakenduses skripti ja eemalviibimisel automaatselt kaugjuurdepääsu. Seda on vaja ainult skripti käivitamiseks väljastpoolt Molaplanit, nt iPhone''i kiirklahvid.",
  "@sb3cef805ee": {
@@ -2756,6 +2776,34 @@
   "x-mt": true
  },
  "sff9b69c6ca": "Valmis",
+ "sa32d82e779": "Nupp rakenduses",
+ "@sa32d82e779": {
+  "x-mt": true
+ },
+ "s65fc3dd69a": "Nupp käivitab skripti ühe nupuvajutusega. See töötab nii kodus kui ka kodust eemal läbi kodusilla – kiirklahve pole vaja.",
+ "@s65fc3dd69a": {
+  "x-mt": true
+ },
+ "s89638a5b8e": "Nupp vaates {p0}",
+ "@s89638a5b8e": {
+  "x-mt": true
+ },
+ "s509056a76d": "Lisa veel üks nupp",
+ "@s509056a76d": {
+  "x-mt": true
+ },
+ "s0f8939787f": "Nupp luuakse salvestamisel.",
+ "@s0f8939787f": {
+  "x-mt": true
+ },
+ "s5a8c602b42": "Vaade",
+ "@s5a8c602b42": {
+  "x-mt": true
+ },
+ "se49d14ff44": "Milline vaade saab nupu?",
+ "@se49d14ff44": {
+  "x-mt": true
+ },
  "s09f745552a": "Salvesta aktiivne olek",
  "@s09f745552a": {
   "x-mt": true
@@ -4343,6 +4391,10 @@
  "@s856418521a": {
   "x-mt": true
  },
+ "sb0ba67e677": "Jooksus {p0}",
+ "@sb0ba67e677": {
+  "x-mt": true
+ },
  "sdfa66ee201": "{p0}: saadetud",
  "@sdfa66ee201": {
   "x-mt": true
@@ -5353,6 +5405,31 @@
   "x-mt": true
  },
  "s43c9b88580": "Auto",
+ "s6a4516e0fe": "Käsu teema (nimi või täielik URL)",
+ "@s6a4516e0fe": {
+  "x-mt": true
+ },
+ "s800cd08229": "Vastamise teema (valikuline)",
+ "@s800cd08229": {
+  "x-mt": true
+ },
+ "sbdcbe301b9": "Oodata vastust (s)",
+ "@sbdcbe301b9": {
+  "x-mt": true
+ },
+ "s5bc736c04a": "Juurdepääsuluba (valikuline)",
+ "@s5bc736c04a": {
+  "x-mt": true
+ },
+ "s5bed8bff00": "Käsk",
+ "sfee393b70e": "Oota vastust",
+ "@sfee393b70e": {
+  "x-mt": true
+ },
+ "sa53638cfea": "Vastus jääb plaadile (plaatidele)",
+ "@sa53638cfea": {
+  "x-mt": true
+ },
  "s36fb6ba26f": "Modbus TCP",
  "sa70cc38354": "Peremees",
  "@sa70cc38354": {
@@ -5482,24 +5559,12 @@
  "@sefaea1b818": {
   "x-mt": true
  },
- "s6a4516e0fe": "Käsu teema (nimi või täielik URL)",
- "@s6a4516e0fe": {
-  "x-mt": true
- },
  "se003ecc10b": "Topic käsud saadetakse. Sa võid asetada kogu URL- i, nt https://ntfy.sh/my- teema – sama, mida kasutab sinu iPhone'' i kiirklahv. Teema nimi töötab nagu parool: hoia see pikk ja juhuslik.",
  "@se003ecc10b": {
   "x-mt": true
  },
- "s800cd08229": "Vastamise teema (valikuline)",
- "@s800cd08229": {
-  "x-mt": true
- },
  "s2e3a66d384": "Kui koduseade vastab mõnele muule teemale, kirjuta see siia. Jäta tühjaks, kui vastus tuleb samale teemale – siis ignoreeritakse meie enda käsku ja järgmist teadet näidatakse vastusena.",
  "@s2e3a66d384": {
-  "x-mt": true
- },
- "s5bc736c04a": "Juurdepääsuluba (valikuline)",
- "@s5bc736c04a": {
   "x-mt": true
  },
  "s77feae14f5": "Vajalik ainult kaitstud teema puhul (ntfy konto → Access tokens). Avaliku teema puhul jäta tühjaks.",
@@ -5562,24 +5627,12 @@
  "@sfcb5608064": {
   "x-mt": true
  },
- "sfee393b70e": "Oota vastust",
- "@sfee393b70e": {
-  "x-mt": true
- },
  "sfff5bc52e5": "Kuulab koduseadme vastust ja näitab seda selles plaadis (ja teatena, kui rakendus on taustal).",
  "@sfff5bc52e5": {
   "x-mt": true
  },
- "sbdcbe301b9": "Oodata vastust (s)",
- "@sbdcbe301b9": {
-  "x-mt": true
- },
  "s121542d6d7": "Kui kaua oodata, enne kui öelda, et vastust ei tulnud.",
  "@s121542d6d7": {
-  "x-mt": true
- },
- "sa53638cfea": "Vastus jääb plaadile (plaatidele)",
- "@sa53638cfea": {
   "x-mt": true
  },
  "se6d21484a8": "Kui kaua vastus jääb plaadile. 0 = kuni järgmise vajutamiseni.",
@@ -6332,7 +6385,6 @@
  "@s1b08aa4646": {
   "x-mt": true
  },
- "s5bed8bff00": "Käsk",
  "se2a81ae67d": "Saadetav tekst. PIN- kood lisatakse tühiku järele, nt \"uuendamine 1234\".",
  "@se2a81ae67d": {
   "x-mt": true
@@ -6358,6 +6410,9 @@
   "x-mt": true
  },
  "s57e684ac9e": "Sõnumid",
+ "sb1f9470ebd": "'JSON: {\"light\": 1, …}. Text: \"Light: ON, …\" – the state is read after the name.'",
+ "s96a5a283cf": "JSON",
+ "s2179eef80d": "'If the switches sit under a group in the JSON, e.g. {\"relays\":{\"light\":1}}, type \"relays.\" – the key is then read from relays.light.'",
  "s3378eb2d0b": "{p0} – temperatuur",
  "@s3378eb2d0b": {
   "x-mt": true
@@ -6378,56 +6433,272 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "s45fbc06cdf": "Veel rohkem",
- "@s45fbc06cdf": {
+ "s12d40eedd5": "Taustal töötamise lubamine",
+ "@s12d40eedd5": {
   "x-mt": true
  },
- "s0557e03436": "Nupu lisamine esilehele",
- "@s0557e03436": {
+ "s8e1fcae1fe": "Selleks, et sild töötaks väljalülitatud ekraaniga, peab Android laskma Molaplanil töötada taustal ilma akupiiranguteta. Järgmises aknas tuleb valida \"Luba\".",
+ "@s8e1fcae1fe": {
   "x-mt": true
  },
- "sdae343a445": "Nupp lisatud {p0}",
- "@sdae343a445": {
+ "sd62c460e3d": "Jätka",
+ "@sd62c460e3d": {
   "x-mt": true
  },
- "s4436dfd836": "Väline käivitaja (PIN) on sisse lülitatud",
- "@s4436dfd836": {
+ "seb25c46911": "Sild jookseb taustal: ekraan võib olla välja lülitatud ja Molaplan suletud. Sild käivitub pärast taaskäivitamist iseenesest ja taasühendatakse, kui võrk taastub.",
+ "@seb25c46911": {
   "x-mt": true
  },
- "s759ff4cada": "Väline päästik, nt iPhone''i kiirklahvid",
- "@s759ff4cada": {
+ "s374a096cb9": "Aku säästmine võib silla peatada",
+ "@s374a096cb9": {
   "x-mt": true
  },
- "sa32d82e779": "Nupp rakenduses",
- "@sa32d82e779": {
+ "s9b1298f7c6": "Las Molaplan jookseb tagaplaanil ilma piiranguteta.",
+ "@s9b1298f7c6": {
   "x-mt": true
  },
- "s65fc3dd69a": "Nupp käivitab skripti ühe nupuvajutusega. See töötab nii kodus kui ka kodust eemal läbi kodusilla – kiirklahve pole vaja.",
- "@s65fc3dd69a": {
+ "sc8ef04815c": "Luba",
+ "@sc8ef04815c": {
   "x-mt": true
  },
- "s89638a5b8e": "Nupp vaates {p0}",
- "@s89638a5b8e": {
+ "s30ae7f76e6": "ntfy käsuseade (käsud + olek)",
+ "@s30ae7f76e6": {
   "x-mt": true
  },
- "s509056a76d": "Lisa veel üks nupp",
- "@s509056a76d": {
+ "s6cfd0d8be1": "Teema, mida koduseade kuulab. Teema nimi töötab nagu parool: hoia see pikk ja juhuslik.",
+ "@s6cfd0d8be1": {
   "x-mt": true
  },
- "s0f8939787f": "Nupp luuakse salvestamisel.",
- "@s0f8939787f": {
+ "s7e8c7a0cfc": "Kui seade vastab mõnele muule teemale (nt sinu isikliku märguande teemale), kirjuta see siia. Tühi = käsuteema.",
+ "@s7e8c7a0cfc": {
   "x-mt": true
  },
- "s5a8c602b42": "Vaade",
- "@s5a8c602b42": {
+ "s7ea9d85150": "PIN-kood (valikuline)",
+ "@s7ea9d85150": {
   "x-mt": true
  },
- "se49d14ff44": "Milline vaade saab nupu?",
- "@se49d14ff44": {
+ "s0694fe4d2b": "'Salvestatud krüptituna sellesse seadmesse. Lisatakse sinna, kus mall ütleb {pin}.'",
+ "@s0694fe4d2b": {
   "x-mt": true
  },
- "sb0ba67e677": "Jooksus {p0}",
- "@sb0ba67e677": {
+ "s4313c720cc": "Käsu mall",
+ "@s4313c720cc": {
+  "x-mt": true
+ },
+ "sd904dac1cc": "'{cmd} = nupu käsk, {pin} = PIN, {cid} = id, mida seade oma vastuses kajastab, {value} = väärtus (on/off või number). Nt \"{cmd} {pin}\" → \"light on 1234\".'",
+ "@sd904dac1cc": {
+  "x-mt": true
+ },
+ "sa45b65f571": "Staatuse käsklus",
+ "@sa45b65f571": {
+  "x-mt": true
+ },
+ "se464d5ed51": "Käsk, millele seade vastab oma olekuga (nt \"status\" või \"status json\"). Selle seadme kõik kaardid jagavad vastust.",
+ "@se464d5ed51": {
+  "x-mt": true
+ },
+ "s821e8d2d9d": "Vastuse pealkiri sisaldab (valikuline)",
+ "@s821e8d2d9d": {
+  "x-mt": true
+ },
+ "s949ee12ae6": "Vastuseks loetakse ainult sõnumeid, mille pealkiri sisaldab seda teksti – kasulik siis, kui vastuse teema sisaldab ka teisi teateid.",
+ "@s949ee12ae6": {
+  "x-mt": true
+ },
+ "sfbcb5f18bd": "Vastus peab sisaldama (regex, valikuline)",
+ "@sfbcb5f18bd": {
+  "x-mt": true
+ },
+ "s79c983aa94": "Regulaaravaldis, mida vastus (pealkiri + sõnum) peab sisaldama.",
+ "@s79c983aa94": {
+  "x-mt": true
+ },
+ "s081eff543d": "Tekst olekukaardile",
+ "@s081eff543d": {
+  "x-mt": true
+ },
+ "s2afc1f1fb8": "Üks reegel rea kohta: \"muster = väärtus\". Muster on regex, mis vastab kogu püütud tekstile (tõstutundlik). Tühi = soome ja inglise keeles sisse/ välja lülitatud sõnad.",
+ "@s2afc1f1fb8": {
+  "x-mt": true
+ },
+ "s0976f767e2": "Viga vastus (regex)",
+ "@s0976f767e2": {
+  "x-mt": true
+ },
+ "sc0fd47e896": "Vastuse tähendus on viga (punane). Tühi = vaikeväärtus (vale PIN- kood, viga, keelatud...). JSON- i korral: ok: väär või veaväli.",
+ "@sc0fd47e896": {
+  "x-mt": true
+ },
+ "s98d9efa888": "Minimaalne aeg käskude (s) vahel",
+ "@s98d9efa888": {
+  "x-mt": true
+ },
+ "sa893722568": "Kui seade vastab ainult näiteks iga 30 sekundi tagant, siis tüüp 30: järgmine käsk ootab oma korda, selle asemel, et kaduda.",
+ "@sa893722568": {
+  "x-mt": true
+ },
+ "s5e8e483f10": "Kui kaua oodata vastust enne vea näitamist?",
+ "@s5e8e483f10": {
+  "x-mt": true
+ },
+ "s31312f141c": "Staatuse vastus kehtib (s)",
+ "@s31312f141c": {
+  "x-mt": true
+ },
+ "s0611790300": "Sama seadme kaardid jagavad selle pika aja jooksul ühte olekuvastust - seadet ei küsita asjatult.",
+ "@s0611790300": {
+  "x-mt": true
+ },
+ "scece580659": "Ainult kaitstud teema jaoks (ntfy konto → Access tokens).",
+ "@scece580659": {
+  "x-mt": true
+ },
+ "s7e91b10006": "Vaikimisi on avalik ntfy.sh. Täielik URL tühistab selle.",
+ "@s7e91b10006": {
+  "x-mt": true
+ },
+ "s1b5501c73f": "JSONi trajektoor (JSONi vastus)",
+ "@s1b5501c73f": {
+  "x-mt": true
+ },
+ "s1320bcddf2": "Kui seade vastab JSON-iga, nt $.light või $.outputs.siren.",
+ "@s1320bcddf2": {
+  "x-mt": true
+ },
+ "s4dc975c1cd": "Tekstist (regex, rühm 1)",
+ "@s4dc975c1cd": {
+  "x-mt": true
+ },
+ "s21c23314ed": "Tekstivastuse jaoks: regulaaravaldis, mille esimene grupp on olek, nt light:\\s*(\\S+).",
+ "@s21c23314ed": {
+  "x-mt": true
+ },
+ "s63a305f2ab": "Selle kaardi olekukäsk (valikuline)",
+ "@s63a305f2ab": {
+  "x-mt": true
+ },
+ "s89ad1c43b4": "Tühi = seadme olekukäsk.",
+ "@s89ad1c43b4": {
+  "x-mt": true
+ },
+ "sec7af7b376": "Nt \"light on\". PIN-koodi ja muud osad lisab seadme käsumall.",
+ "@sec7af7b376": {
+  "x-mt": true
+ },
+ "s3f4dda1fb9": "Näitab kaardil seadme vastust (või selget viga).",
+ "@s3f4dda1fb9": {
+  "x-mt": true
+ },
+ "sb56e7e9f81": "ntfy: käsk puudub",
+ "@sb56e7e9f81": {
+  "x-mt": true
+ },
+ "s09f79d4fda": "Vastamata (PIN?) – seade ei vastanud {p0} s jooksul (teema \"{p1}\"). Kontrolli PIN- koodi: paljud seadmed ei vasta üldse valele PIN-koodile.",
+ "@s09f79d4fda": {
+  "x-mt": true
+ },
+ "sf25dcf262f": "Seade ei vastanud {p0} s jooksul (teema \"{p1}\"). Kui see vastab ainult intervallidega, suurenda \"Oota vastuseks\" või \"Vähim aeg käskude vahel\".",
+ "@sf25dcf262f": {
+  "x-mt": true
+ },
+ "s1257447096": "Seade vastas: {p0}",
+ "@s1257447096": {
+  "x-mt": true
+ },
+ "sf03877dd0a": " PIN-kood salvestatakse.",
+ "@sf03877dd0a": {
+  "x-mt": true
+ },
+ "s021372fd08": "ntfy käsuseade",
+ "@s021372fd08": {
+  "x-mt": true
+ },
+ "s120a222880": "Seade, mida juhitakse ntfy sõnumitega: sisse/ välja lülitamine, olek ja PIN. Töötab kodus ja eemal ilma kodusillata.",
+ "@s120a222880": {
+  "x-mt": true
+ },
+ "s7a46c8c335": "Käsuteema",
+ "@s7a46c8c335": {
+  "x-mt": true
+ },
+ "s324f5e3b74": "Teema (või täielik URL), mida seade kuulab.",
+ "@s324f5e3b74": {
+  "x-mt": true
+ },
+ "sc1ddf7feb4": "Kui seade vastab mõnele muule teemale (nt teie teavitusteema). Tühjus = sama teema.",
+ "@sc1ddf7feb4": {
+  "x-mt": true
+ },
+ "s24779d22ca": "Kui vastamisteemal on ka muid sõnumeid: ainult selle pealkirjaga sõnumid on vastused.",
+ "@s24779d22ca": {
+  "x-mt": true
+ },
+ "s17c9df50af": "Salvestatud krüptituna. Lisatakse käskudele malli abil.",
+ "@s17c9df50af": {
+  "x-mt": true
+ },
+ "s4427fd3bd1": "'{cmd} = command, {pin} = PIN, {cid} = id, mida seade kajab. Nt \"{cmd} {pin}\".'",
+ "@s4427fd3bd1": {
+  "x-mt": true
+ },
+ "s4549a9cb7f": "Käsk, millele seade vastab oma olekuga, nt \"status\" või \"status json\".",
+ "@s4549a9cb7f": {
+  "x-mt": true
+ },
+ "s5f019b05f1": "Oleku vastuse vorming",
+ "@s5f019b05f1": {
+  "x-mt": true
+ },
+ "s3f8b9eaf4b": "Lülitid (üks rea kohta: Nimi = võti)",
+ "@s3f8b9eaf4b": {
+  "x-mt": true
+ },
+ "sb7fd9fb70a": "Nt \"Ajavalgus = hoovivalgus\". Võti on sõna, mida seade kasutab käskudes ja olekus.",
+ "@sb7fd9fb70a": {
+  "x-mt": true
+ },
+ "s9efd151ae8": "Komandos",
+ "@s9efd151ae8": {
+  "x-mt": true
+ },
+ "s29d460cd3b": "'{key} = lülitiklahv. Nt \"{key} on\" → \"light on\".'",
+ "@s29d460cd3b": {
+  "x-mt": true
+ },
+ "s8dab09a808": "Komandör",
+ "@s8dab09a808": {
+  "x-mt": true
+ },
+ "s93698f5ccb": "Pöörmete JSON-liini prefiks (valikuline)",
+ "@s93698f5ccb": {
+  "x-mt": true
+ },
+ "s50ade0ed0a": "Olekukaardi JSON-liin (valikuline)",
+ "@s50ade0ed0a": {
+  "x-mt": true
+ },
+ "s9049a8a920": "Mida näitab olekukaart JSON-i vastusest, nt \"olek\". Tühi = kogu vastus.",
+ "@s9049a8a920": {
+  "x-mt": true
+ },
+ "s54b3e63eca": "Värskendamisintervall (s)",
+ "@s54b3e63eca": {
+  "x-mt": true
+ },
+ "s22a6e8c7ef": "Kui tihti olekut küsitakse. Kunagi ei tohi olla lühem kui seadme minimaalne käsuintervall.",
+ "@s22a6e8c7ef": {
+  "x-mt": true
+ },
+ "s91158c0de5": "Kui seade vastab ainult näiteks iga 30 sekundi järel, tüüp 30.",
+ "@s91158c0de5": {
+  "x-mt": true
+ },
+ "s23f70f51ff": "Juhtimisseade",
+ "@s23f70f51ff": {
+  "x-mt": true
+ },
+ "sfeb36cc60a": "{p0} – olek",
+ "@sfeb36cc60a": {
   "x-mt": true
  }
 }

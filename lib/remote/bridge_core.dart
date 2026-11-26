@@ -312,8 +312,33 @@ class BridgeCore {
     _set(BridgeLink.off);
   }
 
-  Future<void> _connect() async {
+  /// t209u: no frame (not even the relay's "pong") for this long = the socket is dead (e.g. the
+  /// network dropped without closing it) → reconnect.
+  Duration staleAfter = const Duration(seconds: 70);
+  Duration pingEvery = const Duration(seconds: 25);
+  DateTime _lastIn = DateTime.now();
+  bool _connecting = false;
+
+  /// The phone's network changed (Android service callback): a network came back → reconnect now
+  /// instead of waiting for the back-off timer; sockets on the old network are dead anyway.
+  void networkChanged(bool up) {
     if (!_running) return;
+    if (!up) return; // the watchdog / onDone notices the loss; reconnecting needs a network
+    log?.call('network available – reconnecting');
+    _retry?.cancel();
+    _backoff = 0;
+    final old = _ws;
+    if (old != null) {
+      _ws = null;
+      _ping?.cancel();
+      unawaited(old.close(1001).catchError((_) {}));
+    }
+    _connect();
+  }
+
+  Future<void> _connect() async {
+    if (!_running || _connecting) return;
+    _connecting = true;
     _set(BridgeLink.connecting, lastError);
     try {
       final ws = await WebSocket.connect('${wsBase(relay)}/v1/h/$home/b?k=${Uri.encodeQueryComponent(_bridgeKey)}')
@@ -324,17 +349,39 @@ class BridgeCore {
       }
       _ws = ws;
       _backoff = 0;
+      _lastIn = DateTime.now();
       _set(BridgeLink.online);
       log?.call('connected to relay as home $home');
-      _ping = Timer.periodic(const Duration(seconds: 25), (_) => _ws?.add('ping'));
+      _ping = Timer.periodic(pingEvery, (_) {
+        if (_ws != ws) return;
+        if (DateTime.now().difference(_lastIn) > staleAfter) {
+          log?.call('relay link silent for ${staleAfter.inSeconds} s – reconnecting');
+          _ws = null;
+          unawaited(ws.close(1001).catchError((_) {}));
+          _lost('stale');
+          return;
+        }
+        ws.add('ping');
+      });
       ws.listen(
-        (m) => _onFrame(m),
-        onDone: () => _lost('closed ${ws.closeCode ?? ''} ${ws.closeReason ?? ''}'.trim()),
-        onError: (Object e) => _lost('$e'),
+        (m) {
+          if (_ws != ws) return;
+          _lastIn = DateTime.now();
+          _onFrame(m);
+        },
+        // Ignore an old socket's late close after a reconnect replaced it.
+        onDone: () {
+          if (_ws == ws) _lost('closed ${ws.closeCode ?? ''} ${ws.closeReason ?? ''}'.trim());
+        },
+        onError: (Object e) {
+          if (_ws == ws) _lost('$e');
+        },
         cancelOnError: true,
       );
     } catch (e) {
       _lost('$e');
+    } finally {
+      _connecting = false;
     }
   }
 
@@ -348,6 +395,7 @@ class BridgeCore {
     const steps = [1, 2, 5, 10, 30];
     final s = steps[_backoff.clamp(0, steps.length - 1)];
     _backoff++;
+    _retry?.cancel();
     _retry = Timer(Duration(seconds: s), _connect);
   }
 

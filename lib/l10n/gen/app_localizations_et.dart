@@ -3904,6 +3904,16 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String get s12d40eedd5 => 'Taustal töötamise lubamine';
+
+  @override
+  String get s8e1fcae1fe =>
+      'Selleks, et sild töötaks väljalülitatud ekraaniga, peab Android laskma Molaplanil töötada taustal ilma akupiiranguteta. Järgmises aknas tuleb valida \"Luba\".';
+
+  @override
+  String get sd62c460e3d => 'Jätka';
+
+  @override
   String s7132345f20(String p0) {
     return 'Seade \"$p0\" ühendatud!';
   }
@@ -3916,11 +3926,25 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sd64f52490d => 'Hoidke seda laadijal ja kodus Wi-Fi-l.';
 
   @override
+  String get seb25c46911 =>
+      'Sild jookseb taustal: ekraan võib olla välja lülitatud ja Molaplan suletud. Sild käivitub pärast taaskäivitamist iseenesest ja taasühendatakse, kui võrk taastub.';
+
+  @override
   String get sbb23f25581 =>
       'Hoidke Molaplan lahti. Ekraan jääb sisse, kuni sild on peal.';
 
   @override
   String get sbfed096278 => 'Kasutage seda seadet kodusillana';
+
+  @override
+  String get s374a096cb9 => 'Aku säästmine võib silla peatada';
+
+  @override
+  String get s9b1298f7c6 =>
+      'Las Molaplan jookseb tagaplaanil ilma piiranguteta.';
+
+  @override
+  String get sc8ef04815c => 'Luba';
 
   @override
   String get s13995350ed => 'Seo telefon';
@@ -5812,6 +5836,160 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s43c9b88580 => 'Auto';
 
   @override
+  String get s30ae7f76e6 => 'ntfy käsuseade (käsud + olek)';
+
+  @override
+  String get s6a4516e0fe => 'Käsu teema (nimi või täielik URL)';
+
+  @override
+  String get s6cfd0d8be1 =>
+      'Teema, mida koduseade kuulab. Teema nimi töötab nagu parool: hoia see pikk ja juhuslik.';
+
+  @override
+  String get s800cd08229 => 'Vastamise teema (valikuline)';
+
+  @override
+  String get s7e8c7a0cfc =>
+      'Kui seade vastab mõnele muule teemale (nt sinu isikliku märguande teemale), kirjuta see siia. Tühi = käsuteema.';
+
+  @override
+  String get s7ea9d85150 => 'PIN-kood (valikuline)';
+
+  @override
+  String get s0694fe4d2b =>
+      'Salvestatud krüptituna sellesse seadmesse. Lisatakse sinna, kus mall ütleb {pin}.';
+
+  @override
+  String get s4313c720cc => 'Käsu mall';
+
+  @override
+  String get sd904dac1cc =>
+      '{cmd} = nupu käsk, {pin} = PIN, {cid} = id, mida seade oma vastuses kajastab, {value} = väärtus (on/off või number). Nt \"{cmd} {pin}\" → \"light on 1234\".';
+
+  @override
+  String get sa45b65f571 => 'Staatuse käsklus';
+
+  @override
+  String get se464d5ed51 =>
+      'Käsk, millele seade vastab oma olekuga (nt \"status\" või \"status json\"). Selle seadme kõik kaardid jagavad vastust.';
+
+  @override
+  String get s821e8d2d9d => 'Vastuse pealkiri sisaldab (valikuline)';
+
+  @override
+  String get s949ee12ae6 =>
+      'Vastuseks loetakse ainult sõnumeid, mille pealkiri sisaldab seda teksti – kasulik siis, kui vastuse teema sisaldab ka teisi teateid.';
+
+  @override
+  String get sfbcb5f18bd => 'Vastus peab sisaldama (regex, valikuline)';
+
+  @override
+  String get s79c983aa94 =>
+      'Regulaaravaldis, mida vastus (pealkiri + sõnum) peab sisaldama.';
+
+  @override
+  String get s081eff543d => 'Tekst olekukaardile';
+
+  @override
+  String get s2afc1f1fb8 =>
+      'Üks reegel rea kohta: \"muster = väärtus\". Muster on regex, mis vastab kogu püütud tekstile (tõstutundlik). Tühi = soome ja inglise keeles sisse/ välja lülitatud sõnad.';
+
+  @override
+  String get s0976f767e2 => 'Viga vastus (regex)';
+
+  @override
+  String get sc0fd47e896 =>
+      'Vastuse tähendus on viga (punane). Tühi = vaikeväärtus (vale PIN- kood, viga, keelatud...). JSON- i korral: ok: väär või veaväli.';
+
+  @override
+  String get s98d9efa888 => 'Minimaalne aeg käskude (s) vahel';
+
+  @override
+  String get sa893722568 =>
+      'Kui seade vastab ainult näiteks iga 30 sekundi tagant, siis tüüp 30: järgmine käsk ootab oma korda, selle asemel, et kaduda.';
+
+  @override
+  String get sbdcbe301b9 => 'Oodata vastust (s)';
+
+  @override
+  String get s5e8e483f10 => 'Kui kaua oodata vastust enne vea näitamist?';
+
+  @override
+  String get s31312f141c => 'Staatuse vastus kehtib (s)';
+
+  @override
+  String get s0611790300 =>
+      'Sama seadme kaardid jagavad selle pika aja jooksul ühte olekuvastust - seadet ei küsita asjatult.';
+
+  @override
+  String get s5bc736c04a => 'Juurdepääsuluba (valikuline)';
+
+  @override
+  String get scece580659 =>
+      'Ainult kaitstud teema jaoks (ntfy konto → Access tokens).';
+
+  @override
+  String get s7e91b10006 =>
+      'Vaikimisi on avalik ntfy.sh. Täielik URL tühistab selle.';
+
+  @override
+  String get s1b5501c73f => 'JSONi trajektoor (JSONi vastus)';
+
+  @override
+  String get s1320bcddf2 =>
+      'Kui seade vastab JSON-iga, nt \$.light või \$.outputs.siren.';
+
+  @override
+  String get s4dc975c1cd => 'Tekstist (regex, rühm 1)';
+
+  @override
+  String get s21c23314ed =>
+      'Tekstivastuse jaoks: regulaaravaldis, mille esimene grupp on olek, nt light:\\s*(\\S+).';
+
+  @override
+  String get s63a305f2ab => 'Selle kaardi olekukäsk (valikuline)';
+
+  @override
+  String get s89ad1c43b4 => 'Tühi = seadme olekukäsk.';
+
+  @override
+  String get s5bed8bff00 => 'Käsk';
+
+  @override
+  String get sec7af7b376 =>
+      'Nt \"light on\". PIN-koodi ja muud osad lisab seadme käsumall.';
+
+  @override
+  String get sfee393b70e => 'Oota vastust';
+
+  @override
+  String get s3f4dda1fb9 => 'Näitab kaardil seadme vastust (või selget viga).';
+
+  @override
+  String get sa53638cfea => 'Vastus jääb plaadile (plaatidele)';
+
+  @override
+  String get sb56e7e9f81 => 'ntfy: käsk puudub';
+
+  @override
+  String s09f79d4fda(String p0, String p1) {
+    return 'Vastamata (PIN?) – seade ei vastanud $p0 s jooksul (teema \"$p1\"). Kontrolli PIN- koodi: paljud seadmed ei vasta üldse valele PIN-koodile.';
+  }
+
+  @override
+  String sf25dcf262f(String p0, String p1) {
+    return 'Seade ei vastanud $p0 s jooksul (teema \"$p1\"). Kui see vastab ainult intervallidega, suurenda \"Oota vastuseks\" või \"Vähim aeg käskude vahel\".';
+  }
+
+  @override
+  String s1257447096(String p0) {
+    return 'Seade vastas: $p0';
+  }
+
+  @override
+  String get sf03877dd0a => ' PIN-kood salvestatakse.';
+
+  @override
   String get s36fb6ba26f => 'Modbus TCP';
 
   @override
@@ -5914,21 +6092,12 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sefaea1b818 => 'ntfy (teatekanal / käsud)';
 
   @override
-  String get s6a4516e0fe => 'Käsu teema (nimi või täielik URL)';
-
-  @override
   String get se003ecc10b =>
       'Topic käsud saadetakse. Sa võid asetada kogu URL- i, nt https://ntfy.sh/my- teema – sama, mida kasutab sinu iPhone\' i kiirklahv. Teema nimi töötab nagu parool: hoia see pikk ja juhuslik.';
 
   @override
-  String get s800cd08229 => 'Vastamise teema (valikuline)';
-
-  @override
   String get s2e3a66d384 =>
       'Kui koduseade vastab mõnele muule teemale, kirjuta see siia. Jäta tühjaks, kui vastus tuleb samale teemale – siis ignoreeritakse meie enda käsku ja järgmist teadet näidatakse vastusena.';
-
-  @override
-  String get s5bc736c04a => 'Juurdepääsuluba (valikuline)';
 
   @override
   String get s77feae14f5 =>
@@ -5983,21 +6152,12 @@ class AppLocalizationsEt extends AppLocalizations {
       'Palub PIN-koodi (peidetud) igale vajutamisele ja lisab selle käsule. PIN- koodi ei salvestata, kui sa ei vali \"Mäleta seda seadet\".';
 
   @override
-  String get sfee393b70e => 'Oota vastust';
-
-  @override
   String get sfff5bc52e5 =>
       'Kuulab koduseadme vastust ja näitab seda selles plaadis (ja teatena, kui rakendus on taustal).';
 
   @override
-  String get sbdcbe301b9 => 'Oodata vastust (s)';
-
-  @override
   String get s121542d6d7 =>
       'Kui kaua oodata, enne kui öelda, et vastust ei tulnud.';
-
-  @override
-  String get sa53638cfea => 'Vastus jääb plaadile (plaatidele)';
 
   @override
   String get se6d21484a8 =>
@@ -6696,9 +6856,6 @@ class AppLocalizationsEt extends AppLocalizations {
       'Tekst, mida näidatakse plaadil, nt \"Uuendamine\" või \"Status\".';
 
   @override
-  String get s5bed8bff00 => 'Käsk';
-
-  @override
   String get se2a81ae67d =>
       'Saadetav tekst. PIN- kood lisatakse tühiku järele, nt \"uuendamine 1234\".';
 
@@ -6721,6 +6878,99 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s57e684ac9e => 'Sõnumid';
+
+  @override
+  String get s021372fd08 => 'ntfy käsuseade';
+
+  @override
+  String get s120a222880 =>
+      'Seade, mida juhitakse ntfy sõnumitega: sisse/ välja lülitamine, olek ja PIN. Töötab kodus ja eemal ilma kodusillata.';
+
+  @override
+  String get s7a46c8c335 => 'Käsuteema';
+
+  @override
+  String get s324f5e3b74 => 'Teema (või täielik URL), mida seade kuulab.';
+
+  @override
+  String get sc1ddf7feb4 =>
+      'Kui seade vastab mõnele muule teemale (nt teie teavitusteema). Tühjus = sama teema.';
+
+  @override
+  String get s24779d22ca =>
+      'Kui vastamisteemal on ka muid sõnumeid: ainult selle pealkirjaga sõnumid on vastused.';
+
+  @override
+  String get s17c9df50af =>
+      'Salvestatud krüptituna. Lisatakse käskudele malli abil.';
+
+  @override
+  String get s4427fd3bd1 =>
+      '{cmd} = command, {pin} = PIN, {cid} = id, mida seade kajab. Nt \"{cmd} {pin}\".';
+
+  @override
+  String get s4549a9cb7f =>
+      'Käsk, millele seade vastab oma olekuga, nt \"status\" või \"status json\".';
+
+  @override
+  String get s5f019b05f1 => 'Oleku vastuse vorming';
+
+  @override
+  String get sb1f9470ebd =>
+      'JSON: {\"light\": 1, …}. Text: \"Light: ON, …\" – the state is read after the name.';
+
+  @override
+  String get s96a5a283cf => 'JSON';
+
+  @override
+  String get s3f8b9eaf4b => 'Lülitid (üks rea kohta: Nimi = võti)';
+
+  @override
+  String get sb7fd9fb70a =>
+      'Nt \"Ajavalgus = hoovivalgus\". Võti on sõna, mida seade kasutab käskudes ja olekus.';
+
+  @override
+  String get s9efd151ae8 => 'Komandos';
+
+  @override
+  String get s29d460cd3b =>
+      '{key} = lülitiklahv. Nt \"{key} on\" → \"light on\".';
+
+  @override
+  String get s8dab09a808 => 'Komandör';
+
+  @override
+  String get s93698f5ccb => 'Pöörmete JSON-liini prefiks (valikuline)';
+
+  @override
+  String get s2179eef80d =>
+      'If the switches sit under a group in the JSON, e.g. {\"relays\":{\"light\":1}}, type \"relays.\" – the key is then read from relays.light.';
+
+  @override
+  String get s50ade0ed0a => 'Olekukaardi JSON-liin (valikuline)';
+
+  @override
+  String get s9049a8a920 =>
+      'Mida näitab olekukaart JSON-i vastusest, nt \"olek\". Tühi = kogu vastus.';
+
+  @override
+  String get s54b3e63eca => 'Värskendamisintervall (s)';
+
+  @override
+  String get s22a6e8c7ef =>
+      'Kui tihti olekut küsitakse. Kunagi ei tohi olla lühem kui seadme minimaalne käsuintervall.';
+
+  @override
+  String get s91158c0de5 =>
+      'Kui seade vastab ainult näiteks iga 30 sekundi järel, tüüp 30.';
+
+  @override
+  String get s23f70f51ff => 'Juhtimisseade';
+
+  @override
+  String sfeb36cc60a(String p0) {
+    return '$p0 – olek';
+  }
 
   @override
   String s3378eb2d0b(String p0) {

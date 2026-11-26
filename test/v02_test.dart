@@ -142,7 +142,7 @@ void main() {
         expect(
           t.inputs.where((f) => f.required).map((f) => f.key),
           contains(switch (t.id) {
-            'ntfy' => 'topic',
+            'ntfy' || 'ntfy_device' => 'topic',
             'electricity_price' => 'zone',
             'airthings' => 'clientId', // cloud only
             'airthings_wave' => 'serial', // Bluetooth

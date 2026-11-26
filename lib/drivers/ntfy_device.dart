@@ -352,6 +352,8 @@ class NtfyDeviceDriver extends NtfyDriver {
         kind: FieldKind.number,
         defaultValue: 30,
         advanced: true,
+        helpFi: 'Kuinka kauan vastaus näkyy ruudussa. 0 = kunnes painat uudelleen.',
+        helpEn: 'How long the reply stays on the tile. 0 = until the next press.',
       ),
     ],
   );

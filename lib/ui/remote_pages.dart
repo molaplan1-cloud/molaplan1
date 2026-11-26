@@ -694,8 +694,38 @@ class _BridgePageState extends State<BridgePage> {
     final st = AppScope.read(context);
     setState(() => _starting = true);
     await st.setBridgeMode(on);
-    await keepScreenOn(on);
+    // t210u: on Android the bridge runs as a background service – the screen may turn off.
+    await keepScreenOn(on && !st.bridgeService.supported);
     if (mounted) setState(() => _starting = false);
+    if (on && st.bridgeService.supported && !await st.bridgeService.batteryExempt() && mounted) {
+      final ok = await confirmDialog(
+        context,
+        tx(context, 'Salli toiminta taustalla', 'Allow running in the background'),
+        tx(
+          context,
+          'Jotta kotisilta toimii näytön ollessa pois päältä, Android pitää sallia ajaa Molaplania taustalla ilman akunsäästörajoituksia. Valitse seuraavassa ikkunassa "Salli".',
+          'For the bridge to work with the screen off, Android must let Molaplan run in the background without battery restrictions. Choose "Allow" in the next window.',
+        ),
+        ok: tx(context, 'Jatka', 'Continue'),
+      );
+      if (ok) await st.bridgeService.requestBatteryExemption();
+    }
+    _checkBattery();
+  }
+
+  bool? _batteryOk;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkBattery();
+  }
+
+  Future<void> _checkBattery() async {
+    final s = AppScope.read(context).bridgeService;
+    if (!s.supported) return;
+    final ok = await s.batteryExempt();
+    if (mounted) setState(() => _batteryOk = ok);
   }
 
   Future<void> _startPairing() async {
@@ -755,15 +785,26 @@ class _BridgePageState extends State<BridgePage> {
                 Icons.power_outlined,
                 tx(context, 'Pidä laite laturissa ja kodin wifissä.', 'Keep it on the charger and on the home Wi-Fi.'),
               ),
-              _hint(
-                context,
-                Icons.open_in_full,
-                tx(
+              if (st.bridgeService.supported)
+                _hint(
                   context,
-                  'Pidä Molaplan auki. Näyttö pysyy päällä, kun silta on käytössä.',
-                  'Keep Molaplan open. The screen stays on while the bridge is on.',
+                  Icons.nightlight_outlined,
+                  tx(
+                    context,
+                    'Silta toimii taustalla: näytön voi sammuttaa ja Molaplanin sulkea. Se käynnistyy itsestään laitteen uudelleenkäynnistyksen jälkeen ja yhdistää uudelleen, kun verkko palaa.',
+                    'The bridge runs in the background: the screen can be off and Molaplan closed. It starts by itself after a restart and reconnects when the network returns.',
+                  ),
+                )
+              else
+                _hint(
+                  context,
+                  Icons.open_in_full,
+                  tx(
+                    context,
+                    'Pidä Molaplan auki. Näyttö pysyy päällä, kun silta on käytössä.',
+                    'Keep Molaplan open. The screen stays on while the bridge is on.',
+                  ),
                 ),
-              ),
               const SizedBox(height: 8),
               Card(
                 child: SwitchListTile(
@@ -778,6 +819,30 @@ class _BridgePageState extends State<BridgePage> {
                   onChanged: _starting ? null : _toggle,
                 ),
               ),
+              if (b != null && st.bridgeService.supported && _batteryOk == false)
+                Card(
+                  key: const ValueKey('bridge-battery'),
+                  color: cs.errorContainer,
+                  child: ListTile(
+                    leading: Icon(Icons.battery_alert_outlined, color: cs.onErrorContainer),
+                    title: Text(
+                      tx(context, 'Akunsäästö voi pysäyttää sillan', 'Battery saving may stop the bridge'),
+                      style: TextStyle(color: cs.onErrorContainer),
+                    ),
+                    subtitle: Text(
+                      tx(context, 'Salli Molaplanin toimia taustalla rajoituksetta.', 'Let Molaplan run in the background without restrictions.'),
+                      style: TextStyle(color: cs.onErrorContainer),
+                    ),
+                    trailing: FilledButton(
+                      onPressed: () async {
+                        await st.bridgeService.requestBatteryExemption();
+                        await Future<void>.delayed(const Duration(seconds: 2));
+                        _checkBattery();
+                      },
+                      child: Text(tx(context, 'Salli', 'Allow')),
+                    ),
+                  ),
+                ),
               if (b != null) ...[
                 if (b.link == BridgeLink.error && b.lastError != null)
                   Padding(

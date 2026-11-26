@@ -3897,6 +3897,16 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get s12d40eedd5 => 'Allow running in the background';
+
+  @override
+  String get s8e1fcae1fe =>
+      'For the bridge to work with the screen off, Android must let Molaplan run in the background without battery restrictions. Choose \"Allow\" in the next window.';
+
+  @override
+  String get sd62c460e3d => 'Continue';
+
+  @override
   String s7132345f20(String p0) {
     return 'Device \"$p0\" connected!';
   }
@@ -3909,11 +3919,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sd64f52490d => 'Keep it on the charger and on the home Wi-Fi.';
 
   @override
+  String get seb25c46911 =>
+      'The bridge runs in the background: the screen can be off and Molaplan closed. It starts by itself after a restart and reconnects when the network returns.';
+
+  @override
   String get sbb23f25581 =>
       'Keep Molaplan open. The screen stays on while the bridge is on.';
 
   @override
   String get sbfed096278 => 'Use this device as the home bridge';
+
+  @override
+  String get s374a096cb9 => 'Battery saving may stop the bridge';
+
+  @override
+  String get s9b1298f7c6 =>
+      'Let Molaplan run in the background without restrictions.';
+
+  @override
+  String get sc8ef04815c => 'Allow';
 
   @override
   String get s13995350ed => 'Pair a phone';
@@ -5808,6 +5832,162 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s43c9b88580 => 'Auto';
 
   @override
+  String get s30ae7f76e6 => 'ntfy command device (commands + state)';
+
+  @override
+  String get s6a4516e0fe => 'Command topic (name or full URL)';
+
+  @override
+  String get s6cfd0d8be1 =>
+      'The topic the home device listens to. The topic name works like a password: keep it long and random.';
+
+  @override
+  String get s800cd08229 => 'Reply topic (optional)';
+
+  @override
+  String get s7e8c7a0cfc =>
+      'If the device answers on another topic (e.g. your personal notification topic), type it here. Empty = the command topic.';
+
+  @override
+  String get s7ea9d85150 => 'PIN code (optional)';
+
+  @override
+  String get s0694fe4d2b =>
+      'Stored encrypted on this device. Inserted where the template says {pin}.';
+
+  @override
+  String get s4313c720cc => 'Command template';
+
+  @override
+  String get sd904dac1cc =>
+      '{cmd} = the button\'s command, {pin} = PIN, {cid} = an id the device echoes in its reply, {value} = the value (on/off or a number). E.g. \"{cmd} {pin}\" → \"light on 1234\".';
+
+  @override
+  String get sa45b65f571 => 'Status command';
+
+  @override
+  String get se464d5ed51 =>
+      'The command the device answers with its state (e.g. \"status\" or \"status json\"). All tiles of this device share the reply.';
+
+  @override
+  String get s821e8d2d9d => 'Reply title contains (optional)';
+
+  @override
+  String get s949ee12ae6 =>
+      'Only messages whose title contains this text count as the reply – useful when the reply topic carries other notifications too.';
+
+  @override
+  String get sfbcb5f18bd => 'Reply must contain (regex, optional)';
+
+  @override
+  String get s79c983aa94 =>
+      'A regular expression the reply (title + message) must contain.';
+
+  @override
+  String get s081eff543d => 'Text to state map';
+
+  @override
+  String get s2afc1f1fb8 =>
+      'One rule per line: \"pattern = value\". The pattern is a regex matching the whole captured text (case-insensitive). Empty = built-in Finnish and English on/off words.';
+
+  @override
+  String get s0976f767e2 => 'Error reply (regex)';
+
+  @override
+  String get sc0fd47e896 =>
+      'A reply meaning an error (shown in red). Empty = default (wrong PIN, error, denied…). For JSON: ok:false or an error field.';
+
+  @override
+  String get s98d9efa888 => 'Minimum time between commands (s)';
+
+  @override
+  String get sa893722568 =>
+      'If the device answers only e.g. every 30 seconds, type 30: the next command waits its turn instead of being lost.';
+
+  @override
+  String get sbdcbe301b9 => 'Wait for reply (s)';
+
+  @override
+  String get s5e8e483f10 =>
+      'How long to wait for the reply before showing an error.';
+
+  @override
+  String get s31312f141c => 'Status reply valid for (s)';
+
+  @override
+  String get s0611790300 =>
+      'Tiles of the same device share one status reply for this long – the device is not asked needlessly.';
+
+  @override
+  String get s5bc736c04a => 'Access token (optional)';
+
+  @override
+  String get scece580659 =>
+      'Only for a protected topic (ntfy account → Access tokens).';
+
+  @override
+  String get s7e91b10006 =>
+      'Default is the public ntfy.sh. A full URL above overrides this.';
+
+  @override
+  String get s1b5501c73f => 'JSON path (JSON reply)';
+
+  @override
+  String get s1320bcddf2 =>
+      'When the device answers with JSON, e.g. \$.light or \$.outputs.siren.';
+
+  @override
+  String get s4dc975c1cd => 'From text (regex, group 1)';
+
+  @override
+  String get s21c23314ed =>
+      'For a text reply: a regular expression whose first group is the state, e.g. light:\\s*(\\S+).';
+
+  @override
+  String get s63a305f2ab => 'Status command for this tile (optional)';
+
+  @override
+  String get s89ad1c43b4 => 'Empty = the device\'s status command.';
+
+  @override
+  String get s5bed8bff00 => 'Command';
+
+  @override
+  String get sec7af7b376 =>
+      'E.g. \"light on\". The PIN and other parts are added by the device\'s command template.';
+
+  @override
+  String get sfee393b70e => 'Wait for the reply';
+
+  @override
+  String get s3f4dda1fb9 =>
+      'Shows the device\'s reply (or a clear error) on the tile.';
+
+  @override
+  String get sa53638cfea => 'Reply stays on the tile (s)';
+
+  @override
+  String get sb56e7e9f81 => 'ntfy: command missing';
+
+  @override
+  String s09f79d4fda(String p0, String p1) {
+    return 'No reply (PIN?) – the device did not answer within $p0 s (topic \"$p1\"). Check the PIN: many devices do not answer a wrong PIN at all.';
+  }
+
+  @override
+  String sf25dcf262f(String p0, String p1) {
+    return 'The device did not answer within $p0 s (topic \"$p1\"). If it answers only at intervals, increase \"Wait for reply\" or \"Minimum time between commands\".';
+  }
+
+  @override
+  String s1257447096(String p0) {
+    return 'The device answered: $p0';
+  }
+
+  @override
+  String get sf03877dd0a => ' A PIN is stored.';
+
+  @override
   String get s36fb6ba26f => 'Modbus TCP';
 
   @override
@@ -5910,21 +6090,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sefaea1b818 => 'ntfy (message channel / commands)';
 
   @override
-  String get s6a4516e0fe => 'Command topic (name or full URL)';
-
-  @override
   String get se003ecc10b =>
       'Topic the commands are sent to. You can paste the full URL, e.g. https://ntfy.sh/my-topic – the same one your iPhone Shortcut uses. The topic name works like a password: keep it long and random.';
 
   @override
-  String get s800cd08229 => 'Reply topic (optional)';
-
-  @override
   String get s2e3a66d384 =>
       'If the home device replies on another topic, type it here. Leave empty if the reply comes on the same topic – our own command is then ignored and the next message is shown as the reply.';
-
-  @override
-  String get s5bc736c04a => 'Access token (optional)';
 
   @override
   String get s77feae14f5 =>
@@ -5979,21 +6150,12 @@ class AppLocalizationsEn extends AppLocalizations {
       'Asks for a PIN (hidden) on every press and appends it to the command. The PIN is not stored unless you choose \"Remember on this device\".';
 
   @override
-  String get sfee393b70e => 'Wait for the reply';
-
-  @override
   String get sfff5bc52e5 =>
       'Listens for the home device\'s reply and shows it in this tile (and as a notification when the app is in the background).';
 
   @override
-  String get sbdcbe301b9 => 'Wait for reply (s)';
-
-  @override
   String get s121542d6d7 =>
       'How long to wait before saying that no reply came.';
-
-  @override
-  String get sa53638cfea => 'Reply stays on the tile (s)';
 
   @override
   String get se6d21484a8 =>
@@ -6693,9 +6855,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'Text shown on the tile, e.g. \"Update\" or \"Status\".';
 
   @override
-  String get s5bed8bff00 => 'Command';
-
-  @override
   String get se2a81ae67d =>
       'The text to send. The PIN is appended after a space, e.g. \"update 1234\".';
 
@@ -6719,6 +6878,99 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s57e684ac9e => 'Messages';
+
+  @override
+  String get s021372fd08 => 'ntfy command device';
+
+  @override
+  String get s120a222880 =>
+      'A device controlled with ntfy messages: on/off switches, state and PIN. Works at home and away without a home bridge.';
+
+  @override
+  String get s7a46c8c335 => 'Command topic';
+
+  @override
+  String get s324f5e3b74 => 'The topic (or full URL) the device listens to.';
+
+  @override
+  String get sc1ddf7feb4 =>
+      'If the device answers on another topic (e.g. your notification topic). Empty = the same topic.';
+
+  @override
+  String get s24779d22ca =>
+      'If the reply topic has other messages too: only messages with this title are replies.';
+
+  @override
+  String get s17c9df50af =>
+      'Stored encrypted. Added to commands by the template.';
+
+  @override
+  String get s4427fd3bd1 =>
+      '{cmd} = command, {pin} = PIN, {cid} = an id the device echoes. E.g. \"{cmd} {pin}\".';
+
+  @override
+  String get s4549a9cb7f =>
+      'The command the device answers with its state, e.g. \"status\" or \"status json\".';
+
+  @override
+  String get s5f019b05f1 => 'Status reply format';
+
+  @override
+  String get sb1f9470ebd =>
+      'JSON: {\"light\": 1, …}. Text: \"Light: ON, …\" – the state is read after the name.';
+
+  @override
+  String get s96a5a283cf => 'JSON';
+
+  @override
+  String get s3f8b9eaf4b => 'Switches (one per line: Name = key)';
+
+  @override
+  String get sb7fd9fb70a =>
+      'E.g. \"Yard light = yardlight\". The key is the word the device uses in commands and state.';
+
+  @override
+  String get s9efd151ae8 => 'On command';
+
+  @override
+  String get s29d460cd3b =>
+      '{key} = the switch key. E.g. \"{key} on\" → \"light on\".';
+
+  @override
+  String get s8dab09a808 => 'Off command';
+
+  @override
+  String get s93698f5ccb => 'JSON path prefix of the switches (optional)';
+
+  @override
+  String get s2179eef80d =>
+      'If the switches sit under a group in the JSON, e.g. {\"relays\":{\"light\":1}}, type \"relays.\" – the key is then read from relays.light.';
+
+  @override
+  String get s50ade0ed0a => 'Status tile JSON path (optional)';
+
+  @override
+  String get s9049a8a920 =>
+      'What the status tile shows from a JSON reply, e.g. \"state\". Empty = the whole reply.';
+
+  @override
+  String get s54b3e63eca => 'State refresh interval (s)';
+
+  @override
+  String get s22a6e8c7ef =>
+      'How often the state is asked. Never shorter than the device\'s minimum command interval.';
+
+  @override
+  String get s91158c0de5 =>
+      'If the device answers only e.g. every 30 s, type 30.';
+
+  @override
+  String get s23f70f51ff => 'Command device';
+
+  @override
+  String sfeb36cc60a(String p0) {
+    return '$p0 – state';
+  }
 
   @override
   String s3378eb2d0b(String p0) {

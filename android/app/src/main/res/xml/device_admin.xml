@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- t211u: Molaplan as device owner of an unattended bridge (adb shell dpm set-device-owner
+     com.molaplan.molaplan/.AdminReceiver). Used only to install its own signed updates silently. -->
+<device-admin>
+    <uses-policies />
+</device-admin>

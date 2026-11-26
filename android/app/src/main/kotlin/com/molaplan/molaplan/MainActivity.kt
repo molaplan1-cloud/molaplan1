@@ -9,11 +9,37 @@ import android.provider.Settings
 import androidx.core.content.FileProvider
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
+import android.os.Bundle
 import io.flutter.plugin.common.MethodChannel
 import java.io.File
 
 class MainActivity : FlutterActivity() {
     private var lock: WifiManager.MulticastLock? = null
+
+    // t209u: one engine for the app and the background bridge (see BridgeService.kt).
+    override fun provideFlutterEngine(context: Context): FlutterEngine = EngineHolder.get(context)
+
+    // Keep the engine when the bridge service runs; otherwise close it with the activity as before.
+    override fun shouldDestroyEngineWithHost(): Boolean = !BridgeService.running
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        EngineHolder.activityAttached = true
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onDestroy() {
+        EngineHolder.activityAttached = false
+        super.onDestroy()
+    }
+
+    override fun cleanUpFlutterEngine(flutterEngine: FlutterEngine) {
+        // These handlers use the activity; the engine may outlive it (background bridge).
+        val m = flutterEngine.dartExecutor.binaryMessenger
+        for (c in listOf("molaplan/link", "molaplan/multicast", "molaplan/notify", "molaplan/update")) {
+            MethodChannel(m, c).setMethodCallHandler(null)
+        }
+        super.cleanUpFlutterEngine(flutterEngine)
+    }
     private var linkChannel: MethodChannel? = null
     private var initialLink: String? = null
 

@@ -3917,6 +3917,16 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
+  String get s12d40eedd5 => 'Salli toiminta taustalla';
+
+  @override
+  String get s8e1fcae1fe =>
+      'Jotta kotisilta toimii näytön ollessa pois päältä, Android pitää sallia ajaa Molaplania taustalla ilman akunsäästörajoituksia. Valitse seuraavassa ikkunassa \"Salli\".';
+
+  @override
+  String get sd62c460e3d => 'Jatka';
+
+  @override
   String s7132345f20(String p0) {
     return 'Laite \"$p0\" yhdistetty!';
   }
@@ -3929,11 +3939,24 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sd64f52490d => 'Pidä laite laturissa ja kodin wifissä.';
 
   @override
+  String get seb25c46911 =>
+      'Silta toimii taustalla: näytön voi sammuttaa ja Molaplanin sulkea. Se käynnistyy itsestään laitteen uudelleenkäynnistyksen jälkeen ja yhdistää uudelleen, kun verkko palaa.';
+
+  @override
   String get sbb23f25581 =>
       'Pidä Molaplan auki. Näyttö pysyy päällä, kun silta on käytössä.';
 
   @override
   String get sbfed096278 => 'Käytä tätä laitetta kotisiltana';
+
+  @override
+  String get s374a096cb9 => 'Akunsäästö voi pysäyttää sillan';
+
+  @override
+  String get s9b1298f7c6 => 'Salli Molaplanin toimia taustalla rajoituksetta.';
+
+  @override
+  String get sc8ef04815c => 'Salli';
 
   @override
   String get s13995350ed => 'Yhdistä puhelin';
@@ -5841,6 +5864,162 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s43c9b88580 => 'Automaatti';
 
   @override
+  String get s30ae7f76e6 => 'ntfy-komentolaite (komennot + tila)';
+
+  @override
+  String get s6a4516e0fe => 'Komentokanava (aihe tai koko osoite)';
+
+  @override
+  String get s6cfd0d8be1 =>
+      'Aihe, jota kotilaite kuuntelee. Aiheen nimi on kuin salasana: pidä se pitkänä ja satunnaisena.';
+
+  @override
+  String get s800cd08229 => 'Vastauskanava (vapaaehtoinen)';
+
+  @override
+  String get s7e8c7a0cfc =>
+      'Jos laite vastaa toiseen aiheeseen (esim. henkilökohtaiseen ilmoitusaiheeseen), kirjoita se tähän. Tyhjä = sama kuin komentokanava.';
+
+  @override
+  String get s7ea9d85150 => 'PIN-koodi (vapaaehtoinen)';
+
+  @override
+  String get s0694fe4d2b =>
+      'Tallennetaan salattuna tähän laitteeseen. Lisätään komentoon mallin {pin}-kohtaan.';
+
+  @override
+  String get s4313c720cc => 'Komennon malli';
+
+  @override
+  String get sd904dac1cc =>
+      '{cmd} = painikkeen komento, {pin} = PIN, {cid} = tunniste jonka laite toistaa vastauksessa, {value} = arvo (on/off tai luku). Esim. \"{cmd} {pin}\" → \"pihavalo on 1234\".';
+
+  @override
+  String get sa45b65f571 => 'Tilakomento';
+
+  @override
+  String get se464d5ed51 =>
+      'Komento, johon laite vastaa tilallaan (esim. \"tila\" tai \"tila json\"). Kaikki tämän laitteen ruudut käyttävät samaa vastausta.';
+
+  @override
+  String get s821e8d2d9d => 'Vastauksen otsikko sisältää (vapaaehtoinen)';
+
+  @override
+  String get s949ee12ae6 =>
+      'Vain viestit, joiden otsikossa on tämä teksti, lasketaan vastaukseksi – hyödyllinen, kun vastauskanavalla on muitakin ilmoituksia.';
+
+  @override
+  String get sfbcb5f18bd => 'Vastauksen tunniste (regex, vapaaehtoinen)';
+
+  @override
+  String get s79c983aa94 =>
+      'Säännöllinen lauseke, joka vastauksessa pitää olla (otsikko + viesti).';
+
+  @override
+  String get s081eff543d => 'Tekstin tulkinta tiloiksi';
+
+  @override
+  String get s2afc1f1fb8 =>
+      'Rivi per sääntö: \"kuvio = arvo\". Kuvio on regex, jonka pitää vastata koko luettua tekstiä (kirjainkoolla ei väliä). Tyhjä = valmiit suomen- ja englanninkieliset päällä/pois-sanat.';
+
+  @override
+  String get s0976f767e2 => 'Virhevastaus (regex)';
+
+  @override
+  String get sc0fd47e896 =>
+      'Vastaus, joka tarkoittaa virhettä (näytetään punaisena). Tyhjä = oletus (väärä PIN, virhe, error, denied…). JSON-vastauksessa ok:false tai error-kenttä.';
+
+  @override
+  String get s98d9efa888 => 'Komentojen väli vähintään (s)';
+
+  @override
+  String get sa893722568 =>
+      'Jos laite vastaa vain esim. 30 sekunnin välein, kirjoita 30: seuraava komento odottaa vuoroaan eikä huku.';
+
+  @override
+  String get sbdcbe301b9 => 'Vastauksen odotus (s)';
+
+  @override
+  String get s5e8e483f10 =>
+      'Kuinka kauan vastausta odotetaan ennen virheilmoitusta.';
+
+  @override
+  String get s31312f141c => 'Tilavastaus voimassa (s)';
+
+  @override
+  String get s0611790300 =>
+      'Saman laitteen ruudut käyttävät samaa tilavastausta tämän ajan – laitetta ei kysytä turhaan.';
+
+  @override
+  String get s5bc736c04a => 'Käyttöoikeustunnus (vapaaehtoinen)';
+
+  @override
+  String get scece580659 =>
+      'Vain suojatulle aiheelle (ntfy-tili → Access tokens).';
+
+  @override
+  String get s7e91b10006 =>
+      'Oletus on julkinen ntfy.sh. Jos liitit yllä koko osoitteen, palvelin luetaan siitä.';
+
+  @override
+  String get s1b5501c73f => 'JSON-polku (JSON-vastaus)';
+
+  @override
+  String get s1320bcddf2 =>
+      'Kun laite vastaa JSONilla, esim. \$.pihavalo tai \$.lahdot.sireeni.';
+
+  @override
+  String get s4dc975c1cd => 'Tekstistä (regex, ryhmä 1)';
+
+  @override
+  String get s21c23314ed =>
+      'Kun vastaus on tekstiä: säännöllinen lauseke, jonka ensimmäinen sulkuryhmä on tila, esim. pihavalo:\\s*(\\S+).';
+
+  @override
+  String get s63a305f2ab => 'Tilakomento tälle ruudulle (vapaaehtoinen)';
+
+  @override
+  String get s89ad1c43b4 => 'Tyhjä = laitteen tilakomento.';
+
+  @override
+  String get s5bed8bff00 => 'Komento';
+
+  @override
+  String get sec7af7b376 =>
+      'Esim. \"pihavalo on\". PIN ja muut kohdat lisätään laitteen komentomallin mukaan.';
+
+  @override
+  String get sfee393b70e => 'Odota vastausta';
+
+  @override
+  String get s3f4dda1fb9 =>
+      'Näyttää laitteen vastauksen (tai selkeän virheen) ruudussa.';
+
+  @override
+  String get sa53638cfea => 'Vastaus näkyy ruudussa (s)';
+
+  @override
+  String get sb56e7e9f81 => 'ntfy: komento puuttuu';
+
+  @override
+  String s09f79d4fda(String p0, String p1) {
+    return 'Ei vastausta (PIN?) – laite ei vastannut $p0 sekunnissa (aihe \"$p1\"). Tarkista PIN-koodi: moni laite ei vastaa lainkaan väärään PIN-koodiin.';
+  }
+
+  @override
+  String sf25dcf262f(String p0, String p1) {
+    return 'Laite ei vastannut $p0 sekunnissa (aihe \"$p1\"). Jos laite vastaa vain tietyin väliajoin, kasvata \"Vastauksen odotus\" tai \"Komentojen väli\" -asetusta.';
+  }
+
+  @override
+  String s1257447096(String p0) {
+    return 'Laite vastasi: $p0';
+  }
+
+  @override
+  String get sf03877dd0a => ' PIN on tallennettu.';
+
+  @override
   String get s36fb6ba26f => 'Modbus TCP';
 
   @override
@@ -5943,21 +6122,12 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sefaea1b818 => 'ntfy (viestikanava / komennot)';
 
   @override
-  String get s6a4516e0fe => 'Komentokanava (aihe tai koko osoite)';
-
-  @override
   String get se003ecc10b =>
       'Aihe, johon komennot lähetetään. Voit liittää koko osoitteen, esim. https://ntfy.sh/oma-aihe – sama osoite jota iPhonen pikakomento käyttää. Aiheen nimi on kuin salasana: pidä se pitkänä ja satunnaisena.';
 
   @override
-  String get s800cd08229 => 'Vastauskanava (vapaaehtoinen)';
-
-  @override
   String get s2e3a66d384 =>
       'Jos kotilaite vastaa eri aiheeseen, kirjoita se tähän. Jätä tyhjäksi, jos vastaus tulee samaan aiheeseen – silloin oma lähetetty komento ohitetaan ja seuraava viesti näytetään vastauksena.';
-
-  @override
-  String get s5bc736c04a => 'Käyttöoikeustunnus (vapaaehtoinen)';
 
   @override
   String get s77feae14f5 =>
@@ -6013,21 +6183,12 @@ class AppLocalizationsFi extends AppLocalizations {
       'Kysyy PIN-koodin (piilotettuna) joka painalluksella ja lisää sen komennon perään. PIN-koodia ei tallenneta, ellet itse valitse \"Muista tällä laitteella\".';
 
   @override
-  String get sfee393b70e => 'Odota vastausta';
-
-  @override
   String get sfff5bc52e5 =>
       'Kuuntelee kotilaitteen vastausta ja näyttää sen tässä ruudussa (ja ilmoituksena, jos sovellus on taustalla).';
 
   @override
-  String get sbdcbe301b9 => 'Vastauksen odotus (s)';
-
-  @override
   String get s121542d6d7 =>
       'Kuinka kauan vastausta odotetaan, ennen kuin kerrotaan ettei vastausta tullut.';
-
-  @override
-  String get sa53638cfea => 'Vastaus näkyy ruudussa (s)';
 
   @override
   String get se6d21484a8 =>
@@ -6747,9 +6908,6 @@ class AppLocalizationsFi extends AppLocalizations {
       'Teksti, joka näkyy ruudussa, esim. \"Päivitä\" tai \"Tila\".';
 
   @override
-  String get s5bed8bff00 => 'Komento';
-
-  @override
   String get se2a81ae67d =>
       'Lähetettävä teksti. PIN lisätään perään välilyönnillä, esim. \"päivitä 1234\".';
 
@@ -6773,6 +6931,99 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s57e684ac9e => 'Viestit';
+
+  @override
+  String get s021372fd08 => 'ntfy-komentolaite';
+
+  @override
+  String get s120a222880 =>
+      'Laite, jota ohjataan ntfy-viesteillä: päälle/pois-kytkimet, tilan luku ja PIN. Toimii kotona ja muualla ilman kotisiltaa.';
+
+  @override
+  String get s7a46c8c335 => 'Komentokanava';
+
+  @override
+  String get s324f5e3b74 => 'Aihe (tai koko osoite), jota laite kuuntelee.';
+
+  @override
+  String get sc1ddf7feb4 =>
+      'Jos laite vastaa toiseen aiheeseen (esim. omaan ilmoitusaiheeseesi). Tyhjä = sama aihe.';
+
+  @override
+  String get s24779d22ca =>
+      'Jos vastauskanavalla on muitakin viestejä: vain tämän otsikon viestit ovat vastauksia.';
+
+  @override
+  String get s17c9df50af =>
+      'Tallennetaan salattuna. Lisätään komentoihin mallin mukaan.';
+
+  @override
+  String get s4427fd3bd1 =>
+      '{cmd} = komento, {pin} = PIN, {cid} = tunniste jonka laite toistaa. Esim. \"{cmd} {pin}\".';
+
+  @override
+  String get s4549a9cb7f =>
+      'Komento, johon laite vastaa tilallaan, esim. \"tila\" tai \"tila json\".';
+
+  @override
+  String get s5f019b05f1 => 'Tilavastauksen muoto';
+
+  @override
+  String get sb1f9470ebd =>
+      'JSON: {\"valo\": 1, …}. Teksti: \"Valo: PÄÄLLÄ, …\" – tila luetaan nimen perästä.';
+
+  @override
+  String get s96a5a283cf => 'JSON';
+
+  @override
+  String get s3f8b9eaf4b => 'Kytkimet (yksi per rivi: Nimi = avain)';
+
+  @override
+  String get sb7fd9fb70a =>
+      'Esim. \"Pihavalo = pihavalo\". Avain on sana, jota laite käyttää komennoissa ja tilassa.';
+
+  @override
+  String get s9efd151ae8 => 'Päälle-komento';
+
+  @override
+  String get s29d460cd3b =>
+      '{key} = kytkimen avain. Esim. \"{key} on\" → \"pihavalo on\".';
+
+  @override
+  String get s8dab09a808 => 'Pois-komento';
+
+  @override
+  String get s93698f5ccb => 'Kytkimien JSON-polun alku (vapaaehtoinen)';
+
+  @override
+  String get s2179eef80d =>
+      'Jos kytkimet ovat JSONissa ryhmän alla, esim. {\"relays\":{\"valo\":1}}, kirjoita \"relays.\" – avain luetaan silloin polusta relays.valo.';
+
+  @override
+  String get s50ade0ed0a => 'Tilaruudun JSON-polku (vapaaehtoinen)';
+
+  @override
+  String get s9049a8a920 =>
+      'Mitä tilaruutu näyttää JSON-vastauksesta, esim. \"state\". Tyhjä = koko vastaus.';
+
+  @override
+  String get s54b3e63eca => 'Tilan päivitysväli (s)';
+
+  @override
+  String get s22a6e8c7ef =>
+      'Kuinka usein tila kysytään. Ei koskaan lyhyempi kuin laitteen komentojen väli.';
+
+  @override
+  String get s91158c0de5 =>
+      'Jos laite vastaa vain esim. 30 s välein, kirjoita 30.';
+
+  @override
+  String get s23f70f51ff => 'Komentolaite';
+
+  @override
+  String sfeb36cc60a(String p0) {
+    return '$p0 – tila';
+  }
 
   @override
   String s3378eb2d0b(String p0) {

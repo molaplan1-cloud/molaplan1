@@ -7135,6 +7135,24 @@ abstract class AppLocalizations {
   /// **'Cannot use the camera ({p0}). Allow camera access or type the code.'**
   String s5d717bb2c5(String p0);
 
+  /// fi: Salli toiminta taustalla
+  ///
+  /// In en, this message translates to:
+  /// **'Allow running in the background'**
+  String get s12d40eedd5;
+
+  /// fi: Jotta kotisilta toimii näytön ollessa pois päältä, Android pitää sallia ajaa Molaplania taustalla ilman akunsäästörajoit
+  ///
+  /// In en, this message translates to:
+  /// **'For the bridge to work with the screen off, Android must let Molaplan run in the background without battery restrictions. Choose \"Allow\" in the next window.'**
+  String get s8e1fcae1fe;
+
+  /// fi: Jatka
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get sd62c460e3d;
+
   /// fi: Laite "{p0}" yhdistetty!
   ///
   /// In en, this message translates to:
@@ -7153,6 +7171,12 @@ abstract class AppLocalizations {
   /// **'Keep it on the charger and on the home Wi-Fi.'**
   String get sd64f52490d;
 
+  /// fi: Silta toimii taustalla: näytön voi sammuttaa ja Molaplanin sulkea. Se käynnistyy itsestään laitteen uudelleenkäynnistyks
+  ///
+  /// In en, this message translates to:
+  /// **'The bridge runs in the background: the screen can be off and Molaplan closed. It starts by itself after a restart and reconnects when the network returns.'**
+  String get seb25c46911;
+
   /// fi: Pidä Molaplan auki. Näyttö pysyy päällä, kun silta on käytössä.
   ///
   /// In en, this message translates to:
@@ -7164,6 +7188,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Use this device as the home bridge'**
   String get sbfed096278;
+
+  /// fi: Akunsäästö voi pysäyttää sillan
+  ///
+  /// In en, this message translates to:
+  /// **'Battery saving may stop the bridge'**
+  String get s374a096cb9;
+
+  /// fi: Salli Molaplanin toimia taustalla rajoituksetta.
+  ///
+  /// In en, this message translates to:
+  /// **'Let Molaplan run in the background without restrictions.'**
+  String get s9b1298f7c6;
+
+  /// fi: Salli
+  ///
+  /// In en, this message translates to:
+  /// **'Allow'**
+  String get sc8ef04815c;
 
   /// fi: Yhdistä puhelin
   ///
@@ -10585,6 +10627,270 @@ abstract class AppLocalizations {
   /// **'Auto'**
   String get s43c9b88580;
 
+  /// fi: ntfy-komentolaite (komennot + tila)
+  ///
+  /// In en, this message translates to:
+  /// **'ntfy command device (commands + state)'**
+  String get s30ae7f76e6;
+
+  /// fi: Komentokanava (aihe tai koko osoite)
+  ///
+  /// In en, this message translates to:
+  /// **'Command topic (name or full URL)'**
+  String get s6a4516e0fe;
+
+  /// fi: Aihe, jota kotilaite kuuntelee. Aiheen nimi on kuin salasana: pidä se pitkänä ja satunnaisena.
+  ///
+  /// In en, this message translates to:
+  /// **'The topic the home device listens to. The topic name works like a password: keep it long and random.'**
+  String get s6cfd0d8be1;
+
+  /// fi: Vastauskanava (vapaaehtoinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Reply topic (optional)'**
+  String get s800cd08229;
+
+  /// fi: Jos laite vastaa toiseen aiheeseen (esim. henkilökohtaiseen ilmoitusaiheeseen), kirjoita se tähän. Tyhjä = sama kuin kom
+  ///
+  /// In en, this message translates to:
+  /// **'If the device answers on another topic (e.g. your personal notification topic), type it here. Empty = the command topic.'**
+  String get s7e8c7a0cfc;
+
+  /// fi: PIN-koodi (vapaaehtoinen)
+  ///
+  /// In en, this message translates to:
+  /// **'PIN code (optional)'**
+  String get s7ea9d85150;
+
+  /// fi: Tallennetaan salattuna tähän laitteeseen. Lisätään komentoon mallin {pin}-kohtaan.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Stored encrypted on this device. Inserted where the template says {pin}.\''**
+  String get s0694fe4d2b;
+
+  /// fi: Komennon malli
+  ///
+  /// In en, this message translates to:
+  /// **'Command template'**
+  String get s4313c720cc;
+
+  /// fi: {cmd} = painikkeen komento, {pin} = PIN, {cid} = tunniste jonka laite toistaa vastauksessa, {value} = arvo (on/off tai l
+  ///
+  /// In en, this message translates to:
+  /// **'\'{cmd} = the button\'\'s command, {pin} = PIN, {cid} = an id the device echoes in its reply, {value} = the value (on/off or a number). E.g. \"{cmd} {pin}\" → \"light on 1234\".\''**
+  String get sd904dac1cc;
+
+  /// fi: Tilakomento
+  ///
+  /// In en, this message translates to:
+  /// **'Status command'**
+  String get sa45b65f571;
+
+  /// fi: Komento, johon laite vastaa tilallaan (esim. "tila" tai "tila json"). Kaikki tämän laitteen ruudut käyttävät samaa vasta
+  ///
+  /// In en, this message translates to:
+  /// **'The command the device answers with its state (e.g. \"status\" or \"status json\"). All tiles of this device share the reply.'**
+  String get se464d5ed51;
+
+  /// fi: Vastauksen otsikko sisältää (vapaaehtoinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Reply title contains (optional)'**
+  String get s821e8d2d9d;
+
+  /// fi: Vain viestit, joiden otsikossa on tämä teksti, lasketaan vastaukseksi – hyödyllinen, kun vastauskanavalla on muitakin il
+  ///
+  /// In en, this message translates to:
+  /// **'Only messages whose title contains this text count as the reply – useful when the reply topic carries other notifications too.'**
+  String get s949ee12ae6;
+
+  /// fi: Vastauksen tunniste (regex, vapaaehtoinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Reply must contain (regex, optional)'**
+  String get sfbcb5f18bd;
+
+  /// fi: Säännöllinen lauseke, joka vastauksessa pitää olla (otsikko + viesti).
+  ///
+  /// In en, this message translates to:
+  /// **'A regular expression the reply (title + message) must contain.'**
+  String get s79c983aa94;
+
+  /// fi: Tekstin tulkinta tiloiksi
+  ///
+  /// In en, this message translates to:
+  /// **'Text to state map'**
+  String get s081eff543d;
+
+  /// fi: Rivi per sääntö: "kuvio = arvo". Kuvio on regex, jonka pitää vastata koko luettua tekstiä (kirjainkoolla ei väliä). Tyhj
+  ///
+  /// In en, this message translates to:
+  /// **'One rule per line: \"pattern = value\". The pattern is a regex matching the whole captured text (case-insensitive). Empty = built-in Finnish and English on/off words.'**
+  String get s2afc1f1fb8;
+
+  /// fi: Virhevastaus (regex)
+  ///
+  /// In en, this message translates to:
+  /// **'Error reply (regex)'**
+  String get s0976f767e2;
+
+  /// fi: Vastaus, joka tarkoittaa virhettä (näytetään punaisena). Tyhjä = oletus (väärä PIN, virhe, error, denied…). JSON-vastauk
+  ///
+  /// In en, this message translates to:
+  /// **'A reply meaning an error (shown in red). Empty = default (wrong PIN, error, denied…). For JSON: ok:false or an error field.'**
+  String get sc0fd47e896;
+
+  /// fi: Komentojen väli vähintään (s)
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum time between commands (s)'**
+  String get s98d9efa888;
+
+  /// fi: Jos laite vastaa vain esim. 30 sekunnin välein, kirjoita 30: seuraava komento odottaa vuoroaan eikä huku.
+  ///
+  /// In en, this message translates to:
+  /// **'If the device answers only e.g. every 30 seconds, type 30: the next command waits its turn instead of being lost.'**
+  String get sa893722568;
+
+  /// fi: Vastauksen odotus (s)
+  ///
+  /// In en, this message translates to:
+  /// **'Wait for reply (s)'**
+  String get sbdcbe301b9;
+
+  /// fi: Kuinka kauan vastausta odotetaan ennen virheilmoitusta.
+  ///
+  /// In en, this message translates to:
+  /// **'How long to wait for the reply before showing an error.'**
+  String get s5e8e483f10;
+
+  /// fi: Tilavastaus voimassa (s)
+  ///
+  /// In en, this message translates to:
+  /// **'Status reply valid for (s)'**
+  String get s31312f141c;
+
+  /// fi: Saman laitteen ruudut käyttävät samaa tilavastausta tämän ajan – laitetta ei kysytä turhaan.
+  ///
+  /// In en, this message translates to:
+  /// **'Tiles of the same device share one status reply for this long – the device is not asked needlessly.'**
+  String get s0611790300;
+
+  /// fi: Käyttöoikeustunnus (vapaaehtoinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Access token (optional)'**
+  String get s5bc736c04a;
+
+  /// fi: Vain suojatulle aiheelle (ntfy-tili → Access tokens).
+  ///
+  /// In en, this message translates to:
+  /// **'Only for a protected topic (ntfy account → Access tokens).'**
+  String get scece580659;
+
+  /// fi: Oletus on julkinen ntfy.sh. Jos liitit yllä koko osoitteen, palvelin luetaan siitä.
+  ///
+  /// In en, this message translates to:
+  /// **'Default is the public ntfy.sh. A full URL above overrides this.'**
+  String get s7e91b10006;
+
+  /// fi: JSON-polku (JSON-vastaus)
+  ///
+  /// In en, this message translates to:
+  /// **'JSON path (JSON reply)'**
+  String get s1b5501c73f;
+
+  /// fi: Kun laite vastaa JSONilla, esim. $.pihavalo tai $.lahdot.sireeni.
+  ///
+  /// In en, this message translates to:
+  /// **'When the device answers with JSON, e.g. \$.light or \$.outputs.siren.'**
+  String get s1320bcddf2;
+
+  /// fi: Tekstistä (regex, ryhmä 1)
+  ///
+  /// In en, this message translates to:
+  /// **'From text (regex, group 1)'**
+  String get s4dc975c1cd;
+
+  /// fi: Kun vastaus on tekstiä: säännöllinen lauseke, jonka ensimmäinen sulkuryhmä on tila, esim. pihavalo:\s*(\S+).
+  ///
+  /// In en, this message translates to:
+  /// **'For a text reply: a regular expression whose first group is the state, e.g. light:\\s*(\\S+).'**
+  String get s21c23314ed;
+
+  /// fi: Tilakomento tälle ruudulle (vapaaehtoinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Status command for this tile (optional)'**
+  String get s63a305f2ab;
+
+  /// fi: Tyhjä = laitteen tilakomento.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty = the device\'\'s status command.'**
+  String get s89ad1c43b4;
+
+  /// fi: Komento
+  ///
+  /// In en, this message translates to:
+  /// **'Command'**
+  String get s5bed8bff00;
+
+  /// fi: Esim. "pihavalo on". PIN ja muut kohdat lisätään laitteen komentomallin mukaan.
+  ///
+  /// In en, this message translates to:
+  /// **'E.g. \"light on\". The PIN and other parts are added by the device\'\'s command template.'**
+  String get sec7af7b376;
+
+  /// fi: Odota vastausta
+  ///
+  /// In en, this message translates to:
+  /// **'Wait for the reply'**
+  String get sfee393b70e;
+
+  /// fi: Näyttää laitteen vastauksen (tai selkeän virheen) ruudussa.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows the device\'\'s reply (or a clear error) on the tile.'**
+  String get s3f4dda1fb9;
+
+  /// fi: Vastaus näkyy ruudussa (s)
+  ///
+  /// In en, this message translates to:
+  /// **'Reply stays on the tile (s)'**
+  String get sa53638cfea;
+
+  /// fi: ntfy: komento puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'ntfy: command missing'**
+  String get sb56e7e9f81;
+
+  /// fi: Ei vastausta (PIN?) – laite ei vastannut {p0} sekunnissa (aihe "{p1}"). Tarkista PIN-koodi: moni laite ei vastaa lainkaa
+  ///
+  /// In en, this message translates to:
+  /// **'No reply (PIN?) – the device did not answer within {p0} s (topic \"{p1}\"). Check the PIN: many devices do not answer a wrong PIN at all.'**
+  String s09f79d4fda(String p0, String p1);
+
+  /// fi: Laite ei vastannut {p0} sekunnissa (aihe "{p1}"). Jos laite vastaa vain tietyin väliajoin, kasvata "Vastauksen odotus" t
+  ///
+  /// In en, this message translates to:
+  /// **'The device did not answer within {p0} s (topic \"{p1}\"). If it answers only at intervals, increase \"Wait for reply\" or \"Minimum time between commands\".'**
+  String sf25dcf262f(String p0, String p1);
+
+  /// fi: Laite vastasi: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'The device answered: {p0}'**
+  String s1257447096(String p0);
+
+  /// fi:  PIN on tallennettu.
+  ///
+  /// In en, this message translates to:
+  /// **' A PIN is stored.'**
+  String get sf03877dd0a;
+
   /// fi: Modbus TCP
   ///
   /// In en, this message translates to:
@@ -10783,35 +11089,17 @@ abstract class AppLocalizations {
   /// **'ntfy (message channel / commands)'**
   String get sefaea1b818;
 
-  /// fi: Komentokanava (aihe tai koko osoite)
-  ///
-  /// In en, this message translates to:
-  /// **'Command topic (name or full URL)'**
-  String get s6a4516e0fe;
-
   /// fi: Aihe, johon komennot lähetetään. Voit liittää koko osoitteen, esim. https://ntfy.sh/oma-aihe – sama osoite jota iPhonen
   ///
   /// In en, this message translates to:
   /// **'Topic the commands are sent to. You can paste the full URL, e.g. https://ntfy.sh/my-topic – the same one your iPhone Shortcut uses. The topic name works like a password: keep it long and random.'**
   String get se003ecc10b;
 
-  /// fi: Vastauskanava (vapaaehtoinen)
-  ///
-  /// In en, this message translates to:
-  /// **'Reply topic (optional)'**
-  String get s800cd08229;
-
   /// fi: Jos kotilaite vastaa eri aiheeseen, kirjoita se tähän. Jätä tyhjäksi, jos vastaus tulee samaan aiheeseen – silloin oma l
   ///
   /// In en, this message translates to:
   /// **'If the home device replies on another topic, type it here. Leave empty if the reply comes on the same topic – our own command is then ignored and the next message is shown as the reply.'**
   String get s2e3a66d384;
-
-  /// fi: Käyttöoikeustunnus (vapaaehtoinen)
-  ///
-  /// In en, this message translates to:
-  /// **'Access token (optional)'**
-  String get s5bc736c04a;
 
   /// fi: Tarvitaan vain, jos aihe on suojattu (ntfy-tili → Access tokens). Julkiseen aiheeseen jätä tyhjäksi.
   ///
@@ -10903,35 +11191,17 @@ abstract class AppLocalizations {
   /// **'Asks for a PIN (hidden) on every press and appends it to the command. The PIN is not stored unless you choose \"Remember on this device\".'**
   String get sfcb5608064;
 
-  /// fi: Odota vastausta
-  ///
-  /// In en, this message translates to:
-  /// **'Wait for the reply'**
-  String get sfee393b70e;
-
   /// fi: Kuuntelee kotilaitteen vastausta ja näyttää sen tässä ruudussa (ja ilmoituksena, jos sovellus on taustalla).
   ///
   /// In en, this message translates to:
   /// **'Listens for the home device\'\'s reply and shows it in this tile (and as a notification when the app is in the background).'**
   String get sfff5bc52e5;
 
-  /// fi: Vastauksen odotus (s)
-  ///
-  /// In en, this message translates to:
-  /// **'Wait for reply (s)'**
-  String get sbdcbe301b9;
-
   /// fi: Kuinka kauan vastausta odotetaan, ennen kuin kerrotaan ettei vastausta tullut.
   ///
   /// In en, this message translates to:
   /// **'How long to wait before saying that no reply came.'**
   String get s121542d6d7;
-
-  /// fi: Vastaus näkyy ruudussa (s)
-  ///
-  /// In en, this message translates to:
-  /// **'Reply stays on the tile (s)'**
-  String get sa53638cfea;
 
   /// fi: Kuinka kauan vastaus näkyy ruudussa. 0 = kunnes painat uudelleen.
   ///
@@ -12193,12 +12463,6 @@ abstract class AppLocalizations {
   /// **'Text shown on the tile, e.g. \"Update\" or \"Status\".'**
   String get s1b08aa4646;
 
-  /// fi: Komento
-  ///
-  /// In en, this message translates to:
-  /// **'Command'**
-  String get s5bed8bff00;
-
   /// fi: Lähetettävä teksti. PIN lisätään perään välilyönnillä, esim. "päivitä 1234".
   ///
   /// In en, this message translates to:
@@ -12240,6 +12504,162 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Messages'**
   String get s57e684ac9e;
+
+  /// fi: ntfy-komentolaite
+  ///
+  /// In en, this message translates to:
+  /// **'ntfy command device'**
+  String get s021372fd08;
+
+  /// fi: Laite, jota ohjataan ntfy-viesteillä: päälle/pois-kytkimet, tilan luku ja PIN. Toimii kotona ja muualla ilman kotisiltaa
+  ///
+  /// In en, this message translates to:
+  /// **'A device controlled with ntfy messages: on/off switches, state and PIN. Works at home and away without a home bridge.'**
+  String get s120a222880;
+
+  /// fi: Komentokanava
+  ///
+  /// In en, this message translates to:
+  /// **'Command topic'**
+  String get s7a46c8c335;
+
+  /// fi: Aihe (tai koko osoite), jota laite kuuntelee.
+  ///
+  /// In en, this message translates to:
+  /// **'The topic (or full URL) the device listens to.'**
+  String get s324f5e3b74;
+
+  /// fi: Jos laite vastaa toiseen aiheeseen (esim. omaan ilmoitusaiheeseesi). Tyhjä = sama aihe.
+  ///
+  /// In en, this message translates to:
+  /// **'If the device answers on another topic (e.g. your notification topic). Empty = the same topic.'**
+  String get sc1ddf7feb4;
+
+  /// fi: Jos vastauskanavalla on muitakin viestejä: vain tämän otsikon viestit ovat vastauksia.
+  ///
+  /// In en, this message translates to:
+  /// **'If the reply topic has other messages too: only messages with this title are replies.'**
+  String get s24779d22ca;
+
+  /// fi: Tallennetaan salattuna. Lisätään komentoihin mallin mukaan.
+  ///
+  /// In en, this message translates to:
+  /// **'Stored encrypted. Added to commands by the template.'**
+  String get s17c9df50af;
+
+  /// fi: {cmd} = komento, {pin} = PIN, {cid} = tunniste jonka laite toistaa. Esim. "{cmd} {pin}".
+  ///
+  /// In en, this message translates to:
+  /// **'\'{cmd} = command, {pin} = PIN, {cid} = an id the device echoes. E.g. \"{cmd} {pin}\".\''**
+  String get s4427fd3bd1;
+
+  /// fi: Komento, johon laite vastaa tilallaan, esim. "tila" tai "tila json".
+  ///
+  /// In en, this message translates to:
+  /// **'The command the device answers with its state, e.g. \"status\" or \"status json\".'**
+  String get s4549a9cb7f;
+
+  /// fi: Tilavastauksen muoto
+  ///
+  /// In en, this message translates to:
+  /// **'Status reply format'**
+  String get s5f019b05f1;
+
+  /// fi: JSON: {"valo": 1, …}. Teksti: "Valo: PÄÄLLÄ, …" – tila luetaan nimen perästä.
+  ///
+  /// In en, this message translates to:
+  /// **'\'JSON: {\"light\": 1, …}. Text: \"Light: ON, …\" – the state is read after the name.\''**
+  String get sb1f9470ebd;
+
+  /// fi: JSON
+  ///
+  /// In en, this message translates to:
+  /// **'JSON'**
+  String get s96a5a283cf;
+
+  /// fi: Kytkimet (yksi per rivi: Nimi = avain)
+  ///
+  /// In en, this message translates to:
+  /// **'Switches (one per line: Name = key)'**
+  String get s3f8b9eaf4b;
+
+  /// fi: Esim. "Pihavalo = pihavalo". Avain on sana, jota laite käyttää komennoissa ja tilassa.
+  ///
+  /// In en, this message translates to:
+  /// **'E.g. \"Yard light = yardlight\". The key is the word the device uses in commands and state.'**
+  String get sb7fd9fb70a;
+
+  /// fi: Päälle-komento
+  ///
+  /// In en, this message translates to:
+  /// **'On command'**
+  String get s9efd151ae8;
+
+  /// fi: {key} = kytkimen avain. Esim. "{key} on" → "pihavalo on".
+  ///
+  /// In en, this message translates to:
+  /// **'\'{key} = the switch key. E.g. \"{key} on\" → \"light on\".\''**
+  String get s29d460cd3b;
+
+  /// fi: Pois-komento
+  ///
+  /// In en, this message translates to:
+  /// **'Off command'**
+  String get s8dab09a808;
+
+  /// fi: Kytkimien JSON-polun alku (vapaaehtoinen)
+  ///
+  /// In en, this message translates to:
+  /// **'JSON path prefix of the switches (optional)'**
+  String get s93698f5ccb;
+
+  /// fi: Jos kytkimet ovat JSONissa ryhmän alla, esim. {"relays":{"valo":1}}, kirjoita "relays." – avain luetaan silloin polusta
+  ///
+  /// In en, this message translates to:
+  /// **'\'If the switches sit under a group in the JSON, e.g. {\"relays\":{\"light\":1}}, type \"relays.\" – the key is then read from relays.light.\''**
+  String get s2179eef80d;
+
+  /// fi: Tilaruudun JSON-polku (vapaaehtoinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Status tile JSON path (optional)'**
+  String get s50ade0ed0a;
+
+  /// fi: Mitä tilaruutu näyttää JSON-vastauksesta, esim. "state". Tyhjä = koko vastaus.
+  ///
+  /// In en, this message translates to:
+  /// **'What the status tile shows from a JSON reply, e.g. \"state\". Empty = the whole reply.'**
+  String get s9049a8a920;
+
+  /// fi: Tilan päivitysväli (s)
+  ///
+  /// In en, this message translates to:
+  /// **'State refresh interval (s)'**
+  String get s54b3e63eca;
+
+  /// fi: Kuinka usein tila kysytään. Ei koskaan lyhyempi kuin laitteen komentojen väli.
+  ///
+  /// In en, this message translates to:
+  /// **'How often the state is asked. Never shorter than the device\'\'s minimum command interval.'**
+  String get s22a6e8c7ef;
+
+  /// fi: Jos laite vastaa vain esim. 30 s välein, kirjoita 30.
+  ///
+  /// In en, this message translates to:
+  /// **'If the device answers only e.g. every 30 s, type 30.'**
+  String get s91158c0de5;
+
+  /// fi: Komentolaite
+  ///
+  /// In en, this message translates to:
+  /// **'Command device'**
+  String get s23f70f51ff;
+
+  /// fi: {p0} – tila
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} – state'**
+  String sfeb36cc60a(String p0);
 
   /// fi: {p0} – lämpötila
   ///

@@ -2678,6 +2678,14 @@
  "@se9ee46a9c8": {
   "x-mt": true
  },
+ "s45fbc06cdf": "Mer Mer",
+ "@s45fbc06cdf": {
+  "x-mt": true
+ },
+ "s0557e03436": "Lägg till en knapp på framsidan",
+ "@s0557e03436": {
+  "x-mt": true
+ },
  "sfd2d047cb2": "Avancerat",
  "s766b50721b": "{p0} steg",
  "@s766b50721b": {
@@ -2685,6 +2693,10 @@
  },
  "s061d1b874b": "fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärrfjärr fjärrfjärr fjärrfjärr fjärr fjärrfjärr fjärrfjärr fjärrfjärrfjärrfjärr fjärr fjärr fjärr fjärrfjärrfjärrfjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr f",
  "@s061d1b874b": {
+  "x-mt": true
+ },
+ "sdae343a445": "Knapp till {p0}",
+ "@sdae343a445": {
   "x-mt": true
  },
  "sb886978015": "Redigera script",
@@ -2715,6 +2727,14 @@
  "@sea09cb0d3b": {
   "x-mt": true
  },
+ "s4436dfd836": "Extern trigger (PIN) är på",
+ "@s4436dfd836": {
+  "x-mt": true
+ },
+ "s759ff4cada": "Extern trigger, t.ex. iPhone genvägar",
+ "@s759ff4cada": {
+  "x-mt": true
+ },
  "s420f3ec828": "Extern start (valfritt)",
  "sb3cef805ee": "Skriptets knapp fungerar utan detta: den kör skriptet i appen, och genom fjärråtkomst automatiskt när du är borta. Du behöver bara detta för att starta skriptet från utanför Molaplan, t.ex. iPhone genvägar.",
  "@sb3cef805ee": {
@@ -2741,6 +2761,34 @@
   "x-mt": true
  },
  "sff9b69c6ca": "Klar",
+ "sa32d82e779": "Knapp i appen",
+ "@sa32d82e779": {
+  "x-mt": true
+ },
+ "s65fc3dd69a": "Knappen kör manuset med en kran. Det fungerar hemma och även hemifrån genom hembron - inga genvägar behövs.",
+ "@s65fc3dd69a": {
+  "x-mt": true
+ },
+ "s89638a5b8e": "Knapp i utsikten {p0}",
+ "@s89638a5b8e": {
+  "x-mt": true
+ },
+ "s509056a76d": "Lägg till en annan knapp",
+ "@s509056a76d": {
+  "x-mt": true
+ },
+ "s0f8939787f": "Knappen skapas när du sparar.",
+ "@s0f8939787f": {
+  "x-mt": true
+ },
+ "s5a8c602b42": "Visa vy",
+ "@s5a8c602b42": {
+  "x-mt": true
+ },
+ "se49d14ff44": "Vilken vy får knappen?",
+ "@se49d14ff44": {
+  "x-mt": true
+ },
  "s09f745552a": "Spara nuvarande stat",
  "@s09f745552a": {
   "x-mt": true
@@ -4316,6 +4364,10 @@
  "@s856418521a": {
   "x-mt": true
  },
+ "sb0ba67e677": "Ran på {p0}",
+ "@sb0ba67e677": {
+  "x-mt": true
+ },
  "sdfa66ee201": "{p0}: Sänd",
  "@sdfa66ee201": {
   "x-mt": true
@@ -5308,6 +5360,31 @@
   "x-mt": true
  },
  "s43c9b88580": "Auto",
+ "s6a4516e0fe": "Kommandoämne (namn eller fullständig URL)",
+ "@s6a4516e0fe": {
+  "x-mt": true
+ },
+ "s800cd08229": "Svara på ämne (valfritt)",
+ "@s800cd08229": {
+  "x-mt": true
+ },
+ "sbdcbe301b9": "Vänta på svar (s)",
+ "@sbdcbe301b9": {
+  "x-mt": true
+ },
+ "s5bc736c04a": "Access token (tillval)",
+ "@s5bc736c04a": {
+  "x-mt": true
+ },
+ "s5bed8bff00": "Kommando",
+ "sfee393b70e": "Vänta på svaret",
+ "@sfee393b70e": {
+  "x-mt": true
+ },
+ "sa53638cfea": "Svaret stannar på plattan (s)",
+ "@sa53638cfea": {
+  "x-mt": true
+ },
  "s36fb6ba26f": "Modbus TCP",
  "sa70cc38354": "Värd",
  "@sa70cc38354": {
@@ -5437,24 +5514,12 @@
  "@sefaea1b818": {
   "x-mt": true
  },
- "s6a4516e0fe": "Kommandoämne (namn eller fullständig URL)",
- "@s6a4516e0fe": {
-  "x-mt": true
- },
  "se003ecc10b": "Ämne kommandon skickas till. Du kan klistra in hela URL, t.ex. https://ntfy.sh/my-topic - samma som din iPhone Shortcut använder. ämnesnamnet fungerar som ett lösenord: hålla det länge och slumpmässigt.",
  "@se003ecc10b": {
   "x-mt": true
  },
- "s800cd08229": "Svara på ämne (valfritt)",
- "@s800cd08229": {
-  "x-mt": true
- },
  "s2e3a66d384": "Om hemenheten svarar på ett annat ämne, skriv det här. Lämna tomt om svaret kommer på samma ämne - vårt eget kommando ignoreras sedan och nästa meddelande visas som svaret.",
  "@s2e3a66d384": {
-  "x-mt": true
- },
- "s5bc736c04a": "Access token (tillval)",
- "@s5bc736c04a": {
   "x-mt": true
  },
  "s77feae14f5": "Endast behövs för ett skyddat ämne (ntfy-konto → Access-tokens). Lämna tomt för ett offentligt ämne.",
@@ -5517,24 +5582,12 @@
  "@sfcb5608064": {
   "x-mt": true
  },
- "sfee393b70e": "Vänta på svaret",
- "@sfee393b70e": {
-  "x-mt": true
- },
  "sfff5bc52e5": "Lyssnar på hemenhetens svar och visar det i den här kakeln (och som ett meddelande när appen är i bakgrunden).",
  "@sfff5bc52e5": {
   "x-mt": true
  },
- "sbdcbe301b9": "Vänta på svar (s)",
- "@sbdcbe301b9": {
-  "x-mt": true
- },
  "s121542d6d7": "Hur lång tid att vänta innan du säger att inget svar kom.",
  "@s121542d6d7": {
-  "x-mt": true
- },
- "sa53638cfea": "Svaret stannar på plattan (s)",
- "@sa53638cfea": {
   "x-mt": true
  },
  "se6d21484a8": "Hur länge svaret stannar på kakeln. 0 = tills nästa press.",
@@ -6287,7 +6340,6 @@
  "@s1b08aa4646": {
   "x-mt": true
  },
- "s5bed8bff00": "Kommando",
  "se2a81ae67d": "Texten att skicka. PIN-koden läggs till efter ett utrymme, t.ex. \"uppdatera 1234\".",
  "@se2a81ae67d": {
   "x-mt": true
@@ -6313,6 +6365,9 @@
   "x-mt": true
  },
  "s57e684ac9e": "Meddelanden",
+ "sb1f9470ebd": "'JSON: {\"light\": 1, …}. Text: \"Light: ON, …\" – the state is read after the name.'",
+ "s96a5a283cf": "JSON",
+ "s2179eef80d": "'If the switches sit under a group in the JSON, e.g. {\"relays\":{\"light\":1}}, type \"relays.\" – the key is then read from relays.light.'",
  "s3378eb2d0b": "{p0} – temperatur",
  "@s3378eb2d0b": {
   "x-mt": true
@@ -6333,56 +6388,272 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "s45fbc06cdf": "Mer Mer",
- "@s45fbc06cdf": {
+ "s12d40eedd5": "Låt springa i bakgrunden",
+ "@s12d40eedd5": {
   "x-mt": true
  },
- "s0557e03436": "Lägg till en knapp på framsidan",
- "@s0557e03436": {
+ "s8e1fcae1fe": "För att bron ska fungera med skärmen måste Android låta Molaplan köras i bakgrunden utan batteribegränsningar. Välj \"Tillåt\" i nästa fönster.",
+ "@s8e1fcae1fe": {
   "x-mt": true
  },
- "sdae343a445": "Knapp till {p0}",
- "@sdae343a445": {
+ "sd62c460e3d": "Fortsätt",
+ "@sd62c460e3d": {
   "x-mt": true
  },
- "s4436dfd836": "Extern trigger (PIN) är på",
- "@s4436dfd836": {
+ "seb25c46911": "Bron körs i bakgrunden: skärmen kan vara avstängd och Molaplan stängd. Det börjar själv efter en omstart och återansluter när nätverket återvänder.",
+ "@seb25c46911": {
   "x-mt": true
  },
- "s759ff4cada": "Extern trigger, t.ex. iPhone genvägar",
- "@s759ff4cada": {
+ "s374a096cb9": "Batteribesparing kan stoppa bron",
+ "@s374a096cb9": {
   "x-mt": true
  },
- "sa32d82e779": "Knapp i appen",
- "@sa32d82e779": {
+ "s9b1298f7c6": "Låt Molaplan springa i bakgrunden utan begränsningar.",
+ "@s9b1298f7c6": {
   "x-mt": true
  },
- "s65fc3dd69a": "Knappen kör manuset med en kran. Det fungerar hemma och även hemifrån genom hembron - inga genvägar behövs.",
- "@s65fc3dd69a": {
+ "sc8ef04815c": "Tillåt",
+ "@sc8ef04815c": {
   "x-mt": true
  },
- "s89638a5b8e": "Knapp i utsikten {p0}",
- "@s89638a5b8e": {
+ "s30ae7f76e6": "ntfy kommandoenhet (kommandon + stat)",
+ "@s30ae7f76e6": {
   "x-mt": true
  },
- "s509056a76d": "Lägg till en annan knapp",
- "@s509056a76d": {
+ "s6cfd0d8be1": "Ämnet som hemmet enheten lyssnar på. Ämnet namn fungerar som ett lösenord: hålla det lång och slumpmässig.",
+ "@s6cfd0d8be1": {
   "x-mt": true
  },
- "s0f8939787f": "Knappen skapas när du sparar.",
- "@s0f8939787f": {
+ "s7e8c7a0cfc": "Om enheten svarar på ett annat ämne (t.ex. ditt personliga meddelandeämne), skriv det här. Empty = kommandoämnet.",
+ "@s7e8c7a0cfc": {
   "x-mt": true
  },
- "s5a8c602b42": "Visa vy",
- "@s5a8c602b42": {
+ "s7ea9d85150": "PIN-kod (tillval)",
+ "@s7ea9d85150": {
   "x-mt": true
  },
- "se49d14ff44": "Vilken vy får knappen?",
- "@se49d14ff44": {
+ "s0694fe4d2b": "'Förvarad krypterad på den här enheten. Infogad där mallen säger {pin}.'",
+ "@s0694fe4d2b": {
   "x-mt": true
  },
- "sb0ba67e677": "Ran på {p0}",
- "@sb0ba67e677": {
+ "s4313c720cc": "Kommando mall",
+ "@s4313c720cc": {
+  "x-mt": true
+ },
+ "sd904dac1cc": "'{cmd} = knappens kommando, {pin} = PIN, {cid} = ett id enheten echoes i sitt svar, {värde} = värdet (på / av eller ett nummer). t.ex. \"{cmd} {pin}\" → \"ljus på 1234\".'",
+ "@sd904dac1cc": {
+  "x-mt": true
+ },
+ "sa45b65f571": "Status kommando",
+ "@sa45b65f571": {
+  "x-mt": true
+ },
+ "se464d5ed51": "Kommandot enheten svarar med sitt tillstånd (t.ex. \"status\" eller \"status json\"). Alla kort av denna enhet delar svaret.",
+ "@se464d5ed51": {
+  "x-mt": true
+ },
+ "s821e8d2d9d": "Svara titeln innehåller (valfritt)",
+ "@s821e8d2d9d": {
+  "x-mt": true
+ },
+ "s949ee12ae6": "Endast meddelanden vars titel innehåller denna text räknas som svaret - användbart när svarsämnet bär andra meddelanden också.",
+ "@s949ee12ae6": {
+  "x-mt": true
+ },
+ "sfbcb5f18bd": "Svaret måste innehålla (regex, valfritt)",
+ "@sfbcb5f18bd": {
+  "x-mt": true
+ },
+ "s79c983aa94": "Ett vanligt uttryck som svaret (titel + meddelande) måste innehålla.",
+ "@s79c983aa94": {
+  "x-mt": true
+ },
+ "s081eff543d": "Text till statlig karta",
+ "@s081eff543d": {
+  "x-mt": true
+ },
+ "s2afc1f1fb8": "En regel per rad: \"mönster = värde\". Mönstret är en regex som matchar hela den fångade texten (fall-insensitiv). Empty = inbyggd finska och engelska på/av ord.",
+ "@s2afc1f1fb8": {
+  "x-mt": true
+ },
+ "s0976f767e2": "Fel svar (regex)",
+ "@s0976f767e2": {
+  "x-mt": true
+ },
+ "sc0fd47e896": "Ett svar som betyder ett fel (visas i rött) Empty = standard (fel PIN, fel, nekad ...). För JSON: ok:false eller ett felfält.",
+ "@sc0fd47e896": {
+  "x-mt": true
+ },
+ "s98d9efa888": "Minimitid mellan kommandon (s)",
+ "@s98d9efa888": {
+  "x-mt": true
+ },
+ "sa893722568": "Om enheten svarar endast t.ex. var 30:e sekund, typ 30: nästa kommando väntar sin tur istället för att gå vilse.",
+ "@sa893722568": {
+  "x-mt": true
+ },
+ "s5e8e483f10": "Hur lång tid att vänta på svaret innan du visar ett fel.",
+ "@s5e8e483f10": {
+  "x-mt": true
+ },
+ "s31312f141c": "Status svar giltigt för (s)",
+ "@s31312f141c": {
+  "x-mt": true
+ },
+ "s0611790300": "Kort av samma enhet delar en status svar så länge - enheten är inte ombedd onödigt.",
+ "@s0611790300": {
+  "x-mt": true
+ },
+ "scece580659": "Endast för ett skyddat ämne (ntfy-konto → Access-tokens).",
+ "@scece580659": {
+  "x-mt": true
+ },
+ "s7e91b10006": "Standard är den offentliga ntfy.sh. En fullständig URL ovan åsidosätter detta.",
+ "@s7e91b10006": {
+  "x-mt": true
+ },
+ "s1b5501c73f": "JSON väg (JSON svar)",
+ "@s1b5501c73f": {
+  "x-mt": true
+ },
+ "s1320bcddf2": "När enheten svarar med JSON, t.ex. $.light eller $.outputs.siren.",
+ "@s1320bcddf2": {
+  "x-mt": true
+ },
+ "s4dc975c1cd": "Från text (regex, grupp 1)",
+ "@s4dc975c1cd": {
+  "x-mt": true
+ },
+ "s21c23314ed": "För ett textsvar: ett vanligt uttryck vars första grupp är staten, t.ex. ljus:\\s*(\\S+).",
+ "@s21c23314ed": {
+  "x-mt": true
+ },
+ "s63a305f2ab": "Statuskommando för detta kort (valfritt)",
+ "@s63a305f2ab": {
+  "x-mt": true
+ },
+ "s89ad1c43b4": "Tomt = enhetens statuskommando.",
+ "@s89ad1c43b4": {
+  "x-mt": true
+ },
+ "sec7af7b376": "t.ex. \"ljus på\". PIN och andra delar läggs till av enhetens kommandomall.",
+ "@sec7af7b376": {
+  "x-mt": true
+ },
+ "s3f4dda1fb9": "Visar enhetens svar (eller ett tydligt fel) på kortet.",
+ "@s3f4dda1fb9": {
+  "x-mt": true
+ },
+ "sb56e7e9f81": "ntfy: kommandot saknas",
+ "@sb56e7e9f81": {
+  "x-mt": true
+ },
+ "s09f79d4fda": "Inget svar (PIN?) - enheten svarade inte inom {p0} s (topiskt \"{p1}\"). Kontrollera PIN: många enheter svarar inte på fel PIN alls.",
+ "@s09f79d4fda": {
+  "x-mt": true
+ },
+ "sf25dcf262f": "Enheten svarade inte inom {p0} s (topisk \"{p1}\"). Om den svarar endast vid intervaller, öka \"Vänta på svar\" eller \"Minimum tid mellan kommandon\".",
+ "@sf25dcf262f": {
+  "x-mt": true
+ },
+ "s1257447096": "Enheten svarade: {p0}",
+ "@s1257447096": {
+  "x-mt": true
+ },
+ "sf03877dd0a": " En PIN lagras.",
+ "@sf03877dd0a": {
+  "x-mt": true
+ },
+ "s021372fd08": "ntfy kommandoenhet",
+ "@s021372fd08": {
+  "x-mt": true
+ },
+ "s120a222880": "En enhet som styrs med ntfy-meddelanden: on/off switchar, stat och PIN. Arbetar hemma och bort utan en hembro.",
+ "@s120a222880": {
+  "x-mt": true
+ },
+ "s7a46c8c335": "Kommandoämne",
+ "@s7a46c8c335": {
+  "x-mt": true
+ },
+ "s324f5e3b74": "Ämnet (eller full URL) som enheten lyssnar på.",
+ "@s324f5e3b74": {
+  "x-mt": true
+ },
+ "sc1ddf7feb4": "Om enheten svarar på ett annat ämne (t.ex. ditt anmälningsämne). Empty = samma ämne.",
+ "@sc1ddf7feb4": {
+  "x-mt": true
+ },
+ "s24779d22ca": "Om svarsämnet också har andra meddelanden: endast meddelanden med denna titel är svar.",
+ "@s24779d22ca": {
+  "x-mt": true
+ },
+ "s17c9df50af": "Lagras krypterad. Läggs till kommandon av mallen.",
+ "@s17c9df50af": {
+  "x-mt": true
+ },
+ "s4427fd3bd1": "'{cmd} = kommando, {pin} = PIN, {cid} = en id enhet echoes. e.g. \"{cmd} {pin}\".'",
+ "@s4427fd3bd1": {
+  "x-mt": true
+ },
+ "s4549a9cb7f": "Kommandot enheten svarar med sitt tillstånd, t.ex. \"status\" eller \"status json\".",
+ "@s4549a9cb7f": {
+  "x-mt": true
+ },
+ "s5f019b05f1": "Status reply format",
+ "@s5f019b05f1": {
+  "x-mt": true
+ },
+ "s3f8b9eaf4b": "Switches (en per rad: Namn = nyckel)",
+ "@s3f8b9eaf4b": {
+  "x-mt": true
+ },
+ "sb7fd9fb70a": "E.g. \"Yard light = yardlight\". Nyckeln är ordet enheten använder i kommandon och tillstånd.",
+ "@sb7fd9fb70a": {
+  "x-mt": true
+ },
+ "s9efd151ae8": "På kommando",
+ "@s9efd151ae8": {
+  "x-mt": true
+ },
+ "s29d460cd3b": "'{key} = växelnyckeln. t.ex. \"{key} on\" → \"light on\".'",
+ "@s29d460cd3b": {
+  "x-mt": true
+ },
+ "s8dab09a808": "Off kommando",
+ "@s8dab09a808": {
+  "x-mt": true
+ },
+ "s93698f5ccb": "JSON-banan prefix av växlarna (tillval)",
+ "@s93698f5ccb": {
+  "x-mt": true
+ },
+ "s50ade0ed0a": "Statuskort JSON-banan (valfritt)",
+ "@s50ade0ed0a": {
+  "x-mt": true
+ },
+ "s9049a8a920": "Vad statuskortet visar från ett JSON svar, t.ex. \"state\". Empty = hela svaret.",
+ "@s9049a8a920": {
+  "x-mt": true
+ },
+ "s54b3e63eca": "Statligt uppdaterat intervall (s)",
+ "@s54b3e63eca": {
+  "x-mt": true
+ },
+ "s22a6e8c7ef": "Hur ofta är staten frågad. Aldrig kortare än enhetens minsta kommandointervall.",
+ "@s22a6e8c7ef": {
+  "x-mt": true
+ },
+ "s91158c0de5": "Om enheten svarar endast t.ex. var 30: e, typ 30.",
+ "@s91158c0de5": {
+  "x-mt": true
+ },
+ "s23f70f51ff": "Kommando enhet",
+ "@s23f70f51ff": {
+  "x-mt": true
+ },
+ "sfeb36cc60a": "{p0} – staten",
+ "@sfeb36cc60a": {
   "x-mt": true
  }
 }

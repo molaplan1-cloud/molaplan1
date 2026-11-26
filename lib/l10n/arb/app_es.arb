@@ -2675,6 +2675,14 @@
  "@se9ee46a9c8": {
   "x-mt": true
  },
+ "s45fbc06cdf": "Más",
+ "@s45fbc06cdf": {
+  "x-mt": true
+ },
+ "s0557e03436": "Añadir un botón a la página principal",
+ "@s0557e03436": {
+  "x-mt": true
+ },
  "sfd2d047cb2": "Avanzado",
  "s766b50721b": "{p0} pasos",
  "@s766b50721b": {
@@ -2682,6 +2690,10 @@
  },
  "s061d1b874b": "remoto",
  "@s061d1b874b": {
+  "x-mt": true
+ },
+ "sdae343a445": "Button añadió a {p0}",
+ "@sdae343a445": {
   "x-mt": true
  },
  "sb886978015": "Editar script",
@@ -2707,6 +2719,14 @@
  "s637ae4dbf4": "Script de Molaplan",
  "sea09cb0d3b": "Funciones: ponerse en marcha toggle wait notify scene price cheap temp time hour weekday log. Ningún archivo o acceso a la red; 10 min time limit.",
  "@sea09cb0d3b": {
+  "x-mt": true
+ },
+ "s4436dfd836": "El gatillo externo (PIN) está encendido",
+ "@s4436dfd836": {
+  "x-mt": true
+ },
+ "s759ff4cada": "Detonante externo, por ejemplo, atajos de iPhone",
+ "@s759ff4cada": {
   "x-mt": true
  },
  "s420f3ec828": "Activación externa (opcional)",
@@ -2735,6 +2755,34 @@
   "x-mt": true
  },
  "sff9b69c6ca": "Listo",
+ "sa32d82e779": "Botón en la aplicación",
+ "@sa32d82e779": {
+  "x-mt": true
+ },
+ "s65fc3dd69a": "El botón ejecuta el script con un toque. Funciona en casa y también lejos de casa a través del puente de inicio – no se necesitan atajos.",
+ "@s65fc3dd69a": {
+  "x-mt": true
+ },
+ "s89638a5b8e": "Botón en la vista {p0}",
+ "@s89638a5b8e": {
+  "x-mt": true
+ },
+ "s509056a76d": "Añadir otro botón",
+ "@s509056a76d": {
+  "x-mt": true
+ },
+ "s0f8939787f": "El botón se crea cuando se guarda.",
+ "@s0f8939787f": {
+  "x-mt": true
+ },
+ "s5a8c602b42": "Vista",
+ "@s5a8c602b42": {
+  "x-mt": true
+ },
+ "se49d14ff44": "¿Qué vista tiene el botón?",
+ "@se49d14ff44": {
+  "x-mt": true
+ },
  "s09f745552a": "Guardar el estado actual",
  "@s09f745552a": {
   "x-mt": true
@@ -4307,6 +4355,10 @@
  "@s856418521a": {
   "x-mt": true
  },
+ "sb0ba67e677": "Ran en {p0}",
+ "@sb0ba67e677": {
+  "x-mt": true
+ },
  "sdfa66ee201": "{p0}: sent",
  "@sdfa66ee201": {
   "x-mt": true
@@ -5296,6 +5348,31 @@
  },
  "s120026628c": "No se pudo conectar con {p0}.",
  "s43c9b88580": "Auto",
+ "s6a4516e0fe": "Tema de comando (nombre o URL completa)",
+ "@s6a4516e0fe": {
+  "x-mt": true
+ },
+ "s800cd08229": "Tema de respuesta (opcional)",
+ "@s800cd08229": {
+  "x-mt": true
+ },
+ "sbdcbe301b9": "Esperar respuesta (s)",
+ "@sbdcbe301b9": {
+  "x-mt": true
+ },
+ "s5bc736c04a": "Acceso a la ficha (opcional)",
+ "@s5bc736c04a": {
+  "x-mt": true
+ },
+ "s5bed8bff00": "Comando",
+ "sfee393b70e": "Esperar la respuesta",
+ "@sfee393b70e": {
+  "x-mt": true
+ },
+ "sa53638cfea": "Responder permanece en la baldosa (s)",
+ "@sa53638cfea": {
+  "x-mt": true
+ },
  "s36fb6ba26f": "Modbus TCP",
  "sa70cc38354": "Host",
  "@sa70cc38354": {
@@ -5425,24 +5502,12 @@
  "@sefaea1b818": {
   "x-mt": true
  },
- "s6a4516e0fe": "Tema de comando (nombre o URL completa)",
- "@s6a4516e0fe": {
-  "x-mt": true
- },
  "se003ecc10b": "Topic the commands are sent to. Usted puede pegar la URL completa, por ejemplo https://ntfy.sh/my-topic – el mismo que su iPhone Shortcut utiliza. El nombre del tema funciona como una contraseña: mantenerlo largo y aleatorio.",
  "@se003ecc10b": {
   "x-mt": true
  },
- "s800cd08229": "Tema de respuesta (opcional)",
- "@s800cd08229": {
-  "x-mt": true
- },
  "s2e3a66d384": "Si el dispositivo de inicio responde a otro tema, escríbelo aquí. Deja vacío si la respuesta viene sobre el mismo tema – nuestro propio comando es ignorado y el siguiente mensaje se muestra como la respuesta.",
  "@s2e3a66d384": {
-  "x-mt": true
- },
- "s5bc736c04a": "Acceso a la ficha (opcional)",
- "@s5bc736c04a": {
   "x-mt": true
  },
  "s77feae14f5": "Sólo se necesita para un tema protegido (cuenta n ostensible → Acceso fichas). Dejar vacío para un tema público.",
@@ -5505,24 +5570,12 @@
  "@sfcb5608064": {
   "x-mt": true
  },
- "sfee393b70e": "Esperar la respuesta",
- "@sfee393b70e": {
-  "x-mt": true
- },
  "sfff5bc52e5": "Escucha la respuesta del dispositivo de inicio y lo muestra en esta ficha (y como notificación cuando la aplicación está en el fondo).",
  "@sfff5bc52e5": {
   "x-mt": true
  },
- "sbdcbe301b9": "Esperar respuesta (s)",
- "@sbdcbe301b9": {
-  "x-mt": true
- },
  "s121542d6d7": "Cuánto tiempo para esperar antes de decir que no hubo respuesta.",
  "@s121542d6d7": {
-  "x-mt": true
- },
- "sa53638cfea": "Responder permanece en la baldosa (s)",
- "@sa53638cfea": {
   "x-mt": true
  },
  "se6d21484a8": "Cuanto tiempo la respuesta se mantiene en la baldosa. 0 = hasta la siguiente prensa.",
@@ -6269,7 +6322,6 @@
  "@s1b08aa4646": {
   "x-mt": true
  },
- "s5bed8bff00": "Comando",
  "se2a81ae67d": "El texto a enviar. El PIN se adjunta después de un espacio, por ejemplo \"actualizar 1234\".",
  "@se2a81ae67d": {
   "x-mt": true
@@ -6295,6 +6347,9 @@
   "x-mt": true
  },
  "s57e684ac9e": "Mensajes",
+ "sb1f9470ebd": "'JSON: {\"light\": 1, …}. Text: \"Light: ON, …\" – the state is read after the name.'",
+ "s96a5a283cf": "JSON",
+ "s2179eef80d": "'If the switches sit under a group in the JSON, e.g. {\"relays\":{\"light\":1}}, type \"relays.\" – the key is then read from relays.light.'",
  "s3378eb2d0b": "{p0} – temperature",
  "@s3378eb2d0b": {
   "x-mt": true
@@ -6315,56 +6370,272 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "s45fbc06cdf": "Más",
- "@s45fbc06cdf": {
+ "s12d40eedd5": "Permitir correr en el fondo",
+ "@s12d40eedd5": {
   "x-mt": true
  },
- "s0557e03436": "Añadir un botón a la página principal",
- "@s0557e03436": {
+ "s8e1fcae1fe": "Para que el puente funcione con la pantalla apagada, Android debe dejar que Molaplan funcione en el fondo sin restricciones de la batería. Elija \"Permitir\" en la siguiente ventana.",
+ "@s8e1fcae1fe": {
   "x-mt": true
  },
- "sdae343a445": "Button añadió a {p0}",
- "@sdae343a445": {
+ "sd62c460e3d": "Continuar",
+ "@sd62c460e3d": {
   "x-mt": true
  },
- "s4436dfd836": "El gatillo externo (PIN) está encendido",
- "@s4436dfd836": {
+ "seb25c46911": "El puente funciona en el fondo: la pantalla puede estar apagada y Molaplan cerrado. Comienza por sí mismo después de un reinicio y reconecta cuando la red regresa.",
+ "@seb25c46911": {
   "x-mt": true
  },
- "s759ff4cada": "Detonante externo, por ejemplo, atajos de iPhone",
- "@s759ff4cada": {
+ "s374a096cb9": "El ahorro de batería puede detener el puente",
+ "@s374a096cb9": {
   "x-mt": true
  },
- "sa32d82e779": "Botón en la aplicación",
- "@sa32d82e779": {
+ "s9b1298f7c6": "Deja que Molaplan funcione en el fondo sin restricciones.",
+ "@s9b1298f7c6": {
   "x-mt": true
  },
- "s65fc3dd69a": "El botón ejecuta el script con un toque. Funciona en casa y también lejos de casa a través del puente de inicio – no se necesitan atajos.",
- "@s65fc3dd69a": {
+ "sc8ef04815c": "Permiso",
+ "@sc8ef04815c": {
   "x-mt": true
  },
- "s89638a5b8e": "Botón en la vista {p0}",
- "@s89638a5b8e": {
+ "s30ae7f76e6": "dispositivo de comando ntfy (commands + state)",
+ "@s30ae7f76e6": {
   "x-mt": true
  },
- "s509056a76d": "Añadir otro botón",
- "@s509056a76d": {
+ "s6cfd0d8be1": "El tema que el dispositivo de casa escucha. El nombre del tema funciona como una contraseña: mantenerlo largo y aleatorio.",
+ "@s6cfd0d8be1": {
   "x-mt": true
  },
- "s0f8939787f": "El botón se crea cuando se guarda.",
- "@s0f8939787f": {
+ "s7e8c7a0cfc": "Si el dispositivo responde a otro tema (por ejemplo, su tema de notificación personal), escríbalo aquí. Vacío = el tema del comando.",
+ "@s7e8c7a0cfc": {
   "x-mt": true
  },
- "s5a8c602b42": "Vista",
- "@s5a8c602b42": {
+ "s7ea9d85150": "Código PIN (opcional)",
+ "@s7ea9d85150": {
   "x-mt": true
  },
- "se49d14ff44": "¿Qué vista tiene el botón?",
- "@se49d14ff44": {
+ "s0694fe4d2b": "'Guardado encriptado en este dispositivo. Insertado donde la plantilla dice {pin}.'",
+ "@s0694fe4d2b": {
   "x-mt": true
  },
- "sb0ba67e677": "Ran en {p0}",
- "@sb0ba67e677": {
+ "s4313c720cc": "Plantilla de comandos",
+ "@s4313c720cc": {
+  "x-mt": true
+ },
+ "sd904dac1cc": "'{cmd} = el comando del botón, {pin} = PIN, {cid} = un id el dispositivo se hace eco en su respuesta, {valor} = el valor (on/off o un número). E.g. \"{cmd} {pin}\" → \"light on 1234\".'",
+ "@sd904dac1cc": {
+  "x-mt": true
+ },
+ "sa45b65f571": "Control de estado",
+ "@sa45b65f571": {
+  "x-mt": true
+ },
+ "se464d5ed51": "El comando el dispositivo responde con su estado (por ejemplo, \"status\" o \"status json\"). Todas las tarjetas de este dispositivo comparten la respuesta.",
+ "@se464d5ed51": {
+  "x-mt": true
+ },
+ "s821e8d2d9d": "Título de la respuesta contiene (opcional)",
+ "@s821e8d2d9d": {
+  "x-mt": true
+ },
+ "s949ee12ae6": "Sólo los mensajes cuyo título contiene este texto cuentan como respuesta – útil cuando el tema de respuesta lleva otras notificaciones también.",
+ "@s949ee12ae6": {
+  "x-mt": true
+ },
+ "sfbcb5f18bd": "La respuesta debe contener (regex, opcional)",
+ "@sfbcb5f18bd": {
+  "x-mt": true
+ },
+ "s79c983aa94": "Una expresión regular la respuesta (título + mensaje) debe contener.",
+ "@s79c983aa94": {
+  "x-mt": true
+ },
+ "s081eff543d": "Texto al mapa del estado",
+ "@s081eff543d": {
+  "x-mt": true
+ },
+ "s2afc1f1fb8": "Una regla por línea: \"pattern = valor\". El patrón es un regex que coincide con todo el texto capturado (caso insensible). Vacío = palabras integradas en finlandés e inglés on/off.",
+ "@s2afc1f1fb8": {
+  "x-mt": true
+ },
+ "s0976f767e2": "Respuesta de error (regex)",
+ "@s0976f767e2": {
+  "x-mt": true
+ },
+ "sc0fd47e896": "Una respuesta que significa un error (shown in red). Vacío = default (wrong PIN, error, negado...). Para JSON: ok:false o un campo de error.",
+ "@sc0fd47e896": {
+  "x-mt": true
+ },
+ "s98d9efa888": "Tiempo mínimo entre los comandos (s)",
+ "@s98d9efa888": {
+  "x-mt": true
+ },
+ "sa893722568": "Si el dispositivo responde sólo por ejemplo cada 30 segundos, escriba 30: el siguiente comando espera su turno en lugar de perderse.",
+ "@sa893722568": {
+  "x-mt": true
+ },
+ "s5e8e483f10": "Cuánto tiempo para esperar a la respuesta antes de mostrar un error.",
+ "@s5e8e483f10": {
+  "x-mt": true
+ },
+ "s31312f141c": "Respuesta del Estado válida para s)",
+ "@s31312f141c": {
+  "x-mt": true
+ },
+ "s0611790300": "Las tarjetas del mismo dispositivo comparten una respuesta de estado durante tanto tiempo – el dispositivo no se le pide sin necesidad.",
+ "@s0611790300": {
+  "x-mt": true
+ },
+ "scece580659": "Sólo para un tema protegido (cuenta n ostensible → Acceso a fichas).",
+ "@scece580659": {
+  "x-mt": true
+ },
+ "s7e91b10006": "Default es el público ntfy.sh. Una URL completa sobresale esto.",
+ "@s7e91b10006": {
+  "x-mt": true
+ },
+ "s1b5501c73f": "JSON path (JSON reply)",
+ "@s1b5501c73f": {
+  "x-mt": true
+ },
+ "s1320bcddf2": "Cuando el dispositivo responde con JSON, por ejemplo $.light o $.outputs.siren.",
+ "@s1320bcddf2": {
+  "x-mt": true
+ },
+ "s4dc975c1cd": "Del texto (regex, grupo 1)",
+ "@s4dc975c1cd": {
+  "x-mt": true
+ },
+ "s21c23314ed": "Para una respuesta de texto: una expresión regular cuyo primer grupo es el estado, por ejemplo la luz:\\s*(\\S+).",
+ "@s21c23314ed": {
+  "x-mt": true
+ },
+ "s63a305f2ab": "Comando de estado para esta tarjeta (opcional)",
+ "@s63a305f2ab": {
+  "x-mt": true
+ },
+ "s89ad1c43b4": "Vacío = el comando de estado del dispositivo.",
+ "@s89ad1c43b4": {
+  "x-mt": true
+ },
+ "sec7af7b376": "Por ejemplo, \"light on\". El PIN y otras partes se añaden por la plantilla de comando del dispositivo.",
+ "@sec7af7b376": {
+  "x-mt": true
+ },
+ "s3f4dda1fb9": "Muestra la respuesta del dispositivo (o un error claro) en la tarjeta.",
+ "@s3f4dda1fb9": {
+  "x-mt": true
+ },
+ "sb56e7e9f81": "ntfy: el comando desaparecido",
+ "@sb56e7e9f81": {
+  "x-mt": true
+ },
+ "s09f79d4fda": "No hay respuesta (PIN?) – el dispositivo no respondió dentro {p0} s (topic \"{p1}\"). Compruebe el PIN: muchos dispositivos no responden a un PIN equivocado en absoluto.",
+ "@s09f79d4fda": {
+  "x-mt": true
+ },
+ "sf25dcf262f": "El dispositivo no respondió dentro {p0} s (topic \"{p1}\"). Si sólo responde a intervalos, aumenta \"Esperar respuesta\" o \"Tiempo mínimo entre comandos\".",
+ "@sf25dcf262f": {
+  "x-mt": true
+ },
+ "s1257447096": "El dispositivo respondió: {p0}",
+ "@s1257447096": {
+  "x-mt": true
+ },
+ "sf03877dd0a": " Se almacena un PIN.",
+ "@sf03877dd0a": {
+  "x-mt": true
+ },
+ "s021372fd08": "ntfy dispositivo de comando",
+ "@s021372fd08": {
+  "x-mt": true
+ },
+ "s120a222880": "Un dispositivo controlado con mensajes de ntfy: interruptores de encendido / apagado, estado y PIN. Funciona en casa y lejos sin un puente casero.",
+ "@s120a222880": {
+  "x-mt": true
+ },
+ "s7a46c8c335": "Tema del comando",
+ "@s7a46c8c335": {
+  "x-mt": true
+ },
+ "s324f5e3b74": "El tema (o URL completa) que el dispositivo escucha.",
+ "@s324f5e3b74": {
+  "x-mt": true
+ },
+ "sc1ddf7feb4": "Si el dispositivo responde a otro tema (por ejemplo, el tema de la notificación). Vacío = el mismo tema.",
+ "@sc1ddf7feb4": {
+  "x-mt": true
+ },
+ "s24779d22ca": "Si el tema de la respuesta tiene otros mensajes también: sólo los mensajes con este título son respuestas.",
+ "@s24779d22ca": {
+  "x-mt": true
+ },
+ "s17c9df50af": "Almacenado encriptado. Añadido a comandos por la plantilla.",
+ "@s17c9df50af": {
+  "x-mt": true
+ },
+ "s4427fd3bd1": "'{cmd} = comando, {pin} = PIN, {cid} = an id the device echoes. E.g. \"{cmd} {pin}\".'",
+ "@s4427fd3bd1": {
+  "x-mt": true
+ },
+ "s4549a9cb7f": "El comando que el dispositivo responde con su estado, por ejemplo \"status\" o \"status json\".",
+ "@s4549a9cb7f": {
+  "x-mt": true
+ },
+ "s5f019b05f1": "Formato de respuesta a la situación",
+ "@s5f019b05f1": {
+  "x-mt": true
+ },
+ "s3f8b9eaf4b": "Interruptores (uno por línea: Nombre = clave)",
+ "@s3f8b9eaf4b": {
+  "x-mt": true
+ },
+ "sb7fd9fb70a": "Por ejemplo, \"Luz de oído = luz de yarda\". La clave es la palabra que el dispositivo utiliza en comandos y estado.",
+ "@sb7fd9fb70a": {
+  "x-mt": true
+ },
+ "s9efd151ae8": "En el comando",
+ "@s9efd151ae8": {
+  "x-mt": true
+ },
+ "s29d460cd3b": "'{key} = la llave del interruptor. E.g. \"{key} on\" → \"light on\".'",
+ "@s29d460cd3b": {
+  "x-mt": true
+ },
+ "s8dab09a808": "Descargo el comando",
+ "@s8dab09a808": {
+  "x-mt": true
+ },
+ "s93698f5ccb": "JSON prefijo de los interruptores (opcional)",
+ "@s93698f5ccb": {
+  "x-mt": true
+ },
+ "s50ade0ed0a": "Tarjeta de estado JSON path (opcional)",
+ "@s50ade0ed0a": {
+  "x-mt": true
+ },
+ "s9049a8a920": "Lo que la tarjeta de estado muestra de una respuesta de JSON, por ejemplo \"estado\". Vacío = toda la respuesta.",
+ "@s9049a8a920": {
+  "x-mt": true
+ },
+ "s54b3e63eca": "Intervalo de actualización del Estado (s)",
+ "@s54b3e63eca": {
+  "x-mt": true
+ },
+ "s22a6e8c7ef": "Cuán a menudo se pregunta al estado. Nunca más corto que el intervalo mínimo de comando del dispositivo.",
+ "@s22a6e8c7ef": {
+  "x-mt": true
+ },
+ "s91158c0de5": "Si el dispositivo responde sólo por ejemplo cada 30 s, escriba 30.",
+ "@s91158c0de5": {
+  "x-mt": true
+ },
+ "s23f70f51ff": "Dispositivo de mando",
+ "@s23f70f51ff": {
+  "x-mt": true
+ },
+ "sfeb36cc60a": "{p0} – estado",
+ "@sfeb36cc60a": {
   "x-mt": true
  }
 }

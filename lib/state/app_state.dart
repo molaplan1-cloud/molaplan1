@@ -28,6 +28,7 @@ import '../account/vault.dart' show defaultIterations;
 import 'account_state.dart';
 import 'auto_driver.dart';
 import 'automation_state.dart';
+import 'bridge_service.dart';
 import 'remote_state.dart';
 import 'storage.dart';
 import 'update_state.dart';
@@ -43,7 +44,9 @@ class AppState extends ChangeNotifier implements SyncHost {
     ConfigStore? energyStore,
     ConfigStore? historyStore,
     this.imageDir,
-  }) : systemLocale = systemLocale ?? _platformLocale,
+    BridgeServiceLink? bridgeService,
+  }) : bridgeService = bridgeService ?? BridgeServiceLink(),
+       systemLocale = systemLocale ?? _platformLocale,
        energyStore = energyStore ?? MemoryConfigStore(),
        historyStore = historyStore ?? MemoryConfigStore() {
     TileRuntime.observer = onTileValue;
@@ -53,6 +56,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     account.addListener(notifyListeners);
     remote = RemoteState(store: secretStore, configJson: () => exportJson(includeSecrets: true));
     remote.addListener(notifyListeners);
+    this.bridgeService.listen((up) => remote.bridge?.networkChanged(up));
     remote.addListener(() {
       final p = remote.paired;
       if (p != null && p.home != _lastHome) {
@@ -84,6 +88,9 @@ class AppState extends ChangeNotifier implements SyncHost {
   final ConfigStore configStore;
   final SecretStore secretStore;
   late final RemoteState remote;
+
+  /// t209u: Android foreground service that keeps the bridge running in the background.
+  final BridgeServiceLink bridgeService;
 
   /// Molaplan account (optional): sync between the user's devices.
   late final AccountState account;
@@ -403,6 +410,8 @@ class AppState extends ChangeNotifier implements SyncHost {
     } catch (e) {
       debugPrint('remote load failed: $e');
     }
+    // Bridge mode on (also after an update from a version without the service) → service on.
+    if (config.bridgeMode) unawaited(bridgeService.setEnabled(true));
     driverLang = lang;
     try {
       final e = await energyStore.load();
@@ -436,6 +445,7 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<void> setBridgeMode(bool on) async {
     on ? await remote.enableBridge(name: tr(lang, 'Koti', 'Home')) : await remote.disableBridge();
     config.bridgeMode = on;
+    await bridgeService.setEnabled(on);
     await save();
     notifyListeners();
   }

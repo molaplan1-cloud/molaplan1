@@ -3910,6 +3910,16 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String get s12d40eedd5 => 'Låt springa i bakgrunden';
+
+  @override
+  String get s8e1fcae1fe =>
+      'För att bron ska fungera med skärmen måste Android låta Molaplan köras i bakgrunden utan batteribegränsningar. Välj \"Tillåt\" i nästa fönster.';
+
+  @override
+  String get sd62c460e3d => 'Fortsätt';
+
+  @override
   String s7132345f20(String p0) {
     return 'Enhet \"$p0\" ansluten!';
   }
@@ -3922,11 +3932,25 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sd64f52490d => 'Håll det på laddaren och på hemmet Wi-Fi.';
 
   @override
+  String get seb25c46911 =>
+      'Bron körs i bakgrunden: skärmen kan vara avstängd och Molaplan stängd. Det börjar själv efter en omstart och återansluter när nätverket återvänder.';
+
+  @override
   String get sbb23f25581 =>
       'Håll Molaplan öppen. Skärmen stannar kvar medan bron är på.';
 
   @override
   String get sbfed096278 => 'Använd den här enheten som hemmabron';
+
+  @override
+  String get s374a096cb9 => 'Batteribesparing kan stoppa bron';
+
+  @override
+  String get s9b1298f7c6 =>
+      'Låt Molaplan springa i bakgrunden utan begränsningar.';
+
+  @override
+  String get sc8ef04815c => 'Tillåt';
 
   @override
   String get s13995350ed => 'Para ihop en telefon';
@@ -5820,6 +5844,162 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s43c9b88580 => 'Auto';
 
   @override
+  String get s30ae7f76e6 => 'ntfy kommandoenhet (kommandon + stat)';
+
+  @override
+  String get s6a4516e0fe => 'Kommandoämne (namn eller fullständig URL)';
+
+  @override
+  String get s6cfd0d8be1 =>
+      'Ämnet som hemmet enheten lyssnar på. Ämnet namn fungerar som ett lösenord: hålla det lång och slumpmässig.';
+
+  @override
+  String get s800cd08229 => 'Svara på ämne (valfritt)';
+
+  @override
+  String get s7e8c7a0cfc =>
+      'Om enheten svarar på ett annat ämne (t.ex. ditt personliga meddelandeämne), skriv det här. Empty = kommandoämnet.';
+
+  @override
+  String get s7ea9d85150 => 'PIN-kod (tillval)';
+
+  @override
+  String get s0694fe4d2b =>
+      'Förvarad krypterad på den här enheten. Infogad där mallen säger {pin}.';
+
+  @override
+  String get s4313c720cc => 'Kommando mall';
+
+  @override
+  String get sd904dac1cc =>
+      '{cmd} = knappens kommando, {pin} = PIN, {cid} = ett id enheten echoes i sitt svar, {värde} = värdet (på / av eller ett nummer). t.ex. \"{cmd} {pin}\" → \"ljus på 1234\".';
+
+  @override
+  String get sa45b65f571 => 'Status kommando';
+
+  @override
+  String get se464d5ed51 =>
+      'Kommandot enheten svarar med sitt tillstånd (t.ex. \"status\" eller \"status json\"). Alla kort av denna enhet delar svaret.';
+
+  @override
+  String get s821e8d2d9d => 'Svara titeln innehåller (valfritt)';
+
+  @override
+  String get s949ee12ae6 =>
+      'Endast meddelanden vars titel innehåller denna text räknas som svaret - användbart när svarsämnet bär andra meddelanden också.';
+
+  @override
+  String get sfbcb5f18bd => 'Svaret måste innehålla (regex, valfritt)';
+
+  @override
+  String get s79c983aa94 =>
+      'Ett vanligt uttryck som svaret (titel + meddelande) måste innehålla.';
+
+  @override
+  String get s081eff543d => 'Text till statlig karta';
+
+  @override
+  String get s2afc1f1fb8 =>
+      'En regel per rad: \"mönster = värde\". Mönstret är en regex som matchar hela den fångade texten (fall-insensitiv). Empty = inbyggd finska och engelska på/av ord.';
+
+  @override
+  String get s0976f767e2 => 'Fel svar (regex)';
+
+  @override
+  String get sc0fd47e896 =>
+      'Ett svar som betyder ett fel (visas i rött) Empty = standard (fel PIN, fel, nekad ...). För JSON: ok:false eller ett felfält.';
+
+  @override
+  String get s98d9efa888 => 'Minimitid mellan kommandon (s)';
+
+  @override
+  String get sa893722568 =>
+      'Om enheten svarar endast t.ex. var 30:e sekund, typ 30: nästa kommando väntar sin tur istället för att gå vilse.';
+
+  @override
+  String get sbdcbe301b9 => 'Vänta på svar (s)';
+
+  @override
+  String get s5e8e483f10 =>
+      'Hur lång tid att vänta på svaret innan du visar ett fel.';
+
+  @override
+  String get s31312f141c => 'Status svar giltigt för (s)';
+
+  @override
+  String get s0611790300 =>
+      'Kort av samma enhet delar en status svar så länge - enheten är inte ombedd onödigt.';
+
+  @override
+  String get s5bc736c04a => 'Access token (tillval)';
+
+  @override
+  String get scece580659 =>
+      'Endast för ett skyddat ämne (ntfy-konto → Access-tokens).';
+
+  @override
+  String get s7e91b10006 =>
+      'Standard är den offentliga ntfy.sh. En fullständig URL ovan åsidosätter detta.';
+
+  @override
+  String get s1b5501c73f => 'JSON väg (JSON svar)';
+
+  @override
+  String get s1320bcddf2 =>
+      'När enheten svarar med JSON, t.ex. \$.light eller \$.outputs.siren.';
+
+  @override
+  String get s4dc975c1cd => 'Från text (regex, grupp 1)';
+
+  @override
+  String get s21c23314ed =>
+      'För ett textsvar: ett vanligt uttryck vars första grupp är staten, t.ex. ljus:\\s*(\\S+).';
+
+  @override
+  String get s63a305f2ab => 'Statuskommando för detta kort (valfritt)';
+
+  @override
+  String get s89ad1c43b4 => 'Tomt = enhetens statuskommando.';
+
+  @override
+  String get s5bed8bff00 => 'Kommando';
+
+  @override
+  String get sec7af7b376 =>
+      't.ex. \"ljus på\". PIN och andra delar läggs till av enhetens kommandomall.';
+
+  @override
+  String get sfee393b70e => 'Vänta på svaret';
+
+  @override
+  String get s3f4dda1fb9 =>
+      'Visar enhetens svar (eller ett tydligt fel) på kortet.';
+
+  @override
+  String get sa53638cfea => 'Svaret stannar på plattan (s)';
+
+  @override
+  String get sb56e7e9f81 => 'ntfy: kommandot saknas';
+
+  @override
+  String s09f79d4fda(String p0, String p1) {
+    return 'Inget svar (PIN?) - enheten svarade inte inom $p0 s (topiskt \"$p1\"). Kontrollera PIN: många enheter svarar inte på fel PIN alls.';
+  }
+
+  @override
+  String sf25dcf262f(String p0, String p1) {
+    return 'Enheten svarade inte inom $p0 s (topisk \"$p1\"). Om den svarar endast vid intervaller, öka \"Vänta på svar\" eller \"Minimum tid mellan kommandon\".';
+  }
+
+  @override
+  String s1257447096(String p0) {
+    return 'Enheten svarade: $p0';
+  }
+
+  @override
+  String get sf03877dd0a => ' En PIN lagras.';
+
+  @override
   String get s36fb6ba26f => 'Modbus TCP';
 
   @override
@@ -5922,21 +6102,12 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sefaea1b818 => 'ntfy (meddelandekanal/kommandon)';
 
   @override
-  String get s6a4516e0fe => 'Kommandoämne (namn eller fullständig URL)';
-
-  @override
   String get se003ecc10b =>
       'Ämne kommandon skickas till. Du kan klistra in hela URL, t.ex. https://ntfy.sh/my-topic - samma som din iPhone Shortcut använder. ämnesnamnet fungerar som ett lösenord: hålla det länge och slumpmässigt.';
 
   @override
-  String get s800cd08229 => 'Svara på ämne (valfritt)';
-
-  @override
   String get s2e3a66d384 =>
       'Om hemenheten svarar på ett annat ämne, skriv det här. Lämna tomt om svaret kommer på samma ämne - vårt eget kommando ignoreras sedan och nästa meddelande visas som svaret.';
-
-  @override
-  String get s5bc736c04a => 'Access token (tillval)';
 
   @override
   String get s77feae14f5 =>
@@ -5991,21 +6162,12 @@ class AppLocalizationsSv extends AppLocalizations {
       'Be om en PIN-kod (dold) på varje press och godkänner den till kommandot. PIN-koden lagras inte om du väljer \"Kom ihåg på den här enheten\".';
 
   @override
-  String get sfee393b70e => 'Vänta på svaret';
-
-  @override
   String get sfff5bc52e5 =>
       'Lyssnar på hemenhetens svar och visar det i den här kakeln (och som ett meddelande när appen är i bakgrunden).';
 
   @override
-  String get sbdcbe301b9 => 'Vänta på svar (s)';
-
-  @override
   String get s121542d6d7 =>
       'Hur lång tid att vänta innan du säger att inget svar kom.';
-
-  @override
-  String get sa53638cfea => 'Svaret stannar på plattan (s)';
 
   @override
   String get se6d21484a8 =>
@@ -6703,9 +6865,6 @@ class AppLocalizationsSv extends AppLocalizations {
       'Text som visas på kakeln, t.ex. \"Uppdatera\" eller \"Status\".';
 
   @override
-  String get s5bed8bff00 => 'Kommando';
-
-  @override
   String get se2a81ae67d =>
       'Texten att skicka. PIN-koden läggs till efter ett utrymme, t.ex. \"uppdatera 1234\".';
 
@@ -6729,6 +6888,97 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s57e684ac9e => 'Meddelanden';
+
+  @override
+  String get s021372fd08 => 'ntfy kommandoenhet';
+
+  @override
+  String get s120a222880 =>
+      'En enhet som styrs med ntfy-meddelanden: on/off switchar, stat och PIN. Arbetar hemma och bort utan en hembro.';
+
+  @override
+  String get s7a46c8c335 => 'Kommandoämne';
+
+  @override
+  String get s324f5e3b74 => 'Ämnet (eller full URL) som enheten lyssnar på.';
+
+  @override
+  String get sc1ddf7feb4 =>
+      'Om enheten svarar på ett annat ämne (t.ex. ditt anmälningsämne). Empty = samma ämne.';
+
+  @override
+  String get s24779d22ca =>
+      'Om svarsämnet också har andra meddelanden: endast meddelanden med denna titel är svar.';
+
+  @override
+  String get s17c9df50af => 'Lagras krypterad. Läggs till kommandon av mallen.';
+
+  @override
+  String get s4427fd3bd1 =>
+      '{cmd} = kommando, {pin} = PIN, {cid} = en id enhet echoes. e.g. \"{cmd} {pin}\".';
+
+  @override
+  String get s4549a9cb7f =>
+      'Kommandot enheten svarar med sitt tillstånd, t.ex. \"status\" eller \"status json\".';
+
+  @override
+  String get s5f019b05f1 => 'Status reply format';
+
+  @override
+  String get sb1f9470ebd =>
+      'JSON: {\"light\": 1, …}. Text: \"Light: ON, …\" – the state is read after the name.';
+
+  @override
+  String get s96a5a283cf => 'JSON';
+
+  @override
+  String get s3f8b9eaf4b => 'Switches (en per rad: Namn = nyckel)';
+
+  @override
+  String get sb7fd9fb70a =>
+      'E.g. \"Yard light = yardlight\". Nyckeln är ordet enheten använder i kommandon och tillstånd.';
+
+  @override
+  String get s9efd151ae8 => 'På kommando';
+
+  @override
+  String get s29d460cd3b =>
+      '{key} = växelnyckeln. t.ex. \"{key} on\" → \"light on\".';
+
+  @override
+  String get s8dab09a808 => 'Off kommando';
+
+  @override
+  String get s93698f5ccb => 'JSON-banan prefix av växlarna (tillval)';
+
+  @override
+  String get s2179eef80d =>
+      'If the switches sit under a group in the JSON, e.g. {\"relays\":{\"light\":1}}, type \"relays.\" – the key is then read from relays.light.';
+
+  @override
+  String get s50ade0ed0a => 'Statuskort JSON-banan (valfritt)';
+
+  @override
+  String get s9049a8a920 =>
+      'Vad statuskortet visar från ett JSON svar, t.ex. \"state\". Empty = hela svaret.';
+
+  @override
+  String get s54b3e63eca => 'Statligt uppdaterat intervall (s)';
+
+  @override
+  String get s22a6e8c7ef =>
+      'Hur ofta är staten frågad. Aldrig kortare än enhetens minsta kommandointervall.';
+
+  @override
+  String get s91158c0de5 => 'Om enheten svarar endast t.ex. var 30: e, typ 30.';
+
+  @override
+  String get s23f70f51ff => 'Kommando enhet';
+
+  @override
+  String sfeb36cc60a(String p0) {
+    return '$p0 – staten';
+  }
 
   @override
   String s3378eb2d0b(String p0) {
