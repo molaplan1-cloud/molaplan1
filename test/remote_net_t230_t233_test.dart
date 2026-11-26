@@ -21,9 +21,9 @@ void main() {
     test('only real private LANs count', () {
       expect(
         netsOf([
-          ('Wi-Fi', '192.168.50.20'),
+          ('Wi-Fi', '192.168.77.20'),
           ('vEthernet (WSL)', '172.20.1.1'),
-          ('rmnet_data0', '10.138.215.7'),
+          ('rmnet_data0', '10.20.30.7'),
           ('tailscale0', '100.101.1.2'),
           ('Ethernet', '8.8.8.8'),
           ('wlan0', '10.0.0.5'),
@@ -89,15 +89,15 @@ void main() {
 
     test('sources stay apart unless on the same network; carrier gateway dropped', () {
       final all = [
-        h('192.168.50.10', kind: 'shelly'),
+        h('192.168.77.10', kind: 'shelly'),
         h('192.168.1.1', bridge: true, role: 'self', names: {'Tämä laite': 'HTC 5G Hub'}),
         h('192.168.1.80', bridge: true),
-        h('10.138.215.4', bridge: true, role: 'router'),
+        h('10.20.30.4', bridge: true, role: 'router'),
         h('192.168.1.80'),
       ];
       final apart = mergeScanResults(all, sameNetwork: false);
       expect(apart.where((x) => x.ip == '192.168.1.80'), hasLength(2));
-      expect(apart.any((x) => x.ip == '10.138.215.4'), isFalse);
+      expect(apart.any((x) => x.ip == '10.20.30.4'), isFalse);
       final merged = mergeScanResults(all, sameNetwork: true);
       expect(merged.where((x) => x.ip == '192.168.1.80'), hasLength(1));
     });
@@ -119,10 +119,10 @@ void main() {
       final st = AppState(configStore: MemoryConfigStore(), secretStore: secrets);
       await tester.runAsync(st.load);
       final hits = mergeScanResults([
-        h('192.168.50.10', kind: 'shelly'),
+        h('192.168.77.10', kind: 'shelly'),
         h('192.168.1.1', bridge: true, role: 'self', names: {'Tämä laite': 'HTC 5G Hub'}),
         h('192.168.1.80', bridge: true, vendor: 'Espressif'),
-        h('10.138.215.4', bridge: true, role: 'router'),
+        h('10.20.30.4', bridge: true, role: 'router'),
       ], sameNetwork: false);
       await tester.pumpWidget(
         AppScope(
@@ -139,10 +139,10 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('scan-group-local')), findsOneWidget);
       expect(find.text('Mökki (HTC 5G Hub) – kotisillan kautta'), findsOneWidget);
-      expect(find.byKey(const ValueKey('scan-add-192.168.50.10')), findsNothing, reason: 'not added to the remote home');
+      expect(find.byKey(const ValueKey('scan-add-192.168.77.10')), findsNothing, reason: 'not added to the remote home');
       expect(find.text('ESP32-laite'), findsOneWidget);
       expect(find.byKey(const ValueKey('scan-ntfy-192.168.1.80')), findsOneWidget);
-      expect(find.byKey(const ValueKey('scan-hit-10.138.215.4')), findsNothing);
+      expect(find.byKey(const ValueKey('scan-hit-10.20.30.4')), findsNothing);
       await tester.pumpWidget(const SizedBox());
     });
   });
