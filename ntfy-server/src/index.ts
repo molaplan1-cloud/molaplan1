@@ -13,7 +13,7 @@
 //   - Streaming subscribers are held by the stateless Worker. The Worker connects to each topic
 //     object with a WebSocket that the object accepts with the Hibernation API, so an idle topic
 //     costs no Durable Object duration. Keepalives are written by the Worker (CPU time only).
-//   - Streams are closed after STREAM_MAX_SECONDS (default 20 min); ntfy clients reconnect with
+//   - Streams are closed after STREAM_MAX_SECONDS (200 s, ~3 min; each keepalive costs ~1 ms CPU); ntfy clients reconnect with
 //     since=<last id>, so nothing is lost and the Worker's per-request CPU limit is never reached.
 //   - Messages are forwarded as poll requests to UPSTREAM_BASE_URL (ntfy.sh) like ntfy's
 //     upstream-base-url, so the official iOS app gets instant notifications.
@@ -720,7 +720,7 @@ async function handleSubscribe(req: Request, env: Env, url: URL, topics: string[
   }
 
   const ka = Math.max(10, Number(env.KEEPALIVE_SECONDS || 45)) * 1000;
-  const maxS = Math.max(60, Number(env.STREAM_MAX_SECONDS || 1200));
+  const maxS = Math.max(60, Number(env.STREAM_MAX_SECONDS || 200));
   const event = (ev: string): Msg => ({ id: randomId(), time: now(), event: ev, topic: topicsStr });
   const start = () => {
     const open = event("open");

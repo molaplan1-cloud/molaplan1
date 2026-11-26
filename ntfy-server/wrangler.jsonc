@@ -10,7 +10,7 @@
     "BASE_URL": "https://ntfy.molaplan.com",
     "UPSTREAM_BASE_URL": "https://ntfy.sh",
     "CACHE_SECONDS": "43200",
-    "STREAM_MAX_SECONDS": "1200",
+    "STREAM_MAX_SECONDS": "200",
     "KEEPALIVE_SECONDS": "45"
   },
   "ratelimits": [

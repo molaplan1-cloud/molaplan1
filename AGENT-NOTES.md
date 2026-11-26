@@ -221,7 +221,7 @@ t155u–t157u (also v0.7.3): ModbusTcpClient.acquire/release (one pooled connect
 
 ## Own ntfy server (t251u/t252u, R238/R239)
 - https://ntfy.molaplan.com = Worker `molaplan-ntfy` (source ntfy-server/, see its README). Topic DO (SQLite, ~12 h cache, hibernating WS to the Worker),
-  FileStore DO per attachment (alarm deletes). Streams close after 20 min (clients reconnect with since=<id>), keepalive 45 s.
+  FileStore DO per attachment (alarm deletes). Streams close after ~3 min (200 s minus 0–30 s jitter; free-plan 10 ms CPU per request, ~1 ms per keepalive wake; clients reconnect with since=<id>), keepalive 45 s.
 - poll_request forwarded to ntfy.sh/<sha256(base/topic)> for the iOS app (verified live). `Firebase: no` skips it.
 - The app needs no change: every ntfy / ntfy_device connection has its own 'server' field (default public ntfy.sh, never a user-specific default).
 - Switch Enn's panel connections only together with the panel firmware (molaplan-tools/ntfy-firmware-ohje.md); otherwise commands go to a server the panel doesn't listen to.

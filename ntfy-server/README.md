@@ -5,7 +5,7 @@ Live: https://ntfy.molaplan.com (also https://molaplan-ntfy.molaplan1.workers.de
 - Worker + SQLite Durable Object per topic (`Topic`) and per attachment (`FileStore`).
 - Streaming subscribers are held by the Worker; it connects to the topic object with a WebSocket
   that the object accepts with the Hibernation API (no Durable Object duration while idle).
-- Streams close after `STREAM_MAX_SECONDS` (1200) and clients reconnect with `since=<id>`.
+- Streams close after `STREAM_MAX_SECONDS` (200 s; measured ~3 ms CPU per stream + ~1 ms per keepalive wake, free-plan limit 10 ms per request) and clients reconnect with `since=<id>`.
 - Poll requests are forwarded to `UPSTREAM_BASE_URL` (ntfy.sh) for the iOS app (ntfy's upstream-base-url).
   Publish with `Firebase: no` to skip that for a message.
 - Not supported: login/ACL, scheduled delivery (delay/at/in → 400), e-mail/call, web app, UnifiedPush rate visitors.
