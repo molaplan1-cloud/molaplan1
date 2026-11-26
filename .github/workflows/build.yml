@@ -106,9 +106,47 @@ jobs:
           name: molaplan-android
           path: dist/*.apk
 
+  firmware:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/cache@v4
+        with:
+          path: ~/.platformio
+          key: pio-${{ runner.os }}-${{ hashFiles('firmware/molaplan-bridge/platformio.ini') }}
+      - name: Tools (PlatformIO, host compiler + mbedTLS for the host tests)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++ libmbedtls-dev
+          pip install 'platformio>=6.1,<7' cryptography
+      - name: Host tests (protocol, crypto, request building, OTA signature)
+        working-directory: firmware/molaplan-bridge
+        run: pio test -e native
+      - name: Build the ESP32 image
+        working-directory: firmware/molaplan-bridge
+        run: pio run -e esp32
+      - name: Release assets (+ signed OTA manifest on tags)
+        working-directory: firmware/molaplan-bridge
+        env:
+          BRIDGE_OTA_SIGNING_KEY: ${{ startsWith(github.ref, 'refs/tags/v') && secrets.BRIDGE_OTA_SIGNING_KEY || '' }}
+        run: |
+          ver=$(sed -n 's/^fw_version *= *//p' platformio.ini)
+          tools/make_release.sh "$ver" "https://github.com/${GITHUB_REPOSITORY}/releases/download/${GITHUB_REF_NAME}"
+          if [[ "$GITHUB_REF" == refs/tags/v* && ! -f dist/molaplan-bridge-esp32.manifest.json ]]; then
+            echo "::error::BRIDGE_OTA_SIGNING_KEY missing – a release needs the signed OTA manifest"
+            exit 1
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: molaplan-bridge
+          path: firmware/molaplan-bridge/dist/*
+
   release:
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [windows, android]
+    needs: [windows, android, firmware]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -123,7 +161,8 @@ jobs:
           cp artifacts/molaplan-android/molaplan-android-arm64.apk dist/
           cp artifacts/molaplan-android/molaplan-android-universal.apk dist/
           cp artifacts/molaplan-windows-x64/molaplan-windows-x64.zip dist/
-          (cd dist && sha256sum molaplan-android-arm64.apk molaplan-android-universal.apk molaplan-windows-x64.zip > SHA256SUMS)
+          cp artifacts/molaplan-bridge/* dist/
+          (cd dist && sha256sum molaplan-android-arm64.apk molaplan-android-universal.apk molaplan-windows-x64.zip molaplan-bridge-esp32*.bin molaplan-bridge-esp32.manifest.json > SHA256SUMS)
           cat dist/SHA256SUMS
           notes="docs/release-notes/${GITHUB_REF_NAME}.md"
           if [ -f "$notes" ]; then cp "$notes" release-notes.md; else echo "Molaplan ${GITHUB_REF_NAME}" > release-notes.md; fi
@@ -134,4 +173,7 @@ jobs:
             dist/molaplan-android-arm64.apk
             dist/molaplan-android-universal.apk
             dist/molaplan-windows-x64.zip
+            dist/molaplan-bridge-esp32.bin
+            dist/molaplan-bridge-esp32-factory.bin
+            dist/molaplan-bridge-esp32.manifest.json
             dist/SHA256SUMS
