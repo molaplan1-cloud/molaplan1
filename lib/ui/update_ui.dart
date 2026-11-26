@@ -60,6 +60,7 @@ Future<void> manualUpdateCheck(BuildContext context) async {
 
 Future<void> showUpdateDialog(BuildContext context, ReleaseInfo r, {bool manual = false}) async {
   final st = AppScope.read(context);
+  final root = Navigator.of(context, rootNavigator: true).context; // t229u: outlives a banner
   final notes = plainNotes(r.notes);
   final choice = await showDialog<String>(
     context: context,
@@ -104,10 +105,10 @@ Future<void> showUpdateDialog(BuildContext context, ReleaseInfo r, {bool manual 
       ],
     ),
   );
-  if (!context.mounted) return;
+  if (!root.mounted) return;
   switch (choice) {
     case 'update':
-      await runUpdate(context, r);
+      await runUpdate(root, r);
     case 'skip':
       await st.update.skip(r);
     default:
@@ -116,7 +117,11 @@ Future<void> showUpdateDialog(BuildContext context, ReleaseInfo r, {bool manual 
 }
 
 /// Download + verify + install (Android) / open (Windows) / release page (others).
-Future<void> runUpdate(BuildContext context, ReleaseInfo r) async {
+Future<void> runUpdate(BuildContext from, ReleaseInfo r) async {
+  // t229u: the automatic notice (startup dialog / bridge banner) and Asetukset share this one
+  // path. Work on the root navigator's context, which lives as long as the app, so a notice
+  // or banner that rebuilds or disappears during the download can never drop the install.
+  final context = Navigator.of(from, rootNavigator: true).context;
   final up = AppScope.read(context).update;
   final p = up.platform;
   final asset = pickAsset(r, os: p.os, abis: await p.abis());
@@ -202,11 +207,14 @@ Future<void> runUpdate(BuildContext context, ReleaseInfo r) async {
     return;
   }
   if (p.os == 'android') {
+    // t228u: not a device owner -> always the system prompt; every outcome is shown.
+    String res;
     try {
-      await p.installApk(f.path);
-    } catch (_) {
-      if (context.mounted) await _allowInstallsGuide(context);
+      res = await p.installApk(f.path);
+    } catch (e) {
+      res = 'failed: $e';
     }
+    if (context.mounted) await showInstallResult(context, r, res);
     return;
   }
   // Windows: keep it simple and safe, the user replaces the folder themselves.
@@ -235,6 +243,68 @@ Future<void> runUpdate(BuildContext context, ReleaseInfo r) async {
           icon: const Icon(Icons.folder_open),
           label: Text(tx(c, 'Avaa kansio', 'Open folder')),
         ),
+      ],
+    ),
+  );
+}
+
+/// t228u: what the user sees after the APK was handed to Android.
+Future<void> showInstallResult(BuildContext context, ReleaseInfo r, String res) async {
+  final p = AppScope.read(context).update.platform;
+  if (res == 'needs_permission') return _allowInstallsGuide(context);
+  if (res == 'installed' || res == 'superseded') return;
+  if (res == 'cancelled') {
+    showSnack(context, tx(context, 'Asennus peruttiin. Voit yrittää uudelleen: Päivitä.', 'Install cancelled. You can try again: Update.'));
+    return;
+  }
+  if (res.startsWith('session')) {
+    showSnack(
+      context,
+      tx(context, 'Vahvista asennus Androidin ikkunasta tai ilmoituksesta.', 'Confirm the install in the Android window or notification.'),
+    );
+    // The session reports a failure asynchronously (InstallResultReceiver -> lastUpdate).
+    final since = DateTime.now().millisecondsSinceEpoch - 1000;
+    for (var i = 0; i < 15; i++) {
+      final last = await p.lastUpdate();
+      final parts = (last ?? '').split('|');
+      final at = int.tryParse(parts.first) ?? 0;
+      final st = parts.length > 1 ? parts.sublist(1).join('|') : '';
+      if (at >= since && RegExp(r'^(failed|rejected|error)').hasMatch(st)) {
+        res = 'failed: $st';
+        break;
+      }
+      if (at >= since && st == 'installed') return;
+      await Future<void>.delayed(const Duration(seconds: 2));
+      if (!context.mounted) return;
+    }
+    if (!res.startsWith('failed')) return;
+  }
+  if (!context.mounted) return;
+  final detail = res.replaceFirst(RegExp(r'^failed:\s*'), '');
+  await showDialog<void>(
+    context: context,
+    builder: (c) => AlertDialog(
+      key: const ValueKey('update-install-failed'),
+      icon: const Icon(Icons.error_outline, size: 40),
+      title: Text(tx(c, 'Asennus ei käynnistynyt', 'The install did not start')),
+      content: Text(
+        tx(
+          c,
+          'Android ei aloittanut päivityksen ${r.version} asennusta.\n\nTarkista, että "Salli tästä lähteestä" on päällä Molaplanille, ja paina Päivitä uudelleen. Voit myös ladata APK:n julkaisusivulta.\n\nTieto: $detail',
+          'Android did not start installing ${r.version}.\n\nCheck that "Allow from this source" is on for Molaplan and tap Update again. You can also download the APK from the release page.\n\nDetail: $detail',
+        ),
+      ),
+      actions: [
+        TextButton(onPressed: () => p.openUrl(r.pageUrl), child: Text(tx(c, 'Avaa julkaisusivu', 'Open release page'))),
+        TextButton(
+          key: const ValueKey('update-failed-settings'),
+          onPressed: () {
+            p.openInstallSettings();
+            Navigator.pop(c);
+          },
+          child: Text(tx(c, 'Avaa asetukset', 'Open settings')),
+        ),
+        FilledButton(onPressed: () => Navigator.pop(c), child: const Text('OK')),
       ],
     ),
   );

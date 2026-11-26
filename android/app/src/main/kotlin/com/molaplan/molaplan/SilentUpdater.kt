@@ -31,6 +31,9 @@ object SilentUpdater {
     private const val PREFS = "molaplan_update"
     private const val CHANNEL = "updates"
 
+    /** t228u: set while MainActivity is resumed – shows the install confirmation directly. */
+    @Volatile var foreground: ((Intent) -> Boolean)? = null
+
     fun isDeviceOwner(ctx: Context): Boolean {
         val dpm = ctx.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
         return dpm.isDeviceOwnerApp(ctx.packageName)
@@ -138,7 +141,9 @@ class InstallResultReceiver : BroadcastReceiver() {
                 // Not device owner: Android must ask. Notification works with the screen off too.
                 @Suppress("DEPRECATION")
                 val confirm = intent.getParcelableExtra<Intent>(Intent.EXTRA_INTENT)
-                if (confirm != null) SilentUpdater.promptNotification(context, confirm)
+                if (confirm != null && SilentUpdater.foreground?.invoke(confirm) != true) {
+                    SilentUpdater.promptNotification(context, confirm)
+                }
                 SilentUpdater.record(context, "waiting for user")
             }
             PackageInstaller.STATUS_SUCCESS -> SilentUpdater.record(context, "installed")

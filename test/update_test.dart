@@ -55,8 +55,16 @@ class FakePlatform extends UpdatePlatform {
   Future<bool> canInstall() async => allowed;
   @override
   Future<void> openInstallSettings() async => settingsOpened++;
+  String installResult = 'installed';
+  String? last;
   @override
-  Future<void> installApk(String path) async => installed.add(path);
+  Future<String> installApk(String path) async {
+    installed.add(path);
+    return installResult;
+  }
+
+  @override
+  Future<String?> lastUpdate() async => last;
   @override
   Future<bool> deviceOwner() async => false;
   @override

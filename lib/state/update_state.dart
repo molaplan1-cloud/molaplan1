@@ -28,7 +28,11 @@ class UpdatePlatform {
 
   Future<bool> canInstall() async => os != 'android' || ((await _ch.invokeMethod<bool>('canInstall')) ?? false);
   Future<void> openInstallSettings() => _ch.invokeMethod('openInstallSettings');
-  Future<void> installApk(String path) => _ch.invokeMethod('install', {'path': path});
+  /// t228u: hands the APK to the system installer (always a prompt on non device-owner
+  /// devices). Returns 'installed', 'cancelled', 'needs_permission', 'session (…)' (the
+  /// PackageInstaller fallback asks the user), 'superseded' or 'failed: …'.
+  Future<String> installApk(String path) async =>
+      (await _ch.invokeMethod<String>('install', {'path': path})) ?? 'failed: no answer';
 
   // t211u: the bridge-service channel works without an activity (headless bridge).
   static const _svc = MethodChannel('molaplan/bridge_service');

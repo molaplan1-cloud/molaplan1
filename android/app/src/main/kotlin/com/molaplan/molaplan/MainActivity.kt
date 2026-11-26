@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.net.wifi.WifiManager
 import android.os.Build
+import android.os.SystemClock
 import android.provider.Settings
 import androidx.core.content.FileProvider
 import io.flutter.embedding.android.FlutterActivity
@@ -15,6 +16,56 @@ import java.io.File
 
 class MainActivity : FlutterActivity() {
     private var lock: WifiManager.MulticastLock? = null
+
+    // t228u: in-app update install (non device owner).
+    private var pendingInstall: MethodChannel.Result? = null
+    private var pendingInstallFile: File? = null
+    private var installStartedAt = 0L
+
+    private fun sessionInstall(f: File, why: String): String = try {
+        // SHA-256 was checked in Dart; the native check still requires our own package + signing key.
+        val r = SilentUpdater.install(this, f, null)
+        if (r.startsWith("started")) "session ($why)" else "failed: $r"
+    } catch (e: Exception) {
+        "failed: ${e.message ?: e.javaClass.simpleName}"
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        @Suppress("DEPRECATION")
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode != REQ_INSTALL) return
+        val res = pendingInstall ?: return
+        pendingInstall = null
+        val f = pendingInstallFile
+        val quick = SystemClock.elapsedRealtime() - installStartedAt < QUICK_RETURN_MS
+        res.success(
+            when {
+                resultCode == RESULT_OK -> "installed"
+                resultCode == RESULT_FIRST_USER ->
+                    "failed: install result ${data?.getIntExtra("android.intent.extra.INSTALL_RESULT", 0) ?: 0}"
+                quick && f != null -> sessionInstall(f, "installer returned at once")
+                else -> "cancelled"
+            }
+        )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // The session's confirmation is shown right here while the app is in front.
+        SilentUpdater.foreground = { confirm ->
+            try {
+                startActivity(confirm); true
+            } catch (e: Exception) {
+                false
+            }
+        }
+    }
+
+    override fun onPause() {
+        SilentUpdater.foreground = null
+        super.onPause()
+    }
 
     // t209u: one engine for the app and the background bridge (see BridgeService.kt).
     override fun provideFlutterEngine(context: Context): FlutterEngine = EngineHolder.get(context)
@@ -170,21 +221,43 @@ class MainActivity : FlutterActivity() {
                     result.success(null)
                 }
                 "install" -> {
-                    try {
-                        val f = File(call.argument<String>("path")!!)
-                        val uri = FileProvider.getUriForFile(this, "$packageName.updates", f)
-                        startActivity(
-                            Intent(Intent.ACTION_VIEW)
+                    // t228u: never NEW_TASK here. With NEW_TASK the installer joined a stale package
+                    // installer task on Samsung (SM-T575) and nothing was shown. Started for a result
+                    // in our own task the prompt always appears; if the installer still returns at
+                    // once (it went to another task / was swallowed), the PackageInstaller session
+                    // path asks instead.
+                    val f = File(call.argument<String>("path")!!)
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !packageManager.canRequestPackageInstalls()) {
+                        result.success("needs_permission")
+                    } else {
+                        pendingInstall?.success("superseded")
+                        pendingInstall = null
+                        try {
+                            val uri = FileProvider.getUriForFile(this, "$packageName.updates", f)
+                            @Suppress("DEPRECATION")
+                            val i = Intent(Intent.ACTION_INSTALL_PACKAGE)
                                 .setDataAndType(uri, "application/vnd.android.package-archive")
-                                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_ACTIVITY_NEW_TASK)
-                        )
-                        result.success(true)
-                    } catch (e: Exception) {
-                        result.error("install_failed", e.message, null)
+                                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                .putExtra(Intent.EXTRA_RETURN_RESULT, true)
+                            pendingInstall = result
+                            pendingInstallFile = f
+                            installStartedAt = SystemClock.elapsedRealtime()
+                            @Suppress("DEPRECATION")
+                            startActivityForResult(i, REQ_INSTALL)
+                        } catch (e: Exception) {
+                            pendingInstall = null
+                            result.success(sessionInstall(f, "intent ${e.javaClass.simpleName}"))
+                        }
                     }
                 }
                 else -> result.notImplemented()
             }
         }
+    }
+
+    companion object {
+        const val REQ_INSTALL = 4713
+        /** A real prompt takes longer than this to answer; quicker means it was never shown. */
+        const val QUICK_RETURN_MS = 1500L
     }
 }
