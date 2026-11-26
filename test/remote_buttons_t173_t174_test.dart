@@ -119,6 +119,13 @@ void main() {
     await tester.pumpWidget(_app(st, const ScriptEditor()));
     await tester.pumpAndSettle();
     await tester.scrollUntilVisible(
+      find.byKey(const ValueKey('script-advanced')),
+      200,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.tap(find.byKey(const ValueKey('script-advanced')));
+    await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(
       find.byKey(const ValueKey('script-external-title')),
       200,
       scrollable: find.byType(Scrollable).first,

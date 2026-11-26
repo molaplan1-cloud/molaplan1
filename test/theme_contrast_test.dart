@@ -21,6 +21,7 @@ Color materialColorAbove(WidgetTester tester, String text, Type type) {
 }
 
 void main() {
+  _chips();
   for (final b in Brightness.values) {
     group('$b', () {
       Future<BuildContext> app(WidgetTester tester) async {
@@ -74,6 +75,36 @@ void main() {
         expect(contrast(textColorOf(tester, 'Otsikko'), bg), greaterThanOrEqualTo(4.5));
         expect(contrast(textColorOf(tester, 'Sisältö'), bg), greaterThanOrEqualTo(4.5));
       });
+    });
+  }
+}
+
+/// v0.8.0: selected / unselected choice chips are readable in both themes (the PC showed white text on
+/// the light theme's pale selected chips in the tile editor).
+void _chips() {
+  for (final b in Brightness.values) {
+    testWidgets('choice chip labels are readable ($b)', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: molaplanTheme(brightness: b),
+          home: Scaffold(
+            body: Wrap(
+              children: [
+                ChoiceChip(
+                  avatar: const Icon(Icons.bar_chart),
+                  label: const Text('Valittu'),
+                  selected: true,
+                  onSelected: (_) {},
+                ),
+                ChoiceChip(label: const Text('Ei valittu'), selected: false, onSelected: (_) {}),
+              ],
+            ),
+          ),
+        ),
+      );
+      final cs = molaplanTheme(brightness: b).colorScheme;
+      expect(contrast(textColorOf(tester, 'Valittu'), cs.secondaryContainer), greaterThanOrEqualTo(4.5));
+      expect(contrast(textColorOf(tester, 'Ei valittu'), cs.surface), greaterThanOrEqualTo(4.5));
     });
   }
 }

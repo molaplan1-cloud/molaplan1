@@ -191,14 +191,20 @@ void main() {
       await _settle(tester);
     }
     await tester.enterText(find.byKey(const ValueKey('step-seconds-0-1')), '0');
+    await tester.ensureVisible(find.byKey(const ValueKey('script-advanced')));
+    await tester.tap(find.byKey(const ValueKey('script-advanced')));
+    await _settle(tester);
     await tester.ensureVisible(find.byKey(const ValueKey('script-remote')));
+    await tester.drag(find.byType(Scrollable).first, const Offset(0, -300));
+    await _settle(tester);
     await tester.tap(find.byKey(const ValueKey('script-remote')));
     await _settle(tester);
     await tester.enterText(find.byType(TextField).last, '4321');
     await tester.tap(find.text('OK').last);
     await _settle(tester);
     expect(find.byKey(const ValueKey('script-remote-howto')), findsOneWidget);
-    await tester.tap(find.byKey(const ValueKey('script-to-tile')));
+    // t192u: "Lisää painike etusivulle" is on by default – saving creates the button.
+    await tester.tap(find.byKey(const ValueKey('script-save')));
     await _settle(tester);
     final s = st.config.automation.scripts.single;
     expect(s.steps.map((x) => x.kind), ['tile', 'wait', 'if']);

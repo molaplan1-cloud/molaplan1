@@ -76,9 +76,15 @@ ThemeData molaplanTheme({Brightness brightness = Brightness.dark}) {
       minVerticalPadding: 12,
       contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 2),
     ),
+    // v0.8.0: label and icon colours are explicit – a colourless label style rendered white text on the
+    // light theme's pale selected chips (seen on the PC: 'Tila / arvo', 'Pylväät (15 min)').
     chipTheme: base.chipTheme.copyWith(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      labelStyle: const TextStyle(fontSize: 15),
+      labelStyle: TextStyle(fontSize: 15, color: cs.onSurface),
+      secondaryLabelStyle: TextStyle(fontSize: 15, color: cs.onSecondaryContainer),
+      selectedColor: cs.secondaryContainer,
+      checkmarkColor: cs.onSecondaryContainer,
+      iconTheme: IconThemeData(color: cs.primary, size: 18),
     ),
     // Popups always set BOTH background and text colour, so they stay readable in light and dark themes.
     // (A text style without a colour here used to give pale text on a light snackbar.)

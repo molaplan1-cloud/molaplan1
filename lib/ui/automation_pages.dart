@@ -1345,25 +1345,48 @@ class _ScriptList extends StatelessWidget {
               title: Text(s.name),
               subtitle: Text(_scriptSub(context, a.lastRun(s.id), s)),
               onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => ScriptEditor(initial: s))),
-              trailing: a.isRunning(s.id)
-                  ? IconButton(
-                      key: ValueKey('script-stop-${s.id}'),
-                      tooltip: tx(context, 'Pysäytä', 'Stop'),
-                      icon: const Icon(Icons.stop_circle_outlined),
-                      onPressed: () => a.stopScript(s.id),
-                    )
-                  : IconButton(
-                      key: ValueKey('script-run-${s.id}'),
-                      tooltip: tx(context, 'Aja', 'Run'),
-                      icon: const Icon(Icons.play_circle_outline),
-                      onPressed: () async {
-                        try {
-                          await a.runScript(s.id);
-                        } catch (e) {
-                          if (context.mounted) showSnack(context, '$e', error: true);
-                        }
-                      },
-                    ),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  a.isRunning(s.id)
+                      ? IconButton(
+                          key: ValueKey('script-stop-${s.id}'),
+                          tooltip: tx(context, 'Pysäytä', 'Stop'),
+                          icon: const Icon(Icons.stop_circle_outlined),
+                          onPressed: () => a.stopScript(s.id),
+                        )
+                      : IconButton(
+                          key: ValueKey('script-run-${s.id}'),
+                          tooltip: tx(context, 'Aja', 'Run'),
+                          icon: const Icon(Icons.play_circle_outline),
+                          onPressed: () async {
+                            try {
+                              await a.runScript(s.id);
+                            } catch (e) {
+                              if (context.mounted) showSnack(context, '$e', error: true);
+                            }
+                          },
+                        ),
+                  PopupMenuButton<String>(
+                    key: ValueKey('script-menu-${s.id}'),
+                    tooltip: tx(context, 'Lisää', 'More'),
+                    onSelected: (v) {
+                      if (v == 'button') addScriptButtonFlow(context, s);
+                    },
+                    itemBuilder: (c) => [
+                      PopupMenuItem(
+                        key: ValueKey('script-menu-button-${s.id}'),
+                        value: 'button',
+                        child: ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: const Icon(Icons.smart_button_outlined),
+                          title: Text(tx(c, 'Lisää painike etusivulle', 'Add a button to the front page')),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
       ],
@@ -1389,6 +1412,23 @@ class _ScriptEditorState extends State<ScriptEditor> {
   late Script s = widget.initial == null ? Script(name: '') : Script.fromJson(widget.initial!.toJson());
   late bool code = s.advanced;
   String? _check;
+  // t192u: new scripts get a button on the front page by default.
+  late bool addButton = widget.initial == null;
+  String? buttonView;
+
+  Future<void> _createButton() async {
+    if (!addButton) return;
+    final st = AppScope.read(context);
+    final d = st.config.dashboards.firstWhere((x) => x.id == buttonView, orElse: () => st.config.dashboards.first);
+    // Only once: saving again does not add a second button.
+    if (!scriptButtons(st.config.dashboards, s.id).any((e) => e.$1.id == d.id)) {
+      await st.upsertTile(d, runTile(s.name, 'script', s.id, icon: 'play'));
+      if (mounted) {
+        showSnack(context, tx(context, 'Painike lisätty näkymään ${d.name}', 'Button added to ${d.name}'));
+      }
+    }
+    if (mounted) setState(() => addButton = false);
+  }
 
   static const example =
       '-- Esimerkki / example\n'
@@ -1498,69 +1538,100 @@ class _ScriptEditorState extends State<ScriptEditor> {
               },
             ),
           const Divider(height: 32),
-          // t173u: the button runs the script in the app (and through the home bridge when you
-          // are away) – this is only an extra, optional trigger from outside Molaplan.
-          Text(
-            tx(context, 'Ulkoinen käynnistys (valinnainen)', 'External trigger (optional)'),
-            key: const ValueKey('script-external-title'),
-            style: Theme.of(context).textTheme.titleSmall,
+          // t192u: the in-app button is the normal way to run a script – offered first, on by default.
+          _ScriptButtonSection(
+            script: s,
+            add: addButton,
+            view: buttonView,
+            onAdd: (v) => setState(() => addButton = v),
+            onView: (v) => setState(() => buttonView = v),
           ),
-          const SizedBox(height: 4),
-          Text(
-            tx(
-              context,
-              'Skriptin nappi toimii ilman tätä: se ajaa skriptin sovelluksessa, ja kodin ulkopuolelta automaattisesti etäkäytön kautta. Tarvitset tätä vain, jos haluat käynnistää skriptin Molaplanin ulkopuolelta, esim. iPhonen Pikakomennoilla.',
-              'The script\'s button works without this: it runs the script in the app, and through remote access automatically when you are away. You only need this to start the script from outside Molaplan, e.g. iPhone Shortcuts.',
+          const SizedBox(height: 8),
+          Theme(
+            data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+            child: ExpansionTile(
+              key: const ValueKey('script-advanced'),
+              tilePadding: EdgeInsets.zero,
+              childrenPadding: EdgeInsets.zero,
+              expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
+              leading: const Icon(Icons.tune),
+              title: Text(tx(context, 'Edistyneet', 'Advanced')),
+              subtitle: Text(
+                s.remote
+                    ? tx(context, 'Ulkoinen käynnistys (PIN) on päällä', 'External trigger (PIN) is on')
+                    : tx(
+                        context,
+                        'Ulkoinen käynnistys, esim. iPhonen Pikakomennot',
+                        'External trigger, e.g. iPhone Shortcuts',
+                      ),
+              ),
+              children: [
+                Text(
+                  tx(context, 'Ulkoinen käynnistys (valinnainen)', 'External trigger (optional)'),
+                  key: const ValueKey('script-external-title'),
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+                // t173u: the button runs the script in the app (and through the home bridge when you
+                // are away) – this is only an extra, optional trigger from outside Molaplan.
+                const SizedBox(height: 4),
+                Text(
+                  tx(
+                    context,
+                    'Skriptin nappi toimii ilman tätä: se ajaa skriptin sovelluksessa, ja kodin ulkopuolelta automaattisesti etäkäytön kautta. Tarvitset tätä vain, jos haluat käynnistää skriptin Molaplanin ulkopuolelta, esim. iPhonen Pikakomennoilla.',
+                    'The script\'s button works without this: it runs the script in the app, and through remote access automatically when you are away. You only need this to start the script from outside Molaplan, e.g. iPhone Shortcuts.',
+                  ),
+                  key: const ValueKey('script-external-help'),
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                SwitchListTile(
+                  key: const ValueKey('script-remote'),
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(tx(context, 'Salli käynnistys ulkopuolelta (PIN)', 'Allow starting from outside (PIN)')),
+                  subtitle: Text(
+                    tx(
+                      context,
+                      'Viesti ntfy-osoitteeseen tai iPhonen Pikakomento käynnistää skriptin PIN-koodilla.',
+                      'A message to the ntfy address or an iPhone Shortcut starts the script with the PIN.',
+                    ),
+                  ),
+                  value: s.remote,
+                  onChanged: (v) async {
+                    if (v && s.pinHash == null) {
+                      final pin = await promptText(
+                        context,
+                        tx(context, 'Etäajon PIN (vähintään 4 merkkiä)', 'Remote PIN (at least 4 characters)'),
+                      );
+                      if (pin == null || pin.trim().length < 4) return;
+                      s.pinHash = hashPin(pin);
+                    }
+                    setState(() => s.remote = v);
+                  },
+                ),
+                if (s.remote) ...[
+                  const SizedBox(height: 6),
+                  SelectableText(
+                    key: const ValueKey('script-remote-howto'),
+                    tx(
+                      context,
+                      'Lähetä viesti "run ${s.name} <PIN>" osoitteeseen $url\n'
+                          'iPhonen Pikakomennot: "Hae URL:n sisältö" → $url, menetelmä POST, runko: run ${s.name} <PIN>',
+                      'Send "run ${s.name} <PIN>" to $url\n'
+                          'iPhone Shortcuts: "Get Contents of URL" → $url, method POST, body: run ${s.name} <PIN>',
+                    ),
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: TextButton.icon(
+                      icon: const Icon(Icons.copy),
+                      label: Text(tx(context, 'Kopioi URL', 'Copy URL')),
+                      onPressed: () => Clipboard.setData(ClipboardData(text: url)),
+                    ),
+                  ),
+                ],
+              ],
             ),
-            key: const ValueKey('script-external-help'),
-            style: Theme.of(context).textTheme.bodySmall,
           ),
-          SwitchListTile(
-            key: const ValueKey('script-remote'),
-            contentPadding: EdgeInsets.zero,
-            title: Text(tx(context, 'Salli käynnistys ulkopuolelta (PIN)', 'Allow starting from outside (PIN)')),
-            subtitle: Text(
-              tx(
-                context,
-                'Viesti ntfy-osoitteeseen tai iPhonen Pikakomento käynnistää skriptin PIN-koodilla.',
-                'A message to the ntfy address or an iPhone Shortcut starts the script with the PIN.',
-              ),
-            ),
-            value: s.remote,
-            onChanged: (v) async {
-              if (v && s.pinHash == null) {
-                final pin = await promptText(
-                  context,
-                  tx(context, 'Etäajon PIN (vähintään 4 merkkiä)', 'Remote PIN (at least 4 characters)'),
-                );
-                if (pin == null || pin.trim().length < 4) return;
-                s.pinHash = hashPin(pin);
-              }
-              setState(() => s.remote = v);
-            },
-          ),
-          if (s.remote) ...[
-            const SizedBox(height: 6),
-            SelectableText(
-              key: const ValueKey('script-remote-howto'),
-              tx(
-                context,
-                'Lähetä viesti "run ${s.name} <PIN>" osoitteeseen $url\n'
-                    'iPhonen Pikakomennot: "Hae URL:n sisältö" → $url, menetelmä POST, runko: run ${s.name} <PIN>',
-                'Send "run ${s.name} <PIN>" to $url\n'
-                    'iPhone Shortcuts: "Get Contents of URL" → $url, method POST, body: run ${s.name} <PIN>',
-              ),
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: TextButton.icon(
-                icon: const Icon(Icons.copy),
-                label: Text(tx(context, 'Kopioi URL', 'Copy URL')),
-                onPressed: () => Clipboard.setData(ClipboardData(text: url)),
-              ),
-            ),
-          ],
         ],
       ),
       bottomNavigationBar: SafeArea(
@@ -1580,32 +1651,12 @@ class _ScriptEditorState extends State<ScriptEditor> {
                     : () async {
                         _normalise();
                         await a.saveScript(s);
+                        await _createButton();
                         try {
                           final r = await a.runScript(s.id);
                           if (context.mounted) showSnack(context, r == null ? tx(context, 'Ajettu', 'Done') : '$r');
                         } catch (e) {
                           if (context.mounted) showSnack(context, '$e', error: true);
-                        }
-                      },
-              ),
-              OutlinedButton.icon(
-                key: const ValueKey('script-to-tile'),
-                icon: const Icon(Icons.smart_button_outlined),
-                label: Text(tx(context, 'Nappi näkymään', 'Button on dashboard')),
-                onPressed: _check != null
-                    ? null
-                    : () async {
-                        _normalise();
-                        await a.saveScript(s);
-                        final d = st.config.dashboards.first;
-                        final tile = runTile(s.name, 'script', s.id, icon: 'play');
-                        if (!context.mounted || !await confirmNoDuplicates(context, d, [tile])) return;
-                        await st.upsertTile(d, tile);
-                        if (context.mounted) {
-                          showSnack(
-                            context,
-                            tx(context, 'Nappi lisätty näkymään ${d.name}', 'Button added to ${d.name}'),
-                          );
                         }
                       },
               ),
@@ -1616,6 +1667,7 @@ class _ScriptEditorState extends State<ScriptEditor> {
                     : () async {
                         _normalise();
                         await a.saveScript(s);
+                        await _createButton();
                         if (context.mounted) Navigator.pop(context);
                       },
                 child: Text(tx(context, 'Tallenna', 'Save')),
@@ -1630,6 +1682,116 @@ class _ScriptEditorState extends State<ScriptEditor> {
   void _normalise() {
     if (s.name.trim().isEmpty) s.name = tx(context, 'Skripti', 'Script');
     if (!code) s.code = null;
+  }
+}
+
+/// t192u: "Lisää painike etusivulle" – the normal way to run a script, at home and away.
+class _ScriptButtonSection extends StatelessWidget {
+  const _ScriptButtonSection({
+    required this.script,
+    required this.add,
+    required this.view,
+    required this.onAdd,
+    required this.onView,
+  });
+  final Script script;
+  final bool add;
+  final String? view;
+  final ValueChanged<bool> onAdd;
+  final ValueChanged<String?> onView;
+
+  @override
+  Widget build(BuildContext context) {
+    final st = AppScope.of(context);
+    final views = st.config.dashboards;
+    final existing = scriptButtons(views, script.id);
+    final chosen = views.any((d) => d.id == view) ? view : (views.isEmpty ? null : views.first.id);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          tx(context, 'Painike sovelluksessa', 'Button in the app'),
+          key: const ValueKey('script-button-title'),
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        const SizedBox(height: 4),
+        Text(
+          tx(
+            context,
+            'Painikkeella ajat skriptin yhdellä napautuksella. Se toimii kotona ja myös kodin ulkopuolelta kotisillan kautta – Pikakomentoja ei tarvita.',
+            'The button runs the script with one tap. It works at home and also away from home through the home bridge – no Shortcuts needed.',
+          ),
+          key: const ValueKey('script-button-help'),
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
+        if (existing.isNotEmpty) ...[
+          const SizedBox(height: 8),
+          for (final (d, t) in existing)
+            ListTile(
+              key: ValueKey('script-button-existing-${t.id}'),
+              dense: true,
+              contentPadding: EdgeInsets.zero,
+              leading: const Icon(Icons.smart_button_outlined),
+              title: Text(t.title),
+              subtitle: Text(tx(context, 'Painike näkymässä ${d.name}', 'Button in the view ${d.name}')),
+            ),
+        ],
+        SwitchListTile(
+          key: const ValueKey('script-add-button'),
+          contentPadding: EdgeInsets.zero,
+          title: Text(
+            existing.isEmpty
+                ? tx(context, 'Lisää painike etusivulle', 'Add a button to the front page')
+                : tx(context, 'Lisää uusi painike', 'Add another button'),
+          ),
+          subtitle: Text(tx(context, 'Painike luodaan, kun tallennat.', 'The button is created when you save.')),
+          value: add,
+          onChanged: views.isEmpty ? null : onAdd,
+        ),
+        if (add && views.length > 1)
+          DropdownButtonFormField<String>(
+            key: const ValueKey('script-button-view'),
+            initialValue: chosen,
+            decoration: InputDecoration(labelText: tx(context, 'Näkymä', 'View')),
+            items: [for (final d in views) DropdownMenuItem(value: d.id, child: Text(d.name))],
+            onChanged: onView,
+          ),
+      ],
+    );
+  }
+}
+
+/// t192u: script list menu → "Lisää painike etusivulle" for an existing script.
+Future<void> addScriptButtonFlow(BuildContext context, Script s) async {
+  final st = AppScope.read(context);
+  final views = st.config.dashboards;
+  if (views.isEmpty) return;
+  var d = views.first;
+  if (views.length > 1) {
+    final picked = await showDialog<Dashboard>(
+      context: context,
+      builder: (c) => SimpleDialog(
+        key: const ValueKey('script-button-view-dialog'),
+        title: Text(tx(c, 'Mihin näkymään painike lisätään?', 'Which view gets the button?')),
+        children: [
+          for (final v in views)
+            SimpleDialogOption(
+              key: ValueKey('script-button-view-${v.id}'),
+              onPressed: () => Navigator.pop(c, v),
+              child: Text(v.name),
+            ),
+        ],
+      ),
+    );
+    if (picked == null) return;
+    d = picked;
+  }
+  if (!context.mounted) return;
+  final tile = runTile(s.name, 'script', s.id, icon: 'play');
+  if (!await confirmNoDuplicates(context, d, [tile])) return;
+  await st.upsertTile(d, tile);
+  if (context.mounted) {
+    showSnack(context, tx(context, 'Painike lisätty näkymään ${d.name}', 'Button added to ${d.name}'));
   }
 }
 

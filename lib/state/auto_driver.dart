@@ -155,3 +155,10 @@ TileConfig controlTile(String title, String tileId, String op, {String icon = 't
     CommandStep(connectionId: autoConnId, spec: {'kind': 'tile', 'tileId': tileId, 'op': op}),
   ],
 );
+
+/// t192u: the views and button tiles that run script [scriptId].
+List<(Dashboard, TileConfig)> scriptButtons(List<Dashboard> dashboards, String scriptId) => [
+  for (final d in dashboards)
+    for (final t in d.tiles)
+      if (t.read['kind'] == 'script' && t.read['scriptId'] == scriptId) (d, t),
+];
