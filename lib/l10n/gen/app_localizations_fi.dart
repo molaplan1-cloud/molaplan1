@@ -987,6 +987,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get se9ca7cb470 => 'Automaatiot';
 
   @override
+  String get s41bb837a83 => 'Ilmoitukset ja muistutukset';
+
+  @override
   String get sf98121cd3d => 'Huoneen kuva';
 
   @override
@@ -1425,6 +1428,241 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s139d2075b8 => 'Tili poistettu. Molaplan toimii nyt ilman tiliä.';
 
   @override
+  String get sca7e088857 => 'Sähkön hinta';
+
+  @override
+  String get s83f816fbe3 => 'Poikkeuksellisen kallis sähkö';
+
+  @override
+  String get s262f9527aa => 'Sääennuste';
+
+  @override
+  String get sfc404aec8b => 'Anturin arvo';
+
+  @override
+  String get s58d2896c42 => 'Laitteen tila';
+
+  @override
+  String get s7def336f41 => 'Aika tai päivä';
+
+  @override
+  String get sf80835a318 => 'Saapuminen (esilämmitys)';
+
+  @override
+  String get s9a37dbb58a => 'huomenna';
+
+  @override
+  String get s1fe084d61b => 'tänään';
+
+  @override
+  String get safd8f4dddf => 'kallein';
+
+  @override
+  String get s484731d968 => 'halvin';
+
+  @override
+  String get s77f9bfc303 => 'keskihinta';
+
+  @override
+  String get sc017c085e4 => '(valitse laite)';
+
+  @override
+  String s3f09da81b6(String p0, String p1, String p2, String p3) {
+    return '$p0: keskihinta ≥ $p1 c tai kallein ≥ $p2 c tai $p3× edellinen päivä';
+  }
+
+  @override
+  String s900c886f50(String p0, String p1, String p2, String p3) {
+    return '$p0 $p1 $p2 $p3 °C';
+  }
+
+  @override
+  String s81c88dabf7(String p0, String p1) {
+    return '$p0 ei vastaa $p1 min';
+  }
+
+  @override
+  String s5414e9e5fd(String p0) {
+    return '$p0 menee pois päältä';
+  }
+
+  @override
+  String s09a43fc401(String p0) {
+    return '$p0 menee päälle';
+  }
+
+  @override
+  String s56ef33ee50(String p0, String p1, String p2) {
+    return 'saapuminen $p0 · muistutus $p1 h ennen · $p2 °C';
+  }
+
+  @override
+  String get sdeb38e3907 => 'Oma ilmoitus';
+
+  @override
+  String get s5e9a552fe6 => 'Oma ilmoitus';
+
+  @override
+  String get se2e6db5acc => 'Mikä tahansa ehto ja oma viesti.';
+
+  @override
+  String get sc6bec5e6cb =>
+      'Toimii tällä kotisillalla, myös kun sovellus on kiinni.';
+
+  @override
+  String get se17e32a5c9 =>
+      'Kotisilta on vanhempi kuin 0.11.0: muistutukset toimivat nyt vain, kun tämä sovellus on auki. Päivitä silta (Etäkäyttö → Omat kotisillat).';
+
+  @override
+  String get s5fd9e146bf => 'Toimii kotisillalla, myös kun sovellus on kiinni.';
+
+  @override
+  String get s563ba24005 =>
+      'Ei kotisiltaa: muistutukset toimivat, kun sovellus on auki. Kotisilta pitää ne käynnissä aina.';
+
+  @override
+  String get sf378d832a1 => 'Lisää muistutus';
+
+  @override
+  String get s034093c675 =>
+      'Saat ilmoituksen, kun jokin ehto täyttyy: sähkön hinta (myös huominen), sääennuste, anturin arvo, laitteen tila tai aika.';
+
+  @override
+  String get s49a26ce1f2 => 'Valitse valmis malli';
+
+  @override
+  String get sc0597b9029 => 'Viimeisimmät ilmoitukset';
+
+  @override
+  String get sac8af0108d => 'Ei vielä ilmoituksia.';
+
+  @override
+  String get sf4caddf894 => 'Edistyneet';
+
+  @override
+  String get sbb2b4bdfc8 =>
+      'Puhelinilmoitukset (ntfy), hiljaiset tunnit, mykistys';
+
+  @override
+  String get s13d942a5a9 => 'Valitse laite.';
+
+  @override
+  String get sac782d209c => 'Kokeiluilmoitus lähetetty.';
+
+  @override
+  String get s67584c9abf => 'Laite';
+
+  @override
+  String get s140acccb81 => 'Tänään';
+
+  @override
+  String get s0de6e75a52 => 'Huomenna';
+
+  @override
+  String get sbbf8b7a598 => 'Keskihinta';
+
+  @override
+  String get s43b4c610f8 => 'Kallein';
+
+  @override
+  String get s9dd0f70be6 => 'Halvin';
+
+  @override
+  String get scd65d31d4c => 'Raja';
+
+  @override
+  String get s543838d91f => 'Keskihinta vähintään';
+
+  @override
+  String get s087a7e1b24 => 'tai kallein vähintään';
+
+  @override
+  String get s8463e08e0b => 'tai × edellisen päivän keskihinta';
+
+  @override
+  String get sd8332d82ec => 'Alin';
+
+  @override
+  String get s109b35551a => 'Ylin';
+
+  @override
+  String get sf2c65c5aeb => 'Keski';
+
+  @override
+  String get s68b942c864 =>
+      'Aseta kodin sijainti (Energia → Asetukset), jotta sääennuste on käytössä.';
+
+  @override
+  String get s38ac222392 => 'Arvo';
+
+  @override
+  String get s4cd3d92d4c => 'Päälle';
+
+  @override
+  String get sa8e43f2b0e => 'Ei vastaa';
+
+  @override
+  String get s65f512f499 => 'Kun ei vastaa';
+
+  @override
+  String get sa224d2f5f9 => 'Kello';
+
+  @override
+  String get s96b7e2c62c => 'Joka päivä (valitse päivä kerran)';
+
+  @override
+  String get s593004184e => 'Saapuminen';
+
+  @override
+  String get sa9faf47356 => 'Muistuta ennen';
+
+  @override
+  String get sf527ec4275 => 'Tavoitelämpö';
+
+  @override
+  String get s009a96409a => 'Uusi muistutus';
+
+  @override
+  String get sb346b2b647 => 'Muistutus';
+
+  @override
+  String get sc1845eb440 => 'Poista';
+
+  @override
+  String get sb1924acbe7 => 'Nimi';
+
+  @override
+  String get s5506524eac => 'Kun';
+
+  @override
+  String get s86c5d7fa73 => 'Viesti';
+
+  @override
+  String get s8dda7ee75e =>
+      'Voit käyttää: {avg} {max} {min} {hour} {temp} {value} {tile} {target} {arrival} {date}';
+
+  @override
+  String get sec1bdb2451 => 'Myös puhelimeen (ntfy)';
+
+  @override
+  String get se2de73b535 => 'Näkyy aina myös sovelluksessa.';
+
+  @override
+  String get sd84d87d156 => 'Tärkeys';
+
+  @override
+  String get s7a09198c53 => '5 (myös hiljaisina tunteina)';
+
+  @override
+  String get se8e58d6206 => 'Ei uudelleen ennen';
+
+  @override
+  String get s7d773a4dc9 => 'Ei ennen kello';
+
+  @override
+  String get sb86dc1b7bf => 'Kokeile';
+
+  @override
   String get sfb4df77773 => 'Anna napille nimi, esim. \"Turbo\".';
 
   @override
@@ -1694,9 +1932,6 @@ class AppLocalizationsFi extends AppLocalizations {
       'Tarkistetaan itsestään 15 s välein, kunnes yhteys toimii. Ilmoitus poistuu silloin itsestään.';
 
   @override
-  String get sf4caddf894 => 'Edistyneet';
-
-  @override
   String get s3e05e0efab => 'Wi-Fi/Ethernet-osoitteet';
 
   @override
@@ -1886,9 +2121,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s0c6a008ffd => 'Nimi ja tila';
 
   @override
-  String get sb1924acbe7 => 'Nimi';
-
-  @override
   String get s1790a71e85 => 'esim. Olohuone';
 
   @override
@@ -1932,9 +2164,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s187d328bb1 => 'Muokkaa';
-
-  @override
-  String get sc1845eb440 => 'Poista';
 
   @override
   String get s87984716cb => 'Poistetaanko termostaatti?';
@@ -3013,9 +3242,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s8039add5ed => 'Nimetön';
 
   @override
-  String get s5506524eac => 'Kun';
-
-  @override
   String get sf2d3a43ee8 => 'Ei ajoja vielä.';
 
   @override
@@ -3109,22 +3335,13 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s04c0bcdd51 => 'Auringonnousu / -lasku';
 
   @override
-  String get sca7e088857 => 'Sähkön hinta';
-
-  @override
   String get s869f0d57af => 'Sää (ulkolämpötila)';
 
   @override
   String get sa4261f6e35 => 'Laite ei vastaa';
 
   @override
-  String get s67584c9abf => 'Laite';
-
-  @override
   String get se0a362c060 => 'Tyyppi';
-
-  @override
-  String get s38ac222392 => 'Arvo';
 
   @override
   String get s4f62fd1f09 => 'Kun se menee';
@@ -3238,9 +3455,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sbc8e165fbf => 'Toiminto';
 
   @override
-  String get s4cd3d92d4c => 'Päälle';
-
-  @override
   String get s750f16460c => 'Vaihda';
 
   @override
@@ -3269,9 +3483,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s3c2ee8fe0d => '{summary} = sää, sähkö ja kodin tila';
-
-  @override
-  String get sd84d87d156 => 'Tärkeys';
 
   @override
   String get sb55a08c07c => '1 – hiljainen';
@@ -3619,9 +3830,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s94493d01ca => 'Sääennuste sää lämpötila sade tuuli';
 
   @override
-  String get s262f9527aa => 'Sääennuste';
-
-  @override
   String get scb3570338f =>
       'Sää nyt ja tunneittain: lämpötila, sade ja tuuli kotisi sijainnista. Ei vaadi laitetta.';
 
@@ -3825,9 +4033,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s95f80e9bdf => 'Korjaa';
-
-  @override
-  String get s140acccb81 => 'Tänään';
 
   @override
   String get s66ad384363 => '24 h eteenpäin';
@@ -4088,9 +4293,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s15b42b592c => 'Ei päälläoloa seuraavan vuorokauden aikana.';
-
-  @override
-  String get s0de6e75a52 => 'Huomenna';
 
   @override
   String sf87d92faf4(String p0, String p1) {
@@ -5270,9 +5472,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sc0f5a14d2b => 'Värirajat (arvo ≥ raja → väri)';
-
-  @override
-  String get scd65d31d4c => 'Raja';
 
   @override
   String get s30a2c0f460 => 'Lisää raja';
@@ -7314,6 +7513,17 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s1dfeacd9f6 => 'UDP';
 
   @override
+  String s6c33f19716(String p0) {
+    return 'ei vastaa ($p0 min)';
+  }
+
+  @override
+  String get scebcdabe25 => 'pois päältä';
+
+  @override
+  String get sd4be8bca5f => 'Kokeilu';
+
+  @override
   String get sd76aadb97c => 'Vesivuoto → hälytys';
 
   @override
@@ -7382,6 +7592,44 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sc797ab9c4c => 'Huomenta';
+
+  @override
+  String get seec5bf7f8d =>
+      'Huomenna sähkö maksaa keskimäärin {avg} c/kWh (kallein {max} klo {hour}). Lämmitä takka.';
+
+  @override
+  String get s4a7ea7d7f1 =>
+      'Tänään sähkö on poikkeuksellisen kallista: keskimäärin {avg} c/kWh, kallein {max} klo {hour}.';
+
+  @override
+  String get se8a2912e3e =>
+      'Huomenna sähkö on poikkeuksellisen kallista: keskimäärin {avg} c/kWh, kallein {max} klo {hour}.';
+
+  @override
+  String get s0818fd54b1 =>
+      'Mökille tulo {arrival}. Laita lämmitys päälle nyt, tavoite {target} °C.';
+
+  @override
+  String get s57aad0f6c3 =>
+      'Huomenna sähkö keskimäärin {avg} c/kWh, kallein {max} klo {hour}.';
+
+  @override
+  String get s05394a7333 =>
+      'Tänään sähkö keskimäärin {avg} c/kWh, kallein {max} klo {hour}.';
+
+  @override
+  String get s412e06dba4 =>
+      'Poikkeuksellisen kallis sähkö {date}: keskimäärin {avg} c/kWh, kallein {max} klo {hour}.';
+
+  @override
+  String get s7f8a4ab629 => 'Sääennuste {date}: {temp} °C.';
+
+  @override
+  String get s326f105e40 => '{tile}: {value}';
+
+  @override
+  String get s65afe3ff6f =>
+      'Saapuminen {arrival}. Laita lämmitys päälle, tavoite {target} °C.';
 
   @override
   String get scec02139b6 => 'Ruutu puuttuu';

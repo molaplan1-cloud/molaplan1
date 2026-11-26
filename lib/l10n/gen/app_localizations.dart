@@ -1826,6 +1826,12 @@ abstract class AppLocalizations {
   /// **'Automations'**
   String get se9ca7cb470;
 
+  /// fi: Ilmoitukset ja muistutukset
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications and reminders'**
+  String get s41bb837a83;
+
   /// fi: Huoneen kuva
   ///
   /// In en, this message translates to:
@@ -2602,6 +2608,438 @@ abstract class AppLocalizations {
   /// **'Account deleted.'**
   String get s139d2075b8;
 
+  /// fi: Sähkön hinta
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity price'**
+  String get sca7e088857;
+
+  /// fi: Poikkeuksellisen kallis sähkö
+  ///
+  /// In en, this message translates to:
+  /// **'Exceptionally expensive electricity'**
+  String get s83f816fbe3;
+
+  /// fi: Sääennuste
+  ///
+  /// In en, this message translates to:
+  /// **'Weather forecast'**
+  String get s262f9527aa;
+
+  /// fi: Anturin arvo
+  ///
+  /// In en, this message translates to:
+  /// **'Sensor value'**
+  String get sfc404aec8b;
+
+  /// fi: Laitteen tila
+  ///
+  /// In en, this message translates to:
+  /// **'Device state'**
+  String get s58d2896c42;
+
+  /// fi: Aika tai päivä
+  ///
+  /// In en, this message translates to:
+  /// **'Time or date'**
+  String get s7def336f41;
+
+  /// fi: Saapuminen (esilämmitys)
+  ///
+  /// In en, this message translates to:
+  /// **'Arrival (pre-heating)'**
+  String get sf80835a318;
+
+  /// fi: huomenna
+  ///
+  /// In en, this message translates to:
+  /// **'tomorrow'**
+  String get s9a37dbb58a;
+
+  /// fi: tänään
+  ///
+  /// In en, this message translates to:
+  /// **'today'**
+  String get s1fe084d61b;
+
+  /// fi: kallein
+  ///
+  /// In en, this message translates to:
+  /// **'highest'**
+  String get safd8f4dddf;
+
+  /// fi: halvin
+  ///
+  /// In en, this message translates to:
+  /// **'lowest'**
+  String get s484731d968;
+
+  /// fi: keskihinta
+  ///
+  /// In en, this message translates to:
+  /// **'average'**
+  String get s77f9bfc303;
+
+  /// fi: (valitse laite)
+  ///
+  /// In en, this message translates to:
+  /// **'(pick a device)'**
+  String get sc017c085e4;
+
+  /// fi: {p0}: keskihinta ≥ {p1} c tai kallein ≥ {p2} c tai {p3}× edellinen päivä
+  ///
+  /// In en, this message translates to:
+  /// **'{p0}: average ≥ {p1} c or peak ≥ {p2} c or {p3}× the day before'**
+  String s3f09da81b6(String p0, String p1, String p2, String p3);
+
+  /// fi: {p0} {p1} {p2} {p3} °C
+  ///
+  /// In en, this message translates to:
+  /// **'{p0}  {p2} {p3} °C'**
+  String s900c886f50(String p0, String p1, String p2, String p3);
+
+  /// fi: {p0} ei vastaa {p1} min
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} not answering {p1} min'**
+  String s81c88dabf7(String p0, String p1);
+
+  /// fi: {p0} menee pois päältä
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} turns off'**
+  String s5414e9e5fd(String p0);
+
+  /// fi: {p0} menee päälle
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} turns on'**
+  String s09a43fc401(String p0);
+
+  /// fi: saapuminen {p0} · muistutus {p1} h ennen · {p2} °C
+  ///
+  /// In en, this message translates to:
+  /// **'arrival {p0} · reminder {p1} h before · {p2} °C'**
+  String s56ef33ee50(String p0, String p1, String p2);
+
+  /// fi: Oma ilmoitus
+  ///
+  /// In en, this message translates to:
+  /// **'My notification'**
+  String get sdeb38e3907;
+
+  /// fi: Oma ilmoitus
+  ///
+  /// In en, this message translates to:
+  /// **'My own notification'**
+  String get s5e9a552fe6;
+
+  /// fi: Mikä tahansa ehto ja oma viesti.
+  ///
+  /// In en, this message translates to:
+  /// **'Any condition and your own message.'**
+  String get se2e6db5acc;
+
+  /// fi: Toimii tällä kotisillalla, myös kun sovellus on kiinni.
+  ///
+  /// In en, this message translates to:
+  /// **'Runs on this home bridge, also with the app closed.'**
+  String get sc6bec5e6cb;
+
+  /// fi: Kotisilta on vanhempi kuin 0.11.0: muistutukset toimivat nyt vain, kun tämä sovellus on auki. Päivitä silta (Etäkäyttö →
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge is older than 0.11.0: reminders work only while this app is open. Update the bridge (Remote access → My home bridges).'**
+  String get se17e32a5c9;
+
+  /// fi: Toimii kotisillalla, myös kun sovellus on kiinni.
+  ///
+  /// In en, this message translates to:
+  /// **'Runs on the home bridge, also with the app closed.'**
+  String get s5fd9e146bf;
+
+  /// fi: Ei kotisiltaa: muistutukset toimivat, kun sovellus on auki. Kotisilta pitää ne käynnissä aina.
+  ///
+  /// In en, this message translates to:
+  /// **'No home bridge: reminders work while the app is open. A home bridge keeps them running all the time.'**
+  String get s563ba24005;
+
+  /// fi: Lisää muistutus
+  ///
+  /// In en, this message translates to:
+  /// **'Add reminder'**
+  String get sf378d832a1;
+
+  /// fi: Saat ilmoituksen, kun jokin ehto täyttyy: sähkön hinta (myös huominen), sääennuste, anturin arvo, laitteen tila tai aika
+  ///
+  /// In en, this message translates to:
+  /// **'Get a notification when a condition is met: electricity price (tomorrow too), weather forecast, a sensor value, a device state or a time.'**
+  String get s034093c675;
+
+  /// fi: Valitse valmis malli
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a ready template'**
+  String get s49a26ce1f2;
+
+  /// fi: Viimeisimmät ilmoitukset
+  ///
+  /// In en, this message translates to:
+  /// **'Latest notifications'**
+  String get sc0597b9029;
+
+  /// fi: Ei vielä ilmoituksia.
+  ///
+  /// In en, this message translates to:
+  /// **'No notifications yet.'**
+  String get sac8af0108d;
+
+  /// fi: Edistyneet
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced'**
+  String get sf4caddf894;
+
+  /// fi: Puhelinilmoitukset (ntfy), hiljaiset tunnit, mykistys
+  ///
+  /// In en, this message translates to:
+  /// **'Phone notifications (ntfy), quiet hours, mute'**
+  String get sbb2b4bdfc8;
+
+  /// fi: Valitse laite.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a device.'**
+  String get s13d942a5a9;
+
+  /// fi: Kokeiluilmoitus lähetetty.
+  ///
+  /// In en, this message translates to:
+  /// **'Test notification sent.'**
+  String get sac782d209c;
+
+  /// fi: Laite
+  ///
+  /// In en, this message translates to:
+  /// **'Device'**
+  String get s67584c9abf;
+
+  /// fi: Tänään
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get s140acccb81;
+
+  /// fi: Huomenna
+  ///
+  /// In en, this message translates to:
+  /// **'Tomorrow'**
+  String get s0de6e75a52;
+
+  /// fi: Keskihinta
+  ///
+  /// In en, this message translates to:
+  /// **'Average'**
+  String get sbbf8b7a598;
+
+  /// fi: Kallein
+  ///
+  /// In en, this message translates to:
+  /// **'Highest'**
+  String get s43b4c610f8;
+
+  /// fi: Halvin
+  ///
+  /// In en, this message translates to:
+  /// **'Lowest'**
+  String get s9dd0f70be6;
+
+  /// fi: Raja
+  ///
+  /// In en, this message translates to:
+  /// **'Limit'**
+  String get scd65d31d4c;
+
+  /// fi: Keskihinta vähintään
+  ///
+  /// In en, this message translates to:
+  /// **'Average at least'**
+  String get s543838d91f;
+
+  /// fi: tai kallein vähintään
+  ///
+  /// In en, this message translates to:
+  /// **'or peak at least'**
+  String get s087a7e1b24;
+
+  /// fi: tai × edellisen päivän keskihinta
+  ///
+  /// In en, this message translates to:
+  /// **'or × the previous day\'\'s average'**
+  String get s8463e08e0b;
+
+  /// fi: Alin
+  ///
+  /// In en, this message translates to:
+  /// **'Min'**
+  String get sd8332d82ec;
+
+  /// fi: Ylin
+  ///
+  /// In en, this message translates to:
+  /// **'Max'**
+  String get s109b35551a;
+
+  /// fi: Keski
+  ///
+  /// In en, this message translates to:
+  /// **'Average'**
+  String get sf2c65c5aeb;
+
+  /// fi: Aseta kodin sijainti (Energia → Asetukset), jotta sääennuste on käytössä.
+  ///
+  /// In en, this message translates to:
+  /// **'Set the home location (Energy → Settings) for the forecast.'**
+  String get s68b942c864;
+
+  /// fi: Arvo
+  ///
+  /// In en, this message translates to:
+  /// **'Value'**
+  String get s38ac222392;
+
+  /// fi: Päälle
+  ///
+  /// In en, this message translates to:
+  /// **'On'**
+  String get s4cd3d92d4c;
+
+  /// fi: Ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'Offline'**
+  String get sa8e43f2b0e;
+
+  /// fi: Kun ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'When offline for'**
+  String get s65f512f499;
+
+  /// fi: Kello
+  ///
+  /// In en, this message translates to:
+  /// **'Time'**
+  String get sa224d2f5f9;
+
+  /// fi: Joka päivä (valitse päivä kerran)
+  ///
+  /// In en, this message translates to:
+  /// **'Every day (pick a date for once)'**
+  String get s96b7e2c62c;
+
+  /// fi: Saapuminen
+  ///
+  /// In en, this message translates to:
+  /// **'Arrival'**
+  String get s593004184e;
+
+  /// fi: Muistuta ennen
+  ///
+  /// In en, this message translates to:
+  /// **'Remind before'**
+  String get sa9faf47356;
+
+  /// fi: Tavoitelämpö
+  ///
+  /// In en, this message translates to:
+  /// **'Target temperature'**
+  String get sf527ec4275;
+
+  /// fi: Uusi muistutus
+  ///
+  /// In en, this message translates to:
+  /// **'New reminder'**
+  String get s009a96409a;
+
+  /// fi: Muistutus
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder'**
+  String get sb346b2b647;
+
+  /// fi: Poista
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get sc1845eb440;
+
+  /// fi: Nimi
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get sb1924acbe7;
+
+  /// fi: Kun
+  ///
+  /// In en, this message translates to:
+  /// **'When'**
+  String get s5506524eac;
+
+  /// fi: Viesti
+  ///
+  /// In en, this message translates to:
+  /// **'Message'**
+  String get s86c5d7fa73;
+
+  /// fi: Voit käyttää: {avg} {max} {min} {hour} {temp} {value} {tile} {target} {arrival} {date}
+  ///
+  /// In en, this message translates to:
+  /// **'\'You can use: {avg} {max} {min} {hour} {temp} {value} {tile} {target} {arrival} {date}\''**
+  String get s8dda7ee75e;
+
+  /// fi: Myös puhelimeen (ntfy)
+  ///
+  /// In en, this message translates to:
+  /// **'Also to phones (ntfy)'**
+  String get sec1bdb2451;
+
+  /// fi: Näkyy aina myös sovelluksessa.
+  ///
+  /// In en, this message translates to:
+  /// **'Always shown in the app too.'**
+  String get se2de73b535;
+
+  /// fi: Tärkeys
+  ///
+  /// In en, this message translates to:
+  /// **'Priority'**
+  String get sd84d87d156;
+
+  /// fi: 5 (myös hiljaisina tunteina)
+  ///
+  /// In en, this message translates to:
+  /// **'5 (also in quiet hours)'**
+  String get s7a09198c53;
+
+  /// fi: Ei uudelleen ennen
+  ///
+  /// In en, this message translates to:
+  /// **'Not again within'**
+  String get se8e58d6206;
+
+  /// fi: Ei ennen kello
+  ///
+  /// In en, this message translates to:
+  /// **'Not before'**
+  String get s7d773a4dc9;
+
+  /// fi: Kokeile
+  ///
+  /// In en, this message translates to:
+  /// **'Test'**
+  String get sb86dc1b7bf;
+
   /// fi: Anna napille nimi, esim. "Turbo".
   ///
   /// In en, this message translates to:
@@ -3082,12 +3520,6 @@ abstract class AppLocalizations {
   /// **'Re-checked every 15 s until it works; this notice then disappears by itself.'**
   String get s0fc5f4d788;
 
-  /// fi: Edistyneet
-  ///
-  /// In en, this message translates to:
-  /// **'Advanced'**
-  String get sf4caddf894;
-
   /// fi: Wi-Fi/Ethernet-osoitteet
   ///
   /// In en, this message translates to:
@@ -3424,12 +3856,6 @@ abstract class AppLocalizations {
   /// **'Name and mode'**
   String get s0c6a008ffd;
 
-  /// fi: Nimi
-  ///
-  /// In en, this message translates to:
-  /// **'Name'**
-  String get sb1924acbe7;
-
   /// fi: esim. Olohuone
   ///
   /// In en, this message translates to:
@@ -3519,12 +3945,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Edit'**
   String get s187d328bb1;
-
-  /// fi: Poista
-  ///
-  /// In en, this message translates to:
-  /// **'Delete'**
-  String get sc1845eb440;
 
   /// fi: Poistetaanko termostaatti?
   ///
@@ -5454,12 +5874,6 @@ abstract class AppLocalizations {
   /// **'Untitled'**
   String get s8039add5ed;
 
-  /// fi: Kun
-  ///
-  /// In en, this message translates to:
-  /// **'When'**
-  String get s5506524eac;
-
   /// fi: Ei ajoja vielä.
   ///
   /// In en, this message translates to:
@@ -5640,12 +6054,6 @@ abstract class AppLocalizations {
   /// **'Sunrise / sunset'**
   String get s04c0bcdd51;
 
-  /// fi: Sähkön hinta
-  ///
-  /// In en, this message translates to:
-  /// **'Electricity price'**
-  String get sca7e088857;
-
   /// fi: Sää (ulkolämpötila)
   ///
   /// In en, this message translates to:
@@ -5658,23 +6066,11 @@ abstract class AppLocalizations {
   /// **'Device not answering'**
   String get sa4261f6e35;
 
-  /// fi: Laite
-  ///
-  /// In en, this message translates to:
-  /// **'Device'**
-  String get s67584c9abf;
-
   /// fi: Tyyppi
   ///
   /// In en, this message translates to:
   /// **'Type'**
   String get se0a362c060;
-
-  /// fi: Arvo
-  ///
-  /// In en, this message translates to:
-  /// **'Value'**
-  String get s38ac222392;
 
   /// fi: Kun se menee
   ///
@@ -5898,12 +6294,6 @@ abstract class AppLocalizations {
   /// **'Action'**
   String get sbc8e165fbf;
 
-  /// fi: Päälle
-  ///
-  /// In en, this message translates to:
-  /// **'On'**
-  String get s4cd3d92d4c;
-
   /// fi: Vaihda
   ///
   /// In en, this message translates to:
@@ -5963,12 +6353,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'\'{summary} = weather, price and home state\''**
   String get s3c2ee8fe0d;
-
-  /// fi: Tärkeys
-  ///
-  /// In en, this message translates to:
-  /// **'Priority'**
-  String get sd84d87d156;
 
   /// fi: 1 – hiljainen
   ///
@@ -6601,12 +6985,6 @@ abstract class AppLocalizations {
   /// **'Weather forecast temperature rain wind'**
   String get s94493d01ca;
 
-  /// fi: Sääennuste
-  ///
-  /// In en, this message translates to:
-  /// **'Weather forecast'**
-  String get s262f9527aa;
-
   /// fi: Sää nyt ja tunneittain: lämpötila, sade ja tuuli kotisi sijainnista. Ei vaadi laitetta.
   ///
   /// In en, this message translates to:
@@ -6960,12 +7338,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fix'**
   String get s95f80e9bdf;
-
-  /// fi: Tänään
-  ///
-  /// In en, this message translates to:
-  /// **'Today'**
-  String get s140acccb81;
 
   /// fi: 24 h eteenpäin
   ///
@@ -7458,12 +7830,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No on-times in the next day.'**
   String get s15b42b592c;
-
-  /// fi: Huomenna
-  ///
-  /// In en, this message translates to:
-  /// **'Tomorrow'**
-  String get s0de6e75a52;
 
   /// fi: Hinta-alue {p0}. Hinnat: pörssisähkö (day-ahead), ALV {p1} %. Vaihda alue ja siirtohinta lisäämällä "Sähkön hinta" -lait
   ///
@@ -9540,12 +9906,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Color thresholds (value ≥ limit → color)'**
   String get sc0f5a14d2b;
-
-  /// fi: Raja
-  ///
-  /// In en, this message translates to:
-  /// **'Limit'**
-  String get scd65d31d4c;
 
   /// fi: Lisää raja
   ///
@@ -13159,6 +13519,24 @@ abstract class AppLocalizations {
   /// **'UDP'**
   String get s1dfeacd9f6;
 
+  /// fi: ei vastaa ({p0} min)
+  ///
+  /// In en, this message translates to:
+  /// **'not answering ({p0} min)'**
+  String s6c33f19716(String p0);
+
+  /// fi: pois päältä
+  ///
+  /// In en, this message translates to:
+  /// **'off'**
+  String get scebcdabe25;
+
+  /// fi: Kokeilu
+  ///
+  /// In en, this message translates to:
+  /// **'Test'**
+  String get sd4be8bca5f;
+
   /// fi: Vesivuoto → hälytys
   ///
   /// In en, this message translates to:
@@ -13290,6 +13668,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Good morning'**
   String get sc797ab9c4c;
+
+  /// fi: Huomenna sähkö maksaa keskimäärin {avg} c/kWh (kallein {max} klo {hour}). Lämmitä takka.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Tomorrow electricity averages {avg} c/kWh (peak {max} at {hour}). Light the fireplace.\''**
+  String get seec5bf7f8d;
+
+  /// fi: Tänään sähkö on poikkeuksellisen kallista: keskimäärin {avg} c/kWh, kallein {max} klo {hour}.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Electricity is exceptionally expensive today: average {avg} c/kWh, peak {max} at {hour}.\''**
+  String get s4a7ea7d7f1;
+
+  /// fi: Huomenna sähkö on poikkeuksellisen kallista: keskimäärin {avg} c/kWh, kallein {max} klo {hour}.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Electricity is exceptionally expensive tomorrow: average {avg} c/kWh, peak {max} at {hour}.\''**
+  String get se8a2912e3e;
+
+  /// fi: Mökille tulo {arrival}. Laita lämmitys päälle nyt, tavoite {target} °C.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Arriving at the cabin {arrival}. Turn the heating on now, target {target} °C.\''**
+  String get s0818fd54b1;
+
+  /// fi: Huomenna sähkö keskimäärin {avg} c/kWh, kallein {max} klo {hour}.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Tomorrow: average {avg} c/kWh, peak {max} at {hour}.\''**
+  String get s57aad0f6c3;
+
+  /// fi: Tänään sähkö keskimäärin {avg} c/kWh, kallein {max} klo {hour}.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Today: average {avg} c/kWh, peak {max} at {hour}.\''**
+  String get s05394a7333;
+
+  /// fi: Poikkeuksellisen kallis sähkö {date}: keskimäärin {avg} c/kWh, kallein {max} klo {hour}.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Exceptionally expensive electricity {date}: average {avg} c/kWh, peak {max} at {hour}.\''**
+  String get s412e06dba4;
+
+  /// fi: Sääennuste {date}: {temp} °C.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Forecast {date}: {temp} °C.\''**
+  String get s7f8a4ab629;
+
+  /// fi: {tile}: {value}
+  ///
+  /// In en, this message translates to:
+  /// **'\'{tile}: {value}\''**
+  String get s326f105e40;
+
+  /// fi: Saapuminen {arrival}. Laita lämmitys päälle, tavoite {target} °C.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Arriving {arrival}. Turn the heating on, target {target} °C.\''**
+  String get s65afe3ff6f;
 
   /// fi: Ruutu puuttuu
   ///

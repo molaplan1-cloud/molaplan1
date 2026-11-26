@@ -133,6 +133,7 @@ class BridgeCore {
       return r['v'];
     },
     saveHistory: (j) => unawaited(store.write('$storageKey.autolog', j)),
+    saveReminders: (j) => unawaited(store.write('$storageKey.remstate', j)),
   );
 
   final SecretStore store;
@@ -210,6 +211,7 @@ class BridgeCore {
         } catch (_) {}
       }
       automations.loadHistory(await store.read('$storageKey.autolog'));
+      automations.loadReminders(await store.read('$storageKey.remstate'));
       final hh = await store.read('$storageKey.heating');
       if (hh != null) {
         try {

@@ -11,6 +11,7 @@ import '../models/models.dart';
 import 'account_nudge.dart';
 import 'app_scope.dart';
 import 'automation_pages.dart';
+import 'reminder_pages.dart';
 import 'smart_heating_pages.dart';
 import 'home_header.dart';
 import 'tile_widget.dart';
@@ -200,6 +201,8 @@ class ControlView extends StatelessWidget {
             await Navigator.push(context, MaterialPageRoute(builder: (_) => const AutomationsPage()));
           case 'heating':
             await Navigator.push(context, MaterialPageRoute(builder: (_) => const SmartHeatingPage()));
+          case 'reminders':
+            await Navigator.push(context, MaterialPageRoute(builder: (_) => const RemindersPage()));
           case 'room-photo':
             await showRoomPhotoSheet(context, st.config.dashboards);
           case 'settings':
@@ -229,6 +232,14 @@ class ControlView extends StatelessWidget {
           key: const ValueKey('control-heating'),
           value: 'heating',
           child: _item(const Icon(Icons.local_fire_department_outlined), Text(tx(c, 'Älykäs lämmitys', 'Smart heating'))),
+        ),
+        PopupMenuItem(
+          key: const ValueKey('control-reminders'),
+          value: 'reminders',
+          child: _item(
+            const Icon(Icons.notifications_active_outlined),
+            Text(tx(c, 'Ilmoitukset ja muistutukset', 'Notifications and reminders')),
+          ),
         ),
         PopupMenuItem(
           key: const ValueKey('control-room-photo'),

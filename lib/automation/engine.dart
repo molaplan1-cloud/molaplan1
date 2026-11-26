@@ -10,6 +10,7 @@ import 'package:crypto/crypto.dart';
 
 import '../l10n/l10n.dart';
 import 'model.dart';
+import 'reminders.dart';
 import 'script_lang.dart';
 
 /// What the engine needs from its host (the app or the bridge).
@@ -46,6 +47,17 @@ abstract class AutoEnv {
 
   /// Morning summary text (weather, price, home) for the `{summary}` placeholder.
   Future<String> summaryText();
+}
+
+/// v0.11.0: extra data for reminders (implemented by [PackageEnv]; other envs skip the
+/// price / forecast reminders).
+abstract class ReminderEnv {
+  /// Price slots of today + [offset] days (start, minutes, c/kWh incl. VAT); empty = unknown.
+  Future<List<(DateTime, int, double)>> priceSlotsDay(int offset);
+
+  /// Hourly forecast (hour start, °C) for today and the next days; empty = unknown.
+  Future<List<(DateTime, double)>> forecastPoints();
+  String get lang;
 }
 
 /// t168u: the start of the slot containing [now] if it is among today's [hours] cheapest
@@ -137,7 +149,31 @@ class _AState {
 }
 
 class AutomationEngine {
-  AutomationEngine(this.env, {this.onHistory, this.onChange, this.maxHistory = 200});
+  AutomationEngine(
+    this.env, {
+    this.onHistory,
+    this.onChange,
+    this.maxHistory = 200,
+    this.onReminderState,
+    this.onNotice,
+  });
+
+  /// v0.11.0: persist reminder state (what was already notified + the notice list).
+  final void Function(Map<String, dynamic> state)? onReminderState;
+
+  /// A reminder was delivered (the app shows the ones that were not pushed via ntfy).
+  final void Function(Notice n, Reminder r)? onNotice;
+
+  /// Delivered reminder notifications, newest first (the general list).
+  final notices = <Notice>[];
+
+  /// Reminder id → last matched key; `edge:<id>` → '1' / '0' (sensor / device state).
+  final remFired = <String, String>{};
+  final _remLastRun = <String, DateTime>{};
+  final _remOffline = <String, DateTime>{};
+  DateTime? _remLastTick;
+  DateTime? _remSlowAt;
+  static const maxNotices = 100;
   final AutoEnv env;
   AutomationSettings settings = AutomationSettings();
 
@@ -155,6 +191,9 @@ class AutomationEngine {
   void update(AutomationSettings s) {
     settings = s;
     _state.removeWhere((k, _) => !s.automations.any((a) => a.id == k));
+    final ids = {for (final r in s.reminders) r.id};
+    remFired.removeWhere((k, _) => !ids.contains(k.startsWith('edge:') ? k.substring(5) : k));
+    _remSlowAt = null; // re-check prices / forecast at once after a change
   }
 
   void start({Duration every = const Duration(seconds: 30)}) {
@@ -192,12 +231,170 @@ class AutomationEngine {
           if (await _fired(a)) await runAutomation(a);
         } catch (_) {}
       }
+      await tickReminders();
     } finally {
       _ticking = false;
     }
   }
 
   _AState _st(String id) => _state.putIfAbsent(id, _AState.new);
+
+  // ------------------------------------------------------------ v0.11.0 reminders
+
+  void loadReminderState(Map<String, dynamic>? j) {
+    if (j == null) return;
+    remFired
+      ..clear()
+      ..addAll({for (final e in ((j['fired'] as Map?) ?? const {}).entries) '${e.key}': '${e.value}'});
+    notices
+      ..clear()
+      ..addAll([
+        for (final e in (j['notices'] as List? ?? const [])) Notice.fromJson(Map<String, dynamic>.from(e as Map)),
+      ]);
+  }
+
+  Map<String, dynamic> reminderState() => {
+    'fired': remFired,
+    'notices': [for (final n in notices) n.toJson()],
+  };
+
+  void _saveReminders() {
+    onReminderState?.call(reminderState());
+    onChange?.call();
+  }
+
+  /// Evaluates every enabled reminder: time / arrival / sensor / device on each tick, price and
+  /// forecast at most every 5 minutes (they come from the shared caches).
+  Future<void> tickReminders() async {
+    final list = settings.reminders.where((r) => r.enabled).toList();
+    final now = env.now();
+    final last = _remLastTick;
+    _remLastTick = now;
+    if (list.isEmpty) return;
+    final before = jsonEncode(remFired), nBefore = notices.length;
+    final slow = _remSlowAt == null || now.difference(_remSlowAt!) >= const Duration(minutes: 5);
+    if (slow) _remSlowAt = now;
+    final re = env is ReminderEnv ? env as ReminderEnv : null;
+    final dayCache = <int, DayPrices>{};
+    Future<DayPrices> day(int o) async => dayCache[o] ??= DayPrices(re == null ? const [] : await re.priceSlotsDay(o));
+    List<(DateTime, double)>? fc;
+    for (final r in list) {
+      try {
+        ReminderHit? hit;
+        switch (r.kind) {
+          case 'price' || 'price_high':
+            if (!slow) continue;
+            final o = r.args['day'] == 'tomorrow' ? 1 : 0;
+            final d = await day(o);
+            final start = DateTime(now.year, now.month, now.day + o);
+            if (r.kind == 'price') {
+              hit = checkPrice(r, d, start, now);
+            } else {
+              final ref = await day(o - 1);
+              hit = checkPriceHigh(r, d, start, now, reference: ref.known ? ref.avg : null);
+            }
+          case 'forecast':
+            if (!slow || re == null) continue;
+            fc ??= await re.forecastPoints();
+            hit = checkForecast(r, fc, now);
+          case 'time':
+            hit = checkTime(r, now, last);
+          case 'arrival':
+            hit = checkArrival(r, now);
+          case 'sensor' || 'device':
+            hit = await _stateHit(r, now);
+        }
+        if (hit == null || remFired[r.id] == hit.key) continue;
+        remFired[r.id] = hit.key;
+        await _deliver(r, hit.vars);
+      } catch (_) {}
+    }
+    if (jsonEncode(remFired) != before || notices.length != nBefore || notices.length == maxNotices) _saveReminders();
+  }
+
+  /// Sensor value / device state: notifies when the condition becomes true (not on the very first
+  /// look, so a restart does not repeat it; the last state is kept in [remFired]).
+  Future<ReminderHit?> _stateHit(Reminder r, DateTime now) async {
+    final id = r.tileId;
+    if (id.isEmpty) return null;
+    bool ok;
+    String value;
+    final lang = env is ReminderEnv ? (env as ReminderEnv).lang : 'fi';
+    if (r.kind == 'device' && r.args['state'] == 'offline') {
+      final mins = (r.args['minutes'] as num?)?.toInt() ?? 15;
+      try {
+        await env.read(id);
+        _remOffline.remove(id);
+        ok = false;
+      } catch (_) {
+        final since = _remOffline.putIfAbsent(id, () => now);
+        ok = now.difference(since).inMinutes >= mins;
+      }
+      value = tr(lang, 'ei vastaa ($mins min)', 'not answering ($mins min)');
+    } else {
+      final v = await env.read(id);
+      if (r.kind == 'device') {
+        final on = env.isOn(id, v);
+        ok = (r.args['state'] ?? 'on') == 'on' ? on : !on;
+        value = on ? tr(lang, 'päällä', 'on') : tr(lang, 'pois päältä', 'off');
+      } else {
+        ok = compare(v, '${r.args['cmp'] ?? '>'}', r.args['value']);
+        value = v is num ? (v == v.roundToDouble() ? '${v.round()}' : v.toStringAsFixed(1)) : '$v';
+      }
+    }
+    final key = 'edge:${r.id}';
+    final prev = remFired[key];
+    remFired[key] = ok ? '1' : '0';
+    if (!(prev == '0' && ok)) return null;
+    final lr = _remLastRun[r.id];
+    if (lr != null && now.difference(lr).inMinutes < r.cooldownMin) return null;
+    _remLastRun[r.id] = now;
+    return ReminderHit('${now.millisecondsSinceEpoch}', {'tile': env.tileTitle(id), 'value': value});
+  }
+
+  Future<void> _deliver(Reminder r, Map<String, String> vars, {bool test = false}) async {
+    final lang = env is ReminderEnv ? (env as ReminderEnv).lang : 'fi';
+    final body = fillMessage(r.message.trim().isEmpty ? defaultMessage(r, lang) : r.message, vars);
+    final title = test ? '${tr(lang, 'Kokeilu', 'Test')}: ${r.name}' : r.name;
+    var pushed = false;
+    if (r.push) {
+      pushed = await sendNotification(title, body, priority: r.priority, tileId: r.tileId.isEmpty ? null : r.tileId);
+    } else {
+      _log(RunEntry(at: env.now(), kind: 'notify', id: r.id, name: title, msg: body));
+    }
+    final n = Notice(at: env.now(), source: 'reminder', id: r.id, title: title, body: body, priority: r.priority, pushed: pushed);
+    notices.insert(0, n);
+    if (notices.length > maxNotices) notices.removeRange(maxNotices, notices.length);
+    onNotice?.call(n, r);
+  }
+
+  /// "Kokeile": sends the reminder now with the current values where they are known.
+  Future<void> testReminder(String id) async {
+    final r = settings.reminders.where((x) => x.id == id).firstOrNull;
+    if (r == null) throw StateError('not found');
+    final now = env.now();
+    final vars = <String, String>{};
+    final re = env is ReminderEnv ? env as ReminderEnv : null;
+    if (re != null && (r.kind == 'price' || r.kind == 'price_high')) {
+      final o = r.args['day'] == 'tomorrow' ? 1 : 0;
+      final d = DayPrices(await re.priceSlotsDay(o));
+      if (d.known) {
+        vars.addAll({'avg': fmt1(d.avg), 'max': fmt1(d.max), 'min': fmt1(d.min), 'hour': hhmm(d.maxAt)});
+      }
+      final s = DateTime(now.year, now.month, now.day + o);
+      vars['date'] = '${s.day}.${s.month}.';
+    }
+    final arr = checkArrival(Reminder(name: '', kind: 'arrival', args: {...r.args, 'leadHours': 100000}), now);
+    if (arr != null) vars.addAll(arr.vars);
+    if (r.tileId.isNotEmpty) {
+      vars['tile'] = env.tileTitle(r.tileId);
+      try {
+        vars['value'] = '${await env.read(r.tileId)}';
+      } catch (_) {}
+    }
+    await _deliver(r, vars, test: true);
+    _saveReminders();
+  }
 
   /// Edge: true only when the condition goes false → true (not on the very first look).
   bool _edge(_AState s, bool now) {

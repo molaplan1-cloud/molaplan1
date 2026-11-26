@@ -91,6 +91,9 @@ int longestOffRun(List<(DateTime, double)> day, Set<DateTime> on) {
 }
 
 void main() {
+  // Price data below is for 25–26 Nov 2026: pin the cache's clock so it never refetches.
+  setUp(() => PriceService.clock = () => DateTime(2026, 11, 25, 12));
+  tearDown(() => PriceService.clock = DateTime.now);
   group('survey → recommendations', () {
     test('each heating type gets its own template and numbers', () {
       final s = SiteSurvey();

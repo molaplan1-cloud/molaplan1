@@ -985,6 +985,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get se9ca7cb470 => 'Automatiseerimine';
 
   @override
+  String get s41bb837a83 => 'Teated ja meeldetuletused';
+
+  @override
   String get sf98121cd3d => 'Toafoto';
 
   @override
@@ -1421,6 +1424,240 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s139d2075b8 => 'Konto kustutatud.';
 
   @override
+  String get sca7e088857 => 'Elektri hind';
+
+  @override
+  String get s83f816fbe3 => 'Erakordselt kallis elekter';
+
+  @override
+  String get s262f9527aa => 'Ilmaennustus';
+
+  @override
+  String get sfc404aec8b => 'Sensori väärtus';
+
+  @override
+  String get s58d2896c42 => 'Seadme olek';
+
+  @override
+  String get s7def336f41 => 'Kellaaeg või kuupäev';
+
+  @override
+  String get sf80835a318 => 'Saabumine (eelsoojendamine)';
+
+  @override
+  String get s9a37dbb58a => 'homme';
+
+  @override
+  String get s1fe084d61b => 'täna';
+
+  @override
+  String get safd8f4dddf => 'kõrgeim';
+
+  @override
+  String get s484731d968 => 'madalaim';
+
+  @override
+  String get s77f9bfc303 => 'keskmine';
+
+  @override
+  String get sc017c085e4 => '(valige seadeldis)';
+
+  @override
+  String s3f09da81b6(String p0, String p1, String p2, String p3) {
+    return '$p0: keskmine ≥ $p1 c või tipp ≥ $p2 c või $p3× päev enne';
+  }
+
+  @override
+  String s900c886f50(String p0, String p1, String p2, String p3) {
+    return '$p0  $p2 $p3 °C';
+  }
+
+  @override
+  String s81c88dabf7(String p0, String p1) {
+    return '$p0 ei vasta $p1 min';
+  }
+
+  @override
+  String s5414e9e5fd(String p0) {
+    return '$p0 lülitab välja';
+  }
+
+  @override
+  String s09a43fc401(String p0) {
+    return '$p0 pöörab';
+  }
+
+  @override
+  String s56ef33ee50(String p0, String p1, String p2) {
+    return 'saabumine $p0 · meeldetuletus $p1 h enne · $p2 °C';
+  }
+
+  @override
+  String get sdeb38e3907 => 'Minu teade';
+
+  @override
+  String get s5e9a552fe6 => 'Minu enda teade';
+
+  @override
+  String get se2e6db5acc => 'Ükskõik milline tingimus ja sinu enda sõnum.';
+
+  @override
+  String get sc6bec5e6cb =>
+      'See töötab sellel kodusillal, ka rakenduse suletud.';
+
+  @override
+  String get se17e32a5c9 =>
+      'Kodusild on vanem kui 0.11.0: meeldetuletused töötavad ainult siis, kui rakendus on avatud. Uuenda silda (kaugjuurdepääs → Minu kodusillad).';
+
+  @override
+  String get s5fd9e146bf => 'Töötab kodusillal, samuti on rakendus suletud.';
+
+  @override
+  String get s563ba24005 =>
+      'Kodusild puudub: meeldetuletused töötavad, kui rakendus on avatud. Kodusild hoiab neid kogu aeg töös.';
+
+  @override
+  String get sf378d832a1 => 'Lisa meeldetuletus';
+
+  @override
+  String get s034093c675 =>
+      'Hankige teade, kui tingimus on täidetud: elektrihind (ka homme), ilmateade, anduri väärtus, seadme olek või aeg.';
+
+  @override
+  String get s49a26ce1f2 => 'Vali valmis mall';
+
+  @override
+  String get sc0597b9029 => 'Viimased teatised';
+
+  @override
+  String get sac8af0108d => 'Teateid veel pole.';
+
+  @override
+  String get sf4caddf894 => 'Täpsem';
+
+  @override
+  String get sbb2b4bdfc8 => 'Telefoniteated (ntfy), vaiksed tunnid, tummad';
+
+  @override
+  String get s13d942a5a9 => 'Vali seadeldis.';
+
+  @override
+  String get sac782d209c => 'Saadetud katseteatis.';
+
+  @override
+  String get s67584c9abf => 'Seade';
+
+  @override
+  String get s140acccb81 => 'Täna';
+
+  @override
+  String get s0de6e75a52 => 'Homme';
+
+  @override
+  String get sbbf8b7a598 => 'Keskmine';
+
+  @override
+  String get s43b4c610f8 => 'Kõrgeim';
+
+  @override
+  String get s9dd0f70be6 => 'Madalaim';
+
+  @override
+  String get scd65d31d4c => 'Limit';
+
+  @override
+  String get s543838d91f => 'Keskmiselt vähemalt';
+
+  @override
+  String get s087a7e1b24 => 'või vähemalt tipp';
+
+  @override
+  String get s8463e08e0b => 'või × eelmise päeva keskmine';
+
+  @override
+  String get sd8332d82ec => 'Min';
+
+  @override
+  String get s109b35551a => 'Max';
+
+  @override
+  String get sf2c65c5aeb => 'Keskmine';
+
+  @override
+  String get s68b942c864 =>
+      'Määra kodu asukoht (Energy → Settings) prognoosimiseks.';
+
+  @override
+  String get s38ac222392 => 'Väärtus';
+
+  @override
+  String get s4cd3d92d4c => 'Sees';
+
+  @override
+  String get sa8e43f2b0e => 'Võrguühenduseta';
+
+  @override
+  String get s65f512f499 => 'Kui võrguühenduseta';
+
+  @override
+  String get sa224d2f5f9 => 'Aeg';
+
+  @override
+  String get s96b7e2c62c => 'Iga päev (valige kuupäev üks kord)';
+
+  @override
+  String get s593004184e => 'Saabumine';
+
+  @override
+  String get sa9faf47356 => 'Tuleta meelde';
+
+  @override
+  String get sf527ec4275 => 'Sihttemperatuur';
+
+  @override
+  String get s009a96409a => 'Uus meeldetuletus';
+
+  @override
+  String get sb346b2b647 => 'Meenutus';
+
+  @override
+  String get sc1845eb440 => 'Kustuta';
+
+  @override
+  String get sb1924acbe7 => 'Nimi';
+
+  @override
+  String get s5506524eac => 'Millal';
+
+  @override
+  String get s86c5d7fa73 => 'Sõnum';
+
+  @override
+  String get s8dda7ee75e =>
+      'Võite kasutada: {avg} {max} {min} {tund} {temp} {väärtus} {kaart} {siht} {saabumine} {kuupäev}';
+
+  @override
+  String get sec1bdb2451 => 'Telefonidele (ntfy)';
+
+  @override
+  String get se2de73b535 => 'Alati näidatakse ka rakenduses.';
+
+  @override
+  String get sd84d87d156 => 'Prioriteet';
+
+  @override
+  String get s7a09198c53 => '5 (ka vaiksetel tundidel)';
+
+  @override
+  String get se8e58d6206 => 'Mitte jälle';
+
+  @override
+  String get s7d773a4dc9 => 'Mitte varem';
+
+  @override
+  String get sb86dc1b7bf => 'Testi';
+
+  @override
   String get sfb4df77773 => 'Anna nupule nimi.';
 
   @override
@@ -1687,9 +1924,6 @@ class AppLocalizationsEt extends AppLocalizations {
       'Kontrollitakse uuesti iga 15 sekundi järel, kuni see töötab; see teade kaob iseenesest.';
 
   @override
-  String get sf4caddf894 => 'Täpsem';
-
-  @override
   String get s3e05e0efab => 'Wi-Fi/Etherneti aadressid';
 
   @override
@@ -1879,9 +2113,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s0c6a008ffd => 'Nimi ja režiim';
 
   @override
-  String get sb1924acbe7 => 'Nimi';
-
-  @override
   String get s1790a71e85 => 'nt Elutuba';
 
   @override
@@ -1925,9 +2156,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s187d328bb1 => 'Muuda';
-
-  @override
-  String get sc1845eb440 => 'Kustuta';
 
   @override
   String get s87984716cb => 'Kustutada termostaat?';
@@ -3004,9 +3232,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s8039add5ed => 'Pealkirjata';
 
   @override
-  String get s5506524eac => 'Millal';
-
-  @override
   String get sf2d3a43ee8 => 'Jooksu veel pole.';
 
   @override
@@ -3100,22 +3325,13 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s04c0bcdd51 => 'Päikesetõus / päikeseloojang';
 
   @override
-  String get sca7e088857 => 'Elektri hind';
-
-  @override
   String get s869f0d57af => 'Ilm (välistemperatuur)';
 
   @override
   String get sa4261f6e35 => 'Seade ei vasta';
 
   @override
-  String get s67584c9abf => 'Seade';
-
-  @override
   String get se0a362c060 => 'Tüüp';
-
-  @override
-  String get s38ac222392 => 'Väärtus';
 
   @override
   String get s4f62fd1f09 => 'Kui see pöördub';
@@ -3229,9 +3445,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sbc8e165fbf => 'Action';
 
   @override
-  String get s4cd3d92d4c => 'Sees';
-
-  @override
   String get s750f16460c => 'Sisse/välja';
 
   @override
@@ -3260,9 +3473,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s3c2ee8fe0d => '{Kokkuvõte} = ilm, hind ja koduriik';
-
-  @override
-  String get sd84d87d156 => 'Prioriteet';
 
   @override
   String get sb55a08c07c => '1 – vaikiv';
@@ -3610,9 +3820,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s94493d01ca => 'Ilmaprognoos, temperatuur, vihmatuul';
 
   @override
-  String get s262f9527aa => 'Ilmaennustus';
-
-  @override
   String get scb3570338f =>
       'Ilm praegu ja tunniti: temperatuur, sademed ja tuul sinu kodus. Seadet pole vaja.';
 
@@ -3814,9 +4021,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s95f80e9bdf => 'Fix';
-
-  @override
-  String get s140acccb81 => 'Täna';
 
   @override
   String get s66ad384363 => '24 h edasi';
@@ -4074,9 +4278,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s15b42b592c => 'Järgmiseks päevaks pole aega.';
-
-  @override
-  String get s0de6e75a52 => 'Homme';
 
   @override
   String sf87d92faf4(String p0, String p1) {
@@ -5256,9 +5457,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sc0f5a14d2b => 'Värvikünnised (väärtus ≥ piir → värv)';
-
-  @override
-  String get scd65d31d4c => 'Limit';
 
   @override
   String get s30a2c0f460 => 'Lisage künnis';
@@ -7282,6 +7480,17 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s1dfeacd9f6 => 'UDP';
 
   @override
+  String s6c33f19716(String p0) {
+    return 'ei vasta ($p0 min)';
+  }
+
+  @override
+  String get scebcdabe25 => 'väljas';
+
+  @override
+  String get sd4be8bca5f => 'Testi';
+
+  @override
   String get sd76aadb97c => 'Veeleke → alarm';
 
   @override
@@ -7350,6 +7559,43 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sc797ab9c4c => 'Tere hommikust';
+
+  @override
+  String get seec5bf7f8d =>
+      'Homme on elektri keskmine {avg} c/kWh (tipp {max} at {hour}). Valgusta kamin.';
+
+  @override
+  String get s4a7ea7d7f1 =>
+      'Elekter on tänapäeval erakordselt kallis: keskmine {avg} c/kWh, tipp {max} kell {hour}.';
+
+  @override
+  String get se8a2912e3e =>
+      'Elekter on homme erakordselt kallis: keskmine {avg} c/kWh, tipp {max} kell {hour}.';
+
+  @override
+  String get s0818fd54b1 =>
+      'Saabumine salongi {saabumine} Keerake küte kohe sisse, sihtige {siht} °C.';
+
+  @override
+  String get s57aad0f6c3 =>
+      'Homme: keskmine {avg} c/kWh, tipp {max} kell {tund}.';
+
+  @override
+  String get s05394a7333 => 'Täna: keskmine {avg} c/kWh, tipp {max} at {hour}.';
+
+  @override
+  String get s412e06dba4 =>
+      'Erakordselt kallis elekter {date}: keskmine {avg} c/kWh, tipp {max} at {hour}.';
+
+  @override
+  String get s7f8a4ab629 => 'Prognoos {kuupäev}: {temperatuur} °C.';
+
+  @override
+  String get s326f105e40 => '{tile}: {value}';
+
+  @override
+  String get s65afe3ff6f =>
+      'Saabumine {saabumine}. Kütte sisselülitamine, sihtmärk {siht} °C.';
 
   @override
   String get scec02139b6 => 'Kaart kadunud';

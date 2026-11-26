@@ -1315,6 +1315,40 @@
  "@s139d2075b8": {
   "x-mt": true
  },
+ "sca7e088857": "Elpris",
+ "s262f9527aa": "Väderprognos",
+ "@s262f9527aa": {
+  "x-mt": true
+ },
+ "s9a37dbb58a": "i morgon",
+ "s900c886f50": "{p0}  {p2} {p3} °C",
+ "sf4caddf894": "Avancerat",
+ "s67584c9abf": "Enhet",
+ "@s67584c9abf": {
+  "x-mt": true
+ },
+ "s140acccb81": "I dag",
+ "s0de6e75a52": "I morgon",
+ "sbbf8b7a598": "Medelvärde",
+ "scd65d31d4c": "Begränsning",
+ "@scd65d31d4c": {
+  "x-mt": true
+ },
+ "sf2c65c5aeb": "Medelvärde",
+ "s38ac222392": "Värde",
+ "s4cd3d92d4c": "På",
+ "sa8e43f2b0e": "Offline",
+ "sf527ec4275": "Måltemperatur",
+ "sc1845eb440": "Radera",
+ "sb1924acbe7": "Namn",
+ "s5506524eac": "När när när",
+ "@s5506524eac": {
+  "x-mt": true
+ },
+ "sd84d87d156": "Prioritet",
+ "@sd84d87d156": {
+  "x-mt": true
+ },
  "sfb4df77773": "Ge knappen ett namn.",
  "@sfb4df77773": {
   "x-mt": true
@@ -1575,7 +1609,6 @@
  "@s0fc5f4d788": {
   "x-mt": true
  },
- "sf4caddf894": "Avancerat",
  "s3e05e0efab": "Wi-Fi/Ethernet-adresser",
  "@s3e05e0efab": {
   "x-mt": true
@@ -1722,7 +1755,6 @@
  "s89661203b7": "Första fungerande",
  "s0da3005956": "Medelvärde",
  "s0c6a008ffd": "Namn och läge",
- "sb1924acbe7": "Namn",
  "s1790a71e85": "t.ex. Vardagsrum",
  "sd5f46903a1": "Måltemperatur",
  "s6de95e582f": "Om temperaturen försvinner",
@@ -1744,7 +1776,6 @@
  "sbbc98d573d": "Redigera termostat",
  "s6c3e76828b": "Nästa",
  "s187d328bb1": "Redigera",
- "sc1845eb440": "Radera",
  "s87984716cb": "Ta bort termostaten?",
  "s79786b9f7d": "Mål",
  "sdd309c0a63": "Termostaten körs på hembryggan",
@@ -2789,10 +2820,6 @@
  "@s8039add5ed": {
   "x-mt": true
  },
- "s5506524eac": "När när när",
- "@s5506524eac": {
-  "x-mt": true
- },
  "sf2d3a43ee8": "Inga runs ännu.",
  "@sf2d3a43ee8": {
   "x-mt": true
@@ -2895,7 +2922,6 @@
  "@s04c0bcdd51": {
   "x-mt": true
  },
- "sca7e088857": "Elpris",
  "s869f0d57af": "Vädret (utomhustemperatur)",
  "@s869f0d57af": {
   "x-mt": true
@@ -2904,15 +2930,10 @@
  "@sa4261f6e35": {
   "x-mt": true
  },
- "s67584c9abf": "Enhet",
- "@s67584c9abf": {
-  "x-mt": true
- },
  "se0a362c060": "Typ",
  "@se0a362c060": {
   "x-mt": true
  },
- "s38ac222392": "Värde",
  "s4f62fd1f09": "När den vänder",
  "@s4f62fd1f09": {
   "x-mt": true
@@ -3055,7 +3076,6 @@
  "@sbc8e165fbf": {
   "x-mt": true
  },
- "s4cd3d92d4c": "På",
  "s750f16460c": "Av/på",
  "s7a544fe304": "Ställ värde",
  "@s7a544fe304": {
@@ -3088,10 +3108,6 @@
  },
  "s3c2ee8fe0d": "'{summary} = väder, pris och hemstat'",
  "@s3c2ee8fe0d": {
-  "x-mt": true
- },
- "sd84d87d156": "Prioritet",
- "@sd84d87d156": {
   "x-mt": true
  },
  "sb55a08c07c": "1 – tyst",
@@ -3493,10 +3509,6 @@
  "@s94493d01ca": {
   "x-mt": true
  },
- "s262f9527aa": "Väderprognos",
- "@s262f9527aa": {
-  "x-mt": true
- },
  "scb3570338f": "Vädret nu och per timme: temperatur, regn och vind där du bor. Ingen enhet behövs.",
  "s2a9b6fedd9": "Kan inte hitta ditt varumärke?",
  "@s2a9b6fedd9": {
@@ -3661,7 +3673,6 @@
  "@s95f80e9bdf": {
   "x-mt": true
  },
- "s140acccb81": "I dag",
  "s66ad384363": "24h framåt",
  "@s66ad384363": {
   "x-mt": true
@@ -3903,7 +3914,6 @@
  "@s15b42b592c": {
   "x-mt": true
  },
- "s0de6e75a52": "I morgon",
  "sf87d92faf4": "Prisområdet {p0}. Dag-ahead spot priser inkl. moms {p1} %. Lägg till \"Elektricitetspris\" enhet för att ändra område och avgifter.",
  "@sf87d92faf4": {
   "x-mt": true
@@ -4645,6 +4655,22 @@
  "@sb9bee63c5e": {
   "x-mt": true
  },
+ "sd9103f5cee": "Anslut till bron {p0}?",
+ "@sd9103f5cee": {
+  "x-mt": true
+ },
+ "s6046b9ff9c": "Den här enheten är nu ansluten till {p0}. Den växlar till {p1}. Ingen kod eller QR behövs - båda är på ditt konto.",
+ "@s6046b9ff9c": {
+  "x-mt": true
+ },
+ "s053b2f1211": "Ingen kod eller QR behövs – båda enheterna finns på ditt konto.",
+ "@s053b2f1211": {
+  "x-mt": true
+ },
+ "s948bfb1114": "Ansluten till {p0}.",
+ "@s948bfb1114": {
+  "x-mt": true
+ },
  "sc4abf59272": "kontrollera...",
  "@sc4abf59272": {
   "x-mt": true
@@ -4747,6 +4773,10 @@
  },
  "se97cc157ef": "eller skriva koden",
  "@se97cc157ef": {
+  "x-mt": true
+ },
+ "s3143eb70e1": "6 siffror från hembroskärmen",
+ "@s3143eb70e1": {
   "x-mt": true
  },
  "s643434044c": "När du använder koden trycker du på \"Acceptera\" på hemmabron också.",
@@ -5143,10 +5173,6 @@
  },
  "sc0f5a14d2b": "Färgtrösklar (värde ≥gräns → färg)",
  "@sc0f5a14d2b": {
-  "x-mt": true
- },
- "scd65d31d4c": "Begränsning",
- "@scd65d31d4c": {
   "x-mt": true
  },
  "s30a2c0f460": "Lägg till tröskelvärde",
@@ -7035,6 +7061,7 @@
   "x-mt": true
  },
  "s1dfeacd9f6": "UDP",
+ "scebcdabe25": "av",
  "sd76aadb97c": "Vattenläcka → larm",
  "@sd76aadb97c": {
   "x-mt": true
@@ -7123,6 +7150,7 @@
  "@sc797ab9c4c": {
   "x-mt": true
  },
+ "s326f105e40": "'{tile}: {value}'",
  "scec02139b6": "Kort saknas",
  "@scec02139b6": {
   "x-mt": true
@@ -7846,24 +7874,264 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "sd9103f5cee": "Anslut till bron {p0}?",
- "@sd9103f5cee": {
+ "s41bb837a83": "Meddelanden och påminnelser",
+ "@s41bb837a83": {
   "x-mt": true
  },
- "s6046b9ff9c": "Den här enheten är nu ansluten till {p0}. Den växlar till {p1}. Ingen kod eller QR behövs - båda är på ditt konto.",
- "@s6046b9ff9c": {
+ "s83f816fbe3": "Exceptionellt dyr el",
+ "@s83f816fbe3": {
   "x-mt": true
  },
- "s053b2f1211": "Ingen kod eller QR behövs – båda enheterna finns på ditt konto.",
- "@s053b2f1211": {
+ "sfc404aec8b": "Sensorvärde",
+ "@sfc404aec8b": {
   "x-mt": true
  },
- "s948bfb1114": "Ansluten till {p0}.",
- "@s948bfb1114": {
+ "s58d2896c42": "Enhetsstatus",
+ "@s58d2896c42": {
   "x-mt": true
  },
- "s3143eb70e1": "6 siffror från hembroskärmen",
- "@s3143eb70e1": {
+ "s7def336f41": "Tid eller datum",
+ "@s7def336f41": {
+  "x-mt": true
+ },
+ "sf80835a318": "Ankomst (förvärmning)",
+ "@sf80835a318": {
+  "x-mt": true
+ },
+ "s1fe084d61b": "idag idag idag idag",
+ "@s1fe084d61b": {
+  "x-mt": true
+ },
+ "safd8f4dddf": "högsta högsta högsta",
+ "@safd8f4dddf": {
+  "x-mt": true
+ },
+ "s484731d968": "lägsta",
+ "@s484731d968": {
+  "x-mt": true
+ },
+ "s77f9bfc303": "genomsnittet",
+ "@s77f9bfc303": {
+  "x-mt": true
+ },
+ "sc017c085e4": "(Plocka en enhet)",
+ "@sc017c085e4": {
+  "x-mt": true
+ },
+ "s3f09da81b6": "{p0}: genomsnittligt ≥ {p1} c eller topp ≥ {p2} c eller {p3} × dagen före",
+ "@s3f09da81b6": {
+  "x-mt": true
+ },
+ "s81c88dabf7": "{p0} inte svara {p1} min",
+ "@s81c88dabf7": {
+  "x-mt": true
+ },
+ "s5414e9e5fd": "{p0} stänger av",
+ "@s5414e9e5fd": {
+  "x-mt": true
+ },
+ "s09a43fc401": "{p0} slår på",
+ "@s09a43fc401": {
+  "x-mt": true
+ },
+ "s56ef33ee50": "ankomst {p0} · påminnelse {p1} h innan {p2} °C",
+ "@s56ef33ee50": {
+  "x-mt": true
+ },
+ "sdeb38e3907": "Min anmälan",
+ "@sdeb38e3907": {
+  "x-mt": true
+ },
+ "s5e9a552fe6": "Min egen anmälan",
+ "@s5e9a552fe6": {
+  "x-mt": true
+ },
+ "se2e6db5acc": "Alla villkor och ditt eget budskap.",
+ "@se2e6db5acc": {
+  "x-mt": true
+ },
+ "sc6bec5e6cb": "Körs på denna hembro, även med appen stängd.",
+ "@sc6bec5e6cb": {
+  "x-mt": true
+ },
+ "se17e32a5c9": "Hembron är äldre än 0.11.0: påminnelser fungerar bara medan den här appen är öppen. Uppdatera bron (Fjärråtkomst → Mina hembroar).",
+ "@se17e32a5c9": {
+  "x-mt": true
+ },
+ "s5fd9e146bf": "Körs på hembron, även med appen stängd.",
+ "@s5fd9e146bf": {
+  "x-mt": true
+ },
+ "s563ba24005": "Ingen hemmabro: påminnelser fungerar medan appen är öppen. En hemmabro håller dem igång hela tiden.",
+ "@s563ba24005": {
+  "x-mt": true
+ },
+ "sf378d832a1": "Lägg till påminnelse",
+ "@sf378d832a1": {
+  "x-mt": true
+ },
+ "s034093c675": "Få ett meddelande när ett tillstånd är uppfyllt: elpris (till exempel i morgon), väderprognos, ett sensorvärde, ett enhetstillstånd eller en tid.",
+ "@s034093c675": {
+  "x-mt": true
+ },
+ "s49a26ce1f2": "Välj en färdig mall",
+ "@s49a26ce1f2": {
+  "x-mt": true
+ },
+ "sc0597b9029": "Senaste meddelanden",
+ "@sc0597b9029": {
+  "x-mt": true
+ },
+ "sac8af0108d": "Inga meddelanden ännu.",
+ "@sac8af0108d": {
+  "x-mt": true
+ },
+ "sbb2b4bdfc8": "Telefonmeddelanden (ntfy), tysta timmar, mute",
+ "@sbb2b4bdfc8": {
+  "x-mt": true
+ },
+ "s13d942a5a9": "Välj en enhet.",
+ "@s13d942a5a9": {
+  "x-mt": true
+ },
+ "sac782d209c": "Testmeddelande skickas.",
+ "@sac782d209c": {
+  "x-mt": true
+ },
+ "s43b4c610f8": "Högsta",
+ "@s43b4c610f8": {
+  "x-mt": true
+ },
+ "s9dd0f70be6": "Lägsta",
+ "@s9dd0f70be6": {
+  "x-mt": true
+ },
+ "s543838d91f": "Genomsnitt åtminstone",
+ "@s543838d91f": {
+  "x-mt": true
+ },
+ "s087a7e1b24": "eller peak åtminstone",
+ "@s087a7e1b24": {
+  "x-mt": true
+ },
+ "s8463e08e0b": "eller × föregående dags genomsnitt",
+ "@s8463e08e0b": {
+  "x-mt": true
+ },
+ "sd8332d82ec": "Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min",
+ "@sd8332d82ec": {
+  "x-mt": true
+ },
+ "s109b35551a": "Max Max Max Max Max",
+ "@s109b35551a": {
+  "x-mt": true
+ },
+ "s68b942c864": "Ställ in hemorten (Energy → Inställningar) för prognosen.",
+ "@s68b942c864": {
+  "x-mt": true
+ },
+ "s65f512f499": "När offline för",
+ "@s65f512f499": {
+  "x-mt": true
+ },
+ "sa224d2f5f9": "Tid",
+ "@sa224d2f5f9": {
+  "x-mt": true
+ },
+ "s96b7e2c62c": "Varje dag (plocka ett datum för en gång)",
+ "@s96b7e2c62c": {
+  "x-mt": true
+ },
+ "s593004184e": "Ankomst",
+ "@s593004184e": {
+  "x-mt": true
+ },
+ "sa9faf47356": "Påminn före",
+ "@sa9faf47356": {
+  "x-mt": true
+ },
+ "s009a96409a": "Ny påminnelse",
+ "@s009a96409a": {
+  "x-mt": true
+ },
+ "sb346b2b647": "Påminnelse",
+ "@sb346b2b647": {
+  "x-mt": true
+ },
+ "s86c5d7fa73": "Meddelande",
+ "@s86c5d7fa73": {
+  "x-mt": true
+ },
+ "s8dda7ee75e": "'Du kan använda: {avg} {max} {min} {tim} {värde} {kort} {mål} { ankomst} {datum}'",
+ "@s8dda7ee75e": {
+  "x-mt": true
+ },
+ "sec1bdb2451": "Även till telefoner (ntfy)",
+ "@sec1bdb2451": {
+  "x-mt": true
+ },
+ "se2de73b535": "Alltid visas i appen också.",
+ "@se2de73b535": {
+  "x-mt": true
+ },
+ "s7a09198c53": "5 (även i tysta timmar)",
+ "@s7a09198c53": {
+  "x-mt": true
+ },
+ "se8e58d6206": "Inte igen inom",
+ "@se8e58d6206": {
+  "x-mt": true
+ },
+ "s7d773a4dc9": "Inte förrän",
+ "@s7d773a4dc9": {
+  "x-mt": true
+ },
+ "sb86dc1b7bf": "Testa testtest",
+ "@sb86dc1b7bf": {
+  "x-mt": true
+ },
+ "s6c33f19716": "inte svara ({p0} min)",
+ "@s6c33f19716": {
+  "x-mt": true
+ },
+ "sd4be8bca5f": "Testa testtest",
+ "@sd4be8bca5f": {
+  "x-mt": true
+ },
+ "seec5bf7f8d": "'I morgon elgenomsnitt {avg} c/kWh (topp {max} på {hour}). Ljus eldstaden.'",
+ "@seec5bf7f8d": {
+  "x-mt": true
+ },
+ "s4a7ea7d7f1": "'Elektricitet är exceptionellt dyrt idag: genomsnittligt {vg} c/kWh, topp {max} på {tim}.'",
+ "@s4a7ea7d7f1": {
+  "x-mt": true
+ },
+ "se8a2912e3e": "'Elektricitet är exceptionellt dyrt i morgon: genomsnitt {avg} c/kWh, topp {max} på {tim}.'",
+ "@se8a2912e3e": {
+  "x-mt": true
+ },
+ "s0818fd54b1": "'Ankomst till stugan {ankomst}. Vänd värmen på nu, mål {mål} ° C.'",
+ "@s0818fd54b1": {
+  "x-mt": true
+ },
+ "s57aad0f6c3": "'I morgon: genomsnitt {avg} c/kWh, topp {max} på {tim}.'",
+ "@s57aad0f6c3": {
+  "x-mt": true
+ },
+ "s05394a7333": "'I dag: genomsnitt {avg} c/kWh, topp {max} på {hour}.'",
+ "@s05394a7333": {
+  "x-mt": true
+ },
+ "s412e06dba4": "'Exceptionellt dyr el {datum}: genomsnitt {avg} c/kWh, topp {max} på {tim}.'",
+ "@s412e06dba4": {
+  "x-mt": true
+ },
+ "s7f8a4ab629": "'Prognos {datum}: {temp} °C.'",
+ "@s7f8a4ab629": {
+  "x-mt": true
+ },
+ "s65afe3ff6f": "'Ankomst { ankomst}. Vänd värmen på, mål {mål} °C.'",
+ "@s65afe3ff6f": {
   "x-mt": true
  }
 }

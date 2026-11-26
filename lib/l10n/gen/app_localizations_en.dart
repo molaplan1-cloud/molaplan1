@@ -986,6 +986,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get se9ca7cb470 => 'Automations';
 
   @override
+  String get s41bb837a83 => 'Notifications and reminders';
+
+  @override
   String get sf98121cd3d => 'Room photo';
 
   @override
@@ -1419,6 +1422,241 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s139d2075b8 => 'Account deleted.';
 
   @override
+  String get sca7e088857 => 'Electricity price';
+
+  @override
+  String get s83f816fbe3 => 'Exceptionally expensive electricity';
+
+  @override
+  String get s262f9527aa => 'Weather forecast';
+
+  @override
+  String get sfc404aec8b => 'Sensor value';
+
+  @override
+  String get s58d2896c42 => 'Device state';
+
+  @override
+  String get s7def336f41 => 'Time or date';
+
+  @override
+  String get sf80835a318 => 'Arrival (pre-heating)';
+
+  @override
+  String get s9a37dbb58a => 'tomorrow';
+
+  @override
+  String get s1fe084d61b => 'today';
+
+  @override
+  String get safd8f4dddf => 'highest';
+
+  @override
+  String get s484731d968 => 'lowest';
+
+  @override
+  String get s77f9bfc303 => 'average';
+
+  @override
+  String get sc017c085e4 => '(pick a device)';
+
+  @override
+  String s3f09da81b6(String p0, String p1, String p2, String p3) {
+    return '$p0: average ≥ $p1 c or peak ≥ $p2 c or $p3× the day before';
+  }
+
+  @override
+  String s900c886f50(String p0, String p1, String p2, String p3) {
+    return '$p0  $p2 $p3 °C';
+  }
+
+  @override
+  String s81c88dabf7(String p0, String p1) {
+    return '$p0 not answering $p1 min';
+  }
+
+  @override
+  String s5414e9e5fd(String p0) {
+    return '$p0 turns off';
+  }
+
+  @override
+  String s09a43fc401(String p0) {
+    return '$p0 turns on';
+  }
+
+  @override
+  String s56ef33ee50(String p0, String p1, String p2) {
+    return 'arrival $p0 · reminder $p1 h before · $p2 °C';
+  }
+
+  @override
+  String get sdeb38e3907 => 'My notification';
+
+  @override
+  String get s5e9a552fe6 => 'My own notification';
+
+  @override
+  String get se2e6db5acc => 'Any condition and your own message.';
+
+  @override
+  String get sc6bec5e6cb =>
+      'Runs on this home bridge, also with the app closed.';
+
+  @override
+  String get se17e32a5c9 =>
+      'The home bridge is older than 0.11.0: reminders work only while this app is open. Update the bridge (Remote access → My home bridges).';
+
+  @override
+  String get s5fd9e146bf =>
+      'Runs on the home bridge, also with the app closed.';
+
+  @override
+  String get s563ba24005 =>
+      'No home bridge: reminders work while the app is open. A home bridge keeps them running all the time.';
+
+  @override
+  String get sf378d832a1 => 'Add reminder';
+
+  @override
+  String get s034093c675 =>
+      'Get a notification when a condition is met: electricity price (tomorrow too), weather forecast, a sensor value, a device state or a time.';
+
+  @override
+  String get s49a26ce1f2 => 'Pick a ready template';
+
+  @override
+  String get sc0597b9029 => 'Latest notifications';
+
+  @override
+  String get sac8af0108d => 'No notifications yet.';
+
+  @override
+  String get sf4caddf894 => 'Advanced';
+
+  @override
+  String get sbb2b4bdfc8 => 'Phone notifications (ntfy), quiet hours, mute';
+
+  @override
+  String get s13d942a5a9 => 'Pick a device.';
+
+  @override
+  String get sac782d209c => 'Test notification sent.';
+
+  @override
+  String get s67584c9abf => 'Device';
+
+  @override
+  String get s140acccb81 => 'Today';
+
+  @override
+  String get s0de6e75a52 => 'Tomorrow';
+
+  @override
+  String get sbbf8b7a598 => 'Average';
+
+  @override
+  String get s43b4c610f8 => 'Highest';
+
+  @override
+  String get s9dd0f70be6 => 'Lowest';
+
+  @override
+  String get scd65d31d4c => 'Limit';
+
+  @override
+  String get s543838d91f => 'Average at least';
+
+  @override
+  String get s087a7e1b24 => 'or peak at least';
+
+  @override
+  String get s8463e08e0b => 'or × the previous day\'s average';
+
+  @override
+  String get sd8332d82ec => 'Min';
+
+  @override
+  String get s109b35551a => 'Max';
+
+  @override
+  String get sf2c65c5aeb => 'Average';
+
+  @override
+  String get s68b942c864 =>
+      'Set the home location (Energy → Settings) for the forecast.';
+
+  @override
+  String get s38ac222392 => 'Value';
+
+  @override
+  String get s4cd3d92d4c => 'On';
+
+  @override
+  String get sa8e43f2b0e => 'Offline';
+
+  @override
+  String get s65f512f499 => 'When offline for';
+
+  @override
+  String get sa224d2f5f9 => 'Time';
+
+  @override
+  String get s96b7e2c62c => 'Every day (pick a date for once)';
+
+  @override
+  String get s593004184e => 'Arrival';
+
+  @override
+  String get sa9faf47356 => 'Remind before';
+
+  @override
+  String get sf527ec4275 => 'Target temperature';
+
+  @override
+  String get s009a96409a => 'New reminder';
+
+  @override
+  String get sb346b2b647 => 'Reminder';
+
+  @override
+  String get sc1845eb440 => 'Delete';
+
+  @override
+  String get sb1924acbe7 => 'Name';
+
+  @override
+  String get s5506524eac => 'When';
+
+  @override
+  String get s86c5d7fa73 => 'Message';
+
+  @override
+  String get s8dda7ee75e =>
+      'You can use: {avg} {max} {min} {hour} {temp} {value} {tile} {target} {arrival} {date}';
+
+  @override
+  String get sec1bdb2451 => 'Also to phones (ntfy)';
+
+  @override
+  String get se2de73b535 => 'Always shown in the app too.';
+
+  @override
+  String get sd84d87d156 => 'Priority';
+
+  @override
+  String get s7a09198c53 => '5 (also in quiet hours)';
+
+  @override
+  String get se8e58d6206 => 'Not again within';
+
+  @override
+  String get s7d773a4dc9 => 'Not before';
+
+  @override
+  String get sb86dc1b7bf => 'Test';
+
+  @override
   String get sfb4df77773 => 'Give the button a name.';
 
   @override
@@ -1682,9 +1920,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'Re-checked every 15 s until it works; this notice then disappears by itself.';
 
   @override
-  String get sf4caddf894 => 'Advanced';
-
-  @override
   String get s3e05e0efab => 'Wi-Fi/Ethernet addresses';
 
   @override
@@ -1873,9 +2108,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s0c6a008ffd => 'Name and mode';
 
   @override
-  String get sb1924acbe7 => 'Name';
-
-  @override
   String get s1790a71e85 => 'e.g. Living room';
 
   @override
@@ -1919,9 +2151,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s187d328bb1 => 'Edit';
-
-  @override
-  String get sc1845eb440 => 'Delete';
 
   @override
   String get s87984716cb => 'Delete the thermostat?';
@@ -2998,9 +3227,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s8039add5ed => 'Untitled';
 
   @override
-  String get s5506524eac => 'When';
-
-  @override
   String get sf2d3a43ee8 => 'No runs yet.';
 
   @override
@@ -3094,22 +3320,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s04c0bcdd51 => 'Sunrise / sunset';
 
   @override
-  String get sca7e088857 => 'Electricity price';
-
-  @override
   String get s869f0d57af => 'Weather (outdoor temperature)';
 
   @override
   String get sa4261f6e35 => 'Device not answering';
 
   @override
-  String get s67584c9abf => 'Device';
-
-  @override
   String get se0a362c060 => 'Type';
-
-  @override
-  String get s38ac222392 => 'Value';
 
   @override
   String get s4f62fd1f09 => 'When it turns';
@@ -3223,9 +3440,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sbc8e165fbf => 'Action';
 
   @override
-  String get s4cd3d92d4c => 'On';
-
-  @override
   String get s750f16460c => 'Toggle';
 
   @override
@@ -3254,9 +3468,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s3c2ee8fe0d => '{summary} = weather, price and home state';
-
-  @override
-  String get sd84d87d156 => 'Priority';
 
   @override
   String get sb55a08c07c => '1 – silent';
@@ -3603,9 +3814,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s94493d01ca => 'Weather forecast temperature rain wind';
 
   @override
-  String get s262f9527aa => 'Weather forecast';
-
-  @override
   String get scb3570338f =>
       'Weather now and hourly: temperature, rain and wind at your home. No device needed.';
 
@@ -3807,9 +4015,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s95f80e9bdf => 'Fix';
-
-  @override
-  String get s140acccb81 => 'Today';
 
   @override
   String get s66ad384363 => '24 h ahead';
@@ -4068,9 +4273,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s15b42b592c => 'No on-times in the next day.';
-
-  @override
-  String get s0de6e75a52 => 'Tomorrow';
 
   @override
   String sf87d92faf4(String p0, String p1) {
@@ -5249,9 +5451,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sc0f5a14d2b => 'Color thresholds (value ≥ limit → color)';
-
-  @override
-  String get scd65d31d4c => 'Limit';
 
   @override
   String get s30a2c0f460 => 'Add threshold';
@@ -7280,6 +7479,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s1dfeacd9f6 => 'UDP';
 
   @override
+  String s6c33f19716(String p0) {
+    return 'not answering ($p0 min)';
+  }
+
+  @override
+  String get scebcdabe25 => 'off';
+
+  @override
+  String get sd4be8bca5f => 'Test';
+
+  @override
   String get sd76aadb97c => 'Water leak → alarm';
 
   @override
@@ -7350,6 +7560,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sc797ab9c4c => 'Good morning';
+
+  @override
+  String get seec5bf7f8d =>
+      'Tomorrow electricity averages {avg} c/kWh (peak {max} at {hour}). Light the fireplace.';
+
+  @override
+  String get s4a7ea7d7f1 =>
+      'Electricity is exceptionally expensive today: average {avg} c/kWh, peak {max} at {hour}.';
+
+  @override
+  String get se8a2912e3e =>
+      'Electricity is exceptionally expensive tomorrow: average {avg} c/kWh, peak {max} at {hour}.';
+
+  @override
+  String get s0818fd54b1 =>
+      'Arriving at the cabin {arrival}. Turn the heating on now, target {target} °C.';
+
+  @override
+  String get s57aad0f6c3 =>
+      'Tomorrow: average {avg} c/kWh, peak {max} at {hour}.';
+
+  @override
+  String get s05394a7333 => 'Today: average {avg} c/kWh, peak {max} at {hour}.';
+
+  @override
+  String get s412e06dba4 =>
+      'Exceptionally expensive electricity {date}: average {avg} c/kWh, peak {max} at {hour}.';
+
+  @override
+  String get s7f8a4ab629 => 'Forecast {date}: {temp} °C.';
+
+  @override
+  String get s326f105e40 => '{tile}: {value}';
+
+  @override
+  String get s65afe3ff6f =>
+      'Arriving {arrival}. Turn the heating on, target {target} °C.';
 
   @override
   String get scec02139b6 => 'Tile missing';

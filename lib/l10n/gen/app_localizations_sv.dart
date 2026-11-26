@@ -989,6 +989,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get se9ca7cb470 => 'Automatiseringar';
 
   @override
+  String get s41bb837a83 => 'Meddelanden och påminnelser';
+
+  @override
   String get sf98121cd3d => 'Rum foto';
 
   @override
@@ -1424,6 +1427,240 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s139d2075b8 => 'Kontot raderat.';
 
   @override
+  String get sca7e088857 => 'Elpris';
+
+  @override
+  String get s83f816fbe3 => 'Exceptionellt dyr el';
+
+  @override
+  String get s262f9527aa => 'Väderprognos';
+
+  @override
+  String get sfc404aec8b => 'Sensorvärde';
+
+  @override
+  String get s58d2896c42 => 'Enhetsstatus';
+
+  @override
+  String get s7def336f41 => 'Tid eller datum';
+
+  @override
+  String get sf80835a318 => 'Ankomst (förvärmning)';
+
+  @override
+  String get s9a37dbb58a => 'i morgon';
+
+  @override
+  String get s1fe084d61b => 'idag idag idag idag';
+
+  @override
+  String get safd8f4dddf => 'högsta högsta högsta';
+
+  @override
+  String get s484731d968 => 'lägsta';
+
+  @override
+  String get s77f9bfc303 => 'genomsnittet';
+
+  @override
+  String get sc017c085e4 => '(Plocka en enhet)';
+
+  @override
+  String s3f09da81b6(String p0, String p1, String p2, String p3) {
+    return '$p0: genomsnittligt ≥ $p1 c eller topp ≥ $p2 c eller $p3 × dagen före';
+  }
+
+  @override
+  String s900c886f50(String p0, String p1, String p2, String p3) {
+    return '$p0  $p2 $p3 °C';
+  }
+
+  @override
+  String s81c88dabf7(String p0, String p1) {
+    return '$p0 inte svara $p1 min';
+  }
+
+  @override
+  String s5414e9e5fd(String p0) {
+    return '$p0 stänger av';
+  }
+
+  @override
+  String s09a43fc401(String p0) {
+    return '$p0 slår på';
+  }
+
+  @override
+  String s56ef33ee50(String p0, String p1, String p2) {
+    return 'ankomst $p0 · påminnelse $p1 h innan $p2 °C';
+  }
+
+  @override
+  String get sdeb38e3907 => 'Min anmälan';
+
+  @override
+  String get s5e9a552fe6 => 'Min egen anmälan';
+
+  @override
+  String get se2e6db5acc => 'Alla villkor och ditt eget budskap.';
+
+  @override
+  String get sc6bec5e6cb => 'Körs på denna hembro, även med appen stängd.';
+
+  @override
+  String get se17e32a5c9 =>
+      'Hembron är äldre än 0.11.0: påminnelser fungerar bara medan den här appen är öppen. Uppdatera bron (Fjärråtkomst → Mina hembroar).';
+
+  @override
+  String get s5fd9e146bf => 'Körs på hembron, även med appen stängd.';
+
+  @override
+  String get s563ba24005 =>
+      'Ingen hemmabro: påminnelser fungerar medan appen är öppen. En hemmabro håller dem igång hela tiden.';
+
+  @override
+  String get sf378d832a1 => 'Lägg till påminnelse';
+
+  @override
+  String get s034093c675 =>
+      'Få ett meddelande när ett tillstånd är uppfyllt: elpris (till exempel i morgon), väderprognos, ett sensorvärde, ett enhetstillstånd eller en tid.';
+
+  @override
+  String get s49a26ce1f2 => 'Välj en färdig mall';
+
+  @override
+  String get sc0597b9029 => 'Senaste meddelanden';
+
+  @override
+  String get sac8af0108d => 'Inga meddelanden ännu.';
+
+  @override
+  String get sf4caddf894 => 'Avancerat';
+
+  @override
+  String get sbb2b4bdfc8 => 'Telefonmeddelanden (ntfy), tysta timmar, mute';
+
+  @override
+  String get s13d942a5a9 => 'Välj en enhet.';
+
+  @override
+  String get sac782d209c => 'Testmeddelande skickas.';
+
+  @override
+  String get s67584c9abf => 'Enhet';
+
+  @override
+  String get s140acccb81 => 'I dag';
+
+  @override
+  String get s0de6e75a52 => 'I morgon';
+
+  @override
+  String get sbbf8b7a598 => 'Medelvärde';
+
+  @override
+  String get s43b4c610f8 => 'Högsta';
+
+  @override
+  String get s9dd0f70be6 => 'Lägsta';
+
+  @override
+  String get scd65d31d4c => 'Begränsning';
+
+  @override
+  String get s543838d91f => 'Genomsnitt åtminstone';
+
+  @override
+  String get s087a7e1b24 => 'eller peak åtminstone';
+
+  @override
+  String get s8463e08e0b => 'eller × föregående dags genomsnitt';
+
+  @override
+  String get sd8332d82ec =>
+      'Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min';
+
+  @override
+  String get s109b35551a => 'Max Max Max Max Max';
+
+  @override
+  String get sf2c65c5aeb => 'Medelvärde';
+
+  @override
+  String get s68b942c864 =>
+      'Ställ in hemorten (Energy → Inställningar) för prognosen.';
+
+  @override
+  String get s38ac222392 => 'Värde';
+
+  @override
+  String get s4cd3d92d4c => 'På';
+
+  @override
+  String get sa8e43f2b0e => 'Offline';
+
+  @override
+  String get s65f512f499 => 'När offline för';
+
+  @override
+  String get sa224d2f5f9 => 'Tid';
+
+  @override
+  String get s96b7e2c62c => 'Varje dag (plocka ett datum för en gång)';
+
+  @override
+  String get s593004184e => 'Ankomst';
+
+  @override
+  String get sa9faf47356 => 'Påminn före';
+
+  @override
+  String get sf527ec4275 => 'Måltemperatur';
+
+  @override
+  String get s009a96409a => 'Ny påminnelse';
+
+  @override
+  String get sb346b2b647 => 'Påminnelse';
+
+  @override
+  String get sc1845eb440 => 'Radera';
+
+  @override
+  String get sb1924acbe7 => 'Namn';
+
+  @override
+  String get s5506524eac => 'När när när';
+
+  @override
+  String get s86c5d7fa73 => 'Meddelande';
+
+  @override
+  String get s8dda7ee75e =>
+      'Du kan använda: {avg} {max} {min} {tim} {värde} {kort} {mål} { ankomst} {datum}';
+
+  @override
+  String get sec1bdb2451 => 'Även till telefoner (ntfy)';
+
+  @override
+  String get se2de73b535 => 'Alltid visas i appen också.';
+
+  @override
+  String get sd84d87d156 => 'Prioritet';
+
+  @override
+  String get s7a09198c53 => '5 (även i tysta timmar)';
+
+  @override
+  String get se8e58d6206 => 'Inte igen inom';
+
+  @override
+  String get s7d773a4dc9 => 'Inte förrän';
+
+  @override
+  String get sb86dc1b7bf => 'Testa testtest';
+
+  @override
   String get sfb4df77773 => 'Ge knappen ett namn.';
 
   @override
@@ -1690,9 +1927,6 @@ class AppLocalizationsSv extends AppLocalizations {
       'Re-checkade var 15: e tills det fungerar; detta meddelande försvinner sedan av sig själv.';
 
   @override
-  String get sf4caddf894 => 'Avancerat';
-
-  @override
   String get s3e05e0efab => 'Wi-Fi/Ethernet-adresser';
 
   @override
@@ -1881,9 +2115,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s0c6a008ffd => 'Namn och läge';
 
   @override
-  String get sb1924acbe7 => 'Namn';
-
-  @override
   String get s1790a71e85 => 't.ex. Vardagsrum';
 
   @override
@@ -1927,9 +2158,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s187d328bb1 => 'Redigera';
-
-  @override
-  String get sc1845eb440 => 'Radera';
 
   @override
   String get s87984716cb => 'Ta bort termostaten?';
@@ -3009,9 +3237,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s8039add5ed => 'Untitled';
 
   @override
-  String get s5506524eac => 'När när när';
-
-  @override
   String get sf2d3a43ee8 => 'Inga runs ännu.';
 
   @override
@@ -3106,22 +3331,13 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s04c0bcdd51 => 'Soluppgång / solnedgång';
 
   @override
-  String get sca7e088857 => 'Elpris';
-
-  @override
   String get s869f0d57af => 'Vädret (utomhustemperatur)';
 
   @override
   String get sa4261f6e35 => 'Enhet som inte svarar';
 
   @override
-  String get s67584c9abf => 'Enhet';
-
-  @override
   String get se0a362c060 => 'Typ';
-
-  @override
-  String get s38ac222392 => 'Värde';
 
   @override
   String get s4f62fd1f09 => 'När den vänder';
@@ -3235,9 +3451,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sbc8e165fbf => 'Action';
 
   @override
-  String get s4cd3d92d4c => 'På';
-
-  @override
   String get s750f16460c => 'Av/på';
 
   @override
@@ -3266,9 +3479,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s3c2ee8fe0d => '{summary} = väder, pris och hemstat';
-
-  @override
-  String get sd84d87d156 => 'Prioritet';
 
   @override
   String get sb55a08c07c => '1 – tyst';
@@ -3617,9 +3827,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s94493d01ca => 'Väderprognos temperatur regn vind';
 
   @override
-  String get s262f9527aa => 'Väderprognos';
-
-  @override
   String get scb3570338f =>
       'Vädret nu och per timme: temperatur, regn och vind där du bor. Ingen enhet behövs.';
 
@@ -3820,9 +4027,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s95f80e9bdf => 'Fix';
-
-  @override
-  String get s140acccb81 => 'I dag';
 
   @override
   String get s66ad384363 => '24h framåt';
@@ -4082,9 +4286,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s15b42b592c => 'Inga tider nästa dag.';
-
-  @override
-  String get s0de6e75a52 => 'I morgon';
 
   @override
   String sf87d92faf4(String p0, String p1) {
@@ -5265,9 +5466,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sc0f5a14d2b => 'Färgtrösklar (värde ≥gräns → färg)';
-
-  @override
-  String get scd65d31d4c => 'Begränsning';
 
   @override
   String get s30a2c0f460 => 'Lägg till tröskelvärde';
@@ -7293,6 +7491,17 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s1dfeacd9f6 => 'UDP';
 
   @override
+  String s6c33f19716(String p0) {
+    return 'inte svara ($p0 min)';
+  }
+
+  @override
+  String get scebcdabe25 => 'av';
+
+  @override
+  String get sd4be8bca5f => 'Testa testtest';
+
+  @override
   String get sd76aadb97c => 'Vattenläcka → larm';
 
   @override
@@ -7362,6 +7571,43 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sc797ab9c4c => 'God morgon';
+
+  @override
+  String get seec5bf7f8d =>
+      'I morgon elgenomsnitt {avg} c/kWh (topp {max} på {hour}). Ljus eldstaden.';
+
+  @override
+  String get s4a7ea7d7f1 =>
+      'Elektricitet är exceptionellt dyrt idag: genomsnittligt {vg} c/kWh, topp {max} på {tim}.';
+
+  @override
+  String get se8a2912e3e =>
+      'Elektricitet är exceptionellt dyrt i morgon: genomsnitt {avg} c/kWh, topp {max} på {tim}.';
+
+  @override
+  String get s0818fd54b1 =>
+      'Ankomst till stugan {ankomst}. Vänd värmen på nu, mål {mål} ° C.';
+
+  @override
+  String get s57aad0f6c3 =>
+      'I morgon: genomsnitt {avg} c/kWh, topp {max} på {tim}.';
+
+  @override
+  String get s05394a7333 =>
+      'I dag: genomsnitt {avg} c/kWh, topp {max} på {hour}.';
+
+  @override
+  String get s412e06dba4 =>
+      'Exceptionellt dyr el {datum}: genomsnitt {avg} c/kWh, topp {max} på {tim}.';
+
+  @override
+  String get s7f8a4ab629 => 'Prognos {datum}: {temp} °C.';
+
+  @override
+  String get s326f105e40 => '{tile}: {value}';
+
+  @override
+  String get s65afe3ff6f => 'Ankomst { ankomst}. Vänd värmen på, mål {mål} °C.';
 
   @override
   String get scec02139b6 => 'Kort saknas';

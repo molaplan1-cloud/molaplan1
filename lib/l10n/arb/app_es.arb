@@ -1312,6 +1312,40 @@
  "@s139d2075b8": {
   "x-mt": true
  },
+ "sca7e088857": "Precio de la electricidad",
+ "s262f9527aa": "Previsión meteorológica",
+ "@s262f9527aa": {
+  "x-mt": true
+ },
+ "s9a37dbb58a": "mañana",
+ "s900c886f50": "{p0}  {p2} {p3} °C",
+ "sf4caddf894": "Avanzado",
+ "s67584c9abf": "Dispositivo",
+ "@s67584c9abf": {
+  "x-mt": true
+ },
+ "s140acccb81": "Hoy",
+ "s0de6e75a52": "Mañana",
+ "sbbf8b7a598": "Promedio",
+ "scd65d31d4c": "Limitación",
+ "@scd65d31d4c": {
+  "x-mt": true
+ },
+ "sf2c65c5aeb": "Promedio",
+ "s38ac222392": "Valor",
+ "s4cd3d92d4c": "Encendido",
+ "sa8e43f2b0e": "Sin conexión",
+ "sf527ec4275": "Temperatura objetivo",
+ "sc1845eb440": "Eliminar",
+ "sb1924acbe7": "Nombre",
+ "s5506524eac": "Cuándo",
+ "@s5506524eac": {
+  "x-mt": true
+ },
+ "sd84d87d156": "Prioridad",
+ "@sd84d87d156": {
+  "x-mt": true
+ },
  "sfb4df77773": "Dale un nombre al botón.",
  "@sfb4df77773": {
   "x-mt": true
@@ -1575,7 +1609,6 @@
  "@s0fc5f4d788": {
   "x-mt": true
  },
- "sf4caddf894": "Avanzado",
  "s3e05e0efab": "Dirección de Wi-Fi/Ethernet",
  "@s3e05e0efab": {
   "x-mt": true
@@ -1722,7 +1755,6 @@
  "s89661203b7": "El primero que funcione",
  "s0da3005956": "Promedio",
  "s0c6a008ffd": "Nombre y modo",
- "sb1924acbe7": "Nombre",
  "s1790a71e85": "p. ej. Salón",
  "sd5f46903a1": "Temperatura objetivo",
  "s6de95e582f": "Si se pierde la temperatura",
@@ -1744,7 +1776,6 @@
  "sbbc98d573d": "Editar termostato",
  "s6c3e76828b": "Siguiente",
  "s187d328bb1": "Editar",
- "sc1845eb440": "Eliminar",
  "s87984716cb": "¿Eliminar el termostato?",
  "s79786b9f7d": "Objetivo",
  "sdd309c0a63": "El termostato funciona en el puente de casa",
@@ -2786,10 +2817,6 @@
  "@s8039add5ed": {
   "x-mt": true
  },
- "s5506524eac": "Cuándo",
- "@s5506524eac": {
-  "x-mt": true
- },
  "sf2d3a43ee8": "Todavía no hay carreras.",
  "@sf2d3a43ee8": {
   "x-mt": true
@@ -2892,7 +2919,6 @@
  "@s04c0bcdd51": {
   "x-mt": true
  },
- "sca7e088857": "Precio de la electricidad",
  "s869f0d57af": "El tiempo (temperatura externa)",
  "@s869f0d57af": {
   "x-mt": true
@@ -2901,15 +2927,10 @@
  "@sa4261f6e35": {
   "x-mt": true
  },
- "s67584c9abf": "Dispositivo",
- "@s67584c9abf": {
-  "x-mt": true
- },
  "se0a362c060": "Tipo",
  "@se0a362c060": {
   "x-mt": true
  },
- "s38ac222392": "Valor",
  "s4f62fd1f09": "Cuando gira",
  "@s4f62fd1f09": {
   "x-mt": true
@@ -3052,7 +3073,6 @@
  "@sbc8e165fbf": {
   "x-mt": true
  },
- "s4cd3d92d4c": "Encendido",
  "s750f16460c": "Encender/apagar",
  "s7a544fe304": "Valor de conjunto",
  "@s7a544fe304": {
@@ -3085,10 +3105,6 @@
  },
  "s3c2ee8fe0d": "'{summary} = tiempo, precio y estado del hogar'",
  "@s3c2ee8fe0d": {
-  "x-mt": true
- },
- "sd84d87d156": "Prioridad",
- "@sd84d87d156": {
   "x-mt": true
  },
  "sb55a08c07c": "1 – silencio",
@@ -3484,10 +3500,6 @@
  "@s94493d01ca": {
   "x-mt": true
  },
- "s262f9527aa": "Previsión meteorológica",
- "@s262f9527aa": {
-  "x-mt": true
- },
  "scb3570338f": "El tiempo ahora y por horas: temperatura, lluvia y viento en tu casa. No necesitas ningún dispositivo.",
  "s2a9b6fedd9": "¿No puedes encontrar tu marca?",
  "@s2a9b6fedd9": {
@@ -3649,7 +3661,6 @@
  "@s95f80e9bdf": {
   "x-mt": true
  },
- "s140acccb81": "Hoy",
  "s66ad384363": "24 horas antes",
  "@s66ad384363": {
   "x-mt": true
@@ -3891,7 +3902,6 @@
  "@s15b42b592c": {
   "x-mt": true
  },
- "s0de6e75a52": "Mañana",
  "sf87d92faf4": "Precio de la zona {p0}. Precio del día-ahead incl. IVA {p1} %. Añada el dispositivo \"Precio de electricidad\" para cambiar el área y las tarifas.",
  "@sf87d92faf4": {
   "x-mt": true
@@ -4633,6 +4643,22 @@
  "@sb9bee63c5e": {
   "x-mt": true
  },
+ "sd9103f5cee": "¿Conectar al puente {p0}?",
+ "@sd9103f5cee": {
+  "x-mt": true
+ },
+ "s6046b9ff9c": "Este dispositivo está conectado a {p0}. Se cambia a {p1}. No se necesita ningún código o QR – ambos están en su cuenta.",
+ "@s6046b9ff9c": {
+  "x-mt": true
+ },
+ "s053b2f1211": "No se necesita ningún código o QR – ambos dispositivos están en su cuenta.",
+ "@s053b2f1211": {
+  "x-mt": true
+ },
+ "s948bfb1114": "Conectado a {p0}.",
+ "@s948bfb1114": {
+  "x-mt": true
+ },
  "sc4abf59272": "comprobando...",
  "@sc4abf59272": {
   "x-mt": true
@@ -4735,6 +4761,10 @@
  },
  "se97cc157ef": "o escriba el código",
  "@se97cc157ef": {
+  "x-mt": true
+ },
+ "s3143eb70e1": "6 dígitos de la pantalla del puente casero",
+ "@s3143eb70e1": {
   "x-mt": true
  },
  "s643434044c": "Al usar el código, presione \"Aceptar\" en el puente de inicio también.",
@@ -5137,10 +5167,6 @@
  },
  "sc0f5a14d2b": "umbrales de color (valor ≥ límite → color)",
  "@sc0f5a14d2b": {
-  "x-mt": true
- },
- "scd65d31d4c": "Limitación",
- "@scd65d31d4c": {
   "x-mt": true
  },
  "s30a2c0f460": "Añada el umbral",
@@ -7026,6 +7052,7 @@
   "x-mt": true
  },
  "s1dfeacd9f6": "UDP",
+ "scebcdabe25": "apagado",
  "sd76aadb97c": "Filtro de agua → alarma",
  "@sd76aadb97c": {
   "x-mt": true
@@ -7111,6 +7138,7 @@
  "@sc797ab9c4c": {
   "x-mt": true
  },
+ "s326f105e40": "'{tile}: {value}'",
  "scec02139b6": "Tarjeta desaparecida",
  "@scec02139b6": {
   "x-mt": true
@@ -7828,24 +7856,264 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "sd9103f5cee": "¿Conectar al puente {p0}?",
- "@sd9103f5cee": {
+ "s41bb837a83": "Notificaciones y recordatorios",
+ "@s41bb837a83": {
   "x-mt": true
  },
- "s6046b9ff9c": "Este dispositivo está conectado a {p0}. Se cambia a {p1}. No se necesita ningún código o QR – ambos están en su cuenta.",
- "@s6046b9ff9c": {
+ "s83f816fbe3": "Electricidad excepcionalmente costosa",
+ "@s83f816fbe3": {
   "x-mt": true
  },
- "s053b2f1211": "No se necesita ningún código o QR – ambos dispositivos están en su cuenta.",
- "@s053b2f1211": {
+ "sfc404aec8b": "Valor sensor",
+ "@sfc404aec8b": {
   "x-mt": true
  },
- "s948bfb1114": "Conectado a {p0}.",
- "@s948bfb1114": {
+ "s58d2896c42": "Estado del dispositivo",
+ "@s58d2896c42": {
   "x-mt": true
  },
- "s3143eb70e1": "6 dígitos de la pantalla del puente casero",
- "@s3143eb70e1": {
+ "s7def336f41": "Hora o fecha",
+ "@s7def336f41": {
+  "x-mt": true
+ },
+ "sf80835a318": "Llegada (precalentamiento)",
+ "@sf80835a318": {
+  "x-mt": true
+ },
+ "s1fe084d61b": "hoy",
+ "@s1fe084d61b": {
+  "x-mt": true
+ },
+ "safd8f4dddf": "más alto",
+ "@safd8f4dddf": {
+  "x-mt": true
+ },
+ "s484731d968": "más bajo",
+ "@s484731d968": {
+  "x-mt": true
+ },
+ "s77f9bfc303": "promedio",
+ "@s77f9bfc303": {
+  "x-mt": true
+ },
+ "sc017c085e4": "(pick a device)",
+ "@sc017c085e4": {
+  "x-mt": true
+ },
+ "s3f09da81b6": "{p0}: promedio ≥ {p1} c o pico ≥ {p2} c o {p3}× el día anterior",
+ "@s3f09da81b6": {
+  "x-mt": true
+ },
+ "s81c88dabf7": "{p0} not answering {p1} min",
+ "@s81c88dabf7": {
+  "x-mt": true
+ },
+ "s5414e9e5fd": "{p0} apagado",
+ "@s5414e9e5fd": {
+  "x-mt": true
+ },
+ "s09a43fc401": "{p0} turn on",
+ "@s09a43fc401": {
+  "x-mt": true
+ },
+ "s56ef33ee50": "llegada {p0} · recordatorio {p1} h antes · {p2} °C",
+ "@s56ef33ee50": {
+  "x-mt": true
+ },
+ "sdeb38e3907": "Mi notificación",
+ "@sdeb38e3907": {
+  "x-mt": true
+ },
+ "s5e9a552fe6": "Mi propia notificación",
+ "@s5e9a552fe6": {
+  "x-mt": true
+ },
+ "se2e6db5acc": "Cualquier condición y tu propio mensaje.",
+ "@se2e6db5acc": {
+  "x-mt": true
+ },
+ "sc6bec5e6cb": "Corre en este puente de inicio, también con la aplicación cerrada.",
+ "@sc6bec5e6cb": {
+  "x-mt": true
+ },
+ "se17e32a5c9": "El puente casero es más antiguo que 0.11.0: los recordatorios funcionan sólo mientras esta aplicación está abierta. Actualizar el puente (Acceso remoto → Mis puentes caseros).",
+ "@se17e32a5c9": {
+  "x-mt": true
+ },
+ "s5fd9e146bf": "Corre en el puente de inicio, también con la aplicación cerrada.",
+ "@s5fd9e146bf": {
+  "x-mt": true
+ },
+ "s563ba24005": "No hay puente casero: los recordatorios funcionan mientras la aplicación está abierta. Un puente casero los mantiene funcionando todo el tiempo.",
+ "@s563ba24005": {
+  "x-mt": true
+ },
+ "sf378d832a1": "Agregar recordatorio",
+ "@sf378d832a1": {
+  "x-mt": true
+ },
+ "s034093c675": "Obtenga una notificación cuando se cumple una condición: precio de electricidad (también mañana), pronóstico del tiempo, un valor sensor, un estado del dispositivo o un tiempo.",
+ "@s034093c675": {
+  "x-mt": true
+ },
+ "s49a26ce1f2": "Escoge una plantilla lista",
+ "@s49a26ce1f2": {
+  "x-mt": true
+ },
+ "sc0597b9029": "Últimas notificaciones",
+ "@sc0597b9029": {
+  "x-mt": true
+ },
+ "sac8af0108d": "Aún no hay notificaciones.",
+ "@sac8af0108d": {
+  "x-mt": true
+ },
+ "sbb2b4bdfc8": "Notificaciones de teléfono (nfy), horas tranquilas, mudo",
+ "@sbb2b4bdfc8": {
+  "x-mt": true
+ },
+ "s13d942a5a9": "Escoge un dispositivo.",
+ "@s13d942a5a9": {
+  "x-mt": true
+ },
+ "sac782d209c": "Aviso de prueba enviado.",
+ "@sac782d209c": {
+  "x-mt": true
+ },
+ "s43b4c610f8": "Más alto",
+ "@s43b4c610f8": {
+  "x-mt": true
+ },
+ "s9dd0f70be6": "Lo más bajo",
+ "@s9dd0f70be6": {
+  "x-mt": true
+ },
+ "s543838d91f": "Promedio por lo menos",
+ "@s543838d91f": {
+  "x-mt": true
+ },
+ "s087a7e1b24": "o pico al menos",
+ "@s087a7e1b24": {
+  "x-mt": true
+ },
+ "s8463e08e0b": "o × el promedio del día anterior",
+ "@s8463e08e0b": {
+  "x-mt": true
+ },
+ "sd8332d82ec": "Min",
+ "@sd8332d82ec": {
+  "x-mt": true
+ },
+ "s109b35551a": "Max",
+ "@s109b35551a": {
+  "x-mt": true
+ },
+ "s68b942c864": "Establecer la ubicación de la casa (Energía → Ajustes) para el pronóstico.",
+ "@s68b942c864": {
+  "x-mt": true
+ },
+ "s65f512f499": "Cuando está fuera de línea",
+ "@s65f512f499": {
+  "x-mt": true
+ },
+ "sa224d2f5f9": "Hora",
+ "@sa224d2f5f9": {
+  "x-mt": true
+ },
+ "s96b7e2c62c": "Todos los días (pick a date for once)",
+ "@s96b7e2c62c": {
+  "x-mt": true
+ },
+ "s593004184e": "Llegada",
+ "@s593004184e": {
+  "x-mt": true
+ },
+ "sa9faf47356": "Recordad antes",
+ "@sa9faf47356": {
+  "x-mt": true
+ },
+ "s009a96409a": "Nuevo recordatorio",
+ "@s009a96409a": {
+  "x-mt": true
+ },
+ "sb346b2b647": "Recordatorio",
+ "@sb346b2b647": {
+  "x-mt": true
+ },
+ "s86c5d7fa73": "Mensaje",
+ "@s86c5d7fa73": {
+  "x-mt": true
+ },
+ "s8dda7ee75e": "'Puedes usar: {avg} {max} { min} {h} {valor} {target} {arrival} {date}'",
+ "@s8dda7ee75e": {
+  "x-mt": true
+ },
+ "sec1bdb2451": "También a los teléfonos (nfy)",
+ "@sec1bdb2451": {
+  "x-mt": true
+ },
+ "se2de73b535": "Siempre se muestra en la aplicación también.",
+ "@se2de73b535": {
+  "x-mt": true
+ },
+ "s7a09198c53": "5 (también en horas tranquilas)",
+ "@s7a09198c53": {
+  "x-mt": true
+ },
+ "se8e58d6206": "No otra vez dentro",
+ "@se8e58d6206": {
+  "x-mt": true
+ },
+ "s7d773a4dc9": "No antes",
+ "@s7d773a4dc9": {
+  "x-mt": true
+ },
+ "sb86dc1b7bf": "Prueba",
+ "@sb86dc1b7bf": {
+  "x-mt": true
+ },
+ "s6c33f19716": "no contesta ({p0} min)",
+ "@s6c33f19716": {
+  "x-mt": true
+ },
+ "sd4be8bca5f": "Prueba",
+ "@sd4be8bca5f": {
+  "x-mt": true
+ },
+ "seec5bf7f8d": "'Mañana la electricidad promedio {avg} c/kWh (peak {max} a {hora}). Enciende la chimenea.'",
+ "@seec5bf7f8d": {
+  "x-mt": true
+ },
+ "s4a7ea7d7f1": "'La electricidad es excepcionalmente caro hoy: promedio {avg} c/kWh, pico {max} a {hora}.'",
+ "@s4a7ea7d7f1": {
+  "x-mt": true
+ },
+ "se8a2912e3e": "'La electricidad es excepcionalmente costosa mañana: promedio {avg} c/kWh, pico {max} a {hora}.'",
+ "@se8a2912e3e": {
+  "x-mt": true
+ },
+ "s0818fd54b1": "'Llegando a la cabaña {arrival}. Enciende la calefacción ahora, blanco {target} °C.'",
+ "@s0818fd54b1": {
+  "x-mt": true
+ },
+ "s57aad0f6c3": "'Mañana: promedio {avg} c/kWh, pico {max} a {hora}.'",
+ "@s57aad0f6c3": {
+  "x-mt": true
+ },
+ "s05394a7333": "'Hoy: promedio {avg} c/kWh, pico {max} a {hora}.'",
+ "@s05394a7333": {
+  "x-mt": true
+ },
+ "s412e06dba4": "'Electricidad excepcionalmente costosa {fecha}: promedio {avg} c/kWh, pico {max} a {hora}.'",
+ "@s412e06dba4": {
+  "x-mt": true
+ },
+ "s7f8a4ab629": "'Predicción {fecha}: {temp} °C.'",
+ "@s7f8a4ab629": {
+  "x-mt": true
+ },
+ "s65afe3ff6f": "'Conduciendo {arrival}. Enciende la calefacción, blanco {target} °C.'",
+ "@s65afe3ff6f": {
   "x-mt": true
  }
 }

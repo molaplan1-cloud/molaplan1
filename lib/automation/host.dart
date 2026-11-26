@@ -148,7 +148,10 @@ class AutomationPackage {
   }
 
   /// True when something would make the bridge do work (no automations = nothing to send).
-  bool get isEmpty => settings.automations.where((a) => a.enabled).isEmpty && settings.scripts.isEmpty;
+  bool get isEmpty =>
+      settings.automations.where((a) => a.enabled).isEmpty &&
+      settings.scripts.isEmpty &&
+      settings.reminders.where((r) => r.enabled).isEmpty;
 
   Map<String, dynamic> toJson() => {
     'settings': settings.toJson(),
@@ -183,7 +186,7 @@ typedef SendFn = Future<Object?> Function(String connectionId, Map<String, dynam
 typedef NotifyFn = Future<void> Function(String title, String body, int priority, String? tileId);
 
 /// [AutoEnv] over a package and plain read/send callbacks (app: drivers; bridge: executor).
-class PackageEnv implements AutoEnv {
+class PackageEnv implements AutoEnv, ReminderEnv {
   PackageEnv(
     this.pkg, {
     required this.readFn,
@@ -372,6 +375,31 @@ class PackageEnv implements AutoEnv {
       return f.current?.temp ?? f.at(now());
     } catch (_) {
       return null;
+    }
+  }
+
+  @override
+  String get lang => pkg.lang;
+
+  @override
+  Future<List<(DateTime, int, double)>> priceSlotsDay(int offset) async {
+    try {
+      final raw = await prices.get(pkg.zone);
+      final s = pkg.hourly && raw.resolution < 3600 ? raw.hourly() : raw;
+      return [for (final p in s.day(now(), offset)) (p.start, p.seconds ~/ 60, _cents(p.eurMwh))];
+    } catch (_) {
+      return const [];
+    }
+  }
+
+  @override
+  Future<List<(DateTime, double)>> forecastPoints() async {
+    final l = pkg.location;
+    if (l == null) return const [];
+    try {
+      return (await weather.forecast(l)).points;
+    } catch (_) {
+      return const [];
     }
   }
 

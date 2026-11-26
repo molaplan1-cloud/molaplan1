@@ -20,6 +20,7 @@ import 'remote_pages.dart';
 import 'connections_page.dart';
 import 'onboarding_page.dart';
 import 'settings_page.dart';
+import 'reminder_pages.dart';
 import 'smart_heating_pages.dart';
 import 'tile_editor.dart';
 import 'tile_look.dart';
@@ -317,6 +318,20 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   onTap: () {
                     close();
                     Navigator.push(context, MaterialPageRoute(builder: (_) => const SmartHeatingPage()));
+                  },
+                ),
+                // v0.11.0 (t189u): the general notification section.
+                ListTile(
+                  key: const ValueKey('nav-reminders'),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  leading: const Icon(Icons.notifications_active_outlined),
+                  title: Text(tx(context, 'Ilmoitukset ja muistutukset', 'Notifications and reminders')),
+                  trailing: st.config.automation.reminders.isEmpty
+                      ? null
+                      : Text('${st.config.automation.reminders.where((r) => r.enabled).length}'),
+                  onTap: () {
+                    close();
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const RemindersPage()));
                   },
                 ),
                 if (st.config.energy.meters.isNotEmpty)

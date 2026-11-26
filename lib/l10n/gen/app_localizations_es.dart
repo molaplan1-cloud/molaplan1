@@ -991,6 +991,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se9ca7cb470 => 'Automatizaciones';
 
   @override
+  String get s41bb837a83 => 'Notificaciones y recordatorios';
+
+  @override
   String get sf98121cd3d => 'Imagen de la habitación';
 
   @override
@@ -1430,6 +1433,242 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s139d2075b8 => 'Se suprimió la cuenta.';
 
   @override
+  String get sca7e088857 => 'Precio de la electricidad';
+
+  @override
+  String get s83f816fbe3 => 'Electricidad excepcionalmente costosa';
+
+  @override
+  String get s262f9527aa => 'Previsión meteorológica';
+
+  @override
+  String get sfc404aec8b => 'Valor sensor';
+
+  @override
+  String get s58d2896c42 => 'Estado del dispositivo';
+
+  @override
+  String get s7def336f41 => 'Hora o fecha';
+
+  @override
+  String get sf80835a318 => 'Llegada (precalentamiento)';
+
+  @override
+  String get s9a37dbb58a => 'mañana';
+
+  @override
+  String get s1fe084d61b => 'hoy';
+
+  @override
+  String get safd8f4dddf => 'más alto';
+
+  @override
+  String get s484731d968 => 'más bajo';
+
+  @override
+  String get s77f9bfc303 => 'promedio';
+
+  @override
+  String get sc017c085e4 => '(pick a device)';
+
+  @override
+  String s3f09da81b6(String p0, String p1, String p2, String p3) {
+    return '$p0: promedio ≥ $p1 c o pico ≥ $p2 c o $p3× el día anterior';
+  }
+
+  @override
+  String s900c886f50(String p0, String p1, String p2, String p3) {
+    return '$p0  $p2 $p3 °C';
+  }
+
+  @override
+  String s81c88dabf7(String p0, String p1) {
+    return '$p0 not answering $p1 min';
+  }
+
+  @override
+  String s5414e9e5fd(String p0) {
+    return '$p0 apagado';
+  }
+
+  @override
+  String s09a43fc401(String p0) {
+    return '$p0 turn on';
+  }
+
+  @override
+  String s56ef33ee50(String p0, String p1, String p2) {
+    return 'llegada $p0 · recordatorio $p1 h antes · $p2 °C';
+  }
+
+  @override
+  String get sdeb38e3907 => 'Mi notificación';
+
+  @override
+  String get s5e9a552fe6 => 'Mi propia notificación';
+
+  @override
+  String get se2e6db5acc => 'Cualquier condición y tu propio mensaje.';
+
+  @override
+  String get sc6bec5e6cb =>
+      'Corre en este puente de inicio, también con la aplicación cerrada.';
+
+  @override
+  String get se17e32a5c9 =>
+      'El puente casero es más antiguo que 0.11.0: los recordatorios funcionan sólo mientras esta aplicación está abierta. Actualizar el puente (Acceso remoto → Mis puentes caseros).';
+
+  @override
+  String get s5fd9e146bf =>
+      'Corre en el puente de inicio, también con la aplicación cerrada.';
+
+  @override
+  String get s563ba24005 =>
+      'No hay puente casero: los recordatorios funcionan mientras la aplicación está abierta. Un puente casero los mantiene funcionando todo el tiempo.';
+
+  @override
+  String get sf378d832a1 => 'Agregar recordatorio';
+
+  @override
+  String get s034093c675 =>
+      'Obtenga una notificación cuando se cumple una condición: precio de electricidad (también mañana), pronóstico del tiempo, un valor sensor, un estado del dispositivo o un tiempo.';
+
+  @override
+  String get s49a26ce1f2 => 'Escoge una plantilla lista';
+
+  @override
+  String get sc0597b9029 => 'Últimas notificaciones';
+
+  @override
+  String get sac8af0108d => 'Aún no hay notificaciones.';
+
+  @override
+  String get sf4caddf894 => 'Avanzado';
+
+  @override
+  String get sbb2b4bdfc8 =>
+      'Notificaciones de teléfono (nfy), horas tranquilas, mudo';
+
+  @override
+  String get s13d942a5a9 => 'Escoge un dispositivo.';
+
+  @override
+  String get sac782d209c => 'Aviso de prueba enviado.';
+
+  @override
+  String get s67584c9abf => 'Dispositivo';
+
+  @override
+  String get s140acccb81 => 'Hoy';
+
+  @override
+  String get s0de6e75a52 => 'Mañana';
+
+  @override
+  String get sbbf8b7a598 => 'Promedio';
+
+  @override
+  String get s43b4c610f8 => 'Más alto';
+
+  @override
+  String get s9dd0f70be6 => 'Lo más bajo';
+
+  @override
+  String get scd65d31d4c => 'Limitación';
+
+  @override
+  String get s543838d91f => 'Promedio por lo menos';
+
+  @override
+  String get s087a7e1b24 => 'o pico al menos';
+
+  @override
+  String get s8463e08e0b => 'o × el promedio del día anterior';
+
+  @override
+  String get sd8332d82ec => 'Min';
+
+  @override
+  String get s109b35551a => 'Max';
+
+  @override
+  String get sf2c65c5aeb => 'Promedio';
+
+  @override
+  String get s68b942c864 =>
+      'Establecer la ubicación de la casa (Energía → Ajustes) para el pronóstico.';
+
+  @override
+  String get s38ac222392 => 'Valor';
+
+  @override
+  String get s4cd3d92d4c => 'Encendido';
+
+  @override
+  String get sa8e43f2b0e => 'Sin conexión';
+
+  @override
+  String get s65f512f499 => 'Cuando está fuera de línea';
+
+  @override
+  String get sa224d2f5f9 => 'Hora';
+
+  @override
+  String get s96b7e2c62c => 'Todos los días (pick a date for once)';
+
+  @override
+  String get s593004184e => 'Llegada';
+
+  @override
+  String get sa9faf47356 => 'Recordad antes';
+
+  @override
+  String get sf527ec4275 => 'Temperatura objetivo';
+
+  @override
+  String get s009a96409a => 'Nuevo recordatorio';
+
+  @override
+  String get sb346b2b647 => 'Recordatorio';
+
+  @override
+  String get sc1845eb440 => 'Eliminar';
+
+  @override
+  String get sb1924acbe7 => 'Nombre';
+
+  @override
+  String get s5506524eac => 'Cuándo';
+
+  @override
+  String get s86c5d7fa73 => 'Mensaje';
+
+  @override
+  String get s8dda7ee75e =>
+      'Puedes usar: {avg} {max} { min} {h} {valor} {target} {arrival} {date}';
+
+  @override
+  String get sec1bdb2451 => 'También a los teléfonos (nfy)';
+
+  @override
+  String get se2de73b535 => 'Siempre se muestra en la aplicación también.';
+
+  @override
+  String get sd84d87d156 => 'Prioridad';
+
+  @override
+  String get s7a09198c53 => '5 (también en horas tranquilas)';
+
+  @override
+  String get se8e58d6206 => 'No otra vez dentro';
+
+  @override
+  String get s7d773a4dc9 => 'No antes';
+
+  @override
+  String get sb86dc1b7bf => 'Prueba';
+
+  @override
   String get sfb4df77773 => 'Dale un nombre al botón.';
 
   @override
@@ -1697,9 +1936,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'Revisó cada 15 s hasta que funciona; este aviso entonces desaparece por sí mismo.';
 
   @override
-  String get sf4caddf894 => 'Avanzado';
-
-  @override
   String get s3e05e0efab => 'Dirección de Wi-Fi/Ethernet';
 
   @override
@@ -1890,9 +2126,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s0c6a008ffd => 'Nombre y modo';
 
   @override
-  String get sb1924acbe7 => 'Nombre';
-
-  @override
   String get s1790a71e85 => 'p. ej. Salón';
 
   @override
@@ -1937,9 +2170,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s187d328bb1 => 'Editar';
-
-  @override
-  String get sc1845eb440 => 'Eliminar';
 
   @override
   String get s87984716cb => '¿Eliminar el termostato?';
@@ -3021,9 +3251,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s8039add5ed => 'Untitled';
 
   @override
-  String get s5506524eac => 'Cuándo';
-
-  @override
   String get sf2d3a43ee8 => 'Todavía no hay carreras.';
 
   @override
@@ -3117,22 +3344,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s04c0bcdd51 => 'Salida del sol / puesta del sol';
 
   @override
-  String get sca7e088857 => 'Precio de la electricidad';
-
-  @override
   String get s869f0d57af => 'El tiempo (temperatura externa)';
 
   @override
   String get sa4261f6e35 => 'Dispositivo no contesta';
 
   @override
-  String get s67584c9abf => 'Dispositivo';
-
-  @override
   String get se0a362c060 => 'Tipo';
-
-  @override
-  String get s38ac222392 => 'Valor';
 
   @override
   String get s4f62fd1f09 => 'Cuando gira';
@@ -3246,9 +3464,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sbc8e165fbf => 'Medida';
 
   @override
-  String get s4cd3d92d4c => 'Encendido';
-
-  @override
   String get s750f16460c => 'Encender/apagar';
 
   @override
@@ -3277,9 +3492,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s3c2ee8fe0d => '{summary} = tiempo, precio y estado del hogar';
-
-  @override
-  String get sd84d87d156 => 'Prioridad';
 
   @override
   String get sb55a08c07c => '1 – silencio';
@@ -3629,9 +3841,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s94493d01ca => 'Temperatura del tiempo lluvia viento';
 
   @override
-  String get s262f9527aa => 'Previsión meteorológica';
-
-  @override
   String get scb3570338f =>
       'El tiempo ahora y por horas: temperatura, lluvia y viento en tu casa. No necesitas ningún dispositivo.';
 
@@ -3833,9 +4042,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s95f80e9bdf => 'Corrección';
-
-  @override
-  String get s140acccb81 => 'Hoy';
 
   @override
   String get s66ad384363 => '24 horas antes';
@@ -4094,9 +4300,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s15b42b592c => 'No a tiempo al día siguiente.';
-
-  @override
-  String get s0de6e75a52 => 'Mañana';
 
   @override
   String sf87d92faf4(String p0, String p1) {
@@ -5287,9 +5490,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sc0f5a14d2b => 'umbrales de color (valor ≥ límite → color)';
-
-  @override
-  String get scd65d31d4c => 'Limitación';
 
   @override
   String get s30a2c0f460 => 'Añada el umbral';
@@ -7328,6 +7528,17 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1dfeacd9f6 => 'UDP';
 
   @override
+  String s6c33f19716(String p0) {
+    return 'no contesta ($p0 min)';
+  }
+
+  @override
+  String get scebcdabe25 => 'apagado';
+
+  @override
+  String get sd4be8bca5f => 'Prueba';
+
+  @override
   String get sd76aadb97c => 'Filtro de agua → alarma';
 
   @override
@@ -7400,6 +7611,43 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sc797ab9c4c => 'Buenos días';
+
+  @override
+  String get seec5bf7f8d =>
+      'Mañana la electricidad promedio {avg} c/kWh (peak {max} a {hora}). Enciende la chimenea.';
+
+  @override
+  String get s4a7ea7d7f1 =>
+      'La electricidad es excepcionalmente caro hoy: promedio {avg} c/kWh, pico {max} a {hora}.';
+
+  @override
+  String get se8a2912e3e =>
+      'La electricidad es excepcionalmente costosa mañana: promedio {avg} c/kWh, pico {max} a {hora}.';
+
+  @override
+  String get s0818fd54b1 =>
+      'Llegando a la cabaña {arrival}. Enciende la calefacción ahora, blanco {target} °C.';
+
+  @override
+  String get s57aad0f6c3 =>
+      'Mañana: promedio {avg} c/kWh, pico {max} a {hora}.';
+
+  @override
+  String get s05394a7333 => 'Hoy: promedio {avg} c/kWh, pico {max} a {hora}.';
+
+  @override
+  String get s412e06dba4 =>
+      'Electricidad excepcionalmente costosa {fecha}: promedio {avg} c/kWh, pico {max} a {hora}.';
+
+  @override
+  String get s7f8a4ab629 => 'Predicción {fecha}: {temp} °C.';
+
+  @override
+  String get s326f105e40 => '{tile}: {value}';
+
+  @override
+  String get s65afe3ff6f =>
+      'Conduciendo {arrival}. Enciende la calefacción, blanco {target} °C.';
 
   @override
   String get scec02139b6 => 'Tarjeta desaparecida';

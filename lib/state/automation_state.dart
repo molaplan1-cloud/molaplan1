@@ -12,6 +12,7 @@ import 'package:flutter/foundation.dart';
 import '../automation/engine.dart';
 import '../automation/host.dart';
 import '../automation/model.dart';
+import '../automation/reminders.dart';
 import '../automation/runner.dart';
 import '../core/template.dart';
 import '../l10n/l10n.dart';
@@ -46,6 +47,12 @@ class AutomationState extends ChangeNotifier {
       // Only when ntfy is unreachable: the subscription shows the normal ones.
       fallbackNotify: (t, b, p, tile) async => _show(t, b, p, tile, fromFallback: true),
       saveHistory: (j) => unawaited(app.secretStore.write(historyKey, j)),
+      saveReminders: (j) => unawaited(app.secretStore.write(reminderKey, j)),
+      // In-app delivery of a reminder that is not pushed via ntfy (pushed ones come back through
+      // the ntfy subscription like every other notification).
+      onNotice: (n, r) {
+        if (!r.push) _show(n.title, n.body, n.priority, null);
+      },
       listenCommands: true,
       push: pushClient,
     );
@@ -55,6 +62,7 @@ class AutomationState extends ChangeNotifier {
   final AppState app;
   late final AutomationHost local;
   static const historyKey = 'molaplan.autolog.v1';
+  static const reminderKey = 'molaplan.remstate.v1';
 
   /// Test hook (ntfy client).
   static NtfyPush? pushClient;
@@ -91,6 +99,7 @@ class AutomationState extends ChangeNotifier {
     if (_started) return;
     _started = true;
     local.loadHistory(await app.secretStore.read(historyKey));
+    local.loadReminders(await app.secretStore.read(reminderKey));
     _apply();
   }
 
@@ -98,7 +107,8 @@ class AutomationState extends ChangeNotifier {
   void changed() {
     if (!_started) return;
     final w = where;
-    final nothing = settings.automations.isEmpty && settings.scripts.isEmpty && settings.scenes.isEmpty;
+    final nothing =
+        settings.automations.isEmpty && settings.scripts.isEmpty && settings.scenes.isEmpty && settings.reminders.isEmpty;
     if ((w != 'self' && w != 'bridge') || (nothing && _sent == null)) {
       // Nothing to send: apply right away (cheap, no timer).
       _pushTimer?.cancel();
@@ -110,23 +120,54 @@ class AutomationState extends ChangeNotifier {
   }
 
   void _applyLocal() {
-    final w = where;
-    local.update(AutomationPackage.fromConfig(app.config, lang: app.lang));
-    final busy = settings.automations.any((a) => a.enabled) || settings.scripts.any((x) => x.remote);
-    w == 'local' && busy ? local.start() : local.stop();
+    local.update(_localPackage());
+    _localBusy() ? local.start() : local.stop();
     _subscribe();
+  }
+
+  /// v0.11.0: reminders run in this app when no home bridge evaluates them (no bridge, or the
+  /// paired bridge is older than 0.11.0) – while the app is open.
+  bool get remindersHere {
+    final w = where;
+    return w == 'local' || w == 'off' || (w == 'bridge' && remindersBridgeOld);
+  }
+
+  /// The paired bridge runs automations but not reminders (older than 0.11.0).
+  bool remindersBridgeOld = false;
+
+  bool _localBusy() {
+    final autos = where == 'local' && (settings.automations.any((a) => a.enabled) || settings.scripts.any((x) => x.remote));
+    return autos || (remindersHere && settings.reminders.any((r) => r.enabled));
+  }
+
+  /// What this app's own engine runs: everything in local mode; only the reminders when it is just
+  /// the reminder fallback (automations stay on the bridge – never switched twice).
+  AutomationPackage _localPackage() {
+    final pkg = AutomationPackage.fromConfig(app.config, lang: app.lang);
+    if (where == 'local') return pkg;
+    final s = pkg.settings.copy()..automations.clear();
+    if (!remindersHere) s.reminders.clear();
+    return AutomationPackage(
+      settings: s,
+      tiles: pkg.tiles,
+      zone: pkg.zone,
+      vat: pkg.vat,
+      location: pkg.location,
+      lang: pkg.lang,
+      hourly: pkg.hourly,
+    );
   }
 
   void _apply() {
     final w = where;
-    local.update(AutomationPackage.fromConfig(app.config, lang: app.lang));
-    final busy = settings.automations.any((a) => a.enabled) || settings.scripts.any((x) => x.remote);
-    if (w == 'local' && busy) {
+    local.update(_localPackage());
+    if (_localBusy()) {
       local.start();
     } else {
       local.stop();
     }
-    final nothing = settings.automations.isEmpty && settings.scripts.isEmpty && settings.scenes.isEmpty;
+    final nothing =
+        settings.automations.isEmpty && settings.scripts.isEmpty && settings.scenes.isEmpty && settings.reminders.isEmpty;
     if ((w == 'self' || w == 'bridge') && !(nothing && _sent == null)) {
       unawaited(
         push().catchError((Object e) {
@@ -158,6 +199,7 @@ class AutomationState extends ChangeNotifier {
       _sent = j;
       pushError = null;
       bridgeTooOld = false;
+      _checkReminderBridge();
     } catch (e) {
       if ('$e'.contains('Connection missing') || '$e'.contains('Yhteys puuttuu')) {
         // A pre-0.7.0 bridge: run here instead until the bridge is updated.
@@ -184,10 +226,69 @@ class AutomationState extends ChangeNotifier {
         if (v is Map) bridgeStatus = Map<String, dynamic>.from(v);
       }
       bridgeStatusAt = DateTime.now();
+      _checkReminderBridge();
     } catch (e) {
       pushError = '$e';
     }
     notifyListeners();
+  }
+
+  void _checkReminderBridge() {
+    final old = where == 'bridge' && bridgeStatus != null && bridgeStatus!['reminders'] != true;
+    if (old == remindersBridgeOld) return;
+    remindersBridgeOld = old;
+    _applyLocal();
+  }
+
+  /// The general notification list: reminders (from where they run) + smart heating's own
+  /// notices, newest first.
+  List<Notice> get notices {
+    final out = <Notice>[];
+    final st = bridgeStatus?['notices'];
+    if ((where == 'self' || where == 'bridge') && !remindersBridgeOld && st is List) {
+      out.addAll([for (final e in st) Notice.fromJson(Map<String, dynamic>.from(e as Map))]);
+    }
+    if (remindersHere || out.isEmpty) {
+      final ids = {for (final n in out) '${n.at.millisecondsSinceEpoch}|${n.id}'};
+      out.addAll(local.engine.notices.where((n) => !ids.contains('${n.at.millisecondsSinceEpoch}|${n.id}')));
+    }
+    final heat = app.heatingStatus?['notices'];
+    if (heat is List) {
+      for (final e in heat) {
+        final m = Map<String, dynamic>.from(e as Map);
+        out.add(
+          Notice(
+            at: DateTime.fromMillisecondsSinceEpoch((m['at'] as num?)?.toInt() ?? 0),
+            source: 'heating',
+            id: '${m['kind'] ?? ''}',
+            title: tr(app.lang, 'Älykäs lämmitys', 'Smart heating'),
+            body: '${app.lang == 'fi' ? m['fi'] : (m['en'] ?? m['fi'])}',
+            priority: (m['priority'] as num?)?.toInt() ?? 3,
+          ),
+        );
+      }
+    }
+    out.sort((a, b) => b.at.compareTo(a.at));
+    return out;
+  }
+
+  Future<void> testReminder(String id) => run('reminder', id);
+
+  Future<void> saveReminder(Reminder r) async {
+    final l = settings.reminders;
+    final i = l.indexWhere((x) => x.id == r.id);
+    i < 0 ? l.add(r) : l[i] = r;
+    await _save();
+  }
+
+  Future<void> setReminderEnabled(Reminder r, bool on) async {
+    r.enabled = on;
+    await _save();
+  }
+
+  Future<void> deleteReminder(String id) async {
+    settings.reminders.removeWhere((x) => x.id == id);
+    await _save();
   }
 
   List<RunEntry> get history {

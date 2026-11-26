@@ -1321,6 +1321,40 @@
  "@s139d2075b8": {
   "x-mt": true
  },
+ "sca7e088857": "Elektri hind",
+ "s262f9527aa": "Ilmaennustus",
+ "@s262f9527aa": {
+  "x-mt": true
+ },
+ "s9a37dbb58a": "homme",
+ "s900c886f50": "{p0}  {p2} {p3} °C",
+ "sf4caddf894": "Täpsem",
+ "s67584c9abf": "Seade",
+ "@s67584c9abf": {
+  "x-mt": true
+ },
+ "s140acccb81": "Täna",
+ "s0de6e75a52": "Homme",
+ "sbbf8b7a598": "Keskmine",
+ "scd65d31d4c": "Limit",
+ "@scd65d31d4c": {
+  "x-mt": true
+ },
+ "sf2c65c5aeb": "Keskmine",
+ "s38ac222392": "Väärtus",
+ "s4cd3d92d4c": "Sees",
+ "sa8e43f2b0e": "Võrguühenduseta",
+ "sf527ec4275": "Sihttemperatuur",
+ "sc1845eb440": "Kustuta",
+ "sb1924acbe7": "Nimi",
+ "s5506524eac": "Millal",
+ "@s5506524eac": {
+  "x-mt": true
+ },
+ "sd84d87d156": "Prioriteet",
+ "@sd84d87d156": {
+  "x-mt": true
+ },
  "sfb4df77773": "Anna nupule nimi.",
  "@sfb4df77773": {
   "x-mt": true
@@ -1584,7 +1618,6 @@
  "@s0fc5f4d788": {
   "x-mt": true
  },
- "sf4caddf894": "Täpsem",
  "s3e05e0efab": "Wi-Fi/Etherneti aadressid",
  "@s3e05e0efab": {
   "x-mt": true
@@ -1731,7 +1764,6 @@
  "s89661203b7": "Esimene töötav",
  "s0da3005956": "Keskmine",
  "s0c6a008ffd": "Nimi ja režiim",
- "sb1924acbe7": "Nimi",
  "s1790a71e85": "nt Elutuba",
  "sd5f46903a1": "Sihttemperatuur",
  "s6de95e582f": "Kui temperatuur kaob",
@@ -1753,7 +1785,6 @@
  "sbbc98d573d": "Muuda termostaati",
  "s6c3e76828b": "Edasi",
  "s187d328bb1": "Muuda",
- "sc1845eb440": "Kustuta",
  "s87984716cb": "Kustutada termostaat?",
  "s79786b9f7d": "Siht",
  "sdd309c0a63": "Termostaat töötab kodusillal",
@@ -2804,10 +2835,6 @@
  "@s8039add5ed": {
   "x-mt": true
  },
- "s5506524eac": "Millal",
- "@s5506524eac": {
-  "x-mt": true
- },
  "sf2d3a43ee8": "Jooksu veel pole.",
  "@sf2d3a43ee8": {
   "x-mt": true
@@ -2910,7 +2937,6 @@
  "@s04c0bcdd51": {
   "x-mt": true
  },
- "sca7e088857": "Elektri hind",
  "s869f0d57af": "Ilm (välistemperatuur)",
  "@s869f0d57af": {
   "x-mt": true
@@ -2919,15 +2945,10 @@
  "@sa4261f6e35": {
   "x-mt": true
  },
- "s67584c9abf": "Seade",
- "@s67584c9abf": {
-  "x-mt": true
- },
  "se0a362c060": "Tüüp",
  "@se0a362c060": {
   "x-mt": true
  },
- "s38ac222392": "Väärtus",
  "s4f62fd1f09": "Kui see pöördub",
  "@s4f62fd1f09": {
   "x-mt": true
@@ -3070,7 +3091,6 @@
  "@sbc8e165fbf": {
   "x-mt": true
  },
- "s4cd3d92d4c": "Sees",
  "s750f16460c": "Sisse/välja",
  "s7a544fe304": "Määra väärtus",
  "@s7a544fe304": {
@@ -3103,10 +3123,6 @@
  },
  "s3c2ee8fe0d": "'{Kokkuvõte} = ilm, hind ja koduriik'",
  "@s3c2ee8fe0d": {
-  "x-mt": true
- },
- "sd84d87d156": "Prioriteet",
- "@sd84d87d156": {
   "x-mt": true
  },
  "sb55a08c07c": "1 – vaikiv",
@@ -3508,10 +3524,6 @@
  "@s94493d01ca": {
   "x-mt": true
  },
- "s262f9527aa": "Ilmaennustus",
- "@s262f9527aa": {
-  "x-mt": true
- },
  "scb3570338f": "Ilm praegu ja tunniti: temperatuur, sademed ja tuul sinu kodus. Seadet pole vaja.",
  "s2a9b6fedd9": "Ei leia oma kaubamärki?",
  "@s2a9b6fedd9": {
@@ -3676,7 +3688,6 @@
  "@s95f80e9bdf": {
   "x-mt": true
  },
- "s140acccb81": "Täna",
  "s66ad384363": "24 h edasi",
  "@s66ad384363": {
   "x-mt": true
@@ -3918,7 +3929,6 @@
  "@s15b42b592c": {
   "x-mt": true
  },
- "s0de6e75a52": "Homme",
  "sf87d92faf4": "Hinnapiirkond {p0}. Järgmise päeva hetkehinnad koos käibemaksuga {p1} %. Lisage pindala ja tasude muutmiseks seade \"Elektrihind\".",
  "@sf87d92faf4": {
   "x-mt": true
@@ -4666,6 +4676,22 @@
  "@sb9bee63c5e": {
   "x-mt": true
  },
+ "sd9103f5cee": "Ühendus sillaga {p0}?",
+ "@sd9103f5cee": {
+  "x-mt": true
+ },
+ "s6046b9ff9c": "See seade on nüüd ühendatud {p0} - ga. Lülitab sisse {p1}. Kood või QR ei ole vajalik – mõlemad on sinu kontol.",
+ "@s6046b9ff9c": {
+  "x-mt": true
+ },
+ "s053b2f1211": "Koodi või QR-i pole vaja - mõlemad seadmed on teie kontol.",
+ "@s053b2f1211": {
+  "x-mt": true
+ },
+ "s948bfb1114": "Ühendatud {p0}-ga.",
+ "@s948bfb1114": {
+  "x-mt": true
+ },
  "sc4abf59272": "kontrollin...",
  "@sc4abf59272": {
   "x-mt": true
@@ -4768,6 +4794,10 @@
  },
  "se97cc157ef": "või sisestage kood",
  "@se97cc157ef": {
+  "x-mt": true
+ },
+ "s3143eb70e1": "6 numbrit kodusilla ekraanilt",
+ "@s3143eb70e1": {
   "x-mt": true
  },
  "s643434044c": "Koodi kasutamisel vajutage ka kodusillal \"Accept\".",
@@ -5170,10 +5200,6 @@
  },
  "sc0f5a14d2b": "Värvikünnised (väärtus ≥ piir → värv)",
  "@sc0f5a14d2b": {
-  "x-mt": true
- },
- "scd65d31d4c": "Limit",
- "@scd65d31d4c": {
   "x-mt": true
  },
  "s30a2c0f460": "Lisage künnis",
@@ -7083,6 +7109,7 @@
   "x-mt": true
  },
  "s1dfeacd9f6": "UDP",
+ "scebcdabe25": "väljas",
  "sd76aadb97c": "Veeleke → alarm",
  "@sd76aadb97c": {
   "x-mt": true
@@ -7171,6 +7198,7 @@
  "@sc797ab9c4c": {
   "x-mt": true
  },
+ "s326f105e40": "'{tile}: {value}'",
  "scec02139b6": "Kaart kadunud",
  "@scec02139b6": {
   "x-mt": true
@@ -7891,24 +7919,264 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "sd9103f5cee": "Ühendus sillaga {p0}?",
- "@sd9103f5cee": {
+ "s41bb837a83": "Teated ja meeldetuletused",
+ "@s41bb837a83": {
   "x-mt": true
  },
- "s6046b9ff9c": "See seade on nüüd ühendatud {p0} - ga. Lülitab sisse {p1}. Kood või QR ei ole vajalik – mõlemad on sinu kontol.",
- "@s6046b9ff9c": {
+ "s83f816fbe3": "Erakordselt kallis elekter",
+ "@s83f816fbe3": {
   "x-mt": true
  },
- "s053b2f1211": "Koodi või QR-i pole vaja - mõlemad seadmed on teie kontol.",
- "@s053b2f1211": {
+ "sfc404aec8b": "Sensori väärtus",
+ "@sfc404aec8b": {
   "x-mt": true
  },
- "s948bfb1114": "Ühendatud {p0}-ga.",
- "@s948bfb1114": {
+ "s58d2896c42": "Seadme olek",
+ "@s58d2896c42": {
   "x-mt": true
  },
- "s3143eb70e1": "6 numbrit kodusilla ekraanilt",
- "@s3143eb70e1": {
+ "s7def336f41": "Kellaaeg või kuupäev",
+ "@s7def336f41": {
+  "x-mt": true
+ },
+ "sf80835a318": "Saabumine (eelsoojendamine)",
+ "@sf80835a318": {
+  "x-mt": true
+ },
+ "s1fe084d61b": "täna",
+ "@s1fe084d61b": {
+  "x-mt": true
+ },
+ "safd8f4dddf": "kõrgeim",
+ "@safd8f4dddf": {
+  "x-mt": true
+ },
+ "s484731d968": "madalaim",
+ "@s484731d968": {
+  "x-mt": true
+ },
+ "s77f9bfc303": "keskmine",
+ "@s77f9bfc303": {
+  "x-mt": true
+ },
+ "sc017c085e4": "(valige seadeldis)",
+ "@sc017c085e4": {
+  "x-mt": true
+ },
+ "s3f09da81b6": "{p0}: keskmine ≥ {p1} c või tipp ≥ {p2} c või {p3}× päev enne",
+ "@s3f09da81b6": {
+  "x-mt": true
+ },
+ "s81c88dabf7": "{p0} ei vasta {p1} min",
+ "@s81c88dabf7": {
+  "x-mt": true
+ },
+ "s5414e9e5fd": "{p0} lülitab välja",
+ "@s5414e9e5fd": {
+  "x-mt": true
+ },
+ "s09a43fc401": "{p0} pöörab",
+ "@s09a43fc401": {
+  "x-mt": true
+ },
+ "s56ef33ee50": "saabumine {p0} · meeldetuletus {p1} h enne · {p2} °C",
+ "@s56ef33ee50": {
+  "x-mt": true
+ },
+ "sdeb38e3907": "Minu teade",
+ "@sdeb38e3907": {
+  "x-mt": true
+ },
+ "s5e9a552fe6": "Minu enda teade",
+ "@s5e9a552fe6": {
+  "x-mt": true
+ },
+ "se2e6db5acc": "Ükskõik milline tingimus ja sinu enda sõnum.",
+ "@se2e6db5acc": {
+  "x-mt": true
+ },
+ "sc6bec5e6cb": "See töötab sellel kodusillal, ka rakenduse suletud.",
+ "@sc6bec5e6cb": {
+  "x-mt": true
+ },
+ "se17e32a5c9": "Kodusild on vanem kui 0.11.0: meeldetuletused töötavad ainult siis, kui rakendus on avatud. Uuenda silda (kaugjuurdepääs → Minu kodusillad).",
+ "@se17e32a5c9": {
+  "x-mt": true
+ },
+ "s5fd9e146bf": "Töötab kodusillal, samuti on rakendus suletud.",
+ "@s5fd9e146bf": {
+  "x-mt": true
+ },
+ "s563ba24005": "Kodusild puudub: meeldetuletused töötavad, kui rakendus on avatud. Kodusild hoiab neid kogu aeg töös.",
+ "@s563ba24005": {
+  "x-mt": true
+ },
+ "sf378d832a1": "Lisa meeldetuletus",
+ "@sf378d832a1": {
+  "x-mt": true
+ },
+ "s034093c675": "Hankige teade, kui tingimus on täidetud: elektrihind (ka homme), ilmateade, anduri väärtus, seadme olek või aeg.",
+ "@s034093c675": {
+  "x-mt": true
+ },
+ "s49a26ce1f2": "Vali valmis mall",
+ "@s49a26ce1f2": {
+  "x-mt": true
+ },
+ "sc0597b9029": "Viimased teatised",
+ "@sc0597b9029": {
+  "x-mt": true
+ },
+ "sac8af0108d": "Teateid veel pole.",
+ "@sac8af0108d": {
+  "x-mt": true
+ },
+ "sbb2b4bdfc8": "Telefoniteated (ntfy), vaiksed tunnid, tummad",
+ "@sbb2b4bdfc8": {
+  "x-mt": true
+ },
+ "s13d942a5a9": "Vali seadeldis.",
+ "@s13d942a5a9": {
+  "x-mt": true
+ },
+ "sac782d209c": "Saadetud katseteatis.",
+ "@sac782d209c": {
+  "x-mt": true
+ },
+ "s43b4c610f8": "Kõrgeim",
+ "@s43b4c610f8": {
+  "x-mt": true
+ },
+ "s9dd0f70be6": "Madalaim",
+ "@s9dd0f70be6": {
+  "x-mt": true
+ },
+ "s543838d91f": "Keskmiselt vähemalt",
+ "@s543838d91f": {
+  "x-mt": true
+ },
+ "s087a7e1b24": "või vähemalt tipp",
+ "@s087a7e1b24": {
+  "x-mt": true
+ },
+ "s8463e08e0b": "või × eelmise päeva keskmine",
+ "@s8463e08e0b": {
+  "x-mt": true
+ },
+ "sd8332d82ec": "Min",
+ "@sd8332d82ec": {
+  "x-mt": true
+ },
+ "s109b35551a": "Max",
+ "@s109b35551a": {
+  "x-mt": true
+ },
+ "s68b942c864": "Määra kodu asukoht (Energy → Settings) prognoosimiseks.",
+ "@s68b942c864": {
+  "x-mt": true
+ },
+ "s65f512f499": "Kui võrguühenduseta",
+ "@s65f512f499": {
+  "x-mt": true
+ },
+ "sa224d2f5f9": "Aeg",
+ "@sa224d2f5f9": {
+  "x-mt": true
+ },
+ "s96b7e2c62c": "Iga päev (valige kuupäev üks kord)",
+ "@s96b7e2c62c": {
+  "x-mt": true
+ },
+ "s593004184e": "Saabumine",
+ "@s593004184e": {
+  "x-mt": true
+ },
+ "sa9faf47356": "Tuleta meelde",
+ "@sa9faf47356": {
+  "x-mt": true
+ },
+ "s009a96409a": "Uus meeldetuletus",
+ "@s009a96409a": {
+  "x-mt": true
+ },
+ "sb346b2b647": "Meenutus",
+ "@sb346b2b647": {
+  "x-mt": true
+ },
+ "s86c5d7fa73": "Sõnum",
+ "@s86c5d7fa73": {
+  "x-mt": true
+ },
+ "s8dda7ee75e": "'Võite kasutada: {avg} {max} {min} {tund} {temp} {väärtus} {kaart} {siht} {saabumine} {kuupäev}'",
+ "@s8dda7ee75e": {
+  "x-mt": true
+ },
+ "sec1bdb2451": "Telefonidele (ntfy)",
+ "@sec1bdb2451": {
+  "x-mt": true
+ },
+ "se2de73b535": "Alati näidatakse ka rakenduses.",
+ "@se2de73b535": {
+  "x-mt": true
+ },
+ "s7a09198c53": "5 (ka vaiksetel tundidel)",
+ "@s7a09198c53": {
+  "x-mt": true
+ },
+ "se8e58d6206": "Mitte jälle",
+ "@se8e58d6206": {
+  "x-mt": true
+ },
+ "s7d773a4dc9": "Mitte varem",
+ "@s7d773a4dc9": {
+  "x-mt": true
+ },
+ "sb86dc1b7bf": "Testi",
+ "@sb86dc1b7bf": {
+  "x-mt": true
+ },
+ "s6c33f19716": "ei vasta ({p0} min)",
+ "@s6c33f19716": {
+  "x-mt": true
+ },
+ "sd4be8bca5f": "Testi",
+ "@sd4be8bca5f": {
+  "x-mt": true
+ },
+ "seec5bf7f8d": "'Homme on elektri keskmine {avg} c/kWh (tipp {max} at {hour}). Valgusta kamin.'",
+ "@seec5bf7f8d": {
+  "x-mt": true
+ },
+ "s4a7ea7d7f1": "'Elekter on tänapäeval erakordselt kallis: keskmine {avg} c/kWh, tipp {max} kell {hour}.'",
+ "@s4a7ea7d7f1": {
+  "x-mt": true
+ },
+ "se8a2912e3e": "'Elekter on homme erakordselt kallis: keskmine {avg} c/kWh, tipp {max} kell {hour}.'",
+ "@se8a2912e3e": {
+  "x-mt": true
+ },
+ "s0818fd54b1": "'Saabumine salongi {saabumine} Keerake küte kohe sisse, sihtige {siht} °C.'",
+ "@s0818fd54b1": {
+  "x-mt": true
+ },
+ "s57aad0f6c3": "'Homme: keskmine {avg} c/kWh, tipp {max} kell {tund}.'",
+ "@s57aad0f6c3": {
+  "x-mt": true
+ },
+ "s05394a7333": "'Täna: keskmine {avg} c/kWh, tipp {max} at {hour}.'",
+ "@s05394a7333": {
+  "x-mt": true
+ },
+ "s412e06dba4": "'Erakordselt kallis elekter {date}: keskmine {avg} c/kWh, tipp {max} at {hour}.'",
+ "@s412e06dba4": {
+  "x-mt": true
+ },
+ "s7f8a4ab629": "'Prognoos {kuupäev}: {temperatuur} °C.'",
+ "@s7f8a4ab629": {
+  "x-mt": true
+ },
+ "s65afe3ff6f": "'Saabumine {saabumine}. Kütte sisselülitamine, sihtmärk {siht} °C.'",
+ "@s65afe3ff6f": {
   "x-mt": true
  }
 }

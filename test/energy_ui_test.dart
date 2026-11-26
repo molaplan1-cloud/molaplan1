@@ -119,6 +119,8 @@ void main() {
     final st = await _state();
     final th = seedThermostat(st);
     final now = DateTime(2026, 11, 25, 12);
+    PriceService.clock = () => now; // the cache must not refetch by the wall clock
+    addTearDown(() => PriceService.clock = DateTime.now);
     final d0 = DateTime(2026, 11, 25);
     final prices = PriceService(client: MockClient((_) async => http.Response('{}', 500)))
       ..put(PriceSeries('FI', [for (var i = 0; i < 48; i++) PricePoint(d0.add(Duration(hours: i)), 3600, i >= 17 && i < 20 ? 300.0 : 40.0)]));

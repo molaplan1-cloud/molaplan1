@@ -9,6 +9,7 @@ import '../prices/prices.dart';
 import 'engine.dart';
 import 'host.dart';
 import 'model.dart';
+import 'reminders.dart';
 
 class AutomationHost {
   AutomationHost({
@@ -18,6 +19,8 @@ class AutomationHost {
     NtfyPush? push,
     this.fallbackNotify,
     this.saveHistory,
+    this.saveReminders,
+    this.onNotice,
     this.listenCommands = true,
     PriceService? prices,
     DateTime Function()? clock,
@@ -36,7 +39,20 @@ class AutomationHost {
       env,
       onHistory: (h) => saveHistory?.call(jsonEncode([for (final e in h.take(200)) e.toJson()])),
       onChange: () => _changes.add(null),
+      onReminderState: (st) => saveReminders?.call(jsonEncode(st)),
+      onNotice: (n, r) => onNotice?.call(n, r),
     );
+  }
+
+  /// v0.11.0: reminder state (notified keys + notice list) for the host's storage.
+  final void Function(String json)? saveReminders;
+  final void Function(Notice n, Reminder r)? onNotice;
+
+  void loadReminders(String? json) {
+    if (json == null) return;
+    try {
+      engine.loadReminderState(Map<String, dynamic>.from(jsonDecode(json) as Map));
+    } catch (_) {}
   }
 
   final void Function(String)? log;
@@ -124,6 +140,9 @@ class AutomationHost {
   /// Status for the app's Automaatiot page.
   Map<String, dynamic> status() => {
     'history': [for (final e in engine.history.take(100)) e.toJson()],
+    // v0.11.0: this bridge evaluates reminders; their delivered notifications.
+    'reminders': true,
+    'notices': [for (final n in engine.notices.take(100)) n.toJson()],
     'running': engine.running.keys.toList(),
     'lastRun': {
       for (final a in env.pkg.settings.automations)
@@ -144,6 +163,9 @@ class AutomationHost {
         return null;
       case 'test-notify':
         return engine.sendNotification('Molaplan', id, priority: 3);
+      case 'reminder':
+        await engine.testReminder(id);
+        return null;
       default:
         final a = env.pkg.settings.automations.where((x) => x.id == id).firstOrNull;
         if (a == null) throw StateError('not found');

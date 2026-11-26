@@ -5,6 +5,8 @@ library;
 import 'dart:convert';
 import 'dart:math';
 
+import 'reminders.dart';
+
 Map<String, dynamic> _m(Object? o) => o is Map ? Map<String, dynamic>.from(o) : <String, dynamic>{};
 List<Map<String, dynamic>> _l(Object? o) => o is List ? [for (final e in o) _m(e)] : [];
 
@@ -234,7 +236,9 @@ class AutomationSettings {
     NotifySettings? notify,
     this.morningSummary,
     this.morningPriciest = false,
-  }) : scenes = scenes ?? [],
+    List<Reminder>? reminders,
+  }) : reminders = reminders ?? [],
+       scenes = scenes ?? [],
        automations = automations ?? [],
        scripts = scripts ?? [],
        notify = notify ?? NotifySettings();
@@ -243,13 +247,16 @@ class AutomationSettings {
   List<Script> scripts;
   NotifySettings notify;
 
+  /// v0.11.0: 'Ilmoitukset ja muistutukset' (t189u, t190u).
+  List<Reminder> reminders;
+
   /// 'HH:MM' for the morning summary notification (null = only the card on the home screen).
   String? morningSummary;
 
   /// t167u: the morning card / summary also names the priciest hour ahead.
   bool morningPriciest;
 
-  bool get isEmpty => scenes.isEmpty && automations.isEmpty && scripts.isEmpty;
+  bool get isEmpty => scenes.isEmpty && automations.isEmpty && scripts.isEmpty && reminders.isEmpty;
 
   Scene? scene(String id) => scenes.where((s) => s.id == id).firstOrNull;
   Script? script(String id) => scripts.where((s) => s.id == id).firstOrNull;
@@ -261,6 +268,7 @@ class AutomationSettings {
     'notify': notify.toJson(),
     'morningSummary': ?morningSummary,
     if (morningPriciest) 'morningPriciest': true,
+    if (reminders.isNotEmpty) 'reminders': [for (final r in reminders) r.toJson()],
   };
   factory AutomationSettings.fromJson(Object? o) {
     final j = _m(o);
@@ -271,6 +279,7 @@ class AutomationSettings {
       notify: j['notify'] is Map ? NotifySettings.fromJson(_m(j['notify'])) : null,
       morningSummary: j['morningSummary'] as String?,
       morningPriciest: j['morningPriciest'] == true,
+      reminders: [for (final e in _l(j['reminders'])) Reminder.fromJson(e)],
     );
   }
 

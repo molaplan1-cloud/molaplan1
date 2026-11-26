@@ -296,6 +296,8 @@ void main() {
 
   test('bridge runner: reads sensors, follows the heating plan, sends commands', () async {
     var now = DateTime(2026, 11, 25, 15, 5);
+    PriceService.clock = () => now; // the cache must not refetch by the wall clock
+    addTearDown(() => PriceService.clock = DateTime.now);
     final sent = <String>[];
     final svc = PriceService(client: MockClient((_) async => http.Response('{}', 500)));
     final d0 = DateTime(2026, 11, 25);

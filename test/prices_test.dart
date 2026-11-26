@@ -134,6 +134,9 @@ void main() {
 
   test('runner switches only on changes; bridge "rules" op stores and runs them', () async {
     final now = DateTime(2026, 11, 26, 2, 10);
+    // The cache's own clock too, or the test depends on the wall clock (wants the 27th after 14:00).
+    PriceService.clock = () => now;
+    addTearDown(() => PriceService.clock = DateTime.now);
     final svc = PriceService(
       client: MockClient((r) async => http.Response(jsonEncode({'zone': 'FI', 'resolution': 900, 'points': []}), 200)),
     );
