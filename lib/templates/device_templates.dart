@@ -2,6 +2,7 @@ import '../ui/measure_colors.dart' show defaultPriceThresholds;
 import '../devices/climate.dart';
 
 import 'dart:convert';
+import 'dart:math' show max;
 
 import 'package:material_ui/material_ui.dart' hide Threshold;
 
@@ -1410,7 +1411,168 @@ final deviceTemplates = <DeviceTemplate>[
       );
     },
   ),
+  // t198u: generic ntfy command device (security panel, NVR, controller…): switches + state + PIN.
+  DeviceTemplate(
+    id: 'ntfy_device',
+    fi: 'ntfy-komentolaite',
+    en: 'ntfy command device',
+    descFi: 'Laite, jota ohjataan ntfy-viesteillä: päälle/pois-kytkimet, tilan luku ja PIN. Toimii kotona ja muualla ilman kotisiltaa.',
+    descEn: 'A device controlled with ntfy messages: on/off switches, state and PIN. Works at home and away without a home bridge.',
+    icon: Icons.settings_remote_outlined,
+    color: const Color(0xFF26A69A),
+    connectionType: 'ntfy_device',
+    inputs: const [
+      FieldSpec('name', 'Laitteen nimi', 'Device name', hint: 'Valvonta', defaultValue: 'Komentolaite'),
+      FieldSpec(
+        'topic',
+        'Komentokanava',
+        'Command topic',
+        required: true,
+        hint: 'https://ntfy.sh/oma-komentoaihe',
+        helpFi: 'Aihe (tai koko osoite), jota laite kuuntelee.',
+        helpEn: 'The topic (or full URL) the device listens to.',
+      ),
+      FieldSpec(
+        'replyTopic',
+        'Vastauskanava (vapaaehtoinen)',
+        'Reply topic (optional)',
+        helpFi: 'Jos laite vastaa toiseen aiheeseen (esim. omaan ilmoitusaiheeseesi). Tyhjä = sama aihe.',
+        helpEn: 'If the device answers on another topic (e.g. your notification topic). Empty = the same topic.',
+      ),
+      FieldSpec(
+        'replyTitle',
+        'Vastauksen otsikko sisältää (vapaaehtoinen)',
+        'Reply title contains (optional)',
+        helpFi: 'Jos vastauskanavalla on muitakin viestejä: vain tämän otsikon viestit ovat vastauksia.',
+        helpEn: 'If the reply topic has other messages too: only messages with this title are replies.',
+      ),
+      FieldSpec(
+        'pin',
+        'PIN-koodi (vapaaehtoinen)',
+        'PIN code (optional)',
+        kind: FieldKind.secret,
+        helpFi: 'Tallennetaan salattuna. Lisätään komentoihin mallin mukaan.',
+        helpEn: 'Stored encrypted. Added to commands by the template.',
+      ),
+      FieldSpec(
+        'template',
+        'Komennon malli',
+        'Command template',
+        defaultValue: '{cmd} {pin}',
+        helpFi: '{cmd} = komento, {pin} = PIN, {cid} = tunniste jonka laite toistaa. Esim. "{cmd} {pin}".',
+        helpEn: '{cmd} = command, {pin} = PIN, {cid} = an id the device echoes. E.g. "{cmd} {pin}".',
+      ),
+      FieldSpec(
+        'statusCommand',
+        'Tilakomento',
+        'Status command',
+        defaultValue: 'tila',
+        helpFi: 'Komento, johon laite vastaa tilallaan, esim. "tila" tai "tila json".',
+        helpEn: 'The command the device answers with its state, e.g. "status" or "status json".',
+      ),
+      FieldSpec(
+        'format',
+        'Tilavastauksen muoto',
+        'Status reply format',
+        kind: FieldKind.choice,
+        options: ['json', 'text'],
+        optionLabels: {'json': ('JSON', 'JSON'), 'text': ('Teksti', 'Text')},
+        defaultValue: 'json',
+        helpFi: 'JSON: {"valo": 1, …}. Teksti: "Valo: PÄÄLLÄ, …" – tila luetaan nimen perästä.',
+        helpEn: 'JSON: {"light": 1, …}. Text: "Light: ON, …" – the state is read after the name.',
+      ),
+      FieldSpec(
+        'outputs',
+        'Kytkimet (yksi per rivi: Nimi = avain)',
+        'Switches (one per line: Name = key)',
+        kind: FieldKind.multiline,
+        defaultValue: 'Valo = valo',
+        hint: 'Valo = valo',
+        helpFi: 'Esim. "Pihavalo = pihavalo". Avain on sana, jota laite käyttää komennoissa ja tilassa.',
+        helpEn: 'E.g. "Yard light = yardlight". The key is the word the device uses in commands and state.',
+      ),
+      FieldSpec(
+        'onCommand',
+        'Päälle-komento',
+        'On command',
+        defaultValue: '{key} on',
+        helpFi: '{key} = kytkimen avain. Esim. "{key} on" → "pihavalo on".',
+        helpEn: '{key} = the switch key. E.g. "{key} on" → "light on".',
+      ),
+      FieldSpec('offCommand', 'Pois-komento', 'Off command', defaultValue: '{key} off'),
+      FieldSpec(
+        'minInterval',
+        'Komentojen väli vähintään (s)',
+        'Minimum time between commands (s)',
+        kind: FieldKind.number,
+        defaultValue: 0,
+        helpFi: 'Jos laite vastaa vain esim. 30 s välein, kirjoita 30.',
+        helpEn: 'If the device answers only e.g. every 30 s, type 30.',
+      ),
+    ],
+    build: (v, lang) => ntfyDeviceTemplate(v, lang),
+  ),
 ];
+
+/// t198u: connection + one switch tile per "Name = key" line + a status tile.
+TemplateResult ntfyDeviceTemplate(Map<String, dynamic> v, String lang) {
+  final name = _s(v, 'name', _t(lang, 'Komentolaite', 'Command device'));
+  final minGap = num.tryParse(_s(v, 'minInterval', '0'))?.toInt() ?? 0;
+  final c = ConnectionConfig(
+    name: name,
+    type: 'ntfy_device',
+    settings: {
+      'topic': _s(v, 'topic'),
+      if (_s(v, 'replyTopic').isNotEmpty) 'replyTopic': _s(v, 'replyTopic'),
+      if (_s(v, 'replyTitle').isNotEmpty) 'replyTitle': _s(v, 'replyTitle'),
+      'template': _s(v, 'template', '{cmd} {pin}'),
+      'statusCommand': _s(v, 'statusCommand', 'tila'),
+      'minInterval': minGap,
+      'replySeconds': minGap > 0 ? max(45, minGap + 20) : 45,
+      'cacheSeconds': max(30, minGap),
+      'server': 'https://ntfy.sh',
+    },
+    secrets: {
+      if (_s(v, 'pin').isNotEmpty) 'pin': _s(v, 'pin'),
+      if (_s(v, 'token').isNotEmpty) 'token': _s(v, 'token'),
+    },
+  );
+  final json = _s(v, 'format', 'json') != 'text';
+  final poll = max(60, minGap * 2);
+  final tiles = <TileConfig>[];
+  for (final line in _s(v, 'outputs', 'Valo = valo').split(RegExp(r'[\r\n]+'))) {
+    if (line.trim().isEmpty) continue;
+    final i = line.indexOf('=');
+    final title = (i > 0 ? line.substring(0, i) : line).trim();
+    final key = (i > 0 ? line.substring(i + 1) : line).trim();
+    if (key.isEmpty) continue;
+    String cmd(String k, String d) => _s(v, k, d).replaceAll('{key}', key);
+    tiles.add(
+      TileConfig(
+        type: TileType.toggle,
+        title: title,
+        icon: 'power',
+        connectionId: c.id,
+        pollSeconds: poll,
+        read: json ? {'jsonPath': '\$.$key'} : {'regex': '${RegExp.escape(key)}\\s*[:=]?\\s*([^,;\\n]+)'},
+        onCommand: CommandStep(connectionId: c.id, spec: {'command': cmd('onCommand', '{key} on'), 'waitReply': true}),
+        offCommand: CommandStep(connectionId: c.id, spec: {'command': cmd('offCommand', '{key} off'), 'waitReply': true}),
+      ),
+    );
+  }
+  tiles.add(
+    TileConfig(
+      type: TileType.value,
+      title: _t(lang, '$name – tila', '$name – state'),
+      icon: 'list',
+      colSpan: 2,
+      connectionId: c.id,
+      pollSeconds: poll,
+      read: const {},
+    ),
+  );
+  return TemplateResult([c], tiles);
+}
 
 /// HA climate entity → ONE combined thermostat tile (t137u; used to be three tiles).
 List<TileConfig> heatPumpHaTiles(String cid, String e, String name, String lang) => [haClimateTile(cid, e, name)];

@@ -23,6 +23,7 @@ IconData connectionIcon(String type) => switch (type) {
   'udp' => Icons.podcasts,
   'ir' => Icons.settings_remote_outlined,
   'ntfy' => Icons.send_outlined,
+  'ntfy_device' => Icons.settings_remote_outlined,
   _ => Icons.device_hub,
 };
 

@@ -199,6 +199,8 @@ class NtfyDriver extends Driver {
   final _client = HttpClient()..connectionTimeout = const Duration(seconds: 10);
 
   (String, String) get _cmd => parseNtfyTopic(s.str('topic'), s.str('server'));
+  (String, String) get replyTopicPair => _replyTopic();
+  (String, String) get commandTopicPair => _cmd;
   (String, String) _replyTopic([String? override]) {
     final r = override ?? s.strOrNull('replyTopic');
     return r == null || r.trim().isEmpty ? _cmd : parseNtfyTopic(r, _cmd.$1);
@@ -272,7 +274,19 @@ class NtfyDriver extends Driver {
   /// Sends [text] and waits for the first message on the reply topic that is not our own.
   /// Subscribes first (only new messages, after ntfy's "open" event), then publishes, so
   /// older messages and other devices' earlier commands are never mistaken for the reply.
-  Future<NtfyMessage> command(String text, {String? title, Duration wait = const Duration(seconds: 30)}) async {
+  Future<NtfyMessage> command(String text, {String? title, Duration wait = const Duration(seconds: 30)}) =>
+      exchange(text, title: title, wait: wait);
+
+  /// [command] with a filter: [accept] decides whether a (non-echo) message is the reply –
+  /// e.g. the right title or the echoed correlation id on a shared notification topic (t198u).
+  /// [timeoutText] replaces the default "no reply" explanation.
+  Future<NtfyMessage> exchange(
+    String text, {
+    String? title,
+    Duration wait = const Duration(seconds: 30),
+    bool Function(NtfyMessage m)? accept,
+    String Function(String topic, int seconds)? timeoutText,
+  }) async {
     final (srv, t) = _replyTopic();
     final req = await _client.getUrl(Uri.parse('$srv/$t/json')).timeout(const Duration(seconds: 15));
     _auth(req);
@@ -289,7 +303,10 @@ class NtfyDriver extends Driver {
       if (me == null || reply.isCompleted) return;
       for (final m in got) {
         final echo = (me.id.isNotEmpty && m.id == me.id) || (me.id.isEmpty && m.message == text);
-        if (!echo) return reply.complete(m);
+        if (echo) continue;
+        // Same topic without a filter: the first other message is the reply (as before).
+        if (accept == null) return reply.complete(m);
+        if (accept(m)) return reply.complete(m);
       }
     }
 
@@ -326,10 +343,11 @@ class NtfyDriver extends Driver {
       return await reply.future.timeout(
         wait,
         onTimeout: () => throw DriverException(
-          dtx(
-            'Komento lähetettiin, mutta vastausta ei tullut ${wait.inSeconds} sekunnissa. Tarkista, että kotilaite on päällä ja kuuntelee aihetta "$t".',
-            'The command was sent, but no reply came within ${wait.inSeconds} s. Check that the home device is on and listens to "$t".',
-          ),
+          timeoutText?.call(t, wait.inSeconds) ??
+              dtx(
+                'Komento lähetettiin, mutta vastausta ei tullut ${wait.inSeconds} sekunnissa. Tarkista, että kotilaite on päällä ja kuuntelee aihetta "$t".',
+                'The command was sent, but no reply came within ${wait.inSeconds} s. Check that the home device is on and listens to "$t".',
+              ),
         ),
       );
     } finally {

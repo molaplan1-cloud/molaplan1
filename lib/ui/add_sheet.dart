@@ -141,6 +141,15 @@ const _serviceTiles = [
     'ntfy-ilmoitus puhelimeen tai oma HTTP-komento.',
     'ntfy push to a phone or your own HTTP command.',
   ),
+  _ServiceTile(
+    'ntfy_device',
+    Icons.settings_remote_outlined,
+    Color(0xFF26A69A),
+    'ntfy-komentolaite',
+    'ntfy command device',
+    'Laite, jota ohjataan ntfy-viesteillä (esim. valvontapaneeli): kytkimet, tila ja PIN.',
+    'A device controlled with ntfy messages (e.g. a security panel): switches, state and PIN.',
+  ),
 ];
 
 Future<void> showServiceTileSheet(BuildContext context, Dashboard d) async {
@@ -232,6 +241,8 @@ Future<void> showServiceTileSheet(BuildContext context, Dashboard d) async {
       );
     case 'ntfy':
       await template('ntfy');
+    case 'ntfy_device':
+      await template('ntfy_device');
   }
 }
 

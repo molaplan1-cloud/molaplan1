@@ -354,7 +354,7 @@ class _TileWidgetState extends State<TileWidget> {
     final st = AppScope.read(context);
     return t.commands.any(
       (c) =>
-          st.connection(c.connectionId)?.type == 'ntfy' &&
+          {'ntfy', 'ntfy_device'}.contains(st.connection(c.connectionId)?.type) &&
           c.spec['waitReply'] != false &&
           c.spec['waitReply'] != 'false',
     );

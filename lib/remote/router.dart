@@ -113,11 +113,13 @@ class RemoteRouter {
     }
   }
 
+  /// Internet services that work the same everywhere: never through the home bridge.
+  static const internetOnlyTypes = {'ntfy', 'ntfy_device', 'price', 'airthings'};
+
   /// Wraps a connection's driver so it can go through the relay.
   Driver wrap(ConnectionConfig c) {
     if (c.type == 'camera') return RoutedCameraDriver(c, this);
-    // Internet services work the same everywhere: never through the home bridge.
-    if (c.type == 'ntfy' || c.type == 'price' || c.type == 'airthings') return createDriver(c);
+    if (internetOnlyTypes.contains(c.type)) return createDriver(c);
     // t159u: a Bluetooth sensor read by the home bridge (it is the one near the sensor).
     if (c.settings['viaBridge'] == true && client != null) return BridgeOnlyDriver(createDriver(c), this);
     return RoutedDriver(createDriver(c), this);

@@ -99,6 +99,7 @@ Capabilities connectionCapabilities(ConnectionConfig c) => switch (c.type) {
   'airthings' || 'airthings_ble' => Capabilities.sensor,
   'camera' => const Capabilities(camera: true),
   'ntfy' => const Capabilities(actions: true, value: true),
+  'ntfy_device' => const Capabilities(actions: true, value: true, onOff: true),
   'ir' => const Capabilities(actions: true, onOff: true, setpoint: true),
   'homeassistant' => Capabilities.any, // per entity, see entityCapabilities
   // A Shelly / Tasmota added from its template is a relay: switch (+ power when metered).
