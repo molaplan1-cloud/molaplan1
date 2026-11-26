@@ -1,7 +1,7 @@
 import '../core/capabilities.dart';
+import '../core/plat.dart';
 
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
@@ -632,7 +632,8 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
                 : ''),
       ),
       ...cloud,
-      _bigChoice(
+      if (!Plat.isWeb)
+        _bigChoice(
         context,
         key: const ValueKey('wiz-make-bridge'),
         icon: Icons.router_outlined,
@@ -749,7 +750,7 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           text:
               '${problemText(context, AddProblem.noNetwork, brand: brand).$1}\n${problemText(context, AddProblem.noNetwork, brand: brand).$2}',
           actions: [
-            if (Platform.isAndroid)
+            if (Plat.isAndroid)
               FilledButton.tonalIcon(
                 key: const ValueKey('wiz-wifi-settings'),
                 onPressed: () => const MethodChannel('molaplan/multicast').invokeMethod('wifiSettings'),
@@ -988,7 +989,7 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
               icon: const Icon(Icons.router_outlined),
               label: Text(tx(context, 'Olen kodin ulkopuolella', 'I am away from home')),
             ),
-          if (e.problem == AddProblem.noNetwork && Platform.isAndroid)
+          if (e.problem == AddProblem.noNetwork && Plat.isAndroid)
             OutlinedButton.icon(
               onPressed: () => const MethodChannel('molaplan/multicast').invokeMethod('wifiSettings'),
               icon: const Icon(Icons.wifi),

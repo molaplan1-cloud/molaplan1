@@ -1,4 +1,5 @@
 import 'connections_page.dart';
+import '../core/plat.dart';
 import 'ha_picker.dart';
 import 'energy_pages.dart';
 
@@ -16,6 +17,7 @@ import '../state/update_state.dart' show UpdatePhase;
 import 'account_page.dart';
 import 'account_nudge.dart';
 import 'app_scope.dart';
+import 'web_info.dart';
 import 'guides_page.dart';
 import 'onboarding_page.dart';
 import 'remote_pages.dart';
@@ -472,19 +474,28 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
               const SizedBox(height: 28),
-              Text('Molaplan $appVersion', style: text.titleMedium),
-              const SizedBox(height: 8),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: OutlinedButton.icon(
-                  key: const ValueKey('settings-check-updates'),
-                  onPressed: st.update.phase == UpdatePhase.checking ? null : () => manualUpdateCheck(context),
-                  icon: st.update.phase == UpdatePhase.checking
-                      ? const SizedBox.square(dimension: 18, child: CircularProgressIndicator(strokeWidth: 2))
-                      : const Icon(Icons.system_update_alt),
-                  label: Text(tx(context, 'Tarkista päivitykset', 'Check for updates')),
-                ),
+              Text(
+                Plat.isWeb
+                    ? 'Molaplan $appVersion – ${tx(context, 'selainversio', 'browser version')}'
+                    : 'Molaplan $appVersion',
+                style: text.titleMedium,
               ),
+              const SizedBox(height: 8),
+              // R253: the web app updates itself on reload; its about box says what it can do.
+              if (Plat.isWeb)
+                const WebLimitsCard()
+              else
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: OutlinedButton.icon(
+                    key: const ValueKey('settings-check-updates'),
+                    onPressed: st.update.phase == UpdatePhase.checking ? null : () => manualUpdateCheck(context),
+                    icon: st.update.phase == UpdatePhase.checking
+                        ? const SizedBox.square(dimension: 18, child: CircularProgressIndicator(strokeWidth: 2))
+                        : const Icon(Icons.system_update_alt),
+                    label: Text(tx(context, 'Tarkista päivitykset', 'Check for updates')),
+                  ),
+                ),
               const SizedBox(height: 8),
               Text(
                 tx(

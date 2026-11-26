@@ -4,8 +4,8 @@
 library;
 
 import 'dart:async';
+import '../core/plat.dart';
 import 'dart:convert';
-import 'dart:io' show Platform;
 
 import 'package:flutter/foundation.dart';
 
@@ -563,7 +563,7 @@ class AutomationState extends ChangeNotifier {
   }
 
   /// Tests switch the live subscription off.
-  static bool pushTestMode = !kIsWeb && Platform.environment.containsKey('FLUTTER_TEST');
+  static bool pushTestMode = !kIsWeb && Plat.isFlutterTest;
 
   void _show(String title, String body, int priority, String? tileId, {bool fromFallback = false}) {
     final m = PushMessage(title, body, priority, tileId, DateTime.now());

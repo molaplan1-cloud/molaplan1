@@ -1,4 +1,4 @@
-import 'dart:io' show Platform;
+import '../core/plat.dart';
 import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
@@ -12,7 +12,7 @@ import 'icons.dart';
 import 'tile_visuals.dart';
 
 /// "Ota kuva": the phone/tablet camera (Android, iOS). Windows has no camera picker.
-bool cameraCaptureAvailable = Platform.isAndroid || Platform.isIOS;
+bool cameraCaptureAvailable = Plat.isAndroid || Plat.isIOS;
 
 /// Takes a photo for a tile background (replaceable in tests). Null = cancelled.
 Future<Uint8List?> Function() takeTilePhoto = () async {

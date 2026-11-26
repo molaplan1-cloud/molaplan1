@@ -2,7 +2,7 @@
 /// arriving as toasts while the window is hidden. No-op on other platforms.
 library;
 
-import 'dart:io';
+import '../core/plat.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:tray_manager/tray_manager.dart';
@@ -17,7 +17,7 @@ class DesktopTray with TrayListener, WindowListener {
   final AppState app;
   static DesktopTray? instance;
 
-  static bool get supported => !kIsWeb && Platform.isWindows;
+  static bool get supported => !kIsWeb && Plat.isWindows;
 
   static Future<void> init(AppState app) async {
     if (!supported || instance != null) return;

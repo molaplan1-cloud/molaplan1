@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'dart:math';
 
 import 'package:cryptography/cryptography.dart';
+import 'package:http/http.dart' as http;
 
-import '../core/net_fallback.dart';
 import '../state/stores.dart';
 import 'e2e.dart';
+import 'relay_socket.dart';
 import 'protocol.dart';
 
 /// This phone's link to one home, saved in secure storage after pairing.
@@ -74,18 +74,13 @@ class PairingFailed implements Exception {
   String toString() => 'Pairing failed: $reason${detail == null ? '' : ' ($detail)'}';
 }
 
-Future<WebSocket> _connectWs(String url) async {
+Future<RelaySocket> _connectWs(String url) async {
   try {
-    // t219u: on a network-level failure try another route (Android fallback) once.
-    return await NetFallback.run(() => WebSocket.connect(url).timeout(const Duration(seconds: 15)));
-  } on TimeoutException {
-    throw RemoteUnavailable('no_internet', 'timeout');
-  } on SocketException catch (e) {
-    throw RemoteUnavailable('no_internet', e.message);
-  } on WebSocketException catch (e) {
+    return await connectRelaySocket(url);
+  } on RelaySocketError catch (e) {
+    if (e.timeout) throw RemoteUnavailable('no_internet', 'timeout');
     // The relay answered but refused the upgrade (403 not paired, 404 no pairing...).
-    throw RemoteUnavailable('refused', e.message);
-  } on HandshakeException catch (e) {
+    if (e.refused) throw RemoteUnavailable('refused', e.message);
     throw RemoteUnavailable('no_internet', e.message);
   }
 }
@@ -105,20 +100,18 @@ Future<PairedHome> pairWithHome({
   if (invite != null) {
     home = invite.home;
   } else {
-    final client = HttpClient()..connectionTimeout = const Duration(seconds: 10);
     try {
-      final req = await client.getUrl(Uri.parse('${httpBase(r)}/v1/code/$c'));
-      final res = await req.close().timeout(const Duration(seconds: 15));
-      final body = await res.transform(utf8.decoder).join();
+      final res = await http.get(Uri.parse('${httpBase(r)}/v1/code/$c')).timeout(const Duration(seconds: 15));
       if (res.statusCode == 404 || res.statusCode == 400) throw PairingFailed('unknown_code');
       if (res.statusCode != 200) throw PairingFailed('no_internet', 'HTTP ${res.statusCode}');
-      home = (jsonDecode(body) as Map)['home'] as String;
-    } on SocketException catch (e) {
-      throw PairingFailed('no_internet', e.message);
+      home = (jsonDecode(res.body) as Map)['home'] as String;
+    } on PairingFailed {
+      rethrow;
     } on TimeoutException {
       throw PairingFailed('no_internet', 'timeout');
-    } finally {
-      client.close(force: true);
+    } catch (e) {
+      // SocketException (apps) / ClientException (browser)
+      throw PairingFailed('no_internet', '$e');
     }
   }
   final viaQr = invite?.secret != null;
@@ -127,7 +120,7 @@ Future<PairedHome> pairWithHome({
   final dev = randomHex(16);
   final myPub = b64(me.publicKey);
 
-  WebSocket ws;
+  RelaySocket ws;
   try {
     ws = await _connectWs('${wsBase(r)}/v1/h/$home/p?c=$c');
   } on RemoteUnavailable catch (e) {
@@ -203,8 +196,8 @@ class RemoteClient {
   final _changes = StreamController<void>.broadcast();
   Stream<void> get changes => _changes.stream;
 
-  WebSocket? _ws;
-  Future<WebSocket>? _connecting;
+  RelaySocket? _ws;
+  Future<RelaySocket>? _connecting;
   SecretKey? _key;
   Timer? _ping;
   Timer? _flush;
@@ -231,16 +224,16 @@ class RemoteClient {
     paired.dev,
   );
 
-  Future<WebSocket> _socket() {
+  Future<RelaySocket> _socket() {
     final ws = _ws;
     if (ws != null) return Future.value(ws);
     return _connecting ??= _open().whenComplete(() => _connecting = null);
   }
 
-  Future<WebSocket> _open() async {
+  Future<RelaySocket> _open() async {
     _set(RemoteLink.connecting);
     final first = Completer<void>();
-    WebSocket ws;
+    RelaySocket ws;
     try {
       ws = await _connectWs(
         '${wsBase(paired.relay)}/v1/h/${paired.home}/c?d=${paired.dev}&t=${Uri.encodeQueryComponent(paired.token)}',

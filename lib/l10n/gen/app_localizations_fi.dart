@@ -1431,6 +1431,10 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s7ebd89c416 => 'Kirjaudu ulos?';
 
   @override
+  String get sab30063821 =>
+      'Tämä selain unohtaa kodit, ruudut ja kotisillan yhteyden. Tiedot säilyvät tililläsi.';
+
+  @override
   String get s6c6165d662 =>
       'Kodit ja ruudut jäävät tälle laitteelle, mutta muutokset eivät enää siirry muille laitteillesi.';
 
@@ -1897,6 +1901,12 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sceafe9ce2a => 'Tiedosto ei ole kuva';
 
   @override
+  String get s463074e5cc => 'Vain sovelluksessa';
+
+  @override
+  String get seb8b8d2adf => 'Toimii vain sovelluksessa tai kotisillan kautta';
+
+  @override
   String get s3a5c21004e => 'Ei yhteyttä';
 
   @override
@@ -2353,6 +2363,13 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s59622d792b => 'Nimeä';
+
+  @override
+  String get sb616303f5b =>
+      'Laitehaku toimii selaimessa vain kotisillan kautta';
+
+  @override
+  String get sef469cadc3 => 'Voit silti lisätä pilvi- ja ntfy-laitteita alta.';
 
   @override
   String get sa0fccfbcab => 'kotisillan kautta';
@@ -6059,6 +6076,10 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s1df6e2eaa7 => 'PIN';
 
   @override
+  String get sb52d5c0b5b =>
+      'Selaimessa PIN-koodia ei tallenneta. Se kysytään uudelleen, kun avaat sivun seuraavan kerran.';
+
+  @override
   String get secab66c046 => 'Muista tällä laitteella';
 
   @override
@@ -6287,6 +6308,65 @@ class AppLocalizationsFi extends AppLocalizations {
       'Kuva pienennetään (≤ 200 kt) ja tallennetaan vain tälle laitteelle.';
 
   @override
+  String get s6b536de0c8 =>
+      'Kotisillan kautta: valot, pistorasiat, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, kamerakuvat';
+
+  @override
+  String get s082c8c6278 => 'Suoraan netistä: ntfy-komennot, sähkön hinta, sää';
+
+  @override
+  String get s5a419e551c =>
+      'Samat näkymät ja ruudut kuin tilisi muilla laitteilla';
+
+  @override
+  String get sa8f5c5c719 =>
+      'Ilman kotisiltaa kotiverkon laitteita ei voi ohjata selaimesta';
+
+  @override
+  String get sb1c4acea71 =>
+      'Vain sovelluksessa: laitteiden haku, Bluetooth, RTSP-video, kotisiltana toimiminen';
+
+  @override
+  String get s2842696c47 => 'Selainversio on etäohjain';
+
+  @override
+  String get s1cbac3d12d =>
+      'Täällä ohjaat vain laitteita, jotka ovat etäkäytettävissä: kotisillan (Molaplan PC:llä, Android-laitteella tai Molaplan Bridge -laitteella), ntfy:n tai pilvipalvelun kautta. Täyteen paikalliseen ohjaukseen tarvitset Molaplan-sovelluksen.';
+
+  @override
+  String get saffec3d1c7 => 'Tilaa PC-sovellus tai valmis Android-laite';
+
+  @override
+  String get s2bf22ca429 =>
+      'Tähän laitteeseen ei saada yhteyttä selaimesta. Se toimii Molaplan-sovelluksessa, tai täältä, kun kotisilta on päällä.';
+
+  @override
+  String get sc6e6f17ad4 =>
+      'Selainversio: ohjaat etäkäytettäviä laitteita. Täysi ohjaus sovelluksella – lisätietoja ›';
+
+  @override
+  String get sbed5ab99f6 => 'Kodin laitteet ja tila yhdessä näkymässä';
+
+  @override
+  String get s1ffc6e9e18 =>
+      'Ohjaa valoja, pistorasioita, lämpöpumppua ja hälytintä isoilla ruuduilla';
+
+  @override
+  String get sb18bf27c69 =>
+      'Sama näkymä PC:llä, tabletilla, puhelimella ja selaimessa';
+
+  @override
+  String get sdc86a6f82c =>
+      'Laitteiden salasanat salataan – vain sinun laitteesi avaavat ne';
+
+  @override
+  String get sb2703f9ad3 => 'Luo tili sähköpostikoodilla';
+
+  @override
+  String get s326d86a618 =>
+      'Nimi tulee espanjan ilmauksesta \"me mola el plan\" – \"kuulostaa hyvältä\".';
+
+  @override
   String get sc80648d495 => 'Näytä Molaplan';
 
   @override
@@ -6446,6 +6526,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sec02c7c071 => 'Lisää esimerkkinäkymä';
+
+  @override
+  String get s057b871ed2 => 'selainversio';
 
   @override
   String get s522d6584c5 => 'Tarkista päivitykset';

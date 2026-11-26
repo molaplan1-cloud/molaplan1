@@ -6,6 +6,7 @@
 library;
 
 import 'dart:async';
+import '../core/plat.dart';
 import 'dart:convert';
 import 'dart:io';
 
@@ -455,14 +456,14 @@ Future<ScanHit?> probeHost(HttpClient c, String ip) async {
 Future<Map<String, String>> readArp() async {
   final out = <String, String>{};
   try {
-    if (Platform.isWindows) {
+    if (Plat.isWindows) {
       final r = await Process.run('arp', ['-a']).timeout(const Duration(seconds: 3));
       for (final m in RegExp(
         r'(\d+\.\d+\.\d+\.\d+)\s+([0-9a-fA-F]{2}(?:-[0-9a-fA-F]{2}){5})',
       ).allMatches('${r.stdout}')) {
         out[m[1]!] = m[2]!.replaceAll('-', ':').toLowerCase();
       }
-    } else if (Platform.isLinux || Platform.isAndroid) {
+    } else if (Plat.isLinux || Plat.isAndroid) {
       final f = File('/proc/net/arp');
       if (await f.exists()) {
         for (final l in (await f.readAsLines()).skip(1)) {
@@ -682,13 +683,13 @@ Future<void> identifyHits(Map<String, ScanHit> all, List<String> locals, Map<Str
   final model = [info['maker'], info['model']].whereType<String>().join(' ').trim();
   final selfName = (info['name'] as String?)?.trim().isNotEmpty == true
       ? info['name'] as String
-      : (model.isNotEmpty ? model : Platform.localHostname);
+      : (model.isNotEmpty ? model : Plat.localHostname);
   for (final ip in locals) {
     final h = all.putIfAbsent(ip, () => ScanHit(ip: ip, via: {'self'}));
     h.role = 'self';
     h.names['Tämä laite'] = selfName;
     if (model.isNotEmpty && h.model.isEmpty) h.model = model;
-    h.type = info['tablet'] == true ? 'tablet' : (Platform.isAndroid || Platform.isIOS ? 'phone' : 'computer');
+    h.type = info['tablet'] == true ? 'tablet' : (Plat.isAndroid || Plat.isIOS ? 'phone' : 'computer');
     if (info['maker'] is String) h.maker = _cap(info['maker'] as String);
   }
   // Gateway: from the OS, else ".1" of our subnet if something answers there.

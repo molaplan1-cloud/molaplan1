@@ -3,7 +3,7 @@
 /// network scan) or a service tile (price, weather, camera, gauge, ntfy/command).
 library;
 
-import 'dart:io';
+import '../core/plat.dart';
 
 import 'package:material_ui/material_ui.dart';
 
@@ -20,7 +20,7 @@ import 'weather_tile.dart';
 
 /// Desktop gets a '+' in the app bar as well.
 bool showAppBarAdd(BuildContext context) =>
-    MediaQuery.sizeOf(context).width >= 900 || Platform.isWindows || Platform.isLinux || Platform.isMacOS;
+    MediaQuery.sizeOf(context).width >= 900 || Plat.isWindows || Plat.isLinux || Plat.isMacOS;
 
 Future<void> showAddSheet(BuildContext context, {Dashboard? dashboard}) async {
   final d = dashboard ?? AppScope.read(context).config.dashboards.first;

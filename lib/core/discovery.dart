@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'plat.dart';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
@@ -70,7 +71,7 @@ const _txtServices = {
 
 /// This device's name and the default gateway (Android; null fields elsewhere).
 Future<Map<String, Object?>> nativeNetInfo() async {
-  if (!Platform.isAndroid) return const {};
+  if (!Plat.isAndroid) return const {};
   try {
     final m = await _lock.invokeMethod<Map>('netInfo');
     return {for (final e in (m ?? const {}).entries) '${e.key}': e.value};
@@ -84,7 +85,7 @@ Future<Map<String, Object?>> nativeNetInfo() async {
 var _lockDepth = 0;
 
 Future<void> _acquireLock() async {
-  if (!Platform.isAndroid) return;
+  if (!Plat.isAndroid) return;
   if (_lockDepth++ > 0) return;
   try {
     await _lock.invokeMethod<void>('acquire');
@@ -92,7 +93,7 @@ Future<void> _acquireLock() async {
 }
 
 Future<void> _releaseLock() async {
-  if (!Platform.isAndroid || _lockDepth == 0) return;
+  if (!Plat.isAndroid || _lockDepth == 0) return;
   if (--_lockDepth > 0) return;
   try {
     await _lock.invokeMethod<void>('release');
@@ -121,7 +122,7 @@ Future<RawDatagramSocket> _bind(
       host,
       port,
       reuseAddress: reuseAddress,
-      reusePort: reusePort && !Platform.isWindows,
+      reusePort: reusePort && !Plat.isWindows,
       ttl: ttl,
     );
   } catch (_) {

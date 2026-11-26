@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Molaplan – kodin laitteiden etäohjaus ja tila yhdessä näkymässä: valot, pistorasiat, lämpöpumppu, hälytin. Selainversio ohjaa etäkäytettäviä laitteita kotisillan, ntfy:n tai pilvipalvelun kautta.">
+  <meta name="theme-color" content="#10161b">
+  <meta property="og:title" content="Molaplan">
+  <meta property="og:description" content="Kodin laitteet ja tila yhdessä näkymässä – PC:llä, tabletilla, puhelimella ja selaimessa.">
+  <meta property="og:image" content="https://molaplan.com/icons/Icon-512.png">
+  <meta property="og:url" content="https://molaplan.com/">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Molaplan">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="canonical" href="https://molaplan.com/">
+  <title>Molaplan</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #10161b; }
+    #splash { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: #e6eef0; font: 16px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; gap: 18px; }
+    #splash img { width: 96px; height: 96px; }
+    #splash .bar { width: 140px; height: 4px; border-radius: 2px; background: #24313a; overflow: hidden; }
+    #splash .bar::after { content: ""; display: block; width: 40%; height: 100%; background: #2ec5b6; animation: s 1.2s ease-in-out infinite; }
+    @keyframes s { 0% { transform: translateX(-100%); } 100% { transform: translateX(250%); } }
+    noscript { color: #e6eef0; font: 16px system-ui, sans-serif; position: fixed; bottom: 24px; left: 0; right: 0; text-align: center; }
+  </style>
+</head>
+<body>
+  <div id="splash"><img src="icons/Icon-192.png" alt=""><div>Molaplan</div><div class="bar"></div></div>
+  <noscript>Molaplan tarvitsee JavaScriptin. · Molaplan needs JavaScript.</noscript>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

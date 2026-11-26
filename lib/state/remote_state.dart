@@ -1,8 +1,8 @@
 import '../devices/find.dart' show bridgeDiscover;
+import '../core/plat.dart';
 
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
@@ -429,9 +429,9 @@ class RemoteState extends ChangeNotifier {
 
 String defaultDeviceName() {
   try {
-    final h = Platform.localHostname;
-    if (Platform.isAndroid) return h == 'localhost' || h.isEmpty ? 'Android-laite' : 'Android ($h)';
-    if (Platform.isWindows) return 'Windows ($h)';
+    final h = Plat.localHostname;
+    if (Plat.isAndroid) return h == 'localhost' || h.isEmpty ? 'Android-laite' : 'Android ($h)';
+    if (Plat.isWindows) return 'Windows ($h)';
     return h;
   } catch (_) {
     return 'Molaplan';

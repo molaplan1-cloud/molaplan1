@@ -2610,6 +2610,12 @@ abstract class AppLocalizations {
   /// **'Sign out?'**
   String get s7ebd89c416;
 
+  /// fi: Tämä selain unohtaa kodit, ruudut ja kotisillan yhteyden. Tiedot säilyvät tililläsi.
+  ///
+  /// In en, this message translates to:
+  /// **'This browser forgets the homes, tiles and home bridge link. Your data stays in your account.'**
+  String get sab30063821;
+
   /// fi: Kodit ja ruudut jäävät tälle laitteelle, mutta muutokset eivät enää siirry muille laitteillesi.
   ///
   /// In en, this message translates to:
@@ -3443,6 +3449,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The file is not a picture'**
   String get sceafe9ce2a;
+
+  /// fi: Vain sovelluksessa
+  ///
+  /// In en, this message translates to:
+  /// **'App only'**
+  String get s463074e5cc;
+
+  /// fi: Toimii vain sovelluksessa tai kotisillan kautta
+  ///
+  /// In en, this message translates to:
+  /// **'Works only in the app or via a home bridge'**
+  String get seb8b8d2adf;
 
   /// fi: Ei yhteyttä
   ///
@@ -4301,6 +4319,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Rename'**
   String get s59622d792b;
+
+  /// fi: Laitehaku toimii selaimessa vain kotisillan kautta
+  ///
+  /// In en, this message translates to:
+  /// **'In the browser, device search works only through a home bridge'**
+  String get sb616303f5b;
+
+  /// fi: Voit silti lisätä pilvi- ja ntfy-laitteita alta.
+  ///
+  /// In en, this message translates to:
+  /// **'You can still add cloud and ntfy devices below.'**
+  String get sef469cadc3;
 
   /// fi: kotisillan kautta
   ///
@@ -10937,6 +10967,12 @@ abstract class AppLocalizations {
   /// **'PIN'**
   String get s1df6e2eaa7;
 
+  /// fi: Selaimessa PIN-koodia ei tallenneta. Se kysytään uudelleen, kun avaat sivun seuraavan kerran.
+  ///
+  /// In en, this message translates to:
+  /// **'The browser never stores the PIN. It is asked again the next time you open the page.'**
+  String get sb52d5c0b5b;
+
   /// fi: Muista tällä laitteella
   ///
   /// In en, this message translates to:
@@ -11357,6 +11393,102 @@ abstract class AppLocalizations {
   /// **'The picture is shrunk (≤ 200 KB) and kept on this device only.'**
   String get sabb10f8cb2;
 
+  /// fi: Kotisillan kautta: valot, pistorasiat, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, kamerakuvat
+  ///
+  /// In en, this message translates to:
+  /// **'Through your home bridge: lights, plugs, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, camera stills'**
+  String get s6b536de0c8;
+
+  /// fi: Suoraan netistä: ntfy-komennot, sähkön hinta, sää
+  ///
+  /// In en, this message translates to:
+  /// **'Straight over the internet: ntfy commands, electricity price, weather'**
+  String get s082c8c6278;
+
+  /// fi: Samat näkymät ja ruudut kuin tilisi muilla laitteilla
+  ///
+  /// In en, this message translates to:
+  /// **'The same views and tiles as your account\'\'s other devices'**
+  String get s5a419e551c;
+
+  /// fi: Ilman kotisiltaa kotiverkon laitteita ei voi ohjata selaimesta
+  ///
+  /// In en, this message translates to:
+  /// **'Without a home bridge the browser cannot control home-network devices'**
+  String get sa8f5c5c719;
+
+  /// fi: Vain sovelluksessa: laitteiden haku, Bluetooth, RTSP-video, kotisiltana toimiminen
+  ///
+  /// In en, this message translates to:
+  /// **'App only: device search, Bluetooth, RTSP video, acting as the home bridge'**
+  String get sb1c4acea71;
+
+  /// fi: Selainversio on etäohjain
+  ///
+  /// In en, this message translates to:
+  /// **'The browser version is a remote control'**
+  String get s2842696c47;
+
+  /// fi: Täällä ohjaat vain laitteita, jotka ovat etäkäytettävissä: kotisillan (Molaplan PC:llä, Android-laitteella tai Molaplan
+  ///
+  /// In en, this message translates to:
+  /// **'Here you control only devices that can be reached remotely: through a home bridge (Molaplan on a PC, an Android device or a Molaplan Bridge), ntfy or a cloud service. For full local control you need the Molaplan app.'**
+  String get s1cbac3d12d;
+
+  /// fi: Tilaa PC-sovellus tai valmis Android-laite
+  ///
+  /// In en, this message translates to:
+  /// **'Order the PC app or a ready Android device'**
+  String get saffec3d1c7;
+
+  /// fi: Tähän laitteeseen ei saada yhteyttä selaimesta. Se toimii Molaplan-sovelluksessa, tai täältä, kun kotisilta on päällä.
+  ///
+  /// In en, this message translates to:
+  /// **'This device cannot be reached from the browser. It works in the Molaplan app, or from here when a home bridge is on.'**
+  String get s2bf22ca429;
+
+  /// fi: Selainversio: ohjaat etäkäytettäviä laitteita. Täysi ohjaus sovelluksella – lisätietoja ›
+  ///
+  /// In en, this message translates to:
+  /// **'Browser version: you control remotely reachable devices. Full control with the app – more ›'**
+  String get sc6e6f17ad4;
+
+  /// fi: Kodin laitteet ja tila yhdessä näkymässä
+  ///
+  /// In en, this message translates to:
+  /// **'Your home\'\'s devices and status in one view'**
+  String get sbed5ab99f6;
+
+  /// fi: Ohjaa valoja, pistorasioita, lämpöpumppua ja hälytintä isoilla ruuduilla
+  ///
+  /// In en, this message translates to:
+  /// **'Control lights, plugs, heat pump and alarm with big tiles'**
+  String get s1ffc6e9e18;
+
+  /// fi: Sama näkymä PC:llä, tabletilla, puhelimella ja selaimessa
+  ///
+  /// In en, this message translates to:
+  /// **'The same view on a PC, tablet, phone and in the browser'**
+  String get sb18bf27c69;
+
+  /// fi: Laitteiden salasanat salataan – vain sinun laitteesi avaavat ne
+  ///
+  /// In en, this message translates to:
+  /// **'Device passwords are encrypted – only your devices can open them'**
+  String get sdc86a6f82c;
+
+  /// fi: Luo tili sähköpostikoodilla
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account with an email code'**
+  String get sb2703f9ad3;
+
+  /// fi: Nimi tulee espanjan ilmauksesta "me mola el plan" – "kuulostaa hyvältä".
+  ///
+  /// In en, this message translates to:
+  /// **'The name comes from the Spanish \"me mola el plan\" – \"sounds good\".'**
+  String get s326d86a618;
+
   /// fi: Näytä Molaplan
   ///
   /// In en, this message translates to:
@@ -11650,6 +11782,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add example dashboard'**
   String get sec02c7c071;
+
+  /// fi: selainversio
+  ///
+  /// In en, this message translates to:
+  /// **'browser version'**
+  String get s057b871ed2;
 
   /// fi: Tarkista päivitykset
   ///

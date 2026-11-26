@@ -1436,6 +1436,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s7ebd89c416 => '¿Salir?';
 
   @override
+  String get sab30063821 =>
+      'Este navegador se olvida de las casas, tarjetas y enlace de puente casero. Sus datos se quedan en su cuenta.';
+
+  @override
   String get s6c6165d662 =>
       'Los hogares y las baldosas permanecen en este dispositivo, pero los cambios ya no llegan a los otros dispositivos.';
 
@@ -1901,6 +1905,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sceafe9ce2a => 'El archivo no es una imagen';
 
   @override
+  String get s463074e5cc => 'App only';
+
+  @override
+  String get seb8b8d2adf =>
+      'Funciona sólo en la aplicación o a través de un puente casero';
+
+  @override
   String get s3a5c21004e => 'Sin conexión';
 
   @override
@@ -2360,6 +2371,14 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s59622d792b => 'Renombrar';
+
+  @override
+  String get sb616303f5b =>
+      'En el navegador, la búsqueda de dispositivos funciona sólo a través de un puente casero';
+
+  @override
+  String get sef469cadc3 =>
+      'Aún puedes añadir dispositivos cloud y ntfy abajo.';
 
   @override
   String get sa0fccfbcab => 'a través del puente casero';
@@ -6078,6 +6097,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1df6e2eaa7 => 'PIN';
 
   @override
+  String get sb52d5c0b5b =>
+      'El navegador nunca almacena el PIN. Se le pregunta de nuevo la próxima vez que abra la página.';
+
+  @override
   String get secab66c046 => 'Recuerde en este dispositivo';
 
   @override
@@ -6306,6 +6329,69 @@ class AppLocalizationsEs extends AppLocalizations {
       'La imagen es arrugada (≤ 200 KB) y se mantiene en este dispositivo solamente.';
 
   @override
+  String get s6b536de0c8 =>
+      'A través de su puente de casa: luces, enchufes, Asistente de casa, Shelly, Tasmota, ESPHome, Modbus, cámaras de quietud';
+
+  @override
+  String get s082c8c6278 =>
+      'Justo sobre el Internet: comandos de ntfy, precio de la electricidad, tiempo';
+
+  @override
+  String get s5a419e551c =>
+      'Las mismas vistas y tarjetas que los otros dispositivos de su cuenta';
+
+  @override
+  String get sa8f5c5c719 =>
+      'Sin un puente casero, el navegador no puede controlar los dispositivos de red doméstica';
+
+  @override
+  String get sb1c4acea71 =>
+      'Aplicación solamente: búsqueda de dispositivos, Bluetooth, vídeo RTSP, actuando como puente casero';
+
+  @override
+  String get s2842696c47 => 'La versión del navegador es un control remoto';
+
+  @override
+  String get s1cbac3d12d =>
+      'Aquí usted controla sólo los dispositivos que se pueden alcanzar de forma remota: a través de un puente casero (Molaplan en un PC, un dispositivo Android o un puente Molaplan), ntfy o un servicio en la nube. Para el control local completo usted necesita la aplicación Molaplan.';
+
+  @override
+  String get saffec3d1c7 =>
+      'Ordene la aplicación PC o un dispositivo Android listo';
+
+  @override
+  String get s2bf22ca429 =>
+      'Este dispositivo no se puede alcanzar desde el navegador. Funciona en la aplicación Molaplan, o desde aquí cuando se encuentra un puente casero.';
+
+  @override
+  String get sc6e6f17ad4 =>
+      'Versión del navegador: controla dispositivos de alcance remoto. Control completo con la aplicación – más ›';
+
+  @override
+  String get sbed5ab99f6 =>
+      'Los dispositivos y el estado de su casa en una sola vista';
+
+  @override
+  String get s1ffc6e9e18 =>
+      'Control de luces, enchufes, bomba de calor y alarma con grandes tarjetas';
+
+  @override
+  String get sb18bf27c69 =>
+      'La misma vista en un PC, tableta, teléfono y en el navegador';
+
+  @override
+  String get sdc86a6f82c =>
+      'Las contraseñas de dispositivo están encriptadas – sólo sus dispositivos pueden abrirlas';
+
+  @override
+  String get sb2703f9ad3 =>
+      'Crear una cuenta con un código de correo electrónico';
+
+  @override
+  String get s326d86a618 =>
+      'El nombre viene del español \"me mola el plan\" – \"sonidos buenos\".';
+
+  @override
   String get sc80648d495 => 'Show Molaplan';
 
   @override
@@ -6468,6 +6554,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sec02c7c071 => 'Añadir vista de ejemplo';
+
+  @override
+  String get s057b871ed2 => 'Versión del navegador';
 
   @override
   String get s522d6584c5 => 'Buscar actualizaciones';

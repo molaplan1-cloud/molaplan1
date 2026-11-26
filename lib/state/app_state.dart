@@ -1,4 +1,5 @@
 import '../core/capabilities.dart';
+import '../core/plat.dart';
 import '../core/home_network.dart';
 import 'measure_history.dart';
 import '../core/friendly_error.dart';
@@ -8,7 +9,7 @@ import 'sensor_repair.dart';
 
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io' show Directory, Platform;
+import 'dart:io' show Directory;
 
 import 'package:flutter/foundation.dart';
 
@@ -101,7 +102,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     // t211u: the phone can ask the bridge for its version and tell it to update itself.
     remote.bridgeInfo = () async => {
       'app': appVersion,
-      'platform': Platform.operatingSystem,
+      'platform': Plat.operatingSystem,
       'model': await update.platform.model(),
       'nets': await localNets(), // t232u: lets a paired device verify it is on this LAN
       'deviceOwner': await update.platform.deviceOwner(),
@@ -460,7 +461,7 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   static String _platformLocale() {
     // Widget tests run in an en_US locale; the test suite is written against the Finnish texts.
-    if (!kIsWeb && Platform.environment.containsKey('FLUTTER_TEST')) return 'fi_FI';
+    if (!kIsWeb && Plat.isFlutterTest) return 'fi_FI';
     return PlatformDispatcher.instance.locale.toString();
   }
 
@@ -556,6 +557,7 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   Future<void> setBridgeMode(bool on) async {
+    if (on && Plat.isWeb) return; // R250: a browser tab is never the home bridge
     on ? await remote.enableBridge(name: tr(lang, 'Koti', 'Home')) : await remote.disableBridge();
     config.bridgeMode = on;
     await bridgeService.setEnabled(on);
@@ -790,7 +792,8 @@ class AppState extends ChangeNotifier implements SyncHost {
     c.secrets['pin'] = pin;
     _devicePin.add(c.id);
     try {
-      if (remember) {
+      // R251: never stored in a browser – kept in memory for this page only.
+      if (remember && !Plat.isWeb) {
         await secretStore.write(devicePinKey(c.id), pin);
       } else {
         await secretStore.delete(devicePinKey(c.id));

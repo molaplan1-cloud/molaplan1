@@ -4,7 +4,7 @@
 /// mode is needed; Android shows one small persistent notification.
 library;
 
-import 'dart:io';
+import '../core/plat.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -19,7 +19,7 @@ class BridgeServiceLink {
   final bool? supportedOverride;
 
   /// Android only (Windows / desktop keep the bridge in the running app, as before).
-  bool get supported => supportedOverride ?? (!kIsWeb && Platform.isAndroid);
+  bool get supported => supportedOverride ?? (!kIsWeb && Plat.isAndroid);
 
   Future<T?> _call<T>(String m) async {
     if (!supported) return null;

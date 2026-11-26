@@ -29,6 +29,8 @@ import 'measure_view.dart';
 import 'motion.dart';
 import 'theme.dart';
 import 'tile_status.dart';
+import '../core/plat.dart';
+import 'web_info.dart';
 import 'tile_visuals.dart';
 import 'weather_tile.dart';
 import 'sensor_tile.dart';
@@ -299,7 +301,11 @@ class _TileWidgetState extends State<TileWidget> {
     return TileIssueChip(
       issue: i,
       maxLines: _tiny ? 1 : 2,
-      onTap: i.kind == TileIssueKind.awayFromLan && c != null && !widget.editing
+      onTap: widget.editing
+          ? null
+          : i.kind == TileIssueKind.appOnly
+          ? () => showWebLimitsDialog(context)
+          : i.kind == TileIssueKind.awayFromLan && c != null
           ? () => openRemoteSwitch(context, c)
           : null,
     );
@@ -372,7 +378,8 @@ class _TileWidgetState extends State<TileWidget> {
     final conn = st.connection(id);
     if (conn == null) return false;
     final ctl = TextEditingController();
-    var remember = true;
+    // R251: a browser never stores the PIN (asked again each time the page is opened).
+    var remember = !Plat.isWeb;
     final pin = await showDialog<String>(
       context: context,
       builder: (c) => StatefulBuilder(
@@ -407,20 +414,33 @@ class _TileWidgetState extends State<TileWidget> {
                   decoration: InputDecoration(labelText: tx(c, 'PIN', 'PIN')),
                   onSubmitted: (v) => Navigator.pop(c, v),
                 ),
-                CheckboxListTile(
-                  key: const ValueKey('conn-pin-remember'),
-                  contentPadding: EdgeInsets.zero,
-                  value: remember,
-                  onChanged: (v) => set(() => remember = v ?? false),
-                  title: Text(tx(c, 'Muista tällä laitteella', 'Remember on this device')),
-                  subtitle: Text(
-                    tx(
-                      c,
-                      'Tallennetaan salattuna vain tähän laitteeseen – ei tilille eikä muille laitteille. Pois päältä = kysytään taas, kun sovellus käynnistyy.',
-                      'Stored encrypted on this device only – not in the account or on other devices. Off = asked again when the app restarts.',
+                if (Plat.isWeb)
+                  Padding(
+                    key: const ValueKey('conn-pin-web-note'),
+                    padding: const EdgeInsets.only(top: 12),
+                    child: Text(
+                      tx(
+                        c,
+                        'Selaimessa PIN-koodia ei tallenneta. Se kysytään uudelleen, kun avaat sivun seuraavan kerran.',
+                        'The browser never stores the PIN. It is asked again the next time you open the page.',
+                      ),
+                    ),
+                  )
+                else
+                  CheckboxListTile(
+                    key: const ValueKey('conn-pin-remember'),
+                    contentPadding: EdgeInsets.zero,
+                    value: remember,
+                    onChanged: (v) => set(() => remember = v ?? false),
+                    title: Text(tx(c, 'Muista tällä laitteella', 'Remember on this device')),
+                    subtitle: Text(
+                      tx(
+                        c,
+                        'Tallennetaan salattuna vain tähän laitteeseen – ei tilille eikä muille laitteille. Pois päältä = kysytään taas, kun sovellus käynnistyy.',
+                        'Stored encrypted on this device only – not in the account or on other devices. Off = asked again when the app restarts.',
+                      ),
                     ),
                   ),
-                ),
               ],
             ),
           ),
@@ -486,20 +506,21 @@ class _TileWidgetState extends State<TileWidget> {
                   decoration: InputDecoration(labelText: tx(c, 'PIN', 'PIN')),
                   onSubmitted: (v) => Navigator.pop(c, v),
                 ),
-                CheckboxListTile(
-                  key: const ValueKey('pin-remember'),
-                  contentPadding: EdgeInsets.zero,
-                  value: remember,
-                  onChanged: (v) => set(() => remember = v ?? false),
-                  title: Text(tx(c, 'Muista tällä laitteella', 'Remember on this device')),
-                  subtitle: Text(
-                    tx(
-                      c,
-                      'Tallennetaan suojattuna vain tähän laitteeseen. Oletuksena PIN-koodia ei tallenneta.',
-                      'Stored encrypted on this device only. By default the PIN is not stored.',
+                if (!Plat.isWeb)
+                  CheckboxListTile(
+                    key: const ValueKey('pin-remember'),
+                    contentPadding: EdgeInsets.zero,
+                    value: remember,
+                    onChanged: (v) => set(() => remember = v ?? false),
+                    title: Text(tx(c, 'Muista tällä laitteella', 'Remember on this device')),
+                    subtitle: Text(
+                      tx(
+                        c,
+                        'Tallennetaan suojattuna vain tähän laitteeseen. Oletuksena PIN-koodia ei tallenneta.',
+                        'Stored encrypted on this device only. By default the PIN is not stored.',
+                      ),
                     ),
                   ),
-                ),
               ],
             ),
           ),
@@ -516,7 +537,7 @@ class _TileWidgetState extends State<TileWidget> {
     );
     // (controller not disposed here: the dialog's closing animation still uses it)
     if (pin == null || pin.isEmpty) return null;
-    if (remember) await st.secretStore.write(AppState.pinKey(t.id), pin);
+    if (remember && !Plat.isWeb) await st.secretStore.write(AppState.pinKey(t.id), pin);
     return pin;
   }
 
@@ -1049,6 +1070,7 @@ class _TileWidgetState extends State<TileWidget> {
                         child: switch (_issueOf(err).kind) {
                           TileIssueKind.offline => Icon(Icons.cloud_off, size: 16, color: cs.onSurfaceVariant),
                           TileIssueKind.awayFromLan => Icon(Icons.wifi_off, size: 16, color: cs.onSurfaceVariant),
+                          TileIssueKind.appOnly => Icon(Icons.devices_other, size: 16, color: cs.onSurfaceVariant),
                           TileIssueKind.device => Icon(Icons.error_outline, size: 18, color: cs.error),
                         },
                       )

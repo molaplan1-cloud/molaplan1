@@ -1,5 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 
+import '../core/plat.dart';
 import '../account/supabase_api.dart';
 import '../account/vault.dart';
 import '../state/account_state.dart';
@@ -590,10 +591,15 @@ class _AccountPageState extends State<AccountPage> {
                 final ok = await confirmDialog(
                   context,
                   t('Kirjaudu ulos?', 'Sign out?'),
-                  t(
-                    'Kodit ja ruudut jäävät tälle laitteelle, mutta muutokset eivät enää siirry muille laitteillesi.',
-                    'Homes and tiles stay on this device, but changes no longer reach your other devices.',
-                  ),
+                  Plat.isWeb
+                      ? t(
+                          'Tämä selain unohtaa kodit, ruudut ja kotisillan yhteyden. Tiedot säilyvät tililläsi.',
+                          'This browser forgets the homes, tiles and home bridge link. Your data stays in your account.',
+                        )
+                      : t(
+                          'Kodit ja ruudut jäävät tälle laitteelle, mutta muutokset eivät enää siirry muille laitteillesi.',
+                          'Homes and tiles stay on this device, but changes no longer reach your other devices.',
+                        ),
                   ok: t('Kirjaudu ulos', 'Sign out'),
                 );
                 if (ok) await acc.signOut();

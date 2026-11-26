@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:io';
+import '../core/plat.dart';
 
 import 'package:material_ui/material_ui.dart';
 import 'package:media_kit/media_kit.dart';
@@ -7,8 +7,8 @@ import 'package:media_kit_video/media_kit_video.dart';
 
 /// RTSP needs the native player (libmpv): Android, Windows, Linux, macOS, iOS. Off in widget tests.
 bool rtspSupported =
-    !Platform.environment.containsKey('FLUTTER_TEST') &&
-    (Platform.isAndroid || Platform.isWindows || Platform.isLinux || Platform.isMacOS || Platform.isIOS);
+    !Plat.isFlutterTest &&
+    (Plat.isAndroid || Plat.isWindows || Plat.isLinux || Plat.isMacOS || Plat.isIOS);
 
 bool _inited = false;
 
@@ -50,7 +50,7 @@ class _RtspViewState extends State<RtspView> {
   }
 
   Future<void> _open() async {
-    final p = _player.platform;
+    final dynamic p = _player.platform;
     if (p is NativePlayer) {
       for (final (k, v) in const [
         ('rtsp-transport', 'tcp'),
@@ -59,7 +59,7 @@ class _RtspViewState extends State<RtspView> {
         ('network-timeout', '8'),
       ]) {
         try {
-          await p.setProperty(k, v);
+          await (p as dynamic).setProperty(k, v);
         } catch (_) {}
       }
     }

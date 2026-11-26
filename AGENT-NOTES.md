@@ -225,3 +225,13 @@ t155u–t157u (also v0.7.3): ModbusTcpClient.acquire/release (one pooled connect
 - poll_request forwarded to ntfy.sh/<sha256(base/topic)> for the iOS app (verified live). `Firebase: no` skips it.
 - The app needs no change: every ntfy / ntfy_device connection has its own 'server' field (default public ntfy.sh, never a user-specific default).
 - Switch Enn's panel connections only together with the panel firmware (molaplan-tools/ntfy-firmware-ohje.md); otherwise commands go to a server the panel doesn't listen to.
+
+## v0.12.0 – web app / PWA at https://molaplan.com (t253u–t255u, R250–R255)
+- Same Flutter app, `flutter build web`. Never use `dart:io` `Platform` in app code: `lib/core/plat.dart` (`Plat.isWeb/isAndroid/…/isFlutterTest`, conditional import). HTTP: `newHttpClient()` (lib/core/http_client.dart). Relay websocket: `connectRelaySocket` (lib/remote/relay_socket.dart; io vs browser WebSocket).
+- `RemoteRouter.remoteOnly` (= Plat.isWeb): home devices only via the bridge (`_NoLocalDriver` locally → `AppOnlyError`, marker `molaplan:app_only` → `TileIssueKind.appOnly` chip). Direct in the browser: `webInternetTypes` ntfy/ntfy_device/price. NetHealth on web = HTTPS GET relay /health; `awayFromLan` always false.
+- Secrets: `platformSecretStore()` → `WebSecretStore` (lib/state/web/secret_store_web.dart: AES-GCM in localStorage `molaplan.s.*`, non-extractable key in IndexedDB `molaplan-keys`). PINs never stored on web. Sign-out on web → `forgetThisBrowser` (wipe + reload). `setBridgeMode(true)` no-op on web; bridge/ESP choices hidden.
+- UI: lib/ui/web_info.dart (WebLimitsCard, showWebLimitsDialog, WebNoticeBanner pref `molaplan.web.notice.v1`, WebLandingPage). main.dart `_WebGate`: signed out → landing, signed in → HomePage.
+- web/: index.html (splash, CSP-safe, no inline script), flutter_bootstrap.js (www → apex redirect, registers sw.js), manifest.json, icons from assets/icon/molaplan-1024.png.
+- Build: `tool/web/build_web.sh` (no CDN, strips *.symbols, copies web-site/tilaa + merges its /tilaa header rules, writes _headers + sw.js via make_sw.py). Deploy: `tool/web/deploy_web.sh [preview]` → Pages project `molaplan` (prod branch main; placeholder deployment e09ada1b… kept). Token inline only.
+- Tests: test/web_app_test.dart (VM), `flutter test --platform chrome test/web` (browser), live: `WEBTEST_MINUTES=10 flutter test tool/web/live_bridge_harness_test.dart` (throw-away account + local bridge + mock device; deleted at the end) + /workspace/molaplan-webtest/{serve.js,login.js,pwa.js} (puppeteer; semantics placeholder click, inputs by aria-label).
+- Cloudflare token cannot edit redirect rules (www 301 is client-side) or Workers routes.

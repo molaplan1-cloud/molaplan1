@@ -1427,6 +1427,10 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s7ebd89c416 => 'Kirjutage alla?';
 
   @override
+  String get sab30063821 =>
+      'See brauser unustab kodud, kaardid ja kodusilla lingi. Sinu andmed jäävad sinu kontole.';
+
+  @override
   String get s6c6165d662 =>
       'Kodud ja plaadid jäävad sellesse seadmesse, kuid muudatused ei jõua enam teie teistesse seadmetesse.';
 
@@ -1889,6 +1893,12 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sceafe9ce2a => 'Fail ei ole pilt';
 
   @override
+  String get s463074e5cc => 'Ainult rakendus';
+
+  @override
+  String get seb8b8d2adf => 'Töötab ainult rakenduses või kodusilla kaudu';
+
+  @override
   String get s3a5c21004e => 'Võrguühenduseta';
 
   @override
@@ -2345,6 +2355,13 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s59622d792b => 'Nimeta ümber';
+
+  @override
+  String get sb616303f5b =>
+      'Brauseris töötab seadme otsing ainult kodusilla kaudu';
+
+  @override
+  String get sef469cadc3 => 'Allpool saate lisada pilv- ja ntfy-seadmeid.';
 
   @override
   String get sa0fccfbcab => 'kodusilla kaudu';
@@ -6041,6 +6058,10 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s1df6e2eaa7 => 'PIN';
 
   @override
+  String get sb52d5c0b5b =>
+      'Brauser ei salvesta kunagi PIN-koodi. Seda küsitakse uuesti järgmisel korral, kui lehekülge avate.';
+
+  @override
   String get secab66c046 => 'Selle seadme meeldejätmine';
 
   @override
@@ -6268,6 +6289,65 @@ class AppLocalizationsEt extends AppLocalizations {
       'Pilt on kahanenud (≤ 200 KB) ja seda hoitakse ainult sellel seadmel.';
 
   @override
+  String get s6b536de0c8 =>
+      'Läbi oma kodu silla: tuled, pistikud, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, kaamera fotod';
+
+  @override
+  String get s082c8c6278 => 'Otse üle interneti: ntfy käsud, elektri hind, ilm';
+
+  @override
+  String get s5a419e551c =>
+      'Samad vaated ja kaardid nagu teie konto teised seadmed';
+
+  @override
+  String get sa8f5c5c719 =>
+      'Ilma kodusillata ei saa brauser koduvõrgu seadmeid juhtida';
+
+  @override
+  String get sb1c4acea71 =>
+      'Ainult rakendus: seadme otsing, Bluetooth, RTSP video, mis toimib kodusillana';
+
+  @override
+  String get s2842696c47 => 'Brauseri versioon on kaugjuhtimispult';
+
+  @override
+  String get s1cbac3d12d =>
+      'Siin saab juhtida ainult seadmeid, milleni on võimalik kaugjuhtimise teel jõuda: kodusilla kaudu (Molaplan arvutil, Android- seadmel või Molaplani sillal), ntfy või pilveteenuse kaudu. Täielikuks kohalikuks juhtimiseks on vaja rakendust Molaplan.';
+
+  @override
+  String get saffec3d1c7 => 'Telli arvutirakendus või valmis Android-seade';
+
+  @override
+  String get s2bf22ca429 =>
+      'Seadet ei saa brauserist kätte. See töötab Molaplani rakenduses või siit, kui kodusild on sisse lülitatud.';
+
+  @override
+  String get sc6e6f17ad4 =>
+      'Brauseri versioon: saad juhtida kaugjuurdepääsetavaid seadmeid. Täielik kontroll rakendusega – veel';
+
+  @override
+  String get sbed5ab99f6 => 'Teie kodu seadmed ja staatus ühes vaates';
+
+  @override
+  String get s1ffc6e9e18 =>
+      'Kontrolltuled, pistikud, soojuspump ja suurte kaartidega alarm';
+
+  @override
+  String get sb18bf27c69 =>
+      'Sama vaade arvutis, tahvelarvutis, telefonis ja brauseris';
+
+  @override
+  String get sdc86a6f82c =>
+      'Seadme paroolid on krüptitud - ainult teie seadmed saavad neid avada';
+
+  @override
+  String get sb2703f9ad3 => 'E- posti koodiga konto loomine';
+
+  @override
+  String get s326d86a618 =>
+      'Nimi pärineb hispaania keelest \"me mola el plan\" - \"kõlab hästi\".';
+
+  @override
   String get sc80648d495 => 'Molaplani näitamine';
 
   @override
@@ -6427,6 +6507,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sec02c7c071 => 'Lisa näidisvaade';
+
+  @override
+  String get s057b871ed2 => 'brauseri versioon';
 
   @override
   String get s522d6584c5 => 'Otsi uuendusi';

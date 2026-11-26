@@ -3,6 +3,7 @@ import 'add_sheet.dart';
 import 'tile_grid.dart';
 import 'tile_visuals.dart' show RoomBackdrop;
 import 'tile_status.dart';
+import 'web_info.dart';
 
 import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
@@ -94,6 +95,7 @@ class ControlView extends StatelessWidget {
           const OfflineBanner(),
           const AwayNoBridgeBanner(),
           const NoAccountBanner(),
+          const WebNoticeBanner(),
           Expanded(
             child: ListenableBuilder(
               listenable: NetHealth.instance,

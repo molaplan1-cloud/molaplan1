@@ -3,9 +3,13 @@
 library;
 
 import 'dart:async';
+
+import '../core/plat.dart';
+
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
 
 import '../core/friendly_error.dart';
 import '../core/net_fallback.dart';
@@ -51,8 +55,8 @@ class NetHealth extends ChangeNotifier {
 
   /// The app-wide instance (replaced in tests).
   static NetHealth instance = NetHealth(
-    internet: Platform.environment.containsKey('FLUTTER_TEST') ? () async => true : null,
-    locals: Platform.environment.containsKey('FLUTTER_TEST') ? () async => const [] : null,
+    internet: Plat.isFlutterTest ? () async => true : null,
+    locals: Plat.isFlutterTest ? () async => const [] : null,
   );
 
   final Future<NetProbe> Function()? _probe;
@@ -82,6 +86,7 @@ class NetHealth extends ChangeNotifier {
   /// Now several independent tests run in parallel; any success = online. DNS-independent TCP
   /// connects catch a broken resolver; the relay is reported separately.
   Future<NetProbe> _defaultProbe() async {
+    if (Plat.isWeb) return _webProbe();
     final results = <String, String>{};
     Future<bool> timed(String name, Future<void> Function() f) async {
       final sw = Stopwatch()..start();
@@ -129,6 +134,22 @@ class NetHealth extends ChangeNotifier {
       }
     }
     return NetProbe(internet: internet, relay: internet ? checks[4] : null, results: results);
+  }
+
+  /// R250: a browser has no sockets or DNS lookups: one HTTPS request to the relay's health
+  /// check (CORS allowed) tells both "online" and "relay up".
+  Future<NetProbe> _webProbe() async {
+    final sw = Stopwatch()..start();
+    try {
+      final r = await http.get(Uri.parse('https://$relayHost/health')).timeout(const Duration(seconds: 8));
+      return NetProbe(
+        internet: true,
+        relay: r.statusCode < 500,
+        results: {'HTTPS $relayHost': 'HTTP ${r.statusCode} ${sw.elapsedMilliseconds} ms'},
+      );
+    } catch (e) {
+      return NetProbe(internet: false, results: {'HTTPS $relayHost': '$e'});
+    }
   }
 
   /// A read failed: if it looks like a network problem, find out whether we are offline.
@@ -197,6 +218,8 @@ class NetHealth extends ChangeNotifier {
 
   /// The device at [host] is on a private LAN that this device is not on (mobile data or another network).
   bool awayFromLan(String host) {
+    // R250: the web app never talks to the LAN itself (the bridge does), so no "away" state.
+    if (Plat.isWeb) return false;
     if (!isPrivateIPv4(host)) return false;
     final l = locals;
     if (l == null) return false;

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:io';
+import '../core/plat.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -14,8 +14,8 @@ class LocalNotify {
   /// Test hook: records notifications instead of showing them.
   static List<(String, String)>? recorded;
 
-  static bool get _android => !kIsWeb && Platform.isAndroid;
-  static bool get _windows => !kIsWeb && Platform.isWindows;
+  static bool get _android => !kIsWeb && Plat.isAndroid;
+  static bool get _windows => !kIsWeb && Plat.isWindows;
   static bool _winReady = false;
 
   static bool get appInBackground {
@@ -80,7 +80,7 @@ class DeepLinks {
   }
 
   static Future<void> init() async {
-    if (kIsWeb || !Platform.isAndroid) return;
+    if (kIsWeb || !Plat.isAndroid) return;
     _ch.setMethodCallHandler((call) async {
       if (call.method == 'open') open('${call.arguments}');
     });

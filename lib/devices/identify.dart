@@ -5,6 +5,7 @@
 library;
 
 import 'dart:async';
+import '../core/plat.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
@@ -409,13 +410,13 @@ Future<String?> tlsCommonName(String ip, int port, {Duration timeout = const Dur
 /// Default gateway on desktops (Windows ipconfig, Linux /proc/net/route).
 Future<String?> desktopGateway() async {
   try {
-    if (Platform.isWindows) {
+    if (Plat.isWindows) {
       final r = await Process.run('ipconfig', const []).timeout(const Duration(seconds: 3));
       final m = RegExp(r'(?:Default Gateway|Oletusyhdyskäytävä)[ .]*:\s*(\d+\.\d+\.\d+\.\d+)')
           .firstMatch('${r.stdout}');
       return m?.group(1);
     }
-    if (Platform.isLinux || Platform.isMacOS) {
+    if (Plat.isLinux || Plat.isMacOS) {
       final f = File('/proc/net/route');
       if (await f.exists()) {
         for (final l in (await f.readAsLines()).skip(1)) {

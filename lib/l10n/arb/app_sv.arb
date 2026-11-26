@@ -12,6 +12,14 @@
   "x-mt": true
  },
  "sd3d9c263ed": "Tjänsten",
+ "sedeaf26f8a": "ntfy meddelande gräns nådde",
+ "@sedeaf26f8a": {
+  "x-mt": true
+ },
+ "s5d151d0815": "ntfy.sh tillåter 250 meddelanden per 12 timmar från ditt hems offentliga IP (alla telefoner, surfplattor, datorer och enhetens egna svar tillsammans). Meddelanden frigörs några minuter - appen frågar nu för staten mindre ofta. En bestående fix: din egen ntfy-server eller ett ntfy-konto med en högre gräns.",
+ "@s5d151d0815": {
+  "x-mt": true
+ },
  "s349ca716f2": "Inget svar från enheten",
  "@s349ca716f2": {
   "x-mt": true
@@ -1778,6 +1786,14 @@
  },
  "sceafe9ce2a": "Filen är inte en bild",
  "@sceafe9ce2a": {
+  "x-mt": true
+ },
+ "s463074e5cc": "App endast",
+ "@s463074e5cc": {
+  "x-mt": true
+ },
+ "seb8b8d2adf": "Fungerar endast i appen eller via en hemmabro",
+ "@seb8b8d2adf": {
   "x-mt": true
  },
  "s3a5c21004e": "Offline",
@@ -5869,6 +5885,10 @@
   "x-mt": true
  },
  "s1df6e2eaa7": "PIN",
+ "sb52d5c0b5b": "Webbläsaren lagrar aldrig PIN. Det frågas igen nästa gång du öppnar sidan.",
+ "@sb52d5c0b5b": {
+  "x-mt": true
+ },
  "secab66c046": "Kom ihåg på denna enhet",
  "@secab66c046": {
   "x-mt": true
@@ -6030,6 +6050,70 @@
  },
  "sabb10f8cb2": "Bilden krymps (≤ 200 KB) och hålls endast på den här enheten.",
  "@sabb10f8cb2": {
+  "x-mt": true
+ },
+ "s6b536de0c8": "Genom din hembro: lampor, pluggar, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, kamera stillbilder",
+ "@s6b536de0c8": {
+  "x-mt": true
+ },
+ "s082c8c6278": "Rakt över internet: ntfy kommandon, elpris, väder",
+ "@s082c8c6278": {
+  "x-mt": true
+ },
+ "s5a419e551c": "Samma vyer och kort som ditt kontos andra enheter",
+ "@s5a419e551c": {
+  "x-mt": true
+ },
+ "sa8f5c5c719": "Utan en hembro kan webbläsaren inte styra hem-nätverksenheter",
+ "@sa8f5c5c719": {
+  "x-mt": true
+ },
+ "sb1c4acea71": "App bara: enhetssökning, Bluetooth, RTSP-video, som fungerar som hemmabro",
+ "@sb1c4acea71": {
+  "x-mt": true
+ },
+ "s2842696c47": "Webbläsarversionen är en fjärrkontroll",
+ "@s2842696c47": {
+  "x-mt": true
+ },
+ "s1cbac3d12d": "Här kontrollerar du bara enheter som kan nås på distans: genom en hembro (Molaplan på en dator, en Android-enhet eller en Molaplan Bridge), ntfy eller en molntjänst. För full lokal kontroll behöver du Molaplan-appen.",
+ "@s1cbac3d12d": {
+  "x-mt": true
+ },
+ "saffec3d1c7": "Beställ PC-appen eller en färdig Android-enhet",
+ "@saffec3d1c7": {
+  "x-mt": true
+ },
+ "s2bf22ca429": "Den här enheten kan inte nås från webbläsaren. Det fungerar i Molaplan-appen, eller härifrån när en hemmabro är på.",
+ "@s2bf22ca429": {
+  "x-mt": true
+ },
+ "sc6e6f17ad4": "Webbläsarversion: du styr fjärrstyrbara enheter. Full kontroll med appen - mer ›",
+ "@sc6e6f17ad4": {
+  "x-mt": true
+ },
+ "sbed5ab99f6": "Ditt hems enheter och status i en vy",
+ "@sbed5ab99f6": {
+  "x-mt": true
+ },
+ "s1ffc6e9e18": "Kontrollera ljus, pluggar, värmepump och larm med stora kort",
+ "@s1ffc6e9e18": {
+  "x-mt": true
+ },
+ "sb18bf27c69": "Samma vy på en PC, tablett, telefon och i webbläsaren",
+ "@sb18bf27c69": {
+  "x-mt": true
+ },
+ "sdc86a6f82c": "Enhetslösenord är krypterade - bara dina enheter kan öppna dem",
+ "@sdc86a6f82c": {
+  "x-mt": true
+ },
+ "sb2703f9ad3": "Skapa ett konto med en e-postkod",
+ "@sb2703f9ad3": {
+  "x-mt": true
+ },
+ "s326d86a618": "Namnet kommer från den spanska \"me mola el plan\" - \"låter bra\".",
+ "@s326d86a618": {
   "x-mt": true
  },
  "sc80648d495": "Visa Molaplan",
@@ -6198,6 +6282,10 @@
   "x-mt": true
  },
  "sec02c7c071": "Lägg till exempelvy",
+ "s057b871ed2": "webbläsare version",
+ "@s057b871ed2": {
+  "x-mt": true
+ },
  "s522d6584c5": "Sök efter uppdateringar",
  "sd178a1d809": "Din egen kontrollterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kameror, WebSocket, TCP och UDP. Utan ett konto stannar alla inställningar på den här enheten.",
  "@sd178a1d809": {
@@ -7002,6 +7090,14 @@
  "@s0694fe4d2b": {
   "x-mt": true
  },
+ "s63971a3ad4": "Fråga staten på högst alla (s)",
+ "@s63971a3ad4": {
+  "x-mt": true
+ },
+ "scf38de4909": "Automatisk statusbegäran oftast (alla enheter återanvänder det senaste svaret). Varje förfrågan är två meddelanden; ntfy.sh tillåter 250 meddelanden / 12 h för hela hemnätverket. Tryck och kommandon frågar samtidigt.",
+ "@scf38de4909": {
+  "x-mt": true
+ },
  "s4313c720cc": "Kommando mall",
  "@s4313c720cc": {
   "x-mt": true
@@ -7414,6 +7510,10 @@
  },
  "s9ed9eb7f92": "✓ ntfy server {p0} svarade och ämne \"{p1}\" är läsbart ({p2} meddelanden i sista timmen). {p3} Inget kommando skickades - tryck på kakeln för att försöka.",
  "@s9ed9eb7f92": {
+  "x-mt": true
+ },
+ "sb9c91fd519": "ntfy: meddelandegräns nått (HTTP 429). Servern tar inga fler meddelanden från detta nätverk (ntfy.sh: 250 meddelanden / 12 h för alla enheter bakom samma offentliga IP, enhetens egna svar också). Nya meddelanden frigör varje minut.",
+ "@sb9c91fd519": {
   "x-mt": true
  },
  "sf0ef0140c3": "Home Assistant",
@@ -8336,24 +8436,16 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "sedeaf26f8a": "ntfy meddelande gräns nådde",
- "@sedeaf26f8a": {
+ "sab30063821": "Den här webbläsaren glömmer hem, kort och hembro länk. Dina data stannar i ditt konto.",
+ "@sab30063821": {
   "x-mt": true
  },
- "s5d151d0815": "ntfy.sh tillåter 250 meddelanden per 12 timmar från ditt hems offentliga IP (alla telefoner, surfplattor, datorer och enhetens egna svar tillsammans). Meddelanden frigörs några minuter - appen frågar nu för staten mindre ofta. En bestående fix: din egen ntfy-server eller ett ntfy-konto med en högre gräns.",
- "@s5d151d0815": {
+ "sb616303f5b": "I webbläsaren fungerar enhetssökning endast genom en hembro",
+ "@sb616303f5b": {
   "x-mt": true
  },
- "s63971a3ad4": "Fråga staten på högst alla (s)",
- "@s63971a3ad4": {
-  "x-mt": true
- },
- "scf38de4909": "Automatisk statusbegäran oftast (alla enheter återanvänder det senaste svaret). Varje förfrågan är två meddelanden; ntfy.sh tillåter 250 meddelanden / 12 h för hela hemnätverket. Tryck och kommandon frågar samtidigt.",
- "@scf38de4909": {
-  "x-mt": true
- },
- "sb9c91fd519": "ntfy: meddelandegräns nått (HTTP 429). Servern tar inga fler meddelanden från detta nätverk (ntfy.sh: 250 meddelanden / 12 h för alla enheter bakom samma offentliga IP, enhetens egna svar också). Nya meddelanden frigör varje minut.",
- "@sb9c91fd519": {
+ "sef469cadc3": "Du kan fortfarande lägga till moln och ntfy enheter nedan.",
+ "@sef469cadc3": {
   "x-mt": true
  }
 }

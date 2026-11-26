@@ -1,0 +1,9 @@
+const bool isWeb = true;
+const bool isAndroid = false;
+const bool isIOS = false;
+const bool isWindows = false;
+const bool isLinux = false;
+const bool isMacOS = false;
+const bool isFlutterTest = false;
+const String operatingSystem = 'web';
+const String localHostname = 'Selain (molaplan.com)';

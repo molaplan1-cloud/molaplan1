@@ -12,6 +12,14 @@
   "x-mt": true
  },
  "sd3d9c263ed": "Teenus",
+ "sedeaf26f8a": "ntff sõnumi limiit on saavutatud",
+ "@sedeaf26f8a": {
+  "x-mt": true
+ },
+ "s5d151d0815": "ntfy.sh võimaldab kodu avalikust IP- st (kõik telefonid, tahvelarvutid, arvutid ja seadme enda vastused koos) 250 sõnumit 12 tunni jooksul. Sõnumid vabanevad iga paari minuti tagant – äpp küsib nüüd olekut harvemini. Püsiv parandus: sinu enda ntfy server või kõrgema limiitiga ntfy konto.",
+ "@s5d151d0815": {
+  "x-mt": true
+ },
  "s349ca716f2": "Seadmelt vastust ei ole",
  "@s349ca716f2": {
   "x-mt": true
@@ -1787,6 +1795,14 @@
  },
  "sceafe9ce2a": "Fail ei ole pilt",
  "@sceafe9ce2a": {
+  "x-mt": true
+ },
+ "s463074e5cc": "Ainult rakendus",
+ "@s463074e5cc": {
+  "x-mt": true
+ },
+ "seb8b8d2adf": "Töötab ainult rakenduses või kodusilla kaudu",
+ "@seb8b8d2adf": {
   "x-mt": true
  },
  "s3a5c21004e": "Võrguühenduseta",
@@ -5896,6 +5912,10 @@
   "x-mt": true
  },
  "s1df6e2eaa7": "PIN",
+ "sb52d5c0b5b": "Brauser ei salvesta kunagi PIN-koodi. Seda küsitakse uuesti järgmisel korral, kui lehekülge avate.",
+ "@sb52d5c0b5b": {
+  "x-mt": true
+ },
  "secab66c046": "Selle seadme meeldejätmine",
  "@secab66c046": {
   "x-mt": true
@@ -6057,6 +6077,70 @@
  },
  "sabb10f8cb2": "Pilt on kahanenud (≤ 200 KB) ja seda hoitakse ainult sellel seadmel.",
  "@sabb10f8cb2": {
+  "x-mt": true
+ },
+ "s6b536de0c8": "Läbi oma kodu silla: tuled, pistikud, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, kaamera fotod",
+ "@s6b536de0c8": {
+  "x-mt": true
+ },
+ "s082c8c6278": "Otse üle interneti: ntfy käsud, elektri hind, ilm",
+ "@s082c8c6278": {
+  "x-mt": true
+ },
+ "s5a419e551c": "Samad vaated ja kaardid nagu teie konto teised seadmed",
+ "@s5a419e551c": {
+  "x-mt": true
+ },
+ "sa8f5c5c719": "Ilma kodusillata ei saa brauser koduvõrgu seadmeid juhtida",
+ "@sa8f5c5c719": {
+  "x-mt": true
+ },
+ "sb1c4acea71": "Ainult rakendus: seadme otsing, Bluetooth, RTSP video, mis toimib kodusillana",
+ "@sb1c4acea71": {
+  "x-mt": true
+ },
+ "s2842696c47": "Brauseri versioon on kaugjuhtimispult",
+ "@s2842696c47": {
+  "x-mt": true
+ },
+ "s1cbac3d12d": "Siin saab juhtida ainult seadmeid, milleni on võimalik kaugjuhtimise teel jõuda: kodusilla kaudu (Molaplan arvutil, Android- seadmel või Molaplani sillal), ntfy või pilveteenuse kaudu. Täielikuks kohalikuks juhtimiseks on vaja rakendust Molaplan.",
+ "@s1cbac3d12d": {
+  "x-mt": true
+ },
+ "saffec3d1c7": "Telli arvutirakendus või valmis Android-seade",
+ "@saffec3d1c7": {
+  "x-mt": true
+ },
+ "s2bf22ca429": "Seadet ei saa brauserist kätte. See töötab Molaplani rakenduses või siit, kui kodusild on sisse lülitatud.",
+ "@s2bf22ca429": {
+  "x-mt": true
+ },
+ "sc6e6f17ad4": "Brauseri versioon: saad juhtida kaugjuurdepääsetavaid seadmeid. Täielik kontroll rakendusega – veel",
+ "@sc6e6f17ad4": {
+  "x-mt": true
+ },
+ "sbed5ab99f6": "Teie kodu seadmed ja staatus ühes vaates",
+ "@sbed5ab99f6": {
+  "x-mt": true
+ },
+ "s1ffc6e9e18": "Kontrolltuled, pistikud, soojuspump ja suurte kaartidega alarm",
+ "@s1ffc6e9e18": {
+  "x-mt": true
+ },
+ "sb18bf27c69": "Sama vaade arvutis, tahvelarvutis, telefonis ja brauseris",
+ "@sb18bf27c69": {
+  "x-mt": true
+ },
+ "sdc86a6f82c": "Seadme paroolid on krüptitud - ainult teie seadmed saavad neid avada",
+ "@sdc86a6f82c": {
+  "x-mt": true
+ },
+ "sb2703f9ad3": "E- posti koodiga konto loomine",
+ "@sb2703f9ad3": {
+  "x-mt": true
+ },
+ "s326d86a618": "Nimi pärineb hispaania keelest \"me mola el plan\" - \"kõlab hästi\".",
+ "@s326d86a618": {
   "x-mt": true
  },
  "sc80648d495": "Molaplani näitamine",
@@ -6225,6 +6309,10 @@
   "x-mt": true
  },
  "sec02c7c071": "Lisa näidisvaade",
+ "s057b871ed2": "brauseri versioon",
+ "@s057b871ed2": {
+  "x-mt": true
+ },
  "s522d6584c5": "Otsi uuendusi",
  "sd178a1d809": "Oma juhtimisterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kaamerad, WebSocket, TCP ja UDP. Ilma kontota jäävad kõik seaded sellesse seadmesse.",
  "@sd178a1d809": {
@@ -7047,6 +7135,14 @@
  "@s0694fe4d2b": {
   "x-mt": true
  },
+ "s63971a3ad4": "Küsi riigilt kõige rohkem igat (s)",
+ "@s63971a3ad4": {
+  "x-mt": true
+ },
+ "scf38de4909": "Automaatne olekunõue kõige sagedamini (kõik seadmed taaskasutavad viimast vastust). Iga päring koosneb kahest kirjast; ntfy.sh lubab 250 sõnumit 12 tunni kohta kogu koduvõrgus. Vajutused ja käsud küsivad korraga.",
+ "@scf38de4909": {
+  "x-mt": true
+ },
  "s4313c720cc": "Käsu mall",
  "@s4313c720cc": {
   "x-mt": true
@@ -7459,6 +7555,10 @@
  },
  "s9ed9eb7f92": "✓ ntfy server {p0} vastas ja teema \"{p1}\" on loetav ({p2} sõnumid viimases tunnis).{p3} Käsku ei saadetud - koputage plaati proovida.",
  "@s9ed9eb7f92": {
+  "x-mt": true
+ },
+ "sb9c91fd519": "'ntfy: sõnumite limiit (HTTP 429). Server ei võta sellest võrgust enam sõnumeid (ntfy.sh: 250 sõnumit 12 tunni kohta kõigi seadmete puhul, mis on sama avaliku IP taga, samuti seadme enda vastused). Uued kirjad vabanevad iga paari minuti tagant''}.'",
+ "@sb9c91fd519": {
   "x-mt": true
  },
  "sf0ef0140c3": "Home Assistant",
@@ -8381,24 +8481,16 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "sedeaf26f8a": "ntff sõnumi limiit on saavutatud",
- "@sedeaf26f8a": {
+ "sab30063821": "See brauser unustab kodud, kaardid ja kodusilla lingi. Sinu andmed jäävad sinu kontole.",
+ "@sab30063821": {
   "x-mt": true
  },
- "s5d151d0815": "ntfy.sh võimaldab kodu avalikust IP- st (kõik telefonid, tahvelarvutid, arvutid ja seadme enda vastused koos) 250 sõnumit 12 tunni jooksul. Sõnumid vabanevad iga paari minuti tagant – äpp küsib nüüd olekut harvemini. Püsiv parandus: sinu enda ntfy server või kõrgema limiitiga ntfy konto.",
- "@s5d151d0815": {
+ "sb616303f5b": "Brauseris töötab seadme otsing ainult kodusilla kaudu",
+ "@sb616303f5b": {
   "x-mt": true
  },
- "s63971a3ad4": "Küsi riigilt kõige rohkem igat (s)",
- "@s63971a3ad4": {
-  "x-mt": true
- },
- "scf38de4909": "Automaatne olekunõue kõige sagedamini (kõik seadmed taaskasutavad viimast vastust). Iga päring koosneb kahest kirjast; ntfy.sh lubab 250 sõnumit 12 tunni kohta kogu koduvõrgus. Vajutused ja käsud küsivad korraga.",
- "@scf38de4909": {
-  "x-mt": true
- },
- "sb9c91fd519": "'ntfy: sõnumite limiit (HTTP 429). Server ei võta sellest võrgust enam sõnumeid (ntfy.sh: 250 sõnumit 12 tunni kohta kõigi seadmete puhul, mis on sama avaliku IP taga, samuti seadme enda vastused). Uued kirjad vabanevad iga paari minuti tagant''}.'",
- "@sb9c91fd519": {
+ "sef469cadc3": "Allpool saate lisada pilv- ja ntfy-seadmeid.",
+ "@sef469cadc3": {
   "x-mt": true
  }
 }

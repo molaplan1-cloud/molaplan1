@@ -121,6 +121,30 @@ jobs:
           name: molaplan-android
           path: dist/*.apk
 
+  # Web app / PWA (molaplan.com): browser tests + build; the zip is a release asset.
+  # Deploy: tool/web/deploy_web.sh from the box (the Cloudflare token is not stored in GitHub).
+  web:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - name: Browser tests (WebCrypto secret store, platform facts)
+        run: flutter test --platform chrome test/web
+      - name: Build the web app
+        run: bash tool/web/build_web.sh
+      - name: Zip
+        run: (cd build/web && zip -qr "$GITHUB_WORKSPACE/molaplan-web.zip" .)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: molaplan-web
+          path: molaplan-web.zip
+
   firmware:
     runs-on: ubuntu-latest
     steps:
@@ -161,7 +185,7 @@ jobs:
 
   release:
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [rls, windows, android, firmware]
+    needs: [rls, windows, android, firmware, web]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -177,7 +201,8 @@ jobs:
           cp artifacts/molaplan-android/molaplan-android-universal.apk dist/
           cp artifacts/molaplan-windows-x64/molaplan-windows-x64.zip dist/
           cp artifacts/molaplan-bridge/* dist/
-          (cd dist && sha256sum molaplan-android-arm64.apk molaplan-android-universal.apk molaplan-windows-x64.zip molaplan-bridge-esp32*.bin molaplan-bridge-esp32.manifest.json > SHA256SUMS)
+          cp artifacts/molaplan-web/molaplan-web.zip dist/
+          (cd dist && sha256sum molaplan-android-arm64.apk molaplan-android-universal.apk molaplan-windows-x64.zip molaplan-bridge-esp32*.bin molaplan-bridge-esp32.manifest.json molaplan-web.zip > SHA256SUMS)
           cat dist/SHA256SUMS
           notes="docs/release-notes/${GITHUB_REF_NAME}.md"
           if [ -f "$notes" ]; then cp "$notes" release-notes.md; else echo "Molaplan ${GITHUB_REF_NAME}" > release-notes.md; fi
@@ -191,4 +216,5 @@ jobs:
             dist/molaplan-bridge-esp32.bin
             dist/molaplan-bridge-esp32-factory.bin
             dist/molaplan-bridge-esp32.manifest.json
+            dist/molaplan-web.zip
             dist/SHA256SUMS

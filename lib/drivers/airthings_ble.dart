@@ -4,7 +4,7 @@
 library;
 
 import 'dart:async';
-import 'dart:io';
+import '../core/plat.dart';
 
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
@@ -13,7 +13,7 @@ import 'driver.dart';
 
 /// Installs [waveBleRead] on Android; elsewhere Wave sensors are read through the bridge.
 void initAirthingsBle() {
-  if (!Platform.isAndroid) return;
+  if (!Plat.isAndroid) return;
   waveBleRead = _read;
 }
 

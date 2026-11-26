@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:typed_data';
 
 import '../core/friendly_error.dart';
+import '../core/plat.dart';
 import '../drivers/camera_driver.dart';
 import '../drivers/driver.dart';
 import '../drivers/registry.dart';
@@ -12,6 +13,18 @@ import 'remote_client.dart';
 /// Where requests currently go. [home] = straight to the devices on the LAN,
 /// [remote] = through the home bridge, [offline] = neither works.
 enum LinkStatus { home, remote, offline }
+
+/// R250: the web app cannot reach home-network devices itself (browsers block plain-HTTP LAN
+/// requests, raw TCP/UDP, Modbus, mDNS and Bluetooth). Such a tile works only in the Molaplan
+/// app or through the user's home bridge. [marker] is matched by the tile status.
+class AppOnlyError implements Exception {
+  AppOnlyError([this.detail = '']);
+  final String detail;
+  static const marker = 'molaplan:app_only';
+  @override
+  String toString() =>
+      '$marker – works only in the Molaplan app or through a home bridge${detail.isEmpty ? '' : ' ($detail)'}';
+}
 
 bool isNetworkError(Object e) {
   if (e is TimeoutException) return true;
@@ -30,6 +43,10 @@ class RemoteRouter {
   });
 
   RemoteClient? client;
+
+  /// R250: no direct LAN access (the web app): everything goes through the home bridge; without
+  /// a bridge a home-network device reports [AppOnlyError].
+  bool remoteOnly = Plat.isWeb;
   final Duration localTimeout;
   final Duration remoteHold;
   final int remotePollSeconds;
@@ -55,7 +72,7 @@ class RemoteRouter {
   final _localHere = <String, DateTime>{};
 
   bool get preferRemote =>
-      enabled && (awayFromBridge || (_remoteUntil != null && DateTime.now().isBefore(_remoteUntil!)));
+      enabled && (remoteOnly || awayFromBridge || (_remoteUntil != null && DateTime.now().isBefore(_remoteUntil!)));
 
   /// t232u: result of the network check (see RemoteState.checkHomeNetwork).
   void applySameNetwork(bool v) {
@@ -87,6 +104,10 @@ class RemoteRouter {
 
   Future<T> run<T>(Future<T> Function() local, Future<T> Function(RemoteClient) remote, {String? key}) async {
     final c = client;
+    if (remoteOnly) {
+      if (c == null) throw AppOnlyError('no bridge');
+      return _viaRemote(c, remote, null);
+    }
     if (c == null) return local();
     if (awayFromBridge) {
       // Not on the bridge's network: the bridge first. A device the bridge cannot reach but this
@@ -125,7 +146,7 @@ class RemoteRouter {
   /// Straight through the relay (camera frames while away).
   Future<T> viaRemote<T>(Future<T> Function(RemoteClient) remote) {
     final c = client;
-    if (c == null) return Future.error(RemoteUnavailable('not_paired'));
+    if (c == null) return Future.error(remoteOnly ? AppOnlyError('no bridge') : RemoteUnavailable('not_paired'));
     return _viaRemote(c, remote, null);
   }
 
@@ -176,10 +197,21 @@ class RemoteRouter {
   /// Internet services that work the same everywhere: never through the home bridge.
   static const internetOnlyTypes = {'ntfy', 'ntfy_device', 'price', 'airthings'};
 
+  /// R250: types the web app could talk to itself (none for now: Home Assistant REST needs CORS
+  /// set up in HA, so it goes through the bridge like everything else).
+  static const webDirectTypes = <String>{};
+
+  /// Internet services the browser reaches itself (CORS allowed): ntfy and the price feed.
+  /// Others (e.g. the Airthings cloud) go through the bridge in the web app.
+  static const webInternetTypes = {'ntfy', 'ntfy_device', 'price'};
+
   /// Wraps a connection's driver so it can go through the relay.
   Driver wrap(ConnectionConfig c) {
     if (c.type == 'camera') return RoutedCameraDriver(c, this);
-    if (internetOnlyTypes.contains(c.type)) return createDriver(c);
+    if (internetOnlyTypes.contains(c.type) && (!remoteOnly || webInternetTypes.contains(c.type))) {
+      return createDriver(c);
+    }
+    if (remoteOnly && !webDirectTypes.contains(c.type)) return RoutedDriver(_NoLocalDriver(c), this);
     // t159u: a Bluetooth sensor read by the home bridge (it is the one near the sensor).
     if (c.settings['viaBridge'] == true && client != null) return BridgeOnlyDriver(createDriver(c), this);
     return RoutedDriver(createDriver(c), this);
@@ -187,6 +219,19 @@ class RemoteRouter {
 }
 
 Map<String, dynamic> _wire(ConnectionConfig c) => c.toJson(includeSecrets: true);
+
+/// R250: the "local" side in the web app – never touches the network.
+class _NoLocalDriver extends Driver {
+  _NoLocalDriver(super.config);
+  @override
+  Future<Object?> read(Map<String, dynamic> spec) => Future.error(AppOnlyError(config.type));
+  @override
+  Future<Object?> send(Map<String, dynamic> spec, {Object? value}) => Future.error(AppOnlyError(config.type));
+  @override
+  Future<String> test() => Future.error(AppOnlyError(config.type));
+  @override
+  Stream<Object?>? watch(Map<String, dynamic> spec) => null;
+}
 
 /// Always through the home bridge (e.g. Airthings Wave over the bridge's Bluetooth).
 class BridgeOnlyDriver extends Driver {
@@ -353,6 +398,9 @@ class RoutedCameraDriver extends CameraDriver {
 
   @override
   Stream<Uint8List> mjpeg(String path) {
+    if (router.remoteOnly) {
+      return router.enabled ? _remoteFrames(path) : Stream<Uint8List>.error(AppOnlyError('camera'));
+    }
     if (!router.enabled) return super.mjpeg(path);
     if (router.preferRemote) return _remoteFrames(path);
     late StreamController<Uint8List> out;

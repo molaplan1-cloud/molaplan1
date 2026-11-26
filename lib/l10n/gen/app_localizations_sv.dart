@@ -1430,6 +1430,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s7ebd89c416 => 'Logga ut?';
 
   @override
+  String get sab30063821 =>
+      'Den här webbläsaren glömmer hem, kort och hembro länk. Dina data stannar i ditt konto.';
+
+  @override
   String get s6c6165d662 =>
       'Hem och plattor stannar på den här enheten, men ändrar inte längre dina andra enheter.';
 
@@ -1892,6 +1896,12 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sceafe9ce2a => 'Filen är inte en bild';
 
   @override
+  String get s463074e5cc => 'App endast';
+
+  @override
+  String get seb8b8d2adf => 'Fungerar endast i appen eller via en hemmabro';
+
+  @override
   String get s3a5c21004e => 'Offline';
 
   @override
@@ -2347,6 +2357,14 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s59622d792b => 'Byt namn';
+
+  @override
+  String get sb616303f5b =>
+      'I webbläsaren fungerar enhetssökning endast genom en hembro';
+
+  @override
+  String get sef469cadc3 =>
+      'Du kan fortfarande lägga till moln och ntfy enheter nedan.';
 
   @override
   String get sa0fccfbcab => 'via hembron';
@@ -6052,6 +6070,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s1df6e2eaa7 => 'PIN';
 
   @override
+  String get sb52d5c0b5b =>
+      'Webbläsaren lagrar aldrig PIN. Det frågas igen nästa gång du öppnar sidan.';
+
+  @override
   String get secab66c046 => 'Kom ihåg på denna enhet';
 
   @override
@@ -6279,6 +6301,64 @@ class AppLocalizationsSv extends AppLocalizations {
       'Bilden krymps (≤ 200 KB) och hålls endast på den här enheten.';
 
   @override
+  String get s6b536de0c8 =>
+      'Genom din hembro: lampor, pluggar, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, kamera stillbilder';
+
+  @override
+  String get s082c8c6278 => 'Rakt över internet: ntfy kommandon, elpris, väder';
+
+  @override
+  String get s5a419e551c => 'Samma vyer och kort som ditt kontos andra enheter';
+
+  @override
+  String get sa8f5c5c719 =>
+      'Utan en hembro kan webbläsaren inte styra hem-nätverksenheter';
+
+  @override
+  String get sb1c4acea71 =>
+      'App bara: enhetssökning, Bluetooth, RTSP-video, som fungerar som hemmabro';
+
+  @override
+  String get s2842696c47 => 'Webbläsarversionen är en fjärrkontroll';
+
+  @override
+  String get s1cbac3d12d =>
+      'Här kontrollerar du bara enheter som kan nås på distans: genom en hembro (Molaplan på en dator, en Android-enhet eller en Molaplan Bridge), ntfy eller en molntjänst. För full lokal kontroll behöver du Molaplan-appen.';
+
+  @override
+  String get saffec3d1c7 => 'Beställ PC-appen eller en färdig Android-enhet';
+
+  @override
+  String get s2bf22ca429 =>
+      'Den här enheten kan inte nås från webbläsaren. Det fungerar i Molaplan-appen, eller härifrån när en hemmabro är på.';
+
+  @override
+  String get sc6e6f17ad4 =>
+      'Webbläsarversion: du styr fjärrstyrbara enheter. Full kontroll med appen - mer ›';
+
+  @override
+  String get sbed5ab99f6 => 'Ditt hems enheter och status i en vy';
+
+  @override
+  String get s1ffc6e9e18 =>
+      'Kontrollera ljus, pluggar, värmepump och larm med stora kort';
+
+  @override
+  String get sb18bf27c69 =>
+      'Samma vy på en PC, tablett, telefon och i webbläsaren';
+
+  @override
+  String get sdc86a6f82c =>
+      'Enhetslösenord är krypterade - bara dina enheter kan öppna dem';
+
+  @override
+  String get sb2703f9ad3 => 'Skapa ett konto med en e-postkod';
+
+  @override
+  String get s326d86a618 =>
+      'Namnet kommer från den spanska \"me mola el plan\" - \"låter bra\".';
+
+  @override
   String get sc80648d495 => 'Visa Molaplan';
 
   @override
@@ -6437,6 +6517,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sec02c7c071 => 'Lägg till exempelvy';
+
+  @override
+  String get s057b871ed2 => 'webbläsare version';
 
   @override
   String get s522d6584c5 => 'Sök efter uppdateringar';

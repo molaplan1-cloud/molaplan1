@@ -2,7 +2,7 @@
 /// (or the bridge's network through the relay when away) and offers one-tap adds.
 library;
 
-import 'dart:io';
+import '../core/plat.dart';
 
 import 'package:material_ui/material_ui.dart';
 
@@ -15,12 +15,13 @@ import 'add_device_wizard.dart';
 import 'app_scope.dart';
 import 'modbus_scan_page.dart';
 import 'template_gallery.dart';
+import 'web_info.dart';
 
 /// Scan function (test hook): returns hits and whether the bridge was asked.
 typedef NetworkScanner = Future<(List<ScanHit>, bool viaBridge)> Function(BuildContext context);
 
 /// Starts the scan when the page opens (off in widget tests: they tap the button).
-bool autoNetworkScan = !Platform.environment.containsKey('FLUTTER_TEST');
+bool autoNetworkScan = !Plat.isFlutterTest;
 
 Future<(List<ScanHit>, bool)> defaultNetworkScan(BuildContext context) async {
   final st = AppScope.read(context);
@@ -163,8 +164,11 @@ class _NetworkScanCardState extends State<NetworkScanCard> {
   @override
   void initState() {
     super.initState();
-    if (autoNetworkScan) WidgetsBinding.instance.addPostFrameCallback((_) => _scan());
+    if (autoNetworkScan && !_webWithoutBridge) WidgetsBinding.instance.addPostFrameCallback((_) => _scan());
   }
+
+  /// R250: a browser cannot scan the network itself – only the home bridge can.
+  bool get _webWithoutBridge => Plat.isWeb && widget.scanner == null && !AppScope.read(context).remote.isPaired;
 
   Future<void> _scan() async {
     if (scanning || !mounted) return;
@@ -338,6 +342,18 @@ class _NetworkScanCardState extends State<NetworkScanCard> {
   @override
   Widget build(BuildContext context) {
     final st = AppScope.of(context);
+    if (_webWithoutBridge) {
+      return Card(
+        key: const ValueKey('scan-web-app-only'),
+        margin: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+        child: ListTile(
+          leading: const Icon(Icons.devices_other),
+          title: Text(tx(context, 'Laitehaku toimii selaimessa vain kotisillan kautta', 'In the browser, device search works only through a home bridge')),
+          subtitle: Text(tx(context, 'Voit silti lisätä pilvi- ja ntfy-laitteita alta.', 'You can still add cloud and ntfy devices below.')),
+          onTap: () => showWebLimitsDialog(context),
+        ),
+      );
+    }
     final adv = st.config.advanced;
     final known = hits.where((h) => h.known).toList();
     final unknown = hits.where((h) => !h.known).toList();

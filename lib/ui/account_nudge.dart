@@ -1,4 +1,4 @@
-import 'dart:io' show Platform;
+import '../core/plat.dart';
 
 import 'package:material_ui/material_ui.dart';
 
@@ -8,7 +8,7 @@ import 'app_scope.dart';
 /// Account is optional but encouraged (t115u/t116u): a welcome screen on first launch, a small
 /// persistent banner while there is no account, and a friendly prompt after every device add.
 /// All of it disappears once an account exists. Off in widget tests unless a test turns it on.
-bool accountNudges = !Platform.environment.containsKey('FLUTTER_TEST');
+bool accountNudges = !Plat.isFlutterTest;
 
 bool needsAccountNudge(BuildContext context) => accountNudges && !AppScope.of(context).account.signedIn;
 

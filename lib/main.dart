@@ -1,4 +1,5 @@
 import 'drivers/airthings_ble.dart';
+import 'core/plat.dart';
 import 'state/net_health.dart';
 
 import 'dart:async';
@@ -15,6 +16,8 @@ import 'core/net_fallback.dart';
 import 'prices/prices.dart';
 import 'state/app_state.dart';
 import 'state/storage.dart';
+import 'state/secret_store_factory.dart';
+import 'state/browser_reset.dart';
 import 'ui/rtsp_view.dart';
 import 'ui/app_scope.dart';
 import 'ui/desktop_tray.dart';
@@ -23,6 +26,7 @@ import 'ui/notify.dart';
 import 'ui/push_listener.dart';
 import 'ui/remote_pages.dart';
 import 'ui/theme.dart';
+import 'ui/web_info.dart';
 import 'l10n/gen/app_localizations.dart';
 
 Future<void> main() async {
@@ -33,7 +37,7 @@ Future<void> main() async {
   initAirthingsBle();
   initVideo();
   // t219u: a failed real request may switch the process to any internet-capable network.
-  if (Platform.isAndroid) {
+  if (Plat.isAndroid) {
     const net = MethodChannel('molaplan/net');
     NetFallback.ensure = () async {
       final m = await net.invokeMapMethod<String, dynamic>('ensureInternet') ?? const {};
@@ -52,17 +56,19 @@ Future<void> main() async {
   NetHealth.instance.watchLan();
   final state = AppState(
     configStore: PrefsConfigStore(),
-    secretStore: SecureSecretStore(),
+    secretStore: platformSecretStore(),
     energyStore: PrefsConfigStore('molaplan.energy.v1'),
     historyStore: PrefsConfigStore('molaplan.history.v1'),
-    imageDir: () async => Directory('${(await getApplicationSupportDirectory()).path}/tile_images'),
+    // R250: the browser keeps tile pictures in memory only (fetched from the account again).
+    imageDir: Plat.isWeb ? null : () async => Directory('${(await getApplicationSupportDirectory()).path}/tile_images'),
   );
   state.account.autoSync = true; // background sync when signed in
   state.shareAuto = true; // R215: shares / invites refresh in the background
   state.remote.autoNetworkCheck = true; // t232u: verify 'Kotona' against the bridge's own LAN
   await state.load();
-  if (state.config.bridgeMode) await keepScreenOn(true);
-  state.update.autoCheck = true;
+  if (state.config.bridgeMode && !Plat.isWeb) await keepScreenOn(true);
+  // The web app updates itself on reload (service worker); no installer downloads.
+  state.update.autoCheck = !Plat.isWeb;
   // t128u: notification taps (molaplan://tile/ID), the Windows tray, Android permission.
   await DeepLinks.init();
   await DesktopTray.init(state);
@@ -142,8 +148,50 @@ class _MolaplanAppState extends State<MolaplanApp> {
           GlobalCupertinoLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
-        home: PushListener(navigator: navigatorKey, child: const HomePage()),
+        // R253: on molaplan.com a logged-out visitor sees the intro + sign-in, not an empty app.
+        home: Plat.isWeb
+            ? _WebGate(state: state)
+            : PushListener(navigator: navigatorKey, child: const HomePage()),
       ),
     );
   }
+}
+
+/// R254: molaplan.com – the intro + sign-in while signed out, the app once signed in (the sign-in
+/// page opened from the intro closes by itself). Signing out wipes this browser's data.
+class _WebGate extends StatefulWidget {
+  const _WebGate({required this.state});
+  final AppState state;
+  @override
+  State<_WebGate> createState() => _WebGateState();
+}
+
+class _WebGateState extends State<_WebGate> {
+  late bool _in = widget.state.account.signedIn;
+
+  @override
+  void initState() {
+    super.initState();
+    widget.state.account.addListener(_changed);
+  }
+
+  @override
+  void dispose() {
+    widget.state.account.removeListener(_changed);
+    super.dispose();
+  }
+
+  void _changed() {
+    final now = widget.state.account.signedIn;
+    if (now == _in) return;
+    setState(() => _in = now);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      navigatorKey.currentState?.popUntil((r) => r.isFirst);
+      if (!now) unawaited(forgetThisBrowser(widget.state));
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) =>
+      _in ? PushListener(navigator: navigatorKey, child: const HomePage()) : const WebLandingPage();
 }

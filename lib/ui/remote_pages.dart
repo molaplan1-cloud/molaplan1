@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:io';
+import '../core/plat.dart';
 
 import 'package:material_ui/material_ui.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
@@ -17,7 +17,7 @@ import 'app_scope.dart';
 import 'error_box.dart';
 import 'guides_page.dart';
 
-bool get canScanQr => !Platform.isWindows && !Platform.isLinux && !Platform.isMacOS;
+bool get canScanQr => !Plat.isWeb && !Plat.isWindows && !Plat.isLinux && !Plat.isMacOS;
 
 Future<void> keepScreenOn(bool on) async {
   try {
@@ -134,7 +134,9 @@ Widget remoteChoices(BuildContext context, {bool showOthers = true}) => Column(
       ),
       onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const PairPage())),
     ),
-    _ChoiceCard(
+    // R250: a browser tab cannot be the home bridge or set up a bridge device on the LAN.
+    if (!Plat.isWeb)
+      _ChoiceCard(
       key: const ValueKey('remote-bridge'),
       icon: Icons.router_outlined,
       title: tx(context, 'Tee tästä laitteesta kotisilta', 'Make this device the home bridge'),
@@ -151,7 +153,8 @@ Widget remoteChoices(BuildContext context, {bool showOthers = true}) => Column(
       },
     ),
     // v0.8.0: a Molaplan Bridge device (ESP32 / Athom IR/RF) as the home bridge.
-    _ChoiceCard(
+    if (!Plat.isWeb)
+      _ChoiceCard(
       key: const ValueKey('remote-add-esp'),
       icon: Icons.settings_input_antenna,
       title: tx(context, 'Lisää kotisilta (Molaplan Bridge -laite)', 'Add home bridge (Molaplan Bridge device)'),

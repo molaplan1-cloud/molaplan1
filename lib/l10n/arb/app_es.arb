@@ -12,6 +12,14 @@
   "x-mt": true
  },
  "sd3d9c263ed": "El servicio",
+ "sedeaf26f8a": "ntfy límite de mensaje alcanzado",
+ "@sedeaf26f8a": {
+  "x-mt": true
+ },
+ "s5d151d0815": "ntfy.sh permite 250 mensajes por cada 12 horas de la IP pública de su hogar (todos los teléfonos, tabletas, PCs y las propias respuestas del dispositivo juntos). Mensajes gratuitos cada pocos minutos – la aplicación ahora pide el estado menos a menudo. Una solución duradera: su propio servidor ntfy o una cuenta ntfy con un límite superior.",
+ "@s5d151d0815": {
+  "x-mt": true
+ },
  "s349ca716f2": "No hay respuesta desde el dispositivo",
  "@s349ca716f2": {
   "x-mt": true
@@ -1778,6 +1786,14 @@
  },
  "sceafe9ce2a": "El archivo no es una imagen",
  "@sceafe9ce2a": {
+  "x-mt": true
+ },
+ "s463074e5cc": "App only",
+ "@s463074e5cc": {
+  "x-mt": true
+ },
+ "seb8b8d2adf": "Funciona sólo en la aplicación o a través de un puente casero",
+ "@seb8b8d2adf": {
   "x-mt": true
  },
  "s3a5c21004e": "Sin conexión",
@@ -5860,6 +5876,10 @@
   "x-mt": true
  },
  "s1df6e2eaa7": "PIN",
+ "sb52d5c0b5b": "El navegador nunca almacena el PIN. Se le pregunta de nuevo la próxima vez que abra la página.",
+ "@sb52d5c0b5b": {
+  "x-mt": true
+ },
  "secab66c046": "Recuerde en este dispositivo",
  "@secab66c046": {
   "x-mt": true
@@ -6021,6 +6041,70 @@
  },
  "sabb10f8cb2": "La imagen es arrugada (≤ 200 KB) y se mantiene en este dispositivo solamente.",
  "@sabb10f8cb2": {
+  "x-mt": true
+ },
+ "s6b536de0c8": "A través de su puente de casa: luces, enchufes, Asistente de casa, Shelly, Tasmota, ESPHome, Modbus, cámaras de quietud",
+ "@s6b536de0c8": {
+  "x-mt": true
+ },
+ "s082c8c6278": "Justo sobre el Internet: comandos de ntfy, precio de la electricidad, tiempo",
+ "@s082c8c6278": {
+  "x-mt": true
+ },
+ "s5a419e551c": "Las mismas vistas y tarjetas que los otros dispositivos de su cuenta",
+ "@s5a419e551c": {
+  "x-mt": true
+ },
+ "sa8f5c5c719": "Sin un puente casero, el navegador no puede controlar los dispositivos de red doméstica",
+ "@sa8f5c5c719": {
+  "x-mt": true
+ },
+ "sb1c4acea71": "Aplicación solamente: búsqueda de dispositivos, Bluetooth, vídeo RTSP, actuando como puente casero",
+ "@sb1c4acea71": {
+  "x-mt": true
+ },
+ "s2842696c47": "La versión del navegador es un control remoto",
+ "@s2842696c47": {
+  "x-mt": true
+ },
+ "s1cbac3d12d": "Aquí usted controla sólo los dispositivos que se pueden alcanzar de forma remota: a través de un puente casero (Molaplan en un PC, un dispositivo Android o un puente Molaplan), ntfy o un servicio en la nube. Para el control local completo usted necesita la aplicación Molaplan.",
+ "@s1cbac3d12d": {
+  "x-mt": true
+ },
+ "saffec3d1c7": "Ordene la aplicación PC o un dispositivo Android listo",
+ "@saffec3d1c7": {
+  "x-mt": true
+ },
+ "s2bf22ca429": "Este dispositivo no se puede alcanzar desde el navegador. Funciona en la aplicación Molaplan, o desde aquí cuando se encuentra un puente casero.",
+ "@s2bf22ca429": {
+  "x-mt": true
+ },
+ "sc6e6f17ad4": "Versión del navegador: controla dispositivos de alcance remoto. Control completo con la aplicación – más ›",
+ "@sc6e6f17ad4": {
+  "x-mt": true
+ },
+ "sbed5ab99f6": "Los dispositivos y el estado de su casa en una sola vista",
+ "@sbed5ab99f6": {
+  "x-mt": true
+ },
+ "s1ffc6e9e18": "Control de luces, enchufes, bomba de calor y alarma con grandes tarjetas",
+ "@s1ffc6e9e18": {
+  "x-mt": true
+ },
+ "sb18bf27c69": "La misma vista en un PC, tableta, teléfono y en el navegador",
+ "@sb18bf27c69": {
+  "x-mt": true
+ },
+ "sdc86a6f82c": "Las contraseñas de dispositivo están encriptadas – sólo sus dispositivos pueden abrirlas",
+ "@sdc86a6f82c": {
+  "x-mt": true
+ },
+ "sb2703f9ad3": "Crear una cuenta con un código de correo electrónico",
+ "@sb2703f9ad3": {
+  "x-mt": true
+ },
+ "s326d86a618": "El nombre viene del español \"me mola el plan\" – \"sonidos buenos\".",
+ "@s326d86a618": {
   "x-mt": true
  },
  "sc80648d495": "Show Molaplan",
@@ -6186,6 +6270,10 @@
   "x-mt": true
  },
  "sec02c7c071": "Añadir vista de ejemplo",
+ "s057b871ed2": "Versión del navegador",
+ "@s057b871ed2": {
+  "x-mt": true
+ },
  "s522d6584c5": "Buscar actualizaciones",
  "sd178a1d809": "Su propia terminal de control: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP y UDP. Sin una cuenta, todos los ajustes permanecen en este dispositivo.",
  "@sd178a1d809": {
@@ -6990,6 +7078,14 @@
  "@s0694fe4d2b": {
   "x-mt": true
  },
+ "s63971a3ad4": "Pregunte al estado en la mayoría de cada (s)",
+ "@s63971a3ad4": {
+  "x-mt": true
+ },
+ "scf38de4909": "Solicitud de estado automático a lo sumo (todos los dispositivos reutilizan la última respuesta). Cada solicitud es dos mensajes; ntfy.sh permite 250 mensajes / 12 h para toda la red de la casa.",
+ "@scf38de4909": {
+  "x-mt": true
+ },
  "s4313c720cc": "Plantilla de comandos",
  "@s4313c720cc": {
   "x-mt": true
@@ -7402,6 +7498,10 @@
  },
  "s9ed9eb7f92": "✓ ntfy server {p0} contestado y el tema \"{p1}\" es legible ({p2} mensajes en la última hora).{p3} No se envió ningún comando – toque la ficha para probar.",
  "@s9ed9eb7f92": {
+  "x-mt": true
+ },
+ "sb9c91fd519": "ntfy: límite de mensaje alcanzado (HTTP 429). El servidor no toma más mensajes de esta red (ntfy.sh: 250 mensajes / 12 h para todos los dispositivos detrás de la misma IP pública, las propias respuestas del dispositivo también).",
+ "@sb9c91fd519": {
   "x-mt": true
  },
  "sf0ef0140c3": "Home Assistant",
@@ -8318,24 +8418,16 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "sedeaf26f8a": "ntfy límite de mensaje alcanzado",
- "@sedeaf26f8a": {
+ "sab30063821": "Este navegador se olvida de las casas, tarjetas y enlace de puente casero. Sus datos se quedan en su cuenta.",
+ "@sab30063821": {
   "x-mt": true
  },
- "s5d151d0815": "ntfy.sh permite 250 mensajes por cada 12 horas de la IP pública de su hogar (todos los teléfonos, tabletas, PCs y las propias respuestas del dispositivo juntos). Mensajes gratuitos cada pocos minutos – la aplicación ahora pide el estado menos a menudo. Una solución duradera: su propio servidor ntfy o una cuenta ntfy con un límite superior.",
- "@s5d151d0815": {
+ "sb616303f5b": "En el navegador, la búsqueda de dispositivos funciona sólo a través de un puente casero",
+ "@sb616303f5b": {
   "x-mt": true
  },
- "s63971a3ad4": "Pregunte al estado en la mayoría de cada (s)",
- "@s63971a3ad4": {
-  "x-mt": true
- },
- "scf38de4909": "Solicitud de estado automático a lo sumo (todos los dispositivos reutilizan la última respuesta). Cada solicitud es dos mensajes; ntfy.sh permite 250 mensajes / 12 h para toda la red de la casa.",
- "@scf38de4909": {
-  "x-mt": true
- },
- "sb9c91fd519": "ntfy: límite de mensaje alcanzado (HTTP 429). El servidor no toma más mensajes de esta red (ntfy.sh: 250 mensajes / 12 h para todos los dispositivos detrás de la misma IP pública, las propias respuestas del dispositivo también).",
- "@sb9c91fd519": {
+ "sef469cadc3": "Aún puedes añadir dispositivos cloud y ntfy abajo.",
+ "@sef469cadc3": {
   "x-mt": true
  }
 }

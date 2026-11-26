@@ -1425,6 +1425,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s7ebd89c416 => 'Sign out?';
 
   @override
+  String get sab30063821 =>
+      'This browser forgets the homes, tiles and home bridge link. Your data stays in your account.';
+
+  @override
   String get s6c6165d662 =>
       'Homes and tiles stay on this device, but changes no longer reach your other devices.';
 
@@ -1885,6 +1889,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sceafe9ce2a => 'The file is not a picture';
 
   @override
+  String get s463074e5cc => 'App only';
+
+  @override
+  String get seb8b8d2adf => 'Works only in the app or via a home bridge';
+
+  @override
   String get s3a5c21004e => 'Offline';
 
   @override
@@ -2340,6 +2350,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s59622d792b => 'Rename';
+
+  @override
+  String get sb616303f5b =>
+      'In the browser, device search works only through a home bridge';
+
+  @override
+  String get sef469cadc3 => 'You can still add cloud and ntfy devices below.';
 
   @override
   String get sa0fccfbcab => 'via the home bridge';
@@ -6037,6 +6054,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s1df6e2eaa7 => 'PIN';
 
   @override
+  String get sb52d5c0b5b =>
+      'The browser never stores the PIN. It is asked again the next time you open the page.';
+
+  @override
   String get secab66c046 => 'Remember on this device';
 
   @override
@@ -6265,6 +6286,66 @@ class AppLocalizationsEn extends AppLocalizations {
       'The picture is shrunk (≤ 200 KB) and kept on this device only.';
 
   @override
+  String get s6b536de0c8 =>
+      'Through your home bridge: lights, plugs, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, camera stills';
+
+  @override
+  String get s082c8c6278 =>
+      'Straight over the internet: ntfy commands, electricity price, weather';
+
+  @override
+  String get s5a419e551c =>
+      'The same views and tiles as your account\'s other devices';
+
+  @override
+  String get sa8f5c5c719 =>
+      'Without a home bridge the browser cannot control home-network devices';
+
+  @override
+  String get sb1c4acea71 =>
+      'App only: device search, Bluetooth, RTSP video, acting as the home bridge';
+
+  @override
+  String get s2842696c47 => 'The browser version is a remote control';
+
+  @override
+  String get s1cbac3d12d =>
+      'Here you control only devices that can be reached remotely: through a home bridge (Molaplan on a PC, an Android device or a Molaplan Bridge), ntfy or a cloud service. For full local control you need the Molaplan app.';
+
+  @override
+  String get saffec3d1c7 => 'Order the PC app or a ready Android device';
+
+  @override
+  String get s2bf22ca429 =>
+      'This device cannot be reached from the browser. It works in the Molaplan app, or from here when a home bridge is on.';
+
+  @override
+  String get sc6e6f17ad4 =>
+      'Browser version: you control remotely reachable devices. Full control with the app – more ›';
+
+  @override
+  String get sbed5ab99f6 => 'Your home\'s devices and status in one view';
+
+  @override
+  String get s1ffc6e9e18 =>
+      'Control lights, plugs, heat pump and alarm with big tiles';
+
+  @override
+  String get sb18bf27c69 =>
+      'The same view on a PC, tablet, phone and in the browser';
+
+  @override
+  String get sdc86a6f82c =>
+      'Device passwords are encrypted – only your devices can open them';
+
+  @override
+  String get sb2703f9ad3 => 'Create an account with an email code';
+
+  @override
+  String get s326d86a618 =>
+      'The name comes from the Spanish \"me mola el plan\" – \"sounds good\".';
+
+  @override
   String get sc80648d495 => 'Show Molaplan';
 
   @override
@@ -6423,6 +6504,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sec02c7c071 => 'Add example dashboard';
+
+  @override
+  String get s057b871ed2 => 'browser version';
 
   @override
   String get s522d6584c5 => 'Check for updates';

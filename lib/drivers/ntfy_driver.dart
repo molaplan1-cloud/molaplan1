@@ -1,9 +1,10 @@
 import 'dart:async';
+import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'dart:io';
 
 import '../core/fields.dart';
 import 'driver.dart';
+import '../core/http_client.dart';
 
 /// One ntfy message (https://docs.ntfy.sh/subscribe/api/).
 class NtfyMessage {
@@ -196,7 +197,7 @@ class NtfyDriver extends Driver {
     ],
   );
 
-  final _client = HttpClient()..connectionTimeout = const Duration(seconds: 10);
+  final http.Client _client = newHttpClient();
 
   (String, String) get _cmd => parseNtfyTopic(s.str('topic'), s.str('server'));
   (String, String) get replyTopicPair => _replyTopic();
@@ -206,9 +207,9 @@ class NtfyDriver extends Driver {
     return r == null || r.trim().isEmpty ? _cmd : parseNtfyTopic(r, _cmd.$1);
   }
 
-  void _auth(HttpClientRequest req) {
+  Map<String, String> get _authHeaders {
     final t = s.strOrNull('token');
-    if (t != null) req.headers.set('Authorization', 'Bearer $t');
+    return t == null ? const {} : {'Authorization': 'Bearer $t'};
   }
 
   static String _httpError(int code, String body, String topic) {
@@ -236,13 +237,14 @@ class NtfyDriver extends Driver {
     if (topic.isEmpty) throw DriverException(dtx('ntfy: komentokanava puuttuu', 'ntfy: command topic missing'));
     final until = quotaUntil[srv];
     if (until != null && DateTime.now().isBefore(until)) throw NtfyQuotaFull(ntfyQuotaText(quotaFullAt[srv]));
-    final req = await _client.postUrl(Uri.parse('$srv/$topic')).timeout(const Duration(seconds: 15));
-    _auth(req);
-    if (title != null && title.isNotEmpty) req.headers.set('Title', title);
-    req.headers.contentType = ContentType('text', 'plain', charset: 'utf-8');
-    req.add(utf8.encode(text));
-    final res = await req.close().timeout(const Duration(seconds: 15));
-    final body = await utf8.decodeStream(res);
+    final req = http.Request('POST', Uri.parse('$srv/$topic'))
+      ..headers.addAll(_authHeaders)
+      ..headers['Content-Type'] = 'text/plain; charset=utf-8'
+      ..bodyBytes = utf8.encode(text);
+    if (title != null && title.isNotEmpty) req.headers['Title'] = title;
+    final res = await http.Response.fromStream(await _client.send(req).timeout(const Duration(seconds: 15)))
+        .timeout(const Duration(seconds: 15));
+    final body = utf8.decode(res.bodyBytes, allowMalformed: true);
     if (res.statusCode == 429) {
       final full = await _quotaFullAt(srv);
       quotaUntil[srv] = DateTime.now().add(quotaPause);
@@ -262,10 +264,10 @@ class NtfyDriver extends Driver {
   /// When the server's message quota for this network is full again (`GET /v1/account`, read only).
   Future<DateTime?> _quotaFullAt(String srv) async {
     try {
-      final req = await _client.getUrl(Uri.parse('$srv/v1/account')).timeout(const Duration(seconds: 8));
-      _auth(req);
-      final res = await req.close().timeout(const Duration(seconds: 8));
-      final j = jsonDecode(await utf8.decodeStream(res).timeout(const Duration(seconds: 8)));
+      final res = await _client
+          .get(Uri.parse('$srv/v1/account'), headers: _authHeaders)
+          .timeout(const Duration(seconds: 8));
+      final j = jsonDecode(utf8.decode(res.bodyBytes, allowMalformed: true));
       final stats = j is Map ? j['stats'] : null;
       final at = stats is Map ? stats['reset_at'] : null;
       return at is num && at > 0 ? DateTime.fromMillisecondsSinceEpoch(at.toInt() * 1000) : null;
@@ -277,12 +279,10 @@ class NtfyDriver extends Driver {
   /// Recent messages (oldest first) via `GET <topic>/json?poll=1&since=…`.
   Future<List<NtfyMessage>> poll({String? topic, String since = '12h'}) async {
     final (srv, t) = _replyTopic(topic);
-    final req = await _client
-        .getUrl(Uri.parse('$srv/$t/json?poll=1&since=${Uri.encodeQueryComponent(since)}'))
-        .timeout(const Duration(seconds: 15));
-    _auth(req);
-    final res = await req.close().timeout(const Duration(seconds: 20));
-    final body = await utf8.decodeStream(res).timeout(const Duration(seconds: 20));
+    final res = await _client
+        .get(Uri.parse('$srv/$t/json?poll=1&since=${Uri.encodeQueryComponent(since)}'), headers: _authHeaders)
+        .timeout(const Duration(seconds: 20));
+    final body = utf8.decode(res.bodyBytes, allowMalformed: true);
     if (res.statusCode >= 300) throw DriverException(_httpError(res.statusCode, body, t));
     return [
       for (final line in const LineSplitter().convert(body))
@@ -315,11 +315,10 @@ class NtfyDriver extends Driver {
     String Function(String topic, int seconds)? timeoutText,
   }) async {
     final (srv, t) = _replyTopic();
-    final req = await _client.getUrl(Uri.parse('$srv/$t/json')).timeout(const Duration(seconds: 15));
-    _auth(req);
-    final res = await req.close().timeout(const Duration(seconds: 15));
+    final req = http.Request('GET', Uri.parse('$srv/$t/json'))..headers.addAll(_authHeaders);
+    final res = await _client.send(req).timeout(const Duration(seconds: 15));
     if (res.statusCode >= 300) {
-      throw DriverException(_httpError(res.statusCode, await utf8.decodeStream(res), t));
+      throw DriverException(_httpError(res.statusCode, await utf8.decodeStream(res.stream), t));
     }
     final opened = Completer<void>();
     final got = <NtfyMessage>[];
@@ -340,7 +339,7 @@ class NtfyDriver extends Driver {
       }
     }
 
-    final sub = res
+    final sub = res.stream
         .transform(utf8.decoder)
         .transform(const LineSplitter())
         .listen(
@@ -427,7 +426,7 @@ class NtfyDriver extends Driver {
   }
 
   @override
-  Future<void> dispose() async => _client.close(force: true);
+  Future<void> dispose() async => _client.close();
 }
 
 /// t246u: HTTP 429 from the ntfy server: this network's message quota is used up.

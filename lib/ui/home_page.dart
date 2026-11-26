@@ -1,4 +1,5 @@
 import '../state/net_health.dart';
+import '../core/plat.dart';
 
 import 'tile_grid.dart';
 import 'tile_status.dart';
@@ -7,7 +8,6 @@ import 'energy_pages.dart';
 
 import 'dart:async';
 
-import 'dart:io';
 
 import 'package:material_ui/material_ui.dart';
 
@@ -530,7 +530,7 @@ class _DashboardGrid extends StatefulWidget {
 }
 
 class _DashboardGridState extends State<_DashboardGrid> {
-  static bool get _desktop => Platform.isWindows || Platform.isLinux || Platform.isMacOS;
+  static bool get _desktop => Plat.isWindows || Plat.isLinux || Plat.isMacOS;
 
   /// While dragging: the live order (tile ids) – the other tiles reflow as you move.
   List<String>? _order;

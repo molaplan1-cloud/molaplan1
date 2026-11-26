@@ -11,12 +11,13 @@ import '../devices/shelly.dart';
 import '../drivers/registry.dart';
 import '../drivers/driver.dart';
 import '../models/models.dart';
+import '../remote/router.dart' show AppOnlyError;
 import '../state/app_state.dart';
 import '../state/net_health.dart';
 import 'app_scope.dart';
 import 'remote_pages.dart';
 
-enum TileIssueKind { offline, awayFromLan, device }
+enum TileIssueKind { offline, awayFromLan, device, appOnly }
 
 class TileIssue {
   const TileIssue(this.kind, this.text);
@@ -25,6 +26,15 @@ class TileIssue {
 }
 
 TileIssue tileIssue(BuildContext context, ConnectionConfig? c, String err, NetHealth h, {bool narrow = false}) {
+  // R250: the web app cannot reach this device itself and no home bridge is connected.
+  if (err.contains(AppOnlyError.marker)) {
+    return TileIssue(
+      TileIssueKind.appOnly,
+      narrow
+          ? tx(context, 'Vain sovelluksessa', 'App only')
+          : tx(context, 'Toimii vain sovelluksessa tai kotisillan kautta', 'Works only in the app or via a home bridge'),
+    );
+  }
   final k = classifyError(err);
   final host = c == null ? '' : connectionHost(c.settings);
   final local = isLanHost(host);
@@ -115,9 +125,9 @@ class TileIssueChip extends StatelessWidget {
         style: Theme.of(context).textTheme.titleMedium?.copyWith(color: cs.onSurfaceVariant),
       );
     }
-    final away = issue.kind == TileIssueKind.awayFromLan;
+    final away = issue.kind == TileIssueKind.awayFromLan || issue.kind == TileIssueKind.appOnly;
     final chip = Container(
-      key: ValueKey(away ? 'tile-away' : 'tile-issue'),
+      key: ValueKey(issue.kind == TileIssueKind.appOnly ? 'tile-app-only' : (away ? 'tile-away' : 'tile-issue')),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: away ? cs.secondaryContainer : cs.errorContainer,

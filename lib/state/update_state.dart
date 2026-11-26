@@ -1,4 +1,5 @@
 import 'dart:async';
+import '../core/plat.dart';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -15,7 +16,7 @@ class UpdatePlatform {
   const UpdatePlatform();
   static const _ch = MethodChannel('molaplan/update');
 
-  String get os => kIsWeb ? 'web' : Platform.operatingSystem;
+  String get os => kIsWeb ? 'web' : Plat.operatingSystem;
 
   Future<List<String>> abis() async =>
       os == 'android' ? ((await _ch.invokeListMethod<String>('abis')) ?? const []) : const [];
@@ -71,7 +72,7 @@ class UpdatePlatform {
     }
     if (kIsWeb) return null;
     try {
-      return Platform.localHostname;
+      return Plat.localHostname;
     } catch (_) {
       return null;
     }
