@@ -65,8 +65,7 @@ import 'app_localizations_sv.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -74,8 +73,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -87,13 +85,12 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -6805,6 +6802,150 @@ abstract class AppLocalizations {
   /// **'Price area {p0}. Day-ahead spot prices incl. VAT {p1} %. Add the \"Electricity price\" device to change area and fees.'**
   String sf87d92faf4(String p0, String p1);
 
+  /// fi: Siltaa ei löytynyt. Onko puhelin liitetty sillan Wi-Fiin "Molaplan-XXXX"? Jos verkkoa ei näy, pidä sillan nappia painett
+  ///
+  /// In en, this message translates to:
+  /// **'Bridge not found. Is the phone on the bridge\'\'s Wi-Fi \"Molaplan-XXXX\"? If the network is missing, hold the bridge button for 3 s (setup opens for 15 minutes).'**
+  String get saa4df8e877;
+
+  /// fi: Silta ei ole asetustilassa. Pidä sen nappia painettuna 3 s ja yritä uudelleen.
+  ///
+  /// In en, this message translates to:
+  /// **'The bridge is not in setup mode. Hold its button for 3 s and try again.'**
+  String get sf5293b1989;
+
+  /// fi: Tämä ei ole tarran / QR-koodin silta (avain ei täsmää). Mitään ei lähetetty.
+  ///
+  /// In en, this message translates to:
+  /// **'This is not the bridge on the label / QR code (key mismatch). Nothing was sent.'**
+  String get s839deeab41;
+
+  /// fi: Sillan vastaus ei kelpaa (salaus ei täsmää). Mitään ei tallennettu.
+  ///
+  /// In en, this message translates to:
+  /// **'The bridge\'\'s reply is not valid (encryption mismatch). Nothing was saved.'**
+  String get s3694ce006b;
+
+  /// fi: Silta hylkäsi asetukset: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'The bridge rejected the setup: {p0}'**
+  String s61aea0b713(String p0);
+
+  /// fi: Lisää kotisilta
+  ///
+  /// In en, this message translates to:
+  /// **'Add home bridge'**
+  String get s63551081b0;
+
+  /// fi: Molaplan Bridge -laite
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan Bridge device'**
+  String get s592edd94e7;
+
+  /// fi: Pieni, aina päällä oleva laite (esim. Athom IR/RF -ohjain), joka välittää etäkomennot kodin laitteille ja ohjaa ilmalämp
+  ///
+  /// In en, this message translates to:
+  /// **'A small always-on device (e.g. the Athom IR/RF controller) that passes remote commands to your devices and controls the heat pump by infrared.'**
+  String get sa329968355;
+
+  /// fi: Kytke silta virtaan. Uusi silta avaa asetustilan itse (valo vilkkuu hitaasti, kerran sekunnissa).
+  ///
+  /// In en, this message translates to:
+  /// **'Power the bridge. A new bridge opens setup by itself (slow blink, once a second).'**
+  String get sd8790684a6;
+
+  /// fi: Avaa puhelimen Wi-Fi-asetukset ja liity verkkoon "Molaplan-XXXX" (ei salasanaa).
+  ///
+  /// In en, this message translates to:
+  /// **'Open the phone\'\'s Wi-Fi settings and join \"Molaplan-XXXX\" (no password).'**
+  String get s087004d26c;
+
+  /// fi: Palaa tähän ja paina "Etsi silta".
+  ///
+  /// In en, this message translates to:
+  /// **'Come back here and press \"Find bridge\".'**
+  String get sf85e449cd8;
+
+  /// fi: Etsi silta
+  ///
+  /// In en, this message translates to:
+  /// **'Find bridge'**
+  String get s57466387fc;
+
+  /// fi: Silta löytyi
+  ///
+  /// In en, this message translates to:
+  /// **'Bridge found'**
+  String get sd166e3cf6f;
+
+  /// fi: Ohjelmisto
+  ///
+  /// In en, this message translates to:
+  /// **'Firmware'**
+  String get s6b841de5dd;
+
+  /// fi: Kodin Wi-Fi
+  ///
+  /// In en, this message translates to:
+  /// **'Home Wi-Fi'**
+  String get s88fa323548;
+
+  /// fi: Verkon nimi
+  ///
+  /// In en, this message translates to:
+  /// **'Network name'**
+  String get sf48dd63b0a;
+
+  /// fi: Wi-Fi-salasana
+  ///
+  /// In en, this message translates to:
+  /// **'Wi-Fi password'**
+  String get s9f9c574cf9;
+
+  /// fi: Kodin nimi
+  ///
+  /// In en, this message translates to:
+  /// **'Home name'**
+  String get sc58a7d7121;
+
+  /// fi: Laitemalli
+  ///
+  /// In en, this message translates to:
+  /// **'Board'**
+  String get sc452460b0f;
+
+  /// fi: testaamaton
+  ///
+  /// In en, this message translates to:
+  /// **'untested'**
+  String get s4bdd633042;
+
+  /// fi: Tiedot lähetetään sillalle salattuina – sillan Wi-Fi on avoin, mutta salasanaa ei voi lukea siitä.
+  ///
+  /// In en, this message translates to:
+  /// **'The details are sent encrypted – the bridge Wi-Fi is open, but the password cannot be read from it.'**
+  String get sbe6a859b63;
+
+  /// fi: Yhdistä silta kotiin
+  ///
+  /// In en, this message translates to:
+  /// **'Connect the bridge'**
+  String get s77af0820de;
+
+  /// fi: Silta yhdistetty!
+  ///
+  /// In en, this message translates to:
+  /// **'Bridge connected!'**
+  String get s1ec01d8473;
+
+  /// fi: Silta liittyy nyt kodin Wi-Fiin (valo palaa ja välähtää pois 3 s välein, kun yhteys on kunnossa). Vaihda puhelin takaisi
+  ///
+  /// In en, this message translates to:
+  /// **'The bridge is now joining the home Wi-Fi (light on with a short dip every 3 s when connected). Switch the phone back to the home Wi-Fi or mobile data – Remote access shows the bridge status.'**
+  String get s88bc217a1b;
+
   /// fi: Valitse yhteystyyppi
   ///
   /// In en, this message translates to:
@@ -6960,6 +7101,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This device stays at home, always on (charger + Wi-Fi), and passes remote commands to your devices.'**
   String get s6a95f7843b;
+
+  /// fi: Lisää kotisilta (Molaplan Bridge -laite)
+  ///
+  /// In en, this message translates to:
+  /// **'Add home bridge (Molaplan Bridge device)'**
+  String get sa949a952bf;
+
+  /// fi: Pieni aina päällä oleva laite, esim. Athom IR/RF – ohjaa myös ilmalämpöpumppua. Asennus puhelimella parissa minuutissa.
+  ///
+  /// In en, this message translates to:
+  /// **'A small always-on device, e.g. Athom IR/RF – also controls the heat pump. Set up with the phone in a couple of minutes.'**
+  String get sb641af74b7;
 
   /// fi: Muut tavat: VPN, Nabu Casa, pilvi-MQTT
   ///
@@ -7387,12 +7540,6 @@ abstract class AppLocalizations {
   /// **'The device can then no longer connect remotely. It can be paired again.'**
   String get s84572f642e;
 
-  /// fi: Kodin nimi
-  ///
-  /// In en, this message translates to:
-  /// **'Home name'**
-  String get sc58a7d7121;
-
   /// fi: Skannaa puhelimella
   ///
   /// In en, this message translates to:
@@ -7590,6 +7737,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Control: confirmation, lock / PIN, min / max / step, invert and momentary.'**
   String get sae41bebdab;
+
+  /// fi: Huoneen lämpöanturi
+  ///
+  /// In en, this message translates to:
+  /// **'Room temperature sensor'**
+  String get sf83143ae23;
+
+  /// fi: Ei valittu
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get s19485c79b2;
+
+  /// fi: Valitse lämpöanturi
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a temperature sensor'**
+  String get s0483226428;
 
   /// fi: Kuvake
   ///
@@ -10369,6 +10534,30 @@ abstract class AppLocalizations {
   /// **', swing'**
   String get s40032ddea9;
 
+  /// fi: , siivekkeet {p0}
+  ///
+  /// In en, this message translates to:
+  /// **', vane '**
+  String s7dcc5e6c76(String p0);
+
+  /// fi: ei vielä lähetetty
+  ///
+  /// In en, this message translates to:
+  /// **'not sent yet'**
+  String get s7c815852f2;
+
+  /// fi: lähetetty klo {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'sent at {p0}'**
+  String s4795d331a5(String p0);
+
+  /// fi: lähetetty {p0}.{p1}. klo {p2}
+  ///
+  /// In en, this message translates to:
+  /// **'sent {p0}.{p1}. at {p2}'**
+  String sff577ce033(String p0, String p1, String p2);
+
   /// fi: Koodia ei tunnistettu eikä raakadataa tullut. Ota Tasmotassa käyttöön raakadata (SetOption58 1) ja yritä uudelleen.
   ///
   /// In en, this message translates to:
@@ -10567,6 +10756,18 @@ abstract class AppLocalizations {
   /// **'Fan'**
   String get s018d2e08f4;
 
+  /// fi: Siivekkeet
+  ///
+  /// In en, this message translates to:
+  /// **'Vane'**
+  String get sa00d64c920;
+
+  /// fi: Lähetysaika
+  ///
+  /// In en, this message translates to:
+  /// **'Sent at'**
+  String get s39f8bf0f76;
+
   /// fi: Huonelämpö
   ///
   /// In en, this message translates to:
@@ -10662,6 +10863,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Temperature missing.'**
   String get s04e4777aea;
+
+  /// fi: huone {p0} °C
+  ///
+  /// In en, this message translates to:
+  /// **'room {p0} °C'**
+  String s91e5fff1f0(String p0);
 
   /// fi: Lähettimessä ei ole lämpöanturia (Status 8 ei kertonut lämpötilaa).
   ///
@@ -10770,6 +10977,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Auto'**
   String get s43c9b88580;
+
+  /// fi: automaatti
+  ///
+  /// In en, this message translates to:
+  /// **'auto'**
+  String get sd3cd4220ae;
+
+  /// fi: ylös
+  ///
+  /// In en, this message translates to:
+  /// **'highest'**
+  String get s640687fc2d;
+
+  /// fi: ylhäälle
+  ///
+  /// In en, this message translates to:
+  /// **'high'**
+  String get s3516ee9f50;
+
+  /// fi: keskelle
+  ///
+  /// In en, this message translates to:
+  /// **'middle'**
+  String get sb847c3774e;
+
+  /// fi: alhaalle
+  ///
+  /// In en, this message translates to:
+  /// **'low'**
+  String get sc4ebe5627c;
+
+  /// fi: alas
+  ///
+  /// In en, this message translates to:
+  /// **'lowest'**
+  String get saacae8d5c5;
 
   /// fi: ntfy-komentolaite (komennot + tila)
   ///
@@ -12211,6 +12454,18 @@ abstract class AppLocalizations {
   /// **'Louver swing on/off.'**
   String get s8bcb8433f9;
 
+  /// fi: Siivekkeiden asento
+  ///
+  /// In en, this message translates to:
+  /// **'Vane position'**
+  String get sc5d938e26e;
+
+  /// fi: Liukusäädin puhallussuunnalle (0 = laite päättää, 5 = alas). Lattialle suunnattu lämpö tuntuu lämpimämmältä.
+  ///
+  /// In en, this message translates to:
+  /// **'Slider for the air direction (0 = the unit decides, 5 = lowest).'**
+  String get s5ce3991e13;
+
   /// fi: Huonelämpö lähettimen anturista
   ///
   /// In en, this message translates to:
@@ -12811,17 +13066,23 @@ abstract class AppLocalizations {
   /// **'{p0} – temperature'**
   String s3378eb2d0b(String p0);
 
-  /// fi: Lähetetty tila (IR on yksisuuntainen)
+  /// fi: Viimeksi lähetetty (IR on yksisuuntainen)
   ///
   /// In en, this message translates to:
-  /// **'Sent state (IR is one-way)'**
-  String get saa437260b8;
+  /// **'Last sent (IR is one-way)'**
+  String get sdfa0c29399;
 
   /// fi: Puhallin (0 = auto)
   ///
   /// In en, this message translates to:
   /// **'Fan (0 = auto)'**
   String get seab2c72485;
+
+  /// fi: Siivekkeet (0 = auto, 5 = alas)
+  ///
+  /// In en, this message translates to:
+  /// **'Vane (0 = auto, 5 = lowest)'**
+  String get s7847d8821b;
 
   /// fi: {p0} – huone
   ///
@@ -12836,8 +13097,7 @@ abstract class AppLocalizations {
   String get s0ceafaa97c;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -12846,8 +13106,7 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en', 'es', 'et', 'fi', 'sv'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'es', 'et', 'fi', 'sv'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;

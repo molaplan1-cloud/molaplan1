@@ -234,6 +234,14 @@ void BridgeEngine::runBatch(JsonArrayConst batch, JsonArray results) {
       v["ntfy"]["cmd"] = ntfyCommandTopic();
       v["ntfy"]["rep"] = ntfyReplyTopic();
       host_.status(v);
+    } else if (op == "bridge_info") {
+      // Same shape as the app bridge's answer (Etäkäyttö shows the version); app = null.
+      res["ok"] = true;
+      JsonObject v = res["v"].to<JsonObject>();
+      v["app"] = nullptr;
+      v["platform"] = "esp32";
+      v["bridge"] = name_;
+      host_.status(v);
     } else if (op == "enroll") {
       std::string dev = spec["dev"] | "", pub = spec["pub"] | "", nm = spec["name"] | "Molaplan";
       if (!isHex(dev, 16, 32) || pub.size() < 40) {

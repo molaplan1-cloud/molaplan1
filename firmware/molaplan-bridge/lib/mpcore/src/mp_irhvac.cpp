@@ -73,8 +73,10 @@ bool IrState::apply(const std::string& what, JsonVariantConst v, std::string& er
     n.vane = truthy(v) ? "auto" : "off";
   } else if (what == "vane") {
     if (v.is<double>() || v.is<long>()) {
+      // Same as the app's slider: 0 = the unit decides (no fixed position), 1 highest … 5 lowest.
+      static const char* const slider[6] = {"off", "highest", "high", "middle", "low", "lowest"};
       long i = lround(v.as<double>());
-      n.vane = kIrVanes[i < 0 ? 0 : (i > 6 ? 6 : i)];
+      n.vane = slider[i < 0 ? 0 : (i > 5 ? 5 : i)];
     } else {
       std::string f = lower(valueText(v));
       if (indexOf(kIrVanes, f) < 0) {
@@ -142,7 +144,14 @@ void IrState::field(const std::string& f, const std::string& lang, JsonDocument&
   else if (f == "mode") out.set(lang == "fi" ? std::string(modeFi(power ? mode : std::string("off"))) : cap(power ? mode : "off"));
   else if (f == "fan") out.set(indexOf(kIrFans, fan));
   else if (f == "swing") out.set(vane != "off" ? "on" : "off");
-  else if (f == "vane") out.set(vane);
+  else if (f == "vane") {
+    // App slider index (see set): off/auto = 0.
+    static const char* const slider[6] = {"off", "highest", "high", "middle", "low", "lowest"};
+    int idx = 0;
+    for (int i = 0; i < 6; i++)
+      if (vane == slider[i]) idx = i;
+    out.set(idx);
+  }
   else if (f == "sentAt") out.set(sentAtMs);
   else out.set(summary(lang));
 }

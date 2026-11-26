@@ -149,14 +149,17 @@ void main() {
       expect(await d.read({'field': 'temp'}), 24);
       expect(await d.read({'field': 'fan'}), 3);
       expect(await d.read({'field': 'mode'}), 'Jäähdytys');
-      expect(await d.read({'field': 'summary'}), 'Jäähdytys 24 °C, puhallin medium, suuntaus');
+      expect(
+        await d.read({'field': 'summary'}),
+        startsWith('Jäähdytys 24 °C, puhallin medium, suuntaus · lähetetty klo'),
+      );
       // Mode "off" switches the pump off but keeps the settings for next time.
       await d.send({'set': 'mode', 'to': 'off'});
       expect(lastIrhvac(t), allOf(containsPair('Power', 'Off'), containsPair('Temp', 24)));
       await d.send({'set': 'mode', 'to': 'heat'});
       expect(lastIrhvac(t), containsPair('Power', 'On'));
       await Future<void>.delayed(Duration.zero);
-      expect(summaries.first, 'Pois päältä');
+      expect(summaries.first, startsWith('Pois päältä'));
       expect(summaries.last, startsWith('Lämmitys 24 °C'));
       await sub.cancel();
       // Temperature is clamped to what heat pumps accept.
@@ -226,7 +229,15 @@ void main() {
       t.receive({'Protocol': 'NEC', 'Bits': 32, 'Data': '0x2'}); // IR is ignored in RF mode
       Timer(
         const Duration(milliseconds: 250),
-        () => t.receiveRf({'Sync': 9000, 'Low': 300, 'High': 900, 'Data': '0xE5D1A2', 'Bits': 24, 'Protocol': 1, 'Pulse': 320}),
+        () => t.receiveRf({
+          'Sync': 9000,
+          'Low': 300,
+          'High': 900,
+          'Data': '0xE5D1A2',
+          'Bits': 24,
+          'Protocol': 1,
+          'Pulse': 320,
+        }),
       );
       final c = await d.learn(const Duration(seconds: 5), pollEvery: const Duration(milliseconds: 50), rf: true);
       expect(c.rf, isTrue);
@@ -238,7 +249,10 @@ void main() {
       expect(t.commands.last, startsWith('RfSend '));
       expect(jsonDecode(t.commands.last.substring(7)), {'Data': '0xE5D1A2', 'Bits': 24, 'Protocol': 1, 'Pulse': 320});
       // Through send() as the bridge would.
-      Timer(const Duration(milliseconds: 150), () => t.receiveRf({'Data': '0x7', 'Bits': 24, 'Protocol': 1, 'Pulse': 350}));
+      Timer(
+        const Duration(milliseconds: 150),
+        () => t.receiveRf({'Data': '0x7', 'Bits': 24, 'Protocol': 1, 'Pulse': 350}),
+      );
       final j = await d.send({'learn': 3, 'kind': 'rf'}) as Map;
       expect(j['rf'], isTrue);
       expect(j['data'], '0x7');
@@ -437,11 +451,11 @@ void main() {
           'Olohuone – huone',
         ]),
       );
-      expect(titles, contains('Lähetetty tila (IR on yksisuuntainen)'));
+      expect(titles, contains('Viimeksi lähetetty (IR on yksisuuntainen)'));
       final power = r.tiles.first;
       expect(power.onCommand!.spec, {'set': 'power', 'to': 'on'});
       final temp = r.tiles[1];
-      expect((temp.min, temp.max), (16.0, 31.0));
+      expect((temp.min, temp.max), (16.0, 30.0)); // Panasonic brand preset (v0.8.0)
       expect(temp.commands.single.spec, {'set': 'temp'});
 
       final mq = t.build({
@@ -453,6 +467,7 @@ void main() {
         'modes': false,
         'fan': false,
         'swing': false,
+        'vane': false,
       }, 'fi');
       expect(
         mq.connections.single.settings,

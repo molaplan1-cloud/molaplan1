@@ -13,6 +13,7 @@ import '../drivers/registry.dart';
 import '../state/auto_driver.dart' show autoConnId;
 import '../models/models.dart';
 import 'app_scope.dart';
+import 'automation_pages.dart' show pickTiles;
 import 'error_box.dart';
 import 'connections_page.dart';
 import 'icons.dart';
@@ -57,6 +58,23 @@ class TileEditor extends StatefulWidget {
 
 class _TileEditorState extends State<TileEditor> {
   late TileConfig t = widget.initial;
+
+  bool _isIrSummary(BuildContext context) {
+    final c = AppScope.read(context).config.connections.where((c) => c.id == t.connectionId).firstOrNull;
+    return c?.type == 'ir' && '${t.read['field'] ?? 'summary'}' == 'summary' && t.type == TileType.value;
+  }
+
+  String? _roomSensorName(BuildContext context) {
+    final id = t.read['roomTile'];
+    if (id == null) return null;
+    for (final d in AppScope.read(context).config.dashboards) {
+      for (final x in d.tiles) {
+        if (x.id == id) return x.title;
+      }
+    }
+    return null;
+  }
+
   late final _title = TextEditingController(text: t.title);
   late final _unit = TextEditingController(text: t.unit);
   late final _valueMap = TextEditingController(text: t.valueMap);
@@ -380,6 +398,43 @@ class _TileEditorState extends State<TileEditor> {
                 decoration: InputDecoration(labelText: tx(context, 'Otsikko', 'Title')),
               ),
               const SizedBox(height: 10),
+              // v0.8.0: an IR heat pump knows only what it sent – show the room temperature from
+              // any sensor tile next to it.
+              if (_isIrSummary(context)) ...[
+                ListTile(
+                  key: const ValueKey('ir-room-sensor'),
+                  contentPadding: EdgeInsets.zero,
+                  leading: const Icon(Icons.thermostat),
+                  title: Text(tx(context, 'Huoneen lämpöanturi', 'Room temperature sensor')),
+                  subtitle: Text(_roomSensorName(context) ?? tx(context, 'Ei valittu', 'None')),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () async {
+                    final st = AppScope.read(context);
+                    final sensors = [
+                      for (final d in st.config.dashboards)
+                        for (final x in d.tiles)
+                          if (x.id != t.id && x.unit.contains('°')) x,
+                    ];
+                    final ids = await pickTiles(
+                      context,
+                      sensors,
+                      single: true,
+                      title: tx(context, 'Valitse lämpöanturi', 'Choose a temperature sensor'),
+                      initial: [if (t.read['roomTile'] != null) '${t.read['roomTile']}'],
+                    );
+                    if (ids == null) return;
+                    setState(() {
+                      t.read = {...t.read};
+                      if (ids.isEmpty) {
+                        t.read.remove('roomTile');
+                      } else {
+                        t.read['roomTile'] = ids.first;
+                      }
+                    });
+                  },
+                ),
+                const SizedBox(height: 6),
+              ],
               Row(
                 children: [
                   Expanded(

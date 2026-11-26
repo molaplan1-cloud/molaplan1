@@ -13,6 +13,7 @@ import 'package:flutter/foundation.dart';
 
 import '../core/template.dart';
 import '../drivers/driver.dart';
+import '../drivers/ir_driver.dart' show IrDriver;
 import '../drivers/registry.dart';
 import '../models/models.dart';
 import '../energy/contract.dart';
@@ -80,6 +81,8 @@ class AppState extends ChangeNotifier implements SyncHost {
       },
     );
     update.addListener(notifyListeners);
+    IrDriver.tileValue = (id) => _lastTileValues[id];
+    IrDriver.persist = (all) => unawaited(secretStore.write(_irStatesKey, jsonEncode(all)).catchError((_) {}));
     // t211u: the phone can ask the bridge for its version and tell it to update itself.
     remote.bridgeInfo = () async => {
       'app': appVersion,
@@ -248,7 +251,11 @@ class AppState extends ChangeNotifier implements SyncHost {
     await save();
   }
 
+  /// Last value of every tile this run (v0.8.0: a heat-pump tile shows a linked room sensor).
+  final _lastTileValues = <String, Object?>{};
+
   void onTileValue(TileConfig t, Object? v, [DateTime? at]) {
+    _lastTileValues[t.id] = v;
     if (t.sensor != null) {
       // t143u: remember the last alarm (calm → alarm), shown on the tile.
       final alarm = isTruthy(v, onValue: t.onValue.isEmpty ? null : t.onValue);
@@ -417,6 +424,10 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (config.dashboards.isEmpty) {
       config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     }
+    try {
+      final ir = await secretStore.read(_irStatesKey);
+      if (ir != null) IrDriver.restoreStates(Map<String, dynamic>.from(jsonDecode(ir) as Map));
+    } catch (_) {}
     remote.relay = config.relayUrl ?? remote.relay;
     NetHealth.instance.relayHost = switch (Uri.tryParse(remote.relay)?.host) {
       final String h when h.isNotEmpty => h,
@@ -469,6 +480,8 @@ class AppState extends ChangeNotifier implements SyncHost {
     _scheduleBridgeUpdates();
     notifyListeners();
   }
+
+  static const _irStatesKey = 'molaplan.ir.states';
 
   Timer? _autoUpdate;
 

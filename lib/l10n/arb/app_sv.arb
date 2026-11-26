@@ -1465,7 +1465,55 @@
   "x-mt": true
  },
  "sfec025279e": "Enheten är offline",
+ "s1ea16fc636": "Kolla nu",
+ "@s1ea16fc636": {
+  "x-mt": true
+ },
+ "sbaf1a2b35e": "Inget nätverk",
+ "@sbaf1a2b35e": {
+  "x-mt": true
+ },
+ "s3f750ce1d4": "Den här enheten är inte på Wi-Fi och mobildata fungerar inte. Kort visar de sista värden som mottagits.",
+ "@s3f750ce1d4": {
+  "x-mt": true
+ },
+ "s542a3e9332": "Wi-Fi har inget internet",
+ "@s542a3e9332": {
+  "x-mt": true
+ },
+ "sba13ded915": "Enheter på detta Wi-Fi-arbete; molntjänster och fjärråtkomst gör det inte.",
+ "@sba13ded915": {
+  "x-mt": true
+ },
+ "se24bfd1257": "Fjärrserver som inte svarar",
+ "@se24bfd1257": {
+  "x-mt": true
+ },
+ "s8584be9da3": "Internet fungerar, men Molaplans fjärrserver svarar inte hemma allt fungerar; fjärråtkomst kommer tillbaka av sig själv.",
+ "@s8584be9da3": {
+  "x-mt": true
+ },
+ "s1e03ade992": "Anslutning OK",
+ "@s1e03ade992": {
+  "x-mt": true
+ },
+ "s0fc5f4d788": "Re-checkade var 15: e tills det fungerar; detta meddelande försvinner sedan av sig själv.",
+ "@s0fc5f4d788": {
+  "x-mt": true
+ },
  "sf4caddf894": "Avancerat",
+ "s3e05e0efab": "Wi-Fi/Ethernet-adresser",
+ "@s3e05e0efab": {
+  "x-mt": true
+ },
+ "s6b59e217ba": "Ingen",
+ "@s6b59e217ba": {
+  "x-mt": true
+ },
+ "s3b7c55c4fc": "Kontrollerad",
+ "@s3b7c55c4fc": {
+  "x-mt": true
+ },
  "sc26c52235c": "Du är borta och hembron svarar inte. Hemnätverksenheter kan inte styras nu.",
  "@sc26c52235c": {
   "x-mt": true
@@ -3428,6 +3476,7 @@
  "@sf87d92faf4": {
   "x-mt": true
  },
+ "sc58a7d7121": "Hemmets namn",
  "s2adc3a77ed": "Välj anslutningstyp",
  "@s2adc3a77ed": {
   "x-mt": true
@@ -3571,6 +3620,54 @@
   "x-mt": true
  },
  "s451ea613dd": "Reläserver",
+ "sc420bf77fa": "Bron är uppdaterad ({p0}).",
+ "@sc420bf77fa": {
+  "x-mt": true
+ },
+ "sb040f9f612": "Bron installerar {p0} och startar om (cirka en minut).",
+ "@sb040f9f612": {
+  "x-mt": true
+ },
+ "s007c4f492d": "Version {p0} nedladdad. Godkänn installationen från meddelandet på bryggenheten.",
+ "@s007c4f492d": {
+  "x-mt": true
+ },
+ "s602d8f4a18": "Uppdatera denna bro för hand (version {p0}).",
+ "@s602d8f4a18": {
+  "x-mt": true
+ },
+ "se8704fa7a4": "Bron kunde inte söka efter uppdateringar nu.",
+ "@se8704fa7a4": {
+  "x-mt": true
+ },
+ "s2db971daf4": "Uppdatering misslyckades: {p0}",
+ "@s2db971daf4": {
+  "x-mt": true
+ },
+ "s51fb400921": " · uppdateringar tyst",
+ "@s51fb400921": {
+  "x-mt": true
+ },
+ "s3443bfc674": " · uppdateringar behöver godkännande på enheten",
+ "@s3443bfc674": {
+  "x-mt": true
+ },
+ "scb47cbf8c2": "Home bridge: en äldre version (ingen version info)",
+ "@scb47cbf8c2": {
+  "x-mt": true
+ },
+ "s6a02d97944": "Home bridge version: checking...",
+ "@s6a02d97944": {
+  "x-mt": true
+ },
+ "s311c531a8e": "Home bridge version: okänd",
+ "@s311c531a8e": {
+  "x-mt": true
+ },
+ "s70fe8d5ef3": "Uppdatera bridge",
+ "@s70fe8d5ef3": {
+  "x-mt": true
+ },
  "s72da730a42": "Fjärrservice: ansluten",
  "@s72da730a42": {
   "x-mt": true
@@ -3694,6 +3791,14 @@
  "@sc8ef04815c": {
   "x-mt": true
  },
+ "s2fcba19ec3": "Uppdatera automatiskt",
+ "@s2fcba19ec3": {
+  "x-mt": true
+ },
+ "se7a1731ac0": "Installerar nya Molaplan-versioner av sig själv (kontrolleras var 6: e). Endast Molaplan-signerade filer med en matchande kontrollsumma.",
+ "@se7a1731ac0": {
+  "x-mt": true
+ },
  "s13995350ed": "Para ihop en telefon",
  "s6a74454a98": "Paired enheter",
  "@s6a74454a98": {
@@ -3712,7 +3817,6 @@
  "@s84572f642e": {
   "x-mt": true
  },
- "sc58a7d7121": "Hemmets namn",
  "s9715416100": "Skanna med telefonen",
  "@s9715416100": {
   "x-mt": true
@@ -3815,6 +3919,7 @@
  "@sae41bebdab": {
   "x-mt": true
  },
+ "s19485c79b2": "Ingen",
  "scf37cbeda8": "Ikon",
  "sfeab9bd26f": "Bredd",
  "@sfeab9bd26f": {
@@ -6638,10 +6743,6 @@
  "@s3378eb2d0b": {
   "x-mt": true
  },
- "saa437260b8": "Sent State (IR är one-way)",
- "@saa437260b8": {
-  "x-mt": true
- },
  "seab2c72485": "Fan (0 = auto)",
  "@seab2c72485": {
   "x-mt": true
@@ -6654,108 +6755,180 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "s1ea16fc636": "Kolla nu",
- "@s1ea16fc636": {
+ "saa4df8e877": "Bridge hittades inte. Är telefonen på brons Wi-Fi \"Molaplan-XXXX\"? Om nätverket saknas, håll bronknappen för 3 s (inställningen öppnas i 15 minuter).",
+ "@saa4df8e877": {
   "x-mt": true
  },
- "sbaf1a2b35e": "Inget nätverk",
- "@sbaf1a2b35e": {
+ "sf5293b1989": "Bron är inte i installationsläge. Håll knappen för 3 s och försök igen.",
+ "@sf5293b1989": {
   "x-mt": true
  },
- "s3f750ce1d4": "Den här enheten är inte på Wi-Fi och mobildata fungerar inte. Kort visar de sista värden som mottagits.",
- "@s3f750ce1d4": {
+ "s839deeab41": "Detta är inte bron på etiketten / QR-koden (nyckelbrist). Ingenting skickades.",
+ "@s839deeab41": {
   "x-mt": true
  },
- "s542a3e9332": "Wi-Fi har inget internet",
- "@s542a3e9332": {
+ "s3694ce006b": "Brons svar är inte giltigt (krypteringsmissmatch). Ingenting sparades.",
+ "@s3694ce006b": {
   "x-mt": true
  },
- "sba13ded915": "Enheter på detta Wi-Fi-arbete; molntjänster och fjärråtkomst gör det inte.",
- "@sba13ded915": {
+ "s61aea0b713": "Bron avvisade installationen: {p0}",
+ "@s61aea0b713": {
   "x-mt": true
  },
- "se24bfd1257": "Fjärrserver som inte svarar",
- "@se24bfd1257": {
+ "s63551081b0": "Lägg hem bridge",
+ "@s63551081b0": {
   "x-mt": true
  },
- "s8584be9da3": "Internet fungerar, men Molaplans fjärrserver svarar inte hemma allt fungerar; fjärråtkomst kommer tillbaka av sig själv.",
- "@s8584be9da3": {
+ "s592edd94e7": "Molaplan Bridge-enhet",
+ "@s592edd94e7": {
   "x-mt": true
  },
- "s1e03ade992": "Anslutning OK",
- "@s1e03ade992": {
+ "sa329968355": "En liten alltid-på-enhet (t.ex. Athom IR / RF-kontrollen) som passerar fjärrkommandon till dina enheter och styr värmepumpen genom infraröd.",
+ "@sa329968355": {
   "x-mt": true
  },
- "s0fc5f4d788": "Re-checkade var 15: e tills det fungerar; detta meddelande försvinner sedan av sig själv.",
- "@s0fc5f4d788": {
+ "sd8790684a6": "Ström bron. En ny bro öppnar inställningen själv (slow blink, en gång i sekunden).",
+ "@sd8790684a6": {
   "x-mt": true
  },
- "s3e05e0efab": "Wi-Fi/Ethernet-adresser",
- "@s3e05e0efab": {
+ "s087004d26c": "Öppna telefonens Wi-Fi-inställningar och gå med i \"Molaplan-XXXX\" (inget lösenord).",
+ "@s087004d26c": {
   "x-mt": true
  },
- "s6b59e217ba": "Ingen",
- "@s6b59e217ba": {
+ "sf85e449cd8": "Kom tillbaka hit och tryck på \"Find bridge\".",
+ "@sf85e449cd8": {
   "x-mt": true
  },
- "s3b7c55c4fc": "Kontrollerad",
- "@s3b7c55c4fc": {
+ "s57466387fc": "Hitta bridge",
+ "@s57466387fc": {
   "x-mt": true
  },
- "sc420bf77fa": "Bron är uppdaterad ({p0}).",
- "@sc420bf77fa": {
+ "sd166e3cf6f": "Bridge hittade",
+ "@sd166e3cf6f": {
   "x-mt": true
  },
- "sb040f9f612": "Bron installerar {p0} och startar om (cirka en minut).",
- "@sb040f9f612": {
+ "s6b841de5dd": "Brandvaring",
+ "@s6b841de5dd": {
   "x-mt": true
  },
- "s007c4f492d": "Version {p0} nedladdad. Godkänn installationen från meddelandet på bryggenheten.",
- "@s007c4f492d": {
+ "s88fa323548": "Home Wi-Fi",
+ "@s88fa323548": {
   "x-mt": true
  },
- "s602d8f4a18": "Uppdatera denna bro för hand (version {p0}).",
- "@s602d8f4a18": {
+ "sf48dd63b0a": "Nätverksnamn",
+ "@sf48dd63b0a": {
   "x-mt": true
  },
- "se8704fa7a4": "Bron kunde inte söka efter uppdateringar nu.",
- "@se8704fa7a4": {
+ "s9f9c574cf9": "Wi-Fi lösenord",
+ "@s9f9c574cf9": {
   "x-mt": true
  },
- "s2db971daf4": "Uppdatering misslyckades: {p0}",
- "@s2db971daf4": {
+ "sc452460b0f": "Styrelsestyrelsen",
+ "@sc452460b0f": {
   "x-mt": true
  },
- "s51fb400921": " · uppdateringar tyst",
- "@s51fb400921": {
+ "s4bdd633042": "Otestade",
+ "@s4bdd633042": {
   "x-mt": true
  },
- "s3443bfc674": " · uppdateringar behöver godkännande på enheten",
- "@s3443bfc674": {
+ "sbe6a859b63": "Detaljerna skickas krypterad - bron Wi-Fi är öppen, men lösenordet kan inte läsas av det.",
+ "@sbe6a859b63": {
   "x-mt": true
  },
- "scb47cbf8c2": "Home bridge: en äldre version (ingen version info)",
- "@scb47cbf8c2": {
+ "s77af0820de": "Anslut bron",
+ "@s77af0820de": {
   "x-mt": true
  },
- "s6a02d97944": "Home bridge version: checking...",
- "@s6a02d97944": {
+ "s1ec01d8473": "Bridge ansluten!",
+ "@s1ec01d8473": {
   "x-mt": true
  },
- "s311c531a8e": "Home bridge version: okänd",
- "@s311c531a8e": {
+ "s88bc217a1b": "Bron går nu med i hemmet Wi-Fi (ljus på med ett kort dopp var tredje när den är ansluten). Byt telefonen tillbaka till hemmet Wi-Fi eller mobildata - Fjärråtkomst visar brostatus.",
+ "@s88bc217a1b": {
   "x-mt": true
  },
- "s70fe8d5ef3": "Uppdatera bridge",
- "@s70fe8d5ef3": {
+ "sa949a952bf": "Lägg till hembro (Molaplan Bridge-enhet)",
+ "@sa949a952bf": {
   "x-mt": true
  },
- "s2fcba19ec3": "Uppdatera automatiskt",
- "@s2fcba19ec3": {
+ "sb641af74b7": "En liten alltid-på-enhet, t.ex. Athom IR/RF, styr också värmepumpen. Ställ in med telefonen om några minuter.",
+ "@sb641af74b7": {
   "x-mt": true
  },
- "se7a1731ac0": "Installerar nya Molaplan-versioner av sig själv (kontrolleras var 6: e). Endast Molaplan-signerade filer med en matchande kontrollsumma.",
- "@se7a1731ac0": {
+ "sf83143ae23": "Rumstemperatur sensor",
+ "@sf83143ae23": {
+  "x-mt": true
+ },
+ "s0483226428": "Välj en temperatursensor",
+ "@s0483226428": {
+  "x-mt": true
+ },
+ "s7dcc5e6c76": ", vane ",
+ "@s7dcc5e6c76": {
+  "x-mt": true
+ },
+ "s7c815852f2": "Inte sänt ännu",
+ "@s7c815852f2": {
+  "x-mt": true
+ },
+ "s4795d331a5": "Skickat på {p0}",
+ "@s4795d331a5": {
+  "x-mt": true
+ },
+ "sff577ce033": "Sänd {p0}. {p1}. på {p2}",
+ "@sff577ce033": {
+  "x-mt": true
+ },
+ "sa00d64c920": "Vane",
+ "@sa00d64c920": {
+  "x-mt": true
+ },
+ "s39f8bf0f76": "Sent at",
+ "@s39f8bf0f76": {
+  "x-mt": true
+ },
+ "s91e5fff1f0": "rum {p0} °C",
+ "@s91e5fff1f0": {
+  "x-mt": true
+ },
+ "sd3cd4220ae": "auto auto auto auto auto",
+ "@sd3cd4220ae": {
+  "x-mt": true
+ },
+ "s640687fc2d": "högsta högsta högsta",
+ "@s640687fc2d": {
+  "x-mt": true
+ },
+ "s3516ee9f50": "Hög högt",
+ "@s3516ee9f50": {
+  "x-mt": true
+ },
+ "sb847c3774e": "Mitten",
+ "@sb847c3774e": {
+  "x-mt": true
+ },
+ "sc4ebe5627c": "lågt lågt lågt",
+ "@sc4ebe5627c": {
+  "x-mt": true
+ },
+ "saacae8d5c5": "lägsta",
+ "@saacae8d5c5": {
+  "x-mt": true
+ },
+ "sc5d938e26e": "Vane position",
+ "@sc5d938e26e": {
+  "x-mt": true
+ },
+ "s5ce3991e13": "Slider för luftriktningen (0 = enheten bestämmer, 5 = lägst).",
+ "@s5ce3991e13": {
+  "x-mt": true
+ },
+ "sdfa0c29399": "Senast skickad (IR är envägs)",
+ "@sdfa0c29399": {
+  "x-mt": true
+ },
+ "s7847d8821b": "Vane (0 = auto, 5 = lägst)",
+ "@s7847d8821b": {
   "x-mt": true
  }
 }

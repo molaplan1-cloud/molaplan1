@@ -1465,7 +1465,55 @@
   "x-mt": true
  },
  "sfec025279e": "El dispositivo está desconectado",
+ "s1ea16fc636": "Mira ahora",
+ "@s1ea16fc636": {
+  "x-mt": true
+ },
+ "sbaf1a2b35e": "No hay red",
+ "@sbaf1a2b35e": {
+  "x-mt": true
+ },
+ "s3f750ce1d4": "Este dispositivo no está en Wi-Fi y los datos móviles no funcionan. Las tarjetas muestran los últimos valores recibidos.",
+ "@s3f750ce1d4": {
+  "x-mt": true
+ },
+ "s542a3e9332": "El Wi-Fi no tiene internet",
+ "@s542a3e9332": {
+  "x-mt": true
+ },
+ "sba13ded915": "Los dispositivos en este trabajo Wi-Fi; los servicios en la nube y el acceso remoto no lo hacen.",
+ "@sba13ded915": {
+  "x-mt": true
+ },
+ "se24bfd1257": "Servidor remoto no contesta",
+ "@se24bfd1257": {
+  "x-mt": true
+ },
+ "s8584be9da3": "El Internet funciona, pero el servidor remoto de Molaplan no responde. En casa todo funciona; el acceso remoto vuelve por sí mismo.",
+ "@s8584be9da3": {
+  "x-mt": true
+ },
+ "s1e03ade992": "Conexión OK",
+ "@s1e03ade992": {
+  "x-mt": true
+ },
+ "s0fc5f4d788": "Revisó cada 15 s hasta que funciona; este aviso entonces desaparece por sí mismo.",
+ "@s0fc5f4d788": {
+  "x-mt": true
+ },
  "sf4caddf894": "Avanzado",
+ "s3e05e0efab": "Dirección de Wi-Fi/Ethernet",
+ "@s3e05e0efab": {
+  "x-mt": true
+ },
+ "s6b59e217ba": "ninguno",
+ "@s6b59e217ba": {
+  "x-mt": true
+ },
+ "s3b7c55c4fc": "Comprobado",
+ "@s3b7c55c4fc": {
+  "x-mt": true
+ },
  "sc26c52235c": "Usted está lejos y el puente casero no está contestando. Los dispositivos de red casero no pueden ser controlados ahora.",
  "@sc26c52235c": {
   "x-mt": true
@@ -3416,6 +3464,7 @@
  "@sf87d92faf4": {
   "x-mt": true
  },
+ "sc58a7d7121": "Nombre de la casa",
  "s2adc3a77ed": "Elija el tipo de conexión",
  "@s2adc3a77ed": {
   "x-mt": true
@@ -3559,6 +3608,54 @@
   "x-mt": true
  },
  "s451ea613dd": "Servidor de retransmisión",
+ "sc420bf77fa": "El puente está actualizado ({p0}).",
+ "@sc420bf77fa": {
+  "x-mt": true
+ },
+ "sb040f9f612": "El puente está instalando {p0} y se reinicia (alrededor de un minuto).",
+ "@sb040f9f612": {
+  "x-mt": true
+ },
+ "s007c4f492d": "Versión {p0} descargado. Aprobar la instalación desde la notificación en el dispositivo puente.",
+ "@s007c4f492d": {
+  "x-mt": true
+ },
+ "s602d8f4a18": "Actualice este puente a mano (versión {p0}).",
+ "@s602d8f4a18": {
+  "x-mt": true
+ },
+ "se8704fa7a4": "El puente no pudo comprobar las actualizaciones ahora.",
+ "@se8704fa7a4": {
+  "x-mt": true
+ },
+ "s2db971daf4": "Actualización fallida: {p0}",
+ "@s2db971daf4": {
+  "x-mt": true
+ },
+ "s51fb400921": " · actualizaciones silenciosamente",
+ "@s51fb400921": {
+  "x-mt": true
+ },
+ "s3443bfc674": " · Las actualizaciones necesitan aprobación en el dispositivo",
+ "@s3443bfc674": {
+  "x-mt": true
+ },
+ "scb47cbf8c2": "Puente de inicio: una versión anterior (sin información de la versión)",
+ "@scb47cbf8c2": {
+  "x-mt": true
+ },
+ "s6a02d97944": "Versión de puente de inicio: cheque...",
+ "@s6a02d97944": {
+  "x-mt": true
+ },
+ "s311c531a8e": "Home bridge version: unknown",
+ "@s311c531a8e": {
+  "x-mt": true
+ },
+ "s70fe8d5ef3": "Puente de actualización",
+ "@s70fe8d5ef3": {
+  "x-mt": true
+ },
  "s72da730a42": "Servicio remoto: conectado",
  "@s72da730a42": {
   "x-mt": true
@@ -3682,6 +3779,14 @@
  "@sc8ef04815c": {
   "x-mt": true
  },
+ "s2fcba19ec3": "Actualizar automáticamente",
+ "@s2fcba19ec3": {
+  "x-mt": true
+ },
+ "se7a1731ac0": "Instala las nuevas versiones de Molaplan por sí solas (revisado cada 6 h). Sólo los archivos firmados por Molaplan con un chequesum coincidente.",
+ "@se7a1731ac0": {
+  "x-mt": true
+ },
  "s13995350ed": "Vincular un teléfono",
  "s6a74454a98": "Dispositivos pares",
  "@s6a74454a98": {
@@ -3700,7 +3805,6 @@
  "@s84572f642e": {
   "x-mt": true
  },
- "sc58a7d7121": "Nombre de la casa",
  "s9715416100": "Escanear con el teléfono",
  "@s9715416100": {
   "x-mt": true
@@ -3806,6 +3910,7 @@
  "@sae41bebdab": {
   "x-mt": true
  },
+ "s19485c79b2": "Ninguno",
  "scf37cbeda8": "Icono",
  "sfeab9bd26f": "Width",
  "@sfeab9bd26f": {
@@ -6620,10 +6725,6 @@
  "@s3378eb2d0b": {
   "x-mt": true
  },
- "saa437260b8": "Estado enviado (IR es de una sola dirección)",
- "@saa437260b8": {
-  "x-mt": true
- },
  "seab2c72485": "Fan (0 = auto)",
  "@seab2c72485": {
   "x-mt": true
@@ -6636,108 +6737,180 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "s1ea16fc636": "Mira ahora",
- "@s1ea16fc636": {
+ "saa4df8e877": "Puente no encontrado. ¿Está el teléfono en el Wi-Fi del puente \"Molaplan-XXXX\"? Si la red está desaparecida, mantenga el botón del puente durante 3 s (se abre durante 15 minutos).",
+ "@saa4df8e877": {
   "x-mt": true
  },
- "sbaf1a2b35e": "No hay red",
- "@sbaf1a2b35e": {
+ "sf5293b1989": "El puente no está en modo de configuración. Mantenga su botón para 3 s e inténtelo de nuevo.",
+ "@sf5293b1989": {
   "x-mt": true
  },
- "s3f750ce1d4": "Este dispositivo no está en Wi-Fi y los datos móviles no funcionan. Las tarjetas muestran los últimos valores recibidos.",
- "@s3f750ce1d4": {
+ "s839deeab41": "Este no es el puente en la etiqueta / código QR (desajuste de tecla). Nada fue enviado.",
+ "@s839deeab41": {
   "x-mt": true
  },
- "s542a3e9332": "El Wi-Fi no tiene internet",
- "@s542a3e9332": {
+ "s3694ce006b": "La respuesta del puente no es válida (desajuste de cifrado). Nada fue guardado.",
+ "@s3694ce006b": {
   "x-mt": true
  },
- "sba13ded915": "Los dispositivos en este trabajo Wi-Fi; los servicios en la nube y el acceso remoto no lo hacen.",
- "@sba13ded915": {
+ "s61aea0b713": "El puente rechazó la configuración: {p0}",
+ "@s61aea0b713": {
   "x-mt": true
  },
- "se24bfd1257": "Servidor remoto no contesta",
- "@se24bfd1257": {
+ "s63551081b0": "Agregar puente casero",
+ "@s63551081b0": {
   "x-mt": true
  },
- "s8584be9da3": "El Internet funciona, pero el servidor remoto de Molaplan no responde. En casa todo funciona; el acceso remoto vuelve por sí mismo.",
- "@s8584be9da3": {
+ "s592edd94e7": "Molaplan Bridge device",
+ "@s592edd94e7": {
   "x-mt": true
  },
- "s1e03ade992": "Conexión OK",
- "@s1e03ade992": {
+ "sa329968355": "Un pequeño dispositivo siempre conectado (por ejemplo, el controlador Athom IR/RF) que pasa comandos remotos a sus dispositivos y controla la bomba de calor por infrarrojos.",
+ "@sa329968355": {
   "x-mt": true
  },
- "s0fc5f4d788": "Revisó cada 15 s hasta que funciona; este aviso entonces desaparece por sí mismo.",
- "@s0fc5f4d788": {
+ "sd8790684a6": "Potencia el puente. Un nuevo puente abre la configuración por sí mismo (slow blink, una vez por segundo).",
+ "@sd8790684a6": {
   "x-mt": true
  },
- "s3e05e0efab": "Dirección de Wi-Fi/Ethernet",
- "@s3e05e0efab": {
+ "s087004d26c": "Abra la configuración Wi-Fi del teléfono y únase a \"Molaplan-XXXX\" (sin contraseña).",
+ "@s087004d26c": {
   "x-mt": true
  },
- "s6b59e217ba": "ninguno",
- "@s6b59e217ba": {
+ "sf85e449cd8": "Vuelve aquí y presiona \"Encontrar puente\".",
+ "@sf85e449cd8": {
   "x-mt": true
  },
- "s3b7c55c4fc": "Comprobado",
- "@s3b7c55c4fc": {
+ "s57466387fc": "Encontrar puente",
+ "@s57466387fc": {
   "x-mt": true
  },
- "sc420bf77fa": "El puente está actualizado ({p0}).",
- "@sc420bf77fa": {
+ "sd166e3cf6f": "Puente encontrado",
+ "@sd166e3cf6f": {
   "x-mt": true
  },
- "sb040f9f612": "El puente está instalando {p0} y se reinicia (alrededor de un minuto).",
- "@sb040f9f612": {
+ "s6b841de5dd": "Firmware",
+ "@s6b841de5dd": {
   "x-mt": true
  },
- "s007c4f492d": "Versión {p0} descargado. Aprobar la instalación desde la notificación en el dispositivo puente.",
- "@s007c4f492d": {
+ "s88fa323548": "Home Wi-Fi",
+ "@s88fa323548": {
   "x-mt": true
  },
- "s602d8f4a18": "Actualice este puente a mano (versión {p0}).",
- "@s602d8f4a18": {
+ "sf48dd63b0a": "Nombre de la red",
+ "@sf48dd63b0a": {
   "x-mt": true
  },
- "se8704fa7a4": "El puente no pudo comprobar las actualizaciones ahora.",
- "@se8704fa7a4": {
+ "s9f9c574cf9": "Contraseña Wi-Fi",
+ "@s9f9c574cf9": {
   "x-mt": true
  },
- "s2db971daf4": "Actualización fallida: {p0}",
- "@s2db971daf4": {
+ "sc452460b0f": "Junta",
+ "@sc452460b0f": {
   "x-mt": true
  },
- "s51fb400921": " · actualizaciones silenciosamente",
- "@s51fb400921": {
+ "s4bdd633042": "no probados",
+ "@s4bdd633042": {
   "x-mt": true
  },
- "s3443bfc674": " · Las actualizaciones necesitan aprobación en el dispositivo",
- "@s3443bfc674": {
+ "sbe6a859b63": "Los detalles se envían encriptados – el puente Wi-Fi está abierto, pero la contraseña no se puede leer de ella.",
+ "@sbe6a859b63": {
   "x-mt": true
  },
- "scb47cbf8c2": "Puente de inicio: una versión anterior (sin información de la versión)",
- "@scb47cbf8c2": {
+ "s77af0820de": "Conecta el puente",
+ "@s77af0820de": {
   "x-mt": true
  },
- "s6a02d97944": "Versión de puente de inicio: cheque...",
- "@s6a02d97944": {
+ "s1ec01d8473": "¡Puente conectado!",
+ "@s1ec01d8473": {
   "x-mt": true
  },
- "s311c531a8e": "Home bridge version: unknown",
- "@s311c531a8e": {
+ "s88bc217a1b": "El puente se une ahora a la conexión Wi-Fi (enciende la luz con un corto espacio cada 3 s cuando se conecta). Conecte el teléfono de vuelta a la casa Wi-Fi o datos móviles – El acceso remoto muestra el estado del puente.",
+ "@s88bc217a1b": {
   "x-mt": true
  },
- "s70fe8d5ef3": "Puente de actualización",
- "@s70fe8d5ef3": {
+ "sa949a952bf": "Añadir puente casero (dispositivo del puente Molaplan)",
+ "@sa949a952bf": {
   "x-mt": true
  },
- "s2fcba19ec3": "Actualizar automáticamente",
- "@s2fcba19ec3": {
+ "sb641af74b7": "Un pequeño dispositivo siempre conectado, por ejemplo, Athom IR/RF – también controla la bomba de calor. Configurar con el teléfono en un par de minutos.",
+ "@sb641af74b7": {
   "x-mt": true
  },
- "se7a1731ac0": "Instala las nuevas versiones de Molaplan por sí solas (revisado cada 6 h). Sólo los archivos firmados por Molaplan con un chequesum coincidente.",
- "@se7a1731ac0": {
+ "sf83143ae23": "Sensor de temperatura ambiente",
+ "@sf83143ae23": {
+  "x-mt": true
+ },
+ "s0483226428": "Elija un sensor de temperatura",
+ "@s0483226428": {
+  "x-mt": true
+ },
+ "s7dcc5e6c76": ", vane ",
+ "@s7dcc5e6c76": {
+  "x-mt": true
+ },
+ "s7c815852f2": "no enviado aún",
+ "@s7c815852f2": {
+  "x-mt": true
+ },
+ "s4795d331a5": "enviado a {p0}",
+ "@s4795d331a5": {
+  "x-mt": true
+ },
+ "sff577ce033": "{p0} {p1} a {p2}",
+ "@sff577ce033": {
+  "x-mt": true
+ },
+ "sa00d64c920": "Vane",
+ "@sa00d64c920": {
+  "x-mt": true
+ },
+ "s39f8bf0f76": "Enviada",
+ "@s39f8bf0f76": {
+  "x-mt": true
+ },
+ "s91e5fff1f0": "habitación {p0} °C",
+ "@s91e5fff1f0": {
+  "x-mt": true
+ },
+ "sd3cd4220ae": "auto",
+ "@sd3cd4220ae": {
+  "x-mt": true
+ },
+ "s640687fc2d": "más alto",
+ "@s640687fc2d": {
+  "x-mt": true
+ },
+ "s3516ee9f50": "alto",
+ "@s3516ee9f50": {
+  "x-mt": true
+ },
+ "sb847c3774e": "Medio",
+ "@sb847c3774e": {
+  "x-mt": true
+ },
+ "sc4ebe5627c": "bajo",
+ "@sc4ebe5627c": {
+  "x-mt": true
+ },
+ "saacae8d5c5": "más bajo",
+ "@saacae8d5c5": {
+  "x-mt": true
+ },
+ "sc5d938e26e": "Posición de Vane",
+ "@sc5d938e26e": {
+  "x-mt": true
+ },
+ "s5ce3991e13": "Deslizador para la dirección del aire (0 = la unidad decide, 5 = menor).",
+ "@s5ce3991e13": {
+  "x-mt": true
+ },
+ "sdfa0c29399": "Último enviado (IR es de una sola dirección)",
+ "@sdfa0c29399": {
+  "x-mt": true
+ },
+ "s7847d8821b": "Vane (0 = auto, 5 = más bajo)",
+ "@s7847d8821b": {
   "x-mt": true
  }
 }

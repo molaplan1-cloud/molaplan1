@@ -735,6 +735,15 @@ final deviceTemplates = <DeviceTemplate>[
         helpEn: 'Louver swing on/off.',
       ),
       const FieldSpec(
+        'vane',
+        'Siivekkeiden asento',
+        'Vane position',
+        kind: FieldKind.boolean,
+        defaultValue: true,
+        helpFi: 'Liukusäädin puhallussuunnalle (0 = laite päättää, 5 = alas). Lattialle suunnattu lämpö tuntuu lämpimämmältä.',
+        helpEn: 'Slider for the air direction (0 = the unit decides, 5 = lowest).',
+      ),
+      const FieldSpec(
         'room',
         'Huonelämpö lähettimen anturista',
         'Room temperature from the blaster sensor',
@@ -757,6 +766,8 @@ final deviceTemplates = <DeviceTemplate>[
         settings: {
           'transport': transport,
           'vendor': vendor,
+          if (brand != null) 'minTemp': brand.minTemp,
+          if (brand != null) 'maxTemp': brand.maxTemp,
           if (_s(v, 'transport').startsWith('Athom')) 'rf': true,
           if (!mqttT) 'baseUrl': normUrl(v['address']),
           if (mqttT) 'host': normHost(v['address']),
@@ -778,6 +789,9 @@ final deviceTemplates = <DeviceTemplate>[
           fan: _b(v, 'fan', true),
           swing: _b(v, 'swing', true),
           room: _b(v, 'room'),
+          minTemp: brand?.minTemp ?? 16,
+          maxTemp: brand?.maxTemp ?? 31,
+          vane: _b(v, 'vane', true),
         ),
       );
     },
@@ -1557,10 +1571,7 @@ TemplateResult ntfyDeviceTemplate(Map<String, dynamic> v, String lang) {
       'cacheSeconds': max(30, minGap),
       'server': 'https://ntfy.sh',
     },
-    secrets: {
-      if (_s(v, 'pin').isNotEmpty) 'pin': _s(v, 'pin'),
-      if (_s(v, 'token').isNotEmpty) 'token': _s(v, 'token'),
-    },
+    secrets: {if (_s(v, 'pin').isNotEmpty) 'pin': _s(v, 'pin'), if (_s(v, 'token').isNotEmpty) 'token': _s(v, 'token')},
   );
   final json = _s(v, 'format', 'json') != 'text';
   final prefix = _s(v, 'statePrefix').replaceAll(RegExp(r'^\$?\.?'), '');
@@ -1583,7 +1594,10 @@ TemplateResult ntfyDeviceTemplate(Map<String, dynamic> v, String lang) {
         pollSeconds: poll,
         read: json ? {'jsonPath': '\$.$prefix$key'} : {'regex': '${RegExp.escape(key)}\\s*[:=]?\\s*([^,;\\n]+)'},
         onCommand: CommandStep(connectionId: c.id, spec: {'command': cmd('onCommand', '{key} on'), 'waitReply': true}),
-        offCommand: CommandStep(connectionId: c.id, spec: {'command': cmd('offCommand', '{key} off'), 'waitReply': true}),
+        offCommand: CommandStep(
+          connectionId: c.id,
+          spec: {'command': cmd('offCommand', '{key} off'), 'waitReply': true},
+        ),
       ),
     );
   }
@@ -1767,6 +1781,9 @@ DeviceTemplate? templateById(String id) => deviceTemplates.where((t) => t.id == 
 const irTransportLabels = [
   'Tasmota (IP-osoite)',
   'Athom IR & RF433 (Tasmota)',
+  // v0.8.0: the Molaplan Bridge speaks the Tasmota command API (/cm IRhvac) and, away from home,
+  // runs the same command itself when it arrives through the relay.
+  'Molaplan Bridge (kotisilta)',
   'Tasmota (MQTT)',
   'ESPHome',
   'Muu (HTTP)',
@@ -1808,6 +1825,9 @@ List<TileConfig> heatPumpIrTiles(
   bool swing = true,
   bool room = false,
   bool oneWay = true,
+  num minTemp = 16,
+  num maxTemp = 31,
+  bool vane = false,
 }) {
   CommandStep set(String what, [String? to]) => CommandStep(connectionId: cid, spec: {'set': what, 'to': ?to});
   final poll = oneWay ? 0 : 10;
@@ -1829,8 +1849,8 @@ List<TileConfig> heatPumpIrTiles(
       unit: '°C',
       decimals: 0,
       colSpan: 2,
-      min: 16,
-      max: 31,
+      min: minTemp.toDouble(),
+      max: maxTemp.toDouble(),
       step: 1,
       connectionId: cid,
       pollSeconds: poll,
@@ -1840,7 +1860,7 @@ List<TileConfig> heatPumpIrTiles(
     TileConfig(
       type: TileType.value,
       title: oneWay
-          ? _t(lang, 'Lähetetty tila (IR on yksisuuntainen)', 'Sent state (IR is one-way)')
+          ? _t(lang, 'Viimeksi lähetetty (IR on yksisuuntainen)', 'Last sent (IR is one-way)')
           : _t(lang, 'Tila', 'State'),
       icon: 'heatpump',
       colSpan: 2,
@@ -1881,6 +1901,21 @@ List<TileConfig> heatPumpIrTiles(
         read: {'field': 'swing'},
         onCommand: set('swing', 'on'),
         offCommand: set('swing', 'off'),
+      ),
+    // v0.8.0: fixed louver position 0 = auto (the unit decides) … 5 = lowest.
+    if (vane && oneWay)
+      TileConfig(
+        type: TileType.slider,
+        title: _t(lang, 'Siivekkeet (0 = auto, 5 = alas)', 'Vane (0 = auto, 5 = lowest)'),
+        icon: 'swing',
+        decimals: 0,
+        min: 0,
+        max: 5,
+        step: 1,
+        connectionId: cid,
+        pollSeconds: poll,
+        read: {'field': 'vane'},
+        commands: [set('vane')],
       ),
     if (room)
       TileConfig(

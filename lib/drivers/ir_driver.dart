@@ -14,21 +14,25 @@ import '../l10n/l10n.dart';
 /// One air-conditioner brand in the picker, mapped to Tasmota IRhvac vendor names
 /// (IRremoteESP8266 protocol names). [alt] = other protocols the same brand uses.
 class IrBrand {
-  const IrBrand(this.label, this.vendor, [this.alt = const []]);
+  const IrBrand(this.label, this.vendor, [this.alt = const [], this.minTemp = 16, this.maxTemp = 31]);
   final String label;
   final String vendor;
   final List<String> alt;
+
+  /// Setpoint range of the brand's remote (heat mode); the slider uses it (v0.8.0 brand presets).
+  final num minTemp;
+  final num maxTemp;
 }
 
 const irBrands = <IrBrand>[
-  IrBrand('Mitsubishi Electric', 'MITSUBISHI_AC', ['MITSUBISHI112', 'MITSUBISHI136']),
+  IrBrand('Mitsubishi Electric', 'MITSUBISHI_AC', ['MITSUBISHI112', 'MITSUBISHI136'], 10, 31),
   IrBrand('Mitsubishi Heavy', 'MITSUBISHI_HEAVY_152', ['MITSUBISHI_HEAVY_88']),
-  IrBrand('Panasonic', 'PANASONIC_AC', ['PANASONIC_AC32']),
-  IrBrand('Daikin', 'DAIKIN', ['DAIKIN2', 'DAIKIN216', 'DAIKIN160', 'DAIKIN176', 'DAIKIN128', 'DAIKIN152']),
-  IrBrand('Toshiba', 'TOSHIBA_AC', ['COOLIX']),
+  IrBrand('Panasonic', 'PANASONIC_AC', ['PANASONIC_AC32'], 16, 30),
+  IrBrand('Daikin', 'DAIKIN', ['DAIKIN2', 'DAIKIN216', 'DAIKIN160', 'DAIKIN176', 'DAIKIN128', 'DAIKIN152'], 10, 30),
+  IrBrand('Toshiba', 'TOSHIBA_AC', ['COOLIX'], 17, 30),
   IrBrand('LG', 'LG', ['LG2']),
   IrBrand('Samsung', 'SAMSUNG_AC'),
-  IrBrand('Fujitsu', 'FUJITSU_AC'),
+  IrBrand('Fujitsu', 'FUJITSU_AC', [], 10, 30),
   IrBrand('Hitachi', 'HITACHI_AC', ['HITACHI_AC1', 'HITACHI_AC344', 'HITACHI_AC424']),
   IrBrand('Gree', 'GREE', ['KELVINATOR']),
   IrBrand('Midea', 'MIDEA', ['COOLIX']),
@@ -66,14 +70,48 @@ String irModeEn(String m) =>
 
 /// The assumed state of the heat pump. IR is one-way: this is what we last SENT.
 class IrState {
-  IrState({this.power = false, this.mode = 'heat', this.temp = 22, this.fan = 'auto', this.swing = false});
+  IrState({
+    this.power = false,
+    this.mode = 'heat',
+    this.temp = 22,
+    this.fan = 'auto',
+    this.swing = false,
+    this.vane = 'auto',
+    this.sentAt,
+  });
   bool power;
   String mode;
   num temp;
   String fan;
   bool swing;
 
-  IrState copy() => IrState(power: power, mode: mode, temp: temp, fan: fan, swing: swing);
+  /// Fixed louver position when not swinging: auto (the unit decides), highest … lowest.
+  String vane;
+
+  /// When this state was last sent (IR is one-way: this is all we know).
+  DateTime? sentAt;
+
+  IrState copy() => IrState(power: power, mode: mode, temp: temp, fan: fan, swing: swing, vane: vane, sentAt: sentAt);
+
+  Map<String, dynamic> toJson() => {
+    'power': power,
+    'mode': mode,
+    'temp': temp,
+    'fan': fan,
+    'swing': swing,
+    'vane': vane,
+    if (sentAt != null) 'sentAt': sentAt!.millisecondsSinceEpoch,
+  };
+
+  static IrState fromJson(Map j) => IrState(
+    power: j['power'] == true,
+    mode: '${j['mode'] ?? 'heat'}',
+    temp: (j['temp'] as num?) ?? 22,
+    fan: '${j['fan'] ?? 'auto'}',
+    swing: j['swing'] == true,
+    vane: '${j['vane'] ?? 'auto'}',
+    sentAt: j['sentAt'] is int ? DateTime.fromMillisecondsSinceEpoch(j['sentAt'] as int) : null,
+  );
 
   /// Tasmota IRhvac JSON (https://tasmota.github.io/docs/Tasmota-IR/#sending-irhvac-commands).
   Map<String, dynamic> irhvac(String vendor, {String? model}) => {
@@ -84,7 +122,7 @@ class IrState {
     'Celsius': 'On',
     'Temp': temp,
     'FanSpeed': _cap(fan),
-    'SwingV': swing ? 'Auto' : 'Off',
+    'SwingV': swing ? 'Auto' : (vane == 'auto' ? 'Off' : _cap(vane)),
     'SwingH': 'Off',
   };
 
@@ -92,9 +130,48 @@ class IrState {
     if (!power) return tr(lang, 'Pois päältä', 'Off');
     final m = tr(lang, irModeFi(mode), irModeEn(mode));
     final f = tr(lang, 'puhallin $fan', 'fan $fan');
-    return '$m ${_fmt(temp)} °C, $f${swing ? tr(lang, ', suuntaus', ', swing') : ''}';
+    final v = swing
+        ? tr(lang, ', suuntaus', ', swing')
+        : vane == 'auto'
+        ? ''
+        : tr(lang, ', siivekkeet ${irVaneFi(vane)}', ', vane ${irVaneEn(vane)}');
+    return '$m ${_fmt(temp)} °C, $f$v';
+  }
+
+  /// "lähetetty klo 10.41" (today) / "lähetetty 25.11. klo 10.41".
+  String sentText(String lang, [DateTime? now]) {
+    final t = sentAt;
+    if (t == null) return tr(lang, 'ei vielä lähetetty', 'not sent yet');
+    final n = now ?? DateTime.now();
+    final hm = '${t.hour}.${t.minute.toString().padLeft(2, '0')}';
+    final today = t.year == n.year && t.month == n.month && t.day == n.day;
+    return today
+        ? tr(lang, 'lähetetty klo $hm', 'sent at $hm')
+        : tr(lang, 'lähetetty ${t.day}.${t.month}. klo $hm', 'sent ${t.day}.${t.month}. at $hm');
   }
 }
+
+const irVanes = ['auto', 'highest', 'high', 'middle', 'low', 'lowest'];
+String irVaneFi(String v) =>
+    const {
+      'auto': 'automaatti',
+      'highest': 'ylös',
+      'high': 'ylhäälle',
+      'middle': 'keskelle',
+      'low': 'alhaalle',
+      'lowest': 'alas',
+    }[v] ??
+    v;
+String irVaneEn(String v) =>
+    const {
+      'auto': 'auto',
+      'highest': 'highest',
+      'high': 'high',
+      'middle': 'middle',
+      'low': 'low',
+      'lowest': 'lowest',
+    }[v] ??
+    v;
 
 String _cap(String s) => s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);
 String _fmt(num n) => n == n.roundToDouble() ? n.toInt().toString() : n.toString();
@@ -376,7 +453,7 @@ class IrDriver extends Driver {
         'Mitä näytetään',
         'What to show',
         kind: FieldKind.choice,
-        options: ['summary', 'power', 'temp', 'mode', 'fan', 'swing', 'room'],
+        options: ['summary', 'power', 'temp', 'mode', 'fan', 'swing', 'vane', 'sent', 'room'],
         optionLabels: {
           'summary': ('Yhteenveto', 'Summary'),
           'power': ('Virta', 'Power'),
@@ -384,6 +461,8 @@ class IrDriver extends Driver {
           'mode': ('Tila', 'Mode'),
           'fan': ('Puhallin', 'Fan'),
           'swing': ('Suuntaus', 'Swing'),
+          'vane': ('Siivekkeet', 'Vane'),
+          'sent': ('Lähetysaika', 'Sent at'),
           'room': ('Huonelämpö', 'Room temperature'),
         },
         defaultValue: 'summary',
@@ -398,13 +477,14 @@ class IrDriver extends Driver {
         'Mitä muutetaan',
         'What to change',
         kind: FieldKind.choice,
-        options: ['power', 'temp', 'mode', 'fan', 'swing'],
+        options: ['power', 'temp', 'mode', 'fan', 'swing', 'vane'],
         optionLabels: {
           'power': ('Virta', 'Power'),
           'temp': ('Asetuslämpö', 'Set temperature'),
           'mode': ('Tila', 'Mode'),
           'fan': ('Puhallin', 'Fan'),
           'swing': ('Suuntaus', 'Swing'),
+          'vane': ('Siivekkeet', 'Vane'),
         },
         helpFi: 'Koko tila lähetetään aina kerralla (IR toimii niin). Arvo tulee ruudusta tai kentästä "Arvo".',
         helpEn: 'The whole state is always sent at once. The value comes from the tile or "Value".',
@@ -438,6 +518,19 @@ class IrDriver extends Driver {
   /// Assumed states survive driver re-creation (config edits) within the app run.
   static final _states = <String, IrState>{};
   static void resetStates() => _states.clear();
+
+  /// v0.8.0: the last-sent state survives app restarts (AppState stores it).
+  static void Function(Map<String, dynamic> all)? persist;
+  static void restoreStates(Map<String, dynamic> all) {
+    for (final e in all.entries) {
+      if (e.value is Map) _states[e.key] = IrState.fromJson(e.value as Map);
+    }
+  }
+
+  static Map<String, dynamic> statesJson() => {for (final e in _states.entries) e.key: e.value.toJson()};
+
+  /// v0.8.0: room temperature from another tile (any sensor tile), by tile id.
+  static Object? Function(String tileId)? tileValue;
 
   final IrMqtt? _mqttOverride;
   IrMqtt? _mqtt;
@@ -639,7 +732,7 @@ class IrDriver extends Driver {
       case 'temp':
         final n = v is num ? v : num.tryParse('$v');
         if (n == null) throw DriverException(dtx('Lämpötila puuttuu.', 'Temperature missing.'));
-        next.temp = n.clamp(16, 31);
+        next.temp = n.clamp(s.dbl('minTemp', 16), s.dbl('maxTemp', 31));
       case 'mode':
         final m = '$v'.toLowerCase();
         if (!irModes.contains(m)) throw DriverException('mode: $v');
@@ -659,11 +752,18 @@ class IrDriver extends Driver {
         }
       case 'swing':
         next.swing = _truthy(v);
+      case 'vane':
+        final x = v is num ? irVanes[v.round().clamp(0, irVanes.length - 1)] : '$v'.toLowerCase();
+        if (!irVanes.contains(x)) throw DriverException('vane: $v');
+        next.vane = x;
+        next.swing = false; // a fixed position stops the swing
       default:
         throw DriverException('set: $what');
     }
     await _transmit(next);
+    next.sentAt = DateTime.now();
     _states[config.id] = next;
+    persist?.call(statesJson());
     _changes.add(next);
     return next;
   }
@@ -686,9 +786,26 @@ class IrDriver extends Driver {
         return irFans.indexOf(st.fan);
       case 'swing':
         return st.swing ? 'on' : 'off';
+      case 'vane':
+        return irVanes.indexOf(st.vane);
+      case 'sent':
+        return st.sentText(driverLang);
       default:
         return st.summary(driverLang);
     }
+  }
+
+  /// Summary tile: what was sent, when, and the room temperature from a linked sensor tile.
+  Object? _summary(Map<String, dynamic> spec, IrState st) {
+    final parts = [st.summary(driverLang)];
+    final room = spec.strOrNull('roomTile');
+    if (room != null) {
+      final v = tileValue?.call(room);
+      final n = v is num ? v : num.tryParse('$v'.replaceAll(',', '.'));
+      if (n != null) parts.add(tr(driverLang, 'huone ${_fmt(n)} °C', 'room ${_fmt(n)} °C'));
+    }
+    parts.add(st.sentText(driverLang));
+    return parts.join(' · ');
   }
 
   static final _tempRe = RegExp(r'"Temperature"\s*:\s*(-?\d+(?:\.\d+)?)');
@@ -728,8 +845,13 @@ class IrDriver extends Driver {
   @override
   Future<Object?> read(Map<String, dynamic> spec) async {
     final f = spec.str('field', 'summary');
-    if (f == 'room') return _room();
+    if (f == 'room') {
+      final linked = spec.strOrNull('roomTile');
+      if (linked != null) return tileValue?.call(linked);
+      return _room();
+    }
     if (transport == 'esphome') await _espRead();
+    if (f == 'summary' && transport != 'esphome') return _summary(spec, state);
     return _field(f, state);
   }
 
@@ -749,8 +871,9 @@ class IrDriver extends Driver {
     StreamSubscription? sub;
     out = StreamController<Object?>(
       onListen: () {
-        out.add(_field(f, state));
-        sub = _changes.stream.listen((st) => out.add(_field(f, st)));
+        Object? val(IrState st) => f == 'summary' ? _summary(spec, st) : _field(f, st);
+        out.add(val(state));
+        sub = _changes.stream.listen((st) => out.add(val(st)));
       },
       onCancel: () => sub?.cancel(),
     );

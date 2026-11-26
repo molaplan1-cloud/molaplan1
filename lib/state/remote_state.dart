@@ -6,6 +6,10 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
+import '../update/update_core.dart';
+
+import 'package:http/http.dart' as http;
+
 import '../remote/bridge_core.dart';
 import '../remote/e2e.dart';
 import '../remote/executor.dart';
@@ -82,6 +86,14 @@ class RemoteState extends ChangeNotifier {
     _setClient(RemoteClient(p));
     notifyListeners();
     return p;
+  }
+
+  /// 'Lisää kotisilta': the phone provisioned a Molaplan Bridge device and got its home connection.
+  Future<void> adoptPaired(PairedHome p) async {
+    await p.save(store);
+    paired = p;
+    _setClient(RemoteClient(p));
+    notifyListeners();
   }
 
   static const sharedKey = 'molaplan.remote.shared';
@@ -166,10 +178,32 @@ class RemoteState extends ChangeNotifier {
     return v is Map ? Map<String, dynamic>.from(v) : null;
   }
 
-  /// Phone side: "Päivitä silta".
-  Future<Map<String, dynamic>?> updateBridge() async {
+  /// Phone side: "Päivitä silta". An app bridge updates itself (R211); an ESP32 bridge gets the
+  /// latest release's signed OTA manifest (it verifies the Ed25519 signature, the version and the
+  /// image SHA-256 itself before flashing).
+  Future<Map<String, dynamic>?> updateBridge({Map<String, dynamic>? info, http.Client? client}) async {
     final c = router.client;
     if (c == null) return null;
+    final i = info ?? await fetchBridgeInfo();
+    if (i?['platform'] == 'esp32') {
+      final r = await checkLatest(current: '0.0.0', client: client);
+      final rel = r.release;
+      final asset = rel?.assets.where((a) => a.name == 'molaplan-bridge-esp32.manifest.json').firstOrNull;
+      if (rel == null || asset == null) return {'status': 'no_asset', 'current': i?['fw']};
+      final h = client ?? http.Client();
+      try {
+        final m = await h.get(Uri.parse(asset.url)).timeout(const Duration(seconds: 30));
+        if (m.statusCode != 200) return {'status': 'unavailable', 'current': i?['fw']};
+        final manifest = jsonDecode(m.body);
+        if (i?['fw'] == (manifest is Map ? manifest['version'] : null)) {
+          return {'status': 'up_to_date', 'current': i?['fw']};
+        }
+        await c.call('bridge', spec: {'action': 'update', 'manifest': manifest}, timeout: const Duration(seconds: 30));
+        return {'status': 'installing', 'silent': true, 'current': i?['fw'], 'latest': rel.version};
+      } finally {
+        if (client == null) h.close();
+      }
+    }
     final v = await c.call('bridge_update', spec: {'install': true}, timeout: const Duration(minutes: 3));
     return v is Map ? Map<String, dynamic>.from(v) : null;
   }

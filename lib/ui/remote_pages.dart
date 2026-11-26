@@ -10,6 +10,7 @@ import '../remote/bridge_core.dart';
 import '../remote/protocol.dart';
 import '../remote/remote_client.dart';
 import '../remote/router.dart';
+import 'add_bridge_page.dart';
 import 'app_scope.dart';
 import 'error_box.dart';
 import 'guides_page.dart';
@@ -146,6 +147,18 @@ Widget remoteChoices(BuildContext context, {bool showOthers = true}) => Column(
         if (!st.remote.bridgeOn) await st.setBridgeMode(true);
         if (context.mounted) await Navigator.push(context, MaterialPageRoute(builder: (_) => const BridgePage()));
       },
+    ),
+    // v0.8.0: a Molaplan Bridge device (ESP32 / Athom IR/RF) as the home bridge.
+    _ChoiceCard(
+      key: const ValueKey('remote-add-esp'),
+      icon: Icons.settings_input_antenna,
+      title: tx(context, 'Lisää kotisilta (Molaplan Bridge -laite)', 'Add home bridge (Molaplan Bridge device)'),
+      body: tx(
+        context,
+        'Pieni aina päällä oleva laite, esim. Athom IR/RF – ohjaa myös ilmalämpöpumppua. Asennus puhelimella parissa minuutissa.',
+        'A small always-on device, e.g. Athom IR/RF – also controls the heat pump. Set up with the phone in a couple of minutes.',
+      ),
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AddBridgePage())),
     ),
     if (showOthers)
       _ChoiceCard(
@@ -427,7 +440,7 @@ class _BridgeVersionTileState extends State<BridgeVersionTile> {
   Future<void> _update() async {
     setState(() => _updating = true);
     try {
-      final r = await AppScope.read(context).remote.updateBridge() ?? const {};
+      final r = await AppScope.read(context).remote.updateBridge(info: _info) ?? const {};
       if (!mounted) return;
       final latest = r['latest'] ?? '';
       showSnack(context, switch (r['status']) {
@@ -475,7 +488,10 @@ class _BridgeVersionTileState extends State<BridgeVersionTile> {
     final i = _info;
     final text = Theme.of(context).textTheme;
     final String line;
-    if (i != null && i['app'] != null) {
+    if (i != null && i['platform'] == 'esp32') {
+      line =
+          '${tx(context, 'Kotisilta', 'Home bridge')}: Molaplan Bridge ${i['fw'] ?? ''} (${i['boardName'] ?? i['board'] ?? 'ESP32'})';
+    } else if (i != null && i['app'] != null) {
       final how = i['platform'] != 'android'
           ? ''
           : i['deviceOwner'] == true
@@ -500,7 +516,7 @@ class _BridgeVersionTileState extends State<BridgeVersionTile> {
         const Icon(Icons.system_update_alt, size: 22),
         const SizedBox(width: 10),
         Expanded(child: Text(line, style: text.bodyMedium)),
-        if (i != null && i['app'] != null && i['platform'] == 'android')
+        if (i != null && ((i['app'] != null && i['platform'] == 'android') || i['platform'] == 'esp32'))
           TextButton(
             key: const ValueKey('bridge-update'),
             onPressed: _updating ? null : _update,

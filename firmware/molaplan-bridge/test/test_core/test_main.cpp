@@ -401,6 +401,17 @@ void test_irhvac() {
   back.fromJson(st.as<JsonObjectConst>());
   EQS(back.vane, "high");
   TEST_ASSERT_FALSE(back.power);
+  // The app's vane slider: 0 = the unit decides, 5 = lowest (same index both ways).
+  IrState w;
+  v.set(5);
+  TEST_ASSERT_TRUE(w.apply("vane", v.as<JsonVariantConst>(), err));
+  EQS(w.vane, "lowest");
+  JsonDocument f;
+  w.field("vane", "fi", f);
+  TEST_ASSERT_EQUAL(5, f.as<int>());
+  v.set(0);
+  TEST_ASSERT_TRUE(w.apply("vane", v.as<JsonVariantConst>(), err));
+  EQS(w.vane, "off");
   TEST_ASSERT_TRUE(s.summary("fi").size() > 0);
 }
 
