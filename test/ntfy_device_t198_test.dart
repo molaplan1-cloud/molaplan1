@@ -11,7 +11,7 @@ import 'package:molaplan/templates/device_templates.dart';
 
 import 'support/mock_ntfy.dart';
 
-/// A made-up panel (not any real product): commands "<cmd> <pin>" on "panel-cmd", replies on
+/// A made-up panel (not any real product): commands `<cmd> <pin>` on "panel-cmd", replies on
 /// the user's notification topic "user-notify" with the title "Paneeli".
 class Panel {
   Panel(this.ntfy, {this.json = false});
