@@ -20,6 +20,7 @@ import 'camera_view.dart';
 import 'icons.dart';
 import 'notify.dart';
 import 'price_tile.dart';
+import 'price_trend.dart';
 import 'price_rules_page.dart';
 import 'heatpump_pages.dart';
 import 'energy_pages.dart';
@@ -669,7 +670,9 @@ class _TileWidgetState extends State<TileWidget> {
                         key: ValueKey('mini-toggle-${t.id}'),
                         width: 34,
                         height: 20,
-                        child: FittedBox(child: Switch(value: on, onChanged: (_) {})),
+                        child: FittedBox(
+                          child: Switch(value: on, onChanged: (_) {}),
+                        ),
                       ),
                     )
                   : null;
@@ -918,6 +921,14 @@ class _TileWidgetState extends State<TileWidget> {
                 Expanded(child: _dial(context, r))
               else if (mv != null)
                 Expanded(child: mv)
+              else if (_isChart && r.value is Map && t.display == 'trend')
+                Expanded(
+                  child: PriceTrendBody(
+                    key: const ValueKey('tile-price-trend'),
+                    data: Map<String, dynamic>.from(r.value as Map),
+                    tile: t,
+                  ),
+                )
               else if (_isChart && r.value is Map)
                 Expanded(
                   child: PriceTileBody(
@@ -1092,25 +1103,25 @@ class _TileWidgetState extends State<TileWidget> {
     return MotionSwitch(
       id: _sliderDrag != null ? 'drag' : '${_format(v)}|${accent?.toARGB32()}',
       child: FittedBox(
-      fit: BoxFit.scaleDown,
-      alignment: Alignment.centerLeft,
-      child: Text.rich(
-        TextSpan(
-          children: [
-            TextSpan(text: _format(v)),
-            if (t.unit.isNotEmpty && v != null && t.mapValue(v) == null)
-              TextSpan(
-                text: ' ${t.unit}',
-                style: TextStyle(fontSize: 18, color: Theme.of(context).colorScheme.onSurfaceVariant),
-              ),
-          ],
+        fit: BoxFit.scaleDown,
+        alignment: Alignment.centerLeft,
+        child: Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(text: _format(v)),
+              if (t.unit.isNotEmpty && v != null && t.mapValue(v) == null)
+                TextSpan(
+                  text: ' ${t.unit}',
+                  style: TextStyle(fontSize: 18, color: Theme.of(context).colorScheme.onSurfaceVariant),
+                ),
+            ],
+          ),
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            fontWeight: FontWeight.w600,
+            color: accent,
+            fontSize: (Theme.of(context).textTheme.headlineMedium?.fontSize ?? 28) * size,
+          ),
         ),
-        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-          fontWeight: FontWeight.w600,
-          color: accent,
-          fontSize: (Theme.of(context).textTheme.headlineMedium?.fontSize ?? 28) * size,
-        ),
-      ),
       ),
     );
   }

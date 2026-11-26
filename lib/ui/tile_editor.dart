@@ -177,6 +177,33 @@ class _TileEditorState extends State<TileEditor> {
                   _sizeDrop(tx(context, 'Korkeus', 'Height'), t.h2, (v) => t.h2 = v),
                 ],
               ),
+              ..._cameraStreams(text),
+              if (t.type == TileType.value && t.read['field'] == 'chart') ...[
+                const SizedBox(height: 20),
+                Text(tx(context, 'Näyttötapa', 'Display'), style: text.titleSmall),
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    ChoiceChip(
+                      key: const ValueKey('price-look-bars'),
+                      avatar: const Icon(Icons.bar_chart, size: 18),
+                      label: Text(tx(context, 'Pylväät (15 min)', 'Bars (15 min)')),
+                      selected: t.display != 'trend',
+                      onSelected: (_) => setState(() => t.display = 'auto'),
+                    ),
+                    ChoiceChip(
+                      key: const ValueKey('price-look-trend'),
+                      avatar: const Icon(Icons.show_chart, size: 18),
+                      label: Text(tx(context, 'Trendi + Nyt-viiva', 'Trend + Now line')),
+                      selected: t.display == 'trend',
+                      onSelected: (_) => setState(() => t.display = 'trend'),
+                    ),
+                  ],
+                ),
+                if (t.display == 'trend') ...[..._trendLook(text), const SizedBox(height: 12), _colorPresets(text)],
+              ],
               if (isMeasureTile(t)) ...[
                 const SizedBox(height: 20),
                 Text(tx(context, 'Näyttötapa', 'Display'), style: text.titleSmall),
@@ -498,9 +525,7 @@ class _TileEditorState extends State<TileEditor> {
       isExpanded: true,
       initialValue: half.clamp(1, 8),
       decoration: InputDecoration(labelText: label),
-      items: [
-        for (var i = 1; i <= 8; i++) DropdownMenuItem(value: i, child: Text(halfLabel(i, langOf(context)))),
-      ],
+      items: [for (var i = 1; i <= 8; i++) DropdownMenuItem(value: i, child: Text(halfLabel(i, langOf(context))))],
       onChanged: (v) => setState(() => set(v ?? 2)),
     ),
   );
@@ -673,6 +698,39 @@ class _TileEditorState extends State<TileEditor> {
   }
 
   /// t150u (simple part): a colour preset and liukuva / jyrkkä; the limits under Edistyneet.
+  /// t153u: a dual-lens / multi-channel camera is one device; each tile picks its stream.
+  List<Widget> _cameraStreams(TextTheme text) {
+    if (t.type != TileType.camera) return const [];
+    final c = AppScope.read(context).connection(t.connectionId);
+    final list = c?.settings['streams'];
+    if (list is! List || list.length < 2) return const [];
+    final cur = (t.read['stream'] as num?)?.toInt() ?? 0;
+    return [
+      const SizedBox(height: 20),
+      Text(tx(context, 'Kuvavirta', 'Stream'), style: text.titleSmall),
+      const SizedBox(height: 8),
+      Wrap(
+        spacing: 8,
+        runSpacing: 8,
+        children: [
+          for (var i = 0; i < list.length; i++)
+            ChoiceChip(
+              key: ValueKey('camera-stream-$i'),
+              label: Text(tx(context, 'Linssi / kanava ${i + 1}', 'Lens / channel ${i + 1}')),
+              selected: cur == i,
+              onSelected: (_) => setState(() {
+                final snap = list[i] is Map ? (list[i] as Map)['snapshot'] as String? : null;
+                t.read = snap != null
+                    ? {...t.read, 'stream': i, 'mode': 'snapshot', 'path': snap}
+                    : ({...t.read, 'stream': i, 'mode': 'rtsp'}..remove('path'));
+                _readKey++;
+              }),
+            ),
+        ],
+      ),
+    ];
+  }
+
   Widget _colorPresets(TextTheme text) {
     final lang = langOf(context);
     final current = colorPresets.indexWhere((p) => sameThresholds(p.thresholds, t.thresholds));

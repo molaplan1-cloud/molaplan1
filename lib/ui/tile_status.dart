@@ -44,7 +44,16 @@ TileIssue tileIssue(BuildContext context, ConnectionConfig? c, String err, NetHe
     );
   }
   final text = switch (k) {
-    ErrorKind.auth => tx(context, 'Kirjautuminen vanhentunut', 'Sign-in expired'),
+    ErrorKind.auth || ErrorKind.cloudAuth => tx(context, 'Kirjautuminen vanhentunut', 'Sign-in expired'),
+    ErrorKind.cloudOffline => tx(context, 'Ei nettiyhteyttä', 'No internet'),
+    ErrorKind.modbusPortClosed => tx(context, 'Modbus ei päällä', 'Modbus is off'),
+    ErrorKind.modbusHostUnreachable ||
+    ErrorKind.modbusConnectTimeout => tx(context, 'Laite ei vastaa', 'Device not responding'),
+    ErrorKind.modbusGateway => tx(context, 'Väärä unit id?', 'Wrong unit id?'),
+    ErrorKind.modbusBlocked => tx(context, 'Estotila', 'Lockout'),
+    ErrorKind.modbusNoHost => tx(context, 'Osoite puuttuu', 'No address'),
+    ErrorKind.modbusBusy => tx(context, 'Varattu (HA?)', 'Busy (HA?)'),
+    ErrorKind.cloudService => tx(context, 'Palvelu ei vastaa', 'Service not answering'),
     ErrorKind.unreachable ||
     ErrorKind.noResponse ||
     ErrorKind.refused ||
@@ -373,9 +382,7 @@ class _ShellyCloudSwitchSheetState extends State<ShellyCloudSwitchSheet> {
               key: const ValueKey('switch-key'),
               controller: keyCtl,
               obscureText: true,
-              decoration: InputDecoration(
-                labelText: tx(context, 'Pilviavain', 'Cloud key'),
-              ),
+              decoration: InputDecoration(labelText: tx(context, 'Pilviavain', 'Cloud key')),
             ),
             const SizedBox(height: 12),
             TextField(

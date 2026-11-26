@@ -30,4 +30,15 @@ const driverDescriptors = <DriverDescriptor>[
 DriverDescriptor descriptorFor(String type) =>
     driverDescriptors.firstWhere((d) => d.type == type, orElse: () => HttpDriver.descriptor);
 
-Driver createDriver(ConnectionConfig c) => descriptorFor(c.type).create(c);
+Driver createDriver(ConnectionConfig c) => c.settings['demo'] == true ? DemoDriver(c) : descriptorFor(c.type).create(c);
+
+/// t156u: example devices – never touch the network; tiles show their spec's 'demoValue'.
+class DemoDriver extends Driver {
+  DemoDriver(super.config);
+  @override
+  Future<Object?> read(Map<String, dynamic> spec) async => spec['demoValue'];
+  @override
+  Future<Object?> send(Map<String, dynamic> spec, {Object? value}) async => value;
+  @override
+  Future<String> test() async => 'Esimerkkilaite – ei verkkoyhteyttä / example device, no network';
+}

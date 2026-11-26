@@ -1,22 +1,24 @@
 import '../models/models.dart';
 import '../l10n/l10n.dart';
 
-/// Example dashboard showing the idea; the user replaces addresses with theirs.
+/// Example dashboard showing the idea. t156u: the example devices are demos – no address, no
+/// network I/O (settings['demo'] → DemoDriver shows the sample values in the tiles' specs), so
+/// nothing ever talks to a made-up IP and no made-up IP can end up on a real device.
 AppConfig exampleConfig(String lang) {
   final ha = ConnectionConfig(
-    name: 'Home Assistant',
+    name: tr(lang, 'Home Assistant (esimerkki)', 'Home Assistant (example)'),
     type: 'homeassistant',
-    settings: {'baseUrl': 'http://homeassistant.local:8123', 'liveUpdates': true},
+    settings: {'demo': true},
   );
   final cam = ConnectionConfig(
-    name: tr(lang, 'ESP32-kamera', 'ESP32 camera'),
+    name: tr(lang, 'Kamera (esimerkki)', 'Camera (example)'),
     type: 'camera',
-    settings: {'baseUrl': 'http://192.168.1.70', 'auth': 'none'},
+    settings: {'demo': true},
   );
   final iv = ConnectionConfig(
-    name: tr(lang, 'IV-kone (Modbus)', 'Ventilation unit (Modbus)'),
+    name: tr(lang, 'IV-kone (esimerkki)', 'Ventilation unit (example)'),
     type: 'modbus',
-    settings: {'host': '192.168.1.60', 'port': 502, 'unitId': 1},
+    settings: {'demo': true},
   );
   final tiles = <TileConfig>[
     TileConfig(
@@ -32,7 +34,7 @@ AppConfig exampleConfig(String lang) {
       title: tr(lang, 'Hälytys', 'Alarm'),
       icon: 'alarm',
       connectionId: ha.id,
-      read: {'entityId': 'alarm_control_panel.koti'},
+      read: {'entityId': 'alarm_control_panel.koti', 'demoValue': 'disarmed'},
       valueMap: tr(lang, 'disarmed=Pois;armed_away=Päällä;armed_home=Kotona;triggered=HÄLYTYS', ''),
       onCommand: CommandStep(
         connectionId: ha.id,
@@ -49,7 +51,7 @@ AppConfig exampleConfig(String lang) {
       title: tr(lang, 'Olohuoneen valot', 'Living room lights'),
       icon: 'lightbulb',
       connectionId: ha.id,
-      read: {'entityId': 'light.olohuone'},
+      read: {'entityId': 'light.olohuone', 'demoValue': 'on'},
       onCommand: CommandStep(connectionId: ha.id, spec: {'service': 'light.turn_on', 'entityId': 'light.olohuone'}),
       offCommand: CommandStep(connectionId: ha.id, spec: {'service': 'light.turn_off', 'entityId': 'light.olohuone'}),
     ),
@@ -58,7 +60,7 @@ AppConfig exampleConfig(String lang) {
       title: tr(lang, 'Tuloilma', 'Supply air'),
       icon: 'thermostat',
       connectionId: iv.id,
-      read: {'table': 'holding', 'address': 10, 'dataType': 'int16', 'scale': 0.1},
+      read: {'table': 'holding', 'address': 10, 'dataType': 'int16', 'scale': 0.1, 'demoValue': 19.5},
       unit: '°C',
       pollSeconds: 15,
       thresholds: [Threshold(-50, 0xFF42A5F5), Threshold(17, 0xFF4CAF50), Threshold(24, 0xFFFF7043)],
@@ -68,7 +70,7 @@ AppConfig exampleConfig(String lang) {
       title: tr(lang, 'IV-kone nopeus', 'Fan speed'),
       icon: 'fan',
       connectionId: iv.id,
-      read: {'table': 'holding', 'address': 20},
+      read: {'table': 'holding', 'address': 20, 'demoValue': 2},
       min: 0,
       max: 4,
       step: 1,

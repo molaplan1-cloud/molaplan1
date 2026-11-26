@@ -10,6 +10,55 @@ class AppLocalizationsFi extends AppLocalizations {
   AppLocalizationsFi([String locale = 'fi']) : super(locale);
 
   @override
+  String get sc1e35d5171 => 'Hintapalvelu';
+
+  @override
+  String get s8b22e8d330 => 'Sääpalvelu';
+
+  @override
+  String get s252ebed5af => 'Shelly Cloud';
+
+  @override
+  String get s10edebf3fa => 'ntfy-palvelin';
+
+  @override
+  String get sd3d9c263ed => 'Palvelu';
+
+  @override
+  String get sdfb639365a => 'Ei nettiyhteyttä';
+
+  @override
+  String s390dd51af3(String p0) {
+    return '$p0 on internetissä, eikä siihen saatu yhteyttä. Tarkista tämän laitteen nettiyhteys. Viimeisimmät tiedot näytetään, kun niitä on.';
+  }
+
+  @override
+  String sbb750bf9d6(String p0) {
+    return '$p0 ei vastaa, yritetään varalähdettä';
+  }
+
+  @override
+  String s4284ebac1e(String p0) {
+    return '$p0 ei vastaa';
+  }
+
+  @override
+  String get s828d009fa6 =>
+      'Myöskään varalähteistä ei saatu tietoja juuri nyt. Vika on todennäköisesti palveluissa, ei kotiverkossasi. Yritetään automaattisesti uudelleen.';
+
+  @override
+  String get se21c801ba6 =>
+      'Palvelussa on häiriö. Vika on todennäköisesti palvelussa, ei kotiverkossasi. Yritetään automaattisesti uudelleen.';
+
+  @override
+  String get s35e0766add => 'Kirjautuminen palveluun ei onnistunut';
+
+  @override
+  String sa4d255e53c(String p0) {
+    return 'Tarkista palvelun tunnus, avain tai token ($p0).';
+  }
+
+  @override
   String get sd0a2130950 =>
       'Osoitteessa ei vastaa odotettu laite – tarkista osoite (http vai https?)';
 
@@ -88,6 +137,58 @@ class AppLocalizationsFi extends AppLocalizations {
       'Arvo on luultavasti sallitun alueen ulkopuolella. Tarkista myös kerroin.';
 
   @override
+  String get s7746921882 => 'Laite löytyi, mutta Modbus TCP ei ole päällä';
+
+  @override
+  String get s7e552bd146 =>
+      'Osoitteessa on laite, mutta se ei ota vastaan Modbus-yhteyttä tähän porttiin. Laita Modbus TCP päälle laitteen asetuksista (usein valikossa Verkko / Modbus / Etäohjaus) ja tarkista portti (yleensä 502). Voit myös painaa \"Skannaa Modbus\". Jos laite toimii Home Assistantissa, sillä voi olla jo yhteys (moni laite sallii vain yhden) – lue arvot HA:n kautta.';
+
+  @override
+  String s0ebc613f20(String p0) {
+    return 'Laite on estotilassa, yritetään uudelleen klo $p0';
+  }
+
+  @override
+  String get s317b2b59af =>
+      'Laite ei vastannut, joten sitä ei kysytä hetkeen – moni laite menee estotilaan, jos sitä kysytään liian usein. Tauko pitenee 30 sekunnista 5 minuuttiin. Jos laitteella on jo yhteys (esim. Home Assistant), lue arvot HA:n kautta. Lukuvälin ja tauot voi muuttaa yhteyden kohdasta Edistyneet.';
+
+  @override
+  String get s33e09089b2 => 'Laitteen osoite puuttuu';
+
+  @override
+  String get s6180bd540e =>
+      'Avaa yhteys ja anna laitteen IP-osoite, tai paina \"Skannaa Modbus\", niin sovellus etsii laitteen verkosta.';
+
+  @override
+  String get sd73581c910 => 'Laitteella voi olla jo yhteys';
+
+  @override
+  String get scee8d982a2 =>
+      'Laite katkaisi Modbus-yhteyden heti. Moni laite sallii vain yhden Modbus TCP -yhteyden kerrallaan. Jos laite on jo Home Assistantissa (esim. modbus.yaml), lue arvot HA:n kautta.';
+
+  @override
+  String get s6ca672a111 => 'Osoitteessa ei ole laitetta';
+
+  @override
+  String get sf7a98e1c70 =>
+      'Tähän IP-osoitteeseen ei saatu yhteyttä. Tarkista että laite on päällä ja samassa verkossa, ja että IP-osoite on oikein (se voi vaihtua – varaa reitittimestä kiinteä osoite). \"Skannaa Modbus\" etsii laitteet verkosta.';
+
+  @override
+  String get scb0cba44ea => 'Modbus-laite ei vastannut ajoissa';
+
+  @override
+  String get sc03ae7e1c5 =>
+      'Yhteyttä porttiin ei saatu muodostettua. Yleisimmät syyt: väärä IP-osoite, laite on toisessa verkossa (vieras-wifi), Modbus TCP ei ole päällä tai palomuuri estää portin. Tarkista osoite ja portti tai paina \"Skannaa Modbus\".';
+
+  @override
+  String get sefba540275 =>
+      'Yhdyskäytävä ei tavoita laitetta tällä unit id:llä';
+
+  @override
+  String get s6e4ed361f3 =>
+      'Modbus-yhdyskäytävä vastasi, mutta sen takana ei ole laitetta tällä osoitteella (unit id). Tarkista laitteen Modbus-osoite (usein 1) sekä sarjaportin nopeus ja pariteetti. \"Skannaa Modbus\" kokeilee osoitteet 1–247.';
+
+  @override
   String get sb66bc0e677 => 'Laite ei vastannut Modbus-kyselyyn';
 
   @override
@@ -120,9 +221,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s2cd1df086e =>
       'Etäyhteys kulkee kotona olevan sillan (tabletti tai PC) kautta. Tarkista että se on päällä, Molaplan on auki ja sillä on netti.';
-
-  @override
-  String get sdfb639365a => 'Ei nettiyhteyttä';
 
   @override
   String get sdbf06d05d9 =>
@@ -438,6 +536,15 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sceabe202da => 'provider';
 
   @override
+  String get s1a73b397a1 => 'gk-200';
+
+  @override
+  String get sb8a029d8b4 => 'ds-2';
+
+  @override
+  String get s2e87289ebd => 'tp-link';
+
+  @override
   String get s834e3e8c5d => 'iphone';
 
   @override
@@ -614,9 +721,6 @@ class AppLocalizationsFi extends AppLocalizations {
       'Yleensä ei tarvita – laitteet haetaan automaattisesti. Jos ei löydy: Shelly-sovellus → laite → asetukset → Laitetiedot → Device ID. Useita pilkulla eroteltuna.';
 
   @override
-  String get s252ebed5af => 'Shelly Cloud';
-
-  @override
   String get s25399cd337 => 'Palvelin';
 
   @override
@@ -681,6 +785,14 @@ class AppLocalizationsFi extends AppLocalizations {
       'Ezviz-sovellus → kamera → Asetukset → LAN Live View / RTSP: laita päälle (jos valinta on).';
 
   @override
+  String get s70625d8bbe =>
+      'eWeLink-sovelluksessa kameralle asetettu käyttäjä ja salasana (RTSP/ONVIF). Kaksilinssisessä mallissa molemmat linssit tulevat samasta laitteesta.';
+
+  @override
+  String get s1a3c354399 =>
+      'eWeLink-sovellus → kamera → Asetukset: laita RTSP/ONVIF päälle ja aseta sille käyttäjä ja salasana (jos valinta on).';
+
+  @override
   String get s1c2786e15f =>
       'Kameran käyttäjä ja salasana (usein admin). ONVIF pitää ehkä laittaa päälle kameran asetuksista.';
 
@@ -688,8 +800,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s32270de47a => 'Valvontakamera';
 
   @override
-  String get s4d3ff251d6 =>
-      'Hikvision, Dahua, Reolink, Tapo, Ezviz tai muu ONVIF-kamera. Kuva ruutuun, live-video kotona.';
+  String get s652458eb87 =>
+      'Hikvision, Dahua, Reolink, Tapo, Ezviz, Sonoff tai muu ONVIF/RTSP-kamera. Kuva ruutuun, live-video kotona.';
 
   @override
   String get se8ea97c5eb =>
@@ -702,10 +814,48 @@ class AppLocalizationsFi extends AppLocalizations {
   String get seeb6c38c8e => 'Kamera';
 
   @override
+  String s83d937ae6b(String p0, String p1) {
+    return 'Kuvavirta $p0/$p1 (oma linssi tai kanava)';
+  }
+
+  @override
   String get s136c6f0d2b => 'Kuva ruutuun, live-video kotiverkossa';
 
   @override
   String get s2101774157 => 'Live-video kotiverkossa (ei kuvaa etänä)';
+
+  @override
+  String sd63d34bfe9(String p0) {
+    return 'YAML-tiedostoa ei voitu lukea: $p0';
+  }
+
+  @override
+  String sc5c9e5e2fc(String p0) {
+    return '\"$p0\" käyttää sarjaporttia (USB/RS485) – tarvitset RS485 → TCP -yhdyskäytävän.';
+  }
+
+  @override
+  String get s77bf3b424f => '0=Pois;1=Päällä';
+
+  @override
+  String get s4cbe24240f => 'Päällä';
+
+  @override
+  String get s33831dd49f => 'Pois';
+
+  @override
+  String s69135546c8(String p0) {
+    return '$p0 – asetus';
+  }
+
+  @override
+  String sd88c13e972(String p0) {
+    return '\"$p0\" ohitettiin – lisää ne käsin.';
+  }
+
+  @override
+  String get sceebf690e3 =>
+      'YAML:sta ei löytynyt Modbus TCP -yhteyttä (modbus: … type: tcp, host: …).';
 
   @override
   String get sb662db81d8 =>
@@ -1359,7 +1509,28 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s68cbe596f8 => 'Kirjautuminen vanhentunut';
 
   @override
+  String get s599357f47b => 'Ei nettiyhteyttä';
+
+  @override
+  String get s74fa2d56aa => 'Modbus ei päällä';
+
+  @override
   String get s156aa7eeb3 => 'Laite ei vastaa';
+
+  @override
+  String get sbf2cfbb102 => 'Väärä unit id?';
+
+  @override
+  String get s9be06479ff => 'Estotila';
+
+  @override
+  String get s613938b0b3 => 'Osoite puuttuu';
+
+  @override
+  String get s252d8628c7 => 'Varattu (HA?)';
+
+  @override
+  String get s0e3a6bafbf => 'Palvelu ei vastaa';
 
   @override
   String get s7abcbf1107 => 'Palvelinta ei löydy';
@@ -1417,6 +1588,39 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s09f5da65e0 => 'Vaihda Shelly Cloudiin';
 
   @override
+  String get sa846059775 => 'Home Assistant lukee jo tätä laitetta';
+
+  @override
+  String get s18a1844439 =>
+      'Laitteella voi olla jo yhteys (esim. Home Assistant) – lue arvot HA:n kautta. Moni laite sallii vain yhden Modbus TCP -yhteyden.';
+
+  @override
+  String sa29df4fc6b(String p0) {
+    return '$p0 Modbus-arvoa löytyi Home Assistantista. Moni laite sallii vain yhden Modbus TCP -yhteyden, joten HA:n kautta lukeminen on varmin tapa.';
+  }
+
+  @override
+  String get sb8c40d2c20 => 'Käytä Home Assistantin kautta';
+
+  @override
+  String get s810014ca02 => 'Tuo Home Assistantin modbus.yaml';
+
+  @override
+  String get sfbf34ee532 =>
+      'Liitä modbus.yaml (tai configuration.yaml:n modbus:-osa). Yhteys ja laatat tehdään samoilla rekistereillä ja ajoituksilla.';
+
+  @override
+  String s2d4fbaade1(String p0, String p1) {
+    return '$p0 yhteys, $p1 laattaa';
+  }
+
+  @override
+  String get s580678cb10 => 'Tuo';
+
+  @override
+  String get s108e078c0c => 'Modbus-laite tuotu Home Assistantista';
+
+  @override
   String get sa3a093e55e => 'Lämmitys';
 
   @override
@@ -1424,9 +1628,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s0b98d62330 => 'Lämmitys ja jäähdytys';
-
-  @override
-  String get s33831dd49f => 'Pois';
 
   @override
   String get sa61efb9866 => 'lämmittää';
@@ -1727,6 +1928,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s0a9acb5af1 => 'Etsi';
 
   @override
+  String get se3ef5a5658 => 'Skannaa Modbus';
+
+  @override
   String get s9a018b8166 =>
       'Et ole kotona: kotisilta etsi laitteet kotiverkosta.';
 
@@ -1827,7 +2031,64 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s049d71f971 => 'viimeksi';
 
   @override
+  String get s3ec9d77947 => 'huom.';
+
+  @override
   String get sed9b5e52f6 => 'nyt';
+
+  @override
+  String get s1b85ad9e38 =>
+      'Etsii kotiverkosta laitteet, joissa Modbus TCP on päällä (portit 502, 503 ja 5020), ja kokeilee laitteen osoitteet (unit id). Kestää noin puoli minuuttia.';
+
+  @override
+  String get seb1f4357ea => 'Oma portti (valinnainen)';
+
+  @override
+  String get s06760a6970 => 'Skannaa uudelleen';
+
+  @override
+  String get s23d146db23 => 'Skannaa';
+
+  @override
+  String get s18e7ad553e => 'Skannataan…';
+
+  @override
+  String get s721647a6cd => 'Et ole kotona: kotisilta skannasi kotiverkon.';
+
+  @override
+  String get s08e57d2d85 => 'Skannaus epäonnistui';
+
+  @override
+  String get s4cf60b9350 =>
+      'Modbus-laitteita ei löytynyt. Tarkista että Modbus TCP on päällä laitteen asetuksista ja että laite on samassa verkossa (ei vieras-wifissä).';
+
+  @override
+  String get sbd8ee8a14f => 'Modbus-laite';
+
+  @override
+  String get sf0462b25ac => 'yhdyskäytävä';
+
+  @override
+  String s28d9c4c7dc(String p0) {
+    return '$p0-esiasetus';
+  }
+
+  @override
+  String get sc6cde0d476 => 'löytyi ilmoituksesta';
+
+  @override
+  String get s166da70285 => 'Laite ei ota yhteyttä vastaan';
+
+  @override
+  String get sbe97262d91 =>
+      'Laitteella voi olla jo yhteys (esim. Home Assistant), lue arvot HA:n kautta. Moni laite sallii vain yhden Modbus TCP -yhteyden.';
+
+  @override
+  String get s24e5139123 => 'Portti auki, mutta ei Modbus-vastausta';
+
+  @override
+  String get s9041c140be =>
+      'Tarkista laitteen unit id ja Modbus-asetukset. Napauta käyttääksesi tätä osoitetta.';
 
   @override
   String get s55d52c5ae1 => 'Tämä laite ei ole yhteydessä wifiin';
@@ -1893,6 +2154,13 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get sb03997d94b =>
       'Laite vastasi, mutta siinä ei ollut kytkimiä tai valoja. Jos käytät pilveä, kirjoita laitteen tunnus (Device ID) käsin.';
+
+  @override
+  String get se6e01118ac => 'Kamera löytyi, mutta videon osoitetta ei löytynyt';
+
+  @override
+  String get sca994210fb =>
+      'Kamera vastasi, mutta ei kertonut videokuvan osoitetta, eikä yksikään yleisistä RTSP-osoitteista toiminut tällä tunnuksella. Tarkista että RTSP/ONVIF on päällä kameran sovelluksessa, tai valitse merkki alta ja paina \"Yhdistä\".';
 
   @override
   String get s869571042f => 'Pilviavain tai palvelin ei kelpaa';
@@ -2097,6 +2365,16 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sf77125583f => 'Tekniset tiedot';
+
+  @override
+  String get sb629592b4b => 'Kameran merkki';
+
+  @override
+  String get se3aa0f7164 => 'RTSP-osoite';
+
+  @override
+  String get s722ac06c6d =>
+      'Ilman tunnusta – käyttäjä ja salasana lisätään itse.';
 
   @override
   String s77ec7b376b(String p0) {
@@ -2980,6 +3258,31 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s7efc5653d2 => 'Laitteen kieli';
 
   @override
+  String get s306729fe62 => 'Ei hintoja';
+
+  @override
+  String get sff03a35d96 => 'tunnin päästä';
+
+  @override
+  String get sf9e22ac5e7 => 'vanhat hinnat';
+
+  @override
+  String get s40fbbc4d00 => '12h';
+
+  @override
+  String get s140acccb81 => 'Tänään';
+
+  @override
+  String get s76379cf7c6 => '48h';
+
+  @override
+  String get s252f182d27 => 'huominen n. klo 14';
+
+  @override
+  String get sa0bd9ad5b1 =>
+      'Esimerkkikamera – lisää oma kamerasi Lisää laite -painikkeella';
+
+  @override
   String get s4529c1010a => 'Valitse kamerayhteys';
 
   @override
@@ -3090,9 +3393,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sb1f0e72163 => 'sunnuntai';
-
-  @override
-  String get s306729fe62 => 'Ei hintoja';
 
   @override
   String get s80c4ecec94 => 'c/t';
@@ -3214,9 +3514,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s406e599999 =>
       'Ei päälläoloa seuraavan vuorokauden aikana (tai huomisen hinnat puuttuvat vielä).';
-
-  @override
-  String get s140acccb81 => 'Tänään';
 
   @override
   String get s0de6e75a52 => 'Huomenna';
@@ -3567,6 +3864,12 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sd7314e8237 => 'Näyttötapa';
 
   @override
+  String get s7d6cee9e42 => 'Pylväät (15 min)';
+
+  @override
+  String get sc0e069225b => 'Trendi + Nyt-viiva';
+
+  @override
   String get s1c72b8c56a => 'Trendin pituus';
 
   @override
@@ -3686,6 +3989,14 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s29135ed75a =>
       'Auto: akselit ja apuviivat näkyvät, kun ruutu on vähintään 2×2.';
+
+  @override
+  String get s638c648b40 => 'Kuvavirta';
+
+  @override
+  String s32ef3895b8(String p0) {
+    return 'Linssi / kanava $p0';
+  }
 
   @override
   String get s939603242a => 'Värit arvon mukaan';
@@ -4217,9 +4528,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sfb1a18d11f => 'Päivitä';
 
   @override
-  String get s4cbe24240f => 'Päällä';
-
-  @override
   String get s72a2328ddd => 'Valot';
 
   @override
@@ -4396,9 +4704,6 @@ class AppLocalizationsFi extends AppLocalizations {
       'Kaikki nykyiset yhteydet ja näkymät korvataan tiedoston sisällöllä.';
 
   @override
-  String get s580678cb10 => 'Tuo';
-
-  @override
   String get s5f2ec17730 => 'Asetukset tuotu';
 
   @override
@@ -4484,8 +4789,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s34686ffb09 => 'Esimerkki';
 
   @override
-  String get s412c666544 =>
-      'Lisää esimerkkinäkymä (kamera, hälytys, valot, IV-kone). Vaihda osoitteet omiksesi.';
+  String get sc8327738b3 =>
+      'Lisää esimerkkinäkymä (kamera, hälytys, valot, IV-kone). Esimerkkilaitteet eivät ota yhteyttä mihinkään – lisää omat laitteesi Lisää laite -painikkeella.';
 
   @override
   String get sec02c7c071 => 'Lisää esimerkkinäkymä';
@@ -5084,6 +5389,54 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s15e327bf8e => 'Aikakatkaisu (ms)';
 
   @override
+  String get s666811be3d => 'Kehystys';
+
+  @override
+  String get s0f2d3b7a42 =>
+      'Halpa RS485–wifi/ethernet-muunnin läpinäkyvässä tilassa käyttää RTU-kehyksiä.';
+
+  @override
+  String get s12ca822cd8 => 'Modbus TCP (tavallinen)';
+
+  @override
+  String get s731c92978b => 'Modbus RTU TCP:n yli (RS485-yhdyskäytävä)';
+
+  @override
+  String get s570f11bec8 => 'Lukuväli vähintään (s)';
+
+  @override
+  String get s13e54dbff1 =>
+      'Samaa rekisteriä ei lueta tätä useammin, vaikka laattoja olisi monta.';
+
+  @override
+  String get s95d4c6dd5b => 'Tauko kyselyjen välissä (ms)';
+
+  @override
+  String get s77b6667fdb => 'Odotus yhdistämisen jälkeen (ms)';
+
+  @override
+  String get sf4b0409574 => 'Yhdistä peräkkäiset luvut';
+
+  @override
+  String get sc011aad1a9 => 'Rekistereitä yhdessä luvussa enintään';
+
+  @override
+  String get s942a690567 => 'Estotilan tauko alussa (s)';
+
+  @override
+  String get s3746551251 =>
+      'Kun laite ei vastaa, sitä ei kysytä hetkeen. Tauko kaksinkertaistuu enimmäisarvoon asti.';
+
+  @override
+  String get sf71d800450 => 'Estotilan tauko enintään (s)';
+
+  @override
+  String get sbce68f8691 => 'Sulje yhteys virheen jälkeen';
+
+  @override
+  String get sf96bb0c03d => 'Kysy uudelleen tyhjän vastauksen jälkeen';
+
+  @override
   String get s943b8b6bf3 => 'Rekisterityyppi';
 
   @override
@@ -5374,10 +5727,13 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get s804e935440 => 'ESP32-kamera';
+  String get s589eb1bcd3 => 'Home Assistant (esimerkki)';
 
   @override
-  String get s478ddb6e1a => 'IV-kone (Modbus)';
+  String get sc4fdb87cd7 => 'Kamera (esimerkki)';
+
+  @override
+  String get sd50566a706 => 'IV-kone (esimerkki)';
 
   @override
   String get s4b4fd14aaf => 'Piha';
@@ -5732,8 +6088,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s6385f1487e => 'Sähkön hinta (pörssisähkö)';
 
   @override
-  String get se807a72c0a =>
-      'Tämän ja huomisen päivän pörssisähkön hinta kaaviona, 15 minuutin tarkkuudella. Hintaohjaus: paina laitteen ruutua pitkään → Hintaohjaus.';
+  String get sead3949d3c =>
+      'Tämän ja huomisen päivän pörssisähkön hinta kaaviona, 15 minuutin tarkkuudella: trendi Nyt-viivalla ja/tai pylväät. Hintaohjaus: paina laitteen ruutua pitkään → Hintaohjaus.';
 
   @override
   String get sef8d24c969 => 'Maa / hinta-alue';
@@ -5741,6 +6097,19 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get sef4f509f9f =>
       'Suomessa FI. Ruotsissa ja Norjassa valitse alue, jolla asut.';
+
+  @override
+  String get s5e8c8e4273 => 'Näkymä';
+
+  @override
+  String get s9f6d9ce1bf =>
+      'Trendi näyttää tämän päivän ja huomisen hinnan viivana ja Nyt-kohdan.';
+
+  @override
+  String get s51f1184efb => 'Trendi ja pylväät (2 ruutua)';
+
+  @override
+  String get sa77af9de19 => 'Hinnan trendi (viiva, Nyt-viiva)';
 
   @override
   String get sf3a8631d14 =>
@@ -5753,6 +6122,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String s49dfca65a3(String p0) {
     return 'Sähkön hinta $p0';
   }
+
+  @override
+  String get s9772b9b5c4 => 'Sähkön hinnan trendi';
 
   @override
   String get s9af9526395 => 'IV-kone (Modbus TCP)';

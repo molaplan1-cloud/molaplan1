@@ -80,8 +80,30 @@ class PriceSettings {
 }
 
 class PriceSeries {
-  PriceSeries(this.zone, this.points, {this.source = '', this.license = '', DateTime? fetched, this.stale = false})
-    : fetched = fetched ?? DateTime.now();
+  PriceSeries(
+    this.zone,
+    this.points, {
+    this.source = '',
+    this.license = '',
+    DateTime? fetched,
+    this.stale = false,
+    this.tried = const [],
+  }) : fetched = fetched ?? DateTime.now();
+
+  /// Sources tried before a stale copy was used (empty when fresh).
+  final List<String> tried;
+
+  /// Same shape as the relay's answer (also what is stored on disk).
+  Map<String, dynamic> toJson() => {
+    'zone': zone,
+    'unit': 'EUR/MWh',
+    'resolution': resolution,
+    'source': source,
+    'license': license,
+    'points': [
+      for (final p in points) [p.start.millisecondsSinceEpoch ~/ 1000, p.eurMwh],
+    ],
+  };
 
   /// True when the last fetch failed and these are older cached prices.
   final bool stale;
@@ -119,7 +141,12 @@ class PriceSeries {
     return PriceSeries(zone, out, source: source, license: license, fetched: fetched);
   }
 
-  static PriceSeries fromJson(Map<String, dynamic> j, {DateTime? fetched, bool stale = false}) {
+  static PriceSeries fromJson(
+    Map<String, dynamic> j, {
+    DateTime? fetched,
+    bool stale = false,
+    List<String> tried = const [],
+  }) {
     final res = (j['resolution'] as num?)?.toInt() ?? 3600;
     final pts = <PricePoint>[
       for (final p in (j['points'] as List? ?? const []))
@@ -131,10 +158,58 @@ class PriceSeries {
       pts,
       source: '${j['source'] ?? ''}',
       license: '${j['license'] ?? ''}',
-      fetched: fetched,
-      stale: stale,
+      fetched:
+          fetched ??
+          (j['stale'] == true && j['updated'] is num
+              ? DateTime.fromMillisecondsSinceEpoch((j['updated'] as num).toInt())
+              : null),
+      stale: stale || j['stale'] == true,
+      tried: tried,
     );
   }
+}
+
+/// Zones Elering (Estonian TSO, Nord Pool day-ahead) publishes, keys in its answer.
+const eleringZones = {'FI', 'EE', 'LV', 'LT'};
+
+/// Resolution from the gaps between consecutive start times (15-min since 1.10.2025).
+int _resolutionOf(List<int> secs) {
+  if (secs.length < 2) return 3600;
+  final gaps = <int>[for (var i = 1; i < secs.length; i++) secs[i] - secs[i - 1]]..sort();
+  final g = gaps[gaps.length ~/ 2];
+  return g > 0 ? g : 3600;
+}
+
+/// dashboard.elering.ee/api/nps/price → {success, data: {fi: [{timestamp, price}], ee: …}}.
+PriceSeries parseElering(String zone, Map<String, dynamic> j) {
+  final rows = ((j['data'] as Map?)?[zone.toLowerCase()] as List?) ?? const [];
+  final pairs = <(int, double)>[
+    for (final r in rows)
+      if (r is Map && r['timestamp'] is num && r['price'] is num)
+        ((r['timestamp'] as num).toInt(), (r['price'] as num).toDouble()),
+  ]..sort((a, b) => a.$1.compareTo(b.$1));
+  return _series(zone, pairs, 'Elering / Nord Pool (varalähde)', 'Elering AS, avoin data');
+}
+
+/// api.energy-charts.info/price → {unix_seconds: [...], price: [...]} (EUR/MWh).
+PriceSeries parseEnergyCharts(String zone, Map<String, dynamic> j) {
+  final t = (j['unix_seconds'] as List?) ?? const [];
+  final p = (j['price'] as List?) ?? const [];
+  final pairs = <(int, double)>[
+    for (var i = 0; i < t.length && i < p.length; i++)
+      if (t[i] is num && p[i] is num) ((t[i] as num).toInt(), (p[i] as num).toDouble()),
+  ]..sort((a, b) => a.$1.compareTo(b.$1));
+  return _series(zone, pairs, 'Energy-Charts / Fraunhofer ISE (varalähde)', 'CC BY 4.0, energy-charts.info');
+}
+
+PriceSeries _series(String zone, List<(int, double)> pairs, String source, String license) {
+  final res = _resolutionOf([for (final p in pairs) p.$1]);
+  return PriceSeries(
+    zone,
+    [for (final p in pairs) PricePoint(DateTime.fromMillisecondsSinceEpoch(p.$1 * 1000), res, p.$2)],
+    source: source,
+    license: license,
+  );
 }
 
 /// Fetches and caches prices (one request per zone per 10 minutes, shared by all tiles and rules).
@@ -162,42 +237,129 @@ class PriceService {
   static Future<String?> Function()? loadStore;
   static Future<void> Function(String json)? saveStore;
 
+  /// Sources tried by the last fetch per zone, for "Tekniset tiedot" (t151u).
+  final lastTried = <String, List<String>>{};
+
+  /// Per-request timeout: short, so relay + both direct sources fit inside the connection test.
+  static Duration requestTimeout = const Duration(seconds: 8);
+
+  /// Fetch order (t151u): Molaplan's relay, then the open sources directly from this device
+  /// (Elering for FI/EE/LV/LT, Energy-Charts for all zones), then the last good copy (stale).
+  /// The relay alone was a single point of failure: Energy-Charts rate-limits (HTTP 429) the
+  /// relay's shared Cloudflare egress, the relay answered 502 and the app had nothing else.
   Future<PriceSeries> _fetch(String zone) async {
-    Object? last;
-    for (var attempt = 0; attempt < 2; attempt++) {
-      if (attempt > 0) await Future<void>.delayed(retryDelay);
+    final tried = <String>[];
+    lastTried[zone] = tried;
+    var allOffline = true;
+    PriceSeries? staleRelay;
+    Future<PriceSeries?> attempt(String name, Future<PriceSeries> Function() f) async {
       try {
-        final r = await _client
-            .get(Uri.parse('$server/v1/prices?zone=${Uri.encodeQueryComponent(zone)}'))
-            .timeout(const Duration(seconds: 15));
-        if (r.statusCode == 400) throw PriceException('unknown_zone');
-        if (r.statusCode != 200) {
-          last = PriceException('HTTP ${r.statusCode}');
-          if (r.statusCode >= 500 || r.statusCode == 429) continue;
-          break;
+        final s = await f().timeout(requestTimeout);
+        if (s.points.isEmpty) throw PriceException('no data');
+        if (s.stale) {
+          // The relay's own last-good copy: keep it, but try the direct sources first.
+          staleRelay = s;
+          allOffline = false;
+          tried.add('$name: stale copy');
+          return null;
         }
-        final body = utf8.decode(r.bodyBytes);
-        final s = PriceSeries.fromJson(jsonDecode(body) as Map<String, dynamic>);
-        _cache[zone] = s;
-        _persist(zone, body);
+        tried.add('$name: ok');
         return s;
-      } on PriceException {
-        rethrow;
+      } on PriceException catch (e) {
+        if (e.message == 'unknown_zone') rethrow;
+        allOffline = false;
+        tried.add('$name: $e');
       } catch (e) {
-        last = e;
+        if (!_offlineError(e)) allOffline = false;
+        tried.add('$name: ${e.toString().replaceFirst('Exception: ', '')}');
       }
+      return null;
     }
-    // Fall back to the last good prices (memory, then disk), marked stale.
-    final c = _cache[zone];
+
+    PriceSeries? got = await attempt(Uri.parse(server).host, () => _fromRelay(zone));
+    if (got == null && !allOffline && staleRelay == null) {
+      // A quick second try only when the relay answered (5xx/429), not when the network is down.
+      await Future<void>.delayed(retryDelay);
+      got = await attempt('${Uri.parse(server).host} (2)', () => _fromRelay(zone));
+    }
+    if (got == null && eleringZones.contains(zone)) {
+      got = await attempt('dashboard.elering.ee', () => _fromElering(zone));
+    }
+    got ??= await attempt('api.energy-charts.info', () => _fromEnergyCharts(zone));
+    if (got != null) {
+      _cache[zone] = got;
+      _persist(zone, jsonEncode(got.toJson()));
+      return got;
+    }
+    // Fall back to the last good prices (relay's copy, memory, disk), marked stale.
+    final c = [staleRelay, _cache[zone]].nonNulls.firstOrNull;
     if (c != null && c.points.isNotEmpty) {
-      return PriceSeries(c.zone, c.points, source: c.source, license: c.license, fetched: c.fetched, stale: true);
+      return PriceSeries(
+        c.zone,
+        c.points,
+        source: c.source,
+        license: c.license,
+        fetched: c.fetched,
+        stale: true,
+        tried: List.of(tried),
+      );
     }
     final disk = await _fromStore(zone);
     if (disk != null) {
       _cache[zone] = disk;
       return disk;
     }
-    throw last is PriceException ? last : PriceException('$last');
+    throw PriceException(tried.join('; '), offline: allOffline, tried: List.of(tried));
+  }
+
+  static bool _offlineError(Object e) {
+    final s = e.toString().toLowerCase();
+    return s.contains('failed host lookup') ||
+        s.contains('no address associated') ||
+        s.contains('network is unreachable') ||
+        s.contains('errno = 11001') ||
+        s.contains('errno = 101') ||
+        s.contains('errno = 10051') ||
+        s.contains('errno = 10065');
+  }
+
+  Future<PriceSeries> _fromRelay(String zone) async {
+    final r = await _client.get(Uri.parse('$server/v1/prices?zone=${Uri.encodeQueryComponent(zone)}'));
+    final body = utf8.decode(r.bodyBytes, allowMalformed: true);
+    if (r.statusCode == 400 && body.contains('unknown_zone')) throw PriceException('unknown_zone');
+    if (r.statusCode != 200) {
+      final detail = RegExp(r'"detail"\s*:\s*"([^"]*)"').firstMatch(body)?.group(1);
+      throw PriceException('HTTP ${r.statusCode}${detail == null ? '' : ' ($detail)'}');
+    }
+    return PriceSeries.fromJson(jsonDecode(body) as Map<String, dynamic>);
+  }
+
+  /// Fetch window for the direct sources: yesterday 00:00 .. day after tomorrow 00:00 (local), so
+  /// today and tomorrow are covered whatever the device's time zone.
+  static (DateTime, DateTime) _window() {
+    final n = DateTime.now();
+    return (DateTime(n.year, n.month, n.day - 1), DateTime(n.year, n.month, n.day + 2));
+  }
+
+  Future<PriceSeries> _fromElering(String zone) async {
+    final (a, b) = _window();
+    final r = await _client.get(
+      Uri.parse(
+        'https://dashboard.elering.ee/api/nps/price?start=${a.toUtc().toIso8601String()}&end=${b.toUtc().toIso8601String()}',
+      ),
+    );
+    if (r.statusCode != 200) throw PriceException('HTTP ${r.statusCode}');
+    return parseElering(zone, jsonDecode(utf8.decode(r.bodyBytes)) as Map<String, dynamic>);
+  }
+
+  Future<PriceSeries> _fromEnergyCharts(String zone) async {
+    final (a, b) = _window();
+    String d(DateTime t) => t.toIso8601String().substring(0, 10);
+    final r = await _client.get(
+      Uri.parse('https://api.energy-charts.info/price?bzn=${Uri.encodeQueryComponent(zone)}&start=${d(a)}&end=${d(b)}'),
+    );
+    if (r.statusCode != 200) throw PriceException('HTTP ${r.statusCode}');
+    return parseEnergyCharts(zone, jsonDecode(utf8.decode(r.bodyBytes)) as Map<String, dynamic>);
   }
 
   static Duration retryDelay = const Duration(seconds: 2);
@@ -224,6 +386,7 @@ class PriceService {
         jsonDecode(e['body'] as String) as Map<String, dynamic>,
         fetched: DateTime.fromMillisecondsSinceEpoch((e['at'] as num).toInt()),
         stale: true,
+        tried: List.of(lastTried[zone] ?? const []),
       );
     } catch (_) {
       return null;
@@ -237,8 +400,12 @@ class PriceService {
 }
 
 class PriceException implements Exception {
-  PriceException(this.message);
+  PriceException(this.message, {this.offline = false, this.tried = const []});
   final String message;
+
+  /// Every source failed with a network error (no internet on this device).
+  final bool offline;
+  final List<String> tried;
   @override
   String toString() => message;
 }

@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import '../l10n/l10n.dart';
 
 enum ErrorKind {
@@ -14,6 +15,13 @@ enum ErrorKind {
   modbusFunction,
   modbusValue,
   modbusTimeout,
+  modbusPortClosed,
+  modbusHostUnreachable,
+  modbusConnectTimeout,
+  modbusGateway,
+  modbusBlocked,
+  modbusNoHost,
+  modbusBusy,
   noResponse,
   config,
   missingConnection,
@@ -25,7 +33,89 @@ enum ErrorKind {
   pairRejected,
   pairTampered,
   pairTimeout,
+  cloudOffline,
+  cloudService,
+  cloudAuth,
   unknown,
+}
+
+/// Connection types that are internet services, never devices on the home network (t151u):
+/// their errors never get LAN / IP / "turn on remote access" hints.
+const cloudConnectionTypes = {'price', 'weather', 'shelly_cloud', 'ntfy'};
+
+/// Plain service names for [cloudConnectionTypes].
+(String, String) cloudServiceName(String type) => switch (type) {
+  'price' => ('Hintapalvelu', 'The price service'),
+  'weather' => ('Sääpalvelu', 'The weather service'),
+  'shelly_cloud' => ('Shelly Cloud', 'Shelly Cloud'),
+  'ntfy' => ('ntfy-palvelin', 'The ntfy server'),
+  _ => ('Palvelu', 'The service'),
+};
+
+/// A failed internet service (price, weather, Shelly Cloud, ntfy): offline, service down or a
+/// rejected login. [tech] keeps the exact reason (every source tried) for "Tekniset tiedot".
+class CloudError implements Exception {
+  const CloudError(this.kind, this.serviceFi, this.serviceEn, this.tech, {this.fallbackTried = false});
+  final ErrorKind kind;
+  final String serviceFi, serviceEn, tech;
+
+  /// Backup sources were tried too (price).
+  final bool fallbackTried;
+
+  /// Prefix keeps the kind when only the text survives (tile errors, bridge answers).
+  @override
+  String toString() => '${kind.name}: $serviceEn: $tech';
+}
+
+/// For a cloud connection [type]: network / HTTP / login failures become a [CloudError]; errors
+/// that already explain themselves (e.g. "device offline in Shelly Cloud") are kept.
+Object cloudMapped(Object e, String type) {
+  if (!cloudConnectionTypes.contains(type) || e is CloudError || e is PlainError) return e;
+  final low = e.toString().toLowerCase();
+  if (low.contains('device offline') ||
+      low.contains('not found in shelly cloud') ||
+      low.contains('not available through')) {
+    return e;
+  }
+  final k = classifyError(e);
+  if (awayKinds.contains(k) ||
+      k == ErrorKind.deviceError ||
+      k == ErrorKind.tls ||
+      k == ErrorKind.auth ||
+      k == ErrorKind.unknown) {
+    final (fi, en) = cloudServiceName(type);
+    return cloudErrorFrom(e, fi, en);
+  }
+  return e;
+}
+
+/// Maps any failure of an internet service to a [CloudError] (no network → cloudOffline,
+/// a rejected login → cloudAuth, everything else – timeouts, 5xx, 429, odd data → cloudService).
+CloudError cloudErrorFrom(Object e, String serviceFi, String serviceEn, {bool fallbackTried = false}) {
+  if (e is CloudError) return e;
+  final s = e.toString().toLowerCase();
+  final tech = e.toString().replaceFirst('Exception: ', '');
+  bool any(List<String> xs) => xs.any(s.contains);
+  final kind =
+      any([
+        'failed host lookup',
+        'no address associated',
+        'name or service not known',
+        'nodename nor servname',
+        'no such host',
+        'errno = 11001',
+        'network is unreachable',
+        'network is down',
+        'errno = 101',
+        'errno = 10051',
+        'errno = 10065',
+        'no internet',
+      ])
+      ? ErrorKind.cloudOffline
+      : (any([' 401', ' 403', 'unauthorized', 'invalid token', 'forbidden', 'wrong_credentials'])
+            ? ErrorKind.cloudAuth
+            : ErrorKind.cloudService);
+  return CloudError(kind, serviceFi, serviceEn, tech, fallbackTried: fallbackTried);
 }
 
 /// Errors that mean "can't reach the device from here" – remote access would help.
@@ -34,6 +124,8 @@ const awayKinds = {
   ErrorKind.unreachable,
   ErrorKind.refused,
   ErrorKind.modbusTimeout,
+  ErrorKind.modbusHostUnreachable,
+  ErrorKind.modbusConnectTimeout,
   ErrorKind.noResponse,
 };
 
@@ -59,7 +151,11 @@ class PlainError implements Exception {
 
 ErrorKind classifyError(Object e) {
   if (e is PlainError) return e.kind;
+  if (e is CloudError) return e.kind;
   final s = e.toString().toLowerCase();
+  for (final k in const [ErrorKind.cloudOffline, ErrorKind.cloudService, ErrorKind.cloudAuth]) {
+    if (s.startsWith('${k.name.toLowerCase()}: ')) return k;
+  }
   bool any(List<String> xs) => xs.any(s.contains);
   if (s.contains('connection missing') || s.contains('yhteys puuttuu')) return ErrorKind.missingConnection;
   if (s.startsWith('remote: ')) {
@@ -76,6 +172,18 @@ ErrorKind classifyError(Object e) {
     if (s.contains('bridge_offline')) return ErrorKind.remoteBridgeOffline;
     return ErrorKind.remoteNoInternet;
   }
+  if (s.contains('modbus: blocked until')) return ErrorKind.modbusBlocked;
+  if (s.contains('modbus: no host')) return ErrorKind.modbusNoHost;
+  if (s.contains('modbus: closed') ||
+      (s.contains('modbus') && (s.contains('connection reset') || s.contains('reset by peer')))) {
+    return ErrorKind.modbusBusy;
+  }
+  if (s.contains('modbus tcp: port closed')) return ErrorKind.modbusPortClosed;
+  if (s.contains('modbus tcp: host unreachable')) return ErrorKind.modbusHostUnreachable;
+  if (s.contains('modbus tcp: connect timeout') || s.contains('modbus tcp: cannot connect')) {
+    return ErrorKind.modbusConnectTimeout;
+  }
+  if (s.contains('modbus exception 10') || s.contains('modbus exception 11')) return ErrorKind.modbusGateway;
   if (s.contains('modbus exception 2')) return ErrorKind.modbusAddress;
   if (s.contains('modbus exception 1')) return ErrorKind.modbusFunction;
   if (s.contains('modbus exception 3')) return ErrorKind.modbusValue;
@@ -155,7 +263,45 @@ FriendlyError friendlyError(Object e, String lang) {
   final k = classifyError(e);
   String t(String a, String b) => tr(lang, a, b);
   if (e is PlainError) return FriendlyError(k, t(e.titleFi, e.titleEn), t(e.hintFi, e.hintEn), e.tech);
+  final c = e is CloudError ? e : null;
+  // One placeholder for both languages (the l10n extractor matches them by expression).
+  final svc = t(c?.serviceFi ?? 'Palvelu', c?.serviceEn ?? 'The service');
+  final cloudTech = c?.tech ?? tech;
   switch (k) {
+    case ErrorKind.cloudOffline:
+      return FriendlyError(
+        k,
+        t('Ei nettiyhteyttä', 'No internet connection'),
+        t(
+          '$svc on internetissä, eikä siihen saatu yhteyttä. Tarkista tämän laitteen nettiyhteys. Viimeisimmät tiedot näytetään, kun niitä on.',
+          '$svc is on the internet and could not be reached. Check this device\'s internet connection. The latest data is shown when available.',
+        ),
+        cloudTech,
+      );
+    case ErrorKind.cloudService:
+      return FriendlyError(
+        k,
+        c?.fallbackTried == true
+            ? t('$svc ei vastaa, yritetään varalähdettä', '$svc is not answering, trying a backup source')
+            : t('$svc ei vastaa', '$svc is not answering'),
+        c?.fallbackTried == true
+            ? t(
+                'Myöskään varalähteistä ei saatu tietoja juuri nyt. Vika on todennäköisesti palveluissa, ei kotiverkossasi. Yritetään automaattisesti uudelleen.',
+                'The backup sources did not answer right now either. The problem is most likely at the services, not your home network. Retrying automatically.',
+              )
+            : t(
+                'Palvelussa on häiriö. Vika on todennäköisesti palvelussa, ei kotiverkossasi. Yritetään automaattisesti uudelleen.',
+                'The service has a problem, most likely at the service and not your home network. Retrying automatically.',
+              ),
+        cloudTech,
+      );
+    case ErrorKind.cloudAuth:
+      return FriendlyError(
+        k,
+        t('Kirjautuminen palveluun ei onnistunut', 'Signing in to the service failed'),
+        t('Tarkista palvelun tunnus, avain tai token ($svc).', 'Check the account, key or token for $svc.'),
+        cloudTech,
+      );
     case ErrorKind.wrongProtocol:
       return FriendlyError(
         k,
@@ -263,6 +409,77 @@ FriendlyError friendlyError(Object e, String lang) {
         t(
           'Arvo on luultavasti sallitun alueen ulkopuolella. Tarkista myös kerroin.',
           'The value is probably out of range. Check the scale too.',
+        ),
+        tech,
+      );
+    case ErrorKind.modbusPortClosed:
+      return FriendlyError(
+        k,
+        t('Laite löytyi, mutta Modbus TCP ei ole päällä', 'Device found, but Modbus TCP is off'),
+        t(
+          'Osoitteessa on laite, mutta se ei ota vastaan Modbus-yhteyttä tähän porttiin. Laita Modbus TCP päälle laitteen asetuksista (usein valikossa Verkko / Modbus / Etäohjaus) ja tarkista portti (yleensä 502). Voit myös painaa "Skannaa Modbus". Jos laite toimii Home Assistantissa, sillä voi olla jo yhteys (moni laite sallii vain yhden) – lue arvot HA:n kautta.',
+          'There is a device at this address, but it does not accept Modbus on this port. Turn on Modbus TCP in the device settings (often under Network / Modbus / Remote control) and check the port (usually 502). You can also tap "Scan Modbus". If the device works in Home Assistant, it may already have a connection (many allow only one) – read the values through HA.',
+        ),
+        tech,
+      );
+    case ErrorKind.modbusBlocked:
+      final at = RegExp(r'blocked until (\d\d:\d\d)').firstMatch(tech)?.group(1) ?? '';
+      return FriendlyError(
+        k,
+        t('Laite on estotilassa, yritetään uudelleen klo $at', 'The device is in lockout, retrying at $at'),
+        t(
+          'Laite ei vastannut, joten sitä ei kysytä hetkeen – moni laite menee estotilaan, jos sitä kysytään liian usein. Tauko pitenee 30 sekunnista 5 minuuttiin. Jos laitteella on jo yhteys (esim. Home Assistant), lue arvot HA:n kautta. Lukuvälin ja tauot voi muuttaa yhteyden kohdasta Edistyneet.',
+          'The device did not answer, so it is left alone for a while – many devices lock out clients that poll too often. The pause grows from 30 seconds to 5 minutes. If the device already has a connection (e.g. Home Assistant), read the values through HA. The read interval and pauses are under Advanced in the connection.',
+        ),
+        tech,
+      );
+    case ErrorKind.modbusNoHost:
+      return FriendlyError(
+        k,
+        t('Laitteen osoite puuttuu', 'The device address is missing'),
+        t(
+          'Avaa yhteys ja anna laitteen IP-osoite, tai paina "Skannaa Modbus", niin sovellus etsii laitteen verkosta.',
+          'Open the connection and enter the device IP address, or tap "Scan Modbus" to find the device on the network.',
+        ),
+        tech,
+      );
+    case ErrorKind.modbusBusy:
+      return FriendlyError(
+        k,
+        t('Laitteella voi olla jo yhteys', 'The device may already have a connection'),
+        t(
+          'Laite katkaisi Modbus-yhteyden heti. Moni laite sallii vain yhden Modbus TCP -yhteyden kerrallaan. Jos laite on jo Home Assistantissa (esim. modbus.yaml), lue arvot HA:n kautta.',
+          'The device dropped the Modbus connection right away. Many devices allow only one Modbus TCP connection at a time. If the device is already in Home Assistant (e.g. modbus.yaml), read the values through HA.',
+        ),
+        tech,
+      );
+    case ErrorKind.modbusHostUnreachable:
+      return FriendlyError(
+        k,
+        t('Osoitteessa ei ole laitetta', 'Nothing at this address'),
+        t(
+          'Tähän IP-osoitteeseen ei saatu yhteyttä. Tarkista että laite on päällä ja samassa verkossa, ja että IP-osoite on oikein (se voi vaihtua – varaa reitittimestä kiinteä osoite). "Skannaa Modbus" etsii laitteet verkosta.',
+          'Nothing answered at this IP address. Check that the device is on and in the same network and that the IP is right (it can change – reserve a fixed address in the router). "Scan Modbus" finds devices on the network.',
+        ),
+        tech,
+      );
+    case ErrorKind.modbusConnectTimeout:
+      return FriendlyError(
+        k,
+        t('Modbus-laite ei vastannut ajoissa', 'The Modbus device did not answer in time'),
+        t(
+          'Yhteyttä porttiin ei saatu muodostettua. Yleisimmät syyt: väärä IP-osoite, laite on toisessa verkossa (vieras-wifi), Modbus TCP ei ole päällä tai palomuuri estää portin. Tarkista osoite ja portti tai paina "Skannaa Modbus".',
+          'Could not open the port. Most common causes: wrong IP, the device is in another network (guest Wi-Fi), Modbus TCP is off or a firewall blocks the port. Check the address and port or tap "Scan Modbus".',
+        ),
+        tech,
+      );
+    case ErrorKind.modbusGateway:
+      return FriendlyError(
+        k,
+        t('Yhdyskäytävä ei tavoita laitetta tällä unit id:llä', 'The gateway cannot reach a device with this unit id'),
+        t(
+          'Modbus-yhdyskäytävä vastasi, mutta sen takana ei ole laitetta tällä osoitteella (unit id). Tarkista laitteen Modbus-osoite (usein 1) sekä sarjaportin nopeus ja pariteetti. "Skannaa Modbus" kokeilee osoitteet 1–247.',
+          'The Modbus gateway answered, but no device with this unit id is behind it. Check the device\'s Modbus address (often 1) and the serial speed and parity. "Scan Modbus" tries addresses 1–247.',
         ),
         tech,
       );

@@ -57,7 +57,7 @@ class CameraDriver extends Driver {
     create: CameraDriver.new,
     cameraOnly: true,
     connectionFields: [
-      FieldSpec('baseUrl', 'Kameran osoite', 'Camera base URL', hint: 'http://192.168.1.70', required: true),
+      FieldSpec('baseUrl', 'Kameran osoite', 'Camera base URL', hint: 'http://192.168.x.x', required: true),
       FieldSpec(
         'auth',
         'Tunnistus',
@@ -133,7 +133,10 @@ class CameraDriver extends Driver {
 
   /// The RTSP address with the login filled in ([sub] = the light stream for tiles).
   /// Null when the camera has no RTSP address.
-  String? rtspUrl({bool sub = false}) => cameraRtspUrl(s, sub: sub);
+  String? rtspUrl({bool sub = false, int stream = 0}) => cameraRtspUrl(s, sub: sub, stream: stream);
+
+  /// Streams this camera offers (1, or one per lens / channel).
+  int get streamCount => s['streams'] is List && (s['streams'] as List).length > 1 ? (s['streams'] as List).length : 1;
 
   DigestChallenge? _digest;
   int _nc = 0;
@@ -259,9 +262,14 @@ class CameraDriver extends Driver {
   Future<void> dispose() async => _client?.close();
 }
 
-/// rtsp://{{host}}:554/x -> rtsp://user:pass@192.168.1.70:554/x (null when not set).
-String? cameraRtspUrl(Map<String, dynamic> s, {bool sub = false}) {
-  var t = sub ? (s.strOrNull('rtspSub') ?? s.strOrNull('rtsp')) : s.strOrNull('rtsp');
+/// rtsp://{{host}}:554/x -> rtsp://user:pass@192.168.x.x:554/x (null when not set).
+String? cameraRtspUrl(Map<String, dynamic> s, {bool sub = false, int stream = 0}) {
+  // t153u: dual-lens / multi-channel cameras keep one entry per stream in 'streams'.
+  final list = s['streams'];
+  final e = stream > 0 && list is List && stream < list.length && list[stream] is Map
+      ? Map<String, dynamic>.from(list[stream] as Map)
+      : s;
+  var t = sub ? (e.strOrNull('rtspSub') ?? e.strOrNull('rtsp')) : e.strOrNull('rtsp');
   if (t == null || t.trim().isEmpty) return null;
   final host = Uri.tryParse(s.str('baseUrl'))?.host ?? '';
   t = t.trim().replaceAll('{{host}}', host);

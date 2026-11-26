@@ -149,7 +149,9 @@ class _FieldInputState extends State<_FieldInput> {
           isExpanded: true,
           initialValue: f.options.contains(cur) ? cur : f.options.first,
           decoration: InputDecoration(labelText: label, helperText: widget.help),
-          items: [for (final o in f.options) DropdownMenuItem(value: o, child: Text(o))],
+          items: [
+            for (final o in f.options) DropdownMenuItem(value: o, child: Text(f.optionLabel(o, langOf(context)))),
+          ],
           onChanged: (v) {
             widget.values[f.key] = v;
             widget.onChanged?.call();

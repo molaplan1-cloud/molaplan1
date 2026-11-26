@@ -1,4 +1,5 @@
 import 'measure_history.dart';
+import '../core/friendly_error.dart';
 import '../devices/climate.dart';
 import 'migrations.dart';
 import 'sensor_repair.dart';
@@ -215,6 +216,14 @@ class AppState extends ChangeNotifier implements SyncHost {
     notifyListeners();
     await save();
     unawaited(backfillTrend(t));
+  }
+
+  /// t151u: the 12 h / Tänään / 48 h chips on a price trend tile, saved per tile.
+  Future<void> setPriceWindow(TileConfig t, String w) async {
+    if (!const ['auto', '12h', 'today', '48h'].contains(w) || t.priceWindow == w) return;
+    t.priceWindow = w;
+    notifyListeners();
+    await save();
   }
 
   void onTileValue(TileConfig t, Object? v, [DateTime? at]) {
@@ -672,8 +681,14 @@ class AppState extends ChangeNotifier implements SyncHost {
   /// Tests a (possibly unsaved) connection with a throw-away driver.
   Future<String> testConnection(ConnectionConfig c) async {
     final d = remote.router.wrap(c);
+    final cloud = cloudConnectionTypes.contains(c.type);
     try {
-      return await d.test().timeout(const Duration(seconds: 15));
+      // Internet services get a longer budget (relay + backup sources) and service wording on
+      // failure, never LAN / IP / remote-access hints (t151u).
+      return await d.test().timeout(Duration(seconds: cloud ? 30 : 15));
+    } catch (e) {
+      if (!cloud) rethrow;
+      throw cloudMapped(e, c.type);
     } finally {
       unawaited(d.dispose());
     }

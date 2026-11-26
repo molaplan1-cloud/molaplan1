@@ -7,6 +7,7 @@ import 'account_nudge.dart';
 import 'app_scope.dart';
 import 'heatpump_pages.dart';
 import 'error_box.dart';
+import 'modbus_scan_page.dart';
 import 'spec_form.dart';
 import 'template_gallery.dart';
 
@@ -29,7 +30,10 @@ class ConnectionsPage extends StatelessWidget {
 
   /// Opens the device template gallery (the easy way).
   static Future<bool?> addNew(BuildContext context, {Dashboard? dashboard}) async {
-    final added = await Navigator.push<bool>(context, MaterialPageRoute(builder: (_) => TemplateGalleryPage(dashboard: dashboard)));
+    final added = await Navigator.push<bool>(
+      context,
+      MaterialPageRoute(builder: (_) => TemplateGalleryPage(dashboard: dashboard)),
+    );
     if (added == true && context.mounted) await maybePromptAccount(context);
     return added;
   }
@@ -133,6 +137,7 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
   late ConnectionConfig c = widget.initial;
   late final Map<String, dynamic> values = c.all;
   late final _name = TextEditingController(text: c.name);
+  int _formKey = 0;
   bool _testing = false;
   String? _result;
   Object? _error;
@@ -256,9 +261,16 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
                 decoration: InputDecoration(labelText: tx(context, 'Nimi', 'Name')),
               ),
               const SizedBox(height: 10),
-              SpecForm(fields: d.connectionFields, values: values, scope: '${c.type}.conn'),
+              SpecForm(
+                key: ValueKey('conn$_formKey'),
+                fields: d.connectionFields,
+                values: values,
+                scope: '${c.type}.conn',
+              ),
               const SizedBox(height: 8),
-              Row(
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
                 children: [
                   OutlinedButton.icon(
                     onPressed: _testing ? null : _test,
@@ -267,6 +279,23 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
                         : const Icon(Icons.network_check),
                     label: Text(tx(context, 'Testaa yhteys', 'Test connection')),
                   ),
+                  if (c.type == 'modbus')
+                    OutlinedButton.icon(
+                      key: const ValueKey('modbus-scan'),
+                      onPressed: () async {
+                        final f = await showModbusScan(context, port: int.tryParse('${values['port'] ?? ''}'));
+                        if (f == null || !mounted) return;
+                        setState(() {
+                          values['host'] = f.ip;
+                          values['port'] = f.port;
+                          values['unitId'] = f.unit;
+                          values['framing'] = f.rtu ? 'rtu' : 'tcp';
+                          _formKey++;
+                        });
+                      },
+                      icon: const Icon(Icons.radar),
+                      label: Text(tx(context, 'Skannaa Modbus', 'Scan Modbus')),
+                    ),
                 ],
               ),
               if (c.type == 'ir') ...[

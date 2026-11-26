@@ -348,7 +348,7 @@ class ShellyProvider extends DeviceProvider {
   String get addressHelpEn =>
       'In the Shelly app: open the device → gear (settings) → Device information → IP address. Or in your router\'s device list: the name starts with "shelly…".';
   @override
-  String get addressHint => '192.168.1.60';
+  String get addressHint => '192.168.x.x';
 
   @override
   Future<List<Candidate>> scan(List<String> locals) => scanSubnet(locals, probeShellyAt);

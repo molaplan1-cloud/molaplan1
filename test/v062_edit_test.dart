@@ -234,7 +234,8 @@ void main() {
     down = true;
     calls = 0;
     final s2 = await svc.get('FI', force: true);
-    expect(calls, 2);
+    // t151u: relay twice, then Elering and Energy-Charts directly, then the stale copy.
+    expect(calls, 4);
     expect(s2.stale, isTrue);
     expect(s2.points, hasLength(s.points.length));
   });

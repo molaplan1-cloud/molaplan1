@@ -98,7 +98,7 @@ bool _b(Map<String, dynamic> v, String k, [bool d = false]) {
 
 String _t(String lang, String fi, String en) => tr(lang, fi, en);
 
-FieldSpec _ip(String fiHelp, String enHelp, {String hint = '192.168.1.50'}) => FieldSpec(
+FieldSpec _ip(String fiHelp, String enHelp, {String hint = '192.168.x.x'}) => FieldSpec(
   'address',
   'Laitteen IP-osoite',
   'Device IP address',
@@ -130,7 +130,7 @@ final deviceTemplates = <DeviceTemplate>[
         'Kameran IP-osoite',
         'Camera IP address',
         required: true,
-        hint: '192.168.1.70',
+        hint: '192.168.x.x',
         helpFi: 'Näkyy kameran sarjamonitorissa käynnistyessä tai reitittimen laitelistassa.',
         helpEn: 'Shown in the serial monitor at boot or in the router device list.',
       ),
@@ -482,7 +482,7 @@ final deviceTemplates = <DeviceTemplate>[
         'Home Assistantin osoite',
         'Home Assistant address',
         required: true,
-        hint: '192.168.1.20:8123',
+        hint: '192.168.x.x:8123',
         helpFi: 'Sama osoite, jolla avaat Home Assistantin selaimessa.',
         helpEn: 'The address you open Home Assistant with.',
       ),
@@ -525,7 +525,7 @@ final deviceTemplates = <DeviceTemplate>[
         'Home Assistantin osoite',
         'Home Assistant address',
         required: true,
-        hint: '192.168.1.20:8123',
+        hint: '192.168.x.x:8123',
         helpFi: 'Jos Home Assistant on jo lisätty, sama yhteys otetaan käyttöön.',
         helpEn: 'If already added, the same connection is reused.',
       ),
@@ -579,7 +579,7 @@ final deviceTemplates = <DeviceTemplate>[
         'MQTT-välittäjän IP-osoite',
         'MQTT broker IP',
         required: true,
-        hint: '192.168.1.10',
+        hint: '192.168.x.x',
         helpFi: 'Kone, jolla Mosquitto tai muu MQTT-välittäjä pyörii (usein Home Assistant -kone).',
         helpEn: 'Machine running Mosquitto (often the HA box).',
       ),
@@ -674,7 +674,7 @@ final deviceTemplates = <DeviceTemplate>[
       _ip(
         'IR-lähettimen IP-osoite. Jos valitsit MQTT:n, kirjoita tähän MQTT-välittäjän osoite.',
         'IP of the IR blaster. For MQTT, the broker address.',
-        hint: '192.168.1.60',
+        hint: '192.168.x.x',
       ),
       FieldSpec(
         'brand',
@@ -741,7 +741,7 @@ final deviceTemplates = <DeviceTemplate>[
         'Komennon osoite (vain Muu HTTP)',
         'Command URL (other HTTP only)',
         advanced: true,
-        hint: 'http://192.168.1.60/ac?power={{power}}&mode={{mode}}&temp={{temp}}',
+        hint: 'http://192.168.x.x/ac?power={{power}}&mode={{mode}}&temp={{temp}}',
         helpFi: 'Paikkamerkit: {{power}} {{mode}} {{temp}} {{fan}} {{swing}} {{vendor}} {{json}}.',
         helpEn: 'Placeholders: {{power}} {{mode}} {{temp}} {{fan}} {{swing}} {{vendor}} {{json}}.',
       ),
@@ -831,7 +831,7 @@ final deviceTemplates = <DeviceTemplate>[
     connectionType: 'ir',
     mdnsTypes: const ['_esphomelib._tcp'],
     inputs: [
-      _ip(_ipHelpFi, _ipHelpEn, hint: '192.168.1.61'),
+      _ip(_ipHelpFi, _ipHelpEn, hint: '192.168.x.x'),
       const FieldSpec(
         'entity',
         'Ilmastoinnin tunnus',
@@ -879,7 +879,7 @@ final deviceTemplates = <DeviceTemplate>[
     color: const Color(0xFF7E57C2),
     connectionType: 'ir',
     inputs: [
-      _ip('Athom-ohjaimen IP-osoite (reitittimen laitelistasta).', 'IP of the Athom controller.', hint: '192.168.1.62'),
+      _ip('Athom-ohjaimen IP-osoite (reitittimen laitelistasta).', 'IP of the Athom controller.', hint: '192.168.x.x'),
       const FieldSpec(
         'name',
         'Nimi',
@@ -913,8 +913,8 @@ final deviceTemplates = <DeviceTemplate>[
     id: 'electricity_price',
     fi: 'Sähkön hinta (pörssisähkö)',
     en: 'Electricity price (spot)',
-    descFi: 'Tämän ja huomisen päivän pörssisähkön hinta kaaviona, 15 minuutin tarkkuudella. Hintaohjaus: paina laitteen ruutua pitkään → Hintaohjaus.',
-    descEn: 'Today\'s and tomorrow\'s spot price as a chart. Price control: long-press a device tile → Price control.',
+    descFi: 'Tämän ja huomisen päivän pörssisähkön hinta kaaviona, 15 minuutin tarkkuudella: trendi Nyt-viivalla ja/tai pylväät. Hintaohjaus: paina laitteen ruutua pitkään → Hintaohjaus.',
+    descEn: 'Today\'s and tomorrow\'s spot price at 15-minute resolution: a trend with a Now line and/or bars. Price control: long-press a device tile → Price control.',
     icon: Icons.euro_outlined,
     color: const Color(0xFFFFCA28),
     connectionType: 'price',
@@ -929,6 +929,21 @@ final deviceTemplates = <DeviceTemplate>[
         defaultValue: 'FI – Suomi',
         helpFi: 'Suomessa FI. Ruotsissa ja Norjassa valitse alue, jolla asut.',
         helpEn: 'Pick your country; in Sweden and Norway your area.',
+      ),
+      const FieldSpec(
+        'look',
+        'Näkymä',
+        'Look',
+        kind: FieldKind.choice,
+        options: ['both', 'trend', 'bars'],
+        defaultValue: 'both',
+        optionLabels: {
+          'both': ('Trendi ja pylväät (2 ruutua)', 'Trend and bars (2 tiles)'),
+          'trend': ('Hinnan trendi (viiva, Nyt-viiva)', 'Price trend (line, Now line)'),
+          'bars': ('Pylväät (15 min)', 'Bars (15 min)'),
+        },
+        helpFi: 'Trendi näyttää tämän päivän ja huomisen hinnan viivana ja Nyt-kohdan.',
+        helpEn: 'The trend shows today and tomorrow as a line with the Now position.',
       ),
       const FieldSpec(
         'transfer',
@@ -963,19 +978,34 @@ final deviceTemplates = <DeviceTemplate>[
           'transfer': num.tryParse(_s(v, 'transfer', '0').replaceAll(',', '.')) ?? 0,
         },
       );
+      final look = _s(v, 'look', 'both');
       return TemplateResult(
         [c],
         [
-          TileConfig(
-            type: TileType.value,
-            title: _t(lang, 'Sähkön hinta', 'Electricity price'),
-            icon: 'bolt',
-            colSpan: 2,
-            rowSpan: 2,
-            connectionId: c.id,
-            pollSeconds: 300,
-            read: {'field': 'chart'},
-          ),
+          if (look != 'bars')
+            TileConfig(
+              type: TileType.value,
+              title: _t(lang, 'Sähkön hinnan trendi', 'Electricity price trend'),
+              icon: 'show_chart',
+              colSpan: 2,
+              rowSpan: 2,
+              connectionId: c.id,
+              pollSeconds: 300,
+              display: 'trend',
+              trendGrid: 'h',
+              read: {'field': 'chart'},
+            ),
+          if (look != 'trend')
+            TileConfig(
+              type: TileType.value,
+              title: _t(lang, 'Sähkön hinta', 'Electricity price'),
+              icon: 'bolt',
+              colSpan: 2,
+              rowSpan: 2,
+              connectionId: c.id,
+              pollSeconds: 300,
+              read: {'field': 'chart'},
+            ),
         ],
       );
     },
@@ -996,7 +1026,7 @@ final deviceTemplates = <DeviceTemplate>[
         'IV-koneen tai yhdyskäytävän IP-osoite',
         'Unit or gateway IP',
         required: true,
-        hint: '192.168.1.60',
+        hint: '192.168.x.x',
         helpFi: 'Jos koneessa on vain RS485-väylä, tarvitset RS485 → Modbus TCP -muuntimen (esim. Waveshare). Syötä sen IP.',
         helpEn: 'If the unit has only RS485, you need an RS485 → Modbus TCP gateway. Enter its IP.',
       ),
@@ -1029,6 +1059,19 @@ final deviceTemplates = <DeviceTemplate>[
         helpFi: 'Lähes aina 502.',
         helpEn: 'Almost always 502.',
       ),
+      const FieldSpec(
+        'framing',
+        'Kehystys',
+        'Framing',
+        kind: FieldKind.choice,
+        options: ['tcp', 'rtu'],
+        defaultValue: 'tcp',
+        advanced: true,
+        optionLabels: {
+          'tcp': ('Modbus TCP (tavallinen)', 'Modbus TCP (normal)'),
+          'rtu': ('Modbus RTU TCP:n yli (RS485-yhdyskäytävä)', 'Modbus RTU over TCP (RS485 gateway)'),
+        },
+      ),
       const FieldSpec('name', 'Nimi', 'Name', hint: 'IV-kone', advanced: true),
     ],
     build: (v, lang) {
@@ -1040,9 +1083,11 @@ final deviceTemplates = <DeviceTemplate>[
           'host': normHost(v['address']),
           'port': int.tryParse(_s(v, 'port', '502')) ?? 502,
           'unitId': int.tryParse(_s(v, 'unitId', '1')) ?? 1,
+          if (_s(v, 'framing', 'tcp') == 'rtu') 'framing': 'rtu',
         },
       );
       final p = ivProfiles.where((p) => p.brand == _s(v, 'profile')).firstOrNull;
+      if (p != null) c.settings.addAll({...p.conn, ...c.settings});
       return TemplateResult([c], p == null ? [] : p.tiles(c.id, lang));
     },
   ),
@@ -1062,7 +1107,7 @@ final deviceTemplates = <DeviceTemplate>[
         'MQTT-välittäjän IP-osoite',
         'MQTT broker IP',
         required: true,
-        hint: '192.168.1.10',
+        hint: '192.168.x.x',
         helpFi: 'Kone, jolla MQTT-välittäjä (esim. Mosquitto) pyörii.',
         helpEn: 'Machine running the MQTT broker.',
       ),
@@ -1333,6 +1378,7 @@ class IvRegister {
   final String key, name, fn, type, rw, unit;
   final int address;
   final double scale, offset;
+  final double? min, max, step;
   IvRegister(Map<String, dynamic> j)
     : key = j['key'] as String,
       name = j['name'] as String,
@@ -1342,7 +1388,10 @@ class IvRegister {
       unit = (j['unit'] ?? '') as String,
       address = (j['a'] as num).toInt(),
       scale = (j['s'] as num? ?? 1).toDouble(),
-      offset = (j['o'] as num? ?? 0).toDouble();
+      offset = (j['o'] as num? ?? 0).toDouble(),
+      min = (j['min'] as num?)?.toDouble(),
+      max = (j['max'] as num?)?.toDouble(),
+      step = (j['step'] as num?)?.toDouble();
 
   String get table => const {'ir': 'input', 'hr': 'holding', 'coil': 'coil', 'di': 'discrete'}[fn] ?? 'holding';
   String get dataType => const {'u16': 'uint16', 's16': 'int16', 'u32': 'uint32', 'f32': 'float32'}[type] ?? 'uint16';
@@ -1357,6 +1406,12 @@ class IvProfile {
   final int? fanMax;
   final List<String> notes;
   final List<IvRegister> regs;
+
+  /// Connection settings the device needs (t155u, e.g. AirFi: gentle polling).
+  final Map<String, dynamic> conn;
+
+  /// Signature registers for the scanner (t157u): {fn, a, n}.
+  final Map<String, dynamic>? ident;
   IvProfile(Map<String, dynamic> j)
     : id = j['id'] as String,
       brand = j['brand'] as String,
@@ -1367,7 +1422,9 @@ class IvProfile {
       offset = (j['offset'] as num? ?? 0).toInt(),
       fanMax = (j['fanMax'] as num?)?.toInt(),
       notes = ((j['notes'] as List?) ?? []).cast<String>(),
-      regs = ((j['regs'] as List?) ?? []).map((e) => IvRegister(Map<String, dynamic>.from(e as Map))).toList();
+      regs = ((j['regs'] as List?) ?? []).map((e) => IvRegister(Map<String, dynamic>.from(e as Map))).toList(),
+      conn = Map<String, dynamic>.from((j['conn'] as Map?) ?? const {}),
+      ident = j['ident'] == null ? null : Map<String, dynamic>.from(j['ident'] as Map);
 
   Map<String, dynamic> spec(IvRegister r) => {
     'table': r.table,
@@ -1416,6 +1473,27 @@ class IvProfile {
             connectionId: cid,
             read: s,
             pollSeconds: 30,
+            commands: [
+              CommandStep(connectionId: cid, spec: {...s, 'value': '{{value}}'}),
+            ],
+          ),
+        );
+      } else if (r.writable && r.max != null) {
+        // t155u (AirFi): other writable holding registers (FC6) as sliders.
+        out.add(
+          TileConfig(
+            type: TileType.slider,
+            title: r.name,
+            icon: r.unit == '%' ? 'fan' : 'speed',
+            unit: r.unit,
+            colSpan: 2,
+            min: r.min ?? 0,
+            max: r.max!,
+            step: r.step ?? 1,
+            decimals: 0,
+            connectionId: cid,
+            read: s,
+            pollSeconds: 60,
             commands: [
               CommandStep(connectionId: cid, spec: {...s, 'value': '{{value}}'}),
             ],

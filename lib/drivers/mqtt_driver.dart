@@ -36,7 +36,7 @@ class MqttDriver extends Driver {
     en: 'MQTT',
     create: MqttDriver.new,
     connectionFields: [
-      FieldSpec('host', 'Välittäjän osoite', 'Broker host', hint: '192.168.1.10', required: true),
+      FieldSpec('host', 'Välittäjän osoite', 'Broker host', hint: '192.168.x.x', required: true),
       FieldSpec('port', 'Portti', 'Port', kind: FieldKind.number, defaultValue: 1883, hint: '1883 / 8883 (TLS)'),
       FieldSpec('tls', 'TLS', 'TLS', kind: FieldKind.boolean),
       FieldSpec(

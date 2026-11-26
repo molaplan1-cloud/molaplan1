@@ -6,19 +6,20 @@ const ivProfilesJson = r'''
  {
   "id": "airfi",
   "brand": "Airfi",
-  "model": "Airfi Model 60/100/130/150/250 (airfi-sw 4.0.0, rekisterikartta v3.4)",
+  "model": "Airfi Model 60/100/130/150/250/350 (rekisterikartta v3.4–3.6)",
   "verified": true,
   "src": "https://airfi.fi/app/uploads/2024/10/airfi_modbus_register_v3.4_en.pdf",
   "tcp": {
    "port": 502,
    "unit": 1
   },
-  "offset": -1,
+  "offset": 0,
   "fanMax": 5,
   "notes": [
-   "Virallinen Airfi Modbus-rekisterikartta v3.4. RTU 38400 8N1 (ID 1) ja Modbus TCP portti 502.",
-   "Rekisterit on numeroitu 3x00001/4x00001-tyyliin (1-pohjainen); käytetty osoite = numero − 1 (olettamus, dokumentti ei erikseen kerro).",
-   "Dokumentissa EI ole erillistä tehostus-/takkarekisteriä. tehostus = nopeus 5 (kirjoitettava), takka on vain tilatieto (3x00015). Jälkilämmittimestä on vain venttiilin tila (3x00043), ei päälle/pois-kirjoitusta."
+   "Virallinen Airfi Modbus-rekisterikartta v3.4 ja Airfin oma Home Assistant -integraatio (airfioyab/airfi-homeassistant). Modbus TCP portti 502, unit id 1.",
+   "Osoite = rekisterin numero (3x00004 → 4, 4x00001 → 1); osoite 0 hylätään. Tarkistettu Airfin HA-integraation lähdekoodista.",
+   "Laite lukitsee liian usein kysyvän asiakkaan hetkeksi ja sallii usein vain yhden Modbus TCP -yhteyden. Molaplan lukee enintään 20 rekisteriä kerrallaan, vähintään 15 s välein, 100 ms tauoin.",
+   "Kirjoitus FC6:lla (yksi rekisteri). Lämpötilat ×0,1 °C."
   ],
   "regs": [
    {
@@ -66,6 +67,28 @@ const ivProfilesJson = r'''
     "unit": "°C"
    },
    {
+    "key": "iv_supply_room",
+    "name": "Tuloilma huoneeseen (T5)",
+    "fn": "ir",
+    "a": 8,
+    "t": "s16",
+    "s": 0.1,
+    "o": 0,
+    "rw": "r",
+    "unit": "°C"
+   },
+   {
+    "key": "iv_humidity",
+    "name": "Kosteus",
+    "fn": "ir",
+    "a": 23,
+    "t": "u16",
+    "s": 1,
+    "o": 0,
+    "rw": "r",
+    "unit": "%"
+   },
+   {
     "key": "iv_fan",
     "name": "Puhallinnopeus",
     "fn": "hr",
@@ -74,28 +97,6 @@ const ivProfilesJson = r'''
     "s": 1,
     "o": 0,
     "rw": "rw",
-    "unit": ""
-   },
-   {
-    "key": "iv_filter",
-    "name": "Suodatinhälytys (0 = ei)",
-    "fn": "ir",
-    "a": 37,
-    "t": "u16",
-    "s": 1,
-    "o": 0,
-    "rw": "r",
-    "unit": ""
-   },
-   {
-    "key": "iv_heater",
-    "name": "Jälkilämmitysventtiili",
-    "fn": "ir",
-    "a": 43,
-    "t": "u16",
-    "s": 0.1,
-    "o": 0,
-    "rw": "r",
     "unit": ""
    },
    {
@@ -108,8 +109,74 @@ const ivProfilesJson = r'''
     "o": 0,
     "rw": "rw",
     "unit": "°C"
+   },
+   {
+    "key": "filter_interval",
+    "name": "Suodattimen vaihtoväli (krt/v)",
+    "fn": "hr",
+    "a": 8,
+    "t": "u16",
+    "s": 1,
+    "o": 0,
+    "rw": "rw",
+    "unit": "",
+    "min": 0,
+    "max": 6,
+    "step": 1
+   },
+   {
+    "key": "supply_direct",
+    "name": "Tulopuhallin suoraohjaus",
+    "fn": "hr",
+    "a": 10,
+    "t": "u16",
+    "s": 1,
+    "o": 0,
+    "rw": "rw",
+    "unit": "%",
+    "min": 25,
+    "max": 100,
+    "step": 5
+   },
+   {
+    "key": "extract_direct",
+    "name": "Poistopuhallin suoraohjaus",
+    "fn": "hr",
+    "a": 11,
+    "t": "u16",
+    "s": 1,
+    "o": 0,
+    "rw": "rw",
+    "unit": "%",
+    "min": 25,
+    "max": 100,
+    "step": 5
+   },
+   {
+    "key": "iv_filter",
+    "name": "Suodatinhälytys (0 = ei)",
+    "fn": "ir",
+    "a": 37,
+    "t": "u16",
+    "s": 1,
+    "o": 0,
+    "rw": "r",
+    "unit": ""
    }
-  ]
+  ],
+  "conn": {
+   "minIntervalS": 15,
+   "requestDelayMs": 100,
+   "connectDelayMs": 1000,
+   "maxBatch": 20,
+   "retryOnEmpty": true,
+   "closeOnError": false
+  },
+  "ident": {
+   "fn": "ir",
+   "a": 1,
+   "n": 8
+  }
  },
  {
   "id": "vallox",

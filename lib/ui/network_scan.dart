@@ -13,6 +13,7 @@ import '../models/models.dart';
 import '../templates/device_templates.dart';
 import 'add_device_wizard.dart';
 import 'app_scope.dart';
+import 'modbus_scan_page.dart';
 import 'template_gallery.dart';
 
 /// Scan function (test hook): returns hits and whether the bridge was asked.
@@ -332,6 +333,39 @@ class _NetworkScanCardState extends State<NetworkScanCard> {
                     ),
             ),
             if (scanning) const LinearProgressIndicator(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: OutlinedButton.icon(
+                  key: const ValueKey('scan-modbus'),
+                  onPressed: () async {
+                    final f = await showModbusScan(context);
+                    if (f == null || !context.mounted) return;
+                    final t = deviceTemplates.firstWhere((x) => x.id == 'modbus_iv');
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => TemplateSetupPage(
+                          template: t,
+                          initialValues: {
+                            'address': f.ip,
+                            'port': f.port,
+                            'unitId': f.unit,
+                            if (f.rtu) 'framing': 'rtu',
+                            if (f.identity.isNotEmpty) 'name': f.identity,
+                            'profile': ?f.profile,
+                            if (f.busy) '_haBusy': true,
+                          },
+                        ),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.settings_input_component_outlined),
+                  label: Text(tx(context, 'Skannaa Modbus', 'Scan Modbus')),
+                ),
+              ),
+            ),
             if (remote)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),

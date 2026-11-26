@@ -1,5 +1,36 @@
 {
  "@@locale": "et",
+ "sc1e35d5171": "Hinnateenus",
+ "s8b22e8d330": "Ilmateenus",
+ "s252ebed5af": "Shelly Cloud",
+ "s10edebf3fa": "Ntfy server",
+ "@s10edebf3fa": {
+  "x-mt": true
+ },
+ "sd3d9c263ed": "Teenus",
+ "sdfb639365a": "Interneti-ühendus puudub",
+ "s390dd51af3": "{p0} on internetis ja seda ei ole võimalik kasutada. Kontrolli seadme internetiühendust. Kui see on saadaval, näidatakse uusimaid andmeid.",
+ "@s390dd51af3": {
+  "x-mt": true
+ },
+ "sbb750bf9d6": "{p0} ei vasta, proovime varuallikat",
+ "s4284ebac1e": "{p0} ei vasta",
+ "s828d009fa6": "Ka varukoopia allikad ei vastanud praegu. Probleem on kõige tõenäolisemalt teenustes, mitte sinu koduvõrgus. Proovimine toimub automaatselt.",
+ "@s828d009fa6": {
+  "x-mt": true
+ },
+ "se21c801ba6": "Teenusel on probleem, kõige tõenäolisemalt teenuses, mitte teie koduvõrgus. Proovitakse automaatselt uuesti.",
+ "@se21c801ba6": {
+  "x-mt": true
+ },
+ "s35e0766add": "Teenuse sisselogimine nurjus",
+ "@s35e0766add": {
+  "x-mt": true
+ },
+ "sa4d255e53c": "Kontrolli kontot, võtit või märki {p0} jaoks.",
+ "@sa4d255e53c": {
+  "x-mt": true
+ },
  "sd0a2130950": "Oodatud seade ei vasta sellel aadressil – kontrolli seda (http või https?)",
  "sdd5742468b": "Midagi vastab, aga mitte ootuspäraselt. Proovi ette https:// või http:// ja kontrolli porti.",
  "s03c0a5192b": "Aadressi ei leitud",
@@ -82,6 +113,34 @@
  "@s76b95eef9f": {
   "x-mt": true
  },
+ "s7746921882": "Seade leiti, kuid Modbus TCP on välja lülitatud",
+ "@s7746921882": {
+  "x-mt": true
+ },
+ "s6ca672a111": "Sellel aadressil pole midagi",
+ "@s6ca672a111": {
+  "x-mt": true
+ },
+ "sf7a98e1c70": "Sellele IP- aadressile ei vastatud midagi. Kontrolli, kas seade on sisse lülitatud ja samas võrgus ning kas IP on õige (see võib muutuda – reserveerida ruuteris kindla aadressi). \"Skaneeri Modbus\" leiab võrgust seadmeid.",
+ "@sf7a98e1c70": {
+  "x-mt": true
+ },
+ "scb0cba44ea": "Modbusi seade ei vastanud õigel ajal",
+ "@scb0cba44ea": {
+  "x-mt": true
+ },
+ "sc03ae7e1c5": "Porti avamine nurjus. Kõige sagedasemad põhjused: vale IP, seade on teises võrgus (külalise Wi-Fi), Modbus TCP on välja lülitatud või tulemüür blokeerib pordi. Kontrolli aadressi ja porti või puuduta \"Scan Modbus\".",
+ "@sc03ae7e1c5": {
+  "x-mt": true
+ },
+ "sefba540275": "Värav ei jõua seadmeni selle seadme ID- ga",
+ "@sefba540275": {
+  "x-mt": true
+ },
+ "s6e4ed361f3": "Modbusi värav vastas, kuid selle taga ei ole ühtegi seadet selle ühiku ID- ga. Kontrolli seadme Modbusi aadressi (sageli 1) ning seeriakiirust ja pariteeti. \"Skaneeri Modbus\" proovib aadresse 1– 247.",
+ "@s6e4ed361f3": {
+  "x-mt": true
+ },
  "sb66bc0e677": "Modbusi vastust ei ole",
  "@sb66bc0e677": {
   "x-mt": true
@@ -122,7 +181,6 @@
  "@s2cd1df086e": {
   "x-mt": true
  },
- "sdfb639365a": "Internetiühendus puudub",
  "sdbf06d05d9": "Sinu seade ei pääse ligi Molaplani kaugteenusele. Kontrolli mobiilseid andmeid või Wi-Fi- d.",
  "@sdbf06d05d9": {
   "x-mt": true
@@ -180,6 +238,14 @@
   "x-mt": true
  },
  "s53a891e670": "Kontrolli aadressi ja seadeid ning proovi uuesti. Tehnilised üksikasjad näitavad täpset põhjust.",
+ "sdd5e97b1e2": "Selge",
+ "sad990c999d": "Vahelduv pilvisus",
+ "s80bfe8f9ad": "Pilves",
+ "s46f3db8514": "Udu",
+ "sbd81101eb4": "Uduvihm",
+ "s960a265544": "Vihm",
+ "seab38c2b45": "Lumesadu",
+ "sfc65eafa12": "Äike",
  "sc27533ae83": "Säästlik",
  "sdbcb85509b": "Temperatuur võib kõikuda kõige rohkem (+1 / −2 °C). Suurim sääst.",
  "s380b20be36": "Tasakaalus",
@@ -343,6 +409,18 @@
  },
  "s3832b8c729": "kogu tuba",
  "sceabe202da": "camera_",
+ "s1a73b397a1": "sonoff",
+ "@s1a73b397a1": {
+  "x-mt": true
+ },
+ "sb8a029d8b4": "Hikvision",
+ "@sb8a029d8b4": {
+  "x-mt": true
+ },
+ "s2e87289ebd": "tapo",
+ "@s2e87289ebd": {
+  "x-mt": true
+ },
  "s834e3e8c5d": "Apple",
  "@s834e3e8c5d": {
   "x-mt": true
@@ -525,7 +603,6 @@
  "@sf30bb5d5e6": {
   "x-mt": true
  },
- "s252ebed5af": "Shelly Cloud",
  "s25399cd337": "Server",
  "s246c7a46ff": "Shelly app → Kasutaja seaded → Autoriseerimispilve võti → Server URI.",
  "@s246c7a46ff": {
@@ -585,6 +662,14 @@
  "@s1866ef6dc8": {
   "x-mt": true
  },
+ "s70625d8bbe": "Kasutaja ja parool, mis on määratud kaamerale rakenduses eWeLink (RTSP/ONVIF). Kahe objektiiviga mudelil pärinevad mõlemad objektiivid samast seadmest.",
+ "@s70625d8bbe": {
+  "x-mt": true
+ },
+ "s1a3c354399": "eWeLink app → camera → Seaded: lülitage RTSP/ONVIF sisse ja määrake sellele kasutaja ja parool (kui see on olemas).",
+ "@s1a3c354399": {
+  "x-mt": true
+ },
  "s1c2786e15f": "Kaamera kasutaja ja parool (sageli admin). Kaamera seadistustes võib olla vajalik sisse lülitada ONVIF.",
  "@s1c2786e15f": {
   "x-mt": true
@@ -593,8 +678,8 @@
  "@s32270de47a": {
   "x-mt": true
  },
- "s4d3ff251d6": "Hikvision, Dahua, Reolink, Tapo, Ezviz või ükskõik milline ONVIF-kaamera. Pilt kaardil, live-video kodus.",
- "@s4d3ff251d6": {
+ "s652458eb87": "Hikvision, Dahua, Reolink, Tapo, Ezviz, Sonoff või ükskõik milline ONVIF/RTSP kaamera. Pilt kaardil, live video kodus.",
+ "@s652458eb87": {
   "x-mt": true
  },
  "se8ea97c5eb": "Kaamera rakenduses (seadme info) või ruuteri seadmete loendis.",
@@ -606,6 +691,10 @@
   "x-mt": true
  },
  "seeb6c38c8e": "Kaamera",
+ "s83d937ae6b": "Stream {p0}/{p1} (oma objektiiv või kanal)",
+ "@s83d937ae6b": {
+  "x-mt": true
+ },
  "s136c6f0d2b": "Pilt kaardil, live video kodus",
  "@s136c6f0d2b": {
   "x-mt": true
@@ -614,6 +703,9 @@
  "@s2101774157": {
   "x-mt": true
  },
+ "s77bf3b424f": "0=Off;1=On",
+ "s4cbe24240f": "Sees",
+ "s33831dd49f": "Väljas",
  "sb662db81d8": "Aadress näib olevat ebatäielik. Kasuta nelja numbrit koos punktidega, nt 192.168.1. 50.",
  "@sb662db81d8": {
   "x-mt": true
@@ -1260,7 +1352,23 @@
   "x-mt": true
  },
  "s68cbe596f8": "Sisselogimine aegus",
+ "s599357f47b": "Internetti pole",
+ "@s599357f47b": {
+  "x-mt": true
+ },
+ "s74fa2d56aa": "Modbus on väljas",
+ "@s74fa2d56aa": {
+  "x-mt": true
+ },
  "s156aa7eeb3": "Seade ei vasta",
+ "sbf2cfbb102": "Vale üksuse ID?",
+ "@sbf2cfbb102": {
+  "x-mt": true
+ },
+ "s0e3a6bafbf": "Teenistus ei vasta",
+ "@s0e3a6bafbf": {
+  "x-mt": true
+ },
  "s7abcbf1107": "Serverit ei leitud",
  "sca533b6f25": "Kodusild ei vasta",
  "s96ad0dc252": "Väärtust seadmes ei leitud",
@@ -1304,10 +1412,10 @@
   "x-mt": true
  },
  "s09f5da65e0": "Lülita Shelly Cloudile",
+ "s580678cb10": "Impordi",
  "sa3a093e55e": "Kütab",
  "s8efb99df1d": "Jahutab",
  "s0b98d62330": "Küte ja jahutus",
- "s33831dd49f": "Väljas",
  "sa61efb9866": "kütab",
  "s9a47ee3e3c": "jahutab",
  "s156712ac0c": "ootel",
@@ -1484,6 +1592,7 @@
  "@s0a9acb5af1": {
   "x-mt": true
  },
+ "se3ef5a5658": "Skanni Modbus",
  "s9a018b8166": "Sa oled ära: kodusild otsis läbi sinu koduvõrgu.",
  "@s9a018b8166": {
   "x-mt": true
@@ -1540,8 +1649,60 @@
  "@s049d71f971": {
   "x-mt": true
  },
+ "s3ec9d77947": "tmrw",
+ "@s3ec9d77947": {
+  "x-mt": true
+ },
  "sed9b5e52f6": "praegu",
  "@sed9b5e52f6": {
+  "x-mt": true
+ },
+ "s1b85ad9e38": "Otsib seadmeid, mille Modbus TCP on sees (pordid 502, 503 ja 5020) ning proovib ühiku ID- d. See võtab aega umbes pool minutit.",
+ "@s1b85ad9e38": {
+  "x-mt": true
+ },
+ "seb1f4357ea": "Oma sadam (vabatahtlik)",
+ "@seb1f4357ea": {
+  "x-mt": true
+ },
+ "s06760a6970": "Skaneeri uuesti",
+ "@s06760a6970": {
+  "x-mt": true
+ },
+ "s23d146db23": "Skaneeri",
+ "@s23d146db23": {
+  "x-mt": true
+ },
+ "s18e7ad553e": "Skaneerin...",
+ "@s18e7ad553e": {
+  "x-mt": true
+ },
+ "s721647a6cd": "Sa oled ära: kodusild skaneeritud.",
+ "@s721647a6cd": {
+  "x-mt": true
+ },
+ "s08e57d2d85": "Skaneerimine nurjus",
+ "@s08e57d2d85": {
+  "x-mt": true
+ },
+ "s4cf60b9350": "Modbusi seadmeid ei leitud. Kontrolli, kas Modbus TCP on seadme seadistustes sisse lülitatud ja kas see on samas võrgus (mitte külaliste Wi-Fi).",
+ "@s4cf60b9350": {
+  "x-mt": true
+ },
+ "sbd8ee8a14f": "Modbusi seade",
+ "@sbd8ee8a14f": {
+  "x-mt": true
+ },
+ "sf0462b25ac": "väravate",
+ "@sf0462b25ac": {
+  "x-mt": true
+ },
+ "s24e5139123": "Port avatud, Modbusi vastust ei ole",
+ "@s24e5139123": {
+  "x-mt": true
+ },
+ "s9041c140be": "Kontrolli ühiku ID ja Modbusi seadistusi. Selle aadressi kasutamiseks klõpsa nupule.",
+ "@s9041c140be": {
   "x-mt": true
  },
  "s55d52c5ae1": "See seade ei ole Wi-Fi-s",
@@ -1607,6 +1768,14 @@
  },
  "sb03997d94b": "Seade vastas, kuid sellel ei ole lüliteid ega tulesid. Pilve jaoks kirjuta seadme ID.",
  "@sb03997d94b": {
+  "x-mt": true
+ },
+ "se6e01118ac": "Kaamera leiti, kuid mitte selle video aadress",
+ "@se6e01118ac": {
+  "x-mt": true
+ },
+ "sca994210fb": "Kaamera vastas, kuid ei öelnud oma videoaadressi ning ükski tavaline RTSP aadress ei töötanud selle sisselogimisega. Kontrolli, kas RTSP/ONVIF on kaamerarakenduses sisse lülitatud, või vali allpool olev kaubamärk ja puuduta \"Ühenda\".",
+ "@sca994210fb": {
   "x-mt": true
  },
  "s869571042f": "Pilvevõti või server ei ole aktsepteeritud",
@@ -1808,6 +1977,18 @@
   "x-mt": true
  },
  "sf77125583f": "Tehnilised üksikasjad",
+ "sb629592b4b": "Kaameramark",
+ "@sb629592b4b": {
+  "x-mt": true
+ },
+ "se3aa0f7164": "RTSP aadress",
+ "@se3aa0f7164": {
+  "x-mt": true
+ },
+ "s722ac06c6d": "Ilma sisselogimiseta – kasutaja ja parool lisatakse automaatselt.",
+ "@s722ac06c6d": {
+  "x-mt": true
+ },
  "s77ec7b376b": "Leitud: {p0}",
  "@s77ec7b376b": {
   "x-mt": true
@@ -2747,6 +2928,25 @@
  "s2d65587b87": "8",
  "s2ad22696ca": "Keel",
  "s7efc5653d2": "Seadme keel",
+ "s306729fe62": "Hindadeta",
+ "@s306729fe62": {
+  "x-mt": true
+ },
+ "sff03a35d96": "1 tunni jooksul",
+ "@sff03a35d96": {
+  "x-mt": true
+ },
+ "sf9e22ac5e7": "vanad hinnad",
+ "@sf9e22ac5e7": {
+  "x-mt": true
+ },
+ "s40fbbc4d00": "12 h",
+ "s140acccb81": "Täna",
+ "s76379cf7c6": "48 h",
+ "s252f182d27": "homme 14.00",
+ "@s252f182d27": {
+  "x-mt": true
+ },
  "s4529c1010a": "Kaameraühenduse valimine",
  "@s4529c1010a": {
   "x-mt": true
@@ -2870,10 +3070,6 @@
  "@sb1f0e72163": {
   "x-mt": true
  },
- "s306729fe62": "Hindadeta",
- "@s306729fe62": {
-  "x-mt": true
- },
  "s80c4ecec94": "c/h",
  "sbfe79d1f5f": "Uuendatud",
  "sb68e905fc4": "Tarbimine (kWh)",
@@ -2962,7 +3158,6 @@
  "@s406e599999": {
   "x-mt": true
  },
- "s140acccb81": "Täna",
  "s0de6e75a52": "Homme",
  "sf87d92faf4": "Hinnapiirkond {p0}. Järgmise päeva hetkehinnad koos käibemaksuga {p1} %. Lisage pindala ja tasude muutmiseks seade \"Elektrihind\".",
  "@sf87d92faf4": {
@@ -3294,6 +3489,14 @@
   "x-mt": true
  },
  "sd7314e8237": "Kuvamine",
+ "s7d6cee9e42": "Baarid (15 min)",
+ "@s7d6cee9e42": {
+  "x-mt": true
+ },
+ "sc0e069225b": "Trend + Nüüd liin",
+ "@sc0e069225b": {
+  "x-mt": true
+ },
  "s1c72b8c56a": "Trendi pikkus",
  "@s1c72b8c56a": {
   "x-mt": true
@@ -3424,6 +3627,14 @@
  },
  "s29135ed75a": "Automaatne: teljed ja juhtjooned näitavad, kui kaart on vähemalt 2×2.",
  "@s29135ed75a": {
+  "x-mt": true
+ },
+ "s638c648b40": "Stream",
+ "@s638c648b40": {
+  "x-mt": true
+ },
+ "s32ef3895b8": "Objektiivid / kanal {p0}",
+ "@s32ef3895b8": {
   "x-mt": true
  },
  "s939603242a": "Värvused väärtuse järgi",
@@ -3845,7 +4056,6 @@
  "safe0429a90": "Hinnajuhtimine",
  "sf3d644dd4c": "Õpeta puldi nupp",
  "sfb1a18d11f": "Värskenda",
- "s4cbe24240f": "Sees",
  "s72a2328ddd": "Valgustid",
  "sca12be80ca": "Lülitid",
  "sa4c0eeea02": "Soojuspumbad ja kliima",
@@ -3986,7 +4196,6 @@
  "@s852dd1795e": {
   "x-mt": true
  },
- "s580678cb10": "Impordi",
  "s5f2ec17730": "Imporditud seadistused",
  "@s5f2ec17730": {
   "x-mt": true
@@ -4064,10 +4273,6 @@
  },
  "sdb12678e52": "Ekspordi",
  "s34686ffb09": "Näide",
- "s412c666544": "Lisa näidis armatuurlaud (kaamera, häire, tuled, ventilatsioon). Asenda aadressid enda omadega.",
- "@s412c666544": {
-  "x-mt": true
- },
  "sec02c7c071": "Lisa näidisvaade",
  "s522d6584c5": "Otsi uuendusi",
  "sd178a1d809": "Oma juhtimisterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kaamerad, WebSocket, TCP ja UDP. Ilma kontota jäävad kõik seaded sellesse seadmesse.",
@@ -4650,6 +4855,22 @@
  "@s15e327bf8e": {
   "x-mt": true
  },
+ "s666811be3d": "Raamimine",
+ "@s666811be3d": {
+  "x-mt": true
+ },
+ "s0f2d3b7a42": "Odav RS485 kuni Wi-Fi / Etherneti muundur läbipaistvas režiimis kasutab RTU kaadreid.",
+ "@s0f2d3b7a42": {
+  "x-mt": true
+ },
+ "s12ca822cd8": "Modbus TCP (normaalne)",
+ "@s12ca822cd8": {
+  "x-mt": true
+ },
+ "s731c92978b": "Modbus RTU üle TCP (RS485 värav)",
+ "@s731c92978b": {
+  "x-mt": true
+ },
  "s943b8b6bf3": "Registritabel",
  "@s943b8b6bf3": {
   "x-mt": true
@@ -4982,14 +5203,6 @@
  },
  "sbe208615d0": "{p0} ei vasta",
  "@sbe208615d0": {
-  "x-mt": true
- },
- "s804e935440": "ESP32 kaamera",
- "@s804e935440": {
-  "x-mt": true
- },
- "s478ddb6e1a": "Ventilatsiooniseade (Modbus)",
- "@s478ddb6e1a": {
   "x-mt": true
  },
  "s4b4fd14aaf": "Õu",
@@ -5342,13 +5555,26 @@
   "x-mt": true
  },
  "s6385f1487e": "Elektri hind (börs)",
- "se807a72c0a": "Tänane ja homne hetkehind graafikuna. Hinnakontroll: kaua vajutage seadme plaati → Hinnakontroll.",
- "@se807a72c0a": {
+ "sead3949d3c": "Tänane ja homne hetkehind 15-minutilise eraldusvõimega: trend Now rea ja/või baaridega. Hinnakontroll: seadmekaardi kaugvajutamine → Hinnakontroll.",
+ "@sead3949d3c": {
   "x-mt": true
  },
  "sef8d24c969": "Riik / hinnapiirkond",
  "sef4f509f9f": "Valige oma riik; Rootsis ja Norras oma piirkond.",
  "@sef4f509f9f": {
+  "x-mt": true
+ },
+ "s5e8c8e4273": "Välimus",
+ "s9f6d9ce1bf": "Trend näitab täna ja homme joont praeguse positsiooniga.",
+ "@s9f6d9ce1bf": {
+  "x-mt": true
+ },
+ "s51f1184efb": "Trend ja baarid (2 kaarti)",
+ "@s51f1184efb": {
+  "x-mt": true
+ },
+ "sa77af9de19": "Hinnasuundumus (rida, kohe rida)",
+ "@sa77af9de19": {
   "x-mt": true
  },
  "sf3a8631d14": "Teie arvelt koos käibemaksuga. 0 = ainult energia.",
@@ -5363,6 +5589,7 @@
  "@s49dfca65a3": {
   "x-mt": true
  },
+ "s9772b9b5c4": "Elektrihinna trend",
  "s9af9526395": "Ventilatsiooniseade (Modbus TCP)",
  "@s9af9526395": {
   "x-mt": true
@@ -5530,36 +5757,176 @@
  "@s3a38b97f7b": {
   "x-mt": true
  },
- "sdd5e97b1e2": "Selge",
- "@sdd5e97b1e2": {
+ "s7e552bd146": "Sellel aadressil on olemas seade, kuid see ei aktsepteeri Modbusi selles pordis. Lülita sisse Modbus TCP seadme seadistustes (sageli võrgu / Modbusi / kaugjuhtimise all) ja kontrolli pordi (tavaliselt 502). Samuti võid puudutada nuppu \"Skaneeri Modbus\". Kui seade töötab Home Assistantis, võib sellel juba olla ühendus (paljud lubavad ainult ühe) – loe väärtusi HA kaudu.",
+ "@s7e552bd146": {
   "x-mt": true
  },
- "sad990c999d": "Osaliselt hägune",
- "@sad990c999d": {
+ "s0ebc613f20": "Seade on lukus, proovib uuesti {p0}",
+ "@s0ebc613f20": {
   "x-mt": true
  },
- "s80bfe8f9ad": "Cloudy",
- "@s80bfe8f9ad": {
+ "s317b2b59af": "Seade ei vastanud, nii et see jääb mõneks ajaks üksi – paljud seadmed lukustavad kliente, kes küsitlusi liiga sageli teevad. Paus kasvab 30 sekundilt 5 minutini. Kui seadmel on juba ühendus (nt koduabiline), loe väärtused läbi HA. Lugemisintervall ja pausid on ühenduse all Muud.",
+ "@s317b2b59af": {
   "x-mt": true
  },
- "s46f3db8514": "Fog",
- "@s46f3db8514": {
+ "s33e09089b2": "Seadme aadress puudub",
+ "@s33e09089b2": {
   "x-mt": true
  },
- "sbd81101eb4": "Drizzle",
- "@sbd81101eb4": {
+ "s6180bd540e": "Avage ühendus ja sisestage seadme IP-aadress või puudutage \"Scan Modbus\", et leida seade võrgus.",
+ "@s6180bd540e": {
   "x-mt": true
  },
- "s960a265544": "Vihm",
- "@s960a265544": {
+ "sd73581c910": "Seadmel võib juba olla ühendus",
+ "@sd73581c910": {
   "x-mt": true
  },
- "seab38c2b45": "Lumi",
- "@seab38c2b45": {
+ "scee8d982a2": "Seade kukutas kohe Modbusi ühenduse. Paljud seadmed lubavad korraga ainult ühte Modbus TCP ühendust. Kui seade on juba Home Assistantis (nt modbus.yaml), loe väärtusi HA kaudu.",
+ "@scee8d982a2": {
   "x-mt": true
  },
- "sfc65eafa12": "Äikesetorm",
- "@sfc65eafa12": {
+ "sd63d34bfe9": "YAML- i lugemine nurjus: {p0}",
+ "@sd63d34bfe9": {
+  "x-mt": true
+ },
+ "sc5c9e5e2fc": "\"{p0}\" kasutab jadaporti (USB/RS485) – vajate RS485 → TCP väravat.",
+ "@sc5c9e5e2fc": {
+  "x-mt": true
+ },
+ "s69135546c8": "{p0} - sihtmärk",
+ "@s69135546c8": {
+  "x-mt": true
+ },
+ "sd88c13e972": "\"{p0}\" jäeti vahele - lisage need käsitsi.",
+ "@sd88c13e972": {
+  "x-mt": true
+ },
+ "sceebf690e3": "YAML-is ei leitud Modbus TCP-jaoturit (modbus: ... tüüp: tcp, host: ...).",
+ "@sceebf690e3": {
+  "x-mt": true
+ },
+ "s9be06479ff": "Lukustus",
+ "@s9be06479ff": {
+  "x-mt": true
+ },
+ "s613938b0b3": "Aadressi pole",
+ "@s613938b0b3": {
+  "x-mt": true
+ },
+ "s252d8628c7": "Hõivatud (HA?)",
+ "@s252d8628c7": {
+  "x-mt": true
+ },
+ "sa846059775": "Home Assistant juba loeb seda seadet",
+ "@sa846059775": {
+  "x-mt": true
+ },
+ "s18a1844439": "Seadmel võib juba olla ühendus (nt Home Assistant) – lugeda väärtusi HA kaudu. Paljud seadmed lubavad ainult ühte Modbus TCP ühendust.",
+ "@s18a1844439": {
+  "x-mt": true
+ },
+ "sa29df4fc6b": "{p0} Koduabis leiduvad Modbusi väärtused. Paljud seadmed lubavad ainult ühte Modbusi TCP ühendust, seega on kõige ohutum lugeda läbi HA.",
+ "@sa29df4fc6b": {
+  "x-mt": true
+ },
+ "sb8c40d2c20": "Kasutamine koduabilise kaudu",
+ "@sb8c40d2c20": {
+  "x-mt": true
+ },
+ "s810014ca02": "Koduabilise modbus.yamli import",
+ "@s810014ca02": {
+  "x-mt": true
+ },
+ "sfbf34ee532": "Aseta modbus. yaml (või modbus: osa konfiguratsioonist. yaml). Ühendus ja kaardid kasutavad samu registreid ja ajastust.",
+ "@sfbf34ee532": {
+  "x-mt": true
+ },
+ "s2d4fbaade1": "{p0} ühendus(ed), {p1} kaardid",
+ "@s2d4fbaade1": {
+  "x-mt": true
+ },
+ "s108e078c0c": "Koduabilisest imporditud Modbusi seade",
+ "@s108e078c0c": {
+  "x-mt": true
+ },
+ "s28d9c4c7dc": "{p0} eelseadistus",
+ "@s28d9c4c7dc": {
+  "x-mt": true
+ },
+ "sc6cde0d476": "leiti oma teadaandest",
+ "@sc6cde0d476": {
+  "x-mt": true
+ },
+ "s166da70285": "Seade ei aktsepteeri ühendust",
+ "@s166da70285": {
+  "x-mt": true
+ },
+ "sbe97262d91": "Seadmel võib juba olla ühendus (nt Home Assistant) – lugeda väärtusi HA kaudu. Paljud seadmed lubavad ainult ühte Modbus TCP ühendust.",
+ "@sbe97262d91": {
+  "x-mt": true
+ },
+ "sa0bd9ad5b1": "Näide kaamera - lisage oma seadme lisamine",
+ "@sa0bd9ad5b1": {
+  "x-mt": true
+ },
+ "sc8327738b3": "Lisa näidisvaade (kaamera, häire, tuled, ventilatsioon). Näidisseadmed ei ühendu kunagi kuskil – lisa oma seade seadmega Lisa.",
+ "@sc8327738b3": {
+  "x-mt": true
+ },
+ "s570f11bec8": "Minimaalne lugemisintervall (s)",
+ "@s570f11bec8": {
+  "x-mt": true
+ },
+ "s13e54dbff1": "Sama registrit ei loeta kunagi sagedamini, kui paljud kaardid seda näitavad.",
+ "@s13e54dbff1": {
+  "x-mt": true
+ },
+ "s95d4c6dd5b": "Paus taotluste vahel (ms)",
+ "@s95d4c6dd5b": {
+  "x-mt": true
+ },
+ "s77b6667fdb": "Oodake pärast ühendamist (ms)",
+ "@s77b6667fdb": {
+  "x-mt": true
+ },
+ "sf4b0409574": "Külgnev partii loeb",
+ "@sf4b0409574": {
+  "x-mt": true
+ },
+ "sc011aad1a9": "Maksimaalne registreerimine lugemise kohta",
+ "@sc011aad1a9": {
+  "x-mt": true
+ },
+ "s942a690567": "Lukustuspaus alguses (s)",
+ "@s942a690567": {
+  "x-mt": true
+ },
+ "s3746551251": "Kui seade ei vasta, jäetakse see mõneks ajaks üksi. Paus kahekordistab maksimumi.",
+ "@s3746551251": {
+  "x-mt": true
+ },
+ "sf71d800450": "Lukustuspaus kõige rohkem (s)",
+ "@sf71d800450": {
+  "x-mt": true
+ },
+ "sbce68f8691": "Ühenduse sulgemine pärast viga",
+ "@sbce68f8691": {
+  "x-mt": true
+ },
+ "sf96bb0c03d": "Tühja vastuse uuesti proovimine",
+ "@sf96bb0c03d": {
+  "x-mt": true
+ },
+ "s589eb1bcd3": "Koduabiline (näide)",
+ "@s589eb1bcd3": {
+  "x-mt": true
+ },
+ "sc4fdb87cd7": "Kaamera (näide)",
+ "@sc4fdb87cd7": {
+  "x-mt": true
+ },
+ "sd50566a706": "Ventilatsiooniseade (näide)",
+ "@sd50566a706": {
   "x-mt": true
  }
 }

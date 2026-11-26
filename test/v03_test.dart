@@ -35,7 +35,13 @@ class FakeRemote extends RemoteClient {
   final FutureOr<Object?> Function(String op, Map<String, dynamic>? spec) handler;
   final calls = <String>[];
   @override
-  Future<Object?> call(String op, {Map<String, dynamic>? conn, Map<String, dynamic>? spec, Object? value}) async {
+  Future<Object?> call(
+    String op, {
+    Map<String, dynamic>? conn,
+    Map<String, dynamic>? spec,
+    Object? value,
+    Duration? timeout,
+  }) async {
     calls.add(op);
     return handler(op, spec);
   }

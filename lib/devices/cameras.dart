@@ -11,6 +11,7 @@ import '../models/models.dart';
 import '../l10n/l10n.dart';
 import 'onvif.dart';
 import 'provider.dart';
+import 'rtsp_catalog.dart';
 import 'rtsp_probe.dart';
 
 class CameraPreset {
@@ -111,9 +112,20 @@ const cameraPresets = <CameraPreset>[
     setupEn: 'Ezviz app → camera → Settings → LAN Live View / RTSP: turn it on (if the option exists).',
   ),
   CameraPreset(
+    id: 'sonoff_cam',
+    name: 'Sonoff',
+    keywords: ['sonoff cam', 'cam slim', 'cam dual', 'gk-200', 'ewelink'],
+    useOnvif: true,
+    rtsp: 'rtsp://{{host}}:554/av_stream/ch0',
+    loginHelpFi: 'eWeLink-sovelluksessa kameralle asetettu käyttäjä ja salasana (RTSP/ONVIF). Kaksilinssisessä mallissa molemmat linssit tulevat samasta laitteesta.',
+    loginHelpEn: 'The user and password set for the camera in the eWeLink app (RTSP/ONVIF). On a dual-lens model both lenses come from the same device.',
+    setupFi: 'eWeLink-sovellus → kamera → Asetukset: laita RTSP/ONVIF päälle ja aseta sille käyttäjä ja salasana (jos valinta on).',
+    setupEn: 'eWeLink app → camera → Settings: turn on RTSP/ONVIF and set a user and password for it (if the option exists).',
+  ),
+  CameraPreset(
     id: 'onvif',
     name: 'ONVIF',
-    keywords: ['onvif', 'ip-kamera', 'ip camera', 'axis', 'uniview', 'foscam', 'annke', 'vstarcam'],
+    keywords: ['onvif', 'ip-kamera', 'ip camera', 'axis', 'uniview', 'foscam', 'annke', 'vstarcam', 'amcrest', 'vigi'],
     useOnvif: true,
     loginHelpFi: 'Kameran käyttäjä ja salasana (usein admin). ONVIF pitää ehkä laittaa päälle kameran asetuksista.',
     loginHelpEn: 'The camera user and password (often admin). ONVIF may need to be enabled in the camera settings.',
@@ -131,10 +143,11 @@ class CameraChooser extends DeviceProvider {
   @override
   String get en => 'Security camera';
   @override
-  String get descFi => 'Hikvision, Dahua, Reolink, Tapo, Ezviz tai muu ONVIF-kamera. Kuva ruutuun, live-video kotona.';
+  String get descFi =>
+      'Hikvision, Dahua, Reolink, Tapo, Ezviz, Sonoff tai muu ONVIF/RTSP-kamera. Kuva ruutuun, live-video kotona.';
   @override
   String get descEn =>
-      'Hikvision, Dahua, Reolink, Tapo, Ezviz or any ONVIF camera. Picture on a tile, live video at home.';
+      'Hikvision, Dahua, Reolink, Tapo, Ezviz, Sonoff or any ONVIF/RTSP camera. Picture on a tile, live video at home.';
   @override
   String get category => 'camera';
   @override
@@ -193,7 +206,7 @@ class CameraProvider extends DeviceProvider {
   @override
   PairMode get pairMode => PairMode.password;
   @override
-  String get addressHint => '192.168.1.70';
+  String get addressHint => '192.168.x.x';
   @override
   String get addressHelpFi => 'Kameran sovelluksesta (laitetiedot) tai reitittimen laitelistasta.';
   @override
@@ -249,8 +262,18 @@ class CameraProvider extends DeviceProvider {
     );
     var snapshot = preset.snapshot;
     var model = c.model;
+    var streams = <Map<String, dynamic>>[];
+    final notes = <String>[];
+    var notOnvif = false;
 
-    if (preset.useOnvif) {
+    /// Address typed by hand (offered when nothing else worked): used as is.
+    final manual = (creds['rtsp'] ?? '').trim();
+    if (manual.isNotEmpty) {
+      final u = Uri.tryParse(manual.contains('://') ? manual : 'rtsp://$host$manual');
+      if (u == null || u.scheme != 'rtsp') throw AddDeviceError(AddProblem.cameraNoStream, 'bad RTSP address: $manual');
+      settings = {...settings, 'rtsp': rtspTemplate(u.toString(), host)}..remove('rtspSub');
+      snapshot = null;
+    } else if (preset.useOnvif) {
       final d = ctx.driver(conn({...settings, 'auth': 'digest'}));
       try {
         final m = await onvifMedia(
@@ -258,6 +281,7 @@ class CameraProvider extends DeviceProvider {
           devicePath: c.id.isNotEmpty ? c.id : preset.onvifPath,
           user: user,
           password: pw,
+          host: host,
         );
         settings = {
           ...settings,
@@ -265,14 +289,44 @@ class CameraProvider extends DeviceProvider {
           'rtsp': ?rtspTemplate(m.rtsp, host),
           'rtspSub': ?rtspTemplate(m.rtspSub, host),
         };
+        streams = [
+          for (final st in m.streams)
+            {
+              'rtsp': ?rtspTemplate(st.rtsp, host),
+              'rtspSub': ?rtspTemplate(st.rtspSub, host),
+              'snapshot': ?_relative(st.snapshot, host),
+            },
+        ];
         snapshot = _relative(m.snapshot, host);
         if (m.model.isNotEmpty) model = m.model;
       } on OnvifAuthError {
-        throw AddDeviceError(AddProblem.wrongPassword, 'ONVIF');
+        throw AddDeviceError(AddProblem.wrongPassword, 'ONVIF: login refused (WS-Security and HTTP Digest)');
+      } on OnvifNeedsLogin {
+        throw AddDeviceError(AddProblem.needsPassword, 'ONVIF: login required');
+      } on OnvifNoProfiles catch (e) {
+        if (e.model.isNotEmpty) model = e.model;
+        notes.add('$e');
+      } on OnvifNotFound catch (e) {
+        notOnvif = true;
+        notes.add('$e');
       } catch (e) {
-        throw explain(e, havePassword: true);
+        final p = explain(e, havePassword: true);
+        if (p.problem == AddProblem.unreachable ||
+            p.problem == AddProblem.bridgeOffline ||
+            p.problem == AddProblem.wrongPassword) {
+          throw p;
+        }
+        notes.add('ONVIF: $e');
       } finally {
         await d.dispose();
+      }
+      if (streams.isEmpty) {
+        // t153u: ONVIF said nothing useful – look for the stream like a person would, with the
+        // usual addresses of every big brand (Sonoff first for a Sonoff, and so on).
+        final found = await _probe(c, host, user, pw, '$model ${c.model} ${c.name ?? ''}', notes, notOnvif: notOnvif);
+        settings = {...settings, ...found.$1};
+        streams = found.$2;
+        snapshot = null;
       }
     }
 
@@ -303,33 +357,88 @@ class CameraProvider extends DeviceProvider {
     }
     if (snapshot == null) {
       final url = cameraRtspUrl({...settings, 'password': pw});
-      if (url == null) throw AddDeviceError(AddProblem.nothingToAdd, 'no RTSP or snapshot');
+      if (url == null) throw AddDeviceError(AddProblem.cameraNoStream, 'no RTSP or snapshot');
       if (!c.viaBridge) {
+        int code;
         try {
-          final code = await _rtspCheck(url);
-          if (code == 401) throw AddDeviceError(AddProblem.wrongPassword, 'RTSP 401');
-          if (code == 404) throw AddDeviceError(AddProblem.notThisBrand, 'RTSP 404');
+          code = await _rtspCheck(url);
         } catch (e) {
           throw explain(e, havePassword: true);
         }
+        if (code == 401) throw AddDeviceError(AddProblem.wrongPassword, 'RTSP 401');
+        if (code != 200 && manual.isNotEmpty) {
+          throw AddDeviceError(AddProblem.cameraNoStream, 'RTSP $code: ${rtspTemplate(url, host)}');
+        }
+        if (code == 404) {
+          // The brand's usual address is not it: try the other brands' addresses before giving up.
+          final found = await _probe(c, host, user, pw, '${preset.id} $model', [
+            'RTSP 404: ${preset.rtsp}',
+          ], notOnvif: false);
+          settings = {...settings, ...found.$1};
+          streams = found.$2;
+        }
       }
     }
+    if (streams.length > 1) settings = {...settings, 'streams': streams};
     final connection = conn(settings);
     final title = c.name?.isNotEmpty == true ? c.name! : tr(ctx.lang, 'Kamera', 'Camera');
+    final n = streams.length > 1 ? streams.length : 1;
     return Connected(
       connection: connection,
       label: model.isNotEmpty ? model : preset.name,
       items: [
-        AddItem(
-          key: 'cam',
-          name: title,
-          kind: 'camera',
-          subtitle: snapshot != null
-              ? tr(ctx.lang, 'Kuva ruutuun, live-video kotiverkossa', 'Picture on the tile, live video at home')
-              : tr(ctx.lang, 'Live-video kotiverkossa (ei kuvaa etänä)', 'Live video at home (no picture away)'),
-        ),
+        for (var i = 0; i < n; i++)
+          AddItem(
+            key: i == 0 ? 'cam' : 'cam${i + 1}',
+            name: n == 1 ? title : '$title ${i + 1}',
+            kind: 'camera',
+            subtitle: [
+              if (n > 1)
+                tr(
+                  ctx.lang,
+                  'Kuvavirta ${i + 1}/$n (oma linssi tai kanava)',
+                  'Stream ${i + 1}/$n (own lens or channel)',
+                ),
+              (i == 0 ? snapshot : streams.elementAtOrNull(i)?['snapshot']) != null
+                  ? tr(ctx.lang, 'Kuva ruutuun, live-video kotiverkossa', 'Picture on the tile, live video at home')
+                  : tr(ctx.lang, 'Live-video kotiverkossa (ei kuvaa etänä)', 'Live video at home (no picture away)'),
+            ].join(' · '),
+          ),
       ],
-      data: {'snapshot': ?snapshot},
+      data: {'snapshot': ?snapshot, 'streams': n},
+    );
+  }
+
+  /// RTSP search over [rtspPatterns]; returns the settings to merge and the stream list.
+  Future<(Map<String, dynamic>, List<Map<String, dynamic>>)> _probe(
+    Candidate c,
+    String host,
+    String user,
+    String pw,
+    String hintText,
+    List<String> notes, {
+    required bool notOnvif,
+  }) async {
+    if (c.viaBridge) {
+      // DESCRIBE runs on this device; via the bridge only the typed address can be used.
+      throw AddDeviceError(AddProblem.cameraNoStream, [...notes, 'RTSP search needs the home network'].join('\n'));
+    }
+    final brand = rtspBrandHint(hintText).isNotEmpty ? rtspBrandHint(hintText) : _presetBrand(preset.id);
+    final r = await probeRtsp(host, user: user, password: pw, check: _rtspCheck, brand: brand);
+    final detail = [...notes, ...r.tried].join('\n');
+    if (r.streams.isEmpty) {
+      if (r.authFailed) throw AddDeviceError(AddProblem.wrongPassword, detail);
+      // Not ONVIF and no RTSP port at all: really something else at this address.
+      final noRtsp = r.tried.isNotEmpty && r.tried.every((t) => !t.contains('RTSP '));
+      if (notOnvif && noRtsp) throw AddDeviceError(AddProblem.notThisBrand, detail);
+      throw AddDeviceError(AddProblem.cameraNoStream, detail);
+    }
+    final f = r.streams.first;
+    return (
+      <String, dynamic>{'rtsp': f.rtsp, 'rtspSub': f.rtspSub, 'rtspFound': ?r.pattern?.name},
+      [
+        for (final st in r.streams) {'rtsp': st.rtsp, 'rtspSub': ?st.rtspSub},
+      ],
     );
   }
 
@@ -341,21 +450,45 @@ class CameraProvider extends DeviceProvider {
     bool power = true,
     String lang = 'fi',
   }) {
-    if (skip.contains('cam')) return const [];
     final snap = r.data['snapshot'] as String?;
-    final title = names['cam']?.trim().isNotEmpty == true ? names['cam']!.trim() : r.items.first.name;
+    final n = (r.data['streams'] as int?) ?? 1;
+    final streams = (r.connection.settings['streams'] as List?) ?? const [];
     return [
-      TileConfig(
-        type: TileType.camera,
-        title: title,
-        colSpan: 2,
-        rowSpan: 2,
-        connectionId: r.connection.id,
-        read: snap != null ? {'mode': 'snapshot', 'path': snap, 'refreshSeconds': 2} : {'mode': 'rtsp'},
-      ),
+      for (var i = 0; i < n; i++)
+        if (!skip.contains(i == 0 ? 'cam' : 'cam${i + 1}'))
+          _tile(r, i, names[i == 0 ? 'cam' : 'cam${i + 1}'], i == 0 ? snap : _snapOf(streams, i)),
     ];
   }
+
+  static String? _snapOf(List streams, int i) {
+    final e = streams.elementAtOrNull(i);
+    return e is Map ? e['snapshot'] as String? : null;
+  }
+
+  TileConfig _tile(Connected r, int i, String? name, String? snap) {
+    final key = i == 0 ? 'cam' : 'cam${i + 1}';
+    final item = r.items.where((x) => x.key == key).firstOrNull;
+    final title = name?.trim().isNotEmpty == true ? name!.trim() : (item?.name ?? r.items.first.name);
+    return TileConfig(
+      type: TileType.camera,
+      title: title,
+      colSpan: 2,
+      rowSpan: 2,
+      connectionId: r.connection.id,
+      read: {
+        if (snap != null) ...{'mode': 'snapshot', 'path': snap, 'refreshSeconds': 2} else 'mode': 'rtsp',
+        if (i > 0) 'stream': i,
+      },
+    );
+  }
 }
+
+/// Preset id → [rtspPatterns] brand.
+String _presetBrand(String id) => switch (id) {
+  'sonoff_cam' => 'sonoff',
+  'onvif' => '',
+  _ => id,
+};
 
 bool _isJpeg(Uint8List b) => b.length > 3 && b[0] == 0xFF && b[1] == 0xD8;
 

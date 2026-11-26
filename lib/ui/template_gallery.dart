@@ -4,6 +4,7 @@ import 'weather_tile.dart';
 
 import 'package:material_ui/material_ui.dart';
 
+import '../core/friendly_error.dart';
 import '../core/discovery.dart';
 import '../devices/ha_setup.dart';
 import '../drivers/registry.dart';
@@ -16,6 +17,8 @@ import 'app_scope.dart';
 import 'heatpump_pages.dart';
 import 'connections_page.dart';
 import 'error_box.dart';
+import 'ha_modbus_ui.dart';
+import 'modbus_scan_page.dart';
 import 'spec_form.dart';
 import 'network_scan.dart';
 
@@ -448,6 +451,7 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
   late final values = <String, dynamic>{...?widget.initialValues};
   final _excluded = <int>{};
   int _formKey = 0;
+  late bool _haBusy = values.remove('_haBusy') == true;
   bool _testing = false;
   bool _searching = false;
   String? _ok;
@@ -631,7 +635,7 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
       if (first != null) {
         final d = createDriver(c);
         try {
-          final v = await d.read(first.read).timeout(const Duration(seconds: 8));
+          final v = await d.read(first.read).timeout(Duration(seconds: cloudConnectionTypes.contains(c.type) ? 30 : 8));
           extra = ' · ${first.title}: $v${first.unit.isEmpty ? '' : ' ${first.unit}'}';
         } finally {
           await d.dispose();
@@ -639,7 +643,17 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
       }
       setState(() => _ok = '$res$extra');
     } catch (e) {
-      setState(() => _error = e);
+      setState(() {
+        _error = cloudMapped(e, t.connectionType);
+        // t155u: refused / dropped / lockout → HA may hold the only Modbus connection.
+        _haBusy =
+            t.connectionType == 'modbus' &&
+            const {
+              ErrorKind.modbusBusy,
+              ErrorKind.modbusPortClosed,
+              ErrorKind.modbusBlocked,
+            }.contains(classifyError(e));
+      });
     } finally {
       if (mounted) setState(() => _testing = false);
     }
@@ -864,6 +878,49 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
                   ),
                 ),
               const SizedBox(height: 18),
+              if (t.connectionType == 'modbus')
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 14),
+                  child: OutlinedButton.icon(
+                    key: const ValueKey('modbus-scan'),
+                    onPressed: () async {
+                      final f = await showModbusScan(context, port: int.tryParse('${values['port'] ?? ''}'));
+                      if (f == null || !mounted) return;
+                      setState(() {
+                        values['address'] = f.ip;
+                        values['port'] = f.port;
+                        values['unitId'] = f.unit;
+                        values['framing'] = f.rtu ? 'rtu' : 'tcp';
+                        if (f.profile != null && t.id == 'modbus_iv') values['profile'] = f.profile;
+                        _haBusy = f.busy;
+                        _formKey++;
+                        _ok = null;
+                        _error = null;
+                      });
+                    },
+                    icon: const Icon(Icons.radar),
+                    label: Text(tx(context, 'Skannaa Modbus', 'Scan Modbus')),
+                  ),
+                ),
+              if (t.connectionType == 'modbus')
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 14),
+                  child: OutlinedButton.icon(
+                    key: const ValueKey('modbus-ha-import'),
+                    onPressed: () async {
+                      final ok = await showHaModbusImport(context, into: widget.dashboard);
+                      if (ok && context.mounted) Navigator.of(context).popUntil((r) => r.isFirst);
+                    },
+                    icon: const Icon(Icons.upload_file),
+                    label: Text(tx(context, 'Tuo Home Assistantin modbus.yaml', 'Import a Home Assistant modbus.yaml')),
+                  ),
+                ),
+              if (t.connectionType == 'modbus')
+                HaModbusOffer(
+                  key: ValueKey('ha-offer-${values['profile']}-$_haBusy'),
+                  brand: '${values['profile'] ?? ''}'.replaceAll('—', '').toLowerCase(),
+                  busy: _haBusy,
+                ),
               if (t.mdnsTypes.isNotEmpty)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 14),

@@ -29,6 +29,9 @@ enum AddProblem {
   needsDetails,
   buttonNotPressed,
   nothingToAdd,
+
+  /// A camera answered, but no video address was found (ONVIF without profiles, no usual RTSP path).
+  cameraNoStream,
   cloudBadKey,
   cloudOffline,
   cloudRateLimit,
@@ -146,7 +149,7 @@ abstract class DeviceProvider {
   /// Where to find the address (shown under "type the address").
   String get addressHelpFi;
   String get addressHelpEn;
-  String get addressHint => '192.168.1.50';
+  String get addressHint => '192.168.x.x';
 
   /// Button pairing: what to press and how long the user has.
   String get pairHelpFi => '';
@@ -233,13 +236,30 @@ Future<List<String>> localIPv4s() async {
     final ifs = await NetworkInterface.list(type: InternetAddressType.IPv4, includeLoopback: false);
     return [
       for (final i in ifs)
-        if (!i.name.toLowerCase().startsWith('rmnet') && !i.name.startsWith('ccmni') && !i.name.startsWith('tun'))
+        if (!i.name.toLowerCase().startsWith('rmnet') &&
+            !i.name.startsWith('ccmni') &&
+            !i.name.startsWith('tun') &&
+            !isVirtualAdapter(i.name))
           for (final a in i.addresses)
             if (isPrivateIPv4(a.address)) a.address,
     ];
   } catch (_) {
     return const [];
   }
+}
+
+/// Hyper-V / WSL / VM host-only adapters (Windows "vEthernet (WSL)", VirtualBox, VMware,
+/// Docker): not the home network – scanning them only slows the scan down (t157u).
+bool isVirtualAdapter(String name) {
+  final n = name.toLowerCase();
+  // "vEthernet (External…)" can be the real LAN behind a Hyper-V external switch – keep it.
+  return n.contains('wsl') ||
+      n.contains('default switch') ||
+      n.contains('virtualbox') ||
+      n.contains('vmware') ||
+      n.startsWith('docker') ||
+      n.startsWith('br-') ||
+      n.startsWith('veth');
 }
 
 bool isPrivateIPv4(String ip) {
@@ -354,6 +374,16 @@ enum AddressIssue { ok, badFormat, notPrivate, otherSubnet }
 }
 
 /// One-line plain-Finnish/English hint for [checkAddress], or null when fine.
+/// t156u: an obviously-placeholder address hint: the detected subnet ("192.168.50.x") or
+/// [fallback] ("192.168.x.x"). Hints are hintText only – never copied into a value.
+String subnetHint(List<String> locals, [String fallback = '192.168.x.x']) {
+  for (final l in locals) {
+    final p = l.split('.');
+    if (p.length == 4 && !l.startsWith('127.') && !l.startsWith('169.254.')) return '${p[0]}.${p[1]}.${p[2]}.x';
+  }
+  return fallback;
+}
+
 String? addressHint(String input, List<String> locals, String lang) {
   if (input.trim().isEmpty) return null;
   final r = checkAddress(input, locals);

@@ -1,4 +1,5 @@
 import '../core/fields.dart';
+import '../core/friendly_error.dart';
 import '../prices/prices.dart';
 import 'driver.dart';
 
@@ -126,10 +127,29 @@ class PriceDriver extends Driver {
     transfer: double.tryParse(s.str('transfer', '0').replaceAll(',', '.')) ?? 0,
   );
 
-  Future<PriceSeries> _series() {
+  Future<PriceSeries> _series({bool force = false}) async {
     final srv = s.str('server', defaultPriceServer);
-    if (custom == null && srv != defaultPriceServer) return PriceService(server: srv).get(zone);
-    return service.get(zone);
+    try {
+      if (custom == null && srv != defaultPriceServer) return await PriceService(server: srv).get(zone, force: force);
+      return await service.get(zone, force: force);
+    } catch (e) {
+      throw priceCloudError(e);
+    }
+  }
+
+  /// Price failures are internet-service failures, never "device not found" (t151u).
+  static CloudError priceCloudError(Object e) {
+    if (e is CloudError) return e;
+    final tried = e is PriceException ? e.tried : const <String>[];
+    final tech = tried.isEmpty ? e.toString() : tried.join('\n');
+    if (e is PriceException && e.message == 'unknown_zone') {
+      return CloudError(ErrorKind.cloudService, 'Hintapalvelu', 'The price service', 'unknown_zone');
+    }
+    if (e is PriceException && e.offline) {
+      return CloudError(ErrorKind.cloudOffline, 'Hintapalvelu', 'The price service', tech);
+    }
+    final c = cloudErrorFrom(e, 'Hintapalvelu', 'The price service', fallbackTried: tried.length > 1);
+    return CloudError(c.kind, c.serviceFi, c.serviceEn, tech, fallbackTried: tried.length > 1);
   }
 
   static double _r(double v) => (v * 100).round() / 100;
@@ -184,8 +204,26 @@ class PriceDriver extends Driver {
 
   @override
   Future<String> test() async {
-    final se = await service.get(zone, force: true);
+    final se = await _series(force: true);
+    if (se.stale) {
+      // Only an old copy was available: the test must not say "OK".
+      throw CloudError(
+        ErrorKind.cloudService,
+        'Hintapalvelu',
+        'The price service',
+        se.tried.join('\n'),
+        fallbackTried: true,
+      );
+    }
     final now = DateTime.now();
+    if (se.day(now, 0).isEmpty) {
+      throw CloudError(
+        ErrorKind.cloudService,
+        'Hintapalvelu',
+        'The price service',
+        'no prices for today (${se.points.length} points from ${se.source})',
+      );
+    }
     final tomorrow = se.hasTomorrow(now)
         ? dtx('Huominen: kyllä.', 'Tomorrow: yes.')
         : dtx('Huominen: ei vielä (julkaistaan n. klo 14).', 'Tomorrow: not yet (published around 14:00).');

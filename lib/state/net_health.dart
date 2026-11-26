@@ -49,6 +49,7 @@ class NetHealth extends ChangeNotifier {
         k == ErrorKind.unreachable ||
         k == ErrorKind.noResponse ||
         k == ErrorKind.remoteNoInternet ||
+        k == ErrorKind.cloudOffline ||
         k == ErrorKind.remoteBridgeOffline) {
       check();
     }

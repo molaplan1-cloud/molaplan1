@@ -1,3 +1,4 @@
+import '../devices/modbus_scan.dart';
 import '../devices/scanner.dart';
 import '../devices/registry.dart';
 
@@ -108,6 +109,8 @@ class RemoteExecutor {
         return (discover ?? defaultDiscover)(provider);
       case 'scan':
         return (scan ?? defaultScan)();
+      case 'modbus_scan':
+        return modbusScanJson(Map<String, dynamic>.from((r['spec'] as Map?) ?? const {}));
     }
     final conn = r['conn'];
     if (conn is! Map) throw DriverException('Connection missing');

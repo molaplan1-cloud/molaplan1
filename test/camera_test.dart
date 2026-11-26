@@ -161,9 +161,11 @@ void main() {
       nonce = RegExp(r'<Nonce[^>]*>([^<]+)</Nonce>').firstMatch(body)?.group(1);
       created = RegExp(r'<Created[^>]*>([^<]+)</Created>').firstMatch(body)?.group(1);
       final pw = RegExp(r'<Password[^>]*>([^<]+)</Password>').firstMatch(body)?.group(1);
-      final want = base64Encode(
-        sha1.convert([...base64Decode(nonce!), ...utf8.encode(created!), ...utf8.encode('kamera1')]).bytes,
-      );
+      final want = nonce == null
+          ? '-'
+          : base64Encode(
+              sha1.convert([...base64Decode(nonce!), ...utf8.encode(created!), ...utf8.encode('kamera1')]).bytes,
+            );
       req.response.headers.contentType = ContentType('application', 'soap+xml');
       if (pw != want) {
         req.response.statusCode = 400;

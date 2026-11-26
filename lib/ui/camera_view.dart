@@ -54,6 +54,17 @@ class _CameraViewState extends State<CameraView> {
   void _start() {
     _plainNote = false;
     final d = _driver;
+    if (d == null && AppScope.read(context).connection(widget.tile.connectionId)?.settings['demo'] == true) {
+      _plainNote = true;
+      setState(
+        () => _error = tx(
+          context,
+          'Esimerkkikamera – lisää oma kamerasi Lisää laite -painikkeella',
+          'Example camera – add your own with Add device',
+        ),
+      );
+      return;
+    }
     if (d == null) {
       _plainNote = true;
       setState(() => _error = tx(context, 'Valitse kamerayhteys', 'Choose a camera connection'));
@@ -62,7 +73,7 @@ class _CameraViewState extends State<CameraView> {
     final spec = widget.tile.read;
     final mode = spec.str('mode', 'mjpeg');
     final away = AppScope.read(context).remote.router.preferRemote;
-    final url = d.rtspUrl(sub: !widget.live);
+    final url = d.rtspUrl(sub: !widget.live, stream: spec.integer('stream', 0));
     if (url != null && (mode == 'rtsp' || widget.live) && rtspSupported && !away) {
       setState(() => _rtsp = url);
       return;

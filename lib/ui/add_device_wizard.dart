@@ -6,6 +6,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../devices/find.dart';
 import '../devices/registry.dart';
+import '../devices/rtsp_catalog.dart';
 import '../models/models.dart';
 import '../templates/device_templates.dart' show TemplateResult;
 import 'app_scope.dart';
@@ -90,6 +91,13 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
       t(
         'Laite vastasi, mutta siinä ei ollut kytkimiä tai valoja. Jos käytät pilveä, kirjoita laitteen tunnus (Device ID) käsin.',
         'The device answered but has no switches or lights. For the cloud, type the Device ID.',
+      ),
+    ),
+    AddProblem.cameraNoStream => (
+      t('Kamera löytyi, mutta videon osoitetta ei löytynyt', 'Camera found, but not its video address'),
+      t(
+        'Kamera vastasi, mutta ei kertonut videokuvan osoitetta, eikä yksikään yleisistä RTSP-osoitteista toiminut tällä tunnuksella. Tarkista että RTSP/ONVIF on päällä kameran sovelluksessa, tai valitse merkki alta ja paina "Yhdistä".',
+        'The camera answered but did not tell its video address, and none of the usual RTSP addresses worked with this login. Check that RTSP/ONVIF is on in the camera app, or pick the brand below and tap "Connect".',
       ),
     ),
     AddProblem.cloudBadKey => (
@@ -829,7 +837,7 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           style: const TextStyle(fontSize: 18),
           decoration: InputDecoration(
             labelText: tx(context, 'IP-osoite', 'IP address'),
-            hintText: p.addressHint,
+            hintText: subnetHint(locals, p.addressHint),
             helperText: addressHint(addrCtl.text, locals, AppScope.read(context).lang),
             helperMaxLines: 3,
             helperStyle: TextStyle(color: Theme.of(context).colorScheme.tertiary),
@@ -906,7 +914,8 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
     var (title, body) = problemText(context, e.problem, brand: brand, address: cloud ? '' : c.address);
     final st = AppScope.read(context);
     final login = e.problem == AddProblem.needsPassword || e.problem == AddProblem.wrongPassword;
-    final details = !cloud && (login || e.problem == AddProblem.needsDetails);
+    final noStream = e.problem == AddProblem.cameraNoStream && p.category == 'camera';
+    final details = !cloud && (login || noStream || e.problem == AddProblem.needsDetails);
     if (p.category == 'camera' && e.problem == AddProblem.needsPassword) {
       title = tx(context, 'Kirjaudu kameraan', 'Sign in to the camera');
       body = tx(context, p.pairHelpFi, p.pairHelpEn);
@@ -933,16 +942,15 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
             ),
             const SizedBox(height: 12),
           ],
-      if (login) ...[
+      if (noStream) ..._manualRtsp(context),
+      if (login || noStream) ...[
         TextField(
           key: const ValueKey('wiz-password'),
           controller: pwCtl,
           obscureText: true,
           autofocus: true,
           style: const TextStyle(fontSize: 18),
-          decoration: InputDecoration(
-            labelText: tx(context, 'Laitteen salasana', 'Device password'),
-          ),
+          decoration: InputDecoration(labelText: tx(context, 'Laitteen salasana', 'Device password')),
           onSubmitted: (_) => _connect(),
         ),
         const SizedBox(height: 12),
@@ -988,6 +996,43 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       ),
     ]);
     return out;
+  }
+
+  /// t153u: brand presets for typing the camera's RTSP address by hand.
+  List<Widget> _manualRtsp(BuildContext context) {
+    final ctl = cred['rtsp'] ??= TextEditingController();
+    return [
+      Text(tx(context, 'Kameran merkki', 'Camera brand'), style: Theme.of(context).textTheme.titleSmall),
+      const SizedBox(height: 6),
+      Wrap(
+        spacing: 6,
+        runSpacing: 6,
+        children: [
+          for (final r in rtspPatterns)
+            ActionChip(
+              key: ValueKey('rtsp-preset-${r.main}'),
+              label: Text(r.name),
+              onPressed: () => setState(() => ctl.text = r.mainUrl.replaceFirst('{{host}}', hostOf(picked!.address))),
+            ),
+        ],
+      ),
+      const SizedBox(height: 10),
+      TextField(
+        key: const ValueKey('wiz-cred-rtsp'),
+        controller: ctl,
+        style: const TextStyle(fontSize: 16),
+        decoration: InputDecoration(
+          labelText: tx(context, 'RTSP-osoite', 'RTSP address'),
+          hintText: 'rtsp://192.168.x.x:554/av_stream/ch0',
+          helperText: tx(
+            context,
+            'Ilman tunnusta – käyttäjä ja salasana lisätään itse.',
+            'Without the login – the user and password are added automatically.',
+          ),
+        ),
+      ),
+      const SizedBox(height: 12),
+    ];
   }
 
   List<Widget> _choose(BuildContext context) {

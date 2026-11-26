@@ -10,6 +10,55 @@ class AppLocalizationsSv extends AppLocalizations {
   AppLocalizationsSv([String locale = 'sv']) : super(locale);
 
   @override
+  String get sc1e35d5171 => 'Pristjänsten';
+
+  @override
+  String get s8b22e8d330 => 'Vädertjänsten';
+
+  @override
+  String get s252ebed5af => 'Shelly Cloud';
+
+  @override
+  String get s10edebf3fa => 'ntfy server';
+
+  @override
+  String get sd3d9c263ed => 'Tjänsten';
+
+  @override
+  String get sdfb639365a => 'Ingen internetanslutning';
+
+  @override
+  String s390dd51af3(String p0) {
+    return '$p0 är på internet och kan inte nås. Kontrollera den här enhetens internetanslutning. De senaste uppgifterna visas när de är tillgängliga.';
+  }
+
+  @override
+  String sbb750bf9d6(String p0) {
+    return '$p0 svarar inte, provar en reservkälla';
+  }
+
+  @override
+  String s4284ebac1e(String p0) {
+    return '$p0 svarar inte';
+  }
+
+  @override
+  String get s828d009fa6 =>
+      'Backup-källorna svarade inte just nu heller. Problemet är mest sannolikt på tjänsterna, inte ditt hemnätverk.';
+
+  @override
+  String get se21c801ba6 =>
+      'Tjänsten har ett problem, troligtvis i tjänsten och inte ditt hemnätverk.';
+
+  @override
+  String get s35e0766add => 'Logga in på tjänsten misslyckades';
+
+  @override
+  String sa4d255e53c(String p0) {
+    return 'Kontrollera kontot, nyckeln eller token för $p0.';
+  }
+
+  @override
   String get sd0a2130950 =>
       'Den väntade enheten svarar inte på den här adressen – kontrollera den (http eller https?)';
 
@@ -87,6 +136,57 @@ class AppLocalizationsSv extends AppLocalizations {
       'Värdet är förmodligen ur räckvidd. Kontrollera skalan också.';
 
   @override
+  String get s7746921882 => 'Enhet hittas, men Modbus TCP är avstängd';
+
+  @override
+  String get s7e552bd146 =>
+      'Det finns en enhet på denna adress, men det accepterar inte Modbus på denna port. Slå på Modbus TCP i enhetsinställningarna (ofta under nätverk / Modbus / fjärrkontroll) och kontrollera hamnen (vanligtvis 502). Du kan också trycka på \"Scan Modbus\". Om enheten fungerar i Home Assistant, kan det redan ha en anslutning (många tillåter bara en) - läs värdena genom HA.';
+
+  @override
+  String s0ebc613f20(String p0) {
+    return 'Enheten är i lockout, retrying på $p0';
+  }
+
+  @override
+  String get s317b2b59af =>
+      'Enheten svarade inte, så det lämnas ensam ett tag - många enheter låser ut klienter som omröstar för ofta. Pausen växer från 30 sekunder till 5 minuter. Om enheten redan har en anslutning (t.ex. Home Assistant), läs värdena genom HA. Läsintervallet och pauserna är under Avancerade i anslutningen.';
+
+  @override
+  String get s33e09089b2 => 'Enheten adress saknas';
+
+  @override
+  String get s6180bd540e =>
+      'Öppna anslutningen och ange enhet IP-adressen eller tryck på \"Scan Modbus\" för att hitta enheten i nätverket.';
+
+  @override
+  String get sd73581c910 => 'Enheten kanske redan har en anslutning';
+
+  @override
+  String get scee8d982a2 =>
+      'Enheten släppte Modbus-anslutningen direkt. Många enheter tillåter endast en Modbus TCP-anslutning i taget. Om enheten redan finns i Home Assistant (t.ex. modbus.yaml), läs värdena genom HA.';
+
+  @override
+  String get s6ca672a111 => 'Ingenting på denna adress';
+
+  @override
+  String get sf7a98e1c70 =>
+      'Ingenting svarade på denna IP-adress. Kontrollera att enheten är på och i samma nätverk och att IP är rätt (det kan ändras - reservera en fast adress i routern). \"Scan Modbus\" hittar enheter på nätverket.';
+
+  @override
+  String get scb0cba44ea => 'Modbus-enheten svarade inte i tid';
+
+  @override
+  String get sc03ae7e1c5 =>
+      'Kunde inte öppna porten. De vanligaste orsakerna: fel IP, enheten är i ett annat nätverk (gäst Wi-Fi), Modbus TCP är avstängd eller en brandvägg blockerar porten. Kontrollera adressen och porten eller tryck på \"Scan Modbus\".';
+
+  @override
+  String get sefba540275 => 'Gateway kan inte nå en enhet med denna enhet id';
+
+  @override
+  String get s6e4ed361f3 =>
+      'Modbus gateway svarade, men ingen enhet med denna enhet id ligger bakom den. Kontrollera enhetens Modbus-adress (ofta 1) och seriehastigheten och pariteten. \"Scan Modbus\" försöker adresser 1-247.';
+
+  @override
   String get sb66bc0e677 => 'Ingen Modbus svar';
 
   @override
@@ -120,9 +220,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s2cd1df086e =>
       'Fjärråtkomst går igenom bron hemma (tablet eller PC). Kontrollera att det är på, Molaplan är öppen och det har internet.';
-
-  @override
-  String get sdfb639365a => 'Ingen internetanslutning';
 
   @override
   String get sdbf06d05d9 =>
@@ -178,28 +275,28 @@ class AppLocalizationsSv extends AppLocalizations {
       'Kontrollera adressen och inställningarna och försök igen. De tekniska detaljerna visar den exakta orsaken.';
 
   @override
-  String get sdd5e97b1e2 => 'Clear';
+  String get sdd5e97b1e2 => 'Klart';
 
   @override
-  String get sad990c999d => 'Delvis molnig';
+  String get sad990c999d => 'Halvklart';
 
   @override
-  String get s80bfe8f9ad => 'Cloudy';
+  String get s80bfe8f9ad => 'Mulet';
 
   @override
-  String get s46f3db8514 => 'Fog Fog';
+  String get s46f3db8514 => 'Dimma';
 
   @override
-  String get sbd81101eb4 => 'Drizzle';
+  String get sbd81101eb4 => 'Duggregn';
 
   @override
   String get s960a265544 => 'Regn';
 
   @override
-  String get seab38c2b45 => 'Snö snö';
+  String get seab38c2b45 => 'Snöfall';
 
   @override
-  String get sfc65eafa12 => 'Thunderstorm';
+  String get sfc65eafa12 => 'Åska';
 
   @override
   String get sc27533ae83 => 'Sparsam';
@@ -440,6 +537,15 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sceabe202da => 'camera_';
 
   @override
+  String get s1a73b397a1 => 'sonoff';
+
+  @override
+  String get sb8a029d8b4 => 'Hikvision';
+
+  @override
+  String get s2e87289ebd => 'Tapo';
+
+  @override
   String get s834e3e8c5d => 'Apple Apple Apple';
 
   @override
@@ -617,9 +723,6 @@ class AppLocalizationsSv extends AppLocalizations {
       'Vanligtvis inte behövs. Om ingenting finns: Shelly app → enhet → inställningar → Enhetsinformation → Enhets-ID. Separat flera med kommatecken.';
 
   @override
-  String get s252ebed5af => 'Shelly Cloud';
-
-  @override
   String get s25399cd337 => 'Server';
 
   @override
@@ -684,6 +787,14 @@ class AppLocalizationsSv extends AppLocalizations {
       'Ezviz app → kamera → Inställningar → LAN Live View / RTSP: slå på den (om alternativet finns).';
 
   @override
+  String get s70625d8bbe =>
+      'Användaren och lösenordet för kameran i eWeLink-appen (RTSP/ONVIF). På en dual-lens-modell kommer båda linserna från samma enhet.';
+
+  @override
+  String get s1a3c354399 =>
+      'eWeLink app → kamera → Inställningar: slå på RTSP/ONVIF och ange en användare och lösenord för det (om alternativet finns).';
+
+  @override
   String get s1c2786e15f =>
       'Kameraanvändaren och lösenordet (ofta admin). ONVIF kan behöva aktiveras i kamerainställningarna.';
 
@@ -691,8 +802,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s32270de47a => 'Säkerhetskamera';
 
   @override
-  String get s4d3ff251d6 =>
-      'Hikvision, Dahua, Reolink, Tapo, Ezviz eller någon ONVIF-kamera. Bild på ett kort, live video hemma.';
+  String get s652458eb87 =>
+      'Hikvision, Dahua, Reolink, Tapo, Ezviz, Sonoff eller någon ONVIF / RTSP-kamera. Bild på ett kort, live video hemma.';
 
   @override
   String get se8ea97c5eb =>
@@ -705,10 +816,48 @@ class AppLocalizationsSv extends AppLocalizations {
   String get seeb6c38c8e => 'Kamera';
 
   @override
+  String s83d937ae6b(String p0, String p1) {
+    return 'Stream $p0/$p1 (egen lins eller kanal)';
+  }
+
+  @override
   String get s136c6f0d2b => 'Bild på kortet, live video hemma';
 
   @override
   String get s2101774157 => 'Live video hemma (ingen bild bort)';
+
+  @override
+  String sd63d34bfe9(String p0) {
+    return 'Kan inte läsa YAML: $p0';
+  }
+
+  @override
+  String sc5c9e5e2fc(String p0) {
+    return '\"$p0\" använder en seriell port (USB / RS485) - du behöver en RS485 → TCP gateway.';
+  }
+
+  @override
+  String get s77bf3b424f => '0=Off;1=On';
+
+  @override
+  String get s4cbe24240f => 'På';
+
+  @override
+  String get s33831dd49f => 'Av';
+
+  @override
+  String s69135546c8(String p0) {
+    return '$p0 – mål';
+  }
+
+  @override
+  String sd88c13e972(String p0) {
+    return '\"$p0\" var hoppade - lägg till dem för hand.';
+  }
+
+  @override
+  String get sceebf690e3 =>
+      'Inget Modbus TCP-nav som finns i YAML (modbus: ... typ: tcp, värd: ...).';
 
   @override
   String get sb662db81d8 =>
@@ -1355,7 +1504,28 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s68cbe596f8 => 'Inloggningen har gått ut';
 
   @override
+  String get s599357f47b => 'Inget internet';
+
+  @override
+  String get s74fa2d56aa => 'Modbus är avstängd';
+
+  @override
   String get s156aa7eeb3 => 'Enheten svarar inte';
+
+  @override
+  String get sbf2cfbb102 => 'Fel enhet id?';
+
+  @override
+  String get s9be06479ff => 'Lockout';
+
+  @override
+  String get s613938b0b3 => 'Ingen adress';
+
+  @override
+  String get s252d8628c7 => 'Upptagen (HA?)';
+
+  @override
+  String get s0e3a6bafbf => 'Tjänst som inte svarar';
 
   @override
   String get s7abcbf1107 => 'Servern hittades inte';
@@ -1413,6 +1583,39 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s09f5da65e0 => 'Byt till Shelly Cloud';
 
   @override
+  String get sa846059775 => 'Home Assistant läser redan den här enheten';
+
+  @override
+  String get s18a1844439 =>
+      'Enheten kanske redan har en anslutning (t.ex. Home Assistant) - läs värdena genom HA. Många enheter tillåter endast en Modbus TCP-anslutning.';
+
+  @override
+  String sa29df4fc6b(String p0) {
+    return '$p0 Modbus värden som finns i Home Assistant. Många enheter tillåter endast en Modbus TCP-anslutning, så läsning genom HA är det säkraste sättet.';
+  }
+
+  @override
+  String get sb8c40d2c20 => 'Användning via Home Assistant';
+
+  @override
+  String get s810014ca02 => 'Importera en hemassistent modbus.yaml';
+
+  @override
+  String get sfbf34ee532 =>
+      'Paste modbus.yaml (eller modbus: en del av konfiguration.yaml). Anslutningen och korten använder samma register och timing.';
+
+  @override
+  String s2d4fbaade1(String p0, String p1) {
+    return '$p0 anslutning(s), $p1 kort';
+  }
+
+  @override
+  String get s580678cb10 => 'Importera';
+
+  @override
+  String get s108e078c0c => 'Modbus-enhet som importeras från Home Assistant';
+
+  @override
   String get sa3a093e55e => 'Värmer';
 
   @override
@@ -1420,9 +1623,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s0b98d62330 => 'Värme och kyla';
-
-  @override
-  String get s33831dd49f => 'Av';
 
   @override
   String get sa61efb9866 => 'värmer';
@@ -1722,6 +1922,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s0a9acb5af1 => 'Sök efter Sök';
 
   @override
+  String get se3ef5a5658 => 'Skanna Modbus';
+
+  @override
   String get s9a018b8166 => 'Du är borta: hembron sökte ditt hemnätverk.';
 
   @override
@@ -1822,7 +2025,64 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s049d71f971 => 'Sista sista';
 
   @override
+  String get s3ec9d77947 => 'Tmrw';
+
+  @override
   String get sed9b5e52f6 => 'Numera nu';
+
+  @override
+  String get s1b85ad9e38 =>
+      'Letar du efter enheter med Modbus TCP på (port 502, 503 och 5020) och försöker enhetens id. Ta ungefär en halv minut.';
+
+  @override
+  String get seb1f4357ea => 'Egen hamn (valfritt)';
+
+  @override
+  String get s06760a6970 => 'Skanna igen';
+
+  @override
+  String get s23d146db23 => 'Scan';
+
+  @override
+  String get s18e7ad553e => 'Scanning...';
+
+  @override
+  String get s721647a6cd => 'Du är borta: hembron skannade.';
+
+  @override
+  String get s08e57d2d85 => 'Scan misslyckades';
+
+  @override
+  String get s4cf60b9350 =>
+      'Inga Modbus-enheter hittades. Kontrollera att Modbus TCP finns i enhetsinställningarna och att det är i samma nätverk (inte gäst Wi-Fi).';
+
+  @override
+  String get sbd8ee8a14f => 'Modbus-enhet';
+
+  @override
+  String get sf0462b25ac => 'gateway';
+
+  @override
+  String s28d9c4c7dc(String p0) {
+    return '$p0 förinställd';
+  }
+
+  @override
+  String get sc6cde0d476 => 'från dess tillkännagivande';
+
+  @override
+  String get s166da70285 => 'Enheten accepterar inte en anslutning';
+
+  @override
+  String get sbe97262d91 =>
+      'Enheten kanske redan har en anslutning (t.ex. Home Assistant) - läs värdena genom HA. Många enheter tillåter endast en Modbus TCP-anslutning.';
+
+  @override
+  String get s24e5139123 => 'Port öppna, ingen Modbus svar';
+
+  @override
+  String get s9041c140be =>
+      'Kontrollera enhets-ID och Modbus-inställningarna. Tryck på för att använda den här adressen.';
 
   @override
   String get s55d52c5ae1 => 'Denna enhet är inte på Wi-Fi';
@@ -1888,6 +2148,13 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sb03997d94b =>
       'Enheten svarade men har inga växlar eller lampor. För molnet, skriv enhets-ID.';
+
+  @override
+  String get se6e01118ac => 'Kamera hittades, men inte dess videoadress';
+
+  @override
+  String get sca994210fb =>
+      'Kameran svarade men berättade inte sin videoadress, och ingen av de vanliga RTSP-adresserna arbetade med denna inloggning. Kontrollera att RTSP/ONVIF finns på i kameraappen eller välj varumärket nedan och tryck på \"Connect\".';
 
   @override
   String get s869571042f => 'Cloud key eller server som inte accepterats';
@@ -2092,6 +2359,16 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sf77125583f => 'Tekniska detaljer';
+
+  @override
+  String get sb629592b4b => 'Kamera varumärke';
+
+  @override
+  String get se3aa0f7164 => 'RTSP adress';
+
+  @override
+  String get s722ac06c6d =>
+      'Utan inloggningen läggs användaren och lösenordet automatiskt till.';
 
   @override
   String s77ec7b376b(String p0) {
@@ -2973,6 +3250,30 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s7efc5653d2 => 'Enhetens språk';
 
   @override
+  String get s306729fe62 => 'Inga priser';
+
+  @override
+  String get sff03a35d96 => 'I 1 h';
+
+  @override
+  String get sf9e22ac5e7 => 'gamla priser';
+
+  @override
+  String get s40fbbc4d00 => '12 h';
+
+  @override
+  String get s140acccb81 => 'I dag';
+
+  @override
+  String get s76379cf7c6 => '48 h';
+
+  @override
+  String get s252f182d27 => 'Imorgon ~14:00';
+
+  @override
+  String get sa0bd9ad5b1 => 'Exempelkamera - lägg till din egen med Add-enhet';
+
+  @override
   String get s4529c1010a => 'Välj en kameraanslutning';
 
   @override
@@ -3083,9 +3384,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sb1f0e72163 => 'Söndag söndag';
-
-  @override
-  String get s306729fe62 => 'Inga priser';
 
   @override
   String get s80c4ecec94 => 'c/h';
@@ -3207,9 +3505,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s406e599999 =>
       'Inga tider under nästa dag (eller morgondagens priser är inte ute ännu).';
-
-  @override
-  String get s140acccb81 => 'I dag';
 
   @override
   String get s0de6e75a52 => 'I morgon';
@@ -3561,6 +3856,12 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sd7314e8237 => 'Visning';
 
   @override
+  String get s7d6cee9e42 => 'Barer (15 min)';
+
+  @override
+  String get sc0e069225b => 'Trend + Nu linje';
+
+  @override
   String get s1c72b8c56a => 'Trendlängd';
 
   @override
@@ -3681,6 +3982,14 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s29135ed75a =>
       'Auto: Axlar och guidelinjer visar när kortet är minst 2×2.';
+
+  @override
+  String get s638c648b40 => 'Stream';
+
+  @override
+  String s32ef3895b8(String p0) {
+    return 'Lens / kanal $p0';
+  }
 
   @override
   String get s939603242a => 'Färger med värde';
@@ -4212,9 +4521,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sfb1a18d11f => 'Uppdatera';
 
   @override
-  String get s4cbe24240f => 'På';
-
-  @override
   String get s72a2328ddd => 'Lampor';
 
   @override
@@ -4390,9 +4696,6 @@ class AppLocalizationsSv extends AppLocalizations {
       'Alla aktuella anslutningar och instrumentpaneler ersätts av filinnehållet.';
 
   @override
-  String get s580678cb10 => 'Importera';
-
-  @override
   String get s5f2ec17730 => 'Konfiguration importerad';
 
   @override
@@ -4477,8 +4780,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s34686ffb09 => 'Exempel';
 
   @override
-  String get s412c666544 =>
-      'Lägg till ett exempel instrumentpanel (kamera, larm, ljus, ventilation). Byt adresserna med din.';
+  String get sc8327738b3 =>
+      'Lägg till en exempelvy (kamera, larm, lampor, ventilation). Exempelenheterna ansluter aldrig någonstans - lägg till din egen med Lägg till enhet.';
 
   @override
   String get sec02c7c071 => 'Lägg till exempelvy';
@@ -5066,6 +5369,54 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s15e327bf8e => 'Timeout (ms)';
 
   @override
+  String get s666811be3d => 'Ramning';
+
+  @override
+  String get s0f2d3b7a42 =>
+      'En billig RS485 till Wi-Fi / Ethernet-omvandlare i transparent läge använder RTU-ramar.';
+
+  @override
+  String get s12ca822cd8 => 'Modbus TCP (normalt)';
+
+  @override
+  String get s731c92978b => 'Modbus RTU över TCP (RS485 gateway)';
+
+  @override
+  String get s570f11bec8 => 'Minsta läsintervall (s)';
+
+  @override
+  String get s13e54dbff1 =>
+      'Samma register läses aldrig oftare, men många kort visar det.';
+
+  @override
+  String get s95d4c6dd5b => 'Paus mellan förfrågningar (ms)';
+
+  @override
+  String get s77b6667fdb => 'Vänta efter anslutning (ms)';
+
+  @override
+  String get sf4b0409574 => 'Batch intilliggande läser';
+
+  @override
+  String get sc011aad1a9 => 'Max register per läs';
+
+  @override
+  String get s942a690567 => 'Lockout paus vid första (s)';
+
+  @override
+  String get s3746551251 =>
+      'När enheten inte svarar lämnas den ensam ett tag. Pausen fördubblas upp till maximum.';
+
+  @override
+  String get sf71d800450 => 'Lockout paus på de flesta (s)';
+
+  @override
+  String get sbce68f8691 => 'Stäng anslutningen efter ett fel';
+
+  @override
+  String get sf96bb0c03d => 'Försök på ett tomt svar';
+
+  @override
   String get s943b8b6bf3 => 'Registrera tabell';
 
   @override
@@ -5355,10 +5706,13 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get s804e935440 => 'ESP32 kamera';
+  String get s589eb1bcd3 => 'Home Assistant (exempel)';
 
   @override
-  String get s478ddb6e1a => 'Ventilationsenhet (Modbus)';
+  String get sc4fdb87cd7 => 'Kamera (exempel)';
+
+  @override
+  String get sd50566a706 => 'Ventilationsenhet (exempel)';
 
   @override
   String get s4b4fd14aaf => 'Gård';
@@ -5697,14 +6051,27 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s6385f1487e => 'Elpris (spot)';
 
   @override
-  String get se807a72c0a =>
-      'Dagens och morgondagens spotpris som ett diagram. Priskontroll: länge tryck på en enhetsplatta → Priskontroll.';
+  String get sead3949d3c =>
+      'Dagens och morgondagens spotpris vid 15-minuters upplösning: en trend med en Nu-linje och / eller barer. Priskontroll: länge trycka på ett enhetskort → Priskontroll.';
 
   @override
   String get sef8d24c969 => 'Land / prisområde';
 
   @override
   String get sef4f509f9f => 'Välj ditt land, i Sverige och Norge ditt område.';
+
+  @override
+  String get s5e8c8e4273 => 'Utseende';
+
+  @override
+  String get s9f6d9ce1bf =>
+      'Trenden visar idag och i morgon som en linje med nuläget.';
+
+  @override
+  String get s51f1184efb => 'Trend och barer (2 kort)';
+
+  @override
+  String get sa77af9de19 => 'Prisutveckling (linje, nu linje)';
 
   @override
   String get sf3a8631d14 => 'Från din faktura inkl. moms. 0 = endast energi.';
@@ -5716,6 +6083,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String s49dfca65a3(String p0) {
     return 'Elpriset $p0';
   }
+
+  @override
+  String get s9772b9b5c4 => 'Elpristrend';
 
   @override
   String get s9af9526395 => 'Ventilationsenhet (Modbus TCP)';

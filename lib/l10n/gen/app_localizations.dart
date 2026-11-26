@@ -104,6 +104,84 @@ abstract class AppLocalizations {
     Locale('sv'),
   ];
 
+  /// fi: Hintapalvelu
+  ///
+  /// In en, this message translates to:
+  /// **'The price service'**
+  String get sc1e35d5171;
+
+  /// fi: Sääpalvelu
+  ///
+  /// In en, this message translates to:
+  /// **'The weather service'**
+  String get s8b22e8d330;
+
+  /// fi: Shelly Cloud
+  ///
+  /// In en, this message translates to:
+  /// **'Shelly Cloud'**
+  String get s252ebed5af;
+
+  /// fi: ntfy-palvelin
+  ///
+  /// In en, this message translates to:
+  /// **'The ntfy server'**
+  String get s10edebf3fa;
+
+  /// fi: Palvelu
+  ///
+  /// In en, this message translates to:
+  /// **'The service'**
+  String get sd3d9c263ed;
+
+  /// fi: Ei nettiyhteyttä
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection'**
+  String get sdfb639365a;
+
+  /// fi: {p0} on internetissä, eikä siihen saatu yhteyttä. Tarkista tämän laitteen nettiyhteys. Viimeisimmät tiedot näytetään, ku
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} is on the internet and could not be reached. Check this device\'\'s internet connection. The latest data is shown when available.'**
+  String s390dd51af3(String p0);
+
+  /// fi: {p0} ei vastaa, yritetään varalähdettä
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} is not answering, trying a backup source'**
+  String sbb750bf9d6(String p0);
+
+  /// fi: {p0} ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} is not answering'**
+  String s4284ebac1e(String p0);
+
+  /// fi: Myöskään varalähteistä ei saatu tietoja juuri nyt. Vika on todennäköisesti palveluissa, ei kotiverkossasi. Yritetään aut
+  ///
+  /// In en, this message translates to:
+  /// **'The backup sources did not answer right now either. The problem is most likely at the services, not your home network. Retrying automatically.'**
+  String get s828d009fa6;
+
+  /// fi: Palvelussa on häiriö. Vika on todennäköisesti palvelussa, ei kotiverkossasi. Yritetään automaattisesti uudelleen.
+  ///
+  /// In en, this message translates to:
+  /// **'The service has a problem, most likely at the service and not your home network. Retrying automatically.'**
+  String get se21c801ba6;
+
+  /// fi: Kirjautuminen palveluun ei onnistunut
+  ///
+  /// In en, this message translates to:
+  /// **'Signing in to the service failed'**
+  String get s35e0766add;
+
+  /// fi: Tarkista palvelun tunnus, avain tai token ({p0}).
+  ///
+  /// In en, this message translates to:
+  /// **'Check the account, key or token for {p0}.'**
+  String sa4d255e53c(String p0);
+
   /// fi: Osoitteessa ei vastaa odotettu laite – tarkista osoite (http vai https?)
   ///
   /// In en, this message translates to:
@@ -236,6 +314,90 @@ abstract class AppLocalizations {
   /// **'The value is probably out of range. Check the scale too.'**
   String get s76b95eef9f;
 
+  /// fi: Laite löytyi, mutta Modbus TCP ei ole päällä
+  ///
+  /// In en, this message translates to:
+  /// **'Device found, but Modbus TCP is off'**
+  String get s7746921882;
+
+  /// fi: Osoitteessa on laite, mutta se ei ota vastaan Modbus-yhteyttä tähän porttiin. Laita Modbus TCP päälle laitteen asetuksis
+  ///
+  /// In en, this message translates to:
+  /// **'There is a device at this address, but it does not accept Modbus on this port. Turn on Modbus TCP in the device settings (often under Network / Modbus / Remote control) and check the port (usually 502). You can also tap \"Scan Modbus\". If the device works in Home Assistant, it may already have a connection (many allow only one) – read the values through HA.'**
+  String get s7e552bd146;
+
+  /// fi: Laite on estotilassa, yritetään uudelleen klo {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'The device is in lockout, retrying at {p0}'**
+  String s0ebc613f20(String p0);
+
+  /// fi: Laite ei vastannut, joten sitä ei kysytä hetkeen – moni laite menee estotilaan, jos sitä kysytään liian usein. Tauko pit
+  ///
+  /// In en, this message translates to:
+  /// **'The device did not answer, so it is left alone for a while – many devices lock out clients that poll too often. The pause grows from 30 seconds to 5 minutes. If the device already has a connection (e.g. Home Assistant), read the values through HA. The read interval and pauses are under Advanced in the connection.'**
+  String get s317b2b59af;
+
+  /// fi: Laitteen osoite puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'The device address is missing'**
+  String get s33e09089b2;
+
+  /// fi: Avaa yhteys ja anna laitteen IP-osoite, tai paina "Skannaa Modbus", niin sovellus etsii laitteen verkosta.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the connection and enter the device IP address, or tap \"Scan Modbus\" to find the device on the network.'**
+  String get s6180bd540e;
+
+  /// fi: Laitteella voi olla jo yhteys
+  ///
+  /// In en, this message translates to:
+  /// **'The device may already have a connection'**
+  String get sd73581c910;
+
+  /// fi: Laite katkaisi Modbus-yhteyden heti. Moni laite sallii vain yhden Modbus TCP -yhteyden kerrallaan. Jos laite on jo Home
+  ///
+  /// In en, this message translates to:
+  /// **'The device dropped the Modbus connection right away. Many devices allow only one Modbus TCP connection at a time. If the device is already in Home Assistant (e.g. modbus.yaml), read the values through HA.'**
+  String get scee8d982a2;
+
+  /// fi: Osoitteessa ei ole laitetta
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing at this address'**
+  String get s6ca672a111;
+
+  /// fi: Tähän IP-osoitteeseen ei saatu yhteyttä. Tarkista että laite on päällä ja samassa verkossa, ja että IP-osoite on oikein
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing answered at this IP address. Check that the device is on and in the same network and that the IP is right (it can change – reserve a fixed address in the router). \"Scan Modbus\" finds devices on the network.'**
+  String get sf7a98e1c70;
+
+  /// fi: Modbus-laite ei vastannut ajoissa
+  ///
+  /// In en, this message translates to:
+  /// **'The Modbus device did not answer in time'**
+  String get scb0cba44ea;
+
+  /// fi: Yhteyttä porttiin ei saatu muodostettua. Yleisimmät syyt: väärä IP-osoite, laite on toisessa verkossa (vieras-wifi), Mod
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open the port. Most common causes: wrong IP, the device is in another network (guest Wi-Fi), Modbus TCP is off or a firewall blocks the port. Check the address and port or tap \"Scan Modbus\".'**
+  String get sc03ae7e1c5;
+
+  /// fi: Yhdyskäytävä ei tavoita laitetta tällä unit id:llä
+  ///
+  /// In en, this message translates to:
+  /// **'The gateway cannot reach a device with this unit id'**
+  String get sefba540275;
+
+  /// fi: Modbus-yhdyskäytävä vastasi, mutta sen takana ei ole laitetta tällä osoitteella (unit id). Tarkista laitteen Modbus-osoi
+  ///
+  /// In en, this message translates to:
+  /// **'The Modbus gateway answered, but no device with this unit id is behind it. Check the device\'\'s Modbus address (often 1) and the serial speed and parity. \"Scan Modbus\" tries addresses 1–247.'**
+  String get s6e4ed361f3;
+
   /// fi: Laite ei vastannut Modbus-kyselyyn
   ///
   /// In en, this message translates to:
@@ -295,12 +457,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Remote access goes through the bridge at home (tablet or PC). Check that it is on, Molaplan is open and it has internet.'**
   String get s2cd1df086e;
-
-  /// fi: Ei nettiyhteyttä
-  ///
-  /// In en, this message translates to:
-  /// **'No internet connection'**
-  String get sdfb639365a;
 
   /// fi: Laitteesi ei saa yhteyttä Molaplanin etäpalveluun. Tarkista mobiilidata tai wifi.
   ///
@@ -878,6 +1034,24 @@ abstract class AppLocalizations {
   /// **'camera_'**
   String get sceabe202da;
 
+  /// fi: gk-200
+  ///
+  /// In en, this message translates to:
+  /// **'sonoff'**
+  String get s1a73b397a1;
+
+  /// fi: ds-2
+  ///
+  /// In en, this message translates to:
+  /// **'hikvision'**
+  String get sb8a029d8b4;
+
+  /// fi: tp-link
+  ///
+  /// In en, this message translates to:
+  /// **'tapo'**
+  String get s2e87289ebd;
+
   /// fi: iphone
   ///
   /// In en, this message translates to:
@@ -1214,12 +1388,6 @@ abstract class AppLocalizations {
   /// **'Usually not needed. If nothing is found: Shelly app → device → settings → Device information → Device ID. Separate several with commas.'**
   String get sf30bb5d5e6;
 
-  /// fi: Shelly Cloud
-  ///
-  /// In en, this message translates to:
-  /// **'Shelly Cloud'**
-  String get s252ebed5af;
-
   /// fi: Palvelin
   ///
   /// In en, this message translates to:
@@ -1322,6 +1490,18 @@ abstract class AppLocalizations {
   /// **'Ezviz app → camera → Settings → LAN Live View / RTSP: turn it on (if the option exists).'**
   String get s1866ef6dc8;
 
+  /// fi: eWeLink-sovelluksessa kameralle asetettu käyttäjä ja salasana (RTSP/ONVIF). Kaksilinssisessä mallissa molemmat linssit t
+  ///
+  /// In en, this message translates to:
+  /// **'The user and password set for the camera in the eWeLink app (RTSP/ONVIF). On a dual-lens model both lenses come from the same device.'**
+  String get s70625d8bbe;
+
+  /// fi: eWeLink-sovellus → kamera → Asetukset: laita RTSP/ONVIF päälle ja aseta sille käyttäjä ja salasana (jos valinta on).
+  ///
+  /// In en, this message translates to:
+  /// **'eWeLink app → camera → Settings: turn on RTSP/ONVIF and set a user and password for it (if the option exists).'**
+  String get s1a3c354399;
+
   /// fi: Kameran käyttäjä ja salasana (usein admin). ONVIF pitää ehkä laittaa päälle kameran asetuksista.
   ///
   /// In en, this message translates to:
@@ -1334,11 +1514,11 @@ abstract class AppLocalizations {
   /// **'Security camera'**
   String get s32270de47a;
 
-  /// fi: Hikvision, Dahua, Reolink, Tapo, Ezviz tai muu ONVIF-kamera. Kuva ruutuun, live-video kotona.
+  /// fi: Hikvision, Dahua, Reolink, Tapo, Ezviz, Sonoff tai muu ONVIF/RTSP-kamera. Kuva ruutuun, live-video kotona.
   ///
   /// In en, this message translates to:
-  /// **'Hikvision, Dahua, Reolink, Tapo, Ezviz or any ONVIF camera. Picture on a tile, live video at home.'**
-  String get s4d3ff251d6;
+  /// **'Hikvision, Dahua, Reolink, Tapo, Ezviz, Sonoff or any ONVIF/RTSP camera. Picture on a tile, live video at home.'**
+  String get s652458eb87;
 
   /// fi: Kameran sovelluksesta (laitetiedot) tai reitittimen laitelistasta.
   ///
@@ -1358,6 +1538,12 @@ abstract class AppLocalizations {
   /// **'Camera'**
   String get seeb6c38c8e;
 
+  /// fi: Kuvavirta {p0}/{p1} (oma linssi tai kanava)
+  ///
+  /// In en, this message translates to:
+  /// **'Stream {p0}/{p1} (own lens or channel)'**
+  String s83d937ae6b(String p0, String p1);
+
   /// fi: Kuva ruutuun, live-video kotiverkossa
   ///
   /// In en, this message translates to:
@@ -1369,6 +1555,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Live video at home (no picture away)'**
   String get s2101774157;
+
+  /// fi: YAML-tiedostoa ei voitu lukea: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Could not read the YAML: {p0}'**
+  String sd63d34bfe9(String p0);
+
+  /// fi: "{p0}" käyttää sarjaporttia (USB/RS485) – tarvitset RS485 → TCP -yhdyskäytävän.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{p0}\" uses a serial port (USB/RS485) – you need an RS485 → TCP gateway.'**
+  String sc5c9e5e2fc(String p0);
+
+  /// fi: 0=Pois;1=Päällä
+  ///
+  /// In en, this message translates to:
+  /// **'0=Off;1=On'**
+  String get s77bf3b424f;
+
+  /// fi: Päällä
+  ///
+  /// In en, this message translates to:
+  /// **'On'**
+  String get s4cbe24240f;
+
+  /// fi: Pois
+  ///
+  /// In en, this message translates to:
+  /// **'Off'**
+  String get s33831dd49f;
+
+  /// fi: {p0} – asetus
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} – target'**
+  String s69135546c8(String p0);
+
+  /// fi: "{p0}" ohitettiin – lisää ne käsin.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{p0}\" were skipped – add them by hand.'**
+  String sd88c13e972(String p0);
+
+  /// fi: YAML:sta ei löytynyt Modbus TCP -yhteyttä (modbus: … type: tcp, host: …).
+  ///
+  /// In en, this message translates to:
+  /// **'No Modbus TCP hub found in the YAML (modbus: … type: tcp, host: …).'**
+  String get sceebf690e3;
 
   /// fi: Osoite näyttää vajaalta. Muoto on neljä numeroa pisteillä, esim. 192.168.1.50.
   ///
@@ -2518,11 +2752,53 @@ abstract class AppLocalizations {
   /// **'Sign-in expired'**
   String get s68cbe596f8;
 
+  /// fi: Ei nettiyhteyttä
+  ///
+  /// In en, this message translates to:
+  /// **'No internet'**
+  String get s599357f47b;
+
+  /// fi: Modbus ei päällä
+  ///
+  /// In en, this message translates to:
+  /// **'Modbus is off'**
+  String get s74fa2d56aa;
+
   /// fi: Laite ei vastaa
   ///
   /// In en, this message translates to:
   /// **'Device not responding'**
   String get s156aa7eeb3;
+
+  /// fi: Väärä unit id?
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong unit id?'**
+  String get sbf2cfbb102;
+
+  /// fi: Estotila
+  ///
+  /// In en, this message translates to:
+  /// **'Lockout'**
+  String get s9be06479ff;
+
+  /// fi: Osoite puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'No address'**
+  String get s613938b0b3;
+
+  /// fi: Varattu (HA?)
+  ///
+  /// In en, this message translates to:
+  /// **'Busy (HA?)'**
+  String get s252d8628c7;
+
+  /// fi: Palvelu ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'Service not answering'**
+  String get s0e3a6bafbf;
 
   /// fi: Palvelinta ei löydy
   ///
@@ -2620,6 +2896,60 @@ abstract class AppLocalizations {
   /// **'Switch to Shelly Cloud'**
   String get s09f5da65e0;
 
+  /// fi: Home Assistant lukee jo tätä laitetta
+  ///
+  /// In en, this message translates to:
+  /// **'Home Assistant already reads this device'**
+  String get sa846059775;
+
+  /// fi: Laitteella voi olla jo yhteys (esim. Home Assistant) – lue arvot HA:n kautta. Moni laite sallii vain yhden Modbus TCP -y
+  ///
+  /// In en, this message translates to:
+  /// **'The device may already have a connection (e.g. Home Assistant) – read the values through HA. Many devices allow only one Modbus TCP connection.'**
+  String get s18a1844439;
+
+  /// fi: {p0} Modbus-arvoa löytyi Home Assistantista. Moni laite sallii vain yhden Modbus TCP -yhteyden, joten HA:n kautta lukemi
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} Modbus values found in Home Assistant. Many devices allow only one Modbus TCP connection, so reading through HA is the safest way.'**
+  String sa29df4fc6b(String p0);
+
+  /// fi: Käytä Home Assistantin kautta
+  ///
+  /// In en, this message translates to:
+  /// **'Use via Home Assistant'**
+  String get sb8c40d2c20;
+
+  /// fi: Tuo Home Assistantin modbus.yaml
+  ///
+  /// In en, this message translates to:
+  /// **'Import a Home Assistant modbus.yaml'**
+  String get s810014ca02;
+
+  /// fi: Liitä modbus.yaml (tai configuration.yaml:n modbus:-osa). Yhteys ja laatat tehdään samoilla rekistereillä ja ajoituksill
+  ///
+  /// In en, this message translates to:
+  /// **'Paste modbus.yaml (or the modbus: part of configuration.yaml). The connection and tiles use the same registers and timing.'**
+  String get sfbf34ee532;
+
+  /// fi: {p0} yhteys, {p1} laattaa
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} connection(s), {p1} tiles'**
+  String s2d4fbaade1(String p0, String p1);
+
+  /// fi: Tuo
+  ///
+  /// In en, this message translates to:
+  /// **'Import'**
+  String get s580678cb10;
+
+  /// fi: Modbus-laite tuotu Home Assistantista
+  ///
+  /// In en, this message translates to:
+  /// **'Modbus device imported from Home Assistant'**
+  String get s108e078c0c;
+
   /// fi: Lämmitys
   ///
   /// In en, this message translates to:
@@ -2637,12 +2967,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Heat and cool'**
   String get s0b98d62330;
-
-  /// fi: Pois
-  ///
-  /// In en, this message translates to:
-  /// **'Off'**
-  String get s33831dd49f;
 
   /// fi: lämmittää
   ///
@@ -3214,6 +3538,12 @@ abstract class AppLocalizations {
   /// **'Search'**
   String get s0a9acb5af1;
 
+  /// fi: Skannaa Modbus
+  ///
+  /// In en, this message translates to:
+  /// **'Scan Modbus'**
+  String get se3ef5a5658;
+
   /// fi: Et ole kotona: kotisilta etsi laitteet kotiverkosta.
   ///
   /// In en, this message translates to:
@@ -3406,11 +3736,113 @@ abstract class AppLocalizations {
   /// **'last'**
   String get s049d71f971;
 
+  /// fi: huom.
+  ///
+  /// In en, this message translates to:
+  /// **'tmrw'**
+  String get s3ec9d77947;
+
   /// fi: nyt
   ///
   /// In en, this message translates to:
   /// **'now'**
   String get sed9b5e52f6;
+
+  /// fi: Etsii kotiverkosta laitteet, joissa Modbus TCP on päällä (portit 502, 503 ja 5020), ja kokeilee laitteen osoitteet (unit
+  ///
+  /// In en, this message translates to:
+  /// **'Looks for devices with Modbus TCP on (ports 502, 503 and 5020) and tries the unit ids. Takes about half a minute.'**
+  String get s1b85ad9e38;
+
+  /// fi: Oma portti (valinnainen)
+  ///
+  /// In en, this message translates to:
+  /// **'Own port (optional)'**
+  String get seb1f4357ea;
+
+  /// fi: Skannaa uudelleen
+  ///
+  /// In en, this message translates to:
+  /// **'Scan again'**
+  String get s06760a6970;
+
+  /// fi: Skannaa
+  ///
+  /// In en, this message translates to:
+  /// **'Scan'**
+  String get s23d146db23;
+
+  /// fi: Skannataan…
+  ///
+  /// In en, this message translates to:
+  /// **'Scanning…'**
+  String get s18e7ad553e;
+
+  /// fi: Et ole kotona: kotisilta skannasi kotiverkon.
+  ///
+  /// In en, this message translates to:
+  /// **'You are away: the home bridge scanned.'**
+  String get s721647a6cd;
+
+  /// fi: Skannaus epäonnistui
+  ///
+  /// In en, this message translates to:
+  /// **'Scan failed'**
+  String get s08e57d2d85;
+
+  /// fi: Modbus-laitteita ei löytynyt. Tarkista että Modbus TCP on päällä laitteen asetuksista ja että laite on samassa verkossa
+  ///
+  /// In en, this message translates to:
+  /// **'No Modbus devices found. Check that Modbus TCP is on in the device settings and that it is in the same network (not guest Wi-Fi).'**
+  String get s4cf60b9350;
+
+  /// fi: Modbus-laite
+  ///
+  /// In en, this message translates to:
+  /// **'Modbus device'**
+  String get sbd8ee8a14f;
+
+  /// fi: yhdyskäytävä
+  ///
+  /// In en, this message translates to:
+  /// **'gateway'**
+  String get sf0462b25ac;
+
+  /// fi: {p0}-esiasetus
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} preset'**
+  String s28d9c4c7dc(String p0);
+
+  /// fi: löytyi ilmoituksesta
+  ///
+  /// In en, this message translates to:
+  /// **'found from its announcement'**
+  String get sc6cde0d476;
+
+  /// fi: Laite ei ota yhteyttä vastaan
+  ///
+  /// In en, this message translates to:
+  /// **'The device does not accept a connection'**
+  String get s166da70285;
+
+  /// fi: Laitteella voi olla jo yhteys (esim. Home Assistant), lue arvot HA:n kautta. Moni laite sallii vain yhden Modbus TCP -yh
+  ///
+  /// In en, this message translates to:
+  /// **'The device may already have a connection (e.g. Home Assistant) – read the values through HA. Many devices allow only one Modbus TCP connection.'**
+  String get sbe97262d91;
+
+  /// fi: Portti auki, mutta ei Modbus-vastausta
+  ///
+  /// In en, this message translates to:
+  /// **'Port open, no Modbus reply'**
+  String get s24e5139123;
+
+  /// fi: Tarkista laitteen unit id ja Modbus-asetukset. Napauta käyttääksesi tätä osoitetta.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the unit id and Modbus settings. Tap to use this address.'**
+  String get s9041c140be;
 
   /// fi: Tämä laite ei ole yhteydessä wifiin
   ///
@@ -3515,6 +3947,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The device answered but has no switches or lights. For the cloud, type the Device ID.'**
   String get sb03997d94b;
+
+  /// fi: Kamera löytyi, mutta videon osoitetta ei löytynyt
+  ///
+  /// In en, this message translates to:
+  /// **'Camera found, but not its video address'**
+  String get se6e01118ac;
+
+  /// fi: Kamera vastasi, mutta ei kertonut videokuvan osoitetta, eikä yksikään yleisistä RTSP-osoitteista toiminut tällä tunnukse
+  ///
+  /// In en, this message translates to:
+  /// **'The camera answered but did not tell its video address, and none of the usual RTSP addresses worked with this login. Check that RTSP/ONVIF is on in the camera app, or pick the brand below and tap \"Connect\".'**
+  String get sca994210fb;
 
   /// fi: Pilviavain tai palvelin ei kelpaa
   ///
@@ -3863,6 +4307,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Technical details'**
   String get sf77125583f;
+
+  /// fi: Kameran merkki
+  ///
+  /// In en, this message translates to:
+  /// **'Camera brand'**
+  String get sb629592b4b;
+
+  /// fi: RTSP-osoite
+  ///
+  /// In en, this message translates to:
+  /// **'RTSP address'**
+  String get se3aa0f7164;
+
+  /// fi: Ilman tunnusta – käyttäjä ja salasana lisätään itse.
+  ///
+  /// In en, this message translates to:
+  /// **'Without the login – the user and password are added automatically.'**
+  String get s722ac06c6d;
 
   /// fi: Löytyi: {p0}
   ///
@@ -5485,6 +5947,54 @@ abstract class AppLocalizations {
   /// **'Device language'**
   String get s7efc5653d2;
 
+  /// fi: Ei hintoja
+  ///
+  /// In en, this message translates to:
+  /// **'No prices'**
+  String get s306729fe62;
+
+  /// fi: tunnin päästä
+  ///
+  /// In en, this message translates to:
+  /// **'in 1 h'**
+  String get sff03a35d96;
+
+  /// fi: vanhat hinnat
+  ///
+  /// In en, this message translates to:
+  /// **'old prices'**
+  String get sf9e22ac5e7;
+
+  /// fi: 12h
+  ///
+  /// In en, this message translates to:
+  /// **'12 h'**
+  String get s40fbbc4d00;
+
+  /// fi: Tänään
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get s140acccb81;
+
+  /// fi: 48h
+  ///
+  /// In en, this message translates to:
+  /// **'48 h'**
+  String get s76379cf7c6;
+
+  /// fi: huominen n. klo 14
+  ///
+  /// In en, this message translates to:
+  /// **'tomorrow ~14:00'**
+  String get s252f182d27;
+
+  /// fi: Esimerkkikamera – lisää oma kamerasi Lisää laite -painikkeella
+  ///
+  /// In en, this message translates to:
+  /// **'Example camera – add your own with Add device'**
+  String get sa0bd9ad5b1;
+
   /// fi: Valitse kamerayhteys
   ///
   /// In en, this message translates to:
@@ -5700,12 +6210,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sunday'**
   String get sb1f0e72163;
-
-  /// fi: Ei hintoja
-  ///
-  /// In en, this message translates to:
-  /// **'No prices'**
-  String get s306729fe62;
 
   /// fi: c/t
   ///
@@ -5928,12 +6432,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No on-times in the next day (or tomorrow\'\'s prices are not out yet).'**
   String get s406e599999;
-
-  /// fi: Tänään
-  ///
-  /// In en, this message translates to:
-  /// **'Today'**
-  String get s140acccb81;
 
   /// fi: Huomenna
   ///
@@ -6553,6 +7051,18 @@ abstract class AppLocalizations {
   /// **'Display'**
   String get sd7314e8237;
 
+  /// fi: Pylväät (15 min)
+  ///
+  /// In en, this message translates to:
+  /// **'Bars (15 min)'**
+  String get s7d6cee9e42;
+
+  /// fi: Trendi + Nyt-viiva
+  ///
+  /// In en, this message translates to:
+  /// **'Trend + Now line'**
+  String get sc0e069225b;
+
   /// fi: Trendin pituus
   ///
   /// In en, this message translates to:
@@ -6786,6 +7296,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Auto: axes and guide lines show when the tile is at least 2×2.'**
   String get s29135ed75a;
+
+  /// fi: Kuvavirta
+  ///
+  /// In en, this message translates to:
+  /// **'Stream'**
+  String get s638c648b40;
+
+  /// fi: Linssi / kanava {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Lens / channel {p0}'**
+  String s32ef3895b8(String p0);
 
   /// fi: Värit arvon mukaan
   ///
@@ -7735,12 +8257,6 @@ abstract class AppLocalizations {
   /// **'Refresh'**
   String get sfb1a18d11f;
 
-  /// fi: Päällä
-  ///
-  /// In en, this message translates to:
-  /// **'On'**
-  String get s4cbe24240f;
-
   /// fi: Valot
   ///
   /// In en, this message translates to:
@@ -8059,12 +8575,6 @@ abstract class AppLocalizations {
   /// **'All current connections and dashboards are replaced by the file contents.'**
   String get s852dd1795e;
 
-  /// fi: Tuo
-  ///
-  /// In en, this message translates to:
-  /// **'Import'**
-  String get s580678cb10;
-
   /// fi: Asetukset tuotu
   ///
   /// In en, this message translates to:
@@ -8221,11 +8731,11 @@ abstract class AppLocalizations {
   /// **'Example'**
   String get s34686ffb09;
 
-  /// fi: Lisää esimerkkinäkymä (kamera, hälytys, valot, IV-kone). Vaihda osoitteet omiksesi.
+  /// fi: Lisää esimerkkinäkymä (kamera, hälytys, valot, IV-kone). Esimerkkilaitteet eivät ota yhteyttä mihinkään – lisää omat lai
   ///
   /// In en, this message translates to:
-  /// **'Add an example dashboard (camera, alarm, lights, ventilation). Replace the addresses with yours.'**
-  String get s412c666544;
+  /// **'Add an example dashboard (camera, alarm, lights, ventilation). The example devices never connect anywhere – add your own with Add device.'**
+  String get sc8327738b3;
 
   /// fi: Lisää esimerkkinäkymä
   ///
@@ -9253,6 +9763,96 @@ abstract class AppLocalizations {
   /// **'Timeout (ms)'**
   String get s15e327bf8e;
 
+  /// fi: Kehystys
+  ///
+  /// In en, this message translates to:
+  /// **'Framing'**
+  String get s666811be3d;
+
+  /// fi: Halpa RS485–wifi/ethernet-muunnin läpinäkyvässä tilassa käyttää RTU-kehyksiä.
+  ///
+  /// In en, this message translates to:
+  /// **'A cheap RS485 to Wi-Fi/Ethernet converter in transparent mode uses RTU frames.'**
+  String get s0f2d3b7a42;
+
+  /// fi: Modbus TCP (tavallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Modbus TCP (normal)'**
+  String get s12ca822cd8;
+
+  /// fi: Modbus RTU TCP:n yli (RS485-yhdyskäytävä)
+  ///
+  /// In en, this message translates to:
+  /// **'Modbus RTU over TCP (RS485 gateway)'**
+  String get s731c92978b;
+
+  /// fi: Lukuväli vähintään (s)
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum read interval (s)'**
+  String get s570f11bec8;
+
+  /// fi: Samaa rekisteriä ei lueta tätä useammin, vaikka laattoja olisi monta.
+  ///
+  /// In en, this message translates to:
+  /// **'The same register is never read more often, however many tiles show it.'**
+  String get s13e54dbff1;
+
+  /// fi: Tauko kyselyjen välissä (ms)
+  ///
+  /// In en, this message translates to:
+  /// **'Pause between requests (ms)'**
+  String get s95d4c6dd5b;
+
+  /// fi: Odotus yhdistämisen jälkeen (ms)
+  ///
+  /// In en, this message translates to:
+  /// **'Wait after connecting (ms)'**
+  String get s77b6667fdb;
+
+  /// fi: Yhdistä peräkkäiset luvut
+  ///
+  /// In en, this message translates to:
+  /// **'Batch adjacent reads'**
+  String get sf4b0409574;
+
+  /// fi: Rekistereitä yhdessä luvussa enintään
+  ///
+  /// In en, this message translates to:
+  /// **'Max registers per read'**
+  String get sc011aad1a9;
+
+  /// fi: Estotilan tauko alussa (s)
+  ///
+  /// In en, this message translates to:
+  /// **'Lockout pause at first (s)'**
+  String get s942a690567;
+
+  /// fi: Kun laite ei vastaa, sitä ei kysytä hetkeen. Tauko kaksinkertaistuu enimmäisarvoon asti.
+  ///
+  /// In en, this message translates to:
+  /// **'When the device does not answer, it is left alone for a while. The pause doubles up to the maximum.'**
+  String get s3746551251;
+
+  /// fi: Estotilan tauko enintään (s)
+  ///
+  /// In en, this message translates to:
+  /// **'Lockout pause at most (s)'**
+  String get sf71d800450;
+
+  /// fi: Sulje yhteys virheen jälkeen
+  ///
+  /// In en, this message translates to:
+  /// **'Close the connection after an error'**
+  String get sbce68f8691;
+
+  /// fi: Kysy uudelleen tyhjän vastauksen jälkeen
+  ///
+  /// In en, this message translates to:
+  /// **'Retry on an empty reply'**
+  String get sf96bb0c03d;
+
   /// fi: Rekisterityyppi
   ///
   /// In en, this message translates to:
@@ -9763,17 +10363,23 @@ abstract class AppLocalizations {
   /// **'{p0} not answering'**
   String sbe208615d0(String p0);
 
-  /// fi: ESP32-kamera
+  /// fi: Home Assistant (esimerkki)
   ///
   /// In en, this message translates to:
-  /// **'ESP32 camera'**
-  String get s804e935440;
+  /// **'Home Assistant (example)'**
+  String get s589eb1bcd3;
 
-  /// fi: IV-kone (Modbus)
+  /// fi: Kamera (esimerkki)
   ///
   /// In en, this message translates to:
-  /// **'Ventilation unit (Modbus)'**
-  String get s478ddb6e1a;
+  /// **'Camera (example)'**
+  String get sc4fdb87cd7;
+
+  /// fi: IV-kone (esimerkki)
+  ///
+  /// In en, this message translates to:
+  /// **'Ventilation unit (example)'**
+  String get sd50566a706;
 
   /// fi: Piha
   ///
@@ -10399,11 +11005,11 @@ abstract class AppLocalizations {
   /// **'Electricity price (spot)'**
   String get s6385f1487e;
 
-  /// fi: Tämän ja huomisen päivän pörssisähkön hinta kaaviona, 15 minuutin tarkkuudella. Hintaohjaus: paina laitteen ruutua pitkä
+  /// fi: Tämän ja huomisen päivän pörssisähkön hinta kaaviona, 15 minuutin tarkkuudella: trendi Nyt-viivalla ja/tai pylväät. Hint
   ///
   /// In en, this message translates to:
-  /// **'Today\'\'s and tomorrow\'\'s spot price as a chart. Price control: long-press a device tile → Price control.'**
-  String get se807a72c0a;
+  /// **'Today\'\'s and tomorrow\'\'s spot price at 15-minute resolution: a trend with a Now line and/or bars. Price control: long-press a device tile → Price control.'**
+  String get sead3949d3c;
 
   /// fi: Maa / hinta-alue
   ///
@@ -10416,6 +11022,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Pick your country; in Sweden and Norway your area.'**
   String get sef4f509f9f;
+
+  /// fi: Näkymä
+  ///
+  /// In en, this message translates to:
+  /// **'Look'**
+  String get s5e8c8e4273;
+
+  /// fi: Trendi näyttää tämän päivän ja huomisen hinnan viivana ja Nyt-kohdan.
+  ///
+  /// In en, this message translates to:
+  /// **'The trend shows today and tomorrow as a line with the Now position.'**
+  String get s9f6d9ce1bf;
+
+  /// fi: Trendi ja pylväät (2 ruutua)
+  ///
+  /// In en, this message translates to:
+  /// **'Trend and bars (2 tiles)'**
+  String get s51f1184efb;
+
+  /// fi: Hinnan trendi (viiva, Nyt-viiva)
+  ///
+  /// In en, this message translates to:
+  /// **'Price trend (line, Now line)'**
+  String get sa77af9de19;
 
   /// fi: Laskustasi ALV:n kanssa. 0 = näytä pelkkä energian hinta.
   ///
@@ -10434,6 +11064,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Electricity price {p0}'**
   String s49dfca65a3(String p0);
+
+  /// fi: Sähkön hinnan trendi
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity price trend'**
+  String get s9772b9b5c4;
 
   /// fi: IV-kone (Modbus TCP)
   ///

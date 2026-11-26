@@ -446,7 +446,7 @@ class _HeatPumpServiceGuidePageState extends State<HeatPumpServiceGuidePage> {
                 keyboardType: TextInputType.url,
                 decoration: InputDecoration(
                   labelText: tx(context, 'ESPHome-ohjaimen IP-osoite', 'ESPHome controller IP'),
-                  hintText: '192.168.1.61',
+                  hintText: '192.168.x.x',
                   helperText: tx(
                     context,
                     'Löytyy reitittimen laitelistasta tai ESPHome-hallinnasta.',

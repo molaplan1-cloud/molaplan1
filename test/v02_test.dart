@@ -168,7 +168,7 @@ void main() {
       final airfi = ivProfiles.firstWhere((p) => p.id == 'airfi');
       final tiles = airfi.tiles('c', 'fi');
       final supply = tiles.firstWhere((t) => t.title.startsWith('Tuloilma ('));
-      expect(supply.read['address'], 4); // doc register 5, offset -1
+      expect(supply.read['address'], 5); // 3x00005 → address 5 (AirFi: address = register number)
       expect(supply.read['table'], 'input');
       expect(supply.read['dataType'], 'int16');
       expect(supply.read['scale'], 0.1);

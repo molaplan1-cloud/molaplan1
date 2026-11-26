@@ -22,7 +22,7 @@ class WebSocketDriver extends Driver {
     en: 'WebSocket',
     create: WebSocketDriver.new,
     connectionFields: [
-      FieldSpec('url', 'Osoite', 'URL', hint: 'ws://192.168.1.80/ws', required: true),
+      FieldSpec('url', 'Osoite', 'URL', hint: 'ws://192.168.x.x/ws', required: true),
       FieldSpec(
         'headers',
         'Otsakkeet (Nimi: arvo / rivi)',

@@ -492,8 +492,13 @@ class TrendOptions {
 
 /// Where the chart puts things (pure; tested): plot area, line points and labels.
 class TrendLayout {
-  TrendLayout._(this.plot, this.points, this.lo, this.hi, this.yLabels, this.xLabels);
+  TrendLayout._(this.plot, this.points, this.lo, this.hi, this.yLabels, this.xLabels, [this.nowX, this.nowY]);
   final Rect plot;
+
+  /// t151u window mode: where "now" is on the x-axis (null when outside the window) and the
+  /// line's height there.
+  final double? nowX;
+  final double? nowY;
 
   /// Line vertices in canvas coordinates; the last one is at the plot's right edge (now).
   final List<Offset> points;
@@ -522,16 +527,34 @@ class TrendLayout {
     return '${t.hour.toString().padLeft(2, '0')}:${t.minute.toString().padLeft(2, '0')}';
   }
 
-  static TrendLayout compute(List<(double, double)> s, int hours, DateTime now, Size size, TrendOptions o) {
-    final end = now.millisecondsSinceEpoch / 60000;
+  /// [s] is (minutes since epoch, value). By default the window is the last [hours] with "now"
+  /// at the right edge. t151u window mode ([windowStart]/[windowEnd], e.g. today + tomorrow for
+  /// prices) draws [stepMinutes]-long slots as steps, marks "now" inside the window
+  /// ([nowX]/[nowY]) and labels it "nyt" on the x-axis; [yRange] fixes the y-axis.
+  static TrendLayout compute(
+    List<(double, double)> s,
+    int hours,
+    DateTime now,
+    Size size,
+    TrendOptions o, {
+    DateTime? windowStart,
+    DateTime? windowEnd,
+    double? stepMinutes,
+    (double, double)? yRange,
+  }) {
+    final windowed = windowStart != null && windowEnd != null;
+    final nowM = now.millisecondsSinceEpoch / 60000;
+    final end = windowed ? windowEnd.millisecondsSinceEpoch / 60000 : nowM;
     // t148u: the x-axis is always the whole window, "now" at the right edge.
-    final start = end - hours * 60;
+    final start = windowed ? windowStart.millisecondsSinceEpoch / 60000 : end - hours * 60;
+    final step = stepMinutes ?? 0;
     final pts = [
       for (final p in s)
-        if (p.$1 >= start - 1e-9 && p.$1 <= end + 1) p,
+        if (p.$1 + step >= start - 1e-9 && p.$1 <= end + (windowed ? -1e-9 : 1)) p,
     ];
     var lo = pts.isEmpty ? 0.0 : pts.map((b) => b.$2).reduce(math.min);
     var hi = pts.isEmpty ? 1.0 : pts.map((b) => b.$2).reduce(math.max);
+    if (yRange != null) (lo, hi) = yRange;
     if (hi - lo < 1e-9) {
       lo -= 1;
       hi += 1;
@@ -546,7 +569,7 @@ class TrendLayout {
     }
 
     final midOk = size.height >= lh * 4 + 12;
-    final yTexts = yOn ? [yl(hi), if (midOk) yl((hi + lo) / 2), yl(lo)] : const <String>[];
+    final yTexts = yOn ? [yl(hi), if (midOk) yl((hi + lo) / 2), yl(lo)] : <String>[];
     final yW = yOn ? yTexts.map((t) => _measure(t).width).reduce(math.max) + 4 : 0.0;
     final plot = Rect.fromLTRB(yW, yOn ? lh / 2 : 1.5, size.width, size.height - (xOn ? lh + 2 : 1.5));
     double y(double v) => plot.bottom - (v - lo) / (hi - lo) * plot.height;
@@ -562,7 +585,40 @@ class TrendLayout {
       }
     }
     final xLabels = <(String, Rect)>[];
-    if (xOn) {
+    double? nowX;
+    if (windowed && nowM >= start && nowM <= end) nowX = x(nowM);
+    if (xOn && windowed) {
+      // Window mode: start, middle, end (e.g. 00 · 12 · 00 · 12 · 24) and "nyt" at its place.
+      final top = size.height - lh;
+      final spanH = (end - start) / 60;
+      final ticks = spanH > 30 ? 4 : (spanH > 13 ? 4 : 3);
+      final cand = <(String, Rect)>[];
+      String hl(DateTime t) => t.hour == 0 && t.minute == 0 && spanH > 13 && cand.isNotEmpty
+          ? (t.isAfter(now) ? tr(o.lang, 'huom.', 'tmrw') : '00')
+          : t.hour.toString().padLeft(2, '0');
+      for (var i = 0; i <= ticks; i++) {
+        final m = start + (end - start) * i / ticks;
+        final t = DateTime.fromMillisecondsSinceEpoch((m * 60000).round());
+        final label = i == ticks ? (spanH > 13 ? '24' : hl(t)) : hl(t);
+        final sz = _measure(label);
+        final cx = x(m);
+        final left = (cx - sz.width / 2).clamp(plot.left, plot.right - sz.width);
+        cand.add((label, Rect.fromLTWH(left, top, sz.width, sz.height)));
+      }
+      Rect? nowR;
+      if (nowX != null) {
+        final t = tr(o.lang, 'nyt', 'now');
+        final sz = _measure(t);
+        final left = (nowX - sz.width / 2).clamp(plot.left, plot.right - sz.width);
+        nowR = Rect.fromLTWH(left, top, sz.width, sz.height);
+      }
+      for (final c in cand) {
+        if (nowR != null && c.$2.inflate(3).overlaps(nowR)) continue;
+        if (xLabels.isNotEmpty && c.$2.left < xLabels.last.$2.right + 6) continue;
+        xLabels.add(c);
+      }
+      if (nowR != null) xLabels.add((tr(o.lang, 'nyt', 'now'), nowR));
+    } else if (xOn) {
       final t0 = DateTime.fromMillisecondsSinceEpoch((start * 60000).round());
       final tm = DateTime.fromMillisecondsSinceEpoch(((start + end) / 2 * 60000).round());
       final first = timeLabel(t0, hours, o.lang), mid = timeLabel(tm, hours, o.lang);
@@ -581,6 +637,23 @@ class TrendLayout {
     // last value runs to "now", so there is never an empty gap before the latest point.
     final gap = hours <= 1 ? 4 : (hours <= 6 ? 12 : (hours <= 24 ? 40 : 180));
     final out = <Offset>[];
+    if (windowed && step > 0) {
+      // Price slots: each value holds for its slot (a step line), clipped to the window.
+      double? nowY;
+      for (var i = 0; i < pts.length; i++) {
+        final a = math.max(pts[i].$1, start), b = math.min(pts[i].$1 + step, end);
+        final yv = y(pts[i].$2);
+        final pa = Offset(x(a), yv);
+        if (out.isNotEmpty && (pa.dx - out.last.dx).abs() > 0.5) {
+          // A hole in the data: lift the pen by repeating the last height (holds the value).
+          out.add(Offset(pa.dx, out.last.dy));
+        }
+        out.add(pa);
+        out.add(Offset(x(b), yv));
+        if (nowM >= pts[i].$1 && nowM < pts[i].$1 + step) nowY = yv;
+      }
+      return TrendLayout._(plot, out, lo, hi, yLabels, xLabels, nowX, nowY);
+    }
     for (var i = 0; i < pts.length; i++) {
       final p = Offset(x(pts[i].$1), y(pts[i].$2));
       if (i > 0 && pts[i].$1 - pts[i - 1].$1 > gap) out.add(Offset(p.dx, out.last.dy));
@@ -601,11 +674,22 @@ class TrendChart extends StatelessWidget {
     this.options = const TrendOptions(),
     this.colorAt,
     this.now,
+    this.windowStart,
+    this.windowEnd,
+    this.stepMinutes,
+    this.yRange,
+    this.nowColor,
   });
   final List<(double, double)> series;
   final int hours;
   final Color color;
   final TrendOptions options;
+
+  /// t151u window mode (see [TrendLayout.compute]); [nowColor] draws the "Nyt" line.
+  final DateTime? windowStart, windowEnd;
+  final double? stepMinutes;
+  final (double, double)? yRange;
+  final Color? nowColor;
 
   /// t150u: the threshold colour for a value (line and fill get a vertical gradient by value).
   final Color? Function(double v)? colorAt;
@@ -624,6 +708,11 @@ class TrendChart extends StatelessWidget {
         colorAt,
         cs.onSurfaceVariant,
         cs.onSurface.withValues(alpha: 0.10),
+        windowStart: windowStart,
+        windowEnd: windowEnd,
+        stepMinutes: stepMinutes,
+        yRange: yRange,
+        nowColor: nowColor ?? cs.onSurface,
       ),
       size: Size.infinite,
     );
@@ -631,7 +720,25 @@ class TrendChart extends StatelessWidget {
 }
 
 class _TrendPainter extends CustomPainter {
-  _TrendPainter(this.s, this.hours, this.c, this.now, this.o, this.colorAt, this.labelColor, this.gridColor);
+  _TrendPainter(
+    this.s,
+    this.hours,
+    this.c,
+    this.now,
+    this.o,
+    this.colorAt,
+    this.labelColor,
+    this.gridColor, {
+    this.windowStart,
+    this.windowEnd,
+    this.stepMinutes,
+    this.yRange,
+    this.nowColor = const Color(0xFF000000),
+  });
+  final DateTime? windowStart, windowEnd;
+  final double? stepMinutes;
+  final (double, double)? yRange;
+  final Color nowColor;
   final List<(double, double)> s;
   final int hours;
   final Color c;
@@ -643,8 +750,19 @@ class _TrendPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    if (s.length < 2 || size.isEmpty) return;
-    final l = TrendLayout.compute(s, hours, now, size, o);
+    final windowed = windowStart != null && windowEnd != null;
+    if (s.length < (windowed ? 1 : 2) || size.isEmpty) return;
+    final l = TrendLayout.compute(
+      s,
+      hours,
+      now,
+      size,
+      o,
+      windowStart: windowStart,
+      windowEnd: windowEnd,
+      stepMinutes: stepMinutes,
+      yRange: yRange,
+    );
     final plot = l.plot;
     if (o.grid != 'none') {
       final gp = Paint()
@@ -655,7 +773,7 @@ class _TrendPainter extends CustomPainter {
         canvas.drawLine(Offset(plot.left, y), Offset(plot.right, y), gp);
       }
       if (o.grid == 'full') {
-        final cols = hours >= 168 ? 7 : 4;
+        final cols = windowed ? 4 : (hours >= 168 ? 7 : 4);
         for (var i = 0; i <= cols; i++) {
           final x = plot.left + plot.width * i / cols;
           canvas.drawLine(Offset(x, plot.top), Offset(x, plot.bottom), gp);
@@ -734,13 +852,40 @@ class _TrendPainter extends CustomPainter {
         canvas.drawCircle(pts[i], 1.8, dp..color = colorAt?.call(v) ?? c);
       }
     }
+    if (windowed) {
+      // The "Nyt" line: where we are in the day, with a dot on the current price.
+      final nx = l.nowX;
+      if (nx != null) {
+        final np = Paint()
+          ..color = nowColor.withValues(alpha: 0.75)
+          ..strokeWidth = 1.4;
+        for (var y0 = plot.top; y0 < plot.bottom; y0 += 6) {
+          canvas.drawLine(Offset(nx, y0), Offset(nx, math.min(y0 + 3.5, plot.bottom)), np);
+        }
+        final ny = l.nowY;
+        if (ny != null) {
+          final v = l.hi - (ny - plot.top) / plot.height * (l.hi - l.lo);
+          canvas.drawCircle(Offset(nx, ny), 4.2, Paint()..color = nowColor);
+          canvas.drawCircle(Offset(nx, ny), 3, Paint()..color = colorAt?.call(v) ?? c);
+        }
+      }
+      return;
+    }
     final lastV = s.last.$2;
     canvas.drawCircle(pts.last, 2.8, Paint()..color = colorAt?.call(lastV) ?? c);
   }
 
   @override
   bool shouldRepaint(_TrendPainter o2) =>
-      o2.s != s || o2.c != c || o2.hours != hours || o2.s.length != s.length || o2.o != o || o2.now != now;
+      o2.s != s ||
+      o2.c != c ||
+      o2.hours != hours ||
+      o2.s.length != s.length ||
+      o2.o != o ||
+      o2.now != now ||
+      o2.windowStart != windowStart ||
+      o2.windowEnd != windowEnd ||
+      o2.yRange != yRange;
 }
 
 /// Half-ring gauge (240°) with the value in the middle.

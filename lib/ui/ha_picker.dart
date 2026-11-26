@@ -31,8 +31,11 @@ String haDomainLabel(BuildContext context, String d) => switch (d) {
 /// Pick Home Assistant entities -> tiles. Searchable, filter by room and type, suggestions first.
 /// Never imports everything; can be reopened later (Settings → Home Assistant).
 class HaEntityPickerPage extends StatefulWidget {
-  const HaEntityPickerPage({super.key, required this.connection, this.dashboard, this.loader});
+  const HaEntityPickerPage({super.key, required this.connection, this.dashboard, this.loader, this.initialQuery});
   final ConnectionConfig connection;
+
+  /// Prefilled search (t155u: "Käytä Home Assistantin kautta" opens with e.g. "airfi").
+  final String? initialQuery;
   final Dashboard? dashboard;
   final Future<HaCatalog> Function()? loader;
 
@@ -50,10 +53,12 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
   bool byRoom = true;
   final selected = <String>{};
   bool adding = false;
+  late final _searchCtl = TextEditingController(text: widget.initialQuery ?? '');
 
   @override
   void initState() {
     super.initState();
+    query = widget.initialQuery ?? '';
     _load();
   }
 
@@ -238,6 +243,7 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
           child: TextField(
             key: const ValueKey('ha-search'),
+            controller: _searchCtl,
             onChanged: (v) => setState(() => query = v),
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.search),

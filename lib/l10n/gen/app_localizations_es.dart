@@ -10,6 +10,55 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
+  String get sc1e35d5171 => 'El servicio de precios';
+
+  @override
+  String get s8b22e8d330 => 'El servicio meteorológico';
+
+  @override
+  String get s252ebed5af => 'Shelly Cloud';
+
+  @override
+  String get s10edebf3fa => 'El servidor ntfy';
+
+  @override
+  String get sd3d9c263ed => 'El servicio';
+
+  @override
+  String get sdfb639365a => 'Sin conexión a internet';
+
+  @override
+  String s390dd51af3(String p0) {
+    return '$p0 está en Internet y no se puede llegar. Compruebe la conexión a Internet de este dispositivo. Los últimos datos se muestran cuando está disponible.';
+  }
+
+  @override
+  String sbb750bf9d6(String p0) {
+    return '$p0 no responde, probando una fuente de respaldo';
+  }
+
+  @override
+  String s4284ebac1e(String p0) {
+    return '$p0 no responde';
+  }
+
+  @override
+  String get s828d009fa6 =>
+      'Las fuentes de copia de seguridad tampoco contestaron ahora mismo. El problema es más probable en los servicios, no en su red de origen.';
+
+  @override
+  String get se21c801ba6 =>
+      'El servicio tiene un problema, lo más probable en el servicio y no en su red de inicio.';
+
+  @override
+  String get s35e0766add => 'Firmar en el servicio falló';
+
+  @override
+  String sa4d255e53c(String p0) {
+    return 'Revise la cuenta, llave o ficha para $p0.';
+  }
+
+  @override
   String get sd0a2130950 =>
       'El dispositivo esperado no responde en esta dirección: compruébala (¿http o https?)';
 
@@ -89,6 +138,59 @@ class AppLocalizationsEs extends AppLocalizations {
       'El valor está probablemente fuera de rango. Revise la escala también.';
 
   @override
+  String get s7746921882 =>
+      'Dispositivo encontrado, pero Modbus TCP está apagado';
+
+  @override
+  String get s7e552bd146 =>
+      'Hay un dispositivo en esta dirección, pero no acepta Modbus en este puerto. Enciende Modbus TCP en la configuración del dispositivo (a menudo bajo Network / Modbus / Control remoto) y compruebe el puerto (normalmente 502). También puede pulsar \"Scan Modbus\". Si el dispositivo funciona en Home Assistant, puede que ya tenga una conexión (muchos permiten solamente uno) – leer los valores a través de HA.';
+
+  @override
+  String s0ebc613f20(String p0) {
+    return 'El dispositivo está en bloqueo, retratando a $p0';
+  }
+
+  @override
+  String get s317b2b59af =>
+      'El dispositivo no respondió, por lo que se deja solo por un tiempo – muchos dispositivos bloquean a los clientes que encuestan con demasiada frecuencia. La pausa crece de 30 segundos a 5 minutos. Si el dispositivo ya tiene una conexión (por ejemplo, Home Assistant), lea los valores a través de HA. El intervalo de lectura y pausas están bajo Avance en la conexión.';
+
+  @override
+  String get s33e09089b2 => 'Falta la dirección del dispositivo';
+
+  @override
+  String get s6180bd540e =>
+      'Abra la conexión y introduzca la dirección IP del dispositivo, o presione \"Scan Modbus\" para encontrar el dispositivo en la red.';
+
+  @override
+  String get sd73581c910 => 'El dispositivo puede tener ya una conexión';
+
+  @override
+  String get scee8d982a2 =>
+      'El dispositivo cayó la conexión Modbus de inmediato. Muchos dispositivos permiten sólo una conexión Modbus TCP a la vez. Si el dispositivo ya está en Home Assistant (por ejemplo, modbus.yaml), lea los valores a través de HA.';
+
+  @override
+  String get s6ca672a111 => 'Nada en esta dirección';
+
+  @override
+  String get sf7a98e1c70 =>
+      'Nada contestado en esta dirección IP. Compruebe que el dispositivo está en y en la misma red y que la IP es correcta (puede cambiar – reservar una dirección fija en el router). \"Scan Modbus\" encuentra dispositivos en la red.';
+
+  @override
+  String get scb0cba44ea => 'El dispositivo Modbus no respondió a tiempo';
+
+  @override
+  String get sc03ae7e1c5 =>
+      'No se puede abrir el puerto. Causas más comunes: IP incorrecta, el dispositivo está en otra red (wi-Fi invitado), Modbus TCP está apagado o un cortafuegos bloquea el puerto. Compruebe la dirección y el puerto o pulsar \"Scan Modbus\".';
+
+  @override
+  String get sefba540275 =>
+      'La puerta de entrada no puede llegar a un dispositivo con esta unidad id';
+
+  @override
+  String get s6e4ed361f3 =>
+      'La puerta de entrada Modbus respondió, pero ningún dispositivo con esta unidad id está detrás de ella. Revise la dirección Modbus del dispositivo (a menudo 1) y la velocidad de serie y paridad. \"Scan Modbus\" intenta direcciones 1–247.';
+
+  @override
   String get sb66bc0e677 => 'Sin respuesta Modbus';
 
   @override
@@ -122,9 +224,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s2cd1df086e =>
       'El acceso remoto pasa por el puente en casa (tablet o PC). Comprueba que está encendido, Molaplan está abierto y tiene Internet.';
-
-  @override
-  String get sdfb639365a => 'Sin conexión a internet';
 
   @override
   String get sdbf06d05d9 =>
@@ -183,16 +282,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sdd5e97b1e2 => 'Despejado';
 
   @override
-  String get sad990c999d => 'Parte nublada';
+  String get sad990c999d => 'Parcialmente nublado';
 
   @override
-  String get s80bfe8f9ad => 'Cloudy';
+  String get s80bfe8f9ad => 'Nublado';
 
   @override
-  String get s46f3db8514 => 'Fog';
+  String get s46f3db8514 => 'Niebla';
 
   @override
-  String get sbd81101eb4 => 'Drizzle';
+  String get sbd81101eb4 => 'Llovizna';
 
   @override
   String get s960a265544 => 'Lluvia';
@@ -201,7 +300,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get seab38c2b45 => 'Nieve';
 
   @override
-  String get sfc65eafa12 => 'Thunderstorm';
+  String get sfc65eafa12 => 'Tormenta';
 
   @override
   String get sc27533ae83 => 'Ahorro';
@@ -441,6 +540,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sceabe202da => 'camera_';
 
   @override
+  String get s1a73b397a1 => 'hijo de puta';
+
+  @override
+  String get sb8a029d8b4 => 'hikvision';
+
+  @override
+  String get s2e87289ebd => 'tapo';
+
+  @override
   String get s834e3e8c5d => 'Apple';
 
   @override
@@ -617,9 +725,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'Normalmente no es necesario. Si no se encuentra nada: Aplicación Shelly → dispositivo → Ajustes → Información del dispositivo → ID del dispositivo. Separar varios con comas.';
 
   @override
-  String get s252ebed5af => 'Shelly Cloud';
-
-  @override
   String get s25399cd337 => 'Servidor';
 
   @override
@@ -684,6 +789,14 @@ class AppLocalizationsEs extends AppLocalizations {
       'Aplicación Ezviz → cámara → Ajustes → LAN Vista en vivo / RTSP: encienda (si la opción existe).';
 
   @override
+  String get s70625d8bbe =>
+      'El usuario y la contraseña fijada para la cámara en la aplicación eWeLink (RTSP/ONVIF). En un modelo de doble-lentes ambos lentes provienen del mismo dispositivo.';
+
+  @override
+  String get s1a3c354399 =>
+      'eWeLink app → cámara → Ajustes: encienda RTSP/ONVIF y establezca un usuario y contraseña para él (si la opción existe).';
+
+  @override
   String get s1c2786e15f =>
       'El usuario de la cámara y la contraseña (a menudo admin). ONVIF puede necesitar ser habilitado en la configuración de la cámara.';
 
@@ -691,8 +804,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s32270de47a => 'Cámara de seguridad';
 
   @override
-  String get s4d3ff251d6 =>
-      'Hikvision, Dahua, Reolink, Tapo, Ezviz o cualquier cámara ONVIF. Imagen en una tarjeta, video en vivo en casa.';
+  String get s652458eb87 =>
+      'Hikvision, Dahua, Reolink, Tapo, Ezviz, Sonoff o cualquier cámara ONVIF/RTSP. Imagen en una tarjeta, video en vivo en casa.';
 
   @override
   String get se8ea97c5eb =>
@@ -705,10 +818,48 @@ class AppLocalizationsEs extends AppLocalizations {
   String get seeb6c38c8e => 'Cámara';
 
   @override
+  String s83d937ae6b(String p0, String p1) {
+    return 'Corriente $p0/$p1 ( lente o canal propio)';
+  }
+
+  @override
   String get s136c6f0d2b => 'Imagen en la tarjeta, video en vivo en casa';
 
   @override
   String get s2101774157 => 'Video en vivo en casa (sin imagen)';
+
+  @override
+  String sd63d34bfe9(String p0) {
+    return 'No podía leer el YAML: $p0';
+  }
+
+  @override
+  String sc5c9e5e2fc(String p0) {
+    return '\"$p0\" utiliza un puerto serie (USB/RS485) – necesita una puerta de entrada RS485 → TCP.';
+  }
+
+  @override
+  String get s77bf3b424f => '0=Off;1=On';
+
+  @override
+  String get s4cbe24240f => 'Encendido';
+
+  @override
+  String get s33831dd49f => 'Apagado';
+
+  @override
+  String s69135546c8(String p0) {
+    return '$p0 – objetivo';
+  }
+
+  @override
+  String sd88c13e972(String p0) {
+    return '\" $p0\" fueron saltados – añadirlos a mano.';
+  }
+
+  @override
+  String get sceebf690e3 =>
+      'No Modbus TCP hub encontrado en el YAML (modbus: ... tipo: tcp, host: ...).';
 
   @override
   String get sb662db81d8 =>
@@ -1361,7 +1512,28 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s68cbe596f8 => 'La sesión ha caducado';
 
   @override
+  String get s599357f47b => 'No hay internet';
+
+  @override
+  String get s74fa2d56aa => 'Modbus está apagado';
+
+  @override
   String get s156aa7eeb3 => 'El dispositivo no responde';
+
+  @override
+  String get sbf2cfbb102 => '¿Unidad equivocada id?';
+
+  @override
+  String get s9be06479ff => 'Lockout';
+
+  @override
+  String get s613938b0b3 => 'Sin dirección';
+
+  @override
+  String get s252d8628c7 => 'Ocupado (HA?)';
+
+  @override
+  String get s0e3a6bafbf => 'Servicio no contesta';
 
   @override
   String get s7abcbf1107 => 'Servidor no encontrado';
@@ -1420,6 +1592,39 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s09f5da65e0 => 'Cambiar a Shelly Cloud';
 
   @override
+  String get sa846059775 => 'Home Assistant ya lee este dispositivo';
+
+  @override
+  String get s18a1844439 =>
+      'El dispositivo ya puede tener una conexión (por ejemplo, Home Assistant) – leer los valores a través de HA. Muchos dispositivos permiten sólo una conexión Modbus TCP.';
+
+  @override
+  String sa29df4fc6b(String p0) {
+    return '$p0 Modbus valores encontrados en Home Assistant. Muchos dispositivos permiten sólo una conexión Modbus TCP, por lo que la lectura a través de HA es la forma más segura.';
+  }
+
+  @override
+  String get sb8c40d2c20 => 'Use via Home Assistant';
+
+  @override
+  String get s810014ca02 => 'Importar un modbus de Home Assistant.yaml';
+
+  @override
+  String get sfbf34ee532 =>
+      'Paste modbus.yaml (o el modbus: parte de configuración.yaml). La conexión y las tarjetas utilizan los mismos registros y fechas.';
+
+  @override
+  String s2d4fbaade1(String p0, String p1) {
+    return '$p0 conexión(s), $p1 tarjetas';
+  }
+
+  @override
+  String get s580678cb10 => 'Importar';
+
+  @override
+  String get s108e078c0c => 'Dispositivo Modbus importado de Home Assistant';
+
+  @override
   String get sa3a093e55e => 'Calentando';
 
   @override
@@ -1427,9 +1632,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s0b98d62330 => 'Calor y frío';
-
-  @override
-  String get s33831dd49f => 'Apagado';
 
   @override
   String get sa61efb9866 => 'calentando';
@@ -1732,6 +1934,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s0a9acb5af1 => 'Búsqueda';
 
   @override
+  String get se3ef5a5658 => 'Escanear Modbus';
+
+  @override
   String get s9a018b8166 =>
       'Usted está lejos: el puente de la casa registró su red de la casa.';
 
@@ -1833,7 +2038,64 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s049d71f971 => 'el último';
 
   @override
+  String get s3ec9d77947 => 'Tmrw';
+
+  @override
   String get sed9b5e52f6 => 'Ahora';
+
+  @override
+  String get s1b85ad9e38 =>
+      'Busca dispositivos con Modbus TCP en (puertos 502, 503 y 5020) y prueba los ids de la unidad. Toma aproximadamente medio minuto.';
+
+  @override
+  String get seb1f4357ea => 'Puerto propio (opcional)';
+
+  @override
+  String get s06760a6970 => 'Escándalo de nuevo';
+
+  @override
+  String get s23d146db23 => 'Escáneos';
+
+  @override
+  String get s18e7ad553e => 'Escaneando...';
+
+  @override
+  String get s721647a6cd => 'Estás fuera: el puente casero escaneado.';
+
+  @override
+  String get s08e57d2d85 => 'Scan falló';
+
+  @override
+  String get s4cf60b9350 =>
+      'No se han encontrado dispositivos Modbus. Compruebe que Modbus TCP está en la configuración del dispositivo y que está en la misma red (no wifi invitado).';
+
+  @override
+  String get sbd8ee8a14f => 'Dispositivo Modbus';
+
+  @override
+  String get sf0462b25ac => 'gateway';
+
+  @override
+  String s28d9c4c7dc(String p0) {
+    return 'Preestablecido $p0';
+  }
+
+  @override
+  String get sc6cde0d476 => 'encontrado en su anuncio';
+
+  @override
+  String get s166da70285 => 'El dispositivo no acepta una conexión';
+
+  @override
+  String get sbe97262d91 =>
+      'El dispositivo ya puede tener una conexión (por ejemplo, Home Assistant) – leer los valores a través de HA. Muchos dispositivos permiten sólo una conexión Modbus TCP.';
+
+  @override
+  String get s24e5139123 => 'Port open, no Modbus reply';
+
+  @override
+  String get s9041c140be =>
+      'Compruebe la configuración id y Modbus de la unidad. Pulse para usar esta dirección.';
 
   @override
   String get s55d52c5ae1 => 'Este dispositivo no está en Wi-Fi';
@@ -1899,6 +2161,13 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sb03997d94b =>
       'El dispositivo respondió pero no tiene interruptores ni luces. Para la nube, escriba el ID del dispositivo.';
+
+  @override
+  String get se6e01118ac => 'Cámara encontrada, pero no su dirección de vídeo';
+
+  @override
+  String get sca994210fb =>
+      'La cámara respondió pero no dijo su dirección de vídeo, y ninguna de las direcciones RTSP habituales funcionó con este login. Comprueba que RTSP/ONVIF está en la aplicación de la cámara, o elige la marca de abajo y pulsa \"Connect\".';
 
   @override
   String get s869571042f => 'Clave de nube o servidor no aceptado';
@@ -2103,6 +2372,16 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sf77125583f => 'Detalles técnicos';
+
+  @override
+  String get sb629592b4b => 'Marca de cámara';
+
+  @override
+  String get se3aa0f7164 => 'Dirección de RTSP';
+
+  @override
+  String get s722ac06c6d =>
+      'Sin el login – el usuario y la contraseña se añaden automáticamente.';
 
   @override
   String s77ec7b376b(String p0) {
@@ -2986,6 +3265,30 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s7efc5653d2 => 'Idioma del dispositivo';
 
   @override
+  String get s306729fe62 => 'No hay precios';
+
+  @override
+  String get sff03a35d96 => 'en 1 h';
+
+  @override
+  String get sf9e22ac5e7 => 'precios antiguos';
+
+  @override
+  String get s40fbbc4d00 => '12 h';
+
+  @override
+  String get s140acccb81 => 'Hoy';
+
+  @override
+  String get s76379cf7c6 => '48 h';
+
+  @override
+  String get s252f182d27 => 'mañana ~ 14:00';
+
+  @override
+  String get sa0bd9ad5b1 => 'Cámara de ejemplo: agregue el suyo con Add device';
+
+  @override
   String get s4529c1010a => 'Elija una conexión de cámara';
 
   @override
@@ -3096,9 +3399,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sb1f0e72163 => 'Domingo';
-
-  @override
-  String get s306729fe62 => 'No hay precios';
 
   @override
   String get s80c4ecec94 => 'c/h';
@@ -3219,9 +3519,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s406e599999 =>
       'No hay horas al día siguiente (o los precios de mañana todavía no están apagados).';
-
-  @override
-  String get s140acccb81 => 'Hoy';
 
   @override
   String get s0de6e75a52 => 'Mañana';
@@ -3575,6 +3872,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sd7314e8237 => 'Visualización';
 
   @override
+  String get s7d6cee9e42 => 'Bares (15 min)';
+
+  @override
+  String get sc0e069225b => 'Trend + línea Ahora';
+
+  @override
   String get s1c72b8c56a => 'Longitud de la tendencia';
 
   @override
@@ -3695,6 +3998,14 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s29135ed75a =>
       'Auto: ejes y líneas de guía muestran cuando la tarjeta es al menos 2×2.';
+
+  @override
+  String get s638c648b40 => 'Corriente';
+
+  @override
+  String s32ef3895b8(String p0) {
+    return 'Lens / canal $p0';
+  }
 
   @override
   String get s939603242a => 'Colores por valor';
@@ -4227,9 +4538,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sfb1a18d11f => 'Actualizar';
 
   @override
-  String get s4cbe24240f => 'Encendido';
-
-  @override
   String get s72a2328ddd => 'Luces';
 
   @override
@@ -4406,9 +4714,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'Todas las conexiones y paneles actuales son reemplazadas por el contenido del archivo.';
 
   @override
-  String get s580678cb10 => 'Importar';
-
-  @override
   String get s5f2ec17730 => 'Configuración importada';
 
   @override
@@ -4495,8 +4800,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s34686ffb09 => 'Ejemplo';
 
   @override
-  String get s412c666544 =>
-      'Agregue un dashboard de ejemplo (camera, alarma, luces, ventilación). Reemplace las direcciones con el suyo.';
+  String get sc8327738b3 =>
+      'Agregue una vista de ejemplo (camera, alarma, luces, ventilación). Los dispositivos de ejemplo nunca se conectan en cualquier lugar – agregue el propio con Add device.';
 
   @override
   String get sec02c7c071 => 'Añadir vista de ejemplo';
@@ -5089,6 +5394,54 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s15e327bf8e => 'Timeout (ms)';
 
   @override
+  String get s666811be3d => 'Framing';
+
+  @override
+  String get s0f2d3b7a42 =>
+      'Un convertidor RS485 barato a Wi-Fi/Ethernet en modo transparente utiliza marcos RTU.';
+
+  @override
+  String get s12ca822cd8 => 'Modbus TCP (normal)';
+
+  @override
+  String get s731c92978b => 'Modbus RTU sobre TCP (RS485 gateway)';
+
+  @override
+  String get s570f11bec8 => 'Intervalo mínimo de lectura (s)';
+
+  @override
+  String get s13e54dbff1 =>
+      'El mismo registro nunca se lee más a menudo, sin embargo muchas tarjetas lo muestran.';
+
+  @override
+  String get s95d4c6dd5b => 'Pausa entre solicitudes (ms)';
+
+  @override
+  String get s77b6667fdb => 'Espera después de conectar (ms)';
+
+  @override
+  String get sf4b0409574 => 'Leídas adyacentes al lote';
+
+  @override
+  String get sc011aad1a9 => 'Max se registra por lectura';
+
+  @override
+  String get s942a690567 => 'Pausa de cierre al principio (s)';
+
+  @override
+  String get s3746551251 =>
+      'Cuando el dispositivo no responde, se deja solo por un tiempo. La pausa se duplica hasta el máximo.';
+
+  @override
+  String get sf71d800450 => 'Pausa de bloqueo a la mayoría (s)';
+
+  @override
+  String get sbce68f8691 => 'Cerrar la conexión después de un error';
+
+  @override
+  String get sf96bb0c03d => 'Ingrese en una respuesta vacía';
+
+  @override
   String get s943b8b6bf3 => 'Cuadro de registro';
 
   @override
@@ -5381,10 +5734,13 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get s804e935440 => 'Cámara ESP32';
+  String get s589eb1bcd3 => 'Asistente de casa (ejemplo)';
 
   @override
-  String get s478ddb6e1a => 'Unidad de ventilación (Modbus)';
+  String get sc4fdb87cd7 => 'Cámara (ejemplo)';
+
+  @override
+  String get sd50566a706 => 'Unidad de ventilación (ejemplo)';
 
   @override
   String get s4b4fd14aaf => 'Patio';
@@ -5733,14 +6089,27 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s6385f1487e => 'Precio de la electricidad (spot)';
 
   @override
-  String get se807a72c0a =>
-      'Hoy y mañana el precio del spot como un gráfico. Control de precios: larga presión de una ficha de dispositivo → Control de precios.';
+  String get sead3949d3c =>
+      'Precio de hoy y mañana a 15 minutos de resolución: una tendencia con una línea Now y/o barras. Control de precios: larga presión una tarjeta de dispositivo → Control de precios.';
 
   @override
   String get sef8d24c969 => 'País / zona de precio';
 
   @override
   String get sef4f509f9f => 'Escoja su país; en Suecia y Noruega su área.';
+
+  @override
+  String get s5e8c8e4273 => 'Aspecto';
+
+  @override
+  String get s9f6d9ce1bf =>
+      'La tendencia muestra hoy y mañana como una línea con la posición Ahora.';
+
+  @override
+  String get s51f1184efb => 'Tendencia y barras (2 tarjetas)';
+
+  @override
+  String get sa77af9de19 => 'Tendencia de precios (línea, línea Ahora)';
 
   @override
   String get sf3a8631d14 => 'De su factura incl. IVA. 0 = energía solamente.';
@@ -5752,6 +6121,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String s49dfca65a3(String p0) {
     return 'Precio de electricidad $p0';
   }
+
+  @override
+  String get s9772b9b5c4 => 'Tendencia del precio de la electricidad';
 
   @override
   String get s9af9526395 => 'Unidad de ventilación (Modbus TCP)';

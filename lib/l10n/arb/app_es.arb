@@ -1,5 +1,36 @@
 {
  "@@locale": "es",
+ "sc1e35d5171": "El servicio de precios",
+ "s8b22e8d330": "El servicio meteorológico",
+ "s252ebed5af": "Shelly Cloud",
+ "s10edebf3fa": "El servidor ntfy",
+ "@s10edebf3fa": {
+  "x-mt": true
+ },
+ "sd3d9c263ed": "El servicio",
+ "sdfb639365a": "Sin conexión a internet",
+ "s390dd51af3": "{p0} está en Internet y no se puede llegar. Compruebe la conexión a Internet de este dispositivo. Los últimos datos se muestran cuando está disponible.",
+ "@s390dd51af3": {
+  "x-mt": true
+ },
+ "sbb750bf9d6": "{p0} no responde, probando una fuente de respaldo",
+ "s4284ebac1e": "{p0} no responde",
+ "s828d009fa6": "Las fuentes de copia de seguridad tampoco contestaron ahora mismo. El problema es más probable en los servicios, no en su red de origen.",
+ "@s828d009fa6": {
+  "x-mt": true
+ },
+ "se21c801ba6": "El servicio tiene un problema, lo más probable en el servicio y no en su red de inicio.",
+ "@se21c801ba6": {
+  "x-mt": true
+ },
+ "s35e0766add": "Firmar en el servicio falló",
+ "@s35e0766add": {
+  "x-mt": true
+ },
+ "sa4d255e53c": "Revise la cuenta, llave o ficha para {p0}.",
+ "@sa4d255e53c": {
+  "x-mt": true
+ },
  "sd0a2130950": "El dispositivo esperado no responde en esta dirección: compruébala (¿http o https?)",
  "sdd5742468b": "Algo responde, pero no como se esperaba. Prueba https:// o http:// delante y comprueba el puerto.",
  "s03c0a5192b": "Dirección no encontrada",
@@ -82,6 +113,34 @@
  "@s76b95eef9f": {
   "x-mt": true
  },
+ "s7746921882": "Dispositivo encontrado, pero Modbus TCP está apagado",
+ "@s7746921882": {
+  "x-mt": true
+ },
+ "s6ca672a111": "Nada en esta dirección",
+ "@s6ca672a111": {
+  "x-mt": true
+ },
+ "sf7a98e1c70": "Nada contestado en esta dirección IP. Compruebe que el dispositivo está en y en la misma red y que la IP es correcta (puede cambiar – reservar una dirección fija en el router). \"Scan Modbus\" encuentra dispositivos en la red.",
+ "@sf7a98e1c70": {
+  "x-mt": true
+ },
+ "scb0cba44ea": "El dispositivo Modbus no respondió a tiempo",
+ "@scb0cba44ea": {
+  "x-mt": true
+ },
+ "sc03ae7e1c5": "No se puede abrir el puerto. Causas más comunes: IP incorrecta, el dispositivo está en otra red (wi-Fi invitado), Modbus TCP está apagado o un cortafuegos bloquea el puerto. Compruebe la dirección y el puerto o pulsar \"Scan Modbus\".",
+ "@sc03ae7e1c5": {
+  "x-mt": true
+ },
+ "sefba540275": "La puerta de entrada no puede llegar a un dispositivo con esta unidad id",
+ "@sefba540275": {
+  "x-mt": true
+ },
+ "s6e4ed361f3": "La puerta de entrada Modbus respondió, pero ningún dispositivo con esta unidad id está detrás de ella. Revise la dirección Modbus del dispositivo (a menudo 1) y la velocidad de serie y paridad. \"Scan Modbus\" intenta direcciones 1–247.",
+ "@s6e4ed361f3": {
+  "x-mt": true
+ },
  "sb66bc0e677": "Sin respuesta Modbus",
  "s6ef5539bc2": "Conectado pero sin respuesta. Compruebe la unidad id (a menudo 1) y la configuración de serie de la puerta de entrada.",
  "@s6ef5539bc2": {
@@ -119,7 +178,6 @@
  "@s2cd1df086e": {
   "x-mt": true
  },
- "sdfb639365a": "Sin conexión a internet",
  "sdbf06d05d9": "Su dispositivo no puede llegar al servicio remoto Molaplan. Compruebe los datos móviles o Wi-Fi.",
  "@sdbf06d05d9": {
   "x-mt": true
@@ -177,6 +235,14 @@
   "x-mt": true
  },
  "s53a891e670": "Comprueba la dirección y los ajustes e inténtalo de nuevo. Los detalles técnicos muestran el motivo exacto.",
+ "sdd5e97b1e2": "Despejado",
+ "sad990c999d": "Parcialmente nublado",
+ "s80bfe8f9ad": "Nublado",
+ "s46f3db8514": "Niebla",
+ "sbd81101eb4": "Llovizna",
+ "s960a265544": "Lluvia",
+ "seab38c2b45": "Nieve",
+ "sfc65eafa12": "Tormenta",
  "sc27533ae83": "Ahorro",
  "sdbcb85509b": "La temperatura puede variar más (+1 / −2 °C). Mayor ahorro.",
  "s380b20be36": "Equilibrado",
@@ -340,6 +406,18 @@
  },
  "s3832b8c729": "toda la habitación",
  "sceabe202da": "camera_",
+ "s1a73b397a1": "hijo de puta",
+ "@s1a73b397a1": {
+  "x-mt": true
+ },
+ "sb8a029d8b4": "hikvision",
+ "@sb8a029d8b4": {
+  "x-mt": true
+ },
+ "s2e87289ebd": "tapo",
+ "@s2e87289ebd": {
+  "x-mt": true
+ },
  "s834e3e8c5d": "Apple",
  "@s834e3e8c5d": {
   "x-mt": true
@@ -522,7 +600,6 @@
  "@sf30bb5d5e6": {
   "x-mt": true
  },
- "s252ebed5af": "Shelly Cloud",
  "s25399cd337": "Servidor",
  "s246c7a46ff": "Aplicación Shelly → Configuración del usuario → Clave de la nube de autorización → Servidor URI.",
  "@s246c7a46ff": {
@@ -582,6 +659,14 @@
  "@s1866ef6dc8": {
   "x-mt": true
  },
+ "s70625d8bbe": "El usuario y la contraseña fijada para la cámara en la aplicación eWeLink (RTSP/ONVIF). En un modelo de doble-lentes ambos lentes provienen del mismo dispositivo.",
+ "@s70625d8bbe": {
+  "x-mt": true
+ },
+ "s1a3c354399": "eWeLink app → cámara → Ajustes: encienda RTSP/ONVIF y establezca un usuario y contraseña para él (si la opción existe).",
+ "@s1a3c354399": {
+  "x-mt": true
+ },
  "s1c2786e15f": "El usuario de la cámara y la contraseña (a menudo admin). ONVIF puede necesitar ser habilitado en la configuración de la cámara.",
  "@s1c2786e15f": {
   "x-mt": true
@@ -590,8 +675,8 @@
  "@s32270de47a": {
   "x-mt": true
  },
- "s4d3ff251d6": "Hikvision, Dahua, Reolink, Tapo, Ezviz o cualquier cámara ONVIF. Imagen en una tarjeta, video en vivo en casa.",
- "@s4d3ff251d6": {
+ "s652458eb87": "Hikvision, Dahua, Reolink, Tapo, Ezviz, Sonoff o cualquier cámara ONVIF/RTSP. Imagen en una tarjeta, video en vivo en casa.",
+ "@s652458eb87": {
   "x-mt": true
  },
  "se8ea97c5eb": "En la aplicación de cámara (información del dispositivo) o en la lista de dispositivos del router.",
@@ -603,6 +688,10 @@
   "x-mt": true
  },
  "seeb6c38c8e": "Cámara",
+ "s83d937ae6b": "Corriente {p0}/{p1} ( lente o canal propio)",
+ "@s83d937ae6b": {
+  "x-mt": true
+ },
  "s136c6f0d2b": "Imagen en la tarjeta, video en vivo en casa",
  "@s136c6f0d2b": {
   "x-mt": true
@@ -611,6 +700,9 @@
  "@s2101774157": {
   "x-mt": true
  },
+ "s77bf3b424f": "0=Off;1=On",
+ "s4cbe24240f": "Encendido",
+ "s33831dd49f": "Apagado",
  "sb662db81d8": "La dirección se ve incompleta. Use cuatro números con puntos, por ejemplo 192.168.1.50.",
  "@sb662db81d8": {
   "x-mt": true
@@ -1251,7 +1343,23 @@
   "x-mt": true
  },
  "s68cbe596f8": "La sesión ha caducado",
+ "s599357f47b": "No hay internet",
+ "@s599357f47b": {
+  "x-mt": true
+ },
+ "s74fa2d56aa": "Modbus está apagado",
+ "@s74fa2d56aa": {
+  "x-mt": true
+ },
  "s156aa7eeb3": "El dispositivo no responde",
+ "sbf2cfbb102": "¿Unidad equivocada id?",
+ "@sbf2cfbb102": {
+  "x-mt": true
+ },
+ "s0e3a6bafbf": "Servicio no contesta",
+ "@s0e3a6bafbf": {
+  "x-mt": true
+ },
  "s7abcbf1107": "Servidor no encontrado",
  "sca533b6f25": "El puente de casa no responde",
  "s96ad0dc252": "Valor no encontrado en el dispositivo",
@@ -1295,10 +1403,10 @@
   "x-mt": true
  },
  "s09f5da65e0": "Cambiar a Shelly Cloud",
+ "s580678cb10": "Importar",
  "sa3a093e55e": "Calentando",
  "s8efb99df1d": "Enfriando",
  "s0b98d62330": "Calor y frío",
- "s33831dd49f": "Apagado",
  "sa61efb9866": "calentando",
  "s9a47ee3e3c": "enfriando",
  "s156712ac0c": "en espera",
@@ -1472,6 +1580,7 @@
  "@s0a9acb5af1": {
   "x-mt": true
  },
+ "se3ef5a5658": "Escanear Modbus",
  "s9a018b8166": "Usted está lejos: el puente de la casa registró su red de la casa.",
  "@s9a018b8166": {
   "x-mt": true
@@ -1528,8 +1637,60 @@
  "@s049d71f971": {
   "x-mt": true
  },
+ "s3ec9d77947": "Tmrw",
+ "@s3ec9d77947": {
+  "x-mt": true
+ },
  "sed9b5e52f6": "Ahora",
  "@sed9b5e52f6": {
+  "x-mt": true
+ },
+ "s1b85ad9e38": "Busca dispositivos con Modbus TCP en (puertos 502, 503 y 5020) y prueba los ids de la unidad. Toma aproximadamente medio minuto.",
+ "@s1b85ad9e38": {
+  "x-mt": true
+ },
+ "seb1f4357ea": "Puerto propio (opcional)",
+ "@seb1f4357ea": {
+  "x-mt": true
+ },
+ "s06760a6970": "Escándalo de nuevo",
+ "@s06760a6970": {
+  "x-mt": true
+ },
+ "s23d146db23": "Escáneos",
+ "@s23d146db23": {
+  "x-mt": true
+ },
+ "s18e7ad553e": "Escaneando...",
+ "@s18e7ad553e": {
+  "x-mt": true
+ },
+ "s721647a6cd": "Estás fuera: el puente casero escaneado.",
+ "@s721647a6cd": {
+  "x-mt": true
+ },
+ "s08e57d2d85": "Scan falló",
+ "@s08e57d2d85": {
+  "x-mt": true
+ },
+ "s4cf60b9350": "No se han encontrado dispositivos Modbus. Compruebe que Modbus TCP está en la configuración del dispositivo y que está en la misma red (no wifi invitado).",
+ "@s4cf60b9350": {
+  "x-mt": true
+ },
+ "sbd8ee8a14f": "Dispositivo Modbus",
+ "@sbd8ee8a14f": {
+  "x-mt": true
+ },
+ "sf0462b25ac": "gateway",
+ "@sf0462b25ac": {
+  "x-mt": true
+ },
+ "s24e5139123": "Port open, no Modbus reply",
+ "@s24e5139123": {
+  "x-mt": true
+ },
+ "s9041c140be": "Compruebe la configuración id y Modbus de la unidad. Pulse para usar esta dirección.",
+ "@s9041c140be": {
   "x-mt": true
  },
  "s55d52c5ae1": "Este dispositivo no está en Wi-Fi",
@@ -1595,6 +1756,14 @@
  },
  "sb03997d94b": "El dispositivo respondió pero no tiene interruptores ni luces. Para la nube, escriba el ID del dispositivo.",
  "@sb03997d94b": {
+  "x-mt": true
+ },
+ "se6e01118ac": "Cámara encontrada, pero no su dirección de vídeo",
+ "@se6e01118ac": {
+  "x-mt": true
+ },
+ "sca994210fb": "La cámara respondió pero no dijo su dirección de vídeo, y ninguna de las direcciones RTSP habituales funcionó con este login. Comprueba que RTSP/ONVIF está en la aplicación de la cámara, o elige la marca de abajo y pulsa \"Connect\".",
+ "@sca994210fb": {
   "x-mt": true
  },
  "s869571042f": "Clave de nube o servidor no aceptado",
@@ -1790,6 +1959,18 @@
   "x-mt": true
  },
  "sf77125583f": "Detalles técnicos",
+ "sb629592b4b": "Marca de cámara",
+ "@sb629592b4b": {
+  "x-mt": true
+ },
+ "se3aa0f7164": "Dirección de RTSP",
+ "@se3aa0f7164": {
+  "x-mt": true
+ },
+ "s722ac06c6d": "Sin el login – el usuario y la contraseña se añaden automáticamente.",
+ "@s722ac06c6d": {
+  "x-mt": true
+ },
  "s77ec7b376b": "Encontré: {p0}",
  "@s77ec7b376b": {
   "x-mt": true
@@ -2720,6 +2901,25 @@
  "s2d65587b87": "8",
  "s2ad22696ca": "Idioma",
  "s7efc5653d2": "Idioma del dispositivo",
+ "s306729fe62": "No hay precios",
+ "@s306729fe62": {
+  "x-mt": true
+ },
+ "sff03a35d96": "en 1 h",
+ "@sff03a35d96": {
+  "x-mt": true
+ },
+ "sf9e22ac5e7": "precios antiguos",
+ "@sf9e22ac5e7": {
+  "x-mt": true
+ },
+ "s40fbbc4d00": "12 h",
+ "s140acccb81": "Hoy",
+ "s76379cf7c6": "48 h",
+ "s252f182d27": "mañana ~ 14:00",
+ "@s252f182d27": {
+  "x-mt": true
+ },
  "s4529c1010a": "Elija una conexión de cámara",
  "@s4529c1010a": {
   "x-mt": true
@@ -2843,10 +3043,6 @@
  "@sb1f0e72163": {
   "x-mt": true
  },
- "s306729fe62": "No hay precios",
- "@s306729fe62": {
-  "x-mt": true
- },
  "s80c4ecec94": "c/h",
  "sbfe79d1f5f": "Actualizado",
  "sb68e905fc4": "Consumo (kWh)",
@@ -2935,7 +3131,6 @@
  "@s406e599999": {
   "x-mt": true
  },
- "s140acccb81": "Hoy",
  "s0de6e75a52": "Mañana",
  "sf87d92faf4": "Precio de la zona {p0}. Precio del día-ahead incl. IVA {p1} %. Añada el dispositivo \"Precio de electricidad\" para cambiar el área y las tarifas.",
  "@sf87d92faf4": {
@@ -3264,6 +3459,14 @@
   "x-mt": true
  },
  "sd7314e8237": "Visualización",
+ "s7d6cee9e42": "Bares (15 min)",
+ "@s7d6cee9e42": {
+  "x-mt": true
+ },
+ "sc0e069225b": "Trend + línea Ahora",
+ "@sc0e069225b": {
+  "x-mt": true
+ },
  "s1c72b8c56a": "Longitud de la tendencia",
  "@s1c72b8c56a": {
   "x-mt": true
@@ -3391,6 +3594,14 @@
  },
  "s29135ed75a": "Auto: ejes y líneas de guía muestran cuando la tarjeta es al menos 2×2.",
  "@s29135ed75a": {
+  "x-mt": true
+ },
+ "s638c648b40": "Corriente",
+ "@s638c648b40": {
+  "x-mt": true
+ },
+ "s32ef3895b8": "Lens / canal {p0}",
+ "@s32ef3895b8": {
   "x-mt": true
  },
  "s939603242a": "Colores por valor",
@@ -3809,7 +4020,6 @@
  "safe0429a90": "Control por precio",
  "sf3d644dd4c": "Aprender un botón del mando",
  "sfb1a18d11f": "Actualizar",
- "s4cbe24240f": "Encendido",
  "s72a2328ddd": "Luces",
  "sca12be80ca": "Interruptores",
  "sa4c0eeea02": "Bombas de calor y A/A",
@@ -3950,7 +4160,6 @@
  "@s852dd1795e": {
   "x-mt": true
  },
- "s580678cb10": "Importar",
  "s5f2ec17730": "Configuración importada",
  "@s5f2ec17730": {
   "x-mt": true
@@ -4025,10 +4234,6 @@
  },
  "sdb12678e52": "Exportar",
  "s34686ffb09": "Ejemplo",
- "s412c666544": "Agregue un dashboard de ejemplo (camera, alarma, luces, ventilación). Reemplace las direcciones con el suyo.",
- "@s412c666544": {
-  "x-mt": true
- },
  "sec02c7c071": "Añadir vista de ejemplo",
  "s522d6584c5": "Buscar actualizaciones",
  "sd178a1d809": "Su propia terminal de control: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP y UDP. Sin una cuenta, todos los ajustes permanecen en este dispositivo.",
@@ -4593,6 +4798,22 @@
  "@s15e327bf8e": {
   "x-mt": true
  },
+ "s666811be3d": "Framing",
+ "@s666811be3d": {
+  "x-mt": true
+ },
+ "s0f2d3b7a42": "Un convertidor RS485 barato a Wi-Fi/Ethernet en modo transparente utiliza marcos RTU.",
+ "@s0f2d3b7a42": {
+  "x-mt": true
+ },
+ "s12ca822cd8": "Modbus TCP (normal)",
+ "@s12ca822cd8": {
+  "x-mt": true
+ },
+ "s731c92978b": "Modbus RTU sobre TCP (RS485 gateway)",
+ "@s731c92978b": {
+  "x-mt": true
+ },
  "s943b8b6bf3": "Cuadro de registro",
  "@s943b8b6bf3": {
   "x-mt": true
@@ -4922,14 +5143,6 @@
  },
  "sbe208615d0": "{p0} no contesta",
  "@sbe208615d0": {
-  "x-mt": true
- },
- "s804e935440": "Cámara ESP32",
- "@s804e935440": {
-  "x-mt": true
- },
- "s478ddb6e1a": "Unidad de ventilación (Modbus)",
- "@s478ddb6e1a": {
   "x-mt": true
  },
  "s4b4fd14aaf": "Patio",
@@ -5279,13 +5492,26 @@
   "x-mt": true
  },
  "s6385f1487e": "Precio de la electricidad (spot)",
- "se807a72c0a": "Hoy y mañana el precio del spot como un gráfico. Control de precios: larga presión de una ficha de dispositivo → Control de precios.",
- "@se807a72c0a": {
+ "sead3949d3c": "Precio de hoy y mañana a 15 minutos de resolución: una tendencia con una línea Now y/o barras. Control de precios: larga presión una tarjeta de dispositivo → Control de precios.",
+ "@sead3949d3c": {
   "x-mt": true
  },
  "sef8d24c969": "País / zona de precio",
  "sef4f509f9f": "Escoja su país; en Suecia y Noruega su área.",
  "@sef4f509f9f": {
+  "x-mt": true
+ },
+ "s5e8c8e4273": "Aspecto",
+ "s9f6d9ce1bf": "La tendencia muestra hoy y mañana como una línea con la posición Ahora.",
+ "@s9f6d9ce1bf": {
+  "x-mt": true
+ },
+ "s51f1184efb": "Tendencia y barras (2 tarjetas)",
+ "@s51f1184efb": {
+  "x-mt": true
+ },
+ "sa77af9de19": "Tendencia de precios (línea, línea Ahora)",
+ "@sa77af9de19": {
   "x-mt": true
  },
  "sf3a8631d14": "De su factura incl. IVA. 0 = energía solamente.",
@@ -5300,6 +5526,7 @@
  "@s49dfca65a3": {
   "x-mt": true
  },
+ "s9772b9b5c4": "Tendencia del precio de la electricidad",
  "s9af9526395": "Unidad de ventilación (Modbus TCP)",
  "@s9af9526395": {
   "x-mt": true
@@ -5467,36 +5694,176 @@
  "@s3a38b97f7b": {
   "x-mt": true
  },
- "sdd5e97b1e2": "Despejado",
- "@sdd5e97b1e2": {
+ "s7e552bd146": "Hay un dispositivo en esta dirección, pero no acepta Modbus en este puerto. Enciende Modbus TCP en la configuración del dispositivo (a menudo bajo Network / Modbus / Control remoto) y compruebe el puerto (normalmente 502). También puede pulsar \"Scan Modbus\". Si el dispositivo funciona en Home Assistant, puede que ya tenga una conexión (muchos permiten solamente uno) – leer los valores a través de HA.",
+ "@s7e552bd146": {
   "x-mt": true
  },
- "sad990c999d": "Parte nublada",
- "@sad990c999d": {
+ "s0ebc613f20": "El dispositivo está en bloqueo, retratando a {p0}",
+ "@s0ebc613f20": {
   "x-mt": true
  },
- "s80bfe8f9ad": "Cloudy",
- "@s80bfe8f9ad": {
+ "s317b2b59af": "El dispositivo no respondió, por lo que se deja solo por un tiempo – muchos dispositivos bloquean a los clientes que encuestan con demasiada frecuencia. La pausa crece de 30 segundos a 5 minutos. Si el dispositivo ya tiene una conexión (por ejemplo, Home Assistant), lea los valores a través de HA. El intervalo de lectura y pausas están bajo Avance en la conexión.",
+ "@s317b2b59af": {
   "x-mt": true
  },
- "s46f3db8514": "Fog",
- "@s46f3db8514": {
+ "s33e09089b2": "Falta la dirección del dispositivo",
+ "@s33e09089b2": {
   "x-mt": true
  },
- "sbd81101eb4": "Drizzle",
- "@sbd81101eb4": {
+ "s6180bd540e": "Abra la conexión y introduzca la dirección IP del dispositivo, o presione \"Scan Modbus\" para encontrar el dispositivo en la red.",
+ "@s6180bd540e": {
   "x-mt": true
  },
- "s960a265544": "Lluvia",
- "@s960a265544": {
+ "sd73581c910": "El dispositivo puede tener ya una conexión",
+ "@sd73581c910": {
   "x-mt": true
  },
- "seab38c2b45": "Nieve",
- "@seab38c2b45": {
+ "scee8d982a2": "El dispositivo cayó la conexión Modbus de inmediato. Muchos dispositivos permiten sólo una conexión Modbus TCP a la vez. Si el dispositivo ya está en Home Assistant (por ejemplo, modbus.yaml), lea los valores a través de HA.",
+ "@scee8d982a2": {
   "x-mt": true
  },
- "sfc65eafa12": "Thunderstorm",
- "@sfc65eafa12": {
+ "sd63d34bfe9": "No podía leer el YAML: {p0}",
+ "@sd63d34bfe9": {
+  "x-mt": true
+ },
+ "sc5c9e5e2fc": "\"{p0}\" utiliza un puerto serie (USB/RS485) – necesita una puerta de entrada RS485 → TCP.",
+ "@sc5c9e5e2fc": {
+  "x-mt": true
+ },
+ "s69135546c8": "{p0} – objetivo",
+ "@s69135546c8": {
+  "x-mt": true
+ },
+ "sd88c13e972": "\" {p0}\" fueron saltados – añadirlos a mano.",
+ "@sd88c13e972": {
+  "x-mt": true
+ },
+ "sceebf690e3": "No Modbus TCP hub encontrado en el YAML (modbus: ... tipo: tcp, host: ...).",
+ "@sceebf690e3": {
+  "x-mt": true
+ },
+ "s9be06479ff": "Lockout",
+ "@s9be06479ff": {
+  "x-mt": true
+ },
+ "s613938b0b3": "Sin dirección",
+ "@s613938b0b3": {
+  "x-mt": true
+ },
+ "s252d8628c7": "Ocupado (HA?)",
+ "@s252d8628c7": {
+  "x-mt": true
+ },
+ "sa846059775": "Home Assistant ya lee este dispositivo",
+ "@sa846059775": {
+  "x-mt": true
+ },
+ "s18a1844439": "El dispositivo ya puede tener una conexión (por ejemplo, Home Assistant) – leer los valores a través de HA. Muchos dispositivos permiten sólo una conexión Modbus TCP.",
+ "@s18a1844439": {
+  "x-mt": true
+ },
+ "sa29df4fc6b": "{p0} Modbus valores encontrados en Home Assistant. Muchos dispositivos permiten sólo una conexión Modbus TCP, por lo que la lectura a través de HA es la forma más segura.",
+ "@sa29df4fc6b": {
+  "x-mt": true
+ },
+ "sb8c40d2c20": "Use via Home Assistant",
+ "@sb8c40d2c20": {
+  "x-mt": true
+ },
+ "s810014ca02": "Importar un modbus de Home Assistant.yaml",
+ "@s810014ca02": {
+  "x-mt": true
+ },
+ "sfbf34ee532": "Paste modbus.yaml (o el modbus: parte de configuración.yaml). La conexión y las tarjetas utilizan los mismos registros y fechas.",
+ "@sfbf34ee532": {
+  "x-mt": true
+ },
+ "s2d4fbaade1": "{p0} conexión(s), {p1} tarjetas",
+ "@s2d4fbaade1": {
+  "x-mt": true
+ },
+ "s108e078c0c": "Dispositivo Modbus importado de Home Assistant",
+ "@s108e078c0c": {
+  "x-mt": true
+ },
+ "s28d9c4c7dc": "Preestablecido {p0}",
+ "@s28d9c4c7dc": {
+  "x-mt": true
+ },
+ "sc6cde0d476": "encontrado en su anuncio",
+ "@sc6cde0d476": {
+  "x-mt": true
+ },
+ "s166da70285": "El dispositivo no acepta una conexión",
+ "@s166da70285": {
+  "x-mt": true
+ },
+ "sbe97262d91": "El dispositivo ya puede tener una conexión (por ejemplo, Home Assistant) – leer los valores a través de HA. Muchos dispositivos permiten sólo una conexión Modbus TCP.",
+ "@sbe97262d91": {
+  "x-mt": true
+ },
+ "sa0bd9ad5b1": "Cámara de ejemplo: agregue el suyo con Add device",
+ "@sa0bd9ad5b1": {
+  "x-mt": true
+ },
+ "sc8327738b3": "Agregue una vista de ejemplo (camera, alarma, luces, ventilación). Los dispositivos de ejemplo nunca se conectan en cualquier lugar – agregue el propio con Add device.",
+ "@sc8327738b3": {
+  "x-mt": true
+ },
+ "s570f11bec8": "Intervalo mínimo de lectura (s)",
+ "@s570f11bec8": {
+  "x-mt": true
+ },
+ "s13e54dbff1": "El mismo registro nunca se lee más a menudo, sin embargo muchas tarjetas lo muestran.",
+ "@s13e54dbff1": {
+  "x-mt": true
+ },
+ "s95d4c6dd5b": "Pausa entre solicitudes (ms)",
+ "@s95d4c6dd5b": {
+  "x-mt": true
+ },
+ "s77b6667fdb": "Espera después de conectar (ms)",
+ "@s77b6667fdb": {
+  "x-mt": true
+ },
+ "sf4b0409574": "Leídas adyacentes al lote",
+ "@sf4b0409574": {
+  "x-mt": true
+ },
+ "sc011aad1a9": "Max se registra por lectura",
+ "@sc011aad1a9": {
+  "x-mt": true
+ },
+ "s942a690567": "Pausa de cierre al principio (s)",
+ "@s942a690567": {
+  "x-mt": true
+ },
+ "s3746551251": "Cuando el dispositivo no responde, se deja solo por un tiempo. La pausa se duplica hasta el máximo.",
+ "@s3746551251": {
+  "x-mt": true
+ },
+ "sf71d800450": "Pausa de bloqueo a la mayoría (s)",
+ "@sf71d800450": {
+  "x-mt": true
+ },
+ "sbce68f8691": "Cerrar la conexión después de un error",
+ "@sbce68f8691": {
+  "x-mt": true
+ },
+ "sf96bb0c03d": "Ingrese en una respuesta vacía",
+ "@sf96bb0c03d": {
+  "x-mt": true
+ },
+ "s589eb1bcd3": "Asistente de casa (ejemplo)",
+ "@s589eb1bcd3": {
+  "x-mt": true
+ },
+ "sc4fdb87cd7": "Cámara (ejemplo)",
+ "@sc4fdb87cd7": {
+  "x-mt": true
+ },
+ "sd50566a706": "Unidad de ventilación (ejemplo)",
+ "@sd50566a706": {
   "x-mt": true
  }
 }

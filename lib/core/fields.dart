@@ -1,4 +1,5 @@
 import '../l10n/l10n.dart';
+
 enum FieldKind { text, multiline, number, boolean, choice, secret }
 
 /// Describes one editable setting of a connection / read spec / command spec.
@@ -18,6 +19,9 @@ class FieldSpec {
   /// Shown under "Lisäasetukset" (collapsed) instead of the main form.
   final bool? advanced;
 
+  /// Readable (fi, en) labels for [options]; the stored value stays the option itself.
+  final Map<String, (String, String)> optionLabels;
+
   const FieldSpec(
     this.key,
     this.fi,
@@ -30,10 +34,17 @@ class FieldSpec {
     this.helpFi,
     this.helpEn,
     this.advanced,
+    this.optionLabels = const {},
   });
 
+  String optionLabel(String o, String lang) {
+    final l = optionLabels[o];
+    return l == null ? o : tr(lang, l.$1, l.$2);
+  }
+
   String label(String lang) => tr(lang, fi, en);
-  String? ownHelp(String lang) => helpFi == null ? (lang == 'fi' ? null : helpEn) : tr(lang, helpFi!, helpEn ?? helpFi!);
+  String? ownHelp(String lang) =>
+      helpFi == null ? (lang == 'fi' ? null : helpEn) : tr(lang, helpFi!, helpEn ?? helpFi!);
 }
 
 /// Reads typed values from a settings map with defaults.

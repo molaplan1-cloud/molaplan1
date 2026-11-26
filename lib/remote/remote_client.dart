@@ -318,7 +318,13 @@ class RemoteClient {
   }
 
   /// Sends one operation to the bridge. [conn] is the connection config (with secrets).
-  Future<Object?> call(String op, {Map<String, dynamic>? conn, Map<String, dynamic>? spec, Object? value}) {
+  Future<Object?> call(
+    String op, {
+    Map<String, dynamic>? conn,
+    Map<String, dynamic>? spec,
+    Object? value,
+    Duration? timeout,
+  }) {
     if (_disposed) return Future.error(RemoteUnavailable('protocol', 'disposed'));
     final id = _nextId++;
     final c = Completer<Object?>();
@@ -328,7 +334,7 @@ class RemoteClient {
     _idleClose?.cancel();
     _idleClose = Timer(const Duration(minutes: 2), () => close());
     return c.future.timeout(
-      timeout,
+      timeout ?? this.timeout,
       onTimeout: () {
         _pending.remove(id);
         throw RemoteUnavailable('timeout');

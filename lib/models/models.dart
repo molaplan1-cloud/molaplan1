@@ -149,6 +149,7 @@ class TileConfig {
   TileType type;
   String title;
   String icon;
+
   /// t144u: size in HALF grid units (1..8 = 0,5..4), so tiles can be 0,5 / 1,5 / … wide/tall.
   int w2;
   int h2;
@@ -202,6 +203,9 @@ class TileConfig {
   /// t149u trend chart options: grid auto | none | h (horizontal lines) | full;
   /// y-axis / x-axis labels auto | on | off; dots = point markers. "auto" = shown on ≥2×2 tiles.
   String trendGrid;
+
+  /// t151u price trend window: auto (48 h when tomorrow is known, else today) | 12h | today | 48h.
+  String priceWindow;
   String trendYAxis;
   String trendXAxis;
   bool trendDots;
@@ -262,6 +266,7 @@ class TileConfig {
     this.display = 'auto',
     this.trendHours = 1,
     this.trendGrid = 'auto',
+    this.priceWindow = 'auto',
     this.trendYAxis = 'auto',
     this.trendXAxis = 'auto',
     this.trendDots = false,
@@ -312,6 +317,7 @@ class TileConfig {
     if (display != 'auto') 'display': display,
     if (trendHours != 1) 'trendHours': trendHours,
     if (trendGrid != 'auto') 'trendGrid': trendGrid,
+    if (priceWindow != 'auto') 'priceWindow': priceWindow,
     if (trendYAxis != 'auto') 'trendYAxis': trendYAxis,
     if (trendXAxis != 'auto') 'trendXAxis': trendXAxis,
     if (trendDots) 'trendDots': true,
@@ -354,6 +360,7 @@ class TileConfig {
     display: const ['value', 'gauge', 'trend', 'gauge_trend'].contains(j['display']) ? j['display'] as String : 'auto',
     trendHours: trendRanges.contains(j['trendHours']) ? (j['trendHours'] as num).toInt() : 1,
     trendGrid: const ['none', 'h', 'full'].contains(j['trendGrid']) ? j['trendGrid'] as String : 'auto',
+    priceWindow: const ['12h', 'today', '48h'].contains(j['priceWindow']) ? j['priceWindow'] as String : 'auto',
     trendYAxis: const ['on', 'off'].contains(j['trendYAxis']) ? j['trendYAxis'] as String : 'auto',
     trendXAxis: const ['on', 'off'].contains(j['trendXAxis']) ? j['trendXAxis'] as String : 'auto',
     trendDots: j['trendDots'] == true,
@@ -595,10 +602,51 @@ class AppConfig {
       remoteCameraSeconds: (j['remoteCameraSeconds'] as num?)?.toInt() ?? 2,
       updateCheckedAt: (j['updateCheckedAt'] as num?)?.toInt(),
       updateSkip: j['updateSkip'] as String?,
-      connections: ((j['connections'] as List?) ?? []).map((e) => ConnectionConfig.fromJson(_map(e))).toList(),
+      connections: ((j['connections'] as List?) ?? [])
+          .map((e) => clearPlaceholderHost(ConnectionConfig.fromJson(_map(e))))
+          .toList(),
       dashboards: ((j['dashboards'] as List?) ?? []).map((e) => Dashboard.fromJson(_map(e))).toList(),
       rules: ((j['rules'] as List?) ?? []).map((e) => PriceRule.fromJson(_map(e))).toList(),
       energy: EnergySettings.fromJson(j['energy']),
     );
   }
+}
+
+/// t156u: addresses that only ever came from our own example seed / form hints. A device that
+/// still carries one never was set up by the user, so the address is cleared and the user is
+/// asked for the real one (settings['needsHost']). Runs once per connection.
+const placeholderHosts = {'192.168.1.60', '192.168.1.70'};
+const exampleConnectionNames = {
+  'IV-kone (Modbus)',
+  'Ventilation unit (Modbus)',
+  'ESP32-kamera',
+  'ESP32 camera',
+  'Home Assistant',
+};
+
+bool isPlaceholderHost(Object? v) {
+  if (v is! String || v.isEmpty) return false;
+  final h = Uri.tryParse(v.contains('://') ? v : 'http://$v')?.host ?? v;
+  return placeholderHosts.contains(h);
+}
+
+ConnectionConfig clearPlaceholderHost(ConnectionConfig c) {
+  if (c.settings['placeholderChecked'] == true || c.settings['demo'] == true) return c;
+  final example = exampleConnectionNames.contains(c.name);
+  var cleared = false;
+  for (final k in const ['host', 'baseUrl', 'address']) {
+    final v = c.settings[k];
+    if (!isPlaceholderHost(v)) continue;
+    // Our seed put 192.168.1.60 on a Modbus device and 192.168.1.70 on the example camera; a
+    // user's own device with one of these is only touched when it is still the example one.
+    final fromSeed = example || (c.type == 'modbus' && (v as String).contains('192.168.1.60'));
+    if (!fromSeed) continue;
+    c.settings.remove(k);
+    cleared = true;
+  }
+  if (cleared) {
+    c.settings['needsHost'] = true;
+    c.settings['placeholderChecked'] = true;
+  }
+  return c;
 }

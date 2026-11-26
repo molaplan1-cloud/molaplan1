@@ -105,10 +105,45 @@ const _h = <String, FieldHelp>{
   ),
   // ---- modbus
   'modbus.conn.host': FieldHelp(
-    'IV-koneen tai Modbus-yhdyskäytävän IP-osoite. Esim. 192.168.1.60',
+    'IV-koneen tai Modbus-yhdyskäytävän IP-osoite. Esim. 192.168.x.x (Skannaa Modbus löytää sen)',
     'IP of the unit or Modbus gateway.',
   ),
   'modbus.conn.port': FieldHelp('Lähes aina 502.', 'Almost always 502.', advanced: true),
+  'modbus.conn.requestDelayMs': FieldHelp(
+    'Tauko kahden kyselyn välissä. Home Assistantin message_wait_milliseconds.',
+    'Pause between two requests. Home Assistant message_wait_milliseconds.',
+    advanced: true,
+  ),
+  'modbus.conn.connectDelayMs': FieldHelp(
+    'Odotus yhteyden avaamisen jälkeen ennen ensimmäistä kyselyä. Home Assistantin delay.',
+    'Wait after opening the connection before the first request. Home Assistant delay.',
+    advanced: true,
+  ),
+  'modbus.conn.batchReads': FieldHelp(
+    'Vierekkäiset rekisterit luetaan yhdellä kyselyllä – vähemmän liikennettä laitteelle.',
+    'Adjacent registers are read with one request – less traffic for the device.',
+    advanced: true,
+  ),
+  'modbus.conn.maxBatch': FieldHelp(
+    'Montako rekisteriä yksi kysely saa enintään lukea (AirFi: 20).',
+    'How many registers one request may read at most (AirFi: 20).',
+    advanced: true,
+  ),
+  'modbus.conn.backoffMaxS': FieldHelp(
+    'Pisin tauko, jonka sovellus pitää, kun laite ei vastaa.',
+    'The longest pause the app keeps when the device does not answer.',
+    advanced: true,
+  ),
+  'modbus.conn.closeOnError': FieldHelp(
+    'Pois päältä: yhteys pidetään auki virheen jälkeen (Home Assistantin close_comm_on_error: false). Uudelleen yhdistäminen voi laukaista laitteen estotilan.',
+    'Off: the connection stays open after an error (Home Assistant close_comm_on_error: false). Reconnecting can trigger the device lockout.',
+    advanced: true,
+  ),
+  'modbus.conn.retryOnEmpty': FieldHelp(
+    'Tyhjä vastaus kysytään kerran uudelleen (Home Assistantin retry_on_empty).',
+    'An empty reply is asked once more (Home Assistant retry_on_empty).',
+    advanced: true,
+  ),
   'modbus.conn.unitId': FieldHelp('Laitteen Modbus-osoite, usein 1.', 'Device Modbus address, often 1.'),
   'modbus.read.table': FieldHelp(
     'Katso laitteen Modbus-taulukosta: holding (4x), input (3x), coil (0x) tai discrete (1x).',

@@ -297,8 +297,8 @@ class _SettingsPageState extends State<SettingsPage> {
               Text(
                 tx(
                   context,
-                  'Lisää esimerkkinäkymä (kamera, hälytys, valot, IV-kone). Vaihda osoitteet omiksesi.',
-                  'Add an example dashboard (camera, alarm, lights, ventilation). Replace the addresses with yours.',
+                  'Lisää esimerkkinäkymä (kamera, hälytys, valot, IV-kone). Esimerkkilaitteet eivät ota yhteyttä mihinkään – lisää omat laitteesi Lisää laite -painikkeella.',
+                  'Add an example dashboard (camera, alarm, lights, ventilation). The example devices never connect anywhere – add your own with Add device.',
                 ),
                 style: text.bodySmall,
               ),

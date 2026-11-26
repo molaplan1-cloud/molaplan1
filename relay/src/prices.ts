@@ -6,7 +6,9 @@
  *
  * Response: {zone, unit:"EUR/MWh", resolution:<seconds>, source, license, updated, points:[[unixSeconds, eurPerMWh], …]}
  * Sources (no API keys): SE1-4 elprisetjustnu.se, DK1-2 Energi Data Service (CC BY 4.0), everything else
- * api.energy-charts.info (Fraunhofer ISE; license per zone is passed through). Cached at the edge.
+ * api.energy-charts.info (Fraunhofer ISE; license per zone is passed through); FI/EE/LV/LT try Elering
+ * first (t151u: energy-charts answers 429 to shared Cloudflare egress). Cached at the edge per 15 min,
+ * plus a 3-day last-good copy per zone that is served with "stale": true when every source fails.
  * No secrets live here.
  */
 
@@ -60,9 +62,29 @@ async function energiDataService(zone: string, from: Date): Promise<Out> {
   return { zone, unit: "EUR/MWh", resolution: guessRes(points), source: "energidataservice.dk", license: "CC BY 4.0, Energinet", updated: Date.now(), points };
 }
 
+/** Elering (Estonian TSO) republishes Nord Pool day-ahead for FI/EE/LV/LT; not rate-limited like
+ *  energy-charts, which answers 429 to Cloudflare's shared egress (t151u root cause). */
+const ELERING = new Set(["FI", "EE", "LV", "LT"]);
+
+async function elering(zone: string, from: Date, to: Date): Promise<Out> {
+  const u = `https://dashboard.elering.ee/api/nps/price?start=${day(from)}T00:00:00.000Z&end=${day(to)}T00:00:00.000Z`;
+  const r = await fetch(u, { headers: { "user-agent": "molaplan-relay" } });
+  if (!r.ok) throw new Error(`elering ${r.status}`);
+  const j = (await r.json()) as { data?: Record<string, { timestamp: number; price: number | null }[]> };
+  const points: [number, number][] = [];
+  for (const x of j.data?.[zone.toLowerCase()] ?? []) if (typeof x.price === "number") points.push([x.timestamp, x.price]);
+  points.sort((a, b) => a[0] - b[0]);
+  return { zone, unit: "EUR/MWh", resolution: guessRes(points), source: "elering.ee (Nord Pool)", license: "Elering AS, open data", updated: Date.now(), points };
+}
+
 function guessRes(p: [number, number][]): number {
   return p.length > 1 ? p[1][0] - p[0][0] : 3600;
 }
+
+const nonEmpty = (o: Out): Out => {
+  if (o.points.length === 0) throw new Error(`${o.source} empty`);
+  return o;
+};
 
 export async function prices(req: Request, ctx: ExecutionContext): Promise<Response> {
   const url = new URL(req.url);
@@ -86,20 +108,33 @@ export async function prices(req: Request, ctx: ExecutionContext): Promise<Respo
   const now = new Date();
   const from = new Date(now.getTime() - 86_400_000);
   const to = new Date(now.getTime() + 2 * 86_400_000);
-  let out: Out;
-  try {
-    if (zone.startsWith("SE")) out = await elprisetjustnu(zone, [from, now, new Date(now.getTime() + 86_400_000)]);
-    else if (zone.startsWith("DK")) out = await energiDataService(zone, from);
-    else out = await energyCharts(zone, from, to);
-    if (out.points.length === 0 && (zone.startsWith("SE") || zone.startsWith("DK"))) out = await energyCharts(zone, from, to);
-  } catch (e) {
+  const chain: (() => Promise<Out>)[] = [];
+  if (ELERING.has(zone)) chain.push(() => elering(zone, from, to));
+  if (zone.startsWith("SE")) chain.push(() => elprisetjustnu(zone, [from, now, new Date(now.getTime() + 86_400_000)]));
+  if (zone.startsWith("DK")) chain.push(() => energiDataService(zone, from));
+  chain.push(() => energyCharts(zone, from, to));
+  const errors: string[] = [];
+  let out: Out | undefined;
+  for (const f of chain) {
     try {
-      out = await energyCharts(zone, from, to);
-    } catch {
-      return json({ error: "source_failed", detail: String(e) }, 502);
+      out = nonEmpty(await f());
+      break;
+    } catch (e) {
+      errors.push(String(e));
     }
+  }
+  // Last good copy per zone (3 days): served marked stale when every source fails.
+  const lastKey = new Request(`https://cache.molaplan/prices/${zone}/last`);
+  if (!out) {
+    const last = await cache.match(lastKey);
+    if (last) {
+      const o = (await last.json()) as Out;
+      return json({ ...o, stale: true, detail: errors.join("; ") });
+    }
+    return json({ error: "source_failed", detail: errors.join("; ") }, 502);
   }
   const res = json(out, 200, 900);
   ctx.waitUntil(cache.put(key, res.clone()));
+  ctx.waitUntil(cache.put(lastKey, json(out, 200, 3 * 86400)));
   return res;
 }

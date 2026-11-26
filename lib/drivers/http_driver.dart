@@ -49,7 +49,7 @@ class HttpDriver extends Driver {
     en: 'HTTP / REST',
     create: HttpDriver.new,
     connectionFields: [
-      FieldSpec('baseUrl', 'Perusosoite', 'Base URL', hint: 'http://192.168.1.50', required: true),
+      FieldSpec('baseUrl', 'Perusosoite', 'Base URL', hint: 'http://192.168.x.x', required: true),
       FieldSpec(
         'auth',
         'Tunnistus',

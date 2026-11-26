@@ -37,7 +37,11 @@ final colorPresets = <ColorPreset>[
   ]),
   ColorPreset('co2', 'CO₂', 'CO₂', [Threshold(600, _green), Threshold(1000, _yellow), Threshold(1500, _red)]),
   ColorPreset('power', 'Teho', 'Power', [Threshold(0, _green), Threshold(2000, _yellow), Threshold(5000, _red)]),
+  ColorPreset('price', 'Sähkön hinta c/kWh', 'Electricity price c/kWh', defaultPriceThresholds),
 ];
+
+/// t151u: price trend colours when none are set: green < 5, amber 5–15, red ≥ 15 c/kWh.
+final defaultPriceThresholds = [Threshold(-1000, _green), Threshold(5, _yellow), Threshold(15, _red)];
 
 bool sameThresholds(List<Threshold> a, List<Threshold> b) {
   if (a.length != b.length) return false;
