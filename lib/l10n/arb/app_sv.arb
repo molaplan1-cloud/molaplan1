@@ -2741,14 +2741,6 @@
   "x-mt": true
  },
  "sff9b69c6ca": "Klar",
- "sf1ed05f7de": "Knapp på utsikt",
- "@sf1ed05f7de": {
-  "x-mt": true
- },
- "sf1541ca978": "Knapp till {p0}",
- "@sf1541ca978": {
-  "x-mt": true
- },
  "s09f745552a": "Spara nuvarande stat",
  "@s09f745552a": {
   "x-mt": true
@@ -2787,6 +2779,14 @@
  },
  "s4dbd6f62bf": "Ta bort scenen?",
  "@s4dbd6f62bf": {
+  "x-mt": true
+ },
+ "sf1ed05f7de": "Knapp på utsikt",
+ "@sf1ed05f7de": {
+  "x-mt": true
+ },
+ "sf1541ca978": "Knapp till {p0}",
+ "@sf1541ca978": {
   "x-mt": true
  },
  "se250251ff0": "Push-meddelanden",
@@ -6275,6 +6275,10 @@
  "@s8231329360": {
   "x-mt": true
  },
+ "s206ac44298": "Klistra på samma URL dina genvägsposter kommandon till (t.ex. https://ntfy.sh/oma-aihe). Ämnet ensam fungerar också.",
+ "@s206ac44298": {
+  "x-mt": true
+ },
  "s1b3bbae234": "Endast om hemenheten svarar på ett annat ämne.Empty = samma ämne ignoreras vårt eget kommando.",
  "@s1b3bbae234": {
   "x-mt": true
@@ -6329,8 +6333,56 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "s206ac44298": "Klistra på samma URL dina genvägsposter kommandon till (t.ex. https://ntfy.sh/oma-aihe). Ämnet ensam fungerar också.",
- "@s206ac44298": {
+ "s45fbc06cdf": "Mer Mer",
+ "@s45fbc06cdf": {
+  "x-mt": true
+ },
+ "s0557e03436": "Lägg till en knapp på framsidan",
+ "@s0557e03436": {
+  "x-mt": true
+ },
+ "sdae343a445": "Knapp till {p0}",
+ "@sdae343a445": {
+  "x-mt": true
+ },
+ "s4436dfd836": "Extern trigger (PIN) är på",
+ "@s4436dfd836": {
+  "x-mt": true
+ },
+ "s759ff4cada": "Extern trigger, t.ex. iPhone genvägar",
+ "@s759ff4cada": {
+  "x-mt": true
+ },
+ "sa32d82e779": "Knapp i appen",
+ "@sa32d82e779": {
+  "x-mt": true
+ },
+ "s65fc3dd69a": "Knappen kör manuset med en kran. Det fungerar hemma och även hemifrån genom hembron - inga genvägar behövs.",
+ "@s65fc3dd69a": {
+  "x-mt": true
+ },
+ "s89638a5b8e": "Knapp i utsikten {p0}",
+ "@s89638a5b8e": {
+  "x-mt": true
+ },
+ "s509056a76d": "Lägg till en annan knapp",
+ "@s509056a76d": {
+  "x-mt": true
+ },
+ "s0f8939787f": "Knappen skapas när du sparar.",
+ "@s0f8939787f": {
+  "x-mt": true
+ },
+ "s5a8c602b42": "Visa vy",
+ "@s5a8c602b42": {
+  "x-mt": true
+ },
+ "se49d14ff44": "Vilken vy får knappen?",
+ "@se49d14ff44": {
+  "x-mt": true
+ },
+ "sb0ba67e677": "Ran på {p0}",
+ "@sb0ba67e677": {
   "x-mt": true
  }
 }

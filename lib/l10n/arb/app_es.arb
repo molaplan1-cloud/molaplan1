@@ -2735,14 +2735,6 @@
   "x-mt": true
  },
  "sff9b69c6ca": "Listo",
- "sf1ed05f7de": "Button a la vista",
- "@sf1ed05f7de": {
-  "x-mt": true
- },
- "sf1541ca978": "Button añadió a {p0}",
- "@sf1541ca978": {
-  "x-mt": true
- },
  "s09f745552a": "Guardar el estado actual",
  "@s09f745552a": {
   "x-mt": true
@@ -2781,6 +2773,14 @@
  },
  "s4dbd6f62bf": "¿Supir la escena?",
  "@s4dbd6f62bf": {
+  "x-mt": true
+ },
+ "sf1ed05f7de": "Button a la vista",
+ "@sf1ed05f7de": {
+  "x-mt": true
+ },
+ "sf1541ca978": "Button añadió a {p0}",
+ "@sf1541ca978": {
   "x-mt": true
  },
  "se250251ff0": "Notificaciones de empuje",
@@ -6257,6 +6257,10 @@
  "@s8231329360": {
   "x-mt": true
  },
+ "s206ac44298": "Pruebe la misma URL que sus posts de acceso directo comandos a (por ejemplo https://ntfy.sh/oma-aihe). El nombre de tema solo también funciona.",
+ "@s206ac44298": {
+  "x-mt": true
+ },
  "s1b3bbae234": "Sólo si el dispositivo de casa responde sobre otro tema. Vacío = mismo tema, nuestro propio comando es ignorado.",
  "@s1b3bbae234": {
   "x-mt": true
@@ -6311,8 +6315,56 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "s206ac44298": "Pruebe la misma URL que sus posts de acceso directo comandos a (por ejemplo https://ntfy.sh/oma-aihe). El nombre de tema solo también funciona.",
- "@s206ac44298": {
+ "s45fbc06cdf": "Más",
+ "@s45fbc06cdf": {
+  "x-mt": true
+ },
+ "s0557e03436": "Añadir un botón a la página principal",
+ "@s0557e03436": {
+  "x-mt": true
+ },
+ "sdae343a445": "Button añadió a {p0}",
+ "@sdae343a445": {
+  "x-mt": true
+ },
+ "s4436dfd836": "El gatillo externo (PIN) está encendido",
+ "@s4436dfd836": {
+  "x-mt": true
+ },
+ "s759ff4cada": "Detonante externo, por ejemplo, atajos de iPhone",
+ "@s759ff4cada": {
+  "x-mt": true
+ },
+ "sa32d82e779": "Botón en la aplicación",
+ "@sa32d82e779": {
+  "x-mt": true
+ },
+ "s65fc3dd69a": "El botón ejecuta el script con un toque. Funciona en casa y también lejos de casa a través del puente de inicio – no se necesitan atajos.",
+ "@s65fc3dd69a": {
+  "x-mt": true
+ },
+ "s89638a5b8e": "Botón en la vista {p0}",
+ "@s89638a5b8e": {
+  "x-mt": true
+ },
+ "s509056a76d": "Añadir otro botón",
+ "@s509056a76d": {
+  "x-mt": true
+ },
+ "s0f8939787f": "El botón se crea cuando se guarda.",
+ "@s0f8939787f": {
+  "x-mt": true
+ },
+ "s5a8c602b42": "Vista",
+ "@s5a8c602b42": {
+  "x-mt": true
+ },
+ "se49d14ff44": "¿Qué vista tiene el botón?",
+ "@se49d14ff44": {
+  "x-mt": true
+ },
+ "sb0ba67e677": "Ran en {p0}",
+ "@sb0ba67e677": {
   "x-mt": true
  }
 }

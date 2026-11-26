@@ -276,6 +276,7 @@ class _TileWidgetState extends State<TileWidget> {
   @override
   void dispose() {
     _replyTimer?.cancel();
+    _resultTimer?.cancel();
     _dialTimer?.cancel();
     rt?.dispose();
     NetHealth.instance.removeListener(_changed);
@@ -344,6 +345,8 @@ class _TileWidgetState extends State<TileWidget> {
   Map<String, dynamic>? _reply;
   bool _waiting = false;
   Timer? _replyTimer;
+  (bool, String)? _result;
+  Timer? _resultTimer;
 
   bool get _asksPin => t.commands.any((c) => c.spec['askPin'] == true || c.spec['askPin'] == 'true');
 
@@ -439,9 +442,32 @@ class _TileWidgetState extends State<TileWidget> {
       _waiting = waits;
     });
     Object? res;
-    await _run(() async => res = await st.runSequence(t.commands, value: pin), okMsg: waits ? null : '${t.title} ✓');
+    Object? failure;
+    _resultTimer?.cancel();
+    setState(() => _result = null);
+    if (widget.editing) return;
+    try {
+      await rt!.act(() async => res = await st.runSequence(t.commands, value: pin));
+      if (!waits && mounted) showSnack(context, '${t.title} ✓');
+    } catch (e) {
+      failure = e;
+      if (mounted) showSnack(context, '${t.title}: ${friendlyText(context, e)}', error: true);
+    }
     if (!mounted) return;
-    setState(() => _waiting = false);
+    // t193u: the result stays on the tile (✓ with the time, or the error) – a snackbar alone was
+    // easy to miss, and the switched device's tile used to update only on its next poll.
+    final now = DateTime.now();
+    final hm = '${now.hour}.${now.minute.toString().padLeft(2, '0')}';
+    setState(() {
+      _waiting = false;
+      _result = failure == null
+          ? (true, tx(context, 'Ajettu klo $hm', 'Ran at $hm'))
+          : (false, friendlyText(context, failure));
+    });
+    _resultTimer = Timer(const Duration(seconds: 90), () {
+      if (mounted) setState(() => _result = null);
+    });
+    if (failure != null) return;
     final r = res;
     if (r is Map && r['ntfy'] == true) {
       if (r['sentOnly'] == true) {
@@ -460,6 +486,30 @@ class _TileWidgetState extends State<TileWidget> {
         unawaited(LocalNotify.show(title, '${r['message'] ?? ''}'));
       }
     }
+  }
+
+  Widget _resultView(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    final (ok, text) = _result!;
+    return Align(
+      alignment: Alignment.bottomLeft,
+      child: Row(
+        key: ValueKey(ok ? 'tile-run-ok' : 'tile-run-error'),
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(ok ? Icons.check_circle_outline : Icons.error_outline, size: 16, color: ok ? cs.primary : cs.error),
+          const SizedBox(width: 4),
+          Flexible(
+            child: Text(
+              text,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: ok ? cs.onSurfaceVariant : cs.error),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _replyView(BuildContext context) {
@@ -913,6 +963,8 @@ class _TileWidgetState extends State<TileWidget> {
               ),
               if (t.type == TileType.button && (_waiting || _reply != null))
                 Expanded(child: _replyView(context))
+              else if (t.type == TileType.button && _result != null)
+                Expanded(child: _resultView(context))
               else if (light && !errLine)
                 Expanded(
                   child: LightBulb(

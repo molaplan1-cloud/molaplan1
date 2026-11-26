@@ -1159,7 +1159,12 @@ class _StepEditor extends StatelessWidget {
             'step-tile-$k',
             tx(context, 'Laite', 'Device'),
             step.tileId,
-            _tileItems(context, st, where: (t) => t.type != TileType.camera && t.type != TileType.value),
+            _tileItems(
+              context,
+              st,
+              // t193u: a script's own run button is not a device ("Aja skripti" runs scripts).
+              where: (t) => t.type != TileType.camera && t.type != TileType.value && t.read['kind'] != 'script',
+            ),
             (v) => set('tileId', v),
           ),
           _drop('step-op-$k', tx(context, 'Toiminto', 'Action'), step.op, [

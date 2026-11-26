@@ -2,6 +2,7 @@
 //   dart run tool/gen_bridge_vectors.dart > firmware/molaplan-bridge/test/test_core/vectors.h
 // Uses the app's own e2e.dart so the firmware is tested against exactly what the phone does.
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:cryptography/cryptography.dart';
 import 'package:molaplan/remote/e2e.dart';
@@ -48,5 +49,5 @@ Future<void> main() async {
     ..writeln('#define V_FRAME_RANDOM "$random"')
     ..writeln('#define V_PAIR_MAC "$mac"')
     ..writeln('#define V_SHA_PAIR "${await sha256Hex('molaplan-pair|483921')}"');
-  print(out.toString().trimRight());
+  stdout.writeln(out.toString().trimRight());
 }

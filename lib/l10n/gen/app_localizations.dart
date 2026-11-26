@@ -5328,6 +5328,18 @@ abstract class AppLocalizations {
   /// **'Run'**
   String get se9ee46a9c8;
 
+  /// fi: Lisää
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get s45fbc06cdf;
+
+  /// fi: Lisää painike etusivulle
+  ///
+  /// In en, this message translates to:
+  /// **'Add a button to the front page'**
+  String get s0557e03436;
+
   /// fi: Edistynyt
   ///
   /// In en, this message translates to:
@@ -5345,6 +5357,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'remote'**
   String get s061d1b874b;
+
+  /// fi: Painike lisätty näkymään {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Button added to {p0}'**
+  String sdae343a445(String p0);
 
   /// fi: Muokkaa skriptiä
   ///
@@ -5387,6 +5405,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Functions: get set on off toggle wait notify scene price cheapest temp time hour weekday log. No file or network access; 10 min time limit.'**
   String get sea09cb0d3b;
+
+  /// fi: Ulkoinen käynnistys (PIN) on päällä
+  ///
+  /// In en, this message translates to:
+  /// **'External trigger (PIN) is on'**
+  String get s4436dfd836;
+
+  /// fi: Ulkoinen käynnistys, esim. iPhonen Pikakomennot
+  ///
+  /// In en, this message translates to:
+  /// **'External trigger, e.g. iPhone Shortcuts'**
+  String get s759ff4cada;
 
   /// fi: Ulkoinen käynnistys (valinnainen)
   ///
@@ -5437,17 +5467,47 @@ abstract class AppLocalizations {
   /// **'Done'**
   String get sff9b69c6ca;
 
-  /// fi: Nappi näkymään
+  /// fi: Painike sovelluksessa
   ///
   /// In en, this message translates to:
-  /// **'Button on dashboard'**
-  String get sf1ed05f7de;
+  /// **'Button in the app'**
+  String get sa32d82e779;
 
-  /// fi: Nappi lisätty näkymään {p0}
+  /// fi: Painikkeella ajat skriptin yhdellä napautuksella. Se toimii kotona ja myös kodin ulkopuolelta kotisillan kautta – Pikako
   ///
   /// In en, this message translates to:
-  /// **'Button added to {p0}'**
-  String sf1541ca978(String p0);
+  /// **'The button runs the script with one tap. It works at home and also away from home through the home bridge – no Shortcuts needed.'**
+  String get s65fc3dd69a;
+
+  /// fi: Painike näkymässä {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Button in the view {p0}'**
+  String s89638a5b8e(String p0);
+
+  /// fi: Lisää uusi painike
+  ///
+  /// In en, this message translates to:
+  /// **'Add another button'**
+  String get s509056a76d;
+
+  /// fi: Painike luodaan, kun tallennat.
+  ///
+  /// In en, this message translates to:
+  /// **'The button is created when you save.'**
+  String get s0f8939787f;
+
+  /// fi: Näkymä
+  ///
+  /// In en, this message translates to:
+  /// **'View'**
+  String get s5a8c602b42;
+
+  /// fi: Mihin näkymään painike lisätään?
+  ///
+  /// In en, this message translates to:
+  /// **'Which view gets the button?'**
+  String get se49d14ff44;
 
   /// fi: Tallenna nykytila
   ///
@@ -5508,6 +5568,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Delete the scene?'**
   String get s4dbd6f62bf;
+
+  /// fi: Nappi näkymään
+  ///
+  /// In en, this message translates to:
+  /// **'Button on dashboard'**
+  String get sf1ed05f7de;
+
+  /// fi: Nappi lisätty näkymään {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Button added to {p0}'**
+  String sf1541ca978(String p0);
 
   /// fi: Push-ilmoitukset
   ///
@@ -8550,6 +8622,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No commands configured'**
   String get s856418521a;
+
+  /// fi: Ajettu klo {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Ran at {p0}'**
+  String sb0ba67e677(String p0);
 
   /// fi: {p0}: lähetetty
   ///

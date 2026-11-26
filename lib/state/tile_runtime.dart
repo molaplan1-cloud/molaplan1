@@ -29,7 +29,31 @@ class TileRuntime extends ChangeNotifier {
       tile.read['kind'] != 'climate' &&
       tile.read['kind'] != 'weather';
 
+  /// t193u: live runtimes by tile id, so a script / scene / control button can refresh the
+  /// tiles it switched right away (Shelly Cloud / polled tiles otherwise lag up to a poll).
+  static final live = <String, Set<TileRuntime>>{};
+
+  /// Refreshes the shown state of [tileIds] (all polled tiles when null) now and a few times
+  /// shortly after – cloud devices report a new state with a delay.
+  static void refreshSoon(
+    Iterable<String>? tileIds, {
+    List<Duration> after = const [Duration(milliseconds: 700), Duration(seconds: 3), Duration(seconds: 8)],
+  }) {
+    final ids = tileIds?.toSet();
+    for (final d in after) {
+      Timer(d, () {
+        for (final e in live.entries.toList()) {
+          if (ids != null && !ids.contains(e.key)) continue;
+          for (final rt in e.value.toList()) {
+            if (!rt._disposed && rt.readsState && !rt.busy) unawaited(rt.refresh());
+          }
+        }
+      });
+    }
+  }
+
   void start() {
+    live.putIfAbsent(tile.id, () => <TileRuntime>{}).add(this);
     if (!readsState) return;
     final d = driverLookup(tile.connectionId);
     if (d == null) {
@@ -158,6 +182,8 @@ class TileRuntime extends ChangeNotifier {
   @override
   void dispose() {
     _disposed = true;
+    live[tile.id]?.remove(this);
+    if (live[tile.id]?.isEmpty ?? false) live.remove(tile.id);
     _timer?.cancel();
     _sub?.cancel();
     super.dispose();

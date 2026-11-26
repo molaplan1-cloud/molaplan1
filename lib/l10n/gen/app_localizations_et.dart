@@ -2904,6 +2904,12 @@ class AppLocalizationsEt extends AppLocalizations {
   String get se9ee46a9c8 => 'Jookse';
 
   @override
+  String get s45fbc06cdf => 'Veel rohkem';
+
+  @override
+  String get s0557e03436 => 'Nupu lisamine esilehele';
+
+  @override
   String get sfd2d047cb2 => 'Täpsem';
 
   @override
@@ -2913,6 +2919,11 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s061d1b874b => 'kaugjuhtimispult';
+
+  @override
+  String sdae343a445(String p0) {
+    return 'Nupp lisatud $p0';
+  }
 
   @override
   String get sb886978015 => 'Skripti redigeerimine';
@@ -2935,6 +2946,12 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sea09cb0d3b =>
       'Funktsioonid: lülita välja lülitamine ootamine teatamine stseeni hind odavaim temp aeg tunnis tööpäeva logi. Faili või võrgu kasutamine puudub; 10 min ajapiirang.';
+
+  @override
+  String get s4436dfd836 => 'Väline käivitaja (PIN) on sisse lülitatud';
+
+  @override
+  String get s759ff4cada => 'Väline päästik, nt iPhone\'i kiirklahvid';
 
   @override
   String get s420f3ec828 => 'Väline käivitamine (valikuline)';
@@ -2965,12 +2982,28 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sff9b69c6ca => 'Valmis';
 
   @override
-  String get sf1ed05f7de => 'Nupp vaateväljas';
+  String get sa32d82e779 => 'Nupp rakenduses';
 
   @override
-  String sf1541ca978(String p0) {
-    return 'Nupp lisatud $p0';
+  String get s65fc3dd69a =>
+      'Nupp käivitab skripti ühe nupuvajutusega. See töötab nii kodus kui ka kodust eemal läbi kodusilla – kiirklahve pole vaja.';
+
+  @override
+  String s89638a5b8e(String p0) {
+    return 'Nupp vaates $p0';
   }
+
+  @override
+  String get s509056a76d => 'Lisa veel üks nupp';
+
+  @override
+  String get s0f8939787f => 'Nupp luuakse salvestamisel.';
+
+  @override
+  String get s5a8c602b42 => 'Vaade';
+
+  @override
+  String get se49d14ff44 => 'Milline vaade saab nupu?';
 
   @override
   String get s09f745552a => 'Salvesta aktiivne olek';
@@ -3004,6 +3037,14 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s4dbd6f62bf => 'Kustuta stseen?';
+
+  @override
+  String get sf1ed05f7de => 'Nupp vaateväljas';
+
+  @override
+  String sf1541ca978(String p0) {
+    return 'Nupp lisatud $p0';
+  }
 
   @override
   String get se250251ff0 => 'Vajuta teateid';
@@ -4680,6 +4721,11 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s856418521a => 'Käske pole seadistatud';
+
+  @override
+  String sb0ba67e677(String p0) {
+    return 'Jooksus $p0';
+  }
 
   @override
   String sdfa66ee201(String p0) {

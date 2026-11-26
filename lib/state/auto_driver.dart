@@ -11,6 +11,7 @@ import '../core/template.dart';
 import '../drivers/driver.dart';
 import '../models/models.dart';
 import 'app_state.dart';
+import 'tile_runtime.dart';
 
 const autoConnId = '_auto';
 
@@ -89,6 +90,7 @@ class AutoDriver extends Driver {
       case 'tile':
         // t173u: a button that controls another tile (Päälle / Pois / Vaihda).
         final t = _tile('${spec['tileId']}');
+        if (t != null) TileRuntime.refreshSoon([t.id]);
         if (t == null) throw DriverException(dtx('Ohjattavaa laitetta ei löydy', 'The device to control is missing'));
         var op = '${spec['op'] ?? 'toggle'}';
         if (op == 'toggle') {

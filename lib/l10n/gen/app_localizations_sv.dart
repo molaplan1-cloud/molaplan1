@@ -2908,6 +2908,12 @@ class AppLocalizationsSv extends AppLocalizations {
   String get se9ee46a9c8 => 'Kör';
 
   @override
+  String get s45fbc06cdf => 'Mer Mer';
+
+  @override
+  String get s0557e03436 => 'Lägg till en knapp på framsidan';
+
+  @override
   String get sfd2d047cb2 => 'Avancerat';
 
   @override
@@ -2918,6 +2924,11 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s061d1b874b =>
       'fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärrfjärr fjärrfjärr fjärrfjärr fjärr fjärrfjärr fjärrfjärr fjärrfjärrfjärrfjärr fjärr fjärr fjärr fjärrfjärrfjärrfjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr f';
+
+  @override
+  String sdae343a445(String p0) {
+    return 'Knapp till $p0';
+  }
 
   @override
   String get sb886978015 => 'Redigera script';
@@ -2940,6 +2951,12 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sea09cb0d3b =>
       'Funktioner: få igång toggle vänta meddela scenpriset billigast temp tid timme vardagslogg. Ingen fil eller nätverksåtkomst; 10 min tidsgräns.';
+
+  @override
+  String get s4436dfd836 => 'Extern trigger (PIN) är på';
+
+  @override
+  String get s759ff4cada => 'Extern trigger, t.ex. iPhone genvägar';
 
   @override
   String get s420f3ec828 => 'Extern start (valfritt)';
@@ -2970,12 +2987,28 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sff9b69c6ca => 'Klar';
 
   @override
-  String get sf1ed05f7de => 'Knapp på utsikt';
+  String get sa32d82e779 => 'Knapp i appen';
 
   @override
-  String sf1541ca978(String p0) {
-    return 'Knapp till $p0';
+  String get s65fc3dd69a =>
+      'Knappen kör manuset med en kran. Det fungerar hemma och även hemifrån genom hembron - inga genvägar behövs.';
+
+  @override
+  String s89638a5b8e(String p0) {
+    return 'Knapp i utsikten $p0';
   }
+
+  @override
+  String get s509056a76d => 'Lägg till en annan knapp';
+
+  @override
+  String get s0f8939787f => 'Knappen skapas när du sparar.';
+
+  @override
+  String get s5a8c602b42 => 'Visa vy';
+
+  @override
+  String get se49d14ff44 => 'Vilken vy får knappen?';
 
   @override
   String get s09f745552a => 'Spara nuvarande stat';
@@ -3009,6 +3042,14 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s4dbd6f62bf => 'Ta bort scenen?';
+
+  @override
+  String get sf1ed05f7de => 'Knapp på utsikt';
+
+  @override
+  String sf1541ca978(String p0) {
+    return 'Knapp till $p0';
+  }
 
   @override
   String get se250251ff0 => 'Push-meddelanden';
@@ -4689,6 +4730,11 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s856418521a => 'Inga kommandon konfigurerade';
+
+  @override
+  String sb0ba67e677(String p0) {
+    return 'Ran på $p0';
+  }
 
   @override
   String sdfa66ee201(String p0) {

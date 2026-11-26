@@ -4551,157 +4551,167 @@
  "sbc8e165fbf": "Action",
  "@sbc8e165fbf": {
   "description": "fi: Toiminto",
-  "x-where": "ui/automation_pages.dart:1165"
+  "x-where": "ui/automation_pages.dart:1170"
  },
  "s4cd3d92d4c": "On",
  "@s4cd3d92d4c": {
   "description": "fi: Päälle",
-  "x-where": "ui/automation_pages.dart:1166"
+  "x-where": "ui/automation_pages.dart:1171"
  },
  "s750f16460c": "Toggle",
  "@s750f16460c": {
   "description": "fi: Vaihda",
-  "x-where": "ui/automation_pages.dart:1168"
+  "x-where": "ui/automation_pages.dart:1173"
  },
  "s7a544fe304": "Set value",
  "@s7a544fe304": {
   "description": "fi: Aseta arvo",
-  "x-where": "ui/automation_pages.dart:1169"
+  "x-where": "ui/automation_pages.dart:1174"
  },
  "s929344a68b": "Press",
  "@s929344a68b": {
   "description": "fi: Paina",
-  "x-where": "ui/automation_pages.dart:1170"
+  "x-where": "ui/automation_pages.dart:1175"
  },
  "s02cfe06e04": "Scene",
  "@s02cfe06e04": {
   "description": "fi: Tilannekuva",
-  "x-where": "ui/automation_pages.dart:1187"
+  "x-where": "ui/automation_pages.dart:1192"
  },
  "sdb235c3ced": "(no scenes)",
  "@sdb235c3ced": {
   "description": "fi: (ei tilannekuvia)",
-  "x-where": "ui/automation_pages.dart:1190"
+  "x-where": "ui/automation_pages.dart:1195"
  },
  "sdced476aeb": "Script",
  "@sdced476aeb": {
   "description": "fi: Skripti",
-  "x-where": "ui/automation_pages.dart:1201"
+  "x-where": "ui/automation_pages.dart:1206"
  },
  "s4f330bfcfb": "(no scripts)",
  "@s4f330bfcfb": {
   "description": "fi: (ei skriptejä)",
-  "x-where": "ui/automation_pages.dart:1204"
+  "x-where": "ui/automation_pages.dart:1209"
  },
  "s8a8673aafe": "Title",
  "@s8a8673aafe": {
   "description": "fi: Otsikko",
-  "x-where": "ui/automation_pages.dart:1212"
+  "x-where": "ui/automation_pages.dart:1217"
  },
  "s34900f9d58": "Text",
  "@s34900f9d58": {
   "description": "fi: Teksti",
-  "x-where": "ui/automation_pages.dart:1215"
+  "x-where": "ui/automation_pages.dart:1220"
  },
  "s3c2ee8fe0d": "'{summary} = weather, price and home state'",
  "@s3c2ee8fe0d": {
   "description": "fi: {summary} = sää, sähkö ja kodin tila",
-  "x-where": "ui/automation_pages.dart:1218"
+  "x-where": "ui/automation_pages.dart:1223"
  },
  "sd84d87d156": "Priority",
  "@sd84d87d156": {
   "description": "fi: Tärkeys",
-  "x-where": "ui/automation_pages.dart:1220"
+  "x-where": "ui/automation_pages.dart:1225"
  },
  "sb55a08c07c": "1 – silent",
  "@sb55a08c07c": {
   "description": "fi: 1 – hiljainen",
-  "x-where": "ui/automation_pages.dart:1221"
+  "x-where": "ui/automation_pages.dart:1226"
  },
  "s423418208e": "2 – low",
  "@s423418208e": {
   "description": "fi: 2 – matala",
-  "x-where": "ui/automation_pages.dart:1222"
+  "x-where": "ui/automation_pages.dart:1227"
  },
  "sbad27a6b89": "3 – normal",
  "@sbad27a6b89": {
   "description": "fi: 3 – normaali",
-  "x-where": "ui/automation_pages.dart:1223"
+  "x-where": "ui/automation_pages.dart:1228"
  },
  "s8c17000b91": "4 – high",
  "@s8c17000b91": {
   "description": "fi: 4 – korkea",
-  "x-where": "ui/automation_pages.dart:1224"
+  "x-where": "ui/automation_pages.dart:1229"
  },
  "sa0738def3a": "5 – urgent (also in quiet hours)",
  "@sa0738def3a": {
   "description": "fi: 5 – kiireellinen (myös hiljaisena aikana)",
-  "x-where": "ui/automation_pages.dart:1225"
+  "x-where": "ui/automation_pages.dart:1230"
  },
  "sb33001c92e": "Tap opens",
  "@sb33001c92e": {
   "description": "fi: Napautus avaa",
-  "x-where": "ui/automation_pages.dart:1227"
+  "x-where": "ui/automation_pages.dart:1232"
  },
  "s07d7410408": "the app",
  "@s07d7410408": {
   "description": "fi: sovelluksen",
-  "x-where": "ui/automation_pages.dart:1228"
+  "x-where": "ui/automation_pages.dart:1233"
  },
  "sfb10dd528e": "Seconds",
  "@sfb10dd528e": {
   "description": "fi: Sekuntia",
-  "x-where": "ui/automation_pages.dart:1237"
+  "x-where": "ui/automation_pages.dart:1242"
  },
  "sd7ab969914": "At most seconds",
  "@sd7ab969914": {
   "description": "fi: Enintään sekuntia",
-  "x-where": "ui/automation_pages.dart:1249"
+  "x-where": "ui/automation_pages.dart:1254"
  },
  "sccfe5a0d41": "Then",
  "@sccfe5a0d41": {
   "description": "fi: Niin",
-  "x-where": "ui/automation_pages.dart:1267"
+  "x-where": "ui/automation_pages.dart:1272"
  },
  "s2d983e951b": "Else",
  "@s2d983e951b": {
   "description": "fi: Muuten",
-  "x-where": "ui/automation_pages.dart:1269"
+  "x-where": "ui/automation_pages.dart:1274"
  },
  "sf936d0b01d": "Up",
  "@sf936d0b01d": {
   "description": "fi: Ylös",
-  "x-where": "ui/automation_pages.dart:1291"
+  "x-where": "ui/automation_pages.dart:1296"
  },
  "s2c7a2bbac1": "New script",
  "@s2c7a2bbac1": {
   "description": "fi: Uusi skripti",
-  "x-where": "ui/automation_pages.dart:1326"
+  "x-where": "ui/automation_pages.dart:1331"
  },
  "s5b2dd17cbc": "A script is a list of steps: control a device, wait, notify, if/else… Run it from a button, an automation or remotely (iPhone Shortcut).",
  "@s5b2dd17cbc": {
   "description": "fi: Skripti on lista vaiheita: ohjaa laitetta, odota, lähetä ilmoitus, jos/muuten… Aja se napista, automaatiosta tai etänä (",
-  "x-where": "ui/automation_pages.dart:1334"
+  "x-where": "ui/automation_pages.dart:1339"
  },
  "s6fe2320f3d": "Stop",
  "@s6fe2320f3d": {
   "description": "fi: Pysäytä",
-  "x-where": "ui/automation_pages.dart:1351"
+  "x-where": "ui/automation_pages.dart:1359"
  },
  "se9ee46a9c8": "Run",
  "@se9ee46a9c8": {
   "description": "fi: Aja",
-  "x-where": "ui/automation_pages.dart:1357"
+  "x-where": "ui/automation_pages.dart:1365"
+ },
+ "s45fbc06cdf": "More",
+ "@s45fbc06cdf": {
+  "description": "fi: Lisää",
+  "x-where": "ui/automation_pages.dart:1377"
+ },
+ "s0557e03436": "Add a button to the front page",
+ "@s0557e03436": {
+  "description": "fi: Lisää painike etusivulle",
+  "x-where": "ui/automation_pages.dart:1388"
  },
  "sfd2d047cb2": "Advanced",
  "@sfd2d047cb2": {
   "description": "fi: Edistynyt",
-  "x-where": "ui/automation_pages.dart:1375"
+  "x-where": "ui/automation_pages.dart:1403"
  },
  "s766b50721b": "{p0} steps",
  "@s766b50721b": {
   "description": "fi: {p0} vaihetta",
-  "x-where": "ui/automation_pages.dart:1375",
+  "x-where": "ui/automation_pages.dart:1403",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -4711,72 +4721,92 @@
  "s061d1b874b": "remote",
  "@s061d1b874b": {
   "description": "fi: etäajo",
-  "x-where": "ui/automation_pages.dart:1376"
+  "x-where": "ui/automation_pages.dart:1404"
+ },
+ "sdae343a445": "Button added to {p0}",
+ "@sdae343a445": {
+  "description": "fi: Painike lisätty näkymään {p0}",
+  "x-where": "ui/automation_pages.dart:1432",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
  },
  "sb886978015": "Edit script",
  "@sb886978015": {
   "description": "fi: Muokkaa skriptiä",
-  "x-where": "ui/automation_pages.dart:1413"
+  "x-where": "ui/automation_pages.dart:1458"
  },
  "scc2c1e2508": "Run log",
  "@scc2c1e2508": {
   "description": "fi: Ajoloki",
-  "x-where": "ui/automation_pages.dart:1419"
+  "x-where": "ui/automation_pages.dart:1464"
  },
  "sacf2fbc495": "Delete the script?",
  "@sacf2fbc495": {
   "description": "fi: Poistetaanko skripti?",
-  "x-where": "ui/automation_pages.dart:1431"
+  "x-where": "ui/automation_pages.dart:1476"
  },
  "s01de653429": "Steps",
  "@s01de653429": {
   "description": "fi: Vaiheet",
-  "x-where": "ui/automation_pages.dart:1458"
+  "x-where": "ui/automation_pages.dart:1503"
  },
  "s01d3c353e2": "Code",
  "@s01d3c353e2": {
   "description": "fi: Koodi",
-  "x-where": "ui/automation_pages.dart:1460"
+  "x-where": "ui/automation_pages.dart:1505"
  },
  "s637ae4dbf4": "Molaplan script",
  "@s637ae4dbf4": {
   "description": "fi: Molaplan-skripti",
-  "x-where": "ui/automation_pages.dart:1479"
+  "x-where": "ui/automation_pages.dart:1524"
  },
  "sea09cb0d3b": "Functions: get set on off toggle wait notify scene price cheapest temp time hour weekday log. No file or network access; 10 min time limit.",
  "@sea09cb0d3b": {
   "description": "fi: Funktiot: get set on off toggle wait notify scene price cheapest temp time hour weekday log. Ei tiedosto- eikä verkkoyht",
-  "x-where": "ui/automation_pages.dart:1480"
+  "x-where": "ui/automation_pages.dart:1525"
+ },
+ "s4436dfd836": "External trigger (PIN) is on",
+ "@s4436dfd836": {
+  "description": "fi: Ulkoinen käynnistys (PIN) on päällä",
+  "x-where": "ui/automation_pages.dart:1566"
+ },
+ "s759ff4cada": "External trigger, e.g. iPhone Shortcuts",
+ "@s759ff4cada": {
+  "description": "fi: Ulkoinen käynnistys, esim. iPhonen Pikakomennot",
+  "x-where": "ui/automation_pages.dart:1567"
  },
  "s420f3ec828": "External trigger (optional)",
  "@s420f3ec828": {
   "description": "fi: Ulkoinen käynnistys (valinnainen)",
-  "x-where": "ui/automation_pages.dart:1504"
+  "x-where": "ui/automation_pages.dart:1575"
  },
  "sb3cef805ee": "The script''s button works without this: it runs the script in the app, and through remote access automatically when you are away. You only need this to start the script from outside Molaplan, e.g. iPhone Shortcuts.",
  "@sb3cef805ee": {
   "description": "fi: Skriptin nappi toimii ilman tätä: se ajaa skriptin sovelluksessa, ja kodin ulkopuolelta automaattisesti etäkäytön kautta",
-  "x-where": "ui/automation_pages.dart:1510"
+  "x-where": "ui/automation_pages.dart:1583"
  },
  "sb6e92eacba": "Allow starting from outside (PIN)",
  "@sb6e92eacba": {
   "description": "fi: Salli käynnistys ulkopuolelta (PIN)",
-  "x-where": "ui/automation_pages.dart:1521"
+  "x-where": "ui/automation_pages.dart:1594"
  },
  "sa1692aa719": "A message to the ntfy address or an iPhone Shortcut starts the script with the PIN.",
  "@sa1692aa719": {
   "description": "fi: Viesti ntfy-osoitteeseen tai iPhonen Pikakomento käynnistää skriptin PIN-koodilla.",
-  "x-where": "ui/automation_pages.dart:1523"
+  "x-where": "ui/automation_pages.dart:1596"
  },
  "s0a5410ea4f": "Remote PIN (at least 4 characters)",
  "@s0a5410ea4f": {
   "description": "fi: Etäajon PIN (vähintään 4 merkkiä)",
-  "x-where": "ui/automation_pages.dart:1534"
+  "x-where": "ui/automation_pages.dart:1607"
  },
  "sceba001122": "Send \"run {p0} <PIN>\" to {p1}\niPhone Shortcuts: \"Get Contents of URL\" → {p1}, method POST, body: run {p0} <PIN>",
  "@sceba001122": {
   "description": "fi: Lähetä viesti \"run {p0} <PIN>\" osoitteeseen {p1}\niPhonen Pikakomennot: \"Hae URL:n sisältö\" → {p2}, menetelmä POST, runko",
-  "x-where": "ui/automation_pages.dart:1546",
+  "x-where": "ui/automation_pages.dart:1619",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -4795,47 +4825,72 @@
  "seff0aac16e": "Copy URL",
  "@seff0aac16e": {
   "description": "fi: Kopioi URL",
-  "x-where": "ui/automation_pages.dart:1559"
+  "x-where": "ui/automation_pages.dart:1632"
  },
  "sff9b69c6ca": "Done",
  "@sff9b69c6ca": {
   "description": "fi: Ajettu",
-  "x-where": "ui/automation_pages.dart:1585"
+  "x-where": "ui/automation_pages.dart:1662"
  },
- "sf1ed05f7de": "Button on dashboard",
- "@sf1ed05f7de": {
-  "description": "fi: Nappi näkymään",
-  "x-where": "ui/automation_pages.dart:1594"
+ "sa32d82e779": "Button in the app",
+ "@sa32d82e779": {
+  "description": "fi: Painike sovelluksessa",
+  "x-where": "ui/automation_pages.dart:1718"
  },
- "sf1541ca978": "Button added to {p0}",
- "@sf1541ca978": {
-  "description": "fi: Nappi lisätty näkymään {p0}",
-  "x-where": "ui/automation_pages.dart:1607",
+ "s65fc3dd69a": "The button runs the script with one tap. It works at home and also away from home through the home bridge – no Shortcuts needed.",
+ "@s65fc3dd69a": {
+  "description": "fi: Painikkeella ajat skriptin yhdellä napautuksella. Se toimii kotona ja myös kodin ulkopuolelta kotisillan kautta – Pikako",
+  "x-where": "ui/automation_pages.dart:1724"
+ },
+ "s89638a5b8e": "Button in the view {p0}",
+ "@s89638a5b8e": {
+  "description": "fi: Painike näkymässä {p0}",
+  "x-where": "ui/automation_pages.dart:1741",
   "placeholders": {
    "p0": {
     "type": "String"
    }
   }
  },
+ "s509056a76d": "Add another button",
+ "@s509056a76d": {
+  "description": "fi: Lisää uusi painike",
+  "x-where": "ui/automation_pages.dart:1750"
+ },
+ "s0f8939787f": "The button is created when you save.",
+ "@s0f8939787f": {
+  "description": "fi: Painike luodaan, kun tallennat.",
+  "x-where": "ui/automation_pages.dart:1752"
+ },
+ "s5a8c602b42": "View",
+ "@s5a8c602b42": {
+  "description": "fi: Näkymä",
+  "x-where": "ui/automation_pages.dart:1760"
+ },
+ "se49d14ff44": "Which view gets the button?",
+ "@se49d14ff44": {
+  "description": "fi: Mihin näkymään painike lisätään?",
+  "x-where": "ui/automation_pages.dart:1780"
+ },
  "s09f745552a": "Save current state",
  "@s09f745552a": {
   "description": "fi: Tallenna nykytila",
-  "x-where": "ui/automation_pages.dart:1654"
+  "x-where": "ui/automation_pages.dart:1821"
  },
  "s44367fdec5": "Empty",
  "@s44367fdec5": {
   "description": "fi: Tyhjä",
-  "x-where": "ui/automation_pages.dart:1660"
+  "x-where": "ui/automation_pages.dart:1827"
  },
  "sc41824585d": "A scene sets many devices at once, e.g. \"Movie night\" or \"All off\".",
  "@sc41824585d": {
   "description": "fi: Tilannekuva asettaa monta laitetta kerralla, esim. \"Elokuvailta\" tai \"Kaikki pois\".",
-  "x-where": "ui/automation_pages.dart:1669"
+  "x-where": "ui/automation_pages.dart:1836"
  },
  "s7e7b0848fb": "{p0} actions",
  "@s7e7b0848fb": {
   "description": "fi: {p0} toimintoa",
-  "x-where": "ui/automation_pages.dart:1681",
+  "x-where": "ui/automation_pages.dart:1848",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -4845,132 +4900,147 @@
  "s7cdee3dc7d": "Which devices go in the scene?",
  "@s7cdee3dc7d": {
   "description": "fi: Mitkä laitteet tilannekuvaan?",
-  "x-where": "ui/automation_pages.dart:1702"
+  "x-where": "ui/automation_pages.dart:1869"
  },
  "sde0d544a4c": "Scene name",
  "@sde0d544a4c": {
   "description": "fi: Tilannekuvan nimi",
-  "x-where": "ui/automation_pages.dart:1707"
+  "x-where": "ui/automation_pages.dart:1874"
  },
  "scff2a13871": "e.g. Movie night",
  "@scff2a13871": {
   "description": "fi: esim. Elokuvailta",
-  "x-where": "ui/automation_pages.dart:1708"
+  "x-where": "ui/automation_pages.dart:1875"
  },
  "se3ba6a13bb": "New scene",
  "@se3ba6a13bb": {
   "description": "fi: Uusi tilannekuva",
-  "x-where": "ui/automation_pages.dart:1736"
+  "x-where": "ui/automation_pages.dart:1903"
  },
  "s020a1af0d8": "Edit scene",
  "@s020a1af0d8": {
   "description": "fi: Muokkaa tilannekuvaa",
-  "x-where": "ui/automation_pages.dart:1737"
+  "x-where": "ui/automation_pages.dart:1904"
  },
  "s4dbd6f62bf": "Delete the scene?",
  "@s4dbd6f62bf": {
   "description": "fi: Poistetaanko tilannekuva?",
-  "x-where": "ui/automation_pages.dart:1748"
+  "x-where": "ui/automation_pages.dart:1915"
+ },
+ "sf1ed05f7de": "Button on dashboard",
+ "@sf1ed05f7de": {
+  "description": "fi: Nappi näkymään",
+  "x-where": "ui/automation_pages.dart:1948"
+ },
+ "sf1541ca978": "Button added to {p0}",
+ "@sf1541ca978": {
+  "description": "fi: Nappi lisätty näkymään {p0}",
+  "x-where": "ui/automation_pages.dart:1957",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
  },
  "se250251ff0": "Push notifications",
  "@se250251ff0": {
   "description": "fi: Push-ilmoitukset",
-  "x-where": "ui/automation_pages.dart:1830"
+  "x-where": "ui/automation_pages.dart:1997"
  },
  "s91a8948ad7": "Through ntfy (no Google account needed)",
  "@s91a8948ad7": {
   "description": "fi: ntfy-palvelun kautta (ei Google-tiliä)",
-  "x-where": "ui/automation_pages.dart:1832"
+  "x-where": "ui/automation_pages.dart:1999"
  },
  "sbdd6c9bad2": "Show on this device",
  "@sbdd6c9bad2": {
   "description": "fi: Näytä tällä laitteella",
-  "x-where": "ui/automation_pages.dart:1840"
+  "x-where": "ui/automation_pages.dart:2007"
  },
  "se1e0d398d7": "The app listens for notifications while running (on Windows also from the tray).",
  "@se1e0d398d7": {
   "description": "fi: Sovellus kuuntelee ilmoituksia, kun se on käynnissä (Windowsissa myös ilmaisinalueella).",
-  "x-where": "ui/automation_pages.dart:1842"
+  "x-where": "ui/automation_pages.dart:2009"
  },
  "s6993f32ed2": "Run automations in this app",
  "@s6993f32ed2": {
   "description": "fi: Aja automaatioita tässä sovelluksessa",
-  "x-where": "ui/automation_pages.dart:1854"
+  "x-where": "ui/automation_pages.dart:2021"
  },
  "sc0f6ea8ebe": "When there is no home bridge. A home bridge always runs them, also while the app is closed.",
  "@sc0f6ea8ebe": {
   "description": "fi: Kun kotisiltaa ei ole. Kotisilta ajaa ne aina, myös sovelluksen ollessa kiinni.",
-  "x-where": "ui/automation_pages.dart:1856"
+  "x-where": "ui/automation_pages.dart:2023"
  },
  "sb35519f8e9": "Close to the tray",
  "@sb35519f8e9": {
   "description": "fi: Sulje ilmaisinalueelle",
-  "x-where": "ui/automation_pages.dart:1869"
+  "x-where": "ui/automation_pages.dart:2036"
  },
  "s49ca9b6082": "Closing the window keeps Molaplan next to the clock so notifications arrive.",
  "@s49ca9b6082": {
   "description": "fi: Ikkunan sulkeminen jättää Molaplanin kellon viereen, jotta ilmoitukset tulevat.",
-  "x-where": "ui/automation_pages.dart:1871"
+  "x-where": "ui/automation_pages.dart:2038"
  },
  "sc6d6d4016e": "Phone, when Molaplan is closed",
  "@sc6d6d4016e": {
   "description": "fi: Puhelin, kun Molaplan on kiinni",
-  "x-where": "ui/automation_pages.dart:1881"
+  "x-where": "ui/automation_pages.dart:2048"
  },
  "sb460bbf010": "Install the ntfy app (Android: Google Play / F-Droid, iPhone: App Store) and subscribe to this topic. Notifications arrive even when Molaplan is closed.",
  "@sb460bbf010": {
   "description": "fi: Asenna ntfy-sovellus (Android: Google Play / F-Droid, iPhone: App Store) ja tilaa tämä aihe. Ilmoitukset tulevat silloin",
-  "x-where": "ui/automation_pages.dart:1884"
+  "x-where": "ui/automation_pages.dart:2051"
  },
  "saa54f34e98": "Copy subscribe link",
  "@saa54f34e98": {
   "description": "fi: Kopioi tilauslinkki",
-  "x-where": "ui/automation_pages.dart:1906"
+  "x-where": "ui/automation_pages.dart:2073"
  },
  "s8f19ff1e21": "Quiet hours",
  "@s8f19ff1e21": {
   "description": "fi: Hiljainen aika",
-  "x-where": "ui/automation_pages.dart:1912"
+  "x-where": "ui/automation_pages.dart:2079"
  },
  "s1cc7f7a75f": "Only urgent (5) come through.",
  "@s1cc7f7a75f": {
   "description": "fi: Vain kiireelliset (5) tulevat läpi.",
-  "x-where": "ui/automation_pages.dart:1914"
+  "x-where": "ui/automation_pages.dart:2081"
  },
  "s973f30f5e8": "From (HH:MM)",
  "@s973f30f5e8": {
   "description": "fi: Alkaen (HH:MM)",
-  "x-where": "ui/automation_pages.dart:1923"
+  "x-where": "ui/automation_pages.dart:2090"
  },
  "sb13eeff3cd": "To (HH:MM)",
  "@sb13eeff3cd": {
   "description": "fi: Asti (HH:MM)",
-  "x-where": "ui/automation_pages.dart:1932"
+  "x-where": "ui/automation_pages.dart:2099"
  },
  "s2f7a5f57b1": "Mute",
  "@s2f7a5f57b1": {
   "description": "fi: Mykistä",
-  "x-where": "ui/automation_pages.dart:1939"
+  "x-where": "ui/automation_pages.dart:2106"
  },
  "sa81c1da011": "1 hour",
  "@sa81c1da011": {
   "description": "fi: 1 tunti",
-  "x-where": "ui/automation_pages.dart:1948"
+  "x-where": "ui/automation_pages.dart:2115"
  },
  "s0ca30924bd": "8 hours",
  "@s0ca30924bd": {
   "description": "fi: 8 tuntia",
-  "x-where": "ui/automation_pages.dart:1953"
+  "x-where": "ui/automation_pages.dart:2120"
  },
  "s38bb718aaf": "24 hours",
  "@s38bb718aaf": {
   "description": "fi: Vuorokausi",
-  "x-where": "ui/automation_pages.dart:1958"
+  "x-where": "ui/automation_pages.dart:2125"
  },
  "s36ef8a86e1": "Unmute (until {p0})",
  "@s36ef8a86e1": {
   "description": "fi: Poista mykistys ({p0} asti)",
-  "x-where": "ui/automation_pages.dart:1964",
+  "x-where": "ui/automation_pages.dart:2131",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -4980,82 +5050,82 @@
  "s0183ae0a12": "Send a test notification",
  "@s0183ae0a12": {
   "description": "fi: Lähetä testi-ilmoitus",
-  "x-where": "ui/automation_pages.dart:1974"
+  "x-where": "ui/automation_pages.dart:2141"
  },
  "sd95091858f": "Molaplan notifications work",
  "@sd95091858f": {
   "description": "fi: Molaplan-ilmoitukset toimivat",
-  "x-where": "ui/automation_pages.dart:1976"
+  "x-where": "ui/automation_pages.dart:2143"
  },
  "s58a8bfdd9f": "Test sent",
  "@s58a8bfdd9f": {
   "description": "fi: Testi lähetetty",
-  "x-where": "ui/automation_pages.dart:1977"
+  "x-where": "ui/automation_pages.dart:2144"
  },
  "s5c380d76b6": "Latest",
  "@s5c380d76b6": {
   "description": "fi: Viimeisimmät",
-  "x-where": "ui/automation_pages.dart:1994"
+  "x-where": "ui/automation_pages.dart:2161"
  },
  "s9d75942e41": "Ready-made automation",
  "@s9d75942e41": {
   "description": "fi: Valmis automaatio",
-  "x-where": "ui/automation_pages.dart:2025"
+  "x-where": "ui/automation_pages.dart:2192"
  },
  "s70860413a1": "Lights at sunset, water leak → alarm, cheap hours…",
  "@s70860413a1": {
   "description": "fi: Valot auringonlaskussa, vesivuoto → hälytys, halvat tunnit…",
-  "x-where": "ui/automation_pages.dart:2026"
+  "x-where": "ui/automation_pages.dart:2193"
  },
  "s8b5be90c1e": "Your own automation",
  "@s8b5be90c1e": {
   "description": "fi: Oma automaatio",
-  "x-where": "ui/automation_pages.dart:2035"
+  "x-where": "ui/automation_pages.dart:2202"
  },
  "sa9402c105a": "When / If / Do",
  "@sa9402c105a": {
   "description": "fi: Kun / Jos / Tee",
-  "x-where": "ui/automation_pages.dart:2036"
+  "x-where": "ui/automation_pages.dart:2203"
  },
  "s4102c7e085": "Scene from the current state",
  "@s4102c7e085": {
   "description": "fi: Tilannekuva nykytilasta",
-  "x-where": "ui/automation_pages.dart:2041"
+  "x-where": "ui/automation_pages.dart:2208"
  },
  "s21ee7e78ee": "Many devices with one button",
  "@s21ee7e78ee": {
   "description": "fi: Monta laitetta yhdellä napilla",
-  "x-where": "ui/automation_pages.dart:2042"
+  "x-where": "ui/automation_pages.dart:2209"
  },
  "s5afa6e08f2": "Steps in order, waits, if/else",
  "@s5afa6e08f2": {
   "description": "fi: Vaiheet järjestyksessä, odotukset, jos/muuten",
-  "x-where": "ui/automation_pages.dart:2048"
+  "x-where": "ui/automation_pages.dart:2215"
  },
  "s8070a25da8": "Group",
  "@s8070a25da8": {
   "description": "fi: Ryhmä",
-  "x-where": "ui/automation_pages.dart:2053"
+  "x-where": "ui/automation_pages.dart:2220"
  },
  "sf5f1ae9c9e": "E.g. all living room lights as one tile",
  "@sf5f1ae9c9e": {
   "description": "fi: Esim. kaikki olohuoneen valot yhtenä ruutuna",
-  "x-where": "ui/automation_pages.dart:2054"
+  "x-where": "ui/automation_pages.dart:2221"
  },
  "s73f89f4de7": "Which devices go in the group?",
  "@s73f89f4de7": {
   "description": "fi: Mitkä laitteet ryhmään?",
-  "x-where": "ui/automation_pages.dart:2098"
+  "x-where": "ui/automation_pages.dart:2265"
  },
  "s5b68340d84": "Group name",
  "@s5b68340d84": {
   "description": "fi: Ryhmän nimi",
-  "x-where": "ui/automation_pages.dart:2103"
+  "x-where": "ui/automation_pages.dart:2270"
  },
  "s1b087cdbbd": "All: {p0}",
  "@s1b087cdbbd": {
   "description": "fi: Kaikki: {p0}",
-  "x-where": "ui/automation_pages.dart:2104",
+  "x-where": "ui/automation_pages.dart:2271",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -7532,37 +7602,47 @@
  "sa0d8c62e5a": "No command configured",
  "@sa0d8c62e5a": {
   "description": "fi: Komentoa ei ole määritetty",
-  "x-where": "ui/tile_widget.dart:334"
+  "x-where": "ui/tile_widget.dart:335"
  },
  "s1e5d696a26": "Run this command?",
  "@s1e5d696a26": {
   "description": "fi: Suoritetaanko komento?",
-  "x-where": "ui/tile_widget.dart:342"
+  "x-where": "ui/tile_widget.dart:343"
  },
  "s1df6e2eaa7": "PIN",
  "@s1df6e2eaa7": {
   "description": "fi: PIN",
-  "x-where": "ui/tile_widget.dart:385"
+  "x-where": "ui/tile_widget.dart:388"
  },
  "secab66c046": "Remember on this device",
  "@secab66c046": {
   "description": "fi: Muista tällä laitteella",
-  "x-where": "ui/tile_widget.dart:393"
+  "x-where": "ui/tile_widget.dart:396"
  },
  "s10bf4eab8e": "Stored encrypted on this device only. By default the PIN is not stored.",
  "@s10bf4eab8e": {
   "description": "fi: Tallennetaan suojattuna vain tähän laitteeseen. Oletuksena PIN-koodia ei tallenneta.",
-  "x-where": "ui/tile_widget.dart:395"
+  "x-where": "ui/tile_widget.dart:398"
  },
  "s856418521a": "No commands configured",
  "@s856418521a": {
   "description": "fi: Komentoja ei ole määritetty",
-  "x-where": "ui/tile_widget.dart:425"
+  "x-where": "ui/tile_widget.dart:428"
+ },
+ "sb0ba67e677": "Ran at {p0}",
+ "@sb0ba67e677": {
+  "description": "fi: Ajettu klo {p0}",
+  "x-where": "ui/tile_widget.dart:464",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
  },
  "sdfa66ee201": "{p0}: sent",
  "@sdfa66ee201": {
   "description": "fi: {p0}: lähetetty",
-  "x-where": "ui/tile_widget.dart:448",
+  "x-where": "ui/tile_widget.dart:474",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -7572,47 +7652,47 @@
  "s12fc3810a5": "Sent – waiting for the reply…",
  "@s12fc3810a5": {
   "description": "fi: Lähetetty – odotetaan vastausta…",
-  "x-where": "ui/tile_widget.dart:472"
+  "x-where": "ui/tile_widget.dart:522"
  },
  "sd1c7d49360": "Reply at",
  "@sd1c7d49360": {
   "description": "fi: Vastaus klo",
-  "x-where": "ui/tile_widget.dart:489"
+  "x-where": "ui/tile_widget.dart:539"
  },
  "s29fae6a0e8": "Price control on",
  "@s29fae6a0e8": {
   "description": "fi: Hintaohjaus käytössä",
-  "x-where": "ui/tile_widget.dart:526"
+  "x-where": "ui/tile_widget.dart:576"
  },
  "s59d55f8882": "Rename",
  "@s59d55f8882": {
   "description": "fi: Nimeä uudelleen",
-  "x-where": "ui/tile_widget.dart:545"
+  "x-where": "ui/tile_widget.dart:595"
  },
  "s25580038cb": "Saved PIN removed",
  "@s25580038cb": {
   "description": "fi: Tallennettu PIN poistettu",
-  "x-where": "ui/tile_widget.dart:556"
+  "x-where": "ui/tile_widget.dart:606"
  },
  "sf50c488b24": "Forget saved PIN",
  "@sf50c488b24": {
   "description": "fi: Unohda tallennettu PIN",
-  "x-where": "ui/tile_widget.dart:558"
+  "x-where": "ui/tile_widget.dart:608"
  },
  "safe0429a90": "Price control",
  "@safe0429a90": {
   "description": "fi: Hintaohjaus",
-  "x-where": "ui/tile_widget.dart:567"
+  "x-where": "ui/tile_widget.dart:617"
  },
  "sf3d644dd4c": "Learn a remote button",
  "@sf3d644dd4c": {
   "description": "fi: Opettele kaukosäätimen nappi",
-  "x-where": "ui/tile_widget.dart:576"
+  "x-where": "ui/tile_widget.dart:626"
  },
  "sfb1a18d11f": "Refresh",
  "@sfb1a18d11f": {
   "description": "fi: Päivitä",
-  "x-where": "ui/tile_widget.dart:583"
+  "x-where": "ui/tile_widget.dart:633"
  },
  "s72a2328ddd": "Lights",
  "@s72a2328ddd": {
@@ -10015,32 +10095,32 @@
  "s7e5f6a29e3": "Good night",
  "@s7e5f6a29e3": {
   "description": "fi: Hyvää yötä",
-  "x-where": "state/automation_state.dart:431"
+  "x-where": "state/automation_state.dart:501"
  },
  "s253122823a": "Good morning",
  "@s253122823a": {
   "description": "fi: Hyvää huomenta",
-  "x-where": "state/automation_state.dart:433"
+  "x-where": "state/automation_state.dart:503"
  },
  "s640293f08f": "Good afternoon",
  "@s640293f08f": {
   "description": "fi: Hyvää päivää",
-  "x-where": "state/automation_state.dart:435"
+  "x-where": "state/automation_state.dart:505"
  },
  "sd8c5bed7de": "Good evening",
  "@sd8c5bed7de": {
   "description": "fi: Hyvää iltaa",
-  "x-where": "state/automation_state.dart:437"
+  "x-where": "state/automation_state.dart:507"
  },
  "s4cac4725b8": "The group''s devices are not answering",
  "@s4cac4725b8": {
   "description": "fi: Ryhmän laitteet eivät vastaa",
-  "x-where": "state/auto_driver.dart:51"
+  "x-where": "state/auto_driver.dart:52"
  },
  "s13a91fe322": "The device to control is missing",
  "@s13a91fe322": {
   "description": "fi: Ohjattavaa laitetta ei löydy",
-  "x-where": "state/auto_driver.dart:92"
+  "x-where": "state/auto_driver.dart:94"
  },
  "s7e461faf91": "Find it in your router''s device list or the device app. You can also tap \"Search network\".",
  "@s7e461faf91": {

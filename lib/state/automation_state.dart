@@ -15,8 +15,10 @@ import '../automation/model.dart';
 import '../automation/runner.dart';
 import '../core/template.dart';
 import '../l10n/l10n.dart';
+import '../remote/protocol.dart' show RemoteUnavailable;
 import '../ui/notify.dart';
 import 'app_state.dart';
+import 'tile_runtime.dart';
 
 /// One push notification received (in-app banner).
 class PushMessage {
@@ -38,7 +40,8 @@ class AutomationState extends ChangeNotifier {
       send: (connId, spec, value) async {
         final d = app.driverFor(connId);
         if (d == null) throw StateError('connection missing');
-        return d.send(spec, value: value);
+        // t193u: a device that never answers must not leave a script (and its button) hanging.
+        return d.send(spec, value: value).timeout(const Duration(seconds: 30));
       },
       // Only when ntfy is unreachable: the subscription shows the normal ones.
       fallbackNotify: (t, b, p, tile) async => _show(t, b, p, tile, fromFallback: true),
@@ -215,7 +218,63 @@ class AutomationState extends ChangeNotifier {
   }
 
   /// Runs on the bridge when there is one (scripts keep going when the app closes), else here.
+  /// t193u: afterwards the tiles the scene / script switched are refreshed at once (they used to
+  /// keep their old state until the next poll, so a working button looked like it did nothing).
   Future<Object?> run(String kind, String id) async {
+    try {
+      return await _runWhere(kind, id);
+    } finally {
+      if (kind == 'script' || kind == 'scene') TileRuntime.refreshSoon(touchedTiles(kind, id));
+    }
+  }
+
+  /// Tile ids a scene / script switches (also inside if / else and called scripts / scenes).
+  Set<String> touchedTiles(String kind, String id) {
+    final out = <String>{};
+    final seen = <String>{};
+    late final void Function(String k, String i) visit;
+    void walk(List<ActionStep> steps) {
+      for (final st in steps) {
+        switch (st.kind) {
+          case 'tile':
+            if (st.tileId.isNotEmpty) out.add(st.tileId);
+          case 'scene':
+            visit('scene', '${st.args['sceneId']}');
+          case 'script':
+            visit('script', '${st.args['scriptId']}');
+          case 'if':
+            walk(st.thenSteps);
+            walk(st.elseSteps);
+        }
+      }
+    }
+
+    visit = (String k, String i) {
+      if (!seen.add('$k:$i')) return;
+      if (k == 'scene') walk(settings.scene(i)?.actions ?? const []);
+      if (k == 'script') {
+        final sc = settings.script(i);
+        if (sc == null) return;
+        // Code scripts name their devices in text: refresh everything.
+        if (sc.advanced) {
+          for (final d in app.config.dashboards) {
+            out.addAll(d.tiles.map((t) => t.id));
+          }
+        }
+        walk(sc.steps);
+      }
+    };
+
+    visit(kind, id);
+    return out;
+  }
+
+  /// t193u: the bridge could not be reached at all (nothing was sent to it), so running here
+  /// is safe – no risk of switching twice. A timeout after sending is *not* one of these.
+  static bool canRunHereAfter(Object e) =>
+      e is RemoteUnavailable && const {'bridge_offline', 'no_internet', 'not_paired', 'refused'}.contains(e.reason);
+
+  Future<Object?> _runWhere(String kind, String id) async {
     final w = where;
     if (w == 'self') {
       final b = app.remote.bridge!;
@@ -231,20 +290,28 @@ class AutomationState extends ChangeNotifier {
       }
     }
     if (w == 'bridge') {
-      // Make sure the bridge has the latest version first.
-      await push();
-      final v = await app.remote.router.client!.call(
-        'automations',
-        spec: {
-          'run': {'kind': kind, 'id': id},
-        },
-      );
-      if (v is Map) {
-        bridgeStatus = Map<String, dynamic>.from(v);
-        notifyListeners();
-        return v['result'];
+      try {
+        // Make sure the bridge has the latest version first.
+        await push();
+        final v = await app.remote.router.client!.call(
+          'automations',
+          spec: {
+            'run': {'kind': kind, 'id': id},
+          },
+        );
+        if (v is Map) {
+          bridgeStatus = Map<String, dynamic>.from(v);
+          notifyListeners();
+          return v['result'];
+        }
+        return null;
+      } catch (e) {
+        if (!canRunHereAfter(e) || kind == 'stop') rethrow;
+        // t193u: the home bridge is off / unreachable – run it here instead (works for cloud
+        // devices anywhere and for LAN devices when this device is at home).
+        debugPrint('bridge unreachable ($e) – running $kind here');
+        lastRunFallback = DateTime.now();
       }
-      return null;
     }
     local.update(AutomationPackage.fromConfig(app.config, lang: app.lang));
     try {
@@ -253,6 +320,9 @@ class AutomationState extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  /// When a run last fell back to this device because the home bridge was unreachable.
+  DateTime? lastRunFallback;
 
   Future<void> runScene(String id) => run('scene', id);
   Future<Object?> runScript(String id) => run('script', id);

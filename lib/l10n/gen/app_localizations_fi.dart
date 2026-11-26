@@ -2913,6 +2913,12 @@ class AppLocalizationsFi extends AppLocalizations {
   String get se9ee46a9c8 => 'Aja';
 
   @override
+  String get s45fbc06cdf => 'Lisää';
+
+  @override
+  String get s0557e03436 => 'Lisää painike etusivulle';
+
+  @override
   String get sfd2d047cb2 => 'Edistynyt';
 
   @override
@@ -2922,6 +2928,11 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s061d1b874b => 'etäajo';
+
+  @override
+  String sdae343a445(String p0) {
+    return 'Painike lisätty näkymään $p0';
+  }
 
   @override
   String get sb886978015 => 'Muokkaa skriptiä';
@@ -2944,6 +2955,12 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get sea09cb0d3b =>
       'Funktiot: get set on off toggle wait notify scene price cheapest temp time hour weekday log. Ei tiedosto- eikä verkkoyhteyksiä; aikaraja 10 min.';
+
+  @override
+  String get s4436dfd836 => 'Ulkoinen käynnistys (PIN) on päällä';
+
+  @override
+  String get s759ff4cada => 'Ulkoinen käynnistys, esim. iPhonen Pikakomennot';
 
   @override
   String get s420f3ec828 => 'Ulkoinen käynnistys (valinnainen)';
@@ -2974,12 +2991,28 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sff9b69c6ca => 'Ajettu';
 
   @override
-  String get sf1ed05f7de => 'Nappi näkymään';
+  String get sa32d82e779 => 'Painike sovelluksessa';
 
   @override
-  String sf1541ca978(String p0) {
-    return 'Nappi lisätty näkymään $p0';
+  String get s65fc3dd69a =>
+      'Painikkeella ajat skriptin yhdellä napautuksella. Se toimii kotona ja myös kodin ulkopuolelta kotisillan kautta – Pikakomentoja ei tarvita.';
+
+  @override
+  String s89638a5b8e(String p0) {
+    return 'Painike näkymässä $p0';
   }
+
+  @override
+  String get s509056a76d => 'Lisää uusi painike';
+
+  @override
+  String get s0f8939787f => 'Painike luodaan, kun tallennat.';
+
+  @override
+  String get s5a8c602b42 => 'Näkymä';
+
+  @override
+  String get se49d14ff44 => 'Mihin näkymään painike lisätään?';
 
   @override
   String get s09f745552a => 'Tallenna nykytila';
@@ -3013,6 +3046,14 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s4dbd6f62bf => 'Poistetaanko tilannekuva?';
+
+  @override
+  String get sf1ed05f7de => 'Nappi näkymään';
+
+  @override
+  String sf1541ca978(String p0) {
+    return 'Nappi lisätty näkymään $p0';
+  }
 
   @override
   String get se250251ff0 => 'Push-ilmoitukset';
@@ -4697,6 +4738,11 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s856418521a => 'Komentoja ei ole määritetty';
+
+  @override
+  String sb0ba67e677(String p0) {
+    return 'Ajettu klo $p0';
+  }
 
   @override
   String sdfa66ee201(String p0) {

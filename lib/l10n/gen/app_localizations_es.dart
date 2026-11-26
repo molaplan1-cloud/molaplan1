@@ -2921,6 +2921,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se9ee46a9c8 => 'Corre';
 
   @override
+  String get s45fbc06cdf => 'Más';
+
+  @override
+  String get s0557e03436 => 'Añadir un botón a la página principal';
+
+  @override
   String get sfd2d047cb2 => 'Avanzado';
 
   @override
@@ -2930,6 +2936,11 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s061d1b874b => 'remoto';
+
+  @override
+  String sdae343a445(String p0) {
+    return 'Button añadió a $p0';
+  }
 
   @override
   String get sb886978015 => 'Editar script';
@@ -2952,6 +2963,12 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sea09cb0d3b =>
       'Funciones: ponerse en marcha toggle wait notify scene price cheap temp time hour weekday log. Ningún archivo o acceso a la red; 10 min time limit.';
+
+  @override
+  String get s4436dfd836 => 'El gatillo externo (PIN) está encendido';
+
+  @override
+  String get s759ff4cada => 'Detonante externo, por ejemplo, atajos de iPhone';
 
   @override
   String get s420f3ec828 => 'Activación externa (opcional)';
@@ -2982,12 +2999,28 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sff9b69c6ca => 'Listo';
 
   @override
-  String get sf1ed05f7de => 'Button a la vista';
+  String get sa32d82e779 => 'Botón en la aplicación';
 
   @override
-  String sf1541ca978(String p0) {
-    return 'Button añadió a $p0';
+  String get s65fc3dd69a =>
+      'El botón ejecuta el script con un toque. Funciona en casa y también lejos de casa a través del puente de inicio – no se necesitan atajos.';
+
+  @override
+  String s89638a5b8e(String p0) {
+    return 'Botón en la vista $p0';
   }
+
+  @override
+  String get s509056a76d => 'Añadir otro botón';
+
+  @override
+  String get s0f8939787f => 'El botón se crea cuando se guarda.';
+
+  @override
+  String get s5a8c602b42 => 'Vista';
+
+  @override
+  String get se49d14ff44 => '¿Qué vista tiene el botón?';
 
   @override
   String get s09f745552a => 'Guardar el estado actual';
@@ -3021,6 +3054,14 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s4dbd6f62bf => '¿Supir la escena?';
+
+  @override
+  String get sf1ed05f7de => 'Button a la vista';
+
+  @override
+  String sf1541ca978(String p0) {
+    return 'Button añadió a $p0';
+  }
 
   @override
   String get se250251ff0 => 'Notificaciones de empuje';
@@ -4709,6 +4750,11 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s856418521a => 'No hay comandos configurados';
+
+  @override
+  String sb0ba67e677(String p0) {
+    return 'Ran en $p0';
+  }
 
   @override
   String sdfa66ee201(String p0) {

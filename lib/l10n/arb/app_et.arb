@@ -2756,14 +2756,6 @@
   "x-mt": true
  },
  "sff9b69c6ca": "Valmis",
- "sf1ed05f7de": "Nupp vaateväljas",
- "@sf1ed05f7de": {
-  "x-mt": true
- },
- "sf1541ca978": "Nupp lisatud {p0}",
- "@sf1541ca978": {
-  "x-mt": true
- },
  "s09f745552a": "Salvesta aktiivne olek",
  "@s09f745552a": {
   "x-mt": true
@@ -2802,6 +2794,14 @@
  },
  "s4dbd6f62bf": "Kustuta stseen?",
  "@s4dbd6f62bf": {
+  "x-mt": true
+ },
+ "sf1ed05f7de": "Nupp vaateväljas",
+ "@sf1ed05f7de": {
+  "x-mt": true
+ },
+ "sf1541ca978": "Nupp lisatud {p0}",
+ "@sf1541ca978": {
   "x-mt": true
  },
  "se250251ff0": "Vajuta teateid",
@@ -6320,6 +6320,10 @@
  "@s8231329360": {
   "x-mt": true
  },
+ "s206ac44298": "Aseta sama URL, millele kiirklahvi postitused käske annavad (nt https://ntfy.sh/oma-aihe). Ka teema nimi üksi töötab.",
+ "@s206ac44298": {
+  "x-mt": true
+ },
  "s1b3bbae234": "Ainult siis, kui koduseade vastab mõnele muule teemale. Tühi = sama teema, ignoreeritakse meie enda käsku.",
  "@s1b3bbae234": {
   "x-mt": true
@@ -6374,8 +6378,56 @@
  "@s0ceafaa97c": {
   "x-mt": true
  },
- "s206ac44298": "Aseta sama URL, millele kiirklahvi postitused käske annavad (nt https://ntfy.sh/oma-aihe). Ka teema nimi üksi töötab.",
- "@s206ac44298": {
+ "s45fbc06cdf": "Veel rohkem",
+ "@s45fbc06cdf": {
+  "x-mt": true
+ },
+ "s0557e03436": "Nupu lisamine esilehele",
+ "@s0557e03436": {
+  "x-mt": true
+ },
+ "sdae343a445": "Nupp lisatud {p0}",
+ "@sdae343a445": {
+  "x-mt": true
+ },
+ "s4436dfd836": "Väline käivitaja (PIN) on sisse lülitatud",
+ "@s4436dfd836": {
+  "x-mt": true
+ },
+ "s759ff4cada": "Väline päästik, nt iPhone''i kiirklahvid",
+ "@s759ff4cada": {
+  "x-mt": true
+ },
+ "sa32d82e779": "Nupp rakenduses",
+ "@sa32d82e779": {
+  "x-mt": true
+ },
+ "s65fc3dd69a": "Nupp käivitab skripti ühe nupuvajutusega. See töötab nii kodus kui ka kodust eemal läbi kodusilla – kiirklahve pole vaja.",
+ "@s65fc3dd69a": {
+  "x-mt": true
+ },
+ "s89638a5b8e": "Nupp vaates {p0}",
+ "@s89638a5b8e": {
+  "x-mt": true
+ },
+ "s509056a76d": "Lisa veel üks nupp",
+ "@s509056a76d": {
+  "x-mt": true
+ },
+ "s0f8939787f": "Nupp luuakse salvestamisel.",
+ "@s0f8939787f": {
+  "x-mt": true
+ },
+ "s5a8c602b42": "Vaade",
+ "@s5a8c602b42": {
+  "x-mt": true
+ },
+ "se49d14ff44": "Milline vaade saab nupu?",
+ "@se49d14ff44": {
+  "x-mt": true
+ },
+ "sb0ba67e677": "Jooksus {p0}",
+ "@sb0ba67e677": {
   "x-mt": true
  }
 }

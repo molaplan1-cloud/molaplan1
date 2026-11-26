@@ -2898,6 +2898,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get se9ee46a9c8 => 'Run';
 
   @override
+  String get s45fbc06cdf => 'More';
+
+  @override
+  String get s0557e03436 => 'Add a button to the front page';
+
+  @override
   String get sfd2d047cb2 => 'Advanced';
 
   @override
@@ -2907,6 +2913,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s061d1b874b => 'remote';
+
+  @override
+  String sdae343a445(String p0) {
+    return 'Button added to $p0';
+  }
 
   @override
   String get sb886978015 => 'Edit script';
@@ -2929,6 +2940,12 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get sea09cb0d3b =>
       'Functions: get set on off toggle wait notify scene price cheapest temp time hour weekday log. No file or network access; 10 min time limit.';
+
+  @override
+  String get s4436dfd836 => 'External trigger (PIN) is on';
+
+  @override
+  String get s759ff4cada => 'External trigger, e.g. iPhone Shortcuts';
 
   @override
   String get s420f3ec828 => 'External trigger (optional)';
@@ -2959,12 +2976,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sff9b69c6ca => 'Done';
 
   @override
-  String get sf1ed05f7de => 'Button on dashboard';
+  String get sa32d82e779 => 'Button in the app';
 
   @override
-  String sf1541ca978(String p0) {
-    return 'Button added to $p0';
+  String get s65fc3dd69a =>
+      'The button runs the script with one tap. It works at home and also away from home through the home bridge – no Shortcuts needed.';
+
+  @override
+  String s89638a5b8e(String p0) {
+    return 'Button in the view $p0';
   }
+
+  @override
+  String get s509056a76d => 'Add another button';
+
+  @override
+  String get s0f8939787f => 'The button is created when you save.';
+
+  @override
+  String get s5a8c602b42 => 'View';
+
+  @override
+  String get se49d14ff44 => 'Which view gets the button?';
 
   @override
   String get s09f745552a => 'Save current state';
@@ -2998,6 +3031,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s4dbd6f62bf => 'Delete the scene?';
+
+  @override
+  String get sf1ed05f7de => 'Button on dashboard';
+
+  @override
+  String sf1541ca978(String p0) {
+    return 'Button added to $p0';
+  }
 
   @override
   String get se250251ff0 => 'Push notifications';
@@ -4674,6 +4715,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s856418521a => 'No commands configured';
+
+  @override
+  String sb0ba67e677(String p0) {
+    return 'Ran at $p0';
+  }
 
   @override
   String sdfa66ee201(String p0) {
