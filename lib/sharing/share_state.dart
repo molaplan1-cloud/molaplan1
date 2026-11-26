@@ -55,6 +55,7 @@ class ShareState extends ChangeNotifier {
 
   static const credKey = 'molaplan.shares.creds.v1';
   static const revokeQueueKey = 'molaplan.shares.revoke.v1';
+  static const closedDoneKey = 'molaplan.shares.closed.v1';
   static const pollEvery = Duration(minutes: 2);
 
   List<ShareRecord> shares = const [];
@@ -70,9 +71,28 @@ class ShareState extends ChangeNotifier {
   String? _uid;
   bool get available => _uid != null;
   bool get canShare => host.accountKey != null;
-  bool get installer => profile?['installer'] == true;
-  String get company => '${profile?['company'] ?? ''}';
+  /// R256: approved by a Molaplan admin (the old self-service profile switch is gone).
+  bool get installer => installerInfo?.active == true;
+  String get company => installerInfo?.company ?? '';
   String get displayName => '${profile?['display_name'] ?? ''}';
+
+  /// My installer row (ID, verified name + company, status), null when never approved.
+  InstallerInfo? installerInfo;
+
+  /// My latest 'Hae asentajaksi' request.
+  InstallerApplication? application;
+
+  /// Molaplan admin (same list as the order shop): sees 'Asentajien hallinta'.
+  bool isAdmin = false;
+
+  /// Installers I (as a customer) have given access to, still open.
+  List<ShareRecord> get installerAccess => [
+    for (final s in mine)
+      if (s.installer && s.recipientId != null && const {ShareStatus.pending, ShareStatus.claimed, ShareStatus.active}.contains(s.status)) s,
+  ];
+
+  /// Shares that are not installer accesses (the Jakaminen list).
+  List<ShareRecord> get mineShares => [for (final s in mine) if (!s.installer || s.recipientId == null) s];
 
   List<ShareRecord> get mine => [for (final s in shares) if (s.ownerId == _uid) s];
   List<ShareRecord> get toMe => [for (final s in shares) if (s.recipientId == _uid && s.ownerId != _uid) s];
@@ -117,8 +137,10 @@ class ShareState extends ChangeNotifier {
         );
         profile = await api.profile(s);
       }
+      await _loadInstaller(s);
       shares = await api.list(s);
       await _retryRevokes();
+      await _dropClosed();
       for (final r in mine.where((r) => r.status == ShareStatus.claimed).toList()) {
         try {
           await _complete(s, r);
@@ -134,6 +156,49 @@ class ShareState extends ChangeNotifier {
       if (!quiet) rethrow;
     } finally {
       notifyListeners();
+    }
+  }
+
+  Future<void> _loadInstaller(Session s) async {
+    try {
+      installerInfo = await api.myInstaller(s);
+      application = installerInfo?.active == true ? null : await api.myApplication(s);
+    } on ShareError catch (e) {
+      // An account service without the 0.13 tables: no installer features, sharing still works.
+      if (e.problem == ShareProblem.offline) rethrow;
+      installerInfo = null;
+      application = null;
+    }
+    isAdmin = await api.isAdmin(s);
+  }
+
+  /// R259: a share this account owns was closed elsewhere (another own device, the recipient left,
+  /// or an admin took the installer status away): make sure the home bridge forgets it too. The
+  /// bridge also asks the server itself before every shared request, so this is the second lock.
+  Future<void> _dropClosed() async {
+    final done = <String>{...await _readList(closedDoneKey)};
+    final closed = [for (final r in mine) if (r.status == ShareStatus.revoked || r.status == ShareStatus.declined) r.id];
+    var changed = false;
+    for (final id in closed.where((id) => !done.contains(id))) {
+      try {
+        await host.bridgeCall('share_revoke', {'id': id});
+        done.add(id);
+        changed = true;
+      } catch (_) {
+        // no bridge right now – next refresh
+      }
+    }
+    done.retainWhere(closed.contains);
+    if (changed || done.length != closed.length) await host.store.write(closedDoneKey, jsonEncode(done.toList()));
+  }
+
+  Future<List<String>> _readList(String key) async {
+    final raw = await host.store.read(key);
+    if (raw == null) return [];
+    try {
+      return [for (final x in jsonDecode(raw) as List) '$x'];
+    } catch (_) {
+      return [];
     }
   }
 
@@ -256,6 +321,14 @@ class ShareState extends ChangeNotifier {
   Future<void> pushPackages() async {
     for (final r in mine.where((r) => r.status == ShareStatus.active)) {
       try {
+        if (r.summary['all'] == true) {
+          // R258: "all devices" follows the home – tiles added later are included.
+          final ids = _allShareable();
+          if (ids.toSet().difference(r.scope.tiles.keys.toSet()).isNotEmpty || r.scope.tiles.keys.toSet().difference(ids.toSet()).isNotEmpty) {
+            await changeInstaller(r, allDevices: true, settings: r.preset == SharePreset.full);
+            continue;
+          }
+        }
         await _put(r.id, r.label, r.scope);
       } catch (e) {
         debugPrint('share ${r.id}: push failed: $e');
@@ -359,12 +432,102 @@ class ShareState extends ChangeNotifier {
     return id;
   }
 
-  Future<void> setInstaller(bool on, {String? company}) async {
+  // ---------------------------------------------------------------- R256–R262 installers
+
+  /// Customer: the verified installer behind an ID (null = no approved installer with it).
+  Future<InstallerInfo?> findInstaller(String publicId) async => api.findInstaller(await _session(), publicId);
+
+  /// Customer: gives an approved installer access. [allDevices] follows the home (new devices are
+  /// included when they are added); otherwise only [tileIds]. [settings] = may change settings
+  /// (setpoints, modes) as well as control. Active at once – the customer saw the verified name.
+  Future<void> grantInstaller(InstallerInfo who, {required bool allDevices, Iterable<String> tileIds = const [], required bool settings}) async {
     final s = await _session();
-    await api.saveProfile(s, installer: on, company: company);
-    profile = await api.profile(s);
+    if (!canShare) throw ShareError(ShareProblem.noKey);
+    final pub = who.sharePub;
+    if (pub == null || !who.active) throw ShareError(ShareProblem.notInstaller, who.publicId);
+    final ids = allDevices ? _allShareable() : tileIds.toList();
+    final preset = settings ? SharePreset.full : SharePreset.control;
+    final scope = ShareScope.preset(preset, ids);
+    final summary = {..._summary(scope, preset), 'all': allDevices, 'installer_id': who.publicId};
+    if ((summary['tiles'] as List).isEmpty) throw ShareError(ShareProblem.notFound, 'no shareable tiles');
+    final id = const Uuid().v4();
+    final cred = await _put(id, '', scope, pub: pub, name: who.label);
+    try {
+      await api.create(s, {
+        'id': id,
+        'kind': 'installer',
+        'status': 'active',
+        'label': '',
+        'level': scope.level,
+        'summary': summary,
+        'owner_name': displayName.isEmpty ? host.myName : displayName,
+        'recipient_id': who.userId,
+        'recipient_name': who.label,
+        'recipient_pub': pub,
+        'payload': await sealForRecipient(cred, recipientPub: pub, shareId: id, recipientId: who.userId),
+      });
+    } catch (e) {
+      unawaited(host.bridgeCall('share_revoke', {'id': id}).then((_) {}, onError: (_) {}));
+      rethrow;
+    }
+    await _reload(s);
+  }
+
+  /// Customer: changes what an installer may reach.
+  Future<void> changeInstaller(ShareRecord r, {required bool allDevices, Iterable<String> tileIds = const [], required bool settings}) async {
+    final s = await _session();
+    final ids = allDevices ? _allShareable() : tileIds.toList();
+    final preset = settings ? SharePreset.full : SharePreset.control;
+    final scope = ShareScope.preset(preset, ids);
+    if (r.status == ShareStatus.active) await _put(r.id, r.label, scope);
+    await api.update(s, r.id, {
+      'level': scope.level,
+      'summary': {..._summary(scope, preset), 'all': allDevices, 'installer_id': r.summary['installer_id']},
+    });
+    await _reload(s);
+  }
+
+  List<String> _allShareable() => [
+    for (final d in host.config.dashboards)
+      for (final t in d.tiles)
+        if (shareableTile(t)) t.id,
+  ];
+
+  /// Anyone signed in: asks a Molaplan admin for the installer status.
+  Future<void> applyInstaller({required String name, String company = '', String message = ''}) async {
+    final s = await _session();
+    await api.apply(s, name: name, company: company, message: message);
+    application = await api.myApplication(s);
     notifyListeners();
   }
+
+  Future<void> withdrawApplication() async {
+    final s = await _session();
+    final a = application;
+    if (a == null) return;
+    await api.withdrawApplication(s, a.id);
+    application = await api.myApplication(s);
+    notifyListeners();
+  }
+
+  // Admin (Molaplan admins only; the server refuses everyone else).
+  Future<List<InstallerInfo>> adminInstallers() async => api.adminInstallers(await _session());
+  Future<List<AdminUser>> adminFindUsers(String email) async => api.adminFindUsers(await _session(), email);
+  Future<List<InstallerApplication>> adminApplications() async => api.adminApplications(await _session());
+  Future<InstallerInfo> adminGrant({required String email, required String name, String company = '', String note = ''}) async {
+    final s = await _session();
+    final r = await api.adminGrant(s, email: email, name: name, company: company, note: note);
+    if (r.userId == s.userId) await refresh(quiet: true);
+    return r;
+  }
+
+  Future<void> adminRevoke(String userId) async {
+    final s = await _session();
+    await api.adminRevoke(s, userId);
+    if (userId == s.userId) await refresh(quiet: true);
+  }
+
+  Future<void> adminDecline(String applicationId) async => api.adminDecline(await _session(), applicationId);
 
   Future<void> setDisplayName(String name) async {
     final s = await _session();

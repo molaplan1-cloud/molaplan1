@@ -153,6 +153,20 @@ class BridgeCore {
 
   /// R215: share id -> {label, scope, tiles (full TileConfig json), conns (with secrets)}. Stays here.
   final shares = <String, Map<String, dynamic>>{};
+
+  /// R260: asks the account service whether a share may still be used ('active' / 'pending' /
+  /// 'gone'); throws when it cannot be reached. Null = no check (tests, no account service).
+  /// Checked before shared requests, so an admin taking an installer's status away (or the owner
+  /// revoking on another device while this bridge missed it) stops access here as well.
+  Future<String> Function(String shareId)? shareCheck;
+
+  /// How long an 'active' answer is trusted before asking again: not at all – every shared
+  /// request asks, so a revocation stops the very next request (one batch asks once).
+  static const shareCheckFresh = Duration.zero;
+
+  /// When the service cannot be reached, a share last confirmed within this time keeps working.
+  static const shareCheckGrace = Duration(minutes: 10);
+  final _shareOk = <String, DateTime>{};
   final _shareSeen = <String, DateTime>{};
   final _keys = <String, SecretKey>{};
   final _seen = <String, DateTime>{};
@@ -697,6 +711,51 @@ class BridgeCore {
     return out;
   }
 
+  /// R260: null when the share may be used now, else the reason shown to the recipient. A share
+  /// the server reports 'gone' is revoked here at once (device removed, tiles forgotten).
+  Future<String?> checkShare(String id) {
+    if (shareCheck == null) return Future.value(null);
+    // One server question at a time per share (a batch asks once).
+    return _shareChecking[id] ??= _checkShare(id).whenComplete(() {
+      _shareChecking.remove(id); // (a block: returning the removed future would wait on itself)
+    });
+  }
+
+  final _shareChecking = <String, Future<String?>>{};
+
+  Future<String?> _checkShare(String id) async {
+    final check = shareCheck!;
+    final last = _shareOk[id];
+    final now = DateTime.now();
+    if (last != null && shareCheckFresh > Duration.zero && now.difference(last) < shareCheckFresh) return null;
+    String answer;
+    try {
+      answer = await check(id);
+    } catch (e) {
+      // Service unreachable: keep a recently confirmed share working, refuse otherwise.
+      if (last != null && now.difference(last) < shareCheckGrace) return null;
+      if (last == null && shares[id]?['updated'] is String) {
+        final put = DateTime.tryParse(shares[id]!['updated'] as String);
+        if (put != null && now.difference(put) < shareCheckGrace) return null;
+      }
+      log?.call('share $id: access check failed ($e)');
+      return 'Oikeutta ei voitu tarkistaa';
+    }
+    switch (answer) {
+      case 'active':
+        _shareOk[id] = now;
+        return null;
+      case 'pending':
+        _shareOk.remove(id);
+        return 'Jako ei ole vielä käytössä';
+      default:
+        _shareOk.remove(id);
+        log?.call('share $id: closed on the server – revoking here');
+        await revokeShare(id);
+        return 'Jako on peruttu';
+    }
+  }
+
   /// Revoking removes the device at once (the relay drops its token) and forgets the tiles.
   Future<void> revokeShare(String id) async {
     for (final d in devices.where((d) => d.share == id).toList()) {
@@ -730,6 +789,8 @@ class BridgeCore {
   /// request, and each action is checked against the permission.
   Future<Map<String, dynamic>> sharedOp(String shareId, Map<String, dynamic> r) async {
     final id = r['id'];
+    final denied = await checkShare(shareId);
+    if (denied != null) return _forbidden(id, denied);
     final pkg = shares[shareId];
     if (pkg == null) return _forbidden(id, 'Jako on peruttu');
     final scope = ShareScope.fromJson(Map<String, dynamic>.from(pkg['scope'] as Map));

@@ -2589,6 +2589,320 @@ class AppLocalizationsSv extends AppLocalizations {
       'Kontrollera enhets-ID och Modbus-inställningarna. Tryck på för att använda den här adressen.';
 
   @override
+  String get sfe54134176 => 'Alla enheter';
+
+  @override
+  String get s23baecde5b => 'Enheter';
+
+  @override
+  String get s776f46ed8d => 'styrning + inställningar';
+
+  @override
+  String get sa7cfbebc2f => 'styrning';
+
+  @override
+  String get seff7e04d91 => 'Återkalla installatörens åtkomst?';
+
+  @override
+  String s633fa022d1(String p0) {
+    return '$p0 kommer inte längre åt dina enheter. Åtkomsten upphör så snart hembryggan får veta det (oftast direkt).';
+  }
+
+  @override
+  String get sbdfc0cf419 => 'Återkalla åtkomst';
+
+  @override
+  String get s98b66fc9d8 => 'Åtkomsten återkallad';
+
+  @override
+  String get sbd907def5b => 'Installatör';
+
+  @override
+  String get sfb1a18d11f => 'Uppdatera';
+
+  @override
+  String get sb9c461d827 =>
+      'Installatörsåtkomst kräver ett Molaplan-konto så att installatören kan verifieras och krypteringen fungerar.';
+
+  @override
+  String get s9bb545e9b3 => 'Logga in eller skapa ett konto';
+
+  @override
+  String get s523c735938 =>
+      'Ge en installatör åtkomst till dina enheter med installatörens ID (t.ex. MPL-K7Q-M2X). Molaplan har kontrollerat varje installatörs namn och företag. Lösenord och adresser lämnar aldrig hemmet, och du kan återkalla åtkomsten när som helst.';
+
+  @override
+  String get s03be67bc78 => 'Ge åtkomst';
+
+  @override
+  String get s65c7781ca3 => 'Installatörer med åtkomst';
+
+  @override
+  String get sbb7e4c4c3c => 'Ingen installatör har åtkomst.';
+
+  @override
+  String get s84a6d73d1e => 'Ändra enheter eller rättigheter';
+
+  @override
+  String get s5fcc7e175d => 'Mina kunder';
+
+  @override
+  String get s44dcd38f2b => 'Hantera installatörer';
+
+  @override
+  String s2f8dd9569b(String p0, String p1) {
+    return 'Mitt installatörs-ID i Molaplan: $p0 ($p1). Så ger du mig åtkomst: Molaplan → Inställningar → Installatör → Ge åtkomst.';
+  }
+
+  @override
+  String get s0061cbc425 => 'Kopiera meddelandet';
+
+  @override
+  String get sdd0f19c6b8 => 'E-post';
+
+  @override
+  String get sd57398d989 => 'Sms';
+
+  @override
+  String get s4f09cced25 => 'Meddelandet kopierat';
+
+  @override
+  String get s2836191df5 => 'Appen kunde inte öppnas – meddelandet kopierades.';
+
+  @override
+  String get sd01e57c279 =>
+      'Kunden skannar den: Inställningar → Installatör → Ge åtkomst.';
+
+  @override
+  String get se83877749c => 'Du är Molaplan-installatör';
+
+  @override
+  String get s014468e53e => 'Ditt installatörs-ID';
+
+  @override
+  String get s973ddbcd3b =>
+      'Ge ID:t till din kund. Med det öppnar kunden åtkomst till sina enheter och ser ditt namn och företag så som Molaplan har verifierat dem.';
+
+  @override
+  String get s9e0dd2426d => 'ID kopierat';
+
+  @override
+  String get s5224946aa1 => 'Dela';
+
+  @override
+  String get s59d0633cbd => 'QR-kod';
+
+  @override
+  String get sacc4275348 => 'Ansök om att bli installatör';
+
+  @override
+  String get s29acd8486c =>
+      'Molaplan kontrollerar ditt namn och företag och ger dig ett installatörs-ID. Du ser resultatet i appen.';
+
+  @override
+  String get s7aa9c1e208 => 'Ditt namn';
+
+  @override
+  String get s9f3d2fa73f => 'Företag';
+
+  @override
+  String get scfe0cd3759 => 't.ex. organisationsnummer eller enskild firma';
+
+  @override
+  String get s483b3a689d => 'Meddelande (valfritt)';
+
+  @override
+  String get sb7dbf1a527 => 'Skicka ansökan';
+
+  @override
+  String get s0b9319b6eb => 'Skriv ditt namn.';
+
+  @override
+  String get s9929adfbf5 => 'Ansökan skickad';
+
+  @override
+  String get s2570b96a0b => 'Är du installatör?';
+
+  @override
+  String s63d8fdf8c2(String p0) {
+    return 'Din installatörsstatus ($p0) har tagits bort och kundåtkomster kan inte användas. Fråga Molaplan: molaplan1@gmail.com.';
+  }
+
+  @override
+  String get s82b8ec7605 =>
+      'Som installatör ser du dina kunders enheter, status och larm i den mån varje kund tillåter. Installatörsstatus beviljas av Molaplan.';
+
+  @override
+  String s563801d51b(String p0) {
+    return 'Ansökan skickad $p0 – väntar på granskning.';
+  }
+
+  @override
+  String get s1247102567 => 'Dra tillbaka';
+
+  @override
+  String get s77f0327b09 => 'Den förra ansökan godkändes inte.';
+
+  @override
+  String get s5e130a714c => 'ID:t har formen MPL-XXX-XXX.';
+
+  @override
+  String get s16d84ef12f =>
+      'Ingen godkänd installatör har detta ID. Kontrollera ID:t med installatören.';
+
+  @override
+  String get s7288dc01b6 => 'Ge åtkomst?';
+
+  @override
+  String get s2013b9940c => 'Spara ändringarna?';
+
+  @override
+  String get sa88745a558 => 'Alla enheter (även sådana som läggs till senare)';
+
+  @override
+  String get sd97ead609e => 'Får styra och ändra inställningar';
+
+  @override
+  String get s8be70baa9c => 'Får styra, inte ändra inställningar';
+
+  @override
+  String get sf2581756af => 'Du kan återkalla åtkomsten när som helst.';
+
+  @override
+  String s9a6818b304(String p0) {
+    return 'Åtkomst given: $p0';
+  }
+
+  @override
+  String get sdb0484d728 => 'Sparat';
+
+  @override
+  String get s52a64a3307 => 'Ge en installatör åtkomst';
+
+  @override
+  String get s2113bddc63 => 'Installatörs-ID';
+
+  @override
+  String get s6d7d0273ad => 'Sök';
+
+  @override
+  String get s36418f769d => 'Skanna installatörens QR-kod';
+
+  @override
+  String get scb4d6b0ddc => 'Installatör verifierad av Molaplan';
+
+  @override
+  String get s95fd3e8dc3 => 'Vad kommer installatören åt?';
+
+  @override
+  String get s0d395a6edd => 'Valda enheter';
+
+  @override
+  String s8affba28ec(String p0) {
+    return '$p0 enheter nu; sådana som läggs till senare ingår.';
+  }
+
+  @override
+  String get sbc76d76351 => 'Får ändra inställningar';
+
+  @override
+  String get s4fa2d2d66c =>
+      'Temperaturer, lägen och andra inställningar. Av: installatören kan styra och se statusen.';
+
+  @override
+  String get s82b62bcb13 => 'Du har inga delbara enheter ännu.';
+
+  @override
+  String get s4e60c0286c =>
+      'Hembryggan kontrollerar behörigheten för varje begäran. Enheternas lösenord och adresser lämnar aldrig hemmet.';
+
+  @override
+  String get sd431b45586 => 'Skriv minst 3 tecken av e-postadressen.';
+
+  @override
+  String get s2162e5cad2 => 'Ingen användare hittades.';
+
+  @override
+  String get s1ec9cc5828 => 'Installatörsstatus';
+
+  @override
+  String get s256fb6b50a => 'Verifierat namn';
+
+  @override
+  String get sd8a8961db3 => 't.ex. enskild firma';
+
+  @override
+  String get sb57dfb696c => 'Anteckning (endast administratörer)';
+
+  @override
+  String get s8ce95234d7 => 'Bevilja';
+
+  @override
+  String get s2eca996a49 => 'Namnet saknas.';
+
+  @override
+  String s5a4c72db4b(String p0, String p1) {
+    return 'Installatör $p0: $p1';
+  }
+
+  @override
+  String get se06acfd38d => 'Ta bort installatörsstatusen?';
+
+  @override
+  String sd35135676e(String p0, String p1, String p2) {
+    return '$p0 ($p1) förlorar installatörsstatusen och all kundåtkomst ($p2) upphör direkt. ID:t behålls om statusen beviljas igen senare.';
+  }
+
+  @override
+  String get se70c0caad3 => 'Ta bort status';
+
+  @override
+  String get s2679477d73 => 'Installatörsstatusen borttagen';
+
+  @override
+  String get s5ea6251452 =>
+      'Bevilja installatörsstatus bara till någon vars namn och företag du har kontrollerat. Samma verktyg finns på molaplan.com/tilaa/hallinta (Asentajat).';
+
+  @override
+  String get sa7380f5e5c => 'Sök användare med e-post';
+
+  @override
+  String get sc023f30da1 => 'namn@exempel.se';
+
+  @override
+  String get s9a7d261596 => 'har inte öppnat appen ännu';
+
+  @override
+  String get sd4f8f15670 => 'installatör';
+
+  @override
+  String get sfee2ce49ea => 'status borttagen';
+
+  @override
+  String get s3ecd52ffc6 => 'Ansökningar';
+
+  @override
+  String get se5c4c1e153 => 'Inga öppna ansökningar.';
+
+  @override
+  String get s052118a469 => 'Godkänn';
+
+  @override
+  String get s493a1eaf08 => 'Decline';
+
+  @override
+  String get sc8ab77f768 => 'Installatörer';
+
+  @override
+  String get s65f12e7e23 => 'kunder';
+
+  @override
+  String get sf36e8af07c => 'Bevilja igen';
+
+  @override
+  String get s0361487148 => 'Ta bort installatörsstatus';
+
+  @override
   String get s55d52c5ae1 => 'Denna enhet är inte på Wi-Fi';
 
   @override
@@ -2914,6 +3228,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s417eb9a875 => 'Ställ in fjärråtkomst';
 
   @override
+  String get s53a9fe5e42 =>
+      'Det finns inget Molaplan-konto med den e-postadressen.';
+
+  @override
   String get sb4bd4baa5c =>
       'Ingen Molaplan-användare med den adressen. De måste logga in på Molaplan 0.9 en gång - eller skicka dem en inbjudningskod.';
 
@@ -2929,8 +3247,11 @@ class AppLocalizationsSv extends AppLocalizations {
       'Lås upp kontohemligheterna på den här enheten först (Konto → Lås upp med lösenord). Delning använder kontonyckeln.';
 
   @override
-  String get s5aee30a4e4 =>
-      'Denna inbjudan är för en installatör: slå på installationsprofilen (Sharing → Advanced).';
+  String get s2855893bfc =>
+      'Inbjudan gäller en installatör och kan bara användas av en installatör som Molaplan har godkänt (Inställningar → Installatör → Ansök).';
+
+  @override
+  String get sb8df145fc9 => 'Bara Molaplans administratörer kan göra detta.';
 
   @override
   String get sa562754cb5 => 'Koden är fel, löpt ut eller redan använt.';
@@ -2997,14 +3318,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s844e081db8 => 'Delande';
 
   @override
-  String get sfb1a18d11f => 'Uppdatera';
-
-  @override
   String get scdfdf5d233 =>
       'Att dela behöver ett Molaplan-konto så att inbjudningar kan nå människor och krypteringsarbeten.';
-
-  @override
-  String get s9bb545e9b3 => 'Logga in eller skapa ett konto';
 
   @override
   String get s85abc4496d =>
@@ -3029,9 +3344,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sdfaf8c242b => 'Godkänn';
 
   @override
-  String get s493a1eaf08 => 'Decline';
-
-  @override
   String get s2fd1394b33 => 'Delad med mig';
 
   @override
@@ -3042,9 +3354,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s33f41d417c => 'Inbjuda kod';
-
-  @override
-  String get s23baecde5b => 'Enheter';
 
   @override
   String get s9cdf3dcc87 => 'Återkalla aktien?';
@@ -3058,19 +3367,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s280e22cbc9 => 'Dela återkallad';
-
-  @override
-  String get s84a6d73d1e => 'Ändra enheter eller rättigheter';
-
-  @override
-  String get s1cf5e3d702 => 'Installationsprofil';
-
-  @override
-  String get s22f8bccc91 =>
-      'Visar installationsmenyn: kunder, deras enheter och larm. En kund ger åtkomst till en kod och kan återkalla den.';
-
-  @override
-  String get se19c5fe8aa => 'Företagsnamn';
 
   @override
   String get sd742357fc8 => 'Ditt namn i aktier';
@@ -3143,13 +3439,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s447da2f746 => 'Inbjuda kod eller länk';
 
   @override
-  String get sdd0f19c6b8 => 'E-post';
-
-  @override
-  String get s6be36f4219 =>
-      'Till en installatör (visar i deras installationsmeny)';
-
-  @override
   String get se7272a5713 => 'Namn för aktien (valfritt)';
 
   @override
@@ -3199,18 +3488,16 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s8debff3196 => 'Visa bild';
 
   @override
-  String get sbd907def5b => 'Installatör';
-
-  @override
-  String get sddd83db201 => 'Lägg till kund';
-
-  @override
   String get s2220ce611a =>
       'Kunder som gav dig tillgång. Du ser bara de delade enheterna och agerar inom de rättigheter som kunden gav – aldrig deras lösenord.';
 
   @override
-  String get s98a90339f4 =>
-      'Inga kunder ännu. Fråga kunden att skapa en installationskod: Dela → Dela enheter → Inbjude kod + Till en installatör.';
+  String get s6f3c62fc03 => 'Din installatörsstatus är inte giltig.';
+
+  @override
+  String s7ebc2621b7(String p0) {
+    return 'Inga kunder ännu. Ge kunden ditt installatörs-ID $p0: kunden öppnar Inställningar → Installatör → Ge åtkomst.';
+  }
 
   @override
   String get sa52cf49adc => 'Väntar på kundens Molaplan för att bekräfta';
@@ -5929,9 +6216,6 @@ class AppLocalizationsSv extends AppLocalizations {
       'Inga kraft- eller energikort (W, kW, Wh, kWh). Lägg till t.ex. en Shelly-mätare.';
 
   @override
-  String get sdb0484d728 => 'Sparat';
-
-  @override
   String get se80021e22a =>
       'Kopiera priserna från din räkning. Skriv dem med eller utan moms - kostnaderna visas båda sätten.';
 
@@ -6481,7 +6765,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get scc3d01ee5e => 'Guider: VPN, Nabu Casa, moln MQTT';
 
   @override
-  String get s0fe7b15d15 => 'Ge någon tillgång till de enheter du väljer.';
+  String get s535358a517 =>
+      'Ge någon, eller en installatör, åtkomst till de enheter du väljer.';
 
   @override
   String get s25c286a743 => 'Delning – ny inbjudan';

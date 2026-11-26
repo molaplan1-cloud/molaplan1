@@ -4734,6 +4734,582 @@ abstract class AppLocalizations {
   /// **'Check the unit id and Modbus settings. Tap to use this address.'**
   String get s9041c140be;
 
+  /// fi: Kaikki laitteet
+  ///
+  /// In en, this message translates to:
+  /// **'All devices'**
+  String get sfe54134176;
+
+  /// fi: laitetta
+  ///
+  /// In en, this message translates to:
+  /// **'devices'**
+  String get s23baecde5b;
+
+  /// fi: ohjaus + asetukset
+  ///
+  /// In en, this message translates to:
+  /// **'control + settings'**
+  String get s776f46ed8d;
+
+  /// fi: ohjaus
+  ///
+  /// In en, this message translates to:
+  /// **'control'**
+  String get sa7cfbebc2f;
+
+  /// fi: Perutaanko asentajan pääsy?
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke the installer\'\'s access?'**
+  String get seff7e04d91;
+
+  /// fi: {p0} ei enää pääse laitteisiisi. Pääsy loppuu heti, kun kotisilta saa tiedon (yleensä saman tien).
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} can no longer reach your devices. Access ends as soon as the home bridge hears of it (usually at once).'**
+  String s633fa022d1(String p0);
+
+  /// fi: Peru pääsy
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke access'**
+  String get sbdfc0cf419;
+
+  /// fi: Pääsy peruttu
+  ///
+  /// In en, this message translates to:
+  /// **'Access revoked'**
+  String get s98b66fc9d8;
+
+  /// fi: Asentaja
+  ///
+  /// In en, this message translates to:
+  /// **'Installer'**
+  String get sbd907def5b;
+
+  /// fi: Päivitä
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
+  String get sfb1a18d11f;
+
+  /// fi: Asentajan pääsy tarvitsee Molaplan-tilin, jotta asentaja tunnistetaan ja salaus toimii.
+  ///
+  /// In en, this message translates to:
+  /// **'Installer access needs a Molaplan account so the installer can be verified and encryption works.'**
+  String get sb9c461d827;
+
+  /// fi: Kirjaudu tai luo tili
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in or create an account'**
+  String get s9bb545e9b3;
+
+  /// fi: Anna asentajalle pääsy laitteisiisi hänen asentajatunnuksellaan (esim. MPL-K7Q-M2X). Molaplan on tarkistanut jokaisen as
+  ///
+  /// In en, this message translates to:
+  /// **'Give an installer access to your devices with their installer ID (e.g. MPL-K7Q-M2X). Molaplan has verified every installer\'\'s name and company. Passwords and addresses never leave home, and you can revoke access at any time.'**
+  String get s523c735938;
+
+  /// fi: Anna pääsy
+  ///
+  /// In en, this message translates to:
+  /// **'Give access'**
+  String get s03be67bc78;
+
+  /// fi: Asentajat, joilla on pääsy
+  ///
+  /// In en, this message translates to:
+  /// **'Installers with access'**
+  String get s65c7781ca3;
+
+  /// fi: Kenelläkään asentajalla ei ole pääsyä.
+  ///
+  /// In en, this message translates to:
+  /// **'No installer has access.'**
+  String get sbb7e4c4c3c;
+
+  /// fi: Muuta laitteita tai oikeuksia
+  ///
+  /// In en, this message translates to:
+  /// **'Change devices or rights'**
+  String get s84a6d73d1e;
+
+  /// fi: Asiakkaani
+  ///
+  /// In en, this message translates to:
+  /// **'My customers'**
+  String get s5fcc7e175d;
+
+  /// fi: Asentajien hallinta
+  ///
+  /// In en, this message translates to:
+  /// **'Manage installers'**
+  String get s44dcd38f2b;
+
+  /// fi: Asentajatunnukseni Molaplanissa: {p0} ({p1}). Anna minulle pääsy: Molaplan → Asetukset → Asentaja → Anna pääsy.
+  ///
+  /// In en, this message translates to:
+  /// **'My Molaplan installer ID: {p0} ({p1}). To give me access: Molaplan → Settings → Installer → Give access.'**
+  String s2f8dd9569b(String p0, String p1);
+
+  /// fi: Kopioi viesti
+  ///
+  /// In en, this message translates to:
+  /// **'Copy the message'**
+  String get s0061cbc425;
+
+  /// fi: Sähköposti
+  ///
+  /// In en, this message translates to:
+  /// **'E-mail'**
+  String get sdd0f19c6b8;
+
+  /// fi: Tekstiviesti
+  ///
+  /// In en, this message translates to:
+  /// **'Text message'**
+  String get sd57398d989;
+
+  /// fi: Viesti kopioitu
+  ///
+  /// In en, this message translates to:
+  /// **'Message copied'**
+  String get s4f09cced25;
+
+  /// fi: Sovellusta ei voitu avata – viesti kopioitiin.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open the app – the message was copied.'**
+  String get s2836191df5;
+
+  /// fi: Asiakas skannaa: Asetukset → Asentaja → Anna pääsy.
+  ///
+  /// In en, this message translates to:
+  /// **'The customer scans it: Settings → Installer → Give access.'**
+  String get sd01e57c279;
+
+  /// fi: Olet Molaplan-asentaja
+  ///
+  /// In en, this message translates to:
+  /// **'You are a Molaplan installer'**
+  String get se83877749c;
+
+  /// fi: Asentajatunnuksesi
+  ///
+  /// In en, this message translates to:
+  /// **'Your installer ID'**
+  String get s014468e53e;
+
+  /// fi: Anna tunnus asiakkaalle. Hän avaa sillä pääsyn laitteisiinsa ja näkee nimesi ja yrityksesi Molaplanin vahvistamina.
+  ///
+  /// In en, this message translates to:
+  /// **'Give the ID to your customer. They open access to their devices with it and see your name and company as verified by Molaplan.'**
+  String get s973ddbcd3b;
+
+  /// fi: Tunnus kopioitu
+  ///
+  /// In en, this message translates to:
+  /// **'ID copied'**
+  String get s9e0dd2426d;
+
+  /// fi: Jaa
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get s5224946aa1;
+
+  /// fi: QR-koodi
+  ///
+  /// In en, this message translates to:
+  /// **'QR code'**
+  String get s59d0633cbd;
+
+  /// fi: Hae asentajaksi
+  ///
+  /// In en, this message translates to:
+  /// **'Apply to be an installer'**
+  String get sacc4275348;
+
+  /// fi: Molaplan tarkistaa nimesi ja yrityksesi ja myöntää asentajatunnuksen. Saat tiedon sovellukseen.
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan checks your name and company and gives you an installer ID. You will see the result in the app.'**
+  String get s29acd8486c;
+
+  /// fi: Nimesi
+  ///
+  /// In en, this message translates to:
+  /// **'Your name'**
+  String get s7aa9c1e208;
+
+  /// fi: Yritys
+  ///
+  /// In en, this message translates to:
+  /// **'Company'**
+  String get s9f3d2fa73f;
+
+  /// fi: esim. Y-tunnus tai Kevytyrittäjä
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. business ID or sole trader'**
+  String get scfe0cd3759;
+
+  /// fi: Viesti (valinnainen)
+  ///
+  /// In en, this message translates to:
+  /// **'Message (optional)'**
+  String get s483b3a689d;
+
+  /// fi: Lähetä hakemus
+  ///
+  /// In en, this message translates to:
+  /// **'Send application'**
+  String get sb7dbf1a527;
+
+  /// fi: Kirjoita nimesi.
+  ///
+  /// In en, this message translates to:
+  /// **'Type your name.'**
+  String get s0b9319b6eb;
+
+  /// fi: Hakemus lähetetty
+  ///
+  /// In en, this message translates to:
+  /// **'Application sent'**
+  String get s9929adfbf5;
+
+  /// fi: Oletko asentaja?
+  ///
+  /// In en, this message translates to:
+  /// **'Are you an installer?'**
+  String get s2570b96a0b;
+
+  /// fi: Asentajan tilasi ({p0}) on poistettu, eikä asiakkaiden pääsyjä voi käyttää. Kysy lisää Molaplanilta: molaplan1@gmail.com
+  ///
+  /// In en, this message translates to:
+  /// **'Your installer status ({p0}) was removed and customer access cannot be used. Ask Molaplan: molaplan1@gmail.com.'**
+  String s63d8fdf8c2(String p0);
+
+  /// fi: Asentajana näet asiakkaidesi laitteet, tilan ja hälytykset sillä laajuudella kuin asiakas sallii. Asentajan tilan myöntä
+  ///
+  /// In en, this message translates to:
+  /// **'As an installer you see your customers\'\' devices, status and alarms as far as each customer allows. Molaplan grants the installer status.'**
+  String get s82b8ec7605;
+
+  /// fi: Hakemus lähetetty {p0} – odottaa käsittelyä.
+  ///
+  /// In en, this message translates to:
+  /// **'Application sent {p0} – waiting for review.'**
+  String s563801d51b(String p0);
+
+  /// fi: Peru hakemus
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw'**
+  String get s1247102567;
+
+  /// fi: Edellistä hakemusta ei hyväksytty.
+  ///
+  /// In en, this message translates to:
+  /// **'The previous application was not approved.'**
+  String get s77f0327b09;
+
+  /// fi: Tunnus on muotoa MPL-XXX-XXX.
+  ///
+  /// In en, this message translates to:
+  /// **'The ID looks like MPL-XXX-XXX.'**
+  String get s5e130a714c;
+
+  /// fi: Tunnuksella ei löytynyt hyväksyttyä asentajaa. Tarkista tunnus asentajalta.
+  ///
+  /// In en, this message translates to:
+  /// **'No approved installer has this ID. Check the ID with the installer.'**
+  String get s16d84ef12f;
+
+  /// fi: Annetaanko pääsy?
+  ///
+  /// In en, this message translates to:
+  /// **'Give access?'**
+  String get s7288dc01b6;
+
+  /// fi: Tallennetaanko muutokset?
+  ///
+  /// In en, this message translates to:
+  /// **'Save the changes?'**
+  String get s2013b9940c;
+
+  /// fi: Kaikki laitteet (myös myöhemmin lisättävät)
+  ///
+  /// In en, this message translates to:
+  /// **'All devices (also ones added later)'**
+  String get sa88745a558;
+
+  /// fi: Saa ohjata ja muuttaa asetuksia
+  ///
+  /// In en, this message translates to:
+  /// **'May control and change settings'**
+  String get sd97ead609e;
+
+  /// fi: Saa ohjata, ei muuttaa asetuksia
+  ///
+  /// In en, this message translates to:
+  /// **'May control, not change settings'**
+  String get s8be70baa9c;
+
+  /// fi: Voit perua pääsyn milloin vain.
+  ///
+  /// In en, this message translates to:
+  /// **'You can revoke access at any time.'**
+  String get sf2581756af;
+
+  /// fi: Pääsy annettu: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Access given: {p0}'**
+  String s9a6818b304(String p0);
+
+  /// fi: Tallennettu
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get sdb0484d728;
+
+  /// fi: Anna pääsy asentajalle
+  ///
+  /// In en, this message translates to:
+  /// **'Give an installer access'**
+  String get s52a64a3307;
+
+  /// fi: Asentajan tunnus
+  ///
+  /// In en, this message translates to:
+  /// **'Installer ID'**
+  String get s2113bddc63;
+
+  /// fi: Hae
+  ///
+  /// In en, this message translates to:
+  /// **'Find'**
+  String get s6d7d0273ad;
+
+  /// fi: Skannaa asentajan QR-koodi
+  ///
+  /// In en, this message translates to:
+  /// **'Scan the installer\'\'s QR code'**
+  String get s36418f769d;
+
+  /// fi: Molaplanin vahvistama asentaja
+  ///
+  /// In en, this message translates to:
+  /// **'Installer verified by Molaplan'**
+  String get scb4d6b0ddc;
+
+  /// fi: Mihin asentaja pääsee?
+  ///
+  /// In en, this message translates to:
+  /// **'What can the installer reach?'**
+  String get s95fd3e8dc3;
+
+  /// fi: Valitut laitteet
+  ///
+  /// In en, this message translates to:
+  /// **'Selected devices'**
+  String get s0d395a6edd;
+
+  /// fi: {p0} laitetta nyt, myöhemmin lisättävät tulevat mukaan.
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} devices now; ones added later are included.'**
+  String s8affba28ec(String p0);
+
+  /// fi: Saa muuttaa asetuksia
+  ///
+  /// In en, this message translates to:
+  /// **'May change settings'**
+  String get sbc76d76351;
+
+  /// fi: Lämpötilat, toimintatilat ja muut asetukset. Pois päältä: asentaja voi ohjata ja katsoa tilaa.
+  ///
+  /// In en, this message translates to:
+  /// **'Temperatures, modes and other settings. Off: the installer can control and see the status.'**
+  String get s4fa2d2d66c;
+
+  /// fi: Sinulla ei ole vielä jaettavia laitteita.
+  ///
+  /// In en, this message translates to:
+  /// **'You have no shareable devices yet.'**
+  String get s82b62bcb13;
+
+  /// fi: Kotisilta tarkistaa jokaisen pyynnön oikeudet. Laitteiden salasanat ja osoitteet eivät lähde kotoa.
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge checks the rights of every request. Device passwords and addresses never leave home.'**
+  String get s4e60c0286c;
+
+  /// fi: Kirjoita vähintään 3 merkkiä sähköpostista.
+  ///
+  /// In en, this message translates to:
+  /// **'Type at least 3 characters of the e-mail.'**
+  String get sd431b45586;
+
+  /// fi: Käyttäjää ei löytynyt.
+  ///
+  /// In en, this message translates to:
+  /// **'No user found.'**
+  String get s2162e5cad2;
+
+  /// fi: Asentajan tila
+  ///
+  /// In en, this message translates to:
+  /// **'Installer status'**
+  String get s1ec9cc5828;
+
+  /// fi: Vahvistettu nimi
+  ///
+  /// In en, this message translates to:
+  /// **'Verified name'**
+  String get s256fb6b50a;
+
+  /// fi: esim. Kevytyrittäjä
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. sole trader'**
+  String get sd8a8961db3;
+
+  /// fi: Muistiinpano (vain ylläpito)
+  ///
+  /// In en, this message translates to:
+  /// **'Note (admins only)'**
+  String get sb57dfb696c;
+
+  /// fi: Myönnä
+  ///
+  /// In en, this message translates to:
+  /// **'Grant'**
+  String get s8ce95234d7;
+
+  /// fi: Nimi puuttuu.
+  ///
+  /// In en, this message translates to:
+  /// **'The name is missing.'**
+  String get s2eca996a49;
+
+  /// fi: Asentaja {p0}: {p1}
+  ///
+  /// In en, this message translates to:
+  /// **'Installer {p0}: {p1}'**
+  String s5a4c72db4b(String p0, String p1);
+
+  /// fi: Poistetaanko asentajan tila?
+  ///
+  /// In en, this message translates to:
+  /// **'Remove the installer status?'**
+  String get se06acfd38d;
+
+  /// fi: {p0} ({p1}) menettää asentajan tilan, ja kaikki asiakkaiden antamat pääsyt ({p2}) katkeavat heti. Tunnus säilyy, jos til
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} ({p1}) loses the installer status and all customer access ({p2}) ends at once. The ID stays if the status is granted again later.'**
+  String sd35135676e(String p0, String p1, String p2);
+
+  /// fi: Poista tila
+  ///
+  /// In en, this message translates to:
+  /// **'Remove status'**
+  String get se70c0caad3;
+
+  /// fi: Asentajan tila poistettu
+  ///
+  /// In en, this message translates to:
+  /// **'Installer status removed'**
+  String get s2679477d73;
+
+  /// fi: Myönnä asentajan tila vain henkilölle, jonka nimen ja yrityksen olet tarkistanut. Sama hallinta on myös osoitteessa mola
+  ///
+  /// In en, this message translates to:
+  /// **'Grant the installer status only to someone whose name and company you have checked. The same tools are at molaplan.com/tilaa/hallinta (Installers).'**
+  String get s5ea6251452;
+
+  /// fi: Hae käyttäjä sähköpostilla
+  ///
+  /// In en, this message translates to:
+  /// **'Find a user by e-mail'**
+  String get sa7380f5e5c;
+
+  /// fi: nimi@esimerkki.fi
+  ///
+  /// In en, this message translates to:
+  /// **'name@example.com'**
+  String get sc023f30da1;
+
+  /// fi: ei ole vielä avannut sovellusta
+  ///
+  /// In en, this message translates to:
+  /// **'has not opened the app yet'**
+  String get s9a7d261596;
+
+  /// fi: asentaja
+  ///
+  /// In en, this message translates to:
+  /// **'installer'**
+  String get sd4f8f15670;
+
+  /// fi: tila poistettu
+  ///
+  /// In en, this message translates to:
+  /// **'status removed'**
+  String get sfee2ce49ea;
+
+  /// fi: Hakemukset
+  ///
+  /// In en, this message translates to:
+  /// **'Applications'**
+  String get s3ecd52ffc6;
+
+  /// fi: Ei avoimia hakemuksia.
+  ///
+  /// In en, this message translates to:
+  /// **'No open applications.'**
+  String get se5c4c1e153;
+
+  /// fi: Hyväksy
+  ///
+  /// In en, this message translates to:
+  /// **'Approve'**
+  String get s052118a469;
+
+  /// fi: Hylkää
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get s493a1eaf08;
+
+  /// fi: Asentajat
+  ///
+  /// In en, this message translates to:
+  /// **'Installers'**
+  String get sc8ab77f768;
+
+  /// fi: asiakasta
+  ///
+  /// In en, this message translates to:
+  /// **'customers'**
+  String get s65f12e7e23;
+
+  /// fi: Myönnä uudelleen
+  ///
+  /// In en, this message translates to:
+  /// **'Grant again'**
+  String get sf36e8af07c;
+
+  /// fi: Poista asentajan tila
+  ///
+  /// In en, this message translates to:
+  /// **'Remove installer status'**
+  String get s0361487148;
+
   /// fi: Tämä laite ei ole yhteydessä wifiin
   ///
   /// In en, this message translates to:
@@ -5276,6 +5852,12 @@ abstract class AppLocalizations {
   /// **'Set up remote access'**
   String get s417eb9a875;
 
+  /// fi: Sähköpostilla ei ole Molaplan-tiliä.
+  ///
+  /// In en, this message translates to:
+  /// **'There is no Molaplan account with that e-mail.'**
+  String get s53a9fe5e42;
+
   /// fi: Osoitteella ei löytynyt Molaplan-käyttäjää. Hänen pitää kirjautua Molaplan 0.9:ään kerran – tai lähetä hänelle kutsukood
   ///
   /// In en, this message translates to:
@@ -5300,11 +5882,17 @@ abstract class AppLocalizations {
   /// **'Unlock the account secrets on this device first (Account → Unlock with password). Sharing uses the account key.'**
   String get s5ea320fb1c;
 
-  /// fi: Tämä on asentajan kutsu: ota asentajaprofiili käyttöön (Jakaminen → Edistyneet).
+  /// fi: Tämä on asentajan kutsu, ja sen voi käyttää vain Molaplanin hyväksymä asentaja (Asetukset → Asentaja → Hae asentajaksi).
   ///
   /// In en, this message translates to:
-  /// **'This invite is for an installer: turn on the installer profile (Sharing → Advanced).'**
-  String get s5aee30a4e4;
+  /// **'This invite is for an installer and only an installer approved by Molaplan can use it (Settings → Installer → Apply).'**
+  String get s2855893bfc;
+
+  /// fi: Vain Molaplanin ylläpito voi tehdä tämän.
+  ///
+  /// In en, this message translates to:
+  /// **'Only Molaplan admins can do this.'**
+  String get sb8df145fc9;
 
   /// fi: Koodi on väärä, vanhentunut tai jo käytetty.
   ///
@@ -5426,23 +6014,11 @@ abstract class AppLocalizations {
   /// **'Sharing'**
   String get s844e081db8;
 
-  /// fi: Päivitä
-  ///
-  /// In en, this message translates to:
-  /// **'Refresh'**
-  String get sfb1a18d11f;
-
   /// fi: Jakaminen tarvitsee Molaplan-tilin, jotta kutsut löytävät perille ja salaus toimii.
   ///
   /// In en, this message translates to:
   /// **'Sharing needs a Molaplan account so invites can reach people and encryption works.'**
   String get scdfdf5d233;
-
-  /// fi: Kirjaudu tai luo tili
-  ///
-  /// In en, this message translates to:
-  /// **'Sign in or create an account'**
-  String get s9bb545e9b3;
 
   /// fi: Anna perheenjäsenelle, naapurille tai asentajalle pääsy valitsemiisi laitteisiin. Salasanat ja osoitteet eivät lähde kot
   ///
@@ -5486,12 +6062,6 @@ abstract class AppLocalizations {
   /// **'Accept'**
   String get sdfaf8c242b;
 
-  /// fi: Hylkää
-  ///
-  /// In en, this message translates to:
-  /// **'Decline'**
-  String get s493a1eaf08;
-
   /// fi: Jaettu minulle
   ///
   /// In en, this message translates to:
@@ -5516,12 +6086,6 @@ abstract class AppLocalizations {
   /// **'Invite code'**
   String get s33f41d417c;
 
-  /// fi: laitetta
-  ///
-  /// In en, this message translates to:
-  /// **'devices'**
-  String get s23baecde5b;
-
   /// fi: Perutaanko jako?
   ///
   /// In en, this message translates to:
@@ -5545,30 +6109,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Share revoked'**
   String get s280e22cbc9;
-
-  /// fi: Muuta laitteita tai oikeuksia
-  ///
-  /// In en, this message translates to:
-  /// **'Change devices or rights'**
-  String get s84a6d73d1e;
-
-  /// fi: Asentajaprofiili
-  ///
-  /// In en, this message translates to:
-  /// **'Installer profile'**
-  String get s1cf5e3d702;
-
-  /// fi: Näyttää Asentaja-valikon: asiakkaat, heidän laitteensa ja hälytykset. Asiakas antaa pääsyn koodilla ja voi perua sen.
-  ///
-  /// In en, this message translates to:
-  /// **'Shows the Installer menu: customers, their devices and alarms. A customer grants access with a code and can revoke it.'**
-  String get s22f8bccc91;
-
-  /// fi: Yrityksen nimi
-  ///
-  /// In en, this message translates to:
-  /// **'Company name'**
-  String get se19c5fe8aa;
 
   /// fi: Nimesi jaoissa
   ///
@@ -5696,18 +6236,6 @@ abstract class AppLocalizations {
   /// **'Invite code or link'**
   String get s447da2f746;
 
-  /// fi: Sähköposti
-  ///
-  /// In en, this message translates to:
-  /// **'E-mail'**
-  String get sdd0f19c6b8;
-
-  /// fi: Asentajalle (näkyy hänen Asentaja-valikossaan)
-  ///
-  /// In en, this message translates to:
-  /// **'To an installer (shows in their Installer menu)'**
-  String get s6be36f4219;
-
   /// fi: Nimi jaolle (valinnainen)
   ///
   /// In en, this message translates to:
@@ -5804,29 +6332,23 @@ abstract class AppLocalizations {
   /// **'Show picture'**
   String get s8debff3196;
 
-  /// fi: Asentaja
-  ///
-  /// In en, this message translates to:
-  /// **'Installer'**
-  String get sbd907def5b;
-
-  /// fi: Lisää asiakas
-  ///
-  /// In en, this message translates to:
-  /// **'Add customer'**
-  String get sddd83db201;
-
   /// fi: Asiakkaasi, jotka ovat antaneet sinulle pääsyn. Näet vain jaetut laitteet ja toimit asiakkaan antamin oikeuksin – salasa
   ///
   /// In en, this message translates to:
   /// **'Customers who gave you access. You see only the shared devices and act within the rights the customer gave – never their passwords.'**
   String get s2220ce611a;
 
-  /// fi: Ei asiakkaita vielä. Pyydä asiakasta luomaan asentajakoodi: Jakaminen → Jaa laitteita → Kutsukoodi + Asentajalle.
+  /// fi: Asentajan tilasi ei ole voimassa.
   ///
   /// In en, this message translates to:
-  /// **'No customers yet. Ask the customer to create an installer code: Sharing → Share devices → Invite code + To an installer.'**
-  String get s98a90339f4;
+  /// **'Your installer status is not valid.'**
+  String get s6f3c62fc03;
+
+  /// fi: Ei asiakkaita vielä. Anna asiakkaalle asentajatunnuksesi {p0}: asiakas avaa Asetukset → Asentaja → Anna pääsy.
+  ///
+  /// In en, this message translates to:
+  /// **'No customers yet. Give your customer your installer ID {p0}: they open Settings → Installer → Give access.'**
+  String s7ebc2621b7(String p0);
 
   /// fi: Odottaa asiakkaan Molaplanin vahvistusta
   ///
@@ -10703,12 +11225,6 @@ abstract class AppLocalizations {
   /// **'No power or energy tiles (W, kW, Wh, kWh). Add e.g. a Shelly meter.'**
   String get s9a3a0d414e;
 
-  /// fi: Tallennettu
-  ///
-  /// In en, this message translates to:
-  /// **'Saved'**
-  String get sdb0484d728;
-
   /// fi: Katso hinnat sähkölaskusta. Voit kirjoittaa ne verollisina tai verottomina – kustannukset näytetään molempina.
   ///
   /// In en, this message translates to:
@@ -11711,11 +12227,11 @@ abstract class AppLocalizations {
   /// **'Guides: VPN, Nabu Casa, cloud MQTT'**
   String get scc3d01ee5e;
 
-  /// fi: Anna toiselle pääsy valitsemiisi laitteisiin.
+  /// fi: Anna toiselle tai asentajalle pääsy valitsemiisi laitteisiin.
   ///
   /// In en, this message translates to:
-  /// **'Give someone access to the devices you choose.'**
-  String get s0fe7b15d15;
+  /// **'Give someone, or an installer, access to the devices you choose.'**
+  String get s535358a517;
 
   /// fi: Jakaminen – uusi kutsu
   ///

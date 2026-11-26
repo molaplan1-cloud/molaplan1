@@ -22,6 +22,7 @@ import 'guides_page.dart';
 import 'onboarding_page.dart';
 import 'remote_pages.dart';
 import 'share_pages.dart';
+import 'installer_pages.dart';
 import 'update_ui.dart';
 import '../version.dart';
 import 'language_picker.dart';
@@ -364,8 +365,8 @@ class _SettingsPageState extends State<SettingsPage> {
               Text(
                 tx(
                   context,
-                  'Anna toiselle pääsy valitsemiisi laitteisiin.',
-                  'Give someone access to the devices you choose.',
+                  'Anna toiselle tai asentajalle pääsy valitsemiisi laitteisiin.',
+                  'Give someone, or an installer, access to the devices you choose.',
                 ),
                 style: text.bodySmall,
               ),
@@ -388,14 +389,15 @@ class _SettingsPageState extends State<SettingsPage> {
                           : tx(context, 'Jakaminen', 'Sharing'),
                     ),
                   ),
-                  if (st.sharing.installer)
-                    OutlinedButton.icon(
-                      key: const ValueKey('settings-installer'),
-                      onPressed: () =>
-                          Navigator.push(context, MaterialPageRoute(builder: (_) => const InstallerPage())),
-                      icon: const Icon(Icons.engineering_outlined),
-                      label: Text(tx(context, 'Asentaja', 'Installer')),
-                    ),
+                  // R258: customers give an installer access here; approved installers find
+                  // their ID and customers here too.
+                  OutlinedButton.icon(
+                    key: const ValueKey('settings-installer'),
+                    onPressed: () =>
+                        Navigator.push(context, MaterialPageRoute(builder: (_) => const InstallerHubPage())),
+                    icon: const Icon(Icons.engineering_outlined),
+                    label: Text(tx(context, 'Asentaja', 'Installer')),
+                  ),
                 ],
               ),
               const SizedBox(height: 28),

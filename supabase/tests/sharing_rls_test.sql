@@ -45,8 +45,14 @@ select pg_temp.expect_rows($q$ select * from public.profiles $q$, 1, 'profiles: 
 reset role;
 
 select pg_temp.as_user('00000000-0000-0000-0000-0000000000c3');
-insert into public.profiles (display_name, share_pub, installer, company) values ('Asentaja', repeat('C', 43), true, 'Lämpö Oy');
+-- R256: a user cannot make themselves an installer any more; an admin grants it (here: directly as the DB owner).
+select pg_temp.expect_fail($q$ insert into public.profiles (display_name, share_pub, installer) values ('Asentaja', repeat('C', 43), true) $q$,
+  'self-made installer profile');
+insert into public.profiles (display_name, share_pub) values ('Asentaja', repeat('C', 43));
+select pg_temp.expect_fail($q$ update public.profiles set installer = true, company = 'Fake Oy' $q$, 'self-enable installer');
 reset role;
+insert into public.installers (user_id, public_id, display_name, company)
+values ('00000000-0000-0000-0000-0000000000c3', 'MPL-AAA-CCC', 'Asentaja', 'Lämpö Oy');
 
 select pg_temp.as_user('00000000-0000-0000-0000-0000000000d4');
 insert into public.profiles (display_name, share_pub) values ('Stranger', repeat('D', 43));
@@ -118,7 +124,7 @@ select pg_temp.as_user('00000000-0000-0000-0000-0000000000c3');
 select pg_temp.expect_fail($q$ select public.claim_invite(repeat('cd', 32)) $q$, 'expired code');
 select pg_temp.expect_fail($q$ select public.claim_invite(repeat('ef', 32)) $q$, 'unknown code');
 select public.claim_invite(repeat('ab', 32));
-select pg_temp.expect_rows($q$ select * from public.shares where status = 'claimed' and recipient_pub = repeat('C', 43) and recipient_name = 'Lämpö Oy' and code_hash is null $q$,
+select pg_temp.expect_rows($q$ select * from public.shares where status = 'claimed' and recipient_pub = repeat('C', 43) and recipient_name = 'Lämpö Oy · Asentaja' and code_hash is null $q$,
   1, 'claimed by installer, code used up');
 reset role;
 -- single use

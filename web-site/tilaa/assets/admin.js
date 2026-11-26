@@ -1,4 +1,4 @@
-// Molaplan order shop – admin (orders, products, settings). Finnish only, mobile-first.
+// Molaplan order shop – admin (orders, products, installers, settings). Finnish only, mobile-first.
 import { API, IMG_BASE, LOGO, ICONS, esc, eur, toast, sb, shrinkImage } from './common.js';
 
 const $ = (id) => document.getElementById(id);
@@ -90,7 +90,7 @@ async function afterLogin() {
   }
   me = session.user.email;
   $('tabs').hidden = false;
-  await Promise.all([loadOrders(), loadSettings()]);
+  await Promise.all([loadOrders(), loadSettings(), loadApplications()]);
   window.addEventListener('hashchange', route);
   clearInterval(pollTimer);
   pollTimer = setInterval(async () => { const n = orders.length; await loadOrders(); if (orders.length > n) { toast('Uusi tilaus!'); route(); } else updateBadge(); }, 60000);
@@ -122,10 +122,11 @@ function updateBadge() {
 // --- routing -------------------------------------------------------------------------------------
 function route() {
   const h = location.hash || '#tilaukset';
-  const tab = h.startsWith('#tuotteet') ? 'tuotteet' : h.startsWith('#asetukset') ? 'asetukset' : 'tilaukset';
+  const tab = h.startsWith('#tuotteet') ? 'tuotteet' : h.startsWith('#asetukset') ? 'asetukset' : h.startsWith('#asentajat') ? 'asentajat' : 'tilaukset';
   document.querySelectorAll('#tabs a').forEach((a) => a.classList.toggle('on', a.dataset.tab === tab));
   if (tab === 'tuotteet') return renderProducts();
   if (tab === 'asetukset') return renderSettings();
+  if (tab === 'asentajat') return renderInstallers();
   const m = h.match(/tilaus=([0-9a-f-]{36})/);
   renderOrders(m ? m[1] : null);
 }
@@ -450,6 +451,130 @@ function editProduct(p) {
     d.close(); renderProducts();
   });
   d.showModal();
+}
+
+// --- installers (R256–R262) ----------------------------------------------------------------------
+// Only admins grant the installer status. The server (SECURITY DEFINER RPCs + RLS) enforces it; this
+// page just calls them. Revoking ends every customer access of that installer at once.
+let installers = [];
+let applications = [];
+let userHits = null;
+const instSt = { active: 'Voimassa', revoked: 'Poistettu' };
+
+async function loadApplications() {
+  const { data, error } = await sb().rpc('admin_list_installer_applications');
+  applications = error ? [] : (data || []);
+  const n = applications.filter((a) => a.status === 'new').length;
+  $('appCount').hidden = n === 0;
+  $('appCount').textContent = n;
+}
+async function loadInstallers() {
+  const { data, error } = await sb().rpc('admin_list_installers');
+  if (error) throw new Error(error.message);
+  installers = data || [];
+}
+const errText = (e) => {
+  const m = String(e?.message || e || '');
+  if (m.includes('no Molaplan account')) return 'Tällä sähköpostilla ei ole Molaplan-tiliä.';
+  if (m.includes('admin only')) return 'Vain ylläpitäjä voi tehdä tämän.';
+  return m;
+};
+
+async function renderInstallers() {
+  app().innerHTML = '<div class="empty">Ladataan…</div>';
+  try { await Promise.all([loadInstallers(), loadApplications()]); } catch (e) {
+    app().innerHTML = `<div class="err">Asentajia ei voitu ladata: ${esc(errText(e))}</div>`; return;
+  }
+  const open = applications.filter((a) => a.status === 'new');
+  const hit = (u) => `<div class="prow inst">
+      <div><b>${esc(u.email)}</b>${u.display_name ? ` · ${esc(u.display_name)}` : ''}
+        <div class="muted">${u.has_app ? '' : 'ei ole vielä avannut sovellusta · '}${u.installer_status ? `asentaja: ${instSt[u.installer_status] || esc(u.installer_status)} ${esc(u.public_id || '')}` : 'ei asentaja'}</div></div>
+      <div class="acts"><button class="btn small" type="button" data-grant="${esc(u.email)}" data-name="${esc(u.display_name || '')}">${u.installer_status === 'active' ? 'Muokkaa' : 'Myönnä'}</button></div></div>`;
+  app().innerHTML = `<div class="form" id="instPage" style="max-width:760px;padding:18px 0 50px">
+    <h2 style="margin:0">Asentajat</h2>
+    <div class="muted">Myönnä asentajan oikeus vain, kun olet tarkistanut nimen ja yrityksen. Asiakas antaa asentajalle pääsyn asentajatunnuksella (esim. MPL-K7Q-M2X) ja näkee nämä tiedot. Oikeuden poisto katkaisee heti kaikki asentajan asiakaspääsyt.</div>
+    <div class="panel form">
+      <h2 style="font-size:17px;margin:0">Hae käyttäjä sähköpostilla</h2>
+      <div style="display:flex;gap:8px"><input id="ue" type="search" inputmode="email" placeholder="nimi@esimerkki.fi"><button class="btn" type="button" id="ufind">Hae</button></div>
+      <div id="uhits" class="plist" style="padding:0">${userHits == null ? '' : userHits.length ? userHits.map(hit).join('') : '<div class="muted">Käyttäjää ei löytynyt.</div>'}</div>
+    </div>
+    <div class="panel form">
+      <h2 style="font-size:17px;margin:0">Hakemukset${open.length ? ` (${open.length})` : ''}</h2>
+      ${open.length ? open.map((a) => `<div class="prow inst">
+        <div><b>${esc(a.display_name)}</b>${a.company ? ` · ${esc(a.company)}` : ''}<div class="muted">${esc(a.email)} · ${fmtDate(a.created_at)}</div>${a.message ? `<div class="pre" style="margin-top:4px">${esc(a.message)}</div>` : ''}</div>
+        <div class="acts"><button class="btn small primary" type="button" data-approve="${a.id}">Hyväksy</button><button class="btn small ghost danger" type="button" data-decline="${a.id}">Hylkää</button></div></div>`).join('') : '<div class="muted">Ei avoimia hakemuksia.</div>'}
+    </div>
+    <div class="panel form">
+      <h2 style="font-size:17px;margin:0">Hyväksytyt asentajat</h2>
+      ${installers.length ? installers.map((i) => `<div class="prow inst ${i.status === 'active' ? '' : 'hid'}">
+        <div><b class="mono">${esc(i.public_id)}</b> <span class="pill ${i.status === 'active' ? 'st-maksettu' : 'st-peruttu'}">${instSt[i.status] || esc(i.status)}</span>
+          <div><b>${esc(i.display_name)}</b>${i.company ? ` · ${esc(i.company)}` : ''}</div>
+          <div class="muted">${esc(i.email || '')} · asiakkaita ${i.customers ?? 0} · myönnetty ${fmtDate(i.granted_at)}${i.revoked_at && i.status !== 'active' ? ` · poistettu ${fmtDate(i.revoked_at)}` : ''}</div>
+          ${i.note ? `<div class="muted pre">Muistiinpano: ${esc(i.note)}</div>` : ''}</div>
+        <div class="acts"><button class="btn small" type="button" data-edit="${i.user_id}">${i.status === 'active' ? 'Muokkaa' : 'Myönnä uudelleen'}</button>
+          ${i.status === 'active' ? `<button class="btn small ghost danger" type="button" data-revoke="${i.user_id}">Poista oikeus</button>` : ''}</div></div>`).join('') : '<div class="muted">Ei vielä asentajia.</div>'}
+    </div>
+  </div>`;
+  const find = async () => {
+    const q = $('ue').value.trim();
+    if (q.length < 3) return toast('Kirjoita vähintään 3 merkkiä sähköpostista.');
+    const { data, error } = await sb().rpc('admin_find_user', { p_email: q });
+    if (error) return toast(`Virhe: ${errText(error)}`, 4000);
+    userHits = data || [];
+    renderInstallers().then(() => { $('ue').value = q; });
+  };
+  $('ufind').onclick = find;
+  $('ue').onkeydown = (e) => { if (e.key === 'Enter') find(); };
+  $('instPage').onclick = async (e) => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    if (b.dataset.grant != null) {
+      const cur = installers.find((i) => i.email === b.dataset.grant);
+      return grantDialog({ email: b.dataset.grant, display_name: cur?.display_name || b.dataset.name, company: cur?.company || '', note: cur?.note || '' });
+    }
+    if (b.dataset.edit) return grantDialog(installers.find((i) => i.user_id === b.dataset.edit));
+    if (b.dataset.approve) {
+      const a = applications.find((x) => x.id === b.dataset.approve);
+      return grantDialog({ email: a.email, display_name: a.display_name, company: a.company, note: a.message ? `Hakemus: ${a.message}` : '' });
+    }
+    if (b.dataset.decline) {
+      if (!confirm('Hylätäänkö hakemus? Hakija näkee, ettei sitä hyväksytty.')) return;
+      const { error } = await sb().rpc('admin_decline_installer_application', { p_id: b.dataset.decline });
+      if (error) return toast(`Virhe: ${errText(error)}`, 4000);
+      toast('Hakemus hylätty'); return renderInstallers();
+    }
+    if (b.dataset.revoke) {
+      const i = installers.find((x) => x.user_id === b.dataset.revoke);
+      if (!confirm(`Poistetaanko asentajan oikeus: ${i.display_name} (${i.public_id})?\n\nKaikki asentajan asiakaspääsyt (${i.customers ?? 0}) katkeavat heti. Tunnus säilyy, jos oikeus myönnetään myöhemmin uudelleen.`)) return;
+      const { error } = await sb().rpc('admin_revoke_installer', { p_user: i.user_id });
+      if (error) return toast(`Virhe: ${errText(error)}`, 4000);
+      userHits = null; toast('Asentajan oikeus poistettu'); return renderInstallers();
+    }
+  };
+}
+
+function grantDialog(cur) {
+  const d = $('dlg');
+  d.className = '';
+  d.innerHTML = `<form method="dialog" class="form" style="padding:18px;min-width:min(440px,90vw)">
+    <h2 style="margin:0;font-size:19px">Asentajan oikeus</h2>
+    <div class="muted">${esc(cur.email)}${cur.public_id ? ` · ${esc(cur.public_id)}` : ''}</div>
+    <div class="field"><label for="gn">Tarkistettu nimi</label><input id="gn" type="text" maxlength="80" value="${esc(cur.display_name || '')}"></div>
+    <div class="field"><label for="gc">Yritys</label><input id="gc" type="text" maxlength="80" value="${esc(cur.company || '')}" placeholder="esim. Kevytyrittäjä"><div class="hint">Asiakas näkee nimen ja yrityksen.</div></div>
+    <div class="field"><label for="gt">Muistiinpano (vain ylläpito)</label><textarea id="gt" rows="2" maxlength="500">${esc(cur.note || '')}</textarea></div>
+    <div id="gerr" class="err" hidden></div>
+    <div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn ghost" value="cancel" type="submit">Peruuta</button><button class="btn primary" type="button" id="gok">Myönnä</button></div>
+  </form>`;
+  d.showModal();
+  $('gok').onclick = async () => {
+    const name = $('gn').value.trim();
+    if (!name) { $('gerr').hidden = false; $('gerr').textContent = 'Nimi puuttuu.'; return; }
+    const { data, error } = await sb().rpc('admin_grant_installer', { p_email: cur.email, p_display_name: name, p_company: $('gc').value.trim(), p_note: $('gt').value.trim() });
+    if (error) { $('gerr').hidden = false; $('gerr').textContent = errText(error); return; }
+    d.close(); userHits = null;
+    toast(`Asentaja ${data?.public_id || ''}: ${name}`, 4000);
+    renderInstallers();
+  };
 }
 
 // --- settings ------------------------------------------------------------------------------------

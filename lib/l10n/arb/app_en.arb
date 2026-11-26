@@ -4149,6 +4149,538 @@
   "description": "fi: Tarkista laitteen unit id ja Modbus-asetukset. Napauta käyttääksesi tätä osoitetta.",
   "x-where": "ui/modbus_scan_page.dart:224"
  },
+ "sfe54134176": "All devices",
+ "@sfe54134176": {
+  "description": "fi: Kaikki laitteet",
+  "x-where": "ui/installer_pages.dart:27"
+ },
+ "s23baecde5b": "devices",
+ "@s23baecde5b": {
+  "description": "fi: laitetta",
+  "x-where": "ui/installer_pages.dart:28"
+ },
+ "s776f46ed8d": "control + settings",
+ "@s776f46ed8d": {
+  "description": "fi: ohjaus + asetukset",
+  "x-where": "ui/installer_pages.dart:30"
+ },
+ "sa7cfbebc2f": "control",
+ "@sa7cfbebc2f": {
+  "description": "fi: ohjaus",
+  "x-where": "ui/installer_pages.dart:31"
+ },
+ "seff7e04d91": "Revoke the installer''s access?",
+ "@seff7e04d91": {
+  "description": "fi: Perutaanko asentajan pääsy?",
+  "x-where": "ui/installer_pages.dart:87"
+ },
+ "s633fa022d1": "{p0} can no longer reach your devices. Access ends as soon as the home bridge hears of it (usually at once).",
+ "@s633fa022d1": {
+  "description": "fi: {p0} ei enää pääse laitteisiisi. Pääsy loppuu heti, kun kotisilta saa tiedon (yleensä saman tien).",
+  "x-where": "ui/installer_pages.dart:89",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "sbdfc0cf419": "Revoke access",
+ "@sbdfc0cf419": {
+  "description": "fi: Peru pääsy",
+  "x-where": "ui/installer_pages.dart:100"
+ },
+ "s98b66fc9d8": "Access revoked",
+ "@s98b66fc9d8": {
+  "description": "fi: Pääsy peruttu",
+  "x-where": "ui/installer_pages.dart:106"
+ },
+ "sbd907def5b": "Installer",
+ "@sbd907def5b": {
+  "description": "fi: Asentaja",
+  "x-where": "ui/installer_pages.dart:118"
+ },
+ "sfb1a18d11f": "Refresh",
+ "@sfb1a18d11f": {
+  "description": "fi: Päivitä",
+  "x-where": "ui/installer_pages.dart:121"
+ },
+ "sb9c461d827": "Installer access needs a Molaplan account so the installer can be verified and encryption works.",
+ "@sb9c461d827": {
+  "description": "fi: Asentajan pääsy tarvitsee Molaplan-tilin, jotta asentaja tunnistetaan ja salaus toimii.",
+  "x-where": "ui/installer_pages.dart:135"
+ },
+ "s9bb545e9b3": "Sign in or create an account",
+ "@s9bb545e9b3": {
+  "description": "fi: Kirjaudu tai luo tili",
+  "x-where": "ui/installer_pages.dart:144"
+ },
+ "s523c735938": "Give an installer access to your devices with their installer ID (e.g. MPL-K7Q-M2X). Molaplan has verified every installer''s name and company. Passwords and addresses never leave home, and you can revoke access at any time.",
+ "@s523c735938": {
+  "description": "fi: Anna asentajalle pääsy laitteisiisi hänen asentajatunnuksellaan (esim. MPL-K7Q-M2X). Molaplan on tarkistanut jokaisen as",
+  "x-where": "ui/installer_pages.dart:148"
+ },
+ "s03be67bc78": "Give access",
+ "@s03be67bc78": {
+  "description": "fi: Anna pääsy",
+  "x-where": "ui/installer_pages.dart:165"
+ },
+ "s65c7781ca3": "Installers with access",
+ "@s65c7781ca3": {
+  "description": "fi: Asentajat, joilla on pääsy",
+  "x-where": "ui/installer_pages.dart:174"
+ },
+ "sbb7e4c4c3c": "No installer has access.",
+ "@sbb7e4c4c3c": {
+  "description": "fi: Kenelläkään asentajalla ei ole pääsyä.",
+  "x-where": "ui/installer_pages.dart:179"
+ },
+ "s84a6d73d1e": "Change devices or rights",
+ "@s84a6d73d1e": {
+  "description": "fi: Muuta laitteita tai oikeuksia",
+  "x-where": "ui/installer_pages.dart:207"
+ },
+ "s5fcc7e175d": "My customers",
+ "@s5fcc7e175d": {
+  "description": "fi: Asiakkaani",
+  "x-where": "ui/installer_pages.dart:229"
+ },
+ "s44dcd38f2b": "Manage installers",
+ "@s44dcd38f2b": {
+  "description": "fi: Asentajien hallinta",
+  "x-where": "ui/installer_pages.dart:244"
+ },
+ "s2f8dd9569b": "My Molaplan installer ID: {p0} ({p1}). To give me access: Molaplan → Settings → Installer → Give access.",
+ "@s2f8dd9569b": {
+  "description": "fi: Asentajatunnukseni Molaplanissa: {p0} ({p1}). Anna minulle pääsy: Molaplan → Asetukset → Asentaja → Anna pääsy.",
+  "x-where": "ui/installer_pages.dart:262",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   },
+   "p1": {
+    "type": "String"
+   }
+  }
+ },
+ "s0061cbc425": "Copy the message",
+ "@s0061cbc425": {
+  "description": "fi: Kopioi viesti",
+  "x-where": "ui/installer_pages.dart:280"
+ },
+ "sdd0f19c6b8": "E-mail",
+ "@sdd0f19c6b8": {
+  "description": "fi: Sähköposti",
+  "x-where": "ui/installer_pages.dart:285"
+ },
+ "sd57398d989": "Text message",
+ "@sd57398d989": {
+  "description": "fi: Tekstiviesti",
+  "x-where": "ui/installer_pages.dart:290"
+ },
+ "s4f09cced25": "Message copied",
+ "@s4f09cced25": {
+  "description": "fi: Viesti kopioitu",
+  "x-where": "ui/installer_pages.dart:305"
+ },
+ "s2836191df5": "Could not open the app – the message was copied.",
+ "@s2836191df5": {
+  "description": "fi: Sovellusta ei voitu avata – viesti kopioitiin.",
+  "x-where": "ui/installer_pages.dart:314"
+ },
+ "sd01e57c279": "The customer scans it: Settings → Installer → Give access.",
+ "@sd01e57c279": {
+  "description": "fi: Asiakas skannaa: Asetukset → Asentaja → Anna pääsy.",
+  "x-where": "ui/installer_pages.dart:339"
+ },
+ "se83877749c": "You are a Molaplan installer",
+ "@se83877749c": {
+  "description": "fi: Olet Molaplan-asentaja",
+  "x-where": "ui/installer_pages.dart:362"
+ },
+ "s014468e53e": "Your installer ID",
+ "@s014468e53e": {
+  "description": "fi: Asentajatunnuksesi",
+  "x-where": "ui/installer_pages.dart:368"
+ },
+ "s973ddbcd3b": "Give the ID to your customer. They open access to their devices with it and see your name and company as verified by Molaplan.",
+ "@s973ddbcd3b": {
+  "description": "fi: Anna tunnus asiakkaalle. Hän avaa sillä pääsyn laitteisiinsa ja näkee nimesi ja yrityksesi Molaplanin vahvistamina.",
+  "x-where": "ui/installer_pages.dart:376"
+ },
+ "s9e0dd2426d": "ID copied",
+ "@s9e0dd2426d": {
+  "description": "fi: Tunnus kopioitu",
+  "x-where": "ui/installer_pages.dart:392"
+ },
+ "s5224946aa1": "Share",
+ "@s5224946aa1": {
+  "description": "fi: Jaa",
+  "x-where": "ui/installer_pages.dart:401"
+ },
+ "s59d0633cbd": "QR code",
+ "@s59d0633cbd": {
+  "description": "fi: QR-koodi",
+  "x-where": "ui/installer_pages.dart:407"
+ },
+ "sacc4275348": "Apply to be an installer",
+ "@sacc4275348": {
+  "description": "fi: Hae asentajaksi",
+  "x-where": "ui/installer_pages.dart:431"
+ },
+ "s29acd8486c": "Molaplan checks your name and company and gives you an installer ID. You will see the result in the app.",
+ "@s29acd8486c": {
+  "description": "fi: Molaplan tarkistaa nimesi ja yrityksesi ja myöntää asentajatunnuksen. Saat tiedon sovellukseen.",
+  "x-where": "ui/installer_pages.dart:437"
+ },
+ "s7aa9c1e208": "Your name",
+ "@s7aa9c1e208": {
+  "description": "fi: Nimesi",
+  "x-where": "ui/installer_pages.dart:446"
+ },
+ "s9f3d2fa73f": "Company",
+ "@s9f3d2fa73f": {
+  "description": "fi: Yritys",
+  "x-where": "ui/installer_pages.dart:452"
+ },
+ "scfe0cd3759": "e.g. business ID or sole trader",
+ "@scfe0cd3759": {
+  "description": "fi: esim. Y-tunnus tai Kevytyrittäjä",
+  "x-where": "ui/installer_pages.dart:453"
+ },
+ "s483b3a689d": "Message (optional)",
+ "@s483b3a689d": {
+  "description": "fi: Viesti (valinnainen)",
+  "x-where": "ui/installer_pages.dart:460"
+ },
+ "sb7dbf1a527": "Send application",
+ "@sb7dbf1a527": {
+  "description": "fi: Lähetä hakemus",
+  "x-where": "ui/installer_pages.dart:470"
+ },
+ "s0b9319b6eb": "Type your name.",
+ "@s0b9319b6eb": {
+  "description": "fi: Kirjoita nimesi.",
+  "x-where": "ui/installer_pages.dart:477"
+ },
+ "s9929adfbf5": "Application sent",
+ "@s9929adfbf5": {
+  "description": "fi: Hakemus lähetetty",
+  "x-where": "ui/installer_pages.dart:482"
+ },
+ "s2570b96a0b": "Are you an installer?",
+ "@s2570b96a0b": {
+  "description": "fi: Oletko asentaja?",
+  "x-where": "ui/installer_pages.dart:497"
+ },
+ "s63d8fdf8c2": "Your installer status ({p0}) was removed and customer access cannot be used. Ask Molaplan: molaplan1@gmail.com.",
+ "@s63d8fdf8c2": {
+  "description": "fi: Asentajan tilasi ({p0}) on poistettu, eikä asiakkaiden pääsyjä voi käyttää. Kysy lisää Molaplanilta: molaplan1@gmail.com",
+  "x-where": "ui/installer_pages.dart:503",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s82b8ec7605": "As an installer you see your customers'' devices, status and alarms as far as each customer allows. Molaplan grants the installer status.",
+ "@s82b8ec7605": {
+  "description": "fi: Asentajana näet asiakkaidesi laitteet, tilan ja hälytykset sillä laajuudella kuin asiakas sallii. Asentajan tilan myöntä",
+  "x-where": "ui/installer_pages.dart:513"
+ },
+ "s563801d51b": "Application sent {p0} – waiting for review.",
+ "@s563801d51b": {
+  "description": "fi: Hakemus lähetetty {p0} – odottaa käsittelyä.",
+  "x-where": "ui/installer_pages.dart:526",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s1247102567": "Withdraw",
+ "@s1247102567": {
+  "description": "fi: Peru hakemus",
+  "x-where": "ui/installer_pages.dart:534"
+ },
+ "s77f0327b09": "The previous application was not approved.",
+ "@s77f0327b09": {
+  "description": "fi: Edellistä hakemusta ei hyväksytty.",
+  "x-where": "ui/installer_pages.dart:542"
+ },
+ "s5e130a714c": "The ID looks like MPL-XXX-XXX.",
+ "@s5e130a714c": {
+  "description": "fi: Tunnus on muotoa MPL-XXX-XXX.",
+  "x-where": "ui/installer_pages.dart:609"
+ },
+ "s16d84ef12f": "No approved installer has this ID. Check the ID with the installer.",
+ "@s16d84ef12f": {
+  "description": "fi: Tunnuksella ei löytynyt hyväksyttyä asentajaa. Tarkista tunnus asentajalta.",
+  "x-where": "ui/installer_pages.dart:620"
+ },
+ "s7288dc01b6": "Give access?",
+ "@s7288dc01b6": {
+  "description": "fi: Annetaanko pääsy?",
+  "x-where": "ui/installer_pages.dart:648"
+ },
+ "s2013b9940c": "Save the changes?",
+ "@s2013b9940c": {
+  "description": "fi: Tallennetaanko muutokset?",
+  "x-where": "ui/installer_pages.dart:648"
+ },
+ "sa88745a558": "All devices (also ones added later)",
+ "@sa88745a558": {
+  "description": "fi: Kaikki laitteet (myös myöhemmin lisättävät)",
+  "x-where": "ui/installer_pages.dart:653"
+ },
+ "sd97ead609e": "May control and change settings",
+ "@sd97ead609e": {
+  "description": "fi: Saa ohjata ja muuttaa asetuksia",
+  "x-where": "ui/installer_pages.dart:654"
+ },
+ "s8be70baa9c": "May control, not change settings",
+ "@s8be70baa9c": {
+  "description": "fi: Saa ohjata, ei muuttaa asetuksia",
+  "x-where": "ui/installer_pages.dart:654"
+ },
+ "sf2581756af": "You can revoke access at any time.",
+ "@sf2581756af": {
+  "description": "fi: Voit perua pääsyn milloin vain.",
+  "x-where": "ui/installer_pages.dart:655"
+ },
+ "s9a6818b304": "Access given: {p0}",
+ "@s9a6818b304": {
+  "description": "fi: Pääsy annettu: {p0}",
+  "x-where": "ui/installer_pages.dart:682",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "sdb0484d728": "Saved",
+ "@sdb0484d728": {
+  "description": "fi: Tallennettu",
+  "x-where": "ui/installer_pages.dart:682"
+ },
+ "s52a64a3307": "Give an installer access",
+ "@s52a64a3307": {
+  "description": "fi: Anna pääsy asentajalle",
+  "x-where": "ui/installer_pages.dart:701"
+ },
+ "s2113bddc63": "Installer ID",
+ "@s2113bddc63": {
+  "description": "fi: Asentajan tunnus",
+  "x-where": "ui/installer_pages.dart:709"
+ },
+ "s6d7d0273ad": "Find",
+ "@s6d7d0273ad": {
+  "description": "fi: Hae",
+  "x-where": "ui/installer_pages.dart:726"
+ },
+ "s36418f769d": "Scan the installer''s QR code",
+ "@s36418f769d": {
+  "description": "fi: Skannaa asentajan QR-koodi",
+  "x-where": "ui/installer_pages.dart:738"
+ },
+ "scb4d6b0ddc": "Installer verified by Molaplan",
+ "@scb4d6b0ddc": {
+  "description": "fi: Molaplanin vahvistama asentaja",
+  "x-where": "ui/installer_pages.dart:753"
+ },
+ "s95fd3e8dc3": "What can the installer reach?",
+ "@s95fd3e8dc3": {
+  "description": "fi: Mihin asentaja pääsee?",
+  "x-where": "ui/installer_pages.dart:764"
+ },
+ "s0d395a6edd": "Selected devices",
+ "@s0d395a6edd": {
+  "description": "fi: Valitut laitteet",
+  "x-where": "ui/installer_pages.dart:770"
+ },
+ "s8affba28ec": "{p0} devices now; ones added later are included.",
+ "@s8affba28ec": {
+  "description": "fi: {p0} laitetta nyt, myöhemmin lisättävät tulevat mukaan.",
+  "x-where": "ui/installer_pages.dart:779",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "sbc76d76351": "May change settings",
+ "@sbc76d76351": {
+  "description": "fi: Saa muuttaa asetuksia",
+  "x-where": "ui/installer_pages.dart:797"
+ },
+ "s4fa2d2d66c": "Temperatures, modes and other settings. Off: the installer can control and see the status.",
+ "@s4fa2d2d66c": {
+  "description": "fi: Lämpötilat, toimintatilat ja muut asetukset. Pois päältä: asentaja voi ohjata ja katsoa tilaa.",
+  "x-where": "ui/installer_pages.dart:799"
+ },
+ "s82b62bcb13": "You have no shareable devices yet.",
+ "@s82b62bcb13": {
+  "description": "fi: Sinulla ei ole vielä jaettavia laitteita.",
+  "x-where": "ui/installer_pages.dart:826"
+ },
+ "s4e60c0286c": "The home bridge checks the rights of every request. Device passwords and addresses never leave home.",
+ "@s4e60c0286c": {
+  "description": "fi: Kotisilta tarkistaa jokaisen pyynnön oikeudet. Laitteiden salasanat ja osoitteet eivät lähde kotoa.",
+  "x-where": "ui/installer_pages.dart:830"
+ },
+ "sd431b45586": "Type at least 3 characters of the e-mail.",
+ "@sd431b45586": {
+  "description": "fi: Kirjoita vähintään 3 merkkiä sähköpostista.",
+  "x-where": "ui/installer_pages.dart:897"
+ },
+ "s2162e5cad2": "No user found.",
+ "@s2162e5cad2": {
+  "description": "fi: Käyttäjää ei löytynyt.",
+  "x-where": "ui/installer_pages.dart:905"
+ },
+ "s1ec9cc5828": "Installer status",
+ "@s1ec9cc5828": {
+  "description": "fi: Asentajan tila",
+  "x-where": "ui/installer_pages.dart:919"
+ },
+ "s256fb6b50a": "Verified name",
+ "@s256fb6b50a": {
+  "description": "fi: Vahvistettu nimi",
+  "x-where": "ui/installer_pages.dart:929"
+ },
+ "sd8a8961db3": "e.g. sole trader",
+ "@sd8a8961db3": {
+  "description": "fi: esim. Kevytyrittäjä",
+  "x-where": "ui/installer_pages.dart:936"
+ },
+ "sb57dfb696c": "Note (admins only)",
+ "@sb57dfb696c": {
+  "description": "fi: Muistiinpano (vain ylläpito)",
+  "x-where": "ui/installer_pages.dart:943"
+ },
+ "s8ce95234d7": "Grant",
+ "@s8ce95234d7": {
+  "description": "fi: Myönnä",
+  "x-where": "ui/installer_pages.dart:953"
+ },
+ "s2eca996a49": "The name is missing.",
+ "@s2eca996a49": {
+  "description": "fi: Nimi puuttuu.",
+  "x-where": "ui/installer_pages.dart:960"
+ },
+ "s5a4c72db4b": "Installer {p0}: {p1}",
+ "@s5a4c72db4b": {
+  "description": "fi: Asentaja {p0}: {p1}",
+  "x-where": "ui/installer_pages.dart:965",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   },
+   "p1": {
+    "type": "String"
+   }
+  }
+ },
+ "se06acfd38d": "Remove the installer status?",
+ "@se06acfd38d": {
+  "description": "fi: Poistetaanko asentajan tila?",
+  "x-where": "ui/installer_pages.dart:977"
+ },
+ "sd35135676e": "{p0} ({p1}) loses the installer status and all customer access ({p2}) ends at once. The ID stays if the status is granted again later.",
+ "@sd35135676e": {
+  "description": "fi: {p0} ({p1}) menettää asentajan tilan, ja kaikki asiakkaiden antamat pääsyt ({p2}) katkeavat heti. Tunnus säilyy, jos til",
+  "x-where": "ui/installer_pages.dart:979",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   },
+   "p1": {
+    "type": "String"
+   },
+   "p2": {
+    "type": "String"
+   }
+  }
+ },
+ "se70c0caad3": "Remove status",
+ "@se70c0caad3": {
+  "description": "fi: Poista tila",
+  "x-where": "ui/installer_pages.dart:990"
+ },
+ "s2679477d73": "Installer status removed",
+ "@s2679477d73": {
+  "description": "fi: Asentajan tila poistettu",
+  "x-where": "ui/installer_pages.dart:998"
+ },
+ "s5ea6251452": "Grant the installer status only to someone whose name and company you have checked. The same tools are at molaplan.com/tilaa/hallinta (Installers).",
+ "@s5ea6251452": {
+  "description": "fi: Myönnä asentajan tila vain henkilölle, jonka nimen ja yrityksen olet tarkistanut. Sama hallinta on myös osoitteessa mola",
+  "x-where": "ui/installer_pages.dart:1021"
+ },
+ "sa7380f5e5c": "Find a user by e-mail",
+ "@sa7380f5e5c": {
+  "description": "fi: Hae käyttäjä sähköpostilla",
+  "x-where": "ui/installer_pages.dart:1035"
+ },
+ "sc023f30da1": "name@example.com",
+ "@sc023f30da1": {
+  "description": "fi: nimi@esimerkki.fi",
+  "x-where": "ui/installer_pages.dart:1044"
+ },
+ "s9a7d261596": "has not opened the app yet",
+ "@s9a7d261596": {
+  "description": "fi: ei ole vielä avannut sovellusta",
+  "x-where": "ui/installer_pages.dart:1059"
+ },
+ "sd4f8f15670": "installer",
+ "@sd4f8f15670": {
+  "description": "fi: asentaja",
+  "x-where": "ui/installer_pages.dart:1060"
+ },
+ "sfee2ce49ea": "status removed",
+ "@sfee2ce49ea": {
+  "description": "fi: tila poistettu",
+  "x-where": "ui/installer_pages.dart:1061"
+ },
+ "s3ecd52ffc6": "Applications",
+ "@s3ecd52ffc6": {
+  "description": "fi: Hakemukset",
+  "x-where": "ui/installer_pages.dart:1074"
+ },
+ "se5c4c1e153": "No open applications.",
+ "@se5c4c1e153": {
+  "description": "fi: Ei avoimia hakemuksia.",
+  "x-where": "ui/installer_pages.dart:1075"
+ },
+ "s052118a469": "Approve",
+ "@s052118a469": {
+  "description": "fi: Hyväksy",
+  "x-where": "ui/installer_pages.dart:1094"
+ },
+ "s493a1eaf08": "Decline",
+ "@s493a1eaf08": {
+  "description": "fi: Hylkää",
+  "x-where": "ui/installer_pages.dart:1105"
+ },
+ "sc8ab77f768": "Installers",
+ "@sc8ab77f768": {
+  "description": "fi: Asentajat",
+  "x-where": "ui/installer_pages.dart:1114"
+ },
+ "s65f12e7e23": "customers",
+ "@s65f12e7e23": {
+  "description": "fi: asiakasta",
+  "x-where": "ui/installer_pages.dart:1124"
+ },
+ "sf36e8af07c": "Grant again",
+ "@sf36e8af07c": {
+  "description": "fi: Myönnä uudelleen",
+  "x-where": "ui/installer_pages.dart:1132"
+ },
+ "s0361487148": "Remove installer status",
+ "@s0361487148": {
+  "description": "fi: Poista asentajan tila",
+  "x-where": "ui/installer_pages.dart:1137"
+ },
  "s55d52c5ae1": "This device is not on Wi-Fi",
  "@s55d52c5ae1": {
   "description": "fi: Tämä laite ei ole yhteydessä wifiin",
@@ -4702,55 +5234,65 @@
   "description": "fi: Ota etäkäyttö käyttöön",
   "x-where": "ui/add_device_wizard.dart:1184"
  },
+ "s53a9fe5e42": "There is no Molaplan account with that e-mail.",
+ "@s53a9fe5e42": {
+  "description": "fi: Sähköpostilla ei ole Molaplan-tiliä.",
+  "x-where": "ui/share_pages.dart:19"
+ },
  "sb4bd4baa5c": "No Molaplan user with that address. They need to sign in to Molaplan 0.9 once – or send them an invite code.",
  "@sb4bd4baa5c": {
   "description": "fi: Osoitteella ei löytynyt Molaplan-käyttäjää. Hänen pitää kirjautua Molaplan 0.9:ään kerran – tai lähetä hänelle kutsukood",
-  "x-where": "ui/share_pages.dart:19"
+  "x-where": "ui/share_pages.dart:24"
  },
  "s7ed2aecb01": "Nothing shareable selected (thermostats cannot be shared yet).",
  "@s7ed2aecb01": {
   "description": "fi: Valituissa ei ole jaettavia laitteita (termostaatteja ei voi vielä jakaa).",
-  "x-where": "ui/share_pages.dart:24"
+  "x-where": "ui/share_pages.dart:29"
  },
  "s707b7ff598": "The invite no longer exists.",
  "@s707b7ff598": {
   "description": "fi: Kutsua ei enää ole.",
-  "x-where": "ui/share_pages.dart:29"
+  "x-where": "ui/share_pages.dart:34"
  },
  "s5ea320fb1c": "Unlock the account secrets on this device first (Account → Unlock with password). Sharing uses the account key.",
  "@s5ea320fb1c": {
   "description": "fi: Avaa ensin tilin salaukset tällä laitteella (Tili → Avaa salasanalla). Jakaminen käyttää tilin avainta.",
-  "x-where": "ui/share_pages.dart:30"
- },
- "s5aee30a4e4": "This invite is for an installer: turn on the installer profile (Sharing → Advanced).",
- "@s5aee30a4e4": {
-  "description": "fi: Tämä on asentajan kutsu: ota asentajaprofiili käyttöön (Jakaminen → Edistyneet).",
   "x-where": "ui/share_pages.dart:35"
+ },
+ "s2855893bfc": "This invite is for an installer and only an installer approved by Molaplan can use it (Settings → Installer → Apply).",
+ "@s2855893bfc": {
+  "description": "fi: Tämä on asentajan kutsu, ja sen voi käyttää vain Molaplanin hyväksymä asentaja (Asetukset → Asentaja → Hae asentajaksi).",
+  "x-where": "ui/share_pages.dart:40"
+ },
+ "sb8df145fc9": "Only Molaplan admins can do this.",
+ "@sb8df145fc9": {
+  "description": "fi: Vain Molaplanin ylläpito voi tehdä tämän.",
+  "x-where": "ui/share_pages.dart:45"
  },
  "sa562754cb5": "The code is wrong, expired or already used.",
  "@sa562754cb5": {
   "description": "fi: Koodi on väärä, vanhentunut tai jo käytetty.",
-  "x-where": "ui/share_pages.dart:40"
+  "x-where": "ui/share_pages.dart:47"
  },
  "s9c37d7a89c": "The home bridge does not answer. Sharing needs the home bridge (Remote access) – permissions are enforced there.",
  "@s9c37d7a89c": {
   "description": "fi: Kotisilta ei vastaa. Jakaminen tarvitsee kotisillan (Etäkäyttö), koska oikeudet valvotaan siellä.",
-  "x-where": "ui/share_pages.dart:41"
+  "x-where": "ui/share_pages.dart:48"
  },
  "sc858a8f851": "The home bridge is too old for sharing. Update it (Remote access → Update bridge).",
  "@sc858a8f851": {
   "description": "fi: Kotisilta on vanha eikä osaa jakamista. Päivitä silta (Etäkäyttö → Päivitä silta).",
-  "x-where": "ui/share_pages.dart:46"
+  "x-where": "ui/share_pages.dart:53"
  },
  "s1a52f53861": "No connection to the Molaplan account.",
  "@s1a52f53861": {
   "description": "fi: Ei yhteyttä Molaplan-tiliin.",
-  "x-where": "ui/share_pages.dart:51"
+  "x-where": "ui/share_pages.dart:58"
  },
  "s2457ec4502": "The account service refused: {p0}",
  "@s2457ec4502": {
   "description": "fi: Tilipalvelu ei hyväksynyt pyyntöä: {p0}",
-  "x-where": "ui/share_pages.dart:52",
+  "x-where": "ui/share_pages.dart:59",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -4760,422 +5302,372 @@
  "s4bc537975e": "The home bridge is offline.",
  "@s4bc537975e": {
   "description": "fi: Kodin silta ei ole yhteydessä.",
-  "x-where": "ui/share_pages.dart:57"
+  "x-where": "ui/share_pages.dart:64"
  },
  "s2fb5fe14e4": "The share was revoked.",
  "@s2fb5fe14e4": {
   "description": "fi: Jako on peruttu.",
-  "x-where": "ui/share_pages.dart:58"
+  "x-where": "ui/share_pages.dart:65"
  },
  "s7b44d47d45": "The home bridge does not answer.",
  "@s7b44d47d45": {
   "description": "fi: Kotisilta ei vastaa.",
-  "x-where": "ui/share_pages.dart:59"
+  "x-where": "ui/share_pages.dart:66"
  },
  "s8eddd585bc": "No connection.",
  "@s8eddd585bc": {
   "description": "fi: Ei yhteyttä.",
-  "x-where": "ui/share_pages.dart:60"
+  "x-where": "ui/share_pages.dart:67"
  },
  "s47998395f5": "Not allowed.",
  "@s47998395f5": {
   "description": "fi: Ei oikeutta tähän toimintoon.",
-  "x-where": "ui/share_pages.dart:64"
+  "x-where": "ui/share_pages.dart:71"
  },
  "s7f504a8c64": "View only",
  "@s7f504a8c64": {
   "description": "fi: Vain katselu",
-  "x-where": "ui/share_pages.dart:70"
+  "x-where": "ui/share_pages.dart:77"
  },
  "s9c067115ef": "Control",
  "@s9c067115ef": {
   "description": "fi: Ohjaus",
-  "x-where": "ui/share_pages.dart:71"
+  "x-where": "ui/share_pages.dart:78"
  },
  "s8343921765": "Full (control + settings)",
  "@s8343921765": {
   "description": "fi: Täysi (ohjaus + asetukset)",
-  "x-where": "ui/share_pages.dart:72"
+  "x-where": "ui/share_pages.dart:79"
  },
  "s211d9f0a3a": "Code not used yet",
  "@s211d9f0a3a": {
   "description": "fi: Koodi odottaa käyttöä",
-  "x-where": "ui/share_pages.dart:76"
+  "x-where": "ui/share_pages.dart:83"
  },
  "s1e6b3fe5dc": "Waiting for acceptance",
  "@s1e6b3fe5dc": {
   "description": "fi: Odottaa hyväksyntää",
-  "x-where": "ui/share_pages.dart:77"
+  "x-where": "ui/share_pages.dart:84"
  },
  "sb13063b8cd": "Being confirmed…",
  "@sb13063b8cd": {
   "description": "fi: Vahvistetaan…",
-  "x-where": "ui/share_pages.dart:78"
+  "x-where": "ui/share_pages.dart:85"
  },
  "s13b6f87b0a": "Active",
  "@s13b6f87b0a": {
   "description": "fi: Käytössä",
-  "x-where": "ui/share_pages.dart:79"
+  "x-where": "ui/share_pages.dart:86"
  },
  "sed1d8dbf2b": "Declined",
  "@sed1d8dbf2b": {
   "description": "fi: Hylätty",
-  "x-where": "ui/share_pages.dart:80"
+  "x-where": "ui/share_pages.dart:87"
  },
  "s0123f33869": "Revoked",
  "@s0123f33869": {
   "description": "fi: Peruttu",
-  "x-where": "ui/share_pages.dart:81"
+  "x-where": "ui/share_pages.dart:88"
  },
  "s844e081db8": "Sharing",
  "@s844e081db8": {
   "description": "fi: Jakaminen",
-  "x-where": "ui/share_pages.dart:132"
- },
- "sfb1a18d11f": "Refresh",
- "@sfb1a18d11f": {
-  "description": "fi: Päivitä",
-  "x-where": "ui/share_pages.dart:135"
+  "x-where": "ui/share_pages.dart:139"
  },
  "scdfdf5d233": "Sharing needs a Molaplan account so invites can reach people and encryption works.",
  "@scdfdf5d233": {
   "description": "fi: Jakaminen tarvitsee Molaplan-tilin, jotta kutsut löytävät perille ja salaus toimii.",
-  "x-where": "ui/share_pages.dart:149"
- },
- "s9bb545e9b3": "Sign in or create an account",
- "@s9bb545e9b3": {
-  "description": "fi: Kirjaudu tai luo tili",
-  "x-where": "ui/share_pages.dart:158"
+  "x-where": "ui/share_pages.dart:156"
  },
  "s85abc4496d": "Give a family member, neighbour or installer access to the devices you choose. Passwords and addresses never leave home, and you can revoke at any time.",
  "@s85abc4496d": {
   "description": "fi: Anna perheenjäsenelle, naapurille tai asentajalle pääsy valitsemiisi laitteisiin. Salasanat ja osoitteet eivät lähde kot",
-  "x-where": "ui/share_pages.dart:162"
+  "x-where": "ui/share_pages.dart:169"
  },
  "sb4602bb0a6": "Share devices",
  "@sb4602bb0a6": {
   "description": "fi: Jaa laitteita",
-  "x-where": "ui/share_pages.dart:181"
+  "x-where": "ui/share_pages.dart:188"
  },
  "sffe19ad543": "Use an invite code",
  "@sffe19ad543": {
   "description": "fi: Käytä kutsukoodia",
-  "x-where": "ui/share_pages.dart:187"
+  "x-where": "ui/share_pages.dart:194"
  },
  "s61036a5d51": "Invites for you",
  "@s61036a5d51": {
   "description": "fi: Kutsut sinulle",
-  "x-where": "ui/share_pages.dart:198"
+  "x-where": "ui/share_pages.dart:205"
  },
  "s8af08eb19e": "devices",
  "@s8af08eb19e": {
   "description": "fi: laitteita",
-  "x-where": "ui/share_pages.dart:208"
+  "x-where": "ui/share_pages.dart:215"
  },
  "sbb84536839": "Accepted",
  "@sbb84536839": {
   "description": "fi: Hyväksytty",
-  "x-where": "ui/share_pages.dart:220"
+  "x-where": "ui/share_pages.dart:227"
  },
  "sdfaf8c242b": "Accept",
  "@sdfaf8c242b": {
   "description": "fi: Hyväksy",
-  "x-where": "ui/share_pages.dart:221"
- },
- "s493a1eaf08": "Decline",
- "@s493a1eaf08": {
-  "description": "fi: Hylkää",
-  "x-where": "ui/share_pages.dart:227"
+  "x-where": "ui/share_pages.dart:228"
  },
  "s2fd1394b33": "Shared with me",
  "@s2fd1394b33": {
   "description": "fi: Jaettu minulle",
-  "x-where": "ui/share_pages.dart:238"
+  "x-where": "ui/share_pages.dart:245"
  },
  "seaa0c13606": "Your shares",
  "@seaa0c13606": {
   "description": "fi: Jakamasi",
-  "x-where": "ui/share_pages.dart:255"
+  "x-where": "ui/share_pages.dart:262"
  },
  "s450c60afd0": "You have not shared anything.",
  "@s450c60afd0": {
   "description": "fi: Et ole jakanut mitään.",
-  "x-where": "ui/share_pages.dart:259"
+  "x-where": "ui/share_pages.dart:266"
  },
  "s33f41d417c": "Invite code",
  "@s33f41d417c": {
   "description": "fi: Kutsukoodi",
-  "x-where": "ui/share_pages.dart:268"
- },
- "s23baecde5b": "devices",
- "@s23baecde5b": {
-  "description": "fi: laitetta",
-  "x-where": "ui/share_pages.dart:272"
+  "x-where": "ui/share_pages.dart:275"
  },
  "s9cdf3dcc87": "Revoke the share?",
  "@s9cdf3dcc87": {
   "description": "fi: Perutaanko jako?",
-  "x-where": "ui/share_pages.dart:281"
+  "x-where": "ui/share_pages.dart:288"
  },
  "s9d0ac1d1ee": "Access ends as soon as the home bridge hears of it (usually at once).",
  "@s9d0ac1d1ee": {
   "description": "fi: Pääsy loppuu heti, kun kotisilta saa tiedon (yleensä saman tien).",
-  "x-where": "ui/share_pages.dart:283"
+  "x-where": "ui/share_pages.dart:290"
  },
  "s4417570cbb": "Revoke",
  "@s4417570cbb": {
   "description": "fi: Peru jako",
-  "x-where": "ui/share_pages.dart:294"
+  "x-where": "ui/share_pages.dart:301"
  },
  "s280e22cbc9": "Share revoked",
  "@s280e22cbc9": {
   "description": "fi: Jako peruttu",
-  "x-where": "ui/share_pages.dart:300"
- },
- "s84a6d73d1e": "Change devices or rights",
- "@s84a6d73d1e": {
-  "description": "fi: Muuta laitteita tai oikeuksia",
   "x-where": "ui/share_pages.dart:307"
- },
- "s1cf5e3d702": "Installer profile",
- "@s1cf5e3d702": {
-  "description": "fi: Asentajaprofiili",
-  "x-where": "ui/share_pages.dart:326"
- },
- "s22f8bccc91": "Shows the Installer menu: customers, their devices and alarms. A customer grants access with a code and can revoke it.",
- "@s22f8bccc91": {
-  "description": "fi: Näyttää Asentaja-valikon: asiakkaat, heidän laitteensa ja hälytykset. Asiakas antaa pääsyn koodilla ja voi perua sen.",
-  "x-where": "ui/share_pages.dart:328"
- },
- "se19c5fe8aa": "Company name",
- "@se19c5fe8aa": {
-  "description": "fi: Yrityksen nimi",
-  "x-where": "ui/share_pages.dart:340"
  },
  "sd742357fc8": "Your name in shares",
  "@sd742357fc8": {
   "description": "fi: Nimesi jaoissa",
-  "x-where": "ui/share_pages.dart:350"
+  "x-where": "ui/share_pages.dart:332"
  },
  "sfe0000a1a9": "Security: the home bridge checks the rights of every request. The connection credential travels encrypted to the recipient''s key only; device passwords and addresses never leave home.",
  "@sfe0000a1a9": {
   "description": "fi: Turvallisuus: kotisilta tarkistaa jokaisen pyynnön oikeudet. Yhteystunnus kulkee salattuna vain vastaanottajan avaimelle",
-  "x-where": "ui/share_pages.dart:361"
+  "x-where": "ui/share_pages.dart:343"
  },
  "s0577e25cbe": "Add a customer with a code",
  "@s0577e25cbe": {
   "description": "fi: Lisää asiakas koodilla",
-  "x-where": "ui/share_pages.dart:401"
+  "x-where": "ui/share_pages.dart:383"
  },
  "s3d00dee1a9": "Use",
  "@s3d00dee1a9": {
   "description": "fi: Käytä",
-  "x-where": "ui/share_pages.dart:414"
+  "x-where": "ui/share_pages.dart:396"
  },
  "sce4c69f42c": "Code accepted. Access opens when the owner''s Molaplan confirms it (usually within a couple of minutes).",
  "@sce4c69f42c": {
   "description": "fi: Koodi hyväksytty. Pääsy aukeaa, kun omistajan Molaplan vahvistaa sen (yleensä parissa minuutissa).",
-  "x-where": "ui/share_pages.dart:425"
+  "x-where": "ui/share_pages.dart:407"
  },
  "sd1520d6367": "Give the code (or link) to the recipient: Molaplan → Sharing → Use an invite code. Valid for 7 days, once.",
  "@sd1520d6367": {
   "description": "fi: Anna koodi (tai linkki) vastaanottajalle: Molaplan → Jakaminen → Käytä kutsukoodia. Voimassa 7 päivää, kerran.",
-  "x-where": "ui/share_pages.dart:516"
+  "x-where": "ui/share_pages.dart:498"
  },
  "s563abff5ad": "Copy link",
  "@s563abff5ad": {
   "description": "fi: Kopioi linkki",
-  "x-where": "ui/share_pages.dart:527"
+  "x-where": "ui/share_pages.dart:509"
  },
  "s0daf5e9cb6": "Invite sent – the recipient accepts it in Molaplan.",
  "@s0daf5e9cb6": {
   "description": "fi: Kutsu lähetetty – vastaanottaja hyväksyy sen Molaplanissa.",
-  "x-where": "ui/share_pages.dart:534"
+  "x-where": "ui/share_pages.dart:516"
  },
  "s707a062202": "Change share",
  "@s707a062202": {
   "description": "fi: Muuta jakoa",
-  "x-where": "ui/share_pages.dart:551"
+  "x-where": "ui/share_pages.dart:533"
  },
  "s79f72dbe13": "1. What to share",
  "@s79f72dbe13": {
   "description": "fi: 1. Mitä jaetaan",
-  "x-where": "ui/share_pages.dart:558"
+  "x-where": "ui/share_pages.dart:540"
  },
  "s58e14dc230": "Tap a view to share all its devices, or pick them one by one.",
  "@s58e14dc230": {
   "description": "fi: Napauta näkymää jakaaksesi sen kaikki laitteet, tai valitse yksittäin.",
-  "x-where": "ui/share_pages.dart:560"
+  "x-where": "ui/share_pages.dart:542"
  },
  "sdb49fc5671": "Whole view",
  "@sdb49fc5671": {
   "description": "fi: Koko näkymä",
-  "x-where": "ui/share_pages.dart:571"
+  "x-where": "ui/share_pages.dart:553"
  },
  "sa7cf1a01d7": "2. Rights",
  "@sa7cf1a01d7": {
   "description": "fi: 2. Oikeudet",
-  "x-where": "ui/share_pages.dart:589"
+  "x-where": "ui/share_pages.dart:571"
  },
  "s3b2376ac74": "View",
  "@s3b2376ac74": {
   "description": "fi: Katselu",
-  "x-where": "ui/share_pages.dart:596"
+  "x-where": "ui/share_pages.dart:578"
  },
  "s6605942623": "Full",
  "@s6605942623": {
   "description": "fi: Täysi",
-  "x-where": "ui/share_pages.dart:598"
+  "x-where": "ui/share_pages.dart:580"
  },
  "s9ccbd78d51": "Sees states and readings, cannot control.",
  "@s9ccbd78d51": {
   "description": "fi: Näkee tilat ja mittaukset, ei voi ohjata.",
-  "x-where": "ui/share_pages.dart:610"
+  "x-where": "ui/share_pages.dart:592"
  },
  "sb143b5c9f1": "Can switch and adjust, cannot change settings (e.g. temperature setpoints).",
  "@sb143b5c9f1": {
   "description": "fi: Voi kytkeä ja säätää, ei muuttaa asetuksia (esim. lämpötilan asetusarvoja).",
-  "x-where": "ui/share_pages.dart:611"
+  "x-where": "ui/share_pages.dart:593"
  },
  "s32dc2aa139": "Control and device settings. Never your own views or passwords.",
  "@s32dc2aa139": {
   "description": "fi: Ohjaus ja laitteiden asetukset. Omia näkymiäsi tai salasanoja hän ei näe.",
-  "x-where": "ui/share_pages.dart:612"
+  "x-where": "ui/share_pages.dart:594"
  },
  "se153d3c421": "3. To whom",
  "@se153d3c421": {
   "description": "fi: 3. Kenelle",
-  "x-where": "ui/share_pages.dart:618"
+  "x-where": "ui/share_pages.dart:600"
  },
  "s62e68022e1": "A Molaplan user (e-mail)",
  "@s62e68022e1": {
   "description": "fi: Molaplan-käyttäjälle (sähköposti)",
-  "x-where": "ui/share_pages.dart:628"
+  "x-where": "ui/share_pages.dart:610"
  },
  "s447da2f746": "Invite code or link",
  "@s447da2f746": {
   "description": "fi: Kutsukoodi tai -linkki",
-  "x-where": "ui/share_pages.dart:634"
- },
- "sdd0f19c6b8": "E-mail",
- "@sdd0f19c6b8": {
-  "description": "fi: Sähköposti",
-  "x-where": "ui/share_pages.dart:645"
- },
- "s6be36f4219": "To an installer (shows in their Installer menu)",
- "@s6be36f4219": {
-  "description": "fi: Asentajalle (näkyy hänen Asentaja-valikossaan)",
-  "x-where": "ui/share_pages.dart:651"
+  "x-where": "ui/share_pages.dart:616"
  },
  "se7272a5713": "Name for the share (optional)",
  "@se7272a5713": {
   "description": "fi: Nimi jaolle (valinnainen)",
-  "x-where": "ui/share_pages.dart:658"
+  "x-where": "ui/share_pages.dart:633"
  },
  "s1f9799af4e": "e.g. Cottage",
  "@s1f9799af4e": {
   "description": "fi: esim. Mökki",
-  "x-where": "ui/share_pages.dart:659"
+  "x-where": "ui/share_pages.dart:634"
  },
  "s03f60936b0": "Rights per device",
  "@s03f60936b0": {
   "description": "fi: Oikeudet laitekohtaisesti",
-  "x-where": "ui/share_pages.dart:669"
+  "x-where": "ui/share_pages.dart:644"
  },
  "s385022d526": "View",
  "@s385022d526": {
   "description": "fi: Näe",
-  "x-where": "ui/share_pages.dart:682"
+  "x-where": "ui/share_pages.dart:657"
  },
  "s482464ebd5": "Control",
  "@s482464ebd5": {
   "description": "fi: Ohjaa",
-  "x-where": "ui/share_pages.dart:683"
+  "x-where": "ui/share_pages.dart:658"
  },
  "s5897aaa050": "Notify an ntfy topic (optional)",
  "@s5897aaa050": {
   "description": "fi: Ilmoita ntfy-aiheeseen (valinnainen)",
-  "x-where": "ui/share_pages.dart:701"
+  "x-where": "ui/share_pages.dart:676"
  },
  "sd4faf9db62": "The message contains no code or device details.",
  "@sd4faf9db62": {
   "description": "fi: Viestissä ei ole koodia eikä laitetietoja.",
-  "x-where": "ui/share_pages.dart:702"
+  "x-where": "ui/share_pages.dart:677"
  },
  "sdec87898c3": "Create invite code",
  "@sdec87898c3": {
   "description": "fi: Luo kutsukoodi",
-  "x-where": "ui/share_pages.dart:725"
+  "x-where": "ui/share_pages.dart:700"
  },
  "s19c2104a9d": "Send invite",
  "@s19c2104a9d": {
   "description": "fi: Lähetä kutsu",
-  "x-where": "ui/share_pages.dart:726"
+  "x-where": "ui/share_pages.dart:701"
  },
  "s8b4d48dfaf": "Owner",
  "@s8b4d48dfaf": {
   "description": "fi: Omistaja",
-  "x-where": "ui/share_pages.dart:869"
+  "x-where": "ui/share_pages.dart:844"
  },
  "sbfe79d1f5f": "Updated",
  "@sbfe79d1f5f": {
   "description": "fi: Päivitetty",
-  "x-where": "ui/share_pages.dart:874"
+  "x-where": "ui/share_pages.dart:849"
  },
  "s90944b5e7c": "Attention",
  "@s90944b5e7c": {
   "description": "fi: Huomioitavaa",
-  "x-where": "ui/share_pages.dart:891"
+  "x-where": "ui/share_pages.dart:866"
  },
  "scf2e61da2c": "not answering",
  "@scf2e61da2c": {
   "description": "fi: ei vastaa",
-  "x-where": "ui/share_pages.dart:895"
+  "x-where": "ui/share_pages.dart:870"
  },
  "s1364743ec7": "alarm",
  "@s1364743ec7": {
   "description": "fi: hälytys",
-  "x-where": "ui/share_pages.dart:896"
+  "x-where": "ui/share_pages.dart:871"
  },
  "s5416a5cdf7": "Run",
  "@s5416a5cdf7": {
   "description": "fi: Suorita",
-  "x-where": "ui/share_pages.dart:934"
+  "x-where": "ui/share_pages.dart:909"
  },
  "s8debff3196": "Show picture",
  "@s8debff3196": {
   "description": "fi: Näytä kuva",
-  "x-where": "ui/share_pages.dart:940"
- },
- "sbd907def5b": "Installer",
- "@sbd907def5b": {
-  "description": "fi: Asentaja",
-  "x-where": "ui/share_pages.dart:1014"
- },
- "sddd83db201": "Add customer",
- "@sddd83db201": {
-  "description": "fi: Lisää asiakas",
-  "x-where": "ui/share_pages.dart:1019"
+  "x-where": "ui/share_pages.dart:915"
  },
  "s2220ce611a": "Customers who gave you access. You see only the shared devices and act within the rights the customer gave – never their passwords.",
  "@s2220ce611a": {
   "description": "fi: Asiakkaasi, jotka ovat antaneet sinulle pääsyn. Näet vain jaetut laitteet ja toimit asiakkaan antamin oikeuksin – salasa",
-  "x-where": "ui/share_pages.dart:1028"
+  "x-where": "ui/share_pages.dart:998"
  },
- "s98a90339f4": "No customers yet. Ask the customer to create an installer code: Sharing → Share devices → Invite code + To an installer.",
- "@s98a90339f4": {
-  "description": "fi: Ei asiakkaita vielä. Pyydä asiakasta luomaan asentajakoodi: Jakaminen → Jaa laitteita → Kutsukoodi + Asentajalle.",
-  "x-where": "ui/share_pages.dart:1038"
+ "s6f3c62fc03": "Your installer status is not valid.",
+ "@s6f3c62fc03": {
+  "description": "fi: Asentajan tilasi ei ole voimassa.",
+  "x-where": "ui/share_pages.dart:1009"
+ },
+ "s7ebc2621b7": "No customers yet. Give your customer your installer ID {p0}: they open Settings → Installer → Give access.",
+ "@s7ebc2621b7": {
+  "description": "fi: Ei asiakkaita vielä. Anna asiakkaalle asentajatunnuksesi {p0}: asiakas avaa Asetukset → Asentaja → Anna pääsy.",
+  "x-where": "ui/share_pages.dart:1017",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
  },
  "sa52cf49adc": "Waiting for the customer''s Molaplan to confirm",
  "@sa52cf49adc": {
   "description": "fi: Odottaa asiakkaan Molaplanin vahvistusta",
-  "x-where": "ui/share_pages.dart:1052"
+  "x-where": "ui/share_pages.dart:1035"
  },
  "s35e8813a82": "alerts",
  "@s35e8813a82": {
   "description": "fi: huomiota",
-  "x-where": "ui/share_pages.dart:1057"
+  "x-where": "ui/share_pages.dart:1040"
  },
  "sc3abd09cd9": "Custom colour",
  "@sc3abd09cd9": {
@@ -7937,97 +8429,97 @@
  "s229f981388": "Home bridge on",
  "@s229f981388": {
   "description": "fi: Kotisilta päällä",
-  "x-where": "ui/remote_pages.dart:45"
+  "x-where": "ui/remote_pages.dart:49"
  },
  "sfc2dc8fc36": "Bridge: offline",
  "@sfc2dc8fc36": {
   "description": "fi: Kotisilta: ei yhteyttä",
-  "x-where": "ui/remote_pages.dart:46"
+  "x-where": "ui/remote_pages.dart:50"
  },
  "sdedbb30a67": "At home",
  "@sdedbb30a67": {
   "description": "fi: Kotona",
-  "x-where": "ui/remote_pages.dart:51"
+  "x-where": "ui/remote_pages.dart:55"
  },
  "s9d64d4c166": "Remote",
  "@s9d64d4c166": {
   "description": "fi: Etäyhteys",
-  "x-where": "ui/remote_pages.dart:53"
+  "x-where": "ui/remote_pages.dart:57"
  },
  "s1f8cf57b2c": "No connection",
  "@s1f8cf57b2c": {
   "description": "fi: Ei yhteyttä",
-  "x-where": "ui/remote_pages.dart:55"
+  "x-where": "ui/remote_pages.dart:59"
  },
  "s678a751265": "Connect this device to home",
  "@s678a751265": {
   "description": "fi: Yhdistä tämä laite kotiin",
-  "x-where": "ui/remote_pages.dart:129"
+  "x-where": "ui/remote_pages.dart:133"
  },
  "sdae0305965": "There is a home bridge (tablet or PC) at home already. Scan its QR code or type the 6 digits.",
  "@sdae0305965": {
   "description": "fi: Kotona on jo kotisilta (tabletti tai PC). Skannaa sen QR-koodi tai kirjoita 6 numeroa.",
-  "x-where": "ui/remote_pages.dart:130"
+  "x-where": "ui/remote_pages.dart:134"
  },
  "s5f8284b98f": "Make this device the home bridge",
  "@s5f8284b98f": {
   "description": "fi: Tee tästä laitteesta kotisilta",
-  "x-where": "ui/remote_pages.dart:142"
+  "x-where": "ui/remote_pages.dart:146"
  },
  "s6a95f7843b": "This device stays at home, always on (charger + Wi-Fi), and passes remote commands to your devices.",
  "@s6a95f7843b": {
   "description": "fi: Tämä laite jää kotiin aina päälle (laturiin ja wifiin) ja välittää etänä annetut komennot kodin laitteille.",
-  "x-where": "ui/remote_pages.dart:143"
+  "x-where": "ui/remote_pages.dart:147"
  },
  "sa949a952bf": "Add home bridge (Molaplan Bridge device)",
  "@sa949a952bf": {
   "description": "fi: Lisää kotisilta (Molaplan Bridge -laite)",
-  "x-where": "ui/remote_pages.dart:160"
+  "x-where": "ui/remote_pages.dart:164"
  },
  "sb641af74b7": "A small always-on device, e.g. Athom IR/RF – also controls the heat pump. Set up with the phone in a couple of minutes.",
  "@sb641af74b7": {
   "description": "fi: Pieni aina päällä oleva laite, esim. Athom IR/RF – ohjaa myös ilmalämpöpumppua. Asennus puhelimella parissa minuutissa.",
-  "x-where": "ui/remote_pages.dart:161"
+  "x-where": "ui/remote_pages.dart:165"
  },
  "s2c3ae5833b": "Other ways: VPN, Nabu Casa, cloud MQTT",
  "@s2c3ae5833b": {
   "description": "fi: Muut tavat: VPN, Nabu Casa, pilvi-MQTT",
-  "x-where": "ui/remote_pages.dart:172"
+  "x-where": "ui/remote_pages.dart:176"
  },
  "s807e3a32f3": "Step-by-step guides if you already use Tailscale, WireGuard, Home Assistant Cloud or cloud MQTT.",
  "@s807e3a32f3": {
   "description": "fi: Selkeät ohjeet, jos käytät jo Tailscalea, WireGuardia, Home Assistant Cloudia tai pilvi-MQTT:tä.",
-  "x-where": "ui/remote_pages.dart:173"
+  "x-where": "ui/remote_pages.dart:177"
  },
  "sa3e78d5c4e": "The home bridge answers – remote access works.",
  "@sa3e78d5c4e": {
   "description": "fi: Kotisilta vastaa – etäyhteys toimii.",
-  "x-where": "ui/remote_pages.dart:205"
+  "x-where": "ui/remote_pages.dart:209"
  },
  "sfaa5185b74": "Remove remote access?",
  "@sfaa5185b74": {
   "description": "fi: Poistetaanko etäyhteys?",
-  "x-where": "ui/remote_pages.dart:231"
+  "x-where": "ui/remote_pages.dart:235"
  },
  "sbc44ce6993": "This device can then no longer reach home from outside. You can pair again any time.",
  "@sbc44ce6993": {
   "description": "fi: Tämä laite ei sen jälkeen saa yhteyttä kotiin kodin ulkopuolelta. Voit yhdistää uudelleen milloin vain.",
-  "x-where": "ui/remote_pages.dart:232"
+  "x-where": "ui/remote_pages.dart:236"
  },
  "s0b57661c18": "Control your home from anywhere",
  "@s0b57661c18": {
   "description": "fi: Ohjaa kotia myös kodin ulkopuolelta",
-  "x-where": "ui/remote_pages.dart:260"
+  "x-where": "ui/remote_pages.dart:264"
  },
  "s07dc42dc7a": "At home Molaplan talks to your devices directly, elsewhere encrypted through your home bridge. Nothing to set up on the router.",
  "@s07dc42dc7a": {
   "description": "fi: Kotona Molaplan puhuu laitteille suoraan, muualla salattuna kotisillan kautta. Mitään ei tarvitse säätää reitittimestä.",
-  "x-where": "ui/remote_pages.dart:265"
+  "x-where": "ui/remote_pages.dart:269"
  },
  "sdde4ff19ce": "Show the devices of {p0} here",
  "@sdde4ff19ce": {
   "description": "fi: Näytä kodin {p0} laitteet täällä",
-  "x-where": "ui/remote_pages.dart:287",
+  "x-where": "ui/remote_pages.dart:291",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8037,62 +8529,62 @@
  "sc5328cbb8f": "Copy the home bridge''s dashboards to this device. Readings and controls then go through the home bridge.",
  "@sc5328cbb8f": {
   "description": "fi: Kopioi kotisillan näkymät tähän laitteeseen. Lukemat ja ohjaukset kulkevat sen jälkeen kotisillan kautta.",
-  "x-where": "ui/remote_pages.dart:292"
+  "x-where": "ui/remote_pages.dart:296"
  },
  "s86ad95fa48": "Copy home dashboards",
  "@s86ad95fa48": {
   "description": "fi: Kopioi kodin näkymät",
-  "x-where": "ui/remote_pages.dart:303"
+  "x-where": "ui/remote_pages.dart:307"
  },
  "s9b8f1f4a7e": "Add a home bridge",
  "@s9b8f1f4a7e": {
   "description": "fi: Lisää kotisilta",
-  "x-where": "ui/remote_pages.dart:315"
+  "x-where": "ui/remote_pages.dart:319"
  },
  "sa8c35b8bfb": "Get started",
  "@sa8c35b8bfb": {
   "description": "fi: Aloita näin",
-  "x-where": "ui/remote_pages.dart:321"
+  "x-where": "ui/remote_pages.dart:325"
  },
  "s5683f9f7e4": "A home bridge is any Molaplan that is always on at home: a PC, an old tablet or phone, a Molaplan Bridge device or the separate bridge program. When you are away, commands go through it end-to-end encrypted.",
  "@s5683f9f7e4": {
   "description": "fi: Kotisilta on mikä tahansa kotona aina päällä oleva Molaplan: PC, vanha tabletti tai puhelin, Molaplan Bridge -laite tai ",
-  "x-where": "ui/remote_pages.dart:338"
+  "x-where": "ui/remote_pages.dart:342"
  },
  "sa75a955933": "At home = this device is on the home bridge''s own network and talks to devices directly. Remote = through the home bridge. No connection = neither answers.",
  "@sa75a955933": {
   "description": "fi: Kotona = tämä laite on kotisillan omassa verkossa ja puhuu laitteille suoraan. Etäyhteys = kotisillan kautta. Ei yhteytt",
-  "x-where": "ui/remote_pages.dart:350"
+  "x-where": "ui/remote_pages.dart:354"
  },
  "s90460344ec": "The home bridge is an old version and does not report its network, so everything goes through it. Update the bridge to detect At home.",
  "@s90460344ec": {
   "description": "fi: Kotisilta on vanha versio eikä kerro verkkoaan, joten yhteys kulkee aina sen kautta. Päivitä kotisilta, niin Kotona-tila",
-  "x-where": "ui/remote_pages.dart:361"
+  "x-where": "ui/remote_pages.dart:365"
  },
  "s19cec9667e": "Test remote access",
  "@s19cec9667e": {
   "description": "fi: Testaa etäyhteys",
-  "x-where": "ui/remote_pages.dart:384"
+  "x-where": "ui/remote_pages.dart:388"
  },
  "s3563cb1635": "Remove remote access",
  "@s3563cb1635": {
   "description": "fi: Poista etäyhteys",
-  "x-where": "ui/remote_pages.dart:396"
+  "x-where": "ui/remote_pages.dart:400"
  },
  "s528c4f3a4c": "This device is the home bridge",
  "@s528c4f3a4c": {
   "description": "fi: Tämä laite on kotisilta",
-  "x-where": "ui/remote_pages.dart:405"
+  "x-where": "ui/remote_pages.dart:409"
  },
  "sfd263f3e04": "Camera refresh when remote",
  "@sfd263f3e04": {
   "description": "fi: Kamerakuvan päivitys etänä",
-  "x-where": "ui/remote_pages.dart:420"
+  "x-where": "ui/remote_pages.dart:424"
  },
  "s99249ddf24": "Remotely the camera shows a picture every {p0} s (saves data).",
  "@s99249ddf24": {
   "description": "fi: Etänä kamera näyttää kuvan {p0} s välein (säästää dataa).",
-  "x-where": "ui/remote_pages.dart:422",
+  "x-where": "ui/remote_pages.dart:426",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8102,12 +8594,12 @@
  "s451ea613dd": "Relay server",
  "@s451ea613dd": {
   "description": "fi: Välityspalvelin",
-  "x-where": "ui/remote_pages.dart:439"
+  "x-where": "ui/remote_pages.dart:443"
  },
  "sc420bf77fa": "The bridge is up to date ({p0}).",
  "@sc420bf77fa": {
   "description": "fi: Kotisilta on jo uusin ({p0}).",
-  "x-where": "ui/remote_pages.dart:497",
+  "x-where": "ui/remote_pages.dart:501",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8117,7 +8609,7 @@
  "sb040f9f612": "The bridge is installing {p0} and restarts (about a minute).",
  "@sb040f9f612": {
   "description": "fi: Kotisilta asentaa version {p0} ja käynnistyy uudelleen (noin minuutti).",
-  "x-where": "ui/remote_pages.dart:502",
+  "x-where": "ui/remote_pages.dart:506",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8127,7 +8619,7 @@
  "s007c4f492d": "Version {p0} downloaded. Approve the install from the notification on the bridge device.",
  "@s007c4f492d": {
   "description": "fi: Versio {p0} ladattu. Kotisillan laitteessa pitää hyväksyä asennus ilmoituksesta.",
-  "x-where": "ui/remote_pages.dart:507",
+  "x-where": "ui/remote_pages.dart:511",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8137,7 +8629,7 @@
  "s602d8f4a18": "Update this bridge by hand (version {p0}).",
  "@s602d8f4a18": {
   "description": "fi: Tämä kotisilta päivitetään käsin (versio {p0}).",
-  "x-where": "ui/remote_pages.dart:512",
+  "x-where": "ui/remote_pages.dart:516",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8147,12 +8639,12 @@
  "se8704fa7a4": "The bridge could not check for updates now.",
  "@se8704fa7a4": {
   "description": "fi: Kotisilta ei saanut päivitystietoja nyt. Yritä myöhemmin.",
-  "x-where": "ui/remote_pages.dart:517"
+  "x-where": "ui/remote_pages.dart:521"
  },
  "s2db971daf4": "Update failed: {p0}",
  "@s2db971daf4": {
   "description": "fi: Päivitys epäonnistui: {p0}",
-  "x-where": "ui/remote_pages.dart:522",
+  "x-where": "ui/remote_pages.dart:526",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8162,37 +8654,37 @@
  "s51fb400921": " · updates silently",
  "@s51fb400921": {
   "description": "fi:  · päivittyy etänä hiljaisesti",
-  "x-where": "ui/remote_pages.dart:548"
+  "x-where": "ui/remote_pages.dart:552"
  },
  "s3443bfc674": " · updates need approval on the device",
  "@s3443bfc674": {
   "description": "fi:  · päivitys hyväksytään laitteella",
-  "x-where": "ui/remote_pages.dart:549"
+  "x-where": "ui/remote_pages.dart:553"
  },
  "s8ae159d87a": "Home bridge: older than 0.8.0 (no version info). It cannot be updated remotely – update it once on the bridge device.",
  "@s8ae159d87a": {
   "description": "fi: Kotisilta: vanhempi versio kuin 0.8.0 (ei versiotietoa). Sitä ei voi päivittää etänä – päivitä se kerran sillan laitteel",
-  "x-where": "ui/remote_pages.dart:552"
+  "x-where": "ui/remote_pages.dart:556"
  },
  "s6a02d97944": "Home bridge version: checking…",
  "@s6a02d97944": {
   "description": "fi: Kotisillan versio: haetaan…",
-  "x-where": "ui/remote_pages.dart:558"
+  "x-where": "ui/remote_pages.dart:562"
  },
  "s311c531a8e": "Home bridge version: unknown",
  "@s311c531a8e": {
   "description": "fi: Kotisillan versio: ei tiedossa",
-  "x-where": "ui/remote_pages.dart:561"
+  "x-where": "ui/remote_pages.dart:565"
  },
  "s70fe8d5ef3": "Update bridge",
  "@s70fe8d5ef3": {
   "description": "fi: Päivitä silta",
-  "x-where": "ui/remote_pages.dart:575"
+  "x-where": "ui/remote_pages.dart:579"
  },
  "s7897a0f8e0": "{p0}: up to date ({p1}).",
  "@s7897a0f8e0": {
   "description": "fi: {p0}: jo uusin ({p1}).",
-  "x-where": "ui/remote_pages.dart:627",
+  "x-where": "ui/remote_pages.dart:631",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8205,7 +8697,7 @@
  "sbcef05dad9": "{p0} is installing {p1} and restarts (about a minute).",
  "@sbcef05dad9": {
   "description": "fi: {p0} asentaa version {p1} ja käynnistyy uudelleen (noin minuutti).",
-  "x-where": "ui/remote_pages.dart:628",
+  "x-where": "ui/remote_pages.dart:632",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8218,7 +8710,7 @@
  "s1aee092e31": "{p0}: version {p1} downloaded. Approve the install on the bridge device.",
  "@s1aee092e31": {
   "description": "fi: {p0}: versio {p1} ladattu. Asennus pitää hyväksyä sillan laitteella.",
-  "x-where": "ui/remote_pages.dart:633",
+  "x-where": "ui/remote_pages.dart:637",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8231,7 +8723,7 @@
  "s72774aece1": "{p0} is updated by hand (version {p1}).",
  "@s72774aece1": {
   "description": "fi: {p0} päivitetään käsin (versio {p1}).",
-  "x-where": "ui/remote_pages.dart:638",
+  "x-where": "ui/remote_pages.dart:642",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8244,7 +8736,7 @@
  "s238af47c1e": "{p0} is older than 0.8.0 and cannot update itself remotely.",
  "@s238af47c1e": {
   "description": "fi: {p0} on vanhempi kuin 0.8.0 eikä osaa päivittää itseään etänä.",
-  "x-where": "ui/remote_pages.dart:643",
+  "x-where": "ui/remote_pages.dart:647",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8254,7 +8746,7 @@
  "sb9bee63c5e": "{p0} could not check for updates now.",
  "@sb9bee63c5e": {
   "description": "fi: {p0} ei saanut päivitystietoja nyt.",
-  "x-where": "ui/remote_pages.dart:648",
+  "x-where": "ui/remote_pages.dart:652",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8264,7 +8756,7 @@
  "sd9103f5cee": "Connect to the bridge {p0}?",
  "@sd9103f5cee": {
   "description": "fi: Yhdistä kotisiltaan {p0}?",
-  "x-where": "ui/remote_pages.dart:671",
+  "x-where": "ui/remote_pages.dart:675",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8274,7 +8766,7 @@
  "s6046b9ff9c": "This device is now connected to {p0}. It switches to {p1}. No code or QR needed – both are on your account.",
  "@s6046b9ff9c": {
   "description": "fi: Tämä laite on nyt yhdistetty kotiin {p0}. Se vaihtuu kotisiltaan {p1}. Koodia tai QR:ää ei tarvita, koska molemmat ovat ",
-  "x-where": "ui/remote_pages.dart:674",
+  "x-where": "ui/remote_pages.dart:678",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8287,12 +8779,12 @@
  "s053b2f1211": "No code or QR needed – both devices are on your account.",
  "@s053b2f1211": {
   "description": "fi: Koodia tai QR:ää ei tarvita, koska molemmat laitteet ovat omalla tililläsi.",
-  "x-where": "ui/remote_pages.dart:679"
+  "x-where": "ui/remote_pages.dart:683"
  },
  "s948bfb1114": "Connected to {p0}.",
  "@s948bfb1114": {
   "description": "fi: Yhdistetty kotiin {p0}.",
-  "x-where": "ui/remote_pages.dart:699",
+  "x-where": "ui/remote_pages.dart:703",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8302,47 +8794,47 @@
  "sc4abf59272": "checking…",
  "@sc4abf59272": {
   "description": "fi: haetaan…",
-  "x-where": "ui/remote_pages.dart:717"
+  "x-where": "ui/remote_pages.dart:721"
  },
  "s12b3d49235": "unknown",
  "@s12b3d49235": {
   "description": "fi: ei tietoa",
-  "x-where": "ui/remote_pages.dart:718"
+  "x-where": "ui/remote_pages.dart:722"
  },
  "sb9e406274e": "online",
  "@sb9e406274e": {
   "description": "fi: päällä",
-  "x-where": "ui/remote_pages.dart:721"
+  "x-where": "ui/remote_pages.dart:725"
  },
  "sb981e102f1": "old Molaplan (0.8.0 test build or older)",
  "@sb981e102f1": {
   "description": "fi: vanha Molaplan (0.8.0-testiversio tai vanhempi)",
-  "x-where": "ui/remote_pages.dart:729"
+  "x-where": "ui/remote_pages.dart:733"
  },
  "s706ee3ad91": "update once on the device",
  "@s706ee3ad91": {
   "description": "fi: päivitä kerran laitteella",
-  "x-where": "ui/remote_pages.dart:731"
+  "x-where": "ui/remote_pages.dart:735"
  },
  "sca90c9c253": " (no credential on this device)",
  "@sca90c9c253": {
   "description": "fi:  (ei yhteystietoa tälle laitteelle)",
-  "x-where": "ui/remote_pages.dart:739"
+  "x-where": "ui/remote_pages.dart:743"
  },
  "s42b97a989b": "version unknown",
  "@s42b97a989b": {
   "description": "fi: versio ei tiedossa",
-  "x-where": "ui/remote_pages.dart:744"
+  "x-where": "ui/remote_pages.dart:748"
  },
  "se76155b6bd": "updates silently",
  "@se76155b6bd": {
   "description": "fi: päivittyy hiljaisesti",
-  "x-where": "ui/remote_pages.dart:746"
+  "x-where": "ui/remote_pages.dart:750"
  },
  "s20889b3dc9": "Update {p0} once on the device",
  "@s20889b3dc9": {
   "description": "fi: Päivitä {p0} kerran laitteella",
-  "x-where": "ui/remote_pages.dart:756",
+  "x-where": "ui/remote_pages.dart:760",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8352,62 +8844,62 @@
  "secbc1cfea3": "This home bridge runs an old Molaplan that cannot update itself remotely yet.\n\nOne-time update: open Molaplan on the bridge device → Settings → Check for updates → Update and approve the install. Or install the latest APK over USB.\n\nAfter that, Update works from this list remotely.",
  "@secbc1cfea3": {
   "description": "fi: Tämä kotisilta käyttää vanhaa Molaplania, joka ei vielä osaa päivittää itseään etänä.\n\nKerran tehtävä päivitys: avaa Mol",
-  "x-where": "ui/remote_pages.dart:758"
+  "x-where": "ui/remote_pages.dart:762"
  },
  "s356b6d4d13": "Home bridges",
  "@s356b6d4d13": {
   "description": "fi: Kotisillat",
-  "x-where": "ui/remote_pages.dart:805"
+  "x-where": "ui/remote_pages.dart:809"
  },
  "s57117babe8": "Refresh",
  "@s57117babe8": {
   "description": "fi: Päivitä tiedot",
-  "x-where": "ui/remote_pages.dart:808"
+  "x-where": "ui/remote_pages.dart:812"
  },
  "s5160bf55ae": "Open = use that home on this device. Update = install the latest Molaplan on the bridge.",
  "@s5160bf55ae": {
   "description": "fi: Avaa = näytä se koti tällä laitteella. Päivitä = asenna kotisillalle uusin Molaplan.",
-  "x-where": "ui/remote_pages.dart:815"
+  "x-where": "ui/remote_pages.dart:819"
  },
  "s9b2c8181e4": "this device",
  "@s9b2c8181e4": {
   "description": "fi: tämä laite",
-  "x-where": "ui/remote_pages.dart:827"
+  "x-where": "ui/remote_pages.dart:831"
  },
  "s902eaaff9f": "Open",
  "@s902eaaff9f": {
   "description": "fi: Avaa",
-  "x-where": "ui/remote_pages.dart:841"
+  "x-where": "ui/remote_pages.dart:845"
  },
  "s72da730a42": "Remote service: connected",
  "@s72da730a42": {
   "description": "fi: Yhteys etäpalveluun: kunnossa",
-  "x-where": "ui/remote_pages.dart:860"
+  "x-where": "ui/remote_pages.dart:864"
  },
  "s421f161f5b": "Connecting to the remote service…",
  "@s421f161f5b": {
   "description": "fi: Yhdistetään etäpalveluun…",
-  "x-where": "ui/remote_pages.dart:861"
+  "x-where": "ui/remote_pages.dart:865"
  },
  "s88e2b1dad5": "No connection to the remote service – retrying automatically. Check the internet connection.",
  "@s88e2b1dad5": {
   "description": "fi: Ei yhteyttä etäpalveluun – yritetään uudelleen automaattisesti. Tarkista nettiyhteys.",
-  "x-where": "ui/remote_pages.dart:862"
+  "x-where": "ui/remote_pages.dart:866"
  },
  "scc0cccf89d": "Off",
  "@scc0cccf89d": {
   "description": "fi: Pois päältä",
-  "x-where": "ui/remote_pages.dart:867"
+  "x-where": "ui/remote_pages.dart:871"
  },
  "sa1d085d92c": "The home bridge has no dashboards to copy.",
  "@sa1d085d92c": {
   "description": "fi: Kotisillalla ei ole näkymiä kopioitavaksi.",
-  "x-where": "ui/remote_pages.dart:879"
+  "x-where": "ui/remote_pages.dart:883"
  },
  "sa13ef6f8d9": "Copied: {p0} dashboards",
  "@sa13ef6f8d9": {
   "description": "fi: Kopioitu: {p0} näkymää",
-  "x-where": "ui/remote_pages.dart:887",
+  "x-where": "ui/remote_pages.dart:891",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8417,7 +8909,7 @@
  "sab5e7202f5": "Connected to \"{p0}\"!",
  "@sab5e7202f5": {
   "description": "fi: Yhdistetty kotiin \"{p0}\"!",
-  "x-where": "ui/remote_pages.dart:925",
+  "x-where": "ui/remote_pages.dart:929",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8427,77 +8919,77 @@
  "s30f06b7fb0": "You can now control your home from anywhere. Copy the home bridge''s dashboards and devices to this device too?",
  "@s30f06b7fb0": {
   "description": "fi: Nyt voit ohjata kotia myös kodin ulkopuolelta. Haluatko kopioida kotisillan näkymät ja laitteet myös tähän laitteeseen?",
-  "x-where": "ui/remote_pages.dart:927"
+  "x-where": "ui/remote_pages.dart:931"
  },
  "s641263ce18": "No thanks",
  "@s641263ce18": {
   "description": "fi: Ei kiitos",
-  "x-where": "ui/remote_pages.dart:934"
+  "x-where": "ui/remote_pages.dart:938"
  },
  "sa7a6c0fc2d": "not a Molaplan code",
  "@sa7a6c0fc2d": {
   "description": "fi: ei Molaplan-koodi",
-  "x-where": "ui/remote_pages.dart:962"
+  "x-where": "ui/remote_pages.dart:966"
  },
  "se2ecf1935a": "Connect to home",
  "@se2ecf1935a": {
   "description": "fi: Yhdistä kotiin",
-  "x-where": "ui/remote_pages.dart:977"
+  "x-where": "ui/remote_pages.dart:980"
  },
  "s410655fd47": "How to connect",
  "@s410655fd47": {
   "description": "fi: Näin yhdistät",
-  "x-where": "ui/remote_pages.dart:984"
+  "x-where": "ui/remote_pages.dart:987"
  },
  "s7c541b8e91": "On the home bridge (tablet or PC at home) open Molaplan → Settings → Remote access → Make this device the home bridge.",
  "@s7c541b8e91": {
   "description": "fi: Avaa kotona olevalla kotisillalla (tabletti tai PC) Molaplan → Asetukset → Etäkäyttö → Tee tästä laitteesta kotisilta.",
-  "x-where": "ui/remote_pages.dart:989"
+  "x-where": "ui/remote_pages.dart:992"
  },
  "sc7c83b2f58": "Press \"Pair a phone\" there. A QR code and 6 digits appear.",
  "@sc7c83b2f58": {
   "description": "fi: Paina siellä \"Yhdistä puhelin\". Näytölle tulee QR-koodi ja 6 numeroa.",
-  "x-where": "ui/remote_pages.dart:998"
+  "x-where": "ui/remote_pages.dart:1001"
  },
  "s35284509d4": "Scan the QR code or type the digits below.",
  "@s35284509d4": {
   "description": "fi: Skannaa QR-koodi tai kirjoita numerot alle.",
-  "x-where": "ui/remote_pages.dart:1007"
+  "x-where": "ui/remote_pages.dart:1010"
  },
  "s66bb65d8e8": "Scan the QR code",
  "@s66bb65d8e8": {
   "description": "fi: Skannaa QR-koodi",
-  "x-where": "ui/remote_pages.dart:1022"
+  "x-where": "ui/remote_pages.dart:1025"
  },
  "se97cc157ef": "or type the code",
  "@se97cc157ef": {
   "description": "fi: tai kirjoita koodi",
-  "x-where": "ui/remote_pages.dart:1028"
+  "x-where": "ui/remote_pages.dart:1031"
  },
  "s3143eb70e1": "6 digits from the home bridge screen",
  "@s3143eb70e1": {
   "description": "fi: 6 numeroa kotisillan näytöltä",
-  "x-where": "ui/remote_pages.dart:1039"
+  "x-where": "ui/remote_pages.dart:1042"
  },
  "s643434044c": "When using the code, press \"Accept\" on the home bridge too.",
  "@s643434044c": {
   "description": "fi: Koodilla yhdistettäessä paina vielä kotisillalla \"Hyväksy\".",
-  "x-where": "ui/remote_pages.dart:1042"
+  "x-where": "ui/remote_pages.dart:1045"
  },
  "s9753766742": "Press \"Accept\" on the home bridge screen…",
  "@s9753766742": {
   "description": "fi: Paina kotisillan näytöllä \"Hyväksy\"…",
-  "x-where": "ui/remote_pages.dart:1069"
+  "x-where": "ui/remote_pages.dart:1072"
  },
  "s50e49dd1df": "Point the camera at the QR code",
  "@s50e49dd1df": {
   "description": "fi: Osoita kameralla QR-koodia",
-  "x-where": "ui/remote_pages.dart:1115"
+  "x-where": "ui/remote_pages.dart:1118"
  },
  "s5d717bb2c5": "Cannot use the camera ({p0}). Allow camera access or type the code.",
  "@s5d717bb2c5": {
   "description": "fi: Kameraa ei voi käyttää ({p0}). Salli kameran käyttö tai kirjoita koodi käsin.",
-  "x-where": "ui/remote_pages.dart:1132",
+  "x-where": "ui/remote_pages.dart:1135",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8507,22 +8999,22 @@
  "s12d40eedd5": "Allow running in the background",
  "@s12d40eedd5": {
   "description": "fi: Salli toiminta taustalla",
-  "x-where": "ui/remote_pages.dart:1177"
+  "x-where": "ui/remote_pages.dart:1180"
  },
  "s8e1fcae1fe": "For the bridge to work with the screen off, Android must let Molaplan run in the background without battery restrictions. Choose \"Allow\" in the next window.",
  "@s8e1fcae1fe": {
   "description": "fi: Jotta kotisilta toimii näytön ollessa pois päältä, Android pitää sallia ajaa Molaplania taustalla ilman akunsäästörajoit",
-  "x-where": "ui/remote_pages.dart:1178"
+  "x-where": "ui/remote_pages.dart:1181"
  },
  "sd62c460e3d": "Continue",
  "@sd62c460e3d": {
   "description": "fi: Jatka",
-  "x-where": "ui/remote_pages.dart:1183"
+  "x-where": "ui/remote_pages.dart:1186"
  },
  "s7132345f20": "Device \"{p0}\" connected!",
  "@s7132345f20": {
   "description": "fi: Laite \"{p0}\" yhdistetty!",
-  "x-where": "ui/remote_pages.dart:1215",
+  "x-where": "ui/remote_pages.dart:1218",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8532,77 +9024,77 @@
  "se2e2af02ac": "The home bridge is a device that stays on at home, e.g. an old tablet or a PC. When you are away, your phone''s commands go encrypted through it to your devices.",
  "@se2e2af02ac": {
   "description": "fi: Kotisilta on kotona aina päällä oleva laite, esimerkiksi vanha tabletti tai PC. Kun olet poissa, puhelimesi komennot kul",
-  "x-where": "ui/remote_pages.dart:1249"
+  "x-where": "ui/remote_pages.dart:1252"
  },
  "sd64f52490d": "Keep it on the charger and on the home Wi-Fi.",
  "@sd64f52490d": {
   "description": "fi: Pidä laite laturissa ja kodin wifissä.",
-  "x-where": "ui/remote_pages.dart:1260"
+  "x-where": "ui/remote_pages.dart:1263"
  },
  "seb25c46911": "The bridge runs in the background: the screen can be off and Molaplan closed. It starts by itself after a restart and reconnects when the network returns.",
  "@seb25c46911": {
   "description": "fi: Silta toimii taustalla: näytön voi sammuttaa ja Molaplanin sulkea. Se käynnistyy itsestään laitteen uudelleenkäynnistyks",
-  "x-where": "ui/remote_pages.dart:1266"
+  "x-where": "ui/remote_pages.dart:1269"
  },
  "sbb23f25581": "Keep Molaplan open. The screen stays on while the bridge is on.",
  "@sbb23f25581": {
   "description": "fi: Pidä Molaplan auki. Näyttö pysyy päällä, kun silta on käytössä.",
-  "x-where": "ui/remote_pages.dart:1276"
+  "x-where": "ui/remote_pages.dart:1279"
  },
  "sbfed096278": "Use this device as the home bridge",
  "@sbfed096278": {
   "description": "fi: Käytä tätä laitetta kotisiltana",
-  "x-where": "ui/remote_pages.dart:1288"
+  "x-where": "ui/remote_pages.dart:1291"
  },
  "s374a096cb9": "Battery saving may stop the bridge",
  "@s374a096cb9": {
   "description": "fi: Akunsäästö voi pysäyttää sillan",
-  "x-where": "ui/remote_pages.dart:1303"
+  "x-where": "ui/remote_pages.dart:1306"
  },
  "s9b1298f7c6": "Let Molaplan run in the background without restrictions.",
  "@s9b1298f7c6": {
   "description": "fi: Salli Molaplanin toimia taustalla rajoituksetta.",
-  "x-where": "ui/remote_pages.dart:1307"
+  "x-where": "ui/remote_pages.dart:1310"
  },
  "sc8ef04815c": "Allow",
  "@sc8ef04815c": {
   "description": "fi: Salli",
-  "x-where": "ui/remote_pages.dart:1320"
+  "x-where": "ui/remote_pages.dart:1323"
  },
  "s2fcba19ec3": "Update automatically",
  "@s2fcba19ec3": {
   "description": "fi: Päivitä automaattisesti",
-  "x-where": "ui/remote_pages.dart:1329"
+  "x-where": "ui/remote_pages.dart:1332"
  },
  "se7a1731ac0": "Installs new Molaplan versions by itself (checked every 6 h). Only Molaplan-signed files with a matching checksum.",
  "@se7a1731ac0": {
   "description": "fi: Asentaa uuden Molaplan-version itse (tarkistus 6 tunnin välein). Vain Molaplanin allekirjoittamat, tarkistussummaltaan o",
-  "x-where": "ui/remote_pages.dart:1331"
+  "x-where": "ui/remote_pages.dart:1334"
  },
  "s13995350ed": "Pair a phone",
  "@s13995350ed": {
   "description": "fi: Yhdistä puhelin",
-  "x-where": "ui/remote_pages.dart:1355"
+  "x-where": "ui/remote_pages.dart:1358"
  },
  "s6a74454a98": "Paired devices",
  "@s6a74454a98": {
   "description": "fi: Yhdistetyt laitteet",
-  "x-where": "ui/remote_pages.dart:1368"
+  "x-where": "ui/remote_pages.dart:1371"
  },
  "s1e4fc2e7fe": "None yet. Press \"Pair a phone\".",
  "@s1e4fc2e7fe": {
   "description": "fi: Ei vielä yhtään. Paina \"Yhdistä puhelin\".",
-  "x-where": "ui/remote_pages.dart:1371"
+  "x-where": "ui/remote_pages.dart:1374"
  },
  "s7ea55c5834": "Added",
  "@s7ea55c5834": {
   "description": "fi: Lisätty",
-  "x-where": "ui/remote_pages.dart:1379"
+  "x-where": "ui/remote_pages.dart:1382"
  },
  "sfd8d693d04": "Remove \"{p0}\"?",
  "@sfd8d693d04": {
   "description": "fi: Poistetaanko \"{p0}\"?",
-  "x-where": "ui/remote_pages.dart:1387",
+  "x-where": "ui/remote_pages.dart:1390",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8612,32 +9104,32 @@
  "s84572f642e": "The device can then no longer connect remotely. It can be paired again.",
  "@s84572f642e": {
   "description": "fi: Laite ei sen jälkeen pääse kotiin etänä. Sen voi yhdistää uudelleen.",
-  "x-where": "ui/remote_pages.dart:1388"
+  "x-where": "ui/remote_pages.dart:1391"
  },
  "sf7fa9632f3": "Valid for",
  "@sf7fa9632f3": {
   "description": "fi: Voimassa",
-  "x-where": "ui/remote_pages.dart:1478"
+  "x-where": "ui/remote_pages.dart:1481"
  },
  "s4e877aeafe": "On the phone: Molaplan → Settings → Remote access → Connect this device to home",
  "@s4e877aeafe": {
   "description": "fi: Puhelimessa: Molaplan → Asetukset → Etäkäyttö → Yhdistä tämä laite kotiin",
-  "x-where": "ui/remote_pages.dart:1483"
+  "x-where": "ui/remote_pages.dart:1486"
  },
  "s9715416100": "Scan with the phone",
  "@s9715416100": {
   "description": "fi: Skannaa puhelimella",
-  "x-where": "ui/remote_pages.dart:1505"
+  "x-where": "ui/remote_pages.dart:1508"
  },
  "s5378bb3f05": "Accept this device?",
  "@s5378bb3f05": {
   "description": "fi: Hyväksytäänkö laite?",
-  "x-where": "ui/remote_pages.dart:1537"
+  "x-where": "ui/remote_pages.dart:1540"
  },
  "s1d8bb7b0a6": "\"{p0}\" wants remote control of your home. Accept only if it is your own or a family member''s device that just entered the code.",
  "@s1d8bb7b0a6": {
   "description": "fi: \"{p0}\" haluaa ohjata kotia etänä. Hyväksy vain, jos se on oma tai perheenjäsenen laite, jolla juuri syötit koodin.",
-  "x-where": "ui/remote_pages.dart:1539",
+  "x-where": "ui/remote_pages.dart:1542",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -8647,32 +9139,32 @@
  "sa04c218f82": "Reject",
  "@sa04c218f82": {
   "description": "fi: Hylkää",
-  "x-where": "ui/remote_pages.dart:1546"
+  "x-where": "ui/remote_pages.dart:1549"
  },
  "sd64229b6d8": "not set up yet",
  "@sd64229b6d8": {
   "description": "fi: ei vielä valittu",
-  "x-where": "ui/remote_pages.dart:1573"
+  "x-where": "ui/remote_pages.dart:1576"
  },
  "s088e792ee3": "Remote access is off",
  "@s088e792ee3": {
   "description": "fi: Etäkäyttö ei ole käytössä",
-  "x-where": "ui/remote_pages.dart:1578"
+  "x-where": "ui/remote_pages.dart:1581"
  },
  "s85543bf885": "Online",
  "@s85543bf885": {
   "description": "fi: Yhteydessä",
-  "x-where": "ui/remote_pages.dart:1580"
+  "x-where": "ui/remote_pages.dart:1583"
  },
  "s3f17564f18": "last seen",
  "@s3f17564f18": {
   "description": "fi: viimeksi nähty",
-  "x-where": "ui/remote_pages.dart:1585"
+  "x-where": "ui/remote_pages.dart:1588"
  },
  "s9ba8cafced": "What is remote access?",
  "@s9ba8cafced": {
   "description": "fi: Mikä on etäkäyttö?",
-  "x-where": "ui/remote_pages.dart:1613"
+  "x-where": "ui/remote_pages.dart:1616"
  },
  "s1cf33c1fbc": "Value",
  "@s1cf33c1fbc": {
@@ -9597,11 +10089,6 @@
   "description": "fi: Ei teho- tai energiaruutuja (W, kW, Wh, kWh). Lisää esim. Shelly-mittari.",
   "x-where": "ui/energy_pages.dart:257"
  },
- "sdb0484d728": "Saved",
- "@sdb0484d728": {
-  "description": "fi: Tallennettu",
-  "x-where": "ui/energy_pages.dart:311"
- },
  "se80021e22a": "Copy the prices from your bill. Type them with or without VAT – costs are shown both ways.",
  "@se80021e22a": {
   "description": "fi: Katso hinnat sähkölaskusta. Voit kirjoittaa ne verollisina tai verottomina – kustannukset näytetään molempina.",
@@ -10308,282 +10795,282 @@
  "s4dab2d409b": "Export configuration",
  "@s4dab2d409b": {
   "description": "fi: Vie asetukset",
-  "x-where": "ui/settings_page.dart:48"
+  "x-where": "ui/settings_page.dart:49"
  },
  "s149c1e54d6": "Configuration exported",
  "@s149c1e54d6": {
   "description": "fi: Asetukset viety",
-  "x-where": "ui/settings_page.dart:50"
+  "x-where": "ui/settings_page.dart:51"
  },
  "s35f445793b": "Import configuration",
  "@s35f445793b": {
   "description": "fi: Tuo asetukset",
-  "x-where": "ui/settings_page.dart:61"
+  "x-where": "ui/settings_page.dart:62"
  },
  "sd55be829e3": "Replace current configuration?",
  "@sd55be829e3": {
   "description": "fi: Korvataanko nykyiset asetukset?",
-  "x-where": "ui/settings_page.dart:68"
+  "x-where": "ui/settings_page.dart:69"
  },
  "s852dd1795e": "All current connections and dashboards are replaced by the file contents.",
  "@s852dd1795e": {
   "description": "fi: Kaikki nykyiset yhteydet ja näkymät korvataan tiedoston sisällöllä.",
-  "x-where": "ui/settings_page.dart:69"
+  "x-where": "ui/settings_page.dart:70"
  },
  "s5f2ec17730": "Configuration imported",
  "@s5f2ec17730": {
   "description": "fi: Asetukset tuotu",
-  "x-where": "ui/settings_page.dart:78"
+  "x-where": "ui/settings_page.dart:79"
  },
  "sa87fff54f3": "Import failed",
  "@sa87fff54f3": {
   "description": "fi: Tuonti epäonnistui",
-  "x-where": "ui/settings_page.dart:80"
+  "x-where": "ui/settings_page.dart:81"
  },
  "s2fd2bfedb8": "Account",
  "@s2fd2bfedb8": {
   "description": "fi: Tili",
-  "x-where": "ui/settings_page.dart:97"
+  "x-where": "ui/settings_page.dart:98"
  },
  "s4c0ff416ab": "The same homes and tiles on all your devices.",
  "@s4c0ff416ab": {
   "description": "fi: Samat kodit ja ruudut kaikilla laitteillasi.",
-  "x-where": "ui/settings_page.dart:101"
+  "x-where": "ui/settings_page.dart:102"
  },
  "scc7e418ee3": "Sign in to have the same homes, devices and tiles on PC, tablet and phone. Optional.",
  "@scc7e418ee3": {
   "description": "fi: Kirjaudu, niin kodit, laitteet ja ruudut ovat samat PC:llä, tabletilla ja puhelimella. Vapaaehtoinen.",
-  "x-where": "ui/settings_page.dart:106"
+  "x-where": "ui/settings_page.dart:107"
  },
  "s08d62fd281": "Appearance",
  "@s08d62fd281": {
   "description": "fi: Ulkoasu",
-  "x-where": "ui/settings_page.dart:133"
+  "x-where": "ui/settings_page.dart:134"
  },
  "s2b8a2754c6": "Theme",
  "@s2b8a2754c6": {
   "description": "fi: Teema",
-  "x-where": "ui/settings_page.dart:135"
+  "x-where": "ui/settings_page.dart:136"
  },
  "s79f67deb42": "Light",
  "@s79f67deb42": {
   "description": "fi: Vaalea",
-  "x-where": "ui/settings_page.dart:143"
+  "x-where": "ui/settings_page.dart:144"
  },
  "s0d6fb52039": "Dark",
  "@s0d6fb52039": {
   "description": "fi: Tumma",
-  "x-where": "ui/settings_page.dart:148"
+  "x-where": "ui/settings_page.dart:149"
  },
  "s70dd7fdd58": "By sunrise and sunset",
  "@s70dd7fdd58": {
   "description": "fi: Auringonnousun ja -laskun mukaan",
-  "x-where": "ui/settings_page.dart:165"
+  "x-where": "ui/settings_page.dart:166"
  },
  "s21206b61f7": "Needs the home location (Energy › Home). Until then the device setting is followed.",
  "@s21206b61f7": {
   "description": "fi: Vaatii kodin sijainnin (Energia › Koti). Siihen asti seurataan laitteen asetusta.",
-  "x-where": "ui/settings_page.dart:168"
+  "x-where": "ui/settings_page.dart:169"
  },
  "s4e23920823": "Light by day, dark in the evening. Off: follows the device setting.",
  "@s4e23920823": {
   "description": "fi: Vaalea päivällä, tumma illalla. Pois päältä: seuraa laitteen asetusta.",
-  "x-where": "ui/settings_page.dart:173"
+  "x-where": "ui/settings_page.dart:174"
  },
  "s4b847ce63e": "The choice applies to this device and is saved to your account as the default for new devices.",
  "@s4b847ce63e": {
   "description": "fi: Valinta koskee tätä laitetta ja tallentuu tiliisi uusien laitteiden oletukseksi.",
-  "x-where": "ui/settings_page.dart:183"
+  "x-where": "ui/settings_page.dart:184"
  },
  "s5ebc02022b": "Show as hourly average",
  "@s5ebc02022b": {
   "description": "fi: Näytä tuntikeskiarvona",
-  "x-where": "ui/settings_page.dart:197"
+  "x-where": "ui/settings_page.dart:198"
  },
  "s68b4d332ca": "Price, cheapest hours and price control per hour (hourly-billed contract). Off: 15 min where the area publishes 15-min prices.",
  "@s68b4d332ca": {
   "description": "fi: Sähkön hinta, halvimmat tunnit ja hintaohjaukset tunneittain (tuntihinnoiteltu sopimus). Pois: 15 min, kun alueen hinnat",
-  "x-where": "ui/settings_page.dart:199"
+  "x-where": "ui/settings_page.dart:200"
  },
  "saf496a12a3": "Morning card: also show the priciest hour",
  "@saf496a12a3": {
   "description": "fi: Aamukortti: näytä myös kallein tunti",
-  "x-where": "ui/settings_page.dart:215"
+  "x-where": "ui/settings_page.dart:216"
  },
  "sc53b1b78c0": "The cheapest hour of the next 24 h is always shown with its price.",
  "@sc53b1b78c0": {
   "description": "fi: Halvin tunti näytetään aina seuraavalta 24 tunnilta hintoineen.",
-  "x-where": "ui/settings_page.dart:218"
+  "x-where": "ui/settings_page.dart:219"
  },
  "s0625d54b38": "Tile size",
  "@s0625d54b38": {
   "description": "fi: Laattakoko",
-  "x-where": "ui/settings_page.dart:226"
+  "x-where": "ui/settings_page.dart:227"
  },
  "s8382da3467": "Normal",
  "@s8382da3467": {
   "description": "fi: Normaali",
-  "x-where": "ui/settings_page.dart:232"
+  "x-where": "ui/settings_page.dart:233"
  },
  "s7c1cd8314e": "Hide tiles that don''t work remotely",
  "@s7c1cd8314e": {
   "description": "fi: Piilota etänä toimimattomat",
-  "x-where": "ui/settings_page.dart:242"
+  "x-where": "ui/settings_page.dart:243"
  },
  "sa0cbbafb4e": "Away from home, tiles that only work on the home network are hidden. By default they stay in place, greyed out.",
  "@sa0cbbafb4e": {
   "description": "fi: Kotiverkon ulkopuolella vain kotiverkossa toimivat ruudut piilotetaan. Oletuksena ne näkyvät harmaina paikallaan.",
-  "x-where": "ui/settings_page.dart:244"
+  "x-where": "ui/settings_page.dart:245"
  },
  "s419166b895": "Clock and weather on the home screen",
  "@s419166b895": {
   "description": "fi: Kello ja sää etusivulla",
-  "x-where": "ui/settings_page.dart:256"
+  "x-where": "ui/settings_page.dart:257"
  },
  "sec30a8f23e": "Time, date, weather and electricity price at the top of the view. This device only.",
  "@sec30a8f23e": {
   "description": "fi: Kellonaika, päivä, sää ja sähkön hinta näkymän yläreunassa. Koskee vain tätä laitetta.",
-  "x-where": "ui/settings_page.dart:258"
+  "x-where": "ui/settings_page.dart:259"
  },
  "sf7205b268f": "Animations",
  "@sf7205b268f": {
   "description": "fi: Animaatiot",
-  "x-where": "ui/settings_page.dart:270"
+  "x-where": "ui/settings_page.dart:271"
  },
  "s1535c6411d": "Soft transitions when a device changes state. Off = calmer and lighter for an older tablet. This device only.",
  "@s1535c6411d": {
   "description": "fi: Pehmeät siirtymät, kun laite vaihtaa tilaa. Pois päältä = rauhallisempi ja kevyempi vanhalle tabletille. Koskee vain tät",
-  "x-where": "ui/settings_page.dart:272"
+  "x-where": "ui/settings_page.dart:273"
  },
  "s21f870dbc2": "Shows technical settings: connections (HTTP, MQTT, Modbus…), payloads, JSON paths and tile sources. Most people don''t need these.",
  "@s21f870dbc2": {
   "description": "fi: Näyttää tekniset asetukset: yhteydet (HTTP, MQTT, Modbus…), viestit, JSON-polut ja ruutujen lähteet. Useimmat eivät tarv",
-  "x-where": "ui/settings_page.dart:287"
+  "x-where": "ui/settings_page.dart:288"
  },
  "sc84689a549": "Devices and integrations",
  "@sc84689a549": {
   "description": "fi: Laitteet ja integraatiot",
-  "x-where": "ui/settings_page.dart:301"
+  "x-where": "ui/settings_page.dart:302"
  },
  "sca4c8b88b7": "Home Assistant: add devices",
  "@sca4c8b88b7": {
   "description": "fi: Home Assistant: lisää laitteita",
-  "x-where": "ui/settings_page.dart:321"
+  "x-where": "ui/settings_page.dart:322"
  },
  "saec69088a5": "Control your home from outside too.",
  "@saec69088a5": {
   "description": "fi: Ohjaa kotia myös kodin ulkopuolelta.",
-  "x-where": "ui/settings_page.dart:329"
+  "x-where": "ui/settings_page.dart:330"
  },
  "scc3d01ee5e": "Guides: VPN, Nabu Casa, cloud MQTT",
  "@scc3d01ee5e": {
   "description": "fi: Ohjeet: VPN, Nabu Casa, pilvi-MQTT",
-  "x-where": "ui/settings_page.dart:355"
+  "x-where": "ui/settings_page.dart:356"
  },
- "s0fe7b15d15": "Give someone access to the devices you choose.",
- "@s0fe7b15d15": {
-  "description": "fi: Anna toiselle pääsy valitsemiisi laitteisiin.",
-  "x-where": "ui/settings_page.dart:365"
+ "s535358a517": "Give someone, or an installer, access to the devices you choose.",
+ "@s535358a517": {
+  "description": "fi: Anna toiselle tai asentajalle pääsy valitsemiisi laitteisiin.",
+  "x-where": "ui/settings_page.dart:366"
  },
  "s25c286a743": "Sharing – new invite",
  "@s25c286a743": {
   "description": "fi: Jakaminen – uusi kutsu",
-  "x-where": "ui/settings_page.dart:387"
+  "x-where": "ui/settings_page.dart:388"
  },
  "s90ba544719": "Help",
  "@s90ba544719": {
   "description": "fi: Ohjeet",
-  "x-where": "ui/settings_page.dart:402"
+  "x-where": "ui/settings_page.dart:404"
  },
  "sb915c42792": "Show the getting-started guide",
  "@sb915c42792": {
   "description": "fi: Näytä aloitusopas",
-  "x-where": "ui/settings_page.dart:410"
+  "x-where": "ui/settings_page.dart:412"
  },
  "sd337a7ddd5": "Backup and transfer",
  "@sd337a7ddd5": {
   "description": "fi: Varmuuskopio ja siirto",
-  "x-where": "ui/settings_page.dart:414"
+  "x-where": "ui/settings_page.dart:416"
  },
  "s07c1048b4f": "Export the configuration to a JSON file and import it on another device (e.g. PC → phone).",
  "@s07c1048b4f": {
   "description": "fi: Vie asetukset JSON-tiedostoon ja tuo ne toiselle laitteelle (esim. PC → puhelin).",
-  "x-where": "ui/settings_page.dart:417"
+  "x-where": "ui/settings_page.dart:419"
  },
  "s2f797098e7": "Include passwords and tokens",
  "@s2f797098e7": {
   "description": "fi: Sisällytä salasanat ja tokenit",
-  "x-where": "ui/settings_page.dart:426"
+  "x-where": "ui/settings_page.dart:428"
  },
  "s26f72949e3": "The file is then unencrypted – keep it safe.",
  "@s26f72949e3": {
   "description": "fi: Tiedosto on silloin salaamaton – säilytä se turvassa.",
-  "x-where": "ui/settings_page.dart:428"
+  "x-where": "ui/settings_page.dart:430"
  },
  "sdb12678e52": "Export",
  "@sdb12678e52": {
   "description": "fi: Vie",
-  "x-where": "ui/settings_page.dart:444"
+  "x-where": "ui/settings_page.dart:446"
  },
  "s34686ffb09": "Example",
  "@s34686ffb09": {
   "description": "fi: Esimerkki",
-  "x-where": "ui/settings_page.dart:454"
+  "x-where": "ui/settings_page.dart:456"
  },
  "sc8327738b3": "Add an example dashboard (camera, alarm, lights, ventilation). The example devices never connect anywhere – add your own with Add device.",
  "@sc8327738b3": {
   "description": "fi: Lisää esimerkkinäkymä (kamera, hälytys, valot, IV-kone). Esimerkkilaitteet eivät ota yhteyttä mihinkään – lisää omat lai",
-  "x-where": "ui/settings_page.dart:457"
+  "x-where": "ui/settings_page.dart:459"
  },
  "sec02c7c071": "Add example dashboard",
  "@sec02c7c071": {
   "description": "fi: Lisää esimerkkinäkymä",
-  "x-where": "ui/settings_page.dart:473"
+  "x-where": "ui/settings_page.dart:475"
  },
  "s057b871ed2": "browser version",
  "@s057b871ed2": {
   "description": "fi: selainversio",
-  "x-where": "ui/settings_page.dart:479"
+  "x-where": "ui/settings_page.dart:481"
  },
  "s522d6584c5": "Check for updates",
  "@s522d6584c5": {
   "description": "fi: Tarkista päivitykset",
-  "x-where": "ui/settings_page.dart:496"
+  "x-where": "ui/settings_page.dart:498"
  },
  "sd178a1d809": "Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. Without an account all settings stay on this device.",
  "@sd178a1d809": {
   "description": "fi: Oma ohjauspääte: HTTP, MQTT, Modbus TCP, Home Assistant, kamerat, WebSocket, TCP ja UDP. Ilman tiliä kaikki asetukset py",
-  "x-where": "ui/settings_page.dart:501"
+  "x-where": "ui/settings_page.dart:503"
  },
  "sf5bfc4217c": "Which Home Assistant?",
  "@sf5bfc4217c": {
   "description": "fi: Mistä Home Assistantista?",
-  "x-where": "ui/settings_page.dart:537"
+  "x-where": "ui/settings_page.dart:539"
  },
  "sbc210f9634": "You have more than one Home Assistant connection. An unused one (no tiles) can be removed.",
  "@sbc210f9634": {
   "description": "fi: Sinulla on useampi Home Assistant -yhteys. Käyttämättömän (ei ruutuja) voi poistaa.",
-  "x-where": "ui/settings_page.dart:539"
+  "x-where": "ui/settings_page.dart:541"
  },
  "s4f62c41cb3": "no tiles",
  "@s4f62c41cb3": {
   "description": "fi: ei ruutuja",
-  "x-where": "ui/settings_page.dart:552"
+  "x-where": "ui/settings_page.dart:554"
  },
  "s92c338c3bd": "tiles",
  "@s92c338c3bd": {
   "description": "fi: ruutua",
-  "x-where": "ui/settings_page.dart:552"
+  "x-where": "ui/settings_page.dart:554"
  },
  "sd3089f07cc": "Remove unused connection",
  "@sd3089f07cc": {
   "description": "fi: Poista käyttämätön yhteys",
-  "x-where": "ui/settings_page.dart:558"
+  "x-where": "ui/settings_page.dart:560"
  },
  "s1333776c9f": "Remove the connection?",
  "@s1333776c9f": {
   "description": "fi: Poistetaanko yhteys?",
-  "x-where": "ui/settings_page.dart:563"
+  "x-where": "ui/settings_page.dart:565"
  },
  "s84819cca05": "Last alarm {p0}",
  "@s84819cca05": {

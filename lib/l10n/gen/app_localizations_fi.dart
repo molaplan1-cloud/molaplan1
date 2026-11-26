@@ -2594,6 +2594,320 @@ class AppLocalizationsFi extends AppLocalizations {
       'Tarkista laitteen unit id ja Modbus-asetukset. Napauta käyttääksesi tätä osoitetta.';
 
   @override
+  String get sfe54134176 => 'Kaikki laitteet';
+
+  @override
+  String get s23baecde5b => 'laitetta';
+
+  @override
+  String get s776f46ed8d => 'ohjaus + asetukset';
+
+  @override
+  String get sa7cfbebc2f => 'ohjaus';
+
+  @override
+  String get seff7e04d91 => 'Perutaanko asentajan pääsy?';
+
+  @override
+  String s633fa022d1(String p0) {
+    return '$p0 ei enää pääse laitteisiisi. Pääsy loppuu heti, kun kotisilta saa tiedon (yleensä saman tien).';
+  }
+
+  @override
+  String get sbdfc0cf419 => 'Peru pääsy';
+
+  @override
+  String get s98b66fc9d8 => 'Pääsy peruttu';
+
+  @override
+  String get sbd907def5b => 'Asentaja';
+
+  @override
+  String get sfb1a18d11f => 'Päivitä';
+
+  @override
+  String get sb9c461d827 =>
+      'Asentajan pääsy tarvitsee Molaplan-tilin, jotta asentaja tunnistetaan ja salaus toimii.';
+
+  @override
+  String get s9bb545e9b3 => 'Kirjaudu tai luo tili';
+
+  @override
+  String get s523c735938 =>
+      'Anna asentajalle pääsy laitteisiisi hänen asentajatunnuksellaan (esim. MPL-K7Q-M2X). Molaplan on tarkistanut jokaisen asentajan nimen ja yrityksen. Salasanat ja osoitteet eivät lähde kotoa, ja voit perua pääsyn milloin vain.';
+
+  @override
+  String get s03be67bc78 => 'Anna pääsy';
+
+  @override
+  String get s65c7781ca3 => 'Asentajat, joilla on pääsy';
+
+  @override
+  String get sbb7e4c4c3c => 'Kenelläkään asentajalla ei ole pääsyä.';
+
+  @override
+  String get s84a6d73d1e => 'Muuta laitteita tai oikeuksia';
+
+  @override
+  String get s5fcc7e175d => 'Asiakkaani';
+
+  @override
+  String get s44dcd38f2b => 'Asentajien hallinta';
+
+  @override
+  String s2f8dd9569b(String p0, String p1) {
+    return 'Asentajatunnukseni Molaplanissa: $p0 ($p1). Anna minulle pääsy: Molaplan → Asetukset → Asentaja → Anna pääsy.';
+  }
+
+  @override
+  String get s0061cbc425 => 'Kopioi viesti';
+
+  @override
+  String get sdd0f19c6b8 => 'Sähköposti';
+
+  @override
+  String get sd57398d989 => 'Tekstiviesti';
+
+  @override
+  String get s4f09cced25 => 'Viesti kopioitu';
+
+  @override
+  String get s2836191df5 => 'Sovellusta ei voitu avata – viesti kopioitiin.';
+
+  @override
+  String get sd01e57c279 =>
+      'Asiakas skannaa: Asetukset → Asentaja → Anna pääsy.';
+
+  @override
+  String get se83877749c => 'Olet Molaplan-asentaja';
+
+  @override
+  String get s014468e53e => 'Asentajatunnuksesi';
+
+  @override
+  String get s973ddbcd3b =>
+      'Anna tunnus asiakkaalle. Hän avaa sillä pääsyn laitteisiinsa ja näkee nimesi ja yrityksesi Molaplanin vahvistamina.';
+
+  @override
+  String get s9e0dd2426d => 'Tunnus kopioitu';
+
+  @override
+  String get s5224946aa1 => 'Jaa';
+
+  @override
+  String get s59d0633cbd => 'QR-koodi';
+
+  @override
+  String get sacc4275348 => 'Hae asentajaksi';
+
+  @override
+  String get s29acd8486c =>
+      'Molaplan tarkistaa nimesi ja yrityksesi ja myöntää asentajatunnuksen. Saat tiedon sovellukseen.';
+
+  @override
+  String get s7aa9c1e208 => 'Nimesi';
+
+  @override
+  String get s9f3d2fa73f => 'Yritys';
+
+  @override
+  String get scfe0cd3759 => 'esim. Y-tunnus tai Kevytyrittäjä';
+
+  @override
+  String get s483b3a689d => 'Viesti (valinnainen)';
+
+  @override
+  String get sb7dbf1a527 => 'Lähetä hakemus';
+
+  @override
+  String get s0b9319b6eb => 'Kirjoita nimesi.';
+
+  @override
+  String get s9929adfbf5 => 'Hakemus lähetetty';
+
+  @override
+  String get s2570b96a0b => 'Oletko asentaja?';
+
+  @override
+  String s63d8fdf8c2(String p0) {
+    return 'Asentajan tilasi ($p0) on poistettu, eikä asiakkaiden pääsyjä voi käyttää. Kysy lisää Molaplanilta: molaplan1@gmail.com.';
+  }
+
+  @override
+  String get s82b8ec7605 =>
+      'Asentajana näet asiakkaidesi laitteet, tilan ja hälytykset sillä laajuudella kuin asiakas sallii. Asentajan tilan myöntää Molaplan.';
+
+  @override
+  String s563801d51b(String p0) {
+    return 'Hakemus lähetetty $p0 – odottaa käsittelyä.';
+  }
+
+  @override
+  String get s1247102567 => 'Peru hakemus';
+
+  @override
+  String get s77f0327b09 => 'Edellistä hakemusta ei hyväksytty.';
+
+  @override
+  String get s5e130a714c => 'Tunnus on muotoa MPL-XXX-XXX.';
+
+  @override
+  String get s16d84ef12f =>
+      'Tunnuksella ei löytynyt hyväksyttyä asentajaa. Tarkista tunnus asentajalta.';
+
+  @override
+  String get s7288dc01b6 => 'Annetaanko pääsy?';
+
+  @override
+  String get s2013b9940c => 'Tallennetaanko muutokset?';
+
+  @override
+  String get sa88745a558 => 'Kaikki laitteet (myös myöhemmin lisättävät)';
+
+  @override
+  String get sd97ead609e => 'Saa ohjata ja muuttaa asetuksia';
+
+  @override
+  String get s8be70baa9c => 'Saa ohjata, ei muuttaa asetuksia';
+
+  @override
+  String get sf2581756af => 'Voit perua pääsyn milloin vain.';
+
+  @override
+  String s9a6818b304(String p0) {
+    return 'Pääsy annettu: $p0';
+  }
+
+  @override
+  String get sdb0484d728 => 'Tallennettu';
+
+  @override
+  String get s52a64a3307 => 'Anna pääsy asentajalle';
+
+  @override
+  String get s2113bddc63 => 'Asentajan tunnus';
+
+  @override
+  String get s6d7d0273ad => 'Hae';
+
+  @override
+  String get s36418f769d => 'Skannaa asentajan QR-koodi';
+
+  @override
+  String get scb4d6b0ddc => 'Molaplanin vahvistama asentaja';
+
+  @override
+  String get s95fd3e8dc3 => 'Mihin asentaja pääsee?';
+
+  @override
+  String get s0d395a6edd => 'Valitut laitteet';
+
+  @override
+  String s8affba28ec(String p0) {
+    return '$p0 laitetta nyt, myöhemmin lisättävät tulevat mukaan.';
+  }
+
+  @override
+  String get sbc76d76351 => 'Saa muuttaa asetuksia';
+
+  @override
+  String get s4fa2d2d66c =>
+      'Lämpötilat, toimintatilat ja muut asetukset. Pois päältä: asentaja voi ohjata ja katsoa tilaa.';
+
+  @override
+  String get s82b62bcb13 => 'Sinulla ei ole vielä jaettavia laitteita.';
+
+  @override
+  String get s4e60c0286c =>
+      'Kotisilta tarkistaa jokaisen pyynnön oikeudet. Laitteiden salasanat ja osoitteet eivät lähde kotoa.';
+
+  @override
+  String get sd431b45586 => 'Kirjoita vähintään 3 merkkiä sähköpostista.';
+
+  @override
+  String get s2162e5cad2 => 'Käyttäjää ei löytynyt.';
+
+  @override
+  String get s1ec9cc5828 => 'Asentajan tila';
+
+  @override
+  String get s256fb6b50a => 'Vahvistettu nimi';
+
+  @override
+  String get sd8a8961db3 => 'esim. Kevytyrittäjä';
+
+  @override
+  String get sb57dfb696c => 'Muistiinpano (vain ylläpito)';
+
+  @override
+  String get s8ce95234d7 => 'Myönnä';
+
+  @override
+  String get s2eca996a49 => 'Nimi puuttuu.';
+
+  @override
+  String s5a4c72db4b(String p0, String p1) {
+    return 'Asentaja $p0: $p1';
+  }
+
+  @override
+  String get se06acfd38d => 'Poistetaanko asentajan tila?';
+
+  @override
+  String sd35135676e(String p0, String p1, String p2) {
+    return '$p0 ($p1) menettää asentajan tilan, ja kaikki asiakkaiden antamat pääsyt ($p2) katkeavat heti. Tunnus säilyy, jos tila myönnetään myöhemmin uudelleen.';
+  }
+
+  @override
+  String get se70c0caad3 => 'Poista tila';
+
+  @override
+  String get s2679477d73 => 'Asentajan tila poistettu';
+
+  @override
+  String get s5ea6251452 =>
+      'Myönnä asentajan tila vain henkilölle, jonka nimen ja yrityksen olet tarkistanut. Sama hallinta on myös osoitteessa molaplan.com/tilaa/hallinta (Asentajat).';
+
+  @override
+  String get sa7380f5e5c => 'Hae käyttäjä sähköpostilla';
+
+  @override
+  String get sc023f30da1 => 'nimi@esimerkki.fi';
+
+  @override
+  String get s9a7d261596 => 'ei ole vielä avannut sovellusta';
+
+  @override
+  String get sd4f8f15670 => 'asentaja';
+
+  @override
+  String get sfee2ce49ea => 'tila poistettu';
+
+  @override
+  String get s3ecd52ffc6 => 'Hakemukset';
+
+  @override
+  String get se5c4c1e153 => 'Ei avoimia hakemuksia.';
+
+  @override
+  String get s052118a469 => 'Hyväksy';
+
+  @override
+  String get s493a1eaf08 => 'Hylkää';
+
+  @override
+  String get sc8ab77f768 => 'Asentajat';
+
+  @override
+  String get s65f12e7e23 => 'asiakasta';
+
+  @override
+  String get sf36e8af07c => 'Myönnä uudelleen';
+
+  @override
+  String get s0361487148 => 'Poista asentajan tila';
+
+  @override
   String get s55d52c5ae1 => 'Tämä laite ei ole yhteydessä wifiin';
 
   @override
@@ -2920,6 +3234,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s417eb9a875 => 'Ota etäkäyttö käyttöön';
 
   @override
+  String get s53a9fe5e42 => 'Sähköpostilla ei ole Molaplan-tiliä.';
+
+  @override
   String get sb4bd4baa5c =>
       'Osoitteella ei löytynyt Molaplan-käyttäjää. Hänen pitää kirjautua Molaplan 0.9:ään kerran – tai lähetä hänelle kutsukoodi.';
 
@@ -2935,8 +3252,11 @@ class AppLocalizationsFi extends AppLocalizations {
       'Avaa ensin tilin salaukset tällä laitteella (Tili → Avaa salasanalla). Jakaminen käyttää tilin avainta.';
 
   @override
-  String get s5aee30a4e4 =>
-      'Tämä on asentajan kutsu: ota asentajaprofiili käyttöön (Jakaminen → Edistyneet).';
+  String get s2855893bfc =>
+      'Tämä on asentajan kutsu, ja sen voi käyttää vain Molaplanin hyväksymä asentaja (Asetukset → Asentaja → Hae asentajaksi).';
+
+  @override
+  String get sb8df145fc9 => 'Vain Molaplanin ylläpito voi tehdä tämän.';
 
   @override
   String get sa562754cb5 => 'Koodi on väärä, vanhentunut tai jo käytetty.';
@@ -3003,14 +3323,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s844e081db8 => 'Jakaminen';
 
   @override
-  String get sfb1a18d11f => 'Päivitä';
-
-  @override
   String get scdfdf5d233 =>
       'Jakaminen tarvitsee Molaplan-tilin, jotta kutsut löytävät perille ja salaus toimii.';
-
-  @override
-  String get s9bb545e9b3 => 'Kirjaudu tai luo tili';
 
   @override
   String get s85abc4496d =>
@@ -3035,9 +3349,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sdfaf8c242b => 'Hyväksy';
 
   @override
-  String get s493a1eaf08 => 'Hylkää';
-
-  @override
   String get s2fd1394b33 => 'Jaettu minulle';
 
   @override
@@ -3048,9 +3359,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s33f41d417c => 'Kutsukoodi';
-
-  @override
-  String get s23baecde5b => 'laitetta';
 
   @override
   String get s9cdf3dcc87 => 'Perutaanko jako?';
@@ -3064,19 +3372,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s280e22cbc9 => 'Jako peruttu';
-
-  @override
-  String get s84a6d73d1e => 'Muuta laitteita tai oikeuksia';
-
-  @override
-  String get s1cf5e3d702 => 'Asentajaprofiili';
-
-  @override
-  String get s22f8bccc91 =>
-      'Näyttää Asentaja-valikon: asiakkaat, heidän laitteensa ja hälytykset. Asiakas antaa pääsyn koodilla ja voi perua sen.';
-
-  @override
-  String get se19c5fe8aa => 'Yrityksen nimi';
 
   @override
   String get sd742357fc8 => 'Nimesi jaoissa';
@@ -3149,12 +3444,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s447da2f746 => 'Kutsukoodi tai -linkki';
 
   @override
-  String get sdd0f19c6b8 => 'Sähköposti';
-
-  @override
-  String get s6be36f4219 => 'Asentajalle (näkyy hänen Asentaja-valikossaan)';
-
-  @override
   String get se7272a5713 => 'Nimi jaolle (valinnainen)';
 
   @override
@@ -3203,18 +3492,16 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s8debff3196 => 'Näytä kuva';
 
   @override
-  String get sbd907def5b => 'Asentaja';
-
-  @override
-  String get sddd83db201 => 'Lisää asiakas';
-
-  @override
   String get s2220ce611a =>
       'Asiakkaasi, jotka ovat antaneet sinulle pääsyn. Näet vain jaetut laitteet ja toimit asiakkaan antamin oikeuksin – salasanoja et näe.';
 
   @override
-  String get s98a90339f4 =>
-      'Ei asiakkaita vielä. Pyydä asiakasta luomaan asentajakoodi: Jakaminen → Jaa laitteita → Kutsukoodi + Asentajalle.';
+  String get s6f3c62fc03 => 'Asentajan tilasi ei ole voimassa.';
+
+  @override
+  String s7ebc2621b7(String p0) {
+    return 'Ei asiakkaita vielä. Anna asiakkaalle asentajatunnuksesi $p0: asiakas avaa Asetukset → Asentaja → Anna pääsy.';
+  }
 
   @override
   String get sa52cf49adc => 'Odottaa asiakkaan Molaplanin vahvistusta';
@@ -5935,9 +6222,6 @@ class AppLocalizationsFi extends AppLocalizations {
       'Ei teho- tai energiaruutuja (W, kW, Wh, kWh). Lisää esim. Shelly-mittari.';
 
   @override
-  String get sdb0484d728 => 'Tallennettu';
-
-  @override
   String get se80021e22a =>
       'Katso hinnat sähkölaskusta. Voit kirjoittaa ne verollisina tai verottomina – kustannukset näytetään molempina.';
 
@@ -6489,7 +6773,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get scc3d01ee5e => 'Ohjeet: VPN, Nabu Casa, pilvi-MQTT';
 
   @override
-  String get s0fe7b15d15 => 'Anna toiselle pääsy valitsemiisi laitteisiin.';
+  String get s535358a517 =>
+      'Anna toiselle tai asentajalle pääsy valitsemiisi laitteisiin.';
 
   @override
   String get s25c286a743 => 'Jakaminen – uusi kutsu';

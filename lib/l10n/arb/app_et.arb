@@ -1334,6 +1334,10 @@
  "@s7ebd89c416": {
   "x-mt": true
  },
+ "sab30063821": "See brauser unustab kodud, kaardid ja kodusilla lingi. Sinu andmed jäävad sinu kontole.",
+ "@sab30063821": {
+  "x-mt": true
+ },
  "s6c6165d662": "Kodud ja plaadid jäävad sellesse seadmesse, kuid muudatused ei jõua enam teie teistesse seadmetesse.",
  "@s6c6165d662": {
   "x-mt": true
@@ -2152,6 +2156,14 @@
   "x-mt": true
  },
  "s59622d792b": "Nimeta ümber",
+ "sb616303f5b": "Brauseris töötab seadme otsing ainult kodusilla kaudu",
+ "@sb616303f5b": {
+  "x-mt": true
+ },
+ "sef469cadc3": "Allpool saate lisada pilv- ja ntfy-seadmeid.",
+ "@sef469cadc3": {
+  "x-mt": true
+ },
  "sa0fccfbcab": "kodusilla kaudu",
  "@sa0fccfbcab": {
   "x-mt": true
@@ -2339,6 +2351,114 @@
  "@s9041c140be": {
   "x-mt": true
  },
+ "sfe54134176": "Kõik seadmed",
+ "s23baecde5b": "seadmeid",
+ "@s23baecde5b": {
+  "x-mt": true
+ },
+ "s776f46ed8d": "juhtimine + seaded",
+ "sa7cfbebc2f": "juhtimine",
+ "seff7e04d91": "Kas tühistada paigaldaja juurdepääs?",
+ "s633fa022d1": "{p0} ei pääse enam sinu seadmetele ligi. Juurdepääs lõpeb kohe, kui kodusild sellest teada saab (tavaliselt kohe).",
+ "sbdfc0cf419": "Tühista juurdepääs",
+ "s98b66fc9d8": "Juurdepääs tühistatud",
+ "sbd907def5b": "Paigaldaja",
+ "sfb1a18d11f": "Värskenda",
+ "sb9c461d827": "Paigaldaja juurdepääs vajab Molaplani kontot, et paigaldajat saaks kontrollida ja krüpteerimine töötaks.",
+ "s9bb545e9b3": "Logi sisse või loo konto",
+ "s523c735938": "Anna paigaldajale juurdepääs oma seadmetele tema paigaldaja-ID-ga (nt MPL-K7Q-M2X). Molaplan on kontrollinud iga paigaldaja nime ja ettevõtte. Paroolid ja aadressid ei lahku kunagi kodust ning juurdepääsu saab igal ajal tühistada.",
+ "s03be67bc78": "Anna juurdepääs",
+ "s65c7781ca3": "Juurdepääsuga paigaldajad",
+ "sbb7e4c4c3c": "Ühelgi paigaldajal pole juurdepääsu.",
+ "s84a6d73d1e": "Seadmete või õiguste muutmine",
+ "@s84a6d73d1e": {
+  "x-mt": true
+ },
+ "s5fcc7e175d": "Minu kliendid",
+ "s44dcd38f2b": "Paigaldajate haldus",
+ "s2f8dd9569b": "Minu Molaplani paigaldaja-ID: {p0} ({p1}). Juurdepääsu andmiseks: Molaplan → Seaded → Paigaldaja → Anna juurdepääs.",
+ "s0061cbc425": "Kopeeri sõnum",
+ "sdd0f19c6b8": "E-post",
+ "@sdd0f19c6b8": {
+  "x-mt": true
+ },
+ "sd57398d989": "Tekstisõnum",
+ "s4f09cced25": "Sõnum kopeeritud",
+ "s2836191df5": "Rakendust ei saanud avada – sõnum kopeeriti.",
+ "sd01e57c279": "Klient skannib selle: Seaded → Paigaldaja → Anna juurdepääs.",
+ "se83877749c": "Oled Molaplani paigaldaja",
+ "s014468e53e": "Sinu paigaldaja-ID",
+ "s973ddbcd3b": "Anna ID oma kliendile. Sellega avab klient juurdepääsu oma seadmetele ja näeb sinu nime ning ettevõtet Molaplani kinnitatuna.",
+ "s9e0dd2426d": "ID kopeeritud",
+ "s5224946aa1": "Jaga",
+ "s59d0633cbd": "QR-kood",
+ "sacc4275348": "Taotle paigaldajaks saamist",
+ "s29acd8486c": "Molaplan kontrollib sinu nime ja ettevõtet ning annab sulle paigaldaja-ID. Tulemuse näed rakenduses.",
+ "s7aa9c1e208": "Sinu nimi",
+ "s9f3d2fa73f": "Ettevõte",
+ "scfe0cd3759": "nt registrikood või FIE",
+ "s483b3a689d": "Sõnum (valikuline)",
+ "sb7dbf1a527": "Saada taotlus",
+ "s0b9319b6eb": "Sisesta oma nimi.",
+ "s9929adfbf5": "Taotlus saadetud",
+ "s2570b96a0b": "Kas oled paigaldaja?",
+ "s63d8fdf8c2": "Sinu paigaldaja staatus ({p0}) on eemaldatud ja klientide juurdepääse ei saa kasutada. Küsi Molaplanilt: molaplan1@gmail.com.",
+ "s82b8ec7605": "Paigaldajana näed oma klientide seadmeid, olekut ja häireid nii palju, kui iga klient lubab. Paigaldaja staatuse annab Molaplan.",
+ "s563801d51b": "Taotlus saadetud {p0} – ootab läbivaatamist.",
+ "s1247102567": "Võta tagasi",
+ "s77f0327b09": "Eelmist taotlust ei kinnitatud.",
+ "s5e130a714c": "ID on kujul MPL-XXX-XXX.",
+ "s16d84ef12f": "Ühelgi kinnitatud paigaldajal pole seda ID-d. Kontrolli ID-d paigaldajalt.",
+ "s7288dc01b6": "Kas anda juurdepääs?",
+ "s2013b9940c": "Kas salvestada muudatused?",
+ "sa88745a558": "Kõik seadmed (ka hiljem lisatavad)",
+ "sd97ead609e": "Võib juhtida ja seadeid muuta",
+ "s8be70baa9c": "Võib juhtida, mitte seadeid muuta",
+ "sf2581756af": "Juurdepääsu saab igal ajal tühistada.",
+ "s9a6818b304": "Juurdepääs antud: {p0}",
+ "sdb0484d728": "Salvestatud",
+ "s52a64a3307": "Anna paigaldajale juurdepääs",
+ "s2113bddc63": "Paigaldaja-ID",
+ "s6d7d0273ad": "Otsi",
+ "s36418f769d": "Skanni paigaldaja QR-kood",
+ "scb4d6b0ddc": "Molaplani kinnitatud paigaldaja",
+ "s95fd3e8dc3": "Millele paigaldaja ligi pääseb?",
+ "s0d395a6edd": "Valitud seadmed",
+ "s8affba28ec": "Praegu {p0} seadet; hiljem lisatavad tulevad kaasa.",
+ "sbc76d76351": "Võib seadeid muuta",
+ "s4fa2d2d66c": "Temperatuurid, režiimid ja muud seaded. Väljas: paigaldaja saab juhtida ja olekut näha.",
+ "s82b62bcb13": "Sul pole veel jagatavaid seadmeid.",
+ "s4e60c0286c": "Kodusild kontrollib iga päringu õigusi. Seadmete paroolid ja aadressid ei lahku kunagi kodust.",
+ "sd431b45586": "Sisesta e-posti aadressist vähemalt 3 märki.",
+ "s2162e5cad2": "Kasutajat ei leitud.",
+ "s1ec9cc5828": "Paigaldaja staatus",
+ "s256fb6b50a": "Kinnitatud nimi",
+ "sd8a8961db3": "nt FIE",
+ "sb57dfb696c": "Märkus (ainult haldajatele)",
+ "s8ce95234d7": "Anna",
+ "s2eca996a49": "Nimi puudub.",
+ "s5a4c72db4b": "Paigaldaja {p0}: {p1}",
+ "se06acfd38d": "Kas eemaldada paigaldaja staatus?",
+ "sd35135676e": "{p0} ({p1}) kaotab paigaldaja staatuse ja kõik klientide juurdepääsud ({p2}) lõpevad kohe. ID jääb samaks, kui staatus hiljem uuesti antakse.",
+ "se70c0caad3": "Eemalda staatus",
+ "s2679477d73": "Paigaldaja staatus eemaldatud",
+ "s5ea6251452": "Anna paigaldaja staatus ainult inimesele, kelle nime ja ettevõtte oled kontrollinud. Samad tööriistad on aadressil molaplan.com/tilaa/hallinta (Asentajat).",
+ "sa7380f5e5c": "Otsi kasutajat e-posti järgi",
+ "sc023f30da1": "nimi@naide.ee",
+ "s9a7d261596": "pole rakendust veel avanud",
+ "sd4f8f15670": "paigaldaja",
+ "sfee2ce49ea": "staatus eemaldatud",
+ "s3ecd52ffc6": "Taotlused",
+ "se5c4c1e153": "Avatud taotlusi pole.",
+ "s052118a469": "Kinnita",
+ "s493a1eaf08": "Langetage",
+ "@s493a1eaf08": {
+  "x-mt": true
+ },
+ "sc8ab77f768": "Paigaldajad",
+ "s65f12e7e23": "klienti",
+ "sf36e8af07c": "Anna uuesti",
+ "s0361487148": "Eemalda paigaldaja staatus",
  "s55d52c5ae1": "See seade ei ole Wi-Fi-s",
  "@s55d52c5ae1": {
   "x-mt": true
@@ -2660,6 +2780,7 @@
  "@s417eb9a875": {
   "x-mt": true
  },
+ "s53a9fe5e42": "Selle e-postiga Molaplani kontot pole.",
  "sb4bd4baa5c": "Selle aadressiga ei ole Molaplani kasutajat. Nad peavad logima sisse Molaplan 0.9 - või saatma neile kutsekoodi.",
  "@sb4bd4baa5c": {
   "x-mt": true
@@ -2676,10 +2797,8 @@
  "@s5ea320fb1c": {
   "x-mt": true
  },
- "s5aee30a4e4": "See kutse on installeri jaoks: lülitage installeri profiil (Sharing → Advanced).",
- "@s5aee30a4e4": {
-  "x-mt": true
- },
+ "s2855893bfc": "See kutse on paigaldajale ja seda saab kasutada ainult Molaplani kinnitatud paigaldaja (Seaded → Paigaldaja → Taotle).",
+ "sb8df145fc9": "Seda saavad teha ainult Molaplani haldajad.",
  "sa562754cb5": "Kood on vale, aegunud või juba kasutatud.",
  "@sa562754cb5": {
   "x-mt": true
@@ -2760,12 +2879,10 @@
  "@s844e081db8": {
   "x-mt": true
  },
- "sfb1a18d11f": "Värskenda",
  "scdfdf5d233": "Jagamine vajab Molaplani kontot, et kutsed jõuaksid inimesteni ja krüpteerimine toimiks.",
  "@scdfdf5d233": {
   "x-mt": true
  },
- "s9bb545e9b3": "Logi sisse või loo konto",
  "s85abc4496d": "Anna pereliikmele, naabrile või paigaldajale ligipääs sinu valitud seadmetele. Paroolid ja aadressid ei lahku kunagi kodust ning võid igal ajal tühistada.",
  "@s85abc4496d": {
   "x-mt": true
@@ -2791,10 +2908,6 @@
   "x-mt": true
  },
  "sdfaf8c242b": "Nõustu",
- "s493a1eaf08": "Langetage",
- "@s493a1eaf08": {
-  "x-mt": true
- },
  "s2fd1394b33": "Jagas minuga",
  "@s2fd1394b33": {
   "x-mt": true
@@ -2811,10 +2924,6 @@
  "@s33f41d417c": {
   "x-mt": true
  },
- "s23baecde5b": "seadmeid",
- "@s23baecde5b": {
-  "x-mt": true
- },
  "s9cdf3dcc87": "Tühistada osa?",
  "@s9cdf3dcc87": {
   "x-mt": true
@@ -2829,22 +2938,6 @@
  },
  "s280e22cbc9": "Aktsia tühistati",
  "@s280e22cbc9": {
-  "x-mt": true
- },
- "s84a6d73d1e": "Seadmete või õiguste muutmine",
- "@s84a6d73d1e": {
-  "x-mt": true
- },
- "s1cf5e3d702": "Installeri profiil",
- "@s1cf5e3d702": {
-  "x-mt": true
- },
- "s22f8bccc91": "Näitab menüüd Installer: kliendid, nende seadmed ja häired. Klient annab ligipääsu koodiga ja võib selle tühistada.",
- "@s22f8bccc91": {
-  "x-mt": true
- },
- "se19c5fe8aa": "Ettevõtte nimi",
- "@se19c5fe8aa": {
   "x-mt": true
  },
  "sd742357fc8": "Sinu nimi aktsiates",
@@ -2928,14 +3021,6 @@
  "@s447da2f746": {
   "x-mt": true
  },
- "sdd0f19c6b8": "E-post",
- "@sdd0f19c6b8": {
-  "x-mt": true
- },
- "s6be36f4219": "Paigaldajale (näitab oma Installer menüüs)",
- "@s6be36f4219": {
-  "x-mt": true
- },
  "se7272a5713": "Aktsia nimi (valikuline)",
  "@se7272a5713": {
   "x-mt": true
@@ -2997,22 +3082,12 @@
  "@s8debff3196": {
   "x-mt": true
  },
- "sbd907def5b": "Installer",
- "@sbd907def5b": {
-  "x-mt": true
- },
- "sddd83db201": "Lisa klient",
- "@sddd83db201": {
-  "x-mt": true
- },
  "s2220ce611a": "Kliendid, kes andsid teile juurdepääsu. Te näete ainult jagatud seadmeid ja tegutsete kliendi antud õiguste piires – mitte kunagi nende paroolid.",
  "@s2220ce611a": {
   "x-mt": true
  },
- "s98a90339f4": "Kliente veel pole. Paluge kliendil luua installerikood: Jagamine → Seadmete jagamine → Kutsu kood + Paigaldajale.",
- "@s98a90339f4": {
-  "x-mt": true
- },
+ "s6f3c62fc03": "Sinu paigaldaja staatus ei kehti.",
+ "s7ebc2621b7": "Kliente veel pole. Anna kliendile oma paigaldaja-ID {p0}: klient avab Seaded → Paigaldaja → Anna juurdepääs.",
  "sa52cf49adc": "Ootab kliendi Molaplani kinnitamist",
  "@sa52cf49adc": {
   "x-mt": true
@@ -5838,7 +5913,6 @@
  "@s9a3a0d414e": {
   "x-mt": true
  },
- "sdb0484d728": "Salvestatud",
  "se80021e22a": "Kopeeri oma arvelt hinnad. Kirjuta need kas käibemaksuga või ilma – kulusid näidatakse mõlemal viisil.",
  "@se80021e22a": {
   "x-mt": true
@@ -6273,10 +6347,7 @@
  "@scc3d01ee5e": {
   "x-mt": true
  },
- "s0fe7b15d15": "Andke kellelegi juurdepääs teie valitud seadmetele.",
- "@s0fe7b15d15": {
-  "x-mt": true
- },
+ "s535358a517": "Anna kellelegi või paigaldajale juurdepääs valitud seadmetele.",
  "s25c286a743": "Jagamine – uus kutse",
  "@s25c286a743": {
   "x-mt": true
@@ -8479,18 +8550,6 @@
  },
  "s0ceafaa97c": "energia",
  "@s0ceafaa97c": {
-  "x-mt": true
- },
- "sab30063821": "See brauser unustab kodud, kaardid ja kodusilla lingi. Sinu andmed jäävad sinu kontole.",
- "@sab30063821": {
-  "x-mt": true
- },
- "sb616303f5b": "Brauseris töötab seadme otsing ainult kodusilla kaudu",
- "@sb616303f5b": {
-  "x-mt": true
- },
- "sef469cadc3": "Allpool saate lisada pilv- ja ntfy-seadmeid.",
- "@sef469cadc3": {
   "x-mt": true
  }
 }

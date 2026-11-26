@@ -15,8 +15,11 @@ for m in supabase/migrations/*.sql; do
   case "$m" in *tile_images*|*shop_storage*) continue;; esac # storage schema is Supabase-only
   $P -f "$m"
 done
-# Running twice must work (migrations are idempotent).
-$P -f supabase/migrations/20261126120000_sharing.sql
+# Running twice must work (migrations are idempotent) – all of them again, in order.
+for m in supabase/migrations/*.sql; do
+  case "$m" in *tile_images*|*shop_storage*) continue;; esac
+  $P -o /dev/null -f "$m"
+done
 $P -o /dev/null -f supabase/tests/sharing_rls_test.sql
-$P -f supabase/migrations/20261126200000_shop.sql
 $P -f supabase/tests/shop_rls_test.sql
+$P -f supabase/tests/installers_rls_test.sql

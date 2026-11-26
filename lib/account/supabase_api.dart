@@ -413,5 +413,12 @@ class AccountApi {
     return r.body.isEmpty ? null : jsonDecode(r.body);
   }
 
+  /// A function that needs no session (R260: the home bridge's share check).
+  Future<Object?> rpcAnon(String fn, Map<String, dynamic> args) async {
+    final r = await _do(() => _http.post(_rest('rpc/$fn'), headers: _h(), body: jsonEncode(args)));
+    if (r.statusCode >= 300) _restError(r);
+    return r.body.isEmpty ? null : jsonDecode(r.body);
+  }
+
   void close() => _http.close();
 }

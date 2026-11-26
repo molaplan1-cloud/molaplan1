@@ -22,6 +22,11 @@ class FakeSupabase {
   final profiles = <String, Map<String, dynamic>>{}; // by user id
   final shares = <String, Map<String, dynamic>>{}; // by share id
   final codes = <String, String>{}; // email|type -> code
+  // R256–R262: approved installers + applications (supabase/migrations/20261126230000_installers.sql).
+  final installers = <String, Map<String, dynamic>>{}; // by user id
+  final applications = <Map<String, dynamic>>[];
+  final admins = <String>{}; // e-mails (private.shop_admins)
+  var _ids = 0;
   final _tokens = <String, String>{}; // access -> uid
   final _refresh = <String, String>{}; // refresh -> uid
   var _n = 0;
@@ -35,6 +40,67 @@ class FakeSupabase {
   Future<http.Response> handle(http.Request r) => _handle(r);
 
   String lastCode(String email, String type) => codes['$email|$type']!;
+
+  bool _isInstaller(String? uid) => uid != null && installers[uid]?['status'] == 'active';
+
+  void _syncProfile(String uid) {
+    final p = profiles[uid];
+    if (p == null) return;
+    p['installer'] = _isInstaller(uid);
+    p['company'] = _isInstaller(uid) ? installers[uid]!['company'] : '';
+  }
+
+  /// What public.admin_grant_installer() does (tests may call it directly as "the admin").
+  Map<String, dynamic> grantInstaller(String email, String name, {String company = '', String note = '', String by = ''}) {
+    final u = users[email.toLowerCase()];
+    if (u == null) throw StateError('no user $email');
+    final ex = installers[u.id];
+    const a = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+    final n = ++_ids * 7919 + 12345;
+    final pid = 'MPL-${[for (var i = 0; i < 3; i++) a[(n ~/ (i + 1)) % 31]].join()}-${[for (var i = 0; i < 3; i++) a[(n ~/ (i + 7)) % 31]].join()}';
+    final r = installers[u.id] = {
+      'user_id': u.id,
+      'public_id': ex?['public_id'] ?? pid,
+      'display_name': name,
+      'company': company,
+      'note': note,
+      'status': 'active',
+      'granted_by': by,
+      'granted_at': DateTime.now().toUtc().toIso8601String(),
+    };
+    for (final a in applications.where((a) => a['user_id'] == u.id && a['status'] == 'new')) {
+      a['status'] = 'approved';
+    }
+    _syncProfile(u.id);
+    return r;
+  }
+
+  /// What public.admin_revoke_installer() does: status off, every installer share closed.
+  void revokeInstaller(String uid) {
+    final r = installers[uid];
+    if (r == null || r['status'] != 'active') throw StateError('not an active installer');
+    r['status'] = 'revoked';
+    for (final sh in shares.values) {
+      if (sh['recipient_id'] == uid && sh['kind'] == 'installer' && const {'pending', 'claimed', 'active'}.contains(sh['status'])) {
+        sh
+          ..['status'] = 'revoked'
+          ..['payload'] = null
+          ..['code_hash'] = null;
+      }
+    }
+    _syncProfile(uid);
+  }
+
+  String shareAccess(String id) {
+    final s = shares[id];
+    if (s == null) return 'gone';
+    final inst = s['kind'] == 'installer';
+    if (s['status'] == 'active' && (!inst || _isInstaller(s['recipient_id'] as String?))) return 'active';
+    if ((s['status'] == 'pending' || s['status'] == 'claimed') && (!inst || s['recipient_id'] == null || _isInstaller(s['recipient_id'] as String?))) {
+      return 'pending';
+    }
+    return 'gone';
+  }
 
   Map<String, dynamic> _session(FakeUser u) {
     final a = 'at${++_n}', r = 'rt$_n';
@@ -129,6 +195,7 @@ class FakeSupabase {
     }
 
     // ---- PostgREST
+    if (p == '/rest/v1/rpc/share_access') return _j(shareAccess('${body['p_share']}'));
     if (uid == null) return _j({'code': 'PGRST301', 'message': 'JWT expired'}, 401);
     if (p == '/rest/v1/rpc/delete_my_account') {
       rows.remove(uid);
@@ -189,7 +256,8 @@ class FakeSupabase {
       if (req.method == 'PATCH') {
         final r = eq('user_id') == uid ? profiles[uid] : null;
         if (r == null) return _j([]);
-        for (final k in ['display_name', 'share_pub', 'installer', 'company']) {
+        if (body.containsKey('installer') || body.containsKey('company')) return _pgErr('42501', 'permission denied for table profiles', 403);
+        for (final k in ['display_name', 'share_pub']) {
           if (body.containsKey(k)) r[k] = body[k];
         }
         return _j([r]);
@@ -197,7 +265,9 @@ class FakeSupabase {
       if (req.method == 'POST') {
         if (body['user_id'] != uid) return _pgErr('42501', 'new row violates row-level security policy', 403);
         if (profiles[uid] != null) return _pgErr('23505', 'duplicate key', 409);
+        if (body.containsKey('installer') || body.containsKey('company')) return _pgErr('42501', 'permission denied for table profiles', 403);
         profiles[uid] = {'user_id': uid, 'display_name': '', 'share_pub': null, 'installer': false, 'company': '', ...body};
+        _syncProfile(uid);
         return _j([profiles[uid]], 201);
       }
     }
@@ -219,10 +289,19 @@ class FakeSupabase {
         return _j(l);
       }
       if (req.method == 'POST') {
-        if ((body['status'] ?? 'pending') != 'pending' || body.containsKey('owner_id') && body['owner_id'] != uid) {
+        final st = body['status'] ?? 'pending';
+        final inst = body['kind'] == 'installer';
+        final rid = body['recipient_id'] as String?;
+        final okActive = st == 'active' && inst && rid != null && body['payload'] != null && body['code_hash'] == null && _isInstaller(rid);
+        if ((st != 'pending' && !okActive) || body.containsKey('owner_id') && body['owner_id'] != uid) {
           return _pgErr('42501', 'new row violates row-level security policy', 403);
         }
-        if (body['recipient_id'] == uid) return _pgErr('23514', 'shares_not_self');
+        if (rid == uid) return _pgErr('23514', 'shares_not_self');
+        if (inst && rid != null && !_isInstaller(rid)) return _pgErr('42501', 'installer profile required', 403);
+        if (inst && rid != null) {
+          final i = installers[rid]!;
+          body['recipient_name'] = '${i['company']}'.isEmpty ? i['display_name'] : '${i['company']} · ${i['display_name']}';
+        }
         final sid = '${body['id'] ?? 'gen-${++_n}'}';
         shares[sid] = {
           'id': sid,
@@ -261,6 +340,9 @@ class FakeSupabase {
           return _pgErr('42501', 'share status $from -> $to not allowed', 403);
         }
         if (to == 'active' && (body['payload'] ?? r['payload']) == null) return _pgErr('23514', 'needs credential');
+        if (r['kind'] == 'installer' && r['recipient_id'] != null && to != 'revoked' && !_isInstaller(r['recipient_id'] as String?)) {
+          return _pgErr('42501', 'installer profile required', 403);
+        }
         r.addAll(body);
         if (to == 'revoked') {
           r['payload'] = null;
@@ -280,7 +362,7 @@ class FakeSupabase {
       if (r == null || r['recipient_id'] != uid || r['status'] != 'pending' || r['payload'] == null) {
         return _pgErr('P0002', 'no such invite');
       }
-      if (r['kind'] == 'installer' && profiles[uid]?['installer'] != true) return _pgErr('42501', 'installer profile required');
+      if (r['kind'] == 'installer' && !_isInstaller(uid)) return _pgErr('42501', 'installer profile required');
       r['status'] = 'active';
       return http.Response('', 204);
     }
@@ -303,15 +385,121 @@ class FakeSupabase {
         return _pgErr('P0002', 'invalid or expired code');
       }
       if (r['owner_id'] == uid) return _pgErr('42501', 'own invite');
-      if (r['kind'] == 'installer' && me['installer'] != true) return _pgErr('42501', 'installer profile required');
+      if (r['kind'] == 'installer' && !_isInstaller(uid)) return _pgErr('42501', 'installer profile required');
+      final i = installers[uid];
       r
         ..['recipient_id'] = uid
         ..['recipient_pub'] = me['share_pub']
-        ..['recipient_name'] = '${me['company'] ?? ''}'.isNotEmpty ? me['company'] : me['display_name']
+        ..['recipient_name'] = r['kind'] == 'installer' && i != null
+            ? ('${i['company']}'.isEmpty ? i['display_name'] : '${i['company']} · ${i['display_name']}')
+            : me['display_name']
         ..['status'] = 'claimed'
         ..['code_hash'] = null;
       return _j(r['id']);
     }
+    // ---- R256–R262 installers
+    final email = byIdEmail(uid);
+    final admin = admins.contains(email);
+    http.Response notAdmin() => _pgErr('42501', 'admin only', 403);
+    if (p == '/rest/v1/installers' && req.method == 'GET') {
+      final r = installers[uid];
+      if (eq('user_id') != uid || r == null) return _j([]);
+      return _j([
+        {for (final k in ['user_id', 'public_id', 'display_name', 'company', 'status', 'granted_at']) k: r[k]},
+      ]);
+    }
+    if (p == '/rest/v1/installer_applications') {
+      if (req.method == 'GET') {
+        final l = [for (final a in applications) if (a['user_id'] == uid) a]..sort((a, b) => '${b['created_at']}'.compareTo('${a['created_at']}'));
+        return _j(l.take(1).toList());
+      }
+      if (req.method == 'POST') {
+        if (body.keys.any((k) => !const {'display_name', 'company', 'message'}.contains(k))) return _pgErr('42501', 'permission denied', 403);
+        if ('${body['display_name'] ?? ''}'.trim().isEmpty) return _pgErr('23514', 'check violation');
+        if (applications.any((a) => a['user_id'] == uid && a['status'] == 'new')) return _pgErr('23505', 'duplicate key', 409);
+        final a = {
+          'id': 'app-${++_n}',
+          'user_id': uid,
+          'email': email,
+          'status': 'new',
+          'company': '',
+          'message': '',
+          ...body,
+          'created_at': '$now#${_n++}',
+        };
+        applications.add(a);
+        return _j([a], 201);
+      }
+      if (req.method == 'DELETE') {
+        applications.removeWhere((a) => a['id'] == eq('id') && a['user_id'] == uid && a['status'] == 'new');
+        return http.Response('', 204);
+      }
+    }
+    if (p == '/rest/v1/rpc/is_shop_admin') return _j(admin);
+    if (p == '/rest/v1/rpc/find_installer') {
+      final want = '${body['p_public_id']}';
+      final e = installers.entries.where((e) => e.value['public_id'] == want && e.value['status'] == 'active' && e.key != uid).firstOrNull;
+      final pr = e == null ? null : profiles[e.key];
+      if (e == null || pr == null || pr['share_pub'] == null) return _j([]);
+      return _j([
+        {
+          'user_id': e.key,
+          'public_id': e.value['public_id'],
+          'display_name': e.value['display_name'],
+          'company': e.value['company'],
+          'share_pub': pr['share_pub'],
+        },
+      ]);
+    }
+    if (p.startsWith('/rest/v1/rpc/admin_')) {
+      if (!admin) return notAdmin();
+      switch (p.substring('/rest/v1/rpc/'.length)) {
+        case 'admin_list_installers':
+          return _j([
+            for (final e in installers.entries)
+              {
+                ...e.value,
+                'email': byIdEmail(e.key),
+                'customers': shares.values.where((s) => s['recipient_id'] == e.key && s['kind'] == 'installer' && s['status'] == 'active').length,
+              },
+          ]);
+        case 'admin_find_user':
+          final q = '${body['p_email']}'.trim().toLowerCase();
+          if (q.length < 3) return _j([]);
+          return _j([
+            for (final u in users.values.where((u) => u.email.contains(q)))
+              {
+                'user_id': u.id,
+                'email': u.email,
+                'display_name': profiles[u.id]?['display_name'] ?? '',
+                'has_app': profiles[u.id]?['share_pub'] != null,
+                'installer_status': installers[u.id]?['status'],
+                'public_id': installers[u.id]?['public_id'],
+              },
+          ]);
+        case 'admin_grant_installer':
+          if ('${body['p_display_name']}'.trim().isEmpty) return _pgErr('23514', 'check violation');
+          if (users['${body['p_email']}'.trim().toLowerCase()] == null) return _pgErr('P0002', 'no Molaplan account with that e-mail');
+          return _j(grantInstaller('${body['p_email']}'.trim(), '${body['p_display_name']}'.trim(),
+              company: '${body['p_company'] ?? ''}'.trim(), note: '${body['p_note'] ?? ''}', by: email));
+        case 'admin_revoke_installer':
+          try {
+            revokeInstaller('${body['p_user']}');
+          } catch (_) {
+            return _pgErr('P0002', 'not an active installer');
+          }
+          return http.Response('', 204);
+        case 'admin_list_installer_applications':
+          return _j(applications);
+        case 'admin_decline_installer_application':
+          final a = applications.where((a) => a['id'] == body['p_id'] && a['status'] == 'new').firstOrNull;
+          if (a == null) return _pgErr('P0002', 'no open application');
+          a['status'] = 'declined';
+          return http.Response('', 204);
+      }
+    }
     return null;
   }
+
+  String byIdEmail(String uid) => users.values.where((u) => u.id == uid).firstOrNull?.email ?? '';
 }

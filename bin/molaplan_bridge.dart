@@ -11,6 +11,7 @@ import 'dart:io';
 import 'package:molaplan/remote/bridge_core.dart';
 import 'package:molaplan/remote/executor.dart';
 import 'package:molaplan/remote/protocol.dart';
+import 'package:molaplan/sharing/share_api.dart';
 import 'package:molaplan/state/stores.dart';
 import 'package:qr/qr.dart';
 
@@ -98,6 +99,7 @@ Future<void> main(List<String> args) async {
     log: (m) => stdout.writeln('[${DateTime.now().toIso8601String().substring(11, 19)}] $m'),
   );
   await bridge.init(relayUrl: arg('--relay') ?? defaultRelayUrl, name: arg('--name') ?? 'Koti');
+  bridge.shareCheck = (id) => accountShareAccess(id); // R260: shares are re-checked on the account service
   if (arg('--relay') != null && bridge.relay != arg('--relay')) await bridge.setRelay(arg('--relay')!);
   if (arg('--name') != null && bridge.homeName != arg('--name')) await bridge.rename(arg('--name')!);
   stdout.writeln('Molaplan bridge "${bridge.homeName}" – home ${bridge.home} – relay ${bridge.relay}');

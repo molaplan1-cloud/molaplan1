@@ -1,6 +1,6 @@
 // R215–R217 (t215u): 'Jakaminen' – share devices or a whole view, invites, codes, and the
-// 'Asentaja' (installer) menu. The main path is short; per-tile rights, ntfy notice and the
-// installer profile are under 'Edistyneet'.
+// installer's customer list. The main path is short; per-tile rights and the ntfy notice are under
+// 'Edistyneet'. R256–R262: installer access (by installer ID) lives in installer_pages.dart.
 import 'dart:async';
 
 import 'package:flutter/services.dart';
@@ -16,6 +16,11 @@ import 'app_scope.dart';
 String shareErrorText(BuildContext context, Object e) {
   if (e is ShareError) {
     return switch (e.problem) {
+      ShareProblem.notFound when e.detail.startsWith('email:') => tx(
+        context,
+        'Sähköpostilla ei ole Molaplan-tiliä.',
+        'There is no Molaplan account with that e-mail.',
+      ),
       ShareProblem.notFound when e.detail.contains('@') => tx(
         context,
         'Osoitteella ei löytynyt Molaplan-käyttäjää. Hänen pitää kirjautua Molaplan 0.9:ään kerran – tai lähetä hänelle kutsukoodi.',
@@ -34,9 +39,11 @@ String shareErrorText(BuildContext context, Object e) {
       ),
       ShareProblem.notInstaller => tx(
         context,
-        'Tämä on asentajan kutsu: ota asentajaprofiili käyttöön (Jakaminen → Edistyneet).',
-        'This invite is for an installer: turn on the installer profile (Sharing → Advanced).',
+        'Tämä on asentajan kutsu, ja sen voi käyttää vain Molaplanin hyväksymä asentaja (Asetukset → Asentaja → Hae asentajaksi).',
+        'This invite is for an installer and only an installer approved by Molaplan can use it (Settings → Installer → Apply).',
       ),
+      ShareProblem.notAdmin => tx(context, 'Vain Molaplanin ylläpito voi tehdä tämän.', 'Only Molaplan admins can do this.'),
+      ShareProblem.badInstallerId => tx(context, 'Tunnus on muotoa MPL-XXX-XXX.', 'The ID looks like MPL-XXX-XXX.'),
       ShareProblem.badCode => tx(context, 'Koodi on väärä, vanhentunut tai jo käytetty.', 'The code is wrong, expired or already used.'),
       ShareProblem.noBridge => tx(
         context,
@@ -253,12 +260,12 @@ class _SharingPageState extends State<SharingPage> {
                 ],
                 const SizedBox(height: 20),
                 Text(tx(context, 'Jakamasi', 'Your shares'), style: text.titleMedium),
-                if (sh.mine.where((r) => r.status != ShareStatus.revoked && r.status != ShareStatus.declined).isEmpty)
+                if (sh.mineShares.where((r) => r.status != ShareStatus.revoked && r.status != ShareStatus.declined).isEmpty)
                   Padding(
                     padding: const EdgeInsets.only(top: 6),
                     child: Text(tx(context, 'Et ole jakanut mitään.', 'You have not shared anything.'), style: text.bodySmall),
                   ),
-                for (final r in sh.mine.where((r) => r.status != ShareStatus.revoked && r.status != ShareStatus.declined))
+                for (final r in sh.mineShares.where((r) => r.status != ShareStatus.revoked && r.status != ShareStatus.declined))
                   Card(
                     child: ListTile(
                       key: ValueKey('mine-${r.id}'),
@@ -320,31 +327,6 @@ class _SharingPageState extends State<SharingPage> {
                   tilePadding: EdgeInsets.zero,
                   title: Text(tx(context, 'Edistyneet', 'Advanced')),
                   children: [
-                    SwitchListTile(
-                      key: const ValueKey('installer-switch'),
-                      contentPadding: EdgeInsets.zero,
-                      title: Text(tx(context, 'Asentajaprofiili', 'Installer profile')),
-                      subtitle: Text(
-                        tx(
-                          context,
-                          'Näyttää Asentaja-valikon: asiakkaat, heidän laitteensa ja hälytykset. Asiakas antaa pääsyn koodilla ja voi perua sen.',
-                          'Shows the Installer menu: customers, their devices and alarms. A customer grants access with a code and can revoke it.',
-                        ),
-                      ),
-                      value: sh.installer,
-                      onChanged: sh.available ? (v) => _run(() => sh.setInstaller(v)) : null,
-                    ),
-                    if (sh.installer)
-                      ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        title: Text(tx(context, 'Yrityksen nimi', 'Company name')),
-                        subtitle: Text(sh.company.isEmpty ? '–' : sh.company),
-                        trailing: const Icon(Icons.edit_outlined),
-                        onTap: () async {
-                          final v = await _ask(context, tx(context, 'Yrityksen nimi', 'Company name'), sh.company);
-                          if (v != null) await _run(() => sh.setInstaller(true, company: v));
-                        },
-                      ),
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       title: Text(tx(context, 'Nimesi jaoissa', 'Your name in shares')),
@@ -644,13 +626,6 @@ class _ShareCreatePageState extends State<ShareCreatePage> {
                     onChanged: (_) => setState(() {}),
                     decoration: InputDecoration(labelText: tx(context, 'Sähköposti', 'E-mail')),
                   ),
-                CheckboxListTile(
-                  key: const ValueKey('share-installer'),
-                  contentPadding: EdgeInsets.zero,
-                  value: installerAccess,
-                  title: Text(tx(context, 'Asentajalle (näkyy hänen Asentaja-valikossaan)', 'To an installer (shows in their Installer menu)')),
-                  onChanged: (v) => setState(() => installerAccess = v == true),
-                ),
                 TextField(
                   key: const ValueKey('share-label'),
                   controller: label,
@@ -1012,12 +987,7 @@ class _InstallerPageState extends State<InstallerPage> {
     final text = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(title: Text(tx(context, 'Asentaja', 'Installer'))),
-      floatingActionButton: FloatingActionButton.extended(
-        key: const ValueKey('installer-add'),
-        onPressed: () => claimDialog(context, installer: true),
-        icon: const Icon(Icons.person_add_alt),
-        label: Text(tx(context, 'Lisää asiakas', 'Add customer')),
-      ),
+
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 640),
@@ -1032,10 +1002,23 @@ class _InstallerPageState extends State<InstallerPage> {
                 ),
                 style: text.bodySmall,
               ),
+              if (!sh.installer && sh.available)
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Text(
+                    tx(context, 'Asentajan tilasi ei ole voimassa.', 'Your installer status is not valid.'),
+                    key: const ValueKey('installer-not-valid'),
+                    style: TextStyle(color: Theme.of(context).colorScheme.error),
+                  ),
+                ),
               const SizedBox(height: 12),
               if (sh.customers.isEmpty)
                 Text(
-                  tx(context, 'Ei asiakkaita vielä. Pyydä asiakasta luomaan asentajakoodi: Jakaminen → Jaa laitteita → Kutsukoodi + Asentajalle.', 'No customers yet. Ask the customer to create an installer code: Sharing → Share devices → Invite code + To an installer.'),
+                  tx(
+                    context,
+                    'Ei asiakkaita vielä. Anna asiakkaalle asentajatunnuksesi ${sh.installerInfo?.publicId ?? ''}: asiakas avaa Asetukset → Asentaja → Anna pääsy.',
+                    'No customers yet. Give your customer your installer ID ${sh.installerInfo?.publicId ?? ''}: they open Settings → Installer → Give access.',
+                  ),
                   key: const ValueKey('installer-empty'),
                 ),
               for (final r in sh.customers)

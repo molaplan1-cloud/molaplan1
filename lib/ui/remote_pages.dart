@@ -19,6 +19,10 @@ import 'guides_page.dart';
 
 bool get canScanQr => !Plat.isWeb && !Plat.isWindows && !Plat.isLinux && !Plat.isMacOS;
 
+/// Opens the camera and returns the first molaplan:// QR code (null when cancelled).
+Future<String?> scanMolaplanQr(BuildContext context) =>
+    Navigator.push<String>(context, MaterialPageRoute(builder: (_) => const _ScanPage()));
+
 Future<void> keepScreenOn(bool on) async {
   try {
     on ? await WakelockPlus.enable() : await WakelockPlus.disable();
@@ -966,8 +970,7 @@ class _PairPageState extends State<PairPage> {
     await _pair(invite: inv);
   }
 
-  static Future<String?> _defaultScan(BuildContext context) =>
-      Navigator.push<String>(context, MaterialPageRoute(builder: (_) => const _ScanPage()));
+  static Future<String?> _defaultScan(BuildContext context) => scanMolaplanQr(context);
 
   @override
   Widget build(BuildContext context) {

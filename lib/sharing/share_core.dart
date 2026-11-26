@@ -226,3 +226,27 @@ String inviteLink(String code) => 'molaplan://share?c=$code';
 
 /// What the server stores instead of the code.
 Future<String> inviteCodeHash(String code) => sha256Hex('molaplan-invite-v1|${normalizeInviteCode(code) ?? code}');
+
+// ---------------------------------------------------------------- installer IDs (R257)
+
+/// Characters of a public installer ID: no 0/O, 1/I/L (easy to read aloud and type).
+const installerIdAlphabet = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+
+/// "MPL-K7Q-M2X" from what a customer typed or scanned (lower case, spaces, missing dashes or
+/// prefix, an installer link / QR). Null when it cannot be an installer ID. Same rules as
+/// private.normalize_installer_id() on the server.
+String? normalizeInstallerId(String input) {
+  var s = input.trim();
+  final u = Uri.tryParse(s);
+  if (u != null && u.scheme == 'molaplan' && u.host == 'installer') s = u.queryParameters['id'] ?? '';
+  if (u != null && (u.scheme == 'https' || u.scheme == 'http') && u.pathSegments.length >= 2 && u.pathSegments.first == 'asentaja') {
+    s = u.pathSegments[1];
+  }
+  s = s.toUpperCase().replaceAll(RegExp(r'[^A-Z0-9]'), '');
+  if (s.startsWith('MPL')) s = s.substring(3);
+  if (s.length != 6 || s.split('').any((c) => !installerIdAlphabet.contains(c))) return null;
+  return 'MPL-${s.substring(0, 3)}-${s.substring(3)}';
+}
+
+/// What the installer's QR code holds.
+String installerLink(String publicId) => 'molaplan://installer?id=$publicId';

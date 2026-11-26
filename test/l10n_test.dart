@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:molaplan/ui/installer_pages.dart';
+import 'package:molaplan/sharing/share_api.dart' show InstallerInfo;
 import 'package:molaplan/drivers/driver.dart';
 import 'package:molaplan/l10n/gen/app_localizations.dart';
 import 'package:molaplan/l10n/l10n.dart';
@@ -149,6 +151,15 @@ void main() {
         const AccountPage(),
         const ConnectionsPage(),
         const RemoteHubPage(),
+        // R256–R262: installer pages (signed-out hub, grant, admin, the installer's ID card).
+        const InstallerHubPage(),
+        const InstallerGrantPage(initialId: 'MPL-K7Q-M2X'),
+        const InstallerAdminPage(),
+        Scaffold(
+          body: InstallerIdCard(
+            info: InstallerInfo({'user_id': 'u', 'public_id': 'MPL-K7Q-M2X', 'display_name': 'Enn Kotselainen', 'company': 'Kevytyrittäjä'}),
+          ),
+        ),
         TileEditor(dashboard: st.config.dashboards.first, initial: TileConfig(type: TileType.toggle, title: ''), isNew: true),
         for (final t in deviceTemplates) TemplateSetupPage(template: t),
         const OnboardingPage(),

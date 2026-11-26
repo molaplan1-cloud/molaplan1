@@ -1325,6 +1325,10 @@
  "@s7ebd89c416": {
   "x-mt": true
  },
+ "sab30063821": "Este navegador se olvida de las casas, tarjetas y enlace de puente casero. Sus datos se quedan en su cuenta.",
+ "@sab30063821": {
+  "x-mt": true
+ },
  "s6c6165d662": "Los hogares y las baldosas permanecen en este dispositivo, pero los cambios ya no llegan a los otros dispositivos.",
  "@s6c6165d662": {
   "x-mt": true
@@ -2140,6 +2144,14 @@
   "x-mt": true
  },
  "s59622d792b": "Renombrar",
+ "sb616303f5b": "En el navegador, la búsqueda de dispositivos funciona sólo a través de un puente casero",
+ "@sb616303f5b": {
+  "x-mt": true
+ },
+ "sef469cadc3": "Aún puedes añadir dispositivos cloud y ntfy abajo.",
+ "@sef469cadc3": {
+  "x-mt": true
+ },
  "sa0fccfbcab": "a través del puente casero",
  "@sa0fccfbcab": {
   "x-mt": true
@@ -2327,6 +2339,114 @@
  "@s9041c140be": {
   "x-mt": true
  },
+ "sfe54134176": "Todos los dispositivos",
+ "s23baecde5b": "dispositivos",
+ "@s23baecde5b": {
+  "x-mt": true
+ },
+ "s776f46ed8d": "control + ajustes",
+ "sa7cfbebc2f": "control",
+ "seff7e04d91": "¿Revocar el acceso del instalador?",
+ "s633fa022d1": "{p0} ya no podrá acceder a tus dispositivos. El acceso termina en cuanto el puente doméstico se entera (normalmente al instante).",
+ "sbdfc0cf419": "Revocar acceso",
+ "s98b66fc9d8": "Acceso revocado",
+ "sbd907def5b": "Instalador",
+ "sfb1a18d11f": "Actualizar",
+ "sb9c461d827": "El acceso de instaladores necesita una cuenta de Molaplan para verificar al instalador y para que funcione el cifrado.",
+ "s9bb545e9b3": "Inicia sesión o crea una cuenta",
+ "s523c735938": "Da acceso a tus dispositivos a un instalador con su ID de instalador (p. ej. MPL-K7Q-M2X). Molaplan ha verificado el nombre y la empresa de cada instalador. Las contraseñas y direcciones nunca salen de casa y puedes revocar el acceso en cualquier momento.",
+ "s03be67bc78": "Dar acceso",
+ "s65c7781ca3": "Instaladores con acceso",
+ "sbb7e4c4c3c": "Ningún instalador tiene acceso.",
+ "s84a6d73d1e": "Cambio de dispositivos o derechos",
+ "@s84a6d73d1e": {
+  "x-mt": true
+ },
+ "s5fcc7e175d": "Mis clientes",
+ "s44dcd38f2b": "Gestionar instaladores",
+ "s2f8dd9569b": "Mi ID de instalador de Molaplan: {p0} ({p1}). Para darme acceso: Molaplan → Ajustes → Instalador → Dar acceso.",
+ "s0061cbc425": "Copiar el mensaje",
+ "sdd0f19c6b8": "E-mail",
+ "@sdd0f19c6b8": {
+  "x-mt": true
+ },
+ "sd57398d989": "SMS",
+ "s4f09cced25": "Mensaje copiado",
+ "s2836191df5": "No se pudo abrir la app: el mensaje se ha copiado.",
+ "sd01e57c279": "El cliente lo escanea: Ajustes → Instalador → Dar acceso.",
+ "se83877749c": "Eres instalador de Molaplan",
+ "s014468e53e": "Tu ID de instalador",
+ "s973ddbcd3b": "Da el ID a tu cliente. Con él abre el acceso a sus dispositivos y ve tu nombre y empresa verificados por Molaplan.",
+ "s9e0dd2426d": "ID copiado",
+ "s5224946aa1": "Compartir",
+ "s59d0633cbd": "Código QR",
+ "sacc4275348": "Solicitar ser instalador",
+ "s29acd8486c": "Molaplan comprueba tu nombre y empresa y te da un ID de instalador. Verás el resultado en la app.",
+ "s7aa9c1e208": "Tu nombre",
+ "s9f3d2fa73f": "Empresa",
+ "scfe0cd3759": "p. ej. NIF o autónomo",
+ "s483b3a689d": "Mensaje (opcional)",
+ "sb7dbf1a527": "Enviar solicitud",
+ "s0b9319b6eb": "Escribe tu nombre.",
+ "s9929adfbf5": "Solicitud enviada",
+ "s2570b96a0b": "¿Eres instalador?",
+ "s63d8fdf8c2": "Tu estado de instalador ({p0}) se ha retirado y los accesos de clientes no se pueden usar. Pregunta a Molaplan: molaplan1@gmail.com.",
+ "s82b8ec7605": "Como instalador ves los dispositivos, el estado y las alarmas de tus clientes en la medida en que cada cliente lo permita. Molaplan concede el estado de instalador.",
+ "s563801d51b": "Solicitud enviada el {p0}: pendiente de revisión.",
+ "s1247102567": "Retirar",
+ "s77f0327b09": "La solicitud anterior no se aprobó.",
+ "s5e130a714c": "El ID tiene la forma MPL-XXX-XXX.",
+ "s16d84ef12f": "Ningún instalador aprobado tiene este ID. Compruébalo con el instalador.",
+ "s7288dc01b6": "¿Dar acceso?",
+ "s2013b9940c": "¿Guardar los cambios?",
+ "sa88745a558": "Todos los dispositivos (también los que se añadan más tarde)",
+ "sd97ead609e": "Puede controlar y cambiar ajustes",
+ "s8be70baa9c": "Puede controlar, no cambiar ajustes",
+ "sf2581756af": "Puedes revocar el acceso en cualquier momento.",
+ "s9a6818b304": "Acceso concedido: {p0}",
+ "sdb0484d728": "Guardado",
+ "s52a64a3307": "Dar acceso a un instalador",
+ "s2113bddc63": "ID de instalador",
+ "s6d7d0273ad": "Buscar",
+ "s36418f769d": "Escanear el código QR del instalador",
+ "scb4d6b0ddc": "Instalador verificado por Molaplan",
+ "s95fd3e8dc3": "¿A qué puede acceder el instalador?",
+ "s0d395a6edd": "Dispositivos elegidos",
+ "s8affba28ec": "{p0} dispositivos ahora; los que se añadan más tarde se incluyen.",
+ "sbc76d76351": "Puede cambiar ajustes",
+ "s4fa2d2d66c": "Temperaturas, modos y otros ajustes. Desactivado: el instalador puede controlar y ver el estado.",
+ "s82b62bcb13": "Aún no tienes dispositivos que se puedan compartir.",
+ "s4e60c0286c": "El puente doméstico comprueba los permisos de cada petición. Las contraseñas y direcciones de los dispositivos nunca salen de casa.",
+ "sd431b45586": "Escribe al menos 3 caracteres del correo.",
+ "s2162e5cad2": "No se encontró ningún usuario.",
+ "s1ec9cc5828": "Estado de instalador",
+ "s256fb6b50a": "Nombre verificado",
+ "sd8a8961db3": "p. ej. autónomo",
+ "sb57dfb696c": "Nota (solo administradores)",
+ "s8ce95234d7": "Conceder",
+ "s2eca996a49": "Falta el nombre.",
+ "s5a4c72db4b": "Instalador {p0}: {p1}",
+ "se06acfd38d": "¿Retirar el estado de instalador?",
+ "sd35135676e": "{p0} ({p1}) pierde el estado de instalador y todos los accesos de clientes ({p2}) terminan al instante. El ID se conserva si se vuelve a conceder el estado.",
+ "se70c0caad3": "Retirar estado",
+ "s2679477d73": "Estado de instalador retirado",
+ "s5ea6251452": "Concede el estado de instalador solo a alguien cuyo nombre y empresa hayas comprobado. Las mismas herramientas están en molaplan.com/tilaa/hallinta (Asentajat).",
+ "sa7380f5e5c": "Buscar usuario por correo",
+ "sc023f30da1": "nombre@ejemplo.es",
+ "s9a7d261596": "aún no ha abierto la app",
+ "sd4f8f15670": "instalador",
+ "sfee2ce49ea": "estado retirado",
+ "s3ecd52ffc6": "Solicitudes",
+ "se5c4c1e153": "No hay solicitudes abiertas.",
+ "s052118a469": "Aprobar",
+ "s493a1eaf08": "Declin",
+ "@s493a1eaf08": {
+  "x-mt": true
+ },
+ "sc8ab77f768": "Instaladores",
+ "s65f12e7e23": "clientes",
+ "sf36e8af07c": "Conceder de nuevo",
+ "s0361487148": "Retirar el estado de instalador",
  "s55d52c5ae1": "Este dispositivo no está en Wi-Fi",
  "@s55d52c5ae1": {
   "x-mt": true
@@ -2642,6 +2762,7 @@
  "@s417eb9a875": {
   "x-mt": true
  },
+ "s53a9fe5e42": "No hay ninguna cuenta de Molaplan con ese correo.",
  "sb4bd4baa5c": "No hay usuario Molaplan con esa dirección. Necesitan iniciar sesión en Molaplan 0.9 una vez – o enviarles un código de invitación.",
  "@sb4bd4baa5c": {
   "x-mt": true
@@ -2658,10 +2779,8 @@
  "@s5ea320fb1c": {
   "x-mt": true
  },
- "s5aee30a4e4": "Esta invitación es para un instalador: encienda el perfil del instalador (Sharing → Avanzado).",
- "@s5aee30a4e4": {
-  "x-mt": true
- },
+ "s2855893bfc": "Esta invitación es para un instalador y solo puede usarla un instalador aprobado por Molaplan (Ajustes → Instalador → Solicitar).",
+ "sb8df145fc9": "Solo los administradores de Molaplan pueden hacer esto.",
  "sa562754cb5": "El código es incorrecto, expirado o ya utilizado.",
  "@sa562754cb5": {
   "x-mt": true
@@ -2742,12 +2861,10 @@
  "@s844e081db8": {
   "x-mt": true
  },
- "sfb1a18d11f": "Actualizar",
  "scdfdf5d233": "Compartir necesita una cuenta Molaplan para que las invitaciones puedan llegar a las personas y los trabajos de encriptación.",
  "@scdfdf5d233": {
   "x-mt": true
  },
- "s9bb545e9b3": "Inicia sesión o crea una cuenta",
  "s85abc4496d": "Dar a un miembro de la familia, vecino o instalador acceso a los dispositivos que elija. Las contraseñas y direcciones nunca salen de casa, y usted puede revocar en cualquier momento.",
  "@s85abc4496d": {
   "x-mt": true
@@ -2773,10 +2890,6 @@
   "x-mt": true
  },
  "sdfaf8c242b": "Aceptar",
- "s493a1eaf08": "Declin",
- "@s493a1eaf08": {
-  "x-mt": true
- },
  "s2fd1394b33": "Compartido conmigo",
  "@s2fd1394b33": {
   "x-mt": true
@@ -2793,10 +2906,6 @@
  "@s33f41d417c": {
   "x-mt": true
  },
- "s23baecde5b": "dispositivos",
- "@s23baecde5b": {
-  "x-mt": true
- },
  "s9cdf3dcc87": "¿Revocar la parte?",
  "@s9cdf3dcc87": {
   "x-mt": true
@@ -2811,22 +2920,6 @@
  },
  "s280e22cbc9": "Compartir revocado",
  "@s280e22cbc9": {
-  "x-mt": true
- },
- "s84a6d73d1e": "Cambio de dispositivos o derechos",
- "@s84a6d73d1e": {
-  "x-mt": true
- },
- "s1cf5e3d702": "Perfil de instalación",
- "@s1cf5e3d702": {
-  "x-mt": true
- },
- "s22f8bccc91": "Muestra el menú Installer: clientes, sus dispositivos y alarmas. Un cliente otorga acceso con un código y puede revocarlo.",
- "@s22f8bccc91": {
-  "x-mt": true
- },
- "se19c5fe8aa": "Nombre de la empresa",
- "@se19c5fe8aa": {
   "x-mt": true
  },
  "sd742357fc8": "Su nombre en acciones",
@@ -2910,14 +3003,6 @@
  "@s447da2f746": {
   "x-mt": true
  },
- "sdd0f19c6b8": "E-mail",
- "@sdd0f19c6b8": {
-  "x-mt": true
- },
- "s6be36f4219": "A un instalador (shows in their Installer menu)",
- "@s6be36f4219": {
-  "x-mt": true
- },
  "se7272a5713": "Nombre de la parte (opcional)",
  "@se7272a5713": {
   "x-mt": true
@@ -2979,22 +3064,12 @@
  "@s8debff3196": {
   "x-mt": true
  },
- "sbd907def5b": "Installer",
- "@sbd907def5b": {
-  "x-mt": true
- },
- "sddd83db201": "Agregar cliente",
- "@sddd83db201": {
-  "x-mt": true
- },
  "s2220ce611a": "Los clientes que le dieron acceso. Usted ve sólo los dispositivos compartidos y actuar dentro de los derechos que el cliente dio – nunca sus contraseñas.",
  "@s2220ce611a": {
   "x-mt": true
  },
- "s98a90339f4": "No hay clientes todavía. Pregunte al cliente para crear un código de instalación: Compartir → Compartir dispositivos → Invitar código + A un instalador.",
- "@s98a90339f4": {
-  "x-mt": true
- },
+ "s6f3c62fc03": "Tu estado de instalador no es válido.",
+ "s7ebc2621b7": "Aún no hay clientes. Da a tu cliente tu ID de instalador {p0}: abre Ajustes → Instalador → Dar acceso.",
  "sa52cf49adc": "Esperando al Molaplan del cliente para confirmar",
  "@sa52cf49adc": {
   "x-mt": true
@@ -5802,7 +5877,6 @@
  "@s9a3a0d414e": {
   "x-mt": true
  },
- "sdb0484d728": "Guardado",
  "se80021e22a": "Copie los precios de su factura. Introduzca con o sin IVA – los costos se muestran a ambos lados.",
  "@se80021e22a": {
   "x-mt": true
@@ -6234,10 +6308,7 @@
  "@scc3d01ee5e": {
   "x-mt": true
  },
- "s0fe7b15d15": "Dar a alguien acceso a los dispositivos que elija.",
- "@s0fe7b15d15": {
-  "x-mt": true
- },
+ "s535358a517": "Da a alguien, o a un instalador, acceso a los dispositivos que elijas.",
  "s25c286a743": "Compartir – nueva invitación",
  "@s25c286a743": {
   "x-mt": true
@@ -8416,18 +8487,6 @@
  },
  "s0ceafaa97c": "energía",
  "@s0ceafaa97c": {
-  "x-mt": true
- },
- "sab30063821": "Este navegador se olvida de las casas, tarjetas y enlace de puente casero. Sus datos se quedan en su cuenta.",
- "@sab30063821": {
-  "x-mt": true
- },
- "sb616303f5b": "En el navegador, la búsqueda de dispositivos funciona sólo a través de un puente casero",
- "@sb616303f5b": {
-  "x-mt": true
- },
- "sef469cadc3": "Aún puedes añadir dispositivos cloud y ntfy abajo.",
- "@sef469cadc3": {
   "x-mt": true
  }
 }

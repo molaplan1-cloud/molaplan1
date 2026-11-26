@@ -1,16 +1,16 @@
-// R215–R217 widget tests: 'Jakaminen' (share a view by e-mail, accept, use, revoke), invite code
-// for an installer, the 'Asentaja' menu and its customer view.
+// R215–R217 widget tests: 'Jakaminen' (share a view by e-mail, accept, use, revoke) and the
+// R256–R262 installer model (admin-approved installers, access by installer ID, revocation).
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart' hide Threshold;
 import 'package:molaplan/models/models.dart';
 import 'package:molaplan/remote/bridge_core.dart';
-import 'package:molaplan/sharing/share_api.dart';
 import 'package:molaplan/state/account_state.dart';
 import 'package:molaplan/state/app_state.dart';
 import 'package:molaplan/state/stores.dart';
 import 'package:molaplan/ui/app_scope.dart';
+import 'package:molaplan/ui/installer_pages.dart';
 import 'package:molaplan/ui/settings_page.dart';
 import 'package:molaplan/ui/share_pages.dart';
 import 'package:molaplan/ui/theme.dart';
@@ -138,58 +138,158 @@ void main() {
     friend.dispose();
   });
 
-  testWidgets('installer: code invite, installer profile, Asentaja menu, customer status', (t) async {
+  // R256–R262: installer status from an admin, access by installer ID (typed or scanned).
+  testWidgets('installer: apply → admin approves → ID card → customer grants by ID → use → revoke', (t) async {
     t.view.physicalSize = const Size(900, 2600);
     t.view.devicePixelRatio = 1;
     addTearDown(t.view.reset);
+    sb.admins.add('enn@example.test');
     final o = await owner(t);
     final inst = await other(t, 'asentaja@example.test');
 
-    // Customer creates an installer code.
-    await t.pumpWidget(host(o, const ShareCreatePage()));
-    await settle(t);
-    await tap(t, find.byKey(ValueKey('share-view-${o.config.dashboards.first.id}')));
-    await tap(t, find.text('Täysi'));
-    await tap(t, find.byKey(const ValueKey('share-to-code')));
-    await tap(t, find.byKey(const ValueKey('share-installer')));
-    await tap(t, find.byKey(const ValueKey('share-go')));
-    final code = (t.widget<SelectableText>(find.byKey(const ValueKey('share-code')))).data!;
-    expect(code, matches(RegExp(r'^[A-Z2-9]{4}-[A-Z2-9]{4}-[A-Z2-9]{4}$')));
-    expect(jsonEncode(sb.shares), isNot(contains(code)));
-
-    // Installer: no Asentaja menu until the profile is on.
-    await t.pumpWidget(host(inst, const SettingsPage()));
-    await settle(t);
-    expect(find.byKey(const ValueKey('settings-installer')), findsNothing);
+    // No self-service switch any more.
     await t.pumpWidget(host(inst, const SharingPage()));
     await settle(t);
     await tap(t, find.byKey(const ValueKey('share-advanced')));
-    await tap(t, find.byKey(const ValueKey('installer-switch')));
-    expect(inst.sharing.installer, isTrue);
+    expect(find.byKey(const ValueKey('installer-switch')), findsNothing);
+
+    // The installer applies from Asetukset → Asentaja.
     await t.pumpWidget(host(inst, const SettingsPage()));
     await settle(t);
     await tap(t, find.byKey(const ValueKey('settings-installer')));
-    expect(find.byKey(const ValueKey('installer-empty')), findsOneWidget);
-    await tap(t, find.byKey(const ValueKey('installer-add')));
-    await t.enterText(find.byKey(const ValueKey('claim-code')), code.toLowerCase());
-    await tap(t, find.byKey(const ValueKey('claim-ok')));
-    expect(sb.shares.values.single['status'], 'claimed');
+    expect(find.byKey(const ValueKey('installer-id-card')), findsNothing);
+    expect(find.byKey(const ValueKey('installer-admin')), findsNothing, reason: 'not an admin');
+    await tap(t, find.byKey(const ValueKey('installer-apply-section')));
+    await tap(t, find.byKey(const ValueKey('installer-apply')));
+    await t.enterText(find.byKey(const ValueKey('apply-name')), 'Ari Asentaja');
+    await t.enterText(find.byKey(const ValueKey('apply-company')), 'Kevytyrittäjä');
+    await tap(t, find.byKey(const ValueKey('apply-send')));
+    expect(sb.applications.single['status'], 'new');
+    expect(find.byKey(const ValueKey('apply-pending')), findsOneWidget);
 
-    // The customer's app confirms on its next refresh (polling) → active.
-    await t.runAsync(() => o.sharing.refresh());
-    expect(sb.shares.values.single['status'], 'active');
+    // Admin (in-app) approves the application.
+    await t.pumpWidget(host(o, const InstallerHubPage()));
+    await settle(t);
+    await tap(t, find.byKey(const ValueKey('installer-admin')));
+    final appId = sb.applications.single['id'];
+    expect(find.byKey(ValueKey('admin-application-$appId')), findsOneWidget);
+    await tap(t, find.byKey(ValueKey('admin-application-approve-$appId')));
+    expect(find.text('Ari Asentaja'), findsWidgets, reason: 'name prefilled from the application');
+    await tap(t, find.byKey(const ValueKey('admin-grant-ok')));
+    final row = sb.installers.values.single;
+    expect(row['display_name'], 'Ari Asentaja');
+    expect(row['company'], 'Kevytyrittäjä');
+    final pid = row['public_id'] as String;
+    expect(find.byKey(ValueKey('admin-installer-$pid')), findsOneWidget);
+
+    // The installer sees the ID with copy / share / QR.
+    await t.pumpWidget(host(inst, const InstallerHubPage()));
+    await settle(t);
+    expect(find.byKey(const ValueKey('installer-id-card')), findsOneWidget);
+    expect(find.text(pid), findsOneWidget);
+    await tap(t, find.byKey(const ValueKey('installer-show-qr')));
+    expect(find.byKey(const ValueKey('installer-qr')), findsOneWidget);
+    await tap(t, find.text('Sulje'));
+    await tap(t, find.byKey(const ValueKey('installer-customers')));
+    expect(find.byKey(const ValueKey('installer-empty')), findsOneWidget);
+
+    // Customer: Asetukset → Asentaja → Anna pääsy → ID (scanned) → verified name → scope → confirm.
+    await t.pumpWidget(host(o, InstallerHubPage(scan: (_) async => 'molaplan://installer?id=$pid')));
+    await settle(t);
+    expect(find.byKey(const ValueKey('installer-access-empty')), findsOneWidget);
+    await tap(t, find.byKey(const ValueKey('installer-grant')));
+    await tap(t, find.byKey(const ValueKey('installer-scan')));
+    expect(find.byKey(const ValueKey('installer-found')), findsOneWidget);
+    expect(find.textContaining('Molaplanin vahvistama'), findsOneWidget);
+    await tap(t, find.text('Valitut laitteet'));
+    await tap(t, find.byKey(const ValueKey('installer-tile-temp')));
+    await tap(t, find.byKey(const ValueKey('installer-tile-leak')));
+    await tap(t, find.byKey(const ValueKey('installer-settings')));
+    await tap(t, find.byKey(const ValueKey('installer-confirm')));
+    await tap(t, find.byKey(const ValueKey('installer-confirm-ok')));
+    final err = find.byKey(const ValueKey('installer-grant-error'));
+    if (err.evaluate().isNotEmpty) fail(t.widget<Text>(err).data!);
+    final share = sb.shares.values.single;
+    expect(share['status'], 'active');
+    expect(share['kind'], 'installer');
+    expect(share['recipient_name'], 'Kevytyrittäjä · Ari Asentaja');
+    final id = share['id'] as String;
+    expect(find.byKey(ValueKey('installer-access-$id')), findsOneWidget);
+    expect(find.textContaining(pid), findsWidgets);
+
+    // Installer: customer list → status → change a setting (allowed).
+    await t.runAsync(() => inst.sharing.refresh());
     await t.pumpWidget(host(inst, const InstallerPage()));
     await settle(t);
-    final id = sb.shares.keys.single;
     expect(find.byKey(ValueKey('customer-$id')), findsOneWidget);
     expect(find.textContaining('huomiota'), findsOneWidget, reason: 'the leak alarm shows in the list');
     await tap(t, find.byKey(ValueKey('customer-$id')));
-    // Full rights: the setpoint (a setting) can be changed.
     final slider = t.widget<Slider>(find.byKey(const ValueKey('shared-slider-temp')));
     await t.runAsync(() async => slider.onChangeEnd!(25));
     await settle(t);
     expect(home.setpoint, 25);
-    expect(inst.sharing.customers.single.status, ShareStatus.active);
+
+    // Customer revokes from the list.
+    await t.pumpWidget(host(o, const InstallerHubPage()));
+    await settle(t);
+    await tap(t, find.byKey(ValueKey('installer-access-menu-$id')));
+    await tap(t, find.byKey(const ValueKey('installer-access-revoke')));
+    await tap(t, find.byKey(const ValueKey('installer-revoke-ok')));
+    expect(sb.shares.values.single['status'], 'revoked');
+    expect(bridge.devices, isEmpty);
+    o.dispose();
+    inst.dispose();
+  });
+
+  testWidgets('admin removes the installer status: every customer access ends; typed ID; settings button for everyone', (t) async {
+    t.view.physicalSize = const Size(900, 2600);
+    t.view.devicePixelRatio = 1;
+    addTearDown(t.view.reset);
+    sb.admins.add('enn@example.test');
+    final o = await owner(t);
+    final inst = await other(t, 'asentaja@example.test');
+    final pid = sb.grantInstaller('asentaja@example.test', 'Enn Kotselainen', company: 'Kevytyrittäjä')['public_id'] as String;
+    bridge.shareCheck = (id) async => sb.shareAccess(id);
+
+    await t.pumpWidget(host(o, const SettingsPage()));
+    await settle(t);
+    expect(find.byKey(const ValueKey('settings-installer')), findsOneWidget, reason: 'customers start here');
+    await tap(t, find.byKey(const ValueKey('settings-installer')));
+    await tap(t, find.byKey(const ValueKey('installer-grant')));
+    await t.enterText(find.byKey(const ValueKey('installer-id')), 'MPL-ZZZ-ZZZ');
+    await tap(t, find.byKey(const ValueKey('installer-find')));
+    expect(find.byKey(const ValueKey('installer-grant-error')), findsOneWidget);
+    expect(find.byKey(const ValueKey('installer-confirm')), findsNothing);
+    await t.enterText(find.byKey(const ValueKey('installer-id')), pid.toLowerCase().replaceAll('-', ''));
+    await tap(t, find.byKey(const ValueKey('installer-find')));
+    expect(find.text('Enn Kotselainen'), findsOneWidget);
+    await tap(t, find.byKey(const ValueKey('installer-confirm')));
+    await tap(t, find.byKey(const ValueKey('installer-confirm-ok')));
+    final id = sb.shares.keys.single;
+    expect(sb.shares[id]!['summary']['all'], isTrue);
+
+    await t.runAsync(() => inst.sharing.refresh());
+    await t.runAsync(() => inst.sharing.sharedSend(id, 'relay', 'on'));
+    expect(home.relay, isTrue);
+
+    // Admin page: remove the status.
+    await t.pumpWidget(host(o, const InstallerAdminPage()));
+    await settle(t);
+    await tap(t, find.byKey(ValueKey('admin-installer-menu-$pid')));
+    await tap(t, find.byKey(const ValueKey('admin-installer-revoke')));
+    await tap(t, find.byKey(const ValueKey('admin-revoke-ok')));
+    expect(sb.installers.values.single['status'], 'revoked');
+    expect(sb.shares[id]!['status'], 'revoked');
+    Object? denied;
+    await t.runAsync(() => inst.sharing.sharedSend(id, 'relay', 'off').catchError((Object e) => denied = e));
+    expect(denied, isNotNull, reason: 'the home bridge asks the server and refuses');
+    expect(home.relay, isTrue);
+    expect(bridge.shares.containsKey(id), isFalse);
+    await t.runAsync(() => inst.sharing.refresh());
+    await t.pumpWidget(host(inst, const InstallerHubPage()));
+    await settle(t);
+    expect(find.byKey(const ValueKey('installer-id-card')), findsNothing);
+    expect(find.byKey(const ValueKey('installer-revoked')), findsOneWidget);
     o.dispose();
     inst.dispose();
   });

@@ -2604,6 +2604,323 @@ class AppLocalizationsEs extends AppLocalizations {
       'Compruebe la configuración id y Modbus de la unidad. Pulse para usar esta dirección.';
 
   @override
+  String get sfe54134176 => 'Todos los dispositivos';
+
+  @override
+  String get s23baecde5b => 'dispositivos';
+
+  @override
+  String get s776f46ed8d => 'control + ajustes';
+
+  @override
+  String get sa7cfbebc2f => 'control';
+
+  @override
+  String get seff7e04d91 => '¿Revocar el acceso del instalador?';
+
+  @override
+  String s633fa022d1(String p0) {
+    return '$p0 ya no podrá acceder a tus dispositivos. El acceso termina en cuanto el puente doméstico se entera (normalmente al instante).';
+  }
+
+  @override
+  String get sbdfc0cf419 => 'Revocar acceso';
+
+  @override
+  String get s98b66fc9d8 => 'Acceso revocado';
+
+  @override
+  String get sbd907def5b => 'Instalador';
+
+  @override
+  String get sfb1a18d11f => 'Actualizar';
+
+  @override
+  String get sb9c461d827 =>
+      'El acceso de instaladores necesita una cuenta de Molaplan para verificar al instalador y para que funcione el cifrado.';
+
+  @override
+  String get s9bb545e9b3 => 'Inicia sesión o crea una cuenta';
+
+  @override
+  String get s523c735938 =>
+      'Da acceso a tus dispositivos a un instalador con su ID de instalador (p. ej. MPL-K7Q-M2X). Molaplan ha verificado el nombre y la empresa de cada instalador. Las contraseñas y direcciones nunca salen de casa y puedes revocar el acceso en cualquier momento.';
+
+  @override
+  String get s03be67bc78 => 'Dar acceso';
+
+  @override
+  String get s65c7781ca3 => 'Instaladores con acceso';
+
+  @override
+  String get sbb7e4c4c3c => 'Ningún instalador tiene acceso.';
+
+  @override
+  String get s84a6d73d1e => 'Cambio de dispositivos o derechos';
+
+  @override
+  String get s5fcc7e175d => 'Mis clientes';
+
+  @override
+  String get s44dcd38f2b => 'Gestionar instaladores';
+
+  @override
+  String s2f8dd9569b(String p0, String p1) {
+    return 'Mi ID de instalador de Molaplan: $p0 ($p1). Para darme acceso: Molaplan → Ajustes → Instalador → Dar acceso.';
+  }
+
+  @override
+  String get s0061cbc425 => 'Copiar el mensaje';
+
+  @override
+  String get sdd0f19c6b8 => 'E-mail';
+
+  @override
+  String get sd57398d989 => 'SMS';
+
+  @override
+  String get s4f09cced25 => 'Mensaje copiado';
+
+  @override
+  String get s2836191df5 =>
+      'No se pudo abrir la app: el mensaje se ha copiado.';
+
+  @override
+  String get sd01e57c279 =>
+      'El cliente lo escanea: Ajustes → Instalador → Dar acceso.';
+
+  @override
+  String get se83877749c => 'Eres instalador de Molaplan';
+
+  @override
+  String get s014468e53e => 'Tu ID de instalador';
+
+  @override
+  String get s973ddbcd3b =>
+      'Da el ID a tu cliente. Con él abre el acceso a sus dispositivos y ve tu nombre y empresa verificados por Molaplan.';
+
+  @override
+  String get s9e0dd2426d => 'ID copiado';
+
+  @override
+  String get s5224946aa1 => 'Compartir';
+
+  @override
+  String get s59d0633cbd => 'Código QR';
+
+  @override
+  String get sacc4275348 => 'Solicitar ser instalador';
+
+  @override
+  String get s29acd8486c =>
+      'Molaplan comprueba tu nombre y empresa y te da un ID de instalador. Verás el resultado en la app.';
+
+  @override
+  String get s7aa9c1e208 => 'Tu nombre';
+
+  @override
+  String get s9f3d2fa73f => 'Empresa';
+
+  @override
+  String get scfe0cd3759 => 'p. ej. NIF o autónomo';
+
+  @override
+  String get s483b3a689d => 'Mensaje (opcional)';
+
+  @override
+  String get sb7dbf1a527 => 'Enviar solicitud';
+
+  @override
+  String get s0b9319b6eb => 'Escribe tu nombre.';
+
+  @override
+  String get s9929adfbf5 => 'Solicitud enviada';
+
+  @override
+  String get s2570b96a0b => '¿Eres instalador?';
+
+  @override
+  String s63d8fdf8c2(String p0) {
+    return 'Tu estado de instalador ($p0) se ha retirado y los accesos de clientes no se pueden usar. Pregunta a Molaplan: molaplan1@gmail.com.';
+  }
+
+  @override
+  String get s82b8ec7605 =>
+      'Como instalador ves los dispositivos, el estado y las alarmas de tus clientes en la medida en que cada cliente lo permita. Molaplan concede el estado de instalador.';
+
+  @override
+  String s563801d51b(String p0) {
+    return 'Solicitud enviada el $p0: pendiente de revisión.';
+  }
+
+  @override
+  String get s1247102567 => 'Retirar';
+
+  @override
+  String get s77f0327b09 => 'La solicitud anterior no se aprobó.';
+
+  @override
+  String get s5e130a714c => 'El ID tiene la forma MPL-XXX-XXX.';
+
+  @override
+  String get s16d84ef12f =>
+      'Ningún instalador aprobado tiene este ID. Compruébalo con el instalador.';
+
+  @override
+  String get s7288dc01b6 => '¿Dar acceso?';
+
+  @override
+  String get s2013b9940c => '¿Guardar los cambios?';
+
+  @override
+  String get sa88745a558 =>
+      'Todos los dispositivos (también los que se añadan más tarde)';
+
+  @override
+  String get sd97ead609e => 'Puede controlar y cambiar ajustes';
+
+  @override
+  String get s8be70baa9c => 'Puede controlar, no cambiar ajustes';
+
+  @override
+  String get sf2581756af => 'Puedes revocar el acceso en cualquier momento.';
+
+  @override
+  String s9a6818b304(String p0) {
+    return 'Acceso concedido: $p0';
+  }
+
+  @override
+  String get sdb0484d728 => 'Guardado';
+
+  @override
+  String get s52a64a3307 => 'Dar acceso a un instalador';
+
+  @override
+  String get s2113bddc63 => 'ID de instalador';
+
+  @override
+  String get s6d7d0273ad => 'Buscar';
+
+  @override
+  String get s36418f769d => 'Escanear el código QR del instalador';
+
+  @override
+  String get scb4d6b0ddc => 'Instalador verificado por Molaplan';
+
+  @override
+  String get s95fd3e8dc3 => '¿A qué puede acceder el instalador?';
+
+  @override
+  String get s0d395a6edd => 'Dispositivos elegidos';
+
+  @override
+  String s8affba28ec(String p0) {
+    return '$p0 dispositivos ahora; los que se añadan más tarde se incluyen.';
+  }
+
+  @override
+  String get sbc76d76351 => 'Puede cambiar ajustes';
+
+  @override
+  String get s4fa2d2d66c =>
+      'Temperaturas, modos y otros ajustes. Desactivado: el instalador puede controlar y ver el estado.';
+
+  @override
+  String get s82b62bcb13 =>
+      'Aún no tienes dispositivos que se puedan compartir.';
+
+  @override
+  String get s4e60c0286c =>
+      'El puente doméstico comprueba los permisos de cada petición. Las contraseñas y direcciones de los dispositivos nunca salen de casa.';
+
+  @override
+  String get sd431b45586 => 'Escribe al menos 3 caracteres del correo.';
+
+  @override
+  String get s2162e5cad2 => 'No se encontró ningún usuario.';
+
+  @override
+  String get s1ec9cc5828 => 'Estado de instalador';
+
+  @override
+  String get s256fb6b50a => 'Nombre verificado';
+
+  @override
+  String get sd8a8961db3 => 'p. ej. autónomo';
+
+  @override
+  String get sb57dfb696c => 'Nota (solo administradores)';
+
+  @override
+  String get s8ce95234d7 => 'Conceder';
+
+  @override
+  String get s2eca996a49 => 'Falta el nombre.';
+
+  @override
+  String s5a4c72db4b(String p0, String p1) {
+    return 'Instalador $p0: $p1';
+  }
+
+  @override
+  String get se06acfd38d => '¿Retirar el estado de instalador?';
+
+  @override
+  String sd35135676e(String p0, String p1, String p2) {
+    return '$p0 ($p1) pierde el estado de instalador y todos los accesos de clientes ($p2) terminan al instante. El ID se conserva si se vuelve a conceder el estado.';
+  }
+
+  @override
+  String get se70c0caad3 => 'Retirar estado';
+
+  @override
+  String get s2679477d73 => 'Estado de instalador retirado';
+
+  @override
+  String get s5ea6251452 =>
+      'Concede el estado de instalador solo a alguien cuyo nombre y empresa hayas comprobado. Las mismas herramientas están en molaplan.com/tilaa/hallinta (Asentajat).';
+
+  @override
+  String get sa7380f5e5c => 'Buscar usuario por correo';
+
+  @override
+  String get sc023f30da1 => 'nombre@ejemplo.es';
+
+  @override
+  String get s9a7d261596 => 'aún no ha abierto la app';
+
+  @override
+  String get sd4f8f15670 => 'instalador';
+
+  @override
+  String get sfee2ce49ea => 'estado retirado';
+
+  @override
+  String get s3ecd52ffc6 => 'Solicitudes';
+
+  @override
+  String get se5c4c1e153 => 'No hay solicitudes abiertas.';
+
+  @override
+  String get s052118a469 => 'Aprobar';
+
+  @override
+  String get s493a1eaf08 => 'Declin';
+
+  @override
+  String get sc8ab77f768 => 'Instaladores';
+
+  @override
+  String get s65f12e7e23 => 'clientes';
+
+  @override
+  String get sf36e8af07c => 'Conceder de nuevo';
+
+  @override
+  String get s0361487148 => 'Retirar el estado de instalador';
+
+  @override
   String get s55d52c5ae1 => 'Este dispositivo no está en Wi-Fi';
 
   @override
@@ -2930,6 +3247,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s417eb9a875 => 'Configurar el acceso remoto';
 
   @override
+  String get s53a9fe5e42 => 'No hay ninguna cuenta de Molaplan con ese correo.';
+
+  @override
   String get sb4bd4baa5c =>
       'No hay usuario Molaplan con esa dirección. Necesitan iniciar sesión en Molaplan 0.9 una vez – o enviarles un código de invitación.';
 
@@ -2945,8 +3265,12 @@ class AppLocalizationsEs extends AppLocalizations {
       'Desbloquear los secretos de la cuenta en este dispositivo primero (cuenta → Desbloquear con contraseña). Compartir utiliza la clave de la cuenta.';
 
   @override
-  String get s5aee30a4e4 =>
-      'Esta invitación es para un instalador: encienda el perfil del instalador (Sharing → Avanzado).';
+  String get s2855893bfc =>
+      'Esta invitación es para un instalador y solo puede usarla un instalador aprobado por Molaplan (Ajustes → Instalador → Solicitar).';
+
+  @override
+  String get sb8df145fc9 =>
+      'Solo los administradores de Molaplan pueden hacer esto.';
 
   @override
   String get sa562754cb5 => 'El código es incorrecto, expirado o ya utilizado.';
@@ -3013,14 +3337,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s844e081db8 => 'Compartir';
 
   @override
-  String get sfb1a18d11f => 'Actualizar';
-
-  @override
   String get scdfdf5d233 =>
       'Compartir necesita una cuenta Molaplan para que las invitaciones puedan llegar a las personas y los trabajos de encriptación.';
-
-  @override
-  String get s9bb545e9b3 => 'Inicia sesión o crea una cuenta';
 
   @override
   String get s85abc4496d =>
@@ -3045,9 +3363,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sdfaf8c242b => 'Aceptar';
 
   @override
-  String get s493a1eaf08 => 'Declin';
-
-  @override
   String get s2fd1394b33 => 'Compartido conmigo';
 
   @override
@@ -3058,9 +3373,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s33f41d417c => 'Invitar código';
-
-  @override
-  String get s23baecde5b => 'dispositivos';
 
   @override
   String get s9cdf3dcc87 => '¿Revocar la parte?';
@@ -3074,19 +3386,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s280e22cbc9 => 'Compartir revocado';
-
-  @override
-  String get s84a6d73d1e => 'Cambio de dispositivos o derechos';
-
-  @override
-  String get s1cf5e3d702 => 'Perfil de instalación';
-
-  @override
-  String get s22f8bccc91 =>
-      'Muestra el menú Installer: clientes, sus dispositivos y alarmas. Un cliente otorga acceso con un código y puede revocarlo.';
-
-  @override
-  String get se19c5fe8aa => 'Nombre de la empresa';
 
   @override
   String get sd742357fc8 => 'Su nombre en acciones';
@@ -3159,12 +3458,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s447da2f746 => 'Invitar código o enlace';
 
   @override
-  String get sdd0f19c6b8 => 'E-mail';
-
-  @override
-  String get s6be36f4219 => 'A un instalador (shows in their Installer menu)';
-
-  @override
   String get se7272a5713 => 'Nombre de la parte (opcional)';
 
   @override
@@ -3214,18 +3507,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s8debff3196 => 'Mostrar foto';
 
   @override
-  String get sbd907def5b => 'Installer';
-
-  @override
-  String get sddd83db201 => 'Agregar cliente';
-
-  @override
   String get s2220ce611a =>
       'Los clientes que le dieron acceso. Usted ve sólo los dispositivos compartidos y actuar dentro de los derechos que el cliente dio – nunca sus contraseñas.';
 
   @override
-  String get s98a90339f4 =>
-      'No hay clientes todavía. Pregunte al cliente para crear un código de instalación: Compartir → Compartir dispositivos → Invitar código + A un instalador.';
+  String get s6f3c62fc03 => 'Tu estado de instalador no es válido.';
+
+  @override
+  String s7ebc2621b7(String p0) {
+    return 'Aún no hay clientes. Da a tu cliente tu ID de instalador $p0: abre Ajustes → Instalador → Dar acceso.';
+  }
 
   @override
   String get sa52cf49adc => 'Esperando al Molaplan del cliente para confirmar';
@@ -5956,9 +6247,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'No hay tarjetas de alimentación o energía (W, kW, Wh, kWh). Añadir por ejemplo un medidor de Shelly.';
 
   @override
-  String get sdb0484d728 => 'Guardado';
-
-  @override
   String get se80021e22a =>
       'Copie los precios de su factura. Introduzca con o sin IVA – los costos se muestran a ambos lados.';
 
@@ -6516,8 +6804,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get scc3d01ee5e => 'Guías: VPN, Nabu Casa, nube MQTT';
 
   @override
-  String get s0fe7b15d15 =>
-      'Dar a alguien acceso a los dispositivos que elija.';
+  String get s535358a517 =>
+      'Da a alguien, o a un instalador, acceso a los dispositivos que elijas.';
 
   @override
   String get s25c286a743 => 'Compartir – nueva invitación';

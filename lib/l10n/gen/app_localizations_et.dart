@@ -2585,6 +2585,320 @@ class AppLocalizationsEt extends AppLocalizations {
       'Kontrolli ühiku ID ja Modbusi seadistusi. Selle aadressi kasutamiseks klõpsa nupule.';
 
   @override
+  String get sfe54134176 => 'Kõik seadmed';
+
+  @override
+  String get s23baecde5b => 'seadmeid';
+
+  @override
+  String get s776f46ed8d => 'juhtimine + seaded';
+
+  @override
+  String get sa7cfbebc2f => 'juhtimine';
+
+  @override
+  String get seff7e04d91 => 'Kas tühistada paigaldaja juurdepääs?';
+
+  @override
+  String s633fa022d1(String p0) {
+    return '$p0 ei pääse enam sinu seadmetele ligi. Juurdepääs lõpeb kohe, kui kodusild sellest teada saab (tavaliselt kohe).';
+  }
+
+  @override
+  String get sbdfc0cf419 => 'Tühista juurdepääs';
+
+  @override
+  String get s98b66fc9d8 => 'Juurdepääs tühistatud';
+
+  @override
+  String get sbd907def5b => 'Paigaldaja';
+
+  @override
+  String get sfb1a18d11f => 'Värskenda';
+
+  @override
+  String get sb9c461d827 =>
+      'Paigaldaja juurdepääs vajab Molaplani kontot, et paigaldajat saaks kontrollida ja krüpteerimine töötaks.';
+
+  @override
+  String get s9bb545e9b3 => 'Logi sisse või loo konto';
+
+  @override
+  String get s523c735938 =>
+      'Anna paigaldajale juurdepääs oma seadmetele tema paigaldaja-ID-ga (nt MPL-K7Q-M2X). Molaplan on kontrollinud iga paigaldaja nime ja ettevõtte. Paroolid ja aadressid ei lahku kunagi kodust ning juurdepääsu saab igal ajal tühistada.';
+
+  @override
+  String get s03be67bc78 => 'Anna juurdepääs';
+
+  @override
+  String get s65c7781ca3 => 'Juurdepääsuga paigaldajad';
+
+  @override
+  String get sbb7e4c4c3c => 'Ühelgi paigaldajal pole juurdepääsu.';
+
+  @override
+  String get s84a6d73d1e => 'Seadmete või õiguste muutmine';
+
+  @override
+  String get s5fcc7e175d => 'Minu kliendid';
+
+  @override
+  String get s44dcd38f2b => 'Paigaldajate haldus';
+
+  @override
+  String s2f8dd9569b(String p0, String p1) {
+    return 'Minu Molaplani paigaldaja-ID: $p0 ($p1). Juurdepääsu andmiseks: Molaplan → Seaded → Paigaldaja → Anna juurdepääs.';
+  }
+
+  @override
+  String get s0061cbc425 => 'Kopeeri sõnum';
+
+  @override
+  String get sdd0f19c6b8 => 'E-post';
+
+  @override
+  String get sd57398d989 => 'Tekstisõnum';
+
+  @override
+  String get s4f09cced25 => 'Sõnum kopeeritud';
+
+  @override
+  String get s2836191df5 => 'Rakendust ei saanud avada – sõnum kopeeriti.';
+
+  @override
+  String get sd01e57c279 =>
+      'Klient skannib selle: Seaded → Paigaldaja → Anna juurdepääs.';
+
+  @override
+  String get se83877749c => 'Oled Molaplani paigaldaja';
+
+  @override
+  String get s014468e53e => 'Sinu paigaldaja-ID';
+
+  @override
+  String get s973ddbcd3b =>
+      'Anna ID oma kliendile. Sellega avab klient juurdepääsu oma seadmetele ja näeb sinu nime ning ettevõtet Molaplani kinnitatuna.';
+
+  @override
+  String get s9e0dd2426d => 'ID kopeeritud';
+
+  @override
+  String get s5224946aa1 => 'Jaga';
+
+  @override
+  String get s59d0633cbd => 'QR-kood';
+
+  @override
+  String get sacc4275348 => 'Taotle paigaldajaks saamist';
+
+  @override
+  String get s29acd8486c =>
+      'Molaplan kontrollib sinu nime ja ettevõtet ning annab sulle paigaldaja-ID. Tulemuse näed rakenduses.';
+
+  @override
+  String get s7aa9c1e208 => 'Sinu nimi';
+
+  @override
+  String get s9f3d2fa73f => 'Ettevõte';
+
+  @override
+  String get scfe0cd3759 => 'nt registrikood või FIE';
+
+  @override
+  String get s483b3a689d => 'Sõnum (valikuline)';
+
+  @override
+  String get sb7dbf1a527 => 'Saada taotlus';
+
+  @override
+  String get s0b9319b6eb => 'Sisesta oma nimi.';
+
+  @override
+  String get s9929adfbf5 => 'Taotlus saadetud';
+
+  @override
+  String get s2570b96a0b => 'Kas oled paigaldaja?';
+
+  @override
+  String s63d8fdf8c2(String p0) {
+    return 'Sinu paigaldaja staatus ($p0) on eemaldatud ja klientide juurdepääse ei saa kasutada. Küsi Molaplanilt: molaplan1@gmail.com.';
+  }
+
+  @override
+  String get s82b8ec7605 =>
+      'Paigaldajana näed oma klientide seadmeid, olekut ja häireid nii palju, kui iga klient lubab. Paigaldaja staatuse annab Molaplan.';
+
+  @override
+  String s563801d51b(String p0) {
+    return 'Taotlus saadetud $p0 – ootab läbivaatamist.';
+  }
+
+  @override
+  String get s1247102567 => 'Võta tagasi';
+
+  @override
+  String get s77f0327b09 => 'Eelmist taotlust ei kinnitatud.';
+
+  @override
+  String get s5e130a714c => 'ID on kujul MPL-XXX-XXX.';
+
+  @override
+  String get s16d84ef12f =>
+      'Ühelgi kinnitatud paigaldajal pole seda ID-d. Kontrolli ID-d paigaldajalt.';
+
+  @override
+  String get s7288dc01b6 => 'Kas anda juurdepääs?';
+
+  @override
+  String get s2013b9940c => 'Kas salvestada muudatused?';
+
+  @override
+  String get sa88745a558 => 'Kõik seadmed (ka hiljem lisatavad)';
+
+  @override
+  String get sd97ead609e => 'Võib juhtida ja seadeid muuta';
+
+  @override
+  String get s8be70baa9c => 'Võib juhtida, mitte seadeid muuta';
+
+  @override
+  String get sf2581756af => 'Juurdepääsu saab igal ajal tühistada.';
+
+  @override
+  String s9a6818b304(String p0) {
+    return 'Juurdepääs antud: $p0';
+  }
+
+  @override
+  String get sdb0484d728 => 'Salvestatud';
+
+  @override
+  String get s52a64a3307 => 'Anna paigaldajale juurdepääs';
+
+  @override
+  String get s2113bddc63 => 'Paigaldaja-ID';
+
+  @override
+  String get s6d7d0273ad => 'Otsi';
+
+  @override
+  String get s36418f769d => 'Skanni paigaldaja QR-kood';
+
+  @override
+  String get scb4d6b0ddc => 'Molaplani kinnitatud paigaldaja';
+
+  @override
+  String get s95fd3e8dc3 => 'Millele paigaldaja ligi pääseb?';
+
+  @override
+  String get s0d395a6edd => 'Valitud seadmed';
+
+  @override
+  String s8affba28ec(String p0) {
+    return 'Praegu $p0 seadet; hiljem lisatavad tulevad kaasa.';
+  }
+
+  @override
+  String get sbc76d76351 => 'Võib seadeid muuta';
+
+  @override
+  String get s4fa2d2d66c =>
+      'Temperatuurid, režiimid ja muud seaded. Väljas: paigaldaja saab juhtida ja olekut näha.';
+
+  @override
+  String get s82b62bcb13 => 'Sul pole veel jagatavaid seadmeid.';
+
+  @override
+  String get s4e60c0286c =>
+      'Kodusild kontrollib iga päringu õigusi. Seadmete paroolid ja aadressid ei lahku kunagi kodust.';
+
+  @override
+  String get sd431b45586 => 'Sisesta e-posti aadressist vähemalt 3 märki.';
+
+  @override
+  String get s2162e5cad2 => 'Kasutajat ei leitud.';
+
+  @override
+  String get s1ec9cc5828 => 'Paigaldaja staatus';
+
+  @override
+  String get s256fb6b50a => 'Kinnitatud nimi';
+
+  @override
+  String get sd8a8961db3 => 'nt FIE';
+
+  @override
+  String get sb57dfb696c => 'Märkus (ainult haldajatele)';
+
+  @override
+  String get s8ce95234d7 => 'Anna';
+
+  @override
+  String get s2eca996a49 => 'Nimi puudub.';
+
+  @override
+  String s5a4c72db4b(String p0, String p1) {
+    return 'Paigaldaja $p0: $p1';
+  }
+
+  @override
+  String get se06acfd38d => 'Kas eemaldada paigaldaja staatus?';
+
+  @override
+  String sd35135676e(String p0, String p1, String p2) {
+    return '$p0 ($p1) kaotab paigaldaja staatuse ja kõik klientide juurdepääsud ($p2) lõpevad kohe. ID jääb samaks, kui staatus hiljem uuesti antakse.';
+  }
+
+  @override
+  String get se70c0caad3 => 'Eemalda staatus';
+
+  @override
+  String get s2679477d73 => 'Paigaldaja staatus eemaldatud';
+
+  @override
+  String get s5ea6251452 =>
+      'Anna paigaldaja staatus ainult inimesele, kelle nime ja ettevõtte oled kontrollinud. Samad tööriistad on aadressil molaplan.com/tilaa/hallinta (Asentajat).';
+
+  @override
+  String get sa7380f5e5c => 'Otsi kasutajat e-posti järgi';
+
+  @override
+  String get sc023f30da1 => 'nimi@naide.ee';
+
+  @override
+  String get s9a7d261596 => 'pole rakendust veel avanud';
+
+  @override
+  String get sd4f8f15670 => 'paigaldaja';
+
+  @override
+  String get sfee2ce49ea => 'staatus eemaldatud';
+
+  @override
+  String get s3ecd52ffc6 => 'Taotlused';
+
+  @override
+  String get se5c4c1e153 => 'Avatud taotlusi pole.';
+
+  @override
+  String get s052118a469 => 'Kinnita';
+
+  @override
+  String get s493a1eaf08 => 'Langetage';
+
+  @override
+  String get sc8ab77f768 => 'Paigaldajad';
+
+  @override
+  String get s65f12e7e23 => 'klienti';
+
+  @override
+  String get sf36e8af07c => 'Anna uuesti';
+
+  @override
+  String get s0361487148 => 'Eemalda paigaldaja staatus';
+
+  @override
   String get s55d52c5ae1 => 'See seade ei ole Wi-Fi-s';
 
   @override
@@ -2909,6 +3223,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s417eb9a875 => 'Kaugjuurdepääsu seadistamine';
 
   @override
+  String get s53a9fe5e42 => 'Selle e-postiga Molaplani kontot pole.';
+
+  @override
   String get sb4bd4baa5c =>
       'Selle aadressiga ei ole Molaplani kasutajat. Nad peavad logima sisse Molaplan 0.9 - või saatma neile kutsekoodi.';
 
@@ -2924,8 +3241,11 @@ class AppLocalizationsEt extends AppLocalizations {
       'Ava esmalt selle seadme kontosaladused (Account → Unlock with password). Jagamine kasutab kontovõtit.';
 
   @override
-  String get s5aee30a4e4 =>
-      'See kutse on installeri jaoks: lülitage installeri profiil (Sharing → Advanced).';
+  String get s2855893bfc =>
+      'See kutse on paigaldajale ja seda saab kasutada ainult Molaplani kinnitatud paigaldaja (Seaded → Paigaldaja → Taotle).';
+
+  @override
+  String get sb8df145fc9 => 'Seda saavad teha ainult Molaplani haldajad.';
 
   @override
   String get sa562754cb5 => 'Kood on vale, aegunud või juba kasutatud.';
@@ -2992,14 +3312,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s844e081db8 => 'Jagamine';
 
   @override
-  String get sfb1a18d11f => 'Värskenda';
-
-  @override
   String get scdfdf5d233 =>
       'Jagamine vajab Molaplani kontot, et kutsed jõuaksid inimesteni ja krüpteerimine toimiks.';
-
-  @override
-  String get s9bb545e9b3 => 'Logi sisse või loo konto';
 
   @override
   String get s85abc4496d =>
@@ -3024,9 +3338,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sdfaf8c242b => 'Nõustu';
 
   @override
-  String get s493a1eaf08 => 'Langetage';
-
-  @override
   String get s2fd1394b33 => 'Jagas minuga';
 
   @override
@@ -3037,9 +3348,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s33f41d417c => 'Kutse kood';
-
-  @override
-  String get s23baecde5b => 'seadmeid';
 
   @override
   String get s9cdf3dcc87 => 'Tühistada osa?';
@@ -3053,19 +3361,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s280e22cbc9 => 'Aktsia tühistati';
-
-  @override
-  String get s84a6d73d1e => 'Seadmete või õiguste muutmine';
-
-  @override
-  String get s1cf5e3d702 => 'Installeri profiil';
-
-  @override
-  String get s22f8bccc91 =>
-      'Näitab menüüd Installer: kliendid, nende seadmed ja häired. Klient annab ligipääsu koodiga ja võib selle tühistada.';
-
-  @override
-  String get se19c5fe8aa => 'Ettevõtte nimi';
 
   @override
   String get sd742357fc8 => 'Sinu nimi aktsiates';
@@ -3138,12 +3433,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s447da2f746 => 'Kutsu kood või link';
 
   @override
-  String get sdd0f19c6b8 => 'E-post';
-
-  @override
-  String get s6be36f4219 => 'Paigaldajale (näitab oma Installer menüüs)';
-
-  @override
   String get se7272a5713 => 'Aktsia nimi (valikuline)';
 
   @override
@@ -3192,18 +3481,16 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s8debff3196 => 'Näita pilti';
 
   @override
-  String get sbd907def5b => 'Installer';
-
-  @override
-  String get sddd83db201 => 'Lisa klient';
-
-  @override
   String get s2220ce611a =>
       'Kliendid, kes andsid teile juurdepääsu. Te näete ainult jagatud seadmeid ja tegutsete kliendi antud õiguste piires – mitte kunagi nende paroolid.';
 
   @override
-  String get s98a90339f4 =>
-      'Kliente veel pole. Paluge kliendil luua installerikood: Jagamine → Seadmete jagamine → Kutsu kood + Paigaldajale.';
+  String get s6f3c62fc03 => 'Sinu paigaldaja staatus ei kehti.';
+
+  @override
+  String s7ebc2621b7(String p0) {
+    return 'Kliente veel pole. Anna kliendile oma paigaldaja-ID $p0: klient avab Seaded → Paigaldaja → Anna juurdepääs.';
+  }
 
   @override
   String get sa52cf49adc => 'Ootab kliendi Molaplani kinnitamist';
@@ -5917,9 +6204,6 @@ class AppLocalizationsEt extends AppLocalizations {
       'Võimsus- või energiakaardid puuduvad (W, kW, Wh, kWh). Lisada näiteks Shelly arvesti.';
 
   @override
-  String get sdb0484d728 => 'Salvestatud';
-
-  @override
   String get se80021e22a =>
       'Kopeeri oma arvelt hinnad. Kirjuta need kas käibemaksuga või ilma – kulusid näidatakse mõlemal viisil.';
 
@@ -6470,8 +6754,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get scc3d01ee5e => 'Juhised: VPN, Nabu Casa, cloud MQTT';
 
   @override
-  String get s0fe7b15d15 =>
-      'Andke kellelegi juurdepääs teie valitud seadmetele.';
+  String get s535358a517 =>
+      'Anna kellelegi või paigaldajale juurdepääs valitud seadmetele.';
 
   @override
   String get s25c286a743 => 'Jagamine – uus kutse';

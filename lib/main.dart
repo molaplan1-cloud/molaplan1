@@ -1,5 +1,6 @@
 import 'drivers/airthings_ble.dart';
 import 'core/plat.dart';
+import 'sharing/share_api.dart';
 import 'state/net_health.dart';
 
 import 'dart:async';
@@ -65,6 +66,7 @@ Future<void> main() async {
   state.account.autoSync = true; // background sync when signed in
   state.shareAuto = true; // R215: shares / invites refresh in the background
   state.remote.autoNetworkCheck = true; // t232u: verify 'Kotona' against the bridge's own LAN
+  state.remote.shareCheck = (id) => accountShareAccess(id); // R260: shares are re-checked on the server
   await state.load();
   if (state.config.bridgeMode && !Plat.isWeb) await keepScreenOn(true);
   // The web app updates itself on reload (service worker); no installer downloads.

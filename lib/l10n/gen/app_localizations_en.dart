@@ -2581,6 +2581,320 @@ class AppLocalizationsEn extends AppLocalizations {
       'Check the unit id and Modbus settings. Tap to use this address.';
 
   @override
+  String get sfe54134176 => 'All devices';
+
+  @override
+  String get s23baecde5b => 'devices';
+
+  @override
+  String get s776f46ed8d => 'control + settings';
+
+  @override
+  String get sa7cfbebc2f => 'control';
+
+  @override
+  String get seff7e04d91 => 'Revoke the installer\'s access?';
+
+  @override
+  String s633fa022d1(String p0) {
+    return '$p0 can no longer reach your devices. Access ends as soon as the home bridge hears of it (usually at once).';
+  }
+
+  @override
+  String get sbdfc0cf419 => 'Revoke access';
+
+  @override
+  String get s98b66fc9d8 => 'Access revoked';
+
+  @override
+  String get sbd907def5b => 'Installer';
+
+  @override
+  String get sfb1a18d11f => 'Refresh';
+
+  @override
+  String get sb9c461d827 =>
+      'Installer access needs a Molaplan account so the installer can be verified and encryption works.';
+
+  @override
+  String get s9bb545e9b3 => 'Sign in or create an account';
+
+  @override
+  String get s523c735938 =>
+      'Give an installer access to your devices with their installer ID (e.g. MPL-K7Q-M2X). Molaplan has verified every installer\'s name and company. Passwords and addresses never leave home, and you can revoke access at any time.';
+
+  @override
+  String get s03be67bc78 => 'Give access';
+
+  @override
+  String get s65c7781ca3 => 'Installers with access';
+
+  @override
+  String get sbb7e4c4c3c => 'No installer has access.';
+
+  @override
+  String get s84a6d73d1e => 'Change devices or rights';
+
+  @override
+  String get s5fcc7e175d => 'My customers';
+
+  @override
+  String get s44dcd38f2b => 'Manage installers';
+
+  @override
+  String s2f8dd9569b(String p0, String p1) {
+    return 'My Molaplan installer ID: $p0 ($p1). To give me access: Molaplan → Settings → Installer → Give access.';
+  }
+
+  @override
+  String get s0061cbc425 => 'Copy the message';
+
+  @override
+  String get sdd0f19c6b8 => 'E-mail';
+
+  @override
+  String get sd57398d989 => 'Text message';
+
+  @override
+  String get s4f09cced25 => 'Message copied';
+
+  @override
+  String get s2836191df5 => 'Could not open the app – the message was copied.';
+
+  @override
+  String get sd01e57c279 =>
+      'The customer scans it: Settings → Installer → Give access.';
+
+  @override
+  String get se83877749c => 'You are a Molaplan installer';
+
+  @override
+  String get s014468e53e => 'Your installer ID';
+
+  @override
+  String get s973ddbcd3b =>
+      'Give the ID to your customer. They open access to their devices with it and see your name and company as verified by Molaplan.';
+
+  @override
+  String get s9e0dd2426d => 'ID copied';
+
+  @override
+  String get s5224946aa1 => 'Share';
+
+  @override
+  String get s59d0633cbd => 'QR code';
+
+  @override
+  String get sacc4275348 => 'Apply to be an installer';
+
+  @override
+  String get s29acd8486c =>
+      'Molaplan checks your name and company and gives you an installer ID. You will see the result in the app.';
+
+  @override
+  String get s7aa9c1e208 => 'Your name';
+
+  @override
+  String get s9f3d2fa73f => 'Company';
+
+  @override
+  String get scfe0cd3759 => 'e.g. business ID or sole trader';
+
+  @override
+  String get s483b3a689d => 'Message (optional)';
+
+  @override
+  String get sb7dbf1a527 => 'Send application';
+
+  @override
+  String get s0b9319b6eb => 'Type your name.';
+
+  @override
+  String get s9929adfbf5 => 'Application sent';
+
+  @override
+  String get s2570b96a0b => 'Are you an installer?';
+
+  @override
+  String s63d8fdf8c2(String p0) {
+    return 'Your installer status ($p0) was removed and customer access cannot be used. Ask Molaplan: molaplan1@gmail.com.';
+  }
+
+  @override
+  String get s82b8ec7605 =>
+      'As an installer you see your customers\' devices, status and alarms as far as each customer allows. Molaplan grants the installer status.';
+
+  @override
+  String s563801d51b(String p0) {
+    return 'Application sent $p0 – waiting for review.';
+  }
+
+  @override
+  String get s1247102567 => 'Withdraw';
+
+  @override
+  String get s77f0327b09 => 'The previous application was not approved.';
+
+  @override
+  String get s5e130a714c => 'The ID looks like MPL-XXX-XXX.';
+
+  @override
+  String get s16d84ef12f =>
+      'No approved installer has this ID. Check the ID with the installer.';
+
+  @override
+  String get s7288dc01b6 => 'Give access?';
+
+  @override
+  String get s2013b9940c => 'Save the changes?';
+
+  @override
+  String get sa88745a558 => 'All devices (also ones added later)';
+
+  @override
+  String get sd97ead609e => 'May control and change settings';
+
+  @override
+  String get s8be70baa9c => 'May control, not change settings';
+
+  @override
+  String get sf2581756af => 'You can revoke access at any time.';
+
+  @override
+  String s9a6818b304(String p0) {
+    return 'Access given: $p0';
+  }
+
+  @override
+  String get sdb0484d728 => 'Saved';
+
+  @override
+  String get s52a64a3307 => 'Give an installer access';
+
+  @override
+  String get s2113bddc63 => 'Installer ID';
+
+  @override
+  String get s6d7d0273ad => 'Find';
+
+  @override
+  String get s36418f769d => 'Scan the installer\'s QR code';
+
+  @override
+  String get scb4d6b0ddc => 'Installer verified by Molaplan';
+
+  @override
+  String get s95fd3e8dc3 => 'What can the installer reach?';
+
+  @override
+  String get s0d395a6edd => 'Selected devices';
+
+  @override
+  String s8affba28ec(String p0) {
+    return '$p0 devices now; ones added later are included.';
+  }
+
+  @override
+  String get sbc76d76351 => 'May change settings';
+
+  @override
+  String get s4fa2d2d66c =>
+      'Temperatures, modes and other settings. Off: the installer can control and see the status.';
+
+  @override
+  String get s82b62bcb13 => 'You have no shareable devices yet.';
+
+  @override
+  String get s4e60c0286c =>
+      'The home bridge checks the rights of every request. Device passwords and addresses never leave home.';
+
+  @override
+  String get sd431b45586 => 'Type at least 3 characters of the e-mail.';
+
+  @override
+  String get s2162e5cad2 => 'No user found.';
+
+  @override
+  String get s1ec9cc5828 => 'Installer status';
+
+  @override
+  String get s256fb6b50a => 'Verified name';
+
+  @override
+  String get sd8a8961db3 => 'e.g. sole trader';
+
+  @override
+  String get sb57dfb696c => 'Note (admins only)';
+
+  @override
+  String get s8ce95234d7 => 'Grant';
+
+  @override
+  String get s2eca996a49 => 'The name is missing.';
+
+  @override
+  String s5a4c72db4b(String p0, String p1) {
+    return 'Installer $p0: $p1';
+  }
+
+  @override
+  String get se06acfd38d => 'Remove the installer status?';
+
+  @override
+  String sd35135676e(String p0, String p1, String p2) {
+    return '$p0 ($p1) loses the installer status and all customer access ($p2) ends at once. The ID stays if the status is granted again later.';
+  }
+
+  @override
+  String get se70c0caad3 => 'Remove status';
+
+  @override
+  String get s2679477d73 => 'Installer status removed';
+
+  @override
+  String get s5ea6251452 =>
+      'Grant the installer status only to someone whose name and company you have checked. The same tools are at molaplan.com/tilaa/hallinta (Installers).';
+
+  @override
+  String get sa7380f5e5c => 'Find a user by e-mail';
+
+  @override
+  String get sc023f30da1 => 'name@example.com';
+
+  @override
+  String get s9a7d261596 => 'has not opened the app yet';
+
+  @override
+  String get sd4f8f15670 => 'installer';
+
+  @override
+  String get sfee2ce49ea => 'status removed';
+
+  @override
+  String get s3ecd52ffc6 => 'Applications';
+
+  @override
+  String get se5c4c1e153 => 'No open applications.';
+
+  @override
+  String get s052118a469 => 'Approve';
+
+  @override
+  String get s493a1eaf08 => 'Decline';
+
+  @override
+  String get sc8ab77f768 => 'Installers';
+
+  @override
+  String get s65f12e7e23 => 'customers';
+
+  @override
+  String get sf36e8af07c => 'Grant again';
+
+  @override
+  String get s0361487148 => 'Remove installer status';
+
+  @override
   String get s55d52c5ae1 => 'This device is not on Wi-Fi';
 
   @override
@@ -2905,6 +3219,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s417eb9a875 => 'Set up remote access';
 
   @override
+  String get s53a9fe5e42 => 'There is no Molaplan account with that e-mail.';
+
+  @override
   String get sb4bd4baa5c =>
       'No Molaplan user with that address. They need to sign in to Molaplan 0.9 once – or send them an invite code.';
 
@@ -2920,8 +3237,11 @@ class AppLocalizationsEn extends AppLocalizations {
       'Unlock the account secrets on this device first (Account → Unlock with password). Sharing uses the account key.';
 
   @override
-  String get s5aee30a4e4 =>
-      'This invite is for an installer: turn on the installer profile (Sharing → Advanced).';
+  String get s2855893bfc =>
+      'This invite is for an installer and only an installer approved by Molaplan can use it (Settings → Installer → Apply).';
+
+  @override
+  String get sb8df145fc9 => 'Only Molaplan admins can do this.';
 
   @override
   String get sa562754cb5 => 'The code is wrong, expired or already used.';
@@ -2988,14 +3308,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s844e081db8 => 'Sharing';
 
   @override
-  String get sfb1a18d11f => 'Refresh';
-
-  @override
   String get scdfdf5d233 =>
       'Sharing needs a Molaplan account so invites can reach people and encryption works.';
-
-  @override
-  String get s9bb545e9b3 => 'Sign in or create an account';
 
   @override
   String get s85abc4496d =>
@@ -3020,9 +3334,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sdfaf8c242b => 'Accept';
 
   @override
-  String get s493a1eaf08 => 'Decline';
-
-  @override
   String get s2fd1394b33 => 'Shared with me';
 
   @override
@@ -3033,9 +3344,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s33f41d417c => 'Invite code';
-
-  @override
-  String get s23baecde5b => 'devices';
 
   @override
   String get s9cdf3dcc87 => 'Revoke the share?';
@@ -3049,19 +3357,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s280e22cbc9 => 'Share revoked';
-
-  @override
-  String get s84a6d73d1e => 'Change devices or rights';
-
-  @override
-  String get s1cf5e3d702 => 'Installer profile';
-
-  @override
-  String get s22f8bccc91 =>
-      'Shows the Installer menu: customers, their devices and alarms. A customer grants access with a code and can revoke it.';
-
-  @override
-  String get se19c5fe8aa => 'Company name';
 
   @override
   String get sd742357fc8 => 'Your name in shares';
@@ -3134,12 +3429,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s447da2f746 => 'Invite code or link';
 
   @override
-  String get sdd0f19c6b8 => 'E-mail';
-
-  @override
-  String get s6be36f4219 => 'To an installer (shows in their Installer menu)';
-
-  @override
   String get se7272a5713 => 'Name for the share (optional)';
 
   @override
@@ -3188,18 +3477,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s8debff3196 => 'Show picture';
 
   @override
-  String get sbd907def5b => 'Installer';
-
-  @override
-  String get sddd83db201 => 'Add customer';
-
-  @override
   String get s2220ce611a =>
       'Customers who gave you access. You see only the shared devices and act within the rights the customer gave – never their passwords.';
 
   @override
-  String get s98a90339f4 =>
-      'No customers yet. Ask the customer to create an installer code: Sharing → Share devices → Invite code + To an installer.';
+  String get s6f3c62fc03 => 'Your installer status is not valid.';
+
+  @override
+  String s7ebc2621b7(String p0) {
+    return 'No customers yet. Give your customer your installer ID $p0: they open Settings → Installer → Give access.';
+  }
 
   @override
   String get sa52cf49adc => 'Waiting for the customer\'s Molaplan to confirm';
@@ -5913,9 +6200,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'No power or energy tiles (W, kW, Wh, kWh). Add e.g. a Shelly meter.';
 
   @override
-  String get sdb0484d728 => 'Saved';
-
-  @override
   String get se80021e22a =>
       'Copy the prices from your bill. Type them with or without VAT – costs are shown both ways.';
 
@@ -6468,7 +6752,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scc3d01ee5e => 'Guides: VPN, Nabu Casa, cloud MQTT';
 
   @override
-  String get s0fe7b15d15 => 'Give someone access to the devices you choose.';
+  String get s535358a517 =>
+      'Give someone, or an installer, access to the devices you choose.';
 
   @override
   String get s25c286a743 => 'Sharing – new invite';

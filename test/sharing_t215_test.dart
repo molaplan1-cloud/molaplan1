@@ -423,7 +423,9 @@ void main() {
       expect(jsonEncode(fake.shares), isNot(contains(code!)), reason: 'only the hash is stored');
 
       await expectLater(stranger.claim(code), throwsA(isA<ShareError>().having((e) => e.problem, 'p', ShareProblem.notInstaller)));
-      await installer.setInstaller(true, company: 'Lämpö Oy');
+      // R256: the installer status comes from a Molaplan admin, not from the app.
+      fake.grantInstaller('asentaja@example.test', 'Ari', company: 'Lämpö Oy');
+      await installer.refresh();
       expect(installer.installer, isTrue);
       await installer.claim(code.toLowerCase());
       expect(installer.customers.single.status, ShareStatus.claimed);
@@ -432,7 +434,7 @@ void main() {
       // The owner's app (polling) seals the credential to the installer's key.
       await owner.refresh();
       expect(owner.mine.single.status, ShareStatus.active);
-      expect(owner.mine.single.recipientName, 'Lämpö Oy');
+      expect(owner.mine.single.recipientName, 'Lämpö Oy · Ari');
       await installer.refresh();
       final id = installer.customers.single.id;
       final st = await installer.sharedStatus(id);
@@ -463,6 +465,197 @@ void main() {
       await owner.refresh();
       expect(bridge.devices, isEmpty, reason: 'retried when the bridge was back');
       expect(await owner.pendingRevokes(), 0);
+    });
+  });
+
+  // R256–R262 (t261u/t264u): installer status granted by admins, ID-based access.
+  group('approved installers', () {
+    late FakeSupabase fake;
+    late HomeDevice home;
+    late BridgeCore bridge;
+    late ShareState owner, installer, stranger;
+    late TestHost ownerHost;
+
+    Future<ShareState> user(String email, {AppConfig? config, BridgeCore? bridge}) async {
+      final api = fake.api();
+      await api.signUp(email, 'salasana-123');
+      final h = TestHost(api, email, 'salasana-123', config: config, bridge: bridge);
+      if (bridge != null) ownerHost = h;
+      final s = ShareState(host: h, api: api, clientFactory: (p) => DirectClient(p, bridgeOf()));
+      await s.refresh();
+      return s;
+    }
+
+    setUp(() async {
+      fake = FakeSupabase(autoconfirm: true);
+      home = HomeDevice();
+      bridge = await makeBridge(home);
+      _bridge = bridge;
+      fake.admins.add('enn@example.test');
+      owner = await user('enn@example.test', config: homeConfig(), bridge: bridge);
+      installer = await user('asentaja@example.test');
+      stranger = await user('vieras@example.test');
+      bridge.shareCheck = (id) async => fake.shareAccess(id);
+    });
+
+    test('installer IDs: readable format, typing variations, links', () {
+      expect(normalizeInstallerId('mpl k7q m2x'), 'MPL-K7Q-M2X');
+      expect(normalizeInstallerId('K7QM2X'), 'MPL-K7Q-M2X');
+      expect(normalizeInstallerId(' MPL-K7Q-M2X '), 'MPL-K7Q-M2X');
+      expect(normalizeInstallerId(installerLink('MPL-K7Q-M2X')), 'MPL-K7Q-M2X');
+      expect(normalizeInstallerId('https://molaplan.com/asentaja/MPL-K7Q-M2X'), 'MPL-K7Q-M2X');
+      expect(normalizeInstallerId('MPL-K7Q-M20'), isNull, reason: '0 is not used (looks like O)');
+      expect(normalizeInstallerId('MPL-K1Q-M2X'), isNull, reason: '1 is not used (looks like I)');
+      expect(normalizeInstallerId('MPL-K7Q'), isNull);
+      expect(installerIdAlphabet.split('').toSet().intersection({'0', 'O', '1', 'I', 'L'}), isEmpty);
+    });
+
+    test('nobody can make themselves an installer; the old self-made flag means nothing', () async {
+      final s = await installer.host.session();
+      await expectLater(
+        ownerHost.api.patch(s!, 'profiles?user_id=eq.${s.userId}', {'installer': true, 'company': 'Fake Oy'}),
+        throwsA(isA<AccountError>()),
+      );
+      fake.profiles[s.userId]!['installer'] = true; // a pre-0.13 row
+      await installer.refresh();
+      expect(installer.installer, isFalse, reason: 'only an admin-approved installers row counts');
+      expect(installer.isAdmin, isFalse);
+      await expectLater(installer.adminInstallers(), throwsA(isA<ShareError>().having((e) => e.problem, 'p', ShareProblem.notAdmin)));
+      await expectLater(
+        installer.adminGrant(email: 'asentaja@example.test', name: 'Minä'),
+        throwsA(isA<ShareError>().having((e) => e.problem, 'p', ShareProblem.notAdmin)),
+      );
+    });
+
+    test('apply → admin approves → permanent ID; revoke cuts every access at once', () async {
+      await installer.applyInstaller(name: 'Ari Asentaja', company: 'Kevytyrittäjä', message: 'Lämpöpumput');
+      expect(installer.application?.status, 'new');
+      await expectLater(installer.applyInstaller(name: 'Toinen'), throwsA(isA<ShareError>()), reason: 'one open application');
+
+      expect(owner.isAdmin, isTrue);
+      final apps = await owner.adminApplications();
+      expect(apps.single.email, 'asentaja@example.test');
+      final users = await owner.adminFindUsers('asentaja@');
+      expect(users.single.hasApp, isTrue);
+      final granted = await owner.adminGrant(email: 'asentaja@example.test', name: 'Ari Asentaja', company: 'Kevytyrittäjä', note: 'tarkistettu');
+      expect(RegExp(r'^MPL-[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{3}-[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{3}$').hasMatch(granted.publicId), isTrue);
+      await installer.refresh();
+      expect(installer.installer, isTrue);
+      expect(installer.installerInfo!.publicId, granted.publicId);
+      expect(installer.installerInfo!.label, 'Kevytyrittäjä · Ari Asentaja');
+      expect((await owner.adminApplications()).single.status, 'approved');
+
+      // Customer: ID (typed loosely) → verified identity from the server.
+      expect(await stranger.findInstaller('MPL-ZZZ-ZZZ'), isNull);
+      await expectLater(stranger.findInstaller('hello'), throwsA(isA<ShareError>().having((e) => e.problem, 'p', ShareProblem.badInstallerId)));
+      final who = await owner.findInstaller(granted.publicId.toLowerCase().replaceAll('-', ' '));
+      expect(who!.name, 'Ari Asentaja');
+      expect(who.company, 'Kevytyrittäjä');
+
+      await owner.grantInstaller(who, allDevices: true, settings: false);
+      final row = fake.shares.values.single;
+      expect(row['status'], 'active', reason: 'active at once – the customer confirmed the verified installer');
+      expect(row['kind'], 'installer');
+      expect(row['recipient_name'], 'Kevytyrittäjä · Ari Asentaja');
+      expect(jsonEncode(row), isNot(contains(secret)));
+      expect(jsonEncode(row), isNot(contains('10.0.0.')));
+      expect(owner.installerAccess, hasLength(1));
+      expect(owner.mineShares, isEmpty, reason: 'installer access is listed on the Asentaja page');
+
+      await installer.refresh();
+      final id = installer.customers.single.id;
+      await installer.sharedSend(id, 'relay', 'on');
+      expect(home.relay, isTrue);
+      await expectLater(installer.sharedSend(id, 'temp', 'set', value: 25), throwsA(isA<RemoteDeviceError>()), reason: 'settings not allowed');
+      await owner.changeInstaller(owner.installerAccess.single, allDevices: true, settings: true);
+      await installer.sharedSend(id, 'temp', 'set', value: 25);
+      expect(home.setpoint, 25);
+
+      // Admin takes the status away: the server closes the share and the bridge refuses + forgets it.
+      await owner.adminRevoke(installer.installerInfo!.userId);
+      expect(fake.shares.values.single['status'], 'revoked');
+      expect(fake.shares.values.single['payload'], isNull);
+      await expectLater(installer.sharedSend(id, 'relay', 'off'), throwsA(isA<Object>()));
+      expect(home.relay, isTrue, reason: 'nothing was sent');
+      expect(bridge.devices.where((d) => d.share == id), isEmpty, reason: 'the bridge dropped the device');
+      expect(bridge.shares.containsKey(id), isFalse);
+      await installer.refresh();
+      expect(installer.installer, isFalse);
+      expect(installer.installerInfo!.status, 'revoked');
+      expect(await stranger.findInstaller(granted.publicId), isNull, reason: 'a revoked installer cannot be found');
+      await expectLater(owner.grantInstaller(who, allDevices: true, settings: false), throwsA(isA<ShareError>()));
+
+      // Re-granted later: same ID, old access stays closed.
+      final again = await owner.adminGrant(email: 'asentaja@example.test', name: 'Ari Asentaja', company: 'Kevytyrittäjä');
+      expect(again.publicId, granted.publicId);
+      expect(fake.shares.values.single['status'], 'revoked');
+    });
+
+    test('customer revokes; the owner app also tells the bridge about shares closed elsewhere', () async {
+      fake.grantInstaller('asentaja@example.test', 'Ari');
+      final who = (await owner.findInstaller(fake.installers.values.single['public_id'] as String))!;
+      await owner.grantInstaller(who, allDevices: false, tileIds: ['relay'], settings: false);
+      expect(owner.installerAccess.single.tiles.map((t) => t.id), ['relay']);
+      await owner.revoke(owner.installerAccess.single);
+      expect(owner.installerAccess, isEmpty);
+      expect(bridge.devices, isEmpty);
+
+      await owner.grantInstaller(who, allDevices: true, settings: false);
+      final id = owner.installerAccess.single.id;
+      fake.revokeInstaller(fake.installers.keys.single); // admin, from the web
+      ownerHost.calls.clear();
+      await owner.refresh();
+      expect(ownerHost.calls, contains('share_revoke'));
+      expect(bridge.shares.containsKey(id), isFalse);
+    });
+
+    test('"all devices" follows the home: a tile added later is included', () async {
+      fake.grantInstaller('asentaja@example.test', 'Ari');
+      final who = (await owner.findInstaller(fake.installers.values.single['public_id'] as String))!;
+      await owner.grantInstaller(who, allDevices: true, settings: false);
+      expect(owner.installerAccess.single.tiles.length, 4);
+      ownerHost.config.dashboards.first.tiles.add(
+        TileConfig(id: 'lamp', type: TileType.toggle, title: 'Lamppu', connectionId: 'c1', onCommand: CommandStep(connectionId: 'c1', spec: {'do': 'on'})),
+      );
+      await owner.pushPackages();
+      expect(owner.installerAccess.single.tiles.map((t) => t.id), contains('lamp'));
+      expect((bridge.shares[owner.installerAccess.single.id]!['tiles'] as Map).containsKey('lamp'), isTrue);
+    });
+
+    test('bridge check: every request asks (a batch once), an unreachable service is tolerated only briefly', () async {
+      fake.grantInstaller('asentaja@example.test', 'Ari');
+      final who = (await owner.findInstaller(fake.installers.values.single['public_id'] as String))!;
+      await owner.grantInstaller(who, allDevices: true, settings: false);
+      final id = owner.installerAccess.single.id;
+      var asked = 0;
+      var fail = false;
+      bridge.shareCheck = (s) async {
+        asked++;
+        if (fail) throw Exception('offline');
+        return fake.shareAccess(s);
+      };
+      final ok = await Future.wait([for (var i = 0; i < 3; i++) bridge.sharedOp(id, {'id': i, 'op': 'ping'})]);
+      expect(ok.every((r) => r['ok'] == true), isTrue);
+      expect(asked, 1, reason: 'one question for a batch');
+      await bridge.sharedOp(id, {'id': 5, 'op': 'ping'});
+      expect(asked, 2, reason: 'the next request asks again – a revocation stops it at once');
+      fail = true;
+      expect((await bridge.sharedOp(id, {'id': 9, 'op': 'ping'}))['ok'], isTrue, reason: 'recently confirmed – keeps working');
+      // Unknown to the cache and the service is down: refused unless it was put just now.
+      bridge.shares[id]!['updated'] = DateTime.now().subtract(const Duration(hours: 1)).toIso8601String();
+      final fresh = await makeBridge(HomeDevice());
+      fresh.shares[id] = Map<String, dynamic>.from(bridge.shares[id]!);
+      fresh.shareCheck = bridge.shareCheck;
+      expect((await fresh.sharedOp(id, {'id': 10, 'op': 'ping'}))['k'], 'forbidden');
+      // pending = not yet
+      fail = false;
+      fake.shares[id]!['status'] = 'pending';
+      final b2 = await makeBridge(HomeDevice());
+      b2.shares[id] = Map<String, dynamic>.from(bridge.shares[id]!);
+      b2.shareCheck = (s) async => fake.shareAccess(s);
+      final r = await b2.sharedOp(id, {'id': 11, 'op': 'ping'});
+      expect(r['k'], 'forbidden');
+      expect(b2.shares.containsKey(id), isTrue, reason: 'pending is not revoked');
     });
   });
 }

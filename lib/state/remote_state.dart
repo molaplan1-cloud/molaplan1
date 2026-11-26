@@ -236,6 +236,10 @@ class RemoteState extends ChangeNotifier {
 
   /// t211u hooks for the bridge (set by AppState).
   Future<Map<String, dynamic>> Function()? bridgeInfo;
+
+  /// R260: the in-app bridge's per-request share check against the account service (set in main;
+  /// null in tests).
+  Future<String> Function(String shareId)? shareCheck;
   Future<Map<String, dynamic>> Function(Map<String, dynamic> spec)? bridgeUpdater;
 
   /// Phone side: the home bridge's version and update state.
@@ -400,6 +404,7 @@ class RemoteState extends ChangeNotifier {
     await b.init(relayUrl: relay, name: name);
     b.info = bridgeInfo;
     b.updater = bridgeUpdater;
+    b.shareCheck = shareCheck;
     bridge = b;
     _bridgeSub = b.changes.listen((_) => _changed());
     b.start();
