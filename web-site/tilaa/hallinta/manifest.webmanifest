@@ -1,0 +1,13 @@
+{
+  "name": "Molaplan – tilaukset",
+  "short_name": "Tilaukset",
+  "start_url": "/tilaa/hallinta/",
+  "scope": "/tilaa/hallinta/",
+  "display": "standalone",
+  "background_color": "#0E1116",
+  "theme_color": "#0E1116",
+  "icons": [
+    { "src": "/tilaa/assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/tilaa/assets/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

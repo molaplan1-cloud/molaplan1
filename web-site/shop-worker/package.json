@@ -1,0 +1,15 @@
+{
+  "name": "molaplan-shop",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "node --test test/*.test.mjs",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "@supabase/supabase-js": "^2.86.0",
+    "wrangler": "^4.168.0"
+  }
+}

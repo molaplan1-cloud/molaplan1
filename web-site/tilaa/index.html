@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tilaa – Molaplan</title>
+  <meta name="description" content="Tilaa Molaplan-sovellus, valmiiksi ohjelmoitu laite tai asennus. Tilauspyyntö ei ole sitova – saat ensin tarjouksen.">
+  <meta name="theme-color" content="#0E1116">
+  <meta property="og:title" content="Tilaa Molaplan">
+  <meta property="og:description" content="Ohjaus- ja tilasovellus kotiin ja mökille. Lähetä tilauspyyntö, saat tarjouksen.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://molaplan.com/tilaa/">
+  <link rel="icon" href="/tilaa/assets/icon.svg" type="image/svg+xml">
+  <link rel="preload" href="/tilaa/assets/fonts/FiraSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/tilaa/assets/style.css">
+  <script type="module" src="/tilaa/assets/shop.js"></script>
+</head>
+<body>
+  <header class="top"><div class="wrap">
+    <a class="brand" href="/" id="brand"></a>
+    <span class="spacer"></span>
+    <label class="sr" for="lang">Kieli</label>
+    <select id="lang" class="lang"><option value="fi">FI</option><option value="en">EN</option><option value="sv">SV</option><option value="es">ES</option></select>
+    <button class="btn" id="cartBtn" type="button" aria-haspopup="dialog"><span id="cartIcon"></span><span id="cartLabel">Kori</span><span class="badge" id="cartCount" hidden>0</span></button>
+  </div></header>
+
+  <main id="main" class="wrap">
+    <section id="viewShop">
+      <div class="hero">
+        <h1 id="heroH">Tilaa Molaplan</h1>
+        <p id="heroP"></p>
+        <div class="note"><span id="noteIcon"></span><span id="nonbinding"></span></div>
+      </div>
+      <div class="chips" id="cats" role="toolbar"></div>
+      <div class="grid" id="grid" aria-live="polite"><div class="empty" id="loading">Ladataan…</div></div>
+    </section>
+
+    <section id="viewCheckout" hidden>
+      <div class="checkout">
+        <form class="panel form" id="orderForm" novalidate>
+          <h2 id="checkoutH">Tilauspyyntö</h2>
+          <div class="field"><label for="f_name" data-t="name"></label><input id="f_name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
+          <div class="two">
+            <div class="field"><label for="f_email" data-t="email"></label><input id="f_email" name="email" type="email" autocomplete="email" required maxlength="200"></div>
+            <div class="field"><label for="f_phone" data-t="phone"></label><input id="f_phone" name="phone" type="tel" autocomplete="tel" maxlength="40"><div class="hint" data-t="phoneHint"></div></div>
+          </div>
+          <div class="field" id="addrField"><label for="f_address" data-t="address"></label><textarea id="f_address" name="address" autocomplete="street-address" maxlength="400" style="min-height:64px"></textarea><div class="hint" id="addrHint"></div></div>
+          <div class="field"><label for="f_message" data-t="message"></label><textarea id="f_message" name="message" maxlength="4000"></textarea><div class="hint" data-t="messageHint"></div></div>
+          <div class="hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+          <label class="check"><input type="checkbox" id="f_consent" name="consent"><span id="consentText"></span></label>
+          <div id="tsBox"></div>
+          <div class="err" id="formErr" hidden role="alert"></div>
+          <button class="btn primary" id="sendBtn" type="submit"></button>
+          <p class="hint" style="color:var(--mut);font-size:14px;margin:0" id="nonbinding2"></p>
+        </form>
+        <aside class="panel summary">
+          <h2 id="summaryH"></h2>
+          <div id="summaryLines"></div>
+          <button class="btn ghost small" type="button" id="editCart" style="margin-top:10px"></button>
+        </aside>
+      </div>
+    </section>
+
+    <section id="viewThanks" hidden>
+      <div class="thanks">
+        <div class="big" id="thanksIcon"></div>
+        <h1 id="thanksH"></h1>
+        <p id="thanksP"></p>
+        <p id="thanksSpam" style="font-size:14px"></p>
+        <a class="btn" href="#" id="thanksBack"></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site"><div class="wrap">
+    <span>© Molaplan</span>
+    <a href="/tilaa/tietosuoja/" id="lnkPrivacy">Tietosuoja</a>
+    <a href="/tilaa/lataa/" id="lnkDownloads">Lataukset</a>
+    <span id="footerNote"></span>
+  </div></footer>
+
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerH" hidden>
+    <header><h2 id="drawerH">Tilauskori</h2><button class="iconbtn" id="drawerClose" type="button" aria-label="Sulje"></button></header>
+    <div class="content" id="cartLines"></div>
+    <footer><button class="btn primary" style="width:100%" id="toCheckout" type="button"></button></footer>
+  </aside>
+
+  <dialog id="pdlg"></dialog>
+</body>
+</html>

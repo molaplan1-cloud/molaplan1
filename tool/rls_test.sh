@@ -12,9 +12,11 @@ trap '"$BIN/pg_ctl" -D "$D" stop -m immediate >/dev/null; rm -rf "$D"' EXIT
 P="psql -X -q -v ON_ERROR_STOP=1 -h $D -p $PORT -U postgres -d postgres"
 $P -f supabase/tests/auth_stub.sql
 for m in supabase/migrations/*.sql; do
-  case "$m" in *tile_images*) continue;; esac # storage schema is Supabase-only
+  case "$m" in *tile_images*|*shop_storage*) continue;; esac # storage schema is Supabase-only
   $P -f "$m"
 done
 # Running twice must work (migrations are idempotent).
 $P -f supabase/migrations/20261126120000_sharing.sql
 $P -o /dev/null -f supabase/tests/sharing_rls_test.sql
+$P -f supabase/migrations/20261126200000_shop.sql
+$P -f supabase/tests/shop_rls_test.sql

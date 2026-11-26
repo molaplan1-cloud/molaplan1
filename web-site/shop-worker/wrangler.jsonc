@@ -1,0 +1,42 @@
+{
+  // Molaplan order shop (R240): static pages under /tilaa/ + a small API (/tilaa/api/*).
+  // Live on https://shop.molaplan.com/tilaa/ (custom domain). molaplan.com/tilaa/ is the same static
+  // folder (web-site/tilaa) copied into the Pages build by tool/web/build_web.sh; its pages call this
+  // Worker's API cross-origin (CORS below in src/worker.js).
+  // To serve molaplan.com/tilaa* straight from this Worker instead, the API token needs
+  // "Zone > Workers Routes > Edit"; then add to "routes":
+  //   { "pattern": "molaplan.com/tilaa*", "zone_name": "molaplan.com" },
+  //   { "pattern": "www.molaplan.com/tilaa*", "zone_name": "molaplan.com" },
+  //   { "pattern": "molaplan.com/en/order*", "zone_name": "molaplan.com" }
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "molaplan-shop",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-11-25",
+  "workers_dev": true,
+  "routes": [{ "pattern": "shop.molaplan.com", "custom_domain": true }],
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none",
+    "run_worker_first": ["/tilaa/api/*", "/en/order*"]
+  },
+  "observability": { "enabled": true },
+  "send_email": [{ "name": "EMAIL" }],
+  "ratelimits": [
+    { "name": "ORDER_LIMIT", "namespace_id": "4201", "simple": { "limit": 5, "period": 60 } },
+    { "name": "API_LIMIT", "namespace_id": "4202", "simple": { "limit": 60, "period": 60 } }
+  ],
+  "vars": {
+    "SUPABASE_URL": "https://fhuqbzdumxlqmgibhobl.supabase.co",
+    "SUPABASE_KEY": "sb_publishable_37EfuCKp5F9x5AieZH3qvA__oP-Z82a",
+    "MAIL_FROM": "tilaukset@molaplan.com",
+    "MAIL_FROM_NAME": "Molaplan",
+    "SITE_URL": "https://molaplan.com/tilaa/",
+    "NTFY_BASE": "https://ntfy.molaplan.com",
+    "TURNSTILE_SITEKEY": "0x4AAAAAAGUkhYEyHJggUIEz",
+    "GITHUB_REPO": "molaplan1-cloud/molaplan1",
+    "PC_ASSET": "molaplan-windows-x64.zip"
+  }
+  // Secrets (wrangler secret put): SHOP_SECRET (its sha256 is in private.shop_secret), TURNSTILE_SECRET
+}
