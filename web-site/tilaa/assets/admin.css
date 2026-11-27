@@ -95,3 +95,18 @@ details.box summary { cursor: pointer; font-weight: 600; }
   .tabs a { padding: 8px 6px; font-size: 13px; }
   .tabs .badge { min-width: 18px; height: 18px; font-size: 11px; }
 }
+
+/* Users tab */
+.ulist { display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
+.urow { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: inherit; text-decoration: none; }
+.urow:hover, .urow:focus { border-color: var(--teal); }
+.urow.banned { opacity: .85; }
+.urow .pills, .pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+.pager { display: flex; gap: 8px; margin-top: 8px; }
+.back { display: inline-flex; align-items: center; gap: 6px; color: var(--mut); text-decoration: none; font-weight: 600; }
+.btn.danger, button.danger { background: #7a1f1f; color: #fff; border-color: #7a1f1f; }
+.btn.ghost.danger { background: transparent; color: #e07070; border-color: #7a1f1f; }
+/* Five tabs on a narrow phone */
+@media (max-width: 430px) {
+  .tabs a { padding: 8px 5px; font-size: 12px; }
+}

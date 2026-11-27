@@ -59,6 +59,8 @@ Admins sign in on `/tilaa/hallinta/` with their Molaplan account (email code or 
   (`{nimi} {numero} {hinta} {myyjä} {lataus} {sähköposti}`; a template can also set the status), **Lähetä sähköposti** (from tilaukset@molaplan.com, reply-to = contact email) or
   **Avaa Mail-sovelluksessa** (mailto with the same text, logged on the thread). Delete order (GDPR erasure).
 - **Tuotteet**: add / edit / hide / reorder / delete, image from the phone camera or gallery (shrunk to ≤ 1600 px WebP), fixed price or quote, translations.
+- **Käyttäjät** (t321u / R530–R537): every Molaplan account, search by e-mail or name, paging. Detail shows last sign-in, confirmed / blocked / installer status and shop orders (links to the order view). Block / unblock (auth.users.banned_until; sessions dropped). Delete account (GDPR, type the e-mail to confirm; shop orders are kept). Admins cannot block or delete themselves or another admin. No device configs, cameras, shared tiles or tokens. RPCs: `admin_list_users`, `admin_get_user`, `admin_set_user_banned`, `admin_delete_user` (all check `private.shop_admins`).
+- **Asentajat**: search a user by e-mail, grant / edit / revoke the verified installer status, applications with a badge.
 - **Asetukset**: seller name, contact email, notification emails, ntfy topic (generate), reply templates, "Lähetä testiviesti itselle", "Päivitä PC-sovellus latauksiin".
 
 ## PC app download unlock
@@ -72,6 +74,6 @@ Admins sign in on `/tilaa/hallinta/` with their Molaplan account (email code or 
 `/tilaa/tietosuoja/` (fi + en). pg_cron job `shop-purge` (daily 03:17 UTC) deletes requests that never became a sale after 24 months and invoiced/paid/delivered orders after 7 years.
 
 ## Tests
-- `bash tool/rls_test.sh` – includes `supabase/tests/shop_rls_test.sql` (anon/customer/admin permissions, secret gate, snapshot + clamping, status log, download unlock by email).
+- `bash tool/rls_test.sh` – includes `supabase/tests/shop_rls_test.sql` (anon/customer/admin permissions, secret gate, snapshot + clamping, status log, download unlock by email) and `supabase/tests/admin_users_rls_test.sql` (user list / ban / GDPR delete, admin-only).
 - `cd web-site/shop-worker && npm test` – validation, emails, templates.
 - Live (not CI): `test/e2e-live.cjs` (customer flow incl. Turnstile, run headed) and `test/e2e-admin-live.cjs` (admin flow with a throw-away admin account).

@@ -1,4 +1,4 @@
-// Molaplan order shop – admin (orders, products, installers, settings). Finnish only, mobile-first.
+// Molaplan order shop – admin (orders, products, users, installers, settings). Finnish only, mobile-first.
 import { API, IMG_BASE, LOGO, ICONS, esc, eur, toast, sb, shrinkImage } from './common.js';
 
 const $ = (id) => document.getElementById(id);
@@ -116,17 +116,30 @@ function updateBadge() {
   const n = orders.filter((o) => !o.seen || o.status === 'uusi').length;
   $('newCount').hidden = n === 0;
   $('newCount').textContent = n;
-  document.title = `${n ? `(${n}) ` : ''}Tilaukset – Molaplan hallinta`;
+  const h = location.hash || '';
+  if (h.startsWith('#kayttajat')) document.title = 'Käyttäjät – Molaplan hallinta';
+  else if (h.startsWith('#asentajat')) document.title = 'Asentajat – Molaplan hallinta';
+  else if (h.startsWith('#tuotteet')) document.title = 'Tuotteet – Molaplan hallinta';
+  else if (h.startsWith('#asetukset')) document.title = 'Asetukset – Molaplan hallinta';
+  else document.title = `${n ? `(${n}) ` : ''}Tilaukset – Molaplan hallinta`;
 }
 
 // --- routing -------------------------------------------------------------------------------------
 function route() {
   const h = location.hash || '#tilaukset';
-  const tab = h.startsWith('#tuotteet') ? 'tuotteet' : h.startsWith('#asetukset') ? 'asetukset' : h.startsWith('#asentajat') ? 'asentajat' : 'tilaukset';
+  const tab = h.startsWith('#tuotteet') ? 'tuotteet'
+    : h.startsWith('#asetukset') ? 'asetukset'
+    : h.startsWith('#asentajat') ? 'asentajat'
+    : h.startsWith('#kayttajat') ? 'kayttajat'
+    : 'tilaukset';
   document.querySelectorAll('#tabs a').forEach((a) => a.classList.toggle('on', a.dataset.tab === tab));
   if (tab === 'tuotteet') return renderProducts();
   if (tab === 'asetukset') return renderSettings();
   if (tab === 'asentajat') return renderInstallers();
+  if (tab === 'kayttajat') {
+    const m = h.match(/id=([0-9a-f-]{36})/);
+    return renderUsers(m ? m[1] : null);
+  }
   const m = h.match(/tilaus=([0-9a-f-]{36})/);
   renderOrders(m ? m[1] : null);
 }
@@ -477,6 +490,10 @@ const errText = (e) => {
   const m = String(e?.message || e || '');
   if (m.includes('no Molaplan account')) return 'Tällä sähköpostilla ei ole Molaplan-tiliä.';
   if (m.includes('admin only')) return 'Vain ylläpitäjä voi tehdä tämän.';
+  if (m.includes('cannot modify yourself')) return 'Et voi estää tai poistaa omaa tiliäsi.';
+  if (m.includes('cannot modify an admin')) return 'Ylläpitäjän tiliä ei voi estää tai poistaa.';
+  if (m.includes('email confirmation does not match')) return 'Sähköposti ei täsmää. Kirjoita se täsmälleen samoin.';
+  if (m.includes('user not found')) return 'Käyttäjää ei löytynyt.';
   return m;
 };
 
@@ -578,6 +595,173 @@ function grantDialog(cur) {
 }
 
 // --- settings ------------------------------------------------------------------------------------
+
+// --- users (R530–R535) ---------------------------------------------------------------------------
+const USER_PAGE = 50;
+let usersQuery = '';
+let usersOffset = 0;
+
+const yn = (v) => (v ? 'Kyllä' : 'Ei');
+const instLabel = (s, id) => {
+  if (!s) return 'Ei';
+  const st = instSt[s] || s;
+  return id ? `${st} (${id})` : st;
+};
+
+async function loadUserPage() {
+  const { data, error } = await sb().rpc('admin_list_users', {
+    p_query: usersQuery, p_limit: USER_PAGE, p_offset: usersOffset,
+  });
+  if (error) throw new Error(error.message);
+  return data || [];
+}
+
+function userPills(u) {
+  const out = [];
+  if (u.is_admin) out.push('<span class="pill st-maksettu">Ylläpitäjä</span>');
+  if (u.banned) out.push('<span class="pill st-peruttu">Estetty</span>');
+  if (u.installer_status === 'active') out.push(`<span class="pill st-tarjottu">Asentaja ${esc(u.installer_public_id || '')}</span>`);
+  else if (u.installer_status === 'revoked') out.push('<span class="pill">Entinen asentaja</span>');
+  if (!u.email_confirmed) out.push('<span class="pill">Sähköposti vahvistamatta</span>');
+  return out.join(' ');
+}
+
+async function renderUsers(selId) {
+  if (selId) return renderUserDetail(selId);
+  app().innerHTML = '<div class="empty">Ladataan…</div>';
+  let rows;
+  try { rows = await loadUserPage(); } catch (e) {
+    app().innerHTML = `<div class="err">Käyttäjiä ei voitu ladata: ${esc(errText(e))}</div>`;
+    return;
+  }
+  const total = rows[0]?.total_count || 0;
+  const from = total === 0 ? 0 : usersOffset + 1;
+  const to = usersOffset + rows.length;
+  const prevOff = Math.max(0, usersOffset - USER_PAGE);
+  const nextOff = usersOffset + USER_PAGE;
+  app().innerHTML = `<div class="form" id="usersPage" style="max-width:960px;padding:18px 0 50px">
+    <h2 style="margin:0">Käyttäjät</h2>
+    <div class="muted">Kaikki Molaplan-tilit. Laitteiden asetuksia, kameroita tai jaettuja ruutuja ei näytetä.</div>
+    <div class="toolbar"><input type="search" id="uq" placeholder="Hae sähköpostilla tai nimellä…" value="${esc(usersQuery)}"></div>
+    <div class="muted" id="ucount">${total ? `Näytetään ${from}–${to} / ${total}` : 'Ei käyttäjiä.'}</div>
+    <div class="ulist">${rows.length ? rows.map((u) => `
+      <a class="urow ${u.banned ? 'banned' : ''}" href="#kayttajat/id=${u.user_id}">
+        <div>
+          <b>${esc(u.email)}</b>${u.display_name ? ` · ${esc(u.display_name)}` : ''}
+          <div class="pills">${userPills(u)}</div>
+          <div class="muted">Luotu ${u.created_at ? fmtDate(u.created_at) : '–'}
+            · viimeksi ${u.last_sign_in_at ? fmtDate(u.last_sign_in_at) : 'ei kirjautunut'}
+            · tilauksia ${u.order_count ?? 0}</div>
+        </div>
+      </a>`).join('') : '<div class="muted">Ei hakutuloksia.</div>'}</div>
+    <div class="pager">
+      <button class="btn small" type="button" id="uprev" ${usersOffset <= 0 ? 'disabled' : ''}>Edellinen</button>
+      <button class="btn small" type="button" id="unext" ${nextOff >= total ? 'disabled' : ''}>Seuraava</button>
+    </div>
+  </div>`;
+  const search = () => {
+    const q = $('uq').value.trim();
+    if (q === usersQuery && usersOffset === 0 && !selId) return;
+    usersQuery = q;
+    usersOffset = 0;
+    renderUsers(null);
+  };
+  $('uq').addEventListener('keydown', (e) => { if (e.key === 'Enter') search(); });
+  $('uq').addEventListener('search', search);
+  $('uprev').onclick = () => { usersOffset = prevOff; renderUsers(null); };
+  $('unext').onclick = () => { usersOffset = nextOff; renderUsers(null); };
+}
+
+async function renderUserDetail(id) {
+  app().innerHTML = '<div class="empty">Ladataan…</div>';
+  const { data, error } = await sb().rpc('admin_get_user', { p_user: id });
+  const u = Array.isArray(data) ? data[0] : data;
+  if (error || !u) {
+    app().innerHTML = `<div class="err">${esc(errText(error || 'user not found'))}
+      <div style="margin-top:12px"><a class="btn" href="#kayttajat">Takaisin</a></div></div>`;
+    return;
+  }
+  const orders = Array.isArray(u.orders) ? u.orders : [];
+  const protectedUser = !!u.is_admin;
+  const inst = u.installer_status
+    ? `<a href="#asentajat">${esc(instLabel(u.installer_status, u.installer_public_id))}</a>`
+    : 'Ei';
+  app().innerHTML = `<div class="form" style="max-width:760px;padding:18px 0 50px">
+    <a class="back" href="#kayttajat">${SVG.back} Käyttäjät</a>
+    <h2 style="margin:8px 0 0;overflow-wrap:anywhere">${esc(u.email)}</h2>
+    <div class="pills" style="margin:8px 0">${userPills(u)}</div>
+    <div class="panel">
+      <dl class="kv">
+        <dt>Nimi</dt><dd>${esc(u.display_name || '–')}</dd>
+        <dt>Luotu</dt><dd>${u.created_at ? fmtDate(u.created_at) : '–'}</dd>
+        <dt>Viimeksi kirjautunut</dt><dd>${u.last_sign_in_at ? fmtDate(u.last_sign_in_at) : 'Ei kirjautunut'}</dd>
+        <dt>Sähköposti vahvistettu</dt><dd>${yn(u.email_confirmed)}</dd>
+        <dt>Estetty</dt><dd>${u.banned ? `Kyllä${u.banned_until ? ` (asti ${fmtDate(u.banned_until)})` : ''}` : 'Ei'}</dd>
+        <dt>Asentaja</dt><dd>${inst}</dd>
+        <dt>Tilauksia</dt><dd>${u.order_count ?? orders.length}</dd>
+      </dl>
+    </div>
+    <div class="panel form">
+      <h2 style="font-size:17px;margin:0">Tilaukset</h2>
+      ${orders.length ? orders.map((o) => `
+        <a class="urow" href="#tilaukset/tilaus=${o.id}">
+          <b>#${esc(String(o.number))}</b> <span class="pill st-${esc(o.status)}">${esc(ST[o.status] || o.status)}</span>
+          <div class="muted">${o.created_at ? fmtDate(o.created_at) : ''}</div>
+        </a>`).join('') : '<div class="muted">Ei kauppatilauksia tällä sähköpostilla.</div>'}
+    </div>
+    <div class="panel form">
+      <h2 style="font-size:17px;margin:0">Toiminnot</h2>
+      ${protectedUser
+        ? '<div class="muted">Ylläpitäjän tiliä ei voi estää tai poistaa.</div>'
+        : `<div class="acts" style="display:flex;flex-wrap:wrap;gap:8px">
+            <button class="btn" type="button" id="uban">${u.banned ? 'Poista esto' : 'Estä tili'}</button>
+            <button class="btn ghost danger" type="button" id="udel">Poista tili…</button>
+          </div>
+          <div class="muted">Esto estää kirjautumisen. Tilin poisto on pysyvä (GDPR): synkronoidut tiedot poistetaan, kauppatilauksia ei.</div>`}
+    </div>
+  </div>`;
+  if (protectedUser) return;
+  $('uban').onclick = async () => {
+    const ok = u.banned
+      ? confirm(`Poistetaanko esto tililtä ${u.email}?`)
+      : confirm(`Estetäänkö tili ${u.email}? Käyttäjä ei voi kirjautua, ennen kuin esto poistetaan.`);
+    if (!ok) return;
+    const { error: e } = await sb().rpc('admin_set_user_banned', { p_user: u.user_id, p_banned: !u.banned });
+    if (e) return toast(`Virhe: ${errText(e)}`, 4000);
+    toast(u.banned ? 'Esto poistettu' : 'Tili estetty');
+    return renderUserDetail(id);
+  };
+  $('udel').onclick = () => deleteUserDialog(u);
+}
+
+function deleteUserDialog(u) {
+  const dlg = $('dlg');
+  dlg.innerHTML = `<form method="dialog" class="dcontent form" style="padding:0">
+    <div class="dhead"><h2>Poista tili</h2><button class="iconbtn" value="cancel" type="submit" aria-label="Sulje">×</button></div>
+    <div class="dcontent">
+      <p>Poistaa Molaplan-tilin <b>${esc(u.email)}</b> ja synkronoidut tiedot pysyvästi (GDPR). Tätä ei voi perua. Kauppatilauksia ei poisteta.</p>
+      <div class="field"><label for="udemail">Kirjoita sähköposti vahvistaaksesi</label>
+        <input id="udemail" type="email" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+      <div class="acts" style="display:flex;gap:8px;justify-content:flex-end">
+        <button class="btn ghost" value="cancel" type="submit">Peruuta</button>
+        <button class="btn danger" type="button" id="udok" disabled>Poista tili</button>
+      </div>
+    </div>
+  </form>`;
+  const match = () => $('udemail').value.trim().toLowerCase() === String(u.email || '').toLowerCase();
+  $('udemail').oninput = () => { $('udok').disabled = !match(); };
+  $('udok').onclick = async () => {
+    if (!match()) return;
+    $('udok').disabled = true;
+    const { error } = await sb().rpc('admin_delete_user', { p_user: u.user_id, p_confirm_email: $('udemail').value.trim() });
+    if (error) { $('udok').disabled = false; return toast(`Virhe: ${errText(error)}`, 4000); }
+    dlg.close();
+    toast('Tili poistettu');
+    location.hash = '#kayttajat';
+  };
+  dlg.showModal();
+}
+
 function renderSettings() {
   const s = settings;
   app().innerHTML = `<div class="form" style="max-width:760px;padding:18px 0 50px">

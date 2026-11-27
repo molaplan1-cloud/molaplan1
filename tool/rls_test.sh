@@ -23,3 +23,4 @@ done
 $P -o /dev/null -f supabase/tests/sharing_rls_test.sql
 $P -f supabase/tests/shop_rls_test.sql
 $P -f supabase/tests/installers_rls_test.sql
+$P -f supabase/tests/admin_users_rls_test.sql
