@@ -18,6 +18,7 @@ import 'package:flutter/services.dart' show MethodChannel;
 import 'core/net_fallback.dart';
 import 'prices/prices.dart';
 import 'state/app_state.dart';
+import 'state/home_launcher.dart';
 import 'state/storage.dart';
 import 'state/secret_store_factory.dart';
 import 'state/web_guest.dart';
@@ -86,11 +87,34 @@ Future<void> main() async {
   state.update.autoCheck = !Plat.isWeb;
   // t128u: notification taps (molaplan://tile/ID), the Windows tray, Android permission.
   await DeepLinks.init();
+  await initLauncher(state);
   await DesktopTray.init(state);
   if (state.config.automation.automations.isNotEmpty) {
     unawaited(LocalNotify.askPermission());
   }
   runApp(MolaplanApp(state: state));
+}
+
+
+/// t290u: started by Android WorkManager (no UI) to refresh home-screen widgets.
+@pragma('vm:entry-point')
+Future<void> widgetRefreshMain() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final state = AppState(
+    configStore: PrefsConfigStore(),
+    secretStore: platformSecretStore(),
+    energyStore: PrefsConfigStore('molaplan.energy.v1'),
+    historyStore: PrefsConfigStore('molaplan.history.v1'),
+  );
+  await state.load();
+  launcherAppState = () => state;
+  try {
+    await refreshLauncherWidgets(state);
+  } finally {
+    try {
+      await const MethodChannel(launcherChannelName).invokeMethod('refreshDone');
+    } catch (_) {}
+  }
 }
 
 final navigatorKey = GlobalKey<NavigatorState>();

@@ -104,833 +104,263 @@ abstract class AppLocalizations {
     Locale('sv'),
   ];
 
-  /// fi: Hintapalvelu
+  /// fi: Chromecast / Google TV / Android TV
   ///
   /// In en, this message translates to:
-  /// **'The price service'**
-  String get sc1e35d5171;
+  /// **'Chromecast / Google TV / Android TV'**
+  String get s186cc1d7b9;
 
-  /// fi: Sääpalvelu
+  /// fi: Chromecast, Google TV, Android TV:t (Sony, Philips, TCL, Xiaomi…) ja Nest-kaiuttimet Cast-yhteydellä: tila, äänenvoimakk
   ///
   /// In en, this message translates to:
-  /// **'The weather service'**
-  String get s8b22e8d330;
+  /// **'Chromecast, Google TV, Android TVs (Sony, Philips, TCL, Xiaomi…) and Nest speakers over Cast: status, volume, pause and stop.'**
+  String get s9da55e3993;
 
-  /// fi: Shelly Cloud
+  /// fi: Löytyy yleensä itse. Muuten: Google Home -sovellus → laite → Asetukset → Laitteen tiedot → IP-osoite.
   ///
   /// In en, this message translates to:
-  /// **'Shelly Cloud'**
-  String get s252ebed5af;
+  /// **'Usually found automatically. Otherwise: Google Home app → device → Settings → Device information → IP address.'**
+  String get sb3a497d14b;
 
-  /// fi: Tuya
+  /// fi: Samsung Smart TV (Tizen)
   ///
   /// In en, this message translates to:
-  /// **'Tuya'**
-  String get s07d3467ef6;
+  /// **'Samsung Smart TV (Tizen)'**
+  String get s02bafb3752;
 
-  /// fi: ntfy-palvelin
+  /// fi: Samsung-televisiot 2016→: virta, äänenvoimakkuus, mykistys ja toisto suoraan kotiverkossa.
   ///
   /// In en, this message translates to:
-  /// **'The ntfy server'**
-  String get s10edebf3fa;
+  /// **'Samsung TVs 2016→: power, volume, mute and playback straight over the home network.'**
+  String get s709ac4cf0e;
 
-  /// fi: Airthings-pilvi
+  /// fi: TV: Asetukset → Yleiset → Verkko → Verkon tila → IP-asetukset. Käynnistystä varten: Yleiset → Verkko → Asiantuntija-aset
   ///
   /// In en, this message translates to:
-  /// **'The Airthings cloud'**
-  String get sc08176420f;
+  /// **'TV: Settings → General → Network → Network Status → IP Settings. For power on: General → Network → Expert Settings → \"Power On with Mobile\" on.'**
+  String get s19a8179b98;
 
-  /// fi: Palvelu
+  /// fi: Televisioon tulee kysymys "Salli Molaplan?" – valitse kaukosäätimellä Salli.
   ///
   /// In en, this message translates to:
-  /// **'The service'**
-  String get sd3d9c263ed;
+  /// **'The TV asks \"Allow Molaplan?\" – choose Allow with the remote.'**
+  String get s0f80ea94c0;
 
-  /// fi: ntfy-viestiraja täynnä
+  /// fi: LG Smart TV (webOS)
   ///
   /// In en, this message translates to:
-  /// **'ntfy message limit reached'**
-  String get sedeaf26f8a;
+  /// **'LG Smart TV (webOS)'**
+  String get s830956d10f;
 
-  /// fi: ntfy.sh sallii 250 viestiä 12 tunnissa kotisi julkisesta IP-osoitteesta (kaikki puhelimet, tabletit, PC ja laitteen omat
+  /// fi: LG-televisiot (webOS): virta, äänenvoimakkuus, mykistys, toisto ja avoin sovellus kotiverkossa.
   ///
   /// In en, this message translates to:
-  /// **'ntfy.sh allows 250 messages per 12 hours from your home\'\'s public IP (all phones, tablets, PCs and the device\'\'s own replies together). Messages free up every few minutes – the app now asks for the state less often. A lasting fix: your own ntfy server or an ntfy account with a higher limit.'**
-  String get s5d151d0815;
+  /// **'LG TVs (webOS): power, volume, mute, playback and the open app over the home network.'**
+  String get s6f7121cc67;
 
-  /// fi: Ei vastausta laitteelta
+  /// fi: TV: Asetukset → Yleiset → Verkko → Wi-Fi/langallinen → Lisäasetukset. Käynnistystä varten: Yleiset → Laitteet → "Käynnis
   ///
   /// In en, this message translates to:
-  /// **'No reply from the device'**
-  String get s349ca716f2;
+  /// **'TV: Settings → General → Network → Wi-Fi/wired → Advanced. For power on: General → Devices → \"Turn on via Wi-Fi\" on.'**
+  String get scf3ccada17;
 
-  /// fi: Komento lähti ntfy-palvelimelle, mutta laitteen vastausta ei tullut. Tarkista yhteyden "Vastauskanava" – laite voi vasta
+  /// fi: Televisioon tulee yhteyspyyntö – hyväksy se kaukosäätimellä (Hyväksy / Accept).
   ///
   /// In en, this message translates to:
-  /// **'The command reached the ntfy server, but no reply came from the device. Check the connection\'\'s \"Reply topic\" – the device may answer on your own notification topic – and that the device is online.'**
-  String get s7aa9e16c41;
+  /// **'The TV shows a connection request – accept it with the remote.'**
+  String get s898762ead6;
 
-  /// fi: Ei nettiyhteyttä
+  /// fi: Philips TV (JointSPACE)
   ///
   /// In en, this message translates to:
-  /// **'No internet connection'**
-  String get sdfb639365a;
+  /// **'Philips TV (JointSPACE)'**
+  String get s378548d3cd;
 
-  /// fi: {p0} on internetissä, eikä siihen saatu yhteyttä. Tarkista tämän laitteen nettiyhteys. Viimeisimmät tiedot näytetään, ku
+  /// fi: Philips-televisiot: virta (Android-mallit), äänenvoimakkuus, mykistys ja näppäimet. Android-mallit paritetaan TV:n näytt
   ///
   /// In en, this message translates to:
-  /// **'{p0} is on the internet and could not be reached. Check this device\'\'s internet connection. The latest data is shown when available.'**
-  String s390dd51af3(String p0);
+  /// **'Philips TVs: power (Android models), volume, mute and keys. Android models pair with a PIN shown on the TV.'**
+  String get s9a2645043b;
 
-  /// fi: {p0} ei vastaa, yritetään varalähdettä
+  /// fi: TV: Asetukset → Langaton ja verkot → Langallinen tai Wi-Fi → Näytä verkkoasetukset.
   ///
   /// In en, this message translates to:
-  /// **'{p0} is not answering, trying a backup source'**
-  String sbb750bf9d6(String p0);
+  /// **'TV: Settings → Wireless and networks → Wired or Wi-Fi → View network settings.'**
+  String get s2fb79a3487;
 
-  /// fi: {p0} ei vastaa
+  /// fi: Kirjoita televisioon ilmestynyt nelinumeroinen PIN-koodi.
   ///
   /// In en, this message translates to:
-  /// **'{p0} is not answering'**
-  String s4284ebac1e(String p0);
+  /// **'Type the four-digit PIN shown on the TV.'**
+  String get s12f47341ce;
 
-  /// fi: Myöskään varalähteistä ei saatu tietoja juuri nyt. Vika on todennäköisesti palveluissa, ei kotiverkossasi. Yritetään aut
+  /// fi: Näkyy television ruudulla noin minuutin.
   ///
   /// In en, this message translates to:
-  /// **'The backup sources did not answer right now either. The problem is most likely at the services, not your home network. Retrying automatically.'**
-  String get s828d009fa6;
+  /// **'Shown on the TV screen for about a minute.'**
+  String get s0ec3e3e11d;
 
-  /// fi: Palvelussa on häiriö. Vika on todennäköisesti palvelussa, ei kotiverkossasi. Yritetään automaattisesti uudelleen.
+  /// fi: TV ja Chromecast
   ///
   /// In en, this message translates to:
-  /// **'The service has a problem, most likely at the service and not your home network. Retrying automatically.'**
-  String get se21c801ba6;
+  /// **'TV and Chromecast'**
+  String get sd3b85fadc0;
 
-  /// fi: Kirjautuminen palveluun ei onnistunut
+  /// fi: Samsung, LG, Philips, Android TV / Google TV ja Chromecast: virta, ääni ja toisto.
   ///
   /// In en, this message translates to:
-  /// **'Signing in to the service failed'**
-  String get s35e0766add;
+  /// **'Samsung, LG, Philips, Android TV / Google TV and Chromecast: power, volume and playback.'**
+  String get sb34763a1f3;
 
-  /// fi: Tarkista palvelun tunnus, avain tai token ({p0}).
+  /// fi: Chromecastia ei voi käynnistää etänä
   ///
   /// In en, this message translates to:
-  /// **'Check the account, key or token for {p0}.'**
-  String sa4d255e53c(String p0);
+  /// **'A Chromecast cannot be switched on remotely'**
+  String get sbd92a41506;
 
-  /// fi: Osoitteessa ei vastaa odotettu laite – tarkista osoite (http vai https?)
+  /// fi: Mitään ei toisteta
   ///
   /// In en, this message translates to:
-  /// **'The expected device does not answer at this address – check it (http or https?)'**
-  String get sd0a2130950;
+  /// **'Nothing is playing'**
+  String get sd8167370bc;
 
-  /// fi: Osoitteessa vastaa jokin, mutta ei odotetulla tavalla. Kokeile https:// tai http:// osoitteen alkuun ja tarkista portti.
+  /// fi: Televisio hylkäsi yhteyden – salli Molaplan TV:n kehotteesta
   ///
   /// In en, this message translates to:
-  /// **'Something answers, but not as expected. Try https:// or http:// in front and check the port.'**
-  String get sdd5742468b;
+  /// **'The TV refused – allow Molaplan in the prompt on the TV'**
+  String get sd42552b5c1;
 
-  /// fi: Osoitetta ei löydy
+  /// fi: Hyväksy yhteys televisiosta (Salli) ja yritä uudelleen
   ///
   /// In en, this message translates to:
-  /// **'Address not found'**
-  String get s03c0a5192b;
+  /// **'Accept the connection on the TV (Allow) and try again'**
+  String get sb7b15dd59e;
 
-  /// fi: Tarkista osoitteen kirjoitusasu. Kokeile IP-osoitetta (esim. 192.168.1.50) nimen sijaan.
+  /// fi: ei Samsung-televisio
   ///
   /// In en, this message translates to:
-  /// **'Check the spelling. Try the IP address (e.g. 192.168.1.50) instead of a name.'**
-  String get sb3ef01a6fa;
+  /// **'not a Samsung TV'**
+  String get s19ae80a1a6;
 
-  /// fi: Laitetta ei löydy osoitteesta
+  /// fi: Käynnistys vaatii MAC-osoitteen
   ///
   /// In en, this message translates to:
-  /// **'Device not found at this address'**
-  String get s274a753ad6;
+  /// **'Turning on needs the MAC address'**
+  String get s7e1bbea60b;
 
-  /// fi: Tarkista että laite on päällä ja että puhelin tai PC on samassa wifissä. Tarkista myös IP-osoite – se voi vaihtua, joten
+  /// fi: Televisio ei hyväksynyt äänenvoimakkuutta
   ///
   /// In en, this message translates to:
-  /// **'Check that the device is on and that your phone or PC is on the same Wi-Fi. Also check the IP address – it can change, so reserve a fixed address in your router.'**
-  String get s2b503695b6;
+  /// **'The TV did not accept the volume'**
+  String get se7feba6088;
 
-  /// fi: Laite löytyi, mutta ei vastaa tähän porttiin
+  /// fi: Chromecast / Google TV / Android TV (Cast)
   ///
   /// In en, this message translates to:
-  /// **'Device found but the port is closed'**
-  String get sff9ca463e3;
+  /// **'Chromecast / Google TV / Android TV (Cast)'**
+  String get s97c684e038;
 
-  /// fi: Tarkista portin numero ja että palvelu (esim. web-käyttöliittymä, MQTT tai Modbus TCP) on laitteessa päällä.
+  /// fi: Televisio / Chromecast (oma integraatio)
   ///
   /// In en, this message translates to:
-  /// **'Check the port number and that the service (web UI, MQTT or Modbus TCP) is enabled on the device.'**
-  String get s1d4f4506de;
+  /// **'TV / Chromecast (built-in integration)'**
+  String get s66c82f9d98;
 
-  /// fi: Suojattu yhteys (https) epäonnistui
+  /// fi: Merkki
   ///
   /// In en, this message translates to:
-  /// **'Secure connection (https) failed'**
-  String get s8523a9cfd0;
+  /// **'Brand'**
+  String get s1c9df5579f;
 
-  /// fi: Kokeile osoitetta http:// -alkuisena, tai Lisäasetuksista "Salli itse allekirjoitettu sertifikaatti".
+  /// fi: Android TV:t ja Google TV:t ohjataan Cast-yhteydellä (Chromecast built-in).
   ///
   /// In en, this message translates to:
-  /// **'Try http:// instead, or enable \"Allow self-signed certificate\" under Advanced.'**
-  String get sdfd499c1f1;
+  /// **'Android TVs and Google TVs are controlled over Cast (Chromecast built-in).'**
+  String get s406f4e67a2;
 
-  /// fi: Tunnus, salasana tai token ei kelpaa
+  /// fi: IP-osoite
   ///
   /// In en, this message translates to:
-  /// **'Login, password or token rejected'**
-  String get s3fabccc1cd;
+  /// **'IP address'**
+  String get s178e07f06b;
 
-  /// fi: Tarkista tunnukset. Home Assistantissa voit luoda uuden pitkäikäisen tunnuksen omasta profiilista.
+  /// fi: Laitteen IP-osoite (reitittimen laitelistasta). Anna reitittimessä kiinteä osoite.
   ///
   /// In en, this message translates to:
-  /// **'Check the credentials. In Home Assistant you can create a new long-lived token in your profile.'**
-  String get sdc2d65f8eb;
+  /// **'The device IP address (router device list). Reserve a fixed address in the router.'**
+  String get s678a1d0824;
 
-  /// fi: Laite vastasi, mutta kohdetta ei löytynyt
+  /// fi: MAC-osoite (käynnistys)
   ///
   /// In en, this message translates to:
-  /// **'Device answered but the item was not found'**
-  String get se0a7cef6c4;
+  /// **'MAC address (power on)'**
+  String get sc9db95d473;
 
-  /// fi: Tarkista polku tai entiteetin nimi (esim. light.olohuone). Isot ja pienet kirjaimet ovat merkitseviä.
+  /// fi: Wake-on-LAN-käynnistykseen. Täyttyy yleensä itse; TV:n asetuksissa "Käynnistä verkon kautta" päälle.
   ///
   /// In en, this message translates to:
-  /// **'Check the path or entity name (e.g. light.living_room).'**
-  String get see02239a35;
+  /// **'For Wake-on-LAN power on. Usually filled in automatically; enable \"Turn on via network\" on the TV.'**
+  String get s179f2d4764;
 
-  /// fi: Laitteessa tapahtui virhe
+  /// fi: JointSPACE-versio (Philips)
   ///
   /// In en, this message translates to:
-  /// **'The device reported an error'**
-  String get sdec83d1e90;
+  /// **'JointSPACE version (Philips)'**
+  String get s8480eec244;
 
-  /// fi: Komento tai kysely ei kelvannut laitteelle. Tarkista polku ja lähetettävä sisältö.
+  /// fi: Tunnistetaan itse: 6 = Android-TV:t (https 1926), 1 = vanhat (http 1925).
   ///
   /// In en, this message translates to:
-  /// **'Check the path and payload.'**
-  String get s3de239ffc5;
+  /// **'Detected automatically: 6 = Android TVs (https 1926), 1 = older sets (http 1925).'**
+  String get sa592a45cc0;
 
-  /// fi: Laite ei tunne tätä rekisteriä
+  /// fi: Paritustunnus (Philips)
   ///
   /// In en, this message translates to:
-  /// **'Unknown register on the device'**
-  String get s6121e8d8f1;
+  /// **'Pairing id (Philips)'**
+  String get s0f34d752b2;
 
-  /// fi: Tarkista rekisterin numero laitteen Modbus-taulukosta. Jos taulukko alkaa 1:stä (esim. 40001), vähennä 1. Tarkista myös
+  /// fi: Syntyy parituksessa (PIN-koodi televisiosta).
   ///
   /// In en, this message translates to:
-  /// **'Check the register number. If the table starts at 1 (e.g. 40001), subtract 1. Also check holding vs input.'**
-  String get s3474aedf54;
+  /// **'Created during pairing (PIN code from the TV).'**
+  String get s55e83ab0e3;
 
-  /// fi: Laite ei tue tätä rekisterityyppiä
+  /// fi: Paritusavain (Philips)
   ///
   /// In en, this message translates to:
-  /// **'Register type not supported'**
-  String get s2c303f6774;
+  /// **'Pairing key (Philips)'**
+  String get s090082b8ce;
 
-  /// fi: Kokeile toista rekisterityyppiä (holding ↔ input).
+  /// fi: Syntyy parituksessa. Tallentuu vain tälle laitteelle.
   ///
   /// In en, this message translates to:
-  /// **'Try the other register type (holding ↔ input).'**
-  String get s945685fcda;
+  /// **'Created during pairing. Stored on this device only.'**
+  String get s74b0fa8af8;
 
-  /// fi: Laite ei hyväksynyt arvoa
+  /// fi: Yhteystunnus (Samsung)
   ///
   /// In en, this message translates to:
-  /// **'Value rejected by the device'**
-  String get s07ffbc349a;
+  /// **'Access token (Samsung)'**
+  String get sf6035d1731;
 
-  /// fi: Arvo on luultavasti sallitun alueen ulkopuolella. Tarkista myös kerroin.
+  /// fi: Samsung antaa tunnuksen, kun hyväksyt yhteyden televisiosta. Tallentuu vain tälle laitteelle.
   ///
   /// In en, this message translates to:
-  /// **'The value is probably out of range. Check the scale too.'**
-  String get s76b95eef9f;
+  /// **'Samsung returns it when you allow the connection on the TV. Stored on this device only.'**
+  String get scee449b738;
 
-  /// fi: Laite löytyi, mutta Modbus TCP ei ole päällä
+  /// fi: Asiakasavain (LG)
   ///
   /// In en, this message translates to:
-  /// **'Device found, but Modbus TCP is off'**
-  String get s7746921882;
+  /// **'Client key (LG)'**
+  String get s565b6ac234;
 
-  /// fi: Osoitteessa on laite, mutta se ei ota vastaan Modbus-yhteyttä tähän porttiin. Laita Modbus TCP päälle laitteen asetuksis
+  /// fi: LG antaa avaimen, kun hyväksyt yhteyden televisiosta. Tallentuu vain tälle laitteelle.
   ///
   /// In en, this message translates to:
-  /// **'There is a device at this address, but it does not accept Modbus on this port. Turn on Modbus TCP in the device settings (often under Network / Modbus / Remote control) and check the port (usually 502). You can also tap \"Scan Modbus\". If the device works in Home Assistant, it may already have a connection (many allow only one) – read the values through HA.'**
-  String get s7e552bd146;
-
-  /// fi: Laite on estotilassa, yritetään uudelleen klo {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'The device is in lockout, retrying at {p0}'**
-  String s0ebc613f20(String p0);
-
-  /// fi: Laite ei vastannut, joten sitä ei kysytä hetkeen – moni laite menee estotilaan, jos sitä kysytään liian usein. Tauko pit
-  ///
-  /// In en, this message translates to:
-  /// **'The device did not answer, so it is left alone for a while – many devices lock out clients that poll too often. The pause grows from 30 seconds to 5 minutes. If the device already has a connection (e.g. Home Assistant), read the values through HA. The read interval and pauses are under Advanced in the connection.'**
-  String get s317b2b59af;
-
-  /// fi: Laitteen osoite puuttuu
-  ///
-  /// In en, this message translates to:
-  /// **'The device address is missing'**
-  String get s33e09089b2;
-
-  /// fi: Avaa yhteys ja anna laitteen IP-osoite, tai paina "Skannaa Modbus", niin sovellus etsii laitteen verkosta.
-  ///
-  /// In en, this message translates to:
-  /// **'Open the connection and enter the device IP address, or tap \"Scan Modbus\" to find the device on the network.'**
-  String get s6180bd540e;
-
-  /// fi: Laitteella voi olla jo yhteys
-  ///
-  /// In en, this message translates to:
-  /// **'The device may already have a connection'**
-  String get sd73581c910;
-
-  /// fi: Laite katkaisi Modbus-yhteyden heti. Moni laite sallii vain yhden Modbus TCP -yhteyden kerrallaan. Jos laite on jo Home
-  ///
-  /// In en, this message translates to:
-  /// **'The device dropped the Modbus connection right away. Many devices allow only one Modbus TCP connection at a time. If the device is already in Home Assistant (e.g. modbus.yaml), read the values through HA.'**
-  String get scee8d982a2;
-
-  /// fi: Osoitteessa ei ole laitetta
-  ///
-  /// In en, this message translates to:
-  /// **'Nothing at this address'**
-  String get s6ca672a111;
-
-  /// fi: Tähän IP-osoitteeseen ei saatu yhteyttä. Tarkista että laite on päällä ja samassa verkossa, ja että IP-osoite on oikein
-  ///
-  /// In en, this message translates to:
-  /// **'Nothing answered at this IP address. Check that the device is on and in the same network and that the IP is right (it can change – reserve a fixed address in the router). \"Scan Modbus\" finds devices on the network.'**
-  String get sf7a98e1c70;
-
-  /// fi: Modbus-laite ei vastannut ajoissa
-  ///
-  /// In en, this message translates to:
-  /// **'The Modbus device did not answer in time'**
-  String get scb0cba44ea;
-
-  /// fi: Yhteyttä porttiin ei saatu muodostettua. Yleisimmät syyt: väärä IP-osoite, laite on toisessa verkossa (vieras-wifi), Mod
-  ///
-  /// In en, this message translates to:
-  /// **'Could not open the port. Most common causes: wrong IP, the device is in another network (guest Wi-Fi), Modbus TCP is off or a firewall blocks the port. Check the address and port or tap \"Scan Modbus\".'**
-  String get sc03ae7e1c5;
-
-  /// fi: Yhdyskäytävä ei tavoita laitetta tällä unit id:llä
-  ///
-  /// In en, this message translates to:
-  /// **'The gateway cannot reach a device with this unit id'**
-  String get sefba540275;
-
-  /// fi: Modbus-yhdyskäytävä vastasi, mutta sen takana ei ole laitetta tällä osoitteella (unit id). Tarkista laitteen Modbus-osoi
-  ///
-  /// In en, this message translates to:
-  /// **'The Modbus gateway answered, but no device with this unit id is behind it. Check the device\'\'s Modbus address (often 1) and the serial speed and parity. \"Scan Modbus\" tries addresses 1–247.'**
-  String get s6e4ed361f3;
-
-  /// fi: Laite ei vastannut Modbus-kyselyyn
-  ///
-  /// In en, this message translates to:
-  /// **'No Modbus reply'**
-  String get sb66bc0e677;
-
-  /// fi: Yhteys aukesi, mutta vastausta ei tullut. Tarkista laitteen osoite (unit id, usein 1) ja yhdyskäytävän sarjaportin asetu
-  ///
-  /// In en, this message translates to:
-  /// **'Connected but no reply. Check the unit id (often 1) and the gateway serial settings.'**
-  String get s6ef5539bc2;
-
-  /// fi: Laite ei vastannut
-  ///
-  /// In en, this message translates to:
-  /// **'No reply from the device'**
-  String get s17ea4c52d5;
-
-  /// fi: Yhteys toimi, mutta vastausta ei tullut ajoissa. Tarkista lähetettävä viesti.
-  ///
-  /// In en, this message translates to:
-  /// **'Connected but no reply in time. Check the message.'**
-  String get s50ecf9ba6f;
-
-  /// fi: Asetuksissa on virhe
-  ///
-  /// In en, this message translates to:
-  /// **'There is a mistake in the settings'**
-  String get sf93db545a1;
-
-  /// fi: Tarkista kentät, esim. että osoite alkaa http:// ja että numerot ovat numeroita.
-  ///
-  /// In en, this message translates to:
-  /// **'Check the fields, e.g. that the address starts with http:// and numbers are numbers.'**
-  String get sf19a9f0856;
-
-  /// fi: Ruudulta puuttuu laite
-  ///
-  /// In en, this message translates to:
-  /// **'This tile has no device'**
-  String get s3976954bef;
-
-  /// fi: Avaa muokkaus (kynä) ja valitse ruudulle laite.
-  ///
-  /// In en, this message translates to:
-  /// **'Open edit mode (pencil) and choose a device for the tile.'**
-  String get sc025e0a1f4;
-
-  /// fi: Kotisilta ei ole päällä
-  ///
-  /// In en, this message translates to:
-  /// **'The home bridge is off'**
-  String get s7e11595f9e;
-
-  /// fi: Etäyhteys kulkee kotona olevan sillan (tabletti tai PC) kautta. Tarkista että se on päällä, Molaplan on auki ja sillä on
-  ///
-  /// In en, this message translates to:
-  /// **'Remote access goes through the bridge at home (tablet or PC). Check that it is on, Molaplan is open and it has internet.'**
-  String get s2cd1df086e;
-
-  /// fi: Laitteesi ei saa yhteyttä Molaplanin etäpalveluun. Tarkista mobiilidata tai wifi.
-  ///
-  /// In en, this message translates to:
-  /// **'Your device cannot reach the Molaplan remote service. Check mobile data or Wi-Fi.'**
-  String get sdbf06d05d9;
-
-  /// fi: Etäyhteys on poistettu
-  ///
-  /// In en, this message translates to:
-  /// **'Remote access was removed'**
-  String get s8b737f4026;
-
-  /// fi: Tämä laite on poistettu kotisillalta. Yhdistä uudelleen: Asetukset → Etäyhteys.
-  ///
-  /// In en, this message translates to:
-  /// **'This device was removed on the home bridge. Pair again: Settings → Remote access.'**
-  String get s4b9e4ca079;
-
-  /// fi: Kotisilta ei vastannut ajoissa
-  ///
-  /// In en, this message translates to:
-  /// **'The home bridge did not answer in time'**
-  String get s5b3116ed94;
-
-  /// fi: Yhteys voi olla hidas. Yritä hetken päästä uudelleen.
-  ///
-  /// In en, this message translates to:
-  /// **'The connection may be slow. Try again in a moment.'**
-  String get se082095a34;
-
-  /// fi: Koodi ei kelpaa
-  ///
-  /// In en, this message translates to:
-  /// **'The code is not valid'**
-  String get s688a4f4ccb;
-
-  /// fi: Tarkista 6 numeroa kotisillan näytöltä. Koodi on voimassa 10 minuuttia ja kelpaa kerran – paina tarvittaessa sillalla "Y
-  ///
-  /// In en, this message translates to:
-  /// **'Check the 6 digits on the bridge screen. A code is valid for 10 minutes and works once – press \"Pair a phone\" on the bridge again if needed.'**
-  String get sfa0e226cd0;
-
-  /// fi: Kotisilta ei hyväksynyt laitetta
-  ///
-  /// In en, this message translates to:
-  /// **'The bridge did not accept this device'**
-  String get sfa5c1fb1ac;
-
-  /// fi: Kun yhdistät koodilla, sillan näytölle tulee kysymys – paina siellä "Hyväksy". Tai skannaa QR-koodi, silloin hyväksyntää
-  ///
-  /// In en, this message translates to:
-  /// **'When pairing with the code, the bridge asks for confirmation – press \"Accept\" there. Or scan the QR code, then no confirmation is needed.'**
-  String get s9ad07ab36e;
-
-  /// fi: Turvatarkistus epäonnistui
-  ///
-  /// In en, this message translates to:
-  /// **'Security check failed'**
-  String get sb5c271ae6a;
-
-  /// fi: Yhteyttä ei voitu varmistaa turvalliseksi, joten sitä ei otettu käyttöön. Yritä uudelleen QR-koodilla.
-  ///
-  /// In en, this message translates to:
-  /// **'The connection could not be verified as safe, so it was not used. Try again with the QR code.'**
-  String get s3d7ca280db;
-
-  /// fi: Kotisilta ei vastannut
-  ///
-  /// In en, this message translates to:
-  /// **'The bridge did not answer'**
-  String get s0061b44673;
-
-  /// fi: Hyväksy laite sillan näytöllä 3 minuutin sisällä, tai skannaa QR-koodi.
-  ///
-  /// In en, this message translates to:
-  /// **'Accept the device on the bridge screen within 3 minutes, or scan the QR code.'**
-  String get sceb894b9b3;
-
-  /// fi: Yhteys ei onnistunut
-  ///
-  /// In en, this message translates to:
-  /// **'The connection did not work'**
-  String get s700b0ef4de;
-
-  /// fi: Tarkista osoite ja asetukset ja yritä uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.
-  ///
-  /// In en, this message translates to:
-  /// **'Check the address and settings and try again. The technical details show the exact reason.'**
-  String get s53a891e670;
-
-  /// fi: Mittaukset
-  ///
-  /// In en, this message translates to:
-  /// **'Measurements'**
-  String get s02480e4c13;
-
-  /// fi: Ohjaukset
-  ///
-  /// In en, this message translates to:
-  /// **'Controls'**
-  String get sd1c778324e;
-
-  /// fi: Kamerat
-  ///
-  /// In en, this message translates to:
-  /// **'Cameras'**
-  String get s88ac47e6d1;
-
-  /// fi: Selkeää
-  ///
-  /// In en, this message translates to:
-  /// **'Clear'**
-  String get sdd5e97b1e2;
-
-  /// fi: Puolipilvistä
-  ///
-  /// In en, this message translates to:
-  /// **'Partly cloudy'**
-  String get sad990c999d;
-
-  /// fi: Pilvistä
-  ///
-  /// In en, this message translates to:
-  /// **'Cloudy'**
-  String get s80bfe8f9ad;
-
-  /// fi: Sumua
-  ///
-  /// In en, this message translates to:
-  /// **'Fog'**
-  String get s46f3db8514;
-
-  /// fi: Tihkua
-  ///
-  /// In en, this message translates to:
-  /// **'Drizzle'**
-  String get sbd81101eb4;
-
-  /// fi: Sadetta
-  ///
-  /// In en, this message translates to:
-  /// **'Rain'**
-  String get s960a265544;
-
-  /// fi: Lumisadetta
-  ///
-  /// In en, this message translates to:
-  /// **'Snow'**
-  String get seab38c2b45;
-
-  /// fi: Ukkosta
-  ///
-  /// In en, this message translates to:
-  /// **'Thunderstorm'**
-  String get sfc65eafa12;
-
-  /// fi: Varaava lattialämmitys (betoni)
-  ///
-  /// In en, this message translates to:
-  /// **'Storage floor heating (concrete)'**
-  String get s2a3f705876;
-
-  /// fi: Betonilaatta varaa lämpöä pitkään: lämmitys keskitetään päivän halvimpiin tunteihin, ja tuntimäärä seuraa sääennustetta.
-  ///
-  /// In en, this message translates to:
-  /// **'A concrete slab stores heat for a long time: heating is moved to the cheapest hours, and the number of hours follows the forecast.'**
-  String get se02b21f2e5;
-
-  /// fi: Kevyt lattialämmitys
-  ///
-  /// In en, this message translates to:
-  /// **'Light floor heating'**
-  String get sed77dcfc1a;
-
-  /// fi: Kevyt lattia varaa vähän: ohitetaan päivän kalleimmat tunnit, mutta katko on lyhyt.
-  ///
-  /// In en, this message translates to:
-  /// **'A light floor stores little heat: the most expensive hours are skipped, with short breaks only.'**
-  String get s4699e792b9;
-
-  /// fi: Suorat sähköpatterit
-  ///
-  /// In en, this message translates to:
-  /// **'Direct electric radiators'**
-  String get s5d46662c4e;
-
-  /// fi: Patterit eivät varaa lämpöä: vain kalleimmat tunnit ohitetaan, yksi tunti kerrallaan.
-  ///
-  /// In en, this message translates to:
-  /// **'Radiators do not store heat: only the most expensive hours are skipped, one hour at a time.'**
-  String get s12e9bbf847;
-
-  /// fi: Ilmalämpöpumppu
-  ///
-  /// In en, this message translates to:
-  /// **'Air-source heat pump'**
-  String get s1c0bf9b38b;
-
-  /// fi: Ilmalämpöpumppu toimii parhaiten tasaisella lämmöllä: tavoitelämpö nousee hieman ennen kallista tai kylmää jaksoa ja las
-  ///
-  /// In en, this message translates to:
-  /// **'A heat pump works best at an even temperature: the target rises a little before expensive or cold spells and drops in expensive hours.'**
-  String get s6896be80e0;
-
-  /// fi: Maalämpöpumppu
-  ///
-  /// In en, this message translates to:
-  /// **'Ground-source heat pump'**
-  String get s765f87536c;
-
-  /// fi: Maalämpö ja vesikiertoinen lämmitys varaavat jonkin verran: kalleimmat tunnit ohitetaan enintään muutaman tunnin katkoin
-  ///
-  /// In en, this message translates to:
-  /// **'Ground-source heat with water circulation stores some heat: the most expensive hours are skipped in breaks of a few hours at most.'**
-  String get s33536024e7;
-
-  /// fi: Lämminvesivaraaja
-  ///
-  /// In en, this message translates to:
-  /// **'Water heater'**
-  String get s3a7d2e6848;
-
-  /// fi: Varaaja pysyy lämpimänä vuorokauden: se lämmitetään päivän halvimpina tunteina.
-  ///
-  /// In en, this message translates to:
-  /// **'A water heater stays hot for a day: it is heated in the cheapest hours of the day.'**
-  String get s4eec9a0479;
-
-  /// fi: {p0}
-  ///
-  /// In en, this message translates to:
-  /// **''**
-  String s404f230c13(String p0);
-
-  /// fi: Älykäs lämmitys
-  ///
-  /// In en, this message translates to:
-  /// **'Smart heating'**
-  String get s798f7b2876;
-
-  /// fi: Takka-tila päättyi: huone on alkanut jäähtyä. Lämmitys palaa normaaliksi.
-  ///
-  /// In en, this message translates to:
-  /// **'Fireplace mode ended: the room is cooling. Heating is back to normal.'**
-  String get sa2dc343545;
-
-  /// fi: Takka-tila päättyi (aika täynnä). Lämmitys palaa normaaliksi.
-  ///
-  /// In en, this message translates to:
-  /// **'Fireplace mode ended (time is up). Heating is back to normal.'**
-  String get s78afbd052c;
-
-  /// fi: Takka-tila lopetettiin. Lämmitys palaa normaaliksi.
-  ///
-  /// In en, this message translates to:
-  /// **'Fireplace mode stopped. Heating is back to normal.'**
-  String get s1f08341033;
-
-  /// fi: Huawei SUN2000 (Modbus TCP)
-  ///
-  /// In en, this message translates to:
-  /// **'Huawei SUN2000 (Modbus TCP)'**
-  String get sa7f9b278cf;
-
-  /// fi: Fronius (Solar API, paikallinen)
-  ///
-  /// In en, this message translates to:
-  /// **'Fronius (Solar API, local)'**
-  String get s0d714dece1;
-
-  /// fi: SolarEdge (Modbus TCP, paikallinen)
-  ///
-  /// In en, this message translates to:
-  /// **'SolarEdge (Modbus TCP, local)'**
-  String get sa38a153c07;
-
-  /// fi: SMA (Modbus TCP, paikallinen)
-  ///
-  /// In en, this message translates to:
-  /// **'SMA (Modbus TCP, local)'**
-  String get s833dfe954e;
-
-  /// fi: SMA (SunSpec Modbus)
-  ///
-  /// In en, this message translates to:
-  /// **'SMA (SunSpec Modbus)'**
-  String get sc5863d817d;
-
-  /// fi: SMA Energy Meter / Home Manager (Speedwire)
-  ///
-  /// In en, this message translates to:
-  /// **'SMA Energy Meter / Home Manager (Speedwire)'**
-  String get s12733504dc;
-
-  /// fi: Growatt (Modbus TCP)
-  ///
-  /// In en, this message translates to:
-  /// **'Growatt (Modbus TCP)'**
-  String get sdeb4f39ff0;
-
-  /// fi: Muu SunSpec-invertteri (Modbus TCP)
-  ///
-  /// In en, this message translates to:
-  /// **'Other SunSpec inverter (Modbus TCP)'**
-  String get sa1769b666b;
-
-  /// fi: Huawei FusionSolar (pilvi)
-  ///
-  /// In en, this message translates to:
-  /// **'Huawei FusionSolar (cloud)'**
-  String get s1694840083;
-
-  /// fi: SolarEdge monitoring (pilvi)
-  ///
-  /// In en, this message translates to:
-  /// **'SolarEdge monitoring (cloud)'**
-  String get s205e886d29;
-
-  /// fi: Growatt OpenAPI (pilvi)
-  ///
-  /// In en, this message translates to:
-  /// **'Growatt OpenAPI (cloud)'**
-  String get s5bf46ebec4;
-
-  /// fi: Aurinkosähkö / invertteri (oma integraatio)
-  ///
-  /// In en, this message translates to:
-  /// **'Solar / inverter (built-in integration)'**
-  String get se7c240ad4f;
-
-  /// fi: Merkki ja yhteystapa
-  ///
-  /// In en, this message translates to:
-  /// **'Brand and connection'**
-  String get s46b5445e4a;
-
-  /// fi: Valmistaja ja yhteystapa. Paikalliset toimivat ilman pilveä ja päivittyvät nopeammin.
-  ///
-  /// In en, this message translates to:
-  /// **'Maker and connection type. Local ones work without the cloud and update faster.'**
-  String get sef83efed4e;
-
-  /// fi: IP-osoite (paikalliset)
-  ///
-  /// In en, this message translates to:
-  /// **'IP address (local)'**
-  String get scc322677fe;
-
-  /// fi: Invertterin, SDonglen tai mittarin IP-osoite (reitittimen laitelistasta).
-  ///
-  /// In en, this message translates to:
-  /// **'IP address of the inverter, SDongle or meter (from the router device list).'**
-  String get s6ac1068052;
-
-  /// fi: Portti
-  ///
-  /// In en, this message translates to:
-  /// **'Port'**
-  String get s800d13debd;
-
-  /// fi: Tyhjä = oletus (Modbus 502, SolarEdge 1502, Huawein invertterin oma wifi 6607).
-  ///
-  /// In en, this message translates to:
-  /// **'Empty = default (Modbus 502, SolarEdge 1502, Huawei inverter Wi-Fi 6607).'**
-  String get sa163739d18;
-
-  /// fi: Modbus unit id
-  ///
-  /// In en, this message translates to:
-  /// **'Modbus unit id'**
-  String get s58f0665e29;
-
-  /// fi: Tyhjä = oletus (Huawei 1, SolarEdge 1, SMA 3, SMA SunSpec 126, Growatt 1).
-  ///
-  /// In en, this message translates to:
-  /// **'Empty = default (Huawei 1, SolarEdge 1, SMA 3, SMA SunSpec 126, Growatt 1).'**
-  String get sd5e2f52587;
-
-  /// fi: Mittarin sarjanumero (SMA Energy Meter)
-  ///
-  /// In en, this message translates to:
-  /// **'Meter serial (SMA Energy Meter)'**
-  String get se49fbf06a8;
-
-  /// fi: Vain jos verkossa on useita SMA-mittareita. Tyhjä = ensimmäinen.
-  ///
-  /// In en, this message translates to:
-  /// **'Only if there are several SMA meters on the network. Empty = the first one.'**
-  String get s4a63dcc985;
-
-  /// fi: Käyttäjä (FusionSolar API)
-  ///
-  /// In en, this message translates to:
-  /// **'User (FusionSolar API)'**
-  String get s6e391cf987;
-
-  /// fi: FusionSolarin Northbound-API-käyttäjä (asentaja luo: Järjestelmä → Yritys → Northbound).
-  ///
-  /// In en, this message translates to:
-  /// **'FusionSolar Northbound API user (created by the installer: System → Company → Northbound).'**
-  String get se76a6f4565;
-
-  /// fi: Salasana / järjestelmäkoodi
-  ///
-  /// In en, this message translates to:
-  /// **'Password / system code'**
-  String get s2f3b444057;
-
-  /// fi: Tallentuu vain tälle laitteelle / omaan salattuun holviisi.
-  ///
-  /// In en, this message translates to:
-  /// **'Stored only on this device / in your own encrypted vault.'**
-  String get s11298f6c17;
-
-  /// fi: API-avain (SolarEdge / Growatt)
-  ///
-  /// In en, this message translates to:
-  /// **'API key (SolarEdge / Growatt)'**
-  String get s68eeca8dbe;
-
-  /// fi: SolarEdge: monitoring-portaali → Admin → Site Access → API. Growatt: OpenAPI-token.
-  ///
-  /// In en, this message translates to:
-  /// **'SolarEdge: monitoring portal → Admin → Site Access → API. Growatt: OpenAPI token.'**
-  String get seba7bd613f;
-
-  /// fi: Laitoksen tunnus (pilvi)
-  ///
-  /// In en, this message translates to:
-  /// **'Site / plant id (cloud)'**
-  String get s3cda8d5f90;
-
-  /// fi: Tyhjä = tilin ensimmäinen laitos.
-  ///
-  /// In en, this message translates to:
-  /// **'Empty = the first site of the account.'**
-  String get see56030ac8;
+  /// **'LG returns it when you accept the connection on the TV. Stored on this device only.'**
+  String get s8b34eb0ec5;
 
   /// fi: Lukema
   ///
@@ -938,1325 +368,233 @@ abstract class AppLocalizations {
   /// **'Reading'**
   String get sbdf670977b;
 
-  /// fi: Verkko: positiivinen = ostat verkosta, negatiivinen = myyt ylijäämää.
+  /// fi: Chromecast ei kerro virtatilaa; "Päällä" on silloin aina 0.
   ///
   /// In en, this message translates to:
-  /// **'Grid: positive = buying from the grid, negative = selling surplus.'**
-  String get s9d61569ac0;
+  /// **'A Chromecast has no power state; \"On\" is then always 0.'**
+  String get s4cd6848cf8;
 
-  /// fi: Aurinkosähkö nyt (W)
+  /// fi: Tila (teksti)
   ///
   /// In en, this message translates to:
-  /// **'Solar power now (W)'**
-  String get sc78a29bef9;
+  /// **'Status (text)'**
+  String get sb545795f0a;
 
-  /// fi: Tuotto tänään (kWh)
+  /// fi: Päällä (1/0)
   ///
   /// In en, this message translates to:
-  /// **'Yield today (kWh)'**
-  String get s88a9d9b593;
+  /// **'On (1/0)'**
+  String get s7c7098854f;
 
-  /// fi: Tuotto yhteensä (kWh)
+  /// fi: Äänenvoimakkuus (%)
   ///
   /// In en, this message translates to:
-  /// **'Total yield (kWh)'**
-  String get s4766881640;
+  /// **'Volume (%)'**
+  String get s1d28a837cb;
 
-  /// fi: Verkko +osto / −myynti (W)
+  /// fi: Mykistetty (1/0)
   ///
   /// In en, this message translates to:
-  /// **'Grid +import / −export (W)'**
-  String get s4e1e06f64a;
+  /// **'Muted (1/0)'**
+  String get sa13c4f1248;
 
-  /// fi: Ostettu yhteensä (kWh)
+  /// fi: Sovellus
   ///
   /// In en, this message translates to:
-  /// **'Imported total (kWh)'**
-  String get s5c5e6866eb;
+  /// **'App'**
+  String get sef1842c9c5;
 
-  /// fi: Myyty yhteensä (kWh)
+  /// fi: Toistettava
   ///
   /// In en, this message translates to:
-  /// **'Exported total (kWh)'**
-  String get s7495975366;
+  /// **'Now playing'**
+  String get sc5c36c50e6;
 
-  /// fi: Akun varaus (%)
+  /// fi: Toistaa (1/0)
   ///
   /// In en, this message translates to:
-  /// **'Battery charge (%)'**
-  String get s275ffaa691;
+  /// **'Playing (1/0)'**
+  String get saded6a492a;
 
-  /// fi: Akku +lataus / −purku (W)
+  /// fi: Komento
   ///
   /// In en, this message translates to:
-  /// **'Battery +charge / −discharge (W)'**
-  String get s9da1bd7ed1;
+  /// **'Command'**
+  String get s5bed8bff00;
 
-  /// fi: Kodin kulutus (W)
+  /// fi: Arvo tulee kytkimestä tai liukusäätimestä.
   ///
   /// In en, this message translates to:
-  /// **'Home consumption (W)'**
-  String get sb6d790453a;
+  /// **'The value comes from the toggle or slider.'**
+  String get s56ada71b4a;
 
-  /// fi: Laite ei kerro tätä lukemaa ({p0})
+  /// fi: Virta päälle/pois (arvo 1/0)
   ///
   /// In en, this message translates to:
-  /// **'The device does not report this reading ({p0})'**
-  String sff9335b6df(String p0);
+  /// **'Power on/off (value 1/0)'**
+  String get s5d41165c1a;
 
-  /// fi: Invertteriä ei ohjata – vain luku
+  /// fi: Äänenvoimakkuus (arvo 0–100)
   ///
   /// In en, this message translates to:
-  /// **'Inverters are read-only'**
-  String get s711b4531bd;
+  /// **'Volume (value 0–100)'**
+  String get s7df609092d;
 
-  /// fi: tuotto
+  /// fi: Mykistys (arvo 1/0)
   ///
   /// In en, this message translates to:
-  /// **'solar'**
-  String get s257cf40257;
+  /// **'Mute (value 1/0)'**
+  String get s7ce360cc79;
 
-  /// fi: verkko
+  /// fi: Näppäin
   ///
   /// In en, this message translates to:
-  /// **'grid'**
-  String get sfa32969a23;
+  /// **'Key'**
+  String get sdce14191c7;
 
-  /// fi: SMA Energy Meter: ei lähetyksiä kotiverkossa (multicast 239.12.255.254:9522)
+  /// fi: Vain komennolle "Näppäin".
   ///
   /// In en, this message translates to:
-  /// **'SMA Energy Meter: no broadcasts on the home network (multicast 239.12.255.254:9522)'**
-  String get s333643b4c4;
+  /// **'Only for the \"Key\" command.'**
+  String get sc91823aedb;
 
-  /// fi: Säästävä
+  /// fi: Toista / tauko
   ///
   /// In en, this message translates to:
-  /// **'Saving'**
-  String get sc27533ae83;
+  /// **'Play / pause'**
+  String get sdac8f8b638;
 
-  /// fi: Lämpö saa vaihdella eniten (+1 / −2 °C). Suurin säästö.
+  /// fi: Toista
   ///
   /// In en, this message translates to:
-  /// **'Temperature may vary the most (+1 / −2 °C). Biggest savings.'**
-  String get sdbcb85509b;
+  /// **'Play'**
+  String get seab0493fde;
 
-  /// fi: Tasapainoinen
+  /// fi: Tauko
   ///
   /// In en, this message translates to:
-  /// **'Balanced'**
-  String get s380b20be36;
+  /// **'Pause'**
+  String get sef0810bb79;
 
-  /// fi: Pieni vaihtelu (+1 / −1 °C). Hyvä oletus.
+  /// fi: Pysäytä
   ///
   /// In en, this message translates to:
-  /// **'Small variation (+1 / −1 °C). A good default.'**
-  String get s66ea783264;
+  /// **'Stop'**
+  String get s6fe2320f3d;
 
-  /// fi: Mukavuus
+  /// fi: Ääni kovemmalle
   ///
   /// In en, this message translates to:
-  /// **'Comfort'**
-  String get see96226e44;
+  /// **'Volume up'**
+  String get s476a29a514;
 
-  /// fi: Lähes tasainen lämpö (+0,5 / −0,5 °C). Säästää vähän.
+  /// fi: Ääni hiljemmalle
   ///
   /// In en, this message translates to:
-  /// **'Almost even temperature (+0.5 / −0.5 °C). Saves a little.'**
-  String get sb403e00b3d;
+  /// **'Volume down'**
+  String get s1cafda29fd;
 
-  /// fi: Löytyy reitittimen laitelistasta tai valmistajan sovelluksesta (laitteen tiedot). Varaa laitteelle kiinteä IP.
+  /// fi: Kotinäkymä
   ///
   /// In en, this message translates to:
-  /// **'Find it in your router\'\'s device list or the maker\'\'s app (device info). Reserve a fixed IP for it.'**
-  String get s0a81072a1f;
+  /// **'Home'**
+  String get s9d9c84b3a8;
 
-  /// fi: Päälukemat
+  /// fi: Takaisin
   ///
   /// In en, this message translates to:
-  /// **'Main readings'**
-  String get s7c6a740594;
+  /// **'Back'**
+  String get scf7e14661c;
 
-  /// fi: Lisäruudut automaatioihin
+  /// fi: Äänenvoimakkuus puuttuu
   ///
   /// In en, this message translates to:
-  /// **'Extra tiles for automations'**
-  String get se74bcc1028;
+  /// **'Volume missing'**
+  String get s94e14089d6;
 
-  /// fi: Huawei SUN2000 (Modbus TCP, paikallinen)
+  /// fi: ääni
   ///
   /// In en, this message translates to:
-  /// **'Huawei SUN2000 (Modbus TCP, local)'**
-  String get s87d0186621;
+  /// **'volume'**
+  String get s5d5363db20;
 
-  /// fi: SUN2000-invertteri (myös LUNA2000-akku ja DTSU666-mittari) SDonglen kautta kotiverkossa, ilman pilveä.
+  /// fi: tila
   ///
   /// In en, this message translates to:
-  /// **'SUN2000 inverter (incl. LUNA2000 battery and DTSU666 meter) via the SDongle on your network, no cloud.'**
-  String get se7647d6762;
+  /// **'status'**
+  String get s14252e6c3a;
 
-  /// fi: SDonglen IP-osoite. Ota ensin käyttöön FusionSolar-sovelluksessa: Laitekäyttöönotto → Dongle → Modbus TCP = "Ota käyttöö
-  ///
-  /// In en, this message translates to:
-  /// **'The SDongle IP address. First enable it in the FusionSolar app: Device commissioning → Dongle → Modbus TCP = \"Enable (unrestricted)\". Without a dongle: the inverter\'\'s own Wi-Fi, address like 192.168.200.1:6607.'**
-  String get sccb0c7d2d8;
-
-  /// fi: Valinnainen: tuotanto FusionSolarin virallisen Northbound-rajapinnan kautta. Päivittyy noin 5 min välein.
-  ///
-  /// In en, this message translates to:
-  /// **'Optional: production through the official FusionSolar Northbound API. Updates about every 5 minutes.'**
-  String get sddc831ec16;
-
-  /// fi: Northbound-API-käyttäjä (ei sovelluksen tavallinen tunnus). Asentaja tai pääkäyttäjä luo sen: Järjestelmä → Yritys → Nor
-  ///
-  /// In en, this message translates to:
-  /// **'A Northbound API user (not your normal app login). The installer / admin creates it: System → Company → Northbound management.'**
-  String get s4424767fdd;
-
-  /// fi: Tallentuu vain tähän laitteeseen salattuna.
-  ///
-  /// In en, this message translates to:
-  /// **'Stored encrypted on this device only.'**
-  String get s7a7ab0d238;
-
-  /// fi: Selaimen osoiterivin palvelin kun kirjaudut FusionSolariin. Oletus eu5.
-  ///
-  /// In en, this message translates to:
-  /// **'The host in your browser address bar when signed in to FusionSolar. Default eu5.'**
-  String get sde3c79670a;
-
-  /// fi: Symo, Primo, Gen24, Tauro – myös Smart Meter ja akku. Valmistajan avoin paikallinen rajapinta, ei pilveä.
-  ///
-  /// In en, this message translates to:
-  /// **'Symo, Primo, Gen24, Tauro – incl. Smart Meter and battery. The maker\'\'s open local API, no cloud.'**
-  String get se80d87723d;
-
-  /// fi: {p0} Gen24: ota Solar API käyttöön invertterin web-sivulta (Viestintä → Solar API).
-  ///
-  /// In en, this message translates to:
-  /// **' Gen24: enable the Solar API on the inverter web page (Communication → Solar API).'**
-  String s1cb0924dc9(String p0);
-
-  /// fi: SolarEdge-invertteri, mittari ja akku SunSpec Modbusilla kotiverkossa (portti 1502).
-  ///
-  /// In en, this message translates to:
-  /// **'SolarEdge inverter, meter and battery over SunSpec Modbus on your network (port 1502).'**
-  String get s1345214178;
-
-  /// fi: {p0} Ota Modbus TCP käyttöön SetApp-sovelluksella: Käyttöönotto → Tiedonsiirto → Modbus TCP.
-  ///
-  /// In en, this message translates to:
-  /// **' Enable Modbus TCP with the SetApp: Commissioning → Communication → Modbus TCP.'**
-  String s1f7b006036(String p0);
-
-  /// fi: Valinnainen: tuotanto ja energiavirrat SolarEdgen virallisen monitoring-rajapinnan kautta (päivittyy ~5 min).
-  ///
-  /// In en, this message translates to:
-  /// **'Optional: production and power flow through the official SolarEdge monitoring API (updates ~5 min).'**
-  String get s5d43115e7d;
-
-  /// fi: monitoring.solaredge.com → Admin → Site Access → API Access: hyväksy ehdot ja kopioi avain.
-  ///
-  /// In en, this message translates to:
-  /// **'monitoring.solaredge.com → Admin → Site Access → API Access: accept the terms and copy the key.'**
-  String get sbe1a020a66;
-
-  /// fi: Sunny Boy, Sunny Tripower, Sunny Boy Storage – SMA:n Modbus-rekisterit kotiverkossa (unit id 3).
-  ///
-  /// In en, this message translates to:
-  /// **'Sunny Boy, Sunny Tripower, Sunny Boy Storage – SMA Modbus registers on your network (unit id 3).'**
-  String get s9c5e673c38;
-
-  /// fi: {p0} Ota Modbus käyttöön invertterin web-sivulta: Laitteen parametrit → Ulkoinen tiedonsiirto → Modbus TCP-palvelin.
-  ///
-  /// In en, this message translates to:
-  /// **' Enable Modbus on the inverter web page: Device parameters → External communication → Modbus TCP server.'**
-  String s4fad533521(String p0);
-
-  /// fi: SMA Energy Meter / Home Manager (Speedwire, paikallinen)
-  ///
-  /// In en, this message translates to:
-  /// **'SMA Energy Meter / Home Manager (Speedwire, local)'**
-  String get s528ecf3140;
-
-  /// fi: Verkosta osto ja myynti suoraan mittarin Speedwire-lähetyksistä – ei kirjautumista eikä pilveä.
-  ///
-  /// In en, this message translates to:
-  /// **'Grid import and export straight from the meter\'\'s Speedwire broadcasts – no login, no cloud.'**
-  String get sa7e3cb3d48;
-
-  /// fi: Mittari löytyy automaattisesti samasta kotiverkosta. Jos haku ei löydä sitä, kirjoita mittarin IP-osoite (luku tulee sil
-  ///
-  /// In en, this message translates to:
-  /// **'The meter is found automatically on the same home network. If the search misses it, type the meter IP (readings still come from its broadcasts).'**
-  String get s126a0713b8;
-
-  /// fi: Growatt (Modbus TCP, paikallinen)
-  ///
-  /// In en, this message translates to:
-  /// **'Growatt (Modbus TCP, local)'**
-  String get sbdf4d24f64;
-
-  /// fi: MIN/MOD/SPH-invertterit RS485→TCP-muuntimen (tai Modbus TCP:tä tukevan ShineLan-X:n) kautta. Tarkista lukemat.
-  ///
-  /// In en, this message translates to:
-  /// **'MIN/MOD/SPH inverters via an RS485→TCP gateway (or a ShineLan-X with Modbus TCP). Verify the readings.'**
-  String get s6c5156d740;
-
-  /// fi: RS485→Modbus TCP -muuntimen IP-osoite (esim. Elfin EW11, Waveshare). Kytketään invertterin RS485/COM-liittimeen.
-  ///
-  /// In en, this message translates to:
-  /// **'IP of the RS485→Modbus TCP gateway (e.g. Elfin EW11, Waveshare) wired to the inverter RS485/COM port.'**
-  String get se351eda9ce;
-
-  /// fi: Valinnainen: tuotanto Growattin OpenAPI:n kautta (ShinePhone/ShineServer-tili). Päivittyy ~5 min.
-  ///
-  /// In en, this message translates to:
-  /// **'Optional: production through the Growatt OpenAPI (ShinePhone/ShineServer account). Updates ~5 min.'**
-  String get s06257dd63c;
-
-  /// fi: Pyydä token Growattin tuesta tai asentajalta (OpenAPI), tai ShineServerin asetuksista jos se näkyy.
-  ///
-  /// In en, this message translates to:
-  /// **'Ask Growatt support or your installer for an OpenAPI token, or find it in ShineServer settings if shown.'**
-  String get sbd8c9831bb;
-
-  /// fi: Kostal, Fronius (Modbus), SMA (SunSpec), ABB/FIMER, Sungrow-mittarit… Mikä tahansa SunSpec-laite.
-  ///
-  /// In en, this message translates to:
-  /// **'Kostal, Fronius (Modbus), SMA (SunSpec), ABB/FIMER… Any SunSpec device.'**
-  String get s3c89bd3976;
-
-  /// fi: {p0} Portti oletuksena 502 – muu portti muodossa 192.168.1.20:1502.
-  ///
-  /// In en, this message translates to:
-  /// **' Port 502 by default – another port like 192.168.1.20:1502.'**
-  String s183e57cdfd(String p0);
-
-  /// fi: Aurinkosähkö
-  ///
-  /// In en, this message translates to:
-  /// **'Solar power'**
-  String get s981854cf46;
-
-  /// fi: Huawei, Fronius, SolarEdge, SMA, Growatt – tuotanto, verkko ja akku. Paikallisesti, pilvi valinnainen.
-  ///
-  /// In en, this message translates to:
-  /// **'Huawei, Fronius, SolarEdge, SMA, Growatt – production, grid and battery. Local, cloud optional.'**
-  String get s984804da72;
-
-  /// fi: Sonoff
-  ///
-  /// In en, this message translates to:
-  /// **'Sonoff'**
-  String get sd86b823895;
-
-  /// fi: BASIC, MINI, POW, TH, 4CH… DIY-tilassa, Tasmotalla tai ESPHomella. Ruudut tehdään valmiiksi, etänä kotisillan kautta.
-  ///
-  /// In en, this message translates to:
-  /// **'BASIC, MINI, POW, TH, 4CH… in DIY mode, with Tasmota or ESPHome. Tiles are made for you; remote use via the home bridge.'**
-  String get s5f297ec9d8;
-
-  /// fi: eWeLink-sovellus → laite → Asetukset näyttää IP-osoitteen, tai reitittimen laitelista. DIY-tilassa tarvitset myös laitte
-  ///
-  /// In en, this message translates to:
-  /// **'eWeLink app → device → Settings shows the IP address, or your router\'\'s device list. In DIY mode you also need the Device ID (10 characters).'**
-  String get s60e829b1b0;
-
-  /// fi: DIY-tilan Sonoff vastaa vain, kun sille kerrotaan sen tunnus (Device ID). Se näkyy eWeLink-sovelluksessa: laite → Asetuk
-  ///
-  /// In en, this message translates to:
-  /// **'A Sonoff in DIY mode only answers when told its Device ID. Find it in the eWeLink app: device → Settings → Device ID. Tasmota: the web password, if set.'**
-  String get s6a46e8954d;
-
-  /// fi: Vain DIY-tilassa, jos laitetta ei löytynyt haulla.
-  ///
-  /// In en, this message translates to:
-  /// **'Only in DIY mode when the search did not find the device.'**
-  String get sea057f1a02;
-
-  /// fi: Kanava {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'Channel {p0}'**
-  String s08d04d58a9(String p0);
-
-  /// fi: Lämpötila
-  ///
-  /// In en, this message translates to:
-  /// **'Temperature'**
-  String get s8653f173b6;
-
-  /// fi: Kosteus
-  ///
-  /// In en, this message translates to:
-  /// **'Humidity'**
-  String get s9cb8820285;
-
-  /// fi: Teho
-  ///
-  /// In en, this message translates to:
-  /// **'Power'**
-  String get s4899323b9a;
-
-  /// fi: teho
+  /// fi: virta
   ///
   /// In en, this message translates to:
   /// **'power'**
-  String get se78754330c;
+  String get s58332642fb;
 
-  /// fi: Kuiva
+  /// fi: äänenvoimakkuus
   ///
   /// In en, this message translates to:
-  /// **'VUOTO!'**
-  String get se317f59de2;
+  /// **'volume'**
+  String get s449ab0a31f;
 
-  /// fi: Dry
+  /// fi: mykistys
   ///
   /// In en, this message translates to:
-  /// **'LEAK!'**
-  String get se4c4201882;
+  /// **'mute'**
+  String get s3a12232f33;
 
-  /// fi: Kiinni
+  /// fi: Televisio hylkäsi yhteyden
   ///
   /// In en, this message translates to:
-  /// **'Auki'**
-  String get sdbcf5515c1;
+  /// **'The TV refused the connection'**
+  String get s46a1321d85;
 
-  /// fi: Closed
+  /// fi: Hyväksy yhteys televisiosta ja yritä uudelleen
   ///
   /// In en, this message translates to:
-  /// **'Open'**
-  String get sb0af7213b5;
+  /// **'Accept the connection on the TV and try again'**
+  String get sbfbb3d52b3;
 
-  /// fi: Ei liikettä
+  /// fi: Televisio vaatii parituksen
   ///
   /// In en, this message translates to:
-  /// **'Liikettä'**
-  String get sa3477dac6e;
+  /// **'The TV needs pairing'**
+  String get sf2993f0346;
 
-  /// fi: No motion
+  /// fi: ei vastaa
   ///
   /// In en, this message translates to:
-  /// **'Motion'**
-  String get s280df88585;
+  /// **'does not answer'**
+  String get s43720a9032;
 
-  /// fi: OK
+  /// fi: ei JointSPACE-televisio
   ///
   /// In en, this message translates to:
-  /// **'SAVUA!'**
-  String get s064a959911;
+  /// **'is not a JointSPACE TV'**
+  String get s3a275af4f7;
 
-  /// fi: OK
+  /// fi: paritus ei ole käynnissä
   ///
   /// In en, this message translates to:
-  /// **'SMOKE!'**
-  String get s50778e2eec;
+  /// **'no pairing in progress'**
+  String get s3d91340835;
 
-  /// fi: Rauhallinen
+  /// fi: Väärä PIN-koodi tai paritus vanhentui
   ///
   /// In en, this message translates to:
-  /// **'Hälytys'**
-  String get s1dfa5abe81;
+  /// **'Wrong PIN or the pairing expired'**
+  String get secb14ea9df;
 
-  /// fi: Calm
-  ///
-  /// In en, this message translates to:
-  /// **'Alarm'**
-  String get s50c459fbff;
-
-  /// fi: temperature
-  ///
-  /// In en, this message translates to:
-  /// **'°C'**
-  String get s1a4eab1f51;
-
-  /// fi: humidity
-  ///
-  /// In en, this message translates to:
-  /// **'%'**
-  String get s9e731440d8;
-
-  /// fi: battery
-  ///
-  /// In en, this message translates to:
-  /// **'%'**
-  String get s77c638e731;
-
-  /// fi: contact
+  /// fi: {p0}
   ///
   /// In en, this message translates to:
   /// **''**
-  String get s96abb7f975;
+  String s404f230c13(String p0);
 
-  /// fi: motion
+  /// fi: Pois päältä
   ///
   /// In en, this message translates to:
-  /// **''**
-  String get s91e5760e43;
-
-  /// fi: bthome
-  ///
-  /// In en, this message translates to:
-  /// **''**
-  String get s2f76c2abd3;
-
-  /// fi: Kytkimet ja releet
-  ///
-  /// In en, this message translates to:
-  /// **'Switches and relays'**
-  String get sc2b99541c7;
-
-  /// fi: Valot ja himmentimet
-  ///
-  /// In en, this message translates to:
-  /// **'Lights and dimmers'**
-  String get sd85dbd8e5e;
-
-  /// fi: Verhot ja rullakaihtimet
-  ///
-  /// In en, this message translates to:
-  /// **'Covers and rollers'**
-  String get s38935a3c66;
-
-  /// fi: Energiamittarit
-  ///
-  /// In en, this message translates to:
-  /// **'Energy meters'**
-  String get s64c6ca7840;
-
-  /// fi: Anturit
-  ///
-  /// In en, this message translates to:
-  /// **'Sensors'**
-  String get s662fecdc8d;
-
-  /// fi: Kytkin
-  ///
-  /// In en, this message translates to:
-  /// **'Switch'**
-  String get s027fcbe1b6;
-
-  /// fi: Valo
-  ///
-  /// In en, this message translates to:
-  /// **'Light'**
-  String get sa376ec78ec;
-
-  /// fi: Rullakaihdin
-  ///
-  /// In en, this message translates to:
-  /// **'Cover'**
-  String get s6814e463b1;
-
-  /// fi: Kokonaisteho
-  ///
-  /// In en, this message translates to:
-  /// **'Total power'**
-  String get s477d8b2c95;
-
-  /// fi: Vaihe {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'Phase {p0}'**
-  String sdaa374b331(String p0);
-
-  /// fi: Valoisuus
-  ///
-  /// In en, this message translates to:
-  /// **'Light level'**
-  String get s32c88e5aa6;
-
-  /// fi: Akku
-  ///
-  /// In en, this message translates to:
-  /// **'Battery'**
-  String get sbb26f2192c;
-
-  /// fi: Ovi / ikkuna
-  ///
-  /// In en, this message translates to:
-  /// **'Door / window'**
-  String get s57b4effa42;
-
-  /// fi: Liike
-  ///
-  /// In en, this message translates to:
-  /// **'Motion'**
-  String get s66350d8e7a;
-
-  /// fi: Vesivuoto
-  ///
-  /// In en, this message translates to:
-  /// **'Flood'**
-  String get s29045a726e;
-
-  /// fi: Savu
-  ///
-  /// In en, this message translates to:
-  /// **'Smoke'**
-  String get s57c2113aee;
-
-  /// fi: Anturi
-  ///
-  /// In en, this message translates to:
-  /// **'Sensor'**
-  String get se8422f063f;
-
-  /// fi: päällä
-  ///
-  /// In en, this message translates to:
-  /// **'on'**
-  String get s609cb4c5f9;
-
-  /// fi: pois
-  ///
-  /// In en, this message translates to:
-  /// **'off'**
-  String get s356d822497;
-
-  /// fi: auki
-  ///
-  /// In en, this message translates to:
-  /// **'open'**
-  String get s0b2f7d7c80;
-
-  /// fi: kiinni
-  ///
-  /// In en, this message translates to:
-  /// **'closed'**
-  String get s7009587b85;
-
-  /// fi: liikettä
-  ///
-  /// In en, this message translates to:
-  /// **'motion'**
-  String get s3b35de231e;
-
-  /// fi: HÄLYTYS
-  ///
-  /// In en, this message translates to:
-  /// **'ALARM'**
-  String get s3dfa789b85;
-
-  /// fi: Muut
-  ///
-  /// In en, this message translates to:
-  /// **'Other'**
-  String get sd9b6de0a6a;
-
-  /// fi: nukkuu – viimeksi {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'asleep – last {p0}'**
-  String se7520a3990(String p0);
-
-  /// fi: ei yhteydessä pilveen
-  ///
-  /// In en, this message translates to:
-  /// **'offline'**
-  String get s3aaacf80d2;
-
-  /// fi: kirkkaus
-  ///
-  /// In en, this message translates to:
-  /// **'brightness'**
-  String get see129fb410;
-
-  /// fi: true=Auki;false=Kiinni
-  ///
-  /// In en, this message translates to:
-  /// **'true=Open;false=Closed'**
-  String get s5d888c1384;
-
-  /// fi: true=Liikettä;false=Ei liikettä
-  ///
-  /// In en, this message translates to:
-  /// **'true=Motion;false=No motion'**
-  String get sd74ad36c31;
-
-  /// fi: true=VUOTO!;false=Kuiva
-  ///
-  /// In en, this message translates to:
-  /// **'true=LEAK!;false=Dry'**
-  String get sfa12d7fdd7;
-
-  /// fi: true=SAVUA!;false=OK
-  ///
-  /// In en, this message translates to:
-  /// **'true=SMOKE!;false=OK'**
-  String get s1f18c0f400;
-
-  /// fi: Valo{p0}
-  ///
-  /// In en, this message translates to:
-  /// **'Light{p0}'**
-  String s1a9acfbc67(String p0);
-
-  /// fi: Verho{p0}
-  ///
-  /// In en, this message translates to:
-  /// **'Cover{p0}'**
-  String s5d0fb602f6(String p0);
-
-  /// fi: Lämpötila{p0} (lisäosa)
-  ///
-  /// In en, this message translates to:
-  /// **'Temperature{p0} (add-on)'**
-  String s82ecc12a66(String p0);
-
-  /// fi: lämpötila
-  ///
-  /// In en, this message translates to:
-  /// **'temperature'**
-  String get s68e711123b;
-
-  /// fi: kosteus
-  ///
-  /// In en, this message translates to:
-  /// **'humidity'**
-  String get s736646b3b0;
-
-  /// fi: valoisuus
-  ///
-  /// In en, this message translates to:
-  /// **'illuminance'**
-  String get s8b234e1a6f;
-
-  /// fi: paristo
-  ///
-  /// In en, this message translates to:
-  /// **'battery'**
-  String get s03a198454c;
-
-  /// fi: Philips Hue
-  ///
-  /// In en, this message translates to:
-  /// **'Philips Hue'**
-  String get s0bf7cb1613;
-
-  /// fi: Hue-silta ja sen valot (myös Zigbee-valot, jotka on liitetty Hue-siltaan). Paritus sillan painikkeella.
-  ///
-  /// In en, this message translates to:
-  /// **'Hue Bridge and its lights (also Zigbee lights paired to it). Pair with the bridge button.'**
-  String get se17d4e4197;
-
-  /// fi: Hue-sovelluksessa: Asetukset → Hue-sillat → (i) → IP-osoite. Tai reitittimen laitelistasta: "Philips-hue".
-  ///
-  /// In en, this message translates to:
-  /// **'In the Hue app: Settings → Hue Bridges → (i) → IP address. Or in your router\'\'s device list: \"Philips-hue\".'**
-  String get sf83a145406;
-
-  /// fi: Paina nyt Hue-sillan päällä olevaa isoa pyöreää painiketta. Odota tässä – yhteys syntyy itsestään.
-  ///
-  /// In en, this message translates to:
-  /// **'Press the big round button on top of the Hue Bridge now. Wait here – it connects by itself.'**
-  String get s80ee7a25a9;
-
-  /// fi: ei tavoitettavissa
-  ///
-  /// In en, this message translates to:
-  /// **'unreachable'**
-  String get s4dbb677293;
-
-  /// fi: himmennettävä
-  ///
-  /// In en, this message translates to:
-  /// **'dimmable'**
-  String get sf50732e8e8;
-
-  /// fi: anturi
-  ///
-  /// In en, this message translates to:
-  /// **'sensor'**
-  String get s4082a34467;
-
-  /// fi: koko huone ({p0} valoa)
-  ///
-  /// In en, this message translates to:
-  /// **'whole room'**
-  String s3832b8c729(String p0);
-
-  /// fi: provider
-  ///
-  /// In en, this message translates to:
-  /// **'camera_'**
-  String get sceabe202da;
-
-  /// fi: gk-200
-  ///
-  /// In en, this message translates to:
-  /// **'sonoff'**
-  String get s1a73b397a1;
-
-  /// fi: ds-2
-  ///
-  /// In en, this message translates to:
-  /// **'hikvision'**
-  String get sb8a029d8b4;
-
-  /// fi: tp-link
-  ///
-  /// In en, this message translates to:
-  /// **'tapo'**
-  String get s2e87289ebd;
-
-  /// fi: iphone
-  ///
-  /// In en, this message translates to:
-  /// **'Apple'**
-  String get s834e3e8c5d;
-
-  /// fi: ipad
-  ///
-  /// In en, this message translates to:
-  /// **'Apple'**
-  String get s11d8d321df;
-
-  /// fi: macbook
-  ///
-  /// In en, this message translates to:
-  /// **'Apple'**
-  String get sceefb34afd;
-
-  /// fi: imac
-  ///
-  /// In en, this message translates to:
-  /// **'Apple'**
-  String get s24a447c14c;
-
-  /// fi: mac mini
-  ///
-  /// In en, this message translates to:
-  /// **'Apple'**
-  String get s14418a4f88;
-
-  /// fi: appletv
-  ///
-  /// In en, this message translates to:
-  /// **'Apple'**
-  String get saab3e952a6;
-
-  /// fi: apple tv
-  ///
-  /// In en, this message translates to:
-  /// **'Apple'**
-  String get s7fbbfbf469;
-
-  /// fi: galaxy
-  ///
-  /// In en, this message translates to:
-  /// **'Samsung'**
-  String get s045b27e316;
-
-  /// fi: samsung
-  ///
-  /// In en, this message translates to:
-  /// **'Samsung'**
-  String get s2c0aede81e;
-
-  /// fi: pixel
-  ///
-  /// In en, this message translates to:
-  /// **'Google'**
-  String get s7bd2005e15;
-
-  /// fi: chromecast
-  ///
-  /// In en, this message translates to:
-  /// **'Google'**
-  String get sdcec96b503;
-
-  /// fi: google
-  ///
-  /// In en, this message translates to:
-  /// **'Google'**
-  String get s49960d413e;
-
-  /// fi: nest
-  ///
-  /// In en, this message translates to:
-  /// **'Google'**
-  String get s99e5776a78;
-
-  /// fi: sonos
-  ///
-  /// In en, this message translates to:
-  /// **'Sonos'**
-  String get sea3c963b09;
-
-  /// fi: synology
-  ///
-  /// In en, this message translates to:
-  /// **'Synology'**
-  String get s1e7b1fc81c;
-
-  /// fi: diskstation
-  ///
-  /// In en, this message translates to:
-  /// **'Synology'**
-  String get s7dc8f4cf35;
-
-  /// fi: qnap
-  ///
-  /// In en, this message translates to:
-  /// **'QNAP'**
-  String get s161d78d79c;
-
-  /// fi: brother
-  ///
-  /// In en, this message translates to:
-  /// **'Brother'**
-  String get s2512122220;
-
-  /// fi: epson
-  ///
-  /// In en, this message translates to:
-  /// **'Epson'**
-  String get s127258a6f4;
-
-  /// fi: canon
-  ///
-  /// In en, this message translates to:
-  /// **'Canon'**
-  String get s4e31401b4f;
-
-  /// fi: hp
-  ///
-  /// In en, this message translates to:
-  /// **'HP'**
-  String get s933e21c819;
-
-  /// fi: hewlett
-  ///
-  /// In en, this message translates to:
-  /// **'HP'**
-  String get sb309051c1f;
-
-  /// fi: officejet
-  ///
-  /// In en, this message translates to:
-  /// **'HP'**
-  String get s6f339c5c37;
-
-  /// fi: laserjet
-  ///
-  /// In en, this message translates to:
-  /// **'HP'**
-  String get s5f8734f6e4;
-
-  /// fi: xiaomi
-  ///
-  /// In en, this message translates to:
-  /// **'Xiaomi'**
-  String get sceb247a904;
-
-  /// fi: huawei
-  ///
-  /// In en, this message translates to:
-  /// **'Huawei'**
-  String get s10b7b68d6c;
-
-  /// fi: lg
-  ///
-  /// In en, this message translates to:
-  /// **'LG'**
-  String get s3692c1d592;
-
-  /// fi: webos
-  ///
-  /// In en, this message translates to:
-  /// **'LG'**
-  String get se7d945b970;
-
-  /// fi: bravia
-  ///
-  /// In en, this message translates to:
-  /// **'Sony'**
-  String get s5a5044b5df;
-
-  /// fi: sony
-  ///
-  /// In en, this message translates to:
-  /// **'Sony'**
-  String get sd92d7da7d5;
-
-  /// fi: philips
-  ///
-  /// In en, this message translates to:
-  /// **'Philips'**
-  String get saa909391c3;
-
-  /// fi: raspberry
-  ///
-  /// In en, this message translates to:
-  /// **'Raspberry Pi'**
-  String get se39b8c84ab;
-
-  /// fi: fritz
-  ///
-  /// In en, this message translates to:
-  /// **'AVM'**
-  String get sec8808f414;
-
-  /// fi: tp-link
-  ///
-  /// In en, this message translates to:
-  /// **'TP-Link'**
-  String get s0e225fb918;
-
-  /// fi: asus
-  ///
-  /// In en, this message translates to:
-  /// **'ASUS'**
-  String get sb34f35dce5;
-
-  /// fi: netgear
-  ///
-  /// In en, this message translates to:
-  /// **'Netgear'**
-  String get s7ea140809c;
-
-  /// fi: ubiquiti
-  ///
-  /// In en, this message translates to:
-  /// **'Ubiquiti'**
-  String get s284be225b7;
-
-  /// fi: unifi
-  ///
-  /// In en, this message translates to:
-  /// **'Ubiquiti'**
-  String get sfbaeb6a17e;
-
-  /// fi: mikrotik
-  ///
-  /// In en, this message translates to:
-  /// **'MikroTik'**
-  String get sa24e9ce91d;
-
-  /// fi: espressif
-  ///
-  /// In en, this message translates to:
-  /// **'Espressif'**
-  String get sa1b725d397;
-
-  /// fi: amazon
-  ///
-  /// In en, this message translates to:
-  /// **'Amazon'**
-  String get sdf96423738;
-
-  /// fi: echo
-  ///
-  /// In en, this message translates to:
-  /// **'Amazon'**
-  String get sf253859589;
-
-  /// fi: roku
-  ///
-  /// In en, this message translates to:
-  /// **'Roku'**
-  String get sec4d80656d;
-
-  /// fi: Yhteensä
-  ///
-  /// In en, this message translates to:
-  /// **'Total'**
-  String get s286e1cfb54;
-
-  /// fi: Teho {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'Power {p0}'**
-  String sb9964cfb3b(String p0);
-
-  /// fi: Vesivuotoanturi
-  ///
-  /// In en, this message translates to:
-  /// **'Water leak sensor'**
-  String get s4233362d60;
-
-  /// fi: Shelly
-  ///
-  /// In en, this message translates to:
-  /// **'Shelly'**
-  String get sfcb44be1a0;
-
-  /// fi: Releet, pistorasiat, himmentimet, verhot, energiamittarit (Pro 3EM) ja anturit. Löytyy automaattisesti, toimii ilman pil
-  ///
-  /// In en, this message translates to:
-  /// **'Relays, plugs, dimmers, covers, energy meters (Pro 3EM) and sensors. Found automatically, works without the cloud.'**
-  String get sc7df69ad6e;
-
-  /// fi: Shelly-sovelluksessa: avaa laite → ratas (asetukset) → Laitetiedot → IP-osoite. Tai reitittimen laitelistasta: nimi alka
-  ///
-  /// In en, this message translates to:
-  /// **'In the Shelly app: open the device → gear (settings) → Device information → IP address. Or in your router\'\'s device list: the name starts with \"shelly…\".'**
-  String get sd7e123cd2f;
-
-  /// fi: vuotoanturi · paristo
-  ///
-  /// In en, this message translates to:
-  /// **'leak sensor · battery'**
-  String get s9ad7b0076b;
-
-  /// fi: Kontaktorin ohjaus
-  ///
-  /// In en, this message translates to:
-  /// **'Contactor control'**
-  String get s815bfa19dc;
-
-  /// fi: lisää vain, jos rele on käytössä
-  ///
-  /// In en, this message translates to:
-  /// **'add only if the relay is in use'**
-  String get sb9209fee74;
-
-  /// fi: nyt päällä
-  ///
-  /// In en, this message translates to:
-  /// **'on now'**
-  String get s5f2b2ca5f5;
-
-  /// fi: nyt pois
-  ///
-  /// In en, this message translates to:
-  /// **'off now'**
-  String get s67f64cd925;
-
-  /// fi: Mittaus
-  ///
-  /// In en, this message translates to:
-  /// **'Metering'**
-  String get s8b35cc884f;
-
-  /// fi: kalibroi Shelly-sovelluksessa, niin saat liukusäätimen
-  ///
-  /// In en, this message translates to:
-  /// **'calibrate in the Shelly app to get a slider'**
-  String get sa58e7aab49;
-
-  /// fi: paristolaite: päivittyy kun herää
-  ///
-  /// In en, this message translates to:
-  /// **'battery device: updates when awake'**
-  String get s78b6134b71;
-
-  /// fi: Shelly Cloud (ilman kotisiltaa)
-  ///
-  /// In en, this message translates to:
-  /// **'Shelly Cloud (no bridge)'**
-  String get sd8dfb25d31;
-
-  /// fi: Ohjaa Shellyjä Shellyn pilven kautta mistä tahansa. Tarvitset vain Shelly-sovelluksen avaimen.
-  ///
-  /// In en, this message translates to:
-  /// **'Control Shellys through the Shelly cloud from anywhere. You only need the key from the Shelly app.'**
-  String get s350215338a;
-
-  /// fi: Shelly-sovellus → oma profiili (ylhäällä) → Käyttäjäasetukset → Authorization cloud key → Get key. Kopioi avain ja liitä
-  ///
-  /// In en, this message translates to:
-  /// **'Shelly app → your profile → User settings → Authorization cloud key → Get key. Copy and paste it here.'**
-  String get s64037991c2;
-
-  /// fi: Näkyy samalla sivulla avaimen alla ("Server URI"), esim. shelly-103-eu.shelly.cloud.
-  ///
-  /// In en, this message translates to:
-  /// **'Shown on the same page below the key (\"Server URI\").'**
-  String get s062b21969d;
-
-  /// fi: Yleensä ei tarvita – laitteet haetaan automaattisesti. Jos ei löydy: Shelly-sovellus → laite → asetukset → Laitetiedot →
-  ///
-  /// In en, this message translates to:
-  /// **'Usually not needed. If nothing is found: Shelly app → device → settings → Device information → Device ID. Separate several with commas.'**
-  String get sf30bb5d5e6;
-
-  /// fi: Palvelin
-  ///
-  /// In en, this message translates to:
-  /// **'Server'**
-  String get s25399cd337;
-
-  /// fi: Shelly-sovellus → Käyttäjäasetukset → Authorization cloud key → Server URI.
-  ///
-  /// In en, this message translates to:
-  /// **'Shelly app → User settings → Authorization cloud key → Server URI.'**
-  String get s246c7a46ff;
-
-  /// fi: Pilviavain
-  ///
-  /// In en, this message translates to:
-  /// **'Cloud key'**
-  String get s61a2d946a4;
-
-  /// fi: Shelly-sovellus → Käyttäjäasetukset → Authorization cloud key → Get key.
-  ///
-  /// In en, this message translates to:
-  /// **'Shelly app → User settings → Authorization cloud key → Get key.'**
-  String get s9d468f5c64;
-
-  /// fi: IKEA Dirigera
-  ///
-  /// In en, this message translates to:
-  /// **'IKEA Dirigera'**
-  String get sf34c97592f;
-
-  /// fi: IKEAn älykeskus ja sen valot ja pistorasiat (Zigbee). Paritus keskuksen painikkeella.
-  ///
-  /// In en, this message translates to:
-  /// **'IKEA smart hub and its lights and plugs (Zigbee). Pair with the button on the hub.'**
-  String get sb38eac6a87;
-
-  /// fi: IKEA Home smart -sovelluksessa: Asetukset → Keskus → IP-osoite. Tai reitittimen laitelistasta: "gw2-…" tai "dirigera".
-  ///
-  /// In en, this message translates to:
-  /// **'In the IKEA Home smart app: Settings → Hub → IP address. Or in your router\'\'s device list: \"gw2-…\" or \"dirigera\".'**
-  String get s4e92ab791e;
-
-  /// fi: Paina nyt Dirigera-keskuksen pohjassa olevaa toimintopainiketta (pieni painike) kerran. Odota tässä.
-  ///
-  /// In en, this message translates to:
-  /// **'Press the action button on the bottom of the Dirigera hub once now. Wait here.'**
-  String get s73824fc3d0;
-
-  /// fi: Pistorasia
-  ///
-  /// In en, this message translates to:
-  /// **'Plug'**
-  String get sda8d9bf1cd;
-
-  /// fi: Kameran käyttäjä (yleensä admin) ja salasana, jonka asetit kameran aktivoinnissa.
-  ///
-  /// In en, this message translates to:
-  /// **'The camera user (usually admin) and the password you set when activating it.'**
-  String get s0185672be7;
-
-  /// fi: Käyttäjä admin. Imou: salasana on kameran tarrassa oleva "Safety code" tai laitesalasana.
-  ///
-  /// In en, this message translates to:
-  /// **'User admin. Imou: the password is the \"Safety code\" on the camera label or the device password.'**
-  String get s814f4633e3;
-
-  /// fi: Reolink-sovelluksen kameran käyttäjä (yleensä admin) ja salasana.
-  ///
-  /// In en, this message translates to:
-  /// **'The camera user in the Reolink app (usually admin) and its password.'**
-  String get s4450807111;
-
-  /// fi: Reolink-sovellus → kamera → Asetukset → Verkko → Lisäasetukset → Palvelinasetukset: laita HTTP ja RTSP päälle. Akkukamer
-  ///
-  /// In en, this message translates to:
-  /// **'Reolink app → camera → Settings → Network → Advanced → Server settings: turn on HTTP and RTSP. Battery cameras (Argus) are not supported.'**
-  String get s1095c54819;
-
-  /// fi: Tapo-sovellus → kamera → Lisäasetukset → Kameran tili. Tee sinne käyttäjä ja salasana ja kirjoita ne tähän (ei Tapo-pilv
-  ///
-  /// In en, this message translates to:
-  /// **'Tapo app → camera → Advanced settings → Camera account. Create a user and password there and type them here (not your Tapo cloud login).'**
-  String get sc79a5fee2b;
-
-  /// fi: Tee ensin kameran tili: Tapo-sovellus → kamera → Lisäasetukset → Kameran tili.
-  ///
-  /// In en, this message translates to:
-  /// **'First create a camera account: Tapo app → camera → Advanced settings → Camera account.'**
-  String get s174e06b97c;
-
-  /// fi: Käyttäjä admin, salasana on kameran tarrassa oleva 6-kirjaiminen vahvistuskoodi (Verification code).
-  ///
-  /// In en, this message translates to:
-  /// **'User admin; the password is the 6-letter verification code on the camera label.'**
-  String get s21da6fb5dc;
-
-  /// fi: Ezviz-sovellus → kamera → Asetukset → LAN Live View / RTSP: laita päälle (jos valinta on).
-  ///
-  /// In en, this message translates to:
-  /// **'Ezviz app → camera → Settings → LAN Live View / RTSP: turn it on (if the option exists).'**
-  String get s1866ef6dc8;
-
-  /// fi: eWeLink-sovelluksessa kameralle asetettu käyttäjä ja salasana (RTSP/ONVIF). Kaksilinssisessä mallissa molemmat linssit t
-  ///
-  /// In en, this message translates to:
-  /// **'The user and password set for the camera in the eWeLink app (RTSP/ONVIF). On a dual-lens model both lenses come from the same device.'**
-  String get s70625d8bbe;
-
-  /// fi: eWeLink-sovellus → kamera → Asetukset: laita RTSP/ONVIF päälle ja aseta sille käyttäjä ja salasana (jos valinta on).
-  ///
-  /// In en, this message translates to:
-  /// **'eWeLink app → camera → Settings: turn on RTSP/ONVIF and set a user and password for it (if the option exists).'**
-  String get s1a3c354399;
-
-  /// fi: Kameran käyttäjä ja salasana (usein admin). ONVIF pitää ehkä laittaa päälle kameran asetuksista.
-  ///
-  /// In en, this message translates to:
-  /// **'The camera user and password (often admin). ONVIF may need to be enabled in the camera settings.'**
-  String get s1c2786e15f;
-
-  /// fi: Valvontakamera
-  ///
-  /// In en, this message translates to:
-  /// **'Security camera'**
-  String get s32270de47a;
-
-  /// fi: Hikvision, Dahua, Reolink, Tapo, Ezviz, Sonoff tai muu ONVIF/RTSP-kamera. Kuva ruutuun, live-video kotona.
-  ///
-  /// In en, this message translates to:
-  /// **'Hikvision, Dahua, Reolink, Tapo, Ezviz, Sonoff or any ONVIF/RTSP camera. Picture on a tile, live video at home.'**
-  String get s652458eb87;
-
-  /// fi: Kameran sovelluksesta (laitetiedot) tai reitittimen laitelistasta.
-  ///
-  /// In en, this message translates to:
-  /// **'In the camera app (device info) or your router\'\'s device list.'**
-  String get se8ea97c5eb;
-
-  /// fi: kamera
-  ///
-  /// In en, this message translates to:
-  /// **'camera'**
-  String get s1577068729;
-
-  /// fi: Kamera
-  ///
-  /// In en, this message translates to:
-  /// **'Camera'**
-  String get seeb6c38c8e;
-
-  /// fi: Kuvavirta {p0}/{p1} (oma linssi tai kanava)
-  ///
-  /// In en, this message translates to:
-  /// **'Stream {p0}/{p1} (own lens or channel)'**
-  String s83d937ae6b(String p0, String p1);
-
-  /// fi: Kuva ruutuun, live-video kotiverkossa
-  ///
-  /// In en, this message translates to:
-  /// **'Picture on the tile, live video at home'**
-  String get s136c6f0d2b;
-
-  /// fi: Live-video kotiverkossa (ei kuvaa etänä)
-  ///
-  /// In en, this message translates to:
-  /// **'Live video at home (no picture away)'**
-  String get s2101774157;
-
-  /// fi: YAML-tiedostoa ei voitu lukea: {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'Could not read the YAML: {p0}'**
-  String sd63d34bfe9(String p0);
-
-  /// fi: "{p0}" käyttää sarjaporttia (USB/RS485) – tarvitset RS485 → TCP -yhdyskäytävän.
-  ///
-  /// In en, this message translates to:
-  /// **'\"{p0}\" uses a serial port (USB/RS485) – you need an RS485 → TCP gateway.'**
-  String sc5c9e5e2fc(String p0);
-
-  /// fi: 0=Pois;1=Päällä
-  ///
-  /// In en, this message translates to:
-  /// **'0=Off;1=On'**
-  String get s77bf3b424f;
+  /// **'Off'**
+  String get scc0cccf89d;
 
   /// fi: Päällä
   ///
@@ -2264,461 +602,131 @@ abstract class AppLocalizations {
   /// **'On'**
   String get s4cbe24240f;
 
-  /// fi: Pois
+  /// fi: Valmiina
   ///
   /// In en, this message translates to:
-  /// **'Off'**
-  String get s33831dd49f;
+  /// **'Idle'**
+  String get s4e1ea0bc65;
 
-  /// fi: {p0} – asetus
+  /// fi: televisioon ei saatu yhteyttä
   ///
   /// In en, this message translates to:
-  /// **'{p0} – target'**
-  String s69135546c8(String p0);
+  /// **'TV not reachable'**
+  String get se5b2692112;
 
-  /// fi: "{p0}" ohitettiin – lisää ne käsin.
+  /// fi: {p0} ruutua lisätty
   ///
   /// In en, this message translates to:
-  /// **'\"{p0}\" were skipped – add them by hand.'**
-  String sd88c13e972(String p0);
+  /// **'{p0} tiles added'**
+  String s095ca83913(String p0);
 
-  /// fi: YAML:sta ei löytynyt Modbus TCP -yhteyttä (modbus: … type: tcp, host: …).
+  /// fi: Airthings-mittarit
   ///
   /// In en, this message translates to:
-  /// **'No Modbus TCP hub found in the YAML (modbus: … type: tcp, host: …).'**
-  String get sceebf690e3;
+  /// **'Airthings monitors'**
+  String get sd53b0c4edc;
 
-  /// fi: Osoite näyttää vajaalta. Muoto on neljä numeroa pisteillä, esim. 192.168.1.50.
+  /// fi: Lisää {p0} ruutua
   ///
   /// In en, this message translates to:
-  /// **'The address looks incomplete. Use four numbers with dots, e.g. 192.168.1.50.'**
-  String get sb662db81d8;
+  /// **'Add {p0} tiles'**
+  String sc401e05b53(String p0);
 
-  /// fi:  Tarkoititko {p0}?
+  /// fi: Laitteita ei saatu
   ///
   /// In en, this message translates to:
-  /// **' Did you mean {p0}?'**
-  String s738ecfe2bc(String p0);
+  /// **'Could not list the devices'**
+  String get s212e35a61b;
 
-  /// fi: Tämä ei ole kotiverkon osoite (kotiverkon osoitteet alkavat yleensä 192.168.).{p0}
+  /// fi: Tililläsi ei ole mittareita. Lisää mittari ensin Airthings-sovelluksessa.
   ///
   /// In en, this message translates to:
-  /// **'This is not a home network address (they usually start with 192.168.).{p0}'**
-  String s06e738bf27(String p0);
+  /// **'There are no monitors in your account. Add one in the Airthings app first.'**
+  String get s039683f4a5;
 
-  /// fi: Huom: tämä laite on verkossa {p0}.x – laite ei ehkä ole samassa wifissä.
+  /// fi: Hubin kautta
   ///
   /// In en, this message translates to:
-  /// **'Note: this device is on {p0}.x – the device may be on another Wi-Fi.'**
-  String sbae99909c4(String p0);
+  /// **'via the Hub'**
+  String get sdfff64e4c3;
 
-  /// fi: Tuya / Powerant (paikallinen)
+  /// fi: Uusi näkymä
   ///
   /// In en, this message translates to:
-  /// **'Tuya / Powerant (local)'**
-  String get sc20488a1f0;
+  /// **'New dashboard'**
+  String get scb28b11e70;
 
-  /// fi: Tuya-pilven alue
+  /// fi: esim. Mökki
   ///
   /// In en, this message translates to:
-  /// **'Tuya cloud region'**
-  String get sc849342970;
+  /// **'e.g. Cottage'**
+  String get s1f9799af4e;
 
-  /// fi: Vain avainten hakuun. Suomessa yleensä Keski-Eurooppa.
+  /// fi: Nimeä näkymä
   ///
   /// In en, this message translates to:
-  /// **'Only for fetching the keys. Usually Central Europe in Europe.'**
-  String get s49c53b561d;
+  /// **'Rename dashboard'**
+  String get s3a13f9d077;
 
-  /// fi: Keski-Eurooppa
+  /// fi: Poistetaanko näkymä?
   ///
   /// In en, this message translates to:
-  /// **'Central Europe'**
-  String get s7cf3dec993;
+  /// **'Delete dashboard?'**
+  String get sa5bf37213b;
 
-  /// fi: Länsi-Eurooppa
+  /// fi: "{p0}" ja sen {p1} ruutua poistetaan.
   ///
   /// In en, this message translates to:
-  /// **'Western Europe'**
-  String get seead5e286d;
+  /// **'\"{p0}\" and its {p1} tiles will be deleted.'**
+  String s10671afc00(String p0, String p1);
 
-  /// fi: Länsi-USA
+  /// fi: Poista
   ///
   /// In en, this message translates to:
-  /// **'Western America'**
-  String get s081e2e881d;
+  /// **'Delete'**
+  String get sc1845eb440;
 
-  /// fi: Itä-USA
+  /// fi: Näkymä "{p0}" poistettu
   ///
   /// In en, this message translates to:
-  /// **'Eastern America'**
-  String get s5b9587ae93;
+  /// **'Dashboard \"{p0}\" deleted'**
+  String s897761b5f4(String p0);
 
-  /// fi: Kiina
+  /// fi: Valitse ruudun tyyppi
   ///
   /// In en, this message translates to:
-  /// **'China'**
-  String get sc5401d63d5;
+  /// **'Choose tile type'**
+  String get scc5cf9957d;
 
-  /// fi: Intia
+  /// fi: Uusi laite valmiilla ruuduilla
   ///
   /// In en, this message translates to:
-  /// **'India'**
-  String get sb6786f25b9;
+  /// **'New device with ready tiles'**
+  String get s7cf6340503;
 
-  /// fi: Singapore
+  /// fi: Helpoin tapa: Shelly, ESP32-CAM, Home Assistant, IV-kone…
   ///
   /// In en, this message translates to:
-  /// **'Singapore'**
-  String get scd78f804bb;
+  /// **'Easiest: Shelly, ESP32-CAM, Home Assistant…'**
+  String get se6ca707cf3;
 
-  /// fi: Access ID (iot.tuya.com)
+  /// fi: NÄKYMÄT
   ///
   /// In en, this message translates to:
-  /// **'Access ID (iot.tuya.com)'**
-  String get s61b325e35c;
+  /// **'DASHBOARDS'**
+  String get s0789f5f14f;
 
-  /// fi: Oman pilviprojektisi Access ID. Tarvitaan vain avainten hakuun.
+  /// fi: Kaikki
   ///
   /// In en, this message translates to:
-  /// **'Access ID of your own cloud project. Only needed to fetch the keys.'**
-  String get s925e495479;
+  /// **'All'**
+  String get sedb7b77645;
 
-  /// fi: Access Secret
+  /// fi: Yhteydet
   ///
   /// In en, this message translates to:
-  /// **'Access Secret'**
-  String get sb07c0dad24;
-
-  /// fi: Oman pilviprojektisi Access Secret. Tallentuu vain tälle laitteelle / omaan holviisi.
-  ///
-  /// In en, this message translates to:
-  /// **'Access Secret of your own cloud project. Stored only on this device / in your own vault.'**
-  String get s45bcef5c09;
-
-  /// fi: Paikalliset avaimet
-  ///
-  /// In en, this message translates to:
-  /// **'Local keys'**
-  String get s295cf46412;
-
-  /// fi: Laitteiden paikalliset avaimet (haetaan automaattisesti).
-  ///
-  /// In en, this message translates to:
-  /// **'The devices\'\' local keys (fetched automatically).'**
-  String get sf58ae26c82;
-
-  /// fi: Pysyvä yhteys (heti päivittyvät ruudut)
-  ///
-  /// In en, this message translates to:
-  /// **'Keep connected (instant updates)'**
-  String get s0c1a9d4ab9;
-
-  /// fi: Laite ilmoittaa muutoksista heti. Moni Tuya-laite sallii vain yhden yhteyden kerrallaan – käytä vain yhdellä laitteella.
-  ///
-  /// In en, this message translates to:
-  /// **'The device reports changes at once. Many Tuya devices allow only one connection – use on one device only.'**
-  String get s121fb2c5fc;
-
-  /// fi: Laitteen tunnus
-  ///
-  /// In en, this message translates to:
-  /// **'Device id'**
-  String get s65514aef3c;
-
-  /// fi: Tuya-laitteen id.
-  ///
-  /// In en, this message translates to:
-  /// **'The Tuya device id.'**
-  String get se42a336655;
-
-  /// fi: DP-numero
-  ///
-  /// In en, this message translates to:
-  /// **'DP number'**
-  String get sff3cf64925;
-
-  /// fi: Datapisteen numero (1 = virta useimmissa).
-  ///
-  /// In en, this message translates to:
-  /// **'Data point number (1 = power on most).'**
-  String get sfec9b1a643;
-
-  /// fi: Kerroin
-  ///
-  /// In en, this message translates to:
-  /// **'Scale'**
-  String get see24ec5d84;
-
-  /// fi: Esim. 0.1, jos laite ilmoittaa kymmenyksinä.
-  ///
-  /// In en, this message translates to:
-  /// **'E.g. 0.1 when the device reports tenths.'**
-  String get s2fa7dedd1b;
-
-  /// fi: Datapisteen numero.
-  ///
-  /// In en, this message translates to:
-  /// **'Data point number.'**
-  String get se30676cace;
-
-  /// fi: Arvo ({{value}})
-  ///
-  /// In en, this message translates to:
-  /// **'\'Value ({{value}})\''**
-  String get seb4c438a42;
-
-  /// fi: Lähetettävä arvo; {{value}} = ruudun arvo.
-  ///
-  /// In en, this message translates to:
-  /// **'\'Value to send; {{value}} = the tile\'\'s value.\''**
-  String get s033b6b8c6c;
-
-  /// fi: Arvon tyyppi
-  ///
-  /// In en, this message translates to:
-  /// **'Value type'**
-  String get s784e702cc1;
-
-  /// fi: Päällä/pois kytkimille, numero kirkkaudelle.
-  ///
-  /// In en, this message translates to:
-  /// **'On/off for switches, number for brightness.'**
-  String get safadcc12c8;
-
-  /// fi: Päällä/pois
-  ///
-  /// In en, this message translates to:
-  /// **'On/off'**
-  String get s8c8b6cb6d4;
-
-  /// fi: Numero
-  ///
-  /// In en, this message translates to:
-  /// **'Number'**
-  String get s695fe25f79;
-
-  /// fi: Teksti
-  ///
-  /// In en, this message translates to:
-  /// **'Text'**
-  String get s34900f9d58;
-
-  /// fi: Tuya-laitetta {p0} ei ole tässä yhteydessä
-  ///
-  /// In en, this message translates to:
-  /// **'Tuya device {p0} is not in this connection'**
-  String s9abc332fb8(String p0);
-
-  /// fi: Tuya: laitteen paikallinen avain puuttuu – hae avaimet uudelleen
-  ///
-  /// In en, this message translates to:
-  /// **'Tuya: the device\'\'s local key is missing – fetch the keys again'**
-  String get s8b84454b87;
-
-  /// fi: Tuya: laitteen IP-osoite puuttuu
-  ///
-  /// In en, this message translates to:
-  /// **'Tuya: the device\'\'s IP address is missing'**
-  String get s764b6993c6;
-
-  /// fi: yhteys katkesi
-  ///
-  /// In en, this message translates to:
-  /// **'connection closed'**
-  String get sae56ce66d4;
-
-  /// fi: Tuya: väärä paikallinen avain (local key) tai protokollaversio
-  ///
-  /// In en, this message translates to:
-  /// **'Tuya: wrong local key or protocol version'**
-  String get sb6a87586a8;
-
-  /// fi: laite ei vastannut
-  ///
-  /// In en, this message translates to:
-  /// **'no answer from the device'**
-  String get s2b1a0a5a05;
-
-  /// fi: Tuya {p0}: laite ei vastannut kättelyyn – väärä paikallinen avain (local key) tai protokollaversio?
-  ///
-  /// In en, this message translates to:
-  /// **'Tuya {p0}: no answer to the handshake – wrong local key or protocol version?'**
-  String sc4fdd8a4a3(String p0);
-
-  /// fi: kättely epäonnistui
-  ///
-  /// In en, this message translates to:
-  /// **'handshake failed'**
-  String get sa291ffb35a;
-
-  /// fi: Tuya: väärä paikallinen avain (local key)
-  ///
-  /// In en, this message translates to:
-  /// **'Tuya: wrong local key'**
-  String get se2a4cc6409;
-
-  /// fi: ei löytynyt kotiverkosta
-  ///
-  /// In en, this message translates to:
-  /// **'not found on the home network'**
-  String get s7b8131a396;
-
-  /// fi: Powerant / Tuya / Smart Life
-  ///
-  /// In en, this message translates to:
-  /// **'Powerant / Tuya / Smart Life'**
-  String get s210907044a;
-
-  /// fi: Pistorasiat, kytkimet, himmentimet, lamput ja anturit. Ohjataan kotiverkossa ilman pilveä.
-  ///
-  /// In en, this message translates to:
-  /// **'Plugs, switches, dimmers, bulbs and sensors. Controlled on your home network without the cloud.'**
-  String get sa8d1873781;
-
-  /// fi: Oma ilmainen Tuya-kehittäjäprojekti: iot.tuya.com → Cloud → Create Cloud Project (data center: Central Europe) → Devices
-  ///
-  /// In en, this message translates to:
-  /// **'Your own free Tuya developer project: iot.tuya.com → Cloud → Create Cloud Project (data center: Central Europe) → Devices → Link App Account → scan the QR code with the Smart Life / Tuya / Powerant app. The Access ID is on the project\'\'s Overview page.'**
-  String get s3530ee658b;
-
-  /// fi: Samalta Overview-sivulta. Tallentuu vain tälle laitteelle (ja omaan salattuun holviisi) – ei Molaplanin palvelimille.
-  ///
-  /// In en, this message translates to:
-  /// **'From the same Overview page. Stored only on this device (and your own encrypted vault) – never on Molaplan\'\'s servers.'**
-  String get s39d3fce33c;
-
-  /// fi: Projektin data center. Suomessa yleensä eu (Central Europe). Western Europe = weu.
-  ///
-  /// In en, this message translates to:
-  /// **'The project\'\'s data center. Usually eu (Central Europe) in Europe. Western Europe = weu.'**
-  String get s12e2e8638b;
-
-  /// fi: Vain jos laitteita ei löydy: sovellus → laite → kynä → Laitetiedot → Virtuaalinen ID.
-  ///
-  /// In en, this message translates to:
-  /// **'Only if no devices are found: app → device → pencil → Device information → Virtual ID.'**
-  String get sfc77cb8d11;
-
-  /// fi: Tuya paikallisella avaimella
-  ///
-  /// In en, this message translates to:
-  /// **'Tuya with a local key'**
-  String get s7938176623;
-
-  /// fi: Jos tiedät jo laitteen tunnuksen ja paikallisen avaimen (local key).
-  ///
-  /// In en, this message translates to:
-  /// **'If you already know the device ID and its local key.'**
-  String get sf11f3cf10e;
-
-  /// fi: Reitittimen laitelistasta (laitteen nimi usein ESP_ tai wlan0).
-  ///
-  /// In en, this message translates to:
-  /// **'From your router\'\'s device list (often named ESP_ or wlan0).'**
-  String get s3dcff9c852;
-
-  /// fi: 16 merkin avain. Saat sen Tuya-kehittäjäprojektista tai helpoimmin valitsemalla "Powerant / Tuya / Smart Life".
-  ///
-  /// In en, this message translates to:
-  /// **'A 16-character key. Get it from a Tuya developer project, or simply pick \"Powerant / Tuya / Smart Life\".'**
-  String get s3cc607ceba;
-
-  /// fi: Täytetään automaattisesti, jos laite löytyi verkosta.
-  ///
-  /// In en, this message translates to:
-  /// **'Filled in automatically when the device was found on the network.'**
-  String get s4105c416c6;
-
-  /// fi: 3.3, 3.4 tai 3.5. Tunnistetaan automaattisesti, jos laite löytyi verkosta.
-  ///
-  /// In en, this message translates to:
-  /// **'3.3, 3.4 or 3.5. Detected automatically when the device was found on the network.'**
-  String get s39dfcd0595;
-
-  /// fi: kanava {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'channel {p0}'**
-  String s991d0c0cdc(String p0);
-
-  /// fi: värilämpötila
-  ///
-  /// In en, this message translates to:
-  /// **'colour temperature'**
-  String get sc8b1b10046;
-
-  /// fi: energia
-  ///
-  /// In en, this message translates to:
-  /// **'energy'**
-  String get s0ceafaa97c;
-
-  /// fi: jännite
-  ///
-  /// In en, this message translates to:
-  /// **'voltage'**
-  String get sdb8ea154be;
-
-  /// fi: virta
-  ///
-  /// In en, this message translates to:
-  /// **'current'**
-  String get s37f61ae645;
-
-  /// fi: Koti
-  ///
-  /// In en, this message translates to:
-  /// **'Home'**
-  String get s5b44cbe9c0;
-
-  /// fi: Lisää
-  ///
-  /// In en, this message translates to:
-  /// **'Add'**
-  String get s5a40f12b6a;
-
-  /// fi: Näkymä on lukittu
-  ///
-  /// In en, this message translates to:
-  /// **'The view is locked'**
-  String get s58aaa6dade;
-
-  /// fi: Avaa lukitus
-  ///
-  /// In en, this message translates to:
-  /// **'Unlock'**
-  String get sdf1af3409c;
-
-  /// fi: Valikko
-  ///
-  /// In en, this message translates to:
-  /// **'Menu'**
-  String get s4629a1695c;
-
-  /// fi: Lisää laite
-  ///
-  /// In en, this message translates to:
-  /// **'Add device'**
-  String get s41c3cebc48;
-
-  /// fi: Muokkaa näkymää
-  ///
-  /// In en, this message translates to:
-  /// **'Edit the view'**
-  String get scd04aa5d9e;
-
-  /// fi: Huoneen kuva
-  ///
-  /// In en, this message translates to:
-  /// **'Room photo'**
-  String get sf98121cd3d;
-
-  /// fi: Energia
-  ///
-  /// In en, this message translates to:
-  /// **'Energy'**
-  String get s49de879696;
+  /// **'Connections'**
+  String get s78d94155f1;
 
   /// fi: Automaatiot
   ///
@@ -2726,11 +734,29 @@ abstract class AppLocalizations {
   /// **'Automations'**
   String get se9ca7cb470;
 
+  /// fi: Älykäs lämmitys
+  ///
+  /// In en, this message translates to:
+  /// **'Smart heating'**
+  String get s798f7b2876;
+
+  /// fi: pois
+  ///
+  /// In en, this message translates to:
+  /// **'off'**
+  String get s356d822497;
+
   /// fi: Ilmoitukset ja muistutukset
   ///
   /// In en, this message translates to:
   /// **'Notifications and reminders'**
   String get s41bb837a83;
+
+  /// fi: Energia
+  ///
+  /// In en, this message translates to:
+  /// **'Energy'**
+  String get s49de879696;
 
   /// fi: Asetukset
   ///
@@ -2738,29 +764,107 @@ abstract class AppLocalizations {
   /// **'Settings'**
   String get s1da81fd6c3;
 
-  /// fi: Lukitse näkymä
+  /// fi: Nimeä
   ///
   /// In en, this message translates to:
-  /// **'Lock the view'**
-  String get s365492a7d0;
+  /// **'Rename'**
+  String get s59622d792b;
 
-  /// fi: Laitteita voi edelleen ohjata, mutta muokkaus, asetukset ja laitteiden lisäys piilotetaan. Avaa lukitus rataskuvakkeesta
+  /// fi: Poista näkymä
   ///
   /// In en, this message translates to:
-  /// **'Devices can still be controlled, but editing, settings and adding devices are hidden. Unlock from the gear icon.'**
-  String get sb2f38410ee;
+  /// **'Delete dashboard'**
+  String get sfb3e3c456c;
 
-  /// fi: PIN-koodi (valinnainen)
+  /// fi: Valmis
   ///
   /// In en, this message translates to:
-  /// **'PIN code (optional)'**
-  String get se497d27174;
+  /// **'Done'**
+  String get s2acab0eccd;
 
-  /// fi: Ilman PIN-koodia lukitus avataan yhdellä napautuksella.
+  /// fi: Muokkaa
   ///
   /// In en, this message translates to:
-  /// **'Without a PIN one tap unlocks.'**
-  String get sd21180a166;
+  /// **'Edit'**
+  String get s187d328bb1;
+
+  /// fi: Lisää ruutu
+  ///
+  /// In en, this message translates to:
+  /// **'Add tile'**
+  String get scdfd80f963;
+
+  /// fi: Lisää
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get s5a40f12b6a;
+
+  /// fi: Tyhjä näkymä
+  ///
+  /// In en, this message translates to:
+  /// **'Empty dashboard'**
+  String get s71af34b8e9;
+
+  /// fi: Täällä näkyvät laitteidesi ruudut: lämpötilat, kytkimet, kamerat ja pikakomennot. Aloita lisäämällä laite.
+  ///
+  /// In en, this message translates to:
+  /// **'Your device tiles appear here: temperatures, switches, cameras and shortcuts. Start by adding a device.'**
+  String get s6a210970eb;
+
+  /// fi: Lisää ensimmäinen laite
+  ///
+  /// In en, this message translates to:
+  /// **'Add your first device'**
+  String get s4229fb4103;
+
+  /// fi: Lisää laite
+  ///
+  /// In en, this message translates to:
+  /// **'Add device'**
+  String get s41c3cebc48;
+
+  /// fi: Lisää ruutu
+  ///
+  /// In en, this message translates to:
+  /// **'Add a tile'**
+  String get s147f47be4c;
+
+  /// fi: Poistetaanko ruutu?
+  ///
+  /// In en, this message translates to:
+  /// **'Delete tile?'**
+  String get sf67e0d5752;
+
+  /// fi: Ruutu "{p0}" poistettu
+  ///
+  /// In en, this message translates to:
+  /// **'Tile \"{p0}\" deleted'**
+  String s97f46743e0(String p0);
+
+  /// fi: Oma väri
+  ///
+  /// In en, this message translates to:
+  /// **'Custom colour'**
+  String get sc3abd09cd9;
+
+  /// fi: Sävy
+  ///
+  /// In en, this message translates to:
+  /// **'Hue'**
+  String get s10e7cef8c1;
+
+  /// fi: Kylläisyys
+  ///
+  /// In en, this message translates to:
+  /// **'Saturation'**
+  String get s59b65e3322;
+
+  /// fi: Vaaleus
+  ///
+  /// In en, this message translates to:
+  /// **'Lightness'**
+  String get s750ed8d878;
 
   /// fi: Peruuta
   ///
@@ -2768,178 +872,1049 @@ abstract class AppLocalizations {
   /// **'Cancel'**
   String get s809d0eb368;
 
-  /// fi: Lukitse
+  /// fi: Valitse
   ///
   /// In en, this message translates to:
-  /// **'Lock'**
-  String get sd86ff8e28a;
+  /// **'Choose'**
+  String get sa39e78050c;
 
-  /// fi: Avaa lukitus?
+  /// fi: Mitä lisätään?
   ///
   /// In en, this message translates to:
-  /// **'Unlock?'**
-  String get s872f93a062;
+  /// **'What do you want to add?'**
+  String get sc51b1e0dc0;
 
-  /// fi: Muokkaus ja asetukset tulevat taas näkyviin.
+  /// fi: Laite
   ///
   /// In en, this message translates to:
-  /// **'Editing and settings become visible again.'**
-  String get s0cd88e27f4;
+  /// **'Device'**
+  String get s67584c9abf;
 
-  /// fi: Avaa
+  /// fi: Shelly, Sonoff, Hue, kamera, lämpöpumppu… Etsii kotiverkosta automaattisesti.
   ///
   /// In en, this message translates to:
-  /// **'Unlock'**
-  String get sa5283191be;
+  /// **'Shelly, Sonoff, Hue, camera, heat pump… Searches your home network automatically.'**
+  String get s38f5b2ef26;
 
-  /// fi: PIN-koodi
+  /// fi: Ruutu
   ///
   /// In en, this message translates to:
-  /// **'PIN code'**
-  String get sdfc012fb4e;
+  /// **'Tile'**
+  String get s3b56b2cb8d;
 
-  /// fi: Väärä PIN-koodi
+  /// fi: Sähkön hinta, sää, kamera, mittari, ilmoitus tai komento – ei vaadi uutta laitetta.
   ///
   /// In en, this message translates to:
-  /// **'Wrong PIN code'**
-  String get sca710b76b5;
+  /// **'Electricity price, weather, camera, gauge, notification or command – no new device needed.'**
+  String get sfc846c4cc5;
 
-  /// fi: Sinulla on uusin versio ({p0}).
+  /// fi: Luo automaatio
   ///
   /// In en, this message translates to:
-  /// **'You have the latest version ({p0}).'**
-  String sa0c07ccd04(String p0);
+  /// **'Create automation'**
+  String get s1b359d69e2;
 
-  /// fi: Päivityksiä ei voitu tarkistaa juuri nyt. Tarkista nettiyhteys ja yritä myöhemmin.
+  /// fi: Kun… jos… tee: valot auringonlaskussa, ilmoitus vuodosta, halvimmat tunnit, skriptit ja tilannekuvat.
   ///
   /// In en, this message translates to:
-  /// **'Could not check for updates right now. Check the internet connection and try again later.'**
-  String get sa118d84538;
+  /// **'When… if… do: lights at sunset, a leak alert, the cheapest hours, scripts and scenes.'**
+  String get sf00aa23cf6;
 
-  /// fi: Uusi versio {p0} on saatavilla
+  /// fi: Mittari
   ///
   /// In en, this message translates to:
-  /// **'Version {p0} is available'**
-  String s9f2b092d8c(String p0);
+  /// **'Gauge'**
+  String get s3c98732a8c;
 
-  /// fi: Sinulla on nyt versio {p0}.
+  /// fi: Tailscale (helppo VPN)
   ///
   /// In en, this message translates to:
-  /// **'You have version {p0}.'**
-  String sa5133b2c4a(String p0);
+  /// **'Tailscale (easy VPN)'**
+  String get sd5cb601286;
 
-  /// fi: Mitä uutta:
+  /// fi: Ilmainen henkilökäyttöön. Puhelin ja koti ovat kuin samassa verkossa – Molaplan toimii samoilla osoitteilla kuin kotona.
   ///
   /// In en, this message translates to:
-  /// **'What\'\'s new:'**
-  String get se099b5797e;
+  /// **'Free for personal use. Your phone and home act like one network – Molaplan works with the same addresses as at home.'**
+  String get s0aa851cfb4;
 
-  /// fi: Ohita tämä versio
+  /// fi: Sopii, jos sinulla on kotona aina päällä PC, Raspberry Pi tai Home Assistant.
   ///
   /// In en, this message translates to:
-  /// **'Skip this version'**
-  String get s9315c3df42;
+  /// **'Good if you have an always-on PC, Raspberry Pi or Home Assistant at home.'**
+  String get s444ca5d58f;
 
-  /// fi: Myöhemmin
+  /// fi: Tee Tailscale-tili osoitteessa tailscale.com (Google-, Microsoft- tai Apple-tunnuksella).
   ///
   /// In en, this message translates to:
-  /// **'Later'**
-  String get sdd5c8f0a9d;
+  /// **'Create a Tailscale account at tailscale.com (Google, Microsoft or Apple sign-in).'**
+  String get sec7b4d1d7a;
 
-  /// fi: Päivitä
+  /// fi: Asenna Tailscale kotona aina päällä olevaan laitteeseen. Home Assistantissa: Asetukset → Lisäosat → Tailscale.
   ///
   /// In en, this message translates to:
-  /// **'Update'**
-  String get sfbf490ec3f;
+  /// **'Install Tailscale on the always-on device at home. In Home Assistant: Settings → Add-ons → Tailscale.'**
+  String get s178c57446d;
 
-  /// fi: Lataus oli viallinen
+  /// fi: Ota siinä käyttöön "subnet router" ja kerro kotiverkkosi, esim. 192.168.1.0/24. Silloin kaikki kodin laitteet näkyvät.
   ///
   /// In en, this message translates to:
-  /// **'The download was corrupted'**
-  String get s5a94ef2af1;
+  /// **'Turn on \"subnet router\" there and enter your home network, e.g. 192.168.1.0/24. Then all your home devices are reachable.'**
+  String get s4faf83aa13;
 
-  /// fi: Lataus ei onnistunut
+  /// fi: Hyväksy reitti Tailscalen hallintasivulla (Machines → laite → Edit route settings).
   ///
   /// In en, this message translates to:
-  /// **'Download failed'**
-  String get s81e4325573;
+  /// **'Approve the route in the Tailscale admin console (Machines → device → Edit route settings).'**
+  String get s721719c0e1;
 
-  /// fi: Tiedoston tarkistussumma ei täsmännyt, joten mitään ei asennettu. Yritä hetken päästä uudelleen.
+  /// fi: Asenna Tailscale-sovellus puhelimeen ja kirjaudu samalla tilillä. Laita VPN päälle.
   ///
   /// In en, this message translates to:
-  /// **'The file checksum did not match, so nothing was installed. Please try again in a moment.'**
-  String get s4b1d3df588;
+  /// **'Install the Tailscale app on your phone and sign in with the same account. Switch the VPN on.'**
+  String get s921f981bda;
 
-  /// fi: Tarkista nettiyhteys ja yritä uudelleen. Voit myös ladata päivityksen julkaisusivulta.
+  /// fi: Valmis! Molaplan käyttää samoja osoitteita kuin kotona. Etäyhteyttä ei tarvitse muuttaa.
   ///
   /// In en, this message translates to:
-  /// **'Check the internet connection and try again. You can also download the update from the release page.'**
-  String get s0c463c7069;
+  /// **'Done! Molaplan uses the same addresses as at home. Nothing else to change.'**
+  String get s8ae7e7b2a4;
 
-  /// fi: Avaa julkaisusivu
+  /// fi: tailscale.com/download
   ///
   /// In en, this message translates to:
-  /// **'Open release page'**
-  String get s5dd4c9671f;
+  /// **'https://tailscale.com/download'**
+  String get se92301ff0a;
 
-  /// fi: Asennetaan versio {p0} – sovellus käynnistyy uudelleen hetken kuluttua.
+  /// fi: Subnet router -ohje / guide
   ///
   /// In en, this message translates to:
-  /// **'Installing {p0} – the app restarts in a moment.'**
-  String s8f5be45ff1(String p0);
+  /// **'https://tailscale.com/kb/1019/subnets'**
+  String get sf6270ae66c;
 
-  /// fi: Asennus epäonnistui: {p0}
+  /// fi: WireGuard (reitittimen VPN)
   ///
   /// In en, this message translates to:
-  /// **'Install failed: {p0}'**
-  String sf207ef6dc2(String p0);
+  /// **'WireGuard (router VPN)'**
+  String get s57f0b61334;
 
-  /// fi: Päivitys ladattu
+  /// fi: Jos reitittimesi tukee WireGuardia (esim. ASUS, FRITZ!Box, UniFi, OpenWrt), puhelin liittyy kotiverkkoon suoraan.
   ///
   /// In en, this message translates to:
-  /// **'Update downloaded'**
-  String get s49ddc3c3b6;
+  /// **'If your router supports WireGuard (e.g. ASUS, FRITZ!Box, UniFi, OpenWrt), your phone joins the home network directly.'**
+  String get sb9bb49ab92;
 
-  /// fi: Tiedosto on tarkistettu ja tallennettu:
-  /// {p0}
-  ///
-  /// Näin otat sen käyttöön:
-  /// 1. Sulje Molaplan.
-  /// 2. Pura zip-tiedosto vanhan Mol
+  /// fi: Sopii, jos reitittimessä on WireGuard ja liittymässä julkinen IP-osoite.
   ///
   /// In en, this message translates to:
-  /// **'The file is verified and saved:\n{p0}\n\nTo use it:\n1. Close Molaplan.\n2. Extract the zip over the old Molaplan folder (or into a new folder).\n3. Start molaplan.exe. Your settings are kept.'**
-  String s04a05bb8fc(String p0);
+  /// **'Good if the router has WireGuard and your connection has a public IP address.'**
+  String get s986d264604;
 
-  /// fi: Julkaisusivu
+  /// fi: Avaa reitittimen asetukset ja etsi "VPN-palvelin" → "WireGuard".
   ///
   /// In en, this message translates to:
-  /// **'Release page'**
-  String get s1dd246ec69;
+  /// **'Open the router settings and look for \"VPN server\" → \"WireGuard\".'**
+  String get sf24b16dc12;
 
-  /// fi: Avaa zip
+  /// fi: Ota palvelin käyttöön ja lisää uusi laite (peer) puhelimelle.
   ///
   /// In en, this message translates to:
-  /// **'Open zip'**
-  String get s0f07b20d45;
+  /// **'Enable the server and add a new device (peer) for the phone.'**
+  String get s1e5d1eb832;
 
-  /// fi: Avaa kansio
+  /// fi: Reititin näyttää QR-koodin. Asenna puhelimeen WireGuard-sovellus ja skannaa koodi.
   ///
   /// In en, this message translates to:
-  /// **'Open folder'**
-  String get s6e1ebc8baa;
+  /// **'The router shows a QR code. Install the WireGuard app on the phone and scan it.'**
+  String get s8e0252a2b4;
 
-  /// fi: Asennus ei jatkunut
+  /// fi: Tarkista että "Allowed IPs" sisältää kotiverkon (esim. 192.168.1.0/24).
   ///
   /// In en, this message translates to:
-  /// **'The install did not continue'**
-  String get s6d9de3f94b;
+  /// **'Check that \"Allowed IPs\" includes the home network (e.g. 192.168.1.0/24).'**
+  String get s4b3740b727;
 
-  /// fi: Jos perut asennuksen itse, kaikki on kunnossa. Jos Androidin Asenna-ikkunaa ei näkynyt, paina Yritä uudelleen.
+  /// fi: Laita VPN päälle puhelimessa – Molaplan toimii kuten kotona.
   ///
   /// In en, this message translates to:
-  /// **'If you cancelled it yourself, all is well. If Android\'\'s Install window did not appear, tap Try again.'**
-  String get s25a6f00343;
+  /// **'Switch the VPN on in the phone – Molaplan works as at home.'**
+  String get sd2e8523b28;
+
+  /// fi: wireguard.com/install
+  ///
+  /// In en, this message translates to:
+  /// **'https://www.wireguard.com/install/'**
+  String get saa17c5a456;
+
+  /// fi: Monissa mobiililaajakaistoissa (4G/5G-kotinetti) ei ole julkista IP-osoitetta (CGNAT), eikä WireGuard silloin toimi ulko
+  ///
+  /// In en, this message translates to:
+  /// **'Many mobile broadband (4G/5G home internet) connections have no public IP (CGNAT) and WireGuard then cannot be reached from outside. Use Molaplan remote access or Tailscale instead.'**
+  String get se5960424ea;
+
+  /// fi: Home Assistant Cloud (Nabu Casa)
+  ///
+  /// In en, this message translates to:
+  /// **'Home Assistant Cloud (Nabu Casa)'**
+  String get sab2dfe387b;
+
+  /// fi: Maksullinen kuukausitilaus Home Assistantin tekijöiltä. Antaa turvallisen etäosoitteen Home Assistantiin.
+  ///
+  /// In en, this message translates to:
+  /// **'A paid monthly subscription from the makers of Home Assistant. Gives a secure remote address to Home Assistant.'**
+  String get s2e0586b37e;
+
+  /// fi: Sopii, jos laitteesi ovat jo Home Assistantissa.
+  ///
+  /// In en, this message translates to:
+  /// **'Good if your devices are already in Home Assistant.'**
+  String get s534e7ec95e;
+
+  /// fi: Home Assistantissa: Asetukset → Home Assistant Cloud → aloita kokeilu tai kirjaudu.
+  ///
+  /// In en, this message translates to:
+  /// **'In Home Assistant: Settings → Home Assistant Cloud → start the trial or sign in.'**
+  String get s0f7533967d;
+
+  /// fi: Ota "Remote control / Etäohjaus" päälle.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn \"Remote control\" on.'**
+  String get s2e60dd8178;
+
+  /// fi: Kopioi etäosoite, joka näyttää tältä: https://abcd1234.ui.nabu.casa
+  ///
+  /// In en, this message translates to:
+  /// **'Copy the remote address, which looks like: https://abcd1234.ui.nabu.casa'**
+  String get s7a73024451;
+
+  /// fi: Molaplanissa: Yhteydet → Home Assistant → vaihda osoitteeksi tuo etäosoite. Token pysyy samana.
+  ///
+  /// In en, this message translates to:
+  /// **'In Molaplan: Connections → Home Assistant → change the address to the remote address. The token stays the same.'**
+  String get sd4873612f7;
+
+  /// fi: Valmis! Home Assistant -ruudut toimivat nyt kaikkialla.
+  ///
+  /// In en, this message translates to:
+  /// **'Done! Home Assistant tiles now work everywhere.'**
+  String get s15223b0e32;
+
+  /// fi: nabucasa.com
+  ///
+  /// In en, this message translates to:
+  /// **'https://www.nabucasa.com/'**
+  String get s9b3201b1fa;
+
+  /// fi: Tämä koskee vain Home Assistantin kautta ohjattavia laitteita. Muille (Modbus, kamerat suoraan) käytä Molaplan-etäyhteyt
+  ///
+  /// In en, this message translates to:
+  /// **'This only covers devices controlled through Home Assistant. For others (Modbus, cameras directly) use Molaplan remote access or a VPN.'**
+  String get s60e7067815;
+
+  /// fi: Pilvi-MQTT (esim. HiveMQ Cloud)
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud MQTT (e.g. HiveMQ Cloud)'**
+  String get s8e0d0a2d4e;
+
+  /// fi: Laitteet ja Molaplan puhuvat saman pilvipalvelimen kautta. HiveMQ Cloudissa on ilmainen taso, joka riittää kotikäyttöön.
+  ///
+  /// In en, this message translates to:
+  /// **'Devices and Molaplan talk through the same cloud server. HiveMQ Cloud has a free tier that is enough for home use.'**
+  String get sd0fff65292;
+
+  /// fi: Sopii MQTT-laitteille: Tasmota, ESPHome, Shelly, Zigbee2MQTT, omat ESP-laitteet.
+  ///
+  /// In en, this message translates to:
+  /// **'Good for MQTT devices: Tasmota, ESPHome, Shelly, Zigbee2MQTT, your own ESP boards.'**
+  String get s7350b9f98b;
+
+  /// fi: Tee ilmainen tili osoitteessa console.hivemq.cloud ja luo ilmainen klusteri (Free/Serverless).
+  ///
+  /// In en, this message translates to:
+  /// **'Create a free account at console.hivemq.cloud and create a free cluster (Free/Serverless).'**
+  String get s59b3c7d246;
+
+  /// fi: Kohdassa "Access Management" luo käyttäjätunnus ja salasana.
+  ///
+  /// In en, this message translates to:
+  /// **'Under \"Access Management\" create a username and password.'**
+  String get s04fe436d1e;
+
+  /// fi: Kopioi palvelimen osoite (esim. abcd.s1.eu.hivemq.cloud). Portti on 8883 ja TLS on päällä.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy the server address (e.g. abcd.s1.eu.hivemq.cloud). The port is 8883 with TLS on.'**
+  String get sdf0075eab5;
+
+  /// fi: Vaihda laitteidesi MQTT-asetuksiin tämä palvelin, tunnus ja salasana (TLS päälle).
+  ///
+  /// In en, this message translates to:
+  /// **'Put this server, username and password in your devices\'\' MQTT settings (TLS on).'**
+  String get s9e9be6fc33;
+
+  /// fi: Molaplanissa: Yhteydet → MQTT → osoite, portti 8883, TLS päälle, tunnus ja salasana. Valmis – toimii kaikkialla.
+  ///
+  /// In en, this message translates to:
+  /// **'In Molaplan: Connections → MQTT → address, port 8883, TLS on, username and password. Done – works everywhere.'**
+  String get s90f1cb151b;
+
+  /// fi: console.hivemq.cloud
+  ///
+  /// In en, this message translates to:
+  /// **'https://console.hivemq.cloud/'**
+  String get s77bf29f2f5;
+
+  /// fi: Valitse vahva salasana: kuka tahansa salasanan tietävä voi ohjata laitteitasi.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a strong password: anyone who knows it can control your devices.'**
+  String get safd2cd2b7b;
+
+  /// fi: Etäkäytön ohjeet
+  ///
+  /// In en, this message translates to:
+  /// **'Remote access guides'**
+  String get s9557c0ef28;
+
+  /// fi: Helpoin: Molaplan-etäyhteys
+  ///
+  /// In en, this message translates to:
+  /// **'Easiest: Molaplan remote access'**
+  String get sf4d7957b78;
+
+  /// fi: Ei tilejä, ei reititinasetuksia. Tarvitset vain kotona aina päällä olevan tabletin tai PC:n.
+  ///
+  /// In en, this message translates to:
+  /// **'No accounts, no router settings. You only need a tablet or PC that stays on at home.'**
+  String get s8032085166;
+
+  /// fi: Muut tavat
+  ///
+  /// In en, this message translates to:
+  /// **'Other ways'**
+  String get sd9b48e01fc;
+
+  /// fi: Laiteohjeet
+  ///
+  /// In en, this message translates to:
+  /// **'Device guides'**
+  String get sfe551fd431;
+
+  /// fi: Ilmalämpöpumppu (huoltoliitäntä/ESPHome)
+  ///
+  /// In en, this message translates to:
+  /// **'Heat pump (service port/ESPHome)'**
+  String get sbd2f94e7a4;
+
+  /// fi: Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Molaplan löytää lämpöpumpun itse.
+  ///
+  /// In en, this message translates to:
+  /// **'Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Found automatically.'**
+  String get sa35e37b4b4;
+
+  /// fi: Sähkönkulutus
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity use'**
+  String get sb8934a5835;
+
+  /// fi: Ei mukana
+  ///
+  /// In en, this message translates to:
+  /// **'Not counted'**
+  String get s5409dc748f;
+
+  /// fi: Koko kohde
+  ///
+  /// In en, this message translates to:
+  /// **'Whole site'**
+  String get sf0bbcc217b;
+
+  /// fi: Laitteen mittaus
+  ///
+  /// In en, this message translates to:
+  /// **'Device meter'**
+  String get s0ad1897b28;
+
+  /// fi: Koko kohde = pääsähkömittari. Laitteen mittaus = yksi laite (näytetään osana kokonaisuutta, ei lasketa kahteen kertaan).
+  ///
+  /// In en, this message translates to:
+  /// **'Whole site = main meter. Device meter = one device (shown as part of the total, never counted twice).'**
+  String get s99268b5a6c;
+
+  /// fi: Osa mittaria (valinnainen)
+  ///
+  /// In en, this message translates to:
+  /// **'Part of meter (optional)'**
+  String get se1174af557;
+
+  /// fi: Ei mitään
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get se12fc46923;
+
+  /// fi: Energia ja kustannukset
+  ///
+  /// In en, this message translates to:
+  /// **'Energy and costs'**
+  String get s9773c92c92;
+
+  /// fi: Sähkösopimus
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity contract'**
+  String get s43dead6994;
+
+  /// fi: Päivä
+  ///
+  /// In en, this message translates to:
+  /// **'Day'**
+  String get sef4d24cdd4;
+
+  /// fi: Kuukausi
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get sa62dd794ce;
+
+  /// fi: Valitse ensin mittarit
+  ///
+  /// In en, this message translates to:
+  /// **'Pick your meters first'**
+  String get s6b2ebe5aca;
+
+  /// fi: Merkitse alta, mikä mittari mittaa koko kohdetta ja mitkä yksittäisiä laitteita.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark below which meter measures the whole site and which ones single devices.'**
+  String get sde41f2fac9;
+
+  /// fi: sis. ALV
+  ///
+  /// In en, this message translates to:
+  /// **'incl. VAT'**
+  String get s4ad000d885;
+
+  /// fi: ilman ALV
+  ///
+  /// In en, this message translates to:
+  /// **'excl. VAT'**
+  String get s9e214b6e88;
+
+  /// fi: Mitatut laitteet yhteensä
+  ///
+  /// In en, this message translates to:
+  /// **'Measured devices total'**
+  String get s73771d252c;
+
+  /// fi: Muu kulutus
+  ///
+  /// In en, this message translates to:
+  /// **'Other use'**
+  String get s22d03356a9;
+
+  /// fi: Perusmaksut (energia + siirto)
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly fees (energy + transfer)'**
+  String get s48b08c5f5a;
+
+  /// fi: Yhteensä
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get s286e1cfb54;
+
+  /// fi: Osalle kulutuksesta ei ollut hintaa (pörssihinta puuttui).
+  ///
+  /// In en, this message translates to:
+  /// **'Part of the use had no price (the spot price was missing).'**
+  String get s2e8700e0cf;
+
+  /// fi: Kulutus kirjataan, kun sovellus on auki (kodin tabletilla jatkuvasti).
+  ///
+  /// In en, this message translates to:
+  /// **'Use is recorded while the app is open (all the time on the home tablet).'**
+  String get sbbd89fbc05;
+
+  /// fi: Mittarit
+  ///
+  /// In en, this message translates to:
+  /// **'Meters'**
+  String get s64382718ff;
+
+  /// fi: Ei teho- tai energiaruutuja (W, kW, Wh, kWh). Lisää esim. Shelly-mittari.
+  ///
+  /// In en, this message translates to:
+  /// **'No power or energy tiles (W, kW, Wh, kWh). Add e.g. a Shelly meter.'**
+  String get s9a3a0d414e;
+
+  /// fi: Tallennettu
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get sdb0484d728;
+
+  /// fi: Katso hinnat sähkölaskusta. Voit kirjoittaa ne verollisina tai verottomina – kustannukset näytetään molempina.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy the prices from your bill. Type them with or without VAT – costs are shown both ways.'**
+  String get se80021e22a;
+
+  /// fi: Hinta-alue
+  ///
+  /// In en, this message translates to:
+  /// **'Price area'**
+  String get sfb62156afe;
+
+  /// fi: Sähköenergia
+  ///
+  /// In en, this message translates to:
+  /// **'Energy'**
+  String get s1762fb70a7;
+
+  /// fi: Pörssisähkö
+  ///
+  /// In en, this message translates to:
+  /// **'Spot price'**
+  String get s2ed3e3cf28;
+
+  /// fi: Kiinteä
+  ///
+  /// In en, this message translates to:
+  /// **'Fixed'**
+  String get s5d1dd0f675;
+
+  /// fi: Yö/päivä
+  ///
+  /// In en, this message translates to:
+  /// **'Night/day'**
+  String get sedb38796fb;
+
+  /// fi: Marginaali
+  ///
+  /// In en, this message translates to:
+  /// **'Margin'**
+  String get s0774cea15a;
+
+  /// fi: Energian hinta
+  ///
+  /// In en, this message translates to:
+  /// **'Energy price'**
+  String get s63370fe61a;
+
+  /// fi: Päiväenergia
+  ///
+  /// In en, this message translates to:
+  /// **'Day energy'**
+  String get s50a7dd89c6;
+
+  /// fi: Yöenergia
+  ///
+  /// In en, this message translates to:
+  /// **'Night energy'**
+  String get sdeaa5ad900;
+
+  /// fi: Perusmaksu (energia)
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly fee (energy)'**
+  String get se93c7bcd86;
+
+  /// fi: Siirto
+  ///
+  /// In en, this message translates to:
+  /// **'Transfer'**
+  String get sb7937e4b91;
+
+  /// fi: Yleissiirto
+  ///
+  /// In en, this message translates to:
+  /// **'Flat'**
+  String get s0f89840226;
+
+  /// fi: Siirtohinta
+  ///
+  /// In en, this message translates to:
+  /// **'Transfer price'**
+  String get sa768f1b352;
+
+  /// fi: Päiväsiirto
+  ///
+  /// In en, this message translates to:
+  /// **'Day transfer'**
+  String get s9e5dde22cb;
+
+  /// fi: Yösiirto
+  ///
+  /// In en, this message translates to:
+  /// **'Night transfer'**
+  String get sdf7a4fd2e3;
+
+  /// fi: Perusmaksu (siirto)
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly fee (transfer)'**
+  String get s4df0aee067;
+
+  /// fi: Yö alkaa
+  ///
+  /// In en, this message translates to:
+  /// **'Night starts'**
+  String get s4c59c90975;
+
+  /// fi: Yö päättyy
+  ///
+  /// In en, this message translates to:
+  /// **'Night ends'**
+  String get s84decd042b;
+
+  /// fi: Verot
+  ///
+  /// In en, this message translates to:
+  /// **'Taxes'**
+  String get s90c26f1e37;
+
+  /// fi: Sähkövero
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity tax'**
+  String get s222cb348a0;
+
+  /// fi: ALV
+  ///
+  /// In en, this message translates to:
+  /// **'VAT'**
+  String get sbe412dcaa6;
+
+  /// fi: Tallenna
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get s162a85c6ef;
+
+  /// fi: Haku ei onnistunut. Tarkista verkkoyhteys.
+  ///
+  /// In en, this message translates to:
+  /// **'Search failed. Check the connection.'**
+  String get s43b55c13c5;
+
+  /// fi: Kodin sijainti
+  ///
+  /// In en, this message translates to:
+  /// **'Home location'**
+  String get s171834ca33;
+
+  /// fi: Sääennuste (Open-Meteo) auttaa lämmittämään etukäteen ennen pakkasta. Paikkakunta riittää.
+  ///
+  /// In en, this message translates to:
+  /// **'The weather forecast (Open-Meteo) helps pre-heat before cold weather. The town is enough.'**
+  String get s6f6c2fe37a;
+
+  /// fi: Poista
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get s9593939a4c;
+
+  /// fi: Paikkakunta
+  ///
+  /// In en, this message translates to:
+  /// **'Town'**
+  String get s5f663978d6;
+
+  /// fi: esim. Tampere
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Tampere'**
+  String get s7be6460c54;
+
+  /// fi: Sähkönkulutus, kustannukset, sopimus ja sää.
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity use, costs, contract and weather.'**
+  String get s1576b70590;
+
+  /// fi: Sijainti
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get sa6212aaeb4;
+
+  /// fi: Vain sovelluksessa
+  ///
+  /// In en, this message translates to:
+  /// **'App only'**
+  String get s463074e5cc;
+
+  /// fi: Toimii vain sovelluksessa tai kotisillan kautta
+  ///
+  /// In en, this message translates to:
+  /// **'Works only in the app or via a home bridge'**
+  String get seb8b8d2adf;
+
+  /// fi: Ei yhteyttä
+  ///
+  /// In en, this message translates to:
+  /// **'Offline'**
+  String get s3a5c21004e;
+
+  /// fi: Hintoja ei saatu – yritetään uudelleen
+  ///
+  /// In en, this message translates to:
+  /// **'Could not get prices – retrying'**
+  String get sbc7a87e591;
+
+  /// fi: Säätietoja ei saatu – yritetään uudelleen
+  ///
+  /// In en, this message translates to:
+  /// **'Could not get the weather – retrying'**
+  String get s3f0837ec84;
+
+  /// fi: ntfy-viestiraja täynnä
+  ///
+  /// In en, this message translates to:
+  /// **'ntfy message limit reached'**
+  String get sedeaf26f8a;
+
+  /// fi: Ei vastausta laitteelta
+  ///
+  /// In en, this message translates to:
+  /// **'No reply from the device'**
+  String get s349ca716f2;
+
+  /// fi: Päivällä ei ohjata
+  ///
+  /// In en, this message translates to:
+  /// **'Not controlled during the day'**
+  String get sd2b99f6417;
+
+  /// fi: Kirjautuminen vanhentunut
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in expired'**
+  String get s68cbe596f8;
+
+  /// fi: Ei nettiyhteyttä
+  ///
+  /// In en, this message translates to:
+  /// **'No internet'**
+  String get s599357f47b;
+
+  /// fi: Modbus ei päällä
+  ///
+  /// In en, this message translates to:
+  /// **'Modbus is off'**
+  String get s74fa2d56aa;
+
+  /// fi: Laite ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'Device not responding'**
+  String get s156aa7eeb3;
+
+  /// fi: Väärä unit id?
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong unit id?'**
+  String get sbf2cfbb102;
+
+  /// fi: Estotila
+  ///
+  /// In en, this message translates to:
+  /// **'Lockout'**
+  String get s9be06479ff;
+
+  /// fi: Osoite puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'No address'**
+  String get s613938b0b3;
+
+  /// fi: Varattu (HA?)
+  ///
+  /// In en, this message translates to:
+  /// **'Busy (HA?)'**
+  String get s252d8628c7;
+
+  /// fi: Palvelu ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'Service not answering'**
+  String get s0e3a6bafbf;
+
+  /// fi: Palvelinta ei löydy
+  ///
+  /// In en, this message translates to:
+  /// **'Server not found'**
+  String get s7abcbf1107;
+
+  /// fi: Kotisilta ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'Home bridge not responding'**
+  String get sca533b6f25;
+
+  /// fi: Tietoa ei löydy laitteesta
+  ///
+  /// In en, this message translates to:
+  /// **'Value not found on device'**
+  String get s96ad0dc252;
+
+  /// fi: Asetus puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'Setting missing'**
+  String get s61cdd7287b;
+
+  /// fi: Suojausvirhe
+  ///
+  /// In en, this message translates to:
+  /// **'Security error'**
+  String get s57d0940253;
+
+  /// fi: Laite ei ole verkossa
+  ///
+  /// In en, this message translates to:
+  /// **'Device is offline'**
+  String get sfec025279e;
+
+  /// fi: Tarkista nyt
+  ///
+  /// In en, this message translates to:
+  /// **'Check now'**
+  String get s1ea16fc636;
+
+  /// fi: Ei verkkoyhteyttä
+  ///
+  /// In en, this message translates to:
+  /// **'No network'**
+  String get sbaf1a2b35e;
+
+  /// fi: Laite ei ole Wi-Fissä, eikä mobiilidata toimi. Ruuduissa näkyvät viimeksi saadut arvot.
+  ///
+  /// In en, this message translates to:
+  /// **'This device is not on Wi-Fi and mobile data does not work. Tiles show the last values received.'**
+  String get s3f750ce1d4;
+
+  /// fi: Wi-Fissä ei ole nettiä
+  ///
+  /// In en, this message translates to:
+  /// **'The Wi-Fi has no internet'**
+  String get s542a3e9332;
+
+  /// fi: Kotiverkon laitteet toimivat, pilvipalvelut ja etäyhteys eivät.
+  ///
+  /// In en, this message translates to:
+  /// **'Devices on this Wi-Fi work; cloud services and remote access do not.'**
+  String get sba13ded915;
+
+  /// fi: Etäpalvelin ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'Remote server not answering'**
+  String get se24bfd1257;
+
+  /// fi: Netti toimii, mutta Molaplanin etäpalvelin ei vastaa. Kotona kaikki toimii; etäkäyttö palaa itsestään.
+  ///
+  /// In en, this message translates to:
+  /// **'The internet works, but Molaplan\'\'s remote server does not answer. At home everything works; remote access comes back by itself.'**
+  String get s8584be9da3;
+
+  /// fi: Yhteys kunnossa
+  ///
+  /// In en, this message translates to:
+  /// **'Connection OK'**
+  String get s1e03ade992;
+
+  /// fi: Tarkistetaan itsestään 15 s välein, kunnes yhteys toimii. Ilmoitus poistuu silloin itsestään.
+  ///
+  /// In en, this message translates to:
+  /// **'Re-checked every 15 s until it works; this notice then disappears by itself.'**
+  String get s0fc5f4d788;
+
+  /// fi: Edistyneet
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced'**
+  String get sf4caddf894;
+
+  /// fi: Wi-Fi/Ethernet-osoitteet
+  ///
+  /// In en, this message translates to:
+  /// **'Wi-Fi/Ethernet addresses'**
+  String get s3e05e0efab;
+
+  /// fi: ei yhtään
+  ///
+  /// In en, this message translates to:
+  /// **'none'**
+  String get s6b59e217ba;
+
+  /// fi: Tarkistettu
+  ///
+  /// In en, this message translates to:
+  /// **'Checked'**
+  String get s3b7c55c4fc;
+
+  /// fi: Olet poissa kotoa, eikä kotisilta vastaa. Kotiverkon laitteita ei voi nyt ohjata.
+  ///
+  /// In en, this message translates to:
+  /// **'You are away and the home bridge is not answering. Home network devices cannot be controlled now.'**
+  String get sc26c52235c;
+
+  /// fi: Olet poissa kotoa. Kotiverkon laitteet toimivat etänä vain kotisillan kautta.
+  ///
+  /// In en, this message translates to:
+  /// **'You are away. Home network devices work remotely only through a home bridge.'**
+  String get s0fc1c9f296;
+
+  /// fi: Etäkäyttö
+  ///
+  /// In en, this message translates to:
+  /// **'Remote access'**
+  String get se50ed56454;
+
+  /// fi: Täytä avain ja palvelin.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in the key and the server.'**
+  String get sc5f54cf3c8;
+
+  /// fi: Pilvessä ei ole laitteita tällä avaimella.
+  ///
+  /// In en, this message translates to:
+  /// **'No devices in the cloud with this key.'**
+  String get sb26dad8f73;
+
+  /// fi: {p0} toimii nyt Shelly Cloudin kautta.
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} now works through Shelly Cloud.'**
+  String s2c6ce95ec2(String p0);
+
+  /// fi: Ohjaa {p0} kodin ulkopuolelta
+  ///
+  /// In en, this message translates to:
+  /// **'Control {p0} away from home'**
+  String s5629901cc4(String p0);
+
+  /// fi: Laite vaihdetaan käyttämään Shelly Cloudia. Kaikki sen kanavat, nimet ja ruudut säilyvät. Avain: Shelly-sovellus → oma p
+  ///
+  /// In en, this message translates to:
+  /// **'The device is switched to Shelly Cloud. All its channels, names and tiles stay. Key: Shelly app → your profile → User settings → Authorization cloud key.'**
+  String get s064abc90af;
+
+  /// fi: Pilviavain
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud key'**
+  String get s61a2d946a4;
+
+  /// fi: Palvelin (Server URI)
+  ///
+  /// In en, this message translates to:
+  /// **'Server (Server URI)'**
+  String get sf16961256b;
+
+  /// fi: Mikä näistä on {p0}?
+  ///
+  /// In en, this message translates to:
+  /// **'Which of these is {p0}?'**
+  String s28e10c6870(String p0);
+
+  /// fi: Vaihda Shelly Cloudiin
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to Shelly Cloud'**
+  String get s09f5da65e0;
+
+  /// fi: Kotisillan kautta: valot, pistorasiat, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, kamerakuvat
+  ///
+  /// In en, this message translates to:
+  /// **'Through your home bridge: lights, plugs, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, camera stills'**
+  String get s6b536de0c8;
+
+  /// fi: Suoraan netistä: ntfy-komennot, sähkön hinta, sää
+  ///
+  /// In en, this message translates to:
+  /// **'Straight over the internet: ntfy commands, electricity price, weather'**
+  String get s082c8c6278;
+
+  /// fi: Samat näkymät ja ruudut kuin tilisi muilla laitteilla
+  ///
+  /// In en, this message translates to:
+  /// **'The same views and tiles as your account\'\'s other devices'**
+  String get s5a419e551c;
+
+  /// fi: Ilman kotisiltaa kotiverkon laitteita ei voi ohjata selaimesta
+  ///
+  /// In en, this message translates to:
+  /// **'Without a home bridge the browser cannot control home-network devices'**
+  String get sa8f5c5c719;
+
+  /// fi: Vain sovelluksessa: laitteiden haku, Bluetooth, RTSP-video, kotisiltana toimiminen
+  ///
+  /// In en, this message translates to:
+  /// **'App only: device search, Bluetooth, RTSP video, acting as the home bridge'**
+  String get sb1c4acea71;
+
+  /// fi: Selainversio on etäohjain
+  ///
+  /// In en, this message translates to:
+  /// **'The browser version is a remote control'**
+  String get s2842696c47;
+
+  /// fi: Täällä ohjaat vain laitteita, jotka ovat etäkäytettävissä: kotisillan (Molaplan PC:llä, Android-laitteella tai Molaplan
+  ///
+  /// In en, this message translates to:
+  /// **'Here you control only devices that can be reached remotely: through a home bridge (Molaplan on a PC, an Android device or a Molaplan Bridge), ntfy or a cloud service. For full local control you need the Molaplan app.'**
+  String get s1cbac3d12d;
+
+  /// fi: Sovellukset ovat tulossa sovelluskauppoihin (Google Play, Microsoft Store). Jo nyt: jos sinulla on vanha Android-laite,
+  ///
+  /// In en, this message translates to:
+  /// **'The apps are coming to the app stores (Google Play, Microsoft Store). Already now: if you have an old Android device, we can install Molaplan on it as a service, or we will send the install file (APK) for you to install yourself if you are comfortable doing that.'**
+  String get scc4366802a;
+
+  /// fi: Tilaa PC-sovellus tai valmis Android-laite
+  ///
+  /// In en, this message translates to:
+  /// **'Order the PC app or a ready Android device'**
+  String get saffec3d1c7;
+
+  /// fi: Pyydä asennus palveluna
+  ///
+  /// In en, this message translates to:
+  /// **'Request installation as a service'**
+  String get sb2b9982ba7;
+
+  /// fi: Lataa asennustiedosto
+  ///
+  /// In en, this message translates to:
+  /// **'Download the install file'**
+  String get s02179b814a;
+
+  /// fi: Lataa uusin Android-asennustiedosto (APK). Avaa tiedosto puhelimessa tai tabletissa. Jos Android kysyy, salli asennus tu
+  ///
+  /// In en, this message translates to:
+  /// **'Download the latest Android install file (APK). Open the file on the phone or tablet. If Android asks, allow installation from unknown sources (Settings → security).'**
+  String get see46457ffd;
+
+  /// fi: Lataa
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get s167c125f07;
+
+  /// fi: Tähän laitteeseen ei saada yhteyttä selaimesta. Se toimii Molaplan-sovelluksessa, tai täältä, kun kotisilta on päällä.
+  ///
+  /// In en, this message translates to:
+  /// **'This device cannot be reached from the browser. It works in the Molaplan app, or from here when a home bridge is on.'**
+  String get s2bf22ca429;
 
   /// fi: Sulje
   ///
@@ -2947,94 +1922,1211 @@ abstract class AppLocalizations {
   /// **'Close'**
   String get s1e593aeca2;
 
-  /// fi: Yritä uudelleen
+  /// fi: Selainversio: ohjaat etäkäytettäviä laitteita. Täysi ohjaus sovelluksella – lisätietoja ›
   ///
   /// In en, this message translates to:
-  /// **'Try again'**
-  String get s200542b930;
+  /// **'Browser version: you control remotely reachable devices. Full control with the app – more ›'**
+  String get sc6e6f17ad4;
 
-  /// fi: Vahvista asennus Androidin ikkunasta tai ilmoituksesta.
+  /// fi: Piilota
   ///
   /// In en, this message translates to:
-  /// **'Confirm the install in the Android window or notification.'**
-  String get s29e92898c6;
+  /// **'Hide'**
+  String get s2b463f47ba;
 
-  /// fi: Vahvista päivitys
+  /// fi: Kodin laitteet ja tila yhdessä näkymässä
   ///
   /// In en, this message translates to:
-  /// **'Confirm the update'**
-  String get s48093a1369;
+  /// **'Your home\'\'s devices and status in one view'**
+  String get sbed5ab99f6;
 
-  /// fi: Päivitys {p0} odottaa vahvistusta. Paina Avaa asennus (tai napauta ilmoitusta "Molaplan-päivitys valmis").
+  /// fi: Ohjaa valoja, pistorasioita, lämpöpumppua ja hälytintä isoilla ruuduilla
   ///
   /// In en, this message translates to:
-  /// **'Update {p0} is waiting for your confirmation. Tap Open install (or the \"Molaplan-päivitys valmis\" notification).'**
-  String s6d50eeae10(String p0);
+  /// **'Control lights, plugs, heat pump and alarm with big tiles'**
+  String get s1ffc6e9e18;
 
-  /// fi: Avaa asennus
+  /// fi: Sama näkymä PC:llä, tabletilla, puhelimella ja selaimessa
   ///
   /// In en, this message translates to:
-  /// **'Open install'**
-  String get s1a5c09b6e4;
+  /// **'The same view on a PC, tablet, phone and in the browser'**
+  String get sb18bf27c69;
 
-  /// fi: Asennus ei käynnistynyt
+  /// fi: Laitteiden salasanat salataan – vain sinun laitteesi avaavat ne
   ///
   /// In en, this message translates to:
-  /// **'The install did not start'**
-  String get sd1cdbd3630;
+  /// **'Device passwords are encrypted – only your devices can open them'**
+  String get sdc86a6f82c;
 
-  /// fi: Android ei aloittanut päivityksen {p0} asennusta.
-  ///
-  /// Tarkista, että "Salli tästä lähteestä" on päällä Molaplanille, ja pai
+  /// fi: Käytä ilman tiliä
   ///
   /// In en, this message translates to:
-  /// **'Android did not start installing {p0}.\n\nCheck that \"Allow from this source\" is on for Molaplan and tap Update again. You can also download the APK from the release page.\n\nDetail: {p1}'**
-  String s21972e23c1(String p0, String p1);
+  /// **'Use without an account'**
+  String get s3865b9c032;
 
-  /// fi: Avaa asetukset
+  /// fi: Asetukset jäävät tähän selaimeen. Voit myöhemmin luoda tilin ja siirtää ne sinne.
   ///
   /// In en, this message translates to:
-  /// **'Open settings'**
-  String get sa1bd8d2533;
+  /// **'Setup stays in this browser. You can create an account later and move it there.'**
+  String get sdf7bb58964;
 
-  /// fi: Salli päivitysten asennus
+  /// fi: Kirjaudu sisään
   ///
   /// In en, this message translates to:
-  /// **'Allow installing updates'**
-  String get sa065e7f650;
+  /// **'Sign in'**
+  String get se697487621;
 
-  /// fi: Android kysyy kerran luvan, jotta Molaplan saa asentaa omat päivityksensä.
-  ///
-  /// 1. Paina "Avaa asetukset".
-  /// 2. Kytke päälle "
+  /// fi: Luo tili sähköpostikoodilla
   ///
   /// In en, this message translates to:
-  /// **'Android asks once for permission so Molaplan can install its own updates.\n\n1. Tap \"Open settings\".\n2. Turn on \"Allow from this source\".\n3. Come back and tap \"Update\" again.'**
-  String get sdc3bf71baf;
+  /// **'Create an account with an email code'**
+  String get sb2703f9ad3;
 
-  /// fi: Tarkistetaan…
+  /// fi: Nimi tulee espanjan ilmauksesta "me mola el plan" – "kuulostaa hyvältä".
   ///
   /// In en, this message translates to:
-  /// **'Verifying…'**
-  String get s441683b7a8;
+  /// **'The name comes from the Spanish \"me mola el plan\" – \"sounds good\".'**
+  String get s326d86a618;
 
-  /// fi: Ladataan päivitystä…
+  /// fi: Poistetaanko selaimen tiedot?
   ///
   /// In en, this message translates to:
-  /// **'Downloading update…'**
-  String get se83b7fb2ac;
+  /// **'Delete this browser\'\'s data?'**
+  String get s1812df3cb5;
 
-  /// fi: Molaplan {p0} on saatavilla. Silta toimii normaalisti.
+  /// fi: Kaikki tässä selaimessa olevat Molaplan-asetukset, laitteet, yhteydet ja ruudut poistetaan. Tätä ei voi perua.
   ///
   /// In en, this message translates to:
-  /// **'Molaplan {p0} is available. The bridge keeps working.'**
-  String s0b68f81d82(String p0);
+  /// **'All Molaplan settings, devices, connections and tiles in this browser will be deleted. This cannot be undone.'**
+  String get sbab6f0fd9d;
 
-  /// fi: Näytä
+  /// fi: Poista selaimen tiedot
   ///
   /// In en, this message translates to:
-  /// **'Show'**
-  String get sb06bee9921;
+  /// **'Delete browser data'**
+  String get s38a0f7939b;
+
+  /// fi: Kumoa
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get s4226eb046f;
+
+  /// fi: Siltaa ei löytynyt. Onko puhelin liitetty sillan Wi-Fiin "Molaplan-XXXX"? Jos verkkoa ei näy, pidä sillan nappia painett
+  ///
+  /// In en, this message translates to:
+  /// **'Bridge not found. Is the phone on the bridge\'\'s Wi-Fi \"Molaplan-XXXX\"? If the network is missing, hold the bridge button for 3 s (setup opens for 15 minutes).'**
+  String get saa4df8e877;
+
+  /// fi: Silta ei ole asetustilassa. Pidä sen nappia painettuna 3 s ja yritä uudelleen.
+  ///
+  /// In en, this message translates to:
+  /// **'The bridge is not in setup mode. Hold its button for 3 s and try again.'**
+  String get sf5293b1989;
+
+  /// fi: Tämä ei ole tarran / QR-koodin silta (avain ei täsmää). Mitään ei lähetetty.
+  ///
+  /// In en, this message translates to:
+  /// **'This is not the bridge on the label / QR code (key mismatch). Nothing was sent.'**
+  String get s839deeab41;
+
+  /// fi: Sillan vastaus ei kelpaa (salaus ei täsmää). Mitään ei tallennettu.
+  ///
+  /// In en, this message translates to:
+  /// **'The bridge\'\'s reply is not valid (encryption mismatch). Nothing was saved.'**
+  String get s3694ce006b;
+
+  /// fi: Silta hylkäsi asetukset: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'The bridge rejected the setup: {p0}'**
+  String s61aea0b713(String p0);
+
+  /// fi: Koti
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get s5b44cbe9c0;
+
+  /// fi: Lisää kotisilta
+  ///
+  /// In en, this message translates to:
+  /// **'Add home bridge'**
+  String get s63551081b0;
+
+  /// fi: Molaplan Bridge -laite
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan Bridge device'**
+  String get s592edd94e7;
+
+  /// fi: Pieni, aina päällä oleva laite (esim. Athom IR/RF -ohjain), joka välittää etäkomennot kodin laitteille ja ohjaa ilmalämp
+  ///
+  /// In en, this message translates to:
+  /// **'A small always-on device (e.g. the Athom IR/RF controller) that passes remote commands to your devices and controls the heat pump by infrared.'**
+  String get sa329968355;
+
+  /// fi: Kytke silta virtaan. Uusi silta avaa asetustilan itse (valo vilkkuu hitaasti, kerran sekunnissa).
+  ///
+  /// In en, this message translates to:
+  /// **'Power the bridge. A new bridge opens setup by itself (slow blink, once a second).'**
+  String get sd8790684a6;
+
+  /// fi: Avaa puhelimen Wi-Fi-asetukset ja liity verkkoon "Molaplan-XXXX" (ei salasanaa).
+  ///
+  /// In en, this message translates to:
+  /// **'Open the phone\'\'s Wi-Fi settings and join \"Molaplan-XXXX\" (no password).'**
+  String get s087004d26c;
+
+  /// fi: Palaa tähän ja paina "Etsi silta".
+  ///
+  /// In en, this message translates to:
+  /// **'Come back here and press \"Find bridge\".'**
+  String get sf85e449cd8;
+
+  /// fi: Etsi silta
+  ///
+  /// In en, this message translates to:
+  /// **'Find bridge'**
+  String get s57466387fc;
+
+  /// fi: Silta löytyi
+  ///
+  /// In en, this message translates to:
+  /// **'Bridge found'**
+  String get sd166e3cf6f;
+
+  /// fi: Ohjelmisto
+  ///
+  /// In en, this message translates to:
+  /// **'Firmware'**
+  String get s6b841de5dd;
+
+  /// fi: Kodin Wi-Fi
+  ///
+  /// In en, this message translates to:
+  /// **'Home Wi-Fi'**
+  String get s88fa323548;
+
+  /// fi: Verkon nimi
+  ///
+  /// In en, this message translates to:
+  /// **'Network name'**
+  String get sf48dd63b0a;
+
+  /// fi: Wi-Fi-salasana
+  ///
+  /// In en, this message translates to:
+  /// **'Wi-Fi password'**
+  String get s9f9c574cf9;
+
+  /// fi: Kodin nimi
+  ///
+  /// In en, this message translates to:
+  /// **'Home name'**
+  String get sc58a7d7121;
+
+  /// fi: Laitemalli
+  ///
+  /// In en, this message translates to:
+  /// **'Board'**
+  String get sc452460b0f;
+
+  /// fi: testaamaton
+  ///
+  /// In en, this message translates to:
+  /// **'untested'**
+  String get s4bdd633042;
+
+  /// fi: Tiedot lähetetään sillalle salattuina – sillan Wi-Fi on avoin, mutta salasanaa ei voi lukea siitä.
+  ///
+  /// In en, this message translates to:
+  /// **'The details are sent encrypted – the bridge Wi-Fi is open, but the password cannot be read from it.'**
+  String get sbe6a859b63;
+
+  /// fi: Yhdistä silta kotiin
+  ///
+  /// In en, this message translates to:
+  /// **'Connect the bridge'**
+  String get s77af0820de;
+
+  /// fi: Silta yhdistetty!
+  ///
+  /// In en, this message translates to:
+  /// **'Bridge connected!'**
+  String get s1ec01d8473;
+
+  /// fi: Silta liittyy nyt kodin Wi-Fiin (valo palaa ja välähtää pois 3 s välein, kun yhteys on kunnossa). Vaihda puhelin takaisi
+  ///
+  /// In en, this message translates to:
+  /// **'The bridge is now joining the home Wi-Fi (light on with a short dip every 3 s when connected). Switch the phone back to the home Wi-Fi or mobile data – Remote access shows the bridge status.'**
+  String get s88bc217a1b;
+
+  /// fi: Lisää laite
+  ///
+  /// In en, this message translates to:
+  /// **'Add a device'**
+  String get s876c7230a2;
+
+  /// fi: Käytä
+  ///
+  /// In en, this message translates to:
+  /// **'Use'**
+  String get s3d00dee1a9;
+
+  /// fi: Valitse laitteesi merkki. Molaplan etsii sen ja tekee ruudut valmiiksi.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick your device brand. Molaplan finds it and creates the tiles.'**
+  String get sa252f06bff;
+
+  /// fi: Hae merkkiä tai laitetta (esim. Shelly, Hue, IKEA)
+  ///
+  /// In en, this message translates to:
+  /// **'Search brand or device (e.g. Shelly, Hue, IKEA)'**
+  String get s5b3b5e5a24;
+
+  /// fi: Löydä ja yhdistä automaattisesti
+  ///
+  /// In en, this message translates to:
+  /// **'Find and connect automatically'**
+  String get sa427be10c9;
+
+  /// fi: Tulossa – näin käytät nyt
+  ///
+  /// In en, this message translates to:
+  /// **'Coming – how to use it today'**
+  String get s6f4cc0844f;
+
+  /// fi: Muut laitteet
+  ///
+  /// In en, this message translates to:
+  /// **'Other devices'**
+  String get s846ee3bc67;
+
+  /// fi: Termostaatti lämmitys jäähdytys
+  ///
+  /// In en, this message translates to:
+  /// **'Thermostat heating cooling'**
+  String get sdeadd78d47;
+
+  /// fi: Termostaatti
+  ///
+  /// In en, this message translates to:
+  /// **'Thermostat'**
+  String get s48264cfe32;
+
+  /// fi: Pitää lämmön halutussa: ohjaa releitä tai lämpöpumppua lämpömittarin mukaan. Voi säästää pörssisähköllä.
+  ///
+  /// In en, this message translates to:
+  /// **'Keeps the temperature you want: controls relays or a heat pump from a thermometer. Can save with spot prices.'**
+  String get s641a848754;
+
+  /// fi: Sääennuste sää lämpötila sade tuuli
+  ///
+  /// In en, this message translates to:
+  /// **'Weather forecast temperature rain wind'**
+  String get s94493d01ca;
+
+  /// fi: Sääennuste
+  ///
+  /// In en, this message translates to:
+  /// **'Weather forecast'**
+  String get s262f9527aa;
+
+  /// fi: Sää nyt ja tunneittain: lämpötila, sade ja tuuli kotisi sijainnista. Ei vaadi laitetta.
+  ///
+  /// In en, this message translates to:
+  /// **'Weather now and hourly: temperature, rain and wind at your home. No device needed.'**
+  String get scb3570338f;
+
+  /// fi: Etkö löydä merkkiäsi?
+  ///
+  /// In en, this message translates to:
+  /// **'Can\'\'t find your brand?'**
+  String get s2a9b6fedd9;
+
+  /// fi: Husqvarna, Zigbee, Tuya, Netatmo, lämpöpumput… katso miten ne toimivat jo nyt.
+  ///
+  /// In en, this message translates to:
+  /// **'Husqvarna, Zigbee, Tuya, heat pumps… see how to use them today.'**
+  String get scfc7244d06;
+
+  /// fi: Muu laite (oma asetus)
+  ///
+  /// In en, this message translates to:
+  /// **'Other (manual setup)'**
+  String get sf7b77783e5;
+
+  /// fi: Muu laite (edistynyt)
+  ///
+  /// In en, this message translates to:
+  /// **'Other device (advanced)'**
+  String get sc168355ee6;
+
+  /// fi: Kaikki yhteystyypit: HTTP, MQTT, Modbus, WebSocket, TCP, UDP.
+  ///
+  /// In en, this message translates to:
+  /// **'All connection types.'**
+  String get s3022f72ece;
+
+  /// fi: Teknisille käyttäjille. Vaatii edistyneet asetukset.
+  ///
+  /// In en, this message translates to:
+  /// **'For technical users.'**
+  String get s2d1d488d6d;
+
+  /// fi: Sisältää esimerkkiasetuksia
+  ///
+  /// In en, this message translates to:
+  /// **'Contains example settings'**
+  String get s6f1c11270c;
+
+  /// fi: Laitteessa on {p0} relettä
+  ///
+  /// In en, this message translates to:
+  /// **'The device has {p0} relays'**
+  String s4f55f417b1(String p0);
+
+  /// fi: Laitteessa on 1 rele
+  ///
+  /// In en, this message translates to:
+  /// **'The device has 1 relay'**
+  String get sab3ebba17a;
+
+  /// fi: energiamittaus
+  ///
+  /// In en, this message translates to:
+  /// **'energy metering'**
+  String get sfa48c40832;
+
+  /// fi: Ruudun nimi
+  ///
+  /// In en, this message translates to:
+  /// **'Tile name'**
+  String get sc8d1abbd21;
+
+  /// fi: OK
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get s183ed60009;
+
+  /// fi: Osoite: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Address: {p0}'**
+  String s1ea8fe913b(String p0);
+
+  /// fi: Home Assistant käyttää itse allekirjoitettua varmennetta. Se hyväksyttiin, koska osoite on kotiverkossa.
+  ///
+  /// In en, this message translates to:
+  /// **'Home Assistant uses a self-signed certificate. It was accepted because the address is on the home network.'**
+  String get s16dc13070c;
+
+  /// fi: Home Assistantia ei löytynyt automaattisesti. Kirjoita osoite, jolla avaat sen selaimessa (esim. http://192.168.1.20:812
+  ///
+  /// In en, this message translates to:
+  /// **'Home Assistant was not found automatically. Type the address you open it with (e.g. http://192.168.1.20:8123 or the Nabu Casa address).'**
+  String get sd531eb2fc2;
+
+  /// fi: Löydetyt Home Assistantit:
+  ///
+  /// In en, this message translates to:
+  /// **'Found Home Assistants:'**
+  String get s7def041e83;
+
+  /// fi: Löytyi: {p0} – {p1}
+  ///
+  /// In en, this message translates to:
+  /// **'Found: {p0} – {p1}'**
+  String s2967a37e01(String p0, String p1);
+
+  /// fi: Täytä ensin
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in first'**
+  String get s43370d968c;
+
+  /// fi: Laitteita ei löytynyt automaattisesti. Kirjoita osoite itse – sen löydät reitittimen laitelistasta tai laitteen omasta s
+  ///
+  /// In en, this message translates to:
+  /// **'No devices found automatically. Type the address yourself – find it in your router or the device app.'**
+  String get s8f4c0baf1a;
+
+  /// fi: Löydetyt laitteet – valitse omasi:
+  ///
+  /// In en, this message translates to:
+  /// **'Found devices – pick yours:'**
+  String get s104238f11e;
+
+  /// fi: Haku ei ole käytettävissä tässä verkossa.
+  ///
+  /// In en, this message translates to:
+  /// **'Search is not available on this network.'**
+  String get sd5f9dce947;
+
+  /// fi: Opetetaanko kaukosäätimen napit?
+  ///
+  /// In en, this message translates to:
+  /// **'Teach remote buttons?'**
+  String get s26abc57d91;
+
+  /// fi: Perusohjaus (virta, lämpö, tila) toimii jo. Voit lisäksi opettaa kaukosäätimen muita nappeja, esim. "Turbo" tai "Hiljain
+  ///
+  /// In en, this message translates to:
+  /// **'Basic control works already. You can also teach other remote buttons, e.g. \"Turbo\".'**
+  String get sc709f38633;
+
+  /// fi: Ei nyt
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get s6cac83dd5e;
+
+  /// fi: Opeta nyt
+  ///
+  /// In en, this message translates to:
+  /// **'Teach now'**
+  String get s97ea2eeb11;
+
+  /// fi: Laite lisätty
+  ///
+  /// In en, this message translates to:
+  /// **'Device added'**
+  String get s09cfb7b2a1;
+
+  /// fi: Laite ja {p0} ruutua lisätty
+  ///
+  /// In en, this message translates to:
+  /// **'Device and {p0} tiles added'**
+  String sda9574390f(String p0);
+
+  /// fi: Valmiit asetukset ovat esimerkkejä. Tarkista ne laitteesi ohjeesta ennen kuin luotat arvoihin.
+  ///
+  /// In en, this message translates to:
+  /// **'Preset settings are examples. Check them against your device manual before relying on them.'**
+  String get sd51ee1ec8d;
+
+  /// fi: IR on yksisuuntainen: lämpöpumppu ei kerro takaisin, menikö komento perille. Molaplan lähettää aina koko tilan (virta, t
+  ///
+  /// In en, this message translates to:
+  /// **'IR is one-way: the heat pump does not confirm. Molaplan always sends the whole state and shows what it sent. Teach other remote buttons later: Connections → blaster → \"Teach a new command\".'**
+  String get s2e99b59497;
+
+  /// fi: Ohje ja automaattinen haku
+  ///
+  /// In en, this message translates to:
+  /// **'Guide and automatic search'**
+  String get s0dd21e026c;
+
+  /// fi: Skannaa Modbus
+  ///
+  /// In en, this message translates to:
+  /// **'Scan Modbus'**
+  String get se3ef5a5658;
+
+  /// fi: Tuo Home Assistantin modbus.yaml
+  ///
+  /// In en, this message translates to:
+  /// **'Import a Home Assistant modbus.yaml'**
+  String get s810014ca02;
+
+  /// fi: Etsitään…
+  ///
+  /// In en, this message translates to:
+  /// **'Searching…'**
+  String get s695a011cc1;
+
+  /// fi: Etsi verkosta
+  ///
+  /// In en, this message translates to:
+  /// **'Search network'**
+  String get s47d409fddd;
+
+  /// fi: Tunnista releet
+  ///
+  /// In en, this message translates to:
+  /// **'Detect relays'**
+  String get sa62eebe6bd;
+
+  /// fi: ⚠ Tässä koneessa ei ole Modbus TCP:tä – tarvitset RS485 → Modbus TCP -muuntimen.
+  ///
+  /// In en, this message translates to:
+  /// **'⚠ No native Modbus TCP – an RS485 → TCP gateway is needed.'**
+  String get s7196b72140;
+
+  /// fi: Lähde
+  ///
+  /// In en, this message translates to:
+  /// **'Source'**
+  String get s2e8ba44677;
+
+  /// fi: Testaa yhteys
+  ///
+  /// In en, this message translates to:
+  /// **'Test connection'**
+  String get sceb8e47d07;
+
+  /// fi: Toimii!
+  ///
+  /// In en, this message translates to:
+  /// **'Works!'**
+  String get s02ce5f4a01;
+
+  /// fi: Nämä ruudut luodaan
+  ///
+  /// In en, this message translates to:
+  /// **'These tiles will be created'**
+  String get sb9e9e55164;
+
+  /// fi: Täytä tähdellä (*) merkityt kentät, niin näet ruudut.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in the fields marked with * to see the tiles.'**
+  String get s1cb2891ef2;
+
+  /// fi: Ei valmiita ruutuja – voit lisätä ne myöhemmin kynä-painikkeesta.
+  ///
+  /// In en, this message translates to:
+  /// **'No ready tiles – you can add them later with the pencil button.'**
+  String get s504861ee78;
+
+  /// fi: Näyttää arvon
+  ///
+  /// In en, this message translates to:
+  /// **'Shows a value'**
+  String get s1094266d4c;
+
+  /// fi: Kytkin päälle/pois
+  ///
+  /// In en, this message translates to:
+  /// **'On/off switch'**
+  String get sf6ae3f3323;
+
+  /// fi: Painike
+  ///
+  /// In en, this message translates to:
+  /// **'Button'**
+  String get s20dad69675;
+
+  /// fi: Säädin
+  ///
+  /// In en, this message translates to:
+  /// **'Slider'**
+  String get s0e9f94df05;
+
+  /// fi: Kamerakuva
+  ///
+  /// In en, this message translates to:
+  /// **'Camera view'**
+  String get s109b454866;
+
+  /// fi: Edistyneet asetukset
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced settings'**
+  String get s37153e0e80;
+
+  /// fi: Muu laite liitetään teknisillä asetuksilla (HTTP, MQTT, Modbus…). Jos laitteesi merkki löytyy listasta, käytä sitä – se
+  ///
+  /// In en, this message translates to:
+  /// **'Other devices use technical settings (HTTP, MQTT, Modbus…). If your brand is listed, use it instead.\n\nTurn on advanced settings? You can turn them off in Settings.'**
+  String get s0ca55a9cae;
+
+  /// fi: Ota käyttöön
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on'**
+  String get s9630135746;
+
+  /// fi: Mikä kamera sinulla on?
+  ///
+  /// In en, this message translates to:
+  /// **'Which camera do you have?'**
+  String get sbcdff8f72a;
+
+  /// fi: Muu kamera (ONVIF)
+  ///
+  /// In en, this message translates to:
+  /// **'Other camera (ONVIF)'**
+  String get s67bf18fb6f;
+
+  /// fi: Mikä lämpöpumppu sinulla on?
+  ///
+  /// In en, this message translates to:
+  /// **'Which heat pump do you have?'**
+  String get sdbbc24198f;
+
+  /// fi: Tarkista asetukset – ei valmistajan virallista dokumenttia.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify – no official vendor document.'**
+  String get sdfd0407af6;
+
+  /// fi: Ei wifiä – IR-ohjain (mikä tahansa merkki)
+  ///
+  /// In en, this message translates to:
+  /// **'No Wi-Fi – IR blaster (any brand)'**
+  String get s5562a66892;
+
+  /// fi: Tasmota- tai ESPHome-IR-lähetin (esim. Athom IR & RF) lähettää koko tilan kuten kaukosäädin. Voit myös opettaa omia kome
+  ///
+  /// In en, this message translates to:
+  /// **'A Tasmota or ESPHome IR blaster (e.g. Athom IR & RF) sends the full state like the remote. You can also teach your own commands.'**
+  String get sc6411a9010;
+
+  /// fi: Huoltoliitäntä (ESPHome)
+  ///
+  /// In en, this message translates to:
+  /// **'Service port (ESPHome)'**
+  String get s6cce12c7e3;
+
+  /// fi: ESP sisäyksikön liittimeen, kaksisuuntainen.
+  ///
+  /// In en, this message translates to:
+  /// **'An ESP on the indoor unit connector, two-way.'**
+  String get s0d3bc6d125;
+
+  /// fi: Home Assistantin kautta
+  ///
+  /// In en, this message translates to:
+  /// **'Via Home Assistant'**
+  String get s8275426406;
+
+  /// fi: Jos sinulla on jo Home Assistant.
+  ///
+  /// In en, this message translates to:
+  /// **'If you already have Home Assistant.'**
+  String get s5b10465c5b;
+
+  /// fi: Muut merkit – miksi ei vielä
+  ///
+  /// In en, this message translates to:
+  /// **'Other brands – why not yet'**
+  String get s417228f48f;
+
+  /// fi: Laitteita ohjataan kotiverkossa ilman pilveä. Ensimmäisellä kerralla tarvitaan laitteiden paikalliset avaimet, jotka hae
+  ///
+  /// In en, this message translates to:
+  /// **'The devices are controlled on your home network without the cloud. The first time, their local keys are fetched with your own free Tuya developer account (about 10 minutes, only once).'**
+  String get se50e28a0e4;
+
+  /// fi: Hae avaimet omalla Tuya-tunnuksella (suositus)
+  ///
+  /// In en, this message translates to:
+  /// **'Fetch the keys with my own Tuya account (recommended)'**
+  String get sb35b23dbdd;
+
+  /// fi: Kaikki sovelluksen wifi-laitteet kerralla.
+  ///
+  /// In en, this message translates to:
+  /// **'All Wi-Fi devices of the app at once.'**
+  String get sbc29869e30;
+
+  /// fi: Minulla on jo paikallinen avain
+  ///
+  /// In en, this message translates to:
+  /// **'I already have the local key'**
+  String get s2f57241369;
+
+  /// fi: Yksi laite: osoite, tunnus ja avain.
+  ///
+  /// In en, this message translates to:
+  /// **'One device: address, ID and key.'**
+  String get sf4a309c04a;
+
+  /// fi: Tarkista lukemat – ei valmistajan virallista dokumenttia.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify the readings – no official vendor document.'**
+  String get sd551537404;
+
+  /// fi: Paikallinen – suositus
+  ///
+  /// In en, this message translates to:
+  /// **'Local – recommended'**
+  String get sa1a45de0f2;
+
+  /// fi: Pilvi – valinnainen
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud – optional'**
+  String get se8b35fb9e9;
+
+  /// fi: Muut – miksi ei vielä
+  ///
+  /// In en, this message translates to:
+  /// **'Others – why not yet'**
+  String get s95216a7a5e;
+
+  /// fi: Mikä invertteri sinulla on?
+  ///
+  /// In en, this message translates to:
+  /// **'Which inverter do you have?'**
+  String get sc52321f275;
+
+  /// fi: Tuotanto, verkosta osto/myynti ja akun varaus ruutuihin ja automaatioihin. Paikallinen yhteys päivittyy sekunneissa eikä
+  ///
+  /// In en, this message translates to:
+  /// **'Production, grid import/export and battery charge as tiles and for automations. A local connection updates in seconds and needs no cloud.'**
+  String get s862002ac64;
+
+  /// fi: Mikä laturi sinulla on?
+  ///
+  /// In en, this message translates to:
+  /// **'Which charger do you have?'**
+  String get sa5f3da9152;
+
+  /// fi: Tila, lataus päälle/pois, teho ja virtaraja. Automaatiot: lataa aurinkosähkön ylijäämällä tai halvimpina tunteina.
+  ///
+  /// In en, this message translates to:
+  /// **'Status, charging on/off, power and current limit. Automations: charge on solar surplus or in the cheapest hours.'**
+  String get sdeb1f4332e;
+
+  /// fi: Mikä televisio tai laite?
+  ///
+  /// In en, this message translates to:
+  /// **'Which TV or device?'**
+  String get se5084a149d;
+
+  /// fi: Tila, virta, äänenvoimakkuus, mykistys ja toisto ruutuihin ja automaatioihin – suoraan kotiverkossa, ilman pilveä ja ilm
+  ///
+  /// In en, this message translates to:
+  /// **'Status, power, volume, mute and playback as tiles and for automations – straight over the home network, no cloud and no Home Assistant. Android TV and Google TV: pick Chromecast.'**
+  String get s43a563c3a0;
+
+  /// fi: Sähkön hinta
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity price'**
+  String get sca7e088857;
+
+  /// fi: Poikkeuksellisen kallis sähkö
+  ///
+  /// In en, this message translates to:
+  /// **'Exceptionally expensive electricity'**
+  String get s83f816fbe3;
+
+  /// fi: Anturin arvo
+  ///
+  /// In en, this message translates to:
+  /// **'Sensor value'**
+  String get sfc404aec8b;
+
+  /// fi: Laitteen tila
+  ///
+  /// In en, this message translates to:
+  /// **'Device state'**
+  String get s58d2896c42;
+
+  /// fi: Aika tai päivä
+  ///
+  /// In en, this message translates to:
+  /// **'Time or date'**
+  String get s7def336f41;
+
+  /// fi: Saapuminen (esilämmitys)
+  ///
+  /// In en, this message translates to:
+  /// **'Arrival (pre-heating)'**
+  String get sf80835a318;
+
+  /// fi: huomenna
+  ///
+  /// In en, this message translates to:
+  /// **'tomorrow'**
+  String get s9a37dbb58a;
+
+  /// fi: tänään
+  ///
+  /// In en, this message translates to:
+  /// **'today'**
+  String get s1fe084d61b;
+
+  /// fi: kallein
+  ///
+  /// In en, this message translates to:
+  /// **'highest'**
+  String get safd8f4dddf;
+
+  /// fi: halvin
+  ///
+  /// In en, this message translates to:
+  /// **'lowest'**
+  String get s484731d968;
+
+  /// fi: keskihinta
+  ///
+  /// In en, this message translates to:
+  /// **'average'**
+  String get s77f9bfc303;
+
+  /// fi: (valitse laite)
+  ///
+  /// In en, this message translates to:
+  /// **'(pick a device)'**
+  String get sc017c085e4;
+
+  /// fi: {p0}: keskihinta ≥ {p1} c tai kallein ≥ {p2} c tai {p3}× edellinen päivä
+  ///
+  /// In en, this message translates to:
+  /// **'{p0}: average ≥ {p1} c or peak ≥ {p2} c or {p3}× the day before'**
+  String s3f09da81b6(String p0, String p1, String p2, String p3);
+
+  /// fi: {p0} {p1} {p2} {p3} °C
+  ///
+  /// In en, this message translates to:
+  /// **'{p0}  {p2} {p3} °C'**
+  String s900c886f50(String p0, String p1, String p2, String p3);
+
+  /// fi: {p0} ei vastaa {p1} min
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} not answering {p1} min'**
+  String s81c88dabf7(String p0, String p1);
+
+  /// fi: {p0} menee pois päältä
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} turns off'**
+  String s5414e9e5fd(String p0);
+
+  /// fi: {p0} menee päälle
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} turns on'**
+  String s09a43fc401(String p0);
+
+  /// fi: saapuminen {p0} · muistutus {p1} h ennen · {p2} °C
+  ///
+  /// In en, this message translates to:
+  /// **'arrival {p0} · reminder {p1} h before · {p2} °C'**
+  String s56ef33ee50(String p0, String p1, String p2);
+
+  /// fi: Oma ilmoitus
+  ///
+  /// In en, this message translates to:
+  /// **'My notification'**
+  String get sdeb38e3907;
+
+  /// fi: Oma ilmoitus
+  ///
+  /// In en, this message translates to:
+  /// **'My own notification'**
+  String get s5e9a552fe6;
+
+  /// fi: Mikä tahansa ehto ja oma viesti.
+  ///
+  /// In en, this message translates to:
+  /// **'Any condition and your own message.'**
+  String get se2e6db5acc;
+
+  /// fi: Toimii tällä kotisillalla, myös kun sovellus on kiinni.
+  ///
+  /// In en, this message translates to:
+  /// **'Runs on this home bridge, also with the app closed.'**
+  String get sc6bec5e6cb;
+
+  /// fi: Kotisilta on vanhempi kuin 0.11.0: muistutukset toimivat nyt vain, kun tämä sovellus on auki. Päivitä silta (Etäkäyttö →
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge is older than 0.11.0: reminders work only while this app is open. Update the bridge (Remote access → My home bridges).'**
+  String get se17e32a5c9;
+
+  /// fi: Toimii kotisillalla, myös kun sovellus on kiinni.
+  ///
+  /// In en, this message translates to:
+  /// **'Runs on the home bridge, also with the app closed.'**
+  String get s5fd9e146bf;
+
+  /// fi: Ei kotisiltaa: muistutukset toimivat, kun sovellus on auki. Kotisilta pitää ne käynnissä aina.
+  ///
+  /// In en, this message translates to:
+  /// **'No home bridge: reminders work while the app is open. A home bridge keeps them running all the time.'**
+  String get s563ba24005;
+
+  /// fi: Lisää muistutus
+  ///
+  /// In en, this message translates to:
+  /// **'Add reminder'**
+  String get sf378d832a1;
+
+  /// fi: Saat ilmoituksen, kun jokin ehto täyttyy: sähkön hinta (myös huominen), sääennuste, anturin arvo, laitteen tila tai aika
+  ///
+  /// In en, this message translates to:
+  /// **'Get a notification when a condition is met: electricity price (tomorrow too), weather forecast, a sensor value, a device state or a time.'**
+  String get s034093c675;
+
+  /// fi: Valitse valmis malli
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a ready template'**
+  String get s49a26ce1f2;
+
+  /// fi: Viimeisimmät ilmoitukset
+  ///
+  /// In en, this message translates to:
+  /// **'Latest notifications'**
+  String get sc0597b9029;
+
+  /// fi: Ei vielä ilmoituksia.
+  ///
+  /// In en, this message translates to:
+  /// **'No notifications yet.'**
+  String get sac8af0108d;
+
+  /// fi: Puhelinilmoitukset (ntfy), hiljaiset tunnit, mykistys
+  ///
+  /// In en, this message translates to:
+  /// **'Phone notifications (ntfy), quiet hours, mute'**
+  String get sbb2b4bdfc8;
+
+  /// fi: Valitse laite.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a device.'**
+  String get s13d942a5a9;
+
+  /// fi: Kokeiluilmoitus lähetetty.
+  ///
+  /// In en, this message translates to:
+  /// **'Test notification sent.'**
+  String get sac782d209c;
+
+  /// fi: Tänään
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get s140acccb81;
+
+  /// fi: Huomenna
+  ///
+  /// In en, this message translates to:
+  /// **'Tomorrow'**
+  String get s0de6e75a52;
+
+  /// fi: Keskihinta
+  ///
+  /// In en, this message translates to:
+  /// **'Average'**
+  String get sbbf8b7a598;
+
+  /// fi: Kallein
+  ///
+  /// In en, this message translates to:
+  /// **'Highest'**
+  String get s43b4c610f8;
+
+  /// fi: Halvin
+  ///
+  /// In en, this message translates to:
+  /// **'Lowest'**
+  String get s9dd0f70be6;
+
+  /// fi: Raja
+  ///
+  /// In en, this message translates to:
+  /// **'Limit'**
+  String get scd65d31d4c;
+
+  /// fi: Keskihinta vähintään
+  ///
+  /// In en, this message translates to:
+  /// **'Average at least'**
+  String get s543838d91f;
+
+  /// fi: tai kallein vähintään
+  ///
+  /// In en, this message translates to:
+  /// **'or peak at least'**
+  String get s087a7e1b24;
+
+  /// fi: tai × edellisen päivän keskihinta
+  ///
+  /// In en, this message translates to:
+  /// **'or × the previous day\'\'s average'**
+  String get s8463e08e0b;
+
+  /// fi: Alin
+  ///
+  /// In en, this message translates to:
+  /// **'Min'**
+  String get sd8332d82ec;
+
+  /// fi: Ylin
+  ///
+  /// In en, this message translates to:
+  /// **'Max'**
+  String get s109b35551a;
+
+  /// fi: Keski
+  ///
+  /// In en, this message translates to:
+  /// **'Average'**
+  String get sf2c65c5aeb;
+
+  /// fi: Lämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature'**
+  String get s8653f173b6;
+
+  /// fi: Aseta kodin sijainti (Energia → Asetukset), jotta sääennuste on käytössä.
+  ///
+  /// In en, this message translates to:
+  /// **'Set the home location (Energy → Settings) for the forecast.'**
+  String get s68b942c864;
+
+  /// fi: Arvo
+  ///
+  /// In en, this message translates to:
+  /// **'Value'**
+  String get s38ac222392;
+
+  /// fi: Päälle
+  ///
+  /// In en, this message translates to:
+  /// **'On'**
+  String get s4cd3d92d4c;
+
+  /// fi: Pois
+  ///
+  /// In en, this message translates to:
+  /// **'Off'**
+  String get s33831dd49f;
+
+  /// fi: Ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'Offline'**
+  String get sa8e43f2b0e;
+
+  /// fi: Kun ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'When offline for'**
+  String get s65f512f499;
+
+  /// fi: Kello
+  ///
+  /// In en, this message translates to:
+  /// **'Time'**
+  String get sa224d2f5f9;
+
+  /// fi: Joka päivä (valitse päivä kerran)
+  ///
+  /// In en, this message translates to:
+  /// **'Every day (pick a date for once)'**
+  String get s96b7e2c62c;
+
+  /// fi: Saapuminen
+  ///
+  /// In en, this message translates to:
+  /// **'Arrival'**
+  String get s593004184e;
+
+  /// fi: Muistuta ennen
+  ///
+  /// In en, this message translates to:
+  /// **'Remind before'**
+  String get sa9faf47356;
+
+  /// fi: Tavoitelämpö
+  ///
+  /// In en, this message translates to:
+  /// **'Target temperature'**
+  String get sf527ec4275;
+
+  /// fi: Uusi muistutus
+  ///
+  /// In en, this message translates to:
+  /// **'New reminder'**
+  String get s009a96409a;
+
+  /// fi: Muistutus
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder'**
+  String get sb346b2b647;
+
+  /// fi: Nimi
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get sb1924acbe7;
+
+  /// fi: Kun
+  ///
+  /// In en, this message translates to:
+  /// **'When'**
+  String get s5506524eac;
+
+  /// fi: Viesti
+  ///
+  /// In en, this message translates to:
+  /// **'Message'**
+  String get s86c5d7fa73;
+
+  /// fi: Voit käyttää: {avg} {max} {min} {hour} {temp} {value} {tile} {target} {arrival} {date}
+  ///
+  /// In en, this message translates to:
+  /// **'\'You can use: {avg} {max} {min} {hour} {temp} {value} {tile} {target} {arrival} {date}\''**
+  String get s8dda7ee75e;
+
+  /// fi: Myös puhelimeen (ntfy)
+  ///
+  /// In en, this message translates to:
+  /// **'Also to phones (ntfy)'**
+  String get sec1bdb2451;
+
+  /// fi: Näkyy aina myös sovelluksessa.
+  ///
+  /// In en, this message translates to:
+  /// **'Always shown in the app too.'**
+  String get se2de73b535;
+
+  /// fi: Tärkeys
+  ///
+  /// In en, this message translates to:
+  /// **'Priority'**
+  String get sd84d87d156;
+
+  /// fi: 5 (myös hiljaisina tunteina)
+  ///
+  /// In en, this message translates to:
+  /// **'5 (also in quiet hours)'**
+  String get s7a09198c53;
+
+  /// fi: Ei uudelleen ennen
+  ///
+  /// In en, this message translates to:
+  /// **'Not again within'**
+  String get se8e58d6206;
+
+  /// fi: Ei ennen kello
+  ///
+  /// In en, this message translates to:
+  /// **'Not before'**
+  String get s7d773a4dc9;
+
+  /// fi: Kokeile
+  ///
+  /// In en, this message translates to:
+  /// **'Test'**
+  String get sb86dc1b7bf;
+
+  /// fi: Kieli
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get s2ad22696ca;
+
+  /// fi: Laitteen kieli
+  ///
+  /// In en, this message translates to:
+  /// **'Device language'**
+  String get s7efc5653d2;
 
   /// fi: Salasana ei täsmää. Kirjoita tilin salasana (sama jolla kirjauduit ensimmäisen kerran).
   ///
@@ -3228,12 +3320,6 @@ abstract class AppLocalizations {
   /// **'With an account your homes, devices and tiles are the same on all your devices – PC, tablet and phone. The home connection moves to a new device without a QR code.\n\nThe account is optional: without one Molaplan works as before and the setup stays on this device.'**
   String get sb35c5ba0fc;
 
-  /// fi: Kirjaudu sisään
-  ///
-  /// In en, this message translates to:
-  /// **'Sign in'**
-  String get se697487621;
-
   /// fi: Minulla ei ole tiliä – luo uusi
   ///
   /// In en, this message translates to:
@@ -3311,12 +3397,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No code – send a new one'**
   String get s317ad443fb;
-
-  /// fi: Takaisin
-  ///
-  /// In en, this message translates to:
-  /// **'Back'**
-  String get scf7e14661c;
 
   /// fi: Luo tili tai kirjaudu
   ///
@@ -3522,12 +3602,6 @@ abstract class AppLocalizations {
   /// **'Cancel'**
   String get s84fda3e17f;
 
-  /// fi: Tallenna
-  ///
-  /// In en, this message translates to:
-  /// **'Save'**
-  String get s162a85c6ef;
-
   /// fi: Keksi uusi salasana tilillesi.
   ///
   /// In en, this message translates to:
@@ -3570,437 +3644,353 @@ abstract class AppLocalizations {
   /// **'Account deleted.'**
   String get s139d2075b8;
 
-  /// fi: Sähkön hinta
+  /// fi: Koko leveys
   ///
   /// In en, this message translates to:
-  /// **'Electricity price'**
-  String get sca7e088857;
+  /// **'Full width'**
+  String get s2a28790ea2;
 
-  /// fi: Poikkeuksellisen kallis sähkö
+  /// fi: Tämä Shelly on energiamittari – vaihdetaanko kytkin {p0} mittausruutuun?
   ///
   /// In en, this message translates to:
-  /// **'Exceptionally expensive electricity'**
-  String get s83f816fbe3;
+  /// **'This Shelly is an energy meter – replace the switch with {p0} metering tiles?'**
+  String s3e5741712a(String p0);
 
-  /// fi: Sääennuste
+  /// fi: Laitteessa on {p0} relettä – lisää loput?
   ///
   /// In en, this message translates to:
-  /// **'Weather forecast'**
-  String get s262f9527aa;
+  /// **'The device has {p0} relays – add the rest?'**
+  String sfe2074ae81(String p0);
 
-  /// fi: Anturin arvo
+  /// fi: Lisää {p0}
   ///
   /// In en, this message translates to:
-  /// **'Sensor value'**
-  String get sfc404aec8b;
+  /// **'Add {p0}'**
+  String sf1319d04d0(String p0);
 
-  /// fi: Laitteen tila
+  /// fi: Korjaa
   ///
   /// In en, this message translates to:
-  /// **'Device state'**
-  String get s58d2896c42;
+  /// **'Fix'**
+  String get s95f80e9bdf;
 
-  /// fi: Aika tai päivä
+  /// fi: Vain kotiverkossa
   ///
   /// In en, this message translates to:
-  /// **'Time or date'**
-  String get s7def336f41;
+  /// **'Home network only'**
+  String get s12c2f8e6e4;
 
-  /// fi: Saapuminen (esilämmitys)
+  /// fi: klo {p0}
   ///
   /// In en, this message translates to:
-  /// **'Arrival (pre-heating)'**
-  String get sf80835a318;
+  /// **'at {p0}'**
+  String s5f7c464e6d(String p0);
 
-  /// fi: huomenna
+  /// fi: {p0} toimii vain kotiverkossa. Ruutu palaa normaaliksi itsestään, kun olet taas kotona.
   ///
   /// In en, this message translates to:
-  /// **'tomorrow'**
-  String get s9a37dbb58a;
+  /// **'{p0} only works on the home network. The tile returns to normal by itself when you are home again.'**
+  String s21b64ae0a7(String p0);
 
-  /// fi: tänään
+  /// fi: Viimeisin tila
   ///
   /// In en, this message translates to:
-  /// **'today'**
-  String get s1fe084d61b;
+  /// **'Last state'**
+  String get s6b1a8249de;
 
-  /// fi: kallein
+  /// fi: Tee etäkäyttöiseksi ›
   ///
   /// In en, this message translates to:
-  /// **'highest'**
-  String get safd8f4dddf;
+  /// **'Make it work remotely ›'**
+  String get s56650a18d5;
 
-  /// fi: halvin
+  /// fi: Komentoa ei ole määritetty
   ///
   /// In en, this message translates to:
-  /// **'lowest'**
-  String get s484731d968;
+  /// **'No command configured'**
+  String get sa0d8c62e5a;
 
-  /// fi: keskihinta
+  /// fi: Suoritetaanko komento?
   ///
   /// In en, this message translates to:
-  /// **'average'**
-  String get s77f9bfc303;
+  /// **'Run this command?'**
+  String get s1e5d696a26;
 
-  /// fi: (valitse laite)
+  /// fi: vaihda PIN-koodi
   ///
   /// In en, this message translates to:
-  /// **'(pick a device)'**
-  String get sc017c085e4;
+  /// **'change PIN'**
+  String get sa5ee6618a3;
 
-  /// fi: {p0}: keskihinta ≥ {p1} c tai kallein ≥ {p2} c tai {p3}× edellinen päivä
+  /// fi: syötä PIN-koodi
   ///
   /// In en, this message translates to:
-  /// **'{p0}: average ≥ {p1} c or peak ≥ {p2} c or {p3}× the day before'**
-  String s3f09da81b6(String p0, String p1, String p2, String p3);
+  /// **'enter PIN'**
+  String get s66f8ce67ed;
 
-  /// fi: {p0} {p1} {p2} {p3} °C
+  /// fi: Laite tarvitsee PIN-koodin jokaiseen komentoon ja tilakyselyyn. Syötä se kerran tässä.
   ///
   /// In en, this message translates to:
-  /// **'{p0}  {p2} {p3} °C'**
-  String s900c886f50(String p0, String p1, String p2, String p3);
+  /// **'The device needs its PIN for every command and status request. Enter it once here.'**
+  String get sb7b0c97cfa;
 
-  /// fi: {p0} ei vastaa {p1} min
+  /// fi: PIN
   ///
   /// In en, this message translates to:
-  /// **'{p0} not answering {p1} min'**
-  String s81c88dabf7(String p0, String p1);
+  /// **'PIN'**
+  String get s1df6e2eaa7;
 
-  /// fi: {p0} menee pois päältä
+  /// fi: Selaimessa PIN-koodia ei tallenneta. Se kysytään uudelleen, kun avaat sivun seuraavan kerran.
   ///
   /// In en, this message translates to:
-  /// **'{p0} turns off'**
-  String s5414e9e5fd(String p0);
+  /// **'The browser never stores the PIN. It is asked again the next time you open the page.'**
+  String get sb52d5c0b5b;
 
-  /// fi: {p0} menee päälle
+  /// fi: Muista tällä laitteella
   ///
   /// In en, this message translates to:
-  /// **'{p0} turns on'**
-  String s09a43fc401(String p0);
+  /// **'Remember on this device'**
+  String get secab66c046;
 
-  /// fi: saapuminen {p0} · muistutus {p1} h ennen · {p2} °C
+  /// fi: Tallennetaan salattuna vain tähän laitteeseen – ei tilille eikä muille laitteille. Pois päältä = kysytään taas, kun sove
   ///
   /// In en, this message translates to:
-  /// **'arrival {p0} · reminder {p1} h before · {p2} °C'**
-  String s56ef33ee50(String p0, String p1, String p2);
+  /// **'Stored encrypted on this device only – not in the account or on other devices. Off = asked again when the app restarts.'**
+  String get s2a15ea2eab;
 
-  /// fi: Oma ilmoitus
+  /// fi: PIN-koodi
   ///
   /// In en, this message translates to:
-  /// **'My notification'**
-  String get sdeb38e3907;
+  /// **'PIN code'**
+  String get sdfc012fb4e;
 
-  /// fi: Oma ilmoitus
+  /// fi: Tallennetaan suojattuna vain tähän laitteeseen. Oletuksena PIN-koodia ei tallenneta.
   ///
   /// In en, this message translates to:
-  /// **'My own notification'**
-  String get s5e9a552fe6;
+  /// **'Stored encrypted on this device only. By default the PIN is not stored.'**
+  String get s10bf4eab8e;
 
-  /// fi: Mikä tahansa ehto ja oma viesti.
+  /// fi: Lähetä
   ///
   /// In en, this message translates to:
-  /// **'Any condition and your own message.'**
-  String get se2e6db5acc;
+  /// **'Send'**
+  String get s912ea5d2ec;
 
-  /// fi: Toimii tällä kotisillalla, myös kun sovellus on kiinni.
+  /// fi: Komentoja ei ole määritetty
   ///
   /// In en, this message translates to:
-  /// **'Runs on this home bridge, also with the app closed.'**
-  String get sc6bec5e6cb;
+  /// **'No commands configured'**
+  String get s856418521a;
 
-  /// fi: Kotisilta on vanhempi kuin 0.11.0: muistutukset toimivat nyt vain, kun tämä sovellus on auki. Päivitä silta (Etäkäyttö →
+  /// fi: Ajettu klo {p0}
   ///
   /// In en, this message translates to:
-  /// **'The home bridge is older than 0.11.0: reminders work only while this app is open. Update the bridge (Remote access → My home bridges).'**
-  String get se17e32a5c9;
+  /// **'Ran at {p0}'**
+  String sb0ba67e677(String p0);
 
-  /// fi: Toimii kotisillalla, myös kun sovellus on kiinni.
+  /// fi: {p0}: lähetetty
   ///
   /// In en, this message translates to:
-  /// **'Runs on the home bridge, also with the app closed.'**
-  String get s5fd9e146bf;
+  /// **'{p0}: sent'**
+  String sdfa66ee201(String p0);
 
-  /// fi: Ei kotisiltaa: muistutukset toimivat, kun sovellus on auki. Kotisilta pitää ne käynnissä aina.
+  /// fi: Lähetetty – odotetaan vastausta…
   ///
   /// In en, this message translates to:
-  /// **'No home bridge: reminders work while the app is open. A home bridge keeps them running all the time.'**
-  String get s563ba24005;
+  /// **'Sent – waiting for the reply…'**
+  String get s12fc3810a5;
 
-  /// fi: Lisää muistutus
+  /// fi: Vastaus klo
   ///
   /// In en, this message translates to:
-  /// **'Add reminder'**
-  String get sf378d832a1;
+  /// **'Reply at'**
+  String get sd1c7d49360;
 
-  /// fi: Saat ilmoituksen, kun jokin ehto täyttyy: sähkön hinta (myös huominen), sääennuste, anturin arvo, laitteen tila tai aika
+  /// fi: Hintaohjaus käytössä
   ///
   /// In en, this message translates to:
-  /// **'Get a notification when a condition is met: electricity price (tomorrow too), weather forecast, a sensor value, a device state or a time.'**
-  String get s034093c675;
+  /// **'Price control on'**
+  String get s29fae6a0e8;
 
-  /// fi: Valitse valmis malli
+  /// fi: Päivitetty
   ///
   /// In en, this message translates to:
-  /// **'Pick a ready template'**
-  String get s49a26ce1f2;
+  /// **'Updated'**
+  String get sbfe79d1f5f;
 
-  /// fi: Viimeisimmät ilmoitukset
+  /// fi: Lisää aloitusnäytölle
   ///
   /// In en, this message translates to:
-  /// **'Latest notifications'**
-  String get sc0597b9029;
+  /// **'Add to home screen'**
+  String get s46d0983ce8;
 
-  /// fi: Ei vielä ilmoituksia.
+  /// fi: Nimeä uudelleen
   ///
   /// In en, this message translates to:
-  /// **'No notifications yet.'**
-  String get sac8af0108d;
+  /// **'Rename'**
+  String get s59d55f8882;
 
-  /// fi: Edistyneet
+  /// fi: Vaihda PIN
   ///
   /// In en, this message translates to:
-  /// **'Advanced'**
-  String get sf4caddf894;
+  /// **'Change PIN'**
+  String get s84ada1ae69;
 
-  /// fi: Puhelinilmoitukset (ntfy), hiljaiset tunnit, mykistys
+  /// fi: Tallennettu PIN poistettu
   ///
   /// In en, this message translates to:
-  /// **'Phone notifications (ntfy), quiet hours, mute'**
-  String get sbb2b4bdfc8;
+  /// **'Saved PIN removed'**
+  String get s25580038cb;
 
-  /// fi: Valitse laite.
+  /// fi: Unohda tallennettu PIN
   ///
   /// In en, this message translates to:
-  /// **'Pick a device.'**
-  String get s13d942a5a9;
+  /// **'Forget saved PIN'**
+  String get sf50c488b24;
 
-  /// fi: Kokeiluilmoitus lähetetty.
+  /// fi: Hintaohjaus
   ///
   /// In en, this message translates to:
-  /// **'Test notification sent.'**
-  String get sac782d209c;
+  /// **'Price control'**
+  String get safe0429a90;
 
-  /// fi: Laite
+  /// fi: Opettele kaukosäätimen nappi
   ///
   /// In en, this message translates to:
-  /// **'Device'**
-  String get s67584c9abf;
+  /// **'Learn a remote button'**
+  String get sf3d644dd4c;
 
-  /// fi: Tänään
+  /// fi: Päivitä
   ///
   /// In en, this message translates to:
-  /// **'Today'**
-  String get s140acccb81;
+  /// **'Refresh'**
+  String get sfb1a18d11f;
 
-  /// fi: Huomenna
+  /// fi: Syötä PIN
   ///
   /// In en, this message translates to:
-  /// **'Tomorrow'**
-  String get s0de6e75a52;
+  /// **'Enter PIN'**
+  String get sbb9e9b1229;
 
-  /// fi: Keskihinta
+  /// fi: Viimeksi
   ///
   /// In en, this message translates to:
-  /// **'Average'**
-  String get sbbf8b7a598;
+  /// **'Last'**
+  String get se38a9bb2ed;
 
-  /// fi: Kallein
+  /// fi: Valitse rekisterilista (CSV)
   ///
   /// In en, this message translates to:
-  /// **'Highest'**
-  String get s43b4c610f8;
+  /// **'Choose the register list (CSV)'**
+  String get sf1ed8904bb;
 
-  /// fi: Halvin
+  /// fi: Tiedostoa ei tunnistettu NIBEn rekisterilistaksi.
   ///
   /// In en, this message translates to:
-  /// **'Lowest'**
-  String get s9dd0f70be6;
+  /// **'Not recognised as a NIBE register list.'**
+  String get s5bf50963d1;
 
-  /// fi: Raja
+  /// fi: Listassa ei ollut rekistereitä.
   ///
   /// In en, this message translates to:
-  /// **'Limit'**
-  String get scd65d31d4c;
+  /// **'The list had no registers.'**
+  String get s0cba536d9c;
 
-  /// fi: Keskihinta vähintään
+  /// fi: {p0} rekisteriä tuotu, {p1} tunnistettu (ulkolämpö, menovesi, käyttövesi, käyrän siirto…).
   ///
   /// In en, this message translates to:
-  /// **'Average at least'**
-  String get s543838d91f;
+  /// **'{p0} registers imported, {p1} recognised (outdoor, supply, hot water, curve offset…).'**
+  String s80d7fd2d3c(String p0, String p1);
 
-  /// fi: tai kallein vähintään
+  /// fi: Tiedot vain tässä selaimessa.
   ///
   /// In en, this message translates to:
-  /// **'or peak at least'**
-  String get s087a7e1b24;
+  /// **'Data is only in this browser. '**
+  String get s429f9e257a;
 
-  /// fi: tai × edellisen päivän keskihinta
+  /// fi: Ei tiliä – asetukset vain tällä laitteella.
   ///
   /// In en, this message translates to:
-  /// **'or × the previous day\'\'s average'**
-  String get s8463e08e0b;
+  /// **'No account – settings only on this device. '**
+  String get sda9203de80;
 
-  /// fi: Alin
+  /// fi: Kirjaudu, niin ne synkronoituvat ›
   ///
   /// In en, this message translates to:
-  /// **'Min'**
-  String get sd8332d82ec;
+  /// **'Sign in to sync ›'**
+  String get sfec58c0c1b;
 
-  /// fi: Ylin
+  /// fi: Luo tili ›
   ///
   /// In en, this message translates to:
-  /// **'Max'**
-  String get s109b35551a;
+  /// **'Create account ›'**
+  String get s8b3e63da21;
 
-  /// fi: Keski
+  /// fi: Laite lisätty! 🎉
   ///
   /// In en, this message translates to:
-  /// **'Average'**
-  String get sf2c65c5aeb;
+  /// **'Device added! 🎉'**
+  String get s887c293cad;
 
-  /// fi: Aseta kodin sijainti (Energia → Asetukset), jotta sääennuste on käytössä.
+  /// fi: Luo tili, niin asetukset säilyvät ja siirtyvät muille laitteille. Se käy sähköpostikoodilla, salasanaa ei tarvita.
   ///
   /// In en, this message translates to:
-  /// **'Set the home location (Energy → Settings) for the forecast.'**
-  String get s68b942c864;
+  /// **'Create an account so your settings are kept and move to your other devices. It only takes an email code, no password needed.'**
+  String get s84a087a679;
 
-  /// fi: Arvo
+  /// fi: Tervetuloa Molaplaniin
   ///
   /// In en, this message translates to:
-  /// **'Value'**
-  String get s38ac222392;
+  /// **'Welcome to Molaplan'**
+  String get s907220900d;
 
-  /// fi: Päälle
+  /// fi: Asetukset kaikilla laitteillasi
   ///
   /// In en, this message translates to:
-  /// **'On'**
-  String get s4cd3d92d4c;
+  /// **'Your setup on all your devices'**
+  String get s845ec6276f;
 
-  /// fi: Ei vastaa
+  /// fi: Mitään ei katoa, vaikka puhelin vaihtuu
   ///
   /// In en, this message translates to:
-  /// **'Offline'**
-  String get sa8e43f2b0e;
+  /// **'Nothing is lost when you change phones'**
+  String get s9dfa93453b;
 
-  /// fi: Kun ei vastaa
+  /// fi: Laitteiden salasanat salataan
   ///
   /// In en, this message translates to:
-  /// **'When offline for'**
-  String get s65f512f499;
+  /// **'Device passwords are encrypted'**
+  String get s6aa51b28a5;
 
-  /// fi: Kello
+  /// fi: Luo tili / Kirjaudu
   ///
   /// In en, this message translates to:
-  /// **'Time'**
-  String get sa224d2f5f9;
+  /// **'Create account / Sign in'**
+  String get sc6f02b69d3;
 
-  /// fi: Joka päivä (valitse päivä kerran)
+  /// fi: Sähköpostikoodilla – ei salasanaa.
   ///
   /// In en, this message translates to:
-  /// **'Every day (pick a date for once)'**
-  String get s96b7e2c62c;
+  /// **'With an email code – no password.'**
+  String get sc777bde66f;
 
-  /// fi: Saapuminen
+  /// fi: Jatka ilman tiliä
   ///
   /// In en, this message translates to:
-  /// **'Arrival'**
-  String get s593004184e;
+  /// **'Continue without an account'**
+  String get se2e5ff2c8a;
 
-  /// fi: Muistuta ennen
+  /// fi: Vaatii tilin.
   ///
   /// In en, this message translates to:
-  /// **'Remind before'**
-  String get sa9faf47356;
+  /// **'Requires an account.'**
+  String get s82714aa826;
 
-  /// fi: Tavoitelämpö
+  /// fi: Kirjaudu tai luo tili
   ///
   /// In en, this message translates to:
-  /// **'Target temperature'**
-  String get sf527ec4275;
-
-  /// fi: Uusi muistutus
-  ///
-  /// In en, this message translates to:
-  /// **'New reminder'**
-  String get s009a96409a;
-
-  /// fi: Muistutus
-  ///
-  /// In en, this message translates to:
-  /// **'Reminder'**
-  String get sb346b2b647;
-
-  /// fi: Poista
-  ///
-  /// In en, this message translates to:
-  /// **'Delete'**
-  String get sc1845eb440;
-
-  /// fi: Nimi
-  ///
-  /// In en, this message translates to:
-  /// **'Name'**
-  String get sb1924acbe7;
-
-  /// fi: Kun
-  ///
-  /// In en, this message translates to:
-  /// **'When'**
-  String get s5506524eac;
-
-  /// fi: Viesti
-  ///
-  /// In en, this message translates to:
-  /// **'Message'**
-  String get s86c5d7fa73;
-
-  /// fi: Voit käyttää: {avg} {max} {min} {hour} {temp} {value} {tile} {target} {arrival} {date}
-  ///
-  /// In en, this message translates to:
-  /// **'\'You can use: {avg} {max} {min} {hour} {temp} {value} {tile} {target} {arrival} {date}\''**
-  String get s8dda7ee75e;
-
-  /// fi: Myös puhelimeen (ntfy)
-  ///
-  /// In en, this message translates to:
-  /// **'Also to phones (ntfy)'**
-  String get sec1bdb2451;
-
-  /// fi: Näkyy aina myös sovelluksessa.
-  ///
-  /// In en, this message translates to:
-  /// **'Always shown in the app too.'**
-  String get se2de73b535;
-
-  /// fi: Tärkeys
-  ///
-  /// In en, this message translates to:
-  /// **'Priority'**
-  String get sd84d87d156;
-
-  /// fi: 5 (myös hiljaisina tunteina)
-  ///
-  /// In en, this message translates to:
-  /// **'5 (also in quiet hours)'**
-  String get s7a09198c53;
-
-  /// fi: Ei uudelleen ennen
-  ///
-  /// In en, this message translates to:
-  /// **'Not again within'**
-  String get se8e58d6206;
-
-  /// fi: Ei ennen kello
-  ///
-  /// In en, this message translates to:
-  /// **'Not before'**
-  String get s7d773a4dc9;
-
-  /// fi: Kokeile
-  ///
-  /// In en, this message translates to:
-  /// **'Test'**
-  String get sb86dc1b7bf;
+  /// **'Sign in or create an account'**
+  String get s9bb545e9b3;
 
   /// fi: Anna napille nimi, esim. "Turbo".
   ///
@@ -4025,12 +4015,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Teach a new command'**
   String get sd2a872d1ba;
-
-  /// fi: Valmis
-  ///
-  /// In en, this message translates to:
-  /// **'Done'**
-  String get s2acab0eccd;
 
   /// fi: Tallenna kaukosäätimen nappeja Molaplaniin, esim. "Turbo" tai "Hiljainen". Tarvitset IR-lähettimen, jossa on myös vastaa
   ///
@@ -4164,12 +4148,6 @@ abstract class AppLocalizations {
   /// **'\"{p0}\" added.'**
   String sdfa6aedae8(String p0, String p1);
 
-  /// fi: Ilmalämpöpumppu (huoltoliitäntä/ESPHome)
-  ///
-  /// In en, this message translates to:
-  /// **'Heat pump (service port/ESPHome)'**
-  String get sbd2f94e7a4;
-
   /// fi: Paras tapa ohjata ilmalämpöpumppua: pieni ESP32-ohjain kytketään sisäyksikön huoltoliitäntään. Toisin kuin IR, se on kak
   ///
   /// In en, this message translates to:
@@ -4242,1217 +4220,65 @@ abstract class AppLocalizations {
   /// **'Device answered but has no climate entity.'**
   String get s9aa9bc9679;
 
-  /// fi: Valitse huoneen kuva
+  /// fi: Et ole kotona? Ota etäyhteys käyttöön
   ///
   /// In en, this message translates to:
-  /// **'Choose a room photo'**
-  String get sec88246e24;
+  /// **'Not at home? Turn on remote access'**
+  String get sd9923cda70;
 
-  /// fi: Minkä huoneen kuva?
+  /// fi: Tekniset tiedot
   ///
   /// In en, this message translates to:
-  /// **'Photo for which room?'**
-  String get s252b8e1289;
-
-  /// fi: Valitse valmis huonekuva tai oma kuva. Kuva näkyy otsikkona tai koko näkymän taustana.
-  ///
-  /// In en, this message translates to:
-  /// **'Pick a built-in room picture or your own photo. It is shown as the header or behind the whole view.'**
-  String get sa27e5362de;
-
-  /// fi: Valitse oma kuva
-  ///
-  /// In en, this message translates to:
-  /// **'Choose your own picture'**
-  String get s84ef77e1ca;
-
-  /// fi: Vaihda kuva
-  ///
-  /// In en, this message translates to:
-  /// **'Change picture'**
-  String get sf55eee73b8;
-
-  /// fi: Ota kuva
-  ///
-  /// In en, this message translates to:
-  /// **'Take photo'**
-  String get sf6723451b9;
-
-  /// fi: Otsikkokuva
-  ///
-  /// In en, this message translates to:
-  /// **'Header picture'**
-  String get s0bec34cd24;
-
-  /// fi: Koko näkymän tausta
-  ///
-  /// In en, this message translates to:
-  /// **'Whole view background'**
-  String get s7b1e22fca7;
-
-  /// fi: Himmennys
-  ///
-  /// In en, this message translates to:
-  /// **'Dimming'**
-  String get s229e29f9ee;
-
-  /// fi: Sumennus
-  ///
-  /// In en, this message translates to:
-  /// **'Blur'**
-  String get s38285117e6;
-
-  /// fi: Poista kuva
-  ///
-  /// In en, this message translates to:
-  /// **'Remove picture'**
-  String get sdd957ccc1b;
-
-  /// fi: Enintään {p0} kuvaa. Poista jokin ensin.
-  ///
-  /// In en, this message translates to:
-  /// **'At most {p0} pictures. Remove one first.'**
-  String s6c487e340b(String p0);
-
-  /// fi: Tiedosto ei ole kuva
-  ///
-  /// In en, this message translates to:
-  /// **'The file is not a picture'**
-  String get sceafe9ce2a;
-
-  /// fi: Vain sovelluksessa
-  ///
-  /// In en, this message translates to:
-  /// **'App only'**
-  String get s463074e5cc;
-
-  /// fi: Toimii vain sovelluksessa tai kotisillan kautta
-  ///
-  /// In en, this message translates to:
-  /// **'Works only in the app or via a home bridge'**
-  String get seb8b8d2adf;
+  /// **'Technical details'**
+  String get sf77125583f;
 
   /// fi: Ei yhteyttä
   ///
   /// In en, this message translates to:
-  /// **'Offline'**
-  String get s3a5c21004e;
+  /// **'No connection'**
+  String get s1f8cf57b2c;
 
-  /// fi: Hintoja ei saatu – yritetään uudelleen
+  /// fi: Viim. hälytys {p0}
   ///
   /// In en, this message translates to:
-  /// **'Could not get prices – retrying'**
-  String get sbc7a87e591;
+  /// **'Last alarm {p0}'**
+  String s84819cca05(String p0);
 
-  /// fi: Säätietoja ei saatu – yritetään uudelleen
+  /// fi: Ilmoitukset
   ///
   /// In en, this message translates to:
-  /// **'Could not get the weather – retrying'**
-  String get s3f0837ec84;
+  /// **'Notifications'**
+  String get s8613961a5a;
 
-  /// fi: Kirjautuminen vanhentunut
+  /// fi: Valitse, tuleeko tästä laitteesta push-ilmoitus ja millä tärkeydellä. Oletukset ovat rauhalliset: vain hälytys ja laitte
   ///
   /// In en, this message translates to:
-  /// **'Sign-in expired'**
-  String get s68cbe596f8;
+  /// **'Choose whether this device sends a push and at which importance. Defaults stay quiet: only an alarm or a silent device notify you. Notifications go to your ntfy topic and appear in the app.'**
+  String get s8814efe188;
 
-  /// fi: Ei nettiyhteyttä
+  /// fi: Tapahtumien tärkeys
   ///
   /// In en, this message translates to:
-  /// **'No internet'**
-  String get s599357f47b;
+  /// **'Event importance'**
+  String get s9341ea63c0;
 
-  /// fi: Modbus ei päällä
+  /// fi: Yleiset oletukset. Laitteen omissa asetuksissa voi poiketa näistä. Automaation omassa ilmoitustoiminnossa prioriteetti v
   ///
   /// In en, this message translates to:
-  /// **'Modbus is off'**
-  String get s74fa2d56aa;
+  /// **'General defaults. A device can override these in its own settings. A notify action on an automation takes precedence.'**
+  String get s2b4ea7a381;
 
-  /// fi: Laite ei vastaa
+  /// fi: Laite ilmoitti uuden tilakanavan
   ///
   /// In en, this message translates to:
-  /// **'Device not responding'**
-  String get s156aa7eeb3;
+  /// **'The device reported a new state topic'**
+  String get s67917c9a2a;
 
-  /// fi: Väärä unit id?
+  /// fi: Käytä tätä
   ///
   /// In en, this message translates to:
-  /// **'Wrong unit id?'**
-  String get sbf2cfbb102;
-
-  /// fi: Estotila
-  ///
-  /// In en, this message translates to:
-  /// **'Lockout'**
-  String get s9be06479ff;
-
-  /// fi: Osoite puuttuu
-  ///
-  /// In en, this message translates to:
-  /// **'No address'**
-  String get s613938b0b3;
-
-  /// fi: Varattu (HA?)
-  ///
-  /// In en, this message translates to:
-  /// **'Busy (HA?)'**
-  String get s252d8628c7;
-
-  /// fi: Palvelu ei vastaa
-  ///
-  /// In en, this message translates to:
-  /// **'Service not answering'**
-  String get s0e3a6bafbf;
-
-  /// fi: Palvelinta ei löydy
-  ///
-  /// In en, this message translates to:
-  /// **'Server not found'**
-  String get s7abcbf1107;
-
-  /// fi: Kotisilta ei vastaa
-  ///
-  /// In en, this message translates to:
-  /// **'Home bridge not responding'**
-  String get sca533b6f25;
-
-  /// fi: Tietoa ei löydy laitteesta
-  ///
-  /// In en, this message translates to:
-  /// **'Value not found on device'**
-  String get s96ad0dc252;
-
-  /// fi: Asetus puuttuu
-  ///
-  /// In en, this message translates to:
-  /// **'Setting missing'**
-  String get s61cdd7287b;
-
-  /// fi: Suojausvirhe
-  ///
-  /// In en, this message translates to:
-  /// **'Security error'**
-  String get s57d0940253;
-
-  /// fi: Laite ei ole verkossa
-  ///
-  /// In en, this message translates to:
-  /// **'Device is offline'**
-  String get sfec025279e;
-
-  /// fi: Tarkista nyt
-  ///
-  /// In en, this message translates to:
-  /// **'Check now'**
-  String get s1ea16fc636;
-
-  /// fi: Ei verkkoyhteyttä
-  ///
-  /// In en, this message translates to:
-  /// **'No network'**
-  String get sbaf1a2b35e;
-
-  /// fi: Laite ei ole Wi-Fissä, eikä mobiilidata toimi. Ruuduissa näkyvät viimeksi saadut arvot.
-  ///
-  /// In en, this message translates to:
-  /// **'This device is not on Wi-Fi and mobile data does not work. Tiles show the last values received.'**
-  String get s3f750ce1d4;
-
-  /// fi: Wi-Fissä ei ole nettiä
-  ///
-  /// In en, this message translates to:
-  /// **'The Wi-Fi has no internet'**
-  String get s542a3e9332;
-
-  /// fi: Kotiverkon laitteet toimivat, pilvipalvelut ja etäyhteys eivät.
-  ///
-  /// In en, this message translates to:
-  /// **'Devices on this Wi-Fi work; cloud services and remote access do not.'**
-  String get sba13ded915;
-
-  /// fi: Etäpalvelin ei vastaa
-  ///
-  /// In en, this message translates to:
-  /// **'Remote server not answering'**
-  String get se24bfd1257;
-
-  /// fi: Netti toimii, mutta Molaplanin etäpalvelin ei vastaa. Kotona kaikki toimii; etäkäyttö palaa itsestään.
-  ///
-  /// In en, this message translates to:
-  /// **'The internet works, but Molaplan\'\'s remote server does not answer. At home everything works; remote access comes back by itself.'**
-  String get s8584be9da3;
-
-  /// fi: Yhteys kunnossa
-  ///
-  /// In en, this message translates to:
-  /// **'Connection OK'**
-  String get s1e03ade992;
-
-  /// fi: Tarkistetaan itsestään 15 s välein, kunnes yhteys toimii. Ilmoitus poistuu silloin itsestään.
-  ///
-  /// In en, this message translates to:
-  /// **'Re-checked every 15 s until it works; this notice then disappears by itself.'**
-  String get s0fc5f4d788;
-
-  /// fi: Wi-Fi/Ethernet-osoitteet
-  ///
-  /// In en, this message translates to:
-  /// **'Wi-Fi/Ethernet addresses'**
-  String get s3e05e0efab;
-
-  /// fi: ei yhtään
-  ///
-  /// In en, this message translates to:
-  /// **'none'**
-  String get s6b59e217ba;
-
-  /// fi: Tarkistettu
-  ///
-  /// In en, this message translates to:
-  /// **'Checked'**
-  String get s3b7c55c4fc;
-
-  /// fi: Olet poissa kotoa, eikä kotisilta vastaa. Kotiverkon laitteita ei voi nyt ohjata.
-  ///
-  /// In en, this message translates to:
-  /// **'You are away and the home bridge is not answering. Home network devices cannot be controlled now.'**
-  String get sc26c52235c;
-
-  /// fi: Olet poissa kotoa. Kotiverkon laitteet toimivat etänä vain kotisillan kautta.
-  ///
-  /// In en, this message translates to:
-  /// **'You are away. Home network devices work remotely only through a home bridge.'**
-  String get s0fc1c9f296;
-
-  /// fi: Etäkäyttö
-  ///
-  /// In en, this message translates to:
-  /// **'Remote access'**
-  String get se50ed56454;
-
-  /// fi: Täytä avain ja palvelin.
-  ///
-  /// In en, this message translates to:
-  /// **'Fill in the key and the server.'**
-  String get sc5f54cf3c8;
-
-  /// fi: Pilvessä ei ole laitteita tällä avaimella.
-  ///
-  /// In en, this message translates to:
-  /// **'No devices in the cloud with this key.'**
-  String get sb26dad8f73;
-
-  /// fi: {p0} toimii nyt Shelly Cloudin kautta.
-  ///
-  /// In en, this message translates to:
-  /// **'{p0} now works through Shelly Cloud.'**
-  String s2c6ce95ec2(String p0);
-
-  /// fi: Ohjaa {p0} kodin ulkopuolelta
-  ///
-  /// In en, this message translates to:
-  /// **'Control {p0} away from home'**
-  String s5629901cc4(String p0);
-
-  /// fi: Laite vaihdetaan käyttämään Shelly Cloudia. Kaikki sen kanavat, nimet ja ruudut säilyvät. Avain: Shelly-sovellus → oma p
-  ///
-  /// In en, this message translates to:
-  /// **'The device is switched to Shelly Cloud. All its channels, names and tiles stay. Key: Shelly app → your profile → User settings → Authorization cloud key.'**
-  String get s064abc90af;
-
-  /// fi: Palvelin (Server URI)
-  ///
-  /// In en, this message translates to:
-  /// **'Server (Server URI)'**
-  String get sf16961256b;
-
-  /// fi: Mikä näistä on {p0}?
-  ///
-  /// In en, this message translates to:
-  /// **'Which of these is {p0}?'**
-  String s28e10c6870(String p0);
-
-  /// fi: Vaihda Shelly Cloudiin
-  ///
-  /// In en, this message translates to:
-  /// **'Switch to Shelly Cloud'**
-  String get s09f5da65e0;
-
-  /// fi: Home Assistant lukee jo tätä laitetta
-  ///
-  /// In en, this message translates to:
-  /// **'Home Assistant already reads this device'**
-  String get sa846059775;
-
-  /// fi: Laitteella voi olla jo yhteys (esim. Home Assistant) – lue arvot HA:n kautta. Moni laite sallii vain yhden Modbus TCP -y
-  ///
-  /// In en, this message translates to:
-  /// **'The device may already have a connection (e.g. Home Assistant) – read the values through HA. Many devices allow only one Modbus TCP connection.'**
-  String get s18a1844439;
-
-  /// fi: {p0} Modbus-arvoa löytyi Home Assistantista. Moni laite sallii vain yhden Modbus TCP -yhteyden, joten HA:n kautta lukemi
-  ///
-  /// In en, this message translates to:
-  /// **'{p0} Modbus values found in Home Assistant. Many devices allow only one Modbus TCP connection, so reading through HA is the safest way.'**
-  String sa29df4fc6b(String p0);
-
-  /// fi: Käytä Home Assistantin kautta
-  ///
-  /// In en, this message translates to:
-  /// **'Use via Home Assistant'**
-  String get sb8c40d2c20;
-
-  /// fi: Tuo Home Assistantin modbus.yaml
-  ///
-  /// In en, this message translates to:
-  /// **'Import a Home Assistant modbus.yaml'**
-  String get s810014ca02;
-
-  /// fi: Liitä modbus.yaml (tai configuration.yaml:n modbus:-osa). Yhteys ja laatat tehdään samoilla rekistereillä ja ajoituksill
-  ///
-  /// In en, this message translates to:
-  /// **'Paste modbus.yaml (or the modbus: part of configuration.yaml). The connection and tiles use the same registers and timing.'**
-  String get sfbf34ee532;
-
-  /// fi: {p0} yhteys, {p1} laattaa
-  ///
-  /// In en, this message translates to:
-  /// **'{p0} connection(s), {p1} tiles'**
-  String s2d4fbaade1(String p0, String p1);
-
-  /// fi: Tuo
-  ///
-  /// In en, this message translates to:
-  /// **'Import'**
-  String get s580678cb10;
-
-  /// fi: Modbus-laite tuotu Home Assistantista
-  ///
-  /// In en, this message translates to:
-  /// **'Modbus device imported from Home Assistant'**
-  String get s108e078c0c;
-
-  /// fi: Lämmitys
-  ///
-  /// In en, this message translates to:
-  /// **'Heating'**
-  String get sa3a093e55e;
-
-  /// fi: Jäähdytys
-  ///
-  /// In en, this message translates to:
-  /// **'Cooling'**
-  String get s8efb99df1d;
-
-  /// fi: Lämmitys ja jäähdytys
-  ///
-  /// In en, this message translates to:
-  /// **'Heat and cool'**
-  String get s0b98d62330;
-
-  /// fi: lämmittää
-  ///
-  /// In en, this message translates to:
-  /// **'heating'**
-  String get sa61efb9866;
-
-  /// fi: jäähdyttää
-  ///
-  /// In en, this message translates to:
-  /// **'cooling'**
-  String get s9a47ee3e3c;
-
-  /// fi: odottaa
-  ///
-  /// In en, this message translates to:
-  /// **'idle'**
-  String get s156712ac0c;
-
-  /// fi: Termostaatti poistettu
-  ///
-  /// In en, this message translates to:
-  /// **'Thermostat removed'**
-  String get s8a1f52a37b;
-
-  /// fi: Lämpötilaa ei saada
-  ///
-  /// In en, this message translates to:
-  /// **'No temperature reading'**
-  String get s28dc9bc46a;
-
-  /// fi: Ei kotisiltaa: termostaatti ei ohjaa vielä. Ota etäyhteys käyttöön kodin tabletilla.
-  ///
-  /// In en, this message translates to:
-  /// **'No home bridge: the thermostat is not controlling yet. Set up remote access on the home tablet.'**
-  String get s4f1166fe24;
-
-  /// fi: Nyt
-  ///
-  /// In en, this message translates to:
-  /// **'Now'**
-  String get s29fd8d5b5e;
-
-  /// fi: Rele tai kytkin (päälle/pois)
-  ///
-  /// In en, this message translates to:
-  /// **'Relay or switch (on/off)'**
-  String get see9111ba68;
-
-  /// fi: Lämpöpumppu tai ilmastointi (asetusarvo)
-  ///
-  /// In en, this message translates to:
-  /// **'Heat pump or AC (setpoint)'**
-  String get seaed91ad78;
-
-  /// fi: Lämmittää
-  ///
-  /// In en, this message translates to:
-  /// **'Heats'**
-  String get sb757921c13;
-
-  /// fi: Jäähdyttää
-  ///
-  /// In en, this message translates to:
-  /// **'Cools'**
-  String get s7407864734;
-
-  /// fi: Molemmat
-  ///
-  /// In en, this message translates to:
-  /// **'Both'**
-  String get s272aa3f1da;
-
-  /// fi: Varalämmitin
-  ///
-  /// In en, this message translates to:
-  /// **'Backup heater'**
-  String get sdadb6e3501;
-
-  /// fi: Käynnistyy vain, kun lämpö on selvästi alle tavoitteen.
-  ///
-  /// In en, this message translates to:
-  /// **'Starts only when it is clearly below the target.'**
-  String get se4e381334d;
-
-  /// fi: Virta päälle/pois (valinnainen)
-  ///
-  /// In en, this message translates to:
-  /// **'Power on/off (optional)'**
-  String get s17c79c5f4e;
-
-  /// fi: Lämmitystilan painike (valinnainen)
-  ///
-  /// In en, this message translates to:
-  /// **'Heat mode button (optional)'**
-  String get s92d88612de;
-
-  /// fi: Jäähdytystilan painike (valinnainen)
-  ///
-  /// In en, this message translates to:
-  /// **'Cool mode button (optional)'**
-  String get s75ac845bab;
-
-  /// fi: Ei mitään
-  ///
-  /// In en, this message translates to:
-  /// **'None'**
-  String get se12fc46923;
-
-  /// fi: Mikä lämmittää tai jäähdyttää?
-  ///
-  /// In en, this message translates to:
-  /// **'What heats or cools?'**
-  String get sc590a09db9;
-
-  /// fi: Valitse yksi tai useampi. Esim. lämpöpumppu ja varalämmitin.
-  ///
-  /// In en, this message translates to:
-  /// **'Pick one or more. E.g. a heat pump and a backup heater.'**
-  String get sa15ffe53d4;
-
-  /// fi: Ei sopivia laitteita vielä
-  ///
-  /// In en, this message translates to:
-  /// **'No suitable devices yet'**
-  String get sd47a7615a7;
-
-  /// fi: Lisää ensin rele (esim. Shelly) tai lämpöpumppu (IR tai huoltoportti) ja palaa sitten tähän.
-  ///
-  /// In en, this message translates to:
-  /// **'First add a relay (e.g. Shelly) or a heat pump (IR or service port), then come back.'**
-  String get s3c7649a7f0;
-
-  /// fi: Mistä lämpötila luetaan?
-  ///
-  /// In en, this message translates to:
-  /// **'Where is the temperature read from?'**
-  String get see513572ea;
-
-  /// fi: Valitse lämpömittari. Useampi = varalla tai keskiarvo.
-  ///
-  /// In en, this message translates to:
-  /// **'Pick a thermometer. Several = fallback or average.'**
-  String get s5155522e83;
-
-  /// fi: Ei pakollinen: lämpöpumppu mittaa itse. Valitse mittari, jos haluat nähdä lämpötilan.
-  ///
-  /// In en, this message translates to:
-  /// **'Optional: the heat pump measures itself. Pick a sensor to see the temperature.'**
-  String get s581fa290f3;
-
-  /// fi: Ei lämpömittaria
-  ///
-  /// In en, this message translates to:
-  /// **'No thermometer'**
-  String get s7e4d8d60a0;
-
-  /// fi: Lisää ensin laite, joka näyttää lämpötilan.
-  ///
-  /// In en, this message translates to:
-  /// **'First add a device that shows a temperature.'**
-  String get s0787d80876;
-
-  /// fi: Ensimmäinen toimiva
-  ///
-  /// In en, this message translates to:
-  /// **'First working'**
-  String get s89661203b7;
-
-  /// fi: Keskiarvo
-  ///
-  /// In en, this message translates to:
-  /// **'Average'**
-  String get s0da3005956;
-
-  /// fi: Nimi ja tila
-  ///
-  /// In en, this message translates to:
-  /// **'Name and mode'**
-  String get s0c6a008ffd;
-
-  /// fi: esim. Olohuone
-  ///
-  /// In en, this message translates to:
-  /// **'e.g. Living room'**
-  String get s1790a71e85;
-
-  /// fi: Tavoitelämpötila
-  ///
-  /// In en, this message translates to:
-  /// **'Target temperature'**
-  String get sd5f46903a1;
-
-  /// fi: Jos lämpötilaa ei saada
-  ///
-  /// In en, this message translates to:
-  /// **'If the temperature is lost'**
-  String get s6de95e582f;
-
-  /// fi: Sammuta lämmitys/jäähdytys (turvallisin)
-  ///
-  /// In en, this message translates to:
-  /// **'Switch heating/cooling off (safest)'**
-  String get s8ff25225b4;
-
-  /// fi: Pidä ennallaan
-  ///
-  /// In en, this message translates to:
-  /// **'Keep as it is'**
-  String get s17cb86f49e;
-
-  /// fi: Hystereesi
-  ///
-  /// In en, this message translates to:
-  /// **'Hysteresis'**
-  String get s9624f070ee;
-
-  /// fi: Kuollut alue (lämmitys/jäähdytys)
-  ///
-  /// In en, this message translates to:
-  /// **'Deadband (heat/cool)'**
-  String get sf070be2c1e;
-
-  /// fi: Vähimmäisaika päällä
-  ///
-  /// In en, this message translates to:
-  /// **'Minimum on time'**
-  String get s64540136ff;
-
-  /// fi: Vähimmäisaika pois
-  ///
-  /// In en, this message translates to:
-  /// **'Minimum off time'**
-  String get s21713a2177;
-
-  /// fi: Varalämmitin, kun alle tavoitteen
-  ///
-  /// In en, this message translates to:
-  /// **'Backup heater when below target by'**
-  String get s8f7c8eb7d0;
-
-  /// fi: Mittari kadonnut, kun ei lukemaa
-  ///
-  /// In en, this message translates to:
-  /// **'Sensor lost after no reading for'**
-  String get sf1eb3b2d34;
-
-  /// fi: Uusi termostaatti
-  ///
-  /// In en, this message translates to:
-  /// **'New thermostat'**
-  String get s0ab1430151;
-
-  /// fi: Muokkaa termostaattia
-  ///
-  /// In en, this message translates to:
-  /// **'Edit thermostat'**
-  String get sbbc98d573d;
-
-  /// fi: Seuraava
-  ///
-  /// In en, this message translates to:
-  /// **'Next'**
-  String get s6c3e76828b;
-
-  /// fi: Muokkaa
-  ///
-  /// In en, this message translates to:
-  /// **'Edit'**
-  String get s187d328bb1;
-
-  /// fi: Poistetaanko termostaatti?
-  ///
-  /// In en, this message translates to:
-  /// **'Delete the thermostat?'**
-  String get s87984716cb;
-
-  /// fi: Tavoite
-  ///
-  /// In en, this message translates to:
-  /// **'Target'**
-  String get s79786b9f7d;
-
-  /// fi: Termostaatti toimii kotisillalla
-  ///
-  /// In en, this message translates to:
-  /// **'The thermostat runs on the home bridge'**
-  String get sdd309c0a63;
-
-  /// fi: Ota etäyhteys käyttöön kodin tabletilla (Asetukset → Etäkäyttö). Siihen asti termostaatti ei ohjaa.
-  ///
-  /// In en, this message translates to:
-  /// **'Set up remote access on the home tablet (Settings → Remote access). Until then it does not control anything.'**
-  String get s2a7e9fe291;
-
-  /// fi: Ohjaus toimii tällä laitteella (kotisilta).
-  ///
-  /// In en, this message translates to:
-  /// **'Runs on this device (home bridge).'**
-  String get s06cda8c0de;
-
-  /// fi: Ohjaus toimii kotisillalla.
-  ///
-  /// In en, this message translates to:
-  /// **'Runs on the home bridge.'**
-  String get s2342536aea;
-
-  /// fi: Lämmittää etukäteen ennen kallista sähköä ja pakkasta, ja antaa lämmön laskea hieman kalliina tunteina.
-  ///
-  /// In en, this message translates to:
-  /// **'Pre-heats before expensive electricity and cold weather, and lets the temperature drop a little in expensive hours.'**
-  String get s2c5993c1fd;
-
-  /// fi: Ylilämpö +
-  ///
-  /// In en, this message translates to:
-  /// **'Overheat +'**
-  String get s81c4abc1a5;
-
-  /// fi: Alilämpö −
-  ///
-  /// In en, this message translates to:
-  /// **'Underheat −'**
-  String get sdea18b2b40;
-
-  /// fi: Viiva = tavoitelämpötila, palkit = sähkön hinta, katkoviiva = ulkolämpötila.
-  ///
-  /// In en, this message translates to:
-  /// **'Line = target temperature, bars = electricity price, dashed = outdoor temperature.'**
-  String get s523214c8db;
-
-  /// fi: Lisää kodin sijainti säätä varten
-  ///
-  /// In en, this message translates to:
-  /// **'Add the home location for the weather'**
-  String get s94b8f63aa7;
-
-  /// fi: Suunnitelmaa lasketaan…
-  ///
-  /// In en, this message translates to:
-  /// **'Calculating the plan…'**
-  String get s941fbb47fe;
-
-  /// fi: Tasmota-laite
-  ///
-  /// In en, this message translates to:
-  /// **'Tasmota device'**
-  String get s702ca14235;
-
-  /// fi: ESPHome-laite
-  ///
-  /// In en, this message translates to:
-  /// **'ESPHome device'**
-  String get se0e5f715ad;
-
-  /// fi: HomeKit-laite
-  ///
-  /// In en, this message translates to:
-  /// **'HomeKit device'**
-  String get s63b6e55469;
-
-  /// fi: Tuntematon laite
-  ///
-  /// In en, this message translates to:
-  /// **'Unknown device'**
-  String get s13e301a66e;
-
-  /// fi: Puhelin
-  ///
-  /// In en, this message translates to:
-  /// **'Phone'**
-  String get sddb2c2cb2b;
-
-  /// fi: Tabletti
-  ///
-  /// In en, this message translates to:
-  /// **'Tablet'**
-  String get s16cd267576;
-
-  /// fi: Tietokone
-  ///
-  /// In en, this message translates to:
-  /// **'Computer'**
-  String get sec4679ec39;
-
-  /// fi: Tulostin
-  ///
-  /// In en, this message translates to:
-  /// **'Printer'**
-  String get s798f9a0558;
-
-  /// fi: TV / mediatoistin
-  ///
-  /// In en, this message translates to:
-  /// **'TV / media player'**
-  String get s06109b8e5c;
-
-  /// fi: Kaiutin
-  ///
-  /// In en, this message translates to:
-  /// **'Speaker'**
-  String get sc4655d321e;
-
-  /// fi: Reititin
-  ///
-  /// In en, this message translates to:
-  /// **'Router'**
-  String get sa9f2f85b3e;
-
-  /// fi: Verkkolevy
-  ///
-  /// In en, this message translates to:
-  /// **'Network storage'**
-  String get sf8360dcd74;
-
-  /// fi: Älylaite
-  ///
-  /// In en, this message translates to:
-  /// **'Smart device'**
-  String get s8e21b6f258;
-
-  /// fi: Kotisilta
-  ///
-  /// In en, this message translates to:
-  /// **'Home bridge'**
-  String get sb38b582dab;
-
-  /// fi: Tämä laite
-  ///
-  /// In en, this message translates to:
-  /// **'This device'**
-  String get sdf66171e91;
-
-  /// fi: iPhonen hotspot
-  ///
-  /// In en, this message translates to:
-  /// **'iPhone hotspot'**
-  String get s76a76a654e;
-
-  /// fi: Puhelimen hotspot
-  ///
-  /// In en, this message translates to:
-  /// **'Phone hotspot'**
-  String get s15d4ca1672;
-
-  /// fi: Reititin / hotspot
-  ///
-  /// In en, this message translates to:
-  /// **'Router / hotspot'**
-  String get sd54522fe39;
-
-  /// fi: Valvontapaneeli
-  ///
-  /// In en, this message translates to:
-  /// **'Security panel'**
-  String get s3294a9422d;
-
-  /// fi: ESP32-laite
-  ///
-  /// In en, this message translates to:
-  /// **'ESP32 device'**
-  String get sb97a2b7ed6;
-
-  /// fi: ei vielä ohjattavissa
-  ///
-  /// In en, this message translates to:
-  /// **'not controllable yet'**
-  String get s23f4820db7;
-
-  /// fi: Airthings: lisää pilven tai Bluetoothin kautta
-  ///
-  /// In en, this message translates to:
-  /// **'Airthings: add via the cloud or Bluetooth'**
-  String get sdeeabebed9;
-
-  /// fi: kotisillan kautta
-  ///
-  /// In en, this message translates to:
-  /// **'via home bridge'**
-  String get saae59a3865;
-
-  /// fi: ohjataan ntfy-viesteillä
-  ///
-  /// In en, this message translates to:
-  /// **'controlled with ntfy messages'**
-  String get sf226dd023a;
-
-  /// fi: jos tämä on valvontapaneeli, lisää se ntfy-komentolaitteena
-  ///
-  /// In en, this message translates to:
-  /// **'if this is a security panel, add it as an ntfy command device'**
-  String get s0e6aa5168c;
-
-  /// fi: Malli
-  ///
-  /// In en, this message translates to:
-  /// **'Model'**
-  String get sdccd6e7f24;
-
-  /// fi: MAC
-  ///
-  /// In en, this message translates to:
-  /// **'\')\'\'}\''**
-  String get s891a4b434e;
-
-  /// fi: Portit
-  ///
-  /// In en, this message translates to:
-  /// **'Ports'**
-  String get s43aba09687;
-
-  /// fi: Lähteet
-  ///
-  /// In en, this message translates to:
-  /// **'Sources'**
-  String get scee3511db6;
-
-  /// fi: Nimeä laite
-  ///
-  /// In en, this message translates to:
-  /// **'Name the device'**
-  String get sbc46a05125;
-
-  /// fi: Nimi muistetaan tällä laitteella.
-  ///
-  /// In en, this message translates to:
-  /// **'Remembered on this device.'**
-  String get s1d5ed84aed;
-
-  /// fi: Lisää komentolaitteena
-  ///
-  /// In en, this message translates to:
-  /// **'Add as command device'**
-  String get s3e6dd6ff2d;
-
-  /// fi: Nimeä
-  ///
-  /// In en, this message translates to:
-  /// **'Rename'**
-  String get s59622d792b;
-
-  /// fi: Laitehaku toimii selaimessa vain kotisillan kautta
-  ///
-  /// In en, this message translates to:
-  /// **'In the browser, device search works only through a home bridge'**
-  String get sb616303f5b;
-
-  /// fi: Voit silti lisätä pilvi- ja ntfy-laitteita alta.
-  ///
-  /// In en, this message translates to:
-  /// **'You can still add cloud and ntfy devices below.'**
-  String get sef469cadc3;
-
-  /// fi: kotisillan kautta
-  ///
-  /// In en, this message translates to:
-  /// **'via the home bridge'**
-  String get sa0fccfbcab;
-
-  /// fi: Etsi laitteet
-  ///
-  /// In en, this message translates to:
-  /// **'Find devices'**
-  String get s1169d2d093;
-
-  /// fi: Etsitään kotiverkosta…
-  ///
-  /// In en, this message translates to:
-  /// **'Searching your home network…'**
-  String get s55b85f29a6;
-
-  /// fi: Molaplan etsii kotiverkosta laitteet, jotka se tunnistaa.
-  ///
-  /// In en, this message translates to:
-  /// **'Molaplan looks for devices it recognises on your home network.'**
-  String get se9c923ff0b;
-
-  /// fi: Tunnettuja laitteita ei löytynyt. Valitse merkki alta.
-  ///
-  /// In en, this message translates to:
-  /// **'No known devices found. Pick the brand below.'**
-  String get s3ff2220816;
-
-  /// fi: Löytyi {p0}. Lisää napauttamalla.
-  ///
-  /// In en, this message translates to:
-  /// **'Found {p0}. Tap to add.'**
-  String s2a9142dc3e(String p0);
-
-  /// fi: Etsi uudelleen
-  ///
-  /// In en, this message translates to:
-  /// **'Search again'**
-  String get s2fc39b0bd7;
-
-  /// fi: Etsi
-  ///
-  /// In en, this message translates to:
-  /// **'Search'**
-  String get s0a9acb5af1;
-
-  /// fi: Skannaa Modbus
-  ///
-  /// In en, this message translates to:
-  /// **'Scan Modbus'**
-  String get se3ef5a5658;
-
-  /// fi: Et ole kotona: kotisilta etsi laitteet kotiverkosta.
-  ///
-  /// In en, this message translates to:
-  /// **'You are away: the home bridge searched your home network.'**
-  String get s9a018b8166;
-
-  /// fi: Tämä verkko
-  ///
-  /// In en, this message translates to:
-  /// **'This network'**
-  String get s55d0b95fd2;
-
-  /// fi: Nämä ovat tämän laitteen omassa verkossa, eivät kodissa {p0}. Niitä ei lisätä siihen kotiin.
-  ///
-  /// In en, this message translates to:
-  /// **'These are on this device\'\'s own network, not at {p0}. They are not added to that home.'**
-  String s955b44aaa4(String p0);
-
-  /// fi: Muut laitteet verkossa ({p0})
-  ///
-  /// In en, this message translates to:
-  /// **'Other devices on the network ({p0})'**
-  String sf16a25c313(String p0);
-
-  /// fi: Näitä Molaplan ei ohjaa. iPhonet näkyvät nimellä vain hereillä ollessaan.
-  ///
-  /// In en, this message translates to:
-  /// **'Molaplan does not control these. iPhones show their name only while awake.'**
-  String get s9e8430c37b;
-
-  /// fi: {p0} ruutua lisätty
-  ///
-  /// In en, this message translates to:
-  /// **'{p0} tiles added'**
-  String s095ca83913(String p0);
-
-  /// fi: Airthings-mittarit
-  ///
-  /// In en, this message translates to:
-  /// **'Airthings monitors'**
-  String get sd53b0c4edc;
-
-  /// fi: Lisää {p0} ruutua
-  ///
-  /// In en, this message translates to:
-  /// **'Add {p0} tiles'**
-  String sc401e05b53(String p0);
-
-  /// fi: Laitteita ei saatu
-  ///
-  /// In en, this message translates to:
-  /// **'Could not list the devices'**
-  String get s212e35a61b;
-
-  /// fi: Tililläsi ei ole mittareita. Lisää mittari ensin Airthings-sovelluksessa.
-  ///
-  /// In en, this message translates to:
-  /// **'There are no monitors in your account. Add one in the Airthings app first.'**
-  String get s039683f4a5;
-
-  /// fi: Hubin kautta
-  ///
-  /// In en, this message translates to:
-  /// **'via the Hub'**
-  String get sdfff64e4c3;
-
-  /// fi: Lämmittää
-  ///
-  /// In en, this message translates to:
-  /// **'Heating'**
-  String get s7f308d40c8;
-
-  /// fi: Jäähdyttää
-  ///
-  /// In en, this message translates to:
-  /// **'Cooling'**
-  String get s41de361b3e;
-
-  /// fi: Kuivaa
-  ///
-  /// In en, this message translates to:
-  /// **'Drying'**
-  String get s4f7ccb7138;
-
-  /// fi: Puhaltaa
-  ///
-  /// In en, this message translates to:
-  /// **'Fan'**
-  String get s9b2398228e;
-
-  /// fi: Odottaa
-  ///
-  /// In en, this message translates to:
-  /// **'Idle'**
-  String get s533177c689;
-
-  /// fi: Lämmitys
-  ///
-  /// In en, this message translates to:
-  /// **'Heat'**
-  String get sa3e8beed42;
-
-  /// fi: Jäähdytys
-  ///
-  /// In en, this message translates to:
-  /// **'Cool'**
-  String get s6c9668fbd9;
-
-  /// fi: Auto
-  ///
-  /// In en, this message translates to:
-  /// **'Auto'**
-  String get sd032c3efec;
-
-  /// fi: Kuivaus
-  ///
-  /// In en, this message translates to:
-  /// **'Dry'**
-  String get s9db8aefc43;
-
-  /// fi: Puhallus
-  ///
-  /// In en, this message translates to:
-  /// **'Fan'**
-  String get s0117dea8bc;
-
-  /// fi: Hiljainen
-  ///
-  /// In en, this message translates to:
-  /// **'Quiet'**
-  String get sb680eb3021;
-
-  /// fi: Pieni
-  ///
-  /// In en, this message translates to:
-  /// **'Low'**
-  String get s4299eb9d18;
-
-  /// fi: Pieni–keski
-  ///
-  /// In en, this message translates to:
-  /// **'Medium-low'**
-  String get s90ba0c57d4;
-
-  /// fi: Keski
-  ///
-  /// In en, this message translates to:
-  /// **'Medium'**
-  String get s0cb68026a7;
-
-  /// fi: Keski–suuri
-  ///
-  /// In en, this message translates to:
-  /// **'Medium-high'**
-  String get s9c5e4ed5cb;
-
-  /// fi: Suuri
-  ///
-  /// In en, this message translates to:
-  /// **'High'**
-  String get s688b92a62f;
-
-  /// fi: Turbo
-  ///
-  /// In en, this message translates to:
-  /// **'Turbo'**
-  String get sb1ef6ab439;
-
-  /// fi: Ulkona
-  ///
-  /// In en, this message translates to:
-  /// **'Outdoor'**
-  String get s339446ffe7;
-
-  /// fi: Puhallin
-  ///
-  /// In en, this message translates to:
-  /// **'Fan'**
-  String get s018d2e08f4;
-
-  /// fi: Ei lukemaa
-  ///
-  /// In en, this message translates to:
-  /// **'No reading'**
-  String get s11a7c24b38;
-
-  /// fi: käyrä
-  ///
-  /// In en, this message translates to:
-  /// **'curve'**
-  String get s79bbbe6195;
-
-  /// fi: asetus
-  ///
-  /// In en, this message translates to:
-  /// **'set'**
-  String get s28b7c227f0;
+  /// **'Use this'**
+  String get s79fc5ea775;
 
   /// fi: Valon tilaa ei saatu – säätö voi silti toimia.
   ///
@@ -5508,162 +4334,6 @@ abstract class AppLocalizations {
   /// **'Long-press to remove'**
   String get sdc485831ad;
 
-  /// fi: Mittari
-  ///
-  /// In en, this message translates to:
-  /// **'Gauge'**
-  String get s3c98732a8c;
-
-  /// fi: Trendi
-  ///
-  /// In en, this message translates to:
-  /// **'Trend'**
-  String get s6f29aeb685;
-
-  /// fi: Mittari + trendi
-  ///
-  /// In en, this message translates to:
-  /// **'Gauge + trend'**
-  String get s3298699c1a;
-
-  /// fi: Luku
-  ///
-  /// In en, this message translates to:
-  /// **'Value'**
-  String get sed593f53ed;
-
-  /// fi: Kerätään dataa…
-  ///
-  /// In en, this message translates to:
-  /// **'Collecting data…'**
-  String get s9027c88cb7;
-
-  /// fi: 7 vrk
-  ///
-  /// In en, this message translates to:
-  /// **'7 d'**
-  String get sf05d2a09f1;
-
-  /// fi: Viimeksi
-  ///
-  /// In en, this message translates to:
-  /// **'Last'**
-  String get se38a9bb2ed;
-
-  /// fi: viimeksi
-  ///
-  /// In en, this message translates to:
-  /// **'last'**
-  String get s049d71f971;
-
-  /// fi: huom.
-  ///
-  /// In en, this message translates to:
-  /// **'tmrw'**
-  String get s3ec9d77947;
-
-  /// fi: nyt
-  ///
-  /// In en, this message translates to:
-  /// **'now'**
-  String get sed9b5e52f6;
-
-  /// fi: Etsii kotiverkosta laitteet, joissa Modbus TCP on päällä (portit 502, 503 ja 5020), ja kokeilee laitteen osoitteet (unit
-  ///
-  /// In en, this message translates to:
-  /// **'Looks for devices with Modbus TCP on (ports 502, 503 and 5020) and tries the unit ids. Takes about half a minute.'**
-  String get s1b85ad9e38;
-
-  /// fi: Oma portti (valinnainen)
-  ///
-  /// In en, this message translates to:
-  /// **'Own port (optional)'**
-  String get seb1f4357ea;
-
-  /// fi: Skannaa uudelleen
-  ///
-  /// In en, this message translates to:
-  /// **'Scan again'**
-  String get s06760a6970;
-
-  /// fi: Skannaa
-  ///
-  /// In en, this message translates to:
-  /// **'Scan'**
-  String get s23d146db23;
-
-  /// fi: Skannataan…
-  ///
-  /// In en, this message translates to:
-  /// **'Scanning…'**
-  String get s18e7ad553e;
-
-  /// fi: Et ole kotona: kotisilta skannasi kotiverkon.
-  ///
-  /// In en, this message translates to:
-  /// **'You are away: the home bridge scanned.'**
-  String get s721647a6cd;
-
-  /// fi: Skannaus epäonnistui
-  ///
-  /// In en, this message translates to:
-  /// **'Scan failed'**
-  String get s08e57d2d85;
-
-  /// fi: Modbus-laitteita ei löytynyt. Tarkista että Modbus TCP on päällä laitteen asetuksista ja että laite on samassa verkossa
-  ///
-  /// In en, this message translates to:
-  /// **'No Modbus devices found. Check that Modbus TCP is on in the device settings and that it is in the same network (not guest Wi-Fi).'**
-  String get s4cf60b9350;
-
-  /// fi: Modbus-laite
-  ///
-  /// In en, this message translates to:
-  /// **'Modbus device'**
-  String get sbd8ee8a14f;
-
-  /// fi: yhdyskäytävä
-  ///
-  /// In en, this message translates to:
-  /// **'gateway'**
-  String get sf0462b25ac;
-
-  /// fi: {p0}-esiasetus
-  ///
-  /// In en, this message translates to:
-  /// **'{p0} preset'**
-  String s28d9c4c7dc(String p0);
-
-  /// fi: löytyi ilmoituksesta
-  ///
-  /// In en, this message translates to:
-  /// **'found from its announcement'**
-  String get sc6cde0d476;
-
-  /// fi: Laite ei ota yhteyttä vastaan
-  ///
-  /// In en, this message translates to:
-  /// **'The device does not accept a connection'**
-  String get s166da70285;
-
-  /// fi: Laitteella voi olla jo yhteys (esim. Home Assistant), lue arvot HA:n kautta. Moni laite sallii vain yhden Modbus TCP -yh
-  ///
-  /// In en, this message translates to:
-  /// **'The device may already have a connection (e.g. Home Assistant) – read the values through HA. Many devices allow only one Modbus TCP connection.'**
-  String get sbe97262d91;
-
-  /// fi: Portti auki, mutta ei Modbus-vastausta
-  ///
-  /// In en, this message translates to:
-  /// **'Port open, no Modbus reply'**
-  String get s24e5139123;
-
-  /// fi: Tarkista laitteen unit id ja Modbus-asetukset. Napauta käyttääksesi tätä osoitetta.
-  ///
-  /// In en, this message translates to:
-  /// **'Check the unit id and Modbus settings. Tap to use this address.'**
-  String get s9041c140be;
-
   /// fi: Kaikki laitteet
   ///
   /// In en, this message translates to:
@@ -5717,12 +4387,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Installer'**
   String get sbd907def5b;
-
-  /// fi: Päivitä
-  ///
-  /// In en, this message translates to:
-  /// **'Refresh'**
-  String get sfb1a18d11f;
 
   /// fi: Asentajan pääsy tarvitsee Molaplan-tilin, jotta asentaja tunnistetaan ja salaus toimii.
   ///
@@ -5994,12 +4658,6 @@ abstract class AppLocalizations {
   /// **'Access given: {p0}'**
   String s9a6818b304(String p0);
 
-  /// fi: Tallennettu
-  ///
-  /// In en, this message translates to:
-  /// **'Saved'**
-  String get sdb0484d728;
-
   /// fi: Anna pääsy asentajalle
   ///
   /// In en, this message translates to:
@@ -6234,1117 +4892,1403 @@ abstract class AppLocalizations {
   /// **'Remove installer status'**
   String get s0361487148;
 
-  /// fi: Tämä laite ei ole yhteydessä wifiin
+  /// fi: Valitse taustakuva
   ///
   /// In en, this message translates to:
-  /// **'This device is not on Wi-Fi'**
-  String get s55d52c5ae1;
+  /// **'Choose a background picture'**
+  String get sc1c47d2474;
 
-  /// fi: Yhdistä tämä laite kodin wifiin (samaan, jossa {p0} on). Tai jos olet kodin ulkopuolella, ota käyttöön kotisilta – sillo
+  /// fi: Enintään {p0} taustakuvaa. Poista jokin ensin.
   ///
   /// In en, this message translates to:
-  /// **'Connect this device to your home Wi-Fi (the one {p0} uses). Or, if you are away, set up the home bridge so the search runs on a device at home.'**
-  String s9a4dece965(String p0);
+  /// **'At most {p0} background pictures. Remove one first.'**
+  String sa8ce5112ee(String p0);
 
-  /// fi: Laitetta ei tavoitettu
+  /// fi: Tiedosto ei ole kuva
   ///
   /// In en, this message translates to:
-  /// **'Could not reach the device'**
-  String get s3972820cd6;
+  /// **'The file is not a picture'**
+  String get sceafe9ce2a;
 
-  /// fi: Laitetta ei tavoitettu osoitteesta {p0}
+  /// fi: Ulkoasu
   ///
   /// In en, this message translates to:
-  /// **'Could not reach the device at {p0}'**
-  String s0f480abb4a(String p0);
+  /// **'Look'**
+  String get s12a7d631af;
 
-  /// fi: 1. Tarkista että {p0} on päällä (valo palaa).
-  /// 2. Tämän laitteen (tai kotisillan) pitää olla samassa wifissä kuin {p1}.
-  /// 3
+  /// fi: Koko
   ///
   /// In en, this message translates to:
-  /// **'1. Check that {p0} is powered.\n2. This device (or the home bridge) must be on the same Wi-Fi.\n3. Check the address – it can change. Tap \"Back\" and search again.'**
-  String sa82143ee02(String p0, String p1);
+  /// **'Size'**
+  String get s0d83798030;
 
-  /// fi: Osoitteessa on jokin muu laite
+  /// fi: Pieni
   ///
   /// In en, this message translates to:
-  /// **'A different device answered'**
-  String get sd4d7ad1bab;
+  /// **'Small'**
+  String get s64c916e299;
 
-  /// fi: Osoitteesta vastasi laite, joka ei ole {p0}. Tarkista osoite ja kokeile uudelleen.
+  /// fi: Leveä
   ///
   /// In en, this message translates to:
-  /// **'The device at that address is not {p0}. Check the address.'**
-  String s5b7d02a301(String p0);
+  /// **'Wide'**
+  String get s5e3097232a;
 
-  /// fi: Laite pyytää salasanaa
+  /// fi: Iso
   ///
   /// In en, this message translates to:
-  /// **'The device asks for a password'**
-  String get sdac5622fa8;
+  /// **'Large'**
+  String get s8971788287;
 
-  /// fi: Olet asettanut laitteeseen salasanan. Kirjoita se alle ja paina "Yhdistä".
+  /// fi: Kuvake
   ///
   /// In en, this message translates to:
-  /// **'A password is set on the device. Type it below and tap \"Connect\".'**
-  String get sbf9ee8aaec;
+  /// **'Icon'**
+  String get scf37cbeda8;
 
-  /// fi: Tarvitaan vielä yksi tieto
+  /// fi: Taustakuva (valinnainen)
   ///
   /// In en, this message translates to:
-  /// **'One more detail is needed'**
-  String get s9e22388413;
+  /// **'Background picture (optional)'**
+  String get s254a1d8e12;
 
-  /// fi: {p0} ei kerro tätä itse. Kirjoita se alle ja paina "Yhdistä".
+  /// fi: Valitse kuva
   ///
   /// In en, this message translates to:
-  /// **'{p0} does not tell this by itself. Type it below and tap \"Connect\".'**
-  String sc8702d4da2(String p0);
+  /// **'Choose picture'**
+  String get sc48f5f9bcf;
 
-  /// fi: Salasana ei kelpaa
+  /// fi: Vaihda kuva
   ///
   /// In en, this message translates to:
-  /// **'Wrong password'**
-  String get s83f57c7c24;
+  /// **'Change picture'**
+  String get sf55eee73b8;
 
-  /// fi: Tarkista salasana (isot ja pienet kirjaimet). Sen voi vaihtaa laitteen omasta sovelluksesta.
+  /// fi: Ota kuva
   ///
   /// In en, this message translates to:
-  /// **'Check the password (case matters). You can change it in the device app.'**
-  String get s32e85a0ba2;
+  /// **'Take photo'**
+  String get sf6723451b9;
 
-  /// fi: Painiketta ei painettu ajoissa
+  /// fi: Poista kuva
   ///
   /// In en, this message translates to:
-  /// **'The button was not pressed in time'**
-  String get sb1d36bfdd3;
+  /// **'Remove picture'**
+  String get sdd957ccc1b;
 
-  /// fi: Paina "Yritä uudelleen" ja paina sitten painiketta heti.
+  /// fi: Himmennä kun laite on pois päältä
   ///
   /// In en, this message translates to:
-  /// **'Tap \"Try again\" and then press the button right away.'**
-  String get sc994f6ec6e;
+  /// **'Dim when the device is off'**
+  String get s7ba9d453ed;
 
-  /// fi: Laitteelta ei löytynyt ohjattavaa
+  /// fi: Kuva pienennetään (≤ 200 kt) ja synkronoidaan tiliisi.
   ///
   /// In en, this message translates to:
-  /// **'Nothing to control was found'**
-  String get s663202243e;
+  /// **'The picture is shrunk (≤ 200 KB) and synced to your account.'**
+  String get s016ae7b580;
 
-  /// fi: Laite vastasi, mutta siinä ei ollut kytkimiä tai valoja. Jos käytät pilveä, kirjoita laitteen tunnus (Device ID) käsin.
+  /// fi: Kuva pienennetään (≤ 200 kt) ja tallennetaan vain tälle laitteelle.
   ///
   /// In en, this message translates to:
-  /// **'The device answered but has no switches or lights. For the cloud, type the Device ID.'**
-  String get sb03997d94b;
+  /// **'The picture is shrunk (≤ 200 KB) and kept on this device only.'**
+  String get sabb10f8cb2;
 
-  /// fi: Kamera löytyi, mutta videon osoitetta ei löytynyt
+  /// fi: Pikakuvake suorittaa komennon suoraan aloitusnäytöltä.
   ///
   /// In en, this message translates to:
-  /// **'Camera found, but not its video address'**
-  String get se6e01118ac;
+  /// **'A shortcut runs the command directly from the home screen.'**
+  String get s3cd1e146e8;
 
-  /// fi: Kamera vastasi, mutta ei kertonut videokuvan osoitetta, eikä yksikään yleisistä RTSP-osoitteista toiminut tällä tunnukse
+  /// fi: Tila (widget)
   ///
   /// In en, this message translates to:
-  /// **'The camera answered but did not tell its video address, and none of the usual RTSP addresses worked with this login. Check that RTSP/ONVIF is on in the camera app, or pick the brand below and tap \"Connect\".'**
-  String get sca994210fb;
+  /// **'Status (widget)'**
+  String get s1c2a0377e4;
 
-  /// fi: Pilviavain tai palvelin ei kelpaa
+  /// fi: Widget näyttää laatan tilan aloitusnäytöllä.
   ///
   /// In en, this message translates to:
-  /// **'Cloud key or server not accepted'**
-  String get s869571042f;
+  /// **'A widget shows the tile status on the home screen.'**
+  String get s54512f5660;
 
-  /// fi: Kopioi avain ja palvelimen osoite uudelleen Shelly-sovelluksesta (Käyttäjäasetukset → Authorization cloud key).
+  /// fi: Tälle laatalle lisätään tilawidget, joka näyttää arvon aloitusnäytöllä.
   ///
   /// In en, this message translates to:
-  /// **'Copy the key and server again from the Shelly app (User settings → Authorization cloud key).'**
-  String get sab1763c592;
+  /// **'This tile gets a status widget that shows the value on the home screen.'**
+  String get s517f5701fd;
 
-  /// fi: Pilveen ei saatu yhteyttä
+  /// fi: Vahvista ennen suoritusta
   ///
   /// In en, this message translates to:
-  /// **'Could not reach the cloud'**
-  String get s855ffbfd24;
+  /// **'Confirm before running'**
+  String get sd069985866;
 
-  /// fi: Tarkista nettiyhteys ja yritä uudelleen.
+  /// fi: Suositellaan vaarallisille komennoille, kuten hälytyksen pois päältä.
   ///
   /// In en, this message translates to:
-  /// **'Check the internet connection.'**
-  String get s739d569a9c;
+  /// **'Recommended for dangerous commands, such as turning an alarm off.'**
+  String get s5775841848;
 
-  /// fi: Liian monta pyyntöä
+  /// fi: PIN-koodia ei tallenneta pikakuvakkeeseen. Jos laite vaatii PIN-koodin, se kysytään sovelluksessa.
   ///
   /// In en, this message translates to:
-  /// **'Too many requests'**
-  String get sc96a3502b5;
+  /// **'The PIN is not stored in the shortcut. If the device requires a PIN, the app will ask for it.'**
+  String get sf8e4a8294a;
 
-  /// fi: Pilvi rajoittaa pyyntöjä. Odota hetki ja yritä uudelleen.
+  /// fi: Pikakuvake lisätty. Vahvista se aloitusnäytöllä.
   ///
   /// In en, this message translates to:
-  /// **'The cloud limits requests. Wait a moment.'**
-  String get sed917dc2a2;
+  /// **'Shortcut added. Confirm it on the home screen.'**
+  String get s5eaef9c7e8;
 
-  /// fi: Kotisilta on vanha versio
+  /// fi: Widget lisätty. Vahvista se aloitusnäytöllä.
   ///
   /// In en, this message translates to:
-  /// **'The home bridge is out of date'**
-  String get s516dbdd784;
+  /// **'Widget added. Confirm it on the home screen.'**
+  String get s526d406d59;
 
-  /// fi: Päivitä kotisillan Molaplan (Asetukset → Tarkista päivitykset) ja yritä uudelleen.
+  /// fi: Aloitusnäyttö ei tue tätä, tai lisäys peruutettiin.
   ///
   /// In en, this message translates to:
-  /// **'Update Molaplan on the bridge (Settings → Check for updates).'**
-  String get s70089507bf;
+  /// **'The home screen does not support this, or the add was cancelled.'**
+  String get s31c3d63c1e;
 
-  /// fi: Tarkista että kotona oleva kotisilta (tabletti tai PC) on päällä, Molaplan on auki ja sillä on netti.
+  /// fi: Laattaa ei löytynyt
   ///
   /// In en, this message translates to:
-  /// **'Check that the bridge at home is on, Molaplan is open and it has internet.'**
-  String get scc1918f2dc;
+  /// **'Tile not found'**
+  String get sa37e535e0f;
 
-  /// fi: Laitteeseen ei saatu yhteyttä
+  /// fi: Esimerkkikamera – lisää oma kamerasi Lisää laite -painikkeella
   ///
   /// In en, this message translates to:
-  /// **'Could not connect to the device'**
-  String get se11f9b5084;
+  /// **'Example camera – add your own with Add device'**
+  String get sa0bd9ad5b1;
 
-  /// fi: Tarkista osoite ja että laite on päällä, ja yritä uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.
+  /// fi: Valitse kamerayhteys
   ///
   /// In en, this message translates to:
-  /// **'Check the address and that the device is on, then try again. The technical details show the exact reason.'**
-  String get s979376dca6;
+  /// **'Choose a camera connection'**
+  String get s4529c1010a;
 
-  /// fi: Kirjoita ensin osoite
+  /// fi: Live-video ei toimi tällä laitteella
   ///
   /// In en, this message translates to:
-  /// **'Type the address first'**
-  String get sce6d01c270;
+  /// **'Live video does not work on this device'**
+  String get s98bf81bba3;
 
-  /// fi: Tarkista osoite
+  /// fi: Live-video näkyy vain kotiverkossa. Tällä kameralla ei ole still-kuvaa etäkäyttöön.
   ///
   /// In en, this message translates to:
-  /// **'Check the address'**
-  String get s65bbf3cab4;
+  /// **'Live video shows only on the home network. This camera has no still picture for remote use.'**
+  String get seb2bb5cbce;
 
-  /// fi: {p0} ei ole kotiverkon osoite. Kotiverkon osoitteet alkavat yleensä 192.168. – katso osoite uudelleen {p1}-sovelluksesta
+  /// fi: Virta päättyi
   ///
   /// In en, this message translates to:
-  /// **'{p0} is not a home network address. They usually start with 192.168. – check it again in the {p1} app.'**
-  String sb711cc1ce2(String p0, String p1);
+  /// **'Stream ended'**
+  String get sc95fb5440b;
 
-  /// fi: Tarkoititko {p0}?
+  /// fi: Live-videota ei saatu. Tarkista, että olet kotiverkossa ja kameran RTSP on päällä.
   ///
   /// In en, this message translates to:
-  /// **'Did you mean {p0}?'**
-  String se60794c266(String p0);
+  /// **'No live video. Check that you are on the home network and RTSP is on in the camera.'**
+  String get sd55dd196f6;
 
-  /// fi: Korjaan itse
+  /// fi: Tila / arvo
   ///
   /// In en, this message translates to:
-  /// **'I\'\'ll fix it'**
-  String get s264fda2dee;
+  /// **'Value'**
+  String get s1cf33c1fbc;
 
-  /// fi: Kokeile silti
+  /// fi: Kytkin
   ///
   /// In en, this message translates to:
-  /// **'Try anyway'**
-  String get s0a6098ac78;
+  /// **'Toggle'**
+  String get s86029171be;
 
-  /// fi: Käytä {p0}
+  /// fi: Painike / pikakomento
   ///
   /// In en, this message translates to:
-  /// **'Use {p0}'**
-  String sc1039f5cf6(String p0);
+  /// **'Button / shortcut'**
+  String get s4ddce888df;
 
-  /// fi: Osoite on eri verkossa
+  /// fi: Liukusäädin / asetusarvo
   ///
   /// In en, this message translates to:
-  /// **'The address is on another network'**
-  String get s20f777bfef;
+  /// **'Slider / setpoint'**
+  String get s357fc9c3fe;
 
-  /// fi: Osoite {p0} ei ole samassa verkossa kuin tämä laite ({p1}.x). Yleensä se tarkoittaa, että tämä laite on eri wifissä kuin
+  /// fi: Kamera
   ///
   /// In en, this message translates to:
-  /// **'Address {p0} is not on the same network as this device ({p1}.x). Usually this device is on a different Wi-Fi than {p2}.\n\nJoin the same Wi-Fi, or set up the home bridge.'**
-  String sbb1730fa00(String p0, String p1, String p2, String p3);
+  /// **'Camera'**
+  String get seeb6c38c8e;
 
-  /// fi: Täytä ensin
+  /// fi: Näyttää lukeman, esim. lämpötilan tai tehon.
   ///
   /// In en, this message translates to:
-  /// **'Fill in first'**
-  String get s43370d968c;
+  /// **'Shows a reading, e.g. temperature.'**
+  String get s14da6beba5;
 
-  /// fi: Valitse vähintään yksi
+  /// fi: Päälle/pois, esim. valo tai hälytys.
   ///
   /// In en, this message translates to:
-  /// **'Pick at least one'**
-  String get s915c9a0db3;
+  /// **'On/off, e.g. a light or alarm.'**
+  String get se4b1d203df;
 
-  /// fi: Lisää: {p0}
+  /// fi: Yksi painallus tekee yhden tai monta asiaa.
   ///
   /// In en, this message translates to:
-  /// **'Add: {p0}'**
-  String sb160156a36(String p0);
+  /// **'One tap does one or many things.'**
+  String get sc2197ab417;
 
-  /// fi: Lisää kotinäkymään
+  /// fi: Säädä arvoa, esim. lämpötilaa tai puhallinta.
   ///
   /// In en, this message translates to:
-  /// **'Add to home view'**
-  String get s43d448a950;
+  /// **'Adjust a value, e.g. temperature.'**
+  String get sd611704caf;
 
-  /// fi: Näytä kotinäkymä
+  /// fi: Näyttää kameran kuvan.
   ///
   /// In en, this message translates to:
-  /// **'Show home view'**
-  String get sd890121a57;
+  /// **'Shows a camera image.'**
+  String get sacfc0c0b41;
 
-  /// fi: A) Ilman kotisiltaa
+  /// fi: Pitää lämpötilan halutussa arvossa.
   ///
   /// In en, this message translates to:
-  /// **'A) Without a home bridge'**
-  String get sb1717cc67c;
+  /// **'Keeps the temperature at the set value.'**
+  String get s7172c54c2c;
 
-  /// fi: Käytä Shelly Cloudia (ei kotisiltaa)
+  /// fi: Luettu arvo
   ///
   /// In en, this message translates to:
-  /// **'Use Shelly Cloud (no bridge)'**
-  String get s2082568a23;
+  /// **'Value read'**
+  String get s76e7a995de;
 
-  /// fi: Paras, jos mikään laite ei ole aina kotona – esim. kun tabletti kulkee mukanasi. Ohjaus kulkee Shellyn oman pilven kautt
+  /// fi: Skripti
   ///
   /// In en, this message translates to:
-  /// **'Best if no device always stays at home – e.g. your tablet travels with you. Control goes via Shelly\'\'s own cloud. You need a key from the Shelly app (we show where).'**
-  String get s5080d486b8;
+  /// **'Script'**
+  String get sdced476aeb;
 
-  /// fi: B) Kotisillan kautta
+  /// fi: Tilanne
   ///
   /// In en, this message translates to:
-  /// **'B) Through a home bridge'**
-  String get s82985d5078;
+  /// **'Scene'**
+  String get sdaa7d4de12;
 
-  /// fi: Miten ohjaat kotia muualta?
+  /// fi: Ohjaa laitetta
   ///
   /// In en, this message translates to:
-  /// **'How will you control your home when away?'**
-  String get s78aec2034d;
+  /// **'Control a device'**
+  String get sae3489a6c9;
 
-  /// fi: Kotisilta on laite, joka on AINA kotona, päällä ja samassa wifissä kuin {p0} – esim. vanha puhelin, tabletti tai PC. Muu
+  /// fi: Oma komento
   ///
   /// In en, this message translates to:
-  /// **'A home bridge is a device that ALWAYS stays at home, switched on and on the same Wi-Fi as {p0} – e.g. an old phone, tablet or PC. Your other devices reach it over the internet (encrypted, no port forwarding). A device you carry around is not a good bridge.'**
-  String s03b3c3b3c8(String p0);
+  /// **'Own command'**
+  String get s4e1f25d257;
 
-  /// fi: Koska olet kirjautunut, kotiyhteys siirtyy kaikille laitteillesi automaattisesti.
+  /// fi: Mitä nappi tekee?
   ///
   /// In en, this message translates to:
-  /// **'As you are signed in, the home connection reaches all your devices automatically.'**
-  String get s688d1308d7;
+  /// **'What does the button do?'**
+  String get sea15760b77;
 
-  /// fi: Tämä laite jää aina kotiin – tee siitä kotisilta
+  /// fi: Valitse skripti, tilanne tai laite. Nappi toimii sovelluksessa ja kodin ulkopuolelta etäkäytön kautta.
   ///
   /// In en, this message translates to:
-  /// **'This device always stays home – make it the bridge'**
-  String get s96feb2f60a;
+  /// **'Pick a script, a scene or a device. The button works in the app and, when you are away, through remote access.'**
+  String get s630ee9894e;
 
-  /// fi: Pidä laite laturissa ja Molaplan auki. Muut laitteet yhdistetään siihen QR-koodilla tai kirjautumalla samalle tilille.
+  /// fi: Skriptejä ei vielä ole. Tee skripti kohdassa Automaatiot.
   ///
   /// In en, this message translates to:
-  /// **'Keep it charging with Molaplan open. Other devices connect with a QR code or by signing in to the same account.'**
-  String get sb2a33a1ec4;
+  /// **'No scripts yet. Make one under Automations.'**
+  String get s1173c2dbf9;
 
-  /// fi: Kotisilta on jo toisella laitteella – yhdistä siihen
+  /// fi: Tilanteita ei vielä ole. Tallenna tilanne kohdassa Automaatiot.
   ///
   /// In en, this message translates to:
-  /// **'The bridge is on another device – connect to it'**
-  String get s1b9f4ae6d5;
+  /// **'No scenes yet. Save one under Automations.'**
+  String get s7b42ecba51;
 
-  /// fi: Skannaa kotisillan QR-koodi. Sen jälkeen laitteet haetaan kotisillan kautta, vaikka olisit muualla.
+  /// fi: Ohjattavia laitteita ei vielä ole. Lisää ensin kytkin.
   ///
   /// In en, this message translates to:
-  /// **'Scan the bridge QR code. Devices are then found through the bridge, even when you are away.'**
-  String get s13d739b710;
+  /// **'No switchable devices yet. Add a switch first.'**
+  String get s589d73245e;
 
-  /// fi: Ohita nyt – lisään laitteen kotiverkossa (etäyhteyden voi ottaa käyttöön myöhemmin)
+  /// fi: Vaihda
   ///
   /// In en, this message translates to:
-  /// **'Skip for now – add on the home network (remote access can be set up later)'**
-  String get sda6a1e50e9;
+  /// **'Toggle'**
+  String get s750f16460c;
 
-  /// fi: Etsitään: {p0}
+  /// fi: Uusi ruutu
   ///
   /// In en, this message translates to:
-  /// **'Finding: {p0}'**
-  String s6f326a48f9(String p0);
+  /// **'New tile'**
+  String get sc5edd6d3d1;
 
-  /// fi: Haku tehdään kotisillan kautta, joten tämä toimii myös kodin ulkopuolella.
+  /// fi: Muokkaa ruutua
   ///
   /// In en, this message translates to:
-  /// **'Searching through the home bridge, so this works away from home too.'**
-  String get sc788897ba0;
+  /// **'Edit tile'**
+  String get sa684fd0716;
 
-  /// fi: Etsin laitteita kodin wifistä. Napauta omaasi.
+  /// fi: Mittaus: näyttötapa, trendi, värirajat, hälytykset, desimaalit ja skaalaus.
   ///
   /// In en, this message translates to:
-  /// **'Looking on your home Wi-Fi. Tap yours.'**
-  String get s0f7361f40c;
+  /// **'Measurement: display, trend, colour limits, alarms, decimals and scaling.'**
+  String get sa7b6366b62;
 
-  /// fi: Avaa wifi-asetukset
+  /// fi: Ohjaus: vahvistus, lukitus / PIN, min / max / askel, käänteinen ja hetkellinen.
   ///
   /// In en, this message translates to:
-  /// **'Open Wi-Fi settings'**
-  String get sda2b4c9721;
+  /// **'Control: confirmation, lock / PIN, min / max / step, invert and momentary.'**
+  String get sae41bebdab;
 
-  /// fi: Yhdistin – etsi uudelleen
+  /// fi: Otsikko
   ///
   /// In en, this message translates to:
-  /// **'Connected – search again'**
-  String get sc93d9cc14b;
+  /// **'Title'**
+  String get s8a8673aafe;
 
-  /// fi: Etsitään… (noin 5 sekuntia)
+  /// fi: Huoneen lämpöanturi
   ///
   /// In en, this message translates to:
-  /// **'Searching… (about 5 seconds)'**
-  String get s13f0596b74;
+  /// **'Room temperature sensor'**
+  String get sf83143ae23;
 
-  /// fi: Laitteita ei löytynyt automaattisesti. Tarkista että {p0} on päällä ja samassa wifissä{p1}. Voit myös kirjoittaa osoitte
+  /// fi: Ei valittu
   ///
   /// In en, this message translates to:
-  /// **'Nothing found automatically. Check that {p0} is on and on the same Wi-Fi. You can also type the address below.'**
-  String s8eabd27f68(String p0, String p1);
+  /// **'None'**
+  String get s19485c79b2;
 
-  /// fi: Kirjoita osoite itse
+  /// fi: Valitse lämpöanturi
   ///
   /// In en, this message translates to:
-  /// **'Type the address'**
-  String get sa616ab181e;
+  /// **'Choose a temperature sensor'**
+  String get s0483226428;
 
-  /// fi: Tai kirjoita osoite itse
+  /// fi: Leveys
   ///
   /// In en, this message translates to:
-  /// **'Or type the address'**
-  String get sb439b8abc3;
+  /// **'Width'**
+  String get sfeab9bd26f;
 
-  /// fi: IP-osoite
+  /// fi: Korkeus
   ///
   /// In en, this message translates to:
-  /// **'IP address'**
-  String get s178e07f06b;
+  /// **'Height'**
+  String get s58be670598;
 
-  /// fi: Mistä löydän sen?
+  /// fi: Näyttötapa
   ///
   /// In en, this message translates to:
-  /// **'Where do I find it?'**
-  String get scf487a3699;
+  /// **'Display'**
+  String get sd7314e8237;
 
-  /// fi:  (vapaaehtoinen)
+  /// fi: Pylväät (15 min)
   ///
   /// In en, this message translates to:
-  /// **' (optional)'**
-  String get s9b9b0d01a2;
+  /// **'Bars (15 min)'**
+  String get s7d6cee9e42;
 
-  /// fi: Paina painiketta nyt
+  /// fi: Trendi + Nyt-viiva
   ///
   /// In en, this message translates to:
-  /// **'Press the button now'**
-  String get s0a7134d0e3;
+  /// **'Trend + Now line'**
+  String get sc0e069225b;
 
-  /// fi: Aikaa jäljellä {p0} s
+  /// fi: Aikaväli
   ///
   /// In en, this message translates to:
-  /// **'{p0} s left'**
-  String s43118959d5(String p0);
+  /// **'Range'**
+  String get s07647fa07d;
 
-  /// fi: Yhdistetään…
+  /// fi: Näytä huomenna kun saatavilla
   ///
   /// In en, this message translates to:
-  /// **'Connecting…'**
-  String get sba10f23f03;
+  /// **'Show tomorrow when available'**
+  String get s8feeef3110;
 
-  /// fi: Kirjaudu kameraan
+  /// fi: Huomisen hinnat tulevat näkyviin itsestään, kun ne julkaistaan (n. klo 14).
   ///
   /// In en, this message translates to:
-  /// **'Sign in to the camera'**
-  String get s46c87a553f;
+  /// **'Tomorrow\'\'s prices appear by themselves once published (around 14:00).'**
+  String get sad692e6ae5;
 
-  /// fi: Laitteen salasana
+  /// fi: Trendin pituus
   ///
   /// In en, this message translates to:
-  /// **'Device password'**
-  String get se4095d7d95;
+  /// **'Trend length'**
+  String get s1c72b8c56a;
 
-  /// fi: Yhdistä
+  /// fi: Mittarin minimi
   ///
   /// In en, this message translates to:
-  /// **'Connect'**
-  String get sdbdf676485;
+  /// **'Gauge minimum'**
+  String get s6bb0c0c7e3;
 
-  /// fi: Olen kodin ulkopuolella
+  /// fi: Automaattinen
   ///
   /// In en, this message translates to:
-  /// **'I am away from home'**
-  String get s8f610a3bb2;
+  /// **'Automatic'**
+  String get sa444aab286;
 
-  /// fi: Tekniset tiedot
+  /// fi: Mittarin maksimi
   ///
   /// In en, this message translates to:
-  /// **'Technical details'**
-  String get sf77125583f;
+  /// **'Gauge maximum'**
+  String get sbf29caff87;
 
-  /// fi: Kameran merkki
+  /// fi: Ruudun tekniset asetukset (mistä tila luetaan, mitä komento lähettää) näkyvät, kun otat Asetuksista käyttöön "Edistyneet
   ///
   /// In en, this message translates to:
-  /// **'Camera brand'**
-  String get sb629592b4b;
+  /// **'Technical tile settings appear when you turn on \"Advanced\" in Settings.'**
+  String get sea30815e6a;
 
-  /// fi: RTSP-osoite
+  /// fi: Tilan luku
   ///
   /// In en, this message translates to:
-  /// **'RTSP address'**
-  String get se3aa0f7164;
+  /// **'State source'**
+  String get s382afc832f;
 
-  /// fi: Ilman tunnusta – käyttäjä ja salasana lisätään itse.
+  /// fi: Valinnainen: mistä nykyinen tila luetaan.
   ///
   /// In en, this message translates to:
-  /// **'Without the login – the user and password are added automatically.'**
-  String get s722ac06c6d;
+  /// **'Optional: where the current state is read from.'**
+  String get s581aee3e96;
 
-  /// fi: Löytyi: {p0}
+  /// fi: Raaka yhdistelmä (Edistyneet)
   ///
   /// In en, this message translates to:
-  /// **'Found: {p0}'**
-  String s77ec7b376b(String p0);
+  /// **'Raw combination (Advanced)'**
+  String get s3adc51170c;
 
-  /// fi: Valitse mitkä tulevat kotinäkymään ja anna niille nimet (esim. Lämmitys, Ulkovalot).
+  /// fi: ⚠ Kaikki ruututyypit sallitaan kaikille yhteyksille. Väärä yhdistelmä voi näyttää harhaanjohtavaa tietoa, esim. "Päällä"
   ///
   /// In en, this message translates to:
-  /// **'Pick what goes on the home view and name them.'**
-  String get sac4debdb9c;
+  /// **'⚠ Every tile type is allowed on every connection. A wrong combination can show misleading data, e.g. \"On\" for the electricity price.'**
+  String get s5f542e17e2;
 
-  /// fi: Poista valinnat
+  /// fi: Pois: vain yhteyden tukemat ruututyypit.
   ///
   /// In en, this message translates to:
-  /// **'Select none'**
-  String get sfe5661e401;
+  /// **'Off: only the tile types the connection supports.'**
+  String get scb988b1a4a;
 
-  /// fi: Valitse kaikki ({p0})
+  /// fi: Päivitysväli (s, 0 = ei kyselyä)
   ///
   /// In en, this message translates to:
-  /// **'Select all ({p0})'**
-  String s2618555da0(String p0);
+  /// **'Poll interval (s, 0 = none)'**
+  String get se6b18b17d9;
 
-  /// fi: Lisää myös kirkkaus / teho
+  /// fi: MQTT, Home Assistant ja WebSocket päivittyvät reaaliajassa ilman kyselyä.
   ///
   /// In en, this message translates to:
-  /// **'Also add brightness / power'**
-  String get s86c3f92546;
+  /// **'MQTT, Home Assistant and WebSocket update live without polling.'**
+  String get s01f2b1ee0c;
 
-  /// fi: Näytä myös teho (W)
+  /// fi: Testaa luku
   ///
   /// In en, this message translates to:
-  /// **'Also show power (W)'**
-  String get s91571486e4;
+  /// **'Test read'**
+  String get s937448ecf5;
 
-  /// fi: Valmis! {p0} ruutua lisätty
+  /// fi: Näyttö
   ///
   /// In en, this message translates to:
-  /// **'Done! {p0} tiles added'**
-  String sf86536db42(String p0);
+  /// **'Display'**
+  String get s5cbdea7f7e;
 
-  /// fi: Ruudut toimivat kotona ja kodin ulkopuolella pilven kautta – mitään muuta ei tarvitse tehdä.
+  /// fi: Yksikkö
   ///
   /// In en, this message translates to:
-  /// **'The tiles work at home and away through the cloud – nothing else to do.'**
-  String get sbfaea66122;
+  /// **'Unit'**
+  String get se6af4b33df;
 
-  /// fi: Ruudut toimivat kotona ja kodin ulkopuolella kotisillan kautta – mitään muuta ei tarvitse tehdä.
+  /// fi: Desimaalit
   ///
   /// In en, this message translates to:
-  /// **'The tiles work at home and away through the home bridge – nothing else to do.'**
-  String get se7c68b3bed;
+  /// **'Decimals'**
+  String get sd5498697da;
 
-  /// fi: Ruudut toimivat nyt kotiverkossa. Jotta voit ohjata kotia mistä tahansa, ota kotisilta käyttöön.
+  /// fi: Arvojen nimet
   ///
   /// In en, this message translates to:
-  /// **'The tiles work on your home network. To control from anywhere, set up the home bridge.'**
-  String get sbc8469cce1;
+  /// **'Value names'**
+  String get s4f7007db78;
 
-  /// fi: Ota etäkäyttö käyttöön
+  /// fi: 0=Pois;1=Kotona;2=Poissa
   ///
   /// In en, this message translates to:
-  /// **'Set up remote access'**
-  String get s417eb9a875;
+  /// **'0=Off;1=Home;2=Away'**
+  String get s4aae179c52;
 
-  /// fi: Sähköpostilla ei ole Molaplan-tiliä.
+  /// fi: Kytkimen komennot
   ///
   /// In en, this message translates to:
-  /// **'There is no Molaplan account with that e-mail.'**
-  String get s53a9fe5e42;
+  /// **'Toggle commands'**
+  String get s0c12fda7ca;
 
-  /// fi: Osoitteella ei löytynyt Molaplan-käyttäjää. Hänen pitää kirjautua Molaplan 0.9:ään kerran – tai lähetä hänelle kutsukood
+  /// fi: "Päällä"-arvot (pilkuin, tyhjä = automaattinen)
   ///
   /// In en, this message translates to:
-  /// **'No Molaplan user with that address. They need to sign in to Molaplan 0.9 once – or send them an invite code.'**
-  String get sb4bd4baa5c;
+  /// **'\"On\" values (comma separated, empty = auto)'**
+  String get s3a9d9e16ef;
 
-  /// fi: Valituissa ei ole jaettavia laitteita (termostaatteja ei voi vielä jakaa).
+  /// fi: PÄÄLLE-komento
   ///
   /// In en, this message translates to:
-  /// **'Nothing shareable selected (thermostats cannot be shared yet).'**
-  String get s7ed2aecb01;
+  /// **'ON command'**
+  String get s1509c5a2a6;
 
-  /// fi: Kutsua ei enää ole.
+  /// fi: POIS-komento
   ///
   /// In en, this message translates to:
-  /// **'The invite no longer exists.'**
-  String get s707b7ff598;
+  /// **'OFF command'**
+  String get s2a1e131afd;
 
-  /// fi: Avaa ensin tilin salaukset tällä laitteella (Tili → Avaa salasanalla). Jakaminen käyttää tilin avainta.
+  /// fi: Komennossa {{value}} korvataan säätimen arvolla.
   ///
   /// In en, this message translates to:
-  /// **'Unlock the account secrets on this device first (Account → Unlock with password). Sharing uses the account key.'**
-  String get s5ea320fb1c;
+  /// **'\'{{value}} in the command is replaced by the slider value.\''**
+  String get s0201de52c0;
 
-  /// fi: Tämä on asentajan kutsu, ja sen voi käyttää vain Molaplanin hyväksymä asentaja (Asetukset → Asentaja → Hae asentajaksi).
+  /// fi: Askel
   ///
   /// In en, this message translates to:
-  /// **'This invite is for an installer and only an installer approved by Molaplan can use it (Settings → Installer → Apply).'**
-  String get s2855893bfc;
+  /// **'Step'**
+  String get sc30c9a7e51;
 
-  /// fi: Vain Molaplanin ylläpito voi tehdä tämän.
+  /// fi: Asetuskomento
   ///
   /// In en, this message translates to:
-  /// **'Only Molaplan admins can do this.'**
-  String get sb8df145fc9;
+  /// **'Set command'**
+  String get s4d6451a63a;
 
-  /// fi: Koodi on väärä, vanhentunut tai jo käytetty.
+  /// fi: Komennot (suoritetaan järjestyksessä)
   ///
   /// In en, this message translates to:
-  /// **'The code is wrong, expired or already used.'**
-  String get sa562754cb5;
+  /// **'Commands (run in order)'**
+  String get sa4082e1a79;
 
-  /// fi: Kotisilta ei vastaa. Jakaminen tarvitsee kotisillan (Etäkäyttö), koska oikeudet valvotaan siellä.
+  /// fi: Pikakomento voi ohjata useaa laitetta peräkkäin, viiveillä.
   ///
   /// In en, this message translates to:
-  /// **'The home bridge does not answer. Sharing needs the home bridge (Remote access) – permissions are enforced there.'**
-  String get s9c37d7a89c;
+  /// **'A shortcut can control several devices in sequence, with delays.'**
+  String get s467488e572;
 
-  /// fi: Kotisilta on vanha eikä osaa jakamista. Päivitä silta (Etäkäyttö → Päivitä silta).
+  /// fi: Lisää komento
   ///
   /// In en, this message translates to:
-  /// **'The home bridge is too old for sharing. Update it (Remote access → Update bridge).'**
-  String get sc858a8f851;
+  /// **'Add command'**
+  String get sad43973fb3;
 
-  /// fi: Ei yhteyttä Molaplan-tiliin.
+  /// fi: Kysy vahvistus ennen komentoa
   ///
   /// In en, this message translates to:
-  /// **'No connection to the Molaplan account.'**
-  String get s1a52f53861;
+  /// **'Ask for confirmation'**
+  String get sdaef43c622;
 
-  /// fi: Tilipalvelu ei hyväksynyt pyyntöä: {p0}
+  /// fi: Yhteys
   ///
   /// In en, this message translates to:
-  /// **'The account service refused: {p0}'**
-  String s2457ec4502(String p0);
+  /// **'Connection'**
+  String get s5210a5ad23;
 
-  /// fi: Kodin silta ei ole yhteydessä.
+  /// fi: Uusi yhteys
   ///
   /// In en, this message translates to:
-  /// **'The home bridge is offline.'**
-  String get s4bc537975e;
+  /// **'New connection'**
+  String get s776d8b06bf;
 
-  /// fi: Jako on peruttu.
+  /// fi: Komento lähetetty
   ///
   /// In en, this message translates to:
-  /// **'The share was revoked.'**
-  String get s2fb5fe14e4;
+  /// **'Command sent'**
+  String get s96705fc3df;
 
-  /// fi: Kotisilta ei vastaa.
+  /// fi: Kokeile
   ///
   /// In en, this message translates to:
-  /// **'The home bridge does not answer.'**
-  String get s7b44d47d45;
+  /// **'Try'**
+  String get sb41db1e809;
 
-  /// fi: Ei yhteyttä.
+  /// fi: Viive ennen (ms)
   ///
   /// In en, this message translates to:
-  /// **'No connection.'**
-  String get s8eddd585bc;
+  /// **'Delay before (ms)'**
+  String get s77d2309fd5;
 
-  /// fi: Ei oikeutta tähän toimintoon.
+  /// fi: Auto
   ///
   /// In en, this message translates to:
-  /// **'Not allowed.'**
-  String get s47998395f5;
+  /// **'Auto'**
+  String get sd032c3efec;
 
-  /// fi: Vain katselu
+  /// fi: Näytä
   ///
   /// In en, this message translates to:
-  /// **'View only'**
-  String get s7f504a8c64;
+  /// **'Show'**
+  String get sb06bee9921;
 
-  /// fi: Ohjaus
+  /// fi: Apuviivat
   ///
   /// In en, this message translates to:
-  /// **'Control'**
-  String get s9c067115ef;
+  /// **'Guide lines'**
+  String get s2594346d86;
 
-  /// fi: Täysi (ohjaus + asetukset)
+  /// fi: Ei
   ///
   /// In en, this message translates to:
-  /// **'Full (control + settings)'**
-  String get s8343921765;
+  /// **'None'**
+  String get sfdffaffea4;
 
-  /// fi: Koodi odottaa käyttöä
+  /// fi: Vaaka
   ///
   /// In en, this message translates to:
-  /// **'Code not used yet'**
-  String get s211d9f0a3a;
+  /// **'Horizontal'**
+  String get sd6c2de0256;
 
-  /// fi: Odottaa hyväksyntää
+  /// fi: Ruudukko
   ///
   /// In en, this message translates to:
-  /// **'Waiting for acceptance'**
-  String get s1e6b3fe5dc;
+  /// **'Grid'**
+  String get sb8ef66c33e;
 
-  /// fi: Vahvistetaan…
+  /// fi: Arvoasteikko
   ///
   /// In en, this message translates to:
-  /// **'Being confirmed…'**
-  String get sb13063b8cd;
+  /// **'Value scale'**
+  String get s0bee1b8ed3;
 
-  /// fi: Käytössä
+  /// fi: Aika-akseli
   ///
   /// In en, this message translates to:
-  /// **'Active'**
-  String get s13b6f87b0a;
+  /// **'Time axis'**
+  String get sd4e9b57931;
 
-  /// fi: Hylätty
+  /// fi: Datapisteet viivalla
   ///
   /// In en, this message translates to:
-  /// **'Declined'**
-  String get sed1d8dbf2b;
+  /// **'Data point markers'**
+  String get s7abdb12fef;
 
-  /// fi: Peruttu
+  /// fi: Auto: akselit ja apuviivat näkyvät, kun ruutu on vähintään 2×2.
   ///
   /// In en, this message translates to:
-  /// **'Revoked'**
-  String get s0123f33869;
+  /// **'Auto: axes and guide lines show when the tile is at least 2×2.'**
+  String get s29135ed75a;
 
-  /// fi: Jakaminen
+  /// fi: Kuvavirta
   ///
   /// In en, this message translates to:
-  /// **'Sharing'**
-  String get s844e081db8;
+  /// **'Stream'**
+  String get s638c648b40;
 
-  /// fi: Jakaminen tarvitsee Molaplan-tilin, jotta kutsut löytävät perille ja salaus toimii.
+  /// fi: Linssi / kanava {p0}
   ///
   /// In en, this message translates to:
-  /// **'Sharing needs a Molaplan account so invites can reach people and encryption works.'**
-  String get scdfdf5d233;
+  /// **'Lens / channel {p0}'**
+  String s32ef3895b8(String p0);
 
-  /// fi: Anna perheenjäsenelle, naapurille tai asentajalle pääsy valitsemiisi laitteisiin. Salasanat ja osoitteet eivät lähde kot
+  /// fi: Värit arvon mukaan
   ///
   /// In en, this message translates to:
-  /// **'Give a family member, neighbour or installer access to the devices you choose. Passwords and addresses never leave home, and you can revoke at any time.'**
-  String get s85abc4496d;
+  /// **'Colours by value'**
+  String get s939603242a;
 
-  /// fi: Jaa laitteita
+  /// fi: Omat rajat
   ///
   /// In en, this message translates to:
-  /// **'Share devices'**
-  String get sb4602bb0a6;
+  /// **'Custom'**
+  String get s45f927bc62;
 
-  /// fi: Käytä kutsukoodia
+  /// fi: Liukuva
   ///
   /// In en, this message translates to:
-  /// **'Use an invite code'**
-  String get sffe19ad543;
+  /// **'Smooth'**
+  String get s319dab47d8;
 
-  /// fi: Kutsut sinulle
+  /// fi: Jyrkkä
   ///
   /// In en, this message translates to:
-  /// **'Invites for you'**
-  String get s61036a5d51;
+  /// **'Steps'**
+  String get s613fbec20e;
 
-  /// fi: laitteita
+  /// fi: Omat rajat ja värit: Asetukset → Edistyneet.
   ///
   /// In en, this message translates to:
-  /// **'devices'**
-  String get s8af08eb19e;
+  /// **'Own limits and colours: Settings → Advanced.'**
+  String get s25d9db075e;
 
-  /// fi: Hyväksytty
+  /// fi: Värirajat (arvo ≥ raja → väri)
   ///
   /// In en, this message translates to:
-  /// **'Accepted'**
-  String get sbb84536839;
+  /// **'Color thresholds (value ≥ limit → color)'**
+  String get sc0f5a14d2b;
 
-  /// fi: Hyväksy
+  /// fi: Lisää raja
   ///
   /// In en, this message translates to:
-  /// **'Accept'**
-  String get sdfaf8c242b;
+  /// **'Add threshold'**
+  String get s30a2c0f460;
 
-  /// fi: Jaettu minulle
+  /// fi: Halvimmat tunnit
   ///
   /// In en, this message translates to:
-  /// **'Shared with me'**
-  String get s2fd1394b33;
+  /// **'Cheapest hours'**
+  String get sd408a5dbe9;
 
-  /// fi: Jakamasi
+  /// fi: Ohita kalleimmat tunnit
   ///
   /// In en, this message translates to:
-  /// **'Your shares'**
-  String get seaa0c13606;
+  /// **'Skip the most expensive hours'**
+  String get sa26ae27039;
 
-  /// fi: Et ole jakanut mitään.
+  /// fi: Sään mukaan ennakoiva
   ///
   /// In en, this message translates to:
-  /// **'You have not shared anything.'**
-  String get s450c60afd0;
+  /// **'Weather-based pre-heating'**
+  String get scfd1a72ed5;
 
-  /// fi: Kutsukoodi
+  /// fi: Lämmittää päivän halvimpina tunteina. Sopii varaavaan lämmitykseen ja lämminvesivaraajaan.
   ///
   /// In en, this message translates to:
-  /// **'Invite code'**
-  String get s33f41d417c;
+  /// **'Heats in the cheapest hours of the day. For storage heating and water heaters.'**
+  String get s2bd403874c;
 
-  /// fi: Perutaanko jako?
+  /// fi: Lämmittää normaalisti, mutta ohittaa päivän kalleimmat tunnit lyhyinä katkoina.
   ///
   /// In en, this message translates to:
-  /// **'Revoke the share?'**
-  String get s9cdf3dcc87;
+  /// **'Heats normally but skips the most expensive hours in short breaks.'**
+  String get se759c14061;
 
-  /// fi: Pääsy loppuu heti, kun kotisilta saa tiedon (yleensä saman tien).
+  /// fi: Esilämmittää ennen kallista tai kylmää jaksoa ja säästää kalliina tunteina. Tuntimäärä seuraa sääennustetta.
   ///
   /// In en, this message translates to:
-  /// **'Access ends as soon as the home bridge hears of it (usually at once).'**
-  String get s9d0ac1d1ee;
+  /// **'Pre-heats before expensive or cold spells and saves in expensive hours. The hours follow the forecast.'**
+  String get s5cab118d44;
 
-  /// fi: Peru jako
+  /// fi: halpa tunti
   ///
   /// In en, this message translates to:
-  /// **'Revoke'**
-  String get s4417570cbb;
+  /// **'cheap hour'**
+  String get sa7480a9930;
 
-  /// fi: Jako peruttu
+  /// fi: odottaa halpaa tuntia
   ///
   /// In en, this message translates to:
-  /// **'Share revoked'**
-  String get s280e22cbc9;
+  /// **'waiting for a cheap hour'**
+  String get s50812672e5;
 
-  /// fi: Nimesi jaoissa
+  /// fi: kallis tunti ohitetaan
   ///
   /// In en, this message translates to:
-  /// **'Your name in shares'**
-  String get sd742357fc8;
+  /// **'skipping an expensive hour'**
+  String get seb1c64d9f8;
 
-  /// fi: Turvallisuus: kotisilta tarkistaa jokaisen pyynnön oikeudet. Yhteystunnus kulkee salattuna vain vastaanottajan avaimelle
+  /// fi: normaali
   ///
   /// In en, this message translates to:
-  /// **'Security: the home bridge checks the rights of every request. The connection credential travels encrypted to the recipient\'\'s key only; device passwords and addresses never leave home.'**
-  String get sfe0000a1a9;
+  /// **'normal'**
+  String get s2e52a3d40e;
 
-  /// fi: Lisää asiakas koodilla
+  /// fi: ei hintoja – normaali lämmitys
   ///
   /// In en, this message translates to:
-  /// **'Add a customer with a code'**
-  String get s0577e25cbe;
+  /// **'no prices – normal heating'**
+  String get sf6d34efdd6;
 
-  /// fi: Käytä
+  /// fi: lomatila
   ///
   /// In en, this message translates to:
-  /// **'Use'**
-  String get s3d00dee1a9;
+  /// **'holiday mode'**
+  String get s8c42ad8541;
 
-  /// fi: Koodi hyväksytty. Pääsy aukeaa, kun omistajan Molaplan vahvistaa sen (yleensä parissa minuutissa).
+  /// fi: lämmitetään paluuta varten
   ///
   /// In en, this message translates to:
-  /// **'Code accepted. Access opens when the owner\'\'s Molaplan confirms it (usually within a couple of minutes).'**
-  String get sce4c69f42c;
+  /// **'heating for your return'**
+  String get sc3d8828060;
 
-  /// fi: Anna koodi (tai linkki) vastaanottajalle: Molaplan → Jakaminen → Käytä kutsukoodia. Voimassa 7 päivää, kerran.
+  /// fi: takka lämmittää
   ///
   /// In en, this message translates to:
-  /// **'Give the code (or link) to the recipient: Molaplan → Sharing → Use an invite code. Valid for 7 days, once.'**
-  String get sd1520d6367;
+  /// **'the fireplace heats'**
+  String get s577b8c3cf1;
 
-  /// fi: Kopioi linkki
+  /// fi: tarpeeksi lämmin
   ///
   /// In en, this message translates to:
-  /// **'Copy link'**
-  String get s563abff5ad;
+  /// **'warm enough'**
+  String get sbcd02dce0a;
 
-  /// fi: Kutsu lähetetty – vastaanottaja hyväksyy sen Molaplanissa.
+  /// fi: turvaraja: liian kylmä
   ///
   /// In en, this message translates to:
-  /// **'Invite sent – the recipient accepts it in Molaplan.'**
-  String get s0daf5e9cb6;
+  /// **'safety limit: too cold'**
+  String get s22678639dc;
 
-  /// fi: Muuta jakoa
+  /// fi: jäätymissuoja
   ///
   /// In en, this message translates to:
-  /// **'Change share'**
-  String get s707a062202;
+  /// **'frost protection'**
+  String get s1e3f154a0a;
 
-  /// fi: 1. Mitä jaetaan
+  /// fi: turvaraja: liian pitkä tauko
   ///
   /// In en, this message translates to:
-  /// **'1. What to share'**
-  String get s79f72dbe13;
+  /// **'safety limit: off too long'**
+  String get s1f2938edec;
 
-  /// fi: Napauta näkymää jakaaksesi sen kaikki laitteet, tai valitse yksittäin.
+  /// fi: esilämmitys
   ///
   /// In en, this message translates to:
-  /// **'Tap a view to share all its devices, or pick them one by one.'**
-  String get s58e14dc230;
+  /// **'pre-heating'**
+  String get s54fce2a7e8;
 
-  /// fi: Koko näkymä
+  /// fi: säästö kalliina aikana
   ///
   /// In en, this message translates to:
-  /// **'Whole view'**
-  String get sdb49fc5671;
+  /// **'saving while expensive'**
+  String get s6b35f75e80;
 
-  /// fi: 2. Oikeudet
+  /// fi: Älykäs lämmitys ohjaa lämmitystä sähkön hinnan ja sään mukaan talosi lämmitystavalle sopivalla tavalla. Vastaa muutamaan
   ///
   /// In en, this message translates to:
-  /// **'2. Rights'**
-  String get sa7cf1a01d7;
+  /// **'Smart heating controls heating by electricity price and weather, in a way that suits your heating type. Answer a few questions to get recommended settings.'**
+  String get sdde7adcb29;
 
-  /// fi: Katselu
+  /// fi: Aloita kartoitus
   ///
   /// In en, this message translates to:
-  /// **'View'**
-  String get s3b2376ac74;
+  /// **'Start the survey'**
+  String get s3d29895a40;
 
-  /// fi: Täysi
+  /// fi: Takka-tila päällä
   ///
   /// In en, this message translates to:
-  /// **'Full'**
-  String get s6605942623;
+  /// **'Fireplace mode on'**
+  String get sb0d738492d;
 
-  /// fi: Näkee tilat ja mittaukset, ei voi ohjata.
+  /// fi: Takka-tila päällä klo {p0} asti
   ///
   /// In en, this message translates to:
-  /// **'Sees states and readings, cannot control.'**
-  String get s9ccbd78d51;
+  /// **'Fireplace mode on until {p0}'**
+  String sd1af5ba10d(String p0);
 
-  /// fi: Voi kytkeä ja säätää, ei muuttaa asetuksia (esim. lämpötilan asetusarvoja).
+  /// fi: Lomatila päällä
   ///
   /// In en, this message translates to:
-  /// **'Can switch and adjust, cannot change settings (e.g. temperature setpoints).'**
-  String get sb143b5c9f1;
+  /// **'Holiday mode on'**
+  String get s48a7ba4933;
 
-  /// fi: Ohjaus ja laitteiden asetukset. Omia näkymiäsi tai salasanoja hän ei näe.
+  /// fi: Älykäs lämmitys on pois päältä
   ///
   /// In en, this message translates to:
-  /// **'Control and device settings. Never your own views or passwords.'**
-  String get s32dc2aa139;
+  /// **'Smart heating is off'**
+  String get s10a95132ce;
 
-  /// fi: 3. Kenelle
+  /// fi: Lämmitys toimii hinnan ja sään mukaan
   ///
   /// In en, this message translates to:
-  /// **'3. To whom'**
-  String get se153d3c421;
+  /// **'Heating follows price and weather'**
+  String get s035459d8bb;
 
-  /// fi: Molaplan-käyttäjälle (sähköposti)
+  /// fi: Tarvitsee kotisillan: ota etäyhteys käyttöön kodin tabletilla tai PC:llä (Asetukset → Etäkäyttö).
   ///
   /// In en, this message translates to:
-  /// **'A Molaplan user (e-mail)'**
-  String get s62e68022e1;
+  /// **'Needs a home bridge: set up remote access on the home tablet or PC (Settings → Remote access).'**
+  String get s6b83aed534;
 
-  /// fi: Kutsukoodi tai -linkki
+  /// fi: Päivitä kotisilta (vaatii Molaplan 0.10.0).
   ///
   /// In en, this message translates to:
-  /// **'Invite code or link'**
-  String get s447da2f746;
+  /// **'Update the home bridge (needs Molaplan 0.10.0).'**
+  String get s830cace8fe;
 
-  /// fi: Nimi jaolle (valinnainen)
+  /// fi: Toimii kotisillalla myös sovellus suljettuna.
   ///
   /// In en, this message translates to:
-  /// **'Name for the share (optional)'**
-  String get se7272a5713;
+  /// **'Runs on the home bridge, also with the app closed.'**
+  String get s495c887d23;
 
-  /// fi: esim. Mökki
+  /// fi: Lopeta takka-tila
   ///
   /// In en, this message translates to:
-  /// **'e.g. Cottage'**
-  String get s1f9799af4e;
+  /// **'Stop fireplace mode'**
+  String get s7954d5fca9;
 
-  /// fi: Oikeudet laitekohtaisesti
+  /// fi: Takka lämmitetty
   ///
   /// In en, this message translates to:
-  /// **'Rights per device'**
-  String get s03f60936b0;
+  /// **'Fireplace lit'**
+  String get sf44db20422;
 
-  /// fi: Näe
+  /// fi: Lomatila: muokkaa
   ///
   /// In en, this message translates to:
-  /// **'View'**
-  String get s385022d526;
+  /// **'Holiday: edit'**
+  String get sd172900c2d;
 
-  /// fi: Ohjaa
+  /// fi: Lomatila
   ///
   /// In en, this message translates to:
-  /// **'Control'**
-  String get s482464ebd5;
+  /// **'Holiday mode'**
+  String get s5da1e65941;
 
-  /// fi: Ilmoita ntfy-aiheeseen (valinnainen)
+  /// fi: Lämmityslaitteet
   ///
   /// In en, this message translates to:
-  /// **'Notify an ntfy topic (optional)'**
-  String get s5897aaa050;
+  /// **'Heating devices'**
+  String get sdca3ad13dd;
 
-  /// fi: Viestissä ei ole koodia eikä laitetietoja.
+  /// fi: Ei laitteita. Lisää ne kartoituksessa.
   ///
   /// In en, this message translates to:
-  /// **'The message contains no code or device details.'**
-  String get sd4faf9db62;
+  /// **'No devices. Add them in the survey.'**
+  String get sc8c5e37f5d;
 
-  /// fi: Luo kutsukoodi
+  /// fi: Lämmityksen ilmoitukset
   ///
   /// In en, this message translates to:
-  /// **'Create invite code'**
-  String get sdec87898c3;
+  /// **'Heating notifications'**
+  String get sc6976fa352;
 
-  /// fi: Lähetä kutsu
+  /// fi: Kotisilta on liian vanha: päivitä se (Molaplan 0.10.0).
   ///
   /// In en, this message translates to:
-  /// **'Send invite'**
-  String get s19c2104a9d;
+  /// **'The home bridge is too old: update it (Molaplan 0.10.0).'**
+  String get s1abda8b8f3;
 
-  /// fi: Omistaja
+  /// fi: Kotisiltaa ei ole yhdistetty.
   ///
   /// In en, this message translates to:
-  /// **'Owner'**
-  String get s8b4d48dfaf;
+  /// **'No home bridge is paired.'**
+  String get s8c3353e896;
 
-  /// fi: Päivitetty
+  /// fi: Ei onnistunut: {p0}
   ///
   /// In en, this message translates to:
-  /// **'Updated'**
-  String get sbfe79d1f5f;
+  /// **'Did not work: {p0}'**
+  String s38ccb420a7(String p0);
 
-  /// fi: Huomioitavaa
+  /// fi: Tavoite {p0} °C
   ///
   /// In en, this message translates to:
-  /// **'Attention'**
-  String get s90944b5e7c;
+  /// **'Target {p0} °C'**
+  String s8847ee78e0(String p0);
 
-  /// fi: ei vastaa
+  /// fi: Seuraavaksi päällä: {p0}
   ///
   /// In en, this message translates to:
-  /// **'not answering'**
-  String get scf2e61da2c;
+  /// **'Next on: {p0}'**
+  String s4b761dad85(String p0);
 
-  /// fi: hälytys
+  /// fi: Virhe: {p0}
   ///
   /// In en, this message translates to:
-  /// **'alarm'**
-  String get s1364743ec7;
+  /// **'Error: {p0}'**
+  String s622f5654cd(String p0);
 
-  /// fi: Suorita
+  /// fi: Älykäs lämmitys käytössä
   ///
   /// In en, this message translates to:
-  /// **'Run'**
-  String get s5416a5cdf7;
+  /// **'Smart heating on'**
+  String get s697b47220e;
 
-  /// fi: Näytä kuva
+  /// fi: Muokkaa kartoitusta
   ///
   /// In en, this message translates to:
-  /// **'Show picture'**
-  String get s8debff3196;
+  /// **'Edit the survey'**
+  String get s45cf6423f8;
 
-  /// fi: Asiakkaasi, jotka ovat antaneet sinulle pääsyn. Näet vain jaetut laitteet ja toimit asiakkaan antamin oikeuksin – salasa
+  /// fi: Turvarajat
   ///
   /// In en, this message translates to:
-  /// **'Customers who gave you access. You see only the shared devices and act within the rights the customer gave – never their passwords.'**
-  String get s2220ce611a;
+  /// **'Safety limits'**
+  String get sf5dbb363af;
 
-  /// fi: Asentajan tilasi ei ole voimassa.
+  /// fi: Vähimmäislämpötila
   ///
   /// In en, this message translates to:
-  /// **'Your installer status is not valid.'**
-  String get s6f3c62fc03;
+  /// **'Minimum temperature'**
+  String get sf9cd32fb4f;
 
-  /// fi: Ei asiakkaita vielä. Anna asiakkaalle asentajatunnuksesi {p0}: asiakas avaa Asetukset → Asentaja → Anna pääsy.
+  /// fi: Jäätymissuoja
   ///
   /// In en, this message translates to:
-  /// **'No customers yet. Give your customer your installer ID {p0}: they open Settings → Installer → Give access.'**
-  String s7ebc2621b7(String p0);
+  /// **'Frost protection'**
+  String get sfb0553315b;
 
-  /// fi: Odottaa asiakkaan Molaplanin vahvistusta
+  /// fi: Lämmitys aina päälle alle {p0} °C:ssa.
   ///
   /// In en, this message translates to:
-  /// **'Waiting for the customer\'\'s Molaplan to confirm'**
-  String get sa52cf49adc;
+  /// **'Heating always on below {p0} °C.'**
+  String s9097fb518a(String p0);
 
-  /// fi: huomiota
+  /// fi: Pisin sallittu tauko (kaikki)
   ///
   /// In en, this message translates to:
-  /// **'alerts'**
-  String get s35e8813a82;
+  /// **'Longest allowed break (all)'**
+  String get s5d37a7088b;
 
-  /// fi: Valitse rekisterilista (CSV)
+  /// fi: laitteen mukaan
   ///
   /// In en, this message translates to:
-  /// **'Choose the register list (CSV)'**
-  String get sf1ed8904bb;
+  /// **'per device'**
+  String get sb0bb55d6e5;
 
-  /// fi: Tiedostoa ei tunnistettu NIBEn rekisterilistaksi.
+  /// fi: Turvarajat ohittavat hinnan, lomatilan ja takka-tilan. Vähimmäislämpötila ja jäätymissuoja tarvitsevat lämpöanturin.
   ///
   /// In en, this message translates to:
-  /// **'Not recognised as a NIBE register list.'**
-  String get s5bf50963d1;
+  /// **'Safety limits override price, holiday and fireplace mode. The minimum temperature and frost protection need a temperature sensor.'**
+  String get s17bf76025c;
 
-  /// fi: Listassa ei ollut rekistereitä.
+  /// fi: Takka
   ///
   /// In en, this message translates to:
-  /// **'The list had no registers.'**
-  String get s0cba536d9c;
+  /// **'Fireplace'**
+  String get s109c7fb7a2;
 
-  /// fi: {p0} rekisteriä tuotu, {p1} tunnistettu (ulkolämpö, menovesi, käyttövesi, käyrän siirto…).
+  /// fi: Takka-tilan kesto
   ///
   /// In en, this message translates to:
-  /// **'{p0} registers imported, {p1} recognised (outdoor, supply, hot water, curve offset…).'**
-  String s80d7fd2d3c(String p0, String p1);
+  /// **'Fireplace mode length'**
+  String get s1c15091948;
 
-  /// fi: Oma väri
+  /// fi: Termostaattien lasku takka-tilassa
   ///
   /// In en, this message translates to:
-  /// **'Custom colour'**
-  String get sc3abd09cd9;
+  /// **'Thermostats lowered in fireplace mode'**
+  String get se150ae5acd;
 
-  /// fi: Sävy
+  /// fi: Takan lähellä oleva lämpöanturi
   ///
   /// In en, this message translates to:
-  /// **'Hue'**
-  String get s10e7cef8c1;
+  /// **'Temperature sensor near the fireplace'**
+  String get s161f61412e;
 
-  /// fi: Kylläisyys
+  /// fi: Laitteen anturi
   ///
   /// In en, this message translates to:
-  /// **'Saturation'**
-  String get s59b65e3322;
+  /// **'The device sensor'**
+  String get s81b30d570b;
 
-  /// fi: Vaaleus
+  /// fi: Lämmityksen ilmoitukset (ntfy)
   ///
   /// In en, this message translates to:
-  /// **'Lightness'**
-  String get s750ed8d878;
+  /// **'Heating notifications (ntfy)'**
+  String get s71e80a04a2;
 
-  /// fi: Valitse
+  /// fi: Sama ilmoituskanava ja hiljaiset ajat kuin automaatioissa.
   ///
   /// In en, this message translates to:
-  /// **'Choose'**
-  String get sa39e78050c;
+  /// **'The same notification channel and quiet hours as automations.'**
+  String get s5ab83c2574;
 
-  /// fi: Et ole kotona? Ota etäyhteys käyttöön
+  /// fi: Poista älykäs lämmitys
   ///
   /// In en, this message translates to:
-  /// **'Not at home? Turn on remote access'**
-  String get sd9923cda70;
+  /// **'Remove smart heating'**
+  String get s32d9d66ffd;
+
+  /// fi: Poistetaanko älykäs lämmitys?
+  ///
+  /// In en, this message translates to:
+  /// **'Remove smart heating?'**
+  String get s0f995f3d5d;
+
+  /// fi: Laitteet jäävät siihen tilaan, jossa ne ovat nyt.
+  ///
+  /// In en, this message translates to:
+  /// **'The devices stay in their current state.'**
+  String get scc27c1739f;
+
+  /// fi: Sähkölämmitystä vähennetään, koska takka lämmittää. Turvarajat ovat silti voimassa.
+  ///
+  /// In en, this message translates to:
+  /// **'Electric heating is reduced while the fireplace heats. Safety limits still apply.'**
+  String get s3bf2d3643c;
+
+  /// fi: Lopeta aiemmin, kun huone alkaa jäähtyä
+  ///
+  /// In en, this message translates to:
+  /// **'End earlier when the room starts to cool'**
+  String get s58b2cdb4e2;
+
+  /// fi: Käynnistä
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get s66ce56ca38;
+
+  /// fi: Poissa ollessa huoneet pidetään viileämpinä, ja lämminvesivaraaja lämmitetään vasta paluuta edeltävänä yönä. Turvarajat
+  ///
+  /// In en, this message translates to:
+  /// **'While you are away rooms are kept cooler, and the water heater is heated only the night before you return. Safety limits and frost protection apply.'**
+  String get s632723d95f;
+
+  /// fi: Alkaa
+  ///
+  /// In en, this message translates to:
+  /// **'Starts'**
+  String get s2ebf172fad;
+
+  /// fi: Paluupäivä
+  ///
+  /// In en, this message translates to:
+  /// **'Return day'**
+  String get s0ba54fbd61;
+
+  /// fi: Lämpötila poissa ollessa
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature while away'**
+  String get s025d1c3db1;
+
+  /// fi: Ohjaustapa
+  ///
+  /// In en, this message translates to:
+  /// **'How it is controlled'**
+  String get s11e21d4f75;
+
+  /// fi:  (suositus)
+  ///
+  /// In en, this message translates to:
+  /// **' (recommended)'**
+  String get s8e6c8ffabb;
+
+  /// fi: Ohjaus käytössä
+  ///
+  /// In en, this message translates to:
+  /// **'Control on'**
+  String get sa35e3e99f4;
+
+  /// fi: Lämmitystunteja päivässä
+  ///
+  /// In en, this message translates to:
+  /// **'Heating hours a day'**
+  String get s86c45674db;
+
+  /// fi: Ohitettavia kalleimpia tunteja
+  ///
+  /// In en, this message translates to:
+  /// **'Most expensive hours skipped'**
+  String get sbd3dbfd7e9;
+
+  /// fi: Pisin tauko kerrallaan
+  ///
+  /// In en, this message translates to:
+  /// **'Longest break at a time'**
+  String get s1f3d8e19f4;
+
+  /// fi: Mukavuuslämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'Comfort temperature'**
+  String get s017c87df20;
+
+  /// fi: Ei anturia
+  ///
+  /// In en, this message translates to:
+  /// **'No sensor'**
+  String get se68cc54085;
+
+  /// fi: Vähennä takka-tilassa
+  ///
+  /// In en, this message translates to:
+  /// **'Reduce in fireplace mode'**
+  String get s347ce4c3d2;
+
+  /// fi: Termostaatin tavoitelämpö asetetaan tämän mukaan; termostaatin oma lämpötila on mukavuuslämpötila.
+  ///
+  /// In en, this message translates to:
+  /// **'The thermostat target is set by this; the thermostat\'\'s own temperature is the comfort temperature.'**
+  String get s6f88da6bab;
+
+  /// fi: Arvio: noin {p0} kWh vuorokaudessa 0 °C:n pakkasella (koko talo).
+  ///
+  /// In en, this message translates to:
+  /// **'Estimate: about {p0} kWh a day at 0 °C (whole house).'**
+  String s87cdb30352(String p0);
+
+  /// fi: Millä talo lämpiää? Valitse kaikki.
+  ///
+  /// In en, this message translates to:
+  /// **'How is the house heated? Choose all.'**
+  String get sc161d1f9d9;
+
+  /// fi: Eristys
+  ///
+  /// In en, this message translates to:
+  /// **'Insulation'**
+  String get saac00e587b;
+
+  /// fi: Heikko
+  ///
+  /// In en, this message translates to:
+  /// **'Poor'**
+  String get s9f103f81c0;
+
+  /// fi: Tavallinen
+  ///
+  /// In en, this message translates to:
+  /// **'Average'**
+  String get sd51256a0f5;
+
+  /// fi: Hyvä
+  ///
+  /// In en, this message translates to:
+  /// **'Good'**
+  String get sd5ebaf8a4c;
+
+  /// fi: Lämmitetty pinta-ala
+  ///
+  /// In en, this message translates to:
+  /// **'Heated area'**
+  String get sf584870588;
+
+  /// fi: Sallittu lämpötilan vaihtelu
+  ///
+  /// In en, this message translates to:
+  /// **'Allowed temperature swing'**
+  String get s97235bfadb;
+
+  /// fi: Mitä enemmän lämpö saa vaihdella, sitä enemmän lämmitystä voidaan siirtää halvoille tunneille.
+  ///
+  /// In en, this message translates to:
+  /// **'The more the temperature may vary, the more heating can move to cheap hours.'**
+  String get s6df5f06d38;
+
+  /// fi: Talossa on takka tai varaava uuni
+  ///
+  /// In en, this message translates to:
+  /// **'The house has a fireplace or storing stove'**
+  String get s07077e2778;
+
+  /// fi: Valitse, mikä laite ohjaa kutakin lämmitystä: rele tai pistorasia (päälle/pois) tai Molaplanin termostaatti (tavoitelämp
+  ///
+  /// In en, this message translates to:
+  /// **'Choose what controls each heating: a relay or plug (on/off) or a Molaplan thermostat (target temperature).'**
+  String get sab28f61fad;
+
+  /// fi: Ei vielä ohjattavia laitteita. Lisää ensin rele tai termostaatti; voit palata kartoitukseen myöhemmin.
+  ///
+  /// In en, this message translates to:
+  /// **'No controllable devices yet. Add a relay or a thermostat first; you can come back to the survey later.'**
+  String get s90ae2f4451;
+
+  /// fi: Ohjaava laite
+  ///
+  /// In en, this message translates to:
+  /// **'Controlling device'**
+  String get sf7b3494ee1;
+
+  /// fi: Ei ohjata
+  ///
+  /// In en, this message translates to:
+  /// **'Not controlled'**
+  String get se7ffc07763;
+
+  /// fi: Termostaatti: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Thermostat: {p0}'**
+  String s5835dc3308(String p0);
+
+  /// fi: Huoneen lämpöanturi (suositus)
+  ///
+  /// In en, this message translates to:
+  /// **'Room temperature sensor (recommended)'**
+  String get s075ddc6f0d;
+
+  /// fi: Suositellut asetukset
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended settings'**
+  String get s016c02be08;
+
+  /// fi: Ohitetaan {p0} kalleinta tuntia päivässä, enintään {p1} h kerrallaan.
+  ///
+  /// In en, this message translates to:
+  /// **'Skips the {p0} most expensive hours a day, at most {p1} h at a time.'**
+  String s013bbafbec(String p0, String p1);
+
+  /// fi: Noin {p0} lämmitystuntia päivässä 0 °C:ssa.
+  ///
+  /// In en, this message translates to:
+  /// **'About {p0} heating hours a day at 0 °C.'**
+  String se67c73d855(String p0);
+
+  /// fi: Ei ohjaavaa laitetta – ei ohjata.
+  ///
+  /// In en, this message translates to:
+  /// **'No controlling device – not controlled.'**
+  String get sb7524487f9;
+
+  /// fi: Paina "Takka lämmitetty", kun takka on lämmitetty: sähkölämmitystä vähennetään 12–24 tunniksi tai kunnes anturi näyttää
+  ///
+  /// In en, this message translates to:
+  /// **'Tap \"Fireplace lit\" after lighting it: electric heating is reduced for 12–24 h or until the sensor shows cooling.'**
+  String get sad1fbf7d03;
+
+  /// fi: Voit muuttaa ohjaustapaa ja lukuja myöhemmin laitteen sivulla kohdassa Edistyneet.
+  ///
+  /// In en, this message translates to:
+  /// **'You can change the method and numbers later on the device page under Advanced.'**
+  String get sfb41f90571;
+
+  /// fi: Lämmitys
+  ///
+  /// In en, this message translates to:
+  /// **'Heating'**
+  String get sa3a093e55e;
+
+  /// fi: Talo
+  ///
+  /// In en, this message translates to:
+  /// **'House'**
+  String get s1706667040;
+
+  /// fi: Laitteet
+  ///
+  /// In en, this message translates to:
+  /// **'Devices'**
+  String get s84005ad77c;
+
+  /// fi: Suositus
+  ///
+  /// In en, this message translates to:
+  /// **'Recommendation'**
+  String get s023d14fd87;
+
+  /// fi: Kartoitus {p0}/4: {p1}
+  ///
+  /// In en, this message translates to:
+  /// **'Survey {p0}/4: {p1}'**
+  String sfde6663859(String p0, String p1);
+
+  /// fi: Ota käyttöön
+  ///
+  /// In en, this message translates to:
+  /// **'Use these'**
+  String get sda588a203b;
+
+  /// fi: Seuraava
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get s6c3e76828b;
 
   /// fi: ei vielä
   ///
@@ -7369,12 +6313,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Scenes'**
   String get s6b7c1c52da;
-
-  /// fi: Ilmoitukset
-  ///
-  /// In en, this message translates to:
-  /// **'Notifications'**
-  String get s8613961a5a;
 
   /// fi: Ajetaan tällä kotisillalla, myös kun sovellus on kiinni.
   ///
@@ -7477,12 +6415,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{p0} offline {p1} min'**
   String sf3c2cf0323(String p0, String p1);
-
-  /// fi: Luo automaatio
-  ///
-  /// In en, this message translates to:
-  /// **'Create automation'**
-  String get s1b359d69e2;
 
   /// fi: Valmiit
   ///
@@ -7832,23 +6764,11 @@ abstract class AppLocalizations {
   /// **'Dark / light'**
   String get s585b4c519f;
 
-  /// fi: Halvimmat tunnit
-  ///
-  /// In en, this message translates to:
-  /// **'Cheapest hours'**
-  String get sd408a5dbe9;
-
   /// fi: Ehto
   ///
   /// In en, this message translates to:
   /// **'Condition'**
   String get s6019108a01;
-
-  /// fi: Poista
-  ///
-  /// In en, this message translates to:
-  /// **'Remove'**
-  String get s9593939a4c;
 
   /// fi: Alkaen
   ///
@@ -7885,6 +6805,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'State'**
   String get sfffb54daf4;
+
+  /// fi: päällä
+  ///
+  /// In en, this message translates to:
+  /// **'on'**
+  String get s609cb4c5f9;
 
   /// fi: Nyt on
   ///
@@ -7928,12 +6854,6 @@ abstract class AppLocalizations {
   /// **'Add action'**
   String get s723d015dc1;
 
-  /// fi: Ohjaa laitetta
-  ///
-  /// In en, this message translates to:
-  /// **'Control a device'**
-  String get sae3489a6c9;
-
   /// fi: Aja tilannekuva
   ///
   /// In en, this message translates to:
@@ -7976,12 +6896,6 @@ abstract class AppLocalizations {
   /// **'Action'**
   String get sbc8e165fbf;
 
-  /// fi: Vaihda
-  ///
-  /// In en, this message translates to:
-  /// **'Toggle'**
-  String get s750f16460c;
-
   /// fi: Aseta arvo
   ///
   /// In en, this message translates to:
@@ -8006,23 +6920,17 @@ abstract class AppLocalizations {
   /// **'(no scenes)'**
   String get sdb235c3ced;
 
-  /// fi: Skripti
-  ///
-  /// In en, this message translates to:
-  /// **'Script'**
-  String get sdced476aeb;
-
   /// fi: (ei skriptejä)
   ///
   /// In en, this message translates to:
   /// **'(no scripts)'**
   String get s4f330bfcfb;
 
-  /// fi: Otsikko
+  /// fi: Teksti
   ///
   /// In en, this message translates to:
-  /// **'Title'**
-  String get s8a8673aafe;
+  /// **'Text'**
+  String get s34900f9d58;
 
   /// fi: {summary} = sää, sähkö ja kodin tila
   ///
@@ -8114,12 +7022,6 @@ abstract class AppLocalizations {
   /// **'A script is a list of steps: control a device, wait, notify, if/else… Run it from a button, an automation or remotely (iPhone Shortcut).'**
   String get s5b2dd17cbc;
 
-  /// fi: Pysäytä
-  ///
-  /// In en, this message translates to:
-  /// **'Stop'**
-  String get s6fe2320f3d;
-
   /// fi: Aja
   ///
   /// In en, this message translates to:
@@ -8155,6 +7057,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'remote'**
   String get s061d1b874b;
+
+  /// fi: viimeksi
+  ///
+  /// In en, this message translates to:
+  /// **'last'**
+  String get s049d71f971;
 
   /// fi: Painike lisätty näkymään {p0}
   ///
@@ -8595,924 +7503,6 @@ abstract class AppLocalizations {
   /// **'All: {p0}'**
   String s1b087cdbbd(String p0);
 
-  /// fi: Lisää laite
-  ///
-  /// In en, this message translates to:
-  /// **'Add a device'**
-  String get s876c7230a2;
-
-  /// fi: Valitse laitteesi merkki. Molaplan etsii sen ja tekee ruudut valmiiksi.
-  ///
-  /// In en, this message translates to:
-  /// **'Pick your device brand. Molaplan finds it and creates the tiles.'**
-  String get sa252f06bff;
-
-  /// fi: Hae merkkiä tai laitetta (esim. Shelly, Hue, IKEA)
-  ///
-  /// In en, this message translates to:
-  /// **'Search brand or device (e.g. Shelly, Hue, IKEA)'**
-  String get s5b3b5e5a24;
-
-  /// fi: Löydä ja yhdistä automaattisesti
-  ///
-  /// In en, this message translates to:
-  /// **'Find and connect automatically'**
-  String get sa427be10c9;
-
-  /// fi: Tulossa – näin käytät nyt
-  ///
-  /// In en, this message translates to:
-  /// **'Coming – how to use it today'**
-  String get s6f4cc0844f;
-
-  /// fi: Muut laitteet
-  ///
-  /// In en, this message translates to:
-  /// **'Other devices'**
-  String get s846ee3bc67;
-
-  /// fi: Termostaatti lämmitys jäähdytys
-  ///
-  /// In en, this message translates to:
-  /// **'Thermostat heating cooling'**
-  String get sdeadd78d47;
-
-  /// fi: Termostaatti
-  ///
-  /// In en, this message translates to:
-  /// **'Thermostat'**
-  String get s48264cfe32;
-
-  /// fi: Pitää lämmön halutussa: ohjaa releitä tai lämpöpumppua lämpömittarin mukaan. Voi säästää pörssisähköllä.
-  ///
-  /// In en, this message translates to:
-  /// **'Keeps the temperature you want: controls relays or a heat pump from a thermometer. Can save with spot prices.'**
-  String get s641a848754;
-
-  /// fi: Sääennuste sää lämpötila sade tuuli
-  ///
-  /// In en, this message translates to:
-  /// **'Weather forecast temperature rain wind'**
-  String get s94493d01ca;
-
-  /// fi: Sää nyt ja tunneittain: lämpötila, sade ja tuuli kotisi sijainnista. Ei vaadi laitetta.
-  ///
-  /// In en, this message translates to:
-  /// **'Weather now and hourly: temperature, rain and wind at your home. No device needed.'**
-  String get scb3570338f;
-
-  /// fi: Etkö löydä merkkiäsi?
-  ///
-  /// In en, this message translates to:
-  /// **'Can\'\'t find your brand?'**
-  String get s2a9b6fedd9;
-
-  /// fi: Husqvarna, Zigbee, Tuya, Netatmo, lämpöpumput… katso miten ne toimivat jo nyt.
-  ///
-  /// In en, this message translates to:
-  /// **'Husqvarna, Zigbee, Tuya, heat pumps… see how to use them today.'**
-  String get scfc7244d06;
-
-  /// fi: Muu laite (oma asetus)
-  ///
-  /// In en, this message translates to:
-  /// **'Other (manual setup)'**
-  String get sf7b77783e5;
-
-  /// fi: Muu laite (edistynyt)
-  ///
-  /// In en, this message translates to:
-  /// **'Other device (advanced)'**
-  String get sc168355ee6;
-
-  /// fi: Kaikki yhteystyypit: HTTP, MQTT, Modbus, WebSocket, TCP, UDP.
-  ///
-  /// In en, this message translates to:
-  /// **'All connection types.'**
-  String get s3022f72ece;
-
-  /// fi: Teknisille käyttäjille. Vaatii edistyneet asetukset.
-  ///
-  /// In en, this message translates to:
-  /// **'For technical users.'**
-  String get s2d1d488d6d;
-
-  /// fi: Sisältää esimerkkiasetuksia
-  ///
-  /// In en, this message translates to:
-  /// **'Contains example settings'**
-  String get s6f1c11270c;
-
-  /// fi: Laitteessa on {p0} relettä
-  ///
-  /// In en, this message translates to:
-  /// **'The device has {p0} relays'**
-  String s4f55f417b1(String p0);
-
-  /// fi: Laitteessa on 1 rele
-  ///
-  /// In en, this message translates to:
-  /// **'The device has 1 relay'**
-  String get sab3ebba17a;
-
-  /// fi: energiamittaus
-  ///
-  /// In en, this message translates to:
-  /// **'energy metering'**
-  String get sfa48c40832;
-
-  /// fi: Ruudun nimi
-  ///
-  /// In en, this message translates to:
-  /// **'Tile name'**
-  String get sc8d1abbd21;
-
-  /// fi: OK
-  ///
-  /// In en, this message translates to:
-  /// **'OK'**
-  String get s183ed60009;
-
-  /// fi: Osoite: {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'Address: {p0}'**
-  String s1ea8fe913b(String p0);
-
-  /// fi: Home Assistant käyttää itse allekirjoitettua varmennetta. Se hyväksyttiin, koska osoite on kotiverkossa.
-  ///
-  /// In en, this message translates to:
-  /// **'Home Assistant uses a self-signed certificate. It was accepted because the address is on the home network.'**
-  String get s16dc13070c;
-
-  /// fi: Home Assistantia ei löytynyt automaattisesti. Kirjoita osoite, jolla avaat sen selaimessa (esim. http://192.168.1.20:812
-  ///
-  /// In en, this message translates to:
-  /// **'Home Assistant was not found automatically. Type the address you open it with (e.g. http://192.168.1.20:8123 or the Nabu Casa address).'**
-  String get sd531eb2fc2;
-
-  /// fi: Löydetyt Home Assistantit:
-  ///
-  /// In en, this message translates to:
-  /// **'Found Home Assistants:'**
-  String get s7def041e83;
-
-  /// fi: Löytyi: {p0} – {p1}
-  ///
-  /// In en, this message translates to:
-  /// **'Found: {p0} – {p1}'**
-  String s2967a37e01(String p0, String p1);
-
-  /// fi: Laitteita ei löytynyt automaattisesti. Kirjoita osoite itse – sen löydät reitittimen laitelistasta tai laitteen omasta s
-  ///
-  /// In en, this message translates to:
-  /// **'No devices found automatically. Type the address yourself – find it in your router or the device app.'**
-  String get s8f4c0baf1a;
-
-  /// fi: Löydetyt laitteet – valitse omasi:
-  ///
-  /// In en, this message translates to:
-  /// **'Found devices – pick yours:'**
-  String get s104238f11e;
-
-  /// fi: Haku ei ole käytettävissä tässä verkossa.
-  ///
-  /// In en, this message translates to:
-  /// **'Search is not available on this network.'**
-  String get sd5f9dce947;
-
-  /// fi: Opetetaanko kaukosäätimen napit?
-  ///
-  /// In en, this message translates to:
-  /// **'Teach remote buttons?'**
-  String get s26abc57d91;
-
-  /// fi: Perusohjaus (virta, lämpö, tila) toimii jo. Voit lisäksi opettaa kaukosäätimen muita nappeja, esim. "Turbo" tai "Hiljain
-  ///
-  /// In en, this message translates to:
-  /// **'Basic control works already. You can also teach other remote buttons, e.g. \"Turbo\".'**
-  String get sc709f38633;
-
-  /// fi: Ei nyt
-  ///
-  /// In en, this message translates to:
-  /// **'Not now'**
-  String get s6cac83dd5e;
-
-  /// fi: Opeta nyt
-  ///
-  /// In en, this message translates to:
-  /// **'Teach now'**
-  String get s97ea2eeb11;
-
-  /// fi: Laite lisätty
-  ///
-  /// In en, this message translates to:
-  /// **'Device added'**
-  String get s09cfb7b2a1;
-
-  /// fi: Laite ja {p0} ruutua lisätty
-  ///
-  /// In en, this message translates to:
-  /// **'Device and {p0} tiles added'**
-  String sda9574390f(String p0);
-
-  /// fi: Valmiit asetukset ovat esimerkkejä. Tarkista ne laitteesi ohjeesta ennen kuin luotat arvoihin.
-  ///
-  /// In en, this message translates to:
-  /// **'Preset settings are examples. Check them against your device manual before relying on them.'**
-  String get sd51ee1ec8d;
-
-  /// fi: IR on yksisuuntainen: lämpöpumppu ei kerro takaisin, menikö komento perille. Molaplan lähettää aina koko tilan (virta, t
-  ///
-  /// In en, this message translates to:
-  /// **'IR is one-way: the heat pump does not confirm. Molaplan always sends the whole state and shows what it sent. Teach other remote buttons later: Connections → blaster → \"Teach a new command\".'**
-  String get s2e99b59497;
-
-  /// fi: Ohje ja automaattinen haku
-  ///
-  /// In en, this message translates to:
-  /// **'Guide and automatic search'**
-  String get s0dd21e026c;
-
-  /// fi: Etsitään…
-  ///
-  /// In en, this message translates to:
-  /// **'Searching…'**
-  String get s695a011cc1;
-
-  /// fi: Etsi verkosta
-  ///
-  /// In en, this message translates to:
-  /// **'Search network'**
-  String get s47d409fddd;
-
-  /// fi: Tunnista releet
-  ///
-  /// In en, this message translates to:
-  /// **'Detect relays'**
-  String get sa62eebe6bd;
-
-  /// fi: ⚠ Tässä koneessa ei ole Modbus TCP:tä – tarvitset RS485 → Modbus TCP -muuntimen.
-  ///
-  /// In en, this message translates to:
-  /// **'⚠ No native Modbus TCP – an RS485 → TCP gateway is needed.'**
-  String get s7196b72140;
-
-  /// fi: Lähde
-  ///
-  /// In en, this message translates to:
-  /// **'Source'**
-  String get s2e8ba44677;
-
-  /// fi: Testaa yhteys
-  ///
-  /// In en, this message translates to:
-  /// **'Test connection'**
-  String get sceb8e47d07;
-
-  /// fi: Toimii!
-  ///
-  /// In en, this message translates to:
-  /// **'Works!'**
-  String get s02ce5f4a01;
-
-  /// fi: Nämä ruudut luodaan
-  ///
-  /// In en, this message translates to:
-  /// **'These tiles will be created'**
-  String get sb9e9e55164;
-
-  /// fi: Täytä tähdellä (*) merkityt kentät, niin näet ruudut.
-  ///
-  /// In en, this message translates to:
-  /// **'Fill in the fields marked with * to see the tiles.'**
-  String get s1cb2891ef2;
-
-  /// fi: Ei valmiita ruutuja – voit lisätä ne myöhemmin kynä-painikkeesta.
-  ///
-  /// In en, this message translates to:
-  /// **'No ready tiles – you can add them later with the pencil button.'**
-  String get s504861ee78;
-
-  /// fi: Näyttää arvon
-  ///
-  /// In en, this message translates to:
-  /// **'Shows a value'**
-  String get s1094266d4c;
-
-  /// fi: Kytkin päälle/pois
-  ///
-  /// In en, this message translates to:
-  /// **'On/off switch'**
-  String get sf6ae3f3323;
-
-  /// fi: Painike
-  ///
-  /// In en, this message translates to:
-  /// **'Button'**
-  String get s20dad69675;
-
-  /// fi: Säädin
-  ///
-  /// In en, this message translates to:
-  /// **'Slider'**
-  String get s0e9f94df05;
-
-  /// fi: Kamerakuva
-  ///
-  /// In en, this message translates to:
-  /// **'Camera view'**
-  String get s109b454866;
-
-  /// fi: Edistyneet asetukset
-  ///
-  /// In en, this message translates to:
-  /// **'Advanced settings'**
-  String get s37153e0e80;
-
-  /// fi: Muu laite liitetään teknisillä asetuksilla (HTTP, MQTT, Modbus…). Jos laitteesi merkki löytyy listasta, käytä sitä – se
-  ///
-  /// In en, this message translates to:
-  /// **'Other devices use technical settings (HTTP, MQTT, Modbus…). If your brand is listed, use it instead.\n\nTurn on advanced settings? You can turn them off in Settings.'**
-  String get s0ca55a9cae;
-
-  /// fi: Ota käyttöön
-  ///
-  /// In en, this message translates to:
-  /// **'Turn on'**
-  String get s9630135746;
-
-  /// fi: Mikä kamera sinulla on?
-  ///
-  /// In en, this message translates to:
-  /// **'Which camera do you have?'**
-  String get sbcdff8f72a;
-
-  /// fi: Muu kamera (ONVIF)
-  ///
-  /// In en, this message translates to:
-  /// **'Other camera (ONVIF)'**
-  String get s67bf18fb6f;
-
-  /// fi: Mikä lämpöpumppu sinulla on?
-  ///
-  /// In en, this message translates to:
-  /// **'Which heat pump do you have?'**
-  String get sdbbc24198f;
-
-  /// fi: Tarkista asetukset – ei valmistajan virallista dokumenttia.
-  ///
-  /// In en, this message translates to:
-  /// **'Verify – no official vendor document.'**
-  String get sdfd0407af6;
-
-  /// fi: Ei wifiä – IR-ohjain (mikä tahansa merkki)
-  ///
-  /// In en, this message translates to:
-  /// **'No Wi-Fi – IR blaster (any brand)'**
-  String get s5562a66892;
-
-  /// fi: Tasmota- tai ESPHome-IR-lähetin (esim. Athom IR & RF) lähettää koko tilan kuten kaukosäädin. Voit myös opettaa omia kome
-  ///
-  /// In en, this message translates to:
-  /// **'A Tasmota or ESPHome IR blaster (e.g. Athom IR & RF) sends the full state like the remote. You can also teach your own commands.'**
-  String get sc6411a9010;
-
-  /// fi: Huoltoliitäntä (ESPHome)
-  ///
-  /// In en, this message translates to:
-  /// **'Service port (ESPHome)'**
-  String get s6cce12c7e3;
-
-  /// fi: ESP sisäyksikön liittimeen, kaksisuuntainen.
-  ///
-  /// In en, this message translates to:
-  /// **'An ESP on the indoor unit connector, two-way.'**
-  String get s0d3bc6d125;
-
-  /// fi: Home Assistantin kautta
-  ///
-  /// In en, this message translates to:
-  /// **'Via Home Assistant'**
-  String get s8275426406;
-
-  /// fi: Jos sinulla on jo Home Assistant.
-  ///
-  /// In en, this message translates to:
-  /// **'If you already have Home Assistant.'**
-  String get s5b10465c5b;
-
-  /// fi: Muut merkit – miksi ei vielä
-  ///
-  /// In en, this message translates to:
-  /// **'Other brands – why not yet'**
-  String get s417228f48f;
-
-  /// fi: Laitteita ohjataan kotiverkossa ilman pilveä. Ensimmäisellä kerralla tarvitaan laitteiden paikalliset avaimet, jotka hae
-  ///
-  /// In en, this message translates to:
-  /// **'The devices are controlled on your home network without the cloud. The first time, their local keys are fetched with your own free Tuya developer account (about 10 minutes, only once).'**
-  String get se50e28a0e4;
-
-  /// fi: Hae avaimet omalla Tuya-tunnuksella (suositus)
-  ///
-  /// In en, this message translates to:
-  /// **'Fetch the keys with my own Tuya account (recommended)'**
-  String get sb35b23dbdd;
-
-  /// fi: Kaikki sovelluksen wifi-laitteet kerralla.
-  ///
-  /// In en, this message translates to:
-  /// **'All Wi-Fi devices of the app at once.'**
-  String get sbc29869e30;
-
-  /// fi: Minulla on jo paikallinen avain
-  ///
-  /// In en, this message translates to:
-  /// **'I already have the local key'**
-  String get s2f57241369;
-
-  /// fi: Yksi laite: osoite, tunnus ja avain.
-  ///
-  /// In en, this message translates to:
-  /// **'One device: address, ID and key.'**
-  String get sf4a309c04a;
-
-  /// fi: Tarkista lukemat – ei valmistajan virallista dokumenttia.
-  ///
-  /// In en, this message translates to:
-  /// **'Verify the readings – no official vendor document.'**
-  String get sd551537404;
-
-  /// fi: Paikallinen – suositus
-  ///
-  /// In en, this message translates to:
-  /// **'Local – recommended'**
-  String get sa1a45de0f2;
-
-  /// fi: Pilvi – valinnainen
-  ///
-  /// In en, this message translates to:
-  /// **'Cloud – optional'**
-  String get se8b35fb9e9;
-
-  /// fi: Muut – miksi ei vielä
-  ///
-  /// In en, this message translates to:
-  /// **'Others – why not yet'**
-  String get s95216a7a5e;
-
-  /// fi: Mikä invertteri sinulla on?
-  ///
-  /// In en, this message translates to:
-  /// **'Which inverter do you have?'**
-  String get sc52321f275;
-
-  /// fi: Tuotanto, verkosta osto/myynti ja akun varaus ruutuihin ja automaatioihin. Paikallinen yhteys päivittyy sekunneissa eikä
-  ///
-  /// In en, this message translates to:
-  /// **'Production, grid import/export and battery charge as tiles and for automations. A local connection updates in seconds and needs no cloud.'**
-  String get s862002ac64;
-
-  /// fi: Mikä laturi sinulla on?
-  ///
-  /// In en, this message translates to:
-  /// **'Which charger do you have?'**
-  String get sa5f3da9152;
-
-  /// fi: Tila, lataus päälle/pois, teho ja virtaraja. Automaatiot: lataa aurinkosähkön ylijäämällä tai halvimpina tunteina.
-  ///
-  /// In en, this message translates to:
-  /// **'Status, charging on/off, power and current limit. Automations: charge on solar surplus or in the cheapest hours.'**
-  String get sdeb1f4332e;
-
-  /// fi: rtsp-transport
-  ///
-  /// In en, this message translates to:
-  /// **'tcp'**
-  String get s772c158a57;
-
-  /// fi: profile
-  ///
-  /// In en, this message translates to:
-  /// **'low-latency'**
-  String get sea00017814;
-
-  /// fi: network-timeout
-  ///
-  /// In en, this message translates to:
-  /// **'8'**
-  String get s2d65587b87;
-
-  /// fi: Kieli
-  ///
-  /// In en, this message translates to:
-  /// **'Language'**
-  String get s2ad22696ca;
-
-  /// fi: Laitteen kieli
-  ///
-  /// In en, this message translates to:
-  /// **'Device language'**
-  String get s7efc5653d2;
-
-  /// fi: Tämä Shelly on energiamittari – vaihdetaanko kytkin {p0} mittausruutuun?
-  ///
-  /// In en, this message translates to:
-  /// **'This Shelly is an energy meter – replace the switch with {p0} metering tiles?'**
-  String s3e5741712a(String p0);
-
-  /// fi: Laitteessa on {p0} relettä – lisää loput?
-  ///
-  /// In en, this message translates to:
-  /// **'The device has {p0} relays – add the rest?'**
-  String sfe2074ae81(String p0);
-
-  /// fi: Lisää {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'Add {p0}'**
-  String sf1319d04d0(String p0);
-
-  /// fi: Korjaa
-  ///
-  /// In en, this message translates to:
-  /// **'Fix'**
-  String get s95f80e9bdf;
-
-  /// fi: 24 h eteenpäin
-  ///
-  /// In en, this message translates to:
-  /// **'24 h ahead'**
-  String get s66ad384363;
-
-  /// fi: Tänään + huomenna
-  ///
-  /// In en, this message translates to:
-  /// **'Today + tomorrow'**
-  String get s6df3187e65;
-
-  /// fi: 48h
-  ///
-  /// In en, this message translates to:
-  /// **'48 h'**
-  String get s76379cf7c6;
-
-  /// fi: Ei hintoja
-  ///
-  /// In en, this message translates to:
-  /// **'No prices'**
-  String get s306729fe62;
-
-  /// fi: tunnin päästä
-  ///
-  /// In en, this message translates to:
-  /// **'in 1 h'**
-  String get sff03a35d96;
-
-  /// fi: vanhat hinnat
-  ///
-  /// In en, this message translates to:
-  /// **'old prices'**
-  String get sf9e22ac5e7;
-
-  /// fi: Esimerkkikamera – lisää oma kamerasi Lisää laite -painikkeella
-  ///
-  /// In en, this message translates to:
-  /// **'Example camera – add your own with Add device'**
-  String get sa0bd9ad5b1;
-
-  /// fi: Valitse kamerayhteys
-  ///
-  /// In en, this message translates to:
-  /// **'Choose a camera connection'**
-  String get s4529c1010a;
-
-  /// fi: Live-video ei toimi tällä laitteella
-  ///
-  /// In en, this message translates to:
-  /// **'Live video does not work on this device'**
-  String get s98bf81bba3;
-
-  /// fi: Live-video näkyy vain kotiverkossa. Tällä kameralla ei ole still-kuvaa etäkäyttöön.
-  ///
-  /// In en, this message translates to:
-  /// **'Live video shows only on the home network. This camera has no still picture for remote use.'**
-  String get seb2bb5cbce;
-
-  /// fi: Virta päättyi
-  ///
-  /// In en, this message translates to:
-  /// **'Stream ended'**
-  String get sc95fb5440b;
-
-  /// fi: Live-videota ei saatu. Tarkista, että olet kotiverkossa ja kameran RTSP on päällä.
-  ///
-  /// In en, this message translates to:
-  /// **'No live video. Check that you are on the home network and RTSP is on in the camera.'**
-  String get sd55dd196f6;
-
-  /// fi: Virta
-  ///
-  /// In en, this message translates to:
-  /// **'Power'**
-  String get s8e574c3313;
-
-  /// fi: Tuuletin
-  ///
-  /// In en, this message translates to:
-  /// **'Fan'**
-  String get sa9360bdda1;
-
-  /// fi: Lämpöpumppu
-  ///
-  /// In en, this message translates to:
-  /// **'Heat pump'**
-  String get sc7d02fbe84;
-
-  /// fi: Hälytys
-  ///
-  /// In en, this message translates to:
-  /// **'Alarm'**
-  String get s8d06ee5308;
-
-  /// fi: Lukko
-  ///
-  /// In en, this message translates to:
-  /// **'Lock'**
-  String get sfb63e3c23f;
-
-  /// fi: Vesi
-  ///
-  /// In en, this message translates to:
-  /// **'Water'**
-  String get s2f42d90475;
-
-  /// fi: Sähkö / teho
-  ///
-  /// In en, this message translates to:
-  /// **'Electricity / power'**
-  String get sf2d10dd213;
-
-  /// fi: Säästö / halvin
-  ///
-  /// In en, this message translates to:
-  /// **'Savings / cheapest'**
-  String get s4594c7448e;
-
-  /// fi: Autotalli
-  ///
-  /// In en, this message translates to:
-  /// **'Garage'**
-  String get s291ca127d6;
-
-  /// fi: Ovi
-  ///
-  /// In en, this message translates to:
-  /// **'Door'**
-  String get sb543af1c63;
-
-  /// fi: Ikkuna
-  ///
-  /// In en, this message translates to:
-  /// **'Window'**
-  String get s60b1079d6c;
-
-  /// fi: Käynnistä
-  ///
-  /// In en, this message translates to:
-  /// **'Start'**
-  String get s66ce56ca38;
-
-  /// fi: Ajastin
-  ///
-  /// In en, this message translates to:
-  /// **'Timer'**
-  String get s0ab3a44562;
-
-  /// fi: Verkko
-  ///
-  /// In en, this message translates to:
-  /// **'Network'**
-  String get s3044a10005;
-
-  /// fi: Sauna / lämmitys
-  ///
-  /// In en, this message translates to:
-  /// **'Sauna / heating'**
-  String get s1f67139f55;
-
-  /// fi: Pistorasia
-  ///
-  /// In en, this message translates to:
-  /// **'Outlet'**
-  String get sf21fd72396;
-
-  /// fi: Suosikki
-  ///
-  /// In en, this message translates to:
-  /// **'Favourite'**
-  String get s7783fe5fca;
-
-  /// fi: Lähetä
-  ///
-  /// In en, this message translates to:
-  /// **'Send'**
-  String get s912ea5d2ec;
-
-  /// fi: Lista
-  ///
-  /// In en, this message translates to:
-  /// **'List'**
-  String get se223375393;
-
-  /// fi: Suuntaus
-  ///
-  /// In en, this message translates to:
-  /// **'Swing'**
-  String get sfb0b971c01;
-
-  /// fi: Kaukosäädin
-  ///
-  /// In en, this message translates to:
-  /// **'Remote'**
-  String get see42f2d999;
-
-  /// fi: Aurinko
-  ///
-  /// In en, this message translates to:
-  /// **'Sun'**
-  String get s9126bf24a0;
-
-  /// fi: Tilanne
-  ///
-  /// In en, this message translates to:
-  /// **'Scene'**
-  String get sdaa7d4de12;
-
-  /// fi: Radon
-  ///
-  /// In en, this message translates to:
-  /// **'Radon'**
-  String get s11cc92bdc3;
-
-  /// fi: Hiilidioksidi
-  ///
-  /// In en, this message translates to:
-  /// **'CO₂'**
-  String get s095db91dfb;
-
-  /// fi: Ilmanlaatu
-  ///
-  /// In en, this message translates to:
-  /// **'Air quality'**
-  String get s4b1eda4282;
-
-  /// fi: Sähköauton laturi
-  ///
-  /// In en, this message translates to:
-  /// **'EV charger'**
-  String get s1a6081db34;
-
-  /// fi: Kaikki rauhallista.
-  ///
-  /// In en, this message translates to:
-  /// **'All quiet.'**
-  String get sfe55fd97fa;
-
-  /// fi: {p0}: valmis
-  ///
-  /// In en, this message translates to:
-  /// **'{p0}: done'**
-  String s162c54ed4c(String p0);
-
-  /// fi: maanantai
-  ///
-  /// In en, this message translates to:
-  /// **'Monday'**
-  String get se26e839c2f;
-
-  /// fi: tiistai
-  ///
-  /// In en, this message translates to:
-  /// **'Tuesday'**
-  String get s763254941f;
-
-  /// fi: keskiviikko
-  ///
-  /// In en, this message translates to:
-  /// **'Wednesday'**
-  String get sf3448cdd52;
-
-  /// fi: torstai
-  ///
-  /// In en, this message translates to:
-  /// **'Thursday'**
-  String get sc34ca7eddb;
-
-  /// fi: perjantai
-  ///
-  /// In en, this message translates to:
-  /// **'Friday'**
-  String get sfa82438bec;
-
-  /// fi: lauantai
-  ///
-  /// In en, this message translates to:
-  /// **'Saturday'**
-  String get s517c348371;
-
-  /// fi: sunnuntai
-  ///
-  /// In en, this message translates to:
-  /// **'Sunday'**
-  String get sb1f0e72163;
-
-  /// fi: c/t
-  ///
-  /// In en, this message translates to:
-  /// **'c/h'**
-  String get s80c4ecec94;
-
-  /// fi: Kulutus (kWh)
-  ///
-  /// In en, this message translates to:
-  /// **'Usage (kWh)'**
-  String get sb68e905fc4;
-
-  /// fi: Kustannus
-  ///
-  /// In en, this message translates to:
-  /// **'Cost'**
-  String get s5fc5085143;
-
-  /// fi: Vanha tieto
-  ///
-  /// In en, this message translates to:
-  /// **'Old data'**
-  String get s2b2118a93b;
-
-  /// fi: Hinta nyt
-  ///
-  /// In en, this message translates to:
-  /// **'Price now'**
-  String get sb730159a01;
-
-  /// fi: Halvin tunti tänään
-  ///
-  /// In en, this message translates to:
-  /// **'Cheapest hour today'**
-  String get s68fcfcfed1;
-
-  /// fi: Tänään keskihinta
-  ///
-  /// In en, this message translates to:
-  /// **'Average today'**
-  String get s86ff059f5e;
-
-  /// fi: Kallein tunti tänään
-  ///
-  /// In en, this message translates to:
-  /// **'Priciest hour today'**
-  String get s7b911d48c6;
-
-  /// fi: Hetkellinen kustannus
-  ///
-  /// In en, this message translates to:
-  /// **'Instant cost'**
-  String get s29dbf49d92;
-
-  /// fi: halvin
-  ///
-  /// In en, this message translates to:
-  /// **'min'**
-  String get s723c887da6;
-
-  /// fi: ka
-  ///
-  /// In en, this message translates to:
-  /// **'avg'**
-  String get s3b36524e04;
-
-  /// fi: kallein
-  ///
-  /// In en, this message translates to:
-  /// **'max'**
-  String get scaaff6345d;
-
-  /// fi: Kulutus
-  ///
-  /// In en, this message translates to:
-  /// **'Usage'**
-  String get s5f131c3ec4;
-
-  /// fi: Luvut tuntikeskiarvoina
-  ///
-  /// In en, this message translates to:
-  /// **'Figures are hourly averages'**
-  String get s039bb374fe;
-
   /// fi: Halvimmat tunnit yöllä
   ///
   /// In en, this message translates to:
@@ -9645,905 +7635,713 @@ abstract class AppLocalizations {
   /// **'Price area {p0}. Day-ahead spot prices incl. VAT {p1} %. Add the \"Electricity price\" device to change area and fees.'**
   String sf87d92faf4(String p0, String p1);
 
-  /// fi: Siltaa ei löytynyt. Onko puhelin liitetty sillan Wi-Fiin "Molaplan-XXXX"? Jos verkkoa ei näy, pidä sillan nappia painett
+  /// fi: Vie asetukset
   ///
   /// In en, this message translates to:
-  /// **'Bridge not found. Is the phone on the bridge\'\'s Wi-Fi \"Molaplan-XXXX\"? If the network is missing, hold the bridge button for 3 s (setup opens for 15 minutes).'**
-  String get saa4df8e877;
+  /// **'Export configuration'**
+  String get s4dab2d409b;
 
-  /// fi: Silta ei ole asetustilassa. Pidä sen nappia painettuna 3 s ja yritä uudelleen.
+  /// fi: Asetukset viety
   ///
   /// In en, this message translates to:
-  /// **'The bridge is not in setup mode. Hold its button for 3 s and try again.'**
-  String get sf5293b1989;
+  /// **'Configuration exported'**
+  String get s149c1e54d6;
 
-  /// fi: Tämä ei ole tarran / QR-koodin silta (avain ei täsmää). Mitään ei lähetetty.
+  /// fi: Tuo asetukset
   ///
   /// In en, this message translates to:
-  /// **'This is not the bridge on the label / QR code (key mismatch). Nothing was sent.'**
-  String get s839deeab41;
+  /// **'Import configuration'**
+  String get s35f445793b;
 
-  /// fi: Sillan vastaus ei kelpaa (salaus ei täsmää). Mitään ei tallennettu.
+  /// fi: Korvataanko nykyiset asetukset?
   ///
   /// In en, this message translates to:
-  /// **'The bridge\'\'s reply is not valid (encryption mismatch). Nothing was saved.'**
-  String get s3694ce006b;
+  /// **'Replace current configuration?'**
+  String get sd55be829e3;
 
-  /// fi: Silta hylkäsi asetukset: {p0}
+  /// fi: Kaikki nykyiset yhteydet ja näkymät korvataan tiedoston sisällöllä.
   ///
   /// In en, this message translates to:
-  /// **'The bridge rejected the setup: {p0}'**
-  String s61aea0b713(String p0);
+  /// **'All current connections and dashboards are replaced by the file contents.'**
+  String get s852dd1795e;
 
-  /// fi: Lisää kotisilta
+  /// fi: Tuo
   ///
   /// In en, this message translates to:
-  /// **'Add home bridge'**
-  String get s63551081b0;
+  /// **'Import'**
+  String get s580678cb10;
 
-  /// fi: Molaplan Bridge -laite
+  /// fi: Asetukset tuotu
   ///
   /// In en, this message translates to:
-  /// **'Molaplan Bridge device'**
-  String get s592edd94e7;
+  /// **'Configuration imported'**
+  String get s5f2ec17730;
 
-  /// fi: Pieni, aina päällä oleva laite (esim. Athom IR/RF -ohjain), joka välittää etäkomennot kodin laitteille ja ohjaa ilmalämp
+  /// fi: Tuonti epäonnistui
   ///
   /// In en, this message translates to:
-  /// **'A small always-on device (e.g. the Athom IR/RF controller) that passes remote commands to your devices and controls the heat pump by infrared.'**
-  String get sa329968355;
+  /// **'Import failed'**
+  String get sa87fff54f3;
 
-  /// fi: Kytke silta virtaan. Uusi silta avaa asetustilan itse (valo vilkkuu hitaasti, kerran sekunnissa).
+  /// fi: Tili
   ///
   /// In en, this message translates to:
-  /// **'Power the bridge. A new bridge opens setup by itself (slow blink, once a second).'**
-  String get sd8790684a6;
+  /// **'Account'**
+  String get s2fd2bfedb8;
 
-  /// fi: Avaa puhelimen Wi-Fi-asetukset ja liity verkkoon "Molaplan-XXXX" (ei salasanaa).
+  /// fi: Samat kodit ja ruudut kaikilla laitteillasi.
   ///
   /// In en, this message translates to:
-  /// **'Open the phone\'\'s Wi-Fi settings and join \"Molaplan-XXXX\" (no password).'**
-  String get s087004d26c;
+  /// **'The same homes and tiles on all your devices.'**
+  String get s4c0ff416ab;
 
-  /// fi: Palaa tähän ja paina "Etsi silta".
+  /// fi: Kirjaudu, niin kodit, laitteet ja ruudut ovat samat PC:llä, tabletilla ja puhelimella. Vapaaehtoinen.
   ///
   /// In en, this message translates to:
-  /// **'Come back here and press \"Find bridge\".'**
-  String get sf85e449cd8;
+  /// **'Sign in to have the same homes, devices and tiles on PC, tablet and phone. Optional.'**
+  String get scc7e418ee3;
 
-  /// fi: Etsi silta
+  /// fi: Lataukset
   ///
   /// In en, this message translates to:
-  /// **'Find bridge'**
-  String get s57466387fc;
+  /// **'Downloads'**
+  String get sb386aff4b7;
 
-  /// fi: Silta löytyi
+  /// fi: PC-sovelluksen lataus kaupan sivulta vaatii tilin (saman kuin tilauksessa).
   ///
   /// In en, this message translates to:
-  /// **'Bridge found'**
-  String get sd166e3cf6f;
+  /// **'Downloading the PC app from the shop requires an account (the same one as on the order).'**
+  String get sbb264ce105;
 
-  /// fi: Ohjelmisto
+  /// fi: Avaa lataukset
   ///
   /// In en, this message translates to:
-  /// **'Firmware'**
-  String get s6b841de5dd;
+  /// **'Open downloads'**
+  String get se5ab008127;
 
-  /// fi: Kodin Wi-Fi
+  /// fi: Ulkoasu
   ///
   /// In en, this message translates to:
-  /// **'Home Wi-Fi'**
-  String get s88fa323548;
+  /// **'Appearance'**
+  String get s08d62fd281;
 
-  /// fi: Verkon nimi
+  /// fi: Teema
   ///
   /// In en, this message translates to:
-  /// **'Network name'**
-  String get sf48dd63b0a;
+  /// **'Theme'**
+  String get s2b8a2754c6;
 
-  /// fi: Wi-Fi-salasana
+  /// fi: Vaalea
   ///
   /// In en, this message translates to:
-  /// **'Wi-Fi password'**
-  String get s9f9c574cf9;
+  /// **'Light'**
+  String get s79f67deb42;
 
-  /// fi: Kodin nimi
+  /// fi: Tumma
   ///
   /// In en, this message translates to:
-  /// **'Home name'**
-  String get sc58a7d7121;
+  /// **'Dark'**
+  String get s0d6fb52039;
 
-  /// fi: Laitemalli
+  /// fi: Auringonnousun ja -laskun mukaan
   ///
   /// In en, this message translates to:
-  /// **'Board'**
-  String get sc452460b0f;
+  /// **'By sunrise and sunset'**
+  String get s70dd7fdd58;
 
-  /// fi: testaamaton
+  /// fi: Vaatii kodin sijainnin (Energia › Koti). Siihen asti seurataan laitteen asetusta.
   ///
   /// In en, this message translates to:
-  /// **'untested'**
-  String get s4bdd633042;
+  /// **'Needs the home location (Energy › Home). Until then the device setting is followed.'**
+  String get s21206b61f7;
 
-  /// fi: Tiedot lähetetään sillalle salattuina – sillan Wi-Fi on avoin, mutta salasanaa ei voi lukea siitä.
+  /// fi: Vaalea päivällä, tumma illalla. Pois päältä: seuraa laitteen asetusta.
   ///
   /// In en, this message translates to:
-  /// **'The details are sent encrypted – the bridge Wi-Fi is open, but the password cannot be read from it.'**
-  String get sbe6a859b63;
+  /// **'Light by day, dark in the evening. Off: follows the device setting.'**
+  String get s4e23920823;
 
-  /// fi: Yhdistä silta kotiin
+  /// fi: Valinta koskee tätä laitetta ja tallentuu tiliisi uusien laitteiden oletukseksi.
   ///
   /// In en, this message translates to:
-  /// **'Connect the bridge'**
-  String get s77af0820de;
+  /// **'The choice applies to this device and is saved to your account as the default for new devices.'**
+  String get s4b847ce63e;
 
-  /// fi: Silta yhdistetty!
+  /// fi: Näytä tuntikeskiarvona
   ///
   /// In en, this message translates to:
-  /// **'Bridge connected!'**
-  String get s1ec01d8473;
+  /// **'Show as hourly average'**
+  String get s5ebc02022b;
 
-  /// fi: Silta liittyy nyt kodin Wi-Fiin (valo palaa ja välähtää pois 3 s välein, kun yhteys on kunnossa). Vaihda puhelin takaisi
+  /// fi: Sähkön hinta, halvimmat tunnit ja hintaohjaukset tunneittain (tuntihinnoiteltu sopimus). Pois: 15 min, kun alueen hinnat
   ///
   /// In en, this message translates to:
-  /// **'The bridge is now joining the home Wi-Fi (light on with a short dip every 3 s when connected). Switch the phone back to the home Wi-Fi or mobile data – Remote access shows the bridge status.'**
-  String get s88bc217a1b;
+  /// **'Price, cheapest hours and price control per hour (hourly-billed contract). Off: 15 min where the area publishes 15-min prices.'**
+  String get s68b4d332ca;
 
-  /// fi: Valitse yhteystyyppi
+  /// fi: Aamukortti: näytä myös kallein tunti
   ///
   /// In en, this message translates to:
-  /// **'Choose connection type'**
-  String get s2adc3a77ed;
+  /// **'Morning card: also show the priciest hour'**
+  String get saf496a12a3;
 
-  /// fi: Yhteydet
+  /// fi: Halvin tunti näytetään aina seuraavalta 24 tunnilta hintoineen.
   ///
   /// In en, this message translates to:
-  /// **'Connections'**
-  String get s78d94155f1;
+  /// **'The cheapest hour of the next 24 h is always shown with its price.'**
+  String get sc53b1b78c0;
 
-  /// fi: Uusi yhteys
+  /// fi: Laattakoko
   ///
   /// In en, this message translates to:
-  /// **'New connection'**
-  String get s776d8b06bf;
+  /// **'Tile size'**
+  String get s0625d54b38;
 
-  /// fi: Ei yhteyksiä vielä. Lisää laite tai palvelu, esim. IV-kone (Modbus), Home Assistant tai kamera.
+  /// fi: Normaali
   ///
   /// In en, this message translates to:
-  /// **'No connections yet. Add a device or service, e.g. ventilation unit (Modbus), Home Assistant or a camera.'**
-  String get sc6d89693a5;
+  /// **'Normal'**
+  String get s8382da3467;
 
-  /// fi: Pakollinen kenttä
+  /// fi: Piilota etänä toimimattomat
   ///
   /// In en, this message translates to:
-  /// **'Required field'**
-  String get s07c82cb0af;
+  /// **'Hide tiles that don\'\'t work remotely'**
+  String get s7c1cd8314e;
 
-  /// fi: Sama kanava kahdesti?
+  /// fi: Kotiverkon ulkopuolella vain kotiverkossa toimivat ruudut piilotetaan. Oletuksena ne näkyvät harmaina paikallaan.
   ///
   /// In en, this message translates to:
-  /// **'The same topic twice?'**
-  String get see3fd4862d;
+  /// **'Away from home, tiles that only work on the home network are hidden. By default they stay in place, greyed out.'**
+  String get sa0cbbafb4e;
 
-  /// fi: Komentokanava ja Vastauskanava ovat samat. Useimmat laitteet (esim. kameravalvonnan paneeli) kuuntelevat komentoja omall
+  /// fi: Kello ja sää etusivulla
   ///
   /// In en, this message translates to:
-  /// **'The command topic and the reply topic are the same. Most devices (e.g. the camera surveillance panel) listen on their own command topic and answer on your notification topic – then commands never arrive. Save anyway?'**
-  String get sb80a9b6813;
+  /// **'Clock and weather on the home screen'**
+  String get s419166b895;
 
-  /// fi: Tallenna silti
+  /// fi: Kellonaika, päivä, sää ja sähkön hinta näkymän yläreunassa. Koskee vain tätä laitetta.
   ///
   /// In en, this message translates to:
-  /// **'Save anyway'**
-  String get s70f720de6d;
+  /// **'Time, date, weather and electricity price at the top of the view. This device only.'**
+  String get sec30a8f23e;
+
+  /// fi: Animaatiot
+  ///
+  /// In en, this message translates to:
+  /// **'Animations'**
+  String get sf7205b268f;
+
+  /// fi: Pehmeät siirtymät, kun laite vaihtaa tilaa. Pois päältä = rauhallisempi ja kevyempi vanhalle tabletille. Koskee vain tät
+  ///
+  /// In en, this message translates to:
+  /// **'Soft transitions when a device changes state. Off = calmer and lighter for an older tablet. This device only.'**
+  String get s1535c6411d;
+
+  /// fi: Näyttää tekniset asetukset: yhteydet (HTTP, MQTT, Modbus…), viestit, JSON-polut ja ruutujen lähteet. Useimmat eivät tarv
+  ///
+  /// In en, this message translates to:
+  /// **'Shows technical settings: connections (HTTP, MQTT, Modbus…), payloads, JSON paths and tile sources. Most people don\'\'t need these.'**
+  String get s21f870dbc2;
+
+  /// fi: Laitteet ja integraatiot
+  ///
+  /// In en, this message translates to:
+  /// **'Devices and integrations'**
+  String get sc84689a549;
+
+  /// fi: Home Assistant: lisää laitteita
+  ///
+  /// In en, this message translates to:
+  /// **'Home Assistant: add devices'**
+  String get sca4c8b88b7;
+
+  /// fi: Ohjaa kotia myös kodin ulkopuolelta.
+  ///
+  /// In en, this message translates to:
+  /// **'Control your home from outside too.'**
+  String get saec69088a5;
+
+  /// fi: Ota etäkäyttö käyttöön
+  ///
+  /// In en, this message translates to:
+  /// **'Set up remote access'**
+  String get s417eb9a875;
+
+  /// fi: Ohjeet: VPN, Nabu Casa, pilvi-MQTT
+  ///
+  /// In en, this message translates to:
+  /// **'Guides: VPN, Nabu Casa, cloud MQTT'**
+  String get scc3d01ee5e;
+
+  /// fi: Jakaminen
+  ///
+  /// In en, this message translates to:
+  /// **'Sharing'**
+  String get s844e081db8;
+
+  /// fi: Anna toiselle tai asentajalle pääsy valitsemiisi laitteisiin.
+  ///
+  /// In en, this message translates to:
+  /// **'Give someone, or an installer, access to the devices you choose.'**
+  String get s535358a517;
+
+  /// fi: Jakaminen – uusi kutsu
+  ///
+  /// In en, this message translates to:
+  /// **'Sharing – new invite'**
+  String get s25c286a743;
+
+  /// fi: Ohjeet
+  ///
+  /// In en, this message translates to:
+  /// **'Help'**
+  String get s90ba544719;
+
+  /// fi: Näytä aloitusopas
+  ///
+  /// In en, this message translates to:
+  /// **'Show the getting-started guide'**
+  String get sb915c42792;
+
+  /// fi: Varmuuskopio ja siirto
+  ///
+  /// In en, this message translates to:
+  /// **'Backup and transfer'**
+  String get sd337a7ddd5;
+
+  /// fi: Vie asetukset JSON-tiedostoon ja tuo ne toiselle laitteelle (esim. PC → puhelin).
+  ///
+  /// In en, this message translates to:
+  /// **'Export the configuration to a JSON file and import it on another device (e.g. PC → phone).'**
+  String get s07c1048b4f;
+
+  /// fi: Sisällytä salasanat ja tokenit
+  ///
+  /// In en, this message translates to:
+  /// **'Include passwords and tokens'**
+  String get s2f797098e7;
+
+  /// fi: Tiedosto on silloin salaamaton – säilytä se turvassa.
+  ///
+  /// In en, this message translates to:
+  /// **'The file is then unencrypted – keep it safe.'**
+  String get s26f72949e3;
+
+  /// fi: Vie
+  ///
+  /// In en, this message translates to:
+  /// **'Export'**
+  String get sdb12678e52;
+
+  /// fi: Esimerkki
+  ///
+  /// In en, this message translates to:
+  /// **'Example'**
+  String get s34686ffb09;
+
+  /// fi: Lisää esimerkkinäkymä (kamera, hälytys, valot, IV-kone). Esimerkkilaitteet eivät ota yhteyttä mihinkään – lisää omat lai
+  ///
+  /// In en, this message translates to:
+  /// **'Add an example dashboard (camera, alarm, lights, ventilation). The example devices never connect anywhere – add your own with Add device.'**
+  String get sc8327738b3;
+
+  /// fi: Lisää esimerkkinäkymä
+  ///
+  /// In en, this message translates to:
+  /// **'Add example dashboard'**
+  String get sec02c7c071;
+
+  /// fi: selainversio
+  ///
+  /// In en, this message translates to:
+  /// **'browser version'**
+  String get s057b871ed2;
+
+  /// fi: Tarkista päivitykset
+  ///
+  /// In en, this message translates to:
+  /// **'Check for updates'**
+  String get s522d6584c5;
+
+  /// fi: Oma ohjauspääte: HTTP, MQTT, Modbus TCP, Home Assistant, kamerat, WebSocket, TCP ja UDP. Ilman tiliä kaikki asetukset py
+  ///
+  /// In en, this message translates to:
+  /// **'Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. Without an account all settings stay on this device.'**
+  String get sd178a1d809;
+
+  /// fi: Mistä Home Assistantista?
+  ///
+  /// In en, this message translates to:
+  /// **'Which Home Assistant?'**
+  String get sf5bfc4217c;
+
+  /// fi: Sinulla on useampi Home Assistant -yhteys. Käyttämättömän (ei ruutuja) voi poistaa.
+  ///
+  /// In en, this message translates to:
+  /// **'You have more than one Home Assistant connection. An unused one (no tiles) can be removed.'**
+  String get sbc210f9634;
+
+  /// fi: ei ruutuja
+  ///
+  /// In en, this message translates to:
+  /// **'no tiles'**
+  String get s4f62c41cb3;
+
+  /// fi: ruutua
+  ///
+  /// In en, this message translates to:
+  /// **'tiles'**
+  String get s92c338c3bd;
+
+  /// fi: Poista käyttämätön yhteys
+  ///
+  /// In en, this message translates to:
+  /// **'Remove unused connection'**
+  String get sd3089f07cc;
 
   /// fi: Poistetaanko yhteys?
   ///
   /// In en, this message translates to:
-  /// **'Delete connection?'**
-  String get sf702cf0ac6;
+  /// **'Remove the connection?'**
+  String get s1333776c9f;
 
-  /// fi: {p0} ruutua käyttää tätä yhteyttä, ne lakkaavat toimimasta.
+  /// fi: Jäähdytys
   ///
   /// In en, this message translates to:
-  /// **'{p0} tiles use this connection and will stop working.'**
-  String s6b83de0ab9(String p0);
+  /// **'Cooling'**
+  String get s8efb99df1d;
 
-  /// fi: Yhteys poistetaan tältä laitteelta.
+  /// fi: Lämmitys ja jäähdytys
   ///
   /// In en, this message translates to:
-  /// **'The connection will be removed from this device.'**
-  String get sccd1325381;
+  /// **'Heat and cool'**
+  String get s0b98d62330;
 
-  /// fi: IR on yksisuuntainen: lämpöpumppu ei kerro takaisin, menikö komento perille. Ruuduissa näkyy viimeksi lähetetty tila.
+  /// fi: lämmittää
   ///
   /// In en, this message translates to:
-  /// **'IR is one-way: the heat pump does not confirm commands. Tiles show the last sent state.'**
-  String get s837e0fc5e6;
+  /// **'heating'**
+  String get sa61efb9866;
 
-  /// fi: Tuo pumpun rekisterilista (CSV)
+  /// fi: jäähdyttää
   ///
   /// In en, this message translates to:
-  /// **'Import the pump\'\'s register list (CSV)'**
-  String get sf1ffb49d9c;
+  /// **'cooling'**
+  String get s9a47ee3e3c;
 
-  /// fi: Yhteys toimii!
+  /// fi: odottaa
   ///
   /// In en, this message translates to:
-  /// **'Connection works!'**
-  String get s09737988fd;
+  /// **'idle'**
+  String get s156712ac0c;
 
-  /// fi: Salasanat ja tokenit tallennetaan laitteen suojattuun tallennustilaan.
+  /// fi: Termostaatti poistettu
   ///
   /// In en, this message translates to:
-  /// **'Passwords and tokens are stored in the device\'\'s secure storage.'**
-  String get s0a972aa85e;
+  /// **'Thermostat removed'**
+  String get s8a1f52a37b;
 
-  /// fi: Ohita kalleimmat tunnit
+  /// fi: Lämpötilaa ei saada
   ///
   /// In en, this message translates to:
-  /// **'Skip the most expensive hours'**
-  String get sa26ae27039;
+  /// **'No temperature reading'**
+  String get s28dc9bc46a;
 
-  /// fi: Sään mukaan ennakoiva
+  /// fi: Ei kotisiltaa: termostaatti ei ohjaa vielä. Ota etäyhteys käyttöön kodin tabletilla.
   ///
   /// In en, this message translates to:
-  /// **'Weather-based pre-heating'**
-  String get scfd1a72ed5;
+  /// **'No home bridge: the thermostat is not controlling yet. Set up remote access on the home tablet.'**
+  String get s4f1166fe24;
 
-  /// fi: Lämmittää päivän halvimpina tunteina. Sopii varaavaan lämmitykseen ja lämminvesivaraajaan.
+  /// fi: Nyt
   ///
   /// In en, this message translates to:
-  /// **'Heats in the cheapest hours of the day. For storage heating and water heaters.'**
-  String get s2bd403874c;
+  /// **'Now'**
+  String get s29fd8d5b5e;
 
-  /// fi: Lämmittää normaalisti, mutta ohittaa päivän kalleimmat tunnit lyhyinä katkoina.
+  /// fi: Rele tai kytkin (päälle/pois)
   ///
   /// In en, this message translates to:
-  /// **'Heats normally but skips the most expensive hours in short breaks.'**
-  String get se759c14061;
+  /// **'Relay or switch (on/off)'**
+  String get see9111ba68;
 
-  /// fi: Esilämmittää ennen kallista tai kylmää jaksoa ja säästää kalliina tunteina. Tuntimäärä seuraa sääennustetta.
+  /// fi: Lämpöpumppu tai ilmastointi (asetusarvo)
   ///
   /// In en, this message translates to:
-  /// **'Pre-heats before expensive or cold spells and saves in expensive hours. The hours follow the forecast.'**
-  String get s5cab118d44;
+  /// **'Heat pump or AC (setpoint)'**
+  String get seaed91ad78;
 
-  /// fi: halpa tunti
+  /// fi: Lämmittää
   ///
   /// In en, this message translates to:
-  /// **'cheap hour'**
-  String get sa7480a9930;
+  /// **'Heats'**
+  String get sb757921c13;
 
-  /// fi: odottaa halpaa tuntia
+  /// fi: Jäähdyttää
   ///
   /// In en, this message translates to:
-  /// **'waiting for a cheap hour'**
-  String get s50812672e5;
+  /// **'Cools'**
+  String get s7407864734;
 
-  /// fi: kallis tunti ohitetaan
+  /// fi: Molemmat
   ///
   /// In en, this message translates to:
-  /// **'skipping an expensive hour'**
-  String get seb1c64d9f8;
+  /// **'Both'**
+  String get s272aa3f1da;
 
-  /// fi: normaali
+  /// fi: Varalämmitin
   ///
   /// In en, this message translates to:
-  /// **'normal'**
-  String get s2e52a3d40e;
+  /// **'Backup heater'**
+  String get sdadb6e3501;
 
-  /// fi: ei hintoja – normaali lämmitys
+  /// fi: Käynnistyy vain, kun lämpö on selvästi alle tavoitteen.
   ///
   /// In en, this message translates to:
-  /// **'no prices – normal heating'**
-  String get sf6d34efdd6;
+  /// **'Starts only when it is clearly below the target.'**
+  String get se4e381334d;
 
-  /// fi: lomatila
+  /// fi: Virta päälle/pois (valinnainen)
   ///
   /// In en, this message translates to:
-  /// **'holiday mode'**
-  String get s8c42ad8541;
+  /// **'Power on/off (optional)'**
+  String get s17c79c5f4e;
 
-  /// fi: lämmitetään paluuta varten
+  /// fi: Lämmitystilan painike (valinnainen)
   ///
   /// In en, this message translates to:
-  /// **'heating for your return'**
-  String get sc3d8828060;
+  /// **'Heat mode button (optional)'**
+  String get s92d88612de;
 
-  /// fi: takka lämmittää
+  /// fi: Jäähdytystilan painike (valinnainen)
   ///
   /// In en, this message translates to:
-  /// **'the fireplace heats'**
-  String get s577b8c3cf1;
+  /// **'Cool mode button (optional)'**
+  String get s75ac845bab;
 
-  /// fi: tarpeeksi lämmin
+  /// fi: Mikä lämmittää tai jäähdyttää?
   ///
   /// In en, this message translates to:
-  /// **'warm enough'**
-  String get sbcd02dce0a;
+  /// **'What heats or cools?'**
+  String get sc590a09db9;
 
-  /// fi: turvaraja: liian kylmä
+  /// fi: Valitse yksi tai useampi. Esim. lämpöpumppu ja varalämmitin.
   ///
   /// In en, this message translates to:
-  /// **'safety limit: too cold'**
-  String get s22678639dc;
+  /// **'Pick one or more. E.g. a heat pump and a backup heater.'**
+  String get sa15ffe53d4;
 
-  /// fi: jäätymissuoja
+  /// fi: Ei sopivia laitteita vielä
   ///
   /// In en, this message translates to:
-  /// **'frost protection'**
-  String get s1e3f154a0a;
+  /// **'No suitable devices yet'**
+  String get sd47a7615a7;
 
-  /// fi: turvaraja: liian pitkä tauko
+  /// fi: Lisää ensin rele (esim. Shelly) tai lämpöpumppu (IR tai huoltoportti) ja palaa sitten tähän.
   ///
   /// In en, this message translates to:
-  /// **'safety limit: off too long'**
-  String get s1f2938edec;
+  /// **'First add a relay (e.g. Shelly) or a heat pump (IR or service port), then come back.'**
+  String get s3c7649a7f0;
 
-  /// fi: esilämmitys
+  /// fi: Mistä lämpötila luetaan?
   ///
   /// In en, this message translates to:
-  /// **'pre-heating'**
-  String get s54fce2a7e8;
+  /// **'Where is the temperature read from?'**
+  String get see513572ea;
 
-  /// fi: säästö kalliina aikana
+  /// fi: Valitse lämpömittari. Useampi = varalla tai keskiarvo.
   ///
   /// In en, this message translates to:
-  /// **'saving while expensive'**
-  String get s6b35f75e80;
+  /// **'Pick a thermometer. Several = fallback or average.'**
+  String get s5155522e83;
 
-  /// fi: Älykäs lämmitys ohjaa lämmitystä sähkön hinnan ja sään mukaan talosi lämmitystavalle sopivalla tavalla. Vastaa muutamaan
+  /// fi: Ei pakollinen: lämpöpumppu mittaa itse. Valitse mittari, jos haluat nähdä lämpötilan.
   ///
   /// In en, this message translates to:
-  /// **'Smart heating controls heating by electricity price and weather, in a way that suits your heating type. Answer a few questions to get recommended settings.'**
-  String get sdde7adcb29;
+  /// **'Optional: the heat pump measures itself. Pick a sensor to see the temperature.'**
+  String get s581fa290f3;
 
-  /// fi: Aloita kartoitus
+  /// fi: Ei lämpömittaria
   ///
   /// In en, this message translates to:
-  /// **'Start the survey'**
-  String get s3d29895a40;
+  /// **'No thermometer'**
+  String get s7e4d8d60a0;
 
-  /// fi: Takka-tila päällä
+  /// fi: Lisää ensin laite, joka näyttää lämpötilan.
   ///
   /// In en, this message translates to:
-  /// **'Fireplace mode on'**
-  String get sb0d738492d;
+  /// **'First add a device that shows a temperature.'**
+  String get s0787d80876;
 
-  /// fi: Takka-tila päällä klo {p0} asti
+  /// fi: Ensimmäinen toimiva
   ///
   /// In en, this message translates to:
-  /// **'Fireplace mode on until {p0}'**
-  String sd1af5ba10d(String p0);
+  /// **'First working'**
+  String get s89661203b7;
 
-  /// fi: Lomatila päällä
-  ///
-  /// In en, this message translates to:
-  /// **'Holiday mode on'**
-  String get s48a7ba4933;
-
-  /// fi: Älykäs lämmitys on pois päältä
-  ///
-  /// In en, this message translates to:
-  /// **'Smart heating is off'**
-  String get s10a95132ce;
-
-  /// fi: Lämmitys toimii hinnan ja sään mukaan
-  ///
-  /// In en, this message translates to:
-  /// **'Heating follows price and weather'**
-  String get s035459d8bb;
-
-  /// fi: Tarvitsee kotisillan: ota etäyhteys käyttöön kodin tabletilla tai PC:llä (Asetukset → Etäkäyttö).
-  ///
-  /// In en, this message translates to:
-  /// **'Needs a home bridge: set up remote access on the home tablet or PC (Settings → Remote access).'**
-  String get s6b83aed534;
-
-  /// fi: Päivitä kotisilta (vaatii Molaplan 0.10.0).
-  ///
-  /// In en, this message translates to:
-  /// **'Update the home bridge (needs Molaplan 0.10.0).'**
-  String get s830cace8fe;
-
-  /// fi: Toimii kotisillalla myös sovellus suljettuna.
-  ///
-  /// In en, this message translates to:
-  /// **'Runs on the home bridge, also with the app closed.'**
-  String get s495c887d23;
-
-  /// fi: Lopeta takka-tila
-  ///
-  /// In en, this message translates to:
-  /// **'Stop fireplace mode'**
-  String get s7954d5fca9;
-
-  /// fi: Takka lämmitetty
-  ///
-  /// In en, this message translates to:
-  /// **'Fireplace lit'**
-  String get sf44db20422;
-
-  /// fi: Lomatila: muokkaa
-  ///
-  /// In en, this message translates to:
-  /// **'Holiday: edit'**
-  String get sd172900c2d;
-
-  /// fi: Lomatila
-  ///
-  /// In en, this message translates to:
-  /// **'Holiday mode'**
-  String get s5da1e65941;
-
-  /// fi: Lämmityslaitteet
-  ///
-  /// In en, this message translates to:
-  /// **'Heating devices'**
-  String get sdca3ad13dd;
-
-  /// fi: Ei laitteita. Lisää ne kartoituksessa.
-  ///
-  /// In en, this message translates to:
-  /// **'No devices. Add them in the survey.'**
-  String get sc8c5e37f5d;
-
-  /// fi: Lämmityksen ilmoitukset
-  ///
-  /// In en, this message translates to:
-  /// **'Heating notifications'**
-  String get sc6976fa352;
-
-  /// fi: Kotisilta on liian vanha: päivitä se (Molaplan 0.10.0).
-  ///
-  /// In en, this message translates to:
-  /// **'The home bridge is too old: update it (Molaplan 0.10.0).'**
-  String get s1abda8b8f3;
-
-  /// fi: Kotisiltaa ei ole yhdistetty.
-  ///
-  /// In en, this message translates to:
-  /// **'No home bridge is paired.'**
-  String get s8c3353e896;
-
-  /// fi: Ei onnistunut: {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'Did not work: {p0}'**
-  String s38ccb420a7(String p0);
-
-  /// fi: Tavoite {p0} °C
-  ///
-  /// In en, this message translates to:
-  /// **'Target {p0} °C'**
-  String s8847ee78e0(String p0);
-
-  /// fi: Seuraavaksi päällä: {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'Next on: {p0}'**
-  String s4b761dad85(String p0);
-
-  /// fi: Virhe: {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'Error: {p0}'**
-  String s622f5654cd(String p0);
-
-  /// fi: Älykäs lämmitys käytössä
-  ///
-  /// In en, this message translates to:
-  /// **'Smart heating on'**
-  String get s697b47220e;
-
-  /// fi: Muokkaa kartoitusta
-  ///
-  /// In en, this message translates to:
-  /// **'Edit the survey'**
-  String get s45cf6423f8;
-
-  /// fi: Turvarajat
-  ///
-  /// In en, this message translates to:
-  /// **'Safety limits'**
-  String get sf5dbb363af;
-
-  /// fi: Vähimmäislämpötila
-  ///
-  /// In en, this message translates to:
-  /// **'Minimum temperature'**
-  String get sf9cd32fb4f;
-
-  /// fi: Jäätymissuoja
-  ///
-  /// In en, this message translates to:
-  /// **'Frost protection'**
-  String get sfb0553315b;
-
-  /// fi: Lämmitys aina päälle alle {p0} °C:ssa.
-  ///
-  /// In en, this message translates to:
-  /// **'Heating always on below {p0} °C.'**
-  String s9097fb518a(String p0);
-
-  /// fi: Pisin sallittu tauko (kaikki)
-  ///
-  /// In en, this message translates to:
-  /// **'Longest allowed break (all)'**
-  String get s5d37a7088b;
-
-  /// fi: laitteen mukaan
-  ///
-  /// In en, this message translates to:
-  /// **'per device'**
-  String get sb0bb55d6e5;
-
-  /// fi: Turvarajat ohittavat hinnan, lomatilan ja takka-tilan. Vähimmäislämpötila ja jäätymissuoja tarvitsevat lämpöanturin.
-  ///
-  /// In en, this message translates to:
-  /// **'Safety limits override price, holiday and fireplace mode. The minimum temperature and frost protection need a temperature sensor.'**
-  String get s17bf76025c;
-
-  /// fi: Takka
-  ///
-  /// In en, this message translates to:
-  /// **'Fireplace'**
-  String get s109c7fb7a2;
-
-  /// fi: Takka-tilan kesto
-  ///
-  /// In en, this message translates to:
-  /// **'Fireplace mode length'**
-  String get s1c15091948;
-
-  /// fi: Termostaattien lasku takka-tilassa
-  ///
-  /// In en, this message translates to:
-  /// **'Thermostats lowered in fireplace mode'**
-  String get se150ae5acd;
-
-  /// fi: Takan lähellä oleva lämpöanturi
-  ///
-  /// In en, this message translates to:
-  /// **'Temperature sensor near the fireplace'**
-  String get s161f61412e;
-
-  /// fi: Laitteen anturi
-  ///
-  /// In en, this message translates to:
-  /// **'The device sensor'**
-  String get s81b30d570b;
-
-  /// fi: Lämmityksen ilmoitukset (ntfy)
-  ///
-  /// In en, this message translates to:
-  /// **'Heating notifications (ntfy)'**
-  String get s71e80a04a2;
-
-  /// fi: Sama ilmoituskanava ja hiljaiset ajat kuin automaatioissa.
-  ///
-  /// In en, this message translates to:
-  /// **'The same notification channel and quiet hours as automations.'**
-  String get s5ab83c2574;
-
-  /// fi: Poista älykäs lämmitys
-  ///
-  /// In en, this message translates to:
-  /// **'Remove smart heating'**
-  String get s32d9d66ffd;
-
-  /// fi: Poistetaanko älykäs lämmitys?
-  ///
-  /// In en, this message translates to:
-  /// **'Remove smart heating?'**
-  String get s0f995f3d5d;
-
-  /// fi: Laitteet jäävät siihen tilaan, jossa ne ovat nyt.
-  ///
-  /// In en, this message translates to:
-  /// **'The devices stay in their current state.'**
-  String get scc27c1739f;
-
-  /// fi: Sähkölämmitystä vähennetään, koska takka lämmittää. Turvarajat ovat silti voimassa.
-  ///
-  /// In en, this message translates to:
-  /// **'Electric heating is reduced while the fireplace heats. Safety limits still apply.'**
-  String get s3bf2d3643c;
-
-  /// fi: Lopeta aiemmin, kun huone alkaa jäähtyä
-  ///
-  /// In en, this message translates to:
-  /// **'End earlier when the room starts to cool'**
-  String get s58b2cdb4e2;
-
-  /// fi: Poissa ollessa huoneet pidetään viileämpinä, ja lämminvesivaraaja lämmitetään vasta paluuta edeltävänä yönä. Turvarajat
-  ///
-  /// In en, this message translates to:
-  /// **'While you are away rooms are kept cooler, and the water heater is heated only the night before you return. Safety limits and frost protection apply.'**
-  String get s632723d95f;
-
-  /// fi: Alkaa
-  ///
-  /// In en, this message translates to:
-  /// **'Starts'**
-  String get s2ebf172fad;
-
-  /// fi: Paluupäivä
-  ///
-  /// In en, this message translates to:
-  /// **'Return day'**
-  String get s0ba54fbd61;
-
-  /// fi: Lämpötila poissa ollessa
-  ///
-  /// In en, this message translates to:
-  /// **'Temperature while away'**
-  String get s025d1c3db1;
-
-  /// fi: Ohjaustapa
-  ///
-  /// In en, this message translates to:
-  /// **'How it is controlled'**
-  String get s11e21d4f75;
-
-  /// fi:  (suositus)
-  ///
-  /// In en, this message translates to:
-  /// **' (recommended)'**
-  String get s8e6c8ffabb;
-
-  /// fi: Ohjaus käytössä
-  ///
-  /// In en, this message translates to:
-  /// **'Control on'**
-  String get sa35e3e99f4;
-
-  /// fi: Lämmitystunteja päivässä
-  ///
-  /// In en, this message translates to:
-  /// **'Heating hours a day'**
-  String get s86c45674db;
-
-  /// fi: Ohitettavia kalleimpia tunteja
-  ///
-  /// In en, this message translates to:
-  /// **'Most expensive hours skipped'**
-  String get sbd3dbfd7e9;
-
-  /// fi: Pisin tauko kerrallaan
-  ///
-  /// In en, this message translates to:
-  /// **'Longest break at a time'**
-  String get s1f3d8e19f4;
-
-  /// fi: Mukavuuslämpötila
-  ///
-  /// In en, this message translates to:
-  /// **'Comfort temperature'**
-  String get s017c87df20;
-
-  /// fi: Huoneen lämpöanturi
-  ///
-  /// In en, this message translates to:
-  /// **'Room temperature sensor'**
-  String get sf83143ae23;
-
-  /// fi: Ei anturia
-  ///
-  /// In en, this message translates to:
-  /// **'No sensor'**
-  String get se68cc54085;
-
-  /// fi: Vähennä takka-tilassa
-  ///
-  /// In en, this message translates to:
-  /// **'Reduce in fireplace mode'**
-  String get s347ce4c3d2;
-
-  /// fi: Termostaatin tavoitelämpö asetetaan tämän mukaan; termostaatin oma lämpötila on mukavuuslämpötila.
-  ///
-  /// In en, this message translates to:
-  /// **'The thermostat target is set by this; the thermostat\'\'s own temperature is the comfort temperature.'**
-  String get s6f88da6bab;
-
-  /// fi: Arvio: noin {p0} kWh vuorokaudessa 0 °C:n pakkasella (koko talo).
-  ///
-  /// In en, this message translates to:
-  /// **'Estimate: about {p0} kWh a day at 0 °C (whole house).'**
-  String s87cdb30352(String p0);
-
-  /// fi: Millä talo lämpiää? Valitse kaikki.
-  ///
-  /// In en, this message translates to:
-  /// **'How is the house heated? Choose all.'**
-  String get sc161d1f9d9;
-
-  /// fi: Eristys
-  ///
-  /// In en, this message translates to:
-  /// **'Insulation'**
-  String get saac00e587b;
-
-  /// fi: Heikko
-  ///
-  /// In en, this message translates to:
-  /// **'Poor'**
-  String get s9f103f81c0;
-
-  /// fi: Tavallinen
+  /// fi: Keskiarvo
   ///
   /// In en, this message translates to:
   /// **'Average'**
-  String get sd51256a0f5;
+  String get s0da3005956;
 
-  /// fi: Hyvä
+  /// fi: Nimi ja tila
   ///
   /// In en, this message translates to:
-  /// **'Good'**
-  String get sd5ebaf8a4c;
+  /// **'Name and mode'**
+  String get s0c6a008ffd;
 
-  /// fi: Lämmitetty pinta-ala
+  /// fi: esim. Olohuone
   ///
   /// In en, this message translates to:
-  /// **'Heated area'**
-  String get sf584870588;
+  /// **'e.g. Living room'**
+  String get s1790a71e85;
 
-  /// fi: Sallittu lämpötilan vaihtelu
+  /// fi: Tavoitelämpötila
   ///
   /// In en, this message translates to:
-  /// **'Allowed temperature swing'**
-  String get s97235bfadb;
+  /// **'Target temperature'**
+  String get sd5f46903a1;
 
-  /// fi: Mitä enemmän lämpö saa vaihdella, sitä enemmän lämmitystä voidaan siirtää halvoille tunneille.
+  /// fi: Jos lämpötilaa ei saada
   ///
   /// In en, this message translates to:
-  /// **'The more the temperature may vary, the more heating can move to cheap hours.'**
-  String get s6df5f06d38;
+  /// **'If the temperature is lost'**
+  String get s6de95e582f;
 
-  /// fi: Talossa on takka tai varaava uuni
+  /// fi: Sammuta lämmitys/jäähdytys (turvallisin)
   ///
   /// In en, this message translates to:
-  /// **'The house has a fireplace or storing stove'**
-  String get s07077e2778;
+  /// **'Switch heating/cooling off (safest)'**
+  String get s8ff25225b4;
 
-  /// fi: Valitse, mikä laite ohjaa kutakin lämmitystä: rele tai pistorasia (päälle/pois) tai Molaplanin termostaatti (tavoitelämp
+  /// fi: Pidä ennallaan
   ///
   /// In en, this message translates to:
-  /// **'Choose what controls each heating: a relay or plug (on/off) or a Molaplan thermostat (target temperature).'**
-  String get sab28f61fad;
+  /// **'Keep as it is'**
+  String get s17cb86f49e;
 
-  /// fi: Ei vielä ohjattavia laitteita. Lisää ensin rele tai termostaatti; voit palata kartoitukseen myöhemmin.
+  /// fi: Hystereesi
   ///
   /// In en, this message translates to:
-  /// **'No controllable devices yet. Add a relay or a thermostat first; you can come back to the survey later.'**
-  String get s90ae2f4451;
+  /// **'Hysteresis'**
+  String get s9624f070ee;
 
-  /// fi: Ohjaava laite
+  /// fi: Kuollut alue (lämmitys/jäähdytys)
   ///
   /// In en, this message translates to:
-  /// **'Controlling device'**
-  String get sf7b3494ee1;
+  /// **'Deadband (heat/cool)'**
+  String get sf070be2c1e;
 
-  /// fi: Ei ohjata
+  /// fi: Vähimmäisaika päällä
   ///
   /// In en, this message translates to:
-  /// **'Not controlled'**
-  String get se7ffc07763;
+  /// **'Minimum on time'**
+  String get s64540136ff;
 
-  /// fi: Termostaatti: {p0}
+  /// fi: Vähimmäisaika pois
   ///
   /// In en, this message translates to:
-  /// **'Thermostat: {p0}'**
-  String s5835dc3308(String p0);
+  /// **'Minimum off time'**
+  String get s21713a2177;
 
-  /// fi: Huoneen lämpöanturi (suositus)
+  /// fi: Varalämmitin, kun alle tavoitteen
   ///
   /// In en, this message translates to:
-  /// **'Room temperature sensor (recommended)'**
-  String get s075ddc6f0d;
+  /// **'Backup heater when below target by'**
+  String get s8f7c8eb7d0;
 
-  /// fi: Suositellut asetukset
+  /// fi: Mittari kadonnut, kun ei lukemaa
   ///
   /// In en, this message translates to:
-  /// **'Recommended settings'**
-  String get s016c02be08;
+  /// **'Sensor lost after no reading for'**
+  String get sf1eb3b2d34;
 
-  /// fi: Ohitetaan {p0} kalleinta tuntia päivässä, enintään {p1} h kerrallaan.
+  /// fi: Uusi termostaatti
   ///
   /// In en, this message translates to:
-  /// **'Skips the {p0} most expensive hours a day, at most {p1} h at a time.'**
-  String s013bbafbec(String p0, String p1);
+  /// **'New thermostat'**
+  String get s0ab1430151;
 
-  /// fi: Noin {p0} lämmitystuntia päivässä 0 °C:ssa.
+  /// fi: Muokkaa termostaattia
   ///
   /// In en, this message translates to:
-  /// **'About {p0} heating hours a day at 0 °C.'**
-  String se67c73d855(String p0);
+  /// **'Edit thermostat'**
+  String get sbbc98d573d;
 
-  /// fi: Ei ohjaavaa laitetta – ei ohjata.
+  /// fi: Poistetaanko termostaatti?
   ///
   /// In en, this message translates to:
-  /// **'No controlling device – not controlled.'**
-  String get sb7524487f9;
+  /// **'Delete the thermostat?'**
+  String get s87984716cb;
 
-  /// fi: Paina "Takka lämmitetty", kun takka on lämmitetty: sähkölämmitystä vähennetään 12–24 tunniksi tai kunnes anturi näyttää
+  /// fi: Tavoite
   ///
   /// In en, this message translates to:
-  /// **'Tap \"Fireplace lit\" after lighting it: electric heating is reduced for 12–24 h or until the sensor shows cooling.'**
-  String get sad1fbf7d03;
+  /// **'Target'**
+  String get s79786b9f7d;
 
-  /// fi: Voit muuttaa ohjaustapaa ja lukuja myöhemmin laitteen sivulla kohdassa Edistyneet.
+  /// fi: Termostaatti toimii kotisillalla
   ///
   /// In en, this message translates to:
-  /// **'You can change the method and numbers later on the device page under Advanced.'**
-  String get sfb41f90571;
+  /// **'The thermostat runs on the home bridge'**
+  String get sdd309c0a63;
 
-  /// fi: Talo
+  /// fi: Ota etäyhteys käyttöön kodin tabletilla (Asetukset → Etäkäyttö). Siihen asti termostaatti ei ohjaa.
   ///
   /// In en, this message translates to:
-  /// **'House'**
-  String get s1706667040;
+  /// **'Set up remote access on the home tablet (Settings → Remote access). Until then it does not control anything.'**
+  String get s2a7e9fe291;
 
-  /// fi: Laitteet
+  /// fi: Ohjaus toimii tällä laitteella (kotisilta).
   ///
   /// In en, this message translates to:
-  /// **'Devices'**
-  String get s84005ad77c;
+  /// **'Runs on this device (home bridge).'**
+  String get s06cda8c0de;
 
-  /// fi: Suositus
+  /// fi: Ohjaus toimii kotisillalla.
   ///
   /// In en, this message translates to:
-  /// **'Recommendation'**
-  String get s023d14fd87;
+  /// **'Runs on the home bridge.'**
+  String get s2342536aea;
 
-  /// fi: Kartoitus {p0}/4: {p1}
+  /// fi: Lämmittää etukäteen ennen kallista sähköä ja pakkasta, ja antaa lämmön laskea hieman kalliina tunteina.
   ///
   /// In en, this message translates to:
-  /// **'Survey {p0}/4: {p1}'**
-  String sfde6663859(String p0, String p1);
+  /// **'Pre-heats before expensive electricity and cold weather, and lets the temperature drop a little in expensive hours.'**
+  String get s2c5993c1fd;
 
-  /// fi: Ota käyttöön
+  /// fi: Ylilämpö +
   ///
   /// In en, this message translates to:
-  /// **'Use these'**
-  String get sda588a203b;
+  /// **'Overheat +'**
+  String get s81c4abc1a5;
 
-  /// fi: Mitä lisätään?
+  /// fi: Alilämpö −
   ///
   /// In en, this message translates to:
-  /// **'What do you want to add?'**
-  String get sc51b1e0dc0;
+  /// **'Underheat −'**
+  String get sdea18b2b40;
 
-  /// fi: Shelly, Sonoff, Hue, kamera, lämpöpumppu… Etsii kotiverkosta automaattisesti.
+  /// fi: Viiva = tavoitelämpötila, palkit = sähkön hinta, katkoviiva = ulkolämpötila.
   ///
   /// In en, this message translates to:
-  /// **'Shelly, Sonoff, Hue, camera, heat pump… Searches your home network automatically.'**
-  String get s38f5b2ef26;
+  /// **'Line = target temperature, bars = electricity price, dashed = outdoor temperature.'**
+  String get s523214c8db;
 
-  /// fi: Ruutu
+  /// fi: Lisää kodin sijainti säätä varten
   ///
   /// In en, this message translates to:
-  /// **'Tile'**
-  String get s3b56b2cb8d;
+  /// **'Add the home location for the weather'**
+  String get s94b8f63aa7;
 
-  /// fi: Sähkön hinta, sää, kamera, mittari, ilmoitus tai komento – ei vaadi uutta laitetta.
+  /// fi: Suunnitelmaa lasketaan…
   ///
   /// In en, this message translates to:
-  /// **'Electricity price, weather, camera, gauge, notification or command – no new device needed.'**
-  String get sfc846c4cc5;
-
-  /// fi: Kun… jos… tee: valot auringonlaskussa, ilmoitus vuodosta, halvimmat tunnit, skriptit ja tilannekuvat.
-  ///
-  /// In en, this message translates to:
-  /// **'When… if… do: lights at sunset, a leak alert, the cheapest hours, scripts and scenes.'**
-  String get sf00aa23cf6;
-
-  /// fi: Lisää ruutu
-  ///
-  /// In en, this message translates to:
-  /// **'Add a tile'**
-  String get s147f47be4c;
+  /// **'Calculating the plan…'**
+  String get s941fbb47fe;
 
   /// fi: Kotisilta päällä
   ///
@@ -10569,11 +8367,11 @@ abstract class AppLocalizations {
   /// **'Remote'**
   String get s9d64d4c166;
 
-  /// fi: Ei yhteyttä
+  /// fi: Yhdistetään…
   ///
   /// In en, this message translates to:
-  /// **'No connection'**
-  String get s1f8cf57b2c;
+  /// **'Connecting…'**
+  String get sba10f23f03;
 
   /// fi: Yhdistä tämä laite kotiin
   ///
@@ -10773,6 +8571,12 @@ abstract class AppLocalizations {
   /// **'Update failed: {p0}'**
   String s2db971daf4(String p0);
 
+  /// fi: Kotisilta
+  ///
+  /// In en, this message translates to:
+  /// **'Home bridge'**
+  String get sb38b582dab;
+
   /// fi:  · päivittyy etänä hiljaisesti
   ///
   /// In en, this message translates to:
@@ -10863,6 +8667,12 @@ abstract class AppLocalizations {
   /// **'No code or QR needed – both devices are on your account.'**
   String get s053b2f1211;
 
+  /// fi: Yhdistä
+  ///
+  /// In en, this message translates to:
+  /// **'Connect'**
+  String get sdbdf676485;
+
   /// fi: Yhdistetty kotiin {p0}.
   ///
   /// In en, this message translates to:
@@ -10886,6 +8696,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'online'**
   String get sb9e406274e;
+
+  /// fi: ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'not answering'**
+  String get scf2e61da2c;
 
   /// fi: vanha Molaplan (0.8.0-testiversio tai vanhempi)
   ///
@@ -10961,6 +8777,12 @@ abstract class AppLocalizations {
   /// **'Open'**
   String get s902eaaff9f;
 
+  /// fi: Päivitä
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get sfbf490ec3f;
+
   /// fi: Yhteys etäpalveluun: kunnossa
   ///
   /// In en, this message translates to:
@@ -10978,12 +8800,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No connection to the remote service – retrying automatically. Check the internet connection.'**
   String get s88e2b1dad5;
-
-  /// fi: Pois päältä
-  ///
-  /// In en, this message translates to:
-  /// **'Off'**
-  String get scc0cccf89d;
 
   /// fi: Kotisillalla ei ole näkymiä kopioitavaksi.
   ///
@@ -11249,6 +9065,18 @@ abstract class AppLocalizations {
   /// **'Reject'**
   String get sa04c218f82;
 
+  /// fi: Hyväksy
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get sdfaf8c242b;
+
+  /// fi: Tämä laite
+  ///
+  /// In en, this message translates to:
+  /// **'This device'**
+  String get sdf66171e91;
+
   /// fi: ei vielä valittu
   ///
   /// In en, this message translates to:
@@ -11279,1284 +9107,6 @@ abstract class AppLocalizations {
   /// **'What is remote access?'**
   String get s9ba8cafced;
 
-  /// fi: Tila / arvo
-  ///
-  /// In en, this message translates to:
-  /// **'Value'**
-  String get s1cf33c1fbc;
-
-  /// fi: Kytkin
-  ///
-  /// In en, this message translates to:
-  /// **'Toggle'**
-  String get s86029171be;
-
-  /// fi: Painike / pikakomento
-  ///
-  /// In en, this message translates to:
-  /// **'Button / shortcut'**
-  String get s4ddce888df;
-
-  /// fi: Liukusäädin / asetusarvo
-  ///
-  /// In en, this message translates to:
-  /// **'Slider / setpoint'**
-  String get s357fc9c3fe;
-
-  /// fi: Näyttää lukeman, esim. lämpötilan tai tehon.
-  ///
-  /// In en, this message translates to:
-  /// **'Shows a reading, e.g. temperature.'**
-  String get s14da6beba5;
-
-  /// fi: Päälle/pois, esim. valo tai hälytys.
-  ///
-  /// In en, this message translates to:
-  /// **'On/off, e.g. a light or alarm.'**
-  String get se4b1d203df;
-
-  /// fi: Yksi painallus tekee yhden tai monta asiaa.
-  ///
-  /// In en, this message translates to:
-  /// **'One tap does one or many things.'**
-  String get sc2197ab417;
-
-  /// fi: Säädä arvoa, esim. lämpötilaa tai puhallinta.
-  ///
-  /// In en, this message translates to:
-  /// **'Adjust a value, e.g. temperature.'**
-  String get sd611704caf;
-
-  /// fi: Näyttää kameran kuvan.
-  ///
-  /// In en, this message translates to:
-  /// **'Shows a camera image.'**
-  String get sacfc0c0b41;
-
-  /// fi: Pitää lämpötilan halutussa arvossa.
-  ///
-  /// In en, this message translates to:
-  /// **'Keeps the temperature at the set value.'**
-  String get s7172c54c2c;
-
-  /// fi: Luettu arvo
-  ///
-  /// In en, this message translates to:
-  /// **'Value read'**
-  String get s76e7a995de;
-
-  /// fi: Oma komento
-  ///
-  /// In en, this message translates to:
-  /// **'Own command'**
-  String get s4e1f25d257;
-
-  /// fi: Mitä nappi tekee?
-  ///
-  /// In en, this message translates to:
-  /// **'What does the button do?'**
-  String get sea15760b77;
-
-  /// fi: Valitse skripti, tilanne tai laite. Nappi toimii sovelluksessa ja kodin ulkopuolelta etäkäytön kautta.
-  ///
-  /// In en, this message translates to:
-  /// **'Pick a script, a scene or a device. The button works in the app and, when you are away, through remote access.'**
-  String get s630ee9894e;
-
-  /// fi: Skriptejä ei vielä ole. Tee skripti kohdassa Automaatiot.
-  ///
-  /// In en, this message translates to:
-  /// **'No scripts yet. Make one under Automations.'**
-  String get s1173c2dbf9;
-
-  /// fi: Tilanteita ei vielä ole. Tallenna tilanne kohdassa Automaatiot.
-  ///
-  /// In en, this message translates to:
-  /// **'No scenes yet. Save one under Automations.'**
-  String get s7b42ecba51;
-
-  /// fi: Ohjattavia laitteita ei vielä ole. Lisää ensin kytkin.
-  ///
-  /// In en, this message translates to:
-  /// **'No switchable devices yet. Add a switch first.'**
-  String get s589d73245e;
-
-  /// fi: Uusi ruutu
-  ///
-  /// In en, this message translates to:
-  /// **'New tile'**
-  String get sc5edd6d3d1;
-
-  /// fi: Muokkaa ruutua
-  ///
-  /// In en, this message translates to:
-  /// **'Edit tile'**
-  String get sa684fd0716;
-
-  /// fi: Mittaus: näyttötapa, trendi, värirajat, hälytykset, desimaalit ja skaalaus.
-  ///
-  /// In en, this message translates to:
-  /// **'Measurement: display, trend, colour limits, alarms, decimals and scaling.'**
-  String get sa7b6366b62;
-
-  /// fi: Ohjaus: vahvistus, lukitus / PIN, min / max / askel, käänteinen ja hetkellinen.
-  ///
-  /// In en, this message translates to:
-  /// **'Control: confirmation, lock / PIN, min / max / step, invert and momentary.'**
-  String get sae41bebdab;
-
-  /// fi: Ei valittu
-  ///
-  /// In en, this message translates to:
-  /// **'None'**
-  String get s19485c79b2;
-
-  /// fi: Valitse lämpöanturi
-  ///
-  /// In en, this message translates to:
-  /// **'Choose a temperature sensor'**
-  String get s0483226428;
-
-  /// fi: Kuvake
-  ///
-  /// In en, this message translates to:
-  /// **'Icon'**
-  String get scf37cbeda8;
-
-  /// fi: Leveys
-  ///
-  /// In en, this message translates to:
-  /// **'Width'**
-  String get sfeab9bd26f;
-
-  /// fi: Korkeus
-  ///
-  /// In en, this message translates to:
-  /// **'Height'**
-  String get s58be670598;
-
-  /// fi: Näyttötapa
-  ///
-  /// In en, this message translates to:
-  /// **'Display'**
-  String get sd7314e8237;
-
-  /// fi: Pylväät (15 min)
-  ///
-  /// In en, this message translates to:
-  /// **'Bars (15 min)'**
-  String get s7d6cee9e42;
-
-  /// fi: Trendi + Nyt-viiva
-  ///
-  /// In en, this message translates to:
-  /// **'Trend + Now line'**
-  String get sc0e069225b;
-
-  /// fi: Aikaväli
-  ///
-  /// In en, this message translates to:
-  /// **'Range'**
-  String get s07647fa07d;
-
-  /// fi: Näytä huomenna kun saatavilla
-  ///
-  /// In en, this message translates to:
-  /// **'Show tomorrow when available'**
-  String get s8feeef3110;
-
-  /// fi: Huomisen hinnat tulevat näkyviin itsestään, kun ne julkaistaan (n. klo 14).
-  ///
-  /// In en, this message translates to:
-  /// **'Tomorrow\'\'s prices appear by themselves once published (around 14:00).'**
-  String get sad692e6ae5;
-
-  /// fi: Trendin pituus
-  ///
-  /// In en, this message translates to:
-  /// **'Trend length'**
-  String get s1c72b8c56a;
-
-  /// fi: Mittarin minimi
-  ///
-  /// In en, this message translates to:
-  /// **'Gauge minimum'**
-  String get s6bb0c0c7e3;
-
-  /// fi: Automaattinen
-  ///
-  /// In en, this message translates to:
-  /// **'Automatic'**
-  String get sa444aab286;
-
-  /// fi: Mittarin maksimi
-  ///
-  /// In en, this message translates to:
-  /// **'Gauge maximum'**
-  String get sbf29caff87;
-
-  /// fi: Ruudun tekniset asetukset (mistä tila luetaan, mitä komento lähettää) näkyvät, kun otat Asetuksista käyttöön "Edistyneet
-  ///
-  /// In en, this message translates to:
-  /// **'Technical tile settings appear when you turn on \"Advanced\" in Settings.'**
-  String get sea30815e6a;
-
-  /// fi: Tilan luku
-  ///
-  /// In en, this message translates to:
-  /// **'State source'**
-  String get s382afc832f;
-
-  /// fi: Valinnainen: mistä nykyinen tila luetaan.
-  ///
-  /// In en, this message translates to:
-  /// **'Optional: where the current state is read from.'**
-  String get s581aee3e96;
-
-  /// fi: Raaka yhdistelmä (Edistyneet)
-  ///
-  /// In en, this message translates to:
-  /// **'Raw combination (Advanced)'**
-  String get s3adc51170c;
-
-  /// fi: ⚠ Kaikki ruututyypit sallitaan kaikille yhteyksille. Väärä yhdistelmä voi näyttää harhaanjohtavaa tietoa, esim. "Päällä"
-  ///
-  /// In en, this message translates to:
-  /// **'⚠ Every tile type is allowed on every connection. A wrong combination can show misleading data, e.g. \"On\" for the electricity price.'**
-  String get s5f542e17e2;
-
-  /// fi: Pois: vain yhteyden tukemat ruututyypit.
-  ///
-  /// In en, this message translates to:
-  /// **'Off: only the tile types the connection supports.'**
-  String get scb988b1a4a;
-
-  /// fi: Päivitysväli (s, 0 = ei kyselyä)
-  ///
-  /// In en, this message translates to:
-  /// **'Poll interval (s, 0 = none)'**
-  String get se6b18b17d9;
-
-  /// fi: MQTT, Home Assistant ja WebSocket päivittyvät reaaliajassa ilman kyselyä.
-  ///
-  /// In en, this message translates to:
-  /// **'MQTT, Home Assistant and WebSocket update live without polling.'**
-  String get s01f2b1ee0c;
-
-  /// fi: Testaa luku
-  ///
-  /// In en, this message translates to:
-  /// **'Test read'**
-  String get s937448ecf5;
-
-  /// fi: Näyttö
-  ///
-  /// In en, this message translates to:
-  /// **'Display'**
-  String get s5cbdea7f7e;
-
-  /// fi: Yksikkö
-  ///
-  /// In en, this message translates to:
-  /// **'Unit'**
-  String get se6af4b33df;
-
-  /// fi: Desimaalit
-  ///
-  /// In en, this message translates to:
-  /// **'Decimals'**
-  String get sd5498697da;
-
-  /// fi: Arvojen nimet
-  ///
-  /// In en, this message translates to:
-  /// **'Value names'**
-  String get s4f7007db78;
-
-  /// fi: 0=Pois;1=Kotona;2=Poissa
-  ///
-  /// In en, this message translates to:
-  /// **'0=Off;1=Home;2=Away'**
-  String get s4aae179c52;
-
-  /// fi: Kytkimen komennot
-  ///
-  /// In en, this message translates to:
-  /// **'Toggle commands'**
-  String get s0c12fda7ca;
-
-  /// fi: "Päällä"-arvot (pilkuin, tyhjä = automaattinen)
-  ///
-  /// In en, this message translates to:
-  /// **'\"On\" values (comma separated, empty = auto)'**
-  String get s3a9d9e16ef;
-
-  /// fi: PÄÄLLE-komento
-  ///
-  /// In en, this message translates to:
-  /// **'ON command'**
-  String get s1509c5a2a6;
-
-  /// fi: POIS-komento
-  ///
-  /// In en, this message translates to:
-  /// **'OFF command'**
-  String get s2a1e131afd;
-
-  /// fi: Komennossa {{value}} korvataan säätimen arvolla.
-  ///
-  /// In en, this message translates to:
-  /// **'\'{{value}} in the command is replaced by the slider value.\''**
-  String get s0201de52c0;
-
-  /// fi: Askel
-  ///
-  /// In en, this message translates to:
-  /// **'Step'**
-  String get sc30c9a7e51;
-
-  /// fi: Asetuskomento
-  ///
-  /// In en, this message translates to:
-  /// **'Set command'**
-  String get s4d6451a63a;
-
-  /// fi: Komennot (suoritetaan järjestyksessä)
-  ///
-  /// In en, this message translates to:
-  /// **'Commands (run in order)'**
-  String get sa4082e1a79;
-
-  /// fi: Pikakomento voi ohjata useaa laitetta peräkkäin, viiveillä.
-  ///
-  /// In en, this message translates to:
-  /// **'A shortcut can control several devices in sequence, with delays.'**
-  String get s467488e572;
-
-  /// fi: Lisää komento
-  ///
-  /// In en, this message translates to:
-  /// **'Add command'**
-  String get sad43973fb3;
-
-  /// fi: Kysy vahvistus ennen komentoa
-  ///
-  /// In en, this message translates to:
-  /// **'Ask for confirmation'**
-  String get sdaef43c622;
-
-  /// fi: Yhteys
-  ///
-  /// In en, this message translates to:
-  /// **'Connection'**
-  String get s5210a5ad23;
-
-  /// fi: Komento lähetetty
-  ///
-  /// In en, this message translates to:
-  /// **'Command sent'**
-  String get s96705fc3df;
-
-  /// fi: Kokeile
-  ///
-  /// In en, this message translates to:
-  /// **'Try'**
-  String get sb41db1e809;
-
-  /// fi: Viive ennen (ms)
-  ///
-  /// In en, this message translates to:
-  /// **'Delay before (ms)'**
-  String get s77d2309fd5;
-
-  /// fi: Piilota
-  ///
-  /// In en, this message translates to:
-  /// **'Hide'**
-  String get s2b463f47ba;
-
-  /// fi: Apuviivat
-  ///
-  /// In en, this message translates to:
-  /// **'Guide lines'**
-  String get s2594346d86;
-
-  /// fi: Ei
-  ///
-  /// In en, this message translates to:
-  /// **'None'**
-  String get sfdffaffea4;
-
-  /// fi: Vaaka
-  ///
-  /// In en, this message translates to:
-  /// **'Horizontal'**
-  String get sd6c2de0256;
-
-  /// fi: Ruudukko
-  ///
-  /// In en, this message translates to:
-  /// **'Grid'**
-  String get sb8ef66c33e;
-
-  /// fi: Arvoasteikko
-  ///
-  /// In en, this message translates to:
-  /// **'Value scale'**
-  String get s0bee1b8ed3;
-
-  /// fi: Aika-akseli
-  ///
-  /// In en, this message translates to:
-  /// **'Time axis'**
-  String get sd4e9b57931;
-
-  /// fi: Datapisteet viivalla
-  ///
-  /// In en, this message translates to:
-  /// **'Data point markers'**
-  String get s7abdb12fef;
-
-  /// fi: Auto: akselit ja apuviivat näkyvät, kun ruutu on vähintään 2×2.
-  ///
-  /// In en, this message translates to:
-  /// **'Auto: axes and guide lines show when the tile is at least 2×2.'**
-  String get s29135ed75a;
-
-  /// fi: Kuvavirta
-  ///
-  /// In en, this message translates to:
-  /// **'Stream'**
-  String get s638c648b40;
-
-  /// fi: Linssi / kanava {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'Lens / channel {p0}'**
-  String s32ef3895b8(String p0);
-
-  /// fi: Värit arvon mukaan
-  ///
-  /// In en, this message translates to:
-  /// **'Colours by value'**
-  String get s939603242a;
-
-  /// fi: Omat rajat
-  ///
-  /// In en, this message translates to:
-  /// **'Custom'**
-  String get s45f927bc62;
-
-  /// fi: Liukuva
-  ///
-  /// In en, this message translates to:
-  /// **'Smooth'**
-  String get s319dab47d8;
-
-  /// fi: Jyrkkä
-  ///
-  /// In en, this message translates to:
-  /// **'Steps'**
-  String get s613fbec20e;
-
-  /// fi: Omat rajat ja värit: Asetukset → Edistyneet.
-  ///
-  /// In en, this message translates to:
-  /// **'Own limits and colours: Settings → Advanced.'**
-  String get s25d9db075e;
-
-  /// fi: Värirajat (arvo ≥ raja → väri)
-  ///
-  /// In en, this message translates to:
-  /// **'Color thresholds (value ≥ limit → color)'**
-  String get sc0f5a14d2b;
-
-  /// fi: Lisää raja
-  ///
-  /// In en, this message translates to:
-  /// **'Add threshold'**
-  String get s30a2c0f460;
-
-  /// fi: Kumoa
-  ///
-  /// In en, this message translates to:
-  /// **'Undo'**
-  String get s4226eb046f;
-
-  /// fi: Tailscale (helppo VPN)
-  ///
-  /// In en, this message translates to:
-  /// **'Tailscale (easy VPN)'**
-  String get sd5cb601286;
-
-  /// fi: Ilmainen henkilökäyttöön. Puhelin ja koti ovat kuin samassa verkossa – Molaplan toimii samoilla osoitteilla kuin kotona.
-  ///
-  /// In en, this message translates to:
-  /// **'Free for personal use. Your phone and home act like one network – Molaplan works with the same addresses as at home.'**
-  String get s0aa851cfb4;
-
-  /// fi: Sopii, jos sinulla on kotona aina päällä PC, Raspberry Pi tai Home Assistant.
-  ///
-  /// In en, this message translates to:
-  /// **'Good if you have an always-on PC, Raspberry Pi or Home Assistant at home.'**
-  String get s444ca5d58f;
-
-  /// fi: Tee Tailscale-tili osoitteessa tailscale.com (Google-, Microsoft- tai Apple-tunnuksella).
-  ///
-  /// In en, this message translates to:
-  /// **'Create a Tailscale account at tailscale.com (Google, Microsoft or Apple sign-in).'**
-  String get sec7b4d1d7a;
-
-  /// fi: Asenna Tailscale kotona aina päällä olevaan laitteeseen. Home Assistantissa: Asetukset → Lisäosat → Tailscale.
-  ///
-  /// In en, this message translates to:
-  /// **'Install Tailscale on the always-on device at home. In Home Assistant: Settings → Add-ons → Tailscale.'**
-  String get s178c57446d;
-
-  /// fi: Ota siinä käyttöön "subnet router" ja kerro kotiverkkosi, esim. 192.168.1.0/24. Silloin kaikki kodin laitteet näkyvät.
-  ///
-  /// In en, this message translates to:
-  /// **'Turn on \"subnet router\" there and enter your home network, e.g. 192.168.1.0/24. Then all your home devices are reachable.'**
-  String get s4faf83aa13;
-
-  /// fi: Hyväksy reitti Tailscalen hallintasivulla (Machines → laite → Edit route settings).
-  ///
-  /// In en, this message translates to:
-  /// **'Approve the route in the Tailscale admin console (Machines → device → Edit route settings).'**
-  String get s721719c0e1;
-
-  /// fi: Asenna Tailscale-sovellus puhelimeen ja kirjaudu samalla tilillä. Laita VPN päälle.
-  ///
-  /// In en, this message translates to:
-  /// **'Install the Tailscale app on your phone and sign in with the same account. Switch the VPN on.'**
-  String get s921f981bda;
-
-  /// fi: Valmis! Molaplan käyttää samoja osoitteita kuin kotona. Etäyhteyttä ei tarvitse muuttaa.
-  ///
-  /// In en, this message translates to:
-  /// **'Done! Molaplan uses the same addresses as at home. Nothing else to change.'**
-  String get s8ae7e7b2a4;
-
-  /// fi: tailscale.com/download
-  ///
-  /// In en, this message translates to:
-  /// **'https://tailscale.com/download'**
-  String get se92301ff0a;
-
-  /// fi: Subnet router -ohje / guide
-  ///
-  /// In en, this message translates to:
-  /// **'https://tailscale.com/kb/1019/subnets'**
-  String get sf6270ae66c;
-
-  /// fi: WireGuard (reitittimen VPN)
-  ///
-  /// In en, this message translates to:
-  /// **'WireGuard (router VPN)'**
-  String get s57f0b61334;
-
-  /// fi: Jos reitittimesi tukee WireGuardia (esim. ASUS, FRITZ!Box, UniFi, OpenWrt), puhelin liittyy kotiverkkoon suoraan.
-  ///
-  /// In en, this message translates to:
-  /// **'If your router supports WireGuard (e.g. ASUS, FRITZ!Box, UniFi, OpenWrt), your phone joins the home network directly.'**
-  String get sb9bb49ab92;
-
-  /// fi: Sopii, jos reitittimessä on WireGuard ja liittymässä julkinen IP-osoite.
-  ///
-  /// In en, this message translates to:
-  /// **'Good if the router has WireGuard and your connection has a public IP address.'**
-  String get s986d264604;
-
-  /// fi: Avaa reitittimen asetukset ja etsi "VPN-palvelin" → "WireGuard".
-  ///
-  /// In en, this message translates to:
-  /// **'Open the router settings and look for \"VPN server\" → \"WireGuard\".'**
-  String get sf24b16dc12;
-
-  /// fi: Ota palvelin käyttöön ja lisää uusi laite (peer) puhelimelle.
-  ///
-  /// In en, this message translates to:
-  /// **'Enable the server and add a new device (peer) for the phone.'**
-  String get s1e5d1eb832;
-
-  /// fi: Reititin näyttää QR-koodin. Asenna puhelimeen WireGuard-sovellus ja skannaa koodi.
-  ///
-  /// In en, this message translates to:
-  /// **'The router shows a QR code. Install the WireGuard app on the phone and scan it.'**
-  String get s8e0252a2b4;
-
-  /// fi: Tarkista että "Allowed IPs" sisältää kotiverkon (esim. 192.168.1.0/24).
-  ///
-  /// In en, this message translates to:
-  /// **'Check that \"Allowed IPs\" includes the home network (e.g. 192.168.1.0/24).'**
-  String get s4b3740b727;
-
-  /// fi: Laita VPN päälle puhelimessa – Molaplan toimii kuten kotona.
-  ///
-  /// In en, this message translates to:
-  /// **'Switch the VPN on in the phone – Molaplan works as at home.'**
-  String get sd2e8523b28;
-
-  /// fi: wireguard.com/install
-  ///
-  /// In en, this message translates to:
-  /// **'https://www.wireguard.com/install/'**
-  String get saa17c5a456;
-
-  /// fi: Monissa mobiililaajakaistoissa (4G/5G-kotinetti) ei ole julkista IP-osoitetta (CGNAT), eikä WireGuard silloin toimi ulko
-  ///
-  /// In en, this message translates to:
-  /// **'Many mobile broadband (4G/5G home internet) connections have no public IP (CGNAT) and WireGuard then cannot be reached from outside. Use Molaplan remote access or Tailscale instead.'**
-  String get se5960424ea;
-
-  /// fi: Home Assistant Cloud (Nabu Casa)
-  ///
-  /// In en, this message translates to:
-  /// **'Home Assistant Cloud (Nabu Casa)'**
-  String get sab2dfe387b;
-
-  /// fi: Maksullinen kuukausitilaus Home Assistantin tekijöiltä. Antaa turvallisen etäosoitteen Home Assistantiin.
-  ///
-  /// In en, this message translates to:
-  /// **'A paid monthly subscription from the makers of Home Assistant. Gives a secure remote address to Home Assistant.'**
-  String get s2e0586b37e;
-
-  /// fi: Sopii, jos laitteesi ovat jo Home Assistantissa.
-  ///
-  /// In en, this message translates to:
-  /// **'Good if your devices are already in Home Assistant.'**
-  String get s534e7ec95e;
-
-  /// fi: Home Assistantissa: Asetukset → Home Assistant Cloud → aloita kokeilu tai kirjaudu.
-  ///
-  /// In en, this message translates to:
-  /// **'In Home Assistant: Settings → Home Assistant Cloud → start the trial or sign in.'**
-  String get s0f7533967d;
-
-  /// fi: Ota "Remote control / Etäohjaus" päälle.
-  ///
-  /// In en, this message translates to:
-  /// **'Turn \"Remote control\" on.'**
-  String get s2e60dd8178;
-
-  /// fi: Kopioi etäosoite, joka näyttää tältä: https://abcd1234.ui.nabu.casa
-  ///
-  /// In en, this message translates to:
-  /// **'Copy the remote address, which looks like: https://abcd1234.ui.nabu.casa'**
-  String get s7a73024451;
-
-  /// fi: Molaplanissa: Yhteydet → Home Assistant → vaihda osoitteeksi tuo etäosoite. Token pysyy samana.
-  ///
-  /// In en, this message translates to:
-  /// **'In Molaplan: Connections → Home Assistant → change the address to the remote address. The token stays the same.'**
-  String get sd4873612f7;
-
-  /// fi: Valmis! Home Assistant -ruudut toimivat nyt kaikkialla.
-  ///
-  /// In en, this message translates to:
-  /// **'Done! Home Assistant tiles now work everywhere.'**
-  String get s15223b0e32;
-
-  /// fi: nabucasa.com
-  ///
-  /// In en, this message translates to:
-  /// **'https://www.nabucasa.com/'**
-  String get s9b3201b1fa;
-
-  /// fi: Tämä koskee vain Home Assistantin kautta ohjattavia laitteita. Muille (Modbus, kamerat suoraan) käytä Molaplan-etäyhteyt
-  ///
-  /// In en, this message translates to:
-  /// **'This only covers devices controlled through Home Assistant. For others (Modbus, cameras directly) use Molaplan remote access or a VPN.'**
-  String get s60e7067815;
-
-  /// fi: Pilvi-MQTT (esim. HiveMQ Cloud)
-  ///
-  /// In en, this message translates to:
-  /// **'Cloud MQTT (e.g. HiveMQ Cloud)'**
-  String get s8e0d0a2d4e;
-
-  /// fi: Laitteet ja Molaplan puhuvat saman pilvipalvelimen kautta. HiveMQ Cloudissa on ilmainen taso, joka riittää kotikäyttöön.
-  ///
-  /// In en, this message translates to:
-  /// **'Devices and Molaplan talk through the same cloud server. HiveMQ Cloud has a free tier that is enough for home use.'**
-  String get sd0fff65292;
-
-  /// fi: Sopii MQTT-laitteille: Tasmota, ESPHome, Shelly, Zigbee2MQTT, omat ESP-laitteet.
-  ///
-  /// In en, this message translates to:
-  /// **'Good for MQTT devices: Tasmota, ESPHome, Shelly, Zigbee2MQTT, your own ESP boards.'**
-  String get s7350b9f98b;
-
-  /// fi: Tee ilmainen tili osoitteessa console.hivemq.cloud ja luo ilmainen klusteri (Free/Serverless).
-  ///
-  /// In en, this message translates to:
-  /// **'Create a free account at console.hivemq.cloud and create a free cluster (Free/Serverless).'**
-  String get s59b3c7d246;
-
-  /// fi: Kohdassa "Access Management" luo käyttäjätunnus ja salasana.
-  ///
-  /// In en, this message translates to:
-  /// **'Under \"Access Management\" create a username and password.'**
-  String get s04fe436d1e;
-
-  /// fi: Kopioi palvelimen osoite (esim. abcd.s1.eu.hivemq.cloud). Portti on 8883 ja TLS on päällä.
-  ///
-  /// In en, this message translates to:
-  /// **'Copy the server address (e.g. abcd.s1.eu.hivemq.cloud). The port is 8883 with TLS on.'**
-  String get sdf0075eab5;
-
-  /// fi: Vaihda laitteidesi MQTT-asetuksiin tämä palvelin, tunnus ja salasana (TLS päälle).
-  ///
-  /// In en, this message translates to:
-  /// **'Put this server, username and password in your devices\'\' MQTT settings (TLS on).'**
-  String get s9e9be6fc33;
-
-  /// fi: Molaplanissa: Yhteydet → MQTT → osoite, portti 8883, TLS päälle, tunnus ja salasana. Valmis – toimii kaikkialla.
-  ///
-  /// In en, this message translates to:
-  /// **'In Molaplan: Connections → MQTT → address, port 8883, TLS on, username and password. Done – works everywhere.'**
-  String get s90f1cb151b;
-
-  /// fi: console.hivemq.cloud
-  ///
-  /// In en, this message translates to:
-  /// **'https://console.hivemq.cloud/'**
-  String get s77bf29f2f5;
-
-  /// fi: Valitse vahva salasana: kuka tahansa salasanan tietävä voi ohjata laitteitasi.
-  ///
-  /// In en, this message translates to:
-  /// **'Pick a strong password: anyone who knows it can control your devices.'**
-  String get safd2cd2b7b;
-
-  /// fi: Etäkäytön ohjeet
-  ///
-  /// In en, this message translates to:
-  /// **'Remote access guides'**
-  String get s9557c0ef28;
-
-  /// fi: Helpoin: Molaplan-etäyhteys
-  ///
-  /// In en, this message translates to:
-  /// **'Easiest: Molaplan remote access'**
-  String get sf4d7957b78;
-
-  /// fi: Ei tilejä, ei reititinasetuksia. Tarvitset vain kotona aina päällä olevan tabletin tai PC:n.
-  ///
-  /// In en, this message translates to:
-  /// **'No accounts, no router settings. You only need a tablet or PC that stays on at home.'**
-  String get s8032085166;
-
-  /// fi: Muut tavat
-  ///
-  /// In en, this message translates to:
-  /// **'Other ways'**
-  String get sd9b48e01fc;
-
-  /// fi: Laiteohjeet
-  ///
-  /// In en, this message translates to:
-  /// **'Device guides'**
-  String get sfe551fd431;
-
-  /// fi: Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Molaplan löytää lämpöpumpun itse.
-  ///
-  /// In en, this message translates to:
-  /// **'Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Found automatically.'**
-  String get sa35e37b4b4;
-
-  /// fi: Uusi näkymä
-  ///
-  /// In en, this message translates to:
-  /// **'New dashboard'**
-  String get scb28b11e70;
-
-  /// fi: Nimeä näkymä
-  ///
-  /// In en, this message translates to:
-  /// **'Rename dashboard'**
-  String get s3a13f9d077;
-
-  /// fi: Poistetaanko näkymä?
-  ///
-  /// In en, this message translates to:
-  /// **'Delete dashboard?'**
-  String get sa5bf37213b;
-
-  /// fi: "{p0}" ja sen {p1} ruutua poistetaan.
-  ///
-  /// In en, this message translates to:
-  /// **'\"{p0}\" and its {p1} tiles will be deleted.'**
-  String s10671afc00(String p0, String p1);
-
-  /// fi: Näkymä "{p0}" poistettu
-  ///
-  /// In en, this message translates to:
-  /// **'Dashboard \"{p0}\" deleted'**
-  String s897761b5f4(String p0);
-
-  /// fi: Valitse ruudun tyyppi
-  ///
-  /// In en, this message translates to:
-  /// **'Choose tile type'**
-  String get scc5cf9957d;
-
-  /// fi: Uusi laite valmiilla ruuduilla
-  ///
-  /// In en, this message translates to:
-  /// **'New device with ready tiles'**
-  String get s7cf6340503;
-
-  /// fi: Helpoin tapa: Shelly, ESP32-CAM, Home Assistant, IV-kone…
-  ///
-  /// In en, this message translates to:
-  /// **'Easiest: Shelly, ESP32-CAM, Home Assistant…'**
-  String get se6ca707cf3;
-
-  /// fi: NÄKYMÄT
-  ///
-  /// In en, this message translates to:
-  /// **'DASHBOARDS'**
-  String get s0789f5f14f;
-
-  /// fi: Kaikki
-  ///
-  /// In en, this message translates to:
-  /// **'All'**
-  String get sedb7b77645;
-
-  /// fi: Poista näkymä
-  ///
-  /// In en, this message translates to:
-  /// **'Delete dashboard'**
-  String get sfb3e3c456c;
-
-  /// fi: Lisää ruutu
-  ///
-  /// In en, this message translates to:
-  /// **'Add tile'**
-  String get scdfd80f963;
-
-  /// fi: Tyhjä näkymä
-  ///
-  /// In en, this message translates to:
-  /// **'Empty dashboard'**
-  String get s71af34b8e9;
-
-  /// fi: Täällä näkyvät laitteidesi ruudut: lämpötilat, kytkimet, kamerat ja pikakomennot. Aloita lisäämällä laite.
-  ///
-  /// In en, this message translates to:
-  /// **'Your device tiles appear here: temperatures, switches, cameras and shortcuts. Start by adding a device.'**
-  String get s6a210970eb;
-
-  /// fi: Lisää ensimmäinen laite
-  ///
-  /// In en, this message translates to:
-  /// **'Add your first device'**
-  String get s4229fb4103;
-
-  /// fi: Poistetaanko ruutu?
-  ///
-  /// In en, this message translates to:
-  /// **'Delete tile?'**
-  String get sf67e0d5752;
-
-  /// fi: Ruutu "{p0}" poistettu
-  ///
-  /// In en, this message translates to:
-  /// **'Tile \"{p0}\" deleted'**
-  String s97f46743e0(String p0);
-
-  /// fi: Tiedot vain tässä selaimessa.
-  ///
-  /// In en, this message translates to:
-  /// **'Data is only in this browser. '**
-  String get s429f9e257a;
-
-  /// fi: Ei tiliä – asetukset vain tällä laitteella.
-  ///
-  /// In en, this message translates to:
-  /// **'No account – settings only on this device. '**
-  String get sda9203de80;
-
-  /// fi: Kirjaudu, niin ne synkronoituvat ›
-  ///
-  /// In en, this message translates to:
-  /// **'Sign in to sync ›'**
-  String get sfec58c0c1b;
-
-  /// fi: Luo tili ›
-  ///
-  /// In en, this message translates to:
-  /// **'Create account ›'**
-  String get s8b3e63da21;
-
-  /// fi: Laite lisätty! 🎉
-  ///
-  /// In en, this message translates to:
-  /// **'Device added! 🎉'**
-  String get s887c293cad;
-
-  /// fi: Luo tili, niin asetukset säilyvät ja siirtyvät muille laitteille. Se käy sähköpostikoodilla, salasanaa ei tarvita.
-  ///
-  /// In en, this message translates to:
-  /// **'Create an account so your settings are kept and move to your other devices. It only takes an email code, no password needed.'**
-  String get s84a087a679;
-
-  /// fi: Tervetuloa Molaplaniin
-  ///
-  /// In en, this message translates to:
-  /// **'Welcome to Molaplan'**
-  String get s907220900d;
-
-  /// fi: Asetukset kaikilla laitteillasi
-  ///
-  /// In en, this message translates to:
-  /// **'Your setup on all your devices'**
-  String get s845ec6276f;
-
-  /// fi: Mitään ei katoa, vaikka puhelin vaihtuu
-  ///
-  /// In en, this message translates to:
-  /// **'Nothing is lost when you change phones'**
-  String get s9dfa93453b;
-
-  /// fi: Laitteiden salasanat salataan
-  ///
-  /// In en, this message translates to:
-  /// **'Device passwords are encrypted'**
-  String get s6aa51b28a5;
-
-  /// fi: Luo tili / Kirjaudu
-  ///
-  /// In en, this message translates to:
-  /// **'Create account / Sign in'**
-  String get sc6f02b69d3;
-
-  /// fi: Sähköpostikoodilla – ei salasanaa.
-  ///
-  /// In en, this message translates to:
-  /// **'With an email code – no password.'**
-  String get sc777bde66f;
-
-  /// fi: Jatka ilman tiliä
-  ///
-  /// In en, this message translates to:
-  /// **'Continue without an account'**
-  String get se2e5ff2c8a;
-
-  /// fi: Vaatii tilin.
-  ///
-  /// In en, this message translates to:
-  /// **'Requires an account.'**
-  String get s82714aa826;
-
-  /// fi: Kirjaudu tai luo tili
-  ///
-  /// In en, this message translates to:
-  /// **'Sign in or create an account'**
-  String get s9bb545e9b3;
-
-  /// fi: Sähkönkulutus
-  ///
-  /// In en, this message translates to:
-  /// **'Electricity use'**
-  String get sb8934a5835;
-
-  /// fi: Ei mukana
-  ///
-  /// In en, this message translates to:
-  /// **'Not counted'**
-  String get s5409dc748f;
-
-  /// fi: Koko kohde
-  ///
-  /// In en, this message translates to:
-  /// **'Whole site'**
-  String get sf0bbcc217b;
-
-  /// fi: Laitteen mittaus
-  ///
-  /// In en, this message translates to:
-  /// **'Device meter'**
-  String get s0ad1897b28;
-
-  /// fi: Koko kohde = pääsähkömittari. Laitteen mittaus = yksi laite (näytetään osana kokonaisuutta, ei lasketa kahteen kertaan).
-  ///
-  /// In en, this message translates to:
-  /// **'Whole site = main meter. Device meter = one device (shown as part of the total, never counted twice).'**
-  String get s99268b5a6c;
-
-  /// fi: Osa mittaria (valinnainen)
-  ///
-  /// In en, this message translates to:
-  /// **'Part of meter (optional)'**
-  String get se1174af557;
-
-  /// fi: Energia ja kustannukset
-  ///
-  /// In en, this message translates to:
-  /// **'Energy and costs'**
-  String get s9773c92c92;
-
-  /// fi: Sähkösopimus
-  ///
-  /// In en, this message translates to:
-  /// **'Electricity contract'**
-  String get s43dead6994;
-
-  /// fi: Päivä
-  ///
-  /// In en, this message translates to:
-  /// **'Day'**
-  String get sef4d24cdd4;
-
-  /// fi: Kuukausi
-  ///
-  /// In en, this message translates to:
-  /// **'Month'**
-  String get sa62dd794ce;
-
-  /// fi: Valitse ensin mittarit
-  ///
-  /// In en, this message translates to:
-  /// **'Pick your meters first'**
-  String get s6b2ebe5aca;
-
-  /// fi: Merkitse alta, mikä mittari mittaa koko kohdetta ja mitkä yksittäisiä laitteita.
-  ///
-  /// In en, this message translates to:
-  /// **'Mark below which meter measures the whole site and which ones single devices.'**
-  String get sde41f2fac9;
-
-  /// fi: sis. ALV
-  ///
-  /// In en, this message translates to:
-  /// **'incl. VAT'**
-  String get s4ad000d885;
-
-  /// fi: ilman ALV
-  ///
-  /// In en, this message translates to:
-  /// **'excl. VAT'**
-  String get s9e214b6e88;
-
-  /// fi: Mitatut laitteet yhteensä
-  ///
-  /// In en, this message translates to:
-  /// **'Measured devices total'**
-  String get s73771d252c;
-
-  /// fi: Muu kulutus
-  ///
-  /// In en, this message translates to:
-  /// **'Other use'**
-  String get s22d03356a9;
-
-  /// fi: Perusmaksut (energia + siirto)
-  ///
-  /// In en, this message translates to:
-  /// **'Monthly fees (energy + transfer)'**
-  String get s48b08c5f5a;
-
-  /// fi: Osalle kulutuksesta ei ollut hintaa (pörssihinta puuttui).
-  ///
-  /// In en, this message translates to:
-  /// **'Part of the use had no price (the spot price was missing).'**
-  String get s2e8700e0cf;
-
-  /// fi: Kulutus kirjataan, kun sovellus on auki (kodin tabletilla jatkuvasti).
-  ///
-  /// In en, this message translates to:
-  /// **'Use is recorded while the app is open (all the time on the home tablet).'**
-  String get sbbd89fbc05;
-
-  /// fi: Mittarit
-  ///
-  /// In en, this message translates to:
-  /// **'Meters'**
-  String get s64382718ff;
-
-  /// fi: Ei teho- tai energiaruutuja (W, kW, Wh, kWh). Lisää esim. Shelly-mittari.
-  ///
-  /// In en, this message translates to:
-  /// **'No power or energy tiles (W, kW, Wh, kWh). Add e.g. a Shelly meter.'**
-  String get s9a3a0d414e;
-
-  /// fi: Katso hinnat sähkölaskusta. Voit kirjoittaa ne verollisina tai verottomina – kustannukset näytetään molempina.
-  ///
-  /// In en, this message translates to:
-  /// **'Copy the prices from your bill. Type them with or without VAT – costs are shown both ways.'**
-  String get se80021e22a;
-
-  /// fi: Hinta-alue
-  ///
-  /// In en, this message translates to:
-  /// **'Price area'**
-  String get sfb62156afe;
-
-  /// fi: Sähköenergia
-  ///
-  /// In en, this message translates to:
-  /// **'Energy'**
-  String get s1762fb70a7;
-
-  /// fi: Pörssisähkö
-  ///
-  /// In en, this message translates to:
-  /// **'Spot price'**
-  String get s2ed3e3cf28;
-
-  /// fi: Kiinteä
-  ///
-  /// In en, this message translates to:
-  /// **'Fixed'**
-  String get s5d1dd0f675;
-
-  /// fi: Yö/päivä
-  ///
-  /// In en, this message translates to:
-  /// **'Night/day'**
-  String get sedb38796fb;
-
-  /// fi: Marginaali
-  ///
-  /// In en, this message translates to:
-  /// **'Margin'**
-  String get s0774cea15a;
-
-  /// fi: Energian hinta
-  ///
-  /// In en, this message translates to:
-  /// **'Energy price'**
-  String get s63370fe61a;
-
-  /// fi: Päiväenergia
-  ///
-  /// In en, this message translates to:
-  /// **'Day energy'**
-  String get s50a7dd89c6;
-
-  /// fi: Yöenergia
-  ///
-  /// In en, this message translates to:
-  /// **'Night energy'**
-  String get sdeaa5ad900;
-
-  /// fi: Perusmaksu (energia)
-  ///
-  /// In en, this message translates to:
-  /// **'Monthly fee (energy)'**
-  String get se93c7bcd86;
-
-  /// fi: Siirto
-  ///
-  /// In en, this message translates to:
-  /// **'Transfer'**
-  String get sb7937e4b91;
-
-  /// fi: Yleissiirto
-  ///
-  /// In en, this message translates to:
-  /// **'Flat'**
-  String get s0f89840226;
-
-  /// fi: Siirtohinta
-  ///
-  /// In en, this message translates to:
-  /// **'Transfer price'**
-  String get sa768f1b352;
-
-  /// fi: Päiväsiirto
-  ///
-  /// In en, this message translates to:
-  /// **'Day transfer'**
-  String get s9e5dde22cb;
-
-  /// fi: Yösiirto
-  ///
-  /// In en, this message translates to:
-  /// **'Night transfer'**
-  String get sdf7a4fd2e3;
-
-  /// fi: Perusmaksu (siirto)
-  ///
-  /// In en, this message translates to:
-  /// **'Monthly fee (transfer)'**
-  String get s4df0aee067;
-
-  /// fi: Yö alkaa
-  ///
-  /// In en, this message translates to:
-  /// **'Night starts'**
-  String get s4c59c90975;
-
-  /// fi: Yö päättyy
-  ///
-  /// In en, this message translates to:
-  /// **'Night ends'**
-  String get s84decd042b;
-
-  /// fi: Verot
-  ///
-  /// In en, this message translates to:
-  /// **'Taxes'**
-  String get s90c26f1e37;
-
-  /// fi: Sähkövero
-  ///
-  /// In en, this message translates to:
-  /// **'Electricity tax'**
-  String get s222cb348a0;
-
-  /// fi: ALV
-  ///
-  /// In en, this message translates to:
-  /// **'VAT'**
-  String get sbe412dcaa6;
-
-  /// fi: Haku ei onnistunut. Tarkista verkkoyhteys.
-  ///
-  /// In en, this message translates to:
-  /// **'Search failed. Check the connection.'**
-  String get s43b55c13c5;
-
-  /// fi: Kodin sijainti
-  ///
-  /// In en, this message translates to:
-  /// **'Home location'**
-  String get s171834ca33;
-
-  /// fi: Sääennuste (Open-Meteo) auttaa lämmittämään etukäteen ennen pakkasta. Paikkakunta riittää.
-  ///
-  /// In en, this message translates to:
-  /// **'The weather forecast (Open-Meteo) helps pre-heat before cold weather. The town is enough.'**
-  String get s6f6c2fe37a;
-
-  /// fi: Paikkakunta
-  ///
-  /// In en, this message translates to:
-  /// **'Town'**
-  String get s5f663978d6;
-
-  /// fi: esim. Tampere
-  ///
-  /// In en, this message translates to:
-  /// **'e.g. Tampere'**
-  String get s7be6460c54;
-
-  /// fi: Sähkönkulutus, kustannukset, sopimus ja sää.
-  ///
-  /// In en, this message translates to:
-  /// **'Electricity use, costs, contract and weather.'**
-  String get s1576b70590;
-
-  /// fi: Sijainti
-  ///
-  /// In en, this message translates to:
-  /// **'Location'**
-  String get sa6212aaeb4;
-
   /// fi: On jo näkymässä – lisätäänkö silti?
   ///
   /// In en, this message translates to:
@@ -12575,1025 +9125,957 @@ abstract class AppLocalizations {
   /// **'Add anyway'**
   String get s0e655a209f;
 
-  /// fi: Vain kotiverkossa
+  /// fi: Valo
   ///
   /// In en, this message translates to:
-  /// **'Home network only'**
-  String get s12c2f8e6e4;
+  /// **'Light'**
+  String get sa376ec78ec;
 
-  /// fi: klo {p0}
+  /// fi: Virta
   ///
   /// In en, this message translates to:
-  /// **'at {p0}'**
-  String s5f7c464e6d(String p0);
+  /// **'Power'**
+  String get s8e574c3313;
 
-  /// fi: {p0} toimii vain kotiverkossa. Ruutu palaa normaaliksi itsestään, kun olet taas kotona.
+  /// fi: Tuuletin
   ///
   /// In en, this message translates to:
-  /// **'{p0} only works on the home network. The tile returns to normal by itself when you are home again.'**
-  String s21b64ae0a7(String p0);
+  /// **'Fan'**
+  String get sa9360bdda1;
 
-  /// fi: Viimeisin tila
+  /// fi: Lämpöpumppu
   ///
   /// In en, this message translates to:
-  /// **'Last state'**
-  String get s6b1a8249de;
+  /// **'Heat pump'**
+  String get sc7d02fbe84;
 
-  /// fi: Tee etäkäyttöiseksi ›
+  /// fi: Hälytys
   ///
   /// In en, this message translates to:
-  /// **'Make it work remotely ›'**
-  String get s56650a18d5;
+  /// **'Alarm'**
+  String get s8d06ee5308;
 
-  /// fi: Komentoa ei ole määritetty
+  /// fi: Lukko
   ///
   /// In en, this message translates to:
-  /// **'No command configured'**
-  String get sa0d8c62e5a;
+  /// **'Lock'**
+  String get sfb63e3c23f;
 
-  /// fi: Suoritetaanko komento?
+  /// fi: Vesi
   ///
   /// In en, this message translates to:
-  /// **'Run this command?'**
-  String get s1e5d696a26;
+  /// **'Water'**
+  String get s2f42d90475;
 
-  /// fi: vaihda PIN-koodi
+  /// fi: Kosteus
   ///
   /// In en, this message translates to:
-  /// **'change PIN'**
-  String get sa5ee6618a3;
+  /// **'Humidity'**
+  String get s9cb8820285;
 
-  /// fi: syötä PIN-koodi
+  /// fi: Sähkö / teho
   ///
   /// In en, this message translates to:
-  /// **'enter PIN'**
-  String get s66f8ce67ed;
+  /// **'Electricity / power'**
+  String get sf2d10dd213;
 
-  /// fi: Laite tarvitsee PIN-koodin jokaiseen komentoon ja tilakyselyyn. Syötä se kerran tässä.
+  /// fi: Säästö / halvin
   ///
   /// In en, this message translates to:
-  /// **'The device needs its PIN for every command and status request. Enter it once here.'**
-  String get sb7b0c97cfa;
+  /// **'Savings / cheapest'**
+  String get s4594c7448e;
 
-  /// fi: PIN
+  /// fi: Autotalli
   ///
   /// In en, this message translates to:
-  /// **'PIN'**
-  String get s1df6e2eaa7;
+  /// **'Garage'**
+  String get s291ca127d6;
 
-  /// fi: Selaimessa PIN-koodia ei tallenneta. Se kysytään uudelleen, kun avaat sivun seuraavan kerran.
+  /// fi: Ovi
   ///
   /// In en, this message translates to:
-  /// **'The browser never stores the PIN. It is asked again the next time you open the page.'**
-  String get sb52d5c0b5b;
+  /// **'Door'**
+  String get sb543af1c63;
 
-  /// fi: Muista tällä laitteella
+  /// fi: Ikkuna
   ///
   /// In en, this message translates to:
-  /// **'Remember on this device'**
-  String get secab66c046;
+  /// **'Window'**
+  String get s60b1079d6c;
 
-  /// fi: Tallennetaan salattuna vain tähän laitteeseen – ei tilille eikä muille laitteille. Pois päältä = kysytään taas, kun sove
+  /// fi: Anturi
   ///
   /// In en, this message translates to:
-  /// **'Stored encrypted on this device only – not in the account or on other devices. Off = asked again when the app restarts.'**
-  String get s2a15ea2eab;
+  /// **'Sensor'**
+  String get se8422f063f;
 
-  /// fi: Tallennetaan suojattuna vain tähän laitteeseen. Oletuksena PIN-koodia ei tallenneta.
+  /// fi: Ajastin
   ///
   /// In en, this message translates to:
-  /// **'Stored encrypted on this device only. By default the PIN is not stored.'**
-  String get s10bf4eab8e;
+  /// **'Timer'**
+  String get s0ab3a44562;
 
-  /// fi: Komentoja ei ole määritetty
+  /// fi: Verkko
   ///
   /// In en, this message translates to:
-  /// **'No commands configured'**
-  String get s856418521a;
+  /// **'Network'**
+  String get s3044a10005;
 
-  /// fi: Ajettu klo {p0}
+  /// fi: Sauna / lämmitys
   ///
   /// In en, this message translates to:
-  /// **'Ran at {p0}'**
-  String sb0ba67e677(String p0);
+  /// **'Sauna / heating'**
+  String get s1f67139f55;
 
-  /// fi: {p0}: lähetetty
+  /// fi: Pistorasia
   ///
   /// In en, this message translates to:
-  /// **'{p0}: sent'**
-  String sdfa66ee201(String p0);
+  /// **'Outlet'**
+  String get sf21fd72396;
 
-  /// fi: Lähetetty – odotetaan vastausta…
+  /// fi: Suosikki
   ///
   /// In en, this message translates to:
-  /// **'Sent – waiting for the reply…'**
-  String get s12fc3810a5;
+  /// **'Favourite'**
+  String get s7783fe5fca;
 
-  /// fi: Vastaus klo
+  /// fi: Lista
   ///
   /// In en, this message translates to:
-  /// **'Reply at'**
-  String get sd1c7d49360;
+  /// **'List'**
+  String get se223375393;
 
-  /// fi: Hintaohjaus käytössä
+  /// fi: Suuntaus
   ///
   /// In en, this message translates to:
-  /// **'Price control on'**
-  String get s29fae6a0e8;
+  /// **'Swing'**
+  String get sfb0b971c01;
 
-  /// fi: Nimeä uudelleen
+  /// fi: Kaukosäädin
   ///
   /// In en, this message translates to:
-  /// **'Rename'**
-  String get s59d55f8882;
+  /// **'Remote'**
+  String get see42f2d999;
 
-  /// fi: Vaihda PIN
+  /// fi: Aurinko
   ///
   /// In en, this message translates to:
-  /// **'Change PIN'**
-  String get s84ada1ae69;
+  /// **'Sun'**
+  String get s9126bf24a0;
 
-  /// fi: Tallennettu PIN poistettu
+  /// fi: Akku
   ///
   /// In en, this message translates to:
-  /// **'Saved PIN removed'**
-  String get s25580038cb;
+  /// **'Battery'**
+  String get sbb26f2192c;
 
-  /// fi: Unohda tallennettu PIN
+  /// fi: Liike
   ///
   /// In en, this message translates to:
-  /// **'Forget saved PIN'**
-  String get sf50c488b24;
+  /// **'Motion'**
+  String get s66350d8e7a;
 
-  /// fi: Hintaohjaus
+  /// fi: Savu
   ///
   /// In en, this message translates to:
-  /// **'Price control'**
-  String get safe0429a90;
+  /// **'Smoke'**
+  String get s57c2113aee;
 
-  /// fi: Opettele kaukosäätimen nappi
+  /// fi: Radon
   ///
   /// In en, this message translates to:
-  /// **'Learn a remote button'**
-  String get sf3d644dd4c;
+  /// **'Radon'**
+  String get s11cc92bdc3;
 
-  /// fi: Syötä PIN
+  /// fi: Hiilidioksidi
   ///
   /// In en, this message translates to:
-  /// **'Enter PIN'**
-  String get sbb9e9b1229;
+  /// **'CO₂'**
+  String get s095db91dfb;
 
-  /// fi: Valot
+  /// fi: Ilmanlaatu
   ///
   /// In en, this message translates to:
-  /// **'Lights'**
-  String get s72a2328ddd;
+  /// **'Air quality'**
+  String get s4b1eda4282;
 
-  /// fi: Kytkimet
+  /// fi: Aurinkosähkö
   ///
   /// In en, this message translates to:
-  /// **'Switches'**
-  String get sca12be80ca;
+  /// **'Solar power'**
+  String get s981854cf46;
 
-  /// fi: Lämpöpumput ja ilmastointi
+  /// fi: Sähköauton laturi
   ///
   /// In en, this message translates to:
-  /// **'Heat pumps and AC'**
-  String get sa4c0eeea02;
+  /// **'EV charger'**
+  String get s1a6081db34;
 
-  /// fi: Tila-anturit
+  /// fi: Televisio
   ///
   /// In en, this message translates to:
-  /// **'Binary sensors'**
-  String get sa8dbf04ad3;
+  /// **'TV'**
+  String get sf435368c99;
 
-  /// fi: Verhot ja ovet
+  /// fi: Äänenvoimakkuus
   ///
   /// In en, this message translates to:
-  /// **'Covers and doors'**
-  String get sa7690acf57;
+  /// **'Volume'**
+  String get s0cea5b1077;
 
-  /// fi: Lukot
+  /// fi: Verho / sälekaihdin
   ///
   /// In en, this message translates to:
-  /// **'Locks'**
-  String get s487bf00fc7;
+  /// **'Blinds'**
+  String get s25d92a8625;
 
-  /// fi: Puhaltimet
+  /// fi: Home Assistant lukee jo tätä laitetta
   ///
   /// In en, this message translates to:
-  /// **'Fans'**
-  String get sbe76826428;
+  /// **'Home Assistant already reads this device'**
+  String get sa846059775;
 
-  /// fi: Painikkeet
+  /// fi: Laitteella voi olla jo yhteys (esim. Home Assistant) – lue arvot HA:n kautta. Moni laite sallii vain yhden Modbus TCP -y
   ///
   /// In en, this message translates to:
-  /// **'Buttons'**
-  String get s4b53bcaaf0;
+  /// **'The device may already have a connection (e.g. Home Assistant) – read the values through HA. Many devices allow only one Modbus TCP connection.'**
+  String get s18a1844439;
 
-  /// fi: Säätimet
+  /// fi: {p0} Modbus-arvoa löytyi Home Assistantista. Moni laite sallii vain yhden Modbus TCP -yhteyden, joten HA:n kautta lukemi
   ///
   /// In en, this message translates to:
-  /// **'Number inputs'**
-  String get s5c92d42edd;
+  /// **'{p0} Modbus values found in Home Assistant. Many devices allow only one Modbus TCP connection, so reading through HA is the safest way.'**
+  String sa29df4fc6b(String p0);
 
-  /// fi: Apukytkimet
+  /// fi: Käytä Home Assistantin kautta
   ///
   /// In en, this message translates to:
-  /// **'Helper toggles'**
-  String get s3c2ed0c522;
+  /// **'Use via Home Assistant'**
+  String get sb8c40d2c20;
 
-  /// fi: Mediasoittimet
+  /// fi: Liitä modbus.yaml (tai configuration.yaml:n modbus:-osa). Yhteys ja laatat tehdään samoilla rekistereillä ja ajoituksill
   ///
   /// In en, this message translates to:
-  /// **'Media players'**
-  String get sea20d169a3;
+  /// **'Paste modbus.yaml (or the modbus: part of configuration.yaml). The connection and tiles use the same registers and timing.'**
+  String get sfbf34ee532;
 
-  /// fi: Tunnus (token) ei kelpaa. Luo uusi Home Assistantissa.
+  /// fi: {p0} yhteys, {p1} laattaa
   ///
   /// In en, this message translates to:
-  /// **'The token is not accepted. Create a new one in Home Assistant.'**
-  String get sbcb95e1e78;
+  /// **'{p0} connection(s), {p1} tiles'**
+  String s2d4fbaade1(String p0, String p1);
 
-  /// fi: Home Assistantiin ei saatu yhteyttä. Tarkista osoite.
+  /// fi: Modbus-laite tuotu Home Assistantista
   ///
   /// In en, this message translates to:
-  /// **'Could not reach Home Assistant. Check the address.'**
-  String get s0b80dc2642;
+  /// **'Modbus device imported from Home Assistant'**
+  String get s108e078c0c;
 
-  /// fi: kamerat
+  /// fi: Sinulla on uusin versio ({p0}).
   ///
   /// In en, this message translates to:
-  /// **'cameras'**
-  String get sf32b7f15d8;
+  /// **'You have the latest version ({p0}).'**
+  String sa0c07ccd04(String p0);
 
-  /// fi: Valitse Home Assistantin laitteet
+  /// fi: Päivityksiä ei voitu tarkistaa juuri nyt. Tarkista nettiyhteys ja yritä myöhemmin.
   ///
   /// In en, this message translates to:
-  /// **'Pick Home Assistant devices'**
-  String get sa7a829cefb;
+  /// **'Could not check for updates right now. Check the internet connection and try again later.'**
+  String get sa118d84538;
 
-  /// fi: Haetaan laitteita…
+  /// fi: Uusi versio {p0} on saatavilla
   ///
   /// In en, this message translates to:
-  /// **'Loading devices…'**
-  String get sefdf8e3316;
+  /// **'Version {p0} is available'**
+  String s9f2b092d8c(String p0);
 
-  /// fi: Huoneittain omiin näkymiin
+  /// fi: Sinulla on nyt versio {p0}.
   ///
   /// In en, this message translates to:
-  /// **'One view per room'**
-  String get s26583a1933;
+  /// **'You have version {p0}.'**
+  String sa5133b2c4a(String p0);
 
-  /// fi: Hae nimellä tai tunnuksella
+  /// fi: Mitä uutta:
   ///
   /// In en, this message translates to:
-  /// **'Search by name or id'**
-  String get sb3e6b54bce;
+  /// **'What\'\'s new:'**
+  String get se099b5797e;
 
-  /// fi: Kaikki huoneet
+  /// fi: Ohita tämä versio
   ///
   /// In en, this message translates to:
-  /// **'All rooms'**
-  String get safedc10c48;
+  /// **'Skip this version'**
+  String get s9315c3df42;
 
-  /// fi: Ei huonetta
+  /// fi: Myöhemmin
   ///
   /// In en, this message translates to:
-  /// **'No room'**
-  String get s407f3f7a0c;
+  /// **'Later'**
+  String get sdd5c8f0a9d;
 
-  /// fi: {p0} valoa on Philips Hue -valoja
+  /// fi: Lataus oli viallinen
   ///
   /// In en, this message translates to:
-  /// **'{p0} lights are Philips Hue lights'**
-  String s140aba8cd7(String p0);
+  /// **'The download was corrupted'**
+  String get s5a94ef2af1;
 
-  /// fi: Suoraan Hue-sillan kautta ne toimivat nopeammin ja ilman Home Assistantia.
+  /// fi: Lataus ei onnistunut
   ///
   /// In en, this message translates to:
-  /// **'Directly through the Hue Bridge they respond faster and work without Home Assistant.'**
-  String get s16aee2aa30;
+  /// **'Download failed'**
+  String get s81e4325573;
 
-  /// fi: Lisää Hue-silta
+  /// fi: Tiedoston tarkistussumma ei täsmännyt, joten mitään ei asennettu. Yritä hetken päästä uudelleen.
   ///
   /// In en, this message translates to:
-  /// **'Add Hue Bridge'**
-  String get s3816288db1;
+  /// **'The file checksum did not match, so nothing was installed. Please try again in a moment.'**
+  String get s4b1d3df588;
 
-  /// fi: Näytä kaikki
+  /// fi: Tarkista nettiyhteys ja yritä uudelleen. Voit myös ladata päivityksen julkaisusivulta.
   ///
   /// In en, this message translates to:
-  /// **'Show all'**
-  String get sa765c9294a;
+  /// **'Check the internet connection and try again. You can also download the update from the release page.'**
+  String get s0c463c7069;
 
-  /// fi: {p0} teknistä kohdetta piilotettu (diagnostiikka, asetukset, päivitykset)
+  /// fi: Avaa julkaisusivu
   ///
   /// In en, this message translates to:
-  /// **'{p0} technical items hidden (diagnostics, configuration, updates)'**
-  String sdb088f47a8(String p0);
+  /// **'Open release page'**
+  String get s5dd4c9671f;
 
-  /// fi: Huoneita ei saatu luettua – näytetään laitteet ilman huoneita.
+  /// fi: Asennetaan versio {p0} – sovellus käynnistyy uudelleen hetken kuluttua.
   ///
   /// In en, this message translates to:
-  /// **'Rooms could not be read – showing devices without rooms.'**
-  String get s3ee8d0a5e3;
+  /// **'Installing {p0} – the app restarts in a moment.'**
+  String s8f5be45ff1(String p0);
 
-  /// fi: Ei osumia
+  /// fi: Asennus epäonnistui: {p0}
   ///
   /// In en, this message translates to:
-  /// **'No matches'**
-  String get sf55fca7a32;
+  /// **'Install failed: {p0}'**
+  String sf207ef6dc2(String p0);
 
-  /// fi: jo lisätty
+  /// fi: Päivitys ladattu
   ///
   /// In en, this message translates to:
-  /// **'already added'**
-  String get s78cdce874e;
+  /// **'Update downloaded'**
+  String get s49ddc3c3b6;
 
-  /// fi: Valitse, tuleeko tästä laitteesta push-ilmoitus ja millä tärkeydellä. Oletukset ovat rauhalliset: vain hälytys ja laitte
+  /// fi: Tiedosto on tarkistettu ja tallennettu:
+  /// {p0}
   ///
+  /// Näin otat sen käyttöön:
+  /// 1. Sulje Molaplan.
+  /// 2. Pura zip-tiedosto vanhan Mol
+  ///
+  /// In en, this message translates to:
+  /// **'The file is verified and saved:\n{p0}\n\nTo use it:\n1. Close Molaplan.\n2. Extract the zip over the old Molaplan folder (or into a new folder).\n3. Start molaplan.exe. Your settings are kept.'**
+  String s04a05bb8fc(String p0);
+
+  /// fi: Julkaisusivu
+  ///
+  /// In en, this message translates to:
+  /// **'Release page'**
+  String get s1dd246ec69;
+
+  /// fi: Avaa zip
+  ///
+  /// In en, this message translates to:
+  /// **'Open zip'**
+  String get s0f07b20d45;
+
+  /// fi: Avaa kansio
+  ///
+  /// In en, this message translates to:
+  /// **'Open folder'**
+  String get s6e1ebc8baa;
+
+  /// fi: Asennus ei jatkunut
+  ///
+  /// In en, this message translates to:
+  /// **'The install did not continue'**
+  String get s6d9de3f94b;
+
+  /// fi: Jos perut asennuksen itse, kaikki on kunnossa. Jos Androidin Asenna-ikkunaa ei näkynyt, paina Yritä uudelleen.
+  ///
+  /// In en, this message translates to:
+  /// **'If you cancelled it yourself, all is well. If Android\'\'s Install window did not appear, tap Try again.'**
+  String get s25a6f00343;
+
+  /// fi: Yritä uudelleen
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get s200542b930;
+
+  /// fi: Vahvista asennus Androidin ikkunasta tai ilmoituksesta.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm the install in the Android window or notification.'**
+  String get s29e92898c6;
+
+  /// fi: Vahvista päivitys
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm the update'**
+  String get s48093a1369;
+
+  /// fi: Päivitys {p0} odottaa vahvistusta. Paina Avaa asennus (tai napauta ilmoitusta "Molaplan-päivitys valmis").
+  ///
+  /// In en, this message translates to:
+  /// **'Update {p0} is waiting for your confirmation. Tap Open install (or the \"Molaplan-päivitys valmis\" notification).'**
+  String s6d50eeae10(String p0);
+
+  /// fi: Avaa asennus
+  ///
+  /// In en, this message translates to:
+  /// **'Open install'**
+  String get s1a5c09b6e4;
+
+  /// fi: Asennus ei käynnistynyt
+  ///
+  /// In en, this message translates to:
+  /// **'The install did not start'**
+  String get sd1cdbd3630;
+
+  /// fi: Android ei aloittanut päivityksen {p0} asennusta.
+  ///
+  /// Tarkista, että "Salli tästä lähteestä" on päällä Molaplanille, ja pai
+  ///
+  /// In en, this message translates to:
+  /// **'Android did not start installing {p0}.\n\nCheck that \"Allow from this source\" is on for Molaplan and tap Update again. You can also download the APK from the release page.\n\nDetail: {p1}'**
+  String s21972e23c1(String p0, String p1);
+
+  /// fi: Avaa asetukset
+  ///
+  /// In en, this message translates to:
+  /// **'Open settings'**
+  String get sa1bd8d2533;
+
+  /// fi: Salli päivitysten asennus
+  ///
+  /// In en, this message translates to:
+  /// **'Allow installing updates'**
+  String get sa065e7f650;
+
+  /// fi: Android kysyy kerran luvan, jotta Molaplan saa asentaa omat päivityksensä.
+  ///
+  /// 1. Paina "Avaa asetukset".
+  /// 2. Kytke päälle "
+  ///
+  /// In en, this message translates to:
+  /// **'Android asks once for permission so Molaplan can install its own updates.\n\n1. Tap \"Open settings\".\n2. Turn on \"Allow from this source\".\n3. Come back and tap \"Update\" again.'**
+  String get sdc3bf71baf;
+
+  /// fi: Tarkistetaan…
+  ///
+  /// In en, this message translates to:
+  /// **'Verifying…'**
+  String get s441683b7a8;
+
+  /// fi: Ladataan päivitystä…
+  ///
+  /// In en, this message translates to:
+  /// **'Downloading update…'**
+  String get se83b7fb2ac;
+
+  /// fi: Molaplan {p0} on saatavilla. Silta toimii normaalisti.
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan {p0} is available. The bridge keeps working.'**
+  String s0b68f81d82(String p0);
+
+  /// fi: Tasmota-laite
+  ///
+  /// In en, this message translates to:
+  /// **'Tasmota device'**
+  String get s702ca14235;
+
+  /// fi: ESPHome-laite
+  ///
+  /// In en, this message translates to:
+  /// **'ESPHome device'**
+  String get se0e5f715ad;
+
+  /// fi: HomeKit-laite
+  ///
+  /// In en, this message translates to:
+  /// **'HomeKit device'**
+  String get s63b6e55469;
+
+  /// fi: Tuntematon laite
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown device'**
+  String get s13e301a66e;
+
+  /// fi: Puhelin
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get sddb2c2cb2b;
+
+  /// fi: Tabletti
+  ///
+  /// In en, this message translates to:
+  /// **'Tablet'**
+  String get s16cd267576;
+
+  /// fi: Tietokone
+  ///
+  /// In en, this message translates to:
+  /// **'Computer'**
+  String get sec4679ec39;
+
+  /// fi: Tulostin
+  ///
+  /// In en, this message translates to:
+  /// **'Printer'**
+  String get s798f9a0558;
+
+  /// fi: TV / mediatoistin
+  ///
+  /// In en, this message translates to:
+  /// **'TV / media player'**
+  String get s06109b8e5c;
+
+  /// fi: Kaiutin
+  ///
+  /// In en, this message translates to:
+  /// **'Speaker'**
+  String get sc4655d321e;
+
+  /// fi: Reititin
+  ///
+  /// In en, this message translates to:
+  /// **'Router'**
+  String get sa9f2f85b3e;
+
+  /// fi: Verkkolevy
+  ///
+  /// In en, this message translates to:
+  /// **'Network storage'**
+  String get sf8360dcd74;
+
+  /// fi: Palvelin
+  ///
+  /// In en, this message translates to:
+  /// **'Server'**
+  String get s25399cd337;
+
+  /// fi: Älylaite
+  ///
+  /// In en, this message translates to:
+  /// **'Smart device'**
+  String get s8e21b6f258;
+
+  /// fi: iPhonen hotspot
+  ///
+  /// In en, this message translates to:
+  /// **'iPhone hotspot'**
+  String get s76a76a654e;
+
+  /// fi: Puhelimen hotspot
+  ///
+  /// In en, this message translates to:
+  /// **'Phone hotspot'**
+  String get s15d4ca1672;
+
+  /// fi: Reititin / hotspot
+  ///
+  /// In en, this message translates to:
+  /// **'Router / hotspot'**
+  String get sd54522fe39;
+
+  /// fi: Valvontapaneeli
+  ///
+  /// In en, this message translates to:
+  /// **'Security panel'**
+  String get s3294a9422d;
+
+  /// fi: ESP32-laite
+  ///
+  /// In en, this message translates to:
+  /// **'ESP32 device'**
+  String get sb97a2b7ed6;
+
+  /// fi: ei vielä ohjattavissa
+  ///
+  /// In en, this message translates to:
+  /// **'not controllable yet'**
+  String get s23f4820db7;
+
+  /// fi: Airthings: lisää pilven tai Bluetoothin kautta
+  ///
+  /// In en, this message translates to:
+  /// **'Airthings: add via the cloud or Bluetooth'**
+  String get sdeeabebed9;
+
+  /// fi: kotisillan kautta
+  ///
+  /// In en, this message translates to:
+  /// **'via home bridge'**
+  String get saae59a3865;
+
+  /// fi: ohjataan ntfy-viesteillä
+  ///
+  /// In en, this message translates to:
+  /// **'controlled with ntfy messages'**
+  String get sf226dd023a;
+
+  /// fi: jos tämä on valvontapaneeli, lisää se ntfy-komentolaitteena
+  ///
+  /// In en, this message translates to:
+  /// **'if this is a security panel, add it as an ntfy command device'**
+  String get s0e6aa5168c;
+
+  /// fi: Malli
+  ///
+  /// In en, this message translates to:
+  /// **'Model'**
+  String get sdccd6e7f24;
+
+  /// fi: MAC
+  ///
+  /// In en, this message translates to:
+  /// **'\')\'\'}\''**
+  String get s891a4b434e;
+
+  /// fi: Portit
+  ///
+  /// In en, this message translates to:
+  /// **'Ports'**
+  String get s43aba09687;
+
+  /// fi: Lähteet
+  ///
+  /// In en, this message translates to:
+  /// **'Sources'**
+  String get scee3511db6;
+
+  /// fi: Nimeä laite
+  ///
+  /// In en, this message translates to:
+  /// **'Name the device'**
+  String get sbc46a05125;
+
+  /// fi: Nimi muistetaan tällä laitteella.
+  ///
+  /// In en, this message translates to:
+  /// **'Remembered on this device.'**
+  String get s1d5ed84aed;
+
+  /// fi: Lisää komentolaitteena
+  ///
+  /// In en, this message translates to:
+  /// **'Add as command device'**
+  String get s3e6dd6ff2d;
+
+  /// fi: Laitehaku toimii selaimessa vain kotisillan kautta
+  ///
+  /// In en, this message translates to:
+  /// **'In the browser, device search works only through a home bridge'**
+  String get sb616303f5b;
+
+  /// fi: Voit silti lisätä pilvi- ja ntfy-laitteita alta.
+  ///
+  /// In en, this message translates to:
+  /// **'You can still add cloud and ntfy devices below.'**
+  String get sef469cadc3;
+
+  /// fi: kotisillan kautta
+  ///
   /// In en, this message translates to:
-  /// **'Choose whether this device sends a push and at which importance. Defaults stay quiet: only an alarm or a silent device notify you. Notifications go to your ntfy topic and appear in the app.'**
-  String get s8814efe188;
+  /// **'via the home bridge'**
+  String get sa0fccfbcab;
 
-  /// fi: Tapahtumien tärkeys
+  /// fi: Etsi laitteet
   ///
   /// In en, this message translates to:
-  /// **'Event importance'**
-  String get s9341ea63c0;
+  /// **'Find devices'**
+  String get s1169d2d093;
 
-  /// fi: Yleiset oletukset. Laitteen omissa asetuksissa voi poiketa näistä. Automaation omassa ilmoitustoiminnossa prioriteetti v
+  /// fi: Etsitään kotiverkosta…
   ///
   /// In en, this message translates to:
-  /// **'General defaults. A device can override these in its own settings. A notify action on an automation takes precedence.'**
-  String get s2b4ea7a381;
+  /// **'Searching your home network…'**
+  String get s55b85f29a6;
 
-  /// fi: Laite ilmoitti uuden tilakanavan
+  /// fi: Molaplan etsii kotiverkosta laitteet, jotka se tunnistaa.
   ///
   /// In en, this message translates to:
-  /// **'The device reported a new state topic'**
-  String get s67917c9a2a;
+  /// **'Molaplan looks for devices it recognises on your home network.'**
+  String get se9c923ff0b;
 
-  /// fi: Käytä tätä
+  /// fi: Tunnettuja laitteita ei löytynyt. Valitse merkki alta.
   ///
   /// In en, this message translates to:
-  /// **'Use this'**
-  String get s79fc5ea775;
+  /// **'No known devices found. Pick the brand below.'**
+  String get s3ff2220816;
 
-  /// fi: Makuuhuone
+  /// fi: Löytyi {p0}. Lisää napauttamalla.
   ///
   /// In en, this message translates to:
-  /// **'Bedroom'**
-  String get s7ba50ea69e;
+  /// **'Found {p0}. Tap to add.'**
+  String s2a9142dc3e(String p0);
 
-  /// fi: Keittiö
+  /// fi: Etsi uudelleen
   ///
   /// In en, this message translates to:
-  /// **'Kitchen'**
-  String get s9e9723b263;
+  /// **'Search again'**
+  String get s2fc39b0bd7;
 
-  /// fi: Olohuone
+  /// fi: Etsi
   ///
   /// In en, this message translates to:
-  /// **'Living room'**
-  String get scce769451b;
+  /// **'Search'**
+  String get s0a9acb5af1;
 
-  /// fi: Kylpyhuone
+  /// fi: Et ole kotona: kotisilta etsi laitteet kotiverkosta.
   ///
   /// In en, this message translates to:
-  /// **'Bathroom'**
-  String get s9d5dca2dee;
+  /// **'You are away: the home bridge searched your home network.'**
+  String get s9a018b8166;
 
-  /// fi: Sauna
+  /// fi: Tämä verkko
   ///
   /// In en, this message translates to:
-  /// **'Sauna'**
-  String get s2569505205;
+  /// **'This network'**
+  String get s55d0b95fd2;
 
-  /// fi: Eteinen
+  /// fi: Nämä ovat tämän laitteen omassa verkossa, eivät kodissa {p0}. Niitä ei lisätä siihen kotiin.
   ///
   /// In en, this message translates to:
-  /// **'Hallway'**
-  String get s1c65dad1f5;
+  /// **'These are on this device\'\'s own network, not at {p0}. They are not added to that home.'**
+  String s955b44aaa4(String p0);
 
-  /// fi: Piha / puutarha
+  /// fi: Muut laitteet verkossa ({p0})
   ///
   /// In en, this message translates to:
-  /// **'Yard / garden'**
-  String get sa4d90bb5da;
+  /// **'Other devices on the network ({p0})'**
+  String sf16a25c313(String p0);
 
-  /// fi: Tekninen tila
+  /// fi: Näitä Molaplan ei ohjaa. iPhonet näkyvät nimellä vain hereillä ollessaan.
   ///
   /// In en, this message translates to:
-  /// **'Technical room'**
-  String get s4a7be17a36;
+  /// **'Molaplan does not control these. iPhones show their name only while awake.'**
+  String get s9e8430c37b;
 
-  /// fi: Työhuone
+  /// fi: Lämmittää
   ///
   /// In en, this message translates to:
-  /// **'Office'**
-  String get s01e404f15f;
+  /// **'Heating'**
+  String get s7f308d40c8;
 
-  /// fi: Lastenhuone
+  /// fi: Jäähdyttää
   ///
   /// In en, this message translates to:
-  /// **'Kids\'\' room'**
-  String get sfd8305add2;
+  /// **'Cooling'**
+  String get s41de361b3e;
 
-  /// fi: Mökki
+  /// fi: Kuivaa
   ///
   /// In en, this message translates to:
-  /// **'Cottage'**
-  String get scd87fb4dd7;
+  /// **'Drying'**
+  String get s4f7ccb7138;
 
-  /// fi: Lisäasetukset
+  /// fi: Puhaltaa
   ///
   /// In en, this message translates to:
-  /// **'Advanced settings'**
-  String get sdc398885dc;
+  /// **'Fan'**
+  String get s9b2398228e;
 
-  /// fi: Yleensä näihin ei tarvitse koskea
+  /// fi: Odottaa
   ///
   /// In en, this message translates to:
-  /// **'Usually you don\'\'t need these'**
-  String get s5d477f3cd8;
+  /// **'Idle'**
+  String get s533177c689;
 
-  /// fi: esim.
+  /// fi: Lämmitys
   ///
   /// In en, this message translates to:
-  /// **'e.g.'**
-  String get s2315e0e739;
+  /// **'Heat'**
+  String get sa3e8beed42;
 
-  /// fi: Valitse taustakuva
+  /// fi: Jäähdytys
   ///
   /// In en, this message translates to:
-  /// **'Choose a background picture'**
-  String get sc1c47d2474;
+  /// **'Cool'**
+  String get s6c9668fbd9;
 
-  /// fi: Enintään {p0} taustakuvaa. Poista jokin ensin.
+  /// fi: Kuivaus
   ///
   /// In en, this message translates to:
-  /// **'At most {p0} background pictures. Remove one first.'**
-  String sa8ce5112ee(String p0);
+  /// **'Dry'**
+  String get s9db8aefc43;
 
-  /// fi: Ulkoasu
+  /// fi: Puhallus
   ///
   /// In en, this message translates to:
-  /// **'Look'**
-  String get s12a7d631af;
+  /// **'Fan'**
+  String get s0117dea8bc;
 
-  /// fi: Koko
+  /// fi: Hiljainen
   ///
   /// In en, this message translates to:
-  /// **'Size'**
-  String get s0d83798030;
+  /// **'Quiet'**
+  String get sb680eb3021;
 
   /// fi: Pieni
   ///
   /// In en, this message translates to:
-  /// **'Small'**
-  String get s64c916e299;
+  /// **'Low'**
+  String get s4299eb9d18;
 
-  /// fi: Leveä
+  /// fi: Pieni–keski
   ///
   /// In en, this message translates to:
-  /// **'Wide'**
-  String get s5e3097232a;
+  /// **'Medium-low'**
+  String get s90ba0c57d4;
 
-  /// fi: Iso
+  /// fi: Keski
   ///
   /// In en, this message translates to:
-  /// **'Large'**
-  String get s8971788287;
+  /// **'Medium'**
+  String get s0cb68026a7;
 
-  /// fi: Taustakuva (valinnainen)
+  /// fi: Keski–suuri
   ///
   /// In en, this message translates to:
-  /// **'Background picture (optional)'**
-  String get s254a1d8e12;
+  /// **'Medium-high'**
+  String get s9c5e4ed5cb;
 
-  /// fi: Valitse kuva
+  /// fi: Suuri
   ///
   /// In en, this message translates to:
-  /// **'Choose picture'**
-  String get sc48f5f9bcf;
+  /// **'High'**
+  String get s688b92a62f;
 
-  /// fi: Himmennä kun laite on pois päältä
+  /// fi: Turbo
   ///
   /// In en, this message translates to:
-  /// **'Dim when the device is off'**
-  String get s7ba9d453ed;
+  /// **'Turbo'**
+  String get sb1ef6ab439;
 
-  /// fi: Kuva pienennetään (≤ 200 kt) ja synkronoidaan tiliisi.
+  /// fi: Ulkona
   ///
   /// In en, this message translates to:
-  /// **'The picture is shrunk (≤ 200 KB) and synced to your account.'**
-  String get s016ae7b580;
+  /// **'Outdoor'**
+  String get s339446ffe7;
 
-  /// fi: Kuva pienennetään (≤ 200 kt) ja tallennetaan vain tälle laitteelle.
+  /// fi: Puhallin
   ///
   /// In en, this message translates to:
-  /// **'The picture is shrunk (≤ 200 KB) and kept on this device only.'**
-  String get sabb10f8cb2;
+  /// **'Fan'**
+  String get s018d2e08f4;
 
-  /// fi: Kotisillan kautta: valot, pistorasiat, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, kamerakuvat
+  /// fi: Ei lukemaa
   ///
   /// In en, this message translates to:
-  /// **'Through your home bridge: lights, plugs, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, camera stills'**
-  String get s6b536de0c8;
+  /// **'No reading'**
+  String get s11a7c24b38;
 
-  /// fi: Suoraan netistä: ntfy-komennot, sähkön hinta, sää
+  /// fi: käyrä
   ///
   /// In en, this message translates to:
-  /// **'Straight over the internet: ntfy commands, electricity price, weather'**
-  String get s082c8c6278;
+  /// **'curve'**
+  String get s79bbbe6195;
 
-  /// fi: Samat näkymät ja ruudut kuin tilisi muilla laitteilla
+  /// fi: asetus
   ///
   /// In en, this message translates to:
-  /// **'The same views and tiles as your account\'\'s other devices'**
-  String get s5a419e551c;
+  /// **'set'**
+  String get s28b7c227f0;
 
-  /// fi: Ilman kotisiltaa kotiverkon laitteita ei voi ohjata selaimesta
+  /// fi: Ei hintoja
   ///
   /// In en, this message translates to:
-  /// **'Without a home bridge the browser cannot control home-network devices'**
-  String get sa8f5c5c719;
+  /// **'No prices'**
+  String get s306729fe62;
 
-  /// fi: Vain sovelluksessa: laitteiden haku, Bluetooth, RTSP-video, kotisiltana toimiminen
+  /// fi: c/t
   ///
   /// In en, this message translates to:
-  /// **'App only: device search, Bluetooth, RTSP video, acting as the home bridge'**
-  String get sb1c4acea71;
+  /// **'c/h'**
+  String get s80c4ecec94;
 
-  /// fi: Selainversio on etäohjain
+  /// fi: Kulutus (kWh)
   ///
   /// In en, this message translates to:
-  /// **'The browser version is a remote control'**
-  String get s2842696c47;
+  /// **'Usage (kWh)'**
+  String get sb68e905fc4;
 
-  /// fi: Täällä ohjaat vain laitteita, jotka ovat etäkäytettävissä: kotisillan (Molaplan PC:llä, Android-laitteella tai Molaplan
+  /// fi: Kustannus
   ///
   /// In en, this message translates to:
-  /// **'Here you control only devices that can be reached remotely: through a home bridge (Molaplan on a PC, an Android device or a Molaplan Bridge), ntfy or a cloud service. For full local control you need the Molaplan app.'**
-  String get s1cbac3d12d;
+  /// **'Cost'**
+  String get s5fc5085143;
 
-  /// fi: Tilaa PC-sovellus tai valmis Android-laite
+  /// fi: Vanha tieto
   ///
   /// In en, this message translates to:
-  /// **'Order the PC app or a ready Android device'**
-  String get saffec3d1c7;
+  /// **'Old data'**
+  String get s2b2118a93b;
 
-  /// fi: Tähän laitteeseen ei saada yhteyttä selaimesta. Se toimii Molaplan-sovelluksessa, tai täältä, kun kotisilta on päällä.
+  /// fi: Hinta nyt
   ///
   /// In en, this message translates to:
-  /// **'This device cannot be reached from the browser. It works in the Molaplan app, or from here when a home bridge is on.'**
-  String get s2bf22ca429;
+  /// **'Price now'**
+  String get sb730159a01;
 
-  /// fi: Selainversio: ohjaat etäkäytettäviä laitteita. Täysi ohjaus sovelluksella – lisätietoja ›
+  /// fi: Halvin tunti tänään
   ///
   /// In en, this message translates to:
-  /// **'Browser version: you control remotely reachable devices. Full control with the app – more ›'**
-  String get sc6e6f17ad4;
+  /// **'Cheapest hour today'**
+  String get s68fcfcfed1;
 
-  /// fi: Kodin laitteet ja tila yhdessä näkymässä
+  /// fi: Tänään keskihinta
   ///
   /// In en, this message translates to:
-  /// **'Your home\'\'s devices and status in one view'**
-  String get sbed5ab99f6;
+  /// **'Average today'**
+  String get s86ff059f5e;
 
-  /// fi: Ohjaa valoja, pistorasioita, lämpöpumppua ja hälytintä isoilla ruuduilla
+  /// fi: Kallein tunti tänään
   ///
   /// In en, this message translates to:
-  /// **'Control lights, plugs, heat pump and alarm with big tiles'**
-  String get s1ffc6e9e18;
+  /// **'Priciest hour today'**
+  String get s7b911d48c6;
 
-  /// fi: Sama näkymä PC:llä, tabletilla, puhelimella ja selaimessa
+  /// fi: Hetkellinen kustannus
   ///
   /// In en, this message translates to:
-  /// **'The same view on a PC, tablet, phone and in the browser'**
-  String get sb18bf27c69;
+  /// **'Instant cost'**
+  String get s29dbf49d92;
 
-  /// fi: Laitteiden salasanat salataan – vain sinun laitteesi avaavat ne
+  /// fi: halvin
   ///
   /// In en, this message translates to:
-  /// **'Device passwords are encrypted – only your devices can open them'**
-  String get sdc86a6f82c;
+  /// **'min'**
+  String get s723c887da6;
 
-  /// fi: Käytä ilman tiliä
+  /// fi: ka
   ///
   /// In en, this message translates to:
-  /// **'Use without an account'**
-  String get s3865b9c032;
+  /// **'avg'**
+  String get s3b36524e04;
 
-  /// fi: Asetukset jäävät tähän selaimeen. Voit myöhemmin luoda tilin ja siirtää ne sinne.
+  /// fi: kallein
   ///
   /// In en, this message translates to:
-  /// **'Setup stays in this browser. You can create an account later and move it there.'**
-  String get sdf7bb58964;
+  /// **'max'**
+  String get scaaff6345d;
 
-  /// fi: Luo tili sähköpostikoodilla
+  /// fi: Kulutus
   ///
   /// In en, this message translates to:
-  /// **'Create an account with an email code'**
-  String get sb2703f9ad3;
+  /// **'Usage'**
+  String get s5f131c3ec4;
 
-  /// fi: Nimi tulee espanjan ilmauksesta "me mola el plan" – "kuulostaa hyvältä".
+  /// fi: Luvut tuntikeskiarvoina
   ///
   /// In en, this message translates to:
-  /// **'The name comes from the Spanish \"me mola el plan\" – \"sounds good\".'**
-  String get s326d86a618;
-
-  /// fi: Poistetaanko selaimen tiedot?
-  ///
-  /// In en, this message translates to:
-  /// **'Delete this browser\'\'s data?'**
-  String get s1812df3cb5;
-
-  /// fi: Kaikki tässä selaimessa olevat Molaplan-asetukset, laitteet, yhteydet ja ruudut poistetaan. Tätä ei voi perua.
-  ///
-  /// In en, this message translates to:
-  /// **'All Molaplan settings, devices, connections and tiles in this browser will be deleted. This cannot be undone.'**
-  String get sbab6f0fd9d;
-
-  /// fi: Poista selaimen tiedot
-  ///
-  /// In en, this message translates to:
-  /// **'Delete browser data'**
-  String get s38a0f7939b;
-
-  /// fi: Näytä Molaplan
-  ///
-  /// In en, this message translates to:
-  /// **'Show Molaplan'**
-  String get sc80648d495;
-
-  /// fi: Lopeta
-  ///
-  /// In en, this message translates to:
-  /// **'Quit'**
-  String get sa4e9c86a86;
-
-  /// fi: Vie asetukset
-  ///
-  /// In en, this message translates to:
-  /// **'Export configuration'**
-  String get s4dab2d409b;
-
-  /// fi: Asetukset viety
-  ///
-  /// In en, this message translates to:
-  /// **'Configuration exported'**
-  String get s149c1e54d6;
-
-  /// fi: Tuo asetukset
-  ///
-  /// In en, this message translates to:
-  /// **'Import configuration'**
-  String get s35f445793b;
-
-  /// fi: Korvataanko nykyiset asetukset?
-  ///
-  /// In en, this message translates to:
-  /// **'Replace current configuration?'**
-  String get sd55be829e3;
-
-  /// fi: Kaikki nykyiset yhteydet ja näkymät korvataan tiedoston sisällöllä.
-  ///
-  /// In en, this message translates to:
-  /// **'All current connections and dashboards are replaced by the file contents.'**
-  String get s852dd1795e;
-
-  /// fi: Asetukset tuotu
-  ///
-  /// In en, this message translates to:
-  /// **'Configuration imported'**
-  String get s5f2ec17730;
-
-  /// fi: Tuonti epäonnistui
-  ///
-  /// In en, this message translates to:
-  /// **'Import failed'**
-  String get sa87fff54f3;
-
-  /// fi: Tili
-  ///
-  /// In en, this message translates to:
-  /// **'Account'**
-  String get s2fd2bfedb8;
-
-  /// fi: Samat kodit ja ruudut kaikilla laitteillasi.
-  ///
-  /// In en, this message translates to:
-  /// **'The same homes and tiles on all your devices.'**
-  String get s4c0ff416ab;
-
-  /// fi: Kirjaudu, niin kodit, laitteet ja ruudut ovat samat PC:llä, tabletilla ja puhelimella. Vapaaehtoinen.
-  ///
-  /// In en, this message translates to:
-  /// **'Sign in to have the same homes, devices and tiles on PC, tablet and phone. Optional.'**
-  String get scc7e418ee3;
-
-  /// fi: Lataukset
-  ///
-  /// In en, this message translates to:
-  /// **'Downloads'**
-  String get sb386aff4b7;
-
-  /// fi: PC-sovelluksen lataus kaupan sivulta vaatii tilin (saman kuin tilauksessa).
-  ///
-  /// In en, this message translates to:
-  /// **'Downloading the PC app from the shop requires an account (the same one as on the order).'**
-  String get sbb264ce105;
-
-  /// fi: Avaa lataukset
-  ///
-  /// In en, this message translates to:
-  /// **'Open downloads'**
-  String get se5ab008127;
-
-  /// fi: Ulkoasu
-  ///
-  /// In en, this message translates to:
-  /// **'Appearance'**
-  String get s08d62fd281;
-
-  /// fi: Teema
-  ///
-  /// In en, this message translates to:
-  /// **'Theme'**
-  String get s2b8a2754c6;
-
-  /// fi: Vaalea
-  ///
-  /// In en, this message translates to:
-  /// **'Light'**
-  String get s79f67deb42;
-
-  /// fi: Tumma
-  ///
-  /// In en, this message translates to:
-  /// **'Dark'**
-  String get s0d6fb52039;
-
-  /// fi: Auringonnousun ja -laskun mukaan
-  ///
-  /// In en, this message translates to:
-  /// **'By sunrise and sunset'**
-  String get s70dd7fdd58;
-
-  /// fi: Vaatii kodin sijainnin (Energia › Koti). Siihen asti seurataan laitteen asetusta.
-  ///
-  /// In en, this message translates to:
-  /// **'Needs the home location (Energy › Home). Until then the device setting is followed.'**
-  String get s21206b61f7;
-
-  /// fi: Vaalea päivällä, tumma illalla. Pois päältä: seuraa laitteen asetusta.
-  ///
-  /// In en, this message translates to:
-  /// **'Light by day, dark in the evening. Off: follows the device setting.'**
-  String get s4e23920823;
-
-  /// fi: Valinta koskee tätä laitetta ja tallentuu tiliisi uusien laitteiden oletukseksi.
-  ///
-  /// In en, this message translates to:
-  /// **'The choice applies to this device and is saved to your account as the default for new devices.'**
-  String get s4b847ce63e;
-
-  /// fi: Näytä tuntikeskiarvona
-  ///
-  /// In en, this message translates to:
-  /// **'Show as hourly average'**
-  String get s5ebc02022b;
-
-  /// fi: Sähkön hinta, halvimmat tunnit ja hintaohjaukset tunneittain (tuntihinnoiteltu sopimus). Pois: 15 min, kun alueen hinnat
-  ///
-  /// In en, this message translates to:
-  /// **'Price, cheapest hours and price control per hour (hourly-billed contract). Off: 15 min where the area publishes 15-min prices.'**
-  String get s68b4d332ca;
-
-  /// fi: Aamukortti: näytä myös kallein tunti
-  ///
-  /// In en, this message translates to:
-  /// **'Morning card: also show the priciest hour'**
-  String get saf496a12a3;
-
-  /// fi: Halvin tunti näytetään aina seuraavalta 24 tunnilta hintoineen.
-  ///
-  /// In en, this message translates to:
-  /// **'The cheapest hour of the next 24 h is always shown with its price.'**
-  String get sc53b1b78c0;
-
-  /// fi: Laattakoko
-  ///
-  /// In en, this message translates to:
-  /// **'Tile size'**
-  String get s0625d54b38;
-
-  /// fi: Normaali
-  ///
-  /// In en, this message translates to:
-  /// **'Normal'**
-  String get s8382da3467;
-
-  /// fi: Piilota etänä toimimattomat
-  ///
-  /// In en, this message translates to:
-  /// **'Hide tiles that don\'\'t work remotely'**
-  String get s7c1cd8314e;
-
-  /// fi: Kotiverkon ulkopuolella vain kotiverkossa toimivat ruudut piilotetaan. Oletuksena ne näkyvät harmaina paikallaan.
-  ///
-  /// In en, this message translates to:
-  /// **'Away from home, tiles that only work on the home network are hidden. By default they stay in place, greyed out.'**
-  String get sa0cbbafb4e;
-
-  /// fi: Kello ja sää etusivulla
-  ///
-  /// In en, this message translates to:
-  /// **'Clock and weather on the home screen'**
-  String get s419166b895;
-
-  /// fi: Kellonaika, päivä, sää ja sähkön hinta näkymän yläreunassa. Koskee vain tätä laitetta.
-  ///
-  /// In en, this message translates to:
-  /// **'Time, date, weather and electricity price at the top of the view. This device only.'**
-  String get sec30a8f23e;
-
-  /// fi: Animaatiot
-  ///
-  /// In en, this message translates to:
-  /// **'Animations'**
-  String get sf7205b268f;
-
-  /// fi: Pehmeät siirtymät, kun laite vaihtaa tilaa. Pois päältä = rauhallisempi ja kevyempi vanhalle tabletille. Koskee vain tät
-  ///
-  /// In en, this message translates to:
-  /// **'Soft transitions when a device changes state. Off = calmer and lighter for an older tablet. This device only.'**
-  String get s1535c6411d;
-
-  /// fi: Näyttää tekniset asetukset: yhteydet (HTTP, MQTT, Modbus…), viestit, JSON-polut ja ruutujen lähteet. Useimmat eivät tarv
-  ///
-  /// In en, this message translates to:
-  /// **'Shows technical settings: connections (HTTP, MQTT, Modbus…), payloads, JSON paths and tile sources. Most people don\'\'t need these.'**
-  String get s21f870dbc2;
-
-  /// fi: Laitteet ja integraatiot
-  ///
-  /// In en, this message translates to:
-  /// **'Devices and integrations'**
-  String get sc84689a549;
-
-  /// fi: Home Assistant: lisää laitteita
-  ///
-  /// In en, this message translates to:
-  /// **'Home Assistant: add devices'**
-  String get sca4c8b88b7;
-
-  /// fi: Ohjaa kotia myös kodin ulkopuolelta.
-  ///
-  /// In en, this message translates to:
-  /// **'Control your home from outside too.'**
-  String get saec69088a5;
-
-  /// fi: Ohjeet: VPN, Nabu Casa, pilvi-MQTT
-  ///
-  /// In en, this message translates to:
-  /// **'Guides: VPN, Nabu Casa, cloud MQTT'**
-  String get scc3d01ee5e;
-
-  /// fi: Anna toiselle tai asentajalle pääsy valitsemiisi laitteisiin.
-  ///
-  /// In en, this message translates to:
-  /// **'Give someone, or an installer, access to the devices you choose.'**
-  String get s535358a517;
-
-  /// fi: Jakaminen – uusi kutsu
-  ///
-  /// In en, this message translates to:
-  /// **'Sharing – new invite'**
-  String get s25c286a743;
-
-  /// fi: Ohjeet
-  ///
-  /// In en, this message translates to:
-  /// **'Help'**
-  String get s90ba544719;
-
-  /// fi: Näytä aloitusopas
-  ///
-  /// In en, this message translates to:
-  /// **'Show the getting-started guide'**
-  String get sb915c42792;
-
-  /// fi: Varmuuskopio ja siirto
-  ///
-  /// In en, this message translates to:
-  /// **'Backup and transfer'**
-  String get sd337a7ddd5;
-
-  /// fi: Vie asetukset JSON-tiedostoon ja tuo ne toiselle laitteelle (esim. PC → puhelin).
-  ///
-  /// In en, this message translates to:
-  /// **'Export the configuration to a JSON file and import it on another device (e.g. PC → phone).'**
-  String get s07c1048b4f;
-
-  /// fi: Sisällytä salasanat ja tokenit
-  ///
-  /// In en, this message translates to:
-  /// **'Include passwords and tokens'**
-  String get s2f797098e7;
-
-  /// fi: Tiedosto on silloin salaamaton – säilytä se turvassa.
-  ///
-  /// In en, this message translates to:
-  /// **'The file is then unencrypted – keep it safe.'**
-  String get s26f72949e3;
-
-  /// fi: Vie
-  ///
-  /// In en, this message translates to:
-  /// **'Export'**
-  String get sdb12678e52;
-
-  /// fi: Esimerkki
-  ///
-  /// In en, this message translates to:
-  /// **'Example'**
-  String get s34686ffb09;
-
-  /// fi: Lisää esimerkkinäkymä (kamera, hälytys, valot, IV-kone). Esimerkkilaitteet eivät ota yhteyttä mihinkään – lisää omat lai
-  ///
-  /// In en, this message translates to:
-  /// **'Add an example dashboard (camera, alarm, lights, ventilation). The example devices never connect anywhere – add your own with Add device.'**
-  String get sc8327738b3;
-
-  /// fi: Lisää esimerkkinäkymä
-  ///
-  /// In en, this message translates to:
-  /// **'Add example dashboard'**
-  String get sec02c7c071;
-
-  /// fi: selainversio
-  ///
-  /// In en, this message translates to:
-  /// **'browser version'**
-  String get s057b871ed2;
-
-  /// fi: Tarkista päivitykset
-  ///
-  /// In en, this message translates to:
-  /// **'Check for updates'**
-  String get s522d6584c5;
-
-  /// fi: Oma ohjauspääte: HTTP, MQTT, Modbus TCP, Home Assistant, kamerat, WebSocket, TCP ja UDP. Ilman tiliä kaikki asetukset py
-  ///
-  /// In en, this message translates to:
-  /// **'Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. Without an account all settings stay on this device.'**
-  String get sd178a1d809;
-
-  /// fi: Mistä Home Assistantista?
-  ///
-  /// In en, this message translates to:
-  /// **'Which Home Assistant?'**
-  String get sf5bfc4217c;
-
-  /// fi: Sinulla on useampi Home Assistant -yhteys. Käyttämättömän (ei ruutuja) voi poistaa.
-  ///
-  /// In en, this message translates to:
-  /// **'You have more than one Home Assistant connection. An unused one (no tiles) can be removed.'**
-  String get sbc210f9634;
-
-  /// fi: ei ruutuja
-  ///
-  /// In en, this message translates to:
-  /// **'no tiles'**
-  String get s4f62c41cb3;
-
-  /// fi: ruutua
-  ///
-  /// In en, this message translates to:
-  /// **'tiles'**
-  String get s92c338c3bd;
-
-  /// fi: Poista käyttämätön yhteys
-  ///
-  /// In en, this message translates to:
-  /// **'Remove unused connection'**
-  String get sd3089f07cc;
-
-  /// fi: Poistetaanko yhteys?
-  ///
-  /// In en, this message translates to:
-  /// **'Remove the connection?'**
-  String get s1333776c9f;
-
-  /// fi: Viim. hälytys {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'Last alarm {p0}'**
-  String s84819cca05(String p0);
+  /// **'Figures are hourly averages'**
+  String get s039bb374fe;
 
   /// fi: Vaihe
   ///
@@ -13781,11 +10263,737 @@ abstract class AppLocalizations {
   /// **'Go to my dashboard'**
   String get sae0fae7127;
 
-  /// fi: Koko leveys
+  /// fi: Valitse yhteystyyppi
   ///
   /// In en, this message translates to:
-  /// **'Full width'**
-  String get s2a28790ea2;
+  /// **'Choose connection type'**
+  String get s2adc3a77ed;
+
+  /// fi: Ei yhteyksiä vielä. Lisää laite tai palvelu, esim. IV-kone (Modbus), Home Assistant tai kamera.
+  ///
+  /// In en, this message translates to:
+  /// **'No connections yet. Add a device or service, e.g. ventilation unit (Modbus), Home Assistant or a camera.'**
+  String get sc6d89693a5;
+
+  /// fi: Pakollinen kenttä
+  ///
+  /// In en, this message translates to:
+  /// **'Required field'**
+  String get s07c82cb0af;
+
+  /// fi: Sama kanava kahdesti?
+  ///
+  /// In en, this message translates to:
+  /// **'The same topic twice?'**
+  String get see3fd4862d;
+
+  /// fi: Komentokanava ja Vastauskanava ovat samat. Useimmat laitteet (esim. kameravalvonnan paneeli) kuuntelevat komentoja omall
+  ///
+  /// In en, this message translates to:
+  /// **'The command topic and the reply topic are the same. Most devices (e.g. the camera surveillance panel) listen on their own command topic and answer on your notification topic – then commands never arrive. Save anyway?'**
+  String get sb80a9b6813;
+
+  /// fi: Tallenna silti
+  ///
+  /// In en, this message translates to:
+  /// **'Save anyway'**
+  String get s70f720de6d;
+
+  /// fi: Poistetaanko yhteys?
+  ///
+  /// In en, this message translates to:
+  /// **'Delete connection?'**
+  String get sf702cf0ac6;
+
+  /// fi: {p0} ruutua käyttää tätä yhteyttä, ne lakkaavat toimimasta.
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} tiles use this connection and will stop working.'**
+  String s6b83de0ab9(String p0);
+
+  /// fi: Yhteys poistetaan tältä laitteelta.
+  ///
+  /// In en, this message translates to:
+  /// **'The connection will be removed from this device.'**
+  String get sccd1325381;
+
+  /// fi: IR on yksisuuntainen: lämpöpumppu ei kerro takaisin, menikö komento perille. Ruuduissa näkyy viimeksi lähetetty tila.
+  ///
+  /// In en, this message translates to:
+  /// **'IR is one-way: the heat pump does not confirm commands. Tiles show the last sent state.'**
+  String get s837e0fc5e6;
+
+  /// fi: Tuo pumpun rekisterilista (CSV)
+  ///
+  /// In en, this message translates to:
+  /// **'Import the pump\'\'s register list (CSV)'**
+  String get sf1ffb49d9c;
+
+  /// fi: Yhteys toimii!
+  ///
+  /// In en, this message translates to:
+  /// **'Connection works!'**
+  String get s09737988fd;
+
+  /// fi: Salasanat ja tokenit tallennetaan laitteen suojattuun tallennustilaan.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords and tokens are stored in the device\'\'s secure storage.'**
+  String get s0a972aa85e;
+
+  /// fi: Makuuhuone
+  ///
+  /// In en, this message translates to:
+  /// **'Bedroom'**
+  String get s7ba50ea69e;
+
+  /// fi: Keittiö
+  ///
+  /// In en, this message translates to:
+  /// **'Kitchen'**
+  String get s9e9723b263;
+
+  /// fi: Olohuone
+  ///
+  /// In en, this message translates to:
+  /// **'Living room'**
+  String get scce769451b;
+
+  /// fi: Kylpyhuone
+  ///
+  /// In en, this message translates to:
+  /// **'Bathroom'**
+  String get s9d5dca2dee;
+
+  /// fi: Sauna
+  ///
+  /// In en, this message translates to:
+  /// **'Sauna'**
+  String get s2569505205;
+
+  /// fi: Eteinen
+  ///
+  /// In en, this message translates to:
+  /// **'Hallway'**
+  String get s1c65dad1f5;
+
+  /// fi: Piha / puutarha
+  ///
+  /// In en, this message translates to:
+  /// **'Yard / garden'**
+  String get sa4d90bb5da;
+
+  /// fi: Tekninen tila
+  ///
+  /// In en, this message translates to:
+  /// **'Technical room'**
+  String get s4a7be17a36;
+
+  /// fi: Työhuone
+  ///
+  /// In en, this message translates to:
+  /// **'Office'**
+  String get s01e404f15f;
+
+  /// fi: Lastenhuone
+  ///
+  /// In en, this message translates to:
+  /// **'Kids\'\' room'**
+  String get sfd8305add2;
+
+  /// fi: Mökki
+  ///
+  /// In en, this message translates to:
+  /// **'Cottage'**
+  String get scd87fb4dd7;
+
+  /// fi: rtsp-transport
+  ///
+  /// In en, this message translates to:
+  /// **'tcp'**
+  String get s772c158a57;
+
+  /// fi: profile
+  ///
+  /// In en, this message translates to:
+  /// **'low-latency'**
+  String get sea00017814;
+
+  /// fi: network-timeout
+  ///
+  /// In en, this message translates to:
+  /// **'8'**
+  String get s2d65587b87;
+
+  /// fi: Sähköpostilla ei ole Molaplan-tiliä.
+  ///
+  /// In en, this message translates to:
+  /// **'There is no Molaplan account with that e-mail.'**
+  String get s53a9fe5e42;
+
+  /// fi: Osoitteella ei löytynyt Molaplan-käyttäjää. Hänen pitää kirjautua Molaplan 0.9:ään kerran – tai lähetä hänelle kutsukood
+  ///
+  /// In en, this message translates to:
+  /// **'No Molaplan user with that address. They need to sign in to Molaplan 0.9 once – or send them an invite code.'**
+  String get sb4bd4baa5c;
+
+  /// fi: Valituissa ei ole jaettavia laitteita (termostaatteja ei voi vielä jakaa).
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing shareable selected (thermostats cannot be shared yet).'**
+  String get s7ed2aecb01;
+
+  /// fi: Kutsua ei enää ole.
+  ///
+  /// In en, this message translates to:
+  /// **'The invite no longer exists.'**
+  String get s707b7ff598;
+
+  /// fi: Avaa ensin tilin salaukset tällä laitteella (Tili → Avaa salasanalla). Jakaminen käyttää tilin avainta.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock the account secrets on this device first (Account → Unlock with password). Sharing uses the account key.'**
+  String get s5ea320fb1c;
+
+  /// fi: Tämä on asentajan kutsu, ja sen voi käyttää vain Molaplanin hyväksymä asentaja (Asetukset → Asentaja → Hae asentajaksi).
+  ///
+  /// In en, this message translates to:
+  /// **'This invite is for an installer and only an installer approved by Molaplan can use it (Settings → Installer → Apply).'**
+  String get s2855893bfc;
+
+  /// fi: Vain Molaplanin ylläpito voi tehdä tämän.
+  ///
+  /// In en, this message translates to:
+  /// **'Only Molaplan admins can do this.'**
+  String get sb8df145fc9;
+
+  /// fi: Koodi on väärä, vanhentunut tai jo käytetty.
+  ///
+  /// In en, this message translates to:
+  /// **'The code is wrong, expired or already used.'**
+  String get sa562754cb5;
+
+  /// fi: Kotisilta ei vastaa. Jakaminen tarvitsee kotisillan (Etäkäyttö), koska oikeudet valvotaan siellä.
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge does not answer. Sharing needs the home bridge (Remote access) – permissions are enforced there.'**
+  String get s9c37d7a89c;
+
+  /// fi: Kotisilta on vanha eikä osaa jakamista. Päivitä silta (Etäkäyttö → Päivitä silta).
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge is too old for sharing. Update it (Remote access → Update bridge).'**
+  String get sc858a8f851;
+
+  /// fi: Ei yhteyttä Molaplan-tiliin.
+  ///
+  /// In en, this message translates to:
+  /// **'No connection to the Molaplan account.'**
+  String get s1a52f53861;
+
+  /// fi: Tilipalvelu ei hyväksynyt pyyntöä: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'The account service refused: {p0}'**
+  String s2457ec4502(String p0);
+
+  /// fi: Kodin silta ei ole yhteydessä.
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge is offline.'**
+  String get s4bc537975e;
+
+  /// fi: Jako on peruttu.
+  ///
+  /// In en, this message translates to:
+  /// **'The share was revoked.'**
+  String get s2fb5fe14e4;
+
+  /// fi: Kotisilta ei vastaa.
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge does not answer.'**
+  String get s7b44d47d45;
+
+  /// fi: Ei yhteyttä.
+  ///
+  /// In en, this message translates to:
+  /// **'No connection.'**
+  String get s8eddd585bc;
+
+  /// fi: Ei oikeutta tähän toimintoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Not allowed.'**
+  String get s47998395f5;
+
+  /// fi: Vain katselu
+  ///
+  /// In en, this message translates to:
+  /// **'View only'**
+  String get s7f504a8c64;
+
+  /// fi: Ohjaus
+  ///
+  /// In en, this message translates to:
+  /// **'Control'**
+  String get s9c067115ef;
+
+  /// fi: Täysi (ohjaus + asetukset)
+  ///
+  /// In en, this message translates to:
+  /// **'Full (control + settings)'**
+  String get s8343921765;
+
+  /// fi: Koodi odottaa käyttöä
+  ///
+  /// In en, this message translates to:
+  /// **'Code not used yet'**
+  String get s211d9f0a3a;
+
+  /// fi: Odottaa hyväksyntää
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for acceptance'**
+  String get s1e6b3fe5dc;
+
+  /// fi: Vahvistetaan…
+  ///
+  /// In en, this message translates to:
+  /// **'Being confirmed…'**
+  String get sb13063b8cd;
+
+  /// fi: Käytössä
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get s13b6f87b0a;
+
+  /// fi: Hylätty
+  ///
+  /// In en, this message translates to:
+  /// **'Declined'**
+  String get sed1d8dbf2b;
+
+  /// fi: Peruttu
+  ///
+  /// In en, this message translates to:
+  /// **'Revoked'**
+  String get s0123f33869;
+
+  /// fi: Jakaminen tarvitsee Molaplan-tilin, jotta kutsut löytävät perille ja salaus toimii.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharing needs a Molaplan account so invites can reach people and encryption works.'**
+  String get scdfdf5d233;
+
+  /// fi: Anna perheenjäsenelle, naapurille tai asentajalle pääsy valitsemiisi laitteisiin. Salasanat ja osoitteet eivät lähde kot
+  ///
+  /// In en, this message translates to:
+  /// **'Give a family member, neighbour or installer access to the devices you choose. Passwords and addresses never leave home, and you can revoke at any time.'**
+  String get s85abc4496d;
+
+  /// fi: Jaa laitteita
+  ///
+  /// In en, this message translates to:
+  /// **'Share devices'**
+  String get sb4602bb0a6;
+
+  /// fi: Käytä kutsukoodia
+  ///
+  /// In en, this message translates to:
+  /// **'Use an invite code'**
+  String get sffe19ad543;
+
+  /// fi: Kutsut sinulle
+  ///
+  /// In en, this message translates to:
+  /// **'Invites for you'**
+  String get s61036a5d51;
+
+  /// fi: laitteita
+  ///
+  /// In en, this message translates to:
+  /// **'devices'**
+  String get s8af08eb19e;
+
+  /// fi: Hyväksytty
+  ///
+  /// In en, this message translates to:
+  /// **'Accepted'**
+  String get sbb84536839;
+
+  /// fi: Jaettu minulle
+  ///
+  /// In en, this message translates to:
+  /// **'Shared with me'**
+  String get s2fd1394b33;
+
+  /// fi: Jakamasi
+  ///
+  /// In en, this message translates to:
+  /// **'Your shares'**
+  String get seaa0c13606;
+
+  /// fi: Et ole jakanut mitään.
+  ///
+  /// In en, this message translates to:
+  /// **'You have not shared anything.'**
+  String get s450c60afd0;
+
+  /// fi: Kutsukoodi
+  ///
+  /// In en, this message translates to:
+  /// **'Invite code'**
+  String get s33f41d417c;
+
+  /// fi: Perutaanko jako?
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke the share?'**
+  String get s9cdf3dcc87;
+
+  /// fi: Pääsy loppuu heti, kun kotisilta saa tiedon (yleensä saman tien).
+  ///
+  /// In en, this message translates to:
+  /// **'Access ends as soon as the home bridge hears of it (usually at once).'**
+  String get s9d0ac1d1ee;
+
+  /// fi: Peru jako
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke'**
+  String get s4417570cbb;
+
+  /// fi: Jako peruttu
+  ///
+  /// In en, this message translates to:
+  /// **'Share revoked'**
+  String get s280e22cbc9;
+
+  /// fi: Nimesi jaoissa
+  ///
+  /// In en, this message translates to:
+  /// **'Your name in shares'**
+  String get sd742357fc8;
+
+  /// fi: Turvallisuus: kotisilta tarkistaa jokaisen pyynnön oikeudet. Yhteystunnus kulkee salattuna vain vastaanottajan avaimelle
+  ///
+  /// In en, this message translates to:
+  /// **'Security: the home bridge checks the rights of every request. The connection credential travels encrypted to the recipient\'\'s key only; device passwords and addresses never leave home.'**
+  String get sfe0000a1a9;
+
+  /// fi: Lisää asiakas koodilla
+  ///
+  /// In en, this message translates to:
+  /// **'Add a customer with a code'**
+  String get s0577e25cbe;
+
+  /// fi: Koodi hyväksytty. Pääsy aukeaa, kun omistajan Molaplan vahvistaa sen (yleensä parissa minuutissa).
+  ///
+  /// In en, this message translates to:
+  /// **'Code accepted. Access opens when the owner\'\'s Molaplan confirms it (usually within a couple of minutes).'**
+  String get sce4c69f42c;
+
+  /// fi: Anna koodi (tai linkki) vastaanottajalle: Molaplan → Jakaminen → Käytä kutsukoodia. Voimassa 7 päivää, kerran.
+  ///
+  /// In en, this message translates to:
+  /// **'Give the code (or link) to the recipient: Molaplan → Sharing → Use an invite code. Valid for 7 days, once.'**
+  String get sd1520d6367;
+
+  /// fi: Kopioi linkki
+  ///
+  /// In en, this message translates to:
+  /// **'Copy link'**
+  String get s563abff5ad;
+
+  /// fi: Kutsu lähetetty – vastaanottaja hyväksyy sen Molaplanissa.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite sent – the recipient accepts it in Molaplan.'**
+  String get s0daf5e9cb6;
+
+  /// fi: Muuta jakoa
+  ///
+  /// In en, this message translates to:
+  /// **'Change share'**
+  String get s707a062202;
+
+  /// fi: 1. Mitä jaetaan
+  ///
+  /// In en, this message translates to:
+  /// **'1. What to share'**
+  String get s79f72dbe13;
+
+  /// fi: Napauta näkymää jakaaksesi sen kaikki laitteet, tai valitse yksittäin.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap a view to share all its devices, or pick them one by one.'**
+  String get s58e14dc230;
+
+  /// fi: Koko näkymä
+  ///
+  /// In en, this message translates to:
+  /// **'Whole view'**
+  String get sdb49fc5671;
+
+  /// fi: 2. Oikeudet
+  ///
+  /// In en, this message translates to:
+  /// **'2. Rights'**
+  String get sa7cf1a01d7;
+
+  /// fi: Katselu
+  ///
+  /// In en, this message translates to:
+  /// **'View'**
+  String get s3b2376ac74;
+
+  /// fi: Täysi
+  ///
+  /// In en, this message translates to:
+  /// **'Full'**
+  String get s6605942623;
+
+  /// fi: Näkee tilat ja mittaukset, ei voi ohjata.
+  ///
+  /// In en, this message translates to:
+  /// **'Sees states and readings, cannot control.'**
+  String get s9ccbd78d51;
+
+  /// fi: Voi kytkeä ja säätää, ei muuttaa asetuksia (esim. lämpötilan asetusarvoja).
+  ///
+  /// In en, this message translates to:
+  /// **'Can switch and adjust, cannot change settings (e.g. temperature setpoints).'**
+  String get sb143b5c9f1;
+
+  /// fi: Ohjaus ja laitteiden asetukset. Omia näkymiäsi tai salasanoja hän ei näe.
+  ///
+  /// In en, this message translates to:
+  /// **'Control and device settings. Never your own views or passwords.'**
+  String get s32dc2aa139;
+
+  /// fi: 3. Kenelle
+  ///
+  /// In en, this message translates to:
+  /// **'3. To whom'**
+  String get se153d3c421;
+
+  /// fi: Molaplan-käyttäjälle (sähköposti)
+  ///
+  /// In en, this message translates to:
+  /// **'A Molaplan user (e-mail)'**
+  String get s62e68022e1;
+
+  /// fi: Kutsukoodi tai -linkki
+  ///
+  /// In en, this message translates to:
+  /// **'Invite code or link'**
+  String get s447da2f746;
+
+  /// fi: Nimi jaolle (valinnainen)
+  ///
+  /// In en, this message translates to:
+  /// **'Name for the share (optional)'**
+  String get se7272a5713;
+
+  /// fi: Oikeudet laitekohtaisesti
+  ///
+  /// In en, this message translates to:
+  /// **'Rights per device'**
+  String get s03f60936b0;
+
+  /// fi: Näe
+  ///
+  /// In en, this message translates to:
+  /// **'View'**
+  String get s385022d526;
+
+  /// fi: Ohjaa
+  ///
+  /// In en, this message translates to:
+  /// **'Control'**
+  String get s482464ebd5;
+
+  /// fi: Ilmoita ntfy-aiheeseen (valinnainen)
+  ///
+  /// In en, this message translates to:
+  /// **'Notify an ntfy topic (optional)'**
+  String get s5897aaa050;
+
+  /// fi: Viestissä ei ole koodia eikä laitetietoja.
+  ///
+  /// In en, this message translates to:
+  /// **'The message contains no code or device details.'**
+  String get sd4faf9db62;
+
+  /// fi: Luo kutsukoodi
+  ///
+  /// In en, this message translates to:
+  /// **'Create invite code'**
+  String get sdec87898c3;
+
+  /// fi: Lähetä kutsu
+  ///
+  /// In en, this message translates to:
+  /// **'Send invite'**
+  String get s19c2104a9d;
+
+  /// fi: Omistaja
+  ///
+  /// In en, this message translates to:
+  /// **'Owner'**
+  String get s8b4d48dfaf;
+
+  /// fi: Huomioitavaa
+  ///
+  /// In en, this message translates to:
+  /// **'Attention'**
+  String get s90944b5e7c;
+
+  /// fi: hälytys
+  ///
+  /// In en, this message translates to:
+  /// **'alarm'**
+  String get s1364743ec7;
+
+  /// fi: Suorita
+  ///
+  /// In en, this message translates to:
+  /// **'Run'**
+  String get s5416a5cdf7;
+
+  /// fi: Näytä kuva
+  ///
+  /// In en, this message translates to:
+  /// **'Show picture'**
+  String get s8debff3196;
+
+  /// fi: Asiakkaasi, jotka ovat antaneet sinulle pääsyn. Näet vain jaetut laitteet ja toimit asiakkaan antamin oikeuksin – salasa
+  ///
+  /// In en, this message translates to:
+  /// **'Customers who gave you access. You see only the shared devices and act within the rights the customer gave – never their passwords.'**
+  String get s2220ce611a;
+
+  /// fi: Asentajan tilasi ei ole voimassa.
+  ///
+  /// In en, this message translates to:
+  /// **'Your installer status is not valid.'**
+  String get s6f3c62fc03;
+
+  /// fi: Ei asiakkaita vielä. Anna asiakkaalle asentajatunnuksesi {p0}: asiakas avaa Asetukset → Asentaja → Anna pääsy.
+  ///
+  /// In en, this message translates to:
+  /// **'No customers yet. Give your customer your installer ID {p0}: they open Settings → Installer → Give access.'**
+  String s7ebc2621b7(String p0);
+
+  /// fi: Odottaa asiakkaan Molaplanin vahvistusta
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for the customer\'\'s Molaplan to confirm'**
+  String get sa52cf49adc;
+
+  /// fi: huomiota
+  ///
+  /// In en, this message translates to:
+  /// **'alerts'**
+  String get s35e8813a82;
+
+  /// fi: Etsii kotiverkosta laitteet, joissa Modbus TCP on päällä (portit 502, 503 ja 5020), ja kokeilee laitteen osoitteet (unit
+  ///
+  /// In en, this message translates to:
+  /// **'Looks for devices with Modbus TCP on (ports 502, 503 and 5020) and tries the unit ids. Takes about half a minute.'**
+  String get s1b85ad9e38;
+
+  /// fi: Oma portti (valinnainen)
+  ///
+  /// In en, this message translates to:
+  /// **'Own port (optional)'**
+  String get seb1f4357ea;
+
+  /// fi: Skannaa uudelleen
+  ///
+  /// In en, this message translates to:
+  /// **'Scan again'**
+  String get s06760a6970;
+
+  /// fi: Skannaa
+  ///
+  /// In en, this message translates to:
+  /// **'Scan'**
+  String get s23d146db23;
+
+  /// fi: Skannataan…
+  ///
+  /// In en, this message translates to:
+  /// **'Scanning…'**
+  String get s18e7ad553e;
+
+  /// fi: Et ole kotona: kotisilta skannasi kotiverkon.
+  ///
+  /// In en, this message translates to:
+  /// **'You are away: the home bridge scanned.'**
+  String get s721647a6cd;
+
+  /// fi: Skannaus epäonnistui
+  ///
+  /// In en, this message translates to:
+  /// **'Scan failed'**
+  String get s08e57d2d85;
+
+  /// fi: Modbus-laitteita ei löytynyt. Tarkista että Modbus TCP on päällä laitteen asetuksista ja että laite on samassa verkossa
+  ///
+  /// In en, this message translates to:
+  /// **'No Modbus devices found. Check that Modbus TCP is on in the device settings and that it is in the same network (not guest Wi-Fi).'**
+  String get s4cf60b9350;
+
+  /// fi: Modbus-laite
+  ///
+  /// In en, this message translates to:
+  /// **'Modbus device'**
+  String get sbd8ee8a14f;
+
+  /// fi: yhdyskäytävä
+  ///
+  /// In en, this message translates to:
+  /// **'gateway'**
+  String get sf0462b25ac;
+
+  /// fi: {p0}-esiasetus
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} preset'**
+  String s28d9c4c7dc(String p0);
+
+  /// fi: löytyi ilmoituksesta
+  ///
+  /// In en, this message translates to:
+  /// **'found from its announcement'**
+  String get sc6cde0d476;
+
+  /// fi: Laite ei ota yhteyttä vastaan
+  ///
+  /// In en, this message translates to:
+  /// **'The device does not accept a connection'**
+  String get s166da70285;
+
+  /// fi: Laitteella voi olla jo yhteys (esim. Home Assistant), lue arvot HA:n kautta. Moni laite sallii vain yhden Modbus TCP -yh
+  ///
+  /// In en, this message translates to:
+  /// **'The device may already have a connection (e.g. Home Assistant) – read the values through HA. Many devices allow only one Modbus TCP connection.'**
+  String get sbe97262d91;
+
+  /// fi: Portti auki, mutta ei Modbus-vastausta
+  ///
+  /// In en, this message translates to:
+  /// **'Port open, no Modbus reply'**
+  String get s24e5139123;
+
+  /// fi: Tarkista laitteen unit id ja Modbus-asetukset. Napauta käyttääksesi tätä osoitetta.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the unit id and Modbus settings. Tap to use this address.'**
+  String get s9041c140be;
 
   /// fi: Aseta kodin sijainti
   ///
@@ -13799,413 +11007,2143 @@ abstract class AppLocalizations {
   /// **'Try now'**
   String get sbf7cc3de9a;
 
-  /// fi: Ei autoa
+  /// fi: Valitse huoneen kuva
   ///
   /// In en, this message translates to:
-  /// **'No car'**
-  String get sb75700bbba;
+  /// **'Choose a room photo'**
+  String get sec88246e24;
 
-  /// fi: Auto kytketty
+  /// fi: Minkä huoneen kuva?
   ///
   /// In en, this message translates to:
-  /// **'Car connected'**
-  String get s5a3fcd56de;
+  /// **'Photo for which room?'**
+  String get s252b8e1289;
 
-  /// fi: Lataa
+  /// fi: Valitse valmis huonekuva tai oma kuva. Kuva näkyy otsikkona tai koko näkymän taustana.
   ///
   /// In en, this message translates to:
-  /// **'Charging'**
-  String get s23910a6fb5;
+  /// **'Pick a built-in room picture or your own photo. It is shown as the header or behind the whole view.'**
+  String get sa27e5362de;
 
-  /// fi: Tauolla
+  /// fi: Valitse oma kuva
   ///
   /// In en, this message translates to:
-  /// **'Paused'**
-  String get s22cd08064f;
+  /// **'Choose your own picture'**
+  String get s84ef77e1ca;
 
-  /// fi: Valmis
+  /// fi: Otsikkokuva
   ///
   /// In en, this message translates to:
-  /// **'Finished'**
-  String get s5b8b3042ec;
+  /// **'Header picture'**
+  String get s0bec34cd24;
 
-  /// fi: Vika
+  /// fi: Koko näkymän tausta
   ///
   /// In en, this message translates to:
-  /// **'Error'**
-  String get s84df123d5a;
+  /// **'Whole view background'**
+  String get s7b1e22fca7;
 
-  /// fi: Sama kuin valmistajan sovelluksessa.
+  /// fi: Himmennys
   ///
   /// In en, this message translates to:
-  /// **'Same as in the maker\'\'s app.'**
-  String get s98c928f06c;
+  /// **'Dimming'**
+  String get s229e29f9ee;
 
-  /// fi: OCPP 1.6J (paikallinen, mikä tahansa merkki)
+  /// fi: Sumennus
   ///
   /// In en, this message translates to:
-  /// **'OCPP 1.6J (local, any brand)'**
-  String get s68e2e87750;
+  /// **'Blur'**
+  String get s38285117e6;
 
-  /// fi: Wallbox, Alfen, ABB, go-e, Etrel, Easee/Zaptec (OCPP päälle)… Laturi ottaa yhteyden suoraan Molaplaniin – ei pilveä.
+  /// fi: Enintään {p0} kuvaa. Poista jokin ensin.
   ///
   /// In en, this message translates to:
-  /// **'Wallbox, Alfen, ABB, go-e, Etrel, Easee/Zaptec (OCPP on)… The charger connects straight to Molaplan – no cloud.'**
-  String get s12fa00013a;
+  /// **'At most {p0} pictures. Remove one first.'**
+  String s6c487e340b(String p0);
 
-  /// fi: Jos laturissa on asetettu Basic auth -salasana. Yleensä tyhjä.
+  /// fi: Trendi
   ///
   /// In en, this message translates to:
-  /// **'If the charger has a Basic auth password set. Usually empty.'**
-  String get s4bc8fc306b;
+  /// **'Trend'**
+  String get s6f29aeb685;
 
-  /// fi: Easee (pilvi)
+  /// fi: Mittari + trendi
   ///
   /// In en, this message translates to:
-  /// **'Easee (cloud)'**
-  String get s66fb236f0c;
+  /// **'Gauge + trend'**
+  String get s3298699c1a;
 
-  /// fi: Easee Home / Charge / One Easee-tilin kautta: tila, aloitus/lopetus ja virtaraja.
+  /// fi: Luku
   ///
   /// In en, this message translates to:
-  /// **'Easee Home / Charge / One through your Easee account: status, start/stop and current limit.'**
-  String get s8c376593cb;
+  /// **'Value'**
+  String get sed593f53ed;
 
-  /// fi: Sama kuin Easee-sovelluksessa (puhelin muodossa +358…).
+  /// fi: Kerätään dataa…
   ///
   /// In en, this message translates to:
-  /// **'Same as in the Easee app (phone as +358…).'**
-  String get s827730d443;
+  /// **'Collecting data…'**
+  String get s9027c88cb7;
 
-  /// fi: Zaptec (pilvi)
+  /// fi: 7 vrk
   ///
   /// In en, this message translates to:
-  /// **'Zaptec (cloud)'**
-  String get s3809be512f;
+  /// **'7 d'**
+  String get sf05d2a09f1;
 
-  /// fi: Zaptec Go / Home / Pro Zaptec-tilin kautta. Aloitus/tauko vaatii omistajan oikeudet.
+  /// fi: huom.
   ///
   /// In en, this message translates to:
-  /// **'Zaptec Go / Home / Pro through your Zaptec account. Start/pause needs owner rights.'**
-  String get se1a5b725a4;
+  /// **'tmrw'**
+  String get s3ec9d77947;
 
-  /// fi: Wallbox (pilvi)
+  /// fi: nyt
   ///
   /// In en, this message translates to:
-  /// **'Wallbox (cloud)'**
-  String get s90c71e52fb;
+  /// **'now'**
+  String get sed9b5e52f6;
 
-  /// fi: Pulsar, Commander, Copper myWallbox-tilin kautta. Paikallisesti: valitse OCPP.
+  /// fi: Lisäasetukset
   ///
   /// In en, this message translates to:
-  /// **'Pulsar, Commander, Copper through your myWallbox account. Locally: pick OCPP.'**
-  String get s72dc0a7687;
+  /// **'Advanced settings'**
+  String get sdc398885dc;
 
-  /// fi: Easee, Zaptec, Wallbox – tai mikä tahansa OCPP-laturi paikallisesti. Lataus ylijäämällä tai halvalla.
+  /// fi: Yleensä näihin ei tarvitse koskea
   ///
   /// In en, this message translates to:
-  /// **'Easee, Zaptec, Wallbox – or any OCPP charger locally. Charge on surplus or when cheap.'**
-  String get s59ed724e14;
+  /// **'Usually you don\'\'t need these'**
+  String get s5d477f3cd8;
 
-  /// fi: OCPP-palvelinta ei voitu käynnistää porttiin {p0}: {p1}
+  /// fi: esim.
   ///
   /// In en, this message translates to:
-  /// **'Could not start the OCPP server on port {p0}: {p1}'**
-  String s2d551049ff(String p0, String p1);
+  /// **'e.g.'**
+  String get s2315e0e739;
 
-  /// fi: Laturi "{p0}" ei ole ottanut yhteyttä. Aseta laturin OCPP-osoitteeksi ws://<tämän laitteen IP>:{p1}/ocpp/
+  /// fi: 24 h eteenpäin
   ///
   /// In en, this message translates to:
-  /// **'Charger \"{p0}\" has not connected. Set its OCPP URL to ws://<this device IP>:{p1}/ocpp/'**
-  String s9a6813045a(String p0, String p1);
+  /// **'24 h ahead'**
+  String get s66ad384363;
 
-  /// fi: Laturi ei lataa nyt
+  /// fi: Tänään + huomenna
   ///
   /// In en, this message translates to:
-  /// **'The charger is not charging now'**
-  String get sb33d4d8b62;
+  /// **'Today + tomorrow'**
+  String get s6df3187e65;
 
-  /// fi: Sähköauton laturi (oma integraatio)
+  /// fi: 48h
   ///
   /// In en, this message translates to:
-  /// **'EV charger (built-in integration)'**
-  String get s7c3abc09fc;
+  /// **'48 h'**
+  String get s76379cf7c6;
 
-  /// fi: OCPP toimii paikallisesti ilman pilveä (laturi ottaa yhteyden tähän sovellukseen tai siltaan).
+  /// fi: tunnin päästä
   ///
   /// In en, this message translates to:
-  /// **'OCPP works locally without a cloud (the charger connects to this app or the bridge).'**
-  String get se6885155b4;
+  /// **'in 1 h'**
+  String get sff03a35d96;
 
-  /// fi: OCPP-portti
+  /// fi: vanhat hinnat
   ///
   /// In en, this message translates to:
-  /// **'OCPP port'**
-  String get sb14c49378c;
+  /// **'old prices'**
+  String get sf9e22ac5e7;
 
-  /// fi: Portti, jota tämä laite kuuntelee. Laturin osoite: ws://<tämän laitteen IP>:9000/ocpp/
+  /// fi: Näkymä on lukittu
   ///
   /// In en, this message translates to:
-  /// **'The port this device listens on. Charger URL: ws://<this device IP>:9000/ocpp/'**
-  String get sa9346504d4;
+  /// **'The view is locked'**
+  String get s58aaa6dade;
 
-  /// fi: Laturin tunnus (OCPP)
+  /// fi: Avaa lukitus
   ///
   /// In en, this message translates to:
-  /// **'Charge point id (OCPP)'**
-  String get sf94b2ba7f3;
+  /// **'Unlock'**
+  String get sdf1af3409c;
 
-  /// fi: Laturin OCPP-tunnus (charge point id). Tyhjä = ensimmäinen yhteyden ottanut.
+  /// fi: Valikko
   ///
   /// In en, this message translates to:
-  /// **'The charger\'\'s OCPP charge point id. Empty = the first one that connects.'**
-  String get s8ea8831ed0;
+  /// **'Menu'**
+  String get s4629a1695c;
 
-  /// fi: Tunniste (idTag) etäkäynnistykseen
+  /// fi: Muokkaa näkymää
   ///
   /// In en, this message translates to:
-  /// **'idTag for remote start'**
-  String get sa3b3822b75;
+  /// **'Edit the view'**
+  String get scd04aa5d9e;
 
-  /// fi: Lähetetään RemoteStartTransactionissa. Tyhjä = "molaplan".
+  /// fi: Huoneen kuva
   ///
   /// In en, this message translates to:
-  /// **'Sent with RemoteStartTransaction. Empty = \"molaplan\".'**
-  String get sf718534954;
+  /// **'Room photo'**
+  String get sf98121cd3d;
 
-  /// fi: Käyttäjätunnus / sähköposti (pilvi)
+  /// fi: Lukitse näkymä
   ///
   /// In en, this message translates to:
-  /// **'Username / e-mail (cloud)'**
-  String get s540a178f7a;
+  /// **'Lock the view'**
+  String get s365492a7d0;
 
-  /// fi: Pilvi: sovelluksen salasana. OCPP: valinnainen Basic auth -salasana. Tallentuu vain tälle laitteelle.
+  /// fi: Laitteita voi edelleen ohjata, mutta muokkaus, asetukset ja laitteiden lisäys piilotetaan. Avaa lukitus rataskuvakkeesta
   ///
   /// In en, this message translates to:
-  /// **'Cloud: the app password. OCPP: optional Basic auth password. Stored on this device only.'**
-  String get sa6b5175654;
+  /// **'Devices can still be controlled, but editing, settings and adding devices are hidden. Unlock from the gear icon.'**
+  String get sb2f38410ee;
 
-  /// fi: Mikä laturin lukema näytetään.
+  /// fi: PIN-koodi (valinnainen)
   ///
   /// In en, this message translates to:
-  /// **'Which charger reading to show.'**
-  String get sccb2892754;
+  /// **'PIN code (optional)'**
+  String get se497d27174;
 
-  /// fi: Tila
+  /// fi: Ilman PIN-koodia lukitus avataan yhdellä napautuksella.
   ///
   /// In en, this message translates to:
-  /// **'Status'**
-  String get s0e7115e10c;
+  /// **'Without a PIN one tap unlocks.'**
+  String get sd21180a166;
 
-  /// fi: Lataa (1/0)
+  /// fi: Lukitse
   ///
   /// In en, this message translates to:
-  /// **'Charging (1/0)'**
-  String get s20cb072267;
+  /// **'Lock'**
+  String get sd86ff8e28a;
 
-  /// fi: Latausteho (W)
+  /// fi: Avaa lukitus?
   ///
   /// In en, this message translates to:
-  /// **'Charging power (W)'**
-  String get se13ff56722;
+  /// **'Unlock?'**
+  String get s872f93a062;
 
-  /// fi: Tämä lataus (kWh)
+  /// fi: Muokkaus ja asetukset tulevat taas näkyviin.
   ///
   /// In en, this message translates to:
-  /// **'This session (kWh)'**
-  String get sd3627e3a20;
+  /// **'Editing and settings become visible again.'**
+  String get s0cd88e27f4;
 
-  /// fi: Yhteensä (kWh)
+  /// fi: Avaa
   ///
   /// In en, this message translates to:
-  /// **'Total (kWh)'**
-  String get s19e058622f;
+  /// **'Unlock'**
+  String get sa5283191be;
 
-  /// fi: Virtaraja (A)
+  /// fi: Väärä PIN-koodi
   ///
   /// In en, this message translates to:
-  /// **'Current limit (A)'**
-  String get s613785b80f;
+  /// **'Wrong PIN code'**
+  String get sca710b76b5;
 
-  /// fi: Laturin tunnus
+  /// fi: Valot
   ///
   /// In en, this message translates to:
-  /// **'Charger id'**
-  String get s60f4e2786f;
+  /// **'Lights'**
+  String get s72a2328ddd;
 
-  /// fi: Tilin laturin tunnus; tyhjä = ainoa laturi.
+  /// fi: Kytkimet
   ///
   /// In en, this message translates to:
-  /// **'Charger id in the account; empty = the only charger.'**
-  String get sfbbd0943a8;
+  /// **'Switches'**
+  String get sca12be80ca;
 
-  /// fi: Komento
+  /// fi: Lämpöpumput ja ilmastointi
   ///
   /// In en, this message translates to:
-  /// **'Command'**
-  String get s5bed8bff00;
+  /// **'Heat pumps and AC'**
+  String get sa4c0eeea02;
 
-  /// fi: Aloita, lopeta tai aseta virtaraja.
+  /// fi: Anturit
   ///
   /// In en, this message translates to:
-  /// **'Start, stop or set the current limit.'**
-  String get s9617db1f3d;
+  /// **'Sensors'**
+  String get s662fecdc8d;
 
-  /// fi: Aloita lataus
+  /// fi: Tila-anturit
   ///
   /// In en, this message translates to:
-  /// **'Start charging'**
-  String get sc110ab773a;
+  /// **'Binary sensors'**
+  String get sa8dbf04ad3;
 
-  /// fi: Lopeta / tauko
+  /// fi: Verhot ja ovet
   ///
   /// In en, this message translates to:
-  /// **'Stop / pause'**
-  String get s44d11f741f;
+  /// **'Covers and doors'**
+  String get sa7690acf57;
 
-  /// fi: Lataus päälle/pois
+  /// fi: Lukot
   ///
   /// In en, this message translates to:
-  /// **'Charging on/off'**
-  String get s4c68e739b0;
+  /// **'Locks'**
+  String get s487bf00fc7;
 
-  /// fi: Aseta virtaraja (A)
+  /// fi: Kamerat
   ///
   /// In en, this message translates to:
-  /// **'Set current limit (A)'**
-  String get s141fac7235;
+  /// **'Cameras'**
+  String get s88ac47e6d1;
 
-  /// fi: Virtaraja ampeereina; {{value}} = liukusäätimen arvo.
+  /// fi: Puhaltimet
   ///
   /// In en, this message translates to:
-  /// **'\'Current limit in amps; {{value}} = the slider value.\''**
-  String get s33f04bfedd;
+  /// **'Fans'**
+  String get sbe76826428;
 
-  /// fi: Laturia "{p0}" ei löydy (ei yhteyttä tai poistettu tililtä)
+  /// fi: Painikkeet
   ///
   /// In en, this message translates to:
-  /// **'Charger \"{p0}\" not found (offline or removed)'**
-  String s610172c6f4(String p0);
+  /// **'Buttons'**
+  String get s4b53bcaaf0;
 
-  /// fi: Virtaraja puuttuu
+  /// fi: Säätimet
   ///
   /// In en, this message translates to:
-  /// **'Current limit missing'**
-  String get sf51ef628f4;
+  /// **'Number inputs'**
+  String get s5c92d42edd;
 
-  /// fi: Ei latureita
+  /// fi: Apukytkimet
   ///
   /// In en, this message translates to:
-  /// **'No chargers'**
-  String get sd661432e07;
+  /// **'Helper toggles'**
+  String get s3c2ed0c522;
 
-  /// fi: ladattu yhteensä
+  /// fi: Mediasoittimet
   ///
   /// In en, this message translates to:
-  /// **'total charged'**
-  String get s47aba73804;
+  /// **'Media players'**
+  String get sea20d169a3;
 
-  /// fi: tila
+  /// fi: Tunnus (token) ei kelpaa. Luo uusi Home Assistantissa.
   ///
   /// In en, this message translates to:
-  /// **'status'**
-  String get s14252e6c3a;
+  /// **'The token is not accepted. Create a new one in Home Assistant.'**
+  String get sbcb95e1e78;
 
-  /// fi: lataus
+  /// fi: Home Assistantiin ei saatu yhteyttä. Tarkista osoite.
   ///
   /// In en, this message translates to:
-  /// **'charging'**
-  String get sed9640f6b4;
+  /// **'Could not reach Home Assistant. Check the address.'**
+  String get s0b80dc2642;
 
-  /// fi: latausteho
+  /// fi: kamerat
   ///
   /// In en, this message translates to:
-  /// **'charging power'**
-  String get sebaaf2a20f;
+  /// **'cameras'**
+  String get sf32b7f15d8;
 
-  /// fi: tämä lataus
+  /// fi: Valitse Home Assistantin laitteet
   ///
   /// In en, this message translates to:
-  /// **'this session'**
-  String get s223d1336d5;
+  /// **'Pick Home Assistant devices'**
+  String get sa7a829cefb;
 
-  /// fi: virtaraja
+  /// fi: Haetaan laitteita…
   ///
   /// In en, this message translates to:
-  /// **'current limit'**
-  String get sbea289dcc3;
+  /// **'Loading devices…'**
+  String get sefdf8e3316;
 
-  /// fi: locked=Lukossa;unlocked=Auki;jammed=JUMISSA
+  /// fi: Huoneittain omiin näkymiin
   ///
   /// In en, this message translates to:
-  /// **'locked=Locked;unlocked=Unlocked;jammed=JAMMED'**
-  String get s1becc05ea1;
+  /// **'One view per room'**
+  String get s26583a1933;
 
-  /// fi: open=Auki;closed=Kiinni;opening=Aukeaa;closing=Sulkeutuu
+  /// fi: Hae nimellä tai tunnuksella
   ///
   /// In en, this message translates to:
-  /// **'open=Open;closed=Closed;opening=Opening;closing=Closing'**
-  String get s259de02f33;
+  /// **'Search by name or id'**
+  String get sb3e6b54bce;
 
-  /// fi: disarmed=Pois;armed_away=Päällä;armed_home=Kotona;armed_night=Yö;triggered=HÄLYTYS;arming=Kytkeytyy
+  /// fi: Kaikki huoneet
   ///
   /// In en, this message translates to:
-  /// **'disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming'**
-  String get s64d4364336;
+  /// **'All rooms'**
+  String get safedc10c48;
 
-  /// fi: on=Päällä;off=Pois
+  /// fi: Ei huonetta
   ///
   /// In en, this message translates to:
-  /// **'on=On;off=Off'**
-  String get s5b1e227dc4;
+  /// **'No room'**
+  String get s407f3f7a0c;
 
-  /// fi: WebSocket
+  /// fi: {p0} valoa on Philips Hue -valoja
   ///
   /// In en, this message translates to:
-  /// **'WebSocket'**
-  String get s3d43664fcc;
+  /// **'{p0} lights are Philips Hue lights'**
+  String s140aba8cd7(String p0);
 
-  /// fi: Osoite
+  /// fi: Suoraan Hue-sillan kautta ne toimivat nopeammin ja ilman Home Assistantia.
   ///
   /// In en, this message translates to:
-  /// **'URL'**
-  String get sfcbb753f53;
+  /// **'Directly through the Hue Bridge they respond faster and work without Home Assistant.'**
+  String get s16aee2aa30;
 
-  /// fi: Otsakkeet (Nimi: arvo / rivi)
+  /// fi: Lisää Hue-silta
   ///
   /// In en, this message translates to:
-  /// **'Headers (Name: value per line)'**
-  String get s81479e1555;
+  /// **'Add Hue Bridge'**
+  String get s3816288db1;
 
-  /// fi: Token (Authorization: Bearer)
+  /// fi: Näytä kaikki
   ///
   /// In en, this message translates to:
-  /// **'Token (Authorization: Bearer)'**
-  String get s5811b38d7b;
+  /// **'Show all'**
+  String get sa765c9294a;
 
-  /// fi: Viesti yhdistettäessä
+  /// fi: {p0} teknistä kohdetta piilotettu (diagnostiikka, asetukset, päivitykset)
   ///
   /// In en, this message translates to:
-  /// **'Message on connect'**
-  String get sd512dbbfc7;
+  /// **'{p0} technical items hidden (diagnostics, configuration, updates)'**
+  String sdb088f47a8(String p0);
 
-  /// fi: Salli itse allekirjoitettu sertifikaatti
+  /// fi: Huoneita ei saatu luettua – näytetään laitteet ilman huoneita.
   ///
   /// In en, this message translates to:
-  /// **'Allow self-signed certificate'**
-  String get s2c4fd261e2;
+  /// **'Rooms could not be read – showing devices without rooms.'**
+  String get s3ee8d0a5e3;
 
-  /// fi: Suodatin (viesti sisältää)
+  /// fi: Ei osumia
   ///
   /// In en, this message translates to:
-  /// **'Filter (message contains)'**
-  String get s4d089aab74;
+  /// **'No matches'**
+  String get sf55fca7a32;
 
-  /// fi: JSON-polku
+  /// fi: jo lisätty
   ///
   /// In en, this message translates to:
-  /// **'JSON path'**
-  String get s55c951a8ad;
+  /// **'already added'**
+  String get s78cdce874e;
+
+  /// fi: Näytä Molaplan
+  ///
+  /// In en, this message translates to:
+  /// **'Show Molaplan'**
+  String get sc80648d495;
+
+  /// fi: Lopeta
+  ///
+  /// In en, this message translates to:
+  /// **'Quit'**
+  String get sa4e9c86a86;
+
+  /// fi: Kaikki rauhallista.
+  ///
+  /// In en, this message translates to:
+  /// **'All quiet.'**
+  String get sfe55fd97fa;
+
+  /// fi: {p0}: valmis
+  ///
+  /// In en, this message translates to:
+  /// **'{p0}: done'**
+  String s162c54ed4c(String p0);
+
+  /// fi: maanantai
+  ///
+  /// In en, this message translates to:
+  /// **'Monday'**
+  String get se26e839c2f;
+
+  /// fi: tiistai
+  ///
+  /// In en, this message translates to:
+  /// **'Tuesday'**
+  String get s763254941f;
+
+  /// fi: keskiviikko
+  ///
+  /// In en, this message translates to:
+  /// **'Wednesday'**
+  String get sf3448cdd52;
+
+  /// fi: torstai
+  ///
+  /// In en, this message translates to:
+  /// **'Thursday'**
+  String get sc34ca7eddb;
+
+  /// fi: perjantai
+  ///
+  /// In en, this message translates to:
+  /// **'Friday'**
+  String get sfa82438bec;
+
+  /// fi: lauantai
+  ///
+  /// In en, this message translates to:
+  /// **'Saturday'**
+  String get s517c348371;
+
+  /// fi: sunnuntai
+  ///
+  /// In en, this message translates to:
+  /// **'Sunday'**
+  String get sb1f0e72163;
+
+  /// fi: Tämä laite ei ole yhteydessä wifiin
+  ///
+  /// In en, this message translates to:
+  /// **'This device is not on Wi-Fi'**
+  String get s55d52c5ae1;
+
+  /// fi: Yhdistä tämä laite kodin wifiin (samaan, jossa {p0} on). Tai jos olet kodin ulkopuolella, ota käyttöön kotisilta – sillo
+  ///
+  /// In en, this message translates to:
+  /// **'Connect this device to your home Wi-Fi (the one {p0} uses). Or, if you are away, set up the home bridge so the search runs on a device at home.'**
+  String s9a4dece965(String p0);
+
+  /// fi: Laitetta ei tavoitettu
+  ///
+  /// In en, this message translates to:
+  /// **'Could not reach the device'**
+  String get s3972820cd6;
+
+  /// fi: Laitetta ei tavoitettu osoitteesta {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Could not reach the device at {p0}'**
+  String s0f480abb4a(String p0);
+
+  /// fi: 1. Tarkista että {p0} on päällä (valo palaa).
+  /// 2. Tämän laitteen (tai kotisillan) pitää olla samassa wifissä kuin {p1}.
+  /// 3
+  ///
+  /// In en, this message translates to:
+  /// **'1. Check that {p0} is powered.\n2. This device (or the home bridge) must be on the same Wi-Fi.\n3. Check the address – it can change. Tap \"Back\" and search again.'**
+  String sa82143ee02(String p0, String p1);
+
+  /// fi: Osoitteessa on jokin muu laite
+  ///
+  /// In en, this message translates to:
+  /// **'A different device answered'**
+  String get sd4d7ad1bab;
+
+  /// fi: Osoitteesta vastasi laite, joka ei ole {p0}. Tarkista osoite ja kokeile uudelleen.
+  ///
+  /// In en, this message translates to:
+  /// **'The device at that address is not {p0}. Check the address.'**
+  String s5b7d02a301(String p0);
+
+  /// fi: Laite pyytää salasanaa
+  ///
+  /// In en, this message translates to:
+  /// **'The device asks for a password'**
+  String get sdac5622fa8;
+
+  /// fi: Olet asettanut laitteeseen salasanan. Kirjoita se alle ja paina "Yhdistä".
+  ///
+  /// In en, this message translates to:
+  /// **'A password is set on the device. Type it below and tap \"Connect\".'**
+  String get sbf9ee8aaec;
+
+  /// fi: Tarvitaan vielä yksi tieto
+  ///
+  /// In en, this message translates to:
+  /// **'One more detail is needed'**
+  String get s9e22388413;
+
+  /// fi: {p0} ei kerro tätä itse. Kirjoita se alle ja paina "Yhdistä".
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} does not tell this by itself. Type it below and tap \"Connect\".'**
+  String sc8702d4da2(String p0);
+
+  /// fi: Salasana ei kelpaa
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong password'**
+  String get s83f57c7c24;
+
+  /// fi: Tarkista salasana (isot ja pienet kirjaimet). Sen voi vaihtaa laitteen omasta sovelluksesta.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the password (case matters). You can change it in the device app.'**
+  String get s32e85a0ba2;
+
+  /// fi: Painiketta ei painettu ajoissa
+  ///
+  /// In en, this message translates to:
+  /// **'The button was not pressed in time'**
+  String get sb1d36bfdd3;
+
+  /// fi: Paina "Yritä uudelleen" ja paina sitten painiketta heti.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap \"Try again\" and then press the button right away.'**
+  String get sc994f6ec6e;
+
+  /// fi: Laitteelta ei löytynyt ohjattavaa
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing to control was found'**
+  String get s663202243e;
+
+  /// fi: Laite vastasi, mutta siinä ei ollut kytkimiä tai valoja. Jos käytät pilveä, kirjoita laitteen tunnus (Device ID) käsin.
+  ///
+  /// In en, this message translates to:
+  /// **'The device answered but has no switches or lights. For the cloud, type the Device ID.'**
+  String get sb03997d94b;
+
+  /// fi: Kamera löytyi, mutta videon osoitetta ei löytynyt
+  ///
+  /// In en, this message translates to:
+  /// **'Camera found, but not its video address'**
+  String get se6e01118ac;
+
+  /// fi: Kamera vastasi, mutta ei kertonut videokuvan osoitetta, eikä yksikään yleisistä RTSP-osoitteista toiminut tällä tunnukse
+  ///
+  /// In en, this message translates to:
+  /// **'The camera answered but did not tell its video address, and none of the usual RTSP addresses worked with this login. Check that RTSP/ONVIF is on in the camera app, or pick the brand below and tap \"Connect\".'**
+  String get sca994210fb;
+
+  /// fi: Pilviavain tai palvelin ei kelpaa
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud key or server not accepted'**
+  String get s869571042f;
+
+  /// fi: Kopioi avain ja palvelimen osoite uudelleen Shelly-sovelluksesta (Käyttäjäasetukset → Authorization cloud key).
+  ///
+  /// In en, this message translates to:
+  /// **'Copy the key and server again from the Shelly app (User settings → Authorization cloud key).'**
+  String get sab1763c592;
+
+  /// fi: Pilveen ei saatu yhteyttä
+  ///
+  /// In en, this message translates to:
+  /// **'Could not reach the cloud'**
+  String get s855ffbfd24;
+
+  /// fi: Tarkista nettiyhteys ja yritä uudelleen.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the internet connection.'**
+  String get s739d569a9c;
+
+  /// fi: Liian monta pyyntöä
+  ///
+  /// In en, this message translates to:
+  /// **'Too many requests'**
+  String get sc96a3502b5;
+
+  /// fi: Pilvi rajoittaa pyyntöjä. Odota hetki ja yritä uudelleen.
+  ///
+  /// In en, this message translates to:
+  /// **'The cloud limits requests. Wait a moment.'**
+  String get sed917dc2a2;
+
+  /// fi: Kotisilta on vanha versio
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge is out of date'**
+  String get s516dbdd784;
+
+  /// fi: Päivitä kotisillan Molaplan (Asetukset → Tarkista päivitykset) ja yritä uudelleen.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Molaplan on the bridge (Settings → Check for updates).'**
+  String get s70089507bf;
+
+  /// fi: Kotisilta ei ole päällä
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge is off'**
+  String get s7e11595f9e;
+
+  /// fi: Tarkista että kotona oleva kotisilta (tabletti tai PC) on päällä, Molaplan on auki ja sillä on netti.
+  ///
+  /// In en, this message translates to:
+  /// **'Check that the bridge at home is on, Molaplan is open and it has internet.'**
+  String get scc1918f2dc;
+
+  /// fi: Laitteeseen ei saatu yhteyttä
+  ///
+  /// In en, this message translates to:
+  /// **'Could not connect to the device'**
+  String get se11f9b5084;
+
+  /// fi: Tarkista osoite ja että laite on päällä, ja yritä uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the address and that the device is on, then try again. The technical details show the exact reason.'**
+  String get s979376dca6;
+
+  /// fi: Kirjoita ensin osoite
+  ///
+  /// In en, this message translates to:
+  /// **'Type the address first'**
+  String get sce6d01c270;
+
+  /// fi: Tarkista osoite
+  ///
+  /// In en, this message translates to:
+  /// **'Check the address'**
+  String get s65bbf3cab4;
+
+  /// fi: {p0} ei ole kotiverkon osoite. Kotiverkon osoitteet alkavat yleensä 192.168. – katso osoite uudelleen {p1}-sovelluksesta
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} is not a home network address. They usually start with 192.168. – check it again in the {p1} app.'**
+  String sb711cc1ce2(String p0, String p1);
+
+  /// fi: Tarkoititko {p0}?
+  ///
+  /// In en, this message translates to:
+  /// **'Did you mean {p0}?'**
+  String se60794c266(String p0);
+
+  /// fi: Korjaan itse
+  ///
+  /// In en, this message translates to:
+  /// **'I\'\'ll fix it'**
+  String get s264fda2dee;
+
+  /// fi: Kokeile silti
+  ///
+  /// In en, this message translates to:
+  /// **'Try anyway'**
+  String get s0a6098ac78;
+
+  /// fi: Käytä {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Use {p0}'**
+  String sc1039f5cf6(String p0);
+
+  /// fi: Osoite on eri verkossa
+  ///
+  /// In en, this message translates to:
+  /// **'The address is on another network'**
+  String get s20f777bfef;
+
+  /// fi: Osoite {p0} ei ole samassa verkossa kuin tämä laite ({p1}.x). Yleensä se tarkoittaa, että tämä laite on eri wifissä kuin
+  ///
+  /// In en, this message translates to:
+  /// **'Address {p0} is not on the same network as this device ({p1}.x). Usually this device is on a different Wi-Fi than {p2}.\n\nJoin the same Wi-Fi, or set up the home bridge.'**
+  String sbb1730fa00(String p0, String p1, String p2, String p3);
+
+  /// fi: Valitse vähintään yksi
+  ///
+  /// In en, this message translates to:
+  /// **'Pick at least one'**
+  String get s915c9a0db3;
+
+  /// fi: Lisää: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Add: {p0}'**
+  String sb160156a36(String p0);
+
+  /// fi: Lisää kotinäkymään
+  ///
+  /// In en, this message translates to:
+  /// **'Add to home view'**
+  String get s43d448a950;
+
+  /// fi: Näytä kotinäkymä
+  ///
+  /// In en, this message translates to:
+  /// **'Show home view'**
+  String get sd890121a57;
+
+  /// fi: A) Ilman kotisiltaa
+  ///
+  /// In en, this message translates to:
+  /// **'A) Without a home bridge'**
+  String get sb1717cc67c;
+
+  /// fi: Käytä Shelly Cloudia (ei kotisiltaa)
+  ///
+  /// In en, this message translates to:
+  /// **'Use Shelly Cloud (no bridge)'**
+  String get s2082568a23;
+
+  /// fi: Paras, jos mikään laite ei ole aina kotona – esim. kun tabletti kulkee mukanasi. Ohjaus kulkee Shellyn oman pilven kautt
+  ///
+  /// In en, this message translates to:
+  /// **'Best if no device always stays at home – e.g. your tablet travels with you. Control goes via Shelly\'\'s own cloud. You need a key from the Shelly app (we show where).'**
+  String get s5080d486b8;
+
+  /// fi: B) Kotisillan kautta
+  ///
+  /// In en, this message translates to:
+  /// **'B) Through a home bridge'**
+  String get s82985d5078;
+
+  /// fi: Miten ohjaat kotia muualta?
+  ///
+  /// In en, this message translates to:
+  /// **'How will you control your home when away?'**
+  String get s78aec2034d;
+
+  /// fi: Kotisilta on laite, joka on AINA kotona, päällä ja samassa wifissä kuin {p0} – esim. vanha puhelin, tabletti tai PC. Muu
+  ///
+  /// In en, this message translates to:
+  /// **'A home bridge is a device that ALWAYS stays at home, switched on and on the same Wi-Fi as {p0} – e.g. an old phone, tablet or PC. Your other devices reach it over the internet (encrypted, no port forwarding). A device you carry around is not a good bridge.'**
+  String s03b3c3b3c8(String p0);
+
+  /// fi: Koska olet kirjautunut, kotiyhteys siirtyy kaikille laitteillesi automaattisesti.
+  ///
+  /// In en, this message translates to:
+  /// **'As you are signed in, the home connection reaches all your devices automatically.'**
+  String get s688d1308d7;
+
+  /// fi: Tämä laite jää aina kotiin – tee siitä kotisilta
+  ///
+  /// In en, this message translates to:
+  /// **'This device always stays home – make it the bridge'**
+  String get s96feb2f60a;
+
+  /// fi: Pidä laite laturissa ja Molaplan auki. Muut laitteet yhdistetään siihen QR-koodilla tai kirjautumalla samalle tilille.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep it charging with Molaplan open. Other devices connect with a QR code or by signing in to the same account.'**
+  String get sb2a33a1ec4;
+
+  /// fi: Kotisilta on jo toisella laitteella – yhdistä siihen
+  ///
+  /// In en, this message translates to:
+  /// **'The bridge is on another device – connect to it'**
+  String get s1b9f4ae6d5;
+
+  /// fi: Skannaa kotisillan QR-koodi. Sen jälkeen laitteet haetaan kotisillan kautta, vaikka olisit muualla.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan the bridge QR code. Devices are then found through the bridge, even when you are away.'**
+  String get s13d739b710;
+
+  /// fi: Ohita nyt – lisään laitteen kotiverkossa (etäyhteyden voi ottaa käyttöön myöhemmin)
+  ///
+  /// In en, this message translates to:
+  /// **'Skip for now – add on the home network (remote access can be set up later)'**
+  String get sda6a1e50e9;
+
+  /// fi: Etsitään: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Finding: {p0}'**
+  String s6f326a48f9(String p0);
+
+  /// fi: Haku tehdään kotisillan kautta, joten tämä toimii myös kodin ulkopuolella.
+  ///
+  /// In en, this message translates to:
+  /// **'Searching through the home bridge, so this works away from home too.'**
+  String get sc788897ba0;
+
+  /// fi: Etsin laitteita kodin wifistä. Napauta omaasi.
+  ///
+  /// In en, this message translates to:
+  /// **'Looking on your home Wi-Fi. Tap yours.'**
+  String get s0f7361f40c;
+
+  /// fi: Avaa wifi-asetukset
+  ///
+  /// In en, this message translates to:
+  /// **'Open Wi-Fi settings'**
+  String get sda2b4c9721;
+
+  /// fi: Yhdistin – etsi uudelleen
+  ///
+  /// In en, this message translates to:
+  /// **'Connected – search again'**
+  String get sc93d9cc14b;
+
+  /// fi: Etsitään… (noin 5 sekuntia)
+  ///
+  /// In en, this message translates to:
+  /// **'Searching… (about 5 seconds)'**
+  String get s13f0596b74;
+
+  /// fi: Laitteita ei löytynyt automaattisesti. Tarkista että {p0} on päällä ja samassa wifissä{p1}. Voit myös kirjoittaa osoitte
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing found automatically. Check that {p0} is on and on the same Wi-Fi. You can also type the address below.'**
+  String s8eabd27f68(String p0, String p1);
+
+  /// fi: Kirjoita osoite itse
+  ///
+  /// In en, this message translates to:
+  /// **'Type the address'**
+  String get sa616ab181e;
+
+  /// fi: Tai kirjoita osoite itse
+  ///
+  /// In en, this message translates to:
+  /// **'Or type the address'**
+  String get sb439b8abc3;
+
+  /// fi: Mistä löydän sen?
+  ///
+  /// In en, this message translates to:
+  /// **'Where do I find it?'**
+  String get scf487a3699;
+
+  /// fi:  (vapaaehtoinen)
+  ///
+  /// In en, this message translates to:
+  /// **' (optional)'**
+  String get s9b9b0d01a2;
+
+  /// fi: Paina painiketta nyt
+  ///
+  /// In en, this message translates to:
+  /// **'Press the button now'**
+  String get s0a7134d0e3;
+
+  /// fi: Aikaa jäljellä {p0} s
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} s left'**
+  String s43118959d5(String p0);
+
+  /// fi: Kirjaudu kameraan
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to the camera'**
+  String get s46c87a553f;
+
+  /// fi: Laitteen salasana
+  ///
+  /// In en, this message translates to:
+  /// **'Device password'**
+  String get se4095d7d95;
+
+  /// fi: Olen kodin ulkopuolella
+  ///
+  /// In en, this message translates to:
+  /// **'I am away from home'**
+  String get s8f610a3bb2;
+
+  /// fi: Kameran merkki
+  ///
+  /// In en, this message translates to:
+  /// **'Camera brand'**
+  String get sb629592b4b;
+
+  /// fi: RTSP-osoite
+  ///
+  /// In en, this message translates to:
+  /// **'RTSP address'**
+  String get se3aa0f7164;
+
+  /// fi: Ilman tunnusta – käyttäjä ja salasana lisätään itse.
+  ///
+  /// In en, this message translates to:
+  /// **'Without the login – the user and password are added automatically.'**
+  String get s722ac06c6d;
+
+  /// fi: Löytyi: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Found: {p0}'**
+  String s77ec7b376b(String p0);
+
+  /// fi: Valitse mitkä tulevat kotinäkymään ja anna niille nimet (esim. Lämmitys, Ulkovalot).
+  ///
+  /// In en, this message translates to:
+  /// **'Pick what goes on the home view and name them.'**
+  String get sac4debdb9c;
+
+  /// fi: Poista valinnat
+  ///
+  /// In en, this message translates to:
+  /// **'Select none'**
+  String get sfe5661e401;
+
+  /// fi: Valitse kaikki ({p0})
+  ///
+  /// In en, this message translates to:
+  /// **'Select all ({p0})'**
+  String s2618555da0(String p0);
+
+  /// fi: Lisää myös kirkkaus / teho
+  ///
+  /// In en, this message translates to:
+  /// **'Also add brightness / power'**
+  String get s86c3f92546;
+
+  /// fi: Näytä myös teho (W)
+  ///
+  /// In en, this message translates to:
+  /// **'Also show power (W)'**
+  String get s91571486e4;
+
+  /// fi: Valmis! {p0} ruutua lisätty
+  ///
+  /// In en, this message translates to:
+  /// **'Done! {p0} tiles added'**
+  String sf86536db42(String p0);
+
+  /// fi: Ruudut toimivat kotona ja kodin ulkopuolella pilven kautta – mitään muuta ei tarvitse tehdä.
+  ///
+  /// In en, this message translates to:
+  /// **'The tiles work at home and away through the cloud – nothing else to do.'**
+  String get sbfaea66122;
+
+  /// fi: Ruudut toimivat kotona ja kodin ulkopuolella kotisillan kautta – mitään muuta ei tarvitse tehdä.
+  ///
+  /// In en, this message translates to:
+  /// **'The tiles work at home and away through the home bridge – nothing else to do.'**
+  String get se7c68b3bed;
+
+  /// fi: Ruudut toimivat nyt kotiverkossa. Jotta voit ohjata kotia mistä tahansa, ota kotisilta käyttöön.
+  ///
+  /// In en, this message translates to:
+  /// **'The tiles work on your home network. To control from anywhere, set up the home bridge.'**
+  String get sbc8469cce1;
+
+  /// fi: Mittaukset
+  ///
+  /// In en, this message translates to:
+  /// **'Measurements'**
+  String get s02480e4c13;
+
+  /// fi: Ohjaukset
+  ///
+  /// In en, this message translates to:
+  /// **'Controls'**
+  String get sd1c778324e;
+
+  /// fi: Hintapalvelu
+  ///
+  /// In en, this message translates to:
+  /// **'The price service'**
+  String get sc1e35d5171;
+
+  /// fi: Sääpalvelu
+  ///
+  /// In en, this message translates to:
+  /// **'The weather service'**
+  String get s8b22e8d330;
+
+  /// fi: Shelly Cloud
+  ///
+  /// In en, this message translates to:
+  /// **'Shelly Cloud'**
+  String get s252ebed5af;
+
+  /// fi: Tuya
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya'**
+  String get s07d3467ef6;
+
+  /// fi: ntfy-palvelin
+  ///
+  /// In en, this message translates to:
+  /// **'The ntfy server'**
+  String get s10edebf3fa;
+
+  /// fi: Airthings-pilvi
+  ///
+  /// In en, this message translates to:
+  /// **'The Airthings cloud'**
+  String get sc08176420f;
+
+  /// fi: Palvelu
+  ///
+  /// In en, this message translates to:
+  /// **'The service'**
+  String get sd3d9c263ed;
+
+  /// fi: ntfy.sh sallii 250 viestiä 12 tunnissa kotisi julkisesta IP-osoitteesta (kaikki puhelimet, tabletit, PC ja laitteen omat
+  ///
+  /// In en, this message translates to:
+  /// **'ntfy.sh allows 250 messages per 12 hours from your home\'\'s public IP (all phones, tablets, PCs and the device\'\'s own replies together). Messages free up every few minutes – the app now asks for the state less often. A lasting fix: your own ntfy server or an ntfy account with a higher limit.'**
+  String get s5d151d0815;
+
+  /// fi: Komento lähti ntfy-palvelimelle, mutta laitteen vastausta ei tullut. Tarkista yhteyden "Vastauskanava" – laite voi vasta
+  ///
+  /// In en, this message translates to:
+  /// **'The command reached the ntfy server, but no reply came from the device. Check the connection\'\'s \"Reply topic\" – the device may answer on your own notification topic – and that the device is online.'**
+  String get s7aa9e16c41;
+
+  /// fi: Sisävaloa ei seurata eikä ohjata päivällä. Valo ei ole pois – se ei ole seurannassa.
+  ///
+  /// In en, this message translates to:
+  /// **'The indoor light is not tracked or controlled during the day. It is not off – it is not being followed.'**
+  String get sb7b4d4f624;
+
+  /// fi: Ei nettiyhteyttä
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection'**
+  String get sdfb639365a;
+
+  /// fi: {p0} on internetissä, eikä siihen saatu yhteyttä. Tarkista tämän laitteen nettiyhteys. Viimeisimmät tiedot näytetään, ku
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} is on the internet and could not be reached. Check this device\'\'s internet connection. The latest data is shown when available.'**
+  String s390dd51af3(String p0);
+
+  /// fi: {p0} ei vastaa, yritetään varalähdettä
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} is not answering, trying a backup source'**
+  String sbb750bf9d6(String p0);
+
+  /// fi: {p0} ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} is not answering'**
+  String s4284ebac1e(String p0);
+
+  /// fi: Myöskään varalähteistä ei saatu tietoja juuri nyt. Vika on todennäköisesti palveluissa, ei kotiverkossasi. Yritetään aut
+  ///
+  /// In en, this message translates to:
+  /// **'The backup sources did not answer right now either. The problem is most likely at the services, not your home network. Retrying automatically.'**
+  String get s828d009fa6;
+
+  /// fi: Palvelussa on häiriö. Vika on todennäköisesti palvelussa, ei kotiverkossasi. Yritetään automaattisesti uudelleen.
+  ///
+  /// In en, this message translates to:
+  /// **'The service has a problem, most likely at the service and not your home network. Retrying automatically.'**
+  String get se21c801ba6;
+
+  /// fi: Kirjautuminen palveluun ei onnistunut
+  ///
+  /// In en, this message translates to:
+  /// **'Signing in to the service failed'**
+  String get s35e0766add;
+
+  /// fi: Tarkista palvelun tunnus, avain tai token ({p0}).
+  ///
+  /// In en, this message translates to:
+  /// **'Check the account, key or token for {p0}.'**
+  String sa4d255e53c(String p0);
+
+  /// fi: Osoitteessa ei vastaa odotettu laite – tarkista osoite (http vai https?)
+  ///
+  /// In en, this message translates to:
+  /// **'The expected device does not answer at this address – check it (http or https?)'**
+  String get sd0a2130950;
+
+  /// fi: Osoitteessa vastaa jokin, mutta ei odotetulla tavalla. Kokeile https:// tai http:// osoitteen alkuun ja tarkista portti.
+  ///
+  /// In en, this message translates to:
+  /// **'Something answers, but not as expected. Try https:// or http:// in front and check the port.'**
+  String get sdd5742468b;
+
+  /// fi: Osoitetta ei löydy
+  ///
+  /// In en, this message translates to:
+  /// **'Address not found'**
+  String get s03c0a5192b;
+
+  /// fi: Tarkista osoitteen kirjoitusasu. Kokeile IP-osoitetta (esim. 192.168.1.50) nimen sijaan.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the spelling. Try the IP address (e.g. 192.168.1.50) instead of a name.'**
+  String get sb3ef01a6fa;
+
+  /// fi: Laitetta ei löydy osoitteesta
+  ///
+  /// In en, this message translates to:
+  /// **'Device not found at this address'**
+  String get s274a753ad6;
+
+  /// fi: Tarkista että laite on päällä ja että puhelin tai PC on samassa wifissä. Tarkista myös IP-osoite – se voi vaihtua, joten
+  ///
+  /// In en, this message translates to:
+  /// **'Check that the device is on and that your phone or PC is on the same Wi-Fi. Also check the IP address – it can change, so reserve a fixed address in your router.'**
+  String get s2b503695b6;
+
+  /// fi: Laite löytyi, mutta ei vastaa tähän porttiin
+  ///
+  /// In en, this message translates to:
+  /// **'Device found but the port is closed'**
+  String get sff9ca463e3;
+
+  /// fi: Tarkista portin numero ja että palvelu (esim. web-käyttöliittymä, MQTT tai Modbus TCP) on laitteessa päällä.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the port number and that the service (web UI, MQTT or Modbus TCP) is enabled on the device.'**
+  String get s1d4f4506de;
+
+  /// fi: Suojattu yhteys (https) epäonnistui
+  ///
+  /// In en, this message translates to:
+  /// **'Secure connection (https) failed'**
+  String get s8523a9cfd0;
+
+  /// fi: Kokeile osoitetta http:// -alkuisena, tai Lisäasetuksista "Salli itse allekirjoitettu sertifikaatti".
+  ///
+  /// In en, this message translates to:
+  /// **'Try http:// instead, or enable \"Allow self-signed certificate\" under Advanced.'**
+  String get sdfd499c1f1;
+
+  /// fi: Tunnus, salasana tai token ei kelpaa
+  ///
+  /// In en, this message translates to:
+  /// **'Login, password or token rejected'**
+  String get s3fabccc1cd;
+
+  /// fi: Tarkista tunnukset. Home Assistantissa voit luoda uuden pitkäikäisen tunnuksen omasta profiilista.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the credentials. In Home Assistant you can create a new long-lived token in your profile.'**
+  String get sdc2d65f8eb;
+
+  /// fi: Laite vastasi, mutta kohdetta ei löytynyt
+  ///
+  /// In en, this message translates to:
+  /// **'Device answered but the item was not found'**
+  String get se0a7cef6c4;
+
+  /// fi: Tarkista polku tai entiteetin nimi (esim. light.olohuone). Isot ja pienet kirjaimet ovat merkitseviä.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the path or entity name (e.g. light.living_room).'**
+  String get see02239a35;
+
+  /// fi: Laitteessa tapahtui virhe
+  ///
+  /// In en, this message translates to:
+  /// **'The device reported an error'**
+  String get sdec83d1e90;
+
+  /// fi: Komento tai kysely ei kelvannut laitteelle. Tarkista polku ja lähetettävä sisältö.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the path and payload.'**
+  String get s3de239ffc5;
+
+  /// fi: Laite ei tunne tätä rekisteriä
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown register on the device'**
+  String get s6121e8d8f1;
+
+  /// fi: Tarkista rekisterin numero laitteen Modbus-taulukosta. Jos taulukko alkaa 1:stä (esim. 40001), vähennä 1. Tarkista myös
+  ///
+  /// In en, this message translates to:
+  /// **'Check the register number. If the table starts at 1 (e.g. 40001), subtract 1. Also check holding vs input.'**
+  String get s3474aedf54;
+
+  /// fi: Laite ei tue tätä rekisterityyppiä
+  ///
+  /// In en, this message translates to:
+  /// **'Register type not supported'**
+  String get s2c303f6774;
+
+  /// fi: Kokeile toista rekisterityyppiä (holding ↔ input).
+  ///
+  /// In en, this message translates to:
+  /// **'Try the other register type (holding ↔ input).'**
+  String get s945685fcda;
+
+  /// fi: Laite ei hyväksynyt arvoa
+  ///
+  /// In en, this message translates to:
+  /// **'Value rejected by the device'**
+  String get s07ffbc349a;
+
+  /// fi: Arvo on luultavasti sallitun alueen ulkopuolella. Tarkista myös kerroin.
+  ///
+  /// In en, this message translates to:
+  /// **'The value is probably out of range. Check the scale too.'**
+  String get s76b95eef9f;
+
+  /// fi: Laite löytyi, mutta Modbus TCP ei ole päällä
+  ///
+  /// In en, this message translates to:
+  /// **'Device found, but Modbus TCP is off'**
+  String get s7746921882;
+
+  /// fi: Osoitteessa on laite, mutta se ei ota vastaan Modbus-yhteyttä tähän porttiin. Laita Modbus TCP päälle laitteen asetuksis
+  ///
+  /// In en, this message translates to:
+  /// **'There is a device at this address, but it does not accept Modbus on this port. Turn on Modbus TCP in the device settings (often under Network / Modbus / Remote control) and check the port (usually 502). You can also tap \"Scan Modbus\". If the device works in Home Assistant, it may already have a connection (many allow only one) – read the values through HA.'**
+  String get s7e552bd146;
+
+  /// fi: Laite on estotilassa, yritetään uudelleen klo {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'The device is in lockout, retrying at {p0}'**
+  String s0ebc613f20(String p0);
+
+  /// fi: Laite ei vastannut, joten sitä ei kysytä hetkeen – moni laite menee estotilaan, jos sitä kysytään liian usein. Tauko pit
+  ///
+  /// In en, this message translates to:
+  /// **'The device did not answer, so it is left alone for a while – many devices lock out clients that poll too often. The pause grows from 30 seconds to 5 minutes. If the device already has a connection (e.g. Home Assistant), read the values through HA. The read interval and pauses are under Advanced in the connection.'**
+  String get s317b2b59af;
+
+  /// fi: Laitteen osoite puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'The device address is missing'**
+  String get s33e09089b2;
+
+  /// fi: Avaa yhteys ja anna laitteen IP-osoite, tai paina "Skannaa Modbus", niin sovellus etsii laitteen verkosta.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the connection and enter the device IP address, or tap \"Scan Modbus\" to find the device on the network.'**
+  String get s6180bd540e;
+
+  /// fi: Laitteella voi olla jo yhteys
+  ///
+  /// In en, this message translates to:
+  /// **'The device may already have a connection'**
+  String get sd73581c910;
+
+  /// fi: Laite katkaisi Modbus-yhteyden heti. Moni laite sallii vain yhden Modbus TCP -yhteyden kerrallaan. Jos laite on jo Home
+  ///
+  /// In en, this message translates to:
+  /// **'The device dropped the Modbus connection right away. Many devices allow only one Modbus TCP connection at a time. If the device is already in Home Assistant (e.g. modbus.yaml), read the values through HA.'**
+  String get scee8d982a2;
+
+  /// fi: Osoitteessa ei ole laitetta
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing at this address'**
+  String get s6ca672a111;
+
+  /// fi: Tähän IP-osoitteeseen ei saatu yhteyttä. Tarkista että laite on päällä ja samassa verkossa, ja että IP-osoite on oikein
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing answered at this IP address. Check that the device is on and in the same network and that the IP is right (it can change – reserve a fixed address in the router). \"Scan Modbus\" finds devices on the network.'**
+  String get sf7a98e1c70;
+
+  /// fi: Modbus-laite ei vastannut ajoissa
+  ///
+  /// In en, this message translates to:
+  /// **'The Modbus device did not answer in time'**
+  String get scb0cba44ea;
+
+  /// fi: Yhteyttä porttiin ei saatu muodostettua. Yleisimmät syyt: väärä IP-osoite, laite on toisessa verkossa (vieras-wifi), Mod
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open the port. Most common causes: wrong IP, the device is in another network (guest Wi-Fi), Modbus TCP is off or a firewall blocks the port. Check the address and port or tap \"Scan Modbus\".'**
+  String get sc03ae7e1c5;
+
+  /// fi: Yhdyskäytävä ei tavoita laitetta tällä unit id:llä
+  ///
+  /// In en, this message translates to:
+  /// **'The gateway cannot reach a device with this unit id'**
+  String get sefba540275;
+
+  /// fi: Modbus-yhdyskäytävä vastasi, mutta sen takana ei ole laitetta tällä osoitteella (unit id). Tarkista laitteen Modbus-osoi
+  ///
+  /// In en, this message translates to:
+  /// **'The Modbus gateway answered, but no device with this unit id is behind it. Check the device\'\'s Modbus address (often 1) and the serial speed and parity. \"Scan Modbus\" tries addresses 1–247.'**
+  String get s6e4ed361f3;
+
+  /// fi: Laite ei vastannut Modbus-kyselyyn
+  ///
+  /// In en, this message translates to:
+  /// **'No Modbus reply'**
+  String get sb66bc0e677;
+
+  /// fi: Yhteys aukesi, mutta vastausta ei tullut. Tarkista laitteen osoite (unit id, usein 1) ja yhdyskäytävän sarjaportin asetu
+  ///
+  /// In en, this message translates to:
+  /// **'Connected but no reply. Check the unit id (often 1) and the gateway serial settings.'**
+  String get s6ef5539bc2;
+
+  /// fi: Laite ei vastannut
+  ///
+  /// In en, this message translates to:
+  /// **'No reply from the device'**
+  String get s17ea4c52d5;
+
+  /// fi: Yhteys toimi, mutta vastausta ei tullut ajoissa. Tarkista lähetettävä viesti.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected but no reply in time. Check the message.'**
+  String get s50ecf9ba6f;
+
+  /// fi: Asetuksissa on virhe
+  ///
+  /// In en, this message translates to:
+  /// **'There is a mistake in the settings'**
+  String get sf93db545a1;
+
+  /// fi: Tarkista kentät, esim. että osoite alkaa http:// ja että numerot ovat numeroita.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the fields, e.g. that the address starts with http:// and numbers are numbers.'**
+  String get sf19a9f0856;
+
+  /// fi: Ruudulta puuttuu laite
+  ///
+  /// In en, this message translates to:
+  /// **'This tile has no device'**
+  String get s3976954bef;
+
+  /// fi: Avaa muokkaus (kynä) ja valitse ruudulle laite.
+  ///
+  /// In en, this message translates to:
+  /// **'Open edit mode (pencil) and choose a device for the tile.'**
+  String get sc025e0a1f4;
+
+  /// fi: Etäyhteys kulkee kotona olevan sillan (tabletti tai PC) kautta. Tarkista että se on päällä, Molaplan on auki ja sillä on
+  ///
+  /// In en, this message translates to:
+  /// **'Remote access goes through the bridge at home (tablet or PC). Check that it is on, Molaplan is open and it has internet.'**
+  String get s2cd1df086e;
+
+  /// fi: Laitteesi ei saa yhteyttä Molaplanin etäpalveluun. Tarkista mobiilidata tai wifi.
+  ///
+  /// In en, this message translates to:
+  /// **'Your device cannot reach the Molaplan remote service. Check mobile data or Wi-Fi.'**
+  String get sdbf06d05d9;
+
+  /// fi: Etäyhteys on poistettu
+  ///
+  /// In en, this message translates to:
+  /// **'Remote access was removed'**
+  String get s8b737f4026;
+
+  /// fi: Tämä laite on poistettu kotisillalta. Yhdistä uudelleen: Asetukset → Etäyhteys.
+  ///
+  /// In en, this message translates to:
+  /// **'This device was removed on the home bridge. Pair again: Settings → Remote access.'**
+  String get s4b9e4ca079;
+
+  /// fi: Kotisilta ei vastannut ajoissa
+  ///
+  /// In en, this message translates to:
+  /// **'The home bridge did not answer in time'**
+  String get s5b3116ed94;
+
+  /// fi: Yhteys voi olla hidas. Yritä hetken päästä uudelleen.
+  ///
+  /// In en, this message translates to:
+  /// **'The connection may be slow. Try again in a moment.'**
+  String get se082095a34;
+
+  /// fi: Koodi ei kelpaa
+  ///
+  /// In en, this message translates to:
+  /// **'The code is not valid'**
+  String get s688a4f4ccb;
+
+  /// fi: Tarkista 6 numeroa kotisillan näytöltä. Koodi on voimassa 10 minuuttia ja kelpaa kerran – paina tarvittaessa sillalla "Y
+  ///
+  /// In en, this message translates to:
+  /// **'Check the 6 digits on the bridge screen. A code is valid for 10 minutes and works once – press \"Pair a phone\" on the bridge again if needed.'**
+  String get sfa0e226cd0;
+
+  /// fi: Kotisilta ei hyväksynyt laitetta
+  ///
+  /// In en, this message translates to:
+  /// **'The bridge did not accept this device'**
+  String get sfa5c1fb1ac;
+
+  /// fi: Kun yhdistät koodilla, sillan näytölle tulee kysymys – paina siellä "Hyväksy". Tai skannaa QR-koodi, silloin hyväksyntää
+  ///
+  /// In en, this message translates to:
+  /// **'When pairing with the code, the bridge asks for confirmation – press \"Accept\" there. Or scan the QR code, then no confirmation is needed.'**
+  String get s9ad07ab36e;
+
+  /// fi: Turvatarkistus epäonnistui
+  ///
+  /// In en, this message translates to:
+  /// **'Security check failed'**
+  String get sb5c271ae6a;
+
+  /// fi: Yhteyttä ei voitu varmistaa turvalliseksi, joten sitä ei otettu käyttöön. Yritä uudelleen QR-koodilla.
+  ///
+  /// In en, this message translates to:
+  /// **'The connection could not be verified as safe, so it was not used. Try again with the QR code.'**
+  String get s3d7ca280db;
+
+  /// fi: Kotisilta ei vastannut
+  ///
+  /// In en, this message translates to:
+  /// **'The bridge did not answer'**
+  String get s0061b44673;
+
+  /// fi: Hyväksy laite sillan näytöllä 3 minuutin sisällä, tai skannaa QR-koodi.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept the device on the bridge screen within 3 minutes, or scan the QR code.'**
+  String get sceb894b9b3;
+
+  /// fi: Yhteys ei onnistunut
+  ///
+  /// In en, this message translates to:
+  /// **'The connection did not work'**
+  String get s700b0ef4de;
+
+  /// fi: Tarkista osoite ja asetukset ja yritä uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the address and settings and try again. The technical details show the exact reason.'**
+  String get s53a891e670;
+
+  /// fi: Toimii sovelluksessa tai kotisillan kautta
+  ///
+  /// In en, this message translates to:
+  /// **'Works in the app or through a home bridge'**
+  String get s1e02f457b4;
+
+  /// fi: ei vastaa ({p0} min)
+  ///
+  /// In en, this message translates to:
+  /// **'not answering ({p0} min)'**
+  String s6c33f19716(String p0);
+
+  /// fi: pois päältä
+  ///
+  /// In en, this message translates to:
+  /// **'off'**
+  String get scebcdabe25;
+
+  /// fi: Kokeilu
+  ///
+  /// In en, this message translates to:
+  /// **'Test'**
+  String get sd4be8bca5f;
+
+  /// fi: Vesivuoto → hälytys
+  ///
+  /// In en, this message translates to:
+  /// **'Water leak → alarm'**
+  String get sd76aadb97c;
+
+  /// fi: Kiireellinen ilmoitus heti, kun vuotoanturi havaitsee vettä (myös hiljaisena aikana).
+  ///
+  /// In en, this message translates to:
+  /// **'An urgent notification as soon as a leak sensor detects water (also during quiet hours).'**
+  String get s0bd0724e83;
+
+  /// fi: Valot päälle auringonlaskulla
+  ///
+  /// In en, this message translates to:
+  /// **'Lights on at sunset'**
+  String get sa9f114c81d;
+
+  /// fi: Valitut valot syttyvät, kun aurinko laskee.
+  ///
+  /// In en, this message translates to:
+  /// **'The chosen lights turn on when the sun sets.'**
+  String get s02402a38eb;
+
+  /// fi: Kaikki pois klo 23
+  ///
+  /// In en, this message translates to:
+  /// **'Everything off at 23:00'**
+  String get s386fda8330;
+
+  /// fi: Valitut laitteet sammuvat illalla.
+  ///
+  /// In en, this message translates to:
+  /// **'The chosen devices turn off in the evening.'**
+  String get s3508664550;
+
+  /// fi: Ilmoita, kun laite ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'Notify when a device stops answering'**
+  String get s3775470669;
+
+  /// fi: Ilmoitus, jos laite on ollut tavoittamattomissa 10 minuuttia.
+  ///
+  /// In en, this message translates to:
+  /// **'A notification when a device has been unreachable for 10 minutes.'**
+  String get s5c07969ac8;
+
+  /// fi: Ilmoita, kun lämpötila laskee
+  ///
+  /// In en, this message translates to:
+  /// **'Notify when the temperature drops'**
+  String get s2cdd15be92;
+
+  /// fi: Ilmoitus, kun anturin lukema laskee rajan alle.
+  ///
+  /// In en, this message translates to:
+  /// **'A notification when a sensor reading drops below a limit.'**
+  String get sa74faa4635;
+
+  /// fi: Halvimmat tunnit: laite päälle
+  ///
+  /// In en, this message translates to:
+  /// **'Cheapest hours: device on'**
+  String get s94ed692877;
+
+  /// fi: Laite päälle päivän halvimpina tunteina (esim. varaaja).
+  ///
+  /// In en, this message translates to:
+  /// **'A device on during the day’s cheapest hours (e.g. a water heater).'**
+  String get s9b99909a7c;
+
+  /// fi: Ilmoita kalliista sähköstä
+  ///
+  /// In en, this message translates to:
+  /// **'Notify about expensive electricity'**
+  String get s90d5d2954d;
+
+  /// fi: Ilmoitus, kun pörssisähkö nousee yli 20 c/kWh.
+  ///
+  /// In en, this message translates to:
+  /// **'A notification when the spot price goes above 20 c/kWh.'**
+  String get s876690515a;
+
+  /// fi: Lataa auto aurinkosähkön ylijäämällä
+  ///
+  /// In en, this message translates to:
+  /// **'Charge the car on solar surplus'**
+  String get s602af22563;
+
+  /// fi: Laturi päälle, kun verkkoon myydään yli 1,4 kW. Pois, kun verkosta ostetaan yli 1 kW (vähintään 10 min lataus).
+  ///
+  /// In en, this message translates to:
+  /// **'Charger on when more than 1.4 kW is exported. Off when more than 1 kW is imported (at least 10 min of charging).'**
+  String get s9ce0e97a38;
+
+  /// fi: Lataa auto halvimpina tunteina
+  ///
+  /// In en, this message translates to:
+  /// **'Charge the car in the cheapest hours'**
+  String get scbad5277ee;
+
+  /// fi: Laturi päälle päivän 4 halvimpana tuntina ja pois, kun halvat tunnit loppuvat.
+  ///
+  /// In en, this message translates to:
+  /// **'Charger on in the day’s 4 cheapest hours and off when they end.'**
+  String get sb6dc0d48ed;
+
+  /// fi: Pakkasvaroitus
+  ///
+  /// In en, this message translates to:
+  /// **'Frost warning'**
+  String get s1906ecb28c;
+
+  /// fi: Ilmoitus, kun ulkona on alle −15 °C.
+  ///
+  /// In en, this message translates to:
+  /// **'A notification when it is below −15 °C outside.'**
+  String get s036ecd266d;
+
+  /// fi: Aamukatsaus klo 7
+  ///
+  /// In en, this message translates to:
+  /// **'Morning summary at 7:00'**
+  String get sacf213e078;
+
+  /// fi: Sää, sähkön hinta ja kodin tila ilmoituksena joka aamu.
+  ///
+  /// In en, this message translates to:
+  /// **'Weather, electricity price and the state of your home as a notification every morning.'**
+  String get sef21ad6784;
+
+  /// fi: VESIVUOTO!
+  ///
+  /// In en, this message translates to:
+  /// **'WATER LEAK!'**
+  String get s5d308e6986;
+
+  /// fi: Lämpötila laski
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature dropped'**
+  String get s13017ce3b0;
+
+  /// fi: Sähkö on kallista
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity is expensive'**
+  String get s4c52f38c8b;
+
+  /// fi: Huomenta
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning'**
+  String get sc797ab9c4c;
+
+  /// fi: Ruutu puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'Tile missing'**
+  String get scec02139b6;
+
+  /// fi: Ryhmän laitteet eivät vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'Group not answering'**
+  String get s66f19d787b;
+
+  /// fi: {p0}: komento puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'{p0}: no command'**
+  String sed9788d6dc(String p0);
+
+  /// fi: {p0} laitetta päällä
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} devices on'**
+  String sd39874fbe2(String p0);
+
+  /// fi: {p0} ei vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} not answering'**
+  String sbe208615d0(String p0);
+
+  /// fi: Huomenna sähkö maksaa keskimäärin {avg} c/kWh (kallein {max} klo {hour}). Lämmitä takka.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Tomorrow electricity averages {avg} c/kWh (peak {max} at {hour}). Light the fireplace.\''**
+  String get seec5bf7f8d;
+
+  /// fi: Tänään sähkö on poikkeuksellisen kallista: keskimäärin {avg} c/kWh, kallein {max} klo {hour}.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Electricity is exceptionally expensive today: average {avg} c/kWh, peak {max} at {hour}.\''**
+  String get s4a7ea7d7f1;
+
+  /// fi: Huomenna sähkö on poikkeuksellisen kallista: keskimäärin {avg} c/kWh, kallein {max} klo {hour}.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Electricity is exceptionally expensive tomorrow: average {avg} c/kWh, peak {max} at {hour}.\''**
+  String get se8a2912e3e;
+
+  /// fi: Mökille tulo {arrival}. Laita lämmitys päälle nyt, tavoite {target} °C.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Arriving at the cabin {arrival}. Turn the heating on now, target {target} °C.\''**
+  String get s0818fd54b1;
+
+  /// fi: Huomenna sähkö keskimäärin {avg} c/kWh, kallein {max} klo {hour}.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Tomorrow: average {avg} c/kWh, peak {max} at {hour}.\''**
+  String get s57aad0f6c3;
+
+  /// fi: Tänään sähkö keskimäärin {avg} c/kWh, kallein {max} klo {hour}.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Today: average {avg} c/kWh, peak {max} at {hour}.\''**
+  String get s05394a7333;
+
+  /// fi: Poikkeuksellisen kallis sähkö {date}: keskimäärin {avg} c/kWh, kallein {max} klo {hour}.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Exceptionally expensive electricity {date}: average {avg} c/kWh, peak {max} at {hour}.\''**
+  String get s412e06dba4;
+
+  /// fi: Sääennuste {date}: {temp} °C.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Forecast {date}: {temp} °C.\''**
+  String get s7f8a4ab629;
+
+  /// fi: {tile}: {value}
+  ///
+  /// In en, this message translates to:
+  /// **'\'{tile}: {value}\''**
+  String get s326f105e40;
+
+  /// fi: Saapuminen {arrival}. Laita lämmitys päälle, tavoite {target} °C.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Arriving {arrival}. Turn the heating on, target {target} °C.\''**
+  String get s65afe3ff6f;
+
+  /// fi: yhteys katkesi
+  ///
+  /// In en, this message translates to:
+  /// **'connection closed'**
+  String get sae56ce66d4;
+
+  /// fi: Tuya: väärä paikallinen avain (local key) tai protokollaversio
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya: wrong local key or protocol version'**
+  String get sb6a87586a8;
+
+  /// fi: laite ei vastannut
+  ///
+  /// In en, this message translates to:
+  /// **'no answer from the device'**
+  String get s2b1a0a5a05;
+
+  /// fi: Tuya {p0}: laite ei vastannut kättelyyn – väärä paikallinen avain (local key) tai protokollaversio?
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya {p0}: no answer to the handshake – wrong local key or protocol version?'**
+  String sc4fdd8a4a3(String p0);
+
+  /// fi: kättely epäonnistui
+  ///
+  /// In en, this message translates to:
+  /// **'handshake failed'**
+  String get sa291ffb35a;
+
+  /// fi: Tuya: väärä paikallinen avain (local key)
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya: wrong local key'**
+  String get se2a4cc6409;
+
+  /// fi: ei löytynyt kotiverkosta
+  ///
+  /// In en, this message translates to:
+  /// **'not found on the home network'**
+  String get s7b8131a396;
+
+  /// fi: Powerant / Tuya / Smart Life
+  ///
+  /// In en, this message translates to:
+  /// **'Powerant / Tuya / Smart Life'**
+  String get s210907044a;
+
+  /// fi: Pistorasiat, kytkimet, himmentimet, lamput ja anturit. Ohjataan kotiverkossa ilman pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'Plugs, switches, dimmers, bulbs and sensors. Controlled on your home network without the cloud.'**
+  String get sa8d1873781;
+
+  /// fi: Oma ilmainen Tuya-kehittäjäprojekti: iot.tuya.com → Cloud → Create Cloud Project (data center: Central Europe) → Devices
+  ///
+  /// In en, this message translates to:
+  /// **'Your own free Tuya developer project: iot.tuya.com → Cloud → Create Cloud Project (data center: Central Europe) → Devices → Link App Account → scan the QR code with the Smart Life / Tuya / Powerant app. The Access ID is on the project\'\'s Overview page.'**
+  String get s3530ee658b;
+
+  /// fi: Samalta Overview-sivulta. Tallentuu vain tälle laitteelle (ja omaan salattuun holviisi) – ei Molaplanin palvelimille.
+  ///
+  /// In en, this message translates to:
+  /// **'From the same Overview page. Stored only on this device (and your own encrypted vault) – never on Molaplan\'\'s servers.'**
+  String get s39d3fce33c;
+
+  /// fi: Projektin data center. Suomessa yleensä eu (Central Europe). Western Europe = weu.
+  ///
+  /// In en, this message translates to:
+  /// **'The project\'\'s data center. Usually eu (Central Europe) in Europe. Western Europe = weu.'**
+  String get s12e2e8638b;
+
+  /// fi: Vain jos laitteita ei löydy: sovellus → laite → kynä → Laitetiedot → Virtuaalinen ID.
+  ///
+  /// In en, this message translates to:
+  /// **'Only if no devices are found: app → device → pencil → Device information → Virtual ID.'**
+  String get sfc77cb8d11;
+
+  /// fi: Tuya paikallisella avaimella
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya with a local key'**
+  String get s7938176623;
+
+  /// fi: Jos tiedät jo laitteen tunnuksen ja paikallisen avaimen (local key).
+  ///
+  /// In en, this message translates to:
+  /// **'If you already know the device ID and its local key.'**
+  String get sf11f3cf10e;
+
+  /// fi: Reitittimen laitelistasta (laitteen nimi usein ESP_ tai wlan0).
+  ///
+  /// In en, this message translates to:
+  /// **'From your router\'\'s device list (often named ESP_ or wlan0).'**
+  String get s3dcff9c852;
+
+  /// fi: 16 merkin avain. Saat sen Tuya-kehittäjäprojektista tai helpoimmin valitsemalla "Powerant / Tuya / Smart Life".
+  ///
+  /// In en, this message translates to:
+  /// **'A 16-character key. Get it from a Tuya developer project, or simply pick \"Powerant / Tuya / Smart Life\".'**
+  String get s3cc607ceba;
+
+  /// fi: Täytetään automaattisesti, jos laite löytyi verkosta.
+  ///
+  /// In en, this message translates to:
+  /// **'Filled in automatically when the device was found on the network.'**
+  String get s4105c416c6;
+
+  /// fi: 3.3, 3.4 tai 3.5. Tunnistetaan automaattisesti, jos laite löytyi verkosta.
+  ///
+  /// In en, this message translates to:
+  /// **'3.3, 3.4 or 3.5. Detected automatically when the device was found on the network.'**
+  String get s39dfcd0595;
+
+  /// fi: kanava {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'channel {p0}'**
+  String s991d0c0cdc(String p0);
+
+  /// fi: kirkkaus
+  ///
+  /// In en, this message translates to:
+  /// **'brightness'**
+  String get see129fb410;
+
+  /// fi: värilämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'colour temperature'**
+  String get sc8b1b10046;
+
+  /// fi: teho
+  ///
+  /// In en, this message translates to:
+  /// **'power'**
+  String get se78754330c;
+
+  /// fi: energia
+  ///
+  /// In en, this message translates to:
+  /// **'energy'**
+  String get s0ceafaa97c;
+
+  /// fi: jännite
+  ///
+  /// In en, this message translates to:
+  /// **'voltage'**
+  String get sdb8ea154be;
+
+  /// fi: virta
+  ///
+  /// In en, this message translates to:
+  /// **'current'**
+  String get s37f61ae645;
+
+  /// fi: lämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'temperature'**
+  String get s68e711123b;
+
+  /// fi: kosteus
+  ///
+  /// In en, this message translates to:
+  /// **'humidity'**
+  String get s736646b3b0;
+
+  /// fi: paristo
+  ///
+  /// In en, this message translates to:
+  /// **'battery'**
+  String get s03a198454c;
+
+  /// fi: Tuya / Powerant (paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya / Powerant (local)'**
+  String get sc20488a1f0;
+
+  /// fi: Tuya-pilven alue
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya cloud region'**
+  String get sc849342970;
+
+  /// fi: Vain avainten hakuun. Suomessa yleensä Keski-Eurooppa.
+  ///
+  /// In en, this message translates to:
+  /// **'Only for fetching the keys. Usually Central Europe in Europe.'**
+  String get s49c53b561d;
+
+  /// fi: Keski-Eurooppa
+  ///
+  /// In en, this message translates to:
+  /// **'Central Europe'**
+  String get s7cf3dec993;
+
+  /// fi: Länsi-Eurooppa
+  ///
+  /// In en, this message translates to:
+  /// **'Western Europe'**
+  String get seead5e286d;
+
+  /// fi: Länsi-USA
+  ///
+  /// In en, this message translates to:
+  /// **'Western America'**
+  String get s081e2e881d;
+
+  /// fi: Itä-USA
+  ///
+  /// In en, this message translates to:
+  /// **'Eastern America'**
+  String get s5b9587ae93;
+
+  /// fi: Kiina
+  ///
+  /// In en, this message translates to:
+  /// **'China'**
+  String get sc5401d63d5;
+
+  /// fi: Intia
+  ///
+  /// In en, this message translates to:
+  /// **'India'**
+  String get sb6786f25b9;
+
+  /// fi: Singapore
+  ///
+  /// In en, this message translates to:
+  /// **'Singapore'**
+  String get scd78f804bb;
+
+  /// fi: Access ID (iot.tuya.com)
+  ///
+  /// In en, this message translates to:
+  /// **'Access ID (iot.tuya.com)'**
+  String get s61b325e35c;
+
+  /// fi: Oman pilviprojektisi Access ID. Tarvitaan vain avainten hakuun.
+  ///
+  /// In en, this message translates to:
+  /// **'Access ID of your own cloud project. Only needed to fetch the keys.'**
+  String get s925e495479;
+
+  /// fi: Access Secret
+  ///
+  /// In en, this message translates to:
+  /// **'Access Secret'**
+  String get sb07c0dad24;
+
+  /// fi: Oman pilviprojektisi Access Secret. Tallentuu vain tälle laitteelle / omaan holviisi.
+  ///
+  /// In en, this message translates to:
+  /// **'Access Secret of your own cloud project. Stored only on this device / in your own vault.'**
+  String get s45bcef5c09;
+
+  /// fi: Paikalliset avaimet
+  ///
+  /// In en, this message translates to:
+  /// **'Local keys'**
+  String get s295cf46412;
+
+  /// fi: Laitteiden paikalliset avaimet (haetaan automaattisesti).
+  ///
+  /// In en, this message translates to:
+  /// **'The devices\'\' local keys (fetched automatically).'**
+  String get sf58ae26c82;
+
+  /// fi: Pysyvä yhteys (heti päivittyvät ruudut)
+  ///
+  /// In en, this message translates to:
+  /// **'Keep connected (instant updates)'**
+  String get s0c1a9d4ab9;
+
+  /// fi: Laite ilmoittaa muutoksista heti. Moni Tuya-laite sallii vain yhden yhteyden kerrallaan – käytä vain yhdellä laitteella.
+  ///
+  /// In en, this message translates to:
+  /// **'The device reports changes at once. Many Tuya devices allow only one connection – use on one device only.'**
+  String get s121fb2c5fc;
+
+  /// fi: Laitteen tunnus
+  ///
+  /// In en, this message translates to:
+  /// **'Device id'**
+  String get s65514aef3c;
+
+  /// fi: Tuya-laitteen id.
+  ///
+  /// In en, this message translates to:
+  /// **'The Tuya device id.'**
+  String get se42a336655;
+
+  /// fi: DP-numero
+  ///
+  /// In en, this message translates to:
+  /// **'DP number'**
+  String get sff3cf64925;
+
+  /// fi: Datapisteen numero (1 = virta useimmissa).
+  ///
+  /// In en, this message translates to:
+  /// **'Data point number (1 = power on most).'**
+  String get sfec9b1a643;
+
+  /// fi: Kerroin
+  ///
+  /// In en, this message translates to:
+  /// **'Scale'**
+  String get see24ec5d84;
+
+  /// fi: Esim. 0.1, jos laite ilmoittaa kymmenyksinä.
+  ///
+  /// In en, this message translates to:
+  /// **'E.g. 0.1 when the device reports tenths.'**
+  String get s2fa7dedd1b;
+
+  /// fi: Datapisteen numero.
+  ///
+  /// In en, this message translates to:
+  /// **'Data point number.'**
+  String get se30676cace;
+
+  /// fi: Arvo ({{value}})
+  ///
+  /// In en, this message translates to:
+  /// **'\'Value ({{value}})\''**
+  String get seb4c438a42;
+
+  /// fi: Lähetettävä arvo; {{value}} = ruudun arvo.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Value to send; {{value}} = the tile\'\'s value.\''**
+  String get s033b6b8c6c;
+
+  /// fi: Arvon tyyppi
+  ///
+  /// In en, this message translates to:
+  /// **'Value type'**
+  String get s784e702cc1;
+
+  /// fi: Päällä/pois kytkimille, numero kirkkaudelle.
+  ///
+  /// In en, this message translates to:
+  /// **'On/off for switches, number for brightness.'**
+  String get safadcc12c8;
+
+  /// fi: Päällä/pois
+  ///
+  /// In en, this message translates to:
+  /// **'On/off'**
+  String get s8c8b6cb6d4;
+
+  /// fi: Numero
+  ///
+  /// In en, this message translates to:
+  /// **'Number'**
+  String get s695fe25f79;
+
+  /// fi: Tuya-laitetta {p0} ei ole tässä yhteydessä
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya device {p0} is not in this connection'**
+  String s9abc332fb8(String p0);
+
+  /// fi: Tuya: laitteen paikallinen avain puuttuu – hae avaimet uudelleen
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya: the device\'\'s local key is missing – fetch the keys again'**
+  String get s8b84454b87;
+
+  /// fi: Tuya: laitteen IP-osoite puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya: the device\'\'s IP address is missing'**
+  String get s764b6993c6;
+
+  /// fi: Viesti ({{value}} = arvo)
+  ///
+  /// In en, this message translates to:
+  /// **'\'Payload ({{value}} = value)\''**
+  String get s120726c79a;
+
+  /// fi: Viesti heksana
+  ///
+  /// In en, this message translates to:
+  /// **'Payload is hex'**
+  String get s1b5b0421c0;
+
+  /// fi: Odota vastausta
+  ///
+  /// In en, this message translates to:
+  /// **'Wait for response'**
+  String get s44ab1d33df;
+
+  /// fi: Vastaus heksana
+  ///
+  /// In en, this message translates to:
+  /// **'Response as hex'**
+  String get s341bf61e36;
 
   /// fi: Regex (ryhmä 1)
   ///
@@ -14213,17 +13151,41 @@ abstract class AppLocalizations {
   /// **'Regex (group 1)'**
   String get s10813e25b3;
 
-  /// fi: Kyselyviesti (lähetetään luettaessa)
+  /// fi: JSON-polku
   ///
   /// In en, this message translates to:
-  /// **'Request message (sent on read)'**
-  String get s4a282cd247;
+  /// **'JSON path'**
+  String get s55c951a8ad;
 
-  /// fi: Viesti ({{value}} = arvo)
+  /// fi: Aikakatkaisu (ms)
   ///
   /// In en, this message translates to:
-  /// **'\'Message ({{value}} = value)\''**
-  String get sbeef545d37;
+  /// **'Timeout (ms)'**
+  String get s15e327bf8e;
+
+  /// fi: IP-osoite
+  ///
+  /// In en, this message translates to:
+  /// **'Host'**
+  String get sa70cc38354;
+
+  /// fi: Portti
+  ///
+  /// In en, this message translates to:
+  /// **'Port'**
+  String get s800d13debd;
+
+  /// fi: TCP (raaka)
+  ///
+  /// In en, this message translates to:
+  /// **'TCP (raw)'**
+  String get se7cff2d61e;
+
+  /// fi: UDP
+  ///
+  /// In en, this message translates to:
+  /// **'UDP'**
+  String get s1dfeacd9f6;
 
   /// fi: HTTP / REST
   ///
@@ -14284,6 +13246,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Extra headers (Name: value per line)'**
   String get s51510ae27a;
+
+  /// fi: Salli itse allekirjoitettu sertifikaatti
+  ///
+  /// In en, this message translates to:
+  /// **'Allow self-signed certificate'**
+  String get s2c4fd261e2;
 
   /// fi: Aikakatkaisu (s)
   ///
@@ -14356,60 +13324,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'✓ Connection works: HTTP {p0}. {p1} {p2}'**
   String sb2821916bc(String p0, String p1, String p2);
-
-  /// fi: Kamera (MJPEG / JPEG / RTSP)
-  ///
-  /// In en, this message translates to:
-  /// **'Camera (MJPEG / JPEG / RTSP)'**
-  String get s58648dc3fc;
-
-  /// fi: Kameran osoite
-  ///
-  /// In en, this message translates to:
-  /// **'Camera base URL'**
-  String get s1534821f4a;
-
-  /// fi: RTSP-osoite (live-kuva kotiverkossa)
-  ///
-  /// In en, this message translates to:
-  /// **'RTSP address (live video at home)'**
-  String get s95533426a3;
-
-  /// fi: RTSP-osoite, kevyt (ruutu)
-  ///
-  /// In en, this message translates to:
-  /// **'RTSP address, light (tile)'**
-  String get sa1115d4b0b;
-
-  /// fi: Tila
-  ///
-  /// In en, this message translates to:
-  /// **'Mode'**
-  String get se995a6862d;
-
-  /// fi: Liikkuva kuva (MJPEG)
-  ///
-  /// In en, this message translates to:
-  /// **'Live (MJPEG)'**
-  String get s7cf6da2822;
-
-  /// fi: Still-kuva välein
-  ///
-  /// In en, this message translates to:
-  /// **'Snapshots'**
-  String get s4cb8ad767b;
-
-  /// fi: RTSP-video
-  ///
-  /// In en, this message translates to:
-  /// **'RTSP video'**
-  String get s15f9cd477c;
-
-  /// fi: Kuvan päivitysväli (s, snapshot)
-  ///
-  /// In en, this message translates to:
-  /// **'Refresh (s, snapshot)'**
-  String get s4f356d158a;
 
   /// fi: Bq/m³
   ///
@@ -14573,695 +13487,179 @@ abstract class AppLocalizations {
   /// **'On the back or bottom of the monitor (10 digits, e.g. 2930xxxxxx).'**
   String get s83d2446b44;
 
-  /// fi: Suomi on yksi alue (FI). Ruotsissa ja Norjassa alue riippuu asuinpaikasta.
+  /// fi: Modbus TCP
   ///
   /// In en, this message translates to:
-  /// **'Finland is one area (FI). In Sweden and Norway it depends on where you live.'**
-  String get s2525f9a4f5;
+  /// **'Modbus TCP'**
+  String get s36fb6ba26f;
 
-  /// fi: ALV %
+  /// fi: Laitteen osoite (unit id)
   ///
   /// In en, this message translates to:
-  /// **'VAT %'**
-  String get s8f4a683abf;
+  /// **'Unit id'**
+  String get sdc5301b750;
 
-  /// fi: Suomessa 25,5 %.
+  /// fi: Kehystys
   ///
   /// In en, this message translates to:
-  /// **'Your country\'\'s VAT.'**
-  String get s1c7d76a774;
+  /// **'Framing'**
+  String get s666811be3d;
 
-  /// fi: Myyjän marginaali (c/kWh)
+  /// fi: Halpa RS485–wifi/ethernet-muunnin läpinäkyvässä tilassa käyttää RTU-kehyksiä.
   ///
   /// In en, this message translates to:
-  /// **'Seller margin (c/kWh)'**
-  String get se49d0fba92;
+  /// **'A cheap RS485 to Wi-Fi/Ethernet converter in transparent mode uses RTU frames.'**
+  String get s0f2d3b7a42;
 
-  /// fi: Pörssisähkösopimuksen marginaali ilman ALV:tä, esim. 0,5.
+  /// fi: Modbus TCP (tavallinen)
   ///
   /// In en, this message translates to:
-  /// **'Spot contract margin without VAT.'**
-  String get s20a5e2936a;
+  /// **'Modbus TCP (normal)'**
+  String get s12ca822cd8;
 
-  /// fi: Siirto + sähkövero (c/kWh)
+  /// fi: Modbus RTU TCP:n yli (RS485-yhdyskäytävä)
   ///
   /// In en, this message translates to:
-  /// **'Transfer + tax (c/kWh)'**
-  String get s923f9739de;
+  /// **'Modbus RTU over TCP (RS485 gateway)'**
+  String get s731c92978b;
 
-  /// fi: Laskun mukaan ALV:n kanssa. Jätä 0, jos haluat nähdä pelkän energian hinnan.
+  /// fi: Lukuväli vähintään (s)
   ///
   /// In en, this message translates to:
-  /// **'From your bill, incl. VAT. Leave 0 for energy only.'**
-  String get s2a3498fb0f;
+  /// **'Minimum read interval (s)'**
+  String get s570f11bec8;
 
-  /// fi: Tuntihinnoitellulle sopimukselle. Pois: 15 min hinnat, kun alueen data on 15 min (EU:n päivämarkkina 1.10.2025 alkaen).
+  /// fi: Samaa rekisteriä ei lueta tätä useammin, vaikka laattoja olisi monta.
   ///
   /// In en, this message translates to:
-  /// **'For hourly-billed contracts. Off: 15-min prices where the area publishes them (EU day-ahead since 1 Oct 2025).'**
-  String get s1d9eabe472;
+  /// **'The same register is never read more often, however many tiles show it.'**
+  String get s13e54dbff1;
 
-  /// fi: Hintapalvelin
+  /// fi: Tauko kyselyjen välissä (ms)
   ///
   /// In en, this message translates to:
-  /// **'Price server'**
-  String get s515da3a9dd;
+  /// **'Pause between requests (ms)'**
+  String get s95d4c6dd5b;
 
-  /// fi: Molaplanin oma palvelin hakee hinnat avoimista lähteistä.
+  /// fi: Odotus yhdistämisen jälkeen (ms)
   ///
   /// In en, this message translates to:
-  /// **'Molaplan\'\'s server fetches prices from open sources.'**
-  String get s98cc9f1c14;
+  /// **'Wait after connecting (ms)'**
+  String get s77b6667fdb;
 
-  /// fi: Mitä näytetään
+  /// fi: Yhdistä peräkkäiset luvut
   ///
   /// In en, this message translates to:
-  /// **'What to show'**
-  String get s271885dc8b;
+  /// **'Batch adjacent reads'**
+  String get sf4b0409574;
 
-  /// fi: Mikä hinnan tieto ruudussa näkyy: hinta nyt, päivän halvin / kallein / keskihinta, seuraava halpa tunti tai kaavio.
+  /// fi: Rekistereitä yhdessä luvussa enintään
   ///
   /// In en, this message translates to:
-  /// **'Which price figure the tile shows: now, today\'\'s lowest / highest / average, the next cheap hour or the chart.'**
-  String get s1edb6be142;
+  /// **'Max registers per read'**
+  String get sc011aad1a9;
 
-  /// fi: Päivän halvin
+  /// fi: Estotilan tauko alussa (s)
   ///
   /// In en, this message translates to:
-  /// **'Lowest today'**
-  String get s46aab99b27;
+  /// **'Lockout pause at first (s)'**
+  String get s942a690567;
 
-  /// fi: Päivän kallein
+  /// fi: Kun laite ei vastaa, sitä ei kysytä hetkeen. Tauko kaksinkertaistuu enimmäisarvoon asti.
   ///
   /// In en, this message translates to:
-  /// **'Highest today'**
-  String get sf6295f1182;
+  /// **'When the device does not answer, it is left alone for a while. The pause doubles up to the maximum.'**
+  String get s3746551251;
 
-  /// fi: Päivän keskihinta
+  /// fi: Estotilan tauko enintään (s)
   ///
   /// In en, this message translates to:
-  /// **'Average today'**
-  String get s1aa7abbf72;
+  /// **'Lockout pause at most (s)'**
+  String get sf71d800450;
 
-  /// fi: Seuraava halpa tunti
+  /// fi: Sulje yhteys virheen jälkeen
   ///
   /// In en, this message translates to:
-  /// **'Next cheap hour'**
-  String get s65f496b2dc;
+  /// **'Close the connection after an error'**
+  String get sbce68f8691;
 
-  /// fi: Hintakaavio (tänään ja huomenna)
+  /// fi: Kysy uudelleen tyhjän vastauksen jälkeen
   ///
   /// In en, this message translates to:
-  /// **'Price chart (today and tomorrow)'**
-  String get se446dc324a;
+  /// **'Retry on an empty reply'**
+  String get sf96bb0c03d;
 
-  /// fi: Tämän päivän hintoja ei ole vielä saatavilla.
+  /// fi: Rekisterityyppi
   ///
   /// In en, this message translates to:
-  /// **'No prices for today yet.'**
-  String get s2f754e8ab4;
+  /// **'Register table'**
+  String get s943b8b6bf3;
 
-  /// fi: Hintaa ei ole tälle hetkelle.
+  /// fi: Pitorekisteri (4x)
   ///
   /// In en, this message translates to:
-  /// **'No price for now.'**
-  String get s18faad19ed;
+  /// **'Holding register (4x)'**
+  String get s8283ed1c89;
 
-  /// fi: Sähkön hinta on vain luettava.
+  /// fi: Kela (0x)
   ///
   /// In en, this message translates to:
-  /// **'Electricity price is read-only.'**
-  String get s29178b43f4;
+  /// **'Coil (0x)'**
+  String get s94cf36d710;
 
-  /// fi: Huominen: kyllä.
+  /// fi: Syöttörekisteri (3x)
   ///
   /// In en, this message translates to:
-  /// **'Tomorrow: yes.'**
-  String get s1a707f2788;
+  /// **'Input register (3x)'**
+  String get sfb6d4a8639;
 
-  /// fi: Huominen: ei vielä (julkaistaan n. klo 14).
+  /// fi: Diskreetti tulo (1x)
   ///
   /// In en, this message translates to:
-  /// **'Tomorrow: not yet (published around 14:00).'**
-  String get sb85af981c1;
+  /// **'Discrete input (1x)'**
+  String get s0bbedf814a;
 
-  /// fi: ✓ Hinnat haettu alueelle {p0} ({p1} jaksoa, {p2} min, lähde {p3}).
+  /// fi: Osoite (0-pohjainen)
   ///
   /// In en, this message translates to:
-  /// **'✓ Prices for {p0} ({p1} slots, {p2} min, source {p3}).'**
-  String s6270faf138(String p0, String p1, String p2, String p3);
+  /// **'Address (0-based)'**
+  String get sf51ad986eb;
 
-  /// fi: MQTT
+  /// fi: Tietotyyppi
   ///
   /// In en, this message translates to:
-  /// **'MQTT'**
-  String get se1bd60873c;
+  /// **'Data type'**
+  String get s601f118ac0;
 
-  /// fi: Välittäjän osoite
+  /// fi: Sanajärjestys käänteinen (CDAB)
   ///
   /// In en, this message translates to:
-  /// **'Broker host'**
-  String get s85b9781bb7;
+  /// **'Swap words (CDAB)'**
+  String get sddd62d21b0;
 
-  /// fi: TLS
+  /// fi: Siirtymä
   ///
   /// In en, this message translates to:
-  /// **'TLS'**
-  String get s49fa57061a;
+  /// **'Offset'**
+  String get s0a239b832b;
 
-  /// fi: WebSocket-yhteys (ws:// tai wss://)
+  /// fi: Unit id (tyhjä = yhteyden)
   ///
   /// In en, this message translates to:
-  /// **'Use WebSocket (ws:// or wss://)'**
-  String get s0fcef98aad;
+  /// **'Unit id (empty = connection)'**
+  String get s5f374d3643;
 
-  /// fi: Client ID (tyhjä = automaattinen)
+  /// fi: Kirjoitettava
   ///
   /// In en, this message translates to:
-  /// **'Client ID (empty = auto)'**
-  String get s5089c65c1f;
+  /// **'Write to'**
+  String get sef11962984;
 
-  /// fi: Keep alive (s)
+  /// fi: Arvo ({{value}} = liukusäädin/kytkin)
   ///
   /// In en, this message translates to:
-  /// **'Keep alive (s)'**
-  String get s9372a6f755;
-
-  /// fi: Tilan aihe (topic)
-  ///
-  /// In en, this message translates to:
-  /// **'State topic'**
-  String get sd373a99107;
-
-  /// fi: Komennon aihe (topic)
-  ///
-  /// In en, this message translates to:
-  /// **'Command topic'**
-  String get s518c8aa712;
-
-  /// fi: Viesti ({{value}} = arvo)
-  ///
-  /// In en, this message translates to:
-  /// **'\'Payload ({{value}} = value)\''**
-  String get s120726c79a;
-
-  /// fi: QoS
-  ///
-  /// In en, this message translates to:
-  /// **'QoS'**
-  String get s3660228d11;
-
-  /// fi: Retain
-  ///
-  /// In en, this message translates to:
-  /// **'Retain'**
-  String get s1b07c9ba3d;
-
-  /// fi: puhallin {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'fan {p0}'**
-  String s91c3d72d1e(String p0);
-
-  /// fi: , suuntaus
-  ///
-  /// In en, this message translates to:
-  /// **', swing'**
-  String get s40032ddea9;
-
-  /// fi: , siivekkeet {p0}
-  ///
-  /// In en, this message translates to:
-  /// **', vane '**
-  String s7dcc5e6c76(String p0);
-
-  /// fi: ei vielä lähetetty
-  ///
-  /// In en, this message translates to:
-  /// **'not sent yet'**
-  String get s7c815852f2;
-
-  /// fi: lähetetty klo {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'sent at {p0}'**
-  String s4795d331a5(String p0);
-
-  /// fi: lähetetty {p0}.{p1}. klo {p2}
-  ///
-  /// In en, this message translates to:
-  /// **'sent {p0}.{p1}. at {p2}'**
-  String sff577ce033(String p0, String p1, String p2);
-
-  /// fi: Koodia ei tunnistettu eikä raakadataa tullut. Ota Tasmotassa käyttöön raakadata (SetOption58 1) ja yritä uudelleen.
-  ///
-  /// In en, this message translates to:
-  /// **'Unknown code without raw data. Enable raw data in Tasmota (SetOption58 1) and try again.'**
-  String get s7068e8892e;
-
-  /// fi: IR-lähetin (ilmalämpöpumppu)
-  ///
-  /// In en, this message translates to:
-  /// **'IR blaster (heat pump)'**
-  String get s6207a45bff;
-
-  /// fi: Lähettimen ohjelmisto
-  ///
-  /// In en, this message translates to:
-  /// **'Blaster firmware'**
-  String get s859c2e7734;
-
-  /// fi: tasmota_http = Tasmota (tasmota-ir) suoraan IP-osoitteella. tasmota_mqtt = Tasmota MQTT-välittäjän kautta. esphome = ESP
-  ///
-  /// In en, this message translates to:
-  /// **'tasmota_http = Tasmota (tasmota-ir) by IP. tasmota_mqtt = Tasmota via an MQTT broker. esphome = ESPHome climate_ir. http/mqtt = other blaster with your own templates.'**
-  String get s3f8d3fb444;
-
-  /// fi: Tasmota (HTTP)
-  ///
-  /// In en, this message translates to:
-  /// **'Tasmota (HTTP)'**
-  String get s4fb133b1c8;
-
-  /// fi: Tasmota (MQTT)
-  ///
-  /// In en, this message translates to:
-  /// **'Tasmota (MQTT)'**
-  String get sdd5d31034c;
-
-  /// fi: ESPHome
-  ///
-  /// In en, this message translates to:
-  /// **'ESPHome'**
-  String get see30b7398b;
-
-  /// fi: Oma HTTP
-  ///
-  /// In en, this message translates to:
-  /// **'Custom HTTP'**
-  String get scb2d23e10b;
-
-  /// fi: Oma MQTT
-  ///
-  /// In en, this message translates to:
-  /// **'Custom MQTT'**
-  String get s5c6c30aac6;
-
-  /// fi: Lähettimen osoite
-  ///
-  /// In en, this message translates to:
-  /// **'Blaster address'**
-  String get s38471ae691;
-
-  /// fi: IR-lähettimen IP-osoite (Tasmota tai ESPHome). Löytyy reitittimen laitelistasta.
-  ///
-  /// In en, this message translates to:
-  /// **'IP address of the IR blaster (Tasmota or ESPHome).'**
-  String get sda91fafa54;
-
-  /// fi: Merkin IR-protokolla
-  ///
-  /// In en, this message translates to:
-  /// **'Brand IR protocol'**
-  String get sf9220a3e4d;
-
-  /// fi: Tasmotan IRhvac-valmistajanimi, esim. MITSUBISHI_AC, PANASONIC_AC, DAIKIN. Jos laite ei reagoi, kokeile saman merkin toi
-  ///
-  /// In en, this message translates to:
-  /// **'Tasmota IRhvac vendor, e.g. MITSUBISHI_AC, PANASONIC_AC, DAIKIN. If nothing happens, try another protocol of the same brand.'**
-  String get s423f2576c4;
-
-  /// fi: Malli (valinnainen)
-  ///
-  /// In en, this message translates to:
-  /// **'Model (optional)'**
-  String get s74ff2fd8a8;
-
-  /// fi: IRhvac Model -numero joillekin merkeille (esim. Panasonic). Jätä tyhjäksi, jos et tiedä.
-  ///
-  /// In en, this message translates to:
-  /// **'IRhvac Model number for some brands. Leave empty if unsure.'**
-  String get sef4c0e5d90;
-
-  /// fi: Tasmotan aihe (topic)
-  ///
-  /// In en, this message translates to:
-  /// **'Tasmota topic'**
-  String get s8e7962c184;
-
-  /// fi: Vain MQTT: Tasmotan asetuksista (Configuration → MQTT → Topic). Komennot menevät aiheeseen cmnd/<aihe>/IRhvac.
-  ///
-  /// In en, this message translates to:
-  /// **'MQTT only: from Tasmota (Configuration → MQTT → Topic).'**
-  String get s5ae4cc50db;
-
-  /// fi: MQTT-välittäjän osoite
-  ///
-  /// In en, this message translates to:
-  /// **'MQTT broker address'**
-  String get sed30580f59;
-
-  /// fi: Vain MQTT: kone, jolla Mosquitto pyörii (usein Home Assistant -kone).
-  ///
-  /// In en, this message translates to:
-  /// **'MQTT only: the machine running the broker.'**
-  String get s744ce256bb;
-
-  /// fi: MQTT-portti
-  ///
-  /// In en, this message translates to:
-  /// **'MQTT port'**
-  String get se6754df705;
-
-  /// fi: Tunnus
-  ///
-  /// In en, this message translates to:
-  /// **'Username'**
-  String get sbfc8ee6c86;
-
-  /// fi: MQTT-tunnus tai Tasmotan web-tunnus (admin).
-  ///
-  /// In en, this message translates to:
-  /// **'MQTT or web user.'**
-  String get s711670d91a;
-
-  /// fi: Jätä tyhjäksi, jos ei tarvita.
-  ///
-  /// In en, this message translates to:
-  /// **'Leave empty if not needed.'**
-  String get s3bbd70773d;
-
-  /// fi: ESPHome-ilmastoinnin tunnus
-  ///
-  /// In en, this message translates to:
-  /// **'ESPHome climate id'**
-  String get s443fe6f350;
-
-  /// fi: Vain ESPHome: climate-entiteetin nimi pienillä kirjaimilla ja alaviivoilla (esim. "Ilmalämpöpumppu" → ilmalampopumppu).
-  ///
-  /// In en, this message translates to:
-  /// **'ESPHome only: the climate object id.'**
-  String get s62feae1a9f;
-
-  /// fi: Komennon osoite (muu lähetin)
-  ///
-  /// In en, this message translates to:
-  /// **'Command URL (other blaster)'**
-  String get se0efd6dfb3;
-
-  /// fi: Vain http: osoite, johon koko tila lähetetään. Paikkamerkit: {{power}} {{mode}} {{temp}} {{fan}} {{swing}} {{vendor}} {{
-  ///
-  /// In en, this message translates to:
-  /// **'http only: URL that receives the full state. Placeholders as listed.'**
-  String get s5366cbd4df;
-
-  /// fi: Viestin pohja (muu lähetin)
-  ///
-  /// In en, this message translates to:
-  /// **'Payload template (other blaster)'**
-  String get sce533db7c1;
-
-  /// fi: http (POST-runko) tai mqtt (viesti). Tyhjä = IRhvac-JSON ({{json}}).
-  ///
-  /// In en, this message translates to:
-  /// **'\'http body or mqtt payload. Empty = IRhvac JSON ({{json}}).\''**
-  String get s0fa691e7c7;
-
-  /// fi: summary = koko tila tekstinä. room = lähettimen lämpöanturi (jos on). Muut = viimeksi lähetetty asetus.
-  ///
-  /// In en, this message translates to:
-  /// **'summary = full state as text. room = the blaster\'\'s temperature sensor. Others = last sent setting.'**
-  String get s8567c5faa6;
-
-  /// fi: Yhteenveto
-  ///
-  /// In en, this message translates to:
-  /// **'Summary'**
-  String get s5d329a0fea;
-
-  /// fi: Asetuslämpö
-  ///
-  /// In en, this message translates to:
-  /// **'Set temperature'**
-  String get s5db6506824;
-
-  /// fi: Siivekkeet
-  ///
-  /// In en, this message translates to:
-  /// **'Vane'**
-  String get sa00d64c920;
-
-  /// fi: Lähetysaika
-  ///
-  /// In en, this message translates to:
-  /// **'Sent at'**
-  String get s39f8bf0f76;
-
-  /// fi: Huonelämpö
-  ///
-  /// In en, this message translates to:
-  /// **'Room temperature'**
-  String get s051944392f;
-
-  /// fi: Mitä muutetaan
-  ///
-  /// In en, this message translates to:
-  /// **'What to change'**
-  String get sdd8cd8132c;
-
-  /// fi: Koko tila lähetetään aina kerralla (IR toimii niin). Arvo tulee ruudusta tai kentästä "Arvo".
-  ///
-  /// In en, this message translates to:
-  /// **'The whole state is always sent at once. The value comes from the tile or \"Value\".'**
-  String get s2e8b846390;
-
-  /// fi: Esim. heat, cool, auto, dry, fan (tila) tai on/off. Tyhjä = ruudun arvo.
-  ///
-  /// In en, this message translates to:
-  /// **'E.g. heat, cool, auto, dry, fan or on/off. Empty = tile value.'**
-  String get sb517d97868;
-
-  /// fi: Opeteltu koodi
-  ///
-  /// In en, this message translates to:
-  /// **'Learned code'**
-  String get sda4a1b2eee;
-
-  /// fi: Täyttyy itse, kun tallennat opetellun kaukosäätimen napin. Lähetetään Tasmotan IRsend-komennolla.
-  ///
-  /// In en, this message translates to:
-  /// **'Filled when you save a learned remote button. Sent with Tasmota IRsend.'**
-  String get s0cfc723aa2;
-
-  /// fi: ESPHome-painike
-  ///
-  /// In en, this message translates to:
-  /// **'ESPHome button'**
-  String get s3f26cb7602;
-
-  /// fi: Vain ESPHome: painikkeen tunnus, jonka teit opetellulle koodille.
-  ///
-  /// In en, this message translates to:
-  /// **'ESPHome only: id of the template button for a learned code.'**
-  String get sc71964f422;
-
-  /// fi: Lähettimen osoite puuttuu.
-  ///
-  /// In en, this message translates to:
-  /// **'Blaster address missing.'**
-  String get s852a166240;
-
-  /// fi: Tasmota pyytää salasanaa – lisää web-salasana yhteyden asetuksiin.
-  ///
-  /// In en, this message translates to:
-  /// **'Tasmota needs the web password.'**
-  String get s75ce01c354;
-
-  /// fi: Tasmota ei tunne komentoa {p0}. Asenna lähettimeen tasmota-ir-versio (sisältää ilmalämpöpumppujen protokollat).
-  ///
-  /// In en, this message translates to:
-  /// **'Tasmota does not know {p0}. Install the tasmota-ir build.'**
-  String sf9d84ad23c(String p0);
-
-  /// fi: Tasmota hylkäsi komennon: {p0}
-  ///
-  /// In en, this message translates to:
-  /// **'Tasmota rejected the command: {p0}'**
-  String sff167aa9a6(String p0);
-
-  /// fi: Tasmota ei tunne merkin protokollaa "{p0}". Valitse toinen merkki/protokolla.
-  ///
-  /// In en, this message translates to:
-  /// **'Unknown vendor \"{p0}\".'**
-  String s385c6a9a2d(String p0);
-
-  /// fi: ESPHome ei löytänyt ilmastointia "{p0}". Tarkista tunnus (web_server-sivulta).
-  ///
-  /// In en, this message translates to:
-  /// **'ESPHome climate \"{p0}\" not found.'**
-  String sb4ea2389cb(String p0);
-
-  /// fi: Komennon osoite puuttuu.
-  ///
-  /// In en, this message translates to:
-  /// **'Command URL missing.'**
-  String get s34deda2c72;
-
-  /// fi: Lämpötila puuttuu.
-  ///
-  /// In en, this message translates to:
-  /// **'Temperature missing.'**
-  String get s04e4777aea;
-
-  /// fi: huone {p0} °C
-  ///
-  /// In en, this message translates to:
-  /// **'room {p0} °C'**
-  String s91e5fff1f0(String p0);
-
-  /// fi: Lähettimessä ei ole lämpöanturia (Status 8 ei kertonut lämpötilaa).
-  ///
-  /// In en, this message translates to:
-  /// **'No temperature sensor on the blaster.'**
-  String get sfce1a094cb;
-
-  /// fi: Lämpötilaa ei tullut (tele/{p0}/SENSOR).
-  ///
-  /// In en, this message translates to:
-  /// **'No temperature received.'**
-  String s4536eb33dd(String p0);
-
-  /// fi: Huonelämpö vain Tasmota/ESPHome-lähettimistä.
-  ///
-  /// In en, this message translates to:
-  /// **'Room temperature only from Tasmota/ESPHome.'**
-  String get s9b5bbfa2c6;
-
-  /// fi: RF433-koodeja voi lähettää vain Tasmotalla.
-  ///
-  /// In en, this message translates to:
-  /// **'RF433 needs Tasmota.'**
-  String get s5acc16dafb;
-
-  /// fi: Opeteltuja koodeja voi lähettää vain Tasmotalla.
-  ///
-  /// In en, this message translates to:
-  /// **'Learned codes need Tasmota.'**
-  String get s8478662ad1;
-
-  /// fi: ESPHome-painiketta "{p0}" ei löytynyt (HTTP {p1}).
-  ///
-  /// In en, this message translates to:
-  /// **'ESPHome button \"{p0}\" not found.'**
-  String s9f8263b5a0(String p0, String p1);
-
-  /// fi: Koodia ei tullut {p0} sekunnissa. Osoita kaukosäätimellä suoraan lähettimeen (alle 1 m) ja paina nappia uudelleen. Tarki
-  ///
-  /// In en, this message translates to:
-  /// **'No code within {p0} s. Point the remote straight at the blaster (under 1 m) and press again.'**
-  String s3296e8d7e7(String p0);
-
-  /// fi: RF433-opettelu toimii Tasmotalla.
-  ///
-  /// In en, this message translates to:
-  /// **'RF433 learning needs Tasmota.'**
-  String get s1e73ba395d;
-
-  /// fi: Opettelu toimii Tasmota- ja ESPHome-lähettimillä.
-  ///
-  /// In en, this message translates to:
-  /// **'Learning works with Tasmota and ESPHome blasters.'**
-  String get scc47b4b225;
-
-  /// fi: ✓ Tasmota vastasi (versio {p0}). Testattiin: Status 0 osoitteessa {p1}. {p2} Lämpöpumpulle ei lähetetty mitään.
-  ///
-  /// In en, this message translates to:
-  /// **'✓ Tasmota answered (version {p0}). Tested: Status 0 at {p1}. Nothing was sent to the heat pump.'**
-  String s96adaaf2b6(String p0, String p1, String p2);
-
-  /// fi: MQTT-välittäjä toimii, mutta Tasmota "{p0}" ei vastannut. Tarkista aihe.
-  ///
-  /// In en, this message translates to:
-  /// **'Broker OK but Tasmota \"{p0}\" did not answer.'**
-  String sfce5c770f1(String p0);
-
-  /// fi: ✓ Tasmota "{p0}" vastasi MQTT:n kautta. Lämpöpumpulle ei lähetetty mitään.
-  ///
-  /// In en, this message translates to:
-  /// **'✓ Tasmota \"{p0}\" answered via MQTT. Nothing sent to the heat pump.'**
-  String s2c3b95a054(String p0);
-
-  /// fi: ✓ ESPHome-ilmastointi "{p0}" löytyi (tila {p1}). Testattiin: GET {p2}/climate/{p3}. Mitään ei lähetetty.
-  ///
-  /// In en, this message translates to:
-  /// **'✓ ESPHome climate \"{p0}\" found. Nothing was sent.'**
-  String scf9ead3297(String p0, String p1, String p2, String p3);
-
-  /// fi: Muulle lähettimelle ei ole testiä: IR on yksisuuntainen. Paina virtaruutua ja katso, reagoiko lämpöpumppu.
-  ///
-  /// In en, this message translates to:
-  /// **'No test for other blasters: IR is one-way. Press the power tile and watch the heat pump.'**
-  String get s8ad50358b9;
-
-  /// fi: Laite vastasi HTTP {p0}. Onko ESPHome-asetuksissa web_server päällä?
-  ///
-  /// In en, this message translates to:
-  /// **'Device answered HTTP {p0}. Is web_server enabled in ESPHome?'**
-  String s3b476099a2(String p0);
-
-  /// fi: Laite ei vastannut osoitteessa {p0}.
-  ///
-  /// In en, this message translates to:
-  /// **'No answer from {p0}.'**
-  String sd44aec7380(String p0);
-
-  /// fi: Laitetta ei tavoitettu osoitteessa {p0}. Tarkista IP-osoite.
-  ///
-  /// In en, this message translates to:
-  /// **'Could not reach {p0}.'**
-  String s120026628c(String p0);
-
-  /// fi: Automaatti
-  ///
-  /// In en, this message translates to:
-  /// **'Auto'**
-  String get s43c9b88580;
-
-  /// fi: automaatti
-  ///
-  /// In en, this message translates to:
-  /// **'auto'**
-  String get sd3cd4220ae;
-
-  /// fi: ylös
-  ///
-  /// In en, this message translates to:
-  /// **'highest'**
-  String get s640687fc2d;
-
-  /// fi: ylhäälle
-  ///
-  /// In en, this message translates to:
-  /// **'high'**
-  String get s3516ee9f50;
-
-  /// fi: keskelle
-  ///
-  /// In en, this message translates to:
-  /// **'middle'**
-  String get sb847c3774e;
-
-  /// fi: alhaalle
-  ///
-  /// In en, this message translates to:
-  /// **'low'**
-  String get sc4ebe5627c;
-
-  /// fi: alas
-  ///
-  /// In en, this message translates to:
-  /// **'lowest'**
-  String get saacae8d5c5;
+  /// **'\'Value ({{value}} = slider/toggle)\''**
+  String get s779b59ba4b;
 
   /// fi: ntfy-komentolaite (komennot + tila)
   ///
@@ -15299,11 +13697,11 @@ abstract class AppLocalizations {
   /// **'State topic (optional)'**
   String get sfb1f03903c;
 
-  /// fi: Laitteen tilakanava (esim. paneelin Laite → Etäohjaus → Tilakanava, fw 0.2.50+). Kun asetettu, Molaplan kuuntelee laitte
+  /// fi: Laitteen tilakanava (esim. paneelin Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan kuuntelee laitte
   ///
   /// In en, this message translates to:
-  /// **'The device\'\'s state topic (e.g. the panel\'\'s Device → Remote → State channel, fw 0.2.50+). When set, Molaplan listens for the device\'\'s own state messages and does not poll. No PIN is needed. If a status reply includes state_topic, the field is filled in automatically.'**
-  String get s0ac0bdced7;
+  /// **'The device\'\'s state topic (e.g. the panel\'\'s Device → Remote → State channel, fw 0.2.51+). When set, Molaplan listens for the device\'\'s own state messages and does not poll. No PIN is needed. If a PIN-protected status reply includes state_topic and it differs from the stored value (e.g. after the panel\'\'s \"New channel and key\"), the subscription is updated automatically. If no message arrives on the state topic for over 35 minutes, Molaplan falls back to scheduled status requests.'**
+  String get s1acfb0da58;
 
   /// fi: PIN-koodi (vapaaehtoinen)
   ///
@@ -15605,191 +14003,59 @@ abstract class AppLocalizations {
   /// **'too many commands – wait a moment ({p0})'**
   String s14fac6d719(String p0);
 
-  /// fi: Modbus TCP
+  /// fi: Kamera (MJPEG / JPEG / RTSP)
   ///
   /// In en, this message translates to:
-  /// **'Modbus TCP'**
-  String get s36fb6ba26f;
+  /// **'Camera (MJPEG / JPEG / RTSP)'**
+  String get s58648dc3fc;
 
-  /// fi: IP-osoite
+  /// fi: Kameran osoite
   ///
   /// In en, this message translates to:
-  /// **'Host'**
-  String get sa70cc38354;
+  /// **'Camera base URL'**
+  String get s1534821f4a;
 
-  /// fi: Laitteen osoite (unit id)
+  /// fi: RTSP-osoite (live-kuva kotiverkossa)
   ///
   /// In en, this message translates to:
-  /// **'Unit id'**
-  String get sdc5301b750;
+  /// **'RTSP address (live video at home)'**
+  String get s95533426a3;
 
-  /// fi: Aikakatkaisu (ms)
+  /// fi: RTSP-osoite, kevyt (ruutu)
   ///
   /// In en, this message translates to:
-  /// **'Timeout (ms)'**
-  String get s15e327bf8e;
+  /// **'RTSP address, light (tile)'**
+  String get sa1115d4b0b;
 
-  /// fi: Kehystys
+  /// fi: Tila
   ///
   /// In en, this message translates to:
-  /// **'Framing'**
-  String get s666811be3d;
+  /// **'Mode'**
+  String get se995a6862d;
 
-  /// fi: Halpa RS485–wifi/ethernet-muunnin läpinäkyvässä tilassa käyttää RTU-kehyksiä.
+  /// fi: Liikkuva kuva (MJPEG)
   ///
   /// In en, this message translates to:
-  /// **'A cheap RS485 to Wi-Fi/Ethernet converter in transparent mode uses RTU frames.'**
-  String get s0f2d3b7a42;
+  /// **'Live (MJPEG)'**
+  String get s7cf6da2822;
 
-  /// fi: Modbus TCP (tavallinen)
+  /// fi: Still-kuva välein
   ///
   /// In en, this message translates to:
-  /// **'Modbus TCP (normal)'**
-  String get s12ca822cd8;
+  /// **'Snapshots'**
+  String get s4cb8ad767b;
 
-  /// fi: Modbus RTU TCP:n yli (RS485-yhdyskäytävä)
+  /// fi: RTSP-video
   ///
   /// In en, this message translates to:
-  /// **'Modbus RTU over TCP (RS485 gateway)'**
-  String get s731c92978b;
+  /// **'RTSP video'**
+  String get s15f9cd477c;
 
-  /// fi: Lukuväli vähintään (s)
+  /// fi: Kuvan päivitysväli (s, snapshot)
   ///
   /// In en, this message translates to:
-  /// **'Minimum read interval (s)'**
-  String get s570f11bec8;
-
-  /// fi: Samaa rekisteriä ei lueta tätä useammin, vaikka laattoja olisi monta.
-  ///
-  /// In en, this message translates to:
-  /// **'The same register is never read more often, however many tiles show it.'**
-  String get s13e54dbff1;
-
-  /// fi: Tauko kyselyjen välissä (ms)
-  ///
-  /// In en, this message translates to:
-  /// **'Pause between requests (ms)'**
-  String get s95d4c6dd5b;
-
-  /// fi: Odotus yhdistämisen jälkeen (ms)
-  ///
-  /// In en, this message translates to:
-  /// **'Wait after connecting (ms)'**
-  String get s77b6667fdb;
-
-  /// fi: Yhdistä peräkkäiset luvut
-  ///
-  /// In en, this message translates to:
-  /// **'Batch adjacent reads'**
-  String get sf4b0409574;
-
-  /// fi: Rekistereitä yhdessä luvussa enintään
-  ///
-  /// In en, this message translates to:
-  /// **'Max registers per read'**
-  String get sc011aad1a9;
-
-  /// fi: Estotilan tauko alussa (s)
-  ///
-  /// In en, this message translates to:
-  /// **'Lockout pause at first (s)'**
-  String get s942a690567;
-
-  /// fi: Kun laite ei vastaa, sitä ei kysytä hetkeen. Tauko kaksinkertaistuu enimmäisarvoon asti.
-  ///
-  /// In en, this message translates to:
-  /// **'When the device does not answer, it is left alone for a while. The pause doubles up to the maximum.'**
-  String get s3746551251;
-
-  /// fi: Estotilan tauko enintään (s)
-  ///
-  /// In en, this message translates to:
-  /// **'Lockout pause at most (s)'**
-  String get sf71d800450;
-
-  /// fi: Sulje yhteys virheen jälkeen
-  ///
-  /// In en, this message translates to:
-  /// **'Close the connection after an error'**
-  String get sbce68f8691;
-
-  /// fi: Kysy uudelleen tyhjän vastauksen jälkeen
-  ///
-  /// In en, this message translates to:
-  /// **'Retry on an empty reply'**
-  String get sf96bb0c03d;
-
-  /// fi: Rekisterityyppi
-  ///
-  /// In en, this message translates to:
-  /// **'Register table'**
-  String get s943b8b6bf3;
-
-  /// fi: Pitorekisteri (4x)
-  ///
-  /// In en, this message translates to:
-  /// **'Holding register (4x)'**
-  String get s8283ed1c89;
-
-  /// fi: Kela (0x)
-  ///
-  /// In en, this message translates to:
-  /// **'Coil (0x)'**
-  String get s94cf36d710;
-
-  /// fi: Syöttörekisteri (3x)
-  ///
-  /// In en, this message translates to:
-  /// **'Input register (3x)'**
-  String get sfb6d4a8639;
-
-  /// fi: Diskreetti tulo (1x)
-  ///
-  /// In en, this message translates to:
-  /// **'Discrete input (1x)'**
-  String get s0bbedf814a;
-
-  /// fi: Osoite (0-pohjainen)
-  ///
-  /// In en, this message translates to:
-  /// **'Address (0-based)'**
-  String get sf51ad986eb;
-
-  /// fi: Tietotyyppi
-  ///
-  /// In en, this message translates to:
-  /// **'Data type'**
-  String get s601f118ac0;
-
-  /// fi: Sanajärjestys käänteinen (CDAB)
-  ///
-  /// In en, this message translates to:
-  /// **'Swap words (CDAB)'**
-  String get sddd62d21b0;
-
-  /// fi: Siirtymä
-  ///
-  /// In en, this message translates to:
-  /// **'Offset'**
-  String get s0a239b832b;
-
-  /// fi: Unit id (tyhjä = yhteyden)
-  ///
-  /// In en, this message translates to:
-  /// **'Unit id (empty = connection)'**
-  String get s5f374d3643;
-
-  /// fi: Kirjoitettava
-  ///
-  /// In en, this message translates to:
-  /// **'Write to'**
-  String get sef11962984;
-
-  /// fi: Arvo ({{value}} = liukusäädin/kytkin)
-  ///
-  /// In en, this message translates to:
-  /// **'\'Value ({{value}} = slider/toggle)\''**
-  String get s779b59ba4b;
+  /// **'Refresh (s, snapshot)'**
+  String get s4f356d158a;
 
   /// fi: ntfy (viestikanava / komennot)
   ///
@@ -15935,17 +14201,17 @@ abstract class AppLocalizations {
   /// **'ntfy: command topic missing'**
   String get s0870daf796;
 
-  /// fi: ntfy: yhteys katkesi ennen vastausta
-  ///
-  /// In en, this message translates to:
-  /// **'ntfy: connection closed before the reply'**
-  String get s28dc7ea012;
-
   /// fi: Komento lähetettiin, mutta vastausta ei tullut {p0} sekunnissa. Tarkista, että kotilaite on päällä ja kuuntelee aihetta
   ///
   /// In en, this message translates to:
   /// **'The command was sent, but no reply came within {p0} s. Check that the home device is on and listens to \"{p1}\".'**
   String sa4313864fe(String p0, String p1);
+
+  /// fi: ntfy: yhteys katkesi ennen vastausta
+  ///
+  /// In en, this message translates to:
+  /// **'ntfy: connection closed before the reply'**
+  String get s28dc7ea012;
 
   /// fi: (ei viestejä)
   ///
@@ -15983,6 +14249,12 @@ abstract class AppLocalizations {
   /// **'Home Assistant'**
   String get sf0ef0140c3;
 
+  /// fi: Osoite
+  ///
+  /// In en, this message translates to:
+  /// **'URL'**
+  String get sfcbb753f53;
+
   /// fi: Pitkäikäinen käyttöoikeustunnus
   ///
   /// In en, this message translates to:
@@ -16019,995 +14291,755 @@ abstract class AppLocalizations {
   /// **'\'Extra data JSON ({{value}} = value)\''**
   String get s7286715019;
 
-  /// fi: Viesti heksana
+  /// fi: puhallin {p0}
   ///
   /// In en, this message translates to:
-  /// **'Payload is hex'**
-  String get s1b5b0421c0;
+  /// **'fan {p0}'**
+  String s91c3d72d1e(String p0);
 
-  /// fi: Odota vastausta
+  /// fi: , suuntaus
   ///
   /// In en, this message translates to:
-  /// **'Wait for response'**
-  String get s44ab1d33df;
+  /// **', swing'**
+  String get s40032ddea9;
 
-  /// fi: Vastaus heksana
+  /// fi: , siivekkeet {p0}
   ///
   /// In en, this message translates to:
-  /// **'Response as hex'**
-  String get s341bf61e36;
+  /// **', vane '**
+  String s7dcc5e6c76(String p0);
 
-  /// fi: TCP (raaka)
+  /// fi: ei vielä lähetetty
   ///
   /// In en, this message translates to:
-  /// **'TCP (raw)'**
-  String get se7cff2d61e;
+  /// **'not sent yet'**
+  String get s7c815852f2;
 
-  /// fi: UDP
+  /// fi: lähetetty klo {p0}
   ///
   /// In en, this message translates to:
-  /// **'UDP'**
-  String get s1dfeacd9f6;
+  /// **'sent at {p0}'**
+  String s4795d331a5(String p0);
 
-  /// fi: ei vastaa ({p0} min)
+  /// fi: lähetetty {p0}.{p1}. klo {p2}
   ///
   /// In en, this message translates to:
-  /// **'not answering ({p0} min)'**
-  String s6c33f19716(String p0);
+  /// **'sent {p0}.{p1}. at {p2}'**
+  String sff577ce033(String p0, String p1, String p2);
 
-  /// fi: pois päältä
+  /// fi: Koodia ei tunnistettu eikä raakadataa tullut. Ota Tasmotassa käyttöön raakadata (SetOption58 1) ja yritä uudelleen.
   ///
   /// In en, this message translates to:
-  /// **'off'**
-  String get scebcdabe25;
+  /// **'Unknown code without raw data. Enable raw data in Tasmota (SetOption58 1) and try again.'**
+  String get s7068e8892e;
 
-  /// fi: Kokeilu
+  /// fi: IR-lähetin (ilmalämpöpumppu)
   ///
   /// In en, this message translates to:
-  /// **'Test'**
-  String get sd4be8bca5f;
+  /// **'IR blaster (heat pump)'**
+  String get s6207a45bff;
 
-  /// fi: Vesivuoto → hälytys
+  /// fi: Lähettimen ohjelmisto
   ///
   /// In en, this message translates to:
-  /// **'Water leak → alarm'**
-  String get sd76aadb97c;
+  /// **'Blaster firmware'**
+  String get s859c2e7734;
 
-  /// fi: Kiireellinen ilmoitus heti, kun vuotoanturi havaitsee vettä (myös hiljaisena aikana).
+  /// fi: tasmota_http = Tasmota (tasmota-ir) suoraan IP-osoitteella. tasmota_mqtt = Tasmota MQTT-välittäjän kautta. esphome = ESP
   ///
   /// In en, this message translates to:
-  /// **'An urgent notification as soon as a leak sensor detects water (also during quiet hours).'**
-  String get s0bd0724e83;
+  /// **'tasmota_http = Tasmota (tasmota-ir) by IP. tasmota_mqtt = Tasmota via an MQTT broker. esphome = ESPHome climate_ir. http/mqtt = other blaster with your own templates.'**
+  String get s3f8d3fb444;
 
-  /// fi: Valot päälle auringonlaskulla
+  /// fi: Tasmota (HTTP)
   ///
   /// In en, this message translates to:
-  /// **'Lights on at sunset'**
-  String get sa9f114c81d;
+  /// **'Tasmota (HTTP)'**
+  String get s4fb133b1c8;
 
-  /// fi: Valitut valot syttyvät, kun aurinko laskee.
+  /// fi: Tasmota (MQTT)
   ///
   /// In en, this message translates to:
-  /// **'The chosen lights turn on when the sun sets.'**
-  String get s02402a38eb;
+  /// **'Tasmota (MQTT)'**
+  String get sdd5d31034c;
 
-  /// fi: Kaikki pois klo 23
+  /// fi: ESPHome
   ///
   /// In en, this message translates to:
-  /// **'Everything off at 23:00'**
-  String get s386fda8330;
+  /// **'ESPHome'**
+  String get see30b7398b;
 
-  /// fi: Valitut laitteet sammuvat illalla.
+  /// fi: Oma HTTP
   ///
   /// In en, this message translates to:
-  /// **'The chosen devices turn off in the evening.'**
-  String get s3508664550;
+  /// **'Custom HTTP'**
+  String get scb2d23e10b;
 
-  /// fi: Ilmoita, kun laite ei vastaa
+  /// fi: Oma MQTT
   ///
   /// In en, this message translates to:
-  /// **'Notify when a device stops answering'**
-  String get s3775470669;
+  /// **'Custom MQTT'**
+  String get s5c6c30aac6;
 
-  /// fi: Ilmoitus, jos laite on ollut tavoittamattomissa 10 minuuttia.
+  /// fi: Lähettimen osoite
   ///
   /// In en, this message translates to:
-  /// **'A notification when a device has been unreachable for 10 minutes.'**
-  String get s5c07969ac8;
+  /// **'Blaster address'**
+  String get s38471ae691;
 
-  /// fi: Ilmoita, kun lämpötila laskee
+  /// fi: IR-lähettimen IP-osoite (Tasmota tai ESPHome). Löytyy reitittimen laitelistasta.
   ///
   /// In en, this message translates to:
-  /// **'Notify when the temperature drops'**
-  String get s2cdd15be92;
+  /// **'IP address of the IR blaster (Tasmota or ESPHome).'**
+  String get sda91fafa54;
 
-  /// fi: Ilmoitus, kun anturin lukema laskee rajan alle.
+  /// fi: Merkin IR-protokolla
   ///
   /// In en, this message translates to:
-  /// **'A notification when a sensor reading drops below a limit.'**
-  String get sa74faa4635;
+  /// **'Brand IR protocol'**
+  String get sf9220a3e4d;
 
-  /// fi: Halvimmat tunnit: laite päälle
+  /// fi: Tasmotan IRhvac-valmistajanimi, esim. MITSUBISHI_AC, PANASONIC_AC, DAIKIN. Jos laite ei reagoi, kokeile saman merkin toi
   ///
   /// In en, this message translates to:
-  /// **'Cheapest hours: device on'**
-  String get s94ed692877;
+  /// **'Tasmota IRhvac vendor, e.g. MITSUBISHI_AC, PANASONIC_AC, DAIKIN. If nothing happens, try another protocol of the same brand.'**
+  String get s423f2576c4;
 
-  /// fi: Laite päälle päivän halvimpina tunteina (esim. varaaja).
+  /// fi: Malli (valinnainen)
   ///
   /// In en, this message translates to:
-  /// **'A device on during the day’s cheapest hours (e.g. a water heater).'**
-  String get s9b99909a7c;
+  /// **'Model (optional)'**
+  String get s74ff2fd8a8;
 
-  /// fi: Ilmoita kalliista sähköstä
+  /// fi: IRhvac Model -numero joillekin merkeille (esim. Panasonic). Jätä tyhjäksi, jos et tiedä.
   ///
   /// In en, this message translates to:
-  /// **'Notify about expensive electricity'**
-  String get s90d5d2954d;
+  /// **'IRhvac Model number for some brands. Leave empty if unsure.'**
+  String get sef4c0e5d90;
 
-  /// fi: Ilmoitus, kun pörssisähkö nousee yli 20 c/kWh.
+  /// fi: Tasmotan aihe (topic)
   ///
   /// In en, this message translates to:
-  /// **'A notification when the spot price goes above 20 c/kWh.'**
-  String get s876690515a;
+  /// **'Tasmota topic'**
+  String get s8e7962c184;
 
-  /// fi: Lataa auto aurinkosähkön ylijäämällä
+  /// fi: Vain MQTT: Tasmotan asetuksista (Configuration → MQTT → Topic). Komennot menevät aiheeseen cmnd/<aihe>/IRhvac.
   ///
   /// In en, this message translates to:
-  /// **'Charge the car on solar surplus'**
-  String get s602af22563;
+  /// **'MQTT only: from Tasmota (Configuration → MQTT → Topic).'**
+  String get s5ae4cc50db;
 
-  /// fi: Laturi päälle, kun verkkoon myydään yli 1,4 kW. Pois, kun verkosta ostetaan yli 1 kW (vähintään 10 min lataus).
+  /// fi: MQTT-välittäjän osoite
   ///
   /// In en, this message translates to:
-  /// **'Charger on when more than 1.4 kW is exported. Off when more than 1 kW is imported (at least 10 min of charging).'**
-  String get s9ce0e97a38;
+  /// **'MQTT broker address'**
+  String get sed30580f59;
 
-  /// fi: Lataa auto halvimpina tunteina
+  /// fi: Vain MQTT: kone, jolla Mosquitto pyörii (usein Home Assistant -kone).
   ///
   /// In en, this message translates to:
-  /// **'Charge the car in the cheapest hours'**
-  String get scbad5277ee;
+  /// **'MQTT only: the machine running the broker.'**
+  String get s744ce256bb;
 
-  /// fi: Laturi päälle päivän 4 halvimpana tuntina ja pois, kun halvat tunnit loppuvat.
+  /// fi: MQTT-portti
   ///
   /// In en, this message translates to:
-  /// **'Charger on in the day’s 4 cheapest hours and off when they end.'**
-  String get sb6dc0d48ed;
+  /// **'MQTT port'**
+  String get se6754df705;
 
-  /// fi: Pakkasvaroitus
+  /// fi: Tunnus
   ///
   /// In en, this message translates to:
-  /// **'Frost warning'**
-  String get s1906ecb28c;
+  /// **'Username'**
+  String get sbfc8ee6c86;
 
-  /// fi: Ilmoitus, kun ulkona on alle −15 °C.
+  /// fi: MQTT-tunnus tai Tasmotan web-tunnus (admin).
   ///
   /// In en, this message translates to:
-  /// **'A notification when it is below −15 °C outside.'**
-  String get s036ecd266d;
+  /// **'MQTT or web user.'**
+  String get s711670d91a;
 
-  /// fi: Aamukatsaus klo 7
+  /// fi: Jätä tyhjäksi, jos ei tarvita.
   ///
   /// In en, this message translates to:
-  /// **'Morning summary at 7:00'**
-  String get sacf213e078;
+  /// **'Leave empty if not needed.'**
+  String get s3bbd70773d;
 
-  /// fi: Sää, sähkön hinta ja kodin tila ilmoituksena joka aamu.
+  /// fi: ESPHome-ilmastoinnin tunnus
   ///
   /// In en, this message translates to:
-  /// **'Weather, electricity price and the state of your home as a notification every morning.'**
-  String get sef21ad6784;
+  /// **'ESPHome climate id'**
+  String get s443fe6f350;
 
-  /// fi: VESIVUOTO!
+  /// fi: Vain ESPHome: climate-entiteetin nimi pienillä kirjaimilla ja alaviivoilla (esim. "Ilmalämpöpumppu" → ilmalampopumppu).
   ///
   /// In en, this message translates to:
-  /// **'WATER LEAK!'**
-  String get s5d308e6986;
+  /// **'ESPHome only: the climate object id.'**
+  String get s62feae1a9f;
 
-  /// fi: Lämpötila laski
+  /// fi: Komennon osoite (muu lähetin)
   ///
   /// In en, this message translates to:
-  /// **'Temperature dropped'**
-  String get s13017ce3b0;
+  /// **'Command URL (other blaster)'**
+  String get se0efd6dfb3;
 
-  /// fi: Sähkö on kallista
+  /// fi: Vain http: osoite, johon koko tila lähetetään. Paikkamerkit: {{power}} {{mode}} {{temp}} {{fan}} {{swing}} {{vendor}} {{
   ///
   /// In en, this message translates to:
-  /// **'Electricity is expensive'**
-  String get s4c52f38c8b;
+  /// **'http only: URL that receives the full state. Placeholders as listed.'**
+  String get s5366cbd4df;
 
-  /// fi: Huomenta
+  /// fi: Viestin pohja (muu lähetin)
   ///
   /// In en, this message translates to:
-  /// **'Good morning'**
-  String get sc797ab9c4c;
+  /// **'Payload template (other blaster)'**
+  String get sce533db7c1;
 
-  /// fi: Huomenna sähkö maksaa keskimäärin {avg} c/kWh (kallein {max} klo {hour}). Lämmitä takka.
+  /// fi: http (POST-runko) tai mqtt (viesti). Tyhjä = IRhvac-JSON ({{json}}).
   ///
   /// In en, this message translates to:
-  /// **'\'Tomorrow electricity averages {avg} c/kWh (peak {max} at {hour}). Light the fireplace.\''**
-  String get seec5bf7f8d;
+  /// **'\'http body or mqtt payload. Empty = IRhvac JSON ({{json}}).\''**
+  String get s0fa691e7c7;
 
-  /// fi: Tänään sähkö on poikkeuksellisen kallista: keskimäärin {avg} c/kWh, kallein {max} klo {hour}.
+  /// fi: Mitä näytetään
   ///
   /// In en, this message translates to:
-  /// **'\'Electricity is exceptionally expensive today: average {avg} c/kWh, peak {max} at {hour}.\''**
-  String get s4a7ea7d7f1;
+  /// **'What to show'**
+  String get s271885dc8b;
 
-  /// fi: Huomenna sähkö on poikkeuksellisen kallista: keskimäärin {avg} c/kWh, kallein {max} klo {hour}.
+  /// fi: summary = koko tila tekstinä. room = lähettimen lämpöanturi (jos on). Muut = viimeksi lähetetty asetus.
   ///
   /// In en, this message translates to:
-  /// **'\'Electricity is exceptionally expensive tomorrow: average {avg} c/kWh, peak {max} at {hour}.\''**
-  String get se8a2912e3e;
+  /// **'summary = full state as text. room = the blaster\'\'s temperature sensor. Others = last sent setting.'**
+  String get s8567c5faa6;
 
-  /// fi: Mökille tulo {arrival}. Laita lämmitys päälle nyt, tavoite {target} °C.
+  /// fi: Yhteenveto
   ///
   /// In en, this message translates to:
-  /// **'\'Arriving at the cabin {arrival}. Turn the heating on now, target {target} °C.\''**
-  String get s0818fd54b1;
+  /// **'Summary'**
+  String get s5d329a0fea;
 
-  /// fi: Huomenna sähkö keskimäärin {avg} c/kWh, kallein {max} klo {hour}.
+  /// fi: Asetuslämpö
   ///
   /// In en, this message translates to:
-  /// **'\'Tomorrow: average {avg} c/kWh, peak {max} at {hour}.\''**
-  String get s57aad0f6c3;
+  /// **'Set temperature'**
+  String get s5db6506824;
 
-  /// fi: Tänään sähkö keskimäärin {avg} c/kWh, kallein {max} klo {hour}.
+  /// fi: Siivekkeet
   ///
   /// In en, this message translates to:
-  /// **'\'Today: average {avg} c/kWh, peak {max} at {hour}.\''**
-  String get s05394a7333;
+  /// **'Vane'**
+  String get sa00d64c920;
 
-  /// fi: Poikkeuksellisen kallis sähkö {date}: keskimäärin {avg} c/kWh, kallein {max} klo {hour}.
+  /// fi: Lähetysaika
   ///
   /// In en, this message translates to:
-  /// **'\'Exceptionally expensive electricity {date}: average {avg} c/kWh, peak {max} at {hour}.\''**
-  String get s412e06dba4;
+  /// **'Sent at'**
+  String get s39f8bf0f76;
 
-  /// fi: Sääennuste {date}: {temp} °C.
+  /// fi: Huonelämpö
   ///
   /// In en, this message translates to:
-  /// **'\'Forecast {date}: {temp} °C.\''**
-  String get s7f8a4ab629;
+  /// **'Room temperature'**
+  String get s051944392f;
 
-  /// fi: {tile}: {value}
+  /// fi: Mitä muutetaan
   ///
   /// In en, this message translates to:
-  /// **'\'{tile}: {value}\''**
-  String get s326f105e40;
+  /// **'What to change'**
+  String get sdd8cd8132c;
 
-  /// fi: Saapuminen {arrival}. Laita lämmitys päälle, tavoite {target} °C.
+  /// fi: Koko tila lähetetään aina kerralla (IR toimii niin). Arvo tulee ruudusta tai kentästä "Arvo".
   ///
   /// In en, this message translates to:
-  /// **'\'Arriving {arrival}. Turn the heating on, target {target} °C.\''**
-  String get s65afe3ff6f;
+  /// **'The whole state is always sent at once. The value comes from the tile or \"Value\".'**
+  String get s2e8b846390;
 
-  /// fi: Ruutu puuttuu
+  /// fi: Esim. heat, cool, auto, dry, fan (tila) tai on/off. Tyhjä = ruudun arvo.
   ///
   /// In en, this message translates to:
-  /// **'Tile missing'**
-  String get scec02139b6;
+  /// **'E.g. heat, cool, auto, dry, fan or on/off. Empty = tile value.'**
+  String get sb517d97868;
 
-  /// fi: Ryhmän laitteet eivät vastaa
+  /// fi: Opeteltu koodi
   ///
   /// In en, this message translates to:
-  /// **'Group not answering'**
-  String get s66f19d787b;
+  /// **'Learned code'**
+  String get sda4a1b2eee;
 
-  /// fi: {p0}: komento puuttuu
+  /// fi: Täyttyy itse, kun tallennat opetellun kaukosäätimen napin. Lähetetään Tasmotan IRsend-komennolla.
   ///
   /// In en, this message translates to:
-  /// **'{p0}: no command'**
-  String sed9788d6dc(String p0);
+  /// **'Filled when you save a learned remote button. Sent with Tasmota IRsend.'**
+  String get s0cfc723aa2;
 
-  /// fi: {p0} laitetta päällä
+  /// fi: ESPHome-painike
   ///
   /// In en, this message translates to:
-  /// **'{p0} devices on'**
-  String sd39874fbe2(String p0);
+  /// **'ESPHome button'**
+  String get s3f26cb7602;
 
-  /// fi: {p0} ei vastaa
+  /// fi: Vain ESPHome: painikkeen tunnus, jonka teit opetellulle koodille.
   ///
   /// In en, this message translates to:
-  /// **'{p0} not answering'**
-  String sbe208615d0(String p0);
+  /// **'ESPHome only: id of the template button for a learned code.'**
+  String get sc71964f422;
 
-  /// fi: outo vastaus
+  /// fi: Lähettimen osoite puuttuu.
   ///
   /// In en, this message translates to:
-  /// **'odd answer'**
-  String get s14e68f6852;
+  /// **'Blaster address missing.'**
+  String get s852a166240;
 
-  /// fi: Ilmastointilaitteen käyttäjätaulukko on täynnä. Poista vanha puhelin Smart M-Air -sovelluksesta ja yritä uudelleen.
+  /// fi: Tasmota pyytää salasanaa – lisää web-salasana yhteyden asetuksiin.
   ///
   /// In en, this message translates to:
-  /// **'The unit\'\'s account table is full. Remove an old phone in the Smart M-Air app and try again.'**
-  String get s31ec8d716e;
+  /// **'Tasmota needs the web password.'**
+  String get s75ce01c354;
 
-  /// fi: Laite on varattu (toinen sovellus ohjaa) – yritä minuutin päästä.
+  /// fi: Tasmota ei tunne komentoa {p0}. Asenna lähettimeen tasmota-ir-versio (sisältää ilmalämpöpumppujen protokollat).
   ///
   /// In en, this message translates to:
-  /// **'The unit is busy (another app) – try in a minute.'**
-  String get sbaecc9fbed;
+  /// **'Tasmota does not know {p0}. Install the tasmota-ir build.'**
+  String sf9d84ad23c(String p0);
 
-  /// fi: Daikin hylkäsi pyynnön – tarkista avain (key) tarrasta.
+  /// fi: Tasmota hylkäsi komennon: {p0}
   ///
   /// In en, this message translates to:
-  /// **'Daikin refused – check the key on the sticker.'**
-  String get sc2474a4b0b;
+  /// **'Tasmota rejected the command: {p0}'**
+  String sff167aa9a6(String p0);
 
-  /// fi: Daikin ei hyväksynyt avainta (key).
+  /// fi: Tasmota ei tunne merkin protokollaa "{p0}". Valitse toinen merkki/protokolla.
   ///
   /// In en, this message translates to:
-  /// **'Daikin did not accept the key.'**
-  String get s2f7a41de7a;
+  /// **'Unknown vendor \"{p0}\".'**
+  String s385c6a9a2d(String p0);
 
-  /// fi: Daikin-ohjainta ei löytynyt osoitteesta {p0}
+  /// fi: ESPHome ei löytänyt ilmastointia "{p0}". Tarkista tunnus (web_server-sivulta).
   ///
   /// In en, this message translates to:
-  /// **'No Daikin adapter at {p0}'**
-  String sc499fab53f(String p0);
+  /// **'ESPHome climate \"{p0}\" not found.'**
+  String sb4ea2389cb(String p0);
 
-  /// fi: Daikin (paikallinen wifi)
+  /// fi: Komennon osoite puuttuu.
   ///
   /// In en, this message translates to:
-  /// **'Daikin (local Wi-Fi)'**
-  String get s4cfb5a36c9;
+  /// **'Command URL missing.'**
+  String get s34deda2c72;
 
-  /// fi: Mitsubishi Heavy (Smart M-Air, paikallinen)
+  /// fi: Lämpötila puuttuu.
   ///
   /// In en, this message translates to:
-  /// **'Mitsubishi Heavy (Smart M-Air, local)'**
-  String get s2089a88d1f;
+  /// **'Temperature missing.'**
+  String get s04e4777aea;
 
-  /// fi: Mitsubishi Electric (MELCloud)
+  /// fi: huone {p0} °C
   ///
   /// In en, this message translates to:
-  /// **'Mitsubishi Electric (MELCloud)'**
-  String get s050c379c67;
+  /// **'room {p0} °C'**
+  String s91e5fff1f0(String p0);
 
-  /// fi: Toshiba (Home AC Control)
+  /// fi: Lähettimessä ei ole lämpöanturia (Status 8 ei kertonut lämpötilaa).
   ///
   /// In en, this message translates to:
-  /// **'Toshiba (Home AC Control)'**
-  String get s339fd47e4a;
+  /// **'No temperature sensor on the blaster.'**
+  String get sfce1a094cb;
 
-  /// fi: Samsung (SmartThings)
+  /// fi: Lämpötilaa ei tullut (tele/{p0}/SENSOR).
   ///
   /// In en, this message translates to:
-  /// **'Samsung (SmartThings)'**
-  String get sf71a945a1d;
+  /// **'No temperature received.'**
+  String s4536eb33dd(String p0);
 
-  /// fi: Hitachi (airCloud Go)
+  /// fi: Huonelämpö vain Tasmota/ESPHome-lähettimistä.
   ///
   /// In en, this message translates to:
-  /// **'Hitachi (airCloud Go)'**
-  String get sf7aed9c9e0;
+  /// **'Room temperature only from Tasmota/ESPHome.'**
+  String get s9b5bbfa2c6;
 
-  /// fi: NIBE (myUplink-pilvi)
+  /// fi: RF433-koodeja voi lähettää vain Tasmotalla.
   ///
   /// In en, this message translates to:
-  /// **'NIBE (myUplink cloud)'**
-  String get sb33215fa8b;
+  /// **'RF433 needs Tasmota.'**
+  String get s5acc16dafb;
 
-  /// fi: NIBE / Thermia (Modbus TCP, paikallinen)
+  /// fi: Opeteltuja koodeja voi lähettää vain Tasmotalla.
   ///
   /// In en, this message translates to:
-  /// **'NIBE / Thermia (Modbus TCP, local)'**
-  String get se9b4e55058;
+  /// **'Learned codes need Tasmota.'**
+  String get s8478662ad1;
 
-  /// fi: Lämpöpumppu (oma integraatio)
+  /// fi: ESPHome-painiketta "{p0}" ei löytynyt (HTTP {p1}).
   ///
   /// In en, this message translates to:
-  /// **'Heat pump (built-in integration)'**
-  String get sddd6b1d42e;
+  /// **'ESPHome button \"{p0}\" not found.'**
+  String s9f8263b5a0(String p0, String p1);
 
-  /// fi: Merkki
+  /// fi: Koodia ei tullut {p0} sekunnissa. Osoita kaukosäätimellä suoraan lähettimeen (alle 1 m) ja paina nappia uudelleen. Tarki
   ///
   /// In en, this message translates to:
-  /// **'Brand'**
-  String get s1c9df5579f;
+  /// **'No code within {p0} s. Point the remote straight at the blaster (under 1 m) and press again.'**
+  String s3296e8d7e7(String p0);
 
-  /// fi: Valmistaja ja yhteystapa. Paikalliset toimivat ilman pilveä.
+  /// fi: RF433-opettelu toimii Tasmotalla.
   ///
   /// In en, this message translates to:
-  /// **'Maker and connection type. Local ones work without the cloud.'**
-  String get s34a3681441;
+  /// **'RF433 learning needs Tasmota.'**
+  String get s1e73ba395d;
 
-  /// fi: Laitteen IP-osoite (paikalliset)
+  /// fi: Opettelu toimii Tasmota- ja ESPHome-lähettimillä.
   ///
   /// In en, this message translates to:
-  /// **'Device IP (local brands)'**
-  String get s88688d2809;
+  /// **'Learning works with Tasmota and ESPHome blasters.'**
+  String get scc47b4b225;
 
-  /// fi: Paikallisen laitteen IP-osoite (reitittimen laitelistasta).
+  /// fi: ✓ Tasmota vastasi (versio {p0}). Testattiin: Status 0 osoitteessa {p1}. {p2} Lämpöpumpulle ei lähetetty mitään.
   ///
   /// In en, this message translates to:
-  /// **'IP address of a local unit (from your router\'\'s device list).'**
-  String get s87e0a93996;
+  /// **'✓ Tasmota answered (version {p0}). Tested: Status 0 at {p1}. Nothing was sent to the heat pump.'**
+  String s96adaaf2b6(String p0, String p1, String p2);
 
-  /// fi: Sähköposti (pilvi)
+  /// fi: MQTT-välittäjä toimii, mutta Tasmota "{p0}" ei vastannut. Tarkista aihe.
   ///
   /// In en, this message translates to:
-  /// **'E-mail (cloud)'**
-  String get sc0bc183c3e;
+  /// **'Broker OK but Tasmota \"{p0}\" did not answer.'**
+  String sfce5c770f1(String p0);
 
-  /// fi: Valmistajan sovelluksen kirjautumissähköposti (MELCloud, airCloud).
+  /// fi: ✓ Tasmota "{p0}" vastasi MQTT:n kautta. Lämpöpumpulle ei lähetetty mitään.
   ///
   /// In en, this message translates to:
-  /// **'The e-mail you sign in to the maker\'\'s app with (MELCloud, airCloud).'**
-  String get s0cc25259c7;
+  /// **'✓ Tasmota \"{p0}\" answered via MQTT. Nothing sent to the heat pump.'**
+  String s2c3b95a054(String p0);
 
-  /// fi: Käyttäjätunnus (Toshiba)
+  /// fi: ✓ ESPHome-ilmastointi "{p0}" löytyi (tila {p1}). Testattiin: GET {p2}/climate/{p3}. Mitään ei lähetetty.
   ///
   /// In en, this message translates to:
-  /// **'Username (Toshiba)'**
-  String get s25f561c483;
+  /// **'✓ ESPHome climate \"{p0}\" found. Nothing was sent.'**
+  String scf9ead3297(String p0, String p1, String p2, String p3);
 
-  /// fi: Toshiba Home AC Control -sovelluksen käyttäjätunnus.
+  /// fi: Muulle lähettimelle ei ole testiä: IR on yksisuuntainen. Paina virtaruutua ja katso, reagoiko lämpöpumppu.
   ///
   /// In en, this message translates to:
-  /// **'Your Toshiba Home AC Control username.'**
-  String get s92e7ac8d3c;
+  /// **'No test for other blasters: IR is one-way. Press the power tile and watch the heat pump.'**
+  String get s8ad50358b9;
 
-  /// fi: Valmistajan sovelluksen salasana. Tallentuu vain tälle laitteelle / omaan holviisi.
+  /// fi: Laite vastasi HTTP {p0}. Onko ESPHome-asetuksissa web_server päällä?
   ///
   /// In en, this message translates to:
-  /// **'The maker\'\'s app password. Stored only on this device / in your own vault.'**
-  String get safde071183;
+  /// **'Device answered HTTP {p0}. Is web_server enabled in ESPHome?'**
+  String s3b476099a2(String p0);
 
-  /// fi: Tunnus (SmartThings token)
+  /// fi: Laite ei vastannut osoitteessa {p0}.
   ///
   /// In en, this message translates to:
-  /// **'Token (SmartThings)'**
-  String get s2862f25983;
+  /// **'No answer from {p0}.'**
+  String sd44aec7380(String p0);
 
-  /// fi: SmartThingsin henkilökohtainen token (account.smartthings.com/tokens).
+  /// fi: Laitetta ei tavoitettu osoitteessa {p0}. Tarkista IP-osoite.
   ///
   /// In en, this message translates to:
-  /// **'SmartThings personal access token (account.smartthings.com/tokens).'**
-  String get s23a4bc8253;
+  /// **'Could not reach {p0}.'**
+  String s120026628c(String p0);
 
-  /// fi: Avain (Daikin BRP072C, tarrasta)
+  /// fi: Automaatti
   ///
   /// In en, this message translates to:
-  /// **'Key (Daikin BRP072C, sticker)'**
-  String get sef37e5048d;
+  /// **'Auto'**
+  String get s43c9b88580;
 
-  /// fi: BRP072C-ohjaimen tarrassa oleva avain (key).
+  /// fi: automaatti
   ///
   /// In en, this message translates to:
-  /// **'The key printed on the BRP072C adapter\'\'s sticker.'**
-  String get s1c339065e1;
+  /// **'auto'**
+  String get sd3cd4220ae;
 
-  /// fi: Client ID (myUplink)
+  /// fi: ylös
   ///
   /// In en, this message translates to:
-  /// **'Client ID (myUplink)'**
-  String get se67e3e0eb9;
+  /// **'highest'**
+  String get s640687fc2d;
 
-  /// fi: Oman sovelluksen Client ID osoitteesta dev.myuplink.com.
+  /// fi: ylhäälle
   ///
   /// In en, this message translates to:
-  /// **'Client ID of your own app at dev.myuplink.com.'**
-  String get sc2d5225ae8;
+  /// **'high'**
+  String get s3516ee9f50;
 
-  /// fi: Client Secret (myUplink)
+  /// fi: keskelle
   ///
   /// In en, this message translates to:
-  /// **'Client Secret (myUplink)'**
-  String get sa165e50f99;
+  /// **'middle'**
+  String get sb847c3774e;
 
-  /// fi: Oman sovelluksen Client Secret osoitteesta dev.myuplink.com.
+  /// fi: alhaalle
   ///
   /// In en, this message translates to:
-  /// **'Client Secret of your own app at dev.myuplink.com.'**
-  String get s332f9bc1a1;
+  /// **'low'**
+  String get sc4ebe5627c;
 
-  /// fi: Rekisterikartta (Modbus)
+  /// fi: alas
   ///
   /// In en, this message translates to:
-  /// **'Register map (Modbus)'**
-  String get sd1d4b22fc6;
+  /// **'lowest'**
+  String get saacae8d5c5;
 
-  /// fi: Pumpun mallisarja. 'Tuotu rekisterilista' = pumpun oma CSV-vienti.
+  /// fi: MQTT
   ///
   /// In en, this message translates to:
-  /// **'The pump series. \'\'Imported register list\'\' = the pump\'\'s own CSV export.'**
-  String get s5a9d485e7f;
+  /// **'MQTT'**
+  String get se1bd60873c;
 
-  /// fi: NIBE S-sarja
+  /// fi: Välittäjän osoite
   ///
   /// In en, this message translates to:
-  /// **'NIBE S-series'**
-  String get s7dc3b152a8;
+  /// **'Broker host'**
+  String get s85b9781bb7;
 
-  /// fi: NIBE F-sarja + MODBUS 40
+  /// fi: TLS
   ///
   /// In en, this message translates to:
-  /// **'NIBE F-series + MODBUS 40'**
-  String get sad9fd728f9;
+  /// **'TLS'**
+  String get s49fa57061a;
 
-  /// fi: Thermia Genesis
+  /// fi: WebSocket-yhteys (ws:// tai wss://)
   ///
   /// In en, this message translates to:
-  /// **'Thermia Genesis'**
-  String get seba6d1ba70;
+  /// **'Use WebSocket (ws:// or wss://)'**
+  String get s0fcef98aad;
 
-  /// fi: Tuotu rekisterilista
+  /// fi: Client ID (tyhjä = automaattinen)
   ///
   /// In en, this message translates to:
-  /// **'Imported register list'**
-  String get sfdc0bbf134;
+  /// **'Client ID (empty = auto)'**
+  String get s5089c65c1f;
 
-  /// fi: Yleensä oletus (Modbus 502, MHI 51443).
+  /// fi: Keep alive (s)
   ///
   /// In en, this message translates to:
-  /// **'Usually the default (Modbus 502, MHI 51443).'**
-  String get scd35ffb8e9;
+  /// **'Keep alive (s)'**
+  String get s9372a6f755;
 
-  /// fi: Modbus-laitteen osoite, yleensä 1.
+  /// fi: Tilan aihe (topic)
   ///
   /// In en, this message translates to:
-  /// **'Modbus unit address, usually 1.'**
-  String get sab25ff8075;
+  /// **'State topic'**
+  String get sd373a99107;
 
-  /// fi: Palvelimen osoite (vain testaukseen)
+  /// fi: Komennon aihe (topic)
   ///
   /// In en, this message translates to:
-  /// **'Server URL (testing only)'**
-  String get sb064bec4c8;
+  /// **'Command topic'**
+  String get s518c8aa712;
 
-  /// fi: Vain testaukseen: korvaa valmistajan palvelimen osoitteen.
+  /// fi: QoS
   ///
   /// In en, this message translates to:
-  /// **'Testing only: replaces the maker\'\'s server address.'**
-  String get s67b2ac9328;
+  /// **'QoS'**
+  String get s3660228d11;
 
-  /// fi: Mitä luetaan
+  /// fi: Retain
   ///
   /// In en, this message translates to:
-  /// **'What to read'**
-  String get sabab3f2fae;
+  /// **'Retain'**
+  String get s1b07c9ba3d;
 
-  /// fi: Koko tila (lämpöpumppuruutu) tai yksi lukema.
+  /// fi: WebSocket
   ///
   /// In en, this message translates to:
-  /// **'Full state (heat pump tile) or one reading.'**
-  String get sf5e949d20c;
+  /// **'WebSocket'**
+  String get s3d43664fcc;
 
-  /// fi: Koko tila
+  /// fi: Otsakkeet (Nimi: arvo / rivi)
   ///
   /// In en, this message translates to:
-  /// **'Full state'**
-  String get s46ce82ef9c;
+  /// **'Headers (Name: value per line)'**
+  String get s81479e1555;
 
-  /// fi: Yksi lukema
+  /// fi: Token (Authorization: Bearer)
   ///
   /// In en, this message translates to:
-  /// **'One reading'**
-  String get s8cbd66456f;
+  /// **'Token (Authorization: Bearer)'**
+  String get s5811b38d7b;
 
-  /// fi: Sisäyksikön tunnus
+  /// fi: Viesti yhdistettäessä
   ///
   /// In en, this message translates to:
-  /// **'Unit id'**
-  String get s6d1827b58e;
+  /// **'Message on connect'**
+  String get sd512dbbfc7;
 
-  /// fi: Sisäyksikön tunnus; yhden laitteen tileillä 'main'.
+  /// fi: Suodatin (viesti sisältää)
   ///
   /// In en, this message translates to:
-  /// **'Indoor unit id; \'\'main\'\' for single-unit devices.'**
-  String get s89308ddc6d;
+  /// **'Filter (message contains)'**
+  String get s4d089aab74;
 
-  /// fi: Lukema (current, target, outdoor, power…)
+  /// fi: Kyselyviesti (lähetetään luettaessa)
   ///
   /// In en, this message translates to:
-  /// **'Reading (current, target, outdoor, power…)'**
-  String get sa643668bec;
+  /// **'Request message (sent on read)'**
+  String get s4a282cd247;
 
-  /// fi: Mikä lukema: current, target, outdoor, power, supply, hot_water…
+  /// fi: Viesti ({{value}} = arvo)
   ///
   /// In en, this message translates to:
-  /// **'Which reading: current, target, outdoor, power, supply, hot_water…'**
-  String get s02d24152f0;
+  /// **'\'Message ({{value}} = value)\''**
+  String get sbeef545d37;
 
-  /// fi: Aseta
+  /// fi: locked=Lukossa;unlocked=Auki;jammed=JUMISSA
   ///
   /// In en, this message translates to:
-  /// **'Set'**
-  String get se16e293d6b;
+  /// **'locked=Locked;unlocked=Unlocked;jammed=JAMMED'**
+  String get s1becc05ea1;
 
-  /// fi: Mitä asetetaan
+  /// fi: open=Auki;closed=Kiinni;opening=Aukeaa;closing=Sulkeutuu
   ///
   /// In en, this message translates to:
-  /// **'What to set'**
-  String get s155de09d38;
+  /// **'open=Open;closed=Closed;opening=Opening;closing=Closing'**
+  String get s259de02f33;
 
-  /// fi: Asetusarvo, virta, tila tai puhallin.
+  /// fi: disarmed=Pois;armed_away=Päällä;armed_home=Kotona;armed_night=Yö;triggered=HÄLYTYS;arming=Kytkeytyy
   ///
   /// In en, this message translates to:
-  /// **'Setpoint, power, mode or fan.'**
-  String get s94ecb845c8;
+  /// **'disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming'**
+  String get s64d4364336;
 
-  /// fi: Asetusarvo
+  /// fi: on=Päällä;off=Pois
   ///
   /// In en, this message translates to:
-  /// **'Setpoint'**
-  String get sba2eb6d9b9;
+  /// **'on=On;off=Off'**
+  String get s5b1e227dc4;
 
-  /// fi: Lämpöpumppua "{p0}" ei löydy enää tililtä
+  /// fi: Suomi on yksi alue (FI). Ruotsissa ja Norjassa alue riippuu asuinpaikasta.
   ///
   /// In en, this message translates to:
-  /// **'Heat pump \"{p0}\" is no longer in the account'**
-  String s6478b264c0(String p0);
+  /// **'Finland is one area (FI). In Sweden and Norway it depends on where you live.'**
+  String get s2525f9a4f5;
 
-  /// fi: Asetusarvo puuttuu
+  /// fi: ALV %
   ///
   /// In en, this message translates to:
-  /// **'Setpoint missing'**
-  String get s4937d259b8;
+  /// **'VAT %'**
+  String get s8f4a683abf;
 
-  /// fi: käyrän siirto
+  /// fi: Suomessa 25,5 %.
   ///
   /// In en, this message translates to:
-  /// **'curve offset'**
-  String get s10f42a9a20;
+  /// **'Your country\'\'s VAT.'**
+  String get s1c7d76a774;
 
-  /// fi: asetus
+  /// fi: Myyjän marginaali (c/kWh)
   ///
   /// In en, this message translates to:
-  /// **'setpoint'**
-  String get sbc996a7d25;
+  /// **'Seller margin (c/kWh)'**
+  String get se49d0fba92;
 
-  /// fi: Menovesi
+  /// fi: Pörssisähkösopimuksen marginaali ilman ALV:tä, esim. 0,5.
   ///
   /// In en, this message translates to:
-  /// **'Supply'**
-  String get s620c04d73e;
+  /// **'Spot contract margin without VAT.'**
+  String get s20a5e2936a;
 
-  /// fi: Paluuvesi
+  /// fi: Siirto + sähkövero (c/kWh)
   ///
   /// In en, this message translates to:
-  /// **'Return'**
-  String get s922f77d2f1;
+  /// **'Transfer + tax (c/kWh)'**
+  String get s923f9739de;
 
-  /// fi: Käyttövesi
+  /// fi: Laskun mukaan ALV:n kanssa. Jätä 0, jos haluat nähdä pelkän energian hinnan.
   ///
   /// In en, this message translates to:
-  /// **'Hot water'**
-  String get sbfee72daca;
+  /// **'From your bill, incl. VAT. Leave 0 for energy only.'**
+  String get s2a3498fb0f;
 
-  /// fi: Keruuliuos sisään
+  /// fi: Tuntihinnoitellulle sopimukselle. Pois: 15 min hinnat, kun alueen data on 15 min (EU:n päivämarkkina 1.10.2025 alkaen).
   ///
   /// In en, this message translates to:
-  /// **'Brine in'**
-  String get s0be9e35521;
+  /// **'For hourly-billed contracts. Off: 15-min prices where the area publishes them (EU day-ahead since 1 Oct 2025).'**
+  String get s1d9eabe472;
 
-  /// fi: Keruuliuos ulos
+  /// fi: Hintapalvelin
   ///
   /// In en, this message translates to:
-  /// **'Brine out'**
-  String get s3a0d796501;
+  /// **'Price server'**
+  String get s515da3a9dd;
 
-  /// fi: Astetminuutit
+  /// fi: Molaplanin oma palvelin hakee hinnat avoimista lähteistä.
   ///
   /// In en, this message translates to:
-  /// **'Degree minutes'**
-  String get s23bbe9b4ed;
+  /// **'Molaplan\'\'s server fetches prices from open sources.'**
+  String get s98cc9f1c14;
 
-  /// fi: Kompressori
+  /// fi: Mikä hinnan tieto ruudussa näkyy: hinta nyt, päivän halvin / kallein / keskihinta, seuraava halpa tunti tai kaavio.
   ///
   /// In en, this message translates to:
-  /// **'Compressor'**
-  String get s3ca74f3ef8;
+  /// **'Which price figure the tile shows: now, today\'\'s lowest / highest / average, the next cheap hour or the chart.'**
+  String get s1edb6be142;
 
-  /// fi: Löytyy reitittimen laitelistasta tai valmistajan sovelluksesta (laitteen tiedot).
+  /// fi: Päivän halvin
   ///
   /// In en, this message translates to:
-  /// **'Find it in your router\'\'s device list or the maker\'\'s app (device info).'**
-  String get s6d21845355;
+  /// **'Lowest today'**
+  String get s46aab99b27;
 
-  /// fi: Daikin (wifi, paikallinen)
+  /// fi: Päivän kallein
   ///
   /// In en, this message translates to:
-  /// **'Daikin (Wi-Fi, local)'**
-  String get s4a91d07711;
+  /// **'Highest today'**
+  String get sf6295f1182;
 
-  /// fi: Daikin-ilmalämpöpumppu wifi-ohjaimella (BRP069, BRP072C, Airbase). Toimii ilman pilveä, haetaan verkosta.
+  /// fi: Päivän keskihinta
   ///
   /// In en, this message translates to:
-  /// **'Daikin with a Wi-Fi adapter (BRP069, BRP072C, Airbase). Works without the cloud; found on the network.'**
-  String get s8e339844a9;
+  /// **'Average today'**
+  String get s1aa7abbf72;
 
-  /// fi: Uudemmissa BRP072C-ohjaimissa 13-numeroinen avain on ohjaimen tarrassa. Vanhemmat eivät tarvitse sitä.
+  /// fi: Seuraava halpa tunti
   ///
   /// In en, this message translates to:
-  /// **'Newer BRP072C adapters: the 13-digit key is on the adapter sticker. Older ones need none.'**
-  String get sdb368f83d9;
+  /// **'Next cheap hour'**
+  String get s65f496b2dc;
 
-  /// fi: MHI-ilmalämpöpumppu WF-RAC-wifimoduulilla (Smart M-Air -sovellus). Paikallinen ohjaus ilman pilveä.
+  /// fi: Hintakaavio (tänään ja huomenna)
   ///
   /// In en, this message translates to:
-  /// **'MHI heat pump with the WF-RAC Wi-Fi module (Smart M-Air app). Local control, no cloud.'**
-  String get se19c918d2d;
+  /// **'Price chart (today and tomorrow)'**
+  String get se446dc324a;
 
-  /// fi: Ilmalämpöpumput ja Ecodan-ilma-vesipumput MELCloud-tilin kautta, mistä tahansa.
+  /// fi: Tämän päivän hintoja ei ole vielä saatavilla.
   ///
   /// In en, this message translates to:
-  /// **'Air-to-air and Ecodan air-to-water pumps through your MELCloud account, from anywhere.'**
-  String get sc24b0de42d;
+  /// **'No prices for today yet.'**
+  String get s2f754e8ab4;
 
-  /// fi: Sama kuin MELCloud-sovelluksessa.
+  /// fi: Hintaa ei ole tälle hetkelle.
   ///
   /// In en, this message translates to:
-  /// **'Same as in the MELCloud app.'**
-  String get s41d69e699d;
+  /// **'No price for now.'**
+  String get s18faad19ed;
 
-  /// fi: Toshiban wifi-ilmalämpöpumput Toshiba Home AC Control -tilin kautta.
+  /// fi: Sähkön hinta on vain luettava.
   ///
   /// In en, this message translates to:
-  /// **'Toshiba Wi-Fi heat pumps through your Toshiba Home AC Control account.'**
-  String get sa8405bf705;
+  /// **'Electricity price is read-only.'**
+  String get s29178b43f4;
 
-  /// fi: Sama kuin Toshiba Home AC Control -sovelluksessa.
+  /// fi: Huominen: kyllä.
   ///
   /// In en, this message translates to:
-  /// **'Same as in the Toshiba app.'**
-  String get s703279c03e;
+  /// **'Tomorrow: yes.'**
+  String get s1a707f2788;
 
-  /// fi: Samsungin wifi-ilmalämpöpumput SmartThingsin virallisen rajapinnan kautta.
+  /// fi: Huominen: ei vielä (julkaistaan n. klo 14).
   ///
   /// In en, this message translates to:
-  /// **'Samsung Wi-Fi heat pumps through the official SmartThings API.'**
-  String get se26b321a29;
+  /// **'Tomorrow: not yet (published around 14:00).'**
+  String get sb85af981c1;
 
-  /// fi: Luo osoitteessa account.smartthings.com/tokens: valitse "Devices" (lue ja ohjaa). Huom: Samsung rajoittaa uudet tunnukse
+  /// fi: ✓ Hinnat haettu alueelle {p0} ({p1} jaksoa, {p2} min, lähde {p3}).
   ///
   /// In en, this message translates to:
-  /// **'Create one at account.smartthings.com/tokens with the Devices scopes. Note: Samsung limits new tokens to 24 hours.'**
-  String get s550793ea4a;
-
-  /// fi: Hitachin ilmalämpöpumput airCloud Go -tilin kautta.
-  ///
-  /// In en, this message translates to:
-  /// **'Hitachi heat pumps through your airCloud Go account.'**
-  String get se2f1cb488d;
-
-  /// fi: NIBE-maalämpö- ja poistoilmapumput myUplinkin virallisen rajapinnan kautta (myös CTC, Høiax…).
-  ///
-  /// In en, this message translates to:
-  /// **'NIBE ground-source and exhaust-air pumps through the official myUplink API (also CTC, Høiax…).'**
-  String get s2e3665e309;
-
-  /// fi: Kirjaudu dev.myuplink.com → Applications → Create (Callback URL voi olla esim. https://molaplan.com). Kopioi Client Iden
-  ///
-  /// In en, this message translates to:
-  /// **'Sign in at dev.myuplink.com → Applications → Create. Copy the Client Identifier.'**
-  String get sf2e635afad;
-
-  /// fi: Samalta sivulta.
-  ///
-  /// In en, this message translates to:
-  /// **'From the same page.'**
-  String get s9db9eb22f8;
-
-  /// fi: NIBE S-sarja (Modbus TCP, paikallinen)
-  ///
-  /// In en, this message translates to:
-  /// **'NIBE S-series (Modbus TCP, local)'**
-  String get s412987475c;
-
-  /// fi: S1155, S1255, SMO S40… Ota Modbus TCP käyttöön pumpun valikosta 7.5.9. Ei pilveä.
-  ///
-  /// In en, this message translates to:
-  /// **'S1155, S1255, SMO S40… Enable Modbus TCP in the pump menu 7.5.9. No cloud.'**
-  String get s3fc8f4ce0d;
-
-  /// fi: Pumpun IP-osoite: valikko 3.1.13 (Yhteydet) tai reitittimen laitelista.
-  ///
-  /// In en, this message translates to:
-  /// **'The pump\'\'s IP: menu 3.1.13 (Connections) or your router\'\'s device list.'**
-  String get s9b15cf6f63;
-
-  /// fi: NIBE F-sarja + MODBUS 40 (paikallinen)
-  ///
-  /// In en, this message translates to:
-  /// **'NIBE F-series + MODBUS 40 (local)'**
-  String get s29ed152759;
-
-  /// fi: F1145/F1155/F1255/F750/SMO + MODBUS 40 -lisävaruste ja RS485→TCP-muunnin. Tarkista rekisterit.
-  ///
-  /// In en, this message translates to:
-  /// **'F-series / SMO with the MODBUS 40 accessory and an RS485→TCP gateway. Verify the registers.'**
-  String get sa723788d3c;
-
-  /// fi: RS485→Modbus TCP -muuntimen IP-osoite.
-  ///
-  /// In en, this message translates to:
-  /// **'IP address of the RS485→Modbus TCP gateway.'**
-  String get sb001c51087;
-
-  /// fi: Thermia (Modbus TCP, paikallinen)
-  ///
-  /// In en, this message translates to:
-  /// **'Thermia (Modbus TCP, local)'**
-  String get sde4b0f4525;
-
-  /// fi: Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis). Modbus TCP: Asetukset → BMS.
-  ///
-  /// In en, this message translates to:
-  /// **'Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis). Modbus TCP: Settings → BMS.'**
-  String get s9280f807a6;
-
-  /// fi: Pumpun IP-osoite (näytöltä tai reitittimestä).
-  ///
-  /// In en, this message translates to:
-  /// **'The pump\'\'s IP address (display or router).'**
-  String get scab35073e8;
-
-  /// fi: Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – tai mikä tahansa IR-kaukosäätimellä.
-  ///
-  /// In en, this message translates to:
-  /// **'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – or any with an IR remote.'**
-  String get s5ddd513689;
-
-  /// fi: Ei laitteita
-  ///
-  /// In en, this message translates to:
-  /// **'No units found'**
-  String get s9622976fd3;
-
-  /// fi: laitetta
-  ///
-  /// In en, this message translates to:
-  /// **'unit(s)'**
-  String get sa93876ac9d;
-
-  /// fi: liian monta pyyntöä
-  ///
-  /// In en, this message translates to:
-  /// **'too many requests'**
-  String get sf3d77f10b9;
-
-  /// fi: airCloud: kirjautuminen epäonnistui
-  ///
-  /// In en, this message translates to:
-  /// **'airCloud: sign-in failed'**
-  String get se62d52c336;
-
-  /// fi: airCloud: laitetta ei löydy
-  ///
-  /// In en, this message translates to:
-  /// **'airCloud: unit not found'**
-  String get sc5f4490c42;
-
-  /// fi: MELCloud: väärä sähköposti tai salasana
-  ///
-  /// In en, this message translates to:
-  /// **'MELCloud: wrong e-mail or password'**
-  String get s00c7f00681;
-
-  /// fi: Tätä pumppua ei kytketä päälle/pois Modbusilla.
-  ///
-  /// In en, this message translates to:
-  /// **'This pump is not switched on/off over Modbus.'**
-  String get s4bd0e3110e;
-
-  /// fi: myUplink: väärä Client ID tai Secret
-  ///
-  /// In en, this message translates to:
-  /// **'myUplink: wrong Client ID or Secret'**
-  String get s4558be4f09;
-
-  /// fi: Maalämpöpumpun tilaa ei vaihdeta täältä – vain asetusarvo.
-  ///
-  /// In en, this message translates to:
-  /// **'The mode of a ground-source pump is not changed here – only the setpoint.'**
-  String get s370bf1904d;
-
-  /// fi: Toshiba: väärä käyttäjätunnus tai salasana
-  ///
-  /// In en, this message translates to:
-  /// **'Toshiba: wrong username or password'**
-  String get s8f016f0e29;
-
-  /// fi: Home Assistant (esimerkki)
-  ///
-  /// In en, this message translates to:
-  /// **'Home Assistant (example)'**
-  String get s589eb1bcd3;
-
-  /// fi: Kamera (esimerkki)
-  ///
-  /// In en, this message translates to:
-  /// **'Camera (example)'**
-  String get sc4fdb87cd7;
-
-  /// fi: IV-kone (esimerkki)
-  ///
-  /// In en, this message translates to:
-  /// **'Ventilation unit (example)'**
-  String get sd50566a706;
-
-  /// fi: Piha
-  ///
-  /// In en, this message translates to:
-  /// **'Yard'**
-  String get s4b4fd14aaf;
-
-  /// fi: disarmed=Pois;armed_away=Päällä;armed_home=Kotona;triggered=HÄLYTYS
-  ///
-  /// In en, this message translates to:
-  /// **''**
-  String get s8ac16d45bc;
-
-  /// fi: Olohuoneen valot
-  ///
-  /// In en, this message translates to:
-  /// **'Living room lights'**
-  String get sbde42d83a3;
-
-  /// fi: Tuloilma
-  ///
-  /// In en, this message translates to:
-  /// **'Supply air'**
-  String get sb7c78c63b3;
-
-  /// fi: IV-kone nopeus
-  ///
-  /// In en, this message translates to:
-  /// **'Fan speed'**
-  String get sbb2adef009;
-
-  /// fi: 0=Pois;1=Poissa;2=Kotona;3=Tehostus;4=Max
-  ///
-  /// In en, this message translates to:
-  /// **'0=Off;1=Away;2=Home;3=Boost;4=Max'**
-  String get see46441329;
-
-  /// fi: Lähden kotoa
-  ///
-  /// In en, this message translates to:
-  /// **'Leaving home'**
-  String get sb25aad3bc2;
-
-  /// fi: Hyvää yötä
-  ///
-  /// In en, this message translates to:
-  /// **'Good night'**
-  String get s7e5f6a29e3;
-
-  /// fi: Hyvää huomenta
-  ///
-  /// In en, this message translates to:
-  /// **'Good morning'**
-  String get s253122823a;
-
-  /// fi: Hyvää päivää
-  ///
-  /// In en, this message translates to:
-  /// **'Good afternoon'**
-  String get s640293f08f;
-
-  /// fi: Hyvää iltaa
-  ///
-  /// In en, this message translates to:
-  /// **'Good evening'**
-  String get sd8c5bed7de;
-
-  /// fi: Ryhmän laitteet eivät vastaa
-  ///
-  /// In en, this message translates to:
-  /// **'The group\'\'s devices are not answering'**
-  String get s4cac4725b8;
-
-  /// fi: Ohjattavaa laitetta ei löydy
-  ///
-  /// In en, this message translates to:
-  /// **'The device to control is missing'**
-  String get s13a91fe322;
+  /// **'✓ Prices for {p0} ({p1} slots, {p2} min, source {p3}).'**
+  String s6270faf138(String p0, String p1, String p2, String p3);
 
   /// fi: Löytyy reitittimen laitelistasta tai laitteen sovelluksesta. Voit myös painaa "Etsi verkosta".
   ///
@@ -17326,6 +15358,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'room'**
   String get s9783a8fd53;
+
+  /// fi: asetus
+  ///
+  /// In en, this message translates to:
+  /// **'setpoint'**
+  String get sbc996a7d25;
 
   /// fi: Ilmalämpöpumppu (IR)
   ///
@@ -17963,11 +16001,11 @@ abstract class AppLocalizations {
   /// **'If the device answers on another topic (e.g. your notification topic). Empty = the same topic.'**
   String get sc1ddf7feb4;
 
-  /// fi: Laitteen tilakanava (paneelissa Laite → Etäohjaus → Tilakanava, fw 0.2.50+). Kun asetettu, Molaplan ei kysele tilaa itse
+  /// fi: Laitteen tilakanava (paneelissa Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan ei kysele tilaa itse
   ///
   /// In en, this message translates to:
-  /// **'The device state topic (on the panel: Device → Remote → State channel, fw 0.2.50+). When set, Molaplan does not poll for state. No PIN is needed. May be filled automatically from a status reply\'\'s state_topic field.'**
-  String get s4fa314c8da;
+  /// **'The device state topic (on the panel: Device → Remote → State channel, fw 0.2.51+). When set, Molaplan does not poll for state. No PIN is needed. If a PIN-protected status reply includes state_topic and it differs from the stored value (e.g. after the panel\'\'s \"New channel and key\"), the subscription is updated automatically. If no message arrives on the state topic for over 35 minutes, Molaplan falls back to scheduled status requests.'**
+  String get s5abc26863b;
 
   /// fi: Jos vastauskanavalla on muitakin viestejä: vain tämän otsikon viestit ovat vastauksia.
   ///
@@ -18137,47 +16175,2765 @@ abstract class AppLocalizations {
   /// **'{p0} – room'**
   String s3a38b97f7b(String p0);
 
-  /// fi: Päivällä ei ohjata
+  /// fi: Varaava lattialämmitys (betoni)
   ///
   /// In en, this message translates to:
-  /// **'Not controlled during the day'**
-  String get sd2b99f6417;
+  /// **'Storage floor heating (concrete)'**
+  String get s2a3f705876;
 
-  /// fi: Laitteen tilakanava (esim. paneelin Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan kuuntelee laitte
+  /// fi: Betonilaatta varaa lämpöä pitkään: lämmitys keskitetään päivän halvimpiin tunteihin, ja tuntimäärä seuraa sääennustetta.
   ///
   /// In en, this message translates to:
-  /// **'The device\'\'s state topic (e.g. the panel\'\'s Device → Remote → State channel, fw 0.2.51+). When set, Molaplan listens for the device\'\'s own state messages and does not poll. No PIN is needed. If a PIN-protected status reply includes state_topic and it differs from the stored value (e.g. after the panel\'\'s \"New channel and key\"), the subscription is updated automatically. If no message arrives on the state topic for over 35 minutes, Molaplan falls back to scheduled status requests.'**
-  String get s1acfb0da58;
+  /// **'A concrete slab stores heat for a long time: heating is moved to the cheapest hours, and the number of hours follows the forecast.'**
+  String get se02b21f2e5;
 
-  /// fi: Laitteen tilakanava (paneelissa Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan ei kysele tilaa itse
+  /// fi: Kevyt lattialämmitys
   ///
   /// In en, this message translates to:
-  /// **'The device state topic (on the panel: Device → Remote → State channel, fw 0.2.51+). When set, Molaplan does not poll for state. No PIN is needed. If a PIN-protected status reply includes state_topic and it differs from the stored value (e.g. after the panel\'\'s \"New channel and key\"), the subscription is updated automatically. If no message arrives on the state topic for over 35 minutes, Molaplan falls back to scheduled status requests.'**
-  String get s5abc26863b;
+  /// **'Light floor heating'**
+  String get sed77dcfc1a;
 
-  /// fi: Sovellukset ovat tulossa sovelluskauppoihin (Google Play, Microsoft Store). Jo nyt: jos sinulla on vanha Android-laite,
+  /// fi: Kevyt lattia varaa vähän: ohitetaan päivän kalleimmat tunnit, mutta katko on lyhyt.
   ///
   /// In en, this message translates to:
-  /// **'The apps are coming to the app stores (Google Play, Microsoft Store). Already now: if you have an old Android device, we can install Molaplan on it as a service, or we will send the install file (APK) for you to install yourself if you are comfortable doing that.'**
-  String get scc4366802a;
+  /// **'A light floor stores little heat: the most expensive hours are skipped, with short breaks only.'**
+  String get s4699e792b9;
 
-  /// fi: Pyydä asennus palveluna
+  /// fi: Suorat sähköpatterit
   ///
   /// In en, this message translates to:
-  /// **'Request installation as a service'**
-  String get sb2b9982ba7;
+  /// **'Direct electric radiators'**
+  String get s5d46662c4e;
 
-  /// fi: Lataa asennustiedosto
+  /// fi: Patterit eivät varaa lämpöä: vain kalleimmat tunnit ohitetaan, yksi tunti kerrallaan.
   ///
   /// In en, this message translates to:
-  /// **'Download the install file'**
-  String get s02179b814a;
+  /// **'Radiators do not store heat: only the most expensive hours are skipped, one hour at a time.'**
+  String get s12e9bbf847;
 
-  /// fi: Lataa uusin Android-asennustiedosto (APK). Avaa tiedosto puhelimessa tai tabletissa. Jos Android kysyy, salli asennus tu
+  /// fi: Ilmalämpöpumppu
   ///
   /// In en, this message translates to:
-  /// **'Download the latest Android install file (APK). Open the file on the phone or tablet. If Android asks, allow installation from unknown sources (Settings → security).'**
-  String get see46457ffd;
+  /// **'Air-source heat pump'**
+  String get s1c0bf9b38b;
+
+  /// fi: Ilmalämpöpumppu toimii parhaiten tasaisella lämmöllä: tavoitelämpö nousee hieman ennen kallista tai kylmää jaksoa ja las
+  ///
+  /// In en, this message translates to:
+  /// **'A heat pump works best at an even temperature: the target rises a little before expensive or cold spells and drops in expensive hours.'**
+  String get s6896be80e0;
+
+  /// fi: Maalämpöpumppu
+  ///
+  /// In en, this message translates to:
+  /// **'Ground-source heat pump'**
+  String get s765f87536c;
+
+  /// fi: Maalämpö ja vesikiertoinen lämmitys varaavat jonkin verran: kalleimmat tunnit ohitetaan enintään muutaman tunnin katkoin
+  ///
+  /// In en, this message translates to:
+  /// **'Ground-source heat with water circulation stores some heat: the most expensive hours are skipped in breaks of a few hours at most.'**
+  String get s33536024e7;
+
+  /// fi: Lämminvesivaraaja
+  ///
+  /// In en, this message translates to:
+  /// **'Water heater'**
+  String get s3a7d2e6848;
+
+  /// fi: Varaaja pysyy lämpimänä vuorokauden: se lämmitetään päivän halvimpina tunteina.
+  ///
+  /// In en, this message translates to:
+  /// **'A water heater stays hot for a day: it is heated in the cheapest hours of the day.'**
+  String get s4eec9a0479;
+
+  /// fi: Takka-tila päättyi: huone on alkanut jäähtyä. Lämmitys palaa normaaliksi.
+  ///
+  /// In en, this message translates to:
+  /// **'Fireplace mode ended: the room is cooling. Heating is back to normal.'**
+  String get sa2dc343545;
+
+  /// fi: Takka-tila päättyi (aika täynnä). Lämmitys palaa normaaliksi.
+  ///
+  /// In en, this message translates to:
+  /// **'Fireplace mode ended (time is up). Heating is back to normal.'**
+  String get s78afbd052c;
+
+  /// fi: Takka-tila lopetettiin. Lämmitys palaa normaaliksi.
+  ///
+  /// In en, this message translates to:
+  /// **'Fireplace mode stopped. Heating is back to normal.'**
+  String get s1f08341033;
+
+  /// fi: Selkeää
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get sdd5e97b1e2;
+
+  /// fi: Puolipilvistä
+  ///
+  /// In en, this message translates to:
+  /// **'Partly cloudy'**
+  String get sad990c999d;
+
+  /// fi: Pilvistä
+  ///
+  /// In en, this message translates to:
+  /// **'Cloudy'**
+  String get s80bfe8f9ad;
+
+  /// fi: Sumua
+  ///
+  /// In en, this message translates to:
+  /// **'Fog'**
+  String get s46f3db8514;
+
+  /// fi: Tihkua
+  ///
+  /// In en, this message translates to:
+  /// **'Drizzle'**
+  String get sbd81101eb4;
+
+  /// fi: Sadetta
+  ///
+  /// In en, this message translates to:
+  /// **'Rain'**
+  String get s960a265544;
+
+  /// fi: Lumisadetta
+  ///
+  /// In en, this message translates to:
+  /// **'Snow'**
+  String get seab38c2b45;
+
+  /// fi: Ukkosta
+  ///
+  /// In en, this message translates to:
+  /// **'Thunderstorm'**
+  String get sfc65eafa12;
+
+  /// fi: Huawei SUN2000 (Modbus TCP)
+  ///
+  /// In en, this message translates to:
+  /// **'Huawei SUN2000 (Modbus TCP)'**
+  String get sa7f9b278cf;
+
+  /// fi: Fronius (Solar API, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Fronius (Solar API, local)'**
+  String get s0d714dece1;
+
+  /// fi: SolarEdge (Modbus TCP, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'SolarEdge (Modbus TCP, local)'**
+  String get sa38a153c07;
+
+  /// fi: SMA (Modbus TCP, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'SMA (Modbus TCP, local)'**
+  String get s833dfe954e;
+
+  /// fi: SMA (SunSpec Modbus)
+  ///
+  /// In en, this message translates to:
+  /// **'SMA (SunSpec Modbus)'**
+  String get sc5863d817d;
+
+  /// fi: SMA Energy Meter / Home Manager (Speedwire)
+  ///
+  /// In en, this message translates to:
+  /// **'SMA Energy Meter / Home Manager (Speedwire)'**
+  String get s12733504dc;
+
+  /// fi: Growatt (Modbus TCP)
+  ///
+  /// In en, this message translates to:
+  /// **'Growatt (Modbus TCP)'**
+  String get sdeb4f39ff0;
+
+  /// fi: Muu SunSpec-invertteri (Modbus TCP)
+  ///
+  /// In en, this message translates to:
+  /// **'Other SunSpec inverter (Modbus TCP)'**
+  String get sa1769b666b;
+
+  /// fi: Huawei FusionSolar (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'Huawei FusionSolar (cloud)'**
+  String get s1694840083;
+
+  /// fi: SolarEdge monitoring (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'SolarEdge monitoring (cloud)'**
+  String get s205e886d29;
+
+  /// fi: Growatt OpenAPI (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'Growatt OpenAPI (cloud)'**
+  String get s5bf46ebec4;
+
+  /// fi: Aurinkosähkö / invertteri (oma integraatio)
+  ///
+  /// In en, this message translates to:
+  /// **'Solar / inverter (built-in integration)'**
+  String get se7c240ad4f;
+
+  /// fi: Merkki ja yhteystapa
+  ///
+  /// In en, this message translates to:
+  /// **'Brand and connection'**
+  String get s46b5445e4a;
+
+  /// fi: Valmistaja ja yhteystapa. Paikalliset toimivat ilman pilveä ja päivittyvät nopeammin.
+  ///
+  /// In en, this message translates to:
+  /// **'Maker and connection type. Local ones work without the cloud and update faster.'**
+  String get sef83efed4e;
+
+  /// fi: IP-osoite (paikalliset)
+  ///
+  /// In en, this message translates to:
+  /// **'IP address (local)'**
+  String get scc322677fe;
+
+  /// fi: Invertterin, SDonglen tai mittarin IP-osoite (reitittimen laitelistasta).
+  ///
+  /// In en, this message translates to:
+  /// **'IP address of the inverter, SDongle or meter (from the router device list).'**
+  String get s6ac1068052;
+
+  /// fi: Tyhjä = oletus (Modbus 502, SolarEdge 1502, Huawein invertterin oma wifi 6607).
+  ///
+  /// In en, this message translates to:
+  /// **'Empty = default (Modbus 502, SolarEdge 1502, Huawei inverter Wi-Fi 6607).'**
+  String get sa163739d18;
+
+  /// fi: Modbus unit id
+  ///
+  /// In en, this message translates to:
+  /// **'Modbus unit id'**
+  String get s58f0665e29;
+
+  /// fi: Tyhjä = oletus (Huawei 1, SolarEdge 1, SMA 3, SMA SunSpec 126, Growatt 1).
+  ///
+  /// In en, this message translates to:
+  /// **'Empty = default (Huawei 1, SolarEdge 1, SMA 3, SMA SunSpec 126, Growatt 1).'**
+  String get sd5e2f52587;
+
+  /// fi: Mittarin sarjanumero (SMA Energy Meter)
+  ///
+  /// In en, this message translates to:
+  /// **'Meter serial (SMA Energy Meter)'**
+  String get se49fbf06a8;
+
+  /// fi: Vain jos verkossa on useita SMA-mittareita. Tyhjä = ensimmäinen.
+  ///
+  /// In en, this message translates to:
+  /// **'Only if there are several SMA meters on the network. Empty = the first one.'**
+  String get s4a63dcc985;
+
+  /// fi: Käyttäjä (FusionSolar API)
+  ///
+  /// In en, this message translates to:
+  /// **'User (FusionSolar API)'**
+  String get s6e391cf987;
+
+  /// fi: FusionSolarin Northbound-API-käyttäjä (asentaja luo: Järjestelmä → Yritys → Northbound).
+  ///
+  /// In en, this message translates to:
+  /// **'FusionSolar Northbound API user (created by the installer: System → Company → Northbound).'**
+  String get se76a6f4565;
+
+  /// fi: Salasana / järjestelmäkoodi
+  ///
+  /// In en, this message translates to:
+  /// **'Password / system code'**
+  String get s2f3b444057;
+
+  /// fi: Tallentuu vain tälle laitteelle / omaan salattuun holviisi.
+  ///
+  /// In en, this message translates to:
+  /// **'Stored only on this device / in your own encrypted vault.'**
+  String get s11298f6c17;
+
+  /// fi: API-avain (SolarEdge / Growatt)
+  ///
+  /// In en, this message translates to:
+  /// **'API key (SolarEdge / Growatt)'**
+  String get s68eeca8dbe;
+
+  /// fi: SolarEdge: monitoring-portaali → Admin → Site Access → API. Growatt: OpenAPI-token.
+  ///
+  /// In en, this message translates to:
+  /// **'SolarEdge: monitoring portal → Admin → Site Access → API. Growatt: OpenAPI token.'**
+  String get seba7bd613f;
+
+  /// fi: Laitoksen tunnus (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'Site / plant id (cloud)'**
+  String get s3cda8d5f90;
+
+  /// fi: Tyhjä = tilin ensimmäinen laitos.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty = the first site of the account.'**
+  String get see56030ac8;
+
+  /// fi: Verkko: positiivinen = ostat verkosta, negatiivinen = myyt ylijäämää.
+  ///
+  /// In en, this message translates to:
+  /// **'Grid: positive = buying from the grid, negative = selling surplus.'**
+  String get s9d61569ac0;
+
+  /// fi: Aurinkosähkö nyt (W)
+  ///
+  /// In en, this message translates to:
+  /// **'Solar power now (W)'**
+  String get sc78a29bef9;
+
+  /// fi: Tuotto tänään (kWh)
+  ///
+  /// In en, this message translates to:
+  /// **'Yield today (kWh)'**
+  String get s88a9d9b593;
+
+  /// fi: Tuotto yhteensä (kWh)
+  ///
+  /// In en, this message translates to:
+  /// **'Total yield (kWh)'**
+  String get s4766881640;
+
+  /// fi: Verkko +osto / −myynti (W)
+  ///
+  /// In en, this message translates to:
+  /// **'Grid +import / −export (W)'**
+  String get s4e1e06f64a;
+
+  /// fi: Ostettu yhteensä (kWh)
+  ///
+  /// In en, this message translates to:
+  /// **'Imported total (kWh)'**
+  String get s5c5e6866eb;
+
+  /// fi: Myyty yhteensä (kWh)
+  ///
+  /// In en, this message translates to:
+  /// **'Exported total (kWh)'**
+  String get s7495975366;
+
+  /// fi: Akun varaus (%)
+  ///
+  /// In en, this message translates to:
+  /// **'Battery charge (%)'**
+  String get s275ffaa691;
+
+  /// fi: Akku +lataus / −purku (W)
+  ///
+  /// In en, this message translates to:
+  /// **'Battery +charge / −discharge (W)'**
+  String get s9da1bd7ed1;
+
+  /// fi: Kodin kulutus (W)
+  ///
+  /// In en, this message translates to:
+  /// **'Home consumption (W)'**
+  String get sb6d790453a;
+
+  /// fi: Laite ei kerro tätä lukemaa ({p0})
+  ///
+  /// In en, this message translates to:
+  /// **'The device does not report this reading ({p0})'**
+  String sff9335b6df(String p0);
+
+  /// fi: Invertteriä ei ohjata – vain luku
+  ///
+  /// In en, this message translates to:
+  /// **'Inverters are read-only'**
+  String get s711b4531bd;
+
+  /// fi: tuotto
+  ///
+  /// In en, this message translates to:
+  /// **'solar'**
+  String get s257cf40257;
+
+  /// fi: verkko
+  ///
+  /// In en, this message translates to:
+  /// **'grid'**
+  String get sfa32969a23;
+
+  /// fi: Säästävä
+  ///
+  /// In en, this message translates to:
+  /// **'Saving'**
+  String get sc27533ae83;
+
+  /// fi: Lämpö saa vaihdella eniten (+1 / −2 °C). Suurin säästö.
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature may vary the most (+1 / −2 °C). Biggest savings.'**
+  String get sdbcb85509b;
+
+  /// fi: Tasapainoinen
+  ///
+  /// In en, this message translates to:
+  /// **'Balanced'**
+  String get s380b20be36;
+
+  /// fi: Pieni vaihtelu (+1 / −1 °C). Hyvä oletus.
+  ///
+  /// In en, this message translates to:
+  /// **'Small variation (+1 / −1 °C). A good default.'**
+  String get s66ea783264;
+
+  /// fi: Mukavuus
+  ///
+  /// In en, this message translates to:
+  /// **'Comfort'**
+  String get see96226e44;
+
+  /// fi: Lähes tasainen lämpö (+0,5 / −0,5 °C). Säästää vähän.
+  ///
+  /// In en, this message translates to:
+  /// **'Almost even temperature (+0.5 / −0.5 °C). Saves a little.'**
+  String get sb403e00b3d;
+
+  /// fi: SMA Energy Meter: ei lähetyksiä kotiverkossa (multicast 239.12.255.254:9522)
+  ///
+  /// In en, this message translates to:
+  /// **'SMA Energy Meter: no broadcasts on the home network (multicast 239.12.255.254:9522)'**
+  String get s333643b4c4;
+
+  /// fi: Löytyy reitittimen laitelistasta tai valmistajan sovelluksesta (laitteen tiedot). Varaa laitteelle kiinteä IP.
+  ///
+  /// In en, this message translates to:
+  /// **'Find it in your router\'\'s device list or the maker\'\'s app (device info). Reserve a fixed IP for it.'**
+  String get s0a81072a1f;
+
+  /// fi: Päälukemat
+  ///
+  /// In en, this message translates to:
+  /// **'Main readings'**
+  String get s7c6a740594;
+
+  /// fi: Lisäruudut automaatioihin
+  ///
+  /// In en, this message translates to:
+  /// **'Extra tiles for automations'**
+  String get se74bcc1028;
+
+  /// fi: Huawei SUN2000 (Modbus TCP, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Huawei SUN2000 (Modbus TCP, local)'**
+  String get s87d0186621;
+
+  /// fi: SUN2000-invertteri (myös LUNA2000-akku ja DTSU666-mittari) SDonglen kautta kotiverkossa, ilman pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'SUN2000 inverter (incl. LUNA2000 battery and DTSU666 meter) via the SDongle on your network, no cloud.'**
+  String get se7647d6762;
+
+  /// fi: SDonglen IP-osoite. Ota ensin käyttöön FusionSolar-sovelluksessa: Laitekäyttöönotto → Dongle → Modbus TCP = "Ota käyttöö
+  ///
+  /// In en, this message translates to:
+  /// **'The SDongle IP address. First enable it in the FusionSolar app: Device commissioning → Dongle → Modbus TCP = \"Enable (unrestricted)\". Without a dongle: the inverter\'\'s own Wi-Fi, address like 192.168.200.1:6607.'**
+  String get sccb0c7d2d8;
+
+  /// fi: Valinnainen: tuotanto FusionSolarin virallisen Northbound-rajapinnan kautta. Päivittyy noin 5 min välein.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional: production through the official FusionSolar Northbound API. Updates about every 5 minutes.'**
+  String get sddc831ec16;
+
+  /// fi: Northbound-API-käyttäjä (ei sovelluksen tavallinen tunnus). Asentaja tai pääkäyttäjä luo sen: Järjestelmä → Yritys → Nor
+  ///
+  /// In en, this message translates to:
+  /// **'A Northbound API user (not your normal app login). The installer / admin creates it: System → Company → Northbound management.'**
+  String get s4424767fdd;
+
+  /// fi: Tallentuu vain tähän laitteeseen salattuna.
+  ///
+  /// In en, this message translates to:
+  /// **'Stored encrypted on this device only.'**
+  String get s7a7ab0d238;
+
+  /// fi: Selaimen osoiterivin palvelin kun kirjaudut FusionSolariin. Oletus eu5.
+  ///
+  /// In en, this message translates to:
+  /// **'The host in your browser address bar when signed in to FusionSolar. Default eu5.'**
+  String get sde3c79670a;
+
+  /// fi: Symo, Primo, Gen24, Tauro – myös Smart Meter ja akku. Valmistajan avoin paikallinen rajapinta, ei pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'Symo, Primo, Gen24, Tauro – incl. Smart Meter and battery. The maker\'\'s open local API, no cloud.'**
+  String get se80d87723d;
+
+  /// fi: {p0} Gen24: ota Solar API käyttöön invertterin web-sivulta (Viestintä → Solar API).
+  ///
+  /// In en, this message translates to:
+  /// **' Gen24: enable the Solar API on the inverter web page (Communication → Solar API).'**
+  String s1cb0924dc9(String p0);
+
+  /// fi: SolarEdge-invertteri, mittari ja akku SunSpec Modbusilla kotiverkossa (portti 1502).
+  ///
+  /// In en, this message translates to:
+  /// **'SolarEdge inverter, meter and battery over SunSpec Modbus on your network (port 1502).'**
+  String get s1345214178;
+
+  /// fi: {p0} Ota Modbus TCP käyttöön SetApp-sovelluksella: Käyttöönotto → Tiedonsiirto → Modbus TCP.
+  ///
+  /// In en, this message translates to:
+  /// **' Enable Modbus TCP with the SetApp: Commissioning → Communication → Modbus TCP.'**
+  String s1f7b006036(String p0);
+
+  /// fi: Valinnainen: tuotanto ja energiavirrat SolarEdgen virallisen monitoring-rajapinnan kautta (päivittyy ~5 min).
+  ///
+  /// In en, this message translates to:
+  /// **'Optional: production and power flow through the official SolarEdge monitoring API (updates ~5 min).'**
+  String get s5d43115e7d;
+
+  /// fi: monitoring.solaredge.com → Admin → Site Access → API Access: hyväksy ehdot ja kopioi avain.
+  ///
+  /// In en, this message translates to:
+  /// **'monitoring.solaredge.com → Admin → Site Access → API Access: accept the terms and copy the key.'**
+  String get sbe1a020a66;
+
+  /// fi: Sunny Boy, Sunny Tripower, Sunny Boy Storage – SMA:n Modbus-rekisterit kotiverkossa (unit id 3).
+  ///
+  /// In en, this message translates to:
+  /// **'Sunny Boy, Sunny Tripower, Sunny Boy Storage – SMA Modbus registers on your network (unit id 3).'**
+  String get s9c5e673c38;
+
+  /// fi: {p0} Ota Modbus käyttöön invertterin web-sivulta: Laitteen parametrit → Ulkoinen tiedonsiirto → Modbus TCP-palvelin.
+  ///
+  /// In en, this message translates to:
+  /// **' Enable Modbus on the inverter web page: Device parameters → External communication → Modbus TCP server.'**
+  String s4fad533521(String p0);
+
+  /// fi: SMA Energy Meter / Home Manager (Speedwire, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'SMA Energy Meter / Home Manager (Speedwire, local)'**
+  String get s528ecf3140;
+
+  /// fi: Verkosta osto ja myynti suoraan mittarin Speedwire-lähetyksistä – ei kirjautumista eikä pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'Grid import and export straight from the meter\'\'s Speedwire broadcasts – no login, no cloud.'**
+  String get sa7e3cb3d48;
+
+  /// fi: Mittari löytyy automaattisesti samasta kotiverkosta. Jos haku ei löydä sitä, kirjoita mittarin IP-osoite (luku tulee sil
+  ///
+  /// In en, this message translates to:
+  /// **'The meter is found automatically on the same home network. If the search misses it, type the meter IP (readings still come from its broadcasts).'**
+  String get s126a0713b8;
+
+  /// fi: Growatt (Modbus TCP, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Growatt (Modbus TCP, local)'**
+  String get sbdf4d24f64;
+
+  /// fi: MIN/MOD/SPH-invertterit RS485→TCP-muuntimen (tai Modbus TCP:tä tukevan ShineLan-X:n) kautta. Tarkista lukemat.
+  ///
+  /// In en, this message translates to:
+  /// **'MIN/MOD/SPH inverters via an RS485→TCP gateway (or a ShineLan-X with Modbus TCP). Verify the readings.'**
+  String get s6c5156d740;
+
+  /// fi: RS485→Modbus TCP -muuntimen IP-osoite (esim. Elfin EW11, Waveshare). Kytketään invertterin RS485/COM-liittimeen.
+  ///
+  /// In en, this message translates to:
+  /// **'IP of the RS485→Modbus TCP gateway (e.g. Elfin EW11, Waveshare) wired to the inverter RS485/COM port.'**
+  String get se351eda9ce;
+
+  /// fi: Valinnainen: tuotanto Growattin OpenAPI:n kautta (ShinePhone/ShineServer-tili). Päivittyy ~5 min.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional: production through the Growatt OpenAPI (ShinePhone/ShineServer account). Updates ~5 min.'**
+  String get s06257dd63c;
+
+  /// fi: Pyydä token Growattin tuesta tai asentajalta (OpenAPI), tai ShineServerin asetuksista jos se näkyy.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask Growatt support or your installer for an OpenAPI token, or find it in ShineServer settings if shown.'**
+  String get sbd8c9831bb;
+
+  /// fi: Kostal, Fronius (Modbus), SMA (SunSpec), ABB/FIMER, Sungrow-mittarit… Mikä tahansa SunSpec-laite.
+  ///
+  /// In en, this message translates to:
+  /// **'Kostal, Fronius (Modbus), SMA (SunSpec), ABB/FIMER… Any SunSpec device.'**
+  String get s3c89bd3976;
+
+  /// fi: {p0} Portti oletuksena 502 – muu portti muodossa 192.168.1.20:1502.
+  ///
+  /// In en, this message translates to:
+  /// **' Port 502 by default – another port like 192.168.1.20:1502.'**
+  String s183e57cdfd(String p0);
+
+  /// fi: Huawei, Fronius, SolarEdge, SMA, Growatt – tuotanto, verkko ja akku. Paikallisesti, pilvi valinnainen.
+  ///
+  /// In en, this message translates to:
+  /// **'Huawei, Fronius, SolarEdge, SMA, Growatt – production, grid and battery. Local, cloud optional.'**
+  String get s984804da72;
+
+  /// fi: OCPP 1.6J (paikallinen, mikä tahansa merkki)
+  ///
+  /// In en, this message translates to:
+  /// **'OCPP 1.6J (local, any brand)'**
+  String get s68e2e87750;
+
+  /// fi: Easee (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'Easee (cloud)'**
+  String get s66fb236f0c;
+
+  /// fi: Zaptec (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'Zaptec (cloud)'**
+  String get s3809be512f;
+
+  /// fi: Wallbox (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'Wallbox (cloud)'**
+  String get s90c71e52fb;
+
+  /// fi: Sähköauton laturi (oma integraatio)
+  ///
+  /// In en, this message translates to:
+  /// **'EV charger (built-in integration)'**
+  String get s7c3abc09fc;
+
+  /// fi: OCPP toimii paikallisesti ilman pilveä (laturi ottaa yhteyden tähän sovellukseen tai siltaan).
+  ///
+  /// In en, this message translates to:
+  /// **'OCPP works locally without a cloud (the charger connects to this app or the bridge).'**
+  String get se6885155b4;
+
+  /// fi: OCPP-portti
+  ///
+  /// In en, this message translates to:
+  /// **'OCPP port'**
+  String get sb14c49378c;
+
+  /// fi: Portti, jota tämä laite kuuntelee. Laturin osoite: ws://<tämän laitteen IP>:9000/ocpp/
+  ///
+  /// In en, this message translates to:
+  /// **'The port this device listens on. Charger URL: ws://<this device IP>:9000/ocpp/'**
+  String get sa9346504d4;
+
+  /// fi: Laturin tunnus (OCPP)
+  ///
+  /// In en, this message translates to:
+  /// **'Charge point id (OCPP)'**
+  String get sf94b2ba7f3;
+
+  /// fi: Laturin OCPP-tunnus (charge point id). Tyhjä = ensimmäinen yhteyden ottanut.
+  ///
+  /// In en, this message translates to:
+  /// **'The charger\'\'s OCPP charge point id. Empty = the first one that connects.'**
+  String get s8ea8831ed0;
+
+  /// fi: Tunniste (idTag) etäkäynnistykseen
+  ///
+  /// In en, this message translates to:
+  /// **'idTag for remote start'**
+  String get sa3b3822b75;
+
+  /// fi: Lähetetään RemoteStartTransactionissa. Tyhjä = "molaplan".
+  ///
+  /// In en, this message translates to:
+  /// **'Sent with RemoteStartTransaction. Empty = \"molaplan\".'**
+  String get sf718534954;
+
+  /// fi: Käyttäjätunnus / sähköposti (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'Username / e-mail (cloud)'**
+  String get s540a178f7a;
+
+  /// fi: Sama kuin valmistajan sovelluksessa.
+  ///
+  /// In en, this message translates to:
+  /// **'Same as in the maker\'\'s app.'**
+  String get s98c928f06c;
+
+  /// fi: Pilvi: sovelluksen salasana. OCPP: valinnainen Basic auth -salasana. Tallentuu vain tälle laitteelle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud: the app password. OCPP: optional Basic auth password. Stored on this device only.'**
+  String get sa6b5175654;
+
+  /// fi: Mikä laturin lukema näytetään.
+  ///
+  /// In en, this message translates to:
+  /// **'Which charger reading to show.'**
+  String get sccb2892754;
+
+  /// fi: Tila
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get s0e7115e10c;
+
+  /// fi: Lataa (1/0)
+  ///
+  /// In en, this message translates to:
+  /// **'Charging (1/0)'**
+  String get s20cb072267;
+
+  /// fi: Latausteho (W)
+  ///
+  /// In en, this message translates to:
+  /// **'Charging power (W)'**
+  String get se13ff56722;
+
+  /// fi: Tämä lataus (kWh)
+  ///
+  /// In en, this message translates to:
+  /// **'This session (kWh)'**
+  String get sd3627e3a20;
+
+  /// fi: Yhteensä (kWh)
+  ///
+  /// In en, this message translates to:
+  /// **'Total (kWh)'**
+  String get s19e058622f;
+
+  /// fi: Virtaraja (A)
+  ///
+  /// In en, this message translates to:
+  /// **'Current limit (A)'**
+  String get s613785b80f;
+
+  /// fi: Laturin tunnus
+  ///
+  /// In en, this message translates to:
+  /// **'Charger id'**
+  String get s60f4e2786f;
+
+  /// fi: Tilin laturin tunnus; tyhjä = ainoa laturi.
+  ///
+  /// In en, this message translates to:
+  /// **'Charger id in the account; empty = the only charger.'**
+  String get sfbbd0943a8;
+
+  /// fi: Aloita, lopeta tai aseta virtaraja.
+  ///
+  /// In en, this message translates to:
+  /// **'Start, stop or set the current limit.'**
+  String get s9617db1f3d;
+
+  /// fi: Aloita lataus
+  ///
+  /// In en, this message translates to:
+  /// **'Start charging'**
+  String get sc110ab773a;
+
+  /// fi: Lopeta / tauko
+  ///
+  /// In en, this message translates to:
+  /// **'Stop / pause'**
+  String get s44d11f741f;
+
+  /// fi: Lataus päälle/pois
+  ///
+  /// In en, this message translates to:
+  /// **'Charging on/off'**
+  String get s4c68e739b0;
+
+  /// fi: Aseta virtaraja (A)
+  ///
+  /// In en, this message translates to:
+  /// **'Set current limit (A)'**
+  String get s141fac7235;
+
+  /// fi: Virtaraja ampeereina; {{value}} = liukusäätimen arvo.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Current limit in amps; {{value}} = the slider value.\''**
+  String get s33f04bfedd;
+
+  /// fi: Laturia "{p0}" ei löydy (ei yhteyttä tai poistettu tililtä)
+  ///
+  /// In en, this message translates to:
+  /// **'Charger \"{p0}\" not found (offline or removed)'**
+  String s610172c6f4(String p0);
+
+  /// fi: Virtaraja puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'Current limit missing'**
+  String get sf51ef628f4;
+
+  /// fi: Ei latureita
+  ///
+  /// In en, this message translates to:
+  /// **'No chargers'**
+  String get sd661432e07;
+
+  /// fi: ladattu yhteensä
+  ///
+  /// In en, this message translates to:
+  /// **'total charged'**
+  String get s47aba73804;
+
+  /// fi: lataus
+  ///
+  /// In en, this message translates to:
+  /// **'charging'**
+  String get sed9640f6b4;
+
+  /// fi: latausteho
+  ///
+  /// In en, this message translates to:
+  /// **'charging power'**
+  String get sebaaf2a20f;
+
+  /// fi: tämä lataus
+  ///
+  /// In en, this message translates to:
+  /// **'this session'**
+  String get s223d1336d5;
+
+  /// fi: virtaraja
+  ///
+  /// In en, this message translates to:
+  /// **'current limit'**
+  String get sbea289dcc3;
+
+  /// fi: OCPP-palvelinta ei voitu käynnistää porttiin {p0}: {p1}
+  ///
+  /// In en, this message translates to:
+  /// **'Could not start the OCPP server on port {p0}: {p1}'**
+  String s2d551049ff(String p0, String p1);
+
+  /// fi: Laturi "{p0}" ei ole ottanut yhteyttä. Aseta laturin OCPP-osoitteeksi ws://<tämän laitteen IP>:{p1}/ocpp/
+  ///
+  /// In en, this message translates to:
+  /// **'Charger \"{p0}\" has not connected. Set its OCPP URL to ws://<this device IP>:{p1}/ocpp/'**
+  String s9a6813045a(String p0, String p1);
+
+  /// fi: Laturi ei lataa nyt
+  ///
+  /// In en, this message translates to:
+  /// **'The charger is not charging now'**
+  String get sb33d4d8b62;
+
+  /// fi: Ei autoa
+  ///
+  /// In en, this message translates to:
+  /// **'No car'**
+  String get sb75700bbba;
+
+  /// fi: Auto kytketty
+  ///
+  /// In en, this message translates to:
+  /// **'Car connected'**
+  String get s5a3fcd56de;
+
+  /// fi: Lataa
+  ///
+  /// In en, this message translates to:
+  /// **'Charging'**
+  String get s23910a6fb5;
+
+  /// fi: Tauolla
+  ///
+  /// In en, this message translates to:
+  /// **'Paused'**
+  String get s22cd08064f;
+
+  /// fi: Valmis
+  ///
+  /// In en, this message translates to:
+  /// **'Finished'**
+  String get s5b8b3042ec;
+
+  /// fi: Vika
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get s84df123d5a;
+
+  /// fi: Wallbox, Alfen, ABB, go-e, Etrel, Easee/Zaptec (OCPP päälle)… Laturi ottaa yhteyden suoraan Molaplaniin – ei pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallbox, Alfen, ABB, go-e, Etrel, Easee/Zaptec (OCPP on)… The charger connects straight to Molaplan – no cloud.'**
+  String get s12fa00013a;
+
+  /// fi: Jos laturissa on asetettu Basic auth -salasana. Yleensä tyhjä.
+  ///
+  /// In en, this message translates to:
+  /// **'If the charger has a Basic auth password set. Usually empty.'**
+  String get s4bc8fc306b;
+
+  /// fi: Easee Home / Charge / One Easee-tilin kautta: tila, aloitus/lopetus ja virtaraja.
+  ///
+  /// In en, this message translates to:
+  /// **'Easee Home / Charge / One through your Easee account: status, start/stop and current limit.'**
+  String get s8c376593cb;
+
+  /// fi: Sama kuin Easee-sovelluksessa (puhelin muodossa +358…).
+  ///
+  /// In en, this message translates to:
+  /// **'Same as in the Easee app (phone as +358…).'**
+  String get s827730d443;
+
+  /// fi: Zaptec Go / Home / Pro Zaptec-tilin kautta. Aloitus/tauko vaatii omistajan oikeudet.
+  ///
+  /// In en, this message translates to:
+  /// **'Zaptec Go / Home / Pro through your Zaptec account. Start/pause needs owner rights.'**
+  String get se1a5b725a4;
+
+  /// fi: Pulsar, Commander, Copper myWallbox-tilin kautta. Paikallisesti: valitse OCPP.
+  ///
+  /// In en, this message translates to:
+  /// **'Pulsar, Commander, Copper through your myWallbox account. Locally: pick OCPP.'**
+  String get s72dc0a7687;
+
+  /// fi: Easee, Zaptec, Wallbox – tai mikä tahansa OCPP-laturi paikallisesti. Lataus ylijäämällä tai halvalla.
+  ///
+  /// In en, this message translates to:
+  /// **'Easee, Zaptec, Wallbox – or any OCPP charger locally. Charge on surplus or when cheap.'**
+  String get s59ed724e14;
+
+  /// fi: airCloud: kirjautuminen epäonnistui
+  ///
+  /// In en, this message translates to:
+  /// **'airCloud: sign-in failed'**
+  String get se62d52c336;
+
+  /// fi: airCloud: laitetta ei löydy
+  ///
+  /// In en, this message translates to:
+  /// **'airCloud: unit not found'**
+  String get sc5f4490c42;
+
+  /// fi: outo vastaus
+  ///
+  /// In en, this message translates to:
+  /// **'odd answer'**
+  String get s14e68f6852;
+
+  /// fi: Toshiba: väärä käyttäjätunnus tai salasana
+  ///
+  /// In en, this message translates to:
+  /// **'Toshiba: wrong username or password'**
+  String get s8f016f0e29;
+
+  /// fi: myUplink: väärä Client ID tai Secret
+  ///
+  /// In en, this message translates to:
+  /// **'myUplink: wrong Client ID or Secret'**
+  String get s4558be4f09;
+
+  /// fi: Maalämpöpumpun tilaa ei vaihdeta täältä – vain asetusarvo.
+  ///
+  /// In en, this message translates to:
+  /// **'The mode of a ground-source pump is not changed here – only the setpoint.'**
+  String get s370bf1904d;
+
+  /// fi: Löytyy reitittimen laitelistasta tai valmistajan sovelluksesta (laitteen tiedot).
+  ///
+  /// In en, this message translates to:
+  /// **'Find it in your router\'\'s device list or the maker\'\'s app (device info).'**
+  String get s6d21845355;
+
+  /// fi: Daikin (wifi, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Daikin (Wi-Fi, local)'**
+  String get s4a91d07711;
+
+  /// fi: Daikin-ilmalämpöpumppu wifi-ohjaimella (BRP069, BRP072C, Airbase). Toimii ilman pilveä, haetaan verkosta.
+  ///
+  /// In en, this message translates to:
+  /// **'Daikin with a Wi-Fi adapter (BRP069, BRP072C, Airbase). Works without the cloud; found on the network.'**
+  String get s8e339844a9;
+
+  /// fi: Uudemmissa BRP072C-ohjaimissa 13-numeroinen avain on ohjaimen tarrassa. Vanhemmat eivät tarvitse sitä.
+  ///
+  /// In en, this message translates to:
+  /// **'Newer BRP072C adapters: the 13-digit key is on the adapter sticker. Older ones need none.'**
+  String get sdb368f83d9;
+
+  /// fi: Mitsubishi Heavy (Smart M-Air, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Mitsubishi Heavy (Smart M-Air, local)'**
+  String get s2089a88d1f;
+
+  /// fi: MHI-ilmalämpöpumppu WF-RAC-wifimoduulilla (Smart M-Air -sovellus). Paikallinen ohjaus ilman pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'MHI heat pump with the WF-RAC Wi-Fi module (Smart M-Air app). Local control, no cloud.'**
+  String get se19c918d2d;
+
+  /// fi: Mitsubishi Electric (MELCloud)
+  ///
+  /// In en, this message translates to:
+  /// **'Mitsubishi Electric (MELCloud)'**
+  String get s050c379c67;
+
+  /// fi: Ilmalämpöpumput ja Ecodan-ilma-vesipumput MELCloud-tilin kautta, mistä tahansa.
+  ///
+  /// In en, this message translates to:
+  /// **'Air-to-air and Ecodan air-to-water pumps through your MELCloud account, from anywhere.'**
+  String get sc24b0de42d;
+
+  /// fi: Sama kuin MELCloud-sovelluksessa.
+  ///
+  /// In en, this message translates to:
+  /// **'Same as in the MELCloud app.'**
+  String get s41d69e699d;
+
+  /// fi: Toshiba (Home AC Control)
+  ///
+  /// In en, this message translates to:
+  /// **'Toshiba (Home AC Control)'**
+  String get s339fd47e4a;
+
+  /// fi: Toshiban wifi-ilmalämpöpumput Toshiba Home AC Control -tilin kautta.
+  ///
+  /// In en, this message translates to:
+  /// **'Toshiba Wi-Fi heat pumps through your Toshiba Home AC Control account.'**
+  String get sa8405bf705;
+
+  /// fi: Sama kuin Toshiba Home AC Control -sovelluksessa.
+  ///
+  /// In en, this message translates to:
+  /// **'Same as in the Toshiba app.'**
+  String get s703279c03e;
+
+  /// fi: Samsung (SmartThings)
+  ///
+  /// In en, this message translates to:
+  /// **'Samsung (SmartThings)'**
+  String get sf71a945a1d;
+
+  /// fi: Samsungin wifi-ilmalämpöpumput SmartThingsin virallisen rajapinnan kautta.
+  ///
+  /// In en, this message translates to:
+  /// **'Samsung Wi-Fi heat pumps through the official SmartThings API.'**
+  String get se26b321a29;
+
+  /// fi: Luo osoitteessa account.smartthings.com/tokens: valitse "Devices" (lue ja ohjaa). Huom: Samsung rajoittaa uudet tunnukse
+  ///
+  /// In en, this message translates to:
+  /// **'Create one at account.smartthings.com/tokens with the Devices scopes. Note: Samsung limits new tokens to 24 hours.'**
+  String get s550793ea4a;
+
+  /// fi: Hitachi (airCloud Go)
+  ///
+  /// In en, this message translates to:
+  /// **'Hitachi (airCloud Go)'**
+  String get sf7aed9c9e0;
+
+  /// fi: Hitachin ilmalämpöpumput airCloud Go -tilin kautta.
+  ///
+  /// In en, this message translates to:
+  /// **'Hitachi heat pumps through your airCloud Go account.'**
+  String get se2f1cb488d;
+
+  /// fi: NIBE (myUplink-pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'NIBE (myUplink cloud)'**
+  String get sb33215fa8b;
+
+  /// fi: NIBE-maalämpö- ja poistoilmapumput myUplinkin virallisen rajapinnan kautta (myös CTC, Høiax…).
+  ///
+  /// In en, this message translates to:
+  /// **'NIBE ground-source and exhaust-air pumps through the official myUplink API (also CTC, Høiax…).'**
+  String get s2e3665e309;
+
+  /// fi: Kirjaudu dev.myuplink.com → Applications → Create (Callback URL voi olla esim. https://molaplan.com). Kopioi Client Iden
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in at dev.myuplink.com → Applications → Create. Copy the Client Identifier.'**
+  String get sf2e635afad;
+
+  /// fi: Samalta sivulta.
+  ///
+  /// In en, this message translates to:
+  /// **'From the same page.'**
+  String get s9db9eb22f8;
+
+  /// fi: NIBE S-sarja (Modbus TCP, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'NIBE S-series (Modbus TCP, local)'**
+  String get s412987475c;
+
+  /// fi: S1155, S1255, SMO S40… Ota Modbus TCP käyttöön pumpun valikosta 7.5.9. Ei pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'S1155, S1255, SMO S40… Enable Modbus TCP in the pump menu 7.5.9. No cloud.'**
+  String get s3fc8f4ce0d;
+
+  /// fi: Pumpun IP-osoite: valikko 3.1.13 (Yhteydet) tai reitittimen laitelista.
+  ///
+  /// In en, this message translates to:
+  /// **'The pump\'\'s IP: menu 3.1.13 (Connections) or your router\'\'s device list.'**
+  String get s9b15cf6f63;
+
+  /// fi: NIBE F-sarja + MODBUS 40 (paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'NIBE F-series + MODBUS 40 (local)'**
+  String get s29ed152759;
+
+  /// fi: F1145/F1155/F1255/F750/SMO + MODBUS 40 -lisävaruste ja RS485→TCP-muunnin. Tarkista rekisterit.
+  ///
+  /// In en, this message translates to:
+  /// **'F-series / SMO with the MODBUS 40 accessory and an RS485→TCP gateway. Verify the registers.'**
+  String get sa723788d3c;
+
+  /// fi: RS485→Modbus TCP -muuntimen IP-osoite.
+  ///
+  /// In en, this message translates to:
+  /// **'IP address of the RS485→Modbus TCP gateway.'**
+  String get sb001c51087;
+
+  /// fi: Thermia (Modbus TCP, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Thermia (Modbus TCP, local)'**
+  String get sde4b0f4525;
+
+  /// fi: Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis). Modbus TCP: Asetukset → BMS.
+  ///
+  /// In en, this message translates to:
+  /// **'Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis). Modbus TCP: Settings → BMS.'**
+  String get s9280f807a6;
+
+  /// fi: Pumpun IP-osoite (näytöltä tai reitittimestä).
+  ///
+  /// In en, this message translates to:
+  /// **'The pump\'\'s IP address (display or router).'**
+  String get scab35073e8;
+
+  /// fi: Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – tai mikä tahansa IR-kaukosäätimellä.
+  ///
+  /// In en, this message translates to:
+  /// **'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – or any with an IR remote.'**
+  String get s5ddd513689;
+
+  /// fi: Ei laitteita
+  ///
+  /// In en, this message translates to:
+  /// **'No units found'**
+  String get s9622976fd3;
+
+  /// fi: laitetta
+  ///
+  /// In en, this message translates to:
+  /// **'unit(s)'**
+  String get sa93876ac9d;
+
+  /// fi: liian monta pyyntöä
+  ///
+  /// In en, this message translates to:
+  /// **'too many requests'**
+  String get sf3d77f10b9;
+
+  /// fi: MELCloud: väärä sähköposti tai salasana
+  ///
+  /// In en, this message translates to:
+  /// **'MELCloud: wrong e-mail or password'**
+  String get s00c7f00681;
+
+  /// fi: Tätä pumppua ei kytketä päälle/pois Modbusilla.
+  ///
+  /// In en, this message translates to:
+  /// **'This pump is not switched on/off over Modbus.'**
+  String get s4bd0e3110e;
+
+  /// fi: Daikin hylkäsi pyynnön – tarkista avain (key) tarrasta.
+  ///
+  /// In en, this message translates to:
+  /// **'Daikin refused – check the key on the sticker.'**
+  String get sc2474a4b0b;
+
+  /// fi: Daikin ei hyväksynyt avainta (key).
+  ///
+  /// In en, this message translates to:
+  /// **'Daikin did not accept the key.'**
+  String get s2f7a41de7a;
+
+  /// fi: Daikin-ohjainta ei löytynyt osoitteesta {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'No Daikin adapter at {p0}'**
+  String sc499fab53f(String p0);
+
+  /// fi: Daikin (paikallinen wifi)
+  ///
+  /// In en, this message translates to:
+  /// **'Daikin (local Wi-Fi)'**
+  String get s4cfb5a36c9;
+
+  /// fi: NIBE / Thermia (Modbus TCP, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'NIBE / Thermia (Modbus TCP, local)'**
+  String get se9b4e55058;
+
+  /// fi: Lämpöpumppu (oma integraatio)
+  ///
+  /// In en, this message translates to:
+  /// **'Heat pump (built-in integration)'**
+  String get sddd6b1d42e;
+
+  /// fi: Valmistaja ja yhteystapa. Paikalliset toimivat ilman pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'Maker and connection type. Local ones work without the cloud.'**
+  String get s34a3681441;
+
+  /// fi: Laitteen IP-osoite (paikalliset)
+  ///
+  /// In en, this message translates to:
+  /// **'Device IP (local brands)'**
+  String get s88688d2809;
+
+  /// fi: Paikallisen laitteen IP-osoite (reitittimen laitelistasta).
+  ///
+  /// In en, this message translates to:
+  /// **'IP address of a local unit (from your router\'\'s device list).'**
+  String get s87e0a93996;
+
+  /// fi: Sähköposti (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'E-mail (cloud)'**
+  String get sc0bc183c3e;
+
+  /// fi: Valmistajan sovelluksen kirjautumissähköposti (MELCloud, airCloud).
+  ///
+  /// In en, this message translates to:
+  /// **'The e-mail you sign in to the maker\'\'s app with (MELCloud, airCloud).'**
+  String get s0cc25259c7;
+
+  /// fi: Käyttäjätunnus (Toshiba)
+  ///
+  /// In en, this message translates to:
+  /// **'Username (Toshiba)'**
+  String get s25f561c483;
+
+  /// fi: Toshiba Home AC Control -sovelluksen käyttäjätunnus.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Toshiba Home AC Control username.'**
+  String get s92e7ac8d3c;
+
+  /// fi: Valmistajan sovelluksen salasana. Tallentuu vain tälle laitteelle / omaan holviisi.
+  ///
+  /// In en, this message translates to:
+  /// **'The maker\'\'s app password. Stored only on this device / in your own vault.'**
+  String get safde071183;
+
+  /// fi: Tunnus (SmartThings token)
+  ///
+  /// In en, this message translates to:
+  /// **'Token (SmartThings)'**
+  String get s2862f25983;
+
+  /// fi: SmartThingsin henkilökohtainen token (account.smartthings.com/tokens).
+  ///
+  /// In en, this message translates to:
+  /// **'SmartThings personal access token (account.smartthings.com/tokens).'**
+  String get s23a4bc8253;
+
+  /// fi: Avain (Daikin BRP072C, tarrasta)
+  ///
+  /// In en, this message translates to:
+  /// **'Key (Daikin BRP072C, sticker)'**
+  String get sef37e5048d;
+
+  /// fi: BRP072C-ohjaimen tarrassa oleva avain (key).
+  ///
+  /// In en, this message translates to:
+  /// **'The key printed on the BRP072C adapter\'\'s sticker.'**
+  String get s1c339065e1;
+
+  /// fi: Client ID (myUplink)
+  ///
+  /// In en, this message translates to:
+  /// **'Client ID (myUplink)'**
+  String get se67e3e0eb9;
+
+  /// fi: Oman sovelluksen Client ID osoitteesta dev.myuplink.com.
+  ///
+  /// In en, this message translates to:
+  /// **'Client ID of your own app at dev.myuplink.com.'**
+  String get sc2d5225ae8;
+
+  /// fi: Client Secret (myUplink)
+  ///
+  /// In en, this message translates to:
+  /// **'Client Secret (myUplink)'**
+  String get sa165e50f99;
+
+  /// fi: Oman sovelluksen Client Secret osoitteesta dev.myuplink.com.
+  ///
+  /// In en, this message translates to:
+  /// **'Client Secret of your own app at dev.myuplink.com.'**
+  String get s332f9bc1a1;
+
+  /// fi: Rekisterikartta (Modbus)
+  ///
+  /// In en, this message translates to:
+  /// **'Register map (Modbus)'**
+  String get sd1d4b22fc6;
+
+  /// fi: Pumpun mallisarja. 'Tuotu rekisterilista' = pumpun oma CSV-vienti.
+  ///
+  /// In en, this message translates to:
+  /// **'The pump series. \'\'Imported register list\'\' = the pump\'\'s own CSV export.'**
+  String get s5a9d485e7f;
+
+  /// fi: NIBE S-sarja
+  ///
+  /// In en, this message translates to:
+  /// **'NIBE S-series'**
+  String get s7dc3b152a8;
+
+  /// fi: NIBE F-sarja + MODBUS 40
+  ///
+  /// In en, this message translates to:
+  /// **'NIBE F-series + MODBUS 40'**
+  String get sad9fd728f9;
+
+  /// fi: Thermia Genesis
+  ///
+  /// In en, this message translates to:
+  /// **'Thermia Genesis'**
+  String get seba6d1ba70;
+
+  /// fi: Tuotu rekisterilista
+  ///
+  /// In en, this message translates to:
+  /// **'Imported register list'**
+  String get sfdc0bbf134;
+
+  /// fi: Yleensä oletus (Modbus 502, MHI 51443).
+  ///
+  /// In en, this message translates to:
+  /// **'Usually the default (Modbus 502, MHI 51443).'**
+  String get scd35ffb8e9;
+
+  /// fi: Modbus-laitteen osoite, yleensä 1.
+  ///
+  /// In en, this message translates to:
+  /// **'Modbus unit address, usually 1.'**
+  String get sab25ff8075;
+
+  /// fi: Palvelimen osoite (vain testaukseen)
+  ///
+  /// In en, this message translates to:
+  /// **'Server URL (testing only)'**
+  String get sb064bec4c8;
+
+  /// fi: Vain testaukseen: korvaa valmistajan palvelimen osoitteen.
+  ///
+  /// In en, this message translates to:
+  /// **'Testing only: replaces the maker\'\'s server address.'**
+  String get s67b2ac9328;
+
+  /// fi: Mitä luetaan
+  ///
+  /// In en, this message translates to:
+  /// **'What to read'**
+  String get sabab3f2fae;
+
+  /// fi: Koko tila (lämpöpumppuruutu) tai yksi lukema.
+  ///
+  /// In en, this message translates to:
+  /// **'Full state (heat pump tile) or one reading.'**
+  String get sf5e949d20c;
+
+  /// fi: Koko tila
+  ///
+  /// In en, this message translates to:
+  /// **'Full state'**
+  String get s46ce82ef9c;
+
+  /// fi: Yksi lukema
+  ///
+  /// In en, this message translates to:
+  /// **'One reading'**
+  String get s8cbd66456f;
+
+  /// fi: Sisäyksikön tunnus
+  ///
+  /// In en, this message translates to:
+  /// **'Unit id'**
+  String get s6d1827b58e;
+
+  /// fi: Sisäyksikön tunnus; yhden laitteen tileillä 'main'.
+  ///
+  /// In en, this message translates to:
+  /// **'Indoor unit id; \'\'main\'\' for single-unit devices.'**
+  String get s89308ddc6d;
+
+  /// fi: Lukema (current, target, outdoor, power…)
+  ///
+  /// In en, this message translates to:
+  /// **'Reading (current, target, outdoor, power…)'**
+  String get sa643668bec;
+
+  /// fi: Mikä lukema: current, target, outdoor, power, supply, hot_water…
+  ///
+  /// In en, this message translates to:
+  /// **'Which reading: current, target, outdoor, power, supply, hot_water…'**
+  String get s02d24152f0;
+
+  /// fi: Aseta
+  ///
+  /// In en, this message translates to:
+  /// **'Set'**
+  String get se16e293d6b;
+
+  /// fi: Mitä asetetaan
+  ///
+  /// In en, this message translates to:
+  /// **'What to set'**
+  String get s155de09d38;
+
+  /// fi: Asetusarvo, virta, tila tai puhallin.
+  ///
+  /// In en, this message translates to:
+  /// **'Setpoint, power, mode or fan.'**
+  String get s94ecb845c8;
+
+  /// fi: Asetusarvo
+  ///
+  /// In en, this message translates to:
+  /// **'Setpoint'**
+  String get sba2eb6d9b9;
+
+  /// fi: Lämpöpumppua "{p0}" ei löydy enää tililtä
+  ///
+  /// In en, this message translates to:
+  /// **'Heat pump \"{p0}\" is no longer in the account'**
+  String s6478b264c0(String p0);
+
+  /// fi: Asetusarvo puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'Setpoint missing'**
+  String get s4937d259b8;
+
+  /// fi: käyrän siirto
+  ///
+  /// In en, this message translates to:
+  /// **'curve offset'**
+  String get s10f42a9a20;
+
+  /// fi: Menovesi
+  ///
+  /// In en, this message translates to:
+  /// **'Supply'**
+  String get s620c04d73e;
+
+  /// fi: Paluuvesi
+  ///
+  /// In en, this message translates to:
+  /// **'Return'**
+  String get s922f77d2f1;
+
+  /// fi: Käyttövesi
+  ///
+  /// In en, this message translates to:
+  /// **'Hot water'**
+  String get sbfee72daca;
+
+  /// fi: Keruuliuos sisään
+  ///
+  /// In en, this message translates to:
+  /// **'Brine in'**
+  String get s0be9e35521;
+
+  /// fi: Keruuliuos ulos
+  ///
+  /// In en, this message translates to:
+  /// **'Brine out'**
+  String get s3a0d796501;
+
+  /// fi: Astetminuutit
+  ///
+  /// In en, this message translates to:
+  /// **'Degree minutes'**
+  String get s23bbe9b4ed;
+
+  /// fi: Kompressori
+  ///
+  /// In en, this message translates to:
+  /// **'Compressor'**
+  String get s3ca74f3ef8;
+
+  /// fi: Ilmastointilaitteen käyttäjätaulukko on täynnä. Poista vanha puhelin Smart M-Air -sovelluksesta ja yritä uudelleen.
+  ///
+  /// In en, this message translates to:
+  /// **'The unit\'\'s account table is full. Remove an old phone in the Smart M-Air app and try again.'**
+  String get s31ec8d716e;
+
+  /// fi: Laite on varattu (toinen sovellus ohjaa) – yritä minuutin päästä.
+  ///
+  /// In en, this message translates to:
+  /// **'The unit is busy (another app) – try in a minute.'**
+  String get sbaecc9fbed;
+
+  /// fi: Ryhmän laitteet eivät vastaa
+  ///
+  /// In en, this message translates to:
+  /// **'The group\'\'s devices are not answering'**
+  String get s4cac4725b8;
+
+  /// fi: Ohjattavaa laitetta ei löydy
+  ///
+  /// In en, this message translates to:
+  /// **'The device to control is missing'**
+  String get s13a91fe322;
+
+  /// fi: Teho {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Power {p0}'**
+  String sb9964cfb3b(String p0);
+
+  /// fi: Kanava {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Channel {p0}'**
+  String s08d04d58a9(String p0);
+
+  /// fi: Home Assistant (esimerkki)
+  ///
+  /// In en, this message translates to:
+  /// **'Home Assistant (example)'**
+  String get s589eb1bcd3;
+
+  /// fi: Kamera (esimerkki)
+  ///
+  /// In en, this message translates to:
+  /// **'Camera (example)'**
+  String get sc4fdb87cd7;
+
+  /// fi: IV-kone (esimerkki)
+  ///
+  /// In en, this message translates to:
+  /// **'Ventilation unit (example)'**
+  String get sd50566a706;
+
+  /// fi: Piha
+  ///
+  /// In en, this message translates to:
+  /// **'Yard'**
+  String get s4b4fd14aaf;
+
+  /// fi: disarmed=Pois;armed_away=Päällä;armed_home=Kotona;triggered=HÄLYTYS
+  ///
+  /// In en, this message translates to:
+  /// **''**
+  String get s8ac16d45bc;
+
+  /// fi: Olohuoneen valot
+  ///
+  /// In en, this message translates to:
+  /// **'Living room lights'**
+  String get sbde42d83a3;
+
+  /// fi: Tuloilma
+  ///
+  /// In en, this message translates to:
+  /// **'Supply air'**
+  String get sb7c78c63b3;
+
+  /// fi: IV-kone nopeus
+  ///
+  /// In en, this message translates to:
+  /// **'Fan speed'**
+  String get sbb2adef009;
+
+  /// fi: 0=Pois;1=Poissa;2=Kotona;3=Tehostus;4=Max
+  ///
+  /// In en, this message translates to:
+  /// **'0=Off;1=Away;2=Home;3=Boost;4=Max'**
+  String get see46441329;
+
+  /// fi: Lähden kotoa
+  ///
+  /// In en, this message translates to:
+  /// **'Leaving home'**
+  String get sb25aad3bc2;
+
+  /// fi: Rauhallinen
+  ///
+  /// In en, this message translates to:
+  /// **'Calm'**
+  String get s65320ede20;
+
+  /// fi: Hyvää yötä
+  ///
+  /// In en, this message translates to:
+  /// **'Good night'**
+  String get s7e5f6a29e3;
+
+  /// fi: Hyvää huomenta
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning'**
+  String get s253122823a;
+
+  /// fi: Hyvää päivää
+  ///
+  /// In en, this message translates to:
+  /// **'Good afternoon'**
+  String get s640293f08f;
+
+  /// fi: Hyvää iltaa
+  ///
+  /// In en, this message translates to:
+  /// **'Good evening'**
+  String get sd8c5bed7de;
+
+  /// fi: iphone
+  ///
+  /// In en, this message translates to:
+  /// **'Apple'**
+  String get s834e3e8c5d;
+
+  /// fi: ipad
+  ///
+  /// In en, this message translates to:
+  /// **'Apple'**
+  String get s11d8d321df;
+
+  /// fi: macbook
+  ///
+  /// In en, this message translates to:
+  /// **'Apple'**
+  String get sceefb34afd;
+
+  /// fi: imac
+  ///
+  /// In en, this message translates to:
+  /// **'Apple'**
+  String get s24a447c14c;
+
+  /// fi: mac mini
+  ///
+  /// In en, this message translates to:
+  /// **'Apple'**
+  String get s14418a4f88;
+
+  /// fi: appletv
+  ///
+  /// In en, this message translates to:
+  /// **'Apple'**
+  String get saab3e952a6;
+
+  /// fi: apple tv
+  ///
+  /// In en, this message translates to:
+  /// **'Apple'**
+  String get s7fbbfbf469;
+
+  /// fi: galaxy
+  ///
+  /// In en, this message translates to:
+  /// **'Samsung'**
+  String get s045b27e316;
+
+  /// fi: samsung
+  ///
+  /// In en, this message translates to:
+  /// **'Samsung'**
+  String get s2c0aede81e;
+
+  /// fi: pixel
+  ///
+  /// In en, this message translates to:
+  /// **'Google'**
+  String get s7bd2005e15;
+
+  /// fi: chromecast
+  ///
+  /// In en, this message translates to:
+  /// **'Google'**
+  String get sdcec96b503;
+
+  /// fi: google
+  ///
+  /// In en, this message translates to:
+  /// **'Google'**
+  String get s49960d413e;
+
+  /// fi: nest
+  ///
+  /// In en, this message translates to:
+  /// **'Google'**
+  String get s99e5776a78;
+
+  /// fi: sonos
+  ///
+  /// In en, this message translates to:
+  /// **'Sonos'**
+  String get sea3c963b09;
+
+  /// fi: synology
+  ///
+  /// In en, this message translates to:
+  /// **'Synology'**
+  String get s1e7b1fc81c;
+
+  /// fi: diskstation
+  ///
+  /// In en, this message translates to:
+  /// **'Synology'**
+  String get s7dc8f4cf35;
+
+  /// fi: qnap
+  ///
+  /// In en, this message translates to:
+  /// **'QNAP'**
+  String get s161d78d79c;
+
+  /// fi: brother
+  ///
+  /// In en, this message translates to:
+  /// **'Brother'**
+  String get s2512122220;
+
+  /// fi: epson
+  ///
+  /// In en, this message translates to:
+  /// **'Epson'**
+  String get s127258a6f4;
+
+  /// fi: canon
+  ///
+  /// In en, this message translates to:
+  /// **'Canon'**
+  String get s4e31401b4f;
+
+  /// fi: hp
+  ///
+  /// In en, this message translates to:
+  /// **'HP'**
+  String get s933e21c819;
+
+  /// fi: hewlett
+  ///
+  /// In en, this message translates to:
+  /// **'HP'**
+  String get sb309051c1f;
+
+  /// fi: officejet
+  ///
+  /// In en, this message translates to:
+  /// **'HP'**
+  String get s6f339c5c37;
+
+  /// fi: laserjet
+  ///
+  /// In en, this message translates to:
+  /// **'HP'**
+  String get s5f8734f6e4;
+
+  /// fi: xiaomi
+  ///
+  /// In en, this message translates to:
+  /// **'Xiaomi'**
+  String get sceb247a904;
+
+  /// fi: huawei
+  ///
+  /// In en, this message translates to:
+  /// **'Huawei'**
+  String get s10b7b68d6c;
+
+  /// fi: lg
+  ///
+  /// In en, this message translates to:
+  /// **'LG'**
+  String get s3692c1d592;
+
+  /// fi: webos
+  ///
+  /// In en, this message translates to:
+  /// **'LG'**
+  String get se7d945b970;
+
+  /// fi: bravia
+  ///
+  /// In en, this message translates to:
+  /// **'Sony'**
+  String get s5a5044b5df;
+
+  /// fi: sony
+  ///
+  /// In en, this message translates to:
+  /// **'Sony'**
+  String get sd92d7da7d5;
+
+  /// fi: philips
+  ///
+  /// In en, this message translates to:
+  /// **'Philips'**
+  String get saa909391c3;
+
+  /// fi: raspberry
+  ///
+  /// In en, this message translates to:
+  /// **'Raspberry Pi'**
+  String get se39b8c84ab;
+
+  /// fi: fritz
+  ///
+  /// In en, this message translates to:
+  /// **'AVM'**
+  String get sec8808f414;
+
+  /// fi: tp-link
+  ///
+  /// In en, this message translates to:
+  /// **'TP-Link'**
+  String get s0e225fb918;
+
+  /// fi: asus
+  ///
+  /// In en, this message translates to:
+  /// **'ASUS'**
+  String get sb34f35dce5;
+
+  /// fi: netgear
+  ///
+  /// In en, this message translates to:
+  /// **'Netgear'**
+  String get s7ea140809c;
+
+  /// fi: ubiquiti
+  ///
+  /// In en, this message translates to:
+  /// **'Ubiquiti'**
+  String get s284be225b7;
+
+  /// fi: unifi
+  ///
+  /// In en, this message translates to:
+  /// **'Ubiquiti'**
+  String get sfbaeb6a17e;
+
+  /// fi: mikrotik
+  ///
+  /// In en, this message translates to:
+  /// **'MikroTik'**
+  String get sa24e9ce91d;
+
+  /// fi: espressif
+  ///
+  /// In en, this message translates to:
+  /// **'Espressif'**
+  String get sa1b725d397;
+
+  /// fi: amazon
+  ///
+  /// In en, this message translates to:
+  /// **'Amazon'**
+  String get sdf96423738;
+
+  /// fi: echo
+  ///
+  /// In en, this message translates to:
+  /// **'Amazon'**
+  String get sf253859589;
+
+  /// fi: roku
+  ///
+  /// In en, this message translates to:
+  /// **'Roku'**
+  String get sec4d80656d;
+
+  /// fi: Osoite näyttää vajaalta. Muoto on neljä numeroa pisteillä, esim. 192.168.1.50.
+  ///
+  /// In en, this message translates to:
+  /// **'The address looks incomplete. Use four numbers with dots, e.g. 192.168.1.50.'**
+  String get sb662db81d8;
+
+  /// fi:  Tarkoititko {p0}?
+  ///
+  /// In en, this message translates to:
+  /// **' Did you mean {p0}?'**
+  String s738ecfe2bc(String p0);
+
+  /// fi: Tämä ei ole kotiverkon osoite (kotiverkon osoitteet alkavat yleensä 192.168.).{p0}
+  ///
+  /// In en, this message translates to:
+  /// **'This is not a home network address (they usually start with 192.168.).{p0}'**
+  String s06e738bf27(String p0);
+
+  /// fi: Huom: tämä laite on verkossa {p0}.x – laite ei ehkä ole samassa wifissä.
+  ///
+  /// In en, this message translates to:
+  /// **'Note: this device is on {p0}.x – the device may be on another Wi-Fi.'**
+  String sbae99909c4(String p0);
+
+  /// fi: Kuiva
+  ///
+  /// In en, this message translates to:
+  /// **'VUOTO!'**
+  String get se317f59de2;
+
+  /// fi: Dry
+  ///
+  /// In en, this message translates to:
+  /// **'LEAK!'**
+  String get se4c4201882;
+
+  /// fi: Kiinni
+  ///
+  /// In en, this message translates to:
+  /// **'Auki'**
+  String get sdbcf5515c1;
+
+  /// fi: Closed
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get sb0af7213b5;
+
+  /// fi: Ei liikettä
+  ///
+  /// In en, this message translates to:
+  /// **'Liikettä'**
+  String get sa3477dac6e;
+
+  /// fi: No motion
+  ///
+  /// In en, this message translates to:
+  /// **'Motion'**
+  String get s280df88585;
+
+  /// fi: OK
+  ///
+  /// In en, this message translates to:
+  /// **'SAVUA!'**
+  String get s064a959911;
+
+  /// fi: OK
+  ///
+  /// In en, this message translates to:
+  /// **'SMOKE!'**
+  String get s50778e2eec;
+
+  /// fi: Rauhallinen
+  ///
+  /// In en, this message translates to:
+  /// **'Hälytys'**
+  String get s1dfa5abe81;
+
+  /// fi: Calm
+  ///
+  /// In en, this message translates to:
+  /// **'Alarm'**
+  String get s50c459fbff;
+
+  /// fi: gk-200
+  ///
+  /// In en, this message translates to:
+  /// **'sonoff'**
+  String get s1a73b397a1;
+
+  /// fi: ds-2
+  ///
+  /// In en, this message translates to:
+  /// **'hikvision'**
+  String get sb8a029d8b4;
+
+  /// fi: tp-link
+  ///
+  /// In en, this message translates to:
+  /// **'tapo'**
+  String get s2e87289ebd;
+
+  /// fi: Sonoff
+  ///
+  /// In en, this message translates to:
+  /// **'Sonoff'**
+  String get sd86b823895;
+
+  /// fi: BASIC, MINI, POW, TH, 4CH… DIY-tilassa, Tasmotalla tai ESPHomella. Ruudut tehdään valmiiksi, etänä kotisillan kautta.
+  ///
+  /// In en, this message translates to:
+  /// **'BASIC, MINI, POW, TH, 4CH… in DIY mode, with Tasmota or ESPHome. Tiles are made for you; remote use via the home bridge.'**
+  String get s5f297ec9d8;
+
+  /// fi: eWeLink-sovellus → laite → Asetukset näyttää IP-osoitteen, tai reitittimen laitelista. DIY-tilassa tarvitset myös laitte
+  ///
+  /// In en, this message translates to:
+  /// **'eWeLink app → device → Settings shows the IP address, or your router\'\'s device list. In DIY mode you also need the Device ID (10 characters).'**
+  String get s60e829b1b0;
+
+  /// fi: DIY-tilan Sonoff vastaa vain, kun sille kerrotaan sen tunnus (Device ID). Se näkyy eWeLink-sovelluksessa: laite → Asetuk
+  ///
+  /// In en, this message translates to:
+  /// **'A Sonoff in DIY mode only answers when told its Device ID. Find it in the eWeLink app: device → Settings → Device ID. Tasmota: the web password, if set.'**
+  String get s6a46e8954d;
+
+  /// fi: Vain DIY-tilassa, jos laitetta ei löytynyt haulla.
+  ///
+  /// In en, this message translates to:
+  /// **'Only in DIY mode when the search did not find the device.'**
+  String get sea057f1a02;
+
+  /// fi: Teho
+  ///
+  /// In en, this message translates to:
+  /// **'Power'**
+  String get s4899323b9a;
+
+  /// fi: Vaihe {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Phase {p0}'**
+  String sdaa374b331(String p0);
+
+  /// fi: Vesivuotoanturi
+  ///
+  /// In en, this message translates to:
+  /// **'Water leak sensor'**
+  String get s4233362d60;
+
+  /// fi: Shelly
+  ///
+  /// In en, this message translates to:
+  /// **'Shelly'**
+  String get sfcb44be1a0;
+
+  /// fi: Releet, pistorasiat, himmentimet, verhot, energiamittarit (Pro 3EM) ja anturit. Löytyy automaattisesti, toimii ilman pil
+  ///
+  /// In en, this message translates to:
+  /// **'Relays, plugs, dimmers, covers, energy meters (Pro 3EM) and sensors. Found automatically, works without the cloud.'**
+  String get sc7df69ad6e;
+
+  /// fi: Shelly-sovelluksessa: avaa laite → ratas (asetukset) → Laitetiedot → IP-osoite. Tai reitittimen laitelistasta: nimi alka
+  ///
+  /// In en, this message translates to:
+  /// **'In the Shelly app: open the device → gear (settings) → Device information → IP address. Or in your router\'\'s device list: the name starts with \"shelly…\".'**
+  String get sd7e123cd2f;
+
+  /// fi: vuotoanturi · paristo
+  ///
+  /// In en, this message translates to:
+  /// **'leak sensor · battery'**
+  String get s9ad7b0076b;
+
+  /// fi: Kontaktorin ohjaus
+  ///
+  /// In en, this message translates to:
+  /// **'Contactor control'**
+  String get s815bfa19dc;
+
+  /// fi: lisää vain, jos rele on käytössä
+  ///
+  /// In en, this message translates to:
+  /// **'add only if the relay is in use'**
+  String get sb9209fee74;
+
+  /// fi: nyt päällä
+  ///
+  /// In en, this message translates to:
+  /// **'on now'**
+  String get s5f2b2ca5f5;
+
+  /// fi: nyt pois
+  ///
+  /// In en, this message translates to:
+  /// **'off now'**
+  String get s67f64cd925;
+
+  /// fi: Mittaus
+  ///
+  /// In en, this message translates to:
+  /// **'Metering'**
+  String get s8b35cc884f;
+
+  /// fi: kalibroi Shelly-sovelluksessa, niin saat liukusäätimen
+  ///
+  /// In en, this message translates to:
+  /// **'calibrate in the Shelly app to get a slider'**
+  String get sa58e7aab49;
+
+  /// fi: paristolaite: päivittyy kun herää
+  ///
+  /// In en, this message translates to:
+  /// **'battery device: updates when awake'**
+  String get s78b6134b71;
+
+  /// fi: Shelly Cloud (ilman kotisiltaa)
+  ///
+  /// In en, this message translates to:
+  /// **'Shelly Cloud (no bridge)'**
+  String get sd8dfb25d31;
+
+  /// fi: Ohjaa Shellyjä Shellyn pilven kautta mistä tahansa. Tarvitset vain Shelly-sovelluksen avaimen.
+  ///
+  /// In en, this message translates to:
+  /// **'Control Shellys through the Shelly cloud from anywhere. You only need the key from the Shelly app.'**
+  String get s350215338a;
+
+  /// fi: Shelly-sovellus → oma profiili (ylhäällä) → Käyttäjäasetukset → Authorization cloud key → Get key. Kopioi avain ja liitä
+  ///
+  /// In en, this message translates to:
+  /// **'Shelly app → your profile → User settings → Authorization cloud key → Get key. Copy and paste it here.'**
+  String get s64037991c2;
+
+  /// fi: Näkyy samalla sivulla avaimen alla ("Server URI"), esim. shelly-103-eu.shelly.cloud.
+  ///
+  /// In en, this message translates to:
+  /// **'Shown on the same page below the key (\"Server URI\").'**
+  String get s062b21969d;
+
+  /// fi: Yleensä ei tarvita – laitteet haetaan automaattisesti. Jos ei löydy: Shelly-sovellus → laite → asetukset → Laitetiedot →
+  ///
+  /// In en, this message translates to:
+  /// **'Usually not needed. If nothing is found: Shelly app → device → settings → Device information → Device ID. Separate several with commas.'**
+  String get sf30bb5d5e6;
+
+  /// fi: Shelly-sovellus → Käyttäjäasetukset → Authorization cloud key → Server URI.
+  ///
+  /// In en, this message translates to:
+  /// **'Shelly app → User settings → Authorization cloud key → Server URI.'**
+  String get s246c7a46ff;
+
+  /// fi: Shelly-sovellus → Käyttäjäasetukset → Authorization cloud key → Get key.
+  ///
+  /// In en, this message translates to:
+  /// **'Shelly app → User settings → Authorization cloud key → Get key.'**
+  String get s9d468f5c64;
+
+  /// fi: Philips Hue
+  ///
+  /// In en, this message translates to:
+  /// **'Philips Hue'**
+  String get s0bf7cb1613;
+
+  /// fi: Hue-silta ja sen valot (myös Zigbee-valot, jotka on liitetty Hue-siltaan). Paritus sillan painikkeella.
+  ///
+  /// In en, this message translates to:
+  /// **'Hue Bridge and its lights (also Zigbee lights paired to it). Pair with the bridge button.'**
+  String get se17d4e4197;
+
+  /// fi: Hue-sovelluksessa: Asetukset → Hue-sillat → (i) → IP-osoite. Tai reitittimen laitelistasta: "Philips-hue".
+  ///
+  /// In en, this message translates to:
+  /// **'In the Hue app: Settings → Hue Bridges → (i) → IP address. Or in your router\'\'s device list: \"Philips-hue\".'**
+  String get sf83a145406;
+
+  /// fi: Paina nyt Hue-sillan päällä olevaa isoa pyöreää painiketta. Odota tässä – yhteys syntyy itsestään.
+  ///
+  /// In en, this message translates to:
+  /// **'Press the big round button on top of the Hue Bridge now. Wait here – it connects by itself.'**
+  String get s80ee7a25a9;
+
+  /// fi: ei tavoitettavissa
+  ///
+  /// In en, this message translates to:
+  /// **'unreachable'**
+  String get s4dbb677293;
+
+  /// fi: himmennettävä
+  ///
+  /// In en, this message translates to:
+  /// **'dimmable'**
+  String get sf50732e8e8;
+
+  /// fi: anturi
+  ///
+  /// In en, this message translates to:
+  /// **'sensor'**
+  String get s4082a34467;
+
+  /// fi: koko huone ({p0} valoa)
+  ///
+  /// In en, this message translates to:
+  /// **'whole room'**
+  String s3832b8c729(String p0);
+
+  /// fi: Tilanteet (scenet)
+  ///
+  /// In en, this message translates to:
+  /// **'Scenes'**
+  String get s2bb8fceaf7;
+
+  /// fi: provider
+  ///
+  /// In en, this message translates to:
+  /// **'camera_'**
+  String get sceabe202da;
+
+  /// fi: temperature
+  ///
+  /// In en, this message translates to:
+  /// **'°C'**
+  String get s1a4eab1f51;
+
+  /// fi: humidity
+  ///
+  /// In en, this message translates to:
+  /// **'%'**
+  String get s9e731440d8;
+
+  /// fi: battery
+  ///
+  /// In en, this message translates to:
+  /// **'%'**
+  String get s77c638e731;
+
+  /// fi: contact
+  ///
+  /// In en, this message translates to:
+  /// **''**
+  String get s96abb7f975;
+
+  /// fi: motion
+  ///
+  /// In en, this message translates to:
+  /// **''**
+  String get s91e5760e43;
+
+  /// fi: bthome
+  ///
+  /// In en, this message translates to:
+  /// **''**
+  String get s2f76c2abd3;
+
+  /// fi: Kytkimet ja releet
+  ///
+  /// In en, this message translates to:
+  /// **'Switches and relays'**
+  String get sc2b99541c7;
+
+  /// fi: Valot ja himmentimet
+  ///
+  /// In en, this message translates to:
+  /// **'Lights and dimmers'**
+  String get sd85dbd8e5e;
+
+  /// fi: Verhot ja rullakaihtimet
+  ///
+  /// In en, this message translates to:
+  /// **'Covers and rollers'**
+  String get s38935a3c66;
+
+  /// fi: Energiamittarit
+  ///
+  /// In en, this message translates to:
+  /// **'Energy meters'**
+  String get s64c6ca7840;
+
+  /// fi: Kytkin
+  ///
+  /// In en, this message translates to:
+  /// **'Switch'**
+  String get s027fcbe1b6;
+
+  /// fi: Rullakaihdin
+  ///
+  /// In en, this message translates to:
+  /// **'Cover'**
+  String get s6814e463b1;
+
+  /// fi: Kokonaisteho
+  ///
+  /// In en, this message translates to:
+  /// **'Total power'**
+  String get s477d8b2c95;
+
+  /// fi: Valoisuus
+  ///
+  /// In en, this message translates to:
+  /// **'Light level'**
+  String get s32c88e5aa6;
+
+  /// fi: Ovi / ikkuna
+  ///
+  /// In en, this message translates to:
+  /// **'Door / window'**
+  String get s57b4effa42;
+
+  /// fi: Vesivuoto
+  ///
+  /// In en, this message translates to:
+  /// **'Flood'**
+  String get s29045a726e;
+
+  /// fi: auki
+  ///
+  /// In en, this message translates to:
+  /// **'open'**
+  String get s0b2f7d7c80;
+
+  /// fi: kiinni
+  ///
+  /// In en, this message translates to:
+  /// **'closed'**
+  String get s7009587b85;
+
+  /// fi: liikettä
+  ///
+  /// In en, this message translates to:
+  /// **'motion'**
+  String get s3b35de231e;
+
+  /// fi: HÄLYTYS
+  ///
+  /// In en, this message translates to:
+  /// **'ALARM'**
+  String get s3dfa789b85;
+
+  /// fi: Muut
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get sd9b6de0a6a;
+
+  /// fi: nukkuu – viimeksi {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'asleep – last {p0}'**
+  String se7520a3990(String p0);
+
+  /// fi: ei yhteydessä pilveen
+  ///
+  /// In en, this message translates to:
+  /// **'offline'**
+  String get s3aaacf80d2;
+
+  /// fi: true=Auki;false=Kiinni
+  ///
+  /// In en, this message translates to:
+  /// **'true=Open;false=Closed'**
+  String get s5d888c1384;
+
+  /// fi: true=Liikettä;false=Ei liikettä
+  ///
+  /// In en, this message translates to:
+  /// **'true=Motion;false=No motion'**
+  String get sd74ad36c31;
+
+  /// fi: true=VUOTO!;false=Kuiva
+  ///
+  /// In en, this message translates to:
+  /// **'true=LEAK!;false=Dry'**
+  String get sfa12d7fdd7;
+
+  /// fi: true=SAVUA!;false=OK
+  ///
+  /// In en, this message translates to:
+  /// **'true=SMOKE!;false=OK'**
+  String get s1f18c0f400;
+
+  /// fi: YAML-tiedostoa ei voitu lukea: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Could not read the YAML: {p0}'**
+  String sd63d34bfe9(String p0);
+
+  /// fi: "{p0}" käyttää sarjaporttia (USB/RS485) – tarvitset RS485 → TCP -yhdyskäytävän.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{p0}\" uses a serial port (USB/RS485) – you need an RS485 → TCP gateway.'**
+  String sc5c9e5e2fc(String p0);
+
+  /// fi: 0=Pois;1=Päällä
+  ///
+  /// In en, this message translates to:
+  /// **'0=Off;1=On'**
+  String get s77bf3b424f;
+
+  /// fi: {p0} – asetus
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} – target'**
+  String s69135546c8(String p0);
+
+  /// fi: "{p0}" ohitettiin – lisää ne käsin.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{p0}\" were skipped – add them by hand.'**
+  String sd88c13e972(String p0);
+
+  /// fi: YAML:sta ei löytynyt Modbus TCP -yhteyttä (modbus: … type: tcp, host: …).
+  ///
+  /// In en, this message translates to:
+  /// **'No Modbus TCP hub found in the YAML (modbus: … type: tcp, host: …).'**
+  String get sceebf690e3;
+
+  /// fi: Kameran käyttäjä (yleensä admin) ja salasana, jonka asetit kameran aktivoinnissa.
+  ///
+  /// In en, this message translates to:
+  /// **'The camera user (usually admin) and the password you set when activating it.'**
+  String get s0185672be7;
+
+  /// fi: Käyttäjä admin. Imou: salasana on kameran tarrassa oleva "Safety code" tai laitesalasana.
+  ///
+  /// In en, this message translates to:
+  /// **'User admin. Imou: the password is the \"Safety code\" on the camera label or the device password.'**
+  String get s814f4633e3;
+
+  /// fi: Reolink-sovelluksen kameran käyttäjä (yleensä admin) ja salasana.
+  ///
+  /// In en, this message translates to:
+  /// **'The camera user in the Reolink app (usually admin) and its password.'**
+  String get s4450807111;
+
+  /// fi: Reolink-sovellus → kamera → Asetukset → Verkko → Lisäasetukset → Palvelinasetukset: laita HTTP ja RTSP päälle. Akkukamer
+  ///
+  /// In en, this message translates to:
+  /// **'Reolink app → camera → Settings → Network → Advanced → Server settings: turn on HTTP and RTSP. Battery cameras (Argus) are not supported.'**
+  String get s1095c54819;
+
+  /// fi: Tapo-sovellus → kamera → Lisäasetukset → Kameran tili. Tee sinne käyttäjä ja salasana ja kirjoita ne tähän (ei Tapo-pilv
+  ///
+  /// In en, this message translates to:
+  /// **'Tapo app → camera → Advanced settings → Camera account. Create a user and password there and type them here (not your Tapo cloud login).'**
+  String get sc79a5fee2b;
+
+  /// fi: Tee ensin kameran tili: Tapo-sovellus → kamera → Lisäasetukset → Kameran tili.
+  ///
+  /// In en, this message translates to:
+  /// **'First create a camera account: Tapo app → camera → Advanced settings → Camera account.'**
+  String get s174e06b97c;
+
+  /// fi: Käyttäjä admin, salasana on kameran tarrassa oleva 6-kirjaiminen vahvistuskoodi (Verification code).
+  ///
+  /// In en, this message translates to:
+  /// **'User admin; the password is the 6-letter verification code on the camera label.'**
+  String get s21da6fb5dc;
+
+  /// fi: Ezviz-sovellus → kamera → Asetukset → LAN Live View / RTSP: laita päälle (jos valinta on).
+  ///
+  /// In en, this message translates to:
+  /// **'Ezviz app → camera → Settings → LAN Live View / RTSP: turn it on (if the option exists).'**
+  String get s1866ef6dc8;
+
+  /// fi: eWeLink-sovelluksessa kameralle asetettu käyttäjä ja salasana (RTSP/ONVIF). Kaksilinssisessä mallissa molemmat linssit t
+  ///
+  /// In en, this message translates to:
+  /// **'The user and password set for the camera in the eWeLink app (RTSP/ONVIF). On a dual-lens model both lenses come from the same device.'**
+  String get s70625d8bbe;
+
+  /// fi: eWeLink-sovellus → kamera → Asetukset: laita RTSP/ONVIF päälle ja aseta sille käyttäjä ja salasana (jos valinta on).
+  ///
+  /// In en, this message translates to:
+  /// **'eWeLink app → camera → Settings: turn on RTSP/ONVIF and set a user and password for it (if the option exists).'**
+  String get s1a3c354399;
+
+  /// fi: Kameran käyttäjä ja salasana (usein admin). ONVIF pitää ehkä laittaa päälle kameran asetuksista.
+  ///
+  /// In en, this message translates to:
+  /// **'The camera user and password (often admin). ONVIF may need to be enabled in the camera settings.'**
+  String get s1c2786e15f;
+
+  /// fi: Valvontakamera
+  ///
+  /// In en, this message translates to:
+  /// **'Security camera'**
+  String get s32270de47a;
+
+  /// fi: Hikvision, Dahua, Reolink, Tapo, Ezviz, Sonoff tai muu ONVIF/RTSP-kamera. Kuva ruutuun, live-video kotona.
+  ///
+  /// In en, this message translates to:
+  /// **'Hikvision, Dahua, Reolink, Tapo, Ezviz, Sonoff or any ONVIF/RTSP camera. Picture on a tile, live video at home.'**
+  String get s652458eb87;
+
+  /// fi: Kameran sovelluksesta (laitetiedot) tai reitittimen laitelistasta.
+  ///
+  /// In en, this message translates to:
+  /// **'In the camera app (device info) or your router\'\'s device list.'**
+  String get se8ea97c5eb;
+
+  /// fi: kamera
+  ///
+  /// In en, this message translates to:
+  /// **'camera'**
+  String get s1577068729;
+
+  /// fi: Kuvavirta {p0}/{p1} (oma linssi tai kanava)
+  ///
+  /// In en, this message translates to:
+  /// **'Stream {p0}/{p1} (own lens or channel)'**
+  String s83d937ae6b(String p0, String p1);
+
+  /// fi: Kuva ruutuun, live-video kotiverkossa
+  ///
+  /// In en, this message translates to:
+  /// **'Picture on the tile, live video at home'**
+  String get s136c6f0d2b;
+
+  /// fi: Live-video kotiverkossa (ei kuvaa etänä)
+  ///
+  /// In en, this message translates to:
+  /// **'Live video at home (no picture away)'**
+  String get s2101774157;
+
+  /// fi: Laitteen avain puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'Device key missing'**
+  String get sdd483f7f78;
+
+  /// fi: Väärä laitteen avain (devicekey)
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong device key (devicekey)'**
+  String get sfb72a207e0;
+
+  /// fi: Sonoff eWeLink LAN (salattu)
+  ///
+  /// In en, this message translates to:
+  /// **'Sonoff eWeLink LAN (encrypted)'**
+  String get sc8b59edea5;
+
+  /// fi: Laitteen tunnus (Device ID)
+  ///
+  /// In en, this message translates to:
+  /// **'Device ID'**
+  String get s823a139bb1;
+
+  /// fi: eWeLink-sovellus → laite → Asetukset → Laitteen tunnus.
+  ///
+  /// In en, this message translates to:
+  /// **'eWeLink app → device → Settings → Device ID.'**
+  String get sc0c760d1b6;
+
+  /// fi: Tyhjä = haetaan mDNS:llä joka kerta (suositus, jos osoite vaihtuu).
+  ///
+  /// In en, this message translates to:
+  /// **'Empty = found with mDNS every time (recommended if the address changes).'**
+  String get s39d7729e9f;
+
+  /// fi: Laitteen avain (devicekey)
+  ///
+  /// In en, this message translates to:
+  /// **'Device key (devicekey)'**
+  String get s82e87d091b;
+
+  /// fi: Salausavain. Tallentuu vain tälle laitteelle.
+  ///
+  /// In en, this message translates to:
+  /// **'Encryption key. Stored on this device only.'**
+  String get s93e0e8861a;
+
+  /// fi: Kanava: lisää kenttä outlet (0, 1, …) monikanavaisille.
+  ///
+  /// In en, this message translates to:
+  /// **'Channel: add an outlet field (0, 1, …) for multi-channel devices.'**
+  String get se106001035;
+
+  /// fi: Kytkin (1/0)
+  ///
+  /// In en, this message translates to:
+  /// **'Switch (1/0)'**
+  String get sd0c16a8638;
+
+  /// fi: Teho (W)
+  ///
+  /// In en, this message translates to:
+  /// **'Power (W)'**
+  String get s4ba00d3333;
+
+  /// fi: Jännite (V)
+  ///
+  /// In en, this message translates to:
+  /// **'Voltage (V)'**
+  String get sa510517ad6;
+
+  /// fi: Virta (A)
+  ///
+  /// In en, this message translates to:
+  /// **'Current (A)'**
+  String get s348bd4e5f0;
+
+  /// fi: Lämpötila (°C)
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature (°C)'**
+  String get s32aa0dde33;
+
+  /// fi: Kosteus (%)
+  ///
+  /// In en, this message translates to:
+  /// **'Humidity (%)'**
+  String get se516f09209;
+
+  /// fi: Arvo 1/0 kytkimestä.
+  ///
+  /// In en, this message translates to:
+  /// **'Value 1/0 from the toggle.'**
+  String get sa7ce546ed1;
+
+  /// fi: Kytkin päälle/pois (arvo 1/0)
+  ///
+  /// In en, this message translates to:
+  /// **'Switch on/off (value 1/0)'**
+  String get sb4b475b660;
+
+  /// fi: Sonoff ei näy kotiverkossa (mDNS)
+  ///
+  /// In en, this message translates to:
+  /// **'The Sonoff is not visible on the home network (mDNS)'**
+  String get s4d2703ac9b;
+
+  /// fi: Jos tiedät avaimen. Muuten täytä alla oman eWeLink-kehittäjäsovelluksesi tiedot – avain haetaan kerran ja ohjaus pysyy p
+  ///
+  /// In en, this message translates to:
+  /// **'If you know the key. Otherwise fill in your own eWeLink developer app below – the key is fetched once and control stays local.'**
+  String get s02e0a98408;
+
+  /// fi: Sonoff (eWeLink LAN-tila)
+  ///
+  /// In en, this message translates to:
+  /// **'Sonoff (eWeLink LAN mode)'**
+  String get s2d442b23e2;
+
+  /// fi: Tavallinen eWeLink-Sonoff ilman DIY-tilaa: ohjaus kotiverkossa salattuna. Tarvitaan laitteen avain kerran.
+  ///
+  /// In en, this message translates to:
+  /// **'A regular eWeLink Sonoff without DIY mode: encrypted local control. Needs the device key once.'**
+  String get sc977fcb4f5;
+
+  /// fi: Laite löytyy yleensä itse (mDNS). eWeLink-sovelluksessa LAN-ohjauksen pitää olla sallittu (oletus).
+  ///
+  /// In en, this message translates to:
+  /// **'Usually found automatically (mDNS). LAN control must be allowed in the eWeLink app (default).'**
+  String get se287b905f6;
+
+  /// fi: Avain (devicekey) on laitteen salausavain. Saat sen eWeLinkistä omalla kehittäjäsovelluksella (dev.ewelink.cc → oma sove
+  ///
+  /// In en, this message translates to:
+  /// **'The devicekey is the device\'\'s encryption key. Get it from eWeLink with your own developer app (dev.ewelink.cc → your app → APPID and APP SECRET) – Molaplan asks once and never uses the cloud for control.'**
+  String get s7c6206fa83;
+
+  /// fi: dev.ewelink.cc → oma sovellus.
+  ///
+  /// In en, this message translates to:
+  /// **'dev.ewelink.cc → your app.'**
+  String get sccd5375513;
+
+  /// fi: Käytetään vain avaimen hakuun, ei tallenneta.
+  ///
+  /// In en, this message translates to:
+  /// **'Only used to fetch the key, not stored.'**
+  String get sd190b6d70e;
+
+  /// fi: Puhelin muodossa +358…
+  ///
+  /// In en, this message translates to:
+  /// **'Phone as +358…'**
+  String get sd936bbcc2d;
+
+  /// fi: Valo{p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Light{p0}'**
+  String s1a9acfbc67(String p0);
+
+  /// fi: Verho{p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Cover{p0}'**
+  String s5d0fb602f6(String p0);
+
+  /// fi: Lämpötila{p0} (lisäosa)
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature{p0} (add-on)'**
+  String s82ecc12a66(String p0);
+
+  /// fi: valoisuus
+  ///
+  /// In en, this message translates to:
+  /// **'illuminance'**
+  String get s8b234e1a6f;
+
+  /// fi: IKEA Dirigera
+  ///
+  /// In en, this message translates to:
+  /// **'IKEA Dirigera'**
+  String get sf34c97592f;
+
+  /// fi: IKEAn älykeskus ja sen valot ja pistorasiat (Zigbee). Paritus keskuksen painikkeella.
+  ///
+  /// In en, this message translates to:
+  /// **'IKEA smart hub and its lights and plugs (Zigbee). Pair with the button on the hub.'**
+  String get sb38eac6a87;
+
+  /// fi: IKEA Home smart -sovelluksessa: Asetukset → Keskus → IP-osoite. Tai reitittimen laitelistasta: "gw2-…" tai "dirigera".
+  ///
+  /// In en, this message translates to:
+  /// **'In the IKEA Home smart app: Settings → Hub → IP address. Or in your router\'\'s device list: \"gw2-…\" or \"dirigera\".'**
+  String get s4e92ab791e;
+
+  /// fi: Paina nyt Dirigera-keskuksen pohjassa olevaa toimintopainiketta (pieni painike) kerran. Odota tässä.
+  ///
+  /// In en, this message translates to:
+  /// **'Press the action button on the bottom of the Dirigera hub once now. Wait here.'**
+  String get s73824fc3d0;
+
+  /// fi: Sälekaihdin
+  ///
+  /// In en, this message translates to:
+  /// **'Blind'**
+  String get s92d24d0543;
+
+  /// fi: Ilmanpuhdistin
+  ///
+  /// In en, this message translates to:
+  /// **'Air purifier'**
+  String get s7727759a28;
+
+  /// fi: Pistorasia
+  ///
+  /// In en, this message translates to:
+  /// **'Plug'**
+  String get sda8d9bf1cd;
+
+  /// fi: asento (100 = kiinni)
+  ///
+  /// In en, this message translates to:
+  /// **'position (100 = closed)'**
+  String get s06444f278d;
+
+  /// fi: avaa
+  ///
+  /// In en, this message translates to:
+  /// **'open'**
+  String get sdb34e99ef6;
+
+  /// fi: sulje
+  ///
+  /// In en, this message translates to:
+  /// **'close'**
+  String get s7fc017b0f0;
 }
 
 class _AppLocalizationsDelegate

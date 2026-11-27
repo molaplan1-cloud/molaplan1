@@ -198,6 +198,8 @@ class NtfyListenService : Service() {
         val id = j.optString("id", "")
         if (id.isNotEmpty()) saveLastId(t, id)
         if (event != "message") return
+        // t290u: status widgets refresh on any ntfy message, including silent Tila JSON.
+        LauncherBridge.onIncoming(applicationContext)
         val title = j.optString("title", "")
         val message = j.optString("message", "")
         val tags = mutableListOf<String>()

@@ -62,4 +62,5 @@ flutter {
 
 dependencies {
     implementation("androidx.core:core:1.13.1")
+    implementation("androidx.work:work-runtime-ktx:2.10.0")
 }

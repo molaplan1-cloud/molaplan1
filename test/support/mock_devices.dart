@@ -146,6 +146,10 @@ class MockHue {
 
   /// t143u: a leak sensor joined to the bridge that also shows up under /lights ("Basic").
   bool withSensors = false;
+
+  /// R290: scenes + recalled group actions.
+  bool withScenes = false;
+  final groupActions = <String, Map>{};
   final sensors = <String, Map<String, dynamic>>{
     '5': {'name': 'Pesukone vuoto', 'type': 'ZHAWater', 'uniqueid': '00:15:8d:00:01:02:03:04-01-0500', 'state': <String, dynamic>{'water': false}, 'config': {'battery': 87}},
     '6': {'name': 'Pesukone vuoto', 'type': 'ZHAWater', 'uniqueid': '00:15:8d:00:01:02:03:04-01-0500', 'state': <String, dynamic>{'water': false}, 'config': {'battery': 87}},
@@ -185,6 +189,19 @@ class MockHue {
       if (rest == '/groups') {
         return _json(r, {'1': {'name': 'Olohuone', 'type': 'Room', 'lights': ['1'], 'state': {'any_on': false}}});
       }
+      if (rest == '/scenes' && withScenes) {
+        return _json(r, {
+          'AbC1': {'name': 'Rentoutuminen', 'type': 'GroupScene', 'group': '1', 'lights': ['1'], 'recycle': false},
+          'XyZ2': {'name': 'Kaikki pois', 'type': 'LightScene', 'lights': ['1', '2'], 'recycle': false},
+          'tmp9': {'name': 'auto', 'type': 'LightScene', 'lights': ['1'], 'recycle': true},
+        });
+      }
+      final gm = RegExp(r'^/groups/(\d+)/action$').firstMatch(rest);
+      if (gm != null && r.method == 'PUT') {
+        final body = jsonDecode(await utf8.decodeStream(r)) as Map;
+        groupActions[gm[1]!] = body;
+        return _json(r, [{'success': body}]);
+      }
       final m = RegExp(r'^/lights/(\d+)(/state)?$').firstMatch(rest);
       if (m != null) {
         final l = lights[m[1]]!;
@@ -215,6 +232,14 @@ class MockDirigera {
     {'id': 'leak-1', 'deviceType': 'waterSensor', 'type': 'sensor', 'attributes': {'customName': 'Pesukone vuotohälytin', 'waterLeakDetected': true, 'batteryPercentage': 74}},
   ];
   static const token = 'dirigera-token-xyz';
+
+  /// R290: blinds, an air purifier and scenes.
+  bool withExtras = false;
+  final triggered = <String>[];
+  final extras = [
+    {'id': 'blind-1', 'deviceType': 'blinds', 'type': 'blinds', 'attributes': <String, dynamic>{'customName': 'Makuuhuoneen verho', 'model': 'PRAKTLYSING', 'blindsCurrentLevel': 0, 'blindsTargetLevel': 0, 'batteryPercentage': 66}},
+    {'id': 'air-1', 'deviceType': 'airPurifier', 'type': 'airPurifier', 'attributes': <String, dynamic>{'customName': 'Starkvind', 'model': 'STARKVIND', 'fanMode': 'auto', 'currentPM25': 7}},
+  ];
   String get address => 'http://127.0.0.1:${server.port}';
   Future<MockDirigera> start() async {
     server = await _serve((r) async {
@@ -230,10 +255,21 @@ class MockDirigera {
         return _json(r, {'access_token': token});
       }
       if (r.headers.value('authorization') != 'Bearer $token') return _json(r, {'error': 'unauthorized'}, 401);
-      if (p == '/v1/devices') return _json(r, devices);
+      if (p == '/v1/devices') return _json(r, [...devices, if (withExtras) ...extras]);
+      if (p == '/v1/scenes' && withExtras) {
+        return _json(r, [
+          {'id': 'scene-a', 'type': 'userScene', 'info': {'name': 'Elokuvailta', 'icon': 'scenes_cinema'}},
+        ]);
+      }
+      final sc = RegExp(r'^/v1/scenes/(.+)/trigger$').firstMatch(p);
+      if (sc != null && r.method == 'POST') {
+        triggered.add(sc[1]!);
+        r.response.statusCode = 202;
+        return;
+      }
       final m = RegExp(r'^/v1/devices/(.+)$').firstMatch(p);
       if (m != null) {
-        final d = devices.firstWhere((d) => d['id'] == m[1]);
+        final d = [...devices, ...extras].firstWhere((d) => d['id'] == m[1]);
         if (r.method == 'PATCH') {
           final body = jsonDecode(await utf8.decodeStream(r)) as List;
           (d['attributes'] as Map).addAll((body.first as Map)['attributes'] as Map);

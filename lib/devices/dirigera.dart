@@ -169,6 +169,36 @@ class DirigeraProvider extends DeviceProvider {
           );
           continue;
         }
+        // R290: blinds (blindsCurrentLevel / blindsTargetLevel) and air purifiers (fanMode, PM2.5).
+        if (type == 'blinds' && a.containsKey('blindsCurrentLevel')) {
+          final custom = '${a['customName'] ?? ''}'.trim();
+          items.add(
+            AddItem(
+              key: '${dev['id']}',
+              name: custom.isEmpty ? tr(ctx.lang, 'Sälekaihdin', 'Blind') : custom,
+              kind: 'blinds',
+              hasPower: a.containsKey('batteryPercentage'),
+              subtitle: [
+                '${a['model'] ?? ''}'.trim(),
+                '${a['blindsCurrentLevel']} %',
+              ].where((s) => s.isNotEmpty).join(' · '),
+            ),
+          );
+          continue;
+        }
+        if (type == 'airPurifier' && a.containsKey('fanMode')) {
+          final custom = '${a['customName'] ?? ''}'.trim();
+          items.add(
+            AddItem(
+              key: '${dev['id']}',
+              name: custom.isEmpty ? tr(ctx.lang, 'Ilmanpuhdistin', 'Air purifier') : custom,
+              kind: 'airPurifier',
+              hasPower: a.containsKey('currentPM25'),
+              subtitle: ['${a['model'] ?? ''}'.trim(), '${a['fanMode']}'].where((s) => s.isNotEmpty).join(' · '),
+            ),
+          );
+          continue;
+        }
         if (!a.containsKey('isOn') || !(type == 'light' || type == 'outlet')) continue;
         items.add(
           AddItem(
@@ -182,6 +212,23 @@ class DirigeraProvider extends DeviceProvider {
               if (dev['isReachable'] == false) tr(ctx.lang, 'ei tavoitettavissa', 'unreachable'),
               a['isOn'] == true ? tr(ctx.lang, 'päällä', 'on') : tr(ctx.lang, 'pois', 'off'),
             ].where((s) => s.isNotEmpty).join(' · '),
+          ),
+        );
+      }
+      // R290: scenes (POST /scenes/<id>/trigger) as button tiles.
+      Object? scenes;
+      try {
+        scenes = decodeJson(await getText(d, '/scenes'));
+      } catch (_) {}
+      for (final sc in (scenes is List ? scenes : const []).whereType<Map>()) {
+        final info = sc['info'] is Map ? sc['info'] as Map : const {};
+        items.add(
+          AddItem(
+            key: 'scene:${sc['id']}',
+            name: '${info['name'] ?? sc['id']}',
+            kind: 'scene',
+            preselect: false,
+            group: tr(ctx.lang, 'Tilanteet (scenet)', 'Scenes'),
           ),
         );
       }
@@ -239,6 +286,91 @@ class DirigeraProvider extends DeviceProvider {
               read: {'path': path, 'jsonPath': 'attributes.${p[2]}'},
               battery: battery,
               pollSeconds: 5,
+            ),
+          );
+        }
+        continue;
+      }
+      if (it.kind == 'scene') {
+        out.add(
+          TileConfig(
+            type: TileType.button,
+            title: title,
+            icon: 'scene',
+            connectionId: c.id,
+            commands: [
+              CommandStep(
+                connectionId: c.id,
+                spec: {'method': 'POST', 'path': '/scenes/${it.key.substring(6)}/trigger', 'body': ''},
+              ),
+            ],
+          ),
+        );
+        continue;
+      }
+      final path = '/devices/${it.key}';
+      CommandStep set(String attrs) =>
+          CommandStep(connectionId: c.id, spec: {'method': 'PATCH', 'path': path, 'body': '[{"attributes":$attrs}]'});
+      if (it.kind == 'blinds') {
+        final battery = it.hasPower ? {'path': path, 'jsonPath': 'attributes.batteryPercentage'} : null;
+        out.addAll([
+          TileConfig(
+            type: TileType.slider,
+            title: '$title – ${tr(lang, 'asento (100 = kiinni)', 'position (100 = closed)')}',
+            icon: 'blinds',
+            unit: '%',
+            min: 0,
+            max: 100,
+            step: 5,
+            decimals: 0,
+            connectionId: c.id,
+            pollSeconds: 10,
+            read: {'path': path, 'jsonPath': 'attributes.blindsCurrentLevel'},
+            commands: [set('{"blindsTargetLevel":{{value_int}}}')],
+            battery: battery,
+          ),
+          TileConfig(
+            type: TileType.button,
+            title: '$title – ${tr(lang, 'avaa', 'open')}',
+            icon: 'blinds',
+            connectionId: c.id,
+            commands: [set('{"blindsTargetLevel":0}')],
+          ),
+          TileConfig(
+            type: TileType.button,
+            title: '$title – ${tr(lang, 'sulje', 'close')}',
+            icon: 'blinds',
+            connectionId: c.id,
+            commands: [set('{"blindsTargetLevel":100}')],
+          ),
+        ]);
+        continue;
+      }
+      if (it.kind == 'airPurifier') {
+        out.add(
+          TileConfig(
+            type: TileType.toggle,
+            title: title,
+            icon: 'fan',
+            connectionId: c.id,
+            pollSeconds: 15,
+            read: {'path': path, 'jsonPath': 'attributes.fanMode'},
+            onValue: 'auto',
+            onCommand: set('{"fanMode":"auto"}'),
+            offCommand: set('{"fanMode":"off"}'),
+          ),
+        );
+        if (it.hasPower) {
+          out.add(
+            TileConfig(
+              type: TileType.value,
+              title: '$title – PM2.5',
+              icon: 'air_quality',
+              unit: 'µg/m³',
+              decimals: 0,
+              connectionId: c.id,
+              pollSeconds: 60,
+              read: {'path': path, 'jsonPath': 'attributes.currentPM25'},
             ),
           );
         }

@@ -61,6 +61,7 @@ const _lock = MethodChannel('molaplan/multicast');
 
 const _txtServices = {
   '_home-assistant._tcp',
+  '_ewelink._tcp',
   '_device-info._tcp',
   '_airplay._tcp',
   '_raop._tcp',

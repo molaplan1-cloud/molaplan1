@@ -27,6 +27,7 @@ import '../energy/smart_heating.dart';
 import '../energy/thermostat.dart';
 import '../prices/prices.dart';
 import 'tile_runtime.dart';
+import 'home_launcher.dart';
 import '../rules/price_rules.dart';
 import '../templates/device_templates.dart';
 import '../account/supabase_api.dart' show AccountApi, Session;
@@ -330,6 +331,8 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   void onTileValue(TileConfig t, Object? v, [DateTime? at]) {
     _lastTileValues[t.id] = v;
+    // t290u: home-screen status widgets follow live values immediately.
+    unawaited(syncLauncherTile(t, v, at));
     if (t.sensor != null) {
       // t143u: remember the last alarm (calm → alarm), shown on the tile.
       final alarm = isTruthy(v, onValue: t.onValue.isEmpty ? null : t.onValue);

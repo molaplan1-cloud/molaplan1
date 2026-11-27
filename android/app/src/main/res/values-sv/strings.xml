@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="molaplan_widget_name">Molaplan-ruta</string>
+    <string name="molaplan_widget_description">Visar status för en Molaplan-ruta på startskärmen.</string>
+</resources>

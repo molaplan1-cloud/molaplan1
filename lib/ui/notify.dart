@@ -122,4 +122,13 @@ class DeepLinks {
 
   /// Tile id from molaplan://tile/ID.
   static String? tileOf(Uri u) => u.host == 'tile' && u.pathSegments.isNotEmpty ? u.pathSegments.first : null;
+
+  /// Tile id from molaplan://run/ID (a pinned command shortcut).
+  static String? runOf(Uri u) => u.host == 'run' && u.pathSegments.isNotEmpty ? u.pathSegments.first : null;
+
+  /// `?confirm=1` on a run link: ask before executing.
+  static bool confirmOf(Uri u) {
+    final v = u.queryParameters['confirm']?.toLowerCase();
+    return v == '1' || v == 'true' || v == 'yes';
+  }
 }

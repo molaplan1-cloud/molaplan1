@@ -10,364 +10,264 @@ class AppLocalizationsSv extends AppLocalizations {
   AppLocalizationsSv([String locale = 'sv']) : super(locale);
 
   @override
-  String get sc1e35d5171 => 'Pristjänsten';
+  String get s186cc1d7b9 => 'Chromecast / Google TV / Android TV';
 
   @override
-  String get s8b22e8d330 => 'Vädertjänsten';
+  String get s9da55e3993 =>
+      'Chromecast, Google TV, Android TV (Sony, Philips, TCL, Xiaomi ...) och Nest högtalare över Cast: status, volym, paus och stopp.';
 
   @override
-  String get s252ebed5af => 'Shelly Cloud';
+  String get sb3a497d14b =>
+      'Vanligtvis hittas automatiskt. Annars: Google Home app → enhet → Inställningar → Enhetsinformation → IP-adress.';
 
   @override
-  String get s07d3467ef6 => 'Tuya';
+  String get s02bafb3752 => 'Samsung Smart TV (Tizen)';
 
   @override
-  String get s10edebf3fa => 'ntfy server';
+  String get s709ac4cf0e =>
+      'Samsung TV 2016→: kraft, volym, mute och uppspelning rakt över hemnätverket.';
 
   @override
-  String get sc08176420f => 'Airthings moln';
+  String get s19a8179b98 =>
+      'TV: Inställningar → Allmänt → Nätverksstatus → IP-inställningar. För ström på: Allmänt → Nätverk → Expertinställningar → \"Power On with Mobile\" på.';
 
   @override
-  String get sd3d9c263ed => 'Tjänsten';
+  String get s0f80ea94c0 =>
+      'TV:n frågar \"Tillåt Molaplan?\" - välj Tillåt med fjärrkontrollen.';
 
   @override
-  String get sedeaf26f8a => 'ntfy meddelande gräns nådde';
+  String get s830956d10f => 'LG Smart TV (webOS)';
 
   @override
-  String get s5d151d0815 =>
-      'ntfy.sh tillåter 250 meddelanden per 12 timmar från ditt hems offentliga IP (alla telefoner, surfplattor, datorer och enhetens egna svar tillsammans). Meddelanden frigörs några minuter - appen frågar nu för staten mindre ofta. En bestående fix: din egen ntfy-server eller ett ntfy-konto med en högre gräns.';
+  String get s6f7121cc67 =>
+      'LG TV (webOS): ström, volym, mute, uppspelning och den öppna appen över hemnätverket.';
 
   @override
-  String get s349ca716f2 => 'Inget svar från enheten';
+  String get scf3ccada17 =>
+      'TV: Inställningar → Allmänt → Nätverk → Wi-Fi / trådbunden → Avancerad. För ström på: Allmänt → Enheter → \"Slå på via Wi-Fi\" på.';
 
   @override
-  String get s7aa9e16c41 =>
-      'Kommandot nådde ntfy-servern, men inget svar kom från enheten. Kontrollera anslutningens \"Reply-ämne\" - enheten kan svara på ditt eget anmälningsämne - och att enheten är online.';
+  String get s898762ead6 =>
+      'TV:n visar en anslutningsförfrågan – acceptera den med fjärrkontrollen.';
 
   @override
-  String get sdfb639365a => 'Ingen internetanslutning';
+  String get s378548d3cd => 'Philips TV (JointSPACE)';
 
   @override
-  String s390dd51af3(String p0) {
-    return '$p0 är på internet och kan inte nås. Kontrollera den här enhetens internetanslutning. De senaste uppgifterna visas när de är tillgängliga.';
-  }
+  String get s9a2645043b =>
+      'Philips TV: ström (Android modeller), volym, stum och nycklar. Android modeller par med en PIN visas på TV.';
 
   @override
-  String sbb750bf9d6(String p0) {
-    return '$p0 svarar inte, provar en reservkälla';
-  }
+  String get s2fb79a3487 =>
+      'TV: Inställningar → Trådlösa och nätverk → Wired eller Wi-Fi → Visa nätverksinställningar.';
 
   @override
-  String s4284ebac1e(String p0) {
-    return '$p0 svarar inte';
-  }
+  String get s12f47341ce => 'Skriv den fyrsiffriga PIN som visas på TV: n.';
 
   @override
-  String get s828d009fa6 =>
-      'Backup-källorna svarade inte just nu heller. Problemet är mest sannolikt på tjänsterna, inte ditt hemnätverk.';
+  String get s0ec3e3e11d => 'Visas på TV-skärmen i ungefär en minut.';
 
   @override
-  String get se21c801ba6 =>
-      'Tjänsten har ett problem, troligtvis i tjänsten och inte ditt hemnätverk.';
+  String get sd3b85fadc0 => 'TV och Chromecast';
 
   @override
-  String get s35e0766add => 'Logga in på tjänsten misslyckades';
+  String get sb34763a1f3 =>
+      'Samsung, LG, Philips, Android TV / Google TV och Chromecast: ström, volym och uppspelning.';
 
   @override
-  String sa4d255e53c(String p0) {
-    return 'Kontrollera kontot, nyckeln eller token för $p0.';
-  }
+  String get sbd92a41506 => 'En Chromecast kan inte bytas på distans';
 
   @override
-  String get sd0a2130950 =>
-      'Den väntade enheten svarar inte på den här adressen – kontrollera den (http eller https?)';
+  String get sd8167370bc => 'Ingenting spelar';
 
   @override
-  String get sdd5742468b =>
-      'Något svarar, men inte som väntat. Prova https:// eller http:// först och kontrollera porten.';
+  String get sd42552b5c1 => 'TV:n vägrade - låt Molaplan i snabben på TV:n';
 
   @override
-  String get s03c0a5192b => 'Adress som inte hittats';
+  String get sb7b15dd59e =>
+      'Acceptera anslutningen på TV:n (Tillåt) och försök igen';
 
   @override
-  String get sb3ef01a6fa =>
-      'Kontrollera stavningen. Prova IP-adressen (t.ex. 192.168.1.50) istället för ett namn.';
+  String get s19ae80a1a6 => 'Inte en Samsung TV';
 
   @override
-  String get s274a753ad6 => 'Enhet som inte finns på denna adress';
+  String get s7e1bbea60b => 'Slå på behov MAC-adressen';
 
   @override
-  String get s2b503695b6 =>
-      'Kontrollera att enheten är på och att din telefon eller dator är på samma Wi-Fi. Kontrollera också IP-adressen - den kan ändras, så reservera en fast adress i routern.';
+  String get se7feba6088 => 'TV:n accepterade inte volymen';
 
   @override
-  String get sff9ca463e3 => 'Enhet hittades men hamnen är stängd';
+  String get s97c684e038 => 'Chromecast / Google TV / Android TV (Cast)';
 
   @override
-  String get s1d4f4506de =>
-      'Kontrollera portnumret och att tjänsten (webb UI, MQTT eller Modbus TCP) är aktiverad på enheten.';
+  String get s66c82f9d98 => 'TV / Chromecast (inbyggd integration)';
 
   @override
-  String get s8523a9cfd0 => 'Säker anslutning (https) misslyckades';
+  String get s1c9df5579f => 'Märke';
 
   @override
-  String get sdfd499c1f1 =>
-      'Prova http:// istället, eller aktivera \"Tillåt självsignerat certifikat\" under Avancerad.';
+  String get s406f4e67a2 =>
+      'Android TV och Google TV kontrolleras över Cast (Chromecast inbyggd).';
 
   @override
-  String get s3fabccc1cd => 'Inloggning, lösenord eller token avvisas';
+  String get s178e07f06b => 'IP-adress';
 
   @override
-  String get sdc2d65f8eb =>
-      'Kontrollera referenser. I Home Assistant kan du skapa en ny långlivad token i din profil.';
+  String get s678a1d0824 =>
+      'Enheten IP-adress (router enhetslista). Reservera en fast adress i routern.';
 
   @override
-  String get se0a7cef6c4 => 'Enhet svarade men objektet hittades inte';
+  String get sc9db95d473 => 'MAC-adress (power on)';
 
   @override
-  String get see02239a35 =>
-      'Kontrollera sökvägen eller företagets namn (t.ex. light.living_room).';
+  String get s179f2d4764 =>
+      'För Wake-on-LAN ström på. Vanligtvis fylld i automatiskt; aktivera \"Slå på via nätverk\" på TV: n.';
 
   @override
-  String get sdec83d1e90 => 'Enheten rapporterade ett fel';
+  String get s8480eec244 => 'JointSPACE version (Philips)';
 
   @override
-  String get s3de239ffc5 => 'Kontrollera vägen och nyttolast.';
+  String get sa592a45cc0 =>
+      'Upptäcks automatiskt: 6 = Android-TV (https 1926), 1 = äldre uppsättningar (http 1925).';
 
   @override
-  String get s6121e8d8f1 => 'Okänt register på enheten';
+  String get s0f34d752b2 => 'Pairing id (Philips)';
 
   @override
-  String get s3474aedf54 =>
-      'Kontrollera registret nummer. Om tabellen börjar vid 1 (t.ex. 40001), subtrahera 1. Kontrollera också innehav vs ingång.';
+  String get s55e83ab0e3 => 'Skapad under parning (PIN-kod från TV).';
 
   @override
-  String get s2c303f6774 => 'Registertyp som inte stöds';
+  String get s090082b8ce => 'Pairing key (Philips)';
 
   @override
-  String get s945685fcda =>
-      'Prova den andra registreringstypen (hålla inmatning).';
+  String get s74b0fa8af8 =>
+      'Skapad under parning. lagrad på denna enhet endast.';
 
   @override
-  String get s07ffbc349a => 'Värde som avvisas av enheten';
+  String get sf6035d1731 => 'Access token (Samsung)';
 
   @override
-  String get s76b95eef9f =>
-      'Värdet är förmodligen ur räckvidd. Kontrollera skalan också.';
+  String get scee449b738 =>
+      'Samsung returnerar det när du tillåter anslutningen på TV: n. lagrad på den här enheten bara.';
 
   @override
-  String get s7746921882 => 'Enhet hittas, men Modbus TCP är avstängd';
+  String get s565b6ac234 => 'Kundnyckel (LG)';
 
   @override
-  String get s7e552bd146 =>
-      'Det finns en enhet på denna adress, men det accepterar inte Modbus på denna port. Slå på Modbus TCP i enhetsinställningarna (ofta under nätverk / Modbus / fjärrkontroll) och kontrollera hamnen (vanligtvis 502). Du kan också trycka på \"Scan Modbus\". Om enheten fungerar i Home Assistant, kan det redan ha en anslutning (många tillåter bara en) - läs värdena genom HA.';
+  String get s8b34eb0ec5 =>
+      'LG returnerar det när du accepterar anslutningen på TV: n. lagrad på den här enheten endast.';
 
   @override
-  String s0ebc613f20(String p0) {
-    return 'Enheten är i lockout, retrying på $p0';
-  }
+  String get sbdf670977b => 'Läsa';
 
   @override
-  String get s317b2b59af =>
-      'Enheten svarade inte, så det lämnas ensam ett tag - många enheter låser ut klienter som omröstar för ofta. Pausen växer från 30 sekunder till 5 minuter. Om enheten redan har en anslutning (t.ex. Home Assistant), läs värdena genom HA. Läsintervallet och pauserna är under Avancerade i anslutningen.';
+  String get s4cd6848cf8 =>
+      'En Chromecast har inget strömtillstånd; \"På\" är då alltid 0.';
 
   @override
-  String get s33e09089b2 => 'Enheten adress saknas';
+  String get sb545795f0a => 'Status (text)';
 
   @override
-  String get s6180bd540e =>
-      'Öppna anslutningen och ange enhet IP-adressen eller tryck på \"Scan Modbus\" för att hitta enheten i nätverket.';
+  String get s7c7098854f => 'På (1/0)';
 
   @override
-  String get sd73581c910 => 'Enheten kanske redan har en anslutning';
+  String get s1d28a837cb => 'Volym (%)';
 
   @override
-  String get scee8d982a2 =>
-      'Enheten släppte Modbus-anslutningen direkt. Många enheter tillåter endast en Modbus TCP-anslutning i taget. Om enheten redan finns i Home Assistant (t.ex. modbus.yaml), läs värdena genom HA.';
+  String get sa13c4f1248 => 'dämpad (1/0)';
 
   @override
-  String get s6ca672a111 => 'Ingenting på denna adress';
+  String get sef1842c9c5 => 'App App App App App';
 
   @override
-  String get sf7a98e1c70 =>
-      'Ingenting svarade på denna IP-adress. Kontrollera att enheten är på och i samma nätverk och att IP är rätt (det kan ändras - reservera en fast adress i routern). \"Scan Modbus\" hittar enheter på nätverket.';
+  String get sc5c36c50e6 => 'Nu spelar jag';
 
   @override
-  String get scb0cba44ea => 'Modbus-enheten svarade inte i tid';
+  String get saded6a492a => 'Spela (1/0)';
 
   @override
-  String get sc03ae7e1c5 =>
-      'Kunde inte öppna porten. De vanligaste orsakerna: fel IP, enheten är i ett annat nätverk (gäst Wi-Fi), Modbus TCP är avstängd eller en brandvägg blockerar porten. Kontrollera adressen och porten eller tryck på \"Scan Modbus\".';
+  String get s5bed8bff00 => 'Kommando';
 
   @override
-  String get sefba540275 => 'Gateway kan inte nå en enhet med denna enhet id';
+  String get s56ada71b4a => 'Värdet kommer från växeln eller reglaget.';
 
   @override
-  String get s6e4ed361f3 =>
-      'Modbus gateway svarade, men ingen enhet med denna enhet id ligger bakom den. Kontrollera enhetens Modbus-adress (ofta 1) och seriehastigheten och pariteten. \"Scan Modbus\" försöker adresser 1-247.';
+  String get s5d41165c1a => 'Ström på/av (värde 1/0)';
 
   @override
-  String get sb66bc0e677 => 'Ingen Modbus svar';
+  String get s7df609092d => 'Volym (värde 0–100)';
 
   @override
-  String get s6ef5539bc2 =>
-      'Ansluten men inget svar. Kontrollera enhetens id (ofta 1) och gateway-serieinställningarna.';
+  String get s7ce360cc79 => 'Mute (värde 1/0)';
 
   @override
-  String get s17ea4c52d5 => 'Inget svar från enheten';
+  String get sdce14191c7 => 'Nyckeln';
 
   @override
-  String get s50ecf9ba6f =>
-      'Ansluten men inget svar i tid. Kontrollera meddelandet.';
+  String get sc91823aedb => 'Endast för kommandot \"Key\".';
 
   @override
-  String get sf93db545a1 => 'Det finns ett misstag i inställningarna';
+  String get sdac8f8b638 => 'Spela / paus';
 
   @override
-  String get sf19a9f0856 =>
-      'Kontrollera fälten, t.ex. att adressen börjar med http:// och siffrorna är siffror.';
+  String get seab0493fde => 'Spela Play';
 
   @override
-  String get s3976954bef => 'Denna kakel har ingen enhet';
+  String get sef0810bb79 => 'Paus';
 
   @override
-  String get sc025e0a1f4 =>
-      'Öppet redigeringsläge (penna) och välj en enhet för kakeln.';
+  String get s6fe2320f3d => 'Stoppa';
 
   @override
-  String get s7e11595f9e => 'Hembron är avstängd';
+  String get s476a29a514 => 'Volym upp';
 
   @override
-  String get s2cd1df086e =>
-      'Fjärråtkomst går igenom bron hemma (tablet eller PC). Kontrollera att det är på, Molaplan är öppen och det har internet.';
+  String get s1cafda29fd => 'Volym ner';
 
   @override
-  String get sdbf06d05d9 =>
-      'Din enhet kan inte nå Molaplan fjärrtjänst. Kontrollera mobildata eller Wi-Fi.';
+  String get s9d9c84b3a8 => 'Hem';
 
   @override
-  String get s8b737f4026 => 'Fjärråtkomst togs bort';
+  String get scf7e14661c => 'Tillbaka';
 
   @override
-  String get s4b9e4ca079 =>
-      'Den här enheten togs bort på hemmabron. Par igen: Inställningar → Fjärråtkomst.';
+  String get s94e14089d6 => 'Volym saknas';
 
   @override
-  String get s5b3116ed94 => 'Hembron svarade inte i tid';
+  String get s5d5363db20 => 'Volymvolymvolym';
 
   @override
-  String get se082095a34 =>
-      'Anslutningen kan vara långsam. Försök igen i ett ögonblick.';
+  String get s14252e6c3a => 'status status status';
 
   @override
-  String get s688a4f4ccb => 'Koden är inte giltig';
+  String get s58332642fb => 'effekt';
 
   @override
-  String get sfa0e226cd0 =>
-      'Kontrollera 6 siffror på bryggskärmen. En kod är giltig i 10 minuter och fungerar en gång - tryck på \"Paira en telefon\" på bron igen om det behövs.';
+  String get s449ab0a31f => 'Volymvolymvolym';
 
   @override
-  String get sfa5c1fb1ac => 'Bron accepterade inte denna enhet';
+  String get s3a12232f33 => 'Mössa';
 
   @override
-  String get s9ad07ab36e =>
-      'När du kopplar ihop med koden ber bron om bekräftelse - tryck på \"Acceptera\" där. Eller skanna QR-koden, då behövs ingen bekräftelse.';
+  String get s46a1321d85 => 'TV:n vägrade anslutningen';
 
   @override
-  String get sb5c271ae6a => 'Säkerhetskontroll misslyckades';
+  String get sbfbb3d52b3 => 'Acceptera anslutningen på TV:n och försök igen';
 
   @override
-  String get s3d7ca280db =>
-      'Anslutningen kunde inte verifieras som säker, så den användes inte igen med QR-koden.';
+  String get sf2993f0346 => 'TV behöver parning';
 
   @override
-  String get s0061b44673 => 'Bron svarade inte';
+  String get s43720a9032 => 'Svarar inte';
 
   @override
-  String get sceb894b9b3 =>
-      'Acceptera enheten på bryggskärmen inom 3 minuter, eller skanna QR-koden.';
+  String get s3a275af4f7 => 'är inte en JointSPACE TV';
 
   @override
-  String get s700b0ef4de => 'Anslutningen fungerade inte';
+  String get s3d91340835 => 'Ingen parning pågår';
 
   @override
-  String get s53a891e670 =>
-      'Kontrollera adressen och inställningarna och försök igen. De tekniska detaljerna visar den exakta orsaken.';
-
-  @override
-  String get s02480e4c13 => 'Mätningar';
-
-  @override
-  String get sd1c778324e => 'kontroller';
-
-  @override
-  String get s88ac47e6d1 => 'Kameror';
-
-  @override
-  String get sdd5e97b1e2 => 'Klart';
-
-  @override
-  String get sad990c999d => 'Halvklart';
-
-  @override
-  String get s80bfe8f9ad => 'Mulet';
-
-  @override
-  String get s46f3db8514 => 'Dimma';
-
-  @override
-  String get sbd81101eb4 => 'Duggregn';
-
-  @override
-  String get s960a265544 => 'Regn';
-
-  @override
-  String get seab38c2b45 => 'Snöfall';
-
-  @override
-  String get sfc65eafa12 => 'Åska';
-
-  @override
-  String get s2a3f705876 => 'Lagring av golvvärme (konkret)';
-
-  @override
-  String get se02b21f2e5 =>
-      'En betongplatta lagrar värme under lång tid: uppvärmning flyttas till de billigaste timmarna, och antalet timmar följer prognosen.';
-
-  @override
-  String get sed77dcfc1a => 'Lätt golvvärme';
-
-  @override
-  String get s4699e792b9 =>
-      'En lätt golv lagrar liten värme: de dyraste timmarna är hoppade, med korta pauser bara.';
-
-  @override
-  String get s5d46662c4e => 'Direkta elektriska radiatorer';
-
-  @override
-  String get s12e9bbf847 =>
-      'Radiatorer lagrar inte värme: endast de dyraste timmarna är hoppade, en timme i taget.';
-
-  @override
-  String get s1c0bf9b38b => 'Air-source värmepump';
-
-  @override
-  String get s6896be80e0 =>
-      'En värmepump fungerar bäst vid en jämn temperatur: målet stiger lite före dyra eller kalla trollformler och sjunker i dyra timmar.';
-
-  @override
-  String get s765f87536c => 'Ground-source värmepump';
-
-  @override
-  String get s33536024e7 =>
-      'Ground-source värme med vattencirkulationen lagrar lite värme: de dyraste timmarna hoppas i pauser på några timmar högst.';
-
-  @override
-  String get s3a7d2e6848 => 'Vattenvärmare';
-
-  @override
-  String get s4eec9a0479 =>
-      'En varmvattenberedare stannar varmt för en dag: den värms upp i de billigaste timmarna på dagen.';
+  String get secb14ea9df => 'Fel PIN eller parningen gick ut';
 
   @override
   String s404f230c13(String p0) {
@@ -375,1312 +275,1411 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get s798f7b2876 => 'Smart uppvärmning';
-
-  @override
-  String get sa2dc343545 =>
-      'Fireplace läge slutar: rummet kyls. Uppvärmning är tillbaka till det normala.';
-
-  @override
-  String get s78afbd052c =>
-      'Fireplace läge slutade (tid är upp). Uppvärmning är tillbaka till det normala.';
-
-  @override
-  String get s1f08341033 =>
-      'Fireplace läge stoppas. Uppvärmning är tillbaka till det normala.';
-
-  @override
-  String get sa7f9b278cf => 'Huawei SUN2000 (Modbus TCP)';
-
-  @override
-  String get s0d714dece1 => 'Fronius (Solar API, lokal)';
-
-  @override
-  String get sa38a153c07 => 'SolarEdge (Modbus TCP, lokal)';
-
-  @override
-  String get s833dfe954e => 'SMA (Modbus TCP, lokal)';
-
-  @override
-  String get sc5863d817d => 'SMA (SunSpec Modbus)';
-
-  @override
-  String get s12733504dc => 'SMA Energy Meter / Home Manager (Speedwire)';
-
-  @override
-  String get sdeb4f39ff0 => 'Growatt (Modbus TCP)';
-
-  @override
-  String get sa1769b666b => 'Övriga SunSpec inverter (Modbus TCP)';
-
-  @override
-  String get s1694840083 => 'Huawei FusionSolar (moln)';
-
-  @override
-  String get s205e886d29 => 'SolarEdge övervakning (moln)';
-
-  @override
-  String get s5bf46ebec4 => 'Growatt OpenAPI (moln)';
-
-  @override
-  String get se7c240ad4f => 'Solar / inverterare (inbyggd integration)';
-
-  @override
-  String get s46b5445e4a => 'Brand och anslutning';
-
-  @override
-  String get sef83efed4e =>
-      'Skapare och anslutningstyp. Lokala arbetar utan molnet och uppdateras snabbare.';
-
-  @override
-  String get scc322677fe => 'IP-adress (lokal)';
-
-  @override
-  String get s6ac1068052 =>
-      'IP-adress för inverteraren, SDongle eller mätaren (från routernhetslistan).';
-
-  @override
-  String get s800d13debd => 'Port Port Port Port';
-
-  @override
-  String get sa163739d18 =>
-      'Tomma = standard (Modbus 502, SolarEdge 1502, Huawei inverter Wi-Fi 6607).';
-
-  @override
-  String get s58f0665e29 => 'Modbus unit id';
-
-  @override
-  String get sd5e2f52587 =>
-      'Tomt = standard (Huawei 1, SolarEdge 1, SMA 3, SMA SunSpec 126, Growatt 1).';
-
-  @override
-  String get se49fbf06a8 => 'Meter Serial (SMA Energy Meter)';
-
-  @override
-  String get s4a63dcc985 =>
-      'Endast om det finns flera SMA-mätare i nätverket. Empty = den första.';
-
-  @override
-  String get s6e391cf987 => 'Användare (FusionSolar API)';
-
-  @override
-  String get se76a6f4565 =>
-      'FusionSolar Northbound API-användare (skapad av installatören: System → Company → Northbound).';
-
-  @override
-  String get s2f3b444057 => 'Lösenord / systemkod';
-
-  @override
-  String get s11298f6c17 =>
-      'Lagras endast på den här enheten / i ditt eget krypterade valv.';
-
-  @override
-  String get s68eeca8dbe => 'API-nyckeln (SolarEdge/Growatt)';
-
-  @override
-  String get seba7bd613f =>
-      'SolarEdge: övervakning portal → Admin → Site Access → API. Growatt: OpenAPI token.';
-
-  @override
-  String get s3cda8d5f90 => 'Site / Plant Id (moln)';
-
-  @override
-  String get see56030ac8 => 'Empty = den första webbplatsen för kontot.';
-
-  @override
-  String get sbdf670977b => 'Läsa';
-
-  @override
-  String get s9d61569ac0 =>
-      'Sladd: positiv = köp från rutnätet, negativ = försäljning av överskott.';
-
-  @override
-  String get sc78a29bef9 => 'Solenergi nu (W)';
-
-  @override
-  String get s88a9d9b593 => 'Yield idag (kWh)';
-
-  @override
-  String get s4766881640 => 'Total avkastning (kWh)';
-
-  @override
-  String get s4e1e06f64a => 'Grid +import / −export (W)';
-
-  @override
-  String get s5c5e6866eb => 'Importerad total (kWh)';
-
-  @override
-  String get s7495975366 => 'Exporterad total (kWh)';
-
-  @override
-  String get s275ffaa691 => 'Batteriavgift (%)';
-
-  @override
-  String get s9da1bd7ed1 => 'Batteri + laddning / − urladdning (W)';
-
-  @override
-  String get sb6d790453a => 'Hemförbrukning (W)';
-
-  @override
-  String sff9335b6df(String p0) {
-    return 'Enheten rapporterar inte denna läsning ($p0)';
-  }
-
-  @override
-  String get s711b4531bd => 'Inverters är lättlästa';
-
-  @override
-  String get s257cf40257 => 'Solar';
-
-  @override
-  String get sfa32969a23 => 'Nät';
-
-  @override
-  String get s333643b4c4 =>
-      'SMA Energy Meter: inga sändningar i hemnätverket (multicast 239.12.255.254:9522)';
-
-  @override
-  String get sc27533ae83 => 'Sparsam';
-
-  @override
-  String get sdbcb85509b =>
-      'Temperaturen får variera mest (+1 / −2 °C). Störst besparing.';
-
-  @override
-  String get s380b20be36 => 'Balanserad';
-
-  @override
-  String get s66ea783264 =>
-      'Liten variation (+1 / −1 °C). Ett bra standardval.';
-
-  @override
-  String get see96226e44 => 'Komfort';
-
-  @override
-  String get sb403e00b3d =>
-      'Nästan jämn temperatur (+0,5 / −0,5 °C). Sparar lite.';
-
-  @override
-  String get s0a81072a1f =>
-      'Hitta den i routerns enhetslista eller tillverkarens app (enhetsinformation). Reservera en fast IP för den.';
-
-  @override
-  String get s7c6a740594 => 'Huvudsakliga läsningar';
-
-  @override
-  String get se74bcc1028 => 'Extra kort för automation';
-
-  @override
-  String get s87d0186621 => 'Huawei SUN2000 (Modbus TCP, lokal)';
-
-  @override
-  String get se7647d6762 =>
-      'SUN2000 inverter (inkl. LUNA2000 batteri och DTSU666 meter) via SDongle på ditt nätverk, inget moln.';
-
-  @override
-  String get sccb0c7d2d8 =>
-      'SDongle IP-adressen. Gör det först i FusionSolar-appen: Enhetskommissionen → Dongle → Modbus TCP = \"Enable (obegränsad)\". Utan en dongle: inverterarens egen Wi-Fi, adress som 192.168.200.1:6607.';
-
-  @override
-  String get sddc831ec16 =>
-      'Optionell: produktion genom den officiella FusionSolar Northbound API. Uppdateringar ungefär var 5: e minut.';
-
-  @override
-  String get s4424767fdd =>
-      'En nordbunden API-användare (inte din vanliga appinloggning) installeraren / admin skapar den: System → Företag → Northbound management.';
-
-  @override
-  String get s7a7ab0d238 => 'lagras krypterad på den här enheten bara.';
-
-  @override
-  String get sde3c79670a =>
-      'Värd i din webbläsaradressfält när du är inloggad på FusionSolar. Default eu5.';
-
-  @override
-  String get se80d87723d =>
-      'Symo, Primo, Gen24, Tauro - inkl. Smart Meter och batteri. Skaparens öppna lokala API, inget moln.';
-
-  @override
-  String s1cb0924dc9(String p0) {
-    return ' Gen24: aktivera Solar API på inverterwebbsidan (Communication → Solar API).';
-  }
-
-  @override
-  String get s1345214178 =>
-      'SolarEdge inverter, mätare och batteri över SunSpec Modbus på ditt nätverk (port 1502).';
-
-  @override
-  String s1f7b006036(String p0) {
-    return ' Aktivera Modbus TCP med SetApp: Commissioning → Communication → Modbus TCP.';
-  }
-
-  @override
-  String get s5d43115e7d =>
-      'Valfritt: produktion och kraftflöde genom den officiella SolarEdge-övervakningen API (uppdateringar ~ 5 min).';
-
-  @override
-  String get sbe1a020a66 =>
-      'övervakning.solaredge.com → Admin → Webbplatsåtkomst → API Access: acceptera villkoren och kopiera nyckeln.';
-
-  @override
-  String get s9c5e673c38 =>
-      'Sunny Boy, Sunny Tripower, Sunny Boy Storage – SMA Modbus registrerar sig på ditt nätverk (enhet id 3).';
-
-  @override
-  String s4fad533521(String p0) {
-    return ' Aktivera Modbus på inverterwebbsidan: Enhetsparametrar → Extern kommunikation → Modbus TCP-server.';
-  }
-
-  @override
-  String get s528ecf3140 =>
-      'SMA Energy Meter / Home Manager (Speedwire, lokal)';
-
-  @override
-  String get sa7e3cb3d48 =>
-      'Sladdimport och export direkt från mätarens Speedwire-sändningar - ingen inloggning, inget moln.';
-
-  @override
-  String get s126a0713b8 =>
-      'Mätaren hittas automatiskt på samma hemnätverk. Om sökningen missar det, skriv mätaren IP (läsningar kommer fortfarande från sina sändningar).';
-
-  @override
-  String get sbdf4d24f64 => 'Growatt (Modbus TCP, lokal)';
-
-  @override
-  String get s6c5156d740 =>
-      'MIN/MOD/SPH-omvandlare via en RS485→TCP-gateway (eller en ShineLan-X med Modbus TCP). Verifiera avläsningarna.';
-
-  @override
-  String get se351eda9ce =>
-      'IP av RS485→Modbus TCP-gateway (t.ex. Elfin EW11, Waveshare) ansluten till inverteraren RS485/COM-porten.';
-
-  @override
-  String get s06257dd63c =>
-      'Valfritt: produktion genom Growatt OpenAPI (ShinePhone/ShineServer-kontot). Uppdateringar ~ 5 min.';
-
-  @override
-  String get sbd8c9831bb =>
-      'Fråga Growatt-stöd eller din installatör för ett OpenAPI-token eller hitta det i ShineServer-inställningar om det visas.';
-
-  @override
-  String get s3c89bd3976 =>
-      'Kostal, Fronius (Modbus), SMA (SunSpec), ABB/FIMER... Alla SunSpec-enheter.';
-
-  @override
-  String s183e57cdfd(String p0) {
-    return ' Port 502 som standard - en annan port som 192.168.1.20:1502.';
-  }
-
-  @override
-  String get s981854cf46 => 'Solenergi';
-
-  @override
-  String get s984804da72 =>
-      'Huawei, Fronius, SolarEdge, SMA, Growatt - produktion, rutnät och batteri. Lokalt, moln valfritt.';
-
-  @override
-  String get sd86b823895 => 'Sonoff';
-
-  @override
-  String get s5f297ec9d8 =>
-      'BASIC, MINI, POW, TH, 4CH ... i DIY-läge, med Tasmota eller ESPHome. Kort är gjorda för dig; fjärranvändning via hembron.';
-
-  @override
-  String get s60e829b1b0 =>
-      'eWeLink app → enhet → Inställningar visar IP-adressen, eller routerns enhetslista. I DIY-läge behöver du också enhets-ID (10 tecken).';
-
-  @override
-  String get s6a46e8954d =>
-      'En Sonoff i DIY-läge svarar bara när den berättade sin enhet ID. Hitta den i eWeLink-appen: enhet → Inställningar → Enhets-ID. Tasmota: webblösenordet, om det är inställt.';
-
-  @override
-  String get sea057f1a02 =>
-      'Endast i DIY-läge när sökningen inte hittade enheten.';
-
-  @override
-  String s08d04d58a9(String p0) {
-    return 'Kanal $p0';
-  }
-
-  @override
-  String get s8653f173b6 => 'Temperatur';
-
-  @override
-  String get s9cb8820285 => 'Humidity';
-
-  @override
-  String get s4899323b9a => 'Effekt';
-
-  @override
-  String get se78754330c => 'effekt';
-
-  @override
-  String get se317f59de2 => 'VUOTO!';
-
-  @override
-  String get se4c4201882 => 'LEAK!';
-
-  @override
-  String get sdbcf5515c1 => 'Auki';
-
-  @override
-  String get sb0af7213b5 => 'Öppet Öppet Öppet Öppet Öppet';
-
-  @override
-  String get sa3477dac6e => 'Liikettä';
-
-  @override
-  String get s280df88585 => 'Rörelse';
-
-  @override
-  String get s064a959911 => 'Savoa!';
-
-  @override
-  String get s50778e2eec => 'Smoke!';
-
-  @override
-  String get s1dfa5abe81 => 'Hälytys';
-
-  @override
-  String get s50c459fbff => 'Larm';
-
-  @override
-  String get s1a4eab1f51 => '°C';
-
-  @override
-  String get s9e731440d8 => '%';
-
-  @override
-  String get s77c638e731 => '%';
-
-  @override
-  String get s96abb7f975 => '';
-
-  @override
-  String get s91e5760e43 => '';
-
-  @override
-  String get s2f76c2abd3 => '';
-
-  @override
-  String get sc2b99541c7 => 'Brytare och reläer';
-
-  @override
-  String get sd85dbd8e5e => 'Lampor och dimrar';
-
-  @override
-  String get s38935a3c66 => 'Gardiner och rullgardiner';
-
-  @override
-  String get s64c6ca7840 => 'Energimätare';
-
-  @override
-  String get s662fecdc8d => 'Sensorer';
-
-  @override
-  String get s027fcbe1b6 => 'S<blank> s<blank> Sn';
-
-  @override
-  String get sa376ec78ec => 'Lampa';
-
-  @override
-  String get s6814e463b1 => 'till<blank>';
-
-  @override
-  String get s477d8b2c95 => 'Total effekt';
-
-  @override
-  String sdaa374b331(String p0) {
-    return 'Fas $p0';
-  }
-
-  @override
-  String get s32c88e5aa6 => 'Ljusnivå';
-
-  @override
-  String get sbb26f2192c => 'Batteri';
-
-  @override
-  String get s57b4effa42 => 'Dörr / fönster';
-
-  @override
-  String get s66350d8e7a => 'Rörelse';
-
-  @override
-  String get s29045a726e => 'Vattenläcka';
-
-  @override
-  String get s57c2113aee => 'Rök';
-
-  @override
-  String get se8422f063f => 'Senns Sensli Senled Sen Sen Sensor';
-
-  @override
-  String get s609cb4c5f9 => 'på';
-
-  @override
-  String get s356d822497 => 'av';
-
-  @override
-  String get s0b2f7d7c80 => 'öppet öppet öppna';
-
-  @override
-  String get s7009587b85 => 'Slutna';
-
-  @override
-  String get s3b35de231e =>
-      '<blank> motslidledde sin grade-före-företa-motred-motstödsföre-före-före-före-före-före-före-före-före-före-före-föregående';
-
-  @override
-  String get s3dfa789b85 => 'ALARM';
-
-  @override
-  String get sd9b6de0a6a => 'Andra andra';
-
-  @override
-  String se7520a3990(String p0) {
-    return 'sover - sista $p0';
-  }
-
-  @override
-  String get s3aaacf80d2 => 'offline';
-
-  @override
-  String get see129fb410 => 'ljusstyrka';
-
-  @override
-  String get s5d888c1384 => 'true=Open;false=Closed';
-
-  @override
-  String get sd74ad36c31 => 'true=Motion;false=No motion';
-
-  @override
-  String get sfa12d7fdd7 => 'true=LEAK!;false=Dry';
-
-  @override
-  String get s1f18c0f400 => 'true=SMOKE!;false=OK';
-
-  @override
-  String s1a9acfbc67(String p0) {
-    return 'Ljus $p0';
-  }
-
-  @override
-  String s5d0fb602f6(String p0) {
-    return 'Täck $p0';
-  }
-
-  @override
-  String s82ecc12a66(String p0) {
-    return 'Temperatur $p0 (add-on)';
-  }
-
-  @override
-  String get s68e711123b => 'Temperatur';
-
-  @override
-  String get s736646b3b0 => 'Fuktighet';
-
-  @override
-  String get s8b234e1a6f => 'Belysning';
-
-  @override
-  String get s03a198454c => 'batteribatteri';
-
-  @override
-  String get s0bf7cb1613 => 'Philips Hue';
-
-  @override
-  String get se17d4e4197 =>
-      'Hue Bridge och dess lampor (också Zigbee lampor parade till det). Par med bryggknappen.';
-
-  @override
-  String get sf83a145406 =>
-      'I Hue-appen: Inställningar → Hue Bridges → (i) → IP-adress. Eller i routerns enhetslista: \"Philips-hue\".';
-
-  @override
-  String get s80ee7a25a9 =>
-      'Tryck på den stora runda knappen ovanpå Hue Bridge nu. Vänta här - det ansluter själv.';
-
-  @override
-  String get s4dbb677293 => 'nås inte';
-
-  @override
-  String get sf50732e8e8 => 'dimmable';
-
-  @override
-  String get s4082a34467 => 'sensor';
-
-  @override
-  String s3832b8c729(String p0) {
-    return 'hela rummet';
-  }
-
-  @override
-  String get sceabe202da => 'camera_';
-
-  @override
-  String get s1a73b397a1 => 'sonoff';
-
-  @override
-  String get sb8a029d8b4 => 'Hikvision';
-
-  @override
-  String get s2e87289ebd => 'Tapo';
-
-  @override
-  String get s834e3e8c5d => 'Apple Apple Apple';
-
-  @override
-  String get s11d8d321df => 'Apple Apple Apple';
-
-  @override
-  String get sceefb34afd => 'Apple Apple Apple';
-
-  @override
-  String get s24a447c14c => 'Apple Apple Apple';
-
-  @override
-  String get s14418a4f88 => 'Apple Apple Apple';
-
-  @override
-  String get saab3e952a6 => 'Apple Apple Apple';
-
-  @override
-  String get s7fbbfbf469 => 'Apple Apple Apple';
-
-  @override
-  String get s045b27e316 => 'Samsung Samsung Samsung';
-
-  @override
-  String get s2c0aede81e => 'Samsung Samsung Samsung';
-
-  @override
-  String get s7bd2005e15 => 'Google Google Google Google';
-
-  @override
-  String get sdcec96b503 => 'Google Google Google Google';
-
-  @override
-  String get s49960d413e => 'Google Google Google Google';
-
-  @override
-  String get s99e5776a78 => 'Google Google Google Google';
-
-  @override
-  String get sea3c963b09 => 'Sonsan Sonson Sonno Son Son Tillförs Son Sonen';
-
-  @override
-  String get s1e7b1fc81c =>
-      'Syn<blank> syns<blank> Smäktigt Föregående Synd-Sont-Son-Sänks-S';
-
-  @override
-  String get s7dc8f4cf35 => 'Synology';
-
-  @override
-  String get s161d78d79c => 'QNAP';
-
-  @override
-  String get s2512122220 => 'Broder';
-
-  @override
-  String get s127258a6f4 => 'Epson';
-
-  @override
-  String get s4e31401b4f => 'Canon';
-
-  @override
-  String get s933e21c819 => 'HP';
-
-  @override
-  String get sb309051c1f => 'HP';
-
-  @override
-  String get s6f339c5c37 => 'HP';
-
-  @override
-  String get s5f8734f6e4 => 'HP';
-
-  @override
-  String get sceb247a904 => 'Xiaomi';
-
-  @override
-  String get s10b7b68d6c => 'Huawei';
-
-  @override
-  String get s3692c1d592 => 'LG';
-
-  @override
-  String get se7d945b970 => 'LG';
-
-  @override
-  String get s5a5044b5df => 'Sony';
-
-  @override
-  String get sd92d7da7d5 => 'Sony';
-
-  @override
-  String get saa909391c3 => 'Philips';
-
-  @override
-  String get se39b8c84ab => 'Raspberry Pi';
-
-  @override
-  String get sec8808f414 => 'AVM';
-
-  @override
-  String get s0e225fb918 => 'TP-Link';
-
-  @override
-  String get sb34f35dce5 => 'ASUS';
-
-  @override
-  String get s7ea140809c => 'Netgear';
-
-  @override
-  String get s284be225b7 => 'Ubiquiti';
-
-  @override
-  String get sfbaeb6a17e => 'Ubiquiti';
-
-  @override
-  String get sa24e9ce91d => 'MikroTik';
-
-  @override
-  String get sa1b725d397 => 'Espressif';
-
-  @override
-  String get sdf96423738 => 'Amazon Amazon Amazon Amazon';
-
-  @override
-  String get sf253859589 => 'Amazon Amazon Amazon Amazon';
-
-  @override
-  String get sec4d80656d => 'Roku';
-
-  @override
-  String get s286e1cfb54 => 'Totalt';
-
-  @override
-  String sb9964cfb3b(String p0) {
-    return 'Effekt $p0';
-  }
-
-  @override
-  String get s4233362d60 => 'Vattenläck sensor';
-
-  @override
-  String get sfcb44be1a0 => 'Shelly';
-
-  @override
-  String get sc7df69ad6e =>
-      'Reläer, pluggar, dimmers, covers, energimätare (Pro 3EM) och sensorer. Hittas automatiskt, fungerar utan molnet.';
-
-  @override
-  String get sd7e123cd2f =>
-      'I Shelly-appen: öppna enheten → växel (inställningar) → Enhetsinformation → IP-adress. Eller i routerns enhetslista: namnet börjar med \"helt...\".';
-
-  @override
-  String get s9ad7b0076b => 'läcksensor · batteri';
-
-  @override
-  String get s815bfa19dc => 'Kontaktorkontroll';
-
-  @override
-  String get sb9209fee74 => 'lägg till endast om reläet används';
-
-  @override
-  String get s5f2b2ca5f5 => 'på nu';
-
-  @override
-  String get s67f64cd925 => 'av nu';
-
-  @override
-  String get s8b35cc884f => 'Metering';
-
-  @override
-  String get sa58e7aab49 => 'Kalibrera i Shelly-appen för att få en reglage';
-
-  @override
-  String get s78b6134b71 => 'batterienhet: uppdateringar när du vaknar';
-
-  @override
-  String get sd8dfb25d31 => 'Shelly Cloud (ingen bro)';
-
-  @override
-  String get s350215338a =>
-      'Styr Shellys genom Shelly-molnet från var som helst. Du behöver bara nyckeln från Shelly-appen.';
-
-  @override
-  String get s64037991c2 =>
-      'Shelly app → din profil → Användarinställningar → Auktoriseringsmolnnyckel → Få nyckel. Kopiera och klistra in den här.';
-
-  @override
-  String get s062b21969d =>
-      'Visas på samma sida under nyckeln (\"Server URI\").';
-
-  @override
-  String get sf30bb5d5e6 =>
-      'Vanligtvis inte behövs. Om ingenting finns: Shelly app → enhet → inställningar → Enhetsinformation → Enhets-ID. Separat flera med kommatecken.';
-
-  @override
-  String get s25399cd337 => 'Server';
-
-  @override
-  String get s246c7a46ff =>
-      'Shelly app → Användarinställningar → Tillstånd molnnyckel → Server URI.';
-
-  @override
-  String get s61a2d946a4 => 'Cloud Key';
-
-  @override
-  String get s9d468f5c64 =>
-      'Shelly app → Användarinställningar → Tillstånd molnnyckel → Få nyckel.';
-
-  @override
-  String get sf34c97592f => 'IKEA Dirigera';
-
-  @override
-  String get sb38eac6a87 =>
-      'IKEA smart hub och dess lampor och pluggar (Zigbee). Par med knappen på navet.';
-
-  @override
-  String get s4e92ab791e =>
-      'I IKEA Home smart app: Inställningar → Hub → IP-adress. Eller i routerns enhetslista: \"gw2-...\" eller \"dirigera\".';
-
-  @override
-  String get s73824fc3d0 =>
-      'Tryck på åtgärdsknappen på botten av Dirigera-navet en gång nu. Vänta här.';
-
-  @override
-  String get sda8d9bf1cd => 'Uttag';
-
-  @override
-  String get s0185672be7 =>
-      'Kameraanvändaren (vanligtvis admin) och lösenordet du ställer in när du aktiverar det.';
-
-  @override
-  String get s814f4633e3 =>
-      'Användaradmin. Imou: lösenordet är \"Safety-koden\" på kamerans etikett eller enhetens lösenord.';
-
-  @override
-  String get s4450807111 =>
-      'Kameraanvändaren i Reolink-appen (vanligtvis admin) och dess lösenord.';
-
-  @override
-  String get s1095c54819 =>
-      'Reolink app → kamera → Inställningar → Nätverk → Avancerade → Serverinställningar: slå på HTTP och RTSP. Batterikameror (Argus) stöds inte.';
-
-  @override
-  String get sc79a5fee2b =>
-      'Tapo app → kamera → Avancerade inställningar → Kamerakonto. Skapa en användare och lösenord där och skriv dem här (inte din Tapo molninloggning).';
-
-  @override
-  String get s174e06b97c =>
-      'Skapa först ett kamerakonto: Tapo app → kamera → Avancerade inställningar → Kamerakonto.';
-
-  @override
-  String get s21da6fb5dc =>
-      'Användaradmin; lösenordet är 6-brevsverifieringskoden på kamerans etikett.';
-
-  @override
-  String get s1866ef6dc8 =>
-      'Ezviz app → kamera → Inställningar → LAN Live View / RTSP: slå på den (om alternativet finns).';
-
-  @override
-  String get s70625d8bbe =>
-      'Användaren och lösenordet för kameran i eWeLink-appen (RTSP/ONVIF). På en dual-lens-modell kommer båda linserna från samma enhet.';
-
-  @override
-  String get s1a3c354399 =>
-      'eWeLink app → kamera → Inställningar: slå på RTSP/ONVIF och ange en användare och lösenord för det (om alternativet finns).';
-
-  @override
-  String get s1c2786e15f =>
-      'Kameraanvändaren och lösenordet (ofta admin). ONVIF kan behöva aktiveras i kamerainställningarna.';
-
-  @override
-  String get s32270de47a => 'Säkerhetskamera';
-
-  @override
-  String get s652458eb87 =>
-      'Hikvision, Dahua, Reolink, Tapo, Ezviz, Sonoff eller någon ONVIF / RTSP-kamera. Bild på ett kort, live video hemma.';
-
-  @override
-  String get se8ea97c5eb =>
-      'I kameraappen (enhetsinformation) eller routerns enhetslista.';
-
-  @override
-  String get s1577068729 => 'Kamera kamera';
-
-  @override
-  String get seeb6c38c8e => 'Kamera';
-
-  @override
-  String s83d937ae6b(String p0, String p1) {
-    return 'Stream $p0/$p1 (egen lins eller kanal)';
-  }
-
-  @override
-  String get s136c6f0d2b => 'Bild på kortet, live video hemma';
-
-  @override
-  String get s2101774157 => 'Live video hemma (ingen bild bort)';
-
-  @override
-  String sd63d34bfe9(String p0) {
-    return 'Kan inte läsa YAML: $p0';
-  }
-
-  @override
-  String sc5c9e5e2fc(String p0) {
-    return '\"$p0\" använder en seriell port (USB / RS485) - du behöver en RS485 → TCP gateway.';
-  }
-
-  @override
-  String get s77bf3b424f => '0=Off;1=On';
+  String get scc0cccf89d => 'Av';
 
   @override
   String get s4cbe24240f => 'På';
 
   @override
-  String get s33831dd49f => 'Av';
+  String get s4e1ea0bc65 => 'Vilar';
 
   @override
-  String s69135546c8(String p0) {
-    return '$p0 – mål';
+  String get se5b2692112 => 'TV kan inte nås';
+
+  @override
+  String s095ca83913(String p0) {
+    return '$p0 kort tillagda';
   }
 
   @override
-  String sd88c13e972(String p0) {
-    return '\"$p0\" var hoppade - lägg till dem för hand.';
+  String get sd53b0c4edc => 'Airthings övervakar';
+
+  @override
+  String sc401e05b53(String p0) {
+    return 'Lägg till $p0 kort';
   }
 
   @override
-  String get sceebf690e3 =>
-      'Inget Modbus TCP-nav som finns i YAML (modbus: ... typ: tcp, värd: ...).';
+  String get s212e35a61b => 'Kunde inte lista enheterna';
 
   @override
-  String get sb662db81d8 =>
-      'Adressen ser ofullständig. Använd fyra nummer med prickar, t.ex. 192.168.1.50.';
+  String get s039683f4a5 =>
+      'Det finns inga bildskärmar i ditt konto. Lägg till en i Airthings-appen först.';
 
   @override
-  String s738ecfe2bc(String p0) {
-    return ' menade du $p0?';
+  String get sdfff64e4c3 => 'via Hub';
+
+  @override
+  String get scb28b11e70 => 'Ny vy';
+
+  @override
+  String get s1f9799af4e => 't.ex. stuga';
+
+  @override
+  String get s3a13f9d077 => 'Rename Dashboard';
+
+  @override
+  String get sa5bf37213b => 'Radera Dashboard?';
+
+  @override
+  String s10671afc00(String p0, String p1) {
+    return '\"$p0\" och dess $p1 kakel kommer att raderas.';
   }
 
   @override
-  String s06e738bf27(String p0) {
-    return 'Det här är ingen hemnätsadress (de börjar oftast med 192.168.).$p0';
+  String get sc1845eb440 => 'Radera';
+
+  @override
+  String s897761b5f4(String p0) {
+    return 'Dashboard \"$p0\" raderad';
   }
 
   @override
-  String sbae99909c4(String p0) {
-    return 'Obs!: den här enheten är på $p0.x - enheten kan vara på ett annat Wi-Fi.';
-  }
+  String get scc5cf9957d => 'Välj kakeltyp';
 
   @override
-  String get sc20488a1f0 => 'Tuya / Powerant (lokal)';
+  String get s7cf6340503 => 'Ny enhet med färdiga kort';
 
   @override
-  String get sc849342970 => 'Tuya moln region';
+  String get se6ca707cf3 => 'Lättast: Shelly, ESP32-CAM, Home Assistant';
 
   @override
-  String get s49c53b561d =>
-      'Endast för att hämta nycklarna. vanligtvis Centraleuropa i Europa.';
+  String get s0789f5f14f => 'DASHBOARDS';
 
   @override
-  String get s7cf3dec993 => 'Centraleuropa';
+  String get sedb7b77645 => 'Alla';
 
   @override
-  String get seead5e286d => 'Västeuropa';
-
-  @override
-  String get s081e2e881d => 'Västra Amerika';
-
-  @override
-  String get s5b9587ae93 => 'Östra Amerika';
-
-  @override
-  String get sc5401d63d5 => 'Kina Kina Kina';
-
-  @override
-  String get sb6786f25b9 => 'Indien Indien Indien';
-
-  @override
-  String get scd78f804bb => 'Singapore';
-
-  @override
-  String get s61b325e35c => 'Access ID (iot.tuya.com)';
-
-  @override
-  String get s925e495479 =>
-      'Access ID för ditt eget molnprojekt. behövs bara för att hämta nycklarna.';
-
-  @override
-  String get sb07c0dad24 => 'Access Secret';
-
-  @override
-  String get s45bcef5c09 =>
-      'Access Secret of your own cloud project. lagras endast på den här enheten / i ditt eget valv.';
-
-  @override
-  String get s295cf46412 => 'lokala nycklar';
-
-  @override
-  String get sf58ae26c82 =>
-      'Anordningarnas lokala nycklar (träffas automatiskt).';
-
-  @override
-  String get s0c1a9d4ab9 => 'Håll anslutna (instant updates)';
-
-  @override
-  String get s121fb2c5fc =>
-      'Enheten rapporterar ändringar på en gång. Många Tuya-enheter tillåter endast en anslutning - använd endast på en enhet.';
-
-  @override
-  String get s65514aef3c => 'Enhet Id';
-
-  @override
-  String get se42a336655 => 'Tuya-enheten id.';
-
-  @override
-  String get sff3cf64925 => 'DP-nummer';
-
-  @override
-  String get sfec9b1a643 => 'Datapunkt nummer (1 = ström på de flesta).';
-
-  @override
-  String get see24ec5d84 => 'Skala';
-
-  @override
-  String get s2fa7dedd1b => 't.ex. 0.1 när enheten rapporterar tionde.';
-
-  @override
-  String get se30676cace => 'Datapoängnummer.';
-
-  @override
-  String get seb4c438a42 => 'Värde ({{value}})';
-
-  @override
-  String get s033b6b8c6c => 'Värde att skicka; {{value}} = kortets värde.';
-
-  @override
-  String get s784e702cc1 => 'Värdetyp';
-
-  @override
-  String get safadcc12c8 => 'På/off för switchar, nummer för ljusstyrka.';
-
-  @override
-  String get s8c8b6cb6d4 => 'On/off';
-
-  @override
-  String get s695fe25f79 => 'Nummernummer';
-
-  @override
-  String get s34900f9d58 => 'Texttext';
-
-  @override
-  String s9abc332fb8(String p0) {
-    return 'Tuya enhet $p0 är inte i denna anslutning';
-  }
-
-  @override
-  String get s8b84454b87 =>
-      'Tuya: Enhetens lokala nyckel saknas – hämta nycklarna igen';
-
-  @override
-  String get s764b6993c6 => 'Tuya: Enhetens IP-adress saknas';
-
-  @override
-  String get sae56ce66d4 => 'anslutning stängd';
-
-  @override
-  String get sb6a87586a8 => 'Tuya: fel lokal nyckel eller protokollversion';
-
-  @override
-  String get s2b1a0a5a05 => 'Inget svar från enheten';
-
-  @override
-  String sc4fdd8a4a3(String p0) {
-    return 'Tuya $p0: Inget svar på handskakan - fel lokal nyckel eller protokollversion?';
-  }
-
-  @override
-  String get sa291ffb35a => 'handshake misslyckades';
-
-  @override
-  String get se2a4cc6409 => 'Tuya: fel lokal nyckel';
-
-  @override
-  String get s7b8131a396 => 'inte finns på hemnätverket';
-
-  @override
-  String get s210907044a => 'Powerant / Tuya / Smart Life';
-
-  @override
-  String get sa8d1873781 =>
-      'Plugs, switchar, dimmers, lampor och sensorer. Kontrolleras på ditt hemnätverk utan molnet.';
-
-  @override
-  String get s3530ee658b =>
-      'Ditt eget gratis Tuya-utvecklarprojekt: iot.tuya.com → Cloud → Skapa Cloud Project (datacenter: Centraleuropa) → Enheter → Link App-konto → skanna QR-koden med Smart Life / Tuya / Powerant-appen. Access ID är på projektets översiktssida.';
-
-  @override
-  String get s39d3fce33c =>
-      'Från samma översiktssida. lagras endast på den här enheten (och ditt eget krypterade valv) - aldrig på Molaplans servrar.';
-
-  @override
-  String get s12e2e8638b =>
-      'Projektets datacenter. Vanligtvis eu (Central Europe) i Europa. Västeuropa = weu.';
-
-  @override
-  String get sfc77cb8d11 =>
-      'Endast om inga enheter finns: app → enhet → penna → Enhetsinformation → Virtuellt ID.';
-
-  @override
-  String get s7938176623 => 'Tuya med en lokal nyckel';
-
-  @override
-  String get sf11f3cf10e => 'Om du redan vet enhets-ID och dess lokala nyckel.';
-
-  @override
-  String get s3dcff9c852 =>
-      'Från routerns enhetslista (ofta kallad ESP_ eller wlan0).';
-
-  @override
-  String get s3cc607ceba =>
-      'En 16-karaktärsnyckel. Få det från ett Tuya-utvecklare-projekt, eller helt enkelt välja \"Powerant / Tuya / Smart Life\".';
-
-  @override
-  String get s4105c416c6 =>
-      'Fylls i automatiskt när enheten hittades på nätverket.';
-
-  @override
-  String get s39dfcd0595 =>
-      '3.3, 3.4 eller 3.5. Upptäcks automatiskt när enheten hittades på nätverket.';
-
-  @override
-  String s991d0c0cdc(String p0) {
-    return 'kanal $p0';
-  }
-
-  @override
-  String get sc8b1b10046 => 'Färgtemperatur';
-
-  @override
-  String get s0ceafaa97c => 'Energi energi';
-
-  @override
-  String get sdb8ea154be => 'Spänning';
-
-  @override
-  String get s37f61ae645 => 'Nuvarande';
-
-  @override
-  String get s5b44cbe9c0 => 'Hem';
-
-  @override
-  String get s5a40f12b6a => 'Lägg till';
-
-  @override
-  String get s58aaa6dade => 'Utsikten är låst';
-
-  @override
-  String get sdf1af3409c => 'Lås upp';
-
-  @override
-  String get s4629a1695c => 'Menyn';
-
-  @override
-  String get s41c3cebc48 => 'Lägg till enhet';
-
-  @override
-  String get scd04aa5d9e => 'Redigera utsikten';
-
-  @override
-  String get sf98121cd3d => 'Rum foto';
-
-  @override
-  String get s49de879696 => 'Energi';
+  String get s78d94155f1 => 'Anslutningar';
 
   @override
   String get se9ca7cb470 => 'Automatiseringar';
 
   @override
+  String get s798f7b2876 => 'Smart uppvärmning';
+
+  @override
+  String get s356d822497 => 'av';
+
+  @override
   String get s41bb837a83 => 'Meddelanden och påminnelser';
+
+  @override
+  String get s49de879696 => 'Energi';
 
   @override
   String get s1da81fd6c3 => 'Inställningar';
 
   @override
-  String get s365492a7d0 => 'Lås utsikten';
+  String get s59622d792b => 'Byt namn';
 
   @override
-  String get sb2f38410ee =>
-      'Enheter kan fortfarande styras, men redigering, inställningar och lägga till enheter är dolda. Lås upp från växelikonen.';
+  String get sfb3e3c456c => 'Delete Dashboard';
 
   @override
-  String get se497d27174 => 'PIN-kod (tillval)';
+  String get s2acab0eccd => 'Klar';
 
   @override
-  String get sd21180a166 => 'Utan en PIN en kran låser upp.';
+  String get s187d328bb1 => 'Redigera';
+
+  @override
+  String get scdfd80f963 => 'Lägg till kort';
+
+  @override
+  String get s5a40f12b6a => 'Lägg till';
+
+  @override
+  String get s71af34b8e9 => 'Tom vy';
+
+  @override
+  String get s6a210970eb =>
+      'Din enhet plattor visas här: temperaturer, växlar, kameror och genvägar. Börja med att lägga till en enhet.';
+
+  @override
+  String get s4229fb4103 => 'Lägg till din första enhet';
+
+  @override
+  String get s41c3cebc48 => 'Lägg till enhet';
+
+  @override
+  String get s147f47be4c => 'Lägg till kort';
+
+  @override
+  String get sf67e0d5752 => 'Radera kortet?';
+
+  @override
+  String s97f46743e0(String p0) {
+    return 'Tile \"$p0\" raderad';
+  }
+
+  @override
+  String get sc3abd09cd9 => 'Anpassad färg';
+
+  @override
+  String get s10e7cef8c1 => 'Hue Hue';
+
+  @override
+  String get s59b65e3322 => 'Mättnad';
+
+  @override
+  String get s750ed8d878 => 'Ljushet';
 
   @override
   String get s809d0eb368 => 'Avbryt';
 
   @override
-  String get sd86ff8e28a => 'Lås';
+  String get sa39e78050c => 'Välj Välj Välj Välj';
 
   @override
-  String get s872f93a062 => 'Lås upp?';
+  String get sc51b1e0dc0 => 'Vad vill du lägga till?';
 
   @override
-  String get s0cd88e27f4 => 'Redigering och inställningar blir synliga igen.';
+  String get s67584c9abf => 'Enhet';
 
   @override
-  String get sa5283191be => 'Lås upp';
+  String get s38f5b2ef26 =>
+      'Shelly, Sonoff, Hue, kamera, värmepump... Söker ditt hemnätverk automatiskt.';
 
   @override
-  String get sdfc012fb4e => 'PIN-kod';
+  String get s3b56b2cb8d => 'Kort';
 
   @override
-  String get sca710b76b5 => 'Fel PIN-kod';
+  String get sfc846c4cc5 =>
+      'Elpris, väder, kamera, mätning, meddelande eller kommando – ingen ny enhet behövs.';
 
   @override
-  String sa0c07ccd04(String p0) {
-    return 'Du har den senaste versionen ($p0).';
+  String get s1b359d69e2 => 'Skapa automatisering';
+
+  @override
+  String get sf00aa23cf6 =>
+      'När... gör: lampor vid solnedgången, en läckagevarning, de billigaste timmarna, skript och scener.';
+
+  @override
+  String get s3c98732a8c => 'Mätare';
+
+  @override
+  String get sd5cb601286 => 'Tailscale (enkel VPN)';
+
+  @override
+  String get s0aa851cfb4 =>
+      'Gratis för personligt bruk. Din telefon och hem fungerar som ett nätverk - Molaplan arbetar med samma adresser som hemma.';
+
+  @override
+  String get s444ca5d58f =>
+      'Bra om du har en alltid-på PC, Raspberry Pi eller Home Assistant hemma.';
+
+  @override
+  String get sec7b4d1d7a =>
+      'Skapa ett Tailscale-konto hos tailscale.com (Google, Microsoft eller Apple sign-in).';
+
+  @override
+  String get s178c57446d =>
+      'Installera Tailscale på den alltid på enheten hemma. I Home Assistant: Inställningar → Add-ons → Tailscale.';
+
+  @override
+  String get s4faf83aa13 =>
+      'Slå på \"subnet router\" där och ange ditt hemnätverk, t.ex. 192.168.1.0/24. Sedan är alla dina hemenheter tillgängliga.';
+
+  @override
+  String get s721719c0e1 =>
+      'Godkänn rutten i Tailscale adminkonsolen (Machines → enhet → Redigera ruttinställningar).';
+
+  @override
+  String get s921f981bda =>
+      'Installera Tailscale-appen på din telefon och logga in med samma konto. Byt VPN på.';
+
+  @override
+  String get s8ae7e7b2a4 =>
+      'Molaplan använder samma adresser som hemma. Inget annat att ändra.';
+
+  @override
+  String get se92301ff0a => 'https://tailscale.com/download';
+
+  @override
+  String get sf6270ae66c => 'https://tailscale.com/kb/1019/subnets';
+
+  @override
+  String get s57f0b61334 => 'WireGuard (router VPN)';
+
+  @override
+  String get sb9bb49ab92 =>
+      'Om din router stöder WireGuard (t.ex. ASUS, FRITZ!Box, UniFi, OpenWrt), ansluter din telefon till hemnätverket direkt.';
+
+  @override
+  String get s986d264604 =>
+      'Bra om routern har WireGuard och din anslutning har en offentlig IP-adress.';
+
+  @override
+  String get sf24b16dc12 =>
+      'Öppna routerns inställningar och leta efter \"VPN-server\" → \"WireGuard\".';
+
+  @override
+  String get s1e5d1eb832 =>
+      'Aktivera servern och lägg till en ny enhet (peer) för telefonen.';
+
+  @override
+  String get s8e0252a2b4 =>
+      'Routern visar en QR-kod. Installera WireGuard-appen på telefonen och skanna den.';
+
+  @override
+  String get s4b3740b727 =>
+      'Kontrollera att \"tillåtna IP-filer\" inkluderar hemnätverket (t.ex. 192.168.1.0/24).';
+
+  @override
+  String get sd2e8523b28 =>
+      'Byt VPN på i telefon – Molaplan fungerar som hemma.';
+
+  @override
+  String get saa17c5a456 => 'https://www.wireguard.com/install/';
+
+  @override
+  String get se5960424ea =>
+      'Många mobila bredband (4G/5G hem internet) anslutningar har ingen offentlig IP (CGNAT) och WireGuard sedan inte kan nås från utsidan. Använd Molaplan fjärråtkomst eller Tailscale istället.';
+
+  @override
+  String get sab2dfe387b => 'Home Assistant Cloud (Nabu Casa)';
+
+  @override
+  String get s2e0586b37e =>
+      'En betald månatlig prenumeration från tillverkarna av Home Assistant. ger en säker fjärradress till Home Assistant.';
+
+  @override
+  String get s534e7ec95e => 'Bra om dina enheter redan finns i Home Assistant.';
+
+  @override
+  String get s0f7533967d =>
+      'In Home Assistant: Inställningar → Home Assistant Cloud → starta rättegången eller logga in.';
+
+  @override
+  String get s2e60dd8178 => 'Vrid \"fjärrkontroll\" på.';
+
+  @override
+  String get s7a73024451 =>
+      'Kopiera fjärradressen, som ser ut: https://abcd1234.ui.nabu.casa';
+
+  @override
+  String get sd4873612f7 =>
+      'I Molaplan: Anslutningar → Home Assistant → ändra adressen till fjärradressen. Token förblir densamma.';
+
+  @override
+  String get s15223b0e32 => 'Home Assistant plattor fungerar nu överallt.';
+
+  @override
+  String get s9b3201b1fa => 'https://www.nabucasa.com/';
+
+  @override
+  String get s60e7067815 =>
+      'Detta täcker endast enheter som styrs via Home Assistant. För andra (Modbus, kameror direkt) använder Molaplan fjärråtkomst eller en VPN.';
+
+  @override
+  String get s8e0d0a2d4e => 'Cloud MQTT (t.ex. HiveMQ Cloud)';
+
+  @override
+  String get sd0fff65292 =>
+      'Enheter och Molaplan pratar genom samma molnserver. HiveMQ Cloud har en gratis nivå som är tillräckligt för hemmabruk.';
+
+  @override
+  String get s7350b9f98b =>
+      'Bra för MQTT-enheter: Tasmota, ESPHome, Shelly, Zigbee2MQTT, dina egna ESP-kort.';
+
+  @override
+  String get s59b3c7d246 =>
+      'Skapa ett gratis konto på console.hivemq.cloud och skapa ett gratis kluster (gratis / serverless).';
+
+  @override
+  String get s04fe436d1e =>
+      'Under \"Access Management\" skapa ett användarnamn och lösenord.';
+
+  @override
+  String get sdf0075eab5 =>
+      'Kopiera serveradressen (t.ex. abcd.s1.eu.hivemq.cloud). Hamnen är 8883 med TLS på.';
+
+  @override
+  String get s9e9be6fc33 =>
+      'Sätt den här servern, användarnamn och lösenord i dina enheters MQTT-inställningar (TLS på).';
+
+  @override
+  String get s90f1cb151b =>
+      'I Molaplan: Anslutningar → MQTT → adress, port 8883, TLS på, användarnamn och lösenord. Done - fungerar överallt.';
+
+  @override
+  String get s77bf29f2f5 => 'https://console.hivemq.cloud/';
+
+  @override
+  String get safd2cd2b7b =>
+      'Välj ett starkt lösenord: alla som vet att det kan styra dina enheter.';
+
+  @override
+  String get s9557c0ef28 => 'Fjärråtkomstguider';
+
+  @override
+  String get sf4d7957b78 => 'Lättast: Molaplan fjärråtkomst';
+
+  @override
+  String get s8032085166 =>
+      'Inga konton, inga routerinställningar. Du behöver bara en tablett eller dator som stannar hemma.';
+
+  @override
+  String get sd9b48e01fc => 'Andra sätt';
+
+  @override
+  String get sfe551fd431 => 'Enhetsguider';
+
+  @override
+  String get sbd2f94e7a4 => 'Värmepump (serviceport/ESPHome)';
+
+  @override
+  String get sa35e37b4b4 =>
+      'Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Hittades automatiskt.';
+
+  @override
+  String get sb8934a5835 => 'Elförbrukning';
+
+  @override
+  String get s5409dc748f => 'Räknas inte';
+
+  @override
+  String get sf0bbcc217b => 'Hela fastigheten';
+
+  @override
+  String get s0ad1897b28 => 'Enhetsmätare';
+
+  @override
+  String get s99268b5a6c =>
+      'Hela fastigheten = huvudmätare. Enhetsmätare = en enhet (visas som en del av totalen, räknas aldrig två gånger).';
+
+  @override
+  String get se1174af557 => 'Del av mätare (valfritt)';
+
+  @override
+  String get se12fc46923 => 'Ingen';
+
+  @override
+  String get s9773c92c92 => 'Energi och kostnader';
+
+  @override
+  String get s43dead6994 => 'Elavtal';
+
+  @override
+  String get sef4d24cdd4 => 'Dag';
+
+  @override
+  String get sa62dd794ce => 'Månad';
+
+  @override
+  String get s6b2ebe5aca => 'Välj dina mätare först';
+
+  @override
+  String get sde41f2fac9 =>
+      'Markera nedan vilken mätare mäter hela webbplatsen och vilka enstaka enheter.';
+
+  @override
+  String get s4ad000d885 => 'inkl. moms';
+
+  @override
+  String get s9e214b6e88 => 'exkl. moms';
+
+  @override
+  String get s73771d252c => 'Uppmätta enheter totalt';
+
+  @override
+  String get s22d03356a9 => 'Övrig förbrukning';
+
+  @override
+  String get s48b08c5f5a => 'Fasta avgifter (el + elnät)';
+
+  @override
+  String get s286e1cfb54 => 'Totalt';
+
+  @override
+  String get s2e8700e0cf =>
+      'En del av användningen hade inget pris (punktpriset saknades).';
+
+  @override
+  String get sbbd89fbc05 =>
+      'Användning spelas in medan appen är öppen (hela tiden på hemmatabletten).';
+
+  @override
+  String get s64382718ff => 'Mätare';
+
+  @override
+  String get s9a3a0d414e =>
+      'Inga kraft- eller energikort (W, kW, Wh, kWh). Lägg till t.ex. en Shelly-mätare.';
+
+  @override
+  String get sdb0484d728 => 'Sparat';
+
+  @override
+  String get se80021e22a =>
+      'Kopiera priserna från din räkning. Skriv dem med eller utan moms - kostnaderna visas båda sätten.';
+
+  @override
+  String get sfb62156afe => 'Prisområde';
+
+  @override
+  String get s1762fb70a7 => 'Energi';
+
+  @override
+  String get s2ed3e3cf28 => 'Spotpris';
+
+  @override
+  String get s5d1dd0f675 => 'Fast';
+
+  @override
+  String get sedb38796fb => 'Natt/dag';
+
+  @override
+  String get s0774cea15a => 'Påslag';
+
+  @override
+  String get s63370fe61a => 'Elpris';
+
+  @override
+  String get s50a7dd89c6 => 'Dagel';
+
+  @override
+  String get sdeaa5ad900 => 'Nattel';
+
+  @override
+  String get se93c7bcd86 => 'Fast avgift (el)';
+
+  @override
+  String get sb7937e4b91 => 'Elnät';
+
+  @override
+  String get s0f89840226 => 'Enkeltariff';
+
+  @override
+  String get sa768f1b352 => 'Elnätspris';
+
+  @override
+  String get s9e5dde22cb => 'Elnät dag';
+
+  @override
+  String get sdf7a4fd2e3 => 'Elnät natt';
+
+  @override
+  String get s4df0aee067 => 'Fast avgift (elnät)';
+
+  @override
+  String get s4c59c90975 => 'Natten börjar';
+
+  @override
+  String get s84decd042b => 'Natten slutar';
+
+  @override
+  String get s90c26f1e37 => 'Skatter';
+
+  @override
+  String get s222cb348a0 => 'Energiskatt';
+
+  @override
+  String get sbe412dcaa6 => 'Moms';
+
+  @override
+  String get s162a85c6ef => 'Spara';
+
+  @override
+  String get s43b55c13c5 => 'Sök misslyckades. kontrollera anslutningen.';
+
+  @override
+  String get s171834ca33 => 'Hemmets plats';
+
+  @override
+  String get s6f6c2fe37a =>
+      'Väderprognosen (Open-Meteo) hjälper förvärmning före kallt väder.';
+
+  @override
+  String get s9593939a4c => 'Ta bort';
+
+  @override
+  String get s5f663978d6 => 'Ort';
+
+  @override
+  String get s7be6460c54 => 't.ex. Tammerfors';
+
+  @override
+  String get s1576b70590 => 'Elanvändning, kostnader, kontrakt och väder.';
+
+  @override
+  String get sa6212aaeb4 => 'Plats';
+
+  @override
+  String get s463074e5cc => 'App endast';
+
+  @override
+  String get seb8b8d2adf => 'Fungerar endast i appen eller via en hemmabro';
+
+  @override
+  String get s3a5c21004e => 'Offline';
+
+  @override
+  String get sbc7a87e591 => 'Kunde inte få priser - retrying';
+
+  @override
+  String get s3f0837ec84 => 'Kunde inte få vädret - förtrytning';
+
+  @override
+  String get sedeaf26f8a => 'ntfy meddelande gräns nådde';
+
+  @override
+  String get s349ca716f2 => 'Inget svar från enheten';
+
+  @override
+  String get sd2b99f6417 => 'Styrs inte under dagen';
+
+  @override
+  String get s68cbe596f8 => 'Inloggningen har gått ut';
+
+  @override
+  String get s599357f47b => 'Inget internet';
+
+  @override
+  String get s74fa2d56aa => 'Modbus är avstängd';
+
+  @override
+  String get s156aa7eeb3 => 'Enheten svarar inte';
+
+  @override
+  String get sbf2cfbb102 => 'Fel enhet id?';
+
+  @override
+  String get s9be06479ff => 'Lockout';
+
+  @override
+  String get s613938b0b3 => 'Ingen adress';
+
+  @override
+  String get s252d8628c7 => 'Upptagen (HA?)';
+
+  @override
+  String get s0e3a6bafbf => 'Tjänst som inte svarar';
+
+  @override
+  String get s7abcbf1107 => 'Servern hittades inte';
+
+  @override
+  String get sca533b6f25 => 'Hembryggan svarar inte';
+
+  @override
+  String get s96ad0dc252 => 'Värde som inte finns på enheten';
+
+  @override
+  String get s61cdd7287b => 'Inställning saknas';
+
+  @override
+  String get s57d0940253 => 'Säkerhetsfel';
+
+  @override
+  String get sfec025279e => 'Enheten är offline';
+
+  @override
+  String get s1ea16fc636 => 'Kolla nu';
+
+  @override
+  String get sbaf1a2b35e => 'Inget nätverk';
+
+  @override
+  String get s3f750ce1d4 =>
+      'Den här enheten är inte på Wi-Fi och mobildata fungerar inte. Kort visar de sista värden som mottagits.';
+
+  @override
+  String get s542a3e9332 => 'Wi-Fi har inget internet';
+
+  @override
+  String get sba13ded915 =>
+      'Enheter på detta Wi-Fi-arbete; molntjänster och fjärråtkomst gör det inte.';
+
+  @override
+  String get se24bfd1257 => 'Fjärrserver som inte svarar';
+
+  @override
+  String get s8584be9da3 =>
+      'Internet fungerar, men Molaplans fjärrserver svarar inte hemma allt fungerar; fjärråtkomst kommer tillbaka av sig själv.';
+
+  @override
+  String get s1e03ade992 => 'Anslutning OK';
+
+  @override
+  String get s0fc5f4d788 =>
+      'Re-checkade var 15: e tills det fungerar; detta meddelande försvinner sedan av sig själv.';
+
+  @override
+  String get sf4caddf894 => 'Avancerat';
+
+  @override
+  String get s3e05e0efab => 'Wi-Fi/Ethernet-adresser';
+
+  @override
+  String get s6b59e217ba => 'Ingen';
+
+  @override
+  String get s3b7c55c4fc => 'Kontrollerad';
+
+  @override
+  String get sc26c52235c =>
+      'Du är borta och hembron svarar inte. Hemnätverksenheter kan inte styras nu.';
+
+  @override
+  String get s0fc1c9f296 =>
+      'Du är borta. Hemnätverksenheter fungerar på distans endast genom en hembro.';
+
+  @override
+  String get se50ed56454 => 'Fjärråtkomst';
+
+  @override
+  String get sc5f54cf3c8 => 'Fyll i nyckeln och servern.';
+
+  @override
+  String get sb26dad8f73 => 'Inga enheter i molnet med denna nyckel.';
+
+  @override
+  String s2c6ce95ec2(String p0) {
+    return '$p0 fungerar nu genom Shelly Cloud.';
   }
 
   @override
-  String get sa118d84538 =>
-      'Kunde inte söka efter uppdateringar just nu. Kontrollera internetanslutningen och försök igen senare.';
-
-  @override
-  String s9f2b092d8c(String p0) {
-    return 'Version $p0 är tillgänglig';
+  String s5629901cc4(String p0) {
+    return 'Kontrollera $p0 hemifrån';
   }
 
   @override
-  String sa5133b2c4a(String p0) {
-    return 'Du har version $p0.';
+  String get s064abc90af =>
+      'Enheten byts till Shelly Cloud. Alla dess kanaler, namn och kort stannar. Key: Shelly app → din profil → Användarinställningar → Auktoriseringsmolnnyckel.';
+
+  @override
+  String get s61a2d946a4 => 'Cloud Key';
+
+  @override
+  String get sf16961256b => 'Server (Server URI)';
+
+  @override
+  String s28e10c6870(String p0) {
+    return 'Vilken av dessa är $p0?';
   }
 
   @override
-  String get se099b5797e => 'Vad är nytt:';
+  String get s09f5da65e0 => 'Byt till Shelly Cloud';
 
   @override
-  String get s9315c3df42 => 'Hoppa över denna version';
+  String get s6b536de0c8 =>
+      'Genom din hembro: lampor, pluggar, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, kamera stillbilder';
 
   @override
-  String get sdd5c8f0a9d => 'Senare';
+  String get s082c8c6278 => 'Rakt över internet: ntfy kommandon, elpris, väder';
 
   @override
-  String get sfbf490ec3f => 'Uppdatera';
+  String get s5a419e551c => 'Samma vyer och kort som ditt kontos andra enheter';
 
   @override
-  String get s5a94ef2af1 => 'Nedladdningen var skadad';
+  String get sa8f5c5c719 =>
+      'Utan en hembro kan webbläsaren inte styra hem-nätverksenheter';
 
   @override
-  String get s81e4325573 => 'Ladda ner misslyckad';
+  String get sb1c4acea71 =>
+      'App bara: enhetssökning, Bluetooth, RTSP-video, som fungerar som hemmabro';
 
   @override
-  String get s4b1d3df588 =>
-      'Filkontrollsumman matchade inte, så ingenting installerades. Försök igen på ett ögonblick.';
+  String get s2842696c47 => 'Webbläsarversionen är en fjärrkontroll';
 
   @override
-  String get s0c463c7069 =>
-      'Kontrollera internetanslutningen och försök igen. Du kan också ladda ner uppdateringen från releasesidan.';
+  String get s1cbac3d12d =>
+      'Här kontrollerar du bara enheter som kan nås på distans: genom en hembro (Molaplan på en dator, en Android-enhet eller en Molaplan Bridge), ntfy eller en molntjänst. För full lokal kontroll behöver du Molaplan-appen.';
 
   @override
-  String get s5dd4c9671f => 'Öppen release page';
+  String get scc4366802a =>
+      'Apparna är på väg till appbutikerna (Google Play, Microsoft Store). Redan nu: om du har en äldre Android-enhet kan vi installera Molaplan på den som en tjänst, eller så skickar vi installationsfilen (APK) som du kan installera själv om du kan.';
 
   @override
-  String s8f5be45ff1(String p0) {
-    return 'Installera $p0 - appen startar om ett ögonblick.';
-  }
+  String get saffec3d1c7 => 'Beställ PC-appen eller en färdig Android-enhet';
 
   @override
-  String sf207ef6dc2(String p0) {
-    return 'Installera misslyckade: $p0';
-  }
+  String get sb2b9982ba7 => 'Be om installation som tjänst';
 
   @override
-  String get s49ddc3c3b6 => 'Uppdatering nedladdad';
+  String get s02179b814a => 'Ladda ner installationsfilen';
 
   @override
-  String s04a05bb8fc(String p0) {
-    return 'Filen verifieras och sparas:\n$p0\n\nFör att använda den:\nNära Molaplan.\nExtrahera zip över den gamla Molaplan-mappen (eller i en ny mapp).\n3. Start molaplan.exe. Dina inställningar hålls.';
-  }
+  String get see46457ffd =>
+      'Ladda ner den senaste Android-installationsfilen (APK). Öppna filen i telefonen eller surfplattan. Om Android frågar, tillåt installation från okända källor (Inställningar → säkerhet).';
 
   @override
-  String get s1dd246ec69 => 'Versionssida';
+  String get s167c125f07 => 'Ladda ner';
 
   @override
-  String get s0f07b20d45 => 'Öppen zip';
-
-  @override
-  String get s6e1ebc8baa => 'Öppen mapp';
-
-  @override
-  String get s6d9de3f94b => 'Installationen fortsatte inte';
-
-  @override
-  String get s25a6f00343 =>
-      'Om du annullerade det själv, allt är bra. Om Androids installationsfönster inte visas, tryck på Prova igen.';
+  String get s2bf22ca429 =>
+      'Den här enheten kan inte nås från webbläsaren. Det fungerar i Molaplan-appen, eller härifrån när en hemmabro är på.';
 
   @override
   String get s1e593aeca2 => 'Stäng';
 
   @override
-  String get s200542b930 => 'Försök igen';
+  String get sc6e6f17ad4 =>
+      'Webbläsarversion: du styr fjärrstyrbara enheter. Full kontroll med appen - mer ›';
 
   @override
-  String get s29e92898c6 =>
-      'Bekräfta installationen i Android-fönstret eller meddelandet.';
+  String get s2b463f47ba => 'Gömd';
 
   @override
-  String get s48093a1369 => 'Bekräfta uppdatering';
+  String get sbed5ab99f6 => 'Ditt hems enheter och status i en vy';
 
   @override
-  String s6d50eeae10(String p0) {
-    return 'Uppdatera $p0 väntar på din bekräftelse. Tryck på Open-installation (eller meddelandet \"Molaplan-päivitys\").';
+  String get s1ffc6e9e18 =>
+      'Kontrollera ljus, pluggar, värmepump och larm med stora kort';
+
+  @override
+  String get sb18bf27c69 =>
+      'Samma vy på en PC, tablett, telefon och i webbläsaren';
+
+  @override
+  String get sdc86a6f82c =>
+      'Enhetslösenord är krypterade - bara dina enheter kan öppna dem';
+
+  @override
+  String get s3865b9c032 => 'Använd utan konto';
+
+  @override
+  String get sdf7bb58964 =>
+      'Inställningarna stannar i den här webbläsaren. Du kan skapa ett konto senare och flytta dem dit.';
+
+  @override
+  String get se697487621 => 'Logga in';
+
+  @override
+  String get sb2703f9ad3 => 'Skapa ett konto med en e-postkod';
+
+  @override
+  String get s326d86a618 =>
+      'Namnet kommer från den spanska \"me mola el plan\" - \"låter bra\".';
+
+  @override
+  String get s1812df3cb5 => 'Ta bort den här webbläsarens data?';
+
+  @override
+  String get sbab6f0fd9d =>
+      'Alla Molaplan-inställningar, enheter, anslutningar och rutor i den här webbläsaren tas bort. Det går inte att ångra.';
+
+  @override
+  String get s38a0f7939b => 'Ta bort webbläsardata';
+
+  @override
+  String get s4226eb046f => 'Ångra';
+
+  @override
+  String get saa4df8e877 =>
+      'Bridge hittades inte. Är telefonen på brons Wi-Fi \"Molaplan-XXXX\"? Om nätverket saknas, håll bronknappen för 3 s (inställningen öppnas i 15 minuter).';
+
+  @override
+  String get sf5293b1989 =>
+      'Bron är inte i installationsläge. Håll knappen för 3 s och försök igen.';
+
+  @override
+  String get s839deeab41 =>
+      'Detta är inte bron på etiketten / QR-koden (nyckelbrist). Ingenting skickades.';
+
+  @override
+  String get s3694ce006b =>
+      'Brons svar är inte giltigt (krypteringsmissmatch). Ingenting sparades.';
+
+  @override
+  String s61aea0b713(String p0) {
+    return 'Bron avvisade installationen: $p0';
   }
 
   @override
-  String get s1a5c09b6e4 => 'Öppen installation';
+  String get s5b44cbe9c0 => 'Hem';
 
   @override
-  String get sd1cdbd3630 => 'Installationen startade inte';
+  String get s63551081b0 => 'Lägg hem bridge';
 
   @override
-  String s21972e23c1(String p0, String p1) {
-    return 'Android började inte installera $p0.\n\nKontrollera att \"Tillåt från den här källan\" är på för Molaplan och tryck på Uppdatera igen. Du kan också ladda ner APK från releasesidan.\n\nDetalj: $p1';
+  String get s592edd94e7 => 'Molaplan Bridge-enhet';
+
+  @override
+  String get sa329968355 =>
+      'En liten alltid-på-enhet (t.ex. Athom IR / RF-kontrollen) som passerar fjärrkommandon till dina enheter och styr värmepumpen genom infraröd.';
+
+  @override
+  String get sd8790684a6 =>
+      'Ström bron. En ny bro öppnar inställningen själv (slow blink, en gång i sekunden).';
+
+  @override
+  String get s087004d26c =>
+      'Öppna telefonens Wi-Fi-inställningar och gå med i \"Molaplan-XXXX\" (inget lösenord).';
+
+  @override
+  String get sf85e449cd8 => 'Kom tillbaka hit och tryck på \"Find bridge\".';
+
+  @override
+  String get s57466387fc => 'Hitta bridge';
+
+  @override
+  String get sd166e3cf6f => 'Bridge hittade';
+
+  @override
+  String get s6b841de5dd => 'Brandvaring';
+
+  @override
+  String get s88fa323548 => 'Home Wi-Fi';
+
+  @override
+  String get sf48dd63b0a => 'Nätverksnamn';
+
+  @override
+  String get s9f9c574cf9 => 'Wi-Fi lösenord';
+
+  @override
+  String get sc58a7d7121 => 'Hemmets namn';
+
+  @override
+  String get sc452460b0f => 'Styrelsestyrelsen';
+
+  @override
+  String get s4bdd633042 => 'Otestade';
+
+  @override
+  String get sbe6a859b63 =>
+      'Detaljerna skickas krypterad - bron Wi-Fi är öppen, men lösenordet kan inte läsas av det.';
+
+  @override
+  String get s77af0820de => 'Anslut bron';
+
+  @override
+  String get s1ec01d8473 => 'Bridge ansluten!';
+
+  @override
+  String get s88bc217a1b =>
+      'Bron går nu med i hemmet Wi-Fi (ljus på med ett kort dopp var tredje när den är ansluten). Byt telefonen tillbaka till hemmet Wi-Fi eller mobildata - Fjärråtkomst visar brostatus.';
+
+  @override
+  String get s876c7230a2 => 'Lägg till enhet';
+
+  @override
+  String get s3d00dee1a9 => 'Använd';
+
+  @override
+  String get sa252f06bff =>
+      'Välj ditt enhetsmärke. Molaplan hittar det och skapar plattorna.';
+
+  @override
+  String get s5b3b5e5a24 =>
+      'Sök varumärke eller enhet (t.ex. Shelly, Hue, IKEA)';
+
+  @override
+  String get sa427be10c9 => 'Hitta och ansluta automatiskt';
+
+  @override
+  String get s6f4cc0844f => 'Kommande – hur man använder den idag';
+
+  @override
+  String get s846ee3bc67 => 'Andra enheter';
+
+  @override
+  String get sdeadd78d47 => 'Thermostat värme kylning';
+
+  @override
+  String get s48264cfe32 => 'Termostat';
+
+  @override
+  String get s641a848754 =>
+      'Håller den temperatur du vill ha: styr reläer eller en värmepump från en termometer. Kan spara med spotpriser.';
+
+  @override
+  String get s94493d01ca => 'Väderprognos temperatur regn vind';
+
+  @override
+  String get s262f9527aa => 'Väderprognos';
+
+  @override
+  String get scb3570338f =>
+      'Vädret nu och per timme: temperatur, regn och vind där du bor. Ingen enhet behövs.';
+
+  @override
+  String get s2a9b6fedd9 => 'Kan inte hitta ditt varumärke?';
+
+  @override
+  String get scfc7244d06 =>
+      'Husqvarna, Zigbee, Tuya, värmepumpar... se hur man använder dem idag.';
+
+  @override
+  String get sf7b77783e5 => 'Annan (manuell inställning)';
+
+  @override
+  String get sc168355ee6 => 'Annan enhet (avancerat)';
+
+  @override
+  String get s3022f72ece => 'Alla anslutningstyper.';
+
+  @override
+  String get s2d1d488d6d => 'för tekniska användare.';
+
+  @override
+  String get s6f1c11270c => 'Innehåller exempelinställningar';
+
+  @override
+  String s4f55f417b1(String p0) {
+    return 'Enheten har $p0 reläer';
   }
 
   @override
-  String get sa1bd8d2533 => 'Öppna inställningar';
+  String get sab3ebba17a => 'Enheten har 1 relä';
 
   @override
-  String get sa065e7f650 => 'Tillåt att installera uppdateringar';
+  String get sfa48c40832 => 'Energimätning';
 
   @override
-  String get sdc3bf71baf =>
-      'Android ber en gång om tillstånd så att Molaplan kan installera sina egna uppdateringar.\n\nTryck på \"Öppna inställningar\".\nSlå på \"Tillåt från den här källan\".\nKom tillbaka och tryck på \"Uppdatera\" igen.';
+  String get sc8d1abbd21 => 'Kortnamn';
 
   @override
-  String get s441683b7a8 => 'Verifiera...';
+  String get s183ed60009 => 'OK';
 
   @override
-  String get se83b7fb2ac => 'Ladda ner uppdatering...';
-
-  @override
-  String s0b68f81d82(String p0) {
-    return 'Molaplan $p0 är tillgänglig. Bron fortsätter att fungera.';
+  String s1ea8fe913b(String p0) {
+    return 'Adress: $p0';
   }
 
   @override
-  String get sb06bee9921 => 'Föreställning';
+  String get s16dc13070c =>
+      'Home Assistant använder ett självsignerat certifikat. Det godkändes eftersom adressen finns i hemnätverket.';
+
+  @override
+  String get sd531eb2fc2 =>
+      'Home Assistant hittades inte automatiskt. Skriv adressen du öppnar den med (t.ex. http://192.168.1.20:8123 eller Nabu Casa-adressen).';
+
+  @override
+  String get s7def041e83 => 'Hittade Home Assistant:';
+
+  @override
+  String s2967a37e01(String p0, String p1) {
+    return 'Hittade: $p0 – $p1';
+  }
+
+  @override
+  String get s43370d968c => 'Fyll i första';
+
+  @override
+  String get s8f4c0baf1a =>
+      'Inga enheter hittades automatiskt. Skriv adressen själv - hitta den i routern eller enhetsappen.';
+
+  @override
+  String get s104238f11e => 'Hittade enheter – välj din:';
+
+  @override
+  String get sd5f9dce947 => 'Sök är inte tillgängligt på detta nätverk.';
+
+  @override
+  String get s26abc57d91 => 'Lär in fjärrkontrollens knappar?';
+
+  @override
+  String get sc709f38633 =>
+      'Grundläggande kontroll fungerar redan. Du kan också lära andra fjärrknappar, t.ex. \"Turbo\".';
+
+  @override
+  String get s6cac83dd5e => 'Inte nu';
+
+  @override
+  String get s97ea2eeb11 => 'Lär in nu';
+
+  @override
+  String get s09cfb7b2a1 => 'Enheten tillagd';
+
+  @override
+  String sda9574390f(String p0) {
+    return 'Enhet och $p0 kakel tillagda';
+  }
+
+  @override
+  String get sd51ee1ec8d =>
+      'Förinställda inställningar är exempel. Kontrollera dem mot din enhetsmanual innan du förlitar dig på dem.';
+
+  @override
+  String get s2e99b59497 =>
+      'IR är en-vägs: värmepumpen bekräftar inte. Molaplan skickar alltid hela staten och visar vad den skickade. Undervisa andra fjärrknappar senare: Anslutningar → IR-sändare → \"Lär ett nytt kommando\".';
+
+  @override
+  String get s0dd21e026c => 'Guide och automatisk sökning';
+
+  @override
+  String get se3ef5a5658 => 'Skanna Modbus';
+
+  @override
+  String get s810014ca02 => 'Importera en hemassistent modbus.yaml';
+
+  @override
+  String get s695a011cc1 => 'Söker…';
+
+  @override
+  String get s47d409fddd => 'Sök nätverk';
+
+  @override
+  String get sa62eebe6bd => 'Detektera reläer';
+
+  @override
+  String get s7196b72140 =>
+      'Inga infödda Modbus TCP - en RS485 → TCP-gateway behövs.';
+
+  @override
+  String get s2e8ba44677 => 'Källa';
+
+  @override
+  String get sceb8e47d07 => 'Testa anslutningen';
+
+  @override
+  String get s02ce5f4a01 => 'Fungerar!';
+
+  @override
+  String get sb9e9e55164 => 'Dessa kort skapas';
+
+  @override
+  String get s1cb2891ef2 => 'Fyll i fälten märkta med * för att se plattorna.';
+
+  @override
+  String get s504861ee78 =>
+      'Inga färdiga plattor - du kan lägga till dem senare med pennaknappen.';
+
+  @override
+  String get s1094266d4c => 'Visar ett värde';
+
+  @override
+  String get sf6ae3f3323 => 'Strömbrytare';
+
+  @override
+  String get s20dad69675 => 'Knapp';
+
+  @override
+  String get s0e9f94df05 => 'Reglage';
+
+  @override
+  String get s109b454866 => 'Kamera view';
+
+  @override
+  String get s37153e0e80 => 'Avancerade inställningar';
+
+  @override
+  String get s0ca55a9cae =>
+      'Andra enheter använder tekniska inställningar (HTTP, MQTT, Modbus...). Om ditt varumärke är listat, använd det istället.\n\nSlå på avancerade inställningar? Du kan stänga av dem i Inställningar.';
+
+  @override
+  String get s9630135746 => 'Slå på';
+
+  @override
+  String get sbcdff8f72a => 'Vilken kamera har du?';
+
+  @override
+  String get s67bf18fb6f => 'Övrig kamera (ONVIF)';
+
+  @override
+  String get sdbbc24198f => 'Vilken värmepump har du?';
+
+  @override
+  String get sdfd0407af6 => 'Verifiera – inget officiellt leverantörsdokument.';
+
+  @override
+  String get s5562a66892 => 'No Wi-Fi – IR-sändare (varje varumärke)';
+
+  @override
+  String get sc6411a9010 =>
+      'En Tasmota eller ESPHome IR-sändare (t.ex. Athom IR & RF) skickar hela staten som fjärrkontrollen. Du kan också lära dina egna kommandon.';
+
+  @override
+  String get s6cce12c7e3 => 'Serviceport (ESPHome)';
+
+  @override
+  String get s0d3bc6d125 => 'En ESP på inomhusenhetskontakt, tvåvägs.';
+
+  @override
+  String get s8275426406 => 'Via Home Assistant';
+
+  @override
+  String get s5b10465c5b => 'Om du redan har Home Assistant.';
+
+  @override
+  String get s417228f48f => 'Andra varumärken – varför ännu inte';
+
+  @override
+  String get se50e28a0e4 =>
+      'Enheterna styrs på ditt hemnätverk utan molnet. Första gången hämtas deras lokala nycklar med ditt eget gratis Tuya-utvecklarkonto (cirka 10 minuter, bara en gång).';
+
+  @override
+  String get sb35b23dbdd =>
+      'Hämta nycklarna med mitt eget Tuya-konto (rekommenderas)';
+
+  @override
+  String get sbc29869e30 => 'Alla Wi-Fi-enheter i appen samtidigt.';
+
+  @override
+  String get s2f57241369 => 'Jag har redan den lokala nyckeln';
+
+  @override
+  String get sf4a309c04a => 'En enhet: adress, ID och nyckel.';
+
+  @override
+  String get sd551537404 =>
+      'Verifiera avläsningarna – inget officiellt leverantörsdokument.';
+
+  @override
+  String get sa1a45de0f2 => 'Lokalt – rekommenderat';
+
+  @override
+  String get se8b35fb9e9 => 'Cloud – valfritt';
+
+  @override
+  String get s95216a7a5e => 'Andra – varför ännu inte';
+
+  @override
+  String get sc52321f275 => 'Vilken inverterare har du?';
+
+  @override
+  String get s862002ac64 =>
+      'Produktion, nätimport/export och batteriladdning som kort och för automation. En lokal anslutning uppdateras på några sekunder och behöver inget moln.';
+
+  @override
+  String get sa5f3da9152 => 'Vilken laddare har du?';
+
+  @override
+  String get sdeb1f4332e =>
+      'Status, laddning på / av, kraft och nuvarande gräns. Automationer: avgift på solöverskott eller i de billigaste timmarna.';
+
+  @override
+  String get se5084a149d => 'Vilken TV eller enhet?';
+
+  @override
+  String get s43a563c3a0 =>
+      'Status, kraft, volym, mute och uppspelning som kort och för automationer - rakt över hemnätverket, inget moln och ingen Home Assistant. Android TV och Google TV: välj Chromecast.';
+
+  @override
+  String get sca7e088857 => 'Elpris';
+
+  @override
+  String get s83f816fbe3 => 'Exceptionellt dyr el';
+
+  @override
+  String get sfc404aec8b => 'Sensorvärde';
+
+  @override
+  String get s58d2896c42 => 'Enhetsstatus';
+
+  @override
+  String get s7def336f41 => 'Tid eller datum';
+
+  @override
+  String get sf80835a318 => 'Ankomst (förvärmning)';
+
+  @override
+  String get s9a37dbb58a => 'i morgon';
+
+  @override
+  String get s1fe084d61b => 'idag idag idag idag';
+
+  @override
+  String get safd8f4dddf => 'högsta högsta högsta';
+
+  @override
+  String get s484731d968 => 'lägsta';
+
+  @override
+  String get s77f9bfc303 => 'genomsnittet';
+
+  @override
+  String get sc017c085e4 => '(Plocka en enhet)';
+
+  @override
+  String s3f09da81b6(String p0, String p1, String p2, String p3) {
+    return '$p0: genomsnittligt ≥ $p1 c eller topp ≥ $p2 c eller $p3 × dagen före';
+  }
+
+  @override
+  String s900c886f50(String p0, String p1, String p2, String p3) {
+    return '$p0  $p2 $p3 °C';
+  }
+
+  @override
+  String s81c88dabf7(String p0, String p1) {
+    return '$p0 inte svara $p1 min';
+  }
+
+  @override
+  String s5414e9e5fd(String p0) {
+    return '$p0 stänger av';
+  }
+
+  @override
+  String s09a43fc401(String p0) {
+    return '$p0 slår på';
+  }
+
+  @override
+  String s56ef33ee50(String p0, String p1, String p2) {
+    return 'ankomst $p0 · påminnelse $p1 h innan $p2 °C';
+  }
+
+  @override
+  String get sdeb38e3907 => 'Min anmälan';
+
+  @override
+  String get s5e9a552fe6 => 'Min egen anmälan';
+
+  @override
+  String get se2e6db5acc => 'Alla villkor och ditt eget budskap.';
+
+  @override
+  String get sc6bec5e6cb => 'Körs på denna hembro, även med appen stängd.';
+
+  @override
+  String get se17e32a5c9 =>
+      'Hembron är äldre än 0.11.0: påminnelser fungerar bara medan den här appen är öppen. Uppdatera bron (Fjärråtkomst → Mina hembroar).';
+
+  @override
+  String get s5fd9e146bf => 'Körs på hembron, även med appen stängd.';
+
+  @override
+  String get s563ba24005 =>
+      'Ingen hemmabro: påminnelser fungerar medan appen är öppen. En hemmabro håller dem igång hela tiden.';
+
+  @override
+  String get sf378d832a1 => 'Lägg till påminnelse';
+
+  @override
+  String get s034093c675 =>
+      'Få ett meddelande när ett tillstånd är uppfyllt: elpris (till exempel i morgon), väderprognos, ett sensorvärde, ett enhetstillstånd eller en tid.';
+
+  @override
+  String get s49a26ce1f2 => 'Välj en färdig mall';
+
+  @override
+  String get sc0597b9029 => 'Senaste meddelanden';
+
+  @override
+  String get sac8af0108d => 'Inga meddelanden ännu.';
+
+  @override
+  String get sbb2b4bdfc8 => 'Telefonmeddelanden (ntfy), tysta timmar, mute';
+
+  @override
+  String get s13d942a5a9 => 'Välj en enhet.';
+
+  @override
+  String get sac782d209c => 'Testmeddelande skickas.';
+
+  @override
+  String get s140acccb81 => 'I dag';
+
+  @override
+  String get s0de6e75a52 => 'I morgon';
+
+  @override
+  String get sbbf8b7a598 => 'Medelvärde';
+
+  @override
+  String get s43b4c610f8 => 'Högsta';
+
+  @override
+  String get s9dd0f70be6 => 'Lägsta';
+
+  @override
+  String get scd65d31d4c => 'Begränsning';
+
+  @override
+  String get s543838d91f => 'Genomsnitt åtminstone';
+
+  @override
+  String get s087a7e1b24 => 'eller peak åtminstone';
+
+  @override
+  String get s8463e08e0b => 'eller × föregående dags genomsnitt';
+
+  @override
+  String get sd8332d82ec =>
+      'Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min';
+
+  @override
+  String get s109b35551a => 'Max Max Max Max Max';
+
+  @override
+  String get sf2c65c5aeb => 'Medelvärde';
+
+  @override
+  String get s8653f173b6 => 'Temperatur';
+
+  @override
+  String get s68b942c864 =>
+      'Ställ in hemorten (Energy → Inställningar) för prognosen.';
+
+  @override
+  String get s38ac222392 => 'Värde';
+
+  @override
+  String get s4cd3d92d4c => 'På';
+
+  @override
+  String get s33831dd49f => 'Av';
+
+  @override
+  String get sa8e43f2b0e => 'Offline';
+
+  @override
+  String get s65f512f499 => 'När offline för';
+
+  @override
+  String get sa224d2f5f9 => 'Tid';
+
+  @override
+  String get s96b7e2c62c => 'Varje dag (plocka ett datum för en gång)';
+
+  @override
+  String get s593004184e => 'Ankomst';
+
+  @override
+  String get sa9faf47356 => 'Påminn före';
+
+  @override
+  String get sf527ec4275 => 'Måltemperatur';
+
+  @override
+  String get s009a96409a => 'Ny påminnelse';
+
+  @override
+  String get sb346b2b647 => 'Påminnelse';
+
+  @override
+  String get sb1924acbe7 => 'Namn';
+
+  @override
+  String get s5506524eac => 'När när när';
+
+  @override
+  String get s86c5d7fa73 => 'Meddelande';
+
+  @override
+  String get s8dda7ee75e =>
+      'Du kan använda: {avg} {max} {min} {tim} {värde} {kort} {mål} { ankomst} {datum}';
+
+  @override
+  String get sec1bdb2451 => 'Även till telefoner (ntfy)';
+
+  @override
+  String get se2de73b535 => 'Alltid visas i appen också.';
+
+  @override
+  String get sd84d87d156 => 'Prioritet';
+
+  @override
+  String get s7a09198c53 => '5 (även i tysta timmar)';
+
+  @override
+  String get se8e58d6206 => 'Inte igen inom';
+
+  @override
+  String get s7d773a4dc9 => 'Inte förrän';
+
+  @override
+  String get sb86dc1b7bf => 'Testa testtest';
+
+  @override
+  String get s2ad22696ca => 'Språk';
+
+  @override
+  String get s7efc5653d2 => 'Enhetens språk';
 
   @override
   String get sf1b5d0ffa6 =>
@@ -1796,9 +1795,6 @@ class AppLocalizationsSv extends AppLocalizations {
       'Med ett konto är dina hem, enheter och plattor samma på alla dina enheter - PC, surfplatta och telefon. Hemanslutningen flyttar till en ny enhet utan en QR-kod.\n\nKontot är valfritt: utan en Molaplan fungerar som tidigare och installationen stannar på den här enheten.';
 
   @override
-  String get se697487621 => 'Logga in';
-
-  @override
   String get sec4d25a98e => 'Jag har inget konto – skapa ett';
 
   @override
@@ -1839,9 +1835,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s317ad443fb => 'Ingen kod – skicka en ny';
-
-  @override
-  String get scf7e14661c => 'Tillbaka';
 
   @override
   String get s7d43ee2d5a => 'lokalisering av beläggning av beläggningar';
@@ -1957,9 +1950,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s84fda3e17f => 'Avbryt';
 
   @override
-  String get s162a85c6ef => 'Spara';
-
-  @override
   String get s02c3403918 => 'Välj ett nytt lösenord.';
 
   @override
@@ -1984,238 +1974,200 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s139d2075b8 => 'Kontot raderat.';
 
   @override
-  String get sca7e088857 => 'Elpris';
+  String get s2a28790ea2 => 'Full bredd';
 
   @override
-  String get s83f816fbe3 => 'Exceptionellt dyr el';
-
-  @override
-  String get s262f9527aa => 'Väderprognos';
-
-  @override
-  String get sfc404aec8b => 'Sensorvärde';
-
-  @override
-  String get s58d2896c42 => 'Enhetsstatus';
-
-  @override
-  String get s7def336f41 => 'Tid eller datum';
-
-  @override
-  String get sf80835a318 => 'Ankomst (förvärmning)';
-
-  @override
-  String get s9a37dbb58a => 'i morgon';
-
-  @override
-  String get s1fe084d61b => 'idag idag idag idag';
-
-  @override
-  String get safd8f4dddf => 'högsta högsta högsta';
-
-  @override
-  String get s484731d968 => 'lägsta';
-
-  @override
-  String get s77f9bfc303 => 'genomsnittet';
-
-  @override
-  String get sc017c085e4 => '(Plocka en enhet)';
-
-  @override
-  String s3f09da81b6(String p0, String p1, String p2, String p3) {
-    return '$p0: genomsnittligt ≥ $p1 c eller topp ≥ $p2 c eller $p3 × dagen före';
+  String s3e5741712a(String p0) {
+    return 'Denna Shelly är en energimätare - ersätt växeln med $p0 mätkort?';
   }
 
   @override
-  String s900c886f50(String p0, String p1, String p2, String p3) {
-    return '$p0  $p2 $p3 °C';
+  String sfe2074ae81(String p0) {
+    return 'Enheten har $p0 reläer - lägg till resten?';
   }
 
   @override
-  String s81c88dabf7(String p0, String p1) {
-    return '$p0 inte svara $p1 min';
+  String sf1319d04d0(String p0) {
+    return 'Lägg till $p0';
   }
 
   @override
-  String s5414e9e5fd(String p0) {
-    return '$p0 stänger av';
+  String get s95f80e9bdf => 'Fix';
+
+  @override
+  String get s12c2f8e6e4 => 'Endast hemnätverket';
+
+  @override
+  String s5f7c464e6d(String p0) {
+    return 'kl. $p0';
   }
 
   @override
-  String s09a43fc401(String p0) {
-    return '$p0 slår på';
+  String s21b64ae0a7(String p0) {
+    return '$p0 fungerar bara i hemnätverket. Rutan blir normal igen av sig själv när du är hemma.';
   }
 
   @override
-  String s56ef33ee50(String p0, String p1, String p2) {
-    return 'ankomst $p0 · påminnelse $p1 h innan $p2 °C';
+  String get s6b1a8249de => 'Senaste läge';
+
+  @override
+  String get s56650a18d5 => 'Gör den fjärrstyrbar ›';
+
+  @override
+  String get sa0d8c62e5a => 'Inget kommando konfigurerat';
+
+  @override
+  String get s1e5d696a26 => 'Kör detta kommando?';
+
+  @override
+  String get sa5ee6618a3 => 'Ändra PIN';
+
+  @override
+  String get s66f8ce67ed => 'Gå in i PIN';
+
+  @override
+  String get sb7b0c97cfa =>
+      'Enheten behöver sin PIN för varje kommando och statusbegäran. Ange den en gång här.';
+
+  @override
+  String get s1df6e2eaa7 => 'PIN';
+
+  @override
+  String get sb52d5c0b5b =>
+      'Webbläsaren lagrar aldrig PIN. Det frågas igen nästa gång du öppnar sidan.';
+
+  @override
+  String get secab66c046 => 'Kom ihåg på denna enhet';
+
+  @override
+  String get s2a15ea2eab =>
+      'Lagrad krypterad på den här enheten bara - inte på kontot eller på andra enheter. Off = frågade igen när appen startar om.';
+
+  @override
+  String get sdfc012fb4e => 'PIN-kod';
+
+  @override
+  String get s10bf4eab8e =>
+      'Lagrad krypterad på den här enheten bara. Som standard lagras PIN-koden inte.';
+
+  @override
+  String get s912ea5d2ec => 'Skicka';
+
+  @override
+  String get s856418521a => 'Inga kommandon konfigurerade';
+
+  @override
+  String sb0ba67e677(String p0) {
+    return 'Ran på $p0';
   }
 
   @override
-  String get sdeb38e3907 => 'Min anmälan';
+  String sdfa66ee201(String p0) {
+    return '$p0: Sänd';
+  }
 
   @override
-  String get s5e9a552fe6 => 'Min egen anmälan';
+  String get s12fc3810a5 => 'Sent – vänta på svaret...';
 
   @override
-  String get se2e6db5acc => 'Alla villkor och ditt eget budskap.';
+  String get sd1c7d49360 => 'Svara på';
 
   @override
-  String get sc6bec5e6cb => 'Körs på denna hembro, även med appen stängd.';
+  String get s29fae6a0e8 => 'Prisstyrning på';
 
   @override
-  String get se17e32a5c9 =>
-      'Hembron är äldre än 0.11.0: påminnelser fungerar bara medan den här appen är öppen. Uppdatera bron (Fjärråtkomst → Mina hembroar).';
+  String get sbfe79d1f5f => 'Uppdaterad';
 
   @override
-  String get s5fd9e146bf => 'Körs på hembron, även med appen stängd.';
+  String get s46d0983ce8 => 'Lägg till på startskärmen';
 
   @override
-  String get s563ba24005 =>
-      'Ingen hemmabro: påminnelser fungerar medan appen är öppen. En hemmabro håller dem igång hela tiden.';
+  String get s59d55f8882 => 'Byt namn';
 
   @override
-  String get sf378d832a1 => 'Lägg till påminnelse';
+  String get s84ada1ae69 => 'Ändra PIN';
 
   @override
-  String get s034093c675 =>
-      'Få ett meddelande när ett tillstånd är uppfyllt: elpris (till exempel i morgon), väderprognos, ett sensorvärde, ett enhetstillstånd eller en tid.';
+  String get s25580038cb => 'Saved PIN bort';
 
   @override
-  String get s49a26ce1f2 => 'Välj en färdig mall';
+  String get sf50c488b24 => 'Glöm frälst PIN';
 
   @override
-  String get sc0597b9029 => 'Senaste meddelanden';
+  String get safe0429a90 => 'Prisstyrning';
 
   @override
-  String get sac8af0108d => 'Inga meddelanden ännu.';
+  String get sf3d644dd4c => 'Lär in en fjärrkontrollknapp';
 
   @override
-  String get sf4caddf894 => 'Avancerat';
+  String get sfb1a18d11f => 'Uppdatera';
 
   @override
-  String get sbb2b4bdfc8 => 'Telefonmeddelanden (ntfy), tysta timmar, mute';
+  String get sbb9e9b1229 => 'Ange PIN';
 
   @override
-  String get s13d942a5a9 => 'Välj en enhet.';
+  String get se38a9bb2ed => 'Senaste';
 
   @override
-  String get sac782d209c => 'Testmeddelande skickas.';
+  String get sf1ed8904bb => 'Välj registreringslistan (CSV)';
 
   @override
-  String get s67584c9abf => 'Enhet';
+  String get s5bf50963d1 => 'Inte erkänt som en NIBE-registreringslista.';
 
   @override
-  String get s140acccb81 => 'I dag';
+  String get s0cba536d9c => 'Listan hade inga register.';
 
   @override
-  String get s0de6e75a52 => 'I morgon';
+  String s80d7fd2d3c(String p0, String p1) {
+    return '$p0 registrerar importerade, $p1 erkända (utomhus, försörjning, varmt vatten, kurva kompensation ...).';
+  }
 
   @override
-  String get sbbf8b7a598 => 'Medelvärde';
+  String get s429f9e257a => 'Uppgifterna finns bara i den här webbläsaren. ';
 
   @override
-  String get s43b4c610f8 => 'Högsta';
+  String get sda9203de80 => 'lokaler och inställningar ';
 
   @override
-  String get s9dd0f70be6 => 'Lägsta';
+  String get sfec58c0c1b => 'Logga in för att synka ›';
 
   @override
-  String get scd65d31d4c => 'Begränsning';
+  String get s8b3e63da21 => 'o skapa kontot ›';
 
   @override
-  String get s543838d91f => 'Genomsnitt åtminstone';
+  String get s887c293cad => 'lokala grepp om odlingar för odlingar';
 
   @override
-  String get s087a7e1b24 => 'eller peak åtminstone';
+  String get s84a087a679 => 'l.......';
 
   @override
-  String get s8463e08e0b => 'eller × föregående dags genomsnitt';
+  String get s907220900d => 'Välkommen till Molaplan';
 
   @override
-  String get sd8332d82ec =>
-      'Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min';
+  String get s845ec6276f => 'lokalisering av';
 
   @override
-  String get s109b35551a => 'Max Max Max Max Max';
+  String get s9dfa93453b => 'o----------------------------------';
 
   @override
-  String get sf2c65c5aeb => 'Medelvärde';
+  String get s6aa51b28a5 => 'lokaler och e-poster';
 
   @override
-  String get s68b942c864 =>
-      'Ställ in hemorten (Energy → Inställningar) för prognosen.';
+  String get sc6f02b69d3 =>
+      'o inloggning/inloggning/inloggning/inloggning/inloggning/inloggning/ in';
 
   @override
-  String get s38ac222392 => 'Värde';
+  String get sc777bde66f =>
+      'lokala försvarslösningar Försvårigheter Försvårigheter Försvårigheter Försvårigheter Försvårigheter';
 
   @override
-  String get s4cd3d92d4c => 'På';
+  String get se2e5ff2c8a => 'lokalisering utan ett konto';
 
   @override
-  String get sa8e43f2b0e => 'Offline';
+  String get s82714aa826 => 'Kräver ett konto.';
 
   @override
-  String get s65f512f499 => 'När offline för';
-
-  @override
-  String get sa224d2f5f9 => 'Tid';
-
-  @override
-  String get s96b7e2c62c => 'Varje dag (plocka ett datum för en gång)';
-
-  @override
-  String get s593004184e => 'Ankomst';
-
-  @override
-  String get sa9faf47356 => 'Påminn före';
-
-  @override
-  String get sf527ec4275 => 'Måltemperatur';
-
-  @override
-  String get s009a96409a => 'Ny påminnelse';
-
-  @override
-  String get sb346b2b647 => 'Påminnelse';
-
-  @override
-  String get sc1845eb440 => 'Radera';
-
-  @override
-  String get sb1924acbe7 => 'Namn';
-
-  @override
-  String get s5506524eac => 'När när när';
-
-  @override
-  String get s86c5d7fa73 => 'Meddelande';
-
-  @override
-  String get s8dda7ee75e =>
-      'Du kan använda: {avg} {max} {min} {tim} {värde} {kort} {mål} { ankomst} {datum}';
-
-  @override
-  String get sec1bdb2451 => 'Även till telefoner (ntfy)';
-
-  @override
-  String get se2de73b535 => 'Alltid visas i appen också.';
-
-  @override
-  String get sd84d87d156 => 'Prioritet';
-
-  @override
-  String get s7a09198c53 => '5 (även i tysta timmar)';
-
-  @override
-  String get se8e58d6206 => 'Inte igen inom';
-
-  @override
-  String get s7d773a4dc9 => 'Inte förrän';
-
-  @override
-  String get sb86dc1b7bf => 'Testa testtest';
+  String get s9bb545e9b3 => 'Logga in eller skapa ett konto';
 
   @override
   String get sfb4df77773 => 'Ge knappen ett namn.';
@@ -2231,9 +2183,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sd2a872d1ba => 'Lär ett nytt kommando';
-
-  @override
-  String get s2acab0eccd => 'Klar';
 
   @override
   String get s608a56ad4b =>
@@ -2313,9 +2262,6 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get sbd2f94e7a4 => 'Värmepump (serviceport/ESPHome)';
-
-  @override
   String get s49b479c566 =>
       'Bästa sättet: en liten ESP32 på inomhusenhetstjänstporten. Till skillnad från IR är det tvåvägs - verkligt tillstånd och rumstemperatur.';
 
@@ -2357,657 +2303,38 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s9aa9bc9679 => 'Enhet svarade men har ingen klimatenhet.';
 
   @override
-  String get sec88246e24 => 'Välj ett rum foto';
+  String get sd9923cda70 => 'Inte hemma? Sväng på fjärråtkomst';
 
   @override
-  String get s252b8e1289 => 'Foto för vilket rum?';
+  String get sf77125583f => 'Tekniska detaljer';
 
   @override
-  String get sa27e5362de =>
-      'Välj en inbyggd rumsbild eller ditt eget foto. Det visas som rubriken eller bakom hela vyn.';
+  String get s1f8cf57b2c => 'Ingen anslutning';
 
   @override
-  String get s84ef77e1ca => 'Välj en egen bild';
-
-  @override
-  String get sf55eee73b8 => 'Ändra bild';
-
-  @override
-  String get sf6723451b9 => 'Ta foto';
-
-  @override
-  String get s0bec34cd24 => 'Rubrikbild';
-
-  @override
-  String get s7b1e22fca7 => 'Bakgrund för hela vyn';
-
-  @override
-  String get s229e29f9ee => 'Dämpning';
-
-  @override
-  String get s38285117e6 => 'Oskärpa';
-
-  @override
-  String get sdd957ccc1b => 'Ta bort bild';
-
-  @override
-  String s6c487e340b(String p0) {
-    return 'På de flesta $p0 bilder. Ta bort en först.';
+  String s84819cca05(String p0) {
+    return 'Sista larmet $p0';
   }
 
   @override
-  String get sceafe9ce2a => 'Filen är inte en bild';
+  String get s8613961a5a => 'Meddelanden';
 
   @override
-  String get s463074e5cc => 'App endast';
+  String get s8814efe188 =>
+      'Välj om den här enheten ska skicka en push-avisering och med vilken prioritet. Standardvärdena är lugna: bara larm och en tyst enhet meddelar dig. Aviseringar går till ditt ntfy-ämne och visas i appen.';
 
   @override
-  String get seb8b8d2adf => 'Fungerar endast i appen eller via en hemmabro';
+  String get s9341ea63c0 => 'Händelseprioritet';
 
   @override
-  String get s3a5c21004e => 'Offline';
+  String get s2b4ea7a381 =>
+      'Allmänna standardvärden. En enhet kan åsidosätta dessa i sina egna inställningar. En aviseringsåtgärd på en automatisering har företräde.';
 
   @override
-  String get sbc7a87e591 => 'Kunde inte få priser - retrying';
+  String get s67917c9a2a => 'Enheten rapporterade ett nytt tillståndsämne';
 
   @override
-  String get s3f0837ec84 => 'Kunde inte få vädret - förtrytning';
-
-  @override
-  String get s68cbe596f8 => 'Inloggningen har gått ut';
-
-  @override
-  String get s599357f47b => 'Inget internet';
-
-  @override
-  String get s74fa2d56aa => 'Modbus är avstängd';
-
-  @override
-  String get s156aa7eeb3 => 'Enheten svarar inte';
-
-  @override
-  String get sbf2cfbb102 => 'Fel enhet id?';
-
-  @override
-  String get s9be06479ff => 'Lockout';
-
-  @override
-  String get s613938b0b3 => 'Ingen adress';
-
-  @override
-  String get s252d8628c7 => 'Upptagen (HA?)';
-
-  @override
-  String get s0e3a6bafbf => 'Tjänst som inte svarar';
-
-  @override
-  String get s7abcbf1107 => 'Servern hittades inte';
-
-  @override
-  String get sca533b6f25 => 'Hembryggan svarar inte';
-
-  @override
-  String get s96ad0dc252 => 'Värde som inte finns på enheten';
-
-  @override
-  String get s61cdd7287b => 'Inställning saknas';
-
-  @override
-  String get s57d0940253 => 'Säkerhetsfel';
-
-  @override
-  String get sfec025279e => 'Enheten är offline';
-
-  @override
-  String get s1ea16fc636 => 'Kolla nu';
-
-  @override
-  String get sbaf1a2b35e => 'Inget nätverk';
-
-  @override
-  String get s3f750ce1d4 =>
-      'Den här enheten är inte på Wi-Fi och mobildata fungerar inte. Kort visar de sista värden som mottagits.';
-
-  @override
-  String get s542a3e9332 => 'Wi-Fi har inget internet';
-
-  @override
-  String get sba13ded915 =>
-      'Enheter på detta Wi-Fi-arbete; molntjänster och fjärråtkomst gör det inte.';
-
-  @override
-  String get se24bfd1257 => 'Fjärrserver som inte svarar';
-
-  @override
-  String get s8584be9da3 =>
-      'Internet fungerar, men Molaplans fjärrserver svarar inte hemma allt fungerar; fjärråtkomst kommer tillbaka av sig själv.';
-
-  @override
-  String get s1e03ade992 => 'Anslutning OK';
-
-  @override
-  String get s0fc5f4d788 =>
-      'Re-checkade var 15: e tills det fungerar; detta meddelande försvinner sedan av sig själv.';
-
-  @override
-  String get s3e05e0efab => 'Wi-Fi/Ethernet-adresser';
-
-  @override
-  String get s6b59e217ba => 'Ingen';
-
-  @override
-  String get s3b7c55c4fc => 'Kontrollerad';
-
-  @override
-  String get sc26c52235c =>
-      'Du är borta och hembron svarar inte. Hemnätverksenheter kan inte styras nu.';
-
-  @override
-  String get s0fc1c9f296 =>
-      'Du är borta. Hemnätverksenheter fungerar på distans endast genom en hembro.';
-
-  @override
-  String get se50ed56454 => 'Fjärråtkomst';
-
-  @override
-  String get sc5f54cf3c8 => 'Fyll i nyckeln och servern.';
-
-  @override
-  String get sb26dad8f73 => 'Inga enheter i molnet med denna nyckel.';
-
-  @override
-  String s2c6ce95ec2(String p0) {
-    return '$p0 fungerar nu genom Shelly Cloud.';
-  }
-
-  @override
-  String s5629901cc4(String p0) {
-    return 'Kontrollera $p0 hemifrån';
-  }
-
-  @override
-  String get s064abc90af =>
-      'Enheten byts till Shelly Cloud. Alla dess kanaler, namn och kort stannar. Key: Shelly app → din profil → Användarinställningar → Auktoriseringsmolnnyckel.';
-
-  @override
-  String get sf16961256b => 'Server (Server URI)';
-
-  @override
-  String s28e10c6870(String p0) {
-    return 'Vilken av dessa är $p0?';
-  }
-
-  @override
-  String get s09f5da65e0 => 'Byt till Shelly Cloud';
-
-  @override
-  String get sa846059775 => 'Home Assistant läser redan den här enheten';
-
-  @override
-  String get s18a1844439 =>
-      'Enheten kanske redan har en anslutning (t.ex. Home Assistant) - läs värdena genom HA. Många enheter tillåter endast en Modbus TCP-anslutning.';
-
-  @override
-  String sa29df4fc6b(String p0) {
-    return '$p0 Modbus värden som finns i Home Assistant. Många enheter tillåter endast en Modbus TCP-anslutning, så läsning genom HA är det säkraste sättet.';
-  }
-
-  @override
-  String get sb8c40d2c20 => 'Användning via Home Assistant';
-
-  @override
-  String get s810014ca02 => 'Importera en hemassistent modbus.yaml';
-
-  @override
-  String get sfbf34ee532 =>
-      'Paste modbus.yaml (eller modbus: en del av konfiguration.yaml). Anslutningen och korten använder samma register och timing.';
-
-  @override
-  String s2d4fbaade1(String p0, String p1) {
-    return '$p0 anslutning(s), $p1 kort';
-  }
-
-  @override
-  String get s580678cb10 => 'Importera';
-
-  @override
-  String get s108e078c0c => 'Modbus-enhet som importeras från Home Assistant';
-
-  @override
-  String get sa3a093e55e => 'Värmer';
-
-  @override
-  String get s8efb99df1d => 'Kyler';
-
-  @override
-  String get s0b98d62330 => 'Värme och kyla';
-
-  @override
-  String get sa61efb9866 => 'värmer';
-
-  @override
-  String get s9a47ee3e3c => 'kyler';
-
-  @override
-  String get s156712ac0c => 'väntar';
-
-  @override
-  String get s8a1f52a37b => 'Termostaten borttagen';
-
-  @override
-  String get s28dc9bc46a => 'Ingen temperaturavläsning';
-
-  @override
-  String get s4f1166fe24 =>
-      'Ingen hembro: termostaten styr ännu inte. Ställ in fjärråtkomst på hemmatabletten.';
-
-  @override
-  String get s29fd8d5b5e => 'Nu';
-
-  @override
-  String get see9111ba68 => 'Relä eller brytare (på/av)';
-
-  @override
-  String get seaed91ad78 => 'Värmepump eller AC (börvärde)';
-
-  @override
-  String get sb757921c13 => 'Värmer';
-
-  @override
-  String get s7407864734 => 'Kyler';
-
-  @override
-  String get s272aa3f1da => 'Båda';
-
-  @override
-  String get sdadb6e3501 => 'Reservvärmare';
-
-  @override
-  String get se4e381334d => 'Börjar först när det är tydligt under målet.';
-
-  @override
-  String get s17c79c5f4e => 'Power on/off (tillval)';
-
-  @override
-  String get s92d88612de => 'Värmeläge knapp (valfritt)';
-
-  @override
-  String get s75ac845bab => 'Cool läge knapp (tillval)';
-
-  @override
-  String get se12fc46923 => 'Ingen';
-
-  @override
-  String get sc590a09db9 => 'Vad värmer eller kyler?';
-
-  @override
-  String get sa15ffe53d4 =>
-      'Välj en eller flera. t.ex. en värmepump och en backup värmare.';
-
-  @override
-  String get sd47a7615a7 => 'Inga lämpliga enheter ännu';
-
-  @override
-  String get s3c7649a7f0 =>
-      'Lägg först till ett relä (t.ex. Shelly) eller en värmepump (IR eller serviceport), sedan komma tillbaka.';
-
-  @override
-  String get see513572ea => 'Varifrån läses temperaturen?';
-
-  @override
-  String get s5155522e83 =>
-      'Välj en termometer. Flera = nedgång eller genomsnitt.';
-
-  @override
-  String get s581fa290f3 =>
-      'Valfritt: värmepumpen mäter sig själv. Välj en sensor för att se temperaturen.';
-
-  @override
-  String get s7e4d8d60a0 => 'Ingen termometer';
-
-  @override
-  String get s0787d80876 => 'Lägg först till en enhet som visar en temperatur.';
-
-  @override
-  String get s89661203b7 => 'Första fungerande';
-
-  @override
-  String get s0da3005956 => 'Medelvärde';
-
-  @override
-  String get s0c6a008ffd => 'Namn och läge';
-
-  @override
-  String get s1790a71e85 => 't.ex. Vardagsrum';
-
-  @override
-  String get sd5f46903a1 => 'Måltemperatur';
-
-  @override
-  String get s6de95e582f => 'Om temperaturen försvinner';
-
-  @override
-  String get s8ff25225b4 => 'Stäng av värme/kyla (säkrast)';
-
-  @override
-  String get s17cb86f49e => 'Behåll som det är';
-
-  @override
-  String get s9624f070ee => 'Hysteres';
-
-  @override
-  String get sf070be2c1e => 'Dödband (värme/kyla)';
-
-  @override
-  String get s64540136ff => 'Minsta tid på';
-
-  @override
-  String get s21713a2177 => 'Minsta tid av';
-
-  @override
-  String get s8f7c8eb7d0 => 'Backup värmare när under målet genom';
-
-  @override
-  String get sf1eb3b2d34 => 'Sensor förlorad efter ingen läsning för';
-
-  @override
-  String get s0ab1430151 => 'Ny termostat';
-
-  @override
-  String get sbbc98d573d => 'Redigera termostat';
-
-  @override
-  String get s6c3e76828b => 'Nästa';
-
-  @override
-  String get s187d328bb1 => 'Redigera';
-
-  @override
-  String get s87984716cb => 'Ta bort termostaten?';
-
-  @override
-  String get s79786b9f7d => 'Mål';
-
-  @override
-  String get sdd309c0a63 => 'Termostaten körs på hembryggan';
-
-  @override
-  String get s2a7e9fe291 =>
-      'Ställ in fjärråtkomst på hemmatabletten (Inställningar → Fjärråtkomst). Tills dess kontrollerar det inte någonting.';
-
-  @override
-  String get s06cda8c0de => 'Körs på den här enheten (hembrygga).';
-
-  @override
-  String get s2342536aea => 'Körs på hembryggan.';
-
-  @override
-  String get s2c5993c1fd =>
-      'Förvärmning före dyr el och kallt väder, och låter temperaturen sjunka lite i dyra timmar.';
-
-  @override
-  String get s81c4abc1a5 => 'Övervärme +';
-
-  @override
-  String get sdea18b2b40 => 'Undervärme −';
-
-  @override
-  String get s523214c8db =>
-      'Linje = måltemperatur, barer = elpris, streckad = utomhustemperatur.';
-
-  @override
-  String get s94b8f63aa7 => 'Lägg hem plats för vädret';
-
-  @override
-  String get s941fbb47fe => 'Planen beräknas…';
-
-  @override
-  String get s702ca14235 => 'Tasmota-enhet';
-
-  @override
-  String get se0e5f715ad => 'ESPHome-enhet';
-
-  @override
-  String get s63b6e55469 => 'HomeKit-enhet';
-
-  @override
-  String get s13e301a66e => 'Okänd enhet';
-
-  @override
-  String get sddb2c2cb2b => 'Telefon';
-
-  @override
-  String get s16cd267576 => 'Surfplatta';
-
-  @override
-  String get sec4679ec39 => 'Dator';
-
-  @override
-  String get s798f9a0558 => 'Skrivare';
-
-  @override
-  String get s06109b8e5c => 'TV / mediaspelare';
-
-  @override
-  String get sc4655d321e => 'Högtalare';
-
-  @override
-  String get sa9f2f85b3e => 'Router';
-
-  @override
-  String get sf8360dcd74 => 'Nätverkslagring';
-
-  @override
-  String get s8e21b6f258 => 'Smart enhet';
-
-  @override
-  String get sb38b582dab => 'Hembrygga';
-
-  @override
-  String get sdf66171e91 => 'Den här enheten';
-
-  @override
-  String get s76a76a654e => 'iPhone-surfzon';
-
-  @override
-  String get s15d4ca1672 => 'Telefonens surfzon';
-
-  @override
-  String get sd54522fe39 => 'Router / surfzon';
-
-  @override
-  String get s3294a9422d => 'Säkerhetspanel';
-
-  @override
-  String get sb97a2b7ed6 => 'ESP32-enhet';
-
-  @override
-  String get s23f4820db7 => 'Inte kontrollerbar ännu';
-
-  @override
-  String get sdeeabebed9 => 'Airthings: lägg till via molnet eller Bluetooth';
-
-  @override
-  String get saae59a3865 => 'via hembryggan';
-
-  @override
-  String get sf226dd023a => 'Kontrollerad med ntfy-meddelanden';
-
-  @override
-  String get s0e6aa5168c =>
-      'om detta är en säkerhetspanel, lägg till den som en ntfy kommandoenhet';
-
-  @override
-  String get sdccd6e7f24 => 'Modell';
-
-  @override
-  String get s891a4b434e => ')\'}';
-
-  @override
-  String get s43aba09687 => 'Hamnar';
-
-  @override
-  String get scee3511db6 => 'Källor';
-
-  @override
-  String get sbc46a05125 => 'Namnge enheten';
-
-  @override
-  String get s1d5ed84aed => 'Sparas på den här enheten.';
-
-  @override
-  String get s3e6dd6ff2d => 'Lägg till som kommandoenhet';
-
-  @override
-  String get s59622d792b => 'Byt namn';
-
-  @override
-  String get sb616303f5b =>
-      'I webbläsaren fungerar enhetssökning endast genom en hembro';
-
-  @override
-  String get sef469cadc3 =>
-      'Du kan fortfarande lägga till moln och ntfy enheter nedan.';
-
-  @override
-  String get sa0fccfbcab => 'via hembron';
-
-  @override
-  String get s1169d2d093 => 'Hitta enheter';
-
-  @override
-  String get s55b85f29a6 => 'Söker ditt hemnätverk...';
-
-  @override
-  String get se9c923ff0b =>
-      'Molaplan letar efter enheter som den känner igen på ditt hemnätverk.';
-
-  @override
-  String get s3ff2220816 =>
-      'Inga kända enheter hittades. Välj varumärket nedan.';
-
-  @override
-  String s2a9142dc3e(String p0) {
-    return 'Hittade $p0. Tryck på att lägga till.';
-  }
-
-  @override
-  String get s2fc39b0bd7 => 'Sök igen';
-
-  @override
-  String get s0a9acb5af1 => 'Sök efter Sök';
-
-  @override
-  String get se3ef5a5658 => 'Skanna Modbus';
-
-  @override
-  String get s9a018b8166 => 'Du är borta: hembron sökte ditt hemnätverk.';
-
-  @override
-  String get s55d0b95fd2 => 'Detta nätverk';
-
-  @override
-  String s955b44aaa4(String p0) {
-    return 'Dessa är på den här enhetens eget nätverk, inte på $p0. De läggs inte till i det hemmet.';
-  }
-
-  @override
-  String sf16a25c313(String p0) {
-    return 'Andra enheter i nätverket ($p0)';
-  }
-
-  @override
-  String get s9e8430c37b =>
-      'Molaplan styr inte dessa. iPhones visar sitt namn bara när de vakna.';
-
-  @override
-  String s095ca83913(String p0) {
-    return '$p0 kort tillagda';
-  }
-
-  @override
-  String get sd53b0c4edc => 'Airthings övervakar';
-
-  @override
-  String sc401e05b53(String p0) {
-    return 'Lägg till $p0 kort';
-  }
-
-  @override
-  String get s212e35a61b => 'Kunde inte lista enheterna';
-
-  @override
-  String get s039683f4a5 =>
-      'Det finns inga bildskärmar i ditt konto. Lägg till en i Airthings-appen först.';
-
-  @override
-  String get sdfff64e4c3 => 'via Hub';
-
-  @override
-  String get s7f308d40c8 => 'Värmer';
-
-  @override
-  String get s41de361b3e => 'Kyler';
-
-  @override
-  String get s4f7ccb7138 => 'Avfuktar';
-
-  @override
-  String get s9b2398228e => 'Fläkt';
-
-  @override
-  String get s533177c689 => 'Vilar';
-
-  @override
-  String get sa3e8beed42 => 'Värme';
-
-  @override
-  String get s6c9668fbd9 => 'Kyla';
-
-  @override
-  String get sd032c3efec => 'Auto';
-
-  @override
-  String get s9db8aefc43 => 'Avfuktning';
-
-  @override
-  String get s0117dea8bc => 'Fläkt';
-
-  @override
-  String get sb680eb3021 => 'Tyst';
-
-  @override
-  String get s4299eb9d18 => 'Låg';
-
-  @override
-  String get s90ba0c57d4 => 'Medium-low';
-
-  @override
-  String get s0cb68026a7 => 'Medium';
-
-  @override
-  String get s9c5e4ed5cb => 'Medium-hög';
-
-  @override
-  String get s688b92a62f => 'Högt högt';
-
-  @override
-  String get sb1ef6ab439 => 'Turbo';
-
-  @override
-  String get s339446ffe7 => 'Utomhus';
-
-  @override
-  String get s018d2e08f4 => 'Fläkt';
-
-  @override
-  String get s11a7c24b38 => 'Inget värde';
-
-  @override
-  String get s79bbbe6195 => 'kurva';
-
-  @override
-  String get s28b7c227f0 => 'börvärde';
+  String get s79fc5ea775 => 'Använd detta';
 
   @override
   String get s81e0c3084b =>
@@ -3038,90 +2365,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sdc485831ad => 'Tryck länge för att ta bort';
 
   @override
-  String get s3c98732a8c => 'Mätare';
-
-  @override
-  String get s6f29aeb685 => 'Trend';
-
-  @override
-  String get s3298699c1a => 'Mätare + trend';
-
-  @override
-  String get sed593f53ed => 'Värde';
-
-  @override
-  String get s9027c88cb7 => 'Samla in data...';
-
-  @override
-  String get sf05d2a09f1 => '7 d';
-
-  @override
-  String get se38a9bb2ed => 'Senaste';
-
-  @override
-  String get s049d71f971 => 'Sista sista';
-
-  @override
-  String get s3ec9d77947 => 'Tmrw';
-
-  @override
-  String get sed9b5e52f6 => 'Numera nu';
-
-  @override
-  String get s1b85ad9e38 =>
-      'Letar du efter enheter med Modbus TCP på (port 502, 503 och 5020) och försöker enhetens id. Ta ungefär en halv minut.';
-
-  @override
-  String get seb1f4357ea => 'Egen hamn (valfritt)';
-
-  @override
-  String get s06760a6970 => 'Skanna igen';
-
-  @override
-  String get s23d146db23 => 'Scan';
-
-  @override
-  String get s18e7ad553e => 'Scanning...';
-
-  @override
-  String get s721647a6cd => 'Du är borta: hembron skannade.';
-
-  @override
-  String get s08e57d2d85 => 'Scan misslyckades';
-
-  @override
-  String get s4cf60b9350 =>
-      'Inga Modbus-enheter hittades. Kontrollera att Modbus TCP finns i enhetsinställningarna och att det är i samma nätverk (inte gäst Wi-Fi).';
-
-  @override
-  String get sbd8ee8a14f => 'Modbus-enhet';
-
-  @override
-  String get sf0462b25ac => 'gateway';
-
-  @override
-  String s28d9c4c7dc(String p0) {
-    return '$p0 förinställd';
-  }
-
-  @override
-  String get sc6cde0d476 => 'från dess tillkännagivande';
-
-  @override
-  String get s166da70285 => 'Enheten accepterar inte en anslutning';
-
-  @override
-  String get sbe97262d91 =>
-      'Enheten kanske redan har en anslutning (t.ex. Home Assistant) - läs värdena genom HA. Många enheter tillåter endast en Modbus TCP-anslutning.';
-
-  @override
-  String get s24e5139123 => 'Port öppna, ingen Modbus svar';
-
-  @override
-  String get s9041c140be =>
-      'Kontrollera enhets-ID och Modbus-inställningarna. Tryck på för att använda den här adressen.';
-
-  @override
   String get sfe54134176 => 'Alla enheter';
 
   @override
@@ -3149,9 +2392,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sbd907def5b => 'Installatör';
-
-  @override
-  String get sfb1a18d11f => 'Uppdatera';
 
   @override
   String get sb9c461d827 =>
@@ -3304,9 +2544,6 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get sdb0484d728 => 'Sparat';
-
-  @override
   String get s52a64a3307 => 'Ge en installatör åtkomst';
 
   @override
@@ -3433,639 +2670,767 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s0361487148 => 'Ta bort installatörsstatus';
 
   @override
-  String get s55d52c5ae1 => 'Denna enhet är inte på Wi-Fi';
+  String get sc1c47d2474 => 'Välj en bakgrundsbild';
 
   @override
-  String s9a4dece965(String p0) {
-    return 'Anslut den här enheten till ditt hem Wi-Fi (en $p0 använder). Eller, om du är borta, ställa in hembron så att sökningen körs på en enhet hemma.';
+  String sa8ce5112ee(String p0) {
+    return 'Högst $p0 bakgrundsbilder. Ta bort en först.';
   }
 
   @override
-  String get s3972820cd6 => 'Kunde inte nå enheten';
+  String get sceafe9ce2a => 'Filen är inte en bild';
 
   @override
-  String s0f480abb4a(String p0) {
-    return 'Kunde inte nå enheten på $p0';
+  String get s12a7d631af => 'Utseende';
+
+  @override
+  String get s0d83798030 => 'Storlek';
+
+  @override
+  String get s64c916e299 => 'Liten';
+
+  @override
+  String get s5e3097232a => 'Bred';
+
+  @override
+  String get s8971788287 => 'Stor';
+
+  @override
+  String get scf37cbeda8 => 'Ikon';
+
+  @override
+  String get s254a1d8e12 => 'Bakgrundsbild (valfri)';
+
+  @override
+  String get sc48f5f9bcf => 'Välj bild';
+
+  @override
+  String get sf55eee73b8 => 'Ändra bild';
+
+  @override
+  String get sf6723451b9 => 'Ta foto';
+
+  @override
+  String get sdd957ccc1b => 'Ta bort bild';
+
+  @override
+  String get s7ba9d453ed => 'Dämpa när enheten är av';
+
+  @override
+  String get s016ae7b580 =>
+      'Bilden krymps (≤ 200 KB) och synkroniseras till ditt konto.';
+
+  @override
+  String get sabb10f8cb2 =>
+      'Bilden krymps (≤ 200 KB) och hålls endast på den här enheten.';
+
+  @override
+  String get s3cd1e146e8 => 'En genväg kör kommandot direkt från startskärmen.';
+
+  @override
+  String get s1c2a0377e4 => 'Status (widget)';
+
+  @override
+  String get s54512f5660 => 'En widget visar rutans status på startskärmen.';
+
+  @override
+  String get s517f5701fd =>
+      'Den här rutan får en statuswidget som visar värdet på startskärmen.';
+
+  @override
+  String get sd069985866 => 'Bekräfta före körning';
+
+  @override
+  String get s5775841848 =>
+      'Rekommenderas för farliga kommandon, till exempel att stänga av ett larm.';
+
+  @override
+  String get sf8e4a8294a =>
+      'PIN-koden sparas inte i genvägen. Om enheten kräver en PIN-kod frågar appen efter den.';
+
+  @override
+  String get s5eaef9c7e8 =>
+      'Genvägen har lagts till. Bekräfta den på startskärmen.';
+
+  @override
+  String get s526d406d59 =>
+      'Widgeten har lagts till. Bekräfta den på startskärmen.';
+
+  @override
+  String get s31c3d63c1e =>
+      'Startskärmen stöder inte detta, eller så avbröts tillägget.';
+
+  @override
+  String get sa37e535e0f => 'Rutan hittades inte';
+
+  @override
+  String get sa0bd9ad5b1 => 'Exempelkamera - lägg till din egen med Add-enhet';
+
+  @override
+  String get s4529c1010a => 'Välj en kameraanslutning';
+
+  @override
+  String get s98bf81bba3 => 'Live video fungerar inte på den här enheten';
+
+  @override
+  String get seb2bb5cbce =>
+      'Live video visar bara på hemnätverket. Denna kamera har ingen stillbild för fjärranvändning.';
+
+  @override
+  String get sc95fb5440b => 'Stream slutade';
+
+  @override
+  String get sd55dd196f6 =>
+      'Ingen live-video. Kontrollera att du är på hemmanätverket och RTSP är på i kameran.';
+
+  @override
+  String get s1cf33c1fbc => 'Värde';
+
+  @override
+  String get s86029171be => 'Av/på';
+
+  @override
+  String get s4ddce888df => 'Knapp / genväg';
+
+  @override
+  String get s357fc9c3fe => 'Slider / setpoint';
+
+  @override
+  String get seeb6c38c8e => 'Kamera';
+
+  @override
+  String get s14da6beba5 => 'Visar en läsning, t.ex. temperatur.';
+
+  @override
+  String get se4b1d203df => 'På/av, t.ex. ett ljus eller larm.';
+
+  @override
+  String get sc2197ab417 => 'En kran gör en eller många saker.';
+
+  @override
+  String get sd611704caf => 'Justera ett värde, t.ex. temperatur.';
+
+  @override
+  String get sacfc0c0b41 => 'Visar en kamerabild.';
+
+  @override
+  String get s7172c54c2c => 'Håller temperaturen på inställt värde.';
+
+  @override
+  String get s76e7a995de => 'Läst värde';
+
+  @override
+  String get sdced476aeb => 'Skript';
+
+  @override
+  String get sdaa7d4de12 => 'Scen';
+
+  @override
+  String get sae3489a6c9 => 'Kontrollera en enhet';
+
+  @override
+  String get s4e1f25d257 => 'Eget kommando';
+
+  @override
+  String get sea15760b77 => 'Vad gör knappen?';
+
+  @override
+  String get s630ee9894e =>
+      'Välj ett skript, en scen eller en enhet. Knappen fungerar i appen och när du är borta, genom fjärråtkomst.';
+
+  @override
+  String get s1173c2dbf9 => 'Inga skript ännu. Gör en under Automations.';
+
+  @override
+  String get s7b42ecba51 => 'Inga scener ännu. Spara en under Automations.';
+
+  @override
+  String get s589d73245e =>
+      'Inga växelbara enheter ännu. Lägg till en switch först.';
+
+  @override
+  String get s750f16460c => 'Av/på';
+
+  @override
+  String get sc5edd6d3d1 => 'Nytt kort';
+
+  @override
+  String get sa684fd0716 => 'Redigera kort';
+
+  @override
+  String get sa7b6366b62 =>
+      'Mätning: display, trend, färggränser, larm, decimaler och skalning.';
+
+  @override
+  String get sae41bebdab =>
+      'Kontroll: bekräftelse, lås / PIN, min / max / steg, invert och momentary.';
+
+  @override
+  String get s8a8673aafe => 'Rubrik';
+
+  @override
+  String get sf83143ae23 => 'Rumstemperatur sensor';
+
+  @override
+  String get s19485c79b2 => 'Ingen';
+
+  @override
+  String get s0483226428 => 'Välj en temperatursensor';
+
+  @override
+  String get sfeab9bd26f => 'Bredd';
+
+  @override
+  String get s58be670598 => 'Höjd';
+
+  @override
+  String get sd7314e8237 => 'Visning';
+
+  @override
+  String get s7d6cee9e42 => 'Barer (15 min)';
+
+  @override
+  String get sc0e069225b => 'Trend + Nu linje';
+
+  @override
+  String get s07647fa07d => 'Range';
+
+  @override
+  String get s8feeef3110 => 'Visa imorgon när tillgängligt';
+
+  @override
+  String get sad692e6ae5 =>
+      'Morgondagens priser visas av sig själva en gång publicerad (cirka 14:00).';
+
+  @override
+  String get s1c72b8c56a => 'Trendlängd';
+
+  @override
+  String get s6bb0c0c7e3 => 'Mätarens minimum';
+
+  @override
+  String get sa444aab286 => 'Automatisk';
+
+  @override
+  String get sbf29caff87 => 'Mätarens maximum';
+
+  @override
+  String get sea30815e6a =>
+      'Tekniska kakelinställningar visas när du slår på \"Avancerad\" i Inställningar.';
+
+  @override
+  String get s382afc832f => 'Statlig källa';
+
+  @override
+  String get s581aee3e96 => 'Valfritt: där det nuvarande tillståndet läses av.';
+
+  @override
+  String get s3adc51170c => 'Rå kombination (avancerad)';
+
+  @override
+  String get s5f542e17e2 =>
+      'Varje korttyp är tillåten på varje anslutning. En felaktig kombination kan visa vilseledande data, t.ex. \"På\" för elpriset.';
+
+  @override
+  String get scb988b1a4a => 'Av: endast korttyperna stöder anslutningen.';
+
+  @override
+  String get se6b18b17d9 => 'omröstningsintervall (s, 0 = none)';
+
+  @override
+  String get s01f2b1ee0c =>
+      'MQTT, Home Assistant och WebSocket uppdatering lever utan omröstning.';
+
+  @override
+  String get s937448ecf5 => 'Testläsare';
+
+  @override
+  String get s5cbdea7f7e => 'Visning';
+
+  @override
+  String get se6af4b33df => 'Enhet';
+
+  @override
+  String get sd5498697da => 'Decimaler';
+
+  @override
+  String get s4f7007db78 => 'Värdenamn';
+
+  @override
+  String get s4aae179c52 => '0=Off;1=Home;2=Away';
+
+  @override
+  String get s0c12fda7ca => 'Toggle kommandon';
+
+  @override
+  String get s3a9d9e16ef => '\"På\" värden (komma separerade, tomma = auto)';
+
+  @override
+  String get s1509c5a2a6 => 'På kommando';
+
+  @override
+  String get s2a1e131afd => 'OFF kommando';
+
+  @override
+  String get s0201de52c0 =>
+      '{\'{value}\'} i kommandot ersätts av reglaget värde.';
+
+  @override
+  String get sc30c9a7e51 => 'Steg Steg';
+
+  @override
+  String get s4d6451a63a => 'Ställ in kommando';
+
+  @override
+  String get sa4082e1a79 => 'Kommandon (kör i ordning)';
+
+  @override
+  String get s467488e572 =>
+      'En genväg kan styra flera enheter i sekvens, med förseningar.';
+
+  @override
+  String get sad43973fb3 => 'Lägg till kommando';
+
+  @override
+  String get sdaef43c622 => 'Be om bekräftelse';
+
+  @override
+  String get s5210a5ad23 => 'Anslutning';
+
+  @override
+  String get s776d8b06bf => 'Ny anslutning';
+
+  @override
+  String get s96705fc3df => 'Kommandot skickat';
+
+  @override
+  String get sb41db1e809 => 'Försök försöka';
+
+  @override
+  String get s77d2309fd5 => 'Fördröjning före (ms)';
+
+  @override
+  String get sd032c3efec => 'Auto';
+
+  @override
+  String get sb06bee9921 => 'Föreställning';
+
+  @override
+  String get s2594346d86 => 'Guide linjer';
+
+  @override
+  String get sfdffaffea4 => 'Ingen';
+
+  @override
+  String get sd6c2de0256 => 'Horisontell';
+
+  @override
+  String get sb8ef66c33e => 'Grid';
+
+  @override
+  String get s0bee1b8ed3 => 'Värdeskala';
+
+  @override
+  String get sd4e9b57931 => 'Tidsaxel';
+
+  @override
+  String get s7abdb12fef => 'Datapunkt markörer';
+
+  @override
+  String get s29135ed75a =>
+      'Auto: Axlar och guidelinjer visar när kortet är minst 2×2.';
+
+  @override
+  String get s638c648b40 => 'Stream';
+
+  @override
+  String s32ef3895b8(String p0) {
+    return 'Lens / kanal $p0';
   }
 
   @override
-  String sa82143ee02(String p0, String p1) {
-    return 'Kontrollera att $p0 drivs.\nDen här enheten (eller hemmabron) måste vara på samma Wi-Fi.\nKontrollera adressen - den kan ändras. Tryck på \"Tack\" och sök igen.';
+  String get s939603242a => 'Färger med värde';
+
+  @override
+  String get s45f927bc62 => 'Anpassad';
+
+  @override
+  String get s319dab47d8 => 'Smooth';
+
+  @override
+  String get s613fbec20e => 'Steg';
+
+  @override
+  String get s25d9db075e =>
+      'Egna gränser och färger: Inställningar → Avancerade.';
+
+  @override
+  String get sc0f5a14d2b => 'Färgtrösklar (värde ≥gräns → färg)';
+
+  @override
+  String get s30a2c0f460 => 'Lägg till tröskelvärde';
+
+  @override
+  String get sd408a5dbe9 => 'Billigaste timmar';
+
+  @override
+  String get sa26ae27039 => 'Hoppa över de dyraste timmarna';
+
+  @override
+  String get scfd1a72ed5 => 'Väderbaserad pre-värme';
+
+  @override
+  String get s2bd403874c =>
+      'Värme i de billigaste timmarna på dagen. För lagringsvärme och vattenvärmare.';
+
+  @override
+  String get se759c14061 =>
+      'Värme normalt men hoppar över de dyraste timmarna i korta pauser.';
+
+  @override
+  String get s5cab118d44 =>
+      'Pre-heats före dyra eller kalla trollformler och sparar i dyra timmar. Timmarna följer prognosen.';
+
+  @override
+  String get sa7480a9930 => 'Billig timme';
+
+  @override
+  String get s50812672e5 => 'Väntar på en billig timme';
+
+  @override
+  String get seb1c64d9f8 => 'hoppa över en dyr timme';
+
+  @override
+  String get s2e52a3d40e => 'normalt normalt normalt normalt';
+
+  @override
+  String get sf6d34efdd6 => 'Inga priser – normal uppvärmning';
+
+  @override
+  String get s8c42ad8541 => 'Semester läge';
+
+  @override
+  String get sc3d8828060 => 'Värme för din retur';
+
+  @override
+  String get s577b8c3cf1 => 'Brandplace värmer';
+
+  @override
+  String get sbcd02dce0a => 'varmt tillräckligt';
+
+  @override
+  String get s22678639dc => 'Säkerhetsgräns: för kall';
+
+  @override
+  String get s1e3f154a0a => 'frostskydd';
+
+  @override
+  String get s1f2938edec => 'Säkerhetsgräns: för länge';
+
+  @override
+  String get s54fce2a7e8 => 'Förvärmning';
+
+  @override
+  String get s6b35f75e80 => 'spara medan dyrt';
+
+  @override
+  String get sdde7adcb29 =>
+      'Smart värme styr värme genom elpris och väder, på ett sätt som passar din uppvärmning typ. Svara på några frågor för att få rekommenderade inställningar.';
+
+  @override
+  String get s3d29895a40 => 'Starta undersökningen';
+
+  @override
+  String get sb0d738492d => 'Fireplace läge på';
+
+  @override
+  String sd1af5ba10d(String p0) {
+    return 'Fireplace läge tills $p0';
   }
 
   @override
-  String get sd4d7ad1bab => 'En annan enhet svarade';
+  String get s48a7ba4933 => 'Semester läge på';
 
   @override
-  String s5b7d02a301(String p0) {
-    return 'Enheten på den adressen är inte $p0. Kontrollera adressen.';
+  String get s10a95132ce => 'Smart värme är avstängd';
+
+  @override
+  String get s035459d8bb => 'Värme följer pris och väder';
+
+  @override
+  String get s6b83aed534 =>
+      'Behov av en hembro: ställa in fjärråtkomst på hem surfplattan eller PC (inställningar → fjärråtkomst).';
+
+  @override
+  String get s830cace8fe => 'Uppdatera hembron (behöver Molaplan 0.10.0).';
+
+  @override
+  String get s495c887d23 => 'Körs på hembron, även med appen stängd.';
+
+  @override
+  String get s7954d5fca9 => 'Stoppa eldstad läge';
+
+  @override
+  String get sf44db20422 => 'Fireplace lit';
+
+  @override
+  String get sd172900c2d => 'Semester: edit';
+
+  @override
+  String get s5da1e65941 => 'Holiday läge';
+
+  @override
+  String get sdca3ad13dd => 'Värmeanordningar';
+
+  @override
+  String get sc8c5e37f5d => 'Inga enheter. Lägg till dem i undersökningen.';
+
+  @override
+  String get sc6976fa352 => 'Uppvärmningsmeddelanden';
+
+  @override
+  String get s1abda8b8f3 =>
+      'Hembron är för gammal: uppdatera den (Molaplan 0.10.0).';
+
+  @override
+  String get s8c3353e896 => 'Ingen hembro är parad.';
+
+  @override
+  String s38ccb420a7(String p0) {
+    return 'Fungerade inte: $p0';
   }
 
   @override
-  String get sdac5622fa8 => 'Enheten begär ett lösenord';
-
-  @override
-  String get sbf9ee8aaec =>
-      'Ett lösenord är inställt på enheten. Skriv det nedan och tryck på \"Konnect\".';
-
-  @override
-  String get s9e22388413 => 'En mer detaljer behövs';
-
-  @override
-  String sc8702d4da2(String p0) {
-    return '$p0 berättar inte detta själv. Skriv det nedan och tryck på \"Konnect\".';
+  String s8847ee78e0(String p0) {
+    return 'Mål $p0 °C';
   }
 
   @override
-  String get s83f57c7c24 => 'Fel lösenord';
-
-  @override
-  String get s32e85a0ba2 =>
-      'Kontrollera lösenordet (fallet frågor). Du kan ändra det i enhetsappen.';
-
-  @override
-  String get sb1d36bfdd3 => 'Knappen trycktes inte i tid';
-
-  @override
-  String get sc994f6ec6e =>
-      'Tryck på \"Försök igen\" och tryck sedan på knappen direkt.';
-
-  @override
-  String get s663202243e => 'Inget att kontrollera hittades';
-
-  @override
-  String get sb03997d94b =>
-      'Enheten svarade men har inga växlar eller lampor. För molnet, skriv enhets-ID.';
-
-  @override
-  String get se6e01118ac => 'Kamera hittades, men inte dess videoadress';
-
-  @override
-  String get sca994210fb =>
-      'Kameran svarade men berättade inte sin videoadress, och ingen av de vanliga RTSP-adresserna arbetade med denna inloggning. Kontrollera att RTSP/ONVIF finns på i kameraappen eller välj varumärket nedan och tryck på \"Connect\".';
-
-  @override
-  String get s869571042f => 'Cloud key eller server som inte accepterats';
-
-  @override
-  String get sab1763c592 =>
-      'Kopiera nyckeln och servern igen från Shelly-appen (användarinställningarna → auktoriseringsmolnnyckel).';
-
-  @override
-  String get s855ffbfd24 => 'Kunde inte nå molnet';
-
-  @override
-  String get s739d569a9c => 'Kontrollera internetanslutningen.';
-
-  @override
-  String get sc96a3502b5 => 'För många förfrågningar';
-
-  @override
-  String get sed917dc2a2 => 'Molnet begränsar begäran. Vänta ett ögonblick.';
-
-  @override
-  String get s516dbdd784 => 'Hembron är från date';
-
-  @override
-  String get s70089507bf =>
-      'Uppdatera Molaplan på bron (Inställningar → Kontrollera för uppdateringar).';
-
-  @override
-  String get scc1918f2dc =>
-      'Kontrollera att bron hemma är på, Molaplan är öppen och det har internet.';
-
-  @override
-  String get se11f9b5084 => 'Kunde inte ansluta till enheten';
-
-  @override
-  String get s979376dca6 =>
-      'Kontrollera adressen och att enheten är på, försök sedan igen. De tekniska detaljerna visar exakt anledning.';
-
-  @override
-  String get sce6d01c270 => 'Skriv adressen först';
-
-  @override
-  String get s65bbf3cab4 => 'Kontrollera adressen';
-
-  @override
-  String sb711cc1ce2(String p0, String p1) {
-    return '$p0 är inte ett hemnätverk adress. De börjar vanligtvis med 192.168. - kontrollera det igen i $p1 app.';
+  String s4b761dad85(String p0) {
+    return 'Nästa: $p0';
   }
 
   @override
-  String se60794c266(String p0) {
-    return 'menade du $p0?';
+  String s622f5654cd(String p0) {
+    return 'Fel: $p0';
   }
 
   @override
-  String get s264fda2dee => 'Jag fixar det';
+  String get s697b47220e => 'Smart värme på';
 
   @override
-  String get s0a6098ac78 => 'Prova ändå';
+  String get s45cf6423f8 => 'Redigera undersökningen';
 
   @override
-  String sc1039f5cf6(String p0) {
-    return 'Använd $p0';
+  String get sf5dbb363af => 'Säkerhetsgränser';
+
+  @override
+  String get sf9cd32fb4f => 'Minsta temperaturen';
+
+  @override
+  String get sfb0553315b => 'Frostskydd';
+
+  @override
+  String s9097fb518a(String p0) {
+    return 'Uppvärmning alltid under $p0 °C.';
   }
 
   @override
-  String get s20f777bfef => 'Adressen finns på ett annat nätverk';
+  String get s5d37a7088b => 'Längsta tillåtna paus (alla)';
 
   @override
-  String sbb1730fa00(String p0, String p1, String p2, String p3) {
-    return 'Adress $p0 är inte på samma nätverk som den här enheten ($p1.x). Vanligtvis är den här enheten på ett annat Wi-Fi än $p2.\n\nGå med i samma Wi-Fi, eller ställa in hembron.';
+  String get sb0bb55d6e5 => 'per enhet';
+
+  @override
+  String get s17bf76025c =>
+      'Säkerhetsgränser åsidosätter pris, semester och eldstadsläge. Minimitemperatur och frostskydd behöver en temperatursensor.';
+
+  @override
+  String get s109c7fb7a2 => 'Fireplace';
+
+  @override
+  String get s1c15091948 => 'Fireplace läge längd';
+
+  @override
+  String get se150ae5acd => 'Thermostats sänktes i eldstadsläge';
+
+  @override
+  String get s161f61412e => 'Temperatursensor nära eldstaden';
+
+  @override
+  String get s81b30d570b => 'Enhetens sensor';
+
+  @override
+  String get s71e80a04a2 => 'Uppvärmningsmeddelanden (ntfy)';
+
+  @override
+  String get s5ab83c2574 =>
+      'Samma meddelandekanal och tysta timmar som automationer.';
+
+  @override
+  String get s32d9d66ffd => 'Ta bort smart uppvärmning';
+
+  @override
+  String get s0f995f3d5d => 'Ta bort smart uppvärmning?';
+
+  @override
+  String get scc27c1739f => 'Enheterna stannar i sitt nuvarande tillstånd.';
+
+  @override
+  String get s3bf2d3643c =>
+      'Elektrisk uppvärmning minskas medan eldstaden värmer. Säkerhetsgränser gäller fortfarande.';
+
+  @override
+  String get s58b2cdb4e2 => 'Avsluta tidigare när rummet börjar svalna';
+
+  @override
+  String get s66ce56ca38 => 'Börja';
+
+  @override
+  String get s632723d95f =>
+      'Medan du är borta rum hålls svalare, och vattenvärmaren värms bara natten innan du återvänder. Säkerhetsgränser och frostskydd gäller.';
+
+  @override
+  String get s2ebf172fad => 'Börjar';
+
+  @override
+  String get s0ba54fbd61 => 'Återkomstdag';
+
+  @override
+  String get s025d1c3db1 => 'Temperatur medan borta';
+
+  @override
+  String get s11e21d4f75 => 'Hur den är kontrollerad';
+
+  @override
+  String get s8e6c8ffabb => ' (rekommenderas)';
+
+  @override
+  String get sa35e3e99f4 => 'Kontroll på';
+
+  @override
+  String get s86c45674db => 'Värme timmar om dagen';
+
+  @override
+  String get sbd3dbfd7e9 => 'De flesta dyra timmar hoppade över';
+
+  @override
+  String get s1f3d8e19f4 => 'Längsta paus i taget';
+
+  @override
+  String get s017c87df20 => 'Komforttemperatur';
+
+  @override
+  String get se68cc54085 => 'Ingen sensor';
+
+  @override
+  String get s347ce4c3d2 => 'Minska i eldstad läge';
+
+  @override
+  String get s6f88da6bab =>
+      'Termostatmålet fastställs av detta; termostatens egen temperatur är komforttemperaturen.';
+
+  @override
+  String s87cdb30352(String p0) {
+    return 'Uppskattning: om $p0 kWh per dag vid 0 ° C (hela huset).';
   }
 
   @override
-  String get s43370d968c => 'Fyll i första';
+  String get sc161d1f9d9 => 'Hur är huset uppvärmt? Välj allt.';
 
   @override
-  String get s915c9a0db3 => 'Välj minst en';
+  String get saac00e587b => 'isolering';
 
   @override
-  String sb160156a36(String p0) {
-    return 'Lägg till: $p0';
+  String get s9f103f81c0 => 'Dålig';
+
+  @override
+  String get sd51256a0f5 => 'Medelvärde';
+
+  @override
+  String get sd5ebaf8a4c => 'Bra bra bra';
+
+  @override
+  String get sf584870588 => 'Uppvärmt område';
+
+  @override
+  String get s97235bfadb => 'Tillåten temperatur swing';
+
+  @override
+  String get s6df5f06d38 =>
+      'Ju mer temperaturen kan variera, desto mer värme kan flytta till billiga timmar.';
+
+  @override
+  String get s07077e2778 => 'Huset har en spis eller lagra spis';
+
+  @override
+  String get sab28f61fad =>
+      'Välj vad som styr varje uppvärmning: ett relä eller plugg (på/av) eller en Molaplan termostat (måltemperatur).';
+
+  @override
+  String get s90ae2f4451 =>
+      'Inga kontrollerbara enheter ännu. Lägg till ett relä eller en termostat först; du kan komma tillbaka till undersökningen senare.';
+
+  @override
+  String get sf7b3494ee1 => 'Kontrollera enheten';
+
+  @override
+  String get se7ffc07763 => 'Inte kontrollerad';
+
+  @override
+  String s5835dc3308(String p0) {
+    return 'Thermostat: $p0';
   }
 
   @override
-  String get s43d448a950 => 'Lägg till i hemvyn';
+  String get s075ddc6f0d => 'Rumstemperatursensor (rekommenderad)';
 
   @override
-  String get sd890121a57 => 'Visa hemvyn';
+  String get s016c02be08 => 'Rekommenderade inställningar';
 
   @override
-  String get sb1717cc67c => 'A) Utan en hembro';
-
-  @override
-  String get s2082568a23 => 'Använd Shelly Cloud (ingen bro)';
-
-  @override
-  String get s5080d486b8 =>
-      'Bäst om ingen enhet alltid stannar hemma - t.ex. din surfplatta reser med dig. Kontroll går via Shellys eget moln. Du behöver en nyckel från Shelly-appen (vi visar var).';
-
-  @override
-  String get s82985d5078 => 'B) genom en hembro';
-
-  @override
-  String get s78aec2034d =>
-      'Hur kommer du att kontrollera ditt hem när du är borta?';
-
-  @override
-  String s03b3c3b3c8(String p0) {
-    return 'En hembro är en enhet som ALLTID stannar hemma, slås på och på samma Wi-Fi som $p0 - t.ex. en gammal telefon, surfplatta eller PC. Dina andra enheter når den över internet (krypterad, ingen port vidarebefordran). En enhet som du bär runt är inte en bra bro.';
+  String s013bbafbec(String p0, String p1) {
+    return 'Hoppa över $p0 dyraste timmar om dagen, högst $p1 h i taget.';
   }
 
   @override
-  String get s688d1308d7 =>
-      'När du är inloggad når hemanslutningen alla dina enheter automatiskt.';
-
-  @override
-  String get s96feb2f60a =>
-      'Den här enheten stannar alltid hemma – gör den till bron';
-
-  @override
-  String get sb2a33a1ec4 =>
-      'Håll den laddning med Molaplan öppen. Andra enheter ansluter med en QR-kod eller genom att logga in på samma konto.';
-
-  @override
-  String get s1b9f4ae6d5 => 'Bron är på en annan enhet - anslut till den';
-
-  @override
-  String get s13d739b710 =>
-      'Skanna bron QR-koden. Enheter hittas sedan genom bron, även när du är borta.';
-
-  @override
-  String get sda6a1e50e9 =>
-      'Hoppa för nu - lägg till i hemnätverket (fjärråtkomst kan ställas in senare)';
-
-  @override
-  String s6f326a48f9(String p0) {
-    return 'Hitta: $p0';
+  String se67c73d855(String p0) {
+    return 'Om $p0 värme timmar per dag vid 0 °C.';
   }
 
   @override
-  String get sc788897ba0 =>
-      'Söker genom hembron, så detta fungerar också hemifrån.';
+  String get sb7524487f9 => 'Ingen styrenhet – inte kontrollerad.';
 
   @override
-  String get s0f7361f40c => 'Titta på ditt hem Wi-Fi. Tryck på din.';
+  String get sad1fbf7d03 =>
+      'Tryck på \"Fireplace lit\" efter belysning: elektrisk uppvärmning minskas för 12-24 h eller tills sensorn visar kylning.';
 
   @override
-  String get sda2b4c9721 => 'Öppna Wi-Fi inställningar';
+  String get sfb41f90571 =>
+      'Du kan ändra metoden och siffrorna senare på enhetssidan under Avancerad.';
 
   @override
-  String get sc93d9cc14b => 'Ansluten – sök igen';
+  String get sa3a093e55e => 'Värmer';
 
   @override
-  String get s13f0596b74 => 'Söker... (ca 5 sekunder)';
+  String get s1706667040 => 'Hus Hus Hus';
 
   @override
-  String s8eabd27f68(String p0, String p1) {
-    return 'Ingenting hittas automatiskt. Kontrollera att $p0 är på och på samma Wi-Fi. Du kan också skriva adressen nedan.';
+  String get s84005ad77c => 'Enheter';
+
+  @override
+  String get s023d14fd87 => 'Rekommendation';
+
+  @override
+  String sfde6663859(String p0, String p1) {
+    return 'Undersökning $p0/4: $p1';
   }
 
   @override
-  String get sa616ab181e => 'Skriv adressen';
+  String get sda588a203b => 'Använd dessa';
 
   @override
-  String get sb439b8abc3 => 'Eller skriv adressen';
-
-  @override
-  String get s178e07f06b => 'IP-adress';
-
-  @override
-  String get scf487a3699 => 'Var hittar jag det?';
-
-  @override
-  String get s9b9b0d01a2 => ' (valfritt)';
-
-  @override
-  String get s0a7134d0e3 => 'Tryck på knappen nu';
-
-  @override
-  String s43118959d5(String p0) {
-    return '$p0 vänster';
-  }
-
-  @override
-  String get sba10f23f03 => 'Ansluter…';
-
-  @override
-  String get s46c87a553f => 'Logga in på kameran';
-
-  @override
-  String get se4095d7d95 => 'Enhetens lösenord';
-
-  @override
-  String get sdbdf676485 => 'Anslut';
-
-  @override
-  String get s8f610a3bb2 => 'Jag är hemifrån';
-
-  @override
-  String get sf77125583f => 'Tekniska detaljer';
-
-  @override
-  String get sb629592b4b => 'Kamera varumärke';
-
-  @override
-  String get se3aa0f7164 => 'RTSP adress';
-
-  @override
-  String get s722ac06c6d =>
-      'Utan inloggningen läggs användaren och lösenordet automatiskt till.';
-
-  @override
-  String s77ec7b376b(String p0) {
-    return 'Hittade: $p0';
-  }
-
-  @override
-  String get sac4debdb9c => 'Välj vad som går på hemvyn och namnge dem.';
-
-  @override
-  String get sfe5661e401 => 'Avmarkera alla';
-
-  @override
-  String s2618555da0(String p0) {
-    return 'Välj alla ($p0)';
-  }
-
-  @override
-  String get s86c3f92546 => 'Lägg också till ljusstyrka / kraft';
-
-  @override
-  String get s91571486e4 => 'Visa också kraft (W)';
-
-  @override
-  String sf86536db42(String p0) {
-    return 'Klart! $p0 kort tillagda';
-  }
-
-  @override
-  String get sbfaea66122 =>
-      'Brickorna arbetar hemma och bort genom molnet - inget annat att göra.';
-
-  @override
-  String get se7c68b3bed =>
-      'Brickorna arbetar hemma och bort genom hembron - inget annat att göra.';
-
-  @override
-  String get sbc8469cce1 =>
-      'Brickorna fungerar på ditt hemnätverk. För att styra från var som helst, ställa in hembron.';
-
-  @override
-  String get s417eb9a875 => 'Ställ in fjärråtkomst';
-
-  @override
-  String get s53a9fe5e42 =>
-      'Det finns inget Molaplan-konto med den e-postadressen.';
-
-  @override
-  String get sb4bd4baa5c =>
-      'Ingen Molaplan-användare med den adressen. De måste logga in på Molaplan 0.9 en gång - eller skicka dem en inbjudningskod.';
-
-  @override
-  String get s7ed2aecb01 =>
-      'Ingen delbar utvald (tävlingar kan inte delas ännu).';
-
-  @override
-  String get s707b7ff598 => 'Inbjudan finns inte längre.';
-
-  @override
-  String get s5ea320fb1c =>
-      'Lås upp kontohemligheterna på den här enheten först (Konto → Lås upp med lösenord). Delning använder kontonyckeln.';
-
-  @override
-  String get s2855893bfc =>
-      'Inbjudan gäller en installatör och kan bara användas av en installatör som Molaplan har godkänt (Inställningar → Installatör → Ansök).';
-
-  @override
-  String get sb8df145fc9 => 'Bara Molaplans administratörer kan göra detta.';
-
-  @override
-  String get sa562754cb5 => 'Koden är fel, löpt ut eller redan använt.';
-
-  @override
-  String get s9c37d7a89c =>
-      'Hembron svarar inte. Delningen behöver hembron (fjärråtkomst) - behörigheter verkställs där.';
-
-  @override
-  String get sc858a8f851 =>
-      'Hembron är för gammal för att dela. Uppdatera den (Fjärråtkomst → Uppdatera bro).';
-
-  @override
-  String get s1a52f53861 => 'Ingen anslutning till Molaplan-kontot.';
-
-  @override
-  String s2457ec4502(String p0) {
-    return 'Kontotjänsten vägrade: $p0';
-  }
-
-  @override
-  String get s4bc537975e => 'Hembron är offline.';
-
-  @override
-  String get s2fb5fe14e4 => 'Andelen återkallades.';
-
-  @override
-  String get s7b44d47d45 => 'Hembron svarar inte.';
-
-  @override
-  String get s8eddd585bc => 'Ingen anslutning.';
-
-  @override
-  String get s47998395f5 => 'Inte tillåtet.';
-
-  @override
-  String get s7f504a8c64 => 'Visa endast';
-
-  @override
-  String get s9c067115ef => 'Kontrollkontroll';
-
-  @override
-  String get s8343921765 => 'Full (kontroll + inställningar)';
-
-  @override
-  String get s211d9f0a3a => 'Kod som inte används än';
-
-  @override
-  String get s1e6b3fe5dc => 'Väntar på acceptans';
-
-  @override
-  String get sb13063b8cd => 'Bekräftas...';
-
-  @override
-  String get s13b6f87b0a => 'Aktivt';
-
-  @override
-  String get sed1d8dbf2b => 'Declined';
-
-  @override
-  String get s0123f33869 => 'Återkallad';
-
-  @override
-  String get s844e081db8 => 'Delande';
-
-  @override
-  String get scdfdf5d233 =>
-      'Att dela behöver ett Molaplan-konto så att inbjudningar kan nå människor och krypteringsarbeten.';
-
-  @override
-  String get s85abc4496d =>
-      'Ge en familjemedlem, granne eller installatör tillgång till de enheter du väljer. Lösenord och adresser lämnar aldrig hem, och du kan återkalla när som helst.';
-
-  @override
-  String get sb4602bb0a6 => 'Dela enheter';
-
-  @override
-  String get sffe19ad543 => 'Använd en inbjudningskod';
-
-  @override
-  String get s61036a5d51 => 'Inbjudningar till dig';
-
-  @override
-  String get s8af08eb19e => 'Enheter';
-
-  @override
-  String get sbb84536839 => 'Accepterad';
-
-  @override
-  String get sdfaf8c242b => 'Godkänn';
-
-  @override
-  String get s2fd1394b33 => 'Delad med mig';
-
-  @override
-  String get seaa0c13606 => 'Dina aktier';
-
-  @override
-  String get s450c60afd0 => 'Du har inte delat något.';
-
-  @override
-  String get s33f41d417c => 'Inbjuda kod';
-
-  @override
-  String get s9cdf3dcc87 => 'Återkalla aktien?';
-
-  @override
-  String get s9d0ac1d1ee =>
-      'Tillgången slutar så snart hembron hör av den (vanligtvis på en gång).';
-
-  @override
-  String get s4417570cbb => 'Revoke';
-
-  @override
-  String get s280e22cbc9 => 'Dela återkallad';
-
-  @override
-  String get sd742357fc8 => 'Ditt namn i aktier';
-
-  @override
-  String get sfe0000a1a9 =>
-      'Säkerhet: hembron kontrollerar rättigheterna för varje begäran. Anslutningsuppgifterna reser krypterade till mottagarens nyckel endast; enhetslösenord och adresser lämnar aldrig hemmet.';
-
-  @override
-  String get s0577e25cbe => 'Lägg till en kund med en kod';
-
-  @override
-  String get s3d00dee1a9 => 'Använd';
-
-  @override
-  String get sce4c69f42c =>
-      'Kod accepterad. Access öppnas när ägarens Molaplan bekräftar det (vanligtvis inom några minuter).';
-
-  @override
-  String get sd1520d6367 =>
-      'Ge koden (eller länken) till mottagaren: Molaplan → Dela → Använd en inbjudningskod. Giltig i 7 dagar, en gång.';
-
-  @override
-  String get s563abff5ad => 'Kopiera länk';
-
-  @override
-  String get s0daf5e9cb6 =>
-      'Inbjudan skickas – mottagaren accepterar den i Molaplan.';
-
-  @override
-  String get s707a062202 => 'Förändringsandelar';
-
-  @override
-  String get s79f72dbe13 => '1. vad man ska dela';
-
-  @override
-  String get s58e14dc230 =>
-      'Tryck på en vy för att dela alla dess enheter, eller välj dem en efter en.';
-
-  @override
-  String get sdb49fc5671 => 'Hela utsikten';
-
-  @override
-  String get sa7cf1a01d7 => '2. Rättigheter';
-
-  @override
-  String get s3b2376ac74 => 'Visa vy';
-
-  @override
-  String get s6605942623 => 'Full Full Full Full Full Full Full Full Full Full';
-
-  @override
-  String get s9ccbd78d51 => 'Ser stater och avläsningar, kan inte kontrollera.';
-
-  @override
-  String get sb143b5c9f1 =>
-      'Kan växla och justera, kan inte ändra inställningar (t.ex. temperaturinställningar).';
-
-  @override
-  String get s32dc2aa139 =>
-      'Kontroll- och enhetsinställningar. Aldrig dina egna vyer eller lösenord.';
-
-  @override
-  String get se153d3c421 => '3 till vem';
-
-  @override
-  String get s62e68022e1 => 'En Molaplan-användare (e-post)';
-
-  @override
-  String get s447da2f746 => 'Inbjuda kod eller länk';
-
-  @override
-  String get se7272a5713 => 'Namn för aktien (valfritt)';
-
-  @override
-  String get s1f9799af4e => 't.ex. stuga';
-
-  @override
-  String get s03f60936b0 => 'Rättigheter per enhet';
-
-  @override
-  String get s385022d526 => 'Visa vy';
-
-  @override
-  String get s482464ebd5 => 'Kontrollkontroll';
-
-  @override
-  String get s5897aaa050 => 'Meddela ett ntfy-ämne (valfritt)';
-
-  @override
-  String get sd4faf9db62 =>
-      'Meddelandet innehåller inga kod- eller enhetsdetaljer.';
-
-  @override
-  String get sdec87898c3 => 'Skapa inbjudningskod';
-
-  @override
-  String get s19c2104a9d => 'Skicka inbjudan';
-
-  @override
-  String get s8b4d48dfaf => 'Ägare';
-
-  @override
-  String get sbfe79d1f5f => 'Uppdaterad';
-
-  @override
-  String get s90944b5e7c => 'Uppmärksamhet';
-
-  @override
-  String get scf2e61da2c => 'inte svara';
-
-  @override
-  String get s1364743ec7 => 'larm';
-
-  @override
-  String get s5416a5cdf7 => 'Kör';
-
-  @override
-  String get s8debff3196 => 'Visa bild';
-
-  @override
-  String get s2220ce611a =>
-      'Kunder som gav dig tillgång. Du ser bara de delade enheterna och agerar inom de rättigheter som kunden gav – aldrig deras lösenord.';
-
-  @override
-  String get s6f3c62fc03 => 'Din installatörsstatus är inte giltig.';
-
-  @override
-  String s7ebc2621b7(String p0) {
-    return 'Inga kunder ännu. Ge kunden ditt installatörs-ID $p0: kunden öppnar Inställningar → Installatör → Ge åtkomst.';
-  }
-
-  @override
-  String get sa52cf49adc => 'Väntar på kundens Molaplan för att bekräfta';
-
-  @override
-  String get s35e8813a82 => 'Varningar';
-
-  @override
-  String get sf1ed8904bb => 'Välj registreringslistan (CSV)';
-
-  @override
-  String get s5bf50963d1 => 'Inte erkänt som en NIBE-registreringslista.';
-
-  @override
-  String get s0cba536d9c => 'Listan hade inga register.';
-
-  @override
-  String s80d7fd2d3c(String p0, String p1) {
-    return '$p0 registrerar importerade, $p1 erkända (utomhus, försörjning, varmt vatten, kurva kompensation ...).';
-  }
-
-  @override
-  String get sc3abd09cd9 => 'Anpassad färg';
-
-  @override
-  String get s10e7cef8c1 => 'Hue Hue';
-
-  @override
-  String get s59b65e3322 => 'Mättnad';
-
-  @override
-  String get s750ed8d878 => 'Ljushet';
-
-  @override
-  String get sa39e78050c => 'Välj Välj Välj Välj';
-
-  @override
-  String get sd9923cda70 => 'Inte hemma? Sväng på fjärråtkomst';
+  String get s6c3e76828b => 'Nästa';
 
   @override
   String get sba1684ff6c => 'Inte ännu';
@@ -4078,9 +3443,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s6b7c1c52da => 'Scener';
-
-  @override
-  String get s8613961a5a => 'Meddelanden';
 
   @override
   String get s4f745952b8 => 'Kör på denna hembro, även när appen är stängd.';
@@ -4144,9 +3506,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String sf3c2cf0323(String p0, String p1) {
     return '$p0 offline $p1 min';
   }
-
-  @override
-  String get s1b359d69e2 => 'Skapa automatisering';
 
   @override
   String get s835865fd04 => 'Mallar';
@@ -4329,13 +3688,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s585b4c519f => 'Mörk / ljus';
 
   @override
-  String get sd408a5dbe9 => 'Billigaste timmar';
-
-  @override
   String get s6019108a01 => 'Villkor';
-
-  @override
-  String get s9593939a4c => 'Ta bort';
 
   @override
   String get sc26d444f90 => 'Från';
@@ -4354,6 +3707,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sfffb54daf4 => 'Tillstånd';
+
+  @override
+  String get s609cb4c5f9 => 'på';
 
   @override
   String get s3d34e477c2 => 'Nu är';
@@ -4377,9 +3733,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s723d015dc1 => 'Lägga till åtgärder';
 
   @override
-  String get sae3489a6c9 => 'Kontrollera en enhet';
-
-  @override
   String get s1f6962ba39 => 'Kör en scen';
 
   @override
@@ -4401,9 +3754,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sbc8e165fbf => 'Action';
 
   @override
-  String get s750f16460c => 'Av/på';
-
-  @override
   String get s7a544fe304 => 'Ställ värde';
 
   @override
@@ -4416,13 +3766,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sdb235c3ced => '(inga scener)';
 
   @override
-  String get sdced476aeb => 'Skript';
-
-  @override
   String get s4f330bfcfb => '(inga skript)';
 
   @override
-  String get s8a8673aafe => 'Rubrik';
+  String get s34900f9d58 => 'Texttext';
 
   @override
   String get s3c2ee8fe0d => '{summary} = väder, pris och hemstat';
@@ -4471,9 +3818,6 @@ class AppLocalizationsSv extends AppLocalizations {
       'Ett skript är en lista över steg: styra en enhet, vänta, meddela, om / ring ... Kör den från en knapp, en automation eller på distans (iPhone Shortcut).';
 
   @override
-  String get s6fe2320f3d => 'Stoppa';
-
-  @override
   String get se9ee46a9c8 => 'Kör';
 
   @override
@@ -4493,6 +3837,9 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s061d1b874b =>
       'fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärr fjärrfjärrfjärr fjärrfjärr fjärrfjärr fjärr fjärrfjärr fjärrfjärr fjärrfjärrfjärrfjärr fjärr fjärr fjärr fjärrfjärrfjärrfjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr fjärr f';
+
+  @override
+  String get s049d71f971 => 'Sista sista';
 
   @override
   String sdae343a445(String p0) {
@@ -4738,504 +4085,6 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get s876c7230a2 => 'Lägg till enhet';
-
-  @override
-  String get sa252f06bff =>
-      'Välj ditt enhetsmärke. Molaplan hittar det och skapar plattorna.';
-
-  @override
-  String get s5b3b5e5a24 =>
-      'Sök varumärke eller enhet (t.ex. Shelly, Hue, IKEA)';
-
-  @override
-  String get sa427be10c9 => 'Hitta och ansluta automatiskt';
-
-  @override
-  String get s6f4cc0844f => 'Kommande – hur man använder den idag';
-
-  @override
-  String get s846ee3bc67 => 'Andra enheter';
-
-  @override
-  String get sdeadd78d47 => 'Thermostat värme kylning';
-
-  @override
-  String get s48264cfe32 => 'Termostat';
-
-  @override
-  String get s641a848754 =>
-      'Håller den temperatur du vill ha: styr reläer eller en värmepump från en termometer. Kan spara med spotpriser.';
-
-  @override
-  String get s94493d01ca => 'Väderprognos temperatur regn vind';
-
-  @override
-  String get scb3570338f =>
-      'Vädret nu och per timme: temperatur, regn och vind där du bor. Ingen enhet behövs.';
-
-  @override
-  String get s2a9b6fedd9 => 'Kan inte hitta ditt varumärke?';
-
-  @override
-  String get scfc7244d06 =>
-      'Husqvarna, Zigbee, Tuya, värmepumpar... se hur man använder dem idag.';
-
-  @override
-  String get sf7b77783e5 => 'Annan (manuell inställning)';
-
-  @override
-  String get sc168355ee6 => 'Annan enhet (avancerat)';
-
-  @override
-  String get s3022f72ece => 'Alla anslutningstyper.';
-
-  @override
-  String get s2d1d488d6d => 'för tekniska användare.';
-
-  @override
-  String get s6f1c11270c => 'Innehåller exempelinställningar';
-
-  @override
-  String s4f55f417b1(String p0) {
-    return 'Enheten har $p0 reläer';
-  }
-
-  @override
-  String get sab3ebba17a => 'Enheten har 1 relä';
-
-  @override
-  String get sfa48c40832 => 'Energimätning';
-
-  @override
-  String get sc8d1abbd21 => 'Kortnamn';
-
-  @override
-  String get s183ed60009 => 'OK';
-
-  @override
-  String s1ea8fe913b(String p0) {
-    return 'Adress: $p0';
-  }
-
-  @override
-  String get s16dc13070c =>
-      'Home Assistant använder ett självsignerat certifikat. Det godkändes eftersom adressen finns i hemnätverket.';
-
-  @override
-  String get sd531eb2fc2 =>
-      'Home Assistant hittades inte automatiskt. Skriv adressen du öppnar den med (t.ex. http://192.168.1.20:8123 eller Nabu Casa-adressen).';
-
-  @override
-  String get s7def041e83 => 'Hittade Home Assistant:';
-
-  @override
-  String s2967a37e01(String p0, String p1) {
-    return 'Hittade: $p0 – $p1';
-  }
-
-  @override
-  String get s8f4c0baf1a =>
-      'Inga enheter hittades automatiskt. Skriv adressen själv - hitta den i routern eller enhetsappen.';
-
-  @override
-  String get s104238f11e => 'Hittade enheter – välj din:';
-
-  @override
-  String get sd5f9dce947 => 'Sök är inte tillgängligt på detta nätverk.';
-
-  @override
-  String get s26abc57d91 => 'Lär in fjärrkontrollens knappar?';
-
-  @override
-  String get sc709f38633 =>
-      'Grundläggande kontroll fungerar redan. Du kan också lära andra fjärrknappar, t.ex. \"Turbo\".';
-
-  @override
-  String get s6cac83dd5e => 'Inte nu';
-
-  @override
-  String get s97ea2eeb11 => 'Lär in nu';
-
-  @override
-  String get s09cfb7b2a1 => 'Enheten tillagd';
-
-  @override
-  String sda9574390f(String p0) {
-    return 'Enhet och $p0 kakel tillagda';
-  }
-
-  @override
-  String get sd51ee1ec8d =>
-      'Förinställda inställningar är exempel. Kontrollera dem mot din enhetsmanual innan du förlitar dig på dem.';
-
-  @override
-  String get s2e99b59497 =>
-      'IR är en-vägs: värmepumpen bekräftar inte. Molaplan skickar alltid hela staten och visar vad den skickade. Undervisa andra fjärrknappar senare: Anslutningar → IR-sändare → \"Lär ett nytt kommando\".';
-
-  @override
-  String get s0dd21e026c => 'Guide och automatisk sökning';
-
-  @override
-  String get s695a011cc1 => 'Söker…';
-
-  @override
-  String get s47d409fddd => 'Sök nätverk';
-
-  @override
-  String get sa62eebe6bd => 'Detektera reläer';
-
-  @override
-  String get s7196b72140 =>
-      'Inga infödda Modbus TCP - en RS485 → TCP-gateway behövs.';
-
-  @override
-  String get s2e8ba44677 => 'Källa';
-
-  @override
-  String get sceb8e47d07 => 'Testa anslutningen';
-
-  @override
-  String get s02ce5f4a01 => 'Fungerar!';
-
-  @override
-  String get sb9e9e55164 => 'Dessa kort skapas';
-
-  @override
-  String get s1cb2891ef2 => 'Fyll i fälten märkta med * för att se plattorna.';
-
-  @override
-  String get s504861ee78 =>
-      'Inga färdiga plattor - du kan lägga till dem senare med pennaknappen.';
-
-  @override
-  String get s1094266d4c => 'Visar ett värde';
-
-  @override
-  String get sf6ae3f3323 => 'Strömbrytare';
-
-  @override
-  String get s20dad69675 => 'Knapp';
-
-  @override
-  String get s0e9f94df05 => 'Reglage';
-
-  @override
-  String get s109b454866 => 'Kamera view';
-
-  @override
-  String get s37153e0e80 => 'Avancerade inställningar';
-
-  @override
-  String get s0ca55a9cae =>
-      'Andra enheter använder tekniska inställningar (HTTP, MQTT, Modbus...). Om ditt varumärke är listat, använd det istället.\n\nSlå på avancerade inställningar? Du kan stänga av dem i Inställningar.';
-
-  @override
-  String get s9630135746 => 'Slå på';
-
-  @override
-  String get sbcdff8f72a => 'Vilken kamera har du?';
-
-  @override
-  String get s67bf18fb6f => 'Övrig kamera (ONVIF)';
-
-  @override
-  String get sdbbc24198f => 'Vilken värmepump har du?';
-
-  @override
-  String get sdfd0407af6 => 'Verifiera – inget officiellt leverantörsdokument.';
-
-  @override
-  String get s5562a66892 => 'No Wi-Fi – IR-sändare (varje varumärke)';
-
-  @override
-  String get sc6411a9010 =>
-      'En Tasmota eller ESPHome IR-sändare (t.ex. Athom IR & RF) skickar hela staten som fjärrkontrollen. Du kan också lära dina egna kommandon.';
-
-  @override
-  String get s6cce12c7e3 => 'Serviceport (ESPHome)';
-
-  @override
-  String get s0d3bc6d125 => 'En ESP på inomhusenhetskontakt, tvåvägs.';
-
-  @override
-  String get s8275426406 => 'Via Home Assistant';
-
-  @override
-  String get s5b10465c5b => 'Om du redan har Home Assistant.';
-
-  @override
-  String get s417228f48f => 'Andra varumärken – varför ännu inte';
-
-  @override
-  String get se50e28a0e4 =>
-      'Enheterna styrs på ditt hemnätverk utan molnet. Första gången hämtas deras lokala nycklar med ditt eget gratis Tuya-utvecklarkonto (cirka 10 minuter, bara en gång).';
-
-  @override
-  String get sb35b23dbdd =>
-      'Hämta nycklarna med mitt eget Tuya-konto (rekommenderas)';
-
-  @override
-  String get sbc29869e30 => 'Alla Wi-Fi-enheter i appen samtidigt.';
-
-  @override
-  String get s2f57241369 => 'Jag har redan den lokala nyckeln';
-
-  @override
-  String get sf4a309c04a => 'En enhet: adress, ID och nyckel.';
-
-  @override
-  String get sd551537404 =>
-      'Verifiera avläsningarna – inget officiellt leverantörsdokument.';
-
-  @override
-  String get sa1a45de0f2 => 'Lokalt – rekommenderat';
-
-  @override
-  String get se8b35fb9e9 => 'Cloud – valfritt';
-
-  @override
-  String get s95216a7a5e => 'Andra – varför ännu inte';
-
-  @override
-  String get sc52321f275 => 'Vilken inverterare har du?';
-
-  @override
-  String get s862002ac64 =>
-      'Produktion, nätimport/export och batteriladdning som kort och för automation. En lokal anslutning uppdateras på några sekunder och behöver inget moln.';
-
-  @override
-  String get sa5f3da9152 => 'Vilken laddare har du?';
-
-  @override
-  String get sdeb1f4332e =>
-      'Status, laddning på / av, kraft och nuvarande gräns. Automationer: avgift på solöverskott eller i de billigaste timmarna.';
-
-  @override
-  String get s772c158a57 => 'TCP';
-
-  @override
-  String get sea00017814 => 'låg latens';
-
-  @override
-  String get s2d65587b87 => '8';
-
-  @override
-  String get s2ad22696ca => 'Språk';
-
-  @override
-  String get s7efc5653d2 => 'Enhetens språk';
-
-  @override
-  String s3e5741712a(String p0) {
-    return 'Denna Shelly är en energimätare - ersätt växeln med $p0 mätkort?';
-  }
-
-  @override
-  String sfe2074ae81(String p0) {
-    return 'Enheten har $p0 reläer - lägg till resten?';
-  }
-
-  @override
-  String sf1319d04d0(String p0) {
-    return 'Lägg till $p0';
-  }
-
-  @override
-  String get s95f80e9bdf => 'Fix';
-
-  @override
-  String get s66ad384363 => '24h framåt';
-
-  @override
-  String get s6df3187e65 => 'Idag + imorgon';
-
-  @override
-  String get s76379cf7c6 => '48 h';
-
-  @override
-  String get s306729fe62 => 'Inga priser';
-
-  @override
-  String get sff03a35d96 => 'I 1 h';
-
-  @override
-  String get sf9e22ac5e7 => 'gamla priser';
-
-  @override
-  String get sa0bd9ad5b1 => 'Exempelkamera - lägg till din egen med Add-enhet';
-
-  @override
-  String get s4529c1010a => 'Välj en kameraanslutning';
-
-  @override
-  String get s98bf81bba3 => 'Live video fungerar inte på den här enheten';
-
-  @override
-  String get seb2bb5cbce =>
-      'Live video visar bara på hemnätverket. Denna kamera har ingen stillbild för fjärranvändning.';
-
-  @override
-  String get sc95fb5440b => 'Stream slutade';
-
-  @override
-  String get sd55dd196f6 =>
-      'Ingen live-video. Kontrollera att du är på hemmanätverket och RTSP är på i kameran.';
-
-  @override
-  String get s8e574c3313 => 'Effekt';
-
-  @override
-  String get sa9360bdda1 => 'Fläkt';
-
-  @override
-  String get sc7d02fbe84 => 'Värmepump';
-
-  @override
-  String get s8d06ee5308 => 'Larm';
-
-  @override
-  String get sfb63e3c23f => 'Lås';
-
-  @override
-  String get s2f42d90475 => 'Vattenvatten';
-
-  @override
-  String get sf2d10dd213 => 'El/kraft';
-
-  @override
-  String get s4594c7448e => 'Besparingar / billigast';
-
-  @override
-  String get s291ca127d6 => 'Garage';
-
-  @override
-  String get sb543af1c63 => 'Dörr';
-
-  @override
-  String get s60b1079d6c => 'Fönster';
-
-  @override
-  String get s66ce56ca38 => 'Börja';
-
-  @override
-  String get s0ab3a44562 => 'Timer';
-
-  @override
-  String get s3044a10005 => 'Nätverk';
-
-  @override
-  String get s1f67139f55 => 'Sauna / uppvärmning';
-
-  @override
-  String get sf21fd72396 => 'Outlet';
-
-  @override
-  String get s7783fe5fca => 'Favorit';
-
-  @override
-  String get s912ea5d2ec => 'Skicka';
-
-  @override
-  String get se223375393 => 'Lista List';
-
-  @override
-  String get sfb0b971c01 => 'Svängning';
-
-  @override
-  String get see42f2d999 => 'Fjärr';
-
-  @override
-  String get s9126bf24a0 => 'Sol sol sol solen';
-
-  @override
-  String get sdaa7d4de12 => 'Scen';
-
-  @override
-  String get s11cc92bdc3 => 'Radon';
-
-  @override
-  String get s095db91dfb => 'CO₂';
-
-  @override
-  String get s4b1eda4282 => 'Luftkvalitet';
-
-  @override
-  String get s1a6081db34 => 'EV laddare';
-
-  @override
-  String get sfe55fd97fa => 'All tyst.';
-
-  @override
-  String s162c54ed4c(String p0) {
-    return '$p0: gjort';
-  }
-
-  @override
-  String get se26e839c2f => 'Måndag Måndag Måndag';
-
-  @override
-  String get s763254941f => 'Tisdag tisdag tisdag';
-
-  @override
-  String get sf3448cdd52 => 'Onsdag onsdag onsdag';
-
-  @override
-  String get sc34ca7eddb => 'Torsdag torsdag torsdag';
-
-  @override
-  String get sfa82438bec => 'fredag fredag fredag';
-
-  @override
-  String get s517c348371 => 'Lördag lördag';
-
-  @override
-  String get sb1f0e72163 => 'Söndag söndag';
-
-  @override
-  String get s80c4ecec94 => 'c/h';
-
-  @override
-  String get sb68e905fc4 => 'Förbrukning (kWh)';
-
-  @override
-  String get s5fc5085143 => 'Kostnad';
-
-  @override
-  String get s2b2118a93b => 'Gamla data';
-
-  @override
-  String get sb730159a01 => 'Pris nu';
-
-  @override
-  String get s68fcfcfed1 => 'Billigaste timmen i dag';
-
-  @override
-  String get s86ff059f5e => 'Medelpris i dag';
-
-  @override
-  String get s7b911d48c6 => 'Dyraste timmen i dag';
-
-  @override
-  String get s29dbf49d92 => 'Kostnad just nu';
-
-  @override
-  String get s723c887da6 =>
-      'Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min';
-
-  @override
-  String get s3b36524e04 => 'medel';
-
-  @override
-  String get scaaff6345d => 'max max max max max';
-
-  @override
-  String get s5f131c3ec4 => 'Förbrukning';
-
-  @override
-  String get s039bb374fe => 'Siffrorna är timmedelvärden';
-
-  @override
   String get s62cfd94468 => 'Billigaste timmar på natten';
 
   @override
@@ -5312,513 +4161,383 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get saa4df8e877 =>
-      'Bridge hittades inte. Är telefonen på brons Wi-Fi \"Molaplan-XXXX\"? Om nätverket saknas, håll bronknappen för 3 s (inställningen öppnas i 15 minuter).';
+  String get s4dab2d409b => 'Exportkonfiguration';
 
   @override
-  String get sf5293b1989 =>
-      'Bron är inte i installationsläge. Håll knappen för 3 s och försök igen.';
+  String get s149c1e54d6 => 'Konfiguration exporterad';
 
   @override
-  String get s839deeab41 =>
-      'Detta är inte bron på etiketten / QR-koden (nyckelbrist). Ingenting skickades.';
+  String get s35f445793b => 'Importera konfiguration';
 
   @override
-  String get s3694ce006b =>
-      'Brons svar är inte giltigt (krypteringsmissmatch). Ingenting sparades.';
+  String get sd55be829e3 => 'Ersätt nuvarande konfiguration?';
 
   @override
-  String s61aea0b713(String p0) {
-    return 'Bron avvisade installationen: $p0';
-  }
+  String get s852dd1795e =>
+      'Alla aktuella anslutningar och instrumentpaneler ersätts av filinnehållet.';
 
   @override
-  String get s63551081b0 => 'Lägg hem bridge';
+  String get s580678cb10 => 'Importera';
 
   @override
-  String get s592edd94e7 => 'Molaplan Bridge-enhet';
+  String get s5f2ec17730 => 'Konfiguration importerad';
 
   @override
-  String get sa329968355 =>
-      'En liten alltid-på-enhet (t.ex. Athom IR / RF-kontrollen) som passerar fjärrkommandon till dina enheter och styr värmepumpen genom infraröd.';
+  String get sa87fff54f3 => 'Import misslyckades';
 
   @override
-  String get sd8790684a6 =>
-      'Ström bron. En ny bro öppnar inställningen själv (slow blink, en gång i sekunden).';
+  String get s2fd2bfedb8 => 'Konto';
 
   @override
-  String get s087004d26c =>
-      'Öppna telefonens Wi-Fi-inställningar och gå med i \"Molaplan-XXXX\" (inget lösenord).';
+  String get s4c0ff416ab => 'Samma hem och plattor på alla dina enheter.';
 
   @override
-  String get sf85e449cd8 => 'Kom tillbaka hit och tryck på \"Find bridge\".';
+  String get scc7e418ee3 =>
+      'Logga in för att ha samma hem, enheter och plattor på PC, surfplatta och telefon. Valfritt.';
 
   @override
-  String get s57466387fc => 'Hitta bridge';
+  String get sb386aff4b7 => 'Nedladdningar';
 
   @override
-  String get sd166e3cf6f => 'Bridge hittade';
+  String get sbb264ce105 =>
+      'Att ladda ner PC-appen från butiken kräver ett konto (samma som på beställningen).';
 
   @override
-  String get s6b841de5dd => 'Brandvaring';
+  String get se5ab008127 => 'Öppna nedladdningar';
 
   @override
-  String get s88fa323548 => 'Home Wi-Fi';
+  String get s08d62fd281 => 'Utseende';
 
   @override
-  String get sf48dd63b0a => 'Nätverksnamn';
+  String get s2b8a2754c6 => 'Tema';
 
   @override
-  String get s9f9c574cf9 => 'Wi-Fi lösenord';
+  String get s79f67deb42 => 'Lampa';
 
   @override
-  String get sc58a7d7121 => 'Hemmets namn';
+  String get s0d6fb52039 => 'Mörk';
 
   @override
-  String get sc452460b0f => 'Styrelsestyrelsen';
+  String get s70dd7fdd58 => 'Genom soluppgång och solnedgång';
 
   @override
-  String get s4bdd633042 => 'Otestade';
+  String get s21206b61f7 =>
+      'Behov av hemorten (Energy › Hem). Fram till dess följs enhetsinställningen.';
 
   @override
-  String get sbe6a859b63 =>
-      'Detaljerna skickas krypterad - bron Wi-Fi är öppen, men lösenordet kan inte läsas av det.';
+  String get s4e23920823 =>
+      'Ljus om dagen, mörkt på kvällen. Av: följer enhetens inställning.';
 
   @override
-  String get s77af0820de => 'Anslut bron';
+  String get s4b847ce63e =>
+      'Valet gäller för den här enheten och sparas på ditt konto som standard för nya enheter.';
 
   @override
-  String get s1ec01d8473 => 'Bridge ansluten!';
+  String get s5ebc02022b => 'Visa som timligt genomsnitt';
 
   @override
-  String get s88bc217a1b =>
-      'Bron går nu med i hemmet Wi-Fi (ljus på med ett kort dopp var tredje när den är ansluten). Byt telefonen tillbaka till hemmet Wi-Fi eller mobildata - Fjärråtkomst visar brostatus.';
+  String get s68b4d332ca =>
+      'Pris, billigaste timmar och priskontroll per timme (timme förkortat kontrakt). Av: 15 min där området publicerar 15-mins priser.';
 
   @override
-  String get s2adc3a77ed => 'Välj anslutningstyp';
+  String get saf496a12a3 => 'Morgonkort: Visa också den dyraste timmen';
 
   @override
-  String get s78d94155f1 => 'Anslutningar';
+  String get sc53b1b78c0 =>
+      'Den billigaste timmen av nästa 24 h visas alltid med sitt pris.';
 
   @override
-  String get s776d8b06bf => 'Ny anslutning';
+  String get s0625d54b38 => 'Kortstorlek';
 
   @override
-  String get sc6d89693a5 =>
-      'Inga anslutningar ännu. Lägg till en enhet eller tjänst, t.ex. ventilationsenhet (Modbus), Home Assistant eller en kamera.';
+  String get s8382da3467 => 'Normal';
 
   @override
-  String get s07c82cb0af => 'Krävt fält';
+  String get s7c1cd8314e => 'Dölj rutor som inte fungerar på distans';
 
   @override
-  String get see3fd4862d => 'Samma ämne två gånger?';
+  String get sa0cbbafb4e =>
+      'Borta hemifrån döljs rutor som bara fungerar i hemnätverket. Som standard står de kvar, gråtonade.';
 
   @override
-  String get sb80a9b6813 =>
-      'Kommandoämnet och svarsämnet är detsamma. De flesta enheter (t.ex. kameraövervakningspanelen) lyssnar på sitt eget kommandoämne och svarar på ditt anmälningsämne - sedan kommer kommandon aldrig. Spara ändå?';
+  String get s419166b895 => 'Klocka och väder på hemskärmen';
 
   @override
-  String get s70f720de6d => 'Spara ändå';
+  String get sec30a8f23e =>
+      'Tid, datum, väder och elpris på toppen av vyn. Denna enhet endast.';
 
   @override
-  String get sf702cf0ac6 => 'Radera anslutning?';
+  String get sf7205b268f => 'Animationer';
 
   @override
-  String s6b83de0ab9(String p0) {
-    return '$p0 kakel använder denna anslutning och kommer att sluta fungera.';
-  }
+  String get s1535c6411d =>
+      'Mjuka övergångar när en enhet ändrar tillstånd. Off = lugnare och lättare för en äldre tablett.';
 
   @override
-  String get sccd1325381 =>
-      'Anslutningen kommer att tas bort från den här enheten.';
+  String get s21f870dbc2 =>
+      'Visar tekniska inställningar: anslutningar (HTTP, MQTT, Modbus...), nyttolast, JSON-vägar och kakelkällor. De flesta behöver inte dessa.';
 
   @override
-  String get s837e0fc5e6 =>
-      'IR är envägs: värmepumpen bekräftar inte kommandon. Tiles visar det sista skickade tillståndet.';
+  String get sc84689a549 => 'Enheter och integrationer';
 
   @override
-  String get sf1ffb49d9c => 'Importera pumpens registerlista (CSV)';
+  String get sca4c8b88b7 => 'Home Assistant: Lägg till enheter';
 
   @override
-  String get s09737988fd => 'Anslutningen fungerar!';
+  String get saec69088a5 => 'Styr ditt hem från utsidan också.';
 
   @override
-  String get s0a972aa85e =>
-      'Lösenord och tokens lagras i enhetens säkra lagring.';
+  String get s417eb9a875 => 'Ställ in fjärråtkomst';
 
   @override
-  String get sa26ae27039 => 'Hoppa över de dyraste timmarna';
+  String get scc3d01ee5e => 'Guider: VPN, Nabu Casa, moln MQTT';
 
   @override
-  String get scfd1a72ed5 => 'Väderbaserad pre-värme';
+  String get s844e081db8 => 'Delande';
 
   @override
-  String get s2bd403874c =>
-      'Värme i de billigaste timmarna på dagen. För lagringsvärme och vattenvärmare.';
+  String get s535358a517 =>
+      'Ge någon, eller en installatör, åtkomst till de enheter du väljer.';
 
   @override
-  String get se759c14061 =>
-      'Värme normalt men hoppar över de dyraste timmarna i korta pauser.';
+  String get s25c286a743 => 'Delning – ny inbjudan';
 
   @override
-  String get s5cab118d44 =>
-      'Pre-heats före dyra eller kalla trollformler och sparar i dyra timmar. Timmarna följer prognosen.';
+  String get s90ba544719 => 'Hjälp';
 
   @override
-  String get sa7480a9930 => 'Billig timme';
+  String get sb915c42792 => 'Visa den blivande guiden';
 
   @override
-  String get s50812672e5 => 'Väntar på en billig timme';
+  String get sd337a7ddd5 => 'Backup och överföring';
 
   @override
-  String get seb1c64d9f8 => 'hoppa över en dyr timme';
+  String get s07c1048b4f =>
+      'Exportera konfigurationen till en JSON-fil och importera den på en annan enhet (t.ex. PC → telefon).';
 
   @override
-  String get s2e52a3d40e => 'normalt normalt normalt normalt';
+  String get s2f797098e7 => 'Inkludera lösenord och tokens';
 
   @override
-  String get sf6d34efdd6 => 'Inga priser – normal uppvärmning';
+  String get s26f72949e3 => 'Filen är sedan okrypterad - håll den säker.';
 
   @override
-  String get s8c42ad8541 => 'Semester läge';
+  String get sdb12678e52 => 'Exportera';
 
   @override
-  String get sc3d8828060 => 'Värme för din retur';
+  String get s34686ffb09 => 'Exempel';
 
   @override
-  String get s577b8c3cf1 => 'Brandplace värmer';
+  String get sc8327738b3 =>
+      'Lägg till en exempelvy (kamera, larm, lampor, ventilation). Exempelenheterna ansluter aldrig någonstans - lägg till din egen med Lägg till enhet.';
 
   @override
-  String get sbcd02dce0a => 'varmt tillräckligt';
+  String get sec02c7c071 => 'Lägg till exempelvy';
 
   @override
-  String get s22678639dc => 'Säkerhetsgräns: för kall';
+  String get s057b871ed2 => 'webbläsare version';
 
   @override
-  String get s1e3f154a0a => 'frostskydd';
+  String get s522d6584c5 => 'Sök efter uppdateringar';
 
   @override
-  String get s1f2938edec => 'Säkerhetsgräns: för länge';
+  String get sd178a1d809 =>
+      'Din egen kontrollterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kameror, WebSocket, TCP och UDP. Utan ett konto stannar alla inställningar på den här enheten.';
 
   @override
-  String get s54fce2a7e8 => 'Förvärmning';
+  String get sf5bfc4217c => 'Vilken hemassistent?';
 
   @override
-  String get s6b35f75e80 => 'spara medan dyrt';
+  String get sbc210f9634 =>
+      'Du har mer än en Home Assistant-anslutning. En oanvänd (inga kort) kan tas bort.';
 
   @override
-  String get sdde7adcb29 =>
-      'Smart värme styr värme genom elpris och väder, på ett sätt som passar din uppvärmning typ. Svara på några frågor för att få rekommenderade inställningar.';
+  String get s4f62c41cb3 => 'Inga kort';
 
   @override
-  String get s3d29895a40 => 'Starta undersökningen';
+  String get s92c338c3bd => 'kort';
 
   @override
-  String get sb0d738492d => 'Fireplace läge på';
+  String get sd3089f07cc => 'Ta bort oanvänd anslutning';
 
   @override
-  String sd1af5ba10d(String p0) {
-    return 'Fireplace läge tills $p0';
-  }
+  String get s1333776c9f => 'Ta bort anslutningen?';
 
   @override
-  String get s48a7ba4933 => 'Semester läge på';
+  String get s8efb99df1d => 'Kyler';
 
   @override
-  String get s10a95132ce => 'Smart värme är avstängd';
+  String get s0b98d62330 => 'Värme och kyla';
 
   @override
-  String get s035459d8bb => 'Värme följer pris och väder';
+  String get sa61efb9866 => 'värmer';
 
   @override
-  String get s6b83aed534 =>
-      'Behov av en hembro: ställa in fjärråtkomst på hem surfplattan eller PC (inställningar → fjärråtkomst).';
+  String get s9a47ee3e3c => 'kyler';
 
   @override
-  String get s830cace8fe => 'Uppdatera hembron (behöver Molaplan 0.10.0).';
+  String get s156712ac0c => 'väntar';
 
   @override
-  String get s495c887d23 => 'Körs på hembron, även med appen stängd.';
+  String get s8a1f52a37b => 'Termostaten borttagen';
 
   @override
-  String get s7954d5fca9 => 'Stoppa eldstad läge';
+  String get s28dc9bc46a => 'Ingen temperaturavläsning';
 
   @override
-  String get sf44db20422 => 'Fireplace lit';
+  String get s4f1166fe24 =>
+      'Ingen hembro: termostaten styr ännu inte. Ställ in fjärråtkomst på hemmatabletten.';
 
   @override
-  String get sd172900c2d => 'Semester: edit';
+  String get s29fd8d5b5e => 'Nu';
 
   @override
-  String get s5da1e65941 => 'Holiday läge';
+  String get see9111ba68 => 'Relä eller brytare (på/av)';
 
   @override
-  String get sdca3ad13dd => 'Värmeanordningar';
+  String get seaed91ad78 => 'Värmepump eller AC (börvärde)';
 
   @override
-  String get sc8c5e37f5d => 'Inga enheter. Lägg till dem i undersökningen.';
+  String get sb757921c13 => 'Värmer';
 
   @override
-  String get sc6976fa352 => 'Uppvärmningsmeddelanden';
+  String get s7407864734 => 'Kyler';
 
   @override
-  String get s1abda8b8f3 =>
-      'Hembron är för gammal: uppdatera den (Molaplan 0.10.0).';
+  String get s272aa3f1da => 'Båda';
 
   @override
-  String get s8c3353e896 => 'Ingen hembro är parad.';
+  String get sdadb6e3501 => 'Reservvärmare';
 
   @override
-  String s38ccb420a7(String p0) {
-    return 'Fungerade inte: $p0';
-  }
+  String get se4e381334d => 'Börjar först när det är tydligt under målet.';
 
   @override
-  String s8847ee78e0(String p0) {
-    return 'Mål $p0 °C';
-  }
+  String get s17c79c5f4e => 'Power on/off (tillval)';
 
   @override
-  String s4b761dad85(String p0) {
-    return 'Nästa: $p0';
-  }
+  String get s92d88612de => 'Värmeläge knapp (valfritt)';
 
   @override
-  String s622f5654cd(String p0) {
-    return 'Fel: $p0';
-  }
+  String get s75ac845bab => 'Cool läge knapp (tillval)';
 
   @override
-  String get s697b47220e => 'Smart värme på';
+  String get sc590a09db9 => 'Vad värmer eller kyler?';
 
   @override
-  String get s45cf6423f8 => 'Redigera undersökningen';
+  String get sa15ffe53d4 =>
+      'Välj en eller flera. t.ex. en värmepump och en backup värmare.';
 
   @override
-  String get sf5dbb363af => 'Säkerhetsgränser';
+  String get sd47a7615a7 => 'Inga lämpliga enheter ännu';
 
   @override
-  String get sf9cd32fb4f => 'Minsta temperaturen';
+  String get s3c7649a7f0 =>
+      'Lägg först till ett relä (t.ex. Shelly) eller en värmepump (IR eller serviceport), sedan komma tillbaka.';
 
   @override
-  String get sfb0553315b => 'Frostskydd';
+  String get see513572ea => 'Varifrån läses temperaturen?';
 
   @override
-  String s9097fb518a(String p0) {
-    return 'Uppvärmning alltid under $p0 °C.';
-  }
+  String get s5155522e83 =>
+      'Välj en termometer. Flera = nedgång eller genomsnitt.';
 
   @override
-  String get s5d37a7088b => 'Längsta tillåtna paus (alla)';
+  String get s581fa290f3 =>
+      'Valfritt: värmepumpen mäter sig själv. Välj en sensor för att se temperaturen.';
 
   @override
-  String get sb0bb55d6e5 => 'per enhet';
+  String get s7e4d8d60a0 => 'Ingen termometer';
 
   @override
-  String get s17bf76025c =>
-      'Säkerhetsgränser åsidosätter pris, semester och eldstadsläge. Minimitemperatur och frostskydd behöver en temperatursensor.';
+  String get s0787d80876 => 'Lägg först till en enhet som visar en temperatur.';
 
   @override
-  String get s109c7fb7a2 => 'Fireplace';
+  String get s89661203b7 => 'Första fungerande';
 
   @override
-  String get s1c15091948 => 'Fireplace läge längd';
+  String get s0da3005956 => 'Medelvärde';
 
   @override
-  String get se150ae5acd => 'Thermostats sänktes i eldstadsläge';
+  String get s0c6a008ffd => 'Namn och läge';
 
   @override
-  String get s161f61412e => 'Temperatursensor nära eldstaden';
+  String get s1790a71e85 => 't.ex. Vardagsrum';
 
   @override
-  String get s81b30d570b => 'Enhetens sensor';
+  String get sd5f46903a1 => 'Måltemperatur';
 
   @override
-  String get s71e80a04a2 => 'Uppvärmningsmeddelanden (ntfy)';
+  String get s6de95e582f => 'Om temperaturen försvinner';
 
   @override
-  String get s5ab83c2574 =>
-      'Samma meddelandekanal och tysta timmar som automationer.';
+  String get s8ff25225b4 => 'Stäng av värme/kyla (säkrast)';
 
   @override
-  String get s32d9d66ffd => 'Ta bort smart uppvärmning';
+  String get s17cb86f49e => 'Behåll som det är';
 
   @override
-  String get s0f995f3d5d => 'Ta bort smart uppvärmning?';
+  String get s9624f070ee => 'Hysteres';
 
   @override
-  String get scc27c1739f => 'Enheterna stannar i sitt nuvarande tillstånd.';
+  String get sf070be2c1e => 'Dödband (värme/kyla)';
 
   @override
-  String get s3bf2d3643c =>
-      'Elektrisk uppvärmning minskas medan eldstaden värmer. Säkerhetsgränser gäller fortfarande.';
+  String get s64540136ff => 'Minsta tid på';
 
   @override
-  String get s58b2cdb4e2 => 'Avsluta tidigare när rummet börjar svalna';
+  String get s21713a2177 => 'Minsta tid av';
 
   @override
-  String get s632723d95f =>
-      'Medan du är borta rum hålls svalare, och vattenvärmaren värms bara natten innan du återvänder. Säkerhetsgränser och frostskydd gäller.';
+  String get s8f7c8eb7d0 => 'Backup värmare när under målet genom';
 
   @override
-  String get s2ebf172fad => 'Börjar';
+  String get sf1eb3b2d34 => 'Sensor förlorad efter ingen läsning för';
 
   @override
-  String get s0ba54fbd61 => 'Återkomstdag';
+  String get s0ab1430151 => 'Ny termostat';
 
   @override
-  String get s025d1c3db1 => 'Temperatur medan borta';
+  String get sbbc98d573d => 'Redigera termostat';
 
   @override
-  String get s11e21d4f75 => 'Hur den är kontrollerad';
+  String get s87984716cb => 'Ta bort termostaten?';
 
   @override
-  String get s8e6c8ffabb => ' (rekommenderas)';
+  String get s79786b9f7d => 'Mål';
 
   @override
-  String get sa35e3e99f4 => 'Kontroll på';
+  String get sdd309c0a63 => 'Termostaten körs på hembryggan';
 
   @override
-  String get s86c45674db => 'Värme timmar om dagen';
+  String get s2a7e9fe291 =>
+      'Ställ in fjärråtkomst på hemmatabletten (Inställningar → Fjärråtkomst). Tills dess kontrollerar det inte någonting.';
 
   @override
-  String get sbd3dbfd7e9 => 'De flesta dyra timmar hoppade över';
+  String get s06cda8c0de => 'Körs på den här enheten (hembrygga).';
 
   @override
-  String get s1f3d8e19f4 => 'Längsta paus i taget';
+  String get s2342536aea => 'Körs på hembryggan.';
 
   @override
-  String get s017c87df20 => 'Komforttemperatur';
+  String get s2c5993c1fd =>
+      'Förvärmning före dyr el och kallt väder, och låter temperaturen sjunka lite i dyra timmar.';
 
   @override
-  String get sf83143ae23 => 'Rumstemperatur sensor';
+  String get s81c4abc1a5 => 'Övervärme +';
 
   @override
-  String get se68cc54085 => 'Ingen sensor';
+  String get sdea18b2b40 => 'Undervärme −';
 
   @override
-  String get s347ce4c3d2 => 'Minska i eldstad läge';
+  String get s523214c8db =>
+      'Linje = måltemperatur, barer = elpris, streckad = utomhustemperatur.';
 
   @override
-  String get s6f88da6bab =>
-      'Termostatmålet fastställs av detta; termostatens egen temperatur är komforttemperaturen.';
+  String get s94b8f63aa7 => 'Lägg hem plats för vädret';
 
   @override
-  String s87cdb30352(String p0) {
-    return 'Uppskattning: om $p0 kWh per dag vid 0 ° C (hela huset).';
-  }
-
-  @override
-  String get sc161d1f9d9 => 'Hur är huset uppvärmt? Välj allt.';
-
-  @override
-  String get saac00e587b => 'isolering';
-
-  @override
-  String get s9f103f81c0 => 'Dålig';
-
-  @override
-  String get sd51256a0f5 => 'Medelvärde';
-
-  @override
-  String get sd5ebaf8a4c => 'Bra bra bra';
-
-  @override
-  String get sf584870588 => 'Uppvärmt område';
-
-  @override
-  String get s97235bfadb => 'Tillåten temperatur swing';
-
-  @override
-  String get s6df5f06d38 =>
-      'Ju mer temperaturen kan variera, desto mer värme kan flytta till billiga timmar.';
-
-  @override
-  String get s07077e2778 => 'Huset har en spis eller lagra spis';
-
-  @override
-  String get sab28f61fad =>
-      'Välj vad som styr varje uppvärmning: ett relä eller plugg (på/av) eller en Molaplan termostat (måltemperatur).';
-
-  @override
-  String get s90ae2f4451 =>
-      'Inga kontrollerbara enheter ännu. Lägg till ett relä eller en termostat först; du kan komma tillbaka till undersökningen senare.';
-
-  @override
-  String get sf7b3494ee1 => 'Kontrollera enheten';
-
-  @override
-  String get se7ffc07763 => 'Inte kontrollerad';
-
-  @override
-  String s5835dc3308(String p0) {
-    return 'Thermostat: $p0';
-  }
-
-  @override
-  String get s075ddc6f0d => 'Rumstemperatursensor (rekommenderad)';
-
-  @override
-  String get s016c02be08 => 'Rekommenderade inställningar';
-
-  @override
-  String s013bbafbec(String p0, String p1) {
-    return 'Hoppa över $p0 dyraste timmar om dagen, högst $p1 h i taget.';
-  }
-
-  @override
-  String se67c73d855(String p0) {
-    return 'Om $p0 värme timmar per dag vid 0 °C.';
-  }
-
-  @override
-  String get sb7524487f9 => 'Ingen styrenhet – inte kontrollerad.';
-
-  @override
-  String get sad1fbf7d03 =>
-      'Tryck på \"Fireplace lit\" efter belysning: elektrisk uppvärmning minskas för 12-24 h eller tills sensorn visar kylning.';
-
-  @override
-  String get sfb41f90571 =>
-      'Du kan ändra metoden och siffrorna senare på enhetssidan under Avancerad.';
-
-  @override
-  String get s1706667040 => 'Hus Hus Hus';
-
-  @override
-  String get s84005ad77c => 'Enheter';
-
-  @override
-  String get s023d14fd87 => 'Rekommendation';
-
-  @override
-  String sfde6663859(String p0, String p1) {
-    return 'Undersökning $p0/4: $p1';
-  }
-
-  @override
-  String get sda588a203b => 'Använd dessa';
-
-  @override
-  String get sc51b1e0dc0 => 'Vad vill du lägga till?';
-
-  @override
-  String get s38f5b2ef26 =>
-      'Shelly, Sonoff, Hue, kamera, värmepump... Söker ditt hemnätverk automatiskt.';
-
-  @override
-  String get s3b56b2cb8d => 'Kort';
-
-  @override
-  String get sfc846c4cc5 =>
-      'Elpris, väder, kamera, mätning, meddelande eller kommando – ingen ny enhet behövs.';
-
-  @override
-  String get sf00aa23cf6 =>
-      'När... gör: lampor vid solnedgången, en läckagevarning, de billigaste timmarna, skript och scener.';
-
-  @override
-  String get s147f47be4c => 'Lägg till kort';
+  String get s941fbb47fe => 'Planen beräknas…';
 
   @override
   String get s229f981388 => 'Home bridge på';
@@ -5833,7 +4552,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s9d64d4c166 => 'Fjärr';
 
   @override
-  String get s1f8cf57b2c => 'Ingen anslutning';
+  String get sba10f23f03 => 'Ansluter…';
 
   @override
   String get s678a751265 => 'Anslut den här enheten hem';
@@ -5959,6 +4678,9 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String get sb38b582dab => 'Hembrygga';
+
+  @override
   String get s51fb400921 => ' · uppdateringar tyst';
 
   @override
@@ -6022,6 +4744,9 @@ class AppLocalizationsSv extends AppLocalizations {
       'Ingen kod eller QR behövs – båda enheterna finns på ditt konto.';
 
   @override
+  String get sdbdf676485 => 'Anslut';
+
+  @override
   String s948bfb1114(String p0) {
     return 'Ansluten till $p0.';
   }
@@ -6034,6 +4759,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sb9e406274e => 'Online online online';
+
+  @override
+  String get scf2e61da2c => 'inte svara';
 
   @override
   String get sb981e102f1 => 'gamla Molaplan (0.8.0 testbygge eller äldre)';
@@ -6076,6 +4804,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s902eaaff9f => 'Öppet Öppet Öppet Öppet Öppet';
 
   @override
+  String get sfbf490ec3f => 'Uppdatera';
+
+  @override
   String get s72da730a42 => 'Fjärrservice: ansluten';
 
   @override
@@ -6084,9 +4815,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s88e2b1dad5 =>
       'Ingen anslutning till fjärrtjänsten – retrying automatiskt. Kontrollera internetanslutningen.';
-
-  @override
-  String get scc0cccf89d => 'Av';
 
   @override
   String get sa1d085d92c => 'Hembron har inga instrumentpaneler att kopiera.';
@@ -6245,6 +4973,12 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sa04c218f82 => 'Avvisa';
 
   @override
+  String get sdfaf8c242b => 'Godkänn';
+
+  @override
+  String get sdf66171e91 => 'Den här enheten';
+
+  @override
   String get sd64229b6d8 => 'Inte inrätta ännu';
 
   @override
@@ -6260,706 +4994,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s9ba8cafced => 'Vad är fjärråtkomst?';
 
   @override
-  String get s1cf33c1fbc => 'Värde';
-
-  @override
-  String get s86029171be => 'Av/på';
-
-  @override
-  String get s4ddce888df => 'Knapp / genväg';
-
-  @override
-  String get s357fc9c3fe => 'Slider / setpoint';
-
-  @override
-  String get s14da6beba5 => 'Visar en läsning, t.ex. temperatur.';
-
-  @override
-  String get se4b1d203df => 'På/av, t.ex. ett ljus eller larm.';
-
-  @override
-  String get sc2197ab417 => 'En kran gör en eller många saker.';
-
-  @override
-  String get sd611704caf => 'Justera ett värde, t.ex. temperatur.';
-
-  @override
-  String get sacfc0c0b41 => 'Visar en kamerabild.';
-
-  @override
-  String get s7172c54c2c => 'Håller temperaturen på inställt värde.';
-
-  @override
-  String get s76e7a995de => 'Läst värde';
-
-  @override
-  String get s4e1f25d257 => 'Eget kommando';
-
-  @override
-  String get sea15760b77 => 'Vad gör knappen?';
-
-  @override
-  String get s630ee9894e =>
-      'Välj ett skript, en scen eller en enhet. Knappen fungerar i appen och när du är borta, genom fjärråtkomst.';
-
-  @override
-  String get s1173c2dbf9 => 'Inga skript ännu. Gör en under Automations.';
-
-  @override
-  String get s7b42ecba51 => 'Inga scener ännu. Spara en under Automations.';
-
-  @override
-  String get s589d73245e =>
-      'Inga växelbara enheter ännu. Lägg till en switch först.';
-
-  @override
-  String get sc5edd6d3d1 => 'Nytt kort';
-
-  @override
-  String get sa684fd0716 => 'Redigera kort';
-
-  @override
-  String get sa7b6366b62 =>
-      'Mätning: display, trend, färggränser, larm, decimaler och skalning.';
-
-  @override
-  String get sae41bebdab =>
-      'Kontroll: bekräftelse, lås / PIN, min / max / steg, invert och momentary.';
-
-  @override
-  String get s19485c79b2 => 'Ingen';
-
-  @override
-  String get s0483226428 => 'Välj en temperatursensor';
-
-  @override
-  String get scf37cbeda8 => 'Ikon';
-
-  @override
-  String get sfeab9bd26f => 'Bredd';
-
-  @override
-  String get s58be670598 => 'Höjd';
-
-  @override
-  String get sd7314e8237 => 'Visning';
-
-  @override
-  String get s7d6cee9e42 => 'Barer (15 min)';
-
-  @override
-  String get sc0e069225b => 'Trend + Nu linje';
-
-  @override
-  String get s07647fa07d => 'Range';
-
-  @override
-  String get s8feeef3110 => 'Visa imorgon när tillgängligt';
-
-  @override
-  String get sad692e6ae5 =>
-      'Morgondagens priser visas av sig själva en gång publicerad (cirka 14:00).';
-
-  @override
-  String get s1c72b8c56a => 'Trendlängd';
-
-  @override
-  String get s6bb0c0c7e3 => 'Mätarens minimum';
-
-  @override
-  String get sa444aab286 => 'Automatisk';
-
-  @override
-  String get sbf29caff87 => 'Mätarens maximum';
-
-  @override
-  String get sea30815e6a =>
-      'Tekniska kakelinställningar visas när du slår på \"Avancerad\" i Inställningar.';
-
-  @override
-  String get s382afc832f => 'Statlig källa';
-
-  @override
-  String get s581aee3e96 => 'Valfritt: där det nuvarande tillståndet läses av.';
-
-  @override
-  String get s3adc51170c => 'Rå kombination (avancerad)';
-
-  @override
-  String get s5f542e17e2 =>
-      'Varje korttyp är tillåten på varje anslutning. En felaktig kombination kan visa vilseledande data, t.ex. \"På\" för elpriset.';
-
-  @override
-  String get scb988b1a4a => 'Av: endast korttyperna stöder anslutningen.';
-
-  @override
-  String get se6b18b17d9 => 'omröstningsintervall (s, 0 = none)';
-
-  @override
-  String get s01f2b1ee0c =>
-      'MQTT, Home Assistant och WebSocket uppdatering lever utan omröstning.';
-
-  @override
-  String get s937448ecf5 => 'Testläsare';
-
-  @override
-  String get s5cbdea7f7e => 'Visning';
-
-  @override
-  String get se6af4b33df => 'Enhet';
-
-  @override
-  String get sd5498697da => 'Decimaler';
-
-  @override
-  String get s4f7007db78 => 'Värdenamn';
-
-  @override
-  String get s4aae179c52 => '0=Off;1=Home;2=Away';
-
-  @override
-  String get s0c12fda7ca => 'Toggle kommandon';
-
-  @override
-  String get s3a9d9e16ef => '\"På\" värden (komma separerade, tomma = auto)';
-
-  @override
-  String get s1509c5a2a6 => 'På kommando';
-
-  @override
-  String get s2a1e131afd => 'OFF kommando';
-
-  @override
-  String get s0201de52c0 =>
-      '{\'{value}\'} i kommandot ersätts av reglaget värde.';
-
-  @override
-  String get sc30c9a7e51 => 'Steg Steg';
-
-  @override
-  String get s4d6451a63a => 'Ställ in kommando';
-
-  @override
-  String get sa4082e1a79 => 'Kommandon (kör i ordning)';
-
-  @override
-  String get s467488e572 =>
-      'En genväg kan styra flera enheter i sekvens, med förseningar.';
-
-  @override
-  String get sad43973fb3 => 'Lägg till kommando';
-
-  @override
-  String get sdaef43c622 => 'Be om bekräftelse';
-
-  @override
-  String get s5210a5ad23 => 'Anslutning';
-
-  @override
-  String get s96705fc3df => 'Kommandot skickat';
-
-  @override
-  String get sb41db1e809 => 'Försök försöka';
-
-  @override
-  String get s77d2309fd5 => 'Fördröjning före (ms)';
-
-  @override
-  String get s2b463f47ba => 'Gömd';
-
-  @override
-  String get s2594346d86 => 'Guide linjer';
-
-  @override
-  String get sfdffaffea4 => 'Ingen';
-
-  @override
-  String get sd6c2de0256 => 'Horisontell';
-
-  @override
-  String get sb8ef66c33e => 'Grid';
-
-  @override
-  String get s0bee1b8ed3 => 'Värdeskala';
-
-  @override
-  String get sd4e9b57931 => 'Tidsaxel';
-
-  @override
-  String get s7abdb12fef => 'Datapunkt markörer';
-
-  @override
-  String get s29135ed75a =>
-      'Auto: Axlar och guidelinjer visar när kortet är minst 2×2.';
-
-  @override
-  String get s638c648b40 => 'Stream';
-
-  @override
-  String s32ef3895b8(String p0) {
-    return 'Lens / kanal $p0';
-  }
-
-  @override
-  String get s939603242a => 'Färger med värde';
-
-  @override
-  String get s45f927bc62 => 'Anpassad';
-
-  @override
-  String get s319dab47d8 => 'Smooth';
-
-  @override
-  String get s613fbec20e => 'Steg';
-
-  @override
-  String get s25d9db075e =>
-      'Egna gränser och färger: Inställningar → Avancerade.';
-
-  @override
-  String get sc0f5a14d2b => 'Färgtrösklar (värde ≥gräns → färg)';
-
-  @override
-  String get s30a2c0f460 => 'Lägg till tröskelvärde';
-
-  @override
-  String get s4226eb046f => 'Ångra';
-
-  @override
-  String get sd5cb601286 => 'Tailscale (enkel VPN)';
-
-  @override
-  String get s0aa851cfb4 =>
-      'Gratis för personligt bruk. Din telefon och hem fungerar som ett nätverk - Molaplan arbetar med samma adresser som hemma.';
-
-  @override
-  String get s444ca5d58f =>
-      'Bra om du har en alltid-på PC, Raspberry Pi eller Home Assistant hemma.';
-
-  @override
-  String get sec7b4d1d7a =>
-      'Skapa ett Tailscale-konto hos tailscale.com (Google, Microsoft eller Apple sign-in).';
-
-  @override
-  String get s178c57446d =>
-      'Installera Tailscale på den alltid på enheten hemma. I Home Assistant: Inställningar → Add-ons → Tailscale.';
-
-  @override
-  String get s4faf83aa13 =>
-      'Slå på \"subnet router\" där och ange ditt hemnätverk, t.ex. 192.168.1.0/24. Sedan är alla dina hemenheter tillgängliga.';
-
-  @override
-  String get s721719c0e1 =>
-      'Godkänn rutten i Tailscale adminkonsolen (Machines → enhet → Redigera ruttinställningar).';
-
-  @override
-  String get s921f981bda =>
-      'Installera Tailscale-appen på din telefon och logga in med samma konto. Byt VPN på.';
-
-  @override
-  String get s8ae7e7b2a4 =>
-      'Molaplan använder samma adresser som hemma. Inget annat att ändra.';
-
-  @override
-  String get se92301ff0a => 'https://tailscale.com/download';
-
-  @override
-  String get sf6270ae66c => 'https://tailscale.com/kb/1019/subnets';
-
-  @override
-  String get s57f0b61334 => 'WireGuard (router VPN)';
-
-  @override
-  String get sb9bb49ab92 =>
-      'Om din router stöder WireGuard (t.ex. ASUS, FRITZ!Box, UniFi, OpenWrt), ansluter din telefon till hemnätverket direkt.';
-
-  @override
-  String get s986d264604 =>
-      'Bra om routern har WireGuard och din anslutning har en offentlig IP-adress.';
-
-  @override
-  String get sf24b16dc12 =>
-      'Öppna routerns inställningar och leta efter \"VPN-server\" → \"WireGuard\".';
-
-  @override
-  String get s1e5d1eb832 =>
-      'Aktivera servern och lägg till en ny enhet (peer) för telefonen.';
-
-  @override
-  String get s8e0252a2b4 =>
-      'Routern visar en QR-kod. Installera WireGuard-appen på telefonen och skanna den.';
-
-  @override
-  String get s4b3740b727 =>
-      'Kontrollera att \"tillåtna IP-filer\" inkluderar hemnätverket (t.ex. 192.168.1.0/24).';
-
-  @override
-  String get sd2e8523b28 =>
-      'Byt VPN på i telefon – Molaplan fungerar som hemma.';
-
-  @override
-  String get saa17c5a456 => 'https://www.wireguard.com/install/';
-
-  @override
-  String get se5960424ea =>
-      'Många mobila bredband (4G/5G hem internet) anslutningar har ingen offentlig IP (CGNAT) och WireGuard sedan inte kan nås från utsidan. Använd Molaplan fjärråtkomst eller Tailscale istället.';
-
-  @override
-  String get sab2dfe387b => 'Home Assistant Cloud (Nabu Casa)';
-
-  @override
-  String get s2e0586b37e =>
-      'En betald månatlig prenumeration från tillverkarna av Home Assistant. ger en säker fjärradress till Home Assistant.';
-
-  @override
-  String get s534e7ec95e => 'Bra om dina enheter redan finns i Home Assistant.';
-
-  @override
-  String get s0f7533967d =>
-      'In Home Assistant: Inställningar → Home Assistant Cloud → starta rättegången eller logga in.';
-
-  @override
-  String get s2e60dd8178 => 'Vrid \"fjärrkontroll\" på.';
-
-  @override
-  String get s7a73024451 =>
-      'Kopiera fjärradressen, som ser ut: https://abcd1234.ui.nabu.casa';
-
-  @override
-  String get sd4873612f7 =>
-      'I Molaplan: Anslutningar → Home Assistant → ändra adressen till fjärradressen. Token förblir densamma.';
-
-  @override
-  String get s15223b0e32 => 'Home Assistant plattor fungerar nu överallt.';
-
-  @override
-  String get s9b3201b1fa => 'https://www.nabucasa.com/';
-
-  @override
-  String get s60e7067815 =>
-      'Detta täcker endast enheter som styrs via Home Assistant. För andra (Modbus, kameror direkt) använder Molaplan fjärråtkomst eller en VPN.';
-
-  @override
-  String get s8e0d0a2d4e => 'Cloud MQTT (t.ex. HiveMQ Cloud)';
-
-  @override
-  String get sd0fff65292 =>
-      'Enheter och Molaplan pratar genom samma molnserver. HiveMQ Cloud har en gratis nivå som är tillräckligt för hemmabruk.';
-
-  @override
-  String get s7350b9f98b =>
-      'Bra för MQTT-enheter: Tasmota, ESPHome, Shelly, Zigbee2MQTT, dina egna ESP-kort.';
-
-  @override
-  String get s59b3c7d246 =>
-      'Skapa ett gratis konto på console.hivemq.cloud och skapa ett gratis kluster (gratis / serverless).';
-
-  @override
-  String get s04fe436d1e =>
-      'Under \"Access Management\" skapa ett användarnamn och lösenord.';
-
-  @override
-  String get sdf0075eab5 =>
-      'Kopiera serveradressen (t.ex. abcd.s1.eu.hivemq.cloud). Hamnen är 8883 med TLS på.';
-
-  @override
-  String get s9e9be6fc33 =>
-      'Sätt den här servern, användarnamn och lösenord i dina enheters MQTT-inställningar (TLS på).';
-
-  @override
-  String get s90f1cb151b =>
-      'I Molaplan: Anslutningar → MQTT → adress, port 8883, TLS på, användarnamn och lösenord. Done - fungerar överallt.';
-
-  @override
-  String get s77bf29f2f5 => 'https://console.hivemq.cloud/';
-
-  @override
-  String get safd2cd2b7b =>
-      'Välj ett starkt lösenord: alla som vet att det kan styra dina enheter.';
-
-  @override
-  String get s9557c0ef28 => 'Fjärråtkomstguider';
-
-  @override
-  String get sf4d7957b78 => 'Lättast: Molaplan fjärråtkomst';
-
-  @override
-  String get s8032085166 =>
-      'Inga konton, inga routerinställningar. Du behöver bara en tablett eller dator som stannar hemma.';
-
-  @override
-  String get sd9b48e01fc => 'Andra sätt';
-
-  @override
-  String get sfe551fd431 => 'Enhetsguider';
-
-  @override
-  String get sa35e37b4b4 =>
-      'Mitsubishi CN105, Daikin S21/X50A (Faikin), Panasonic CN-CNT, Toshiba. Hittades automatiskt.';
-
-  @override
-  String get scb28b11e70 => 'Ny vy';
-
-  @override
-  String get s3a13f9d077 => 'Rename Dashboard';
-
-  @override
-  String get sa5bf37213b => 'Radera Dashboard?';
-
-  @override
-  String s10671afc00(String p0, String p1) {
-    return '\"$p0\" och dess $p1 kakel kommer att raderas.';
-  }
-
-  @override
-  String s897761b5f4(String p0) {
-    return 'Dashboard \"$p0\" raderad';
-  }
-
-  @override
-  String get scc5cf9957d => 'Välj kakeltyp';
-
-  @override
-  String get s7cf6340503 => 'Ny enhet med färdiga kort';
-
-  @override
-  String get se6ca707cf3 => 'Lättast: Shelly, ESP32-CAM, Home Assistant';
-
-  @override
-  String get s0789f5f14f => 'DASHBOARDS';
-
-  @override
-  String get sedb7b77645 => 'Alla';
-
-  @override
-  String get sfb3e3c456c => 'Delete Dashboard';
-
-  @override
-  String get scdfd80f963 => 'Lägg till kort';
-
-  @override
-  String get s71af34b8e9 => 'Tom vy';
-
-  @override
-  String get s6a210970eb =>
-      'Din enhet plattor visas här: temperaturer, växlar, kameror och genvägar. Börja med att lägga till en enhet.';
-
-  @override
-  String get s4229fb4103 => 'Lägg till din första enhet';
-
-  @override
-  String get sf67e0d5752 => 'Radera kortet?';
-
-  @override
-  String s97f46743e0(String p0) {
-    return 'Tile \"$p0\" raderad';
-  }
-
-  @override
-  String get s429f9e257a => 'Uppgifterna finns bara i den här webbläsaren. ';
-
-  @override
-  String get sda9203de80 => 'lokaler och inställningar ';
-
-  @override
-  String get sfec58c0c1b => 'Logga in för att synka ›';
-
-  @override
-  String get s8b3e63da21 => 'o skapa kontot ›';
-
-  @override
-  String get s887c293cad => 'lokala grepp om odlingar för odlingar';
-
-  @override
-  String get s84a087a679 => 'l.......';
-
-  @override
-  String get s907220900d => 'Välkommen till Molaplan';
-
-  @override
-  String get s845ec6276f => 'lokalisering av';
-
-  @override
-  String get s9dfa93453b => 'o----------------------------------';
-
-  @override
-  String get s6aa51b28a5 => 'lokaler och e-poster';
-
-  @override
-  String get sc6f02b69d3 =>
-      'o inloggning/inloggning/inloggning/inloggning/inloggning/inloggning/ in';
-
-  @override
-  String get sc777bde66f =>
-      'lokala försvarslösningar Försvårigheter Försvårigheter Försvårigheter Försvårigheter Försvårigheter';
-
-  @override
-  String get se2e5ff2c8a => 'lokalisering utan ett konto';
-
-  @override
-  String get s82714aa826 => 'Kräver ett konto.';
-
-  @override
-  String get s9bb545e9b3 => 'Logga in eller skapa ett konto';
-
-  @override
-  String get sb8934a5835 => 'Elförbrukning';
-
-  @override
-  String get s5409dc748f => 'Räknas inte';
-
-  @override
-  String get sf0bbcc217b => 'Hela fastigheten';
-
-  @override
-  String get s0ad1897b28 => 'Enhetsmätare';
-
-  @override
-  String get s99268b5a6c =>
-      'Hela fastigheten = huvudmätare. Enhetsmätare = en enhet (visas som en del av totalen, räknas aldrig två gånger).';
-
-  @override
-  String get se1174af557 => 'Del av mätare (valfritt)';
-
-  @override
-  String get s9773c92c92 => 'Energi och kostnader';
-
-  @override
-  String get s43dead6994 => 'Elavtal';
-
-  @override
-  String get sef4d24cdd4 => 'Dag';
-
-  @override
-  String get sa62dd794ce => 'Månad';
-
-  @override
-  String get s6b2ebe5aca => 'Välj dina mätare först';
-
-  @override
-  String get sde41f2fac9 =>
-      'Markera nedan vilken mätare mäter hela webbplatsen och vilka enstaka enheter.';
-
-  @override
-  String get s4ad000d885 => 'inkl. moms';
-
-  @override
-  String get s9e214b6e88 => 'exkl. moms';
-
-  @override
-  String get s73771d252c => 'Uppmätta enheter totalt';
-
-  @override
-  String get s22d03356a9 => 'Övrig förbrukning';
-
-  @override
-  String get s48b08c5f5a => 'Fasta avgifter (el + elnät)';
-
-  @override
-  String get s2e8700e0cf =>
-      'En del av användningen hade inget pris (punktpriset saknades).';
-
-  @override
-  String get sbbd89fbc05 =>
-      'Användning spelas in medan appen är öppen (hela tiden på hemmatabletten).';
-
-  @override
-  String get s64382718ff => 'Mätare';
-
-  @override
-  String get s9a3a0d414e =>
-      'Inga kraft- eller energikort (W, kW, Wh, kWh). Lägg till t.ex. en Shelly-mätare.';
-
-  @override
-  String get se80021e22a =>
-      'Kopiera priserna från din räkning. Skriv dem med eller utan moms - kostnaderna visas båda sätten.';
-
-  @override
-  String get sfb62156afe => 'Prisområde';
-
-  @override
-  String get s1762fb70a7 => 'Energi';
-
-  @override
-  String get s2ed3e3cf28 => 'Spotpris';
-
-  @override
-  String get s5d1dd0f675 => 'Fast';
-
-  @override
-  String get sedb38796fb => 'Natt/dag';
-
-  @override
-  String get s0774cea15a => 'Påslag';
-
-  @override
-  String get s63370fe61a => 'Elpris';
-
-  @override
-  String get s50a7dd89c6 => 'Dagel';
-
-  @override
-  String get sdeaa5ad900 => 'Nattel';
-
-  @override
-  String get se93c7bcd86 => 'Fast avgift (el)';
-
-  @override
-  String get sb7937e4b91 => 'Elnät';
-
-  @override
-  String get s0f89840226 => 'Enkeltariff';
-
-  @override
-  String get sa768f1b352 => 'Elnätspris';
-
-  @override
-  String get s9e5dde22cb => 'Elnät dag';
-
-  @override
-  String get sdf7a4fd2e3 => 'Elnät natt';
-
-  @override
-  String get s4df0aee067 => 'Fast avgift (elnät)';
-
-  @override
-  String get s4c59c90975 => 'Natten börjar';
-
-  @override
-  String get s84decd042b => 'Natten slutar';
-
-  @override
-  String get s90c26f1e37 => 'Skatter';
-
-  @override
-  String get s222cb348a0 => 'Energiskatt';
-
-  @override
-  String get sbe412dcaa6 => 'Moms';
-
-  @override
-  String get s43b55c13c5 => 'Sök misslyckades. kontrollera anslutningen.';
-
-  @override
-  String get s171834ca33 => 'Hemmets plats';
-
-  @override
-  String get s6f6c2fe37a =>
-      'Väderprognosen (Open-Meteo) hjälper förvärmning före kallt väder.';
-
-  @override
-  String get s5f663978d6 => 'Ort';
-
-  @override
-  String get s7be6460c54 => 't.ex. Tammerfors';
-
-  @override
-  String get s1576b70590 => 'Elanvändning, kostnader, kontrakt och väder.';
-
-  @override
-  String get sa6212aaeb4 => 'Plats';
-
-  @override
   String get sa0eeb22daa => 'Finns redan i vyn – lägga till ändå?';
 
   @override
@@ -6971,570 +5005,518 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s0e655a209f => 'Lägg till ändå';
 
   @override
-  String get s12c2f8e6e4 => 'Endast hemnätverket';
+  String get sa376ec78ec => 'Lampa';
 
   @override
-  String s5f7c464e6d(String p0) {
-    return 'kl. $p0';
+  String get s8e574c3313 => 'Effekt';
+
+  @override
+  String get sa9360bdda1 => 'Fläkt';
+
+  @override
+  String get sc7d02fbe84 => 'Värmepump';
+
+  @override
+  String get s8d06ee5308 => 'Larm';
+
+  @override
+  String get sfb63e3c23f => 'Lås';
+
+  @override
+  String get s2f42d90475 => 'Vattenvatten';
+
+  @override
+  String get s9cb8820285 => 'Humidity';
+
+  @override
+  String get sf2d10dd213 => 'El/kraft';
+
+  @override
+  String get s4594c7448e => 'Besparingar / billigast';
+
+  @override
+  String get s291ca127d6 => 'Garage';
+
+  @override
+  String get sb543af1c63 => 'Dörr';
+
+  @override
+  String get s60b1079d6c => 'Fönster';
+
+  @override
+  String get se8422f063f => 'Senns Sensli Senled Sen Sen Sensor';
+
+  @override
+  String get s0ab3a44562 => 'Timer';
+
+  @override
+  String get s3044a10005 => 'Nätverk';
+
+  @override
+  String get s1f67139f55 => 'Sauna / uppvärmning';
+
+  @override
+  String get sf21fd72396 => 'Outlet';
+
+  @override
+  String get s7783fe5fca => 'Favorit';
+
+  @override
+  String get se223375393 => 'Lista List';
+
+  @override
+  String get sfb0b971c01 => 'Svängning';
+
+  @override
+  String get see42f2d999 => 'Fjärr';
+
+  @override
+  String get s9126bf24a0 => 'Sol sol sol solen';
+
+  @override
+  String get sbb26f2192c => 'Batteri';
+
+  @override
+  String get s66350d8e7a => 'Rörelse';
+
+  @override
+  String get s57c2113aee => 'Rök';
+
+  @override
+  String get s11cc92bdc3 => 'Radon';
+
+  @override
+  String get s095db91dfb => 'CO₂';
+
+  @override
+  String get s4b1eda4282 => 'Luftkvalitet';
+
+  @override
+  String get s981854cf46 => 'Solenergi';
+
+  @override
+  String get s1a6081db34 => 'EV laddare';
+
+  @override
+  String get sf435368c99 => 'TV';
+
+  @override
+  String get s0cea5b1077 => 'Volymvolym';
+
+  @override
+  String get s25d92a8625 => 'Blinds';
+
+  @override
+  String get sa846059775 => 'Home Assistant läser redan den här enheten';
+
+  @override
+  String get s18a1844439 =>
+      'Enheten kanske redan har en anslutning (t.ex. Home Assistant) - läs värdena genom HA. Många enheter tillåter endast en Modbus TCP-anslutning.';
+
+  @override
+  String sa29df4fc6b(String p0) {
+    return '$p0 Modbus värden som finns i Home Assistant. Många enheter tillåter endast en Modbus TCP-anslutning, så läsning genom HA är det säkraste sättet.';
   }
 
   @override
-  String s21b64ae0a7(String p0) {
-    return '$p0 fungerar bara i hemnätverket. Rutan blir normal igen av sig själv när du är hemma.';
+  String get sb8c40d2c20 => 'Användning via Home Assistant';
+
+  @override
+  String get sfbf34ee532 =>
+      'Paste modbus.yaml (eller modbus: en del av konfiguration.yaml). Anslutningen och korten använder samma register och timing.';
+
+  @override
+  String s2d4fbaade1(String p0, String p1) {
+    return '$p0 anslutning(s), $p1 kort';
   }
 
   @override
-  String get s6b1a8249de => 'Senaste läge';
+  String get s108e078c0c => 'Modbus-enhet som importeras från Home Assistant';
 
   @override
-  String get s56650a18d5 => 'Gör den fjärrstyrbar ›';
-
-  @override
-  String get sa0d8c62e5a => 'Inget kommando konfigurerat';
-
-  @override
-  String get s1e5d696a26 => 'Kör detta kommando?';
-
-  @override
-  String get sa5ee6618a3 => 'Ändra PIN';
-
-  @override
-  String get s66f8ce67ed => 'Gå in i PIN';
-
-  @override
-  String get sb7b0c97cfa =>
-      'Enheten behöver sin PIN för varje kommando och statusbegäran. Ange den en gång här.';
-
-  @override
-  String get s1df6e2eaa7 => 'PIN';
-
-  @override
-  String get sb52d5c0b5b =>
-      'Webbläsaren lagrar aldrig PIN. Det frågas igen nästa gång du öppnar sidan.';
-
-  @override
-  String get secab66c046 => 'Kom ihåg på denna enhet';
-
-  @override
-  String get s2a15ea2eab =>
-      'Lagrad krypterad på den här enheten bara - inte på kontot eller på andra enheter. Off = frågade igen när appen startar om.';
-
-  @override
-  String get s10bf4eab8e =>
-      'Lagrad krypterad på den här enheten bara. Som standard lagras PIN-koden inte.';
-
-  @override
-  String get s856418521a => 'Inga kommandon konfigurerade';
-
-  @override
-  String sb0ba67e677(String p0) {
-    return 'Ran på $p0';
+  String sa0c07ccd04(String p0) {
+    return 'Du har den senaste versionen ($p0).';
   }
 
   @override
-  String sdfa66ee201(String p0) {
-    return '$p0: Sänd';
+  String get sa118d84538 =>
+      'Kunde inte söka efter uppdateringar just nu. Kontrollera internetanslutningen och försök igen senare.';
+
+  @override
+  String s9f2b092d8c(String p0) {
+    return 'Version $p0 är tillgänglig';
   }
 
   @override
-  String get s12fc3810a5 => 'Sent – vänta på svaret...';
-
-  @override
-  String get sd1c7d49360 => 'Svara på';
-
-  @override
-  String get s29fae6a0e8 => 'Prisstyrning på';
-
-  @override
-  String get s59d55f8882 => 'Byt namn';
-
-  @override
-  String get s84ada1ae69 => 'Ändra PIN';
-
-  @override
-  String get s25580038cb => 'Saved PIN bort';
-
-  @override
-  String get sf50c488b24 => 'Glöm frälst PIN';
-
-  @override
-  String get safe0429a90 => 'Prisstyrning';
-
-  @override
-  String get sf3d644dd4c => 'Lär in en fjärrkontrollknapp';
-
-  @override
-  String get sbb9e9b1229 => 'Ange PIN';
-
-  @override
-  String get s72a2328ddd => 'Lampor';
-
-  @override
-  String get sca12be80ca => 'Brytare';
-
-  @override
-  String get sa4c0eeea02 => 'Värmepumpar och AC';
-
-  @override
-  String get sa8dbf04ad3 => 'Binära sensorer';
-
-  @override
-  String get sa7690acf57 => 'Markiser, portar och dörrar';
-
-  @override
-  String get s487bf00fc7 => 'Lås';
-
-  @override
-  String get sbe76826428 => 'Fläktar';
-
-  @override
-  String get s4b53bcaaf0 => 'Knappar';
-
-  @override
-  String get s5c92d42edd => 'Talinmatningar';
-
-  @override
-  String get s3c2ed0c522 => 'Hjälpbrytare';
-
-  @override
-  String get sea20d169a3 => 'Mediaspelare';
-
-  @override
-  String get sbcb95e1e78 =>
-      'Token accepteras inte. Skapa en ny i Home Assistant.';
-
-  @override
-  String get s0b80dc2642 =>
-      'Kunde inte nå Home Assistant. kontrollera adressen.';
-
-  @override
-  String get sf32b7f15d8 => 'Kameror';
-
-  @override
-  String get sa7a829cefb => 'Välj Home Assistant-enheter';
-
-  @override
-  String get sefdf8e3316 => 'Hämtar enheter…';
-
-  @override
-  String get s26583a1933 => 'En vy per rum';
-
-  @override
-  String get sb3e6b54bce => 'Sök efter namn eller id';
-
-  @override
-  String get safedc10c48 => 'Alla rum';
-
-  @override
-  String get s407f3f7a0c => 'Inget rum';
-
-  @override
-  String s140aba8cd7(String p0) {
-    return '$p0 lampor är Philips Hue-lampor';
+  String sa5133b2c4a(String p0) {
+    return 'Du har version $p0.';
   }
 
   @override
-  String get s16aee2aa30 =>
-      'Direkt via Hue Bridge svarar de snabbare och fungerar utan Home Assistant.';
+  String get se099b5797e => 'Vad är nytt:';
 
   @override
-  String get s3816288db1 => 'Lägg till Hue Bridge';
+  String get s9315c3df42 => 'Hoppa över denna version';
 
   @override
-  String get sa765c9294a => 'Visa alla';
+  String get sdd5c8f0a9d => 'Senare';
 
   @override
-  String sdb088f47a8(String p0) {
-    return '$p0 tekniska objekt dolda (diagnostik, konfiguration, uppdateringar)';
+  String get s5a94ef2af1 => 'Nedladdningen var skadad';
+
+  @override
+  String get s81e4325573 => 'Ladda ner misslyckad';
+
+  @override
+  String get s4b1d3df588 =>
+      'Filkontrollsumman matchade inte, så ingenting installerades. Försök igen på ett ögonblick.';
+
+  @override
+  String get s0c463c7069 =>
+      'Kontrollera internetanslutningen och försök igen. Du kan också ladda ner uppdateringen från releasesidan.';
+
+  @override
+  String get s5dd4c9671f => 'Öppen release page';
+
+  @override
+  String s8f5be45ff1(String p0) {
+    return 'Installera $p0 - appen startar om ett ögonblick.';
   }
 
   @override
-  String get s3ee8d0a5e3 => 'Rummen kunde inte läsas - visar enheter utan rum.';
-
-  @override
-  String get sf55fca7a32 => 'Inga träffar';
-
-  @override
-  String get s78cdce874e => 'redan tillagt';
-
-  @override
-  String get s8814efe188 =>
-      'Välj om den här enheten ska skicka en push-avisering och med vilken prioritet. Standardvärdena är lugna: bara larm och en tyst enhet meddelar dig. Aviseringar går till ditt ntfy-ämne och visas i appen.';
-
-  @override
-  String get s9341ea63c0 => 'Händelseprioritet';
-
-  @override
-  String get s2b4ea7a381 =>
-      'Allmänna standardvärden. En enhet kan åsidosätta dessa i sina egna inställningar. En aviseringsåtgärd på en automatisering har företräde.';
-
-  @override
-  String get s67917c9a2a => 'Enheten rapporterade ett nytt tillståndsämne';
-
-  @override
-  String get s79fc5ea775 => 'Använd detta';
-
-  @override
-  String get s7ba50ea69e => 'Sovrum';
-
-  @override
-  String get s9e9723b263 => 'Kök';
-
-  @override
-  String get scce769451b => 'Vardagsrum';
-
-  @override
-  String get s9d5dca2dee => 'Badrum';
-
-  @override
-  String get s2569505205 => 'Sauna';
-
-  @override
-  String get s1c65dad1f5 => 'Hall';
-
-  @override
-  String get sa4d90bb5da => 'Gård / trädgård';
-
-  @override
-  String get s4a7be17a36 => 'Teknikrum';
-
-  @override
-  String get s01e404f15f => 'Arbetsrum';
-
-  @override
-  String get sfd8305add2 => 'Barnrum';
-
-  @override
-  String get scd87fb4dd7 => 'Stuga';
-
-  @override
-  String get sdc398885dc => 'Avancerade inställningar';
-
-  @override
-  String get s5d477f3cd8 => 'Vanligtvis behöver du inte dessa';
-
-  @override
-  String get s2315e0e739 => 't.ex.';
-
-  @override
-  String get sc1c47d2474 => 'Välj en bakgrundsbild';
-
-  @override
-  String sa8ce5112ee(String p0) {
-    return 'Högst $p0 bakgrundsbilder. Ta bort en först.';
+  String sf207ef6dc2(String p0) {
+    return 'Installera misslyckade: $p0';
   }
 
   @override
-  String get s12a7d631af => 'Utseende';
+  String get s49ddc3c3b6 => 'Uppdatering nedladdad';
 
   @override
-  String get s0d83798030 => 'Storlek';
-
-  @override
-  String get s64c916e299 => 'Liten';
-
-  @override
-  String get s5e3097232a => 'Bred';
-
-  @override
-  String get s8971788287 => 'Stor';
-
-  @override
-  String get s254a1d8e12 => 'Bakgrundsbild (valfri)';
-
-  @override
-  String get sc48f5f9bcf => 'Välj bild';
-
-  @override
-  String get s7ba9d453ed => 'Dämpa när enheten är av';
-
-  @override
-  String get s016ae7b580 =>
-      'Bilden krymps (≤ 200 KB) och synkroniseras till ditt konto.';
-
-  @override
-  String get sabb10f8cb2 =>
-      'Bilden krymps (≤ 200 KB) och hålls endast på den här enheten.';
-
-  @override
-  String get s6b536de0c8 =>
-      'Genom din hembro: lampor, pluggar, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, kamera stillbilder';
-
-  @override
-  String get s082c8c6278 => 'Rakt över internet: ntfy kommandon, elpris, väder';
-
-  @override
-  String get s5a419e551c => 'Samma vyer och kort som ditt kontos andra enheter';
-
-  @override
-  String get sa8f5c5c719 =>
-      'Utan en hembro kan webbläsaren inte styra hem-nätverksenheter';
-
-  @override
-  String get sb1c4acea71 =>
-      'App bara: enhetssökning, Bluetooth, RTSP-video, som fungerar som hemmabro';
-
-  @override
-  String get s2842696c47 => 'Webbläsarversionen är en fjärrkontroll';
-
-  @override
-  String get s1cbac3d12d =>
-      'Här kontrollerar du bara enheter som kan nås på distans: genom en hembro (Molaplan på en dator, en Android-enhet eller en Molaplan Bridge), ntfy eller en molntjänst. För full lokal kontroll behöver du Molaplan-appen.';
-
-  @override
-  String get saffec3d1c7 => 'Beställ PC-appen eller en färdig Android-enhet';
-
-  @override
-  String get s2bf22ca429 =>
-      'Den här enheten kan inte nås från webbläsaren. Det fungerar i Molaplan-appen, eller härifrån när en hemmabro är på.';
-
-  @override
-  String get sc6e6f17ad4 =>
-      'Webbläsarversion: du styr fjärrstyrbara enheter. Full kontroll med appen - mer ›';
-
-  @override
-  String get sbed5ab99f6 => 'Ditt hems enheter och status i en vy';
-
-  @override
-  String get s1ffc6e9e18 =>
-      'Kontrollera ljus, pluggar, värmepump och larm med stora kort';
-
-  @override
-  String get sb18bf27c69 =>
-      'Samma vy på en PC, tablett, telefon och i webbläsaren';
-
-  @override
-  String get sdc86a6f82c =>
-      'Enhetslösenord är krypterade - bara dina enheter kan öppna dem';
-
-  @override
-  String get s3865b9c032 => 'Använd utan konto';
-
-  @override
-  String get sdf7bb58964 =>
-      'Inställningarna stannar i den här webbläsaren. Du kan skapa ett konto senare och flytta dem dit.';
-
-  @override
-  String get sb2703f9ad3 => 'Skapa ett konto med en e-postkod';
-
-  @override
-  String get s326d86a618 =>
-      'Namnet kommer från den spanska \"me mola el plan\" - \"låter bra\".';
-
-  @override
-  String get s1812df3cb5 => 'Ta bort den här webbläsarens data?';
-
-  @override
-  String get sbab6f0fd9d =>
-      'Alla Molaplan-inställningar, enheter, anslutningar och rutor i den här webbläsaren tas bort. Det går inte att ångra.';
-
-  @override
-  String get s38a0f7939b => 'Ta bort webbläsardata';
-
-  @override
-  String get sc80648d495 => 'Visa Molaplan';
-
-  @override
-  String get sa4e9c86a86 => 'Quit';
-
-  @override
-  String get s4dab2d409b => 'Exportkonfiguration';
-
-  @override
-  String get s149c1e54d6 => 'Konfiguration exporterad';
-
-  @override
-  String get s35f445793b => 'Importera konfiguration';
-
-  @override
-  String get sd55be829e3 => 'Ersätt nuvarande konfiguration?';
-
-  @override
-  String get s852dd1795e =>
-      'Alla aktuella anslutningar och instrumentpaneler ersätts av filinnehållet.';
-
-  @override
-  String get s5f2ec17730 => 'Konfiguration importerad';
-
-  @override
-  String get sa87fff54f3 => 'Import misslyckades';
-
-  @override
-  String get s2fd2bfedb8 => 'Konto';
-
-  @override
-  String get s4c0ff416ab => 'Samma hem och plattor på alla dina enheter.';
-
-  @override
-  String get scc7e418ee3 =>
-      'Logga in för att ha samma hem, enheter och plattor på PC, surfplatta och telefon. Valfritt.';
-
-  @override
-  String get sb386aff4b7 => 'Nedladdningar';
-
-  @override
-  String get sbb264ce105 =>
-      'Att ladda ner PC-appen från butiken kräver ett konto (samma som på beställningen).';
-
-  @override
-  String get se5ab008127 => 'Öppna nedladdningar';
-
-  @override
-  String get s08d62fd281 => 'Utseende';
-
-  @override
-  String get s2b8a2754c6 => 'Tema';
-
-  @override
-  String get s79f67deb42 => 'Lampa';
-
-  @override
-  String get s0d6fb52039 => 'Mörk';
-
-  @override
-  String get s70dd7fdd58 => 'Genom soluppgång och solnedgång';
-
-  @override
-  String get s21206b61f7 =>
-      'Behov av hemorten (Energy › Hem). Fram till dess följs enhetsinställningen.';
-
-  @override
-  String get s4e23920823 =>
-      'Ljus om dagen, mörkt på kvällen. Av: följer enhetens inställning.';
-
-  @override
-  String get s4b847ce63e =>
-      'Valet gäller för den här enheten och sparas på ditt konto som standard för nya enheter.';
-
-  @override
-  String get s5ebc02022b => 'Visa som timligt genomsnitt';
-
-  @override
-  String get s68b4d332ca =>
-      'Pris, billigaste timmar och priskontroll per timme (timme förkortat kontrakt). Av: 15 min där området publicerar 15-mins priser.';
-
-  @override
-  String get saf496a12a3 => 'Morgonkort: Visa också den dyraste timmen';
-
-  @override
-  String get sc53b1b78c0 =>
-      'Den billigaste timmen av nästa 24 h visas alltid med sitt pris.';
-
-  @override
-  String get s0625d54b38 => 'Kortstorlek';
-
-  @override
-  String get s8382da3467 => 'Normal';
-
-  @override
-  String get s7c1cd8314e => 'Dölj rutor som inte fungerar på distans';
-
-  @override
-  String get sa0cbbafb4e =>
-      'Borta hemifrån döljs rutor som bara fungerar i hemnätverket. Som standard står de kvar, gråtonade.';
-
-  @override
-  String get s419166b895 => 'Klocka och väder på hemskärmen';
-
-  @override
-  String get sec30a8f23e =>
-      'Tid, datum, väder och elpris på toppen av vyn. Denna enhet endast.';
-
-  @override
-  String get sf7205b268f => 'Animationer';
-
-  @override
-  String get s1535c6411d =>
-      'Mjuka övergångar när en enhet ändrar tillstånd. Off = lugnare och lättare för en äldre tablett.';
-
-  @override
-  String get s21f870dbc2 =>
-      'Visar tekniska inställningar: anslutningar (HTTP, MQTT, Modbus...), nyttolast, JSON-vägar och kakelkällor. De flesta behöver inte dessa.';
-
-  @override
-  String get sc84689a549 => 'Enheter och integrationer';
-
-  @override
-  String get sca4c8b88b7 => 'Home Assistant: Lägg till enheter';
-
-  @override
-  String get saec69088a5 => 'Styr ditt hem från utsidan också.';
-
-  @override
-  String get scc3d01ee5e => 'Guider: VPN, Nabu Casa, moln MQTT';
-
-  @override
-  String get s535358a517 =>
-      'Ge någon, eller en installatör, åtkomst till de enheter du väljer.';
-
-  @override
-  String get s25c286a743 => 'Delning – ny inbjudan';
-
-  @override
-  String get s90ba544719 => 'Hjälp';
-
-  @override
-  String get sb915c42792 => 'Visa den blivande guiden';
-
-  @override
-  String get sd337a7ddd5 => 'Backup och överföring';
-
-  @override
-  String get s07c1048b4f =>
-      'Exportera konfigurationen till en JSON-fil och importera den på en annan enhet (t.ex. PC → telefon).';
-
-  @override
-  String get s2f797098e7 => 'Inkludera lösenord och tokens';
-
-  @override
-  String get s26f72949e3 => 'Filen är sedan okrypterad - håll den säker.';
-
-  @override
-  String get sdb12678e52 => 'Exportera';
-
-  @override
-  String get s34686ffb09 => 'Exempel';
-
-  @override
-  String get sc8327738b3 =>
-      'Lägg till en exempelvy (kamera, larm, lampor, ventilation). Exempelenheterna ansluter aldrig någonstans - lägg till din egen med Lägg till enhet.';
-
-  @override
-  String get sec02c7c071 => 'Lägg till exempelvy';
-
-  @override
-  String get s057b871ed2 => 'webbläsare version';
-
-  @override
-  String get s522d6584c5 => 'Sök efter uppdateringar';
-
-  @override
-  String get sd178a1d809 =>
-      'Din egen kontrollterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kameror, WebSocket, TCP och UDP. Utan ett konto stannar alla inställningar på den här enheten.';
-
-  @override
-  String get sf5bfc4217c => 'Vilken hemassistent?';
-
-  @override
-  String get sbc210f9634 =>
-      'Du har mer än en Home Assistant-anslutning. En oanvänd (inga kort) kan tas bort.';
-
-  @override
-  String get s4f62c41cb3 => 'Inga kort';
-
-  @override
-  String get s92c338c3bd => 'kort';
-
-  @override
-  String get sd3089f07cc => 'Ta bort oanvänd anslutning';
-
-  @override
-  String get s1333776c9f => 'Ta bort anslutningen?';
-
-  @override
-  String s84819cca05(String p0) {
-    return 'Sista larmet $p0';
+  String s04a05bb8fc(String p0) {
+    return 'Filen verifieras och sparas:\n$p0\n\nFör att använda den:\nNära Molaplan.\nExtrahera zip över den gamla Molaplan-mappen (eller i en ny mapp).\n3. Start molaplan.exe. Dina inställningar hålls.';
   }
+
+  @override
+  String get s1dd246ec69 => 'Versionssida';
+
+  @override
+  String get s0f07b20d45 => 'Öppen zip';
+
+  @override
+  String get s6e1ebc8baa => 'Öppen mapp';
+
+  @override
+  String get s6d9de3f94b => 'Installationen fortsatte inte';
+
+  @override
+  String get s25a6f00343 =>
+      'Om du annullerade det själv, allt är bra. Om Androids installationsfönster inte visas, tryck på Prova igen.';
+
+  @override
+  String get s200542b930 => 'Försök igen';
+
+  @override
+  String get s29e92898c6 =>
+      'Bekräfta installationen i Android-fönstret eller meddelandet.';
+
+  @override
+  String get s48093a1369 => 'Bekräfta uppdatering';
+
+  @override
+  String s6d50eeae10(String p0) {
+    return 'Uppdatera $p0 väntar på din bekräftelse. Tryck på Open-installation (eller meddelandet \"Molaplan-päivitys\").';
+  }
+
+  @override
+  String get s1a5c09b6e4 => 'Öppen installation';
+
+  @override
+  String get sd1cdbd3630 => 'Installationen startade inte';
+
+  @override
+  String s21972e23c1(String p0, String p1) {
+    return 'Android började inte installera $p0.\n\nKontrollera att \"Tillåt från den här källan\" är på för Molaplan och tryck på Uppdatera igen. Du kan också ladda ner APK från releasesidan.\n\nDetalj: $p1';
+  }
+
+  @override
+  String get sa1bd8d2533 => 'Öppna inställningar';
+
+  @override
+  String get sa065e7f650 => 'Tillåt att installera uppdateringar';
+
+  @override
+  String get sdc3bf71baf =>
+      'Android ber en gång om tillstånd så att Molaplan kan installera sina egna uppdateringar.\n\nTryck på \"Öppna inställningar\".\nSlå på \"Tillåt från den här källan\".\nKom tillbaka och tryck på \"Uppdatera\" igen.';
+
+  @override
+  String get s441683b7a8 => 'Verifiera...';
+
+  @override
+  String get se83b7fb2ac => 'Ladda ner uppdatering...';
+
+  @override
+  String s0b68f81d82(String p0) {
+    return 'Molaplan $p0 är tillgänglig. Bron fortsätter att fungera.';
+  }
+
+  @override
+  String get s702ca14235 => 'Tasmota-enhet';
+
+  @override
+  String get se0e5f715ad => 'ESPHome-enhet';
+
+  @override
+  String get s63b6e55469 => 'HomeKit-enhet';
+
+  @override
+  String get s13e301a66e => 'Okänd enhet';
+
+  @override
+  String get sddb2c2cb2b => 'Telefon';
+
+  @override
+  String get s16cd267576 => 'Surfplatta';
+
+  @override
+  String get sec4679ec39 => 'Dator';
+
+  @override
+  String get s798f9a0558 => 'Skrivare';
+
+  @override
+  String get s06109b8e5c => 'TV / mediaspelare';
+
+  @override
+  String get sc4655d321e => 'Högtalare';
+
+  @override
+  String get sa9f2f85b3e => 'Router';
+
+  @override
+  String get sf8360dcd74 => 'Nätverkslagring';
+
+  @override
+  String get s25399cd337 => 'Server';
+
+  @override
+  String get s8e21b6f258 => 'Smart enhet';
+
+  @override
+  String get s76a76a654e => 'iPhone-surfzon';
+
+  @override
+  String get s15d4ca1672 => 'Telefonens surfzon';
+
+  @override
+  String get sd54522fe39 => 'Router / surfzon';
+
+  @override
+  String get s3294a9422d => 'Säkerhetspanel';
+
+  @override
+  String get sb97a2b7ed6 => 'ESP32-enhet';
+
+  @override
+  String get s23f4820db7 => 'Inte kontrollerbar ännu';
+
+  @override
+  String get sdeeabebed9 => 'Airthings: lägg till via molnet eller Bluetooth';
+
+  @override
+  String get saae59a3865 => 'via hembryggan';
+
+  @override
+  String get sf226dd023a => 'Kontrollerad med ntfy-meddelanden';
+
+  @override
+  String get s0e6aa5168c =>
+      'om detta är en säkerhetspanel, lägg till den som en ntfy kommandoenhet';
+
+  @override
+  String get sdccd6e7f24 => 'Modell';
+
+  @override
+  String get s891a4b434e => ')\'}';
+
+  @override
+  String get s43aba09687 => 'Hamnar';
+
+  @override
+  String get scee3511db6 => 'Källor';
+
+  @override
+  String get sbc46a05125 => 'Namnge enheten';
+
+  @override
+  String get s1d5ed84aed => 'Sparas på den här enheten.';
+
+  @override
+  String get s3e6dd6ff2d => 'Lägg till som kommandoenhet';
+
+  @override
+  String get sb616303f5b =>
+      'I webbläsaren fungerar enhetssökning endast genom en hembro';
+
+  @override
+  String get sef469cadc3 =>
+      'Du kan fortfarande lägga till moln och ntfy enheter nedan.';
+
+  @override
+  String get sa0fccfbcab => 'via hembron';
+
+  @override
+  String get s1169d2d093 => 'Hitta enheter';
+
+  @override
+  String get s55b85f29a6 => 'Söker ditt hemnätverk...';
+
+  @override
+  String get se9c923ff0b =>
+      'Molaplan letar efter enheter som den känner igen på ditt hemnätverk.';
+
+  @override
+  String get s3ff2220816 =>
+      'Inga kända enheter hittades. Välj varumärket nedan.';
+
+  @override
+  String s2a9142dc3e(String p0) {
+    return 'Hittade $p0. Tryck på att lägga till.';
+  }
+
+  @override
+  String get s2fc39b0bd7 => 'Sök igen';
+
+  @override
+  String get s0a9acb5af1 => 'Sök efter Sök';
+
+  @override
+  String get s9a018b8166 => 'Du är borta: hembron sökte ditt hemnätverk.';
+
+  @override
+  String get s55d0b95fd2 => 'Detta nätverk';
+
+  @override
+  String s955b44aaa4(String p0) {
+    return 'Dessa är på den här enhetens eget nätverk, inte på $p0. De läggs inte till i det hemmet.';
+  }
+
+  @override
+  String sf16a25c313(String p0) {
+    return 'Andra enheter i nätverket ($p0)';
+  }
+
+  @override
+  String get s9e8430c37b =>
+      'Molaplan styr inte dessa. iPhones visar sitt namn bara när de vakna.';
+
+  @override
+  String get s7f308d40c8 => 'Värmer';
+
+  @override
+  String get s41de361b3e => 'Kyler';
+
+  @override
+  String get s4f7ccb7138 => 'Avfuktar';
+
+  @override
+  String get s9b2398228e => 'Fläkt';
+
+  @override
+  String get s533177c689 => 'Vilar';
+
+  @override
+  String get sa3e8beed42 => 'Värme';
+
+  @override
+  String get s6c9668fbd9 => 'Kyla';
+
+  @override
+  String get s9db8aefc43 => 'Avfuktning';
+
+  @override
+  String get s0117dea8bc => 'Fläkt';
+
+  @override
+  String get sb680eb3021 => 'Tyst';
+
+  @override
+  String get s4299eb9d18 => 'Låg';
+
+  @override
+  String get s90ba0c57d4 => 'Medium-low';
+
+  @override
+  String get s0cb68026a7 => 'Medium';
+
+  @override
+  String get s9c5e4ed5cb => 'Medium-hög';
+
+  @override
+  String get s688b92a62f => 'Högt högt';
+
+  @override
+  String get sb1ef6ab439 => 'Turbo';
+
+  @override
+  String get s339446ffe7 => 'Utomhus';
+
+  @override
+  String get s018d2e08f4 => 'Fläkt';
+
+  @override
+  String get s11a7c24b38 => 'Inget värde';
+
+  @override
+  String get s79bbbe6195 => 'kurva';
+
+  @override
+  String get s28b7c227f0 => 'börvärde';
+
+  @override
+  String get s306729fe62 => 'Inga priser';
+
+  @override
+  String get s80c4ecec94 => 'c/h';
+
+  @override
+  String get sb68e905fc4 => 'Förbrukning (kWh)';
+
+  @override
+  String get s5fc5085143 => 'Kostnad';
+
+  @override
+  String get s2b2118a93b => 'Gamla data';
+
+  @override
+  String get sb730159a01 => 'Pris nu';
+
+  @override
+  String get s68fcfcfed1 => 'Billigaste timmen i dag';
+
+  @override
+  String get s86ff059f5e => 'Medelpris i dag';
+
+  @override
+  String get s7b911d48c6 => 'Dyraste timmen i dag';
+
+  @override
+  String get s29dbf49d92 => 'Kostnad just nu';
+
+  @override
+  String get s723c887da6 =>
+      'Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min';
+
+  @override
+  String get s3b36524e04 => 'medel';
+
+  @override
+  String get scaaff6345d => 'max max max max max';
+
+  @override
+  String get s5f131c3ec4 => 'Förbrukning';
+
+  @override
+  String get s039bb374fe => 'Siffrorna är timmedelvärden';
 
   @override
   String get se455dc672b => 'Steg Steg';
@@ -7638,7 +5620,406 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sae0fae7127 => 'Gå till min Dashboard';
 
   @override
-  String get s2a28790ea2 => 'Full bredd';
+  String get s2adc3a77ed => 'Välj anslutningstyp';
+
+  @override
+  String get sc6d89693a5 =>
+      'Inga anslutningar ännu. Lägg till en enhet eller tjänst, t.ex. ventilationsenhet (Modbus), Home Assistant eller en kamera.';
+
+  @override
+  String get s07c82cb0af => 'Krävt fält';
+
+  @override
+  String get see3fd4862d => 'Samma ämne två gånger?';
+
+  @override
+  String get sb80a9b6813 =>
+      'Kommandoämnet och svarsämnet är detsamma. De flesta enheter (t.ex. kameraövervakningspanelen) lyssnar på sitt eget kommandoämne och svarar på ditt anmälningsämne - sedan kommer kommandon aldrig. Spara ändå?';
+
+  @override
+  String get s70f720de6d => 'Spara ändå';
+
+  @override
+  String get sf702cf0ac6 => 'Radera anslutning?';
+
+  @override
+  String s6b83de0ab9(String p0) {
+    return '$p0 kakel använder denna anslutning och kommer att sluta fungera.';
+  }
+
+  @override
+  String get sccd1325381 =>
+      'Anslutningen kommer att tas bort från den här enheten.';
+
+  @override
+  String get s837e0fc5e6 =>
+      'IR är envägs: värmepumpen bekräftar inte kommandon. Tiles visar det sista skickade tillståndet.';
+
+  @override
+  String get sf1ffb49d9c => 'Importera pumpens registerlista (CSV)';
+
+  @override
+  String get s09737988fd => 'Anslutningen fungerar!';
+
+  @override
+  String get s0a972aa85e =>
+      'Lösenord och tokens lagras i enhetens säkra lagring.';
+
+  @override
+  String get s7ba50ea69e => 'Sovrum';
+
+  @override
+  String get s9e9723b263 => 'Kök';
+
+  @override
+  String get scce769451b => 'Vardagsrum';
+
+  @override
+  String get s9d5dca2dee => 'Badrum';
+
+  @override
+  String get s2569505205 => 'Sauna';
+
+  @override
+  String get s1c65dad1f5 => 'Hall';
+
+  @override
+  String get sa4d90bb5da => 'Gård / trädgård';
+
+  @override
+  String get s4a7be17a36 => 'Teknikrum';
+
+  @override
+  String get s01e404f15f => 'Arbetsrum';
+
+  @override
+  String get sfd8305add2 => 'Barnrum';
+
+  @override
+  String get scd87fb4dd7 => 'Stuga';
+
+  @override
+  String get s772c158a57 => 'TCP';
+
+  @override
+  String get sea00017814 => 'låg latens';
+
+  @override
+  String get s2d65587b87 => '8';
+
+  @override
+  String get s53a9fe5e42 =>
+      'Det finns inget Molaplan-konto med den e-postadressen.';
+
+  @override
+  String get sb4bd4baa5c =>
+      'Ingen Molaplan-användare med den adressen. De måste logga in på Molaplan 0.9 en gång - eller skicka dem en inbjudningskod.';
+
+  @override
+  String get s7ed2aecb01 =>
+      'Ingen delbar utvald (tävlingar kan inte delas ännu).';
+
+  @override
+  String get s707b7ff598 => 'Inbjudan finns inte längre.';
+
+  @override
+  String get s5ea320fb1c =>
+      'Lås upp kontohemligheterna på den här enheten först (Konto → Lås upp med lösenord). Delning använder kontonyckeln.';
+
+  @override
+  String get s2855893bfc =>
+      'Inbjudan gäller en installatör och kan bara användas av en installatör som Molaplan har godkänt (Inställningar → Installatör → Ansök).';
+
+  @override
+  String get sb8df145fc9 => 'Bara Molaplans administratörer kan göra detta.';
+
+  @override
+  String get sa562754cb5 => 'Koden är fel, löpt ut eller redan använt.';
+
+  @override
+  String get s9c37d7a89c =>
+      'Hembron svarar inte. Delningen behöver hembron (fjärråtkomst) - behörigheter verkställs där.';
+
+  @override
+  String get sc858a8f851 =>
+      'Hembron är för gammal för att dela. Uppdatera den (Fjärråtkomst → Uppdatera bro).';
+
+  @override
+  String get s1a52f53861 => 'Ingen anslutning till Molaplan-kontot.';
+
+  @override
+  String s2457ec4502(String p0) {
+    return 'Kontotjänsten vägrade: $p0';
+  }
+
+  @override
+  String get s4bc537975e => 'Hembron är offline.';
+
+  @override
+  String get s2fb5fe14e4 => 'Andelen återkallades.';
+
+  @override
+  String get s7b44d47d45 => 'Hembron svarar inte.';
+
+  @override
+  String get s8eddd585bc => 'Ingen anslutning.';
+
+  @override
+  String get s47998395f5 => 'Inte tillåtet.';
+
+  @override
+  String get s7f504a8c64 => 'Visa endast';
+
+  @override
+  String get s9c067115ef => 'Kontrollkontroll';
+
+  @override
+  String get s8343921765 => 'Full (kontroll + inställningar)';
+
+  @override
+  String get s211d9f0a3a => 'Kod som inte används än';
+
+  @override
+  String get s1e6b3fe5dc => 'Väntar på acceptans';
+
+  @override
+  String get sb13063b8cd => 'Bekräftas...';
+
+  @override
+  String get s13b6f87b0a => 'Aktivt';
+
+  @override
+  String get sed1d8dbf2b => 'Declined';
+
+  @override
+  String get s0123f33869 => 'Återkallad';
+
+  @override
+  String get scdfdf5d233 =>
+      'Att dela behöver ett Molaplan-konto så att inbjudningar kan nå människor och krypteringsarbeten.';
+
+  @override
+  String get s85abc4496d =>
+      'Ge en familjemedlem, granne eller installatör tillgång till de enheter du väljer. Lösenord och adresser lämnar aldrig hem, och du kan återkalla när som helst.';
+
+  @override
+  String get sb4602bb0a6 => 'Dela enheter';
+
+  @override
+  String get sffe19ad543 => 'Använd en inbjudningskod';
+
+  @override
+  String get s61036a5d51 => 'Inbjudningar till dig';
+
+  @override
+  String get s8af08eb19e => 'Enheter';
+
+  @override
+  String get sbb84536839 => 'Accepterad';
+
+  @override
+  String get s2fd1394b33 => 'Delad med mig';
+
+  @override
+  String get seaa0c13606 => 'Dina aktier';
+
+  @override
+  String get s450c60afd0 => 'Du har inte delat något.';
+
+  @override
+  String get s33f41d417c => 'Inbjuda kod';
+
+  @override
+  String get s9cdf3dcc87 => 'Återkalla aktien?';
+
+  @override
+  String get s9d0ac1d1ee =>
+      'Tillgången slutar så snart hembron hör av den (vanligtvis på en gång).';
+
+  @override
+  String get s4417570cbb => 'Revoke';
+
+  @override
+  String get s280e22cbc9 => 'Dela återkallad';
+
+  @override
+  String get sd742357fc8 => 'Ditt namn i aktier';
+
+  @override
+  String get sfe0000a1a9 =>
+      'Säkerhet: hembron kontrollerar rättigheterna för varje begäran. Anslutningsuppgifterna reser krypterade till mottagarens nyckel endast; enhetslösenord och adresser lämnar aldrig hemmet.';
+
+  @override
+  String get s0577e25cbe => 'Lägg till en kund med en kod';
+
+  @override
+  String get sce4c69f42c =>
+      'Kod accepterad. Access öppnas när ägarens Molaplan bekräftar det (vanligtvis inom några minuter).';
+
+  @override
+  String get sd1520d6367 =>
+      'Ge koden (eller länken) till mottagaren: Molaplan → Dela → Använd en inbjudningskod. Giltig i 7 dagar, en gång.';
+
+  @override
+  String get s563abff5ad => 'Kopiera länk';
+
+  @override
+  String get s0daf5e9cb6 =>
+      'Inbjudan skickas – mottagaren accepterar den i Molaplan.';
+
+  @override
+  String get s707a062202 => 'Förändringsandelar';
+
+  @override
+  String get s79f72dbe13 => '1. vad man ska dela';
+
+  @override
+  String get s58e14dc230 =>
+      'Tryck på en vy för att dela alla dess enheter, eller välj dem en efter en.';
+
+  @override
+  String get sdb49fc5671 => 'Hela utsikten';
+
+  @override
+  String get sa7cf1a01d7 => '2. Rättigheter';
+
+  @override
+  String get s3b2376ac74 => 'Visa vy';
+
+  @override
+  String get s6605942623 => 'Full Full Full Full Full Full Full Full Full Full';
+
+  @override
+  String get s9ccbd78d51 => 'Ser stater och avläsningar, kan inte kontrollera.';
+
+  @override
+  String get sb143b5c9f1 =>
+      'Kan växla och justera, kan inte ändra inställningar (t.ex. temperaturinställningar).';
+
+  @override
+  String get s32dc2aa139 =>
+      'Kontroll- och enhetsinställningar. Aldrig dina egna vyer eller lösenord.';
+
+  @override
+  String get se153d3c421 => '3 till vem';
+
+  @override
+  String get s62e68022e1 => 'En Molaplan-användare (e-post)';
+
+  @override
+  String get s447da2f746 => 'Inbjuda kod eller länk';
+
+  @override
+  String get se7272a5713 => 'Namn för aktien (valfritt)';
+
+  @override
+  String get s03f60936b0 => 'Rättigheter per enhet';
+
+  @override
+  String get s385022d526 => 'Visa vy';
+
+  @override
+  String get s482464ebd5 => 'Kontrollkontroll';
+
+  @override
+  String get s5897aaa050 => 'Meddela ett ntfy-ämne (valfritt)';
+
+  @override
+  String get sd4faf9db62 =>
+      'Meddelandet innehåller inga kod- eller enhetsdetaljer.';
+
+  @override
+  String get sdec87898c3 => 'Skapa inbjudningskod';
+
+  @override
+  String get s19c2104a9d => 'Skicka inbjudan';
+
+  @override
+  String get s8b4d48dfaf => 'Ägare';
+
+  @override
+  String get s90944b5e7c => 'Uppmärksamhet';
+
+  @override
+  String get s1364743ec7 => 'larm';
+
+  @override
+  String get s5416a5cdf7 => 'Kör';
+
+  @override
+  String get s8debff3196 => 'Visa bild';
+
+  @override
+  String get s2220ce611a =>
+      'Kunder som gav dig tillgång. Du ser bara de delade enheterna och agerar inom de rättigheter som kunden gav – aldrig deras lösenord.';
+
+  @override
+  String get s6f3c62fc03 => 'Din installatörsstatus är inte giltig.';
+
+  @override
+  String s7ebc2621b7(String p0) {
+    return 'Inga kunder ännu. Ge kunden ditt installatörs-ID $p0: kunden öppnar Inställningar → Installatör → Ge åtkomst.';
+  }
+
+  @override
+  String get sa52cf49adc => 'Väntar på kundens Molaplan för att bekräfta';
+
+  @override
+  String get s35e8813a82 => 'Varningar';
+
+  @override
+  String get s1b85ad9e38 =>
+      'Letar du efter enheter med Modbus TCP på (port 502, 503 och 5020) och försöker enhetens id. Ta ungefär en halv minut.';
+
+  @override
+  String get seb1f4357ea => 'Egen hamn (valfritt)';
+
+  @override
+  String get s06760a6970 => 'Skanna igen';
+
+  @override
+  String get s23d146db23 => 'Scan';
+
+  @override
+  String get s18e7ad553e => 'Scanning...';
+
+  @override
+  String get s721647a6cd => 'Du är borta: hembron skannade.';
+
+  @override
+  String get s08e57d2d85 => 'Scan misslyckades';
+
+  @override
+  String get s4cf60b9350 =>
+      'Inga Modbus-enheter hittades. Kontrollera att Modbus TCP finns i enhetsinställningarna och att det är i samma nätverk (inte gäst Wi-Fi).';
+
+  @override
+  String get sbd8ee8a14f => 'Modbus-enhet';
+
+  @override
+  String get sf0462b25ac => 'gateway';
+
+  @override
+  String s28d9c4c7dc(String p0) {
+    return '$p0 förinställd';
+  }
+
+  @override
+  String get sc6cde0d476 => 'från dess tillkännagivande';
+
+  @override
+  String get s166da70285 => 'Enheten accepterar inte en anslutning';
+
+  @override
+  String get sbe97262d91 =>
+      'Enheten kanske redan har en anslutning (t.ex. Home Assistant) - läs värdena genom HA. Många enheter tillåter endast en Modbus TCP-anslutning.';
+
+  @override
+  String get s24e5139123 => 'Port öppna, ingen Modbus svar';
+
+  @override
+  String get s9041c140be =>
+      'Kontrollera enhets-ID och Modbus-inställningarna. Tryck på för att använda den här adressen.';
 
   @override
   String get s64f4d1e11a => 'Ange hemmets plats';
@@ -7647,238 +6028,1250 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sbf7cc3de9a => 'Försök nu';
 
   @override
-  String get sb75700bbba => 'Ingen bil';
+  String get sec88246e24 => 'Välj ett rum foto';
 
   @override
-  String get s5a3fcd56de => 'Bil ansluten';
+  String get s252b8e1289 => 'Foto för vilket rum?';
 
   @override
-  String get s23910a6fb5 => 'Laddning';
+  String get sa27e5362de =>
+      'Välj en inbyggd rumsbild eller ditt eget foto. Det visas som rubriken eller bakom hela vyn.';
 
   @override
-  String get s22cd08064f => 'Paused';
+  String get s84ef77e1ca => 'Välj en egen bild';
 
   @override
-  String get s5b8b3042ec => 'Avslutad';
+  String get s0bec34cd24 => 'Rubrikbild';
 
   @override
-  String get s84df123d5a => 'Fel';
+  String get s7b1e22fca7 => 'Bakgrund för hela vyn';
 
   @override
-  String get s98c928f06c => 'Samma som i tillverkarens app.';
+  String get s229e29f9ee => 'Dämpning';
 
   @override
-  String get s68e2e87750 => 'OCPP 1.6J (lokalt, något varumärke)';
+  String get s38285117e6 => 'Oskärpa';
 
   @override
-  String get s12fa00013a =>
-      'Wallbox, Alfen, ABB, go-e, Etrel, Easee/Zaptec (OCPP på) ... laddaren ansluter direkt till Molaplan – inget moln.';
-
-  @override
-  String get s4bc8fc306b =>
-      'Om laddaren har ett grundläggande auth-lösenord. vanligtvis tomt.';
-
-  @override
-  String get s66fb236f0c => 'Easee (moln)';
-
-  @override
-  String get s8c376593cb =>
-      'Easee Home / Charge / En genom ditt Easee-konto: status, start/stopp och nuvarande gräns.';
-
-  @override
-  String get s827730d443 => 'Samma som i Easee-appen (telefon som +358...).';
-
-  @override
-  String get s3809be512f => 'Zaptec (moln)';
-
-  @override
-  String get se1a5b725a4 =>
-      'Zaptec Go / Home / Pro genom ditt Zaptec-konto. Start/paus behöver ägarrättigheter.';
-
-  @override
-  String get s90c71e52fb => 'Wallbox (moln)';
-
-  @override
-  String get s72dc0a7687 =>
-      'Pulsar, befälhavare, koppar genom ditt myWallbox-konto. Lokalt: välj OCPP.';
-
-  @override
-  String get s59ed724e14 =>
-      'Easee, Zaptec, Wallbox - eller någon OCPP-laddare lokalt. Ladda på överskott eller när billigt.';
-
-  @override
-  String s2d551049ff(String p0, String p1) {
-    return 'Kan inte starta OCPP-servern på port $p0: $p1';
+  String s6c487e340b(String p0) {
+    return 'På de flesta $p0 bilder. Ta bort en först.';
   }
 
   @override
-  String s9a6813045a(String p0, String p1) {
-    return 'Charger \"$p0\" har inte anslutit. Ställ in sin OCPP-URL för att ws://<this device IP>:$p1/ocpp/';
+  String get s6f29aeb685 => 'Trend';
+
+  @override
+  String get s3298699c1a => 'Mätare + trend';
+
+  @override
+  String get sed593f53ed => 'Värde';
+
+  @override
+  String get s9027c88cb7 => 'Samla in data...';
+
+  @override
+  String get sf05d2a09f1 => '7 d';
+
+  @override
+  String get s3ec9d77947 => 'Tmrw';
+
+  @override
+  String get sed9b5e52f6 => 'Numera nu';
+
+  @override
+  String get sdc398885dc => 'Avancerade inställningar';
+
+  @override
+  String get s5d477f3cd8 => 'Vanligtvis behöver du inte dessa';
+
+  @override
+  String get s2315e0e739 => 't.ex.';
+
+  @override
+  String get s66ad384363 => '24h framåt';
+
+  @override
+  String get s6df3187e65 => 'Idag + imorgon';
+
+  @override
+  String get s76379cf7c6 => '48 h';
+
+  @override
+  String get sff03a35d96 => 'I 1 h';
+
+  @override
+  String get sf9e22ac5e7 => 'gamla priser';
+
+  @override
+  String get s58aaa6dade => 'Utsikten är låst';
+
+  @override
+  String get sdf1af3409c => 'Lås upp';
+
+  @override
+  String get s4629a1695c => 'Menyn';
+
+  @override
+  String get scd04aa5d9e => 'Redigera utsikten';
+
+  @override
+  String get sf98121cd3d => 'Rum foto';
+
+  @override
+  String get s365492a7d0 => 'Lås utsikten';
+
+  @override
+  String get sb2f38410ee =>
+      'Enheter kan fortfarande styras, men redigering, inställningar och lägga till enheter är dolda. Lås upp från växelikonen.';
+
+  @override
+  String get se497d27174 => 'PIN-kod (tillval)';
+
+  @override
+  String get sd21180a166 => 'Utan en PIN en kran låser upp.';
+
+  @override
+  String get sd86ff8e28a => 'Lås';
+
+  @override
+  String get s872f93a062 => 'Lås upp?';
+
+  @override
+  String get s0cd88e27f4 => 'Redigering och inställningar blir synliga igen.';
+
+  @override
+  String get sa5283191be => 'Lås upp';
+
+  @override
+  String get sca710b76b5 => 'Fel PIN-kod';
+
+  @override
+  String get s72a2328ddd => 'Lampor';
+
+  @override
+  String get sca12be80ca => 'Brytare';
+
+  @override
+  String get sa4c0eeea02 => 'Värmepumpar och AC';
+
+  @override
+  String get s662fecdc8d => 'Sensorer';
+
+  @override
+  String get sa8dbf04ad3 => 'Binära sensorer';
+
+  @override
+  String get sa7690acf57 => 'Markiser, portar och dörrar';
+
+  @override
+  String get s487bf00fc7 => 'Lås';
+
+  @override
+  String get s88ac47e6d1 => 'Kameror';
+
+  @override
+  String get sbe76826428 => 'Fläktar';
+
+  @override
+  String get s4b53bcaaf0 => 'Knappar';
+
+  @override
+  String get s5c92d42edd => 'Talinmatningar';
+
+  @override
+  String get s3c2ed0c522 => 'Hjälpbrytare';
+
+  @override
+  String get sea20d169a3 => 'Mediaspelare';
+
+  @override
+  String get sbcb95e1e78 =>
+      'Token accepteras inte. Skapa en ny i Home Assistant.';
+
+  @override
+  String get s0b80dc2642 =>
+      'Kunde inte nå Home Assistant. kontrollera adressen.';
+
+  @override
+  String get sf32b7f15d8 => 'Kameror';
+
+  @override
+  String get sa7a829cefb => 'Välj Home Assistant-enheter';
+
+  @override
+  String get sefdf8e3316 => 'Hämtar enheter…';
+
+  @override
+  String get s26583a1933 => 'En vy per rum';
+
+  @override
+  String get sb3e6b54bce => 'Sök efter namn eller id';
+
+  @override
+  String get safedc10c48 => 'Alla rum';
+
+  @override
+  String get s407f3f7a0c => 'Inget rum';
+
+  @override
+  String s140aba8cd7(String p0) {
+    return '$p0 lampor är Philips Hue-lampor';
   }
 
   @override
-  String get sb33d4d8b62 => 'laddaren laddar inte nu';
+  String get s16aee2aa30 =>
+      'Direkt via Hue Bridge svarar de snabbare och fungerar utan Home Assistant.';
 
   @override
-  String get s7c3abc09fc => 'EV laddare (inbyggd integration)';
+  String get s3816288db1 => 'Lägg till Hue Bridge';
 
   @override
-  String get se6885155b4 =>
-      'OCPP fungerar lokalt utan ett moln (laddaren ansluter till denna app eller bron).';
+  String get sa765c9294a => 'Visa alla';
 
   @override
-  String get sb14c49378c => 'OCPP-port';
-
-  @override
-  String get sa9346504d4 =>
-      'Porten den här enheten lyssnar på. Laddare URL: ws://<this device IP>:9000/ocpp/';
-
-  @override
-  String get sf94b2ba7f3 => 'Charge Point Id (OCPP)';
-
-  @override
-  String get s8ea8831ed0 =>
-      'Laddarens OCPP-avgiftspunkt id. Empty = den första som ansluter.';
-
-  @override
-  String get sa3b3822b75 => 'idTag för fjärrstart';
-
-  @override
-  String get sf718534954 =>
-      'Skicka med RemoteStartTransaction. Empty = \"molaplan\".';
-
-  @override
-  String get s540a178f7a => 'Användarnamn / e-post (moln)';
-
-  @override
-  String get sa6b5175654 =>
-      'Cloud: appen lösenord. OCPP: valfri Basic auth lösenord. lagras på den här enheten bara.';
-
-  @override
-  String get sccb2892754 => 'Vilken laddare som läser för att visa.';
-
-  @override
-  String get s0e7115e10c => 'Status';
-
-  @override
-  String get s20cb072267 => 'Laddning (1/0)';
-
-  @override
-  String get se13ff56722 => 'Laddningskraft (W)';
-
-  @override
-  String get sd3627e3a20 => 'Denna session (kWh)';
-
-  @override
-  String get s19e058622f => 'Totalt (kWh)';
-
-  @override
-  String get s613785b80f => 'Aktuell gräns (A)';
-
-  @override
-  String get s60f4e2786f => 'Charger id';
-
-  @override
-  String get sfbbd0943a8 => 'Charger id i kontot; tomt = den enda laddaren.';
-
-  @override
-  String get s5bed8bff00 => 'Kommando';
-
-  @override
-  String get s9617db1f3d =>
-      'Börja, stoppa eller ställa in den aktuella gränsen.';
-
-  @override
-  String get sc110ab773a => 'Starta laddning';
-
-  @override
-  String get s44d11f741f => 'Stoppa / paus';
-
-  @override
-  String get s4c68e739b0 => 'Avgifter på/off';
-
-  @override
-  String get s141fac7235 => 'Ställ nuvarande gräns (A)';
-
-  @override
-  String get s33f04bfedd =>
-      'Aktuell gräns i ampere; {{value}} = reglaget värde.';
-
-  @override
-  String s610172c6f4(String p0) {
-    return 'Charger \"$p0\" hittades inte (offline eller borttagen)';
+  String sdb088f47a8(String p0) {
+    return '$p0 tekniska objekt dolda (diagnostik, konfiguration, uppdateringar)';
   }
 
   @override
-  String get sf51ef628f4 => 'Nuvarande gräns saknas';
+  String get s3ee8d0a5e3 => 'Rummen kunde inte läsas - visar enheter utan rum.';
 
   @override
-  String get sd661432e07 => 'Inga laddare';
+  String get sf55fca7a32 => 'Inga träffar';
 
   @override
-  String get s47aba73804 => 'Totalt laddat';
+  String get s78cdce874e => 'redan tillagt';
 
   @override
-  String get s14252e6c3a => 'status status status';
+  String get sc80648d495 => 'Visa Molaplan';
 
   @override
-  String get sed9640f6b4 => 'laddning';
+  String get sa4e9c86a86 => 'Quit';
 
   @override
-  String get sebaaf2a20f => 'laddningskraft';
+  String get sfe55fd97fa => 'All tyst.';
 
   @override
-  String get s223d1336d5 => 'Denna session';
+  String s162c54ed4c(String p0) {
+    return '$p0: gjort';
+  }
 
   @override
-  String get sbea289dcc3 => 'nuvarande gräns';
+  String get se26e839c2f => 'Måndag Måndag Måndag';
 
   @override
-  String get s1becc05ea1 => 'locked=Låst;unlocked=Olåst;jammed=FASTNAT';
+  String get s763254941f => 'Tisdag tisdag tisdag';
 
   @override
-  String get s259de02f33 =>
-      'open=Öppen;closed=Stängd;opening=Öppnas;closing=Stängs';
+  String get sf3448cdd52 => 'Onsdag onsdag onsdag';
 
   @override
-  String get s64d4364336 =>
-      'disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming';
+  String get sc34ca7eddb => 'Torsdag torsdag torsdag';
 
   @override
-  String get s5b1e227dc4 => 'on=På;off=Av';
+  String get sfa82438bec => 'fredag fredag fredag';
 
   @override
-  String get s3d43664fcc => 'WebSocket';
+  String get s517c348371 => 'Lördag lördag';
 
   @override
-  String get sfcbb753f53 => 'URL';
+  String get sb1f0e72163 => 'Söndag söndag';
 
   @override
-  String get s81479e1555 => 'Headers (Namn: värde per rad)';
+  String get s55d52c5ae1 => 'Denna enhet är inte på Wi-Fi';
 
   @override
-  String get s5811b38d7b => 'Token (Authorization: Bearer)';
+  String s9a4dece965(String p0) {
+    return 'Anslut den här enheten till ditt hem Wi-Fi (en $p0 använder). Eller, om du är borta, ställa in hembron så att sökningen körs på en enhet hemma.';
+  }
 
   @override
-  String get sd512dbbfc7 => 'Meddelande på connect';
+  String get s3972820cd6 => 'Kunde inte nå enheten';
 
   @override
-  String get s2c4fd261e2 => 'Tillåt självsignerat certifikat';
+  String s0f480abb4a(String p0) {
+    return 'Kunde inte nå enheten på $p0';
+  }
 
   @override
-  String get s4d089aab74 => 'Filter (meddelande innehåller)';
+  String sa82143ee02(String p0, String p1) {
+    return 'Kontrollera att $p0 drivs.\nDen här enheten (eller hemmabron) måste vara på samma Wi-Fi.\nKontrollera adressen - den kan ändras. Tryck på \"Tack\" och sök igen.';
+  }
 
   @override
-  String get s55c951a8ad => 'JSON väg';
+  String get sd4d7ad1bab => 'En annan enhet svarade';
+
+  @override
+  String s5b7d02a301(String p0) {
+    return 'Enheten på den adressen är inte $p0. Kontrollera adressen.';
+  }
+
+  @override
+  String get sdac5622fa8 => 'Enheten begär ett lösenord';
+
+  @override
+  String get sbf9ee8aaec =>
+      'Ett lösenord är inställt på enheten. Skriv det nedan och tryck på \"Konnect\".';
+
+  @override
+  String get s9e22388413 => 'En mer detaljer behövs';
+
+  @override
+  String sc8702d4da2(String p0) {
+    return '$p0 berättar inte detta själv. Skriv det nedan och tryck på \"Konnect\".';
+  }
+
+  @override
+  String get s83f57c7c24 => 'Fel lösenord';
+
+  @override
+  String get s32e85a0ba2 =>
+      'Kontrollera lösenordet (fallet frågor). Du kan ändra det i enhetsappen.';
+
+  @override
+  String get sb1d36bfdd3 => 'Knappen trycktes inte i tid';
+
+  @override
+  String get sc994f6ec6e =>
+      'Tryck på \"Försök igen\" och tryck sedan på knappen direkt.';
+
+  @override
+  String get s663202243e => 'Inget att kontrollera hittades';
+
+  @override
+  String get sb03997d94b =>
+      'Enheten svarade men har inga växlar eller lampor. För molnet, skriv enhets-ID.';
+
+  @override
+  String get se6e01118ac => 'Kamera hittades, men inte dess videoadress';
+
+  @override
+  String get sca994210fb =>
+      'Kameran svarade men berättade inte sin videoadress, och ingen av de vanliga RTSP-adresserna arbetade med denna inloggning. Kontrollera att RTSP/ONVIF finns på i kameraappen eller välj varumärket nedan och tryck på \"Connect\".';
+
+  @override
+  String get s869571042f => 'Cloud key eller server som inte accepterats';
+
+  @override
+  String get sab1763c592 =>
+      'Kopiera nyckeln och servern igen från Shelly-appen (användarinställningarna → auktoriseringsmolnnyckel).';
+
+  @override
+  String get s855ffbfd24 => 'Kunde inte nå molnet';
+
+  @override
+  String get s739d569a9c => 'Kontrollera internetanslutningen.';
+
+  @override
+  String get sc96a3502b5 => 'För många förfrågningar';
+
+  @override
+  String get sed917dc2a2 => 'Molnet begränsar begäran. Vänta ett ögonblick.';
+
+  @override
+  String get s516dbdd784 => 'Hembron är från date';
+
+  @override
+  String get s70089507bf =>
+      'Uppdatera Molaplan på bron (Inställningar → Kontrollera för uppdateringar).';
+
+  @override
+  String get s7e11595f9e => 'Hembron är avstängd';
+
+  @override
+  String get scc1918f2dc =>
+      'Kontrollera att bron hemma är på, Molaplan är öppen och det har internet.';
+
+  @override
+  String get se11f9b5084 => 'Kunde inte ansluta till enheten';
+
+  @override
+  String get s979376dca6 =>
+      'Kontrollera adressen och att enheten är på, försök sedan igen. De tekniska detaljerna visar exakt anledning.';
+
+  @override
+  String get sce6d01c270 => 'Skriv adressen först';
+
+  @override
+  String get s65bbf3cab4 => 'Kontrollera adressen';
+
+  @override
+  String sb711cc1ce2(String p0, String p1) {
+    return '$p0 är inte ett hemnätverk adress. De börjar vanligtvis med 192.168. - kontrollera det igen i $p1 app.';
+  }
+
+  @override
+  String se60794c266(String p0) {
+    return 'menade du $p0?';
+  }
+
+  @override
+  String get s264fda2dee => 'Jag fixar det';
+
+  @override
+  String get s0a6098ac78 => 'Prova ändå';
+
+  @override
+  String sc1039f5cf6(String p0) {
+    return 'Använd $p0';
+  }
+
+  @override
+  String get s20f777bfef => 'Adressen finns på ett annat nätverk';
+
+  @override
+  String sbb1730fa00(String p0, String p1, String p2, String p3) {
+    return 'Adress $p0 är inte på samma nätverk som den här enheten ($p1.x). Vanligtvis är den här enheten på ett annat Wi-Fi än $p2.\n\nGå med i samma Wi-Fi, eller ställa in hembron.';
+  }
+
+  @override
+  String get s915c9a0db3 => 'Välj minst en';
+
+  @override
+  String sb160156a36(String p0) {
+    return 'Lägg till: $p0';
+  }
+
+  @override
+  String get s43d448a950 => 'Lägg till i hemvyn';
+
+  @override
+  String get sd890121a57 => 'Visa hemvyn';
+
+  @override
+  String get sb1717cc67c => 'A) Utan en hembro';
+
+  @override
+  String get s2082568a23 => 'Använd Shelly Cloud (ingen bro)';
+
+  @override
+  String get s5080d486b8 =>
+      'Bäst om ingen enhet alltid stannar hemma - t.ex. din surfplatta reser med dig. Kontroll går via Shellys eget moln. Du behöver en nyckel från Shelly-appen (vi visar var).';
+
+  @override
+  String get s82985d5078 => 'B) genom en hembro';
+
+  @override
+  String get s78aec2034d =>
+      'Hur kommer du att kontrollera ditt hem när du är borta?';
+
+  @override
+  String s03b3c3b3c8(String p0) {
+    return 'En hembro är en enhet som ALLTID stannar hemma, slås på och på samma Wi-Fi som $p0 - t.ex. en gammal telefon, surfplatta eller PC. Dina andra enheter når den över internet (krypterad, ingen port vidarebefordran). En enhet som du bär runt är inte en bra bro.';
+  }
+
+  @override
+  String get s688d1308d7 =>
+      'När du är inloggad når hemanslutningen alla dina enheter automatiskt.';
+
+  @override
+  String get s96feb2f60a =>
+      'Den här enheten stannar alltid hemma – gör den till bron';
+
+  @override
+  String get sb2a33a1ec4 =>
+      'Håll den laddning med Molaplan öppen. Andra enheter ansluter med en QR-kod eller genom att logga in på samma konto.';
+
+  @override
+  String get s1b9f4ae6d5 => 'Bron är på en annan enhet - anslut till den';
+
+  @override
+  String get s13d739b710 =>
+      'Skanna bron QR-koden. Enheter hittas sedan genom bron, även när du är borta.';
+
+  @override
+  String get sda6a1e50e9 =>
+      'Hoppa för nu - lägg till i hemnätverket (fjärråtkomst kan ställas in senare)';
+
+  @override
+  String s6f326a48f9(String p0) {
+    return 'Hitta: $p0';
+  }
+
+  @override
+  String get sc788897ba0 =>
+      'Söker genom hembron, så detta fungerar också hemifrån.';
+
+  @override
+  String get s0f7361f40c => 'Titta på ditt hem Wi-Fi. Tryck på din.';
+
+  @override
+  String get sda2b4c9721 => 'Öppna Wi-Fi inställningar';
+
+  @override
+  String get sc93d9cc14b => 'Ansluten – sök igen';
+
+  @override
+  String get s13f0596b74 => 'Söker... (ca 5 sekunder)';
+
+  @override
+  String s8eabd27f68(String p0, String p1) {
+    return 'Ingenting hittas automatiskt. Kontrollera att $p0 är på och på samma Wi-Fi. Du kan också skriva adressen nedan.';
+  }
+
+  @override
+  String get sa616ab181e => 'Skriv adressen';
+
+  @override
+  String get sb439b8abc3 => 'Eller skriv adressen';
+
+  @override
+  String get scf487a3699 => 'Var hittar jag det?';
+
+  @override
+  String get s9b9b0d01a2 => ' (valfritt)';
+
+  @override
+  String get s0a7134d0e3 => 'Tryck på knappen nu';
+
+  @override
+  String s43118959d5(String p0) {
+    return '$p0 vänster';
+  }
+
+  @override
+  String get s46c87a553f => 'Logga in på kameran';
+
+  @override
+  String get se4095d7d95 => 'Enhetens lösenord';
+
+  @override
+  String get s8f610a3bb2 => 'Jag är hemifrån';
+
+  @override
+  String get sb629592b4b => 'Kamera varumärke';
+
+  @override
+  String get se3aa0f7164 => 'RTSP adress';
+
+  @override
+  String get s722ac06c6d =>
+      'Utan inloggningen läggs användaren och lösenordet automatiskt till.';
+
+  @override
+  String s77ec7b376b(String p0) {
+    return 'Hittade: $p0';
+  }
+
+  @override
+  String get sac4debdb9c => 'Välj vad som går på hemvyn och namnge dem.';
+
+  @override
+  String get sfe5661e401 => 'Avmarkera alla';
+
+  @override
+  String s2618555da0(String p0) {
+    return 'Välj alla ($p0)';
+  }
+
+  @override
+  String get s86c3f92546 => 'Lägg också till ljusstyrka / kraft';
+
+  @override
+  String get s91571486e4 => 'Visa också kraft (W)';
+
+  @override
+  String sf86536db42(String p0) {
+    return 'Klart! $p0 kort tillagda';
+  }
+
+  @override
+  String get sbfaea66122 =>
+      'Brickorna arbetar hemma och bort genom molnet - inget annat att göra.';
+
+  @override
+  String get se7c68b3bed =>
+      'Brickorna arbetar hemma och bort genom hembron - inget annat att göra.';
+
+  @override
+  String get sbc8469cce1 =>
+      'Brickorna fungerar på ditt hemnätverk. För att styra från var som helst, ställa in hembron.';
+
+  @override
+  String get s02480e4c13 => 'Mätningar';
+
+  @override
+  String get sd1c778324e => 'kontroller';
+
+  @override
+  String get sc1e35d5171 => 'Pristjänsten';
+
+  @override
+  String get s8b22e8d330 => 'Vädertjänsten';
+
+  @override
+  String get s252ebed5af => 'Shelly Cloud';
+
+  @override
+  String get s07d3467ef6 => 'Tuya';
+
+  @override
+  String get s10edebf3fa => 'ntfy server';
+
+  @override
+  String get sc08176420f => 'Airthings moln';
+
+  @override
+  String get sd3d9c263ed => 'Tjänsten';
+
+  @override
+  String get s5d151d0815 =>
+      'ntfy.sh tillåter 250 meddelanden per 12 timmar från ditt hems offentliga IP (alla telefoner, surfplattor, datorer och enhetens egna svar tillsammans). Meddelanden frigörs några minuter - appen frågar nu för staten mindre ofta. En bestående fix: din egen ntfy-server eller ett ntfy-konto med en högre gräns.';
+
+  @override
+  String get s7aa9e16c41 =>
+      'Kommandot nådde ntfy-servern, men inget svar kom från enheten. Kontrollera anslutningens \"Reply-ämne\" - enheten kan svara på ditt eget anmälningsämne - och att enheten är online.';
+
+  @override
+  String get sb7b4d4f624 =>
+      'Inomhusbelysningen följs eller styrs inte under dagen. Den är inte avstängd – den följs inte.';
+
+  @override
+  String get sdfb639365a => 'Ingen internetanslutning';
+
+  @override
+  String s390dd51af3(String p0) {
+    return '$p0 är på internet och kan inte nås. Kontrollera den här enhetens internetanslutning. De senaste uppgifterna visas när de är tillgängliga.';
+  }
+
+  @override
+  String sbb750bf9d6(String p0) {
+    return '$p0 svarar inte, provar en reservkälla';
+  }
+
+  @override
+  String s4284ebac1e(String p0) {
+    return '$p0 svarar inte';
+  }
+
+  @override
+  String get s828d009fa6 =>
+      'Backup-källorna svarade inte just nu heller. Problemet är mest sannolikt på tjänsterna, inte ditt hemnätverk.';
+
+  @override
+  String get se21c801ba6 =>
+      'Tjänsten har ett problem, troligtvis i tjänsten och inte ditt hemnätverk.';
+
+  @override
+  String get s35e0766add => 'Logga in på tjänsten misslyckades';
+
+  @override
+  String sa4d255e53c(String p0) {
+    return 'Kontrollera kontot, nyckeln eller token för $p0.';
+  }
+
+  @override
+  String get sd0a2130950 =>
+      'Den väntade enheten svarar inte på den här adressen – kontrollera den (http eller https?)';
+
+  @override
+  String get sdd5742468b =>
+      'Något svarar, men inte som väntat. Prova https:// eller http:// först och kontrollera porten.';
+
+  @override
+  String get s03c0a5192b => 'Adress som inte hittats';
+
+  @override
+  String get sb3ef01a6fa =>
+      'Kontrollera stavningen. Prova IP-adressen (t.ex. 192.168.1.50) istället för ett namn.';
+
+  @override
+  String get s274a753ad6 => 'Enhet som inte finns på denna adress';
+
+  @override
+  String get s2b503695b6 =>
+      'Kontrollera att enheten är på och att din telefon eller dator är på samma Wi-Fi. Kontrollera också IP-adressen - den kan ändras, så reservera en fast adress i routern.';
+
+  @override
+  String get sff9ca463e3 => 'Enhet hittades men hamnen är stängd';
+
+  @override
+  String get s1d4f4506de =>
+      'Kontrollera portnumret och att tjänsten (webb UI, MQTT eller Modbus TCP) är aktiverad på enheten.';
+
+  @override
+  String get s8523a9cfd0 => 'Säker anslutning (https) misslyckades';
+
+  @override
+  String get sdfd499c1f1 =>
+      'Prova http:// istället, eller aktivera \"Tillåt självsignerat certifikat\" under Avancerad.';
+
+  @override
+  String get s3fabccc1cd => 'Inloggning, lösenord eller token avvisas';
+
+  @override
+  String get sdc2d65f8eb =>
+      'Kontrollera referenser. I Home Assistant kan du skapa en ny långlivad token i din profil.';
+
+  @override
+  String get se0a7cef6c4 => 'Enhet svarade men objektet hittades inte';
+
+  @override
+  String get see02239a35 =>
+      'Kontrollera sökvägen eller företagets namn (t.ex. light.living_room).';
+
+  @override
+  String get sdec83d1e90 => 'Enheten rapporterade ett fel';
+
+  @override
+  String get s3de239ffc5 => 'Kontrollera vägen och nyttolast.';
+
+  @override
+  String get s6121e8d8f1 => 'Okänt register på enheten';
+
+  @override
+  String get s3474aedf54 =>
+      'Kontrollera registret nummer. Om tabellen börjar vid 1 (t.ex. 40001), subtrahera 1. Kontrollera också innehav vs ingång.';
+
+  @override
+  String get s2c303f6774 => 'Registertyp som inte stöds';
+
+  @override
+  String get s945685fcda =>
+      'Prova den andra registreringstypen (hålla inmatning).';
+
+  @override
+  String get s07ffbc349a => 'Värde som avvisas av enheten';
+
+  @override
+  String get s76b95eef9f =>
+      'Värdet är förmodligen ur räckvidd. Kontrollera skalan också.';
+
+  @override
+  String get s7746921882 => 'Enhet hittas, men Modbus TCP är avstängd';
+
+  @override
+  String get s7e552bd146 =>
+      'Det finns en enhet på denna adress, men det accepterar inte Modbus på denna port. Slå på Modbus TCP i enhetsinställningarna (ofta under nätverk / Modbus / fjärrkontroll) och kontrollera hamnen (vanligtvis 502). Du kan också trycka på \"Scan Modbus\". Om enheten fungerar i Home Assistant, kan det redan ha en anslutning (många tillåter bara en) - läs värdena genom HA.';
+
+  @override
+  String s0ebc613f20(String p0) {
+    return 'Enheten är i lockout, retrying på $p0';
+  }
+
+  @override
+  String get s317b2b59af =>
+      'Enheten svarade inte, så det lämnas ensam ett tag - många enheter låser ut klienter som omröstar för ofta. Pausen växer från 30 sekunder till 5 minuter. Om enheten redan har en anslutning (t.ex. Home Assistant), läs värdena genom HA. Läsintervallet och pauserna är under Avancerade i anslutningen.';
+
+  @override
+  String get s33e09089b2 => 'Enheten adress saknas';
+
+  @override
+  String get s6180bd540e =>
+      'Öppna anslutningen och ange enhet IP-adressen eller tryck på \"Scan Modbus\" för att hitta enheten i nätverket.';
+
+  @override
+  String get sd73581c910 => 'Enheten kanske redan har en anslutning';
+
+  @override
+  String get scee8d982a2 =>
+      'Enheten släppte Modbus-anslutningen direkt. Många enheter tillåter endast en Modbus TCP-anslutning i taget. Om enheten redan finns i Home Assistant (t.ex. modbus.yaml), läs värdena genom HA.';
+
+  @override
+  String get s6ca672a111 => 'Ingenting på denna adress';
+
+  @override
+  String get sf7a98e1c70 =>
+      'Ingenting svarade på denna IP-adress. Kontrollera att enheten är på och i samma nätverk och att IP är rätt (det kan ändras - reservera en fast adress i routern). \"Scan Modbus\" hittar enheter på nätverket.';
+
+  @override
+  String get scb0cba44ea => 'Modbus-enheten svarade inte i tid';
+
+  @override
+  String get sc03ae7e1c5 =>
+      'Kunde inte öppna porten. De vanligaste orsakerna: fel IP, enheten är i ett annat nätverk (gäst Wi-Fi), Modbus TCP är avstängd eller en brandvägg blockerar porten. Kontrollera adressen och porten eller tryck på \"Scan Modbus\".';
+
+  @override
+  String get sefba540275 => 'Gateway kan inte nå en enhet med denna enhet id';
+
+  @override
+  String get s6e4ed361f3 =>
+      'Modbus gateway svarade, men ingen enhet med denna enhet id ligger bakom den. Kontrollera enhetens Modbus-adress (ofta 1) och seriehastigheten och pariteten. \"Scan Modbus\" försöker adresser 1-247.';
+
+  @override
+  String get sb66bc0e677 => 'Ingen Modbus svar';
+
+  @override
+  String get s6ef5539bc2 =>
+      'Ansluten men inget svar. Kontrollera enhetens id (ofta 1) och gateway-serieinställningarna.';
+
+  @override
+  String get s17ea4c52d5 => 'Inget svar från enheten';
+
+  @override
+  String get s50ecf9ba6f =>
+      'Ansluten men inget svar i tid. Kontrollera meddelandet.';
+
+  @override
+  String get sf93db545a1 => 'Det finns ett misstag i inställningarna';
+
+  @override
+  String get sf19a9f0856 =>
+      'Kontrollera fälten, t.ex. att adressen börjar med http:// och siffrorna är siffror.';
+
+  @override
+  String get s3976954bef => 'Denna kakel har ingen enhet';
+
+  @override
+  String get sc025e0a1f4 =>
+      'Öppet redigeringsläge (penna) och välj en enhet för kakeln.';
+
+  @override
+  String get s2cd1df086e =>
+      'Fjärråtkomst går igenom bron hemma (tablet eller PC). Kontrollera att det är på, Molaplan är öppen och det har internet.';
+
+  @override
+  String get sdbf06d05d9 =>
+      'Din enhet kan inte nå Molaplan fjärrtjänst. Kontrollera mobildata eller Wi-Fi.';
+
+  @override
+  String get s8b737f4026 => 'Fjärråtkomst togs bort';
+
+  @override
+  String get s4b9e4ca079 =>
+      'Den här enheten togs bort på hemmabron. Par igen: Inställningar → Fjärråtkomst.';
+
+  @override
+  String get s5b3116ed94 => 'Hembron svarade inte i tid';
+
+  @override
+  String get se082095a34 =>
+      'Anslutningen kan vara långsam. Försök igen i ett ögonblick.';
+
+  @override
+  String get s688a4f4ccb => 'Koden är inte giltig';
+
+  @override
+  String get sfa0e226cd0 =>
+      'Kontrollera 6 siffror på bryggskärmen. En kod är giltig i 10 minuter och fungerar en gång - tryck på \"Paira en telefon\" på bron igen om det behövs.';
+
+  @override
+  String get sfa5c1fb1ac => 'Bron accepterade inte denna enhet';
+
+  @override
+  String get s9ad07ab36e =>
+      'När du kopplar ihop med koden ber bron om bekräftelse - tryck på \"Acceptera\" där. Eller skanna QR-koden, då behövs ingen bekräftelse.';
+
+  @override
+  String get sb5c271ae6a => 'Säkerhetskontroll misslyckades';
+
+  @override
+  String get s3d7ca280db =>
+      'Anslutningen kunde inte verifieras som säker, så den användes inte igen med QR-koden.';
+
+  @override
+  String get s0061b44673 => 'Bron svarade inte';
+
+  @override
+  String get sceb894b9b3 =>
+      'Acceptera enheten på bryggskärmen inom 3 minuter, eller skanna QR-koden.';
+
+  @override
+  String get s700b0ef4de => 'Anslutningen fungerade inte';
+
+  @override
+  String get s53a891e670 =>
+      'Kontrollera adressen och inställningarna och försök igen. De tekniska detaljerna visar den exakta orsaken.';
+
+  @override
+  String get s1e02f457b4 => 'Fungerar i appen eller genom en hembro';
+
+  @override
+  String s6c33f19716(String p0) {
+    return 'inte svara ($p0 min)';
+  }
+
+  @override
+  String get scebcdabe25 => 'av';
+
+  @override
+  String get sd4be8bca5f => 'Testa testtest';
+
+  @override
+  String get sd76aadb97c => 'Vattenläcka → larm';
+
+  @override
+  String get s0bd0724e83 =>
+      'En brådskande anmälan så snart en läcksensor upptäcker vatten (även under tysta timmar).';
+
+  @override
+  String get sa9f114c81d => 'Ljus på vid solnedgången';
+
+  @override
+  String get s02402a38eb => 'De utvalda ljusen slås på när solen sätter.';
+
+  @override
+  String get s386fda8330 => 'Allt utanför kl. 23.00';
+
+  @override
+  String get s3508664550 => 'De valda enheterna stängs av på kvällen.';
+
+  @override
+  String get s3775470669 => 'Meddela när en enhet slutar svara';
+
+  @override
+  String get s5c07969ac8 =>
+      'En anmälan när en enhet har varit oåtkomlig i 10 minuter.';
+
+  @override
+  String get s2cdd15be92 => 'Meddela när temperaturen sjunker';
+
+  @override
+  String get sa74faa4635 =>
+      'En anmälan när en sensorläsning sjunker under en gräns.';
+
+  @override
+  String get s94ed692877 => 'Billigaste timmar: enhet på';
+
+  @override
+  String get s9b99909a7c =>
+      'En enhet på under dagens billigaste timmar (t.ex. en vattenvärmare).';
+
+  @override
+  String get s90d5d2954d => 'Meddela om dyr el';
+
+  @override
+  String get s876690515a => 'En anmälan när spotpriset går över 20 c/kWh.';
+
+  @override
+  String get s602af22563 => 'Ladda bilen på solöverskott';
+
+  @override
+  String get s9ce0e97a38 =>
+      'Ladda om när mer än 1.4 kW exporteras. Av när mer än 1 kW importeras (minst 10 min laddning).';
+
+  @override
+  String get scbad5277ee => 'Ladda bilen i de billigaste timmarna';
+
+  @override
+  String get sb6dc0d48ed =>
+      'Ladda på dagens 4 billigaste timmar och av när de slutar.';
+
+  @override
+  String get s1906ecb28c => 'Frost varning';
+
+  @override
+  String get s036ecd266d => 'En anmälan när den är under −15 °C utanför.';
+
+  @override
+  String get sacf213e078 => 'Morgonsammanfattning kl. 7.00';
+
+  @override
+  String get sef21ad6784 =>
+      'Vädret, elpriset och tillståndet i ditt hem som ett meddelande varje morgon.';
+
+  @override
+  String get s5d308e6986 => 'Vänstersjön!';
+
+  @override
+  String get s13017ce3b0 => 'Temperaturen sjönk';
+
+  @override
+  String get s4c52f38c8b => 'El är dyrt';
+
+  @override
+  String get sc797ab9c4c => 'God morgon';
+
+  @override
+  String get scec02139b6 => 'Kort saknas';
+
+  @override
+  String get s66f19d787b => 'Gruppen svarar inte';
+
+  @override
+  String sed9788d6dc(String p0) {
+    return '$p0: Inget kommando';
+  }
+
+  @override
+  String sd39874fbe2(String p0) {
+    return '$p0 enheter på';
+  }
+
+  @override
+  String sbe208615d0(String p0) {
+    return '$p0 inte svara';
+  }
+
+  @override
+  String get seec5bf7f8d =>
+      'I morgon elgenomsnitt {avg} c/kWh (topp {max} på {hour}). Ljus eldstaden.';
+
+  @override
+  String get s4a7ea7d7f1 =>
+      'Elektricitet är exceptionellt dyrt idag: genomsnittligt {vg} c/kWh, topp {max} på {tim}.';
+
+  @override
+  String get se8a2912e3e =>
+      'Elektricitet är exceptionellt dyrt i morgon: genomsnitt {avg} c/kWh, topp {max} på {tim}.';
+
+  @override
+  String get s0818fd54b1 =>
+      'Ankomst till stugan {ankomst}. Vänd värmen på nu, mål {mål} ° C.';
+
+  @override
+  String get s57aad0f6c3 =>
+      'I morgon: genomsnitt {avg} c/kWh, topp {max} på {tim}.';
+
+  @override
+  String get s05394a7333 =>
+      'I dag: genomsnitt {avg} c/kWh, topp {max} på {hour}.';
+
+  @override
+  String get s412e06dba4 =>
+      'Exceptionellt dyr el {datum}: genomsnitt {avg} c/kWh, topp {max} på {tim}.';
+
+  @override
+  String get s7f8a4ab629 => 'Prognos {datum}: {temp} °C.';
+
+  @override
+  String get s326f105e40 => '{tile}: {value}';
+
+  @override
+  String get s65afe3ff6f => 'Ankomst { ankomst}. Vänd värmen på, mål {mål} °C.';
+
+  @override
+  String get sae56ce66d4 => 'anslutning stängd';
+
+  @override
+  String get sb6a87586a8 => 'Tuya: fel lokal nyckel eller protokollversion';
+
+  @override
+  String get s2b1a0a5a05 => 'Inget svar från enheten';
+
+  @override
+  String sc4fdd8a4a3(String p0) {
+    return 'Tuya $p0: Inget svar på handskakan - fel lokal nyckel eller protokollversion?';
+  }
+
+  @override
+  String get sa291ffb35a => 'handshake misslyckades';
+
+  @override
+  String get se2a4cc6409 => 'Tuya: fel lokal nyckel';
+
+  @override
+  String get s7b8131a396 => 'inte finns på hemnätverket';
+
+  @override
+  String get s210907044a => 'Powerant / Tuya / Smart Life';
+
+  @override
+  String get sa8d1873781 =>
+      'Plugs, switchar, dimmers, lampor och sensorer. Kontrolleras på ditt hemnätverk utan molnet.';
+
+  @override
+  String get s3530ee658b =>
+      'Ditt eget gratis Tuya-utvecklarprojekt: iot.tuya.com → Cloud → Skapa Cloud Project (datacenter: Centraleuropa) → Enheter → Link App-konto → skanna QR-koden med Smart Life / Tuya / Powerant-appen. Access ID är på projektets översiktssida.';
+
+  @override
+  String get s39d3fce33c =>
+      'Från samma översiktssida. lagras endast på den här enheten (och ditt eget krypterade valv) - aldrig på Molaplans servrar.';
+
+  @override
+  String get s12e2e8638b =>
+      'Projektets datacenter. Vanligtvis eu (Central Europe) i Europa. Västeuropa = weu.';
+
+  @override
+  String get sfc77cb8d11 =>
+      'Endast om inga enheter finns: app → enhet → penna → Enhetsinformation → Virtuellt ID.';
+
+  @override
+  String get s7938176623 => 'Tuya med en lokal nyckel';
+
+  @override
+  String get sf11f3cf10e => 'Om du redan vet enhets-ID och dess lokala nyckel.';
+
+  @override
+  String get s3dcff9c852 =>
+      'Från routerns enhetslista (ofta kallad ESP_ eller wlan0).';
+
+  @override
+  String get s3cc607ceba =>
+      'En 16-karaktärsnyckel. Få det från ett Tuya-utvecklare-projekt, eller helt enkelt välja \"Powerant / Tuya / Smart Life\".';
+
+  @override
+  String get s4105c416c6 =>
+      'Fylls i automatiskt när enheten hittades på nätverket.';
+
+  @override
+  String get s39dfcd0595 =>
+      '3.3, 3.4 eller 3.5. Upptäcks automatiskt när enheten hittades på nätverket.';
+
+  @override
+  String s991d0c0cdc(String p0) {
+    return 'kanal $p0';
+  }
+
+  @override
+  String get see129fb410 => 'ljusstyrka';
+
+  @override
+  String get sc8b1b10046 => 'Färgtemperatur';
+
+  @override
+  String get se78754330c => 'effekt';
+
+  @override
+  String get s0ceafaa97c => 'Energi energi';
+
+  @override
+  String get sdb8ea154be => 'Spänning';
+
+  @override
+  String get s37f61ae645 => 'Nuvarande';
+
+  @override
+  String get s68e711123b => 'Temperatur';
+
+  @override
+  String get s736646b3b0 => 'Fuktighet';
+
+  @override
+  String get s03a198454c => 'batteribatteri';
+
+  @override
+  String get sc20488a1f0 => 'Tuya / Powerant (lokal)';
+
+  @override
+  String get sc849342970 => 'Tuya moln region';
+
+  @override
+  String get s49c53b561d =>
+      'Endast för att hämta nycklarna. vanligtvis Centraleuropa i Europa.';
+
+  @override
+  String get s7cf3dec993 => 'Centraleuropa';
+
+  @override
+  String get seead5e286d => 'Västeuropa';
+
+  @override
+  String get s081e2e881d => 'Västra Amerika';
+
+  @override
+  String get s5b9587ae93 => 'Östra Amerika';
+
+  @override
+  String get sc5401d63d5 => 'Kina Kina Kina';
+
+  @override
+  String get sb6786f25b9 => 'Indien Indien Indien';
+
+  @override
+  String get scd78f804bb => 'Singapore';
+
+  @override
+  String get s61b325e35c => 'Access ID (iot.tuya.com)';
+
+  @override
+  String get s925e495479 =>
+      'Access ID för ditt eget molnprojekt. behövs bara för att hämta nycklarna.';
+
+  @override
+  String get sb07c0dad24 => 'Access Secret';
+
+  @override
+  String get s45bcef5c09 =>
+      'Access Secret of your own cloud project. lagras endast på den här enheten / i ditt eget valv.';
+
+  @override
+  String get s295cf46412 => 'lokala nycklar';
+
+  @override
+  String get sf58ae26c82 =>
+      'Anordningarnas lokala nycklar (träffas automatiskt).';
+
+  @override
+  String get s0c1a9d4ab9 => 'Håll anslutna (instant updates)';
+
+  @override
+  String get s121fb2c5fc =>
+      'Enheten rapporterar ändringar på en gång. Många Tuya-enheter tillåter endast en anslutning - använd endast på en enhet.';
+
+  @override
+  String get s65514aef3c => 'Enhet Id';
+
+  @override
+  String get se42a336655 => 'Tuya-enheten id.';
+
+  @override
+  String get sff3cf64925 => 'DP-nummer';
+
+  @override
+  String get sfec9b1a643 => 'Datapunkt nummer (1 = ström på de flesta).';
+
+  @override
+  String get see24ec5d84 => 'Skala';
+
+  @override
+  String get s2fa7dedd1b => 't.ex. 0.1 när enheten rapporterar tionde.';
+
+  @override
+  String get se30676cace => 'Datapoängnummer.';
+
+  @override
+  String get seb4c438a42 => 'Värde ({{value}})';
+
+  @override
+  String get s033b6b8c6c => 'Värde att skicka; {{value}} = kortets värde.';
+
+  @override
+  String get s784e702cc1 => 'Värdetyp';
+
+  @override
+  String get safadcc12c8 => 'På/off för switchar, nummer för ljusstyrka.';
+
+  @override
+  String get s8c8b6cb6d4 => 'On/off';
+
+  @override
+  String get s695fe25f79 => 'Nummernummer';
+
+  @override
+  String s9abc332fb8(String p0) {
+    return 'Tuya enhet $p0 är inte i denna anslutning';
+  }
+
+  @override
+  String get s8b84454b87 =>
+      'Tuya: Enhetens lokala nyckel saknas – hämta nycklarna igen';
+
+  @override
+  String get s764b6993c6 => 'Tuya: Enhetens IP-adress saknas';
+
+  @override
+  String get s120726c79a => 'Betalning ({\'{value}\'} = värde)';
+
+  @override
+  String get s1b5b0421c0 => 'Payload är hex';
+
+  @override
+  String get s44ab1d33df => 'Vänta på svar';
+
+  @override
+  String get s341bf61e36 => 'Svar som hex';
 
   @override
   String get s10813e25b3 => 'Regex (grupp 1)';
 
   @override
-  String get s4a282cd247 => 'Begär meddelande (Skicka på läs)';
+  String get s55c951a8ad => 'JSON väg';
 
   @override
-  String get sbeef545d37 => 'Meddelande ({\'{value}\'} = värde)';
+  String get s15e327bf8e => 'Timeout (ms)';
+
+  @override
+  String get sa70cc38354 => 'Värd';
+
+  @override
+  String get s800d13debd => 'Port Port Port Port';
+
+  @override
+  String get se7cff2d61e => 'TCP (rå)';
+
+  @override
+  String get s1dfeacd9f6 => 'UDP';
 
   @override
   String get s0477f24b6b => 'HTTP / REST';
@@ -7909,6 +7302,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s51510ae27a => 'Extra rubriker (Namn: värde per rad)';
+
+  @override
+  String get s2c4fd261e2 => 'Tillåt självsignerat certifikat';
 
   @override
   String get s361419c448 => 'Timeout (s)';
@@ -7956,33 +7352,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String sb2821916bc(String p0, String p1, String p2) {
     return 'Anslutning fungerar: HTTP $p0. $p1 $p2';
   }
-
-  @override
-  String get s58648dc3fc => 'Kamera (MJPEG / JPEG / RTSP)';
-
-  @override
-  String get s1534821f4a => 'Kamerabas URL';
-
-  @override
-  String get s95533426a3 => 'RTSP-adress (levande video hemma)';
-
-  @override
-  String get sa1115d4b0b => 'RTSP-adress, ljus (kort)';
-
-  @override
-  String get se995a6862d => 'Läge';
-
-  @override
-  String get s7cf6da2822 => 'Live (MJPEG)';
-
-  @override
-  String get s4cb8ad767b => 'Snapshots';
-
-  @override
-  String get s15f9cd477c => 'RTSP video';
-
-  @override
-  String get s4f356d158a => 'Refresh (s, snapshot)';
 
   @override
   String get scbc6aa5e63 => 'radon';
@@ -8071,407 +7440,94 @@ class AppLocalizationsSv extends AppLocalizations {
       'På baksidan eller botten av bildskärmen (10 siffror, t.ex. 2930xxxxxxx).';
 
   @override
-  String get s2525f9a4f5 =>
-      'Finland är ett område (FI). I Sverige och Norge beror det på var du bor.';
+  String get s36fb6ba26f => 'Modbus TCP';
 
   @override
-  String get s8f4a683abf => 'Moms %';
+  String get sdc5301b750 => 'Enhet Id';
 
   @override
-  String get s1c7d76a774 => 'Ditt lands moms.';
+  String get s666811be3d => 'Ramning';
 
   @override
-  String get se49d0fba92 => 'Elhandlarens påslag (c/kWh)';
+  String get s0f2d3b7a42 =>
+      'En billig RS485 till Wi-Fi / Ethernet-omvandlare i transparent läge använder RTU-ramar.';
 
   @override
-  String get s20a5e2936a => 'Spot kontrakt marginal utan moms.';
+  String get s12ca822cd8 => 'Modbus TCP (normalt)';
 
   @override
-  String get s923f9739de => 'Elnät + skatt (c/kWh)';
+  String get s731c92978b => 'Modbus RTU över TCP (RS485 gateway)';
 
   @override
-  String get s2a3498fb0f =>
-      'Från din faktura, inkl. moms. Lämna 0 för energi endast.';
+  String get s570f11bec8 => 'Minsta läsintervall (s)';
 
   @override
-  String get s1d9eabe472 =>
-      'För timmerbillade kontrakt. Av: 15-min priserna där området publicerar dem (EU dag framåt sedan 1 oktober 2025).';
+  String get s13e54dbff1 =>
+      'Samma register läses aldrig oftare, men många kort visar det.';
 
   @override
-  String get s515da3a9dd => 'Prisserver';
+  String get s95d4c6dd5b => 'Paus mellan förfrågningar (ms)';
 
   @override
-  String get s98cc9f1c14 => 'Molaplans server hämtar priser från öppna källor.';
+  String get s77b6667fdb => 'Vänta efter anslutning (ms)';
 
   @override
-  String get s271885dc8b => 'Vad ska man visa';
+  String get sf4b0409574 => 'Batch intilliggande läser';
 
   @override
-  String get s1edb6be142 =>
-      'Vilket pris siffra kortet visar: nu, dagens lägsta / högsta / genomsnittet, nästa billiga timme eller diagrammet.';
+  String get sc011aad1a9 => 'Max register per läs';
 
   @override
-  String get s46aab99b27 => 'Lägsta idag';
+  String get s942a690567 => 'Lockout paus vid första (s)';
 
   @override
-  String get sf6295f1182 => 'Högst idag';
+  String get s3746551251 =>
+      'När enheten inte svarar lämnas den ensam ett tag. Pausen fördubblas upp till maximum.';
 
   @override
-  String get s1aa7abbf72 => 'Medelpris i dag';
+  String get sf71d800450 => 'Lockout paus på de flesta (s)';
 
   @override
-  String get s65f496b2dc => 'Nästa billiga timme';
+  String get sbce68f8691 => 'Stäng anslutningen efter ett fel';
 
   @override
-  String get se446dc324a => 'Prislista (idag och i morgon)';
+  String get sf96bb0c03d => 'Försök på ett tomt svar';
 
   @override
-  String get s2f754e8ab4 => 'Inga priser för idag ännu.';
+  String get s943b8b6bf3 => 'Registrera tabell';
 
   @override
-  String get s18faad19ed => 'Inget pris för nu.';
+  String get s8283ed1c89 => 'Innehavsregister (4x)';
 
   @override
-  String get s29178b43f4 => 'Elpriset är lättläst.';
+  String get s94cf36d710 => 'Coil (0x)';
 
   @override
-  String get s1a707f2788 => 'Imorgon: ja.';
+  String get sfb6d4a8639 => 'Ingångsregister (3x)';
 
   @override
-  String get sb85af981c1 => 'I morgon: ännu inte (publicerad runt 14:00).';
+  String get s0bbedf814a => 'Diskret ingång (1x)';
 
   @override
-  String s6270faf138(String p0, String p1, String p2, String p3) {
-    return '✓ Priser för $p0 ($p1 slots, $p2 min, källa $p3).';
-  }
+  String get sf51ad986eb => 'Adress (0-baserad)';
 
   @override
-  String get se1bd60873c => 'MQTT';
+  String get s601f118ac0 => 'Datatyp';
 
   @override
-  String get s85b9781bb7 => 'Broker värd';
+  String get sddd62d21b0 => 'Swap ord (CDAB)';
 
   @override
-  String get s49fa57061a => 'TLS';
+  String get s0a239b832b => 'Offset';
 
   @override
-  String get s0fcef98aad => 'Använd WebSocket (ws:// eller wss://)';
+  String get s5f374d3643 => 'Enhet id (tom = anslutning)';
 
   @override
-  String get s5089c65c1f => 'Klient-ID (tomt = auto)';
+  String get sef11962984 => 'Skriv för att';
 
   @override
-  String get s9372a6f755 => 'Keep alive (s)';
-
-  @override
-  String get sd373a99107 => 'Tillståndsämne';
-
-  @override
-  String get s518c8aa712 => 'Kommandoämne';
-
-  @override
-  String get s120726c79a => 'Betalning ({\'{value}\'} = värde)';
-
-  @override
-  String get s3660228d11 => 'QoS';
-
-  @override
-  String get s1b07c9ba3d => 'Retain';
-
-  @override
-  String s91c3d72d1e(String p0) {
-    return 'fan $p0';
-  }
-
-  @override
-  String get s40032ddea9 => 'Swing';
-
-  @override
-  String s7dcc5e6c76(String p0) {
-    return ', vane ';
-  }
-
-  @override
-  String get s7c815852f2 => 'Inte sänt ännu';
-
-  @override
-  String s4795d331a5(String p0) {
-    return 'Skickat på $p0';
-  }
-
-  @override
-  String sff577ce033(String p0, String p1, String p2) {
-    return 'Sänd $p0. $p1. på $p2';
-  }
-
-  @override
-  String get s7068e8892e =>
-      'Okänd kod utan rådata. Aktivera rådata i Tasmota (SetOption58 1) och försök igen.';
-
-  @override
-  String get s6207a45bff => 'IR blaster (värmepump)';
-
-  @override
-  String get s859c2e7734 => 'Sändarens firmware';
-
-  @override
-  String get s3f8d3fb444 =>
-      'tasmota_http = Tasmota (tasmota-ir) av IP. tasmota_mqtt = Tasmota via en MQTT-mäklare. esphome = ESPHome klimat_ir. http/mqtt = annan blaster med dina egna mallar.';
-
-  @override
-  String get s4fb133b1c8 => 'Tasmota (HTTP)';
-
-  @override
-  String get sdd5d31034c => 'Tasmota (MQTT)';
-
-  @override
-  String get see30b7398b => 'ESPHome';
-
-  @override
-  String get scb2d23e10b => 'Anpassad HTTP';
-
-  @override
-  String get s5c6c30aac6 => 'Anpassad MQTT';
-
-  @override
-  String get s38471ae691 => 'Blaster adress';
-
-  @override
-  String get sda91fafa54 =>
-      'IP-adress för IR-blastaren (Tasmota eller ESPHome).';
-
-  @override
-  String get sf9220a3e4d => 'Brand IR-protokoll';
-
-  @override
-  String get s423f2576c4 =>
-      'Tasmota IRhvac leverantör, t.ex. MITSUBISHI_AC, PANASONIC_AC, DAIKIN. Om ingenting händer, prova ett annat protokoll av samma varumärke.';
-
-  @override
-  String get s74ff2fd8a8 => 'Modell (valfritt)';
-
-  @override
-  String get sef4c0e5d90 =>
-      'IRhvac Model nummer för vissa märken. Lämna tomt om det är osäkert.';
-
-  @override
-  String get s8e7962c184 => 'Tasmota ämne';
-
-  @override
-  String get s5ae4cc50db => 'MQTT: från Tasmota (Konfiguration → MQTT → Ämne).';
-
-  @override
-  String get sed30580f59 => 'MQTT mäklare adress';
-
-  @override
-  String get s744ce256bb => 'MQTT: maskinen som kör mäklaren.';
-
-  @override
-  String get se6754df705 => 'MQTT-port';
-
-  @override
-  String get sbfc8ee6c86 => 'Användarnamn';
-
-  @override
-  String get s711670d91a => 'MQTT eller webbanvändare.';
-
-  @override
-  String get s3bbd70773d => 'Lämna tom om det inte behövs.';
-
-  @override
-  String get s443fe6f350 => 'ESPHome klimat id';
-
-  @override
-  String get s62feae1a9f => 'ESPHome endast: klimatobjektet id.';
-
-  @override
-  String get se0efd6dfb3 => 'Kommando URL (andra blaster)';
-
-  @override
-  String get s5366cbd4df =>
-      'Endast http: URL som tar emot hela staten. Placeholders som listas.';
-
-  @override
-  String get sce533db7c1 => 'Payload mall (andra blaster)';
-
-  @override
-  String get s0fa691e7c7 =>
-      'http body eller mqtt payload. Empty = IRhvac JSON ({\'{json}\'}).';
-
-  @override
-  String get s8567c5faa6 =>
-      'sammanfattning = fullt tillstånd som text. rum = blastarens temperatursensor. Andra = sista skickad inställning.';
-
-  @override
-  String get s5d329a0fea => 'Sammanfattning';
-
-  @override
-  String get s5db6506824 => 'Sätt temperatur';
-
-  @override
-  String get sa00d64c920 => 'Vane';
-
-  @override
-  String get s39f8bf0f76 => 'Sent at';
-
-  @override
-  String get s051944392f => 'Rumstemperatur';
-
-  @override
-  String get sdd8cd8132c => 'Vad man ska ändra';
-
-  @override
-  String get s2e8b846390 =>
-      'Hela staten skickas alltid på en gång. Värdet kommer från kakeln eller \"Value\".';
-
-  @override
-  String get sb517d97868 =>
-      'T.ex. värme, svalt, auto, torrt, fan eller on/off. Empty = kakelvärde.';
-
-  @override
-  String get sda4a1b2eee => 'Lärd kod';
-
-  @override
-  String get s0cfc723aa2 =>
-      'Fylld när du sparar en inlärd fjärrknapp. Skicka med Tasmota IRsend.';
-
-  @override
-  String get s3f26cb7602 => 'ESPHome knapp';
-
-  @override
-  String get sc71964f422 =>
-      'ESPHome endast: id av mallknappen för en lärd kod.';
-
-  @override
-  String get s852a166240 => 'Blaster adress saknas.';
-
-  @override
-  String get s75ce01c354 => 'Tasmota behöver webben lösenord.';
-
-  @override
-  String sf9d84ad23c(String p0) {
-    return 'Tasmota vet inte $p0. Installera tasmota-ir-byggnaden.';
-  }
-
-  @override
-  String sff167aa9a6(String p0) {
-    return 'Tasmota förkastade kommandot: $p0';
-  }
-
-  @override
-  String s385c6a9a2d(String p0) {
-    return 'Okänd leverantör \"$p0\".';
-  }
-
-  @override
-  String sb4ea2389cb(String p0) {
-    return 'ESPHome klimat \"$p0\" hittades inte.';
-  }
-
-  @override
-  String get s34deda2c72 => 'Kommando URL saknas.';
-
-  @override
-  String get s04e4777aea => 'Temperatur saknas.';
-
-  @override
-  String s91e5fff1f0(String p0) {
-    return 'rum $p0 °C';
-  }
-
-  @override
-  String get sfce1a094cb => 'Ingen temperatursensor på blastaren.';
-
-  @override
-  String s4536eb33dd(String p0) {
-    return 'Ingen temperatur mottagen.';
-  }
-
-  @override
-  String get s9b5bbfa2c6 => 'Rumstemperatur endast från Tasmota/ESPHome.';
-
-  @override
-  String get s5acc16dafb => 'RF433 behöver Tasmota.';
-
-  @override
-  String get s8478662ad1 => 'Lärda koder behöver Tasmota.';
-
-  @override
-  String s9f8263b5a0(String p0, String p1) {
-    return 'ESPHome-knappen \"$p0\" hittades inte.';
-  }
-
-  @override
-  String s3296e8d7e7(String p0) {
-    return 'Ingen kod inom $p0 s. Peka fjärrkontrollen rakt på sprängaren (under 1 m) och tryck igen.';
-  }
-
-  @override
-  String get s1e73ba395d => 'RF433 lärande behöver Tasmota.';
-
-  @override
-  String get scc47b4b225 =>
-      'Lärande fungerar med Tasmota och ESPHome blasters.';
-
-  @override
-  String s96adaaf2b6(String p0, String p1, String p2) {
-    return 'Tasmota svarade (version $p0). Testad: Status 0 på $p1. Inget skickades till värmepumpen.';
-  }
-
-  @override
-  String sfce5c770f1(String p0) {
-    return 'Brokern fungerar men Tasmota \"$p0\" svarade inte.';
-  }
-
-  @override
-  String s2c3b95a054(String p0) {
-    return '✓ Tasmota \"$p0\" svarade via MQTT. Inget skickades till värmepumpen.';
-  }
-
-  @override
-  String scf9ead3297(String p0, String p1, String p2, String p3) {
-    return '✓ ESPHome klimat \"$p0\" hittades. Ingenting skickades.';
-  }
-
-  @override
-  String get s8ad50358b9 =>
-      'Inget test för andra sprängmedel: IR är envägs. Tryck på kraftplattan och titta på värmepumpen.';
-
-  @override
-  String s3b476099a2(String p0) {
-    return 'Enhet svarade HTTP $p0. Är web_server aktiverad i ESPHome?';
-  }
-
-  @override
-  String sd44aec7380(String p0) {
-    return 'Inget svar från $p0.';
-  }
-
-  @override
-  String s120026628c(String p0) {
-    return 'Kunde inte nå $p0.';
-  }
-
-  @override
-  String get s43c9b88580 => 'Auto';
-
-  @override
-  String get sd3cd4220ae => 'auto auto auto auto auto';
-
-  @override
-  String get s640687fc2d => 'högsta högsta högsta';
-
-  @override
-  String get s3516ee9f50 => 'Hög högt';
-
-  @override
-  String get sb847c3774e => 'Mitten';
-
-  @override
-  String get sc4ebe5627c => 'lågt lågt lågt';
-
-  @override
-  String get saacae8d5c5 => 'lägsta';
+  String get s779b59ba4b => 'Värde ({\'{value}\'} = reglage/toggle)';
 
   @override
   String get s30ae7f76e6 => 'ntfy kommandoenhet (kommandon + stat)';
@@ -8494,8 +7550,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sfb1f03903c => 'Tillståndsämne (valfritt)';
 
   @override
-  String get s0ac0bdced7 =>
-      'Enhetens tillståndsämne (på panelen: Enhet → Fjärrstyrning → Tillståndskanal, fw 0.2.50+). När det är angett lyssnar Molaplan på enhetens egna tillståndsmeddelanden och frågar inte efter tillståndet själv. Ingen PIN-kod behövs. Om ett statussvar innehåller fältet state_topic fylls ämnet i automatiskt.';
+  String get s1acfb0da58 =>
+      'Enhetens tillståndsämne (på panelen: Enhet → Fjärrstyrning → Tillståndskanal, fw 0.2.51+). När det är angett lyssnar Molaplan på enhetens egna tillståndsmeddelanden och frågar inte efter tillståndet själv. Ingen PIN-kod behövs. Om ett PIN-skyddat statussvar innehåller fältet state_topic och det skiljer sig från det sparade (t.ex. efter panelens \"Ny kanal och nyckel\") uppdateras prenumerationen automatiskt. Om inget meddelande kommer till tillståndsämnet på över 35 minuter faller Molaplan tillbaka på schemalagda statusförfrågningar.';
 
   @override
   String get s7ea9d85150 => 'PIN-kod (tillval)';
@@ -8683,100 +7739,31 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get s36fb6ba26f => 'Modbus TCP';
+  String get s58648dc3fc => 'Kamera (MJPEG / JPEG / RTSP)';
 
   @override
-  String get sa70cc38354 => 'Värd';
+  String get s1534821f4a => 'Kamerabas URL';
 
   @override
-  String get sdc5301b750 => 'Enhet Id';
+  String get s95533426a3 => 'RTSP-adress (levande video hemma)';
 
   @override
-  String get s15e327bf8e => 'Timeout (ms)';
+  String get sa1115d4b0b => 'RTSP-adress, ljus (kort)';
 
   @override
-  String get s666811be3d => 'Ramning';
+  String get se995a6862d => 'Läge';
 
   @override
-  String get s0f2d3b7a42 =>
-      'En billig RS485 till Wi-Fi / Ethernet-omvandlare i transparent läge använder RTU-ramar.';
+  String get s7cf6da2822 => 'Live (MJPEG)';
 
   @override
-  String get s12ca822cd8 => 'Modbus TCP (normalt)';
+  String get s4cb8ad767b => 'Snapshots';
 
   @override
-  String get s731c92978b => 'Modbus RTU över TCP (RS485 gateway)';
+  String get s15f9cd477c => 'RTSP video';
 
   @override
-  String get s570f11bec8 => 'Minsta läsintervall (s)';
-
-  @override
-  String get s13e54dbff1 =>
-      'Samma register läses aldrig oftare, men många kort visar det.';
-
-  @override
-  String get s95d4c6dd5b => 'Paus mellan förfrågningar (ms)';
-
-  @override
-  String get s77b6667fdb => 'Vänta efter anslutning (ms)';
-
-  @override
-  String get sf4b0409574 => 'Batch intilliggande läser';
-
-  @override
-  String get sc011aad1a9 => 'Max register per läs';
-
-  @override
-  String get s942a690567 => 'Lockout paus vid första (s)';
-
-  @override
-  String get s3746551251 =>
-      'När enheten inte svarar lämnas den ensam ett tag. Pausen fördubblas upp till maximum.';
-
-  @override
-  String get sf71d800450 => 'Lockout paus på de flesta (s)';
-
-  @override
-  String get sbce68f8691 => 'Stäng anslutningen efter ett fel';
-
-  @override
-  String get sf96bb0c03d => 'Försök på ett tomt svar';
-
-  @override
-  String get s943b8b6bf3 => 'Registrera tabell';
-
-  @override
-  String get s8283ed1c89 => 'Innehavsregister (4x)';
-
-  @override
-  String get s94cf36d710 => 'Coil (0x)';
-
-  @override
-  String get sfb6d4a8639 => 'Ingångsregister (3x)';
-
-  @override
-  String get s0bbedf814a => 'Diskret ingång (1x)';
-
-  @override
-  String get sf51ad986eb => 'Adress (0-baserad)';
-
-  @override
-  String get s601f118ac0 => 'Datatyp';
-
-  @override
-  String get sddd62d21b0 => 'Swap ord (CDAB)';
-
-  @override
-  String get s0a239b832b => 'Offset';
-
-  @override
-  String get s5f374d3643 => 'Enhet id (tom = anslutning)';
-
-  @override
-  String get sef11962984 => 'Skriv för att';
-
-  @override
-  String get s779b59ba4b => 'Värde ({\'{value}\'} = reglage/toggle)';
+  String get s4f356d158a => 'Refresh (s, snapshot)';
 
   @override
   String get sefaea1b818 => 'ntfy (meddelandekanal/kommandon)';
@@ -8864,12 +7851,12 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s0870daf796 => 'ntfy: kommandoämne saknas';
 
   @override
-  String get s28dc7ea012 => 'ntfy: anslutning stängd innan svaret';
-
-  @override
   String sa4313864fe(String p0, String p1) {
     return 'Kommandot skickades, men inget svar kom inom $p0 s. Kontrollera att hemenheten är på och lyssnar på \"$p1\".';
   }
+
+  @override
+  String get s28dc7ea012 => 'ntfy: anslutning stängd innan svaret';
 
   @override
   String get s85a1947a44 => '(inga meddelanden)';
@@ -8896,6 +7883,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sf0ef0140c3 => 'Home Assistant';
 
   @override
+  String get sfcbb753f53 => 'URL';
+
+  @override
   String get s1f90ee6992 => 'Långlivad access token';
 
   @override
@@ -8914,554 +7904,439 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s7286715019 => 'Extra data JSON ({\'{value}\'} = värde)';
 
   @override
-  String get s1b5b0421c0 => 'Payload är hex';
-
-  @override
-  String get s44ab1d33df => 'Vänta på svar';
-
-  @override
-  String get s341bf61e36 => 'Svar som hex';
-
-  @override
-  String get se7cff2d61e => 'TCP (rå)';
-
-  @override
-  String get s1dfeacd9f6 => 'UDP';
-
-  @override
-  String s6c33f19716(String p0) {
-    return 'inte svara ($p0 min)';
+  String s91c3d72d1e(String p0) {
+    return 'fan $p0';
   }
 
   @override
-  String get scebcdabe25 => 'av';
+  String get s40032ddea9 => 'Swing';
 
   @override
-  String get sd4be8bca5f => 'Testa testtest';
-
-  @override
-  String get sd76aadb97c => 'Vattenläcka → larm';
-
-  @override
-  String get s0bd0724e83 =>
-      'En brådskande anmälan så snart en läcksensor upptäcker vatten (även under tysta timmar).';
-
-  @override
-  String get sa9f114c81d => 'Ljus på vid solnedgången';
-
-  @override
-  String get s02402a38eb => 'De utvalda ljusen slås på när solen sätter.';
-
-  @override
-  String get s386fda8330 => 'Allt utanför kl. 23.00';
-
-  @override
-  String get s3508664550 => 'De valda enheterna stängs av på kvällen.';
-
-  @override
-  String get s3775470669 => 'Meddela när en enhet slutar svara';
-
-  @override
-  String get s5c07969ac8 =>
-      'En anmälan när en enhet har varit oåtkomlig i 10 minuter.';
-
-  @override
-  String get s2cdd15be92 => 'Meddela när temperaturen sjunker';
-
-  @override
-  String get sa74faa4635 =>
-      'En anmälan när en sensorläsning sjunker under en gräns.';
-
-  @override
-  String get s94ed692877 => 'Billigaste timmar: enhet på';
-
-  @override
-  String get s9b99909a7c =>
-      'En enhet på under dagens billigaste timmar (t.ex. en vattenvärmare).';
-
-  @override
-  String get s90d5d2954d => 'Meddela om dyr el';
-
-  @override
-  String get s876690515a => 'En anmälan när spotpriset går över 20 c/kWh.';
-
-  @override
-  String get s602af22563 => 'Ladda bilen på solöverskott';
-
-  @override
-  String get s9ce0e97a38 =>
-      'Ladda om när mer än 1.4 kW exporteras. Av när mer än 1 kW importeras (minst 10 min laddning).';
-
-  @override
-  String get scbad5277ee => 'Ladda bilen i de billigaste timmarna';
-
-  @override
-  String get sb6dc0d48ed =>
-      'Ladda på dagens 4 billigaste timmar och av när de slutar.';
-
-  @override
-  String get s1906ecb28c => 'Frost varning';
-
-  @override
-  String get s036ecd266d => 'En anmälan när den är under −15 °C utanför.';
-
-  @override
-  String get sacf213e078 => 'Morgonsammanfattning kl. 7.00';
-
-  @override
-  String get sef21ad6784 =>
-      'Vädret, elpriset och tillståndet i ditt hem som ett meddelande varje morgon.';
-
-  @override
-  String get s5d308e6986 => 'Vänstersjön!';
-
-  @override
-  String get s13017ce3b0 => 'Temperaturen sjönk';
-
-  @override
-  String get s4c52f38c8b => 'El är dyrt';
-
-  @override
-  String get sc797ab9c4c => 'God morgon';
-
-  @override
-  String get seec5bf7f8d =>
-      'I morgon elgenomsnitt {avg} c/kWh (topp {max} på {hour}). Ljus eldstaden.';
-
-  @override
-  String get s4a7ea7d7f1 =>
-      'Elektricitet är exceptionellt dyrt idag: genomsnittligt {vg} c/kWh, topp {max} på {tim}.';
-
-  @override
-  String get se8a2912e3e =>
-      'Elektricitet är exceptionellt dyrt i morgon: genomsnitt {avg} c/kWh, topp {max} på {tim}.';
-
-  @override
-  String get s0818fd54b1 =>
-      'Ankomst till stugan {ankomst}. Vänd värmen på nu, mål {mål} ° C.';
-
-  @override
-  String get s57aad0f6c3 =>
-      'I morgon: genomsnitt {avg} c/kWh, topp {max} på {tim}.';
-
-  @override
-  String get s05394a7333 =>
-      'I dag: genomsnitt {avg} c/kWh, topp {max} på {hour}.';
-
-  @override
-  String get s412e06dba4 =>
-      'Exceptionellt dyr el {datum}: genomsnitt {avg} c/kWh, topp {max} på {tim}.';
-
-  @override
-  String get s7f8a4ab629 => 'Prognos {datum}: {temp} °C.';
-
-  @override
-  String get s326f105e40 => '{tile}: {value}';
-
-  @override
-  String get s65afe3ff6f => 'Ankomst { ankomst}. Vänd värmen på, mål {mål} °C.';
-
-  @override
-  String get scec02139b6 => 'Kort saknas';
-
-  @override
-  String get s66f19d787b => 'Gruppen svarar inte';
-
-  @override
-  String sed9788d6dc(String p0) {
-    return '$p0: Inget kommando';
+  String s7dcc5e6c76(String p0) {
+    return ', vane ';
   }
 
   @override
-  String sd39874fbe2(String p0) {
-    return '$p0 enheter på';
+  String get s7c815852f2 => 'Inte sänt ännu';
+
+  @override
+  String s4795d331a5(String p0) {
+    return 'Skickat på $p0';
   }
 
   @override
-  String sbe208615d0(String p0) {
-    return '$p0 inte svara';
+  String sff577ce033(String p0, String p1, String p2) {
+    return 'Sänd $p0. $p1. på $p2';
   }
 
   @override
-  String get s14e68f6852 => 'udda svar';
+  String get s7068e8892e =>
+      'Okänd kod utan rådata. Aktivera rådata i Tasmota (SetOption58 1) och försök igen.';
 
   @override
-  String get s31ec8d716e =>
-      'Enhetens kontotabell är full. Ta bort en gammal telefon i Smart M-Air-appen och försök igen.';
+  String get s6207a45bff => 'IR blaster (värmepump)';
 
   @override
-  String get sbaecc9fbed =>
-      'Enheten är upptagen (en annan app) - försök på en minut.';
+  String get s859c2e7734 => 'Sändarens firmware';
 
   @override
-  String get sc2474a4b0b =>
-      'Daikin vägrade - kontrollera nyckeln på klistermärket.';
+  String get s3f8d3fb444 =>
+      'tasmota_http = Tasmota (tasmota-ir) av IP. tasmota_mqtt = Tasmota via en MQTT-mäklare. esphome = ESPHome klimat_ir. http/mqtt = annan blaster med dina egna mallar.';
 
   @override
-  String get s2f7a41de7a => 'Daikin accepterade inte nyckeln.';
+  String get s4fb133b1c8 => 'Tasmota (HTTP)';
 
   @override
-  String sc499fab53f(String p0) {
-    return 'Ingen Daikin adapter på $p0';
+  String get sdd5d31034c => 'Tasmota (MQTT)';
+
+  @override
+  String get see30b7398b => 'ESPHome';
+
+  @override
+  String get scb2d23e10b => 'Anpassad HTTP';
+
+  @override
+  String get s5c6c30aac6 => 'Anpassad MQTT';
+
+  @override
+  String get s38471ae691 => 'Blaster adress';
+
+  @override
+  String get sda91fafa54 =>
+      'IP-adress för IR-blastaren (Tasmota eller ESPHome).';
+
+  @override
+  String get sf9220a3e4d => 'Brand IR-protokoll';
+
+  @override
+  String get s423f2576c4 =>
+      'Tasmota IRhvac leverantör, t.ex. MITSUBISHI_AC, PANASONIC_AC, DAIKIN. Om ingenting händer, prova ett annat protokoll av samma varumärke.';
+
+  @override
+  String get s74ff2fd8a8 => 'Modell (valfritt)';
+
+  @override
+  String get sef4c0e5d90 =>
+      'IRhvac Model nummer för vissa märken. Lämna tomt om det är osäkert.';
+
+  @override
+  String get s8e7962c184 => 'Tasmota ämne';
+
+  @override
+  String get s5ae4cc50db => 'MQTT: från Tasmota (Konfiguration → MQTT → Ämne).';
+
+  @override
+  String get sed30580f59 => 'MQTT mäklare adress';
+
+  @override
+  String get s744ce256bb => 'MQTT: maskinen som kör mäklaren.';
+
+  @override
+  String get se6754df705 => 'MQTT-port';
+
+  @override
+  String get sbfc8ee6c86 => 'Användarnamn';
+
+  @override
+  String get s711670d91a => 'MQTT eller webbanvändare.';
+
+  @override
+  String get s3bbd70773d => 'Lämna tom om det inte behövs.';
+
+  @override
+  String get s443fe6f350 => 'ESPHome klimat id';
+
+  @override
+  String get s62feae1a9f => 'ESPHome endast: klimatobjektet id.';
+
+  @override
+  String get se0efd6dfb3 => 'Kommando URL (andra blaster)';
+
+  @override
+  String get s5366cbd4df =>
+      'Endast http: URL som tar emot hela staten. Placeholders som listas.';
+
+  @override
+  String get sce533db7c1 => 'Payload mall (andra blaster)';
+
+  @override
+  String get s0fa691e7c7 =>
+      'http body eller mqtt payload. Empty = IRhvac JSON ({\'{json}\'}).';
+
+  @override
+  String get s271885dc8b => 'Vad ska man visa';
+
+  @override
+  String get s8567c5faa6 =>
+      'sammanfattning = fullt tillstånd som text. rum = blastarens temperatursensor. Andra = sista skickad inställning.';
+
+  @override
+  String get s5d329a0fea => 'Sammanfattning';
+
+  @override
+  String get s5db6506824 => 'Sätt temperatur';
+
+  @override
+  String get sa00d64c920 => 'Vane';
+
+  @override
+  String get s39f8bf0f76 => 'Sent at';
+
+  @override
+  String get s051944392f => 'Rumstemperatur';
+
+  @override
+  String get sdd8cd8132c => 'Vad man ska ändra';
+
+  @override
+  String get s2e8b846390 =>
+      'Hela staten skickas alltid på en gång. Värdet kommer från kakeln eller \"Value\".';
+
+  @override
+  String get sb517d97868 =>
+      'T.ex. värme, svalt, auto, torrt, fan eller on/off. Empty = kakelvärde.';
+
+  @override
+  String get sda4a1b2eee => 'Lärd kod';
+
+  @override
+  String get s0cfc723aa2 =>
+      'Fylld när du sparar en inlärd fjärrknapp. Skicka med Tasmota IRsend.';
+
+  @override
+  String get s3f26cb7602 => 'ESPHome knapp';
+
+  @override
+  String get sc71964f422 =>
+      'ESPHome endast: id av mallknappen för en lärd kod.';
+
+  @override
+  String get s852a166240 => 'Blaster adress saknas.';
+
+  @override
+  String get s75ce01c354 => 'Tasmota behöver webben lösenord.';
+
+  @override
+  String sf9d84ad23c(String p0) {
+    return 'Tasmota vet inte $p0. Installera tasmota-ir-byggnaden.';
   }
 
   @override
-  String get s4cfb5a36c9 => 'Daikin (lokalt Wi-Fi)';
-
-  @override
-  String get s2089a88d1f => 'Mitsubishi Heavy (Smart M-Air, lokal)';
-
-  @override
-  String get s050c379c67 => 'Mitsubishi Electric (MELCloud)';
-
-  @override
-  String get s339fd47e4a => 'Toshiba (Home AC Control)';
-
-  @override
-  String get sf71a945a1d => 'Samsung (SmartThings)';
-
-  @override
-  String get sf7aed9c9e0 => 'Hitachi (airCloud Go)';
-
-  @override
-  String get sb33215fa8b => 'NIBE (myUplink cloud)';
-
-  @override
-  String get se9b4e55058 => 'NIBE / Thermia (Modbus TCP, lokal)';
-
-  @override
-  String get sddd6b1d42e => 'Värmepump (inbyggd integration)';
-
-  @override
-  String get s1c9df5579f => 'Märke';
-
-  @override
-  String get s34a3681441 =>
-      'Skapare och anslutningstyp. Lokala arbetar utan molnet.';
-
-  @override
-  String get s88688d2809 => 'Enhet IP (lokala varumärken)';
-
-  @override
-  String get s87e0a93996 =>
-      'IP-adress för en lokal enhet (från routerns enhetslista).';
-
-  @override
-  String get sc0bc183c3e => 'E-post (moln)';
-
-  @override
-  String get s0cc25259c7 =>
-      'Det e-postmeddelande du loggar in på tillverkarens app med (MELCloud, airCloud).';
-
-  @override
-  String get s25f561c483 => 'Användarnamn (Toshiba)';
-
-  @override
-  String get s92e7ac8d3c => 'Ditt Toshiba Home AC Control användarnamn.';
-
-  @override
-  String get safde071183 =>
-      'Skaparens app lösenord. lagras endast på den här enheten / i ditt eget valv.';
-
-  @override
-  String get s2862f25983 => 'Token (SmartThings)';
-
-  @override
-  String get s23a4bc8253 =>
-      'SmartThings personliga åtkomsttoken (account.smartthings.com/tokens).';
-
-  @override
-  String get sef37e5048d => 'Nyckel (Daikin BRP072C, klistermärke)';
-
-  @override
-  String get s1c339065e1 => 'Nyckeln tryckt på BRP072C adapterns klistermärke.';
-
-  @override
-  String get se67e3e0eb9 => 'Client ID (myUplink)';
-
-  @override
-  String get sc2d5225ae8 => 'Klient-ID för din egen app på dev.myuplink.com.';
-
-  @override
-  String get sa165e50f99 => 'Client Secret (myUplink)';
-
-  @override
-  String get s332f9bc1a1 =>
-      'Kundhemlighet för din egen app på dev.myuplink.com.';
-
-  @override
-  String get sd1d4b22fc6 => 'Registrera karta (Modbus)';
-
-  @override
-  String get s5a9d485e7f =>
-      'Pumpserien. \"Importerad registerlista\" = pumpens egen CSV-export.';
-
-  @override
-  String get s7dc3b152a8 => 'NIBE S-serien';
-
-  @override
-  String get sad9fd728f9 => 'NIBE F-serien + MODBUS 40';
-
-  @override
-  String get seba6d1ba70 => 'Thermia Genesis';
-
-  @override
-  String get sfdc0bbf134 => 'Importerad registerförteckning';
-
-  @override
-  String get scd35ffb8e9 => 'Vanligtvis standard (Modbus 502, MHI 51443).';
-
-  @override
-  String get sab25ff8075 => 'Modbus enhet adress, vanligtvis 1.';
-
-  @override
-  String get sb064bec4c8 => 'Server URL (endast testa)';
-
-  @override
-  String get s67b2ac9328 =>
-      'Testning endast: ersätter tillverkarens serveradress.';
-
-  @override
-  String get sabab3f2fae => 'Vad man ska läsa';
-
-  @override
-  String get sf5e949d20c =>
-      'Fullständigt tillstånd (värmepumpkort) eller en läsning.';
-
-  @override
-  String get s46ce82ef9c => 'Full stat';
-
-  @override
-  String get s8cbd66456f => 'En läsning';
-
-  @override
-  String get s6d1827b58e => 'Enhet Id';
-
-  @override
-  String get s89308ddc6d => 'Inomhus enhet id; \"huvud\" för en-enhet enheter.';
-
-  @override
-  String get sa643668bec => 'Läsning (nuvarande, mål, utomhus, kraft ...)';
-
-  @override
-  String get s02d24152f0 =>
-      'Vilken läsning: nuvarande, mål, utomhus, ström, försörjning, hot_water ...';
-
-  @override
-  String get se16e293d6b => 'Set';
-
-  @override
-  String get s155de09d38 => 'Vad man ska ställa in';
-
-  @override
-  String get s94ecb845c8 => 'Setpoint, power, mode eller fan.';
-
-  @override
-  String get sba2eb6d9b9 => 'Setpoint';
-
-  @override
-  String s6478b264c0(String p0) {
-    return 'Värmepump \"$p0\" är inte längre i kontot';
+  String sff167aa9a6(String p0) {
+    return 'Tasmota förkastade kommandot: $p0';
   }
 
   @override
-  String get s4937d259b8 => 'Setpoint saknas';
+  String s385c6a9a2d(String p0) {
+    return 'Okänd leverantör \"$p0\".';
+  }
 
   @override
-  String get s10f42a9a20 => 'Curve Offset';
+  String sb4ea2389cb(String p0) {
+    return 'ESPHome klimat \"$p0\" hittades inte.';
+  }
 
   @override
-  String get sbc996a7d25 => 'börvärde';
+  String get s34deda2c72 => 'Kommando URL saknas.';
 
   @override
-  String get s620c04d73e => 'Leverans';
+  String get s04e4777aea => 'Temperatur saknas.';
 
   @override
-  String get s922f77d2f1 => 'Återvänd';
+  String s91e5fff1f0(String p0) {
+    return 'rum $p0 °C';
+  }
 
   @override
-  String get sbfee72daca => 'Varmt vatten';
+  String get sfce1a094cb => 'Ingen temperatursensor på blastaren.';
 
   @override
-  String get s0be9e35521 => 'Brine in';
+  String s4536eb33dd(String p0) {
+    return 'Ingen temperatur mottagen.';
+  }
 
   @override
-  String get s3a0d796501 => 'Brine out';
+  String get s9b5bbfa2c6 => 'Rumstemperatur endast från Tasmota/ESPHome.';
 
   @override
-  String get s23bbe9b4ed => 'Examen minuter';
+  String get s5acc16dafb => 'RF433 behöver Tasmota.';
 
   @override
-  String get s3ca74f3ef8 => 'Kompressor';
+  String get s8478662ad1 => 'Lärda koder behöver Tasmota.';
 
   @override
-  String get s6d21845355 =>
-      'Hitta det i routerns enhetslista eller tillverkarens app (enhetsinformation).';
+  String s9f8263b5a0(String p0, String p1) {
+    return 'ESPHome-knappen \"$p0\" hittades inte.';
+  }
 
   @override
-  String get s4a91d07711 => 'Daikin (Wi-Fi, lokal)';
+  String s3296e8d7e7(String p0) {
+    return 'Ingen kod inom $p0 s. Peka fjärrkontrollen rakt på sprängaren (under 1 m) och tryck igen.';
+  }
 
   @override
-  String get s8e339844a9 =>
-      'Daikin med en Wi-Fi-adapter (BRP069, BRP072C, Airbase) fungerar utan molnet; finns på nätverket.';
+  String get s1e73ba395d => 'RF433 lärande behöver Tasmota.';
 
   @override
-  String get sdb368f83d9 =>
-      'Nyare BRP072C-adaptrar: den 13-siffriga nyckeln är på adapterklistermärket. Äldre behöver ingen.';
+  String get scc47b4b225 =>
+      'Lärande fungerar med Tasmota och ESPHome blasters.';
 
   @override
-  String get se19c918d2d =>
-      'MHI värmepump med WF-RAC Wi-Fi-modulen (Smart M-Air app). Lokal kontroll, inget moln.';
+  String s96adaaf2b6(String p0, String p1, String p2) {
+    return 'Tasmota svarade (version $p0). Testad: Status 0 på $p1. Inget skickades till värmepumpen.';
+  }
 
   @override
-  String get sc24b0de42d =>
-      'Luft-till-luft- och Ecodan-luft-till-vattenpumpar genom ditt MELCloud-konto, var som helst.';
+  String sfce5c770f1(String p0) {
+    return 'Brokern fungerar men Tasmota \"$p0\" svarade inte.';
+  }
 
   @override
-  String get s41d69e699d => 'Samma som i MELCloud-appen.';
+  String s2c3b95a054(String p0) {
+    return '✓ Tasmota \"$p0\" svarade via MQTT. Inget skickades till värmepumpen.';
+  }
 
   @override
-  String get sa8405bf705 =>
-      'Toshiba Wi-Fi-värmepumpar genom ditt Toshiba Home AC Control-konto.';
+  String scf9ead3297(String p0, String p1, String p2, String p3) {
+    return '✓ ESPHome klimat \"$p0\" hittades. Ingenting skickades.';
+  }
 
   @override
-  String get s703279c03e => 'Samma som i Toshiba-appen.';
+  String get s8ad50358b9 =>
+      'Inget test för andra sprängmedel: IR är envägs. Tryck på kraftplattan och titta på värmepumpen.';
 
   @override
-  String get se26b321a29 =>
-      'Samsung Wi-Fi värmepumpar genom den officiella SmartThings API.';
+  String s3b476099a2(String p0) {
+    return 'Enhet svarade HTTP $p0. Är web_server aktiverad i ESPHome?';
+  }
 
   @override
-  String get s550793ea4a =>
-      'Skapa en på account.smartthings.com/tokens with the Devices-omfattningarna. Note: Samsung begränsar nya tokens till 24 timmar.';
+  String sd44aec7380(String p0) {
+    return 'Inget svar från $p0.';
+  }
 
   @override
-  String get se2f1cb488d => 'Hitachi värmepumpar genom ditt AirCloud Go-konto.';
+  String s120026628c(String p0) {
+    return 'Kunde inte nå $p0.';
+  }
 
   @override
-  String get s2e3665e309 =>
-      'NIBE markkälla och avgaspumpar genom den officiella myUplink API (även CTC, Høiax...).';
+  String get s43c9b88580 => 'Auto';
 
   @override
-  String get sf2e635afad =>
-      'Logga in på dev.myuplink.com → Applikationer → Skapa. Kopiera kundidentifieraren.';
+  String get sd3cd4220ae => 'auto auto auto auto auto';
 
   @override
-  String get s9db9eb22f8 => 'Från samma sida.';
+  String get s640687fc2d => 'högsta högsta högsta';
 
   @override
-  String get s412987475c => 'NIBE S-serien (Modbus TCP, lokal)';
+  String get s3516ee9f50 => 'Hög högt';
 
   @override
-  String get s3fc8f4ce0d =>
-      'S1155, S1255, SMO S40... Aktivera Modbus TCP i pumpmenyn 7.5.9. Inget moln.';
+  String get sb847c3774e => 'Mitten';
 
   @override
-  String get s9b15cf6f63 =>
-      'Pumpens IP: meny 3.1.13 (Connections) eller routerns enhetslista.';
+  String get sc4ebe5627c => 'lågt lågt lågt';
 
   @override
-  String get s29ed152759 => 'NIBE F-serien + MODBUS 40 (lokal)';
+  String get saacae8d5c5 => 'lägsta';
 
   @override
-  String get sa723788d3c =>
-      'F-serie / SMO med MODBUS 40-tillbehör och en RS485→TCP-gateway. Verifiera registren.';
+  String get se1bd60873c => 'MQTT';
 
   @override
-  String get sb001c51087 => 'IP-adress för RS485→Modbus TCP-gateway.';
+  String get s85b9781bb7 => 'Broker värd';
 
   @override
-  String get sde4b0f4525 => 'Thermia (Modbus TCP, lokal)';
+  String get s49fa57061a => 'TLS';
 
   @override
-  String get s9280f807a6 =>
-      'Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis) Modbus TCP: Inställningar → BMS.';
+  String get s0fcef98aad => 'Använd WebSocket (ws:// eller wss://)';
 
   @override
-  String get scab35073e8 => 'Pumpens IP-adress (display eller router).';
+  String get s5089c65c1f => 'Klient-ID (tomt = auto)';
 
   @override
-  String get s5ddd513689 =>
-      'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia - eller någon med en IR-fjärrkontroll.';
+  String get s9372a6f755 => 'Keep alive (s)';
 
   @override
-  String get s9622976fd3 => 'Inga enheter hittades';
+  String get sd373a99107 => 'Tillståndsämne';
 
   @override
-  String get sa93876ac9d => 'Enhet(s)';
+  String get s518c8aa712 => 'Kommandoämne';
 
   @override
-  String get sf3d77f10b9 => 'för många förfrågningar';
+  String get s3660228d11 => 'QoS';
 
   @override
-  String get se62d52c336 => 'AirCloud: sign-in misslyckades';
+  String get s1b07c9ba3d => 'Retain';
 
   @override
-  String get sc5f4490c42 => 'AirCloud: Enhet som inte hittats';
+  String get s3d43664fcc => 'WebSocket';
 
   @override
-  String get s00c7f00681 => 'MELCloud: fel e-post eller lösenord';
+  String get s81479e1555 => 'Headers (Namn: värde per rad)';
 
   @override
-  String get s4bd0e3110e => 'Denna pump är inte påslagen / av över Modbus.';
+  String get s5811b38d7b => 'Token (Authorization: Bearer)';
 
   @override
-  String get s4558be4f09 => 'myUplink: fel klient-ID eller hemlighet';
+  String get sd512dbbfc7 => 'Meddelande på connect';
 
   @override
-  String get s370bf1904d =>
-      'läget för en mark-source pump är inte ändras här - bara inställningen.';
+  String get s4d089aab74 => 'Filter (meddelande innehåller)';
 
   @override
-  String get s8f016f0e29 => 'Toshiba: fel användarnamn eller lösenord';
+  String get s4a282cd247 => 'Begär meddelande (Skicka på läs)';
 
   @override
-  String get s589eb1bcd3 => 'Home Assistant (exempel)';
+  String get sbeef545d37 => 'Meddelande ({\'{value}\'} = värde)';
 
   @override
-  String get sc4fdb87cd7 => 'Kamera (exempel)';
+  String get s1becc05ea1 => 'locked=Låst;unlocked=Olåst;jammed=FASTNAT';
 
   @override
-  String get sd50566a706 => 'Ventilationsenhet (exempel)';
+  String get s259de02f33 =>
+      'open=Öppen;closed=Stängd;opening=Öppnas;closing=Stängs';
 
   @override
-  String get s4b4fd14aaf => 'Gård';
+  String get s64d4364336 =>
+      'disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming';
 
   @override
-  String get s8ac16d45bc => '';
+  String get s5b1e227dc4 => 'on=På;off=Av';
 
   @override
-  String get sbde42d83a3 => 'Vardagsrummets lampor';
+  String get s2525f9a4f5 =>
+      'Finland är ett område (FI). I Sverige och Norge beror det på var du bor.';
 
   @override
-  String get sb7c78c63b3 => 'Tilluft';
+  String get s8f4a683abf => 'Moms %';
 
   @override
-  String get sbb2adef009 => 'Fläkthastighet';
+  String get s1c7d76a774 => 'Ditt lands moms.';
 
   @override
-  String get see46441329 => '0=Off;1=Away;2=Home;3=Boost;4=Max';
+  String get se49d0fba92 => 'Elhandlarens påslag (c/kWh)';
 
   @override
-  String get sb25aad3bc2 => 'Jag går hemifrån';
+  String get s20a5e2936a => 'Spot kontrakt marginal utan moms.';
 
   @override
-  String get s7e5f6a29e3 => 'God natt';
+  String get s923f9739de => 'Elnät + skatt (c/kWh)';
 
   @override
-  String get s253122823a => 'God morgon';
+  String get s2a3498fb0f =>
+      'Från din faktura, inkl. moms. Lämna 0 för energi endast.';
 
   @override
-  String get s640293f08f => 'God eftermiddag';
+  String get s1d9eabe472 =>
+      'För timmerbillade kontrakt. Av: 15-min priserna där området publicerar dem (EU dag framåt sedan 1 oktober 2025).';
 
   @override
-  String get sd8c5bed7de => 'God kväll';
+  String get s515da3a9dd => 'Prisserver';
 
   @override
-  String get s4cac4725b8 => 'Gruppens enheter svarar inte';
+  String get s98cc9f1c14 => 'Molaplans server hämtar priser från öppna källor.';
 
   @override
-  String get s13a91fe322 => 'Enheten att styra saknas';
+  String get s1edb6be142 =>
+      'Vilket pris siffra kortet visar: nu, dagens lägsta / högsta / genomsnittet, nästa billiga timme eller diagrammet.';
+
+  @override
+  String get s46aab99b27 => 'Lägsta idag';
+
+  @override
+  String get sf6295f1182 => 'Högst idag';
+
+  @override
+  String get s1aa7abbf72 => 'Medelpris i dag';
+
+  @override
+  String get s65f496b2dc => 'Nästa billiga timme';
+
+  @override
+  String get se446dc324a => 'Prislista (idag och i morgon)';
+
+  @override
+  String get s2f754e8ab4 => 'Inga priser för idag ännu.';
+
+  @override
+  String get s18faad19ed => 'Inget pris för nu.';
+
+  @override
+  String get s29178b43f4 => 'Elpriset är lättläst.';
+
+  @override
+  String get s1a707f2788 => 'Imorgon: ja.';
+
+  @override
+  String get sb85af981c1 => 'I morgon: ännu inte (publicerad runt 14:00).';
+
+  @override
+  String s6270faf138(String p0, String p1, String p2, String p3) {
+    return '✓ Priser för $p0 ($p1 slots, $p2 min, källa $p3).';
+  }
 
   @override
   String get s7e461faf91 =>
@@ -9636,6 +8511,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s9783a8fd53 => 'rum';
+
+  @override
+  String get sbc996a7d25 => 'börvärde';
 
   @override
   String get sa69c0e1ca3 => 'Luftvärmepump (IR)';
@@ -9994,8 +8872,8 @@ class AppLocalizationsSv extends AppLocalizations {
       'Om enheten svarar på ett annat ämne (t.ex. ditt anmälningsämne). Empty = samma ämne.';
 
   @override
-  String get s4fa314c8da =>
-      'Enhetens tillståndsämne (på panelen: Enhet → Fjärrstyrning → Tillståndskanal, fw 0.2.50+). När det är angett frågar Molaplan inte efter tillståndet själv. Ingen PIN-kod behövs. Kan fyllas i automatiskt från fältet state_topic i ett statussvar.';
+  String get s5abc26863b =>
+      'Enhetens tillståndsämne (på panelen: Enhet → Fjärrstyrning → Tillståndskanal, fw 0.2.51+). När det är angett frågar Molaplan inte efter tillståndet själv. Ingen PIN-kod behövs. Om ett PIN-skyddat statussvar innehåller fältet state_topic och det skiljer sig från det sparade (t.ex. efter panelens \"Ny kanal och nyckel\") uppdateras prenumerationen automatiskt. Om inget meddelande kommer till tillståndsämnet på över 35 minuter faller Molaplan tillbaka på schemalagda statusförfrågningar.';
 
   @override
   String get s24779d22ca =>
@@ -10099,27 +8977,1560 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get sd2b99f6417 => 'Styrs inte under dagen';
+  String get s2a3f705876 => 'Lagring av golvvärme (konkret)';
 
   @override
-  String get s1acfb0da58 =>
-      'Enhetens tillståndsämne (på panelen: Enhet → Fjärrstyrning → Tillståndskanal, fw 0.2.51+). När det är angett lyssnar Molaplan på enhetens egna tillståndsmeddelanden och frågar inte efter tillståndet själv. Ingen PIN-kod behövs. Om ett PIN-skyddat statussvar innehåller fältet state_topic och det skiljer sig från det sparade (t.ex. efter panelens \"Ny kanal och nyckel\") uppdateras prenumerationen automatiskt. Om inget meddelande kommer till tillståndsämnet på över 35 minuter faller Molaplan tillbaka på schemalagda statusförfrågningar.';
+  String get se02b21f2e5 =>
+      'En betongplatta lagrar värme under lång tid: uppvärmning flyttas till de billigaste timmarna, och antalet timmar följer prognosen.';
 
   @override
-  String get s5abc26863b =>
-      'Enhetens tillståndsämne (på panelen: Enhet → Fjärrstyrning → Tillståndskanal, fw 0.2.51+). När det är angett frågar Molaplan inte efter tillståndet själv. Ingen PIN-kod behövs. Om ett PIN-skyddat statussvar innehåller fältet state_topic och det skiljer sig från det sparade (t.ex. efter panelens \"Ny kanal och nyckel\") uppdateras prenumerationen automatiskt. Om inget meddelande kommer till tillståndsämnet på över 35 minuter faller Molaplan tillbaka på schemalagda statusförfrågningar.';
+  String get sed77dcfc1a => 'Lätt golvvärme';
 
   @override
-  String get scc4366802a =>
-      'Apparna är på väg till appbutikerna (Google Play, Microsoft Store). Redan nu: om du har en äldre Android-enhet kan vi installera Molaplan på den som en tjänst, eller så skickar vi installationsfilen (APK) som du kan installera själv om du kan.';
+  String get s4699e792b9 =>
+      'En lätt golv lagrar liten värme: de dyraste timmarna är hoppade, med korta pauser bara.';
 
   @override
-  String get sb2b9982ba7 => 'Be om installation som tjänst';
+  String get s5d46662c4e => 'Direkta elektriska radiatorer';
 
   @override
-  String get s02179b814a => 'Ladda ner installationsfilen';
+  String get s12e9bbf847 =>
+      'Radiatorer lagrar inte värme: endast de dyraste timmarna är hoppade, en timme i taget.';
 
   @override
-  String get see46457ffd =>
-      'Ladda ner den senaste Android-installationsfilen (APK). Öppna filen i telefonen eller surfplattan. Om Android frågar, tillåt installation från okända källor (Inställningar → säkerhet).';
+  String get s1c0bf9b38b => 'Air-source värmepump';
+
+  @override
+  String get s6896be80e0 =>
+      'En värmepump fungerar bäst vid en jämn temperatur: målet stiger lite före dyra eller kalla trollformler och sjunker i dyra timmar.';
+
+  @override
+  String get s765f87536c => 'Ground-source värmepump';
+
+  @override
+  String get s33536024e7 =>
+      'Ground-source värme med vattencirkulationen lagrar lite värme: de dyraste timmarna hoppas i pauser på några timmar högst.';
+
+  @override
+  String get s3a7d2e6848 => 'Vattenvärmare';
+
+  @override
+  String get s4eec9a0479 =>
+      'En varmvattenberedare stannar varmt för en dag: den värms upp i de billigaste timmarna på dagen.';
+
+  @override
+  String get sa2dc343545 =>
+      'Fireplace läge slutar: rummet kyls. Uppvärmning är tillbaka till det normala.';
+
+  @override
+  String get s78afbd052c =>
+      'Fireplace läge slutade (tid är upp). Uppvärmning är tillbaka till det normala.';
+
+  @override
+  String get s1f08341033 =>
+      'Fireplace läge stoppas. Uppvärmning är tillbaka till det normala.';
+
+  @override
+  String get sdd5e97b1e2 => 'Klart';
+
+  @override
+  String get sad990c999d => 'Halvklart';
+
+  @override
+  String get s80bfe8f9ad => 'Mulet';
+
+  @override
+  String get s46f3db8514 => 'Dimma';
+
+  @override
+  String get sbd81101eb4 => 'Duggregn';
+
+  @override
+  String get s960a265544 => 'Regn';
+
+  @override
+  String get seab38c2b45 => 'Snöfall';
+
+  @override
+  String get sfc65eafa12 => 'Åska';
+
+  @override
+  String get sa7f9b278cf => 'Huawei SUN2000 (Modbus TCP)';
+
+  @override
+  String get s0d714dece1 => 'Fronius (Solar API, lokal)';
+
+  @override
+  String get sa38a153c07 => 'SolarEdge (Modbus TCP, lokal)';
+
+  @override
+  String get s833dfe954e => 'SMA (Modbus TCP, lokal)';
+
+  @override
+  String get sc5863d817d => 'SMA (SunSpec Modbus)';
+
+  @override
+  String get s12733504dc => 'SMA Energy Meter / Home Manager (Speedwire)';
+
+  @override
+  String get sdeb4f39ff0 => 'Growatt (Modbus TCP)';
+
+  @override
+  String get sa1769b666b => 'Övriga SunSpec inverter (Modbus TCP)';
+
+  @override
+  String get s1694840083 => 'Huawei FusionSolar (moln)';
+
+  @override
+  String get s205e886d29 => 'SolarEdge övervakning (moln)';
+
+  @override
+  String get s5bf46ebec4 => 'Growatt OpenAPI (moln)';
+
+  @override
+  String get se7c240ad4f => 'Solar / inverterare (inbyggd integration)';
+
+  @override
+  String get s46b5445e4a => 'Brand och anslutning';
+
+  @override
+  String get sef83efed4e =>
+      'Skapare och anslutningstyp. Lokala arbetar utan molnet och uppdateras snabbare.';
+
+  @override
+  String get scc322677fe => 'IP-adress (lokal)';
+
+  @override
+  String get s6ac1068052 =>
+      'IP-adress för inverteraren, SDongle eller mätaren (från routernhetslistan).';
+
+  @override
+  String get sa163739d18 =>
+      'Tomma = standard (Modbus 502, SolarEdge 1502, Huawei inverter Wi-Fi 6607).';
+
+  @override
+  String get s58f0665e29 => 'Modbus unit id';
+
+  @override
+  String get sd5e2f52587 =>
+      'Tomt = standard (Huawei 1, SolarEdge 1, SMA 3, SMA SunSpec 126, Growatt 1).';
+
+  @override
+  String get se49fbf06a8 => 'Meter Serial (SMA Energy Meter)';
+
+  @override
+  String get s4a63dcc985 =>
+      'Endast om det finns flera SMA-mätare i nätverket. Empty = den första.';
+
+  @override
+  String get s6e391cf987 => 'Användare (FusionSolar API)';
+
+  @override
+  String get se76a6f4565 =>
+      'FusionSolar Northbound API-användare (skapad av installatören: System → Company → Northbound).';
+
+  @override
+  String get s2f3b444057 => 'Lösenord / systemkod';
+
+  @override
+  String get s11298f6c17 =>
+      'Lagras endast på den här enheten / i ditt eget krypterade valv.';
+
+  @override
+  String get s68eeca8dbe => 'API-nyckeln (SolarEdge/Growatt)';
+
+  @override
+  String get seba7bd613f =>
+      'SolarEdge: övervakning portal → Admin → Site Access → API. Growatt: OpenAPI token.';
+
+  @override
+  String get s3cda8d5f90 => 'Site / Plant Id (moln)';
+
+  @override
+  String get see56030ac8 => 'Empty = den första webbplatsen för kontot.';
+
+  @override
+  String get s9d61569ac0 =>
+      'Sladd: positiv = köp från rutnätet, negativ = försäljning av överskott.';
+
+  @override
+  String get sc78a29bef9 => 'Solenergi nu (W)';
+
+  @override
+  String get s88a9d9b593 => 'Yield idag (kWh)';
+
+  @override
+  String get s4766881640 => 'Total avkastning (kWh)';
+
+  @override
+  String get s4e1e06f64a => 'Grid +import / −export (W)';
+
+  @override
+  String get s5c5e6866eb => 'Importerad total (kWh)';
+
+  @override
+  String get s7495975366 => 'Exporterad total (kWh)';
+
+  @override
+  String get s275ffaa691 => 'Batteriavgift (%)';
+
+  @override
+  String get s9da1bd7ed1 => 'Batteri + laddning / − urladdning (W)';
+
+  @override
+  String get sb6d790453a => 'Hemförbrukning (W)';
+
+  @override
+  String sff9335b6df(String p0) {
+    return 'Enheten rapporterar inte denna läsning ($p0)';
+  }
+
+  @override
+  String get s711b4531bd => 'Inverters är lättlästa';
+
+  @override
+  String get s257cf40257 => 'Solar';
+
+  @override
+  String get sfa32969a23 => 'Nät';
+
+  @override
+  String get sc27533ae83 => 'Sparsam';
+
+  @override
+  String get sdbcb85509b =>
+      'Temperaturen får variera mest (+1 / −2 °C). Störst besparing.';
+
+  @override
+  String get s380b20be36 => 'Balanserad';
+
+  @override
+  String get s66ea783264 =>
+      'Liten variation (+1 / −1 °C). Ett bra standardval.';
+
+  @override
+  String get see96226e44 => 'Komfort';
+
+  @override
+  String get sb403e00b3d =>
+      'Nästan jämn temperatur (+0,5 / −0,5 °C). Sparar lite.';
+
+  @override
+  String get s333643b4c4 =>
+      'SMA Energy Meter: inga sändningar i hemnätverket (multicast 239.12.255.254:9522)';
+
+  @override
+  String get s0a81072a1f =>
+      'Hitta den i routerns enhetslista eller tillverkarens app (enhetsinformation). Reservera en fast IP för den.';
+
+  @override
+  String get s7c6a740594 => 'Huvudsakliga läsningar';
+
+  @override
+  String get se74bcc1028 => 'Extra kort för automation';
+
+  @override
+  String get s87d0186621 => 'Huawei SUN2000 (Modbus TCP, lokal)';
+
+  @override
+  String get se7647d6762 =>
+      'SUN2000 inverter (inkl. LUNA2000 batteri och DTSU666 meter) via SDongle på ditt nätverk, inget moln.';
+
+  @override
+  String get sccb0c7d2d8 =>
+      'SDongle IP-adressen. Gör det först i FusionSolar-appen: Enhetskommissionen → Dongle → Modbus TCP = \"Enable (obegränsad)\". Utan en dongle: inverterarens egen Wi-Fi, adress som 192.168.200.1:6607.';
+
+  @override
+  String get sddc831ec16 =>
+      'Optionell: produktion genom den officiella FusionSolar Northbound API. Uppdateringar ungefär var 5: e minut.';
+
+  @override
+  String get s4424767fdd =>
+      'En nordbunden API-användare (inte din vanliga appinloggning) installeraren / admin skapar den: System → Företag → Northbound management.';
+
+  @override
+  String get s7a7ab0d238 => 'lagras krypterad på den här enheten bara.';
+
+  @override
+  String get sde3c79670a =>
+      'Värd i din webbläsaradressfält när du är inloggad på FusionSolar. Default eu5.';
+
+  @override
+  String get se80d87723d =>
+      'Symo, Primo, Gen24, Tauro - inkl. Smart Meter och batteri. Skaparens öppna lokala API, inget moln.';
+
+  @override
+  String s1cb0924dc9(String p0) {
+    return ' Gen24: aktivera Solar API på inverterwebbsidan (Communication → Solar API).';
+  }
+
+  @override
+  String get s1345214178 =>
+      'SolarEdge inverter, mätare och batteri över SunSpec Modbus på ditt nätverk (port 1502).';
+
+  @override
+  String s1f7b006036(String p0) {
+    return ' Aktivera Modbus TCP med SetApp: Commissioning → Communication → Modbus TCP.';
+  }
+
+  @override
+  String get s5d43115e7d =>
+      'Valfritt: produktion och kraftflöde genom den officiella SolarEdge-övervakningen API (uppdateringar ~ 5 min).';
+
+  @override
+  String get sbe1a020a66 =>
+      'övervakning.solaredge.com → Admin → Webbplatsåtkomst → API Access: acceptera villkoren och kopiera nyckeln.';
+
+  @override
+  String get s9c5e673c38 =>
+      'Sunny Boy, Sunny Tripower, Sunny Boy Storage – SMA Modbus registrerar sig på ditt nätverk (enhet id 3).';
+
+  @override
+  String s4fad533521(String p0) {
+    return ' Aktivera Modbus på inverterwebbsidan: Enhetsparametrar → Extern kommunikation → Modbus TCP-server.';
+  }
+
+  @override
+  String get s528ecf3140 =>
+      'SMA Energy Meter / Home Manager (Speedwire, lokal)';
+
+  @override
+  String get sa7e3cb3d48 =>
+      'Sladdimport och export direkt från mätarens Speedwire-sändningar - ingen inloggning, inget moln.';
+
+  @override
+  String get s126a0713b8 =>
+      'Mätaren hittas automatiskt på samma hemnätverk. Om sökningen missar det, skriv mätaren IP (läsningar kommer fortfarande från sina sändningar).';
+
+  @override
+  String get sbdf4d24f64 => 'Growatt (Modbus TCP, lokal)';
+
+  @override
+  String get s6c5156d740 =>
+      'MIN/MOD/SPH-omvandlare via en RS485→TCP-gateway (eller en ShineLan-X med Modbus TCP). Verifiera avläsningarna.';
+
+  @override
+  String get se351eda9ce =>
+      'IP av RS485→Modbus TCP-gateway (t.ex. Elfin EW11, Waveshare) ansluten till inverteraren RS485/COM-porten.';
+
+  @override
+  String get s06257dd63c =>
+      'Valfritt: produktion genom Growatt OpenAPI (ShinePhone/ShineServer-kontot). Uppdateringar ~ 5 min.';
+
+  @override
+  String get sbd8c9831bb =>
+      'Fråga Growatt-stöd eller din installatör för ett OpenAPI-token eller hitta det i ShineServer-inställningar om det visas.';
+
+  @override
+  String get s3c89bd3976 =>
+      'Kostal, Fronius (Modbus), SMA (SunSpec), ABB/FIMER... Alla SunSpec-enheter.';
+
+  @override
+  String s183e57cdfd(String p0) {
+    return ' Port 502 som standard - en annan port som 192.168.1.20:1502.';
+  }
+
+  @override
+  String get s984804da72 =>
+      'Huawei, Fronius, SolarEdge, SMA, Growatt - produktion, rutnät och batteri. Lokalt, moln valfritt.';
+
+  @override
+  String get s68e2e87750 => 'OCPP 1.6J (lokalt, något varumärke)';
+
+  @override
+  String get s66fb236f0c => 'Easee (moln)';
+
+  @override
+  String get s3809be512f => 'Zaptec (moln)';
+
+  @override
+  String get s90c71e52fb => 'Wallbox (moln)';
+
+  @override
+  String get s7c3abc09fc => 'EV laddare (inbyggd integration)';
+
+  @override
+  String get se6885155b4 =>
+      'OCPP fungerar lokalt utan ett moln (laddaren ansluter till denna app eller bron).';
+
+  @override
+  String get sb14c49378c => 'OCPP-port';
+
+  @override
+  String get sa9346504d4 =>
+      'Porten den här enheten lyssnar på. Laddare URL: ws://<this device IP>:9000/ocpp/';
+
+  @override
+  String get sf94b2ba7f3 => 'Charge Point Id (OCPP)';
+
+  @override
+  String get s8ea8831ed0 =>
+      'Laddarens OCPP-avgiftspunkt id. Empty = den första som ansluter.';
+
+  @override
+  String get sa3b3822b75 => 'idTag för fjärrstart';
+
+  @override
+  String get sf718534954 =>
+      'Skicka med RemoteStartTransaction. Empty = \"molaplan\".';
+
+  @override
+  String get s540a178f7a => 'Användarnamn / e-post (moln)';
+
+  @override
+  String get s98c928f06c => 'Samma som i tillverkarens app.';
+
+  @override
+  String get sa6b5175654 =>
+      'Cloud: appen lösenord. OCPP: valfri Basic auth lösenord. lagras på den här enheten bara.';
+
+  @override
+  String get sccb2892754 => 'Vilken laddare som läser för att visa.';
+
+  @override
+  String get s0e7115e10c => 'Status';
+
+  @override
+  String get s20cb072267 => 'Laddning (1/0)';
+
+  @override
+  String get se13ff56722 => 'Laddningskraft (W)';
+
+  @override
+  String get sd3627e3a20 => 'Denna session (kWh)';
+
+  @override
+  String get s19e058622f => 'Totalt (kWh)';
+
+  @override
+  String get s613785b80f => 'Aktuell gräns (A)';
+
+  @override
+  String get s60f4e2786f => 'Charger id';
+
+  @override
+  String get sfbbd0943a8 => 'Charger id i kontot; tomt = den enda laddaren.';
+
+  @override
+  String get s9617db1f3d =>
+      'Börja, stoppa eller ställa in den aktuella gränsen.';
+
+  @override
+  String get sc110ab773a => 'Starta laddning';
+
+  @override
+  String get s44d11f741f => 'Stoppa / paus';
+
+  @override
+  String get s4c68e739b0 => 'Avgifter på/off';
+
+  @override
+  String get s141fac7235 => 'Ställ nuvarande gräns (A)';
+
+  @override
+  String get s33f04bfedd =>
+      'Aktuell gräns i ampere; {{value}} = reglaget värde.';
+
+  @override
+  String s610172c6f4(String p0) {
+    return 'Charger \"$p0\" hittades inte (offline eller borttagen)';
+  }
+
+  @override
+  String get sf51ef628f4 => 'Nuvarande gräns saknas';
+
+  @override
+  String get sd661432e07 => 'Inga laddare';
+
+  @override
+  String get s47aba73804 => 'Totalt laddat';
+
+  @override
+  String get sed9640f6b4 => 'laddning';
+
+  @override
+  String get sebaaf2a20f => 'laddningskraft';
+
+  @override
+  String get s223d1336d5 => 'Denna session';
+
+  @override
+  String get sbea289dcc3 => 'nuvarande gräns';
+
+  @override
+  String s2d551049ff(String p0, String p1) {
+    return 'Kan inte starta OCPP-servern på port $p0: $p1';
+  }
+
+  @override
+  String s9a6813045a(String p0, String p1) {
+    return 'Charger \"$p0\" har inte anslutit. Ställ in sin OCPP-URL för att ws://<this device IP>:$p1/ocpp/';
+  }
+
+  @override
+  String get sb33d4d8b62 => 'laddaren laddar inte nu';
+
+  @override
+  String get sb75700bbba => 'Ingen bil';
+
+  @override
+  String get s5a3fcd56de => 'Bil ansluten';
+
+  @override
+  String get s23910a6fb5 => 'Laddning';
+
+  @override
+  String get s22cd08064f => 'Paused';
+
+  @override
+  String get s5b8b3042ec => 'Avslutad';
+
+  @override
+  String get s84df123d5a => 'Fel';
+
+  @override
+  String get s12fa00013a =>
+      'Wallbox, Alfen, ABB, go-e, Etrel, Easee/Zaptec (OCPP på) ... laddaren ansluter direkt till Molaplan – inget moln.';
+
+  @override
+  String get s4bc8fc306b =>
+      'Om laddaren har ett grundläggande auth-lösenord. vanligtvis tomt.';
+
+  @override
+  String get s8c376593cb =>
+      'Easee Home / Charge / En genom ditt Easee-konto: status, start/stopp och nuvarande gräns.';
+
+  @override
+  String get s827730d443 => 'Samma som i Easee-appen (telefon som +358...).';
+
+  @override
+  String get se1a5b725a4 =>
+      'Zaptec Go / Home / Pro genom ditt Zaptec-konto. Start/paus behöver ägarrättigheter.';
+
+  @override
+  String get s72dc0a7687 =>
+      'Pulsar, befälhavare, koppar genom ditt myWallbox-konto. Lokalt: välj OCPP.';
+
+  @override
+  String get s59ed724e14 =>
+      'Easee, Zaptec, Wallbox - eller någon OCPP-laddare lokalt. Ladda på överskott eller när billigt.';
+
+  @override
+  String get se62d52c336 => 'AirCloud: sign-in misslyckades';
+
+  @override
+  String get sc5f4490c42 => 'AirCloud: Enhet som inte hittats';
+
+  @override
+  String get s14e68f6852 => 'udda svar';
+
+  @override
+  String get s8f016f0e29 => 'Toshiba: fel användarnamn eller lösenord';
+
+  @override
+  String get s4558be4f09 => 'myUplink: fel klient-ID eller hemlighet';
+
+  @override
+  String get s370bf1904d =>
+      'läget för en mark-source pump är inte ändras här - bara inställningen.';
+
+  @override
+  String get s6d21845355 =>
+      'Hitta det i routerns enhetslista eller tillverkarens app (enhetsinformation).';
+
+  @override
+  String get s4a91d07711 => 'Daikin (Wi-Fi, lokal)';
+
+  @override
+  String get s8e339844a9 =>
+      'Daikin med en Wi-Fi-adapter (BRP069, BRP072C, Airbase) fungerar utan molnet; finns på nätverket.';
+
+  @override
+  String get sdb368f83d9 =>
+      'Nyare BRP072C-adaptrar: den 13-siffriga nyckeln är på adapterklistermärket. Äldre behöver ingen.';
+
+  @override
+  String get s2089a88d1f => 'Mitsubishi Heavy (Smart M-Air, lokal)';
+
+  @override
+  String get se19c918d2d =>
+      'MHI värmepump med WF-RAC Wi-Fi-modulen (Smart M-Air app). Lokal kontroll, inget moln.';
+
+  @override
+  String get s050c379c67 => 'Mitsubishi Electric (MELCloud)';
+
+  @override
+  String get sc24b0de42d =>
+      'Luft-till-luft- och Ecodan-luft-till-vattenpumpar genom ditt MELCloud-konto, var som helst.';
+
+  @override
+  String get s41d69e699d => 'Samma som i MELCloud-appen.';
+
+  @override
+  String get s339fd47e4a => 'Toshiba (Home AC Control)';
+
+  @override
+  String get sa8405bf705 =>
+      'Toshiba Wi-Fi-värmepumpar genom ditt Toshiba Home AC Control-konto.';
+
+  @override
+  String get s703279c03e => 'Samma som i Toshiba-appen.';
+
+  @override
+  String get sf71a945a1d => 'Samsung (SmartThings)';
+
+  @override
+  String get se26b321a29 =>
+      'Samsung Wi-Fi värmepumpar genom den officiella SmartThings API.';
+
+  @override
+  String get s550793ea4a =>
+      'Skapa en på account.smartthings.com/tokens with the Devices-omfattningarna. Note: Samsung begränsar nya tokens till 24 timmar.';
+
+  @override
+  String get sf7aed9c9e0 => 'Hitachi (airCloud Go)';
+
+  @override
+  String get se2f1cb488d => 'Hitachi värmepumpar genom ditt AirCloud Go-konto.';
+
+  @override
+  String get sb33215fa8b => 'NIBE (myUplink cloud)';
+
+  @override
+  String get s2e3665e309 =>
+      'NIBE markkälla och avgaspumpar genom den officiella myUplink API (även CTC, Høiax...).';
+
+  @override
+  String get sf2e635afad =>
+      'Logga in på dev.myuplink.com → Applikationer → Skapa. Kopiera kundidentifieraren.';
+
+  @override
+  String get s9db9eb22f8 => 'Från samma sida.';
+
+  @override
+  String get s412987475c => 'NIBE S-serien (Modbus TCP, lokal)';
+
+  @override
+  String get s3fc8f4ce0d =>
+      'S1155, S1255, SMO S40... Aktivera Modbus TCP i pumpmenyn 7.5.9. Inget moln.';
+
+  @override
+  String get s9b15cf6f63 =>
+      'Pumpens IP: meny 3.1.13 (Connections) eller routerns enhetslista.';
+
+  @override
+  String get s29ed152759 => 'NIBE F-serien + MODBUS 40 (lokal)';
+
+  @override
+  String get sa723788d3c =>
+      'F-serie / SMO med MODBUS 40-tillbehör och en RS485→TCP-gateway. Verifiera registren.';
+
+  @override
+  String get sb001c51087 => 'IP-adress för RS485→Modbus TCP-gateway.';
+
+  @override
+  String get sde4b0f4525 => 'Thermia (Modbus TCP, lokal)';
+
+  @override
+  String get s9280f807a6 =>
+      'Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis) Modbus TCP: Inställningar → BMS.';
+
+  @override
+  String get scab35073e8 => 'Pumpens IP-adress (display eller router).';
+
+  @override
+  String get s5ddd513689 =>
+      'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia - eller någon med en IR-fjärrkontroll.';
+
+  @override
+  String get s9622976fd3 => 'Inga enheter hittades';
+
+  @override
+  String get sa93876ac9d => 'Enhet(s)';
+
+  @override
+  String get sf3d77f10b9 => 'för många förfrågningar';
+
+  @override
+  String get s00c7f00681 => 'MELCloud: fel e-post eller lösenord';
+
+  @override
+  String get s4bd0e3110e => 'Denna pump är inte påslagen / av över Modbus.';
+
+  @override
+  String get sc2474a4b0b =>
+      'Daikin vägrade - kontrollera nyckeln på klistermärket.';
+
+  @override
+  String get s2f7a41de7a => 'Daikin accepterade inte nyckeln.';
+
+  @override
+  String sc499fab53f(String p0) {
+    return 'Ingen Daikin adapter på $p0';
+  }
+
+  @override
+  String get s4cfb5a36c9 => 'Daikin (lokalt Wi-Fi)';
+
+  @override
+  String get se9b4e55058 => 'NIBE / Thermia (Modbus TCP, lokal)';
+
+  @override
+  String get sddd6b1d42e => 'Värmepump (inbyggd integration)';
+
+  @override
+  String get s34a3681441 =>
+      'Skapare och anslutningstyp. Lokala arbetar utan molnet.';
+
+  @override
+  String get s88688d2809 => 'Enhet IP (lokala varumärken)';
+
+  @override
+  String get s87e0a93996 =>
+      'IP-adress för en lokal enhet (från routerns enhetslista).';
+
+  @override
+  String get sc0bc183c3e => 'E-post (moln)';
+
+  @override
+  String get s0cc25259c7 =>
+      'Det e-postmeddelande du loggar in på tillverkarens app med (MELCloud, airCloud).';
+
+  @override
+  String get s25f561c483 => 'Användarnamn (Toshiba)';
+
+  @override
+  String get s92e7ac8d3c => 'Ditt Toshiba Home AC Control användarnamn.';
+
+  @override
+  String get safde071183 =>
+      'Skaparens app lösenord. lagras endast på den här enheten / i ditt eget valv.';
+
+  @override
+  String get s2862f25983 => 'Token (SmartThings)';
+
+  @override
+  String get s23a4bc8253 =>
+      'SmartThings personliga åtkomsttoken (account.smartthings.com/tokens).';
+
+  @override
+  String get sef37e5048d => 'Nyckel (Daikin BRP072C, klistermärke)';
+
+  @override
+  String get s1c339065e1 => 'Nyckeln tryckt på BRP072C adapterns klistermärke.';
+
+  @override
+  String get se67e3e0eb9 => 'Client ID (myUplink)';
+
+  @override
+  String get sc2d5225ae8 => 'Klient-ID för din egen app på dev.myuplink.com.';
+
+  @override
+  String get sa165e50f99 => 'Client Secret (myUplink)';
+
+  @override
+  String get s332f9bc1a1 =>
+      'Kundhemlighet för din egen app på dev.myuplink.com.';
+
+  @override
+  String get sd1d4b22fc6 => 'Registrera karta (Modbus)';
+
+  @override
+  String get s5a9d485e7f =>
+      'Pumpserien. \"Importerad registerlista\" = pumpens egen CSV-export.';
+
+  @override
+  String get s7dc3b152a8 => 'NIBE S-serien';
+
+  @override
+  String get sad9fd728f9 => 'NIBE F-serien + MODBUS 40';
+
+  @override
+  String get seba6d1ba70 => 'Thermia Genesis';
+
+  @override
+  String get sfdc0bbf134 => 'Importerad registerförteckning';
+
+  @override
+  String get scd35ffb8e9 => 'Vanligtvis standard (Modbus 502, MHI 51443).';
+
+  @override
+  String get sab25ff8075 => 'Modbus enhet adress, vanligtvis 1.';
+
+  @override
+  String get sb064bec4c8 => 'Server URL (endast testa)';
+
+  @override
+  String get s67b2ac9328 =>
+      'Testning endast: ersätter tillverkarens serveradress.';
+
+  @override
+  String get sabab3f2fae => 'Vad man ska läsa';
+
+  @override
+  String get sf5e949d20c =>
+      'Fullständigt tillstånd (värmepumpkort) eller en läsning.';
+
+  @override
+  String get s46ce82ef9c => 'Full stat';
+
+  @override
+  String get s8cbd66456f => 'En läsning';
+
+  @override
+  String get s6d1827b58e => 'Enhet Id';
+
+  @override
+  String get s89308ddc6d => 'Inomhus enhet id; \"huvud\" för en-enhet enheter.';
+
+  @override
+  String get sa643668bec => 'Läsning (nuvarande, mål, utomhus, kraft ...)';
+
+  @override
+  String get s02d24152f0 =>
+      'Vilken läsning: nuvarande, mål, utomhus, ström, försörjning, hot_water ...';
+
+  @override
+  String get se16e293d6b => 'Set';
+
+  @override
+  String get s155de09d38 => 'Vad man ska ställa in';
+
+  @override
+  String get s94ecb845c8 => 'Setpoint, power, mode eller fan.';
+
+  @override
+  String get sba2eb6d9b9 => 'Setpoint';
+
+  @override
+  String s6478b264c0(String p0) {
+    return 'Värmepump \"$p0\" är inte längre i kontot';
+  }
+
+  @override
+  String get s4937d259b8 => 'Setpoint saknas';
+
+  @override
+  String get s10f42a9a20 => 'Curve Offset';
+
+  @override
+  String get s620c04d73e => 'Leverans';
+
+  @override
+  String get s922f77d2f1 => 'Återvänd';
+
+  @override
+  String get sbfee72daca => 'Varmt vatten';
+
+  @override
+  String get s0be9e35521 => 'Brine in';
+
+  @override
+  String get s3a0d796501 => 'Brine out';
+
+  @override
+  String get s23bbe9b4ed => 'Examen minuter';
+
+  @override
+  String get s3ca74f3ef8 => 'Kompressor';
+
+  @override
+  String get s31ec8d716e =>
+      'Enhetens kontotabell är full. Ta bort en gammal telefon i Smart M-Air-appen och försök igen.';
+
+  @override
+  String get sbaecc9fbed =>
+      'Enheten är upptagen (en annan app) - försök på en minut.';
+
+  @override
+  String get s4cac4725b8 => 'Gruppens enheter svarar inte';
+
+  @override
+  String get s13a91fe322 => 'Enheten att styra saknas';
+
+  @override
+  String sb9964cfb3b(String p0) {
+    return 'Effekt $p0';
+  }
+
+  @override
+  String s08d04d58a9(String p0) {
+    return 'Kanal $p0';
+  }
+
+  @override
+  String get s589eb1bcd3 => 'Home Assistant (exempel)';
+
+  @override
+  String get sc4fdb87cd7 => 'Kamera (exempel)';
+
+  @override
+  String get sd50566a706 => 'Ventilationsenhet (exempel)';
+
+  @override
+  String get s4b4fd14aaf => 'Gård';
+
+  @override
+  String get s8ac16d45bc => '';
+
+  @override
+  String get sbde42d83a3 => 'Vardagsrummets lampor';
+
+  @override
+  String get sb7c78c63b3 => 'Tilluft';
+
+  @override
+  String get sbb2adef009 => 'Fläkthastighet';
+
+  @override
+  String get see46441329 => '0=Off;1=Away;2=Home;3=Boost;4=Max';
+
+  @override
+  String get sb25aad3bc2 => 'Jag går hemifrån';
+
+  @override
+  String get s65320ede20 => 'Lugn';
+
+  @override
+  String get s7e5f6a29e3 => 'God natt';
+
+  @override
+  String get s253122823a => 'God morgon';
+
+  @override
+  String get s640293f08f => 'God eftermiddag';
+
+  @override
+  String get sd8c5bed7de => 'God kväll';
+
+  @override
+  String get s834e3e8c5d => 'Apple Apple Apple';
+
+  @override
+  String get s11d8d321df => 'Apple Apple Apple';
+
+  @override
+  String get sceefb34afd => 'Apple Apple Apple';
+
+  @override
+  String get s24a447c14c => 'Apple Apple Apple';
+
+  @override
+  String get s14418a4f88 => 'Apple Apple Apple';
+
+  @override
+  String get saab3e952a6 => 'Apple Apple Apple';
+
+  @override
+  String get s7fbbfbf469 => 'Apple Apple Apple';
+
+  @override
+  String get s045b27e316 => 'Samsung Samsung Samsung';
+
+  @override
+  String get s2c0aede81e => 'Samsung Samsung Samsung';
+
+  @override
+  String get s7bd2005e15 => 'Google Google Google Google';
+
+  @override
+  String get sdcec96b503 => 'Google Google Google Google';
+
+  @override
+  String get s49960d413e => 'Google Google Google Google';
+
+  @override
+  String get s99e5776a78 => 'Google Google Google Google';
+
+  @override
+  String get sea3c963b09 => 'Sonsan Sonson Sonno Son Son Tillförs Son Sonen';
+
+  @override
+  String get s1e7b1fc81c =>
+      'Syn<blank> syns<blank> Smäktigt Föregående Synd-Sont-Son-Sänks-S';
+
+  @override
+  String get s7dc8f4cf35 => 'Synology';
+
+  @override
+  String get s161d78d79c => 'QNAP';
+
+  @override
+  String get s2512122220 => 'Broder';
+
+  @override
+  String get s127258a6f4 => 'Epson';
+
+  @override
+  String get s4e31401b4f => 'Canon';
+
+  @override
+  String get s933e21c819 => 'HP';
+
+  @override
+  String get sb309051c1f => 'HP';
+
+  @override
+  String get s6f339c5c37 => 'HP';
+
+  @override
+  String get s5f8734f6e4 => 'HP';
+
+  @override
+  String get sceb247a904 => 'Xiaomi';
+
+  @override
+  String get s10b7b68d6c => 'Huawei';
+
+  @override
+  String get s3692c1d592 => 'LG';
+
+  @override
+  String get se7d945b970 => 'LG';
+
+  @override
+  String get s5a5044b5df => 'Sony';
+
+  @override
+  String get sd92d7da7d5 => 'Sony';
+
+  @override
+  String get saa909391c3 => 'Philips';
+
+  @override
+  String get se39b8c84ab => 'Raspberry Pi';
+
+  @override
+  String get sec8808f414 => 'AVM';
+
+  @override
+  String get s0e225fb918 => 'TP-Link';
+
+  @override
+  String get sb34f35dce5 => 'ASUS';
+
+  @override
+  String get s7ea140809c => 'Netgear';
+
+  @override
+  String get s284be225b7 => 'Ubiquiti';
+
+  @override
+  String get sfbaeb6a17e => 'Ubiquiti';
+
+  @override
+  String get sa24e9ce91d => 'MikroTik';
+
+  @override
+  String get sa1b725d397 => 'Espressif';
+
+  @override
+  String get sdf96423738 => 'Amazon Amazon Amazon Amazon';
+
+  @override
+  String get sf253859589 => 'Amazon Amazon Amazon Amazon';
+
+  @override
+  String get sec4d80656d => 'Roku';
+
+  @override
+  String get sb662db81d8 =>
+      'Adressen ser ofullständig. Använd fyra nummer med prickar, t.ex. 192.168.1.50.';
+
+  @override
+  String s738ecfe2bc(String p0) {
+    return ' menade du $p0?';
+  }
+
+  @override
+  String s06e738bf27(String p0) {
+    return 'Det här är ingen hemnätsadress (de börjar oftast med 192.168.).$p0';
+  }
+
+  @override
+  String sbae99909c4(String p0) {
+    return 'Obs!: den här enheten är på $p0.x - enheten kan vara på ett annat Wi-Fi.';
+  }
+
+  @override
+  String get se317f59de2 => 'VUOTO!';
+
+  @override
+  String get se4c4201882 => 'LEAK!';
+
+  @override
+  String get sdbcf5515c1 => 'Auki';
+
+  @override
+  String get sb0af7213b5 => 'Öppet Öppet Öppet Öppet Öppet';
+
+  @override
+  String get sa3477dac6e => 'Liikettä';
+
+  @override
+  String get s280df88585 => 'Rörelse';
+
+  @override
+  String get s064a959911 => 'Savoa!';
+
+  @override
+  String get s50778e2eec => 'Smoke!';
+
+  @override
+  String get s1dfa5abe81 => 'Hälytys';
+
+  @override
+  String get s50c459fbff => 'Larm';
+
+  @override
+  String get s1a73b397a1 => 'sonoff';
+
+  @override
+  String get sb8a029d8b4 => 'Hikvision';
+
+  @override
+  String get s2e87289ebd => 'Tapo';
+
+  @override
+  String get sd86b823895 => 'Sonoff';
+
+  @override
+  String get s5f297ec9d8 =>
+      'BASIC, MINI, POW, TH, 4CH ... i DIY-läge, med Tasmota eller ESPHome. Kort är gjorda för dig; fjärranvändning via hembron.';
+
+  @override
+  String get s60e829b1b0 =>
+      'eWeLink app → enhet → Inställningar visar IP-adressen, eller routerns enhetslista. I DIY-läge behöver du också enhets-ID (10 tecken).';
+
+  @override
+  String get s6a46e8954d =>
+      'En Sonoff i DIY-läge svarar bara när den berättade sin enhet ID. Hitta den i eWeLink-appen: enhet → Inställningar → Enhets-ID. Tasmota: webblösenordet, om det är inställt.';
+
+  @override
+  String get sea057f1a02 =>
+      'Endast i DIY-läge när sökningen inte hittade enheten.';
+
+  @override
+  String get s4899323b9a => 'Effekt';
+
+  @override
+  String sdaa374b331(String p0) {
+    return 'Fas $p0';
+  }
+
+  @override
+  String get s4233362d60 => 'Vattenläck sensor';
+
+  @override
+  String get sfcb44be1a0 => 'Shelly';
+
+  @override
+  String get sc7df69ad6e =>
+      'Reläer, pluggar, dimmers, covers, energimätare (Pro 3EM) och sensorer. Hittas automatiskt, fungerar utan molnet.';
+
+  @override
+  String get sd7e123cd2f =>
+      'I Shelly-appen: öppna enheten → växel (inställningar) → Enhetsinformation → IP-adress. Eller i routerns enhetslista: namnet börjar med \"helt...\".';
+
+  @override
+  String get s9ad7b0076b => 'läcksensor · batteri';
+
+  @override
+  String get s815bfa19dc => 'Kontaktorkontroll';
+
+  @override
+  String get sb9209fee74 => 'lägg till endast om reläet används';
+
+  @override
+  String get s5f2b2ca5f5 => 'på nu';
+
+  @override
+  String get s67f64cd925 => 'av nu';
+
+  @override
+  String get s8b35cc884f => 'Metering';
+
+  @override
+  String get sa58e7aab49 => 'Kalibrera i Shelly-appen för att få en reglage';
+
+  @override
+  String get s78b6134b71 => 'batterienhet: uppdateringar när du vaknar';
+
+  @override
+  String get sd8dfb25d31 => 'Shelly Cloud (ingen bro)';
+
+  @override
+  String get s350215338a =>
+      'Styr Shellys genom Shelly-molnet från var som helst. Du behöver bara nyckeln från Shelly-appen.';
+
+  @override
+  String get s64037991c2 =>
+      'Shelly app → din profil → Användarinställningar → Auktoriseringsmolnnyckel → Få nyckel. Kopiera och klistra in den här.';
+
+  @override
+  String get s062b21969d =>
+      'Visas på samma sida under nyckeln (\"Server URI\").';
+
+  @override
+  String get sf30bb5d5e6 =>
+      'Vanligtvis inte behövs. Om ingenting finns: Shelly app → enhet → inställningar → Enhetsinformation → Enhets-ID. Separat flera med kommatecken.';
+
+  @override
+  String get s246c7a46ff =>
+      'Shelly app → Användarinställningar → Tillstånd molnnyckel → Server URI.';
+
+  @override
+  String get s9d468f5c64 =>
+      'Shelly app → Användarinställningar → Tillstånd molnnyckel → Få nyckel.';
+
+  @override
+  String get s0bf7cb1613 => 'Philips Hue';
+
+  @override
+  String get se17d4e4197 =>
+      'Hue Bridge och dess lampor (också Zigbee lampor parade till det). Par med bryggknappen.';
+
+  @override
+  String get sf83a145406 =>
+      'I Hue-appen: Inställningar → Hue Bridges → (i) → IP-adress. Eller i routerns enhetslista: \"Philips-hue\".';
+
+  @override
+  String get s80ee7a25a9 =>
+      'Tryck på den stora runda knappen ovanpå Hue Bridge nu. Vänta här - det ansluter själv.';
+
+  @override
+  String get s4dbb677293 => 'nås inte';
+
+  @override
+  String get sf50732e8e8 => 'dimmable';
+
+  @override
+  String get s4082a34467 => 'sensor';
+
+  @override
+  String s3832b8c729(String p0) {
+    return 'hela rummet';
+  }
+
+  @override
+  String get s2bb8fceaf7 => 'Scener';
+
+  @override
+  String get sceabe202da => 'camera_';
+
+  @override
+  String get s1a4eab1f51 => '°C';
+
+  @override
+  String get s9e731440d8 => '%';
+
+  @override
+  String get s77c638e731 => '%';
+
+  @override
+  String get s96abb7f975 => '';
+
+  @override
+  String get s91e5760e43 => '';
+
+  @override
+  String get s2f76c2abd3 => '';
+
+  @override
+  String get sc2b99541c7 => 'Brytare och reläer';
+
+  @override
+  String get sd85dbd8e5e => 'Lampor och dimrar';
+
+  @override
+  String get s38935a3c66 => 'Gardiner och rullgardiner';
+
+  @override
+  String get s64c6ca7840 => 'Energimätare';
+
+  @override
+  String get s027fcbe1b6 => 'S<blank> s<blank> Sn';
+
+  @override
+  String get s6814e463b1 => 'till<blank>';
+
+  @override
+  String get s477d8b2c95 => 'Total effekt';
+
+  @override
+  String get s32c88e5aa6 => 'Ljusnivå';
+
+  @override
+  String get s57b4effa42 => 'Dörr / fönster';
+
+  @override
+  String get s29045a726e => 'Vattenläcka';
+
+  @override
+  String get s0b2f7d7c80 => 'öppet öppet öppna';
+
+  @override
+  String get s7009587b85 => 'Slutna';
+
+  @override
+  String get s3b35de231e =>
+      '<blank> motslidledde sin grade-före-företa-motred-motstödsföre-före-före-före-före-före-före-före-före-före-före-föregående';
+
+  @override
+  String get s3dfa789b85 => 'ALARM';
+
+  @override
+  String get sd9b6de0a6a => 'Andra andra';
+
+  @override
+  String se7520a3990(String p0) {
+    return 'sover - sista $p0';
+  }
+
+  @override
+  String get s3aaacf80d2 => 'offline';
+
+  @override
+  String get s5d888c1384 => 'true=Open;false=Closed';
+
+  @override
+  String get sd74ad36c31 => 'true=Motion;false=No motion';
+
+  @override
+  String get sfa12d7fdd7 => 'true=LEAK!;false=Dry';
+
+  @override
+  String get s1f18c0f400 => 'true=SMOKE!;false=OK';
+
+  @override
+  String sd63d34bfe9(String p0) {
+    return 'Kan inte läsa YAML: $p0';
+  }
+
+  @override
+  String sc5c9e5e2fc(String p0) {
+    return '\"$p0\" använder en seriell port (USB / RS485) - du behöver en RS485 → TCP gateway.';
+  }
+
+  @override
+  String get s77bf3b424f => '0=Off;1=On';
+
+  @override
+  String s69135546c8(String p0) {
+    return '$p0 – mål';
+  }
+
+  @override
+  String sd88c13e972(String p0) {
+    return '\"$p0\" var hoppade - lägg till dem för hand.';
+  }
+
+  @override
+  String get sceebf690e3 =>
+      'Inget Modbus TCP-nav som finns i YAML (modbus: ... typ: tcp, värd: ...).';
+
+  @override
+  String get s0185672be7 =>
+      'Kameraanvändaren (vanligtvis admin) och lösenordet du ställer in när du aktiverar det.';
+
+  @override
+  String get s814f4633e3 =>
+      'Användaradmin. Imou: lösenordet är \"Safety-koden\" på kamerans etikett eller enhetens lösenord.';
+
+  @override
+  String get s4450807111 =>
+      'Kameraanvändaren i Reolink-appen (vanligtvis admin) och dess lösenord.';
+
+  @override
+  String get s1095c54819 =>
+      'Reolink app → kamera → Inställningar → Nätverk → Avancerade → Serverinställningar: slå på HTTP och RTSP. Batterikameror (Argus) stöds inte.';
+
+  @override
+  String get sc79a5fee2b =>
+      'Tapo app → kamera → Avancerade inställningar → Kamerakonto. Skapa en användare och lösenord där och skriv dem här (inte din Tapo molninloggning).';
+
+  @override
+  String get s174e06b97c =>
+      'Skapa först ett kamerakonto: Tapo app → kamera → Avancerade inställningar → Kamerakonto.';
+
+  @override
+  String get s21da6fb5dc =>
+      'Användaradmin; lösenordet är 6-brevsverifieringskoden på kamerans etikett.';
+
+  @override
+  String get s1866ef6dc8 =>
+      'Ezviz app → kamera → Inställningar → LAN Live View / RTSP: slå på den (om alternativet finns).';
+
+  @override
+  String get s70625d8bbe =>
+      'Användaren och lösenordet för kameran i eWeLink-appen (RTSP/ONVIF). På en dual-lens-modell kommer båda linserna från samma enhet.';
+
+  @override
+  String get s1a3c354399 =>
+      'eWeLink app → kamera → Inställningar: slå på RTSP/ONVIF och ange en användare och lösenord för det (om alternativet finns).';
+
+  @override
+  String get s1c2786e15f =>
+      'Kameraanvändaren och lösenordet (ofta admin). ONVIF kan behöva aktiveras i kamerainställningarna.';
+
+  @override
+  String get s32270de47a => 'Säkerhetskamera';
+
+  @override
+  String get s652458eb87 =>
+      'Hikvision, Dahua, Reolink, Tapo, Ezviz, Sonoff eller någon ONVIF / RTSP-kamera. Bild på ett kort, live video hemma.';
+
+  @override
+  String get se8ea97c5eb =>
+      'I kameraappen (enhetsinformation) eller routerns enhetslista.';
+
+  @override
+  String get s1577068729 => 'Kamera kamera';
+
+  @override
+  String s83d937ae6b(String p0, String p1) {
+    return 'Stream $p0/$p1 (egen lins eller kanal)';
+  }
+
+  @override
+  String get s136c6f0d2b => 'Bild på kortet, live video hemma';
+
+  @override
+  String get s2101774157 => 'Live video hemma (ingen bild bort)';
+
+  @override
+  String get sdd483f7f78 => 'Enhetsnyckel saknas';
+
+  @override
+  String get sfb72a207e0 => 'Fel enhet nyckel (devicekey)';
+
+  @override
+  String get sc8b59edea5 => 'Sonoff eWeLink LAN (krypterad)';
+
+  @override
+  String get s823a139bb1 => 'Enhet ID';
+
+  @override
+  String get sc0c760d1b6 => 'eWeLink app → enhet → Inställningar → Enhet ID.';
+
+  @override
+  String get s39d7729e9f =>
+      'Tomma = hittad med mDNS varje gång (rekommenderas om adressen ändras).';
+
+  @override
+  String get s82e87d091b => 'Enhetsnyckeln (devicekey)';
+
+  @override
+  String get s93e0e8861a =>
+      'Krypteringsnyckel. lagras endast på den här enheten.';
+
+  @override
+  String get se106001035 =>
+      'Kanal: lägg till ett utloppsfält (0, 1, ...) för flerkanalsenheter.';
+
+  @override
+  String get sd0c16a8638 => 'Växla (1/0)';
+
+  @override
+  String get s4ba00d3333 => 'Kraft (W)';
+
+  @override
+  String get sa510517ad6 => 'Voltage (V)';
+
+  @override
+  String get s348bd4e5f0 => 'Nuvarande (A)';
+
+  @override
+  String get s32aa0dde33 => 'Temperatur (°C)';
+
+  @override
+  String get se516f09209 => 'Humidity (%)';
+
+  @override
+  String get sa7ce546ed1 => 'Värde 1/0 från växeln.';
+
+  @override
+  String get sb4b475b660 => 'Switch on/off (värde 1/0)';
+
+  @override
+  String get s4d2703ac9b => 'Sonoff syns inte på hemmanätverket (mDNS)';
+
+  @override
+  String get s02e0a98408 =>
+      'Om du vet nyckeln. Annars fyll i din egen eWeLink-utvecklarapp nedan - nyckeln hämtas en gång och kontrollen stannar lokal.';
+
+  @override
+  String get s2d442b23e2 => 'Sonoff (eWeLink LAN-läge)';
+
+  @override
+  String get sc977fcb4f5 =>
+      'En vanlig eWeLink Sonoff utan DIY-läge: krypterad lokal kontroll. Behöver enhetsnyckeln en gång.';
+
+  @override
+  String get se287b905f6 =>
+      'Vanligtvis hittas automatiskt (mDNS). LAN-kontroll måste tillåtas i eWeLink-appen (standard).';
+
+  @override
+  String get s7c6206fa83 =>
+      'Enheten är enhetens krypteringsnyckel. Få den från eWeLink med din egen utvecklarapp (dev.ewelink.cc → din app → APPID och APP SECRET) - Molaplan frågar en gång och använder aldrig molnet för kontroll.';
+
+  @override
+  String get sccd5375513 => 'Dev.ewelink.cc → din app.';
+
+  @override
+  String get sd190b6d70e => 'Används bara för att hämta nyckeln, inte lagras.';
+
+  @override
+  String get sd936bbcc2d => 'Telefon som +358...';
+
+  @override
+  String s1a9acfbc67(String p0) {
+    return 'Ljus $p0';
+  }
+
+  @override
+  String s5d0fb602f6(String p0) {
+    return 'Täck $p0';
+  }
+
+  @override
+  String s82ecc12a66(String p0) {
+    return 'Temperatur $p0 (add-on)';
+  }
+
+  @override
+  String get s8b234e1a6f => 'Belysning';
+
+  @override
+  String get sf34c97592f => 'IKEA Dirigera';
+
+  @override
+  String get sb38eac6a87 =>
+      'IKEA smart hub och dess lampor och pluggar (Zigbee). Par med knappen på navet.';
+
+  @override
+  String get s4e92ab791e =>
+      'I IKEA Home smart app: Inställningar → Hub → IP-adress. Eller i routerns enhetslista: \"gw2-...\" eller \"dirigera\".';
+
+  @override
+  String get s73824fc3d0 =>
+      'Tryck på åtgärdsknappen på botten av Dirigera-navet en gång nu. Vänta här.';
+
+  @override
+  String get s92d24d0543 => 'Blind';
+
+  @override
+  String get s7727759a28 => 'Luftrenare';
+
+  @override
+  String get sda8d9bf1cd => 'Uttag';
+
+  @override
+  String get s06444f278d => 'position (100 = stängd)';
+
+  @override
+  String get sdb34e99ef6 => 'Öppet öppet';
+
+  @override
+  String get s7fc017b0f0 => 'nära';
 }

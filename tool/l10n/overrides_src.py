@@ -583,6 +583,27 @@ T = {
  'Request installation as a service': ('Be om installation som tjänst', 'Palu paigaldust teenusena', 'Solicitar instalación como servicio'),
  'Download the install file': ('Ladda ner installationsfilen', 'Laadi paigaldusfail alla', 'Descargar el archivo de instalación'),
  'Download the latest Android install file (APK). Open the file on the phone or tablet. If Android asks, allow installation from unknown sources (Settings → security).': ('Ladda ner den senaste Android-installationsfilen (APK). Öppna filen i telefonen eller surfplattan. Om Android frågar, tillåt installation från okända källor (Inställningar → säkerhet).', 'Laadi alla uusim Androidi paigaldusfail (APK). Ava fail telefonis või tahvelarvutis. Kui Android küsib, luba paigaldamine tundmatutest allikatest (Seaded → turvalisus).', 'Descarga el último archivo de instalación de Android (APK). Ábrelo en el teléfono o la tableta. Si Android lo pide, permite la instalación desde orígenes desconocidos (Ajustes → seguridad).'),
+
+ # t290u: Android home-screen shortcuts and status widgets
+ 'Add to home screen': ('Lägg till på startskärmen', 'Lisa avaekraanile', 'Añadir a la pantalla de inicio'),
+ 'A shortcut runs the command directly from the home screen.': ('En genväg kör kommandot direkt från startskärmen.', 'Otsetee käivitab käsu otse avaekraanilt.', 'Un acceso directo ejecuta el comando desde la pantalla de inicio.'),
+ 'Status (widget)': ('Status (widget)', 'Olek (vidin)', 'Estado (widget)'),
+ 'A widget shows the tile status on the home screen.': ('En widget visar rutans status på startskärmen.', 'Vidin näitab plaadi olekut avaekraanil.', 'Un widget muestra el estado del mosaico en la pantalla de inicio.'),
+ 'This tile gets a status widget that shows the value on the home screen.': ('Den här rutan får en statuswidget som visar värdet på startskärmen.', 'See plaat saab olekuvidina, mis näitab väärtust avaekraanil.', 'Este mosaico obtiene un widget de estado que muestra el valor en la pantalla de inicio.'),
+ 'Confirm before running': ('Bekräfta före körning', 'Kinnita enne käivitamist', 'Confirmar antes de ejecutar'),
+ 'Recommended for dangerous commands, such as turning an alarm off.': ('Rekommenderas för farliga kommandon, till exempel att stänga av ett larm.', 'Soovitatav ohtlike käskude jaoks, näiteks häire väljalülitamiseks.', 'Recomendado para comandos peligrosos, como desactivar una alarma.'),
+ 'The PIN is not stored in the shortcut. If the device requires a PIN, the app will ask for it.': ('PIN-koden sparas inte i genvägen. Om enheten kräver en PIN-kod frågar appen efter den.', 'PIN-koodi otseteesse ei salvestata. Kui seade nõuab PIN-koodi, küsib rakendus seda.', 'El PIN no se guarda en el acceso directo. Si el dispositivo requiere un PIN, la aplicación lo pedirá.'),
+ 'Shortcut added. Confirm it on the home screen.': ('Genvägen har lagts till. Bekräfta den på startskärmen.', 'Otsetee lisati. Kinnita see avaekraanil.', 'Acceso directo añadido. Confírmalo en la pantalla de inicio.'),
+ 'Widget added. Confirm it on the home screen.': ('Widgeten har lagts till. Bekräfta den på startskärmen.', 'Vidin lisati. Kinnita see avaekraanil.', 'Widget añadido. Confírmalo en la pantalla de inicio.'),
+ 'The home screen does not support this, or the add was cancelled.': ('Startskärmen stöder inte detta, eller så avbröts tillägget.', 'Avaekraan ei toeta seda, või lisamine tühistati.', 'La pantalla de inicio no admite esto, o se canceló la adición.'),
+ 'Tile not found': ('Rutan hittades inte', 'Plaati ei leitud', 'No se encontró el mosaico'),
+
+ 'Calm': ('Lugn', 'Rahulik', 'Tranquilo'),
+ 'The indoor light is not tracked or controlled during the day. It is not off – it is not being followed.': (
+    'Inomhusbelysningen följs eller styrs inte under dagen. Den är inte avstängd – den följs inte.',
+    'Sisevalgustit päeval ei jälgita ega juhita. See ei ole väljas – seda ei jälgita.',
+    'La luz interior no se sigue ni se controla durante el día. No está apagada: no se está siguiendo.',
+ ),
 }
 
 

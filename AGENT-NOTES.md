@@ -274,3 +274,11 @@ t155u–t157u (also v0.7.3): ModbusTcpClient.acquire/release (one pooled connect
 - Automations: templates `ev_surplus` (two picks in showTemplatePicker) and `ev_cheap`; condition kind `cheapest` {hours, not}; engine runs automations containing `waitUntil` unawaited (set `_longRuns`), so long waits no longer block tick().
 - Tests: test/solar_r288_test.dart, test/ev_r289_test.dart, test/automation_ev_r289_test.dart, test/solar_ev_ui_test.dart, test/support/modbus_sparse_sim.dart. All UNTESTED ON HARDWARE. Docs: docs/SOLAR-EV.md.
 - Next agreed: R290 (other common devices in Finland).
+
+## v0.18.0 – TVs, Chromecast, Sonoff LAN, Hue scenes, Dirigera blinds (t267u/t270u, R290, R318–R324)
+- Media: `lib/media/` – media_model (MediaState/MediaInfo/MediaBackend, hooks `mediaHttp`, `mediaWebSocket`), wol (hooks `wolTarget`/`wolPort`), cast (CastChannel, hand-written protobuf; hook `CastChannel.secure`), samsung_tv (hooks `samsungWsScheme/WsPort/RestPort/UpnpPort`), lg_webos (hook `lgUrls`), philips_tv (`philipsPending` between the two wizard steps), media_driver (type `media`, hook `mediaTestBackend`, `mediaTiles`), media_providers (`MediaChooser` id 'media', `pickMediaBrand`). Samsung/LG use PairMode.button (pair() waits for the TV prompt, returns token/clientKey as creds['token']); Philips raises needsDetails for the PIN.
+- Sonoff LAN encrypted: `lib/devices/ewelink_lan.dart` (SonoffLanProvider id 'sonoff_lan', driver type `ewelink`, hooks `ewelinkBrowse`, `ewelinkTestClient`); `_ewelink._tcp` added to discovery TXT services. AES-CBC in `lib/core/aes_cbc.dart`.
+- Hue scenes (items `c<id>`, kind `scene:<group>`), Dirigera blinds/airPurifier/scenes (items `scene:<id>`); mocks in test/support/mock_devices.dart got `withScenes` / `withExtras`.
+- Tests: test/media_r290_test.dart, test/devices_r290_test.dart, test/media_r290_ui_test.dart. All UNTESTED ON HARDWARE. Docs: docs/DEVICES-R290.md.
+- Later: Android TV Remote v2, LG signed manifest if needed, Sonos/Apple TV/Roku.
+- v0.18.0 also includes t290u (feature/t290u-android-launcher, a9d1c23): Android pinned shortcuts + status widgets – `lib/state/home_launcher.dart`, `lib/ui/home_launcher_ui.dart`, LauncherBridge.kt / TileStatusWidget.kt / WidgetRefreshWorker.kt; requirement rows renumbered R332–R333 (R329/R330 were taken by v0.17.2).

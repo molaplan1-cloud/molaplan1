@@ -25,6 +25,7 @@ IconData providerIcon(DeviceProvider p) => switch (p.category) {
   'climate' => Icons.heat_pump_outlined,
   'solar' => Icons.solar_power_outlined,
   'ev' => Icons.ev_station_outlined,
+  'media' => Icons.tv_outlined,
   _ => Icons.power_outlined,
 };
 
@@ -38,6 +39,7 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
   _ when p.category == 'climate' => const Color(0xFFFF7043),
   _ when p.category == 'solar' => const Color(0xFFFFB300),
   _ when p.category == 'ev' => const Color(0xFF43A047),
+  _ when p.category == 'media' => const Color(0xFF5E35B1),
   _ => const Color(0xFF26A69A),
 };
 

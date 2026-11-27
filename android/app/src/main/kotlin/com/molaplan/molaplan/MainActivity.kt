@@ -86,7 +86,7 @@ class MainActivity : FlutterActivity() {
     override fun cleanUpFlutterEngine(flutterEngine: FlutterEngine) {
         // These handlers use the activity; the engine may outlive it (background bridge).
         val m = flutterEngine.dartExecutor.binaryMessenger
-        for (c in listOf("molaplan/link", "molaplan/multicast", "molaplan/notify", "molaplan/update")) {
+        for (c in listOf("molaplan/link", "molaplan/multicast", "molaplan/notify", "molaplan/update", "molaplan/launcher")) {
             MethodChannel(m, c).setMethodCallHandler(null)
         }
         super.cleanUpFlutterEngine(flutterEngine)
@@ -103,6 +103,7 @@ class MainActivity : FlutterActivity() {
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
+        LauncherBridge.register(this, flutterEngine)
         initialLink = intent?.dataString?.takeIf { it.startsWith("molaplan:") }
         linkChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "molaplan/link").apply {
             setMethodCallHandler { call, result ->

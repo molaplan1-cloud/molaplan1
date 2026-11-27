@@ -2,6 +2,8 @@ import '../devices/shelly.dart' show ShellyCloudDriver;
 import '../heatpumps/hp_driver.dart';
 import '../energy/solar_driver.dart';
 import '../ev/ev_driver.dart';
+import '../media/media_driver.dart';
+import '../devices/ewelink_lan.dart';
 import '../models/models.dart';
 import '../tuya/tuya_driver.dart';
 import 'airthings.dart';
@@ -37,6 +39,8 @@ const driverDescriptors = <DriverDescriptor>[
   HeatPumpDriver.descriptor,
   SolarDriver.descriptor,
   EvChargerDriver.descriptor,
+  MediaDriver.descriptor,
+  EwelinkLanDriver.descriptor,
   TuyaDriver.descriptor,
 ];
 

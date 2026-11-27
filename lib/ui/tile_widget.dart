@@ -17,6 +17,8 @@ import 'light_sheet.dart';
 import 'climate_tile.dart';
 import '../devices/climate.dart';
 import 'error_box.dart';
+import 'home_launcher_ui.dart';
+import '../state/home_launcher.dart';
 import 'camera_view.dart';
 import 'icons.dart';
 import 'notify.dart';
@@ -716,6 +718,15 @@ class _TileWidgetState extends State<TileWidget> {
           ],
         ),
         actions: [
+          if (launcherSupported)
+            TextButton(
+              key: const ValueKey('tile-add-home'),
+              onPressed: () async {
+                Navigator.pop(c);
+                if (context.mounted) await showAddToHomeScreen(context, t);
+              },
+              child: Text(tx(context, 'Lisää aloitusnäytölle', 'Add to home screen')),
+            ),
           TextButton(
             key: const ValueKey('tile-rename'),
             onPressed: () async {

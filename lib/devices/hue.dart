@@ -141,7 +141,7 @@ class HueProvider extends DeviceProvider {
     final conn = _conn(c.address, token)..name = c.name ?? 'Hue';
     final d = ctx.driver(conn);
     try {
-      Object? lights, groups, sensors;
+      Object? lights, groups, sensors, scenes;
       try {
         lights = decodeJson(await getText(d, '/api/{{token}}/lights'));
         groups = decodeJson(await getText(d, '/api/{{token}}/groups'));
@@ -150,6 +150,9 @@ class HueProvider extends DeviceProvider {
       }
       try {
         sensors = decodeJson(await getText(d, '/api/{{token}}/sensors'));
+      } catch (_) {}
+      try {
+        scenes = decodeJson(await getText(d, '/api/{{token}}/scenes'));
       } catch (_) {}
       final err = _hueError(lights);
       if (err is Map) throw AddDeviceError(err['type'] == 1 ? AddProblem.needsPassword : AddProblem.unknown, '$err');
@@ -213,6 +216,31 @@ class HueProvider extends DeviceProvider {
           );
         }
       }
+      // R290: scenes as button tiles (recall = PUT groups/<group>/action {"scene": id}).
+      if (scenes is Map) {
+        final groupNames = {
+          if (groups is Map)
+            for (final e in groups.entries)
+              if (e.value is Map) '${e.key}': '${(e.value as Map)['name'] ?? ''}',
+        };
+        var n = 0;
+        for (final e in scenes.entries) {
+          final x = e.value is Map ? e.value as Map : const {};
+          if (x['recycle'] == true || n >= 60) continue;
+          n++;
+          final g = x['type'] == 'GroupScene' ? '${x['group'] ?? '0'}' : '0';
+          final room = groupNames[g] ?? '';
+          items.add(
+            AddItem(
+              key: 'c${e.key}',
+              name: '${room.isEmpty ? '' : '$room: '}${x['name'] ?? e.key}',
+              kind: 'scene:$g',
+              preselect: false,
+              group: tr(ctx.lang, 'Tilanteet (scenet)', 'Scenes'),
+            ),
+          );
+        }
+      }
       if (items.isEmpty) throw AddDeviceError(AddProblem.nothingToAdd);
       return Connected(connection: conn, label: c.name ?? 'Philips Hue Bridge', items: items, data: {'token': token});
     } finally {
@@ -234,6 +262,28 @@ class HueProvider extends DeviceProvider {
       if (skip.contains(it.key)) continue;
       final title = (names[it.key]?.trim().isNotEmpty ?? false) ? names[it.key]!.trim() : it.name;
       final id = it.key.substring(1);
+      if (it.key.startsWith('c')) {
+        final g = it.kind.startsWith('scene:') ? it.kind.substring(6) : '0';
+        out.add(
+          TileConfig(
+            type: TileType.button,
+            title: title,
+            icon: 'scene',
+            connectionId: c.id,
+            commands: [
+              CommandStep(
+                connectionId: c.id,
+                spec: {
+                  'method': 'PUT',
+                  'path': '/api/{{token}}/groups/$g/action',
+                  'body': jsonEncode({'scene': id}),
+                },
+              ),
+            ],
+          ),
+        );
+        continue;
+      }
       if (it.key.startsWith('s')) {
         final res = '/api/{{token}}/sensors/$id';
         final battery = it.hasPower ? {'path': res, 'jsonPath': 'config.battery'} : null;

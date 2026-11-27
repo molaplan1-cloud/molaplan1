@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="molaplan_widget_name">Mosaico de Molaplan</string>
+    <string name="molaplan_widget_description">Muestra el estado de un mosaico de Molaplan en la pantalla de inicio.</string>
+</resources>

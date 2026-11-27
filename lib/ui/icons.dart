@@ -45,6 +45,11 @@ const tileIcons = <String, IconData>{
   'air_quality': Icons.air_outlined,
   'solar': Icons.solar_power_outlined,
   'ev': Icons.ev_station_outlined,
+  'tv': Icons.tv_outlined,
+  'volume': Icons.volume_up_outlined,
+  'stop': Icons.stop_rounded,
+  'pause': Icons.pause_rounded,
+  'blinds': Icons.blinds_outlined,
 };
 
 /// Names shown in the icon picker (fi, en).
@@ -91,6 +96,11 @@ const tileIconLabels = <String, (String, String)>{
   'air_quality': ('Ilmanlaatu', 'Air quality'),
   'solar': ('Aurinkosähkö', 'Solar power'),
   'ev': ('Sähköauton laturi', 'EV charger'),
+  'tv': ('Televisio', 'TV'),
+  'volume': ('Äänenvoimakkuus', 'Volume'),
+  'stop': ('Pysäytä', 'Stop'),
+  'pause': ('Tauko', 'Pause'),
+  'blinds': ('Verho / sälekaihdin', 'Blinds'),
 };
 
 IconData iconFor(TileConfig t) {

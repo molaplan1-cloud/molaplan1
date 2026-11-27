@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="molaplan_widget_name">Molaplan-plaat</string>
+    <string name="molaplan_widget_description">Näitab Molaplan-plaadi olekut avaekraanil.</string>
+</resources>

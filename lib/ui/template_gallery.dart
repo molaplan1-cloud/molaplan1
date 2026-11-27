@@ -12,6 +12,7 @@ import '../heatpumps/hp_providers.dart';
 import '../tuya/tuya_provider.dart';
 import '../energy/solar_providers.dart';
 import '../ev/ev_providers.dart';
+import '../media/media_providers.dart';
 import '../drivers/registry.dart';
 import '../drivers/ntfy_device.dart' show ntfyNoReplyText;
 import '../drivers/driver.dart' show DriverException;
@@ -243,10 +244,12 @@ class _TemplateGridState extends State<TemplateGrid> {
                             }
                             pick = c as DeviceProvider;
                           }
-                          if (p is SolarChooser || p is ChargerChooser) {
+                          if (p is SolarChooser || p is ChargerChooser || p is MediaChooser) {
                             final c = p is SolarChooser
                                 ? await pickSolarBrand(context)
-                                : await pickChargerBrand(context);
+                                : p is ChargerChooser
+                                ? await pickChargerBrand(context)
+                                : await pickMediaBrand(context);
                             if (c == null || !context.mounted) return;
                             if (c is String) {
                               final tpl = templateById(c);
@@ -1567,4 +1570,17 @@ Future<Object?> pickChargerBrand(BuildContext context) => _pickBrandSheet(
   documented: (p) => p is EvChargerProvider ? p.documented : true,
   notYet: evNotYet,
   localIcon: Icons.ev_station_outlined,
+);
+
+Future<Object?> pickMediaBrand(BuildContext context) => _pickBrandSheet(
+  context,
+  keyName: 'media',
+  titleFi: 'Mikä televisio tai laite?',
+  titleEn: 'Which TV or device?',
+  introFi: 'Tila, virta, äänenvoimakkuus, mykistys ja toisto ruutuihin ja automaatioihin – suoraan kotiverkossa, ilman pilveä ja ilman Home Assistantia. Android TV ja Google TV: valitse Chromecast.',
+  introEn: 'Status, power, volume, mute and playback as tiles and for automations – straight over the home network, no cloud and no Home Assistant. Android TV and Google TV: pick Chromecast.',
+  providers: mediaProviders,
+  documented: (p) => true,
+  notYet: mediaNotYet,
+  localIcon: Icons.tv_outlined,
 );

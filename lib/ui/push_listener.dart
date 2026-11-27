@@ -10,6 +10,7 @@ import '../models/models.dart';
 import '../state/app_state.dart';
 import '../state/automation_state.dart';
 import 'app_scope.dart';
+import 'home_launcher_ui.dart';
 import 'notify.dart';
 import 'tile_grid.dart';
 import 'tile_widget.dart';
@@ -80,9 +81,15 @@ class _PushListenerState extends State<PushListener> {
   }
 
   void _open(Uri u) {
-    final id = DeepLinks.tileOf(u);
     final c = widget.navigator.currentContext;
-    if (id == null || c == null || !c.mounted) return;
+    if (c == null || !c.mounted) return;
+    final runId = DeepLinks.runOf(u);
+    if (runId != null) {
+      runTileFromShortcut(c, runId, confirm: DeepLinks.confirmOf(u));
+      return;
+    }
+    final id = DeepLinks.tileOf(u);
+    if (id == null) return;
     openTileById(c, id);
   }
 
