@@ -66,7 +66,8 @@ class MediaInfo {
   MediaInfo({required this.name, this.model = '', this.mac = '', this.caps = const {}, this.extra = const {}});
   final String name, model, mac;
 
-  /// 'power', 'volume', 'mute', 'playpause', 'stop', 'keys'.
+  /// 'power', 'volume', 'mute', 'playpause', 'stop', 'keys', 'volkeys' (volume +/− buttons only),
+  /// 'channels' (channel +/− and channel number), 'next' (next / previous track).
   final Set<String> caps;
 
   /// Values learnt during pairing that must be saved (token / client key / auth key).
@@ -102,8 +103,18 @@ abstract class MediaBackend {
   Future<void> setVolume(num level);
   Future<void> setMuted(bool muted);
 
-  /// 'play', 'pause', 'playpause', 'stop', 'volup', 'voldown', 'home', 'back'.
+  /// 'play', 'pause', 'playpause', 'stop', 'volup', 'voldown', 'home', 'back'; where supported also
+  /// 'mute', 'chup', 'chdown', 'up', 'down', 'left', 'right', 'ok', 'next', 'prev', 'power', '0'–'9'.
   Future<void> key(String key);
+
+  /// Tune to a channel number ("5" / "5.1"). Default: digit keys.
+  Future<void> channel(String ch) async {
+    final digits = ch.replaceAll(RegExp(r'[^0-9]'), '');
+    if (digits.isEmpty) throw DriverException(dtx('Kanavan numero puuttuu', 'Channel number missing'));
+    for (final d in digits.split('')) {
+      await key(d);
+    }
+  }
   Future<void> close() async {}
 }
 

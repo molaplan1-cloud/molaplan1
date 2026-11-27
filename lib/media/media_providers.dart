@@ -1,13 +1,17 @@
 /// R290: TVs and Cast devices in the add-device wizard. One gallery card "TV ja Chromecast"
 /// ([MediaChooser]) opens a brand list: Chromecast / Google TV / Android TV (Cast), Samsung, LG and
 /// Philips – all local, no cloud. Tiles: status, power, volume, mute, play/pause, stop.
+/// R324: + Android TV / Google TV remote (keys, channels, pairing code), Sonos (UPnP) and Roku (ECP).
 library;
 
 import '../devices/provider.dart';
 import '../models/models.dart';
+import 'android_tv.dart';
 import 'media_driver.dart';
 import 'media_model.dart';
 import 'philips_tv.dart';
+import 'roku.dart';
+import 'sonos.dart';
 
 class MediaProvider extends DeviceProvider {
   MediaProvider({
@@ -65,6 +69,11 @@ class MediaProvider extends DeviceProvider {
       final name = label.replaceAll(RegExp(r'-[0-9a-f]{20,}$'), '').replaceAll('-', ' ');
       return Candidate(provider: id, address: host, id: label, model: 'Cast', name: name);
     }
+    if (service.startsWith('_sonos')) {
+      // "RINCON_xxxx@Olohuone" or the room name.
+      final name = label.contains('@') ? label.split('@').last : label;
+      return Candidate(provider: id, address: host, id: label, model: 'Sonos', name: name);
+    }
     if (service.startsWith('_airplay')) {
       final l = label.toLowerCase();
       if (brand == 'samsung' && l.contains('samsung') || brand == 'lg' && l.contains('lg')) {
@@ -88,6 +97,18 @@ class MediaProvider extends DeviceProvider {
           model: '${d['modelName'] ?? 'Samsung'}',
           name: '${d['name'] ?? 'Samsung TV'}'.replaceAll('[TV] ', ''),
         );
+      });
+    }
+    if (brand == 'roku') {
+      return scanSubnet<Candidate>(locals, (client, ip) async {
+        final r = await probeRoku(client, ip);
+        return r == null ? null : Candidate(provider: id, address: ip, model: r.$2, name: r.$1);
+      });
+    }
+    if (brand == 'sonos') {
+      return scanSubnet<Candidate>(locals, (client, ip) async {
+        final r = await probeSonos(client, ip);
+        return r == null ? null : Candidate(provider: id, address: ip, model: r.$2, name: r.$1);
       });
     }
     if (brand == 'philips') {
@@ -142,6 +163,9 @@ class MediaProvider extends DeviceProvider {
     if ((creds['mac'] ?? '').trim().isNotEmpty) set['mac'] = creds['mac']!.trim();
     if ((creds['username'] ?? '').isNotEmpty) set['username'] = creds['username'];
     if ((creds['password'] ?? '').isNotEmpty) sec['password'] = creds['password']!;
+    for (final k in const ['atvCert', 'atvKey']) {
+      if ((creds[k] ?? '').isNotEmpty) sec[k] = creds[k]!;
+    }
     if ((creds['api'] ?? '').isNotEmpty) set['api'] = int.tryParse(creds['api']!) ?? 6;
     if (c.name?.isNotEmpty ?? false) set['name'] = c.name;
     final name = (creds['name'] ?? '').isNotEmpty ? creds['name']! : (c.name?.isNotEmpty == true ? c.name! : fi);
@@ -154,6 +178,7 @@ class MediaProvider extends DeviceProvider {
     if (host.isEmpty) throw AddDeviceError(AddProblem.needsDetails, 'address');
     final cr = Map<String, String>.from(creds);
     if (brand == 'philips') await _philipsAuth(host, cr);
+    if (brand == 'androidtv') await _androidTvPair(host, cr);
     final conn = _conn(host, c, cr);
     final d = ctx.driver(conn);
     try {
@@ -170,7 +195,7 @@ class MediaProvider extends DeviceProvider {
       final secrets = {...conn.secrets};
       if (info.mac.isNotEmpty && (settings['mac'] ?? '') == '') settings['mac'] = info.mac;
       for (final e in info.extra.entries) {
-        if (e.key == 'token' || e.key == 'clientKey') secrets[e.key] = e.value;
+        if (const {'token', 'clientKey', 'atvCert', 'atvKey'}.contains(e.key)) secrets[e.key] = e.value;
       }
       final name = info.name.isNotEmpty && (c.name?.isEmpty ?? true) ? info.name : conn.name;
       final out = ConnectionConfig(id: conn.id, name: name, type: 'media', settings: settings, secrets: secrets);
@@ -186,6 +211,35 @@ class MediaProvider extends DeviceProvider {
       );
     } finally {
       await d.dispose();
+    }
+  }
+
+  /// Android TV remote v2: our certificate + the 6-character code shown on the TV.
+  Future<void> _androidTvPair(String host, Map<String, String> cr) async {
+    if ((cr['atvCert'] ?? '').isNotEmpty && (cr['atvKey'] ?? '').isNotEmpty) return;
+    final code = (cr['pin'] ?? '').trim();
+    final pending = atvPending[host];
+    if (code.isEmpty || pending == null) {
+      await atvPending.remove(host)?.close();
+      try {
+        atvPending[host] = await AtvPairing.start(host);
+      } catch (e) {
+        throw explain(e);
+      }
+      throw AddDeviceError(AddProblem.needsDetails, 'Android TV code');
+    }
+    try {
+      await pending.finish(code);
+      cr['atvCert'] = pending.cert;
+      cr['atvKey'] = pending.key;
+      cr.remove('pin');
+    } on MediaAuthError catch (e) {
+      throw AddDeviceError(AddProblem.wrongPassword, '$e');
+    } catch (e) {
+      throw explain(e);
+    } finally {
+      atvPending.remove(host);
+      await pending.close();
     }
   }
 
@@ -307,6 +361,54 @@ final mediaProviders = <MediaProvider>[
       ),
     ],
   ),
+  MediaProvider(
+    id: 'media_androidtv',
+    brand: 'androidtv',
+    fi: 'Android TV / Google TV (kaukosäädin)',
+    en: 'Android TV / Google TV (remote)',
+    descFi: 'Sony, Philips, TCL, Xiaomi, Chromecast with Google TV…: virta, äänenvoimakkuus, mykistys, kanavat, nuolinäppäimet ja avoin sovellus. Paritus television näyttämällä koodilla.',
+    descEn:
+        'Sony, Philips, TCL, Xiaomi, Chromecast with Google TV…: power, volume, mute, channels, arrow keys and the open app. Pairs with a code shown on the TV.',
+    keywords: const ['android tv', 'google tv', 'kaukosäädin', 'remote', 'sony', 'bravia', 'tcl', 'xiaomi', 'kanava'],
+    mdns: const ['_androidtvremote2._tcp'],
+    helpFi: 'TV: Asetukset → Verkko ja Internet → (verkko) → IP-osoite. Tai Google Home -sovellus → laite → Laitteen tiedot.',
+    helpEn: 'TV: Settings → Network & Internet → (network) → IP address. Or Google Home app → device → Device information.',
+    pairFi: 'Televisioon ilmestyy kuusimerkkinen koodi (numerot ja kirjaimet A–F) – kirjoita se tähän.',
+    pairEn: 'The TV shows a six-character code (digits and letters A–F) – type it here.',
+    creds: const [
+      CredField(
+        'pin',
+        'Koodi televisiosta',
+        'Code from the TV',
+        hint: '1A2B3C',
+        helpFi: 'Näkyy television ruudulla parituksen ajan.',
+        helpEn: 'Shown on the TV screen during pairing.',
+      ),
+    ],
+  ),
+  MediaProvider(
+    id: 'media_sonos',
+    brand: 'sonos',
+    fi: 'Sonos',
+    en: 'Sonos',
+    descFi: 'Sonos-kaiuttimet ja -soundbarit: äänenvoimakkuus, mykistys, toisto/tauko, seuraava ja mitä soi. Suoraan kotiverkossa, ei tiliä.',
+    descEn: 'Sonos speakers and soundbars: volume, mute, play/pause, next and now playing. Straight over the home network, no account.',
+    keywords: const ['sonos', 'kaiutin', 'speaker', 'soundbar', 'arc', 'beam', 'era', 'one', 'musiikki'],
+    mdns: const ['_sonos._tcp'],
+    helpFi: 'Sonos-sovellus → Asetukset → Järjestelmä → Tietoja järjestelmästäni → IP-osoite.',
+    helpEn: 'Sonos app → Settings → System → About My System → IP address.',
+  ),
+  MediaProvider(
+    id: 'media_roku',
+    brand: 'roku',
+    fi: 'Roku',
+    en: 'Roku',
+    descFi: 'Roku-soittimet ja Roku TV:t: näppäimet, ääni +/−, mykistys, toisto/tauko, avoin sovellus; Roku TV:ssä myös virta ja kanavat.',
+    descEn: 'Roku players and Roku TVs: keys, volume +/−, mute, play/pause, the open app; on Roku TVs also power and channels.',
+    keywords: const ['roku', 'roku tv', 'tcl', 'hisense', 'tv', 'televisio'],
+    helpFi: 'Roku: Asetukset → Verkko → Tietoja → IP-osoite. Salli ohjaus: Asetukset → Järjestelmä → Järjestelmän lisäasetukset → Ohjaus mobiilisovelluksilla → Käytössä.',
+    helpEn: 'Roku: Settings → Network → About → IP address. Allow control: Settings → System → Advanced system settings → Control by mobile apps → Enabled.',
+  ),
 ];
 
 class MediaChooser extends DeviceProvider {
@@ -317,9 +419,10 @@ class MediaChooser extends DeviceProvider {
   @override
   String get en => 'TV and Chromecast';
   @override
-  String get descFi => 'Samsung, LG, Philips, Android TV / Google TV ja Chromecast: virta, ääni ja toisto.';
+  String get descFi => 'Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos ja Roku: virta, ääni, kanavat ja toisto.';
   @override
-  String get descEn => 'Samsung, LG, Philips, Android TV / Google TV and Chromecast: power, volume and playback.';
+  String get descEn =>
+      'Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos and Roku: power, volume, channels and playback.';
   @override
   String get category => 'media';
   @override
@@ -345,14 +448,9 @@ class MediaChooser extends DeviceProvider {
 
 const mediaNotYet = <(String, String, String)>[
   (
-    'Android TV Remote (näppäimistö, kanavat)',
-    'Tulossa myöhemmin (vaatii TLS-parituksen). Nyt: Cast-yhteys – tila, ääni, tauko ja pysäytys.',
-    'Later (needs TLS pairing). Today: Cast – status, volume, pause and stop.',
-  ),
-  (
-    'Sonos, Apple TV, Roku',
-    'Ei vielä omaa integraatiota. Nyt: Home Assistantin kautta.',
-    'No built-in integration yet. Today: via Home Assistant.',
+    'Apple TV',
+    'Ei vielä omaa integraatiota: Apple TV:n ohjaus vaatii HomeKit-tyyppisen parituksen ja salauksen (SRP, Ed25519, ChaCha20). Nyt: Home Assistantin kautta.',
+    'No built-in integration yet: Apple TV control needs HomeKit-style pairing and encryption (SRP, Ed25519, ChaCha20). Today: via Home Assistant.',
   ),
 ];
 

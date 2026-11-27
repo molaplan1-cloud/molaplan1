@@ -1,23 +1,30 @@
 /// Connection type `media` (R290): TVs and Cast devices.
 ///
 /// read {'media': 'status' | 'power' | 'volume' | 'muted' | 'app' | 'title' | 'playing' | 'info'}
-/// send {'media': 'power' | 'volume' | 'mute', 'value': '{{value}}'} or {'media': 'key', 'key': 'play' …}
+/// send {'media': 'power' | 'volume' | 'mute', 'value': '{{value}}'}, {'media': 'key', 'key': 'play' …},
+/// {'media': 'channel', 'value': '5'} or {'media': 'launch', 'value': 'app link'} (Android TV)
 library;
 
 import '../core/fields.dart';
 import '../drivers/driver.dart';
 import '../models/models.dart';
+import 'android_tv.dart';
 import 'cast.dart';
 import 'lg_webos.dart';
 import 'media_model.dart';
 import 'philips_tv.dart';
+import 'roku.dart';
 import 'samsung_tv.dart';
+import 'sonos.dart';
 
 const mediaBrands = <String, (String, String)>{
   'cast': ('Chromecast / Google TV / Android TV (Cast)', 'Chromecast / Google TV / Android TV (Cast)'),
   'samsung': ('Samsung Smart TV (Tizen)', 'Samsung Smart TV (Tizen)'),
   'lg': ('LG Smart TV (webOS)', 'LG Smart TV (webOS)'),
   'philips': ('Philips TV (JointSPACE)', 'Philips TV (JointSPACE)'),
+  'androidtv': ('Android TV / Google TV (kaukosäädin)', 'Android TV / Google TV (remote)'),
+  'sonos': ('Sonos', 'Sonos'),
+  'roku': ('Roku', 'Roku'),
 };
 
 /// Test hook: replaces the backend.
@@ -31,6 +38,9 @@ MediaBackend createMediaBackend(Map<String, dynamic> s) {
     'samsung' => SamsungBackend(s),
     'lg' => LgBackend(s),
     'philips' => PhilipsBackend(s),
+    'androidtv' => AndroidTvBackend(s),
+    'sonos' => SonosBackend(s),
+    'roku' => RokuBackend(s),
     final b => throw DriverException('Media: unknown brand "$b"'),
   };
 }
@@ -72,11 +82,13 @@ class MediaDriver extends Driver {
         'Merkki',
         'Brand',
         kind: FieldKind.choice,
-        options: ['cast', 'samsung', 'lg', 'philips'],
+        options: ['cast', 'samsung', 'lg', 'philips', 'androidtv', 'sonos', 'roku'],
         optionLabels: mediaBrands,
         defaultValue: 'cast',
-        helpFi: 'Android TV:t ja Google TV:t ohjataan Cast-yhteydellä (Chromecast built-in).',
-        helpEn: 'Android TVs and Google TVs are controlled over Cast (Chromecast built-in).',
+        helpFi:
+            'Android TV:t ja Google TV:t: Cast (tila, ääni, toisto) tai kaukosäädin-yhteys (näppäimet, kanavat, virta; paritus koodilla).',
+        helpEn:
+            'Android TVs and Google TVs: Cast (status, volume, playback) or the remote protocol (keys, channels, power; pairing code).',
       ),
       FieldSpec(
         'address',
@@ -139,6 +151,24 @@ class MediaDriver extends Driver {
         helpFi: 'LG antaa avaimen, kun hyväksyt yhteyden televisiosta. Tallentuu vain tälle laitteelle.',
         helpEn: 'LG returns it when you accept the connection on the TV. Stored on this device only.',
       ),
+      FieldSpec(
+        'atvCert',
+        'Asiakasvarmenne (Android TV)',
+        'Client certificate (Android TV)',
+        kind: FieldKind.secret,
+        advanced: true,
+        helpFi: 'Molaplanin oma varmenne, jonka televisio hyväksyi parituksessa. Tallentuu vain tälle laitteelle.',
+        helpEn: "Molaplan's own certificate that the TV accepted during pairing. Stored on this device only.",
+      ),
+      FieldSpec(
+        'atvKey',
+        'Asiakasavain (Android TV)',
+        'Client key (Android TV)',
+        kind: FieldKind.secret,
+        advanced: true,
+        helpFi: 'Varmenteen yksityinen avain. Tallentuu vain tälle laitteelle.',
+        helpEn: "The certificate's private key. Stored on this device only.",
+      ),
     ],
     readFields: [
       FieldSpec(
@@ -167,12 +197,14 @@ class MediaDriver extends Driver {
         'Komento',
         'Command',
         kind: FieldKind.choice,
-        options: ['power', 'volume', 'mute', 'key'],
+        options: ['power', 'volume', 'mute', 'key', 'channel', 'launch'],
         optionLabels: {
           'power': ('Virta päälle/pois (arvo 1/0)', 'Power on/off (value 1/0)'),
           'volume': ('Äänenvoimakkuus (arvo 0–100)', 'Volume (value 0–100)'),
           'mute': ('Mykistys (arvo 1/0)', 'Mute (value 1/0)'),
           'key': ('Näppäin', 'Key'),
+          'channel': ('Kanava (arvo = numero)', 'Channel (value = number)'),
+          'launch': ('Avaa sovellus (Android TV, arvo = linkki)', 'Open app (Android TV, value = link)'),
         },
         defaultValue: 'key',
         helpFi: 'Arvo tulee kytkimestä tai liukusäätimestä.',
@@ -183,8 +215,39 @@ class MediaDriver extends Driver {
         'Näppäin',
         'Key',
         kind: FieldKind.choice,
-        options: ['playpause', 'play', 'pause', 'stop', 'volup', 'voldown', 'home', 'back'],
+        options: [
+          'playpause',
+          'play',
+          'pause',
+          'stop',
+          'next',
+          'prev',
+          'volup',
+          'voldown',
+          'mute',
+          'chup',
+          'chdown',
+          'up',
+          'down',
+          'left',
+          'right',
+          'ok',
+          'home',
+          'back',
+          'power',
+        ],
         optionLabels: {
+          'next': ('Seuraava', 'Next'),
+          'prev': ('Edellinen', 'Previous'),
+          'mute': ('Mykistys päälle/pois', 'Mute on/off'),
+          'chup': ('Kanava +', 'Channel +'),
+          'chdown': ('Kanava −', 'Channel −'),
+          'up': ('Ylös', 'Up'),
+          'down': ('Alas', 'Down'),
+          'left': ('Vasemmalle', 'Left'),
+          'right': ('Oikealle', 'Right'),
+          'ok': ('OK', 'OK'),
+          'power': ('Virtanäppäin', 'Power key'),
           'playpause': ('Toista / tauko', 'Play / pause'),
           'play': ('Toista', 'Play'),
           'pause': ('Tauko', 'Pause'),
@@ -223,6 +286,14 @@ class MediaDriver extends Driver {
       case 'key':
       case 'stop' || 'play' || 'pause' || 'playpause':
         await backend.key('${spec['key'] ?? spec['media']}');
+      case 'channel':
+        await backend.channel('${spec['channel'] ?? raw ?? ''}');
+      case 'launch':
+        final b = backend;
+        if (b is! AndroidTvBackend) {
+          throw DriverException(dtx('Sovelluksen avaus toimii vain Android TV -yhteydellä', 'Open app needs the Android TV remote connection'));
+        }
+        await b.launch('${spec['link'] ?? raw ?? ''}');
       default:
         throw DriverException('Media: unknown command "${spec['media']}"');
     }
@@ -290,7 +361,7 @@ List<TileConfig> mediaTiles(String connId, MediaInfo info, {required String titl
           CommandStep(connectionId: connId, spec: {'media': 'volume', 'value': '{{value}}'}),
         ],
       ),
-    if (info.caps.contains('mute'))
+    if (info.caps.contains('mute') && !info.caps.contains('volkeys'))
       TileConfig(
         type: TileType.toggle,
         title: '$title – ${t('mykistys', 'mute')}',
@@ -302,7 +373,17 @@ List<TileConfig> mediaTiles(String connId, MediaInfo info, {required String titl
         onCommand: CommandStep(connectionId: connId, spec: {'media': 'mute', 'value': '1'}),
         offCommand: CommandStep(connectionId: connId, spec: {'media': 'mute', 'value': '0'}),
       ),
+    if (info.caps.contains('volkeys')) ...[
+      button('ääni +', 'volume +', 'volume', 'volup'),
+      button('ääni −', 'volume −', 'volume', 'voldown'),
+    ],
+    if (info.caps.contains('volkeys') && info.caps.contains('mute')) button('mykistys', 'mute', 'volume', 'mute'),
     if (info.caps.contains('playpause')) button('toista / tauko', 'play / pause', 'pause', 'playpause'),
     if (info.caps.contains('stop')) button('pysäytä', 'stop', 'stop', 'stop'),
+    if (info.caps.contains('next')) button('seuraava', 'next', 'auto', 'next'),
+    if (info.caps.contains('channels')) ...[
+      button('kanava +', 'channel +', 'tv', 'chup'),
+      button('kanava −', 'channel −', 'tv', 'chdown'),
+    ],
   ];
 }
