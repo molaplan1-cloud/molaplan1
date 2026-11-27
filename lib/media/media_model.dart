@@ -115,6 +115,7 @@ abstract class MediaBackend {
       await key(d);
     }
   }
+
   Future<void> close() async {}
 }
 

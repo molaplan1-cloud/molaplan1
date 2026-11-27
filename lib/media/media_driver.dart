@@ -85,10 +85,8 @@ class MediaDriver extends Driver {
         options: ['cast', 'samsung', 'lg', 'philips', 'androidtv', 'sonos', 'roku'],
         optionLabels: mediaBrands,
         defaultValue: 'cast',
-        helpFi:
-            'Android TV:t ja Google TV:t: Cast (tila, ääni, toisto) tai kaukosäädin-yhteys (näppäimet, kanavat, virta; paritus koodilla).',
-        helpEn:
-            'Android TVs and Google TVs: Cast (status, volume, playback) or the remote protocol (keys, channels, power; pairing code).',
+        helpFi: 'Android TV:t ja Google TV:t: Cast (tila, ääni, toisto) tai kaukosäädin-yhteys (näppäimet, kanavat, virta; paritus koodilla).',
+        helpEn: 'Android TVs and Google TVs: Cast (status, volume, playback) or the remote protocol (keys, channels, power; pairing code).',
       ),
       FieldSpec(
         'address',
@@ -291,7 +289,12 @@ class MediaDriver extends Driver {
       case 'launch':
         final b = backend;
         if (b is! AndroidTvBackend) {
-          throw DriverException(dtx('Sovelluksen avaus toimii vain Android TV -yhteydellä', 'Open app needs the Android TV remote connection'));
+          throw DriverException(
+            dtx(
+              'Sovelluksen avaus toimii vain Android TV -yhteydellä',
+              'Open app needs the Android TV remote connection',
+            ),
+          );
         }
         await b.launch('${spec['link'] ?? raw ?? ''}');
       default:

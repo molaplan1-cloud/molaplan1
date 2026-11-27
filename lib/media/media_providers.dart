@@ -367,12 +367,12 @@ final mediaProviders = <MediaProvider>[
     fi: 'Android TV / Google TV (kaukosäädin)',
     en: 'Android TV / Google TV (remote)',
     descFi: 'Sony, Philips, TCL, Xiaomi, Chromecast with Google TV…: virta, äänenvoimakkuus, mykistys, kanavat, nuolinäppäimet ja avoin sovellus. Paritus television näyttämällä koodilla.',
-    descEn:
-        'Sony, Philips, TCL, Xiaomi, Chromecast with Google TV…: power, volume, mute, channels, arrow keys and the open app. Pairs with a code shown on the TV.',
+    descEn: 'Sony, Philips, TCL, Xiaomi, Chromecast with Google TV…: power, volume, mute, channels, arrow keys and the open app. Pairs with a code shown on the TV.',
     keywords: const ['android tv', 'google tv', 'kaukosäädin', 'remote', 'sony', 'bravia', 'tcl', 'xiaomi', 'kanava'],
     mdns: const ['_androidtvremote2._tcp'],
     helpFi: 'TV: Asetukset → Verkko ja Internet → (verkko) → IP-osoite. Tai Google Home -sovellus → laite → Laitteen tiedot.',
-    helpEn: 'TV: Settings → Network & Internet → (network) → IP address. Or Google Home app → device → Device information.',
+    helpEn:
+        'TV: Settings → Network & Internet → (network) → IP address. Or Google Home app → device → Device information.',
     pairFi: 'Televisioon ilmestyy kuusimerkkinen koodi (numerot ja kirjaimet A–F) – kirjoita se tähän.',
     pairEn: 'The TV shows a six-character code (digits and letters A–F) – type it here.',
     creds: const [
@@ -419,7 +419,8 @@ class MediaChooser extends DeviceProvider {
   @override
   String get en => 'TV and Chromecast';
   @override
-  String get descFi => 'Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos ja Roku: virta, ääni, kanavat ja toisto.';
+  String get descFi =>
+      'Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos ja Roku: virta, ääni, kanavat ja toisto.';
   @override
   String get descEn =>
       'Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos and Roku: power, volume, channels and playback.';

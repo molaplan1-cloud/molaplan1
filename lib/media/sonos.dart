@@ -23,13 +23,7 @@ class SonosFault extends DriverException {
 }
 
 /// One SOAP call. Returns the response body; throws [SonosFault] on a UPnP error.
-Future<String> sonosSoap(
-  String host,
-  (String, String) service,
-  String action, [
-  String args = '',
-  int port = 0,
-]) async {
+Future<String> sonosSoap(String host, (String, String) service, String action, [String args = '', int port = 0]) async {
   final p = port == 0 ? sonosPort : port;
   final ns = 'urn:schemas-upnp-org:service:${service.$1}:1';
   final body =
@@ -193,12 +187,7 @@ class SonosBackend extends MediaBackend {
       case 'prev':
         await _transport('Previous');
       case 'volup' || 'voldown':
-        await sonosSoap(
-          host,
-          _rc,
-          'SetRelativeVolume',
-          '$_master<Adjustment>${key == 'volup' ? 5 : -5}</Adjustment>',
-        );
+        await sonosSoap(host, _rc, 'SetRelativeVolume', '$_master<Adjustment>${key == 'volup' ? 5 : -5}</Adjustment>');
       case 'mute':
         final m = xmlTag(await sonosSoap(host, _rc, 'GetMute', _master), 'CurrentMute');
         await setMuted(m != '1');

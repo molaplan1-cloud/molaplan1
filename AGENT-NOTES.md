@@ -285,3 +285,10 @@ t155u–t157u (also v0.7.3): ModbusTcpClient.acquire/release (one pooled connect
 
 ### v0.18.1 (korjaus)
 v0.18.0:n CI:n android-job kaatui: values/strings.xml molaplan_widget_description sisälsi escapeamattoman heittomerkin. Korjattu (\'), lokaali flutter build apk --debug OK, versio 0.18.1+38. Tagia v0.18.0 ei poistettu.
+
+### v0.19.0 (R334–R340: Android TV Remote v2, Sonos, Roku, HA extras)
+- `lib/core/rsa_cert.dart`: own RSA keygen (BigInt Miller–Rabin), PKCS#1 v1.5 SHA-256 signing, DER/PEM self-signed cert, cert public-key parsing. Verified with `openssl verify` + `openssl rsa -check`. Don't add pointycastle for this.
+- `lib/media/android_tv.dart`: tiny protobuf (`Pb`, `PbMsg`, `PbFramer`), `AtvPairing` (6467) + `atvPending` between wizard steps, `AndroidTvBackend` (6466, persistent socket). Hooks: `atvPairPort`, `atvRemotePort`, `atvNewIdentity`. Test server must trust the client cert (`setTrustedCertificatesBytes`) – real TVs accept any.
+- `lib/media/sonos.dart` (`sonosSoap`, coordinator lookup), `lib/media/roku.dart` (`xmlTag`, `xmlUnescape`, `probeText`). Hooks `sonosPort`, `rokuPort`; tests use `mediaHttp` MockClient.
+- HA: `{{value_frac}}` template, read spec `scale`; media_player / vacuum / valve / humidifier tiles in `haTilesFor`.
+- Batch was called "R324" by Enn, but R324 is the R290 UI/credentials row; new rows are R334 (parent) + R335–R340. Local `flutter build apk --debug` before every push (strings.xml lesson from v0.18.0).

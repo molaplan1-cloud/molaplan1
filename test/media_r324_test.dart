@@ -1,10 +1,8 @@
 // R324: Roku (ECP), Sonos (UPnP), Android TV Remote v2, RSA / X.509 helper and Home Assistant
 // media extras – all against simulated devices (UNTESTED ON REAL HARDWARE).
-import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
-import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart' as c;
 import 'package:flutter_test/flutter_test.dart';
@@ -12,7 +10,6 @@ import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:molaplan/core/rsa_cert.dart';
 import 'package:molaplan/core/template.dart';
-import 'package:molaplan/devices/provider.dart';
 import 'package:molaplan/devices/registry.dart';
 import 'package:molaplan/drivers/ha_catalog.dart';
 import 'package:molaplan/drivers/registry.dart';
@@ -213,17 +210,15 @@ void main() {
 
     test('wrong code is refused locally; unknown certificate → pairing needed', () async {
       final p = await AtvPairing.start('127.0.0.1', identity: _client);
-      final bad = '${((int.parse(tv.shownCode!.substring(0, 2), radix: 16) + 1) % 256).toRadixString(16).padLeft(2, '0')}'
+      final bad =
+          '${((int.parse(tv.shownCode!.substring(0, 2), radix: 16) + 1) % 256).toRadixString(16).padLeft(2, '0')}'
           '${tv.shownCode!.substring(2)}';
       await expectLater(p.finish(bad), throwsA(isA<MediaAuthError>()));
       await expectLater(p.finish('12345'), throwsA(isA<MediaAuthError>()));
       await p.close();
       final b = AndroidTvBackend({'address': '127.0.0.1', 'atvCert': _client.$1, 'atvKey': _client.$2});
       await expectLater(b.info(), throwsA(isA<MediaPairingNeeded>()));
-      await expectLater(
-        AndroidTvBackend({'address': '127.0.0.1'}).state(),
-        throwsA(isA<MediaPairingNeeded>()),
-      );
+      await expectLater(AndroidTvBackend({'address': '127.0.0.1'}).state(), throwsA(isA<MediaPairingNeeded>()));
     });
 
     test('wizard: first step asks for the code, second step saves the certificate as secrets', () async {
@@ -264,7 +259,10 @@ void main() {
             200,
           ),
           '/query/active-app' => http.Response('<active-app><app id="12" version="1">Netflix</app></active-app>', 200),
-          '/query/media-player' => http.Response('<player error="false" state="pause"><plugin id="12" name="Netflix"/></player>', 200),
+          '/query/media-player' => http.Response(
+            '<player error="false" state="pause"><plugin id="12" name="Netflix"/></player>',
+            200,
+          ),
           _ => http.Response('', 404),
         };
       });
@@ -305,7 +303,11 @@ void main() {
     });
 
     test('tiles: volume buttons instead of a slider, channel buttons', () {
-      final tiles = mediaTiles('c1', MediaInfo(name: 'Roku', caps: {'power', 'volkeys', 'mute', 'playpause', 'channels'}), title: 'Roku');
+      final tiles = mediaTiles(
+        'c1',
+        MediaInfo(name: 'Roku', caps: {'power', 'volkeys', 'mute', 'playpause', 'channels'}),
+        title: 'Roku',
+      );
       final keys = tiles.map((t) => t.read['media'] ?? t.commands.firstOrNull?.spec['key']).toList();
       expect(keys, ['status', 'power', 'volup', 'voldown', 'mute', 'playpause', 'chup', 'chdown']);
       expect(tiles.where((t) => t.type == TileType.slider), isEmpty);
@@ -332,7 +334,10 @@ void main() {
               '<ZoneGroupMember UUID="RINCON_B01400" Location="http://192.168.1.71:1400/xml/device_description.xml"/>'
               '<ZoneGroupMember UUID="RINCON_A01400" Location="http://192.168.1.70:1400/xml/device_description.xml"/>'
               '</ZoneGroup></ZoneGroups></ZoneGroupState>';
-          return http.Response(_soapBody(action, '<ZoneGroupState>${const HtmlEscape().convert(zgs)}</ZoneGroupState>'), 200);
+          return http.Response(
+            _soapBody(action, '<ZoneGroupState>${const HtmlEscape().convert(zgs)}</ZoneGroupState>'),
+            200,
+          );
         }
         return http.Response(switch (action) {
           'GetVolume' => _soapBody(action, '<CurrentVolume>23</CurrentVolume>'),
@@ -371,7 +376,8 @@ void main() {
 
     test('UPnP fault is reported', () async {
       mediaHttp = () => MockClient(
-        (r) async => http.Response('<s:Fault><detail><UPnPError><errorCode>402</errorCode></UPnPError></detail></s:Fault>', 500),
+        (r) async =>
+            http.Response('<s:Fault><detail><UPnPError><errorCode>402</errorCode></UPnPError></detail></s:Fault>', 500),
       );
       await expectLater(
         sonosSoap('192.168.1.70', ('RenderingControl', '/MediaRenderer/RenderingControl/Control'), 'GetVolume'),

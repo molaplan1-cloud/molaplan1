@@ -3,92 +3,187 @@
  "s186cc1d7b9": "Chromecast / Google TV / Android TV",
  "@s186cc1d7b9": {
   "description": "fi: Chromecast / Google TV / Android TV",
-  "x-where": "media/media_providers.dart:233"
+  "x-where": "media/media_providers.dart:287"
  },
  "s9da55e3993": "Chromecast, Google TV, Android TVs (Sony, Philips, TCL, Xiaomi…) and Nest speakers over Cast: status, volume, pause and stop.",
  "@s9da55e3993": {
   "description": "fi: Chromecast, Google TV, Android TV:t (Sony, Philips, TCL, Xiaomi…) ja Nest-kaiuttimet Cast-yhteydellä: tila, äänenvoimakk",
-  "x-where": "media/media_providers.dart:233"
+  "x-where": "media/media_providers.dart:287"
  },
  "sb3a497d14b": "Usually found automatically. Otherwise: Google Home app → device → Settings → Device information → IP address.",
  "@sb3a497d14b": {
   "description": "fi: Löytyy yleensä itse. Muuten: Google Home -sovellus → laite → Asetukset → Laitteen tiedot → IP-osoite.",
-  "x-where": "media/media_providers.dart:233"
+  "x-where": "media/media_providers.dart:287"
  },
  "s02bafb3752": "Samsung Smart TV (Tizen)",
  "@s02bafb3752": {
   "description": "fi: Samsung Smart TV (Tizen)",
-  "x-where": "media/media_providers.dart:258"
+  "x-where": "media/media_providers.dart:312"
  },
  "s709ac4cf0e": "Samsung TVs 2016→: power, volume, mute and playback straight over the home network.",
  "@s709ac4cf0e": {
   "description": "fi: Samsung-televisiot 2016→: virta, äänenvoimakkuus, mykistys ja toisto suoraan kotiverkossa.",
-  "x-where": "media/media_providers.dart:258"
+  "x-where": "media/media_providers.dart:312"
  },
  "s19a8179b98": "TV: Settings → General → Network → Network Status → IP Settings. For power on: General → Network → Expert Settings → \"Power On with Mobile\" on.",
  "@s19a8179b98": {
   "description": "fi: TV: Asetukset → Yleiset → Verkko → Verkon tila → IP-asetukset. Käynnistystä varten: Yleiset → Verkko → Asiantuntija-aset",
-  "x-where": "media/media_providers.dart:258"
+  "x-where": "media/media_providers.dart:312"
  },
  "s0f80ea94c0": "The TV asks \"Allow Molaplan?\" – choose Allow with the remote.",
  "@s0f80ea94c0": {
   "description": "fi: Televisioon tulee kysymys \"Salli Molaplan?\" – valitse kaukosäätimellä Salli.",
-  "x-where": "media/media_providers.dart:258"
+  "x-where": "media/media_providers.dart:312"
  },
  "s830956d10f": "LG Smart TV (webOS)",
  "@s830956d10f": {
   "description": "fi: LG Smart TV (webOS)",
-  "x-where": "media/media_providers.dart:272"
+  "x-where": "media/media_providers.dart:326"
  },
  "s6f7121cc67": "LG TVs (webOS): power, volume, mute, playback and the open app over the home network.",
  "@s6f7121cc67": {
   "description": "fi: LG-televisiot (webOS): virta, äänenvoimakkuus, mykistys, toisto ja avoin sovellus kotiverkossa.",
-  "x-where": "media/media_providers.dart:272"
+  "x-where": "media/media_providers.dart:326"
  },
  "scf3ccada17": "TV: Settings → General → Network → Wi-Fi/wired → Advanced. For power on: General → Devices → \"Turn on via Wi-Fi\" on.",
  "@scf3ccada17": {
   "description": "fi: TV: Asetukset → Yleiset → Verkko → Wi-Fi/langallinen → Lisäasetukset. Käynnistystä varten: Yleiset → Laitteet → \"Käynnis",
-  "x-where": "media/media_providers.dart:272"
+  "x-where": "media/media_providers.dart:326"
  },
  "s898762ead6": "The TV shows a connection request – accept it with the remote.",
  "@s898762ead6": {
   "description": "fi: Televisioon tulee yhteyspyyntö – hyväksy se kaukosäätimellä (Hyväksy / Accept).",
-  "x-where": "media/media_providers.dart:272"
+  "x-where": "media/media_providers.dart:326"
  },
  "s378548d3cd": "Philips TV (JointSPACE)",
  "@s378548d3cd": {
   "description": "fi: Philips TV (JointSPACE)",
-  "x-where": "media/media_providers.dart:286"
+  "x-where": "media/media_providers.dart:340"
  },
  "s9a2645043b": "Philips TVs: power (Android models), volume, mute and keys. Android models pair with a PIN shown on the TV.",
  "@s9a2645043b": {
   "description": "fi: Philips-televisiot: virta (Android-mallit), äänenvoimakkuus, mykistys ja näppäimet. Android-mallit paritetaan TV:n näytt",
-  "x-where": "media/media_providers.dart:286"
+  "x-where": "media/media_providers.dart:340"
  },
  "s2fb79a3487": "TV: Settings → Wireless and networks → Wired or Wi-Fi → View network settings.",
  "@s2fb79a3487": {
   "description": "fi: TV: Asetukset → Langaton ja verkot → Langallinen tai Wi-Fi → Näytä verkkoasetukset.",
-  "x-where": "media/media_providers.dart:286"
+  "x-where": "media/media_providers.dart:340"
  },
  "s12f47341ce": "Type the four-digit PIN shown on the TV.",
  "@s12f47341ce": {
   "description": "fi: Kirjoita televisioon ilmestynyt nelinumeroinen PIN-koodi.",
-  "x-where": "media/media_providers.dart:286"
+  "x-where": "media/media_providers.dart:340"
  },
  "s0ec3e3e11d": "Shown on the TV screen for about a minute.",
  "@s0ec3e3e11d": {
   "description": "fi: Näkyy television ruudulla noin minuutin.",
-  "x-where": "media/media_providers.dart:300"
+  "x-where": "media/media_providers.dart:354"
+ },
+ "s11d9226341": "Android TV / Google TV (remote)",
+ "@s11d9226341": {
+  "description": "fi: Android TV / Google TV (kaukosäädin)",
+  "x-where": "media/media_providers.dart:364"
+ },
+ "s0992ee68bf": "Sony, Philips, TCL, Xiaomi, Chromecast with Google TV…: power, volume, mute, channels, arrow keys and the open app. Pairs with a code shown on the TV.",
+ "@s0992ee68bf": {
+  "description": "fi: Sony, Philips, TCL, Xiaomi, Chromecast with Google TV…: virta, äänenvoimakkuus, mykistys, kanavat, nuolinäppäimet ja avo",
+  "x-where": "media/media_providers.dart:364"
+ },
+ "s8a14ae9518": "TV: Settings → Network & Internet → (network) → IP address. Or Google Home app → device → Device information.",
+ "@s8a14ae9518": {
+  "description": "fi: TV: Asetukset → Verkko ja Internet → (verkko) → IP-osoite. Tai Google Home -sovellus → laite → Laitteen tiedot.",
+  "x-where": "media/media_providers.dart:364"
+ },
+ "s714e6f6143": "The TV shows a six-character code (digits and letters A–F) – type it here.",
+ "@s714e6f6143": {
+  "description": "fi: Televisioon ilmestyy kuusimerkkinen koodi (numerot ja kirjaimet A–F) – kirjoita se tähän.",
+  "x-where": "media/media_providers.dart:364"
+ },
+ "sd92171df4d": "Shown on the TV screen during pairing.",
+ "@sd92171df4d": {
+  "description": "fi: Näkyy television ruudulla parituksen ajan.",
+  "x-where": "media/media_providers.dart:379"
+ },
+ "s6db078dbe3": "Sonos",
+ "@s6db078dbe3": {
+  "description": "fi: Sonos",
+  "x-where": "media/media_providers.dart:389"
+ },
+ "s8f7a93b1ea": "Sonos speakers and soundbars: volume, mute, play/pause, next and now playing. Straight over the home network, no account.",
+ "@s8f7a93b1ea": {
+  "description": "fi: Sonos-kaiuttimet ja -soundbarit: äänenvoimakkuus, mykistys, toisto/tauko, seuraava ja mitä soi. Suoraan kotiverkossa, ei",
+  "x-where": "media/media_providers.dart:389"
+ },
+ "s1cf843ef3e": "Sonos app → Settings → System → About My System → IP address.",
+ "@s1cf843ef3e": {
+  "description": "fi: Sonos-sovellus → Asetukset → Järjestelmä → Tietoja järjestelmästäni → IP-osoite.",
+  "x-where": "media/media_providers.dart:389"
+ },
+ "s01d549ef4d": "Roku",
+ "@s01d549ef4d": {
+  "description": "fi: Roku",
+  "x-where": "media/media_providers.dart:401"
+ },
+ "s406bfe2259": "Roku players and Roku TVs: keys, volume +/−, mute, play/pause, the open app; on Roku TVs also power and channels.",
+ "@s406bfe2259": {
+  "description": "fi: Roku-soittimet ja Roku TV:t: näppäimet, ääni +/−, mykistys, toisto/tauko, avoin sovellus; Roku TV:ssä myös virta ja kana",
+  "x-where": "media/media_providers.dart:401"
+ },
+ "sb4f88e9b1b": "Roku: Settings → Network → About → IP address. Allow control: Settings → System → Advanced system settings → Control by mobile apps → Enabled.",
+ "@sb4f88e9b1b": {
+  "description": "fi: Roku: Asetukset → Verkko → Tietoja → IP-osoite. Salli ohjaus: Asetukset → Järjestelmä → Järjestelmän lisäasetukset → Ohj",
+  "x-where": "media/media_providers.dart:401"
  },
  "sd3b85fadc0": "TV and Chromecast",
  "@sd3b85fadc0": {
   "description": "fi: TV ja Chromecast",
-  "x-where": "media/media_providers.dart:313"
+  "x-where": "media/media_providers.dart:415"
  },
- "sb34763a1f3": "Samsung, LG, Philips, Android TV / Google TV and Chromecast: power, volume and playback.",
- "@sb34763a1f3": {
-  "description": "fi: Samsung, LG, Philips, Android TV / Google TV ja Chromecast: virta, ääni ja toisto.",
-  "x-where": "media/media_providers.dart:313"
+ "sebd2ee78b0": "Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos and Roku: power, volume, channels and playback.",
+ "@sebd2ee78b0": {
+  "description": "fi: Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos ja Roku: virta, ääni, kanavat ja toisto.",
+  "x-where": "media/media_providers.dart:415"
+ },
+ "s50eb745165": "/MediaRenderer/RenderingControl/Control",
+ "@s50eb745165": {
+  "description": "fi: RenderingControl",
+  "x-where": "media/sonos.dart:16"
+ },
+ "s9e4f134628": "/MediaRenderer/AVTransport/Control",
+ "@s9e4f134628": {
+  "description": "fi: AVTransport",
+  "x-where": "media/sonos.dart:17"
+ },
+ "s77251a38d3": "/ZoneGroupTopology/Control",
+ "@s77251a38d3": {
+  "description": "fi: ZoneGroupTopology",
+  "x-where": "media/sonos.dart:18"
+ },
+ "s7594076cbd": "failed",
+ "@s7594076cbd": {
+  "description": "fi: epäonnistui",
+  "x-where": "media/sonos.dart:50"
+ },
+ "s01c48d363e": "Sonos not reachable",
+ "@s01c48d363e": {
+  "description": "fi: Sonokseen ei saatu yhteyttä",
+  "x-where": "media/sonos.dart:54"
+ },
+ "sc49795d7d1": "not a Sonos device",
+ "@sc49795d7d1": {
+  "description": "fi: ei Sonos-laite",
+  "x-where": "media/sonos.dart:76"
+ },
+ "s89541675fe": "Line-in",
+ "@s89541675fe": {
+  "description": "fi: Linjasisääntulo",
+  "x-where": "media/sonos.dart:152"
+ },
+ "sdd6a5ac9b8": "Sonos has no channels",
+ "@sdd6a5ac9b8": {
+  "description": "fi: Sonoksessa ei ole kanavia",
+  "x-where": "media/sonos.dart:211"
  },
  "sbd92a41506": "A Chromecast cannot be switched on remotely",
  "@sbd92a41506": {
@@ -99,6 +194,46 @@
  "@sd8167370bc": {
   "description": "fi: Mitään ei toisteta",
   "x-where": "media/cast.dart:281"
+ },
+ "s0249d39100": "pairing needed",
+ "@s0249d39100": {
+  "description": "fi: paritus tarvitaan",
+  "x-where": "media/android_tv.dart:162"
+ },
+ "se5b2692112": "TV not reachable",
+ "@se5b2692112": {
+  "description": "fi: televisioon ei saatu yhteyttä",
+  "x-where": "media/android_tv.dart:164"
+ },
+ "s536792efd0": "Wrong code",
+ "@s536792efd0": {
+  "description": "fi: Väärä koodi",
+  "x-where": "media/android_tv.dart:200"
+ },
+ "s4a67144434": "pairing did not start",
+ "@s4a67144434": {
+  "description": "fi: paritus ei alkanut",
+  "x-where": "media/android_tv.dart:238"
+ },
+ "s3f514c9aa2": "The code has 6 characters (0–9, A–F)",
+ "@s3f514c9aa2": {
+  "description": "fi: Koodissa on 6 merkkiä (0–9, A–F)",
+  "x-where": "media/android_tv.dart:246"
+ },
+ "sb3712c846c": "Pair the Android TV first (code on the TV)",
+ "@sb3712c846c": {
+  "description": "fi: Android TV pitää parittaa (koodi televisiosta)",
+  "x-where": "media/android_tv.dart:360"
+ },
+ "sc7cbbc343d": "The Android TV refused – pairing needed",
+ "@sc7cbbc343d": {
+  "description": "fi: Android TV ei hyväksynyt yhteyttä – paritus tarvitaan",
+  "x-where": "media/android_tv.dart:383"
+ },
+ "s85bb00e885": "The TV does not report volume",
+ "@s85bb00e885": {
+  "description": "fi: Televisio ei kerro äänenvoimakkuutta",
+  "x-where": "media/android_tv.dart:458"
  },
  "sd42552b5c1": "The TV refused – allow Molaplan in the prompt on the TV",
  "@sd42552b5c1": {
@@ -128,242 +263,332 @@
  "s97c684e038": "Chromecast / Google TV / Android TV (Cast)",
  "@s97c684e038": {
   "description": "fi: Chromecast / Google TV / Android TV (Cast)",
-  "x-where": "media/media_driver.dart:17"
+  "x-where": "media/media_driver.dart:21"
  },
  "s66c82f9d98": "TV / Chromecast (built-in integration)",
  "@s66c82f9d98": {
   "description": "fi: Televisio / Chromecast (oma integraatio)",
-  "x-where": "media/media_driver.dart:64"
+  "x-where": "media/media_driver.dart:74"
  },
  "s1c9df5579f": "Brand",
  "@s1c9df5579f": {
   "description": "fi: Merkki",
-  "x-where": "media/media_driver.dart:70"
+  "x-where": "media/media_driver.dart:80"
  },
- "s406f4e67a2": "Android TVs and Google TVs are controlled over Cast (Chromecast built-in).",
- "@s406f4e67a2": {
-  "description": "fi: Android TV:t ja Google TV:t ohjataan Cast-yhteydellä (Chromecast built-in).",
-  "x-where": "media/media_driver.dart:70"
+ "s22e7286858": "Android TVs and Google TVs: Cast (status, volume, playback) or the remote protocol (keys, channels, power; pairing code).",
+ "@s22e7286858": {
+  "description": "fi: Android TV:t ja Google TV:t: Cast (tila, ääni, toisto) tai kaukosäädin-yhteys (näppäimet, kanavat, virta; paritus koodil",
+  "x-where": "media/media_driver.dart:80"
  },
  "s178e07f06b": "IP address",
  "@s178e07f06b": {
   "description": "fi: IP-osoite",
-  "x-where": "media/media_driver.dart:81"
+  "x-where": "media/media_driver.dart:93"
  },
  "s678a1d0824": "The device IP address (router device list). Reserve a fixed address in the router.",
  "@s678a1d0824": {
   "description": "fi: Laitteen IP-osoite (reitittimen laitelistasta). Anna reitittimessä kiinteä osoite.",
-  "x-where": "media/media_driver.dart:81"
+  "x-where": "media/media_driver.dart:93"
  },
  "sc9db95d473": "MAC address (power on)",
  "@sc9db95d473": {
   "description": "fi: MAC-osoite (käynnistys)",
-  "x-where": "media/media_driver.dart:89"
+  "x-where": "media/media_driver.dart:101"
  },
  "s179f2d4764": "For Wake-on-LAN power on. Usually filled in automatically; enable \"Turn on via network\" on the TV.",
  "@s179f2d4764": {
   "description": "fi: Wake-on-LAN-käynnistykseen. Täyttyy yleensä itse; TV:n asetuksissa \"Käynnistä verkon kautta\" päälle.",
-  "x-where": "media/media_driver.dart:89"
+  "x-where": "media/media_driver.dart:101"
  },
  "s8480eec244": "JointSPACE version (Philips)",
  "@s8480eec244": {
   "description": "fi: JointSPACE-versio (Philips)",
-  "x-where": "media/media_driver.dart:98"
+  "x-where": "media/media_driver.dart:110"
  },
  "sa592a45cc0": "Detected automatically: 6 = Android TVs (https 1926), 1 = older sets (http 1925).",
  "@sa592a45cc0": {
   "description": "fi: Tunnistetaan itse: 6 = Android-TV:t (https 1926), 1 = vanhat (http 1925).",
-  "x-where": "media/media_driver.dart:98"
+  "x-where": "media/media_driver.dart:110"
  },
  "s0f34d752b2": "Pairing id (Philips)",
  "@s0f34d752b2": {
   "description": "fi: Paritustunnus (Philips)",
-  "x-where": "media/media_driver.dart:107"
+  "x-where": "media/media_driver.dart:119"
  },
  "s55e83ab0e3": "Created during pairing (PIN code from the TV).",
  "@s55e83ab0e3": {
   "description": "fi: Syntyy parituksessa (PIN-koodi televisiosta).",
-  "x-where": "media/media_driver.dart:107"
+  "x-where": "media/media_driver.dart:119"
  },
  "s090082b8ce": "Pairing key (Philips)",
  "@s090082b8ce": {
   "description": "fi: Paritusavain (Philips)",
-  "x-where": "media/media_driver.dart:115"
+  "x-where": "media/media_driver.dart:127"
  },
  "s74b0fa8af8": "Created during pairing. Stored on this device only.",
  "@s74b0fa8af8": {
   "description": "fi: Syntyy parituksessa. Tallentuu vain tälle laitteelle.",
-  "x-where": "media/media_driver.dart:115"
+  "x-where": "media/media_driver.dart:127"
  },
  "sf6035d1731": "Access token (Samsung)",
  "@sf6035d1731": {
   "description": "fi: Yhteystunnus (Samsung)",
-  "x-where": "media/media_driver.dart:124"
+  "x-where": "media/media_driver.dart:136"
  },
  "scee449b738": "Samsung returns it when you allow the connection on the TV. Stored on this device only.",
  "@scee449b738": {
   "description": "fi: Samsung antaa tunnuksen, kun hyväksyt yhteyden televisiosta. Tallentuu vain tälle laitteelle.",
-  "x-where": "media/media_driver.dart:124"
+  "x-where": "media/media_driver.dart:136"
  },
  "s565b6ac234": "Client key (LG)",
  "@s565b6ac234": {
   "description": "fi: Asiakasavain (LG)",
-  "x-where": "media/media_driver.dart:133"
+  "x-where": "media/media_driver.dart:145"
  },
  "s8b34eb0ec5": "LG returns it when you accept the connection on the TV. Stored on this device only.",
  "@s8b34eb0ec5": {
   "description": "fi: LG antaa avaimen, kun hyväksyt yhteyden televisiosta. Tallentuu vain tälle laitteelle.",
-  "x-where": "media/media_driver.dart:133"
+  "x-where": "media/media_driver.dart:145"
+ },
+ "sa14b4d0a62": "Client certificate (Android TV)",
+ "@sa14b4d0a62": {
+  "description": "fi: Asiakasvarmenne (Android TV)",
+  "x-where": "media/media_driver.dart:154"
+ },
+ "sb6b8ce62e4": "Molaplan''s own certificate that the TV accepted during pairing. Stored on this device only.",
+ "@sb6b8ce62e4": {
+  "description": "fi: Molaplanin oma varmenne, jonka televisio hyväksyi parituksessa. Tallentuu vain tälle laitteelle.",
+  "x-where": "media/media_driver.dart:154"
+ },
+ "s55c0154762": "Client key (Android TV)",
+ "@s55c0154762": {
+  "description": "fi: Asiakasavain (Android TV)",
+  "x-where": "media/media_driver.dart:163"
+ },
+ "s49678d6bba": "The certificate''s private key. Stored on this device only.",
+ "@s49678d6bba": {
+  "description": "fi: Varmenteen yksityinen avain. Tallentuu vain tälle laitteelle.",
+  "x-where": "media/media_driver.dart:163"
  },
  "sbdf670977b": "Reading",
  "@sbdf670977b": {
   "description": "fi: Lukema",
-  "x-where": "media/media_driver.dart:144"
+  "x-where": "media/media_driver.dart:174"
  },
  "s4cd6848cf8": "A Chromecast has no power state; \"On\" is then always 0.",
  "@s4cd6848cf8": {
   "description": "fi: Chromecast ei kerro virtatilaa; \"Päällä\" on silloin aina 0.",
-  "x-where": "media/media_driver.dart:144"
+  "x-where": "media/media_driver.dart:174"
  },
  "sb545795f0a": "Status (text)",
  "@sb545795f0a": {
   "description": "fi: Tila (teksti)",
-  "x-where": "media/media_driver.dart:151"
+  "x-where": "media/media_driver.dart:181"
  },
  "s7c7098854f": "On (1/0)",
  "@s7c7098854f": {
   "description": "fi: Päällä (1/0)",
-  "x-where": "media/media_driver.dart:152"
+  "x-where": "media/media_driver.dart:182"
  },
  "s1d28a837cb": "Volume (%)",
  "@s1d28a837cb": {
   "description": "fi: Äänenvoimakkuus (%)",
-  "x-where": "media/media_driver.dart:153"
+  "x-where": "media/media_driver.dart:183"
  },
  "sa13c4f1248": "Muted (1/0)",
  "@sa13c4f1248": {
   "description": "fi: Mykistetty (1/0)",
-  "x-where": "media/media_driver.dart:154"
+  "x-where": "media/media_driver.dart:184"
  },
  "sef1842c9c5": "App",
  "@sef1842c9c5": {
   "description": "fi: Sovellus",
-  "x-where": "media/media_driver.dart:155"
+  "x-where": "media/media_driver.dart:185"
  },
  "sc5c36c50e6": "Now playing",
  "@sc5c36c50e6": {
   "description": "fi: Toistettava",
-  "x-where": "media/media_driver.dart:156"
+  "x-where": "media/media_driver.dart:186"
  },
  "saded6a492a": "Playing (1/0)",
  "@saded6a492a": {
   "description": "fi: Toistaa (1/0)",
-  "x-where": "media/media_driver.dart:157"
+  "x-where": "media/media_driver.dart:187"
  },
  "s5bed8bff00": "Command",
  "@s5bed8bff00": {
   "description": "fi: Komento",
-  "x-where": "media/media_driver.dart:165"
+  "x-where": "media/media_driver.dart:195"
  },
  "s56ada71b4a": "The value comes from the toggle or slider.",
  "@s56ada71b4a": {
   "description": "fi: Arvo tulee kytkimestä tai liukusäätimestä.",
-  "x-where": "media/media_driver.dart:165"
+  "x-where": "media/media_driver.dart:195"
  },
  "s5d41165c1a": "Power on/off (value 1/0)",
  "@s5d41165c1a": {
   "description": "fi: Virta päälle/pois (arvo 1/0)",
-  "x-where": "media/media_driver.dart:172"
+  "x-where": "media/media_driver.dart:202"
  },
  "s7df609092d": "Volume (value 0–100)",
  "@s7df609092d": {
   "description": "fi: Äänenvoimakkuus (arvo 0–100)",
-  "x-where": "media/media_driver.dart:173"
+  "x-where": "media/media_driver.dart:203"
  },
  "s7ce360cc79": "Mute (value 1/0)",
  "@s7ce360cc79": {
   "description": "fi: Mykistys (arvo 1/0)",
-  "x-where": "media/media_driver.dart:174"
+  "x-where": "media/media_driver.dart:204"
  },
  "sdce14191c7": "Key",
  "@sdce14191c7": {
   "description": "fi: Näppäin",
-  "x-where": "media/media_driver.dart:175"
+  "x-where": "media/media_driver.dart:205"
+ },
+ "sbefd940b7e": "Channel (value = number)",
+ "@sbefd940b7e": {
+  "description": "fi: Kanava (arvo = numero)",
+  "x-where": "media/media_driver.dart:206"
+ },
+ "s8028880bf9": "Open app (Android TV, value = link)",
+ "@s8028880bf9": {
+  "description": "fi: Avaa sovellus (Android TV, arvo = linkki)",
+  "x-where": "media/media_driver.dart:207"
  },
  "sc91823aedb": "Only for the \"Key\" command.",
  "@sc91823aedb": {
   "description": "fi: Vain komennolle \"Näppäin\".",
-  "x-where": "media/media_driver.dart:181"
+  "x-where": "media/media_driver.dart:213"
+ },
+ "s6c3e76828b": "Next",
+ "@s6c3e76828b": {
+  "description": "fi: Seuraava",
+  "x-where": "media/media_driver.dart:240"
+ },
+ "sd61993184d": "Previous",
+ "@sd61993184d": {
+  "description": "fi: Edellinen",
+  "x-where": "media/media_driver.dart:241"
+ },
+ "sd46979cb3c": "Mute on/off",
+ "@sd46979cb3c": {
+  "description": "fi: Mykistys päälle/pois",
+  "x-where": "media/media_driver.dart:242"
+ },
+ "s9c350b0f5e": "Channel +",
+ "@s9c350b0f5e": {
+  "description": "fi: Kanava +",
+  "x-where": "media/media_driver.dart:243"
+ },
+ "s66136ee35f": "Channel −",
+ "@s66136ee35f": {
+  "description": "fi: Kanava −",
+  "x-where": "media/media_driver.dart:244"
+ },
+ "sf936d0b01d": "Up",
+ "@sf936d0b01d": {
+  "description": "fi: Ylös",
+  "x-where": "media/media_driver.dart:245"
+ },
+ "s09e8d49ceb": "Down",
+ "@s09e8d49ceb": {
+  "description": "fi: Alas",
+  "x-where": "media/media_driver.dart:246"
+ },
+ "s34e61d8a2f": "Left",
+ "@s34e61d8a2f": {
+  "description": "fi: Vasemmalle",
+  "x-where": "media/media_driver.dart:247"
+ },
+ "s365a1e8626": "Right",
+ "@s365a1e8626": {
+  "description": "fi: Oikealle",
+  "x-where": "media/media_driver.dart:248"
+ },
+ "s183ed60009": "OK",
+ "@s183ed60009": {
+  "description": "fi: OK",
+  "x-where": "media/media_driver.dart:249"
+ },
+ "s8cbc3f33aa": "Power key",
+ "@s8cbc3f33aa": {
+  "description": "fi: Virtanäppäin",
+  "x-where": "media/media_driver.dart:250"
  },
  "sdac8f8b638": "Play / pause",
  "@sdac8f8b638": {
   "description": "fi: Toista / tauko",
-  "x-where": "media/media_driver.dart:188"
+  "x-where": "media/media_driver.dart:251"
  },
  "seab0493fde": "Play",
  "@seab0493fde": {
   "description": "fi: Toista",
-  "x-where": "media/media_driver.dart:189"
+  "x-where": "media/media_driver.dart:252"
  },
  "sef0810bb79": "Pause",
  "@sef0810bb79": {
   "description": "fi: Tauko",
-  "x-where": "media/media_driver.dart:190"
+  "x-where": "media/media_driver.dart:253"
  },
  "s6fe2320f3d": "Stop",
  "@s6fe2320f3d": {
   "description": "fi: Pysäytä",
-  "x-where": "media/media_driver.dart:191"
+  "x-where": "media/media_driver.dart:254"
  },
  "s476a29a514": "Volume up",
  "@s476a29a514": {
   "description": "fi: Ääni kovemmalle",
-  "x-where": "media/media_driver.dart:192"
+  "x-where": "media/media_driver.dart:255"
  },
  "s1cafda29fd": "Volume down",
  "@s1cafda29fd": {
   "description": "fi: Ääni hiljemmalle",
-  "x-where": "media/media_driver.dart:193"
+  "x-where": "media/media_driver.dart:256"
  },
  "s9d9c84b3a8": "Home",
  "@s9d9c84b3a8": {
   "description": "fi: Kotinäkymä",
-  "x-where": "media/media_driver.dart:194"
+  "x-where": "media/media_driver.dart:257"
  },
  "scf7e14661c": "Back",
  "@scf7e14661c": {
   "description": "fi: Takaisin",
-  "x-where": "media/media_driver.dart:195"
+  "x-where": "media/media_driver.dart:258"
  },
  "s94e14089d6": "Volume missing",
  "@s94e14089d6": {
   "description": "fi: Äänenvoimakkuus puuttuu",
-  "x-where": "media/media_driver.dart:219"
+  "x-where": "media/media_driver.dart:282"
+ },
+ "s483f02b584": "Open app needs the Android TV remote connection",
+ "@s483f02b584": {
+  "description": "fi: Sovelluksen avaus toimii vain Android TV -yhteydellä",
+  "x-where": "media/media_driver.dart:294"
  },
  "s5d5363db20": "volume",
  "@s5d5363db20": {
   "description": "fi: ääni",
-  "x-where": "media/media_driver.dart:236"
+  "x-where": "media/media_driver.dart:307"
  },
  "s14252e6c3a": "status",
  "@s14252e6c3a": {
   "description": "fi: tila",
-  "x-where": "media/media_driver.dart:258"
+  "x-where": "media/media_driver.dart:329"
  },
  "s58332642fb": "power",
  "@s58332642fb": {
   "description": "fi: virta",
-  "x-where": "media/media_driver.dart:267"
+  "x-where": "media/media_driver.dart:338"
  },
  "s449ab0a31f": "volume",
  "@s449ab0a31f": {
   "description": "fi: äänenvoimakkuus",
-  "x-where": "media/media_driver.dart:279"
+  "x-where": "media/media_driver.dart:350"
  },
  "s3a12232f33": "mute",
  "@s3a12232f33": {
   "description": "fi: mykistys",
-  "x-where": "media/media_driver.dart:296"
+  "x-where": "media/media_driver.dart:367"
  },
  "s46a1321d85": "The TV refused the connection",
  "@s46a1321d85": {
@@ -374,6 +599,26 @@
  "@sbfbb3d52b3": {
   "description": "fi: Hyväksy yhteys televisiosta ja yritä uudelleen",
   "x-where": "media/lg_webos.dart:108"
+ },
+ "s9df7f078c6": "Roku not reachable",
+ "@s9df7f078c6": {
+  "description": "fi: Rokuun ei saatu yhteyttä",
+  "x-where": "media/roku.dart:77"
+ },
+ "s0dc1e158bc": "Roku blocks control: Settings → System → Advanced system settings → Control by mobile apps → Enabled",
+ "@s0dc1e158bc": {
+  "description": "fi: Roku estää ohjauksen: Asetukset → Järjestelmä → Järjestelmän lisäasetukset → Ohjaus mobiilisovelluksilla → Käytössä",
+  "x-where": "media/roku.dart:83"
+ },
+ "s58d9f3b1b1": "not a Roku device",
+ "@s58d9f3b1b1": {
+  "description": "fi: ei Roku-laite",
+  "x-where": "media/roku.dart:108"
+ },
+ "sd44e043ccc": "Roku has no absolute volume – use volume +/−",
+ "@sd44e043ccc": {
+  "description": "fi: Roku ei tue äänenvoimakkuuden asettamista – käytä ääni +/− -painikkeita",
+  "x-where": "media/roku.dart:152"
  },
  "sf2993f0346": "The TV needs pairing",
  "@sf2993f0346": {
@@ -413,22 +658,22 @@
  "scc0cccf89d": "Off",
  "@scc0cccf89d": {
   "description": "fi: Pois päältä",
-  "x-where": "media/media_model.dart:28"
+  "x-where": "media/media_model.dart:29"
  },
  "s4cbe24240f": "On",
  "@s4cbe24240f": {
   "description": "fi: Päällä",
-  "x-where": "media/media_model.dart:30"
+  "x-where": "media/media_model.dart:31"
  },
  "s4e1ea0bc65": "Idle",
  "@s4e1ea0bc65": {
   "description": "fi: Valmiina",
-  "x-where": "media/media_model.dart:30"
+  "x-where": "media/media_model.dart:31"
  },
- "se5b2692112": "TV not reachable",
- "@se5b2692112": {
-  "description": "fi: televisioon ei saatu yhteyttä",
-  "x-where": "media/media_model.dart:120"
+ "sbeb26f2b64": "Channel number missing",
+ "@sbeb26f2b64": {
+  "description": "fi: Kanavan numero puuttuu",
+  "x-where": "media/media_model.dart:113"
  },
  "s095ca83913": "{p0} tiles added",
  "@s095ca83913": {
@@ -1893,11 +2138,6 @@
   "description": "fi: Ruudun nimi",
   "x-where": "ui/template_gallery.dart:558"
  },
- "s183ed60009": "OK",
- "@s183ed60009": {
-  "description": "fi: OK",
-  "x-where": "ui/template_gallery.dart:570"
- },
  "s1ea8fe913b": "Address: {p0}",
  "@s1ea8fe913b": {
   "description": "fi: Osoite: {p0}",
@@ -2231,9 +2471,9 @@
   "description": "fi: Mikä televisio tai laite?",
   "x-where": "ui/template_gallery.dart:1575"
  },
- "s43a563c3a0": "Status, power, volume, mute and playback as tiles and for automations – straight over the home network, no cloud and no Home Assistant. Android TV and Google TV: pick Chromecast.",
- "@s43a563c3a0": {
-  "description": "fi: Tila, virta, äänenvoimakkuus, mykistys ja toisto ruutuihin ja automaatioihin – suoraan kotiverkossa, ilman pilveä ja ilm",
+ "s512db00a17": "Status, power, volume, mute, channels and playback as tiles and for automations – straight over the home network, no cloud and no Home Assistant. Android TV and Google TV: Chromecast (status and volume) or the remote (keys, channels, power).",
+ "@s512db00a17": {
+  "description": "fi: Tila, virta, äänenvoimakkuus, mykistys, kanavat ja toisto ruutuihin ja automaatioihin – suoraan kotiverkossa, ilman pilv",
   "x-where": "ui/template_gallery.dart:1575"
  },
  "sca7e088857": "Electricity price",
@@ -4349,57 +4589,57 @@
  "s3cd1e146e8": "A shortcut runs the command directly from the home screen.",
  "@s3cd1e146e8": {
   "description": "fi: Pikakuvake suorittaa komennon suoraan aloitusnäytöltä.",
-  "x-where": "ui/home_launcher_ui.dart:43"
+  "x-where": "ui/home_launcher_ui.dart:47"
  },
  "s1c2a0377e4": "Status (widget)",
  "@s1c2a0377e4": {
   "description": "fi: Tila (widget)",
-  "x-where": "ui/home_launcher_ui.dart:55"
+  "x-where": "ui/home_launcher_ui.dart:57"
  },
  "s54512f5660": "A widget shows the tile status on the home screen.",
  "@s54512f5660": {
   "description": "fi: Widget näyttää laatan tilan aloitusnäytöllä.",
-  "x-where": "ui/home_launcher_ui.dart:57"
+  "x-where": "ui/home_launcher_ui.dart:59"
  },
  "s517f5701fd": "This tile gets a status widget that shows the value on the home screen.",
  "@s517f5701fd": {
   "description": "fi: Tälle laatalle lisätään tilawidget, joka näyttää arvon aloitusnäytöllä.",
-  "x-where": "ui/home_launcher_ui.dart:66"
+  "x-where": "ui/home_launcher_ui.dart:71"
  },
  "sd069985866": "Confirm before running",
  "@sd069985866": {
   "description": "fi: Vahvista ennen suoritusta",
-  "x-where": "ui/home_launcher_ui.dart:79"
+  "x-where": "ui/home_launcher_ui.dart:83"
  },
  "s5775841848": "Recommended for dangerous commands, such as turning an alarm off.",
  "@s5775841848": {
   "description": "fi: Suositellaan vaarallisille komennoille, kuten hälytyksen pois päältä.",
-  "x-where": "ui/home_launcher_ui.dart:86"
+  "x-where": "ui/home_launcher_ui.dart:85"
  },
  "sf8e4a8294a": "The PIN is not stored in the shortcut. If the device requires a PIN, the app will ask for it.",
  "@sf8e4a8294a": {
   "description": "fi: PIN-koodia ei tallenneta pikakuvakkeeseen. Jos laite vaatii PIN-koodin, se kysytään sovelluksessa.",
-  "x-where": "ui/home_launcher_ui.dart:94"
+  "x-where": "ui/home_launcher_ui.dart:93"
  },
  "s5eaef9c7e8": "Shortcut added. Confirm it on the home screen.",
  "@s5eaef9c7e8": {
   "description": "fi: Pikakuvake lisätty. Vahvista se aloitusnäytöllä.",
-  "x-where": "ui/home_launcher_ui.dart:129"
+  "x-where": "ui/home_launcher_ui.dart:125"
  },
  "s526d406d59": "Widget added. Confirm it on the home screen.",
  "@s526d406d59": {
   "description": "fi: Widget lisätty. Vahvista se aloitusnäytöllä.",
-  "x-where": "ui/home_launcher_ui.dart:134"
+  "x-where": "ui/home_launcher_ui.dart:130"
  },
  "s31c3d63c1e": "The home screen does not support this, or the add was cancelled.",
  "@s31c3d63c1e": {
   "description": "fi: Aloitusnäyttö ei tue tätä, tai lisäys peruutettiin.",
-  "x-where": "ui/home_launcher_ui.dart:143"
+  "x-where": "ui/home_launcher_ui.dart:135"
  },
  "sa37e535e0f": "Tile not found",
  "@sa37e535e0f": {
   "description": "fi: Laattaa ei löytynyt",
-  "x-where": "ui/home_launcher_ui.dart:171"
+  "x-where": "ui/home_launcher_ui.dart:157"
  },
  "sa0bd9ad5b1": "Example camera – add your own with Add device",
  "@sa0bd9ad5b1": {
@@ -5487,11 +5727,6 @@
   "description": "fi: Ota käyttöön",
   "x-where": "ui/smart_heating_pages.dart:1244"
  },
- "s6c3e76828b": "Next",
- "@s6c3e76828b": {
-  "description": "fi: Seuraava",
-  "x-where": "ui/smart_heating_pages.dart:1244"
- },
  "sba1684ff6c": "not yet",
  "@sba1684ff6c": {
   "description": "fi: ei vielä",
@@ -6122,11 +6357,6 @@
  "@s2d983e951b": {
   "description": "fi: Muuten",
   "x-where": "ui/automation_pages.dart:1340"
- },
- "sf936d0b01d": "Up",
- "@sf936d0b01d": {
-  "description": "fi: Ylös",
-  "x-where": "ui/automation_pages.dart:1362"
  },
  "s2c7a2bbac1": "New script",
  "@s2c7a2bbac1": {
@@ -10009,55 +10239,70 @@
   "description": "fi: Mediasoittimet",
   "x-where": "ui/ha_picker.dart:27"
  },
+ "s5bfb23a680": "Robot vacuums",
+ "@s5bfb23a680": {
+  "description": "fi: Robotti-imurit",
+  "x-where": "ui/ha_picker.dart:28"
+ },
+ "sc9735275b2": "Valves",
+ "@sc9735275b2": {
+  "description": "fi: Venttiilit",
+  "x-where": "ui/ha_picker.dart:29"
+ },
+ "s28cdff43bf": "Humidifiers",
+ "@s28cdff43bf": {
+  "description": "fi: Ilmankostuttimet",
+  "x-where": "ui/ha_picker.dart:30"
+ },
  "sbcb95e1e78": "The token is not accepted. Create a new one in Home Assistant.",
  "@sbcb95e1e78": {
   "description": "fi: Tunnus (token) ei kelpaa. Luo uusi Home Assistantissa.",
-  "x-where": "ui/ha_picker.dart:84"
+  "x-where": "ui/ha_picker.dart:87"
  },
  "s0b80dc2642": "Could not reach Home Assistant. Check the address.",
  "@s0b80dc2642": {
   "description": "fi: Home Assistantiin ei saatu yhteyttä. Tarkista osoite.",
-  "x-where": "ui/ha_picker.dart:89"
+  "x-where": "ui/ha_picker.dart:92"
  },
  "sf32b7f15d8": "cameras",
  "@sf32b7f15d8": {
   "description": "fi: kamerat",
-  "x-where": "ui/ha_picker.dart:121"
+  "x-where": "ui/ha_picker.dart:124"
  },
  "sa7a829cefb": "Pick Home Assistant devices",
  "@sa7a829cefb": {
   "description": "fi: Valitse Home Assistantin laitteet",
-  "x-where": "ui/ha_picker.dart:174"
+  "x-where": "ui/ha_picker.dart:177"
  },
  "sefdf8e3316": "Loading devices…",
  "@sefdf8e3316": {
   "description": "fi: Haetaan laitteita…",
-  "x-where": "ui/ha_picker.dart:196"
+  "x-where": "ui/ha_picker.dart:199"
  },
  "s26583a1933": "One view per room",
  "@s26583a1933": {
   "description": "fi: Huoneittain omiin näkymiin",
-  "x-where": "ui/ha_picker.dart:217"
+  "x-where": "ui/ha_picker.dart:220"
  },
  "sb3e6b54bce": "Search by name or id",
  "@sb3e6b54bce": {
   "description": "fi: Hae nimellä tai tunnuksella",
-  "x-where": "ui/ha_picker.dart:250"
+  "x-where": "ui/ha_picker.dart:253"
  },
  "safedc10c48": "All rooms",
  "@safedc10c48": {
   "description": "fi: Kaikki huoneet",
-  "x-where": "ui/ha_picker.dart:267"
+  "x-where": "ui/ha_picker.dart:270"
  },
  "s407f3f7a0c": "No room",
  "@s407f3f7a0c": {
   "description": "fi: Ei huonetta",
-  "x-where": "ui/ha_picker.dart:271"
+  "x-where": "ui/ha_picker.dart:274"
  },
  "s140aba8cd7": "{p0} lights are Philips Hue lights",
  "@s140aba8cd7": {
   "description": "fi: {p0} valoa on Philips Hue -valoja",
-  "x-where": "ui/ha_picker.dart:304",
+  "x-where": "ui/ha_picker.dart:307",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10067,22 +10312,22 @@
  "s16aee2aa30": "Directly through the Hue Bridge they respond faster and work without Home Assistant.",
  "@s16aee2aa30": {
   "description": "fi: Suoraan Hue-sillan kautta ne toimivat nopeammin ja ilman Home Assistantia.",
-  "x-where": "ui/ha_picker.dart:311"
+  "x-where": "ui/ha_picker.dart:314"
  },
  "s3816288db1": "Add Hue Bridge",
  "@s3816288db1": {
   "description": "fi: Lisää Hue-silta",
-  "x-where": "ui/ha_picker.dart:328"
+  "x-where": "ui/ha_picker.dart:331"
  },
  "sa765c9294a": "Show all",
  "@sa765c9294a": {
   "description": "fi: Näytä kaikki",
-  "x-where": "ui/ha_picker.dart:337"
+  "x-where": "ui/ha_picker.dart:340"
  },
  "sdb088f47a8": "{p0} technical items hidden (diagnostics, configuration, updates)",
  "@sdb088f47a8": {
   "description": "fi: {p0} teknistä kohdetta piilotettu (diagnostiikka, asetukset, päivitykset)",
-  "x-where": "ui/ha_picker.dart:341",
+  "x-where": "ui/ha_picker.dart:344",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10092,17 +10337,17 @@
  "s3ee8d0a5e3": "Rooms could not be read – showing devices without rooms.",
  "@s3ee8d0a5e3": {
   "description": "fi: Huoneita ei saatu luettua – näytetään laitteet ilman huoneita.",
-  "x-where": "ui/ha_picker.dart:352"
+  "x-where": "ui/ha_picker.dart:355"
  },
  "sf55fca7a32": "No matches",
  "@sf55fca7a32": {
   "description": "fi: Ei osumia",
-  "x-where": "ui/ha_picker.dart:363"
+  "x-where": "ui/ha_picker.dart:366"
  },
  "s78cdce874e": "already added",
  "@s78cdce874e": {
   "description": "fi: jo lisätty",
-  "x-where": "ui/ha_picker.dart:381"
+  "x-where": "ui/ha_picker.dart:384"
  },
  "sc80648d495": "Show Molaplan",
  "@sc80648d495": {
@@ -10695,12 +10940,12 @@
  "s02480e4c13": "Measurements",
  "@s02480e4c13": {
   "description": "fi: Mittaukset",
-  "x-where": "core/capabilities.dart:203"
+  "x-where": "core/capabilities.dart:205"
  },
  "sd1c778324e": "Controls",
  "@sd1c778324e": {
   "description": "fi: Ohjaukset",
-  "x-where": "core/capabilities.dart:204"
+  "x-where": "core/capabilities.dart:206"
  },
  "sc1e35d5171": "The price service",
  "@sc1e35d5171": {
@@ -13418,10 +13663,20 @@
   "description": "fi: disarmed=Pois;armed_away=Päällä;armed_home=Kotona;armed_night=Yö;triggered=HÄLYTYS;arming=Kytkeytyy",
   "x-where": "drivers/ha_catalog.dart:350"
  },
+ "s73720edff0": "playing=Playing;paused=Paused;idle=Idle;on=On;off=Off;standby=Standby;buffering=Buffering;unavailable=Unavailable",
+ "@s73720edff0": {
+  "description": "fi: playing=Toistaa;paused=Tauolla;idle=Valmiina;on=Päällä;off=Pois;standby=Valmiustila;buffering=Latautuu;unavailable=Ei yh",
+  "x-where": "drivers/ha_catalog.dart:418"
+ },
+ "s2df1d5947c": "cleaning=Cleaning;docked=Docked;returning=Returning;idle=Idle;paused=Paused;error=ERROR",
+ "@s2df1d5947c": {
+  "description": "fi: cleaning=Imuroi;docked=Telakassa;returning=Palaa telakkaan;idle=Valmiina;paused=Tauolla;error=VIRHE",
+  "x-where": "drivers/ha_catalog.dart:464"
+ },
  "s5b1e227dc4": "on=On;off=Off",
  "@s5b1e227dc4": {
   "description": "fi: on=Päällä;off=Pois",
-  "x-where": "drivers/ha_catalog.dart:426"
+  "x-where": "drivers/ha_catalog.dart:528"
  },
  "s2525f9a4f5": "Finland is one area (FI). In Sweden and Norway it depends on where you live.",
  "@s2525f9a4f5": {
@@ -15921,7 +16176,7 @@
  "s65320ede20": "Calm",
  "@s65320ede20": {
   "description": "fi: Rauhallinen",
-  "x-where": "state/home_launcher.dart:114"
+  "x-where": "state/home_launcher.dart:101"
  },
  "s7e5f6a29e3": "Good night",
  "@s7e5f6a29e3": {

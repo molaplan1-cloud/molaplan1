@@ -68,17 +68,105 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s0ec3e3e11d => 'Visas på TV-skärmen i ungefär en minut.';
 
   @override
+  String get s11d9226341 => 'Android TV / Google TV (fjärrkontroll)';
+
+  @override
+  String get s0992ee68bf =>
+      'Sony, Philips, TCL, Xiaomi, Chromecast med Google TV ...: ström, volym, mute, kanaler, piltangenter och den öppna appen. Par med en kod som visas på TV.';
+
+  @override
+  String get s8a14ae9518 =>
+      'TV: Inställningar → Nätverk & Internet → (nätverk) → IP-adress. Eller Google Home app → enhet → Enhetsinformation.';
+
+  @override
+  String get s714e6f6143 =>
+      'TV:n visar en sexkaraktärskod (siffrorna och bokstäverna A-F) – skriv den här.';
+
+  @override
+  String get sd92171df4d => 'Visas på TV-skärmen under parning.';
+
+  @override
+  String get s6db078dbe3 => 'Sonos';
+
+  @override
+  String get s8f7a93b1ea =>
+      'Sonos högtalare och soundbars: volym, mute, play/pause, next and now play. Straight over the home network, no account.';
+
+  @override
+  String get s1cf843ef3e =>
+      'Sonos app → Inställningar → System → Om mitt system → IP-adress.';
+
+  @override
+  String get s01d549ef4d => 'Roku';
+
+  @override
+  String get s406bfe2259 =>
+      'Roku-spelare och Roku-TV: nycklar, volym +/-, mute, play/pause, den öppna appen; på Roku TV-apparater också kraft och kanaler.';
+
+  @override
+  String get sb4f88e9b1b =>
+      'Roku: Inställningar → Nätverk → Om → IP-adress. Tillåt kontroll: Inställningar → System → Avancerade systeminställningar → Kontroll av mobilappar → Enabled.';
+
+  @override
   String get sd3b85fadc0 => 'TV och Chromecast';
 
   @override
-  String get sb34763a1f3 =>
-      'Samsung, LG, Philips, Android TV / Google TV och Chromecast: ström, volym och uppspelning.';
+  String get sebd2ee78b0 =>
+      'Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos och Roku: ström, volym, kanaler och uppspelning.';
+
+  @override
+  String get s50eb745165 => '/MediaRenderer/RenderingControl/Control';
+
+  @override
+  String get s9e4f134628 => '/MediaRenderer/AVTransport/Control';
+
+  @override
+  String get s77251a38d3 => '/ZoneGroupTopology/Control';
+
+  @override
+  String get s7594076cbd => 'Misslyckades';
+
+  @override
+  String get s01c48d363e => 'Sonos kan inte nås';
+
+  @override
+  String get sc49795d7d1 => 'Inte en Sonos-enhet';
+
+  @override
+  String get s89541675fe => 'Line-in';
+
+  @override
+  String get sdd6a5ac9b8 => 'Sonos har inga kanaler';
 
   @override
   String get sbd92a41506 => 'En Chromecast kan inte bytas på distans';
 
   @override
   String get sd8167370bc => 'Ingenting spelar';
+
+  @override
+  String get s0249d39100 => 'parning behövs';
+
+  @override
+  String get se5b2692112 => 'TV kan inte nås';
+
+  @override
+  String get s536792efd0 => 'Felkod';
+
+  @override
+  String get s4a67144434 => 'parning startade inte';
+
+  @override
+  String get s3f514c9aa2 => 'Koden har 6 tecken (0–9, A–F)';
+
+  @override
+  String get sb3712c846c => 'Par Android TV först (kod på TV)';
+
+  @override
+  String get sc7cbbc343d => 'Android TV vägrade – parning behövs';
+
+  @override
+  String get s85bb00e885 => 'TV:n rapporterar inte volymen';
 
   @override
   String get sd42552b5c1 => 'TV:n vägrade - låt Molaplan i snabben på TV:n';
@@ -106,8 +194,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s1c9df5579f => 'Märke';
 
   @override
-  String get s406f4e67a2 =>
-      'Android TV och Google TV kontrolleras över Cast (Chromecast inbyggd).';
+  String get s22e7286858 =>
+      'Android TV och Google TV: Cast (status, volym, uppspelning) eller fjärrprotokollet (nycklar, kanaler, ström; parningskod).';
 
   @override
   String get s178e07f06b => 'IP-adress';
@@ -158,6 +246,20 @@ class AppLocalizationsSv extends AppLocalizations {
       'LG returnerar det när du accepterar anslutningen på TV: n. lagrad på den här enheten endast.';
 
   @override
+  String get sa14b4d0a62 => 'Kundcertifikat (Android TV)';
+
+  @override
+  String get sb6b8ce62e4 =>
+      'Molaplans eget certifikat att TV:n accepterade under parning. lagras endast på den här enheten.';
+
+  @override
+  String get s55c0154762 => 'Klientnyckel (Android TV)';
+
+  @override
+  String get s49678d6bba =>
+      'Certifikatets privata nyckel. lagras endast på denna enhet.';
+
+  @override
   String get sbdf670977b => 'Läsa';
 
   @override
@@ -204,7 +306,46 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sdce14191c7 => 'Nyckeln';
 
   @override
+  String get sbefd940b7e => 'Kanal (värde = nummer)';
+
+  @override
+  String get s8028880bf9 => 'Öppen app (Android TV, värde = länk)';
+
+  @override
   String get sc91823aedb => 'Endast för kommandot \"Key\".';
+
+  @override
+  String get s6c3e76828b => 'Nästa';
+
+  @override
+  String get sd61993184d => 'Föregående';
+
+  @override
+  String get sd46979cb3c => 'Mute on/off';
+
+  @override
+  String get s9c350b0f5e => 'Kanal +';
+
+  @override
+  String get s66136ee35f => 'Kanal −';
+
+  @override
+  String get sf936d0b01d => 'Upp';
+
+  @override
+  String get s09e8d49ceb => 'Nedre';
+
+  @override
+  String get s34e61d8a2f => 'Vänster';
+
+  @override
+  String get s365a1e8626 => 'Rätt till rätta';
+
+  @override
+  String get s183ed60009 => 'OK';
+
+  @override
+  String get s8cbc3f33aa => 'Power Key';
 
   @override
   String get sdac8f8b638 => 'Spela / paus';
@@ -234,6 +375,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s94e14089d6 => 'Volym saknas';
 
   @override
+  String get s483f02b584 => 'Öppen app behöver Android TV-fjärranslutningen';
+
+  @override
   String get s5d5363db20 => 'Volymvolymvolym';
 
   @override
@@ -253,6 +397,19 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sbfbb3d52b3 => 'Acceptera anslutningen på TV:n och försök igen';
+
+  @override
+  String get s9df7f078c6 => 'Roku kan inte nås';
+
+  @override
+  String get s0dc1e158bc =>
+      'Roku block kontroll: Inställningar → System → Avancerade systeminställningar → Kontroll av mobilappar → Enabled';
+
+  @override
+  String get s58d9f3b1b1 => 'Inte en Roku-enhet';
+
+  @override
+  String get sd44e043ccc => 'Roku har ingen absolut volym – använd volym +/−';
 
   @override
   String get sf2993f0346 => 'TV behöver parning';
@@ -284,7 +441,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s4e1ea0bc65 => 'Vilar';
 
   @override
-  String get se5b2692112 => 'TV kan inte nås';
+  String get sbeb26f2b64 => 'Kanalnummer saknas';
 
   @override
   String s095ca83913(String p0) {
@@ -1231,9 +1388,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sc8d1abbd21 => 'Kortnamn';
 
   @override
-  String get s183ed60009 => 'OK';
-
-  @override
   String s1ea8fe913b(String p0) {
     return 'Adress: $p0';
   }
@@ -1444,8 +1598,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get se5084a149d => 'Vilken TV eller enhet?';
 
   @override
-  String get s43a563c3a0 =>
-      'Status, kraft, volym, mute och uppspelning som kort och för automationer - rakt över hemnätverket, inget moln och ingen Home Assistant. Android TV och Google TV: välj Chromecast.';
+  String get s512db00a17 =>
+      'Status, kraft, volym, mute, kanaler och uppspelning som kort och för automationer - rakt över hemnätverket, inget moln och ingen Home Assistant. Android TV och Google TV: Chromecast (status och volym) eller fjärrkontrollen (nycklar, kanaler, ström).';
 
   @override
   String get sca7e088857 => 'Elpris';
@@ -3430,9 +3584,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sda588a203b => 'Använd dessa';
 
   @override
-  String get s6c3e76828b => 'Nästa';
-
-  @override
   String get sba1684ff6c => 'Inte ännu';
 
   @override
@@ -3806,9 +3957,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s2d983e951b => 'Else';
-
-  @override
-  String get sf936d0b01d => 'Upp';
 
   @override
   String get s2c7a2bbac1 => 'Nytt manus';
@@ -6185,6 +6333,15 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sea20d169a3 => 'Mediaspelare';
 
   @override
+  String get s5bfb23a680 => 'Robot vakuum';
+
+  @override
+  String get sc9735275b2 => 'Valves';
+
+  @override
+  String get s28cdff43bf => 'Humidifiers';
+
+  @override
   String get sbcb95e1e78 =>
       'Token accepteras inte. Skapa en ny i Home Assistant.';
 
@@ -8262,6 +8419,14 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s64d4364336 =>
       'disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming';
+
+  @override
+  String get s73720edff0 =>
+      'playing=Playing;paused=Paused;idle=Idle;on=On;off=Off;standby=Standby;buffering=Buffering;unavailable=Unavailable';
+
+  @override
+  String get s2df1d5947c =>
+      'cleaning=Cleaning;docked=Docked;returning=Returning;idle=Idle;paused=Paused;error=ERROR';
 
   @override
   String get s5b1e227dc4 => 'on=På;off=Av';

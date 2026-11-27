@@ -69,17 +69,105 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s0ec3e3e11d => 'Ekraanil näidati seda umbes minut.';
 
   @override
+  String get s11d9226341 => 'Android TV / Google TV (kaugtelevisioon)';
+
+  @override
+  String get s0992ee68bf =>
+      'Sony, Philips, TCL, Xiaomi, Chromecast koos Google TV-ga...: võimsus, maht, tumm, kanalid, nooleklahvid ja avatud rakendus. Paarid, mille kood on näidatud teleris.';
+
+  @override
+  String get s8a14ae9518 =>
+      'TV: Settings → Network & Internet → (võrk) → IP-aadress. või Google Home app → device → Device information.';
+
+  @override
+  String get s714e6f6143 =>
+      'Televiisor näitab kuuekohalist koodi (numbrid ja tähed A–F) - kirjuta see siia.';
+
+  @override
+  String get sd92171df4d => 'Näidatakse teleriekraanil paaritamise ajal.';
+
+  @override
+  String get s6db078dbe3 => 'Sonos';
+
+  @override
+  String get s8f7a93b1ea =>
+      'Sonose kõlarid ja heliribad: helitugevus, vaigistamine, mängimine/paus, järgmine ja nüüd mängimine. Otse üle koduvõrgu, ilma kontota.';
+
+  @override
+  String get s1cf843ef3e =>
+      'Sonos app → Settings → System → About My System → IP-aadress.';
+
+  @override
+  String get s01d549ef4d => 'Roku';
+
+  @override
+  String get s406bfe2259 =>
+      'Roku mängijad ja Roku telerid: võtmed, helitugevus +/−, vaigistamine, mängimine/paus, avatud rakendus; Roku telerites ka jõud ja kanalid.';
+
+  @override
+  String get sb4f88e9b1b =>
+      'Roku: Settings → Network → About → IP-aadress. Allow control: Settings → System → Advanced system settings → Control by mobile apps → Enabled.';
+
+  @override
   String get sd3b85fadc0 => 'TV ja Chromecast';
 
   @override
-  String get sb34763a1f3 =>
-      'Samsung, LG, Philips, Android TV / Google TV ja Chromecast: võimsus, maht ja taasesitus.';
+  String get sebd2ee78b0 =>
+      'Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos ja Roku: võimsus, maht, kanalid ja taasesitus.';
+
+  @override
+  String get s50eb745165 => '/MediaRenderer/RenderingControl/Control';
+
+  @override
+  String get s9e4f134628 => '/MediaRenderer/AVTransport/Control';
+
+  @override
+  String get s77251a38d3 => '/ZoneGroupTopology/Control';
+
+  @override
+  String get s7594076cbd => 'ebaõnnestus';
+
+  @override
+  String get s01c48d363e => 'Sonod ei ole kättesaadavad';
+
+  @override
+  String get sc49795d7d1 => 'Sonose seadeldis';
+
+  @override
+  String get s89541675fe => 'Rivi sisse';
+
+  @override
+  String get sdd6a5ac9b8 => 'Sonosel pole kanaleid';
 
   @override
   String get sbd92a41506 => 'Chromecasti ei saa kaugjuhtimisega sisse lülitada';
 
   @override
   String get sd8167370bc => 'Miski ei mängi';
+
+  @override
+  String get s0249d39100 => 'paaritamine';
+
+  @override
+  String get se5b2692112 => 'TV ei ole kättesaadav';
+
+  @override
+  String get s536792efd0 => 'Vale kood';
+
+  @override
+  String get s4a67144434 => 'paaritamine ei alanud';
+
+  @override
+  String get s3f514c9aa2 => 'Koodil on 6 märki (0–9, A–F)';
+
+  @override
+  String get sb3712c846c => 'Paaritage kõigepealt Android TV (kood teleris)';
+
+  @override
+  String get sc7cbbc343d => 'Android TV keeldus - sidumine on vajalik';
+
+  @override
+  String get s85bb00e885 => 'Televiisor ei edasta helitugevust';
 
   @override
   String get sd42552b5c1 => 'Televiisor keeldus - lubage Molaplani telerisse';
@@ -107,8 +195,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s1c9df5579f => 'Kaubamärk';
 
   @override
-  String get s406f4e67a2 =>
-      'Android-telereid ja Google\'i telereid kontrollitakse Cast\'i (sisseehitatud Chrome\'i) kaudu.';
+  String get s22e7286858 =>
+      'Android-telerid ja Google\'i telerid: valatud (status, helitugevus, taasesitus) või kaugprotokoll (võtmed, kanalid, võimsus; paariskood).';
 
   @override
   String get s178e07f06b => 'IP-aadress';
@@ -159,6 +247,20 @@ class AppLocalizationsEt extends AppLocalizations {
       'LG tagastab selle, kui nõustud teleri ühendusega. Salvestatud ainult selles seadmes.';
 
   @override
+  String get sa14b4d0a62 => 'Kliendisertifikaat (Android TV)';
+
+  @override
+  String get sb6b8ce62e4 =>
+      'Molaplani enda sertifikaat, mille teler paaritamise ajal vastu võttis. Salvestatud ainult selles seadmes.';
+
+  @override
+  String get s55c0154762 => 'Kliendivõti (Android TV)';
+
+  @override
+  String get s49678d6bba =>
+      'Sertifikaadi privaatvõti. Salvestatud ainult sellele seadmele.';
+
+  @override
   String get sbdf670977b => 'Lugemine';
 
   @override
@@ -205,7 +307,46 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sdce14191c7 => 'Võti';
 
   @override
+  String get sbefd940b7e => 'Kanal (väärtus = arv)';
+
+  @override
+  String get s8028880bf9 => 'Ava rakendus (Android TV, value = link)';
+
+  @override
   String get sc91823aedb => 'Ainult \"võtme\" käsu jaoks.';
+
+  @override
+  String get s6c3e76828b => 'Edasi';
+
+  @override
+  String get sd61993184d => 'Eelmine';
+
+  @override
+  String get sd46979cb3c => 'Tihedalt sisse/välja';
+
+  @override
+  String get s9c350b0f5e => 'Kanal +';
+
+  @override
+  String get s66136ee35f => 'Kanal!';
+
+  @override
+  String get sf936d0b01d => 'Üles';
+
+  @override
+  String get s09e8d49ceb => 'Alla';
+
+  @override
+  String get s34e61d8a2f => 'Vasakule';
+
+  @override
+  String get s365a1e8626 => 'Õige';
+
+  @override
+  String get s183ed60009 => 'OK';
+
+  @override
+  String get s8cbc3f33aa => 'Toitevõti';
 
   @override
   String get sdac8f8b638 => 'Esitamine/ paus';
@@ -235,6 +376,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s94e14089d6 => 'Puudub helitugevus';
 
   @override
+  String get s483f02b584 => 'Avatud rakendus vajab Android TV kaugühendust';
+
+  @override
   String get s5d5363db20 => 'maht';
 
   @override
@@ -254,6 +398,19 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sbfbb3d52b3 => 'Nõustuge teleri ühendusega ja proovige uuesti';
+
+  @override
+  String get s9df7f078c6 => 'Roku ei ole kättesaadav';
+
+  @override
+  String get s0dc1e158bc =>
+      'Roku plokid Control: Settings → System → Advanced System Settings → Control by mobile apps → Enabled';
+
+  @override
+  String get s58d9f3b1b1 => 'Roku seadeldis';
+
+  @override
+  String get sd44e043ccc => 'Roku absoluutruumala puudub – kasutusruumala +/-';
 
   @override
   String get sf2993f0346 => 'Televiisor vajab paaritamist';
@@ -285,7 +442,7 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s4e1ea0bc65 => 'Ootel';
 
   @override
-  String get se5b2692112 => 'TV ei ole kättesaadav';
+  String get sbeb26f2b64 => 'Kanali number puudub';
 
   @override
   String s095ca83913(String p0) {
@@ -1232,9 +1389,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sc8d1abbd21 => 'Kaardi nimi';
 
   @override
-  String get s183ed60009 => 'OK';
-
-  @override
   String s1ea8fe913b(String p0) {
     return 'Aadress: $p0';
   }
@@ -1445,8 +1599,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get se5084a149d => 'Milline telekas või seade?';
 
   @override
-  String get s43a563c3a0 =>
-      'Olek, võimsus, maht, vaigistamine ja taasesitamine kaartidena ja automatiseerimiseks - otse üle koduvõrgu, ilma pilveta ja ilma Home Assistantita. Android TV ja Google TV: valige Chromecast.';
+  String get s512db00a17 =>
+      'Olek, võimsus, maht, vaigistamine, kanalid ja taasesitus kaartidena ja automatiseerimiseks - otse üle koduvõrgu, ilma pilveta ja ilma Home Assistantita. Android TV ja Google TV: Chromecast (seisund ja helitugevus) või puldi (võtmed, kanalid, võimsus).';
 
   @override
   String get sca7e088857 => 'Elektri hind';
@@ -3425,9 +3579,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sda588a203b => 'Kasuta neid';
 
   @override
-  String get s6c3e76828b => 'Edasi';
-
-  @override
   String get sba1684ff6c => 'veel mitte';
 
   @override
@@ -3801,9 +3952,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s2d983e951b => 'Else';
-
-  @override
-  String get sf936d0b01d => 'Üles';
 
   @override
   String get s2c7a2bbac1 => 'Uus käsikiri';
@@ -6177,6 +6325,15 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sea20d169a3 => 'Meediamängijad';
 
   @override
+  String get s5bfb23a680 => 'Robotite tolmuimejad';
+
+  @override
+  String get sc9735275b2 => 'ventiilid';
+
+  @override
+  String get s28cdff43bf => 'Niiskusniite';
+
+  @override
   String get sbcb95e1e78 => 'Märki ei aktsepteerita. Loo uus koduabilises.';
 
   @override
@@ -8246,6 +8403,14 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s64d4364336 =>
       'disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming';
+
+  @override
+  String get s73720edff0 =>
+      'playing=Playing;paused=Paused;idle=Idle;on=On;off=Off;standby=Standby;buffering=Buffering;unavailable=Unavailable';
+
+  @override
+  String get s2df1d5947c =>
+      'cleaning=Cleaning;docked=Docked;returning=Returning;idle=Idle;paused=Paused;error=ERROR';
 
   @override
   String get s5b1e227dc4 => 'on=Sees;off=Väljas';

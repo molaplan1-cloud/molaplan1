@@ -68,17 +68,105 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s0ec3e3e11d => 'Shown on the TV screen for about a minute.';
 
   @override
+  String get s11d9226341 => 'Android TV / Google TV (remote)';
+
+  @override
+  String get s0992ee68bf =>
+      'Sony, Philips, TCL, Xiaomi, Chromecast with Google TV…: power, volume, mute, channels, arrow keys and the open app. Pairs with a code shown on the TV.';
+
+  @override
+  String get s8a14ae9518 =>
+      'TV: Settings → Network & Internet → (network) → IP address. Or Google Home app → device → Device information.';
+
+  @override
+  String get s714e6f6143 =>
+      'The TV shows a six-character code (digits and letters A–F) – type it here.';
+
+  @override
+  String get sd92171df4d => 'Shown on the TV screen during pairing.';
+
+  @override
+  String get s6db078dbe3 => 'Sonos';
+
+  @override
+  String get s8f7a93b1ea =>
+      'Sonos speakers and soundbars: volume, mute, play/pause, next and now playing. Straight over the home network, no account.';
+
+  @override
+  String get s1cf843ef3e =>
+      'Sonos app → Settings → System → About My System → IP address.';
+
+  @override
+  String get s01d549ef4d => 'Roku';
+
+  @override
+  String get s406bfe2259 =>
+      'Roku players and Roku TVs: keys, volume +/−, mute, play/pause, the open app; on Roku TVs also power and channels.';
+
+  @override
+  String get sb4f88e9b1b =>
+      'Roku: Settings → Network → About → IP address. Allow control: Settings → System → Advanced system settings → Control by mobile apps → Enabled.';
+
+  @override
   String get sd3b85fadc0 => 'TV and Chromecast';
 
   @override
-  String get sb34763a1f3 =>
-      'Samsung, LG, Philips, Android TV / Google TV and Chromecast: power, volume and playback.';
+  String get sebd2ee78b0 =>
+      'Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos and Roku: power, volume, channels and playback.';
+
+  @override
+  String get s50eb745165 => '/MediaRenderer/RenderingControl/Control';
+
+  @override
+  String get s9e4f134628 => '/MediaRenderer/AVTransport/Control';
+
+  @override
+  String get s77251a38d3 => '/ZoneGroupTopology/Control';
+
+  @override
+  String get s7594076cbd => 'failed';
+
+  @override
+  String get s01c48d363e => 'Sonos not reachable';
+
+  @override
+  String get sc49795d7d1 => 'not a Sonos device';
+
+  @override
+  String get s89541675fe => 'Line-in';
+
+  @override
+  String get sdd6a5ac9b8 => 'Sonos has no channels';
 
   @override
   String get sbd92a41506 => 'A Chromecast cannot be switched on remotely';
 
   @override
   String get sd8167370bc => 'Nothing is playing';
+
+  @override
+  String get s0249d39100 => 'pairing needed';
+
+  @override
+  String get se5b2692112 => 'TV not reachable';
+
+  @override
+  String get s536792efd0 => 'Wrong code';
+
+  @override
+  String get s4a67144434 => 'pairing did not start';
+
+  @override
+  String get s3f514c9aa2 => 'The code has 6 characters (0–9, A–F)';
+
+  @override
+  String get sb3712c846c => 'Pair the Android TV first (code on the TV)';
+
+  @override
+  String get sc7cbbc343d => 'The Android TV refused – pairing needed';
+
+  @override
+  String get s85bb00e885 => 'The TV does not report volume';
 
   @override
   String get sd42552b5c1 =>
@@ -107,8 +195,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s1c9df5579f => 'Brand';
 
   @override
-  String get s406f4e67a2 =>
-      'Android TVs and Google TVs are controlled over Cast (Chromecast built-in).';
+  String get s22e7286858 =>
+      'Android TVs and Google TVs: Cast (status, volume, playback) or the remote protocol (keys, channels, power; pairing code).';
 
   @override
   String get s178e07f06b => 'IP address';
@@ -159,6 +247,20 @@ class AppLocalizationsEn extends AppLocalizations {
       'LG returns it when you accept the connection on the TV. Stored on this device only.';
 
   @override
+  String get sa14b4d0a62 => 'Client certificate (Android TV)';
+
+  @override
+  String get sb6b8ce62e4 =>
+      'Molaplan\'s own certificate that the TV accepted during pairing. Stored on this device only.';
+
+  @override
+  String get s55c0154762 => 'Client key (Android TV)';
+
+  @override
+  String get s49678d6bba =>
+      'The certificate\'s private key. Stored on this device only.';
+
+  @override
   String get sbdf670977b => 'Reading';
 
   @override
@@ -205,7 +307,46 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sdce14191c7 => 'Key';
 
   @override
+  String get sbefd940b7e => 'Channel (value = number)';
+
+  @override
+  String get s8028880bf9 => 'Open app (Android TV, value = link)';
+
+  @override
   String get sc91823aedb => 'Only for the \"Key\" command.';
+
+  @override
+  String get s6c3e76828b => 'Next';
+
+  @override
+  String get sd61993184d => 'Previous';
+
+  @override
+  String get sd46979cb3c => 'Mute on/off';
+
+  @override
+  String get s9c350b0f5e => 'Channel +';
+
+  @override
+  String get s66136ee35f => 'Channel −';
+
+  @override
+  String get sf936d0b01d => 'Up';
+
+  @override
+  String get s09e8d49ceb => 'Down';
+
+  @override
+  String get s34e61d8a2f => 'Left';
+
+  @override
+  String get s365a1e8626 => 'Right';
+
+  @override
+  String get s183ed60009 => 'OK';
+
+  @override
+  String get s8cbc3f33aa => 'Power key';
 
   @override
   String get sdac8f8b638 => 'Play / pause';
@@ -235,6 +376,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s94e14089d6 => 'Volume missing';
 
   @override
+  String get s483f02b584 => 'Open app needs the Android TV remote connection';
+
+  @override
   String get s5d5363db20 => 'volume';
 
   @override
@@ -254,6 +398,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sbfbb3d52b3 => 'Accept the connection on the TV and try again';
+
+  @override
+  String get s9df7f078c6 => 'Roku not reachable';
+
+  @override
+  String get s0dc1e158bc =>
+      'Roku blocks control: Settings → System → Advanced system settings → Control by mobile apps → Enabled';
+
+  @override
+  String get s58d9f3b1b1 => 'not a Roku device';
+
+  @override
+  String get sd44e043ccc => 'Roku has no absolute volume – use volume +/−';
 
   @override
   String get sf2993f0346 => 'The TV needs pairing';
@@ -285,7 +442,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s4e1ea0bc65 => 'Idle';
 
   @override
-  String get se5b2692112 => 'TV not reachable';
+  String get sbeb26f2b64 => 'Channel number missing';
 
   @override
   String s095ca83913(String p0) {
@@ -1234,9 +1391,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sc8d1abbd21 => 'Tile name';
 
   @override
-  String get s183ed60009 => 'OK';
-
-  @override
   String s1ea8fe913b(String p0) {
     return 'Address: $p0';
   }
@@ -1448,8 +1602,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get se5084a149d => 'Which TV or device?';
 
   @override
-  String get s43a563c3a0 =>
-      'Status, power, volume, mute and playback as tiles and for automations – straight over the home network, no cloud and no Home Assistant. Android TV and Google TV: pick Chromecast.';
+  String get s512db00a17 =>
+      'Status, power, volume, mute, channels and playback as tiles and for automations – straight over the home network, no cloud and no Home Assistant. Android TV and Google TV: Chromecast (status and volume) or the remote (keys, channels, power).';
 
   @override
   String get sca7e088857 => 'Electricity price';
@@ -3428,9 +3582,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sda588a203b => 'Use these';
 
   @override
-  String get s6c3e76828b => 'Next';
-
-  @override
   String get sba1684ff6c => 'not yet';
 
   @override
@@ -3803,9 +3954,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s2d983e951b => 'Else';
-
-  @override
-  String get sf936d0b01d => 'Up';
 
   @override
   String get s2c7a2bbac1 => 'New script';
@@ -6177,6 +6325,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sea20d169a3 => 'Media players';
 
   @override
+  String get s5bfb23a680 => 'Robot vacuums';
+
+  @override
+  String get sc9735275b2 => 'Valves';
+
+  @override
+  String get s28cdff43bf => 'Humidifiers';
+
+  @override
   String get sbcb95e1e78 =>
       'The token is not accepted. Create a new one in Home Assistant.';
 
@@ -8255,6 +8412,14 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s64d4364336 =>
       'disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming';
+
+  @override
+  String get s73720edff0 =>
+      'playing=Playing;paused=Paused;idle=Idle;on=On;off=Off;standby=Standby;buffering=Buffering;unavailable=Unavailable';
+
+  @override
+  String get s2df1d5947c =>
+      'cleaning=Cleaning;docked=Docked;returning=Returning;idle=Idle;paused=Paused;error=ERROR';
 
   @override
   String get s5b1e227dc4 => 'on=On;off=Off';

@@ -44,8 +44,7 @@ String? xmlTag(String xml, String tag) {
   return m == null ? null : xmlUnescape(m[1]!.trim());
 }
 
-String? xmlAttr(String xml, String tag, String attr) =>
-    RegExp('<$tag\\b[^>]*\\s$attr="([^"]*)"').firstMatch(xml)?[1];
+String? xmlAttr(String xml, String tag, String attr) => RegExp('<$tag\\b[^>]*\\s$attr="([^"]*)"').firstMatch(xml)?[1];
 
 String xmlUnescape(String s) => s
     .replaceAllMapped(RegExp(r'&#(x?)([0-9a-fA-F]+);'), (m) {
@@ -149,7 +148,10 @@ class RokuBackend extends MediaBackend {
   /// No absolute volume in ECP: use the volume up / down keys.
   @override
   Future<void> setVolume(num level) => throw DriverException(
-    dtx('Roku ei tue äänenvoimakkuuden asettamista – käytä ääni +/− -painikkeita', 'Roku has no absolute volume – use volume +/−'),
+    dtx(
+      'Roku ei tue äänenvoimakkuuden asettamista – käytä ääni +/− -painikkeita',
+      'Roku has no absolute volume – use volume +/−',
+    ),
   );
 
   /// ECP only toggles mute (state not readable).
@@ -166,8 +168,7 @@ class RokuBackend extends MediaBackend {
 
   /// Roku TV antenna / cable channel ("5", "5.1").
   @override
-  Future<void> channel(String ch) =>
-      _post('/launch/tvinput.dtv?ch=${Uri.encodeQueryComponent(ch.trim())}');
+  Future<void> channel(String ch) => _post('/launch/tvinput.dtv?ch=${Uri.encodeQueryComponent(ch.trim())}');
 }
 
 /// Subnet probe for the wizard: answers on 8060 with device-info.

@@ -1,28 +1,299 @@
 {
  "@@locale": "es",
  "s186cc1d7b9": "Chromecast / Google TV / Android TV",
+ "s9da55e3993": "Chromecast, Google TV, Android TVs (Sony, Philips, TCL, Xiaomi...) y Nest altavoces sobre Cast: estado, volumen, pausa y parada.",
+ "@s9da55e3993": {
+  "x-mt": true
+ },
+ "sb3a497d14b": "Normalmente se encuentra automáticamente. De lo contrario: Google Home app → dispositivo → Ajustes → Información del dispositivo → Dirección IP.",
+ "@sb3a497d14b": {
+  "x-mt": true
+ },
  "s02bafb3752": "Samsung Smart TV (Tizen)",
+ "s709ac4cf0e": "Samsung TVs 2016→: potencia, volumen, muda y reproducción directamente sobre la red de la casa.",
+ "@s709ac4cf0e": {
+  "x-mt": true
+ },
+ "s19a8179b98": "TV: Ajustes → General → Network → Estado de red → Configuración de IP. Para poder en: General → Red → Configuración de expertos → \"Power On with Mobile\" on.",
+ "@s19a8179b98": {
+  "x-mt": true
+ },
+ "s0f80ea94c0": "El televisor pregunta \"¿Permitir Molaplan?\" – elegir Permitir con el mando a distancia.",
+ "@s0f80ea94c0": {
+  "x-mt": true
+ },
  "s830956d10f": "LG Smart TV (webOS)",
+ "s6f7121cc67": "LG TVs (webOS): potencia, volumen, mudo, reproducción y la aplicación abierta sobre la red de la casa.",
+ "@s6f7121cc67": {
+  "x-mt": true
+ },
+ "scf3ccada17": "TV: Ajustes → General → Red → Wi-Fi/wired → Avanzado. Para poder en: General → Dispositivos → \"Entrar a través de Wi-Fi\" en.",
+ "@scf3ccada17": {
+  "x-mt": true
+ },
+ "s898762ead6": "La TV muestra una solicitud de conexión – aceptarla con el mando a distancia.",
+ "@s898762ead6": {
+  "x-mt": true
+ },
  "s378548d3cd": "Philips TV (JointSPACE)",
+ "s9a2645043b": "Philips TVs: potencia (Modelos Android), volumen, muda y llaves. Los modelos Android se combinan con un PIN mostrado en la TV.",
+ "@s9a2645043b": {
+  "x-mt": true
+ },
+ "s2fb79a3487": "TV: Ajustes → Inalámbrico y redes → Wired o Wi-Fi → Ver configuración de la red.",
+ "@s2fb79a3487": {
+  "x-mt": true
+ },
+ "s12f47341ce": "Escribe el PIN de cuatro dígitos que se muestra en la TV.",
+ "@s12f47341ce": {
+  "x-mt": true
+ },
+ "s0ec3e3e11d": "Se muestra en la pantalla de TV por un minuto.",
+ "@s0ec3e3e11d": {
+  "x-mt": true
+ },
+ "s6db078dbe3": "Sonos",
+ "s01d549ef4d": "Roku",
+ "sd3b85fadc0": "TV y Chromecast",
+ "@sd3b85fadc0": {
+  "x-mt": true
+ },
+ "s50eb745165": "/MediaRenderer/RenderingControl/Control",
+ "s9e4f134628": "/MediaRenderer/AVTransport/Control",
+ "s77251a38d3": "/ZoneGroupTopology/Control",
+ "sbd92a41506": "Un Chromecast no puede ser conmutado a distancia",
+ "@sbd92a41506": {
+  "x-mt": true
+ },
+ "sd8167370bc": "Nada está jugando",
+ "@sd8167370bc": {
+  "x-mt": true
+ },
+ "se5b2692112": "TV no accesible",
+ "@se5b2692112": {
+  "x-mt": true
+ },
+ "sd42552b5c1": "La televisión se negó – permitir a Molaplan en el impulso en la televisión",
+ "@sd42552b5c1": {
+  "x-mt": true
+ },
+ "sb7b15dd59e": "Acepta la conexión en la TV (Allow) e inténtalo de nuevo",
+ "@sb7b15dd59e": {
+  "x-mt": true
+ },
+ "s19ae80a1a6": "no es un Samsung TV",
+ "@s19ae80a1a6": {
+  "x-mt": true
+ },
+ "s7e1bbea60b": "Activando las necesidades de la dirección MAC",
+ "@s7e1bbea60b": {
+  "x-mt": true
+ },
+ "se7feba6088": "La TV no aceptó el volumen",
+ "@se7feba6088": {
+  "x-mt": true
+ },
  "s97c684e038": "Chromecast / Google TV / Android TV (Cast)",
+ "s66c82f9d98": "TV / Chromecast (integración incorporada)",
+ "@s66c82f9d98": {
+  "x-mt": true
+ },
  "s1c9df5579f": "Marca",
  "s178e07f06b": "Dirección IP",
+ "s678a1d0824": "La dirección IP del dispositivo (lista del dispositivo de rotor). Reserve una dirección fija en el router.",
+ "@s678a1d0824": {
+  "x-mt": true
+ },
+ "sc9db95d473": "Dirección del MAC (poder sobre)",
+ "@sc9db95d473": {
+  "x-mt": true
+ },
+ "s179f2d4764": "Para el encendido de Wake-on-LAN. Usualmente llenado automáticamente; habilitar \"Entrar a través de la red\" en la televisión.",
+ "@s179f2d4764": {
+  "x-mt": true
+ },
+ "s8480eec244": "Versión de JointSPACE (Philips)",
+ "@s8480eec244": {
+  "x-mt": true
+ },
+ "sa592a45cc0": "Detectado automáticamente: 6 = TV Android (https 1926), 1 = juegos antiguos (http 1925).",
+ "@sa592a45cc0": {
+  "x-mt": true
+ },
+ "s0f34d752b2": "Paring id (Philips)",
+ "@s0f34d752b2": {
+  "x-mt": true
+ },
+ "s55e83ab0e3": "Creado durante el emparejamiento (código PIN de la TV).",
+ "@s55e83ab0e3": {
+  "x-mt": true
+ },
+ "s090082b8ce": "Cierre de par (Filipinas)",
+ "@s090082b8ce": {
+  "x-mt": true
+ },
+ "s74b0fa8af8": "Creado durante el emparejado. Almacenado en este dispositivo solamente.",
+ "@s74b0fa8af8": {
+  "x-mt": true
+ },
+ "sf6035d1731": "Token de acceso (Samsung)",
+ "@sf6035d1731": {
+  "x-mt": true
+ },
+ "scee449b738": "Samsung lo devuelve cuando permite la conexión en el televisor. Almacenado en este dispositivo solamente.",
+ "@scee449b738": {
+  "x-mt": true
+ },
+ "s565b6ac234": "Clave de cliente (LG)",
+ "@s565b6ac234": {
+  "x-mt": true
+ },
+ "s8b34eb0ec5": "LG lo devuelve cuando aceptas la conexión en la TV. Almacenado en este dispositivo solamente.",
+ "@s8b34eb0ec5": {
+  "x-mt": true
+ },
  "sbdf670977b": "Lectura",
  "@sbdf670977b": {
   "x-mt": true
  },
+ "s4cd6848cf8": "Un Chromecast no tiene estado de poder; \"On\" es entonces siempre 0.",
+ "@s4cd6848cf8": {
+  "x-mt": true
+ },
+ "sb545795f0a": "Estado (texto)",
+ "@sb545795f0a": {
+  "x-mt": true
+ },
+ "s7c7098854f": "Sobre (1/0)",
+ "@s7c7098854f": {
+  "x-mt": true
+ },
+ "s1d28a837cb": "Volumen (%)",
+ "@s1d28a837cb": {
+  "x-mt": true
+ },
+ "sa13c4f1248": "Mutado (1/0)",
+ "@sa13c4f1248": {
+  "x-mt": true
+ },
+ "sef1842c9c5": "App",
+ "@sef1842c9c5": {
+  "x-mt": true
+ },
+ "sc5c36c50e6": "Ahora juegas",
+ "@sc5c36c50e6": {
+  "x-mt": true
+ },
+ "saded6a492a": "Jugar (1/0)",
+ "@saded6a492a": {
+  "x-mt": true
+ },
  "s5bed8bff00": "Comando",
+ "s56ada71b4a": "El valor viene del toggle o deslizador.",
+ "@s56ada71b4a": {
+  "x-mt": true
+ },
+ "s5d41165c1a": "Power on/off (valor 1/0)",
+ "@s5d41165c1a": {
+  "x-mt": true
+ },
+ "s7df609092d": "Volumen (valor 0–100)",
+ "@s7df609092d": {
+  "x-mt": true
+ },
+ "s7ce360cc79": "Mute (valor 1/0)",
+ "@s7ce360cc79": {
+  "x-mt": true
+ },
+ "sdce14191c7": "Clave",
+ "@sdce14191c7": {
+  "x-mt": true
+ },
+ "sc91823aedb": "Sólo para el comando \"Key\".",
+ "@sc91823aedb": {
+  "x-mt": true
+ },
+ "s6c3e76828b": "Siguiente",
+ "sf936d0b01d": "Arriba",
+ "@sf936d0b01d": {
+  "x-mt": true
+ },
+ "s183ed60009": "OK",
+ "sdac8f8b638": "Jugar / pausa",
+ "@sdac8f8b638": {
+  "x-mt": true
+ },
+ "seab0493fde": "Jugar",
+ "@seab0493fde": {
+  "x-mt": true
+ },
+ "sef0810bb79": "Pausa",
+ "@sef0810bb79": {
+  "x-mt": true
+ },
  "s6fe2320f3d": "Para",
  "@s6fe2320f3d": {
   "x-mt": true
  },
+ "s476a29a514": "Volumen arriba",
+ "@s476a29a514": {
+  "x-mt": true
+ },
+ "s1cafda29fd": "Volumen baja",
+ "@s1cafda29fd": {
+  "x-mt": true
+ },
  "s9d9c84b3a8": "Casa",
  "scf7e14661c": "Atrás",
+ "s94e14089d6": "Falta de volumen",
+ "@s94e14089d6": {
+  "x-mt": true
+ },
+ "s5d5363db20": "volumen",
+ "@s5d5363db20": {
+  "x-mt": true
+ },
  "s14252e6c3a": "estado de situación",
  "@s14252e6c3a": {
   "x-mt": true
  },
  "s58332642fb": "potencia",
+ "s449ab0a31f": "volumen",
+ "@s449ab0a31f": {
+  "x-mt": true
+ },
+ "s3a12232f33": "mute",
+ "@s3a12232f33": {
+  "x-mt": true
+ },
+ "s46a1321d85": "La televisión rechazó la conexión",
+ "@s46a1321d85": {
+  "x-mt": true
+ },
+ "sbfbb3d52b3": "Acepta la conexión en la TV y prueba de nuevo",
+ "@sbfbb3d52b3": {
+  "x-mt": true
+ },
+ "sf2993f0346": "La televisión necesita pares",
+ "@sf2993f0346": {
+  "x-mt": true
+ },
+ "s43720a9032": "no contesta",
+ "@s43720a9032": {
+  "x-mt": true
+ },
+ "s3a275af4f7": "no es un televisor de JointSPACE",
+ "@s3a275af4f7": {
+  "x-mt": true
+ },
+ "s3d91340835": "no emparejando en progreso",
+ "@s3d91340835": {
+  "x-mt": true
+ },
+ "secb14ea9df": "PIN equivocado o el emparejado caducó",
+ "@secb14ea9df": {
+  "x-mt": true
+ },
  "s404f230c13": "",
  "scc0cccf89d": "Apagado",
  "s4cbe24240f": "Encendido",
@@ -611,6 +882,10 @@
  "sb2b9982ba7": "Solicitar instalación como servicio",
  "s02179b814a": "Descargar el archivo de instalación",
  "see46457ffd": "Descarga el último archivo de instalación de Android (APK). Ábrelo en el teléfono o la tableta. Si Android lo pide, permite la instalación desde orígenes desconocidos (Ajustes → seguridad).",
+ "s167c125f07": "Descargar",
+ "@s167c125f07": {
+  "x-mt": true
+ },
  "s2bf22ca429": "Este dispositivo no se puede alcanzar desde el navegador. Funciona en la aplicación Molaplan, o desde aquí cuando se encuentra un puente casero.",
  "@s2bf22ca429": {
   "x-mt": true
@@ -824,7 +1099,6 @@
  "@sc8d1abbd21": {
   "x-mt": true
  },
- "s183ed60009": "OK",
  "s1ea8fe913b": "Dirección: {p0}",
  "@s1ea8fe913b": {
   "x-mt": true
@@ -1014,6 +1288,10 @@
  },
  "sdeb1f4332e": "Estado, carga on/off, potencia y límite de corriente. Automatizaciones: carga sobre el superávit solar o en las horas más baratas.",
  "@sdeb1f4332e": {
+  "x-mt": true
+ },
+ "se5084a149d": "¿Qué televisor o dispositivo?",
+ "@se5084a149d": {
   "x-mt": true
  },
  "sca7e088857": "Precio de la electricidad",
@@ -2793,7 +3071,6 @@
  "@sda588a203b": {
   "x-mt": true
  },
- "s6c3e76828b": "Siguiente",
  "sba1684ff6c": "aún no",
  "@sba1684ff6c": {
   "x-mt": true
@@ -3229,10 +3506,6 @@
  },
  "s2d983e951b": "Else",
  "@s2d983e951b": {
-  "x-mt": true
- },
- "sf936d0b01d": "Arriba",
- "@sf936d0b01d": {
   "x-mt": true
  },
  "s2c7a2bbac1": "Nuevo guión",
@@ -4468,6 +4741,14 @@
   "x-mt": true
  },
  "sf435368c99": "TV",
+ "s0cea5b1077": "Volumen",
+ "@s0cea5b1077": {
+  "x-mt": true
+ },
+ "s25d92a8625": "Ciegos",
+ "@s25d92a8625": {
+  "x-mt": true
+ },
  "sa846059775": "Home Assistant ya lee este dispositivo",
  "@sa846059775": {
   "x-mt": true
@@ -6181,6 +6462,10 @@
   "x-mt": true
  },
  "s53a891e670": "Comprueba la dirección y los ajustes e inténtalo de nuevo. Los detalles técnicos muestran el motivo exacto.",
+ "s1e02f457b4": "Funciona en la aplicación o a través de un puente casero",
+ "@s1e02f457b4": {
+  "x-mt": true
+ },
  "s6c33f19716": "no contesta ({p0} min)",
  "@s6c33f19716": {
   "x-mt": true
@@ -7623,6 +7908,8 @@
  "s1becc05ea1": "locked=Cerrado;unlocked=Abierto;jammed=ATASCADO",
  "s259de02f33": "open=Abierta;closed=Cerrada;opening=Abriendo;closing=Cerrando",
  "s64d4364336": "disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming",
+ "s73720edff0": "playing=Playing;paused=Paused;idle=Idle;on=On;off=Off;standby=Standby;buffering=Buffering;unavailable=Unavailable",
+ "s2df1d5947c": "cleaning=Cleaning;docked=Docked;returning=Returning;idle=Idle;paused=Paused;error=ERROR",
  "s5b1e227dc4": "on=Encendido;off=Apagado",
  "s2525f9a4f5": "Finlandia es una zona (FI). En Suecia y Noruega depende de dónde vives.",
  "@s2525f9a4f5": {
@@ -9675,6 +9962,10 @@
   "x-mt": true
  },
  "s3832b8c729": "toda la habitación",
+ "s2bb8fceaf7": "Escenas",
+ "@s2bb8fceaf7": {
+  "x-mt": true
+ },
  "sceabe202da": "camera_",
  "s1a4eab1f51": "°C",
  "s9e731440d8": "%",
@@ -9817,332 +10108,6 @@
  "@s2101774157": {
   "x-mt": true
  },
- "s1a9acfbc67": "Luz {p0}",
- "@s1a9acfbc67": {
-  "x-mt": true
- },
- "s5d0fb602f6": "Cover{p0}",
- "@s5d0fb602f6": {
-  "x-mt": true
- },
- "s82ecc12a66": "Temperatura {p0} (add-on)",
- "@s82ecc12a66": {
-  "x-mt": true
- },
- "s8b234e1a6f": "iluminancia",
- "@s8b234e1a6f": {
-  "x-mt": true
- },
- "sf34c97592f": "IKEA Dirigera",
- "sb38eac6a87": "IKEA smart hub y sus luces y enchufes (Zigbee). Pare con el botón en el centro.",
- "@sb38eac6a87": {
-  "x-mt": true
- },
- "s4e92ab791e": "En la aplicación inteligente IKEA Home: Ajustes → Hub → Dirección IP. O en la lista de dispositivos del router: \"gw2-...\" o \"dirigera\".",
- "@s4e92ab791e": {
-  "x-mt": true
- },
- "s73824fc3d0": "Presione el botón de acción en la parte inferior del centro de Dirigera una vez ahora.",
- "@s73824fc3d0": {
-  "x-mt": true
- },
- "sda8d9bf1cd": "Enchufe",
- "s9da55e3993": "Chromecast, Google TV, Android TVs (Sony, Philips, TCL, Xiaomi...) y Nest altavoces sobre Cast: estado, volumen, pausa y parada.",
- "@s9da55e3993": {
-  "x-mt": true
- },
- "sb3a497d14b": "Normalmente se encuentra automáticamente. De lo contrario: Google Home app → dispositivo → Ajustes → Información del dispositivo → Dirección IP.",
- "@sb3a497d14b": {
-  "x-mt": true
- },
- "s709ac4cf0e": "Samsung TVs 2016→: potencia, volumen, muda y reproducción directamente sobre la red de la casa.",
- "@s709ac4cf0e": {
-  "x-mt": true
- },
- "s19a8179b98": "TV: Ajustes → General → Network → Estado de red → Configuración de IP. Para poder en: General → Red → Configuración de expertos → \"Power On with Mobile\" on.",
- "@s19a8179b98": {
-  "x-mt": true
- },
- "s0f80ea94c0": "El televisor pregunta \"¿Permitir Molaplan?\" – elegir Permitir con el mando a distancia.",
- "@s0f80ea94c0": {
-  "x-mt": true
- },
- "s6f7121cc67": "LG TVs (webOS): potencia, volumen, mudo, reproducción y la aplicación abierta sobre la red de la casa.",
- "@s6f7121cc67": {
-  "x-mt": true
- },
- "scf3ccada17": "TV: Ajustes → General → Red → Wi-Fi/wired → Avanzado. Para poder en: General → Dispositivos → \"Entrar a través de Wi-Fi\" en.",
- "@scf3ccada17": {
-  "x-mt": true
- },
- "s898762ead6": "La TV muestra una solicitud de conexión – aceptarla con el mando a distancia.",
- "@s898762ead6": {
-  "x-mt": true
- },
- "s9a2645043b": "Philips TVs: potencia (Modelos Android), volumen, muda y llaves. Los modelos Android se combinan con un PIN mostrado en la TV.",
- "@s9a2645043b": {
-  "x-mt": true
- },
- "s2fb79a3487": "TV: Ajustes → Inalámbrico y redes → Wired o Wi-Fi → Ver configuración de la red.",
- "@s2fb79a3487": {
-  "x-mt": true
- },
- "s12f47341ce": "Escribe el PIN de cuatro dígitos que se muestra en la TV.",
- "@s12f47341ce": {
-  "x-mt": true
- },
- "s0ec3e3e11d": "Se muestra en la pantalla de TV por un minuto.",
- "@s0ec3e3e11d": {
-  "x-mt": true
- },
- "sd3b85fadc0": "TV y Chromecast",
- "@sd3b85fadc0": {
-  "x-mt": true
- },
- "sb34763a1f3": "Samsung, LG, Philips, Android TV / Google TV y Chromecast: potencia, volumen y reproducción.",
- "@sb34763a1f3": {
-  "x-mt": true
- },
- "sbd92a41506": "Un Chromecast no puede ser conmutado a distancia",
- "@sbd92a41506": {
-  "x-mt": true
- },
- "sd8167370bc": "Nada está jugando",
- "@sd8167370bc": {
-  "x-mt": true
- },
- "sd42552b5c1": "La televisión se negó – permitir a Molaplan en el impulso en la televisión",
- "@sd42552b5c1": {
-  "x-mt": true
- },
- "sb7b15dd59e": "Acepta la conexión en la TV (Allow) e inténtalo de nuevo",
- "@sb7b15dd59e": {
-  "x-mt": true
- },
- "s19ae80a1a6": "no es un Samsung TV",
- "@s19ae80a1a6": {
-  "x-mt": true
- },
- "s7e1bbea60b": "Activando las necesidades de la dirección MAC",
- "@s7e1bbea60b": {
-  "x-mt": true
- },
- "se7feba6088": "La TV no aceptó el volumen",
- "@se7feba6088": {
-  "x-mt": true
- },
- "s66c82f9d98": "TV / Chromecast (integración incorporada)",
- "@s66c82f9d98": {
-  "x-mt": true
- },
- "s406f4e67a2": "Los televisores Android y Google TV se controlan sobre Cast (Chromecast incorporado).",
- "@s406f4e67a2": {
-  "x-mt": true
- },
- "s678a1d0824": "La dirección IP del dispositivo (lista del dispositivo de rotor). Reserve una dirección fija en el router.",
- "@s678a1d0824": {
-  "x-mt": true
- },
- "sc9db95d473": "Dirección del MAC (poder sobre)",
- "@sc9db95d473": {
-  "x-mt": true
- },
- "s179f2d4764": "Para el encendido de Wake-on-LAN. Usualmente llenado automáticamente; habilitar \"Entrar a través de la red\" en la televisión.",
- "@s179f2d4764": {
-  "x-mt": true
- },
- "s8480eec244": "Versión de JointSPACE (Philips)",
- "@s8480eec244": {
-  "x-mt": true
- },
- "sa592a45cc0": "Detectado automáticamente: 6 = TV Android (https 1926), 1 = juegos antiguos (http 1925).",
- "@sa592a45cc0": {
-  "x-mt": true
- },
- "s0f34d752b2": "Paring id (Philips)",
- "@s0f34d752b2": {
-  "x-mt": true
- },
- "s55e83ab0e3": "Creado durante el emparejamiento (código PIN de la TV).",
- "@s55e83ab0e3": {
-  "x-mt": true
- },
- "s090082b8ce": "Cierre de par (Filipinas)",
- "@s090082b8ce": {
-  "x-mt": true
- },
- "s74b0fa8af8": "Creado durante el emparejado. Almacenado en este dispositivo solamente.",
- "@s74b0fa8af8": {
-  "x-mt": true
- },
- "sf6035d1731": "Token de acceso (Samsung)",
- "@sf6035d1731": {
-  "x-mt": true
- },
- "scee449b738": "Samsung lo devuelve cuando permite la conexión en el televisor. Almacenado en este dispositivo solamente.",
- "@scee449b738": {
-  "x-mt": true
- },
- "s565b6ac234": "Clave de cliente (LG)",
- "@s565b6ac234": {
-  "x-mt": true
- },
- "s8b34eb0ec5": "LG lo devuelve cuando aceptas la conexión en la TV. Almacenado en este dispositivo solamente.",
- "@s8b34eb0ec5": {
-  "x-mt": true
- },
- "s4cd6848cf8": "Un Chromecast no tiene estado de poder; \"On\" es entonces siempre 0.",
- "@s4cd6848cf8": {
-  "x-mt": true
- },
- "sb545795f0a": "Estado (texto)",
- "@sb545795f0a": {
-  "x-mt": true
- },
- "s7c7098854f": "Sobre (1/0)",
- "@s7c7098854f": {
-  "x-mt": true
- },
- "s1d28a837cb": "Volumen (%)",
- "@s1d28a837cb": {
-  "x-mt": true
- },
- "sa13c4f1248": "Mutado (1/0)",
- "@sa13c4f1248": {
-  "x-mt": true
- },
- "sef1842c9c5": "App",
- "@sef1842c9c5": {
-  "x-mt": true
- },
- "sc5c36c50e6": "Ahora juegas",
- "@sc5c36c50e6": {
-  "x-mt": true
- },
- "saded6a492a": "Jugar (1/0)",
- "@saded6a492a": {
-  "x-mt": true
- },
- "s56ada71b4a": "El valor viene del toggle o deslizador.",
- "@s56ada71b4a": {
-  "x-mt": true
- },
- "s5d41165c1a": "Power on/off (valor 1/0)",
- "@s5d41165c1a": {
-  "x-mt": true
- },
- "s7df609092d": "Volumen (valor 0–100)",
- "@s7df609092d": {
-  "x-mt": true
- },
- "s7ce360cc79": "Mute (valor 1/0)",
- "@s7ce360cc79": {
-  "x-mt": true
- },
- "sdce14191c7": "Clave",
- "@sdce14191c7": {
-  "x-mt": true
- },
- "sc91823aedb": "Sólo para el comando \"Key\".",
- "@sc91823aedb": {
-  "x-mt": true
- },
- "sdac8f8b638": "Jugar / pausa",
- "@sdac8f8b638": {
-  "x-mt": true
- },
- "seab0493fde": "Jugar",
- "@seab0493fde": {
-  "x-mt": true
- },
- "sef0810bb79": "Pausa",
- "@sef0810bb79": {
-  "x-mt": true
- },
- "s476a29a514": "Volumen arriba",
- "@s476a29a514": {
-  "x-mt": true
- },
- "s1cafda29fd": "Volumen baja",
- "@s1cafda29fd": {
-  "x-mt": true
- },
- "s94e14089d6": "Falta de volumen",
- "@s94e14089d6": {
-  "x-mt": true
- },
- "s5d5363db20": "volumen",
- "@s5d5363db20": {
-  "x-mt": true
- },
- "s449ab0a31f": "volumen",
- "@s449ab0a31f": {
-  "x-mt": true
- },
- "s3a12232f33": "mute",
- "@s3a12232f33": {
-  "x-mt": true
- },
- "s46a1321d85": "La televisión rechazó la conexión",
- "@s46a1321d85": {
-  "x-mt": true
- },
- "sbfbb3d52b3": "Acepta la conexión en la TV y prueba de nuevo",
- "@sbfbb3d52b3": {
-  "x-mt": true
- },
- "sf2993f0346": "La televisión necesita pares",
- "@sf2993f0346": {
-  "x-mt": true
- },
- "s43720a9032": "no contesta",
- "@s43720a9032": {
-  "x-mt": true
- },
- "s3a275af4f7": "no es un televisor de JointSPACE",
- "@s3a275af4f7": {
-  "x-mt": true
- },
- "s3d91340835": "no emparejando en progreso",
- "@s3d91340835": {
-  "x-mt": true
- },
- "secb14ea9df": "PIN equivocado o el emparejado caducó",
- "@secb14ea9df": {
-  "x-mt": true
- },
- "se5b2692112": "TV no accesible",
- "@se5b2692112": {
-  "x-mt": true
- },
- "s167c125f07": "Descargar",
- "@s167c125f07": {
-  "x-mt": true
- },
- "se5084a149d": "¿Qué televisor o dispositivo?",
- "@se5084a149d": {
-  "x-mt": true
- },
- "s43a563c3a0": "Estado, potencia, volumen, muda y reproducción como tarjetas y para las automatizaciones – directamente sobre la red de la casa, no nube y no Home Assistant. Android TV y Google TV: elegir Chromecast.",
- "@s43a563c3a0": {
-  "x-mt": true
- },
- "s0cea5b1077": "Volumen",
- "@s0cea5b1077": {
-  "x-mt": true
- },
- "s25d92a8625": "Ciegos",
- "@s25d92a8625": {
-  "x-mt": true
- },
- "s1e02f457b4": "Funciona en la aplicación o a través de un puente casero",
- "@s1e02f457b4": {
-  "x-mt": true
- },
- "s2bb8fceaf7": "Escenas",
- "@s2bb8fceaf7": {
-  "x-mt": true
- },
  "sdd483f7f78": "Falta la clave del dispositivo",
  "@sdd483f7f78": {
   "x-mt": true
@@ -10247,6 +10212,35 @@
  "@sd936bbcc2d": {
   "x-mt": true
  },
+ "s1a9acfbc67": "Luz {p0}",
+ "@s1a9acfbc67": {
+  "x-mt": true
+ },
+ "s5d0fb602f6": "Cover{p0}",
+ "@s5d0fb602f6": {
+  "x-mt": true
+ },
+ "s82ecc12a66": "Temperatura {p0} (add-on)",
+ "@s82ecc12a66": {
+  "x-mt": true
+ },
+ "s8b234e1a6f": "iluminancia",
+ "@s8b234e1a6f": {
+  "x-mt": true
+ },
+ "sf34c97592f": "IKEA Dirigera",
+ "sb38eac6a87": "IKEA smart hub y sus luces y enchufes (Zigbee). Pare con el botón en el centro.",
+ "@sb38eac6a87": {
+  "x-mt": true
+ },
+ "s4e92ab791e": "En la aplicación inteligente IKEA Home: Ajustes → Hub → Dirección IP. O en la lista de dispositivos del router: \"gw2-...\" o \"dirigera\".",
+ "@s4e92ab791e": {
+  "x-mt": true
+ },
+ "s73824fc3d0": "Presione el botón de acción en la parte inferior del centro de Dirigera una vez ahora.",
+ "@s73824fc3d0": {
+  "x-mt": true
+ },
  "s92d24d0543": "Blind",
  "@s92d24d0543": {
   "x-mt": true
@@ -10255,6 +10249,7 @@
  "@s7727759a28": {
   "x-mt": true
  },
+ "sda8d9bf1cd": "Enchufe",
  "s06444f278d": "posición (100 = cerrada)",
  "@s06444f278d": {
   "x-mt": true
@@ -10265,6 +10260,194 @@
  },
  "s7fc017b0f0": "cerca",
  "@s7fc017b0f0": {
+  "x-mt": true
+ },
+ "s11d9226341": "Android TV / Google TV (remoción)",
+ "@s11d9226341": {
+  "x-mt": true
+ },
+ "s0992ee68bf": "Sony, Philips, TCL, Xiaomi, Chromecast con Google TV...: potencia, volumen, muda, canales, teclas de flecha y la aplicación abierta. Parejas con un código mostrado en la TV.",
+ "@s0992ee68bf": {
+  "x-mt": true
+ },
+ "s8a14ae9518": "TV: Ajustes → Red &amp; Internet → (network) → Dirección IP. O Google Home app → dispositivo → Información del dispositivo.",
+ "@s8a14ae9518": {
+  "x-mt": true
+ },
+ "s714e6f6143": "La TV muestra un código de seis caracteres (digitos y letras A–F) – escriba aquí.",
+ "@s714e6f6143": {
+  "x-mt": true
+ },
+ "sd92171df4d": "Se muestra en la pantalla de TV durante el emparejado.",
+ "@sd92171df4d": {
+  "x-mt": true
+ },
+ "s8f7a93b1ea": "Sonos altavoces y barras sonoras: volumen, mute, play/pause, siguiente y ahora jugando. Directamente sobre la red de la casa, sin cuenta.",
+ "@s8f7a93b1ea": {
+  "x-mt": true
+ },
+ "s1cf843ef3e": "Sonos app → Configuración → Sistema → Acerca de Mi Sistema → Dirección IP.",
+ "@s1cf843ef3e": {
+  "x-mt": true
+ },
+ "s406bfe2259": "Jugadores Roku y Roku TVs: llaves, volumen +/−, mute, play/pause, la aplicación abierta; en Roku TVs también potencia y canales.",
+ "@s406bfe2259": {
+  "x-mt": true
+ },
+ "sb4f88e9b1b": "Roku: Ajustes → Red → Acerca → Dirección IP. Permitir el control: Ajustes → Sistema → Configuración avanzada del sistema → Control por aplicaciones móviles → Activado.",
+ "@sb4f88e9b1b": {
+  "x-mt": true
+ },
+ "sebd2ee78b0": "Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos y Roku: potencia, volumen, canales y reproducción.",
+ "@sebd2ee78b0": {
+  "x-mt": true
+ },
+ "s7594076cbd": "fracasado",
+ "@s7594076cbd": {
+  "x-mt": true
+ },
+ "s01c48d363e": "Sonos no alcanzable",
+ "@s01c48d363e": {
+  "x-mt": true
+ },
+ "sc49795d7d1": "no un dispositivo Sonos",
+ "@sc49795d7d1": {
+  "x-mt": true
+ },
+ "s89541675fe": "Línea-en",
+ "@s89541675fe": {
+  "x-mt": true
+ },
+ "sdd6a5ac9b8": "Sonos no tiene canales",
+ "@sdd6a5ac9b8": {
+  "x-mt": true
+ },
+ "s0249d39100": "pares necesarios",
+ "@s0249d39100": {
+  "x-mt": true
+ },
+ "s536792efd0": "Código incorrecto",
+ "@s536792efd0": {
+  "x-mt": true
+ },
+ "s4a67144434": "pareja no comenzó",
+ "@s4a67144434": {
+  "x-mt": true
+ },
+ "s3f514c9aa2": "El código tiene 6 caracteres (0–9, A–F)",
+ "@s3f514c9aa2": {
+  "x-mt": true
+ },
+ "sb3712c846c": "Pare el Android TV primero (código en la TV)",
+ "@sb3712c846c": {
+  "x-mt": true
+ },
+ "sc7cbbc343d": "El Android TV se negó – pareado necesario",
+ "@sc7cbbc343d": {
+  "x-mt": true
+ },
+ "s85bb00e885": "La TV no reporta volumen",
+ "@s85bb00e885": {
+  "x-mt": true
+ },
+ "s22e7286858": "TV Android y Google TVs: Reparto (estado, volumen, reproducción) o el protocolo remoto (keys, canales, potencia; código de emparejamiento).",
+ "@s22e7286858": {
+  "x-mt": true
+ },
+ "sa14b4d0a62": "Certificado de cliente (Android TV)",
+ "@sa14b4d0a62": {
+  "x-mt": true
+ },
+ "sb6b8ce62e4": "El propio certificado de Molaplan que el televisor aceptó durante el emparejamiento. Almacenó en este dispositivo solamente.",
+ "@sb6b8ce62e4": {
+  "x-mt": true
+ },
+ "s55c0154762": "Clave de cliente (Android TV)",
+ "@s55c0154762": {
+  "x-mt": true
+ },
+ "s49678d6bba": "La llave privada del certificado, guardada sólo en este dispositivo.",
+ "@s49678d6bba": {
+  "x-mt": true
+ },
+ "sbefd940b7e": "Canal (valor = número)",
+ "@sbefd940b7e": {
+  "x-mt": true
+ },
+ "s8028880bf9": "Aplicación abierta (Android TV, valor = enlace)",
+ "@s8028880bf9": {
+  "x-mt": true
+ },
+ "sd61993184d": "Anterior",
+ "@sd61993184d": {
+  "x-mt": true
+ },
+ "sd46979cb3c": "Mute on/off",
+ "@sd46979cb3c": {
+  "x-mt": true
+ },
+ "s9c350b0f5e": "Canal +",
+ "@s9c350b0f5e": {
+  "x-mt": true
+ },
+ "s66136ee35f": "Canal −",
+ "@s66136ee35f": {
+  "x-mt": true
+ },
+ "s09e8d49ceb": "Abajo",
+ "@s09e8d49ceb": {
+  "x-mt": true
+ },
+ "s34e61d8a2f": "Izquierda",
+ "@s34e61d8a2f": {
+  "x-mt": true
+ },
+ "s365a1e8626": "Bien",
+ "@s365a1e8626": {
+  "x-mt": true
+ },
+ "s8cbc3f33aa": "La clave del poder",
+ "@s8cbc3f33aa": {
+  "x-mt": true
+ },
+ "s483f02b584": "Aplicación abierta necesita la conexión remota de Android TV",
+ "@s483f02b584": {
+  "x-mt": true
+ },
+ "s9df7f078c6": "Roku no alcanzable",
+ "@s9df7f078c6": {
+  "x-mt": true
+ },
+ "s0dc1e158bc": "Control de bloques Roku: Ajustes → Sistema → Ajustes avanzados del sistema → Control por aplicaciones móviles → Activado",
+ "@s0dc1e158bc": {
+  "x-mt": true
+ },
+ "s58d9f3b1b1": "no un dispositivo Roku",
+ "@s58d9f3b1b1": {
+  "x-mt": true
+ },
+ "sd44e043ccc": "Roku no tiene volumen absoluto – utilizar volumen +/−",
+ "@sd44e043ccc": {
+  "x-mt": true
+ },
+ "sbeb26f2b64": "Número de canal desaparecido",
+ "@sbeb26f2b64": {
+  "x-mt": true
+ },
+ "s512db00a17": "Estado, potencia, volumen, muda, canales y reproducción como tarjetas y para automatizaciones – directamente sobre la red de la casa, sin nube y sin asistente de casa. Android TV y Google TV: Chromecast (estadio y volumen) o el remoto (keys, canales, potencia).",
+ "@s512db00a17": {
+  "x-mt": true
+ },
+ "s5bfb23a680": "Vacunas de robot",
+ "@s5bfb23a680": {
+  "x-mt": true
+ },
+ "sc9735275b2": "Válvulas",
+ "@sc9735275b2": {
+  "x-mt": true
+ },
+ "s28cdff43bf": "Humidificadores",
+ "@s28cdff43bf": {
   "x-mt": true
  }
 }

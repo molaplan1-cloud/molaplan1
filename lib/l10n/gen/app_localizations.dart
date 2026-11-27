@@ -200,17 +200,131 @@ abstract class AppLocalizations {
   /// **'Shown on the TV screen for about a minute.'**
   String get s0ec3e3e11d;
 
+  /// fi: Android TV / Google TV (kaukosäädin)
+  ///
+  /// In en, this message translates to:
+  /// **'Android TV / Google TV (remote)'**
+  String get s11d9226341;
+
+  /// fi: Sony, Philips, TCL, Xiaomi, Chromecast with Google TV…: virta, äänenvoimakkuus, mykistys, kanavat, nuolinäppäimet ja avo
+  ///
+  /// In en, this message translates to:
+  /// **'Sony, Philips, TCL, Xiaomi, Chromecast with Google TV…: power, volume, mute, channels, arrow keys and the open app. Pairs with a code shown on the TV.'**
+  String get s0992ee68bf;
+
+  /// fi: TV: Asetukset → Verkko ja Internet → (verkko) → IP-osoite. Tai Google Home -sovellus → laite → Laitteen tiedot.
+  ///
+  /// In en, this message translates to:
+  /// **'TV: Settings → Network & Internet → (network) → IP address. Or Google Home app → device → Device information.'**
+  String get s8a14ae9518;
+
+  /// fi: Televisioon ilmestyy kuusimerkkinen koodi (numerot ja kirjaimet A–F) – kirjoita se tähän.
+  ///
+  /// In en, this message translates to:
+  /// **'The TV shows a six-character code (digits and letters A–F) – type it here.'**
+  String get s714e6f6143;
+
+  /// fi: Näkyy television ruudulla parituksen ajan.
+  ///
+  /// In en, this message translates to:
+  /// **'Shown on the TV screen during pairing.'**
+  String get sd92171df4d;
+
+  /// fi: Sonos
+  ///
+  /// In en, this message translates to:
+  /// **'Sonos'**
+  String get s6db078dbe3;
+
+  /// fi: Sonos-kaiuttimet ja -soundbarit: äänenvoimakkuus, mykistys, toisto/tauko, seuraava ja mitä soi. Suoraan kotiverkossa, ei
+  ///
+  /// In en, this message translates to:
+  /// **'Sonos speakers and soundbars: volume, mute, play/pause, next and now playing. Straight over the home network, no account.'**
+  String get s8f7a93b1ea;
+
+  /// fi: Sonos-sovellus → Asetukset → Järjestelmä → Tietoja järjestelmästäni → IP-osoite.
+  ///
+  /// In en, this message translates to:
+  /// **'Sonos app → Settings → System → About My System → IP address.'**
+  String get s1cf843ef3e;
+
+  /// fi: Roku
+  ///
+  /// In en, this message translates to:
+  /// **'Roku'**
+  String get s01d549ef4d;
+
+  /// fi: Roku-soittimet ja Roku TV:t: näppäimet, ääni +/−, mykistys, toisto/tauko, avoin sovellus; Roku TV:ssä myös virta ja kana
+  ///
+  /// In en, this message translates to:
+  /// **'Roku players and Roku TVs: keys, volume +/−, mute, play/pause, the open app; on Roku TVs also power and channels.'**
+  String get s406bfe2259;
+
+  /// fi: Roku: Asetukset → Verkko → Tietoja → IP-osoite. Salli ohjaus: Asetukset → Järjestelmä → Järjestelmän lisäasetukset → Ohj
+  ///
+  /// In en, this message translates to:
+  /// **'Roku: Settings → Network → About → IP address. Allow control: Settings → System → Advanced system settings → Control by mobile apps → Enabled.'**
+  String get sb4f88e9b1b;
+
   /// fi: TV ja Chromecast
   ///
   /// In en, this message translates to:
   /// **'TV and Chromecast'**
   String get sd3b85fadc0;
 
-  /// fi: Samsung, LG, Philips, Android TV / Google TV ja Chromecast: virta, ääni ja toisto.
+  /// fi: Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos ja Roku: virta, ääni, kanavat ja toisto.
   ///
   /// In en, this message translates to:
-  /// **'Samsung, LG, Philips, Android TV / Google TV and Chromecast: power, volume and playback.'**
-  String get sb34763a1f3;
+  /// **'Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos and Roku: power, volume, channels and playback.'**
+  String get sebd2ee78b0;
+
+  /// fi: RenderingControl
+  ///
+  /// In en, this message translates to:
+  /// **'/MediaRenderer/RenderingControl/Control'**
+  String get s50eb745165;
+
+  /// fi: AVTransport
+  ///
+  /// In en, this message translates to:
+  /// **'/MediaRenderer/AVTransport/Control'**
+  String get s9e4f134628;
+
+  /// fi: ZoneGroupTopology
+  ///
+  /// In en, this message translates to:
+  /// **'/ZoneGroupTopology/Control'**
+  String get s77251a38d3;
+
+  /// fi: epäonnistui
+  ///
+  /// In en, this message translates to:
+  /// **'failed'**
+  String get s7594076cbd;
+
+  /// fi: Sonokseen ei saatu yhteyttä
+  ///
+  /// In en, this message translates to:
+  /// **'Sonos not reachable'**
+  String get s01c48d363e;
+
+  /// fi: ei Sonos-laite
+  ///
+  /// In en, this message translates to:
+  /// **'not a Sonos device'**
+  String get sc49795d7d1;
+
+  /// fi: Linjasisääntulo
+  ///
+  /// In en, this message translates to:
+  /// **'Line-in'**
+  String get s89541675fe;
+
+  /// fi: Sonoksessa ei ole kanavia
+  ///
+  /// In en, this message translates to:
+  /// **'Sonos has no channels'**
+  String get sdd6a5ac9b8;
 
   /// fi: Chromecastia ei voi käynnistää etänä
   ///
@@ -223,6 +337,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Nothing is playing'**
   String get sd8167370bc;
+
+  /// fi: paritus tarvitaan
+  ///
+  /// In en, this message translates to:
+  /// **'pairing needed'**
+  String get s0249d39100;
+
+  /// fi: televisioon ei saatu yhteyttä
+  ///
+  /// In en, this message translates to:
+  /// **'TV not reachable'**
+  String get se5b2692112;
+
+  /// fi: Väärä koodi
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong code'**
+  String get s536792efd0;
+
+  /// fi: paritus ei alkanut
+  ///
+  /// In en, this message translates to:
+  /// **'pairing did not start'**
+  String get s4a67144434;
+
+  /// fi: Koodissa on 6 merkkiä (0–9, A–F)
+  ///
+  /// In en, this message translates to:
+  /// **'The code has 6 characters (0–9, A–F)'**
+  String get s3f514c9aa2;
+
+  /// fi: Android TV pitää parittaa (koodi televisiosta)
+  ///
+  /// In en, this message translates to:
+  /// **'Pair the Android TV first (code on the TV)'**
+  String get sb3712c846c;
+
+  /// fi: Android TV ei hyväksynyt yhteyttä – paritus tarvitaan
+  ///
+  /// In en, this message translates to:
+  /// **'The Android TV refused – pairing needed'**
+  String get sc7cbbc343d;
+
+  /// fi: Televisio ei kerro äänenvoimakkuutta
+  ///
+  /// In en, this message translates to:
+  /// **'The TV does not report volume'**
+  String get s85bb00e885;
 
   /// fi: Televisio hylkäsi yhteyden – salli Molaplan TV:n kehotteesta
   ///
@@ -272,11 +434,11 @@ abstract class AppLocalizations {
   /// **'Brand'**
   String get s1c9df5579f;
 
-  /// fi: Android TV:t ja Google TV:t ohjataan Cast-yhteydellä (Chromecast built-in).
+  /// fi: Android TV:t ja Google TV:t: Cast (tila, ääni, toisto) tai kaukosäädin-yhteys (näppäimet, kanavat, virta; paritus koodil
   ///
   /// In en, this message translates to:
-  /// **'Android TVs and Google TVs are controlled over Cast (Chromecast built-in).'**
-  String get s406f4e67a2;
+  /// **'Android TVs and Google TVs: Cast (status, volume, playback) or the remote protocol (keys, channels, power; pairing code).'**
+  String get s22e7286858;
 
   /// fi: IP-osoite
   ///
@@ -361,6 +523,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'LG returns it when you accept the connection on the TV. Stored on this device only.'**
   String get s8b34eb0ec5;
+
+  /// fi: Asiakasvarmenne (Android TV)
+  ///
+  /// In en, this message translates to:
+  /// **'Client certificate (Android TV)'**
+  String get sa14b4d0a62;
+
+  /// fi: Molaplanin oma varmenne, jonka televisio hyväksyi parituksessa. Tallentuu vain tälle laitteelle.
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan\'\'s own certificate that the TV accepted during pairing. Stored on this device only.'**
+  String get sb6b8ce62e4;
+
+  /// fi: Asiakasavain (Android TV)
+  ///
+  /// In en, this message translates to:
+  /// **'Client key (Android TV)'**
+  String get s55c0154762;
+
+  /// fi: Varmenteen yksityinen avain. Tallentuu vain tälle laitteelle.
+  ///
+  /// In en, this message translates to:
+  /// **'The certificate\'\'s private key. Stored on this device only.'**
+  String get s49678d6bba;
 
   /// fi: Lukema
   ///
@@ -452,11 +638,89 @@ abstract class AppLocalizations {
   /// **'Key'**
   String get sdce14191c7;
 
+  /// fi: Kanava (arvo = numero)
+  ///
+  /// In en, this message translates to:
+  /// **'Channel (value = number)'**
+  String get sbefd940b7e;
+
+  /// fi: Avaa sovellus (Android TV, arvo = linkki)
+  ///
+  /// In en, this message translates to:
+  /// **'Open app (Android TV, value = link)'**
+  String get s8028880bf9;
+
   /// fi: Vain komennolle "Näppäin".
   ///
   /// In en, this message translates to:
   /// **'Only for the \"Key\" command.'**
   String get sc91823aedb;
+
+  /// fi: Seuraava
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get s6c3e76828b;
+
+  /// fi: Edellinen
+  ///
+  /// In en, this message translates to:
+  /// **'Previous'**
+  String get sd61993184d;
+
+  /// fi: Mykistys päälle/pois
+  ///
+  /// In en, this message translates to:
+  /// **'Mute on/off'**
+  String get sd46979cb3c;
+
+  /// fi: Kanava +
+  ///
+  /// In en, this message translates to:
+  /// **'Channel +'**
+  String get s9c350b0f5e;
+
+  /// fi: Kanava −
+  ///
+  /// In en, this message translates to:
+  /// **'Channel −'**
+  String get s66136ee35f;
+
+  /// fi: Ylös
+  ///
+  /// In en, this message translates to:
+  /// **'Up'**
+  String get sf936d0b01d;
+
+  /// fi: Alas
+  ///
+  /// In en, this message translates to:
+  /// **'Down'**
+  String get s09e8d49ceb;
+
+  /// fi: Vasemmalle
+  ///
+  /// In en, this message translates to:
+  /// **'Left'**
+  String get s34e61d8a2f;
+
+  /// fi: Oikealle
+  ///
+  /// In en, this message translates to:
+  /// **'Right'**
+  String get s365a1e8626;
+
+  /// fi: OK
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get s183ed60009;
+
+  /// fi: Virtanäppäin
+  ///
+  /// In en, this message translates to:
+  /// **'Power key'**
+  String get s8cbc3f33aa;
 
   /// fi: Toista / tauko
   ///
@@ -512,6 +776,12 @@ abstract class AppLocalizations {
   /// **'Volume missing'**
   String get s94e14089d6;
 
+  /// fi: Sovelluksen avaus toimii vain Android TV -yhteydellä
+  ///
+  /// In en, this message translates to:
+  /// **'Open app needs the Android TV remote connection'**
+  String get s483f02b584;
+
   /// fi: ääni
   ///
   /// In en, this message translates to:
@@ -553,6 +823,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Accept the connection on the TV and try again'**
   String get sbfbb3d52b3;
+
+  /// fi: Rokuun ei saatu yhteyttä
+  ///
+  /// In en, this message translates to:
+  /// **'Roku not reachable'**
+  String get s9df7f078c6;
+
+  /// fi: Roku estää ohjauksen: Asetukset → Järjestelmä → Järjestelmän lisäasetukset → Ohjaus mobiilisovelluksilla → Käytössä
+  ///
+  /// In en, this message translates to:
+  /// **'Roku blocks control: Settings → System → Advanced system settings → Control by mobile apps → Enabled'**
+  String get s0dc1e158bc;
+
+  /// fi: ei Roku-laite
+  ///
+  /// In en, this message translates to:
+  /// **'not a Roku device'**
+  String get s58d9f3b1b1;
+
+  /// fi: Roku ei tue äänenvoimakkuuden asettamista – käytä ääni +/− -painikkeita
+  ///
+  /// In en, this message translates to:
+  /// **'Roku has no absolute volume – use volume +/−'**
+  String get sd44e043ccc;
 
   /// fi: Televisio vaatii parituksen
   ///
@@ -608,11 +902,11 @@ abstract class AppLocalizations {
   /// **'Idle'**
   String get s4e1ea0bc65;
 
-  /// fi: televisioon ei saatu yhteyttä
+  /// fi: Kanavan numero puuttuu
   ///
   /// In en, this message translates to:
-  /// **'TV not reachable'**
-  String get se5b2692112;
+  /// **'Channel number missing'**
+  String get sbeb26f2b64;
 
   /// fi: {p0} ruutua lisätty
   ///
@@ -2306,12 +2600,6 @@ abstract class AppLocalizations {
   /// **'Tile name'**
   String get sc8d1abbd21;
 
-  /// fi: OK
-  ///
-  /// In en, this message translates to:
-  /// **'OK'**
-  String get s183ed60009;
-
   /// fi: Osoite: {p0}
   ///
   /// In en, this message translates to:
@@ -2690,11 +2978,11 @@ abstract class AppLocalizations {
   /// **'Which TV or device?'**
   String get se5084a149d;
 
-  /// fi: Tila, virta, äänenvoimakkuus, mykistys ja toisto ruutuihin ja automaatioihin – suoraan kotiverkossa, ilman pilveä ja ilm
+  /// fi: Tila, virta, äänenvoimakkuus, mykistys, kanavat ja toisto ruutuihin ja automaatioihin – suoraan kotiverkossa, ilman pilv
   ///
   /// In en, this message translates to:
-  /// **'Status, power, volume, mute and playback as tiles and for automations – straight over the home network, no cloud and no Home Assistant. Android TV and Google TV: pick Chromecast.'**
-  String get s43a563c3a0;
+  /// **'Status, power, volume, mute, channels and playback as tiles and for automations – straight over the home network, no cloud and no Home Assistant. Android TV and Google TV: Chromecast (status and volume) or the remote (keys, channels, power).'**
+  String get s512db00a17;
 
   /// fi: Sähkön hinta
   ///
@@ -6284,12 +6572,6 @@ abstract class AppLocalizations {
   /// **'Use these'**
   String get sda588a203b;
 
-  /// fi: Seuraava
-  ///
-  /// In en, this message translates to:
-  /// **'Next'**
-  String get s6c3e76828b;
-
   /// fi: ei vielä
   ///
   /// In en, this message translates to:
@@ -7003,12 +7285,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Else'**
   String get s2d983e951b;
-
-  /// fi: Ylös
-  ///
-  /// In en, this message translates to:
-  /// **'Up'**
-  String get sf936d0b01d;
 
   /// fi: Uusi skripti
   ///
@@ -11313,6 +11589,24 @@ abstract class AppLocalizations {
   /// **'Media players'**
   String get sea20d169a3;
 
+  /// fi: Robotti-imurit
+  ///
+  /// In en, this message translates to:
+  /// **'Robot vacuums'**
+  String get s5bfb23a680;
+
+  /// fi: Venttiilit
+  ///
+  /// In en, this message translates to:
+  /// **'Valves'**
+  String get sc9735275b2;
+
+  /// fi: Ilmankostuttimet
+  ///
+  /// In en, this message translates to:
+  /// **'Humidifiers'**
+  String get s28cdff43bf;
+
   /// fi: Tunnus (token) ei kelpaa. Luo uusi Home Assistantissa.
   ///
   /// In en, this message translates to:
@@ -14902,6 +15196,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming'**
   String get s64d4364336;
+
+  /// fi: playing=Toistaa;paused=Tauolla;idle=Valmiina;on=Päällä;off=Pois;standby=Valmiustila;buffering=Latautuu;unavailable=Ei yh
+  ///
+  /// In en, this message translates to:
+  /// **'playing=Playing;paused=Paused;idle=Idle;on=On;off=Off;standby=Standby;buffering=Buffering;unavailable=Unavailable'**
+  String get s73720edff0;
+
+  /// fi: cleaning=Imuroi;docked=Telakassa;returning=Palaa telakkaan;idle=Valmiina;paused=Tauolla;error=VIRHE
+  ///
+  /// In en, this message translates to:
+  /// **'cleaning=Cleaning;docked=Docked;returning=Returning;idle=Idle;paused=Paused;error=ERROR'**
+  String get s2df1d5947c;
 
   /// fi: on=Päällä;off=Pois
   ///

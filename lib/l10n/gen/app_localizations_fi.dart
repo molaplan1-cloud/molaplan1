@@ -69,17 +69,106 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s0ec3e3e11d => 'Näkyy television ruudulla noin minuutin.';
 
   @override
+  String get s11d9226341 => 'Android TV / Google TV (kaukosäädin)';
+
+  @override
+  String get s0992ee68bf =>
+      'Sony, Philips, TCL, Xiaomi, Chromecast with Google TV…: virta, äänenvoimakkuus, mykistys, kanavat, nuolinäppäimet ja avoin sovellus. Paritus television näyttämällä koodilla.';
+
+  @override
+  String get s8a14ae9518 =>
+      'TV: Asetukset → Verkko ja Internet → (verkko) → IP-osoite. Tai Google Home -sovellus → laite → Laitteen tiedot.';
+
+  @override
+  String get s714e6f6143 =>
+      'Televisioon ilmestyy kuusimerkkinen koodi (numerot ja kirjaimet A–F) – kirjoita se tähän.';
+
+  @override
+  String get sd92171df4d => 'Näkyy television ruudulla parituksen ajan.';
+
+  @override
+  String get s6db078dbe3 => 'Sonos';
+
+  @override
+  String get s8f7a93b1ea =>
+      'Sonos-kaiuttimet ja -soundbarit: äänenvoimakkuus, mykistys, toisto/tauko, seuraava ja mitä soi. Suoraan kotiverkossa, ei tiliä.';
+
+  @override
+  String get s1cf843ef3e =>
+      'Sonos-sovellus → Asetukset → Järjestelmä → Tietoja järjestelmästäni → IP-osoite.';
+
+  @override
+  String get s01d549ef4d => 'Roku';
+
+  @override
+  String get s406bfe2259 =>
+      'Roku-soittimet ja Roku TV:t: näppäimet, ääni +/−, mykistys, toisto/tauko, avoin sovellus; Roku TV:ssä myös virta ja kanavat.';
+
+  @override
+  String get sb4f88e9b1b =>
+      'Roku: Asetukset → Verkko → Tietoja → IP-osoite. Salli ohjaus: Asetukset → Järjestelmä → Järjestelmän lisäasetukset → Ohjaus mobiilisovelluksilla → Käytössä.';
+
+  @override
   String get sd3b85fadc0 => 'TV ja Chromecast';
 
   @override
-  String get sb34763a1f3 =>
-      'Samsung, LG, Philips, Android TV / Google TV ja Chromecast: virta, ääni ja toisto.';
+  String get sebd2ee78b0 =>
+      'Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos ja Roku: virta, ääni, kanavat ja toisto.';
+
+  @override
+  String get s50eb745165 => 'RenderingControl';
+
+  @override
+  String get s9e4f134628 => 'AVTransport';
+
+  @override
+  String get s77251a38d3 => 'ZoneGroupTopology';
+
+  @override
+  String get s7594076cbd => 'epäonnistui';
+
+  @override
+  String get s01c48d363e => 'Sonokseen ei saatu yhteyttä';
+
+  @override
+  String get sc49795d7d1 => 'ei Sonos-laite';
+
+  @override
+  String get s89541675fe => 'Linjasisääntulo';
+
+  @override
+  String get sdd6a5ac9b8 => 'Sonoksessa ei ole kanavia';
 
   @override
   String get sbd92a41506 => 'Chromecastia ei voi käynnistää etänä';
 
   @override
   String get sd8167370bc => 'Mitään ei toisteta';
+
+  @override
+  String get s0249d39100 => 'paritus tarvitaan';
+
+  @override
+  String get se5b2692112 => 'televisioon ei saatu yhteyttä';
+
+  @override
+  String get s536792efd0 => 'Väärä koodi';
+
+  @override
+  String get s4a67144434 => 'paritus ei alkanut';
+
+  @override
+  String get s3f514c9aa2 => 'Koodissa on 6 merkkiä (0–9, A–F)';
+
+  @override
+  String get sb3712c846c => 'Android TV pitää parittaa (koodi televisiosta)';
+
+  @override
+  String get sc7cbbc343d =>
+      'Android TV ei hyväksynyt yhteyttä – paritus tarvitaan';
+
+  @override
+  String get s85bb00e885 => 'Televisio ei kerro äänenvoimakkuutta';
 
   @override
   String get sd42552b5c1 =>
@@ -108,8 +197,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s1c9df5579f => 'Merkki';
 
   @override
-  String get s406f4e67a2 =>
-      'Android TV:t ja Google TV:t ohjataan Cast-yhteydellä (Chromecast built-in).';
+  String get s22e7286858 =>
+      'Android TV:t ja Google TV:t: Cast (tila, ääni, toisto) tai kaukosäädin-yhteys (näppäimet, kanavat, virta; paritus koodilla).';
 
   @override
   String get s178e07f06b => 'IP-osoite';
@@ -160,6 +249,20 @@ class AppLocalizationsFi extends AppLocalizations {
       'LG antaa avaimen, kun hyväksyt yhteyden televisiosta. Tallentuu vain tälle laitteelle.';
 
   @override
+  String get sa14b4d0a62 => 'Asiakasvarmenne (Android TV)';
+
+  @override
+  String get sb6b8ce62e4 =>
+      'Molaplanin oma varmenne, jonka televisio hyväksyi parituksessa. Tallentuu vain tälle laitteelle.';
+
+  @override
+  String get s55c0154762 => 'Asiakasavain (Android TV)';
+
+  @override
+  String get s49678d6bba =>
+      'Varmenteen yksityinen avain. Tallentuu vain tälle laitteelle.';
+
+  @override
   String get sbdf670977b => 'Lukema';
 
   @override
@@ -206,7 +309,46 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sdce14191c7 => 'Näppäin';
 
   @override
+  String get sbefd940b7e => 'Kanava (arvo = numero)';
+
+  @override
+  String get s8028880bf9 => 'Avaa sovellus (Android TV, arvo = linkki)';
+
+  @override
   String get sc91823aedb => 'Vain komennolle \"Näppäin\".';
+
+  @override
+  String get s6c3e76828b => 'Seuraava';
+
+  @override
+  String get sd61993184d => 'Edellinen';
+
+  @override
+  String get sd46979cb3c => 'Mykistys päälle/pois';
+
+  @override
+  String get s9c350b0f5e => 'Kanava +';
+
+  @override
+  String get s66136ee35f => 'Kanava −';
+
+  @override
+  String get sf936d0b01d => 'Ylös';
+
+  @override
+  String get s09e8d49ceb => 'Alas';
+
+  @override
+  String get s34e61d8a2f => 'Vasemmalle';
+
+  @override
+  String get s365a1e8626 => 'Oikealle';
+
+  @override
+  String get s183ed60009 => 'OK';
+
+  @override
+  String get s8cbc3f33aa => 'Virtanäppäin';
 
   @override
   String get sdac8f8b638 => 'Toista / tauko';
@@ -236,6 +378,10 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s94e14089d6 => 'Äänenvoimakkuus puuttuu';
 
   @override
+  String get s483f02b584 =>
+      'Sovelluksen avaus toimii vain Android TV -yhteydellä';
+
+  @override
   String get s5d5363db20 => 'ääni';
 
   @override
@@ -255,6 +401,20 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sbfbb3d52b3 => 'Hyväksy yhteys televisiosta ja yritä uudelleen';
+
+  @override
+  String get s9df7f078c6 => 'Rokuun ei saatu yhteyttä';
+
+  @override
+  String get s0dc1e158bc =>
+      'Roku estää ohjauksen: Asetukset → Järjestelmä → Järjestelmän lisäasetukset → Ohjaus mobiilisovelluksilla → Käytössä';
+
+  @override
+  String get s58d9f3b1b1 => 'ei Roku-laite';
+
+  @override
+  String get sd44e043ccc =>
+      'Roku ei tue äänenvoimakkuuden asettamista – käytä ääni +/− -painikkeita';
 
   @override
   String get sf2993f0346 => 'Televisio vaatii parituksen';
@@ -286,7 +446,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s4e1ea0bc65 => 'Valmiina';
 
   @override
-  String get se5b2692112 => 'televisioon ei saatu yhteyttä';
+  String get sbeb26f2b64 => 'Kanavan numero puuttuu';
 
   @override
   String s095ca83913(String p0) {
@@ -1238,9 +1398,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sc8d1abbd21 => 'Ruudun nimi';
 
   @override
-  String get s183ed60009 => 'OK';
-
-  @override
   String s1ea8fe913b(String p0) {
     return 'Osoite: $p0';
   }
@@ -1452,8 +1609,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get se5084a149d => 'Mikä televisio tai laite?';
 
   @override
-  String get s43a563c3a0 =>
-      'Tila, virta, äänenvoimakkuus, mykistys ja toisto ruutuihin ja automaatioihin – suoraan kotiverkossa, ilman pilveä ja ilman Home Assistantia. Android TV ja Google TV: valitse Chromecast.';
+  String get s512db00a17 =>
+      'Tila, virta, äänenvoimakkuus, mykistys, kanavat ja toisto ruutuihin ja automaatioihin – suoraan kotiverkossa, ilman pilveä ja ilman Home Assistantia. Android TV ja Google TV: Chromecast (tila ja ääni) tai kaukosäädin (näppäimet, kanavat, virta).';
 
   @override
   String get sca7e088857 => 'Sähkön hinta';
@@ -3441,9 +3598,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sda588a203b => 'Ota käyttöön';
 
   @override
-  String get s6c3e76828b => 'Seuraava';
-
-  @override
   String get sba1684ff6c => 'ei vielä';
 
   @override
@@ -3816,9 +3970,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s2d983e951b => 'Muuten';
-
-  @override
-  String get sf936d0b01d => 'Ylös';
 
   @override
   String get s2c7a2bbac1 => 'Uusi skripti';
@@ -6198,6 +6349,15 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sea20d169a3 => 'Mediasoittimet';
 
   @override
+  String get s5bfb23a680 => 'Robotti-imurit';
+
+  @override
+  String get sc9735275b2 => 'Venttiilit';
+
+  @override
+  String get s28cdff43bf => 'Ilmankostuttimet';
+
+  @override
   String get sbcb95e1e78 =>
       'Tunnus (token) ei kelpaa. Luo uusi Home Assistantissa.';
 
@@ -8287,6 +8447,14 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s64d4364336 =>
       'disarmed=Pois;armed_away=Päällä;armed_home=Kotona;armed_night=Yö;triggered=HÄLYTYS;arming=Kytkeytyy';
+
+  @override
+  String get s73720edff0 =>
+      'playing=Toistaa;paused=Tauolla;idle=Valmiina;on=Päällä;off=Pois;standby=Valmiustila;buffering=Latautuu;unavailable=Ei yhteyttä';
+
+  @override
+  String get s2df1d5947c =>
+      'cleaning=Imuroi;docked=Telakassa;returning=Palaa telakkaan;idle=Valmiina;paused=Tauolla;error=VIRHE';
 
   @override
   String get s5b1e227dc4 => 'on=Päällä;off=Pois';

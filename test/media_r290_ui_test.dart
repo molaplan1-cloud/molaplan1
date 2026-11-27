@@ -35,31 +35,34 @@ class _Tv extends MediaBackend {
 void main() {
   tearDown(() => mediaTestBackend = null);
 
-  testWidgets('gallery: "TV ja Chromecast" → four local brands + Home Assistant option', (tester) async {
-    tester.view.physicalSize = const Size(1000, 2400);
-    tester.view.devicePixelRatio = 1;
-    addTearDown(tester.view.reset);
-    final st = await appState(tester);
-    await tester.pumpWidget(host(st, const TemplateGalleryPage()));
-    await tester.pumpAndSettle();
-    await tester.enterText(find.byKey(const ValueKey('brand-search')), 'webos');
-    await tester.pumpAndSettle();
-    await tester.tap(find.byKey(const ValueKey('brand-media')));
-    await tester.pumpAndSettle();
-    expect(find.text('Mikä televisio tai laite?'), findsOneWidget);
-    for (final p in mediaProviders) {
-      expect(find.byKey(ValueKey('media-brand-${p.id}')), findsOneWidget);
-    }
-    await tester.scrollUntilVisible(
-      find.byKey(const ValueKey('media-not-yet')),
-      200,
-      scrollable: find.byType(Scrollable).last,
-    );
-    await tester.tap(find.byKey(const ValueKey('media-not-yet')));
-    await tester.pumpAndSettle();
-    expect(find.text('Home Assistantin kautta'), findsOneWidget);
-    expect(find.textContaining('Android TV Remote'), findsOneWidget);
-  });
+  testWidgets(
+    'gallery: "TV ja Chromecast" → local brands (R324: + Android TV remote, Sonos, Roku) + Home Assistant option',
+    (tester) async {
+      tester.view.physicalSize = const Size(1000, 2400);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      final st = await appState(tester);
+      await tester.pumpWidget(host(st, const TemplateGalleryPage()));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byKey(const ValueKey('brand-search')), 'webos');
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('brand-media')));
+      await tester.pumpAndSettle();
+      expect(find.text('Mikä televisio tai laite?'), findsOneWidget);
+      for (final p in mediaProviders) {
+        expect(find.byKey(ValueKey('media-brand-${p.id}')), findsOneWidget);
+      }
+      await tester.scrollUntilVisible(
+        find.byKey(const ValueKey('media-not-yet')),
+        200,
+        scrollable: find.byType(Scrollable).last,
+      );
+      await tester.tap(find.byKey(const ValueKey('media-not-yet')));
+      await tester.pumpAndSettle();
+      expect(find.text('Home Assistantin kautta'), findsOneWidget);
+      expect(find.text('Apple TV'), findsOneWidget);
+    },
+  );
 
   testWidgets('wizard: Chromecast found → status, volume, mute, play/pause, stop tiles', (tester) async {
     tester.view.physicalSize = const Size(1000, 1800);

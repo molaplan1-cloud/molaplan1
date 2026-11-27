@@ -1,28 +1,299 @@
 {
  "@@locale": "sv",
  "s186cc1d7b9": "Chromecast / Google TV / Android TV",
+ "s9da55e3993": "Chromecast, Google TV, Android TV (Sony, Philips, TCL, Xiaomi ...) och Nest högtalare över Cast: status, volym, paus och stopp.",
+ "@s9da55e3993": {
+  "x-mt": true
+ },
+ "sb3a497d14b": "Vanligtvis hittas automatiskt. Annars: Google Home app → enhet → Inställningar → Enhetsinformation → IP-adress.",
+ "@sb3a497d14b": {
+  "x-mt": true
+ },
  "s02bafb3752": "Samsung Smart TV (Tizen)",
+ "s709ac4cf0e": "Samsung TV 2016→: kraft, volym, mute och uppspelning rakt över hemnätverket.",
+ "@s709ac4cf0e": {
+  "x-mt": true
+ },
+ "s19a8179b98": "TV: Inställningar → Allmänt → Nätverksstatus → IP-inställningar. För ström på: Allmänt → Nätverk → Expertinställningar → \"Power On with Mobile\" på.",
+ "@s19a8179b98": {
+  "x-mt": true
+ },
+ "s0f80ea94c0": "TV:n frågar \"Tillåt Molaplan?\" - välj Tillåt med fjärrkontrollen.",
+ "@s0f80ea94c0": {
+  "x-mt": true
+ },
  "s830956d10f": "LG Smart TV (webOS)",
+ "s6f7121cc67": "LG TV (webOS): ström, volym, mute, uppspelning och den öppna appen över hemnätverket.",
+ "@s6f7121cc67": {
+  "x-mt": true
+ },
+ "scf3ccada17": "TV: Inställningar → Allmänt → Nätverk → Wi-Fi / trådbunden → Avancerad. För ström på: Allmänt → Enheter → \"Slå på via Wi-Fi\" på.",
+ "@scf3ccada17": {
+  "x-mt": true
+ },
+ "s898762ead6": "TV:n visar en anslutningsförfrågan – acceptera den med fjärrkontrollen.",
+ "@s898762ead6": {
+  "x-mt": true
+ },
  "s378548d3cd": "Philips TV (JointSPACE)",
+ "s9a2645043b": "Philips TV: ström (Android modeller), volym, stum och nycklar. Android modeller par med en PIN visas på TV.",
+ "@s9a2645043b": {
+  "x-mt": true
+ },
+ "s2fb79a3487": "TV: Inställningar → Trådlösa och nätverk → Wired eller Wi-Fi → Visa nätverksinställningar.",
+ "@s2fb79a3487": {
+  "x-mt": true
+ },
+ "s12f47341ce": "Skriv den fyrsiffriga PIN som visas på TV: n.",
+ "@s12f47341ce": {
+  "x-mt": true
+ },
+ "s0ec3e3e11d": "Visas på TV-skärmen i ungefär en minut.",
+ "@s0ec3e3e11d": {
+  "x-mt": true
+ },
+ "s6db078dbe3": "Sonos",
+ "s01d549ef4d": "Roku",
+ "sd3b85fadc0": "TV och Chromecast",
+ "@sd3b85fadc0": {
+  "x-mt": true
+ },
+ "s50eb745165": "/MediaRenderer/RenderingControl/Control",
+ "s9e4f134628": "/MediaRenderer/AVTransport/Control",
+ "s77251a38d3": "/ZoneGroupTopology/Control",
+ "sbd92a41506": "En Chromecast kan inte bytas på distans",
+ "@sbd92a41506": {
+  "x-mt": true
+ },
+ "sd8167370bc": "Ingenting spelar",
+ "@sd8167370bc": {
+  "x-mt": true
+ },
+ "se5b2692112": "TV kan inte nås",
+ "@se5b2692112": {
+  "x-mt": true
+ },
+ "sd42552b5c1": "TV:n vägrade - låt Molaplan i snabben på TV:n",
+ "@sd42552b5c1": {
+  "x-mt": true
+ },
+ "sb7b15dd59e": "Acceptera anslutningen på TV:n (Tillåt) och försök igen",
+ "@sb7b15dd59e": {
+  "x-mt": true
+ },
+ "s19ae80a1a6": "Inte en Samsung TV",
+ "@s19ae80a1a6": {
+  "x-mt": true
+ },
+ "s7e1bbea60b": "Slå på behov MAC-adressen",
+ "@s7e1bbea60b": {
+  "x-mt": true
+ },
+ "se7feba6088": "TV:n accepterade inte volymen",
+ "@se7feba6088": {
+  "x-mt": true
+ },
  "s97c684e038": "Chromecast / Google TV / Android TV (Cast)",
+ "s66c82f9d98": "TV / Chromecast (inbyggd integration)",
+ "@s66c82f9d98": {
+  "x-mt": true
+ },
  "s1c9df5579f": "Märke",
  "s178e07f06b": "IP-adress",
+ "s678a1d0824": "Enheten IP-adress (router enhetslista). Reservera en fast adress i routern.",
+ "@s678a1d0824": {
+  "x-mt": true
+ },
+ "sc9db95d473": "MAC-adress (power on)",
+ "@sc9db95d473": {
+  "x-mt": true
+ },
+ "s179f2d4764": "För Wake-on-LAN ström på. Vanligtvis fylld i automatiskt; aktivera \"Slå på via nätverk\" på TV: n.",
+ "@s179f2d4764": {
+  "x-mt": true
+ },
+ "s8480eec244": "JointSPACE version (Philips)",
+ "@s8480eec244": {
+  "x-mt": true
+ },
+ "sa592a45cc0": "Upptäcks automatiskt: 6 = Android-TV (https 1926), 1 = äldre uppsättningar (http 1925).",
+ "@sa592a45cc0": {
+  "x-mt": true
+ },
+ "s0f34d752b2": "Pairing id (Philips)",
+ "@s0f34d752b2": {
+  "x-mt": true
+ },
+ "s55e83ab0e3": "Skapad under parning (PIN-kod från TV).",
+ "@s55e83ab0e3": {
+  "x-mt": true
+ },
+ "s090082b8ce": "Pairing key (Philips)",
+ "@s090082b8ce": {
+  "x-mt": true
+ },
+ "s74b0fa8af8": "Skapad under parning. lagrad på denna enhet endast.",
+ "@s74b0fa8af8": {
+  "x-mt": true
+ },
+ "sf6035d1731": "Access token (Samsung)",
+ "@sf6035d1731": {
+  "x-mt": true
+ },
+ "scee449b738": "Samsung returnerar det när du tillåter anslutningen på TV: n. lagrad på den här enheten bara.",
+ "@scee449b738": {
+  "x-mt": true
+ },
+ "s565b6ac234": "Kundnyckel (LG)",
+ "@s565b6ac234": {
+  "x-mt": true
+ },
+ "s8b34eb0ec5": "LG returnerar det när du accepterar anslutningen på TV: n. lagrad på den här enheten endast.",
+ "@s8b34eb0ec5": {
+  "x-mt": true
+ },
  "sbdf670977b": "Läsa",
  "@sbdf670977b": {
   "x-mt": true
  },
+ "s4cd6848cf8": "En Chromecast har inget strömtillstånd; \"På\" är då alltid 0.",
+ "@s4cd6848cf8": {
+  "x-mt": true
+ },
+ "sb545795f0a": "Status (text)",
+ "@sb545795f0a": {
+  "x-mt": true
+ },
+ "s7c7098854f": "På (1/0)",
+ "@s7c7098854f": {
+  "x-mt": true
+ },
+ "s1d28a837cb": "Volym (%)",
+ "@s1d28a837cb": {
+  "x-mt": true
+ },
+ "sa13c4f1248": "dämpad (1/0)",
+ "@sa13c4f1248": {
+  "x-mt": true
+ },
+ "sef1842c9c5": "App App App App App",
+ "@sef1842c9c5": {
+  "x-mt": true
+ },
+ "sc5c36c50e6": "Nu spelar jag",
+ "@sc5c36c50e6": {
+  "x-mt": true
+ },
+ "saded6a492a": "Spela (1/0)",
+ "@saded6a492a": {
+  "x-mt": true
+ },
  "s5bed8bff00": "Kommando",
+ "s56ada71b4a": "Värdet kommer från växeln eller reglaget.",
+ "@s56ada71b4a": {
+  "x-mt": true
+ },
+ "s5d41165c1a": "Ström på/av (värde 1/0)",
+ "@s5d41165c1a": {
+  "x-mt": true
+ },
+ "s7df609092d": "Volym (värde 0–100)",
+ "@s7df609092d": {
+  "x-mt": true
+ },
+ "s7ce360cc79": "Mute (värde 1/0)",
+ "@s7ce360cc79": {
+  "x-mt": true
+ },
+ "sdce14191c7": "Nyckeln",
+ "@sdce14191c7": {
+  "x-mt": true
+ },
+ "sc91823aedb": "Endast för kommandot \"Key\".",
+ "@sc91823aedb": {
+  "x-mt": true
+ },
+ "s6c3e76828b": "Nästa",
+ "sf936d0b01d": "Upp",
+ "@sf936d0b01d": {
+  "x-mt": true
+ },
+ "s183ed60009": "OK",
+ "sdac8f8b638": "Spela / paus",
+ "@sdac8f8b638": {
+  "x-mt": true
+ },
+ "seab0493fde": "Spela Play",
+ "@seab0493fde": {
+  "x-mt": true
+ },
+ "sef0810bb79": "Paus",
+ "@sef0810bb79": {
+  "x-mt": true
+ },
  "s6fe2320f3d": "Stoppa",
  "@s6fe2320f3d": {
   "x-mt": true
  },
+ "s476a29a514": "Volym upp",
+ "@s476a29a514": {
+  "x-mt": true
+ },
+ "s1cafda29fd": "Volym ner",
+ "@s1cafda29fd": {
+  "x-mt": true
+ },
  "s9d9c84b3a8": "Hem",
  "scf7e14661c": "Tillbaka",
+ "s94e14089d6": "Volym saknas",
+ "@s94e14089d6": {
+  "x-mt": true
+ },
+ "s5d5363db20": "Volymvolymvolym",
+ "@s5d5363db20": {
+  "x-mt": true
+ },
  "s14252e6c3a": "status status status",
  "@s14252e6c3a": {
   "x-mt": true
  },
  "s58332642fb": "effekt",
+ "s449ab0a31f": "Volymvolymvolym",
+ "@s449ab0a31f": {
+  "x-mt": true
+ },
+ "s3a12232f33": "Mössa",
+ "@s3a12232f33": {
+  "x-mt": true
+ },
+ "s46a1321d85": "TV:n vägrade anslutningen",
+ "@s46a1321d85": {
+  "x-mt": true
+ },
+ "sbfbb3d52b3": "Acceptera anslutningen på TV:n och försök igen",
+ "@sbfbb3d52b3": {
+  "x-mt": true
+ },
+ "sf2993f0346": "TV behöver parning",
+ "@sf2993f0346": {
+  "x-mt": true
+ },
+ "s43720a9032": "Svarar inte",
+ "@s43720a9032": {
+  "x-mt": true
+ },
+ "s3a275af4f7": "är inte en JointSPACE TV",
+ "@s3a275af4f7": {
+  "x-mt": true
+ },
+ "s3d91340835": "Ingen parning pågår",
+ "@s3d91340835": {
+  "x-mt": true
+ },
+ "secb14ea9df": "Fel PIN eller parningen gick ut",
+ "@secb14ea9df": {
+  "x-mt": true
+ },
  "s404f230c13": "",
  "scc0cccf89d": "Av",
  "s4cbe24240f": "På",
@@ -614,6 +885,10 @@
  "sb2b9982ba7": "Be om installation som tjänst",
  "s02179b814a": "Ladda ner installationsfilen",
  "see46457ffd": "Ladda ner den senaste Android-installationsfilen (APK). Öppna filen i telefonen eller surfplattan. Om Android frågar, tillåt installation från okända källor (Inställningar → säkerhet).",
+ "s167c125f07": "Ladda ner",
+ "@s167c125f07": {
+  "x-mt": true
+ },
  "s2bf22ca429": "Den här enheten kan inte nås från webbläsaren. Det fungerar i Molaplan-appen, eller härifrån när en hemmabro är på.",
  "@s2bf22ca429": {
   "x-mt": true
@@ -827,7 +1102,6 @@
  "@sc8d1abbd21": {
   "x-mt": true
  },
- "s183ed60009": "OK",
  "s1ea8fe913b": "Adress: {p0}",
  "@s1ea8fe913b": {
   "x-mt": true
@@ -1020,6 +1294,10 @@
  },
  "sdeb1f4332e": "Status, laddning på / av, kraft och nuvarande gräns. Automationer: avgift på solöverskott eller i de billigaste timmarna.",
  "@sdeb1f4332e": {
+  "x-mt": true
+ },
+ "se5084a149d": "Vilken TV eller enhet?",
+ "@se5084a149d": {
   "x-mt": true
  },
  "sca7e088857": "Elpris",
@@ -2790,7 +3068,6 @@
  "@sda588a203b": {
   "x-mt": true
  },
- "s6c3e76828b": "Nästa",
  "sba1684ff6c": "Inte ännu",
  "@sba1684ff6c": {
   "x-mt": true
@@ -3226,10 +3503,6 @@
  },
  "s2d983e951b": "Else",
  "@s2d983e951b": {
-  "x-mt": true
- },
- "sf936d0b01d": "Upp",
- "@sf936d0b01d": {
   "x-mt": true
  },
  "s2c7a2bbac1": "Nytt manus",
@@ -4471,6 +4744,14 @@
   "x-mt": true
  },
  "sf435368c99": "TV",
+ "s0cea5b1077": "Volymvolym",
+ "@s0cea5b1077": {
+  "x-mt": true
+ },
+ "s25d92a8625": "Blinds",
+ "@s25d92a8625": {
+  "x-mt": true
+ },
  "sa846059775": "Home Assistant läser redan den här enheten",
  "@sa846059775": {
   "x-mt": true
@@ -6193,6 +6474,10 @@
   "x-mt": true
  },
  "s53a891e670": "Kontrollera adressen och inställningarna och försök igen. De tekniska detaljerna visar den exakta orsaken.",
+ "s1e02f457b4": "Fungerar i appen eller genom en hembro",
+ "@s1e02f457b4": {
+  "x-mt": true
+ },
  "s6c33f19716": "inte svara ({p0} min)",
  "@s6c33f19716": {
   "x-mt": true
@@ -7635,6 +7920,8 @@
  "s1becc05ea1": "locked=Låst;unlocked=Olåst;jammed=FASTNAT",
  "s259de02f33": "open=Öppen;closed=Stängd;opening=Öppnas;closing=Stängs",
  "s64d4364336": "disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming",
+ "s73720edff0": "playing=Playing;paused=Paused;idle=Idle;on=On;off=Off;standby=Standby;buffering=Buffering;unavailable=Unavailable",
+ "s2df1d5947c": "cleaning=Cleaning;docked=Docked;returning=Returning;idle=Idle;paused=Paused;error=ERROR",
  "s5b1e227dc4": "on=På;off=Av",
  "s2525f9a4f5": "Finland är ett område (FI). I Sverige och Norge beror det på var du bor.",
  "@s2525f9a4f5": {
@@ -9693,6 +9980,10 @@
   "x-mt": true
  },
  "s3832b8c729": "hela rummet",
+ "s2bb8fceaf7": "Scener",
+ "@s2bb8fceaf7": {
+  "x-mt": true
+ },
  "sceabe202da": "camera_",
  "s1a4eab1f51": "°C",
  "s9e731440d8": "%",
@@ -9835,332 +10126,6 @@
  "@s2101774157": {
   "x-mt": true
  },
- "s1a9acfbc67": "Ljus {p0}",
- "@s1a9acfbc67": {
-  "x-mt": true
- },
- "s5d0fb602f6": "Täck {p0}",
- "@s5d0fb602f6": {
-  "x-mt": true
- },
- "s82ecc12a66": "Temperatur {p0} (add-on)",
- "@s82ecc12a66": {
-  "x-mt": true
- },
- "s8b234e1a6f": "Belysning",
- "@s8b234e1a6f": {
-  "x-mt": true
- },
- "sf34c97592f": "IKEA Dirigera",
- "sb38eac6a87": "IKEA smart hub och dess lampor och pluggar (Zigbee). Par med knappen på navet.",
- "@sb38eac6a87": {
-  "x-mt": true
- },
- "s4e92ab791e": "I IKEA Home smart app: Inställningar → Hub → IP-adress. Eller i routerns enhetslista: \"gw2-...\" eller \"dirigera\".",
- "@s4e92ab791e": {
-  "x-mt": true
- },
- "s73824fc3d0": "Tryck på åtgärdsknappen på botten av Dirigera-navet en gång nu. Vänta här.",
- "@s73824fc3d0": {
-  "x-mt": true
- },
- "sda8d9bf1cd": "Uttag",
- "s9da55e3993": "Chromecast, Google TV, Android TV (Sony, Philips, TCL, Xiaomi ...) och Nest högtalare över Cast: status, volym, paus och stopp.",
- "@s9da55e3993": {
-  "x-mt": true
- },
- "sb3a497d14b": "Vanligtvis hittas automatiskt. Annars: Google Home app → enhet → Inställningar → Enhetsinformation → IP-adress.",
- "@sb3a497d14b": {
-  "x-mt": true
- },
- "s709ac4cf0e": "Samsung TV 2016→: kraft, volym, mute och uppspelning rakt över hemnätverket.",
- "@s709ac4cf0e": {
-  "x-mt": true
- },
- "s19a8179b98": "TV: Inställningar → Allmänt → Nätverksstatus → IP-inställningar. För ström på: Allmänt → Nätverk → Expertinställningar → \"Power On with Mobile\" på.",
- "@s19a8179b98": {
-  "x-mt": true
- },
- "s0f80ea94c0": "TV:n frågar \"Tillåt Molaplan?\" - välj Tillåt med fjärrkontrollen.",
- "@s0f80ea94c0": {
-  "x-mt": true
- },
- "s6f7121cc67": "LG TV (webOS): ström, volym, mute, uppspelning och den öppna appen över hemnätverket.",
- "@s6f7121cc67": {
-  "x-mt": true
- },
- "scf3ccada17": "TV: Inställningar → Allmänt → Nätverk → Wi-Fi / trådbunden → Avancerad. För ström på: Allmänt → Enheter → \"Slå på via Wi-Fi\" på.",
- "@scf3ccada17": {
-  "x-mt": true
- },
- "s898762ead6": "TV:n visar en anslutningsförfrågan – acceptera den med fjärrkontrollen.",
- "@s898762ead6": {
-  "x-mt": true
- },
- "s9a2645043b": "Philips TV: ström (Android modeller), volym, stum och nycklar. Android modeller par med en PIN visas på TV.",
- "@s9a2645043b": {
-  "x-mt": true
- },
- "s2fb79a3487": "TV: Inställningar → Trådlösa och nätverk → Wired eller Wi-Fi → Visa nätverksinställningar.",
- "@s2fb79a3487": {
-  "x-mt": true
- },
- "s12f47341ce": "Skriv den fyrsiffriga PIN som visas på TV: n.",
- "@s12f47341ce": {
-  "x-mt": true
- },
- "s0ec3e3e11d": "Visas på TV-skärmen i ungefär en minut.",
- "@s0ec3e3e11d": {
-  "x-mt": true
- },
- "sd3b85fadc0": "TV och Chromecast",
- "@sd3b85fadc0": {
-  "x-mt": true
- },
- "sb34763a1f3": "Samsung, LG, Philips, Android TV / Google TV och Chromecast: ström, volym och uppspelning.",
- "@sb34763a1f3": {
-  "x-mt": true
- },
- "sbd92a41506": "En Chromecast kan inte bytas på distans",
- "@sbd92a41506": {
-  "x-mt": true
- },
- "sd8167370bc": "Ingenting spelar",
- "@sd8167370bc": {
-  "x-mt": true
- },
- "sd42552b5c1": "TV:n vägrade - låt Molaplan i snabben på TV:n",
- "@sd42552b5c1": {
-  "x-mt": true
- },
- "sb7b15dd59e": "Acceptera anslutningen på TV:n (Tillåt) och försök igen",
- "@sb7b15dd59e": {
-  "x-mt": true
- },
- "s19ae80a1a6": "Inte en Samsung TV",
- "@s19ae80a1a6": {
-  "x-mt": true
- },
- "s7e1bbea60b": "Slå på behov MAC-adressen",
- "@s7e1bbea60b": {
-  "x-mt": true
- },
- "se7feba6088": "TV:n accepterade inte volymen",
- "@se7feba6088": {
-  "x-mt": true
- },
- "s66c82f9d98": "TV / Chromecast (inbyggd integration)",
- "@s66c82f9d98": {
-  "x-mt": true
- },
- "s406f4e67a2": "Android TV och Google TV kontrolleras över Cast (Chromecast inbyggd).",
- "@s406f4e67a2": {
-  "x-mt": true
- },
- "s678a1d0824": "Enheten IP-adress (router enhetslista). Reservera en fast adress i routern.",
- "@s678a1d0824": {
-  "x-mt": true
- },
- "sc9db95d473": "MAC-adress (power on)",
- "@sc9db95d473": {
-  "x-mt": true
- },
- "s179f2d4764": "För Wake-on-LAN ström på. Vanligtvis fylld i automatiskt; aktivera \"Slå på via nätverk\" på TV: n.",
- "@s179f2d4764": {
-  "x-mt": true
- },
- "s8480eec244": "JointSPACE version (Philips)",
- "@s8480eec244": {
-  "x-mt": true
- },
- "sa592a45cc0": "Upptäcks automatiskt: 6 = Android-TV (https 1926), 1 = äldre uppsättningar (http 1925).",
- "@sa592a45cc0": {
-  "x-mt": true
- },
- "s0f34d752b2": "Pairing id (Philips)",
- "@s0f34d752b2": {
-  "x-mt": true
- },
- "s55e83ab0e3": "Skapad under parning (PIN-kod från TV).",
- "@s55e83ab0e3": {
-  "x-mt": true
- },
- "s090082b8ce": "Pairing key (Philips)",
- "@s090082b8ce": {
-  "x-mt": true
- },
- "s74b0fa8af8": "Skapad under parning. lagrad på denna enhet endast.",
- "@s74b0fa8af8": {
-  "x-mt": true
- },
- "sf6035d1731": "Access token (Samsung)",
- "@sf6035d1731": {
-  "x-mt": true
- },
- "scee449b738": "Samsung returnerar det när du tillåter anslutningen på TV: n. lagrad på den här enheten bara.",
- "@scee449b738": {
-  "x-mt": true
- },
- "s565b6ac234": "Kundnyckel (LG)",
- "@s565b6ac234": {
-  "x-mt": true
- },
- "s8b34eb0ec5": "LG returnerar det när du accepterar anslutningen på TV: n. lagrad på den här enheten endast.",
- "@s8b34eb0ec5": {
-  "x-mt": true
- },
- "s4cd6848cf8": "En Chromecast har inget strömtillstånd; \"På\" är då alltid 0.",
- "@s4cd6848cf8": {
-  "x-mt": true
- },
- "sb545795f0a": "Status (text)",
- "@sb545795f0a": {
-  "x-mt": true
- },
- "s7c7098854f": "På (1/0)",
- "@s7c7098854f": {
-  "x-mt": true
- },
- "s1d28a837cb": "Volym (%)",
- "@s1d28a837cb": {
-  "x-mt": true
- },
- "sa13c4f1248": "dämpad (1/0)",
- "@sa13c4f1248": {
-  "x-mt": true
- },
- "sef1842c9c5": "App App App App App",
- "@sef1842c9c5": {
-  "x-mt": true
- },
- "sc5c36c50e6": "Nu spelar jag",
- "@sc5c36c50e6": {
-  "x-mt": true
- },
- "saded6a492a": "Spela (1/0)",
- "@saded6a492a": {
-  "x-mt": true
- },
- "s56ada71b4a": "Värdet kommer från växeln eller reglaget.",
- "@s56ada71b4a": {
-  "x-mt": true
- },
- "s5d41165c1a": "Ström på/av (värde 1/0)",
- "@s5d41165c1a": {
-  "x-mt": true
- },
- "s7df609092d": "Volym (värde 0–100)",
- "@s7df609092d": {
-  "x-mt": true
- },
- "s7ce360cc79": "Mute (värde 1/0)",
- "@s7ce360cc79": {
-  "x-mt": true
- },
- "sdce14191c7": "Nyckeln",
- "@sdce14191c7": {
-  "x-mt": true
- },
- "sc91823aedb": "Endast för kommandot \"Key\".",
- "@sc91823aedb": {
-  "x-mt": true
- },
- "sdac8f8b638": "Spela / paus",
- "@sdac8f8b638": {
-  "x-mt": true
- },
- "seab0493fde": "Spela Play",
- "@seab0493fde": {
-  "x-mt": true
- },
- "sef0810bb79": "Paus",
- "@sef0810bb79": {
-  "x-mt": true
- },
- "s476a29a514": "Volym upp",
- "@s476a29a514": {
-  "x-mt": true
- },
- "s1cafda29fd": "Volym ner",
- "@s1cafda29fd": {
-  "x-mt": true
- },
- "s94e14089d6": "Volym saknas",
- "@s94e14089d6": {
-  "x-mt": true
- },
- "s5d5363db20": "Volymvolymvolym",
- "@s5d5363db20": {
-  "x-mt": true
- },
- "s449ab0a31f": "Volymvolymvolym",
- "@s449ab0a31f": {
-  "x-mt": true
- },
- "s3a12232f33": "Mössa",
- "@s3a12232f33": {
-  "x-mt": true
- },
- "s46a1321d85": "TV:n vägrade anslutningen",
- "@s46a1321d85": {
-  "x-mt": true
- },
- "sbfbb3d52b3": "Acceptera anslutningen på TV:n och försök igen",
- "@sbfbb3d52b3": {
-  "x-mt": true
- },
- "sf2993f0346": "TV behöver parning",
- "@sf2993f0346": {
-  "x-mt": true
- },
- "s43720a9032": "Svarar inte",
- "@s43720a9032": {
-  "x-mt": true
- },
- "s3a275af4f7": "är inte en JointSPACE TV",
- "@s3a275af4f7": {
-  "x-mt": true
- },
- "s3d91340835": "Ingen parning pågår",
- "@s3d91340835": {
-  "x-mt": true
- },
- "secb14ea9df": "Fel PIN eller parningen gick ut",
- "@secb14ea9df": {
-  "x-mt": true
- },
- "se5b2692112": "TV kan inte nås",
- "@se5b2692112": {
-  "x-mt": true
- },
- "s167c125f07": "Ladda ner",
- "@s167c125f07": {
-  "x-mt": true
- },
- "se5084a149d": "Vilken TV eller enhet?",
- "@se5084a149d": {
-  "x-mt": true
- },
- "s43a563c3a0": "Status, kraft, volym, mute och uppspelning som kort och för automationer - rakt över hemnätverket, inget moln och ingen Home Assistant. Android TV och Google TV: välj Chromecast.",
- "@s43a563c3a0": {
-  "x-mt": true
- },
- "s0cea5b1077": "Volymvolym",
- "@s0cea5b1077": {
-  "x-mt": true
- },
- "s25d92a8625": "Blinds",
- "@s25d92a8625": {
-  "x-mt": true
- },
- "s1e02f457b4": "Fungerar i appen eller genom en hembro",
- "@s1e02f457b4": {
-  "x-mt": true
- },
- "s2bb8fceaf7": "Scener",
- "@s2bb8fceaf7": {
-  "x-mt": true
- },
  "sdd483f7f78": "Enhetsnyckel saknas",
  "@sdd483f7f78": {
   "x-mt": true
@@ -10265,6 +10230,35 @@
  "@sd936bbcc2d": {
   "x-mt": true
  },
+ "s1a9acfbc67": "Ljus {p0}",
+ "@s1a9acfbc67": {
+  "x-mt": true
+ },
+ "s5d0fb602f6": "Täck {p0}",
+ "@s5d0fb602f6": {
+  "x-mt": true
+ },
+ "s82ecc12a66": "Temperatur {p0} (add-on)",
+ "@s82ecc12a66": {
+  "x-mt": true
+ },
+ "s8b234e1a6f": "Belysning",
+ "@s8b234e1a6f": {
+  "x-mt": true
+ },
+ "sf34c97592f": "IKEA Dirigera",
+ "sb38eac6a87": "IKEA smart hub och dess lampor och pluggar (Zigbee). Par med knappen på navet.",
+ "@sb38eac6a87": {
+  "x-mt": true
+ },
+ "s4e92ab791e": "I IKEA Home smart app: Inställningar → Hub → IP-adress. Eller i routerns enhetslista: \"gw2-...\" eller \"dirigera\".",
+ "@s4e92ab791e": {
+  "x-mt": true
+ },
+ "s73824fc3d0": "Tryck på åtgärdsknappen på botten av Dirigera-navet en gång nu. Vänta här.",
+ "@s73824fc3d0": {
+  "x-mt": true
+ },
  "s92d24d0543": "Blind",
  "@s92d24d0543": {
   "x-mt": true
@@ -10273,6 +10267,7 @@
  "@s7727759a28": {
   "x-mt": true
  },
+ "sda8d9bf1cd": "Uttag",
  "s06444f278d": "position (100 = stängd)",
  "@s06444f278d": {
   "x-mt": true
@@ -10283,6 +10278,194 @@
  },
  "s7fc017b0f0": "nära",
  "@s7fc017b0f0": {
+  "x-mt": true
+ },
+ "s11d9226341": "Android TV / Google TV (fjärrkontroll)",
+ "@s11d9226341": {
+  "x-mt": true
+ },
+ "s0992ee68bf": "Sony, Philips, TCL, Xiaomi, Chromecast med Google TV ...: ström, volym, mute, kanaler, piltangenter och den öppna appen. Par med en kod som visas på TV.",
+ "@s0992ee68bf": {
+  "x-mt": true
+ },
+ "s8a14ae9518": "TV: Inställningar → Nätverk & Internet → (nätverk) → IP-adress. Eller Google Home app → enhet → Enhetsinformation.",
+ "@s8a14ae9518": {
+  "x-mt": true
+ },
+ "s714e6f6143": "TV:n visar en sexkaraktärskod (siffrorna och bokstäverna A-F) – skriv den här.",
+ "@s714e6f6143": {
+  "x-mt": true
+ },
+ "sd92171df4d": "Visas på TV-skärmen under parning.",
+ "@sd92171df4d": {
+  "x-mt": true
+ },
+ "s8f7a93b1ea": "Sonos högtalare och soundbars: volym, mute, play/pause, next and now play. Straight over the home network, no account.",
+ "@s8f7a93b1ea": {
+  "x-mt": true
+ },
+ "s1cf843ef3e": "Sonos app → Inställningar → System → Om mitt system → IP-adress.",
+ "@s1cf843ef3e": {
+  "x-mt": true
+ },
+ "s406bfe2259": "Roku-spelare och Roku-TV: nycklar, volym +/-, mute, play/pause, den öppna appen; på Roku TV-apparater också kraft och kanaler.",
+ "@s406bfe2259": {
+  "x-mt": true
+ },
+ "sb4f88e9b1b": "Roku: Inställningar → Nätverk → Om → IP-adress. Tillåt kontroll: Inställningar → System → Avancerade systeminställningar → Kontroll av mobilappar → Enabled.",
+ "@sb4f88e9b1b": {
+  "x-mt": true
+ },
+ "sebd2ee78b0": "Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos och Roku: ström, volym, kanaler och uppspelning.",
+ "@sebd2ee78b0": {
+  "x-mt": true
+ },
+ "s7594076cbd": "Misslyckades",
+ "@s7594076cbd": {
+  "x-mt": true
+ },
+ "s01c48d363e": "Sonos kan inte nås",
+ "@s01c48d363e": {
+  "x-mt": true
+ },
+ "sc49795d7d1": "Inte en Sonos-enhet",
+ "@sc49795d7d1": {
+  "x-mt": true
+ },
+ "s89541675fe": "Line-in",
+ "@s89541675fe": {
+  "x-mt": true
+ },
+ "sdd6a5ac9b8": "Sonos har inga kanaler",
+ "@sdd6a5ac9b8": {
+  "x-mt": true
+ },
+ "s0249d39100": "parning behövs",
+ "@s0249d39100": {
+  "x-mt": true
+ },
+ "s536792efd0": "Felkod",
+ "@s536792efd0": {
+  "x-mt": true
+ },
+ "s4a67144434": "parning startade inte",
+ "@s4a67144434": {
+  "x-mt": true
+ },
+ "s3f514c9aa2": "Koden har 6 tecken (0–9, A–F)",
+ "@s3f514c9aa2": {
+  "x-mt": true
+ },
+ "sb3712c846c": "Par Android TV först (kod på TV)",
+ "@sb3712c846c": {
+  "x-mt": true
+ },
+ "sc7cbbc343d": "Android TV vägrade – parning behövs",
+ "@sc7cbbc343d": {
+  "x-mt": true
+ },
+ "s85bb00e885": "TV:n rapporterar inte volymen",
+ "@s85bb00e885": {
+  "x-mt": true
+ },
+ "s22e7286858": "Android TV och Google TV: Cast (status, volym, uppspelning) eller fjärrprotokollet (nycklar, kanaler, ström; parningskod).",
+ "@s22e7286858": {
+  "x-mt": true
+ },
+ "sa14b4d0a62": "Kundcertifikat (Android TV)",
+ "@sa14b4d0a62": {
+  "x-mt": true
+ },
+ "sb6b8ce62e4": "Molaplans eget certifikat att TV:n accepterade under parning. lagras endast på den här enheten.",
+ "@sb6b8ce62e4": {
+  "x-mt": true
+ },
+ "s55c0154762": "Klientnyckel (Android TV)",
+ "@s55c0154762": {
+  "x-mt": true
+ },
+ "s49678d6bba": "Certifikatets privata nyckel. lagras endast på denna enhet.",
+ "@s49678d6bba": {
+  "x-mt": true
+ },
+ "sbefd940b7e": "Kanal (värde = nummer)",
+ "@sbefd940b7e": {
+  "x-mt": true
+ },
+ "s8028880bf9": "Öppen app (Android TV, värde = länk)",
+ "@s8028880bf9": {
+  "x-mt": true
+ },
+ "sd61993184d": "Föregående",
+ "@sd61993184d": {
+  "x-mt": true
+ },
+ "sd46979cb3c": "Mute on/off",
+ "@sd46979cb3c": {
+  "x-mt": true
+ },
+ "s9c350b0f5e": "Kanal +",
+ "@s9c350b0f5e": {
+  "x-mt": true
+ },
+ "s66136ee35f": "Kanal −",
+ "@s66136ee35f": {
+  "x-mt": true
+ },
+ "s09e8d49ceb": "Nedre",
+ "@s09e8d49ceb": {
+  "x-mt": true
+ },
+ "s34e61d8a2f": "Vänster",
+ "@s34e61d8a2f": {
+  "x-mt": true
+ },
+ "s365a1e8626": "Rätt till rätta",
+ "@s365a1e8626": {
+  "x-mt": true
+ },
+ "s8cbc3f33aa": "Power Key",
+ "@s8cbc3f33aa": {
+  "x-mt": true
+ },
+ "s483f02b584": "Öppen app behöver Android TV-fjärranslutningen",
+ "@s483f02b584": {
+  "x-mt": true
+ },
+ "s9df7f078c6": "Roku kan inte nås",
+ "@s9df7f078c6": {
+  "x-mt": true
+ },
+ "s0dc1e158bc": "Roku block kontroll: Inställningar → System → Avancerade systeminställningar → Kontroll av mobilappar → Enabled",
+ "@s0dc1e158bc": {
+  "x-mt": true
+ },
+ "s58d9f3b1b1": "Inte en Roku-enhet",
+ "@s58d9f3b1b1": {
+  "x-mt": true
+ },
+ "sd44e043ccc": "Roku har ingen absolut volym – använd volym +/−",
+ "@sd44e043ccc": {
+  "x-mt": true
+ },
+ "sbeb26f2b64": "Kanalnummer saknas",
+ "@sbeb26f2b64": {
+  "x-mt": true
+ },
+ "s512db00a17": "Status, kraft, volym, mute, kanaler och uppspelning som kort och för automationer - rakt över hemnätverket, inget moln och ingen Home Assistant. Android TV och Google TV: Chromecast (status och volym) eller fjärrkontrollen (nycklar, kanaler, ström).",
+ "@s512db00a17": {
+  "x-mt": true
+ },
+ "s5bfb23a680": "Robot vakuum",
+ "@s5bfb23a680": {
+  "x-mt": true
+ },
+ "sc9735275b2": "Valves",
+ "@sc9735275b2": {
+  "x-mt": true
+ },
+ "s28cdff43bf": "Humidifiers",
+ "@s28cdff43bf": {
   "x-mt": true
  }
 }

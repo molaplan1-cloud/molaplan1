@@ -1,28 +1,299 @@
 {
  "@@locale": "et",
  "s186cc1d7b9": "Chromecast / Google TV / Android TV",
+ "s9da55e3993": "Chromecast, Google TV, Android TV (Sony, Philips, TCL, Xiaomi...) ja Nest kõlarid üle Cast: staatus, helitugevus, paus ja stop.",
+ "@s9da55e3993": {
+  "x-mt": true
+ },
+ "sb3a497d14b": "Tavaliselt leitakse see automaatselt. Vastasel juhul: Google Home app → device → Settings → Device information → IP- aadress.",
+ "@sb3a497d14b": {
+  "x-mt": true
+ },
  "s02bafb3752": "Samsung Smart TV (Tizen)",
+ "s709ac4cf0e": "Samsung TVs 2016→: võimsus, maht, vaigistamine ja taasesitamine otse üle koduvõrgu.",
+ "@s709ac4cf0e": {
+  "x-mt": true
+ },
+ "s19a8179b98": "TV: Seaded → General → Network → Network Status → IP Settings. Toiteks: General → Network → Expert Settings → \"Power On with Mobile\" sisse lülitatud.",
+ "@s19a8179b98": {
+  "x-mt": true
+ },
+ "s0f80ea94c0": "Televiisor küsib: \"Luba Molaplan?\" - valige Võimalda puldiga.",
+ "@s0f80ea94c0": {
+  "x-mt": true
+ },
  "s830956d10f": "LG Smart TV (webOS)",
+ "s6f7121cc67": "LG telerid (webOS): võimsus, helitugevus, vaigistamine, taasesitus ja avatud rakendus koduvõrgu kaudu.",
+ "@s6f7121cc67": {
+  "x-mt": true
+ },
+ "scf3ccada17": "TV: Seadistused → General → Network → Wi-Fi/wired → Advanced. Toiteks: General → Devices → \"Turn on via Wi-Fi\" sisse lülitatud.",
+ "@scf3ccada17": {
+  "x-mt": true
+ },
+ "s898762ead6": "Televiisor näitab ühenduse taotlust - võtke see vastu kaugjuhtimispuldiga.",
+ "@s898762ead6": {
+  "x-mt": true
+ },
  "s378548d3cd": "Philips TV (JointSPACE)",
+ "s9a2645043b": "Philipsi telerid: võimsus (Androidi mudelid), helitugevus, tumm ja võtmed. Androidi mudelid paar PIN-koodiga, mida näidatakse teleris.",
+ "@s9a2645043b": {
+  "x-mt": true
+ },
+ "s2fb79a3487": "TV: Seaded → Wireless ja võrgud → Wired või Wi-Fi → View võrgu seaded.",
+ "@s2fb79a3487": {
+  "x-mt": true
+ },
+ "s12f47341ce": "Kirjutage neljakohaline PIN-kood, mida näidatakse teleris.",
+ "@s12f47341ce": {
+  "x-mt": true
+ },
+ "s0ec3e3e11d": "Ekraanil näidati seda umbes minut.",
+ "@s0ec3e3e11d": {
+  "x-mt": true
+ },
+ "s6db078dbe3": "Sonos",
+ "s01d549ef4d": "Roku",
+ "sd3b85fadc0": "TV ja Chromecast",
+ "@sd3b85fadc0": {
+  "x-mt": true
+ },
+ "s50eb745165": "/MediaRenderer/RenderingControl/Control",
+ "s9e4f134628": "/MediaRenderer/AVTransport/Control",
+ "s77251a38d3": "/ZoneGroupTopology/Control",
+ "sbd92a41506": "Chromecasti ei saa kaugjuhtimisega sisse lülitada",
+ "@sbd92a41506": {
+  "x-mt": true
+ },
+ "sd8167370bc": "Miski ei mängi",
+ "@sd8167370bc": {
+  "x-mt": true
+ },
+ "se5b2692112": "TV ei ole kättesaadav",
+ "@se5b2692112": {
+  "x-mt": true
+ },
+ "sd42552b5c1": "Televiisor keeldus - lubage Molaplani telerisse",
+ "@sd42552b5c1": {
+  "x-mt": true
+ },
+ "sb7b15dd59e": "Nõustuge teleri ühendusega (lubage) ja proovige uuesti",
+ "@sb7b15dd59e": {
+  "x-mt": true
+ },
+ "s19ae80a1a6": "mitte Samsung TV",
+ "@s19ae80a1a6": {
+  "x-mt": true
+ },
+ "s7e1bbea60b": "Sisselülitamisel on vaja MAC aadressi",
+ "@s7e1bbea60b": {
+  "x-mt": true
+ },
+ "se7feba6088": "Televiisor ei aktsepteerinud helitugevust",
+ "@se7feba6088": {
+  "x-mt": true
+ },
  "s97c684e038": "Chromecast / Google TV / Android TV (Cast)",
+ "s66c82f9d98": "TV / Chromecast (sisseehitatud integreerimine)",
+ "@s66c82f9d98": {
+  "x-mt": true
+ },
  "s1c9df5579f": "Kaubamärk",
  "s178e07f06b": "IP-aadress",
+ "s678a1d0824": "Seadme IP- aadress (ruuteri seadmete nimekiri). Reserveeri ruuteris kindel aadress.",
+ "@s678a1d0824": {
+  "x-mt": true
+ },
+ "sc9db95d473": "MAC- aadress (sisselülitatud)",
+ "@sc9db95d473": {
+  "x-mt": true
+ },
+ "s179f2d4764": "Wake- on-LAN toite sisselülitamiseks. Tavaliselt täidetakse see automaatselt; lülita teleris sisse \"Pööra sisse võrgu kaudu\".",
+ "@s179f2d4764": {
+  "x-mt": true
+ },
+ "s8480eec244": "JointSPACE versioon (Philips)",
+ "@s8480eec244": {
+  "x-mt": true
+ },
+ "sa592a45cc0": "Tuvastati automaatselt: 6 = Android-telerid (https 1926), 1 = vanemad telerid (http 1925).",
+ "@sa592a45cc0": {
+  "x-mt": true
+ },
+ "s0f34d752b2": "Pairingi ID (Philips)",
+ "@s0f34d752b2": {
+  "x-mt": true
+ },
+ "s55e83ab0e3": "Loodud paaritamise ajal (PIN-kood telerist).",
+ "@s55e83ab0e3": {
+  "x-mt": true
+ },
+ "s090082b8ce": "Kinnitusvõti (Philips)",
+ "@s090082b8ce": {
+  "x-mt": true
+ },
+ "s74b0fa8af8": "Loodud paaritamise ajal. Salvestatud ainult selles seadmes.",
+ "@s74b0fa8af8": {
+  "x-mt": true
+ },
+ "sf6035d1731": "Juurdepääsuluba (Samsung)",
+ "@sf6035d1731": {
+  "x-mt": true
+ },
+ "scee449b738": "Samsung tagastab selle, kui lubate ühenduse teleris. Salvestatud ainult selles seadmes.",
+ "@scee449b738": {
+  "x-mt": true
+ },
+ "s565b6ac234": "Kliendivõti (LG)",
+ "@s565b6ac234": {
+  "x-mt": true
+ },
+ "s8b34eb0ec5": "LG tagastab selle, kui nõustud teleri ühendusega. Salvestatud ainult selles seadmes.",
+ "@s8b34eb0ec5": {
+  "x-mt": true
+ },
  "sbdf670977b": "Lugemine",
  "@sbdf670977b": {
   "x-mt": true
  },
+ "s4cd6848cf8": "Chromecastil ei ole vooluolekut; \"On\" on siis alati 0.",
+ "@s4cd6848cf8": {
+  "x-mt": true
+ },
+ "sb545795f0a": "Seisund (tekst)",
+ "@sb545795f0a": {
+  "x-mt": true
+ },
+ "s7c7098854f": "Sisse (1/0)",
+ "@s7c7098854f": {
+  "x-mt": true
+ },
+ "s1d28a837cb": "Maht (%)",
+ "@s1d28a837cb": {
+  "x-mt": true
+ },
+ "sa13c4f1248": "Sumbunud (1/0)",
+ "@sa13c4f1248": {
+  "x-mt": true
+ },
+ "sef1842c9c5": "App",
+ "@sef1842c9c5": {
+  "x-mt": true
+ },
+ "sc5c36c50e6": "Nüüd mängime",
+ "@sc5c36c50e6": {
+  "x-mt": true
+ },
+ "saded6a492a": "Mängimine (1/0)",
+ "@saded6a492a": {
+  "x-mt": true
+ },
  "s5bed8bff00": "Käsk",
+ "s56ada71b4a": "Väärtus tuleb lülitajalt või liugurilt.",
+ "@s56ada71b4a": {
+  "x-mt": true
+ },
+ "s5d41165c1a": "Sisse/väljalülitatud (väärtus 1/0)",
+ "@s5d41165c1a": {
+  "x-mt": true
+ },
+ "s7df609092d": "Maht (väärtus 0–100)",
+ "@s7df609092d": {
+  "x-mt": true
+ },
+ "s7ce360cc79": "Tumm (väärtus 1/0)",
+ "@s7ce360cc79": {
+  "x-mt": true
+ },
+ "sdce14191c7": "Võti",
+ "@sdce14191c7": {
+  "x-mt": true
+ },
+ "sc91823aedb": "Ainult \"võtme\" käsu jaoks.",
+ "@sc91823aedb": {
+  "x-mt": true
+ },
+ "s6c3e76828b": "Edasi",
+ "sf936d0b01d": "Üles",
+ "@sf936d0b01d": {
+  "x-mt": true
+ },
+ "s183ed60009": "OK",
+ "sdac8f8b638": "Esitamine/ paus",
+ "@sdac8f8b638": {
+  "x-mt": true
+ },
+ "seab0493fde": "Mängi",
+ "@seab0493fde": {
+  "x-mt": true
+ },
+ "sef0810bb79": "Paus",
+ "@sef0810bb79": {
+  "x-mt": true
+ },
  "s6fe2320f3d": "Lõpeta",
  "@s6fe2320f3d": {
   "x-mt": true
  },
+ "s476a29a514": "Helitugevus",
+ "@s476a29a514": {
+  "x-mt": true
+ },
+ "s1cafda29fd": "Helitugevuse langus",
+ "@s1cafda29fd": {
+  "x-mt": true
+ },
  "s9d9c84b3a8": "Kodu",
  "scf7e14661c": "Tagasi",
+ "s94e14089d6": "Puudub helitugevus",
+ "@s94e14089d6": {
+  "x-mt": true
+ },
+ "s5d5363db20": "maht",
+ "@s5d5363db20": {
+  "x-mt": true
+ },
  "s14252e6c3a": "staatus",
  "@s14252e6c3a": {
   "x-mt": true
  },
  "s58332642fb": "võimsus",
+ "s449ab0a31f": "maht",
+ "@s449ab0a31f": {
+  "x-mt": true
+ },
+ "s3a12232f33": "tumm",
+ "@s3a12232f33": {
+  "x-mt": true
+ },
+ "s46a1321d85": "Televiisor keeldus ühendusest",
+ "@s46a1321d85": {
+  "x-mt": true
+ },
+ "sbfbb3d52b3": "Nõustuge teleri ühendusega ja proovige uuesti",
+ "@sbfbb3d52b3": {
+  "x-mt": true
+ },
+ "sf2993f0346": "Televiisor vajab paaritamist",
+ "@sf2993f0346": {
+  "x-mt": true
+ },
+ "s43720a9032": "ei vasta",
+ "@s43720a9032": {
+  "x-mt": true
+ },
+ "s3a275af4f7": "ei ole JointSPACE TV",
+ "@s3a275af4f7": {
+  "x-mt": true
+ },
+ "s3d91340835": "paaristumist ei toimu",
+ "@s3d91340835": {
+  "x-mt": true
+ },
+ "secb14ea9df": "Vale PIN-kood või paaritamine aegus",
+ "@secb14ea9df": {
+  "x-mt": true
+ },
  "s404f230c13": "",
  "scc0cccf89d": "Väljas",
  "s4cbe24240f": "Sees",
@@ -614,6 +885,10 @@
  "sb2b9982ba7": "Palu paigaldust teenusena",
  "s02179b814a": "Laadi paigaldusfail alla",
  "see46457ffd": "Laadi alla uusim Androidi paigaldusfail (APK). Ava fail telefonis või tahvelarvutis. Kui Android küsib, luba paigaldamine tundmatutest allikatest (Seaded → turvalisus).",
+ "s167c125f07": "Laadi alla",
+ "@s167c125f07": {
+  "x-mt": true
+ },
  "s2bf22ca429": "Seadet ei saa brauserist kätte. See töötab Molaplani rakenduses või siit, kui kodusild on sisse lülitatud.",
  "@s2bf22ca429": {
   "x-mt": true
@@ -827,7 +1102,6 @@
  "@sc8d1abbd21": {
   "x-mt": true
  },
- "s183ed60009": "OK",
  "s1ea8fe913b": "Aadress: {p0}",
  "@s1ea8fe913b": {
   "x-mt": true
@@ -1020,6 +1294,10 @@
  },
  "sdeb1f4332e": "Olek, laadimine sisse/välja, võimsus ja voolupiirang. Automaatika: päikeseenergia ülejäägi tasu või kõige odavamatel tundidel.",
  "@sdeb1f4332e": {
+  "x-mt": true
+ },
+ "se5084a149d": "Milline telekas või seade?",
+ "@se5084a149d": {
   "x-mt": true
  },
  "sca7e088857": "Elektri hind",
@@ -2802,7 +3080,6 @@
  "@sda588a203b": {
   "x-mt": true
  },
- "s6c3e76828b": "Edasi",
  "sba1684ff6c": "veel mitte",
  "@sba1684ff6c": {
   "x-mt": true
@@ -3238,10 +3515,6 @@
  },
  "s2d983e951b": "Else",
  "@s2d983e951b": {
-  "x-mt": true
- },
- "sf936d0b01d": "Üles",
- "@sf936d0b01d": {
   "x-mt": true
  },
  "s2c7a2bbac1": "Uus käsikiri",
@@ -4486,6 +4759,14 @@
   "x-mt": true
  },
  "sf435368c99": "TV",
+ "s0cea5b1077": "Helitugevus",
+ "@s0cea5b1077": {
+  "x-mt": true
+ },
+ "s25d92a8625": "Pimedad",
+ "@s25d92a8625": {
+  "x-mt": true
+ },
  "sa846059775": "Home Assistant juba loeb seda seadet",
  "@sa846059775": {
   "x-mt": true
@@ -6217,6 +6498,10 @@
   "x-mt": true
  },
  "s53a891e670": "Kontrolli aadressi ja seadeid ning proovi uuesti. Tehnilised üksikasjad näitavad täpset põhjust.",
+ "s1e02f457b4": "Töötab rakenduses või kodusilla kaudu",
+ "@s1e02f457b4": {
+  "x-mt": true
+ },
  "s6c33f19716": "ei vasta ({p0} min)",
  "@s6c33f19716": {
   "x-mt": true
@@ -7680,6 +7965,8 @@
  "s1becc05ea1": "locked=Lukus;unlocked=Lahti;jammed=KINNI",
  "s259de02f33": "open=Avatud;closed=Suletud;opening=Avaneb;closing=Sulgub",
  "s64d4364336": "disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming",
+ "s73720edff0": "playing=Playing;paused=Paused;idle=Idle;on=On;off=Off;standby=Standby;buffering=Buffering;unavailable=Unavailable",
+ "s2df1d5947c": "cleaning=Cleaning;docked=Docked;returning=Returning;idle=Idle;paused=Paused;error=ERROR",
  "s5b1e227dc4": "on=Sees;off=Väljas",
  "s2525f9a4f5": "Soome on üks piirkond (FI). Rootsis ja Norras sõltub see sellest, kus te elate.",
  "@s2525f9a4f5": {
@@ -9738,6 +10025,10 @@
   "x-mt": true
  },
  "s3832b8c729": "kogu tuba",
+ "s2bb8fceaf7": "Stseenid",
+ "@s2bb8fceaf7": {
+  "x-mt": true
+ },
  "sceabe202da": "camera_",
  "s1a4eab1f51": "°C",
  "s9e731440d8": "%",
@@ -9880,332 +10171,6 @@
  "@s2101774157": {
   "x-mt": true
  },
- "s1a9acfbc67": "- Light{p0}",
- "@s1a9acfbc67": {
-  "x-mt": true
- },
- "s5d0fb602f6": "- Kata{p0}",
- "@s5d0fb602f6": {
-  "x-mt": true
- },
- "s82ecc12a66": "-armatuur{p0} (lisamine sisse)",
- "@s82ecc12a66": {
-  "x-mt": true
- },
- "s8b234e1a6f": "see valgustuse",
- "@s8b234e1a6f": {
-  "x-mt": true
- },
- "sf34c97592f": "IKEA Dirigera",
- "sb38eac6a87": "IKEA nutisõlm ja selle tuled ja pistikud (Zigbee) Paari rummuga.",
- "@sb38eac6a87": {
-  "x-mt": true
- },
- "s4e92ab791e": "IKEA Home nutirakenduses: Seadistused → Hub → IP- aadress. Või ruuteri seadmete loendis: \"gw2-...\" või \"dirigera\".",
- "@s4e92ab791e": {
-  "x-mt": true
- },
- "s73824fc3d0": "Vajuta kord Dirigera rummu allosas asuvat tegevusnuppu. Oota siin.",
- "@s73824fc3d0": {
-  "x-mt": true
- },
- "sda8d9bf1cd": "Pistikupesa",
- "s9da55e3993": "Chromecast, Google TV, Android TV (Sony, Philips, TCL, Xiaomi...) ja Nest kõlarid üle Cast: staatus, helitugevus, paus ja stop.",
- "@s9da55e3993": {
-  "x-mt": true
- },
- "sb3a497d14b": "Tavaliselt leitakse see automaatselt. Vastasel juhul: Google Home app → device → Settings → Device information → IP- aadress.",
- "@sb3a497d14b": {
-  "x-mt": true
- },
- "s709ac4cf0e": "Samsung TVs 2016→: võimsus, maht, vaigistamine ja taasesitamine otse üle koduvõrgu.",
- "@s709ac4cf0e": {
-  "x-mt": true
- },
- "s19a8179b98": "TV: Seaded → General → Network → Network Status → IP Settings. Toiteks: General → Network → Expert Settings → \"Power On with Mobile\" sisse lülitatud.",
- "@s19a8179b98": {
-  "x-mt": true
- },
- "s0f80ea94c0": "Televiisor küsib: \"Luba Molaplan?\" - valige Võimalda puldiga.",
- "@s0f80ea94c0": {
-  "x-mt": true
- },
- "s6f7121cc67": "LG telerid (webOS): võimsus, helitugevus, vaigistamine, taasesitus ja avatud rakendus koduvõrgu kaudu.",
- "@s6f7121cc67": {
-  "x-mt": true
- },
- "scf3ccada17": "TV: Seadistused → General → Network → Wi-Fi/wired → Advanced. Toiteks: General → Devices → \"Turn on via Wi-Fi\" sisse lülitatud.",
- "@scf3ccada17": {
-  "x-mt": true
- },
- "s898762ead6": "Televiisor näitab ühenduse taotlust - võtke see vastu kaugjuhtimispuldiga.",
- "@s898762ead6": {
-  "x-mt": true
- },
- "s9a2645043b": "Philipsi telerid: võimsus (Androidi mudelid), helitugevus, tumm ja võtmed. Androidi mudelid paar PIN-koodiga, mida näidatakse teleris.",
- "@s9a2645043b": {
-  "x-mt": true
- },
- "s2fb79a3487": "TV: Seaded → Wireless ja võrgud → Wired või Wi-Fi → View võrgu seaded.",
- "@s2fb79a3487": {
-  "x-mt": true
- },
- "s12f47341ce": "Kirjutage neljakohaline PIN-kood, mida näidatakse teleris.",
- "@s12f47341ce": {
-  "x-mt": true
- },
- "s0ec3e3e11d": "Ekraanil näidati seda umbes minut.",
- "@s0ec3e3e11d": {
-  "x-mt": true
- },
- "sd3b85fadc0": "TV ja Chromecast",
- "@sd3b85fadc0": {
-  "x-mt": true
- },
- "sb34763a1f3": "Samsung, LG, Philips, Android TV / Google TV ja Chromecast: võimsus, maht ja taasesitus.",
- "@sb34763a1f3": {
-  "x-mt": true
- },
- "sbd92a41506": "Chromecasti ei saa kaugjuhtimisega sisse lülitada",
- "@sbd92a41506": {
-  "x-mt": true
- },
- "sd8167370bc": "Miski ei mängi",
- "@sd8167370bc": {
-  "x-mt": true
- },
- "sd42552b5c1": "Televiisor keeldus - lubage Molaplani telerisse",
- "@sd42552b5c1": {
-  "x-mt": true
- },
- "sb7b15dd59e": "Nõustuge teleri ühendusega (lubage) ja proovige uuesti",
- "@sb7b15dd59e": {
-  "x-mt": true
- },
- "s19ae80a1a6": "mitte Samsung TV",
- "@s19ae80a1a6": {
-  "x-mt": true
- },
- "s7e1bbea60b": "Sisselülitamisel on vaja MAC aadressi",
- "@s7e1bbea60b": {
-  "x-mt": true
- },
- "se7feba6088": "Televiisor ei aktsepteerinud helitugevust",
- "@se7feba6088": {
-  "x-mt": true
- },
- "s66c82f9d98": "TV / Chromecast (sisseehitatud integreerimine)",
- "@s66c82f9d98": {
-  "x-mt": true
- },
- "s406f4e67a2": "Android-telereid ja Google''i telereid kontrollitakse Cast''i (sisseehitatud Chrome''i) kaudu.",
- "@s406f4e67a2": {
-  "x-mt": true
- },
- "s678a1d0824": "Seadme IP- aadress (ruuteri seadmete nimekiri). Reserveeri ruuteris kindel aadress.",
- "@s678a1d0824": {
-  "x-mt": true
- },
- "sc9db95d473": "MAC- aadress (sisselülitatud)",
- "@sc9db95d473": {
-  "x-mt": true
- },
- "s179f2d4764": "Wake- on-LAN toite sisselülitamiseks. Tavaliselt täidetakse see automaatselt; lülita teleris sisse \"Pööra sisse võrgu kaudu\".",
- "@s179f2d4764": {
-  "x-mt": true
- },
- "s8480eec244": "JointSPACE versioon (Philips)",
- "@s8480eec244": {
-  "x-mt": true
- },
- "sa592a45cc0": "Tuvastati automaatselt: 6 = Android-telerid (https 1926), 1 = vanemad telerid (http 1925).",
- "@sa592a45cc0": {
-  "x-mt": true
- },
- "s0f34d752b2": "Pairingi ID (Philips)",
- "@s0f34d752b2": {
-  "x-mt": true
- },
- "s55e83ab0e3": "Loodud paaritamise ajal (PIN-kood telerist).",
- "@s55e83ab0e3": {
-  "x-mt": true
- },
- "s090082b8ce": "Kinnitusvõti (Philips)",
- "@s090082b8ce": {
-  "x-mt": true
- },
- "s74b0fa8af8": "Loodud paaritamise ajal. Salvestatud ainult selles seadmes.",
- "@s74b0fa8af8": {
-  "x-mt": true
- },
- "sf6035d1731": "Juurdepääsuluba (Samsung)",
- "@sf6035d1731": {
-  "x-mt": true
- },
- "scee449b738": "Samsung tagastab selle, kui lubate ühenduse teleris. Salvestatud ainult selles seadmes.",
- "@scee449b738": {
-  "x-mt": true
- },
- "s565b6ac234": "Kliendivõti (LG)",
- "@s565b6ac234": {
-  "x-mt": true
- },
- "s8b34eb0ec5": "LG tagastab selle, kui nõustud teleri ühendusega. Salvestatud ainult selles seadmes.",
- "@s8b34eb0ec5": {
-  "x-mt": true
- },
- "s4cd6848cf8": "Chromecastil ei ole vooluolekut; \"On\" on siis alati 0.",
- "@s4cd6848cf8": {
-  "x-mt": true
- },
- "sb545795f0a": "Seisund (tekst)",
- "@sb545795f0a": {
-  "x-mt": true
- },
- "s7c7098854f": "Sisse (1/0)",
- "@s7c7098854f": {
-  "x-mt": true
- },
- "s1d28a837cb": "Maht (%)",
- "@s1d28a837cb": {
-  "x-mt": true
- },
- "sa13c4f1248": "Sumbunud (1/0)",
- "@sa13c4f1248": {
-  "x-mt": true
- },
- "sef1842c9c5": "App",
- "@sef1842c9c5": {
-  "x-mt": true
- },
- "sc5c36c50e6": "Nüüd mängime",
- "@sc5c36c50e6": {
-  "x-mt": true
- },
- "saded6a492a": "Mängimine (1/0)",
- "@saded6a492a": {
-  "x-mt": true
- },
- "s56ada71b4a": "Väärtus tuleb lülitajalt või liugurilt.",
- "@s56ada71b4a": {
-  "x-mt": true
- },
- "s5d41165c1a": "Sisse/väljalülitatud (väärtus 1/0)",
- "@s5d41165c1a": {
-  "x-mt": true
- },
- "s7df609092d": "Maht (väärtus 0–100)",
- "@s7df609092d": {
-  "x-mt": true
- },
- "s7ce360cc79": "Tumm (väärtus 1/0)",
- "@s7ce360cc79": {
-  "x-mt": true
- },
- "sdce14191c7": "Võti",
- "@sdce14191c7": {
-  "x-mt": true
- },
- "sc91823aedb": "Ainult \"võtme\" käsu jaoks.",
- "@sc91823aedb": {
-  "x-mt": true
- },
- "sdac8f8b638": "Esitamine/ paus",
- "@sdac8f8b638": {
-  "x-mt": true
- },
- "seab0493fde": "Mängi",
- "@seab0493fde": {
-  "x-mt": true
- },
- "sef0810bb79": "Paus",
- "@sef0810bb79": {
-  "x-mt": true
- },
- "s476a29a514": "Helitugevus",
- "@s476a29a514": {
-  "x-mt": true
- },
- "s1cafda29fd": "Helitugevuse langus",
- "@s1cafda29fd": {
-  "x-mt": true
- },
- "s94e14089d6": "Puudub helitugevus",
- "@s94e14089d6": {
-  "x-mt": true
- },
- "s5d5363db20": "maht",
- "@s5d5363db20": {
-  "x-mt": true
- },
- "s449ab0a31f": "maht",
- "@s449ab0a31f": {
-  "x-mt": true
- },
- "s3a12232f33": "tumm",
- "@s3a12232f33": {
-  "x-mt": true
- },
- "s46a1321d85": "Televiisor keeldus ühendusest",
- "@s46a1321d85": {
-  "x-mt": true
- },
- "sbfbb3d52b3": "Nõustuge teleri ühendusega ja proovige uuesti",
- "@sbfbb3d52b3": {
-  "x-mt": true
- },
- "sf2993f0346": "Televiisor vajab paaritamist",
- "@sf2993f0346": {
-  "x-mt": true
- },
- "s43720a9032": "ei vasta",
- "@s43720a9032": {
-  "x-mt": true
- },
- "s3a275af4f7": "ei ole JointSPACE TV",
- "@s3a275af4f7": {
-  "x-mt": true
- },
- "s3d91340835": "paaristumist ei toimu",
- "@s3d91340835": {
-  "x-mt": true
- },
- "secb14ea9df": "Vale PIN-kood või paaritamine aegus",
- "@secb14ea9df": {
-  "x-mt": true
- },
- "se5b2692112": "TV ei ole kättesaadav",
- "@se5b2692112": {
-  "x-mt": true
- },
- "s167c125f07": "Laadi alla",
- "@s167c125f07": {
-  "x-mt": true
- },
- "se5084a149d": "Milline telekas või seade?",
- "@se5084a149d": {
-  "x-mt": true
- },
- "s43a563c3a0": "Olek, võimsus, maht, vaigistamine ja taasesitamine kaartidena ja automatiseerimiseks - otse üle koduvõrgu, ilma pilveta ja ilma Home Assistantita. Android TV ja Google TV: valige Chromecast.",
- "@s43a563c3a0": {
-  "x-mt": true
- },
- "s0cea5b1077": "Helitugevus",
- "@s0cea5b1077": {
-  "x-mt": true
- },
- "s25d92a8625": "Pimedad",
- "@s25d92a8625": {
-  "x-mt": true
- },
- "s1e02f457b4": "Töötab rakenduses või kodusilla kaudu",
- "@s1e02f457b4": {
-  "x-mt": true
- },
- "s2bb8fceaf7": "Stseenid",
- "@s2bb8fceaf7": {
-  "x-mt": true
- },
  "sdd483f7f78": "Seadme võti puudub",
  "@sdd483f7f78": {
   "x-mt": true
@@ -10310,6 +10275,35 @@
  "@sd936bbcc2d": {
   "x-mt": true
  },
+ "s1a9acfbc67": "- Light{p0}",
+ "@s1a9acfbc67": {
+  "x-mt": true
+ },
+ "s5d0fb602f6": "- Kata{p0}",
+ "@s5d0fb602f6": {
+  "x-mt": true
+ },
+ "s82ecc12a66": "-armatuur{p0} (lisamine sisse)",
+ "@s82ecc12a66": {
+  "x-mt": true
+ },
+ "s8b234e1a6f": "see valgustuse",
+ "@s8b234e1a6f": {
+  "x-mt": true
+ },
+ "sf34c97592f": "IKEA Dirigera",
+ "sb38eac6a87": "IKEA nutisõlm ja selle tuled ja pistikud (Zigbee) Paari rummuga.",
+ "@sb38eac6a87": {
+  "x-mt": true
+ },
+ "s4e92ab791e": "IKEA Home nutirakenduses: Seadistused → Hub → IP- aadress. Või ruuteri seadmete loendis: \"gw2-...\" või \"dirigera\".",
+ "@s4e92ab791e": {
+  "x-mt": true
+ },
+ "s73824fc3d0": "Vajuta kord Dirigera rummu allosas asuvat tegevusnuppu. Oota siin.",
+ "@s73824fc3d0": {
+  "x-mt": true
+ },
  "s92d24d0543": "Pime",
  "@s92d24d0543": {
   "x-mt": true
@@ -10318,6 +10312,7 @@
  "@s7727759a28": {
   "x-mt": true
  },
+ "sda8d9bf1cd": "Pistikupesa",
  "s06444f278d": "asukoht (100 = suletud)",
  "@s06444f278d": {
   "x-mt": true
@@ -10328,6 +10323,194 @@
  },
  "s7fc017b0f0": "lähedalt",
  "@s7fc017b0f0": {
+  "x-mt": true
+ },
+ "s11d9226341": "Android TV / Google TV (kaugtelevisioon)",
+ "@s11d9226341": {
+  "x-mt": true
+ },
+ "s0992ee68bf": "Sony, Philips, TCL, Xiaomi, Chromecast koos Google TV-ga...: võimsus, maht, tumm, kanalid, nooleklahvid ja avatud rakendus. Paarid, mille kood on näidatud teleris.",
+ "@s0992ee68bf": {
+  "x-mt": true
+ },
+ "s8a14ae9518": "TV: Settings → Network & Internet → (võrk) → IP-aadress. või Google Home app → device → Device information.",
+ "@s8a14ae9518": {
+  "x-mt": true
+ },
+ "s714e6f6143": "Televiisor näitab kuuekohalist koodi (numbrid ja tähed A–F) - kirjuta see siia.",
+ "@s714e6f6143": {
+  "x-mt": true
+ },
+ "sd92171df4d": "Näidatakse teleriekraanil paaritamise ajal.",
+ "@sd92171df4d": {
+  "x-mt": true
+ },
+ "s8f7a93b1ea": "Sonose kõlarid ja heliribad: helitugevus, vaigistamine, mängimine/paus, järgmine ja nüüd mängimine. Otse üle koduvõrgu, ilma kontota.",
+ "@s8f7a93b1ea": {
+  "x-mt": true
+ },
+ "s1cf843ef3e": "Sonos app → Settings → System → About My System → IP-aadress.",
+ "@s1cf843ef3e": {
+  "x-mt": true
+ },
+ "s406bfe2259": "Roku mängijad ja Roku telerid: võtmed, helitugevus +/−, vaigistamine, mängimine/paus, avatud rakendus; Roku telerites ka jõud ja kanalid.",
+ "@s406bfe2259": {
+  "x-mt": true
+ },
+ "sb4f88e9b1b": "Roku: Settings → Network → About → IP-aadress. Allow control: Settings → System → Advanced system settings → Control by mobile apps → Enabled.",
+ "@sb4f88e9b1b": {
+  "x-mt": true
+ },
+ "sebd2ee78b0": "Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos ja Roku: võimsus, maht, kanalid ja taasesitus.",
+ "@sebd2ee78b0": {
+  "x-mt": true
+ },
+ "s7594076cbd": "ebaõnnestus",
+ "@s7594076cbd": {
+  "x-mt": true
+ },
+ "s01c48d363e": "Sonod ei ole kättesaadavad",
+ "@s01c48d363e": {
+  "x-mt": true
+ },
+ "sc49795d7d1": "Sonose seadeldis",
+ "@sc49795d7d1": {
+  "x-mt": true
+ },
+ "s89541675fe": "Rivi sisse",
+ "@s89541675fe": {
+  "x-mt": true
+ },
+ "sdd6a5ac9b8": "Sonosel pole kanaleid",
+ "@sdd6a5ac9b8": {
+  "x-mt": true
+ },
+ "s0249d39100": "paaritamine",
+ "@s0249d39100": {
+  "x-mt": true
+ },
+ "s536792efd0": "Vale kood",
+ "@s536792efd0": {
+  "x-mt": true
+ },
+ "s4a67144434": "paaritamine ei alanud",
+ "@s4a67144434": {
+  "x-mt": true
+ },
+ "s3f514c9aa2": "Koodil on 6 märki (0–9, A–F)",
+ "@s3f514c9aa2": {
+  "x-mt": true
+ },
+ "sb3712c846c": "Paaritage kõigepealt Android TV (kood teleris)",
+ "@sb3712c846c": {
+  "x-mt": true
+ },
+ "sc7cbbc343d": "Android TV keeldus - sidumine on vajalik",
+ "@sc7cbbc343d": {
+  "x-mt": true
+ },
+ "s85bb00e885": "Televiisor ei edasta helitugevust",
+ "@s85bb00e885": {
+  "x-mt": true
+ },
+ "s22e7286858": "Android-telerid ja Google''i telerid: valatud (status, helitugevus, taasesitus) või kaugprotokoll (võtmed, kanalid, võimsus; paariskood).",
+ "@s22e7286858": {
+  "x-mt": true
+ },
+ "sa14b4d0a62": "Kliendisertifikaat (Android TV)",
+ "@sa14b4d0a62": {
+  "x-mt": true
+ },
+ "sb6b8ce62e4": "Molaplani enda sertifikaat, mille teler paaritamise ajal vastu võttis. Salvestatud ainult selles seadmes.",
+ "@sb6b8ce62e4": {
+  "x-mt": true
+ },
+ "s55c0154762": "Kliendivõti (Android TV)",
+ "@s55c0154762": {
+  "x-mt": true
+ },
+ "s49678d6bba": "Sertifikaadi privaatvõti. Salvestatud ainult sellele seadmele.",
+ "@s49678d6bba": {
+  "x-mt": true
+ },
+ "sbefd940b7e": "Kanal (väärtus = arv)",
+ "@sbefd940b7e": {
+  "x-mt": true
+ },
+ "s8028880bf9": "Ava rakendus (Android TV, value = link)",
+ "@s8028880bf9": {
+  "x-mt": true
+ },
+ "sd61993184d": "Eelmine",
+ "@sd61993184d": {
+  "x-mt": true
+ },
+ "sd46979cb3c": "Tihedalt sisse/välja",
+ "@sd46979cb3c": {
+  "x-mt": true
+ },
+ "s9c350b0f5e": "Kanal +",
+ "@s9c350b0f5e": {
+  "x-mt": true
+ },
+ "s66136ee35f": "Kanal!",
+ "@s66136ee35f": {
+  "x-mt": true
+ },
+ "s09e8d49ceb": "Alla",
+ "@s09e8d49ceb": {
+  "x-mt": true
+ },
+ "s34e61d8a2f": "Vasakule",
+ "@s34e61d8a2f": {
+  "x-mt": true
+ },
+ "s365a1e8626": "Õige",
+ "@s365a1e8626": {
+  "x-mt": true
+ },
+ "s8cbc3f33aa": "Toitevõti",
+ "@s8cbc3f33aa": {
+  "x-mt": true
+ },
+ "s483f02b584": "Avatud rakendus vajab Android TV kaugühendust",
+ "@s483f02b584": {
+  "x-mt": true
+ },
+ "s9df7f078c6": "Roku ei ole kättesaadav",
+ "@s9df7f078c6": {
+  "x-mt": true
+ },
+ "s0dc1e158bc": "Roku plokid Control: Settings → System → Advanced System Settings → Control by mobile apps → Enabled",
+ "@s0dc1e158bc": {
+  "x-mt": true
+ },
+ "s58d9f3b1b1": "Roku seadeldis",
+ "@s58d9f3b1b1": {
+  "x-mt": true
+ },
+ "sd44e043ccc": "Roku absoluutruumala puudub – kasutusruumala +/-",
+ "@sd44e043ccc": {
+  "x-mt": true
+ },
+ "sbeb26f2b64": "Kanali number puudub",
+ "@sbeb26f2b64": {
+  "x-mt": true
+ },
+ "s512db00a17": "Olek, võimsus, maht, vaigistamine, kanalid ja taasesitus kaartidena ja automatiseerimiseks - otse üle koduvõrgu, ilma pilveta ja ilma Home Assistantita. Android TV ja Google TV: Chromecast (seisund ja helitugevus) või puldi (võtmed, kanalid, võimsus).",
+ "@s512db00a17": {
+  "x-mt": true
+ },
+ "s5bfb23a680": "Robotite tolmuimejad",
+ "@s5bfb23a680": {
+  "x-mt": true
+ },
+ "sc9735275b2": "ventiilid",
+ "@sc9735275b2": {
+  "x-mt": true
+ },
+ "s28cdff43bf": "Niiskusniite",
+ "@s28cdff43bf": {
   "x-mt": true
  }
 }

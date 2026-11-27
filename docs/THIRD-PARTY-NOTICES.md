@@ -59,10 +59,12 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FO
 OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## Apache License 2.0 (Toshiba-AC-control, Connect SDK)
+## Apache License 2.0 (Toshiba-AC-control, Connect SDK, androidtvremote2)
 
 Copyright 2021 Kamil Sroka
 Copyright (c) 2014 LG Electronics
+Copyright (c) tronikos (androidtvremote2 – protobuf definitions polo.proto / remotemessage.proto used as
+the Android TV Remote v2 protocol reference)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in
 compliance with the License. You may obtain a copy of the License at
@@ -74,4 +76,4 @@ implied. See the License for the specific language governing permissions and lim
 License.
 
 Changes: the protocol details were re-implemented in Dart (`lib/heatpumps/toshiba.dart`,
-`lib/media/lg_webos.dart`); no source file was copied.
+`lib/media/lg_webos.dart`, `lib/media/android_tv.dart`); no source file was copied.

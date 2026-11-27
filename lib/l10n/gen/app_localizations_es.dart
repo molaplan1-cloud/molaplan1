@@ -69,17 +69,106 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s0ec3e3e11d => 'Se muestra en la pantalla de TV por un minuto.';
 
   @override
+  String get s11d9226341 => 'Android TV / Google TV (remoción)';
+
+  @override
+  String get s0992ee68bf =>
+      'Sony, Philips, TCL, Xiaomi, Chromecast con Google TV...: potencia, volumen, muda, canales, teclas de flecha y la aplicación abierta. Parejas con un código mostrado en la TV.';
+
+  @override
+  String get s8a14ae9518 =>
+      'TV: Ajustes → Red &amp; Internet → (network) → Dirección IP. O Google Home app → dispositivo → Información del dispositivo.';
+
+  @override
+  String get s714e6f6143 =>
+      'La TV muestra un código de seis caracteres (digitos y letras A–F) – escriba aquí.';
+
+  @override
+  String get sd92171df4d =>
+      'Se muestra en la pantalla de TV durante el emparejado.';
+
+  @override
+  String get s6db078dbe3 => 'Sonos';
+
+  @override
+  String get s8f7a93b1ea =>
+      'Sonos altavoces y barras sonoras: volumen, mute, play/pause, siguiente y ahora jugando. Directamente sobre la red de la casa, sin cuenta.';
+
+  @override
+  String get s1cf843ef3e =>
+      'Sonos app → Configuración → Sistema → Acerca de Mi Sistema → Dirección IP.';
+
+  @override
+  String get s01d549ef4d => 'Roku';
+
+  @override
+  String get s406bfe2259 =>
+      'Jugadores Roku y Roku TVs: llaves, volumen +/−, mute, play/pause, la aplicación abierta; en Roku TVs también potencia y canales.';
+
+  @override
+  String get sb4f88e9b1b =>
+      'Roku: Ajustes → Red → Acerca → Dirección IP. Permitir el control: Ajustes → Sistema → Configuración avanzada del sistema → Control por aplicaciones móviles → Activado.';
+
+  @override
   String get sd3b85fadc0 => 'TV y Chromecast';
 
   @override
-  String get sb34763a1f3 =>
-      'Samsung, LG, Philips, Android TV / Google TV y Chromecast: potencia, volumen y reproducción.';
+  String get sebd2ee78b0 =>
+      'Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos y Roku: potencia, volumen, canales y reproducción.';
+
+  @override
+  String get s50eb745165 => '/MediaRenderer/RenderingControl/Control';
+
+  @override
+  String get s9e4f134628 => '/MediaRenderer/AVTransport/Control';
+
+  @override
+  String get s77251a38d3 => '/ZoneGroupTopology/Control';
+
+  @override
+  String get s7594076cbd => 'fracasado';
+
+  @override
+  String get s01c48d363e => 'Sonos no alcanzable';
+
+  @override
+  String get sc49795d7d1 => 'no un dispositivo Sonos';
+
+  @override
+  String get s89541675fe => 'Línea-en';
+
+  @override
+  String get sdd6a5ac9b8 => 'Sonos no tiene canales';
 
   @override
   String get sbd92a41506 => 'Un Chromecast no puede ser conmutado a distancia';
 
   @override
   String get sd8167370bc => 'Nada está jugando';
+
+  @override
+  String get s0249d39100 => 'pares necesarios';
+
+  @override
+  String get se5b2692112 => 'TV no accesible';
+
+  @override
+  String get s536792efd0 => 'Código incorrecto';
+
+  @override
+  String get s4a67144434 => 'pareja no comenzó';
+
+  @override
+  String get s3f514c9aa2 => 'El código tiene 6 caracteres (0–9, A–F)';
+
+  @override
+  String get sb3712c846c => 'Pare el Android TV primero (código en la TV)';
+
+  @override
+  String get sc7cbbc343d => 'El Android TV se negó – pareado necesario';
+
+  @override
+  String get s85bb00e885 => 'La TV no reporta volumen';
 
   @override
   String get sd42552b5c1 =>
@@ -108,8 +197,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1c9df5579f => 'Marca';
 
   @override
-  String get s406f4e67a2 =>
-      'Los televisores Android y Google TV se controlan sobre Cast (Chromecast incorporado).';
+  String get s22e7286858 =>
+      'TV Android y Google TVs: Reparto (estado, volumen, reproducción) o el protocolo remoto (keys, canales, potencia; código de emparejamiento).';
 
   @override
   String get s178e07f06b => 'Dirección IP';
@@ -161,6 +250,20 @@ class AppLocalizationsEs extends AppLocalizations {
       'LG lo devuelve cuando aceptas la conexión en la TV. Almacenado en este dispositivo solamente.';
 
   @override
+  String get sa14b4d0a62 => 'Certificado de cliente (Android TV)';
+
+  @override
+  String get sb6b8ce62e4 =>
+      'El propio certificado de Molaplan que el televisor aceptó durante el emparejamiento. Almacenó en este dispositivo solamente.';
+
+  @override
+  String get s55c0154762 => 'Clave de cliente (Android TV)';
+
+  @override
+  String get s49678d6bba =>
+      'La llave privada del certificado, guardada sólo en este dispositivo.';
+
+  @override
   String get sbdf670977b => 'Lectura';
 
   @override
@@ -207,7 +310,46 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sdce14191c7 => 'Clave';
 
   @override
+  String get sbefd940b7e => 'Canal (valor = número)';
+
+  @override
+  String get s8028880bf9 => 'Aplicación abierta (Android TV, valor = enlace)';
+
+  @override
   String get sc91823aedb => 'Sólo para el comando \"Key\".';
+
+  @override
+  String get s6c3e76828b => 'Siguiente';
+
+  @override
+  String get sd61993184d => 'Anterior';
+
+  @override
+  String get sd46979cb3c => 'Mute on/off';
+
+  @override
+  String get s9c350b0f5e => 'Canal +';
+
+  @override
+  String get s66136ee35f => 'Canal −';
+
+  @override
+  String get sf936d0b01d => 'Arriba';
+
+  @override
+  String get s09e8d49ceb => 'Abajo';
+
+  @override
+  String get s34e61d8a2f => 'Izquierda';
+
+  @override
+  String get s365a1e8626 => 'Bien';
+
+  @override
+  String get s183ed60009 => 'OK';
+
+  @override
+  String get s8cbc3f33aa => 'La clave del poder';
 
   @override
   String get sdac8f8b638 => 'Jugar / pausa';
@@ -237,6 +379,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s94e14089d6 => 'Falta de volumen';
 
   @override
+  String get s483f02b584 =>
+      'Aplicación abierta necesita la conexión remota de Android TV';
+
+  @override
   String get s5d5363db20 => 'volumen';
 
   @override
@@ -256,6 +402,20 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sbfbb3d52b3 => 'Acepta la conexión en la TV y prueba de nuevo';
+
+  @override
+  String get s9df7f078c6 => 'Roku no alcanzable';
+
+  @override
+  String get s0dc1e158bc =>
+      'Control de bloques Roku: Ajustes → Sistema → Ajustes avanzados del sistema → Control por aplicaciones móviles → Activado';
+
+  @override
+  String get s58d9f3b1b1 => 'no un dispositivo Roku';
+
+  @override
+  String get sd44e043ccc =>
+      'Roku no tiene volumen absoluto – utilizar volumen +/−';
 
   @override
   String get sf2993f0346 => 'La televisión necesita pares';
@@ -287,7 +447,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s4e1ea0bc65 => 'En reposo';
 
   @override
-  String get se5b2692112 => 'TV no accesible';
+  String get sbeb26f2b64 => 'Número de canal desaparecido';
 
   @override
   String s095ca83913(String p0) {
@@ -1242,9 +1402,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sc8d1abbd21 => 'Nombre de la tarjeta';
 
   @override
-  String get s183ed60009 => 'OK';
-
-  @override
   String s1ea8fe913b(String p0) {
     return 'Dirección: $p0';
   }
@@ -1460,8 +1617,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se5084a149d => '¿Qué televisor o dispositivo?';
 
   @override
-  String get s43a563c3a0 =>
-      'Estado, potencia, volumen, muda y reproducción como tarjetas y para las automatizaciones – directamente sobre la red de la casa, no nube y no Home Assistant. Android TV y Google TV: elegir Chromecast.';
+  String get s512db00a17 =>
+      'Estado, potencia, volumen, muda, canales y reproducción como tarjetas y para automatizaciones – directamente sobre la red de la casa, sin nube y sin asistente de casa. Android TV y Google TV: Chromecast (estadio y volumen) o el remoto (keys, canales, potencia).';
 
   @override
   String get sca7e088857 => 'Precio de la electricidad';
@@ -3462,9 +3619,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sda588a203b => 'Use estos';
 
   @override
-  String get s6c3e76828b => 'Siguiente';
-
-  @override
   String get sba1684ff6c => 'aún no';
 
   @override
@@ -3838,9 +3992,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s2d983e951b => 'Else';
-
-  @override
-  String get sf936d0b01d => 'Arriba';
 
   @override
   String get s2c7a2bbac1 => 'Nuevo guión';
@@ -6234,6 +6385,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sea20d169a3 => 'Jugadores de medios';
 
   @override
+  String get s5bfb23a680 => 'Vacunas de robot';
+
+  @override
+  String get sc9735275b2 => 'Válvulas';
+
+  @override
+  String get s28cdff43bf => 'Humidificadores';
+
+  @override
   String get sbcb95e1e78 =>
       'La ficha no es aceptada. Cree una nueva en Home Assistant.';
 
@@ -8323,6 +8483,14 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s64d4364336 =>
       'disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming';
+
+  @override
+  String get s73720edff0 =>
+      'playing=Playing;paused=Paused;idle=Idle;on=On;off=Off;standby=Standby;buffering=Buffering;unavailable=Unavailable';
+
+  @override
+  String get s2df1d5947c =>
+      'cleaning=Cleaning;docked=Docked;returning=Returning;idle=Idle;paused=Paused;error=ERROR';
 
   @override
   String get s5b1e227dc4 => 'on=Encendido;off=Apagado';

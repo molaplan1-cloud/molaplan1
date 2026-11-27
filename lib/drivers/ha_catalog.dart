@@ -6,6 +6,7 @@ import 'dart:math' as math;
 
 import 'dart:async';
 import 'dart:convert';
+
 import '../core/io_http.dart';
 
 import 'package:http/http.dart' as http;
@@ -447,7 +448,11 @@ List<TileConfig> haTilesFor(HaEntity e, String connId, String lang, {String? cam
             commands: [
               CommandStep(
                 connectionId: connId,
-                spec: {'service': 'media_player.volume_set', 'entityId': id, 'data': '{"volume_level": {{value_frac}}}'},
+                spec: {
+                  'service': 'media_player.volume_set',
+                  'entityId': id,
+                  'data': '{"volume_level": {{value_frac}}}',
+                },
               ),
             ],
           ),

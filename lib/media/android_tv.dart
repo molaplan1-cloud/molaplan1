@@ -207,26 +207,23 @@ class AtvPairing {
     final (cert, key) = identity ?? await atvNewIdentity();
     final s = await _connect(host, atvPairPort, cert, key);
     final p = AtvPairing._(host, cert, key, s);
-    p._sub = s.listen((d) {
-      for (final m in p._framer.add(d)) {
-        try {
-          p._inbox.add(PbMsg.parse(m));
-        } catch (_) {}
-      }
-    }, onError: (Object e) => p._inbox.addError(e), onDone: p._inbox.close);
+    p._sub = s.listen(
+      (d) {
+        for (final m in p._framer.add(d)) {
+          try {
+            p._inbox.add(PbMsg.parse(m));
+          } catch (_) {}
+        }
+      },
+      onError: (Object e) => p._inbox.addError(e),
+      onDone: p._inbox.close,
+    );
     try {
       final ack = p._next(11);
       s.add(Pb.frame(_outer().msg(10, Pb().str(1, 'atvremote').str(2, clientName))));
       await ack;
       final opts = p._next(20);
-      s.add(
-        Pb.frame(
-          _outer().msg(
-            20,
-            Pb().msg(1, Pb().vint(1, 3).vint(2, 6)).vint(3, 1),
-          ),
-        ),
-      );
+      s.add(Pb.frame(_outer().msg(20, Pb().msg(1, Pb().vint(1, 3).vint(2, 6)).vint(3, 1))));
       await opts;
       final cfgAck = p._next(31);
       s.add(Pb.frame(_outer().msg(30, Pb().msg(1, Pb().vint(1, 3).vint(2, 6)).vint(2, 1))));
@@ -330,7 +327,10 @@ class AndroidTvBackend extends MediaBackend {
             1,
             Pb()
                 .vint(1, feats == 0 ? atvFeatures : feats)
-                .msg(2, Pb().str(1, 'Molaplan').str(2, 'Molaplan').vint(3, 1).str(4, '1').str(5, 'atvremote').str(6, '1.0.0')),
+                .msg(
+                  2,
+                  Pb().str(1, 'Molaplan').str(2, 'Molaplan').vint(3, 1).str(4, '1').str(5, 'atvremote').str(6, '1.0.0'),
+                ),
           ),
         ),
       );
@@ -357,7 +357,9 @@ class AndroidTvBackend extends MediaBackend {
   Future<void> _ensure() async {
     if (_sock != null) return;
     if (_cert.isEmpty || _privKey.isEmpty) {
-      throw MediaPairingNeeded(dtx('Android TV pitää parittaa (koodi televisiosta)', 'Pair the Android TV first (code on the TV)'));
+      throw MediaPairingNeeded(
+        dtx('Android TV pitää parittaa (koodi televisiosta)', 'Pair the Android TV first (code on the TV)'),
+      );
     }
     final o = _opening ??= () async {
       final r = _ready = Completer<void>();
@@ -380,7 +382,9 @@ class AndroidTvBackend extends MediaBackend {
       } catch (_) {
         _drop();
         // The TV closes an unknown certificate right after the handshake.
-        throw MediaPairingNeeded(dtx('Android TV ei hyväksynyt yhteyttä – paritus tarvitaan', 'The Android TV refused – pairing needed'));
+        throw MediaPairingNeeded(
+          dtx('Android TV ei hyväksynyt yhteyttä – paritus tarvitaan', 'The Android TV refused – pairing needed'),
+        );
       }
     }();
     try {
@@ -455,7 +459,9 @@ class AndroidTvBackend extends MediaBackend {
     await _ensure();
     final cur = _pct;
     final max = (_volMax ?? 0) > 0 ? _volMax! : 100;
-    if (cur == null) throw DriverException(dtx('Televisio ei kerro äänenvoimakkuutta', 'The TV does not report volume'));
+    if (cur == null) {
+      throw DriverException(dtx('Televisio ei kerro äänenvoimakkuutta', 'The TV does not report volume'));
+    }
     final steps = ((level.clamp(0, 100) - cur) * max / 100).round().clamp(-50, 50);
     for (var i = 0; i < steps.abs(); i++) {
       await _press(steps > 0 ? 24 : 25);
