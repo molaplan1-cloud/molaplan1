@@ -1139,28 +1139,26 @@
  "@s3ce644ca86": {
   "x-mt": true
  },
- "s43d6286f35": "Este dispositivo también tiene sus propios dispositivos y baldosas. ¿Qué debemos hacer?",
- "@s43d6286f35": {
-  "x-mt": true
- },
+ "sa80b1060fe": "Este dispositivo también tiene sus propios dispositivos y mosaicos. Elige cuáles conservar o combina ambos. La configuración de la cuenta no se sobrescribe en silencio.",
  "sd8a380a86d": "Luego aparecen los mismos hogares, dispositivos y fichas en cada dispositivo firmado en esta cuenta.",
  "@sd8a380a86d": {
-  "x-mt": true
- },
- "sec25d10ff5": "Cancela y firma",
- "@sec25d10ff5": {
-  "x-mt": true
- },
- "sb7a13da58b": "Utilice la configuración de la cuenta",
- "@sb7a13da58b": {
   "x-mt": true
  },
  "sf498dceefb": "Combine ambos (recomendados)",
  "@sf498dceefb": {
   "x-mt": true
  },
+ "sb7a13da58b": "Utilice la configuración de la cuenta",
+ "@sb7a13da58b": {
+  "x-mt": true
+ },
+ "s8c0329f792": "Usar la configuración de este dispositivo (sustituye la de la cuenta)",
  "s9542718c6f": "Guardar en cuenta",
  "@s9542718c6f": {
+  "x-mt": true
+ },
+ "sec25d10ff5": "Cancela y firma",
+ "@sec25d10ff5": {
   "x-mt": true
  },
  "sa711c4833e": "Escribe tu dirección de correo electrónico.",
@@ -2353,7 +2351,6 @@
  "sbd907def5b": "Instalador",
  "sfb1a18d11f": "Actualizar",
  "sb9c461d827": "El acceso de instaladores necesita una cuenta de Molaplan para verificar al instalador y para que funcione el cifrado.",
- "s9bb545e9b3": "Inicia sesión o crea una cuenta",
  "s523c735938": "Da acceso a tus dispositivos a un instalador con su ID de instalador (p. ej. MPL-K7Q-M2X). Molaplan ha verificado el nombre y la empresa de cada instalador. Las contraseñas y direcciones nunca salen de casa y puedes revocar el acceso en cualquier momento.",
  "s03be67bc78": "Dar acceso",
  "s65c7781ca3": "Instaladores con acceso",
@@ -5803,10 +5800,12 @@
  "@s97f46743e0": {
   "x-mt": true
  },
+ "s429f9e257a": "Los datos están solo en este navegador. ",
  "sda9203de80": "No cuenta – sólo en este dispositivo. ",
  "@sda9203de80": {
   "x-mt": true
  },
+ "sfec58c0c1b": "Inicia sesión para sincronizar ›",
  "s8b3e63da21": "Crear cuenta ›",
  "@s8b3e63da21": {
   "x-mt": true
@@ -5844,6 +5843,8 @@
  "@se2e5ff2c8a": {
   "x-mt": true
  },
+ "s82714aa826": "Requiere una cuenta.",
+ "s9bb545e9b3": "Inicia sesión o crea una cuenta",
  "sb8934a5835": "Consumo eléctrico",
  "s5409dc748f": "No se cuenta",
  "sf0bbcc217b": "Toda la vivienda",
@@ -6173,6 +6174,8 @@
  "@sdc86a6f82c": {
   "x-mt": true
  },
+ "s3865b9c032": "Usar sin cuenta",
+ "sdf7bb58964": "La configuración se queda en este navegador. Más adelante puedes crear una cuenta y moverla allí.",
  "sb2703f9ad3": "Crear una cuenta con un código de correo electrónico",
  "@sb2703f9ad3": {
   "x-mt": true
@@ -6181,6 +6184,9 @@
  "@s326d86a618": {
   "x-mt": true
  },
+ "s1812df3cb5": "¿Eliminar los datos de este navegador?",
+ "sbab6f0fd9d": "Se eliminarán todos los ajustes, dispositivos, conexiones y mosaicos de Molaplan en este navegador. Esto no se puede deshacer.",
+ "s38a0f7939b": "Eliminar datos del navegador",
  "sc80648d495": "Show Molaplan",
  "@sc80648d495": {
   "x-mt": true
@@ -6226,6 +6232,9 @@
  "@scc7e418ee3": {
   "x-mt": true
  },
+ "sb386aff4b7": "Descargas",
+ "sbb264ce105": "Descargar la aplicación para PC de la tienda requiere una cuenta (la misma que en el pedido).",
+ "se5ab008127": "Abrir descargas",
  "s08d62fd281": "Apariencia",
  "@s08d62fd281": {
   "x-mt": true

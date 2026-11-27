@@ -1148,28 +1148,26 @@
  "@s3ce644ca86": {
   "x-mt": true
  },
- "s43d6286f35": "Sellel seadmel on ka oma seadmed ja plaadid. Mida me peaksime tegema?",
- "@s43d6286f35": {
-  "x-mt": true
- },
+ "sa80b1060fe": "Sellel seadmel on ka oma seadmed ja ruudud. Vali, kumb alles jäetakse, või ühenda mõlemad. Konto seadeid ei kirjutata vaikselt üle.",
  "sd8a380a86d": "Seejärel ilmuvad samad kodud, seadmed ja plaadid igale sellele kontole sisse logitud seadmele.",
  "@sd8a380a86d": {
-  "x-mt": true
- },
- "sec25d10ff5": "Tühistage ja logige sisse",
- "@sec25d10ff5": {
-  "x-mt": true
- },
- "sb7a13da58b": "Konto seadistuse kasutamine",
- "@sb7a13da58b": {
   "x-mt": true
  },
  "sf498dceefb": "Mõlema kombineerimine (soovitatav)",
  "@sf498dceefb": {
   "x-mt": true
  },
+ "sb7a13da58b": "Konto seadistuse kasutamine",
+ "@sb7a13da58b": {
+  "x-mt": true
+ },
+ "s8c0329f792": "Kasuta selle seadme seadeid (asendab konto omad)",
  "s9542718c6f": "Salvesta kontole",
  "@s9542718c6f": {
+  "x-mt": true
+ },
+ "sec25d10ff5": "Tühistage ja logige sisse",
+ "@sec25d10ff5": {
   "x-mt": true
  },
  "sa711c4833e": "Kirjuta oma e-posti aadress.",
@@ -2365,7 +2363,6 @@
  "sbd907def5b": "Paigaldaja",
  "sfb1a18d11f": "Värskenda",
  "sb9c461d827": "Paigaldaja juurdepääs vajab Molaplani kontot, et paigaldajat saaks kontrollida ja krüpteerimine töötaks.",
- "s9bb545e9b3": "Logi sisse või loo konto",
  "s523c735938": "Anna paigaldajale juurdepääs oma seadmetele tema paigaldaja-ID-ga (nt MPL-K7Q-M2X). Molaplan on kontrollinud iga paigaldaja nime ja ettevõtte. Paroolid ja aadressid ei lahku kunagi kodust ning juurdepääsu saab igal ajal tühistada.",
  "s03be67bc78": "Anna juurdepääs",
  "s65c7781ca3": "Juurdepääsuga paigaldajad",
@@ -5839,10 +5836,12 @@
  "@s97f46743e0": {
   "x-mt": true
  },
+ "s429f9e257a": "Andmed on ainult selles brauseris. ",
  "sda9203de80": "Konto puudub – seaded ainult selles seadmes. ",
  "@sda9203de80": {
   "x-mt": true
  },
+ "sfec58c0c1b": "Logi sisse, et sünkroonida ›",
  "s8b3e63da21": "Konto loomine ›",
  "@s8b3e63da21": {
   "x-mt": true
@@ -5880,6 +5879,8 @@
  "@se2e5ff2c8a": {
   "x-mt": true
  },
+ "s82714aa826": "Nõuab kontot.",
+ "s9bb545e9b3": "Logi sisse või loo konto",
  "sb8934a5835": "Elektritarbimine",
  "s5409dc748f": "Ei arvestata",
  "sf0bbcc217b": "Kogu objekt",
@@ -6209,6 +6210,8 @@
  "@sdc86a6f82c": {
   "x-mt": true
  },
+ "s3865b9c032": "Kasuta ilma kontota",
+ "sdf7bb58964": "Seaded jäävad sellesse brauserisse. Hiljem saad luua konto ja kanda need sinna.",
  "sb2703f9ad3": "E- posti koodiga konto loomine",
  "@sb2703f9ad3": {
   "x-mt": true
@@ -6217,6 +6220,9 @@
  "@s326d86a618": {
   "x-mt": true
  },
+ "s1812df3cb5": "Kas kustutada selle brauseri andmed?",
+ "sbab6f0fd9d": "Kõik selle brauseri Molaplani seaded, seadmed, ühendused ja ruudud kustutatakse. Seda ei saa tagasi võtta.",
+ "s38a0f7939b": "Kustuta brauseri andmed",
  "sc80648d495": "Molaplani näitamine",
  "@sc80648d495": {
   "x-mt": true
@@ -6262,6 +6268,9 @@
  "@scc7e418ee3": {
   "x-mt": true
  },
+ "sb386aff4b7": "Allalaadimised",
+ "sbb264ce105": "Arvutirakenduse allalaadimine poest nõuab kontot (sama mis tellimusel).",
+ "se5ab008127": "Ava allalaadimised",
  "s08d62fd281": "Välimus",
  "@s08d62fd281": {
   "x-mt": true

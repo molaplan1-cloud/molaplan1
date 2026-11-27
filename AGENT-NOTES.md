@@ -244,3 +244,9 @@ t155u–t157u (also v0.7.3): ModbusTcpClient.acquire/release (one pooled connect
 - Web admin: web-site/tilaa/assets/admin.js `renderInstallers` (#asentajat).
 - Tests: supabase/tests/installers_rls_test.sql (tool/rls_test.sh), test/sharing_t215_test.dart 'approved installers', test/share_ui_t215_test.dart, l10n_test covers the installer pages.
 - Granting on the live DB without an admin JWT (as DB owner): insert into public.installers (user_id, public_id, display_name, company, granted_by) values (…, private.new_installer_id(), …).
+
+## v0.14.0 – guest use of the web app (t266u, R263–R267)
+- Web intro: 'Käytä ilman tiliä' opens the normal web app with local-only storage (R251 encryption, no cloud sync). Guest flag `molaplan.web.guest.v1` in SharedPreferences; reload keeps the session.
+- Persistent banner: data only in this browser + sign in to sync. Remote-only notice and Tilaa stay. Account-required features (sync, installer, shop downloads) show 'Vaatii tilin' + sign-in.
+- Sign-in from guest: empty account auto-uploads; conflict asks merge / use account / use local (no silent overwrite). Cancel signs out with `keepLocal` so the web gate does not wipe.
+- Settings: 'Poista selaimen tiedot' (same wipe as sign-out). Tests: test/web_guest_test.dart.

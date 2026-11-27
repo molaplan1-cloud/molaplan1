@@ -1241,24 +1241,27 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s3ce644ca86 => 'Salvesta seadme seadistus oma kontole?';
 
   @override
-  String get s43d6286f35 =>
-      'Sellel seadmel on ka oma seadmed ja plaadid. Mida me peaksime tegema?';
+  String get sa80b1060fe =>
+      'Sellel seadmel on ka oma seadmed ja ruudud. Vali, kumb alles jäetakse, või ühenda mõlemad. Konto seadeid ei kirjutata vaikselt üle.';
 
   @override
   String get sd8a380a86d =>
       'Seejärel ilmuvad samad kodud, seadmed ja plaadid igale sellele kontole sisse logitud seadmele.';
 
   @override
-  String get sec25d10ff5 => 'Tühistage ja logige sisse';
+  String get sf498dceefb => 'Mõlema kombineerimine (soovitatav)';
 
   @override
   String get sb7a13da58b => 'Konto seadistuse kasutamine';
 
   @override
-  String get sf498dceefb => 'Mõlema kombineerimine (soovitatav)';
+  String get s8c0329f792 => 'Kasuta selle seadme seadeid (asendab konto omad)';
 
   @override
   String get s9542718c6f => 'Salvesta kontole';
+
+  @override
+  String get sec25d10ff5 => 'Tühistage ja logige sisse';
 
   @override
   String get sa711c4833e => 'Kirjuta oma e-posti aadress.';
@@ -2619,9 +2622,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sb9c461d827 =>
       'Paigaldaja juurdepääs vajab Molaplani kontot, et paigaldajat saaks kontrollida ja krüpteerimine töötaks.';
-
-  @override
-  String get s9bb545e9b3 => 'Logi sisse või loo konto';
 
   @override
   String get s523c735938 =>
@@ -6103,7 +6103,13 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String get s429f9e257a => 'Andmed on ainult selles brauseris. ';
+
+  @override
   String get sda9203de80 => 'Konto puudub – seaded ainult selles seadmes. ';
+
+  @override
+  String get sfec58c0c1b => 'Logi sisse, et sünkroonida ›';
 
   @override
   String get s8b3e63da21 => 'Konto loomine ›';
@@ -6135,6 +6141,12 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get se2e5ff2c8a => 'Jätka ilma kontota';
+
+  @override
+  String get s82714aa826 => 'Nõuab kontot.';
+
+  @override
+  String get s9bb545e9b3 => 'Logi sisse või loo konto';
 
   @override
   String get sb8934a5835 => 'Elektritarbimine';
@@ -6625,11 +6637,28 @@ class AppLocalizationsEt extends AppLocalizations {
       'Seadme paroolid on krüptitud - ainult teie seadmed saavad neid avada';
 
   @override
+  String get s3865b9c032 => 'Kasuta ilma kontota';
+
+  @override
+  String get sdf7bb58964 =>
+      'Seaded jäävad sellesse brauserisse. Hiljem saad luua konto ja kanda need sinna.';
+
+  @override
   String get sb2703f9ad3 => 'E- posti koodiga konto loomine';
 
   @override
   String get s326d86a618 =>
       'Nimi pärineb hispaania keelest \"me mola el plan\" - \"kõlab hästi\".';
+
+  @override
+  String get s1812df3cb5 => 'Kas kustutada selle brauseri andmed?';
+
+  @override
+  String get sbab6f0fd9d =>
+      'Kõik selle brauseri Molaplani seaded, seadmed, ühendused ja ruudud kustutatakse. Seda ei saa tagasi võtta.';
+
+  @override
+  String get s38a0f7939b => 'Kustuta brauseri andmed';
 
   @override
   String get sc80648d495 => 'Molaplani näitamine';
@@ -6668,6 +6697,16 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get scc7e418ee3 =>
       'Logi sisse, et arvutil, tahvelarvutil ja telefonil oleksid samad kodud, seadmed ja plaadid. Valikuline.';
+
+  @override
+  String get sb386aff4b7 => 'Allalaadimised';
+
+  @override
+  String get sbb264ce105 =>
+      'Arvutirakenduse allalaadimine poest nõuab kontot (sama mis tellimusel).';
+
+  @override
+  String get se5ab008127 => 'Ava allalaadimised';
 
   @override
   String get s08d62fd281 => 'Välimus';

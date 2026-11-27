@@ -548,7 +548,21 @@ T = {
  'No customers yet. Give your customer your installer ID {p0}: they open Settings → Installer → Give access.': ('Inga kunder ännu. Ge kunden ditt installatörs-ID {p0}: kunden öppnar Inställningar → Installatör → Ge åtkomst.', 'Kliente veel pole. Anna kliendile oma paigaldaja-ID {p0}: klient avab Seaded → Paigaldaja → Anna juurdepääs.', 'Aún no hay clientes. Da a tu cliente tu ID de instalador {p0}: abre Ajustes → Instalador → Dar acceso.'),
  'Give someone, or an installer, access to the devices you choose.': ('Ge någon, eller en installatör, åtkomst till de enheter du väljer.', 'Anna kellelegi või paigaldajale juurdepääs valitud seadmetele.', 'Da a alguien, o a un instalador, acceso a los dispositivos que elijas.'),
  'Installer': ('Installatör', 'Paigaldaja', 'Instalador'),
+ 'Use without an account': ('Använd utan konto', 'Kasuta ilma kontota', 'Usar sin cuenta'),
+ 'Setup stays in this browser. You can create an account later and move it there.': ('Inställningarna stannar i den här webbläsaren. Du kan skapa ett konto senare och flytta dem dit.', 'Seaded jäävad sellesse brauserisse. Hiljem saad luua konto ja kanda need sinna.', 'La configuración se queda en este navegador. Más adelante puedes crear una cuenta y moverla allí.'),
+ 'Data is only in this browser. ': ('Uppgifterna finns bara i den här webbläsaren. ', 'Andmed on ainult selles brauseris. ', 'Los datos están solo en este navegador. '),
+ 'Sign in to sync ›': ('Logga in för att synka ›', 'Logi sisse, et sünkroonida ›', 'Inicia sesión para sincronizar ›'),
+ 'Requires an account.': ('Kräver ett konto.', 'Nõuab kontot.', 'Requiere una cuenta.'),
+ 'Delete browser data': ('Ta bort webbläsardata', 'Kustuta brauseri andmed', 'Eliminar datos del navegador'),
+ "Delete this browser's data?": ('Ta bort den här webbläsarens data?', 'Kas kustutada selle brauseri andmed?', '¿Eliminar los datos de este navegador?'),
+ 'All Molaplan settings, devices, connections and tiles in this browser will be deleted. This cannot be undone.': ('Alla Molaplan-inställningar, enheter, anslutningar och rutor i den här webbläsaren tas bort. Det går inte att ångra.', 'Kõik selle brauseri Molaplani seaded, seadmed, ühendused ja ruudud kustutatakse. Seda ei saa tagasi võtta.', 'Se eliminarán todos los ajustes, dispositivos, conexiones y mosaicos de Molaplan en este navegador. Esto no se puede deshacer.'),
+ "Use this device's setup (replaces the account's)": ('Använd den här enhetens inställningar (ersätter kontots)', 'Kasuta selle seadme seadeid (asendab konto omad)', 'Usar la configuración de este dispositivo (sustituye la de la cuenta)'),
+ 'This device has its own devices and tiles too. Choose which to keep, or combine both. The account setup is not silently overwritten.': ('Den här enheten har också egna enheter och rutor. Välj vilka som ska behållas, eller kombinera båda. Kontots inställningar skrivs inte över i tysthet.', 'Sellel seadmel on ka oma seadmed ja ruudud. Vali, kumb alles jäetakse, või ühenda mõlemad. Konto seadeid ei kirjutata vaikselt üle.', 'Este dispositivo también tiene sus propios dispositivos y mosaicos. Elige cuáles conservar o combina ambos. La configuración de la cuenta no se sobrescribe en silencio.'),
+ 'Downloads': ('Nedladdningar', 'Allalaadimised', 'Descargas'),
+ 'Open downloads': ('Öppna nedladdningar', 'Ava allalaadimised', 'Abrir descargas'),
+ 'Downloading the PC app from the shop requires an account (the same one as on the order).': ('Att ladda ner PC-appen från butiken kräver ett konto (samma som på beställningen).', 'Arvutirakenduse allalaadimine poest nõuab kontot (sama mis tellimusel).', 'Descargar la aplicación para PC de la tienda requiere una cuenta (la misma que en el pedido).'),
 }
+
 out = {'sv': {}, 'et': {}, 'es': {}}
 for en, (sv, et, es) in T.items():
     out['sv'][en], out['et'][en], out['es'][en] = sv, et, es

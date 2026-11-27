@@ -84,16 +84,49 @@ Future<void> askFirstSync(BuildContext context) async {
             ? t('Tililläsi on jo kotinäkymä', 'Your account already has a setup')
             : t('Tallennetaanko tämän laitteen kotinäkymä tiliisi?', 'Save this device\'s setup to your account?'),
       ),
-      content: Text(
-        p.remoteHas
-            ? t(
-                'Myös tällä laitteella on omia laitteita ja ruutuja. Mitä tehdään?',
-                'This device has its own devices and tiles too. What should we do?',
-              )
-            : t(
-                'Silloin samat kodit, laitteet ja ruudut näkyvät kaikilla laitteillasi, joilla kirjaudut tälle tilille.',
-                'Then the same homes, devices and tiles appear on every device signed in to this account.',
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            p.remoteHas
+                ? t(
+                    'Myös tällä laitteella on omia laitteita ja ruutuja. Valitse, kummat pidetään, tai yhdistä molemmat. Tilin asetuksia ei korvata hiljaa.',
+                    'This device has its own devices and tiles too. Choose which to keep, or combine both. The account setup is not silently overwritten.',
+                  )
+                : t(
+                    'Silloin samat kodit, laitteet ja ruudut näkyvät kaikilla laitteillasi, joilla kirjaudut tälle tilille.',
+                    'Then the same homes, devices and tiles appear on every device signed in to this account.',
+                  ),
+          ),
+          const SizedBox(height: 16),
+          if (p.remoteHas) ...[
+            FilledButton(
+              key: const ValueKey('first-merge'),
+              onPressed: () => Navigator.pop(c, FirstSyncChoice.merge),
+              child: Text(t('Yhdistä molemmat (suositus)', 'Combine both (recommended)')),
+            ),
+            const SizedBox(height: 8),
+            OutlinedButton(
+              key: const ValueKey('first-use-account'),
+              onPressed: () => Navigator.pop(c, FirstSyncChoice.useAccount),
+              child: Text(t('Käytä tilin asetuksia', 'Use the account\'s setup')),
+            ),
+            const SizedBox(height: 8),
+            OutlinedButton(
+              key: const ValueKey('first-use-local'),
+              onPressed: () => Navigator.pop(c, FirstSyncChoice.uploadLocal),
+              child: Text(
+                t('Käytä tämän laitteen asetuksia (korvaa tilin)', "Use this device's setup (replaces the account's)"),
               ),
+            ),
+          ] else
+            FilledButton(
+              key: const ValueKey('first-upload'),
+              onPressed: () => Navigator.pop(c, FirstSyncChoice.uploadLocal),
+              child: Text(t('Tallenna tiliin', 'Save to account')),
+            ),
+        ],
       ),
       actions: [
         TextButton(
@@ -101,23 +134,6 @@ Future<void> askFirstSync(BuildContext context) async {
           onPressed: () => Navigator.pop(c, null),
           child: Text(t('Peru ja kirjaudu ulos', 'Cancel and sign out')),
         ),
-        if (p.remoteHas) ...[
-          OutlinedButton(
-            key: const ValueKey('first-use-account'),
-            onPressed: () => Navigator.pop(c, FirstSyncChoice.useAccount),
-            child: Text(t('Käytä tilin asetuksia', 'Use the account\'s setup')),
-          ),
-          FilledButton(
-            key: const ValueKey('first-merge'),
-            onPressed: () => Navigator.pop(c, FirstSyncChoice.merge),
-            child: Text(t('Yhdistä molemmat (suositus)', 'Combine both (recommended)')),
-          ),
-        ] else
-          FilledButton(
-            key: const ValueKey('first-upload'),
-            onPressed: () => Navigator.pop(c, FirstSyncChoice.uploadLocal),
-            child: Text(t('Tallenna tiliin', 'Save to account')),
-          ),
       ],
     ),
   );

@@ -1244,24 +1244,27 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s3ce644ca86 => 'Tallennetaanko tämän laitteen kotinäkymä tiliisi?';
 
   @override
-  String get s43d6286f35 =>
-      'Myös tällä laitteella on omia laitteita ja ruutuja. Mitä tehdään?';
+  String get sa80b1060fe =>
+      'Myös tällä laitteella on omia laitteita ja ruutuja. Valitse, kummat pidetään, tai yhdistä molemmat. Tilin asetuksia ei korvata hiljaa.';
 
   @override
   String get sd8a380a86d =>
       'Silloin samat kodit, laitteet ja ruudut näkyvät kaikilla laitteillasi, joilla kirjaudut tälle tilille.';
 
   @override
-  String get sec25d10ff5 => 'Peru ja kirjaudu ulos';
+  String get sf498dceefb => 'Yhdistä molemmat (suositus)';
 
   @override
   String get sb7a13da58b => 'Käytä tilin asetuksia';
 
   @override
-  String get sf498dceefb => 'Yhdistä molemmat (suositus)';
+  String get s8c0329f792 => 'Käytä tämän laitteen asetuksia (korvaa tilin)';
 
   @override
   String get s9542718c6f => 'Tallenna tiliin';
+
+  @override
+  String get sec25d10ff5 => 'Peru ja kirjaudu ulos';
 
   @override
   String get sa711c4833e =>
@@ -2628,9 +2631,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get sb9c461d827 =>
       'Asentajan pääsy tarvitsee Molaplan-tilin, jotta asentaja tunnistetaan ja salaus toimii.';
-
-  @override
-  String get s9bb545e9b3 => 'Kirjaudu tai luo tili';
 
   @override
   String get s523c735938 =>
@@ -6120,7 +6120,13 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
+  String get s429f9e257a => 'Tiedot vain tässä selaimessa. ';
+
+  @override
   String get sda9203de80 => 'Ei tiliä – asetukset vain tällä laitteella. ';
+
+  @override
+  String get sfec58c0c1b => 'Kirjaudu, niin ne synkronoituvat ›';
 
   @override
   String get s8b3e63da21 => 'Luo tili ›';
@@ -6152,6 +6158,12 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get se2e5ff2c8a => 'Jatka ilman tiliä';
+
+  @override
+  String get s82714aa826 => 'Vaatii tilin.';
+
+  @override
+  String get s9bb545e9b3 => 'Kirjaudu tai luo tili';
 
   @override
   String get sb8934a5835 => 'Sähkönkulutus';
@@ -6644,11 +6656,28 @@ class AppLocalizationsFi extends AppLocalizations {
       'Laitteiden salasanat salataan – vain sinun laitteesi avaavat ne';
 
   @override
+  String get s3865b9c032 => 'Käytä ilman tiliä';
+
+  @override
+  String get sdf7bb58964 =>
+      'Asetukset jäävät tähän selaimeen. Voit myöhemmin luoda tilin ja siirtää ne sinne.';
+
+  @override
   String get sb2703f9ad3 => 'Luo tili sähköpostikoodilla';
 
   @override
   String get s326d86a618 =>
       'Nimi tulee espanjan ilmauksesta \"me mola el plan\" – \"kuulostaa hyvältä\".';
+
+  @override
+  String get s1812df3cb5 => 'Poistetaanko selaimen tiedot?';
+
+  @override
+  String get sbab6f0fd9d =>
+      'Kaikki tässä selaimessa olevat Molaplan-asetukset, laitteet, yhteydet ja ruudut poistetaan. Tätä ei voi perua.';
+
+  @override
+  String get s38a0f7939b => 'Poista selaimen tiedot';
 
   @override
   String get sc80648d495 => 'Näytä Molaplan';
@@ -6687,6 +6716,16 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get scc7e418ee3 =>
       'Kirjaudu, niin kodit, laitteet ja ruudut ovat samat PC:llä, tabletilla ja puhelimella. Vapaaehtoinen.';
+
+  @override
+  String get sb386aff4b7 => 'Lataukset';
+
+  @override
+  String get sbb264ce105 =>
+      'PC-sovelluksen lataus kaupan sivulta vaatii tilin (saman kuin tilauksessa).';
+
+  @override
+  String get se5ab008127 => 'Avaa lataukset';
 
   @override
   String get s08d62fd281 => 'Ulkoasu';

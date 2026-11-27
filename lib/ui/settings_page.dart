@@ -125,6 +125,38 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
               ),
+              if (Plat.isWeb && !st.account.signedIn) ...[
+                const SizedBox(height: 8),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: OutlinedButton.icon(
+                    key: const ValueKey('web-wipe-local'),
+                    onPressed: () => confirmWipeBrowser(context, st),
+                    icon: const Icon(Icons.delete_outline),
+                    label: Text(tx(context, 'Poista selaimen tiedot', 'Delete browser data')),
+                  ),
+                ),
+              ],
+              if (Plat.isWeb) ...[
+                const SizedBox(height: 28),
+                Text(tx(context, 'Lataukset', 'Downloads'), style: text.titleMedium),
+                const SizedBox(height: 4),
+                if (!st.account.signedIn)
+                  const NeedsAccountNote(
+                    reasonFi: 'PC-sovelluksen lataus kaupan sivulta vaatii tilin (saman kuin tilauksessa).',
+                    reasonEn: 'Downloading the PC app from the shop requires an account (the same one as on the order).',
+                  )
+                else
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: FilledButton.tonalIcon(
+                      key: const ValueKey('settings-downloads'),
+                      onPressed: () => openMolaplanUrl(molaplanDownloads),
+                      icon: const Icon(Icons.download_outlined),
+                      label: Text(tx(context, 'Avaa lataukset', 'Open downloads')),
+                    ),
+                  ),
+              ],
               const SizedBox(height: 28),
               Text(tx(context, 'Kieli', 'Language'), style: text.titleMedium),
               const SizedBox(height: 8),

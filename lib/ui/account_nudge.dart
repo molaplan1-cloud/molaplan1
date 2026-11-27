@@ -1,4 +1,5 @@
 import '../core/plat.dart';
+import '../state/web_guest.dart';
 
 import 'package:material_ui/material_ui.dart';
 
@@ -10,14 +11,26 @@ import 'app_scope.dart';
 /// All of it disappears once an account exists. Off in widget tests unless a test turns it on.
 bool accountNudges = !Plat.isFlutterTest;
 
-bool needsAccountNudge(BuildContext context) => accountNudges && !AppScope.of(context).account.signedIn;
+bool needsAccountNudge(BuildContext context) {
+  if (AppScope.of(context).account.signedIn) return false;
+  if (accountNudges) return true;
+  // R265: the guest banner stays visible in the web app even when tests turn nudges off,
+  // as long as this browser is in guest mode.
+  return Plat.isWeb && WebGuest.instance.active;
+}
 
-Future<void> openAccountSignUp(BuildContext context) =>
-    Navigator.push(context, MaterialPageRoute(builder: (_) => const AccountPage(startWithCode: true)));
+Future<void> openAccountSignUp(BuildContext context) => Navigator.push(
+  context,
+  MaterialPageRoute(builder: (_) => const AccountPage(startWithCode: true)),
+);
 
 /// "Ei tiliä – asetukset vain tällä laitteella. Luo tili ›" – not dismissable.
 class NoAccountBanner extends StatelessWidget {
-  const NoAccountBanner({super.key, this.compact = false, this.margin = const EdgeInsets.fromLTRB(14, 6, 14, 2)});
+  const NoAccountBanner({
+    super.key,
+    this.compact = false,
+    this.margin = const EdgeInsets.fromLTRB(14, 6, 14, 2),
+  });
   final bool compact;
   final EdgeInsets margin;
 
@@ -33,31 +46,58 @@ class NoAccountBanner extends StatelessWidget {
         borderRadius: BorderRadius.circular(compact ? 12 : 14),
         child: InkWell(
           borderRadius: BorderRadius.circular(compact ? 12 : 14),
-          onTap: () => openAccountSignUp(context),
+          onTap: () => Plat.isWeb
+              ? Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const AccountPage()),
+                )
+              : openAccountSignUp(context),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 14, vertical: compact ? 8 : 10),
+            padding: EdgeInsets.symmetric(
+              horizontal: 14,
+              vertical: compact ? 8 : 10,
+            ),
             child: Row(
               children: [
-                Icon(Icons.cloud_off_outlined, size: 18, color: cs.onTertiaryContainer),
+                Icon(
+                  Icons.cloud_off_outlined,
+                  size: 18,
+                  color: cs.onTertiaryContainer,
+                ),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Text.rich(
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: tx(
-                            context,
-                            'Ei tiliä – asetukset vain tällä laitteella. ',
-                            'No account – settings only on this device. ',
-                          ),
+                          text: Plat.isWeb
+                              ? tx(
+                                  context,
+                                  'Tiedot vain tässä selaimessa. ',
+                                  'Data is only in this browser. ',
+                                )
+                              : tx(
+                                  context,
+                                  'Ei tiliä – asetukset vain tällä laitteella. ',
+                                  'No account – settings only on this device. ',
+                                ),
                         ),
                         TextSpan(
-                          text: tx(context, 'Luo tili ›', 'Create account ›'),
+                          text: Plat.isWeb
+                              ? tx(
+                                  context,
+                                  'Kirjaudu, niin ne synkronoituvat ›',
+                                  'Sign in to sync ›',
+                                )
+                              : tx(context, 'Luo tili ›', 'Create account ›'),
                           style: const TextStyle(fontWeight: FontWeight.w700),
                         ),
                       ],
                     ),
-                    style: TextStyle(color: cs.onTertiaryContainer, fontSize: 13.5),
+                    style: TextStyle(
+                      color: cs.onTertiaryContainer,
+                      fontSize: 13.5,
+                    ),
                   ),
                 ),
               ],
@@ -140,32 +180,54 @@ class WelcomePage extends StatelessWidget {
                 const SizedBox(height: 20),
                 point(
                   Icons.devices_outlined,
-                  tx(context, 'Asetukset kaikilla laitteillasi', 'Your setup on all your devices'),
+                  tx(
+                    context,
+                    'Asetukset kaikilla laitteillasi',
+                    'Your setup on all your devices',
+                  ),
                 ),
                 point(
                   Icons.backup_outlined,
-                  tx(context, 'Mitään ei katoa, vaikka puhelin vaihtuu', 'Nothing is lost when you change phones'),
+                  tx(
+                    context,
+                    'Mitään ei katoa, vaikka puhelin vaihtuu',
+                    'Nothing is lost when you change phones',
+                  ),
                 ),
                 point(
                   Icons.lock_outline,
-                  tx(context, 'Laitteiden salasanat salataan', 'Device passwords are encrypted'),
+                  tx(
+                    context,
+                    'Laitteiden salasanat salataan',
+                    'Device passwords are encrypted',
+                  ),
                 ),
                 const SizedBox(height: 24),
                 FilledButton(
                   key: const ValueKey('welcome-account'),
-                  style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(56)),
+                  style: FilledButton.styleFrom(
+                    minimumSize: const Size.fromHeight(56),
+                  ),
                   onPressed: () async {
                     await openAccountSignUp(context);
                     if (context.mounted) Navigator.pop(context);
                   },
                   child: Text(
-                    tx(context, 'Luo tili / Kirjaudu', 'Create account / Sign in'),
+                    tx(
+                      context,
+                      'Luo tili / Kirjaudu',
+                      'Create account / Sign in',
+                    ),
                     style: const TextStyle(fontSize: 17),
                   ),
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  tx(context, 'Sähköpostikoodilla – ei salasanaa.', 'With an email code – no password.'),
+                  tx(
+                    context,
+                    'Sähköpostikoodilla – ei salasanaa.',
+                    'With an email code – no password.',
+                  ),
                   style: text.bodySmall?.copyWith(color: cs.onSurfaceVariant),
                   textAlign: TextAlign.center,
                 ),
@@ -173,13 +235,61 @@ class WelcomePage extends StatelessWidget {
                 TextButton(
                   key: const ValueKey('welcome-skip'),
                   onPressed: () => Navigator.pop(context),
-                  child: Text(tx(context, 'Jatka ilman tiliä', 'Continue without an account')),
+                  child: Text(
+                    tx(
+                      context,
+                      'Jatka ilman tiliä',
+                      'Continue without an account',
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+/// R264: short "vaatii tilin" note with a sign-in button, used instead of a failed action.
+class NeedsAccountNote extends StatelessWidget {
+  const NeedsAccountNote({
+    super.key,
+    required this.reasonFi,
+    required this.reasonEn,
+  });
+  final String reasonFi;
+  final String reasonEn;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      key: const ValueKey('needs-account'),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          tx(context, 'Vaatii tilin.', 'Requires an account.'),
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        const SizedBox(height: 8),
+        Text(tx(context, reasonFi, reasonEn)),
+        const SizedBox(height: 12),
+        FilledButton(
+          key: const ValueKey('needs-account-sign-in'),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const AccountPage()),
+          ),
+          child: Text(
+            tx(
+              context,
+              'Kirjaudu tai luo tili',
+              'Sign in or create an account',
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

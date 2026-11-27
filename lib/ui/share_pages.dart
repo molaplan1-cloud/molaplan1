@@ -10,7 +10,7 @@ import '../models/models.dart';
 import '../remote/protocol.dart';
 import '../sharing/share_api.dart';
 import '../sharing/share_core.dart';
-import 'account_page.dart';
+import 'account_nudge.dart';
 import 'app_scope.dart';
 
 String shareErrorText(BuildContext context, Object e) {
@@ -152,17 +152,9 @@ class _SharingPageState extends State<SharingPage> {
             padding: const EdgeInsets.all(16),
             children: [
               if (!st.account.signedIn) ...[
-                Text(
-                  tx(
-                    context,
-                    'Jakaminen tarvitsee Molaplan-tilin, jotta kutsut löytävät perille ja salaus toimii.',
-                    'Sharing needs a Molaplan account so invites can reach people and encryption works.',
-                  ),
-                ),
-                const SizedBox(height: 12),
-                FilledButton(
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AccountPage())),
-                  child: Text(tx(context, 'Kirjaudu tai luo tili', 'Sign in or create an account')),
+                const NeedsAccountNote(
+                  reasonFi: 'Jakaminen tarvitsee Molaplan-tilin, jotta kutsut löytävät perille ja salaus toimii.',
+                  reasonEn: 'Sharing needs a Molaplan account so invites can reach people and encryption works.',
                 ),
               ] else ...[
                 Text(

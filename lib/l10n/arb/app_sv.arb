@@ -1142,28 +1142,26 @@
  "@s3ce644ca86": {
   "x-mt": true
  },
- "s43d6286f35": "Denna enhet har sina egna enheter och plattor också. Vad ska vi göra?",
- "@s43d6286f35": {
-  "x-mt": true
- },
+ "sa80b1060fe": "Den här enheten har också egna enheter och rutor. Välj vilka som ska behållas, eller kombinera båda. Kontots inställningar skrivs inte över i tysthet.",
  "sd8a380a86d": "Då samma hem, enheter och plattor visas på varje enhet som är inloggad på detta konto.",
  "@sd8a380a86d": {
-  "x-mt": true
- },
- "sec25d10ff5": "Avboka och signera ut",
- "@sec25d10ff5": {
-  "x-mt": true
- },
- "sb7a13da58b": "Använd kontots installation",
- "@sb7a13da58b": {
   "x-mt": true
  },
  "sf498dceefb": "Kombinera båda (rekommenderas)",
  "@sf498dceefb": {
   "x-mt": true
  },
+ "sb7a13da58b": "Använd kontots installation",
+ "@sb7a13da58b": {
+  "x-mt": true
+ },
+ "s8c0329f792": "Använd den här enhetens inställningar (ersätter kontots)",
  "s9542718c6f": "Spara till konto",
  "@s9542718c6f": {
+  "x-mt": true
+ },
+ "sec25d10ff5": "Avboka och signera ut",
+ "@sec25d10ff5": {
   "x-mt": true
  },
  "sa711c4833e": "Skriv din e-postadress.",
@@ -2353,7 +2351,6 @@
  "sbd907def5b": "Installatör",
  "sfb1a18d11f": "Uppdatera",
  "sb9c461d827": "Installatörsåtkomst kräver ett Molaplan-konto så att installatören kan verifieras och krypteringen fungerar.",
- "s9bb545e9b3": "Logga in eller skapa ett konto",
  "s523c735938": "Ge en installatör åtkomst till dina enheter med installatörens ID (t.ex. MPL-K7Q-M2X). Molaplan har kontrollerat varje installatörs namn och företag. Lösenord och adresser lämnar aldrig hemmet, och du kan återkalla åtkomsten när som helst.",
  "s03be67bc78": "Ge åtkomst",
  "s65c7781ca3": "Installatörer med åtkomst",
@@ -5812,10 +5809,12 @@
  "@s97f46743e0": {
   "x-mt": true
  },
+ "s429f9e257a": "Uppgifterna finns bara i den här webbläsaren. ",
  "sda9203de80": "lokaler och inställningar ",
  "@sda9203de80": {
   "x-mt": true
  },
+ "sfec58c0c1b": "Logga in för att synka ›",
  "s8b3e63da21": "o skapa kontot ›",
  "@s8b3e63da21": {
   "x-mt": true
@@ -5853,6 +5852,8 @@
  "@se2e5ff2c8a": {
   "x-mt": true
  },
+ "s82714aa826": "Kräver ett konto.",
+ "s9bb545e9b3": "Logga in eller skapa ett konto",
  "sb8934a5835": "Elförbrukning",
  "s5409dc748f": "Räknas inte",
  "sf0bbcc217b": "Hela fastigheten",
@@ -6182,6 +6183,8 @@
  "@sdc86a6f82c": {
   "x-mt": true
  },
+ "s3865b9c032": "Använd utan konto",
+ "sdf7bb58964": "Inställningarna stannar i den här webbläsaren. Du kan skapa ett konto senare och flytta dem dit.",
  "sb2703f9ad3": "Skapa ett konto med en e-postkod",
  "@sb2703f9ad3": {
   "x-mt": true
@@ -6190,6 +6193,9 @@
  "@s326d86a618": {
   "x-mt": true
  },
+ "s1812df3cb5": "Ta bort den här webbläsarens data?",
+ "sbab6f0fd9d": "Alla Molaplan-inställningar, enheter, anslutningar och rutor i den här webbläsaren tas bort. Det går inte att ångra.",
+ "s38a0f7939b": "Ta bort webbläsardata",
  "sc80648d495": "Visa Molaplan",
  "@sc80648d495": {
   "x-mt": true
@@ -6235,6 +6241,9 @@
  "@scc7e418ee3": {
   "x-mt": true
  },
+ "sb386aff4b7": "Nedladdningar",
+ "sbb264ce105": "Att ladda ner PC-appen från butiken kräver ett konto (samma som på beställningen).",
+ "se5ab008127": "Öppna nedladdningar",
  "s08d62fd281": "Utseende",
  "@s08d62fd281": {
   "x-mt": true

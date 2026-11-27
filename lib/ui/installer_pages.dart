@@ -14,7 +14,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../sharing/share_api.dart';
 import '../sharing/share_core.dart';
-import 'account_page.dart';
+import 'account_nudge.dart';
 import 'app_scope.dart';
 import 'remote_pages.dart' show canScanQr, scanMolaplanQr;
 import 'share_pages.dart';
@@ -131,17 +131,9 @@ class _InstallerHubPageState extends State<InstallerHubPage> {
             padding: const EdgeInsets.all(16),
             children: [
               if (!st.account.signedIn) ...[
-                Text(
-                  tx(
-                    context,
-                    'Asentajan pääsy tarvitsee Molaplan-tilin, jotta asentaja tunnistetaan ja salaus toimii.',
-                    'Installer access needs a Molaplan account so the installer can be verified and encryption works.',
-                  ),
-                ),
-                const SizedBox(height: 12),
-                FilledButton(
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AccountPage())),
-                  child: Text(tx(context, 'Kirjaudu tai luo tili', 'Sign in or create an account')),
+                const NeedsAccountNote(
+                  reasonFi: 'Asentajan pääsy tarvitsee Molaplan-tilin, jotta asentaja tunnistetaan ja salaus toimii.',
+                  reasonEn: 'Installer access needs a Molaplan account so the installer can be verified and encryption works.',
                 ),
               ] else ...[
                 Text(

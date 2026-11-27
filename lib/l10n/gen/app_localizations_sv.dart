@@ -1244,24 +1244,28 @@ class AppLocalizationsSv extends AppLocalizations {
       'Spara den här enhetens inställning till ditt konto?';
 
   @override
-  String get s43d6286f35 =>
-      'Denna enhet har sina egna enheter och plattor också. Vad ska vi göra?';
+  String get sa80b1060fe =>
+      'Den här enheten har också egna enheter och rutor. Välj vilka som ska behållas, eller kombinera båda. Kontots inställningar skrivs inte över i tysthet.';
 
   @override
   String get sd8a380a86d =>
       'Då samma hem, enheter och plattor visas på varje enhet som är inloggad på detta konto.';
 
   @override
-  String get sec25d10ff5 => 'Avboka och signera ut';
+  String get sf498dceefb => 'Kombinera båda (rekommenderas)';
 
   @override
   String get sb7a13da58b => 'Använd kontots installation';
 
   @override
-  String get sf498dceefb => 'Kombinera båda (rekommenderas)';
+  String get s8c0329f792 =>
+      'Använd den här enhetens inställningar (ersätter kontots)';
 
   @override
   String get s9542718c6f => 'Spara till konto';
+
+  @override
+  String get sec25d10ff5 => 'Avboka och signera ut';
 
   @override
   String get sa711c4833e => 'Skriv din e-postadress.';
@@ -2623,9 +2627,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sb9c461d827 =>
       'Installatörsåtkomst kräver ett Molaplan-konto så att installatören kan verifieras och krypteringen fungerar.';
-
-  @override
-  String get s9bb545e9b3 => 'Logga in eller skapa ett konto';
 
   @override
   String get s523c735938 =>
@@ -6113,7 +6114,13 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String get s429f9e257a => 'Uppgifterna finns bara i den här webbläsaren. ';
+
+  @override
   String get sda9203de80 => 'lokaler och inställningar ';
+
+  @override
+  String get sfec58c0c1b => 'Logga in för att synka ›';
 
   @override
   String get s8b3e63da21 => 'o skapa kontot ›';
@@ -6146,6 +6153,12 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get se2e5ff2c8a => 'lokalisering utan ett konto';
+
+  @override
+  String get s82714aa826 => 'Kräver ett konto.';
+
+  @override
+  String get s9bb545e9b3 => 'Logga in eller skapa ett konto';
 
   @override
   String get sb8934a5835 => 'Elförbrukning';
@@ -6636,11 +6649,28 @@ class AppLocalizationsSv extends AppLocalizations {
       'Enhetslösenord är krypterade - bara dina enheter kan öppna dem';
 
   @override
+  String get s3865b9c032 => 'Använd utan konto';
+
+  @override
+  String get sdf7bb58964 =>
+      'Inställningarna stannar i den här webbläsaren. Du kan skapa ett konto senare och flytta dem dit.';
+
+  @override
   String get sb2703f9ad3 => 'Skapa ett konto med en e-postkod';
 
   @override
   String get s326d86a618 =>
       'Namnet kommer från den spanska \"me mola el plan\" - \"låter bra\".';
+
+  @override
+  String get s1812df3cb5 => 'Ta bort den här webbläsarens data?';
+
+  @override
+  String get sbab6f0fd9d =>
+      'Alla Molaplan-inställningar, enheter, anslutningar och rutor i den här webbläsaren tas bort. Det går inte att ångra.';
+
+  @override
+  String get s38a0f7939b => 'Ta bort webbläsardata';
 
   @override
   String get sc80648d495 => 'Visa Molaplan';
@@ -6679,6 +6709,16 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get scc7e418ee3 =>
       'Logga in för att ha samma hem, enheter och plattor på PC, surfplatta och telefon. Valfritt.';
+
+  @override
+  String get sb386aff4b7 => 'Nedladdningar';
+
+  @override
+  String get sbb264ce105 =>
+      'Att ladda ner PC-appen från butiken kräver ett konto (samma som på beställningen).';
+
+  @override
+  String get se5ab008127 => 'Öppna nedladdningar';
 
   @override
   String get s08d62fd281 => 'Utseende';

@@ -1,3 +1,3 @@
-import '../app_state.dart';
+Future<void> wipeSecrets() async {}
 
-Future<void> forget(AppState st) async {}
+Future<void> reload() async {}

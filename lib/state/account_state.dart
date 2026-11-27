@@ -93,6 +93,10 @@ class AccountState extends ChangeNotifier {
   /// Set after sign-in when this device and/or the account already have a setup.
   PendingFirstSync? pendingFirstSync;
 
+  /// R266: cancelling the first-sync choice signs out but must keep this browser's
+  /// guest setup (the web gate wipes on a normal sign-out).
+  bool preserveLocalOnSignOut = false;
+
   Timer? _poll;
   Timer? _push;
   Future<void>? _running;
@@ -281,7 +285,7 @@ class AccountState extends ChangeNotifier {
     final p = pendingFirstSync;
     pendingFirstSync = null;
     if (p == null) return;
-    if (choice == null) return signOut();
+    if (choice == null) return signOut(keepLocal: true);
     switch (choice) {
       case FirstSyncChoice.uploadLocal:
         if (p.row != null) await _adoptHome(p.row!);
@@ -345,7 +349,8 @@ class AccountState extends ChangeNotifier {
 
   // ---------------------------------------------------------------- sign out / delete
 
-  Future<void> signOut() async {
+  Future<void> signOut({bool keepLocal = false}) async {
+    preserveLocalOnSignOut = keepLocal;
     final s = session;
     _poll?.cancel();
     _push?.cancel();

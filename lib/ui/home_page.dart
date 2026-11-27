@@ -48,7 +48,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       if (!mounted) return;
       final st = AppScope.read(context);
       if (st.loaded && !st.config.onboardingDone && st.config.connections.isEmpty) {
-        if (accountNudges && !st.account.signedIn) {
+        // On the web the intro already offered guest use / sign-in.
+        if (accountNudges && !st.account.signedIn && !Plat.isWeb) {
           await Navigator.push(context, MaterialPageRoute(builder: (_) => const WelcomePage()));
           if (!mounted) return;
         }

@@ -1240,24 +1240,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s3ce644ca86 => 'Save this device\'s setup to your account?';
 
   @override
-  String get s43d6286f35 =>
-      'This device has its own devices and tiles too. What should we do?';
+  String get sa80b1060fe =>
+      'This device has its own devices and tiles too. Choose which to keep, or combine both. The account setup is not silently overwritten.';
 
   @override
   String get sd8a380a86d =>
       'Then the same homes, devices and tiles appear on every device signed in to this account.';
 
   @override
-  String get sec25d10ff5 => 'Cancel and sign out';
+  String get sf498dceefb => 'Combine both (recommended)';
 
   @override
   String get sb7a13da58b => 'Use the account\'s setup';
 
   @override
-  String get sf498dceefb => 'Combine both (recommended)';
+  String get s8c0329f792 =>
+      'Use this device\'s setup (replaces the account\'s)';
 
   @override
   String get s9542718c6f => 'Save to account';
+
+  @override
+  String get sec25d10ff5 => 'Cancel and sign out';
 
   @override
   String get sa711c4833e => 'Type your email address.';
@@ -2615,9 +2619,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get sb9c461d827 =>
       'Installer access needs a Molaplan account so the installer can be verified and encryption works.';
-
-  @override
-  String get s9bb545e9b3 => 'Sign in or create an account';
 
   @override
   String get s523c735938 =>
@@ -6098,7 +6099,13 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get s429f9e257a => 'Data is only in this browser. ';
+
+  @override
   String get sda9203de80 => 'No account – settings only on this device. ';
+
+  @override
+  String get sfec58c0c1b => 'Sign in to sync ›';
 
   @override
   String get s8b3e63da21 => 'Create account ›';
@@ -6130,6 +6137,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get se2e5ff2c8a => 'Continue without an account';
+
+  @override
+  String get s82714aa826 => 'Requires an account.';
+
+  @override
+  String get s9bb545e9b3 => 'Sign in or create an account';
 
   @override
   String get sb8934a5835 => 'Electricity use';
@@ -6623,11 +6636,28 @@ class AppLocalizationsEn extends AppLocalizations {
       'Device passwords are encrypted – only your devices can open them';
 
   @override
+  String get s3865b9c032 => 'Use without an account';
+
+  @override
+  String get sdf7bb58964 =>
+      'Setup stays in this browser. You can create an account later and move it there.';
+
+  @override
   String get sb2703f9ad3 => 'Create an account with an email code';
 
   @override
   String get s326d86a618 =>
       'The name comes from the Spanish \"me mola el plan\" – \"sounds good\".';
+
+  @override
+  String get s1812df3cb5 => 'Delete this browser\'s data?';
+
+  @override
+  String get sbab6f0fd9d =>
+      'All Molaplan settings, devices, connections and tiles in this browser will be deleted. This cannot be undone.';
+
+  @override
+  String get s38a0f7939b => 'Delete browser data';
 
   @override
   String get sc80648d495 => 'Show Molaplan';
@@ -6666,6 +6696,16 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get scc7e418ee3 =>
       'Sign in to have the same homes, devices and tiles on PC, tablet and phone. Optional.';
+
+  @override
+  String get sb386aff4b7 => 'Downloads';
+
+  @override
+  String get sbb264ce105 =>
+      'Downloading the PC app from the shop requires an account (the same one as on the order).';
+
+  @override
+  String get se5ab008127 => 'Open downloads';
 
   @override
   String get s08d62fd281 => 'Appearance';

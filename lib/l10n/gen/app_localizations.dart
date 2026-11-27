@@ -2268,11 +2268,11 @@ abstract class AppLocalizations {
   /// **'Save this device\'\'s setup to your account?'**
   String get s3ce644ca86;
 
-  /// fi: Myös tällä laitteella on omia laitteita ja ruutuja. Mitä tehdään?
+  /// fi: Myös tällä laitteella on omia laitteita ja ruutuja. Valitse, kummat pidetään, tai yhdistä molemmat. Tilin asetuksia ei k
   ///
   /// In en, this message translates to:
-  /// **'This device has its own devices and tiles too. What should we do?'**
-  String get s43d6286f35;
+  /// **'This device has its own devices and tiles too. Choose which to keep, or combine both. The account setup is not silently overwritten.'**
+  String get sa80b1060fe;
 
   /// fi: Silloin samat kodit, laitteet ja ruudut näkyvät kaikilla laitteillasi, joilla kirjaudut tälle tilille.
   ///
@@ -2280,11 +2280,11 @@ abstract class AppLocalizations {
   /// **'Then the same homes, devices and tiles appear on every device signed in to this account.'**
   String get sd8a380a86d;
 
-  /// fi: Peru ja kirjaudu ulos
+  /// fi: Yhdistä molemmat (suositus)
   ///
   /// In en, this message translates to:
-  /// **'Cancel and sign out'**
-  String get sec25d10ff5;
+  /// **'Combine both (recommended)'**
+  String get sf498dceefb;
 
   /// fi: Käytä tilin asetuksia
   ///
@@ -2292,17 +2292,23 @@ abstract class AppLocalizations {
   /// **'Use the account\'\'s setup'**
   String get sb7a13da58b;
 
-  /// fi: Yhdistä molemmat (suositus)
+  /// fi: Käytä tämän laitteen asetuksia (korvaa tilin)
   ///
   /// In en, this message translates to:
-  /// **'Combine both (recommended)'**
-  String get sf498dceefb;
+  /// **'Use this device\'\'s setup (replaces the account\'\'s)'**
+  String get s8c0329f792;
 
   /// fi: Tallenna tiliin
   ///
   /// In en, this message translates to:
   /// **'Save to account'**
   String get s9542718c6f;
+
+  /// fi: Peru ja kirjaudu ulos
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel and sign out'**
+  String get sec25d10ff5;
 
   /// fi: Kirjoita sähköpostiosoitteesi (esim. nimi@esimerkki.fi).
   ///
@@ -4799,12 +4805,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Installer access needs a Molaplan account so the installer can be verified and encryption works.'**
   String get sb9c461d827;
-
-  /// fi: Kirjaudu tai luo tili
-  ///
-  /// In en, this message translates to:
-  /// **'Sign in or create an account'**
-  String get s9bb545e9b3;
 
   /// fi: Anna asentajalle pääsy laitteisiisi hänen asentajatunnuksellaan (esim. MPL-K7Q-M2X). Molaplan on tarkistanut jokaisen as
   ///
@@ -11033,11 +11033,23 @@ abstract class AppLocalizations {
   /// **'Tile \"{p0}\" deleted'**
   String s97f46743e0(String p0);
 
+  /// fi: Tiedot vain tässä selaimessa.
+  ///
+  /// In en, this message translates to:
+  /// **'Data is only in this browser. '**
+  String get s429f9e257a;
+
   /// fi: Ei tiliä – asetukset vain tällä laitteella.
   ///
   /// In en, this message translates to:
   /// **'No account – settings only on this device. '**
   String get sda9203de80;
+
+  /// fi: Kirjaudu, niin ne synkronoituvat ›
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to sync ›'**
+  String get sfec58c0c1b;
 
   /// fi: Luo tili ›
   ///
@@ -11098,6 +11110,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue without an account'**
   String get se2e5ff2c8a;
+
+  /// fi: Vaatii tilin.
+  ///
+  /// In en, this message translates to:
+  /// **'Requires an account.'**
+  String get s82714aa826;
+
+  /// fi: Kirjaudu tai luo tili
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in or create an account'**
+  String get s9bb545e9b3;
 
   /// fi: Sähkönkulutus
   ///
@@ -11993,6 +12017,18 @@ abstract class AppLocalizations {
   /// **'Device passwords are encrypted – only your devices can open them'**
   String get sdc86a6f82c;
 
+  /// fi: Käytä ilman tiliä
+  ///
+  /// In en, this message translates to:
+  /// **'Use without an account'**
+  String get s3865b9c032;
+
+  /// fi: Asetukset jäävät tähän selaimeen. Voit myöhemmin luoda tilin ja siirtää ne sinne.
+  ///
+  /// In en, this message translates to:
+  /// **'Setup stays in this browser. You can create an account later and move it there.'**
+  String get sdf7bb58964;
+
   /// fi: Luo tili sähköpostikoodilla
   ///
   /// In en, this message translates to:
@@ -12004,6 +12040,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The name comes from the Spanish \"me mola el plan\" – \"sounds good\".'**
   String get s326d86a618;
+
+  /// fi: Poistetaanko selaimen tiedot?
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this browser\'\'s data?'**
+  String get s1812df3cb5;
+
+  /// fi: Kaikki tässä selaimessa olevat Molaplan-asetukset, laitteet, yhteydet ja ruudut poistetaan. Tätä ei voi perua.
+  ///
+  /// In en, this message translates to:
+  /// **'All Molaplan settings, devices, connections and tiles in this browser will be deleted. This cannot be undone.'**
+  String get sbab6f0fd9d;
+
+  /// fi: Poista selaimen tiedot
+  ///
+  /// In en, this message translates to:
+  /// **'Delete browser data'**
+  String get s38a0f7939b;
 
   /// fi: Näytä Molaplan
   ///
@@ -12076,6 +12130,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign in to have the same homes, devices and tiles on PC, tablet and phone. Optional.'**
   String get scc7e418ee3;
+
+  /// fi: Lataukset
+  ///
+  /// In en, this message translates to:
+  /// **'Downloads'**
+  String get sb386aff4b7;
+
+  /// fi: PC-sovelluksen lataus kaupan sivulta vaatii tilin (saman kuin tilauksessa).
+  ///
+  /// In en, this message translates to:
+  /// **'Downloading the PC app from the shop requires an account (the same one as on the order).'**
+  String get sbb264ce105;
+
+  /// fi: Avaa lataukset
+  ///
+  /// In en, this message translates to:
+  /// **'Open downloads'**
+  String get se5ab008127;
 
   /// fi: Ulkoasu
   ///

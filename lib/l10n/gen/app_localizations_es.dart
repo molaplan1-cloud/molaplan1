@@ -1249,24 +1249,28 @@ class AppLocalizationsEs extends AppLocalizations {
       '¿Ahorrar la configuración de este dispositivo en tu cuenta?';
 
   @override
-  String get s43d6286f35 =>
-      'Este dispositivo también tiene sus propios dispositivos y baldosas. ¿Qué debemos hacer?';
+  String get sa80b1060fe =>
+      'Este dispositivo también tiene sus propios dispositivos y mosaicos. Elige cuáles conservar o combina ambos. La configuración de la cuenta no se sobrescribe en silencio.';
 
   @override
   String get sd8a380a86d =>
       'Luego aparecen los mismos hogares, dispositivos y fichas en cada dispositivo firmado en esta cuenta.';
 
   @override
-  String get sec25d10ff5 => 'Cancela y firma';
+  String get sf498dceefb => 'Combine ambos (recomendados)';
 
   @override
   String get sb7a13da58b => 'Utilice la configuración de la cuenta';
 
   @override
-  String get sf498dceefb => 'Combine ambos (recomendados)';
+  String get s8c0329f792 =>
+      'Usar la configuración de este dispositivo (sustituye la de la cuenta)';
 
   @override
   String get s9542718c6f => 'Guardar en cuenta';
+
+  @override
+  String get sec25d10ff5 => 'Cancela y firma';
 
   @override
   String get sa711c4833e => 'Escribe tu dirección de correo electrónico.';
@@ -2638,9 +2642,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sb9c461d827 =>
       'El acceso de instaladores necesita una cuenta de Molaplan para verificar al instalador y para que funcione el cifrado.';
-
-  @override
-  String get s9bb545e9b3 => 'Inicia sesión o crea una cuenta';
 
   @override
   String get s523c735938 =>
@@ -6144,7 +6145,13 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get s429f9e257a => 'Los datos están solo en este navegador. ';
+
+  @override
   String get sda9203de80 => 'No cuenta – sólo en este dispositivo. ';
+
+  @override
+  String get sfec58c0c1b => 'Inicia sesión para sincronizar ›';
 
   @override
   String get s8b3e63da21 => 'Crear cuenta ›';
@@ -6177,6 +6184,12 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get se2e5ff2c8a => 'Continuar sin una cuenta';
+
+  @override
+  String get s82714aa826 => 'Requiere una cuenta.';
+
+  @override
+  String get s9bb545e9b3 => 'Inicia sesión o crea una cuenta';
 
   @override
   String get sb8934a5835 => 'Consumo eléctrico';
@@ -6672,12 +6685,29 @@ class AppLocalizationsEs extends AppLocalizations {
       'Las contraseñas de dispositivo están encriptadas – sólo sus dispositivos pueden abrirlas';
 
   @override
+  String get s3865b9c032 => 'Usar sin cuenta';
+
+  @override
+  String get sdf7bb58964 =>
+      'La configuración se queda en este navegador. Más adelante puedes crear una cuenta y moverla allí.';
+
+  @override
   String get sb2703f9ad3 =>
       'Crear una cuenta con un código de correo electrónico';
 
   @override
   String get s326d86a618 =>
       'El nombre viene del español \"me mola el plan\" – \"sonidos buenos\".';
+
+  @override
+  String get s1812df3cb5 => '¿Eliminar los datos de este navegador?';
+
+  @override
+  String get sbab6f0fd9d =>
+      'Se eliminarán todos los ajustes, dispositivos, conexiones y mosaicos de Molaplan en este navegador. Esto no se puede deshacer.';
+
+  @override
+  String get s38a0f7939b => 'Eliminar datos del navegador';
 
   @override
   String get sc80648d495 => 'Show Molaplan';
@@ -6717,6 +6747,16 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get scc7e418ee3 =>
       'Inicie sesión para tener las mismas casas, dispositivos y fichas en PC, tableta y teléfono. Opcional.';
+
+  @override
+  String get sb386aff4b7 => 'Descargas';
+
+  @override
+  String get sbb264ce105 =>
+      'Descargar la aplicación para PC de la tienda requiere una cuenta (la misma que en el pedido).';
+
+  @override
+  String get se5ab008127 => 'Abrir descargas';
 
   @override
   String get s08d62fd281 => 'Apariencia';

@@ -8,14 +8,20 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../core/plat.dart';
+import '../state/app_state.dart';
+import '../state/browser_reset.dart';
+import '../state/web_guest.dart';
 import 'account_page.dart';
 import 'app_scope.dart';
 import 'language_picker.dart';
 
 const molaplanSite = 'https://molaplan.com';
 const molaplanOrder = 'https://molaplan.com/tilaa';
+const molaplanDownloads = 'https://molaplan.com/tilaa/lataa';
 
-Future<void> _open(String url) => launchUrl(Uri.parse(url), webOnlyWindowName: '_blank');
+Future<void> openMolaplanUrl(String url) =>
+    launchUrl(Uri.parse(url), webOnlyWindowName: '_blank');
+Future<void> _open(String url) => openMolaplanUrl(url);
 
 /// Short list of what works in the browser and what only in the app.
 List<(bool, String)> webCapabilities(BuildContext context) => [
@@ -84,8 +90,14 @@ class WebLimitsCard extends StatelessWidget {
                 const SizedBox(width: 10),
                 Expanded(
                   child: Text(
-                    tx(context, 'Selainversio on etäohjain', 'The browser version is a remote control'),
-                    style: text.titleMedium?.copyWith(color: cs.onSecondaryContainer),
+                    tx(
+                      context,
+                      'Selainversio on etäohjain',
+                      'The browser version is a remote control',
+                    ),
+                    style: text.titleMedium?.copyWith(
+                      color: cs.onSecondaryContainer,
+                    ),
                   ),
                 ),
               ],
@@ -108,13 +120,20 @@ class WebLimitsCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Icon(
-                        ok ? Icons.check_circle_outline : Icons.remove_circle_outline,
+                        ok
+                            ? Icons.check_circle_outline
+                            : Icons.remove_circle_outline,
                         size: 18,
                         color: cs.onSecondaryContainer,
                       ),
                       const SizedBox(width: 8),
                       Expanded(
-                        child: Text(s, style: text.bodySmall?.copyWith(color: cs.onSecondaryContainer)),
+                        child: Text(
+                          s,
+                          style: text.bodySmall?.copyWith(
+                            color: cs.onSecondaryContainer,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -176,7 +195,12 @@ Future<void> showWebLimitsDialog(BuildContext context) => showDialog<void>(
         ],
       ),
     ),
-    actions: [TextButton(onPressed: () => Navigator.pop(c), child: Text(tx(c, 'Sulje', 'Close')))],
+    actions: [
+      TextButton(
+        onPressed: () => Navigator.pop(c),
+        child: Text(tx(c, 'Sulje', 'Close')),
+      ),
+    ],
   ),
 );
 
@@ -203,13 +227,17 @@ class _WebNoticeBannerState extends State<WebNoticeBanner> {
       return;
     }
     SharedPreferences.getInstance().then((p) {
-      if (mounted) setState(() => _hidden = p.getBool(WebNoticeBanner.prefKey) ?? false);
+      if (mounted)
+        setState(() => _hidden = p.getBool(WebNoticeBanner.prefKey) ?? false);
     });
   }
 
   Future<void> _dismiss() async {
     setState(() => _hidden = true);
-    (await SharedPreferences.getInstance()).setBool(WebNoticeBanner.prefKey, true);
+    (await SharedPreferences.getInstance()).setBool(
+      WebNoticeBanner.prefKey,
+      true,
+    );
   }
 
   @override
@@ -238,14 +266,21 @@ class _WebNoticeBannerState extends State<WebNoticeBanner> {
                       'Selainversio: ohjaat etäkäytettäviä laitteita. Täysi ohjaus sovelluksella – lisätietoja ›',
                       'Browser version: you control remotely reachable devices. Full control with the app – more ›',
                     ),
-                    style: TextStyle(color: cs.onSecondaryContainer, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                      color: cs.onSecondaryContainer,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
                 IconButton(
                   key: const ValueKey('web-notice-close'),
                   tooltip: tx(context, 'Piilota', 'Hide'),
                   onPressed: _dismiss,
-                  icon: Icon(Icons.close, size: 18, color: cs.onSecondaryContainer),
+                  icon: Icon(
+                    Icons.close,
+                    size: 18,
+                    color: cs.onSecondaryContainer,
+                  ),
                 ),
               ],
             ),
@@ -256,9 +291,13 @@ class _WebNoticeBannerState extends State<WebNoticeBanner> {
   }
 }
 
-/// R254: what a logged-out visitor of molaplan.com sees: a short intro and sign-in.
+/// R254 / R263: what a logged-out visitor of molaplan.com sees: a short intro,
+/// sign-in, and a clear button to use the app without an account.
 class WebLandingPage extends StatelessWidget {
-  const WebLandingPage({super.key});
+  const WebLandingPage({super.key, this.onUseWithoutAccount});
+
+  /// Starts guest mode (the web gate supplies this).
+  final VoidCallback? onUseWithoutAccount;
 
   @override
   Widget build(BuildContext context) {
@@ -284,16 +323,24 @@ class WebLandingPage extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.all(24),
               children: [
-                Align(alignment: Alignment.centerRight, child: const LanguagePicker()),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: const LanguagePicker(),
+                ),
                 const SizedBox(height: 8),
                 Image.asset(
                   'assets/app_icon.png',
                   width: 72,
                   height: 72,
-                  errorBuilder: (_, _, _) => Icon(Icons.home_outlined, size: 72, color: cs.primary),
+                  errorBuilder: (_, _, _) =>
+                      Icon(Icons.home_outlined, size: 72, color: cs.primary),
                 ),
                 const SizedBox(height: 12),
-                Text('Molaplan', style: text.headlineLarge, textAlign: TextAlign.center),
+                Text(
+                  'Molaplan',
+                  style: text.headlineLarge,
+                  textAlign: TextAlign.center,
+                ),
                 const SizedBox(height: 6),
                 Text(
                   tx(
@@ -331,20 +378,60 @@ class WebLandingPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 FilledButton(
+                  key: const ValueKey('web-use-without-account'),
+                  style: FilledButton.styleFrom(
+                    minimumSize: const Size.fromHeight(56),
+                  ),
+                  onPressed: onUseWithoutAccount,
+                  child: Text(
+                    tx(context, 'Käytä ilman tiliä', 'Use without an account'),
+                    style: const TextStyle(fontSize: 17),
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  tx(
+                    context,
+                    'Asetukset jäävät tähän selaimeen. Voit myöhemmin luoda tilin ja siirtää ne sinne.',
+                    'Setup stays in this browser. You can create an account later and move it there.',
+                  ),
+                  style: text.bodySmall?.copyWith(color: cs.onSurfaceVariant),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 16),
+                OutlinedButton(
                   key: const ValueKey('web-sign-in'),
-                  style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(56)),
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AccountPage())),
-                  child: Text(tx(context, 'Kirjaudu sisään', 'Sign in'), style: const TextStyle(fontSize: 17)),
+                  style: OutlinedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(56),
+                  ),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const AccountPage()),
+                  ),
+                  child: Text(
+                    tx(context, 'Kirjaudu sisään', 'Sign in'),
+                    style: const TextStyle(fontSize: 17),
+                  ),
                 ),
                 const SizedBox(height: 8),
                 OutlinedButton(
                   key: const ValueKey('web-sign-up'),
-                  style: OutlinedButton.styleFrom(minimumSize: const Size.fromHeight(48)),
+                  style: OutlinedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(48),
+                  ),
                   onPressed: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => const AccountPage(startWithCode: true)),
+                    MaterialPageRoute(
+                      builder: (_) => const AccountPage(startWithCode: true),
+                    ),
                   ),
-                  child: Text(tx(context, 'Luo tili sähköpostikoodilla', 'Create an account with an email code')),
+                  child: Text(
+                    tx(
+                      context,
+                      'Luo tili sähköpostikoodilla',
+                      'Create an account with an email code',
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 20),
                 const WebLimitsCard(),
@@ -365,4 +452,108 @@ class WebLandingPage extends StatelessWidget {
       ),
     );
   }
+}
+
+/// R254 / R263: intro while signed out, the app once signed in or in guest mode.
+/// Signing out wipes this browser unless first-sync was cancelled (R266).
+class WebAppGate extends StatefulWidget {
+  const WebAppGate({super.key, required this.state, required this.app});
+  final AppState state;
+
+  /// The signed-in / guest shell (the real app, or a stub in tests).
+  final Widget app;
+
+  @override
+  State<WebAppGate> createState() => _WebAppGateState();
+}
+
+class _WebAppGateState extends State<WebAppGate> {
+  late bool _in = widget.state.account.signedIn;
+
+  @override
+  void initState() {
+    super.initState();
+    widget.state.account.addListener(_changed);
+    WebGuest.instance.addListener(_guestChanged);
+    if (!WebGuest.instance.loaded) {
+      WebGuest.instance.load().then((_) {
+        if (mounted) setState(() {});
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    widget.state.account.removeListener(_changed);
+    WebGuest.instance.removeListener(_guestChanged);
+    super.dispose();
+  }
+
+  void _guestChanged() {
+    if (mounted) setState(() {});
+  }
+
+  void _changed() {
+    final now = widget.state.account.signedIn;
+    if (now == _in) return;
+    setState(() => _in = now);
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (!mounted) return;
+      Navigator.of(context, rootNavigator: true).popUntil((r) => r.isFirst);
+      if (now) {
+        await WebGuest.instance.leave();
+      } else if (widget.state.account.preserveLocalOnSignOut) {
+        widget.state.account.preserveLocalOnSignOut = false;
+        await WebGuest.instance.enter();
+      } else {
+        await forgetThisBrowser(widget.state);
+      }
+    });
+  }
+
+  Future<void> _enterGuest() async {
+    await WebGuest.instance.enter();
+    if (mounted) setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_in || WebGuest.instance.active) return widget.app;
+    if (!WebGuest.instance.loaded && !_in) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+    return WebLandingPage(onUseWithoutAccount: _enterGuest);
+  }
+}
+
+/// R267: confirm and wipe everything this browser stored, then leave guest mode.
+Future<void> confirmWipeBrowser(BuildContext context, AppState st) async {
+  final ok = await showDialog<bool>(
+    context: context,
+    builder: (c) => AlertDialog(
+      key: const ValueKey('web-wipe-dialog'),
+      title: Text(
+        tx(c, 'Poistetaanko selaimen tiedot?', 'Delete this browser\'s data?'),
+      ),
+      content: Text(
+        tx(
+          c,
+          'Kaikki tässä selaimessa olevat Molaplan-asetukset, laitteet, yhteydet ja ruudut poistetaan. Tätä ei voi perua.',
+          'All Molaplan settings, devices, connections and tiles in this browser will be deleted. This cannot be undone.',
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(c, false),
+          child: Text(tx(c, 'Peruuta', 'Cancel')),
+        ),
+        FilledButton(
+          key: const ValueKey('web-wipe-confirm'),
+          onPressed: () => Navigator.pop(c, true),
+          child: Text(tx(c, 'Poista selaimen tiedot', 'Delete browser data')),
+        ),
+      ],
+    ),
+  );
+  if (ok == true) await forgetThisBrowser(st);
 }

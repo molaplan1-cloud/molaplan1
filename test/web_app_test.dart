@@ -166,6 +166,8 @@ void main() {
       await st.load();
       await tester.pumpWidget(AppScope(state: st, child: const MaterialApp(home: WebLandingPage())));
       await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('web-use-without-account')), findsOneWidget);
+      expect(find.text('Käytä ilman tiliä'), findsOneWidget);
       expect(find.byKey(const ValueKey('web-sign-in')), findsOneWidget);
       expect(find.byKey(const ValueKey('web-sign-up')), findsOneWidget);
       expect(find.byKey(const ValueKey('web-order')), findsOneWidget);
