@@ -16,6 +16,7 @@ library;
 import 'dart:convert';
 import 'dart:math';
 
+import '../energy/price_colors.dart';
 import '../l10n/l10n.dart';
 import '../models/models.dart';
 import '../prices/prices.dart';
@@ -54,7 +55,11 @@ class PriceLinkParams {
     this.hourly = true,
     this.name = '',
     this.lang = 'fi',
+    this.colors = '',
   });
+
+  /// t318u (R522): the tile's colours ([priceColorsParam]); '' = relative levels.
+  final String colors;
   final String zone;
   final double vat, margin, transfer;
   final bool hourly;
@@ -73,6 +78,7 @@ class PriceLinkParams {
     'h': hourly ? '1' : '0',
     if (name.isNotEmpty) 'name': name,
     'lang': lang,
+    if (colors.isNotEmpty) 'c': colors,
   };
 
   static double _d(String? s, double def, double lo, double hi) {
@@ -95,8 +101,17 @@ class PriceLinkParams {
       hourly: q['h'] != '0',
       name: name.length > 60 ? name.substring(0, 60) : name,
       lang: lang,
+      colors: _cleanColors(q['c']),
     );
   }
+}
+
+/// Only a well-formed colour parameter survives (re-serialised from the parsed form).
+String _cleanColors(String? c) {
+  if (c == null || c.isEmpty || c.length > 400) return '';
+  final (mode, th, smooth, fixed) = parsePriceColors(c);
+  final t = TileConfig(type: TileType.value, priceColorMode: mode, thresholds: th, colorSmooth: smooth, priceLineColor: fixed);
+  return mode == 'relative' ? '' : priceColorsParam(t);
 }
 
 /// True for a tile backed by the electricity price connection.
@@ -122,6 +137,7 @@ PriceLinkParams priceParamsFor(TileConfig t, ConnectionConfig c, {required Strin
     hourly: hourly,
     name: t.title,
     lang: lang,
+    colors: priceColorsParam(t),
   );
 }
 
@@ -262,6 +278,7 @@ String scriptablePriceScript(PriceLinkParams p) {
     'server': defaultPriceServer,
     'open': webPriceLink(p),
     'comma': p.lang != 'en',
+    'colors': _scriptColors(p.colors),
   };
   return '${_header(title, p.lang)}'
       'const CFG = ${_jsCfg(cfg)};\n'
@@ -280,6 +297,19 @@ String scriptableFeedScript({required String topic, required String title, requi
       'const CFG = ${_jsCfg(cfg)};\n'
       'const T = ${_jsCfg(_scriptWords(lang))};\n'
       '$_feedJs';
+}
+
+/// The tile's colours for the script: {mode, smooth, fixed, th: [[limit, "#rrggbb"], …]}.
+Map<String, Object?> _scriptColors(String c) {
+  final (mode, th, smooth, fixed) = parsePriceColors(c);
+  String hex(int v) => '#${(v & 0xFFFFFF).toRadixString(16).padLeft(6, '0')}';
+  final s = [...th]..sort((a, b) => a.above.compareTo(b.above));
+  return {
+    'mode': mode,
+    'smooth': smooth,
+    'fixed': fixed == null ? null : hex(fixed),
+    'th': [for (final x in s) [x.above, hex(x.color)]],
+  };
 }
 
 const _commonJs = r'''
@@ -352,6 +382,34 @@ const sorted = s.map(x => x.c).sort((a, b) => a - b);
 const q = f => sorted.length ? sorted[Math.round((sorted.length - 1) * f)] : 0;
 const q1 = q(1 / 3), q2 = q(2 / 3);
 const level = c => c <= q1 ? 0 : (c <= q2 ? 1 : 2);
+// t318u: the tile's own colours (same rule as the app: value ≥ limit → colour; alle / ranges).
+function mix(a, b, f) {
+  const p = s => [1, 3, 5].map(i => parseInt(s.substr(i, 2), 16));
+  const x = p(a), y = p(b);
+  return "#" + x.map((v, i) => Math.round(v + (y[i] - v) * f).toString(16).padStart(2, "0")).join("");
+}
+function colorOf(c) {
+  const K = CFG.colors || { mode: "relative" };
+  if (K.mode === "fixed" && K.fixed) return K.fixed;
+  if (K.mode === "thresholds" && K.th && K.th.length) {
+    const th = K.th.map(x => [x[0], x[1]]);
+    if (!K.smooth) {
+      let col = null;
+      for (const [lim, hx] of th) if (c >= lim) col = hx;
+      return col || LEVEL[level(c)];
+    }
+    if (th.length >= 2 && (th[0][0] <= -1e6 || th[0][0] === -1000)) {
+      const x = th[1][0], span = th.length >= 3 ? th[2][0] - x : Math.min(1e9, Math.max(1, Math.abs(x) * 0.5));
+      th[0][0] = x - (span > 0 ? span : 1);
+    }
+    if (c <= th[0][0]) return th[0][1];
+    for (let i = 1; i < th.length; i++) {
+      if (c <= th[i][0]) { const sp = th[i][0] - th[i - 1][0]; return mix(th[i - 1][1], th[i][1], sp <= 0 ? 1 : (c - th[i - 1][0]) / sp); }
+    }
+    return th[th.length - 1][1];
+  }
+  return LEVEL[level(c)];
+}
 const d0 = new Date(); d0.setHours(0, 0, 0, 0);
 const from = d0.getTime(), mid = from + 86400000, to = from + 2 * 86400000;
 const win = s.filter(x => x.t + x.len > from && x.t < to);
@@ -363,14 +421,14 @@ if (!cur) {
   const row = w.addStack(); row.bottomAlignContent();
   const txt = cur.c.toFixed(2);
   const v = row.addText(CFG.comma ? txt.replace(".", ",") : txt);
-  v.font = Font.boldSystemFont(30); v.textColor = new Color(LEVEL[level(cur.c)]); v.minimumScaleFactor = 0.6;
+  v.font = Font.boldSystemFont(30); v.textColor = new Color(colorOf(cur.c)); v.minimumScaleFactor = 0.6;
   row.addSpacer(4);
   const u = row.addText("c/kWh"); u.font = Font.systemFont(12); u.textColor = new Color("#9fb0b8");
 }
 w.addSpacer(6);
 const big = config.widgetFamily !== "small";
 const split = win.findIndex(x => x.t >= mid);
-const img = w.addImage(bars(win.map(x => x.c), win.map(x => LEVEL[level(x.c)]), win.findIndex(x => x === cur), split, big ? 300 : 130, big ? 60 : 48));
+const img = w.addImage(bars(win.map(x => x.c), win.map(x => colorOf(x.c)), win.findIndex(x => x === cur), split, big ? 300 : 130, big ? 60 : 48));
 img.resizable = true;
 w.addSpacer(4);
 const f = w.addText((split > 0 ? T.today + " · " + T.tomorrow : T.today) + " · " + T.updated + " " + hm(new Date()));
@@ -494,6 +552,14 @@ Map<String, dynamic> priceViewConfigJson(PriceLinkParams p) {
     read: {'field': 'chart'},
     priceResolution: p.hourly ? 'hourly' : '15min',
   );
+  final (mode, th, smooth, fixed) = parsePriceColors(p.colors);
+  if (mode != 'relative') {
+    t
+      ..priceColorMode = mode
+      ..thresholds = th
+      ..colorSmooth = smooth
+      ..priceLineColor = fixed;
+  }
   return {
     'app': 'molaplan',
     'language': p.lang,

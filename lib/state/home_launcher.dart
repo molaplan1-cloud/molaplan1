@@ -12,6 +12,7 @@ import 'package:flutter/services.dart';
 import '../core/plat.dart';
 import '../core/security_state.dart';
 import '../drivers/driver.dart' show TimedValue;
+import '../energy/price_colors.dart' show priceSlotArgb;
 import '../energy/price_view.dart';
 import '../core/template.dart';
 import '../l10n/l10n.dart';
@@ -112,7 +113,9 @@ class LauncherPriceSummary {
   final int nowIndex;
 }
 
-LauncherPriceSummary? launcherPriceSummary(Map data, DateTime now) {
+/// t318u (R522): with [tile], bars and the current value use the tile's own colour mode and
+/// ranges (the same rule as the in-app chart, [priceSlotArgb]); without, relative levels.
+LauncherPriceSummary? launcherPriceSummary(Map data, DateTime now, {TileConfig? tile}) {
   final pts = <(DateTime, double)>[
     for (final p in (data['points'] as List? ?? const []))
       if (p is List && p.length >= 2 && p[0] is num && p[1] is num)
@@ -132,11 +135,21 @@ LauncherPriceSummary? launcherPriceSummary(Map data, DateTime now) {
   final cur = v.current;
   var lvl = 1;
   if (nowIndex >= 0) lvl = win[nowIndex].$2;
+  final mode = tile == null || tile.priceColorMode == 'auto' ? 'relative' : tile.priceColorMode;
+  int col(double cents, int level) => priceSlotArgb(
+    mode: mode,
+    cents: cents,
+    level: level,
+    thresholds: tile?.thresholds ?? const [],
+    smooth: tile?.colorSmooth ?? false,
+    lineColor: tile?.priceLineColor,
+    levelColors: launcherPriceLevelColors,
+  );
   return LauncherPriceSummary(
     cur?.cents,
-    launcherPriceLevelColors[lvl],
+    cur == null ? launcherPriceLevelColors[lvl] : col(cur.cents, lvl),
     [for (final (s, _) in win) (s.cents * 10).round()],
-    [for (final (_, l) in win) launcherPriceLevelColors[l]],
+    [for (final (s, l) in win) col(s.cents, l)],
     nowIndex,
   );
 }
@@ -170,7 +183,7 @@ String launcherStatusText(TileConfig t, Object? value, String lang) {
   }
   if (value is Map) {
     if (_isPriceChart(t) || value['points'] is List) {
-      final p = launcherPriceSummary(value, DateTime.now());
+      final p = launcherPriceSummary(value, DateTime.now(), tile: t);
       if (p?.current == null) return tr(lang, 'Ei hintoja', 'No prices');
       return '${p!.current!.toStringAsFixed(2)} c/kWh';
     }
@@ -188,7 +201,7 @@ int launcherStatusColor(TileConfig t, Object? value) {
   if (value is TimedValue) value = value.value;
   if (_isSecurity(t)) return securityColor(value);
   if (value is Map && (_isPriceChart(t) || value['points'] is List)) {
-    final p = launcherPriceSummary(value, DateTime.now());
+    final p = launcherPriceSummary(value, DateTime.now(), tile: t);
     if (p != null && p.current != null) return p.color;
   }
   if (t.sensor != null && isTruthy(value, onValue: t.onValue.isEmpty ? null : t.onValue)) {
@@ -249,7 +262,7 @@ Map<String, dynamic> launcherWidgetPayload(
     'link': tap == 'run' ? launcherRunLink(t.id, confirm: launcherNeedsConfirm(t)) : launcherOpenLink(t.id),
   };
   if (value is Map && (_isPriceChart(t) || value['points'] is List)) {
-    final p = launcherPriceSummary(value, now);
+    final p = launcherPriceSummary(value, now, tile: t);
     if (p != null && p.bars.isNotEmpty) {
       out['bars'] = p.bars;
       out['barColors'] = p.colors;

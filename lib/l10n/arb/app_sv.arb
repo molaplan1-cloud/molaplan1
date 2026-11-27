@@ -470,6 +470,14 @@
  "@sbeb26f2b64": {
   "x-mt": true
  },
+ "sb1d6e8bb4c": "Billigt / medel / dyrt",
+ "sebcf59cf80": "Billigt / medel / dyrt / mycket dyrt",
+ "s0260895da8": "Negativt / billigt / dyrt",
+ "s051944392f": "Rumstemperatur",
+ "s9df0743fd6": "Utomhustemperatur",
+ "sf5bd3b7950": "Luftfuktighet %",
+ "s5538433078": "CO₂",
+ "sfad2bc2059": "Låg / medel / hög",
  "s095ca83913": "{p0} kort tillagda",
  "@s095ca83913": {
   "x-mt": true
@@ -2640,6 +2648,7 @@
   "x-mt": true
  },
  "s7172c54c2c": "Håller temperaturen på inställt värde.",
+ "s4b9bb0710d": "Rätta färgintervallens gränser innan du sparar.",
  "s76e7a995de": "Läst värde",
  "sdced476aeb": "Skript",
  "@sdced476aeb": {
@@ -2813,10 +2822,7 @@
  "@s77d2309fd5": {
   "x-mt": true
  },
- "s7d6cee9e42": "Barer (15 min)",
- "@s7d6cee9e42": {
-  "x-mt": true
- },
+ "sc18ac46162": "Staplar",
  "sc0e069225b": "Trend + Nu linje",
  "@sc0e069225b": {
   "x-mt": true
@@ -2845,6 +2851,10 @@
  "s3221d2c8b7": "Stapelbredd",
  "s2c890951b7": "Tunn",
  "s0223c26f61": "Medel",
+ "se6264a30f1": "Mellanrum mellan staplar",
+ "s93a0675c8f": "Ingen",
+ "s124beecddd": "Smalt mellanrum",
+ "saca843874b": "Mellan timmar",
  "s4b97930585": "Min- och maxmarkörer",
  "seef35b192d": "Nu-linje",
  "s8c6a205222": "Statistikrad (nu, min, medel, max)",
@@ -2854,10 +2864,8 @@
  "s6817cff974": "Inkludera marginal",
  "sd85f1b089e": "Linje- / fast färg",
  "s147f0af2a4": "Temafärg",
- "s173772c66f": "Färgintervall (c/kWh, från–till)",
- "sc26d444f90": "Från",
- "s6ef23d86e0": "och uppåt",
- "sf8c043ddca": "Lägg till intervall",
+ "sdf5278fadb": "Färgintervall (c/kWh)",
+ "s0d88d3856f": "Ingen egen färg (relativ nivå)",
  "sb06bee9921": "Föreställning",
  "@sb06bee9921": {
   "x-mt": true
@@ -2919,14 +2927,7 @@
  "@s25d9db075e": {
   "x-mt": true
  },
- "sc0f5a14d2b": "Färgtrösklar (värde ≥gräns → färg)",
- "@sc0f5a14d2b": {
-  "x-mt": true
- },
- "s30a2c0f460": "Lägg till tröskelvärde",
- "@s30a2c0f460": {
-  "x-mt": true
- },
+ "s90b5b7e33f": "Färgintervall",
  "sd408a5dbe9": "Billigaste timmar",
  "@sd408a5dbe9": {
   "x-mt": true
@@ -3625,9 +3626,6 @@
   "x-mt": true
  },
  "sb74370fc1e": "Utomhustemperatur",
- "@sb74370fc1e": {
-  "x-mt": true
- },
  "s585b4c519f": "Mörk / ljus",
  "@s585b4c519f": {
   "x-mt": true
@@ -3636,6 +3634,7 @@
  "@s6019108a01": {
   "x-mt": true
  },
+ "sc26d444f90": "Från",
  "s796739363a": "för att",
  "@s796739363a": {
   "x-mt": true
@@ -4473,6 +4472,17 @@
   "x-mt": true
  },
  "s941fbb47fe": "Planen beräknas…",
+ "s969e582f74": "Ange ett tal",
+ "s6c2b7db49f": "Måste vara över {p0}",
+ "sb2dd9fb046": "Måste vara under {p0}",
+ "sf53fbf24ad": "Alla värden",
+ "se9bcd429a9": "under {p0}{p1}",
+ "s65758fd482": "över {p0}{p1}",
+ "s0a914fa5f8": "Ingen färg",
+ "safbc09013c": "Intervallen är i ordning: under X, X–Y, över Y. Om du ändrar en gräns flyttas även intilliggande intervall, så intervallen överlappar aldrig och inga luckor uppstår. Ett gränsvärde hör till det övre intervallet.",
+ "s11a3afdbce": "Övre gräns",
+ "sd337d9fc0c": "Ta bort intervall",
+ "s3f68bf214f": "Lägg till intervall",
  "s229f981388": "Home bridge på",
  "@s229f981388": {
   "x-mt": true
@@ -8090,10 +8100,6 @@
  },
  "s39f8bf0f76": "Sent at",
  "@s39f8bf0f76": {
-  "x-mt": true
- },
- "s051944392f": "Rumstemperatur",
- "@s051944392f": {
   "x-mt": true
  },
  "sdd8cd8132c": "Vad man ska ändra",

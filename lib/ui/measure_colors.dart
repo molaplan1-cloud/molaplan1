@@ -1,10 +1,13 @@
 /// t150u: colour presets for measurement tiles and a small custom colour picker.
 library;
 
+export '../energy/price_colors.dart' show defaultPriceThresholds;
+
 import '../drivers/airthings.dart';
 
 import 'package:material_ui/material_ui.dart' hide Threshold;
 
+import '../energy/price_colors.dart' show defaultPriceThresholds;
 import '../models/models.dart';
 import 'app_scope.dart';
 
@@ -43,8 +46,6 @@ final colorPresets = <ColorPreset>[
   ColorPreset('radon', 'Radon Bq/m³ (WHO)', 'Radon Bq/m³ (WHO)', radonThresholds()),
 ];
 
-/// t151u: price trend colours when none are set: green < 5, amber 5–15, red ≥ 15 c/kWh.
-final defaultPriceThresholds = [Threshold(-1000, _green), Threshold(5, _yellow), Threshold(15, _red)];
 
 bool sameThresholds(List<Threshold> a, List<Threshold> b) {
   if (a.length != b.length) return false;

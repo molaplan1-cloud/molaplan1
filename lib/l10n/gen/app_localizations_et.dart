@@ -445,6 +445,30 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sbeb26f2b64 => 'Kanali number puudub';
 
   @override
+  String get sb1d6e8bb4c => 'Odav / keskmine / kallis';
+
+  @override
+  String get sebcf59cf80 => 'Odav / keskmine / kallis / väga kallis';
+
+  @override
+  String get s0260895da8 => 'Negatiivne / odav / kallis';
+
+  @override
+  String get s051944392f => 'Toatemperatuur';
+
+  @override
+  String get s9df0743fd6 => 'Välistemperatuur';
+
+  @override
+  String get sf5bd3b7950 => 'Niiskus %';
+
+  @override
+  String get s5538433078 => 'CO₂';
+
+  @override
+  String get sfad2bc2059 => 'Madal / keskmine / kõrge';
+
+  @override
   String s095ca83913(String p0) {
     return '$p0 kaardid lisatud';
   }
@@ -3221,6 +3245,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s7172c54c2c => 'Hoiab temperatuuri seatud väärtusel.';
 
   @override
+  String get s4b9bb0710d => 'Paranda enne salvestamist värvivahemike piirid.';
+
+  @override
   String get s76e7a995de => 'Väärtusloetelu';
 
   @override
@@ -3398,7 +3425,7 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s77d2309fd5 => 'Hilinemine enne (ms)';
 
   @override
-  String get s7d6cee9e42 => 'Baarid (15 min)';
+  String get sc18ac46162 => 'Tulbad';
 
   @override
   String get sc0e069225b => 'Trend + Nüüd liin';
@@ -3450,6 +3477,18 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s0223c26f61 => 'Keskmine';
 
   @override
+  String get se6264a30f1 => 'Tulpade vahe';
+
+  @override
+  String get s93a0675c8f => 'Puudub';
+
+  @override
+  String get s124beecddd => 'Kitsas vahe';
+
+  @override
+  String get saca843874b => 'Tundide vahel';
+
+  @override
   String get s4b97930585 => 'Min- ja max-märgised';
 
   @override
@@ -3477,16 +3516,10 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s147f0af2a4 => 'Teema värv';
 
   @override
-  String get s173772c66f => 'Värvivahemikud (c/kWh, alates–kuni)';
+  String get sdf5278fadb => 'Värvivahemikud (s/kWh)';
 
   @override
-  String get sc26d444f90 => 'Alates';
-
-  @override
-  String get s6ef23d86e0 => 'ja üle';
-
-  @override
-  String get sf8c043ddca => 'Lisa vahemik';
+  String get s0d88d3856f => 'Oma värvi pole (suhteline tase)';
 
   @override
   String get sb06bee9921 => 'Näita';
@@ -3540,10 +3573,7 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s25d9db075e => 'Oma piirid ja värvid: Seaded → Advanced.';
 
   @override
-  String get sc0f5a14d2b => 'Värvikünnised (väärtus ≥ piir → värv)';
-
-  @override
-  String get s30a2c0f460 => 'Lisage künnis';
+  String get s90b5b7e33f => 'Värvivahemikud';
 
   @override
   String get sd408a5dbe9 => 'Odavamad tunnid';
@@ -4161,6 +4191,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s6019108a01 => 'Seisund';
+
+  @override
+  String get sc26d444f90 => 'Alates';
 
   @override
   String get s796739363a => 'To';
@@ -5006,6 +5039,48 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s941fbb47fe => 'Plaani arvutatakse…';
+
+  @override
+  String get s969e582f74 => 'Sisesta number';
+
+  @override
+  String s6c2b7db49f(String p0) {
+    return 'Peab olema üle $p0';
+  }
+
+  @override
+  String sb2dd9fb046(String p0) {
+    return 'Peab olema alla $p0';
+  }
+
+  @override
+  String get sf53fbf24ad => 'Kõik väärtused';
+
+  @override
+  String se9bcd429a9(String p0, String p1) {
+    return 'alla $p0$p1';
+  }
+
+  @override
+  String s65758fd482(String p0, String p1) {
+    return 'üle $p0$p1';
+  }
+
+  @override
+  String get s0a914fa5f8 => 'Värvita';
+
+  @override
+  String get safbc09013c =>
+      'Vahemikud on järjekorras: alla X, X–Y, üle Y. Piiri muutmine nihutab ka naabervahemikku, nii et vahemikud ei kattu kunagi ega jäta tühimikke. Piirväärtus kuulub ülemisse vahemikku.';
+
+  @override
+  String get s11a3afdbce => 'Ülempiir';
+
+  @override
+  String get sd337d9fc0c => 'Eemalda vahemik';
+
+  @override
+  String get s3f68bf214f => 'Lisa vahemik';
 
   @override
   String get s229f981388 => 'Kodusild';
@@ -8671,9 +8746,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s39f8bf0f76 => 'Saadeti';
-
-  @override
-  String get s051944392f => 'Toatemperatuur';
 
   @override
   String get sdd8cd8132c => 'Mida muuta';

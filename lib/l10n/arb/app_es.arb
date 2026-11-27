@@ -470,6 +470,14 @@
  "@sbeb26f2b64": {
   "x-mt": true
  },
+ "sb1d6e8bb4c": "Barato / medio / caro",
+ "sebcf59cf80": "Barato / medio / caro / muy caro",
+ "s0260895da8": "Negativo / barato / caro",
+ "s051944392f": "Temperatura ambiente",
+ "s9df0743fd6": "Temperatura exterior",
+ "sf5bd3b7950": "Humedad %",
+ "s5538433078": "CO₂",
+ "sfad2bc2059": "Bajo / medio / alto",
  "s095ca83913": "{p0} tarjetas agregadas",
  "@s095ca83913": {
   "x-mt": true
@@ -2637,6 +2645,7 @@
   "x-mt": true
  },
  "s7172c54c2c": "Mantiene la temperatura en el valor fijado.",
+ "s4b9bb0710d": "Corrige los límites de los rangos de color antes de guardar.",
  "s76e7a995de": "Valor leído",
  "@s76e7a995de": {
   "x-mt": true
@@ -2816,10 +2825,7 @@
  "@s77d2309fd5": {
   "x-mt": true
  },
- "s7d6cee9e42": "Bares (15 min)",
- "@s7d6cee9e42": {
-  "x-mt": true
- },
+ "sc18ac46162": "Barras",
  "sc0e069225b": "Trend + línea Ahora",
  "@sc0e069225b": {
   "x-mt": true
@@ -2848,6 +2854,10 @@
  "s3221d2c8b7": "Ancho de barra",
  "s2c890951b7": "Fino",
  "s0223c26f61": "Medio",
+ "se6264a30f1": "Espacio entre barras",
+ "s93a0675c8f": "Ninguno",
+ "s124beecddd": "Espacio fino",
+ "saca843874b": "Entre horas",
  "s4b97930585": "Marcadores de mín. y máx.",
  "seef35b192d": "Línea de ahora",
  "s8c6a205222": "Fila de estadísticas (ahora, mín., media, máx.)",
@@ -2857,10 +2867,8 @@
  "s6817cff974": "Incluir margen",
  "sd85f1b089e": "Color de línea / fijo",
  "s147f0af2a4": "Color del tema",
- "s173772c66f": "Bandas de color (c/kWh, de–a)",
- "sc26d444f90": "Desde",
- "s6ef23d86e0": "y más",
- "sf8c043ddca": "Añadir banda",
+ "sdf5278fadb": "Rangos de color (c/kWh)",
+ "s0d88d3856f": "Sin color propio (nivel relativo)",
  "sb06bee9921": "Show",
  "@sb06bee9921": {
   "x-mt": true
@@ -2922,14 +2930,7 @@
  "@s25d9db075e": {
   "x-mt": true
  },
- "sc0f5a14d2b": "umbrales de color (valor ≥ límite → color)",
- "@sc0f5a14d2b": {
-  "x-mt": true
- },
- "s30a2c0f460": "Añada el umbral",
- "@s30a2c0f460": {
-  "x-mt": true
- },
+ "s90b5b7e33f": "Rangos de color",
  "sd408a5dbe9": "Horas más baratas",
  "@sd408a5dbe9": {
   "x-mt": true
@@ -3628,9 +3629,6 @@
   "x-mt": true
  },
  "sb74370fc1e": "Temperatura exterior",
- "@sb74370fc1e": {
-  "x-mt": true
- },
  "s585b4c519f": "Oscuro / luz",
  "@s585b4c519f": {
   "x-mt": true
@@ -3639,6 +3637,7 @@
  "@s6019108a01": {
   "x-mt": true
  },
+ "sc26d444f90": "Desde",
  "s796739363a": "A",
  "@s796739363a": {
   "x-mt": true
@@ -4467,6 +4466,17 @@
   "x-mt": true
  },
  "s941fbb47fe": "Calculando el plan…",
+ "s969e582f74": "Introduce un número",
+ "s6c2b7db49f": "Debe ser mayor que {p0}",
+ "sb2dd9fb046": "Debe ser menor que {p0}",
+ "sf53fbf24ad": "Todos los valores",
+ "se9bcd429a9": "menos de {p0}{p1}",
+ "s65758fd482": "más de {p0}{p1}",
+ "s0a914fa5f8": "Sin color",
+ "safbc09013c": "Los rangos van en orden: menos de X, X–Y, más de Y. Al cambiar un límite también se mueve el rango vecino, así que los rangos nunca se solapan ni dejan huecos. El valor límite pertenece al rango superior.",
+ "s11a3afdbce": "Límite superior",
+ "sd337d9fc0c": "Quitar rango",
+ "s3f68bf214f": "Añadir rango",
  "s229f981388": "Puente de casa en",
  "@s229f981388": {
   "x-mt": true
@@ -8081,10 +8091,6 @@
  },
  "s39f8bf0f76": "Enviada",
  "@s39f8bf0f76": {
-  "x-mt": true
- },
- "s051944392f": "Temperatura ambiente",
- "@s051944392f": {
   "x-mt": true
  },
  "sdd8cd8132c": "Qué cambiar",

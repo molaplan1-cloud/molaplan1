@@ -445,6 +445,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sbeb26f2b64 => 'Channel number missing';
 
   @override
+  String get sb1d6e8bb4c => 'Cheap / mid / expensive';
+
+  @override
+  String get sebcf59cf80 => 'Cheap / mid / expensive / very expensive';
+
+  @override
+  String get s0260895da8 => 'Negative / cheap / expensive';
+
+  @override
+  String get s051944392f => 'Room temperature';
+
+  @override
+  String get s9df0743fd6 => 'Outdoor temperature';
+
+  @override
+  String get sf5bd3b7950 => 'Humidity %';
+
+  @override
+  String get s5538433078 => 'CO₂';
+
+  @override
+  String get sfad2bc2059 => 'Low / mid / high';
+
+  @override
   String s095ca83913(String p0) {
     return '$p0 tiles added';
   }
@@ -3224,6 +3248,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s7172c54c2c => 'Keeps the temperature at the set value.';
 
   @override
+  String get s4b9bb0710d => 'Fix the colour range limits before saving.';
+
+  @override
   String get s76e7a995de => 'Value read';
 
   @override
@@ -3400,7 +3427,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s77d2309fd5 => 'Delay before (ms)';
 
   @override
-  String get s7d6cee9e42 => 'Bars (15 min)';
+  String get sc18ac46162 => 'Bars';
 
   @override
   String get sc0e069225b => 'Trend + Now line';
@@ -3452,6 +3479,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s0223c26f61 => 'Medium';
 
   @override
+  String get se6264a30f1 => 'Space between bars';
+
+  @override
+  String get s93a0675c8f => 'None';
+
+  @override
+  String get s124beecddd => 'Thin gap';
+
+  @override
+  String get saca843874b => 'Between hours';
+
+  @override
   String get s4b97930585 => 'Min and max markers';
 
   @override
@@ -3479,16 +3518,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s147f0af2a4 => 'Theme colour';
 
   @override
-  String get s173772c66f => 'Colour bands (c/kWh, from–to)';
+  String get sdf5278fadb => 'Colour ranges (c/kWh)';
 
   @override
-  String get sc26d444f90 => 'From';
-
-  @override
-  String get s6ef23d86e0 => 'and up';
-
-  @override
-  String get sf8c043ddca => 'Add band';
+  String get s0d88d3856f => 'No own colour (relative level)';
 
   @override
   String get sb06bee9921 => 'Show';
@@ -3542,10 +3575,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s25d9db075e => 'Own limits and colours: Settings → Advanced.';
 
   @override
-  String get sc0f5a14d2b => 'Color thresholds (value ≥ limit → color)';
-
-  @override
-  String get s30a2c0f460 => 'Add threshold';
+  String get s90b5b7e33f => 'Colour ranges';
 
   @override
   String get sd408a5dbe9 => 'Cheapest hours';
@@ -4163,6 +4193,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s6019108a01 => 'Condition';
+
+  @override
+  String get sc26d444f90 => 'From';
 
   @override
   String get s796739363a => 'To';
@@ -5008,6 +5041,48 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s941fbb47fe => 'Calculating the plan…';
+
+  @override
+  String get s969e582f74 => 'Enter a number';
+
+  @override
+  String s6c2b7db49f(String p0) {
+    return 'Must be above $p0';
+  }
+
+  @override
+  String sb2dd9fb046(String p0) {
+    return 'Must be below $p0';
+  }
+
+  @override
+  String get sf53fbf24ad => 'All values';
+
+  @override
+  String se9bcd429a9(String p0, String p1) {
+    return 'below $p0$p1';
+  }
+
+  @override
+  String s65758fd482(String p0, String p1) {
+    return 'above $p0$p1';
+  }
+
+  @override
+  String get s0a914fa5f8 => 'No colour';
+
+  @override
+  String get safbc09013c =>
+      'Ranges are in order: below X, X–Y, above Y. Changing a limit also moves the neighbouring range, so ranges never overlap or leave gaps. A limit value belongs to the upper range.';
+
+  @override
+  String get s11a3afdbce => 'Upper limit';
+
+  @override
+  String get sd337d9fc0c => 'Remove range';
+
+  @override
+  String get s3f68bf214f => 'Add range';
 
   @override
   String get s229f981388 => 'Home bridge on';
@@ -8682,9 +8757,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s39f8bf0f76 => 'Sent at';
-
-  @override
-  String get s051944392f => 'Room temperature';
 
   @override
   String get sdd8cd8132c => 'What to change';

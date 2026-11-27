@@ -109,6 +109,8 @@ class V extends RecursiveAstVisitor<void> {
       pair(pos[pos.length - 2], pos[pos.length - 1], n);
     }
     if (name == 'FieldSpec' && pos.length >= 3) pair(pos[1], pos[2], n);
+    // t318u: RangePreset(id, fi, en, …) colour-range presets.
+    if (name == 'RangePreset' && pos.length >= 3) pair(pos[1], pos[2], n);
     // Inside a const list the parser sees constructor calls as method invocations.
     if (name == 'AutomationTemplate' && pos.length >= 5) {
       pair(pos[1], pos[2], n);
@@ -122,6 +124,7 @@ class V extends RecursiveAstVisitor<void> {
     final name = n.constructorName.type.name.lexeme;
     final pos = n.argumentList.arguments.whereType<Expression>().toList();
     if (name == 'FieldSpec' && pos.length >= 3) pair(pos[1], pos[2], n);
+    if (name == 'RangePreset' && pos.length >= 3) pair(pos[1], pos[2], n);
     if (name == 'AutomationTemplate' && pos.length >= 5) {
       pair(pos[1], pos[2], n);
       pair(pos[3], pos[4], n);

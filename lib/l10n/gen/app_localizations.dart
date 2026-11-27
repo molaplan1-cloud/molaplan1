@@ -908,6 +908,54 @@ abstract class AppLocalizations {
   /// **'Channel number missing'**
   String get sbeb26f2b64;
 
+  /// fi: Halpa / keski / kallis
+  ///
+  /// In en, this message translates to:
+  /// **'Cheap / mid / expensive'**
+  String get sb1d6e8bb4c;
+
+  /// fi: Halpa / keski / kallis / erittäin kallis
+  ///
+  /// In en, this message translates to:
+  /// **'Cheap / mid / expensive / very expensive'**
+  String get sebcf59cf80;
+
+  /// fi: Negatiivinen / halpa / kallis
+  ///
+  /// In en, this message translates to:
+  /// **'Negative / cheap / expensive'**
+  String get s0260895da8;
+
+  /// fi: Huonelämpö
+  ///
+  /// In en, this message translates to:
+  /// **'Room temperature'**
+  String get s051944392f;
+
+  /// fi: Ulkolämpö
+  ///
+  /// In en, this message translates to:
+  /// **'Outdoor temperature'**
+  String get s9df0743fd6;
+
+  /// fi: Kosteus %
+  ///
+  /// In en, this message translates to:
+  /// **'Humidity %'**
+  String get sf5bd3b7950;
+
+  /// fi: CO₂
+  ///
+  /// In en, this message translates to:
+  /// **'CO₂'**
+  String get s5538433078;
+
+  /// fi: Matala / keski / korkea
+  ///
+  /// In en, this message translates to:
+  /// **'Low / mid / high'**
+  String get sfad2bc2059;
+
   /// fi: {p0} ruutua lisätty
   ///
   /// In en, this message translates to:
@@ -5918,6 +5966,12 @@ abstract class AppLocalizations {
   /// **'Keeps the temperature at the set value.'**
   String get s7172c54c2c;
 
+  /// fi: Korjaa värialueiden rajat ennen tallennusta.
+  ///
+  /// In en, this message translates to:
+  /// **'Fix the colour range limits before saving.'**
+  String get s4b9bb0710d;
+
   /// fi: Luettu arvo
   ///
   /// In en, this message translates to:
@@ -6254,11 +6308,11 @@ abstract class AppLocalizations {
   /// **'Delay before (ms)'**
   String get s77d2309fd5;
 
-  /// fi: Pylväät (15 min)
+  /// fi: Pylväät
   ///
   /// In en, this message translates to:
-  /// **'Bars (15 min)'**
-  String get s7d6cee9e42;
+  /// **'Bars'**
+  String get sc18ac46162;
 
   /// fi: Trendi + Nyt-viiva
   ///
@@ -6356,6 +6410,30 @@ abstract class AppLocalizations {
   /// **'Medium'**
   String get s0223c26f61;
 
+  /// fi: Pylväiden väli
+  ///
+  /// In en, this message translates to:
+  /// **'Space between bars'**
+  String get se6264a30f1;
+
+  /// fi: Ei väliä
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get s93a0675c8f;
+
+  /// fi: Ohut väli
+  ///
+  /// In en, this message translates to:
+  /// **'Thin gap'**
+  String get s124beecddd;
+
+  /// fi: Tuntien välissä
+  ///
+  /// In en, this message translates to:
+  /// **'Between hours'**
+  String get saca843874b;
+
   /// fi: Min- ja max-merkinnät
   ///
   /// In en, this message translates to:
@@ -6410,29 +6488,17 @@ abstract class AppLocalizations {
   /// **'Theme colour'**
   String get s147f0af2a4;
 
-  /// fi: Värialueet (c/kWh, mistä–mihin)
+  /// fi: Värialueet (c/kWh)
   ///
   /// In en, this message translates to:
-  /// **'Colour bands (c/kWh, from–to)'**
-  String get s173772c66f;
+  /// **'Colour ranges (c/kWh)'**
+  String get sdf5278fadb;
 
-  /// fi: Alkaen
+  /// fi: Ei omaa väriä (suhteellinen taso)
   ///
   /// In en, this message translates to:
-  /// **'From'**
-  String get sc26d444f90;
-
-  /// fi: ja yli
-  ///
-  /// In en, this message translates to:
-  /// **'and up'**
-  String get s6ef23d86e0;
-
-  /// fi: Lisää alue
-  ///
-  /// In en, this message translates to:
-  /// **'Add band'**
-  String get sf8c043ddca;
+  /// **'No own colour (relative level)'**
+  String get s0d88d3856f;
 
   /// fi: Näytä
   ///
@@ -6530,17 +6596,11 @@ abstract class AppLocalizations {
   /// **'Own limits and colours: Settings → Advanced.'**
   String get s25d9db075e;
 
-  /// fi: Värirajat (arvo ≥ raja → väri)
+  /// fi: Värialueet
   ///
   /// In en, this message translates to:
-  /// **'Color thresholds (value ≥ limit → color)'**
-  String get sc0f5a14d2b;
-
-  /// fi: Lisää raja
-  ///
-  /// In en, this message translates to:
-  /// **'Add threshold'**
-  String get s30a2c0f460;
+  /// **'Colour ranges'**
+  String get s90b5b7e33f;
 
   /// fi: Halvimmat tunnit
   ///
@@ -7663,6 +7723,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Condition'**
   String get s6019108a01;
+
+  /// fi: Alkaen
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get sc26d444f90;
 
   /// fi: Asti
   ///
@@ -9230,6 +9296,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Calculating the plan…'**
   String get s941fbb47fe;
+
+  /// fi: Kirjoita luku
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a number'**
+  String get s969e582f74;
+
+  /// fi: Pitää olla yli {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Must be above {p0}'**
+  String s6c2b7db49f(String p0);
+
+  /// fi: Pitää olla alle {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Must be below {p0}'**
+  String sb2dd9fb046(String p0);
+
+  /// fi: Kaikki arvot
+  ///
+  /// In en, this message translates to:
+  /// **'All values'**
+  String get sf53fbf24ad;
+
+  /// fi: alle {p0}{p1}
+  ///
+  /// In en, this message translates to:
+  /// **'below {p0}{p1}'**
+  String se9bcd429a9(String p0, String p1);
+
+  /// fi: yli {p0}{p1}
+  ///
+  /// In en, this message translates to:
+  /// **'above {p0}{p1}'**
+  String s65758fd482(String p0, String p1);
+
+  /// fi: Ei väriä
+  ///
+  /// In en, this message translates to:
+  /// **'No colour'**
+  String get s0a914fa5f8;
+
+  /// fi: Alueet ovat järjestyksessä: alle X, X–Y, yli Y. Rajan muuttaminen siirtää myös viereistä aluetta, joten alueet eivät men
+  ///
+  /// In en, this message translates to:
+  /// **'Ranges are in order: below X, X–Y, above Y. Changing a limit also moves the neighbouring range, so ranges never overlap or leave gaps. A limit value belongs to the upper range.'**
+  String get safbc09013c;
+
+  /// fi: Yläraja
+  ///
+  /// In en, this message translates to:
+  /// **'Upper limit'**
+  String get s11a3afdbce;
+
+  /// fi: Poista alue
+  ///
+  /// In en, this message translates to:
+  /// **'Remove range'**
+  String get sd337d9fc0c;
+
+  /// fi: Lisää alue
+  ///
+  /// In en, this message translates to:
+  /// **'Add range'**
+  String get s3f68bf214f;
 
   /// fi: Kotisilta päällä
   ///
@@ -15730,12 +15862,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sent at'**
   String get s39f8bf0f76;
-
-  /// fi: Huonelämpö
-  ///
-  /// In en, this message translates to:
-  /// **'Room temperature'**
-  String get s051944392f;
 
   /// fi: Mitä muutetaan
   ///

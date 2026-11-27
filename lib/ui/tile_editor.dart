@@ -12,6 +12,8 @@ import 'package:material_ui/material_ui.dart' hide Threshold;
 import '../drivers/registry.dart';
 import '../state/auto_driver.dart' show autoConnId;
 import '../models/models.dart';
+import '../models/color_ranges.dart';
+import 'color_ranges_editor.dart';
 import 'app_scope.dart';
 import 'automation_pages.dart' show pickTiles;
 import 'error_box.dart';
@@ -120,12 +122,35 @@ class _TileEditorState extends State<TileEditor> {
 
   /// t164u: Edistyneet › "Raaka yhdistelmä" – any tile type on any connection, with a warning.
   late bool _raw = t.read['raw'] == true;
+
+  /// t318u: colour-range editor validity (saving is blocked while a limit is invalid) and a
+  /// generation bumped when the thresholds are replaced from outside (presets, colour mode).
+  bool _rangesValid = true;
+  int _rangesGen = 0;
   String? _testResult;
   Object? _testError;
 
   bool get _hasRead => t.type != TileType.button;
 
   Future<void> _save() async {
+    if (!_rangesValid) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            tx(
+              context,
+              'Korjaa värialueiden rajat ennen tallennusta.',
+              'Fix the colour range limits before saving.',
+            ),
+          ),
+        ),
+      );
+      return;
+    }
+    // t318u (R521): ranges sorted and duplicate limits removed on save.
+    t.thresholds = ColorRanges.fromThresholds(
+      t.thresholds,
+    ).normalized().toThresholds();
     t.title = _title.text.trim().isEmpty
         ? tileTypeLabel(context, t.type)
         : _title.text.trim();
@@ -878,7 +903,9 @@ class _TileEditorState extends State<TileEditor> {
                       ),
                     ),
                   ),
-                  if (t.type == TileType.value) _thresholds(text),
+                  // The price chart has its own ranges in the price section (t318u).
+                  if (t.type == TileType.value && t.read['field'] != 'chart')
+                    _thresholds(text),
                 ],
                 if (t.type == TileType.toggle) ...[
                   _section(
@@ -1275,7 +1302,7 @@ class _TileEditorState extends State<TileEditor> {
       chips(
         'price-look',
         [
-          ('auto', tx(context, 'Pylväät (15 min)', 'Bars (15 min)')),
+          ('auto', tx(context, 'Pylväät', 'Bars')),
           ('trend', tx(context, 'Trendi + Nyt-viiva', 'Trend + Now line')),
         ],
         t.display == 'trend' ? 'trend' : 'auto',
@@ -1335,6 +1362,7 @@ class _TileEditorState extends State<TileEditor> {
             t.thresholds.addAll(
               defaultPriceThresholds.map((x) => Threshold(x.above, x.color)),
             );
+            _rangesGen++;
           }
         },
       ),
@@ -1392,13 +1420,28 @@ class _TileEditorState extends State<TileEditor> {
               t.priceBarWidth,
               (v) => t.priceBarWidth = v,
             ),
+            // t318u (R523): bars touch by default; a gap only when asked for.
+            const SizedBox(height: 8),
+            Text(
+              tx(context, 'Pylväiden väli', 'Space between bars'),
+              style: text.titleSmall,
+            ),
+            const SizedBox(height: 8),
+            chips(
+              'price-bar-gap',
+              [
+                ('none', tx(context, 'Ei väliä', 'None')),
+                ('thin', tx(context, 'Ohut väli', 'Thin gap')),
+                ('hour', tx(context, 'Tuntien välissä', 'Between hours')),
+              ],
+              t.priceBarGap,
+              (v) => t.priceBarGap = v,
+            ),
           ],
           if (t.display == 'trend') ...[
             ..._trendLook(text),
             const SizedBox(height: 8),
             _priceLineColor(text),
-            const SizedBox(height: 8),
-            _colorPresets(text),
           ],
           if (colorMode != 'thresholds' &&
               !(colorMode == 'auto' && t.display == 'trend')) ...[
@@ -1533,113 +1576,21 @@ class _TileEditorState extends State<TileEditor> {
     );
   }
 
-  /// From–to colour bands stored as existing [Threshold] (≥ from → colour) values.
-  Widget _priceColorBands(TextTheme text) {
-    final rows = [...t.thresholds]..sort((a, b) => a.above.compareTo(b.above));
-    String fmt(double v) => v <= -100
-        ? '–'
-        : (v == v.roundToDouble() ? '${v.toInt()}' : v.toStringAsFixed(1));
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          tx(
-            context,
-            'Värialueet (c/kWh, mistä–mihin)',
-            'Colour bands (c/kWh, from–to)',
-          ),
-          style: text.titleSmall,
-        ),
-        const SizedBox(height: 6),
-        for (var i = 0; i < rows.length; i++)
-          Padding(
-            key: ValueKey('th${identityHashCode(rows[i])}'),
-            padding: const EdgeInsets.only(bottom: 6),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 88,
-                  child: _numField(
-                    tx(context, 'Alkaen', 'From'),
-                    rows[i].above,
-                    (v) => setState(() => rows[i].above = v.toDouble()),
-                    pad: false,
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Text(
-                  i + 1 < rows.length
-                      ? '– ${fmt(rows[i + 1].above)}'
-                      : tx(context, 'ja yli', 'and up'),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Wrap(
-                    spacing: 6,
-                    children: [
-                      for (final c in palette)
-                        InkWell(
-                          onTap: () => setState(() => rows[i].color = c),
-                          child: CircleAvatar(
-                            radius: 13,
-                            backgroundColor: Color(c),
-                            child: rows[i].color == c
-                                ? const Icon(
-                                    Icons.check,
-                                    size: 14,
-                                    color: Colors.black,
-                                  )
-                                : null,
-                          ),
-                        ),
-                      InkWell(
-                        key: ValueKey('th-custom-$i'),
-                        onTap: () async {
-                          final c = await pickCustomColor(
-                            context,
-                            Color(rows[i].color),
-                          );
-                          if (c != null) {
-                            setState(() => rows[i].color = c.toARGB32());
-                          }
-                        },
-                        child: CircleAvatar(
-                          radius: 13,
-                          backgroundColor: palette.contains(rows[i].color)
-                              ? Theme.of(context)
-                                    .colorScheme
-                                    .surfaceContainerHighest
-                              : Color(rows[i].color),
-                          child: const Icon(Icons.colorize, size: 14),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.close, size: 18),
-                  onPressed: () => setState(() => t.thresholds.remove(rows[i])),
-                ),
-              ],
-            ),
-          ),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: TextButton.icon(
-            key: const ValueKey('price-add-band'),
-            onPressed: () => setState(() {
-              final next = rows.isEmpty ? 0.0 : rows.last.above + 10;
-              t.thresholds.add(
-                Threshold(next, palette[t.thresholds.length % palette.length]),
-              );
-            }),
-            icon: const Icon(Icons.add),
-            label: Text(tx(context, 'Lisää alue', 'Add band')),
-          ),
-        ),
-      ],
-    );
-  }
+  /// t318u (R520): price colour ranges "alle X / X–Y / yli Y" (stored as ≥ thresholds).
+  Widget _priceColorBands(TextTheme text) => ColorRangesEditor(
+    key: ValueKey('price-ranges-$_rangesGen'),
+    thresholds: t.thresholds,
+    unit: 'c/kWh',
+    presets: priceRangePresets,
+    title: tx(context, 'Värialueet (c/kWh)', 'Colour ranges (c/kWh)'),
+    noColorLabel: tx(
+      context,
+      'Ei omaa väriä (suhteellinen taso)',
+      'No own colour (relative level)',
+    ),
+    onChanged: (l) => setState(() => t.thresholds = l),
+    onValidity: (ok) => setState(() => _rangesValid = ok),
+  );
 
   List<Widget> _trendLook(TextTheme text) {
     Widget seg(
@@ -1778,7 +1729,10 @@ class _TileEditorState extends State<TileEditor> {
               key: const ValueKey('color-preset-none'),
               label: Text(tx(context, 'Ei', 'None')),
               selected: t.thresholds.isEmpty,
-              onSelected: (_) => setState(() => t.thresholds.clear()),
+              onSelected: (_) => setState(() {
+                t.thresholds.clear();
+                _rangesGen++;
+              }),
             ),
             for (var i = 0; i < colorPresets.length; i++)
               ChoiceChip(
@@ -1787,6 +1741,7 @@ class _TileEditorState extends State<TileEditor> {
                 label: Text(tr(lang, colorPresets[i].fi, colorPresets[i].en)),
                 selected: current == i,
                 onSelected: (_) => setState(() {
+                  _rangesGen++;
                   t.thresholds
                     ..clear()
                     ..addAll(
@@ -1847,100 +1802,19 @@ class _TileEditorState extends State<TileEditor> {
     ),
   );
 
-  Future<void> _customColor(int i) async {
-    final c = await pickCustomColor(context, Color(t.thresholds[i].color));
-    if (c != null) setState(() => t.thresholds[i].color = c.toARGB32());
-  }
-
-  Widget _thresholds(TextTheme text) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const SizedBox(height: 14),
-        Text(
-          tx(
-            context,
-            'Värirajat (arvo ≥ raja → väri)',
-            'Color thresholds (value ≥ limit → color)',
-          ),
-          style: text.titleSmall,
-        ),
-        const SizedBox(height: 6),
-        for (var i = 0; i < t.thresholds.length; i++)
-          Padding(
-            key: ValueKey('th${identityHashCode(t.thresholds[i])}'),
-            padding: const EdgeInsets.only(bottom: 6),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 120,
-                  child: _numField(
-                    tx(context, 'Raja', 'Limit'),
-                    t.thresholds[i].above,
-                    (v) => t.thresholds[i].above = v.toDouble(),
-                    pad: false,
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Wrap(
-                    spacing: 6,
-                    children: [
-                      for (final c in palette)
-                        InkWell(
-                          onTap: () =>
-                              setState(() => t.thresholds[i].color = c),
-                          child: CircleAvatar(
-                            radius: 13,
-                            backgroundColor: Color(c),
-                            child: t.thresholds[i].color == c
-                                ? const Icon(
-                                    Icons.check,
-                                    size: 14,
-                                    color: Colors.black,
-                                  )
-                                : null,
-                          ),
-                        ),
-                      InkWell(
-                        key: ValueKey('th-custom-$i'),
-                        onTap: () => _customColor(i),
-                        child: CircleAvatar(
-                          radius: 13,
-                          backgroundColor:
-                              palette.contains(t.thresholds[i].color)
-                              ? Theme.of(context)
-                                    .colorScheme
-                                    .surfaceContainerHighest
-                              : Color(t.thresholds[i].color),
-                          child: const Icon(Icons.colorize, size: 14),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.close, size: 18),
-                  onPressed: () => setState(() => t.thresholds.removeAt(i)),
-                ),
-              ],
-            ),
-          ),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: TextButton.icon(
-            onPressed: () => setState(
-              () => t.thresholds.add(
-                Threshold(0, palette[t.thresholds.length % palette.length]),
-              ),
-            ),
-            icon: const Icon(Icons.add),
-            label: Text(tx(context, 'Lisää raja', 'Add threshold')),
-          ),
-        ),
-      ],
-    );
-  }
+  /// t318u (R520): any numeric tile's colours as ordered ranges (stored as ≥ thresholds).
+  Widget _thresholds(TextTheme text) => Padding(
+    padding: const EdgeInsets.only(top: 14),
+    child: ColorRangesEditor(
+      key: ValueKey('value-ranges-$_rangesGen'),
+      thresholds: t.thresholds,
+      unit: _unit.text.trim(),
+      presets: valueRangePresets,
+      title: tx(context, 'Värialueet', 'Colour ranges'),
+      onChanged: (l) => setState(() => t.thresholds = l),
+      onValidity: (ok) => setState(() => _rangesValid = ok),
+    ),
+  );
 }
 
 String iconLabel(BuildContext context, String key) {

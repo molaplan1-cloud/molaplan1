@@ -450,6 +450,30 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sbeb26f2b64 => 'Número de canal desaparecido';
 
   @override
+  String get sb1d6e8bb4c => 'Barato / medio / caro';
+
+  @override
+  String get sebcf59cf80 => 'Barato / medio / caro / muy caro';
+
+  @override
+  String get s0260895da8 => 'Negativo / barato / caro';
+
+  @override
+  String get s051944392f => 'Temperatura ambiente';
+
+  @override
+  String get s9df0743fd6 => 'Temperatura exterior';
+
+  @override
+  String get sf5bd3b7950 => 'Humedad %';
+
+  @override
+  String get s5538433078 => 'CO₂';
+
+  @override
+  String get sfad2bc2059 => 'Bajo / medio / alto';
+
+  @override
   String s095ca83913(String p0) {
     return '$p0 tarjetas agregadas';
   }
@@ -3258,6 +3282,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s7172c54c2c => 'Mantiene la temperatura en el valor fijado.';
 
   @override
+  String get s4b9bb0710d =>
+      'Corrige los límites de los rangos de color antes de guardar.';
+
+  @override
   String get s76e7a995de => 'Valor leído';
 
   @override
@@ -3438,7 +3466,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s77d2309fd5 => 'Retraso antes (ms)';
 
   @override
-  String get s7d6cee9e42 => 'Bares (15 min)';
+  String get sc18ac46162 => 'Barras';
 
   @override
   String get sc0e069225b => 'Trend + línea Ahora';
@@ -3490,6 +3518,18 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s0223c26f61 => 'Medio';
 
   @override
+  String get se6264a30f1 => 'Espacio entre barras';
+
+  @override
+  String get s93a0675c8f => 'Ninguno';
+
+  @override
+  String get s124beecddd => 'Espacio fino';
+
+  @override
+  String get saca843874b => 'Entre horas';
+
+  @override
   String get s4b97930585 => 'Marcadores de mín. y máx.';
 
   @override
@@ -3517,16 +3557,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s147f0af2a4 => 'Color del tema';
 
   @override
-  String get s173772c66f => 'Bandas de color (c/kWh, de–a)';
+  String get sdf5278fadb => 'Rangos de color (c/kWh)';
 
   @override
-  String get sc26d444f90 => 'Desde';
-
-  @override
-  String get s6ef23d86e0 => 'y más';
-
-  @override
-  String get sf8c043ddca => 'Añadir banda';
+  String get s0d88d3856f => 'Sin color propio (nivel relativo)';
 
   @override
   String get sb06bee9921 => 'Show';
@@ -3580,10 +3614,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s25d9db075e => 'Límites y colores propios: Ajustes → Avanzado.';
 
   @override
-  String get sc0f5a14d2b => 'umbrales de color (valor ≥ límite → color)';
-
-  @override
-  String get s30a2c0f460 => 'Añada el umbral';
+  String get s90b5b7e33f => 'Rangos de color';
 
   @override
   String get sd408a5dbe9 => 'Horas más baratas';
@@ -4204,6 +4235,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s6019108a01 => 'Estado';
+
+  @override
+  String get sc26d444f90 => 'Desde';
 
   @override
   String get s796739363a => 'A';
@@ -5057,6 +5091,48 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s941fbb47fe => 'Calculando el plan…';
+
+  @override
+  String get s969e582f74 => 'Introduce un número';
+
+  @override
+  String s6c2b7db49f(String p0) {
+    return 'Debe ser mayor que $p0';
+  }
+
+  @override
+  String sb2dd9fb046(String p0) {
+    return 'Debe ser menor que $p0';
+  }
+
+  @override
+  String get sf53fbf24ad => 'Todos los valores';
+
+  @override
+  String se9bcd429a9(String p0, String p1) {
+    return 'menos de $p0$p1';
+  }
+
+  @override
+  String s65758fd482(String p0, String p1) {
+    return 'más de $p0$p1';
+  }
+
+  @override
+  String get s0a914fa5f8 => 'Sin color';
+
+  @override
+  String get safbc09013c =>
+      'Los rangos van en orden: menos de X, X–Y, más de Y. Al cambiar un límite también se mueve el rango vecino, así que los rangos nunca se solapan ni dejan huecos. El valor límite pertenece al rango superior.';
+
+  @override
+  String get s11a3afdbce => 'Límite superior';
+
+  @override
+  String get sd337d9fc0c => 'Quitar rango';
+
+  @override
+  String get s3f68bf214f => 'Añadir rango';
 
   @override
   String get s229f981388 => 'Puente de casa en';
@@ -8759,9 +8835,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s39f8bf0f76 => 'Enviada';
-
-  @override
-  String get s051944392f => 'Temperatura ambiente';
 
   @override
   String get sdd8cd8132c => 'Qué cambiar';

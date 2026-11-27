@@ -180,7 +180,7 @@ void main() {
       expect(p.debugNowX, closeTo(36 + (size.width - 36) * frac, 2.0), reason: res);
       await _shot(tester, res == '1 h' ? 'chart' : 'chart15');
       if (res == '15 min') {
-        await tester.tap(find.byKey(const ValueKey('price-res')));
+        await tester.tap(find.byKey(const ValueKey('price-res-1h')));
         await tester.pump(const Duration(milliseconds: 300));
       }
     }

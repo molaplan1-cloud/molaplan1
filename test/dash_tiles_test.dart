@@ -167,7 +167,7 @@ void main() {
       await tester.tap(find.byKey(const ValueKey('price-bars')).first);
       await tester.pumpAndSettle();
       expect(find.byType(PricePage), findsOneWidget);
-      await tester.tap(find.byKey(const ValueKey('price-res')));
+      await tester.tap(find.byKey(const ValueKey('price-res-1h')));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
       await tester.tap(find.byKey(const ValueKey('price-overlay-kwh')));

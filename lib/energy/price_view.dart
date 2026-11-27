@@ -69,16 +69,34 @@ class PriceView {
     }
     final sorted = byStart.values.toList()
       ..sort((a, b) => a.$1.compareTo(b.$1));
-    var res = (resolutionSec / 60).round().clamp(1, 1440);
-    var gap = 0;
-    for (var i = 1; i < sorted.length; i++) {
-      final d = sorted[i].$1.difference(sorted[i - 1].$1).inMinutes;
-      if (d > 0 && (gap == 0 || d < gap)) gap = d;
+    // t318u (R524): every point gets ITS OWN slot length – the distance to the next point
+    // (≤ 60 min) – instead of one length for all. Mixed data (15-min today, hourly tomorrow, or
+    // a tile hint of 900 s over hourly prices) used to make every slot 15 min long, so hourly
+    // points drew as thin bars with 45-min gaps.
+    final hint = (resolutionSec / 60).round().clamp(1, 60);
+    final n = sorted.length;
+    final lens = List<int?>.filled(n, null);
+    for (var i = 0; i + 1 < n; i++) {
+      final d = sorted[i + 1].$1.difference(sorted[i].$1).inMinutes;
+      if (d > 0 && d <= 60) lens[i] = d;
     }
-    if (gap > 0 && gap < res) res = gap;
-    final raw = [for (final p in sorted) PriceSlot(p.$1, res, p.$2)];
-    final hours = res < 60 ? toHourly(raw) : raw;
-    final slots = hourly ? hours : raw;
+    // A point before a hole (or the last one) keeps its neighbour's length.
+    for (var i = 0; i < n; i++) {
+      if (lens[i] != null) continue;
+      int? near;
+      for (var k = 1; k < n && near == null; k++) {
+        if (i - k >= 0 && lens[i - k] != null) near = lens[i - k];
+        if (near == null && i + k < n && lens[i + k] != null) near = lens[i + k];
+      }
+      lens[i] = near ?? hint;
+    }
+    final res = n == 0 ? hint : lens.fold<int>(60, (a, l) => l! < a ? l : a);
+    final mixed = lens.any((l) => l != res);
+    final raw = [for (var i = 0; i < n; i++) PriceSlot(sorted[i].$1, lens[i]!, sorted[i].$2)];
+    final hours = res < 60 || mixed ? toHourly(raw) : raw;
+    // Fine view of mixed data: longer slots are split into [res]-minute slots of the same price,
+    // so every bar is one equal time slot across today and tomorrow.
+    final slots = hourly ? hours : (mixed ? splitTo(raw, res) : raw);
     // t168u: stats at the shown resolution (15-min min / max when 15-min bars are shown).
     final today = [
       for (final s in slots)
@@ -113,6 +131,16 @@ class PriceView {
 
   static bool _sameDay(DateTime a, DateTime b) =>
       a.year == b.year && a.month == b.month && a.day == b.day;
+
+  /// [s] with every slot longer than [minutes] split into equal [minutes]-long slots.
+  static List<PriceSlot> splitTo(List<PriceSlot> s, int minutes) => [
+    for (final x in s)
+      if (x.minutes > minutes && x.minutes % minutes == 0)
+        for (var k = 0; k < x.minutes ~/ minutes; k++)
+          PriceSlot(x.start.add(Duration(minutes: k * minutes)), minutes, x.cents)
+      else
+        x,
+  ];
 
   static List<PriceSlot> toHourly(List<PriceSlot> s) {
     final by = <DateTime, List<PriceSlot>>{};

@@ -470,6 +470,14 @@
  "@sbeb26f2b64": {
   "x-mt": true
  },
+ "sb1d6e8bb4c": "Odav / keskmine / kallis",
+ "sebcf59cf80": "Odav / keskmine / kallis / väga kallis",
+ "s0260895da8": "Negatiivne / odav / kallis",
+ "s051944392f": "Toatemperatuur",
+ "s9df0743fd6": "Välistemperatuur",
+ "sf5bd3b7950": "Niiskus %",
+ "s5538433078": "CO₂",
+ "sfad2bc2059": "Madal / keskmine / kõrge",
  "s095ca83913": "{p0} kaardid lisatud",
  "@s095ca83913": {
   "x-mt": true
@@ -2643,6 +2651,7 @@
   "x-mt": true
  },
  "s7172c54c2c": "Hoiab temperatuuri seatud väärtusel.",
+ "s4b9bb0710d": "Paranda enne salvestamist värvivahemike piirid.",
  "s76e7a995de": "Väärtusloetelu",
  "@s76e7a995de": {
   "x-mt": true
@@ -2825,10 +2834,7 @@
  "@s77d2309fd5": {
   "x-mt": true
  },
- "s7d6cee9e42": "Baarid (15 min)",
- "@s7d6cee9e42": {
-  "x-mt": true
- },
+ "sc18ac46162": "Tulbad",
  "sc0e069225b": "Trend + Nüüd liin",
  "@sc0e069225b": {
   "x-mt": true
@@ -2857,6 +2863,10 @@
  "s3221d2c8b7": "Tulpade laius",
  "s2c890951b7": "Peenike",
  "s0223c26f61": "Keskmine",
+ "se6264a30f1": "Tulpade vahe",
+ "s93a0675c8f": "Puudub",
+ "s124beecddd": "Kitsas vahe",
+ "saca843874b": "Tundide vahel",
  "s4b97930585": "Min- ja max-märgised",
  "seef35b192d": "Nüüd-joon",
  "s8c6a205222": "Statistikarida (nüüd, min, keskm, max)",
@@ -2866,10 +2876,8 @@
  "s6817cff974": "Kaasa marginaal",
  "sd85f1b089e": "Joone / kindel värv",
  "s147f0af2a4": "Teema värv",
- "s173772c66f": "Värvivahemikud (c/kWh, alates–kuni)",
- "sc26d444f90": "Alates",
- "s6ef23d86e0": "ja üle",
- "sf8c043ddca": "Lisa vahemik",
+ "sdf5278fadb": "Värvivahemikud (s/kWh)",
+ "s0d88d3856f": "Oma värvi pole (suhteline tase)",
  "sb06bee9921": "Näita",
  "@sb06bee9921": {
   "x-mt": true
@@ -2931,14 +2939,7 @@
  "@s25d9db075e": {
   "x-mt": true
  },
- "sc0f5a14d2b": "Värvikünnised (väärtus ≥ piir → värv)",
- "@sc0f5a14d2b": {
-  "x-mt": true
- },
- "s30a2c0f460": "Lisage künnis",
- "@s30a2c0f460": {
-  "x-mt": true
- },
+ "s90b5b7e33f": "Värvivahemikud",
  "sd408a5dbe9": "Odavamad tunnid",
  "@sd408a5dbe9": {
   "x-mt": true
@@ -3637,9 +3638,6 @@
   "x-mt": true
  },
  "sb74370fc1e": "Välistemperatuur",
- "@sb74370fc1e": {
-  "x-mt": true
- },
  "s585b4c519f": "Tume/valgus",
  "@s585b4c519f": {
   "x-mt": true
@@ -3648,6 +3646,7 @@
  "@s6019108a01": {
   "x-mt": true
  },
+ "sc26d444f90": "Alates",
  "s796739363a": "To",
  "@s796739363a": {
   "x-mt": true
@@ -4485,6 +4484,17 @@
   "x-mt": true
  },
  "s941fbb47fe": "Plaani arvutatakse…",
+ "s969e582f74": "Sisesta number",
+ "s6c2b7db49f": "Peab olema üle {p0}",
+ "sb2dd9fb046": "Peab olema alla {p0}",
+ "sf53fbf24ad": "Kõik väärtused",
+ "se9bcd429a9": "alla {p0}{p1}",
+ "s65758fd482": "üle {p0}{p1}",
+ "s0a914fa5f8": "Värvita",
+ "safbc09013c": "Vahemikud on järjekorras: alla X, X–Y, üle Y. Piiri muutmine nihutab ka naabervahemikku, nii et vahemikud ei kattu kunagi ega jäta tühimikke. Piirväärtus kuulub ülemisse vahemikku.",
+ "s11a3afdbce": "Ülempiir",
+ "sd337d9fc0c": "Eemalda vahemik",
+ "s3f68bf214f": "Lisa vahemik",
  "s229f981388": "Kodusild",
  "@s229f981388": {
   "x-mt": true
@@ -8129,10 +8139,6 @@
  },
  "s39f8bf0f76": "Saadeti",
  "@s39f8bf0f76": {
-  "x-mt": true
- },
- "s051944392f": "Toatemperatuur",
- "@s051944392f": {
   "x-mt": true
  },
  "sdd8cd8132c": "Mida muuta",

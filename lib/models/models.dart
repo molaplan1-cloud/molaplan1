@@ -279,6 +279,10 @@ class TileConfig {
   /// Bar width: auto (fill the window) | thin | medium | wide.
   String priceBarWidth;
 
+  /// t318u (R523): space between bars: none (touching, default – every slot filled) | thin
+  /// (1 px) | hour (a hairline between hours, the look before 0.20.5).
+  String priceBarGap;
+
   bool priceShowMinMax;
   bool priceShowNowLine;
   bool priceShowStats;
@@ -361,6 +365,7 @@ class TileConfig {
     this.priceColorMode = 'auto',
     this.priceLineColor,
     this.priceBarWidth = 'auto',
+    this.priceBarGap = 'none',
     this.priceShowMinMax = true,
     this.priceShowNowLine = true,
     this.priceShowStats = true,
@@ -424,6 +429,7 @@ class TileConfig {
     if (priceColorMode != 'auto') 'priceColorMode': priceColorMode,
     'priceLineColor': ?priceLineColor,
     if (priceBarWidth != 'auto') 'priceBarWidth': priceBarWidth,
+    if (priceBarGap != 'none') 'priceBarGap': priceBarGap,
     if (!priceShowMinMax) 'priceShowMinMax': false,
     if (!priceShowNowLine) 'priceShowNowLine': false,
     if (!priceShowStats) 'priceShowStats': false,
@@ -510,6 +516,9 @@ class TileConfig {
     priceBarWidth: const ['thin', 'medium', 'wide'].contains(j['priceBarWidth'])
         ? j['priceBarWidth'] as String
         : 'auto',
+    priceBarGap: const ['thin', 'hour'].contains(j['priceBarGap'])
+        ? j['priceBarGap'] as String
+        : 'none',
     priceShowMinMax: j['priceShowMinMax'] != false,
     priceShowNowLine: j['priceShowNowLine'] != false,
     priceShowStats: j['priceShowStats'] != false,
@@ -574,6 +583,13 @@ int? thresholdColor(List<Threshold> list, double d, {bool smooth = false}) {
       if (d >= t.above) c = t.color;
     }
     return c;
+  }
+  // t318u: an "alle X" colour (sentinel limit) is blended from one range-width below X, not from
+  // -1e9 (which made everything below X look like X's colour).
+  if (s.length >= 2 && (s.first.above <= -1e6 || s.first.above == -1000)) {
+    final x = s[1].above;
+    final span = s.length >= 3 ? s[2].above - x : (x.abs() * 0.5).clamp(1.0, 1e9);
+    s[0] = Threshold(x - (span > 0 ? span : 1), s[0].color);
   }
   if (d <= s.first.above) return s.first.color;
   if (d >= s.last.above) return s.last.color;

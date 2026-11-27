@@ -444,6 +444,30 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sbeb26f2b64 => 'Kanalnummer saknas';
 
   @override
+  String get sb1d6e8bb4c => 'Billigt / medel / dyrt';
+
+  @override
+  String get sebcf59cf80 => 'Billigt / medel / dyrt / mycket dyrt';
+
+  @override
+  String get s0260895da8 => 'Negativt / billigt / dyrt';
+
+  @override
+  String get s051944392f => 'Rumstemperatur';
+
+  @override
+  String get s9df0743fd6 => 'Utomhustemperatur';
+
+  @override
+  String get sf5bd3b7950 => 'Luftfuktighet %';
+
+  @override
+  String get s5538433078 => 'CO₂';
+
+  @override
+  String get sfad2bc2059 => 'Låg / medel / hög';
+
+  @override
   String s095ca83913(String p0) {
     return '$p0 kort tillagda';
   }
@@ -3225,6 +3249,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s7172c54c2c => 'Håller temperaturen på inställt värde.';
 
   @override
+  String get s4b9bb0710d => 'Rätta färgintervallens gränser innan du sparar.';
+
+  @override
   String get s76e7a995de => 'Läst värde';
 
   @override
@@ -3402,7 +3429,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s77d2309fd5 => 'Fördröjning före (ms)';
 
   @override
-  String get s7d6cee9e42 => 'Barer (15 min)';
+  String get sc18ac46162 => 'Staplar';
 
   @override
   String get sc0e069225b => 'Trend + Nu linje';
@@ -3454,6 +3481,18 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s0223c26f61 => 'Medel';
 
   @override
+  String get se6264a30f1 => 'Mellanrum mellan staplar';
+
+  @override
+  String get s93a0675c8f => 'Ingen';
+
+  @override
+  String get s124beecddd => 'Smalt mellanrum';
+
+  @override
+  String get saca843874b => 'Mellan timmar';
+
+  @override
   String get s4b97930585 => 'Min- och maxmarkörer';
 
   @override
@@ -3481,16 +3520,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s147f0af2a4 => 'Temafärg';
 
   @override
-  String get s173772c66f => 'Färgintervall (c/kWh, från–till)';
+  String get sdf5278fadb => 'Färgintervall (c/kWh)';
 
   @override
-  String get sc26d444f90 => 'Från';
-
-  @override
-  String get s6ef23d86e0 => 'och uppåt';
-
-  @override
-  String get sf8c043ddca => 'Lägg till intervall';
+  String get s0d88d3856f => 'Ingen egen färg (relativ nivå)';
 
   @override
   String get sb06bee9921 => 'Föreställning';
@@ -3545,10 +3578,7 @@ class AppLocalizationsSv extends AppLocalizations {
       'Egna gränser och färger: Inställningar → Avancerade.';
 
   @override
-  String get sc0f5a14d2b => 'Färgtrösklar (värde ≥gräns → färg)';
-
-  @override
-  String get s30a2c0f460 => 'Lägg till tröskelvärde';
+  String get s90b5b7e33f => 'Färgintervall';
 
   @override
   String get sd408a5dbe9 => 'Billigaste timmar';
@@ -4166,6 +4196,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s6019108a01 => 'Villkor';
+
+  @override
+  String get sc26d444f90 => 'Från';
 
   @override
   String get s796739363a => 'för att';
@@ -5012,6 +5045,48 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s941fbb47fe => 'Planen beräknas…';
+
+  @override
+  String get s969e582f74 => 'Ange ett tal';
+
+  @override
+  String s6c2b7db49f(String p0) {
+    return 'Måste vara över $p0';
+  }
+
+  @override
+  String sb2dd9fb046(String p0) {
+    return 'Måste vara under $p0';
+  }
+
+  @override
+  String get sf53fbf24ad => 'Alla värden';
+
+  @override
+  String se9bcd429a9(String p0, String p1) {
+    return 'under $p0$p1';
+  }
+
+  @override
+  String s65758fd482(String p0, String p1) {
+    return 'över $p0$p1';
+  }
+
+  @override
+  String get s0a914fa5f8 => 'Ingen färg';
+
+  @override
+  String get safbc09013c =>
+      'Intervallen är i ordning: under X, X–Y, över Y. Om du ändrar en gräns flyttas även intilliggande intervall, så intervallen överlappar aldrig och inga luckor uppstår. Ett gränsvärde hör till det övre intervallet.';
+
+  @override
+  String get s11a3afdbce => 'Övre gräns';
+
+  @override
+  String get sd337d9fc0c => 'Ta bort intervall';
+
+  @override
+  String get s3f68bf214f => 'Lägg till intervall';
 
   @override
   String get s229f981388 => 'Home bridge på';
@@ -8689,9 +8764,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s39f8bf0f76 => 'Sent at';
-
-  @override
-  String get s051944392f => 'Rumstemperatur';
 
   @override
   String get sdd8cd8132c => 'Vad man ska ändra';

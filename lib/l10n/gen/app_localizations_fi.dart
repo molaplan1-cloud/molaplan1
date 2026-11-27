@@ -449,6 +449,30 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sbeb26f2b64 => 'Kanavan numero puuttuu';
 
   @override
+  String get sb1d6e8bb4c => 'Halpa / keski / kallis';
+
+  @override
+  String get sebcf59cf80 => 'Halpa / keski / kallis / erittäin kallis';
+
+  @override
+  String get s0260895da8 => 'Negatiivinen / halpa / kallis';
+
+  @override
+  String get s051944392f => 'Huonelämpö';
+
+  @override
+  String get s9df0743fd6 => 'Ulkolämpö';
+
+  @override
+  String get sf5bd3b7950 => 'Kosteus %';
+
+  @override
+  String get s5538433078 => 'CO₂';
+
+  @override
+  String get sfad2bc2059 => 'Matala / keski / korkea';
+
+  @override
   String s095ca83913(String p0) {
     return '$p0 ruutua lisätty';
   }
@@ -3240,6 +3264,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s7172c54c2c => 'Pitää lämpötilan halutussa arvossa.';
 
   @override
+  String get s4b9bb0710d => 'Korjaa värialueiden rajat ennen tallennusta.';
+
+  @override
   String get s76e7a995de => 'Luettu arvo';
 
   @override
@@ -3418,7 +3445,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s77d2309fd5 => 'Viive ennen (ms)';
 
   @override
-  String get s7d6cee9e42 => 'Pylväät (15 min)';
+  String get sc18ac46162 => 'Pylväät';
 
   @override
   String get sc0e069225b => 'Trendi + Nyt-viiva';
@@ -3470,6 +3497,18 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s0223c26f61 => 'Keskitaso';
 
   @override
+  String get se6264a30f1 => 'Pylväiden väli';
+
+  @override
+  String get s93a0675c8f => 'Ei väliä';
+
+  @override
+  String get s124beecddd => 'Ohut väli';
+
+  @override
+  String get saca843874b => 'Tuntien välissä';
+
+  @override
   String get s4b97930585 => 'Min- ja max-merkinnät';
 
   @override
@@ -3497,16 +3536,10 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s147f0af2a4 => 'Teeman väri';
 
   @override
-  String get s173772c66f => 'Värialueet (c/kWh, mistä–mihin)';
+  String get sdf5278fadb => 'Värialueet (c/kWh)';
 
   @override
-  String get sc26d444f90 => 'Alkaen';
-
-  @override
-  String get s6ef23d86e0 => 'ja yli';
-
-  @override
-  String get sf8c043ddca => 'Lisää alue';
+  String get s0d88d3856f => 'Ei omaa väriä (suhteellinen taso)';
 
   @override
   String get sb06bee9921 => 'Näytä';
@@ -3560,10 +3593,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s25d9db075e => 'Omat rajat ja värit: Asetukset → Edistyneet.';
 
   @override
-  String get sc0f5a14d2b => 'Värirajat (arvo ≥ raja → väri)';
-
-  @override
-  String get s30a2c0f460 => 'Lisää raja';
+  String get s90b5b7e33f => 'Värialueet';
 
   @override
   String get sd408a5dbe9 => 'Halvimmat tunnit';
@@ -4180,6 +4210,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s6019108a01 => 'Ehto';
+
+  @override
+  String get sc26d444f90 => 'Alkaen';
 
   @override
   String get s796739363a => 'Asti';
@@ -5028,6 +5061,48 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s941fbb47fe => 'Suunnitelmaa lasketaan…';
+
+  @override
+  String get s969e582f74 => 'Kirjoita luku';
+
+  @override
+  String s6c2b7db49f(String p0) {
+    return 'Pitää olla yli $p0';
+  }
+
+  @override
+  String sb2dd9fb046(String p0) {
+    return 'Pitää olla alle $p0';
+  }
+
+  @override
+  String get sf53fbf24ad => 'Kaikki arvot';
+
+  @override
+  String se9bcd429a9(String p0, String p1) {
+    return 'alle $p0$p1';
+  }
+
+  @override
+  String s65758fd482(String p0, String p1) {
+    return 'yli $p0$p1';
+  }
+
+  @override
+  String get s0a914fa5f8 => 'Ei väriä';
+
+  @override
+  String get safbc09013c =>
+      'Alueet ovat järjestyksessä: alle X, X–Y, yli Y. Rajan muuttaminen siirtää myös viereistä aluetta, joten alueet eivät mene päällekkäin eikä väliin jää aukkoja. Raja-arvo kuuluu ylempään alueeseen.';
+
+  @override
+  String get s11a3afdbce => 'Yläraja';
+
+  @override
+  String get sd337d9fc0c => 'Poista alue';
+
+  @override
+  String get s3f68bf214f => 'Lisää alue';
 
   @override
   String get s229f981388 => 'Kotisilta päällä';
@@ -8718,9 +8793,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s39f8bf0f76 => 'Lähetysaika';
-
-  @override
-  String get s051944392f => 'Huonelämpö';
 
   @override
   String get sdd8cd8132c => 'Mitä muutetaan';

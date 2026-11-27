@@ -2,11 +2,12 @@ import 'dart:math' as math;
 
 import 'package:material_ui/material_ui.dart' hide Threshold;
 
+import '../energy/bar_geometry.dart';
+import '../energy/price_colors.dart' show priceSlotArgb;
 import '../energy/price_view.dart';
 import '../models/models.dart';
 import '../prices/prices.dart' show PriceSettings, tomorrowPendingText;
 import 'app_scope.dart';
-import 'measure_colors.dart';
 import 'price_trend.dart' show priceWindowFor;
 import 'theme.dart';
 
@@ -249,6 +250,8 @@ class _PriceTileBodyState extends State<PriceTileBody> {
         showNowLine: widget.tile.priceShowNowLine,
         yMax: widget.tile.priceYMax,
         barWidth: widget.tile.priceBarWidth,
+        barGap: widget.tile.priceBarGap,
+        devicePixelRatio: MediaQuery.devicePixelRatioOf(context),
         colorMode: colorMode,
         lineColor: widget.tile.priceLineColor,
         thresholds: widget.tile.thresholds,
@@ -350,6 +353,13 @@ class _PriceTileBodyState extends State<PriceTileBody> {
           nowLabel: tx(context, 'Nyt', 'Now'),
           from: from,
           to: from.add(const Duration(hours: 13)),
+          // t318u: the same colours and bar geometry as the full chart.
+          barGap: widget.tile.priceBarGap,
+          devicePixelRatio: MediaQuery.devicePixelRatioOf(context),
+          colorMode: colorMode,
+          lineColor: widget.tile.priceLineColor,
+          thresholds: widget.tile.thresholds,
+          colorSmooth: widget.tile.colorSmooth,
         ),
         child: const SizedBox.expand(),
       );
@@ -525,15 +535,20 @@ class _PriceTileBodyState extends State<PriceTileBody> {
                       runSpacing: 4,
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
+                        // t318u (R525): two fixed chips "15 min | 1 h" – the selected one is
+                        // what the bars show (the old single chip changed its own label).
                         if (quarter)
-                          ChoiceChip(
-                            key: const ValueKey('price-res'),
-                            visualDensity: VisualDensity.compact,
-                            label: Text(hourly ? '1 h' : '15 min'),
-                            selected: !hourly,
-                            onSelected: (_) =>
-                                setState(() => _hourly = !hourly),
-                          ),
+                          for (final (key, h, label) in const [
+                            ('price-res', false, '15 min'),
+                            ('price-res-1h', true, '1 h'),
+                          ])
+                            ChoiceChip(
+                              key: ValueKey(key),
+                              visualDensity: VisualDensity.compact,
+                              label: Text(label),
+                              selected: hourly == h,
+                              onSelected: (_) => setState(() => _hourly = h),
+                            ),
                         if (hasMeters)
                           for (final o in const ['kwh', 'cost'])
                             ChoiceChip(
@@ -622,6 +637,8 @@ class PriceBarsPainter extends CustomPainter {
     this.showNowLine = true,
     this.yMax,
     this.barWidth = 'auto',
+    this.barGap = 'none',
+    this.devicePixelRatio = 1.0,
     this.colorMode = 'relative',
     this.lineColor,
     this.thresholds = const [],
@@ -633,6 +650,12 @@ class PriceBarsPainter extends CustomPainter {
   final bool showNowLine;
   final double? yMax;
   final String barWidth;
+
+  /// t318u: none (touching) | thin | hour.
+  final String barGap;
+
+  /// Device pixels per logical pixel (bar edges are snapped to device pixels).
+  final double devicePixelRatio;
   final String colorMode;
   final int? lineColor;
   final List<Threshold> thresholds;
@@ -651,6 +674,9 @@ class PriceBarsPainter extends CustomPainter {
 
   /// Optional window (the tile's next ~12 h); null = all slots.
   final DateTime? from, to;
+
+  /// The bars drawn in the last paint (tests: geometry).
+  List<BarSpan>? debugBarSpans;
 
   /// Where the Now line was drawn (for tests): x in px and the time it stands for.
   double? debugNowX;
@@ -836,52 +862,64 @@ class PriceBarsPainter extends CustomPainter {
       }
     }
 
-    // Bars: rounded tops, no gaps for 15 min, a hairline between hours.
-    Color barColor(PriceSlot e, int lvl) {
-      if (colorMode == 'fixed') {
-        return Color(lineColor ?? cs.primary.toARGB32());
-      }
-      if (colorMode == 'thresholds') {
-        final th = thresholds.isEmpty ? defaultPriceThresholds : thresholds;
-        final c = thresholdColor(th, e.cents, smooth: colorSmooth);
-        return Color(c ?? priceLevelColors[lvl].toARGB32());
-      }
-      return priceLevelColors[lvl];
-    }
+    // Bars (t318u, R523): every bar fills its time slot (no gaps by default), edges snapped to
+    // device pixels; touching bars are drawn without anti-aliasing so no seam shows.
+    Color barColor(PriceSlot e, int lvl) => Color(
+      priceSlotArgb(
+        mode: colorMode,
+        cents: e.cents,
+        level: lvl,
+        thresholds: thresholds,
+        smooth: colorSmooth,
+        lineColor: lineColor,
+        fixedFallback: cs.primary.toARGB32(),
+        levelColors: [for (final c in priceLevelColors) c.toARGB32()],
+      ),
+    );
 
-    for (final (e, lvl) in win) {
+    final spans = priceBarSpans(
+      [
+        for (final (e, _) in win)
+          BarSlot(
+            x(e.start),
+            x(e.end),
+            minutes: e.minutes,
+            startsHour: e.start.minute == 0,
+          ),
+      ],
+      width: barWidth,
+      gap: barGap,
+      dpr: devicePixelRatio,
+    );
+    debugBarSpans = spans;
+    final touching = barsTouch(barWidth, barGap);
+    for (var i = 0; i < win.length; i++) {
+      final (e, lvl) = win[i];
       final past = !e.end.isAfter(v.now);
-      final x0 = x(e.start), x1 = x(e.end);
-      var bw = x1 - x0;
-      final cap = switch (barWidth) {
-        'thin' => 6.0,
-        'medium' => 14.0,
-        'wide' => 28.0,
-        _ => double.infinity,
-      };
-      if (bw > cap) bw = cap;
-      final slot = x1 - x0;
-      final gap = switch (barWidth) {
-        'auto' =>
-          e.minutes >= 60 && slot > 5
-              ? math.min(2.0, slot * 0.12)
-              : (slot - bw),
-        _ => slot - bw,
-      };
+      final sp = spans[i];
       final yv = y(e.cents);
-      final r = Radius.circular(math.min(3.0, bw / 3));
       final rect = Rect.fromLTRB(
-        x0 + gap / 2,
+        sp.left,
         math.min(yv, zero),
-        x1 - gap / 2,
+        sp.right,
         math.max(yv, zero),
       );
-      canvas.drawRRect(
-        e.cents >= 0
-            ? RRect.fromRectAndCorners(rect, topLeft: r, topRight: r)
-            : RRect.fromRectAndCorners(rect, bottomLeft: r, bottomRight: r),
-        Paint()..color = barColor(e, lvl).withValues(alpha: past ? 0.45 : 0.9),
-      );
+      final paint = Paint()
+        ..color = barColor(e, lvl).withValues(alpha: past ? 0.45 : 0.9)
+        ..isAntiAlias = !touching;
+      // Rounded tops only where a bar is wide enough to show them (≥ 8 px).
+      final rr = sp.width >= 8 ? math.min(3.0, sp.width / 3) : 0.0;
+      if (rr == 0) {
+        canvas.drawRect(rect, paint);
+      } else {
+        final r = Radius.circular(rr);
+        canvas.drawRRect(
+          e.cents >= 0
+              ? RRect.fromRectAndCorners(rect, topLeft: r, topRight: r)
+              : RRect.fromRectAndCorners(rect, bottomLeft: r, bottomRight: r),
+          paint,
+        );
+      }
     }
 
     // Hour labels: as dense as fits (≥ 30 px apart), dates at midnight on the full chart.
