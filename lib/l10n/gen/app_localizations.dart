@@ -13781,6 +13781,66 @@ abstract class AppLocalizations {
   /// **'On the back or bottom of the monitor (10 digits, e.g. 2930xxxxxx).'**
   String get s83d2446b44;
 
+  /// fi: Z-Wave JS (Z-Wave JS UI)
+  ///
+  /// In en, this message translates to:
+  /// **'Z-Wave JS (Z-Wave JS UI)'**
+  String get sfb74e5d7c3;
+
+  /// fi: WebSocket-osoite
+  ///
+  /// In en, this message translates to:
+  /// **'WebSocket URL'**
+  String get sd99fdf7d94;
+
+  /// fi: Z-Wave JS UI: Asetukset → Home Assistant → WS Server (portti 3000) päälle.
+  ///
+  /// In en, this message translates to:
+  /// **'Z-Wave JS UI: Settings → Home Assistant → WS Server (port 3000) on.'**
+  String get sb58c79788d;
+
+  /// fi: Laite (node)
+  ///
+  /// In en, this message translates to:
+  /// **'Node'**
+  String get s8c921666e5;
+
+  /// fi: Command class
+  ///
+  /// In en, this message translates to:
+  /// **'Command class'**
+  String get s3c1d88fa83;
+
+  /// fi: Endpoint
+  ///
+  /// In en, this message translates to:
+  /// **'Endpoint'**
+  String get se51e5f226d;
+
+  /// fi: Ominaisuus
+  ///
+  /// In en, this message translates to:
+  /// **'Property'**
+  String get s106bae7046;
+
+  /// fi: Ominaisuuden avain
+  ///
+  /// In en, this message translates to:
+  /// **'Property key'**
+  String get sb29bffe780;
+
+  /// fi: palvelimeen ei saatu yhteyttä
+  ///
+  /// In en, this message translates to:
+  /// **'server not reachable'**
+  String get s60ceb3dcc4;
+
+  /// fi: laitetta
+  ///
+  /// In en, this message translates to:
+  /// **'nodes'**
+  String get s6e32a590a2;
+
   /// fi: Modbus TCP
   ///
   /// In en, this message translates to:
@@ -18689,11 +18749,101 @@ abstract class AppLocalizations {
   /// **'Scenes'**
   String get s2bb8fceaf7;
 
+  /// fi: Phoscon / deCONZ (ConBee, RaspBee)
+  ///
+  /// In en, this message translates to:
+  /// **'Phoscon / deCONZ (ConBee, RaspBee)'**
+  String get s5a482978b7;
+
+  /// fi: dresden elektronikin Phoscon-yhdyskäytävä: sen Zigbee-valot, -anturit, huoneet ja tilanteet kotiverkossa.
+  ///
+  /// In en, this message translates to:
+  /// **'dresden elektronik Phoscon gateway: its Zigbee lights, sensors, rooms and scenes over the home network.'**
+  String get s68dc51749b;
+
+  /// fi: Phoscon-sovellus → Yhdyskäytävä → IP-osoite (portti usein 80 tai 8080, esim. 192.168.1.20:8080).
+  ///
+  /// In en, this message translates to:
+  /// **'Phoscon app → Gateway → IP address (port is often 80 or 8080, e.g. 192.168.1.20:8080).'**
+  String get se8773ef198;
+
+  /// fi: Avaa Phoscon → Asetukset → Yhdyskäytävä → Lisäasetukset → "Todenna sovellus" (Authenticate app). Odota tässä.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Phoscon → Settings → Gateway → Advanced → \"Authenticate app\". Wait here.'**
+  String get sa7f2076847;
+
   /// fi: provider
   ///
   /// In en, this message translates to:
   /// **'camera_'**
   String get sceabe202da;
+
+  /// fi: Nuki Bridge (älylukot, Opener)
+  ///
+  /// In en, this message translates to:
+  /// **'Nuki Bridge (smart locks, Opener)'**
+  String get s7d714140d7;
+
+  /// fi: Nuki-älylukot ja Opener Nuki Bridgen kautta kotiverkossa: lukitse, avaa, salpa auki, tila.
+  ///
+  /// In en, this message translates to:
+  /// **'Nuki smart locks and Opener via the Nuki Bridge on the home network: lock, unlock, unlatch, state.'**
+  String get s4de40f64d9;
+
+  /// fi: Nuki-sovellus → Bridge → Hallitse → HTTP API päälle; näet samalla IP-osoitteen (portti 8080).
+  ///
+  /// In en, this message translates to:
+  /// **'Nuki app → Bridge → Manage → enable the HTTP API; the IP address is shown there (port 8080).'**
+  String get s482d16c3ce;
+
+  /// fi: Paina nyt Nuki Bridgen painiketta lyhyesti (valo syttyy). Odota tässä.
+  ///
+  /// In en, this message translates to:
+  /// **'Briefly press the button on the Nuki Bridge now (its light turns on). Wait here.'**
+  String get sbd74055e48;
+
+  /// fi: salpa auki
+  ///
+  /// In en, this message translates to:
+  /// **'unlatch'**
+  String get sf363d9cd29;
+
+  /// fi: 1=Lukossa;3=Auki;5=Auki;6=Salpa auki;4=Lukitaan;2=Avataan
+  ///
+  /// In en, this message translates to:
+  /// **'1=Locked;3=Unlocked;5=Unlocked;6=Unlatched;4=Locking;2=Unlocking'**
+  String get sd37644b17a;
+
+  /// fi: akku
+  ///
+  /// In en, this message translates to:
+  /// **'battery'**
+  String get s295b846c44;
+
+  /// fi: 255=Lukossa;0=Auki
+  ///
+  /// In en, this message translates to:
+  /// **'255=Locked;0=Unlocked'**
+  String get s0e57291b85;
+
+  /// fi: Z-Wave (Z-Wave JS)
+  ///
+  /// In en, this message translates to:
+  /// **'Z-Wave (Z-Wave JS)'**
+  String get s280313a20e;
+
+  /// fi: Kaikki Z-Wave-laitteet Z-Wave JS UI:n kautta: Aeotec, FIBARO, Heatit, HELTUN, MCO Home, Philio, POPP, Sensative, Danaloc
+  ///
+  /// In en, this message translates to:
+  /// **'Every Z-Wave device through Z-Wave JS UI: Aeotec, FIBARO, Heatit, HELTUN, MCO Home, Philio, POPP, Sensative, Danalock…'**
+  String get sb8e26517e5;
+
+  /// fi: Z-Wave JS UI:n kone (portti 3000). Z-Wave JS UI: Asetukset → Home Assistant → WS Server päälle.
+  ///
+  /// In en, this message translates to:
+  /// **'The Z-Wave JS UI machine (port 3000). Z-Wave JS UI: Settings → Home Assistant → WS Server on.'**
+  String get sa429a60008;
 
   /// fi: temperature
   ///
@@ -18856,6 +19006,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'true=SMOKE!;false=OK'**
   String get s1f18c0f400;
+
+  /// fi: Nanoleaf
+  ///
+  /// In en, this message translates to:
+  /// **'Nanoleaf'**
+  String get s0f299d2e07;
+
+  /// fi: Nanoleaf-valopaneelit (Shapes, Canvas, Lines, Elements): virta, kirkkaus ja tehosteet kotiverkossa.
+  ///
+  /// In en, this message translates to:
+  /// **'Nanoleaf panels (Shapes, Canvas, Lines, Elements): power, brightness and effects over the home network.'**
+  String get s55f2d35756;
+
+  /// fi: Nanoleaf-sovellus → laite → Laitteen tiedot → IP-osoite, tai reitittimen laitelista.
+  ///
+  /// In en, this message translates to:
+  /// **'Nanoleaf app → device → Device info → IP address, or your router\'\'s device list.'**
+  String get s05b968ee5c;
+
+  /// fi: Pidä Nanoleafin virtapainiketta pohjassa 5–7 sekuntia, kunnes valot vilkkuvat. Odota tässä.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold the Nanoleaf power button for 5–7 seconds until the lights flash. Wait here.'**
+  String get s620e38e4d3;
+
+  /// fi: WLED-ledinauhat (GLEDOPTO, Athom…)
+  ///
+  /// In en, this message translates to:
+  /// **'WLED LED strips (GLEDOPTO, Athom…)'**
+  String get s8f97e2baf8;
+
+  /// fi: WLED-ohjaimet: virta, kirkkaus ja tallennetut esiasetukset kotiverkossa. Ei pilveä, ei paritusta.
+  ///
+  /// In en, this message translates to:
+  /// **'WLED controllers: power, brightness and saved presets over the home network. No cloud, no pairing.'**
+  String get se27117cf23;
+
+  /// fi: WLED-sovellus tai reitittimen laitelista ("wled-…").
+  ///
+  /// In en, this message translates to:
+  /// **'The WLED app or your router\'\'s device list (\"wled-…\").'**
+  String get secd19de5a0;
+
+  /// fi: %
+  ///
+  /// In en, this message translates to:
+  /// **'auto'**
+  String get s4819add77e;
+
+  /// fi: hPa
+  ///
+  /// In en, this message translates to:
+  /// **'auto'**
+  String get s4117cb92a9;
+
+  /// fi: W
+  ///
+  /// In en, this message translates to:
+  /// **'bolt'**
+  String get s4619bd31a8;
+
+  /// fi: kWh
+  ///
+  /// In en, this message translates to:
+  /// **'bolt'**
+  String get s606cbaad36;
+
+  /// fi: V
+  ///
+  /// In en, this message translates to:
+  /// **'bolt'**
+  String get s2687c0eee6;
+
+  /// fi: A
+  ///
+  /// In en, this message translates to:
+  /// **'bolt'**
+  String get s31d19d826e;
+
+  /// fi: µg/m³
+  ///
+  /// In en, this message translates to:
+  /// **'auto'**
+  String get se7d1f9f76e;
+
+  /// fi: mg/m³
+  ///
+  /// In en, this message translates to:
+  /// **'auto'**
+  String get sd993224ef3;
+
+  /// fi: LOCK=Lukossa;UNLOCK=Auki
+  ///
+  /// In en, this message translates to:
+  /// **'LOCK=Locked;UNLOCK=Unlocked'**
+  String get s6f53f8cea7;
+
+  /// fi: Zigbee (Zigbee2MQTT)
+  ///
+  /// In en, this message translates to:
+  /// **'Zigbee (Zigbee2MQTT)'**
+  String get s264f553034;
+
+  /// fi: Kaikki Zigbee2MQTT:n laitteet kerralla: Aqara, MOES, frient, Heiman, GLEDOPTO, SONOFF, Danfoss Ally, Salus, NOUS, IKEA…
+  ///
+  /// In en, this message translates to:
+  /// **'Every Zigbee2MQTT device at once: Aqara, MOES, frient, Heiman, GLEDOPTO, SONOFF, Danfoss Ally, Salus, NOUS, IKEA… Needs Zigbee2MQTT and an MQTT broker.'**
+  String get s1a57c524f8;
+
+  /// fi: MQTT-välittäjän (esim. Mosquitto) osoite, jota Zigbee2MQTT käyttää.
+  ///
+  /// In en, this message translates to:
+  /// **'The MQTT broker (e.g. Mosquitto) that Zigbee2MQTT uses.'**
+  String get sb3557cace9;
+
+  /// fi: Zigbee2MQTT:n asetus base_topic (oletus zigbee2mqtt).
+  ///
+  /// In en, this message translates to:
+  /// **'Zigbee2MQTT setting base_topic (default zigbee2mqtt).'**
+  String get s7f5f8e33cf;
 
   /// fi: YAML-tiedostoa ei voitu lukea: {p0}
   ///

@@ -7585,6 +7585,37 @@ class AppLocalizationsEt extends AppLocalizations {
       'monitori tagaküljel või allosas (10 numbrit, nt 2930xxxxxxxx).';
 
   @override
+  String get sfb74e5d7c3 => 'Z-Wave JS (Z-Wave JS UI)';
+
+  @override
+  String get sd99fdf7d94 => 'WebSocketi URL';
+
+  @override
+  String get sb58c79788d =>
+      'Z-Wave JS UI: Seaded → Home Assistant → WS Server (port 3000) sisse lülitatud.';
+
+  @override
+  String get s8c921666e5 => 'Node';
+
+  @override
+  String get s3c1d88fa83 => 'Command class';
+
+  @override
+  String get se51e5f226d => 'Endpoint';
+
+  @override
+  String get s106bae7046 => 'Kinnisvara';
+
+  @override
+  String get sb29bffe780 => 'Omandivõti';
+
+  @override
+  String get s60ceb3dcc4 => 'server ei ole kättesaadav';
+
+  @override
+  String get s6e32a590a2 => 'sõlmed';
+
+  @override
   String get s36fb6ba26f => 'Modbus TCP';
 
   @override
@@ -10368,7 +10399,61 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s2bb8fceaf7 => 'Stseenid';
 
   @override
+  String get s5a482978b7 => 'Phoscon / deCONZ (ConBee, RaspBee)';
+
+  @override
+  String get s68dc51749b =>
+      'Dresden elektronik Phosconi värav: selle Zigbee tuled, andurid, ruumid ja stseenid koduvõrgus.';
+
+  @override
+  String get se8773ef198 =>
+      'Phoscon app → Gateway → IP aadress (port on sageli 80 või 8080, nt 192.168.1.20:8080).';
+
+  @override
+  String get sa7f2076847 =>
+      'Open Phoscon → Settings → Gateway → Advanced → \"Autentida rakendus\". Oota siin.';
+
+  @override
   String get sceabe202da => 'camera_';
+
+  @override
+  String get s7d714140d7 => 'Nuki sild (nutikad lukud, avaja)';
+
+  @override
+  String get s4de40f64d9 =>
+      'Nuki nutikad lukud ja avaja Nuki silla kaudu koduvõrgus: lukk, lukust lahti, lukust lahti, olek.';
+
+  @override
+  String get s482d16c3ce =>
+      'Nuki app → Bridge → Manage → võimaldab HTTP API-d; seal kuvatakse IP-aadress (port 8080).';
+
+  @override
+  String get sbd74055e48 =>
+      'Vajuta nüüd lühidalt Nuki silla nuppu (selle tuli lülitub sisse). Oota siin.';
+
+  @override
+  String get sf363d9cd29 => 'lukust lahti';
+
+  @override
+  String get sd37644b17a =>
+      '1=Locked;3=Unlocked;5=Unlocked;6=Unlatched;4=Locking;2=Unlocking';
+
+  @override
+  String get s295b846c44 => 'aku';
+
+  @override
+  String get s0e57291b85 => '255=Locked;0=Unlocked';
+
+  @override
+  String get s280313a20e => 'Z-Wave (Z-Wave JS)';
+
+  @override
+  String get sb8e26517e5 =>
+      'Iga Z-Wave seade Z-Wave JS UI kaudu: Aeotec, FIBARO, Heatit, HELTUN, MCO Home, Philio, POPP, Sensative, Danalock.';
+
+  @override
+  String get sa429a60008 =>
+      'Z-Wave JS UI masin (port 3000). Z-Wave JS UI: Settings → Home Assistant → WS Server sees.';
 
   @override
   String get s1a4eab1f51 => '°C';
@@ -10452,6 +10537,74 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s1f18c0f400 => 'true=SMOKE!;false=OK';
+
+  @override
+  String get s0f299d2e07 => 'Nanoleaf';
+
+  @override
+  String get s55f2d35756 =>
+      'Nanoleafi paneelid (kujud, lõuend, jooned, elemendid): võimsus, heledus ja efektid koduvõrgus.';
+
+  @override
+  String get s05b968ee5c =>
+      'Nanoleafi rakendus → seade → Seadme info → IP-aadress või ruuteri seadmete loend.';
+
+  @override
+  String get s620e38e4d3 =>
+      'Hoidke Nanoleafi toitenuppu 5–7 sekundit, kuni tuled vilguvad. Oodake siin.';
+
+  @override
+  String get s8f97e2baf8 => 'WLED LED ribad (GLEDOPTO, Athom...)';
+
+  @override
+  String get se27117cf23 =>
+      'WLED- kontrollerid: võimsus, heledus ja salvestatud eelseadistused koduvõrgus. Ei mingit pilve, ei mingit sidumist.';
+
+  @override
+  String get secd19de5a0 =>
+      'WLED rakendus või ruuteri seadmete nimekiri (\"wled-...\").';
+
+  @override
+  String get s4819add77e => 'auto';
+
+  @override
+  String get s4117cb92a9 => 'auto';
+
+  @override
+  String get s4619bd31a8 => 'polt';
+
+  @override
+  String get s606cbaad36 => 'polt';
+
+  @override
+  String get s2687c0eee6 => 'polt';
+
+  @override
+  String get s31d19d826e => 'polt';
+
+  @override
+  String get se7d1f9f76e => 'auto';
+
+  @override
+  String get sd993224ef3 => 'auto';
+
+  @override
+  String get s6f53f8cea7 => 'LOCK=Locked;UNLOCK=Unlocked';
+
+  @override
+  String get s264f553034 => 'Zigbee (Zigbee2MQTT)';
+
+  @override
+  String get s1a57c524f8 =>
+      'Iga Zigbee2MQTT seade korraga: Aqara, MOES, frient, Heiman, GLEDOPTO, SONOFF, Danfoss Ally, Salus, NOUS, IKEA... Vajab Zigbee2MQTT ja MQTT vahendajat.';
+
+  @override
+  String get sb3557cace9 =>
+      'MQTT maakler (nt Mosquitto), mida Zigbee2MQTT kasutab.';
+
+  @override
+  String get s7f5f8e33cf =>
+      'Zigbee2MQTT seadistuse baas_ topic (vaikimisi zigbee2mqtt).';
 
   @override
   String sd63d34bfe9(String p0) {

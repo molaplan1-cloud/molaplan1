@@ -7597,6 +7597,37 @@ class AppLocalizationsSv extends AppLocalizations {
       'På baksidan eller botten av bildskärmen (10 siffror, t.ex. 2930xxxxxxx).';
 
   @override
+  String get sfb74e5d7c3 => 'Z-Wave JS (Z-Wave JS UI)';
+
+  @override
+  String get sd99fdf7d94 => 'WebSocket URL';
+
+  @override
+  String get sb58c79788d =>
+      'Z-Wave JS UI: Inställningar → Home Assistant → WS Server (port 3000) på.';
+
+  @override
+  String get s8c921666e5 => 'Nod';
+
+  @override
+  String get s3c1d88fa83 => 'Command class';
+
+  @override
+  String get se51e5f226d => 'Endpoint';
+
+  @override
+  String get s106bae7046 => 'Fastighet';
+
+  @override
+  String get sb29bffe780 => 'Fastighet nyckel';
+
+  @override
+  String get s60ceb3dcc4 => 'Servern inte nåbar';
+
+  @override
+  String get s6e32a590a2 => 'noder';
+
+  @override
   String get s36fb6ba26f => 'Modbus TCP';
 
   @override
@@ -10381,7 +10412,61 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s2bb8fceaf7 => 'Scener';
 
   @override
+  String get s5a482978b7 => 'Phoscon / deCONZ (ConBee, RaspBee)';
+
+  @override
+  String get s68dc51749b =>
+      'Dresden elektronik Phoscon gateway: dess Zigbee lampor, sensorer, rum och scener över hemnätverket.';
+
+  @override
+  String get se8773ef198 =>
+      'Phoscon app → Gateway → IP-adress (port är ofta 80 eller 8080, t.ex. 192.168.1.20:8080).';
+
+  @override
+  String get sa7f2076847 =>
+      'Open Phoscon → Inställningar → Gateway → Avancerad → \"Authenticate app\". Vänta här.';
+
+  @override
   String get sceabe202da => 'camera_';
+
+  @override
+  String get s7d714140d7 => 'Nuki Bridge (smarta lås, Öppnare)';
+
+  @override
+  String get s4de40f64d9 =>
+      'Nuki smarta lås och Opener via Nuki Bridge på hemnätverket: lås, låsa upp, unlatch, stat.';
+
+  @override
+  String get s482d16c3ce =>
+      'Nuki app → Bridge → Hantera → aktivera HTTP API; IP-adressen visas där (port 8080).';
+
+  @override
+  String get sbd74055e48 =>
+      'Tryck kort på knappen på Nuki Bridge nu (dess ljus slår på). Vänta här.';
+
+  @override
+  String get sf363d9cd29 => 'Unlatch';
+
+  @override
+  String get sd37644b17a =>
+      '1=Locked;3=Unlocked;5=Unlocked;6=Unlatched;4=Locking;2=Unlocking';
+
+  @override
+  String get s295b846c44 => 'batteribatteri';
+
+  @override
+  String get s0e57291b85 => '255=Locked;0=Unlocked';
+
+  @override
+  String get s280313a20e => 'Z-Wave (Z-Wave JS)';
+
+  @override
+  String get sb8e26517e5 =>
+      'Varje Z-Wave-enhet genom Z-Wave JS UI: Aeotec, FIBARO, Heatit, HELTUN, MCO Home, Philio, POPP, Sensative, Danalock ...';
+
+  @override
+  String get sa429a60008 =>
+      'Z-Wave JS UI-maskinen (port 3000). Z-Wave JS UI: Inställningar → Home Assistant → WS Server på.';
 
   @override
   String get s1a4eab1f51 => '°C';
@@ -10466,6 +10551,74 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s1f18c0f400 => 'true=SMOKE!;false=OK';
+
+  @override
+  String get s0f299d2e07 => 'Nanoleaf';
+
+  @override
+  String get s55f2d35756 =>
+      'Nanoleaf paneler (Shapes, Canvas, Lines, Elements): kraft, ljusstyrka och effekter över hemnätverket.';
+
+  @override
+  String get s05b968ee5c =>
+      'Nanoleaf app → enhet → Enhet info → IP-adress, eller routerns enhetslista.';
+
+  @override
+  String get s620e38e4d3 =>
+      'Håll Nanoleaf-knappen i 5-7 sekunder tills lamporna blinkar. Vänta här.';
+
+  @override
+  String get s8f97e2baf8 => 'WLED LED-remsor (GLEDOPTO, Athom...)';
+
+  @override
+  String get se27117cf23 =>
+      'WLED-kontroller: kraft, ljusstyrka och sparade förinställningar över hemnätverket. Inget moln, ingen parning.';
+
+  @override
+  String get secd19de5a0 =>
+      'WLED-appen eller routerns enhetslista (\"wled-...\").';
+
+  @override
+  String get s4819add77e => 'auto auto auto auto auto';
+
+  @override
+  String get s4117cb92a9 => 'auto auto auto auto auto';
+
+  @override
+  String get s4619bd31a8 => 'Bult';
+
+  @override
+  String get s606cbaad36 => 'Bult';
+
+  @override
+  String get s2687c0eee6 => 'Bult';
+
+  @override
+  String get s31d19d826e => 'Bult';
+
+  @override
+  String get se7d1f9f76e => 'auto auto auto auto auto';
+
+  @override
+  String get sd993224ef3 => 'auto auto auto auto auto';
+
+  @override
+  String get s6f53f8cea7 => 'LOCK=Locked;UNLOCK=Unlocked';
+
+  @override
+  String get s264f553034 => 'Zigbee (Zigbee2MQTT)';
+
+  @override
+  String get s1a57c524f8 =>
+      'Varje Zigbee2MQTT-enhet på en gång: Aqara, MOES, frient, Heiman, GLEDOPTO, SONOFF, Danfoss Ally, Salus, NOUS, IKEA ... Behöver Zigbee2MQTT och en MQTT-mäklare.';
+
+  @override
+  String get sb3557cace9 =>
+      'MQTT-mäklaren (t.ex. Mosquitto) som Zigbee2MQTT använder.';
+
+  @override
+  String get s7f5f8e33cf =>
+      'Zigbee2MQTT inställning base_topic (standard zigbee2mqtt).';
 
   @override
   String sd63d34bfe9(String p0) {
