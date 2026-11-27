@@ -615,6 +615,42 @@
   "x-mt": true
  },
  "s3c98732a8c": "Mätare",
+ "s58f6602375": "Larm",
+ "sc2f4353c5c": "Larm ringer med en hög larmsignal på larmvolym, även i ljudlöst läge och i Stör ej. Andra aviseringar förblir tystare.",
+ "sbdecec718c": "Larmsignal för larm",
+ "s3bb454c8b4": "Larmsignal",
+ "s225139ca2c": "Enhetens standardlarmsignal",
+ "s1574170d6e": "Volymen är enhetens larmvolym (Inställningar → Ljud → Larm).",
+ "s8eee4c47dc": "Ring tills aviseringen öppnas",
+ "scf0b386f09": "Testa larmsignalen",
+ "sfa9c350c71": "Testlarm",
+ "s250f45b1af": "Så här låter ett larm på den här enheten.",
+ "s49450df596": "Larmsignalen finns i Android-appen.",
+ "sb616800ea4": "Behörigheter som behövs",
+ "s0ff5878e24": "Aviseringar tillåtna",
+ "s182f268e52": "Utan detta visas inga aviseringar.",
+ "s85a9b79024": "Kanalen Larm på (ljud och popup)",
+ "s8b8bd8d1fc": "Kanalen ”Larm” i Android-inställningarna.",
+ "se6188f85c8": "Åsidosätt Stör ej",
+ "sdc5ec1d7c5": "Ge Molaplan ”Åtkomst till Stör ej”.",
+ "s23b6916646": "Larm i helskärm",
+ "sff377917cb": "Larmet öppnas på låsskärmen.",
+ "s2646a90987": "Ingen batterioptimering",
+ "s3817641568": "Annars kan Android sluta lyssna.",
+ "sa21239a35e": "Avancerat: vad är ett larm",
+ "s9a3142f8bb": "Brådskande (5) är alltid ett larm",
+ "s7cf3a8e68d": "Larmord i rubriken",
+ "s9d82c5d4ea": "Inget larm om rubriken innehåller",
+ "sf2a45478e3": "Larmtaggar (ntfy-taggar)",
+ "s72f6fb3f29": "Enligt reglerna",
+ "s3c6f35a28c": "Alltid larm",
+ "se03fb0114e": "Aldrig",
+ "s0c362450c7": "Återställ standardvärden",
+ "sc8ef04815c": "Tillåt",
+ "@sc8ef04815c": {
+  "x-mt": true
+ },
+ "s2e554f3c5c": "Åtskilda med kommatecken",
  "sd5cb601286": "Tailscale (enkel VPN)",
  "@sd5cb601286": {
   "x-mt": true
@@ -2326,6 +2362,13 @@
   "x-mt": true
  },
  "sf77125583f": "Tekniska detaljer",
+ "s93b4695981": "Larmat",
+ "s489ed73bfa": "Larmat (hemma)",
+ "s49e6af4fbd": "Avlarmat",
+ "s1ba2cffb00": "Utpasseringstid – larmet kopplas på",
+ "s2b765e2c1f": "Inpasseringstid – ange PIN",
+ "s34de2943cc": "LARM!",
+ "s9cf8aec76a": "Tillståndet är {p0} gammalt",
  "s1f8cf57b2c": "Ingen anslutning",
  "s84819cca05": "Sista larmet {p0}",
  "@s84819cca05": {
@@ -3923,6 +3966,7 @@
  "@saa54f34e98": {
   "x-mt": true
  },
+ "s5df7b0d00b": "Hög larmsignal, test och behörigheter",
  "s8f19ff1e21": "Tyst timmar",
  "@s8f19ff1e21": {
   "x-mt": true
@@ -4776,10 +4820,6 @@
  },
  "s9b1298f7c6": "Låt Molaplan springa i bakgrunden utan begränsningar.",
  "@s9b1298f7c6": {
-  "x-mt": true
- },
- "sc8ef04815c": "Tillåt",
- "@sc8ef04815c": {
   "x-mt": true
  },
  "s2fcba19ec3": "Uppdatera automatiskt",
@@ -8910,6 +8950,10 @@
  "@s91158c0de5": {
   "x-mt": true
  },
+ "sb8011853db": "Larma på",
+ "s5e2e8d22bc": "Larma av",
+ "s4aff1873a3": "Kvittera larm",
+ "s821c81fcdd": "Kvittera och larma av",
  "s07f819fc55": "Kameraövervakning: fyll i svarsämnet - panelen svarar på användarens eget anmälningsämne (på panelen: Inställningar → Användare → anmälningsämne).",
  "@s07f819fc55": {
   "x-mt": true

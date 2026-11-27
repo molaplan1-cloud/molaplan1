@@ -630,6 +630,108 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s3c98732a8c => 'Mittari';
 
   @override
+  String get s58f6602375 => 'Hälytykset';
+
+  @override
+  String get sc2f4353c5c =>
+      'Hälytykset soivat kovalla hälytysäänellä hälytysäänenvoimakkuudella, myös äänettömällä ja Älä häiritse -tilassa. Muut ilmoitukset pysyvät hiljaisempina.';
+
+  @override
+  String get sbdecec718c => 'Hälytysääni hälytyksille';
+
+  @override
+  String get s3bb454c8b4 => 'Hälytysääni';
+
+  @override
+  String get s225139ca2c => 'Laitteen oletushälytysääni';
+
+  @override
+  String get s1574170d6e =>
+      'Äänenvoimakkuus on laitteen hälytysäänenvoimakkuus (Asetukset → Äänet → Hälytykset).';
+
+  @override
+  String get s8eee4c47dc => 'Soi, kunnes ilmoitus avataan';
+
+  @override
+  String get scf0b386f09 => 'Testaa hälytysääni';
+
+  @override
+  String get sfa9c350c71 => 'Testihälytys';
+
+  @override
+  String get s250f45b1af => 'Näin hälytys kuuluu tällä laitteella.';
+
+  @override
+  String get s49450df596 => 'Hälytysääni on käytössä Android-sovelluksessa.';
+
+  @override
+  String get sb616800ea4 => 'Tarvittavat luvat';
+
+  @override
+  String get s0ff5878e24 => 'Ilmoitukset sallittu';
+
+  @override
+  String get s182f268e52 => 'Ilman tätä mikään ilmoitus ei näy.';
+
+  @override
+  String get s85a9b79024 => 'Hälytykset-kanava päällä (ääni ja ponnahdus)';
+
+  @override
+  String get s8b8bd8d1fc => 'Androidin asetuksissa kanava \"Hälytykset\".';
+
+  @override
+  String get se6188f85c8 => 'Ohita Älä häiritse';
+
+  @override
+  String get sdc5ec1d7c5 =>
+      'Salli Molaplanille \"Älä häiritse -käyttöoikeus\".';
+
+  @override
+  String get s23b6916646 => 'Koko näytön hälytys';
+
+  @override
+  String get sff377917cb => 'Hälytys avautuu lukitulle näytölle.';
+
+  @override
+  String get s2646a90987 => 'Ei akun optimointia';
+
+  @override
+  String get s3817641568 => 'Muuten Android voi pysäyttää kuuntelun.';
+
+  @override
+  String get sa21239a35e => 'Lisäasetukset: mikä on hälytys';
+
+  @override
+  String get s9a3142f8bb => 'Kiireelliset (5) ovat aina hälytyksiä';
+
+  @override
+  String get s7cf3a8e68d => 'Hälytyssanat otsikossa';
+
+  @override
+  String get s9d82c5d4ea => 'Ei hälytys, jos otsikossa';
+
+  @override
+  String get sf2a45478e3 => 'Hälytystunnisteet (ntfy-tagit)';
+
+  @override
+  String get s72f6fb3f29 => 'Sääntöjen mukaan';
+
+  @override
+  String get s3c6f35a28c => 'Aina hälytys';
+
+  @override
+  String get se03fb0114e => 'Ei koskaan';
+
+  @override
+  String get s0c362450c7 => 'Palauta oletukset';
+
+  @override
+  String get sc8ef04815c => 'Salli';
+
+  @override
+  String get s2e554f3c5c => 'Pilkulla erotettuna';
+
+  @override
   String get sd5cb601286 => 'Tailscale (helppo VPN)';
 
   @override
@@ -2487,6 +2589,29 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sf77125583f => 'Tekniset tiedot';
 
   @override
+  String get s93b4695981 => 'Valvonta päällä';
+
+  @override
+  String get s489ed73bfa => 'Valvonta päällä (kotona)';
+
+  @override
+  String get s49e6af4fbd => 'Valvonta pois';
+
+  @override
+  String get s1ba2cffb00 => 'Lähtöviive – valvonta kytkeytyy';
+
+  @override
+  String get s2b765e2c1f => 'Tuloviive – anna PIN';
+
+  @override
+  String get s34de2943cc => 'HÄLYTYS!';
+
+  @override
+  String s9cf8aec76a(String p0) {
+    return 'Tieto $p0 vanha';
+  }
+
+  @override
   String get s1f8cf57b2c => 'Ei yhteyttä';
 
   @override
@@ -4243,6 +4368,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get saa54f34e98 => 'Kopioi tilauslinkki';
 
   @override
+  String get s5df7b0d00b => 'Kova hälytysääni, testi ja luvat';
+
+  @override
   String get s8f19ff1e21 => 'Hiljainen aika';
 
   @override
@@ -5160,9 +5288,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s9b1298f7c6 => 'Salli Molaplanin toimia taustalla rajoituksetta.';
-
-  @override
-  String get sc8ef04815c => 'Salli';
 
   @override
   String get s2fcba19ec3 => 'Päivitä automaattisesti';
@@ -9289,6 +9414,18 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s91158c0de5 =>
       'Jos laite vastaa vain esim. 30 s välein, kirjoita 30.';
+
+  @override
+  String get sb8011853db => 'Valvonta päälle';
+
+  @override
+  String get s5e2e8d22bc => 'Valvonta pois';
+
+  @override
+  String get s4aff1873a3 => 'Kuittaa hälytys';
+
+  @override
+  String get s821c81fcdd => 'Kuittaa ja valvonta pois';
 
   @override
   String get s07f819fc55 =>

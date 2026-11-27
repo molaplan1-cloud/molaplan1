@@ -133,6 +133,8 @@ class NtfyListen with WidgetsBindingObserver {
       if (notify.quietFrom != null) 'quietFrom': notify.quietFrom,
       if (notify.quietTo != null) 'quietTo': notify.quietTo,
       if (notify.mutedUntil != null) 'mutedUntil': notify.mutedUntil,
+      // R461: the native listener classifies alarms with the same rules.
+      'alarm': notify.alarm.toJson(),
     });
     if (payload == _lastJson) return;
     final ok = await LocalNotify.syncListen(payload);

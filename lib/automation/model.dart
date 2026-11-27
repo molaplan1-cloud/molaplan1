@@ -5,6 +5,7 @@ library;
 import 'dart:convert';
 import 'dart:math';
 
+import '../notify/alarm_rules.dart';
 import 'reminders.dart';
 
 Map<String, dynamic> _m(Object? o) => o is Map ? Map<String, dynamic>.from(o) : <String, dynamic>{};
@@ -194,14 +195,19 @@ class NotifySettings {
     this.mutedUntil,
     this.enabled = true,
     Map<String, int>? events,
+    AlarmRules? alarm,
   }) : topic = topic ?? 'molaplan-${_rand(20)}',
-       events = events ?? {};
+       events = events ?? {},
+       alarm = alarm ?? AlarmRules();
   String server;
   String topic;
   String? token;
 
   /// t281u: default importance per event (0 = off, 1–5 = ntfy). Missing key = built-in default.
   Map<String, int> events;
+
+  /// R461 (t307u): which messages use the loud alarm channel (Android).
+  AlarmRules alarm;
 
   /// Quiet hours 'HH:MM' (may wrap midnight): only priority 5 (urgent) comes through.
   String? quietFrom, quietTo;
@@ -227,6 +233,7 @@ class NotifySettings {
     'mutedUntil': ?mutedUntil,
     if (!enabled) 'enabled': false,
     if (events.isNotEmpty) 'events': events,
+    if (!alarm.isDefault) 'alarm': alarm.toJson(),
   };
   factory NotifySettings.fromJson(Map<String, dynamic> j) => NotifySettings(
     server: '${j['server'] ?? 'https://ntfy.sh'}',
@@ -240,6 +247,7 @@ class NotifySettings {
       for (final e in ((j['events'] as Map?) ?? const {}).entries)
         if (e.value is num) '${e.key}': (e.value as num).toInt(),
     },
+    alarm: AlarmRules.fromJson(j['alarm']),
   );
 }
 

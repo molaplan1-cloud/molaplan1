@@ -2,6 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:molaplan/ui/alarm_notify_page.dart';
+import 'package:molaplan/ui/notify.dart' show AlarmChannelStatus;
+import 'package:molaplan/ui/security_tile.dart';
+import 'package:molaplan/state/tile_runtime.dart';
 import 'package:molaplan/ui/installer_pages.dart';
 import 'package:molaplan/sharing/share_api.dart' show InstallerInfo;
 import 'package:molaplan/drivers/driver.dart';
@@ -172,6 +176,24 @@ void main() {
           AutomationEditor(initial: t.build([st.config.dashboards.first.tiles.first.id], lang: lang)),
         const ScriptEditor(),
         const SceneEditor(),
+        // R462–R463 (t307u): alarm sound page with every checklist row open.
+        const AlarmNotifyPage(
+          statusOverride: AlarmChannelStatus(notifications: false, channel: false, dnd: false, fullScreen: false, battery: false),
+        ),
+        // R467/R469 (t308u): every security state, stale.
+        for (final v in ['away', 'armed_home', 'home', 'exit_delay', 'entry_delay', 'triggered'])
+          Scaffold(
+            body: SizedBox(
+              width: 300,
+              height: 140,
+              child: SecurityStateTile(
+                tile: TileConfig(type: TileType.value, title: 'Paneeli', read: {'security': true}),
+                runtime: TileRuntime(TileConfig(type: TileType.value), (_) => null)
+                  ..value = v
+                  ..updated = DateTime(2026),
+              ),
+            ),
+          ),
       ];
       for (final page in pages) {
         await tester.pumpWidget(

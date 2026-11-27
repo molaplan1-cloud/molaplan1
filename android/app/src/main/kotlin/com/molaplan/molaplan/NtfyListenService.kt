@@ -209,10 +209,18 @@ class NtfyListenService : Service() {
         if (id.isNotEmpty() && !seenIds.add(id)) return
         trimSeen()
         val prio = j.optInt("priority", 3).coerceIn(1, 5)
-        if (!allowedByQuiet(prio)) return
-        // Flutter already shows in-app banners for the automation topic while the UI is open.
-        if (t.kind == "notify" && appForeground) return
-        postNotification(title.ifBlank { "Molaplan" }, message, prio, j.optString("click", ""))
+        // R461 (t307u): real alarms (priority 5, alarm words / tags, per-topic setting) go to the
+        // loud alarm channel and pass quiet hours like urgent messages.
+        val rules = config().optJSONObject("alarm")
+        val alarm = AlarmNotifier.isAlarm(rules, t.topic, title, tags, prio)
+        if (!allowedByQuiet(if (alarm) 5 else prio)) return
+        // Flutter already shows in-app banners for the automation topic while the UI is open
+        // (an alarm still sounds – the banner is silent).
+        if (t.kind == "notify" && appForeground && !alarm) return
+        postNotification(
+            title.ifBlank { "Molaplan" }, message, prio, j.optString("click", ""),
+            alarm, rules?.optBoolean("insistent", false) ?: false
+        )
     }
 
     private fun allowedByQuiet(prio: Int): Boolean {
@@ -229,7 +237,7 @@ class NtfyListenService : Service() {
         return !NtfyListenFilter.inQuietHours(strOrNull("quietFrom"), strOrNull("quietTo"), nowMin)
     }
 
-    private fun postNotification(title: String, body: String, prio: Int, click: String) {
+    private fun postNotification(title: String, body: String, prio: Int, click: String, alarm: Boolean = false, insistent: Boolean = false) {
         ensureChannels()
         val nm = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         val channel = "ntfy_$prio"
@@ -240,6 +248,10 @@ class NtfyListenService : Service() {
         }
         val nid = (title + body + System.currentTimeMillis()).hashCode() and 0x7fffffff
         val notifyId = if (nid == FG_ID) nid + 1 else nid
+        if (alarm) {
+            AlarmNotifier.post(this, notifyId, title, body, tap, insistent)
+            return
+        }
         val open = PendingIntent.getActivity(
             this, notifyId, tap,
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT

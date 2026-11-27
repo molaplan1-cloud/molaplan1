@@ -624,6 +624,107 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s3c98732a8c => 'Mätare';
 
   @override
+  String get s58f6602375 => 'Larm';
+
+  @override
+  String get sc2f4353c5c =>
+      'Larm ringer med en hög larmsignal på larmvolym, även i ljudlöst läge och i Stör ej. Andra aviseringar förblir tystare.';
+
+  @override
+  String get sbdecec718c => 'Larmsignal för larm';
+
+  @override
+  String get s3bb454c8b4 => 'Larmsignal';
+
+  @override
+  String get s225139ca2c => 'Enhetens standardlarmsignal';
+
+  @override
+  String get s1574170d6e =>
+      'Volymen är enhetens larmvolym (Inställningar → Ljud → Larm).';
+
+  @override
+  String get s8eee4c47dc => 'Ring tills aviseringen öppnas';
+
+  @override
+  String get scf0b386f09 => 'Testa larmsignalen';
+
+  @override
+  String get sfa9c350c71 => 'Testlarm';
+
+  @override
+  String get s250f45b1af => 'Så här låter ett larm på den här enheten.';
+
+  @override
+  String get s49450df596 => 'Larmsignalen finns i Android-appen.';
+
+  @override
+  String get sb616800ea4 => 'Behörigheter som behövs';
+
+  @override
+  String get s0ff5878e24 => 'Aviseringar tillåtna';
+
+  @override
+  String get s182f268e52 => 'Utan detta visas inga aviseringar.';
+
+  @override
+  String get s85a9b79024 => 'Kanalen Larm på (ljud och popup)';
+
+  @override
+  String get s8b8bd8d1fc => 'Kanalen ”Larm” i Android-inställningarna.';
+
+  @override
+  String get se6188f85c8 => 'Åsidosätt Stör ej';
+
+  @override
+  String get sdc5ec1d7c5 => 'Ge Molaplan ”Åtkomst till Stör ej”.';
+
+  @override
+  String get s23b6916646 => 'Larm i helskärm';
+
+  @override
+  String get sff377917cb => 'Larmet öppnas på låsskärmen.';
+
+  @override
+  String get s2646a90987 => 'Ingen batterioptimering';
+
+  @override
+  String get s3817641568 => 'Annars kan Android sluta lyssna.';
+
+  @override
+  String get sa21239a35e => 'Avancerat: vad är ett larm';
+
+  @override
+  String get s9a3142f8bb => 'Brådskande (5) är alltid ett larm';
+
+  @override
+  String get s7cf3a8e68d => 'Larmord i rubriken';
+
+  @override
+  String get s9d82c5d4ea => 'Inget larm om rubriken innehåller';
+
+  @override
+  String get sf2a45478e3 => 'Larmtaggar (ntfy-taggar)';
+
+  @override
+  String get s72f6fb3f29 => 'Enligt reglerna';
+
+  @override
+  String get s3c6f35a28c => 'Alltid larm';
+
+  @override
+  String get se03fb0114e => 'Aldrig';
+
+  @override
+  String get s0c362450c7 => 'Återställ standardvärden';
+
+  @override
+  String get sc8ef04815c => 'Tillåt';
+
+  @override
+  String get s2e554f3c5c => 'Åtskilda med kommatecken';
+
+  @override
   String get sd5cb601286 => 'Tailscale (enkel VPN)';
 
   @override
@@ -2472,6 +2573,29 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sf77125583f => 'Tekniska detaljer';
 
   @override
+  String get s93b4695981 => 'Larmat';
+
+  @override
+  String get s489ed73bfa => 'Larmat (hemma)';
+
+  @override
+  String get s49e6af4fbd => 'Avlarmat';
+
+  @override
+  String get s1ba2cffb00 => 'Utpasseringstid – larmet kopplas på';
+
+  @override
+  String get s2b765e2c1f => 'Inpasseringstid – ange PIN';
+
+  @override
+  String get s34de2943cc => 'LARM!';
+
+  @override
+  String s9cf8aec76a(String p0) {
+    return 'Tillståndet är $p0 gammalt';
+  }
+
+  @override
   String get s1f8cf57b2c => 'Ingen anslutning';
 
   @override
@@ -4231,6 +4355,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get saa54f34e98 => 'Copy prenumererar länk';
 
   @override
+  String get s5df7b0d00b => 'Hög larmsignal, test och behörigheter';
+
+  @override
   String get s8f19ff1e21 => 'Tyst timmar';
 
   @override
@@ -5145,9 +5272,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s9b1298f7c6 =>
       'Låt Molaplan springa i bakgrunden utan begränsningar.';
-
-  @override
-  String get sc8ef04815c => 'Tillåt';
 
   @override
   String get s2fcba19ec3 => 'Uppdatera automatiskt';
@@ -9235,6 +9359,18 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s91158c0de5 => 'Om enheten svarar endast t.ex. var 30: e, typ 30.';
+
+  @override
+  String get sb8011853db => 'Larma på';
+
+  @override
+  String get s5e2e8d22bc => 'Larma av';
+
+  @override
+  String get s4aff1873a3 => 'Kvittera larm';
+
+  @override
+  String get s821c81fcdd => 'Kvittera och larma av';
 
   @override
   String get s07f819fc55 =>

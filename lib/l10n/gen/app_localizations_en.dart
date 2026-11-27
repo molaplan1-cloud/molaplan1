@@ -625,6 +625,107 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s3c98732a8c => 'Gauge';
 
   @override
+  String get s58f6602375 => 'Alarms';
+
+  @override
+  String get sc2f4353c5c =>
+      'Alarms ring with a loud alarm sound at alarm volume, also in silent and Do Not Disturb mode. Other notifications stay quieter.';
+
+  @override
+  String get sbdecec718c => 'Alarm sound for alarms';
+
+  @override
+  String get s3bb454c8b4 => 'Alarm sound';
+
+  @override
+  String get s225139ca2c => 'The device\'s default alarm sound';
+
+  @override
+  String get s1574170d6e =>
+      'The volume is the device\'s alarm volume (Settings → Sounds → Alarms).';
+
+  @override
+  String get s8eee4c47dc => 'Ring until the notification is opened';
+
+  @override
+  String get scf0b386f09 => 'Test the alarm sound';
+
+  @override
+  String get sfa9c350c71 => 'Test alarm';
+
+  @override
+  String get s250f45b1af => 'This is how an alarm sounds on this device.';
+
+  @override
+  String get s49450df596 => 'The alarm sound is available in the Android app.';
+
+  @override
+  String get sb616800ea4 => 'Required permissions';
+
+  @override
+  String get s0ff5878e24 => 'Notifications allowed';
+
+  @override
+  String get s182f268e52 => 'Without this no notification is shown.';
+
+  @override
+  String get s85a9b79024 => 'Alarms channel on (sound and pop-up)';
+
+  @override
+  String get s8b8bd8d1fc => 'The \"Alarms\" channel in Android settings.';
+
+  @override
+  String get se6188f85c8 => 'Override Do Not Disturb';
+
+  @override
+  String get sdc5ec1d7c5 => 'Allow Molaplan \"Do Not Disturb access\".';
+
+  @override
+  String get s23b6916646 => 'Full-screen alarm';
+
+  @override
+  String get sff377917cb => 'The alarm opens on the lock screen.';
+
+  @override
+  String get s2646a90987 => 'No battery optimisation';
+
+  @override
+  String get s3817641568 => 'Otherwise Android may stop listening.';
+
+  @override
+  String get sa21239a35e => 'Advanced: what is an alarm';
+
+  @override
+  String get s9a3142f8bb => 'Urgent (5) is always an alarm';
+
+  @override
+  String get s7cf3a8e68d => 'Alarm words in the title';
+
+  @override
+  String get s9d82c5d4ea => 'Not an alarm if the title has';
+
+  @override
+  String get sf2a45478e3 => 'Alarm tags (ntfy tags)';
+
+  @override
+  String get s72f6fb3f29 => 'By the rules';
+
+  @override
+  String get s3c6f35a28c => 'Always alarm';
+
+  @override
+  String get se03fb0114e => 'Never';
+
+  @override
+  String get s0c362450c7 => 'Restore defaults';
+
+  @override
+  String get sc8ef04815c => 'Allow';
+
+  @override
+  String get s2e554f3c5c => 'Separated by commas';
+
+  @override
   String get sd5cb601286 => 'Tailscale (easy VPN)';
 
   @override
@@ -2471,6 +2572,29 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sf77125583f => 'Technical details';
 
   @override
+  String get s93b4695981 => 'Armed';
+
+  @override
+  String get s489ed73bfa => 'Armed (at home)';
+
+  @override
+  String get s49e6af4fbd => 'Disarmed';
+
+  @override
+  String get s1ba2cffb00 => 'Exit delay – arming';
+
+  @override
+  String get s2b765e2c1f => 'Entry delay – enter PIN';
+
+  @override
+  String get s34de2943cc => 'ALARM!';
+
+  @override
+  String s9cf8aec76a(String p0) {
+    return 'State is $p0 old';
+  }
+
+  @override
   String get s1f8cf57b2c => 'No connection';
 
   @override
@@ -4227,6 +4351,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get saa54f34e98 => 'Copy subscribe link';
 
   @override
+  String get s5df7b0d00b => 'Loud alarm sound, test and permissions';
+
+  @override
   String get s8f19ff1e21 => 'Quiet hours';
 
   @override
@@ -5141,9 +5268,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s9b1298f7c6 =>
       'Let Molaplan run in the background without restrictions.';
-
-  @override
-  String get sc8ef04815c => 'Allow';
 
   @override
   String get s2fcba19ec3 => 'Update automatically';
@@ -9233,6 +9357,18 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s91158c0de5 =>
       'If the device answers only e.g. every 30 s, type 30.';
+
+  @override
+  String get sb8011853db => 'Arm';
+
+  @override
+  String get s5e2e8d22bc => 'Disarm';
+
+  @override
+  String get s4aff1873a3 => 'Acknowledge alarm';
+
+  @override
+  String get s821c81fcdd => 'Acknowledge and disarm';
 
   @override
   String get s07f819fc55 =>

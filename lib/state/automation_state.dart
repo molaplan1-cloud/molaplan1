@@ -3,6 +3,7 @@
 /// notifications or Windows toasts.
 library;
 
+import '../notify/alarm_rules.dart';
 import 'dart:async';
 import '../core/plat.dart';
 import 'dart:convert';
@@ -559,14 +560,27 @@ class AutomationState extends ChangeNotifier {
     _sub = (pushClient ?? local.push).subscribe(n, n.topic, since: since).listen((m) {
       final click = '${m['click'] ?? ''}';
       final tile = click.startsWith('molaplan://tile/') ? click.substring('molaplan://tile/'.length) : null;
-      _show('${m['title'] ?? 'Molaplan'}', '${m['message'] ?? ''}', (m['priority'] as num?)?.toInt() ?? 3, tile);
+      _show(
+        '${m['title'] ?? 'Molaplan'}',
+        '${m['message'] ?? ''}',
+        (m['priority'] as num?)?.toInt() ?? 3,
+        tile,
+        tags: [if (m['tags'] is List) for (final t in m['tags'] as List) '$t'],
+      );
     });
   }
 
   /// Tests switch the live subscription off.
   static bool pushTestMode = !kIsWeb && Plat.isFlutterTest;
 
-  void _show(String title, String body, int priority, String? tileId, {bool fromFallback = false}) {
+  void _show(
+    String title,
+    String body,
+    int priority,
+    String? tileId, {
+    bool fromFallback = false,
+    List<String> tags = const [],
+  }) {
     final m = PushMessage(title, body, priority, tileId, DateTime.now());
     received.insert(0, m);
     if (received.length > 50) received.removeLast();
@@ -577,7 +591,15 @@ class AutomationState extends ChangeNotifier {
     final androidNative = !kIsWeb && defaultTargetPlatform == TargetPlatform.android && NtfyListen.nativeActive;
     if ((!fg || defaultTargetPlatform == TargetPlatform.windows) && !androidNative) {
       unawaited(
-        LocalNotify.show(title, body, link: tileId == null ? null : 'molaplan://tile/$tileId', priority: priority),
+        LocalNotify.show(
+          title,
+          body,
+          link: tileId == null ? null : 'molaplan://tile/$tileId',
+          priority: priority,
+          // R464: alarms shown by the open app use the loud alarm channel too.
+          alarm: alarmMatches(settings.notify.alarm, topic: settings.notify.topic, title: title, priority: priority, tags: tags),
+          insistent: settings.notify.alarm.insistent,
+        ),
       );
     }
     notifyListeners();

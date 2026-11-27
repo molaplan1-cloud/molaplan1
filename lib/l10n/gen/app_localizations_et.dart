@@ -626,6 +626,107 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s3c98732a8c => 'Näidik';
 
   @override
+  String get s58f6602375 => 'Häired';
+
+  @override
+  String get sc2f4353c5c =>
+      'Häired helisevad valju häirehelina äratuse helitugevusel, ka vaikses ja „Mitte segada“ režiimis. Muud teavitused jäävad vaiksemaks.';
+
+  @override
+  String get sbdecec718c => 'Häireheli häirete jaoks';
+
+  @override
+  String get s3bb454c8b4 => 'Häireheli';
+
+  @override
+  String get s225139ca2c => 'Seadme vaikimisi häireheli';
+
+  @override
+  String get s1574170d6e =>
+      'Helitugevus on seadme äratuse helitugevus (Seaded → Helid → Äratused).';
+
+  @override
+  String get s8eee4c47dc => 'Heli kuni teavituse avamiseni';
+
+  @override
+  String get scf0b386f09 => 'Testi häireheli';
+
+  @override
+  String get sfa9c350c71 => 'Testhäire';
+
+  @override
+  String get s250f45b1af => 'Nii kõlab häire selles seadmes.';
+
+  @override
+  String get s49450df596 => 'Häireheli on saadaval Androidi rakenduses.';
+
+  @override
+  String get sb616800ea4 => 'Vajalikud load';
+
+  @override
+  String get s0ff5878e24 => 'Teavitused lubatud';
+
+  @override
+  String get s182f268e52 => 'Ilma selleta ei kuvata ühtegi teavitust.';
+
+  @override
+  String get s85a9b79024 => 'Kanal „Häired“ sees (heli ja hüpik)';
+
+  @override
+  String get s8b8bd8d1fc => 'Kanal „Häired“ Androidi seadetes.';
+
+  @override
+  String get se6188f85c8 => 'Eira režiimi „Mitte segada“';
+
+  @override
+  String get sdc5ec1d7c5 => 'Anna Molaplanile „Mitte segada“ juurdepääs.';
+
+  @override
+  String get s23b6916646 => 'Täisekraanil häire';
+
+  @override
+  String get sff377917cb => 'Häire avaneb lukustuskuval.';
+
+  @override
+  String get s2646a90987 => 'Aku optimeerimine väljas';
+
+  @override
+  String get s3817641568 => 'Muidu võib Android kuulamise peatada.';
+
+  @override
+  String get sa21239a35e => 'Täpsemalt: mis on häire';
+
+  @override
+  String get s9a3142f8bb => 'Kiire (5) on alati häire';
+
+  @override
+  String get s7cf3a8e68d => 'Häiresõnad pealkirjas';
+
+  @override
+  String get s9d82c5d4ea => 'Ei ole häire, kui pealkirjas on';
+
+  @override
+  String get sf2a45478e3 => 'Häiremärgendid (ntfy sildid)';
+
+  @override
+  String get s72f6fb3f29 => 'Reeglite järgi';
+
+  @override
+  String get s3c6f35a28c => 'Alati häire';
+
+  @override
+  String get se03fb0114e => 'Mitte kunagi';
+
+  @override
+  String get s0c362450c7 => 'Taasta vaikeväärtused';
+
+  @override
+  String get sc8ef04815c => 'Luba';
+
+  @override
+  String get s2e554f3c5c => 'Komadega eraldatud';
+
+  @override
   String get sd5cb601286 => 'Sabaskaala (lihtne VPN)';
 
   @override
@@ -2471,6 +2572,29 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sf77125583f => 'Tehnilised üksikasjad';
 
   @override
+  String get s93b4695981 => 'Valve sees';
+
+  @override
+  String get s489ed73bfa => 'Valve sees (kodus)';
+
+  @override
+  String get s49e6af4fbd => 'Valve väljas';
+
+  @override
+  String get s1ba2cffb00 => 'Väljumisviivitus – valve lülitub sisse';
+
+  @override
+  String get s2b765e2c1f => 'Sisenemisviivitus – sisesta PIN';
+
+  @override
+  String get s34de2943cc => 'HÄIRE!';
+
+  @override
+  String s9cf8aec76a(String p0) {
+    return 'Olek on $p0 vana';
+  }
+
+  @override
   String get s1f8cf57b2c => 'Ühendus puudub';
 
   @override
@@ -4225,6 +4349,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get saa54f34e98 => 'Kopeeri tellimise link';
 
   @override
+  String get s5df7b0d00b => 'Vali häireheli, test ja load';
+
+  @override
   String get s8f19ff1e21 => 'Vaiksed tunnid';
 
   @override
@@ -5140,9 +5267,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s9b1298f7c6 =>
       'Las Molaplan jookseb tagaplaanil ilma piiranguteta.';
-
-  @override
-  String get sc8ef04815c => 'Luba';
 
   @override
   String get s2fcba19ec3 => 'Uuenda automaatselt';
@@ -9223,6 +9347,18 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s91158c0de5 =>
       'Kui seade vastab ainult näiteks iga 30 sekundi järel, tüüp 30.';
+
+  @override
+  String get sb8011853db => 'Valve sisse';
+
+  @override
+  String get s5e2e8d22bc => 'Valve välja';
+
+  @override
+  String get s4aff1873a3 => 'Kinnita häire';
+
+  @override
+  String get s821c81fcdd => 'Kinnita ja valve välja';
 
   @override
   String get s07f819fc55 =>

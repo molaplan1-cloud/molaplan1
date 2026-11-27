@@ -18,6 +18,7 @@ import 'remote_pages.dart' show RemoteHubPage;
 import 'duplicate_check.dart';
 import 'icons.dart';
 import 'notify_prefs.dart';
+import 'alarm_notify_page.dart';
 import '../notify/event_prefs.dart';
 
 List<TileConfig> _allTiles(AppState st) => [for (final d in st.config.dashboards) ...d.tiles];
@@ -2140,6 +2141,19 @@ class NotifySettingsView extends StatelessWidget {
               onPressed: () => Clipboard.setData(ClipboardData(text: a.ntfySubscribeLink)),
             ),
           ],
+        ),
+        const Divider(height: 28),
+        // R462 (t307u): loud alarm sound, test and permission checklist.
+        ListTile(
+          key: const ValueKey('notify-alarms'),
+          contentPadding: EdgeInsets.zero,
+          leading: const Icon(Icons.notifications_active_outlined),
+          title: Text(tx(context, 'Hälytykset', 'Alarms')),
+          subtitle: Text(
+            tx(context, 'Kova hälytysääni, testi ja luvat', 'Loud alarm sound, test and permissions'),
+          ),
+          trailing: const Icon(Icons.chevron_right),
+          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AlarmNotifyPage())),
         ),
         const Divider(height: 28),
         GlobalNotifyPrefsSection(

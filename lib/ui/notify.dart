@@ -14,6 +14,51 @@ class LocalNotify {
   /// Test hook: records notifications instead of showing them.
   static List<(String, String)>? recorded;
 
+  /// Test hook: alongside [recorded], whether each one went to the alarm channel.
+  static List<bool>? recordedAlarm;
+
+  static bool get isAndroid => _android;
+
+  /// R462–R463: alarm channel status for the permission checklist (Android only, else null).
+  static Future<AlarmChannelStatus?> alarmStatus() async {
+    if (!_android) return null;
+    try {
+      final m = await _ch.invokeMapMethod<String, Object?>('alarmStatus');
+      return m == null ? null : AlarmChannelStatus.fromMap(m);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// Opens a system settings page: notifications | channel | dnd | fullScreen | battery | sound.
+  static Future<void> openAlarmSettings(String what) async {
+    if (!_android) return;
+    try {
+      await _ch.invokeMethod('alarmOpen', {'what': what});
+    } catch (_) {}
+  }
+
+  /// System alarm / ringtone picker; returns the chosen sound's name (null = cancelled).
+  static Future<String?> pickAlarmSound() async {
+    if (!_android) return null;
+    try {
+      return await _ch.invokeMethod<String>('alarmPickSound');
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// Posts a test alarm on the alarm channel (alarm volume, also in silent mode).
+  static Future<bool> testAlarm(String title, String body, {bool insistent = false}) async {
+    if (!_android) return false;
+    try {
+      return await _ch.invokeMethod<bool>('alarmTest', {'title': title, 'body': body, 'insistent': insistent}) ??
+          false;
+    } catch (_) {
+      return false;
+    }
+  }
+
   static bool get _android => !kIsWeb && Plat.isAndroid;
   static bool get _windows => !kIsWeb && Plat.isWindows;
   static bool _winReady = false;
@@ -31,14 +76,30 @@ class LocalNotify {
   }
 
   /// [link] e.g. molaplan://tile/ID – opened when the notification is tapped.
-  static Future<void> show(String title, String body, {String? link, int priority = 3}) async {
+  static Future<void> show(
+    String title,
+    String body, {
+    String? link,
+    int priority = 3,
+    bool alarm = false,
+    bool insistent = false,
+  }) async {
     if (recorded != null) {
       recorded!.add((title, body));
+      recordedAlarm?.add(alarm);
       return;
     }
     if (_android) {
       try {
-        await _ch.invokeMethod('show', {'title': title, 'body': body, 'link': ?link, 'priority': priority});
+        await _ch.invokeMethod('show', {
+          'title': title,
+          'body': body,
+          'link': ?link,
+          'priority': priority,
+          // R464: the loud alarm channel (see AlarmNotifier.kt).
+          if (alarm) 'alarm': true,
+          if (alarm) 'insistent': insistent,
+        });
       } catch (_) {}
       return;
     }
@@ -131,4 +192,31 @@ class DeepLinks {
     final v = u.queryParameters['confirm']?.toLowerCase();
     return v == '1' || v == 'true' || v == 'yes';
   }
+}
+
+/// R463: what the alarm channel needs on this phone / tablet.
+class AlarmChannelStatus {
+  const AlarmChannelStatus({
+    required this.notifications,
+    required this.channel,
+    required this.dnd,
+    required this.fullScreen,
+    required this.battery,
+    this.sound,
+    this.sdk = 0,
+  });
+
+  factory AlarmChannelStatus.fromMap(Map<String, Object?> m) => AlarmChannelStatus(
+    notifications: m['notifications'] == true,
+    channel: m['channel'] == true,
+    dnd: m['dnd'] == true,
+    fullScreen: m['fullScreen'] == true,
+    battery: m['battery'] == true,
+    sound: m['sound'] as String?,
+    sdk: (m['sdk'] as num?)?.toInt() ?? 0,
+  );
+
+  final bool notifications, channel, dnd, fullScreen, battery;
+  final String? sound;
+  final int sdk;
 }

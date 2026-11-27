@@ -1238,6 +1238,204 @@ abstract class AppLocalizations {
   /// **'Gauge'**
   String get s3c98732a8c;
 
+  /// fi: Hälytykset
+  ///
+  /// In en, this message translates to:
+  /// **'Alarms'**
+  String get s58f6602375;
+
+  /// fi: Hälytykset soivat kovalla hälytysäänellä hälytysäänenvoimakkuudella, myös äänettömällä ja Älä häiritse -tilassa. Muut il
+  ///
+  /// In en, this message translates to:
+  /// **'Alarms ring with a loud alarm sound at alarm volume, also in silent and Do Not Disturb mode. Other notifications stay quieter.'**
+  String get sc2f4353c5c;
+
+  /// fi: Hälytysääni hälytyksille
+  ///
+  /// In en, this message translates to:
+  /// **'Alarm sound for alarms'**
+  String get sbdecec718c;
+
+  /// fi: Hälytysääni
+  ///
+  /// In en, this message translates to:
+  /// **'Alarm sound'**
+  String get s3bb454c8b4;
+
+  /// fi: Laitteen oletushälytysääni
+  ///
+  /// In en, this message translates to:
+  /// **'The device\'\'s default alarm sound'**
+  String get s225139ca2c;
+
+  /// fi: Äänenvoimakkuus on laitteen hälytysäänenvoimakkuus (Asetukset → Äänet → Hälytykset).
+  ///
+  /// In en, this message translates to:
+  /// **'The volume is the device\'\'s alarm volume (Settings → Sounds → Alarms).'**
+  String get s1574170d6e;
+
+  /// fi: Soi, kunnes ilmoitus avataan
+  ///
+  /// In en, this message translates to:
+  /// **'Ring until the notification is opened'**
+  String get s8eee4c47dc;
+
+  /// fi: Testaa hälytysääni
+  ///
+  /// In en, this message translates to:
+  /// **'Test the alarm sound'**
+  String get scf0b386f09;
+
+  /// fi: Testihälytys
+  ///
+  /// In en, this message translates to:
+  /// **'Test alarm'**
+  String get sfa9c350c71;
+
+  /// fi: Näin hälytys kuuluu tällä laitteella.
+  ///
+  /// In en, this message translates to:
+  /// **'This is how an alarm sounds on this device.'**
+  String get s250f45b1af;
+
+  /// fi: Hälytysääni on käytössä Android-sovelluksessa.
+  ///
+  /// In en, this message translates to:
+  /// **'The alarm sound is available in the Android app.'**
+  String get s49450df596;
+
+  /// fi: Tarvittavat luvat
+  ///
+  /// In en, this message translates to:
+  /// **'Required permissions'**
+  String get sb616800ea4;
+
+  /// fi: Ilmoitukset sallittu
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications allowed'**
+  String get s0ff5878e24;
+
+  /// fi: Ilman tätä mikään ilmoitus ei näy.
+  ///
+  /// In en, this message translates to:
+  /// **'Without this no notification is shown.'**
+  String get s182f268e52;
+
+  /// fi: Hälytykset-kanava päällä (ääni ja ponnahdus)
+  ///
+  /// In en, this message translates to:
+  /// **'Alarms channel on (sound and pop-up)'**
+  String get s85a9b79024;
+
+  /// fi: Androidin asetuksissa kanava "Hälytykset".
+  ///
+  /// In en, this message translates to:
+  /// **'The \"Alarms\" channel in Android settings.'**
+  String get s8b8bd8d1fc;
+
+  /// fi: Ohita Älä häiritse
+  ///
+  /// In en, this message translates to:
+  /// **'Override Do Not Disturb'**
+  String get se6188f85c8;
+
+  /// fi: Salli Molaplanille "Älä häiritse -käyttöoikeus".
+  ///
+  /// In en, this message translates to:
+  /// **'Allow Molaplan \"Do Not Disturb access\".'**
+  String get sdc5ec1d7c5;
+
+  /// fi: Koko näytön hälytys
+  ///
+  /// In en, this message translates to:
+  /// **'Full-screen alarm'**
+  String get s23b6916646;
+
+  /// fi: Hälytys avautuu lukitulle näytölle.
+  ///
+  /// In en, this message translates to:
+  /// **'The alarm opens on the lock screen.'**
+  String get sff377917cb;
+
+  /// fi: Ei akun optimointia
+  ///
+  /// In en, this message translates to:
+  /// **'No battery optimisation'**
+  String get s2646a90987;
+
+  /// fi: Muuten Android voi pysäyttää kuuntelun.
+  ///
+  /// In en, this message translates to:
+  /// **'Otherwise Android may stop listening.'**
+  String get s3817641568;
+
+  /// fi: Lisäasetukset: mikä on hälytys
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced: what is an alarm'**
+  String get sa21239a35e;
+
+  /// fi: Kiireelliset (5) ovat aina hälytyksiä
+  ///
+  /// In en, this message translates to:
+  /// **'Urgent (5) is always an alarm'**
+  String get s9a3142f8bb;
+
+  /// fi: Hälytyssanat otsikossa
+  ///
+  /// In en, this message translates to:
+  /// **'Alarm words in the title'**
+  String get s7cf3a8e68d;
+
+  /// fi: Ei hälytys, jos otsikossa
+  ///
+  /// In en, this message translates to:
+  /// **'Not an alarm if the title has'**
+  String get s9d82c5d4ea;
+
+  /// fi: Hälytystunnisteet (ntfy-tagit)
+  ///
+  /// In en, this message translates to:
+  /// **'Alarm tags (ntfy tags)'**
+  String get sf2a45478e3;
+
+  /// fi: Sääntöjen mukaan
+  ///
+  /// In en, this message translates to:
+  /// **'By the rules'**
+  String get s72f6fb3f29;
+
+  /// fi: Aina hälytys
+  ///
+  /// In en, this message translates to:
+  /// **'Always alarm'**
+  String get s3c6f35a28c;
+
+  /// fi: Ei koskaan
+  ///
+  /// In en, this message translates to:
+  /// **'Never'**
+  String get se03fb0114e;
+
+  /// fi: Palauta oletukset
+  ///
+  /// In en, this message translates to:
+  /// **'Restore defaults'**
+  String get s0c362450c7;
+
+  /// fi: Salli
+  ///
+  /// In en, this message translates to:
+  /// **'Allow'**
+  String get sc8ef04815c;
+
+  /// fi: Pilkulla erotettuna
+  ///
+  /// In en, this message translates to:
+  /// **'Separated by commas'**
+  String get s2e554f3c5c;
+
   /// fi: Tailscale (helppo VPN)
   ///
   /// In en, this message translates to:
@@ -4538,6 +4736,48 @@ abstract class AppLocalizations {
   /// **'Technical details'**
   String get sf77125583f;
 
+  /// fi: Valvonta päällä
+  ///
+  /// In en, this message translates to:
+  /// **'Armed'**
+  String get s93b4695981;
+
+  /// fi: Valvonta päällä (kotona)
+  ///
+  /// In en, this message translates to:
+  /// **'Armed (at home)'**
+  String get s489ed73bfa;
+
+  /// fi: Valvonta pois
+  ///
+  /// In en, this message translates to:
+  /// **'Disarmed'**
+  String get s49e6af4fbd;
+
+  /// fi: Lähtöviive – valvonta kytkeytyy
+  ///
+  /// In en, this message translates to:
+  /// **'Exit delay – arming'**
+  String get s1ba2cffb00;
+
+  /// fi: Tuloviive – anna PIN
+  ///
+  /// In en, this message translates to:
+  /// **'Entry delay – enter PIN'**
+  String get s2b765e2c1f;
+
+  /// fi: HÄLYTYS!
+  ///
+  /// In en, this message translates to:
+  /// **'ALARM!'**
+  String get s34de2943cc;
+
+  /// fi: Tieto {p0} vanha
+  ///
+  /// In en, this message translates to:
+  /// **'State is {p0} old'**
+  String s9cf8aec76a(String p0);
+
   /// fi: Ei yhteyttä
   ///
   /// In en, this message translates to:
@@ -7785,6 +8025,12 @@ abstract class AppLocalizations {
   /// **'Copy subscribe link'**
   String get saa54f34e98;
 
+  /// fi: Kova hälytysääni, testi ja luvat
+  ///
+  /// In en, this message translates to:
+  /// **'Loud alarm sound, test and permissions'**
+  String get s5df7b0d00b;
+
   /// fi: Hiljainen aika
   ///
   /// In en, this message translates to:
@@ -9406,12 +9652,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Let Molaplan run in the background without restrictions.'**
   String get s9b1298f7c6;
-
-  /// fi: Salli
-  ///
-  /// In en, this message translates to:
-  /// **'Allow'**
-  String get sc8ef04815c;
 
   /// fi: Päivitä automaattisesti
   ///
@@ -16678,6 +16918,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'If the device answers only e.g. every 30 s, type 30.'**
   String get s91158c0de5;
+
+  /// fi: Valvonta päälle
+  ///
+  /// In en, this message translates to:
+  /// **'Arm'**
+  String get sb8011853db;
+
+  /// fi: Valvonta pois
+  ///
+  /// In en, this message translates to:
+  /// **'Disarm'**
+  String get s5e2e8d22bc;
+
+  /// fi: Kuittaa hälytys
+  ///
+  /// In en, this message translates to:
+  /// **'Acknowledge alarm'**
+  String get s4aff1873a3;
+
+  /// fi: Kuittaa ja valvonta pois
+  ///
+  /// In en, this message translates to:
+  /// **'Acknowledge and disarm'**
+  String get s821c81fcdd;
 
   /// fi: Kameravalvonta: täytä Vastauskanava – paneeli vastaa käyttäjäsi omaan ilmoituskanavaan (paneelilla Asetukset → Käyttäjät
   ///

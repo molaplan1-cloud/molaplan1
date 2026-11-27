@@ -630,6 +630,110 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s3c98732a8c => 'Indicador';
 
   @override
+  String get s58f6602375 => 'Alarmas';
+
+  @override
+  String get sc2f4353c5c =>
+      'Las alarmas suenan con un sonido fuerte al volumen de alarma, también en silencio y en No molestar. Las demás notificaciones son más discretas.';
+
+  @override
+  String get sbdecec718c => 'Sonido de alarma para las alarmas';
+
+  @override
+  String get s3bb454c8b4 => 'Sonido de alarma';
+
+  @override
+  String get s225139ca2c =>
+      'El sonido de alarma predeterminado del dispositivo';
+
+  @override
+  String get s1574170d6e =>
+      'El volumen es el volumen de alarma del dispositivo (Ajustes → Sonidos → Alarmas).';
+
+  @override
+  String get s8eee4c47dc => 'Sonar hasta que se abra la notificación';
+
+  @override
+  String get scf0b386f09 => 'Probar el sonido de alarma';
+
+  @override
+  String get sfa9c350c71 => 'Alarma de prueba';
+
+  @override
+  String get s250f45b1af => 'Así suena una alarma en este dispositivo.';
+
+  @override
+  String get s49450df596 =>
+      'El sonido de alarma está disponible en la aplicación de Android.';
+
+  @override
+  String get sb616800ea4 => 'Permisos necesarios';
+
+  @override
+  String get s0ff5878e24 => 'Notificaciones permitidas';
+
+  @override
+  String get s182f268e52 => 'Sin esto no se muestra ninguna notificación.';
+
+  @override
+  String get s85a9b79024 =>
+      'Canal Alarmas activado (sonido y ventana emergente)';
+
+  @override
+  String get s8b8bd8d1fc => 'El canal «Alarmas» en los ajustes de Android.';
+
+  @override
+  String get se6188f85c8 => 'Ignorar No molestar';
+
+  @override
+  String get sdc5ec1d7c5 => 'Concede a Molaplan el «Acceso a No molestar».';
+
+  @override
+  String get s23b6916646 => 'Alarma a pantalla completa';
+
+  @override
+  String get sff377917cb => 'La alarma se abre en la pantalla de bloqueo.';
+
+  @override
+  String get s2646a90987 => 'Sin optimización de batería';
+
+  @override
+  String get s3817641568 => 'De lo contrario, Android puede dejar de escuchar.';
+
+  @override
+  String get sa21239a35e => 'Avanzado: qué es una alarma';
+
+  @override
+  String get s9a3142f8bb => 'Urgente (5) siempre es una alarma';
+
+  @override
+  String get s7cf3a8e68d => 'Palabras de alarma en el título';
+
+  @override
+  String get s9d82c5d4ea => 'No es alarma si el título contiene';
+
+  @override
+  String get sf2a45478e3 => 'Etiquetas de alarma (etiquetas de ntfy)';
+
+  @override
+  String get s72f6fb3f29 => 'Según las reglas';
+
+  @override
+  String get s3c6f35a28c => 'Siempre alarma';
+
+  @override
+  String get se03fb0114e => 'Nunca';
+
+  @override
+  String get s0c362450c7 => 'Restaurar valores predeterminados';
+
+  @override
+  String get sc8ef04815c => 'Permiso';
+
+  @override
+  String get s2e554f3c5c => 'Separadas por comas';
+
+  @override
   String get sd5cb601286 => 'Tailscale (fácil VPN)';
 
   @override
@@ -2497,6 +2601,29 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sf77125583f => 'Detalles técnicos';
 
   @override
+  String get s93b4695981 => 'Armada';
+
+  @override
+  String get s489ed73bfa => 'Armada (en casa)';
+
+  @override
+  String get s49e6af4fbd => 'Desarmada';
+
+  @override
+  String get s1ba2cffb00 => 'Retardo de salida: armando';
+
+  @override
+  String get s2b765e2c1f => 'Retardo de entrada: introduce el PIN';
+
+  @override
+  String get s34de2943cc => '¡ALARMA!';
+
+  @override
+  String s9cf8aec76a(String p0) {
+    return 'El estado tiene $p0 de antigüedad';
+  }
+
+  @override
   String get s1f8cf57b2c => 'Sin conexión';
 
   @override
@@ -2881,7 +3008,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s64c916e299 => 'Pequeña';
 
   @override
-  String get s5e3097232a => 'Ancho';
+  String get s5e3097232a => 'Ancha';
 
   @override
   String get s8971788287 => 'Grande';
@@ -4266,6 +4393,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get saa54f34e98 => 'Copiar el enlace de suscripción';
 
   @override
+  String get s5df7b0d00b => 'Sonido de alarma fuerte, prueba y permisos';
+
+  @override
   String get s8f19ff1e21 => 'Horas tranquilas';
 
   @override
@@ -5193,9 +5323,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s9b1298f7c6 =>
       'Deja que Molaplan funcione en el fondo sin restricciones.';
-
-  @override
-  String get sc8ef04815c => 'Permiso';
 
   @override
   String get s2fcba19ec3 => 'Actualizar automáticamente';
@@ -9319,6 +9446,18 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s91158c0de5 =>
       'Si el dispositivo responde sólo por ejemplo cada 30 s, escriba 30.';
+
+  @override
+  String get sb8011853db => 'Armar';
+
+  @override
+  String get s5e2e8d22bc => 'Desarmar';
+
+  @override
+  String get s4aff1873a3 => 'Confirmar alarma';
+
+  @override
+  String get s821c81fcdd => 'Confirmar y desarmar';
 
   @override
   String get s07f819fc55 =>

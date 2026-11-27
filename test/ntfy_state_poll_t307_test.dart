@@ -1,5 +1,4 @@
 // R466 (t307u): with a Tilakanava the app must not ask `tila json` on a fixed ~16-min timer.
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';

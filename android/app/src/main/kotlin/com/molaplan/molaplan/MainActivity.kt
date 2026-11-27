@@ -34,6 +34,19 @@ class MainActivity : FlutterActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         @Suppress("DEPRECATION")
         super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQ_SOUND) {
+            val res = pendingSound ?: return
+            pendingSound = null
+            if (resultCode != RESULT_OK) { res.success(null); return }
+            @Suppress("DEPRECATION")
+            val uri = data?.getParcelableExtra<Uri>(android.media.RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
+            val title = try {
+                uri?.let { android.media.RingtoneManager.getRingtone(this, it)?.getTitle(this) }
+            } catch (_: Exception) { null }
+            AlarmNotifier.setSound(this, uri?.toString(), title)
+            res.success(AlarmNotifier.soundTitle(this))
+            return
+        }
         if (requestCode != REQ_INSTALL) return
         val res = pendingInstall ?: return
         pendingInstall = null
@@ -76,7 +89,25 @@ class MainActivity : FlutterActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         EngineHolder.activityAttached = true
         super.onCreate(savedInstanceState)
+        showOverLockIfAlarm(intent)
     }
+
+    // R460: an alarm's full-screen intent opens Molaplan over the lock screen and lights it.
+    private fun showOverLockIfAlarm(i: Intent?) {
+        if (i?.getBooleanExtra(AlarmNotifier.EXTRA_ALARM, false) != true) return
+        if (Build.VERSION.SDK_INT >= 27) {
+            setShowWhenLocked(true)
+            setTurnScreenOn(true)
+        } else {
+            @Suppress("DEPRECATION")
+            window.addFlags(
+                android.view.WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
+                    android.view.WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+            )
+        }
+    }
+
+    private var pendingSound: MethodChannel.Result? = null
 
     override fun onDestroy() {
         EngineHolder.activityAttached = false
@@ -97,6 +128,7 @@ class MainActivity : FlutterActivity() {
     // molaplan://tile/<id> from a notification tap or the ntfy app (Click header).
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
+        showOverLockIfAlarm(intent)
         val d = intent.dataString
         if (d != null && d.startsWith("molaplan:")) linkChannel?.invokeMethod("open", d)
     }
@@ -181,6 +213,17 @@ class MainActivity : FlutterActivity() {
                         val tap = Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                         if (link != null) { tap.action = Intent.ACTION_VIEW; tap.data = Uri.parse(link) }
                         val id = (System.currentTimeMillis() % 100000).toInt()
+                        // R464: an alarm shown by the open app uses the same loud channel.
+                        if (call.argument<Boolean>("alarm") == true) {
+                            AlarmNotifier.post(
+                                this, id,
+                                call.argument<String>("title") ?: "Molaplan",
+                                call.argument<String>("body") ?: "",
+                                tap, call.argument<Boolean>("insistent") ?: false
+                            )
+                            result.success(true)
+                            return@setMethodCallHandler
+                        }
                         val open = android.app.PendingIntent.getActivity(
                             this, id, tap,
                             android.app.PendingIntent.FLAG_IMMUTABLE or android.app.PendingIntent.FLAG_UPDATE_CURRENT
@@ -220,6 +263,49 @@ class MainActivity : FlutterActivity() {
                     result.success(asked)
                 }
                 "batteryAsked" -> result.success(NtfyListenService.batteryAsked(this))
+                // R462–R463: alarm sound, test and permission checklist.
+                "alarmStatus" -> result.success(AlarmNotifier.status(this))
+                "alarmOpen" -> result.success(AlarmNotifier.openSettings(this, call.argument<String>("what") ?: ""))
+                "alarmPickSound" -> {
+                    pendingSound?.success(null)
+                    pendingSound = result
+                    try {
+                        @Suppress("DEPRECATION")
+                        startActivityForResult(
+                            Intent(android.media.RingtoneManager.ACTION_RINGTONE_PICKER)
+                                .putExtra(
+                                    android.media.RingtoneManager.EXTRA_RINGTONE_TYPE,
+                                    android.media.RingtoneManager.TYPE_ALARM or android.media.RingtoneManager.TYPE_RINGTONE
+                                )
+                                .putExtra(android.media.RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, false)
+                                .putExtra(android.media.RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true)
+                                .putExtra(
+                                    android.media.RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI,
+                                    android.media.RingtoneManager.getDefaultUri(android.media.RingtoneManager.TYPE_ALARM)
+                                )
+                                .putExtra(android.media.RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, AlarmNotifier.soundUri(this)),
+                            REQ_SOUND
+                        )
+                    } catch (_: Exception) {
+                        pendingSound = null
+                        result.success(null)
+                    }
+                }
+                "alarmTest" -> {
+                    if (Build.VERSION.SDK_INT >= 33 &&
+                        checkSelfPermission("android.permission.POST_NOTIFICATIONS") != android.content.pm.PackageManager.PERMISSION_GRANTED
+                    ) {
+                        requestPermissions(arrayOf("android.permission.POST_NOTIFICATIONS"), 7001)
+                    }
+                    val tap = Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                    AlarmNotifier.post(
+                        this, 28299,
+                        call.argument<String>("title") ?: "Molaplan",
+                        call.argument<String>("body") ?: "",
+                        tap, call.argument<Boolean>("insistent") ?: false
+                    )
+                    result.success(true)
+                }
                 else -> result.notImplemented()
             }
         }
@@ -289,6 +375,7 @@ class MainActivity : FlutterActivity() {
 
     companion object {
         const val REQ_INSTALL = 4713
+        const val REQ_SOUND = 4714
         /** A real prompt takes longer than this to answer; quicker means it was never shown. */
         const val QUICK_RETURN_MS = 1500L
     }
