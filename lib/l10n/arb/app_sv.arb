@@ -3,6 +3,7 @@
  "sc1e35d5171": "Pristjänsten",
  "s8b22e8d330": "Vädertjänsten",
  "s252ebed5af": "Shelly Cloud",
+ "s07d3467ef6": "Tuya",
  "s10edebf3fa": "ntfy server",
  "@s10edebf3fa": {
   "x-mt": true
@@ -503,6 +504,34 @@
  "sd74ad36c31": "true=Motion;false=No motion",
  "sfa12d7fdd7": "true=LEAK!;false=Dry",
  "s1f18c0f400": "true=SMOKE!;false=OK",
+ "s1a9acfbc67": "Ljus {p0}",
+ "@s1a9acfbc67": {
+  "x-mt": true
+ },
+ "s5d0fb602f6": "Täck {p0}",
+ "@s5d0fb602f6": {
+  "x-mt": true
+ },
+ "s82ecc12a66": "Temperatur {p0} (add-on)",
+ "@s82ecc12a66": {
+  "x-mt": true
+ },
+ "s68e711123b": "Temperatur",
+ "@s68e711123b": {
+  "x-mt": true
+ },
+ "s736646b3b0": "Fuktighet",
+ "@s736646b3b0": {
+  "x-mt": true
+ },
+ "s8b234e1a6f": "Belysning",
+ "@s8b234e1a6f": {
+  "x-mt": true
+ },
+ "s03a198454c": "batteribatteri",
+ "@s03a198454c": {
+  "x-mt": true
+ },
  "s0bf7cb1613": "Philips Hue",
  "se17d4e4197": "Hue Bridge och dess lampor (också Zigbee lampor parade till det). Par med bryggknappen.",
  "@se17d4e4197": {
@@ -519,10 +548,6 @@
  "s4dbb677293": "nås inte",
  "sf50732e8e8": "dimmable",
  "@sf50732e8e8": {
-  "x-mt": true
- },
- "s68e711123b": "Temperatur",
- "@s68e711123b": {
   "x-mt": true
  },
  "s4082a34467": "sensor",
@@ -692,8 +717,8 @@
   "x-mt": true
  },
  "sfcb44be1a0": "Shelly",
- "sa6ff717527": "Reläer och pluggar: Pro 4PM, Plus 1PM, Plug S, 2,5 ... Hittas automatiskt, kakel för varje kanal.",
- "@sa6ff717527": {
+ "sc7df69ad6e": "Reläer, pluggar, dimmers, covers, energimätare (Pro 3EM) och sensorer. Hittas automatiskt, fungerar utan molnet.",
+ "@sc7df69ad6e": {
   "x-mt": true
  },
  "sd7e123cd2f": "I Shelly-appen: öppna enheten → växel (inställningar) → Enhetsinformation → IP-adress. Eller i routerns enhetslista: namnet börjar med \"helt...\".",
@@ -716,6 +741,14 @@
  "s67f64cd925": "av nu",
  "s8b35cc884f": "Metering",
  "@s8b35cc884f": {
+  "x-mt": true
+ },
+ "sa58e7aab49": "Kalibrera i Shelly-appen för att få en reglage",
+ "@sa58e7aab49": {
+  "x-mt": true
+ },
+ "s78b6134b71": "batterienhet: uppdateringar när du vaknar",
+ "@s78b6134b71": {
   "x-mt": true
  },
  "sd8dfb25d31": "Shelly Cloud (ingen bro)",
@@ -872,6 +905,227 @@
  "s06e738bf27": "Det här är ingen hemnätsadress (de börjar oftast med 192.168.).{p0}",
  "sbae99909c4": "Obs!: den här enheten är på {p0}.x - enheten kan vara på ett annat Wi-Fi.",
  "@sbae99909c4": {
+  "x-mt": true
+ },
+ "sc20488a1f0": "Tuya / Powerant (lokal)",
+ "@sc20488a1f0": {
+  "x-mt": true
+ },
+ "sc849342970": "Tuya moln region",
+ "@sc849342970": {
+  "x-mt": true
+ },
+ "s49c53b561d": "Endast för att hämta nycklarna. vanligtvis Centraleuropa i Europa.",
+ "@s49c53b561d": {
+  "x-mt": true
+ },
+ "s7cf3dec993": "Centraleuropa",
+ "@s7cf3dec993": {
+  "x-mt": true
+ },
+ "seead5e286d": "Västeuropa",
+ "@seead5e286d": {
+  "x-mt": true
+ },
+ "s081e2e881d": "Västra Amerika",
+ "@s081e2e881d": {
+  "x-mt": true
+ },
+ "s5b9587ae93": "Östra Amerika",
+ "@s5b9587ae93": {
+  "x-mt": true
+ },
+ "sc5401d63d5": "Kina Kina Kina",
+ "@sc5401d63d5": {
+  "x-mt": true
+ },
+ "sb6786f25b9": "Indien Indien Indien",
+ "@sb6786f25b9": {
+  "x-mt": true
+ },
+ "scd78f804bb": "Singapore",
+ "s61b325e35c": "Access ID (iot.tuya.com)",
+ "s925e495479": "Access ID för ditt eget molnprojekt. behövs bara för att hämta nycklarna.",
+ "@s925e495479": {
+  "x-mt": true
+ },
+ "sb07c0dad24": "Access Secret",
+ "s45bcef5c09": "Access Secret of your own cloud project. lagras endast på den här enheten / i ditt eget valv.",
+ "@s45bcef5c09": {
+  "x-mt": true
+ },
+ "s295cf46412": "lokala nycklar",
+ "@s295cf46412": {
+  "x-mt": true
+ },
+ "sf58ae26c82": "Anordningarnas lokala nycklar (träffas automatiskt).",
+ "@sf58ae26c82": {
+  "x-mt": true
+ },
+ "s0c1a9d4ab9": "Håll anslutna (instant updates)",
+ "@s0c1a9d4ab9": {
+  "x-mt": true
+ },
+ "s121fb2c5fc": "Enheten rapporterar ändringar på en gång. Många Tuya-enheter tillåter endast en anslutning - använd endast på en enhet.",
+ "@s121fb2c5fc": {
+  "x-mt": true
+ },
+ "s65514aef3c": "Enhet Id",
+ "@s65514aef3c": {
+  "x-mt": true
+ },
+ "se42a336655": "Tuya-enheten id.",
+ "@se42a336655": {
+  "x-mt": true
+ },
+ "sff3cf64925": "DP-nummer",
+ "@sff3cf64925": {
+  "x-mt": true
+ },
+ "sfec9b1a643": "Datapunkt nummer (1 = ström på de flesta).",
+ "@sfec9b1a643": {
+  "x-mt": true
+ },
+ "see24ec5d84": "Skala",
+ "@see24ec5d84": {
+  "x-mt": true
+ },
+ "s2fa7dedd1b": "t.ex. 0.1 när enheten rapporterar tionde.",
+ "@s2fa7dedd1b": {
+  "x-mt": true
+ },
+ "se30676cace": "Datapoängnummer.",
+ "@se30676cace": {
+  "x-mt": true
+ },
+ "seb4c438a42": "'Värde ({{value}})'",
+ "@seb4c438a42": {
+  "x-mt": true
+ },
+ "s033b6b8c6c": "'Värde att skicka; {{value}} = kortets värde.'",
+ "@s033b6b8c6c": {
+  "x-mt": true
+ },
+ "s784e702cc1": "Värdetyp",
+ "@s784e702cc1": {
+  "x-mt": true
+ },
+ "safadcc12c8": "På/off för switchar, nummer för ljusstyrka.",
+ "@safadcc12c8": {
+  "x-mt": true
+ },
+ "s8c8b6cb6d4": "On/off",
+ "s695fe25f79": "Nummernummer",
+ "@s695fe25f79": {
+  "x-mt": true
+ },
+ "s34900f9d58": "Texttext",
+ "@s34900f9d58": {
+  "x-mt": true
+ },
+ "s9abc332fb8": "Tuya enhet {p0} är inte i denna anslutning",
+ "@s9abc332fb8": {
+  "x-mt": true
+ },
+ "s8b84454b87": "Tuya: Enhetens lokala nyckel saknas – hämta nycklarna igen",
+ "@s8b84454b87": {
+  "x-mt": true
+ },
+ "s764b6993c6": "Tuya: Enhetens IP-adress saknas",
+ "@s764b6993c6": {
+  "x-mt": true
+ },
+ "sae56ce66d4": "anslutning stängd",
+ "@sae56ce66d4": {
+  "x-mt": true
+ },
+ "sb6a87586a8": "Tuya: fel lokal nyckel eller protokollversion",
+ "@sb6a87586a8": {
+  "x-mt": true
+ },
+ "s2b1a0a5a05": "Inget svar från enheten",
+ "@s2b1a0a5a05": {
+  "x-mt": true
+ },
+ "sc4fdd8a4a3": "Tuya {p0}: Inget svar på handskakan - fel lokal nyckel eller protokollversion?",
+ "@sc4fdd8a4a3": {
+  "x-mt": true
+ },
+ "sa291ffb35a": "handshake misslyckades",
+ "@sa291ffb35a": {
+  "x-mt": true
+ },
+ "se2a4cc6409": "Tuya: fel lokal nyckel",
+ "@se2a4cc6409": {
+  "x-mt": true
+ },
+ "s7b8131a396": "inte finns på hemnätverket",
+ "@s7b8131a396": {
+  "x-mt": true
+ },
+ "s210907044a": "Powerant / Tuya / Smart Life",
+ "sa8d1873781": "Plugs, switchar, dimmers, lampor och sensorer. Kontrolleras på ditt hemnätverk utan molnet.",
+ "@sa8d1873781": {
+  "x-mt": true
+ },
+ "s3530ee658b": "Ditt eget gratis Tuya-utvecklarprojekt: iot.tuya.com → Cloud → Skapa Cloud Project (datacenter: Centraleuropa) → Enheter → Link App-konto → skanna QR-koden med Smart Life / Tuya / Powerant-appen. Access ID är på projektets översiktssida.",
+ "@s3530ee658b": {
+  "x-mt": true
+ },
+ "s39d3fce33c": "Från samma översiktssida. lagras endast på den här enheten (och ditt eget krypterade valv) - aldrig på Molaplans servrar.",
+ "@s39d3fce33c": {
+  "x-mt": true
+ },
+ "s12e2e8638b": "Projektets datacenter. Vanligtvis eu (Central Europe) i Europa. Västeuropa = weu.",
+ "@s12e2e8638b": {
+  "x-mt": true
+ },
+ "sfc77cb8d11": "Endast om inga enheter finns: app → enhet → penna → Enhetsinformation → Virtuellt ID.",
+ "@sfc77cb8d11": {
+  "x-mt": true
+ },
+ "s7938176623": "Tuya med en lokal nyckel",
+ "@s7938176623": {
+  "x-mt": true
+ },
+ "sf11f3cf10e": "Om du redan vet enhets-ID och dess lokala nyckel.",
+ "@sf11f3cf10e": {
+  "x-mt": true
+ },
+ "s3dcff9c852": "Från routerns enhetslista (ofta kallad ESP_ eller wlan0).",
+ "@s3dcff9c852": {
+  "x-mt": true
+ },
+ "s3cc607ceba": "En 16-karaktärsnyckel. Få det från ett Tuya-utvecklare-projekt, eller helt enkelt välja \"Powerant / Tuya / Smart Life\".",
+ "@s3cc607ceba": {
+  "x-mt": true
+ },
+ "s4105c416c6": "Fylls i automatiskt när enheten hittades på nätverket.",
+ "@s4105c416c6": {
+  "x-mt": true
+ },
+ "s39dfcd0595": "3.3, 3.4 eller 3.5. Upptäcks automatiskt när enheten hittades på nätverket.",
+ "@s39dfcd0595": {
+  "x-mt": true
+ },
+ "s991d0c0cdc": "kanal {p0}",
+ "@s991d0c0cdc": {
+  "x-mt": true
+ },
+ "sc8b1b10046": "Färgtemperatur",
+ "@sc8b1b10046": {
+  "x-mt": true
+ },
+ "s0ceafaa97c": "Energi energi",
+ "@s0ceafaa97c": {
+  "x-mt": true
+ },
+ "sdb8ea154be": "Spänning",
+ "@sdb8ea154be": {
+  "x-mt": true
+ },
+ "s37f61ae645": "Nuvarande",
+ "@s37f61ae645": {
   "x-mt": true
  },
  "s5b44cbe9c0": "Hem",
@@ -3532,10 +3786,6 @@
   "x-mt": true
  },
  "s8a8673aafe": "Rubrik",
- "s34900f9d58": "Texttext",
- "@s34900f9d58": {
-  "x-mt": true
- },
  "s3c2ee8fe0d": "'{summary} = väder, pris och hemstat'",
  "@s3c2ee8fe0d": {
   "x-mt": true
@@ -4109,6 +4359,26 @@
  },
  "s417228f48f": "Andra varumärken – varför ännu inte",
  "@s417228f48f": {
+  "x-mt": true
+ },
+ "se50e28a0e4": "Enheterna styrs på ditt hemnätverk utan molnet. Första gången hämtas deras lokala nycklar med ditt eget gratis Tuya-utvecklarkonto (cirka 10 minuter, bara en gång).",
+ "@se50e28a0e4": {
+  "x-mt": true
+ },
+ "sb35b23dbdd": "Hämta nycklarna med mitt eget Tuya-konto (rekommenderas)",
+ "@sb35b23dbdd": {
+  "x-mt": true
+ },
+ "sbc29869e30": "Alla Wi-Fi-enheter i appen samtidigt.",
+ "@sbc29869e30": {
+  "x-mt": true
+ },
+ "s2f57241369": "Jag har redan den lokala nyckeln",
+ "@s2f57241369": {
+  "x-mt": true
+ },
+ "sf4a309c04a": "En enhet: adress, ID och nyckel.",
+ "@sf4a309c04a": {
   "x-mt": true
  },
  "s772c158a57": "TCP",
@@ -7544,10 +7814,6 @@
  "@sddd62d21b0": {
   "x-mt": true
  },
- "see24ec5d84": "Skala",
- "@see24ec5d84": {
-  "x-mt": true
- },
  "s0a239b832b": "Offset",
  "@s0a239b832b": {
   "x-mt": true
@@ -7930,30 +8196,70 @@
   "x-mt": true
  },
  "s1c9df5579f": "Märke",
+ "s34a3681441": "Skapare och anslutningstyp. Lokala arbetar utan molnet.",
+ "@s34a3681441": {
+  "x-mt": true
+ },
  "s88688d2809": "Enhet IP (lokala varumärken)",
  "@s88688d2809": {
+  "x-mt": true
+ },
+ "s87e0a93996": "IP-adress för en lokal enhet (från routerns enhetslista).",
+ "@s87e0a93996": {
   "x-mt": true
  },
  "sc0bc183c3e": "E-post (moln)",
  "@sc0bc183c3e": {
   "x-mt": true
  },
+ "s0cc25259c7": "Det e-postmeddelande du loggar in på tillverkarens app med (MELCloud, airCloud).",
+ "@s0cc25259c7": {
+  "x-mt": true
+ },
  "s25f561c483": "Användarnamn (Toshiba)",
  "@s25f561c483": {
+  "x-mt": true
+ },
+ "s92e7ac8d3c": "Ditt Toshiba Home AC Control användarnamn.",
+ "@s92e7ac8d3c": {
+  "x-mt": true
+ },
+ "safde071183": "Skaparens app lösenord. lagras endast på den här enheten / i ditt eget valv.",
+ "@safde071183": {
   "x-mt": true
  },
  "s2862f25983": "Token (SmartThings)",
  "@s2862f25983": {
   "x-mt": true
  },
+ "s23a4bc8253": "SmartThings personliga åtkomsttoken (account.smartthings.com/tokens).",
+ "@s23a4bc8253": {
+  "x-mt": true
+ },
  "sef37e5048d": "Nyckel (Daikin BRP072C, klistermärke)",
  "@sef37e5048d": {
   "x-mt": true
  },
+ "s1c339065e1": "Nyckeln tryckt på BRP072C adapterns klistermärke.",
+ "@s1c339065e1": {
+  "x-mt": true
+ },
  "se67e3e0eb9": "Client ID (myUplink)",
+ "sc2d5225ae8": "Klient-ID för din egen app på dev.myuplink.com.",
+ "@sc2d5225ae8": {
+  "x-mt": true
+ },
  "sa165e50f99": "Client Secret (myUplink)",
+ "s332f9bc1a1": "Kundhemlighet för din egen app på dev.myuplink.com.",
+ "@s332f9bc1a1": {
+  "x-mt": true
+ },
  "sd1d4b22fc6": "Registrera karta (Modbus)",
  "@sd1d4b22fc6": {
+  "x-mt": true
+ },
+ "s5a9d485e7f": "Pumpserien. \"Importerad registerlista\" = pumpens egen CSV-export.",
+ "@s5a9d485e7f": {
   "x-mt": true
  },
  "s7dc3b152a8": "NIBE S-serien",
@@ -7969,29 +8275,69 @@
  "@sfdc0bbf134": {
   "x-mt": true
  },
+ "scd35ffb8e9": "Vanligtvis standard (Modbus 502, MHI 51443).",
+ "@scd35ffb8e9": {
+  "x-mt": true
+ },
  "s58f0665e29": "Modbus unit id",
+ "sab25ff8075": "Modbus enhet adress, vanligtvis 1.",
+ "@sab25ff8075": {
+  "x-mt": true
+ },
  "sb064bec4c8": "Server URL (endast testa)",
  "@sb064bec4c8": {
+  "x-mt": true
+ },
+ "s67b2ac9328": "Testning endast: ersätter tillverkarens serveradress.",
+ "@s67b2ac9328": {
   "x-mt": true
  },
  "sabab3f2fae": "Vad man ska läsa",
  "@sabab3f2fae": {
   "x-mt": true
  },
+ "sf5e949d20c": "Fullständigt tillstånd (värmepumpkort) eller en läsning.",
+ "@sf5e949d20c": {
+  "x-mt": true
+ },
+ "s46ce82ef9c": "Full stat",
+ "@s46ce82ef9c": {
+  "x-mt": true
+ },
+ "s8cbd66456f": "En läsning",
+ "@s8cbd66456f": {
+  "x-mt": true
+ },
  "s6d1827b58e": "Enhet Id",
  "@s6d1827b58e": {
+  "x-mt": true
+ },
+ "s89308ddc6d": "Inomhus enhet id; \"huvud\" för en-enhet enheter.",
+ "@s89308ddc6d": {
   "x-mt": true
  },
  "sa643668bec": "Läsning (nuvarande, mål, utomhus, kraft ...)",
  "@sa643668bec": {
   "x-mt": true
  },
+ "s02d24152f0": "Vilken läsning: nuvarande, mål, utomhus, ström, försörjning, hot_water ...",
+ "@s02d24152f0": {
+  "x-mt": true
+ },
+ "se16e293d6b": "Set",
+ "@se16e293d6b": {
+  "x-mt": true
+ },
  "s155de09d38": "Vad man ska ställa in",
  "@s155de09d38": {
   "x-mt": true
  },
- "seb4c438a42": "'Värde ({{value}})'",
- "@seb4c438a42": {
+ "s94ecb845c8": "Setpoint, power, mode eller fan.",
+ "@s94ecb845c8": {
+  "x-mt": true
+ },
+ "sba2eb6d9b9": "Setpoint",
+ "@sba2eb6d9b9": {
   "x-mt": true
  },
  "s6478b264c0": "Värmepump \"{p0}\" är inte längre i kontot",
@@ -8903,98 +9249,6 @@
  },
  "s3a38b97f7b": "{p0} – rum",
  "@s3a38b97f7b": {
-  "x-mt": true
- },
- "s0ceafaa97c": "Energi energi",
- "@s0ceafaa97c": {
-  "x-mt": true
- },
- "s34a3681441": "Skapare och anslutningstyp. Lokala arbetar utan molnet.",
- "@s34a3681441": {
-  "x-mt": true
- },
- "s87e0a93996": "IP-adress för en lokal enhet (från routerns enhetslista).",
- "@s87e0a93996": {
-  "x-mt": true
- },
- "s0cc25259c7": "Det e-postmeddelande du loggar in på tillverkarens app med (MELCloud, airCloud).",
- "@s0cc25259c7": {
-  "x-mt": true
- },
- "s92e7ac8d3c": "Ditt Toshiba Home AC Control användarnamn.",
- "@s92e7ac8d3c": {
-  "x-mt": true
- },
- "safde071183": "Skaparens app lösenord. lagras endast på den här enheten / i ditt eget valv.",
- "@safde071183": {
-  "x-mt": true
- },
- "s23a4bc8253": "SmartThings personliga åtkomsttoken (account.smartthings.com/tokens).",
- "@s23a4bc8253": {
-  "x-mt": true
- },
- "s1c339065e1": "Nyckeln tryckt på BRP072C adapterns klistermärke.",
- "@s1c339065e1": {
-  "x-mt": true
- },
- "sc2d5225ae8": "Klient-ID för din egen app på dev.myuplink.com.",
- "@sc2d5225ae8": {
-  "x-mt": true
- },
- "s332f9bc1a1": "Kundhemlighet för din egen app på dev.myuplink.com.",
- "@s332f9bc1a1": {
-  "x-mt": true
- },
- "s5a9d485e7f": "Pumpserien. \"Importerad registerlista\" = pumpens egen CSV-export.",
- "@s5a9d485e7f": {
-  "x-mt": true
- },
- "scd35ffb8e9": "Vanligtvis standard (Modbus 502, MHI 51443).",
- "@scd35ffb8e9": {
-  "x-mt": true
- },
- "sab25ff8075": "Modbus enhet adress, vanligtvis 1.",
- "@sab25ff8075": {
-  "x-mt": true
- },
- "s67b2ac9328": "Testning endast: ersätter tillverkarens serveradress.",
- "@s67b2ac9328": {
-  "x-mt": true
- },
- "sf5e949d20c": "Fullständigt tillstånd (värmepumpkort) eller en läsning.",
- "@sf5e949d20c": {
-  "x-mt": true
- },
- "s46ce82ef9c": "Full stat",
- "@s46ce82ef9c": {
-  "x-mt": true
- },
- "s8cbd66456f": "En läsning",
- "@s8cbd66456f": {
-  "x-mt": true
- },
- "s89308ddc6d": "Inomhus enhet id; \"huvud\" för en-enhet enheter.",
- "@s89308ddc6d": {
-  "x-mt": true
- },
- "s02d24152f0": "Vilken läsning: nuvarande, mål, utomhus, ström, försörjning, hot_water ...",
- "@s02d24152f0": {
-  "x-mt": true
- },
- "se16e293d6b": "Set",
- "@se16e293d6b": {
-  "x-mt": true
- },
- "s94ecb845c8": "Setpoint, power, mode eller fan.",
- "@s94ecb845c8": {
-  "x-mt": true
- },
- "sba2eb6d9b9": "Setpoint",
- "@sba2eb6d9b9": {
-  "x-mt": true
- },
- "s033b6b8c6c": "'Värde att skicka; {{value}} = kortets värde.'",
- "@s033b6b8c6c": {
   "x-mt": true
  }
 }

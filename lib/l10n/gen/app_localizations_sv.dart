@@ -19,6 +19,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s252ebed5af => 'Shelly Cloud';
 
   @override
+  String get s07d3467ef6 => 'Tuya';
+
+  @override
   String get s10edebf3fa => 'ntfy server';
 
   @override
@@ -590,6 +593,33 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s1f18c0f400 => 'true=SMOKE!;false=OK';
 
   @override
+  String s1a9acfbc67(String p0) {
+    return 'Ljus $p0';
+  }
+
+  @override
+  String s5d0fb602f6(String p0) {
+    return 'Täck $p0';
+  }
+
+  @override
+  String s82ecc12a66(String p0) {
+    return 'Temperatur $p0 (add-on)';
+  }
+
+  @override
+  String get s68e711123b => 'Temperatur';
+
+  @override
+  String get s736646b3b0 => 'Fuktighet';
+
+  @override
+  String get s8b234e1a6f => 'Belysning';
+
+  @override
+  String get s03a198454c => 'batteribatteri';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -609,9 +639,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sf50732e8e8 => 'dimmable';
-
-  @override
-  String get s68e711123b => 'Temperatur';
 
   @override
   String get s4082a34467 => 'sensor';
@@ -778,8 +805,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sfcb44be1a0 => 'Shelly';
 
   @override
-  String get sa6ff717527 =>
-      'Reläer och pluggar: Pro 4PM, Plus 1PM, Plug S, 2,5 ... Hittas automatiskt, kakel för varje kanal.';
+  String get sc7df69ad6e =>
+      'Reläer, pluggar, dimmers, covers, energimätare (Pro 3EM) och sensorer. Hittas automatiskt, fungerar utan molnet.';
 
   @override
   String get sd7e123cd2f =>
@@ -802,6 +829,12 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s8b35cc884f => 'Metering';
+
+  @override
+  String get sa58e7aab49 => 'Kalibrera i Shelly-appen för att få en reglage';
+
+  @override
+  String get s78b6134b71 => 'batterienhet: uppdateringar när du vaknar';
 
   @override
   String get sd8dfb25d31 => 'Shelly Cloud (ingen bro)';
@@ -977,6 +1010,204 @@ class AppLocalizationsSv extends AppLocalizations {
   String sbae99909c4(String p0) {
     return 'Obs!: den här enheten är på $p0.x - enheten kan vara på ett annat Wi-Fi.';
   }
+
+  @override
+  String get sc20488a1f0 => 'Tuya / Powerant (lokal)';
+
+  @override
+  String get sc849342970 => 'Tuya moln region';
+
+  @override
+  String get s49c53b561d =>
+      'Endast för att hämta nycklarna. vanligtvis Centraleuropa i Europa.';
+
+  @override
+  String get s7cf3dec993 => 'Centraleuropa';
+
+  @override
+  String get seead5e286d => 'Västeuropa';
+
+  @override
+  String get s081e2e881d => 'Västra Amerika';
+
+  @override
+  String get s5b9587ae93 => 'Östra Amerika';
+
+  @override
+  String get sc5401d63d5 => 'Kina Kina Kina';
+
+  @override
+  String get sb6786f25b9 => 'Indien Indien Indien';
+
+  @override
+  String get scd78f804bb => 'Singapore';
+
+  @override
+  String get s61b325e35c => 'Access ID (iot.tuya.com)';
+
+  @override
+  String get s925e495479 =>
+      'Access ID för ditt eget molnprojekt. behövs bara för att hämta nycklarna.';
+
+  @override
+  String get sb07c0dad24 => 'Access Secret';
+
+  @override
+  String get s45bcef5c09 =>
+      'Access Secret of your own cloud project. lagras endast på den här enheten / i ditt eget valv.';
+
+  @override
+  String get s295cf46412 => 'lokala nycklar';
+
+  @override
+  String get sf58ae26c82 =>
+      'Anordningarnas lokala nycklar (träffas automatiskt).';
+
+  @override
+  String get s0c1a9d4ab9 => 'Håll anslutna (instant updates)';
+
+  @override
+  String get s121fb2c5fc =>
+      'Enheten rapporterar ändringar på en gång. Många Tuya-enheter tillåter endast en anslutning - använd endast på en enhet.';
+
+  @override
+  String get s65514aef3c => 'Enhet Id';
+
+  @override
+  String get se42a336655 => 'Tuya-enheten id.';
+
+  @override
+  String get sff3cf64925 => 'DP-nummer';
+
+  @override
+  String get sfec9b1a643 => 'Datapunkt nummer (1 = ström på de flesta).';
+
+  @override
+  String get see24ec5d84 => 'Skala';
+
+  @override
+  String get s2fa7dedd1b => 't.ex. 0.1 när enheten rapporterar tionde.';
+
+  @override
+  String get se30676cace => 'Datapoängnummer.';
+
+  @override
+  String get seb4c438a42 => 'Värde ({{value}})';
+
+  @override
+  String get s033b6b8c6c => 'Värde att skicka; {{value}} = kortets värde.';
+
+  @override
+  String get s784e702cc1 => 'Värdetyp';
+
+  @override
+  String get safadcc12c8 => 'På/off för switchar, nummer för ljusstyrka.';
+
+  @override
+  String get s8c8b6cb6d4 => 'On/off';
+
+  @override
+  String get s695fe25f79 => 'Nummernummer';
+
+  @override
+  String get s34900f9d58 => 'Texttext';
+
+  @override
+  String s9abc332fb8(String p0) {
+    return 'Tuya enhet $p0 är inte i denna anslutning';
+  }
+
+  @override
+  String get s8b84454b87 =>
+      'Tuya: Enhetens lokala nyckel saknas – hämta nycklarna igen';
+
+  @override
+  String get s764b6993c6 => 'Tuya: Enhetens IP-adress saknas';
+
+  @override
+  String get sae56ce66d4 => 'anslutning stängd';
+
+  @override
+  String get sb6a87586a8 => 'Tuya: fel lokal nyckel eller protokollversion';
+
+  @override
+  String get s2b1a0a5a05 => 'Inget svar från enheten';
+
+  @override
+  String sc4fdd8a4a3(String p0) {
+    return 'Tuya $p0: Inget svar på handskakan - fel lokal nyckel eller protokollversion?';
+  }
+
+  @override
+  String get sa291ffb35a => 'handshake misslyckades';
+
+  @override
+  String get se2a4cc6409 => 'Tuya: fel lokal nyckel';
+
+  @override
+  String get s7b8131a396 => 'inte finns på hemnätverket';
+
+  @override
+  String get s210907044a => 'Powerant / Tuya / Smart Life';
+
+  @override
+  String get sa8d1873781 =>
+      'Plugs, switchar, dimmers, lampor och sensorer. Kontrolleras på ditt hemnätverk utan molnet.';
+
+  @override
+  String get s3530ee658b =>
+      'Ditt eget gratis Tuya-utvecklarprojekt: iot.tuya.com → Cloud → Skapa Cloud Project (datacenter: Centraleuropa) → Enheter → Link App-konto → skanna QR-koden med Smart Life / Tuya / Powerant-appen. Access ID är på projektets översiktssida.';
+
+  @override
+  String get s39d3fce33c =>
+      'Från samma översiktssida. lagras endast på den här enheten (och ditt eget krypterade valv) - aldrig på Molaplans servrar.';
+
+  @override
+  String get s12e2e8638b =>
+      'Projektets datacenter. Vanligtvis eu (Central Europe) i Europa. Västeuropa = weu.';
+
+  @override
+  String get sfc77cb8d11 =>
+      'Endast om inga enheter finns: app → enhet → penna → Enhetsinformation → Virtuellt ID.';
+
+  @override
+  String get s7938176623 => 'Tuya med en lokal nyckel';
+
+  @override
+  String get sf11f3cf10e => 'Om du redan vet enhets-ID och dess lokala nyckel.';
+
+  @override
+  String get s3dcff9c852 =>
+      'Från routerns enhetslista (ofta kallad ESP_ eller wlan0).';
+
+  @override
+  String get s3cc607ceba =>
+      'En 16-karaktärsnyckel. Få det från ett Tuya-utvecklare-projekt, eller helt enkelt välja \"Powerant / Tuya / Smart Life\".';
+
+  @override
+  String get s4105c416c6 =>
+      'Fylls i automatiskt när enheten hittades på nätverket.';
+
+  @override
+  String get s39dfcd0595 =>
+      '3.3, 3.4 eller 3.5. Upptäcks automatiskt när enheten hittades på nätverket.';
+
+  @override
+  String s991d0c0cdc(String p0) {
+    return 'kanal $p0';
+  }
+
+  @override
+  String get sc8b1b10046 => 'Färgtemperatur';
+
+  @override
+  String get s0ceafaa97c => 'Energi energi';
+
+  @override
+  String get sdb8ea154be => 'Spänning';
+
+  @override
+  String get s37f61ae645 => 'Nuvarande';
 
   @override
   String get s5b44cbe9c0 => 'Hem';
@@ -3899,9 +4130,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s8a8673aafe => 'Rubrik';
 
   @override
-  String get s34900f9d58 => 'Texttext';
-
-  @override
   String get s3c2ee8fe0d => '{summary} = väder, pris och hemstat';
 
   @override
@@ -4443,6 +4671,23 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s417228f48f => 'Andra varumärken – varför ännu inte';
+
+  @override
+  String get se50e28a0e4 =>
+      'Enheterna styrs på ditt hemnätverk utan molnet. Första gången hämtas deras lokala nycklar med ditt eget gratis Tuya-utvecklarkonto (cirka 10 minuter, bara en gång).';
+
+  @override
+  String get sb35b23dbdd =>
+      'Hämta nycklarna med mitt eget Tuya-konto (rekommenderas)';
+
+  @override
+  String get sbc29869e30 => 'Alla Wi-Fi-enheter i appen samtidigt.';
+
+  @override
+  String get s2f57241369 => 'Jag har redan den lokala nyckeln';
+
+  @override
+  String get sf4a309c04a => 'En enhet: adress, ID och nyckel.';
 
   @override
   String get s772c158a57 => 'TCP';
@@ -7979,9 +8224,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sddd62d21b0 => 'Swap ord (CDAB)';
 
   @override
-  String get see24ec5d84 => 'Skala';
-
-  @override
   String get s0a239b832b => 'Offset';
 
   @override
@@ -8462,12 +8704,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sba2eb6d9b9 => 'Setpoint';
-
-  @override
-  String get seb4c438a42 => 'Värde ({{value}})';
-
-  @override
-  String get s033b6b8c6c => 'Värde att skicka; {{value}} = kortets värde.';
 
   @override
   String s6478b264c0(String p0) {
@@ -9309,7 +9545,4 @@ class AppLocalizationsSv extends AppLocalizations {
   String s3a38b97f7b(String p0) {
     return '$p0 – rum';
   }
-
-  @override
-  String get s0ceafaa97c => 'Energi energi';
 }

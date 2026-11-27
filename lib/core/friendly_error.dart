@@ -48,6 +48,7 @@ const cloudConnectionTypes = {'price', 'weather', 'shelly_cloud', 'ntfy', 'ntfy_
   'price' => ('Hintapalvelu', 'The price service'),
   'weather' => ('Sääpalvelu', 'The weather service'),
   'shelly_cloud' => ('Shelly Cloud', 'Shelly Cloud'),
+  'tuya' => ('Tuya', 'Tuya'),
   'ntfy' || 'ntfy_device' => ('ntfy-palvelin', 'The ntfy server'),
   'airthings' => ('Airthings-pilvi', 'The Airthings cloud'),
   _ => ('Palvelu', 'The service'),

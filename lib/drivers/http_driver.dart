@@ -7,6 +7,7 @@ import 'package:http/io_client.dart';
 import '../core/fields.dart';
 import '../core/template.dart';
 import 'digest_auth.dart';
+import '../devices/shelly_push.dart';
 import 'driver.dart';
 import 'hue_hub.dart';
 
@@ -180,8 +181,24 @@ class HttpDriver extends Driver {
     sse: hueSse,
   );
 
+  /// R287: Shelly connections made by the wizard (`shellyId` + `push`): WebSocket / CoIoT.
+  ShellyPush? _shelly;
+  bool get _shellyPush => s['shellyId'] != null && s.flag('push');
+
   @override
-  Stream<Object?>? watch(Map<String, dynamic> spec) => _isHue(spec) ? hue.watch(spec) : null;
+  Stream<Object?>? watch(Map<String, dynamic> spec) {
+    if (_isHue(spec)) return hue.watch(spec);
+    if (_shellyPush && spec.str('path').isNotEmpty) {
+      final gen = s.integer('gen', spec.str('path').startsWith('/rpc/') ? 2 : 1);
+      return (_shelly ??= ShellyPush(
+        baseUrl: s.str('baseUrl'),
+        gen: gen,
+        password: s.str('password'),
+        read: read,
+      )).watch(spec);
+    }
+    return null;
+  }
 
   @override
   Future<Object?> read(Map<String, dynamic> spec) async {
@@ -255,6 +272,7 @@ class HttpDriver extends Driver {
   @override
   Future<void> dispose() async {
     _hue?.close();
+    await _shelly?.close();
     _client?.close();
   }
 }

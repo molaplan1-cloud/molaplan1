@@ -302,6 +302,8 @@ class WebLandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // t273u: tx() does not subscribe; listen here so the intro switches language at once.
+    AppScope.of(context);
     final cs = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
     Widget point(IconData i, String s) => Padding(

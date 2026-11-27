@@ -5,6 +5,7 @@ import 'hue.dart';
 import 'provider.dart';
 import 'shelly.dart';
 import 'sonoff.dart';
+import '../tuya/tuya_provider.dart';
 
 export 'provider.dart';
 
@@ -16,12 +17,14 @@ final deviceProviders = <DeviceProvider>[
   DirigeraProvider(),
   ShellyCloudProvider(),
   HeatPumpChooser(),
+  TuyaKeyProvider(),
 ];
 
 DeviceProvider? providerById(String id) =>
     deviceProviders.where((p) => p.id == id).firstOrNull ??
     cameraProviders.where((p) => p.id == id).firstOrNull ??
-    heatPumpProviders.where((p) => p.id == id).firstOrNull;
+    heatPumpProviders.where((p) => p.id == id).firstOrNull ??
+    tuyaProviders.where((p) => p.id == id).firstOrNull;
 
 /// Brands not built in yet: shown in the picker with the best way to use them today.
 class RoadmapBrand {
@@ -54,13 +57,6 @@ const roadmapBrands = <RoadmapBrand>[
     ['zwave', 'z-wave', 'zwave js'],
     'Tulossa. Nyt: Home Assistantin kautta.',
     'Coming. Today: via Home Assistant.',
-    useTemplate: 'homeassistant',
-  ),
-  RoadmapBrand(
-    'Tuya / Smart Life',
-    ['tuya', 'smart life', 'smartlife'],
-    'Tulossa (vaatii Tuya-kehittäjätilin). Nyt: Home Assistantin kautta.',
-    'Coming (needs a Tuya developer account). Today: via Home Assistant.',
     useTemplate: 'homeassistant',
   ),
   RoadmapBrand(

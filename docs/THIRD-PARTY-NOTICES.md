@@ -4,7 +4,10 @@ Molaplan's built-in heat pump integrations (lib/heatpumps/, v0.15.0) are written
 protocol documentation. The projects below were used as protocol references. Where tables or
 constants were taken over (marked), their licence applies to those parts. No GPL-licensed code was
 copied: pydaikin, nibe (yozik04) and python-thermia-online-api are GPL-3.0 and were read only to
-understand behaviour.
+understand behaviour. v0.16.0 (R287, lib/tuya/, lib/devices/shelly_*.dart): Tuya follows tinytuya
+(MIT) and Tuya's public cloud API docs; localtuya and tuya-local (GPL-3.0) were NOT used. Shelly
+follows Shelly's own public API documentation (shelly-api-docs.shelly.cloud); no third-party code.
+AES-128 / GCM (`lib/tuya/aes.dart`) is written from FIPS-197 and NIST SP 800-38D.
 
 | Project | Licence | Used for | Taken over |
 |---|---|---|---|
@@ -12,13 +15,15 @@ understand behaviour.
 | pymelcloud | MIT, © 2019 Vilppu Vuorinen | MELCloud endpoints, EffectiveFlags values | Flag constants, mode numbers (`melcloud.dart`) |
 | ha_aircloudhome | MIT, © 2026 Nogic (@nogic1008) | Hitachi airCloud endpoints | Endpoint paths, mode names (`aircloud.dart`) |
 | Toshiba-AC-control | Apache-2.0, © 2021 Kamil Sroka | Toshiba REST endpoints, IoT Hub message, state layout | Endpoint paths, byte layout, code values (`toshiba.dart`) |
+| tinytuya (v0.16.0, R287) | MIT, © 2024 Jason Cox | Tuya LAN protocol 3.3/3.4/3.5: frame layout, command numbers, session-key handshake, UDP discovery key, cloud endpoints | Command numbers, the public UDP key and the frame/handshake layout (`lib/tuya/tuya_protocol.dart`); code written anew in Dart |
 
-## MIT License (pywfrac, pymelcloud, ha_aircloudhome)
+## MIT License (pywfrac, pymelcloud, ha_aircloudhome, tinytuya)
 
 Copyright (c) 2022 jeatheak
 Copyright (c) 2026 blues-sechseck
 Copyright (c) 2019 Vilppu Vuorinen
 Copyright (c) 2026 Nogic @nogic1008
+Copyright (c) 2024 Jason Cox
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction,

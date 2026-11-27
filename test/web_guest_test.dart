@@ -122,6 +122,28 @@ void main() {
   );
 
   testWidgets(
+    't273u: intro switches language immediately after the picker, without leaving the page',
+    (tester) async {
+      tester.view.physicalSize = const Size(900, 2400);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      final st = await appState(tester);
+      await tester.pumpWidget(host(st, const WebLandingPage()));
+      await tester.pumpAndSettle();
+      expect(find.text('Käytä ilman tiliä'), findsOneWidget);
+      expect(find.text('Kirjaudu sisään'), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('language-picker')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('English').last);
+      await tester.pumpAndSettle();
+      expect(st.config.language, 'en');
+      expect(find.text('Use without an account'), findsOneWidget);
+      expect(find.text('Sign in'), findsOneWidget);
+      expect(find.text('Käytä ilman tiliä'), findsNothing);
+    },
+  );
+
+  testWidgets(
     'gate: Use without an account opens the app and stays after a simulated reload',
     (tester) async {
       tester.view.physicalSize = const Size(420, 2400);

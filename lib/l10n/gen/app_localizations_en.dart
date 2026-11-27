@@ -19,6 +19,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s252ebed5af => 'Shelly Cloud';
 
   @override
+  String get s07d3467ef6 => 'Tuya';
+
+  @override
   String get s10edebf3fa => 'The ntfy server';
 
   @override
@@ -588,6 +591,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s1f18c0f400 => 'true=SMOKE!;false=OK';
 
   @override
+  String s1a9acfbc67(String p0) {
+    return 'Light$p0';
+  }
+
+  @override
+  String s5d0fb602f6(String p0) {
+    return 'Cover$p0';
+  }
+
+  @override
+  String s82ecc12a66(String p0) {
+    return 'Temperature$p0 (add-on)';
+  }
+
+  @override
+  String get s68e711123b => 'temperature';
+
+  @override
+  String get s736646b3b0 => 'humidity';
+
+  @override
+  String get s8b234e1a6f => 'illuminance';
+
+  @override
+  String get s03a198454c => 'battery';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -607,9 +637,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sf50732e8e8 => 'dimmable';
-
-  @override
-  String get s68e711123b => 'temperature';
 
   @override
   String get s4082a34467 => 'sensor';
@@ -775,8 +802,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sfcb44be1a0 => 'Shelly';
 
   @override
-  String get sa6ff717527 =>
-      'Relays and plugs: Pro 4PM, Plus 1PM, Plug S, 2.5… Found automatically, tiles for every channel.';
+  String get sc7df69ad6e =>
+      'Relays, plugs, dimmers, covers, energy meters (Pro 3EM) and sensors. Found automatically, works without the cloud.';
 
   @override
   String get sd7e123cd2f =>
@@ -799,6 +826,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s8b35cc884f => 'Metering';
+
+  @override
+  String get sa58e7aab49 => 'calibrate in the Shelly app to get a slider';
+
+  @override
+  String get s78b6134b71 => 'battery device: updates when awake';
 
   @override
   String get sd8dfb25d31 => 'Shelly Cloud (no bridge)';
@@ -974,6 +1007,204 @@ class AppLocalizationsEn extends AppLocalizations {
   String sbae99909c4(String p0) {
     return 'Note: this device is on $p0.x – the device may be on another Wi-Fi.';
   }
+
+  @override
+  String get sc20488a1f0 => 'Tuya / Powerant (local)';
+
+  @override
+  String get sc849342970 => 'Tuya cloud region';
+
+  @override
+  String get s49c53b561d =>
+      'Only for fetching the keys. Usually Central Europe in Europe.';
+
+  @override
+  String get s7cf3dec993 => 'Central Europe';
+
+  @override
+  String get seead5e286d => 'Western Europe';
+
+  @override
+  String get s081e2e881d => 'Western America';
+
+  @override
+  String get s5b9587ae93 => 'Eastern America';
+
+  @override
+  String get sc5401d63d5 => 'China';
+
+  @override
+  String get sb6786f25b9 => 'India';
+
+  @override
+  String get scd78f804bb => 'Singapore';
+
+  @override
+  String get s61b325e35c => 'Access ID (iot.tuya.com)';
+
+  @override
+  String get s925e495479 =>
+      'Access ID of your own cloud project. Only needed to fetch the keys.';
+
+  @override
+  String get sb07c0dad24 => 'Access Secret';
+
+  @override
+  String get s45bcef5c09 =>
+      'Access Secret of your own cloud project. Stored only on this device / in your own vault.';
+
+  @override
+  String get s295cf46412 => 'Local keys';
+
+  @override
+  String get sf58ae26c82 => 'The devices\' local keys (fetched automatically).';
+
+  @override
+  String get s0c1a9d4ab9 => 'Keep connected (instant updates)';
+
+  @override
+  String get s121fb2c5fc =>
+      'The device reports changes at once. Many Tuya devices allow only one connection – use on one device only.';
+
+  @override
+  String get s65514aef3c => 'Device id';
+
+  @override
+  String get se42a336655 => 'The Tuya device id.';
+
+  @override
+  String get sff3cf64925 => 'DP number';
+
+  @override
+  String get sfec9b1a643 => 'Data point number (1 = power on most).';
+
+  @override
+  String get see24ec5d84 => 'Scale';
+
+  @override
+  String get s2fa7dedd1b => 'E.g. 0.1 when the device reports tenths.';
+
+  @override
+  String get se30676cace => 'Data point number.';
+
+  @override
+  String get seb4c438a42 => 'Value ({{value}})';
+
+  @override
+  String get s033b6b8c6c => 'Value to send; {{value}} = the tile\'s value.';
+
+  @override
+  String get s784e702cc1 => 'Value type';
+
+  @override
+  String get safadcc12c8 => 'On/off for switches, number for brightness.';
+
+  @override
+  String get s8c8b6cb6d4 => 'On/off';
+
+  @override
+  String get s695fe25f79 => 'Number';
+
+  @override
+  String get s34900f9d58 => 'Text';
+
+  @override
+  String s9abc332fb8(String p0) {
+    return 'Tuya device $p0 is not in this connection';
+  }
+
+  @override
+  String get s8b84454b87 =>
+      'Tuya: the device\'s local key is missing – fetch the keys again';
+
+  @override
+  String get s764b6993c6 => 'Tuya: the device\'s IP address is missing';
+
+  @override
+  String get sae56ce66d4 => 'connection closed';
+
+  @override
+  String get sb6a87586a8 => 'Tuya: wrong local key or protocol version';
+
+  @override
+  String get s2b1a0a5a05 => 'no answer from the device';
+
+  @override
+  String sc4fdd8a4a3(String p0) {
+    return 'Tuya $p0: no answer to the handshake – wrong local key or protocol version?';
+  }
+
+  @override
+  String get sa291ffb35a => 'handshake failed';
+
+  @override
+  String get se2a4cc6409 => 'Tuya: wrong local key';
+
+  @override
+  String get s7b8131a396 => 'not found on the home network';
+
+  @override
+  String get s210907044a => 'Powerant / Tuya / Smart Life';
+
+  @override
+  String get sa8d1873781 =>
+      'Plugs, switches, dimmers, bulbs and sensors. Controlled on your home network without the cloud.';
+
+  @override
+  String get s3530ee658b =>
+      'Your own free Tuya developer project: iot.tuya.com → Cloud → Create Cloud Project (data center: Central Europe) → Devices → Link App Account → scan the QR code with the Smart Life / Tuya / Powerant app. The Access ID is on the project\'s Overview page.';
+
+  @override
+  String get s39d3fce33c =>
+      'From the same Overview page. Stored only on this device (and your own encrypted vault) – never on Molaplan\'s servers.';
+
+  @override
+  String get s12e2e8638b =>
+      'The project\'s data center. Usually eu (Central Europe) in Europe. Western Europe = weu.';
+
+  @override
+  String get sfc77cb8d11 =>
+      'Only if no devices are found: app → device → pencil → Device information → Virtual ID.';
+
+  @override
+  String get s7938176623 => 'Tuya with a local key';
+
+  @override
+  String get sf11f3cf10e =>
+      'If you already know the device ID and its local key.';
+
+  @override
+  String get s3dcff9c852 =>
+      'From your router\'s device list (often named ESP_ or wlan0).';
+
+  @override
+  String get s3cc607ceba =>
+      'A 16-character key. Get it from a Tuya developer project, or simply pick \"Powerant / Tuya / Smart Life\".';
+
+  @override
+  String get s4105c416c6 =>
+      'Filled in automatically when the device was found on the network.';
+
+  @override
+  String get s39dfcd0595 =>
+      '3.3, 3.4 or 3.5. Detected automatically when the device was found on the network.';
+
+  @override
+  String s991d0c0cdc(String p0) {
+    return 'channel $p0';
+  }
+
+  @override
+  String get sc8b1b10046 => 'colour temperature';
+
+  @override
+  String get s0ceafaa97c => 'energy';
+
+  @override
+  String get sdb8ea154be => 'voltage';
+
+  @override
+  String get s37f61ae645 => 'current';
 
   @override
   String get s5b44cbe9c0 => 'Home';
@@ -3887,9 +4118,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s8a8673aafe => 'Title';
 
   @override
-  String get s34900f9d58 => 'Text';
-
-  @override
   String get s3c2ee8fe0d => '{summary} = weather, price and home state';
 
   @override
@@ -4430,6 +4658,23 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s417228f48f => 'Other brands – why not yet';
+
+  @override
+  String get se50e28a0e4 =>
+      'The devices are controlled on your home network without the cloud. The first time, their local keys are fetched with your own free Tuya developer account (about 10 minutes, only once).';
+
+  @override
+  String get sb35b23dbdd =>
+      'Fetch the keys with my own Tuya account (recommended)';
+
+  @override
+  String get sbc29869e30 => 'All Wi-Fi devices of the app at once.';
+
+  @override
+  String get s2f57241369 => 'I already have the local key';
+
+  @override
+  String get sf4a309c04a => 'One device: address, ID and key.';
 
   @override
   String get s772c158a57 => 'tcp';
@@ -7968,9 +8213,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sddd62d21b0 => 'Swap words (CDAB)';
 
   @override
-  String get see24ec5d84 => 'Scale';
-
-  @override
   String get s0a239b832b => 'Offset';
 
   @override
@@ -8450,12 +8692,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sba2eb6d9b9 => 'Setpoint';
-
-  @override
-  String get seb4c438a42 => 'Value ({{value}})';
-
-  @override
-  String get s033b6b8c6c => 'Value to send; {{value}} = the tile\'s value.';
 
   @override
   String s6478b264c0(String p0) {
@@ -9301,7 +9537,4 @@ class AppLocalizationsEn extends AppLocalizations {
   String s3a38b97f7b(String p0) {
     return '$p0 – room';
   }
-
-  @override
-  String get s0ceafaa97c => 'energy';
 }

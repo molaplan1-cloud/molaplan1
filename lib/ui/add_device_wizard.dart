@@ -31,6 +31,7 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
   'dirigera' => const Color(0xFF42A5F5),
   'shelly_cloud' => const Color(0xFF7E57C2),
   'sonoff' => const Color(0xFF1E88E5),
+  'tuya' || 'tuya_local' => const Color(0xFFFF6F00),
   _ when p.category == 'camera' => const Color(0xFF5C6BC0),
   _ when p.category == 'climate' => const Color(0xFFFF7043),
   _ => const Color(0xFF26A69A),

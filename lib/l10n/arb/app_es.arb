@@ -3,6 +3,7 @@
  "sc1e35d5171": "El servicio de precios",
  "s8b22e8d330": "El servicio meteorológico",
  "s252ebed5af": "Shelly Cloud",
+ "s07d3467ef6": "Tuya",
  "s10edebf3fa": "El servidor ntfy",
  "@s10edebf3fa": {
   "x-mt": true
@@ -500,6 +501,34 @@
  "sd74ad36c31": "true=Motion;false=No motion",
  "sfa12d7fdd7": "true=LEAK!;false=Dry",
  "s1f18c0f400": "true=SMOKE!;false=OK",
+ "s1a9acfbc67": "Luz {p0}",
+ "@s1a9acfbc67": {
+  "x-mt": true
+ },
+ "s5d0fb602f6": "Cover{p0}",
+ "@s5d0fb602f6": {
+  "x-mt": true
+ },
+ "s82ecc12a66": "Temperatura {p0} (add-on)",
+ "@s82ecc12a66": {
+  "x-mt": true
+ },
+ "s68e711123b": "temperatura",
+ "@s68e711123b": {
+  "x-mt": true
+ },
+ "s736646b3b0": "humedad",
+ "@s736646b3b0": {
+  "x-mt": true
+ },
+ "s8b234e1a6f": "iluminancia",
+ "@s8b234e1a6f": {
+  "x-mt": true
+ },
+ "s03a198454c": "batería",
+ "@s03a198454c": {
+  "x-mt": true
+ },
  "s0bf7cb1613": "Philips Hue",
  "se17d4e4197": "Puente de Hue y sus luces (también las luces de Zigbee se unieron a él). Pareja con el botón puente.",
  "@se17d4e4197": {
@@ -516,10 +545,6 @@
  "s4dbb677293": "inalcanzable",
  "sf50732e8e8": "dimmable",
  "@sf50732e8e8": {
-  "x-mt": true
- },
- "s68e711123b": "temperatura",
- "@s68e711123b": {
   "x-mt": true
  },
  "s4082a34467": "sensor",
@@ -689,8 +714,8 @@
   "x-mt": true
  },
  "sfcb44be1a0": "Shelly",
- "sa6ff717527": "Relés y enchufes: Pro 4PM, Plus 1PM, Plug S, 2.5... encontrado automáticamente, fichas para cada canal.",
- "@sa6ff717527": {
+ "sc7df69ad6e": "Relés, enchufes, martillos, cubiertas, medidores de energía (Pro 3EM) y sensores. Encontrados automáticamente, funciona sin la nube.",
+ "@sc7df69ad6e": {
   "x-mt": true
  },
  "sd7e123cd2f": "En la aplicación Shelly: abre el dispositivo → engranaje (ajustes) → Información del dispositivo → Dirección IP. O en la lista del dispositivo del router: el nombre comienza con \"muelle...\".",
@@ -713,6 +738,14 @@
  "s67f64cd925": "apagado ahora",
  "s8b35cc884f": "Medición",
  "@s8b35cc884f": {
+  "x-mt": true
+ },
+ "sa58e7aab49": "calibrar en la aplicación Shelly para conseguir un slider",
+ "@sa58e7aab49": {
+  "x-mt": true
+ },
+ "s78b6134b71": "dispositivo de la batería: actualizaciones cuando despierto",
+ "@s78b6134b71": {
   "x-mt": true
  },
  "sd8dfb25d31": "Shelly Cloud (sin puente)",
@@ -869,6 +902,227 @@
  },
  "sbae99909c4": "Nota: este dispositivo está en {p0}.x – el dispositivo puede estar en otro Wi-Fi.",
  "@sbae99909c4": {
+  "x-mt": true
+ },
+ "sc20488a1f0": "Tuya / Powerant (local)",
+ "@sc20488a1f0": {
+  "x-mt": true
+ },
+ "sc849342970": "Región de la nube de Tuya",
+ "@sc849342970": {
+  "x-mt": true
+ },
+ "s49c53b561d": "Sólo para recoger las llaves. Por lo general, Europa Central en Europa.",
+ "@s49c53b561d": {
+  "x-mt": true
+ },
+ "s7cf3dec993": "Central Europe",
+ "@s7cf3dec993": {
+  "x-mt": true
+ },
+ "seead5e286d": "Europa occidental",
+ "@seead5e286d": {
+  "x-mt": true
+ },
+ "s081e2e881d": "Western America",
+ "@s081e2e881d": {
+  "x-mt": true
+ },
+ "s5b9587ae93": "América del Este",
+ "@s5b9587ae93": {
+  "x-mt": true
+ },
+ "sc5401d63d5": "China",
+ "@sc5401d63d5": {
+  "x-mt": true
+ },
+ "sb6786f25b9": "India",
+ "@sb6786f25b9": {
+  "x-mt": true
+ },
+ "scd78f804bb": "Singapore",
+ "s61b325e35c": "Access ID (iot.tuya.com)",
+ "s925e495479": "Acceso ID de su propio proyecto de nube. Sólo se necesita para buscar las llaves.",
+ "@s925e495479": {
+  "x-mt": true
+ },
+ "sb07c0dad24": "Access Secret",
+ "s45bcef5c09": "Acceso Secreto de tu propio proyecto de nube. Almacenado sólo en este dispositivo / en tu propia bóveda.",
+ "@s45bcef5c09": {
+  "x-mt": true
+ },
+ "s295cf46412": "Llaves locales",
+ "@s295cf46412": {
+  "x-mt": true
+ },
+ "sf58ae26c82": "Las teclas locales de los dispositivos (se recogen automáticamente).",
+ "@sf58ae26c82": {
+  "x-mt": true
+ },
+ "s0c1a9d4ab9": "Mantener conectado (actualizaciones instantáneas)",
+ "@s0c1a9d4ab9": {
+  "x-mt": true
+ },
+ "s121fb2c5fc": "El dispositivo reporta cambios a la vez. Muchos dispositivos Tuya solo permiten una conexión – sólo en un dispositivo.",
+ "@s121fb2c5fc": {
+  "x-mt": true
+ },
+ "s65514aef3c": "Device id",
+ "@s65514aef3c": {
+  "x-mt": true
+ },
+ "se42a336655": "El dispositivo Tuya.",
+ "@se42a336655": {
+  "x-mt": true
+ },
+ "sff3cf64925": "DP",
+ "@sff3cf64925": {
+  "x-mt": true
+ },
+ "sfec9b1a643": "Número de puntos de datos:",
+ "@sfec9b1a643": {
+  "x-mt": true
+ },
+ "see24ec5d84": "Escala",
+ "@see24ec5d84": {
+  "x-mt": true
+ },
+ "s2fa7dedd1b": "E.g.",
+ "@s2fa7dedd1b": {
+  "x-mt": true
+ },
+ "se30676cace": "Número",
+ "@se30676cace": {
+  "x-mt": true
+ },
+ "seb4c438a42": "'Valor ({{value}})'",
+ "@seb4c438a42": {
+  "x-mt": true
+ },
+ "s033b6b8c6c": "'Valor para enviar; {{value}} = el valor de la tarjeta.'",
+ "@s033b6b8c6c": {
+  "x-mt": true
+ },
+ "s784e702cc1": "Tipo",
+ "@s784e702cc1": {
+  "x-mt": true
+ },
+ "safadcc12c8": "Encendido/apagado para interruptores, número para el brillo.",
+ "@safadcc12c8": {
+  "x-mt": true
+ },
+ "s8c8b6cb6d4": "On/off",
+ "s695fe25f79": "Número",
+ "@s695fe25f79": {
+  "x-mt": true
+ },
+ "s34900f9d58": "Texto",
+ "@s34900f9d58": {
+  "x-mt": true
+ },
+ "s9abc332fb8": "Tuya device {p0} no está en esta conexión",
+ "@s9abc332fb8": {
+  "x-mt": true
+ },
+ "s8b84454b87": "La clave es la clave",
+ "@s8b84454b87": {
+  "x-mt": true
+ },
+ "s764b6993c6": "Tuya: Falta la dirección IP del dispositivo",
+ "@s764b6993c6": {
+  "x-mt": true
+ },
+ "sae56ce66d4": "cerrado",
+ "@sae56ce66d4": {
+  "x-mt": true
+ },
+ "sb6a87586a8": "Tuya: Incumplir el protocolo local",
+ "@sb6a87586a8": {
+  "x-mt": true
+ },
+ "s2b1a0a5a05": "no",
+ "@s2b1a0a5a05": {
+  "x-mt": true
+ },
+ "sc4fdd8a4a3": "Tuya {p0}: ninguna respuesta al apretón de manos: ¿no es la clave local o la versión del protocolo?",
+ "@sc4fdd8a4a3": {
+  "x-mt": true
+ },
+ "sa291ffb35a": "fracasado",
+ "@sa291ffb35a": {
+  "x-mt": true
+ },
+ "se2a4cc6409": "Tuya:",
+ "@se2a4cc6409": {
+  "x-mt": true
+ },
+ "s7b8131a396": "no se puede encontrar",
+ "@s7b8131a396": {
+  "x-mt": true
+ },
+ "s210907044a": "Powerant / Tuya / Smart Life",
+ "sa8d1873781": "Enciende el enganche. Enciende el enganche.",
+ "@sa8d1873781": {
+  "x-mt": true
+ },
+ "s3530ee658b": "En la página Vista general del proyecto, el ID de acceso está en la página Vista general del proyecto.",
+ "@s3530ee658b": {
+  "x-mt": true
+ },
+ "s39d3fce33c": "Desde la misma página general. Almacenado sólo en este dispositivo (y su propia bóveda cifrada) – nunca en el servidor de Molaplan.",
+ "@s39d3fce33c": {
+  "x-mt": true
+ },
+ "s12e2e8638b": "El centro de datos del proyecto. Generalmente eu (Europa Central) en Europa. Europa Occidental = weu.",
+ "@s12e2e8638b": {
+  "x-mt": true
+ },
+ "sfc77cb8d11": "Sólo si no se encuentran los dispositivos: app → lápiz del dispositivo →",
+ "@sfc77cb8d11": {
+  "x-mt": true
+ },
+ "s7938176623": "Tuya con una llave local",
+ "@s7938176623": {
+  "x-mt": true
+ },
+ "sf11f3cf10e": "Si ya conoce el ID del dispositivo y su llave local.",
+ "@sf11f3cf10e": {
+  "x-mt": true
+ },
+ "s3dcff9c852": "De la lista de dispositivos del router (a menudo llamada ESP_ o wlan0).",
+ "@s3dcff9c852": {
+  "x-mt": true
+ },
+ "s3cc607ceba": "Una llave de 16 caracteres. Consigalo de un proyecto desarrollador Tuya, o simplemente elija \"Powerant / Tuya / La vida inteligente\".",
+ "@s3cc607ceba": {
+  "x-mt": true
+ },
+ "s4105c416c6": "Llenado automáticamente cuando el dispositivo fue encontrado en la red.",
+ "@s4105c416c6": {
+  "x-mt": true
+ },
+ "s39dfcd0595": "3.3, 3.4 o 3.5. Detectado automáticamente cuando el dispositivo fue encontrado en la red.",
+ "@s39dfcd0595": {
+  "x-mt": true
+ },
+ "s991d0c0cdc": "canal {p0}",
+ "@s991d0c0cdc": {
+  "x-mt": true
+ },
+ "sc8b1b10046": "temperatura de color",
+ "@sc8b1b10046": {
+  "x-mt": true
+ },
+ "s0ceafaa97c": "energía",
+ "@s0ceafaa97c": {
+  "x-mt": true
+ },
+ "sdb8ea154be": "tensión",
+ "@sdb8ea154be": {
+  "x-mt": true
+ },
+ "s37f61ae645": "corriente",
+ "@s37f61ae645": {
   "x-mt": true
  },
  "s5b44cbe9c0": "Casa",
@@ -3529,10 +3783,6 @@
   "x-mt": true
  },
  "s8a8673aafe": "Título",
- "s34900f9d58": "Texto",
- "@s34900f9d58": {
-  "x-mt": true
- },
  "s3c2ee8fe0d": "'{summary} = tiempo, precio y estado del hogar'",
  "@s3c2ee8fe0d": {
   "x-mt": true
@@ -4097,6 +4347,26 @@
  },
  "s417228f48f": "Otras marcas – por qué aún no",
  "@s417228f48f": {
+  "x-mt": true
+ },
+ "se50e28a0e4": "Los dispositivos se controlan en su red de inicio sin la nube. La primera vez, sus teclas locales se recogen con su propia cuenta de de desarrollador Tuya gratuita (unos 10 minutos, sólo una vez).",
+ "@se50e28a0e4": {
+  "x-mt": true
+ },
+ "sb35b23dbdd": "Trae las llaves con mi propia cuenta Tuya (recomendada)",
+ "@sb35b23dbdd": {
+  "x-mt": true
+ },
+ "sbc29869e30": "Todos los dispositivos Wi-Fi de la aplicación de inmediato.",
+ "@sbc29869e30": {
+  "x-mt": true
+ },
+ "s2f57241369": "Ya tengo la llave local",
+ "@s2f57241369": {
+  "x-mt": true
+ },
+ "sf4a309c04a": "Un dispositivo: dirección, identificación y llave.",
+ "@sf4a309c04a": {
   "x-mt": true
  },
  "s772c158a57": "tcp",
@@ -7532,10 +7802,6 @@
  "@sddd62d21b0": {
   "x-mt": true
  },
- "see24ec5d84": "Escala",
- "@see24ec5d84": {
-  "x-mt": true
- },
  "s0a239b832b": "Offset",
  "@s0a239b832b": {
   "x-mt": true
@@ -7918,30 +8184,70 @@
   "x-mt": true
  },
  "s1c9df5579f": "Marca",
+ "s34a3681441": "Marcador y tipo de conexión. Los locales trabajan sin la nube.",
+ "@s34a3681441": {
+  "x-mt": true
+ },
  "s88688d2809": "Dispositivo IP (marcas locales)",
  "@s88688d2809": {
+  "x-mt": true
+ },
+ "s87e0a93996": "Dirección IP de una unidad local (de la lista de dispositivos del router).",
+ "@s87e0a93996": {
   "x-mt": true
  },
  "sc0bc183c3e": "E-mail (cloud)",
  "@sc0bc183c3e": {
   "x-mt": true
  },
+ "s0cc25259c7": "El e-mail que ingresa a la aplicación del fabricante con (MELCloud, airCloud).",
+ "@s0cc25259c7": {
+  "x-mt": true
+ },
  "s25f561c483": "Nombre de usuario (Toshiba)",
  "@s25f561c483": {
+  "x-mt": true
+ },
+ "s92e7ac8d3c": "Tu nombre de usuario de Toshiba Home AC Control.",
+ "@s92e7ac8d3c": {
+  "x-mt": true
+ },
+ "safde071183": "La contraseña de la aplicación del fabricante. Almacenado sólo en este dispositivo / en su propia bóveda.",
+ "@safde071183": {
   "x-mt": true
  },
  "s2862f25983": "Token (SmartThings)",
  "@s2862f25983": {
   "x-mt": true
  },
+ "s23a4bc8253": "SmartThings acceso personal token (account.smartthings.com/tokens).",
+ "@s23a4bc8253": {
+  "x-mt": true
+ },
  "sef37e5048d": "Clave (Daikin BRP072C, pegatina)",
  "@sef37e5048d": {
   "x-mt": true
  },
+ "s1c339065e1": "La llave impresa en la pegatina del adaptador BRP072C.",
+ "@s1c339065e1": {
+  "x-mt": true
+ },
  "se67e3e0eb9": "Client ID (myUplink)",
+ "sc2d5225ae8": "ID de cliente de su propia aplicación en dev.myuplink.com.",
+ "@sc2d5225ae8": {
+  "x-mt": true
+ },
  "sa165e50f99": "Client Secret (myUplink)",
+ "s332f9bc1a1": "Cliente Secret de su propia aplicación en dev.myuplink.com.",
+ "@s332f9bc1a1": {
+  "x-mt": true
+ },
  "sd1d4b22fc6": "Mapa del registro (Modbus)",
  "@sd1d4b22fc6": {
+  "x-mt": true
+ },
+ "s5a9d485e7f": "La serie de la bomba. ''lista de registro importada'' = la propia exportación CSV de la bomba.",
+ "@s5a9d485e7f": {
   "x-mt": true
  },
  "s7dc3b152a8": "NIBE S-series",
@@ -7957,29 +8263,69 @@
  "@sfdc0bbf134": {
   "x-mt": true
  },
+ "scd35ffb8e9": "Por lo general el predeterminado (Modbus 502, MHI 51443).",
+ "@scd35ffb8e9": {
+  "x-mt": true
+ },
  "s58f0665e29": "Modbus unit id",
+ "sab25ff8075": "Dirección de unidad Modbus, generalmente 1.",
+ "@sab25ff8075": {
+  "x-mt": true
+ },
  "sb064bec4c8": "URL del servidor (sólo prueba)",
  "@sb064bec4c8": {
+  "x-mt": true
+ },
+ "s67b2ac9328": "Probando solamente: reemplaza la dirección del servidor del fabricante.",
+ "@s67b2ac9328": {
   "x-mt": true
  },
  "sabab3f2fae": "Qué leer",
  "@sabab3f2fae": {
   "x-mt": true
  },
+ "sf5e949d20c": "Estado completo (tarjeta de bomba de calor) o una lectura.",
+ "@sf5e949d20c": {
+  "x-mt": true
+ },
+ "s46ce82ef9c": "Estado completo",
+ "@s46ce82ef9c": {
+  "x-mt": true
+ },
+ "s8cbd66456f": "Una lectura",
+ "@s8cbd66456f": {
+  "x-mt": true
+ },
  "s6d1827b58e": "Unidad id",
  "@s6d1827b58e": {
+  "x-mt": true
+ },
+ "s89308ddc6d": "Unidad interior id; ''mantenimiento'' para dispositivos de unidad única.",
+ "@s89308ddc6d": {
   "x-mt": true
  },
  "sa643668bec": "Lectura (corriente, objetivo, exterior, potencia...)",
  "@sa643668bec": {
   "x-mt": true
  },
+ "s02d24152f0": "Que lectura: actual, objetivo, exterior, energía, suministro, hot_water...",
+ "@s02d24152f0": {
+  "x-mt": true
+ },
+ "se16e293d6b": "Set",
+ "@se16e293d6b": {
+  "x-mt": true
+ },
  "s155de09d38": "Qué establecer",
  "@s155de09d38": {
   "x-mt": true
  },
- "seb4c438a42": "'Valor ({{value}})'",
- "@seb4c438a42": {
+ "s94ecb845c8": "Punto de juego, potencia, modo o ventilador.",
+ "@s94ecb845c8": {
+  "x-mt": true
+ },
+ "sba2eb6d9b9": "Setpoint",
+ "@sba2eb6d9b9": {
   "x-mt": true
  },
  "s6478b264c0": "Bomba de calor \"{p0}\" ya no está en la cuenta",
@@ -8885,98 +9231,6 @@
  },
  "s3a38b97f7b": "{p0} – room",
  "@s3a38b97f7b": {
-  "x-mt": true
- },
- "s0ceafaa97c": "energía",
- "@s0ceafaa97c": {
-  "x-mt": true
- },
- "s34a3681441": "Marcador y tipo de conexión. Los locales trabajan sin la nube.",
- "@s34a3681441": {
-  "x-mt": true
- },
- "s87e0a93996": "Dirección IP de una unidad local (de la lista de dispositivos del router).",
- "@s87e0a93996": {
-  "x-mt": true
- },
- "s0cc25259c7": "El e-mail que ingresa a la aplicación del fabricante con (MELCloud, airCloud).",
- "@s0cc25259c7": {
-  "x-mt": true
- },
- "s92e7ac8d3c": "Tu nombre de usuario de Toshiba Home AC Control.",
- "@s92e7ac8d3c": {
-  "x-mt": true
- },
- "safde071183": "La contraseña de la aplicación del fabricante. Almacenado sólo en este dispositivo / en su propia bóveda.",
- "@safde071183": {
-  "x-mt": true
- },
- "s23a4bc8253": "SmartThings acceso personal token (account.smartthings.com/tokens).",
- "@s23a4bc8253": {
-  "x-mt": true
- },
- "s1c339065e1": "La llave impresa en la pegatina del adaptador BRP072C.",
- "@s1c339065e1": {
-  "x-mt": true
- },
- "sc2d5225ae8": "ID de cliente de su propia aplicación en dev.myuplink.com.",
- "@sc2d5225ae8": {
-  "x-mt": true
- },
- "s332f9bc1a1": "Cliente Secret de su propia aplicación en dev.myuplink.com.",
- "@s332f9bc1a1": {
-  "x-mt": true
- },
- "s5a9d485e7f": "La serie de la bomba. ''lista de registro importada'' = la propia exportación CSV de la bomba.",
- "@s5a9d485e7f": {
-  "x-mt": true
- },
- "scd35ffb8e9": "Por lo general el predeterminado (Modbus 502, MHI 51443).",
- "@scd35ffb8e9": {
-  "x-mt": true
- },
- "sab25ff8075": "Dirección de unidad Modbus, generalmente 1.",
- "@sab25ff8075": {
-  "x-mt": true
- },
- "s67b2ac9328": "Probando solamente: reemplaza la dirección del servidor del fabricante.",
- "@s67b2ac9328": {
-  "x-mt": true
- },
- "sf5e949d20c": "Estado completo (tarjeta de bomba de calor) o una lectura.",
- "@sf5e949d20c": {
-  "x-mt": true
- },
- "s46ce82ef9c": "Estado completo",
- "@s46ce82ef9c": {
-  "x-mt": true
- },
- "s8cbd66456f": "Una lectura",
- "@s8cbd66456f": {
-  "x-mt": true
- },
- "s89308ddc6d": "Unidad interior id; ''mantenimiento'' para dispositivos de unidad única.",
- "@s89308ddc6d": {
-  "x-mt": true
- },
- "s02d24152f0": "Que lectura: actual, objetivo, exterior, energía, suministro, hot_water...",
- "@s02d24152f0": {
-  "x-mt": true
- },
- "se16e293d6b": "Set",
- "@se16e293d6b": {
-  "x-mt": true
- },
- "s94ecb845c8": "Punto de juego, potencia, modo o ventilador.",
- "@s94ecb845c8": {
-  "x-mt": true
- },
- "sba2eb6d9b9": "Setpoint",
- "@sba2eb6d9b9": {
-  "x-mt": true
- },
- "s033b6b8c6c": "'Valor para enviar; {{value}} = el valor de la tarjeta.'",
- "@s033b6b8c6c": {
   "x-mt": true
  }
 }

@@ -19,6 +19,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s252ebed5af => 'Shelly Cloud';
 
   @override
+  String get s07d3467ef6 => 'Tuya';
+
+  @override
   String get s10edebf3fa => 'ntfy-palvelin';
 
   @override
@@ -589,6 +592,33 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s1f18c0f400 => 'true=SAVUA!;false=OK';
 
   @override
+  String s1a9acfbc67(String p0) {
+    return 'Valo$p0';
+  }
+
+  @override
+  String s5d0fb602f6(String p0) {
+    return 'Verho$p0';
+  }
+
+  @override
+  String s82ecc12a66(String p0) {
+    return 'Lämpötila$p0 (lisäosa)';
+  }
+
+  @override
+  String get s68e711123b => 'lämpötila';
+
+  @override
+  String get s736646b3b0 => 'kosteus';
+
+  @override
+  String get s8b234e1a6f => 'valoisuus';
+
+  @override
+  String get s03a198454c => 'paristo';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -608,9 +638,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sf50732e8e8 => 'himmennettävä';
-
-  @override
-  String get s68e711123b => 'lämpötila';
 
   @override
   String get s4082a34467 => 'anturi';
@@ -776,8 +803,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sfcb44be1a0 => 'Shelly';
 
   @override
-  String get sa6ff717527 =>
-      'Releet ja pistorasiat: Pro 4PM, Plus 1PM, Plug S, 2.5… Löytyy automaattisesti, ruudut tehdään joka kanavalle.';
+  String get sc7df69ad6e =>
+      'Releet, pistorasiat, himmentimet, verhot, energiamittarit (Pro 3EM) ja anturit. Löytyy automaattisesti, toimii ilman pilveä.';
 
   @override
   String get sd7e123cd2f =>
@@ -800,6 +827,13 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s8b35cc884f => 'Mittaus';
+
+  @override
+  String get sa58e7aab49 =>
+      'kalibroi Shelly-sovelluksessa, niin saat liukusäätimen';
+
+  @override
+  String get s78b6134b71 => 'paristolaite: päivittyy kun herää';
 
   @override
   String get sd8dfb25d31 => 'Shelly Cloud (ilman kotisiltaa)';
@@ -975,6 +1009,206 @@ class AppLocalizationsFi extends AppLocalizations {
   String sbae99909c4(String p0) {
     return 'Huom: tämä laite on verkossa $p0.x – laite ei ehkä ole samassa wifissä.';
   }
+
+  @override
+  String get sc20488a1f0 => 'Tuya / Powerant (paikallinen)';
+
+  @override
+  String get sc849342970 => 'Tuya-pilven alue';
+
+  @override
+  String get s49c53b561d =>
+      'Vain avainten hakuun. Suomessa yleensä Keski-Eurooppa.';
+
+  @override
+  String get s7cf3dec993 => 'Keski-Eurooppa';
+
+  @override
+  String get seead5e286d => 'Länsi-Eurooppa';
+
+  @override
+  String get s081e2e881d => 'Länsi-USA';
+
+  @override
+  String get s5b9587ae93 => 'Itä-USA';
+
+  @override
+  String get sc5401d63d5 => 'Kiina';
+
+  @override
+  String get sb6786f25b9 => 'Intia';
+
+  @override
+  String get scd78f804bb => 'Singapore';
+
+  @override
+  String get s61b325e35c => 'Access ID (iot.tuya.com)';
+
+  @override
+  String get s925e495479 =>
+      'Oman pilviprojektisi Access ID. Tarvitaan vain avainten hakuun.';
+
+  @override
+  String get sb07c0dad24 => 'Access Secret';
+
+  @override
+  String get s45bcef5c09 =>
+      'Oman pilviprojektisi Access Secret. Tallentuu vain tälle laitteelle / omaan holviisi.';
+
+  @override
+  String get s295cf46412 => 'Paikalliset avaimet';
+
+  @override
+  String get sf58ae26c82 =>
+      'Laitteiden paikalliset avaimet (haetaan automaattisesti).';
+
+  @override
+  String get s0c1a9d4ab9 => 'Pysyvä yhteys (heti päivittyvät ruudut)';
+
+  @override
+  String get s121fb2c5fc =>
+      'Laite ilmoittaa muutoksista heti. Moni Tuya-laite sallii vain yhden yhteyden kerrallaan – käytä vain yhdellä laitteella.';
+
+  @override
+  String get s65514aef3c => 'Laitteen tunnus';
+
+  @override
+  String get se42a336655 => 'Tuya-laitteen id.';
+
+  @override
+  String get sff3cf64925 => 'DP-numero';
+
+  @override
+  String get sfec9b1a643 => 'Datapisteen numero (1 = virta useimmissa).';
+
+  @override
+  String get see24ec5d84 => 'Kerroin';
+
+  @override
+  String get s2fa7dedd1b => 'Esim. 0.1, jos laite ilmoittaa kymmenyksinä.';
+
+  @override
+  String get se30676cace => 'Datapisteen numero.';
+
+  @override
+  String get seb4c438a42 => 'Arvo ({{value}})';
+
+  @override
+  String get s033b6b8c6c => 'Lähetettävä arvo; {{value}} = ruudun arvo.';
+
+  @override
+  String get s784e702cc1 => 'Arvon tyyppi';
+
+  @override
+  String get safadcc12c8 => 'Päällä/pois kytkimille, numero kirkkaudelle.';
+
+  @override
+  String get s8c8b6cb6d4 => 'Päällä/pois';
+
+  @override
+  String get s695fe25f79 => 'Numero';
+
+  @override
+  String get s34900f9d58 => 'Teksti';
+
+  @override
+  String s9abc332fb8(String p0) {
+    return 'Tuya-laitetta $p0 ei ole tässä yhteydessä';
+  }
+
+  @override
+  String get s8b84454b87 =>
+      'Tuya: laitteen paikallinen avain puuttuu – hae avaimet uudelleen';
+
+  @override
+  String get s764b6993c6 => 'Tuya: laitteen IP-osoite puuttuu';
+
+  @override
+  String get sae56ce66d4 => 'yhteys katkesi';
+
+  @override
+  String get sb6a87586a8 =>
+      'Tuya: väärä paikallinen avain (local key) tai protokollaversio';
+
+  @override
+  String get s2b1a0a5a05 => 'laite ei vastannut';
+
+  @override
+  String sc4fdd8a4a3(String p0) {
+    return 'Tuya $p0: laite ei vastannut kättelyyn – väärä paikallinen avain (local key) tai protokollaversio?';
+  }
+
+  @override
+  String get sa291ffb35a => 'kättely epäonnistui';
+
+  @override
+  String get se2a4cc6409 => 'Tuya: väärä paikallinen avain (local key)';
+
+  @override
+  String get s7b8131a396 => 'ei löytynyt kotiverkosta';
+
+  @override
+  String get s210907044a => 'Powerant / Tuya / Smart Life';
+
+  @override
+  String get sa8d1873781 =>
+      'Pistorasiat, kytkimet, himmentimet, lamput ja anturit. Ohjataan kotiverkossa ilman pilveä.';
+
+  @override
+  String get s3530ee658b =>
+      'Oma ilmainen Tuya-kehittäjäprojekti: iot.tuya.com → Cloud → Create Cloud Project (data center: Central Europe) → Devices → Link App Account → skannaa QR-koodi Smart Life- / Tuya- / Powerant-sovelluksella. Access ID näkyy projektin Overview-sivulla.';
+
+  @override
+  String get s39d3fce33c =>
+      'Samalta Overview-sivulta. Tallentuu vain tälle laitteelle (ja omaan salattuun holviisi) – ei Molaplanin palvelimille.';
+
+  @override
+  String get s12e2e8638b =>
+      'Projektin data center. Suomessa yleensä eu (Central Europe). Western Europe = weu.';
+
+  @override
+  String get sfc77cb8d11 =>
+      'Vain jos laitteita ei löydy: sovellus → laite → kynä → Laitetiedot → Virtuaalinen ID.';
+
+  @override
+  String get s7938176623 => 'Tuya paikallisella avaimella';
+
+  @override
+  String get sf11f3cf10e =>
+      'Jos tiedät jo laitteen tunnuksen ja paikallisen avaimen (local key).';
+
+  @override
+  String get s3dcff9c852 =>
+      'Reitittimen laitelistasta (laitteen nimi usein ESP_ tai wlan0).';
+
+  @override
+  String get s3cc607ceba =>
+      '16 merkin avain. Saat sen Tuya-kehittäjäprojektista tai helpoimmin valitsemalla \"Powerant / Tuya / Smart Life\".';
+
+  @override
+  String get s4105c416c6 =>
+      'Täytetään automaattisesti, jos laite löytyi verkosta.';
+
+  @override
+  String get s39dfcd0595 =>
+      '3.3, 3.4 tai 3.5. Tunnistetaan automaattisesti, jos laite löytyi verkosta.';
+
+  @override
+  String s991d0c0cdc(String p0) {
+    return 'kanava $p0';
+  }
+
+  @override
+  String get sc8b1b10046 => 'värilämpötila';
+
+  @override
+  String get s0ceafaa97c => 'energia';
+
+  @override
+  String get sdb8ea154be => 'jännite';
+
+  @override
+  String get s37f61ae645 => 'virta';
 
   @override
   String get s5b44cbe9c0 => 'Koti';
@@ -3901,9 +4135,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s8a8673aafe => 'Otsikko';
 
   @override
-  String get s34900f9d58 => 'Teksti';
-
-  @override
   String get s3c2ee8fe0d => '{summary} = sää, sähkö ja kodin tila';
 
   @override
@@ -4448,6 +4679,22 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s417228f48f => 'Muut merkit – miksi ei vielä';
+
+  @override
+  String get se50e28a0e4 =>
+      'Laitteita ohjataan kotiverkossa ilman pilveä. Ensimmäisellä kerralla tarvitaan laitteiden paikalliset avaimet, jotka haetaan omalla ilmaisella Tuya-kehittäjätililläsi (noin 10 minuuttia, vain kerran).';
+
+  @override
+  String get sb35b23dbdd => 'Hae avaimet omalla Tuya-tunnuksella (suositus)';
+
+  @override
+  String get sbc29869e30 => 'Kaikki sovelluksen wifi-laitteet kerralla.';
+
+  @override
+  String get s2f57241369 => 'Minulla on jo paikallinen avain';
+
+  @override
+  String get sf4a309c04a => 'Yksi laite: osoite, tunnus ja avain.';
 
   @override
   String get s772c158a57 => 'rtsp-transport';
@@ -7999,9 +8246,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sddd62d21b0 => 'Sanajärjestys käänteinen (CDAB)';
 
   @override
-  String get see24ec5d84 => 'Kerroin';
-
-  @override
   String get s0a239b832b => 'Siirtymä';
 
   @override
@@ -8486,12 +8730,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sba2eb6d9b9 => 'Asetusarvo';
-
-  @override
-  String get seb4c438a42 => 'Arvo ({{value}})';
-
-  @override
-  String get s033b6b8c6c => 'Lähetettävä arvo; {{value}} = ruudun arvo.';
 
   @override
   String s6478b264c0(String p0) {
@@ -9358,7 +9596,4 @@ class AppLocalizationsFi extends AppLocalizations {
   String s3a38b97f7b(String p0) {
     return '$p0 – huone';
   }
-
-  @override
-  String get s0ceafaa97c => 'energia';
 }

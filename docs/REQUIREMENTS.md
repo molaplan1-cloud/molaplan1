@@ -250,11 +250,29 @@ Source = the request id (tNNNu) or the brief/round it came from. Version = the r
 | R285 | Daikin Onecta cloud / new BRP069C firmware – not built: needs a Daikin developer agreement, new firmware has no local API (IR / ESPHome meanwhile) | t269u | Later | – |
 | R286 | Hitachi Yutaki (air-to-water) – needs the ATW-MBS-02 Modbus gateway; Samsung local API needs a per-device certificate; Panasonic, LG, Gree, Midea next | t269u | Later | – |
 
+## Shelly and Powerant / Tuya (t270u, R287)
+| ID | Requirement | Source | Status | Version |
+|---|---|---|---|---|
+| R291 | Shelly Gen1 lights: Dimmer / Bulb / Duo / RGBW2 – on/off tile + brightness slider (`/light/N`, colour mode `/color/N` with gain) | t270u | Done (mock device; untested on hardware) | 0.16.0 |
+| R292 | Shelly Gen1 rollers (2.5 in roller mode): position slider + open/stop/close buttons; the motor relays are never offered as separate switches | t270u | Done (mock device; untested on hardware) | 0.16.0 |
+| R293 | Shelly Gen1 sensors: H&T, Door/Window 2, Motion, Smoke, add-on temperature/humidity, battery (battery devices update when awake) | t270u | Done (mock device; untested on hardware) | 0.16.0 |
+| R294 | Shelly Gen2+ (Plus / Pro / Gen3 / Gen4) RPC: Light / RGB / RGBW / CCT with brightness, Cover (GoToPosition when calibrated, else open/stop/close), Temperature / Humidity / Illuminance / Smoke / DevicePower components | t270u | Done (mock device; untested on hardware) | 0.16.0 |
+| R295 | Shelly relays, plugs and energy meters (Pro 3EM phases + total, EM, PM) keep working as before (R040–R043, R109, R175, R176); mDNS + subnet discovery unchanged | t270u | Done (regression tests) | 0.16.0 |
+| R296 | Shelly instant updates: Gen2+ WebSocket RPC channel (`ws://device/rpc`, digest auth with the device password), Gen1 CoIoT multicast hint; notifications trigger one throttled HTTP re-read; safety poll 60 s; only for connections created by 0.16.0+ (`push`), old ones keep polling | t270u | Done (mock WebSocket + UDP tests; untested on hardware) | 0.16.0 |
+| R297 | Shelly Cloud stays an optional extra (existing R098 / shelly_cloud driver); local is the default | t270u | Done | 0.16.0 |
+| R298 | Tuya local protocol 3.3 / 3.4 / 3.5 in Dart (AES-ECB/GCM, CRC/HMAC frames, 3.4/3.5 session-key handshake, device22 fallback, status pushes, heartbeat); devices allow few connections, so default is short connect–query–close sessions shared by the device's tiles, persistent connection opt-in | t270u | Done (simulated device; untested on hardware) | 0.16.0 |
+| R299 | Tuya UDP discovery (6666 / 6667 / 7000 incl. the 3.5 broadcast request): device id, IP and protocol version found automatically (via the home bridge in the web app) | t270u | Done (UDP tests; untested on hardware) | 0.16.0 |
+| R300 | Local key acquisition with the user's own Tuya developer project (iot.tuya.com Access ID + Secret, app account linked by QR): signed cloud API (HMAC-SHA256, verified against Tuya's documented example), all linked Wi-Fi devices + DP specifications fetched once; Zigbee sub-devices skipped; alternative: type a local key manually | t270u | Done (mock cloud; untested against Tuya) | 0.16.0 |
+| R301 | Powerant / Tuya / Smart Life tiles: plugs and multi-gang switches (+ power, voltage, current, energy), dimmers and bulbs (on/off + brightness, colour temperature unticked), covers, temperature / humidity / battery, door, motion, leak and smoke sensors; usable in automations like any tile | t270u | Done (unit + widget tests) | 0.16.0 |
+| R302 | Tuya credentials (Access Secret, local keys) only in connection secrets – this device's secure storage / the user's E2E vault; sent only to Tuya's cloud (secret) or never leave the LAN (local keys) | t270u | Done | 0.16.0 |
+| R303 | Simple UI: Shelly card describes dimmers / covers / meters / sensors; one 'Powerant / Tuya / Smart Life' card → choose 'fetch keys (recommended)' or 'I already have the key' → wizard; extras unticked; everything marked untested on hardware in code, docs/SHELLY-TUYA.md and release notes | t270u | Done (widget tests) | 0.16.0 |
+| R304 | Web intro language: picking Suomi / English (or another language) on the molaplan.com intro changes the texts immediately without leaving the page (WebLandingPage listens to the app state; MolaplanApp rebuilds its locale on language change) | t272u, t273u | Done (widget test) | 0.16.0 |
+
 ## Next device batches (t270u)
 | ID | Requirement | Source | Status | Version |
 |---|---|---|---|---|
-| R287 | Next batch: Shelly (local, all generations) and Powerant (Tuya local protocol) | t270u | Planned | next |
-| R288 | Solar inverters: Huawei, Fronius, SolarEdge, Growatt, SMA (local Modbus/HTTP first) | t270u | Planned | later |
+| R287 | Shelly (local, all generations) and Powerant (Tuya local protocol) – detail rows R291–R303 | t270u | Done (simulated; untested on hardware) | 0.16.0 |
+| R288 | Solar inverters: Huawei, Fronius, SolarEdge, Growatt, SMA (local Modbus/HTTP first) | t270u | Planned | next |
 | R289 | EV chargers: OCPP, Easee, Zaptec, Wallbox | t270u | Planned | later |
 | R290 | Other common devices in Finland after that; Home Assistant bridge kept as an optional extra | t267u, t270u | Planned | later |
 

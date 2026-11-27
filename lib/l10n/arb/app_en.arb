@@ -15,50 +15,55 @@
   "description": "fi: Shelly Cloud",
   "x-where": "core/friendly_error.dart:50"
  },
+ "s07d3467ef6": "Tuya",
+ "@s07d3467ef6": {
+  "description": "fi: Tuya",
+  "x-where": "core/friendly_error.dart:51"
+ },
  "s10edebf3fa": "The ntfy server",
  "@s10edebf3fa": {
   "description": "fi: ntfy-palvelin",
-  "x-where": "core/friendly_error.dart:51"
+  "x-where": "core/friendly_error.dart:52"
  },
  "sc08176420f": "The Airthings cloud",
  "@sc08176420f": {
   "description": "fi: Airthings-pilvi",
-  "x-where": "core/friendly_error.dart:52"
+  "x-where": "core/friendly_error.dart:53"
  },
  "sd3d9c263ed": "The service",
  "@sd3d9c263ed": {
   "description": "fi: Palvelu",
-  "x-where": "core/friendly_error.dart:53"
+  "x-where": "core/friendly_error.dart:54"
  },
  "sedeaf26f8a": "ntfy message limit reached",
  "@sedeaf26f8a": {
   "description": "fi: ntfy-viestiraja täynnä",
-  "x-where": "core/friendly_error.dart:271"
+  "x-where": "core/friendly_error.dart:272"
  },
  "s5d151d0815": "ntfy.sh allows 250 messages per 12 hours from your home''s public IP (all phones, tablets, PCs and the device''s own replies together). Messages free up every few minutes – the app now asks for the state less often. A lasting fix: your own ntfy server or an ntfy account with a higher limit.",
  "@s5d151d0815": {
   "description": "fi: ntfy.sh sallii 250 viestiä 12 tunnissa kotisi julkisesta IP-osoitteesta (kaikki puhelimet, tabletit, PC ja laitteen omat",
-  "x-where": "core/friendly_error.dart:272"
+  "x-where": "core/friendly_error.dart:273"
  },
  "s349ca716f2": "No reply from the device",
  "@s349ca716f2": {
   "description": "fi: Ei vastausta laitteelta",
-  "x-where": "core/friendly_error.dart:283"
+  "x-where": "core/friendly_error.dart:284"
  },
  "s7aa9e16c41": "The command reached the ntfy server, but no reply came from the device. Check the connection''s \"Reply topic\" – the device may answer on your own notification topic – and that the device is online.",
  "@s7aa9e16c41": {
   "description": "fi: Komento lähti ntfy-palvelimelle, mutta laitteen vastausta ei tullut. Tarkista yhteyden \"Vastauskanava\" – laite voi vasta",
-  "x-where": "core/friendly_error.dart:284"
+  "x-where": "core/friendly_error.dart:285"
  },
  "sdfb639365a": "No internet connection",
  "@sdfb639365a": {
   "description": "fi: Ei nettiyhteyttä",
-  "x-where": "core/friendly_error.dart:299"
+  "x-where": "core/friendly_error.dart:300"
  },
  "s390dd51af3": "{p0} is on the internet and could not be reached. Check this device''s internet connection. The latest data is shown when available.",
  "@s390dd51af3": {
   "description": "fi: {p0} on internetissä, eikä siihen saatu yhteyttä. Tarkista tämän laitteen nettiyhteys. Viimeisimmät tiedot näytetään, ku",
-  "x-where": "core/friendly_error.dart:300",
+  "x-where": "core/friendly_error.dart:301",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -68,7 +73,7 @@
  "sbb750bf9d6": "{p0} is not answering, trying a backup source",
  "@sbb750bf9d6": {
   "description": "fi: {p0} ei vastaa, yritetään varalähdettä",
-  "x-where": "core/friendly_error.dart:310",
+  "x-where": "core/friendly_error.dart:311",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -78,7 +83,7 @@
  "s4284ebac1e": "{p0} is not answering",
  "@s4284ebac1e": {
   "description": "fi: {p0} ei vastaa",
-  "x-where": "core/friendly_error.dart:311",
+  "x-where": "core/friendly_error.dart:312",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -88,22 +93,22 @@
  "s828d009fa6": "The backup sources did not answer right now either. The problem is most likely at the services, not your home network. Retrying automatically.",
  "@s828d009fa6": {
   "description": "fi: Myöskään varalähteistä ei saatu tietoja juuri nyt. Vika on todennäköisesti palveluissa, ei kotiverkossasi. Yritetään aut",
-  "x-where": "core/friendly_error.dart:313"
+  "x-where": "core/friendly_error.dart:314"
  },
  "se21c801ba6": "The service has a problem, most likely at the service and not your home network. Retrying automatically.",
  "@se21c801ba6": {
   "description": "fi: Palvelussa on häiriö. Vika on todennäköisesti palvelussa, ei kotiverkossasi. Yritetään automaattisesti uudelleen.",
-  "x-where": "core/friendly_error.dart:317"
+  "x-where": "core/friendly_error.dart:318"
  },
  "s35e0766add": "Signing in to the service failed",
  "@s35e0766add": {
   "description": "fi: Kirjautuminen palveluun ei onnistunut",
-  "x-where": "core/friendly_error.dart:326"
+  "x-where": "core/friendly_error.dart:327"
  },
  "sa4d255e53c": "Check the account, key or token for {p0}.",
  "@sa4d255e53c": {
   "description": "fi: Tarkista palvelun tunnus, avain tai token ({p0}).",
-  "x-where": "core/friendly_error.dart:327",
+  "x-where": "core/friendly_error.dart:328",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -113,127 +118,127 @@
  "sd0a2130950": "The expected device does not answer at this address – check it (http or https?)",
  "@sd0a2130950": {
   "description": "fi: Osoitteessa ei vastaa odotettu laite – tarkista osoite (http vai https?)",
-  "x-where": "core/friendly_error.dart:333"
+  "x-where": "core/friendly_error.dart:334"
  },
  "sdd5742468b": "Something answers, but not as expected. Try https:// or http:// in front and check the port.",
  "@sdd5742468b": {
   "description": "fi: Osoitteessa vastaa jokin, mutta ei odotetulla tavalla. Kokeile https:// tai http:// osoitteen alkuun ja tarkista portti.",
-  "x-where": "core/friendly_error.dart:337"
+  "x-where": "core/friendly_error.dart:338"
  },
  "s03c0a5192b": "Address not found",
  "@s03c0a5192b": {
   "description": "fi: Osoitetta ei löydy",
-  "x-where": "core/friendly_error.dart:346"
+  "x-where": "core/friendly_error.dart:347"
  },
  "sb3ef01a6fa": "Check the spelling. Try the IP address (e.g. 192.168.1.50) instead of a name.",
  "@sb3ef01a6fa": {
   "description": "fi: Tarkista osoitteen kirjoitusasu. Kokeile IP-osoitetta (esim. 192.168.1.50) nimen sijaan.",
-  "x-where": "core/friendly_error.dart:347"
+  "x-where": "core/friendly_error.dart:348"
  },
  "s274a753ad6": "Device not found at this address",
  "@s274a753ad6": {
   "description": "fi: Laitetta ei löydy osoitteesta",
-  "x-where": "core/friendly_error.dart:356"
+  "x-where": "core/friendly_error.dart:357"
  },
  "s2b503695b6": "Check that the device is on and that your phone or PC is on the same Wi-Fi. Also check the IP address – it can change, so reserve a fixed address in your router.",
  "@s2b503695b6": {
   "description": "fi: Tarkista että laite on päällä ja että puhelin tai PC on samassa wifissä. Tarkista myös IP-osoite – se voi vaihtua, joten",
-  "x-where": "core/friendly_error.dart:357"
+  "x-where": "core/friendly_error.dart:358"
  },
  "sff9ca463e3": "Device found but the port is closed",
  "@sff9ca463e3": {
   "description": "fi: Laite löytyi, mutta ei vastaa tähän porttiin",
-  "x-where": "core/friendly_error.dart:366"
+  "x-where": "core/friendly_error.dart:367"
  },
  "s1d4f4506de": "Check the port number and that the service (web UI, MQTT or Modbus TCP) is enabled on the device.",
  "@s1d4f4506de": {
   "description": "fi: Tarkista portin numero ja että palvelu (esim. web-käyttöliittymä, MQTT tai Modbus TCP) on laitteessa päällä.",
-  "x-where": "core/friendly_error.dart:367"
+  "x-where": "core/friendly_error.dart:368"
  },
  "s8523a9cfd0": "Secure connection (https) failed",
  "@s8523a9cfd0": {
   "description": "fi: Suojattu yhteys (https) epäonnistui",
-  "x-where": "core/friendly_error.dart:376"
+  "x-where": "core/friendly_error.dart:377"
  },
  "sdfd499c1f1": "Try http:// instead, or enable \"Allow self-signed certificate\" under Advanced.",
  "@sdfd499c1f1": {
   "description": "fi: Kokeile osoitetta http:// -alkuisena, tai Lisäasetuksista \"Salli itse allekirjoitettu sertifikaatti\".",
-  "x-where": "core/friendly_error.dart:377"
+  "x-where": "core/friendly_error.dart:378"
  },
  "s3fabccc1cd": "Login, password or token rejected",
  "@s3fabccc1cd": {
   "description": "fi: Tunnus, salasana tai token ei kelpaa",
-  "x-where": "core/friendly_error.dart:386"
+  "x-where": "core/friendly_error.dart:387"
  },
  "sdc2d65f8eb": "Check the credentials. In Home Assistant you can create a new long-lived token in your profile.",
  "@sdc2d65f8eb": {
   "description": "fi: Tarkista tunnukset. Home Assistantissa voit luoda uuden pitkäikäisen tunnuksen omasta profiilista.",
-  "x-where": "core/friendly_error.dart:387"
+  "x-where": "core/friendly_error.dart:388"
  },
  "se0a7cef6c4": "Device answered but the item was not found",
  "@se0a7cef6c4": {
   "description": "fi: Laite vastasi, mutta kohdetta ei löytynyt",
-  "x-where": "core/friendly_error.dart:396"
+  "x-where": "core/friendly_error.dart:397"
  },
  "see02239a35": "Check the path or entity name (e.g. light.living_room).",
  "@see02239a35": {
   "description": "fi: Tarkista polku tai entiteetin nimi (esim. light.olohuone). Isot ja pienet kirjaimet ovat merkitseviä.",
-  "x-where": "core/friendly_error.dart:397"
+  "x-where": "core/friendly_error.dart:398"
  },
  "sdec83d1e90": "The device reported an error",
  "@sdec83d1e90": {
   "description": "fi: Laitteessa tapahtui virhe",
-  "x-where": "core/friendly_error.dart:406"
+  "x-where": "core/friendly_error.dart:407"
  },
  "s3de239ffc5": "Check the path and payload.",
  "@s3de239ffc5": {
   "description": "fi: Komento tai kysely ei kelvannut laitteelle. Tarkista polku ja lähetettävä sisältö.",
-  "x-where": "core/friendly_error.dart:407"
+  "x-where": "core/friendly_error.dart:408"
  },
  "s6121e8d8f1": "Unknown register on the device",
  "@s6121e8d8f1": {
   "description": "fi: Laite ei tunne tätä rekisteriä",
-  "x-where": "core/friendly_error.dart:416"
+  "x-where": "core/friendly_error.dart:417"
  },
  "s3474aedf54": "Check the register number. If the table starts at 1 (e.g. 40001), subtract 1. Also check holding vs input.",
  "@s3474aedf54": {
   "description": "fi: Tarkista rekisterin numero laitteen Modbus-taulukosta. Jos taulukko alkaa 1:stä (esim. 40001), vähennä 1. Tarkista myös ",
-  "x-where": "core/friendly_error.dart:417"
+  "x-where": "core/friendly_error.dart:418"
  },
  "s2c303f6774": "Register type not supported",
  "@s2c303f6774": {
   "description": "fi: Laite ei tue tätä rekisterityyppiä",
-  "x-where": "core/friendly_error.dart:426"
+  "x-where": "core/friendly_error.dart:427"
  },
  "s945685fcda": "Try the other register type (holding ↔ input).",
  "@s945685fcda": {
   "description": "fi: Kokeile toista rekisterityyppiä (holding ↔ input).",
-  "x-where": "core/friendly_error.dart:427"
+  "x-where": "core/friendly_error.dart:428"
  },
  "s07ffbc349a": "Value rejected by the device",
  "@s07ffbc349a": {
   "description": "fi: Laite ei hyväksynyt arvoa",
-  "x-where": "core/friendly_error.dart:433"
+  "x-where": "core/friendly_error.dart:434"
  },
  "s76b95eef9f": "The value is probably out of range. Check the scale too.",
  "@s76b95eef9f": {
   "description": "fi: Arvo on luultavasti sallitun alueen ulkopuolella. Tarkista myös kerroin.",
-  "x-where": "core/friendly_error.dart:434"
+  "x-where": "core/friendly_error.dart:435"
  },
  "s7746921882": "Device found, but Modbus TCP is off",
  "@s7746921882": {
   "description": "fi: Laite löytyi, mutta Modbus TCP ei ole päällä",
-  "x-where": "core/friendly_error.dart:443"
+  "x-where": "core/friendly_error.dart:444"
  },
  "s7e552bd146": "There is a device at this address, but it does not accept Modbus on this port. Turn on Modbus TCP in the device settings (often under Network / Modbus / Remote control) and check the port (usually 502). You can also tap \"Scan Modbus\". If the device works in Home Assistant, it may already have a connection (many allow only one) – read the values through HA.",
  "@s7e552bd146": {
   "description": "fi: Osoitteessa on laite, mutta se ei ota vastaan Modbus-yhteyttä tähän porttiin. Laita Modbus TCP päälle laitteen asetuksis",
-  "x-where": "core/friendly_error.dart:444"
+  "x-where": "core/friendly_error.dart:445"
  },
  "s0ebc613f20": "The device is in lockout, retrying at {p0}",
  "@s0ebc613f20": {
   "description": "fi: Laite on estotilassa, yritetään uudelleen klo {p0}",
-  "x-where": "core/friendly_error.dart:454",
+  "x-where": "core/friendly_error.dart:455",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -243,182 +248,182 @@
  "s317b2b59af": "The device did not answer, so it is left alone for a while – many devices lock out clients that poll too often. The pause grows from 30 seconds to 5 minutes. If the device already has a connection (e.g. Home Assistant), read the values through HA. The read interval and pauses are under Advanced in the connection.",
  "@s317b2b59af": {
   "description": "fi: Laite ei vastannut, joten sitä ei kysytä hetkeen – moni laite menee estotilaan, jos sitä kysytään liian usein. Tauko pit",
-  "x-where": "core/friendly_error.dart:455"
+  "x-where": "core/friendly_error.dart:456"
  },
  "s33e09089b2": "The device address is missing",
  "@s33e09089b2": {
   "description": "fi: Laitteen osoite puuttuu",
-  "x-where": "core/friendly_error.dart:464"
+  "x-where": "core/friendly_error.dart:465"
  },
  "s6180bd540e": "Open the connection and enter the device IP address, or tap \"Scan Modbus\" to find the device on the network.",
  "@s6180bd540e": {
   "description": "fi: Avaa yhteys ja anna laitteen IP-osoite, tai paina \"Skannaa Modbus\", niin sovellus etsii laitteen verkosta.",
-  "x-where": "core/friendly_error.dart:465"
+  "x-where": "core/friendly_error.dart:466"
  },
  "sd73581c910": "The device may already have a connection",
  "@sd73581c910": {
   "description": "fi: Laitteella voi olla jo yhteys",
-  "x-where": "core/friendly_error.dart:474"
+  "x-where": "core/friendly_error.dart:475"
  },
  "scee8d982a2": "The device dropped the Modbus connection right away. Many devices allow only one Modbus TCP connection at a time. If the device is already in Home Assistant (e.g. modbus.yaml), read the values through HA.",
  "@scee8d982a2": {
   "description": "fi: Laite katkaisi Modbus-yhteyden heti. Moni laite sallii vain yhden Modbus TCP -yhteyden kerrallaan. Jos laite on jo Home ",
-  "x-where": "core/friendly_error.dart:475"
+  "x-where": "core/friendly_error.dart:476"
  },
  "s6ca672a111": "Nothing at this address",
  "@s6ca672a111": {
   "description": "fi: Osoitteessa ei ole laitetta",
-  "x-where": "core/friendly_error.dart:484"
+  "x-where": "core/friendly_error.dart:485"
  },
  "sf7a98e1c70": "Nothing answered at this IP address. Check that the device is on and in the same network and that the IP is right (it can change – reserve a fixed address in the router). \"Scan Modbus\" finds devices on the network.",
  "@sf7a98e1c70": {
   "description": "fi: Tähän IP-osoitteeseen ei saatu yhteyttä. Tarkista että laite on päällä ja samassa verkossa, ja että IP-osoite on oikein ",
-  "x-where": "core/friendly_error.dart:485"
+  "x-where": "core/friendly_error.dart:486"
  },
  "scb0cba44ea": "The Modbus device did not answer in time",
  "@scb0cba44ea": {
   "description": "fi: Modbus-laite ei vastannut ajoissa",
-  "x-where": "core/friendly_error.dart:494"
+  "x-where": "core/friendly_error.dart:495"
  },
  "sc03ae7e1c5": "Could not open the port. Most common causes: wrong IP, the device is in another network (guest Wi-Fi), Modbus TCP is off or a firewall blocks the port. Check the address and port or tap \"Scan Modbus\".",
  "@sc03ae7e1c5": {
   "description": "fi: Yhteyttä porttiin ei saatu muodostettua. Yleisimmät syyt: väärä IP-osoite, laite on toisessa verkossa (vieras-wifi), Mod",
-  "x-where": "core/friendly_error.dart:495"
+  "x-where": "core/friendly_error.dart:496"
  },
  "sefba540275": "The gateway cannot reach a device with this unit id",
  "@sefba540275": {
   "description": "fi: Yhdyskäytävä ei tavoita laitetta tällä unit id:llä",
-  "x-where": "core/friendly_error.dart:504"
+  "x-where": "core/friendly_error.dart:505"
  },
  "s6e4ed361f3": "The Modbus gateway answered, but no device with this unit id is behind it. Check the device''s Modbus address (often 1) and the serial speed and parity. \"Scan Modbus\" tries addresses 1–247.",
  "@s6e4ed361f3": {
   "description": "fi: Modbus-yhdyskäytävä vastasi, mutta sen takana ei ole laitetta tällä osoitteella (unit id). Tarkista laitteen Modbus-osoi",
-  "x-where": "core/friendly_error.dart:505"
+  "x-where": "core/friendly_error.dart:506"
  },
  "sb66bc0e677": "No Modbus reply",
  "@sb66bc0e677": {
   "description": "fi: Laite ei vastannut Modbus-kyselyyn",
-  "x-where": "core/friendly_error.dart:514"
+  "x-where": "core/friendly_error.dart:515"
  },
  "s6ef5539bc2": "Connected but no reply. Check the unit id (often 1) and the gateway serial settings.",
  "@s6ef5539bc2": {
   "description": "fi: Yhteys aukesi, mutta vastausta ei tullut. Tarkista laitteen osoite (unit id, usein 1) ja yhdyskäytävän sarjaportin asetu",
-  "x-where": "core/friendly_error.dart:515"
+  "x-where": "core/friendly_error.dart:516"
  },
  "s17ea4c52d5": "No reply from the device",
  "@s17ea4c52d5": {
   "description": "fi: Laite ei vastannut",
-  "x-where": "core/friendly_error.dart:524"
+  "x-where": "core/friendly_error.dart:525"
  },
  "s50ecf9ba6f": "Connected but no reply in time. Check the message.",
  "@s50ecf9ba6f": {
   "description": "fi: Yhteys toimi, mutta vastausta ei tullut ajoissa. Tarkista lähetettävä viesti.",
-  "x-where": "core/friendly_error.dart:525"
+  "x-where": "core/friendly_error.dart:526"
  },
  "sf93db545a1": "There is a mistake in the settings",
  "@sf93db545a1": {
   "description": "fi: Asetuksissa on virhe",
-  "x-where": "core/friendly_error.dart:534"
+  "x-where": "core/friendly_error.dart:535"
  },
  "sf19a9f0856": "Check the fields, e.g. that the address starts with http:// and numbers are numbers.",
  "@sf19a9f0856": {
   "description": "fi: Tarkista kentät, esim. että osoite alkaa http:// ja että numerot ovat numeroita.",
-  "x-where": "core/friendly_error.dart:535"
+  "x-where": "core/friendly_error.dart:536"
  },
  "s3976954bef": "This tile has no device",
  "@s3976954bef": {
   "description": "fi: Ruudulta puuttuu laite",
-  "x-where": "core/friendly_error.dart:544"
+  "x-where": "core/friendly_error.dart:545"
  },
  "sc025e0a1f4": "Open edit mode (pencil) and choose a device for the tile.",
  "@sc025e0a1f4": {
   "description": "fi: Avaa muokkaus (kynä) ja valitse ruudulle laite.",
-  "x-where": "core/friendly_error.dart:545"
+  "x-where": "core/friendly_error.dart:546"
  },
  "s7e11595f9e": "The home bridge is off",
  "@s7e11595f9e": {
   "description": "fi: Kotisilta ei ole päällä",
-  "x-where": "core/friendly_error.dart:554"
+  "x-where": "core/friendly_error.dart:555"
  },
  "s2cd1df086e": "Remote access goes through the bridge at home (tablet or PC). Check that it is on, Molaplan is open and it has internet.",
  "@s2cd1df086e": {
   "description": "fi: Etäyhteys kulkee kotona olevan sillan (tabletti tai PC) kautta. Tarkista että se on päällä, Molaplan on auki ja sillä on",
-  "x-where": "core/friendly_error.dart:555"
+  "x-where": "core/friendly_error.dart:556"
  },
  "sdbf06d05d9": "Your device cannot reach the Molaplan remote service. Check mobile data or Wi-Fi.",
  "@sdbf06d05d9": {
   "description": "fi: Laitteesi ei saa yhteyttä Molaplanin etäpalveluun. Tarkista mobiilidata tai wifi.",
-  "x-where": "core/friendly_error.dart:565"
+  "x-where": "core/friendly_error.dart:566"
  },
  "s8b737f4026": "Remote access was removed",
  "@s8b737f4026": {
   "description": "fi: Etäyhteys on poistettu",
-  "x-where": "core/friendly_error.dart:574"
+  "x-where": "core/friendly_error.dart:575"
  },
  "s4b9e4ca079": "This device was removed on the home bridge. Pair again: Settings → Remote access.",
  "@s4b9e4ca079": {
   "description": "fi: Tämä laite on poistettu kotisillalta. Yhdistä uudelleen: Asetukset → Etäyhteys.",
-  "x-where": "core/friendly_error.dart:575"
+  "x-where": "core/friendly_error.dart:576"
  },
  "s5b3116ed94": "The home bridge did not answer in time",
  "@s5b3116ed94": {
   "description": "fi: Kotisilta ei vastannut ajoissa",
-  "x-where": "core/friendly_error.dart:584"
+  "x-where": "core/friendly_error.dart:585"
  },
  "se082095a34": "The connection may be slow. Try again in a moment.",
  "@se082095a34": {
   "description": "fi: Yhteys voi olla hidas. Yritä hetken päästä uudelleen.",
-  "x-where": "core/friendly_error.dart:585"
+  "x-where": "core/friendly_error.dart:586"
  },
  "s688a4f4ccb": "The code is not valid",
  "@s688a4f4ccb": {
   "description": "fi: Koodi ei kelpaa",
-  "x-where": "core/friendly_error.dart:594"
+  "x-where": "core/friendly_error.dart:595"
  },
  "sfa0e226cd0": "Check the 6 digits on the bridge screen. A code is valid for 10 minutes and works once – press \"Pair a phone\" on the bridge again if needed.",
  "@sfa0e226cd0": {
   "description": "fi: Tarkista 6 numeroa kotisillan näytöltä. Koodi on voimassa 10 minuuttia ja kelpaa kerran – paina tarvittaessa sillalla \"Y",
-  "x-where": "core/friendly_error.dart:595"
+  "x-where": "core/friendly_error.dart:596"
  },
  "sfa5c1fb1ac": "The bridge did not accept this device",
  "@sfa5c1fb1ac": {
   "description": "fi: Kotisilta ei hyväksynyt laitetta",
-  "x-where": "core/friendly_error.dart:604"
+  "x-where": "core/friendly_error.dart:605"
  },
  "s9ad07ab36e": "When pairing with the code, the bridge asks for confirmation – press \"Accept\" there. Or scan the QR code, then no confirmation is needed.",
  "@s9ad07ab36e": {
   "description": "fi: Kun yhdistät koodilla, sillan näytölle tulee kysymys – paina siellä \"Hyväksy\". Tai skannaa QR-koodi, silloin hyväksyntää",
-  "x-where": "core/friendly_error.dart:605"
+  "x-where": "core/friendly_error.dart:606"
  },
  "sb5c271ae6a": "Security check failed",
  "@sb5c271ae6a": {
   "description": "fi: Turvatarkistus epäonnistui",
-  "x-where": "core/friendly_error.dart:614"
+  "x-where": "core/friendly_error.dart:615"
  },
  "s3d7ca280db": "The connection could not be verified as safe, so it was not used. Try again with the QR code.",
  "@s3d7ca280db": {
   "description": "fi: Yhteyttä ei voitu varmistaa turvalliseksi, joten sitä ei otettu käyttöön. Yritä uudelleen QR-koodilla.",
-  "x-where": "core/friendly_error.dart:615"
+  "x-where": "core/friendly_error.dart:616"
  },
  "s0061b44673": "The bridge did not answer",
  "@s0061b44673": {
   "description": "fi: Kotisilta ei vastannut",
-  "x-where": "core/friendly_error.dart:624"
+  "x-where": "core/friendly_error.dart:625"
  },
  "sceb894b9b3": "Accept the device on the bridge screen within 3 minutes, or scan the QR code.",
  "@sceb894b9b3": {
   "description": "fi: Hyväksy laite sillan näytöllä 3 minuutin sisällä, tai skannaa QR-koodi.",
-  "x-where": "core/friendly_error.dart:625"
+  "x-where": "core/friendly_error.dart:626"
  },
  "s700b0ef4de": "The connection did not work",
  "@s700b0ef4de": {
   "description": "fi: Yhteys ei onnistunut",
-  "x-where": "core/friendly_error.dart:634"
+  "x-where": "core/friendly_error.dart:635"
  },
  "s53a891e670": "Check the address and settings and try again. The technical details show the exact reason.",
  "@s53a891e670": {
   "description": "fi: Tarkista osoite ja asetukset ja yritä uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.",
-  "x-where": "core/friendly_error.dart:635"
+  "x-where": "core/friendly_error.dart:636"
  },
  "s02480e4c13": "Measurements",
  "@s02480e4c13": {
@@ -895,6 +900,56 @@
   "description": "fi: true=SAVUA!;false=OK",
   "x-where": "devices/shelly_cloud_model.dart:502"
  },
+ "s1a9acfbc67": "Light{p0}",
+ "@s1a9acfbc67": {
+  "description": "fi: Valo{p0}",
+  "x-where": "devices/shelly_extras.dart:221",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s5d0fb602f6": "Cover{p0}",
+ "@s5d0fb602f6": {
+  "description": "fi: Verho{p0}",
+  "x-where": "devices/shelly_extras.dart:222",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s82ecc12a66": "Temperature{p0} (add-on)",
+ "@s82ecc12a66": {
+  "description": "fi: Lämpötila{p0} (lisäosa)",
+  "x-where": "devices/shelly_extras.dart:225",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s68e711123b": "temperature",
+ "@s68e711123b": {
+  "description": "fi: lämpötila",
+  "x-where": "devices/shelly_extras.dart:226"
+ },
+ "s736646b3b0": "humidity",
+ "@s736646b3b0": {
+  "description": "fi: kosteus",
+  "x-where": "devices/shelly_extras.dart:227"
+ },
+ "s8b234e1a6f": "illuminance",
+ "@s8b234e1a6f": {
+  "description": "fi: valoisuus",
+  "x-where": "devices/shelly_extras.dart:228"
+ },
+ "s03a198454c": "battery",
+ "@s03a198454c": {
+  "description": "fi: paristo",
+  "x-where": "devices/shelly_extras.dart:229"
+ },
  "s0bf7cb1613": "Philips Hue",
  "@s0bf7cb1613": {
   "description": "fi: Philips Hue",
@@ -924,11 +979,6 @@
  "@sf50732e8e8": {
   "description": "fi: himmennettävä",
   "x-where": "devices/hue.dart:172"
- },
- "s68e711123b": "temperature",
- "@s68e711123b": {
-  "description": "fi: lämpötila",
-  "x-where": "devices/hue.dart:195"
  },
  "s4082a34467": "sensor",
  "@s4082a34467": {
@@ -1183,12 +1233,12 @@
  "s286e1cfb54": "Total",
  "@s286e1cfb54": {
   "description": "fi: Yhteensä",
-  "x-where": "devices/shelly.dart:342"
+  "x-where": "devices/shelly.dart:354"
  },
  "sb9964cfb3b": "Power {p0}",
  "@sb9964cfb3b": {
   "description": "fi: Teho {p0}",
-  "x-where": "devices/shelly.dart:425",
+  "x-where": "devices/shelly.dart:440",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -1198,97 +1248,107 @@
  "s4233362d60": "Water leak sensor",
  "@s4233362d60": {
   "description": "fi: Vesivuotoanturi",
-  "x-where": "devices/shelly.dart:444"
+  "x-where": "devices/shelly.dart:459"
  },
  "sfcb44be1a0": "Shelly",
  "@sfcb44be1a0": {
   "description": "fi: Shelly",
-  "x-where": "devices/shelly.dart:532"
+  "x-where": "devices/shelly.dart:555"
  },
- "sa6ff717527": "Relays and plugs: Pro 4PM, Plus 1PM, Plug S, 2.5… Found automatically, tiles for every channel.",
- "@sa6ff717527": {
-  "description": "fi: Releet ja pistorasiat: Pro 4PM, Plus 1PM, Plug S, 2.5… Löytyy automaattisesti, ruudut tehdään joka kanavalle.",
-  "x-where": "devices/shelly.dart:532"
+ "sc7df69ad6e": "Relays, plugs, dimmers, covers, energy meters (Pro 3EM) and sensors. Found automatically, works without the cloud.",
+ "@sc7df69ad6e": {
+  "description": "fi: Releet, pistorasiat, himmentimet, verhot, energiamittarit (Pro 3EM) ja anturit. Löytyy automaattisesti, toimii ilman pil",
+  "x-where": "devices/shelly.dart:555"
  },
  "sd7e123cd2f": "In the Shelly app: open the device → gear (settings) → Device information → IP address. Or in your router''s device list: the name starts with \"shelly…\".",
  "@sd7e123cd2f": {
   "description": "fi: Shelly-sovelluksessa: avaa laite → ratas (asetukset) → Laitetiedot → IP-osoite. Tai reitittimen laitelistasta: nimi alka",
-  "x-where": "devices/shelly.dart:532"
+  "x-where": "devices/shelly.dart:555"
  },
  "s9ad7b0076b": "leak sensor · battery",
  "@s9ad7b0076b": {
   "description": "fi: vuotoanturi · paristo",
-  "x-where": "devices/shelly.dart:605"
+  "x-where": "devices/shelly.dart:643"
  },
  "s815bfa19dc": "Contactor control",
  "@s815bfa19dc": {
   "description": "fi: Kontaktorin ohjaus",
-  "x-where": "devices/shelly.dart:612"
+  "x-where": "devices/shelly.dart:650"
  },
  "sb9209fee74": "add only if the relay is in use",
  "@sb9209fee74": {
   "description": "fi: lisää vain, jos rele on käytössä",
-  "x-where": "devices/shelly.dart:620"
+  "x-where": "devices/shelly.dart:658"
  },
  "s5f2b2ca5f5": "on now",
  "@s5f2b2ca5f5": {
   "description": "fi: nyt päällä",
-  "x-where": "devices/shelly.dart:621"
+  "x-where": "devices/shelly.dart:659"
  },
  "s67f64cd925": "off now",
  "@s67f64cd925": {
   "description": "fi: nyt pois",
-  "x-where": "devices/shelly.dart:621"
+  "x-where": "devices/shelly.dart:659"
  },
  "s8b35cc884f": "Metering",
  "@s8b35cc884f": {
   "description": "fi: Mittaus",
-  "x-where": "devices/shelly.dart:632"
+  "x-where": "devices/shelly.dart:670"
+ },
+ "sa58e7aab49": "calibrate in the Shelly app to get a slider",
+ "@sa58e7aab49": {
+  "description": "fi: kalibroi Shelly-sovelluksessa, niin saat liukusäätimen",
+  "x-where": "devices/shelly.dart:698"
+ },
+ "s78b6134b71": "battery device: updates when awake",
+ "@s78b6134b71": {
+  "description": "fi: paristolaite: päivittyy kun herää",
+  "x-where": "devices/shelly.dart:706"
  },
  "sd8dfb25d31": "Shelly Cloud (no bridge)",
  "@sd8dfb25d31": {
   "description": "fi: Shelly Cloud (ilman kotisiltaa)",
-  "x-where": "devices/shelly.dart:660"
+  "x-where": "devices/shelly.dart:730"
  },
  "s350215338a": "Control Shellys through the Shelly cloud from anywhere. You only need the key from the Shelly app.",
  "@s350215338a": {
   "description": "fi: Ohjaa Shellyjä Shellyn pilven kautta mistä tahansa. Tarvitset vain Shelly-sovelluksen avaimen.",
-  "x-where": "devices/shelly.dart:660"
+  "x-where": "devices/shelly.dart:730"
  },
  "s64037991c2": "Shelly app → your profile → User settings → Authorization cloud key → Get key. Copy and paste it here.",
  "@s64037991c2": {
   "description": "fi: Shelly-sovellus → oma profiili (ylhäällä) → Käyttäjäasetukset → Authorization cloud key → Get key. Kopioi avain ja liitä",
-  "x-where": "devices/shelly.dart:685"
+  "x-where": "devices/shelly.dart:755"
  },
  "s062b21969d": "Shown on the same page below the key (\"Server URI\").",
  "@s062b21969d": {
   "description": "fi: Näkyy samalla sivulla avaimen alla (\"Server URI\"), esim. shelly-103-eu.shelly.cloud.",
-  "x-where": "devices/shelly.dart:693"
+  "x-where": "devices/shelly.dart:763"
  },
  "sf30bb5d5e6": "Usually not needed. If nothing is found: Shelly app → device → settings → Device information → Device ID. Separate several with commas.",
  "@sf30bb5d5e6": {
   "description": "fi: Yleensä ei tarvita – laitteet haetaan automaattisesti. Jos ei löydy: Shelly-sovellus → laite → asetukset → Laitetiedot →",
-  "x-where": "devices/shelly.dart:701"
+  "x-where": "devices/shelly.dart:771"
  },
  "s25399cd337": "Server",
  "@s25399cd337": {
   "description": "fi: Palvelin",
-  "x-where": "devices/shelly.dart:855"
+  "x-where": "devices/shelly.dart:925"
  },
  "s246c7a46ff": "Shelly app → User settings → Authorization cloud key → Server URI.",
  "@s246c7a46ff": {
   "description": "fi: Shelly-sovellus → Käyttäjäasetukset → Authorization cloud key → Server URI.",
-  "x-where": "devices/shelly.dart:855"
+  "x-where": "devices/shelly.dart:925"
  },
  "s61a2d946a4": "Cloud key",
  "@s61a2d946a4": {
   "description": "fi: Pilviavain",
-  "x-where": "devices/shelly.dart:864"
+  "x-where": "devices/shelly.dart:934"
  },
  "s9d468f5c64": "Shelly app → User settings → Authorization cloud key → Get key.",
  "@s9d468f5c64": {
   "description": "fi: Shelly-sovellus → Käyttäjäasetukset → Authorization cloud key → Get key.",
-  "x-where": "devices/shelly.dart:864"
+  "x-where": "devices/shelly.dart:934"
  },
  "sf34c97592f": "IKEA Dirigera",
  "@sf34c97592f": {
@@ -1512,6 +1572,316 @@
     "type": "String"
    }
   }
+ },
+ "sc20488a1f0": "Tuya / Powerant (local)",
+ "@sc20488a1f0": {
+  "description": "fi: Tuya / Powerant (paikallinen)",
+  "x-where": "tuya/tuya_driver.dart:41"
+ },
+ "sc849342970": "Tuya cloud region",
+ "@sc849342970": {
+  "description": "fi: Tuya-pilven alue",
+  "x-where": "tuya/tuya_driver.dart:47"
+ },
+ "s49c53b561d": "Only for fetching the keys. Usually Central Europe in Europe.",
+ "@s49c53b561d": {
+  "description": "fi: Vain avainten hakuun. Suomessa yleensä Keski-Eurooppa.",
+  "x-where": "tuya/tuya_driver.dart:47"
+ },
+ "s7cf3dec993": "Central Europe",
+ "@s7cf3dec993": {
+  "description": "fi: Keski-Eurooppa",
+  "x-where": "tuya/tuya_driver.dart:54"
+ },
+ "seead5e286d": "Western Europe",
+ "@seead5e286d": {
+  "description": "fi: Länsi-Eurooppa",
+  "x-where": "tuya/tuya_driver.dart:55"
+ },
+ "s081e2e881d": "Western America",
+ "@s081e2e881d": {
+  "description": "fi: Länsi-USA",
+  "x-where": "tuya/tuya_driver.dart:56"
+ },
+ "s5b9587ae93": "Eastern America",
+ "@s5b9587ae93": {
+  "description": "fi: Itä-USA",
+  "x-where": "tuya/tuya_driver.dart:57"
+ },
+ "sc5401d63d5": "China",
+ "@sc5401d63d5": {
+  "description": "fi: Kiina",
+  "x-where": "tuya/tuya_driver.dart:58"
+ },
+ "sb6786f25b9": "India",
+ "@sb6786f25b9": {
+  "description": "fi: Intia",
+  "x-where": "tuya/tuya_driver.dart:59"
+ },
+ "scd78f804bb": "Singapore",
+ "@scd78f804bb": {
+  "description": "fi: Singapore",
+  "x-where": "tuya/tuya_driver.dart:60"
+ },
+ "s61b325e35c": "Access ID (iot.tuya.com)",
+ "@s61b325e35c": {
+  "description": "fi: Access ID (iot.tuya.com)",
+  "x-where": "tuya/tuya_driver.dart:67"
+ },
+ "s925e495479": "Access ID of your own cloud project. Only needed to fetch the keys.",
+ "@s925e495479": {
+  "description": "fi: Oman pilviprojektisi Access ID. Tarvitaan vain avainten hakuun.",
+  "x-where": "tuya/tuya_driver.dart:67"
+ },
+ "sb07c0dad24": "Access Secret",
+ "@sb07c0dad24": {
+  "description": "fi: Access Secret",
+  "x-where": "tuya/tuya_driver.dart:75"
+ },
+ "s45bcef5c09": "Access Secret of your own cloud project. Stored only on this device / in your own vault.",
+ "@s45bcef5c09": {
+  "description": "fi: Oman pilviprojektisi Access Secret. Tallentuu vain tälle laitteelle / omaan holviisi.",
+  "x-where": "tuya/tuya_driver.dart:75"
+ },
+ "s295cf46412": "Local keys",
+ "@s295cf46412": {
+  "description": "fi: Paikalliset avaimet",
+  "x-where": "tuya/tuya_driver.dart:84"
+ },
+ "sf58ae26c82": "The devices'' local keys (fetched automatically).",
+ "@sf58ae26c82": {
+  "description": "fi: Laitteiden paikalliset avaimet (haetaan automaattisesti).",
+  "x-where": "tuya/tuya_driver.dart:84"
+ },
+ "s0c1a9d4ab9": "Keep connected (instant updates)",
+ "@s0c1a9d4ab9": {
+  "description": "fi: Pysyvä yhteys (heti päivittyvät ruudut)",
+  "x-where": "tuya/tuya_driver.dart:93"
+ },
+ "s121fb2c5fc": "The device reports changes at once. Many Tuya devices allow only one connection – use on one device only.",
+ "@s121fb2c5fc": {
+  "description": "fi: Laite ilmoittaa muutoksista heti. Moni Tuya-laite sallii vain yhden yhteyden kerrallaan – käytä vain yhdellä laitteella.",
+  "x-where": "tuya/tuya_driver.dart:93"
+ },
+ "s65514aef3c": "Device id",
+ "@s65514aef3c": {
+  "description": "fi: Laitteen tunnus",
+  "x-where": "tuya/tuya_driver.dart:106"
+ },
+ "se42a336655": "The Tuya device id.",
+ "@se42a336655": {
+  "description": "fi: Tuya-laitteen id.",
+  "x-where": "tuya/tuya_driver.dart:106"
+ },
+ "sff3cf64925": "DP number",
+ "@sff3cf64925": {
+  "description": "fi: DP-numero",
+  "x-where": "tuya/tuya_driver.dart:107"
+ },
+ "sfec9b1a643": "Data point number (1 = power on most).",
+ "@sfec9b1a643": {
+  "description": "fi: Datapisteen numero (1 = virta useimmissa).",
+  "x-where": "tuya/tuya_driver.dart:107"
+ },
+ "see24ec5d84": "Scale",
+ "@see24ec5d84": {
+  "description": "fi: Kerroin",
+  "x-where": "tuya/tuya_driver.dart:115"
+ },
+ "s2fa7dedd1b": "E.g. 0.1 when the device reports tenths.",
+ "@s2fa7dedd1b": {
+  "description": "fi: Esim. 0.1, jos laite ilmoittaa kymmenyksinä.",
+  "x-where": "tuya/tuya_driver.dart:115"
+ },
+ "se30676cace": "Data point number.",
+ "@se30676cace": {
+  "description": "fi: Datapisteen numero.",
+  "x-where": "tuya/tuya_driver.dart:127"
+ },
+ "seb4c438a42": "'Value ({{value}})'",
+ "@seb4c438a42": {
+  "description": "fi: Arvo ({{value}})",
+  "x-where": "tuya/tuya_driver.dart:135"
+ },
+ "s033b6b8c6c": "'Value to send; {{value}} = the tile''s value.'",
+ "@s033b6b8c6c": {
+  "description": "fi: Lähetettävä arvo; {{value}} = ruudun arvo.",
+  "x-where": "tuya/tuya_driver.dart:135"
+ },
+ "s784e702cc1": "Value type",
+ "@s784e702cc1": {
+  "description": "fi: Arvon tyyppi",
+  "x-where": "tuya/tuya_driver.dart:143"
+ },
+ "safadcc12c8": "On/off for switches, number for brightness.",
+ "@safadcc12c8": {
+  "description": "fi: Päällä/pois kytkimille, numero kirkkaudelle.",
+  "x-where": "tuya/tuya_driver.dart:143"
+ },
+ "s8c8b6cb6d4": "On/off",
+ "@s8c8b6cb6d4": {
+  "description": "fi: Päällä/pois",
+  "x-where": "tuya/tuya_driver.dart:149"
+ },
+ "s695fe25f79": "Number",
+ "@s695fe25f79": {
+  "description": "fi: Numero",
+  "x-where": "tuya/tuya_driver.dart:149"
+ },
+ "s34900f9d58": "Text",
+ "@s34900f9d58": {
+  "description": "fi: Teksti",
+  "x-where": "tuya/tuya_driver.dart:149"
+ },
+ "s9abc332fb8": "Tuya device {p0} is not in this connection",
+ "@s9abc332fb8": {
+  "description": "fi: Tuya-laitetta {p0} ei ole tässä yhteydessä",
+  "x-where": "tuya/tuya_driver.dart:177",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s8b84454b87": "Tuya: the device''s local key is missing – fetch the keys again",
+ "@s8b84454b87": {
+  "description": "fi: Tuya: laitteen paikallinen avain puuttuu – hae avaimet uudelleen",
+  "x-where": "tuya/tuya_driver.dart:190"
+ },
+ "s764b6993c6": "Tuya: the device''s IP address is missing",
+ "@s764b6993c6": {
+  "description": "fi: Tuya: laitteen IP-osoite puuttuu",
+  "x-where": "tuya/tuya_driver.dart:198"
+ },
+ "sae56ce66d4": "connection closed",
+ "@sae56ce66d4": {
+  "description": "fi: yhteys katkesi",
+  "x-where": "tuya/tuya_session.dart:55"
+ },
+ "sb6a87586a8": "Tuya: wrong local key or protocol version",
+ "@sb6a87586a8": {
+  "description": "fi: Tuya: väärä paikallinen avain (local key) tai protokollaversio",
+  "x-where": "tuya/tuya_session.dart:82"
+ },
+ "s2b1a0a5a05": "no answer from the device",
+ "@s2b1a0a5a05": {
+  "description": "fi: laite ei vastannut",
+  "x-where": "tuya/tuya_session.dart:106"
+ },
+ "sc4fdd8a4a3": "Tuya {p0}: no answer to the handshake – wrong local key or protocol version?",
+ "@sc4fdd8a4a3": {
+  "description": "fi: Tuya {p0}: laite ei vastannut kättelyyn – väärä paikallinen avain (local key) tai protokollaversio?",
+  "x-where": "tuya/tuya_session.dart:142",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "sa291ffb35a": "handshake failed",
+ "@sa291ffb35a": {
+  "description": "fi: kättely epäonnistui",
+  "x-where": "tuya/tuya_session.dart:148"
+ },
+ "se2a4cc6409": "Tuya: wrong local key",
+ "@se2a4cc6409": {
+  "description": "fi: Tuya: väärä paikallinen avain (local key)",
+  "x-where": "tuya/tuya_session.dart:153"
+ },
+ "s7b8131a396": "not found on the home network",
+ "@s7b8131a396": {
+  "description": "fi: ei löytynyt kotiverkosta",
+  "x-where": "tuya/tuya_provider.dart:97"
+ },
+ "s210907044a": "Powerant / Tuya / Smart Life",
+ "@s210907044a": {
+  "description": "fi: Powerant / Tuya / Smart Life",
+  "x-where": "tuya/tuya_provider.dart:119"
+ },
+ "sa8d1873781": "Plugs, switches, dimmers, bulbs and sensors. Controlled on your home network without the cloud.",
+ "@sa8d1873781": {
+  "description": "fi: Pistorasiat, kytkimet, himmentimet, lamput ja anturit. Ohjataan kotiverkossa ilman pilveä.",
+  "x-where": "tuya/tuya_provider.dart:119"
+ },
+ "s3530ee658b": "Your own free Tuya developer project: iot.tuya.com → Cloud → Create Cloud Project (data center: Central Europe) → Devices → Link App Account → scan the QR code with the Smart Life / Tuya / Powerant app. The Access ID is on the project''s Overview page.",
+ "@s3530ee658b": {
+  "description": "fi: Oma ilmainen Tuya-kehittäjäprojekti: iot.tuya.com → Cloud → Create Cloud Project (data center: Central Europe) → Devices",
+  "x-where": "tuya/tuya_provider.dart:150"
+ },
+ "s39d3fce33c": "From the same Overview page. Stored only on this device (and your own encrypted vault) – never on Molaplan''s servers.",
+ "@s39d3fce33c": {
+  "description": "fi: Samalta Overview-sivulta. Tallentuu vain tälle laitteelle (ja omaan salattuun holviisi) – ei Molaplanin palvelimille.",
+  "x-where": "tuya/tuya_provider.dart:158"
+ },
+ "s12e2e8638b": "The project''s data center. Usually eu (Central Europe) in Europe. Western Europe = weu.",
+ "@s12e2e8638b": {
+  "description": "fi: Projektin data center. Suomessa yleensä eu (Central Europe). Western Europe = weu.",
+  "x-where": "tuya/tuya_provider.dart:166"
+ },
+ "sfc77cb8d11": "Only if no devices are found: app → device → pencil → Device information → Virtual ID.",
+ "@sfc77cb8d11": {
+  "description": "fi: Vain jos laitteita ei löydy: sovellus → laite → kynä → Laitetiedot → Virtuaalinen ID.",
+  "x-where": "tuya/tuya_provider.dart:175"
+ },
+ "s7938176623": "Tuya with a local key",
+ "@s7938176623": {
+  "description": "fi: Tuya paikallisella avaimella",
+  "x-where": "tuya/tuya_provider.dart:277"
+ },
+ "sf11f3cf10e": "If you already know the device ID and its local key.",
+ "@sf11f3cf10e": {
+  "description": "fi: Jos tiedät jo laitteen tunnuksen ja paikallisen avaimen (local key).",
+  "x-where": "tuya/tuya_provider.dart:277"
+ },
+ "s3dcff9c852": "From your router''s device list (often named ESP_ or wlan0).",
+ "@s3dcff9c852": {
+  "description": "fi: Reitittimen laitelistasta (laitteen nimi usein ESP_ tai wlan0).",
+  "x-where": "tuya/tuya_provider.dart:277"
+ },
+ "s3cc607ceba": "A 16-character key. Get it from a Tuya developer project, or simply pick \"Powerant / Tuya / Smart Life\".",
+ "@s3cc607ceba": {
+  "description": "fi: 16 merkin avain. Saat sen Tuya-kehittäjäprojektista tai helpoimmin valitsemalla \"Powerant / Tuya / Smart Life\".",
+  "x-where": "tuya/tuya_provider.dart:300"
+ },
+ "s4105c416c6": "Filled in automatically when the device was found on the network.",
+ "@s4105c416c6": {
+  "description": "fi: Täytetään automaattisesti, jos laite löytyi verkosta.",
+  "x-where": "tuya/tuya_provider.dart:310"
+ },
+ "s39dfcd0595": "3.3, 3.4 or 3.5. Detected automatically when the device was found on the network.",
+ "@s39dfcd0595": {
+  "description": "fi: 3.3, 3.4 tai 3.5. Tunnistetaan automaattisesti, jos laite löytyi verkosta.",
+  "x-where": "tuya/tuya_provider.dart:318"
+ },
+ "s991d0c0cdc": "channel {p0}",
+ "@s991d0c0cdc": {
+  "description": "fi: kanava {p0}",
+  "x-where": "tuya/tuya_model.dart:227",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "sc8b1b10046": "colour temperature",
+ "@sc8b1b10046": {
+  "description": "fi: värilämpötila",
+  "x-where": "tuya/tuya_model.dart:229"
+ },
+ "s0ceafaa97c": "energy",
+ "@s0ceafaa97c": {
+  "description": "fi: energia",
+  "x-where": "tuya/tuya_model.dart:231"
+ },
+ "sdb8ea154be": "voltage",
+ "@sdb8ea154be": {
+  "description": "fi: jännite",
+  "x-where": "tuya/tuya_model.dart:232"
+ },
+ "s37f61ae645": "current",
+ "@s37f61ae645": {
+  "description": "fi: virta",
+  "x-where": "tuya/tuya_model.dart:233"
  },
  "s5b44cbe9c0": "Home",
  "@s5b44cbe9c0": {
@@ -4734,12 +5104,12 @@
  "s55d52c5ae1": "This device is not on Wi-Fi",
  "@s55d52c5ae1": {
   "description": "fi: Tämä laite ei ole yhteydessä wifiin",
-  "x-where": "ui/add_device_wizard.dart:44"
+  "x-where": "ui/add_device_wizard.dart:45"
  },
  "s9a4dece965": "Connect this device to your home Wi-Fi (the one {p0} uses). Or, if you are away, set up the home bridge so the search runs on a device at home.",
  "@s9a4dece965": {
   "description": "fi: Yhdistä tämä laite kodin wifiin (samaan, jossa {p0} on). Tai jos olet kodin ulkopuolella, ota käyttöön kotisilta – sillo",
-  "x-where": "ui/add_device_wizard.dart:45",
+  "x-where": "ui/add_device_wizard.dart:46",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -4749,12 +5119,12 @@
  "s3972820cd6": "Could not reach the device",
  "@s3972820cd6": {
   "description": "fi: Laitetta ei tavoitettu",
-  "x-where": "ui/add_device_wizard.dart:52"
+  "x-where": "ui/add_device_wizard.dart:53"
  },
  "s0f480abb4a": "Could not reach the device at {p0}",
  "@s0f480abb4a": {
   "description": "fi: Laitetta ei tavoitettu osoitteesta {p0}",
-  "x-where": "ui/add_device_wizard.dart:53",
+  "x-where": "ui/add_device_wizard.dart:54",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -4764,7 +5134,7 @@
  "sa82143ee02": "1. Check that {p0} is powered.\n2. This device (or the home bridge) must be on the same Wi-Fi.\n3. Check the address – it can change. Tap \"Back\" and search again.",
  "@sa82143ee02": {
   "description": "fi: 1. Tarkista että {p0} on päällä (valo palaa).\n2. Tämän laitteen (tai kotisillan) pitää olla samassa wifissä kuin {p1}.\n3",
-  "x-where": "ui/add_device_wizard.dart:54",
+  "x-where": "ui/add_device_wizard.dart:55",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -4777,12 +5147,12 @@
  "sd4d7ad1bab": "A different device answered",
  "@sd4d7ad1bab": {
   "description": "fi: Osoitteessa on jokin muu laite",
-  "x-where": "ui/add_device_wizard.dart:60"
+  "x-where": "ui/add_device_wizard.dart:61"
  },
  "s5b7d02a301": "The device at that address is not {p0}. Check the address.",
  "@s5b7d02a301": {
   "description": "fi: Osoitteesta vastasi laite, joka ei ole {p0}. Tarkista osoite ja kokeile uudelleen.",
-  "x-where": "ui/add_device_wizard.dart:61",
+  "x-where": "ui/add_device_wizard.dart:62",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -4792,22 +5162,22 @@
  "sdac5622fa8": "The device asks for a password",
  "@sdac5622fa8": {
   "description": "fi: Laite pyytää salasanaa",
-  "x-where": "ui/add_device_wizard.dart:67"
+  "x-where": "ui/add_device_wizard.dart:68"
  },
  "sbf9ee8aaec": "A password is set on the device. Type it below and tap \"Connect\".",
  "@sbf9ee8aaec": {
   "description": "fi: Olet asettanut laitteeseen salasanan. Kirjoita se alle ja paina \"Yhdistä\".",
-  "x-where": "ui/add_device_wizard.dart:68"
+  "x-where": "ui/add_device_wizard.dart:69"
  },
  "s9e22388413": "One more detail is needed",
  "@s9e22388413": {
   "description": "fi: Tarvitaan vielä yksi tieto",
-  "x-where": "ui/add_device_wizard.dart:74"
+  "x-where": "ui/add_device_wizard.dart:75"
  },
  "sc8702d4da2": "{p0} does not tell this by itself. Type it below and tap \"Connect\".",
  "@sc8702d4da2": {
   "description": "fi: {p0} ei kerro tätä itse. Kirjoita se alle ja paina \"Yhdistä\".",
-  "x-where": "ui/add_device_wizard.dart:75",
+  "x-where": "ui/add_device_wizard.dart:76",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -4817,112 +5187,112 @@
  "s83f57c7c24": "Wrong password",
  "@s83f57c7c24": {
   "description": "fi: Salasana ei kelpaa",
-  "x-where": "ui/add_device_wizard.dart:81"
+  "x-where": "ui/add_device_wizard.dart:82"
  },
  "s32e85a0ba2": "Check the password (case matters). You can change it in the device app.",
  "@s32e85a0ba2": {
   "description": "fi: Tarkista salasana (isot ja pienet kirjaimet). Sen voi vaihtaa laitteen omasta sovelluksesta.",
-  "x-where": "ui/add_device_wizard.dart:82"
+  "x-where": "ui/add_device_wizard.dart:83"
  },
  "sb1d36bfdd3": "The button was not pressed in time",
  "@sb1d36bfdd3": {
   "description": "fi: Painiketta ei painettu ajoissa",
-  "x-where": "ui/add_device_wizard.dart:88"
+  "x-where": "ui/add_device_wizard.dart:89"
  },
  "sc994f6ec6e": "Tap \"Try again\" and then press the button right away.",
  "@sc994f6ec6e": {
   "description": "fi: Paina \"Yritä uudelleen\" ja paina sitten painiketta heti.",
-  "x-where": "ui/add_device_wizard.dart:89"
+  "x-where": "ui/add_device_wizard.dart:90"
  },
  "s663202243e": "Nothing to control was found",
  "@s663202243e": {
   "description": "fi: Laitteelta ei löytynyt ohjattavaa",
-  "x-where": "ui/add_device_wizard.dart:95"
+  "x-where": "ui/add_device_wizard.dart:96"
  },
  "sb03997d94b": "The device answered but has no switches or lights. For the cloud, type the Device ID.",
  "@sb03997d94b": {
   "description": "fi: Laite vastasi, mutta siinä ei ollut kytkimiä tai valoja. Jos käytät pilveä, kirjoita laitteen tunnus (Device ID) käsin.",
-  "x-where": "ui/add_device_wizard.dart:96"
+  "x-where": "ui/add_device_wizard.dart:97"
  },
  "se6e01118ac": "Camera found, but not its video address",
  "@se6e01118ac": {
   "description": "fi: Kamera löytyi, mutta videon osoitetta ei löytynyt",
-  "x-where": "ui/add_device_wizard.dart:102"
+  "x-where": "ui/add_device_wizard.dart:103"
  },
  "sca994210fb": "The camera answered but did not tell its video address, and none of the usual RTSP addresses worked with this login. Check that RTSP/ONVIF is on in the camera app, or pick the brand below and tap \"Connect\".",
  "@sca994210fb": {
   "description": "fi: Kamera vastasi, mutta ei kertonut videokuvan osoitetta, eikä yksikään yleisistä RTSP-osoitteista toiminut tällä tunnukse",
-  "x-where": "ui/add_device_wizard.dart:103"
+  "x-where": "ui/add_device_wizard.dart:104"
  },
  "s869571042f": "Cloud key or server not accepted",
  "@s869571042f": {
   "description": "fi: Pilviavain tai palvelin ei kelpaa",
-  "x-where": "ui/add_device_wizard.dart:109"
+  "x-where": "ui/add_device_wizard.dart:110"
  },
  "sab1763c592": "Copy the key and server again from the Shelly app (User settings → Authorization cloud key).",
  "@sab1763c592": {
   "description": "fi: Kopioi avain ja palvelimen osoite uudelleen Shelly-sovelluksesta (Käyttäjäasetukset → Authorization cloud key).",
-  "x-where": "ui/add_device_wizard.dart:110"
+  "x-where": "ui/add_device_wizard.dart:111"
  },
  "s855ffbfd24": "Could not reach the cloud",
  "@s855ffbfd24": {
   "description": "fi: Pilveen ei saatu yhteyttä",
-  "x-where": "ui/add_device_wizard.dart:116"
+  "x-where": "ui/add_device_wizard.dart:117"
  },
  "s739d569a9c": "Check the internet connection.",
  "@s739d569a9c": {
   "description": "fi: Tarkista nettiyhteys ja yritä uudelleen.",
-  "x-where": "ui/add_device_wizard.dart:117"
+  "x-where": "ui/add_device_wizard.dart:118"
  },
  "sc96a3502b5": "Too many requests",
  "@sc96a3502b5": {
   "description": "fi: Liian monta pyyntöä",
-  "x-where": "ui/add_device_wizard.dart:120"
+  "x-where": "ui/add_device_wizard.dart:121"
  },
  "sed917dc2a2": "The cloud limits requests. Wait a moment.",
  "@sed917dc2a2": {
   "description": "fi: Pilvi rajoittaa pyyntöjä. Odota hetki ja yritä uudelleen.",
-  "x-where": "ui/add_device_wizard.dart:121"
+  "x-where": "ui/add_device_wizard.dart:122"
  },
  "s516dbdd784": "The home bridge is out of date",
  "@s516dbdd784": {
   "description": "fi: Kotisilta on vanha versio",
-  "x-where": "ui/add_device_wizard.dart:124"
+  "x-where": "ui/add_device_wizard.dart:125"
  },
  "s70089507bf": "Update Molaplan on the bridge (Settings → Check for updates).",
  "@s70089507bf": {
   "description": "fi: Päivitä kotisillan Molaplan (Asetukset → Tarkista päivitykset) ja yritä uudelleen.",
-  "x-where": "ui/add_device_wizard.dart:125"
+  "x-where": "ui/add_device_wizard.dart:126"
  },
  "scc1918f2dc": "Check that the bridge at home is on, Molaplan is open and it has internet.",
  "@scc1918f2dc": {
   "description": "fi: Tarkista että kotona oleva kotisilta (tabletti tai PC) on päällä, Molaplan on auki ja sillä on netti.",
-  "x-where": "ui/add_device_wizard.dart:132"
+  "x-where": "ui/add_device_wizard.dart:133"
  },
  "se11f9b5084": "Could not connect to the device",
  "@se11f9b5084": {
   "description": "fi: Laitteeseen ei saatu yhteyttä",
-  "x-where": "ui/add_device_wizard.dart:138"
+  "x-where": "ui/add_device_wizard.dart:139"
  },
  "s979376dca6": "Check the address and that the device is on, then try again. The technical details show the exact reason.",
  "@s979376dca6": {
   "description": "fi: Tarkista osoite ja että laite on päällä, ja yritä uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.",
-  "x-where": "ui/add_device_wizard.dart:139"
+  "x-where": "ui/add_device_wizard.dart:140"
  },
  "sce6d01c270": "Type the address first",
  "@sce6d01c270": {
   "description": "fi: Kirjoita ensin osoite",
-  "x-where": "ui/add_device_wizard.dart:285"
+  "x-where": "ui/add_device_wizard.dart:286"
  },
  "s65bbf3cab4": "Check the address",
  "@s65bbf3cab4": {
   "description": "fi: Tarkista osoite",
-  "x-where": "ui/add_device_wizard.dart:300"
+  "x-where": "ui/add_device_wizard.dart:301"
  },
  "sb711cc1ce2": "{p0} is not a home network address. They usually start with 192.168. – check it again in the {p1} app.",
  "@sb711cc1ce2": {
   "description": "fi: {p0} ei ole kotiverkon osoite. Kotiverkon osoitteet alkavat yleensä 192.168. – katso osoite uudelleen {p1}-sovelluksesta",
-  "x-where": "ui/add_device_wizard.dart:302",
+  "x-where": "ui/add_device_wizard.dart:303",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -4935,7 +5305,7 @@
  "se60794c266": "Did you mean {p0}?",
  "@se60794c266": {
   "description": "fi: Tarkoititko {p0}?",
-  "x-where": "ui/add_device_wizard.dart:307",
+  "x-where": "ui/add_device_wizard.dart:308",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -4945,17 +5315,17 @@
  "s264fda2dee": "I''ll fix it",
  "@s264fda2dee": {
   "description": "fi: Korjaan itse",
-  "x-where": "ui/add_device_wizard.dart:310"
+  "x-where": "ui/add_device_wizard.dart:311"
  },
  "s0a6098ac78": "Try anyway",
  "@s0a6098ac78": {
   "description": "fi: Kokeile silti",
-  "x-where": "ui/add_device_wizard.dart:311"
+  "x-where": "ui/add_device_wizard.dart:312"
  },
  "sc1039f5cf6": "Use {p0}",
  "@sc1039f5cf6": {
   "description": "fi: Käytä {p0}",
-  "x-where": "ui/add_device_wizard.dart:316",
+  "x-where": "ui/add_device_wizard.dart:317",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -4965,12 +5335,12 @@
  "s20f777bfef": "The address is on another network",
  "@s20f777bfef": {
   "description": "fi: Osoite on eri verkossa",
-  "x-where": "ui/add_device_wizard.dart:334"
+  "x-where": "ui/add_device_wizard.dart:335"
  },
  "sbb1730fa00": "Address {p0} is not on the same network as this device ({p1}.x). Usually this device is on a different Wi-Fi than {p2}.\n\nJoin the same Wi-Fi, or set up the home bridge.",
  "@sbb1730fa00": {
   "description": "fi: Osoite {p0} ei ole samassa verkossa kuin tämä laite ({p1}.x). Yleensä se tarkoittaa, että tämä laite on eri wifissä kuin",
-  "x-where": "ui/add_device_wizard.dart:336",
+  "x-where": "ui/add_device_wizard.dart:337",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -4989,17 +5359,17 @@
  "s43370d968c": "Fill in first",
  "@s43370d968c": {
   "description": "fi: Täytä ensin",
-  "x-where": "ui/add_device_wizard.dart:415"
+  "x-where": "ui/add_device_wizard.dart:416"
  },
  "s915c9a0db3": "Pick at least one",
  "@s915c9a0db3": {
   "description": "fi: Valitse vähintään yksi",
-  "x-where": "ui/add_device_wizard.dart:437"
+  "x-where": "ui/add_device_wizard.dart:438"
  },
  "sb160156a36": "Add: {p0}",
  "@sb160156a36": {
   "description": "fi: Lisää: {p0}",
-  "x-where": "ui/add_device_wizard.dart:454",
+  "x-where": "ui/add_device_wizard.dart:455",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -5009,42 +5379,42 @@
  "s43d448a950": "Add to home view",
  "@s43d448a950": {
   "description": "fi: Lisää kotinäkymään",
-  "x-where": "ui/add_device_wizard.dart:519"
+  "x-where": "ui/add_device_wizard.dart:520"
  },
  "sd890121a57": "Show home view",
  "@sd890121a57": {
   "description": "fi: Näytä kotinäkymä",
-  "x-where": "ui/add_device_wizard.dart:527"
+  "x-where": "ui/add_device_wizard.dart:528"
  },
  "sb1717cc67c": "A) Without a home bridge",
  "@sb1717cc67c": {
   "description": "fi: A) Ilman kotisiltaa",
-  "x-where": "ui/add_device_wizard.dart:604"
+  "x-where": "ui/add_device_wizard.dart:605"
  },
  "s2082568a23": "Use Shelly Cloud (no bridge)",
  "@s2082568a23": {
   "description": "fi: Käytä Shelly Cloudia (ei kotisiltaa)",
-  "x-where": "ui/add_device_wizard.dart:609"
+  "x-where": "ui/add_device_wizard.dart:610"
  },
  "s5080d486b8": "Best if no device always stays at home – e.g. your tablet travels with you. Control goes via Shelly''s own cloud. You need a key from the Shelly app (we show where).",
  "@s5080d486b8": {
   "description": "fi: Paras, jos mikään laite ei ole aina kotona – esim. kun tabletti kulkee mukanasi. Ohjaus kulkee Shellyn oman pilven kautt",
-  "x-where": "ui/add_device_wizard.dart:610"
+  "x-where": "ui/add_device_wizard.dart:611"
  },
  "s82985d5078": "B) Through a home bridge",
  "@s82985d5078": {
   "description": "fi: B) Kotisillan kautta",
-  "x-where": "ui/add_device_wizard.dart:620"
+  "x-where": "ui/add_device_wizard.dart:621"
  },
  "s78aec2034d": "How will you control your home when away?",
  "@s78aec2034d": {
   "description": "fi: Miten ohjaat kotia muualta?",
-  "x-where": "ui/add_device_wizard.dart:626"
+  "x-where": "ui/add_device_wizard.dart:627"
  },
  "s03b3c3b3c8": "A home bridge is a device that ALWAYS stays at home, switched on and on the same Wi-Fi as {p0} – e.g. an old phone, tablet or PC. Your other devices reach it over the internet (encrypted, no port forwarding). A device you carry around is not a good bridge.",
  "@s03b3c3b3c8": {
   "description": "fi: Kotisilta on laite, joka on AINA kotona, päällä ja samassa wifissä kuin {p0} – esim. vanha puhelin, tabletti tai PC. Muu",
-  "x-where": "ui/add_device_wizard.dart:627",
+  "x-where": "ui/add_device_wizard.dart:628",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -5054,37 +5424,37 @@
  "s688d1308d7": "As you are signed in, the home connection reaches all your devices automatically.",
  "@s688d1308d7": {
   "description": "fi: Koska olet kirjautunut, kotiyhteys siirtyy kaikille laitteillesi automaattisesti.",
-  "x-where": "ui/add_device_wizard.dart:633"
+  "x-where": "ui/add_device_wizard.dart:634"
  },
  "s96feb2f60a": "This device always stays home – make it the bridge",
  "@s96feb2f60a": {
   "description": "fi: Tämä laite jää aina kotiin – tee siitä kotisilta",
-  "x-where": "ui/add_device_wizard.dart:642"
+  "x-where": "ui/add_device_wizard.dart:643"
  },
  "sb2a33a1ec4": "Keep it charging with Molaplan open. Other devices connect with a QR code or by signing in to the same account.",
  "@sb2a33a1ec4": {
   "description": "fi: Pidä laite laturissa ja Molaplan auki. Muut laitteet yhdistetään siihen QR-koodilla tai kirjautumalla samalle tilille.",
-  "x-where": "ui/add_device_wizard.dart:647"
+  "x-where": "ui/add_device_wizard.dart:648"
  },
  "s1b9f4ae6d5": "The bridge is on another device – connect to it",
  "@s1b9f4ae6d5": {
   "description": "fi: Kotisilta on jo toisella laitteella – yhdistä siihen",
-  "x-where": "ui/add_device_wizard.dart:664"
+  "x-where": "ui/add_device_wizard.dart:665"
  },
  "s13d739b710": "Scan the bridge QR code. Devices are then found through the bridge, even when you are away.",
  "@s13d739b710": {
   "description": "fi: Skannaa kotisillan QR-koodi. Sen jälkeen laitteet haetaan kotisillan kautta, vaikka olisit muualla.",
-  "x-where": "ui/add_device_wizard.dart:669"
+  "x-where": "ui/add_device_wizard.dart:670"
  },
  "sda6a1e50e9": "Skip for now – add on the home network (remote access can be set up later)",
  "@sda6a1e50e9": {
   "description": "fi: Ohita nyt – lisään laitteen kotiverkossa (etäyhteyden voi ottaa käyttöön myöhemmin)",
-  "x-where": "ui/add_device_wizard.dart:688"
+  "x-where": "ui/add_device_wizard.dart:689"
  },
  "s6f326a48f9": "Finding: {p0}",
  "@s6f326a48f9": {
   "description": "fi: Etsitään: {p0}",
-  "x-where": "ui/add_device_wizard.dart:738",
+  "x-where": "ui/add_device_wizard.dart:739",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -5094,32 +5464,32 @@
  "sc788897ba0": "Searching through the home bridge, so this works away from home too.",
  "@sc788897ba0": {
   "description": "fi: Haku tehdään kotisillan kautta, joten tämä toimii myös kodin ulkopuolella.",
-  "x-where": "ui/add_device_wizard.dart:740"
+  "x-where": "ui/add_device_wizard.dart:741"
  },
  "s0f7361f40c": "Looking on your home Wi-Fi. Tap yours.",
  "@s0f7361f40c": {
   "description": "fi: Etsin laitteita kodin wifistä. Napauta omaasi.",
-  "x-where": "ui/add_device_wizard.dart:745"
+  "x-where": "ui/add_device_wizard.dart:746"
  },
  "sda2b4c9721": "Open Wi-Fi settings",
  "@sda2b4c9721": {
   "description": "fi: Avaa wifi-asetukset",
-  "x-where": "ui/add_device_wizard.dart:760"
+  "x-where": "ui/add_device_wizard.dart:761"
  },
  "sc93d9cc14b": "Connected – search again",
  "@sc93d9cc14b": {
   "description": "fi: Yhdistin – etsi uudelleen",
-  "x-where": "ui/add_device_wizard.dart:765"
+  "x-where": "ui/add_device_wizard.dart:766"
  },
  "s13f0596b74": "Searching… (about 5 seconds)",
  "@s13f0596b74": {
   "description": "fi: Etsitään… (noin 5 sekuntia)",
-  "x-where": "ui/add_device_wizard.dart:784"
+  "x-where": "ui/add_device_wizard.dart:785"
  },
  "s8eabd27f68": "Nothing found automatically. Check that {p0} is on and on the same Wi-Fi. You can also type the address below.",
  "@s8eabd27f68": {
   "description": "fi: Laitteita ei löytynyt automaattisesti. Tarkista että {p0} on päällä ja samassa wifissä{p1}. Voit myös kirjoittaa osoitte",
-  "x-where": "ui/add_device_wizard.dart:813",
+  "x-where": "ui/add_device_wizard.dart:814",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -5132,37 +5502,37 @@
  "sa616ab181e": "Type the address",
  "@sa616ab181e": {
   "description": "fi: Kirjoita osoite itse",
-  "x-where": "ui/add_device_wizard.dart:834"
+  "x-where": "ui/add_device_wizard.dart:835"
  },
  "sb439b8abc3": "Or type the address",
  "@sb439b8abc3": {
   "description": "fi: Tai kirjoita osoite itse",
-  "x-where": "ui/add_device_wizard.dart:842"
+  "x-where": "ui/add_device_wizard.dart:843"
  },
  "s178e07f06b": "IP address",
  "@s178e07f06b": {
   "description": "fi: IP-osoite",
-  "x-where": "ui/add_device_wizard.dart:852"
+  "x-where": "ui/add_device_wizard.dart:853"
  },
  "scf487a3699": "Where do I find it?",
  "@scf487a3699": {
   "description": "fi: Mistä löydän sen?",
-  "x-where": "ui/add_device_wizard.dart:863"
+  "x-where": "ui/add_device_wizard.dart:864"
  },
  "s9b9b0d01a2": " (optional)",
  "@s9b9b0d01a2": {
   "description": "fi:  (vapaaehtoinen)",
-  "x-where": "ui/add_device_wizard.dart:878"
+  "x-where": "ui/add_device_wizard.dart:879"
  },
  "s0a7134d0e3": "Press the button now",
  "@s0a7134d0e3": {
   "description": "fi: Paina painiketta nyt",
-  "x-where": "ui/add_device_wizard.dart:897"
+  "x-where": "ui/add_device_wizard.dart:898"
  },
  "s43118959d5": "{p0} s left",
  "@s43118959d5": {
   "description": "fi: Aikaa jäljellä {p0} s",
-  "x-where": "ui/add_device_wizard.dart:906",
+  "x-where": "ui/add_device_wizard.dart:907",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -5172,52 +5542,52 @@
  "sba10f23f03": "Connecting…",
  "@sba10f23f03": {
   "description": "fi: Yhdistetään…",
-  "x-where": "ui/add_device_wizard.dart:917"
+  "x-where": "ui/add_device_wizard.dart:918"
  },
  "s46c87a553f": "Sign in to the camera",
  "@s46c87a553f": {
   "description": "fi: Kirjaudu kameraan",
-  "x-where": "ui/add_device_wizard.dart:933"
+  "x-where": "ui/add_device_wizard.dart:934"
  },
  "se4095d7d95": "Device password",
  "@se4095d7d95": {
   "description": "fi: Laitteen salasana",
-  "x-where": "ui/add_device_wizard.dart:966"
+  "x-where": "ui/add_device_wizard.dart:967"
  },
  "sdbdf676485": "Connect",
  "@sdbdf676485": {
   "description": "fi: Yhdistä",
-  "x-where": "ui/add_device_wizard.dart:984"
+  "x-where": "ui/add_device_wizard.dart:985"
  },
  "s8f610a3bb2": "I am away from home",
  "@s8f610a3bb2": {
   "description": "fi: Olen kodin ulkopuolella",
-  "x-where": "ui/add_device_wizard.dart:992"
+  "x-where": "ui/add_device_wizard.dart:993"
  },
  "sf77125583f": "Technical details",
  "@sf77125583f": {
   "description": "fi: Tekniset tiedot",
-  "x-where": "ui/add_device_wizard.dart:1005"
+  "x-where": "ui/add_device_wizard.dart:1006"
  },
  "sb629592b4b": "Camera brand",
  "@sb629592b4b": {
   "description": "fi: Kameran merkki",
-  "x-where": "ui/add_device_wizard.dart:1018"
+  "x-where": "ui/add_device_wizard.dart:1019"
  },
  "se3aa0f7164": "RTSP address",
  "@se3aa0f7164": {
   "description": "fi: RTSP-osoite",
-  "x-where": "ui/add_device_wizard.dart:1038"
+  "x-where": "ui/add_device_wizard.dart:1039"
  },
  "s722ac06c6d": "Without the login – the user and password are added automatically.",
  "@s722ac06c6d": {
   "description": "fi: Ilman tunnusta – käyttäjä ja salasana lisätään itse.",
-  "x-where": "ui/add_device_wizard.dart:1040"
+  "x-where": "ui/add_device_wizard.dart:1041"
  },
  "s77ec7b376b": "Found: {p0}",
  "@s77ec7b376b": {
   "description": "fi: Löytyi: {p0}",
-  "x-where": "ui/add_device_wizard.dart:1069",
+  "x-where": "ui/add_device_wizard.dart:1070",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -5227,17 +5597,17 @@
  "sac4debdb9c": "Pick what goes on the home view and name them.",
  "@sac4debdb9c": {
   "description": "fi: Valitse mitkä tulevat kotinäkymään ja anna niille nimet (esim. Lämmitys, Ulkovalot).",
-  "x-where": "ui/add_device_wizard.dart:1070"
+  "x-where": "ui/add_device_wizard.dart:1071"
  },
  "sfe5661e401": "Select none",
  "@sfe5661e401": {
   "description": "fi: Poista valinnat",
-  "x-where": "ui/add_device_wizard.dart:1084"
+  "x-where": "ui/add_device_wizard.dart:1085"
  },
  "s2618555da0": "Select all ({p0})",
  "@s2618555da0": {
   "description": "fi: Valitse kaikki ({p0})",
-  "x-where": "ui/add_device_wizard.dart:1085",
+  "x-where": "ui/add_device_wizard.dart:1086",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -5247,17 +5617,17 @@
  "s86c3f92546": "Also add brightness / power",
  "@s86c3f92546": {
   "description": "fi: Lisää myös kirkkaus / teho",
-  "x-where": "ui/add_device_wizard.dart:1147"
+  "x-where": "ui/add_device_wizard.dart:1148"
  },
  "s91571486e4": "Also show power (W)",
  "@s91571486e4": {
   "description": "fi: Näytä myös teho (W)",
-  "x-where": "ui/add_device_wizard.dart:1148"
+  "x-where": "ui/add_device_wizard.dart:1149"
  },
  "sf86536db42": "Done! {p0} tiles added",
  "@sf86536db42": {
   "description": "fi: Valmis! {p0} ruutua lisätty",
-  "x-where": "ui/add_device_wizard.dart:1162",
+  "x-where": "ui/add_device_wizard.dart:1163",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -5267,22 +5637,22 @@
  "sbfaea66122": "The tiles work at home and away through the cloud – nothing else to do.",
  "@sbfaea66122": {
   "description": "fi: Ruudut toimivat kotona ja kodin ulkopuolella pilven kautta – mitään muuta ei tarvitse tehdä.",
-  "x-where": "ui/add_device_wizard.dart:1165"
+  "x-where": "ui/add_device_wizard.dart:1166"
  },
  "se7c68b3bed": "The tiles work at home and away through the home bridge – nothing else to do.",
  "@se7c68b3bed": {
   "description": "fi: Ruudut toimivat kotona ja kodin ulkopuolella kotisillan kautta – mitään muuta ei tarvitse tehdä.",
-  "x-where": "ui/add_device_wizard.dart:1170"
+  "x-where": "ui/add_device_wizard.dart:1171"
  },
  "sbc8469cce1": "The tiles work on your home network. To control from anywhere, set up the home bridge.",
  "@sbc8469cce1": {
   "description": "fi: Ruudut toimivat nyt kotiverkossa. Jotta voit ohjata kotia mistä tahansa, ota kotisilta käyttöön.",
-  "x-where": "ui/add_device_wizard.dart:1175"
+  "x-where": "ui/add_device_wizard.dart:1176"
  },
  "s417eb9a875": "Set up remote access",
  "@s417eb9a875": {
   "description": "fi: Ota etäkäyttö käyttöön",
-  "x-where": "ui/add_device_wizard.dart:1186"
+  "x-where": "ui/add_device_wizard.dart:1187"
  },
  "s53a9fe5e42": "There is no Molaplan account with that e-mail.",
  "@s53a9fe5e42": {
@@ -6333,11 +6703,6 @@
   "description": "fi: Otsikko",
   "x-where": "ui/automation_pages.dart:1217"
  },
- "s34900f9d58": "Text",
- "@s34900f9d58": {
-  "description": "fi: Teksti",
-  "x-where": "ui/automation_pages.dart:1220"
- },
  "s3c2ee8fe0d": "'{summary} = weather, price and home state'",
  "@s3c2ee8fe0d": {
   "description": "fi: {summary} = sää, sähkö ja kodin tila",
@@ -6865,97 +7230,97 @@
  "s876c7230a2": "Add a device",
  "@s876c7230a2": {
   "description": "fi: Lisää laite",
-  "x-where": "ui/template_gallery.dart:40"
+  "x-where": "ui/template_gallery.dart:41"
  },
  "sa252f06bff": "Pick your device brand. Molaplan finds it and creates the tiles.",
  "@sa252f06bff": {
   "description": "fi: Valitse laitteesi merkki. Molaplan etsii sen ja tekee ruudut valmiiksi.",
-  "x-where": "ui/template_gallery.dart:186"
+  "x-where": "ui/template_gallery.dart:187"
  },
  "s5b3b5e5a24": "Search brand or device (e.g. Shelly, Hue, IKEA)",
  "@s5b3b5e5a24": {
   "description": "fi: Hae merkkiä tai laitetta (esim. Shelly, Hue, IKEA)",
-  "x-where": "ui/template_gallery.dart:203"
+  "x-where": "ui/template_gallery.dart:204"
  },
  "sa427be10c9": "Find and connect automatically",
  "@sa427be10c9": {
   "description": "fi: Löydä ja yhdistä automaattisesti",
-  "x-where": "ui/template_gallery.dart:213"
+  "x-where": "ui/template_gallery.dart:214"
  },
  "s6f4cc0844f": "Coming – how to use it today",
  "@s6f4cc0844f": {
   "description": "fi: Tulossa – näin käytät nyt",
-  "x-where": "ui/template_gallery.dart:255"
+  "x-where": "ui/template_gallery.dart:261"
  },
  "s846ee3bc67": "Other devices",
  "@s846ee3bc67": {
   "description": "fi: Muut laitteet",
-  "x-where": "ui/template_gallery.dart:268"
+  "x-where": "ui/template_gallery.dart:274"
  },
  "sdeadd78d47": "Thermostat heating cooling",
  "@sdeadd78d47": {
   "description": "fi: Termostaatti lämmitys jäähdytys",
-  "x-where": "ui/template_gallery.dart:283"
+  "x-where": "ui/template_gallery.dart:289"
  },
  "s48264cfe32": "Thermostat",
  "@s48264cfe32": {
   "description": "fi: Termostaatti",
-  "x-where": "ui/template_gallery.dart:291"
+  "x-where": "ui/template_gallery.dart:297"
  },
  "s641a848754": "Keeps the temperature you want: controls relays or a heat pump from a thermometer. Can save with spot prices.",
  "@s641a848754": {
   "description": "fi: Pitää lämmön halutussa: ohjaa releitä tai lämpöpumppua lämpömittarin mukaan. Voi säästää pörssisähköllä.",
-  "x-where": "ui/template_gallery.dart:292"
+  "x-where": "ui/template_gallery.dart:298"
  },
  "s94493d01ca": "Weather forecast temperature rain wind",
  "@s94493d01ca": {
   "description": "fi: Sääennuste sää lämpötila sade tuuli",
-  "x-where": "ui/template_gallery.dart:305"
+  "x-where": "ui/template_gallery.dart:311"
  },
  "scb3570338f": "Weather now and hourly: temperature, rain and wind at your home. No device needed.",
  "@scb3570338f": {
   "description": "fi: Sää nyt ja tunneittain: lämpötila, sade ja tuuli kotisi sijainnista. Ei vaadi laitetta.",
-  "x-where": "ui/template_gallery.dart:313"
+  "x-where": "ui/template_gallery.dart:319"
  },
  "s2a9b6fedd9": "Can''t find your brand?",
  "@s2a9b6fedd9": {
   "description": "fi: Etkö löydä merkkiäsi?",
-  "x-where": "ui/template_gallery.dart:323"
+  "x-where": "ui/template_gallery.dart:329"
  },
  "scfc7244d06": "Husqvarna, Zigbee, Tuya, heat pumps… see how to use them today.",
  "@scfc7244d06": {
   "description": "fi: Husqvarna, Zigbee, Tuya, Netatmo, lämpöpumput… katso miten ne toimivat jo nyt.",
-  "x-where": "ui/template_gallery.dart:324"
+  "x-where": "ui/template_gallery.dart:330"
  },
  "sf7b77783e5": "Other (manual setup)",
  "@sf7b77783e5": {
   "description": "fi: Muu laite (oma asetus)",
-  "x-where": "ui/template_gallery.dart:356"
+  "x-where": "ui/template_gallery.dart:362"
  },
  "sc168355ee6": "Other device (advanced)",
  "@sc168355ee6": {
   "description": "fi: Muu laite (edistynyt)",
-  "x-where": "ui/template_gallery.dart:357"
+  "x-where": "ui/template_gallery.dart:363"
  },
  "s3022f72ece": "All connection types.",
  "@s3022f72ece": {
   "description": "fi: Kaikki yhteystyypit: HTTP, MQTT, Modbus, WebSocket, TCP, UDP.",
-  "x-where": "ui/template_gallery.dart:359"
+  "x-where": "ui/template_gallery.dart:365"
  },
  "s2d1d488d6d": "For technical users.",
  "@s2d1d488d6d": {
   "description": "fi: Teknisille käyttäjille. Vaatii edistyneet asetukset.",
-  "x-where": "ui/template_gallery.dart:364"
+  "x-where": "ui/template_gallery.dart:370"
  },
  "s6f1c11270c": "Contains example settings",
  "@s6f1c11270c": {
   "description": "fi: Sisältää esimerkkiasetuksia",
-  "x-where": "ui/template_gallery.dart:425"
+  "x-where": "ui/template_gallery.dart:431"
  },
  "s4f55f417b1": "The device has {p0} relays",
  "@s4f55f417b1": {
   "description": "fi: Laitteessa on {p0} relettä",
-  "x-where": "ui/template_gallery.dart:515",
+  "x-where": "ui/template_gallery.dart:521",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -6965,27 +7330,27 @@
  "sab3ebba17a": "The device has 1 relay",
  "@sab3ebba17a": {
   "description": "fi: Laitteessa on 1 rele",
-  "x-where": "ui/template_gallery.dart:516"
+  "x-where": "ui/template_gallery.dart:522"
  },
  "sfa48c40832": "energy metering",
  "@sfa48c40832": {
   "description": "fi: energiamittaus",
-  "x-where": "ui/template_gallery.dart:517"
+  "x-where": "ui/template_gallery.dart:523"
  },
  "sc8d1abbd21": "Tile name",
  "@sc8d1abbd21": {
   "description": "fi: Ruudun nimi",
-  "x-where": "ui/template_gallery.dart:535"
+  "x-where": "ui/template_gallery.dart:541"
  },
  "s183ed60009": "OK",
  "@s183ed60009": {
   "description": "fi: OK",
-  "x-where": "ui/template_gallery.dart:547"
+  "x-where": "ui/template_gallery.dart:553"
  },
  "s1ea8fe913b": "Address: {p0}",
  "@s1ea8fe913b": {
   "description": "fi: Osoite: {p0}",
-  "x-where": "ui/template_gallery.dart:588",
+  "x-where": "ui/template_gallery.dart:594",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -6995,22 +7360,22 @@
  "s16dc13070c": "Home Assistant uses a self-signed certificate. It was accepted because the address is on the home network.",
  "@s16dc13070c": {
   "description": "fi: Home Assistant käyttää itse allekirjoitettua varmennetta. Se hyväksyttiin, koska osoite on kotiverkossa.",
-  "x-where": "ui/template_gallery.dart:590"
+  "x-where": "ui/template_gallery.dart:596"
  },
  "sd531eb2fc2": "Home Assistant was not found automatically. Type the address you open it with (e.g. http://192.168.1.20:8123 or the Nabu Casa address).",
  "@sd531eb2fc2": {
   "description": "fi: Home Assistantia ei löytynyt automaattisesti. Kirjoita osoite, jolla avaat sen selaimessa (esim. http://192.168.1.20:812",
-  "x-where": "ui/template_gallery.dart:642"
+  "x-where": "ui/template_gallery.dart:648"
  },
  "s7def041e83": "Found Home Assistants:",
  "@s7def041e83": {
   "description": "fi: Löydetyt Home Assistantit:",
-  "x-where": "ui/template_gallery.dart:647"
+  "x-where": "ui/template_gallery.dart:653"
  },
  "s2967a37e01": "Found: {p0} – {p1}",
  "@s2967a37e01": {
   "description": "fi: Löytyi: {p0} – {p1}",
-  "x-where": "ui/template_gallery.dart:672",
+  "x-where": "ui/template_gallery.dart:678",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -7023,47 +7388,47 @@
  "s8f4c0baf1a": "No devices found automatically. Type the address yourself – find it in your router or the device app.",
  "@s8f4c0baf1a": {
   "description": "fi: Laitteita ei löytynyt automaattisesti. Kirjoita osoite itse – sen löydät reitittimen laitelistasta tai laitteen omasta s",
-  "x-where": "ui/template_gallery.dart:797"
+  "x-where": "ui/template_gallery.dart:803"
  },
  "s104238f11e": "Found devices – pick yours:",
  "@s104238f11e": {
   "description": "fi: Löydetyt laitteet – valitse omasi:",
-  "x-where": "ui/template_gallery.dart:802"
+  "x-where": "ui/template_gallery.dart:808"
  },
  "sd5f9dce947": "Search is not available on this network.",
  "@sd5f9dce947": {
   "description": "fi: Haku ei ole käytettävissä tässä verkossa.",
-  "x-where": "ui/template_gallery.dart:817"
+  "x-where": "ui/template_gallery.dart:823"
  },
  "s26abc57d91": "Teach remote buttons?",
  "@s26abc57d91": {
   "description": "fi: Opetetaanko kaukosäätimen napit?",
-  "x-where": "ui/template_gallery.dart:899"
+  "x-where": "ui/template_gallery.dart:905"
  },
  "sc709f38633": "Basic control works already. You can also teach other remote buttons, e.g. \"Turbo\".",
  "@sc709f38633": {
   "description": "fi: Perusohjaus (virta, lämpö, tila) toimii jo. Voit lisäksi opettaa kaukosäätimen muita nappeja, esim. \"Turbo\" tai \"Hiljain",
-  "x-where": "ui/template_gallery.dart:901"
+  "x-where": "ui/template_gallery.dart:907"
  },
  "s6cac83dd5e": "Not now",
  "@s6cac83dd5e": {
   "description": "fi: Ei nyt",
-  "x-where": "ui/template_gallery.dart:908"
+  "x-where": "ui/template_gallery.dart:914"
  },
  "s97ea2eeb11": "Teach now",
  "@s97ea2eeb11": {
   "description": "fi: Opeta nyt",
-  "x-where": "ui/template_gallery.dart:912"
+  "x-where": "ui/template_gallery.dart:918"
  },
  "s09cfb7b2a1": "Device added",
  "@s09cfb7b2a1": {
   "description": "fi: Laite lisätty",
-  "x-where": "ui/template_gallery.dart:933"
+  "x-where": "ui/template_gallery.dart:939"
  },
  "sda9574390f": "Device and {p0} tiles added",
  "@sda9574390f": {
   "description": "fi: Laite ja {p0} ruutua lisätty",
-  "x-where": "ui/template_gallery.dart:934",
+  "x-where": "ui/template_gallery.dart:940",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -7073,162 +7438,187 @@
  "sd51ee1ec8d": "Preset settings are examples. Check them against your device manual before relying on them.",
  "@sd51ee1ec8d": {
   "description": "fi: Valmiit asetukset ovat esimerkkejä. Tarkista ne laitteesi ohjeesta ennen kuin luotat arvoihin.",
-  "x-where": "ui/template_gallery.dart:995"
+  "x-where": "ui/template_gallery.dart:1001"
  },
  "s2e99b59497": "IR is one-way: the heat pump does not confirm. Molaplan always sends the whole state and shows what it sent. Teach other remote buttons later: Connections → blaster → \"Teach a new command\".",
  "@s2e99b59497": {
   "description": "fi: IR on yksisuuntainen: lämpöpumppu ei kerro takaisin, menikö komento perille. Molaplan lähettää aina koko tilan (virta, t",
-  "x-where": "ui/template_gallery.dart:1008"
+  "x-where": "ui/template_gallery.dart:1014"
  },
  "s0dd21e026c": "Guide and automatic search",
  "@s0dd21e026c": {
   "description": "fi: Ohje ja automaattinen haku",
-  "x-where": "ui/template_gallery.dart:1023"
+  "x-where": "ui/template_gallery.dart:1029"
  },
  "s695a011cc1": "Searching…",
  "@s695a011cc1": {
   "description": "fi: Etsitään…",
-  "x-where": "ui/template_gallery.dart:1080"
+  "x-where": "ui/template_gallery.dart:1086"
  },
  "s47d409fddd": "Search network",
  "@s47d409fddd": {
   "description": "fi: Etsi verkosta",
-  "x-where": "ui/template_gallery.dart:1081"
+  "x-where": "ui/template_gallery.dart:1087"
  },
  "sa62eebe6bd": "Detect relays",
  "@sa62eebe6bd": {
   "description": "fi: Tunnista releet",
-  "x-where": "ui/template_gallery.dart:1112"
+  "x-where": "ui/template_gallery.dart:1118"
  },
  "s7196b72140": "⚠ No native Modbus TCP – an RS485 → TCP gateway is needed.",
  "@s7196b72140": {
   "description": "fi: ⚠ Tässä koneessa ei ole Modbus TCP:tä – tarvitset RS485 → Modbus TCP -muuntimen.",
-  "x-where": "ui/template_gallery.dart:1123"
+  "x-where": "ui/template_gallery.dart:1129"
  },
  "s2e8ba44677": "Source",
  "@s2e8ba44677": {
   "description": "fi: Lähde",
-  "x-where": "ui/template_gallery.dart:1128"
+  "x-where": "ui/template_gallery.dart:1134"
  },
  "sceb8e47d07": "Test connection",
  "@sceb8e47d07": {
   "description": "fi: Testaa yhteys",
-  "x-where": "ui/template_gallery.dart:1137"
+  "x-where": "ui/template_gallery.dart:1143"
  },
  "s02ce5f4a01": "Works!",
  "@s02ce5f4a01": {
   "description": "fi: Toimii!",
-  "x-where": "ui/template_gallery.dart:1148"
+  "x-where": "ui/template_gallery.dart:1154"
  },
  "sb9e9e55164": "These tiles will be created",
  "@sb9e9e55164": {
   "description": "fi: Nämä ruudut luodaan",
-  "x-where": "ui/template_gallery.dart:1156"
+  "x-where": "ui/template_gallery.dart:1162"
  },
  "s1cb2891ef2": "Fill in the fields marked with * to see the tiles.",
  "@s1cb2891ef2": {
   "description": "fi: Täytä tähdellä (*) merkityt kentät, niin näet ruudut.",
-  "x-where": "ui/template_gallery.dart:1166"
+  "x-where": "ui/template_gallery.dart:1172"
  },
  "s504861ee78": "No ready tiles – you can add them later with the pencil button.",
  "@s504861ee78": {
   "description": "fi: Ei valmiita ruutuja – voit lisätä ne myöhemmin kynä-painikkeesta.",
-  "x-where": "ui/template_gallery.dart:1175"
+  "x-where": "ui/template_gallery.dart:1181"
  },
  "s1094266d4c": "Shows a value",
  "@s1094266d4c": {
   "description": "fi: Näyttää arvon",
-  "x-where": "ui/template_gallery.dart:1208"
+  "x-where": "ui/template_gallery.dart:1214"
  },
  "sf6ae3f3323": "On/off switch",
  "@sf6ae3f3323": {
   "description": "fi: Kytkin päälle/pois",
-  "x-where": "ui/template_gallery.dart:1209"
+  "x-where": "ui/template_gallery.dart:1215"
  },
  "s20dad69675": "Button",
  "@s20dad69675": {
   "description": "fi: Painike",
-  "x-where": "ui/template_gallery.dart:1210"
+  "x-where": "ui/template_gallery.dart:1216"
  },
  "s0e9f94df05": "Slider",
  "@s0e9f94df05": {
   "description": "fi: Säädin",
-  "x-where": "ui/template_gallery.dart:1211"
+  "x-where": "ui/template_gallery.dart:1217"
  },
  "s109b454866": "Camera view",
  "@s109b454866": {
   "description": "fi: Kamerakuva",
-  "x-where": "ui/template_gallery.dart:1212"
+  "x-where": "ui/template_gallery.dart:1218"
  },
  "s37153e0e80": "Advanced settings",
  "@s37153e0e80": {
   "description": "fi: Edistyneet asetukset",
-  "x-where": "ui/template_gallery.dart:1245"
+  "x-where": "ui/template_gallery.dart:1251"
  },
  "s0ca55a9cae": "Other devices use technical settings (HTTP, MQTT, Modbus…). If your brand is listed, use it instead.\n\nTurn on advanced settings? You can turn them off in Settings.",
  "@s0ca55a9cae": {
   "description": "fi: Muu laite liitetään teknisillä asetuksilla (HTTP, MQTT, Modbus…). Jos laitteesi merkki löytyy listasta, käytä sitä – se ",
-  "x-where": "ui/template_gallery.dart:1247"
+  "x-where": "ui/template_gallery.dart:1253"
  },
  "s9630135746": "Turn on",
  "@s9630135746": {
   "description": "fi: Ota käyttöön",
-  "x-where": "ui/template_gallery.dart:1258"
+  "x-where": "ui/template_gallery.dart:1264"
  },
  "sbcdff8f72a": "Which camera do you have?",
  "@sbcdff8f72a": {
   "description": "fi: Mikä kamera sinulla on?",
-  "x-where": "ui/template_gallery.dart:1279"
+  "x-where": "ui/template_gallery.dart:1285"
  },
  "s67bf18fb6f": "Other camera (ONVIF)",
  "@s67bf18fb6f": {
   "description": "fi: Muu kamera (ONVIF)",
-  "x-where": "ui/template_gallery.dart:1287"
+  "x-where": "ui/template_gallery.dart:1293"
  },
  "sdbbc24198f": "Which heat pump do you have?",
  "@sdbbc24198f": {
   "description": "fi: Mikä lämpöpumppu sinulla on?",
-  "x-where": "ui/template_gallery.dart:1310"
+  "x-where": "ui/template_gallery.dart:1316"
  },
  "sdfd0407af6": "Verify – no official vendor document.",
  "@sdfd0407af6": {
   "description": "fi: Tarkista asetukset – ei valmistajan virallista dokumenttia.",
-  "x-where": "ui/template_gallery.dart:1320"
+  "x-where": "ui/template_gallery.dart:1326"
  },
  "s5562a66892": "No Wi-Fi – IR blaster (any brand)",
  "@s5562a66892": {
   "description": "fi: Ei wifiä – IR-ohjain (mikä tahansa merkki)",
-  "x-where": "ui/template_gallery.dart:1330"
+  "x-where": "ui/template_gallery.dart:1336"
  },
  "sc6411a9010": "A Tasmota or ESPHome IR blaster (e.g. Athom IR & RF) sends the full state like the remote. You can also teach your own commands.",
  "@sc6411a9010": {
   "description": "fi: Tasmota- tai ESPHome-IR-lähetin (esim. Athom IR & RF) lähettää koko tilan kuten kaukosäädin. Voit myös opettaa omia kome",
-  "x-where": "ui/template_gallery.dart:1332"
+  "x-where": "ui/template_gallery.dart:1338"
  },
  "s6cce12c7e3": "Service port (ESPHome)",
  "@s6cce12c7e3": {
   "description": "fi: Huoltoliitäntä (ESPHome)",
-  "x-where": "ui/template_gallery.dart:1343"
+  "x-where": "ui/template_gallery.dart:1349"
  },
  "s0d3bc6d125": "An ESP on the indoor unit connector, two-way.",
  "@s0d3bc6d125": {
   "description": "fi: ESP sisäyksikön liittimeen, kaksisuuntainen.",
-  "x-where": "ui/template_gallery.dart:1344"
+  "x-where": "ui/template_gallery.dart:1350"
  },
  "s8275426406": "Via Home Assistant",
  "@s8275426406": {
   "description": "fi: Home Assistantin kautta",
-  "x-where": "ui/template_gallery.dart:1349"
+  "x-where": "ui/template_gallery.dart:1355"
  },
  "s5b10465c5b": "If you already have Home Assistant.",
  "@s5b10465c5b": {
   "description": "fi: Jos sinulla on jo Home Assistant.",
-  "x-where": "ui/template_gallery.dart:1350"
+  "x-where": "ui/template_gallery.dart:1356"
  },
  "s417228f48f": "Other brands – why not yet",
  "@s417228f48f": {
   "description": "fi: Muut merkit – miksi ei vielä",
-  "x-where": "ui/template_gallery.dart:1356"
+  "x-where": "ui/template_gallery.dart:1362"
+ },
+ "se50e28a0e4": "The devices are controlled on your home network without the cloud. The first time, their local keys are fetched with your own free Tuya developer account (about 10 minutes, only once).",
+ "@se50e28a0e4": {
+  "description": "fi: Laitteita ohjataan kotiverkossa ilman pilveä. Ensimmäisellä kerralla tarvitaan laitteiden paikalliset avaimet, jotka hae",
+  "x-where": "ui/template_gallery.dart:1396"
+ },
+ "sb35b23dbdd": "Fetch the keys with my own Tuya account (recommended)",
+ "@sb35b23dbdd": {
+  "description": "fi: Hae avaimet omalla Tuya-tunnuksella (suositus)",
+  "x-where": "ui/template_gallery.dart:1406"
+ },
+ "sbc29869e30": "All Wi-Fi devices of the app at once.",
+ "@sbc29869e30": {
+  "description": "fi: Kaikki sovelluksen wifi-laitteet kerralla.",
+  "x-where": "ui/template_gallery.dart:1407"
+ },
+ "s2f57241369": "I already have the local key",
+ "@s2f57241369": {
+  "description": "fi: Minulla on jo paikallinen avain",
+  "x-where": "ui/template_gallery.dart:1413"
+ },
+ "sf4a309c04a": "One device: address, ID and key.",
+ "@sf4a309c04a": {
+  "description": "fi: Yksi laite: osoite, tunnus ja avain.",
+  "x-where": "ui/template_gallery.dart:1414"
  },
  "s772c158a57": "tcp",
  "@s772c158a57": {
@@ -11518,87 +11908,87 @@
  "s0477f24b6b": "HTTP / REST",
  "@s0477f24b6b": {
   "description": "fi: HTTP / REST",
-  "x-where": "drivers/http_driver.dart:46"
+  "x-where": "drivers/http_driver.dart:47"
  },
  "s3102ae3a16": "Base URL",
  "@s3102ae3a16": {
   "description": "fi: Perusosoite",
-  "x-where": "drivers/http_driver.dart:52"
+  "x-where": "drivers/http_driver.dart:53"
  },
  "s38d0517a8d": "Authentication",
  "@s38d0517a8d": {
   "description": "fi: Tunnistus",
-  "x-where": "drivers/http_driver.dart:53"
+  "x-where": "drivers/http_driver.dart:54"
  },
  "sade17bf83e": "None",
  "@sade17bf83e": {
   "description": "fi: Ei tunnistusta",
-  "x-where": "drivers/http_driver.dart:60"
+  "x-where": "drivers/http_driver.dart:61"
  },
  "s9cbb9f048d": "User + password (Basic)",
  "@s9cbb9f048d": {
   "description": "fi: Käyttäjä + salasana (Basic)",
-  "x-where": "drivers/http_driver.dart:61"
+  "x-where": "drivers/http_driver.dart:62"
  },
  "s3cb806781e": "User + password (Digest)",
  "@s3cb806781e": {
   "description": "fi: Käyttäjä + salasana (Digest)",
-  "x-where": "drivers/http_driver.dart:62"
+  "x-where": "drivers/http_driver.dart:63"
  },
  "sb1920b9d9b": "Token (Bearer)",
  "@sb1920b9d9b": {
   "description": "fi: Avain / token (Bearer)",
-  "x-where": "drivers/http_driver.dart:63"
+  "x-where": "drivers/http_driver.dart:64"
  },
  "sed995f57b8": "Username",
  "@sed995f57b8": {
   "description": "fi: Käyttäjätunnus",
-  "x-where": "drivers/http_driver.dart:67"
+  "x-where": "drivers/http_driver.dart:68"
  },
  "s65e35b7cc4": "Token",
  "@s65e35b7cc4": {
   "description": "fi: Token",
-  "x-where": "drivers/http_driver.dart:69"
+  "x-where": "drivers/http_driver.dart:70"
  },
  "s51510ae27a": "Extra headers (Name: value per line)",
  "@s51510ae27a": {
   "description": "fi: Lisäotsakkeet (Nimi: arvo / rivi)",
-  "x-where": "drivers/http_driver.dart:70"
+  "x-where": "drivers/http_driver.dart:71"
  },
  "s361419c448": "Timeout (s)",
  "@s361419c448": {
   "description": "fi: Aikakatkaisu (s)",
-  "x-where": "drivers/http_driver.dart:82"
+  "x-where": "drivers/http_driver.dart:83"
  },
  "sf235ce5ec0": "Method",
  "@sf235ce5ec0": {
   "description": "fi: Metodi",
-  "x-where": "drivers/http_driver.dart:85"
+  "x-where": "drivers/http_driver.dart:86"
  },
  "s484291707c": "Path",
  "@s484291707c": {
   "description": "fi: Polku",
-  "x-where": "drivers/http_driver.dart:93"
+  "x-where": "drivers/http_driver.dart:94"
  },
  "s54c8aed8bc": "Body",
  "@s54c8aed8bc": {
   "description": "fi: Runko",
-  "x-where": "drivers/http_driver.dart:94"
+  "x-where": "drivers/http_driver.dart:95"
  },
  "s5c5e9b662c": "'Body ({{value}} = value)'",
  "@s5c5e9b662c": {
   "description": "fi: Runko ({{value}} = arvo)",
-  "x-where": "drivers/http_driver.dart:108"
+  "x-where": "drivers/http_driver.dart:109"
  },
  "s8e82ca13cf": "Content-Type",
  "@s8e82ca13cf": {
   "description": "fi: Content-Type",
-  "x-where": "drivers/http_driver.dart:109"
+  "x-where": "drivers/http_driver.dart:110"
  },
  "s3c045f21ee": "Tested: GET {p0} (base address, {p1} bytes, {p2} ms).",
  "@s3c045f21ee": {
   "description": "fi: Testattiin: GET {p0} (perusosoite, {p1} tavua, {p2} ms).",
-  "x-where": "drivers/http_driver.dart:221",
+  "x-where": "drivers/http_driver.dart:238",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -11614,12 +12004,12 @@
  "s7797602869": "No commands were sent and tile paths were not tested.",
  "@s7797602869": {
   "description": "fi: Komentoja ei lähetetty eikä ruutujen polkuja testattu.",
-  "x-where": "drivers/http_driver.dart:225"
+  "x-where": "drivers/http_driver.dart:242"
  },
  "sbf349dfcbd": "HTTP {p0}: the device answered but refused the login. Check username, password or token. {p1}",
  "@sbf349dfcbd": {
   "description": "fi: HTTP {p0}: laite vastasi, mutta ei hyväksynyt kirjautumista. Tarkista käyttäjätunnus, salasana tai token. {p1}",
-  "x-where": "drivers/http_driver.dart:232",
+  "x-where": "drivers/http_driver.dart:249",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -11632,7 +12022,7 @@
  "s3bd10f0ae2": "HTTP {p0}: the device answered with a server error. {p1}",
  "@s3bd10f0ae2": {
   "description": "fi: HTTP {p0}: laite vastasi virheellä (palvelinvirhe). {p1}",
-  "x-where": "drivers/http_driver.dart:240",
+  "x-where": "drivers/http_driver.dart:257",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -11645,7 +12035,7 @@
  "s2a7fa26dd6": "✓ The device answered at {p0} (HTTP 404: no page at the base address – normal for many devices). The connection works. {p1}",
  "@s2a7fa26dd6": {
   "description": "fi: ✓ Laite vastasi osoitteessa {p0} (HTTP 404: perusosoitteessa ei ole sivua – se on normaalia monille laitteille). Yhteys ",
-  "x-where": "drivers/http_driver.dart:247",
+  "x-where": "drivers/http_driver.dart:264",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -11658,7 +12048,7 @@
  "sb2821916bc": "✓ Connection works: HTTP {p0}. {p1} {p2}",
  "@sb2821916bc": {
   "description": "fi: ✓ Yhteys toimii: HTTP {p0}. {p1} {p2}",
-  "x-where": "drivers/http_driver.dart:252",
+  "x-where": "drivers/http_driver.dart:269",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -12990,11 +13380,6 @@
   "description": "fi: Sanajärjestys käänteinen (CDAB)",
   "x-where": "drivers/modbus.dart:665"
  },
- "see24ec5d84": "Scale",
- "@see24ec5d84": {
-  "description": "fi: Kerroin",
-  "x-where": "drivers/modbus.dart:666"
- },
  "s0a239b832b": "Offset",
  "@s0a239b832b": {
   "description": "fi: Siirtymä",
@@ -13769,16 +14154,6 @@
  "@sba2eb6d9b9": {
   "description": "fi: Asetusarvo",
   "x-where": "heatpumps/hp_driver.dart:257"
- },
- "seb4c438a42": "'Value ({{value}})'",
- "@seb4c438a42": {
-  "description": "fi: Arvo ({{value}})",
-  "x-where": "heatpumps/hp_driver.dart:266"
- },
- "s033b6b8c6c": "'Value to send; {{value}} = the tile''s value.'",
- "@s033b6b8c6c": {
-  "description": "fi: Lähetettävä arvo; {{value}} = ruudun arvo.",
-  "x-where": "heatpumps/hp_driver.dart:266"
  },
  "s6478b264c0": "Heat pump \"{p0}\" is no longer in the account",
  "@s6478b264c0": {
@@ -15059,10 +15434,5 @@
     "type": "String"
    }
   }
- },
- "s0ceafaa97c": "energy",
- "@s0ceafaa97c": {
-  "description": "fi: energia",
-  "x-where": "templates/device_templates.dart:2124"
  }
 }

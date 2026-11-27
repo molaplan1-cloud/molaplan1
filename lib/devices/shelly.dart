@@ -9,6 +9,7 @@ import '../drivers/driver.dart';
 import '../models/models.dart';
 import 'provider.dart';
 import 'sensors.dart';
+import 'shelly_extras.dart';
 import 'shelly_cloud_model.dart';
 import '../l10n/l10n.dart';
 
@@ -46,7 +47,11 @@ class ShellyDevice {
     this.authEnabled = false,
     this.flood = false,
     this.meters = const [],
+    this.extras = const [],
   });
+
+  /// R287: lights / dimmers / RGBW, covers and sensors.
+  final List<ShellyExtra> extras;
 
   /// t161u: energy-meter channels. When the device is a meter (EM, 3EM, Pro EM…) its
   /// relay only drives a contactor and is not added unless the user ticks it.
@@ -115,21 +120,26 @@ Future<ShellyDevice> probeShelly(Driver d, {bool havePassword = false}) async {
       );
     }
     final em = shellyGen1Meters(st);
-    if (relays.isEmpty && em.isEmpty) throw AddDeviceError(AddProblem.nothingToAdd);
+    final extras = shellyGen1Extras(info, st);
+    // Roller mode: the two relays drive the motor – never offered as separate switches.
+    final roller = extras.any((e) => e.kind == 'cover');
+    if ((relays.isEmpty || roller) && em.isEmpty && extras.isEmpty) throw AddDeviceError(AddProblem.nothingToAdd);
     return ShellyDevice(
       id: 'shelly-${info['mac'] ?? ''}'.toLowerCase(),
       model: '${info['type'] ?? ''}',
       gen: 1,
       meters: em,
+      extras: extras,
       authEnabled: info['auth'] == true,
       channels: [
-        for (var i = 0; i < relays.length; i++)
-          ShellyChannel(
-            i,
-            on: (relays[i] as Map)['ison'] as bool?,
-            hasPower: i < meters.length,
-            power: i < meters.length ? (meters[i] as Map)['power'] as num? : null,
-          ),
+        if (!roller)
+          for (var i = 0; i < relays.length; i++)
+            ShellyChannel(
+              i,
+              on: (relays[i] as Map)['ison'] as bool?,
+              hasPower: i < meters.length,
+              power: i < meters.length ? (meters[i] as Map)['power'] as num? : null,
+            ),
       ],
     );
   }
@@ -174,13 +184,15 @@ Future<ShellyDevice> probeShelly(Driver d, {bool havePassword = false}) async {
     );
   }
   final em = shellyGen2Meters(st, cfg);
-  if (chans.isEmpty && em.isEmpty) throw AddDeviceError(AddProblem.nothingToAdd);
+  final extras = shellyGen2Extras(st, cfg);
+  if (chans.isEmpty && em.isEmpty && extras.isEmpty) throw AddDeviceError(AddProblem.nothingToAdd);
   return ShellyDevice(
     id: '${info['id'] ?? 'shelly'}',
     model: '${info['model'] ?? ''}',
     app: '${info['app'] ?? ''}',
     gen: gen,
     meters: em,
+    extras: extras,
     name: devName.isEmpty ? null : devName,
     authEnabled: info['auth_en'] == true,
     channels: chans,
@@ -392,6 +404,9 @@ ConnectionConfig shellyConnection(String address, ShellyDevice d, {String? passw
       // Kept for switching this device to Shelly Cloud later (cloud id = MAC part).
       'shellyId': d.id,
       'auth': pw.isEmpty ? 'none' : (d.gen >= 2 ? 'digest' : 'basic'),
+      // R287: instant updates (Gen2+ WebSocket, Gen1 CoIoT) instead of polling.
+      'gen': d.gen,
+      'push': true,
       if (pw.isNotEmpty) 'username': 'admin',
     },
     secrets: {if (pw.isNotEmpty) 'password': pw},
@@ -508,6 +523,14 @@ List<TileConfig> shellyTiles(
       tiles.add(shellyMeasureTile(c, d, m, f, lang, title: custom.isEmpty ? null : custom));
     }
   }
+  for (final e in d.extras) {
+    if (skip.contains(e.key)) continue;
+    final custom = names[e.key]?.trim() ?? '';
+    final title = custom.isNotEmpty
+        ? custom
+        : shellyExtraTitle(e, d.name ?? d.friendlyModel, d.extras.where((x) => x.kind == e.kind).length, lang);
+    tiles.addAll(shellyExtraTiles(c.id, d.gen, e, title, lang));
+  }
   return tiles;
 }
 
@@ -537,10 +560,10 @@ class ShellyProvider extends DeviceProvider {
   String get en => 'Shelly';
   @override
   String get descFi =>
-      'Releet ja pistorasiat: Pro 4PM, Plus 1PM, Plug S, 2.5… Löytyy automaattisesti, ruudut tehdään joka kanavalle.';
+      'Releet, pistorasiat, himmentimet, verhot, energiamittarit (Pro 3EM) ja anturit. Löytyy automaattisesti, toimii ilman pilveä.';
   @override
   String get descEn =>
-      'Relays and plugs: Pro 4PM, Plus 1PM, Plug S, 2.5… Found automatically, tiles for every channel.';
+      'Relays, plugs, dimmers, covers, energy meters (Pro 3EM) and sensors. Found automatically, works without the cloud.';
   @override
   String get category => 'power';
   @override
@@ -556,6 +579,21 @@ class ShellyProvider extends DeviceProvider {
     '2pm',
     'pm',
     'kytkin',
+    'dimmer',
+    'himmennin',
+    'rgbw',
+    'valo',
+    'cover',
+    'verho',
+    'rulla',
+    'roller',
+    'em',
+    '3em',
+    'pro 3em',
+    'energiamittari',
+    'h&t',
+    'anturi',
+    'sensor',
   ];
   @override
   PairMode get pairMode => PairMode.password;
@@ -636,6 +674,38 @@ class ShellyProvider extends DeviceProvider {
                   preselect: shellyMeasurePreselect(f) && (m.comp != 'switch' || f == 'energy'),
                   subtitle: f == 'power' && m.power != null ? '${m.power!.round()} W' : shellyMeasures[f]!.$3,
                 ),
+          for (final e in dev.extras)
+            AddItem(
+              key: e.key,
+              kind: switch (e.kind) {
+                'light' => 'light',
+                'cover' => 'cover',
+                'door' || 'motion' || 'smoke' => 'sensor:${e.kind}',
+                _ => 'sensor',
+              },
+              name: shellyExtraTitle(
+                e,
+                dev.name ?? dev.friendlyModel,
+                dev.extras.where((x) => x.kind == e.kind).length,
+                ctx.lang,
+              ),
+              preselect: shellyExtraPreselect(e),
+              subtitle: [
+                if (e.kind == 'light' && e.value is bool)
+                  e.value == true ? tr(ctx.lang, 'nyt päällä', 'on now') : tr(ctx.lang, 'nyt pois', 'off now'),
+                if (e.kind == 'cover' && e.value is num) '${e.value} %',
+                if (e.kind == 'cover' && !e.calibrated)
+                  tr(
+                    ctx.lang,
+                    'kalibroi Shelly-sovelluksessa, niin saat liukusäätimen',
+                    'calibrate in the Shelly app to get a slider',
+                  ),
+                if (e.kind == 'temperature' && e.value is num) '${e.value} °C',
+                if (e.kind == 'humidity' && e.value is num) '${e.value} %',
+                if (const {'temperature', 'humidity', 'door', 'motion', 'lux'}.contains(e.kind) && dev.gen == 1)
+                  tr(ctx.lang, 'paristolaite: päivittyy kun herää', 'battery device: updates when awake'),
+              ].join(' · '),
+            ),
         ],
       );
     } finally {

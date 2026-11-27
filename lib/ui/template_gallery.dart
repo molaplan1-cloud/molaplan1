@@ -9,6 +9,7 @@ import '../core/friendly_error.dart';
 import '../core/discovery.dart';
 import '../devices/ha_setup.dart';
 import '../heatpumps/hp_providers.dart';
+import '../tuya/tuya_provider.dart';
 import '../drivers/registry.dart';
 import '../drivers/ntfy_device.dart' show ntfyNoReplyText;
 import '../drivers/driver.dart' show DriverException;
@@ -239,6 +240,11 @@ class _TemplateGridState extends State<TemplateGrid> {
                               return;
                             }
                             pick = c as DeviceProvider;
+                          }
+                          if (p is TuyaKeyProvider) {
+                            final c = await pickTuyaMode(context);
+                            if (c == null || !context.mounted) return;
+                            pick = c;
                           }
                           if (widget.onBrand != null) return widget.onBrand!(pick);
                           await Navigator.push<bool>(
@@ -1362,6 +1368,51 @@ Future<Object?> pickHeatPumpBrand(BuildContext context) => showModalBottomSheet<
                 onTap: n.template == null ? null : () => Navigator.pop(c, n.template),
               ),
           ],
+        ),
+        const SizedBox(height: 8),
+      ],
+    ),
+  ),
+);
+
+/// R287: Powerant / Tuya – fetch the local keys with your own Tuya developer project
+/// (recommended) or type a key you already have.
+Future<DeviceProvider?> pickTuyaMode(BuildContext context) => showModalBottomSheet<DeviceProvider>(
+  context: context,
+  showDragHandle: true,
+  isScrollControlled: true,
+  builder: (c) => SafeArea(
+    child: ListView(
+      key: const ValueKey('tuya-modes'),
+      shrinkWrap: true,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
+          child: Text('Powerant / Tuya / Smart Life', style: Theme.of(c).textTheme.titleLarge),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
+          child: Text(
+            tx(
+              c,
+              'Laitteita ohjataan kotiverkossa ilman pilveä. Ensimmäisellä kerralla tarvitaan laitteiden paikalliset avaimet, jotka haetaan omalla ilmaisella Tuya-kehittäjätililläsi (noin 10 minuuttia, vain kerran).',
+              'The devices are controlled on your home network without the cloud. The first time, their local keys are fetched with your own free Tuya developer account (about 10 minutes, only once).',
+            ),
+          ),
+        ),
+        ListTile(
+          key: const ValueKey('tuya-mode-keys'),
+          leading: const Icon(Icons.key_outlined),
+          title: Text(tx(c, 'Hae avaimet omalla Tuya-tunnuksella (suositus)', 'Fetch the keys with my own Tuya account (recommended)')),
+          subtitle: Text(tx(c, 'Kaikki sovelluksen wifi-laitteet kerralla.', 'All Wi-Fi devices of the app at once.'), maxLines: 2),
+          onTap: () => Navigator.pop(c, providerById('tuya')),
+        ),
+        ListTile(
+          key: const ValueKey('tuya-mode-local'),
+          leading: const Icon(Icons.lan_outlined),
+          title: Text(tx(c, 'Minulla on jo paikallinen avain', 'I already have the local key')),
+          subtitle: Text(tx(c, 'Yksi laite: osoite, tunnus ja avain.', 'One device: address, ID and key.'), maxLines: 2),
+          onTap: () => Navigator.pop(c, providerById('tuya_local')),
         ),
         const SizedBox(height: 8),
       ],

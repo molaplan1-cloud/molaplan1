@@ -106,6 +106,7 @@ class MolaplanApp extends StatefulWidget {
 class _MolaplanAppState extends State<MolaplanApp> {
   AppState get state => widget.state;
   late ThemeMode _mode = _resolve();
+  late String _lang = state.lang;
   Timer? _sun;
 
   ThemeMode _resolve() {
@@ -117,9 +118,16 @@ class _MolaplanAppState extends State<MolaplanApp> {
   }
 
   /// t162u: follows the theme setting; 'sun' is re-checked every minute.
+  /// t273u: also rebuild when the language changes so MaterialApp.locale updates.
   void _update() {
     final m = _resolve();
-    if (m != _mode && mounted) setState(() => _mode = m);
+    final lang = state.lang;
+    if (mounted && (m != _mode || lang != _lang)) {
+      setState(() {
+        _mode = m;
+        _lang = lang;
+      });
+    }
     if (state.themeChoice == 'sun') {
       _sun ??= Timer.periodic(const Duration(minutes: 1), (_) => _update());
     } else {

@@ -258,3 +258,11 @@ t155u–t157u (also v0.7.3): ModbusTcpClient.acquire/release (one pooled connect
 - Tests: test/heatpumps_local_test.dart (mock Daikin/MHI HTTP servers, UDP, ModbusSim), test/heatpumps_cloud_test.dart (MockClient APIs, `test/support/mini_mqtt.dart` broker for Toshiba), test/heatpumps_ui_test.dart. All UNTESTED ON HARDWARE.
 - Licences: docs/THIRD-PARTY-NOTICES.md; protocol notes docs/HEATPUMPS.md. GPL refs (pydaikin, nibe, thermia-online) not copied.
 - Push: no `origin` remote; push with `git -c 'credential.https://github.com.helper=' -c credential.helper= -c credential.helper=store push https://x-access-token@github.com/molaplan1-cloud/molaplan1.git` (saved x-access-token login; gh helper is remonttireitti – keep it out).
+
+## v0.16.0 – Shelly (all generations) + Powerant / Tuya local (t270u, R287, R291–R303)
+- Shelly: `lib/devices/shelly_extras.dart` (ShellyExtra: Gen1 lights/colour/rollers/sensors from `/status`, Gen2 light/rgb/rgbw/cct/cover/temperature/humidity/illuminance/smoke/devicepower; `shellyExtraTiles`). Hooked into `probeShelly` (`ShellyDevice.extras`), provider items (keys `x:<comp>:<id>:<kind>[:field]`) and `shellyTiles`. Roller mode hides relays.
+- Shelly push: `lib/devices/shelly_push.dart` (WebSocket RPC + digest `auth`, CoIoT 224.0.1.187:5683, throttled re-read, 60 s safety poll). `HttpDriver.watch` uses it when settings have `shellyId` + `push: true` (set by `shellyConnection` together with `gen`). Hooks: `ShellyPush.connectWs`, `ShellyPush.coiotPort`.
+- Tuya: `lib/tuya/` (aes, tuya_protocol, tuya_session, tuya_discovery, tuya_cloud, tuya_model, tuya_driver [type `tuya`; ops discover / cloud_devices / probe so the wizard works through the bridge; hooks `tuyaTestClient`, `tuyaTestPort`], tuya_provider [TuyaKeyProvider id 'tuya' = gallery card, TuyaManualProvider 'tuya_local']). Gallery: `pickTuyaMode` sheet. Local keys live in secret `localKeys` (JSON) – never in settings.
+- Tests: test/tuya_protocol_test.dart, test/tuya_integration_test.dart, test/support/fake_tuya.dart (simulated 3.3/3.4/3.5 device; decodes one frame at a time because the key changes after the handshake), test/shelly_r287_test.dart. All UNTESTED ON HARDWARE.
+- Formatting: repo uses `dart format -l 120` (only format touched files).
+- Next agreed batches: R288 solar inverters, R289 EV chargers.

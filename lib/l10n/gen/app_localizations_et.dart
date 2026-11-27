@@ -19,6 +19,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s252ebed5af => 'Shelly Cloud';
 
   @override
+  String get s07d3467ef6 => 'Tuya';
+
+  @override
   String get s10edebf3fa => 'Ntfy server';
 
   @override
@@ -587,6 +590,33 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s1f18c0f400 => 'true=SMOKE!;false=OK';
 
   @override
+  String s1a9acfbc67(String p0) {
+    return '- Light$p0';
+  }
+
+  @override
+  String s5d0fb602f6(String p0) {
+    return '- Kata$p0';
+  }
+
+  @override
+  String s82ecc12a66(String p0) {
+    return '-armatuur$p0 (lisamine sisse)';
+  }
+
+  @override
+  String get s68e711123b => 'temperatuur';
+
+  @override
+  String get s736646b3b0 => 'ja niiskus';
+
+  @override
+  String get s8b234e1a6f => 'see valgustuse';
+
+  @override
+  String get s03a198454c => 'a aku';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -606,9 +636,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sf50732e8e8 => 'hämardada';
-
-  @override
-  String get s68e711123b => 'temperatuur';
 
   @override
   String get s4082a34467 => 'sensor';
@@ -774,8 +801,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sfcb44be1a0 => 'Shelly';
 
   @override
-  String get sa6ff717527 =>
-      'Releed ja pistikud: Pro 4PM, Plus 1PM, Plug S, 2.5... Leiti automaatselt, plaadid igale kanalile.';
+  String get sc7df69ad6e =>
+      '-salved, pistikud, hämardid, katted, energiamõõturid (Pro 3EM) ja andurid. Automaatselt leitud, töötab ilma pilveta.';
 
   @override
   String get sd7e123cd2f =>
@@ -798,6 +825,12 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s8b35cc884f => 'Mõõtmine';
+
+  @override
+  String get sa58e7aab49 => '-salvesta Shelly äpp liuguri saamiseks';
+
+  @override
+  String get s78b6134b71 => '- akuseade: värskendused ärkvelolekul';
 
   @override
   String get sd8dfb25d31 => 'Shelly Cloud (sillata)';
@@ -973,6 +1006,203 @@ class AppLocalizationsEt extends AppLocalizations {
   String sbae99909c4(String p0) {
     return 'Märkus: see seade on sisse lülitatud $p0.x - seade võib olla teisel Wi-Fi-l.';
   }
+
+  @override
+  String get sc20488a1f0 => '- „Tuya / Powerant (kohalik)';
+
+  @override
+  String get sc849342970 => '- Tuya pilvepiirkond';
+
+  @override
+  String get s49c53b561d => '-salvesta võtmed, tavaliselt Kesk-Euroopas.';
+
+  @override
+  String get s7cf3dec993 => '- Kesk-Euroopa';
+
+  @override
+  String get seead5e286d => 'Euroopa Lääne-Euroopa';
+
+  @override
+  String get s081e2e881d => '- Lääne-Ameerika';
+
+  @override
+  String get s5b9587ae93 => '- Ida-Ameerikas';
+
+  @override
+  String get sc5401d63d5 => 'ja Hiina';
+
+  @override
+  String get sb6786f25b9 => 'ja Indias';
+
+  @override
+  String get scd78f804bb => 'Singapore';
+
+  @override
+  String get s61b325e35c => 'Access ID (iot.tuya.com)';
+
+  @override
+  String get s925e495479 =>
+      '-salvesta oma pilveprojekti ID. Vajadus ainult võtmete tõmbamiseks.';
+
+  @override
+  String get sb07c0dad24 => 'Access Secret';
+
+  @override
+  String get s45bcef5c09 =>
+      '-salvesta oma pilveprojekti saladus. Salvestatakse ainult selles seadmes / sinu enda seifis.';
+
+  @override
+  String get s295cf46412 => '- Kohalikud võtmed';
+
+  @override
+  String get sf58ae26c82 =>
+      '-salvestatakse lokaalvõtmed (võtmed võetakse automaatselt).';
+
+  @override
+  String get s0c1a9d4ab9 => '- Hoidke ühendust (kiired värskendused)';
+
+  @override
+  String get s121fb2c5fc =>
+      '-salvestamisseade teatab muutustest korraga. Paljud Tuya seadmed lubavad ainult ühte ühendust – kasutada ainult ühel seadmel.';
+
+  @override
+  String get s65514aef3c => 'Seadme ID';
+
+  @override
+  String get se42a336655 => 'Tuya seadme ID.';
+
+  @override
+  String get sff3cf64925 => 'DP number';
+
+  @override
+  String get sfec9b1a643 => 'Andmepunkti number (hälve) (hälve) (hälve).';
+
+  @override
+  String get see24ec5d84 => 'Skaala';
+
+  @override
+  String get s2fa7dedd1b => 'Nt 0.1 , kui seade esitab kümnendikuid.';
+
+  @override
+  String get se30676cace => 'Andmepunkti number.';
+
+  @override
+  String get seb4c438a42 => 'Väärtus ({{value}})';
+
+  @override
+  String get s033b6b8c6c => 'Saadatav väärtus; {{value}} = kaardi väärtus.';
+
+  @override
+  String get s784e702cc1 => 'Väärtuse liik';
+
+  @override
+  String get safadcc12c8 =>
+      'Lülitite puhul sisse-/väljalülitatud, heleduse number.';
+
+  @override
+  String get s8c8b6cb6d4 => 'On/off';
+
+  @override
+  String get s695fe25f79 => 'Number';
+
+  @override
+  String get s34900f9d58 => 'Tekst';
+
+  @override
+  String s9abc332fb8(String p0) {
+    return 'Tuujaseade $p0 ei ole selles ühenduses';
+  }
+
+  @override
+  String get s8b84454b87 =>
+      'Tuya: seadme kohalik võti võti on puudu - tõmba uuesti';
+
+  @override
+  String get s764b6993c6 => 'Tuya: seadme IP-aadress on puudu';
+
+  @override
+  String get sae56ce66d4 => 'ühendus suletud';
+
+  @override
+  String get sb6a87586a8 => 'Tuya: vale kohaliku võtme või protokolli versioon';
+
+  @override
+  String get s2b1a0a5a05 => 'seadmelt vastust ei saa';
+
+  @override
+  String sc4fdd8a4a3(String p0) {
+    return 'Tuya $p0: käepigistusele ei vastata – vale kohaliku võtme või protokolli versioon?';
+  }
+
+  @override
+  String get sa291ffb35a => 'käepigistus nurjus';
+
+  @override
+  String get se2a4cc6409 => 'Tuya: vale kohalik võti';
+
+  @override
+  String get s7b8131a396 => 'ei leitud koduvõrgust';
+
+  @override
+  String get s210907044a => 'Powerant / Tuya / Smart Life';
+
+  @override
+  String get sa8d1873781 =>
+      'Pistikud, lülitid, hämardid, pirnid ja andurid. Juhtivad sinu koduvõrku ilma pilveta.';
+
+  @override
+  String get s3530ee658b =>
+      'Sugugi meie oma, meie oma, meie omad, on meie oma, meie omad, meie oma omad, meie omad, meie omad, ja meie omad, meie omad, meie omad ka meie omad, meie omad, meie omad, meie omad.';
+
+  @override
+  String get s39d3fce33c =>
+      'Samalt ülevaatluse lehekülje leheküljelt. Salvestatud ainult see seade (ja sinu enda krüptitud võlv) – mitte kunagi Molaplan, Molaplan, serverites.';
+
+  @override
+  String get s12e2e8638b =>
+      'Projekti andmekeskus, tavaliselt eu (Kesk-Euroopa) Euroopas, Lääne-Euroopa = weu.';
+
+  @override
+  String get sfc77cb8d11 =>
+      'Ainult juhul, kui seadmeid ei ei leita: app → ap, apteek → virtuaalne ID!';
+
+  @override
+  String get s7938176623 => 'Tuya kohaliku võtmega';
+
+  @override
+  String get sf11f3cf10e => 'Kui te juba teate seadme ID-d ja kohalikku võtit';
+
+  @override
+  String get s3dcff9c852 =>
+      'Teie ruuteri seadmete loendist (sagedasti nimega ESP_ või wlan0).';
+
+  @override
+  String get s3cc607ceba =>
+      '16- märgiline klahv. Hangi see Tuya arendaja projektist või lihtsalt vali \"Powerant / Tuya / Smart Life\".';
+
+  @override
+  String get s4105c416c6 => 'Täideti automaatselt, kui seade võrgust leiti.';
+
+  @override
+  String get s39dfcd0595 =>
+      '3.3, 3.4 või 3.5 Tuvastati automaatselt, kui seade võrgust leiti.';
+
+  @override
+  String s991d0c0cdc(String p0) {
+    return 'Kanal $p0';
+  }
+
+  @override
+  String get sc8b1b10046 => 'värvustemperatuur';
+
+  @override
+  String get s0ceafaa97c => 'energia';
+
+  @override
+  String get sdb8ea154be => 'pinge';
+
+  @override
+  String get s37f61ae645 => 'praegune';
 
   @override
   String get s5b44cbe9c0 => 'Kodu';
@@ -3891,9 +4121,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s8a8673aafe => 'Pealkiri';
 
   @override
-  String get s34900f9d58 => 'Tekst';
-
-  @override
   String get s3c2ee8fe0d => '{Kokkuvõte} = ilm, hind ja koduriik';
 
   @override
@@ -4435,6 +4662,22 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s417228f48f => 'Teised kaubamärgid – miks mitte veel';
+
+  @override
+  String get se50e28a0e4 =>
+      'Seadmeid juhitakse ilma pilveta koduvõrgus. Esimest korda tõmmatakse nende kohalikud võtmed sinu tasuta Tuya arendaja kontoga (umbes 10 minutit, ainult üks kord).';
+
+  @override
+  String get sb35b23dbdd => 'Võtke võtmed oma Tuya kontoga (soovitatav)';
+
+  @override
+  String get sbc29869e30 => 'Kõik rakenduse Wi-Fi-seadmed korraga.';
+
+  @override
+  String get s2f57241369 => 'Mul on kohalik võti juba olemas';
+
+  @override
+  String get sf4a309c04a => 'Üks seade: aadress, ID ja võti.';
 
   @override
   String get s772c158a57 => 'tcp';
@@ -7966,9 +8209,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sddd62d21b0 => 'Vahetussõnad (CDAB)';
 
   @override
-  String get see24ec5d84 => 'Skaala';
-
-  @override
   String get s0a239b832b => 'Offset';
 
   @override
@@ -8450,12 +8690,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sba2eb6d9b9 => 'Setpoint';
-
-  @override
-  String get seb4c438a42 => 'Väärtus ({{value}})';
-
-  @override
-  String get s033b6b8c6c => 'Saadatav väärtus; {{value}} = kaardi väärtus.';
 
   @override
   String s6478b264c0(String p0) {
@@ -9301,7 +9535,4 @@ class AppLocalizationsEt extends AppLocalizations {
   String s3a38b97f7b(String p0) {
     return '$p0 – ruum';
   }
-
-  @override
-  String get s0ceafaa97c => 'energia';
 }

@@ -19,6 +19,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s252ebed5af => 'Shelly Cloud';
 
   @override
+  String get s07d3467ef6 => 'Tuya';
+
+  @override
   String get s10edebf3fa => 'El servidor ntfy';
 
   @override
@@ -593,6 +596,33 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1f18c0f400 => 'true=SMOKE!;false=OK';
 
   @override
+  String s1a9acfbc67(String p0) {
+    return 'Luz $p0';
+  }
+
+  @override
+  String s5d0fb602f6(String p0) {
+    return 'Cover$p0';
+  }
+
+  @override
+  String s82ecc12a66(String p0) {
+    return 'Temperatura $p0 (add-on)';
+  }
+
+  @override
+  String get s68e711123b => 'temperatura';
+
+  @override
+  String get s736646b3b0 => 'humedad';
+
+  @override
+  String get s8b234e1a6f => 'iluminancia';
+
+  @override
+  String get s03a198454c => 'batería';
+
+  @override
   String get s0bf7cb1613 => 'Philips Hue';
 
   @override
@@ -612,9 +642,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sf50732e8e8 => 'dimmable';
-
-  @override
-  String get s68e711123b => 'temperatura';
 
   @override
   String get s4082a34467 => 'sensor';
@@ -780,8 +807,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sfcb44be1a0 => 'Shelly';
 
   @override
-  String get sa6ff717527 =>
-      'Relés y enchufes: Pro 4PM, Plus 1PM, Plug S, 2.5... encontrado automáticamente, fichas para cada canal.';
+  String get sc7df69ad6e =>
+      'Relés, enchufes, martillos, cubiertas, medidores de energía (Pro 3EM) y sensores. Encontrados automáticamente, funciona sin la nube.';
 
   @override
   String get sd7e123cd2f =>
@@ -804,6 +831,14 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s8b35cc884f => 'Medición';
+
+  @override
+  String get sa58e7aab49 =>
+      'calibrar en la aplicación Shelly para conseguir un slider';
+
+  @override
+  String get s78b6134b71 =>
+      'dispositivo de la batería: actualizaciones cuando despierto';
 
   @override
   String get sd8dfb25d31 => 'Shelly Cloud (sin puente)';
@@ -979,6 +1014,205 @@ class AppLocalizationsEs extends AppLocalizations {
   String sbae99909c4(String p0) {
     return 'Nota: este dispositivo está en $p0.x – el dispositivo puede estar en otro Wi-Fi.';
   }
+
+  @override
+  String get sc20488a1f0 => 'Tuya / Powerant (local)';
+
+  @override
+  String get sc849342970 => 'Región de la nube de Tuya';
+
+  @override
+  String get s49c53b561d =>
+      'Sólo para recoger las llaves. Por lo general, Europa Central en Europa.';
+
+  @override
+  String get s7cf3dec993 => 'Central Europe';
+
+  @override
+  String get seead5e286d => 'Europa occidental';
+
+  @override
+  String get s081e2e881d => 'Western America';
+
+  @override
+  String get s5b9587ae93 => 'América del Este';
+
+  @override
+  String get sc5401d63d5 => 'China';
+
+  @override
+  String get sb6786f25b9 => 'India';
+
+  @override
+  String get scd78f804bb => 'Singapore';
+
+  @override
+  String get s61b325e35c => 'Access ID (iot.tuya.com)';
+
+  @override
+  String get s925e495479 =>
+      'Acceso ID de su propio proyecto de nube. Sólo se necesita para buscar las llaves.';
+
+  @override
+  String get sb07c0dad24 => 'Access Secret';
+
+  @override
+  String get s45bcef5c09 =>
+      'Acceso Secreto de tu propio proyecto de nube. Almacenado sólo en este dispositivo / en tu propia bóveda.';
+
+  @override
+  String get s295cf46412 => 'Llaves locales';
+
+  @override
+  String get sf58ae26c82 =>
+      'Las teclas locales de los dispositivos (se recogen automáticamente).';
+
+  @override
+  String get s0c1a9d4ab9 => 'Mantener conectado (actualizaciones instantáneas)';
+
+  @override
+  String get s121fb2c5fc =>
+      'El dispositivo reporta cambios a la vez. Muchos dispositivos Tuya solo permiten una conexión – sólo en un dispositivo.';
+
+  @override
+  String get s65514aef3c => 'Device id';
+
+  @override
+  String get se42a336655 => 'El dispositivo Tuya.';
+
+  @override
+  String get sff3cf64925 => 'DP';
+
+  @override
+  String get sfec9b1a643 => 'Número de puntos de datos:';
+
+  @override
+  String get see24ec5d84 => 'Escala';
+
+  @override
+  String get s2fa7dedd1b => 'E.g.';
+
+  @override
+  String get se30676cace => 'Número';
+
+  @override
+  String get seb4c438a42 => 'Valor ({{value}})';
+
+  @override
+  String get s033b6b8c6c =>
+      'Valor para enviar; {{value}} = el valor de la tarjeta.';
+
+  @override
+  String get s784e702cc1 => 'Tipo';
+
+  @override
+  String get safadcc12c8 =>
+      'Encendido/apagado para interruptores, número para el brillo.';
+
+  @override
+  String get s8c8b6cb6d4 => 'On/off';
+
+  @override
+  String get s695fe25f79 => 'Número';
+
+  @override
+  String get s34900f9d58 => 'Texto';
+
+  @override
+  String s9abc332fb8(String p0) {
+    return 'Tuya device $p0 no está en esta conexión';
+  }
+
+  @override
+  String get s8b84454b87 => 'La clave es la clave';
+
+  @override
+  String get s764b6993c6 => 'Tuya: Falta la dirección IP del dispositivo';
+
+  @override
+  String get sae56ce66d4 => 'cerrado';
+
+  @override
+  String get sb6a87586a8 => 'Tuya: Incumplir el protocolo local';
+
+  @override
+  String get s2b1a0a5a05 => 'no';
+
+  @override
+  String sc4fdd8a4a3(String p0) {
+    return 'Tuya $p0: ninguna respuesta al apretón de manos: ¿no es la clave local o la versión del protocolo?';
+  }
+
+  @override
+  String get sa291ffb35a => 'fracasado';
+
+  @override
+  String get se2a4cc6409 => 'Tuya:';
+
+  @override
+  String get s7b8131a396 => 'no se puede encontrar';
+
+  @override
+  String get s210907044a => 'Powerant / Tuya / Smart Life';
+
+  @override
+  String get sa8d1873781 => 'Enciende el enganche. Enciende el enganche.';
+
+  @override
+  String get s3530ee658b =>
+      'En la página Vista general del proyecto, el ID de acceso está en la página Vista general del proyecto.';
+
+  @override
+  String get s39d3fce33c =>
+      'Desde la misma página general. Almacenado sólo en este dispositivo (y su propia bóveda cifrada) – nunca en el servidor de Molaplan.';
+
+  @override
+  String get s12e2e8638b =>
+      'El centro de datos del proyecto. Generalmente eu (Europa Central) en Europa. Europa Occidental = weu.';
+
+  @override
+  String get sfc77cb8d11 =>
+      'Sólo si no se encuentran los dispositivos: app → lápiz del dispositivo →';
+
+  @override
+  String get s7938176623 => 'Tuya con una llave local';
+
+  @override
+  String get sf11f3cf10e =>
+      'Si ya conoce el ID del dispositivo y su llave local.';
+
+  @override
+  String get s3dcff9c852 =>
+      'De la lista de dispositivos del router (a menudo llamada ESP_ o wlan0).';
+
+  @override
+  String get s3cc607ceba =>
+      'Una llave de 16 caracteres. Consigalo de un proyecto desarrollador Tuya, o simplemente elija \"Powerant / Tuya / La vida inteligente\".';
+
+  @override
+  String get s4105c416c6 =>
+      'Llenado automáticamente cuando el dispositivo fue encontrado en la red.';
+
+  @override
+  String get s39dfcd0595 =>
+      '3.3, 3.4 o 3.5. Detectado automáticamente cuando el dispositivo fue encontrado en la red.';
+
+  @override
+  String s991d0c0cdc(String p0) {
+    return 'canal $p0';
+  }
+
+  @override
+  String get sc8b1b10046 => 'temperatura de color';
+
+  @override
+  String get s0ceafaa97c => 'energía';
+
+  @override
+  String get sdb8ea154be => 'tensión';
+
+  @override
+  String get s37f61ae645 => 'corriente';
 
   @override
   String get s5b44cbe9c0 => 'Casa';
@@ -3917,9 +4151,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s8a8673aafe => 'Título';
 
   @override
-  String get s34900f9d58 => 'Texto';
-
-  @override
   String get s3c2ee8fe0d => '{summary} = tiempo, precio y estado del hogar';
 
   @override
@@ -4465,6 +4696,25 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s417228f48f => 'Otras marcas – por qué aún no';
+
+  @override
+  String get se50e28a0e4 =>
+      'Los dispositivos se controlan en su red de inicio sin la nube. La primera vez, sus teclas locales se recogen con su propia cuenta de de desarrollador Tuya gratuita (unos 10 minutos, sólo una vez).';
+
+  @override
+  String get sb35b23dbdd =>
+      'Trae las llaves con mi propia cuenta Tuya (recomendada)';
+
+  @override
+  String get sbc29869e30 =>
+      'Todos los dispositivos Wi-Fi de la aplicación de inmediato.';
+
+  @override
+  String get s2f57241369 => 'Ya tengo la llave local';
+
+  @override
+  String get sf4a309c04a =>
+      'Un dispositivo: dirección, identificación y llave.';
 
   @override
   String get s772c158a57 => 'tcp';
@@ -8027,9 +8277,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sddd62d21b0 => 'Cierre de palabras (CDAB)';
 
   @override
-  String get see24ec5d84 => 'Escala';
-
-  @override
   String get s0a239b832b => 'Offset';
 
   @override
@@ -8518,13 +8765,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sba2eb6d9b9 => 'Setpoint';
-
-  @override
-  String get seb4c438a42 => 'Valor ({{value}})';
-
-  @override
-  String get s033b6b8c6c =>
-      'Valor para enviar; {{value}} = el valor de la tarjeta.';
 
   @override
   String s6478b264c0(String p0) {
@@ -9384,7 +9624,4 @@ class AppLocalizationsEs extends AppLocalizations {
   String s3a38b97f7b(String p0) {
     return '$p0 – room';
   }
-
-  @override
-  String get s0ceafaa97c => 'energía';
 }

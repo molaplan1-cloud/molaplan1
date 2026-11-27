@@ -122,6 +122,12 @@ abstract class AppLocalizations {
   /// **'Shelly Cloud'**
   String get s252ebed5af;
 
+  /// fi: Tuya
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya'**
+  String get s07d3467ef6;
+
   /// fi: ntfy-palvelin
   ///
   /// In en, this message translates to:
@@ -1124,6 +1130,48 @@ abstract class AppLocalizations {
   /// **'true=SMOKE!;false=OK'**
   String get s1f18c0f400;
 
+  /// fi: Valo{p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Light{p0}'**
+  String s1a9acfbc67(String p0);
+
+  /// fi: Verho{p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Cover{p0}'**
+  String s5d0fb602f6(String p0);
+
+  /// fi: Lämpötila{p0} (lisäosa)
+  ///
+  /// In en, this message translates to:
+  /// **'Temperature{p0} (add-on)'**
+  String s82ecc12a66(String p0);
+
+  /// fi: lämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'temperature'**
+  String get s68e711123b;
+
+  /// fi: kosteus
+  ///
+  /// In en, this message translates to:
+  /// **'humidity'**
+  String get s736646b3b0;
+
+  /// fi: valoisuus
+  ///
+  /// In en, this message translates to:
+  /// **'illuminance'**
+  String get s8b234e1a6f;
+
+  /// fi: paristo
+  ///
+  /// In en, this message translates to:
+  /// **'battery'**
+  String get s03a198454c;
+
   /// fi: Philips Hue
   ///
   /// In en, this message translates to:
@@ -1159,12 +1207,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'dimmable'**
   String get sf50732e8e8;
-
-  /// fi: lämpötila
-  ///
-  /// In en, this message translates to:
-  /// **'temperature'**
-  String get s68e711123b;
 
   /// fi: anturi
   ///
@@ -1484,11 +1526,11 @@ abstract class AppLocalizations {
   /// **'Shelly'**
   String get sfcb44be1a0;
 
-  /// fi: Releet ja pistorasiat: Pro 4PM, Plus 1PM, Plug S, 2.5… Löytyy automaattisesti, ruudut tehdään joka kanavalle.
+  /// fi: Releet, pistorasiat, himmentimet, verhot, energiamittarit (Pro 3EM) ja anturit. Löytyy automaattisesti, toimii ilman pil
   ///
   /// In en, this message translates to:
-  /// **'Relays and plugs: Pro 4PM, Plus 1PM, Plug S, 2.5… Found automatically, tiles for every channel.'**
-  String get sa6ff717527;
+  /// **'Relays, plugs, dimmers, covers, energy meters (Pro 3EM) and sensors. Found automatically, works without the cloud.'**
+  String get sc7df69ad6e;
 
   /// fi: Shelly-sovelluksessa: avaa laite → ratas (asetukset) → Laitetiedot → IP-osoite. Tai reitittimen laitelistasta: nimi alka
   ///
@@ -1531,6 +1573,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Metering'**
   String get s8b35cc884f;
+
+  /// fi: kalibroi Shelly-sovelluksessa, niin saat liukusäätimen
+  ///
+  /// In en, this message translates to:
+  /// **'calibrate in the Shelly app to get a slider'**
+  String get sa58e7aab49;
+
+  /// fi: paristolaite: päivittyy kun herää
+  ///
+  /// In en, this message translates to:
+  /// **'battery device: updates when awake'**
+  String get s78b6134b71;
 
   /// fi: Shelly Cloud (ilman kotisiltaa)
   ///
@@ -1801,6 +1855,360 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Note: this device is on {p0}.x – the device may be on another Wi-Fi.'**
   String sbae99909c4(String p0);
+
+  /// fi: Tuya / Powerant (paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya / Powerant (local)'**
+  String get sc20488a1f0;
+
+  /// fi: Tuya-pilven alue
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya cloud region'**
+  String get sc849342970;
+
+  /// fi: Vain avainten hakuun. Suomessa yleensä Keski-Eurooppa.
+  ///
+  /// In en, this message translates to:
+  /// **'Only for fetching the keys. Usually Central Europe in Europe.'**
+  String get s49c53b561d;
+
+  /// fi: Keski-Eurooppa
+  ///
+  /// In en, this message translates to:
+  /// **'Central Europe'**
+  String get s7cf3dec993;
+
+  /// fi: Länsi-Eurooppa
+  ///
+  /// In en, this message translates to:
+  /// **'Western Europe'**
+  String get seead5e286d;
+
+  /// fi: Länsi-USA
+  ///
+  /// In en, this message translates to:
+  /// **'Western America'**
+  String get s081e2e881d;
+
+  /// fi: Itä-USA
+  ///
+  /// In en, this message translates to:
+  /// **'Eastern America'**
+  String get s5b9587ae93;
+
+  /// fi: Kiina
+  ///
+  /// In en, this message translates to:
+  /// **'China'**
+  String get sc5401d63d5;
+
+  /// fi: Intia
+  ///
+  /// In en, this message translates to:
+  /// **'India'**
+  String get sb6786f25b9;
+
+  /// fi: Singapore
+  ///
+  /// In en, this message translates to:
+  /// **'Singapore'**
+  String get scd78f804bb;
+
+  /// fi: Access ID (iot.tuya.com)
+  ///
+  /// In en, this message translates to:
+  /// **'Access ID (iot.tuya.com)'**
+  String get s61b325e35c;
+
+  /// fi: Oman pilviprojektisi Access ID. Tarvitaan vain avainten hakuun.
+  ///
+  /// In en, this message translates to:
+  /// **'Access ID of your own cloud project. Only needed to fetch the keys.'**
+  String get s925e495479;
+
+  /// fi: Access Secret
+  ///
+  /// In en, this message translates to:
+  /// **'Access Secret'**
+  String get sb07c0dad24;
+
+  /// fi: Oman pilviprojektisi Access Secret. Tallentuu vain tälle laitteelle / omaan holviisi.
+  ///
+  /// In en, this message translates to:
+  /// **'Access Secret of your own cloud project. Stored only on this device / in your own vault.'**
+  String get s45bcef5c09;
+
+  /// fi: Paikalliset avaimet
+  ///
+  /// In en, this message translates to:
+  /// **'Local keys'**
+  String get s295cf46412;
+
+  /// fi: Laitteiden paikalliset avaimet (haetaan automaattisesti).
+  ///
+  /// In en, this message translates to:
+  /// **'The devices\'\' local keys (fetched automatically).'**
+  String get sf58ae26c82;
+
+  /// fi: Pysyvä yhteys (heti päivittyvät ruudut)
+  ///
+  /// In en, this message translates to:
+  /// **'Keep connected (instant updates)'**
+  String get s0c1a9d4ab9;
+
+  /// fi: Laite ilmoittaa muutoksista heti. Moni Tuya-laite sallii vain yhden yhteyden kerrallaan – käytä vain yhdellä laitteella.
+  ///
+  /// In en, this message translates to:
+  /// **'The device reports changes at once. Many Tuya devices allow only one connection – use on one device only.'**
+  String get s121fb2c5fc;
+
+  /// fi: Laitteen tunnus
+  ///
+  /// In en, this message translates to:
+  /// **'Device id'**
+  String get s65514aef3c;
+
+  /// fi: Tuya-laitteen id.
+  ///
+  /// In en, this message translates to:
+  /// **'The Tuya device id.'**
+  String get se42a336655;
+
+  /// fi: DP-numero
+  ///
+  /// In en, this message translates to:
+  /// **'DP number'**
+  String get sff3cf64925;
+
+  /// fi: Datapisteen numero (1 = virta useimmissa).
+  ///
+  /// In en, this message translates to:
+  /// **'Data point number (1 = power on most).'**
+  String get sfec9b1a643;
+
+  /// fi: Kerroin
+  ///
+  /// In en, this message translates to:
+  /// **'Scale'**
+  String get see24ec5d84;
+
+  /// fi: Esim. 0.1, jos laite ilmoittaa kymmenyksinä.
+  ///
+  /// In en, this message translates to:
+  /// **'E.g. 0.1 when the device reports tenths.'**
+  String get s2fa7dedd1b;
+
+  /// fi: Datapisteen numero.
+  ///
+  /// In en, this message translates to:
+  /// **'Data point number.'**
+  String get se30676cace;
+
+  /// fi: Arvo ({{value}})
+  ///
+  /// In en, this message translates to:
+  /// **'\'Value ({{value}})\''**
+  String get seb4c438a42;
+
+  /// fi: Lähetettävä arvo; {{value}} = ruudun arvo.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Value to send; {{value}} = the tile\'\'s value.\''**
+  String get s033b6b8c6c;
+
+  /// fi: Arvon tyyppi
+  ///
+  /// In en, this message translates to:
+  /// **'Value type'**
+  String get s784e702cc1;
+
+  /// fi: Päällä/pois kytkimille, numero kirkkaudelle.
+  ///
+  /// In en, this message translates to:
+  /// **'On/off for switches, number for brightness.'**
+  String get safadcc12c8;
+
+  /// fi: Päällä/pois
+  ///
+  /// In en, this message translates to:
+  /// **'On/off'**
+  String get s8c8b6cb6d4;
+
+  /// fi: Numero
+  ///
+  /// In en, this message translates to:
+  /// **'Number'**
+  String get s695fe25f79;
+
+  /// fi: Teksti
+  ///
+  /// In en, this message translates to:
+  /// **'Text'**
+  String get s34900f9d58;
+
+  /// fi: Tuya-laitetta {p0} ei ole tässä yhteydessä
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya device {p0} is not in this connection'**
+  String s9abc332fb8(String p0);
+
+  /// fi: Tuya: laitteen paikallinen avain puuttuu – hae avaimet uudelleen
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya: the device\'\'s local key is missing – fetch the keys again'**
+  String get s8b84454b87;
+
+  /// fi: Tuya: laitteen IP-osoite puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya: the device\'\'s IP address is missing'**
+  String get s764b6993c6;
+
+  /// fi: yhteys katkesi
+  ///
+  /// In en, this message translates to:
+  /// **'connection closed'**
+  String get sae56ce66d4;
+
+  /// fi: Tuya: väärä paikallinen avain (local key) tai protokollaversio
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya: wrong local key or protocol version'**
+  String get sb6a87586a8;
+
+  /// fi: laite ei vastannut
+  ///
+  /// In en, this message translates to:
+  /// **'no answer from the device'**
+  String get s2b1a0a5a05;
+
+  /// fi: Tuya {p0}: laite ei vastannut kättelyyn – väärä paikallinen avain (local key) tai protokollaversio?
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya {p0}: no answer to the handshake – wrong local key or protocol version?'**
+  String sc4fdd8a4a3(String p0);
+
+  /// fi: kättely epäonnistui
+  ///
+  /// In en, this message translates to:
+  /// **'handshake failed'**
+  String get sa291ffb35a;
+
+  /// fi: Tuya: väärä paikallinen avain (local key)
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya: wrong local key'**
+  String get se2a4cc6409;
+
+  /// fi: ei löytynyt kotiverkosta
+  ///
+  /// In en, this message translates to:
+  /// **'not found on the home network'**
+  String get s7b8131a396;
+
+  /// fi: Powerant / Tuya / Smart Life
+  ///
+  /// In en, this message translates to:
+  /// **'Powerant / Tuya / Smart Life'**
+  String get s210907044a;
+
+  /// fi: Pistorasiat, kytkimet, himmentimet, lamput ja anturit. Ohjataan kotiverkossa ilman pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'Plugs, switches, dimmers, bulbs and sensors. Controlled on your home network without the cloud.'**
+  String get sa8d1873781;
+
+  /// fi: Oma ilmainen Tuya-kehittäjäprojekti: iot.tuya.com → Cloud → Create Cloud Project (data center: Central Europe) → Devices
+  ///
+  /// In en, this message translates to:
+  /// **'Your own free Tuya developer project: iot.tuya.com → Cloud → Create Cloud Project (data center: Central Europe) → Devices → Link App Account → scan the QR code with the Smart Life / Tuya / Powerant app. The Access ID is on the project\'\'s Overview page.'**
+  String get s3530ee658b;
+
+  /// fi: Samalta Overview-sivulta. Tallentuu vain tälle laitteelle (ja omaan salattuun holviisi) – ei Molaplanin palvelimille.
+  ///
+  /// In en, this message translates to:
+  /// **'From the same Overview page. Stored only on this device (and your own encrypted vault) – never on Molaplan\'\'s servers.'**
+  String get s39d3fce33c;
+
+  /// fi: Projektin data center. Suomessa yleensä eu (Central Europe). Western Europe = weu.
+  ///
+  /// In en, this message translates to:
+  /// **'The project\'\'s data center. Usually eu (Central Europe) in Europe. Western Europe = weu.'**
+  String get s12e2e8638b;
+
+  /// fi: Vain jos laitteita ei löydy: sovellus → laite → kynä → Laitetiedot → Virtuaalinen ID.
+  ///
+  /// In en, this message translates to:
+  /// **'Only if no devices are found: app → device → pencil → Device information → Virtual ID.'**
+  String get sfc77cb8d11;
+
+  /// fi: Tuya paikallisella avaimella
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya with a local key'**
+  String get s7938176623;
+
+  /// fi: Jos tiedät jo laitteen tunnuksen ja paikallisen avaimen (local key).
+  ///
+  /// In en, this message translates to:
+  /// **'If you already know the device ID and its local key.'**
+  String get sf11f3cf10e;
+
+  /// fi: Reitittimen laitelistasta (laitteen nimi usein ESP_ tai wlan0).
+  ///
+  /// In en, this message translates to:
+  /// **'From your router\'\'s device list (often named ESP_ or wlan0).'**
+  String get s3dcff9c852;
+
+  /// fi: 16 merkin avain. Saat sen Tuya-kehittäjäprojektista tai helpoimmin valitsemalla "Powerant / Tuya / Smart Life".
+  ///
+  /// In en, this message translates to:
+  /// **'A 16-character key. Get it from a Tuya developer project, or simply pick \"Powerant / Tuya / Smart Life\".'**
+  String get s3cc607ceba;
+
+  /// fi: Täytetään automaattisesti, jos laite löytyi verkosta.
+  ///
+  /// In en, this message translates to:
+  /// **'Filled in automatically when the device was found on the network.'**
+  String get s4105c416c6;
+
+  /// fi: 3.3, 3.4 tai 3.5. Tunnistetaan automaattisesti, jos laite löytyi verkosta.
+  ///
+  /// In en, this message translates to:
+  /// **'3.3, 3.4 or 3.5. Detected automatically when the device was found on the network.'**
+  String get s39dfcd0595;
+
+  /// fi: kanava {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'channel {p0}'**
+  String s991d0c0cdc(String p0);
+
+  /// fi: värilämpötila
+  ///
+  /// In en, this message translates to:
+  /// **'colour temperature'**
+  String get sc8b1b10046;
+
+  /// fi: energia
+  ///
+  /// In en, this message translates to:
+  /// **'energy'**
+  String get s0ceafaa97c;
+
+  /// fi: jännite
+  ///
+  /// In en, this message translates to:
+  /// **'voltage'**
+  String get sdb8ea154be;
+
+  /// fi: virta
+  ///
+  /// In en, this message translates to:
+  /// **'current'**
+  String get s37f61ae645;
 
   /// fi: Koti
   ///
@@ -7106,12 +7514,6 @@ abstract class AppLocalizations {
   /// **'Title'**
   String get s8a8673aafe;
 
-  /// fi: Teksti
-  ///
-  /// In en, this message translates to:
-  /// **'Text'**
-  String get s34900f9d58;
-
   /// fi: {summary} = sää, sähkö ja kodin tila
   ///
   /// In en, this message translates to:
@@ -8096,6 +8498,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Other brands – why not yet'**
   String get s417228f48f;
+
+  /// fi: Laitteita ohjataan kotiverkossa ilman pilveä. Ensimmäisellä kerralla tarvitaan laitteiden paikalliset avaimet, jotka hae
+  ///
+  /// In en, this message translates to:
+  /// **'The devices are controlled on your home network without the cloud. The first time, their local keys are fetched with your own free Tuya developer account (about 10 minutes, only once).'**
+  String get se50e28a0e4;
+
+  /// fi: Hae avaimet omalla Tuya-tunnuksella (suositus)
+  ///
+  /// In en, this message translates to:
+  /// **'Fetch the keys with my own Tuya account (recommended)'**
+  String get sb35b23dbdd;
+
+  /// fi: Kaikki sovelluksen wifi-laitteet kerralla.
+  ///
+  /// In en, this message translates to:
+  /// **'All Wi-Fi devices of the app at once.'**
+  String get sbc29869e30;
+
+  /// fi: Minulla on jo paikallinen avain
+  ///
+  /// In en, this message translates to:
+  /// **'I already have the local key'**
+  String get s2f57241369;
+
+  /// fi: Yksi laite: osoite, tunnus ja avain.
+  ///
+  /// In en, this message translates to:
+  /// **'One device: address, ID and key.'**
+  String get sf4a309c04a;
 
   /// fi: rtsp-transport
   ///
@@ -14387,12 +14819,6 @@ abstract class AppLocalizations {
   /// **'Swap words (CDAB)'**
   String get sddd62d21b0;
 
-  /// fi: Kerroin
-  ///
-  /// In en, this message translates to:
-  /// **'Scale'**
-  String get see24ec5d84;
-
   /// fi: Siirtymä
   ///
   /// In en, this message translates to:
@@ -15244,18 +15670,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Setpoint'**
   String get sba2eb6d9b9;
-
-  /// fi: Arvo ({{value}})
-  ///
-  /// In en, this message translates to:
-  /// **'\'Value ({{value}})\''**
-  String get seb4c438a42;
-
-  /// fi: Lähetettävä arvo; {{value}} = ruudun arvo.
-  ///
-  /// In en, this message translates to:
-  /// **'\'Value to send; {{value}} = the tile\'\'s value.\''**
-  String get s033b6b8c6c;
 
   /// fi: Lämpöpumppua "{p0}" ei löydy enää tililtä
   ///
@@ -16762,12 +17176,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{p0} – room'**
   String s3a38b97f7b(String p0);
-
-  /// fi: energia
-  ///
-  /// In en, this message translates to:
-  /// **'energy'**
-  String get s0ceafaa97c;
 }
 
 class _AppLocalizationsDelegate
