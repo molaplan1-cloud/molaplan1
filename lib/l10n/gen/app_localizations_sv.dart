@@ -570,6 +570,15 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String get sbeef9a7f21 => 'Flytta';
+
+  @override
+  String get sdb0cb19db6 => 'Flytta åt vänster';
+
+  @override
+  String get s5570ed5144 => 'Flytta åt höger';
+
+  @override
   String get sc3abd09cd9 => 'Anpassad färg';
 
   @override

@@ -81,7 +81,7 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('control-edit')));
     await tester.pump(const Duration(milliseconds: 300));
     expect(find.text('Valmis'), findsOneWidget);
-    // No arrow buttons any more: palette + delete + a resize handle per tile.
+    // Reorder is drag (and a Siirrä menu); no always-visible chevron arrows.
     expect(find.byIcon(Icons.chevron_right), findsNothing);
     expect(find.byIcon(Icons.drag_indicator), findsNothing);
     expect(find.byKey(ValueKey('tile-delete-${d.tiles.first.id}')), findsOneWidget);

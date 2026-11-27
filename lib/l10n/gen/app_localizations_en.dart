@@ -571,6 +571,15 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get sbeef9a7f21 => 'Move';
+
+  @override
+  String get sdb0cb19db6 => 'Move left';
+
+  @override
+  String get s5570ed5144 => 'Move right';
+
+  @override
   String get sc3abd09cd9 => 'Custom colour';
 
   @override

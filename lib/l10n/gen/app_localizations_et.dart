@@ -572,6 +572,15 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String get sbeef9a7f21 => 'Liiguta';
+
+  @override
+  String get sdb0cb19db6 => 'Liiguta vasakule';
+
+  @override
+  String get s5570ed5144 => 'Liiguta paremale';
+
+  @override
   String get sc3abd09cd9 => 'Kohandatud värv';
 
   @override

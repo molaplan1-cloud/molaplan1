@@ -387,6 +387,9 @@
  "@s97f46743e0": {
   "x-mt": true
  },
+ "sbeef9a7f21": "Mover",
+ "sdb0cb19db6": "Mover a la izquierda",
+ "s5570ed5144": "Mover a la derecha",
  "sc3abd09cd9": "Color personalizado",
  "@sc3abd09cd9": {
   "x-mt": true
