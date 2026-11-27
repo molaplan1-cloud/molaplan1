@@ -4,6 +4,7 @@ library;
 import '../devices/sensors.dart';
 import '../models/models.dart';
 import '../prices/prices.dart';
+import '../templates/device_templates.dart';
 
 /// Price tiles that were saved as plain HTTP requests to the price server (/v1/prices…)
 /// become real 'price' connections, so they get the price chart, caching and service wording.
@@ -197,4 +198,39 @@ List<ConnectionConfig> dedupeHaConnections(AppConfig cfg) {
     removed.add(c);
   }
   return removed;
+}
+
+/// R467 / R468 (t308u): kamera-valvonta style panels. The status tile that still has the old
+/// template map ("away = Hälytys päällä") moves to the security display, the template's
+/// "Hälytys päälle/pois" buttons become "Valvonta päälle/pois" (titles the user typed are kept),
+/// and the panel's buttons read the device state so the current one is highlighted.
+bool migrateSecurityPanelTiles(AppConfig cfg, String lang) {
+  final ntfyIds = {for (final c in cfg.connections) if (c.type == 'ntfy_device') c.id};
+  if (ntfyIds.isEmpty) return false;
+  var changed = false;
+  final tiles = [for (final d in cfg.dashboards) ...d.tiles.where((t) => ntfyIds.contains(t.connectionId))];
+  for (final t in tiles) {
+    if (t.type == TileType.value && '${t.read['stateMap'] ?? ''}' == ntfyKvStateMapLegacy) {
+      t.read = {...t.read}
+        ..remove('stateMap')
+        ..['security'] = true;
+      changed = true;
+    }
+  }
+  final secured = {for (final t in tiles) if (t.read['security'] == true && t.type == TileType.value) t.connectionId};
+  for (final t in tiles) {
+    if (t.type != TileType.button || t.commands.length != 1) continue;
+    final cmd = '${t.commands.first.spec['command'] ?? ''}'.trim();
+    final btn = ntfyKvAlarmButtons.where((b) => b.$1 == cmd).firstOrNull;
+    if (btn == null) continue;
+    if (ntfyKvLegacyButtonTitles[t.title] == cmd) {
+      t.title = ntfyKvButtonTitle(cmd, lang);
+      changed = true;
+    }
+    if (t.read.isEmpty && secured.contains(t.connectionId)) {
+      t.read = {'jsonPath': r'$.state', 'security': true, 'activeWhen': btn.$3};
+      changed = true;
+    }
+  }
+  return changed;
 }

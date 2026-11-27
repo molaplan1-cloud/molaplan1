@@ -1594,17 +1594,36 @@ const ntfyKvPanelPreset = <String, Object>{
   'minInterval': '5',
 };
 
-/// The kv panel's alarm buttons: (title, command, icon). They answer with human text (title
-/// 'Tila'), not JSON – so each one is followed by a fresh 'tila json' status.
+/// The kv panel's alarm buttons: (title fi, title en, command, icon, activeWhen). They answer
+/// with human text (title 'Tila'), not JSON – so each one is followed by a fresh 'tila json'
+/// status. R468 (t308u): "Valvonta päälle/pois" (arming), not "Hälytys" (= the alarm going
+/// off); each button reads the device state and is highlighted while it is the current one.
 const ntfyKvAlarmButtons = [
-  ('Hälytys päälle', 'päälle', 'alarm'),
-  ('Hälytys pois', 'pois', 'lock'),
-  ('Kuittaa hälytys', 'kuittaa', 'send'),
-  ('Kuittaa ja hälytys pois', 'kuittaa pois', 'lock'),
+  ('päälle', 'alarm', 'armed'),
+  ('pois', 'lock', 'disarmed'),
+  ('kuittaa', 'send', 'triggered'),
+  ('kuittaa pois', 'lock', 'triggered'),
 ];
 
-/// The panel's alarm states (JSON 'state') as readable text on the status tile.
-const ntfyKvStateMap =
+String ntfyKvButtonTitle(String cmd, String lang) => switch (cmd) {
+  'päälle' => _t(lang, 'Valvonta päälle', 'Arm'),
+  'pois' => _t(lang, 'Valvonta pois', 'Disarm'),
+  'kuittaa' => _t(lang, 'Kuittaa hälytys', 'Acknowledge alarm'),
+  'kuittaa pois' => _t(lang, 'Kuittaa ja valvonta pois', 'Acknowledge and disarm'),
+  _ => cmd,
+};
+
+/// R468: titles the template used before v0.20.x → the command they belong to. Only tiles that
+/// still carry one of these exact titles are renamed; a title the user typed is kept.
+const ntfyKvLegacyButtonTitles = {
+  'Hälytys päälle': 'päälle',
+  'Hälytys pois': 'pois',
+  'Kuittaa ja hälytys pois': 'kuittaa pois',
+};
+
+/// The panel's old status-tile map (before R467). Tiles that still carry it exactly are moved to
+/// the security display (armed / disarmed / entry delay / ALARM with colours).
+const ntfyKvStateMapLegacy =
     'home = Hälytys pois (kotona)\nexit_delay = Poistumisviive\naway = Hälytys päällä\nentry_delay = Tuloviive\nalarm = HÄLYTYS';
 
 /// t244u: the same ntfy topic, whether written as a name or a full URL.
@@ -1719,14 +1738,17 @@ TemplateResult ntfyDeviceTemplate(Map<String, dynamic> input, String lang) {
     );
   }
   if (v['preset'] == 'kv_panel') {
-    for (final (title, cmd, icon) in ntfyKvAlarmButtons) {
+    for (final (cmd, icon, active) in ntfyKvAlarmButtons) {
       tiles.add(
         TileConfig(
           type: TileType.button,
-          title: title,
+          title: ntfyKvButtonTitle(cmd, lang),
           icon: icon,
           connectionId: c.id,
           confirm: true,
+          // R468: highlighted while the device is in this state (no extra commands: the state
+          // comes from the Tilakanava or the shared status reply).
+          read: {'jsonPath': r'$.state', 'security': true, 'activeWhen': active},
           commands: [
             CommandStep(
               connectionId: c.id,
@@ -1748,7 +1770,8 @@ TemplateResult ntfyDeviceTemplate(Map<String, dynamic> input, String lang) {
       read: {
         if (json && _s(v, 'statusPath').isNotEmpty)
           'jsonPath': '\$.${_s(v, 'statusPath').replaceAll(RegExp(r'^\$?\.?'), '')}',
-        if (v['preset'] == 'kv_panel') 'stateMap': ntfyKvStateMap,
+        // R467: armed / disarmed / entry delay / ALARM with colours, and the state's age.
+        if (v['preset'] == 'kv_panel') 'security': true,
       },
     ),
   );

@@ -533,7 +533,9 @@ class AppState extends ChangeNotifier implements SyncHost {
         final f = fixMisclassifiedSensors(config);
         // t164u: e.g. a switch on the electricity price becomes a value tile.
         final g = repairIncompatibleTiles(config).isNotEmpty;
-        if (a || b || c || e || f || g) unawaited(configStore.save(jsonEncode(config.toJson())));
+        // R467/R468 (t308u): alarm panel status + "Valvonta päälle/pois" buttons.
+        final h = migrateSecurityPanelTiles(config, lang);
+        if (a || b || c || e || f || g || h) unawaited(configStore.save(jsonEncode(config.toJson())));
       } catch (_) {
         config = AppConfig();
       }

@@ -32,7 +32,11 @@ void main() {
     final buttons = r.tiles.where((t) => t.type == TileType.button).toList();
     expect(buttons.map((t) => t.commands.single.spec['command']), ['päälle', 'pois', 'kuittaa', 'kuittaa pois']);
     expect(buttons.every((t) => t.confirm && t.commands.single.spec['followStatus'] == true), isTrue);
-    expect(r.tiles.last.read['stateMap'], contains('home = Hälytys pois'));
+    // R467/R468: security status tile; buttons say "Valvonta" and are highlighted by state.
+    expect(r.tiles.last.read['security'], isTrue);
+    expect(r.tiles.last.read['stateMap'], isNull);
+    expect(buttons.map((t) => t.title), ['Valvonta päälle', 'Valvonta pois', 'Kuittaa hälytys', 'Kuittaa ja valvonta pois']);
+    expect(buttons.map((t) => t.read['activeWhen']), ['armed', 'disarmed', 'triggered', 'triggered']);
     expect(
       () => ntfyDeviceTemplate({'preset': 'kv_panel', 'topic': 'x'}, 'fi'),
       throwsA(isA<FormatException>().having((e) => e.message, 'm', contains('Vastauskanava'))),

@@ -22,6 +22,7 @@ import 'dart:math';
 
 import '../core/fields.dart';
 import '../core/jsonpath.dart';
+import '../core/security_state.dart';
 import '../core/template.dart';
 import '../models/models.dart';
 import '../notify/event_prefs.dart';
@@ -172,6 +173,15 @@ Object? ntfyStateFrom(NtfyMessage m, Map<String, dynamic> spec, List<NtfyStateRu
     v = null; // a JSON path on a text reply: the state is unknown
   } else {
     return m.text;
+  }
+  // R467 (t308u): a security status tile keeps the raw state word (no on/off map) and shows
+  // "triggered" when the JSON says so (trigger / siren while armed). The message time lets the
+  // tile show how old the state is (R469).
+  if (spec['security'] == true) {
+    final s = json is Map ? securityStateOf(json) : SecurityState.unknown;
+    final own = parseNtfyStateMap(spec.strOrNull('stateMap'));
+    final Object? out = s == SecurityState.triggered ? 'triggered' : (own.isEmpty ? v : mapNtfyState(v, own));
+    return m.time > 0 ? TimedValue(out, DateTime.fromMillisecondsSinceEpoch(m.time * 1000)) : out;
   }
   return mapNtfyState(v, rules);
 }

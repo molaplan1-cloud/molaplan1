@@ -23,7 +23,8 @@ class TileRuntime extends ChangeNotifier {
 
   /// Weather and combined thermostat tiles read their own data.
   bool get readsState =>
-      tile.type != TileType.button &&
+      // R468: a button bound to a security device reads its state to highlight the current one.
+      (tile.type != TileType.button || tile.read['activeWhen'] != null) &&
       tile.type != TileType.camera &&
       tile.read.isNotEmpty &&
       tile.read['kind'] != 'climate' &&

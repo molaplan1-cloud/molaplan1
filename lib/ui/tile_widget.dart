@@ -37,6 +37,8 @@ import 'web_info.dart';
 import 'tile_visuals.dart';
 import 'weather_tile.dart';
 import 'sensor_tile.dart';
+import 'security_tile.dart';
+import '../core/security_state.dart';
 import '../energy/meters.dart';
 
 /// A live dashboard tile. Rebuilt (runtime restarted) when its config changes.
@@ -324,6 +326,7 @@ class _TileWidgetState extends State<TileWidget> {
 
   String _format(Object? v) {
     if (v == null) return '–';
+    if (t.read['security'] == true && t.type == TileType.value) return securityLook(context, v).label;
     if (ntfyIsDayUntracked(v)) return tx(context, 'Päivällä ei ohjata', 'Not controlled during the day');
     final mapped = t.mapValue(v);
     if (mapped != null) return mapped;
@@ -910,7 +913,16 @@ class _TileWidgetState extends State<TileWidget> {
   Widget _build2(BuildContext context, bool away) {
     final cs = Theme.of(context).colorScheme;
     final r = rt!;
-    final err = away ? null : r.error;
+    // R468: a button only reads to highlight the current state – a failed read is not its error.
+    final err = away || t.type == TileType.button ? null : r.error;
+    if (t.type == TileType.value && t.read['security'] == true && r.value != null) {
+      return SecurityStateTile(
+        tile: t,
+        runtime: r,
+        onTap: widget.editing ? null : _pinGuard(r.refresh),
+        onLongPress: widget.editing || (widget.control && AppScope.of(context).viewLocked) ? null : _details,
+      );
+    }
     if (t.type == TileType.thermostat) return ThermostatTile(tile: t, editing: widget.editing);
     if (t.sensor != null) return SensorTile(tile: t, runtime: r, editing: widget.editing || away);
     if (isClimateTile(t)) return ClimateTile(tile: t, editing: widget.editing || away);
@@ -941,10 +953,17 @@ class _TileWidgetState extends State<TileWidget> {
     final rawAccent = accentInt != null
         ? Color(accentInt)
         : (on && t.type == TileType.toggle ? (look ?? cs.primary) : (t.type != TileType.toggle ? look : null));
+    // R468: a security button that matches the device's current state is highlighted.
+    final active = t.type == TileType.button && securityActive(t.read['activeWhen'] as String?, r.value);
+    final activeColor = active ? securityLook(context, r.value).color : null;
     // t162u: threshold / look colours stay readable on the light theme (WCAG AA).
-    final accent = rawAccent == null || hasBg ? rawAccent : readableAccent(context, rawAccent);
+    final accent = activeColor != null
+        ? readableAccent(context, activeColor)
+        : (rawAccent == null || hasBg ? rawAccent : readableAccent(context, rawAccent));
     final bg = hasBg
         ? Colors.black
+        : activeColor != null
+        ? Color.alphaBlend(activeColor.withValues(alpha: 0.28), cs.surfaceContainer)
         : t.type == TileType.toggle && on
         ? (look ?? cs.primaryContainer).withValues(alpha: look != null ? 0.28 : 0.55)
         : (look != null ? Color.alphaBlend(look.withValues(alpha: 0.08), cs.surfaceContainer) : cs.surfaceContainer);
@@ -1123,6 +1142,13 @@ class _TileWidgetState extends State<TileWidget> {
                                 width: 18,
                                 height: 18,
                                 child: CircularProgressIndicator(strokeWidth: 2, color: cs.primary),
+                              )
+                            : securityActive(t.read['activeWhen'] as String?, r.value)
+                            ? Icon(
+                                Icons.check_rounded,
+                                key: ValueKey('tile-active-${t.id}'),
+                                size: 18,
+                                color: accent ?? cs.primary,
                               )
                             : Icon(Icons.play_arrow_rounded, size: 18, color: cs.primary),
                       ),

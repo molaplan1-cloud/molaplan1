@@ -92,10 +92,10 @@ void main() {
     final sisa = r.tiles.firstWhere((t) => t.title == 'Sisävalo');
     final piha = r.tiles.firstWhere((t) => t.title == 'Pihavalo');
     final status = r.tiles.last;
-    final arm = r.tiles.firstWhere((t) => t.title == 'Hälytys päälle');
-    final ackOff = r.tiles.firstWhere((t) => t.title == 'Kuittaa ja hälytys pois');
+    final arm = r.tiles.firstWhere((t) => t.title == 'Valvonta päälle');
+    final ackOff = r.tiles.firstWhere((t) => t.title == 'Kuittaa ja valvonta pois');
 
-    expect(await d.read(status.read), 'Hälytys pois (kotona)');
+    expect('${await d.read(status.read)}', 'home'); // R467: security display
     expect(await d.read(piha.read), false);
     expect(m.published.single, matches(RegExp(r'^cmd:tila json 2468 cid:[0-9a-f]{6}$')));
 
@@ -112,11 +112,11 @@ void main() {
     final res = await d.send(arm.commands.single.spec) as Map;
     expect(res['message'], contains('poistumisviive'));
     expect(m.published.sublist(m.published.length - 2), ['cmd:päälle 2468', matches(RegExp(r'^cmd:tila json 2468 cid:'))]);
-    expect(await d.read(status.read), 'Poistumisviive');
+    expect('${await d.read(status.read)}', 'exit_delay');
 
     await d.send(ackOff.commands.single.spec);
     expect(m.published.where((p) => p == 'cmd:kuittaa pois 2468'), hasLength(1));
-    expect(await d.read(status.read), 'Hälytys pois (kotona)');
+    expect('${await d.read(status.read)}', 'home'); // R467: security display
     expect(panel.dropped, isEmpty, reason: 'never two status requests within 5 s');
     await d.dispose();
     await m.stop();
