@@ -18,32 +18,15 @@ class SecurityLook {
 }
 
 SecurityLook securityLook(BuildContext context, Object? value) {
-  final s = securityStateOf(value);
-  return switch (s) {
-    SecurityState.armed => SecurityLook(tx(context, 'Valvonta päällä', 'Armed'), Colors.teal, Icons.shield),
-    SecurityState.armedHome => SecurityLook(
-      tx(context, 'Valvonta päällä (kotona)', 'Armed (at home)'),
-      Colors.teal,
-      Icons.shield,
-    ),
-    SecurityState.disarmed => SecurityLook(tx(context, 'Valvonta pois', 'Disarmed'), Colors.blueGrey, Icons.shield_outlined),
-    SecurityState.exitDelay => SecurityLook(
-      tx(context, 'Lähtöviive – valvonta kytkeytyy', 'Exit delay – arming'),
-      Colors.teal,
-      Icons.timer_outlined,
-    ),
-    SecurityState.entryDelay => SecurityLook(
-      tx(context, 'Tuloviive – anna PIN', 'Entry delay – enter PIN'),
-      Colors.orange,
-      Icons.timer_outlined,
-      prominent: true,
-    ),
-    SecurityState.triggered => SecurityLook(tx(context, 'HÄLYTYS!', 'ALARM!'), Colors.red, Icons.warning_rounded, prominent: true),
-    SecurityState.unknown => SecurityLook(
-      value == null ? '–' : '$value',
-      Colors.blueGrey,
-      Icons.help_outline,
-    ),
+  final label = securityLabel(value, langOf(context));
+  final color = Color(securityColor(value));
+  return switch (securityStateOf(value)) {
+    SecurityState.armed || SecurityState.armedHome => SecurityLook(label, color, Icons.shield),
+    SecurityState.disarmed => SecurityLook(label, color, Icons.shield_outlined),
+    SecurityState.exitDelay => SecurityLook(label, color, Icons.timer_outlined),
+    SecurityState.entryDelay => SecurityLook(label, color, Icons.timer_outlined, prominent: true),
+    SecurityState.triggered => SecurityLook(label, color, Icons.warning_rounded, prominent: true),
+    SecurityState.unknown => SecurityLook(label, color, Icons.help_outline),
   };
 }
 

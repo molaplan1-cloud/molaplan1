@@ -4,6 +4,8 @@
 /// (disarmed / arming / armed_* / pending / triggered) and common Finnish / English words.
 library;
 
+import '../l10n/l10n.dart';
+
 enum SecurityState { disarmed, exitDelay, armed, armedHome, entryDelay, triggered, unknown }
 
 String _norm(Object? v) => '${v ?? ''}'.trim().toLowerCase().replaceAll(RegExp(r'[\s\-]+'), '_');
@@ -73,3 +75,22 @@ bool securityActive(String? activeWhen, Object? value) {
   }
   return false;
 }
+
+/// Readable label (UI tile, home-screen widget). Unknown words are shown as they are.
+String securityLabel(Object? value, String lang) => switch (securityStateOf(value)) {
+  SecurityState.armed => tr(lang, 'Valvonta päällä', 'Armed'),
+  SecurityState.armedHome => tr(lang, 'Valvonta päällä (kotona)', 'Armed (at home)'),
+  SecurityState.disarmed => tr(lang, 'Valvonta pois', 'Disarmed'),
+  SecurityState.exitDelay => tr(lang, 'Lähtöviive – valvonta kytkeytyy', 'Exit delay – arming'),
+  SecurityState.entryDelay => tr(lang, 'Tuloviive – anna PIN', 'Entry delay – enter PIN'),
+  SecurityState.triggered => tr(lang, 'HÄLYTYS!', 'ALARM!'),
+  SecurityState.unknown => value == null ? '–' : '$value',
+};
+
+/// ARGB: armed teal, disarmed blue-grey, entry delay orange, alarm red.
+int securityColor(Object? value) => switch (securityStateOf(value)) {
+  SecurityState.armed || SecurityState.armedHome || SecurityState.exitDelay => 0xFF009688,
+  SecurityState.disarmed || SecurityState.unknown => 0xFF607D8B,
+  SecurityState.entryDelay => 0xFFFF9800,
+  SecurityState.triggered => 0xFFF44336,
+};
