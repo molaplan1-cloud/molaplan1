@@ -51,7 +51,7 @@ class MockNtfy {
       'topic': topic,
       'message': message,
       if (title.isNotEmpty) 'title': title,
-      if (priority != null) 'priority': priority,
+      'priority': ?priority,
     };
     (topics[topic] ??= []).add(m);
     for (final r in List.of(_subs[topic] ?? const <HttpResponse>[])) {

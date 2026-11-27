@@ -62,9 +62,9 @@ Map<String, dynamic> kvJson({
   'sisavalo_src': src,
   'day': src == 'day',
   'ts': 1795769678,
-  if (ok != null) 'ok': ok,
-  if (err != null) 'err': err,
-  if (cmd != null) 'cmd': cmd,
+  'ok': ?ok,
+  'err': ?err,
+  'cmd': ?cmd,
 };
 
 void main() {
