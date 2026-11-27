@@ -3008,6 +3008,10 @@ const l10nFi = <String>[
   'Päivällä ei ohjata',
   'Laitteen tilakanava (esim. paneelin Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan kuuntelee laitteen lähettämiä tilaviestejä eikä kysele tilaa itse. PIN-koodia ei tarvita. Jos PIN-suojattu tilakomento palauttaa kentän state_topic ja se poikkeaa tallennetusta (esim. paneelin "Uusi kanava ja avain"), tilaus päivitetään automaattisesti. Jos tilakanavalle ei tule viestiä yli 35 minuuttiin, tila kysytään ajastetusti.',
   'Laitteen tilakanava (paneelissa Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan ei kysele tilaa itse. PIN-koodia ei tarvita. Jos PIN-suojattu tilavastaus palauttaa state_topic-kentän ja se poikkeaa tallennetusta (esim. paneelin "Uusi kanava ja avain"), tilaus päivitetään automaattisesti. Jos tilakanavalle ei tule viestiä yli 35 minuuttiin, tila kysytään ajastetusti.',
+  'Sovellukset ovat tulossa sovelluskauppoihin (Google Play, Microsoft Store). Jo nyt: jos sinulla on vanha Android-laite, voimme asentaa Molaplanin siihen palveluna, tai lähetämme asennustiedoston (APK), jonka voit asentaa itse, jos taidot riittävät.',
+  'Pyydä asennus palveluna',
+  'Lataa asennustiedosto',
+  'Lataa uusin Android-asennustiedosto (APK). Avaa tiedosto puhelimessa tai tabletissa. Jos Android kysyy, salli asennus tuntemattomista lähteistä (Asetukset → suojaus).',
 ];
 
 const l10nEn = <String>[
@@ -6017,6 +6021,10 @@ const l10nEn = <String>[
   'Not controlled during the day',
   'The device\'s state topic (e.g. the panel\'s Device → Remote → State channel, fw 0.2.51+). When set, Molaplan listens for the device\'s own state messages and does not poll. No PIN is needed. If a PIN-protected status reply includes state_topic and it differs from the stored value (e.g. after the panel\'s "New channel and key"), the subscription is updated automatically. If no message arrives on the state topic for over 35 minutes, Molaplan falls back to scheduled status requests.',
   'The device state topic (on the panel: Device → Remote → State channel, fw 0.2.51+). When set, Molaplan does not poll for state. No PIN is needed. If a PIN-protected status reply includes state_topic and it differs from the stored value (e.g. after the panel\'s "New channel and key"), the subscription is updated automatically. If no message arrives on the state topic for over 35 minutes, Molaplan falls back to scheduled status requests.',
+  'The apps are coming to the app stores (Google Play, Microsoft Store). Already now: if you have an old Android device, we can install Molaplan on it as a service, or we will send the install file (APK) for you to install yourself if you are comfortable doing that.',
+  'Request installation as a service',
+  'Download the install file',
+  'Download the latest Android install file (APK). Open the file on the phone or tablet. If Android asks, allow installation from unknown sources (Settings → security).',
 ];
 
 const l10nSv = <String>[
@@ -9026,6 +9034,10 @@ const l10nSv = <String>[
   'Styrs inte under dagen',
   'Enhetens tillståndsämne (på panelen: Enhet → Fjärrstyrning → Tillståndskanal, fw 0.2.51+). När det är angett lyssnar Molaplan på enhetens egna tillståndsmeddelanden och frågar inte efter tillståndet själv. Ingen PIN-kod behövs. Om ett PIN-skyddat statussvar innehåller fältet state_topic och det skiljer sig från det sparade (t.ex. efter panelens "Ny kanal och nyckel") uppdateras prenumerationen automatiskt. Om inget meddelande kommer till tillståndsämnet på över 35 minuter faller Molaplan tillbaka på schemalagda statusförfrågningar.',
   'Enhetens tillståndsämne (på panelen: Enhet → Fjärrstyrning → Tillståndskanal, fw 0.2.51+). När det är angett frågar Molaplan inte efter tillståndet själv. Ingen PIN-kod behövs. Om ett PIN-skyddat statussvar innehåller fältet state_topic och det skiljer sig från det sparade (t.ex. efter panelens "Ny kanal och nyckel") uppdateras prenumerationen automatiskt. Om inget meddelande kommer till tillståndsämnet på över 35 minuter faller Molaplan tillbaka på schemalagda statusförfrågningar.',
+  'Apparna är på väg till appbutikerna (Google Play, Microsoft Store). Redan nu: om du har en äldre Android-enhet kan vi installera Molaplan på den som en tjänst, eller så skickar vi installationsfilen (APK) som du kan installera själv om du kan.',
+  'Be om installation som tjänst',
+  'Ladda ner installationsfilen',
+  'Ladda ner den senaste Android-installationsfilen (APK). Öppna filen i telefonen eller surfplattan. Om Android frågar, tillåt installation från okända källor (Inställningar → säkerhet).',
 ];
 
 const l10nEt = <String>[
@@ -12035,6 +12047,10 @@ const l10nEt = <String>[
   'Päeval ei juhita',
   'Seadme oleku teema (paneelil: Seade → Kaugjuhtimine → Olekukanal, fw 0.2.51+). Kui see on määratud, kuulab Molaplan seadme enda olekuteateid ega küsi olekut ise. PIN-koodi pole vaja. Kui PIN-koodiga kaitstud olekuvastus sisaldab välja state_topic ja see erineb salvestatust (nt pärast paneeli käsku "Uus kanal ja võti"), uuendatakse kuulamist automaatselt. Kui oleku teemale ei saabu üle 35 minuti teadet, küsib Molaplan olekut ajakava järgi.',
   'Seadme oleku teema (paneelil: Seade → Kaugjuhtimine → Olekukanal, fw 0.2.51+). Kui see on määratud, ei küsi Molaplan olekut ise. PIN-koodi pole vaja. Kui PIN-koodiga kaitstud olekuvastus sisaldab välja state_topic ja see erineb salvestatust (nt pärast paneeli käsku "Uus kanal ja võti"), uuendatakse kuulamist automaatselt. Kui oleku teemale ei saabu üle 35 minuti teadet, küsib Molaplan olekut ajakava järgi.',
+  'Rakendused on tulekul rakenduste poodidesse (Google Play, Microsoft Store). Juba praegu: kui sul on vana Android-seade, saame paigaldada Molaplani sinna teenusena või saadame paigaldusfaili (APK), mille saad ise paigaldada, kui oskused olemas.',
+  'Palu paigaldust teenusena',
+  'Laadi paigaldusfail alla',
+  'Laadi alla uusim Androidi paigaldusfail (APK). Ava fail telefonis või tahvelarvutis. Kui Android küsib, luba paigaldamine tundmatutest allikatest (Seaded → turvalisus).',
 ];
 
 const l10nEs = <String>[
@@ -15044,6 +15060,10 @@ const l10nEs = <String>[
   'No se controla durante el día',
   'El tema de estado del dispositivo (en el panel: Dispositivo → Remoto → Canal de estado, fw 0.2.51+). Cuando está configurado, Molaplan escucha los mensajes de estado del propio dispositivo y no consulta el estado. No se necesita PIN. Si una respuesta de estado protegida con PIN incluye state_topic y difiere del valor guardado (p. ej. tras "Nuevo canal y clave" en el panel), la suscripción se actualiza automáticamente. Si no llega ningún mensaje al tema de estado en más de 35 minutos, Molaplan vuelve a las consultas de estado programadas.',
   'El tema de estado del dispositivo (en el panel: Dispositivo → Remoto → Canal de estado, fw 0.2.51+). Cuando está configurado, Molaplan no consulta el estado. No se necesita PIN. Si una respuesta de estado protegida con PIN incluye state_topic y difiere del valor guardado (p. ej. tras "Nuevo canal y clave" en el panel), la suscripción se actualiza automáticamente. Si no llega ningún mensaje al tema de estado en más de 35 minutos, Molaplan vuelve a las consultas de estado programadas.',
+  'Las aplicaciones llegarán a las tiendas (Google Play, Microsoft Store). Ya ahora: si tienes un dispositivo Android antiguo, podemos instalar Molaplan en él como servicio, o te enviamos el archivo de instalación (APK) para que lo instales tú si te sientes cómodo haciéndolo.',
+  'Solicitar instalación como servicio',
+  'Descargar el archivo de instalación',
+  'Descarga el último archivo de instalación de Android (APK). Ábrelo en el teléfono o la tableta. Si Android lo pide, permite la instalación desde orígenes desconocidos (Ajustes → seguridad).',
 ];
 
 const l10nTables = <String, List<String>>{'sv': l10nSv, 'et': l10nEt, 'es': l10nEs};

@@ -138,6 +138,31 @@ void main() {
       expect(find.byKey(const ValueKey('web-notice')), findsNothing);
     });
 
+    testWidgets('t294u: limits dialog offers install-as-a-service and APK download with a short how-to', (tester) async {
+      tester.view.physicalSize = const Size(420, 2400);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      await tester.pumpWidget(await _app(const WebNoticeBanner(force: true)));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('web-notice')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('web-limits-dialog')), findsOneWidget);
+      expect(
+        find.textContaining('Sovellukset ovat tulossa sovelluskauppoihin'),
+        findsOneWidget,
+      );
+      expect(find.byKey(const ValueKey('web-install-service')), findsOneWidget);
+      expect(find.text('Pyydä asennus palveluna'), findsOneWidget);
+      expect(find.byKey(const ValueKey('web-download-apk')), findsOneWidget);
+      expect(find.text('Lataa asennustiedosto'), findsWidgets);
+      expect(molaplanApkLatest, contains('releases/latest/download/molaplan-android-universal.apk'));
+      await tester.tap(find.byKey(const ValueKey('web-download-apk')));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('web-apk-download-dialog')), findsOneWidget);
+      expect(find.textContaining('salli asennus tuntemattomista lähteistä'), findsOneWidget);
+      expect(find.byKey(const ValueKey('web-apk-download-confirm')), findsOneWidget);
+    });
+
     testWidgets('device search in a browser without a bridge: calm note, no scan', (tester) async {
       Plat.debugIsWeb = true;
       addTearDown(() => Plat.debugIsWeb = null);

@@ -9884,5 +9884,9 @@
  },
  "sd2b99f6417": "Päeval ei juhita",
  "s1acfb0da58": "Seadme oleku teema (paneelil: Seade → Kaugjuhtimine → Olekukanal, fw 0.2.51+). Kui see on määratud, kuulab Molaplan seadme enda olekuteateid ega küsi olekut ise. PIN-koodi pole vaja. Kui PIN-koodiga kaitstud olekuvastus sisaldab välja state_topic ja see erineb salvestatust (nt pärast paneeli käsku \"Uus kanal ja võti\"), uuendatakse kuulamist automaatselt. Kui oleku teemale ei saabu üle 35 minuti teadet, küsib Molaplan olekut ajakava järgi.",
- "s5abc26863b": "Seadme oleku teema (paneelil: Seade → Kaugjuhtimine → Olekukanal, fw 0.2.51+). Kui see on määratud, ei küsi Molaplan olekut ise. PIN-koodi pole vaja. Kui PIN-koodiga kaitstud olekuvastus sisaldab välja state_topic ja see erineb salvestatust (nt pärast paneeli käsku \"Uus kanal ja võti\"), uuendatakse kuulamist automaatselt. Kui oleku teemale ei saabu üle 35 minuti teadet, küsib Molaplan olekut ajakava järgi."
+ "s5abc26863b": "Seadme oleku teema (paneelil: Seade → Kaugjuhtimine → Olekukanal, fw 0.2.51+). Kui see on määratud, ei küsi Molaplan olekut ise. PIN-koodi pole vaja. Kui PIN-koodiga kaitstud olekuvastus sisaldab välja state_topic ja see erineb salvestatust (nt pärast paneeli käsku \"Uus kanal ja võti\"), uuendatakse kuulamist automaatselt. Kui oleku teemale ei saabu üle 35 minuti teadet, küsib Molaplan olekut ajakava järgi.",
+ "scc4366802a": "Rakendused on tulekul rakenduste poodidesse (Google Play, Microsoft Store). Juba praegu: kui sul on vana Android-seade, saame paigaldada Molaplani sinna teenusena või saadame paigaldusfaili (APK), mille saad ise paigaldada, kui oskused olemas.",
+ "sb2b9982ba7": "Palu paigaldust teenusena",
+ "s02179b814a": "Laadi paigaldusfail alla",
+ "see46457ffd": "Laadi alla uusim Androidi paigaldusfail (APK). Ava fail telefonis või tahvelarvutis. Kui Android küsib, luba paigaldamine tundmatutest allikatest (Seaded → turvalisus)."
 }

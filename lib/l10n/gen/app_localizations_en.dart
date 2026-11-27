@@ -10100,4 +10100,18 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s5abc26863b =>
       'The device state topic (on the panel: Device → Remote → State channel, fw 0.2.51+). When set, Molaplan does not poll for state. No PIN is needed. If a PIN-protected status reply includes state_topic and it differs from the stored value (e.g. after the panel\'s \"New channel and key\"), the subscription is updated automatically. If no message arrives on the state topic for over 35 minutes, Molaplan falls back to scheduled status requests.';
+
+  @override
+  String get scc4366802a =>
+      'The apps are coming to the app stores (Google Play, Microsoft Store). Already now: if you have an old Android device, we can install Molaplan on it as a service, or we will send the install file (APK) for you to install yourself if you are comfortable doing that.';
+
+  @override
+  String get sb2b9982ba7 => 'Request installation as a service';
+
+  @override
+  String get s02179b814a => 'Download the install file';
+
+  @override
+  String get see46457ffd =>
+      'Download the latest Android install file (APK). Open the file on the phone or tablet. If Android asks, allow installation from unknown sources (Settings → security).';
 }

@@ -18154,6 +18154,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The device state topic (on the panel: Device → Remote → State channel, fw 0.2.51+). When set, Molaplan does not poll for state. No PIN is needed. If a PIN-protected status reply includes state_topic and it differs from the stored value (e.g. after the panel\'\'s \"New channel and key\"), the subscription is updated automatically. If no message arrives on the state topic for over 35 minutes, Molaplan falls back to scheduled status requests.'**
   String get s5abc26863b;
+
+  /// fi: Sovellukset ovat tulossa sovelluskauppoihin (Google Play, Microsoft Store). Jo nyt: jos sinulla on vanha Android-laite,
+  ///
+  /// In en, this message translates to:
+  /// **'The apps are coming to the app stores (Google Play, Microsoft Store). Already now: if you have an old Android device, we can install Molaplan on it as a service, or we will send the install file (APK) for you to install yourself if you are comfortable doing that.'**
+  String get scc4366802a;
+
+  /// fi: Pyydä asennus palveluna
+  ///
+  /// In en, this message translates to:
+  /// **'Request installation as a service'**
+  String get sb2b9982ba7;
+
+  /// fi: Lataa asennustiedosto
+  ///
+  /// In en, this message translates to:
+  /// **'Download the install file'**
+  String get s02179b814a;
+
+  /// fi: Lataa uusin Android-asennustiedosto (APK). Avaa tiedosto puhelimessa tai tabletissa. Jos Android kysyy, salli asennus tu
+  ///
+  /// In en, this message translates to:
+  /// **'Download the latest Android install file (APK). Open the file on the phone or tablet. If Android asks, allow installation from unknown sources (Settings → security).'**
+  String get see46457ffd;
 }
 
 class _AppLocalizationsDelegate

@@ -3005,5 +3005,9 @@
  "s3a38b97f7b": "{p0} – huone",
  "sd2b99f6417": "Päivällä ei ohjata",
  "s1acfb0da58": "Laitteen tilakanava (esim. paneelin Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan kuuntelee laitteen lähettämiä tilaviestejä eikä kysele tilaa itse. PIN-koodia ei tarvita. Jos PIN-suojattu tilakomento palauttaa kentän state_topic ja se poikkeaa tallennetusta (esim. paneelin \"Uusi kanava ja avain\"), tilaus päivitetään automaattisesti. Jos tilakanavalle ei tule viestiä yli 35 minuuttiin, tila kysytään ajastetusti.",
- "s5abc26863b": "Laitteen tilakanava (paneelissa Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan ei kysele tilaa itse. PIN-koodia ei tarvita. Jos PIN-suojattu tilavastaus palauttaa state_topic-kentän ja se poikkeaa tallennetusta (esim. paneelin \"Uusi kanava ja avain\"), tilaus päivitetään automaattisesti. Jos tilakanavalle ei tule viestiä yli 35 minuuttiin, tila kysytään ajastetusti."
+ "s5abc26863b": "Laitteen tilakanava (paneelissa Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan ei kysele tilaa itse. PIN-koodia ei tarvita. Jos PIN-suojattu tilavastaus palauttaa state_topic-kentän ja se poikkeaa tallennetusta (esim. paneelin \"Uusi kanava ja avain\"), tilaus päivitetään automaattisesti. Jos tilakanavalle ei tule viestiä yli 35 minuuttiin, tila kysytään ajastetusti.",
+ "scc4366802a": "Sovellukset ovat tulossa sovelluskauppoihin (Google Play, Microsoft Store). Jo nyt: jos sinulla on vanha Android-laite, voimme asentaa Molaplanin siihen palveluna, tai lähetämme asennustiedoston (APK), jonka voit asentaa itse, jos taidot riittävät.",
+ "sb2b9982ba7": "Pyydä asennus palveluna",
+ "s02179b814a": "Lataa asennustiedosto",
+ "see46457ffd": "Lataa uusin Android-asennustiedosto (APK). Avaa tiedosto puhelimessa tai tabletissa. Jos Android kysyy, salli asennus tuntemattomista lähteistä (Asetukset → suojaus)."
 }

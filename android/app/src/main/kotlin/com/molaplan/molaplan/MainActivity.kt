@@ -205,11 +205,11 @@ class MainActivity : FlutterActivity() {
                     result.success(true)
                 }
                 "stopListen" -> {
-                    NtfyListenService.applyConfig(this, "{"topics":[]}")
+                    NtfyListenService.applyConfig(this, """{"topics":[]}""")
                     result.success(true)
                 }
                 "listenForeground" -> {
-                    NtfyListenService.setAppForeground(call.argument<Boolean>("value") ?: false)
+                    NtfyListenService.appForeground = call.argument<Boolean>("value") ?: false
                     result.success(true)
                 }
                 "batteryExempt" -> result.success(NtfyListenService.batteryExempt(this))

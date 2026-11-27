@@ -10159,4 +10159,18 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s5abc26863b =>
       'Laitteen tilakanava (paneelissa Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan ei kysele tilaa itse. PIN-koodia ei tarvita. Jos PIN-suojattu tilavastaus palauttaa state_topic-kentän ja se poikkeaa tallennetusta (esim. paneelin \"Uusi kanava ja avain\"), tilaus päivitetään automaattisesti. Jos tilakanavalle ei tule viestiä yli 35 minuuttiin, tila kysytään ajastetusti.';
+
+  @override
+  String get scc4366802a =>
+      'Sovellukset ovat tulossa sovelluskauppoihin (Google Play, Microsoft Store). Jo nyt: jos sinulla on vanha Android-laite, voimme asentaa Molaplanin siihen palveluna, tai lähetämme asennustiedoston (APK), jonka voit asentaa itse, jos taidot riittävät.';
+
+  @override
+  String get sb2b9982ba7 => 'Pyydä asennus palveluna';
+
+  @override
+  String get s02179b814a => 'Lataa asennustiedosto';
+
+  @override
+  String get see46457ffd =>
+      'Lataa uusin Android-asennustiedosto (APK). Avaa tiedosto puhelimessa tai tabletissa. Jos Android kysyy, salli asennus tuntemattomista lähteistä (Asetukset → suojaus).';
 }

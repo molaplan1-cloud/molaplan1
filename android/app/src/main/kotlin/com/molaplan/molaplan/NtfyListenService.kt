@@ -220,7 +220,11 @@ class NtfyListenService : Service() {
         if (muted > 0 && System.currentTimeMillis() < muted) return false
         val now = Calendar.getInstance()
         val nowMin = now.get(Calendar.HOUR_OF_DAY) * 60 + now.get(Calendar.MINUTE)
-        return !NtfyListenFilter.inQuietHours(c.optString("quietFrom", null), c.optString("quietTo", null), nowMin)
+        fun strOrNull(key: String): String? {
+            if (!c.has(key) || c.isNull(key)) return null
+            return c.optString(key).ifBlank { null }
+        }
+        return !NtfyListenFilter.inQuietHours(strOrNull("quietFrom"), strOrNull("quietTo"), nowMin)
     }
 
     private fun postNotification(title: String, body: String, prio: Int, click: String) {
@@ -385,10 +389,6 @@ class NtfyListenService : Service() {
             if (raw.isBlank()) return
             val n = try { JSONObject(raw).optJSONArray("topics")?.length() ?: 0 } catch (_: Exception) { 0 }
             if (n > 0) start(ctx)
-        }
-
-        fun setAppForeground(value: Boolean) {
-            appForeground = value
         }
 
         fun batteryExempt(ctx: Context): Boolean {

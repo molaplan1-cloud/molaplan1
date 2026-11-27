@@ -16300,5 +16300,25 @@
  "@s5abc26863b": {
   "description": "fi: Laitteen tilakanava (paneelissa Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan ei kysele tilaa itse",
   "x-where": "templates/device_templates.dart (t282u)"
+ },
+ "scc4366802a": "The apps are coming to the app stores (Google Play, Microsoft Store). Already now: if you have an old Android device, we can install Molaplan on it as a service, or we will send the install file (APK) for you to install yourself if you are comfortable doing that.",
+ "@scc4366802a": {
+  "description": "fi: Sovellukset ovat tulossa sovelluskauppoihin (Google Play, Microsoft Store). Jo nyt: jos sinulla on vanha Android-laite, ",
+  "x-where": "ui/web_info.dart (t294u)"
+ },
+ "sb2b9982ba7": "Request installation as a service",
+ "@sb2b9982ba7": {
+  "description": "fi: Pyydä asennus palveluna",
+  "x-where": "ui/web_info.dart (t294u)"
+ },
+ "s02179b814a": "Download the install file",
+ "@s02179b814a": {
+  "description": "fi: Lataa asennustiedosto",
+  "x-where": "ui/web_info.dart (t294u)"
+ },
+ "see46457ffd": "Download the latest Android install file (APK). Open the file on the phone or tablet. If Android asks, allow installation from unknown sources (Settings → security).",
+ "@see46457ffd": {
+  "description": "fi: Lataa uusin Android-asennustiedosto (APK). Avaa tiedosto puhelimessa tai tabletissa. Jos Android kysyy, salli asennus tu",
+  "x-where": "ui/web_info.dart (t294u)"
  }
 }

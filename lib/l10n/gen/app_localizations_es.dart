@@ -10189,4 +10189,18 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s5abc26863b =>
       'El tema de estado del dispositivo (en el panel: Dispositivo → Remoto → Canal de estado, fw 0.2.51+). Cuando está configurado, Molaplan no consulta el estado. No se necesita PIN. Si una respuesta de estado protegida con PIN incluye state_topic y difiere del valor guardado (p. ej. tras \"Nuevo canal y clave\" en el panel), la suscripción se actualiza automáticamente. Si no llega ningún mensaje al tema de estado en más de 35 minutos, Molaplan vuelve a las consultas de estado programadas.';
+
+  @override
+  String get scc4366802a =>
+      'Las aplicaciones llegarán a las tiendas (Google Play, Microsoft Store). Ya ahora: si tienes un dispositivo Android antiguo, podemos instalar Molaplan en él como servicio, o te enviamos el archivo de instalación (APK) para que lo instales tú si te sientes cómodo haciéndolo.';
+
+  @override
+  String get sb2b9982ba7 => 'Solicitar instalación como servicio';
+
+  @override
+  String get s02179b814a => 'Descargar el archivo de instalación';
+
+  @override
+  String get see46457ffd =>
+      'Descarga el último archivo de instalación de Android (APK). Ábrelo en el teléfono o la tableta. Si Android lo pide, permite la instalación desde orígenes desconocidos (Ajustes → seguridad).';
 }

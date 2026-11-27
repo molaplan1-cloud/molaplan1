@@ -10108,4 +10108,18 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s5abc26863b =>
       'Enhetens tillståndsämne (på panelen: Enhet → Fjärrstyrning → Tillståndskanal, fw 0.2.51+). När det är angett frågar Molaplan inte efter tillståndet själv. Ingen PIN-kod behövs. Om ett PIN-skyddat statussvar innehåller fältet state_topic och det skiljer sig från det sparade (t.ex. efter panelens \"Ny kanal och nyckel\") uppdateras prenumerationen automatiskt. Om inget meddelande kommer till tillståndsämnet på över 35 minuter faller Molaplan tillbaka på schemalagda statusförfrågningar.';
+
+  @override
+  String get scc4366802a =>
+      'Apparna är på väg till appbutikerna (Google Play, Microsoft Store). Redan nu: om du har en äldre Android-enhet kan vi installera Molaplan på den som en tjänst, eller så skickar vi installationsfilen (APK) som du kan installera själv om du kan.';
+
+  @override
+  String get sb2b9982ba7 => 'Be om installation som tjänst';
+
+  @override
+  String get s02179b814a => 'Ladda ner installationsfilen';
+
+  @override
+  String get see46457ffd =>
+      'Ladda ner den senaste Android-installationsfilen (APK). Öppna filen i telefonen eller surfplattan. Om Android frågar, tillåt installation från okända källor (Inställningar → säkerhet).';
 }

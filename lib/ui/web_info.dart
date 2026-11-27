@@ -19,6 +19,10 @@ const molaplanSite = 'https://molaplan.com';
 const molaplanOrder = 'https://molaplan.com/tilaa';
 const molaplanDownloads = 'https://molaplan.com/tilaa/lataa';
 
+/// Latest universal Android APK on the GitHub release (t294u).
+const molaplanApkLatest =
+    'https://github.com/molaplan1-cloud/molaplan1/releases/latest/download/molaplan-android-universal.apk';
+
 Future<void> openMolaplanUrl(String url) =>
     launchUrl(Uri.parse(url), webOnlyWindowName: '_blank');
 Future<void> _open(String url) => openMolaplanUrl(url);
@@ -140,6 +144,15 @@ class WebLimitsCard extends StatelessWidget {
                 ),
             ],
             const SizedBox(height: 12),
+            Text(
+              tx(
+                context,
+                'Sovellukset ovat tulossa sovelluskauppoihin (Google Play, Microsoft Store). Jo nyt: jos sinulla on vanha Android-laite, voimme asentaa Molaplanin siihen palveluna, tai lähetämme asennustiedoston (APK), jonka voit asentaa itse, jos taidot riittävät.',
+                'The apps are coming to the app stores (Google Play, Microsoft Store). Already now: if you have an old Android device, we can install Molaplan on it as a service, or we will send the install file (APK) for you to install yourself if you are comfortable doing that.',
+              ),
+              style: text.bodySmall?.copyWith(color: cs.onSecondaryContainer),
+            ),
+            const SizedBox(height: 12),
             Wrap(
               spacing: 8,
               runSpacing: 8,
@@ -156,6 +169,28 @@ class WebLimitsCard extends StatelessWidget {
                     ),
                   ),
                 ),
+                OutlinedButton(
+                  key: const ValueKey('web-install-service'),
+                  onPressed: () => _open(molaplanOrder),
+                  child: Text(
+                    tx(
+                      context,
+                      'Pyydä asennus palveluna',
+                      'Request installation as a service',
+                    ),
+                  ),
+                ),
+                OutlinedButton(
+                  key: const ValueKey('web-download-apk'),
+                  onPressed: () => showApkDownloadInfo(context),
+                  child: Text(
+                    tx(
+                      context,
+                      'Lataa asennustiedosto',
+                      'Download the install file',
+                    ),
+                  ),
+                ),
                 TextButton(
                   key: const ValueKey('web-site'),
                   onPressed: () => _open(molaplanSite),
@@ -168,6 +203,36 @@ class WebLimitsCard extends StatelessWidget {
       ),
     );
   }
+}
+
+/// t294u: short unknown-sources note, then open the latest APK from the GitHub release.
+Future<void> showApkDownloadInfo(BuildContext context) async {
+  final go = await showDialog<bool>(
+    context: context,
+    builder: (c) => AlertDialog(
+      key: const ValueKey('web-apk-download-dialog'),
+      title: Text(tx(c, 'Lataa asennustiedosto', 'Download the install file')),
+      content: Text(
+        tx(
+          c,
+          'Lataa uusin Android-asennustiedosto (APK). Avaa tiedosto puhelimessa tai tabletissa. Jos Android kysyy, salli asennus tuntemattomista lähteistä (Asetukset → suojaus).',
+          'Download the latest Android install file (APK). Open the file on the phone or tablet. If Android asks, allow installation from unknown sources (Settings → security).',
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(c, false),
+          child: Text(tx(c, 'Peruuta', 'Cancel')),
+        ),
+        FilledButton(
+          key: const ValueKey('web-apk-download-confirm'),
+          onPressed: () => Navigator.pop(c, true),
+          child: Text(tx(c, 'Lataa', 'Download')),
+        ),
+      ],
+    ),
+  );
+  if (go == true) await _open(molaplanApkLatest);
 }
 
 /// Tap on an "app only" tile.
@@ -191,7 +256,7 @@ Future<void> showWebLimitsDialog(BuildContext context) => showDialog<void>(
             ),
           ),
           const SizedBox(height: 12),
-          const WebLimitsCard(),
+          const WebLimitsCard(showList: false),
         ],
       ),
     ),

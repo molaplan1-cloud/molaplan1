@@ -10096,4 +10096,18 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s5abc26863b =>
       'Seadme oleku teema (paneelil: Seade → Kaugjuhtimine → Olekukanal, fw 0.2.51+). Kui see on määratud, ei küsi Molaplan olekut ise. PIN-koodi pole vaja. Kui PIN-koodiga kaitstud olekuvastus sisaldab välja state_topic ja see erineb salvestatust (nt pärast paneeli käsku \"Uus kanal ja võti\"), uuendatakse kuulamist automaatselt. Kui oleku teemale ei saabu üle 35 minuti teadet, küsib Molaplan olekut ajakava järgi.';
+
+  @override
+  String get scc4366802a =>
+      'Rakendused on tulekul rakenduste poodidesse (Google Play, Microsoft Store). Juba praegu: kui sul on vana Android-seade, saame paigaldada Molaplani sinna teenusena või saadame paigaldusfaili (APK), mille saad ise paigaldada, kui oskused olemas.';
+
+  @override
+  String get sb2b9982ba7 => 'Palu paigaldust teenusena';
+
+  @override
+  String get s02179b814a => 'Laadi paigaldusfail alla';
+
+  @override
+  String get see46457ffd =>
+      'Laadi alla uusim Androidi paigaldusfail (APK). Ava fail telefonis või tahvelarvutis. Kui Android küsib, luba paigaldamine tundmatutest allikatest (Seaded → turvalisus).';
 }

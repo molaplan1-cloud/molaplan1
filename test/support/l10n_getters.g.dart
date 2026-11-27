@@ -3008,4 +3008,8 @@ final l10nGetters = <String Function(AppLocalizations)>[
   (l) => l.sd2b99f6417,
   (l) => l.s1acfb0da58,
   (l) => l.s5abc26863b,
+  (l) => l.scc4366802a,
+  (l) => l.sb2b9982ba7,
+  (l) => l.s02179b814a,
+  (l) => l.see46457ffd,
 ];

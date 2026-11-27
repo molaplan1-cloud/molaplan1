@@ -578,6 +578,11 @@ T = {
  'Default': ('Standard', 'Vaikimisi', 'Por defecto'),
  # v0.17.2 (t282u): sisavalo_src=day / day_blocked tile wording
  'Not controlled during the day': ('Styrs inte under dagen', 'Päeval ei juhita', 'No se controla durante el día'),
+ # v0.17.2 (t294u): web limits dialog – shops, install as a service, APK
+ 'The apps are coming to the app stores (Google Play, Microsoft Store). Already now: if you have an old Android device, we can install Molaplan on it as a service, or we will send the install file (APK) for you to install yourself if you are comfortable doing that.': ('Apparna är på väg till appbutikerna (Google Play, Microsoft Store). Redan nu: om du har en äldre Android-enhet kan vi installera Molaplan på den som en tjänst, eller så skickar vi installationsfilen (APK) som du kan installera själv om du kan.', 'Rakendused on tulekul rakenduste poodidesse (Google Play, Microsoft Store). Juba praegu: kui sul on vana Android-seade, saame paigaldada Molaplani sinna teenusena või saadame paigaldusfaili (APK), mille saad ise paigaldada, kui oskused olemas.', 'Las aplicaciones llegarán a las tiendas (Google Play, Microsoft Store). Ya ahora: si tienes un dispositivo Android antiguo, podemos instalar Molaplan en él como servicio, o te enviamos el archivo de instalación (APK) para que lo instales tú si te sientes cómodo haciéndolo.'),
+ 'Request installation as a service': ('Be om installation som tjänst', 'Palu paigaldust teenusena', 'Solicitar instalación como servicio'),
+ 'Download the install file': ('Ladda ner installationsfilen', 'Laadi paigaldusfail alla', 'Descargar el archivo de instalación'),
+ 'Download the latest Android install file (APK). Open the file on the phone or tablet. If Android asks, allow installation from unknown sources (Settings → security).': ('Ladda ner den senaste Android-installationsfilen (APK). Öppna filen i telefonen eller surfplattan. Om Android frågar, tillåt installation från okända källor (Inställningar → säkerhet).', 'Laadi alla uusim Androidi paigaldusfail (APK). Ava fail telefonis või tahvelarvutis. Kui Android küsib, luba paigaldamine tundmatutest allikatest (Seaded → turvalisus).', 'Descarga el último archivo de instalación de Android (APK). Ábrelo en el teléfono o la tableta. Si Android lo pide, permite la instalación desde orígenes desconocidos (Ajustes → seguridad).'),
 }
 
 
