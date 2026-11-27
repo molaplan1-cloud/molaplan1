@@ -223,6 +223,12 @@ class _Shared {
 
   /// t282u: the state topic has been silent longer than [statePollFallbackAfter] – poll.
   bool topicFallback = false;
+
+  /// R466 (t307u): server time (s) of the newest state-topic message applied, and when the
+  /// state topic was last re-read over HTTP because the live stream looked silent.
+  int lastTopicMsgTime = 0;
+  String lastTopicMsgId = '';
+  DateTime? catchUpAt;
   bool offlineSent = false;
   final stateWaiters = <Completer<NtfyMessage>>[];
   final watchers = <StreamController<void>>[];
@@ -565,11 +571,51 @@ class NtfyDeviceDriver extends NtfyDriver {
     final sh = _sh;
     if (!hasStateTopic || !sh.topicFallback) return;
     if (sh.inFlight != null) return;
-    final every = statusEvery;
-    if (every > Duration.zero && sh.autoAt != null && clock().difference(sh.autoAt!) < every) return;
+    if (sh.autoAt != null && clock().difference(sh.autoAt!) < fallbackEvery) return;
     try {
       await status(fresh: true);
     } catch (_) {}
+  }
+
+  /// R466 (t307u): with a Tilakanava, a `tila json` fallback is asked at most once per
+  /// [statePollFallbackAfter] (35 min) – never on the 15-min [statusEvery] timer.
+  Duration get fallbackEvery => statusEvery > statePollFallbackAfter ? statusEvery : statePollFallbackAfter;
+
+  /// R466 (t307u): before a fallback `tila json`, re-read the state topic over HTTP. A live
+  /// stream can stall silently (NAT / mobile network) while the device keeps publishing –
+  /// then the newer message is applied, the stream is restarted and no command is sent.
+  /// Returns true when a newer state-topic message was found.
+  Future<bool> _catchUpStateTopic() async {
+    final sh = _sh;
+    final pair = stateTopicPair;
+    if (pair == null || pair.$2.isEmpty) return false;
+    final now = clock();
+    if (sh.catchUpAt != null && now.difference(sh.catchUpAt!) < const Duration(minutes: 1)) return false;
+    sh.catchUpAt = now;
+    try {
+      final msgs = await poll(topic: pair.$2, since: '${statePollFallbackAfter.inSeconds}s');
+      NtfyMessage? best;
+      for (final m in msgs) {
+        if (ntfyJsonPayload(m.message) is! Map) continue;
+        if (m.time < sh.lastTopicMsgTime) continue;
+        if (m.time == sh.lastTopicMsgTime && m.id == sh.lastTopicMsgId) continue;
+        if (best == null || m.time >= best.time) best = m;
+      }
+      if (best == null) return false;
+      _applyStateMessage(best, fromTopic: true, notifyChanges: true);
+      if (sh.topicFallback) return false; // not a state message after all
+      unawaited(_restartStateSub());
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  Future<void> _restartStateSub() async {
+    final prev = _stateSub;
+    _stateSub = null;
+    await prev?.cancel();
+    await _ensureStateSub();
   }
 
   Future<void> _ensureStateSub() async {
@@ -630,6 +676,10 @@ class NtfyDeviceDriver extends NtfyDriver {
     if (fromTopic) {
       sh.lastTopicAt = clock();
       sh.topicFallback = false;
+      if (m.time >= sh.lastTopicMsgTime) {
+        sh.lastTopicMsgTime = m.time;
+        sh.lastTopicMsgId = m.id;
+      }
     }
     if (sh.offlineSent) sh.offlineSent = false;
     sh.wakeState(m);
@@ -804,8 +854,8 @@ class NtfyDeviceDriver extends NtfyDriver {
               .whenComplete(() => sh.inFlight = null);
         }
       } else if (!fresh && sh.last != null) {
-        final every = statusEvery;
-        if (every > Duration.zero && sh.autoAt != null && now.difference(sh.autoAt!) < every) {
+        // R466: the fallback asks at most every 35 min (not every statusEvery).
+        if (sh.autoAt != null && now.difference(sh.autoAt!) < fallbackEvery) {
           return Future.value(sh.last!);
         }
       }
@@ -850,6 +900,11 @@ class NtfyDeviceDriver extends NtfyDriver {
   Future<NtfyMessage> _statusNow(String? command, bool fresh, Duration ttl) async {
     final sh = _sh;
     if (hasStateTopic && !fresh && !_stateTopicNeedsPoll(sh)) return _statusFromTopic();
+    if (hasStateTopic && _stateTopicNeedsPoll(sh)) {
+      // R466: the device may still be publishing – a stalled stream is not silence.
+      if (await _catchUpStateTopic() && sh.last != null) return sh.last!;
+      sh.autoAt = clock();
+    }
     final now = DateTime.now();
     // t243u: no replies lately – ask less often (30 s, 1 min, 2 min … 5 min) instead of every poll.
     if (!fresh && sh.backoffUntil != null && now.isBefore(sh.backoffUntil!) && sh.lastNoReply != null) {
@@ -863,10 +918,10 @@ class NtfyDeviceDriver extends NtfyDriver {
       final window = statusEvery > ttl ? statusEvery : ttl;
       final shared = await _recentShared(window);
       if (shared != null) {
-        sh.autoAt = DateTime.now();
+        sh.autoAt = clock();
         return shared;
       }
-      sh.autoAt = DateTime.now();
+      sh.autoAt = clock();
     }
     try {
       final m = await _ask(command ?? s.str('statusCommand', 'tila'));

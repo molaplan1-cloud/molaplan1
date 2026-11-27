@@ -301,6 +301,9 @@ class NtfyDriver extends Driver {
   /// Live JSON stream of messages on [topic] (reply topic when omitted). Reconnects with
   /// backoff and `since=<last id>` so a server that closes the stream (~3 min on
   /// ntfy.molaplan.com) does not drop messages. Cancel the subscription to stop.
+  /// R466: a live stream with no line (message or keepalive) for this long is reconnected.
+  static Duration subscribeIdleTimeout = const Duration(seconds: 100);
+
   Stream<NtfyMessage> subscribe({String? topic, String? since}) {
     late StreamController<NtfyMessage> ctl;
     var stopped = false;
@@ -319,7 +322,12 @@ class NtfyDriver extends Driver {
             throw DriverException(_httpError(res.statusCode, await utf8.decodeStream(res.stream), t));
           }
           backoff = 2;
-          await for (final line in res.stream.transform(utf8.decoder).transform(const LineSplitter())) {
+          // R466 (t307u): ntfy sends a keepalive every ~45 s; a stream that stays silent
+          // longer has stalled (NAT, mobile network) – reconnect instead of waiting forever.
+          await for (final line in res.stream
+              .transform(utf8.decoder)
+              .transform(const LineSplitter())
+              .timeout(subscribeIdleTimeout)) {
             if (stopped) break;
             if (line.trim().isEmpty) continue;
             final j = _tryJson(line);

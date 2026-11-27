@@ -17,6 +17,9 @@ class MockNtfy {
   final _subs = <String, List<HttpResponse>>{};
   final published = <String>[];
 
+  /// R466: topics whose open live streams silently stop delivering (a stalled connection).
+  final stalledStreams = <String>{};
+
   /// t246u: messages left for this "IP" (-1 = no limit); 0 -> HTTP 429 like ntfy.sh.
   int quotaLeft = -1;
   int refused = 0;
@@ -54,6 +57,7 @@ class MockNtfy {
       'priority': ?priority,
     };
     (topics[topic] ??= []).add(m);
+    if (stalledStreams.contains(topic)) return m;
     for (final r in List.of(_subs[topic] ?? const <HttpResponse>[])) {
       try {
         r.write('${jsonEncode(m)}\n');
