@@ -1110,6 +1110,40 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s6659f500d5 => 'Open full Molaplan';
 
   @override
+  String get s3ac2079668 => 'Everything';
+
+  @override
+  String get sc45a6d2e30 => 'Nothing';
+
+  @override
+  String get s08541d02f1 => 'Only arming and alarms';
+
+  @override
+  String get s92f67aa475 => 'Automatic (recommended)';
+
+  @override
+  String get sd506bb5c34 => 'Advanced: what notifies';
+
+  @override
+  String get s57cfeb1fe7 =>
+      'Molaplan reads every message (status, heartbeat, delays, replies) but by default only notifies when monitoring is armed or disarmed, about alarms and about other devices\' ordinary messages. The same choice applies to the iPhone ntfy app when the server supports it (ntfy.molaplan.com).';
+
+  @override
+  String get sa7251b3fca => 'No topics to listen to';
+
+  @override
+  String get s6f3a092e07 => 'Molaplan\'s own notifications';
+
+  @override
+  String get sba0a4fbaba => 'Device replies';
+
+  @override
+  String get sdf08a348ba => 'Saved, also on the server (iPhone)';
+
+  @override
+  String get s6b8c0469dc => 'Saved in this app';
+
+  @override
   String get sd9762f0556 => 'Copied';
 
   @override

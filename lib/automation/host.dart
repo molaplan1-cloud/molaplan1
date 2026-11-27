@@ -480,6 +480,29 @@ class NtfyPush {
     if (r.statusCode >= 300) throw StateError('ntfy ${r.statusCode}: ${r.body}');
   }
 
+  /// R503 (t317u): ask the ntfy server to push (to the iPhone ntfy app) only what the user
+  /// chose. Only servers with the Molaplan notify-policy endpoint (ntfy.molaplan.com) support
+  /// it; others answer 404 and nothing changes. True = the server applied it.
+  Future<bool> setServerPolicy(String server, String topic, String mode, {String token = ''}) async {
+    final base = server.trim().replaceAll(RegExp(r'/+$'), '');
+    if (base.isEmpty || topic.trim().isEmpty) return false;
+    try {
+      final r = await _client
+          .put(
+            Uri.parse('$base/${topic.trim()}/notify-policy'),
+            headers: {
+              if (token.isNotEmpty) 'Authorization': 'Bearer $token',
+              'Content-Type': 'application/json',
+            },
+            body: jsonEncode({'mode': mode}),
+          )
+          .timeout(const Duration(seconds: 10));
+      return r.statusCode == 200 && r.body.contains('"policy"');
+    } catch (_) {
+      return false;
+    }
+  }
+
   /// ntfy accepts UTF-8 headers only RFC 2047-encoded.
   static String _header(String s) {
     if (s.codeUnits.every((c) => c >= 32 && c < 127)) return s;

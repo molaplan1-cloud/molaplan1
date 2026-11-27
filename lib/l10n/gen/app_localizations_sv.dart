@@ -1108,6 +1108,40 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s6659f500d5 => 'Öppna hela Molaplan';
 
   @override
+  String get s3ac2079668 => 'Allt';
+
+  @override
+  String get sc45a6d2e30 => 'Inget';
+
+  @override
+  String get s08541d02f1 => 'Endast till-/frånkoppling och larm';
+
+  @override
+  String get s92f67aa475 => 'Automatiskt (rekommenderas)';
+
+  @override
+  String get sd506bb5c34 => 'Avancerat: vad som ger avisering';
+
+  @override
+  String get s57cfeb1fe7 =>
+      'Molaplan läser alla meddelanden (status, puls, fördröjningar, svar) men aviserar som standard bara när larmet kopplas till eller från, om larm och om andra enheters vanliga meddelanden. Samma val gäller ntfy-appen på iPhone om servern stöder det (ntfy.molaplan.com).';
+
+  @override
+  String get sa7251b3fca => 'Inga ämnen att lyssna på';
+
+  @override
+  String get s6f3a092e07 => 'Molaplans egna aviseringar';
+
+  @override
+  String get sba0a4fbaba => 'Enhetens svar';
+
+  @override
+  String get sdf08a348ba => 'Sparat, även på servern (iPhone)';
+
+  @override
+  String get s6b8c0469dc => 'Sparat i den här appen';
+
+  @override
   String get sd9762f0556 => 'Kopierat';
 
   @override

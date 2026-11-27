@@ -1108,6 +1108,40 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s6659f500d5 => 'Ava kogu Molaplan';
 
   @override
+  String get s3ac2079668 => 'Kõik';
+
+  @override
+  String get sc45a6d2e30 => 'Mitte midagi';
+
+  @override
+  String get s08541d02f1 => 'Ainult valve sisse/välja ja häired';
+
+  @override
+  String get s92f67aa475 => 'Automaatne (soovitatav)';
+
+  @override
+  String get sd506bb5c34 => 'Täpsemalt: millest teavitatakse';
+
+  @override
+  String get s57cfeb1fe7 =>
+      'Molaplan loeb kõiki sõnumeid (olek, südamelöök, viivitused, vastused), kuid teavitab vaikimisi ainult valve sisse- või väljalülitamisest, häiretest ja teiste seadmete tavalistest sõnumitest. Sama valik kehtib iPhone\'i ntfy rakendusele, kui server seda toetab (ntfy.molaplan.com).';
+
+  @override
+  String get sa7251b3fca => 'Kuulatavaid teemasid pole';
+
+  @override
+  String get s6f3a092e07 => 'Molaplani enda teavitused';
+
+  @override
+  String get sba0a4fbaba => 'Seadme vastused';
+
+  @override
+  String get sdf08a348ba => 'Salvestatud, ka serverisse (iPhone)';
+
+  @override
+  String get s6b8c0469dc => 'Salvestatud sellesse rakendusse';
+
+  @override
   String get sd9762f0556 => 'Kopeeritud';
 
   @override

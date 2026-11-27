@@ -6,7 +6,7 @@ library;
 /// Title words (lower case, substring). fi / en / sv / et / es.
 const defaultAlarmKeywords = <String>[
   'hälytys',
-  'tulo havaittu',
+  // t317u: 'tulo havaittu' (entry delay) is no longer an alarm – the real alarm follows it.
   'murto',
   'palohälytys',
   'alarm',

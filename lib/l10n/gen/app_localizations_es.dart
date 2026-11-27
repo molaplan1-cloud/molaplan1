@@ -1119,6 +1119,40 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s6659f500d5 => 'Abrir Molaplan completo';
 
   @override
+  String get s3ac2079668 => 'Todo';
+
+  @override
+  String get sc45a6d2e30 => 'Nada';
+
+  @override
+  String get s08541d02f1 => 'Solo armado/desarmado y alarmas';
+
+  @override
+  String get s92f67aa475 => 'Automático (recomendado)';
+
+  @override
+  String get sd506bb5c34 => 'Avanzado: qué genera notificación';
+
+  @override
+  String get s57cfeb1fe7 =>
+      'Molaplan lee todos los mensajes (estado, latido, retardos, respuestas), pero por defecto solo notifica cuando la vigilancia se arma o desarma, las alarmas y los mensajes normales de otros dispositivos. La misma opción se aplica a la app ntfy del iPhone si el servidor lo admite (ntfy.molaplan.com).';
+
+  @override
+  String get sa7251b3fca => 'No hay temas que escuchar';
+
+  @override
+  String get s6f3a092e07 => 'Notificaciones propias de Molaplan';
+
+  @override
+  String get sba0a4fbaba => 'Respuestas del dispositivo';
+
+  @override
+  String get sdf08a348ba => 'Guardado, también en el servidor (iPhone)';
+
+  @override
+  String get s6b8c0469dc => 'Guardado en esta app';
+
+  @override
   String get sd9762f0556 => 'Copiado';
 
   @override

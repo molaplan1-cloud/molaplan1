@@ -719,6 +719,17 @@ T = {
  'Add "Get Dictionary from Input" again and "Get Dictionary Value": value.': ('Lägg till "Hämta ordlista från indata" igen och "Hämta värde i ordlista": value.', 'Lisa uuesti "Get Dictionary from Input" ja "Get Dictionary Value": value.', 'Añade de nuevo "Obtener diccionario de la entrada" y "Obtener valor del diccionario": value.'),
  'Add "Speak Text" or "Show Result".': ('Lägg till "Läs upp text" eller "Visa resultat".', 'Lisa "Speak Text" või "Show Result".', 'Añade "Leer texto" o "Mostrar resultado".'),
  'Link revoked': ('Länken har återkallats', 'Link on tühistatud', 'Enlace revocado'),
+ 'Everything': ('Allt', 'Kõik', 'Todo'),
+ 'Nothing': ('Inget', 'Mitte midagi', 'Nada'),
+ 'Only arming and alarms': ('Endast till-/frånkoppling och larm', 'Ainult valve sisse/välja ja häired', 'Solo armado/desarmado y alarmas'),
+ 'Advanced: what notifies': ('Avancerat: vad som ger avisering', 'Täpsemalt: millest teavitatakse', 'Avanzado: qué genera notificación'),
+ "Molaplan reads every message (status, heartbeat, delays, replies) but by default only notifies when monitoring is armed or disarmed, about alarms and about other devices' ordinary messages. The same choice applies to the iPhone ntfy app when the server supports it (ntfy.molaplan.com).": ('Molaplan läser alla meddelanden (status, puls, fördröjningar, svar) men aviserar som standard bara när larmet kopplas till eller från, om larm och om andra enheters vanliga meddelanden. Samma val gäller ntfy-appen på iPhone om servern stöder det (ntfy.molaplan.com).', "Molaplan loeb kõiki sõnumeid (olek, südamelöök, viivitused, vastused), kuid teavitab vaikimisi ainult valve sisse- või väljalülitamisest, häiretest ja teiste seadmete tavalistest sõnumitest. Sama valik kehtib iPhone'i ntfy rakendusele, kui server seda toetab (ntfy.molaplan.com).", 'Molaplan lee todos los mensajes (estado, latido, retardos, respuestas), pero por defecto solo notifica cuando la vigilancia se arma o desarma, las alarmas y los mensajes normales de otros dispositivos. La misma opción se aplica a la app ntfy del iPhone si el servidor lo admite (ntfy.molaplan.com).'),
+ 'Automatic (recommended)': ('Automatiskt (rekommenderas)', 'Automaatne (soovitatav)', 'Automático (recomendado)'),
+ 'No topics to listen to': ('Inga ämnen att lyssna på', 'Kuulatavaid teemasid pole', 'No hay temas que escuchar'),
+ "Molaplan's own notifications": ('Molaplans egna aviseringar', 'Molaplani enda teavitused', 'Notificaciones propias de Molaplan'),
+ 'Device replies': ('Enhetens svar', 'Seadme vastused', 'Respuestas del dispositivo'),
+ 'Saved, also on the server (iPhone)': ('Sparat, även på servern (iPhone)', 'Salvestatud, ka serverisse (iPhone)', 'Guardado, también en el servidor (iPhone)'),
+ 'Saved in this app': ('Sparat i den här appen', 'Salvestatud sellesse rakendusse', 'Guardado en esta app'),
 }
 
 

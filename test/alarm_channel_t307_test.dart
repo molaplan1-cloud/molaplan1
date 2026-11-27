@@ -18,7 +18,8 @@ void main() {
   // Titles / priorities / tags seen on a kamera-valvonta panel's reply topics (27.11.2026).
   final panel = <(String, int, List<String>, bool)>[
     ('HÄLYTYS: sisäkamera: ihminen', 5, ['rotating_light'], true),
-    ('Tulo havaittu', 4, ['warning'], true),
+    // t317u: entry delay is not an alarm any more (the real alarm follows it).
+    ('Tulo havaittu', 4, ['warning'], false),
     ('Hälytyskuva – Sisäkamera', 4, ['camera'], true),
     ('Hälytyskuva – Ulkokamera', 4, ['camera'], true),
     ('Hälytys kuitattu, valvonta aktiivinen', 4, ['white_check_mark'], false),

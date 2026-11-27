@@ -3,6 +3,7 @@
 /// notifications or Windows toasts.
 library;
 
+import '../notify/notify_filter.dart';
 import '../notify/alarm_rules.dart';
 import 'dart:async';
 import '../core/plat.dart';
@@ -485,6 +486,22 @@ class AutomationState extends ChangeNotifier {
     await _save();
   }
 
+  /// R501 / R503 (t317u): which messages of one listened topic notify ('auto' | 'security' |
+  /// 'all' | 'none'). Saved locally (and synced); the ntfy server gets the same choice for iPhone pushes
+  /// when it supports it. Returns whether the server applied it.
+  Future<bool> setNotifyFilter(String server, String topic, String mode, {String kind = 'device', String token = ''}) async {
+    if (!notifyFilterModes.contains(mode)) return false;
+    await saveNotify((n) {
+      n.filters = Map.of(n.filters);
+      if (mode == notifyFilterDefault(kind)) {
+        n.filters.remove(topic);
+      } else {
+        n.filters[topic] = mode;
+      }
+    });
+    return (pushClient ?? local.push).setServerPolicy(server, topic, notifyFilterServerMode(mode), token: token);
+  }
+
   /// t167u: show the priciest hour too on the morning card.
   Future<void> setMorningPriciest(bool v) async {
     settings.morningPriciest = v;
@@ -560,12 +577,25 @@ class AutomationState extends ChangeNotifier {
     _sub = (pushClient ?? local.push).subscribe(n, n.topic, since: since).listen((m) {
       final click = '${m['click'] ?? ''}';
       final tile = click.startsWith('molaplan://tile/') ? click.substring('molaplan://tile/'.length) : null;
+      final title = '${m['title'] ?? 'Molaplan'}';
+      final body = '${m['message'] ?? ''}';
+      final tags = [if (m['tags'] is List) for (final t in m['tags'] as List) '$t'];
       _show(
-        '${m['title'] ?? 'Molaplan'}',
-        '${m['message'] ?? ''}',
+        title,
+        body,
         (m['priority'] as num?)?.toInt() ?? 3,
         tile,
-        tags: [if (m['tags'] is List) for (final t in m['tags'] as List) '$t'],
+        tags: tags,
+        // R502 (t317u): status / info messages update the app silently.
+        silent:
+            !ntfyListenShouldNotify(event: '${m['event'] ?? 'message'}', title: title, message: body, tags: tags) ||
+            !notifyFilterAllows(
+              n.filterFor(n.topic, kind: 'notify'),
+              title: title,
+              message: body,
+              tags: tags,
+              priority: (m['priority'] as num?)?.toInt() ?? 3,
+            ),
       );
     });
   }
@@ -580,10 +610,15 @@ class AutomationState extends ChangeNotifier {
     String? tileId, {
     bool fromFallback = false,
     List<String> tags = const [],
+    bool silent = false,
   }) {
     final m = PushMessage(title, body, priority, tileId, DateTime.now());
     received.insert(0, m);
     if (received.length > 50) received.removeLast();
+    if (silent) {
+      notifyListeners();
+      return;
+    }
     final fg = !LocalNotify.appInBackground;
     if (fg && _inApp.hasListener) _inApp.add(m);
     // Windows: always a toast (the window may be hidden in the tray). Android: when in

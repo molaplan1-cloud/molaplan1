@@ -1116,6 +1116,40 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s6659f500d5 => 'Avaa koko Molaplan';
 
   @override
+  String get s3ac2079668 => 'Kaikki';
+
+  @override
+  String get sc45a6d2e30 => 'Ei mitään';
+
+  @override
+  String get s08541d02f1 => 'Vain valvonta ja hälytykset';
+
+  @override
+  String get s92f67aa475 => 'Automaattinen (suositus)';
+
+  @override
+  String get sd506bb5c34 => 'Lisäasetukset: mistä tulee ilmoitus';
+
+  @override
+  String get s57cfeb1fe7 =>
+      'Molaplan lukee kaikki viestit (tila, syke, viiveet, vastaukset), mutta ilmoittaa oletuksena vain valvonnan kytkemisestä päälle tai pois, hälytyksistä ja muiden laitteiden tavallisista viesteistä. Sama valinta koskee iPhonen ntfy-sovellusta, jos palvelin tukee sitä (ntfy.molaplan.com).';
+
+  @override
+  String get sa7251b3fca => 'Ei kuunneltavia aiheita';
+
+  @override
+  String get s6f3a092e07 => 'Molaplanin omat ilmoitukset';
+
+  @override
+  String get sba0a4fbaba => 'Laitteen vastaukset';
+
+  @override
+  String get sdf08a348ba => 'Tallennettu, myös palvelimelle (iPhone)';
+
+  @override
+  String get s6b8c0469dc => 'Tallennettu tähän sovellukseen';
+
+  @override
   String get sd9762f0556 => 'Kopioitu';
 
   @override

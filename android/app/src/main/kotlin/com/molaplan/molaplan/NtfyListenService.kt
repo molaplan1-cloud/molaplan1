@@ -73,6 +73,44 @@ object NtfyListenFilter {
     }
 }
 
+/**
+ * R500–R502 (t317u): which ntfy messages notify. Mirrors lib/notify/notify_filter.dart and the
+ * ntfy.molaplan.com Worker. "auto" (default for device topics) = arm, disarm, alarm and alarm end
+ * notify, recognised status/info is silent, the rest notifies at priority >= 3; "security" = only
+ * arm/disarm/alarm; "all" = every human message; "none" = nothing. Silent messages still refresh state.
+ */
+object NtfyNotifyFilter {
+    enum class Kind { ARM, DISARM, ALARM, ALARM_END, STATUS, OTHER }
+
+    private val patterns: List<Pair<Kind, Regex>> = listOf(
+        Kind.ALARM_END to Regex("(hälytys|halytys|alarm|larm|häire|alarma)\\S*\\s*[:,-]?\\s*(kuitattu|päättyi|paattyi|loppui|ohi|pois|cleared|ended|over|stopped|acknowledged|silenced|kvitterat|slut|avslutat|lõppes|kinnitatud|finalizada|terminada|reconocida)|^(kuitattu|alarm cleared|alarm ended|alarm acknowledged)", setOf(RegexOption.IGNORE_CASE)),
+        Kind.DISARM to Regex("^(valvonta|vartiointi|hälytin|halytin)\\s*(pois|poistettu|kytketty pois|off)|^(disarm|alarm (system )?(off|disarmed)|system disarmed|security off|larm(et)?\\s*(av|frånslaget|avaktiverat)|bortalarm av|valve (välja|maas|väljas)|valvest(us)? (välja|maha)|desarmad|alarma desactivada|sistema desarmado)", setOf(RegexOption.IGNORE_CASE)),
+        Kind.ARM to Regex("^(valvonta|vartiointi|hälytin|halytin)\\s*(päälle|paalle|päällä|kytketty|aktiivinen|on\\b)|^(arm(ed|ing)?\\b|alarm (system )?(on|armed)|system armed|security on|larm(et)?\\s*(på|tillslaget|aktiverat)|bortalarm på|valve (sisse|peal)|valvestatud|armad|alarma activada|sistema armado)", setOf(RegexOption.IGNORE_CASE)),
+        Kind.STATUS to Regex("^(tila( json)?|status( json)?|state|heartbeat|syke|keepalive|ping|info|ei muutosta|no change|ingen ändring|muutust pole|sin cambios|meno\\b|tulo\\b|tulo havaittu|lähtöviive|lahtoviive|tuloviive|poistumisviive|exit delay|entry delay|arrival|departure|utpasseringsfördröjning|inpasseringsfördröjning|väljumisviivitus|sisenemisviivitus|retardo de (salida|entrada)|pelote|deterr|päivitys|paivitys|update|uppdatering|uuendus|actualización|sisävalo|pihavalo|valo\\b|light\\b|laite käynnistyi|device restarted|rebooted|käynnistyi uudelleen)", setOf(RegexOption.IGNORE_CASE)),
+        Kind.ALARM to Regex("(hälytys|halytys|\\balarm\\b|\\blarm\\b|häire|alarma|intrusion|intrång|sissetung|intrusión|burglar|murto|sireeni päällä|siren on)", setOf(RegexOption.IGNORE_CASE)),
+    )
+
+    fun classify(title: String, message: String, tags: List<String>): Kind {
+        val t = title.trim()
+        if (t.equals("tila json", ignoreCase = true)) return Kind.STATUS
+        for (text in listOf(t, message.trim())) {
+            if (text.isEmpty()) continue
+            for ((kind, re) in patterns) if (re.containsMatchIn(text)) return kind
+        }
+        if (tags.any { it.trim().lowercase() in setOf("rotating_light", "rotating-light", "sos") }) return Kind.ALARM
+        return Kind.OTHER
+    }
+
+    fun allows(mode: String, title: String, message: String, tags: List<String>, prio: Int = 3): Boolean {
+        if (mode == "none") return false
+        if (mode == "all") return true
+        val kind = classify(title, message, tags)
+        if (kind in setOf(Kind.ARM, Kind.DISARM, Kind.ALARM, Kind.ALARM_END)) return true
+        if (mode == "security" || kind == Kind.STATUS) return false
+        return prio >= 3 // "auto": unrecognised messages of generic devices still notify
+    }
+}
+
 class NtfyListenService : Service() {
     @Volatile private var stop = false
     @Volatile private var generation = 0
@@ -206,6 +244,8 @@ class NtfyListenService : Service() {
         val ta = j.optJSONArray("tags")
         if (ta != null) for (i in 0 until ta.length()) tags.add(ta.optString(i))
         if (!NtfyListenFilter.shouldNotify(event, title, message, tags)) return
+        // R502 (t317u): status / info messages (delays, heartbeats, replies) are state only.
+        if (!NtfyNotifyFilter.allows(t.filter, title, message, tags, j.optInt("priority", 3))) return
         if (id.isNotEmpty() && !seenIds.add(id)) return
         trimSeen()
         val prio = j.optInt("priority", 3).coerceIn(1, 5)
@@ -324,7 +364,7 @@ class NtfyListenService : Service() {
         }
     }
 
-    data class Topic(val server: String, val topic: String, val token: String, val kind: String)
+    data class Topic(val server: String, val topic: String, val token: String, val kind: String, val filter: String = "auto")
 
     private fun config(): JSONObject {
         val raw = getSharedPreferences(PREFS, MODE_PRIVATE).getString(KEY_CONFIG, "{}") ?: "{}"
@@ -340,7 +380,9 @@ class NtfyListenService : Service() {
             val topic = o.optString("topic").trim()
             if (server.isEmpty() || topic.isEmpty()) continue
             if (NtfyListenFilter.isCommandTopic(topic)) continue
-            out.add(Topic(server, topic, o.optString("token"), o.optString("kind", "device")))
+            val kind = o.optString("kind", "device")
+            val filter = o.optString("filter", "").ifBlank { if (kind == "notify") "all" else "auto" }
+            out.add(Topic(server, topic, o.optString("token"), kind, filter))
         }
         return out
     }

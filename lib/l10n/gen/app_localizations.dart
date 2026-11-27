@@ -2114,6 +2114,72 @@ abstract class AppLocalizations {
   /// **'Open full Molaplan'**
   String get s6659f500d5;
 
+  /// fi: Kaikki
+  ///
+  /// In en, this message translates to:
+  /// **'Everything'**
+  String get s3ac2079668;
+
+  /// fi: Ei mitään
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing'**
+  String get sc45a6d2e30;
+
+  /// fi: Vain valvonta ja hälytykset
+  ///
+  /// In en, this message translates to:
+  /// **'Only arming and alarms'**
+  String get s08541d02f1;
+
+  /// fi: Automaattinen (suositus)
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic (recommended)'**
+  String get s92f67aa475;
+
+  /// fi: Lisäasetukset: mistä tulee ilmoitus
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced: what notifies'**
+  String get sd506bb5c34;
+
+  /// fi: Molaplan lukee kaikki viestit (tila, syke, viiveet, vastaukset), mutta ilmoittaa oletuksena vain valvonnan kytkemisestä
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan reads every message (status, heartbeat, delays, replies) but by default only notifies when monitoring is armed or disarmed, about alarms and about other devices\'\' ordinary messages. The same choice applies to the iPhone ntfy app when the server supports it (ntfy.molaplan.com).'**
+  String get s57cfeb1fe7;
+
+  /// fi: Ei kuunneltavia aiheita
+  ///
+  /// In en, this message translates to:
+  /// **'No topics to listen to'**
+  String get sa7251b3fca;
+
+  /// fi: Molaplanin omat ilmoitukset
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan\'\'s own notifications'**
+  String get s6f3a092e07;
+
+  /// fi: Laitteen vastaukset
+  ///
+  /// In en, this message translates to:
+  /// **'Device replies'**
+  String get sba0a4fbaba;
+
+  /// fi: Tallennettu, myös palvelimelle (iPhone)
+  ///
+  /// In en, this message translates to:
+  /// **'Saved, also on the server (iPhone)'**
+  String get sdf08a348ba;
+
+  /// fi: Tallennettu tähän sovellukseen
+  ///
+  /// In en, this message translates to:
+  /// **'Saved in this app'**
+  String get s6b8c0469dc;
+
   /// fi: Kopioitu
   ///
   /// In en, this message translates to:

@@ -22,6 +22,7 @@ import 'tile_shortcuts_page.dart';
 import '../state/home_launcher.dart';
 import 'camera_view.dart';
 import 'icons.dart';
+import '../notify/notify_filter.dart';
 import 'notify.dart';
 import 'price_tile.dart';
 import 'price_trend.dart';
@@ -617,7 +618,15 @@ class _TileWidgetState extends State<TileWidget> {
           if (mounted) setState(() => _reply = null);
         });
       }
-      if (LocalNotify.appInBackground) {
+      // R502 (t317u): status replies (Tila, Tila JSON, "Ei muutosta", delays) stay in the tile;
+      // arming, disarming, alarms and other devices' replies notify.
+      if (LocalNotify.appInBackground &&
+          notifyFilterAllows(
+            'auto',
+            title: '${r['title'] ?? ''}',
+            message: '${r['message'] ?? ''}',
+            priority: (r['priority'] as num?)?.toInt() ?? 3,
+          )) {
         final title = '${r['title'] ?? ''}'.isEmpty ? t.title : '${t.title}: ${r['title']}';
         unawaited(LocalNotify.show(title, '${r['message'] ?? ''}'));
       }
