@@ -8,11 +8,15 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
-    <View
+    <!-- R450 (t306u): RemoteViews may only inflate whitelisted classes; a plain <View>
+         makes the launcher show "Can't load widget". ImageView + background is allowed. -->
+    <ImageView
         android:id="@+id/widget_accent"
         android:layout_width="6dp"
         android:layout_height="match_parent"
-        android:background="#FF1565C0" />
+        android:background="#FF1565C0"
+        android:contentDescription="@null"
+        android:importantForAccessibility="no" />
 
     <LinearLayout
         android:layout_width="0dp"

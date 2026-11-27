@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 # v0.19.1 (t299u): fail the build if R8 stripped constructors that Android/WorkManager
 # create by reflection at process start (v0.18.0–v0.19.0 crashed on every launch).
+# v0.20.1 (R450, t306u): + widget layouts only use RemoteViews-allowed classes.
 # Usage: tool/android/verify_release_apk.sh <apk> [<apk>...]
 set -euo pipefail
 sdk="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
 dexdump="$(ls -1 "$sdk"/build-tools/*/dexdump 2>/dev/null | sort -V | tail -1 || true)"
 [ -x "$dexdump" ] || { echo "dexdump not found under \$ANDROID_HOME/build-tools" >&2; exit 2; }
+aapt2="$(ls -1 "$sdk"/build-tools/*/aapt2 2>/dev/null | sort -V | tail -1 || true)"
+[ -x "$aapt2" ] || { echo "aapt2 not found under \$ANDROID_HOME/build-tools" >&2; exit 2; }
 fail=0
 for apk in "$@"; do
   tmp="$(mktemp -d)"
@@ -32,4 +35,6 @@ for apk in "$@"; do
   done
   rm -rf "$tmp"
 done
+# R450 (t306u): home-screen widget layouts may only use classes RemoteViews can inflate.
+python3 "$(dirname "$0")/verify_widget_layouts.py" "$aapt2" "$@" || fail=1
 exit $fail
