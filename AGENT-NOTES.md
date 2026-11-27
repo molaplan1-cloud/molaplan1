@@ -304,3 +304,7 @@ v0.18.0:n CI:n android-job kaatui: values/strings.xml molaplan_widget_descriptio
 - Brand: `lib/devices/light_hubs.dart` (Nanoleaf, WLED), `DeconzProvider` in `lib/devices/hue.dart` (extends HueProvider; deCONZ returns HTTP 403 for error 101 while not authorised), `lib/devices/locks.dart` (Nuki Bridge; state via cached /list index `$[i].lastKnownState.state`, never /lockState polling = battery drain).
 - Roadmap entries (gallery "coming" + HA template): Matter, tado, tedee/Danalock, DoorBird, FIBARO HC3/Yubii/Homey/Z-Way/Zipato, Meross, Danfoss Ally/Salus/Dreame/Lepro, HMS Intesis, Netatmo.
 - Released on top of the v0.19.1 tablet-start hotfix (rebased before push).
+
+### v0.20.1 (hotfix t306u R450 + t302u/t303u R430–R435)
+- Widgets showed "Widgetiä ei voi ladata" since v0.18.1: `<View>` in `res/layout/tile_status_widget.xml` (RemoteViews only inflates @RemoteView classes). Accent is now `ImageView` + background. Widget layouts: only FrameLayout/LinearLayout/RelativeLayout/GridLayout, TextView, ImageView, Button, ImageButton, ProgressBar, Chronometer, AnalogClock, TextClock, ViewFlipper, ListView/GridView/StackView/AdapterViewFlipper, ViewStub (CheckBox/Switch/RadioButton/RadioGroup only in layout-v31). Guards: test/android_widget_layouts_t306_test.dart (source) and tool/android/verify_widget_layouts.py (aapt2 on the built APK, called by verify_release_apk.sh).
+- Merged fix/t302u-spot-tomorrow-chart (price tomorrow complete + price tile editor settings). relay/src/prices.ts window change deployed with this release.
