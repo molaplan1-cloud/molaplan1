@@ -31,6 +31,8 @@ object LauncherBridge {
     const val CHANNEL = "molaplan/launcher"
     const val PREFS = "molaplan_launcher"
     const val KEY_WIDGETS = "widgets"
+    /** R482 (t312u): user logs / trends exist – keep the periodic refresh without widgets. */
+    const val KEY_LOG_COLLECT = "log_collect"
     const val PERIODIC = "molaplan_widget_refresh"
     const val ONCE = "molaplan_widget_refresh_now"
     const val MINUTES = 15L
@@ -77,6 +79,16 @@ object LauncherBridge {
                 "watched" -> result.success(watchedIds(app))
                 "scheduleRefresh" -> {
                     schedulePeriodic(app)
+                    result.success(mapOf("ok" to true))
+                }
+                "logCollect" -> {
+                    val on = call.argument<Boolean>("on") == true
+                    app.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putBoolean(KEY_LOG_COLLECT, on).apply()
+                    if (on) {
+                        schedulePeriodic(app)
+                    } else if (!hasWidgets(app)) {
+                        WorkManager.getInstance(app).cancelUniqueWork(PERIODIC)
+                    }
                     result.success(mapOf("ok" to true))
                 }
                 "refreshDone" -> result.success(true)
@@ -166,7 +178,7 @@ object LauncherBridge {
         val all = widgets(ctx)
         for (id in ids) all.remove(id.toString())
         save(ctx, all)
-        if (all.length() == 0) {
+        if (all.length() == 0 && !collectsLogs(ctx)) {
             WorkManager.getInstance(ctx).cancelUniqueWork(PERIODIC)
         }
     }
@@ -183,6 +195,9 @@ object LauncherBridge {
     }
 
     fun hasWidgets(ctx: Context) = widgets(ctx).length() > 0
+
+    fun collectsLogs(ctx: Context) =
+        ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getBoolean(KEY_LOG_COLLECT, false)
 
     fun mergeTiles(ctx: Context, tiles: List<Map<String, Any?>>) {
         if (tiles.isEmpty()) return

@@ -1710,10 +1710,7 @@
  "@sd8332d82ec": {
   "x-mt": true
  },
- "s109b35551a": "Max",
- "@s109b35551a": {
-  "x-mt": true
- },
+ "s109b35551a": "Maks",
  "sf2c65c5aeb": "Keskmine",
  "s8653f173b6": "Õhutemperatuur",
  "@s8653f173b6": {
@@ -2179,6 +2176,8 @@
  "s29fae6a0e8": "Hinnajuhtimine sees",
  "sbfe79d1f5f": "Uuendatud",
  "s71f145905e": "Otsetee / jaga",
+ "sff8f7a1947": "Lisa logi / trend",
+ "se893c16dba": "Logi / trend",
  "s46d0983ce8": "Lisa avaekraanile",
  "s59d55f8882": "Nimeta ümber",
  "s84ada1ae69": "Muuda PIN-koodi",
@@ -4063,9 +4062,6 @@
   "x-mt": true
  },
  "s5c380d76b6": "Viimane",
- "@s5c380d76b6": {
-  "x-mt": true
- },
  "s9d75942e41": "Valmis automatiseerimine",
  "@s9d75942e41": {
   "x-mt": true
@@ -4295,6 +4291,7 @@
  "@sc84689a549": {
   "x-mt": true
  },
+ "s2b6f77fa62": "Logid ja trendid",
  "sca4c8b88b7": "Koduabiline: lisa seadmeid",
  "@sca4c8b88b7": {
   "x-mt": true
@@ -6147,6 +6144,68 @@
  "@sa4e9c86a86": {
   "x-mt": true
  },
+ "s9f02ad954d": "Valve sees",
+ "s8352b34316": "Valve sees (kodus)",
+ "s49e6af4fbd": "Valve väljas",
+ "s3dfa789b85": "HÄIRE",
+ "s06273ba893": "Väljumisviivitus",
+ "sfcf7462d8b": "Sisenemisviivitus",
+ "s55142f0816": "Häire / avatud / liikumine",
+ "s6f0481deb7": "Rahulik / suletud",
+ "s4b77da40d6": "See seade (Molaplan)",
+ "s1cbfbc5ff7": "Eemaldatud kaart",
+ "s7843a19ea0": "24 h",
+ "s4b87fa9575": "7 päeva",
+ "s1e72f886c1": "30 päeva",
+ "s78266c553c": "Ainult kui väärtus muutub",
+ "sf224f07b80": "Muutused ja vähemalt iga minut",
+ "s41ef71d809": "Muutused ja vähemalt iga 5 min järel",
+ "s12e38f800c": "Muutused ja vähemalt iga 15 min järel",
+ "sa7c19cc4e2": "Muutused ja vähemalt kord tunnis",
+ "sc0d4464ce2": "Logisid võib olla kuni 40.",
+ "s7001f80c75": "Pole veel kaarte, mida logida.",
+ "s25729ac0be": "Milline kaart?",
+ "se93448dca9": "Sündmuste logi",
+ "s79a52f607c": "Loo logi või trend mis tahes kaardist: temperatuur, võimsus, hind, andur, relee või olek. Vajuta Lisa või hoia kaarti all ja vali Lisa logi / trend.",
+ "s4ff01d5c5f": "säilitatakse",
+ "s11c71ee131": "päeva",
+ "sbbb938f28f": "Andmed salvestatakse selles seadmes. Kogumine toimib alati, kui Molaplan töötab (ka Windowsis taustal ja kodusillana). Androidis loetakse väärtusi ka umbes iga 15 minuti järel, kui rakendus on suletud. Brauseris kogutakse andmeid ainult siis, kui leht on avatud; hinnad ja oma ajalooga seadmed täidavad lüngad.",
+ "s5e9f9fcae5": "Uus logi / trend",
+ "sb0ced9bdb6": "Nimi (valikuline)",
+ "s237da9d739": "Graafik",
+ "s89fd2c0b0b": "Joon",
+ "sc18ac46162": "Tulbad",
+ "se256c45d40": "Salvesta",
+ "sd185524df1": "Milliseid muutusi logitakse",
+ "s0918947c1c": "Kõik muutused",
+ "sae3c62f7d0": "Väärtused ilmuvad siia, kui kaart on neist teatanud. Seni logi kõik muutused.",
+ "s16b24be503": "Salvesta, kes / mis muutis",
+ "se2badd71f2": "Kui seade selle teatab (nt valvepaneeli kasutaja) või muudatus tehti sellest rakendusest.",
+ "s56acf29de0": "Näita kaardina vaates",
+ "s40e7046009": "Rohkem seadeid",
+ "s3f5977d9b6": "Säilita andmeid",
+ "se668520c52": "Vaikimisi ajavahemik",
+ "s92c8a02204": "Eira väiksemaid muutusi kui",
+ "sf84e8b990b": "Vanemad andmed tihendatakse: 6 h minutitäpsusega, seejärel 5 min, 15 min, 1 tund. Andmed jäävad sellesse seadmesse; ekspordi CSV, et neid mujal kasutada.",
+ "s7036f1191e": "Kuni 2000 sündmust. Andmed jäävad sellesse seadmesse; ekspordi CSV, et neid mujal kasutada.",
+ "s62cd475497": "Ekspordi CSV",
+ "sd0271d93a1": "CSV eksporditud",
+ "sb130aae279": "Kaart lisati vaatesse",
+ "s950023174c": "Kas tühjendada andmed?",
+ "s5c6181d628": "Kogutud andmed eemaldatakse sellest seadmest. Kogumine jätkub.",
+ "s6d02a02a84": "Kas kustutada logi?",
+ "s352ff3dfcd": "Logi, selle andmed ja kaart eemaldatakse.",
+ "s4a997986a1": "Logi on eemaldatud.",
+ "s7a0680e628": "Tühjenda andmed",
+ "sdbf5997eb6": "Kustuta logi",
+ "s861cfdceb8": "Selle ajavahemiku andmeid veel pole. Kogutakse.",
+ "saa1ac2854a": "Min",
+ "s3f80c515c3": "Maks",
+ "s0995036cd3": "Viimane",
+ "safecdd6b93": "Sündmusi veel pole. Logi salvestab valitud muutused nüüdsest alates.",
+ "s4ba3b23ae1": "Kestis",
+ "s5fb1d3d53a": "Kes",
+ "s23f691770e": "Kogutakse…",
  "sfe55fd97fa": "Kõik on vaikne.",
  "@sfe55fd97fa": {
   "x-mt": true
@@ -6500,14 +6559,11 @@
  "s87c07d09ce": "Sündmusi veel pole. Logisse kogutakse valve sisse- ja väljalülitused ning häired.",
  "s6a2900d1fc": "Valve sisse",
  "sdfb732c84f": "Valve välja",
- "s3dfa789b85": "HÄIRE",
  "s6b2ed1dd31": "Lõppes",
  "sa7e8a5c23b": "Kestab või lõpuaeg teadmata",
  "s9909138be0": "Põhjus",
- "s5fb1d3d53a": "Kes",
  "s93b4695981": "Valve sees",
  "s489ed73bfa": "Valve sees (kodus)",
- "s49e6af4fbd": "Valve väljas",
  "s1ba2cffb00": "Väljumisviivitus – valve lülitub sisse",
  "s2b765e2c1f": "Sisenemisviivitus – sisesta PIN",
  "s34de2943cc": "HÄIRE!",
@@ -10820,6 +10876,10 @@
  },
  "s7fc017b0f0": "lähedalt",
  "@s7fc017b0f0": {
+  "x-mt": true
+ },
+ "s35be191f52": "Sündmusi veel pole",
+ "@s35be191f52": {
   "x-mt": true
  }
 }

@@ -47,6 +47,8 @@ import '../remote/protocol.dart' show RemoteDeviceError, RemoteUnavailable;
 import 'storage.dart';
 import 'update_state.dart';
 import '../l10n/l10n.dart';
+import '../log/log_collector.dart';
+import '../log/log_def.dart';
 
 class AppState extends ChangeNotifier implements SyncHost {
   AppState({
@@ -64,6 +66,7 @@ class AppState extends ChangeNotifier implements SyncHost {
        energyStore = energyStore ?? MemoryConfigStore(),
        historyStore = historyStore ?? MemoryConfigStore() {
     TileRuntime.observer = onTileValue;
+    logs = LogCollector(config: () => config, driverFor: driverFor);
     // t241u: no status polls for a device whose commands need a PIN that is not entered yet.
     TileRuntime.paused = (t) => needsPin(t.connectionId);
     TileRuntime.needsPrefill = (t) =>
@@ -336,8 +339,43 @@ class AppState extends ChangeNotifier implements SyncHost {
   /// The last value a tile reported in this session (null = none yet).
   Object? lastTileValue(String id) => _lastTileValues[id];
 
+  /// R482 (t312u): user-built logs and trends ("Lokit ja trendit").
+  late final LogCollector logs;
+
+  Future<LogDef> addLog(LogDef d) async {
+    config.logs.add(d);
+    notifyListeners();
+    await save();
+    final t = logTile(config, d.tileId);
+    final v = _lastTileValues[d.tileId];
+    if (t != null && v != null) await logs.onValue(t, v);
+    logs.tick();
+    unawaited(logs.backfill(d));
+    return d;
+  }
+
+  Future<void> updateLog(LogDef d) async {
+    final i = config.logs.indexWhere((e) => e.id == d.id);
+    if (i < 0) return;
+    config.logs[i] = d;
+    notifyListeners();
+    await save();
+  }
+
+  /// Removes the log, its data on this device and its dashboard tiles.
+  Future<void> removeLog(LogDef d) async {
+    config.logs.removeWhere((e) => e.id == d.id);
+    for (final db in config.dashboards) {
+      db.tiles.removeWhere((t) => isLogViewTile(t) && t.read['log'] == d.id);
+    }
+    await logs.clear(d);
+    notifyListeners();
+    await save();
+  }
+
   void onTileValue(TileConfig t, Object? v, [DateTime? at]) {
     _lastTileValues[t.id] = v;
+    unawaited(logs.onValue(t, v, at));
     // t290u: home-screen status widgets follow live values immediately.
     unawaited(syncLauncherTile(t, v, at));
     // R512 (t315u): iPhone widget feed.
@@ -1646,6 +1684,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     _rulesTimer?.cancel();
     _energySaveTimer?.cancel();
     _historySaveTimer?.cancel();
+    logs.dispose();
     if (TileRuntime.observer == onTileValue) {
       TileRuntime.observer = null;
       TileRuntime.needsPrefill = null;

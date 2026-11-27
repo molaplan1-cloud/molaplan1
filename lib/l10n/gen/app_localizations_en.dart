@@ -2488,6 +2488,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s71f145905e => 'Shortcut / share';
 
   @override
+  String get sff8f7a1947 => 'Add log / trend';
+
+  @override
+  String get se893c16dba => 'Log / trend';
+
+  @override
   String get s46d0983ce8 => 'Add to home screen';
 
   @override
@@ -4751,6 +4757,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sc84689a549 => 'Devices and integrations';
 
   @override
+  String get s2b6f77fa62 => 'Logs and trends';
+
+  @override
   String get sca4c8b88b7 => 'Home Assistant: add devices';
 
   @override
@@ -6719,6 +6728,203 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sa4e9c86a86 => 'Quit';
 
   @override
+  String get s9f02ad954d => 'Armed';
+
+  @override
+  String get s8352b34316 => 'Armed (at home)';
+
+  @override
+  String get s49e6af4fbd => 'Disarmed';
+
+  @override
+  String get s3dfa789b85 => 'ALARM';
+
+  @override
+  String get s06273ba893 => 'Exit delay';
+
+  @override
+  String get sfcf7462d8b => 'Entry delay';
+
+  @override
+  String get s55142f0816 => 'Alarm / open / motion';
+
+  @override
+  String get s6f0481deb7 => 'Calm / closed';
+
+  @override
+  String get s4b77da40d6 => 'This device (Molaplan)';
+
+  @override
+  String get s1cbfbc5ff7 => 'Removed tile';
+
+  @override
+  String get s7843a19ea0 => '24 h';
+
+  @override
+  String get s4b87fa9575 => '7 days';
+
+  @override
+  String get s1e72f886c1 => '30 days';
+
+  @override
+  String get s78266c553c => 'Only when the value changes';
+
+  @override
+  String get sf224f07b80 => 'Changes and at least every minute';
+
+  @override
+  String get s41ef71d809 => 'Changes and at least every 5 min';
+
+  @override
+  String get s12e38f800c => 'Changes and at least every 15 min';
+
+  @override
+  String get sa7c19cc4e2 => 'Changes and at least hourly';
+
+  @override
+  String get sc0d4464ce2 => 'You can have at most 40 logs.';
+
+  @override
+  String get s7001f80c75 => 'No tiles to log yet.';
+
+  @override
+  String get s25729ac0be => 'Which tile?';
+
+  @override
+  String get se93448dca9 => 'Event log';
+
+  @override
+  String get s79a52f607c =>
+      'Build a log or trend from any tile: temperature, power, price, sensor, relay or state. Tap Add, or long-press a tile and choose Add log / trend.';
+
+  @override
+  String get s4ff01d5c5f => 'kept';
+
+  @override
+  String get s11c71ee131 => 'days';
+
+  @override
+  String get sbbb938f28f =>
+      'Data is stored on this device. Collection runs whenever Molaplan runs (also in the background on Windows and as a home bridge). On Android values are also read about every 15 minutes with the app closed. In the browser collection runs only while the page is open; prices and devices with their own history fill the gaps.';
+
+  @override
+  String get s5e9f9fcae5 => 'New log / trend';
+
+  @override
+  String get sb0ced9bdb6 => 'Name (optional)';
+
+  @override
+  String get s237da9d739 => 'Chart';
+
+  @override
+  String get s89fd2c0b0b => 'Line';
+
+  @override
+  String get sc18ac46162 => 'Bars';
+
+  @override
+  String get se256c45d40 => 'Record';
+
+  @override
+  String get sd185524df1 => 'Which changes are logged';
+
+  @override
+  String get s0918947c1c => 'Every change';
+
+  @override
+  String get sae3c62f7d0 =>
+      'Values appear here once the tile has reported them. Until then log every change.';
+
+  @override
+  String get s16b24be503 => 'Record who / what changed it';
+
+  @override
+  String get se2badd71f2 =>
+      'When the device tells (e.g. the alarm panel user) or the change was made from this app.';
+
+  @override
+  String get s56acf29de0 => 'Show as a tile on the dashboard';
+
+  @override
+  String get s40e7046009 => 'More settings';
+
+  @override
+  String get s3f5977d9b6 => 'Keep data for';
+
+  @override
+  String get se668520c52 => 'Default range';
+
+  @override
+  String get s92c8a02204 => 'Ignore changes smaller than';
+
+  @override
+  String get sf84e8b990b =>
+      'Older data is condensed: 1-minute detail for 6 h, then 5 min, 15 min, 1 hour. Data stays on this device; export CSV to use it elsewhere.';
+
+  @override
+  String get s7036f1191e =>
+      'At most 2000 events. Data stays on this device; export CSV to use it elsewhere.';
+
+  @override
+  String get s62cd475497 => 'Export CSV';
+
+  @override
+  String get sd0271d93a1 => 'CSV exported';
+
+  @override
+  String get sb130aae279 => 'Tile added to the dashboard';
+
+  @override
+  String get s950023174c => 'Clear the data?';
+
+  @override
+  String get s5c6181d628 =>
+      'The collected data is removed from this device. Collection continues.';
+
+  @override
+  String get s6d02a02a84 => 'Delete the log?';
+
+  @override
+  String get s352ff3dfcd => 'The log, its data and its tile are removed.';
+
+  @override
+  String get s4a997986a1 => 'The log was removed.';
+
+  @override
+  String get s7a0680e628 => 'Clear data';
+
+  @override
+  String get sdbf5997eb6 => 'Delete log';
+
+  @override
+  String get s861cfdceb8 => 'No data for this range yet. Collecting.';
+
+  @override
+  String get saa1ac2854a => 'Min';
+
+  @override
+  String get s3f80c515c3 => 'Max';
+
+  @override
+  String get s0995036cd3 => 'Latest';
+
+  @override
+  String get safecdd6b93 =>
+      'No events yet. The log records the chosen changes from now on.';
+
+  @override
+  String get s4ba3b23ae1 => 'Lasted';
+
+  @override
+  String get s5fb1d3d53a => 'Who';
+
+  @override
+  String get s23f691770e => 'Collecting…';
+
+  @override
+  String get s35be191f52 => 'No events yet';
+
+  @override
   String get sfe55fd97fa => 'All quiet.';
 
   @override
@@ -7070,9 +7276,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sdfb732c84f => 'Monitoring off';
 
   @override
-  String get s3dfa789b85 => 'ALARM';
-
-  @override
   String get s6b2ed1dd31 => 'Ended';
 
   @override
@@ -7082,16 +7285,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s9909138be0 => 'Cause';
 
   @override
-  String get s5fb1d3d53a => 'Who';
-
-  @override
   String get s93b4695981 => 'Armed';
 
   @override
   String get s489ed73bfa => 'Armed (at home)';
-
-  @override
-  String get s49e6af4fbd => 'Disarmed';
 
   @override
   String get s1ba2cffb00 => 'Exit delay – arming';

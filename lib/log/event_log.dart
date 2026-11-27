@@ -138,6 +138,12 @@ class EventLogStore {
     );
   }
 
+  /// R484 (t312u): removes a whole log (a user log / trend was deleted or cleared).
+  static Future<void> delete(String log, String source) async {
+    final p = await SharedPreferences.getInstance();
+    await p.remove(_key(log, source));
+  }
+
   /// Load, merge [fresh], save; returns the merged list (newest first).
   static Future<List<LogEvent>> add(
     String log,

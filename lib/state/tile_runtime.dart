@@ -28,7 +28,8 @@ class TileRuntime extends ChangeNotifier {
       tile.type != TileType.camera &&
       tile.read.isNotEmpty &&
       tile.read['kind'] != 'climate' &&
-      tile.read['kind'] != 'weather';
+      tile.read['kind'] != 'weather' &&
+      tile.read['kind'] != 'log'; // R485: a log / trend tile reads the log store
 
   /// t193u: live runtimes by tile id, so a script / scene / control button can refresh the
   /// tiles it switched right away (Shelly Cloud / polled tiles otherwise lag up to a poll).
@@ -170,8 +171,21 @@ class TileRuntime extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// R483 (t312u): when this app last sent a command, by tile id and connection id – a user
+  /// log records "Tämä laite" as the actor of a change that follows within a few seconds.
+  static final lastActionAt = <String, DateTime>{};
+
+  static void noteAction(TileConfig t) {
+    final now = DateTime.now();
+    lastActionAt[t.id] = now;
+    for (final c in [t.connectionId, t.onCommand?.connectionId, t.offCommand?.connectionId, ...t.commands.map((c) => c.connectionId)]) {
+      if (c != null && c.isNotEmpty) lastActionAt['c:$c'] = now;
+    }
+  }
+
   /// Runs an action, then refreshes state shortly after (for polled tiles).
   Future<void> act(Future<void> Function() action, {Object? optimistic}) async {
+    noteAction(tile);
     busy = true;
     if (optimistic != null) value = optimistic;
     notifyListeners();

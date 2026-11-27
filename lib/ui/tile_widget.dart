@@ -37,6 +37,8 @@ import '../core/plat.dart';
 import 'web_info.dart';
 import 'tile_visuals.dart';
 import 'weather_tile.dart';
+import 'log_pages.dart' show LogTileView, openTileLog;
+import '../log/log_def.dart' show canLogTile, isLogViewTile;
 import 'sensor_tile.dart';
 import 'alarm_log_page.dart';
 import 'security_tile.dart';
@@ -732,6 +734,20 @@ class _TileWidgetState extends State<TileWidget> {
             },
             child: Text(tx(context, 'Pikakomento / jaa', 'Shortcut / share')),
           ),
+          // R484 (t312u): build a log / trend from any tile (or open the one it has).
+          if (canLogTile(t))
+            TextButton(
+              key: const ValueKey('tile-add-log'),
+              onPressed: () async {
+                Navigator.pop(c);
+                if (context.mounted) await openTileLog(context, t);
+              },
+              child: Text(
+                AppScope.read(context).logs.defsFor(t.id).isEmpty
+                    ? tx(context, 'Lisää loki / trendi', 'Add log / trend')
+                    : tx(context, 'Loki / trendi', 'Log / trend'),
+              ),
+            ),
           if (launcherSupported)
             TextButton(
               key: const ValueKey('tile-add-home'),
@@ -814,6 +830,7 @@ class _TileWidgetState extends State<TileWidget> {
 
   Widget _build(BuildContext context) {
     // t144u: 0,5-size tiles get a compact variant (icon + value, one button, a mini toggle).
+    if (isLogViewTile(t)) return LogTileView(tile: t, editing: widget.editing); // R486
     if (isMiniTile(t)) return _mini(context);
     if (isWeatherTile(t)) return WeatherTile(tile: t, editing: widget.editing);
     final away = awayLanConnection(AppScope.of(context), t);
