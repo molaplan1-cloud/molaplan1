@@ -4,6 +4,7 @@ import 'dirigera.dart';
 import 'ewelink_lan.dart';
 import 'hue.dart';
 import 'light_hubs.dart';
+import 'locks.dart';
 import 'provider.dart';
 import 'shelly.dart';
 import 'sonoff.dart';
@@ -33,6 +34,8 @@ final deviceProviders = <DeviceProvider>[
   ZwaveJsProvider(),
   NanoleafProvider(),
   WledProvider(),
+  DeconzProvider(),
+  NukiBridgeProvider(),
 ];
 
 DeviceProvider? providerById(String id) =>
@@ -78,10 +81,10 @@ const roadmapBrands = <RoadmapBrand>[
     useTemplate: 'homeassistant',
   ),
   RoadmapBrand(
-    'Nuki, tedee, Danalock (älylukot)',
-    ['nuki', 'tedee', 'danalock', 'älylukko', 'smart lock', 'lukko'],
-    'Tulossa: Nuki Bridge ja tedee Bridge paikallisesti. Nyt: Z-Wave/Zigbee-mallit Z-Wave JS:n tai Zigbee2MQTT:n kautta, muut Home Assistantin kautta.',
-    'Coming: Nuki Bridge and tedee Bridge locally. Today: Z-Wave/Zigbee models via Z-Wave JS or Zigbee2MQTT, others via Home Assistant.',
+    'tedee, Danalock (älylukot)',
+    ['tedee', 'danalock', 'älylukko', 'smart lock'],
+    'Tulossa: tedee Bridge paikallisesti. Nyt: tedee GO2 Z-Wave ja Danalockin Z-Wave/Zigbee-mallit Z-Wave JS:n tai Zigbee2MQTT:n kautta, muut Home Assistantin kautta.',
+    'Coming: tedee Bridge locally. Today: tedee GO2 Z-Wave and Danalock Z-Wave/Zigbee models via Z-Wave JS or Zigbee2MQTT, others via Home Assistant.',
     useTemplate: 'homeassistant',
   ),
   RoadmapBrand(
@@ -92,8 +95,8 @@ const roadmapBrands = <RoadmapBrand>[
     useTemplate: 'homeassistant',
   ),
   RoadmapBrand(
-    'FIBARO Home Center, Homey, Z-Way, Phoscon (deCONZ), Zipato',
-    ['fibaro home center', 'hc3', 'homey', 'z-way', 'razberry', 'phoscon', 'deconz', 'conbee', 'zipato'],
+    'FIBARO Home Center, Nice Yubii, Homey, Z-Way, Zipato',
+    ['fibaro home center', 'hc3', 'yubii', 'homey', 'z-way', 'razberry', 'zipato', 'zipabox'],
     'Tulossa (keskusten paikalliset API:t). Nyt: laitteet suoraan Z-Wave JS:n tai Zigbee2MQTT:n kautta, tai Home Assistant.',
     'Coming (the hubs\' local APIs). Today: the devices directly via Z-Wave JS or Zigbee2MQTT, or Home Assistant.',
     useTemplate: 'homeassistant',
@@ -106,10 +109,17 @@ const roadmapBrands = <RoadmapBrand>[
     useTemplate: 'homeassistant',
   ),
   RoadmapBrand(
-    'Danfoss Ally, Salus, Nice, Dreame',
-    ['danfoss', 'ally', 'salus', 'nice', 'portti', 'gate', 'dreame', 'robotti-imuri'],
+    'Danfoss Ally, Salus, Dreame, Lepro',
+    ['danfoss', 'ally', 'salus', 'dreame', 'robotti-imuri', 'lepro'],
     'Ei omaa integraatiota vielä. Zigbee-mallit: Zigbee2MQTT. Muut: Home Assistantin kautta.',
     'No built-in integration yet. Zigbee models: Zigbee2MQTT. Others: via Home Assistant.',
+    useTemplate: 'homeassistant',
+  ),
+  RoadmapBrand(
+    'HMS Intesis (ilmalämpöpumpun ohjain)',
+    ['intesis', 'hms', 'intesishome', 'ilmalämpöpumppu', 'air conditioner'],
+    'Tulossa (paikallinen WMP-protokolla). Nyt: Home Assistantin kautta.',
+    'Coming (local WMP protocol). Today: via Home Assistant.',
     useTemplate: 'homeassistant',
   ),
   RoadmapBrand(

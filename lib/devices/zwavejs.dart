@@ -27,6 +27,8 @@ const zwaveBrands = [
   'zooz',
   'qubino',
   'danfoss z-wave',
+  'nice',
+  'tedee',
 ];
 
 String zwaveNodeName(Map n) {
@@ -39,17 +41,22 @@ String zwaveNodeName(Map n) {
 
 String zwaveNodeVendor(Map n) {
   final dc = n['deviceConfig'] as Map?;
-  return [dc?['manufacturer'] ?? n['manufacturer'] ?? '', dc?['label'] ?? n['label'] ?? '']
-      .map((x) => '$x')
-      .where((x) => x.isNotEmpty)
-      .join(' ');
+  return [
+    dc?['manufacturer'] ?? n['manufacturer'] ?? '',
+    dc?['label'] ?? n['label'] ?? '',
+  ].map((x) => '$x').where((x) => x.isNotEmpty).join(' ');
 }
 
 List<TileConfig> zwaveTiles(Map node, String connId, {String? title, String lang = 'fi'}) {
   final nodeId = node['nodeId'];
   final name = (title?.isNotEmpty ?? false) ? title! : zwaveNodeName(node);
   final values = zwaveValues(node);
-  final multiEp = {for (final v in values) if ((v['endpoint'] ?? 0) != 0) v['endpoint']}.length > 1;
+  final multiEp =
+      {
+        for (final v in values)
+          if ((v['endpoint'] ?? 0) != 0) v['endpoint'],
+      }.length >
+      1;
   Map<String, dynamic> id(Map v, [String? prop]) => {
     'node': nodeId,
     'cc': v['commandClass'],
@@ -188,7 +195,8 @@ class ZwaveJsProvider extends DeviceProvider {
   String get addressHelpFi =>
       'Z-Wave JS UI:n kone (portti 3000). Z-Wave JS UI: Asetukset → Home Assistant → WS Server päälle.';
   @override
-  String get addressHelpEn => 'The Z-Wave JS UI machine (port 3000). Z-Wave JS UI: Settings → Home Assistant → WS Server on.';
+  String get addressHelpEn =>
+      'The Z-Wave JS UI machine (port 3000). Z-Wave JS UI: Settings → Home Assistant → WS Server on.';
   @override
   String get addressHint => '192.168.x.x:3000';
 

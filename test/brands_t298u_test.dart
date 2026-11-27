@@ -1,11 +1,13 @@
-// t298u: smarterhome.sk brands – Zigbee2MQTT discovery, Z-Wave JS, Nanoleaf, WLED.
+// t298u: smarterhome.sk brands – Zigbee2MQTT discovery, Z-Wave JS, Nanoleaf, WLED, Phoscon, Nuki.
 // All against simulated devices (UNTESTED ON REAL HARDWARE).
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:molaplan/core/template.dart';
+import 'package:molaplan/devices/hue.dart';
 import 'package:molaplan/devices/light_hubs.dart';
+import 'package:molaplan/devices/locks.dart';
 import 'package:molaplan/devices/registry.dart';
 import 'package:molaplan/devices/zigbee2mqtt.dart';
 import 'package:molaplan/devices/zwavejs.dart';
@@ -46,14 +48,30 @@ const _z2mDevices = [
           'type': 'switch',
           'endpoint': 'l1',
           'features': [
-            {'type': 'binary', 'name': 'state', 'property': 'state_l1', 'value_on': 'ON', 'value_off': 'OFF', 'access': 7, 'endpoint': 'l1'},
+            {
+              'type': 'binary',
+              'name': 'state',
+              'property': 'state_l1',
+              'value_on': 'ON',
+              'value_off': 'OFF',
+              'access': 7,
+              'endpoint': 'l1',
+            },
           ],
         },
         {
           'type': 'switch',
           'endpoint': 'l2',
           'features': [
-            {'type': 'binary', 'name': 'state', 'property': 'state_l2', 'value_on': 'ON', 'value_off': 'OFF', 'access': 7, 'endpoint': 'l2'},
+            {
+              'type': 'binary',
+              'name': 'state',
+              'property': 'state_l2',
+              'value_on': 'ON',
+              'value_off': 'OFF',
+              'access': 7,
+              'endpoint': 'l2',
+            },
           ],
         },
       ],
@@ -93,7 +111,15 @@ const _z2mDevices = [
         {
           'type': 'climate',
           'features': [
-            {'type': 'numeric', 'name': 'occupied_heating_setpoint', 'property': 'occupied_heating_setpoint', 'value_min': 5, 'value_max': 32, 'value_step': 0.5, 'access': 7},
+            {
+              'type': 'numeric',
+              'name': 'occupied_heating_setpoint',
+              'property': 'occupied_heating_setpoint',
+              'value_min': 5,
+              'value_max': 32,
+              'value_step': 0.5,
+              'access': 7,
+            },
             {'type': 'numeric', 'name': 'local_temperature', 'property': 'local_temperature', 'access': 5},
           ],
         },
@@ -146,63 +172,162 @@ class FakeZwave {
     server.listen((req) async {
       final ws = await WebSocketTransformer.upgrade(req);
       client = ws;
-      ws.add(jsonEncode({'type': 'version', 'driverVersion': '13.0.0', 'serverVersion': '1.35.0', 'minSchemaVersion': 0, 'maxSchemaVersion': 35}));
+      ws.add(
+        jsonEncode({
+          'type': 'version',
+          'driverVersion': '13.0.0',
+          'serverVersion': '1.35.0',
+          'minSchemaVersion': 0,
+          'maxSchemaVersion': 35,
+        }),
+      );
       ws.listen((data) {
         final m = jsonDecode('$data') as Map;
         if (m['command'] == 'start_listening') {
-          ws.add(jsonEncode({
-            'type': 'result',
-            'messageId': m['messageId'],
-            'success': true,
-            'result': {
-              'state': {
-                'nodes': [
-                  {'nodeId': 1, 'isControllerNode': true, 'values': []},
-                  {
-                    'nodeId': 5,
-                    'name': 'Kellari',
-                    'deviceConfig': {'manufacturer': 'FIBARO', 'label': 'FGS-213', 'description': 'Single Switch 2'},
-                    'values': [
-                      {'commandClass': 37, 'endpoint': 0, 'property': 'currentValue', 'value': false, 'metadata': {'readable': true, 'writeable': false}},
-                      {'commandClass': 37, 'endpoint': 0, 'property': 'targetValue', 'value': false, 'metadata': {'readable': true, 'writeable': true}},
-                      {'commandClass': 50, 'endpoint': 0, 'property': 'value', 'propertyKey': 66049, 'value': 12.5, 'metadata': {'type': 'number', 'readable': true, 'writeable': false, 'unit': 'W', 'label': 'Electric Consumption [W]'}},
-                      {'commandClass': 50, 'endpoint': 0, 'property': 'reset', 'metadata': {'type': 'boolean', 'readable': false, 'writeable': true}},
-                    ],
-                  },
-                  {
-                    'nodeId': 7,
-                    'deviceConfig': {'manufacturer': 'Heatit', 'label': 'Z-TRM3', 'description': 'Floor thermostat'},
-                    'values': [
-                      {'commandClass': 49, 'endpoint': 0, 'property': 'Air temperature', 'value': 21.4, 'metadata': {'type': 'number', 'readable': true, 'unit': '°C', 'label': 'Air temperature'}},
-                      {'commandClass': 67, 'endpoint': 0, 'property': 'setpoint', 'propertyKey': 1, 'value': 22, 'metadata': {'type': 'number', 'readable': true, 'writeable': true, 'unit': '°C', 'min': 5, 'max': 35, 'label': 'Setpoint (Heating)'}},
-                      {'commandClass': 113, 'endpoint': 0, 'property': 'Heat Alarm', 'propertyKey': 'Heat sensor status', 'value': 0, 'metadata': {'type': 'number', 'readable': true, 'label': 'Heat sensor status', 'states': {'0': 'idle', '2': 'Overheat detected'}}},
-                      {'commandClass': 128, 'endpoint': 0, 'property': 'level', 'value': 90, 'metadata': {'type': 'number', 'readable': true, 'unit': '%'}},
-                    ],
-                  },
-                  {
-                    'nodeId': 9,
-                    'name': 'Ulko-ovi',
-                    'values': [
-                      {'commandClass': 98, 'endpoint': 0, 'property': 'currentMode', 'value': 255, 'metadata': {'readable': true}},
-                    ],
-                  },
-                ],
+          ws.add(
+            jsonEncode({
+              'type': 'result',
+              'messageId': m['messageId'],
+              'success': true,
+              'result': {
+                'state': {
+                  'nodes': [
+                    {'nodeId': 1, 'isControllerNode': true, 'values': []},
+                    {
+                      'nodeId': 5,
+                      'name': 'Kellari',
+                      'deviceConfig': {'manufacturer': 'FIBARO', 'label': 'FGS-213', 'description': 'Single Switch 2'},
+                      'values': [
+                        {
+                          'commandClass': 37,
+                          'endpoint': 0,
+                          'property': 'currentValue',
+                          'value': false,
+                          'metadata': {'readable': true, 'writeable': false},
+                        },
+                        {
+                          'commandClass': 37,
+                          'endpoint': 0,
+                          'property': 'targetValue',
+                          'value': false,
+                          'metadata': {'readable': true, 'writeable': true},
+                        },
+                        {
+                          'commandClass': 50,
+                          'endpoint': 0,
+                          'property': 'value',
+                          'propertyKey': 66049,
+                          'value': 12.5,
+                          'metadata': {
+                            'type': 'number',
+                            'readable': true,
+                            'writeable': false,
+                            'unit': 'W',
+                            'label': 'Electric Consumption [W]',
+                          },
+                        },
+                        {
+                          'commandClass': 50,
+                          'endpoint': 0,
+                          'property': 'reset',
+                          'metadata': {'type': 'boolean', 'readable': false, 'writeable': true},
+                        },
+                      ],
+                    },
+                    {
+                      'nodeId': 7,
+                      'deviceConfig': {'manufacturer': 'Heatit', 'label': 'Z-TRM3', 'description': 'Floor thermostat'},
+                      'values': [
+                        {
+                          'commandClass': 49,
+                          'endpoint': 0,
+                          'property': 'Air temperature',
+                          'value': 21.4,
+                          'metadata': {'type': 'number', 'readable': true, 'unit': '°C', 'label': 'Air temperature'},
+                        },
+                        {
+                          'commandClass': 67,
+                          'endpoint': 0,
+                          'property': 'setpoint',
+                          'propertyKey': 1,
+                          'value': 22,
+                          'metadata': {
+                            'type': 'number',
+                            'readable': true,
+                            'writeable': true,
+                            'unit': '°C',
+                            'min': 5,
+                            'max': 35,
+                            'label': 'Setpoint (Heating)',
+                          },
+                        },
+                        {
+                          'commandClass': 113,
+                          'endpoint': 0,
+                          'property': 'Heat Alarm',
+                          'propertyKey': 'Heat sensor status',
+                          'value': 0,
+                          'metadata': {
+                            'type': 'number',
+                            'readable': true,
+                            'label': 'Heat sensor status',
+                            'states': {'0': 'idle', '2': 'Overheat detected'},
+                          },
+                        },
+                        {
+                          'commandClass': 128,
+                          'endpoint': 0,
+                          'property': 'level',
+                          'value': 90,
+                          'metadata': {'type': 'number', 'readable': true, 'unit': '%'},
+                        },
+                      ],
+                    },
+                    {
+                      'nodeId': 9,
+                      'name': 'Ulko-ovi',
+                      'values': [
+                        {
+                          'commandClass': 98,
+                          'endpoint': 0,
+                          'property': 'currentMode',
+                          'value': 255,
+                          'metadata': {'readable': true},
+                        },
+                      ],
+                    },
+                  ],
+                },
               },
-            },
-          }));
+            }),
+          );
         } else if (m['command'] == 'node.set_value') {
           sets.add(m);
-          ws.add(jsonEncode({'type': 'result', 'messageId': m['messageId'], 'success': true, 'result': {'success': true}}));
+          ws.add(
+            jsonEncode({
+              'type': 'result',
+              'messageId': m['messageId'],
+              'success': true,
+              'result': {'success': true},
+            }),
+          );
           final vid = m['valueId'] as Map;
-          ws.add(jsonEncode({
-            'type': 'event',
-            'event': {
-              'source': 'node',
-              'event': 'value updated',
-              'nodeId': m['nodeId'],
-              'args': {'commandClass': vid['commandClass'], 'endpoint': vid['endpoint'], 'property': 'currentValue', 'newValue': m['value']},
-            },
-          }));
+          ws.add(
+            jsonEncode({
+              'type': 'event',
+              'event': {
+                'source': 'node',
+                'event': 'value updated',
+                'nodeId': m['nodeId'],
+                'args': {
+                  'commandClass': vid['commandClass'],
+                  'endpoint': vid['endpoint'],
+                  'property': 'currentValue',
+                  'newValue': m['value'],
+                },
+              },
+            }),
+          );
         }
       });
     });
@@ -302,7 +427,11 @@ void main() {
 
     test('wizard: nodes → tiles by command class', () async {
       final p = ZwaveJsProvider();
-      final r = await p.connect(AddContext(driver: createDriver), Candidate(provider: p.id, address: srv.url), const {});
+      final r = await p.connect(
+        AddContext(driver: createDriver),
+        Candidate(provider: p.id, address: srv.url),
+        const {},
+      );
       expect(r.items.map((i) => i.name), ['Kellari', 'Floor thermostat', 'Ulko-ovi']);
       expect(r.items.first.subtitle, 'FIBARO FGS-213');
       final tiles = p.tiles(r);
@@ -331,12 +460,19 @@ void main() {
             r.response.write('{"auth_token":"TOK123"}');
           }
         } else if (p == '/api/v1/TOK123/') {
-          r.response.write(jsonEncode({
-            'name': 'Shapes A1B2',
-            'model': 'NL42',
-            'state': {'on': {'value': true}},
-            'effects': {'select': 'Forest', 'effectsList': ['Forest', 'Northern Lights']},
-          }));
+          r.response.write(
+            jsonEncode({
+              'name': 'Shapes A1B2',
+              'model': 'NL42',
+              'state': {
+                'on': {'value': true},
+              },
+              'effects': {
+                'select': 'Forest',
+                'effectsList': ['Forest', 'Northern Lights'],
+              },
+            }),
+          );
         } else if (p == '/api/v1/TOK123/state/on') {
           r.response.write('{"value": true}');
         } else if (r.method == 'PUT') {
@@ -401,15 +537,156 @@ void main() {
     });
   });
 
+  group('Phoscon / deCONZ', () {
+    test('pairing (403 until Authenticate app), lights, sensors → Hue-style tiles', () async {
+      var auth = 0;
+      final puts = <String>[];
+      final s = await _http((r, body) async {
+        final p = r.uri.path;
+        if (p == '/api' && r.method == 'POST') {
+          auth++;
+          if (auth == 1) {
+            r.response.statusCode = 403;
+            r.response.write('[{"error":{"type":101,"address":"/","description":"link button not pressed"}}]');
+          } else {
+            r.response.write('[{"success":{"username":"DCZKEY"}}]');
+          }
+        } else if (p == '/api/DCZKEY/lights') {
+          r.response.write(
+            jsonEncode({
+              '1': {
+                'name': 'Eteinen',
+                'type': 'Dimmable light',
+                'state': {'on': false, 'bri': 10, 'reachable': true},
+              },
+            }),
+          );
+        } else if (p == '/api/DCZKEY/groups') {
+          r.response.write('{}');
+        } else if (p == '/api/DCZKEY/sensors') {
+          r.response.write(
+            jsonEncode({
+              '3': {
+                'name': 'Kylpyhuone vuoto',
+                'type': 'ZHAWater',
+                'uniqueid': '00:15:8d-01-0500',
+                'state': {'water': false},
+                'config': {'battery': 90},
+              },
+            }),
+          );
+        } else if (p == '/api/DCZKEY/scenes') {
+          r.response.write('{}');
+        } else if (r.method == 'PUT') {
+          puts.add('$p $body');
+          r.response.write('[{"success":{}}]');
+        } else {
+          r.response.statusCode = 404;
+        }
+      });
+      final p = DeconzProvider();
+      final cand = Candidate(provider: p.id, address: '127.0.0.1:${s.port}');
+      final ctx = AddContext(driver: createDriver);
+      final creds = await p.pair(ctx, cand);
+      expect(creds['token'], 'DCZKEY');
+      final r = await p.connect(ctx, cand, creds);
+      expect(r.label, 'Phoscon');
+      expect(r.items.map((i) => i.key), ['l1', 's3']);
+      final tiles = p.tiles(r);
+      expect(tiles.first.read['path'], '/api/{{token}}/lights/1');
+      expect(tiles[1].read['jsonPath'], 'state.water');
+      final d = createDriver(r.connection);
+      await d.send(tiles.first.onCommand!.spec);
+      expect(puts, ['/api/DCZKEY/lights/1/state {"on":true}']);
+      await s.close(force: true);
+    }, timeout: const Timeout(Duration(seconds: 30)));
+  });
+
+  group('Nuki Bridge', () {
+    test('pairing via /auth, /list → lock toggle, unlatch, opener', () async {
+      final actions = <String>[];
+      final s = await _http((r, body) async {
+        final q = r.uri.queryParameters;
+        switch (r.uri.path) {
+          case '/auth':
+            r.response.write('{"token":"NUKITOK","success":true}');
+          case '/list':
+            if (q['token'] != 'NUKITOK') {
+              r.response.statusCode = 401;
+              return;
+            }
+            r.response.write(
+              jsonEncode([
+                {
+                  'nukiId': 11,
+                  'deviceType': 4,
+                  'name': 'Etuovi',
+                  'lastKnownState': {'state': 1, 'stateName': 'locked', 'batteryChargeState': 80},
+                },
+                {
+                  'nukiId': 22,
+                  'deviceType': 2,
+                  'name': 'Rappu',
+                  'lastKnownState': {'state': 1, 'stateName': 'online'},
+                },
+              ]),
+            );
+          case '/lockAction':
+            actions.add('${q['nukiId']}/${q['deviceType']}/${q['action']}/${q['token']}');
+            r.response.write('{"success":true}');
+          default:
+            r.response.statusCode = 404;
+        }
+      });
+      final p = NukiBridgeProvider();
+      final cand = Candidate(provider: p.id, address: '127.0.0.1:${s.port}');
+      final ctx = AddContext(driver: createDriver);
+      final creds = await p.pair(ctx, cand);
+      expect(creds['token'], 'NUKITOK');
+      final r = await p.connect(ctx, cand, creds);
+      expect(r.items.map((i) => i.kind), ['lock', 'button', 'opener']);
+      final tiles = p.tiles(r);
+      expect(tiles.map((t) => t.type), [TileType.toggle, TileType.button, TileType.button]);
+      expect(tiles.every((t) => t.confirm), isTrue);
+      final d = createDriver(r.connection);
+      expect('${await d.read(tiles.first.read)}', '1');
+      expect('${await d.read(tiles.first.battery!)}', '80');
+      await d.send(tiles.first.offCommand!.spec);
+      await d.send(tiles[1].commands.single.spec);
+      await d.send(tiles[2].commands.single.spec);
+      expect(actions, ['11/4/1/NUKITOK', '11/4/3/NUKITOK', '22/2/3/NUKITOK']);
+      expect(NukiBridgeProvider.base('192.168.1.9'), 'http://192.168.1.9:8080');
+      await s.close(force: true);
+    }, timeout: const Timeout(Duration(seconds: 30)));
+  });
+
   test('registries and gallery search names the brands', () {
-    for (final id in ['zigbee2mqtt', 'zwavejs', 'nanoleaf', 'wled']) {
+    for (final id in ['zigbee2mqtt', 'zwavejs', 'nanoleaf', 'wled', 'deconz', 'nuki']) {
       expect(providerById(id), isNotNull, reason: id);
     }
     expect(descriptorFor('zwavejs').type, 'zwavejs');
     final kw = deviceProviders.expand((p) => p.keywords).toSet();
-    expect(kw, containsAll(['aqara', 'moes', 'frient', 'fibaro', 'heatit', 'aeotec', 'gledopto', 'nanoleaf', 'sensative']));
+    expect(
+      kw,
+      containsAll([
+        'aqara',
+        'moes',
+        'frient',
+        'fibaro',
+        'heatit',
+        'aeotec',
+        'gledopto',
+        'nanoleaf',
+        'sensative',
+        'phoscon',
+        'conbee',
+        'nuki',
+        'nice',
+        'tedee',
+      ]),
+    );
     expect(roadmapBrands.where((b) => b.name == 'Zigbee2MQTT' || b.name == 'Z-Wave JS'), isEmpty);
     final road = roadmapBrands.expand((b) => b.keywords).toSet();
-    expect(road, containsAll(['matter', 'tado', 'nuki', 'doorbird', 'meross', 'homey', 'netatmo']));
+    expect(road, containsAll(['matter', 'tado', 'tedee', 'doorbird', 'meross', 'homey', 'netatmo']));
   });
 }

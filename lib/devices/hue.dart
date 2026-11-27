@@ -4,6 +4,7 @@ library;
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+
 import '../core/io_http.dart';
 
 import '../models/models.dart';
@@ -337,5 +338,108 @@ class HueProvider extends DeviceProvider {
       );
     }
     return out;
+  }
+}
+
+/// t298u: Phoscon / deCONZ gateway (dresden elektronik ConBee / RaspBee). deCONZ speaks the
+/// same REST API as the Hue Bridge v1 (lights, groups, sensors, scenes, link-button pairing via
+/// "Authenticate app" in Phoscon), so the Hue mapping is reused. Public deCONZ REST docs.
+/// UNTESTED ON HARDWARE – tested against a simulated gateway.
+class DeconzProvider extends HueProvider {
+  @override
+  String get id => 'deconz';
+  @override
+  String get fi => 'Phoscon / deCONZ (ConBee, RaspBee)';
+  @override
+  String get en => 'Phoscon / deCONZ (ConBee, RaspBee)';
+  @override
+  String get descFi =>
+      'dresden elektronikin Phoscon-yhdyskäytävä: sen Zigbee-valot, -anturit, huoneet ja tilanteet kotiverkossa.';
+  @override
+  String get descEn =>
+      'dresden elektronik Phoscon gateway: its Zigbee lights, sensors, rooms and scenes over the home network.';
+  @override
+  String get category => 'hub';
+  @override
+  List<String> get keywords => const [
+    'phoscon',
+    'deconz',
+    'conbee',
+    'raspbee',
+    'dresden elektronik',
+    'zigbee',
+    'zigbee gateway',
+  ];
+  @override
+  List<String> get mdnsTypes => const [];
+  @override
+  String get addressHelpFi =>
+      'Phoscon-sovellus → Yhdyskäytävä → IP-osoite (portti usein 80 tai 8080, esim. 192.168.1.20:8080).';
+  @override
+  String get addressHelpEn => 'Phoscon app → Gateway → IP address (port is often 80 or 8080, e.g. 192.168.1.20:8080).';
+  @override
+  String get pairHelpFi =>
+      'Avaa Phoscon → Asetukset → Yhdyskäytävä → Lisäasetukset → "Todenna sovellus" (Authenticate app). Odota tässä.';
+  @override
+  String get pairHelpEn => 'Open Phoscon → Settings → Gateway → Advanced → "Authenticate app". Wait here.';
+  @override
+  Duration get pairWindow => const Duration(seconds: 60);
+
+  @override
+  Future<List<Candidate>> scan(List<String> locals) async {
+    final found = await scanSubnet(locals, (c, ip) async {
+      final j = await probeJson(c, Uri.parse('http://$ip/api/config'));
+      if (j is! Map || '${j['modelid'] ?? ''}' != 'deCONZ') return null;
+      return Candidate(
+        provider: 'deconz',
+        address: ip,
+        id: '${j['bridgeid'] ?? ip}',
+        model: 'Phoscon / deCONZ',
+        name: j['name'] as String?,
+      );
+    });
+    return found;
+  }
+
+  @override
+  Future<Map<String, String>> pair(AddContext ctx, Candidate c, {void Function(int secondsLeft)? tick}) async {
+    final d = ctx.driver(_conn(c.address));
+    final end = DateTime.now().add(pairWindow);
+    try {
+      while (DateTime.now().isBefore(end)) {
+        tick?.call(end.difference(DateTime.now()).inSeconds);
+        Object? v;
+        try {
+          v = decodeJson(
+            '${await d.send({
+              'method': 'POST',
+              'path': '/api',
+              'body': jsonEncode({'devicetype': 'molaplan#app'}),
+            })}',
+          );
+        } catch (e) {
+          // deCONZ answers "link button not pressed" (type 101) with HTTP 403.
+          if (!'$e'.contains('403') && !'$e'.contains('101')) throw explain(e);
+          v = null;
+        }
+        if (v is List && v.isNotEmpty && v.first is Map && (v.first as Map)['success'] is Map) {
+          return {'token': '${((v.first as Map)['success'] as Map)['username']}'};
+        }
+        final err = _hueError(v);
+        if (v != null && (err is! Map || err['type'] != 101)) throw AddDeviceError(AddProblem.notThisBrand, '$v');
+        await Future<void>.delayed(const Duration(seconds: 2));
+      }
+      throw AddDeviceError(AddProblem.buttonNotPressed);
+    } finally {
+      await d.dispose();
+    }
+  }
+
+  @override
+  Future<Connected> connect(AddContext ctx, Candidate c, Map<String, String> creds) async {
+    final r = await super.connect(ctx, c, creds);
+    final label = c.name ?? 'Phoscon';
+    r.connection.name = label;
+    return Connected(connection: r.connection, label: label, items: r.items, data: r.data);
   }
 }
