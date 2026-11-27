@@ -282,3 +282,6 @@ t155u–t157u (also v0.7.3): ModbusTcpClient.acquire/release (one pooled connect
 - Tests: test/media_r290_test.dart, test/devices_r290_test.dart, test/media_r290_ui_test.dart. All UNTESTED ON HARDWARE. Docs: docs/DEVICES-R290.md.
 - Later: Android TV Remote v2, LG signed manifest if needed, Sonos/Apple TV/Roku.
 - v0.18.0 also includes t290u (feature/t290u-android-launcher, a9d1c23): Android pinned shortcuts + status widgets – `lib/state/home_launcher.dart`, `lib/ui/home_launcher_ui.dart`, LauncherBridge.kt / TileStatusWidget.kt / WidgetRefreshWorker.kt; requirement rows renumbered R332–R333 (R329/R330 were taken by v0.17.2).
+
+### v0.18.1 (korjaus)
+v0.18.0:n CI:n android-job kaatui: values/strings.xml molaplan_widget_description sisälsi escapeamattoman heittomerkin. Korjattu (\'), lokaali flutter build apk --debug OK, versio 0.18.1+38. Tagia v0.18.0 ei poistettu.
