@@ -405,11 +405,25 @@ class NtfyDriver extends Driver {
           },
           onDone: () {
             if (!reply.isCompleted) {
-              reply.completeError(
-                DriverException(
-                  dtx('ntfy: yhteys katkesi ennen vastausta', 'ntfy: connection closed before the reply'),
-                ),
-              );
+              // t282u: if the command was already published, this is a missing reply, not a
+              // failed connection to the ntfy server.
+              if (sent != null) {
+                reply.completeError(
+                  NtfyNoReply(
+                    timeoutText?.call(t, wait.inSeconds) ??
+                        dtx(
+                          'Komento lähetettiin, mutta vastausta ei tullut ${wait.inSeconds} sekunnissa. Tarkista, että kotilaite on päällä ja kuuntelee aihetta "$t".',
+                          'The command was sent, but no reply came within ${wait.inSeconds} s. Check that the home device is on and listens to "$t".',
+                        ),
+                  ),
+                );
+              } else {
+                reply.completeError(
+                  DriverException(
+                    dtx('ntfy: yhteys katkesi ennen vastausta', 'ntfy: connection closed before the reply'),
+                  ),
+                );
+              }
             }
           },
         );

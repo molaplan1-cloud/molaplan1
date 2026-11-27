@@ -106,9 +106,36 @@ Object? ntfyJsonPayload(String message) {
 
 /// Is [m] the reply we wait for? [title] = substring of the title (case-insensitive),
 /// [match] = regex the "title message" text must contain, [cid] = our correlation id.
-bool ntfyReplyMatches(NtfyMessage m, {String? title, String? match, String? cid}) {
+/// t282u: human notifications from the kamera-valvonta panel (and similar devices)
+/// after alarm on/off/acknowledge. Title is often "Valvonta päälle (etä)", not "Tila".
+bool ntfyLooksLikeDeviceEvent(NtfyMessage m) {
+  final j = ntfyJsonPayload(m.message);
+  if (j is Map && (j['v'] == 1 || j['relays'] != null || j['state'] != null)) return true;
+  final t = '${m.title}\n${m.message}'.toLowerCase();
+  const keys = [
+    'tila',
+    'valvonta',
+    'hälytys',
+    'halytys',
+    'kuitat',
+    'meno:',
+    'tulo:',
+    'lähtöviive',
+    'lahtoviive',
+    'poistumisviive',
+    'tuloviive',
+    'alarm',
+    'armed',
+    'disarmed',
+    'exit delay',
+    'entry delay',
+  ];
+  return keys.any(t.contains);
+}
+
+bool ntfyReplyMatches(NtfyMessage m, {String? title, String? match, String? cid, bool acceptDeviceEvents = false}) {
   if (title != null && title.trim().isNotEmpty && !m.title.toLowerCase().contains(title.trim().toLowerCase())) {
-    return false;
+    if (!acceptDeviceEvents || !ntfyLooksLikeDeviceEvent(m)) return false;
   }
   if (match != null && match.trim().isNotEmpty) {
     try {
@@ -132,6 +159,11 @@ Object? ntfyStateFrom(NtfyMessage m, Map<String, dynamic> spec, List<NtfyStateRu
   final regex = spec.strOrNull('regex');
   Object? v;
   if (path != null && json != null) {
+    // t282u: sisavalo_src=="day" means the indoor light is not tracked; relays.sisavalo is 0
+    // and must not be shown as Off.
+    if (ntfyIsSisavaloRelayPath(path) && ntfySisavaloSrc(json) == 'day') {
+      return ntfyDayUntracked;
+    }
     v = jsonPathGet(json, path);
   } else if (regex != null) {
     final r = RegExp(regex, caseSensitive: false, multiLine: true).firstMatch(m.message);
@@ -629,7 +661,7 @@ class NtfyDeviceDriver extends NtfyDriver {
   String _newCid() => List.generate(6, (_) => _rnd.nextInt(16).toRadixString(16)).join();
 
   /// Builds the text, waits for the device's rate limit, sends and waits for the matching reply.
-  Future<NtfyMessage> _ask(String cmd, {Object? value, Duration? waitFor, String? replyTitle}) async {
+  Future<NtfyMessage> _ask(String cmd, {Object? value, Duration? waitFor, String? replyTitle, bool commandAck = false}) async {
     final tpl = s.str('template', '{cmd} {pin}');
     final cid = tpl.contains('{cid}') || cmd.contains('{cid}') ? _newCid() : '';
     final text = buildNtfyCommand(tpl, cmd: cmd, pin: s.str('pin'), cid: cid, value: value);
@@ -657,6 +689,7 @@ class NtfyDeviceDriver extends NtfyDriver {
         title: replyTitle ?? s.strOrNull('replyTitle'),
         match: s.strOrNull('replyMatch'),
         cid: cid,
+        acceptDeviceEvents: commandAck,
       ),
       // t235u: the publish already succeeded here – a missing reply is the device's.
       timeoutText: (topic, secs) => _replyHint(
@@ -824,17 +857,17 @@ class NtfyDeviceDriver extends NtfyDriver {
   }
 
   /// The newest JSON status on the reply topic from the last [ttl] (any device's request).
-  Future<NtfyMessage?> _recentShared(Duration ttl) async {
+  Future<NtfyMessage?> _recentShared(Duration ttl, {DateTime? after}) async {
     if (ttl <= Duration.zero || (s.strOrNull('replyTopic') ?? '').trim().isEmpty) return null;
     try {
       final since = DateTime.now().subtract(ttl).millisecondsSinceEpoch ~/ 1000;
       final msgs = await poll(since: '${ttl.inSeconds}s');
       NtfyMessage? best;
+      final floor = after ?? _sh.lastSent;
       for (final m in msgs) {
         if (m.time < since) continue;
         // Never older than our own last command: it may have changed the state.
-        final sent = _sh.lastSent;
-        if (sent != null && m.time < sent.millisecondsSinceEpoch ~/ 1000) continue;
+        if (floor != null && m.time < floor.millisecondsSinceEpoch ~/ 1000) continue;
         if (!ntfyReplyMatches(m, title: s.strOrNull('replyTitle'), match: s.strOrNull('replyMatch'))) continue;
         final j = ntfyJsonPayload(m.message);
         if (j is! Map || j['ok'] == false) continue;
@@ -895,8 +928,21 @@ class NtfyDeviceDriver extends NtfyDriver {
     final ack = Duration(seconds: spec.integer('ackSeconds', 10).clamp(2, 120));
     final NtfyMessage m;
     try {
-      m = await _ask(cmd, value: value, waitFor: ack < _wait ? ack : _wait, replyTitle: spec.strOrNull('replyTitle'));
+      m = await _ask(
+        cmd,
+        value: value,
+        waitFor: ack < _wait ? ack : _wait,
+        replyTitle: spec.strOrNull('replyTitle'),
+        commandAck: true,
+      );
     } on NtfyNoReply {
+      _remember(spec, value);
+      await _follow(spec);
+      return {'ntfy': true, 'sentOnly': true, 'noReply': true};
+    } on DriverException catch (e) {
+      // t282u: after a successful publish the SSE can close ("yhteys katkesi") instead of
+      // timing out as NtfyNoReply – that is not a connection failure; follow with a status poll.
+      if (!ntfyPublishedButUnanswered(e)) rethrow;
       _remember(spec, value);
       await _follow(spec);
       return {'ntfy': true, 'sentOnly': true, 'noReply': true};
@@ -918,9 +964,25 @@ class NtfyDeviceDriver extends NtfyDriver {
       unawaited(_ensureStateSub());
       return;
     }
+    final since = _sh.lastSent;
     try {
       await status(fresh: true);
     } on DriverException {
+      // t282u: the SSE may have missed the Tila JSON that is already on the topic – poll it.
+      final shared = await _recentShared(
+        Duration(seconds: s.integer('replySeconds', 45).clamp(5, 600)),
+        after: since,
+      );
+      if (shared != null) {
+        _applyStateMessage(shared, fromTopic: false, notifyChanges: false);
+        final sh = _sh;
+        sh.last = shared;
+        sh.at = sh.okAt = DateTime.now();
+        sh.optimistic.clear();
+        sh.noReply = 0;
+        sh.backoffUntil = null;
+        return;
+      }
       // No status now: the tiles' next poll asks again.
     }
   }
@@ -982,6 +1044,33 @@ String ntfyNoReplyText(Object e, String serverOk) {
 }
 
 /// t238u: device error codes in plain words (the code stays visible for support).
+/// t282u: sentinel a tile gets instead of relays.sisavalo=0 when sisavalo_src is "day".
+const ntfyDayUntracked = 'day';
+
+bool ntfyIsDayUntracked(Object? v) => v != null && v.toString().trim().toLowerCase() == 'day';
+
+bool ntfyIsSisavaloRelayPath(String path) {
+  final p = path.replaceAll(' ', '').toLowerCase();
+  return p == 'sisavalo' || p.endsWith('.sisavalo');
+}
+
+String? ntfySisavaloSrc(Object? json) {
+  if (json is! Map) return null;
+  final v = json['sisavalo_src'];
+  return v == null ? null : '$v'.trim().toLowerCase();
+}
+
+/// A command that was published, but the wait ended without a matching reply (timeout or
+/// the reply stream closed). Not a failure to reach the ntfy server.
+bool ntfyPublishedButUnanswered(Object e) {
+  if (e is NtfyNoReply) return true;
+  final s = e.toString();
+  return s.contains('Komento lähti, mutta laite ei vastannut') ||
+      s.contains('The command was sent, but the device did not answer') ||
+      s.contains('yhteys katkesi ennen vastausta') ||
+      s.contains('connection closed before the reply');
+}
+
 String ntfyErrorText(String err) {
   final e = err.trim();
   switch (e.toLowerCase()) {

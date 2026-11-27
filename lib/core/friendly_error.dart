@@ -76,7 +76,14 @@ Object cloudMapped(Object e, String type) {
   final low = e.toString().toLowerCase();
   if (low.contains('device offline') ||
       low.contains('not found in shelly cloud') ||
-      low.contains('not available through')) {
+      low.contains('not available through') ||
+      isNoDeviceReply(e.toString()) ||
+      low.contains('yhteys katkesi ennen vastausta') ||
+      low.contains('connection closed before the reply') ||
+      low.contains('laite vastasi:') ||
+      low.contains('the device answered:') ||
+      low.contains('day_blocked') ||
+      low.contains('ei sallittu päivällä')) {
     return e;
   }
   final k = classifyError(e);
@@ -159,6 +166,20 @@ ErrorKind classifyError(Object e) {
     if (s.startsWith('${k.name.toLowerCase()}: ')) return k;
   }
   bool any(List<String> xs) => xs.any(s.contains);
+  // t282u: published-but-unanswered ntfy commands, or a device error such as day_blocked.
+  if (isNoDeviceReply(e.toString()) ||
+      s.contains('komento lähti, mutta') ||
+      s.contains('the command was sent, but the device did not answer') ||
+      s.contains('yhteys katkesi ennen vastausta') ||
+      s.contains('connection closed before the reply')) {
+    return ErrorKind.noResponse;
+  }
+  if (s.contains('day_blocked') ||
+      s.contains('ei sallittu päivällä') ||
+      s.contains('laite vastasi:') ||
+      s.contains('the device answered:')) {
+    return ErrorKind.deviceError;
+  }
   if (s.contains('connection missing') || s.contains('yhteys puuttuu')) return ErrorKind.missingConnection;
   if (s.startsWith('remote: ')) {
     if (s.contains('bridge_offline')) return ErrorKind.remoteBridgeOffline;
@@ -285,6 +306,17 @@ FriendlyError friendlyError(Object e, String lang) {
       t(
         'Komento lähti ntfy-palvelimelle, mutta laitteen vastausta ei tullut. Tarkista yhteyden "Vastauskanava" – laite voi vastata omaan ilmoituskanavaasi – ja että laite on verkossa.',
         'The command reached the ntfy server, but no reply came from the device. Check the connection\'s "Reply topic" – the device may answer on your own notification topic – and that the device is online.',
+      ),
+      tech,
+    );
+  }
+  if (tech.contains('day_blocked') || tech.toLowerCase().contains('ei sallittu päivällä')) {
+    return FriendlyError(
+      ErrorKind.deviceError,
+      t('Päivällä ei ohjata', 'Not controlled during the day'),
+      t(
+        'Sisävaloa ei seurata eikä ohjata päivällä. Valo ei ole pois – se ei ole seurannassa.',
+        'The indoor light is not tracked or controlled during the day. It is not off – it is not being followed.',
       ),
       tech,
     );

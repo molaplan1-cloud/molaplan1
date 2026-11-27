@@ -146,6 +146,10 @@ class BootReceiver : BroadcastReceiver() {
         ) {
             if (BridgeService.enabled(context)) BridgeService.setEnabled(context, true)
         }
+        // t282u: after an in-app APK update the process is gone; bring the UI back.
+        if (a == Intent.ACTION_MY_PACKAGE_REPLACED) {
+            SilentUpdater.relaunchAfterUpdate(context)
+        }
     }
 }
 

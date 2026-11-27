@@ -14,6 +14,9 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
+import android.provider.Settings
 import java.io.File
 import java.security.MessageDigest
 
@@ -133,6 +136,85 @@ object SilentUpdater {
                 .build()
         )
     }
+
+    /** t282u: restart the UI after an in-app APK update (Galaxy Tab / Android 10+ safe). */
+    private const val RELAUNCH_ID = 4713
+    private const val RELAUNCH_CHANNEL = "relaunch"
+
+    fun canStartActivityInBackground(ctx: Context): Boolean {
+        if (isDeviceOwner(ctx)) return true
+        if (Build.VERSION.SDK_INT < 29) return true
+        return try {
+            Settings.canDrawOverlays(ctx)
+        } catch (_: Exception) {
+            false
+        }
+    }
+
+    fun launchIntent(ctx: Context): Intent {
+        val launch = ctx.packageManager.getLaunchIntentForPackage(ctx.packageName)
+            ?: Intent(ctx, MainActivity::class.java)
+        launch.addFlags(
+            Intent.FLAG_ACTIVITY_NEW_TASK or
+                Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                Intent.FLAG_ACTIVITY_SINGLE_TOP or
+                Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
+        )
+        return launch
+    }
+
+    fun postRelaunchNotification(ctx: Context, launch: Intent) {
+        val nm = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val ch = NotificationChannel(
+                RELAUNCH_CHANNEL, "Päivityksen jälkeen", NotificationManager.IMPORTANCE_HIGH
+            )
+            ch.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
+            ch.setBypassDnd(true)
+            nm.createNotificationChannel(ch)
+        }
+        val p = PendingIntent.getActivity(
+            ctx, 2, launch,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+        val b = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) Notification.Builder(ctx, RELAUNCH_CHANNEL)
+        else @Suppress("DEPRECATION") Notification.Builder(ctx)
+        @Suppress("DEPRECATION")
+        val n = b.setSmallIcon(ctx.applicationInfo.icon)
+            .setContentTitle("Molaplan päivitetty")
+            .setContentText("Avaa napauttamalla.")
+            .setContentIntent(p)
+            .setFullScreenIntent(p, true)
+            .setCategory(Notification.CATEGORY_ALARM)
+            .setPriority(Notification.PRIORITY_HIGH)
+            .setAutoCancel(true)
+            .build()
+        nm.notify(RELAUNCH_ID, n)
+    }
+
+    fun relaunchAfterUpdate(ctx: Context) {
+        val app = ctx.applicationContext
+        val go = Runnable {
+            val launch = launchIntent(app)
+            var started = false
+            if (canStartActivityInBackground(app)) {
+                try {
+                    app.startActivity(launch)
+                    started = true
+                } catch (_: Exception) {
+                }
+            }
+            if (!started) {
+                postRelaunchNotification(app, launch)
+                try {
+                    app.startActivity(launch)
+                } catch (_: Exception) {
+                }
+            }
+        }
+        // MY_PACKAGE_REPLACED can arrive while the old process is still winding down.
+        Handler(Looper.getMainLooper()).postDelayed(go, 400)
+    }
 }
 
 class InstallResultReceiver : BroadcastReceiver() {
@@ -156,6 +238,7 @@ class InstallResultReceiver : BroadcastReceiver() {
                 SilentUpdater.pendingConfirm = null
                 (context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).cancel(4712)
                 SilentUpdater.record(context, "installed")
+                SilentUpdater.relaunchAfterUpdate(context)
             }
             else -> SilentUpdater.record(
                 context, "failed $status ${intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE) ?: ""}".trim()

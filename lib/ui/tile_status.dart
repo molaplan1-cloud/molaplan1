@@ -56,8 +56,13 @@ TileIssue tileIssue(BuildContext context, ConnectionConfig? c, String err, NetHe
   if (err.contains('ntfy: viestiraja täynnä') || err.contains('ntfy: message limit reached')) {
     return TileIssue(TileIssueKind.device, tx(context, 'ntfy-viestiraja täynnä', 'ntfy message limit reached'));
   }
-  if (isNoDeviceReply(err)) {
+  if (isNoDeviceReply(err) ||
+      err.contains('yhteys katkesi ennen vastausta') ||
+      err.contains('connection closed before the reply')) {
     return TileIssue(TileIssueKind.device, tx(context, 'Ei vastausta laitteelta', 'No reply from the device'));
+  }
+  if (err.contains('day_blocked') || err.toLowerCase().contains('ei sallittu päivällä')) {
+    return TileIssue(TileIssueKind.device, tx(context, 'Päivällä ei ohjata', 'Not controlled during the day'));
   }
   final text = switch (k) {
     ErrorKind.auth || ErrorKind.cloudAuth => tx(context, 'Kirjautuminen vanhentunut', 'Sign-in expired'),

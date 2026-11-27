@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../drivers/ntfy_device.dart';
 import '../core/template.dart';
 import '../models/models.dart';
 import '../state/app_state.dart';
@@ -311,8 +312,17 @@ class _TileWidgetState extends State<TileWidget> {
     );
   }
 
+  /// t282u: indoor light not tracked during the day (sisavalo_src=="day") – never "Off".
+  String _toggleLabel(Object? v) {
+    if (ntfyIsDayUntracked(v)) return tx(context, 'Päivällä ei ohjata', 'Not controlled during the day');
+    final mapped = t.mapValue(v);
+    if (mapped != null) return mapped;
+    return isTruthy(v, onValue: t.onValue) ? tx(context, 'Päällä', 'On') : tx(context, 'Pois', 'Off');
+  }
+
   String _format(Object? v) {
     if (v == null) return '–';
+    if (ntfyIsDayUntracked(v)) return tx(context, 'Päivällä ei ohjata', 'Not controlled during the day');
     final mapped = t.mapValue(v);
     if (mapped != null) return mapped;
     if (v is num) {
@@ -793,8 +803,7 @@ class _TileWidgetState extends State<TileWidget> {
       lastValue: rt!.value == null
           ? null
           : t.type == TileType.toggle
-          ? (t.mapValue(rt!.value) ??
-                (isTruthy(rt!.value, onValue: t.onValue) ? tx(context, 'Päällä', 'On') : tx(context, 'Pois', 'Off')))
+          ? _toggleLabel(rt!.value)
           : '${_format(rt!.value)}${t.unit.isEmpty ? '' : ' ${t.unit}'}',
       editing: widget.editing,
       child: body,
@@ -1191,9 +1200,7 @@ class _TileWidgetState extends State<TileWidget> {
                   !(compact && light && hasBrightness(t) && on && !widget.editing))
                 Builder(
                   builder: (context) {
-                    final label = r.value == null
-                        ? '–'
-                        : (t.mapValue(r.value) ?? (on ? tx(context, 'Päällä', 'On') : tx(context, 'Pois', 'Off')));
+                    final label = r.value == null ? '–' : _toggleLabel(r.value);
                     return MotionSwitch(
                       id: label,
                       child: Text(
