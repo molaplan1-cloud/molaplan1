@@ -292,3 +292,8 @@ v0.18.0:n CI:n android-job kaatui: values/strings.xml molaplan_widget_descriptio
 - `lib/media/sonos.dart` (`sonosSoap`, coordinator lookup), `lib/media/roku.dart` (`xmlTag`, `xmlUnescape`, `probeText`). Hooks `sonosPort`, `rokuPort`; tests use `mediaHttp` MockClient.
 - HA: `{{value_frac}}` template, read spec `scale`; media_player / vacuum / valve / humidifier tiles in `haTilesFor`.
 - Batch was called "R324" by Enn, but R324 is the R290 UI/credentials row; new rows are R334 (parent) + R335–R340. Local `flutter build apk --debug` before every push (strings.xml lesson from v0.18.0).
+
+## v0.19.1 – hotfix: Android app crashed at every start (t299u, R400)
+- v0.18.0–v0.19.0 Android release APKs crashed in `androidx.startup.InitializationProvider` (process start, before any activity/service/receiver): R8 stripped `androidx.work.impl.WorkDatabase_Impl.<init>()` (Room reflection) → `NoSuchMethodException`. The in-app updater can't run on a crashing build → users must install the 0.19.1 APK manually over the old one (same key, data kept).
+- Fix: `android/app/proguard-rules.pro` (Room, WorkManager, ListenableWorker ctor, `com.molaplan.molaplan.**`), wired in the release buildType. CI step 'Verify release APKs' runs `tool/android/verify_release_apk.sh` (dexdump) on both APKs; run it locally too after `flutter build apk --release`. test/android_release_keep_test.dart guards the wiring and that every manifest `.Component` is checked.
+- Emulator on the box: `sudo chmod 666 /dev/kvm` opens KVM but nested KVM hangs; use `ANDROID_I_WANT_MY_TCG=yes emulator -avd hf30 -no-window -accel off -memory 1536` (API 30 google_apis x86_64; boot ~10 min, install ~6 min). Don't run it together with a Gradle build (OOM killer took qemu).

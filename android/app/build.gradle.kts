@@ -46,6 +46,8 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.findByName("molaplan") ?: signingConfigs.getByName("debug")
+            // v0.19.1 (t299u): R8 keep rules for WorkManager/Room reflection (see proguard-rules.pro).
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 }

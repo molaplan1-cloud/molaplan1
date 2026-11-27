@@ -116,6 +116,9 @@ jobs:
           flutter build apk --release --split-per-abi
           cp build/app/outputs/flutter-apk/app-arm64-v8a-release.apk dist/molaplan-android-arm64.apk
           ls -l dist
+      # v0.19.1 (t299u): R8 must keep the constructors WorkManager/Room and the manifest create by reflection.
+      - name: Verify release APKs (R8 keep rules)
+        run: bash tool/android/verify_release_apk.sh dist/molaplan-android-universal.apk dist/molaplan-android-arm64.apk
       - uses: actions/upload-artifact@v4
         with:
           name: molaplan-android
