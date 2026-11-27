@@ -6,6 +6,8 @@ import 'state/net_health.dart';
 import 'dart:async';
 import 'dart:io';
 
+import 'security/alarm_log.dart';
+
 import 'package:cupertino_ui/cupertino_ui.dart'
     show GlobalCupertinoLocalizations;
 import 'package:flutter_localizations/flutter_localizations.dart'
@@ -88,13 +90,18 @@ Future<void> main() async {
   // t128u: notification taps (molaplan://tile/ID), the Windows tray, Android permission.
   await DeepLinks.init();
   await initLauncher(state);
+  // R471 (t311u): backfill the alarm event logs from the server's history (read-only).
+  unawaited(backfillAlarmLogs(state.config));
+  Timer.periodic(
+    const Duration(minutes: 30),
+    (_) => unawaited(backfillAlarmLogs(state.config)),
+  );
   await DesktopTray.init(state);
   if (state.config.automation.automations.isNotEmpty) {
     unawaited(LocalNotify.askPermission());
   }
   runApp(MolaplanApp(state: state));
 }
-
 
 /// t290u: started by Android WorkManager (no UI) to refresh home-screen widgets.
 @pragma('vm:entry-point')
@@ -112,7 +119,8 @@ Future<void> widgetRefreshMain() async {
     await refreshLauncherWidgets(state);
   } finally {
     try {
-      await const MethodChannel(launcherChannelName).invokeMethod('refreshDone');
+      await const MethodChannel(launcherChannelName)
+          .invokeMethod('refreshDone');
     } catch (_) {}
   }
 }

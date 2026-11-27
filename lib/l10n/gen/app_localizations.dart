@@ -4736,42 +4736,6 @@ abstract class AppLocalizations {
   /// **'Technical details'**
   String get sf77125583f;
 
-  /// fi: Valvonta päällä
-  ///
-  /// In en, this message translates to:
-  /// **'Armed'**
-  String get s93b4695981;
-
-  /// fi: Valvonta päällä (kotona)
-  ///
-  /// In en, this message translates to:
-  /// **'Armed (at home)'**
-  String get s489ed73bfa;
-
-  /// fi: Valvonta pois
-  ///
-  /// In en, this message translates to:
-  /// **'Disarmed'**
-  String get s49e6af4fbd;
-
-  /// fi: Lähtöviive – valvonta kytkeytyy
-  ///
-  /// In en, this message translates to:
-  /// **'Exit delay – arming'**
-  String get s1ba2cffb00;
-
-  /// fi: Tuloviive – anna PIN
-  ///
-  /// In en, this message translates to:
-  /// **'Entry delay – enter PIN'**
-  String get s2b765e2c1f;
-
-  /// fi: HÄLYTYS!
-  ///
-  /// In en, this message translates to:
-  /// **'ALARM!'**
-  String get s34de2943cc;
-
   /// fi: Tieto {p0} vanha
   ///
   /// In en, this message translates to:
@@ -12677,6 +12641,96 @@ abstract class AppLocalizations {
   /// **'The tiles work on your home network. To control from anywhere, set up the home bridge.'**
   String get sbc8469cce1;
 
+  /// fi: Loki
+  ///
+  /// In en, this message translates to:
+  /// **'Log'**
+  String get sf3b3b45b00;
+
+  /// fi: Ei tapahtumia vielä. Loki kerää valvonnan kytkennät ja hälytykset.
+  ///
+  /// In en, this message translates to:
+  /// **'No events yet. The log collects arming, disarming and alarms.'**
+  String get s87c07d09ce;
+
+  /// fi: Valvonta päälle
+  ///
+  /// In en, this message translates to:
+  /// **'Monitoring on'**
+  String get s6a2900d1fc;
+
+  /// fi: Valvonta pois
+  ///
+  /// In en, this message translates to:
+  /// **'Monitoring off'**
+  String get sdfb732c84f;
+
+  /// fi: HÄLYTYS
+  ///
+  /// In en, this message translates to:
+  /// **'ALARM'**
+  String get s3dfa789b85;
+
+  /// fi: Päättyi
+  ///
+  /// In en, this message translates to:
+  /// **'Ended'**
+  String get s6b2ed1dd31;
+
+  /// fi: Käynnissä tai päättymisaika ei tiedossa
+  ///
+  /// In en, this message translates to:
+  /// **'Ongoing or end time unknown'**
+  String get sa7e8a5c23b;
+
+  /// fi: Syy
+  ///
+  /// In en, this message translates to:
+  /// **'Cause'**
+  String get s9909138be0;
+
+  /// fi: Kuka
+  ///
+  /// In en, this message translates to:
+  /// **'Who'**
+  String get s5fb1d3d53a;
+
+  /// fi: Valvonta päällä
+  ///
+  /// In en, this message translates to:
+  /// **'Armed'**
+  String get s93b4695981;
+
+  /// fi: Valvonta päällä (kotona)
+  ///
+  /// In en, this message translates to:
+  /// **'Armed (at home)'**
+  String get s489ed73bfa;
+
+  /// fi: Valvonta pois
+  ///
+  /// In en, this message translates to:
+  /// **'Disarmed'**
+  String get s49e6af4fbd;
+
+  /// fi: Lähtöviive – valvonta kytkeytyy
+  ///
+  /// In en, this message translates to:
+  /// **'Exit delay – arming'**
+  String get s1ba2cffb00;
+
+  /// fi: Tuloviive – anna PIN
+  ///
+  /// In en, this message translates to:
+  /// **'Entry delay – enter PIN'**
+  String get s2b765e2c1f;
+
+  /// fi: HÄLYTYS!
+  ///
+  /// In en, this message translates to:
+  /// **'ALARM!'**
+  String get s34de2943cc;
+
   /// fi: Mittaukset
   ///
   /// In en, this message translates to:
@@ -19414,12 +19468,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'motion'**
   String get s3b35de231e;
-
-  /// fi: HÄLYTYS
-  ///
-  /// In en, this message translates to:
-  /// **'ALARM'**
-  String get s3dfa789b85;
 
   /// fi: Muut
   ///

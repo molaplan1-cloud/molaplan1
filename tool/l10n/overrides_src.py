@@ -648,6 +648,15 @@ T = {
  'Disarm': ('Larma av', 'Valve välja', 'Desarmar'),
  'Acknowledge alarm': ('Kvittera larm', 'Kinnita häire', 'Confirmar alarma'),
  'Acknowledge and disarm': ('Kvittera och larma av', 'Kinnita ja valve välja', 'Confirmar y desarmar'),
+ 'Log': ('Logg', 'Logi', 'Registro'),
+ 'No events yet. The log collects arming, disarming and alarms.': ('Inga händelser ännu. Loggen samlar på- och avlarmningar samt larm.', 'Sündmusi veel pole. Logisse kogutakse valve sisse- ja väljalülitused ning häired.', 'Aún no hay eventos. El registro recoge activaciones, desactivaciones y alarmas.'),
+ 'Monitoring on': ('Larmet på', 'Valve sisse', 'Vigilancia activada'),
+ 'Monitoring off': ('Larmet av', 'Valve välja', 'Vigilancia desactivada'),
+ 'ALARM': ('LARM', 'HÄIRE', 'ALARMA'),
+ 'Ended': ('Slutade', 'Lõppes', 'Terminó'),
+ 'Ongoing or end time unknown': ('Pågår eller sluttid okänd', 'Kestab või lõpuaeg teadmata', 'En curso o hora de fin desconocida'),
+ 'Cause': ('Orsak', 'Põhjus', 'Causa'),
+ 'Who': ('Vem', 'Kes', 'Quién'),
 }
 
 

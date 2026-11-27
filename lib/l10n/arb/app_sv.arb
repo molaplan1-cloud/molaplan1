@@ -2362,12 +2362,6 @@
   "x-mt": true
  },
  "sf77125583f": "Tekniska detaljer",
- "s93b4695981": "Larmat",
- "s489ed73bfa": "Larmat (hemma)",
- "s49e6af4fbd": "Avlarmat",
- "s1ba2cffb00": "Utpasseringstid – larmet kopplas på",
- "s2b765e2c1f": "Inpasseringstid – ange PIN",
- "s34de2943cc": "LARM!",
  "s9cf8aec76a": "Tillståndet är {p0} gammalt",
  "s1f8cf57b2c": "Ingen anslutning",
  "s84819cca05": "Sista larmet {p0}",
@@ -6437,6 +6431,21 @@
  "@sbc8469cce1": {
   "x-mt": true
  },
+ "sf3b3b45b00": "Logg",
+ "s87c07d09ce": "Inga händelser ännu. Loggen samlar på- och avlarmningar samt larm.",
+ "s6a2900d1fc": "Larmet på",
+ "sdfb732c84f": "Larmet av",
+ "s3dfa789b85": "LARM",
+ "s6b2ed1dd31": "Slutade",
+ "sa7e8a5c23b": "Pågår eller sluttid okänd",
+ "s9909138be0": "Orsak",
+ "s5fb1d3d53a": "Vem",
+ "s93b4695981": "Larmat",
+ "s489ed73bfa": "Larmat (hemma)",
+ "s49e6af4fbd": "Avlarmat",
+ "s1ba2cffb00": "Utpasseringstid – larmet kopplas på",
+ "s2b765e2c1f": "Inpasseringstid – ange PIN",
+ "s34de2943cc": "LARM!",
  "s02480e4c13": "Mätningar",
  "@s02480e4c13": {
   "x-mt": true
@@ -10377,7 +10386,6 @@
  "@s3b35de231e": {
   "x-mt": true
  },
- "s3dfa789b85": "ALARM",
  "sd9b6de0a6a": "Andra andra",
  "@sd9b6de0a6a": {
   "x-mt": true

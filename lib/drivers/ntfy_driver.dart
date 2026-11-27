@@ -302,7 +302,7 @@ class NtfyDriver extends Driver {
   /// backoff and `since=<last id>` so a server that closes the stream (~3 min on
   /// ntfy.molaplan.com) does not drop messages. Cancel the subscription to stop.
   /// R466: a live stream with no line (message or keepalive) for this long is reconnected.
-  static Duration subscribeIdleTimeout = const Duration(seconds: 100);
+  static Duration subscribeIdleTimeout = const Duration(minutes: 5);
 
   Stream<NtfyMessage> subscribe({String? topic, String? since}) {
     late StreamController<NtfyMessage> ctl;

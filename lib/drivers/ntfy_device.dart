@@ -555,6 +555,10 @@ class NtfyDeviceDriver extends NtfyDriver {
     return out.stream;
   }
 
+  /// True when [m] was sent before [cur] (ntfy times, seconds). Unknown times never block.
+  static bool _isOlder(NtfyMessage m, NtfyMessage? cur) =>
+      cur != null && m.time > 0 && cur.time > 0 && m.time < cur.time;
+
   bool _stateTopicSilent(_Shared sh) {
     final from = sh.lastTopicAt ?? sh.subStartedAt;
     if (from == null) return false;
@@ -674,6 +678,15 @@ class NtfyDeviceDriver extends NtfyDriver {
       if (j['v'] != 1 && j['relays'] == null && j['state'] == null) return;
     }
     final sh = _sh;
+    if (fromTopic) {
+      // Any message proves the topic is alive, even one older than what we show.
+      sh.lastTopicAt = clock();
+      sh.topicFallback = false;
+    }
+    // R472 (t310u): never step back to an older state – a reply to a `tila json` asked
+    // during the exit delay (or another device's older reply) must not overwrite a newer
+    // state-topic message ('Poistumisviive' stuck on screen while the panel was 'away').
+    if (_isOlder(m, sh.last)) return;
     final prev = sh.lastJson;
     final map = Map<String, dynamic>.from(j);
     sh.last = m;
@@ -684,8 +697,6 @@ class NtfyDeviceDriver extends NtfyDriver {
     sh.noReply = 0;
     sh.backoffUntil = null;
     if (fromTopic) {
-      sh.lastTopicAt = clock();
-      sh.topicFallback = false;
       if (m.time >= sh.lastTopicMsgTime) {
         sh.lastTopicMsgTime = m.time;
         sh.lastTopicMsgId = m.id;
@@ -879,6 +890,8 @@ class NtfyDeviceDriver extends NtfyDriver {
     }
     return sh.inFlight ??= _statusNow(command, fresh, ttl)
         .then((m) {
+          // R472: a shared / late reply older than the state we already have is not used.
+          if (_isOlder(m, sh.last)) return sh.last!;
           sh.last = m;
           sh.at = sh.okAt = DateTime.now();
           sh.optimistic.clear();

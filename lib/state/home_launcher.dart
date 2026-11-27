@@ -10,6 +10,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import '../core/plat.dart';
+import '../core/security_state.dart';
+import '../drivers/driver.dart' show TimedValue;
+import '../energy/price_view.dart';
 import '../core/template.dart';
 import '../l10n/l10n.dart';
 import '../models/models.dart';
@@ -92,9 +95,72 @@ String launcherRunLink(String tileId, {bool confirm = false}) {
 String launcherOpenLink(String tileId) =>
     Uri(scheme: 'molaplan', host: 'tile', path: '/${Uri.encodeComponent(tileId)}').toString();
 
+/// Same calm levels as the price tile (cheap · mid · expensive), ARGB.
+const launcherPriceLevelColors = [0xFF5E9E7C, 0xFFC2A15A, 0xFFBF6F68];
+
+bool _isSecurity(TileConfig t) => t.read['security'] == true;
+bool _isPriceChart(TileConfig t) => t.type == TileType.value && t.read['field'] == 'chart';
+
+/// R470 (t309u): today+tomorrow hourly prices for the home-screen widget: the current c/kWh,
+/// its level colour and small bars (c/kWh ×10, ARGB per bar, index of the current hour).
+class LauncherPriceSummary {
+  const LauncherPriceSummary(this.current, this.color, this.bars, this.colors, this.nowIndex);
+  final double? current;
+  final int color;
+  final List<int> bars;
+  final List<int> colors;
+  final int nowIndex;
+}
+
+LauncherPriceSummary? launcherPriceSummary(Map data, DateTime now) {
+  final pts = <(DateTime, double)>[
+    for (final p in (data['points'] as List? ?? const []))
+      if (p is List && p.length >= 2 && p[0] is num && p[1] is num)
+        (DateTime.fromMillisecondsSinceEpoch((p[0] as num).toInt()), (p[1] as num).toDouble()),
+  ];
+  if (pts.isEmpty) return null;
+  final v = PriceView.build(pts, (data['res'] as num?)?.toInt() ?? 3600, now, hourly: true);
+  if (v.slots.isEmpty) return null;
+  final from = DateTime(now.year, now.month, now.day);
+  final to = DateTime(now.year, now.month, now.day + 2);
+  final win = v.window(from, to);
+  if (win.isEmpty) return null;
+  var nowIndex = -1;
+  for (var i = 0; i < win.length; i++) {
+    if (win[i].$1.contains(now)) nowIndex = i;
+  }
+  final cur = v.current;
+  var lvl = 1;
+  if (nowIndex >= 0) lvl = win[nowIndex].$2;
+  return LauncherPriceSummary(
+    cur?.cents,
+    launcherPriceLevelColors[lvl],
+    [for (final (s, _) in win) (s.cents * 10).round()],
+    [for (final (_, l) in win) launcherPriceLevelColors[l]],
+    nowIndex,
+  );
+}
+
+String _num(num value) =>
+    value == value.roundToDouble() ? '${value.round()}' : value.toStringAsFixed(1);
+
+/// The tile's real primary value out of a JSON / map reading – never the word 'Tila' (R471).
+Object? _primaryOf(Map m) {
+  for (final k in const ['state', 'value', 'status', 'now', 'current', 'temperature', 'power']) {
+    final v = m[k];
+    if (v != null && v is! Map && v is! List) return v;
+  }
+  for (final v in m.values) {
+    if (v is num || v is bool || (v is String && v.isNotEmpty && v.length <= 24)) return v;
+  }
+  return null;
+}
+
 /// Status text shown on a widget (no BuildContext; [lang] is fi/en/sv/et/es).
 String launcherStatusText(TileConfig t, Object? value, String lang) {
+  if (value is TimedValue) value = value.value;
   if (value == null) return '–';
+  if (_isSecurity(t)) return securityLabel(value, lang);
   if (t.type == TileType.toggle || t.sensor != null) {
     final on = isTruthy(value, onValue: t.onValue.isEmpty ? null : t.onValue);
     if (t.sensor != null) {
@@ -102,14 +168,29 @@ String launcherStatusText(TileConfig t, Object? value, String lang) {
     }
     return on ? tr(lang, 'Päällä', 'On') : tr(lang, 'Pois', 'Off');
   }
-  if (value is Map) return tr(lang, 'Tila', 'State');
-  var s = value is num ? (value == value.roundToDouble() ? '${value.round()}' : value.toStringAsFixed(1)) : '$value';
+  if (value is Map) {
+    if (_isPriceChart(t) || value['points'] is List) {
+      final p = launcherPriceSummary(value, DateTime.now());
+      if (p?.current == null) return tr(lang, 'Ei hintoja', 'No prices');
+      return '${p!.current!.toStringAsFixed(2)} c/kWh';
+    }
+    final prim = _primaryOf(value);
+    if (prim == null) return '–';
+    value = prim;
+  }
+  var s = value is num ? _num(value) : '$value';
   if (s.length > 24) s = '${s.substring(0, 24)}…';
   if (t.unit.isNotEmpty) s = '$s ${t.unit}';
   return s;
 }
 
 int launcherStatusColor(TileConfig t, Object? value) {
+  if (value is TimedValue) value = value.value;
+  if (_isSecurity(t)) return securityColor(value);
+  if (value is Map && (_isPriceChart(t) || value['points'] is List)) {
+    final p = launcherPriceSummary(value, DateTime.now());
+    if (p != null && p.current != null) return p.color;
+  }
   if (t.sensor != null && isTruthy(value, onValue: t.onValue.isEmpty ? null : t.onValue)) {
     return 0xFFC62828;
   }
@@ -138,10 +219,26 @@ Map<String, dynamic> launcherShortcutPayload(TileConfig t, {required bool confir
   };
 }
 
-Map<String, dynamic> launcherWidgetPayload(TileConfig t, Object? value, {required String lang, String tap = 'open'}) {
-  final now = DateTime.now().toLocal();
-  final hhmm = '${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}';
-  return {
+/// [at] is when the device reported the value (e.g. the panel's state message, R470); the
+/// widget shows that time, not the time of the refresh. A [TimedValue] carries its own time.
+Map<String, dynamic> launcherWidgetPayload(
+  TileConfig t,
+  Object? value, {
+  required String lang,
+  String tap = 'open',
+  DateTime? at,
+}) {
+  if (value is TimedValue) {
+    at ??= value.at;
+    value = value.value;
+  }
+  final now = DateTime.now();
+  final when = (at ?? now).toLocal();
+  String two(int n) => n.toString().padLeft(2, '0');
+  var hhmm = '${two(when.hour)}:${two(when.minute)}';
+  final sameDay = when.year == now.year && when.month == now.month && when.day == now.day;
+  if (!sameDay) hhmm = '${when.day}.${when.month}. $hhmm';
+  final out = <String, dynamic>{
     'id': t.id,
     'title': t.title,
     'kind': 'status',
@@ -151,6 +248,15 @@ Map<String, dynamic> launcherWidgetPayload(TileConfig t, Object? value, {require
     'tap': tap,
     'link': tap == 'run' ? launcherRunLink(t.id, confirm: launcherNeedsConfirm(t)) : launcherOpenLink(t.id),
   };
+  if (value is Map && (_isPriceChart(t) || value['points'] is List)) {
+    final p = launcherPriceSummary(value, now);
+    if (p != null && p.bars.isNotEmpty) {
+      out['bars'] = p.bars;
+      out['barColors'] = p.colors;
+      out['nowBar'] = p.nowIndex;
+    }
+  }
+  return out;
 }
 
 bool payloadLeaksSecret(Map<String, dynamic> p) {
@@ -238,7 +344,7 @@ Future<void> syncLauncherTile(TileConfig t, Object? value, [DateTime? at]) async
   if (_watched.isEmpty || !_watched.contains(t.id)) return;
   final st = launcherAppState?.call();
   final lang = st?.lang ?? 'fi';
-  final payload = launcherWidgetPayload(t, value, lang: lang);
+  final payload = launcherWidgetPayload(t, value, lang: lang, at: at);
   await _invoke<dynamic>('sync', {
     'tiles': [payload],
   });
@@ -263,12 +369,11 @@ Future<void> refreshLauncherWidgets(AppState st) async {
     for (final t in d.tiles) {
       if (!_watched.contains(t.id)) continue;
       if (t.read.isEmpty) {
-        final live = _liveValue(t);
-        tiles.add(launcherWidgetPayload(t, live, lang: st.lang));
+        tiles.add(_livePayload(t, st.lang));
         continue;
       }
       if (st.needsPin(t.connectionId)) {
-        tiles.add(launcherWidgetPayload(t, _liveValue(t), lang: st.lang));
+        tiles.add(_livePayload(t, st.lang));
         continue;
       }
       try {
@@ -277,18 +382,19 @@ Future<void> refreshLauncherWidgets(AppState st) async {
         final v = await drv.read(t.read).timeout(const Duration(seconds: 8));
         tiles.add(launcherWidgetPayload(t, v, lang: st.lang));
       } catch (_) {
-        tiles.add(launcherWidgetPayload(t, _liveValue(t), lang: st.lang));
+        tiles.add(_livePayload(t, st.lang));
       }
     }
   }
   if (tiles.isNotEmpty) await _invoke<dynamic>('sync', {'tiles': tiles});
 }
 
-Object? _liveValue(TileConfig t) {
+/// The value already on screen, with the time the device reported it.
+Map<String, dynamic> _livePayload(TileConfig t, String lang) {
   for (final rt in TileRuntime.live[t.id] ?? const <TileRuntime>{}) {
-    return rt.value;
+    return launcherWidgetPayload(t, rt.value, lang: lang, at: rt.updated);
   }
-  return null;
+  return launcherWidgetPayload(t, null, lang: lang);
 }
 
 Future<void> initLauncher(AppState st) async {

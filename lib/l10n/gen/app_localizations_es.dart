@@ -2601,24 +2601,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sf77125583f => 'Detalles técnicos';
 
   @override
-  String get s93b4695981 => 'Armada';
-
-  @override
-  String get s489ed73bfa => 'Armada (en casa)';
-
-  @override
-  String get s49e6af4fbd => 'Desarmada';
-
-  @override
-  String get s1ba2cffb00 => 'Retardo de salida: armando';
-
-  @override
-  String get s2b765e2c1f => 'Retardo de entrada: introduce el PIN';
-
-  @override
-  String get s34de2943cc => '¡ALARMA!';
-
-  @override
   String s9cf8aec76a(String p0) {
     return 'El estado tiene $p0 de antigüedad';
   }
@@ -7001,6 +6983,52 @@ class AppLocalizationsEs extends AppLocalizations {
       'Los azulejos funcionan en su red de casa. Para controlar desde cualquier lugar, establecer el puente de inicio.';
 
   @override
+  String get sf3b3b45b00 => 'Registro';
+
+  @override
+  String get s87c07d09ce =>
+      'Aún no hay eventos. El registro recoge activaciones, desactivaciones y alarmas.';
+
+  @override
+  String get s6a2900d1fc => 'Vigilancia activada';
+
+  @override
+  String get sdfb732c84f => 'Vigilancia desactivada';
+
+  @override
+  String get s3dfa789b85 => 'ALARMA';
+
+  @override
+  String get s6b2ed1dd31 => 'Terminó';
+
+  @override
+  String get sa7e8a5c23b => 'En curso o hora de fin desconocida';
+
+  @override
+  String get s9909138be0 => 'Causa';
+
+  @override
+  String get s5fb1d3d53a => 'Quién';
+
+  @override
+  String get s93b4695981 => 'Armada';
+
+  @override
+  String get s489ed73bfa => 'Armada (en casa)';
+
+  @override
+  String get s49e6af4fbd => 'Desarmada';
+
+  @override
+  String get s1ba2cffb00 => 'Retardo de salida: armando';
+
+  @override
+  String get s2b765e2c1f => 'Retardo de entrada: introduce el PIN';
+
+  @override
+  String get s34de2943cc => '¡ALARMA!';
+
+  @override
   String get s02480e4c13 => 'Medidas';
 
   @override
@@ -10856,9 +10884,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s3b35de231e => 'moción';
-
-  @override
-  String get s3dfa789b85 => 'ALARM';
 
   @override
   String get sd9b6de0a6a => 'Otros';

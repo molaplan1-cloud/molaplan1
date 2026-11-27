@@ -2365,12 +2365,6 @@
   "x-mt": true
  },
  "sf77125583f": "Tehnilised üksikasjad",
- "s93b4695981": "Valve sees",
- "s489ed73bfa": "Valve sees (kodus)",
- "s49e6af4fbd": "Valve väljas",
- "s1ba2cffb00": "Väljumisviivitus – valve lülitub sisse",
- "s2b765e2c1f": "Sisenemisviivitus – sisesta PIN",
- "s34de2943cc": "HÄIRE!",
  "s9cf8aec76a": "Olek on {p0} vana",
  "s1f8cf57b2c": "Ühendus puudub",
  "s84819cca05": "Viimane häire {p0}",
@@ -6461,6 +6455,21 @@
  "@sbc8469cce1": {
   "x-mt": true
  },
+ "sf3b3b45b00": "Logi",
+ "s87c07d09ce": "Sündmusi veel pole. Logisse kogutakse valve sisse- ja väljalülitused ning häired.",
+ "s6a2900d1fc": "Valve sisse",
+ "sdfb732c84f": "Valve välja",
+ "s3dfa789b85": "HÄIRE",
+ "s6b2ed1dd31": "Lõppes",
+ "sa7e8a5c23b": "Kestab või lõpuaeg teadmata",
+ "s9909138be0": "Põhjus",
+ "s5fb1d3d53a": "Kes",
+ "s93b4695981": "Valve sees",
+ "s489ed73bfa": "Valve sees (kodus)",
+ "s49e6af4fbd": "Valve väljas",
+ "s1ba2cffb00": "Väljumisviivitus – valve lülitub sisse",
+ "s2b765e2c1f": "Sisenemisviivitus – sisesta PIN",
+ "s34de2943cc": "HÄIRE!",
  "s02480e4c13": "Mõõtmised",
  "@s02480e4c13": {
   "x-mt": true
@@ -10422,7 +10431,6 @@
  "@s3b35de231e": {
   "x-mt": true
  },
- "s3dfa789b85": "ALARM",
  "sd9b6de0a6a": "Teised",
  "@sd9b6de0a6a": {
   "x-mt": true

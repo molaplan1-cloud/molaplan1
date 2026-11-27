@@ -2572,24 +2572,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sf77125583f => 'Tehnilised üksikasjad';
 
   @override
-  String get s93b4695981 => 'Valve sees';
-
-  @override
-  String get s489ed73bfa => 'Valve sees (kodus)';
-
-  @override
-  String get s49e6af4fbd => 'Valve väljas';
-
-  @override
-  String get s1ba2cffb00 => 'Väljumisviivitus – valve lülitub sisse';
-
-  @override
-  String get s2b765e2c1f => 'Sisenemisviivitus – sisesta PIN';
-
-  @override
-  String get s34de2943cc => 'HÄIRE!';
-
-  @override
   String s9cf8aec76a(String p0) {
     return 'Olek on $p0 vana';
   }
@@ -6935,6 +6917,52 @@ class AppLocalizationsEt extends AppLocalizations {
       'Plaadid töötavad sinu koduvõrgus, et juhtida ükskõik kust, pane kodusild valmis.';
 
   @override
+  String get sf3b3b45b00 => 'Logi';
+
+  @override
+  String get s87c07d09ce =>
+      'Sündmusi veel pole. Logisse kogutakse valve sisse- ja väljalülitused ning häired.';
+
+  @override
+  String get s6a2900d1fc => 'Valve sisse';
+
+  @override
+  String get sdfb732c84f => 'Valve välja';
+
+  @override
+  String get s3dfa789b85 => 'HÄIRE';
+
+  @override
+  String get s6b2ed1dd31 => 'Lõppes';
+
+  @override
+  String get sa7e8a5c23b => 'Kestab või lõpuaeg teadmata';
+
+  @override
+  String get s9909138be0 => 'Põhjus';
+
+  @override
+  String get s5fb1d3d53a => 'Kes';
+
+  @override
+  String get s93b4695981 => 'Valve sees';
+
+  @override
+  String get s489ed73bfa => 'Valve sees (kodus)';
+
+  @override
+  String get s49e6af4fbd => 'Valve väljas';
+
+  @override
+  String get s1ba2cffb00 => 'Väljumisviivitus – valve lülitub sisse';
+
+  @override
+  String get s2b765e2c1f => 'Sisenemisviivitus – sisesta PIN';
+
+  @override
+  String get s34de2943cc => 'HÄIRE!';
+
+  @override
   String get s02480e4c13 => 'Mõõtmised';
 
   @override
@@ -10746,9 +10774,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s3b35de231e => 'liikumise';
-
-  @override
-  String get s3dfa789b85 => 'ALARM';
 
   @override
   String get sd9b6de0a6a => 'Teised';

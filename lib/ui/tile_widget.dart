@@ -37,6 +37,7 @@ import 'web_info.dart';
 import 'tile_visuals.dart';
 import 'weather_tile.dart';
 import 'sensor_tile.dart';
+import 'alarm_log_page.dart';
 import 'security_tile.dart';
 import '../core/security_state.dart';
 import '../energy/meters.dart';
@@ -919,7 +920,13 @@ class _TileWidgetState extends State<TileWidget> {
       return SecurityStateTile(
         tile: t,
         runtime: r,
-        onTap: widget.editing ? null : _pinGuard(r.refresh),
+        // R471 (t311u): tap opens the event log (it refreshes the state too).
+        onTap: widget.editing
+            ? null
+            : () {
+                r.refresh();
+                Navigator.push(context, MaterialPageRoute(builder: (_) => AlarmLogPage(tile: t)));
+              },
         onLongPress: widget.editing || (widget.control && AppScope.of(context).viewLocked) ? null : _details,
       );
     }

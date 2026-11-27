@@ -2359,12 +2359,6 @@
   "x-mt": true
  },
  "sf77125583f": "Detalles técnicos",
- "s93b4695981": "Armada",
- "s489ed73bfa": "Armada (en casa)",
- "s49e6af4fbd": "Desarmada",
- "s1ba2cffb00": "Retardo de salida: armando",
- "s2b765e2c1f": "Retardo de entrada: introduce el PIN",
- "s34de2943cc": "¡ALARMA!",
  "s9cf8aec76a": "El estado tiene {p0} de antigüedad",
  "s1f8cf57b2c": "Sin conexión",
  "s84819cca05": "Última alarma {p0}",
@@ -6428,6 +6422,21 @@
  "@sbc8469cce1": {
   "x-mt": true
  },
+ "sf3b3b45b00": "Registro",
+ "s87c07d09ce": "Aún no hay eventos. El registro recoge activaciones, desactivaciones y alarmas.",
+ "s6a2900d1fc": "Vigilancia activada",
+ "sdfb732c84f": "Vigilancia desactivada",
+ "s3dfa789b85": "ALARMA",
+ "s6b2ed1dd31": "Terminó",
+ "sa7e8a5c23b": "En curso o hora de fin desconocida",
+ "s9909138be0": "Causa",
+ "s5fb1d3d53a": "Quién",
+ "s93b4695981": "Armada",
+ "s489ed73bfa": "Armada (en casa)",
+ "s49e6af4fbd": "Desarmada",
+ "s1ba2cffb00": "Retardo de salida: armando",
+ "s2b765e2c1f": "Retardo de entrada: introduce el PIN",
+ "s34de2943cc": "¡ALARMA!",
  "s02480e4c13": "Medidas",
  "@s02480e4c13": {
   "x-mt": true
@@ -10359,7 +10368,6 @@
  "@s3b35de231e": {
   "x-mt": true
  },
- "s3dfa789b85": "ALARM",
  "sd9b6de0a6a": "Otros",
  "@sd9b6de0a6a": {
   "x-mt": true

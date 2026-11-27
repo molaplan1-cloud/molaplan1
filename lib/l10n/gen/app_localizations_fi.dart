@@ -2589,24 +2589,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sf77125583f => 'Tekniset tiedot';
 
   @override
-  String get s93b4695981 => 'Valvonta päällä';
-
-  @override
-  String get s489ed73bfa => 'Valvonta päällä (kotona)';
-
-  @override
-  String get s49e6af4fbd => 'Valvonta pois';
-
-  @override
-  String get s1ba2cffb00 => 'Lähtöviive – valvonta kytkeytyy';
-
-  @override
-  String get s2b765e2c1f => 'Tuloviive – anna PIN';
-
-  @override
-  String get s34de2943cc => 'HÄLYTYS!';
-
-  @override
   String s9cf8aec76a(String p0) {
     return 'Tieto $p0 vanha';
   }
@@ -6963,6 +6945,52 @@ class AppLocalizationsFi extends AppLocalizations {
       'Ruudut toimivat nyt kotiverkossa. Jotta voit ohjata kotia mistä tahansa, ota kotisilta käyttöön.';
 
   @override
+  String get sf3b3b45b00 => 'Loki';
+
+  @override
+  String get s87c07d09ce =>
+      'Ei tapahtumia vielä. Loki kerää valvonnan kytkennät ja hälytykset.';
+
+  @override
+  String get s6a2900d1fc => 'Valvonta päälle';
+
+  @override
+  String get sdfb732c84f => 'Valvonta pois';
+
+  @override
+  String get s3dfa789b85 => 'HÄLYTYS';
+
+  @override
+  String get s6b2ed1dd31 => 'Päättyi';
+
+  @override
+  String get sa7e8a5c23b => 'Käynnissä tai päättymisaika ei tiedossa';
+
+  @override
+  String get s9909138be0 => 'Syy';
+
+  @override
+  String get s5fb1d3d53a => 'Kuka';
+
+  @override
+  String get s93b4695981 => 'Valvonta päällä';
+
+  @override
+  String get s489ed73bfa => 'Valvonta päällä (kotona)';
+
+  @override
+  String get s49e6af4fbd => 'Valvonta pois';
+
+  @override
+  String get s1ba2cffb00 => 'Lähtöviive – valvonta kytkeytyy';
+
+  @override
+  String get s2b765e2c1f => 'Tuloviive – anna PIN';
+
+  @override
+  String get s34de2943cc => 'HÄLYTYS!';
+
+  @override
   String get s02480e4c13 => 'Mittaukset';
 
   @override
@@ -10817,9 +10845,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s3b35de231e => 'liikettä';
-
-  @override
-  String get s3dfa789b85 => 'HÄLYTYS';
 
   @override
   String get sd9b6de0a6a => 'Muut';

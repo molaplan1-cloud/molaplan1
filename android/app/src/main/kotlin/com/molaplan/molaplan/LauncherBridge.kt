@@ -64,7 +64,9 @@ object LauncherBridge {
                     val updated = call.argument<String>("updated") ?: ""
                     val tap = call.argument<String>("tap") ?: "open"
                     val link = call.argument<String>("link") ?: "molaplan://tile/$id"
-                    result.success(pinWidget(activity, id, title, value, color, updated, tap, link))
+                    val r = pinWidget(activity, id, title, value, color, updated, tap, link)
+                    pendingWidget?.let { copyBars(it, call.arguments as? Map<*, *>) }
+                    result.success(r)
                 }
                 "sync" -> {
                     val tiles = call.argument<List<Map<String, Any?>>>("tiles") ?: emptyList()
@@ -202,6 +204,7 @@ object LauncherBridge {
             if (src["updated"] != null) o.put("updated", src["updated"].toString())
             if (src["link"] != null) o.put("link", src["link"].toString())
             if (src["tap"] != null) o.put("tap", src["tap"].toString())
+            copyBars(o, src)
             all.put(k, o)
         }
         // A newly requested widget may not have an id yet; stash as pending values by tile id.
@@ -213,8 +216,23 @@ object LauncherBridge {
                 if (src["value"] != null) pending.put("value", src["value"].toString())
                 if (src["updated"] != null) pending.put("updated", src["updated"].toString())
                 if (src["color"] is Number) pending.put("color", (src["color"] as Number).toInt())
+                copyBars(pending, src)
             }
         }
+    }
+
+    /** R470: price bars (c/kWh ×10), their colours and the current bar; removed when absent. */
+    fun copyBars(o: JSONObject, src: Map<*, *>?) {
+        if (src == null) return
+        val bars = src["bars"] as? List<*>
+        val colors = src["barColors"] as? List<*>
+        if (bars == null || bars.isEmpty()) {
+            o.remove("bars"); o.remove("barColors"); o.remove("nowBar")
+            return
+        }
+        o.put("bars", JSONArray(bars.map { (it as? Number)?.toInt() ?: 0 }))
+        o.put("barColors", JSONArray((colors ?: emptyList<Any>()).map { (it as? Number)?.toLong() ?: 0xFF5E9E7CL }))
+        o.put("nowBar", (src["nowBar"] as? Number)?.toInt() ?: -1)
     }
 
     fun schedulePeriodic(ctx: Context) {

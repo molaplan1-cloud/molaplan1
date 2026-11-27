@@ -2573,24 +2573,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sf77125583f => 'Tekniska detaljer';
 
   @override
-  String get s93b4695981 => 'Larmat';
-
-  @override
-  String get s489ed73bfa => 'Larmat (hemma)';
-
-  @override
-  String get s49e6af4fbd => 'Avlarmat';
-
-  @override
-  String get s1ba2cffb00 => 'Utpasseringstid – larmet kopplas på';
-
-  @override
-  String get s2b765e2c1f => 'Inpasseringstid – ange PIN';
-
-  @override
-  String get s34de2943cc => 'LARM!';
-
-  @override
   String s9cf8aec76a(String p0) {
     return 'Tillståndet är $p0 gammalt';
   }
@@ -6944,6 +6926,52 @@ class AppLocalizationsSv extends AppLocalizations {
       'Brickorna fungerar på ditt hemnätverk. För att styra från var som helst, ställa in hembron.';
 
   @override
+  String get sf3b3b45b00 => 'Logg';
+
+  @override
+  String get s87c07d09ce =>
+      'Inga händelser ännu. Loggen samlar på- och avlarmningar samt larm.';
+
+  @override
+  String get s6a2900d1fc => 'Larmet på';
+
+  @override
+  String get sdfb732c84f => 'Larmet av';
+
+  @override
+  String get s3dfa789b85 => 'LARM';
+
+  @override
+  String get s6b2ed1dd31 => 'Slutade';
+
+  @override
+  String get sa7e8a5c23b => 'Pågår eller sluttid okänd';
+
+  @override
+  String get s9909138be0 => 'Orsak';
+
+  @override
+  String get s5fb1d3d53a => 'Vem';
+
+  @override
+  String get s93b4695981 => 'Larmat';
+
+  @override
+  String get s489ed73bfa => 'Larmat (hemma)';
+
+  @override
+  String get s49e6af4fbd => 'Avlarmat';
+
+  @override
+  String get s1ba2cffb00 => 'Utpasseringstid – larmet kopplas på';
+
+  @override
+  String get s2b765e2c1f => 'Inpasseringstid – ange PIN';
+
+  @override
+  String get s34de2943cc => 'LARM!';
+
+  @override
   String get s02480e4c13 => 'Mätningar';
 
   @override
@@ -10760,9 +10788,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s3b35de231e =>
       '<blank> motslidledde sin grade-före-företa-motred-motstödsföre-före-före-före-före-före-före-före-före-före-före-föregående';
-
-  @override
-  String get s3dfa789b85 => 'ALARM';
 
   @override
   String get sd9b6de0a6a => 'Andra andra';

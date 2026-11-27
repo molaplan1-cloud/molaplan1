@@ -45,7 +45,7 @@ void main() {
   setUp(NtfyDeviceDriver.resetShared);
   tearDown(() {
     NtfyDeviceDriver.resetShared();
-    NtfyDriver.subscribeIdleTimeout = const Duration(seconds: 100);
+    NtfyDriver.subscribeIdleTimeout = const Duration(minutes: 5);
   });
 
   test('a stalled state stream is caught up over HTTP – no tila json while the device publishes', () async {
@@ -130,5 +130,25 @@ void main() {
     expect(got, isEmpty);
     await Future<void>.delayed(const Duration(milliseconds: 2800));
     expect(got, contains(kv(5)));
+  });
+
+  test('R472 (t310u): an older tila json reply never replaces a newer state-topic message', () async {
+    final ntfy = await MockNtfy().start();
+    addTearDown(ntfy.stop);
+    var now = DateTime(2026, 11, 27, 15, 42);
+    NtfyDeviceDriver.clock = () => now;
+    final d = drv(ntfy);
+    addTearDown(d.dispose);
+    // 15:41:24 reply asked during the exit delay, 15:41:42 state topic: away.
+    ntfy.add('panel-reply', kv(1, state: 'exit_delay'), title: 'Tila JSON')['time'] -= 18;
+    ntfy.add(stateTopic, kv(2, state: 'away'), title: 'Tila JSON');
+    await d.startStateSub();
+    expect(await d.read({'jsonPath': r'$.state'}), 'away');
+    // The stream goes quiet; the fallback finds the older shared reply – it must not win.
+    ntfy.stalledStreams.add(stateTopic);
+    // A tile read after 36 min uses another device's reply from the poll window.
+    now = now.add(const Duration(minutes: 36));
+    expect(await d.read({'jsonPath': r'$.state'}), 'away');
+    expect(tilaCount(ntfy), 0);
   });
 }

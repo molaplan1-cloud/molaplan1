@@ -2572,24 +2572,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sf77125583f => 'Technical details';
 
   @override
-  String get s93b4695981 => 'Armed';
-
-  @override
-  String get s489ed73bfa => 'Armed (at home)';
-
-  @override
-  String get s49e6af4fbd => 'Disarmed';
-
-  @override
-  String get s1ba2cffb00 => 'Exit delay – arming';
-
-  @override
-  String get s2b765e2c1f => 'Entry delay – enter PIN';
-
-  @override
-  String get s34de2943cc => 'ALARM!';
-
-  @override
   String s9cf8aec76a(String p0) {
     return 'State is $p0 old';
   }
@@ -6936,6 +6918,52 @@ class AppLocalizationsEn extends AppLocalizations {
       'The tiles work on your home network. To control from anywhere, set up the home bridge.';
 
   @override
+  String get sf3b3b45b00 => 'Log';
+
+  @override
+  String get s87c07d09ce =>
+      'No events yet. The log collects arming, disarming and alarms.';
+
+  @override
+  String get s6a2900d1fc => 'Monitoring on';
+
+  @override
+  String get sdfb732c84f => 'Monitoring off';
+
+  @override
+  String get s3dfa789b85 => 'ALARM';
+
+  @override
+  String get s6b2ed1dd31 => 'Ended';
+
+  @override
+  String get sa7e8a5c23b => 'Ongoing or end time unknown';
+
+  @override
+  String get s9909138be0 => 'Cause';
+
+  @override
+  String get s5fb1d3d53a => 'Who';
+
+  @override
+  String get s93b4695981 => 'Armed';
+
+  @override
+  String get s489ed73bfa => 'Armed (at home)';
+
+  @override
+  String get s49e6af4fbd => 'Disarmed';
+
+  @override
+  String get s1ba2cffb00 => 'Exit delay – arming';
+
+  @override
+  String get s2b765e2c1f => 'Entry delay – enter PIN';
+
+  @override
+  String get s34de2943cc => 'ALARM!';
+
+  @override
   String get s02480e4c13 => 'Measurements';
 
   @override
@@ -10754,9 +10782,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s3b35de231e => 'motion';
-
-  @override
-  String get s3dfa789b85 => 'ALARM';
 
   @override
   String get sd9b6de0a6a => 'Other';

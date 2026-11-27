@@ -3566,12 +3566,12 @@
  "s12c2f8e6e4": "Home network only",
  "@s12c2f8e6e4": {
   "description": "fi: Vain kotiverkossa",
-  "x-where": "ui/tile_widget.dart:96"
+  "x-where": "ui/tile_widget.dart:97"
  },
  "s5f7c464e6d": "at {p0}",
  "@s5f7c464e6d": {
   "description": "fi: klo {p0}",
-  "x-where": "ui/tile_widget.dart:131",
+  "x-where": "ui/tile_widget.dart:132",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -3581,7 +3581,7 @@
  "s21b64ae0a7": "{p0} only works on the home network. The tile returns to normal by itself when you are home again.",
  "@s21b64ae0a7": {
   "description": "fi: {p0} toimii vain kotiverkossa. Ruutu palaa normaaliksi itsestään, kun olet taas kotona.",
-  "x-where": "ui/tile_widget.dart:179",
+  "x-where": "ui/tile_widget.dart:180",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -3591,82 +3591,82 @@
  "s6b1a8249de": "Last state",
  "@s6b1a8249de": {
   "description": "fi: Viimeisin tila",
-  "x-where": "ui/tile_widget.dart:189"
+  "x-where": "ui/tile_widget.dart:190"
  },
  "s56650a18d5": "Make it work remotely ›",
  "@s56650a18d5": {
   "description": "fi: Tee etäkäyttöiseksi ›",
-  "x-where": "ui/tile_widget.dart:207"
+  "x-where": "ui/tile_widget.dart:208"
  },
  "sa0d8c62e5a": "No command configured",
  "@sa0d8c62e5a": {
   "description": "fi: Komentoa ei ole määritetty",
-  "x-where": "ui/tile_widget.dart:356"
+  "x-where": "ui/tile_widget.dart:357"
  },
  "s1e5d696a26": "Run this command?",
  "@s1e5d696a26": {
   "description": "fi: Suoritetaanko komento?",
-  "x-where": "ui/tile_widget.dart:364"
+  "x-where": "ui/tile_widget.dart:365"
  },
  "sa5ee6618a3": "change PIN",
  "@sa5ee6618a3": {
   "description": "fi: vaihda PIN-koodi",
-  "x-where": "ui/tile_widget.dart:406"
+  "x-where": "ui/tile_widget.dart:407"
  },
  "s66f8ce67ed": "enter PIN",
  "@s66f8ce67ed": {
   "description": "fi: syötä PIN-koodi",
-  "x-where": "ui/tile_widget.dart:407"
+  "x-where": "ui/tile_widget.dart:408"
  },
  "sb7b0c97cfa": "The device needs its PIN for every command and status request. Enter it once here.",
  "@sb7b0c97cfa": {
   "description": "fi: Laite tarvitsee PIN-koodin jokaiseen komentoon ja tilakyselyyn. Syötä se kerran tässä.",
-  "x-where": "ui/tile_widget.dart:415"
+  "x-where": "ui/tile_widget.dart:416"
  },
  "s1df6e2eaa7": "PIN",
  "@s1df6e2eaa7": {
   "description": "fi: PIN",
-  "x-where": "ui/tile_widget.dart:429"
+  "x-where": "ui/tile_widget.dart:430"
  },
  "sb52d5c0b5b": "The browser never stores the PIN. It is asked again the next time you open the page.",
  "@sb52d5c0b5b": {
   "description": "fi: Selaimessa PIN-koodia ei tallenneta. Se kysytään uudelleen, kun avaat sivun seuraavan kerran.",
-  "x-where": "ui/tile_widget.dart:437"
+  "x-where": "ui/tile_widget.dart:438"
  },
  "secab66c046": "Remember on this device",
  "@secab66c046": {
   "description": "fi: Muista tällä laitteella",
-  "x-where": "ui/tile_widget.dart:450"
+  "x-where": "ui/tile_widget.dart:451"
  },
  "s2a15ea2eab": "Stored encrypted on this device only – not in the account or on other devices. Off = asked again when the app restarts.",
  "@s2a15ea2eab": {
   "description": "fi: Tallennetaan salattuna vain tähän laitteeseen – ei tilille eikä muille laitteille. Pois päältä = kysytään taas, kun sove",
-  "x-where": "ui/tile_widget.dart:452"
+  "x-where": "ui/tile_widget.dart:453"
  },
  "sdfc012fb4e": "PIN code",
  "@sdfc012fb4e": {
   "description": "fi: PIN-koodi",
-  "x-where": "ui/tile_widget.dart:508"
+  "x-where": "ui/tile_widget.dart:509"
  },
  "s10bf4eab8e": "Stored encrypted on this device only. By default the PIN is not stored.",
  "@s10bf4eab8e": {
   "description": "fi: Tallennetaan suojattuna vain tähän laitteeseen. Oletuksena PIN-koodia ei tallenneta.",
-  "x-where": "ui/tile_widget.dart:532"
+  "x-where": "ui/tile_widget.dart:533"
  },
  "s912ea5d2ec": "Send",
  "@s912ea5d2ec": {
   "description": "fi: Lähetä",
-  "x-where": "ui/tile_widget.dart:547"
+  "x-where": "ui/tile_widget.dart:548"
  },
  "s856418521a": "No commands configured",
  "@s856418521a": {
   "description": "fi: Komentoja ei ole määritetty",
-  "x-where": "ui/tile_widget.dart:562"
+  "x-where": "ui/tile_widget.dart:563"
  },
  "sb0ba67e677": "Ran at {p0}",
  "@sb0ba67e677": {
   "description": "fi: Ajettu klo {p0}",
-  "x-where": "ui/tile_widget.dart:598",
+  "x-where": "ui/tile_widget.dart:599",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -3676,7 +3676,7 @@
  "sdfa66ee201": "{p0}: sent",
  "@sdfa66ee201": {
   "description": "fi: {p0}: lähetetty",
-  "x-where": "ui/tile_widget.dart:608",
+  "x-where": "ui/tile_widget.dart:609",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -3686,72 +3686,72 @@
  "s12fc3810a5": "Sent – waiting for the reply…",
  "@s12fc3810a5": {
   "description": "fi: Lähetetty – odotetaan vastausta…",
-  "x-where": "ui/tile_widget.dart:656"
+  "x-where": "ui/tile_widget.dart:657"
  },
  "sd1c7d49360": "Reply at",
  "@sd1c7d49360": {
   "description": "fi: Vastaus klo",
-  "x-where": "ui/tile_widget.dart:673"
+  "x-where": "ui/tile_widget.dart:674"
  },
  "s29fae6a0e8": "Price control on",
  "@s29fae6a0e8": {
   "description": "fi: Hintaohjaus käytössä",
-  "x-where": "ui/tile_widget.dart:710"
+  "x-where": "ui/tile_widget.dart:711"
  },
  "sbfe79d1f5f": "Updated",
  "@sbfe79d1f5f": {
   "description": "fi: Päivitetty",
-  "x-where": "ui/tile_widget.dart:712"
+  "x-where": "ui/tile_widget.dart:713"
  },
  "s46d0983ce8": "Add to home screen",
  "@s46d0983ce8": {
   "description": "fi: Lisää aloitusnäytölle",
-  "x-where": "ui/tile_widget.dart:731"
+  "x-where": "ui/tile_widget.dart:732"
  },
  "s59d55f8882": "Rename",
  "@s59d55f8882": {
   "description": "fi: Nimeä uudelleen",
-  "x-where": "ui/tile_widget.dart:738"
+  "x-where": "ui/tile_widget.dart:739"
  },
  "s84ada1ae69": "Change PIN",
  "@s84ada1ae69": {
   "description": "fi: Vaihda PIN",
-  "x-where": "ui/tile_widget.dart:750"
+  "x-where": "ui/tile_widget.dart:751"
  },
  "s25580038cb": "Saved PIN removed",
  "@s25580038cb": {
   "description": "fi: Tallennettu PIN poistettu",
-  "x-where": "ui/tile_widget.dart:758"
+  "x-where": "ui/tile_widget.dart:759"
  },
  "sf50c488b24": "Forget saved PIN",
  "@sf50c488b24": {
   "description": "fi: Unohda tallennettu PIN",
-  "x-where": "ui/tile_widget.dart:760"
+  "x-where": "ui/tile_widget.dart:761"
  },
  "safe0429a90": "Price control",
  "@safe0429a90": {
   "description": "fi: Hintaohjaus",
-  "x-where": "ui/tile_widget.dart:769"
+  "x-where": "ui/tile_widget.dart:770"
  },
  "sf3d644dd4c": "Learn a remote button",
  "@sf3d644dd4c": {
   "description": "fi: Opettele kaukosäätimen nappi",
-  "x-where": "ui/tile_widget.dart:778"
+  "x-where": "ui/tile_widget.dart:779"
  },
  "sfb1a18d11f": "Refresh",
  "@sfb1a18d11f": {
   "description": "fi: Päivitä",
-  "x-where": "ui/tile_widget.dart:785"
+  "x-where": "ui/tile_widget.dart:786"
  },
  "sbb9e9b1229": "Enter PIN",
  "@sbb9e9b1229": {
   "description": "fi: Syötä PIN",
-  "x-where": "ui/tile_widget.dart:1063"
+  "x-where": "ui/tile_widget.dart:1070"
  },
  "se38a9bb2ed": "Last",
  "@se38a9bb2ed": {
   "description": "fi: Viimeksi",
-  "x-where": "ui/tile_widget.dart:1228"
+  "x-where": "ui/tile_widget.dart:1235"
  },
  "sf1ed8904bb": "Choose the register list (CSV)",
  "@sf1ed8904bb": {
@@ -4069,40 +4069,10 @@
   "description": "fi: Tekniset tiedot",
   "x-where": "ui/error_box.dart:60"
  },
- "s93b4695981": "Armed",
- "@s93b4695981": {
-  "description": "fi: Valvonta päällä",
-  "x-where": "ui/security_tile.dart:23"
- },
- "s489ed73bfa": "Armed (at home)",
- "@s489ed73bfa": {
-  "description": "fi: Valvonta päällä (kotona)",
-  "x-where": "ui/security_tile.dart:25"
- },
- "s49e6af4fbd": "Disarmed",
- "@s49e6af4fbd": {
-  "description": "fi: Valvonta pois",
-  "x-where": "ui/security_tile.dart:29"
- },
- "s1ba2cffb00": "Exit delay – arming",
- "@s1ba2cffb00": {
-  "description": "fi: Lähtöviive – valvonta kytkeytyy",
-  "x-where": "ui/security_tile.dart:31"
- },
- "s2b765e2c1f": "Entry delay – enter PIN",
- "@s2b765e2c1f": {
-  "description": "fi: Tuloviive – anna PIN",
-  "x-where": "ui/security_tile.dart:36"
- },
- "s34de2943cc": "ALARM!",
- "@s34de2943cc": {
-  "description": "fi: HÄLYTYS!",
-  "x-where": "ui/security_tile.dart:41"
- },
  "s9cf8aec76a": "State is {p0} old",
  "@s9cf8aec76a": {
   "description": "fi: Tieto {p0} vanha",
-  "x-where": "ui/security_tile.dart:153",
+  "x-where": "ui/security_tile.dart:136",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -11267,6 +11237,81 @@
   "description": "fi: Ruudut toimivat nyt kotiverkossa. Jotta voit ohjata kotia mistä tahansa, ota kotisilta käyttöön.",
   "x-where": "ui/add_device_wizard.dart:1182"
  },
+ "sf3b3b45b00": "Log",
+ "@sf3b3b45b00": {
+  "description": "fi: Loki",
+  "x-where": "ui/alarm_log_page.dart:72"
+ },
+ "s87c07d09ce": "No events yet. The log collects arming, disarming and alarms.",
+ "@s87c07d09ce": {
+  "description": "fi: Ei tapahtumia vielä. Loki kerää valvonnan kytkennät ja hälytykset.",
+  "x-where": "ui/alarm_log_page.dart:97"
+ },
+ "s6a2900d1fc": "Monitoring on",
+ "@s6a2900d1fc": {
+  "description": "fi: Valvonta päälle",
+  "x-where": "ui/alarm_log_page.dart:116"
+ },
+ "sdfb732c84f": "Monitoring off",
+ "@sdfb732c84f": {
+  "description": "fi: Valvonta pois",
+  "x-where": "ui/alarm_log_page.dart:121"
+ },
+ "s3dfa789b85": "ALARM",
+ "@s3dfa789b85": {
+  "description": "fi: HÄLYTYS",
+  "x-where": "ui/alarm_log_page.dart:126"
+ },
+ "s6b2ed1dd31": "Ended",
+ "@s6b2ed1dd31": {
+  "description": "fi: Päättyi",
+  "x-where": "ui/alarm_log_page.dart:131"
+ },
+ "sa7e8a5c23b": "Ongoing or end time unknown",
+ "@sa7e8a5c23b": {
+  "description": "fi: Käynnissä tai päättymisaika ei tiedossa",
+  "x-where": "ui/alarm_log_page.dart:133"
+ },
+ "s9909138be0": "Cause",
+ "@s9909138be0": {
+  "description": "fi: Syy",
+  "x-where": "ui/alarm_log_page.dart:139"
+ },
+ "s5fb1d3d53a": "Who",
+ "@s5fb1d3d53a": {
+  "description": "fi: Kuka",
+  "x-where": "ui/alarm_log_page.dart:141"
+ },
+ "s93b4695981": "Armed",
+ "@s93b4695981": {
+  "description": "fi: Valvonta päällä",
+  "x-where": "core/security_state.dart:81"
+ },
+ "s489ed73bfa": "Armed (at home)",
+ "@s489ed73bfa": {
+  "description": "fi: Valvonta päällä (kotona)",
+  "x-where": "core/security_state.dart:82"
+ },
+ "s49e6af4fbd": "Disarmed",
+ "@s49e6af4fbd": {
+  "description": "fi: Valvonta pois",
+  "x-where": "core/security_state.dart:83"
+ },
+ "s1ba2cffb00": "Exit delay – arming",
+ "@s1ba2cffb00": {
+  "description": "fi: Lähtöviive – valvonta kytkeytyy",
+  "x-where": "core/security_state.dart:84"
+ },
+ "s2b765e2c1f": "Entry delay – enter PIN",
+ "@s2b765e2c1f": {
+  "description": "fi: Tuloviive – anna PIN",
+  "x-where": "core/security_state.dart:85"
+ },
+ "s34de2943cc": "ALARM!",
+ "@s34de2943cc": {
+  "description": "fi: HÄLYTYS!",
+  "x-where": "core/security_state.dart:86"
+ },
  "s02480e4c13": "Measurements",
  "@s02480e4c13": {
   "description": "fi: Mittaukset",
@@ -13066,12 +13111,12 @@
  "sb56e7e9f81": "ntfy: command missing",
  "@sb56e7e9f81": {
   "description": "fi: ntfy: komento puuttuu",
-  "x-where": "drivers/ntfy_device.dart:754"
+  "x-where": "drivers/ntfy_device.dart:765"
  },
  "s02e16b2c5c": "The command was sent, but the device did not answer within {p0} s – is the device online? Also check the PIN: many devices do not answer a wrong PIN at all (topic \"{p1}\").",
  "@s02e16b2c5c": {
   "description": "fi: Komento lähti, mutta laite ei vastannut {p0} s:ssa – onko laite verkossa? Tarkista myös PIN-koodi: moni laite ei vastaa ",
-  "x-where": "drivers/ntfy_device.dart:783",
+  "x-where": "drivers/ntfy_device.dart:794",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13084,7 +13129,7 @@
  "sdf4ecde616": "The command was sent, but the device did not answer within {p0} s – is the device online? If it answers only at intervals, increase \"Minimum time between commands\" (topic \"{p1}\").",
  "@sdf4ecde616": {
   "description": "fi: Komento lähti, mutta laite ei vastannut {p0} s:ssa – onko laite verkossa? Jos laite vastaa vain tietyin väliajoin, kasva",
-  "x-where": "drivers/ntfy_device.dart:787",
+  "x-where": "drivers/ntfy_device.dart:798",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13097,7 +13142,7 @@
  "s9e974e06df": "The command was sent, but no state arrived on the state or reply topic within {p0} s.",
  "@s9e974e06df": {
   "description": "fi: Komento lähti, mutta tilaa ei tullut {p0} s:ssa tilakanavalle eikä vastauskanavalle.",
-  "x-where": "drivers/ntfy_device.dart:825",
+  "x-where": "drivers/ntfy_device.dart:836",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13107,7 +13152,7 @@
  "s1257447096": "The device answered: {p0}",
  "@s1257447096": {
   "description": "fi: Laite vastasi: {p0}",
-  "x-where": "drivers/ntfy_device.dart:839",
+  "x-where": "drivers/ntfy_device.dart:850",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13117,42 +13162,42 @@
  "sc112a20bf5": "If the device replies on another topic (e.g. your notification topic), set it as \"Reply topic\".",
  "@sc112a20bf5": {
   "description": "fi: Jos laite vastaa toiselle kanavalle (esim. ilmoituskanavallesi), aseta se kohtaan \"Vastauskanava\".",
-  "x-where": "drivers/ntfy_device.dart:895"
+  "x-where": "drivers/ntfy_device.dart:908"
  },
  "sb9873b4f15": "The state topic is being listened to, but no state has arrived yet.",
  "@sb9873b4f15": {
   "description": "fi: Tilakanavaa kuunnellaan, mutta tilaa ei ole vielä tullut.",
-  "x-where": "drivers/ntfy_device.dart:907"
+  "x-where": "drivers/ntfy_device.dart:920"
  },
  "sf03877dd0a": " A PIN is stored.",
  "@sf03877dd0a": {
   "description": "fi:  PIN on tallennettu.",
-  "x-where": "drivers/ntfy_device.dart:1097"
+  "x-where": "drivers/ntfy_device.dart:1110"
  },
  "s91089c4d9f": " The state topic is being listened to.",
  "@s91089c4d9f": {
   "description": "fi:  Tilakanavaa kuunnellaan.",
-  "x-where": "drivers/ntfy_device.dart:1099"
+  "x-where": "drivers/ntfy_device.dart:1112"
  },
  "sab4a606e33": "The device has not sent state in over an hour – is the device online?",
  "@sab4a606e33": {
   "description": "fi: Laite ei ole lähettänyt tilaa yli tuntiin – onko laite verkossa?",
-  "x-where": "drivers/ntfy_device.dart:1115"
+  "x-where": "drivers/ntfy_device.dart:1128"
  },
  "s33cfb86f9f": "The command was sent, but the device did not answer in time – is the device online? (The ntfy server works.)",
  "@s33cfb86f9f": {
   "description": "fi: Komento lähti, mutta laite ei vastannut ajoissa – onko laite verkossa? (ntfy-palvelin toimii.)",
-  "x-where": "drivers/ntfy_device.dart:1131"
+  "x-where": "drivers/ntfy_device.dart:1144"
  },
  "s7087533324": "not allowed in daylight (day_blocked) – the light follows daylight",
  "@s7087533324": {
   "description": "fi: ei sallittu päivällä (day_blocked) – valo ohjautuu päivänvalon mukaan",
-  "x-where": "drivers/ntfy_device.dart:1171"
+  "x-where": "drivers/ntfy_device.dart:1184"
  },
  "sf3066f08eb": "wrong PIN ({p0})",
  "@sf3066f08eb": {
   "description": "fi: väärä PIN-koodi ({p0})",
-  "x-where": "drivers/ntfy_device.dart:1177",
+  "x-where": "drivers/ntfy_device.dart:1190",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13162,7 +13207,7 @@
  "s14fac6d719": "too many commands – wait a moment ({p0})",
  "@s14fac6d719": {
   "description": "fi: liian monta komentoa – odota hetki ({p0})",
-  "x-where": "drivers/ntfy_device.dart:1180",
+  "x-where": "drivers/ntfy_device.dart:1193",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -16611,7 +16656,7 @@
  "s65320ede20": "Calm",
  "@s65320ede20": {
   "description": "fi: Rauhallinen",
-  "x-where": "state/home_launcher.dart:101"
+  "x-where": "state/home_launcher.dart:167"
  },
  "s7e5f6a29e3": "Good night",
  "@s7e5f6a29e3": {
@@ -17307,11 +17352,6 @@
  "@s3b35de231e": {
   "description": "fi: liikettä",
   "x-where": "devices/shelly_cloud_model.dart:274"
- },
- "s3dfa789b85": "ALARM",
- "@s3dfa789b85": {
-  "description": "fi: HÄLYTYS",
-  "x-where": "devices/shelly_cloud_model.dart:275"
  },
  "sd9b6de0a6a": "Other",
  "@sd9b6de0a6a": {
