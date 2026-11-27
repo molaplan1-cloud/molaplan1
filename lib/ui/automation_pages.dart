@@ -384,14 +384,37 @@ Future<void> showTemplatePicker(BuildContext context) async {
   );
   if (pick == null || !context.mounted) return;
   // Which devices? Leak / offline / temperature: one; lights: any number of switches.
-  final one = const {'leak_alarm', 'offline_alert', 'temp_low'}.contains(pick.id);
+  final one = const {'leak_alarm', 'offline_alert', 'temp_low', 'ev_cheap'}.contains(pick.id);
   final none = const {'price_high', 'frost', 'morning'}.contains(pick.id);
   var targets = <String>[];
+  if (pick.id == 'ev_surplus') {
+    // R289: two picks – the grid power tile (+ import / − export), then the charger on/off tile.
+    final all = _allTiles(st);
+    final grids = all.where((t) => t.read['pv'] == 'grid_power').toList();
+    final g = await pickTiles(
+      context,
+      grids.isEmpty ? all.where((t) => t.type == TileType.value && t.unit == 'W').toList() : grids,
+      single: true,
+      title: tx(context, 'Valitse verkon teho (+osto / −myynti)', 'Choose the grid power (+import / −export)'),
+    );
+    if (g == null || g.isEmpty || !context.mounted) return;
+    final chargers = all.where((t) => t.type == TileType.toggle && t.read['ev'] == 'charging').toList();
+    final c = await pickTiles(
+      context,
+      chargers.isEmpty ? all.where((t) => t.type == TileType.toggle).toList() : chargers,
+      single: true,
+      title: tx(context, 'Valitse laturi (lataus päälle/pois)', 'Choose the charger (charging on/off)'),
+    );
+    if (c == null || c.isEmpty || !context.mounted) return;
+    await openAutomationEditor(context, existing: pick.build([g.first, c.first], lang: langOf(context)), isNew: true);
+    return;
+  }
   if (!none) {
     bool fits(TileConfig t) => switch (pick.id) {
       'leak_alarm' => t.sensor == 'leak' || t.sensor == 'alarm',
       'temp_low' => t.type == TileType.value && t.unit.contains('°'),
       'offline_alert' => t.connectionId != null && t.connectionId != autoConnId,
+      'ev_cheap' => t.type == TileType.toggle && t.read['ev'] == 'charging',
       _ => t.type == TileType.toggle,
     };
     final cands = _allTiles(st).where(fits).toList();
@@ -909,8 +932,10 @@ class ConditionEditor extends StatelessWidget {
       ('price', tx(context, 'Sähkön hinta', 'Electricity price')),
       ('weather', tx(context, 'Ulkolämpötila', 'Outdoor temperature')),
       ('sun', tx(context, 'Pimeää / valoisaa', 'Dark / light')),
+      ('cheapest', tx(context, 'Halvimmat tunnit', 'Cheapest hours')),
     ];
     Map<String, dynamic> defaults(String k) => switch (k) {
+      'cheapest' => {'hours': 3, 'not': false},
       'time' => {'from': '22:00', 'to': '06:00'},
       'days' => {
         'days': [1, 2, 3, 4, 5],
@@ -998,6 +1023,28 @@ class ConditionEditor extends StatelessWidget {
         fields.add(_cmpRow('cond', 'c/kWh', a, '<', set));
       case 'weather':
         fields.add(_cmpRow('cond', '°C', a, '<', set));
+      case 'cheapest':
+        fields.add(
+          Row(
+            children: [
+              Expanded(
+                child: _drop('cond-cheap-not', tx(context, 'Nyt on', 'Now is'), a['not'] == true ? 'not' : 'in', [
+                  ('in', tx(context, 'halpa tunti', 'a cheap hour')),
+                  ('not', tx(context, 'ei halpa tunti', 'not a cheap hour')),
+                ], (v) => set('not', v == 'not')),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: _field(
+                  'cond-cheap-hours',
+                  tx(context, 'Halvinta tuntia / vrk', 'Cheapest hours / day'),
+                  a['hours'] ?? 3,
+                  (v) => set('hours', int.tryParse(v.trim()) ?? 3),
+                ),
+              ),
+            ],
+          ),
+        );
       case 'sun':
         fields.add(
           _drop('cond-sun', tx(context, 'Kun', 'When'), '${a['when'] ?? 'dark'}', [

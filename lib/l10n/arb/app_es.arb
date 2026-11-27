@@ -366,12 +366,29 @@
  "@s1f08341033": {
   "x-mt": true
  },
+ "sa7f9b278cf": "Huawei SUN2000 (Modbus TCP)",
+ "sc5863d817d": "SMA (SunSpec Modbus)",
+ "s12733504dc": "SMA Energy Meter / Home Manager (Speedwire)",
+ "sdeb4f39ff0": "Growatt (Modbus TCP)",
+ "s800d13debd": "Puerto",
+ "@s800d13debd": {
+  "x-mt": true
+ },
+ "s58f0665e29": "Modbus unit id",
  "sc27533ae83": "Ahorro",
  "sdbcb85509b": "La temperatura puede variar más (+1 / −2 °C). Mayor ahorro.",
  "s380b20be36": "Equilibrado",
  "s66ea783264": "Poca variación (+1 / −1 °C). Una buena opción por defecto.",
  "see96226e44": "Confort",
  "sb403e00b3d": "Temperatura casi constante (+0,5 / −0,5 °C). Ahorra un poco.",
+ "se74bcc1028": "Tarjetas adicionales para automatizaciones",
+ "@se74bcc1028": {
+  "x-mt": true
+ },
+ "s7a7ab0d238": "Almacenado encriptado en este dispositivo sólo.",
+ "@s7a7ab0d238": {
+  "x-mt": true
+ },
  "sd86b823895": "Sonoff",
  "s5f297ec9d8": "BASIC, MINI, POW, TH, 4CH... en modo DIY, con Tasmota o ESPHome. Las tarjetas están hechas para usted; uso remoto a través del puente casero.",
  "@s5f297ec9d8": {
@@ -3687,6 +3704,10 @@
  "@s585b4c519f": {
   "x-mt": true
  },
+ "sd408a5dbe9": "Horas más baratas",
+ "@sd408a5dbe9": {
+  "x-mt": true
+ },
  "s6019108a01": "Estado",
  "@s6019108a01": {
   "x-mt": true
@@ -4783,10 +4804,6 @@
  "s09737988fd": "¡La conexión funciona!",
  "s0a972aa85e": "Las contraseñas y las fichas se almacenan en el almacenamiento seguro del dispositivo.",
  "@s0a972aa85e": {
-  "x-mt": true
- },
- "sd408a5dbe9": "Horas más baratas",
- "@sd408a5dbe9": {
   "x-mt": true
  },
  "sa26ae27039": "Pasar las horas más caras",
@@ -6868,6 +6885,7 @@
  "@sbf7cc3de9a": {
   "x-mt": true
  },
+ "s5bed8bff00": "Comando",
  "s1becc05ea1": "locked=Cerrado;unlocked=Abierto;jammed=ATASCADO",
  "s259de02f33": "open=Abierta;closed=Cerrada;opening=Abriendo;closing=Cerrando",
  "s64d4364336": "disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming",
@@ -7167,10 +7185,6 @@
  },
  "se1bd60873c": "MQTT",
  "s85b9781bb7": "Host del bróker",
- "s800d13debd": "Puerto",
- "@s800d13debd": {
-  "x-mt": true
- },
  "s49fa57061a": "TLS",
  "s0fcef98aad": "Use WebSocket (ws:// o wss://)",
  "@s0fcef98aad": {
@@ -7636,7 +7650,6 @@
  "@s89ad1c43b4": {
   "x-mt": true
  },
- "s5bed8bff00": "Comando",
  "sec7af7b376": "Por ejemplo, \"light on\". El PIN y otras partes se añaden por la plantilla de comando del dispositivo.",
  "@sec7af7b376": {
   "x-mt": true
@@ -8267,7 +8280,6 @@
  "@scd35ffb8e9": {
   "x-mt": true
  },
- "s58f0665e29": "Modbus unit id",
  "sab25ff8075": "Dirección de unidad Modbus, generalmente 1.",
  "@sab25ff8075": {
   "x-mt": true
@@ -8373,10 +8385,6 @@
  "@s6d21845355": {
   "x-mt": true
  },
- "se74bcc1028": "Tarjetas adicionales para automatizaciones",
- "@se74bcc1028": {
-  "x-mt": true
- },
  "s4a91d07711": "Daikin (Wi-Fi, local)",
  "@s4a91d07711": {
   "x-mt": true
@@ -8399,10 +8407,6 @@
  },
  "s41d69e699d": "Igual que en la aplicación MELCloud.",
  "@s41d69e699d": {
-  "x-mt": true
- },
- "s7a7ab0d238": "Almacenado encriptado en este dispositivo sólo.",
- "@s7a7ab0d238": {
   "x-mt": true
  },
  "sa8405bf705": "Bombas de calor Toshiba Wi-Fi a través de su cuenta Toshiba Home AC Control.",
@@ -9231,6 +9235,574 @@
  },
  "s3a38b97f7b": "{p0} – room",
  "@s3a38b97f7b": {
+  "x-mt": true
+ },
+ "s0d714dece1": "Fronius (Solar API, local)",
+ "@s0d714dece1": {
+  "x-mt": true
+ },
+ "sa38a153c07": "SolarEdge (Modbus TCP, local)",
+ "@sa38a153c07": {
+  "x-mt": true
+ },
+ "s833dfe954e": "SMA (Modbus TCP, local)",
+ "@s833dfe954e": {
+  "x-mt": true
+ },
+ "sa1769b666b": "Otro inversor SunSpec (Modbus TCP)",
+ "@sa1769b666b": {
+  "x-mt": true
+ },
+ "s1694840083": "Huawei FusionSolar (cloud)",
+ "@s1694840083": {
+  "x-mt": true
+ },
+ "s205e886d29": "Vigilancia de SolarEdge (cloud)",
+ "@s205e886d29": {
+  "x-mt": true
+ },
+ "s5bf46ebec4": "Growatt OpenAPI (cloud)",
+ "@s5bf46ebec4": {
+  "x-mt": true
+ },
+ "se7c240ad4f": "Solar / inversor (integración incorporada)",
+ "@se7c240ad4f": {
+  "x-mt": true
+ },
+ "s46b5445e4a": "Marca y conexión",
+ "@s46b5445e4a": {
+  "x-mt": true
+ },
+ "sef83efed4e": "Marcador y tipo de conexión. Los locales trabajan sin la nube y se actualizan más rápido.",
+ "@sef83efed4e": {
+  "x-mt": true
+ },
+ "scc322677fe": "Dirección IP (local)",
+ "@scc322677fe": {
+  "x-mt": true
+ },
+ "s6ac1068052": "Dirección IP del inversor, SDongle o medidor (desde la lista del dispositivo del router).",
+ "@s6ac1068052": {
+  "x-mt": true
+ },
+ "sa163739d18": "Empty = default (Modbus 502, SolarEdge 1502, Huawei inverter Wi-Fi 6607).",
+ "@sa163739d18": {
+  "x-mt": true
+ },
+ "sd5e2f52587": "Empty = default (Huawei 1, SolarEdge 1, SMA 3, SMA SunSpec 126, Growatt 1).",
+ "@sd5e2f52587": {
+  "x-mt": true
+ },
+ "se49fbf06a8": "Meter serial (SMA Energy Meter)",
+ "@se49fbf06a8": {
+  "x-mt": true
+ },
+ "s4a63dcc985": "Sólo si hay varios metros SMA en la red. Vacío = el primero.",
+ "@s4a63dcc985": {
+  "x-mt": true
+ },
+ "s6e391cf987": "Usuario (FusionSolar API)",
+ "@s6e391cf987": {
+  "x-mt": true
+ },
+ "se76a6f4565": "FusionSolar Usuario de API Northbound (creado por el instalador: Sistema → Empresa → Northbound).",
+ "@se76a6f4565": {
+  "x-mt": true
+ },
+ "s2f3b444057": "Contraseña / código del sistema",
+ "@s2f3b444057": {
+  "x-mt": true
+ },
+ "s11298f6c17": "Almacenado sólo en este dispositivo / en su propia bóveda cifrada.",
+ "@s11298f6c17": {
+  "x-mt": true
+ },
+ "s68eeca8dbe": "Clave de API (SolarEdge / Growatt)",
+ "@s68eeca8dbe": {
+  "x-mt": true
+ },
+ "seba7bd613f": "SolarEdge: portal de monitoreo → Admin → Acceso al sitio → API. Growatt: OpenAPI token.",
+ "@seba7bd613f": {
+  "x-mt": true
+ },
+ "s3cda8d5f90": "Sitio / planta id (cloud)",
+ "@s3cda8d5f90": {
+  "x-mt": true
+ },
+ "see56030ac8": "Vacío = el primer sitio de la cuenta.",
+ "@see56030ac8": {
+  "x-mt": true
+ },
+ "sbdf670977b": "Lectura",
+ "@sbdf670977b": {
+  "x-mt": true
+ },
+ "s9d61569ac0": "Grid: positivo = compra de la red, negativo = excedente de venta.",
+ "@s9d61569ac0": {
+  "x-mt": true
+ },
+ "sc78a29bef9": "Energía solar ahora (W)",
+ "@sc78a29bef9": {
+  "x-mt": true
+ },
+ "s88a9d9b593": "Yield today (kWh)",
+ "@s88a9d9b593": {
+  "x-mt": true
+ },
+ "s4766881640": "Rendimiento total (kWh)",
+ "@s4766881640": {
+  "x-mt": true
+ },
+ "s4e1e06f64a": "Grid +import / −exportación (W)",
+ "@s4e1e06f64a": {
+  "x-mt": true
+ },
+ "s5c5e6866eb": "Total importado (kWh)",
+ "@s5c5e6866eb": {
+  "x-mt": true
+ },
+ "s7495975366": "Total exportado (kWh)",
+ "@s7495975366": {
+  "x-mt": true
+ },
+ "s275ffaa691": "Cargo de batería (%)",
+ "@s275ffaa691": {
+  "x-mt": true
+ },
+ "s9da1bd7ed1": "Batería + carga / −descarga (W)",
+ "@s9da1bd7ed1": {
+  "x-mt": true
+ },
+ "sb6d790453a": "Consumo en el hogar (W)",
+ "@sb6d790453a": {
+  "x-mt": true
+ },
+ "sff9335b6df": "El dispositivo no reporta esta lectura ({p0})",
+ "@sff9335b6df": {
+  "x-mt": true
+ },
+ "s711b4531bd": "Los inversores sólo se leen",
+ "@s711b4531bd": {
+  "x-mt": true
+ },
+ "s257cf40257": "solar",
+ "@s257cf40257": {
+  "x-mt": true
+ },
+ "sfa32969a23": "cuadrícula",
+ "@sfa32969a23": {
+  "x-mt": true
+ },
+ "s333643b4c4": "SMA Energy Meter: no transmisiones en la red doméstica (multicast 239.12.255.254:9522)",
+ "@s333643b4c4": {
+  "x-mt": true
+ },
+ "s0a81072a1f": "Encuéntrelo en la lista de dispositivos de su router o en la aplicación del fabricante (información del dispositivo).",
+ "@s0a81072a1f": {
+  "x-mt": true
+ },
+ "s7c6a740594": "Principales lecturas",
+ "@s7c6a740594": {
+  "x-mt": true
+ },
+ "s87d0186621": "Huawei SUN2000 (Modbus TCP, local)",
+ "@s87d0186621": {
+  "x-mt": true
+ },
+ "se7647d6762": "Inversor SUN2000 (incluido la batería LUNA2000 y el metro DTSU666) a través del SDongle en su red, sin nube.",
+ "@se7647d6762": {
+  "x-mt": true
+ },
+ "sccb0c7d2d8": "La dirección IP SDongle. En primer lugar, en la aplicación FusionSolar: Dispositivo encargado → Dongle → Modbus TCP = \"Permiso (no restringido)\". Sin un dongle: el propio Wi-Fi del inversor, dirección como 192.168.200.1:6607.",
+ "@sccb0c7d2d8": {
+  "x-mt": true
+ },
+ "sddc831ec16": "Opcional: producción a través de la API oficial FusionSolar Northbound. Actualizaciones sobre cada 5 minutos.",
+ "@sddc831ec16": {
+  "x-mt": true
+ },
+ "s4424767fdd": "Un usuario de la API de Northbound (no su login de aplicación normal). El instalador / admin lo crea: Sistema → Empresa → Gestión de Northbound.",
+ "@s4424767fdd": {
+  "x-mt": true
+ },
+ "sde3c79670a": "El host en su barra de direcciones del navegador cuando se firmó en FusionSolar. Default eu5.",
+ "@sde3c79670a": {
+  "x-mt": true
+ },
+ "se80d87723d": "Symo, Primo, Gen24, Tauro – incl. Smart Meter y batería. El fabricante está abierto API local, sin nube.",
+ "@se80d87723d": {
+  "x-mt": true
+ },
+ "s1cb0924dc9": " Gen24: habilitar la API solar en la página web inverter (Communication → Solar API).",
+ "@s1cb0924dc9": {
+  "x-mt": true
+ },
+ "s1345214178": "SolarEdge inverter, medidor y batería sobre SunSpec Modbus en su red (puerto 1502).",
+ "@s1345214178": {
+  "x-mt": true
+ },
+ "s1f7b006036": " Activar Modbus TCP con el SetApp: Comisión → Comunicación → Modbus TCP.",
+ "@s1f7b006036": {
+  "x-mt": true
+ },
+ "s5d43115e7d": "Opcional: producción y flujo de energía a través de la API oficial de monitoreo SolarEdge (actualiza ~5 min).",
+ "@s5d43115e7d": {
+  "x-mt": true
+ },
+ "sbe1a020a66": "monitoring.solaredge.com → Admin → Acceso al Sitio → Acceso a la API: aceptar los términos y copiar la clave.",
+ "@sbe1a020a66": {
+  "x-mt": true
+ },
+ "s9c5e673c38": "Sunny Boy, Sunny Tripower, Sunny Boy Storage – SMA Modbus se registra en su red (unidad id 3).",
+ "@s9c5e673c38": {
+  "x-mt": true
+ },
+ "s4fad533521": " Activar Modbus en la página web del inversor: Parámetros del dispositivo → Comunicación externa → Modbus TCP servidor.",
+ "@s4fad533521": {
+  "x-mt": true
+ },
+ "s528ecf3140": "SMA Energy Meter / Home Manager (Speedwire, local)",
+ "@s528ecf3140": {
+  "x-mt": true
+ },
+ "sa7e3cb3d48": "Importar y exportar directamente desde las transmisiones de Speedwire del medidor – sin login, sin nube.",
+ "@sa7e3cb3d48": {
+  "x-mt": true
+ },
+ "s126a0713b8": "El medidor se encuentra automáticamente en la misma red de inicio. Si la búsqueda lo extraña, escriba el medidor IP (las lecturas todavía vienen de sus transmisiones).",
+ "@s126a0713b8": {
+  "x-mt": true
+ },
+ "sbdf4d24f64": "Growatt (Modbus TCP, local)",
+ "@sbdf4d24f64": {
+  "x-mt": true
+ },
+ "s6c5156d740": "MIN/MOD/SPH inverters via an RS485→TCP gateway (o un ShineLan-X con Modbus TCP). Verifica las lecturas.",
+ "@s6c5156d740": {
+  "x-mt": true
+ },
+ "se351eda9ce": "IP of the RS485→Modbus TCP gateway (e.g. Elfin EW11, Waveshare) cableado al puerto inverter RS485/COM.",
+ "@se351eda9ce": {
+  "x-mt": true
+ },
+ "s06257dd63c": "Opcional: producción a través de la cuenta Growatt OpenAPI (ShinePhone/ShineServer). Actualizaciones ~5 min.",
+ "@s06257dd63c": {
+  "x-mt": true
+ },
+ "sbd8c9831bb": "Pregúntele a Growatt o a su instalador para un token OpenAPI, o en la configuración de ShineServer si se muestra.",
+ "@sbd8c9831bb": {
+  "x-mt": true
+ },
+ "s3c89bd3976": "Kostal, Fronius (Modbus), SMA (SunSpec), ABB/FIMER... Cualquier dispositivo SunSpec.",
+ "@s3c89bd3976": {
+  "x-mt": true
+ },
+ "s183e57cdfd": " Puerto 502 por defecto – otro puerto como 192.168.1.20:1502.",
+ "@s183e57cdfd": {
+  "x-mt": true
+ },
+ "s981854cf46": "Energía solar",
+ "@s981854cf46": {
+  "x-mt": true
+ },
+ "s984804da72": "Huawei, Fronius, SolarEdge, SMA, Growatt – producción, rejilla y batería. Local, nube opcional.",
+ "@s984804da72": {
+  "x-mt": true
+ },
+ "sa50094ffdb": "Elija la potencia de la red (+import / −exportación)",
+ "@sa50094ffdb": {
+  "x-mt": true
+ },
+ "s3cc31bcfdc": "Elija el cargador (de encendido / apagado)",
+ "@s3cc31bcfdc": {
+  "x-mt": true
+ },
+ "s3d34e477c2": "Ahora",
+ "@s3d34e477c2": {
+  "x-mt": true
+ },
+ "s099666eafe": "una hora barata",
+ "@s099666eafe": {
+  "x-mt": true
+ },
+ "s08b96dd0f7": "no es una hora barata",
+ "@s08b96dd0f7": {
+  "x-mt": true
+ },
+ "sd7232b8464": "Horas más baratas / día",
+ "@sd7232b8464": {
+  "x-mt": true
+ },
+ "sd551537404": "Verificar las lecturas – ningún documento oficial de proveedores.",
+ "@sd551537404": {
+  "x-mt": true
+ },
+ "sa1a45de0f2": "Local – recomendado",
+ "@sa1a45de0f2": {
+  "x-mt": true
+ },
+ "se8b35fb9e9": "Nube – opcional",
+ "@se8b35fb9e9": {
+  "x-mt": true
+ },
+ "s95216a7a5e": "Otros – por qué aún no",
+ "@s95216a7a5e": {
+  "x-mt": true
+ },
+ "sc52321f275": "¿Qué inversor tienes?",
+ "@sc52321f275": {
+  "x-mt": true
+ },
+ "s862002ac64": "Producción, importación/exportación de cuadrículas y carga de batería como tarjetas y para automatizaciones. Una conexión local actualiza en segundos y no necesita nube.",
+ "@s862002ac64": {
+  "x-mt": true
+ },
+ "sa5f3da9152": "¿Qué cargador tiene?",
+ "@sa5f3da9152": {
+  "x-mt": true
+ },
+ "sdeb1f4332e": "Estado, carga on/off, potencia y límite de corriente. Automatizaciones: carga sobre el superávit solar o en las horas más baratas.",
+ "@sdeb1f4332e": {
+  "x-mt": true
+ },
+ "s1a6081db34": "Cargador EV",
+ "@s1a6081db34": {
+  "x-mt": true
+ },
+ "sb75700bbba": "No hay coche",
+ "@sb75700bbba": {
+  "x-mt": true
+ },
+ "s5a3fcd56de": "Coche conectado",
+ "@s5a3fcd56de": {
+  "x-mt": true
+ },
+ "s23910a6fb5": "Carga",
+ "@s23910a6fb5": {
+  "x-mt": true
+ },
+ "s22cd08064f": "Pausa",
+ "@s22cd08064f": {
+  "x-mt": true
+ },
+ "s5b8b3042ec": "Terminado",
+ "@s5b8b3042ec": {
+  "x-mt": true
+ },
+ "s84df123d5a": "Error",
+ "@s84df123d5a": {
+  "x-mt": true
+ },
+ "s98c928f06c": "Igual que en la aplicación del fabricante.",
+ "@s98c928f06c": {
+  "x-mt": true
+ },
+ "s68e2e87750": "OCPP 1.6J (local, cualquier marca)",
+ "@s68e2e87750": {
+  "x-mt": true
+ },
+ "s12fa00013a": "Wallbox, Alfen, ABB, go-e, Etrel, Easee/Zaptec (OCPP on)... El cargador se conecta directamente a Molaplan – ninguna nube.",
+ "@s12fa00013a": {
+  "x-mt": true
+ },
+ "s4bc8fc306b": "Si el cargador tiene un conjunto básico de contraseña de austeridad. Normalmente vacío.",
+ "@s4bc8fc306b": {
+  "x-mt": true
+ },
+ "s66fb236f0c": "Easee (cloud)",
+ "@s66fb236f0c": {
+  "x-mt": true
+ },
+ "s8c376593cb": "Easee Home / Carga / Una a través de su cuenta de Easee: estado, inicio/stop y límite de corriente.",
+ "@s8c376593cb": {
+  "x-mt": true
+ },
+ "s827730d443": "Igual que en la aplicación Easee (teléfono +358...).",
+ "@s827730d443": {
+  "x-mt": true
+ },
+ "s3809be512f": "Zaptec (cloud)",
+ "@s3809be512f": {
+  "x-mt": true
+ },
+ "se1a5b725a4": "Zaptec Go / Home / Pro a través de su cuenta de Zaptec. Start/pause necesita derechos de propietario.",
+ "@se1a5b725a4": {
+  "x-mt": true
+ },
+ "s90c71e52fb": "Wallbox (cloud)",
+ "@s90c71e52fb": {
+  "x-mt": true
+ },
+ "s72dc0a7687": "Pulsar, Comandante, Copper a través de su cuenta de miWallbox. Localmente: elija OCPP.",
+ "@s72dc0a7687": {
+  "x-mt": true
+ },
+ "s59ed724e14": "Easee, Zaptec, Wallbox – o cualquier cargador de OCPP localmente. Carga sobre excedente o cuando sea barato.",
+ "@s59ed724e14": {
+  "x-mt": true
+ },
+ "s2d551049ff": "No podía comenzar el servidor OCPP en el puerto {p0}: {p1}",
+ "@s2d551049ff": {
+  "x-mt": true
+ },
+ "s9a6813045a": "Cargador \"{p0}\" no ha conectado. Establezca su URL de OCPP a ws:// selecciona este dispositivo IP confidencial:{p1}/ocpp/",
+ "@s9a6813045a": {
+  "x-mt": true
+ },
+ "sb33d4d8b62": "El cargador no está cargando ahora",
+ "@sb33d4d8b62": {
+  "x-mt": true
+ },
+ "s7c3abc09fc": "Cargador EV (integración incorporada)",
+ "@s7c3abc09fc": {
+  "x-mt": true
+ },
+ "se6885155b4": "OCPP funciona localmente sin una nube (el cargador se conecta a esta aplicación o al puente).",
+ "@se6885155b4": {
+  "x-mt": true
+ },
+ "sb14c49378c": "OCPP port",
+ "@sb14c49378c": {
+  "x-mt": true
+ },
+ "sa9346504d4": "El puerto en el que este dispositivo escucha. URL del cargador: ws:// detectó este dispositivo IP confidencial:9000/ocpp/",
+ "@sa9346504d4": {
+  "x-mt": true
+ },
+ "sf94b2ba7f3": "Punto de carga id (OCPP)",
+ "@sf94b2ba7f3": {
+  "x-mt": true
+ },
+ "s8ea8831ed0": "El punto de carga OCPP del cargador id. Vacío = el primero que conecta.",
+ "@s8ea8831ed0": {
+  "x-mt": true
+ },
+ "sa3b3822b75": "idTag para el arranque remoto",
+ "@sa3b3822b75": {
+  "x-mt": true
+ },
+ "sf718534954": "Enviado con RemoteStartTransaction. Vacío = \"molaplan\".",
+ "@sf718534954": {
+  "x-mt": true
+ },
+ "s540a178f7a": "Nombre de usuario / e-mail (cloud)",
+ "@s540a178f7a": {
+  "x-mt": true
+ },
+ "sa6b5175654": "Cloud: la contraseña de la aplicación. OCPP: opcional contraseña básica de auth. Almacenado únicamente en este dispositivo.",
+ "@sa6b5175654": {
+  "x-mt": true
+ },
+ "sccb2892754": "Que lectura de cargador para mostrar.",
+ "@sccb2892754": {
+  "x-mt": true
+ },
+ "s0e7115e10c": "Situación",
+ "@s0e7115e10c": {
+  "x-mt": true
+ },
+ "s20cb072267": "Carga (1/0)",
+ "@s20cb072267": {
+  "x-mt": true
+ },
+ "se13ff56722": "Potencia de carga (W)",
+ "@se13ff56722": {
+  "x-mt": true
+ },
+ "sd3627e3a20": "Este período de sesiones (kWh)",
+ "@sd3627e3a20": {
+  "x-mt": true
+ },
+ "s19e058622f": "Total kWh)",
+ "@s19e058622f": {
+  "x-mt": true
+ },
+ "s613785b80f": "Límite actual (A)",
+ "@s613785b80f": {
+  "x-mt": true
+ },
+ "s60f4e2786f": "Cargador id",
+ "@s60f4e2786f": {
+  "x-mt": true
+ },
+ "sfbbd0943a8": "Cargador id en la cuenta; vacío = el único cargador.",
+ "@sfbbd0943a8": {
+  "x-mt": true
+ },
+ "s9617db1f3d": "Comience, pare o establezca el límite actual.",
+ "@s9617db1f3d": {
+  "x-mt": true
+ },
+ "sc110ab773a": "Comienzo de carga",
+ "@sc110ab773a": {
+  "x-mt": true
+ },
+ "s44d11f741f": "Parar / pausa",
+ "@s44d11f741f": {
+  "x-mt": true
+ },
+ "s4c68e739b0": "Carga en curso/desplazamiento",
+ "@s4c68e739b0": {
+  "x-mt": true
+ },
+ "s141fac7235": "Establecer límite de corriente (A)",
+ "@s141fac7235": {
+  "x-mt": true
+ },
+ "s33f04bfedd": "'Límite actual en los amplificadores; {{value}} = el valor deslizante.'",
+ "@s33f04bfedd": {
+  "x-mt": true
+ },
+ "s610172c6f4": "Cargador \"{p0}\" no encontrado (offline o eliminado)",
+ "@s610172c6f4": {
+  "x-mt": true
+ },
+ "sf51ef628f4": "Límite actual desaparecido",
+ "@sf51ef628f4": {
+  "x-mt": true
+ },
+ "sd661432e07": "No hay cargadores",
+ "@sd661432e07": {
+  "x-mt": true
+ },
+ "s47aba73804": "total imputado",
+ "@s47aba73804": {
+  "x-mt": true
+ },
+ "s14252e6c3a": "estado de situación",
+ "@s14252e6c3a": {
+  "x-mt": true
+ },
+ "sed9640f6b4": "Carga",
+ "@sed9640f6b4": {
+  "x-mt": true
+ },
+ "sebaaf2a20f": "potencia de carga",
+ "@sebaaf2a20f": {
+  "x-mt": true
+ },
+ "s223d1336d5": "este período de sesiones",
+ "@s223d1336d5": {
+  "x-mt": true
+ },
+ "sbea289dcc3": "límite actual",
+ "@sbea289dcc3": {
+  "x-mt": true
+ },
+ "s602af22563": "Cargue el coche sobre el superávit solar",
+ "@s602af22563": {
+  "x-mt": true
+ },
+ "s9ce0e97a38": "Cargador en cuando se exporta más de 1.4 kW. Off cuando se importan más de 1 kW (al menos 10 min de carga).",
+ "@s9ce0e97a38": {
+  "x-mt": true
+ },
+ "scbad5277ee": "Cargar el coche en las horas más baratas",
+ "@scbad5277ee": {
+  "x-mt": true
+ },
+ "sb6dc0d48ed": "Cargador en el día 4 horas más baratas y apagado cuando terminan.",
+ "@sb6dc0d48ed": {
   "x-mt": true
  }
 }

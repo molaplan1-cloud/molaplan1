@@ -110,6 +110,8 @@ void main() {
     expect(find.byKey(const ValueKey('control-view')), findsNothing);
     await tester.tap(find.byKey(const ValueKey('empty-add-device')));
     await tester.pumpAndSettle();
+    // v0.17.0: more brand cards (solar, EV charger) – the generic devices are further down.
+    await tester.scrollUntilVisible(find.text('Tasmota-laite'), 300, scrollable: find.byType(Scrollable).first);
     expect(find.text('Tasmota-laite'), findsOneWidget);
   });
 

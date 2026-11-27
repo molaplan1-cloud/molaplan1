@@ -369,12 +369,29 @@
  "@s1f08341033": {
   "x-mt": true
  },
+ "sa7f9b278cf": "Huawei SUN2000 (Modbus TCP)",
+ "sc5863d817d": "SMA (SunSpec Modbus)",
+ "s12733504dc": "SMA Energy Meter / Home Manager (Speedwire)",
+ "sdeb4f39ff0": "Growatt (Modbus TCP)",
+ "s800d13debd": "Port Port Port Port",
+ "@s800d13debd": {
+  "x-mt": true
+ },
+ "s58f0665e29": "Modbus unit id",
  "sc27533ae83": "Sparsam",
  "sdbcb85509b": "Temperaturen får variera mest (+1 / −2 °C). Störst besparing.",
  "s380b20be36": "Balanserad",
  "s66ea783264": "Liten variation (+1 / −1 °C). Ett bra standardval.",
  "see96226e44": "Komfort",
  "sb403e00b3d": "Nästan jämn temperatur (+0,5 / −0,5 °C). Sparar lite.",
+ "se74bcc1028": "Extra kort för automation",
+ "@se74bcc1028": {
+  "x-mt": true
+ },
+ "s7a7ab0d238": "lagras krypterad på den här enheten bara.",
+ "@s7a7ab0d238": {
+  "x-mt": true
+ },
  "sd86b823895": "Sonoff",
  "s5f297ec9d8": "BASIC, MINI, POW, TH, 4CH ... i DIY-läge, med Tasmota eller ESPHome. Kort är gjorda för dig; fjärranvändning via hembron.",
  "@s5f297ec9d8": {
@@ -3690,6 +3707,10 @@
  "@s585b4c519f": {
   "x-mt": true
  },
+ "sd408a5dbe9": "Billigaste timmar",
+ "@sd408a5dbe9": {
+  "x-mt": true
+ },
  "s6019108a01": "Villkor",
  "@s6019108a01": {
   "x-mt": true
@@ -4798,10 +4819,6 @@
  "s09737988fd": "Anslutningen fungerar!",
  "s0a972aa85e": "Lösenord och tokens lagras i enhetens säkra lagring.",
  "@s0a972aa85e": {
-  "x-mt": true
- },
- "sd408a5dbe9": "Billigaste timmar",
- "@sd408a5dbe9": {
   "x-mt": true
  },
  "sa26ae27039": "Hoppa över de dyraste timmarna",
@@ -6880,6 +6897,7 @@
  "@sbf7cc3de9a": {
   "x-mt": true
  },
+ "s5bed8bff00": "Kommando",
  "s1becc05ea1": "locked=Låst;unlocked=Olåst;jammed=FASTNAT",
  "s259de02f33": "open=Öppen;closed=Stängd;opening=Öppnas;closing=Stängs",
  "s64d4364336": "disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming",
@@ -7177,10 +7195,6 @@
  "se1bd60873c": "MQTT",
  "s85b9781bb7": "Broker värd",
  "@s85b9781bb7": {
-  "x-mt": true
- },
- "s800d13debd": "Port Port Port Port",
- "@s800d13debd": {
   "x-mt": true
  },
  "s49fa57061a": "TLS",
@@ -7648,7 +7662,6 @@
  "@s89ad1c43b4": {
   "x-mt": true
  },
- "s5bed8bff00": "Kommando",
  "sec7af7b376": "t.ex. \"ljus på\". PIN och andra delar läggs till av enhetens kommandomall.",
  "@sec7af7b376": {
   "x-mt": true
@@ -8279,7 +8292,6 @@
  "@scd35ffb8e9": {
   "x-mt": true
  },
- "s58f0665e29": "Modbus unit id",
  "sab25ff8075": "Modbus enhet adress, vanligtvis 1.",
  "@sab25ff8075": {
   "x-mt": true
@@ -8385,10 +8397,6 @@
  "@s6d21845355": {
   "x-mt": true
  },
- "se74bcc1028": "Extra kort för automation",
- "@se74bcc1028": {
-  "x-mt": true
- },
  "s4a91d07711": "Daikin (Wi-Fi, lokal)",
  "@s4a91d07711": {
   "x-mt": true
@@ -8411,10 +8419,6 @@
  },
  "s41d69e699d": "Samma som i MELCloud-appen.",
  "@s41d69e699d": {
-  "x-mt": true
- },
- "s7a7ab0d238": "lagras krypterad på den här enheten bara.",
- "@s7a7ab0d238": {
   "x-mt": true
  },
  "sa8405bf705": "Toshiba Wi-Fi-värmepumpar genom ditt Toshiba Home AC Control-konto.",
@@ -9249,6 +9253,574 @@
  },
  "s3a38b97f7b": "{p0} – rum",
  "@s3a38b97f7b": {
+  "x-mt": true
+ },
+ "s0d714dece1": "Fronius (Solar API, lokal)",
+ "@s0d714dece1": {
+  "x-mt": true
+ },
+ "sa38a153c07": "SolarEdge (Modbus TCP, lokal)",
+ "@sa38a153c07": {
+  "x-mt": true
+ },
+ "s833dfe954e": "SMA (Modbus TCP, lokal)",
+ "@s833dfe954e": {
+  "x-mt": true
+ },
+ "sa1769b666b": "Övriga SunSpec inverter (Modbus TCP)",
+ "@sa1769b666b": {
+  "x-mt": true
+ },
+ "s1694840083": "Huawei FusionSolar (moln)",
+ "@s1694840083": {
+  "x-mt": true
+ },
+ "s205e886d29": "SolarEdge övervakning (moln)",
+ "@s205e886d29": {
+  "x-mt": true
+ },
+ "s5bf46ebec4": "Growatt OpenAPI (moln)",
+ "@s5bf46ebec4": {
+  "x-mt": true
+ },
+ "se7c240ad4f": "Solar / inverterare (inbyggd integration)",
+ "@se7c240ad4f": {
+  "x-mt": true
+ },
+ "s46b5445e4a": "Brand och anslutning",
+ "@s46b5445e4a": {
+  "x-mt": true
+ },
+ "sef83efed4e": "Skapare och anslutningstyp. Lokala arbetar utan molnet och uppdateras snabbare.",
+ "@sef83efed4e": {
+  "x-mt": true
+ },
+ "scc322677fe": "IP-adress (lokal)",
+ "@scc322677fe": {
+  "x-mt": true
+ },
+ "s6ac1068052": "IP-adress för inverteraren, SDongle eller mätaren (från routernhetslistan).",
+ "@s6ac1068052": {
+  "x-mt": true
+ },
+ "sa163739d18": "Tomma = standard (Modbus 502, SolarEdge 1502, Huawei inverter Wi-Fi 6607).",
+ "@sa163739d18": {
+  "x-mt": true
+ },
+ "sd5e2f52587": "Tomt = standard (Huawei 1, SolarEdge 1, SMA 3, SMA SunSpec 126, Growatt 1).",
+ "@sd5e2f52587": {
+  "x-mt": true
+ },
+ "se49fbf06a8": "Meter Serial (SMA Energy Meter)",
+ "@se49fbf06a8": {
+  "x-mt": true
+ },
+ "s4a63dcc985": "Endast om det finns flera SMA-mätare i nätverket. Empty = den första.",
+ "@s4a63dcc985": {
+  "x-mt": true
+ },
+ "s6e391cf987": "Användare (FusionSolar API)",
+ "@s6e391cf987": {
+  "x-mt": true
+ },
+ "se76a6f4565": "FusionSolar Northbound API-användare (skapad av installatören: System → Company → Northbound).",
+ "@se76a6f4565": {
+  "x-mt": true
+ },
+ "s2f3b444057": "Lösenord / systemkod",
+ "@s2f3b444057": {
+  "x-mt": true
+ },
+ "s11298f6c17": "Lagras endast på den här enheten / i ditt eget krypterade valv.",
+ "@s11298f6c17": {
+  "x-mt": true
+ },
+ "s68eeca8dbe": "API-nyckeln (SolarEdge/Growatt)",
+ "@s68eeca8dbe": {
+  "x-mt": true
+ },
+ "seba7bd613f": "SolarEdge: övervakning portal → Admin → Site Access → API. Growatt: OpenAPI token.",
+ "@seba7bd613f": {
+  "x-mt": true
+ },
+ "s3cda8d5f90": "Site / Plant Id (moln)",
+ "@s3cda8d5f90": {
+  "x-mt": true
+ },
+ "see56030ac8": "Empty = den första webbplatsen för kontot.",
+ "@see56030ac8": {
+  "x-mt": true
+ },
+ "sbdf670977b": "Läsa",
+ "@sbdf670977b": {
+  "x-mt": true
+ },
+ "s9d61569ac0": "Sladd: positiv = köp från rutnätet, negativ = försäljning av överskott.",
+ "@s9d61569ac0": {
+  "x-mt": true
+ },
+ "sc78a29bef9": "Solenergi nu (W)",
+ "@sc78a29bef9": {
+  "x-mt": true
+ },
+ "s88a9d9b593": "Yield idag (kWh)",
+ "@s88a9d9b593": {
+  "x-mt": true
+ },
+ "s4766881640": "Total avkastning (kWh)",
+ "@s4766881640": {
+  "x-mt": true
+ },
+ "s4e1e06f64a": "Grid +import / −export (W)",
+ "@s4e1e06f64a": {
+  "x-mt": true
+ },
+ "s5c5e6866eb": "Importerad total (kWh)",
+ "@s5c5e6866eb": {
+  "x-mt": true
+ },
+ "s7495975366": "Exporterad total (kWh)",
+ "@s7495975366": {
+  "x-mt": true
+ },
+ "s275ffaa691": "Batteriavgift (%)",
+ "@s275ffaa691": {
+  "x-mt": true
+ },
+ "s9da1bd7ed1": "Batteri + laddning / − urladdning (W)",
+ "@s9da1bd7ed1": {
+  "x-mt": true
+ },
+ "sb6d790453a": "Hemförbrukning (W)",
+ "@sb6d790453a": {
+  "x-mt": true
+ },
+ "sff9335b6df": "Enheten rapporterar inte denna läsning ({p0})",
+ "@sff9335b6df": {
+  "x-mt": true
+ },
+ "s711b4531bd": "Inverters är lättlästa",
+ "@s711b4531bd": {
+  "x-mt": true
+ },
+ "s257cf40257": "Solar",
+ "@s257cf40257": {
+  "x-mt": true
+ },
+ "sfa32969a23": "Nät",
+ "@sfa32969a23": {
+  "x-mt": true
+ },
+ "s333643b4c4": "SMA Energy Meter: inga sändningar i hemnätverket (multicast 239.12.255.254:9522)",
+ "@s333643b4c4": {
+  "x-mt": true
+ },
+ "s0a81072a1f": "Hitta den i routerns enhetslista eller tillverkarens app (enhetsinformation). Reservera en fast IP för den.",
+ "@s0a81072a1f": {
+  "x-mt": true
+ },
+ "s7c6a740594": "Huvudsakliga läsningar",
+ "@s7c6a740594": {
+  "x-mt": true
+ },
+ "s87d0186621": "Huawei SUN2000 (Modbus TCP, lokal)",
+ "@s87d0186621": {
+  "x-mt": true
+ },
+ "se7647d6762": "SUN2000 inverter (inkl. LUNA2000 batteri och DTSU666 meter) via SDongle på ditt nätverk, inget moln.",
+ "@se7647d6762": {
+  "x-mt": true
+ },
+ "sccb0c7d2d8": "SDongle IP-adressen. Gör det först i FusionSolar-appen: Enhetskommissionen → Dongle → Modbus TCP = \"Enable (obegränsad)\". Utan en dongle: inverterarens egen Wi-Fi, adress som 192.168.200.1:6607.",
+ "@sccb0c7d2d8": {
+  "x-mt": true
+ },
+ "sddc831ec16": "Optionell: produktion genom den officiella FusionSolar Northbound API. Uppdateringar ungefär var 5: e minut.",
+ "@sddc831ec16": {
+  "x-mt": true
+ },
+ "s4424767fdd": "En nordbunden API-användare (inte din vanliga appinloggning) installeraren / admin skapar den: System → Företag → Northbound management.",
+ "@s4424767fdd": {
+  "x-mt": true
+ },
+ "sde3c79670a": "Värd i din webbläsaradressfält när du är inloggad på FusionSolar. Default eu5.",
+ "@sde3c79670a": {
+  "x-mt": true
+ },
+ "se80d87723d": "Symo, Primo, Gen24, Tauro - inkl. Smart Meter och batteri. Skaparens öppna lokala API, inget moln.",
+ "@se80d87723d": {
+  "x-mt": true
+ },
+ "s1cb0924dc9": " Gen24: aktivera Solar API på inverterwebbsidan (Communication → Solar API).",
+ "@s1cb0924dc9": {
+  "x-mt": true
+ },
+ "s1345214178": "SolarEdge inverter, mätare och batteri över SunSpec Modbus på ditt nätverk (port 1502).",
+ "@s1345214178": {
+  "x-mt": true
+ },
+ "s1f7b006036": " Aktivera Modbus TCP med SetApp: Commissioning → Communication → Modbus TCP.",
+ "@s1f7b006036": {
+  "x-mt": true
+ },
+ "s5d43115e7d": "Valfritt: produktion och kraftflöde genom den officiella SolarEdge-övervakningen API (uppdateringar ~ 5 min).",
+ "@s5d43115e7d": {
+  "x-mt": true
+ },
+ "sbe1a020a66": "övervakning.solaredge.com → Admin → Webbplatsåtkomst → API Access: acceptera villkoren och kopiera nyckeln.",
+ "@sbe1a020a66": {
+  "x-mt": true
+ },
+ "s9c5e673c38": "Sunny Boy, Sunny Tripower, Sunny Boy Storage – SMA Modbus registrerar sig på ditt nätverk (enhet id 3).",
+ "@s9c5e673c38": {
+  "x-mt": true
+ },
+ "s4fad533521": " Aktivera Modbus på inverterwebbsidan: Enhetsparametrar → Extern kommunikation → Modbus TCP-server.",
+ "@s4fad533521": {
+  "x-mt": true
+ },
+ "s528ecf3140": "SMA Energy Meter / Home Manager (Speedwire, lokal)",
+ "@s528ecf3140": {
+  "x-mt": true
+ },
+ "sa7e3cb3d48": "Sladdimport och export direkt från mätarens Speedwire-sändningar - ingen inloggning, inget moln.",
+ "@sa7e3cb3d48": {
+  "x-mt": true
+ },
+ "s126a0713b8": "Mätaren hittas automatiskt på samma hemnätverk. Om sökningen missar det, skriv mätaren IP (läsningar kommer fortfarande från sina sändningar).",
+ "@s126a0713b8": {
+  "x-mt": true
+ },
+ "sbdf4d24f64": "Growatt (Modbus TCP, lokal)",
+ "@sbdf4d24f64": {
+  "x-mt": true
+ },
+ "s6c5156d740": "MIN/MOD/SPH-omvandlare via en RS485→TCP-gateway (eller en ShineLan-X med Modbus TCP). Verifiera avläsningarna.",
+ "@s6c5156d740": {
+  "x-mt": true
+ },
+ "se351eda9ce": "IP av RS485→Modbus TCP-gateway (t.ex. Elfin EW11, Waveshare) ansluten till inverteraren RS485/COM-porten.",
+ "@se351eda9ce": {
+  "x-mt": true
+ },
+ "s06257dd63c": "Valfritt: produktion genom Growatt OpenAPI (ShinePhone/ShineServer-kontot). Uppdateringar ~ 5 min.",
+ "@s06257dd63c": {
+  "x-mt": true
+ },
+ "sbd8c9831bb": "Fråga Growatt-stöd eller din installatör för ett OpenAPI-token eller hitta det i ShineServer-inställningar om det visas.",
+ "@sbd8c9831bb": {
+  "x-mt": true
+ },
+ "s3c89bd3976": "Kostal, Fronius (Modbus), SMA (SunSpec), ABB/FIMER... Alla SunSpec-enheter.",
+ "@s3c89bd3976": {
+  "x-mt": true
+ },
+ "s183e57cdfd": " Port 502 som standard - en annan port som 192.168.1.20:1502.",
+ "@s183e57cdfd": {
+  "x-mt": true
+ },
+ "s981854cf46": "Solenergi",
+ "@s981854cf46": {
+  "x-mt": true
+ },
+ "s984804da72": "Huawei, Fronius, SolarEdge, SMA, Growatt - produktion, rutnät och batteri. Lokalt, moln valfritt.",
+ "@s984804da72": {
+  "x-mt": true
+ },
+ "sa50094ffdb": "Välj elnätet (+import/−export)",
+ "@sa50094ffdb": {
+  "x-mt": true
+ },
+ "s3cc31bcfdc": "Välj laddaren (laddning på/av)",
+ "@s3cc31bcfdc": {
+  "x-mt": true
+ },
+ "s3d34e477c2": "Nu är",
+ "@s3d34e477c2": {
+  "x-mt": true
+ },
+ "s099666eafe": "En billig timme",
+ "@s099666eafe": {
+  "x-mt": true
+ },
+ "s08b96dd0f7": "Inte en billig timme",
+ "@s08b96dd0f7": {
+  "x-mt": true
+ },
+ "sd7232b8464": "Billigaste timmar / dag",
+ "@sd7232b8464": {
+  "x-mt": true
+ },
+ "sd551537404": "Verifiera avläsningarna – inget officiellt leverantörsdokument.",
+ "@sd551537404": {
+  "x-mt": true
+ },
+ "sa1a45de0f2": "Lokalt – rekommenderat",
+ "@sa1a45de0f2": {
+  "x-mt": true
+ },
+ "se8b35fb9e9": "Cloud – valfritt",
+ "@se8b35fb9e9": {
+  "x-mt": true
+ },
+ "s95216a7a5e": "Andra – varför ännu inte",
+ "@s95216a7a5e": {
+  "x-mt": true
+ },
+ "sc52321f275": "Vilken inverterare har du?",
+ "@sc52321f275": {
+  "x-mt": true
+ },
+ "s862002ac64": "Produktion, nätimport/export och batteriladdning som kort och för automation. En lokal anslutning uppdateras på några sekunder och behöver inget moln.",
+ "@s862002ac64": {
+  "x-mt": true
+ },
+ "sa5f3da9152": "Vilken laddare har du?",
+ "@sa5f3da9152": {
+  "x-mt": true
+ },
+ "sdeb1f4332e": "Status, laddning på / av, kraft och nuvarande gräns. Automationer: avgift på solöverskott eller i de billigaste timmarna.",
+ "@sdeb1f4332e": {
+  "x-mt": true
+ },
+ "s1a6081db34": "EV laddare",
+ "@s1a6081db34": {
+  "x-mt": true
+ },
+ "sb75700bbba": "Ingen bil",
+ "@sb75700bbba": {
+  "x-mt": true
+ },
+ "s5a3fcd56de": "Bil ansluten",
+ "@s5a3fcd56de": {
+  "x-mt": true
+ },
+ "s23910a6fb5": "Laddning",
+ "@s23910a6fb5": {
+  "x-mt": true
+ },
+ "s22cd08064f": "Paused",
+ "@s22cd08064f": {
+  "x-mt": true
+ },
+ "s5b8b3042ec": "Avslutad",
+ "@s5b8b3042ec": {
+  "x-mt": true
+ },
+ "s84df123d5a": "Fel",
+ "@s84df123d5a": {
+  "x-mt": true
+ },
+ "s98c928f06c": "Samma som i tillverkarens app.",
+ "@s98c928f06c": {
+  "x-mt": true
+ },
+ "s68e2e87750": "OCPP 1.6J (lokalt, något varumärke)",
+ "@s68e2e87750": {
+  "x-mt": true
+ },
+ "s12fa00013a": "Wallbox, Alfen, ABB, go-e, Etrel, Easee/Zaptec (OCPP på) ... laddaren ansluter direkt till Molaplan – inget moln.",
+ "@s12fa00013a": {
+  "x-mt": true
+ },
+ "s4bc8fc306b": "Om laddaren har ett grundläggande auth-lösenord. vanligtvis tomt.",
+ "@s4bc8fc306b": {
+  "x-mt": true
+ },
+ "s66fb236f0c": "Easee (moln)",
+ "@s66fb236f0c": {
+  "x-mt": true
+ },
+ "s8c376593cb": "Easee Home / Charge / En genom ditt Easee-konto: status, start/stopp och nuvarande gräns.",
+ "@s8c376593cb": {
+  "x-mt": true
+ },
+ "s827730d443": "Samma som i Easee-appen (telefon som +358...).",
+ "@s827730d443": {
+  "x-mt": true
+ },
+ "s3809be512f": "Zaptec (moln)",
+ "@s3809be512f": {
+  "x-mt": true
+ },
+ "se1a5b725a4": "Zaptec Go / Home / Pro genom ditt Zaptec-konto. Start/paus behöver ägarrättigheter.",
+ "@se1a5b725a4": {
+  "x-mt": true
+ },
+ "s90c71e52fb": "Wallbox (moln)",
+ "@s90c71e52fb": {
+  "x-mt": true
+ },
+ "s72dc0a7687": "Pulsar, befälhavare, koppar genom ditt myWallbox-konto. Lokalt: välj OCPP.",
+ "@s72dc0a7687": {
+  "x-mt": true
+ },
+ "s59ed724e14": "Easee, Zaptec, Wallbox - eller någon OCPP-laddare lokalt. Ladda på överskott eller när billigt.",
+ "@s59ed724e14": {
+  "x-mt": true
+ },
+ "s2d551049ff": "Kan inte starta OCPP-servern på port {p0}: {p1}",
+ "@s2d551049ff": {
+  "x-mt": true
+ },
+ "s9a6813045a": "Charger \"{p0}\" har inte anslutit. Ställ in sin OCPP-URL för att ws://<this device IP>:{p1}/ocpp/",
+ "@s9a6813045a": {
+  "x-mt": true
+ },
+ "sb33d4d8b62": "laddaren laddar inte nu",
+ "@sb33d4d8b62": {
+  "x-mt": true
+ },
+ "s7c3abc09fc": "EV laddare (inbyggd integration)",
+ "@s7c3abc09fc": {
+  "x-mt": true
+ },
+ "se6885155b4": "OCPP fungerar lokalt utan ett moln (laddaren ansluter till denna app eller bron).",
+ "@se6885155b4": {
+  "x-mt": true
+ },
+ "sb14c49378c": "OCPP-port",
+ "@sb14c49378c": {
+  "x-mt": true
+ },
+ "sa9346504d4": "Porten den här enheten lyssnar på. Laddare URL: ws://<this device IP>:9000/ocpp/",
+ "@sa9346504d4": {
+  "x-mt": true
+ },
+ "sf94b2ba7f3": "Charge Point Id (OCPP)",
+ "@sf94b2ba7f3": {
+  "x-mt": true
+ },
+ "s8ea8831ed0": "Laddarens OCPP-avgiftspunkt id. Empty = den första som ansluter.",
+ "@s8ea8831ed0": {
+  "x-mt": true
+ },
+ "sa3b3822b75": "idTag för fjärrstart",
+ "@sa3b3822b75": {
+  "x-mt": true
+ },
+ "sf718534954": "Skicka med RemoteStartTransaction. Empty = \"molaplan\".",
+ "@sf718534954": {
+  "x-mt": true
+ },
+ "s540a178f7a": "Användarnamn / e-post (moln)",
+ "@s540a178f7a": {
+  "x-mt": true
+ },
+ "sa6b5175654": "Cloud: appen lösenord. OCPP: valfri Basic auth lösenord. lagras på den här enheten bara.",
+ "@sa6b5175654": {
+  "x-mt": true
+ },
+ "sccb2892754": "Vilken laddare som läser för att visa.",
+ "@sccb2892754": {
+  "x-mt": true
+ },
+ "s0e7115e10c": "Status",
+ "@s0e7115e10c": {
+  "x-mt": true
+ },
+ "s20cb072267": "Laddning (1/0)",
+ "@s20cb072267": {
+  "x-mt": true
+ },
+ "se13ff56722": "Laddningskraft (W)",
+ "@se13ff56722": {
+  "x-mt": true
+ },
+ "sd3627e3a20": "Denna session (kWh)",
+ "@sd3627e3a20": {
+  "x-mt": true
+ },
+ "s19e058622f": "Totalt (kWh)",
+ "@s19e058622f": {
+  "x-mt": true
+ },
+ "s613785b80f": "Aktuell gräns (A)",
+ "@s613785b80f": {
+  "x-mt": true
+ },
+ "s60f4e2786f": "Charger id",
+ "@s60f4e2786f": {
+  "x-mt": true
+ },
+ "sfbbd0943a8": "Charger id i kontot; tomt = den enda laddaren.",
+ "@sfbbd0943a8": {
+  "x-mt": true
+ },
+ "s9617db1f3d": "Börja, stoppa eller ställa in den aktuella gränsen.",
+ "@s9617db1f3d": {
+  "x-mt": true
+ },
+ "sc110ab773a": "Starta laddning",
+ "@sc110ab773a": {
+  "x-mt": true
+ },
+ "s44d11f741f": "Stoppa / paus",
+ "@s44d11f741f": {
+  "x-mt": true
+ },
+ "s4c68e739b0": "Avgifter på/off",
+ "@s4c68e739b0": {
+  "x-mt": true
+ },
+ "s141fac7235": "Ställ nuvarande gräns (A)",
+ "@s141fac7235": {
+  "x-mt": true
+ },
+ "s33f04bfedd": "'Aktuell gräns i ampere; {{value}} = reglaget värde.'",
+ "@s33f04bfedd": {
+  "x-mt": true
+ },
+ "s610172c6f4": "Charger \"{p0}\" hittades inte (offline eller borttagen)",
+ "@s610172c6f4": {
+  "x-mt": true
+ },
+ "sf51ef628f4": "Nuvarande gräns saknas",
+ "@sf51ef628f4": {
+  "x-mt": true
+ },
+ "sd661432e07": "Inga laddare",
+ "@sd661432e07": {
+  "x-mt": true
+ },
+ "s47aba73804": "Totalt laddat",
+ "@s47aba73804": {
+  "x-mt": true
+ },
+ "s14252e6c3a": "status status status",
+ "@s14252e6c3a": {
+  "x-mt": true
+ },
+ "sed9640f6b4": "laddning",
+ "@sed9640f6b4": {
+  "x-mt": true
+ },
+ "sebaaf2a20f": "laddningskraft",
+ "@sebaaf2a20f": {
+  "x-mt": true
+ },
+ "s223d1336d5": "Denna session",
+ "@s223d1336d5": {
+  "x-mt": true
+ },
+ "sbea289dcc3": "nuvarande gräns",
+ "@sbea289dcc3": {
+  "x-mt": true
+ },
+ "s602af22563": "Ladda bilen på solöverskott",
+ "@s602af22563": {
+  "x-mt": true
+ },
+ "s9ce0e97a38": "Ladda om när mer än 1.4 kW exporteras. Av när mer än 1 kW importeras (minst 10 min laddning).",
+ "@s9ce0e97a38": {
+  "x-mt": true
+ },
+ "scbad5277ee": "Ladda bilen i de billigaste timmarna",
+ "@scbad5277ee": {
+  "x-mt": true
+ },
+ "sb6dc0d48ed": "Ladda på dagens 4 billigaste timmar och av när de slutar.",
+ "@sb6dc0d48ed": {
   "x-mt": true
  }
 }

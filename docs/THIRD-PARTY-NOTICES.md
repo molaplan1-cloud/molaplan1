@@ -8,6 +8,12 @@ understand behaviour. v0.16.0 (R287, lib/tuya/, lib/devices/shelly_*.dart): Tuya
 (MIT) and Tuya's public cloud API docs; localtuya and tuya-local (GPL-3.0) were NOT used. Shelly
 follows Shelly's own public API documentation (shelly-api-docs.shelly.cloud); no third-party code.
 AES-128 / GCM (`lib/tuya/aes.dart`) is written from FIPS-197 and NIST SP 800-38D.
+v0.17.0 (R288 solar `lib/energy/`, R289 EV chargers `lib/ev/`): written only from public
+specifications and vendor API documentation – Huawei SUN2000 Modbus interface definitions, SunSpec
+Alliance information models, SMA Modbus lists and EMETER (Speedwire) description, Growatt Modbus
+protocol V1.24, Fronius Solar API V1, OCPP 1.6 JSON (Open Charge Alliance), Easee / Zaptec /
+SolarEdge monitoring / FusionSolar Northbound / Growatt OpenAPI docs. No third-party code was copied
+and no GPL project was used (e.g. huawei-solar, pysmaplus, wallbox were not read for code).
 
 | Project | Licence | Used for | Taken over |
 |---|---|---|---|

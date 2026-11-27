@@ -43,6 +43,8 @@ const tileIcons = <String, IconData>{
   'radon': Icons.warning_amber_rounded,
   'co2': Icons.co2,
   'air_quality': Icons.air_outlined,
+  'solar': Icons.solar_power_outlined,
+  'ev': Icons.ev_station_outlined,
 };
 
 /// Names shown in the icon picker (fi, en).
@@ -87,6 +89,8 @@ const tileIconLabels = <String, (String, String)>{
   'radon': ('Radon', 'Radon'),
   'co2': ('Hiilidioksidi', 'CO₂'),
   'air_quality': ('Ilmanlaatu', 'Air quality'),
+  'solar': ('Aurinkosähkö', 'Solar power'),
+  'ev': ('Sähköauton laturi', 'EV charger'),
 };
 
 IconData iconFor(TileConfig t) {

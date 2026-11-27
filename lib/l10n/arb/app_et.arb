@@ -369,12 +369,29 @@
  "@s1f08341033": {
   "x-mt": true
  },
+ "sa7f9b278cf": "Huawei SUN2000 (Modbus TCP)",
+ "sc5863d817d": "SMA (SunSpec Modbus)",
+ "s12733504dc": "SMA Energy Meter / Home Manager (Speedwire)",
+ "sdeb4f39ff0": "Growatt (Modbus TCP)",
+ "s800d13debd": "Port",
+ "@s800d13debd": {
+  "x-mt": true
+ },
+ "s58f0665e29": "Modbus unit id",
  "sc27533ae83": "Säästlik",
  "sdbcb85509b": "Temperatuur võib kõikuda kõige rohkem (+1 / −2 °C). Suurim sääst.",
  "s380b20be36": "Tasakaalus",
  "s66ea783264": "Väike kõikumine (+1 / −1 °C). Hea vaikevalik.",
  "see96226e44": "Mugavus",
  "sb403e00b3d": "Peaaegu ühtlane temperatuur (+0,5 / −0,5 °C). Säästab veidi.",
+ "se74bcc1028": "Lisakaardid automatiseerimiseks",
+ "@se74bcc1028": {
+  "x-mt": true
+ },
+ "s7a7ab0d238": "Salvestatud krüptitud ainult selles seadmes.",
+ "@s7a7ab0d238": {
+  "x-mt": true
+ },
  "sd86b823895": "Sonoff",
  "s5f297ec9d8": "BASIC, MINI, POW, TH, 4CH... DIY režiimis koos Tasmota või ESPHome'' iga. Kaardid on loodud sinu eest; kaugkasutamine kodusilla kaudu.",
  "@s5f297ec9d8": {
@@ -3705,6 +3722,10 @@
  "@s585b4c519f": {
   "x-mt": true
  },
+ "sd408a5dbe9": "Odavamad tunnid",
+ "@sd408a5dbe9": {
+  "x-mt": true
+ },
  "s6019108a01": "Seisund",
  "@s6019108a01": {
   "x-mt": true
@@ -4813,10 +4834,6 @@
  "s09737988fd": "Ühendus töötab!",
  "s0a972aa85e": "Paroolid ja märgid salvestatakse seadme turvalises hoiuruumis.",
  "@s0a972aa85e": {
-  "x-mt": true
- },
- "sd408a5dbe9": "Odavamad tunnid",
- "@sd408a5dbe9": {
   "x-mt": true
  },
  "sa26ae27039": "Jäta vahele kalleimad tunnid",
@@ -6907,6 +6924,7 @@
  "@sbf7cc3de9a": {
   "x-mt": true
  },
+ "s5bed8bff00": "Käsk",
  "s1becc05ea1": "locked=Lukus;unlocked=Lahti;jammed=KINNI",
  "s259de02f33": "open=Avatud;closed=Suletud;opening=Avaneb;closing=Sulgub",
  "s64d4364336": "disarmed=Off;armed_away=Armed;armed_home=Home;armed_night=Night;triggered=ALARM;arming=Arming",
@@ -7213,10 +7231,6 @@
  "se1bd60873c": "MQTT",
  "s85b9781bb7": "Maakleri peremees",
  "@s85b9781bb7": {
-  "x-mt": true
- },
- "s800d13debd": "Port",
- "@s800d13debd": {
   "x-mt": true
  },
  "s49fa57061a": "TLS",
@@ -7693,7 +7707,6 @@
  "@s89ad1c43b4": {
   "x-mt": true
  },
- "s5bed8bff00": "Käsk",
  "sec7af7b376": "Nt \"light on\". PIN-koodi ja muud osad lisab seadme käsumall.",
  "@sec7af7b376": {
   "x-mt": true
@@ -8327,7 +8340,6 @@
  "@scd35ffb8e9": {
   "x-mt": true
  },
- "s58f0665e29": "Modbus unit id",
  "sab25ff8075": "Modbusi üksuse aadress, tavaliselt 1.",
  "@sab25ff8075": {
   "x-mt": true
@@ -8433,10 +8445,6 @@
  "@s6d21845355": {
   "x-mt": true
  },
- "se74bcc1028": "Lisakaardid automatiseerimiseks",
- "@se74bcc1028": {
-  "x-mt": true
- },
  "s4a91d07711": "Daikin (Wi-Fi, kohalik)",
  "@s4a91d07711": {
   "x-mt": true
@@ -8459,10 +8467,6 @@
  },
  "s41d69e699d": "Sama, mis MELCloudi rakenduses.",
  "@s41d69e699d": {
-  "x-mt": true
- },
- "s7a7ab0d238": "Salvestatud krüptitud ainult selles seadmes.",
- "@s7a7ab0d238": {
   "x-mt": true
  },
  "sa8405bf705": "Toshiba Wi-Fi soojuspumbad läbi oma Toshiba Home AC Control konto.",
@@ -9294,6 +9298,574 @@
  },
  "s3a38b97f7b": "{p0} – ruum",
  "@s3a38b97f7b": {
+  "x-mt": true
+ },
+ "s0d714dece1": "Fronius (Solar API, kohalik)",
+ "@s0d714dece1": {
+  "x-mt": true
+ },
+ "sa38a153c07": "SolarEdge (Modbus TCP, local)",
+ "@sa38a153c07": {
+  "x-mt": true
+ },
+ "s833dfe954e": "SMA (Modbus TCP, local)",
+ "@s833dfe954e": {
+  "x-mt": true
+ },
+ "sa1769b666b": "Muu SunSpeci inverter (Modbus TCP)",
+ "@sa1769b666b": {
+  "x-mt": true
+ },
+ "s1694840083": "Huawei FusionSolar (pilv)",
+ "@s1694840083": {
+  "x-mt": true
+ },
+ "s205e886d29": "SolarEdge’i seire (pilv)",
+ "@s205e886d29": {
+  "x-mt": true
+ },
+ "s5bf46ebec4": "Growatt OpenAPI (pilv)",
+ "@s5bf46ebec4": {
+  "x-mt": true
+ },
+ "se7c240ad4f": "Päikese-/inverter (sisseehitatud integreerimine)",
+ "@se7c240ad4f": {
+  "x-mt": true
+ },
+ "s46b5445e4a": "Kaubamärk ja seos",
+ "@s46b5445e4a": {
+  "x-mt": true
+ },
+ "sef83efed4e": "Valmistaja ja ühenduse tüüp. Kohalikud töötavad ilma pilveta ja uuendavad kiiremini.",
+ "@sef83efed4e": {
+  "x-mt": true
+ },
+ "scc322677fe": "IP- aadress (kohalik)",
+ "@scc322677fe": {
+  "x-mt": true
+ },
+ "s6ac1068052": "Inverteri, SDongle''i või arvesti IP-aadress (ruuteri seadmete loendist).",
+ "@s6ac1068052": {
+  "x-mt": true
+ },
+ "sa163739d18": "Tühi = vaikimisi (Modbus 502, SolarEdge 1502, Huawei inverter Wi-Fi 6607).",
+ "@sa163739d18": {
+  "x-mt": true
+ },
+ "sd5e2f52587": "Tühi = vaikimisi (Huawei 1, SolarEdge 1, SMA 3, SMA SunSpec 126, Growatt 1).",
+ "@sd5e2f52587": {
+  "x-mt": true
+ },
+ "se49fbf06a8": "Arvesti jada (SMA energiaarvesti)",
+ "@se49fbf06a8": {
+  "x-mt": true
+ },
+ "s4a63dcc985": "Ainult siis, kui võrgus on mitu SMA meetrit. Tühi = esimene.",
+ "@s4a63dcc985": {
+  "x-mt": true
+ },
+ "s6e391cf987": "Kasutaja (FusionSolar API)",
+ "@s6e391cf987": {
+  "x-mt": true
+ },
+ "se76a6f4565": "FusionSolar Northbound API kasutaja (loonud paigaldaja: System → Company → Northbound).",
+ "@se76a6f4565": {
+  "x-mt": true
+ },
+ "s2f3b444057": "Parool / süsteemi kood",
+ "@s2f3b444057": {
+  "x-mt": true
+ },
+ "s11298f6c17": "Salvestatud ainult selles seadmes / teie enda krüpteeritud varakambris.",
+ "@s11298f6c17": {
+  "x-mt": true
+ },
+ "s68eeca8dbe": "API võti (SolarEdge / Growatt)",
+ "@s68eeca8dbe": {
+  "x-mt": true
+ },
+ "seba7bd613f": "SolarEdge: seireportaal → Admin → Site Access → API. Growatt: OpenAPI token.",
+ "@seba7bd613f": {
+  "x-mt": true
+ },
+ "s3cda8d5f90": "Tegevuskoha/tehase tunnuskood (pilv)",
+ "@s3cda8d5f90": {
+  "x-mt": true
+ },
+ "see56030ac8": "Tühjus = konto esimene asukoht.",
+ "@see56030ac8": {
+  "x-mt": true
+ },
+ "sbdf670977b": "Lugemine",
+ "@sbdf670977b": {
+  "x-mt": true
+ },
+ "s9d61569ac0": "Võrk: positiivne = võrgust ostmine, negatiivne = müügi ülejääk.",
+ "@s9d61569ac0": {
+  "x-mt": true
+ },
+ "sc78a29bef9": "Päikeseenergia nüüd (W)",
+ "@sc78a29bef9": {
+  "x-mt": true
+ },
+ "s88a9d9b593": "Tootlikkus täna (kWh)",
+ "@s88a9d9b593": {
+  "x-mt": true
+ },
+ "s4766881640": "Kogusaagis (kWh)",
+ "@s4766881640": {
+  "x-mt": true
+ },
+ "s4e1e06f64a": "Võrk + import / −eksport (V)",
+ "@s4e1e06f64a": {
+  "x-mt": true
+ },
+ "s5c5e6866eb": "Imporditud kogumaht (kWh)",
+ "@s5c5e6866eb": {
+  "x-mt": true
+ },
+ "s7495975366": "Eksporditud kogumaht (kWh)",
+ "@s7495975366": {
+  "x-mt": true
+ },
+ "s275ffaa691": "Aku laetus (%)",
+ "@s275ffaa691": {
+  "x-mt": true
+ },
+ "s9da1bd7ed1": "Aku + laadimine / −tühjendus (V)",
+ "@s9da1bd7ed1": {
+  "x-mt": true
+ },
+ "sb6d790453a": "Kodumaine tarbimine (V)",
+ "@sb6d790453a": {
+  "x-mt": true
+ },
+ "sff9335b6df": "Seade ei anna sellest lugemist aru ({p0})",
+ "@sff9335b6df": {
+  "x-mt": true
+ },
+ "s711b4531bd": "Inverterid on kirjutuskaitstud",
+ "@s711b4531bd": {
+  "x-mt": true
+ },
+ "s257cf40257": "päikeseenergia",
+ "@s257cf40257": {
+  "x-mt": true
+ },
+ "sfa32969a23": "võrku",
+ "@sfa32969a23": {
+  "x-mt": true
+ },
+ "s333643b4c4": "SMA energiaarvesti: koduvõrgus saateid ei edastata (multicast 239.12.255.254:9522)",
+ "@s333643b4c4": {
+  "x-mt": true
+ },
+ "s0a81072a1f": "Leia see ruuteri seadmete nimekirjast või valmistaja rakendusest (seadme info). Reserveeri sellele kindel IP.",
+ "@s0a81072a1f": {
+  "x-mt": true
+ },
+ "s7c6a740594": "Põhinäidud",
+ "@s7c6a740594": {
+  "x-mt": true
+ },
+ "s87d0186621": "Huawei SUN2000 (Modbus TCP, kohalik)",
+ "@s87d0186621": {
+  "x-mt": true
+ },
+ "se7647d6762": "SUN2000 inverter (sh LUNA2000 aku ja DTSU666 meeter) SDongle''i kaudu teie võrgus, ilma pilveta.",
+ "@se7647d6762": {
+  "x-mt": true
+ },
+ "sccb0c7d2d8": "SDongle'' i IP- aadress. Esmalt luba see rakenduses FusionSolar: Device commissioning → Dongle → Modbus TCP = \"Enable (unrestricted)\". Ilma dongle''ita: inverteri enda Wi-Fi, aadress nagu 192.168.200.1: 6607.",
+ "@sccb0c7d2d8": {
+  "x-mt": true
+ },
+ "sddc831ec16": "Valikuline: tootmine ametliku FusionSolar Northbound API kaudu. Uuendused umbes iga 5 minuti järel.",
+ "@sddc831ec16": {
+  "x-mt": true
+ },
+ "s4424767fdd": "Northbound API kasutaja (mitte tavaline rakenduse sisselogimine). Paigaldaja / admin loob selle: System → Company → Northbound Management.",
+ "@s4424767fdd": {
+  "x-mt": true
+ },
+ "sde3c79670a": "Veebilehitseja aadressiriba masin, kui see on sisse logitud FusionSolarisse. Vaikimisi eu5.",
+ "@sde3c79670a": {
+  "x-mt": true
+ },
+ "se80d87723d": "Symo, Primo, Gen24, Tauro – sh Smart Meter ja aku. Valmistaja avatud kohalik API, ilma pilveta.",
+ "@se80d87723d": {
+  "x-mt": true
+ },
+ "s1cb0924dc9": " Gen24: lubage Solar API inverteri veebisaidil (Communication → Solar API).",
+ "@s1cb0924dc9": {
+  "x-mt": true
+ },
+ "s1345214178": "SolarEdge inverter, arvesti ja aku üle SunSpec Modbus teie võrgus (port 1502).",
+ "@s1345214178": {
+  "x-mt": true
+ },
+ "s1f7b006036": " Modbus TCP lubamine SetApp: komisjonindamine → teatis → Modbus TCP.",
+ "@s1f7b006036": {
+  "x-mt": true
+ },
+ "s5d43115e7d": "Valikuline: tootmine ja elektrivool läbi SolarEdge''i ametliku seire API (uuendused ~5 min).",
+ "@s5d43115e7d": {
+  "x-mt": true
+ },
+ "sbe1a020a66": "monitoring.solaredge.com → Admin → Site Access → API Access: aktsepteerida tingimusi ja kopeerida võti.",
+ "@sbe1a020a66": {
+  "x-mt": true
+ },
+ "s9c5e673c38": "Sunny Boy, Sunny Tripower, Sunny Boy Storage – SMA Modbus registreerib teie võrgus (üksus ID 3).",
+ "@s9c5e673c38": {
+  "x-mt": true
+ },
+ "s4fad533521": " Modbusi lubamine inverteri veebilehel: Seadme parameetrid → Väline suhtlus → Modbus TCP server.",
+ "@s4fad533521": {
+  "x-mt": true
+ },
+ "s528ecf3140": "SMA energiaarvesti / koduhaldur (Speedwire, kohalik)",
+ "@s528ecf3140": {
+  "x-mt": true
+ },
+ "sa7e3cb3d48": "Võrgu import ja eksport otse arvesti Speedwire''i saadetest - ei sisselogimist, ei pilve.",
+ "@sa7e3cb3d48": {
+  "x-mt": true
+ },
+ "s126a0713b8": "Arvesti leitakse automaatselt samast koduvõrgust. Kui otsing seda ei kasuta, kirjuta arvesti IP (näidud tulevad ikka selle saadetest).",
+ "@s126a0713b8": {
+  "x-mt": true
+ },
+ "sbdf4d24f64": "Growatt (Modbus TCP, kohalik)",
+ "@sbdf4d24f64": {
+  "x-mt": true
+ },
+ "s6c5156d740": "MIN/ MOD/ SPH inverterid RS485→TCP lüüsi (või ShineLan- X Modbus TCP- ga) kaudu. Kontrolli näitu.",
+ "@s6c5156d740": {
+  "x-mt": true
+ },
+ "se351eda9ce": "RS485 IP→Modbus TCP gateway (nt Elfin EW11, Waveshare) on ühendatud inverteri RS485/COM porti.",
+ "@se351eda9ce": {
+  "x-mt": true
+ },
+ "s06257dd63c": "Valikuline: tootmine Growatti OpenAPI (ShinePhone/ShineServeri konto) kaudu. Uuendused ~5 min.",
+ "@s06257dd63c": {
+  "x-mt": true
+ },
+ "sbd8c9831bb": "Küsige Growatti toetust või oma installerit OpenAPI märgi jaoks või leidke see ShineServeri sätetest, kui seda näidatakse.",
+ "@sbd8c9831bb": {
+  "x-mt": true
+ },
+ "s3c89bd3976": "Kostal, Fronius (Modbus), SMA (SunSpec), ABB/FIMER... Kõik SunSpeci seadmed.",
+ "@s3c89bd3976": {
+  "x-mt": true
+ },
+ "s183e57cdfd": " Port 502 vaikimisi – teine port nagu 192.168.1.20:1502.",
+ "@s183e57cdfd": {
+  "x-mt": true
+ },
+ "s981854cf46": "Päikeseenergia",
+ "@s981854cf46": {
+  "x-mt": true
+ },
+ "s984804da72": "Huawei, Fronius, SolarEdge, SMA, Growatt – tootmine, võrk ja aku. Kohalik, pilv valikuline.",
+ "@s984804da72": {
+  "x-mt": true
+ },
+ "sa50094ffdb": "Võrgu võimsuse valimine (+import / −eksport)",
+ "@sa50094ffdb": {
+  "x-mt": true
+ },
+ "s3cc31bcfdc": "Laadija valimine (laadimine sisse/ välja)",
+ "@s3cc31bcfdc": {
+  "x-mt": true
+ },
+ "s3d34e477c2": "Nüüd on",
+ "@s3d34e477c2": {
+  "x-mt": true
+ },
+ "s099666eafe": "odavat tundi",
+ "@s099666eafe": {
+  "x-mt": true
+ },
+ "s08b96dd0f7": "odavat tundi",
+ "@s08b96dd0f7": {
+  "x-mt": true
+ },
+ "sd7232b8464": "Odavamad tunnid päevas",
+ "@sd7232b8464": {
+  "x-mt": true
+ },
+ "sd551537404": "Kontrollige näidud - ametlik müüja dokument puudub.",
+ "@sd551537404": {
+  "x-mt": true
+ },
+ "sa1a45de0f2": "Kohalik – soovitatav",
+ "@sa1a45de0f2": {
+  "x-mt": true
+ },
+ "se8b35fb9e9": "Pilv – valikuline",
+ "@se8b35fb9e9": {
+  "x-mt": true
+ },
+ "s95216a7a5e": "Teised – miks mitte veel",
+ "@s95216a7a5e": {
+  "x-mt": true
+ },
+ "sc52321f275": "Milline inverter sul on?",
+ "@sc52321f275": {
+  "x-mt": true
+ },
+ "s862002ac64": "Tootmine, võrgu import/eksport ja aku laetus kaartidena ja automatiseerimiseks. Kohalik ühendus uueneb sekunditega ega vaja pilve.",
+ "@s862002ac64": {
+  "x-mt": true
+ },
+ "sa5f3da9152": "Milline laadija sul on?",
+ "@sa5f3da9152": {
+  "x-mt": true
+ },
+ "sdeb1f4332e": "Olek, laadimine sisse/välja, võimsus ja voolupiirang. Automaatika: päikeseenergia ülejäägi tasu või kõige odavamatel tundidel.",
+ "@sdeb1f4332e": {
+  "x-mt": true
+ },
+ "s1a6081db34": "EV laadija",
+ "@s1a6081db34": {
+  "x-mt": true
+ },
+ "sb75700bbba": "Autot pole",
+ "@sb75700bbba": {
+  "x-mt": true
+ },
+ "s5a3fcd56de": "Auto ühendatud",
+ "@s5a3fcd56de": {
+  "x-mt": true
+ },
+ "s23910a6fb5": "Laadimine",
+ "@s23910a6fb5": {
+  "x-mt": true
+ },
+ "s22cd08064f": "Pausitud",
+ "@s22cd08064f": {
+  "x-mt": true
+ },
+ "s5b8b3042ec": "Lõpetasin",
+ "@s5b8b3042ec": {
+  "x-mt": true
+ },
+ "s84df123d5a": "Viga",
+ "@s84df123d5a": {
+  "x-mt": true
+ },
+ "s98c928f06c": "Sama, mis tegija rakenduses.",
+ "@s98c928f06c": {
+  "x-mt": true
+ },
+ "s68e2e87750": "OCPP 1.6J (kohalik, mis tahes kaubamärk)",
+ "@s68e2e87750": {
+  "x-mt": true
+ },
+ "s12fa00013a": "Wallbox, Alfen, ABB, go-e, Etrel, Easee/Zaptec (OCPP sees)... Laadija ühendub otse Molaplaniga – pilve pole.",
+ "@s12fa00013a": {
+  "x-mt": true
+ },
+ "s4bc8fc306b": "Kui laadijal on määratud põhiauth parool. Tavaliselt on see tühi.",
+ "@s4bc8fc306b": {
+  "x-mt": true
+ },
+ "s66fb236f0c": "Easee (pilv)",
+ "@s66fb236f0c": {
+  "x-mt": true
+ },
+ "s8c376593cb": "Easee Home / Tasu / Üks läbi oma Easee konto: olek, start/stop ja praegune limiit.",
+ "@s8c376593cb": {
+  "x-mt": true
+ },
+ "s827730d443": "Sama nagu Easee rakenduses (telefon +358...).",
+ "@s827730d443": {
+  "x-mt": true
+ },
+ "s3809be512f": "Zaptec (pilv)",
+ "@s3809be512f": {
+  "x-mt": true
+ },
+ "se1a5b725a4": "Zaptec Go / Home / Pro läbi oma Zapteci konto. Start/ Pause vajab omanikuõigusi.",
+ "@se1a5b725a4": {
+  "x-mt": true
+ },
+ "s90c71e52fb": "Seinakast (pilv)",
+ "@s90c71e52fb": {
+  "x-mt": true
+ },
+ "s72dc0a7687": "Pulsar, komandör, Copper läbi oma myWallboxi konto. Kohalik: vali OCPP.",
+ "@s72dc0a7687": {
+  "x-mt": true
+ },
+ "s59ed724e14": "Easee, Zaptec, Wallbox – või mõni muu OCPP laadija kohapeal. Tasu ülejäägi või odava hinna eest.",
+ "@s59ed724e14": {
+  "x-mt": true
+ },
+ "s2d551049ff": "OCPP serveri käivitamine pordis {p0}: {p1} nurjus",
+ "@s2d551049ff": {
+  "x-mt": true
+ },
+ "s9a6813045a": "Laadija \"{p0}\" ei ole ühendust võtnud. Määra selle OCPP URL- iks ws://<see seade IP>:{p1}/ocpp/",
+ "@s9a6813045a": {
+  "x-mt": true
+ },
+ "sb33d4d8b62": "Laadija ei lae praegu",
+ "@sb33d4d8b62": {
+  "x-mt": true
+ },
+ "s7c3abc09fc": "EV laadija (sisseehitatud integreerimine)",
+ "@s7c3abc09fc": {
+  "x-mt": true
+ },
+ "se6885155b4": "OCPP töötab lokaalselt ilma pilveta (laadija ühendub selle rakenduse või sillaga).",
+ "@se6885155b4": {
+  "x-mt": true
+ },
+ "sb14c49378c": "OCPP port",
+ "@sb14c49378c": {
+  "x-mt": true
+ },
+ "sa9346504d4": "Port, mida seade kuulab. Laadija URL: ws://<see seade IP>:9000/ocpp/",
+ "@sa9346504d4": {
+  "x-mt": true
+ },
+ "sf94b2ba7f3": "Laadimispunkti ID (OCPP)",
+ "@sf94b2ba7f3": {
+  "x-mt": true
+ },
+ "s8ea8831ed0": "Laadija OCPP laadimispunkti ID. Tühi = esimene, mis ühendub.",
+ "@s8ea8831ed0": {
+  "x-mt": true
+ },
+ "sa3b3822b75": "kaugkäivituse idTag",
+ "@sa3b3822b75": {
+  "x-mt": true
+ },
+ "sf718534954": "Saadeti kaugtehinguga. Tühi = \"molaplan\".",
+ "@sf718534954": {
+  "x-mt": true
+ },
+ "s540a178f7a": "Kasutajanimi / e-post (pilv)",
+ "@s540a178f7a": {
+  "x-mt": true
+ },
+ "sa6b5175654": "Pilv: rakenduse parool. OCPP: valikuline Autentimise põhiparool. Salvestatud ainult sellele seadmele.",
+ "@sa6b5175654": {
+  "x-mt": true
+ },
+ "sccb2892754": "Millist laadija näitu näidata.",
+ "@sccb2892754": {
+  "x-mt": true
+ },
+ "s0e7115e10c": "Staatus",
+ "@s0e7115e10c": {
+  "x-mt": true
+ },
+ "s20cb072267": "Laadimine (1/0)",
+ "@s20cb072267": {
+  "x-mt": true
+ },
+ "se13ff56722": "Laadimisvõimsus (W)",
+ "@se13ff56722": {
+  "x-mt": true
+ },
+ "sd3627e3a20": "See seanss (kWh)",
+ "@sd3627e3a20": {
+  "x-mt": true
+ },
+ "s19e058622f": "Kokku (kWh)",
+ "@s19e058622f": {
+  "x-mt": true
+ },
+ "s613785b80f": "Praegune piirmäär (A)",
+ "@s613785b80f": {
+  "x-mt": true
+ },
+ "s60f4e2786f": "Laadija ID",
+ "@s60f4e2786f": {
+  "x-mt": true
+ },
+ "sfbbd0943a8": "Laadija ID kontol; tühi = ainus laadija.",
+ "@sfbbd0943a8": {
+  "x-mt": true
+ },
+ "s9617db1f3d": "Käivita, peata või määra aktiivne limiit.",
+ "@s9617db1f3d": {
+  "x-mt": true
+ },
+ "sc110ab773a": "Alusta laadimist",
+ "@sc110ab773a": {
+  "x-mt": true
+ },
+ "s44d11f741f": "Peatus/paus",
+ "@s44d11f741f": {
+  "x-mt": true
+ },
+ "s4c68e739b0": "Laadimine sisse/välja",
+ "@s4c68e739b0": {
+  "x-mt": true
+ },
+ "s141fac7235": "Praeguse piirangu (A) määramine",
+ "@s141fac7235": {
+  "x-mt": true
+ },
+ "s33f04bfedd": "'Aktiivsuspiir amprites; {{value}} = liuguri väärtus.'",
+ "@s33f04bfedd": {
+  "x-mt": true
+ },
+ "s610172c6f4": "Laadijat \"{p0}\" ei leitud (ühenduseta või eemaldatud)",
+ "@s610172c6f4": {
+  "x-mt": true
+ },
+ "sf51ef628f4": "Praegune piirang puudub",
+ "@sf51ef628f4": {
+  "x-mt": true
+ },
+ "sd661432e07": "Laadijaid pole",
+ "@sd661432e07": {
+  "x-mt": true
+ },
+ "s47aba73804": "laetud",
+ "@s47aba73804": {
+  "x-mt": true
+ },
+ "s14252e6c3a": "staatus",
+ "@s14252e6c3a": {
+  "x-mt": true
+ },
+ "sed9640f6b4": "laadimine",
+ "@sed9640f6b4": {
+  "x-mt": true
+ },
+ "sebaaf2a20f": "laadimisvõimsus",
+ "@sebaaf2a20f": {
+  "x-mt": true
+ },
+ "s223d1336d5": "seanss",
+ "@s223d1336d5": {
+  "x-mt": true
+ },
+ "sbea289dcc3": "praegune limiit",
+ "@sbea289dcc3": {
+  "x-mt": true
+ },
+ "s602af22563": "Auto laadimine päikeseenergia ülejäägile",
+ "@s602af22563": {
+  "x-mt": true
+ },
+ "s9ce0e97a38": "Laadimine, kui eksporditakse rohkem kui 1.4 kW. Väljalülitamine, kui imporditakse rohkem kui 1 kW (laadimine vähemalt 10 minutit).",
+ "@s9ce0e97a38": {
+  "x-mt": true
+ },
+ "scbad5277ee": "Auto laadimine kõige odavamatel tundidel",
+ "@scbad5277ee": {
+  "x-mt": true
+ },
+ "sb6dc0d48ed": "Laadige päeva jooksul 4 kõige odavamat tundi ja maha, kui need lõpevad.",
+ "@sb6dc0d48ed": {
   "x-mt": true
  }
 }

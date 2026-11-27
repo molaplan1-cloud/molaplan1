@@ -10,6 +10,8 @@ import '../core/discovery.dart';
 import '../devices/ha_setup.dart';
 import '../heatpumps/hp_providers.dart';
 import '../tuya/tuya_provider.dart';
+import '../energy/solar_providers.dart';
+import '../ev/ev_providers.dart';
 import '../drivers/registry.dart';
 import '../drivers/ntfy_device.dart' show ntfyNoReplyText;
 import '../drivers/driver.dart' show DriverException;
@@ -233,6 +235,18 @@ class _TemplateGridState extends State<TemplateGrid> {
                           }
                           if (p is HeatPumpChooser) {
                             final c = await pickHeatPumpBrand(context);
+                            if (c == null || !context.mounted) return;
+                            if (c is String) {
+                              final tpl = templateById(c);
+                              if (tpl != null) widget.onPick(tpl);
+                              return;
+                            }
+                            pick = c as DeviceProvider;
+                          }
+                          if (p is SolarChooser || p is ChargerChooser) {
+                            final c = p is SolarChooser
+                                ? await pickSolarBrand(context)
+                                : await pickChargerBrand(context);
                             if (c == null || !context.mounted) return;
                             if (c is String) {
                               final tpl = templateById(c);
@@ -1313,7 +1327,10 @@ Future<Object?> pickHeatPumpBrand(BuildContext context) => showModalBottomSheet<
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
-          child: Text(tx(c, 'Mikä lämpöpumppu sinulla on?', 'Which heat pump do you have?'), style: Theme.of(c).textTheme.titleLarge),
+          child: Text(
+            tx(c, 'Mikä lämpöpumppu sinulla on?', 'Which heat pump do you have?'),
+            style: Theme.of(c).textTheme.titleLarge,
+          ),
         ),
         for (final p in heatPumpProviders)
           ListTile(
@@ -1323,7 +1340,12 @@ Future<Object?> pickHeatPumpBrand(BuildContext context) => showModalBottomSheet<
             subtitle: Text(
               [
                 p.desc(AppScope.of(c).lang),
-                if (!p.documented) tx(c, 'Tarkista asetukset – ei valmistajan virallista dokumenttia.', 'Verify – no official vendor document.'),
+                if (!p.documented)
+                  tx(
+                    c,
+                    'Tarkista asetukset – ei valmistajan virallista dokumenttia.',
+                    'Verify – no official vendor document.',
+                  ),
               ].join(' '),
               maxLines: 3,
             ),
@@ -1347,13 +1369,19 @@ Future<Object?> pickHeatPumpBrand(BuildContext context) => showModalBottomSheet<
         ListTile(
           leading: const Icon(Icons.memory_outlined),
           title: Text(tx(c, 'Huoltoliitäntä (ESPHome)', 'Service port (ESPHome)')),
-          subtitle: Text(tx(c, 'ESP sisäyksikön liittimeen, kaksisuuntainen.', 'An ESP on the indoor unit connector, two-way.'), maxLines: 2),
+          subtitle: Text(
+            tx(c, 'ESP sisäyksikön liittimeen, kaksisuuntainen.', 'An ESP on the indoor unit connector, two-way.'),
+            maxLines: 2,
+          ),
           onTap: () => Navigator.pop(c, 'heatpump_esphome'),
         ),
         ListTile(
           leading: const Icon(Icons.home_outlined),
           title: Text(tx(c, 'Home Assistantin kautta', 'Via Home Assistant')),
-          subtitle: Text(tx(c, 'Jos sinulla on jo Home Assistant.', 'If you already have Home Assistant.'), maxLines: 2),
+          subtitle: Text(
+            tx(c, 'Jos sinulla on jo Home Assistant.', 'If you already have Home Assistant.'),
+            maxLines: 2,
+          ),
           onTap: () => Navigator.pop(c, 'heatpump_ha'),
         ),
         ExpansionTile(
@@ -1403,19 +1431,140 @@ Future<DeviceProvider?> pickTuyaMode(BuildContext context) => showModalBottomShe
         ListTile(
           key: const ValueKey('tuya-mode-keys'),
           leading: const Icon(Icons.key_outlined),
-          title: Text(tx(c, 'Hae avaimet omalla Tuya-tunnuksella (suositus)', 'Fetch the keys with my own Tuya account (recommended)')),
-          subtitle: Text(tx(c, 'Kaikki sovelluksen wifi-laitteet kerralla.', 'All Wi-Fi devices of the app at once.'), maxLines: 2),
+          title: Text(
+            tx(
+              c,
+              'Hae avaimet omalla Tuya-tunnuksella (suositus)',
+              'Fetch the keys with my own Tuya account (recommended)',
+            ),
+          ),
+          subtitle: Text(
+            tx(c, 'Kaikki sovelluksen wifi-laitteet kerralla.', 'All Wi-Fi devices of the app at once.'),
+            maxLines: 2,
+          ),
           onTap: () => Navigator.pop(c, providerById('tuya')),
         ),
         ListTile(
           key: const ValueKey('tuya-mode-local'),
           leading: const Icon(Icons.lan_outlined),
           title: Text(tx(c, 'Minulla on jo paikallinen avain', 'I already have the local key')),
-          subtitle: Text(tx(c, 'Yksi laite: osoite, tunnus ja avain.', 'One device: address, ID and key.'), maxLines: 2),
+          subtitle: Text(
+            tx(c, 'Yksi laite: osoite, tunnus ja avain.', 'One device: address, ID and key.'),
+            maxLines: 2,
+          ),
           onTap: () => Navigator.pop(c, providerById('tuya_local')),
         ),
         const SizedBox(height: 8),
       ],
     ),
   ),
+);
+
+/// R288 / R289: brand sheet for the "Aurinkosähkö" and "Sähköauton laturi" cards. Local first,
+/// optional clouds after, then what is not built yet. Returns a [DeviceProvider] or a template id.
+Future<Object?> _pickBrandSheet(
+  BuildContext context, {
+  required String keyName,
+  required String titleFi,
+  required String titleEn,
+  required String introFi,
+  required String introEn,
+  required List<DeviceProvider> providers,
+  required bool Function(DeviceProvider) documented,
+  required List<(String, String, String)> notYet,
+  required IconData localIcon,
+}) => showModalBottomSheet<Object>(
+  context: context,
+  showDragHandle: true,
+  isScrollControlled: true,
+  builder: (c) {
+    final lang = AppScope.of(c).lang;
+    Widget tile(DeviceProvider p) => ListTile(
+      key: ValueKey('$keyName-brand-${p.id}'),
+      leading: Icon(p.kind == ProviderKind.cloud ? Icons.cloud_outlined : localIcon),
+      title: Text(p.name(lang)),
+      subtitle: Text(
+        [
+          p.desc(lang),
+          if (!documented(p))
+            tx(
+              c,
+              'Tarkista lukemat – ei valmistajan virallista dokumenttia.',
+              'Verify the readings – no official vendor document.',
+            ),
+        ].join(' '),
+        maxLines: 3,
+      ),
+      onTap: () => Navigator.pop(c, p),
+    );
+    final local = providers.where((p) => p.kind != ProviderKind.cloud).toList();
+    final cloud = providers.where((p) => p.kind == ProviderKind.cloud).toList();
+    return SafeArea(
+      child: ListView(
+        key: ValueKey('$keyName-brands'),
+        shrinkWrap: true,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 4),
+            child: Text(tx(c, titleFi, titleEn), style: Theme.of(c).textTheme.titleLarge),
+          ),
+          Padding(padding: const EdgeInsets.fromLTRB(20, 0, 20, 8), child: Text(tx(c, introFi, introEn))),
+          ListTile(
+            dense: true,
+            title: Text(
+              tx(c, 'Paikallinen – suositus', 'Local – recommended'),
+              style: Theme.of(c).textTheme.labelLarge,
+            ),
+          ),
+          for (final p in local) tile(p),
+          const Divider(),
+          ListTile(
+            dense: true,
+            title: Text(tx(c, 'Pilvi – valinnainen', 'Cloud – optional'), style: Theme.of(c).textTheme.labelLarge),
+          ),
+          for (final p in cloud) tile(p),
+          ExpansionTile(
+            key: ValueKey('$keyName-not-yet'),
+            leading: const Icon(Icons.schedule),
+            title: Text(tx(c, 'Muut – miksi ei vielä', 'Others – why not yet')),
+            children: [
+              for (final n in notYet) ListTile(title: Text(n.$1), subtitle: Text(tx(c, n.$2, n.$3))),
+              ListTile(
+                leading: const Icon(Icons.home_outlined),
+                title: Text(tx(c, 'Home Assistantin kautta', 'Via Home Assistant')),
+                onTap: () => Navigator.pop(c, 'homeassistant'),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+        ],
+      ),
+    );
+  },
+);
+
+Future<Object?> pickSolarBrand(BuildContext context) => _pickBrandSheet(
+  context,
+  keyName: 'solar',
+  titleFi: 'Mikä invertteri sinulla on?',
+  titleEn: 'Which inverter do you have?',
+  introFi: 'Tuotanto, verkosta osto/myynti ja akun varaus ruutuihin ja automaatioihin. Paikallinen yhteys päivittyy sekunneissa eikä tarvitse pilveä.',
+  introEn: 'Production, grid import/export and battery charge as tiles and for automations. A local connection updates in seconds and needs no cloud.',
+  providers: solarProviders,
+  documented: (p) => p is SolarProvider ? p.documented : true,
+  notYet: solarNotYet,
+  localIcon: Icons.solar_power_outlined,
+);
+
+Future<Object?> pickChargerBrand(BuildContext context) => _pickBrandSheet(
+  context,
+  keyName: 'ev',
+  titleFi: 'Mikä laturi sinulla on?',
+  titleEn: 'Which charger do you have?',
+  introFi: 'Tila, lataus päälle/pois, teho ja virtaraja. Automaatiot: lataa aurinkosähkön ylijäämällä tai halvimpina tunteina.',
+  introEn: 'Status, charging on/off, power and current limit. Automations: charge on solar surplus or in the cheapest hours.',
+  providers: evChargerProviders,
+  documented: (p) => p is EvChargerProvider ? p.documented : true,
+  notYet: evNotYet,
+  localIcon: Icons.ev_station_outlined,
 );

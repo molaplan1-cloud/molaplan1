@@ -228,7 +228,17 @@ class AutomationEngine {
       for (final a in List.of(settings.automations)) {
         if (!a.enabled) continue;
         try {
-          if (await _fired(a)) await runAutomation(a);
+          if (await _fired(a)) {
+            if (_hasWaitUntil(a.actions)) {
+              // R289: e.g. "charge until the cheap hours end" can wait for hours – run it beside the
+              // evaluation round (one run at a time per automation) instead of blocking every other one.
+              if (_longRuns.add(a.id)) {
+                unawaited(runAutomation(a).catchError((_) => false).whenComplete(() => _longRuns.remove(a.id)));
+              }
+            } else {
+              await runAutomation(a);
+            }
+          }
         } catch (_) {}
       }
       await tickReminders();
@@ -238,6 +248,11 @@ class AutomationEngine {
   }
 
   _AState _st(String id) => _state.putIfAbsent(id, _AState.new);
+
+  final Set<String> _longRuns = {};
+  static bool _hasWaitUntil(List<ActionStep> l) => l.any(
+    (s) => s.kind == 'waitUntil' || (s.kind == 'if' && (_hasWaitUntil(s.thenSteps) || _hasWaitUntil(s.elseSteps))),
+  );
 
   // ------------------------------------------------------------ v0.11.0 reminders
 
@@ -362,7 +377,15 @@ class AutomationEngine {
     } else {
       _log(RunEntry(at: env.now(), kind: 'notify', id: r.id, name: title, msg: body));
     }
-    final n = Notice(at: env.now(), source: 'reminder', id: r.id, title: title, body: body, priority: r.priority, pushed: pushed);
+    final n = Notice(
+      at: env.now(),
+      source: 'reminder',
+      id: r.id,
+      title: title,
+      body: body,
+      priority: r.priority,
+      pushed: pushed,
+    );
     notices.insert(0, n);
     if (notices.length > maxNotices) notices.removeRange(maxNotices, notices.length);
     onNotice?.call(n, r);
@@ -491,6 +514,11 @@ class AutomationEngine {
       case 'price':
         final p = await env.priceNow();
         return p != null && compare(p, '${c.args['cmp'] ?? '<'}', c.args['value']);
+      case 'cheapest':
+        // R289: now is (not) one of the day's N cheapest hours.
+        final n = (c.args['hours'] as num?)?.toInt() ?? 3;
+        final inCheap = cheapestSlotNow(await env.priceSlotsToday(), n, now) != null;
+        return c.args['not'] == true ? !inCheap : inCheap;
       case 'weather':
         final w = await env.outdoorTemp();
         return w != null && compare(w, '${c.args['cmp'] ?? '<'}', c.args['value']);
@@ -773,6 +801,22 @@ class AutomationTemplate {
       'trending_up',
     ),
     AutomationTemplate(
+      'ev_surplus',
+      'Lataa auto aurinkosähkön ylijäämällä',
+      'Charge the car on solar surplus',
+      'Laturi päälle, kun verkkoon myydään yli 1,4 kW. Pois, kun verkosta ostetaan yli 1 kW (vähintään 10 min lataus).',
+      'Charger on when more than 1.4 kW is exported. Off when more than 1 kW is imported (at least 10 min of charging).',
+      'solar',
+    ),
+    AutomationTemplate(
+      'ev_cheap',
+      'Lataa auto halvimpina tunteina',
+      'Charge the car in the cheapest hours',
+      'Laturi päälle päivän 4 halvimpana tuntina ja pois, kun halvat tunnit loppuvat.',
+      'Charger on in the day’s 4 cheapest hours and off when they end.',
+      'ev',
+    ),
+    AutomationTemplate(
       'frost',
       'Pakkasvaroitus',
       'Frost warning',
@@ -847,6 +891,39 @@ class AutomationTemplate {
           trigger: Trigger('price', {'mode': 'above', 'value': 20}),
           cooldownMin: 120,
           actions: [ActionStep.notify(tr(lang, 'Sähkö on kallista', 'Electricity is expensive'), '', priority: 3)],
+        );
+      case 'ev_surplus':
+        final grid = targets.isEmpty ? '' : targets.first;
+        final charger = targets.length > 1 ? targets[1] : '';
+        return Automation(
+          name: tr(lang, fi, en),
+          template: id,
+          trigger: Trigger('value', {'tileId': grid, 'cmp': '<', 'value': -1400}),
+          cooldownMin: 15,
+          actions: [
+            ActionStep.tile(charger, 'on'),
+            ActionStep('wait', {'seconds': 600}),
+            ActionStep('waitUntil', {
+              'cond': Condition('tile', {'tileId': grid, 'cmp': '>', 'value': 1000}).toJson(),
+              'timeout': 12 * 3600,
+            }),
+            ActionStep.tile(charger, 'off'),
+          ],
+        );
+      case 'ev_cheap':
+        final charger = targets.isEmpty ? '' : targets.first;
+        return Automation(
+          name: tr(lang, fi, en),
+          template: id,
+          trigger: Trigger('price', {'mode': 'cheapest', 'hours': 4}),
+          actions: [
+            ActionStep.tile(charger, 'on'),
+            ActionStep('waitUntil', {
+              'cond': Condition('cheapest', {'hours': 4, 'not': true}).toJson(),
+              'timeout': 12 * 3600,
+            }),
+            ActionStep.tile(charger, 'off'),
+          ],
         );
       case 'frost':
         return Automation(

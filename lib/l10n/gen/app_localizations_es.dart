@@ -394,6 +394,156 @@ class AppLocalizationsEs extends AppLocalizations {
       'El modo Fireplace se detuvo. La calefacción vuelve a la normalidad.';
 
   @override
+  String get sa7f9b278cf => 'Huawei SUN2000 (Modbus TCP)';
+
+  @override
+  String get s0d714dece1 => 'Fronius (Solar API, local)';
+
+  @override
+  String get sa38a153c07 => 'SolarEdge (Modbus TCP, local)';
+
+  @override
+  String get s833dfe954e => 'SMA (Modbus TCP, local)';
+
+  @override
+  String get sc5863d817d => 'SMA (SunSpec Modbus)';
+
+  @override
+  String get s12733504dc => 'SMA Energy Meter / Home Manager (Speedwire)';
+
+  @override
+  String get sdeb4f39ff0 => 'Growatt (Modbus TCP)';
+
+  @override
+  String get sa1769b666b => 'Otro inversor SunSpec (Modbus TCP)';
+
+  @override
+  String get s1694840083 => 'Huawei FusionSolar (cloud)';
+
+  @override
+  String get s205e886d29 => 'Vigilancia de SolarEdge (cloud)';
+
+  @override
+  String get s5bf46ebec4 => 'Growatt OpenAPI (cloud)';
+
+  @override
+  String get se7c240ad4f => 'Solar / inversor (integración incorporada)';
+
+  @override
+  String get s46b5445e4a => 'Marca y conexión';
+
+  @override
+  String get sef83efed4e =>
+      'Marcador y tipo de conexión. Los locales trabajan sin la nube y se actualizan más rápido.';
+
+  @override
+  String get scc322677fe => 'Dirección IP (local)';
+
+  @override
+  String get s6ac1068052 =>
+      'Dirección IP del inversor, SDongle o medidor (desde la lista del dispositivo del router).';
+
+  @override
+  String get s800d13debd => 'Puerto';
+
+  @override
+  String get sa163739d18 =>
+      'Empty = default (Modbus 502, SolarEdge 1502, Huawei inverter Wi-Fi 6607).';
+
+  @override
+  String get s58f0665e29 => 'Modbus unit id';
+
+  @override
+  String get sd5e2f52587 =>
+      'Empty = default (Huawei 1, SolarEdge 1, SMA 3, SMA SunSpec 126, Growatt 1).';
+
+  @override
+  String get se49fbf06a8 => 'Meter serial (SMA Energy Meter)';
+
+  @override
+  String get s4a63dcc985 =>
+      'Sólo si hay varios metros SMA en la red. Vacío = el primero.';
+
+  @override
+  String get s6e391cf987 => 'Usuario (FusionSolar API)';
+
+  @override
+  String get se76a6f4565 =>
+      'FusionSolar Usuario de API Northbound (creado por el instalador: Sistema → Empresa → Northbound).';
+
+  @override
+  String get s2f3b444057 => 'Contraseña / código del sistema';
+
+  @override
+  String get s11298f6c17 =>
+      'Almacenado sólo en este dispositivo / en su propia bóveda cifrada.';
+
+  @override
+  String get s68eeca8dbe => 'Clave de API (SolarEdge / Growatt)';
+
+  @override
+  String get seba7bd613f =>
+      'SolarEdge: portal de monitoreo → Admin → Acceso al sitio → API. Growatt: OpenAPI token.';
+
+  @override
+  String get s3cda8d5f90 => 'Sitio / planta id (cloud)';
+
+  @override
+  String get see56030ac8 => 'Vacío = el primer sitio de la cuenta.';
+
+  @override
+  String get sbdf670977b => 'Lectura';
+
+  @override
+  String get s9d61569ac0 =>
+      'Grid: positivo = compra de la red, negativo = excedente de venta.';
+
+  @override
+  String get sc78a29bef9 => 'Energía solar ahora (W)';
+
+  @override
+  String get s88a9d9b593 => 'Yield today (kWh)';
+
+  @override
+  String get s4766881640 => 'Rendimiento total (kWh)';
+
+  @override
+  String get s4e1e06f64a => 'Grid +import / −exportación (W)';
+
+  @override
+  String get s5c5e6866eb => 'Total importado (kWh)';
+
+  @override
+  String get s7495975366 => 'Total exportado (kWh)';
+
+  @override
+  String get s275ffaa691 => 'Cargo de batería (%)';
+
+  @override
+  String get s9da1bd7ed1 => 'Batería + carga / −descarga (W)';
+
+  @override
+  String get sb6d790453a => 'Consumo en el hogar (W)';
+
+  @override
+  String sff9335b6df(String p0) {
+    return 'El dispositivo no reporta esta lectura ($p0)';
+  }
+
+  @override
+  String get s711b4531bd => 'Los inversores sólo se leen';
+
+  @override
+  String get s257cf40257 => 'solar';
+
+  @override
+  String get sfa32969a23 => 'cuadrícula';
+
+  @override
+  String get s333643b4c4 =>
+      'SMA Energy Meter: no transmisiones en la red doméstica (multicast 239.12.255.254:9522)';
+
+  @override
   String get sc27533ae83 => 'Ahorro';
 
   @override
@@ -413,6 +563,124 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sb403e00b3d =>
       'Temperatura casi constante (+0,5 / −0,5 °C). Ahorra un poco.';
+
+  @override
+  String get s0a81072a1f =>
+      'Encuéntrelo en la lista de dispositivos de su router o en la aplicación del fabricante (información del dispositivo).';
+
+  @override
+  String get s7c6a740594 => 'Principales lecturas';
+
+  @override
+  String get se74bcc1028 => 'Tarjetas adicionales para automatizaciones';
+
+  @override
+  String get s87d0186621 => 'Huawei SUN2000 (Modbus TCP, local)';
+
+  @override
+  String get se7647d6762 =>
+      'Inversor SUN2000 (incluido la batería LUNA2000 y el metro DTSU666) a través del SDongle en su red, sin nube.';
+
+  @override
+  String get sccb0c7d2d8 =>
+      'La dirección IP SDongle. En primer lugar, en la aplicación FusionSolar: Dispositivo encargado → Dongle → Modbus TCP = \"Permiso (no restringido)\". Sin un dongle: el propio Wi-Fi del inversor, dirección como 192.168.200.1:6607.';
+
+  @override
+  String get sddc831ec16 =>
+      'Opcional: producción a través de la API oficial FusionSolar Northbound. Actualizaciones sobre cada 5 minutos.';
+
+  @override
+  String get s4424767fdd =>
+      'Un usuario de la API de Northbound (no su login de aplicación normal). El instalador / admin lo crea: Sistema → Empresa → Gestión de Northbound.';
+
+  @override
+  String get s7a7ab0d238 => 'Almacenado encriptado en este dispositivo sólo.';
+
+  @override
+  String get sde3c79670a =>
+      'El host en su barra de direcciones del navegador cuando se firmó en FusionSolar. Default eu5.';
+
+  @override
+  String get se80d87723d =>
+      'Symo, Primo, Gen24, Tauro – incl. Smart Meter y batería. El fabricante está abierto API local, sin nube.';
+
+  @override
+  String s1cb0924dc9(String p0) {
+    return ' Gen24: habilitar la API solar en la página web inverter (Communication → Solar API).';
+  }
+
+  @override
+  String get s1345214178 =>
+      'SolarEdge inverter, medidor y batería sobre SunSpec Modbus en su red (puerto 1502).';
+
+  @override
+  String s1f7b006036(String p0) {
+    return ' Activar Modbus TCP con el SetApp: Comisión → Comunicación → Modbus TCP.';
+  }
+
+  @override
+  String get s5d43115e7d =>
+      'Opcional: producción y flujo de energía a través de la API oficial de monitoreo SolarEdge (actualiza ~5 min).';
+
+  @override
+  String get sbe1a020a66 =>
+      'monitoring.solaredge.com → Admin → Acceso al Sitio → Acceso a la API: aceptar los términos y copiar la clave.';
+
+  @override
+  String get s9c5e673c38 =>
+      'Sunny Boy, Sunny Tripower, Sunny Boy Storage – SMA Modbus se registra en su red (unidad id 3).';
+
+  @override
+  String s4fad533521(String p0) {
+    return ' Activar Modbus en la página web del inversor: Parámetros del dispositivo → Comunicación externa → Modbus TCP servidor.';
+  }
+
+  @override
+  String get s528ecf3140 =>
+      'SMA Energy Meter / Home Manager (Speedwire, local)';
+
+  @override
+  String get sa7e3cb3d48 =>
+      'Importar y exportar directamente desde las transmisiones de Speedwire del medidor – sin login, sin nube.';
+
+  @override
+  String get s126a0713b8 =>
+      'El medidor se encuentra automáticamente en la misma red de inicio. Si la búsqueda lo extraña, escriba el medidor IP (las lecturas todavía vienen de sus transmisiones).';
+
+  @override
+  String get sbdf4d24f64 => 'Growatt (Modbus TCP, local)';
+
+  @override
+  String get s6c5156d740 =>
+      'MIN/MOD/SPH inverters via an RS485→TCP gateway (o un ShineLan-X con Modbus TCP). Verifica las lecturas.';
+
+  @override
+  String get se351eda9ce =>
+      'IP of the RS485→Modbus TCP gateway (e.g. Elfin EW11, Waveshare) cableado al puerto inverter RS485/COM.';
+
+  @override
+  String get s06257dd63c =>
+      'Opcional: producción a través de la cuenta Growatt OpenAPI (ShinePhone/ShineServer). Actualizaciones ~5 min.';
+
+  @override
+  String get sbd8c9831bb =>
+      'Pregúntele a Growatt o a su instalador para un token OpenAPI, o en la configuración de ShineServer si se muestra.';
+
+  @override
+  String get s3c89bd3976 =>
+      'Kostal, Fronius (Modbus), SMA (SunSpec), ABB/FIMER... Cualquier dispositivo SunSpec.';
+
+  @override
+  String s183e57cdfd(String p0) {
+    return ' Puerto 502 por defecto – otro puerto como 192.168.1.20:1502.';
+  }
+
+  @override
+  String get s981854cf46 => 'Energía solar';
+
+  @override
+  String get s984804da72 =>
+      'Huawei, Fronius, SolarEdge, SMA, Growatt – producción, rejilla y batería. Local, nube opcional.';
 
   @override
   String get sd86b823895 => 'Sonoff';
@@ -3920,6 +4188,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s5c7338ab38 => 'Automatizaciones preparadas';
 
   @override
+  String get sa50094ffdb =>
+      'Elija la potencia de la red (+import / −exportación)';
+
+  @override
+  String get s3cc31bcfdc => 'Elija el cargador (de encendido / apagado)';
+
+  @override
   String get s354eb362d8 => 'Elija el dispositivo';
 
   @override
@@ -4070,6 +4345,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s585b4c519f => 'Oscuro / luz';
 
   @override
+  String get sd408a5dbe9 => 'Horas más baratas';
+
+  @override
   String get s6019108a01 => 'Estado';
 
   @override
@@ -4092,6 +4370,18 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sfffb54daf4 => 'Estado';
+
+  @override
+  String get s3d34e477c2 => 'Ahora';
+
+  @override
+  String get s099666eafe => 'una hora barata';
+
+  @override
+  String get s08b96dd0f7 => 'no es una hora barata';
+
+  @override
+  String get sd7232b8464 => 'Horas más baratas / día';
 
   @override
   String get se2b3e45118 => 'oscuro';
@@ -4717,6 +5007,33 @@ class AppLocalizationsEs extends AppLocalizations {
       'Un dispositivo: dirección, identificación y llave.';
 
   @override
+  String get sd551537404 =>
+      'Verificar las lecturas – ningún documento oficial de proveedores.';
+
+  @override
+  String get sa1a45de0f2 => 'Local – recomendado';
+
+  @override
+  String get se8b35fb9e9 => 'Nube – opcional';
+
+  @override
+  String get s95216a7a5e => 'Otros – por qué aún no';
+
+  @override
+  String get sc52321f275 => '¿Qué inversor tienes?';
+
+  @override
+  String get s862002ac64 =>
+      'Producción, importación/exportación de cuadrículas y carga de batería como tarjetas y para automatizaciones. Una conexión local actualiza en segundos y no necesita nube.';
+
+  @override
+  String get sa5f3da9152 => '¿Qué cargador tiene?';
+
+  @override
+  String get sdeb1f4332e =>
+      'Estado, carga on/off, potencia y límite de corriente. Automatizaciones: carga sobre el superávit solar o en las horas más baratas.';
+
+  @override
   String get s772c158a57 => 'tcp';
 
   @override
@@ -4864,6 +5181,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s4b1eda4282 => 'Calidad del aire';
+
+  @override
+  String get s1a6081db34 => 'Cargador EV';
 
   @override
   String get sfe55fd97fa => 'Todo tranquilo.';
@@ -5145,9 +5465,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s0a972aa85e =>
       'Las contraseñas y las fichas se almacenan en el almacenamiento seguro del dispositivo.';
-
-  @override
-  String get sd408a5dbe9 => 'Horas más baratas';
 
   @override
   String get sa26ae27039 => 'Pasar las horas más caras';
@@ -7358,6 +7675,194 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sbf7cc3de9a => 'Pruebe ahora';
 
   @override
+  String get sb75700bbba => 'No hay coche';
+
+  @override
+  String get s5a3fcd56de => 'Coche conectado';
+
+  @override
+  String get s23910a6fb5 => 'Carga';
+
+  @override
+  String get s22cd08064f => 'Pausa';
+
+  @override
+  String get s5b8b3042ec => 'Terminado';
+
+  @override
+  String get s84df123d5a => 'Error';
+
+  @override
+  String get s98c928f06c => 'Igual que en la aplicación del fabricante.';
+
+  @override
+  String get s68e2e87750 => 'OCPP 1.6J (local, cualquier marca)';
+
+  @override
+  String get s12fa00013a =>
+      'Wallbox, Alfen, ABB, go-e, Etrel, Easee/Zaptec (OCPP on)... El cargador se conecta directamente a Molaplan – ninguna nube.';
+
+  @override
+  String get s4bc8fc306b =>
+      'Si el cargador tiene un conjunto básico de contraseña de austeridad. Normalmente vacío.';
+
+  @override
+  String get s66fb236f0c => 'Easee (cloud)';
+
+  @override
+  String get s8c376593cb =>
+      'Easee Home / Carga / Una a través de su cuenta de Easee: estado, inicio/stop y límite de corriente.';
+
+  @override
+  String get s827730d443 =>
+      'Igual que en la aplicación Easee (teléfono +358...).';
+
+  @override
+  String get s3809be512f => 'Zaptec (cloud)';
+
+  @override
+  String get se1a5b725a4 =>
+      'Zaptec Go / Home / Pro a través de su cuenta de Zaptec. Start/pause necesita derechos de propietario.';
+
+  @override
+  String get s90c71e52fb => 'Wallbox (cloud)';
+
+  @override
+  String get s72dc0a7687 =>
+      'Pulsar, Comandante, Copper a través de su cuenta de miWallbox. Localmente: elija OCPP.';
+
+  @override
+  String get s59ed724e14 =>
+      'Easee, Zaptec, Wallbox – o cualquier cargador de OCPP localmente. Carga sobre excedente o cuando sea barato.';
+
+  @override
+  String s2d551049ff(String p0, String p1) {
+    return 'No podía comenzar el servidor OCPP en el puerto $p0: $p1';
+  }
+
+  @override
+  String s9a6813045a(String p0, String p1) {
+    return 'Cargador \"$p0\" no ha conectado. Establezca su URL de OCPP a ws:// selecciona este dispositivo IP confidencial:$p1/ocpp/';
+  }
+
+  @override
+  String get sb33d4d8b62 => 'El cargador no está cargando ahora';
+
+  @override
+  String get s7c3abc09fc => 'Cargador EV (integración incorporada)';
+
+  @override
+  String get se6885155b4 =>
+      'OCPP funciona localmente sin una nube (el cargador se conecta a esta aplicación o al puente).';
+
+  @override
+  String get sb14c49378c => 'OCPP port';
+
+  @override
+  String get sa9346504d4 =>
+      'El puerto en el que este dispositivo escucha. URL del cargador: ws:// detectó este dispositivo IP confidencial:9000/ocpp/';
+
+  @override
+  String get sf94b2ba7f3 => 'Punto de carga id (OCPP)';
+
+  @override
+  String get s8ea8831ed0 =>
+      'El punto de carga OCPP del cargador id. Vacío = el primero que conecta.';
+
+  @override
+  String get sa3b3822b75 => 'idTag para el arranque remoto';
+
+  @override
+  String get sf718534954 =>
+      'Enviado con RemoteStartTransaction. Vacío = \"molaplan\".';
+
+  @override
+  String get s540a178f7a => 'Nombre de usuario / e-mail (cloud)';
+
+  @override
+  String get sa6b5175654 =>
+      'Cloud: la contraseña de la aplicación. OCPP: opcional contraseña básica de auth. Almacenado únicamente en este dispositivo.';
+
+  @override
+  String get sccb2892754 => 'Que lectura de cargador para mostrar.';
+
+  @override
+  String get s0e7115e10c => 'Situación';
+
+  @override
+  String get s20cb072267 => 'Carga (1/0)';
+
+  @override
+  String get se13ff56722 => 'Potencia de carga (W)';
+
+  @override
+  String get sd3627e3a20 => 'Este período de sesiones (kWh)';
+
+  @override
+  String get s19e058622f => 'Total kWh)';
+
+  @override
+  String get s613785b80f => 'Límite actual (A)';
+
+  @override
+  String get s60f4e2786f => 'Cargador id';
+
+  @override
+  String get sfbbd0943a8 =>
+      'Cargador id en la cuenta; vacío = el único cargador.';
+
+  @override
+  String get s5bed8bff00 => 'Comando';
+
+  @override
+  String get s9617db1f3d => 'Comience, pare o establezca el límite actual.';
+
+  @override
+  String get sc110ab773a => 'Comienzo de carga';
+
+  @override
+  String get s44d11f741f => 'Parar / pausa';
+
+  @override
+  String get s4c68e739b0 => 'Carga en curso/desplazamiento';
+
+  @override
+  String get s141fac7235 => 'Establecer límite de corriente (A)';
+
+  @override
+  String get s33f04bfedd =>
+      'Límite actual en los amplificadores; {{value}} = el valor deslizante.';
+
+  @override
+  String s610172c6f4(String p0) {
+    return 'Cargador \"$p0\" no encontrado (offline o eliminado)';
+  }
+
+  @override
+  String get sf51ef628f4 => 'Límite actual desaparecido';
+
+  @override
+  String get sd661432e07 => 'No hay cargadores';
+
+  @override
+  String get s47aba73804 => 'total imputado';
+
+  @override
+  String get s14252e6c3a => 'estado de situación';
+
+  @override
+  String get sed9640f6b4 => 'Carga';
+
+  @override
+  String get sebaaf2a20f => 'potencia de carga';
+
+  @override
+  String get s223d1336d5 => 'este período de sesiones';
+
+  @override
+  String get sbea289dcc3 => 'límite actual';
+
+  @override
   String get s1becc05ea1 => 'locked=Cerrado;unlocked=Abierto;jammed=ATASCADO';
 
   @override
@@ -7677,9 +8182,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s85b9781bb7 => 'Host del bróker';
-
-  @override
-  String get s800d13debd => 'Puerto';
 
   @override
   String get s49fa57061a => 'TLS';
@@ -8129,9 +8631,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s89ad1c43b4 => 'Vacío = el comando de estado del dispositivo.';
 
   @override
-  String get s5bed8bff00 => 'Comando';
-
-  @override
   String get sec7af7b376 =>
       'Por ejemplo, \"light on\". El PIN y otras partes se añaden por la plantilla de comando del dispositivo.';
 
@@ -8498,6 +8997,20 @@ class AppLocalizationsEs extends AppLocalizations {
       'Una notificación cuando el precio spot supera los 20 c/kWh.';
 
   @override
+  String get s602af22563 => 'Cargue el coche sobre el superávit solar';
+
+  @override
+  String get s9ce0e97a38 =>
+      'Cargador en cuando se exporta más de 1.4 kW. Off cuando se importan más de 1 kW (al menos 10 min de carga).';
+
+  @override
+  String get scbad5277ee => 'Cargar el coche en las horas más baratas';
+
+  @override
+  String get sb6dc0d48ed =>
+      'Cargador en el día 4 horas más baratas y apagado cuando terminan.';
+
+  @override
   String get s1906ecb28c => 'Amonestaciones Frost';
 
   @override
@@ -8714,9 +9227,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'Por lo general el predeterminado (Modbus 502, MHI 51443).';
 
   @override
-  String get s58f0665e29 => 'Modbus unit id';
-
-  @override
   String get sab25ff8075 => 'Dirección de unidad Modbus, generalmente 1.';
 
   @override
@@ -8806,9 +9316,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'Encuéntrelo en la lista de dispositivos de su router o en la aplicación del fabricante (información del dispositivo).';
 
   @override
-  String get se74bcc1028 => 'Tarjetas adicionales para automatizaciones';
-
-  @override
   String get s4a91d07711 => 'Daikin (Wi-Fi, local)';
 
   @override
@@ -8829,9 +9336,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s41d69e699d => 'Igual que en la aplicación MELCloud.';
-
-  @override
-  String get s7a7ab0d238 => 'Almacenado encriptado en este dispositivo sólo.';
 
   @override
   String get sa8405bf705 =>

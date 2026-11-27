@@ -23,6 +23,8 @@ IconData providerIcon(DeviceProvider p) => switch (p.category) {
   'cloud' => Icons.cloud_outlined,
   'camera' => Icons.videocam_outlined,
   'climate' => Icons.heat_pump_outlined,
+  'solar' => Icons.solar_power_outlined,
+  'ev' => Icons.ev_station_outlined,
   _ => Icons.power_outlined,
 };
 
@@ -34,6 +36,8 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
   'tuya' || 'tuya_local' => const Color(0xFFFF6F00),
   _ when p.category == 'camera' => const Color(0xFF5C6BC0),
   _ when p.category == 'climate' => const Color(0xFFFF7043),
+  _ when p.category == 'solar' => const Color(0xFFFFB300),
+  _ when p.category == 'ev' => const Color(0xFF43A047),
   _ => const Color(0xFF26A69A),
 };
 

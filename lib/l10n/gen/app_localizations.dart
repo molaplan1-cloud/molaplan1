@@ -752,6 +752,282 @@ abstract class AppLocalizations {
   /// **'Fireplace mode stopped. Heating is back to normal.'**
   String get s1f08341033;
 
+  /// fi: Huawei SUN2000 (Modbus TCP)
+  ///
+  /// In en, this message translates to:
+  /// **'Huawei SUN2000 (Modbus TCP)'**
+  String get sa7f9b278cf;
+
+  /// fi: Fronius (Solar API, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Fronius (Solar API, local)'**
+  String get s0d714dece1;
+
+  /// fi: SolarEdge (Modbus TCP, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'SolarEdge (Modbus TCP, local)'**
+  String get sa38a153c07;
+
+  /// fi: SMA (Modbus TCP, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'SMA (Modbus TCP, local)'**
+  String get s833dfe954e;
+
+  /// fi: SMA (SunSpec Modbus)
+  ///
+  /// In en, this message translates to:
+  /// **'SMA (SunSpec Modbus)'**
+  String get sc5863d817d;
+
+  /// fi: SMA Energy Meter / Home Manager (Speedwire)
+  ///
+  /// In en, this message translates to:
+  /// **'SMA Energy Meter / Home Manager (Speedwire)'**
+  String get s12733504dc;
+
+  /// fi: Growatt (Modbus TCP)
+  ///
+  /// In en, this message translates to:
+  /// **'Growatt (Modbus TCP)'**
+  String get sdeb4f39ff0;
+
+  /// fi: Muu SunSpec-invertteri (Modbus TCP)
+  ///
+  /// In en, this message translates to:
+  /// **'Other SunSpec inverter (Modbus TCP)'**
+  String get sa1769b666b;
+
+  /// fi: Huawei FusionSolar (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'Huawei FusionSolar (cloud)'**
+  String get s1694840083;
+
+  /// fi: SolarEdge monitoring (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'SolarEdge monitoring (cloud)'**
+  String get s205e886d29;
+
+  /// fi: Growatt OpenAPI (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'Growatt OpenAPI (cloud)'**
+  String get s5bf46ebec4;
+
+  /// fi: Aurinkosähkö / invertteri (oma integraatio)
+  ///
+  /// In en, this message translates to:
+  /// **'Solar / inverter (built-in integration)'**
+  String get se7c240ad4f;
+
+  /// fi: Merkki ja yhteystapa
+  ///
+  /// In en, this message translates to:
+  /// **'Brand and connection'**
+  String get s46b5445e4a;
+
+  /// fi: Valmistaja ja yhteystapa. Paikalliset toimivat ilman pilveä ja päivittyvät nopeammin.
+  ///
+  /// In en, this message translates to:
+  /// **'Maker and connection type. Local ones work without the cloud and update faster.'**
+  String get sef83efed4e;
+
+  /// fi: IP-osoite (paikalliset)
+  ///
+  /// In en, this message translates to:
+  /// **'IP address (local)'**
+  String get scc322677fe;
+
+  /// fi: Invertterin, SDonglen tai mittarin IP-osoite (reitittimen laitelistasta).
+  ///
+  /// In en, this message translates to:
+  /// **'IP address of the inverter, SDongle or meter (from the router device list).'**
+  String get s6ac1068052;
+
+  /// fi: Portti
+  ///
+  /// In en, this message translates to:
+  /// **'Port'**
+  String get s800d13debd;
+
+  /// fi: Tyhjä = oletus (Modbus 502, SolarEdge 1502, Huawein invertterin oma wifi 6607).
+  ///
+  /// In en, this message translates to:
+  /// **'Empty = default (Modbus 502, SolarEdge 1502, Huawei inverter Wi-Fi 6607).'**
+  String get sa163739d18;
+
+  /// fi: Modbus unit id
+  ///
+  /// In en, this message translates to:
+  /// **'Modbus unit id'**
+  String get s58f0665e29;
+
+  /// fi: Tyhjä = oletus (Huawei 1, SolarEdge 1, SMA 3, SMA SunSpec 126, Growatt 1).
+  ///
+  /// In en, this message translates to:
+  /// **'Empty = default (Huawei 1, SolarEdge 1, SMA 3, SMA SunSpec 126, Growatt 1).'**
+  String get sd5e2f52587;
+
+  /// fi: Mittarin sarjanumero (SMA Energy Meter)
+  ///
+  /// In en, this message translates to:
+  /// **'Meter serial (SMA Energy Meter)'**
+  String get se49fbf06a8;
+
+  /// fi: Vain jos verkossa on useita SMA-mittareita. Tyhjä = ensimmäinen.
+  ///
+  /// In en, this message translates to:
+  /// **'Only if there are several SMA meters on the network. Empty = the first one.'**
+  String get s4a63dcc985;
+
+  /// fi: Käyttäjä (FusionSolar API)
+  ///
+  /// In en, this message translates to:
+  /// **'User (FusionSolar API)'**
+  String get s6e391cf987;
+
+  /// fi: FusionSolarin Northbound-API-käyttäjä (asentaja luo: Järjestelmä → Yritys → Northbound).
+  ///
+  /// In en, this message translates to:
+  /// **'FusionSolar Northbound API user (created by the installer: System → Company → Northbound).'**
+  String get se76a6f4565;
+
+  /// fi: Salasana / järjestelmäkoodi
+  ///
+  /// In en, this message translates to:
+  /// **'Password / system code'**
+  String get s2f3b444057;
+
+  /// fi: Tallentuu vain tälle laitteelle / omaan salattuun holviisi.
+  ///
+  /// In en, this message translates to:
+  /// **'Stored only on this device / in your own encrypted vault.'**
+  String get s11298f6c17;
+
+  /// fi: API-avain (SolarEdge / Growatt)
+  ///
+  /// In en, this message translates to:
+  /// **'API key (SolarEdge / Growatt)'**
+  String get s68eeca8dbe;
+
+  /// fi: SolarEdge: monitoring-portaali → Admin → Site Access → API. Growatt: OpenAPI-token.
+  ///
+  /// In en, this message translates to:
+  /// **'SolarEdge: monitoring portal → Admin → Site Access → API. Growatt: OpenAPI token.'**
+  String get seba7bd613f;
+
+  /// fi: Laitoksen tunnus (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'Site / plant id (cloud)'**
+  String get s3cda8d5f90;
+
+  /// fi: Tyhjä = tilin ensimmäinen laitos.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty = the first site of the account.'**
+  String get see56030ac8;
+
+  /// fi: Lukema
+  ///
+  /// In en, this message translates to:
+  /// **'Reading'**
+  String get sbdf670977b;
+
+  /// fi: Verkko: positiivinen = ostat verkosta, negatiivinen = myyt ylijäämää.
+  ///
+  /// In en, this message translates to:
+  /// **'Grid: positive = buying from the grid, negative = selling surplus.'**
+  String get s9d61569ac0;
+
+  /// fi: Aurinkosähkö nyt (W)
+  ///
+  /// In en, this message translates to:
+  /// **'Solar power now (W)'**
+  String get sc78a29bef9;
+
+  /// fi: Tuotto tänään (kWh)
+  ///
+  /// In en, this message translates to:
+  /// **'Yield today (kWh)'**
+  String get s88a9d9b593;
+
+  /// fi: Tuotto yhteensä (kWh)
+  ///
+  /// In en, this message translates to:
+  /// **'Total yield (kWh)'**
+  String get s4766881640;
+
+  /// fi: Verkko +osto / −myynti (W)
+  ///
+  /// In en, this message translates to:
+  /// **'Grid +import / −export (W)'**
+  String get s4e1e06f64a;
+
+  /// fi: Ostettu yhteensä (kWh)
+  ///
+  /// In en, this message translates to:
+  /// **'Imported total (kWh)'**
+  String get s5c5e6866eb;
+
+  /// fi: Myyty yhteensä (kWh)
+  ///
+  /// In en, this message translates to:
+  /// **'Exported total (kWh)'**
+  String get s7495975366;
+
+  /// fi: Akun varaus (%)
+  ///
+  /// In en, this message translates to:
+  /// **'Battery charge (%)'**
+  String get s275ffaa691;
+
+  /// fi: Akku +lataus / −purku (W)
+  ///
+  /// In en, this message translates to:
+  /// **'Battery +charge / −discharge (W)'**
+  String get s9da1bd7ed1;
+
+  /// fi: Kodin kulutus (W)
+  ///
+  /// In en, this message translates to:
+  /// **'Home consumption (W)'**
+  String get sb6d790453a;
+
+  /// fi: Laite ei kerro tätä lukemaa ({p0})
+  ///
+  /// In en, this message translates to:
+  /// **'The device does not report this reading ({p0})'**
+  String sff9335b6df(String p0);
+
+  /// fi: Invertteriä ei ohjata – vain luku
+  ///
+  /// In en, this message translates to:
+  /// **'Inverters are read-only'**
+  String get s711b4531bd;
+
+  /// fi: tuotto
+  ///
+  /// In en, this message translates to:
+  /// **'solar'**
+  String get s257cf40257;
+
+  /// fi: verkko
+  ///
+  /// In en, this message translates to:
+  /// **'grid'**
+  String get sfa32969a23;
+
+  /// fi: SMA Energy Meter: ei lähetyksiä kotiverkossa (multicast 239.12.255.254:9522)
+  ///
+  /// In en, this message translates to:
+  /// **'SMA Energy Meter: no broadcasts on the home network (multicast 239.12.255.254:9522)'**
+  String get s333643b4c4;
+
   /// fi: Säästävä
   ///
   /// In en, this message translates to:
@@ -787,6 +1063,186 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Almost even temperature (+0.5 / −0.5 °C). Saves a little.'**
   String get sb403e00b3d;
+
+  /// fi: Löytyy reitittimen laitelistasta tai valmistajan sovelluksesta (laitteen tiedot). Varaa laitteelle kiinteä IP.
+  ///
+  /// In en, this message translates to:
+  /// **'Find it in your router\'\'s device list or the maker\'\'s app (device info). Reserve a fixed IP for it.'**
+  String get s0a81072a1f;
+
+  /// fi: Päälukemat
+  ///
+  /// In en, this message translates to:
+  /// **'Main readings'**
+  String get s7c6a740594;
+
+  /// fi: Lisäruudut automaatioihin
+  ///
+  /// In en, this message translates to:
+  /// **'Extra tiles for automations'**
+  String get se74bcc1028;
+
+  /// fi: Huawei SUN2000 (Modbus TCP, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Huawei SUN2000 (Modbus TCP, local)'**
+  String get s87d0186621;
+
+  /// fi: SUN2000-invertteri (myös LUNA2000-akku ja DTSU666-mittari) SDonglen kautta kotiverkossa, ilman pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'SUN2000 inverter (incl. LUNA2000 battery and DTSU666 meter) via the SDongle on your network, no cloud.'**
+  String get se7647d6762;
+
+  /// fi: SDonglen IP-osoite. Ota ensin käyttöön FusionSolar-sovelluksessa: Laitekäyttöönotto → Dongle → Modbus TCP = "Ota käyttöö
+  ///
+  /// In en, this message translates to:
+  /// **'The SDongle IP address. First enable it in the FusionSolar app: Device commissioning → Dongle → Modbus TCP = \"Enable (unrestricted)\". Without a dongle: the inverter\'\'s own Wi-Fi, address like 192.168.200.1:6607.'**
+  String get sccb0c7d2d8;
+
+  /// fi: Valinnainen: tuotanto FusionSolarin virallisen Northbound-rajapinnan kautta. Päivittyy noin 5 min välein.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional: production through the official FusionSolar Northbound API. Updates about every 5 minutes.'**
+  String get sddc831ec16;
+
+  /// fi: Northbound-API-käyttäjä (ei sovelluksen tavallinen tunnus). Asentaja tai pääkäyttäjä luo sen: Järjestelmä → Yritys → Nor
+  ///
+  /// In en, this message translates to:
+  /// **'A Northbound API user (not your normal app login). The installer / admin creates it: System → Company → Northbound management.'**
+  String get s4424767fdd;
+
+  /// fi: Tallentuu vain tähän laitteeseen salattuna.
+  ///
+  /// In en, this message translates to:
+  /// **'Stored encrypted on this device only.'**
+  String get s7a7ab0d238;
+
+  /// fi: Selaimen osoiterivin palvelin kun kirjaudut FusionSolariin. Oletus eu5.
+  ///
+  /// In en, this message translates to:
+  /// **'The host in your browser address bar when signed in to FusionSolar. Default eu5.'**
+  String get sde3c79670a;
+
+  /// fi: Symo, Primo, Gen24, Tauro – myös Smart Meter ja akku. Valmistajan avoin paikallinen rajapinta, ei pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'Symo, Primo, Gen24, Tauro – incl. Smart Meter and battery. The maker\'\'s open local API, no cloud.'**
+  String get se80d87723d;
+
+  /// fi: {p0} Gen24: ota Solar API käyttöön invertterin web-sivulta (Viestintä → Solar API).
+  ///
+  /// In en, this message translates to:
+  /// **' Gen24: enable the Solar API on the inverter web page (Communication → Solar API).'**
+  String s1cb0924dc9(String p0);
+
+  /// fi: SolarEdge-invertteri, mittari ja akku SunSpec Modbusilla kotiverkossa (portti 1502).
+  ///
+  /// In en, this message translates to:
+  /// **'SolarEdge inverter, meter and battery over SunSpec Modbus on your network (port 1502).'**
+  String get s1345214178;
+
+  /// fi: {p0} Ota Modbus TCP käyttöön SetApp-sovelluksella: Käyttöönotto → Tiedonsiirto → Modbus TCP.
+  ///
+  /// In en, this message translates to:
+  /// **' Enable Modbus TCP with the SetApp: Commissioning → Communication → Modbus TCP.'**
+  String s1f7b006036(String p0);
+
+  /// fi: Valinnainen: tuotanto ja energiavirrat SolarEdgen virallisen monitoring-rajapinnan kautta (päivittyy ~5 min).
+  ///
+  /// In en, this message translates to:
+  /// **'Optional: production and power flow through the official SolarEdge monitoring API (updates ~5 min).'**
+  String get s5d43115e7d;
+
+  /// fi: monitoring.solaredge.com → Admin → Site Access → API Access: hyväksy ehdot ja kopioi avain.
+  ///
+  /// In en, this message translates to:
+  /// **'monitoring.solaredge.com → Admin → Site Access → API Access: accept the terms and copy the key.'**
+  String get sbe1a020a66;
+
+  /// fi: Sunny Boy, Sunny Tripower, Sunny Boy Storage – SMA:n Modbus-rekisterit kotiverkossa (unit id 3).
+  ///
+  /// In en, this message translates to:
+  /// **'Sunny Boy, Sunny Tripower, Sunny Boy Storage – SMA Modbus registers on your network (unit id 3).'**
+  String get s9c5e673c38;
+
+  /// fi: {p0} Ota Modbus käyttöön invertterin web-sivulta: Laitteen parametrit → Ulkoinen tiedonsiirto → Modbus TCP-palvelin.
+  ///
+  /// In en, this message translates to:
+  /// **' Enable Modbus on the inverter web page: Device parameters → External communication → Modbus TCP server.'**
+  String s4fad533521(String p0);
+
+  /// fi: SMA Energy Meter / Home Manager (Speedwire, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'SMA Energy Meter / Home Manager (Speedwire, local)'**
+  String get s528ecf3140;
+
+  /// fi: Verkosta osto ja myynti suoraan mittarin Speedwire-lähetyksistä – ei kirjautumista eikä pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'Grid import and export straight from the meter\'\'s Speedwire broadcasts – no login, no cloud.'**
+  String get sa7e3cb3d48;
+
+  /// fi: Mittari löytyy automaattisesti samasta kotiverkosta. Jos haku ei löydä sitä, kirjoita mittarin IP-osoite (luku tulee sil
+  ///
+  /// In en, this message translates to:
+  /// **'The meter is found automatically on the same home network. If the search misses it, type the meter IP (readings still come from its broadcasts).'**
+  String get s126a0713b8;
+
+  /// fi: Growatt (Modbus TCP, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Growatt (Modbus TCP, local)'**
+  String get sbdf4d24f64;
+
+  /// fi: MIN/MOD/SPH-invertterit RS485→TCP-muuntimen (tai Modbus TCP:tä tukevan ShineLan-X:n) kautta. Tarkista lukemat.
+  ///
+  /// In en, this message translates to:
+  /// **'MIN/MOD/SPH inverters via an RS485→TCP gateway (or a ShineLan-X with Modbus TCP). Verify the readings.'**
+  String get s6c5156d740;
+
+  /// fi: RS485→Modbus TCP -muuntimen IP-osoite (esim. Elfin EW11, Waveshare). Kytketään invertterin RS485/COM-liittimeen.
+  ///
+  /// In en, this message translates to:
+  /// **'IP of the RS485→Modbus TCP gateway (e.g. Elfin EW11, Waveshare) wired to the inverter RS485/COM port.'**
+  String get se351eda9ce;
+
+  /// fi: Valinnainen: tuotanto Growattin OpenAPI:n kautta (ShinePhone/ShineServer-tili). Päivittyy ~5 min.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional: production through the Growatt OpenAPI (ShinePhone/ShineServer account). Updates ~5 min.'**
+  String get s06257dd63c;
+
+  /// fi: Pyydä token Growattin tuesta tai asentajalta (OpenAPI), tai ShineServerin asetuksista jos se näkyy.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask Growatt support or your installer for an OpenAPI token, or find it in ShineServer settings if shown.'**
+  String get sbd8c9831bb;
+
+  /// fi: Kostal, Fronius (Modbus), SMA (SunSpec), ABB/FIMER, Sungrow-mittarit… Mikä tahansa SunSpec-laite.
+  ///
+  /// In en, this message translates to:
+  /// **'Kostal, Fronius (Modbus), SMA (SunSpec), ABB/FIMER… Any SunSpec device.'**
+  String get s3c89bd3976;
+
+  /// fi: {p0} Portti oletuksena 502 – muu portti muodossa 192.168.1.20:1502.
+  ///
+  /// In en, this message translates to:
+  /// **' Port 502 by default – another port like 192.168.1.20:1502.'**
+  String s183e57cdfd(String p0);
+
+  /// fi: Aurinkosähkö
+  ///
+  /// In en, this message translates to:
+  /// **'Solar power'**
+  String get s981854cf46;
+
+  /// fi: Huawei, Fronius, SolarEdge, SMA, Growatt – tuotanto, verkko ja akku. Paikallisesti, pilvi valinnainen.
+  ///
+  /// In en, this message translates to:
+  /// **'Huawei, Fronius, SolarEdge, SMA, Growatt – production, grid and battery. Local, cloud optional.'**
+  String get s984804da72;
 
   /// fi: Sonoff
   ///
@@ -7058,6 +7514,18 @@ abstract class AppLocalizations {
   /// **'Ready-made automations'**
   String get s5c7338ab38;
 
+  /// fi: Valitse verkon teho (+osto / −myynti)
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the grid power (+import / −export)'**
+  String get sa50094ffdb;
+
+  /// fi: Valitse laturi (lataus päälle/pois)
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the charger (charging on/off)'**
+  String get s3cc31bcfdc;
+
   /// fi: Valitse laite
   ///
   /// In en, this message translates to:
@@ -7352,6 +7820,12 @@ abstract class AppLocalizations {
   /// **'Dark / light'**
   String get s585b4c519f;
 
+  /// fi: Halvimmat tunnit
+  ///
+  /// In en, this message translates to:
+  /// **'Cheapest hours'**
+  String get sd408a5dbe9;
+
   /// fi: Ehto
   ///
   /// In en, this message translates to:
@@ -7399,6 +7873,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'State'**
   String get sfffb54daf4;
+
+  /// fi: Nyt on
+  ///
+  /// In en, this message translates to:
+  /// **'Now is'**
+  String get s3d34e477c2;
+
+  /// fi: halpa tunti
+  ///
+  /// In en, this message translates to:
+  /// **'a cheap hour'**
+  String get s099666eafe;
+
+  /// fi: ei halpa tunti
+  ///
+  /// In en, this message translates to:
+  /// **'not a cheap hour'**
+  String get s08b96dd0f7;
+
+  /// fi: Halvinta tuntia / vrk
+  ///
+  /// In en, this message translates to:
+  /// **'Cheapest hours / day'**
+  String get sd7232b8464;
 
   /// fi: pimeää
   ///
@@ -8529,6 +9027,54 @@ abstract class AppLocalizations {
   /// **'One device: address, ID and key.'**
   String get sf4a309c04a;
 
+  /// fi: Tarkista lukemat – ei valmistajan virallista dokumenttia.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify the readings – no official vendor document.'**
+  String get sd551537404;
+
+  /// fi: Paikallinen – suositus
+  ///
+  /// In en, this message translates to:
+  /// **'Local – recommended'**
+  String get sa1a45de0f2;
+
+  /// fi: Pilvi – valinnainen
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud – optional'**
+  String get se8b35fb9e9;
+
+  /// fi: Muut – miksi ei vielä
+  ///
+  /// In en, this message translates to:
+  /// **'Others – why not yet'**
+  String get s95216a7a5e;
+
+  /// fi: Mikä invertteri sinulla on?
+  ///
+  /// In en, this message translates to:
+  /// **'Which inverter do you have?'**
+  String get sc52321f275;
+
+  /// fi: Tuotanto, verkosta osto/myynti ja akun varaus ruutuihin ja automaatioihin. Paikallinen yhteys päivittyy sekunneissa eikä
+  ///
+  /// In en, this message translates to:
+  /// **'Production, grid import/export and battery charge as tiles and for automations. A local connection updates in seconds and needs no cloud.'**
+  String get s862002ac64;
+
+  /// fi: Mikä laturi sinulla on?
+  ///
+  /// In en, this message translates to:
+  /// **'Which charger do you have?'**
+  String get sa5f3da9152;
+
+  /// fi: Tila, lataus päälle/pois, teho ja virtaraja. Automaatiot: lataa aurinkosähkön ylijäämällä tai halvimpina tunteina.
+  ///
+  /// In en, this message translates to:
+  /// **'Status, charging on/off, power and current limit. Automations: charge on solar surplus or in the cheapest hours.'**
+  String get sdeb1f4332e;
+
   /// fi: rtsp-transport
   ///
   /// In en, this message translates to:
@@ -8810,6 +9356,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Air quality'**
   String get s4b1eda4282;
+
+  /// fi: Sähköauton laturi
+  ///
+  /// In en, this message translates to:
+  /// **'EV charger'**
+  String get s1a6081db34;
 
   /// fi: Kaikki rauhallista.
   ///
@@ -9314,12 +9866,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Passwords and tokens are stored in the device\'\'s secure storage.'**
   String get s0a972aa85e;
-
-  /// fi: Halvimmat tunnit
-  ///
-  /// In en, this message translates to:
-  /// **'Cheapest hours'**
-  String get sd408a5dbe9;
 
   /// fi: Ohita kalleimmat tunnit
   ///
@@ -13211,6 +13757,342 @@ abstract class AppLocalizations {
   /// **'Try now'**
   String get sbf7cc3de9a;
 
+  /// fi: Ei autoa
+  ///
+  /// In en, this message translates to:
+  /// **'No car'**
+  String get sb75700bbba;
+
+  /// fi: Auto kytketty
+  ///
+  /// In en, this message translates to:
+  /// **'Car connected'**
+  String get s5a3fcd56de;
+
+  /// fi: Lataa
+  ///
+  /// In en, this message translates to:
+  /// **'Charging'**
+  String get s23910a6fb5;
+
+  /// fi: Tauolla
+  ///
+  /// In en, this message translates to:
+  /// **'Paused'**
+  String get s22cd08064f;
+
+  /// fi: Valmis
+  ///
+  /// In en, this message translates to:
+  /// **'Finished'**
+  String get s5b8b3042ec;
+
+  /// fi: Vika
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get s84df123d5a;
+
+  /// fi: Sama kuin valmistajan sovelluksessa.
+  ///
+  /// In en, this message translates to:
+  /// **'Same as in the maker\'\'s app.'**
+  String get s98c928f06c;
+
+  /// fi: OCPP 1.6J (paikallinen, mikä tahansa merkki)
+  ///
+  /// In en, this message translates to:
+  /// **'OCPP 1.6J (local, any brand)'**
+  String get s68e2e87750;
+
+  /// fi: Wallbox, Alfen, ABB, go-e, Etrel, Easee/Zaptec (OCPP päälle)… Laturi ottaa yhteyden suoraan Molaplaniin – ei pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallbox, Alfen, ABB, go-e, Etrel, Easee/Zaptec (OCPP on)… The charger connects straight to Molaplan – no cloud.'**
+  String get s12fa00013a;
+
+  /// fi: Jos laturissa on asetettu Basic auth -salasana. Yleensä tyhjä.
+  ///
+  /// In en, this message translates to:
+  /// **'If the charger has a Basic auth password set. Usually empty.'**
+  String get s4bc8fc306b;
+
+  /// fi: Easee (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'Easee (cloud)'**
+  String get s66fb236f0c;
+
+  /// fi: Easee Home / Charge / One Easee-tilin kautta: tila, aloitus/lopetus ja virtaraja.
+  ///
+  /// In en, this message translates to:
+  /// **'Easee Home / Charge / One through your Easee account: status, start/stop and current limit.'**
+  String get s8c376593cb;
+
+  /// fi: Sama kuin Easee-sovelluksessa (puhelin muodossa +358…).
+  ///
+  /// In en, this message translates to:
+  /// **'Same as in the Easee app (phone as +358…).'**
+  String get s827730d443;
+
+  /// fi: Zaptec (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'Zaptec (cloud)'**
+  String get s3809be512f;
+
+  /// fi: Zaptec Go / Home / Pro Zaptec-tilin kautta. Aloitus/tauko vaatii omistajan oikeudet.
+  ///
+  /// In en, this message translates to:
+  /// **'Zaptec Go / Home / Pro through your Zaptec account. Start/pause needs owner rights.'**
+  String get se1a5b725a4;
+
+  /// fi: Wallbox (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'Wallbox (cloud)'**
+  String get s90c71e52fb;
+
+  /// fi: Pulsar, Commander, Copper myWallbox-tilin kautta. Paikallisesti: valitse OCPP.
+  ///
+  /// In en, this message translates to:
+  /// **'Pulsar, Commander, Copper through your myWallbox account. Locally: pick OCPP.'**
+  String get s72dc0a7687;
+
+  /// fi: Easee, Zaptec, Wallbox – tai mikä tahansa OCPP-laturi paikallisesti. Lataus ylijäämällä tai halvalla.
+  ///
+  /// In en, this message translates to:
+  /// **'Easee, Zaptec, Wallbox – or any OCPP charger locally. Charge on surplus or when cheap.'**
+  String get s59ed724e14;
+
+  /// fi: OCPP-palvelinta ei voitu käynnistää porttiin {p0}: {p1}
+  ///
+  /// In en, this message translates to:
+  /// **'Could not start the OCPP server on port {p0}: {p1}'**
+  String s2d551049ff(String p0, String p1);
+
+  /// fi: Laturi "{p0}" ei ole ottanut yhteyttä. Aseta laturin OCPP-osoitteeksi ws://<tämän laitteen IP>:{p1}/ocpp/
+  ///
+  /// In en, this message translates to:
+  /// **'Charger \"{p0}\" has not connected. Set its OCPP URL to ws://<this device IP>:{p1}/ocpp/'**
+  String s9a6813045a(String p0, String p1);
+
+  /// fi: Laturi ei lataa nyt
+  ///
+  /// In en, this message translates to:
+  /// **'The charger is not charging now'**
+  String get sb33d4d8b62;
+
+  /// fi: Sähköauton laturi (oma integraatio)
+  ///
+  /// In en, this message translates to:
+  /// **'EV charger (built-in integration)'**
+  String get s7c3abc09fc;
+
+  /// fi: OCPP toimii paikallisesti ilman pilveä (laturi ottaa yhteyden tähän sovellukseen tai siltaan).
+  ///
+  /// In en, this message translates to:
+  /// **'OCPP works locally without a cloud (the charger connects to this app or the bridge).'**
+  String get se6885155b4;
+
+  /// fi: OCPP-portti
+  ///
+  /// In en, this message translates to:
+  /// **'OCPP port'**
+  String get sb14c49378c;
+
+  /// fi: Portti, jota tämä laite kuuntelee. Laturin osoite: ws://<tämän laitteen IP>:9000/ocpp/
+  ///
+  /// In en, this message translates to:
+  /// **'The port this device listens on. Charger URL: ws://<this device IP>:9000/ocpp/'**
+  String get sa9346504d4;
+
+  /// fi: Laturin tunnus (OCPP)
+  ///
+  /// In en, this message translates to:
+  /// **'Charge point id (OCPP)'**
+  String get sf94b2ba7f3;
+
+  /// fi: Laturin OCPP-tunnus (charge point id). Tyhjä = ensimmäinen yhteyden ottanut.
+  ///
+  /// In en, this message translates to:
+  /// **'The charger\'\'s OCPP charge point id. Empty = the first one that connects.'**
+  String get s8ea8831ed0;
+
+  /// fi: Tunniste (idTag) etäkäynnistykseen
+  ///
+  /// In en, this message translates to:
+  /// **'idTag for remote start'**
+  String get sa3b3822b75;
+
+  /// fi: Lähetetään RemoteStartTransactionissa. Tyhjä = "molaplan".
+  ///
+  /// In en, this message translates to:
+  /// **'Sent with RemoteStartTransaction. Empty = \"molaplan\".'**
+  String get sf718534954;
+
+  /// fi: Käyttäjätunnus / sähköposti (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'Username / e-mail (cloud)'**
+  String get s540a178f7a;
+
+  /// fi: Pilvi: sovelluksen salasana. OCPP: valinnainen Basic auth -salasana. Tallentuu vain tälle laitteelle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud: the app password. OCPP: optional Basic auth password. Stored on this device only.'**
+  String get sa6b5175654;
+
+  /// fi: Mikä laturin lukema näytetään.
+  ///
+  /// In en, this message translates to:
+  /// **'Which charger reading to show.'**
+  String get sccb2892754;
+
+  /// fi: Tila
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get s0e7115e10c;
+
+  /// fi: Lataa (1/0)
+  ///
+  /// In en, this message translates to:
+  /// **'Charging (1/0)'**
+  String get s20cb072267;
+
+  /// fi: Latausteho (W)
+  ///
+  /// In en, this message translates to:
+  /// **'Charging power (W)'**
+  String get se13ff56722;
+
+  /// fi: Tämä lataus (kWh)
+  ///
+  /// In en, this message translates to:
+  /// **'This session (kWh)'**
+  String get sd3627e3a20;
+
+  /// fi: Yhteensä (kWh)
+  ///
+  /// In en, this message translates to:
+  /// **'Total (kWh)'**
+  String get s19e058622f;
+
+  /// fi: Virtaraja (A)
+  ///
+  /// In en, this message translates to:
+  /// **'Current limit (A)'**
+  String get s613785b80f;
+
+  /// fi: Laturin tunnus
+  ///
+  /// In en, this message translates to:
+  /// **'Charger id'**
+  String get s60f4e2786f;
+
+  /// fi: Tilin laturin tunnus; tyhjä = ainoa laturi.
+  ///
+  /// In en, this message translates to:
+  /// **'Charger id in the account; empty = the only charger.'**
+  String get sfbbd0943a8;
+
+  /// fi: Komento
+  ///
+  /// In en, this message translates to:
+  /// **'Command'**
+  String get s5bed8bff00;
+
+  /// fi: Aloita, lopeta tai aseta virtaraja.
+  ///
+  /// In en, this message translates to:
+  /// **'Start, stop or set the current limit.'**
+  String get s9617db1f3d;
+
+  /// fi: Aloita lataus
+  ///
+  /// In en, this message translates to:
+  /// **'Start charging'**
+  String get sc110ab773a;
+
+  /// fi: Lopeta / tauko
+  ///
+  /// In en, this message translates to:
+  /// **'Stop / pause'**
+  String get s44d11f741f;
+
+  /// fi: Lataus päälle/pois
+  ///
+  /// In en, this message translates to:
+  /// **'Charging on/off'**
+  String get s4c68e739b0;
+
+  /// fi: Aseta virtaraja (A)
+  ///
+  /// In en, this message translates to:
+  /// **'Set current limit (A)'**
+  String get s141fac7235;
+
+  /// fi: Virtaraja ampeereina; {{value}} = liukusäätimen arvo.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Current limit in amps; {{value}} = the slider value.\''**
+  String get s33f04bfedd;
+
+  /// fi: Laturia "{p0}" ei löydy (ei yhteyttä tai poistettu tililtä)
+  ///
+  /// In en, this message translates to:
+  /// **'Charger \"{p0}\" not found (offline or removed)'**
+  String s610172c6f4(String p0);
+
+  /// fi: Virtaraja puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'Current limit missing'**
+  String get sf51ef628f4;
+
+  /// fi: Ei latureita
+  ///
+  /// In en, this message translates to:
+  /// **'No chargers'**
+  String get sd661432e07;
+
+  /// fi: ladattu yhteensä
+  ///
+  /// In en, this message translates to:
+  /// **'total charged'**
+  String get s47aba73804;
+
+  /// fi: tila
+  ///
+  /// In en, this message translates to:
+  /// **'status'**
+  String get s14252e6c3a;
+
+  /// fi: lataus
+  ///
+  /// In en, this message translates to:
+  /// **'charging'**
+  String get sed9640f6b4;
+
+  /// fi: latausteho
+  ///
+  /// In en, this message translates to:
+  /// **'charging power'**
+  String get sebaaf2a20f;
+
+  /// fi: tämä lataus
+  ///
+  /// In en, this message translates to:
+  /// **'this session'**
+  String get s223d1336d5;
+
+  /// fi: virtaraja
+  ///
+  /// In en, this message translates to:
+  /// **'current limit'**
+  String get sbea289dcc3;
+
   /// fi: locked=Lukossa;unlocked=Auki;jammed=JUMISSA
   ///
   /// In en, this message translates to:
@@ -13798,12 +14680,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Broker host'**
   String get s85b9781bb7;
-
-  /// fi: Portti
-  ///
-  /// In en, this message translates to:
-  /// **'Port'**
-  String get s800d13debd;
 
   /// fi: TLS
   ///
@@ -14561,12 +15437,6 @@ abstract class AppLocalizations {
   /// **'Empty = the device\'\'s status command.'**
   String get s89ad1c43b4;
 
-  /// fi: Komento
-  ///
-  /// In en, this message translates to:
-  /// **'Command'**
-  String get s5bed8bff00;
-
   /// fi: Esim. "pihavalo on". PIN ja muut kohdat lisätään laitteen komentomallin mukaan.
   ///
   /// In en, this message translates to:
@@ -15203,6 +16073,30 @@ abstract class AppLocalizations {
   /// **'A notification when the spot price goes above 20 c/kWh.'**
   String get s876690515a;
 
+  /// fi: Lataa auto aurinkosähkön ylijäämällä
+  ///
+  /// In en, this message translates to:
+  /// **'Charge the car on solar surplus'**
+  String get s602af22563;
+
+  /// fi: Laturi päälle, kun verkkoon myydään yli 1,4 kW. Pois, kun verkosta ostetaan yli 1 kW (vähintään 10 min lataus).
+  ///
+  /// In en, this message translates to:
+  /// **'Charger on when more than 1.4 kW is exported. Off when more than 1 kW is imported (at least 10 min of charging).'**
+  String get s9ce0e97a38;
+
+  /// fi: Lataa auto halvimpina tunteina
+  ///
+  /// In en, this message translates to:
+  /// **'Charge the car in the cheapest hours'**
+  String get scbad5277ee;
+
+  /// fi: Laturi päälle päivän 4 halvimpana tuntina ja pois, kun halvat tunnit loppuvat.
+  ///
+  /// In en, this message translates to:
+  /// **'Charger on in the day’s 4 cheapest hours and off when they end.'**
+  String get sb6dc0d48ed;
+
   /// fi: Pakkasvaroitus
   ///
   /// In en, this message translates to:
@@ -15575,12 +16469,6 @@ abstract class AppLocalizations {
   /// **'Usually the default (Modbus 502, MHI 51443).'**
   String get scd35ffb8e9;
 
-  /// fi: Modbus unit id
-  ///
-  /// In en, this message translates to:
-  /// **'Modbus unit id'**
-  String get s58f0665e29;
-
   /// fi: Modbus-laitteen osoite, yleensä 1.
   ///
   /// In en, this message translates to:
@@ -15743,12 +16631,6 @@ abstract class AppLocalizations {
   /// **'Find it in your router\'\'s device list or the maker\'\'s app (device info).'**
   String get s6d21845355;
 
-  /// fi: Lisäruudut automaatioihin
-  ///
-  /// In en, this message translates to:
-  /// **'Extra tiles for automations'**
-  String get se74bcc1028;
-
   /// fi: Daikin (wifi, paikallinen)
   ///
   /// In en, this message translates to:
@@ -15784,12 +16666,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Same as in the MELCloud app.'**
   String get s41d69e699d;
-
-  /// fi: Tallentuu vain tähän laitteeseen salattuna.
-  ///
-  /// In en, this message translates to:
-  /// **'Stored encrypted on this device only.'**
-  String get s7a7ab0d238;
 
   /// fi: Toshiban wifi-ilmalämpöpumput Toshiba Home AC Control -tilin kautta.
   ///

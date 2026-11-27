@@ -266,3 +266,11 @@ t155u–t157u (also v0.7.3): ModbusTcpClient.acquire/release (one pooled connect
 - Tests: test/tuya_protocol_test.dart, test/tuya_integration_test.dart, test/support/fake_tuya.dart (simulated 3.3/3.4/3.5 device; decodes one frame at a time because the key changes after the handshake), test/shelly_r287_test.dart. All UNTESTED ON HARDWARE.
 - Formatting: repo uses `dart format -l 120` (only format touched files).
 - Next agreed batches: R288 solar inverters, R289 EV chargers.
+
+## v0.17.0 – Solar inverters + EV chargers (t270u, R288, R289, R305–R315)
+- Solar: `lib/energy/` – energy_model (snapshot keys, energyTile, energyDerive), modbus_inverters (Huawei, SunSpec/SolarEdge, SMA native, Growatt; hook `modbusInverterTimeout`), http_inverters (Fronius, SMA Energy Meter Speedwire [hooks `SmaEnergyMeterBackend.port/group`], FusionSolar, SolarEdge cloud, Growatt OpenAPI), solar_driver (type `solar`, hook `solarTestClient`), solar_providers (SolarProvider per brand, `SolarChooser` id 'solar').
+- EV: `lib/ev/` – ev_model (EvStatus/EvState/EvBackend), ev_clouds (Easee, Zaptec, Wallbox), ocpp_server (OcppServer.start per port, keeps running; `stopAll` for tests; OcppBackend.waitFirst), ev_driver (type `evcharger`, hook `evTestClient`, `evChargerTiles`), ev_providers (`ChargerChooser` id 'evcharger', OCPP first).
+- Gallery: `pickSolarBrand` / `pickChargerBrand` (shared `_pickBrandSheet`) in template_gallery.dart; provider categories 'solar' / 'ev' have icons/colours in add_device_wizard.dart; tile icons 'solar', 'ev'.
+- Automations: templates `ev_surplus` (two picks in showTemplatePicker) and `ev_cheap`; condition kind `cheapest` {hours, not}; engine runs automations containing `waitUntil` unawaited (set `_longRuns`), so long waits no longer block tick().
+- Tests: test/solar_r288_test.dart, test/ev_r289_test.dart, test/automation_ev_r289_test.dart, test/solar_ev_ui_test.dart, test/support/modbus_sparse_sim.dart. All UNTESTED ON HARDWARE. Docs: docs/SOLAR-EV.md.
+- Next agreed: R290 (other common devices in Finland).

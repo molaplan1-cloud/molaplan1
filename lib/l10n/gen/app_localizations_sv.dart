@@ -390,6 +390,156 @@ class AppLocalizationsSv extends AppLocalizations {
       'Fireplace läge stoppas. Uppvärmning är tillbaka till det normala.';
 
   @override
+  String get sa7f9b278cf => 'Huawei SUN2000 (Modbus TCP)';
+
+  @override
+  String get s0d714dece1 => 'Fronius (Solar API, lokal)';
+
+  @override
+  String get sa38a153c07 => 'SolarEdge (Modbus TCP, lokal)';
+
+  @override
+  String get s833dfe954e => 'SMA (Modbus TCP, lokal)';
+
+  @override
+  String get sc5863d817d => 'SMA (SunSpec Modbus)';
+
+  @override
+  String get s12733504dc => 'SMA Energy Meter / Home Manager (Speedwire)';
+
+  @override
+  String get sdeb4f39ff0 => 'Growatt (Modbus TCP)';
+
+  @override
+  String get sa1769b666b => 'Övriga SunSpec inverter (Modbus TCP)';
+
+  @override
+  String get s1694840083 => 'Huawei FusionSolar (moln)';
+
+  @override
+  String get s205e886d29 => 'SolarEdge övervakning (moln)';
+
+  @override
+  String get s5bf46ebec4 => 'Growatt OpenAPI (moln)';
+
+  @override
+  String get se7c240ad4f => 'Solar / inverterare (inbyggd integration)';
+
+  @override
+  String get s46b5445e4a => 'Brand och anslutning';
+
+  @override
+  String get sef83efed4e =>
+      'Skapare och anslutningstyp. Lokala arbetar utan molnet och uppdateras snabbare.';
+
+  @override
+  String get scc322677fe => 'IP-adress (lokal)';
+
+  @override
+  String get s6ac1068052 =>
+      'IP-adress för inverteraren, SDongle eller mätaren (från routernhetslistan).';
+
+  @override
+  String get s800d13debd => 'Port Port Port Port';
+
+  @override
+  String get sa163739d18 =>
+      'Tomma = standard (Modbus 502, SolarEdge 1502, Huawei inverter Wi-Fi 6607).';
+
+  @override
+  String get s58f0665e29 => 'Modbus unit id';
+
+  @override
+  String get sd5e2f52587 =>
+      'Tomt = standard (Huawei 1, SolarEdge 1, SMA 3, SMA SunSpec 126, Growatt 1).';
+
+  @override
+  String get se49fbf06a8 => 'Meter Serial (SMA Energy Meter)';
+
+  @override
+  String get s4a63dcc985 =>
+      'Endast om det finns flera SMA-mätare i nätverket. Empty = den första.';
+
+  @override
+  String get s6e391cf987 => 'Användare (FusionSolar API)';
+
+  @override
+  String get se76a6f4565 =>
+      'FusionSolar Northbound API-användare (skapad av installatören: System → Company → Northbound).';
+
+  @override
+  String get s2f3b444057 => 'Lösenord / systemkod';
+
+  @override
+  String get s11298f6c17 =>
+      'Lagras endast på den här enheten / i ditt eget krypterade valv.';
+
+  @override
+  String get s68eeca8dbe => 'API-nyckeln (SolarEdge/Growatt)';
+
+  @override
+  String get seba7bd613f =>
+      'SolarEdge: övervakning portal → Admin → Site Access → API. Growatt: OpenAPI token.';
+
+  @override
+  String get s3cda8d5f90 => 'Site / Plant Id (moln)';
+
+  @override
+  String get see56030ac8 => 'Empty = den första webbplatsen för kontot.';
+
+  @override
+  String get sbdf670977b => 'Läsa';
+
+  @override
+  String get s9d61569ac0 =>
+      'Sladd: positiv = köp från rutnätet, negativ = försäljning av överskott.';
+
+  @override
+  String get sc78a29bef9 => 'Solenergi nu (W)';
+
+  @override
+  String get s88a9d9b593 => 'Yield idag (kWh)';
+
+  @override
+  String get s4766881640 => 'Total avkastning (kWh)';
+
+  @override
+  String get s4e1e06f64a => 'Grid +import / −export (W)';
+
+  @override
+  String get s5c5e6866eb => 'Importerad total (kWh)';
+
+  @override
+  String get s7495975366 => 'Exporterad total (kWh)';
+
+  @override
+  String get s275ffaa691 => 'Batteriavgift (%)';
+
+  @override
+  String get s9da1bd7ed1 => 'Batteri + laddning / − urladdning (W)';
+
+  @override
+  String get sb6d790453a => 'Hemförbrukning (W)';
+
+  @override
+  String sff9335b6df(String p0) {
+    return 'Enheten rapporterar inte denna läsning ($p0)';
+  }
+
+  @override
+  String get s711b4531bd => 'Inverters är lättlästa';
+
+  @override
+  String get s257cf40257 => 'Solar';
+
+  @override
+  String get sfa32969a23 => 'Nät';
+
+  @override
+  String get s333643b4c4 =>
+      'SMA Energy Meter: inga sändningar i hemnätverket (multicast 239.12.255.254:9522)';
+
+  @override
   String get sc27533ae83 => 'Sparsam';
 
   @override
@@ -409,6 +559,124 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sb403e00b3d =>
       'Nästan jämn temperatur (+0,5 / −0,5 °C). Sparar lite.';
+
+  @override
+  String get s0a81072a1f =>
+      'Hitta den i routerns enhetslista eller tillverkarens app (enhetsinformation). Reservera en fast IP för den.';
+
+  @override
+  String get s7c6a740594 => 'Huvudsakliga läsningar';
+
+  @override
+  String get se74bcc1028 => 'Extra kort för automation';
+
+  @override
+  String get s87d0186621 => 'Huawei SUN2000 (Modbus TCP, lokal)';
+
+  @override
+  String get se7647d6762 =>
+      'SUN2000 inverter (inkl. LUNA2000 batteri och DTSU666 meter) via SDongle på ditt nätverk, inget moln.';
+
+  @override
+  String get sccb0c7d2d8 =>
+      'SDongle IP-adressen. Gör det först i FusionSolar-appen: Enhetskommissionen → Dongle → Modbus TCP = \"Enable (obegränsad)\". Utan en dongle: inverterarens egen Wi-Fi, adress som 192.168.200.1:6607.';
+
+  @override
+  String get sddc831ec16 =>
+      'Optionell: produktion genom den officiella FusionSolar Northbound API. Uppdateringar ungefär var 5: e minut.';
+
+  @override
+  String get s4424767fdd =>
+      'En nordbunden API-användare (inte din vanliga appinloggning) installeraren / admin skapar den: System → Företag → Northbound management.';
+
+  @override
+  String get s7a7ab0d238 => 'lagras krypterad på den här enheten bara.';
+
+  @override
+  String get sde3c79670a =>
+      'Värd i din webbläsaradressfält när du är inloggad på FusionSolar. Default eu5.';
+
+  @override
+  String get se80d87723d =>
+      'Symo, Primo, Gen24, Tauro - inkl. Smart Meter och batteri. Skaparens öppna lokala API, inget moln.';
+
+  @override
+  String s1cb0924dc9(String p0) {
+    return ' Gen24: aktivera Solar API på inverterwebbsidan (Communication → Solar API).';
+  }
+
+  @override
+  String get s1345214178 =>
+      'SolarEdge inverter, mätare och batteri över SunSpec Modbus på ditt nätverk (port 1502).';
+
+  @override
+  String s1f7b006036(String p0) {
+    return ' Aktivera Modbus TCP med SetApp: Commissioning → Communication → Modbus TCP.';
+  }
+
+  @override
+  String get s5d43115e7d =>
+      'Valfritt: produktion och kraftflöde genom den officiella SolarEdge-övervakningen API (uppdateringar ~ 5 min).';
+
+  @override
+  String get sbe1a020a66 =>
+      'övervakning.solaredge.com → Admin → Webbplatsåtkomst → API Access: acceptera villkoren och kopiera nyckeln.';
+
+  @override
+  String get s9c5e673c38 =>
+      'Sunny Boy, Sunny Tripower, Sunny Boy Storage – SMA Modbus registrerar sig på ditt nätverk (enhet id 3).';
+
+  @override
+  String s4fad533521(String p0) {
+    return ' Aktivera Modbus på inverterwebbsidan: Enhetsparametrar → Extern kommunikation → Modbus TCP-server.';
+  }
+
+  @override
+  String get s528ecf3140 =>
+      'SMA Energy Meter / Home Manager (Speedwire, lokal)';
+
+  @override
+  String get sa7e3cb3d48 =>
+      'Sladdimport och export direkt från mätarens Speedwire-sändningar - ingen inloggning, inget moln.';
+
+  @override
+  String get s126a0713b8 =>
+      'Mätaren hittas automatiskt på samma hemnätverk. Om sökningen missar det, skriv mätaren IP (läsningar kommer fortfarande från sina sändningar).';
+
+  @override
+  String get sbdf4d24f64 => 'Growatt (Modbus TCP, lokal)';
+
+  @override
+  String get s6c5156d740 =>
+      'MIN/MOD/SPH-omvandlare via en RS485→TCP-gateway (eller en ShineLan-X med Modbus TCP). Verifiera avläsningarna.';
+
+  @override
+  String get se351eda9ce =>
+      'IP av RS485→Modbus TCP-gateway (t.ex. Elfin EW11, Waveshare) ansluten till inverteraren RS485/COM-porten.';
+
+  @override
+  String get s06257dd63c =>
+      'Valfritt: produktion genom Growatt OpenAPI (ShinePhone/ShineServer-kontot). Uppdateringar ~ 5 min.';
+
+  @override
+  String get sbd8c9831bb =>
+      'Fråga Growatt-stöd eller din installatör för ett OpenAPI-token eller hitta det i ShineServer-inställningar om det visas.';
+
+  @override
+  String get s3c89bd3976 =>
+      'Kostal, Fronius (Modbus), SMA (SunSpec), ABB/FIMER... Alla SunSpec-enheter.';
+
+  @override
+  String s183e57cdfd(String p0) {
+    return ' Port 502 som standard - en annan port som 192.168.1.20:1502.';
+  }
+
+  @override
+  String get s981854cf46 => 'Solenergi';
+
+  @override
+  String get s984804da72 =>
+      'Huawei, Fronius, SolarEdge, SMA, Growatt - produktion, rutnät och batteri. Lokalt, moln valfritt.';
 
   @override
   String get sd86b823895 => 'Sonoff';
@@ -3898,6 +4166,12 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s5c7338ab38 => 'Redogjorda automationer';
 
   @override
+  String get sa50094ffdb => 'Välj elnätet (+import/−export)';
+
+  @override
+  String get s3cc31bcfdc => 'Välj laddaren (laddning på/av)';
+
+  @override
   String get s354eb362d8 => 'Välj enheten';
 
   @override
@@ -4049,6 +4323,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s585b4c519f => 'Mörk / ljus';
 
   @override
+  String get sd408a5dbe9 => 'Billigaste timmar';
+
+  @override
   String get s6019108a01 => 'Villkor';
 
   @override
@@ -4071,6 +4348,18 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sfffb54daf4 => 'Tillstånd';
+
+  @override
+  String get s3d34e477c2 => 'Nu är';
+
+  @override
+  String get s099666eafe => 'En billig timme';
+
+  @override
+  String get s08b96dd0f7 => 'Inte en billig timme';
+
+  @override
+  String get sd7232b8464 => 'Billigaste timmar / dag';
 
   @override
   String get se2b3e45118 => 'mörkt mörkt mörkt';
@@ -4690,6 +4979,33 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sf4a309c04a => 'En enhet: adress, ID och nyckel.';
 
   @override
+  String get sd551537404 =>
+      'Verifiera avläsningarna – inget officiellt leverantörsdokument.';
+
+  @override
+  String get sa1a45de0f2 => 'Lokalt – rekommenderat';
+
+  @override
+  String get se8b35fb9e9 => 'Cloud – valfritt';
+
+  @override
+  String get s95216a7a5e => 'Andra – varför ännu inte';
+
+  @override
+  String get sc52321f275 => 'Vilken inverterare har du?';
+
+  @override
+  String get s862002ac64 =>
+      'Produktion, nätimport/export och batteriladdning som kort och för automation. En lokal anslutning uppdateras på några sekunder och behöver inget moln.';
+
+  @override
+  String get sa5f3da9152 => 'Vilken laddare har du?';
+
+  @override
+  String get sdeb1f4332e =>
+      'Status, laddning på / av, kraft och nuvarande gräns. Automationer: avgift på solöverskott eller i de billigaste timmarna.';
+
+  @override
   String get s772c158a57 => 'TCP';
 
   @override
@@ -4837,6 +5153,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s4b1eda4282 => 'Luftkvalitet';
+
+  @override
+  String get s1a6081db34 => 'EV laddare';
 
   @override
   String get sfe55fd97fa => 'All tyst.';
@@ -5120,9 +5439,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s0a972aa85e =>
       'Lösenord och tokens lagras i enhetens säkra lagring.';
-
-  @override
-  String get sd408a5dbe9 => 'Billigaste timmar';
 
   @override
   String get sa26ae27039 => 'Hoppa över de dyraste timmarna';
@@ -7308,6 +7624,193 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sbf7cc3de9a => 'Försök nu';
 
   @override
+  String get sb75700bbba => 'Ingen bil';
+
+  @override
+  String get s5a3fcd56de => 'Bil ansluten';
+
+  @override
+  String get s23910a6fb5 => 'Laddning';
+
+  @override
+  String get s22cd08064f => 'Paused';
+
+  @override
+  String get s5b8b3042ec => 'Avslutad';
+
+  @override
+  String get s84df123d5a => 'Fel';
+
+  @override
+  String get s98c928f06c => 'Samma som i tillverkarens app.';
+
+  @override
+  String get s68e2e87750 => 'OCPP 1.6J (lokalt, något varumärke)';
+
+  @override
+  String get s12fa00013a =>
+      'Wallbox, Alfen, ABB, go-e, Etrel, Easee/Zaptec (OCPP på) ... laddaren ansluter direkt till Molaplan – inget moln.';
+
+  @override
+  String get s4bc8fc306b =>
+      'Om laddaren har ett grundläggande auth-lösenord. vanligtvis tomt.';
+
+  @override
+  String get s66fb236f0c => 'Easee (moln)';
+
+  @override
+  String get s8c376593cb =>
+      'Easee Home / Charge / En genom ditt Easee-konto: status, start/stopp och nuvarande gräns.';
+
+  @override
+  String get s827730d443 => 'Samma som i Easee-appen (telefon som +358...).';
+
+  @override
+  String get s3809be512f => 'Zaptec (moln)';
+
+  @override
+  String get se1a5b725a4 =>
+      'Zaptec Go / Home / Pro genom ditt Zaptec-konto. Start/paus behöver ägarrättigheter.';
+
+  @override
+  String get s90c71e52fb => 'Wallbox (moln)';
+
+  @override
+  String get s72dc0a7687 =>
+      'Pulsar, befälhavare, koppar genom ditt myWallbox-konto. Lokalt: välj OCPP.';
+
+  @override
+  String get s59ed724e14 =>
+      'Easee, Zaptec, Wallbox - eller någon OCPP-laddare lokalt. Ladda på överskott eller när billigt.';
+
+  @override
+  String s2d551049ff(String p0, String p1) {
+    return 'Kan inte starta OCPP-servern på port $p0: $p1';
+  }
+
+  @override
+  String s9a6813045a(String p0, String p1) {
+    return 'Charger \"$p0\" har inte anslutit. Ställ in sin OCPP-URL för att ws://<this device IP>:$p1/ocpp/';
+  }
+
+  @override
+  String get sb33d4d8b62 => 'laddaren laddar inte nu';
+
+  @override
+  String get s7c3abc09fc => 'EV laddare (inbyggd integration)';
+
+  @override
+  String get se6885155b4 =>
+      'OCPP fungerar lokalt utan ett moln (laddaren ansluter till denna app eller bron).';
+
+  @override
+  String get sb14c49378c => 'OCPP-port';
+
+  @override
+  String get sa9346504d4 =>
+      'Porten den här enheten lyssnar på. Laddare URL: ws://<this device IP>:9000/ocpp/';
+
+  @override
+  String get sf94b2ba7f3 => 'Charge Point Id (OCPP)';
+
+  @override
+  String get s8ea8831ed0 =>
+      'Laddarens OCPP-avgiftspunkt id. Empty = den första som ansluter.';
+
+  @override
+  String get sa3b3822b75 => 'idTag för fjärrstart';
+
+  @override
+  String get sf718534954 =>
+      'Skicka med RemoteStartTransaction. Empty = \"molaplan\".';
+
+  @override
+  String get s540a178f7a => 'Användarnamn / e-post (moln)';
+
+  @override
+  String get sa6b5175654 =>
+      'Cloud: appen lösenord. OCPP: valfri Basic auth lösenord. lagras på den här enheten bara.';
+
+  @override
+  String get sccb2892754 => 'Vilken laddare som läser för att visa.';
+
+  @override
+  String get s0e7115e10c => 'Status';
+
+  @override
+  String get s20cb072267 => 'Laddning (1/0)';
+
+  @override
+  String get se13ff56722 => 'Laddningskraft (W)';
+
+  @override
+  String get sd3627e3a20 => 'Denna session (kWh)';
+
+  @override
+  String get s19e058622f => 'Totalt (kWh)';
+
+  @override
+  String get s613785b80f => 'Aktuell gräns (A)';
+
+  @override
+  String get s60f4e2786f => 'Charger id';
+
+  @override
+  String get sfbbd0943a8 => 'Charger id i kontot; tomt = den enda laddaren.';
+
+  @override
+  String get s5bed8bff00 => 'Kommando';
+
+  @override
+  String get s9617db1f3d =>
+      'Börja, stoppa eller ställa in den aktuella gränsen.';
+
+  @override
+  String get sc110ab773a => 'Starta laddning';
+
+  @override
+  String get s44d11f741f => 'Stoppa / paus';
+
+  @override
+  String get s4c68e739b0 => 'Avgifter på/off';
+
+  @override
+  String get s141fac7235 => 'Ställ nuvarande gräns (A)';
+
+  @override
+  String get s33f04bfedd =>
+      'Aktuell gräns i ampere; {{value}} = reglaget värde.';
+
+  @override
+  String s610172c6f4(String p0) {
+    return 'Charger \"$p0\" hittades inte (offline eller borttagen)';
+  }
+
+  @override
+  String get sf51ef628f4 => 'Nuvarande gräns saknas';
+
+  @override
+  String get sd661432e07 => 'Inga laddare';
+
+  @override
+  String get s47aba73804 => 'Totalt laddat';
+
+  @override
+  String get s14252e6c3a => 'status status status';
+
+  @override
+  String get sed9640f6b4 => 'laddning';
+
+  @override
+  String get sebaaf2a20f => 'laddningskraft';
+
+  @override
+  String get s223d1336d5 => 'Denna session';
+
+  @override
+  String get sbea289dcc3 => 'nuvarande gräns';
+
+  @override
   String get s1becc05ea1 => 'locked=Låst;unlocked=Olåst;jammed=FASTNAT';
 
   @override
@@ -7624,9 +8127,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s85b9781bb7 => 'Broker värd';
-
-  @override
-  String get s800d13debd => 'Port Port Port Port';
 
   @override
   String get s49fa57061a => 'TLS';
@@ -8076,9 +8576,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s89ad1c43b4 => 'Tomt = enhetens statuskommando.';
 
   @override
-  String get s5bed8bff00 => 'Kommando';
-
-  @override
   String get sec7af7b376 =>
       't.ex. \"ljus på\". PIN och andra delar läggs till av enhetens kommandomall.';
 
@@ -8443,6 +8940,20 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s876690515a => 'En anmälan när spotpriset går över 20 c/kWh.';
 
   @override
+  String get s602af22563 => 'Ladda bilen på solöverskott';
+
+  @override
+  String get s9ce0e97a38 =>
+      'Ladda om när mer än 1.4 kW exporteras. Av när mer än 1 kW importeras (minst 10 min laddning).';
+
+  @override
+  String get scbad5277ee => 'Ladda bilen i de billigaste timmarna';
+
+  @override
+  String get sb6dc0d48ed =>
+      'Ladda på dagens 4 billigaste timmar och av när de slutar.';
+
+  @override
   String get s1906ecb28c => 'Frost varning';
 
   @override
@@ -8655,9 +9166,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get scd35ffb8e9 => 'Vanligtvis standard (Modbus 502, MHI 51443).';
 
   @override
-  String get s58f0665e29 => 'Modbus unit id';
-
-  @override
   String get sab25ff8075 => 'Modbus enhet adress, vanligtvis 1.';
 
   @override
@@ -8745,9 +9253,6 @@ class AppLocalizationsSv extends AppLocalizations {
       'Hitta det i routerns enhetslista eller tillverkarens app (enhetsinformation).';
 
   @override
-  String get se74bcc1028 => 'Extra kort för automation';
-
-  @override
   String get s4a91d07711 => 'Daikin (Wi-Fi, lokal)';
 
   @override
@@ -8768,9 +9273,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s41d69e699d => 'Samma som i MELCloud-appen.';
-
-  @override
-  String get s7a7ab0d238 => 'lagras krypterad på den här enheten bara.';
 
   @override
   String get sa8405bf705 =>

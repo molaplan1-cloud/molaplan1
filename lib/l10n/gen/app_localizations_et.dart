@@ -389,6 +389,156 @@ class AppLocalizationsEt extends AppLocalizations {
       'Kamina režiim peatatud. Kuumutamine on taas normaalne.';
 
   @override
+  String get sa7f9b278cf => 'Huawei SUN2000 (Modbus TCP)';
+
+  @override
+  String get s0d714dece1 => 'Fronius (Solar API, kohalik)';
+
+  @override
+  String get sa38a153c07 => 'SolarEdge (Modbus TCP, local)';
+
+  @override
+  String get s833dfe954e => 'SMA (Modbus TCP, local)';
+
+  @override
+  String get sc5863d817d => 'SMA (SunSpec Modbus)';
+
+  @override
+  String get s12733504dc => 'SMA Energy Meter / Home Manager (Speedwire)';
+
+  @override
+  String get sdeb4f39ff0 => 'Growatt (Modbus TCP)';
+
+  @override
+  String get sa1769b666b => 'Muu SunSpeci inverter (Modbus TCP)';
+
+  @override
+  String get s1694840083 => 'Huawei FusionSolar (pilv)';
+
+  @override
+  String get s205e886d29 => 'SolarEdge’i seire (pilv)';
+
+  @override
+  String get s5bf46ebec4 => 'Growatt OpenAPI (pilv)';
+
+  @override
+  String get se7c240ad4f => 'Päikese-/inverter (sisseehitatud integreerimine)';
+
+  @override
+  String get s46b5445e4a => 'Kaubamärk ja seos';
+
+  @override
+  String get sef83efed4e =>
+      'Valmistaja ja ühenduse tüüp. Kohalikud töötavad ilma pilveta ja uuendavad kiiremini.';
+
+  @override
+  String get scc322677fe => 'IP- aadress (kohalik)';
+
+  @override
+  String get s6ac1068052 =>
+      'Inverteri, SDongle\'i või arvesti IP-aadress (ruuteri seadmete loendist).';
+
+  @override
+  String get s800d13debd => 'Port';
+
+  @override
+  String get sa163739d18 =>
+      'Tühi = vaikimisi (Modbus 502, SolarEdge 1502, Huawei inverter Wi-Fi 6607).';
+
+  @override
+  String get s58f0665e29 => 'Modbus unit id';
+
+  @override
+  String get sd5e2f52587 =>
+      'Tühi = vaikimisi (Huawei 1, SolarEdge 1, SMA 3, SMA SunSpec 126, Growatt 1).';
+
+  @override
+  String get se49fbf06a8 => 'Arvesti jada (SMA energiaarvesti)';
+
+  @override
+  String get s4a63dcc985 =>
+      'Ainult siis, kui võrgus on mitu SMA meetrit. Tühi = esimene.';
+
+  @override
+  String get s6e391cf987 => 'Kasutaja (FusionSolar API)';
+
+  @override
+  String get se76a6f4565 =>
+      'FusionSolar Northbound API kasutaja (loonud paigaldaja: System → Company → Northbound).';
+
+  @override
+  String get s2f3b444057 => 'Parool / süsteemi kood';
+
+  @override
+  String get s11298f6c17 =>
+      'Salvestatud ainult selles seadmes / teie enda krüpteeritud varakambris.';
+
+  @override
+  String get s68eeca8dbe => 'API võti (SolarEdge / Growatt)';
+
+  @override
+  String get seba7bd613f =>
+      'SolarEdge: seireportaal → Admin → Site Access → API. Growatt: OpenAPI token.';
+
+  @override
+  String get s3cda8d5f90 => 'Tegevuskoha/tehase tunnuskood (pilv)';
+
+  @override
+  String get see56030ac8 => 'Tühjus = konto esimene asukoht.';
+
+  @override
+  String get sbdf670977b => 'Lugemine';
+
+  @override
+  String get s9d61569ac0 =>
+      'Võrk: positiivne = võrgust ostmine, negatiivne = müügi ülejääk.';
+
+  @override
+  String get sc78a29bef9 => 'Päikeseenergia nüüd (W)';
+
+  @override
+  String get s88a9d9b593 => 'Tootlikkus täna (kWh)';
+
+  @override
+  String get s4766881640 => 'Kogusaagis (kWh)';
+
+  @override
+  String get s4e1e06f64a => 'Võrk + import / −eksport (V)';
+
+  @override
+  String get s5c5e6866eb => 'Imporditud kogumaht (kWh)';
+
+  @override
+  String get s7495975366 => 'Eksporditud kogumaht (kWh)';
+
+  @override
+  String get s275ffaa691 => 'Aku laetus (%)';
+
+  @override
+  String get s9da1bd7ed1 => 'Aku + laadimine / −tühjendus (V)';
+
+  @override
+  String get sb6d790453a => 'Kodumaine tarbimine (V)';
+
+  @override
+  String sff9335b6df(String p0) {
+    return 'Seade ei anna sellest lugemist aru ($p0)';
+  }
+
+  @override
+  String get s711b4531bd => 'Inverterid on kirjutuskaitstud';
+
+  @override
+  String get s257cf40257 => 'päikeseenergia';
+
+  @override
+  String get sfa32969a23 => 'võrku';
+
+  @override
+  String get s333643b4c4 =>
+      'SMA energiaarvesti: koduvõrgus saateid ei edastata (multicast 239.12.255.254:9522)';
+
+  @override
   String get sc27533ae83 => 'Säästlik';
 
   @override
@@ -407,6 +557,124 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sb403e00b3d =>
       'Peaaegu ühtlane temperatuur (+0,5 / −0,5 °C). Säästab veidi.';
+
+  @override
+  String get s0a81072a1f =>
+      'Leia see ruuteri seadmete nimekirjast või valmistaja rakendusest (seadme info). Reserveeri sellele kindel IP.';
+
+  @override
+  String get s7c6a740594 => 'Põhinäidud';
+
+  @override
+  String get se74bcc1028 => 'Lisakaardid automatiseerimiseks';
+
+  @override
+  String get s87d0186621 => 'Huawei SUN2000 (Modbus TCP, kohalik)';
+
+  @override
+  String get se7647d6762 =>
+      'SUN2000 inverter (sh LUNA2000 aku ja DTSU666 meeter) SDongle\'i kaudu teie võrgus, ilma pilveta.';
+
+  @override
+  String get sccb0c7d2d8 =>
+      'SDongle\' i IP- aadress. Esmalt luba see rakenduses FusionSolar: Device commissioning → Dongle → Modbus TCP = \"Enable (unrestricted)\". Ilma dongle\'ita: inverteri enda Wi-Fi, aadress nagu 192.168.200.1: 6607.';
+
+  @override
+  String get sddc831ec16 =>
+      'Valikuline: tootmine ametliku FusionSolar Northbound API kaudu. Uuendused umbes iga 5 minuti järel.';
+
+  @override
+  String get s4424767fdd =>
+      'Northbound API kasutaja (mitte tavaline rakenduse sisselogimine). Paigaldaja / admin loob selle: System → Company → Northbound Management.';
+
+  @override
+  String get s7a7ab0d238 => 'Salvestatud krüptitud ainult selles seadmes.';
+
+  @override
+  String get sde3c79670a =>
+      'Veebilehitseja aadressiriba masin, kui see on sisse logitud FusionSolarisse. Vaikimisi eu5.';
+
+  @override
+  String get se80d87723d =>
+      'Symo, Primo, Gen24, Tauro – sh Smart Meter ja aku. Valmistaja avatud kohalik API, ilma pilveta.';
+
+  @override
+  String s1cb0924dc9(String p0) {
+    return ' Gen24: lubage Solar API inverteri veebisaidil (Communication → Solar API).';
+  }
+
+  @override
+  String get s1345214178 =>
+      'SolarEdge inverter, arvesti ja aku üle SunSpec Modbus teie võrgus (port 1502).';
+
+  @override
+  String s1f7b006036(String p0) {
+    return ' Modbus TCP lubamine SetApp: komisjonindamine → teatis → Modbus TCP.';
+  }
+
+  @override
+  String get s5d43115e7d =>
+      'Valikuline: tootmine ja elektrivool läbi SolarEdge\'i ametliku seire API (uuendused ~5 min).';
+
+  @override
+  String get sbe1a020a66 =>
+      'monitoring.solaredge.com → Admin → Site Access → API Access: aktsepteerida tingimusi ja kopeerida võti.';
+
+  @override
+  String get s9c5e673c38 =>
+      'Sunny Boy, Sunny Tripower, Sunny Boy Storage – SMA Modbus registreerib teie võrgus (üksus ID 3).';
+
+  @override
+  String s4fad533521(String p0) {
+    return ' Modbusi lubamine inverteri veebilehel: Seadme parameetrid → Väline suhtlus → Modbus TCP server.';
+  }
+
+  @override
+  String get s528ecf3140 =>
+      'SMA energiaarvesti / koduhaldur (Speedwire, kohalik)';
+
+  @override
+  String get sa7e3cb3d48 =>
+      'Võrgu import ja eksport otse arvesti Speedwire\'i saadetest - ei sisselogimist, ei pilve.';
+
+  @override
+  String get s126a0713b8 =>
+      'Arvesti leitakse automaatselt samast koduvõrgust. Kui otsing seda ei kasuta, kirjuta arvesti IP (näidud tulevad ikka selle saadetest).';
+
+  @override
+  String get sbdf4d24f64 => 'Growatt (Modbus TCP, kohalik)';
+
+  @override
+  String get s6c5156d740 =>
+      'MIN/ MOD/ SPH inverterid RS485→TCP lüüsi (või ShineLan- X Modbus TCP- ga) kaudu. Kontrolli näitu.';
+
+  @override
+  String get se351eda9ce =>
+      'RS485 IP→Modbus TCP gateway (nt Elfin EW11, Waveshare) on ühendatud inverteri RS485/COM porti.';
+
+  @override
+  String get s06257dd63c =>
+      'Valikuline: tootmine Growatti OpenAPI (ShinePhone/ShineServeri konto) kaudu. Uuendused ~5 min.';
+
+  @override
+  String get sbd8c9831bb =>
+      'Küsige Growatti toetust või oma installerit OpenAPI märgi jaoks või leidke see ShineServeri sätetest, kui seda näidatakse.';
+
+  @override
+  String get s3c89bd3976 =>
+      'Kostal, Fronius (Modbus), SMA (SunSpec), ABB/FIMER... Kõik SunSpeci seadmed.';
+
+  @override
+  String s183e57cdfd(String p0) {
+    return ' Port 502 vaikimisi – teine port nagu 192.168.1.20:1502.';
+  }
+
+  @override
+  String get s981854cf46 => 'Päikeseenergia';
+
+  @override
+  String get s984804da72 =>
+      'Huawei, Fronius, SolarEdge, SMA, Growatt – tootmine, võrk ja aku. Kohalik, pilv valikuline.';
 
   @override
   String get sd86b823895 => 'Sonoff';
@@ -3890,6 +4158,12 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s5c7338ab38 => 'Valmis automatiseerimine';
 
   @override
+  String get sa50094ffdb => 'Võrgu võimsuse valimine (+import / −eksport)';
+
+  @override
+  String get s3cc31bcfdc => 'Laadija valimine (laadimine sisse/ välja)';
+
+  @override
   String get s354eb362d8 => 'Seadme valimine';
 
   @override
@@ -4040,6 +4314,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s585b4c519f => 'Tume/valgus';
 
   @override
+  String get sd408a5dbe9 => 'Odavamad tunnid';
+
+  @override
   String get s6019108a01 => 'Seisund';
 
   @override
@@ -4062,6 +4339,18 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sfffb54daf4 => 'Olek';
+
+  @override
+  String get s3d34e477c2 => 'Nüüd on';
+
+  @override
+  String get s099666eafe => 'odavat tundi';
+
+  @override
+  String get s08b96dd0f7 => 'odavat tundi';
+
+  @override
+  String get sd7232b8464 => 'Odavamad tunnid päevas';
 
   @override
   String get se2b3e45118 => 'tume';
@@ -4680,6 +4969,33 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sf4a309c04a => 'Üks seade: aadress, ID ja võti.';
 
   @override
+  String get sd551537404 =>
+      'Kontrollige näidud - ametlik müüja dokument puudub.';
+
+  @override
+  String get sa1a45de0f2 => 'Kohalik – soovitatav';
+
+  @override
+  String get se8b35fb9e9 => 'Pilv – valikuline';
+
+  @override
+  String get s95216a7a5e => 'Teised – miks mitte veel';
+
+  @override
+  String get sc52321f275 => 'Milline inverter sul on?';
+
+  @override
+  String get s862002ac64 =>
+      'Tootmine, võrgu import/eksport ja aku laetus kaartidena ja automatiseerimiseks. Kohalik ühendus uueneb sekunditega ega vaja pilve.';
+
+  @override
+  String get sa5f3da9152 => 'Milline laadija sul on?';
+
+  @override
+  String get sdeb1f4332e =>
+      'Olek, laadimine sisse/välja, võimsus ja voolupiirang. Automaatika: päikeseenergia ülejäägi tasu või kõige odavamatel tundidel.';
+
+  @override
   String get s772c158a57 => 'tcp';
 
   @override
@@ -4827,6 +5143,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s4b1eda4282 => 'Õhukvaliteet';
+
+  @override
+  String get s1a6081db34 => 'EV laadija';
 
   @override
   String get sfe55fd97fa => 'Kõik on vaikne.';
@@ -5107,9 +5426,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s0a972aa85e =>
       'Paroolid ja märgid salvestatakse seadme turvalises hoiuruumis.';
-
-  @override
-  String get sd408a5dbe9 => 'Odavamad tunnid';
 
   @override
   String get sa26ae27039 => 'Jäta vahele kalleimad tunnid';
@@ -7296,6 +7612,191 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sbf7cc3de9a => 'Proovi nüüd';
 
   @override
+  String get sb75700bbba => 'Autot pole';
+
+  @override
+  String get s5a3fcd56de => 'Auto ühendatud';
+
+  @override
+  String get s23910a6fb5 => 'Laadimine';
+
+  @override
+  String get s22cd08064f => 'Pausitud';
+
+  @override
+  String get s5b8b3042ec => 'Lõpetasin';
+
+  @override
+  String get s84df123d5a => 'Viga';
+
+  @override
+  String get s98c928f06c => 'Sama, mis tegija rakenduses.';
+
+  @override
+  String get s68e2e87750 => 'OCPP 1.6J (kohalik, mis tahes kaubamärk)';
+
+  @override
+  String get s12fa00013a =>
+      'Wallbox, Alfen, ABB, go-e, Etrel, Easee/Zaptec (OCPP sees)... Laadija ühendub otse Molaplaniga – pilve pole.';
+
+  @override
+  String get s4bc8fc306b =>
+      'Kui laadijal on määratud põhiauth parool. Tavaliselt on see tühi.';
+
+  @override
+  String get s66fb236f0c => 'Easee (pilv)';
+
+  @override
+  String get s8c376593cb =>
+      'Easee Home / Tasu / Üks läbi oma Easee konto: olek, start/stop ja praegune limiit.';
+
+  @override
+  String get s827730d443 => 'Sama nagu Easee rakenduses (telefon +358...).';
+
+  @override
+  String get s3809be512f => 'Zaptec (pilv)';
+
+  @override
+  String get se1a5b725a4 =>
+      'Zaptec Go / Home / Pro läbi oma Zapteci konto. Start/ Pause vajab omanikuõigusi.';
+
+  @override
+  String get s90c71e52fb => 'Seinakast (pilv)';
+
+  @override
+  String get s72dc0a7687 =>
+      'Pulsar, komandör, Copper läbi oma myWallboxi konto. Kohalik: vali OCPP.';
+
+  @override
+  String get s59ed724e14 =>
+      'Easee, Zaptec, Wallbox – või mõni muu OCPP laadija kohapeal. Tasu ülejäägi või odava hinna eest.';
+
+  @override
+  String s2d551049ff(String p0, String p1) {
+    return 'OCPP serveri käivitamine pordis $p0: $p1 nurjus';
+  }
+
+  @override
+  String s9a6813045a(String p0, String p1) {
+    return 'Laadija \"$p0\" ei ole ühendust võtnud. Määra selle OCPP URL- iks ws://<see seade IP>:$p1/ocpp/';
+  }
+
+  @override
+  String get sb33d4d8b62 => 'Laadija ei lae praegu';
+
+  @override
+  String get s7c3abc09fc => 'EV laadija (sisseehitatud integreerimine)';
+
+  @override
+  String get se6885155b4 =>
+      'OCPP töötab lokaalselt ilma pilveta (laadija ühendub selle rakenduse või sillaga).';
+
+  @override
+  String get sb14c49378c => 'OCPP port';
+
+  @override
+  String get sa9346504d4 =>
+      'Port, mida seade kuulab. Laadija URL: ws://<see seade IP>:9000/ocpp/';
+
+  @override
+  String get sf94b2ba7f3 => 'Laadimispunkti ID (OCPP)';
+
+  @override
+  String get s8ea8831ed0 =>
+      'Laadija OCPP laadimispunkti ID. Tühi = esimene, mis ühendub.';
+
+  @override
+  String get sa3b3822b75 => 'kaugkäivituse idTag';
+
+  @override
+  String get sf718534954 => 'Saadeti kaugtehinguga. Tühi = \"molaplan\".';
+
+  @override
+  String get s540a178f7a => 'Kasutajanimi / e-post (pilv)';
+
+  @override
+  String get sa6b5175654 =>
+      'Pilv: rakenduse parool. OCPP: valikuline Autentimise põhiparool. Salvestatud ainult sellele seadmele.';
+
+  @override
+  String get sccb2892754 => 'Millist laadija näitu näidata.';
+
+  @override
+  String get s0e7115e10c => 'Staatus';
+
+  @override
+  String get s20cb072267 => 'Laadimine (1/0)';
+
+  @override
+  String get se13ff56722 => 'Laadimisvõimsus (W)';
+
+  @override
+  String get sd3627e3a20 => 'See seanss (kWh)';
+
+  @override
+  String get s19e058622f => 'Kokku (kWh)';
+
+  @override
+  String get s613785b80f => 'Praegune piirmäär (A)';
+
+  @override
+  String get s60f4e2786f => 'Laadija ID';
+
+  @override
+  String get sfbbd0943a8 => 'Laadija ID kontol; tühi = ainus laadija.';
+
+  @override
+  String get s5bed8bff00 => 'Käsk';
+
+  @override
+  String get s9617db1f3d => 'Käivita, peata või määra aktiivne limiit.';
+
+  @override
+  String get sc110ab773a => 'Alusta laadimist';
+
+  @override
+  String get s44d11f741f => 'Peatus/paus';
+
+  @override
+  String get s4c68e739b0 => 'Laadimine sisse/välja';
+
+  @override
+  String get s141fac7235 => 'Praeguse piirangu (A) määramine';
+
+  @override
+  String get s33f04bfedd =>
+      'Aktiivsuspiir amprites; {{value}} = liuguri väärtus.';
+
+  @override
+  String s610172c6f4(String p0) {
+    return 'Laadijat \"$p0\" ei leitud (ühenduseta või eemaldatud)';
+  }
+
+  @override
+  String get sf51ef628f4 => 'Praegune piirang puudub';
+
+  @override
+  String get sd661432e07 => 'Laadijaid pole';
+
+  @override
+  String get s47aba73804 => 'laetud';
+
+  @override
+  String get s14252e6c3a => 'staatus';
+
+  @override
+  String get sed9640f6b4 => 'laadimine';
+
+  @override
+  String get sebaaf2a20f => 'laadimisvõimsus';
+
+  @override
+  String get s223d1336d5 => 'seanss';
+
+  @override
+  String get sbea289dcc3 => 'praegune limiit';
+
+  @override
   String get s1becc05ea1 => 'locked=Lukus;unlocked=Lahti;jammed=KINNI';
 
   @override
@@ -7613,9 +8114,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s85b9781bb7 => 'Maakleri peremees';
-
-  @override
-  String get s800d13debd => 'Port';
 
   @override
   String get s49fa57061a => 'TLS';
@@ -8062,9 +8560,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s89ad1c43b4 => 'Tühi = seadme olekukäsk.';
 
   @override
-  String get s5bed8bff00 => 'Käsk';
-
-  @override
   String get sec7af7b376 =>
       'Nt \"light on\". PIN-koodi ja muud osad lisab seadme käsumall.';
 
@@ -8427,6 +8922,20 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s876690515a => 'Teade, kui hetkehind ületab 20 c/kWh.';
 
   @override
+  String get s602af22563 => 'Auto laadimine päikeseenergia ülejäägile';
+
+  @override
+  String get s9ce0e97a38 =>
+      'Laadimine, kui eksporditakse rohkem kui 1.4 kW. Väljalülitamine, kui imporditakse rohkem kui 1 kW (laadimine vähemalt 10 minutit).';
+
+  @override
+  String get scbad5277ee => 'Auto laadimine kõige odavamatel tundidel';
+
+  @override
+  String get sb6dc0d48ed =>
+      'Laadige päeva jooksul 4 kõige odavamat tundi ja maha, kui need lõpevad.';
+
+  @override
   String get s1906ecb28c => 'Külmumishoiatus';
 
   @override
@@ -8641,9 +9150,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get scd35ffb8e9 => 'Tavaliselt vaikimisi (Modbus 502, MHI 51443).';
 
   @override
-  String get s58f0665e29 => 'Modbus unit id';
-
-  @override
   String get sab25ff8075 => 'Modbusi üksuse aadress, tavaliselt 1.';
 
   @override
@@ -8731,9 +9237,6 @@ class AppLocalizationsEt extends AppLocalizations {
       'Leidke see ruuteri seadmete loendist või valmistaja rakendusest (seadme info).';
 
   @override
-  String get se74bcc1028 => 'Lisakaardid automatiseerimiseks';
-
-  @override
   String get s4a91d07711 => 'Daikin (Wi-Fi, kohalik)';
 
   @override
@@ -8754,9 +9257,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s41d69e699d => 'Sama, mis MELCloudi rakenduses.';
-
-  @override
-  String get s7a7ab0d238 => 'Salvestatud krüptitud ainult selles seadmes.';
 
   @override
   String get sa8405bf705 =>

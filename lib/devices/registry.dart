@@ -6,6 +6,8 @@ import 'provider.dart';
 import 'shelly.dart';
 import 'sonoff.dart';
 import '../tuya/tuya_provider.dart';
+import '../energy/solar_providers.dart';
+import '../ev/ev_providers.dart';
 
 export 'provider.dart';
 
@@ -18,13 +20,17 @@ final deviceProviders = <DeviceProvider>[
   ShellyCloudProvider(),
   HeatPumpChooser(),
   TuyaKeyProvider(),
+  SolarChooser(),
+  ChargerChooser(),
 ];
 
 DeviceProvider? providerById(String id) =>
     deviceProviders.where((p) => p.id == id).firstOrNull ??
     cameraProviders.where((p) => p.id == id).firstOrNull ??
     heatPumpProviders.where((p) => p.id == id).firstOrNull ??
-    tuyaProviders.where((p) => p.id == id).firstOrNull;
+    tuyaProviders.where((p) => p.id == id).firstOrNull ??
+    solarProviders.where((p) => p.id == id).firstOrNull ??
+    evChargerProviders.where((p) => p.id == id).firstOrNull;
 
 /// Brands not built in yet: shown in the picker with the best way to use them today.
 class RoadmapBrand {
