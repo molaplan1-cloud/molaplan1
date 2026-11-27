@@ -1098,6 +1098,119 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sa6212aaeb4 => 'Plats';
 
   @override
+  String get s1af2f8cc38 =>
+      'Rutan finns inte i den här webbläsaren. Logga in med kontot som rutan skapades med.';
+
+  @override
+  String get sb9b069da26 => 'Öppna Molaplan';
+
+  @override
+  String get s6659f500d5 => 'Öppna hela Molaplan';
+
+  @override
+  String get sd9762f0556 => 'Kopierat';
+
+  @override
+  String get s703e5ec00e => 'Länken kopierad';
+
+  @override
+  String get sd6f41faa1d => 'Kopiera';
+
+  @override
+  String get s3bfcb448ea => 'Öppna länken';
+
+  @override
+  String get s5794ae95b6 => 'Genväg och hemskärm';
+
+  @override
+  String sd0ebbc7196(String p0) {
+    return 'Gör rutan \"$p0\" till en länk, en egen ikon på hemskärmen eller en iPhone-widget. Länkar och skript innehåller aldrig PIN-kod eller lösenord – kommandon ber om bekräftelse och PIN-kod varje gång.';
+  }
+
+  @override
+  String get s0e8a27d980 => 'Länkar';
+
+  @override
+  String get sf032c99d57 => 'Öppna rutan';
+
+  @override
+  String get se0c5314ff7 => 'Öppnar molaplan.com direkt på den här rutan.';
+
+  @override
+  String get sfec7615e33 => 'Kör kommandot';
+
+  @override
+  String get s793336a278 =>
+      'Öppnar Molaplan och kör rutans kommando efter bekräftelse (och PIN-kod vid behov).';
+
+  @override
+  String get s4ada3d547a => 'Egen ikon på hemskärmen';
+
+  @override
+  String get se5b7d50d32 => 'Elprisvy (ingen inloggning)';
+
+  @override
+  String get s0174ef9ba6 =>
+      'Priset nu och staplar för i dag och i morgon, som på surfplattan. Fungerar för alla utan konto: länken innehåller bara prisområde, moms, påslag och överföring.';
+
+  @override
+  String get s418e567059 => 'Rutan i helskärm';
+
+  @override
+  String get s854b37962a =>
+      'Bara den här rutan, uppdateras av sig själv. Kräver inloggning med samma konto.';
+
+  @override
+  String get sb377843191 =>
+      'iPhone: öppna länken i Safari → Dela → Lägg till på hemskärmen. Android: Chrome → ⋮ → Lägg till på startskärmen. Dator: Chrome eller Edge → Installera app. En hemskärmsapp har egen lagring: logga in där en gång.';
+
+  @override
+  String get s8e05e68318 => 'iPhone-widget';
+
+  @override
+  String get s5da072d585 =>
+      'iPhone-widgetar kräver en app. Molaplan har ingen app i App Store, så widgeten använder den kostnadsfria appen Scriptable: installera Scriptable, tryck på +, klistra in skriptet och namnge det. Lägg till en Scriptable-widget på hemskärmen, håll fingret på den → Redigera widget → Script: välj skriptet.';
+
+  @override
+  String get s37a2c08789 => 'Elpris-widget (Scriptable)';
+
+  @override
+  String get s6345f88fa0 =>
+      'Hämtar priserna direkt från Molaplans pristjänst – inget konto eller påslagen enhet behövs.';
+
+  @override
+  String get s4de0571af7 => 'Statusflöde för widgeten';
+
+  @override
+  String get s8d62579a16 =>
+      'Molaplan publicerar rutans status (text, färg) på en slumpmässig adress som bara kan läsas. Flödet uppdateras av en enhet där rutan visas (t.ex. en väggplatta). Den som har adressen kan se statusen men inte styra något.';
+
+  @override
+  String get s694ea6d8d2 => 'Rutans widget (Scriptable)';
+
+  @override
+  String get sd6c9e55bce => 'Ny adress (den gamla slutar fungera)';
+
+  @override
+  String get s32d2c87e84 => 'Genvägar och Siri (iPhone)';
+
+  @override
+  String get sd3e8aa895f => 'Genväg: kör kommandot';
+
+  @override
+  String get sa82dd6fac4 => 'Genväg: öppna rutan';
+
+  @override
+  String get s980a75a37b => 'Genväg: läs upp värdet';
+
+  @override
+  String get s5f8107014a => 'Vad är inbyggt, vad är en lösning runt';
+
+  @override
+  String get sbf5c8473b2 =>
+      'Android: riktiga widgetar och genvägar på hemskärmen från Molaplan-appen (Lägg till på startskärmen). iPhone: ikonen på hemskärmen är en webbapp (Safari), widgeten körs via appen Scriptable och Siri via Genvägar. Kommandon öppnar alltid Molaplan, som ber om bekräftelse och PIN-kod.';
+
+  @override
   String get s463074e5cc => 'App endast';
 
   @override
@@ -2369,6 +2482,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sbfe79d1f5f => 'Uppdaterad';
 
   @override
+  String get s71f145905e => 'Genväg / dela';
+
+  @override
   String get s46d0983ce8 => 'Lägg till på startskärmen';
 
   @override
@@ -2520,9 +2636,6 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s09feac6b28 =>
       'ESPHome kan inte ta nya koder över nätverket. Lägg till detta på enheten YAML, installera den och spara sedan knappen:';
-
-  @override
-  String get sd6f41faa1d => 'Kopiera';
 
   @override
   String get s0a7c7a151a => 'Spara som knapp';
@@ -7287,6 +7400,76 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s1e02f457b4 => 'Fungerar i appen eller genom en hembro';
 
   @override
+  String get s8f2ee89c28 => 'Inga data';
+
+  @override
+  String get sa2029e688b => 'Öppna Molaplan på en enhet där rutan visas';
+
+  @override
+  String get sfdaa9523b0 => 'min gammal';
+
+  @override
+  String get s0c3b4eb370 => 'uppdaterad';
+
+  @override
+  String get s34705bcd0b =>
+      'iPhone-widget för appen Scriptable (gratis, App Store). Hjälp: molaplan.com → ruta → Genväg.';
+
+  @override
+  String get sae2303f670 => 'Innehåller inga PIN-koder eller lösenord.';
+
+  @override
+  String se0620d25d1(String p0) {
+    return 'Genväg: $p0';
+  }
+
+  @override
+  String get s04a78db719 => 'Öppna appen Genvägar och tryck på +.';
+
+  @override
+  String get s72698a5ad4 =>
+      'Lägg till åtgärden \"Öppna URL:er\" och klistra in adressen:';
+
+  @override
+  String s67f213ee2b(String p0) {
+    return 'Ge genvägen rutans namn – då fungerar \"Hej Siri, $p0\".';
+  }
+
+  @override
+  String get sa19a41e8bc =>
+      'Dela → Lägg till på hemskärmen ger den en egen ikon.';
+
+  @override
+  String get s5868f0efb3 =>
+      'Molaplan öppnas i Safari och ber varje gång om bekräftelse och vid behov PIN-kod. PIN-koden sparas aldrig i länken. Logga in på molaplan.com i Safari en gång.';
+
+  @override
+  String s6bb11e2974(String p0) {
+    return 'Genväg (öppna rutan): $p0';
+  }
+
+  @override
+  String s3457f68fe8(String p0) {
+    return 'Genväg (läs värdet): $p0';
+  }
+
+  @override
+  String get sf49ecc47f8 =>
+      'Lägg till åtgärden \"Hämta innehåll i URL\" med adressen:';
+
+  @override
+  String get sbd6df96c54 =>
+      'Lägg till \"Hämta ordlista från indata\" och sedan \"Hämta värde i ordlista\": message.';
+
+  @override
+  String get s7ef682753c =>
+      'Lägg till \"Hämta ordlista från indata\" igen och \"Hämta värde i ordlista\": value.';
+
+  @override
+  String get s0276650db2 =>
+      'Lägg till \"Läs upp text\" eller \"Visa resultat\".';
+
+  @override
   String s6c33f19716(String p0) {
     return 'inte svara ($p0 min)';
   }
@@ -10372,6 +10555,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sb25aad3bc2 => 'Jag går hemifrån';
+
+  @override
+  String get s047879732e => 'Länken har återkallats';
 
   @override
   String get s65320ede20 => 'Lugn';

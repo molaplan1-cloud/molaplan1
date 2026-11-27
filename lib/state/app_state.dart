@@ -28,6 +28,7 @@ import '../energy/thermostat.dart';
 import '../prices/prices.dart';
 import 'tile_runtime.dart';
 import 'home_launcher.dart';
+import 'tile_feed.dart';
 import '../rules/price_rules.dart';
 import '../templates/device_templates.dart';
 import '../account/supabase_api.dart' show AccountApi, Session;
@@ -200,6 +201,9 @@ class AppState extends ChangeNotifier implements SyncHost {
   final measureHistory = MeasureHistory();
   Timer? _historySaveTimer;
   final energyLog = EnergyLog();
+
+  /// R512 (t315u): publishes tiles that have a feed for the iPhone widget.
+  final tileFeeds = TileFeedPublisher();
   Timer? _energySaveTimer;
 
   /// Price area for energy costs and heating plans.
@@ -329,10 +333,15 @@ class AppState extends ChangeNotifier implements SyncHost {
   /// Last value of every tile this run (v0.8.0: a heat-pump tile shows a linked room sensor).
   final _lastTileValues = <String, Object?>{};
 
+  /// The last value a tile reported in this session (null = none yet).
+  Object? lastTileValue(String id) => _lastTileValues[id];
+
   void onTileValue(TileConfig t, Object? v, [DateTime? at]) {
     _lastTileValues[t.id] = v;
     // t290u: home-screen status widgets follow live values immediately.
     unawaited(syncLauncherTile(t, v, at));
+    // R512 (t315u): iPhone widget feed.
+    if (t.feed != null) unawaited(tileFeeds.onValue(t, v, lang: lang, at: at));
     if (t.sensor != null) {
       // t143u: remember the last alarm (calm → alarm), shown on the tile.
       final alarm = isTruthy(v, onValue: t.onValue.isEmpty ? null : t.onValue);

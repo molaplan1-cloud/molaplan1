@@ -2096,6 +2096,210 @@ abstract class AppLocalizations {
   /// **'Location'**
   String get sa6212aaeb4;
 
+  /// fi: Laattaa ei löytynyt tästä selaimesta. Kirjaudu sisään samalla tilillä, jolla laatta tehtiin.
+  ///
+  /// In en, this message translates to:
+  /// **'Tile not found in this browser. Sign in with the account the tile was made with.'**
+  String get s1af2f8cc38;
+
+  /// fi: Avaa Molaplan
+  ///
+  /// In en, this message translates to:
+  /// **'Open Molaplan'**
+  String get sb9b069da26;
+
+  /// fi: Avaa koko Molaplan
+  ///
+  /// In en, this message translates to:
+  /// **'Open full Molaplan'**
+  String get s6659f500d5;
+
+  /// fi: Kopioitu
+  ///
+  /// In en, this message translates to:
+  /// **'Copied'**
+  String get sd9762f0556;
+
+  /// fi: Linkki kopioitu
+  ///
+  /// In en, this message translates to:
+  /// **'Link copied'**
+  String get s703e5ec00e;
+
+  /// fi: Kopioi
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get sd6f41faa1d;
+
+  /// fi: Avaa
+  ///
+  /// In en, this message translates to:
+  /// **'Open link'**
+  String get s3bfcb448ea;
+
+  /// fi: Pikakomento ja kotinäyttö
+  ///
+  /// In en, this message translates to:
+  /// **'Shortcut and home screen'**
+  String get s5794ae95b6;
+
+  /// fi: Tee laatasta "{p0}" linkki, oma kotinäytön kuvake tai iPhonen widget. Linkit ja skriptit eivät koskaan sisällä PIN-koodi
+  ///
+  /// In en, this message translates to:
+  /// **'Turn the tile \"{p0}\" into a link, its own home-screen icon or an iPhone widget. Links and scripts never contain a PIN or password – commands ask for confirmation and the PIN every time.'**
+  String sd0ebbc7196(String p0);
+
+  /// fi: Linkit
+  ///
+  /// In en, this message translates to:
+  /// **'Links'**
+  String get s0e8a27d980;
+
+  /// fi: Avaa laatta
+  ///
+  /// In en, this message translates to:
+  /// **'Open the tile'**
+  String get sf032c99d57;
+
+  /// fi: Avaa molaplan.comin suoraan tähän laattaan.
+  ///
+  /// In en, this message translates to:
+  /// **'Opens molaplan.com directly on this tile.'**
+  String get se0c5314ff7;
+
+  /// fi: Suorita komento
+  ///
+  /// In en, this message translates to:
+  /// **'Run the command'**
+  String get sfec7615e33;
+
+  /// fi: Avaa Molaplanin ja suorittaa laatan komennon vahvistuksen (ja tarvittaessa PIN-koodin) jälkeen.
+  ///
+  /// In en, this message translates to:
+  /// **'Opens Molaplan and runs the tile\'\'s command after confirmation (and the PIN, if needed).'**
+  String get s793336a278;
+
+  /// fi: Oma kotinäytön kuvake
+  ///
+  /// In en, this message translates to:
+  /// **'Own home-screen icon'**
+  String get s4ada3d547a;
+
+  /// fi: Sähkön hinta -näkymä (ei kirjautumista)
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity price view (no sign-in)'**
+  String get se5b7d50d32;
+
+  /// fi: Hinta nyt ja tämän päivän ja huomisen pylväät kuten tabletilla. Toimii kenellä tahansa ilman tiliä: linkissä on vain hin
+  ///
+  /// In en, this message translates to:
+  /// **'The price now and today\'\'s and tomorrow\'\'s bars, as on the tablet. Works for anyone without an account: the link holds only the price area, VAT, margin and transfer.'**
+  String get s0174ef9ba6;
+
+  /// fi: Laatta koko näytöllä
+  ///
+  /// In en, this message translates to:
+  /// **'Tile full screen'**
+  String get s418e567059;
+
+  /// fi: Pelkkä tämä laatta, päivittyy itsestään. Vaatii kirjautumisen samalla tilillä.
+  ///
+  /// In en, this message translates to:
+  /// **'Only this tile, updates by itself. Needs sign-in with the same account.'**
+  String get s854b37962a;
+
+  /// fi: iPhone: avaa linkki Safarissa → Jaa → Lisää Koti-valikkoon. Android: Chrome → ⋮ → Lisää aloitusnäytölle. PC: Chrome tai
+  ///
+  /// In en, this message translates to:
+  /// **'iPhone: open the link in Safari → Share → Add to Home Screen. Android: Chrome → ⋮ → Add to home screen. PC: Chrome or Edge → Install app. A home-screen app has its own storage: sign in there once.'**
+  String get sb377843191;
+
+  /// fi: iPhonen widget
+  ///
+  /// In en, this message translates to:
+  /// **'iPhone widget'**
+  String get s8e05e68318;
+
+  /// fi: iPhonen widgetit vaativat sovelluksen. Molaplanilla ei ole App Store -sovellusta, joten widget tehdään ilmaisella Script
+  ///
+  /// In en, this message translates to:
+  /// **'iPhone widgets need an app. Molaplan has no App Store app, so the widget uses the free Scriptable app: install Scriptable, tap +, paste the script and name it. Add a Scriptable widget to the home screen, long-press it → Edit Widget → Script: pick the script.'**
+  String get s5da072d585;
+
+  /// fi: Sähkön hinta -widget (Scriptable)
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity price widget (Scriptable)'**
+  String get s37a2c08789;
+
+  /// fi: Hakee hinnat suoraan Molaplanin hintapalvelusta – ei tarvitse tiliä eikä päällä olevaa laitetta.
+  ///
+  /// In en, this message translates to:
+  /// **'Fetches prices straight from Molaplan\'\'s price service – no account or device left on needed.'**
+  String get s6345f88fa0;
+
+  /// fi: Tilasyöte widgetille
+  ///
+  /// In en, this message translates to:
+  /// **'Status feed for the widget'**
+  String get s4de0571af7;
+
+  /// fi: Molaplan julkaisee laatan tilan (teksti, väri) satunnaiseen, vain lukemiseen tarkoitettuun osoitteeseen. Syötettä päivit
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan publishes the tile\'\'s state (text, colour) to a random, read-only address. The feed is updated by a device where the tile is shown (e.g. a wall tablet). Anyone with the address can see the state but cannot control anything.'**
+  String get s8d62579a16;
+
+  /// fi: Laatan widget (Scriptable)
+  ///
+  /// In en, this message translates to:
+  /// **'Tile widget (Scriptable)'**
+  String get s694ea6d8d2;
+
+  /// fi: Uusi osoite (vanha lakkaa toimimasta)
+  ///
+  /// In en, this message translates to:
+  /// **'New address (the old one stops working)'**
+  String get sd6c9e55bce;
+
+  /// fi: Pikakomennot ja Siri (iPhone)
+  ///
+  /// In en, this message translates to:
+  /// **'Shortcuts and Siri (iPhone)'**
+  String get s32d2c87e84;
+
+  /// fi: Pikakomento: suorita komento
+  ///
+  /// In en, this message translates to:
+  /// **'Shortcut: run the command'**
+  String get sd3e8aa895f;
+
+  /// fi: Pikakomento: avaa laatta
+  ///
+  /// In en, this message translates to:
+  /// **'Shortcut: open the tile'**
+  String get sa82dd6fac4;
+
+  /// fi: Pikakomento: lue arvo ääneen
+  ///
+  /// In en, this message translates to:
+  /// **'Shortcut: read the value aloud'**
+  String get s980a75a37b;
+
+  /// fi: Mikä on natiivia, mikä kiertotie
+  ///
+  /// In en, this message translates to:
+  /// **'What is native, what is a workaround'**
+  String get s5f8107014a;
+
+  /// fi: Android: oikeat kotinäytön widgetit ja pikakuvakkeet Molaplan-sovelluksesta (Lisää aloitusnäytölle). iPhone: kotinäytön
+  ///
+  /// In en, this message translates to:
+  /// **'Android: real home-screen widgets and shortcuts from the Molaplan app (Add to home screen). iPhone: the home-screen icon is a web app (Safari), the widget runs through the Scriptable app and Siri through Shortcuts. Commands always open Molaplan, which asks for confirmation and the PIN.'**
+  String get sbf5c8473b2;
+
   /// fi: Vain sovelluksessa
   ///
   /// In en, this message translates to:
@@ -4364,6 +4568,12 @@ abstract class AppLocalizations {
   /// **'Updated'**
   String get sbfe79d1f5f;
 
+  /// fi: Pikakomento / jaa
+  ///
+  /// In en, this message translates to:
+  /// **'Shortcut / share'**
+  String get s71f145905e;
+
   /// fi: Lisää aloitusnäytölle
   ///
   /// In en, this message translates to:
@@ -4645,12 +4855,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'ESPHome cannot take new codes over the network. Add this to the device YAML, install it, then save the button:'**
   String get s09feac6b28;
-
-  /// fi: Kopioi
-  ///
-  /// In en, this message translates to:
-  /// **'Copy'**
-  String get sd6f41faa1d;
 
   /// fi: Tallenna napiksi
   ///
@@ -13259,6 +13463,114 @@ abstract class AppLocalizations {
   /// **'Works in the app or through a home bridge'**
   String get s1e02f457b4;
 
+  /// fi: Ei tietoa
+  ///
+  /// In en, this message translates to:
+  /// **'No data'**
+  String get s8f2ee89c28;
+
+  /// fi: Avaa Molaplan laitteella, jossa laatta on näkyvissä
+  ///
+  /// In en, this message translates to:
+  /// **'Open Molaplan on a device where the tile is shown'**
+  String get sa2029e688b;
+
+  /// fi: min vanha
+  ///
+  /// In en, this message translates to:
+  /// **'min old'**
+  String get sfdaa9523b0;
+
+  /// fi: päivitetty
+  ///
+  /// In en, this message translates to:
+  /// **'updated'**
+  String get s0c3b4eb370;
+
+  /// fi: iPhonen widget Scriptable-sovellukseen (ilmainen, App Store). Ohje: molaplan.com → laatta → Pikakomento.
+  ///
+  /// In en, this message translates to:
+  /// **'iPhone widget for the Scriptable app (free, App Store). Help: molaplan.com → tile → Shortcut.'**
+  String get s34705bcd0b;
+
+  /// fi: Ei sisällä PIN-koodeja eikä salasanoja.
+  ///
+  /// In en, this message translates to:
+  /// **'Contains no PINs or passwords.'**
+  String get sae2303f670;
+
+  /// fi: Pikakomento: {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Shortcut: {p0}'**
+  String se0620d25d1(String p0);
+
+  /// fi: Avaa Pikakomennot-sovellus ja paina +.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the Shortcuts app and tap +.'**
+  String get s04a78db719;
+
+  /// fi: Lisää toiminto "Avaa URL-osoitteet" ja liitä osoite:
+  ///
+  /// In en, this message translates to:
+  /// **'Add the action \"Open URLs\" and paste the address:'**
+  String get s72698a5ad4;
+
+  /// fi: Nimeä pikakomento laatan nimellä – silloin "Hei Siri, {p0}" toimii.
+  ///
+  /// In en, this message translates to:
+  /// **'Name the shortcut after the tile – then \"Hey Siri, {p0}\" works.'**
+  String s67f213ee2b(String p0);
+
+  /// fi: Jaa → Lisää Koti-valikkoon, niin saat oman kuvakkeen.
+  ///
+  /// In en, this message translates to:
+  /// **'Share → Add to Home Screen gives it its own icon.'**
+  String get sa19a41e8bc;
+
+  /// fi: Molaplan avautuu Safarissa ja kysyy joka kerta vahvistuksen ja tarvittaessa PIN-koodin. PIN-koodia ei tallenneta linkkii
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan opens in Safari and asks for confirmation and, if needed, the PIN every time. The PIN is never stored in the link. Sign in to molaplan.com in Safari once.'**
+  String get s5868f0efb3;
+
+  /// fi: Pikakomento (avaa laatta): {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Shortcut (open the tile): {p0}'**
+  String s6bb11e2974(String p0);
+
+  /// fi: Pikakomento (lue arvo): {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Shortcut (read the value): {p0}'**
+  String s3457f68fe8(String p0);
+
+  /// fi: Lisää toiminto "Hae URL-osoitteen sisältö" osoitteella:
+  ///
+  /// In en, this message translates to:
+  /// **'Add the action \"Get Contents of URL\" with the address:'**
+  String get sf49ecc47f8;
+
+  /// fi: Lisää "Hae sanakirja syötteestä" ja sitten "Hae sanakirjan arvo": message.
+  ///
+  /// In en, this message translates to:
+  /// **'Add \"Get Dictionary from Input\", then \"Get Dictionary Value\": message.'**
+  String get sbd6df96c54;
+
+  /// fi: Lisää uudelleen "Hae sanakirja syötteestä" ja "Hae sanakirjan arvo": value.
+  ///
+  /// In en, this message translates to:
+  /// **'Add \"Get Dictionary from Input\" again and \"Get Dictionary Value\": value.'**
+  String get s7ef682753c;
+
+  /// fi: Lisää "Puhu teksti" tai "Näytä tulos".
+  ///
+  /// In en, this message translates to:
+  /// **'Add \"Speak Text\" or \"Show Result\".'**
+  String get s0276650db2;
+
   /// fi: ei vastaa ({p0} min)
   ///
   /// In en, this message translates to:
@@ -18700,6 +19012,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Leaving home'**
   String get sb25aad3bc2;
+
+  /// fi: Linkki poistettu käytöstä
+  ///
+  /// In en, this message translates to:
+  /// **'Link revoked'**
+  String get s047879732e;
 
   /// fi: Rauhallinen
   ///

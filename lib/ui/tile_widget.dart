@@ -18,6 +18,7 @@ import 'climate_tile.dart';
 import '../devices/climate.dart';
 import 'error_box.dart';
 import 'home_launcher_ui.dart';
+import 'tile_shortcuts_page.dart';
 import '../state/home_launcher.dart';
 import 'camera_view.dart';
 import 'icons.dart';
@@ -722,6 +723,15 @@ class _TileWidgetState extends State<TileWidget> {
           ],
         ),
         actions: [
+          // R510 (t315u): every tile, every platform – links, home-screen view, iPhone widget.
+          TextButton(
+            key: const ValueKey('tile-shortcuts'),
+            onPressed: () async {
+              Navigator.pop(c);
+              if (context.mounted) await showTileShortcuts(context, t);
+            },
+            child: Text(tx(context, 'Pikakomento / jaa', 'Shortcut / share')),
+          ),
           if (launcherSupported)
             TextButton(
               key: const ValueKey('tile-add-home'),

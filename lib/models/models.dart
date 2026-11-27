@@ -319,6 +319,11 @@ class TileConfig {
   /// When the sensor last alarmed (ms since epoch).
   int? lastAlarm;
 
+  /// R512 (t315u): random read-only feed topic ("mf-…") on ntfy.molaplan.com where Molaplan
+  /// publishes this tile's display state for an iPhone / Scriptable widget. null = off.
+  /// Never a PIN or connection secret; "Uusi linkki" replaces it (revokes the old one).
+  String? feed;
+
   TileConfig({
     String? id,
     required this.type,
@@ -372,6 +377,7 @@ class TileConfig {
     this.sensor,
     this.battery,
     this.lastAlarm,
+    this.feed,
   }) : id = id ?? newId(),
        w2 = _clampW2(w2 ?? colSpan * 2),
        h2 = (h2 ?? rowSpan * 2).clamp(1, maxH2),
@@ -434,6 +440,7 @@ class TileConfig {
     'sensor': ?sensor,
     'battery': ?battery,
     'lastAlarm': ?lastAlarm,
+    'feed': ?feed,
   };
 
   factory TileConfig.fromJson(Map<String, dynamic> j) => TileConfig(
@@ -527,6 +534,7 @@ class TileConfig {
         ? Map<String, dynamic>.from(j['battery'] as Map)
         : null,
     lastAlarm: (j['lastAlarm'] as num?)?.toInt(),
+    feed: j['feed'] is String && (j['feed'] as String).isNotEmpty ? j['feed'] as String : null,
   );
 
   TileConfig copy() => TileConfig.fromJson(jsonDecode(jsonEncode(toJson())));

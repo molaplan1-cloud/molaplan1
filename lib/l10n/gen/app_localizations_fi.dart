@@ -1106,6 +1106,119 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sa6212aaeb4 => 'Sijainti';
 
   @override
+  String get s1af2f8cc38 =>
+      'Laattaa ei löytynyt tästä selaimesta. Kirjaudu sisään samalla tilillä, jolla laatta tehtiin.';
+
+  @override
+  String get sb9b069da26 => 'Avaa Molaplan';
+
+  @override
+  String get s6659f500d5 => 'Avaa koko Molaplan';
+
+  @override
+  String get sd9762f0556 => 'Kopioitu';
+
+  @override
+  String get s703e5ec00e => 'Linkki kopioitu';
+
+  @override
+  String get sd6f41faa1d => 'Kopioi';
+
+  @override
+  String get s3bfcb448ea => 'Avaa';
+
+  @override
+  String get s5794ae95b6 => 'Pikakomento ja kotinäyttö';
+
+  @override
+  String sd0ebbc7196(String p0) {
+    return 'Tee laatasta \"$p0\" linkki, oma kotinäytön kuvake tai iPhonen widget. Linkit ja skriptit eivät koskaan sisällä PIN-koodia tai salasanaa – komennot kysyvät vahvistuksen ja PIN-koodin joka kerta.';
+  }
+
+  @override
+  String get s0e8a27d980 => 'Linkit';
+
+  @override
+  String get sf032c99d57 => 'Avaa laatta';
+
+  @override
+  String get se0c5314ff7 => 'Avaa molaplan.comin suoraan tähän laattaan.';
+
+  @override
+  String get sfec7615e33 => 'Suorita komento';
+
+  @override
+  String get s793336a278 =>
+      'Avaa Molaplanin ja suorittaa laatan komennon vahvistuksen (ja tarvittaessa PIN-koodin) jälkeen.';
+
+  @override
+  String get s4ada3d547a => 'Oma kotinäytön kuvake';
+
+  @override
+  String get se5b7d50d32 => 'Sähkön hinta -näkymä (ei kirjautumista)';
+
+  @override
+  String get s0174ef9ba6 =>
+      'Hinta nyt ja tämän päivän ja huomisen pylväät kuten tabletilla. Toimii kenellä tahansa ilman tiliä: linkissä on vain hinta-alue, ALV, marginaali ja siirto.';
+
+  @override
+  String get s418e567059 => 'Laatta koko näytöllä';
+
+  @override
+  String get s854b37962a =>
+      'Pelkkä tämä laatta, päivittyy itsestään. Vaatii kirjautumisen samalla tilillä.';
+
+  @override
+  String get sb377843191 =>
+      'iPhone: avaa linkki Safarissa → Jaa → Lisää Koti-valikkoon. Android: Chrome → ⋮ → Lisää aloitusnäytölle. PC: Chrome tai Edge → Asenna sovellus. Kotivalikon sovelluksella on oma tallennustila: kirjaudu siinä kerran.';
+
+  @override
+  String get s8e05e68318 => 'iPhonen widget';
+
+  @override
+  String get s5da072d585 =>
+      'iPhonen widgetit vaativat sovelluksen. Molaplanilla ei ole App Store -sovellusta, joten widget tehdään ilmaisella Scriptable-sovelluksella: asenna Scriptable, paina +, liitä skripti ja nimeä se. Lisää kotinäytölle Scriptable-widget, paina sitä pitkään → Muokkaa widgetiä → Script: valitse skripti.';
+
+  @override
+  String get s37a2c08789 => 'Sähkön hinta -widget (Scriptable)';
+
+  @override
+  String get s6345f88fa0 =>
+      'Hakee hinnat suoraan Molaplanin hintapalvelusta – ei tarvitse tiliä eikä päällä olevaa laitetta.';
+
+  @override
+  String get s4de0571af7 => 'Tilasyöte widgetille';
+
+  @override
+  String get s8d62579a16 =>
+      'Molaplan julkaisee laatan tilan (teksti, väri) satunnaiseen, vain lukemiseen tarkoitettuun osoitteeseen. Syötettä päivittää laite, jossa laatta on näkyvissä (esim. seinätabletti). Kuka tahansa, jolla on osoite, näkee tilan, mutta ei voi ohjata mitään.';
+
+  @override
+  String get s694ea6d8d2 => 'Laatan widget (Scriptable)';
+
+  @override
+  String get sd6c9e55bce => 'Uusi osoite (vanha lakkaa toimimasta)';
+
+  @override
+  String get s32d2c87e84 => 'Pikakomennot ja Siri (iPhone)';
+
+  @override
+  String get sd3e8aa895f => 'Pikakomento: suorita komento';
+
+  @override
+  String get sa82dd6fac4 => 'Pikakomento: avaa laatta';
+
+  @override
+  String get s980a75a37b => 'Pikakomento: lue arvo ääneen';
+
+  @override
+  String get s5f8107014a => 'Mikä on natiivia, mikä kiertotie';
+
+  @override
+  String get sbf5c8473b2 =>
+      'Android: oikeat kotinäytön widgetit ja pikakuvakkeet Molaplan-sovelluksesta (Lisää aloitusnäytölle). iPhone: kotinäytön kuvake on verkkosovellus (Safari), widget toimii Scriptable-sovelluksen kautta ja Siri Pikakomentojen kautta. Komennot avaavat aina Molaplanin, joka kysyy vahvistuksen ja PIN-koodin.';
+
+  @override
   String get s463074e5cc => 'Vain sovelluksessa';
 
   @override
@@ -2383,6 +2496,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sbfe79d1f5f => 'Päivitetty';
 
   @override
+  String get s71f145905e => 'Pikakomento / jaa';
+
+  @override
   String get s46d0983ce8 => 'Lisää aloitusnäytölle';
 
   @override
@@ -2533,9 +2649,6 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s09feac6b28 =>
       'ESPHome ei voi vastaanottaa uusia koodeja verkon yli. Lisää tämä laitteen YAML-asetuksiin, asenna päivitys ESPHomesta ja tallenna sitten nappi:';
-
-  @override
-  String get sd6f41faa1d => 'Kopioi';
 
   @override
   String get s0a7c7a151a => 'Tallenna napiksi';
@@ -7307,6 +7420,76 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s1e02f457b4 => 'Toimii sovelluksessa tai kotisillan kautta';
 
   @override
+  String get s8f2ee89c28 => 'Ei tietoa';
+
+  @override
+  String get sa2029e688b =>
+      'Avaa Molaplan laitteella, jossa laatta on näkyvissä';
+
+  @override
+  String get sfdaa9523b0 => 'min vanha';
+
+  @override
+  String get s0c3b4eb370 => 'päivitetty';
+
+  @override
+  String get s34705bcd0b =>
+      'iPhonen widget Scriptable-sovellukseen (ilmainen, App Store). Ohje: molaplan.com → laatta → Pikakomento.';
+
+  @override
+  String get sae2303f670 => 'Ei sisällä PIN-koodeja eikä salasanoja.';
+
+  @override
+  String se0620d25d1(String p0) {
+    return 'Pikakomento: $p0';
+  }
+
+  @override
+  String get s04a78db719 => 'Avaa Pikakomennot-sovellus ja paina +.';
+
+  @override
+  String get s72698a5ad4 =>
+      'Lisää toiminto \"Avaa URL-osoitteet\" ja liitä osoite:';
+
+  @override
+  String s67f213ee2b(String p0) {
+    return 'Nimeä pikakomento laatan nimellä – silloin \"Hei Siri, $p0\" toimii.';
+  }
+
+  @override
+  String get sa19a41e8bc =>
+      'Jaa → Lisää Koti-valikkoon, niin saat oman kuvakkeen.';
+
+  @override
+  String get s5868f0efb3 =>
+      'Molaplan avautuu Safarissa ja kysyy joka kerta vahvistuksen ja tarvittaessa PIN-koodin. PIN-koodia ei tallenneta linkkiin. Kirjaudu molaplan.comiin Safarissa kerran.';
+
+  @override
+  String s6bb11e2974(String p0) {
+    return 'Pikakomento (avaa laatta): $p0';
+  }
+
+  @override
+  String s3457f68fe8(String p0) {
+    return 'Pikakomento (lue arvo): $p0';
+  }
+
+  @override
+  String get sf49ecc47f8 =>
+      'Lisää toiminto \"Hae URL-osoitteen sisältö\" osoitteella:';
+
+  @override
+  String get sbd6df96c54 =>
+      'Lisää \"Hae sanakirja syötteestä\" ja sitten \"Hae sanakirjan arvo\": message.';
+
+  @override
+  String get s7ef682753c =>
+      'Lisää uudelleen \"Hae sanakirja syötteestä\" ja \"Hae sanakirjan arvo\": value.';
+
+  @override
+  String get s0276650db2 => 'Lisää \"Puhu teksti\" tai \"Näytä tulos\".';
+
+  @override
   String s6c33f19716(String p0) {
     return 'ei vastaa ($p0 min)';
   }
@@ -10430,6 +10613,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sb25aad3bc2 => 'Lähden kotoa';
+
+  @override
+  String get s047879732e => 'Linkki poistettu käytöstä';
 
   @override
   String get s65320ede20 => 'Rauhallinen';

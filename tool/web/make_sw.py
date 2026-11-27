@@ -3,7 +3,7 @@ app files (a new deploy = new cache, the old one is removed on activate)."""
 import hashlib, json, os, sys
 
 out = sys.argv[1]
-core = ['/', '/main.dart.js', '/flutter.js', '/flutter_bootstrap.js', '/manifest.json', '/favicon.png',
+core = ['/', '/main.dart.js', '/flutter.js', '/flutter_bootstrap.js', '/manifest.json', '/favicon.png', '/tile_app.js',
         '/icons/Icon-192.png', '/icons/Icon-512.png']
 for root, _, files in os.walk(os.path.join(out, 'assets')):
     for f in files:

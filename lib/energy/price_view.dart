@@ -104,7 +104,9 @@ class PriceView {
       hi,
       avg,
       [for (final s in slots) s.cents <= q1 ? 0 : (s.cents <= q2 ? 1 : 2)],
-      dayIsComplete([for (final s in slots) s.start], now, 1, res * 60),
+      // Hourly bars from 15-min data are 60-min slots: count them as such, or tomorrow looks
+      // incomplete (24 of 96 expected) and stays hatched "julkaistaan n. klo 14" (t315u).
+      dayIsComplete([for (final s in slots) s.start], now, 1, (hourly && res < 60 ? 60 : res) * 60),
       res,
     );
   }

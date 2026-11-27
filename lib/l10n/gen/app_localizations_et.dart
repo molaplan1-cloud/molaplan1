@@ -1098,6 +1098,119 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sa6212aaeb4 => 'Asukoht';
 
   @override
+  String get s1af2f8cc38 =>
+      'Paani selles brauseris ei leitud. Logi sisse kontoga, millega paan loodi.';
+
+  @override
+  String get sb9b069da26 => 'Ava Molaplan';
+
+  @override
+  String get s6659f500d5 => 'Ava kogu Molaplan';
+
+  @override
+  String get sd9762f0556 => 'Kopeeritud';
+
+  @override
+  String get s703e5ec00e => 'Link kopeeritud';
+
+  @override
+  String get sd6f41faa1d => 'Kopeeri';
+
+  @override
+  String get s3bfcb448ea => 'Ava link';
+
+  @override
+  String get s5794ae95b6 => 'Otsetee ja avakuva';
+
+  @override
+  String sd0ebbc7196(String p0) {
+    return 'Tee paanist \"$p0\" link, oma avakuva ikoon või iPhone\'i vidin. Lingid ja skriptid ei sisalda kunagi PIN-koodi ega parooli – käsud küsivad iga kord kinnitust ja PIN-koodi.';
+  }
+
+  @override
+  String get s0e8a27d980 => 'Lingid';
+
+  @override
+  String get sf032c99d57 => 'Ava paan';
+
+  @override
+  String get se0c5314ff7 => 'Avab molaplan.com otse selle paani peal.';
+
+  @override
+  String get sfec7615e33 => 'Käivita käsk';
+
+  @override
+  String get s793336a278 =>
+      'Avab Molaplani ja käivitab paani käsu pärast kinnitust (ja vajadusel PIN-koodi).';
+
+  @override
+  String get s4ada3d547a => 'Oma ikoon avakuval';
+
+  @override
+  String get se5b7d50d32 => 'Elektrihinna vaade (sisselogimiseta)';
+
+  @override
+  String get s0174ef9ba6 =>
+      'Hind praegu ning tänase ja homse tulbad nagu tahvelarvutis. Töötab igaühele ilma kontota: lingis on ainult hinnapiirkond, käibemaks, marginaal ja võrgutasu.';
+
+  @override
+  String get s418e567059 => 'Paan täisekraanil';
+
+  @override
+  String get s854b37962a =>
+      'Ainult see paan, uueneb ise. Vajab sisselogimist sama kontoga.';
+
+  @override
+  String get sb377843191 =>
+      'iPhone: ava link Safaris → Jaga → Lisa avakuvale. Android: Chrome → ⋮ → Lisa avakuvale. Arvuti: Chrome või Edge → Installi rakendus. Avakuva rakendusel on oma salvestusruum: logi seal üks kord sisse.';
+
+  @override
+  String get s8e05e68318 => 'iPhone\'i vidin';
+
+  @override
+  String get s5da072d585 =>
+      'iPhone\'i vidinad vajavad rakendust. Molaplanil pole App Store\'i rakendust, seega kasutab vidin tasuta rakendust Scriptable: installi Scriptable, vajuta +, kleebi skript ja anna sellele nimi. Lisa avakuvale Scriptable\'i vidin, vajuta sellel pikalt → Muuda vidinat → Script: vali skript.';
+
+  @override
+  String get s37a2c08789 => 'Elektrihinna vidin (Scriptable)';
+
+  @override
+  String get s6345f88fa0 =>
+      'Võtab hinnad otse Molaplani hinnateenusest – kontot ega sisselülitatud seadet pole vaja.';
+
+  @override
+  String get s4de0571af7 => 'Olekuvoog vidinale';
+
+  @override
+  String get s8d62579a16 =>
+      'Molaplan avaldab paani oleku (tekst, värv) juhuslikul, ainult lugemiseks mõeldud aadressil. Voogu uuendab seade, kus paan on nähtaval (nt seinatahvel). Igaüks, kellel on aadress, näeb olekut, kuid ei saa midagi juhtida.';
+
+  @override
+  String get s694ea6d8d2 => 'Paani vidin (Scriptable)';
+
+  @override
+  String get sd6c9e55bce => 'Uus aadress (vana lakkab töötamast)';
+
+  @override
+  String get s32d2c87e84 => 'Shortcuts ja Siri (iPhone)';
+
+  @override
+  String get sd3e8aa895f => 'Otsetee: käivita käsk';
+
+  @override
+  String get sa82dd6fac4 => 'Otsetee: ava paan';
+
+  @override
+  String get s980a75a37b => 'Otsetee: loe väärtus ette';
+
+  @override
+  String get s5f8107014a => 'Mis on omane, mis on ümbernurga lahendus';
+
+  @override
+  String get sbf5c8473b2 =>
+      'Android: päris avakuva vidinad ja otseteed Molaplani rakendusest (Lisa avakuvale). iPhone: avakuva ikoon on veebirakendus (Safari), vidin töötab rakenduse Scriptable kaudu ja Siri rakenduse Shortcuts kaudu. Käsud avavad alati Molaplani, mis küsib kinnitust ja PIN-koodi.';
+
+  @override
   String get s463074e5cc => 'Ainult rakendus';
 
   @override
@@ -2369,6 +2482,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sbfe79d1f5f => 'Uuendatud';
 
   @override
+  String get s71f145905e => 'Otsetee / jaga';
+
+  @override
   String get s46d0983ce8 => 'Lisa avaekraanile';
 
   @override
@@ -2519,9 +2635,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s09feac6b28 =>
       'ESPHome ei saa võtta uusi koode üle võrgu. Lisa see seadmesse YAML, paigalda see ja salvesta nupp:';
-
-  @override
-  String get sd6f41faa1d => 'Kopeeri';
 
   @override
   String get s0a7c7a151a => 'Salvesta nupuna';
@@ -7277,6 +7390,72 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s1e02f457b4 => 'Töötab rakenduses või kodusilla kaudu';
 
   @override
+  String get s8f2ee89c28 => 'Andmed puuduvad';
+
+  @override
+  String get sa2029e688b => 'Ava Molaplan seadmes, kus paan on nähtaval';
+
+  @override
+  String get sfdaa9523b0 => 'min vana';
+
+  @override
+  String get s0c3b4eb370 => 'uuendatud';
+
+  @override
+  String get s34705bcd0b =>
+      'iPhone\'i vidin rakendusele Scriptable (tasuta, App Store). Abi: molaplan.com → paan → Otsetee.';
+
+  @override
+  String get sae2303f670 => 'Ei sisalda PIN-koode ega paroole.';
+
+  @override
+  String se0620d25d1(String p0) {
+    return 'Otsetee: $p0';
+  }
+
+  @override
+  String get s04a78db719 => 'Ava rakendus Shortcuts ja vajuta +.';
+
+  @override
+  String get s72698a5ad4 => 'Lisa toiming \"Open URLs\" ja kleebi aadress:';
+
+  @override
+  String s67f213ee2b(String p0) {
+    return 'Anna otseteele paani nimi – siis töötab \"Hey Siri, $p0\".';
+  }
+
+  @override
+  String get sa19a41e8bc => 'Jaga → Lisa avakuvale annab sellele oma ikooni.';
+
+  @override
+  String get s5868f0efb3 =>
+      'Molaplan avaneb Safaris ja küsib iga kord kinnitust ning vajadusel PIN-koodi. PIN-koodi ei salvestata kunagi linki. Logi Safaris molaplan.com-i üks kord sisse.';
+
+  @override
+  String s6bb11e2974(String p0) {
+    return 'Otsetee (ava paan): $p0';
+  }
+
+  @override
+  String s3457f68fe8(String p0) {
+    return 'Otsetee (loe väärtus): $p0';
+  }
+
+  @override
+  String get sf49ecc47f8 => 'Lisa toiming \"Get Contents of URL\" aadressiga:';
+
+  @override
+  String get sbd6df96c54 =>
+      'Lisa \"Get Dictionary from Input\" ja seejärel \"Get Dictionary Value\": message.';
+
+  @override
+  String get s7ef682753c =>
+      'Lisa uuesti \"Get Dictionary from Input\" ja \"Get Dictionary Value\": value.';
+
+  @override
+  String get s0276650db2 => 'Lisa \"Speak Text\" või \"Show Result\".';
+
+  @override
   String s6c33f19716(String p0) {
     return 'ei vasta ($p0 min)';
   }
@@ -10360,6 +10539,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sb25aad3bc2 => 'Lahkun kodust';
+
+  @override
+  String get s047879732e => 'Link on tühistatud';
 
   @override
   String get s65320ede20 => 'Rahulik';

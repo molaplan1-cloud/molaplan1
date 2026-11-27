@@ -1701,6 +1701,181 @@
   "description": "fi: Sijainti",
   "x-where": "ui/energy_pages.dart:598"
  },
+ "s1af2f8cc38": "Tile not found in this browser. Sign in with the account the tile was made with.",
+ "@s1af2f8cc38": {
+  "description": "fi: Laattaa ei löytynyt tästä selaimesta. Kirjaudu sisään samalla tilillä, jolla laatta tehtiin.",
+  "x-where": "ui/tile_view_page.dart:66"
+ },
+ "sb9b069da26": "Open Molaplan",
+ "@sb9b069da26": {
+  "description": "fi: Avaa Molaplan",
+  "x-where": "ui/tile_view_page.dart:74"
+ },
+ "s6659f500d5": "Open full Molaplan",
+ "@s6659f500d5": {
+  "description": "fi: Avaa koko Molaplan",
+  "x-where": "ui/tile_view_page.dart:100"
+ },
+ "sd9762f0556": "Copied",
+ "@sd9762f0556": {
+  "description": "fi: Kopioitu",
+  "x-where": "ui/tile_shortcuts_page.dart:31"
+ },
+ "s703e5ec00e": "Link copied",
+ "@s703e5ec00e": {
+  "description": "fi: Linkki kopioitu",
+  "x-where": "ui/tile_shortcuts_page.dart:64"
+ },
+ "sd6f41faa1d": "Copy",
+ "@sd6f41faa1d": {
+  "description": "fi: Kopioi",
+  "x-where": "ui/tile_shortcuts_page.dart:66"
+ },
+ "s3bfcb448ea": "Open link",
+ "@s3bfcb448ea": {
+  "description": "fi: Avaa",
+  "x-where": "ui/tile_shortcuts_page.dart:72"
+ },
+ "s5794ae95b6": "Shortcut and home screen",
+ "@s5794ae95b6": {
+  "description": "fi: Pikakomento ja kotinäyttö",
+  "x-where": "ui/tile_shortcuts_page.dart:135"
+ },
+ "sd0ebbc7196": "Turn the tile \"{p0}\" into a link, its own home-screen icon or an iPhone widget. Links and scripts never contain a PIN or password – commands ask for confirmation and the PIN every time.",
+ "@sd0ebbc7196": {
+  "description": "fi: Tee laatasta \"{p0}\" linkki, oma kotinäytön kuvake tai iPhonen widget. Linkit ja skriptit eivät koskaan sisällä PIN-koodi",
+  "x-where": "ui/tile_shortcuts_page.dart:140",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s0e8a27d980": "Links",
+ "@s0e8a27d980": {
+  "description": "fi: Linkit",
+  "x-where": "ui/tile_shortcuts_page.dart:146"
+ },
+ "sf032c99d57": "Open the tile",
+ "@sf032c99d57": {
+  "description": "fi: Avaa laatta",
+  "x-where": "ui/tile_shortcuts_page.dart:149"
+ },
+ "se0c5314ff7": "Opens molaplan.com directly on this tile.",
+ "@se0c5314ff7": {
+  "description": "fi: Avaa molaplan.comin suoraan tähän laattaan.",
+  "x-where": "ui/tile_shortcuts_page.dart:151"
+ },
+ "sfec7615e33": "Run the command",
+ "@sfec7615e33": {
+  "description": "fi: Suorita komento",
+  "x-where": "ui/tile_shortcuts_page.dart:156"
+ },
+ "s793336a278": "Opens Molaplan and runs the tile''s command after confirmation (and the PIN, if needed).",
+ "@s793336a278": {
+  "description": "fi: Avaa Molaplanin ja suorittaa laatan komennon vahvistuksen (ja tarvittaessa PIN-koodin) jälkeen.",
+  "x-where": "ui/tile_shortcuts_page.dart:158"
+ },
+ "s4ada3d547a": "Own home-screen icon",
+ "@s4ada3d547a": {
+  "description": "fi: Oma kotinäytön kuvake",
+  "x-where": "ui/tile_shortcuts_page.dart:164"
+ },
+ "se5b7d50d32": "Electricity price view (no sign-in)",
+ "@se5b7d50d32": {
+  "description": "fi: Sähkön hinta -näkymä (ei kirjautumista)",
+  "x-where": "ui/tile_shortcuts_page.dart:168"
+ },
+ "s0174ef9ba6": "The price now and today''s and tomorrow''s bars, as on the tablet. Works for anyone without an account: the link holds only the price area, VAT, margin and transfer.",
+ "@s0174ef9ba6": {
+  "description": "fi: Hinta nyt ja tämän päivän ja huomisen pylväät kuten tabletilla. Toimii kenellä tahansa ilman tiliä: linkissä on vain hin",
+  "x-where": "ui/tile_shortcuts_page.dart:170"
+ },
+ "s418e567059": "Tile full screen",
+ "@s418e567059": {
+  "description": "fi: Laatta koko näytöllä",
+  "x-where": "ui/tile_shortcuts_page.dart:178"
+ },
+ "s854b37962a": "Only this tile, updates by itself. Needs sign-in with the same account.",
+ "@s854b37962a": {
+  "description": "fi: Pelkkä tämä laatta, päivittyy itsestään. Vaatii kirjautumisen samalla tilillä.",
+  "x-where": "ui/tile_shortcuts_page.dart:180"
+ },
+ "sb377843191": "iPhone: open the link in Safari → Share → Add to Home Screen. Android: Chrome → ⋮ → Add to home screen. PC: Chrome or Edge → Install app. A home-screen app has its own storage: sign in there once.",
+ "@sb377843191": {
+  "description": "fi: iPhone: avaa linkki Safarissa → Jaa → Lisää Koti-valikkoon. Android: Chrome → ⋮ → Lisää aloitusnäytölle. PC: Chrome tai ",
+  "x-where": "ui/tile_shortcuts_page.dart:187"
+ },
+ "s8e05e68318": "iPhone widget",
+ "@s8e05e68318": {
+  "description": "fi: iPhonen widget",
+  "x-where": "ui/tile_shortcuts_page.dart:193"
+ },
+ "s5da072d585": "iPhone widgets need an app. Molaplan has no App Store app, so the widget uses the free Scriptable app: install Scriptable, tap +, paste the script and name it. Add a Scriptable widget to the home screen, long-press it → Edit Widget → Script: pick the script.",
+ "@s5da072d585": {
+  "description": "fi: iPhonen widgetit vaativat sovelluksen. Molaplanilla ei ole App Store -sovellusta, joten widget tehdään ilmaisella Script",
+  "x-where": "ui/tile_shortcuts_page.dart:195"
+ },
+ "s37a2c08789": "Electricity price widget (Scriptable)",
+ "@s37a2c08789": {
+  "description": "fi: Sähkön hinta -widget (Scriptable)",
+  "x-where": "ui/tile_shortcuts_page.dart:204"
+ },
+ "s6345f88fa0": "Fetches prices straight from Molaplan''s price service – no account or device left on needed.",
+ "@s6345f88fa0": {
+  "description": "fi: Hakee hinnat suoraan Molaplanin hintapalvelusta – ei tarvitse tiliä eikä päällä olevaa laitetta.",
+  "x-where": "ui/tile_shortcuts_page.dart:206"
+ },
+ "s4de0571af7": "Status feed for the widget",
+ "@s4de0571af7": {
+  "description": "fi: Tilasyöte widgetille",
+  "x-where": "ui/tile_shortcuts_page.dart:216"
+ },
+ "s8d62579a16": "Molaplan publishes the tile''s state (text, colour) to a random, read-only address. The feed is updated by a device where the tile is shown (e.g. a wall tablet). Anyone with the address can see the state but cannot control anything.",
+ "@s8d62579a16": {
+  "description": "fi: Molaplan julkaisee laatan tilan (teksti, väri) satunnaiseen, vain lukemiseen tarkoitettuun osoitteeseen. Syötettä päivit",
+  "x-where": "ui/tile_shortcuts_page.dart:218"
+ },
+ "s694ea6d8d2": "Tile widget (Scriptable)",
+ "@s694ea6d8d2": {
+  "description": "fi: Laatan widget (Scriptable)",
+  "x-where": "ui/tile_shortcuts_page.dart:229"
+ },
+ "sd6c9e55bce": "New address (the old one stops working)",
+ "@sd6c9e55bce": {
+  "description": "fi: Uusi osoite (vanha lakkaa toimimasta)",
+  "x-where": "ui/tile_shortcuts_page.dart:238"
+ },
+ "s32d2c87e84": "Shortcuts and Siri (iPhone)",
+ "@s32d2c87e84": {
+  "description": "fi: Pikakomennot ja Siri (iPhone)",
+  "x-where": "ui/tile_shortcuts_page.dart:242"
+ },
+ "sd3e8aa895f": "Shortcut: run the command",
+ "@sd3e8aa895f": {
+  "description": "fi: Pikakomento: suorita komento",
+  "x-where": "ui/tile_shortcuts_page.dart:246"
+ },
+ "sa82dd6fac4": "Shortcut: open the tile",
+ "@sa82dd6fac4": {
+  "description": "fi: Pikakomento: avaa laatta",
+  "x-where": "ui/tile_shortcuts_page.dart:251"
+ },
+ "s980a75a37b": "Shortcut: read the value aloud",
+ "@s980a75a37b": {
+  "description": "fi: Pikakomento: lue arvo ääneen",
+  "x-where": "ui/tile_shortcuts_page.dart:257"
+ },
+ "s5f8107014a": "What is native, what is a workaround",
+ "@s5f8107014a": {
+  "description": "fi: Mikä on natiivia, mikä kiertotie",
+  "x-where": "ui/tile_shortcuts_page.dart:260"
+ },
+ "sbf5c8473b2": "Android: real home-screen widgets and shortcuts from the Molaplan app (Add to home screen). iPhone: the home-screen icon is a web app (Safari), the widget runs through the Scriptable app and Siri through Shortcuts. Commands always open Molaplan, which asks for confirmation and the PIN.",
+ "@sbf5c8473b2": {
+  "description": "fi: Android: oikeat kotinäytön widgetit ja pikakuvakkeet Molaplan-sovelluksesta (Lisää aloitusnäytölle). iPhone: kotinäytön ",
+  "x-where": "ui/tile_shortcuts_page.dart:262"
+ },
  "s463074e5cc": "App only",
  "@s463074e5cc": {
   "description": "fi: Vain sovelluksessa",
@@ -3609,12 +3784,12 @@
  "s12c2f8e6e4": "Home network only",
  "@s12c2f8e6e4": {
   "description": "fi: Vain kotiverkossa",
-  "x-where": "ui/tile_widget.dart:97"
+  "x-where": "ui/tile_widget.dart:98"
  },
  "s5f7c464e6d": "at {p0}",
  "@s5f7c464e6d": {
   "description": "fi: klo {p0}",
-  "x-where": "ui/tile_widget.dart:132",
+  "x-where": "ui/tile_widget.dart:133",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -3624,7 +3799,7 @@
  "s21b64ae0a7": "{p0} only works on the home network. The tile returns to normal by itself when you are home again.",
  "@s21b64ae0a7": {
   "description": "fi: {p0} toimii vain kotiverkossa. Ruutu palaa normaaliksi itsestään, kun olet taas kotona.",
-  "x-where": "ui/tile_widget.dart:180",
+  "x-where": "ui/tile_widget.dart:181",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -3634,82 +3809,82 @@
  "s6b1a8249de": "Last state",
  "@s6b1a8249de": {
   "description": "fi: Viimeisin tila",
-  "x-where": "ui/tile_widget.dart:190"
+  "x-where": "ui/tile_widget.dart:191"
  },
  "s56650a18d5": "Make it work remotely ›",
  "@s56650a18d5": {
   "description": "fi: Tee etäkäyttöiseksi ›",
-  "x-where": "ui/tile_widget.dart:208"
+  "x-where": "ui/tile_widget.dart:209"
  },
  "sa0d8c62e5a": "No command configured",
  "@sa0d8c62e5a": {
   "description": "fi: Komentoa ei ole määritetty",
-  "x-where": "ui/tile_widget.dart:357"
+  "x-where": "ui/tile_widget.dart:358"
  },
  "s1e5d696a26": "Run this command?",
  "@s1e5d696a26": {
   "description": "fi: Suoritetaanko komento?",
-  "x-where": "ui/tile_widget.dart:365"
+  "x-where": "ui/tile_widget.dart:366"
  },
  "sa5ee6618a3": "change PIN",
  "@sa5ee6618a3": {
   "description": "fi: vaihda PIN-koodi",
-  "x-where": "ui/tile_widget.dart:407"
+  "x-where": "ui/tile_widget.dart:408"
  },
  "s66f8ce67ed": "enter PIN",
  "@s66f8ce67ed": {
   "description": "fi: syötä PIN-koodi",
-  "x-where": "ui/tile_widget.dart:408"
+  "x-where": "ui/tile_widget.dart:409"
  },
  "sb7b0c97cfa": "The device needs its PIN for every command and status request. Enter it once here.",
  "@sb7b0c97cfa": {
   "description": "fi: Laite tarvitsee PIN-koodin jokaiseen komentoon ja tilakyselyyn. Syötä se kerran tässä.",
-  "x-where": "ui/tile_widget.dart:416"
+  "x-where": "ui/tile_widget.dart:417"
  },
  "s1df6e2eaa7": "PIN",
  "@s1df6e2eaa7": {
   "description": "fi: PIN",
-  "x-where": "ui/tile_widget.dart:430"
+  "x-where": "ui/tile_widget.dart:431"
  },
  "sb52d5c0b5b": "The browser never stores the PIN. It is asked again the next time you open the page.",
  "@sb52d5c0b5b": {
   "description": "fi: Selaimessa PIN-koodia ei tallenneta. Se kysytään uudelleen, kun avaat sivun seuraavan kerran.",
-  "x-where": "ui/tile_widget.dart:438"
+  "x-where": "ui/tile_widget.dart:439"
  },
  "secab66c046": "Remember on this device",
  "@secab66c046": {
   "description": "fi: Muista tällä laitteella",
-  "x-where": "ui/tile_widget.dart:451"
+  "x-where": "ui/tile_widget.dart:452"
  },
  "s2a15ea2eab": "Stored encrypted on this device only – not in the account or on other devices. Off = asked again when the app restarts.",
  "@s2a15ea2eab": {
   "description": "fi: Tallennetaan salattuna vain tähän laitteeseen – ei tilille eikä muille laitteille. Pois päältä = kysytään taas, kun sove",
-  "x-where": "ui/tile_widget.dart:453"
+  "x-where": "ui/tile_widget.dart:454"
  },
  "sdfc012fb4e": "PIN code",
  "@sdfc012fb4e": {
   "description": "fi: PIN-koodi",
-  "x-where": "ui/tile_widget.dart:509"
+  "x-where": "ui/tile_widget.dart:510"
  },
  "s10bf4eab8e": "Stored encrypted on this device only. By default the PIN is not stored.",
  "@s10bf4eab8e": {
   "description": "fi: Tallennetaan suojattuna vain tähän laitteeseen. Oletuksena PIN-koodia ei tallenneta.",
-  "x-where": "ui/tile_widget.dart:533"
+  "x-where": "ui/tile_widget.dart:534"
  },
  "s912ea5d2ec": "Send",
  "@s912ea5d2ec": {
   "description": "fi: Lähetä",
-  "x-where": "ui/tile_widget.dart:548"
+  "x-where": "ui/tile_widget.dart:549"
  },
  "s856418521a": "No commands configured",
  "@s856418521a": {
   "description": "fi: Komentoja ei ole määritetty",
-  "x-where": "ui/tile_widget.dart:563"
+  "x-where": "ui/tile_widget.dart:564"
  },
  "sb0ba67e677": "Ran at {p0}",
  "@sb0ba67e677": {
   "description": "fi: Ajettu klo {p0}",
-  "x-where": "ui/tile_widget.dart:599",
+  "x-where": "ui/tile_widget.dart:600",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -3719,7 +3894,7 @@
  "sdfa66ee201": "{p0}: sent",
  "@sdfa66ee201": {
   "description": "fi: {p0}: lähetetty",
-  "x-where": "ui/tile_widget.dart:609",
+  "x-where": "ui/tile_widget.dart:610",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -3729,72 +3904,77 @@
  "s12fc3810a5": "Sent – waiting for the reply…",
  "@s12fc3810a5": {
   "description": "fi: Lähetetty – odotetaan vastausta…",
-  "x-where": "ui/tile_widget.dart:657"
+  "x-where": "ui/tile_widget.dart:658"
  },
  "sd1c7d49360": "Reply at",
  "@sd1c7d49360": {
   "description": "fi: Vastaus klo",
-  "x-where": "ui/tile_widget.dart:674"
+  "x-where": "ui/tile_widget.dart:675"
  },
  "s29fae6a0e8": "Price control on",
  "@s29fae6a0e8": {
   "description": "fi: Hintaohjaus käytössä",
-  "x-where": "ui/tile_widget.dart:711"
+  "x-where": "ui/tile_widget.dart:712"
  },
  "sbfe79d1f5f": "Updated",
  "@sbfe79d1f5f": {
   "description": "fi: Päivitetty",
-  "x-where": "ui/tile_widget.dart:713"
+  "x-where": "ui/tile_widget.dart:714"
+ },
+ "s71f145905e": "Shortcut / share",
+ "@s71f145905e": {
+  "description": "fi: Pikakomento / jaa",
+  "x-where": "ui/tile_widget.dart:733"
  },
  "s46d0983ce8": "Add to home screen",
  "@s46d0983ce8": {
   "description": "fi: Lisää aloitusnäytölle",
-  "x-where": "ui/tile_widget.dart:732"
+  "x-where": "ui/tile_widget.dart:742"
  },
  "s59d55f8882": "Rename",
  "@s59d55f8882": {
   "description": "fi: Nimeä uudelleen",
-  "x-where": "ui/tile_widget.dart:739"
+  "x-where": "ui/tile_widget.dart:749"
  },
  "s84ada1ae69": "Change PIN",
  "@s84ada1ae69": {
   "description": "fi: Vaihda PIN",
-  "x-where": "ui/tile_widget.dart:751"
+  "x-where": "ui/tile_widget.dart:761"
  },
  "s25580038cb": "Saved PIN removed",
  "@s25580038cb": {
   "description": "fi: Tallennettu PIN poistettu",
-  "x-where": "ui/tile_widget.dart:759"
+  "x-where": "ui/tile_widget.dart:769"
  },
  "sf50c488b24": "Forget saved PIN",
  "@sf50c488b24": {
   "description": "fi: Unohda tallennettu PIN",
-  "x-where": "ui/tile_widget.dart:761"
+  "x-where": "ui/tile_widget.dart:771"
  },
  "safe0429a90": "Price control",
  "@safe0429a90": {
   "description": "fi: Hintaohjaus",
-  "x-where": "ui/tile_widget.dart:770"
+  "x-where": "ui/tile_widget.dart:780"
  },
  "sf3d644dd4c": "Learn a remote button",
  "@sf3d644dd4c": {
   "description": "fi: Opettele kaukosäätimen nappi",
-  "x-where": "ui/tile_widget.dart:779"
+  "x-where": "ui/tile_widget.dart:789"
  },
  "sfb1a18d11f": "Refresh",
  "@sfb1a18d11f": {
   "description": "fi: Päivitä",
-  "x-where": "ui/tile_widget.dart:786"
+  "x-where": "ui/tile_widget.dart:796"
  },
  "sbb9e9b1229": "Enter PIN",
  "@sbb9e9b1229": {
   "description": "fi: Syötä PIN",
-  "x-where": "ui/tile_widget.dart:1070"
+  "x-where": "ui/tile_widget.dart:1080"
  },
  "se38a9bb2ed": "Last",
  "@se38a9bb2ed": {
   "description": "fi: Viimeksi",
-  "x-where": "ui/tile_widget.dart:1235"
+  "x-where": "ui/tile_widget.dart:1245"
  },
  "sf1ed8904bb": "Choose the register list (CSV)",
  "@sf1ed8904bb": {
@@ -3993,11 +4173,6 @@
  "@s09feac6b28": {
   "description": "fi: ESPHome ei voi vastaanottaa uusia koodeja verkon yli. Lisää tämä laitteen YAML-asetuksiin, asenna päivitys ESPHomesta ja",
   "x-where": "ui/heatpump_pages.dart:255"
- },
- "sd6f41faa1d": "Copy",
- "@sd6f41faa1d": {
-  "description": "fi: Kopioi",
-  "x-where": "ui/heatpump_pages.dart:273"
  },
  "s0a7c7a151a": "Save as button",
  "@s0a7c7a151a": {
@@ -11785,6 +11960,116 @@
   "description": "fi: Toimii sovelluksessa tai kotisillan kautta",
   "x-where": "core/http_client.dart:21"
  },
+ "s8f2ee89c28": "No data",
+ "@s8f2ee89c28": {
+  "description": "fi: Ei tietoa",
+  "x-where": "sharing/tile_links.dart:234"
+ },
+ "sa2029e688b": "Open Molaplan on a device where the tile is shown",
+ "@sa2029e688b": {
+  "description": "fi: Avaa Molaplan laitteella, jossa laatta on näkyvissä",
+  "x-where": "sharing/tile_links.dart:236"
+ },
+ "sfdaa9523b0": "min old",
+ "@sfdaa9523b0": {
+  "description": "fi: min vanha",
+  "x-where": "sharing/tile_links.dart:241"
+ },
+ "s0c3b4eb370": "updated",
+ "@s0c3b4eb370": {
+  "description": "fi: päivitetty",
+  "x-where": "sharing/tile_links.dart:242"
+ },
+ "s34705bcd0b": "iPhone widget for the Scriptable app (free, App Store). Help: molaplan.com → tile → Shortcut.",
+ "@s34705bcd0b": {
+  "description": "fi: iPhonen widget Scriptable-sovellukseen (ilmainen, App Store). Ohje: molaplan.com → laatta → Pikakomento.",
+  "x-where": "sharing/tile_links.dart:249"
+ },
+ "sae2303f670": "Contains no PINs or passwords.",
+ "@sae2303f670": {
+  "description": "fi: Ei sisällä PIN-koodeja eikä salasanoja.",
+  "x-where": "sharing/tile_links.dart:250"
+ },
+ "se0620d25d1": "Shortcut: {p0}",
+ "@se0620d25d1": {
+  "description": "fi: Pikakomento: {p0}",
+  "x-where": "sharing/tile_links.dart:431",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s04a78db719": "Open the Shortcuts app and tap +.",
+ "@s04a78db719": {
+  "description": "fi: Avaa Pikakomennot-sovellus ja paina +.",
+  "x-where": "sharing/tile_links.dart:432"
+ },
+ "s72698a5ad4": "Add the action \"Open URLs\" and paste the address:",
+ "@s72698a5ad4": {
+  "description": "fi: Lisää toiminto \"Avaa URL-osoitteet\" ja liitä osoite:",
+  "x-where": "sharing/tile_links.dart:433"
+ },
+ "s67f213ee2b": "Name the shortcut after the tile – then \"Hey Siri, {p0}\" works.",
+ "@s67f213ee2b": {
+  "description": "fi: Nimeä pikakomento laatan nimellä – silloin \"Hei Siri, {p0}\" toimii.",
+  "x-where": "sharing/tile_links.dart:435",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "sa19a41e8bc": "Share → Add to Home Screen gives it its own icon.",
+ "@sa19a41e8bc": {
+  "description": "fi: Jaa → Lisää Koti-valikkoon, niin saat oman kuvakkeen.",
+  "x-where": "sharing/tile_links.dart:436"
+ },
+ "s5868f0efb3": "Molaplan opens in Safari and asks for confirmation and, if needed, the PIN every time. The PIN is never stored in the link. Sign in to molaplan.com in Safari once.",
+ "@s5868f0efb3": {
+  "description": "fi: Molaplan avautuu Safarissa ja kysyy joka kerta vahvistuksen ja tarvittaessa PIN-koodin. PIN-koodia ei tallenneta linkkii",
+  "x-where": "sharing/tile_links.dart:437"
+ },
+ "s6bb11e2974": "Shortcut (open the tile): {p0}",
+ "@s6bb11e2974": {
+  "description": "fi: Pikakomento (avaa laatta): {p0}",
+  "x-where": "sharing/tile_links.dart:447",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s3457f68fe8": "Shortcut (read the value): {p0}",
+ "@s3457f68fe8": {
+  "description": "fi: Pikakomento (lue arvo): {p0}",
+  "x-where": "sharing/tile_links.dart:456",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "sf49ecc47f8": "Add the action \"Get Contents of URL\" with the address:",
+ "@sf49ecc47f8": {
+  "description": "fi: Lisää toiminto \"Hae URL-osoitteen sisältö\" osoitteella:",
+  "x-where": "sharing/tile_links.dart:457"
+ },
+ "sbd6df96c54": "Add \"Get Dictionary from Input\", then \"Get Dictionary Value\": message.",
+ "@sbd6df96c54": {
+  "description": "fi: Lisää \"Hae sanakirja syötteestä\" ja sitten \"Hae sanakirjan arvo\": message.",
+  "x-where": "sharing/tile_links.dart:459"
+ },
+ "s7ef682753c": "Add \"Get Dictionary from Input\" again and \"Get Dictionary Value\": value.",
+ "@s7ef682753c": {
+  "description": "fi: Lisää uudelleen \"Hae sanakirja syötteestä\" ja \"Hae sanakirjan arvo\": value.",
+  "x-where": "sharing/tile_links.dart:460"
+ },
+ "s0276650db2": "Add \"Speak Text\" or \"Show Result\".",
+ "@s0276650db2": {
+  "description": "fi: Lisää \"Puhu teksti\" tai \"Näytä tulos\".",
+  "x-where": "sharing/tile_links.dart:461"
+ },
  "s6c33f19716": "not answering ({p0} min)",
  "@s6c33f19716": {
   "description": "fi: ei vastaa ({p0} min)",
@@ -16629,7 +16914,7 @@
  "sb9964cfb3b": "Power {p0}",
  "@sb9964cfb3b": {
   "description": "fi: Teho {p0}",
-  "x-where": "state/app_state.dart:1319",
+  "x-where": "state/app_state.dart:1328",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -16639,7 +16924,7 @@
  "s08d04d58a9": "Channel {p0}",
  "@s08d04d58a9": {
   "description": "fi: Kanava {p0}",
-  "x-where": "state/app_state.dart:1320",
+  "x-where": "state/app_state.dart:1329",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -16695,6 +16980,11 @@
  "@sb25aad3bc2": {
   "description": "fi: Lähden kotoa",
   "x-where": "state/examples.dart:85"
+ },
+ "s047879732e": "Link revoked",
+ "@s047879732e": {
+  "description": "fi: Linkki poistettu käytöstä",
+  "x-where": "state/tile_feed.dart:68"
  },
  "s65320ede20": "Calm",
  "@s65320ede20": {

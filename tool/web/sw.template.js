@@ -8,7 +8,7 @@ const FONTS = 'molaplan-fonts-v1';
 const PRECACHE = __PRECACHE__;
 const APP_PREFIXES = ['/assets/', '/canvaskit/', '/icons/'];
 const APP_FILES = new Set(['/', '/index.html', '/main.dart.js', '/flutter.js', '/flutter_bootstrap.js',
-  '/manifest.json', '/favicon.png', '/version.json']);
+  '/manifest.json', '/favicon.png', '/version.json', '/tile_app.js']);
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((c) => c.addAll(PRECACHE.map((u) => new Request(u, { cache: 'reload' })))).then(() => self.skipWaiting()));

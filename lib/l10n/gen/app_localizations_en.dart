@@ -1100,6 +1100,119 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sa6212aaeb4 => 'Location';
 
   @override
+  String get s1af2f8cc38 =>
+      'Tile not found in this browser. Sign in with the account the tile was made with.';
+
+  @override
+  String get sb9b069da26 => 'Open Molaplan';
+
+  @override
+  String get s6659f500d5 => 'Open full Molaplan';
+
+  @override
+  String get sd9762f0556 => 'Copied';
+
+  @override
+  String get s703e5ec00e => 'Link copied';
+
+  @override
+  String get sd6f41faa1d => 'Copy';
+
+  @override
+  String get s3bfcb448ea => 'Open link';
+
+  @override
+  String get s5794ae95b6 => 'Shortcut and home screen';
+
+  @override
+  String sd0ebbc7196(String p0) {
+    return 'Turn the tile \"$p0\" into a link, its own home-screen icon or an iPhone widget. Links and scripts never contain a PIN or password – commands ask for confirmation and the PIN every time.';
+  }
+
+  @override
+  String get s0e8a27d980 => 'Links';
+
+  @override
+  String get sf032c99d57 => 'Open the tile';
+
+  @override
+  String get se0c5314ff7 => 'Opens molaplan.com directly on this tile.';
+
+  @override
+  String get sfec7615e33 => 'Run the command';
+
+  @override
+  String get s793336a278 =>
+      'Opens Molaplan and runs the tile\'s command after confirmation (and the PIN, if needed).';
+
+  @override
+  String get s4ada3d547a => 'Own home-screen icon';
+
+  @override
+  String get se5b7d50d32 => 'Electricity price view (no sign-in)';
+
+  @override
+  String get s0174ef9ba6 =>
+      'The price now and today\'s and tomorrow\'s bars, as on the tablet. Works for anyone without an account: the link holds only the price area, VAT, margin and transfer.';
+
+  @override
+  String get s418e567059 => 'Tile full screen';
+
+  @override
+  String get s854b37962a =>
+      'Only this tile, updates by itself. Needs sign-in with the same account.';
+
+  @override
+  String get sb377843191 =>
+      'iPhone: open the link in Safari → Share → Add to Home Screen. Android: Chrome → ⋮ → Add to home screen. PC: Chrome or Edge → Install app. A home-screen app has its own storage: sign in there once.';
+
+  @override
+  String get s8e05e68318 => 'iPhone widget';
+
+  @override
+  String get s5da072d585 =>
+      'iPhone widgets need an app. Molaplan has no App Store app, so the widget uses the free Scriptable app: install Scriptable, tap +, paste the script and name it. Add a Scriptable widget to the home screen, long-press it → Edit Widget → Script: pick the script.';
+
+  @override
+  String get s37a2c08789 => 'Electricity price widget (Scriptable)';
+
+  @override
+  String get s6345f88fa0 =>
+      'Fetches prices straight from Molaplan\'s price service – no account or device left on needed.';
+
+  @override
+  String get s4de0571af7 => 'Status feed for the widget';
+
+  @override
+  String get s8d62579a16 =>
+      'Molaplan publishes the tile\'s state (text, colour) to a random, read-only address. The feed is updated by a device where the tile is shown (e.g. a wall tablet). Anyone with the address can see the state but cannot control anything.';
+
+  @override
+  String get s694ea6d8d2 => 'Tile widget (Scriptable)';
+
+  @override
+  String get sd6c9e55bce => 'New address (the old one stops working)';
+
+  @override
+  String get s32d2c87e84 => 'Shortcuts and Siri (iPhone)';
+
+  @override
+  String get sd3e8aa895f => 'Shortcut: run the command';
+
+  @override
+  String get sa82dd6fac4 => 'Shortcut: open the tile';
+
+  @override
+  String get s980a75a37b => 'Shortcut: read the value aloud';
+
+  @override
+  String get s5f8107014a => 'What is native, what is a workaround';
+
+  @override
+  String get sbf5c8473b2 =>
+      'Android: real home-screen widgets and shortcuts from the Molaplan app (Add to home screen). iPhone: the home-screen icon is a web app (Safari), the widget runs through the Scriptable app and Siri through Shortcuts. Commands always open Molaplan, which asks for confirmation and the PIN.';
+
+  @override
   String get s463074e5cc => 'App only';
 
   @override
@@ -2372,6 +2485,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sbfe79d1f5f => 'Updated';
 
   @override
+  String get s71f145905e => 'Shortcut / share';
+
+  @override
   String get s46d0983ce8 => 'Add to home screen';
 
   @override
@@ -2521,9 +2637,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s09feac6b28 =>
       'ESPHome cannot take new codes over the network. Add this to the device YAML, install it, then save the button:';
-
-  @override
-  String get sd6f41faa1d => 'Copy';
 
   @override
   String get s0a7c7a151a => 'Save as button';
@@ -7279,6 +7392,74 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s1e02f457b4 => 'Works in the app or through a home bridge';
 
   @override
+  String get s8f2ee89c28 => 'No data';
+
+  @override
+  String get sa2029e688b => 'Open Molaplan on a device where the tile is shown';
+
+  @override
+  String get sfdaa9523b0 => 'min old';
+
+  @override
+  String get s0c3b4eb370 => 'updated';
+
+  @override
+  String get s34705bcd0b =>
+      'iPhone widget for the Scriptable app (free, App Store). Help: molaplan.com → tile → Shortcut.';
+
+  @override
+  String get sae2303f670 => 'Contains no PINs or passwords.';
+
+  @override
+  String se0620d25d1(String p0) {
+    return 'Shortcut: $p0';
+  }
+
+  @override
+  String get s04a78db719 => 'Open the Shortcuts app and tap +.';
+
+  @override
+  String get s72698a5ad4 =>
+      'Add the action \"Open URLs\" and paste the address:';
+
+  @override
+  String s67f213ee2b(String p0) {
+    return 'Name the shortcut after the tile – then \"Hey Siri, $p0\" works.';
+  }
+
+  @override
+  String get sa19a41e8bc => 'Share → Add to Home Screen gives it its own icon.';
+
+  @override
+  String get s5868f0efb3 =>
+      'Molaplan opens in Safari and asks for confirmation and, if needed, the PIN every time. The PIN is never stored in the link. Sign in to molaplan.com in Safari once.';
+
+  @override
+  String s6bb11e2974(String p0) {
+    return 'Shortcut (open the tile): $p0';
+  }
+
+  @override
+  String s3457f68fe8(String p0) {
+    return 'Shortcut (read the value): $p0';
+  }
+
+  @override
+  String get sf49ecc47f8 =>
+      'Add the action \"Get Contents of URL\" with the address:';
+
+  @override
+  String get sbd6df96c54 =>
+      'Add \"Get Dictionary from Input\", then \"Get Dictionary Value\": message.';
+
+  @override
+  String get s7ef682753c =>
+      'Add \"Get Dictionary from Input\" again and \"Get Dictionary Value\": value.';
+
+  @override
+  String get s0276650db2 => 'Add \"Speak Text\" or \"Show Result\".';
+
+  @override
   String s6c33f19716(String p0) {
     return 'not answering ($p0 min)';
   }
@@ -10368,6 +10549,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sb25aad3bc2 => 'Leaving home';
+
+  @override
+  String get s047879732e => 'Link revoked';
 
   @override
   String get s65320ede20 => 'Calm';

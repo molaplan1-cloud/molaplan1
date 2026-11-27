@@ -4,7 +4,12 @@ import 'sharing/share_api.dart';
 import 'state/net_health.dart';
 
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
+
+import 'core/web_url.dart';
+import 'sharing/tile_links.dart';
+import 'ui/tile_view_page.dart';
 
 import 'security/alarm_log.dart';
 
@@ -40,6 +45,12 @@ Future<void> main() async {
   PriceService.loadStore = priceStore.load;
   PriceService.saveStore = priceStore.save;
   WidgetsFlutterBinding.ensureInitialized();
+  // R510/R511 (t315u): molaplan.com/?price=… / ?view=ID / ?run=ID / ?tile=ID.
+  final launch = Plat.isWeb ? WebLaunch.parse(Uri.base) : null;
+  if (launch is PriceViewLaunch) {
+    await runPriceView(launch.params);
+    return;
+  }
   initAirthingsBle();
   initVideo();
   // t219u: a failed real request may switch the process to any internet-capable network.
@@ -89,6 +100,9 @@ Future<void> main() async {
   state.update.autoCheck = !Plat.isWeb;
   // t128u: notification taps (molaplan://tile/ID), the Windows tray, Android permission.
   await DeepLinks.init();
+  final link = launch?.appLink;
+  if (link != null) DeepLinks.open(link);
+  if (launch != null && launch.consumeOnce) replaceBrowserUrl('/');
   await initLauncher(state);
   // R471 (t311u): backfill the alarm event logs from the server's history (read-only).
   unawaited(backfillAlarmLogs(state.config));
@@ -100,7 +114,29 @@ Future<void> main() async {
   if (state.config.automation.automations.isNotEmpty) {
     unawaited(LocalNotify.askPermission());
   }
-  runApp(MolaplanApp(state: state));
+  runApp(
+    MolaplanApp(
+      state: state,
+      home: launch is TileViewLaunch ? TileViewPage(tileId: launch.id) : null,
+      title: launch is TileViewLaunch ? Uri.base.queryParameters['name'] : null,
+    ),
+  );
+}
+
+/// R511: the self-contained electricity price view – built only from the link (public prices,
+/// no account, nothing stored).
+Future<void> runPriceView(PriceLinkParams p) async {
+  final store = MemoryConfigStore()..data = jsonEncode(priceViewConfigJson(p));
+  final state = AppState(configStore: store, secretStore: MemorySecretStore());
+  await state.load();
+  runApp(
+    MolaplanApp(
+      state: state,
+      home: const TileViewPage(tileId: priceViewTileId, standalone: true),
+      gate: false,
+      title: p.name.isEmpty ? null : p.name,
+    ),
+  );
 }
 
 /// t290u: started by Android WorkManager (no UI) to refresh home-screen widgets.
@@ -128,8 +164,17 @@ Future<void> widgetRefreshMain() async {
 final navigatorKey = GlobalKey<NavigatorState>();
 
 class MolaplanApp extends StatefulWidget {
-  const MolaplanApp({super.key, required this.state});
+  const MolaplanApp({super.key, required this.state, this.home, this.gate = true, this.title});
+
+  /// Browser tab / home-screen name (R511 single-tile views keep the tile's name).
+  final String? title;
   final AppState state;
+
+  /// Replaces the home page (R511 single-tile view); null = the normal app.
+  final Widget? home;
+
+  /// False for the self-contained price view (no sign-in gate).
+  final bool gate;
 
   @override
   State<MolaplanApp> createState() => _MolaplanAppState();
@@ -192,7 +237,7 @@ class _MolaplanAppState extends State<MolaplanApp> {
     return AppScope(
       state: state,
       child: MaterialApp(
-        title: 'Molaplan',
+        title: (widget.title ?? '').trim().isEmpty ? 'Molaplan' : widget.title!.trim(),
         navigatorKey: navigatorKey,
         scaffoldMessengerKey: snackMessengerKey,
         navigatorObservers: [SnackDismissObserver()],
@@ -210,15 +255,15 @@ class _MolaplanAppState extends State<MolaplanApp> {
         ],
         // R253 / R263: on molaplan.com a logged-out visitor sees the intro (with guest
         // use); signed-in users and guests get the app.
-        home: Plat.isWeb
+        home: Plat.isWeb && widget.gate
             ? WebAppGate(
                 state: state,
                 app: PushListener(
                   navigator: navigatorKey,
-                  child: const HomePage(),
+                  child: widget.home ?? const HomePage(),
                 ),
               )
-            : PushListener(navigator: navigatorKey, child: const HomePage()),
+            : PushListener(navigator: navigatorKey, child: widget.home ?? const HomePage()),
       ),
     );
   }

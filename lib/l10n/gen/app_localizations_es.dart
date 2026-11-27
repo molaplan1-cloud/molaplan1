@@ -1109,6 +1109,119 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sa6212aaeb4 => 'Ubicación';
 
   @override
+  String get s1af2f8cc38 =>
+      'La ficha no está en este navegador. Inicia sesión con la cuenta con la que se creó.';
+
+  @override
+  String get sb9b069da26 => 'Abrir Molaplan';
+
+  @override
+  String get s6659f500d5 => 'Abrir Molaplan completo';
+
+  @override
+  String get sd9762f0556 => 'Copiado';
+
+  @override
+  String get s703e5ec00e => 'Enlace copiado';
+
+  @override
+  String get sd6f41faa1d => 'Copiar';
+
+  @override
+  String get s3bfcb448ea => 'Abrir enlace';
+
+  @override
+  String get s5794ae95b6 => 'Atajo y pantalla de inicio';
+
+  @override
+  String sd0ebbc7196(String p0) {
+    return 'Convierte la ficha \"$p0\" en un enlace, un icono propio en la pantalla de inicio o un widget de iPhone. Los enlaces y scripts nunca contienen PIN ni contraseña: los comandos piden confirmación y el PIN cada vez.';
+  }
+
+  @override
+  String get s0e8a27d980 => 'Enlaces';
+
+  @override
+  String get sf032c99d57 => 'Abrir la ficha';
+
+  @override
+  String get se0c5314ff7 => 'Abre molaplan.com directamente en esta ficha.';
+
+  @override
+  String get sfec7615e33 => 'Ejecutar el comando';
+
+  @override
+  String get s793336a278 =>
+      'Abre Molaplan y ejecuta el comando de la ficha tras la confirmación (y el PIN, si hace falta).';
+
+  @override
+  String get s4ada3d547a => 'Icono propio en la pantalla de inicio';
+
+  @override
+  String get se5b7d50d32 => 'Vista del precio de la luz (sin iniciar sesión)';
+
+  @override
+  String get s0174ef9ba6 =>
+      'El precio actual y las barras de hoy y mañana, como en la tableta. Funciona para cualquiera sin cuenta: el enlace solo contiene la zona de precio, el IVA, el margen y el peaje.';
+
+  @override
+  String get s418e567059 => 'Ficha a pantalla completa';
+
+  @override
+  String get s854b37962a =>
+      'Solo esta ficha, se actualiza sola. Requiere iniciar sesión con la misma cuenta.';
+
+  @override
+  String get sb377843191 =>
+      'iPhone: abre el enlace en Safari → Compartir → Añadir a pantalla de inicio. Android: Chrome → ⋮ → Añadir a pantalla de inicio. PC: Chrome o Edge → Instalar aplicación. Una app de la pantalla de inicio tiene su propio almacenamiento: inicia sesión allí una vez.';
+
+  @override
+  String get s8e05e68318 => 'Widget de iPhone';
+
+  @override
+  String get s5da072d585 =>
+      'Los widgets de iPhone necesitan una app. Molaplan no tiene app en el App Store, así que el widget usa la app gratuita Scriptable: instala Scriptable, pulsa +, pega el script y ponle nombre. Añade un widget de Scriptable a la pantalla de inicio, mantenlo pulsado → Editar widget → Script: elige el script.';
+
+  @override
+  String get s37a2c08789 => 'Widget del precio de la luz (Scriptable)';
+
+  @override
+  String get s6345f88fa0 =>
+      'Obtiene los precios directamente del servicio de precios de Molaplan: no hace falta cuenta ni un dispositivo encendido.';
+
+  @override
+  String get s4de0571af7 => 'Canal de estado para el widget';
+
+  @override
+  String get s8d62579a16 =>
+      'Molaplan publica el estado de la ficha (texto, color) en una dirección aleatoria de solo lectura. El canal lo actualiza un dispositivo donde se muestra la ficha (p. ej. una tableta de pared). Quien tenga la dirección puede ver el estado, pero no controlar nada.';
+
+  @override
+  String get s694ea6d8d2 => 'Widget de la ficha (Scriptable)';
+
+  @override
+  String get sd6c9e55bce => 'Nueva dirección (la antigua deja de funcionar)';
+
+  @override
+  String get s32d2c87e84 => 'Atajos y Siri (iPhone)';
+
+  @override
+  String get sd3e8aa895f => 'Atajo: ejecutar el comando';
+
+  @override
+  String get sa82dd6fac4 => 'Atajo: abrir la ficha';
+
+  @override
+  String get s980a75a37b => 'Atajo: leer el valor en voz alta';
+
+  @override
+  String get s5f8107014a => 'Qué es nativo y qué es una solución alternativa';
+
+  @override
+  String get sbf5c8473b2 =>
+      'Android: widgets y atajos reales en la pantalla de inicio desde la app Molaplan (Añadir a pantalla de inicio). iPhone: el icono de la pantalla de inicio es una app web (Safari), el widget funciona con la app Scriptable y Siri con Atajos. Los comandos siempre abren Molaplan, que pide confirmación y el PIN.';
+
+  @override
   String get s463074e5cc => 'App only';
 
   @override
@@ -2396,6 +2509,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sbfe79d1f5f => 'Actualizado';
 
   @override
+  String get s71f145905e => 'Atajo / compartir';
+
+  @override
   String get s46d0983ce8 => 'Añadir a la pantalla de inicio';
 
   @override
@@ -2547,9 +2663,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s09feac6b28 =>
       'ESPHome no puede tomar nuevos códigos sobre la red. Añadir esto al dispositivo YAML, instalarlo, y luego guardar el botón:';
-
-  @override
-  String get sd6f41faa1d => 'Copiar';
 
   @override
   String get s0a7c7a151a => 'Guardar como botón';
@@ -7349,6 +7462,76 @@ class AppLocalizationsEs extends AppLocalizations {
       'Funciona en la aplicación o a través de un puente casero';
 
   @override
+  String get s8f2ee89c28 => 'Sin datos';
+
+  @override
+  String get sa2029e688b =>
+      'Abre Molaplan en un dispositivo donde se muestre la ficha';
+
+  @override
+  String get sfdaa9523b0 => 'min de antigüedad';
+
+  @override
+  String get s0c3b4eb370 => 'actualizado';
+
+  @override
+  String get s34705bcd0b =>
+      'Widget de iPhone para la app Scriptable (gratis, App Store). Ayuda: molaplan.com → ficha → Atajo.';
+
+  @override
+  String get sae2303f670 => 'No contiene PIN ni contraseñas.';
+
+  @override
+  String se0620d25d1(String p0) {
+    return 'Atajo: $p0';
+  }
+
+  @override
+  String get s04a78db719 => 'Abre la app Atajos y pulsa +.';
+
+  @override
+  String get s72698a5ad4 =>
+      'Añade la acción \"Abrir URL\" y pega la dirección:';
+
+  @override
+  String s67f213ee2b(String p0) {
+    return 'Ponle al atajo el nombre de la ficha y funcionará \"Oye Siri, $p0\".';
+  }
+
+  @override
+  String get sa19a41e8bc =>
+      'Compartir → Añadir a pantalla de inicio le da su propio icono.';
+
+  @override
+  String get s5868f0efb3 =>
+      'Molaplan se abre en Safari y pide cada vez confirmación y, si hace falta, el PIN. El PIN nunca se guarda en el enlace. Inicia sesión en molaplan.com en Safari una vez.';
+
+  @override
+  String s6bb11e2974(String p0) {
+    return 'Atajo (abrir la ficha): $p0';
+  }
+
+  @override
+  String s3457f68fe8(String p0) {
+    return 'Atajo (leer el valor): $p0';
+  }
+
+  @override
+  String get sf49ecc47f8 =>
+      'Añade la acción \"Obtener contenido de URL\" con la dirección:';
+
+  @override
+  String get sbd6df96c54 =>
+      'Añade \"Obtener diccionario de la entrada\" y luego \"Obtener valor del diccionario\": message.';
+
+  @override
+  String get s7ef682753c =>
+      'Añade de nuevo \"Obtener diccionario de la entrada\" y \"Obtener valor del diccionario\": value.';
+
+  @override
+  String get s0276650db2 => 'Añade \"Leer texto\" o \"Mostrar resultado\".';
+
+  @override
   String s6c33f19716(String p0) {
     return 'no contesta ($p0 min)';
   }
@@ -10468,6 +10651,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sb25aad3bc2 => 'Salgo de casa';
+
+  @override
+  String get s047879732e => 'Enlace revocado';
 
   @override
   String get s65320ede20 => 'Tranquilo';
