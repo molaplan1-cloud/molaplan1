@@ -78,15 +78,18 @@ Future<void> main() async {
   state.remote.shareCheck = (id) =>
       accountShareAccess(id); // R260: shares are re-checked on the server
   await state.load();
-  if (Plat.isWeb) await WebGuest.instance.load();
+  if (Plat.isWeb) {
+    await WebGuest.instance.load();
+  }
   if (state.config.bridgeMode && !Plat.isWeb) await keepScreenOn(true);
   // The web app updates itself on reload (service worker); no installer downloads.
   state.update.autoCheck = !Plat.isWeb;
   // t128u: notification taps (molaplan://tile/ID), the Windows tray, Android permission.
   await DeepLinks.init();
   await DesktopTray.init(state);
-  if (state.config.automation.automations.isNotEmpty)
+  if (state.config.automation.automations.isNotEmpty) {
     unawaited(LocalNotify.askPermission());
+  }
   runApp(MolaplanApp(state: state));
 }
 

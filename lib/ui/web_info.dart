@@ -227,8 +227,9 @@ class _WebNoticeBannerState extends State<WebNoticeBanner> {
       return;
     }
     SharedPreferences.getInstance().then((p) {
-      if (mounted)
+      if (mounted) {
         setState(() => _hidden = p.getBool(WebNoticeBanner.prefKey) ?? false);
+      }
     });
   }
 
