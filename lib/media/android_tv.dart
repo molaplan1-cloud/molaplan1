@@ -16,10 +16,10 @@ library;
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'dart:isolate';
 import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
+import 'package:flutter/foundation.dart' show compute;
 
 import '../core/rsa_cert.dart';
 import '../drivers/driver.dart';
@@ -142,8 +142,11 @@ class PbFramer {
 
 // ---- certificate ----
 
-/// New client identity (PEM cert, PEM key). RSA key generation runs in an isolate. Test hook.
-Future<(String, String)> Function() atvNewIdentity = () => Isolate.run(() => selfSignedCert(generateRsaKey()));
+(String, String) _makeIdentity(void _) => selfSignedCert(generateRsaKey());
+
+/// New client identity (PEM cert, PEM key). RSA key generation runs in a background isolate
+/// (`compute`; also compiles for the web, where this protocol is never used). Test hook.
+Future<(String, String)> Function() atvNewIdentity = () => compute(_makeIdentity, null);
 
 SecurityContext _ctx(String cert, String key) => SecurityContext(withTrustedRoots: false)
   ..useCertificateChainBytes(utf8.encode(cert))
