@@ -7300,14 +7300,42 @@
  "@s8c921666e5": {
   "x-mt": true
  },
+ "s11be58bda2": "Seadme number Z-Wave JS UI seadmete loendis (ID).",
+ "@s11be58bda2": {
+  "x-mt": true
+ },
  "s3c1d88fa83": "Command class",
+ "s4c3afcaf0d": "Ma ei tea, kas te ei tea, kas te ei saa aru, et te ei saa aru, kas te ei saa aru, et te ei saa aru, kas te ei saa aru, et te ei saa aru, kas te ei saa.",
+ "@s4c3afcaf0d": {
+  "x-mt": true
+ },
  "se51e5f226d": "Endpoint",
+ "s04605ae798": "Möödapääsetav seade, tavaliselt on see olemas.",
+ "@s04605ae798": {
+  "x-mt": true
+ },
  "s106bae7046": "Kinnisvara",
  "@s106bae7046": {
   "x-mt": true
  },
+ "s341f9093c6": "Maksimaalne väärtus, mida saab kasutada.",
+ "@s341f9093c6": {
+  "x-mt": true
+ },
  "sb29bffe780": "Omandivõti",
  "@sb29bffe780": {
+  "x-mt": true
+ },
+ "se0f247676e": "Mõnda väärtust (nt MÕÕTE TÜÜBIKINNITUS) Näidatakse Z-Wave JS-i väärtuses.",
+ "@se0f247676e": {
+  "x-mt": true
+ },
+ "s6a09bb69b3": "Seadav omadus, nt targetValue.",
+ "@s6a09bb69b3": {
+  "x-mt": true
+ },
+ "s914c361844": "'[Loe:] {{value}} = kaardi väärtus (true/false või number).'",
+ "@s914c361844": {
   "x-mt": true
  },
  "s60ceb3dcc4": "server ei ole kättesaadav",
@@ -10661,34 +10689,6 @@
  },
  "s7fc017b0f0": "lähedalt",
  "@s7fc017b0f0": {
-  "x-mt": true
- },
- "s11be58bda2": "Seadme number Z-Wave JS UI seadmete loendis (ID).",
- "@s11be58bda2": {
-  "x-mt": true
- },
- "s4c3afcaf0d": "Ma ei tea, kas te ei tea, kas te ei saa aru, et te ei saa aru, kas te ei saa aru, et te ei saa aru, kas te ei saa aru, et te ei saa aru, kas te ei saa.",
- "@s4c3afcaf0d": {
-  "x-mt": true
- },
- "s04605ae798": "Möödapääsetav seade, tavaliselt on see olemas.",
- "@s04605ae798": {
-  "x-mt": true
- },
- "s341f9093c6": "Maksimaalne väärtus, mida saab kasutada.",
- "@s341f9093c6": {
-  "x-mt": true
- },
- "se0f247676e": "Mõnda väärtust (nt MÕÕTE TÜÜBIKINNITUS) Näidatakse Z-Wave JS-i väärtuses.",
- "@se0f247676e": {
-  "x-mt": true
- },
- "s6a09bb69b3": "Seadav omadus, nt targetValue.",
- "@s6a09bb69b3": {
-  "x-mt": true
- },
- "s914c361844": "'[Loe:] {{value}} = kaardi väärtus (true/false või number).'",
- "@s914c361844": {
   "x-mt": true
  }
 }

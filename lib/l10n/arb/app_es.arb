@@ -7258,14 +7258,42 @@
  "@s8c921666e5": {
   "x-mt": true
  },
+ "s11be58bda2": "El número de dispositivo en la lista de dispositivos UI de Z-Wave JS (ID).",
+ "@s11be58bda2": {
+  "x-mt": true
+ },
  "s3c1d88fa83": "Command class",
+ "s4c3afcaf0d": "Clase de mando del valor: 37 = interruptor, 38 = dimmer, 49 = sensor, 50 = metro, 67 = punto de ajuste.",
+ "@s4c3afcaf0d": {
+  "x-mt": true
+ },
  "se51e5f226d": "Endpoint",
+ "s04605ae798": "Canal de un dispositivo multicanal; generalmente 0.",
+ "@s04605ae798": {
+  "x-mt": true
+ },
  "s106bae7046": "Propiedad",
  "@s106bae7046": {
   "x-mt": true
  },
+ "s341f9093c6": "Propiedad para leer, por ejemplo, valor actual.",
+ "@s341f9093c6": {
+  "x-mt": true
+ },
  "sb29bffe780": "Clave de propiedad",
  "@sb29bffe780": {
+  "x-mt": true
+ },
+ "se0f247676e": "Sólo para algunos valores (por ejemplo, el tipo de medidor). Mostrar en los detalles de valor en Z-Wave JS UI.",
+ "@se0f247676e": {
+  "x-mt": true
+ },
+ "s6a09bb69b3": "Propiedad para establecer, por ejemplo, targetValue.",
+ "@s6a09bb69b3": {
+  "x-mt": true
+ },
+ "s914c361844": "'Valor para enviar; {{value}} = el valor de la tarjeta (true/false o un número).'",
+ "@s914c361844": {
   "x-mt": true
  },
  "s60ceb3dcc4": "servidor no accesible",
@@ -10598,34 +10626,6 @@
  },
  "s7fc017b0f0": "cerca",
  "@s7fc017b0f0": {
-  "x-mt": true
- },
- "s11be58bda2": "El número de dispositivo en la lista de dispositivos UI de Z-Wave JS (ID).",
- "@s11be58bda2": {
-  "x-mt": true
- },
- "s4c3afcaf0d": "Clase de mando del valor: 37 = interruptor, 38 = dimmer, 49 = sensor, 50 = metro, 67 = punto de ajuste.",
- "@s4c3afcaf0d": {
-  "x-mt": true
- },
- "s04605ae798": "Canal de un dispositivo multicanal; generalmente 0.",
- "@s04605ae798": {
-  "x-mt": true
- },
- "s341f9093c6": "Propiedad para leer, por ejemplo, valor actual.",
- "@s341f9093c6": {
-  "x-mt": true
- },
- "se0f247676e": "Sólo para algunos valores (por ejemplo, el tipo de medidor). Mostrar en los detalles de valor en Z-Wave JS UI.",
- "@se0f247676e": {
-  "x-mt": true
- },
- "s6a09bb69b3": "Propiedad para establecer, por ejemplo, targetValue.",
- "@s6a09bb69b3": {
-  "x-mt": true
- },
- "s914c361844": "'Valor para enviar; {{value}} = el valor de la tarjeta (true/false o un número).'",
- "@s914c361844": {
   "x-mt": true
  }
 }

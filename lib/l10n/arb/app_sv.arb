@@ -7267,14 +7267,42 @@
  "@s8c921666e5": {
   "x-mt": true
  },
+ "s11be58bda2": "Enhetsnumret i Z-Wave JS UI-enhetslistan (ID).",
+ "@s11be58bda2": {
+  "x-mt": true
+ },
  "s3c1d88fa83": "Command class",
+ "s4c3afcaf0d": "Befälhavarklassen av värdet: 37 = switch, 38 = dimmer, 49 = sensor, 50 = meter, 67 = setpoint.",
+ "@s4c3afcaf0d": {
+  "x-mt": true
+ },
  "se51e5f226d": "Endpoint",
+ "s04605ae798": "Kanalen för en flerkanalsenhet; vanligtvis 0.",
+ "@s04605ae798": {
+  "x-mt": true
+ },
  "s106bae7046": "Fastighet",
  "@s106bae7046": {
   "x-mt": true
  },
+ "s341f9093c6": "Fastigheter att läsa, t.ex. nuvarande värde.",
+ "@s341f9093c6": {
+  "x-mt": true
+ },
  "sb29bffe780": "Fastighet nyckel",
  "@sb29bffe780": {
+  "x-mt": true
+ },
+ "se0f247676e": "Endast för vissa värden (t.ex. mätartyp). visas i värdedetaljerna i Z-Wave JS UI.",
+ "@se0f247676e": {
+  "x-mt": true
+ },
+ "s6a09bb69b3": "Fastigheter att ställa in, t.ex. målvärde.",
+ "@s6a09bb69b3": {
+  "x-mt": true
+ },
+ "s914c361844": "'Värde att skicka; {{value}} = kortvärdet (sann/falsk eller ett nummer).'",
+ "@s914c361844": {
   "x-mt": true
  },
  "s60ceb3dcc4": "Servern inte nåbar",
@@ -10616,34 +10644,6 @@
  },
  "s7fc017b0f0": "nära",
  "@s7fc017b0f0": {
-  "x-mt": true
- },
- "s11be58bda2": "Enhetsnumret i Z-Wave JS UI-enhetslistan (ID).",
- "@s11be58bda2": {
-  "x-mt": true
- },
- "s4c3afcaf0d": "Befälhavarklassen av värdet: 37 = switch, 38 = dimmer, 49 = sensor, 50 = meter, 67 = setpoint.",
- "@s4c3afcaf0d": {
-  "x-mt": true
- },
- "s04605ae798": "Kanalen för en flerkanalsenhet; vanligtvis 0.",
- "@s04605ae798": {
-  "x-mt": true
- },
- "s341f9093c6": "Fastigheter att läsa, t.ex. nuvarande värde.",
- "@s341f9093c6": {
-  "x-mt": true
- },
- "se0f247676e": "Endast för vissa värden (t.ex. mätartyp). visas i värdedetaljerna i Z-Wave JS UI.",
- "@se0f247676e": {
-  "x-mt": true
- },
- "s6a09bb69b3": "Fastigheter att ställa in, t.ex. målvärde.",
- "@s6a09bb69b3": {
-  "x-mt": true
- },
- "s914c361844": "'Värde att skicka; {{value}} = kortvärdet (sann/falsk eller ett nummer).'",
- "@s914c361844": {
   "x-mt": true
  }
 }
