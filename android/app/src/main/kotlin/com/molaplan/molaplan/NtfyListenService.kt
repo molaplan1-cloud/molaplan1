@@ -187,7 +187,9 @@ class NtfyListenService : Service() {
         while (!stop && gen == generation && !Thread.currentThread().isInterrupted) {
             var conn: HttpURLConnection? = null
             try {
-                val since = lastId(t) ?: (System.currentTimeMillis() / 1000).toString()
+                // t319u: resume from the last real message's time (an unknown id made the server
+                // replay its whole cache); first run = from now (no backfill).
+                val since = lastTime(t)?.toString() ?: (System.currentTimeMillis() / 1000).toString()
                 val url = URL("${t.server}/${t.topic}/json?since=$since")
                 conn = (url.openConnection() as HttpURLConnection).apply {
                     connectTimeout = 15000
@@ -231,36 +233,45 @@ class NtfyListenService : Service() {
     }
 
     private fun handleLine(t: Topic, line: String) {
-        val j = try { JSONObject(line) } catch (_: Exception) { return }
-        val event = j.optString("event", "message")
-        val id = j.optString("id", "")
-        if (id.isNotEmpty()) saveLastId(t, id)
-        if (event != "message") return
+        val rules = config().optJSONObject("alarm")
+        // t319u: replay-safe decision (old / seen messages and control events never notify).
+        val d = NtfyAlarmGate.decide(line, t.topic, t.filter, rules, System.currentTimeMillis() / 1000) { isSeen(it) }
+        if (d.action == NtfyAlarmGate.Action.IGNORE) return
+        // Only real messages move the resume point (never open/keepalive ids, see NtfyAlarmGate).
+        if (d.cursorId != null) saveCursor(t, d.cursorId, d.cursorTime)
         // t290u: status widgets refresh on any ntfy message, including silent Tila JSON.
         LauncherBridge.onIncoming(applicationContext)
-        val title = j.optString("title", "")
-        val message = j.optString("message", "")
-        val tags = mutableListOf<String>()
-        val ta = j.optJSONArray("tags")
-        if (ta != null) for (i in 0 until ta.length()) tags.add(ta.optString(i))
-        if (!NtfyListenFilter.shouldNotify(event, title, message, tags)) return
-        // R502 (t317u): status / info messages (delays, heartbeats, replies) are state only.
-        if (!NtfyNotifyFilter.allows(t.filter, title, message, tags, j.optInt("priority", 3))) return
-        if (id.isNotEmpty() && !seenIds.add(id)) return
-        trimSeen()
-        val prio = j.optInt("priority", 3).coerceIn(1, 5)
-        // R461 (t307u): real alarms (priority 5, alarm words / tags, per-topic setting) go to the
-        // loud alarm channel and pass quiet hours like urgent messages.
-        val rules = config().optJSONObject("alarm")
-        val alarm = AlarmNotifier.isAlarm(rules, t.topic, title, tags, prio)
-        if (!allowedByQuiet(if (alarm) 5 else prio)) return
+        if (d.action == NtfyAlarmGate.Action.STATE_ONLY) {
+            if (d.reason.startsWith("old")) android.util.Log.i("MolaplanNtfy", "${t.topic}: ${d.id} ${d.reason} – no notification")
+            return
+        }
+        markSeen(d.id)
+        val alarm = d.action == NtfyAlarmGate.Action.ALARM
+        // R461 (t307u): real alarms go to the loud alarm channel and pass quiet hours like urgent messages.
+        if (!allowedByQuiet(if (alarm) 5 else d.prio)) return
         // Flutter already shows in-app banners for the automation topic while the UI is open
         // (an alarm still sounds – the banner is silent).
         if (t.kind == "notify" && appForeground && !alarm) return
         postNotification(
-            title.ifBlank { "Molaplan" }, message, prio, j.optString("click", ""),
+            d.title.ifBlank { "Molaplan" }, d.message, d.prio, d.click,
             alarm, rules?.optBoolean("insistent", false) ?: false
         )
+    }
+
+    /** Seen ids survive restarts and reinstalls (t319u). */
+    private fun isSeen(id: String): Boolean {
+        if (seenIds.contains(id)) return true
+        val raw = getSharedPreferences(PREFS, MODE_PRIVATE).getString(KEY_SEEN, "") ?: ""
+        return raw.split(',').contains(id)
+    }
+
+    private fun markSeen(id: String) {
+        if (id.isEmpty()) return
+        seenIds.add(id)
+        trimSeen()
+        val sp = getSharedPreferences(PREFS, MODE_PRIVATE)
+        val list = (sp.getString(KEY_SEEN, "") ?: "").split(',').filter { it.isNotEmpty() && it != id }.takeLast(199) + id
+        sp.edit().putString(KEY_SEEN, list.joinToString(",")).apply()
     }
 
     private fun allowedByQuiet(prio: Int): Boolean {
@@ -387,24 +398,31 @@ class NtfyListenService : Service() {
         return out
     }
 
-    private fun lastId(t: Topic): String? {
-        val raw = getSharedPreferences(PREFS, MODE_PRIVATE).getString(KEY_IDS, "{}") ?: "{}"
+    private fun lastTime(t: Topic): Long? {
+        val raw = getSharedPreferences(PREFS, MODE_PRIVATE).getString(KEY_CURSOR, "{}") ?: "{}"
         val j = try { JSONObject(raw) } catch (_: Exception) { return null }
-        val id = j.optString("${t.server}|${t.topic}", "")
-        return id.ifEmpty { null }
+        val v = j.optLong("${t.server}|${t.topic}", 0L)
+        return if (v > 0) v else null
     }
 
-    private fun saveLastId(t: Topic, id: String) {
+    private fun saveCursor(t: Topic, id: String, time: Long) {
+        if (time <= 0) return
         val sp = getSharedPreferences(PREFS, MODE_PRIVATE)
-        val j = try { JSONObject(sp.getString(KEY_IDS, "{}") ?: "{}") } catch (_: Exception) { JSONObject() }
-        j.put("${t.server}|${t.topic}", id)
-        sp.edit().putString(KEY_IDS, j.toString()).apply()
+        val j = try { JSONObject(sp.getString(KEY_CURSOR, "{}") ?: "{}") } catch (_: Exception) { JSONObject() }
+        val key = "${t.server}|${t.topic}"
+        if (time < j.optLong(key, 0L)) return
+        j.put(key, time)
+        val ids = try { JSONObject(sp.getString(KEY_IDS, "{}") ?: "{}") } catch (_: Exception) { JSONObject() }
+        ids.put(key, id)
+        sp.edit().putString(KEY_CURSOR, j.toString()).putString(KEY_IDS, ids.toString()).apply()
     }
 
     companion object {
         const val PREFS = "molaplan_ntfy_listen"
         const val KEY_CONFIG = "config"
         const val KEY_IDS = "last_ids"
+        const val KEY_CURSOR = "last_times"
+        const val KEY_SEEN = "seen_ids"
         const val KEY_FG = "app_fg"
         const val KEY_BATTERY_ASKED = "battery_asked"
         const val CH_LISTEN = "ntfy_listen"

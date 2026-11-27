@@ -160,11 +160,12 @@ void main() {
         .toList();
     expect(dartPats.length, 5);
     expect(ktPats, dartPats);
-    final filter = svc.indexOf('NtfyNotifyFilter.allows(t.filter');
-    expect(filter, greaterThan(svc.indexOf('shouldNotify(event, title, message, tags)) return')));
-    expect(filter, lessThan(svc.indexOf('AlarmNotifier.isAlarm(rules')));
+    final gate = File('android/app/src/main/kotlin/com/molaplan/molaplan/NtfyAlarmGate.kt').readAsStringSync();
+    final filter = gate.indexOf('NtfyNotifyFilter.allows(filter');
+    expect(filter, greaterThan(gate.indexOf('shouldNotify(event, title, message, tags)')));
+    expect(filter, lessThan(gate.indexOf('isRealAlarm(rules, topic')));
     // State/widgets still refresh for silent messages.
-    expect(svc.indexOf('LauncherBridge.onIncoming'), lessThan(filter));
+    expect(svc.indexOf('LauncherBridge.onIncoming'), lessThan(svc.indexOf('Action.STATE_ONLY) {')));
     expect(svc, contains('if (kind == "notify") "all" else "auto"'));
   });
 
@@ -244,5 +245,48 @@ void main() {
     expect(st.automations.settings.notify.filters['kv-reply'], 'none');
     expect(puts, ['https://ntfy.molaplan.com/kv-reply/notify-policy {"mode":"none"}']);
     await tester.pumpWidget(const SizedBox());
+  });
+
+  test('R505 (t319u): replayed history never rings – wiring of the native listener', () {
+    const dir = 'android/app/src/main/kotlin/com/molaplan/molaplan';
+    final svc = File('$dir/NtfyListenService.kt').readAsStringSync();
+    final gate = File('$dir/NtfyAlarmGate.kt').readAsStringSync();
+    final sound = File('$dir/AlarmSound.kt').readAsStringSync();
+    final notifier = File('$dir/AlarmNotifier.kt').readAsStringSync();
+    // Control events (open / keepalive) never become the resume point; resume by message time.
+    expect(gate, contains('if (event != "message") return Result(Action.IGNORE'));
+    expect(svc, isNot(contains('saveLastId(t, id)')));
+    expect(svc, contains('val since = lastTime(t)?.toString() ?: (System.currentTimeMillis() / 1000).toString()'));
+    // Old (> 2 min) and already seen messages only refresh state; seen ids are persisted.
+    expect(gate, contains('const val MAX_AGE_S = 120L'));
+    expect(gate.indexOf('isFresh(time, nowSec)'), lessThan(gate.indexOf('isRealAlarm(rules, topic')));
+    expect(svc, contains('KEY_SEEN'));
+    // One alarm sound at a time (the test button still restarts it).
+    expect(sound, contains('NtfyAlarmGate.shouldRestartSound(playing, coalesce)'));
+    expect(notifier, contains('coalesce = !test'));
+    // JVM unit test replaying a historical burst exists.
+    expect(File('android/app/src/test/kotlin/com/molaplan/molaplan/NtfyAlarmGateTest.kt').existsSync(), isTrue);
+  });
+
+  test('R506 (t319u): arming, disarming, alarm end, status and alarm pictures never match the alarm rules', () {
+    final r = AlarmRules();
+    for (final (title, prio, tags) in <(String, int, List<String>)>[
+      ('Valvonta päälle (etä)', 3, ['lock']),
+      ('Valvonta pois', 5, ['rotating_light']),
+      ('Hälytys kuitattu, valvonta aktiivinen', 4, ['white_check_mark']),
+      ('Tulo havaittu', 4, ['warning']),
+      ('Hälytyskuva – Sisäkamera', 4, ['camera']),
+      ('Tila', 5, []),
+    ]) {
+      expect(
+        alarmMatches(r, title: title, priority: prio, tags: tags),
+        isFalse,
+        reason: title,
+      );
+    }
+    expect(alarmMatches(r, title: 'HÄLYTYS: sisäkamera: ihminen', priority: 5, tags: ['rotating_light']), isTrue);
+    expect(alarmMatches(r, title: 'Intrusion detected', priority: 4), isTrue);
+    r.topics['kv'] = 'always';
+    expect(alarmMatches(r, topic: 'kv', title: 'Valvonta päälle', priority: 3), isTrue);
   });
 }

@@ -43,6 +43,11 @@ android {
         }
     }
 
+    // t319u: plain JVM unit tests for the ntfy alarm gate (./gradlew :app:testDebugUnitTest).
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
+
     buildTypes {
         release {
             signingConfig = signingConfigs.findByName("molaplan") ?: signingConfigs.getByName("debug")
@@ -65,4 +70,6 @@ flutter {
 dependencies {
     implementation("androidx.core:core:1.13.1")
     implementation("androidx.work:work-runtime-ktx:2.10.0")
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.json:json:20240303") // real org.json (android.jar only has stubs)
 }

@@ -632,7 +632,14 @@ class AutomationState extends ChangeNotifier {
           link: tileId == null ? null : 'molaplan://tile/$tileId',
           priority: priority,
           // R464: alarms shown by the open app use the loud alarm channel too.
-          alarm: alarmMatches(settings.notify.alarm, topic: settings.notify.topic, title: title, priority: priority, tags: tags),
+          alarm: alarmMatches(
+            settings.notify.alarm,
+            topic: settings.notify.topic,
+            title: title,
+            priority: priority,
+            tags: tags,
+            message: body,
+          ),
           insistent: settings.notify.alarm.insistent,
         ),
       );

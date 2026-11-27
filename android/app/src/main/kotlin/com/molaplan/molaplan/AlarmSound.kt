@@ -78,10 +78,15 @@ object AlarmSound {
     }
 
     /** Starts the alarm sound for [durationMs]. Returns whether something is playing. */
-    fun start(ctx: Context, durationMs: Long): Boolean {
+    fun start(ctx: Context, durationMs: Long, coalesce: Boolean = true): Boolean {
         val app = ctx.applicationContext
         if (Looper.myLooper() != Looper.getMainLooper()) {
-            main.post { start(app, durationMs) }
+            main.post { start(app, durationMs, coalesce) }
+            return true
+        }
+        // t319u: one alarm sound at a time – a burst of alarm messages does not restart it.
+        if (!NtfyAlarmGate.shouldRestartSound(playing, coalesce)) {
+            Log.i(TAG, "already playing – coalesced")
             return true
         }
         stopNow()
