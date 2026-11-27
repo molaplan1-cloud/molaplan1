@@ -1469,6 +1469,14 @@ final deviceTemplates = <DeviceTemplate>[
         helpEn: 'If the device answers on another topic (e.g. your notification topic). Empty = the same topic.',
       ),
       FieldSpec(
+        'stateTopic',
+        'Tilakanava (vapaaehtoinen)',
+        'State topic (optional)',
+        hint: 'kv-state-…',
+        helpFi: 'Laitteen tilakanava (paneelissa Laite → Etäohjaus → Tilakanava, fw 0.2.50+). Kun asetettu, Molaplan ei kysele tilaa itse. PIN-koodia ei tarvita. Voi täyttyä automaattisesti tilavastauksen state_topic-kentästä.',
+        helpEn: 'The device state topic (on the panel: Device → Remote → State channel, fw 0.2.50+). When set, Molaplan does not poll for state. No PIN is needed. May be filled automatically from a status reply\'s state_topic field.',
+      ),
+      FieldSpec(
         'replyTitle',
         'Vastauksen otsikko sisältää (vapaaehtoinen)',
         'Reply title contains (optional)',
@@ -1659,6 +1667,7 @@ TemplateResult ntfyDeviceTemplate(Map<String, dynamic> input, String lang) {
     settings: {
       'topic': _s(v, 'topic'),
       if (_s(v, 'replyTopic').isNotEmpty) 'replyTopic': _s(v, 'replyTopic'),
+      if (_s(v, 'stateTopic').isNotEmpty) 'stateTopic': _s(v, 'stateTopic'),
       if (_s(v, 'replyTitle').isNotEmpty) 'replyTitle': _s(v, 'replyTitle'),
       'template': _s(v, 'template', '{cmd} {pin}'),
       'statusCommand': _s(v, 'statusCommand', 'tila'),

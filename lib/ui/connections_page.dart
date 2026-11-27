@@ -14,6 +14,7 @@ import 'error_box.dart';
 import 'modbus_scan_page.dart';
 import 'spec_form.dart';
 import 'template_gallery.dart';
+import 'notify_prefs.dart';
 
 IconData connectionIcon(String type) => switch (type) {
   'http' => Icons.http,
@@ -295,6 +296,8 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
                 values: values,
                 scope: '${c.type}.conn',
               ),
+              DeviceNotifyPrefsSection(values: values, onChanged: () => setState(() {})),
+              if (st.stateTopicOffer?.id == c.id) StateTopicOfferCard(connectionId: c.id, suggested: st.stateTopicOffer!.suggested),
               const SizedBox(height: 8),
               Wrap(
                 spacing: 8,

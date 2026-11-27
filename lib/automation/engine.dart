@@ -10,6 +10,7 @@ import 'package:crypto/crypto.dart';
 
 import '../l10n/l10n.dart';
 import 'model.dart';
+import '../notify/event_prefs.dart';
 import 'reminders.dart';
 import 'script_lang.dart';
 
@@ -546,11 +547,21 @@ class AutomationEngine {
     try {
       await runSteps(a.actions, source: a.name);
       _log(RunEntry(at: now, kind: 'automation', id: a.id, name: a.name));
+      await _notifyAutomationRun(a);
       return true;
     } catch (e) {
       _log(RunEntry(at: now, kind: 'automation', id: a.id, name: a.name, ok: false, msg: '$e'));
       return false;
     }
+  }
+
+  /// t281u: a push when the automation itself has no notify action, at the configured importance.
+  Future<void> _notifyAutomationRun(Automation a) async {
+    if (a.actions.any((s) => s.kind == 'notify')) return;
+    final prio = a.notifyPriority ?? notifyPriorityFor('automation', global: settings.notify.events);
+    if (prio <= 0) return;
+    final lang = env is ReminderEnv ? (env as ReminderEnv).lang : 'fi';
+    await sendNotification(eventTitle('automation', lang, detail: a.name), '', priority: prio);
   }
 
   Future<void> runScene(String id) async {

@@ -16,6 +16,8 @@ import 'package:flutter/foundation.dart';
 import '../core/template.dart';
 import '../drivers/driver.dart';
 import '../drivers/ir_driver.dart' show IrDriver;
+import '../drivers/ntfy_device.dart';
+import '../notify/event_prefs.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
 import '../energy/contract.dart';
@@ -113,6 +115,51 @@ class AppState extends ChangeNotifier implements SyncHost {
     automations = AutomationState(this);
     automations.addListener(notifyListeners);
     remote.addListener(automations.changed);
+    NtfyDeviceDriver.applySettings = _applyNtfyDeviceSettings;
+    NtfyDeviceDriver.onEvent = _onNtfyDeviceEvent;
+  }
+
+  /// t279u: a Tilakanava the device named that differs from the one already stored.
+  ({String id, String suggested})? stateTopicOffer;
+
+  void clearStateTopicOffer() {
+    stateTopicOffer = null;
+    notifyListeners();
+  }
+
+  Future<void> acceptStateTopicOffer() async {
+    final o = stateTopicOffer;
+    if (o == null) return;
+    final c = connection(o.id);
+    if (c != null) {
+      c.settings['stateTopic'] = o.suggested;
+      await save();
+    }
+    stateTopicOffer = null;
+    notifyListeners();
+  }
+
+  Future<void> _applyNtfyDeviceSettings(String id, Map<String, dynamic> patch, {String? offeredStateTopic}) async {
+    final c = connection(id);
+    if (c == null) return;
+    if (patch.isNotEmpty) {
+      c.settings.addAll(patch);
+      await save();
+    }
+    if (offeredStateTopic != null && offeredStateTopic.isNotEmpty) {
+      stateTopicOffer = (id: id, suggested: offeredStateTopic);
+    }
+    notifyListeners();
+  }
+
+  void _onNtfyDeviceEvent(ConnectionConfig cfg, String event, String title, String body) {
+    final prio = notifyPriorityFor(
+      event,
+      device: notifyEventsFrom(cfg.settings['notifyEvents']),
+      global: notifyEventsFrom(automations.settings.notify.events),
+    );
+    if (prio <= 0) return;
+    unawaited(automations.local.engine.sendNotification(title, body, priority: prio));
   }
 
   /// Automations, scenes, scripts and push notifications (v0.7.0).
@@ -1586,6 +1633,10 @@ class AppState extends ChangeNotifier implements SyncHost {
       TileRuntime.observer = null;
       TileRuntime.needsPrefill = null;
       TileRuntime.paused = null;
+    }
+    if (NtfyDeviceDriver.applySettings == _applyNtfyDeviceSettings) {
+      NtfyDeviceDriver.applySettings = null;
+      NtfyDeviceDriver.onEvent = null;
     }
     account.removeListener(notifyListeners);
     account.dispose();

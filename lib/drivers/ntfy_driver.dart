@@ -298,6 +298,54 @@ class NtfyDriver extends Driver {
     }
   }
 
+  /// Live JSON stream of messages on [topic] (reply topic when omitted). Reconnects with
+  /// backoff and `since=<last id>` so a server that closes the stream (~3 min on
+  /// ntfy.molaplan.com) does not drop messages. Cancel the subscription to stop.
+  Stream<NtfyMessage> subscribe({String? topic, String? since}) {
+    late StreamController<NtfyMessage> ctl;
+    var stopped = false;
+    String? last = since;
+    Future<void> loop() async {
+      var backoff = 2;
+      while (!stopped) {
+        try {
+          final (srv, t) = _replyTopic(topic);
+          if (t.isEmpty) break;
+          final id = last;
+          final q = (id == null || id.isEmpty) ? '' : '?since=${Uri.encodeQueryComponent(id)}';
+          final req = http.Request('GET', Uri.parse('$srv/$t/json$q'))..headers.addAll(_authHeaders);
+          final res = await _client.send(req);
+          if (res.statusCode >= 300) {
+            throw DriverException(_httpError(res.statusCode, await utf8.decodeStream(res.stream), t));
+          }
+          backoff = 2;
+          await for (final line in res.stream.transform(utf8.decoder).transform(const LineSplitter())) {
+            if (stopped) break;
+            if (line.trim().isEmpty) continue;
+            final j = _tryJson(line);
+            final m = NtfyMessage.fromJson(j);
+            if (m == null) continue;
+            last = m.id.isEmpty ? last : m.id;
+            if (!ctl.isClosed) ctl.add(m);
+          }
+        } catch (_) {
+          if (stopped) break;
+        }
+        if (stopped) break;
+        await Future<void>.delayed(Duration(seconds: backoff));
+        backoff = (backoff * 2).clamp(2, 60);
+      }
+    }
+
+    ctl = StreamController<NtfyMessage>(
+      onListen: () => unawaited(loop()),
+      onCancel: () {
+        stopped = true;
+      },
+    );
+    return ctl.stream;
+  }
+
   /// Sends [text] and waits for the first message on the reply topic that is not our own.
   /// Subscribes first (only new messages, after ntfy's "open" event), then publishes, so
   /// older messages and other devices' earlier commands are never mistaken for the reply.

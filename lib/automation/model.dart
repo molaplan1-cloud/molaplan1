@@ -106,6 +106,7 @@ class Automation {
     List<ActionStep>? actions,
     this.cooldownMin = 1,
     this.template,
+    this.notifyPriority,
   }) : id = id ?? newAutoId('a'),
        conditions = conditions ?? [],
        actions = actions ?? [];
@@ -120,6 +121,9 @@ class Automation {
   int cooldownMin;
   String? template;
 
+  /// t281u: override for "automation triggered" (0 = off, 1–5, null = use global default).
+  int? notifyPriority;
+
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
@@ -129,6 +133,7 @@ class Automation {
     'actions': [for (final a in actions) a.toJson()],
     if (cooldownMin != 1) 'cooldownMin': cooldownMin,
     'template': ?template,
+    if (notifyPriority != null) 'notifyPriority': notifyPriority,
   };
   factory Automation.fromJson(Map<String, dynamic> j) => Automation(
     id: '${j['id']}',
@@ -139,6 +144,7 @@ class Automation {
     actions: [for (final e in _l(j['actions'])) ActionStep.fromJson(e)],
     cooldownMin: (j['cooldownMin'] as num?)?.toInt() ?? 1,
     template: j['template'] as String?,
+    notifyPriority: (j['notifyPriority'] as num?)?.toInt(),
   );
 }
 
@@ -187,10 +193,15 @@ class NotifySettings {
     this.quietTo,
     this.mutedUntil,
     this.enabled = true,
-  }) : topic = topic ?? 'molaplan-${_rand(20)}';
+    Map<String, int>? events,
+  }) : topic = topic ?? 'molaplan-${_rand(20)}',
+       events = events ?? {};
   String server;
   String topic;
   String? token;
+
+  /// t281u: default importance per event (0 = off, 1–5 = ntfy). Missing key = built-in default.
+  Map<String, int> events;
 
   /// Quiet hours 'HH:MM' (may wrap midnight): only priority 5 (urgent) comes through.
   String? quietFrom, quietTo;
@@ -215,6 +226,7 @@ class NotifySettings {
     'quietTo': ?quietTo,
     'mutedUntil': ?mutedUntil,
     if (!enabled) 'enabled': false,
+    if (events.isNotEmpty) 'events': events,
   };
   factory NotifySettings.fromJson(Map<String, dynamic> j) => NotifySettings(
     server: '${j['server'] ?? 'https://ntfy.sh'}',
@@ -224,6 +236,10 @@ class NotifySettings {
     quietTo: j['quietTo'] as String?,
     mutedUntil: (j['mutedUntil'] as num?)?.toInt(),
     enabled: j['enabled'] != false,
+    events: {
+      for (final e in ((j['events'] as Map?) ?? const {}).entries)
+        if (e.value is num) '${e.key}': (e.value as num).toInt(),
+    },
   );
 }
 

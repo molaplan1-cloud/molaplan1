@@ -17,6 +17,8 @@ import 'app_scope.dart';
 import 'remote_pages.dart' show RemoteHubPage;
 import 'duplicate_check.dart';
 import 'icons.dart';
+import 'notify_prefs.dart';
+import '../notify/event_prefs.dart';
 
 List<TileConfig> _allTiles(AppState st) => [for (final d in st.config.dashboards) ...d.tiles];
 
@@ -600,6 +602,23 @@ class _AutomationEditorState extends State<AutomationEditor> {
               helperMaxLines: 3,
             ),
             onChanged: (v) => a.cooldownMin = int.tryParse(v) ?? a.cooldownMin,
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              Expanded(child: Text(tx(context, 'Ilmoitus kun tämä automaatio laukeaa', 'Notify when this automation runs'))),
+              DropdownButton<int?>(
+                key: const ValueKey('auto-notify-priority'),
+                value: a.notifyPriority,
+                hint: Text(tx(context, 'Oletus', 'Default')),
+                onChanged: (v) => setState(() => a.notifyPriority = v),
+                items: [
+                  DropdownMenuItem(value: null, child: Text(tx(context, 'Oletus', 'Default'))),
+                  for (final c in notifyPriorityChoices)
+                    DropdownMenuItem(value: c.$1, child: Text(AppScope.of(context).lang == 'en' ? c.$3 : c.$2)),
+                ],
+              ),
+            ],
           ),
         ],
       ),
@@ -2121,6 +2140,13 @@ class NotifySettingsView extends StatelessWidget {
               onPressed: () => Clipboard.setData(ClipboardData(text: a.ntfySubscribeLink)),
             ),
           ],
+        ),
+        const Divider(height: 28),
+        GlobalNotifyPrefsSection(
+          values: notifyEventsFrom(n.events),
+          onChanged: (event, p) => a.saveNotify((x) {
+            x.events = Map<String, int>.from(x.events)..[event] = p;
+          }),
         ),
         const Divider(height: 28),
         Text(tx(context, 'Hiljainen aika', 'Quiet hours'), style: text.titleSmall),
