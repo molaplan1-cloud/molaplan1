@@ -7674,16 +7674,43 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s8c921666e5 => 'Node';
 
   @override
+  String get s11be58bda2 =>
+      'El número de dispositivo en la lista de dispositivos UI de Z-Wave JS (ID).';
+
+  @override
   String get s3c1d88fa83 => 'Command class';
+
+  @override
+  String get s4c3afcaf0d =>
+      'Clase de mando del valor: 37 = interruptor, 38 = dimmer, 49 = sensor, 50 = metro, 67 = punto de ajuste.';
 
   @override
   String get se51e5f226d => 'Endpoint';
 
   @override
+  String get s04605ae798 =>
+      'Canal de un dispositivo multicanal; generalmente 0.';
+
+  @override
   String get s106bae7046 => 'Propiedad';
 
   @override
+  String get s341f9093c6 => 'Propiedad para leer, por ejemplo, valor actual.';
+
+  @override
   String get sb29bffe780 => 'Clave de propiedad';
+
+  @override
+  String get se0f247676e =>
+      'Sólo para algunos valores (por ejemplo, el tipo de medidor). Mostrar en los detalles de valor en Z-Wave JS UI.';
+
+  @override
+  String get s6a09bb69b3 =>
+      'Propiedad para establecer, por ejemplo, targetValue.';
+
+  @override
+  String get s914c361844 =>
+      'Valor para enviar; {{value}} = el valor de la tarjeta (true/false o un número).';
 
   @override
   String get s60ceb3dcc4 => 'servidor no accesible';

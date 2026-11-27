@@ -60,7 +60,11 @@ void main() {
     );
     await tester.tap(find.text('open'));
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.byKey(const ValueKey('gallery-thermostat')));
+    await tester.scrollUntilVisible(
+      find.byKey(const ValueKey('gallery-thermostat')),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(const ValueKey('gallery-thermostat')));
     await tester.pumpAndSettle();

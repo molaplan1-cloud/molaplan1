@@ -7603,16 +7603,41 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s8c921666e5 => 'Node';
 
   @override
+  String get s11be58bda2 =>
+      'The device number in the Z-Wave JS UI device list (ID).';
+
+  @override
   String get s3c1d88fa83 => 'Command class';
+
+  @override
+  String get s4c3afcaf0d =>
+      'Command class of the value: 37 = switch, 38 = dimmer, 49 = sensor, 50 = meter, 67 = setpoint.';
 
   @override
   String get se51e5f226d => 'Endpoint';
 
   @override
+  String get s04605ae798 => 'Channel of a multi-channel device; usually 0.';
+
+  @override
   String get s106bae7046 => 'Property';
 
   @override
+  String get s341f9093c6 => 'Property to read, e.g. currentValue.';
+
+  @override
   String get sb29bffe780 => 'Property key';
+
+  @override
+  String get se0f247676e =>
+      'Only for some values (e.g. meter type). Shown in the value details in Z-Wave JS UI.';
+
+  @override
+  String get s6a09bb69b3 => 'Property to set, e.g. targetValue.';
+
+  @override
+  String get s914c361844 =>
+      'Value to send; {{value}} = the tile value (true/false or a number).';
 
   @override
   String get s60ceb3dcc4 => 'server not reachable';

@@ -7632,16 +7632,41 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s8c921666e5 => 'Laite (node)';
 
   @override
+  String get s11be58bda2 =>
+      'Laitteen numero Z-Wave JS UI:n laitelistassa (ID).';
+
+  @override
   String get s3c1d88fa83 => 'Command class';
+
+  @override
+  String get s4c3afcaf0d =>
+      'Arvon komentoluokka: 37 = kytkin, 38 = himmennin, 49 = anturi, 50 = mittari, 67 = asetusarvo.';
 
   @override
   String get se51e5f226d => 'Endpoint';
 
   @override
+  String get s04605ae798 => 'Monikanavaisen laitteen kanava; yleensä 0.';
+
+  @override
   String get s106bae7046 => 'Ominaisuus';
 
   @override
+  String get s341f9093c6 => 'Luettava ominaisuus, esim. currentValue.';
+
+  @override
   String get sb29bffe780 => 'Ominaisuuden avain';
+
+  @override
+  String get se0f247676e =>
+      'Vain osalla arvoista (esim. mittarin tyyppi). Näkyy Z-Wave JS UI:n arvon tiedoissa.';
+
+  @override
+  String get s6a09bb69b3 => 'Asetettava ominaisuus, esim. targetValue.';
+
+  @override
+  String get s914c361844 =>
+      'Lähetettävä arvo; {{value}} = ruudun arvo (true/false tai numero).';
 
   @override
   String get s60ceb3dcc4 => 'palvelimeen ei saatu yhteyttä';

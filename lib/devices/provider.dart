@@ -9,6 +9,7 @@ library;
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+
 import '../core/io_http.dart';
 
 import '../drivers/driver.dart';
@@ -143,6 +144,10 @@ abstract class DeviceProvider {
   String get descEn;
   String get category; // 'power', 'light', 'hub', 'cloud'
   List<String> get keywords;
+
+  /// t298u: needs a technical middleman (MQTT broker, Z-Wave JS server): shown in simple mode only
+  /// when the user searches (e.g. "aqara"), always in advanced mode.
+  bool get advanced => false;
   ProviderKind get kind => ProviderKind.local;
   PairMode get pairMode;
   List<String> get mdnsTypes => const [];

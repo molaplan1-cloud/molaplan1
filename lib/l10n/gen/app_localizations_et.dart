@@ -7598,16 +7598,40 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s8c921666e5 => 'Node';
 
   @override
+  String get s11be58bda2 => 'Seadme number Z-Wave JS UI seadmete loendis (ID).';
+
+  @override
   String get s3c1d88fa83 => 'Command class';
+
+  @override
+  String get s4c3afcaf0d =>
+      'Ma ei tea, kas te ei tea, kas te ei saa aru, et te ei saa aru, kas te ei saa aru, et te ei saa aru, kas te ei saa aru, et te ei saa aru, kas te ei saa.';
 
   @override
   String get se51e5f226d => 'Endpoint';
 
   @override
+  String get s04605ae798 => 'Möödapääsetav seade, tavaliselt on see olemas.';
+
+  @override
   String get s106bae7046 => 'Kinnisvara';
 
   @override
+  String get s341f9093c6 => 'Maksimaalne väärtus, mida saab kasutada.';
+
+  @override
   String get sb29bffe780 => 'Omandivõti';
+
+  @override
+  String get se0f247676e =>
+      'Mõnda väärtust (nt MÕÕTE TÜÜBIKINNITUS) Näidatakse Z-Wave JS-i väärtuses.';
+
+  @override
+  String get s6a09bb69b3 => 'Seadav omadus, nt targetValue.';
+
+  @override
+  String get s914c361844 =>
+      '[Loe:] {{value}} = kaardi väärtus (true/false või number).';
 
   @override
   String get s60ceb3dcc4 => 'server ei ole kättesaadav';

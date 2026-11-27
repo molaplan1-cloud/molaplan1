@@ -174,6 +174,8 @@ List<TileConfig> zwaveTiles(Map node, String connId, {String? title, String lang
 
 class ZwaveJsProvider extends DeviceProvider {
   @override
+  bool get advanced => true;
+  @override
   String get id => 'zwavejs';
   @override
   String get fi => 'Z-Wave (Z-Wave JS)';

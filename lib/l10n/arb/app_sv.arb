@@ -7255,8 +7255,36 @@
   "x-mt": true
  },
  "sfb74e5d7c3": "Z-Wave JS (Z-Wave JS UI)",
+ "sd99fdf7d94": "WebSocket URL",
+ "@sd99fdf7d94": {
+  "x-mt": true
+ },
+ "sb58c79788d": "Z-Wave JS UI: Inställningar → Home Assistant → WS Server (port 3000) på.",
+ "@sb58c79788d": {
+  "x-mt": true
+ },
+ "s8c921666e5": "Nod",
+ "@s8c921666e5": {
+  "x-mt": true
+ },
  "s3c1d88fa83": "Command class",
  "se51e5f226d": "Endpoint",
+ "s106bae7046": "Fastighet",
+ "@s106bae7046": {
+  "x-mt": true
+ },
+ "sb29bffe780": "Fastighet nyckel",
+ "@sb29bffe780": {
+  "x-mt": true
+ },
+ "s60ceb3dcc4": "Servern inte nåbar",
+ "@s60ceb3dcc4": {
+  "x-mt": true
+ },
+ "s6e32a590a2": "noder",
+ "@s6e32a590a2": {
+  "x-mt": true
+ },
  "s36fb6ba26f": "Modbus TCP",
  "sdc5301b750": "Enhet Id",
  "@sdc5301b750": {
@@ -10176,10 +10204,54 @@
   "x-mt": true
  },
  "s5a482978b7": "Phoscon / deCONZ (ConBee, RaspBee)",
+ "s68dc51749b": "Dresden elektronik Phoscon gateway: dess Zigbee lampor, sensorer, rum och scener över hemnätverket.",
+ "@s68dc51749b": {
+  "x-mt": true
+ },
+ "se8773ef198": "Phoscon app → Gateway → IP-adress (port är ofta 80 eller 8080, t.ex. 192.168.1.20:8080).",
+ "@se8773ef198": {
+  "x-mt": true
+ },
+ "sa7f2076847": "Open Phoscon → Inställningar → Gateway → Avancerad → \"Authenticate app\". Vänta här.",
+ "@sa7f2076847": {
+  "x-mt": true
+ },
  "sceabe202da": "camera_",
+ "s7d714140d7": "Nuki Bridge (smarta lås, Öppnare)",
+ "@s7d714140d7": {
+  "x-mt": true
+ },
+ "s4de40f64d9": "Nuki smarta lås och Opener via Nuki Bridge på hemnätverket: lås, låsa upp, unlatch, stat.",
+ "@s4de40f64d9": {
+  "x-mt": true
+ },
+ "s482d16c3ce": "Nuki app → Bridge → Hantera → aktivera HTTP API; IP-adressen visas där (port 8080).",
+ "@s482d16c3ce": {
+  "x-mt": true
+ },
+ "sbd74055e48": "Tryck kort på knappen på Nuki Bridge nu (dess ljus slår på). Vänta här.",
+ "@sbd74055e48": {
+  "x-mt": true
+ },
+ "sf363d9cd29": "Unlatch",
+ "@sf363d9cd29": {
+  "x-mt": true
+ },
  "sd37644b17a": "1=Locked;3=Unlocked;5=Unlocked;6=Unlatched;4=Locking;2=Unlocking",
+ "s295b846c44": "batteribatteri",
+ "@s295b846c44": {
+  "x-mt": true
+ },
  "s0e57291b85": "255=Locked;0=Unlocked",
  "s280313a20e": "Z-Wave (Z-Wave JS)",
+ "sb8e26517e5": "Varje Z-Wave-enhet genom Z-Wave JS UI: Aeotec, FIBARO, Heatit, HELTUN, MCO Home, Philio, POPP, Sensative, Danalock ...",
+ "@sb8e26517e5": {
+  "x-mt": true
+ },
+ "sa429a60008": "Z-Wave JS UI-maskinen (port 3000). Z-Wave JS UI: Inställningar → Home Assistant → WS Server på.",
+ "@sa429a60008": {
+  "x-mt": true
+ },
  "s1a4eab1f51": "°C",
  "s9e731440d8": "%",
  "s77c638e731": "%",
@@ -10229,8 +10301,76 @@
  "sfa12d7fdd7": "true=LEAK!;false=Dry",
  "s1f18c0f400": "true=SMOKE!;false=OK",
  "s0f299d2e07": "Nanoleaf",
+ "s55f2d35756": "Nanoleaf paneler (Shapes, Canvas, Lines, Elements): kraft, ljusstyrka och effekter över hemnätverket.",
+ "@s55f2d35756": {
+  "x-mt": true
+ },
+ "s05b968ee5c": "Nanoleaf app → enhet → Enhet info → IP-adress, eller routerns enhetslista.",
+ "@s05b968ee5c": {
+  "x-mt": true
+ },
+ "s620e38e4d3": "Håll Nanoleaf-knappen i 5-7 sekunder tills lamporna blinkar. Vänta här.",
+ "@s620e38e4d3": {
+  "x-mt": true
+ },
+ "s8f97e2baf8": "WLED LED-remsor (GLEDOPTO, Athom...)",
+ "@s8f97e2baf8": {
+  "x-mt": true
+ },
+ "se27117cf23": "WLED-kontroller: kraft, ljusstyrka och sparade förinställningar över hemnätverket. Inget moln, ingen parning.",
+ "@se27117cf23": {
+  "x-mt": true
+ },
+ "secd19de5a0": "WLED-appen eller routerns enhetslista (\"wled-...\").",
+ "@secd19de5a0": {
+  "x-mt": true
+ },
+ "s4819add77e": "auto auto auto auto auto",
+ "@s4819add77e": {
+  "x-mt": true
+ },
+ "s4117cb92a9": "auto auto auto auto auto",
+ "@s4117cb92a9": {
+  "x-mt": true
+ },
+ "s4619bd31a8": "Bult",
+ "@s4619bd31a8": {
+  "x-mt": true
+ },
+ "s606cbaad36": "Bult",
+ "@s606cbaad36": {
+  "x-mt": true
+ },
+ "s2687c0eee6": "Bult",
+ "@s2687c0eee6": {
+  "x-mt": true
+ },
+ "s31d19d826e": "Bult",
+ "@s31d19d826e": {
+  "x-mt": true
+ },
+ "se7d1f9f76e": "auto auto auto auto auto",
+ "@se7d1f9f76e": {
+  "x-mt": true
+ },
+ "sd993224ef3": "auto auto auto auto auto",
+ "@sd993224ef3": {
+  "x-mt": true
+ },
  "s6f53f8cea7": "LOCK=Locked;UNLOCK=Unlocked",
  "s264f553034": "Zigbee (Zigbee2MQTT)",
+ "s1a57c524f8": "Varje Zigbee2MQTT-enhet på en gång: Aqara, MOES, frient, Heiman, GLEDOPTO, SONOFF, Danfoss Ally, Salus, NOUS, IKEA ... Behöver Zigbee2MQTT och en MQTT-mäklare.",
+ "@s1a57c524f8": {
+  "x-mt": true
+ },
+ "sb3557cace9": "MQTT-mäklaren (t.ex. Mosquitto) som Zigbee2MQTT använder.",
+ "@sb3557cace9": {
+  "x-mt": true
+ },
+ "s7f5f8e33cf": "Zigbee2MQTT inställning base_topic (standard zigbee2mqtt).",
+ "@s7f5f8e33cf": {
+  "x-mt": true
+ },
  "sd63d34bfe9": "Kan inte läsa YAML: {p0}",
  "@sd63d34bfe9": {
   "x-mt": true
@@ -10478,144 +10618,32 @@
  "@s7fc017b0f0": {
   "x-mt": true
  },
- "sd99fdf7d94": "WebSocket URL",
- "@sd99fdf7d94": {
+ "s11be58bda2": "Enhetsnumret i Z-Wave JS UI-enhetslistan (ID).",
+ "@s11be58bda2": {
   "x-mt": true
  },
- "sb58c79788d": "Z-Wave JS UI: Inställningar → Home Assistant → WS Server (port 3000) på.",
- "@sb58c79788d": {
+ "s4c3afcaf0d": "Befälhavarklassen av värdet: 37 = switch, 38 = dimmer, 49 = sensor, 50 = meter, 67 = setpoint.",
+ "@s4c3afcaf0d": {
   "x-mt": true
  },
- "s8c921666e5": "Nod",
- "@s8c921666e5": {
+ "s04605ae798": "Kanalen för en flerkanalsenhet; vanligtvis 0.",
+ "@s04605ae798": {
   "x-mt": true
  },
- "s106bae7046": "Fastighet",
- "@s106bae7046": {
+ "s341f9093c6": "Fastigheter att läsa, t.ex. nuvarande värde.",
+ "@s341f9093c6": {
   "x-mt": true
  },
- "sb29bffe780": "Fastighet nyckel",
- "@sb29bffe780": {
+ "se0f247676e": "Endast för vissa värden (t.ex. mätartyp). visas i värdedetaljerna i Z-Wave JS UI.",
+ "@se0f247676e": {
   "x-mt": true
  },
- "s60ceb3dcc4": "Servern inte nåbar",
- "@s60ceb3dcc4": {
+ "s6a09bb69b3": "Fastigheter att ställa in, t.ex. målvärde.",
+ "@s6a09bb69b3": {
   "x-mt": true
  },
- "s6e32a590a2": "noder",
- "@s6e32a590a2": {
-  "x-mt": true
- },
- "s68dc51749b": "Dresden elektronik Phoscon gateway: dess Zigbee lampor, sensorer, rum och scener över hemnätverket.",
- "@s68dc51749b": {
-  "x-mt": true
- },
- "se8773ef198": "Phoscon app → Gateway → IP-adress (port är ofta 80 eller 8080, t.ex. 192.168.1.20:8080).",
- "@se8773ef198": {
-  "x-mt": true
- },
- "sa7f2076847": "Open Phoscon → Inställningar → Gateway → Avancerad → \"Authenticate app\". Vänta här.",
- "@sa7f2076847": {
-  "x-mt": true
- },
- "s7d714140d7": "Nuki Bridge (smarta lås, Öppnare)",
- "@s7d714140d7": {
-  "x-mt": true
- },
- "s4de40f64d9": "Nuki smarta lås och Opener via Nuki Bridge på hemnätverket: lås, låsa upp, unlatch, stat.",
- "@s4de40f64d9": {
-  "x-mt": true
- },
- "s482d16c3ce": "Nuki app → Bridge → Hantera → aktivera HTTP API; IP-adressen visas där (port 8080).",
- "@s482d16c3ce": {
-  "x-mt": true
- },
- "sbd74055e48": "Tryck kort på knappen på Nuki Bridge nu (dess ljus slår på). Vänta här.",
- "@sbd74055e48": {
-  "x-mt": true
- },
- "sf363d9cd29": "Unlatch",
- "@sf363d9cd29": {
-  "x-mt": true
- },
- "s295b846c44": "batteribatteri",
- "@s295b846c44": {
-  "x-mt": true
- },
- "sb8e26517e5": "Varje Z-Wave-enhet genom Z-Wave JS UI: Aeotec, FIBARO, Heatit, HELTUN, MCO Home, Philio, POPP, Sensative, Danalock ...",
- "@sb8e26517e5": {
-  "x-mt": true
- },
- "sa429a60008": "Z-Wave JS UI-maskinen (port 3000). Z-Wave JS UI: Inställningar → Home Assistant → WS Server på.",
- "@sa429a60008": {
-  "x-mt": true
- },
- "s55f2d35756": "Nanoleaf paneler (Shapes, Canvas, Lines, Elements): kraft, ljusstyrka och effekter över hemnätverket.",
- "@s55f2d35756": {
-  "x-mt": true
- },
- "s05b968ee5c": "Nanoleaf app → enhet → Enhet info → IP-adress, eller routerns enhetslista.",
- "@s05b968ee5c": {
-  "x-mt": true
- },
- "s620e38e4d3": "Håll Nanoleaf-knappen i 5-7 sekunder tills lamporna blinkar. Vänta här.",
- "@s620e38e4d3": {
-  "x-mt": true
- },
- "s8f97e2baf8": "WLED LED-remsor (GLEDOPTO, Athom...)",
- "@s8f97e2baf8": {
-  "x-mt": true
- },
- "se27117cf23": "WLED-kontroller: kraft, ljusstyrka och sparade förinställningar över hemnätverket. Inget moln, ingen parning.",
- "@se27117cf23": {
-  "x-mt": true
- },
- "secd19de5a0": "WLED-appen eller routerns enhetslista (\"wled-...\").",
- "@secd19de5a0": {
-  "x-mt": true
- },
- "s4819add77e": "auto auto auto auto auto",
- "@s4819add77e": {
-  "x-mt": true
- },
- "s4117cb92a9": "auto auto auto auto auto",
- "@s4117cb92a9": {
-  "x-mt": true
- },
- "s4619bd31a8": "Bult",
- "@s4619bd31a8": {
-  "x-mt": true
- },
- "s606cbaad36": "Bult",
- "@s606cbaad36": {
-  "x-mt": true
- },
- "s2687c0eee6": "Bult",
- "@s2687c0eee6": {
-  "x-mt": true
- },
- "s31d19d826e": "Bult",
- "@s31d19d826e": {
-  "x-mt": true
- },
- "se7d1f9f76e": "auto auto auto auto auto",
- "@se7d1f9f76e": {
-  "x-mt": true
- },
- "sd993224ef3": "auto auto auto auto auto",
- "@sd993224ef3": {
-  "x-mt": true
- },
- "s1a57c524f8": "Varje Zigbee2MQTT-enhet på en gång: Aqara, MOES, frient, Heiman, GLEDOPTO, SONOFF, Danfoss Ally, Salus, NOUS, IKEA ... Behöver Zigbee2MQTT och en MQTT-mäklare.",
- "@s1a57c524f8": {
-  "x-mt": true
- },
- "sb3557cace9": "MQTT-mäklaren (t.ex. Mosquitto) som Zigbee2MQTT använder.",
- "@sb3557cace9": {
-  "x-mt": true
- },
- "s7f5f8e33cf": "Zigbee2MQTT inställning base_topic (standard zigbee2mqtt).",
- "@s7f5f8e33cf": {
+ "s914c361844": "'Värde att skicka; {{value}} = kortvärdet (sann/falsk eller ett nummer).'",
+ "@s914c361844": {
   "x-mt": true
  }
 }

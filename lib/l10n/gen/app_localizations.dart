@@ -13805,11 +13805,23 @@ abstract class AppLocalizations {
   /// **'Node'**
   String get s8c921666e5;
 
+  /// fi: Laitteen numero Z-Wave JS UI:n laitelistassa (ID).
+  ///
+  /// In en, this message translates to:
+  /// **'The device number in the Z-Wave JS UI device list (ID).'**
+  String get s11be58bda2;
+
   /// fi: Command class
   ///
   /// In en, this message translates to:
   /// **'Command class'**
   String get s3c1d88fa83;
+
+  /// fi: Arvon komentoluokka: 37 = kytkin, 38 = himmennin, 49 = anturi, 50 = mittari, 67 = asetusarvo.
+  ///
+  /// In en, this message translates to:
+  /// **'Command class of the value: 37 = switch, 38 = dimmer, 49 = sensor, 50 = meter, 67 = setpoint.'**
+  String get s4c3afcaf0d;
 
   /// fi: Endpoint
   ///
@@ -13817,17 +13829,47 @@ abstract class AppLocalizations {
   /// **'Endpoint'**
   String get se51e5f226d;
 
+  /// fi: Monikanavaisen laitteen kanava; yleensä 0.
+  ///
+  /// In en, this message translates to:
+  /// **'Channel of a multi-channel device; usually 0.'**
+  String get s04605ae798;
+
   /// fi: Ominaisuus
   ///
   /// In en, this message translates to:
   /// **'Property'**
   String get s106bae7046;
 
+  /// fi: Luettava ominaisuus, esim. currentValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Property to read, e.g. currentValue.'**
+  String get s341f9093c6;
+
   /// fi: Ominaisuuden avain
   ///
   /// In en, this message translates to:
   /// **'Property key'**
   String get sb29bffe780;
+
+  /// fi: Vain osalla arvoista (esim. mittarin tyyppi). Näkyy Z-Wave JS UI:n arvon tiedoissa.
+  ///
+  /// In en, this message translates to:
+  /// **'Only for some values (e.g. meter type). Shown in the value details in Z-Wave JS UI.'**
+  String get se0f247676e;
+
+  /// fi: Asetettava ominaisuus, esim. targetValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Property to set, e.g. targetValue.'**
+  String get s6a09bb69b3;
+
+  /// fi: Lähetettävä arvo; {{value}} = ruudun arvo (true/false tai numero).
+  ///
+  /// In en, this message translates to:
+  /// **'\'Value to send; {{value}} = the tile value (true/false or a number).\''**
+  String get s914c361844;
 
   /// fi: palvelimeen ei saatu yhteyttä
   ///

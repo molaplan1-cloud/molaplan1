@@ -155,7 +155,9 @@ class _TemplateGridState extends State<TemplateGrid> {
     final st = AppScope.of(context);
     final lang = st.lang;
     final adv = st.config.advanced;
-    final brands = deviceProviders.where((p) => _match('${p.fi} ${p.en} ${p.descFi}', p.keywords)).toList();
+    final brands = deviceProviders
+        .where((p) => (adv || !p.advanced || q.isNotEmpty) && _match('${p.fi} ${p.en} ${p.descFi}', p.keywords))
+        .toList();
     final templates = deviceTemplates
         .where((t) => t.id != 'shelly' && (adv || !t.advanced) && _match('${t.fi} ${t.en} ${t.descFi} ${t.id}'))
         .toList();

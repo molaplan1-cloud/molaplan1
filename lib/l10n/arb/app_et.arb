@@ -7288,8 +7288,36 @@
   "x-mt": true
  },
  "sfb74e5d7c3": "Z-Wave JS (Z-Wave JS UI)",
+ "sd99fdf7d94": "WebSocketi URL",
+ "@sd99fdf7d94": {
+  "x-mt": true
+ },
+ "sb58c79788d": "Z-Wave JS UI: Seaded → Home Assistant → WS Server (port 3000) sisse lülitatud.",
+ "@sb58c79788d": {
+  "x-mt": true
+ },
+ "s8c921666e5": "Node",
+ "@s8c921666e5": {
+  "x-mt": true
+ },
  "s3c1d88fa83": "Command class",
  "se51e5f226d": "Endpoint",
+ "s106bae7046": "Kinnisvara",
+ "@s106bae7046": {
+  "x-mt": true
+ },
+ "sb29bffe780": "Omandivõti",
+ "@sb29bffe780": {
+  "x-mt": true
+ },
+ "s60ceb3dcc4": "server ei ole kättesaadav",
+ "@s60ceb3dcc4": {
+  "x-mt": true
+ },
+ "s6e32a590a2": "sõlmed",
+ "@s6e32a590a2": {
+  "x-mt": true
+ },
  "s36fb6ba26f": "Modbus TCP",
  "sdc5301b750": "Ühiku ID",
  "@sdc5301b750": {
@@ -10221,10 +10249,54 @@
   "x-mt": true
  },
  "s5a482978b7": "Phoscon / deCONZ (ConBee, RaspBee)",
+ "s68dc51749b": "Dresden elektronik Phosconi värav: selle Zigbee tuled, andurid, ruumid ja stseenid koduvõrgus.",
+ "@s68dc51749b": {
+  "x-mt": true
+ },
+ "se8773ef198": "Phoscon app → Gateway → IP aadress (port on sageli 80 või 8080, nt 192.168.1.20:8080).",
+ "@se8773ef198": {
+  "x-mt": true
+ },
+ "sa7f2076847": "Open Phoscon → Settings → Gateway → Advanced → \"Autentida rakendus\". Oota siin.",
+ "@sa7f2076847": {
+  "x-mt": true
+ },
  "sceabe202da": "camera_",
+ "s7d714140d7": "Nuki sild (nutikad lukud, avaja)",
+ "@s7d714140d7": {
+  "x-mt": true
+ },
+ "s4de40f64d9": "Nuki nutikad lukud ja avaja Nuki silla kaudu koduvõrgus: lukk, lukust lahti, lukust lahti, olek.",
+ "@s4de40f64d9": {
+  "x-mt": true
+ },
+ "s482d16c3ce": "Nuki app → Bridge → Manage → võimaldab HTTP API-d; seal kuvatakse IP-aadress (port 8080).",
+ "@s482d16c3ce": {
+  "x-mt": true
+ },
+ "sbd74055e48": "Vajuta nüüd lühidalt Nuki silla nuppu (selle tuli lülitub sisse). Oota siin.",
+ "@sbd74055e48": {
+  "x-mt": true
+ },
+ "sf363d9cd29": "lukust lahti",
+ "@sf363d9cd29": {
+  "x-mt": true
+ },
  "sd37644b17a": "1=Locked;3=Unlocked;5=Unlocked;6=Unlatched;4=Locking;2=Unlocking",
+ "s295b846c44": "aku",
+ "@s295b846c44": {
+  "x-mt": true
+ },
  "s0e57291b85": "255=Locked;0=Unlocked",
  "s280313a20e": "Z-Wave (Z-Wave JS)",
+ "sb8e26517e5": "Iga Z-Wave seade Z-Wave JS UI kaudu: Aeotec, FIBARO, Heatit, HELTUN, MCO Home, Philio, POPP, Sensative, Danalock.",
+ "@sb8e26517e5": {
+  "x-mt": true
+ },
+ "sa429a60008": "Z-Wave JS UI masin (port 3000). Z-Wave JS UI: Settings → Home Assistant → WS Server sees.",
+ "@sa429a60008": {
+  "x-mt": true
+ },
  "s1a4eab1f51": "°C",
  "s9e731440d8": "%",
  "s77c638e731": "%",
@@ -10274,8 +10346,76 @@
  "sfa12d7fdd7": "true=LEAK!;false=Dry",
  "s1f18c0f400": "true=SMOKE!;false=OK",
  "s0f299d2e07": "Nanoleaf",
+ "s55f2d35756": "Nanoleafi paneelid (kujud, lõuend, jooned, elemendid): võimsus, heledus ja efektid koduvõrgus.",
+ "@s55f2d35756": {
+  "x-mt": true
+ },
+ "s05b968ee5c": "Nanoleafi rakendus → seade → Seadme info → IP-aadress või ruuteri seadmete loend.",
+ "@s05b968ee5c": {
+  "x-mt": true
+ },
+ "s620e38e4d3": "Hoidke Nanoleafi toitenuppu 5–7 sekundit, kuni tuled vilguvad. Oodake siin.",
+ "@s620e38e4d3": {
+  "x-mt": true
+ },
+ "s8f97e2baf8": "WLED LED ribad (GLEDOPTO, Athom...)",
+ "@s8f97e2baf8": {
+  "x-mt": true
+ },
+ "se27117cf23": "WLED- kontrollerid: võimsus, heledus ja salvestatud eelseadistused koduvõrgus. Ei mingit pilve, ei mingit sidumist.",
+ "@se27117cf23": {
+  "x-mt": true
+ },
+ "secd19de5a0": "WLED rakendus või ruuteri seadmete nimekiri (\"wled-...\").",
+ "@secd19de5a0": {
+  "x-mt": true
+ },
+ "s4819add77e": "auto",
+ "@s4819add77e": {
+  "x-mt": true
+ },
+ "s4117cb92a9": "auto",
+ "@s4117cb92a9": {
+  "x-mt": true
+ },
+ "s4619bd31a8": "polt",
+ "@s4619bd31a8": {
+  "x-mt": true
+ },
+ "s606cbaad36": "polt",
+ "@s606cbaad36": {
+  "x-mt": true
+ },
+ "s2687c0eee6": "polt",
+ "@s2687c0eee6": {
+  "x-mt": true
+ },
+ "s31d19d826e": "polt",
+ "@s31d19d826e": {
+  "x-mt": true
+ },
+ "se7d1f9f76e": "auto",
+ "@se7d1f9f76e": {
+  "x-mt": true
+ },
+ "sd993224ef3": "auto",
+ "@sd993224ef3": {
+  "x-mt": true
+ },
  "s6f53f8cea7": "LOCK=Locked;UNLOCK=Unlocked",
  "s264f553034": "Zigbee (Zigbee2MQTT)",
+ "s1a57c524f8": "Iga Zigbee2MQTT seade korraga: Aqara, MOES, frient, Heiman, GLEDOPTO, SONOFF, Danfoss Ally, Salus, NOUS, IKEA... Vajab Zigbee2MQTT ja MQTT vahendajat.",
+ "@s1a57c524f8": {
+  "x-mt": true
+ },
+ "sb3557cace9": "MQTT maakler (nt Mosquitto), mida Zigbee2MQTT kasutab.",
+ "@sb3557cace9": {
+  "x-mt": true
+ },
+ "s7f5f8e33cf": "Zigbee2MQTT seadistuse baas_ topic (vaikimisi zigbee2mqtt).",
+ "@s7f5f8e33cf": {
+  "x-mt": true
+ },
  "sd63d34bfe9": "YAML- i lugemine nurjus: {p0}",
  "@sd63d34bfe9": {
   "x-mt": true
@@ -10523,144 +10663,32 @@
  "@s7fc017b0f0": {
   "x-mt": true
  },
- "sd99fdf7d94": "WebSocketi URL",
- "@sd99fdf7d94": {
+ "s11be58bda2": "Seadme number Z-Wave JS UI seadmete loendis (ID).",
+ "@s11be58bda2": {
   "x-mt": true
  },
- "sb58c79788d": "Z-Wave JS UI: Seaded → Home Assistant → WS Server (port 3000) sisse lülitatud.",
- "@sb58c79788d": {
+ "s4c3afcaf0d": "Ma ei tea, kas te ei tea, kas te ei saa aru, et te ei saa aru, kas te ei saa aru, et te ei saa aru, kas te ei saa aru, et te ei saa aru, kas te ei saa.",
+ "@s4c3afcaf0d": {
   "x-mt": true
  },
- "s8c921666e5": "Node",
- "@s8c921666e5": {
+ "s04605ae798": "Möödapääsetav seade, tavaliselt on see olemas.",
+ "@s04605ae798": {
   "x-mt": true
  },
- "s106bae7046": "Kinnisvara",
- "@s106bae7046": {
+ "s341f9093c6": "Maksimaalne väärtus, mida saab kasutada.",
+ "@s341f9093c6": {
   "x-mt": true
  },
- "sb29bffe780": "Omandivõti",
- "@sb29bffe780": {
+ "se0f247676e": "Mõnda väärtust (nt MÕÕTE TÜÜBIKINNITUS) Näidatakse Z-Wave JS-i väärtuses.",
+ "@se0f247676e": {
   "x-mt": true
  },
- "s60ceb3dcc4": "server ei ole kättesaadav",
- "@s60ceb3dcc4": {
+ "s6a09bb69b3": "Seadav omadus, nt targetValue.",
+ "@s6a09bb69b3": {
   "x-mt": true
  },
- "s6e32a590a2": "sõlmed",
- "@s6e32a590a2": {
-  "x-mt": true
- },
- "s68dc51749b": "Dresden elektronik Phosconi värav: selle Zigbee tuled, andurid, ruumid ja stseenid koduvõrgus.",
- "@s68dc51749b": {
-  "x-mt": true
- },
- "se8773ef198": "Phoscon app → Gateway → IP aadress (port on sageli 80 või 8080, nt 192.168.1.20:8080).",
- "@se8773ef198": {
-  "x-mt": true
- },
- "sa7f2076847": "Open Phoscon → Settings → Gateway → Advanced → \"Autentida rakendus\". Oota siin.",
- "@sa7f2076847": {
-  "x-mt": true
- },
- "s7d714140d7": "Nuki sild (nutikad lukud, avaja)",
- "@s7d714140d7": {
-  "x-mt": true
- },
- "s4de40f64d9": "Nuki nutikad lukud ja avaja Nuki silla kaudu koduvõrgus: lukk, lukust lahti, lukust lahti, olek.",
- "@s4de40f64d9": {
-  "x-mt": true
- },
- "s482d16c3ce": "Nuki app → Bridge → Manage → võimaldab HTTP API-d; seal kuvatakse IP-aadress (port 8080).",
- "@s482d16c3ce": {
-  "x-mt": true
- },
- "sbd74055e48": "Vajuta nüüd lühidalt Nuki silla nuppu (selle tuli lülitub sisse). Oota siin.",
- "@sbd74055e48": {
-  "x-mt": true
- },
- "sf363d9cd29": "lukust lahti",
- "@sf363d9cd29": {
-  "x-mt": true
- },
- "s295b846c44": "aku",
- "@s295b846c44": {
-  "x-mt": true
- },
- "sb8e26517e5": "Iga Z-Wave seade Z-Wave JS UI kaudu: Aeotec, FIBARO, Heatit, HELTUN, MCO Home, Philio, POPP, Sensative, Danalock.",
- "@sb8e26517e5": {
-  "x-mt": true
- },
- "sa429a60008": "Z-Wave JS UI masin (port 3000). Z-Wave JS UI: Settings → Home Assistant → WS Server sees.",
- "@sa429a60008": {
-  "x-mt": true
- },
- "s55f2d35756": "Nanoleafi paneelid (kujud, lõuend, jooned, elemendid): võimsus, heledus ja efektid koduvõrgus.",
- "@s55f2d35756": {
-  "x-mt": true
- },
- "s05b968ee5c": "Nanoleafi rakendus → seade → Seadme info → IP-aadress või ruuteri seadmete loend.",
- "@s05b968ee5c": {
-  "x-mt": true
- },
- "s620e38e4d3": "Hoidke Nanoleafi toitenuppu 5–7 sekundit, kuni tuled vilguvad. Oodake siin.",
- "@s620e38e4d3": {
-  "x-mt": true
- },
- "s8f97e2baf8": "WLED LED ribad (GLEDOPTO, Athom...)",
- "@s8f97e2baf8": {
-  "x-mt": true
- },
- "se27117cf23": "WLED- kontrollerid: võimsus, heledus ja salvestatud eelseadistused koduvõrgus. Ei mingit pilve, ei mingit sidumist.",
- "@se27117cf23": {
-  "x-mt": true
- },
- "secd19de5a0": "WLED rakendus või ruuteri seadmete nimekiri (\"wled-...\").",
- "@secd19de5a0": {
-  "x-mt": true
- },
- "s4819add77e": "auto",
- "@s4819add77e": {
-  "x-mt": true
- },
- "s4117cb92a9": "auto",
- "@s4117cb92a9": {
-  "x-mt": true
- },
- "s4619bd31a8": "polt",
- "@s4619bd31a8": {
-  "x-mt": true
- },
- "s606cbaad36": "polt",
- "@s606cbaad36": {
-  "x-mt": true
- },
- "s2687c0eee6": "polt",
- "@s2687c0eee6": {
-  "x-mt": true
- },
- "s31d19d826e": "polt",
- "@s31d19d826e": {
-  "x-mt": true
- },
- "se7d1f9f76e": "auto",
- "@se7d1f9f76e": {
-  "x-mt": true
- },
- "sd993224ef3": "auto",
- "@sd993224ef3": {
-  "x-mt": true
- },
- "s1a57c524f8": "Iga Zigbee2MQTT seade korraga: Aqara, MOES, frient, Heiman, GLEDOPTO, SONOFF, Danfoss Ally, Salus, NOUS, IKEA... Vajab Zigbee2MQTT ja MQTT vahendajat.",
- "@s1a57c524f8": {
-  "x-mt": true
- },
- "sb3557cace9": "MQTT maakler (nt Mosquitto), mida Zigbee2MQTT kasutab.",
- "@sb3557cace9": {
-  "x-mt": true
- },
- "s7f5f8e33cf": "Zigbee2MQTT seadistuse baas_ topic (vaikimisi zigbee2mqtt).",
- "@s7f5f8e33cf": {
+ "s914c361844": "'[Loe:] {{value}} = kaardi väärtus (true/false või number).'",
+ "@s914c361844": {
   "x-mt": true
  }
 }

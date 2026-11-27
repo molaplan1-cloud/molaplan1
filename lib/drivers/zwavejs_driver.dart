@@ -43,19 +43,106 @@ class ZwaveJsDriver extends Driver {
       ),
     ],
     readFields: [
-      FieldSpec('node', 'Laite (node)', 'Node', kind: FieldKind.number, required: true),
-      FieldSpec('cc', 'Command class', 'Command class', kind: FieldKind.number, hint: '37', required: true),
-      FieldSpec('endpoint', 'Endpoint', 'Endpoint', kind: FieldKind.number, defaultValue: 0),
-      FieldSpec('property', 'Ominaisuus', 'Property', hint: 'currentValue', required: true),
-      FieldSpec('propertyKey', 'Ominaisuuden avain', 'Property key', advanced: true),
+      FieldSpec(
+        'node',
+        'Laite (node)',
+        'Node',
+        kind: FieldKind.number,
+        required: true,
+        helpFi: 'Laitteen numero Z-Wave JS UI:n laitelistassa (ID).',
+        helpEn: 'The device number in the Z-Wave JS UI device list (ID).',
+      ),
+      FieldSpec(
+        'cc',
+        'Command class',
+        'Command class',
+        kind: FieldKind.number,
+        hint: '37',
+        required: true,
+        helpFi: 'Arvon komentoluokka: 37 = kytkin, 38 = himmennin, 49 = anturi, 50 = mittari, 67 = asetusarvo.',
+        helpEn: 'Command class of the value: 37 = switch, 38 = dimmer, 49 = sensor, 50 = meter, 67 = setpoint.',
+      ),
+      FieldSpec(
+        'endpoint',
+        'Endpoint',
+        'Endpoint',
+        kind: FieldKind.number,
+        defaultValue: 0,
+        helpFi: 'Monikanavaisen laitteen kanava; yleensä 0.',
+        helpEn: 'Channel of a multi-channel device; usually 0.',
+      ),
+      FieldSpec(
+        'property',
+        'Ominaisuus',
+        'Property',
+        hint: 'currentValue',
+        required: true,
+        helpFi: 'Luettava ominaisuus, esim. currentValue.',
+        helpEn: 'Property to read, e.g. currentValue.',
+      ),
+      FieldSpec(
+        'propertyKey',
+        'Ominaisuuden avain',
+        'Property key',
+        advanced: true,
+        helpFi: 'Vain osalla arvoista (esim. mittarin tyyppi). Näkyy Z-Wave JS UI:n arvon tiedoissa.',
+        helpEn: 'Only for some values (e.g. meter type). Shown in the value details in Z-Wave JS UI.',
+      ),
     ],
     commandFields: [
-      FieldSpec('node', 'Laite (node)', 'Node', kind: FieldKind.number, required: true),
-      FieldSpec('cc', 'Command class', 'Command class', kind: FieldKind.number, hint: '37', required: true),
-      FieldSpec('endpoint', 'Endpoint', 'Endpoint', kind: FieldKind.number, defaultValue: 0),
-      FieldSpec('property', 'Ominaisuus', 'Property', hint: 'targetValue', required: true),
-      FieldSpec('propertyKey', 'Ominaisuuden avain', 'Property key', advanced: true),
-      FieldSpec('value', 'Arvo ({{value}})', 'Value ({{value}})', defaultValue: '{{value}}'),
+      FieldSpec(
+        'node',
+        'Laite (node)',
+        'Node',
+        kind: FieldKind.number,
+        required: true,
+        helpFi: 'Laitteen numero Z-Wave JS UI:n laitelistassa (ID).',
+        helpEn: 'The device number in the Z-Wave JS UI device list (ID).',
+      ),
+      FieldSpec(
+        'cc',
+        'Command class',
+        'Command class',
+        kind: FieldKind.number,
+        hint: '37',
+        required: true,
+        helpFi: 'Arvon komentoluokka: 37 = kytkin, 38 = himmennin, 49 = anturi, 50 = mittari, 67 = asetusarvo.',
+        helpEn: 'Command class of the value: 37 = switch, 38 = dimmer, 49 = sensor, 50 = meter, 67 = setpoint.',
+      ),
+      FieldSpec(
+        'endpoint',
+        'Endpoint',
+        'Endpoint',
+        kind: FieldKind.number,
+        defaultValue: 0,
+        helpFi: 'Monikanavaisen laitteen kanava; yleensä 0.',
+        helpEn: 'Channel of a multi-channel device; usually 0.',
+      ),
+      FieldSpec(
+        'property',
+        'Ominaisuus',
+        'Property',
+        hint: 'targetValue',
+        required: true,
+        helpFi: 'Asetettava ominaisuus, esim. targetValue.',
+        helpEn: 'Property to set, e.g. targetValue.',
+      ),
+      FieldSpec(
+        'propertyKey',
+        'Ominaisuuden avain',
+        'Property key',
+        advanced: true,
+        helpFi: 'Vain osalla arvoista (esim. mittarin tyyppi). Näkyy Z-Wave JS UI:n arvon tiedoissa.',
+        helpEn: 'Only for some values (e.g. meter type). Shown in the value details in Z-Wave JS UI.',
+      ),
+      FieldSpec(
+        'value',
+        'Arvo ({{value}})',
+        'Value ({{value}})',
+        defaultValue: '{{value}}',
+        helpFi: 'Lähetettävä arvo; {{value}} = ruudun arvo (true/false tai numero).',
+        helpEn: 'Value to send; {{value}} = the tile value (true/false or a number).',
+      ),
     ],
   );
 
@@ -97,11 +184,15 @@ class ZwaveJsDriver extends Driver {
         if (j['success'] == true) {
           c.complete(Map<String, dynamic>.from((j['result'] as Map?) ?? const {}));
         } else {
-          c.completeError(DriverException('Z-Wave JS: ${j['errorCode'] ?? 'error'} ${j['zwaveErrorMessage'] ?? ''}'.trim()));
+          c.completeError(
+            DriverException('Z-Wave JS: ${j['errorCode'] ?? 'error'} ${j['zwaveErrorMessage'] ?? ''}'.trim()),
+          );
         }
       case 'event':
         final e = j['event'];
-        if (e is Map && e['source'] == 'node' && (e['event'] == 'value updated' || e['event'] == 'value notification')) {
+        if (e is Map &&
+            e['source'] == 'node' &&
+            (e['event'] == 'value updated' || e['event'] == 'value notification')) {
           final a = e['args'] as Map? ?? const {};
           final k = zwaveKey(e['nodeId'], a['commandClass'], a['endpoint'], a['property'], a['propertyKey']);
           final v = a.containsKey('newValue') ? a['newValue'] : a['value'];
@@ -127,7 +218,8 @@ class ZwaveJsDriver extends Driver {
       nodes = [for (final n in (st['nodes'] as List? ?? const [])) Map<String, dynamic>.from(n as Map)];
       for (final n in nodes) {
         for (final v in zwaveValues(n)) {
-          _values[zwaveKey(n['nodeId'], v['commandClass'], v['endpoint'], v['property'], v['propertyKey'])] = v['value'];
+          _values[zwaveKey(n['nodeId'], v['commandClass'], v['endpoint'], v['property'], v['propertyKey'])] =
+              v['value'];
         }
       }
     }().whenComplete(() => _opening = null);

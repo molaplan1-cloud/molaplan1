@@ -44,6 +44,8 @@ void main() {
     expect(find.text('Tasmota-laite'), findsOneWidget);
     expect(find.text('Sähkön hinta (pörssisähkö)'), findsWidgets);
     expect(find.text('Muu laite (edistynyt)'), findsOneWidget);
+    await tester.ensureVisible(find.byKey(const ValueKey('other-device')));
+    await tester.pumpAndSettle();
     await tester.tap(find.byKey(const ValueKey('other-device')));
     await tester.pumpAndSettle();
     expect(find.text('Edistyneet asetukset'), findsOneWidget);

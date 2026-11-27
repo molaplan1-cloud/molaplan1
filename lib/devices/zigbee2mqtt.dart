@@ -101,13 +101,18 @@ int _access(Map e) => (e['access'] as num?)?.toInt() ?? 1;
 bool _settable(Map e) => _access(e) & 2 != 0;
 
 /// Tiles for one device ([base] = Zigbee2MQTT base topic, default `zigbee2mqtt`).
-List<TileConfig> z2mTiles(Z2mDevice d, String connId, {String base = 'zigbee2mqtt', String? title, String lang = 'fi'}) {
+List<TileConfig> z2mTiles(
+  Z2mDevice d,
+  String connId, {
+  String base = 'zigbee2mqtt',
+  String? title,
+  String lang = 'fi',
+}) {
   final name = (title?.isNotEmpty ?? false) ? title! : d.name;
   final stateTopic = '$base/${d.name}';
   final setTopic = '$base/${d.name}/set';
   Map<String, dynamic> read(String prop) => {'topic': stateTopic, 'jsonPath': '\$.$prop'};
-  CommandStep cmd(String payload) =>
-      CommandStep(connectionId: connId, spec: {'topic': setTopic, 'payload': payload});
+  CommandStep cmd(String payload) => CommandStep(connectionId: connId, spec: {'topic': setTopic, 'payload': payload});
   String label(Map e) {
     final l = '${e['label'] ?? e['name'] ?? e['property'] ?? ''}';
     final ep = e['endpoint'];
@@ -278,6 +283,8 @@ List<TileConfig> z2mTiles(Z2mDevice d, String connId, {String base = 'zigbee2mqt
 }
 
 class Zigbee2MqttProvider extends DeviceProvider {
+  @override
+  bool get advanced => true;
   @override
   String get id => 'zigbee2mqtt';
   @override
