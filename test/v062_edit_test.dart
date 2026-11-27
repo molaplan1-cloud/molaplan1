@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:ui' as ui;
 
 import 'package:flutter/rendering.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -102,7 +103,7 @@ void main() {
     // Mouse drag (desktop test host): A onto C -> live reflow, committed on drop.
     final a = tester.getCenter(find.byKey(const ValueKey('edit-A')));
     final c = tester.getCenter(find.byKey(const ValueKey('edit-C')));
-    final g = await tester.startGesture(a);
+    final g = await tester.startGesture(a, kind: PointerDeviceKind.mouse);
     await g.moveBy(const Offset(10, 0));
     await tester.pump();
     await g.moveTo(c);

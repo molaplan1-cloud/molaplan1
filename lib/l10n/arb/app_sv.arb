@@ -562,6 +562,9 @@
  "@s97f46743e0": {
   "x-mt": true
  },
+ "sbeef9a7f21": "Flytta",
+ "sdb0cb19db6": "Flytta åt vänster",
+ "s5570ed5144": "Flytta åt höger",
  "sc3abd09cd9": "Anpassad färg",
  "@sc3abd09cd9": {
   "x-mt": true

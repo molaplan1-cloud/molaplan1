@@ -1136,6 +1136,24 @@ abstract class AppLocalizations {
   /// **'Tile \"{p0}\" deleted'**
   String s97f46743e0(String p0);
 
+  /// fi: Siirrä
+  ///
+  /// In en, this message translates to:
+  /// **'Move'**
+  String get sbeef9a7f21;
+
+  /// fi: Siirrä vasemmalle
+  ///
+  /// In en, this message translates to:
+  /// **'Move left'**
+  String get sdb0cb19db6;
+
+  /// fi: Siirrä oikealle
+  ///
+  /// In en, this message translates to:
+  /// **'Move right'**
+  String get s5570ed5144;
+
   /// fi: Oma väri
   ///
   /// In en, this message translates to:

@@ -893,6 +893,21 @@
    }
   }
  },
+ "sbeef9a7f21": "Move",
+ "@sbeef9a7f21": {
+  "description": "fi: Siirrä",
+  "x-where": "ui/home_page.dart:899"
+ },
+ "sdb0cb19db6": "Move left",
+ "@sdb0cb19db6": {
+  "description": "fi: Siirrä vasemmalle",
+  "x-where": "ui/home_page.dart:915"
+ },
+ "s5570ed5144": "Move right",
+ "@s5570ed5144": {
+  "description": "fi: Siirrä oikealle",
+  "x-where": "ui/home_page.dart:921"
+ },
  "sc3abd09cd9": "Custom colour",
  "@sc3abd09cd9": {
   "description": "fi: Oma väri",

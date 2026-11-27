@@ -22,6 +22,7 @@ import 'onboarding_page.dart';
 import 'settings_page.dart';
 import 'reminder_pages.dart';
 import 'smart_heating_pages.dart';
+import 'edit_tile_drag.dart';
 import 'tile_editor.dart';
 import 'tile_look.dart';
 import 'tile_visuals.dart' show RoomBackdrop;
@@ -531,8 +532,6 @@ class _DashboardGrid extends StatefulWidget {
 }
 
 class _DashboardGridState extends State<_DashboardGrid> {
-  static bool get _desktop => Plat.isWindows || Plat.isLinux || Plat.isMacOS;
-
   /// While dragging: the live order (tile ids) – the other tiles reflow as you move.
   List<String>? _order;
   String? _dragging;
@@ -689,7 +688,6 @@ class _DashboardGridState extends State<_DashboardGrid> {
       tile: t,
       width: w,
       height: h,
-      desktop: _desktop,
       dragging: _dragging == t.id,
       onDragStart: () => setState(() {
         _dragging = t.id;
@@ -715,7 +713,6 @@ class _EditableTile extends StatefulWidget {
     required this.tile,
     required this.width,
     required this.height,
-    required this.desktop,
     required this.dragging,
     required this.onDragStart,
     required this.onHover,
@@ -728,7 +725,6 @@ class _EditableTile extends StatefulWidget {
   final TileConfig tile;
   final double width;
   final double height;
-  final bool desktop;
   final bool dragging;
   final VoidCallback onDragStart;
   final VoidCallback onHover;
@@ -779,6 +775,7 @@ class _EditableTileState extends State<_EditableTile> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
+              _moveMenu(context, d, t),
               _mini(context, Icons.palette_outlined, () => showTileLook(context, t), key: 'tile-look-${t.id}'),
               _mini(context, Icons.delete_outline, () async {
                 final index = d.tiles.indexWhere((x) => x.id == t.id);
@@ -811,23 +808,18 @@ class _EditableTileState extends State<_EditableTile> {
         child: SizedBox(width: widget.width, height: widget.height, child: widget.child),
       ),
     );
-    Widget drag(Widget child) => widget.desktop
-        ? Draggable<String>(
+    // Mouse/trackpad: press-and-drag. Touch: long-press, so the view can still scroll.
+    Widget drag(Widget child) => MouseRegion(
+          cursor: SystemMouseCursors.grab,
+          child: EditTileDraggable<String>(
             data: t.id,
             feedback: feedback,
             onDragStarted: widget.onDragStart,
             onDragEnd: (_) => widget.onDragEnd(),
             childWhenDragging: Opacity(opacity: 0.25, child: overlay),
             child: child,
-          )
-        : LongPressDraggable<String>(
-            data: t.id,
-            feedback: feedback,
-            onDragStarted: widget.onDragStart,
-            onDragEnd: (_) => widget.onDragEnd(),
-            childWhenDragging: Opacity(opacity: 0.25, child: overlay),
-            child: child,
-          );
+          ),
+        );
 
     // Corner handle: drag to resize (snaps to grid units).
     final handle = Positioned(
@@ -866,7 +858,71 @@ class _EditableTileState extends State<_EditableTile> {
         return e.data != t.id;
       },
       onAcceptWithDetails: (_) {},
-      builder: (context, cand, _) => Stack(clipBehavior: Clip.none, children: [drag(overlay), handle]),
+      builder: (context, cand, _) {
+        final hovering = cand.isNotEmpty;
+        return Stack(
+          clipBehavior: Clip.none,
+          children: [
+            drag(overlay),
+            handle,
+            if (hovering)
+              Positioned.fill(
+                key: ValueKey('tile-drop-${t.id}'),
+                child: IgnorePointer(
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: cs.primary, width: 3),
+                      color: cs.primary.withValues(alpha: 0.12),
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        );
+      },
+    );
+  }
+
+  /// Accessible fallback when drag-and-drop is unavailable or hard to use.
+  Widget _moveMenu(BuildContext context, Dashboard d, TileConfig t) {
+    final index = d.tiles.indexWhere((x) => x.id == t.id);
+    final last = d.tiles.length - 1;
+    return Padding(
+      padding: const EdgeInsets.only(left: 2),
+      child: Material(
+        color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.92),
+        shape: const CircleBorder(),
+        elevation: 1,
+        child: PopupMenuButton<int>(
+          key: ValueKey('tile-move-${t.id}'),
+          tooltip: tx(context, 'Siirrä', 'Move'),
+          padding: EdgeInsets.zero,
+          iconSize: 15,
+          splashRadius: 16,
+          constraints: const BoxConstraints(minWidth: 25, minHeight: 25),
+          icon: const Icon(Icons.swap_horiz, size: 15),
+          onSelected: (delta) {
+            final from = d.tiles.indexWhere((x) => x.id == t.id);
+            if (from < 0) return;
+            AppScope.read(context).moveTile(d, from, from + delta);
+          },
+          itemBuilder: (_) => [
+            PopupMenuItem(
+              key: ValueKey('tile-move-left-${t.id}'),
+              value: -1,
+              enabled: index > 0,
+              child: Text(tx(context, 'Siirrä vasemmalle', 'Move left')),
+            ),
+            PopupMenuItem(
+              key: ValueKey('tile-move-right-${t.id}'),
+              value: 1,
+              enabled: index >= 0 && index < last,
+              child: Text(tx(context, 'Siirrä oikealle', 'Move right')),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
