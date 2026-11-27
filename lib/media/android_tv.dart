@@ -142,8 +142,8 @@ class PbFramer {
 
 // ---- certificate ----
 
-/// New client identity (PEM cert, PEM key). RSA key generation runs in an isolate.
-Future<(String, String)> atvNewIdentity() => Isolate.run(() => selfSignedCert(generateRsaKey()));
+/// New client identity (PEM cert, PEM key). RSA key generation runs in an isolate. Test hook.
+Future<(String, String)> Function() atvNewIdentity = () => Isolate.run(() => selfSignedCert(generateRsaKey()));
 
 SecurityContext _ctx(String cert, String key) => SecurityContext(withTrustedRoots: false)
   ..useCertificateChainBytes(utf8.encode(cert))

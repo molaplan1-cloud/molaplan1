@@ -25,6 +25,9 @@ String haDomainLabel(BuildContext context, String d) => switch (d) {
   'input_boolean' => tx(context, 'Apukytkimet', 'Helper toggles'),
   'automation' => tx(context, 'Automaatiot', 'Automations'),
   'media_player' => tx(context, 'Mediasoittimet', 'Media players'),
+  'vacuum' => tx(context, 'Robotti-imurit', 'Robot vacuums'),
+  'valve' => tx(context, 'Venttiilit', 'Valves'),
+  'humidifier' => tx(context, 'Ilmankostuttimet', 'Humidifiers'),
   _ => d,
 };
 

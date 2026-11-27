@@ -80,7 +80,12 @@ class HomeAssistantDriver extends Driver {
     final attr = spec.strOrNull('attribute');
     if (attr != null) {
       final a = state['attributes'];
-      return coerce(a is Map ? a[attr] : null);
+      final v = coerce(a is Map ? a[attr] : null);
+      // R324: {'scale': 100} turns 0–1 attributes (media_player volume_level) into %.
+      final k = spec['scale'];
+      final f = k is num ? k : num.tryParse('${k ?? ''}');
+      if (f != null && v is num) return (v * f).round();
+      return v;
     }
     return coerce(state['state']);
   }

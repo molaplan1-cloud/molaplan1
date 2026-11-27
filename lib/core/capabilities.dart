@@ -131,6 +131,8 @@ Capabilities haEntityCapabilities(String entityId) {
     'button' || 'input_button' || 'script' || 'scene' => const Capabilities(actions: true),
     'camera' => const Capabilities(camera: true),
     'media_player' => const Capabilities(value: true, onOff: true, setpoint: true, actions: true),
+    'vacuum' => const Capabilities(value: true, actions: true),
+    'humidifier' => const Capabilities(value: true, onOff: true, setpoint: true),
     _ => Capabilities.any,
   };
 }

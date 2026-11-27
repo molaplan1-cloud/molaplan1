@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-/// Replaces `{{value}}`, `{{value_int}}` and `{{value_bri254}}` (0–100 % → Hue 1–254) in [template].
+/// Replaces `{{value}}`, `{{value_int}}`, `{{value_bri254}}` (0–100 % → Hue 1–254) and
+/// `{{value_frac}}` (0–100 % → 0.00–1.00, e.g. Home Assistant volume_level) in [template].
 String applyTemplate(String template, Object? value) {
   final v = value ?? '';
   String asInt;
@@ -13,6 +14,10 @@ String applyTemplate(String template, Object? value) {
   if (template.contains('{{value_bri254}}')) {
     final pct = toDouble(v) ?? 100;
     template = template.replaceAll('{{value_bri254}}', '${(pct * 2.54).round().clamp(1, 254)}');
+  }
+  if (template.contains('{{value_frac}}')) {
+    final pct = (toDouble(v) ?? 0).clamp(0, 100);
+    template = template.replaceAll('{{value_frac}}', (pct / 100).toStringAsFixed(2));
   }
   return template.replaceAll('{{value_int}}', asInt).replaceAll('{{value}}', _fmt(v));
 }

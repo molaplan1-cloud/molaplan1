@@ -48,6 +48,10 @@ String? xmlAttr(String xml, String tag, String attr) =>
     RegExp('<$tag\\b[^>]*\\s$attr="([^"]*)"').firstMatch(xml)?[1];
 
 String xmlUnescape(String s) => s
+    .replaceAllMapped(RegExp(r'&#(x?)([0-9a-fA-F]+);'), (m) {
+      final v = int.tryParse(m[2]!, radix: m[1]!.isEmpty ? 10 : 16);
+      return v == null || v == 38 ? m[0]! : String.fromCharCode(v);
+    })
     .replaceAll('&lt;', '<')
     .replaceAll('&gt;', '>')
     .replaceAll('&quot;', '"')

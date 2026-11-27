@@ -76,7 +76,7 @@ class HaEntity {
     'switch' => 1,
     'climate' => 2,
     'sensor' when deviceClass == 'temperature' => 3,
-    'cover' || 'lock' || 'alarm_control_panel' || 'fan' => 4,
+    'cover' || 'lock' || 'alarm_control_panel' || 'fan' || 'media_player' || 'vacuum' || 'valve' => 4,
     'camera' => 5,
     'sensor' when const {'humidity', 'power', 'energy'}.contains(deviceClass) => 6,
     'binary_sensor' || 'scene' || 'script' || 'input_boolean' || 'button' => 7,
@@ -395,6 +395,108 @@ List<TileConfig> haTilesFor(HaEntity e, String connId, String lang, {String? cam
           ],
         ),
       ];
+    // R324: TVs, speakers, robot vacuums, valves and humidifiers through Home Assistant.
+    case 'media_player':
+      final feats = (e.attributes['supported_features'] as num?)?.toInt() ?? 0;
+      bool has(int bit) => feats == 0 || feats & bit != 0;
+      TileConfig btn(String fi, String en, String icon, String svc) => TileConfig(
+        type: TileType.button,
+        title: '${e.name} – ${tr(lang, fi, en)}',
+        icon: icon,
+        connectionId: connId,
+        commands: [
+          CommandStep(connectionId: connId, spec: {'service': svc, 'entityId': id}),
+        ],
+      );
+      return [
+        TileConfig(
+          type: TileType.value,
+          title: e.name,
+          icon: 'tv',
+          connectionId: connId,
+          read: read,
+          valueMap: tr(
+            lang,
+            'playing=Toistaa;paused=Tauolla;idle=Valmiina;on=Päällä;off=Pois;standby=Valmiustila;buffering=Latautuu;unavailable=Ei yhteyttä',
+            'playing=Playing;paused=Paused;idle=Idle;on=On;off=Off;standby=Standby;buffering=Buffering;unavailable=Unavailable',
+          ),
+        ),
+        if (has(128) && has(256))
+          TileConfig(
+            type: TileType.toggle,
+            title: '${e.name} – ${tr(lang, 'virta', 'power')}',
+            icon: 'power',
+            connectionId: connId,
+            read: read,
+            onValue: 'on,playing,paused,idle,buffering',
+            onCommand: CommandStep(connectionId: connId, spec: {'service': 'media_player.turn_on', 'entityId': id}),
+            offCommand: CommandStep(connectionId: connId, spec: {'service': 'media_player.turn_off', 'entityId': id}),
+          ),
+        if (has(4))
+          TileConfig(
+            type: TileType.slider,
+            title: '${e.name} – ${tr(lang, 'äänenvoimakkuus', 'volume')}',
+            icon: 'volume',
+            unit: '%',
+            min: 0,
+            max: 100,
+            step: 1,
+            decimals: 0,
+            connectionId: connId,
+            read: {'entityId': id, 'attribute': 'volume_level', 'scale': 100},
+            commands: [
+              CommandStep(
+                connectionId: connId,
+                spec: {'service': 'media_player.volume_set', 'entityId': id, 'data': '{"volume_level": {{value_frac}}}'},
+              ),
+            ],
+          ),
+        if (has(1)) btn('toista / tauko', 'play / pause', 'pause', 'media_player.media_play_pause'),
+        if (has(32)) btn('seuraava', 'next', 'auto', 'media_player.media_next_track'),
+      ];
+    case 'vacuum':
+      return [
+        TileConfig(
+          type: TileType.value,
+          title: e.name,
+          connectionId: connId,
+          read: read,
+          valueMap: tr(
+            lang,
+            'cleaning=Imuroi;docked=Telakassa;returning=Palaa telakkaan;idle=Valmiina;paused=Tauolla;error=VIRHE',
+            'cleaning=Cleaning;docked=Docked;returning=Returning;idle=Idle;paused=Paused;error=ERROR',
+          ),
+        ),
+        for (final (fi, en, svc) in const [
+          ('aloita', 'start', 'vacuum.start'),
+          ('telakkaan', 'dock', 'vacuum.return_to_base'),
+        ])
+          TileConfig(
+            type: TileType.button,
+            title: '${e.name} – ${tr(lang, fi, en)}',
+            connectionId: connId,
+            commands: [
+              CommandStep(connectionId: connId, spec: {'service': svc, 'entityId': id}),
+            ],
+          ),
+      ];
+    case 'valve':
+      return [
+        toggle(
+          icon: 'auto',
+          on: 'valve.open_valve',
+          off: 'valve.close_valve',
+          confirm: true,
+          valueMap: tr(
+            lang,
+            'open=Auki;closed=Kiinni;opening=Aukeaa;closing=Sulkeutuu',
+            'open=Open;closed=Closed;opening=Opening;closing=Closing',
+          ),
+          onValue: 'open',
+        ),
+      ];
+    case 'humidifier':
+      return [toggle(icon: 'auto', on: 'humidifier.turn_on', off: 'humidifier.turn_off')];
     case 'camera':
       if (cameraConnId == null) break;
       return [
