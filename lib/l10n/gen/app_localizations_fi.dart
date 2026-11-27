@@ -665,6 +665,21 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s49450df596 => 'Hälytysääni on käytössä Android-sovelluksessa.';
 
   @override
+  String get s0224b6a444 =>
+      'Hälytysääntä ei voitu toistaa. Valitse toinen hälytysääni.';
+
+  @override
+  String get s4fa67b1e2e =>
+      'Hälytysäänenvoimakkuus on nollassa, joten hälytys ei kuulu. Nosta hälytysten äänenvoimakkuutta.';
+
+  @override
+  String get sc407fb7084 =>
+      'Ääni soi, mutta Android ei näytä hälytysilmoitusta. Salli ilmoitukset.';
+
+  @override
+  String get safeb2973b1 => 'Hiljennä hälytysääni';
+
+  @override
   String get sb616800ea4 => 'Tarvittavat luvat';
 
   @override
@@ -672,6 +687,17 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s182f268e52 => 'Ilman tätä mikään ilmoitus ei näy.';
+
+  @override
+  String sfe51b35785(String p0, String p1) {
+    return 'Hälytysäänenvoimakkuus $p0/$p1';
+  }
+
+  @override
+  String get sfb18f97ad0 => 'Hälytysäänenvoimakkuus';
+
+  @override
+  String get sb6da6f30eb => 'Nollassa hälytys ei kuulu.';
 
   @override
   String get s85a9b79024 => 'Hälytykset-kanava päällä (ääni ja ponnahdus)';

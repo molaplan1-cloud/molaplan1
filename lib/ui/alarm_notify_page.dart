@@ -118,11 +118,46 @@ class _AlarmNotifyPageState extends State<AlarmNotifyPage> with WidgetsBindingOb
                 final title = tx(context, 'Testihälytys', 'Test alarm');
                 final body = tx(context, 'Näin hälytys kuuluu tällä laitteella.', 'This is how an alarm sounds on this device.');
                 final noAndroid = tx(context, 'Hälytysääni on käytössä Android-sovelluksessa.', 'The alarm sound is available in the Android app.');
-                final ok = await LocalNotify.testAlarm(title, body, insistent: rules.insistent);
-                if (!ok && context.mounted) showSnack(context, noAndroid);
+                final failed = tx(
+                  context,
+                  'Hälytysääntä ei voitu toistaa. Valitse toinen hälytysääni.',
+                  'The alarm sound could not be played. Choose another alarm sound.',
+                );
+                final muted = tx(
+                  context,
+                  'Hälytysäänenvoimakkuus on nollassa, joten hälytys ei kuulu. Nosta hälytysten äänenvoimakkuutta.',
+                  'The alarm volume is at zero, so the alarm cannot be heard. Turn up the alarm volume.',
+                );
+                final noNotice = tx(
+                  context,
+                  'Ääni soi, mutta Android ei näytä hälytysilmoitusta. Salli ilmoitukset.',
+                  'The sound plays, but Android does not show the alarm notification. Allow notifications.',
+                );
+                final r = await LocalNotify.testAlarm(title, body, insistent: rules.insistent);
+                if (!context.mounted) return;
+                if (r == null) {
+                  showSnack(context, noAndroid);
+                } else if (!r.played) {
+                  showSnack(context, failed);
+                } else if (r.muted) {
+                  showSnack(context, muted);
+                } else if (!r.notified) {
+                  showSnack(context, noNotice);
+                }
+                unawaited(_refresh());
               },
             ),
           ),
+          if (android)
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton.icon(
+                key: const ValueKey('alarm-stop'),
+                icon: const Icon(Icons.volume_off),
+                label: Text(tx(context, 'Hiljennä hälytysääni', 'Silence the alarm sound')),
+                onPressed: LocalNotify.stopAlarm,
+              ),
+            ),
           if (android) ...[
             const Divider(height: 28),
             Text(tx(context, 'Tarvittavat luvat', 'Required permissions'), style: text.titleSmall),
@@ -131,6 +166,14 @@ class _AlarmNotifyPageState extends State<AlarmNotifyPage> with WidgetsBindingOb
               s.notifications,
               tx(context, 'Ilmoitukset sallittu', 'Notifications allowed'),
               tx(context, 'Ilman tätä mikään ilmoitus ei näy.', 'Without this no notification is shown.'),
+            ),
+            _check(
+              'sound',
+              s.volume != 0,
+              s.maxVolume > 0
+                  ? tx(context, 'Hälytysäänenvoimakkuus ${s.volume}/${s.maxVolume}', 'Alarm volume ${s.volume}/${s.maxVolume}')
+                  : tx(context, 'Hälytysäänenvoimakkuus', 'Alarm volume'),
+              tx(context, 'Nollassa hälytys ei kuulu.', 'At zero the alarm cannot be heard.'),
             ),
             _check(
               'channel',

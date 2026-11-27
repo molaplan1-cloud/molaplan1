@@ -85,6 +85,8 @@
             </intent-filter>
         </receiver>
         <receiver android:name=".InstallResultReceiver" android:exported="false"/>
+        <!-- R474 (t313u): "Hiljennä" / swipe-away silences the alarm sound. -->
+        <receiver android:name=".AlarmStopReceiver" android:exported="false"/>
         <receiver
             android:name=".UpdateTriggerReceiver"
             android:exported="true"

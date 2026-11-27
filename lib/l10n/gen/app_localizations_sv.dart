@@ -659,6 +659,21 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s49450df596 => 'Larmsignalen finns i Android-appen.';
 
   @override
+  String get s0224b6a444 =>
+      'Larmljudet kunde inte spelas upp. Välj ett annat larmljud.';
+
+  @override
+  String get s4fa67b1e2e =>
+      'Larmvolymen är noll, så larmet hörs inte. Höj larmvolymen.';
+
+  @override
+  String get sc407fb7084 =>
+      'Ljudet spelas, men Android visar inte larmaviseringen. Tillåt aviseringar.';
+
+  @override
+  String get safeb2973b1 => 'Tysta larmljudet';
+
+  @override
   String get sb616800ea4 => 'Behörigheter som behövs';
 
   @override
@@ -666,6 +681,17 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s182f268e52 => 'Utan detta visas inga aviseringar.';
+
+  @override
+  String sfe51b35785(String p0, String p1) {
+    return 'Larmvolym $p0/$p1';
+  }
+
+  @override
+  String get sfb18f97ad0 => 'Larmvolym';
+
+  @override
+  String get sb6da6f30eb => 'På noll hörs larmet inte.';
 
   @override
   String get s85a9b79024 => 'Kanalen Larm på (ljud och popup)';

@@ -274,6 +274,8 @@ class NtfyListenService : Service() {
         if (prio >= 5) {
             b.setFullScreenIntent(open, true)
         }
+        // R474 (t313u): stay under Android's 25-notification limit (else alarms are dropped).
+        NotifyTrim.makeRoom(this)
         nm.notify(notifyId, b.build())
     }
 

@@ -30,7 +30,7 @@ for apk in "$@"; do
   check 'Landroidx/work/impl/WorkDatabase_Impl;' "'()V'"
   check 'Lcom/molaplan/molaplan/WidgetRefreshWorker;' "'(Landroid/content/Context;Landroidx/work/WorkerParameters;)V'"
   for c in MainActivity BridgeService NtfyListenService BootReceiver TileStatusWidget WidgetPinnedReceiver \
-           AdminReceiver InstallResultReceiver UpdateTriggerReceiver; do
+           AdminReceiver InstallResultReceiver UpdateTriggerReceiver AlarmStopReceiver; do
     check "Lcom/molaplan/molaplan/$c;" "'()V'"
   done
   rm -rf "$tmp"

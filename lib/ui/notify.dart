@@ -48,15 +48,29 @@ class LocalNotify {
     }
   }
 
-  /// Posts a test alarm on the alarm channel (alarm volume, also in silent mode).
-  static Future<bool> testAlarm(String title, String body, {bool insistent = false}) async {
-    if (!_android) return false;
+  /// Test hook: replaces the platform call of [testAlarm].
+  static Future<AlarmTestResult?> Function()? testAlarmOverride;
+
+  /// Plays the alarm sound for a few seconds (alarm volume, also in silent mode) and posts a test
+  /// alarm notification. R474: the sound no longer depends on the notification. Null = no Android.
+  static Future<AlarmTestResult?> testAlarm(String title, String body, {bool insistent = false}) async {
+    final o = testAlarmOverride;
+    if (o != null) return o();
+    if (!_android) return null;
     try {
-      return await _ch.invokeMethod<bool>('alarmTest', {'title': title, 'body': body, 'insistent': insistent}) ??
-          false;
+      final r = await _ch.invokeMethod<Object?>('alarmTest', {'title': title, 'body': body, 'insistent': insistent});
+      return AlarmTestResult.from(r);
     } catch (_) {
-      return false;
+      return const AlarmTestResult(played: false, notified: false);
     }
+  }
+
+  /// Silences a ringing alarm (Android).
+  static Future<void> stopAlarm() async {
+    if (!_android) return;
+    try {
+      await _ch.invokeMethod('alarmStop');
+    } catch (_) {}
   }
 
   static bool get _android => !kIsWeb && Plat.isAndroid;
@@ -195,6 +209,31 @@ class DeepLinks {
 }
 
 /// R463: what the alarm channel needs on this phone / tablet.
+/// R474 (t313u): what happened when the alarm sound was tested.
+class AlarmTestResult {
+  const AlarmTestResult({required this.played, required this.notified, this.volume = -1, this.maxVolume = -1});
+
+  /// Older native side (bool) or the R474 map.
+  factory AlarmTestResult.from(Object? r) {
+    if (r is Map) {
+      return AlarmTestResult(
+        played: r['played'] == true,
+        notified: r['notified'] == true,
+        volume: (r['volume'] as num?)?.toInt() ?? -1,
+        maxVolume: (r['maxVolume'] as num?)?.toInt() ?? -1,
+      );
+    }
+    return AlarmTestResult(played: r == true, notified: r == true);
+  }
+
+  final bool played, notified;
+
+  /// Alarm-stream volume (-1 = unknown).
+  final int volume, maxVolume;
+
+  bool get muted => volume == 0;
+}
+
 class AlarmChannelStatus {
   const AlarmChannelStatus({
     required this.notifications,
@@ -204,6 +243,8 @@ class AlarmChannelStatus {
     required this.battery,
     this.sound,
     this.sdk = 0,
+    this.volume = -1,
+    this.maxVolume = -1,
   });
 
   factory AlarmChannelStatus.fromMap(Map<String, Object?> m) => AlarmChannelStatus(
@@ -214,9 +255,14 @@ class AlarmChannelStatus {
     battery: m['battery'] == true,
     sound: m['sound'] as String?,
     sdk: (m['sdk'] as num?)?.toInt() ?? 0,
+    volume: (m['volume'] as num?)?.toInt() ?? -1,
+    maxVolume: (m['maxVolume'] as num?)?.toInt() ?? -1,
   );
 
   final bool notifications, channel, dnd, fullScreen, battery;
   final String? sound;
   final int sdk;
+
+  /// R474: alarm-stream volume (-1 = unknown); 0 means alarms are silent.
+  final int volume, maxVolume;
 }

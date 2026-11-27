@@ -657,6 +657,13 @@ T = {
  'Ongoing or end time unknown': ('Pågår eller sluttid okänd', 'Kestab või lõpuaeg teadmata', 'En curso o hora de fin desconocida'),
  'Cause': ('Orsak', 'Põhjus', 'Causa'),
  'Who': ('Vem', 'Kes', 'Quién'),
+ 'The alarm sound could not be played. Choose another alarm sound.': ('Larmljudet kunde inte spelas upp. Välj ett annat larmljud.', 'Häireheli ei saanud esitada. Vali teine häireheli.', 'No se pudo reproducir el sonido de alarma. Elige otro sonido de alarma.'),
+ 'The alarm volume is at zero, so the alarm cannot be heard. Turn up the alarm volume.': ('Larmvolymen är noll, så larmet hörs inte. Höj larmvolymen.', 'Häirete helitugevus on null, seega häiret ei kuule. Suurenda häirete helitugevust.', 'El volumen de alarma está a cero, así que la alarma no se oye. Sube el volumen de alarma.'),
+ 'The sound plays, but Android does not show the alarm notification. Allow notifications.': ('Ljudet spelas, men Android visar inte larmaviseringen. Tillåt aviseringar.', 'Heli mängib, kuid Android ei näita häireteadet. Luba teavitused.', 'El sonido se reproduce, pero Android no muestra la notificación de alarma. Permite las notificaciones.'),
+ 'Silence the alarm sound': ('Tysta larmljudet', 'Vaigista häireheli', 'Silenciar el sonido de alarma'),
+ 'Alarm volume {p0}/{p1}': ('Larmvolym {p0}/{p1}', 'Häirete helitugevus {p0}/{p1}', 'Volumen de alarma {p0}/{p1}'),
+ 'Alarm volume': ('Larmvolym', 'Häirete helitugevus', 'Volumen de alarma'),
+ 'At zero the alarm cannot be heard.': ('På noll hörs larmet inte.', 'Nulli peal häiret ei kuule.', 'A cero la alarma no se oye.'),
 }
 
 

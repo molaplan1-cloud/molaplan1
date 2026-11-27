@@ -95,6 +95,8 @@ class MainActivity : FlutterActivity() {
     // R460: an alarm's full-screen intent opens Molaplan over the lock screen and lights it.
     private fun showOverLockIfAlarm(i: Intent?) {
         if (i?.getBooleanExtra(AlarmNotifier.EXTRA_ALARM, false) != true) return
+        // R474: tapping the alarm notification silences it (the full-screen intent keeps ringing).
+        if (i.getBooleanExtra(AlarmNotifier.EXTRA_ALARM_STOP, false)) AlarmSound.stop()
         if (Build.VERSION.SDK_INT >= 27) {
             setShowWhenLocked(true)
             setTurnScreenOn(true)
@@ -237,6 +239,7 @@ class MainActivity : FlutterActivity() {
                             .setContentIntent(open)
                             .setAutoCancel(true)
                             .build()
+                        NotifyTrim.makeRoom(this)
                         nm.notify(id, n)
                         result.success(true)
                     } catch (e: Exception) {
@@ -298,12 +301,26 @@ class MainActivity : FlutterActivity() {
                         requestPermissions(arrayOf("android.permission.POST_NOTIFICATIONS"), 7001)
                     }
                     val tap = Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                    AlarmNotifier.post(
-                        this, 28299,
+                    // R474 (t313u): the sound plays for a few seconds even if Android would not
+                    // show the notification; the result tells the page what happened.
+                    val played = AlarmNotifier.post(
+                        this, AlarmNotifier.TEST_ID,
                         call.argument<String>("title") ?: "Molaplan",
                         call.argument<String>("body") ?: "",
-                        tap, call.argument<Boolean>("insistent") ?: false
+                        tap, false, test = true
                     )
+                    val (vol, max) = AlarmSound.volume(this)
+                    result.success(
+                        mapOf(
+                            "played" to played,
+                            "notified" to AlarmNotifier.canNotify(this),
+                            "volume" to vol,
+                            "maxVolume" to max,
+                        )
+                    )
+                }
+                "alarmStop" -> {
+                    AlarmSound.stop()
                     result.success(true)
                 }
                 else -> result.notImplemented()

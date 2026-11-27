@@ -1033,115 +1033,158 @@
   "description": "fi: Hälytysääni on käytössä Android-sovelluksessa.",
   "x-where": "ui/alarm_notify_page.dart:120"
  },
+ "s0224b6a444": "The alarm sound could not be played. Choose another alarm sound.",
+ "@s0224b6a444": {
+  "description": "fi: Hälytysääntä ei voitu toistaa. Valitse toinen hälytysääni.",
+  "x-where": "ui/alarm_notify_page.dart:121"
+ },
+ "s4fa67b1e2e": "The alarm volume is at zero, so the alarm cannot be heard. Turn up the alarm volume.",
+ "@s4fa67b1e2e": {
+  "description": "fi: Hälytysäänenvoimakkuus on nollassa, joten hälytys ei kuulu. Nosta hälytysten äänenvoimakkuutta.",
+  "x-where": "ui/alarm_notify_page.dart:126"
+ },
+ "sc407fb7084": "The sound plays, but Android does not show the alarm notification. Allow notifications.",
+ "@sc407fb7084": {
+  "description": "fi: Ääni soi, mutta Android ei näytä hälytysilmoitusta. Salli ilmoitukset.",
+  "x-where": "ui/alarm_notify_page.dart:131"
+ },
+ "safeb2973b1": "Silence the alarm sound",
+ "@safeb2973b1": {
+  "description": "fi: Hiljennä hälytysääni",
+  "x-where": "ui/alarm_notify_page.dart:157"
+ },
  "sb616800ea4": "Required permissions",
  "@sb616800ea4": {
   "description": "fi: Tarvittavat luvat",
-  "x-where": "ui/alarm_notify_page.dart:128"
+  "x-where": "ui/alarm_notify_page.dart:163"
  },
  "s0ff5878e24": "Notifications allowed",
  "@s0ff5878e24": {
   "description": "fi: Ilmoitukset sallittu",
-  "x-where": "ui/alarm_notify_page.dart:132"
+  "x-where": "ui/alarm_notify_page.dart:167"
  },
  "s182f268e52": "Without this no notification is shown.",
  "@s182f268e52": {
   "description": "fi: Ilman tätä mikään ilmoitus ei näy.",
-  "x-where": "ui/alarm_notify_page.dart:133"
+  "x-where": "ui/alarm_notify_page.dart:168"
+ },
+ "sfe51b35785": "Alarm volume {p0}/{p1}",
+ "@sfe51b35785": {
+  "description": "fi: Hälytysäänenvoimakkuus {p0}/{p1}",
+  "x-where": "ui/alarm_notify_page.dart:174",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   },
+   "p1": {
+    "type": "String"
+   }
+  }
+ },
+ "sfb18f97ad0": "Alarm volume",
+ "@sfb18f97ad0": {
+  "description": "fi: Hälytysäänenvoimakkuus",
+  "x-where": "ui/alarm_notify_page.dart:175"
+ },
+ "sb6da6f30eb": "At zero the alarm cannot be heard.",
+ "@sb6da6f30eb": {
+  "description": "fi: Nollassa hälytys ei kuulu.",
+  "x-where": "ui/alarm_notify_page.dart:176"
  },
  "s85a9b79024": "Alarms channel on (sound and pop-up)",
  "@s85a9b79024": {
   "description": "fi: Hälytykset-kanava päällä (ääni ja ponnahdus)",
-  "x-where": "ui/alarm_notify_page.dart:138"
+  "x-where": "ui/alarm_notify_page.dart:181"
  },
  "s8b8bd8d1fc": "The \"Alarms\" channel in Android settings.",
  "@s8b8bd8d1fc": {
   "description": "fi: Androidin asetuksissa kanava \"Hälytykset\".",
-  "x-where": "ui/alarm_notify_page.dart:139"
+  "x-where": "ui/alarm_notify_page.dart:182"
  },
  "se6188f85c8": "Override Do Not Disturb",
  "@se6188f85c8": {
   "description": "fi: Ohita Älä häiritse",
-  "x-where": "ui/alarm_notify_page.dart:144"
+  "x-where": "ui/alarm_notify_page.dart:187"
  },
  "sdc5ec1d7c5": "Allow Molaplan \"Do Not Disturb access\".",
  "@sdc5ec1d7c5": {
   "description": "fi: Salli Molaplanille \"Älä häiritse -käyttöoikeus\".",
-  "x-where": "ui/alarm_notify_page.dart:145"
+  "x-where": "ui/alarm_notify_page.dart:188"
  },
  "s23b6916646": "Full-screen alarm",
  "@s23b6916646": {
   "description": "fi: Koko näytön hälytys",
-  "x-where": "ui/alarm_notify_page.dart:150"
+  "x-where": "ui/alarm_notify_page.dart:193"
  },
  "sff377917cb": "The alarm opens on the lock screen.",
  "@sff377917cb": {
   "description": "fi: Hälytys avautuu lukitulle näytölle.",
-  "x-where": "ui/alarm_notify_page.dart:151"
+  "x-where": "ui/alarm_notify_page.dart:194"
  },
  "s2646a90987": "No battery optimisation",
  "@s2646a90987": {
   "description": "fi: Ei akun optimointia",
-  "x-where": "ui/alarm_notify_page.dart:156"
+  "x-where": "ui/alarm_notify_page.dart:199"
  },
  "s3817641568": "Otherwise Android may stop listening.",
  "@s3817641568": {
   "description": "fi: Muuten Android voi pysäyttää kuuntelun.",
-  "x-where": "ui/alarm_notify_page.dart:157"
+  "x-where": "ui/alarm_notify_page.dart:200"
  },
  "sa21239a35e": "Advanced: what is an alarm",
  "@sa21239a35e": {
   "description": "fi: Lisäasetukset: mikä on hälytys",
-  "x-where": "ui/alarm_notify_page.dart:164"
+  "x-where": "ui/alarm_notify_page.dart:207"
  },
  "s9a3142f8bb": "Urgent (5) is always an alarm",
  "@s9a3142f8bb": {
   "description": "fi: Kiireelliset (5) ovat aina hälytyksiä",
-  "x-where": "ui/alarm_notify_page.dart:169"
+  "x-where": "ui/alarm_notify_page.dart:212"
  },
  "s7cf3a8e68d": "Alarm words in the title",
  "@s7cf3a8e68d": {
   "description": "fi: Hälytyssanat otsikossa",
-  "x-where": "ui/alarm_notify_page.dart:175"
+  "x-where": "ui/alarm_notify_page.dart:218"
  },
  "s9d82c5d4ea": "Not an alarm if the title has",
  "@s9d82c5d4ea": {
   "description": "fi: Ei hälytys, jos otsikossa",
-  "x-where": "ui/alarm_notify_page.dart:181"
+  "x-where": "ui/alarm_notify_page.dart:224"
  },
  "sf2a45478e3": "Alarm tags (ntfy tags)",
  "@sf2a45478e3": {
   "description": "fi: Hälytystunnisteet (ntfy-tagit)",
-  "x-where": "ui/alarm_notify_page.dart:187"
+  "x-where": "ui/alarm_notify_page.dart:230"
  },
  "s72f6fb3f29": "By the rules",
  "@s72f6fb3f29": {
   "description": "fi: Sääntöjen mukaan",
-  "x-where": "ui/alarm_notify_page.dart:199"
+  "x-where": "ui/alarm_notify_page.dart:242"
  },
  "s3c6f35a28c": "Always alarm",
  "@s3c6f35a28c": {
   "description": "fi: Aina hälytys",
-  "x-where": "ui/alarm_notify_page.dart:200"
+  "x-where": "ui/alarm_notify_page.dart:243"
  },
  "se03fb0114e": "Never",
  "@se03fb0114e": {
   "description": "fi: Ei koskaan",
-  "x-where": "ui/alarm_notify_page.dart:201"
+  "x-where": "ui/alarm_notify_page.dart:244"
  },
  "s0c362450c7": "Restore defaults",
  "@s0c362450c7": {
   "description": "fi: Palauta oletukset",
-  "x-where": "ui/alarm_notify_page.dart:224"
+  "x-where": "ui/alarm_notify_page.dart:267"
  },
  "sc8ef04815c": "Allow",
  "@sc8ef04815c": {
   "description": "fi: Salli",
-  "x-where": "ui/alarm_notify_page.dart:247"
+  "x-where": "ui/alarm_notify_page.dart:290"
  },
  "s2e554f3c5c": "Separated by commas",
  "@s2e554f3c5c": {
   "description": "fi: Pilkulla erotettuna",
-  "x-where": "ui/alarm_notify_page.dart:258"
+  "x-where": "ui/alarm_notify_page.dart:301"
  },
  "sd5cb601286": "Tailscale (easy VPN)",
  "@sd5cb601286": {

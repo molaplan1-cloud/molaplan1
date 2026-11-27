@@ -661,6 +661,21 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s49450df596 => 'Häireheli on saadaval Androidi rakenduses.';
 
   @override
+  String get s0224b6a444 =>
+      'Häireheli ei saanud esitada. Vali teine häireheli.';
+
+  @override
+  String get s4fa67b1e2e =>
+      'Häirete helitugevus on null, seega häiret ei kuule. Suurenda häirete helitugevust.';
+
+  @override
+  String get sc407fb7084 =>
+      'Heli mängib, kuid Android ei näita häireteadet. Luba teavitused.';
+
+  @override
+  String get safeb2973b1 => 'Vaigista häireheli';
+
+  @override
   String get sb616800ea4 => 'Vajalikud load';
 
   @override
@@ -668,6 +683,17 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s182f268e52 => 'Ilma selleta ei kuvata ühtegi teavitust.';
+
+  @override
+  String sfe51b35785(String p0, String p1) {
+    return 'Häirete helitugevus $p0/$p1';
+  }
+
+  @override
+  String get sfb18f97ad0 => 'Häirete helitugevus';
+
+  @override
+  String get sb6da6f30eb => 'Nulli peal häiret ei kuule.';
 
   @override
   String get s85a9b79024 => 'Kanal „Häired“ sees (heli ja hüpik)';

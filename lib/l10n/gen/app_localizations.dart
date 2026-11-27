@@ -1304,6 +1304,30 @@ abstract class AppLocalizations {
   /// **'The alarm sound is available in the Android app.'**
   String get s49450df596;
 
+  /// fi: Hälytysääntä ei voitu toistaa. Valitse toinen hälytysääni.
+  ///
+  /// In en, this message translates to:
+  /// **'The alarm sound could not be played. Choose another alarm sound.'**
+  String get s0224b6a444;
+
+  /// fi: Hälytysäänenvoimakkuus on nollassa, joten hälytys ei kuulu. Nosta hälytysten äänenvoimakkuutta.
+  ///
+  /// In en, this message translates to:
+  /// **'The alarm volume is at zero, so the alarm cannot be heard. Turn up the alarm volume.'**
+  String get s4fa67b1e2e;
+
+  /// fi: Ääni soi, mutta Android ei näytä hälytysilmoitusta. Salli ilmoitukset.
+  ///
+  /// In en, this message translates to:
+  /// **'The sound plays, but Android does not show the alarm notification. Allow notifications.'**
+  String get sc407fb7084;
+
+  /// fi: Hiljennä hälytysääni
+  ///
+  /// In en, this message translates to:
+  /// **'Silence the alarm sound'**
+  String get safeb2973b1;
+
   /// fi: Tarvittavat luvat
   ///
   /// In en, this message translates to:
@@ -1321,6 +1345,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Without this no notification is shown.'**
   String get s182f268e52;
+
+  /// fi: Hälytysäänenvoimakkuus {p0}/{p1}
+  ///
+  /// In en, this message translates to:
+  /// **'Alarm volume {p0}/{p1}'**
+  String sfe51b35785(String p0, String p1);
+
+  /// fi: Hälytysäänenvoimakkuus
+  ///
+  /// In en, this message translates to:
+  /// **'Alarm volume'**
+  String get sfb18f97ad0;
+
+  /// fi: Nollassa hälytys ei kuulu.
+  ///
+  /// In en, this message translates to:
+  /// **'At zero the alarm cannot be heard.'**
+  String get sb6da6f30eb;
 
   /// fi: Hälytykset-kanava päällä (ääni ja ponnahdus)
   ///

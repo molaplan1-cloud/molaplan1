@@ -660,6 +660,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s49450df596 => 'The alarm sound is available in the Android app.';
 
   @override
+  String get s0224b6a444 =>
+      'The alarm sound could not be played. Choose another alarm sound.';
+
+  @override
+  String get s4fa67b1e2e =>
+      'The alarm volume is at zero, so the alarm cannot be heard. Turn up the alarm volume.';
+
+  @override
+  String get sc407fb7084 =>
+      'The sound plays, but Android does not show the alarm notification. Allow notifications.';
+
+  @override
+  String get safeb2973b1 => 'Silence the alarm sound';
+
+  @override
   String get sb616800ea4 => 'Required permissions';
 
   @override
@@ -667,6 +682,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s182f268e52 => 'Without this no notification is shown.';
+
+  @override
+  String sfe51b35785(String p0, String p1) {
+    return 'Alarm volume $p0/$p1';
+  }
+
+  @override
+  String get sfb18f97ad0 => 'Alarm volume';
+
+  @override
+  String get sb6da6f30eb => 'At zero the alarm cannot be heard.';
 
   @override
   String get s85a9b79024 => 'Alarms channel on (sound and pop-up)';

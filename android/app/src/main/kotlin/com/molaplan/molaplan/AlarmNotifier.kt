@@ -7,7 +7,6 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.media.AudioAttributes
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Build
@@ -24,6 +23,10 @@ import java.util.Locale
  * optional insistent sound. Other messages keep the quieter ntfy_1…ntfy_5 channels.
  * A channel's sound cannot change after creation, so a new sound (or newly granted DND access)
  * creates a new channel id molaplan_alarm_v<N> and deletes the old one.
+ * R474 (t313u): the channel itself is silent (vibration, pop-up, DND bypass, full screen); the
+ * sound is played by [AlarmSound] on USAGE_ALARM so it no longer depends on the notification
+ * being shown (Android's 25-notification limit dropped it) or on the channel's sound setting.
+ * A channel made by v0.20.2 or older (with a sound) is replaced by a new silent version.
  * testaamatta laitteella (Galaxy Tab Active3 / Android 13 is the first target).
  */
 object AlarmNotifier {
@@ -33,16 +36,24 @@ object AlarmNotifier {
     private const val KEY_SOUND_TITLE = "sound_title"
     private const val KEY_DND_AT_CREATE = "dnd_at_create"
     const val EXTRA_ALARM = "molaplan_alarm"
+    /** Set on the notification tap (not on the full-screen intent): silences the sound. */
+    const val EXTRA_ALARM_STOP = "molaplan_alarm_stop"
+    const val TEST_ID = 28299
     val VIBRATION = longArrayOf(0, 900, 300, 900, 300, 900, 300, 1500)
 
     private fun prefs(ctx: Context) = ctx.applicationContext.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
 
     fun channelId(ctx: Context): String = "molaplan_alarm_v${prefs(ctx).getInt(KEY_VER, 1)}"
 
+    /** The sound picked in Molaplan, or null (= the device's default alarm sound). */
+    fun pickedSoundUri(ctx: Context): Uri? {
+        val s = prefs(ctx).getString(KEY_SOUND, null)
+        return if (s.isNullOrBlank()) null else Uri.parse(s)
+    }
+
     /** The chosen sound, or the device's default alarm sound (ringtone / notification as fallback). */
     fun soundUri(ctx: Context): Uri? {
-        val s = prefs(ctx).getString(KEY_SOUND, null)
-        if (!s.isNullOrBlank()) return Uri.parse(s)
+        pickedSoundUri(ctx)?.let { return it }
         return RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
             ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
             ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
@@ -51,8 +62,14 @@ object AlarmNotifier {
     fun soundTitle(ctx: Context): String? {
         val saved = prefs(ctx).getString(KEY_SOUND_TITLE, null)
         if (!saved.isNullOrBlank()) return saved
+        // getRingtone() prepares a player; stop() releases it right away (not left to the GC).
         return try {
-            soundUri(ctx)?.let { RingtoneManager.getRingtone(ctx, it)?.getTitle(ctx) }
+            soundUri(ctx)?.let { uri ->
+                val r = RingtoneManager.getRingtone(ctx, uri)
+                val t = r?.getTitle(ctx)
+                try { r?.stop() } catch (_: Exception) {}
+                t
+            }
         } catch (_: Exception) { null }
     }
 
@@ -80,6 +97,8 @@ object AlarmNotifier {
         if (existing != null && dndAccess(app) && !prefs(app).getBoolean(KEY_DND_AT_CREATE, false) && !existing.canBypassDnd()) {
             return recreate(app)
         }
+        // R474: an older channel with its own sound would ring twice (or not at all) – replace it.
+        if (existing != null && existing.sound != null) return recreate(app)
         val (name, desc) = channelName()
         if (existing != null) {
             if (existing.name != name) {
@@ -97,11 +116,8 @@ object AlarmNotifier {
         ch.enableLights(true)
         ch.lightColor = Color.RED
         ch.setShowBadge(true)
-        val aa = AudioAttributes.Builder()
-            .setUsage(AudioAttributes.USAGE_ALARM)
-            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-            .build()
-        ch.setSound(soundUri(app), aa)
+        // Silent channel: AlarmSound plays the alarm on AudioAttributes.USAGE_ALARM itself.
+        ch.setSound(null, null)
         ch.setBypassDnd(true)
         nm.createNotificationChannel(ch)
         prefs(app).edit().putBoolean(KEY_DND_AT_CREATE, dndAccess(app)).apply()
@@ -118,11 +134,10 @@ object AlarmNotifier {
         return ensureChannel(app)
     }
 
-    /** A new sound needs a new channel (Android keeps a channel's sound forever). */
+    /** R474: the sound is played by AlarmSound, so a new sound needs no new channel. */
     fun setSound(ctx: Context, uri: String?, title: String?) {
         val app = ctx.applicationContext
         prefs(app).edit().putString(KEY_SOUND, uri).putString(KEY_SOUND_TITLE, title).apply()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) recreate(app)
     }
 
     /** Mirrors lib/notify/alarm_rules.dart alarmMatches(). Without rules: priority 5 only. */
@@ -152,14 +167,65 @@ object AlarmNotifier {
         return nm.canUseFullScreenIntent()
     }
 
-    fun post(ctx: Context, notifyId: Int, title: String, body: String, tap: Intent, insistent: Boolean) {
+    private fun stopLabel(): String = when (Locale.getDefault().language) {
+        "fi" -> "Hiljennä"
+        "sv" -> "Tysta"
+        "et" -> "Vaigista"
+        "es" -> "Silenciar"
+        else -> "Silence"
+    }
+
+    /** How long the sound plays: test a few seconds, insistent until dismissed (15 min cap). */
+    fun soundMs(test: Boolean, insistent: Boolean): Long = when {
+        test -> AlarmSound.TEST_MS
+        insistent -> AlarmSound.MAX_MS
+        else -> AlarmSound.SHORT_MS
+    }
+
+    /** Whether Android will show a notification on the alarm channel at all. */
+    fun canNotify(ctx: Context): Boolean {
         val app = ctx.applicationContext
+        val nm = app.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (Build.VERSION.SDK_INT >= 24 && !nm.areNotificationsEnabled()) return false
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val ch = nm.getNotificationChannel(ensureChannel(app)) ?: return false
+            if (ch.importance == NotificationManager.IMPORTANCE_NONE) return false
+        }
+        return true
+    }
+
+    /**
+     * Shows the alarm notification and starts the alarm sound (R474: the sound is played even if
+     * Android does not show the notification). Returns whether the sound started.
+     */
+    fun post(ctx: Context, notifyId: Int, title: String, body: String, tap: Intent, insistent: Boolean, test: Boolean = false): Boolean {
+        val app = ctx.applicationContext
+        val played = AlarmSound.start(app, soundMs(test, insistent))
+        try {
+            show(app, notifyId, title, body, tap, insistent && !test)
+        } catch (e: Exception) {
+            android.util.Log.w("MolaplanAlarm", "notification failed: ${e.message}")
+        }
+        wake(app)
+        return played
+    }
+
+    private fun show(app: Context, notifyId: Int, title: String, body: String, tap: Intent, insistent: Boolean) {
         val channel = ensureChannel(app)
         val nm = app.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        tap.putExtra(EXTRA_ALARM, true)
+        NotifyTrim.makeRoom(app)
+        val flags = PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        // Full screen: opens Molaplan over the lock screen and keeps ringing.
+        val full = PendingIntent.getActivity(app, notifyId, Intent(tap).putExtra(EXTRA_ALARM, true), flags)
+        // Tap: opens Molaplan and silences the alarm.
         val open = PendingIntent.getActivity(
-            app, notifyId, tap,
-            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            app, notifyId + 1, Intent(tap).putExtra(EXTRA_ALARM, true).putExtra(EXTRA_ALARM_STOP, true), flags
+        )
+        fun stopIntent(code: Int, cancel: Boolean) = PendingIntent.getBroadcast(
+            app, notifyId + code,
+            Intent(app, AlarmStopReceiver::class.java).setAction(AlarmSound.ACTION_STOP)
+                .putExtra(AlarmSound.EXTRA_NOTIFY_ID, notifyId).putExtra("cancel", cancel),
+            flags
         )
         val b = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
             Notification.Builder(app, channel)
@@ -169,21 +235,22 @@ object AlarmNotifier {
             .setContentText(body)
             .setStyle(Notification.BigTextStyle().bigText(body))
             .setContentIntent(open)
+            .setDeleteIntent(stopIntent(2, false))
             .setAutoCancel(true)
             .setCategory(Notification.CATEGORY_ALARM)
             .setVisibility(Notification.VISIBILITY_PUBLIC)
             .setColor(Color.RED)
+        @Suppress("DEPRECATION")
+        b.addAction(Notification.Action.Builder(0, stopLabel(), stopIntent(3, true)).build())
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             @Suppress("DEPRECATION")
             b.setPriority(Notification.PRIORITY_MAX)
-                .setSound(soundUri(app), AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ALARM).build())
                 .setVibrate(VIBRATION)
         }
-        if (canFullScreen(app)) b.setFullScreenIntent(open, true)
+        if (canFullScreen(app)) b.setFullScreenIntent(full, true)
         val n = b.build()
         if (insistent) n.flags = n.flags or Notification.FLAG_INSISTENT
         nm.notify(notifyId, n)
-        wake(app)
     }
 
     /** Lights the screen for a moment (the full-screen intent does the rest on the lock screen). */
@@ -219,6 +286,9 @@ object AlarmNotifier {
             "fullScreen" to canFullScreen(app),
             "battery" to NtfyListenService.batteryExempt(app),
             "sound" to soundTitle(app),
+            "volume" to AlarmSound.volume(app).first,
+            "maxVolume" to AlarmSound.volume(app).second,
+            "playing" to AlarmSound.playing,
             "sdk" to Build.VERSION.SDK_INT,
         )
     }

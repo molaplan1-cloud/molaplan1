@@ -667,6 +667,21 @@ class AppLocalizationsEs extends AppLocalizations {
       'El sonido de alarma está disponible en la aplicación de Android.';
 
   @override
+  String get s0224b6a444 =>
+      'No se pudo reproducir el sonido de alarma. Elige otro sonido de alarma.';
+
+  @override
+  String get s4fa67b1e2e =>
+      'El volumen de alarma está a cero, así que la alarma no se oye. Sube el volumen de alarma.';
+
+  @override
+  String get sc407fb7084 =>
+      'El sonido se reproduce, pero Android no muestra la notificación de alarma. Permite las notificaciones.';
+
+  @override
+  String get safeb2973b1 => 'Silenciar el sonido de alarma';
+
+  @override
   String get sb616800ea4 => 'Permisos necesarios';
 
   @override
@@ -674,6 +689,17 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s182f268e52 => 'Sin esto no se muestra ninguna notificación.';
+
+  @override
+  String sfe51b35785(String p0, String p1) {
+    return 'Volumen de alarma $p0/$p1';
+  }
+
+  @override
+  String get sfb18f97ad0 => 'Volumen de alarma';
+
+  @override
+  String get sb6da6f30eb => 'A cero la alarma no se oye.';
 
   @override
   String get s85a9b79024 =>
