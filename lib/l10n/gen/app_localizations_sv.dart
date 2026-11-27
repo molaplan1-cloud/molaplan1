@@ -4219,6 +4219,12 @@ class AppLocalizationsSv extends AppLocalizations {
       'Slutar t.ex. en flapping sensor från att skicka dussintals meddelanden.';
 
   @override
+  String get s0b70275d6c => 'Meddela när denna automatisering körs';
+
+  @override
+  String get s35e8cce8a9 => 'Standard';
+
+  @override
   String get s4c4ab28899 => 'Testa nu';
 
   @override
@@ -7152,6 +7158,23 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s78cdce874e => 'redan tillagt';
 
   @override
+  String get s8814efe188 =>
+      'Välj om den här enheten ska skicka en push-avisering och med vilken prioritet. Standardvärdena är lugna: bara larm och en tyst enhet meddelar dig. Aviseringar går till ditt ntfy-ämne och visas i appen.';
+
+  @override
+  String get s9341ea63c0 => 'Händelseprioritet';
+
+  @override
+  String get s2b4ea7a381 =>
+      'Allmänna standardvärden. En enhet kan åsidosätta dessa i sina egna inställningar. En aviseringsåtgärd på en automatisering har företräde.';
+
+  @override
+  String get s67917c9a2a => 'Enheten rapporterade ett nytt tillståndsämne';
+
+  @override
+  String get s79fc5ea775 => 'Använd detta';
+
+  @override
   String get s7ba50ea69e => 'Sovrum';
 
   @override
@@ -8468,6 +8491,13 @@ class AppLocalizationsSv extends AppLocalizations {
       'Om enheten svarar på ett annat ämne (t.ex. ditt personliga meddelandeämne), skriv det här. Empty = kommandoämnet.';
 
   @override
+  String get sfb1f03903c => 'Tillståndsämne (valfritt)';
+
+  @override
+  String get s0ac0bdced7 =>
+      'Enhetens tillståndsämne (på panelen: Enhet → Fjärrstyrning → Tillståndskanal, fw 0.2.50+). När det är angett lyssnar Molaplan på enhetens egna tillståndsmeddelanden och frågar inte efter tillståndet själv. Ingen PIN-kod behövs. Om ett statussvar innehåller fältet state_topic fylls ämnet i automatiskt.';
+
+  @override
   String get s7ea9d85150 => 'PIN-kod (tillval)';
 
   @override
@@ -8607,6 +8637,11 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String s9e974e06df(String p0) {
+    return 'Kommandot skickades, men inget tillstånd kom till tillstånds- eller svarssämnet inom $p0 s.';
+  }
+
+  @override
   String s1257447096(String p0) {
     return 'Enheten svarade: $p0';
   }
@@ -8616,7 +8651,18 @@ class AppLocalizationsSv extends AppLocalizations {
       'Om enheten svarar på ett annat ämne (t.ex. ditt meddelandeämne), ange det som \"Reply ämne\".';
 
   @override
+  String get sb9873b4f15 =>
+      'Tillståndsämnet lyssnas på, men inget tillstånd har kommit ännu.';
+
+  @override
   String get sf03877dd0a => ' En PIN lagras.';
+
+  @override
+  String get s91089c4d9f => ' Tillståndsämnet lyssnas på.';
+
+  @override
+  String get sab4a606e33 =>
+      'Enheten har inte skickat något tillstånd på över en timme – är enheten online?';
 
   @override
   String get s33cfb86f9f =>
@@ -9948,6 +9994,10 @@ class AppLocalizationsSv extends AppLocalizations {
       'Om enheten svarar på ett annat ämne (t.ex. ditt anmälningsämne). Empty = samma ämne.';
 
   @override
+  String get s4fa314c8da =>
+      'Enhetens tillståndsämne (på panelen: Enhet → Fjärrstyrning → Tillståndskanal, fw 0.2.50+). När det är angett frågar Molaplan inte efter tillståndet själv. Ingen PIN-kod behövs. Kan fyllas i automatiskt från fältet state_topic i ett statussvar.';
+
+  @override
   String get s24779d22ca =>
       'Om svarsämnet också har andra meddelanden: endast meddelanden med denna titel är svar.';
 
@@ -10047,4 +10097,15 @@ class AppLocalizationsSv extends AppLocalizations {
   String s3a38b97f7b(String p0) {
     return '$p0 – rum';
   }
+
+  @override
+  String get sd2b99f6417 => 'Styrs inte under dagen';
+
+  @override
+  String get s1acfb0da58 =>
+      'Enhetens tillståndsämne (på panelen: Enhet → Fjärrstyrning → Tillståndskanal, fw 0.2.51+). När det är angett lyssnar Molaplan på enhetens egna tillståndsmeddelanden och frågar inte efter tillståndet själv. Ingen PIN-kod behövs. Om ett PIN-skyddat statussvar innehåller fältet state_topic och det skiljer sig från det sparade (t.ex. efter panelens \"Ny kanal och nyckel\") uppdateras prenumerationen automatiskt. Om inget meddelande kommer till tillståndsämnet på över 35 minuter faller Molaplan tillbaka på schemalagda statusförfrågningar.';
+
+  @override
+  String get s5abc26863b =>
+      'Enhetens tillståndsämne (på panelen: Enhet → Fjärrstyrning → Tillståndskanal, fw 0.2.51+). När det är angett frågar Molaplan inte efter tillståndet själv. Ingen PIN-kod behövs. Om ett PIN-skyddat statussvar innehåller fältet state_topic och det skiljer sig från det sparade (t.ex. efter panelens \"Ny kanal och nyckel\") uppdateras prenumerationen automatiskt. Om inget meddelande kommer till tillståndsämnet på över 35 minuter faller Molaplan tillbaka på schemalagda statusförfrågningar.';
 }

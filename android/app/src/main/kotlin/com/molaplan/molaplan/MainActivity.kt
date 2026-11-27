@@ -199,6 +199,26 @@ class MainActivity : FlutterActivity() {
                         result.success(false)
                     }
                 }
+                "listen" -> {
+                    val json = call.argument<String>("config") ?: "{}"
+                    NtfyListenService.applyConfig(this, json)
+                    result.success(true)
+                }
+                "stopListen" -> {
+                    NtfyListenService.applyConfig(this, "{"topics":[]}")
+                    result.success(true)
+                }
+                "listenForeground" -> {
+                    NtfyListenService.setAppForeground(call.argument<Boolean>("value") ?: false)
+                    result.success(true)
+                }
+                "batteryExempt" -> result.success(NtfyListenService.batteryExempt(this))
+                "requestBatteryExemption" -> {
+                    val asked = NtfyListenService.requestBatteryExemption(this)
+                    NtfyListenService.markBatteryAsked(this)
+                    result.success(asked)
+                }
+                "batteryAsked" -> result.success(NtfyListenService.batteryAsked(this))
                 else -> result.notImplemented()
             }
         }

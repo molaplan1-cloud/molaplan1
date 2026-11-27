@@ -145,6 +145,8 @@ class BootReceiver : BroadcastReceiver() {
             a == "android.intent.action.QUICKBOOT_POWERON"
         ) {
             if (BridgeService.enabled(context)) BridgeService.setEnabled(context, true)
+            // t282u: alarm notifications without starting Flutter.
+            NtfyListenService.startIfConfigured(context)
         }
         // t282u: after an in-app APK update the process is gone; bring the UI back.
         if (a == Intent.ACTION_MY_PACKAGE_REPLACED) {

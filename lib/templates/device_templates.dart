@@ -1473,8 +1473,8 @@ final deviceTemplates = <DeviceTemplate>[
         'Tilakanava (vapaaehtoinen)',
         'State topic (optional)',
         hint: 'kv-state-…',
-        helpFi: 'Laitteen tilakanava (paneelissa Laite → Etäohjaus → Tilakanava, fw 0.2.50+). Kun asetettu, Molaplan ei kysele tilaa itse. PIN-koodia ei tarvita. Voi täyttyä automaattisesti tilavastauksen state_topic-kentästä.',
-        helpEn: 'The device state topic (on the panel: Device → Remote → State channel, fw 0.2.50+). When set, Molaplan does not poll for state. No PIN is needed. May be filled automatically from a status reply\'s state_topic field.',
+        helpFi: 'Laitteen tilakanava (paneelissa Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan ei kysele tilaa itse. PIN-koodia ei tarvita. Jos PIN-suojattu tilavastaus palauttaa state_topic-kentän ja se poikkeaa tallennetusta (esim. paneelin "Uusi kanava ja avain"), tilaus päivitetään automaattisesti. Jos tilakanavalle ei tule viestiä yli 35 minuuttiin, tila kysytään ajastetusti.',
+        helpEn: 'The device state topic (on the panel: Device → Remote → State channel, fw 0.2.51+). When set, Molaplan does not poll for state. No PIN is needed. If a PIN-protected status reply includes state_topic and it differs from the stored value (e.g. after the panel\'s "New channel and key"), the subscription is updated automatically. If no message arrives on the state topic for over 35 minutes, Molaplan falls back to scheduled status requests.',
       ),
       FieldSpec(
         'replyTitle',

@@ -217,6 +217,12 @@ class _Shared {
   Map<String, dynamic>? lastJson;
   String? lastStateId;
   DateTime? subStartedAt;
+
+  /// Last message that arrived on the state topic itself (not a polled tila json).
+  DateTime? lastTopicAt;
+
+  /// t282u: the state topic has been silent longer than [statePollFallbackAfter] – poll.
+  bool topicFallback = false;
   bool offlineSent = false;
   final stateWaiters = <Completer<NtfyMessage>>[];
   final watchers = <StreamController<void>>[];
@@ -275,8 +281,8 @@ class NtfyDeviceDriver extends NtfyDriver {
         'Tilakanava (vapaaehtoinen)',
         'State topic (optional)',
         hint: 'kv-state-…',
-        helpFi: 'Laitteen tilakanava (esim. paneelin Laite → Etäohjaus → Tilakanava, fw 0.2.50+). Kun asetettu, Molaplan kuuntelee laitteen lähettämiä tilaviestejä eikä kysele tilaa itse. PIN-koodia ei tarvita. Jos tilakomento palauttaa kentän state_topic, kanava täytetään automaattisesti.',
-        helpEn: 'The device\'s state topic (e.g. the panel\'s Device → Remote → State channel, fw 0.2.50+). When set, Molaplan listens for the device\'s own state messages and does not poll. No PIN is needed. If a status reply includes state_topic, the field is filled in automatically.',
+        helpFi: 'Laitteen tilakanava (esim. paneelin Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan kuuntelee laitteen lähettämiä tilaviestejä eikä kysele tilaa itse. PIN-koodia ei tarvita. Jos PIN-suojattu tilakomento palauttaa kentän state_topic ja se poikkeaa tallennetusta (esim. paneelin "Uusi kanava ja avain"), tilaus päivitetään automaattisesti. Jos tilakanavalle ei tule viestiä yli 35 minuuttiin, tila kysytään ajastetusti.',
+        helpEn: 'The device\'s state topic (e.g. the panel\'s Device → Remote → State channel, fw 0.2.51+). When set, Molaplan listens for the device\'s own state messages and does not poll. No PIN is needed. If a PIN-protected status reply includes state_topic and it differs from the stored value (e.g. after the panel\'s "New channel and key"), the subscription is updated automatically. If no message arrives on the state topic for over 35 minutes, Molaplan falls back to scheduled status requests.',
       ),
       FieldSpec(
         'pin',
@@ -464,13 +470,15 @@ class NtfyDeviceDriver extends NtfyDriver {
     NtfyDriver.quotaUntil.clear();
     NtfyDriver.quotaFullAt.clear();
     clock = DateTime.now;
-    stateStaleAfter = const Duration(minutes: 65);
+    statePollFallbackAfter = const Duration(minutes: 35);
   }
 
-  /// t279u: injectable clock and how long a silent state topic means the device is offline
-  /// (two missed 30 min heartbeats, plus a short margin).
+  /// t279u / t282u: injectable clock, and how long a silent state topic triggers a
+  /// scheduled `tila json` poll (panel heartbeat is 30 min; fw 0.2.51).
   static DateTime Function() clock = DateTime.now;
-  static Duration stateStaleAfter = const Duration(minutes: 65);
+  static Duration statePollFallbackAfter = const Duration(minutes: 35);
+  static Duration get stateStaleAfter => statePollFallbackAfter;
+  static set stateStaleAfter(Duration d) => statePollFallbackAfter = d;
 
   /// Persist a silent auto-fill of [stateTopic], or offer a different one to the user.
   static Future<void> Function(String connectionId, Map<String, dynamic> patch, {String? offeredStateTopic})? applySettings;
@@ -505,11 +513,6 @@ class NtfyDeviceDriver extends NtfyDriver {
     void emit() {
       if (out.isClosed) return;
       final sh = _sh;
-      final stale = _stateIsStale(sh);
-      if (stale) {
-        out.addError(DriverException(ntfyStateStaleText()));
-        return;
-      }
       if (sh.last == null) return;
       final own = parseNtfyStateMap(spec.strOrNull('stateMap'));
       final rules = own.isEmpty ? _rules : [...own, ..._rules];
@@ -536,28 +539,37 @@ class NtfyDeviceDriver extends NtfyDriver {
     return out.stream;
   }
 
-  bool _stateIsStale(_Shared sh) {
-    final from = sh.okAt ?? sh.subStartedAt;
+  bool _stateTopicSilent(_Shared sh) {
+    final from = sh.lastTopicAt ?? sh.subStartedAt;
     if (from == null) return false;
-    return clock().difference(from) >= stateStaleAfter;
+    return clock().difference(from) >= statePollFallbackAfter;
   }
 
-  /// Test hook: run the missed-heartbeat check now.
-  void checkStateStale() => _checkStateStale();
+  bool _stateTopicNeedsPoll(_Shared sh) => sh.topicFallback || _stateTopicSilent(sh);
+
+  /// Test hook: run the missed-heartbeat / poll-fallback check now.
+  void checkStateStale() => _checkStateFallback();
 
   /// Test hook: start listening to the Tilakanava.
   Future<void> startStateSub() => _ensureStateSub();
 
-  void _checkStateStale() {
+  void _checkStateFallback() {
     if (!hasStateTopic) return;
     final sh = _sh;
-    if (!_stateIsStale(sh)) return;
-    if (!sh.offlineSent) {
-      sh.offlineSent = true;
-      final title = eventTitle('offline', driverLang, device: config.name);
-      onEvent?.call(config, 'offline', title, ntfyStateStaleText());
-    }
-    sh.wakeError(DriverException(ntfyStateStaleText()));
+    if (!_stateTopicSilent(sh)) return;
+    sh.topicFallback = true;
+    unawaited(_fallbackPoll());
+  }
+
+  Future<void> _fallbackPoll() async {
+    final sh = _sh;
+    if (!hasStateTopic || !sh.topicFallback) return;
+    if (sh.inFlight != null) return;
+    final every = statusEvery;
+    if (every > Duration.zero && sh.autoAt != null && clock().difference(sh.autoAt!) < every) return;
+    try {
+      await status(fresh: true);
+    } catch (_) {}
   }
 
   Future<void> _ensureStateSub() async {
@@ -590,7 +602,7 @@ class NtfyDeviceDriver extends NtfyDriver {
           if (hasStateTopic) unawaited(_ensureStateSub());
         },
       );
-      _staleTimer ??= Timer.periodic(const Duration(minutes: 1), (_) => _checkStateStale());
+      _staleTimer ??= Timer.periodic(const Duration(minutes: 1), (_) => _checkStateFallback());
     } finally {
       _startingSub = false;
     }
@@ -615,6 +627,10 @@ class NtfyDeviceDriver extends NtfyDriver {
     sh.optimistic.clear();
     sh.noReply = 0;
     sh.backoffUntil = null;
+    if (fromTopic) {
+      sh.lastTopicAt = clock();
+      sh.topicFallback = false;
+    }
     if (sh.offlineSent) sh.offlineSent = false;
     sh.wakeState(m);
     if (notifyChanges && prev != null) {
@@ -627,9 +643,6 @@ class NtfyDeviceDriver extends NtfyDriver {
         onEvent?.call(config, ev, eventTitle(ev, driverLang, detail: detail, device: config.name), m.message);
       }
     }
-    if (hasStateTopic && _stateIsStale(sh) == false) {
-      // schedule nothing; callers / tests invoke checkStateStale
-    }
   }
 
   void _considerStateTopic(Object? json) {
@@ -640,13 +653,25 @@ class NtfyDeviceDriver extends NtfyDriver {
     final cur = _stateTopicRaw;
     final curName = cur.isEmpty ? '' : parseNtfyTopic(cur, commandTopicPair.$1).$2;
     if (curName == offeredName) return;
-    if (cur.isEmpty) {
-      config.settings['stateTopic'] = offered;
-      unawaited(_ensureStateSub());
-      unawaited(Future.sync(() => applySettings?.call(config.id, {'stateTopic': offered})));
-    } else {
-      unawaited(Future.sync(() => applySettings?.call(config.id, const {}, offeredStateTopic: offered)));
-    }
+    // t282u: a PIN-protected `tila json` names the current channel (kv-state-<16>).
+    // If it changed (e.g. the panel's "Uusi kanava ja avain"), switch the subscription.
+    unawaited(_adoptStateTopic(offered));
+  }
+
+  Future<void> _adoptStateTopic(String offered) async {
+    config.settings['stateTopic'] = offered;
+    // Persist before any await so callers see the patch as soon as the reply is applied.
+    final persist = applySettings?.call(config.id, {'stateTopic': offered});
+    final prev = _stateSub;
+    _stateSub = null;
+    final sh = _sh;
+    sh.lastStateId = null;
+    sh.lastTopicAt = null;
+    sh.subStartedAt = null;
+    sh.topicFallback = false;
+    await prev?.cancel();
+    if (persist != null) await persist;
+    await _ensureStateSub();
   }
 
   List<NtfyStateRule> get _rules {
@@ -766,19 +791,23 @@ class NtfyDeviceDriver extends NtfyDriver {
     final sh = _sh;
     final ttl = Duration(seconds: s.integer('cacheSeconds', 30).clamp(0, 3600));
     final now = clock();
-    // t279u: a Tilakanava means the device pushes state – never send a status command
-    // on a timer. Commands still wait for an ack below.
+    // t279u / t282u: a Tilakanava means the device pushes state – no status command
+    // on a timer, unless the topic has been silent for [statePollFallbackAfter] (35 min).
     if (hasStateTopic) {
       unawaited(_ensureStateSub());
-      if (_stateIsStale(sh)) {
-        _checkStateStale();
-        return Future.error(DriverException(ntfyStateStaleText()));
-      }
-      if (sh.last != null) return Future.value(sh.last!);
-      if (!fresh) {
-        return sh.inFlight ??= _statusFromTopic()
-            .then((m) => m)
-            .whenComplete(() => sh.inFlight = null);
+      if (_stateTopicSilent(sh)) sh.topicFallback = true;
+      if (!_stateTopicNeedsPoll(sh)) {
+        if (sh.last != null) return Future.value(sh.last!);
+        if (!fresh) {
+          return sh.inFlight ??= _statusFromTopic()
+              .then((m) => m)
+              .whenComplete(() => sh.inFlight = null);
+        }
+      } else if (!fresh && sh.last != null) {
+        final every = statusEvery;
+        if (every > Duration.zero && sh.autoAt != null && now.difference(sh.autoAt!) < every) {
+          return Future.value(sh.last!);
+        }
       }
     }
     if (!fresh && sh.last != null && sh.at != null && now.difference(sh.at!) < ttl) {
@@ -815,13 +844,12 @@ class NtfyDeviceDriver extends NtfyDriver {
     await _ensureStateSub();
     final sh = _sh;
     if (sh.last != null) return sh.last!;
-    if (_stateIsStale(sh)) throw DriverException(ntfyStateStaleText());
     throw NtfyNoReply(dtx('Tilakanavaa kuunnellaan, mutta tilaa ei ole vielä tullut.', 'The state topic is being listened to, but no state has arrived yet.'));
   }
 
   Future<NtfyMessage> _statusNow(String? command, bool fresh, Duration ttl) async {
-    if (hasStateTopic && !fresh) return _statusFromTopic();
     final sh = _sh;
+    if (hasStateTopic && !fresh && !_stateTopicNeedsPoll(sh)) return _statusFromTopic();
     final now = DateTime.now();
     // t243u: no replies lately – ask less often (30 s, 1 min, 2 min … 5 min) instead of every poll.
     if (!fresh && sh.backoffUntil != null && now.isBefore(sh.backoffUntil!) && sh.lastNoReply != null) {
@@ -960,7 +988,7 @@ class NtfyDeviceDriver extends NtfyDriver {
   /// fresh status, so every tile of the device shows the new state at once (rate limit kept).
   Future<void> _follow(Map<String, dynamic> spec) async {
     if (!spec.flag('followStatus', false)) return;
-    if (hasStateTopic) {
+    if (hasStateTopic && !_stateTopicNeedsPoll(_sh)) {
       unawaited(_ensureStateSub());
       return;
     }

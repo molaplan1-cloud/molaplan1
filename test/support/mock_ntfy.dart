@@ -43,7 +43,7 @@ class MockNtfy {
     await _server.close(force: true);
   }
 
-  Map<String, dynamic> add(String topic, String message, {String title = ''}) {
+  Map<String, dynamic> add(String topic, String message, {String title = '', int? priority}) {
     final m = <String, dynamic>{
       'id': 'm${++_n}',
       'time': DateTime.now().millisecondsSinceEpoch ~/ 1000,
@@ -51,6 +51,7 @@ class MockNtfy {
       'topic': topic,
       'message': message,
       if (title.isNotEmpty) 'title': title,
+      if (priority != null) 'priority': priority,
     };
     (topics[topic] ??= []).add(m);
     for (final r in List.of(_subs[topic] ?? const <HttpResponse>[])) {

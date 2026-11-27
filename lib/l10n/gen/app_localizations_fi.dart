@@ -4224,6 +4224,12 @@ class AppLocalizationsFi extends AppLocalizations {
       'Estää esim. heiluvaa anturia lähettämästä kymmeniä ilmoituksia.';
 
   @override
+  String get s0b70275d6c => 'Ilmoitus kun tämä automaatio laukeaa';
+
+  @override
+  String get s35e8cce8a9 => 'Oletus';
+
+  @override
   String get s4c4ab28899 => 'Testaa nyt';
 
   @override
@@ -7161,6 +7167,23 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s78cdce874e => 'jo lisätty';
 
   @override
+  String get s8814efe188 =>
+      'Valitse, tuleeko tästä laitteesta push-ilmoitus ja millä tärkeydellä. Oletukset ovat rauhalliset: vain hälytys ja laitteen vaikeneminen ilmoittavat. Ilmoitukset lähtevät omaan ntfy-aiheeseen ja näkyvät sovelluksessa.';
+
+  @override
+  String get s9341ea63c0 => 'Tapahtumien tärkeys';
+
+  @override
+  String get s2b4ea7a381 =>
+      'Yleiset oletukset. Laitteen omissa asetuksissa voi poiketa näistä. Automaation omassa ilmoitustoiminnossa prioriteetti voittaa tämän.';
+
+  @override
+  String get s67917c9a2a => 'Laite ilmoitti uuden tilakanavan';
+
+  @override
+  String get s79fc5ea775 => 'Käytä tätä';
+
+  @override
   String get s7ba50ea69e => 'Makuuhuone';
 
   @override
@@ -8490,6 +8513,13 @@ class AppLocalizationsFi extends AppLocalizations {
       'Jos laite vastaa toiseen aiheeseen (esim. henkilökohtaiseen ilmoitusaiheeseen), kirjoita se tähän. Tyhjä = sama kuin komentokanava.';
 
   @override
+  String get sfb1f03903c => 'Tilakanava (vapaaehtoinen)';
+
+  @override
+  String get s0ac0bdced7 =>
+      'Laitteen tilakanava (esim. paneelin Laite → Etäohjaus → Tilakanava, fw 0.2.50+). Kun asetettu, Molaplan kuuntelee laitteen lähettämiä tilaviestejä eikä kysele tilaa itse. PIN-koodia ei tarvita. Jos tilakomento palauttaa kentän state_topic, kanava täytetään automaattisesti.';
+
+  @override
   String get s7ea9d85150 => 'PIN-koodi (vapaaehtoinen)';
 
   @override
@@ -8629,6 +8659,11 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
+  String s9e974e06df(String p0) {
+    return 'Komento lähti, mutta tilaa ei tullut $p0 s:ssa tilakanavalle eikä vastauskanavalle.';
+  }
+
+  @override
   String s1257447096(String p0) {
     return 'Laite vastasi: $p0';
   }
@@ -8638,7 +8673,18 @@ class AppLocalizationsFi extends AppLocalizations {
       'Jos laite vastaa toiselle kanavalle (esim. ilmoituskanavallesi), aseta se kohtaan \"Vastauskanava\".';
 
   @override
+  String get sb9873b4f15 =>
+      'Tilakanavaa kuunnellaan, mutta tilaa ei ole vielä tullut.';
+
+  @override
   String get sf03877dd0a => ' PIN on tallennettu.';
+
+  @override
+  String get s91089c4d9f => ' Tilakanavaa kuunnellaan.';
+
+  @override
+  String get sab4a606e33 =>
+      'Laite ei ole lähettänyt tilaa yli tuntiin – onko laite verkossa?';
 
   @override
   String get s33cfb86f9f =>
@@ -9997,6 +10043,10 @@ class AppLocalizationsFi extends AppLocalizations {
       'Jos laite vastaa toiseen aiheeseen (esim. omaan ilmoitusaiheeseesi). Tyhjä = sama aihe.';
 
   @override
+  String get s4fa314c8da =>
+      'Laitteen tilakanava (paneelissa Laite → Etäohjaus → Tilakanava, fw 0.2.50+). Kun asetettu, Molaplan ei kysele tilaa itse. PIN-koodia ei tarvita. Voi täyttyä automaattisesti tilavastauksen state_topic-kentästä.';
+
+  @override
   String get s24779d22ca =>
       'Jos vastauskanavalla on muitakin viestejä: vain tämän otsikon viestit ovat vastauksia.';
 
@@ -10098,4 +10148,15 @@ class AppLocalizationsFi extends AppLocalizations {
   String s3a38b97f7b(String p0) {
     return '$p0 – huone';
   }
+
+  @override
+  String get sd2b99f6417 => 'Päivällä ei ohjata';
+
+  @override
+  String get s1acfb0da58 =>
+      'Laitteen tilakanava (esim. paneelin Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan kuuntelee laitteen lähettämiä tilaviestejä eikä kysele tilaa itse. PIN-koodia ei tarvita. Jos PIN-suojattu tilakomento palauttaa kentän state_topic ja se poikkeaa tallennetusta (esim. paneelin \"Uusi kanava ja avain\"), tilaus päivitetään automaattisesti. Jos tilakanavalle ei tule viestiä yli 35 minuuttiin, tila kysytään ajastetusti.';
+
+  @override
+  String get s5abc26863b =>
+      'Laitteen tilakanava (paneelissa Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan ei kysele tilaa itse. PIN-koodia ei tarvita. Jos PIN-suojattu tilavastaus palauttaa state_topic-kentän ja se poikkeaa tallennetusta (esim. paneelin \"Uusi kanava ja avain\"), tilaus päivitetään automaattisesti. Jos tilakanavalle ei tule viestiä yli 35 minuuttiin, tila kysytään ajastetusti.';
 }

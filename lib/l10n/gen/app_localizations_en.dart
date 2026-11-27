@@ -4207,6 +4207,12 @@ class AppLocalizationsEn extends AppLocalizations {
       'Stops e.g. a flapping sensor from sending dozens of notifications.';
 
   @override
+  String get s0b70275d6c => 'Notify when this automation runs';
+
+  @override
+  String get s35e8cce8a9 => 'Default';
+
+  @override
   String get s4c4ab28899 => 'Test now';
 
   @override
@@ -7137,6 +7143,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s78cdce874e => 'already added';
 
   @override
+  String get s8814efe188 =>
+      'Choose whether this device sends a push and at which importance. Defaults stay quiet: only an alarm or a silent device notify you. Notifications go to your ntfy topic and appear in the app.';
+
+  @override
+  String get s9341ea63c0 => 'Event importance';
+
+  @override
+  String get s2b4ea7a381 =>
+      'General defaults. A device can override these in its own settings. A notify action on an automation takes precedence.';
+
+  @override
+  String get s67917c9a2a => 'The device reported a new state topic';
+
+  @override
+  String get s79fc5ea775 => 'Use this';
+
+  @override
   String get s7ba50ea69e => 'Bedroom';
 
   @override
@@ -8457,6 +8480,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'If the device answers on another topic (e.g. your personal notification topic), type it here. Empty = the command topic.';
 
   @override
+  String get sfb1f03903c => 'State topic (optional)';
+
+  @override
+  String get s0ac0bdced7 =>
+      'The device\'s state topic (e.g. the panel\'s Device → Remote → State channel, fw 0.2.50+). When set, Molaplan listens for the device\'s own state messages and does not poll. No PIN is needed. If a status reply includes state_topic, the field is filled in automatically.';
+
+  @override
   String get s7ea9d85150 => 'PIN code (optional)';
 
   @override
@@ -8596,6 +8626,11 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String s9e974e06df(String p0) {
+    return 'The command was sent, but no state arrived on the state or reply topic within $p0 s.';
+  }
+
+  @override
   String s1257447096(String p0) {
     return 'The device answered: $p0';
   }
@@ -8605,7 +8640,18 @@ class AppLocalizationsEn extends AppLocalizations {
       'If the device replies on another topic (e.g. your notification topic), set it as \"Reply topic\".';
 
   @override
+  String get sb9873b4f15 =>
+      'The state topic is being listened to, but no state has arrived yet.';
+
+  @override
   String get sf03877dd0a => ' A PIN is stored.';
+
+  @override
+  String get s91089c4d9f => ' The state topic is being listened to.';
+
+  @override
+  String get sab4a606e33 =>
+      'The device has not sent state in over an hour – is the device online?';
 
   @override
   String get s33cfb86f9f =>
@@ -9938,6 +9984,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'If the device answers on another topic (e.g. your notification topic). Empty = the same topic.';
 
   @override
+  String get s4fa314c8da =>
+      'The device state topic (on the panel: Device → Remote → State channel, fw 0.2.50+). When set, Molaplan does not poll for state. No PIN is needed. May be filled automatically from a status reply\'s state_topic field.';
+
+  @override
   String get s24779d22ca =>
       'If the reply topic has other messages too: only messages with this title are replies.';
 
@@ -10039,4 +10089,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String s3a38b97f7b(String p0) {
     return '$p0 – room';
   }
+
+  @override
+  String get sd2b99f6417 => 'Not controlled during the day';
+
+  @override
+  String get s1acfb0da58 =>
+      'The device\'s state topic (e.g. the panel\'s Device → Remote → State channel, fw 0.2.51+). When set, Molaplan listens for the device\'s own state messages and does not poll. No PIN is needed. If a PIN-protected status reply includes state_topic and it differs from the stored value (e.g. after the panel\'s \"New channel and key\"), the subscription is updated automatically. If no message arrives on the state topic for over 35 minutes, Molaplan falls back to scheduled status requests.';
+
+  @override
+  String get s5abc26863b =>
+      'The device state topic (on the panel: Device → Remote → State channel, fw 0.2.51+). When set, Molaplan does not poll for state. No PIN is needed. If a PIN-protected status reply includes state_topic and it differs from the stored value (e.g. after the panel\'s \"New channel and key\"), the subscription is updated automatically. If no message arrives on the state topic for over 35 minutes, Molaplan falls back to scheduled status requests.';
 }

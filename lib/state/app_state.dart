@@ -20,6 +20,7 @@ import '../drivers/ntfy_device.dart';
 import '../notify/event_prefs.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
+import '../notify/ntfy_listen.dart';
 import '../energy/contract.dart';
 import '../energy/meters.dart';
 import '../energy/smart_heating.dart';
@@ -601,6 +602,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     );
     loaded = true;
     notifyListeners();
+    unawaited(NtfyListen.sync(connections: config.connections, notify: config.automation.notify));
   }
 
   Future<void> setBridgeMode(bool on) async {
@@ -651,6 +653,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (!_applyingSync) account.localChanged();
     _scheduleRulesPush();
     automations.changed();
+    unawaited(NtfyListen.sync(connections: config.connections, notify: config.automation.notify));
     if (sharing.mine.any((r) => r.status == ShareStatus.active)) {
       _sharePush?.cancel();
       _sharePush = Timer(const Duration(seconds: 3), () => unawaited(sharing.pushPackages()));

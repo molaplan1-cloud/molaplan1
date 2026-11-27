@@ -83,7 +83,7 @@ List<String> detectNtfyEvents(Map<String, dynamic>? prev, Map<String, dynamic> n
   if (pr is Map && nr is Map && !_mapEq(pr, nr)) out.add('relay_change');
   if ('${prev['state']}' != '${next['state']}' && !nowAlarm) out.add('state_change');
   if (!out.contains('state_change') && !out.contains('relay_change') && !out.contains('alarm')) {
-    if (!_sameExcept(prev, next, const {'ts', 'cid', 'time'})) out.add('state_change');
+    if (!_sameExcept(prev, next, const {'ts', 'cid', 'time', 'state_topic', 'stateTopic'})) out.add('state_change');
   }
   return out;
 }

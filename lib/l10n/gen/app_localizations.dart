@@ -7616,6 +7616,18 @@ abstract class AppLocalizations {
   /// **'Stops e.g. a flapping sensor from sending dozens of notifications.'**
   String get s643b680e89;
 
+  /// fi: Ilmoitus kun tämä automaatio laukeaa
+  ///
+  /// In en, this message translates to:
+  /// **'Notify when this automation runs'**
+  String get s0b70275d6c;
+
+  /// fi: Oletus
+  ///
+  /// In en, this message translates to:
+  /// **'Default'**
+  String get s35e8cce8a9;
+
   /// fi: Testaa nyt
   ///
   /// In en, this message translates to:
@@ -12899,6 +12911,36 @@ abstract class AppLocalizations {
   /// **'already added'**
   String get s78cdce874e;
 
+  /// fi: Valitse, tuleeko tästä laitteesta push-ilmoitus ja millä tärkeydellä. Oletukset ovat rauhalliset: vain hälytys ja laitte
+  ///
+  /// In en, this message translates to:
+  /// **'Choose whether this device sends a push and at which importance. Defaults stay quiet: only an alarm or a silent device notify you. Notifications go to your ntfy topic and appear in the app.'**
+  String get s8814efe188;
+
+  /// fi: Tapahtumien tärkeys
+  ///
+  /// In en, this message translates to:
+  /// **'Event importance'**
+  String get s9341ea63c0;
+
+  /// fi: Yleiset oletukset. Laitteen omissa asetuksissa voi poiketa näistä. Automaation omassa ilmoitustoiminnossa prioriteetti v
+  ///
+  /// In en, this message translates to:
+  /// **'General defaults. A device can override these in its own settings. A notify action on an automation takes precedence.'**
+  String get s2b4ea7a381;
+
+  /// fi: Laite ilmoitti uuden tilakanavan
+  ///
+  /// In en, this message translates to:
+  /// **'The device reported a new state topic'**
+  String get s67917c9a2a;
+
+  /// fi: Käytä tätä
+  ///
+  /// In en, this message translates to:
+  /// **'Use this'**
+  String get s79fc5ea775;
+
   /// fi: Makuuhuone
   ///
   /// In en, this message translates to:
@@ -15251,6 +15293,18 @@ abstract class AppLocalizations {
   /// **'If the device answers on another topic (e.g. your personal notification topic), type it here. Empty = the command topic.'**
   String get s7e8c7a0cfc;
 
+  /// fi: Tilakanava (vapaaehtoinen)
+  ///
+  /// In en, this message translates to:
+  /// **'State topic (optional)'**
+  String get sfb1f03903c;
+
+  /// fi: Laitteen tilakanava (esim. paneelin Laite → Etäohjaus → Tilakanava, fw 0.2.50+). Kun asetettu, Molaplan kuuntelee laitte
+  ///
+  /// In en, this message translates to:
+  /// **'The device\'\'s state topic (e.g. the panel\'\'s Device → Remote → State channel, fw 0.2.50+). When set, Molaplan listens for the device\'\'s own state messages and does not poll. No PIN is needed. If a status reply includes state_topic, the field is filled in automatically.'**
+  String get s0ac0bdced7;
+
   /// fi: PIN-koodi (vapaaehtoinen)
   ///
   /// In en, this message translates to:
@@ -15485,6 +15539,12 @@ abstract class AppLocalizations {
   /// **'The command was sent, but the device did not answer within {p0} s – is the device online? If it answers only at intervals, increase \"Minimum time between commands\" (topic \"{p1}\").'**
   String sdf4ecde616(String p0, String p1);
 
+  /// fi: Komento lähti, mutta tilaa ei tullut {p0} s:ssa tilakanavalle eikä vastauskanavalle.
+  ///
+  /// In en, this message translates to:
+  /// **'The command was sent, but no state arrived on the state or reply topic within {p0} s.'**
+  String s9e974e06df(String p0);
+
   /// fi: Laite vastasi: {p0}
   ///
   /// In en, this message translates to:
@@ -15497,11 +15557,29 @@ abstract class AppLocalizations {
   /// **'If the device replies on another topic (e.g. your notification topic), set it as \"Reply topic\".'**
   String get sc112a20bf5;
 
+  /// fi: Tilakanavaa kuunnellaan, mutta tilaa ei ole vielä tullut.
+  ///
+  /// In en, this message translates to:
+  /// **'The state topic is being listened to, but no state has arrived yet.'**
+  String get sb9873b4f15;
+
   /// fi:  PIN on tallennettu.
   ///
   /// In en, this message translates to:
   /// **' A PIN is stored.'**
   String get sf03877dd0a;
+
+  /// fi:  Tilakanavaa kuunnellaan.
+  ///
+  /// In en, this message translates to:
+  /// **' The state topic is being listened to.'**
+  String get s91089c4d9f;
+
+  /// fi: Laite ei ole lähettänyt tilaa yli tuntiin – onko laite verkossa?
+  ///
+  /// In en, this message translates to:
+  /// **'The device has not sent state in over an hour – is the device online?'**
+  String get sab4a606e33;
 
   /// fi: Komento lähti, mutta laite ei vastannut ajoissa – onko laite verkossa? (ntfy-palvelin toimii.)
   ///
@@ -17885,6 +17963,12 @@ abstract class AppLocalizations {
   /// **'If the device answers on another topic (e.g. your notification topic). Empty = the same topic.'**
   String get sc1ddf7feb4;
 
+  /// fi: Laitteen tilakanava (paneelissa Laite → Etäohjaus → Tilakanava, fw 0.2.50+). Kun asetettu, Molaplan ei kysele tilaa itse
+  ///
+  /// In en, this message translates to:
+  /// **'The device state topic (on the panel: Device → Remote → State channel, fw 0.2.50+). When set, Molaplan does not poll for state. No PIN is needed. May be filled automatically from a status reply\'\'s state_topic field.'**
+  String get s4fa314c8da;
+
   /// fi: Jos vastauskanavalla on muitakin viestejä: vain tämän otsikon viestit ovat vastauksia.
   ///
   /// In en, this message translates to:
@@ -18052,6 +18136,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{p0} – room'**
   String s3a38b97f7b(String p0);
+
+  /// fi: Päivällä ei ohjata
+  ///
+  /// In en, this message translates to:
+  /// **'Not controlled during the day'**
+  String get sd2b99f6417;
+
+  /// fi: Laitteen tilakanava (esim. paneelin Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan kuuntelee laitte
+  ///
+  /// In en, this message translates to:
+  /// **'The device\'\'s state topic (e.g. the panel\'\'s Device → Remote → State channel, fw 0.2.51+). When set, Molaplan listens for the device\'\'s own state messages and does not poll. No PIN is needed. If a PIN-protected status reply includes state_topic and it differs from the stored value (e.g. after the panel\'\'s \"New channel and key\"), the subscription is updated automatically. If no message arrives on the state topic for over 35 minutes, Molaplan falls back to scheduled status requests.'**
+  String get s1acfb0da58;
+
+  /// fi: Laitteen tilakanava (paneelissa Laite → Etäohjaus → Tilakanava, fw 0.2.51+). Kun asetettu, Molaplan ei kysele tilaa itse
+  ///
+  /// In en, this message translates to:
+  /// **'The device state topic (on the panel: Device → Remote → State channel, fw 0.2.51+). When set, Molaplan does not poll for state. No PIN is needed. If a PIN-protected status reply includes state_topic and it differs from the stored value (e.g. after the panel\'\'s \"New channel and key\"), the subscription is updated automatically. If no message arrives on the state topic for over 35 minutes, Molaplan falls back to scheduled status requests.'**
+  String get s5abc26863b;
 }
 
 class _AppLocalizationsDelegate

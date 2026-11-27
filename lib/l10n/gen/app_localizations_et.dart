@@ -4210,6 +4210,12 @@ class AppLocalizationsEt extends AppLocalizations {
       'Peatab näiteks lehvitusanduri kümnete teadete saatmise.';
 
   @override
+  String get s0b70275d6c => 'Teavita, kui see automatiseerimine käivitub';
+
+  @override
+  String get s35e8cce8a9 => 'Vaikimisi';
+
+  @override
   String get s4c4ab28899 => 'Testi nüüd';
 
   @override
@@ -7137,6 +7143,23 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s78cdce874e => 'juba lisatud';
 
   @override
+  String get s8814efe188 =>
+      'Vali, kas see seade saadab push-teavituse ja millise tähtsusega. Vaikeväärtused on vaiksed: teavituse saadab ainult häire või vaikiv seade. Teavitused lähevad sinu ntfy-teemale ja ilmuvad rakendusse.';
+
+  @override
+  String get s9341ea63c0 => 'Sündmuste tähtsus';
+
+  @override
+  String get s2b4ea7a381 =>
+      'Üldised vaikeväärtused. Seade võib need oma seadetes tühistada. Automatiseerimise teavitustoiming on nendest tähtsam.';
+
+  @override
+  String get s67917c9a2a => 'Seade teatas uuest oleku teemast';
+
+  @override
+  String get s79fc5ea775 => 'Kasuta seda';
+
+  @override
   String get s7ba50ea69e => 'Magamistuba';
 
   @override
@@ -8453,6 +8476,13 @@ class AppLocalizationsEt extends AppLocalizations {
       'Kui seade vastab mõnele muule teemale (nt sinu isikliku märguande teemale), kirjuta see siia. Tühi = käsuteema.';
 
   @override
+  String get sfb1f03903c => 'Oleku teema (valikuline)';
+
+  @override
+  String get s0ac0bdced7 =>
+      'Seadme oleku teema (paneelil: Seade → Kaugjuhtimine → Olekukanal, fw 0.2.50+). Kui see on määratud, kuulab Molaplan seadme enda olekuteateid ega küsi olekut ise. PIN-koodi pole vaja. Kui olekuvastus sisaldab välja state_topic, täidetakse teema automaatselt.';
+
+  @override
   String get s7ea9d85150 => 'PIN-kood (valikuline)';
 
   @override
@@ -8590,6 +8620,11 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String s9e974e06df(String p0) {
+    return 'Käsk saadeti, kuid $p0 s jooksul ei saabunud olekut oleku- ega vastusteemale.';
+  }
+
+  @override
   String s1257447096(String p0) {
     return 'Seade vastas: $p0';
   }
@@ -8599,7 +8634,18 @@ class AppLocalizationsEt extends AppLocalizations {
       'Kui seade vastab teisele teemale (nt teie teavitusteema), määrake see \"Vasta teema\".';
 
   @override
+  String get sb9873b4f15 =>
+      'Oleku teemat kuulatakse, kuid olekut pole veel saabunud.';
+
+  @override
   String get sf03877dd0a => ' PIN-kood salvestatakse.';
+
+  @override
+  String get s91089c4d9f => ' Oleku teemat kuulatakse.';
+
+  @override
+  String get sab4a606e33 =>
+      'Seade ei ole üle tunni olekut saatnud – kas seade on võrgus?';
 
   @override
   String get s33cfb86f9f =>
@@ -9934,6 +9980,10 @@ class AppLocalizationsEt extends AppLocalizations {
       'Kui seade vastab mõnele muule teemale (nt teie teavitusteema). Tühjus = sama teema.';
 
   @override
+  String get s4fa314c8da =>
+      'Seadme oleku teema (paneelil: Seade → Kaugjuhtimine → Olekukanal, fw 0.2.50+). Kui see on määratud, ei küsi Molaplan olekut ise. PIN-koodi pole vaja. Võib täituda automaatselt olekuvastuse state_topic-väljast.';
+
+  @override
   String get s24779d22ca =>
       'Kui vastamisteemal on ka muid sõnumeid: ainult selle pealkirjaga sõnumid on vastused.';
 
@@ -10035,4 +10085,15 @@ class AppLocalizationsEt extends AppLocalizations {
   String s3a38b97f7b(String p0) {
     return '$p0 – ruum';
   }
+
+  @override
+  String get sd2b99f6417 => 'Päeval ei juhita';
+
+  @override
+  String get s1acfb0da58 =>
+      'Seadme oleku teema (paneelil: Seade → Kaugjuhtimine → Olekukanal, fw 0.2.51+). Kui see on määratud, kuulab Molaplan seadme enda olekuteateid ega küsi olekut ise. PIN-koodi pole vaja. Kui PIN-koodiga kaitstud olekuvastus sisaldab välja state_topic ja see erineb salvestatust (nt pärast paneeli käsku \"Uus kanal ja võti\"), uuendatakse kuulamist automaatselt. Kui oleku teemale ei saabu üle 35 minuti teadet, küsib Molaplan olekut ajakava järgi.';
+
+  @override
+  String get s5abc26863b =>
+      'Seadme oleku teema (paneelil: Seade → Kaugjuhtimine → Olekukanal, fw 0.2.51+). Kui see on määratud, ei küsi Molaplan olekut ise. PIN-koodi pole vaja. Kui PIN-koodiga kaitstud olekuvastus sisaldab välja state_topic ja see erineb salvestatust (nt pärast paneeli käsku \"Uus kanal ja võti\"), uuendatakse kuulamist automaatselt. Kui oleku teemale ei saabu üle 35 minuti teadet, küsib Molaplan olekut ajakava järgi.';
 }

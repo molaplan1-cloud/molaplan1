@@ -4241,6 +4241,12 @@ class AppLocalizationsEs extends AppLocalizations {
       'Detiene, por ejemplo, un sensor de acoplamiento de enviar docenas de notificaciones.';
 
   @override
+  String get s0b70275d6c => 'Notificar cuando se ejecute esta automatización';
+
+  @override
+  String get s35e8cce8a9 => 'Por defecto';
+
+  @override
   String get s4c4ab28899 => 'Prueba ahora';
 
   @override
@@ -7192,6 +7198,23 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s78cdce874e => 'ya añadido';
 
   @override
+  String get s8814efe188 =>
+      'Elige si este dispositivo envía una notificación push y con qué importancia. Los valores predeterminados son discretos: solo una alarma o un dispositivo en silencio te avisan. Las notificaciones van a tu tema ntfy y aparecen en la aplicación.';
+
+  @override
+  String get s9341ea63c0 => 'Importancia de los eventos';
+
+  @override
+  String get s2b4ea7a381 =>
+      'Valores predeterminados generales. Un dispositivo puede anularlos en su propia configuración. Una acción de notificación en una automatización tiene prioridad.';
+
+  @override
+  String get s67917c9a2a => 'El dispositivo comunicó un nuevo tema de estado';
+
+  @override
+  String get s79fc5ea775 => 'Usar esto';
+
+  @override
   String get s7ba50ea69e => 'Dormitorio';
 
   @override
@@ -8523,6 +8546,13 @@ class AppLocalizationsEs extends AppLocalizations {
       'Si el dispositivo responde a otro tema (por ejemplo, su tema de notificación personal), escríbalo aquí. Vacío = el tema del comando.';
 
   @override
+  String get sfb1f03903c => 'Tema de estado (opcional)';
+
+  @override
+  String get s0ac0bdced7 =>
+      'El tema de estado del dispositivo (en el panel: Dispositivo → Remoto → Canal de estado, fw 0.2.50+). Cuando está configurado, Molaplan escucha los mensajes de estado del propio dispositivo y no consulta el estado. No se necesita PIN. Si una respuesta de estado incluye state_topic, el campo se rellena automáticamente.';
+
+  @override
   String get s7ea9d85150 => 'Código PIN (opcional)';
 
   @override
@@ -8662,6 +8692,11 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String s9e974e06df(String p0) {
+    return 'Se envió el comando, pero no llegó ningún estado al tema de estado o de respuesta en $p0 s.';
+  }
+
+  @override
   String s1257447096(String p0) {
     return 'El dispositivo respondió: $p0';
   }
@@ -8671,7 +8706,18 @@ class AppLocalizationsEs extends AppLocalizations {
       'Si el dispositivo responde a otro tema (por ejemplo, el tema de la notificación), establecelo como \"Tema de respuesta\".';
 
   @override
+  String get sb9873b4f15 =>
+      'Se está escuchando el tema de estado, pero aún no ha llegado ningún estado.';
+
+  @override
   String get sf03877dd0a => ' Se almacena un PIN.';
+
+  @override
+  String get s91089c4d9f => ' Se está escuchando el tema de estado.';
+
+  @override
+  String get sab4a606e33 =>
+      'El dispositivo no ha enviado estado en más de una hora: ¿está en línea?';
 
   @override
   String get s33cfb86f9f =>
@@ -10027,6 +10073,10 @@ class AppLocalizationsEs extends AppLocalizations {
       'Si el dispositivo responde a otro tema (por ejemplo, el tema de la notificación). Vacío = el mismo tema.';
 
   @override
+  String get s4fa314c8da =>
+      'El tema de estado del dispositivo (en el panel: Dispositivo → Remoto → Canal de estado, fw 0.2.50+). Cuando está configurado, Molaplan no consulta el estado. No se necesita PIN. Puede rellenarse automáticamente desde el campo state_topic de una respuesta de estado.';
+
+  @override
   String get s24779d22ca =>
       'Si el tema de la respuesta tiene otros mensajes también: sólo los mensajes con este título son respuestas.';
 
@@ -10128,4 +10178,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String s3a38b97f7b(String p0) {
     return '$p0 – room';
   }
+
+  @override
+  String get sd2b99f6417 => 'No se controla durante el día';
+
+  @override
+  String get s1acfb0da58 =>
+      'El tema de estado del dispositivo (en el panel: Dispositivo → Remoto → Canal de estado, fw 0.2.51+). Cuando está configurado, Molaplan escucha los mensajes de estado del propio dispositivo y no consulta el estado. No se necesita PIN. Si una respuesta de estado protegida con PIN incluye state_topic y difiere del valor guardado (p. ej. tras \"Nuevo canal y clave\" en el panel), la suscripción se actualiza automáticamente. Si no llega ningún mensaje al tema de estado en más de 35 minutos, Molaplan vuelve a las consultas de estado programadas.';
+
+  @override
+  String get s5abc26863b =>
+      'El tema de estado del dispositivo (en el panel: Dispositivo → Remoto → Canal de estado, fw 0.2.51+). Cuando está configurado, Molaplan no consulta el estado. No se necesita PIN. Si una respuesta de estado protegida con PIN incluye state_topic y difiere del valor guardado (p. ej. tras \"Nuevo canal y clave\" en el panel), la suscripción se actualiza automáticamente. Si no llega ningún mensaje al tema de estado en más de 35 minutos, Molaplan vuelve a las consultas de estado programadas.';
 }

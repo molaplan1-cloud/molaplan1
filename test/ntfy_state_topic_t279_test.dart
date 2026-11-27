@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:molaplan/drivers/driver.dart';
 import 'package:molaplan/drivers/ntfy_device.dart';
 import 'package:molaplan/models/models.dart';
 import 'package:molaplan/notify/event_prefs.dart';
@@ -15,14 +14,15 @@ Map<String, dynamic> kvState({
   Map<String, int> relays = const {'sisavalo': 1, 'pihavalo': 0},
   String? trigger,
   String? stateTopic,
+  String sisavaloSrc = 'camera',
   int ts = 1,
 }) => {
   'v': 1,
   'cid': null,
-  'fw': '0.2.50',
+  'fw': '0.2.51',
   'state': state,
   'relays': relays,
-  'sisavalo_src': 'camera',
+  'sisavalo_src': sisavaloSrc,
   'day': true,
   'ts': ts,
   'trigger': ?trigger,
@@ -137,31 +137,44 @@ void main() {
     expect(ntfy.published.any((s) => s.contains('sisavalo pois')), isTrue);
   });
 
-  test('no state for longer than the stale window marks the device offline once', () async {
+  test('after 35 minutes of silence on the state topic, scheduled tila json is sent; 34 minutes is not enough', () async {
     final ntfy = await MockNtfy().start();
     addTearDown(ntfy.stop);
+    ntfy.responder = (topic, msg) {
+      if (!msg.contains('tila')) return null;
+      return (
+        'user-notify',
+        'Tila JSON',
+        jsonEncode(kvState(ts: 99, state: 'home')),
+      );
+    };
     final events = <String>[];
     NtfyDeviceDriver.onEvent = (c, e, t, b) => events.add(e);
     var now = DateTime(2026, 11, 27, 10, 0);
     NtfyDeviceDriver.clock = () => now;
-    NtfyDeviceDriver.stateStaleAfter = const Duration(minutes: 65);
-    final d = drv(ntfy, extra: {'stateTopic': 'kv-state-testdevice0001'});
+    NtfyDeviceDriver.statePollFallbackAfter = const Duration(minutes: 35);
+    final d = drv(ntfy, extra: {'stateTopic': 'kv-state-testdevice0001', 'statusCommand': 'tila json {pin}'});
     addTearDown(d.dispose);
     ntfy.add('kv-state-testdevice0001', jsonEncode(kvState(ts: 1)), title: 'Tila JSON');
     await d.startStateSub();
     await d.read({'jsonPath': r'$.state'});
-    now = now.add(const Duration(minutes: 64));
+    expect(ntfy.published.where((s) => s.contains('tila')), isEmpty);
+
+    now = now.add(const Duration(minutes: 34));
     d.checkStateStale();
+    await d.status();
+    expect(ntfy.published.where((s) => s.contains('tila')), isEmpty);
     expect(events, isEmpty);
-    now = now.add(const Duration(minutes: 2));
+
+    now = now.add(const Duration(minutes: 2)); // 36 min total
     d.checkStateStale();
-    expect(events, ['offline']);
-    d.checkStateStale();
-    expect(events, ['offline']); // once
-    await expectLater(d.status(), throwsA(isA<DriverException>().having((e) => e.message, 'm', contains('yli tuntiin'))));
+    await Future<void>.delayed(const Duration(milliseconds: 80));
+    expect(ntfy.published.where((s) => s.contains('tila')), isNotEmpty);
+    // Silence alone does not fire the offline push; the poll is the fallback.
+    expect(events.contains('offline'), isFalse);
   });
 
-  test('tila json state_topic auto-fills when empty and is offered when different', () async {
+  test('tila json state_topic auto-fills when empty and auto-updates when different', () async {
     final ntfy = await MockNtfy().start();
     addTearDown(ntfy.stop);
     ntfy.responder = (topic, msg) {
@@ -175,7 +188,7 @@ void main() {
     final patches = <Map<String, dynamic>>[];
     String? offered;
     NtfyDeviceDriver.applySettings = (id, patch, {offeredStateTopic}) async {
-      patches.add(patch);
+      patches.add(Map<String, dynamic>.from(patch));
       offered = offeredStateTopic;
     };
     final d = drv(ntfy); // no stateTopic yet
@@ -184,8 +197,10 @@ void main() {
     expect(d.config.settings['stateTopic'], 'kv-state-abcdef1234567890');
     expect(patches, isNotEmpty);
     expect(patches.first['stateTopic'], 'kv-state-abcdef1234567890');
+    expect(offered, isNull);
 
-    // A later reply naming a different topic is offered, not overwritten.
+    // "Uusi kanava ja avain" on the panel: the next PIN-protected reply names a new topic
+    // and the subscription is switched automatically (not merely offered).
     ntfy.responder = (topic, msg) {
       if (!msg.contains('tila')) return null;
       return (
@@ -195,8 +210,58 @@ void main() {
       );
     };
     await d.send({'command': 'tila json {pin}', 'waitReply': true, 'ackSeconds': 3});
+    expect(d.config.settings['stateTopic'], 'kv-state-otherotherother');
+    expect(patches.last['stateTopic'], 'kv-state-otherotherother');
+    expect(offered, isNull);
+
+    await Future<void>.delayed(const Duration(milliseconds: 80));
+    ntfy.add(
+      'kv-state-otherotherother',
+      jsonEncode(kvState(relays: {'sisavalo': 0, 'pihavalo': 1}, ts: 32)),
+      title: 'Tila JSON',
+    );
+    await Future<void>.delayed(const Duration(milliseconds: 120));
+    expect(await d.read({'jsonPath': r'$.relays.pihavalo'}), isTrue);
+  });
+
+  test('state-topic pushes have no state_topic field and do not clear the stored channel', () async {
+    final ntfy = await MockNtfy().start();
+    addTearDown(ntfy.stop);
+    final events = <String>[];
+    NtfyDeviceDriver.onEvent = (c, e, t, b) => events.add(e);
+    final d = drv(ntfy, extra: {'stateTopic': 'kv-state-abcdef1234567890'});
+    addTearDown(d.dispose);
+    // First snapshot from a PIN-protected tila json (includes state_topic as last field).
+    ntfy.add(
+      'kv-state-abcdef1234567890',
+      jsonEncode(kvState(stateTopic: 'kv-state-abcdef1234567890', ts: 1)),
+      title: 'Tila JSON',
+    );
+    await d.startStateSub();
+    await Future<void>.delayed(const Duration(milliseconds: 40));
+    // fw 0.2.51 push: title Tila JSON, prio 1, cid null, no state_topic, no tags.
+    ntfy.add(
+      'kv-state-abcdef1234567890',
+      jsonEncode(kvState(ts: 2)),
+      title: 'Tila JSON',
+      priority: 1,
+    );
+    await Future<void>.delayed(const Duration(milliseconds: 40));
     expect(d.config.settings['stateTopic'], 'kv-state-abcdef1234567890');
-    expect(offered, 'kv-state-otherotherother');
+    expect(events, isEmpty, reason: 'heartbeat / field-only difference is not a push event');
+    expect(await d.read({'jsonPath': r'$.state'}), 'home');
+  });
+
+  test('a Tila JSON heartbeat does not notify; an alarm event does; relay_change stays off by default', () {
+    expect(notifyPriorityFor('alarm'), 5);
+    expect(notifyPriorityFor('offline'), 4);
+    expect(notifyPriorityFor('state_change'), 0);
+    expect(notifyPriorityFor('relay_change'), 0);
+    final withTopic = kvState(stateTopic: 'kv-state-abcdef1234567890', ts: 1);
+    final push = kvState(ts: 2);
+    expect(detectNtfyEvents(withTopic, push), isEmpty);
+    expect(detectNtfyEvents(push, kvState(sisavaloSrc: 'day', ts: 3)), ['state_change']);
+    expect(notifyPriorityFor('state_change'), 0);
   });
 
   test('relay and alarm events fire; a heartbeat does not', () async {

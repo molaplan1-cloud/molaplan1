@@ -62,6 +62,15 @@
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                 android:value="Home automation bridge: keeps an end-to-end encrypted relay connection so the user's phone can control home devices remotely." />
         </service>
+        <!-- t282u: ntfy JSON-stream listener (alarms when the app is closed, no Flutter engine). -->
+        <service
+            android:name=".NtfyListenService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Listens to the user's ntfy notification topics so alarms arrive when Molaplan is closed." />
+        </service>
         <!-- t211u: device owner (adb dpm set-device-owner) for silent self-updates of a bridge. -->
         <receiver
             android:name=".AdminReceiver"

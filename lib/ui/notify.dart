@@ -57,6 +57,36 @@ class LocalNotify {
       } catch (_) {}
     }
   }
+
+  /// t282u: start or update the native ntfy JSON-stream listener (Android).
+  static Future<bool> syncListen(String configJson) async {
+    if (recorded != null || !_android) return false;
+    try {
+      await _ch.invokeMethod('listen', {'config': configJson});
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  static Future<void> setListenForeground(bool value) async {
+    if (recorded != null || !_android) return;
+    try {
+      await _ch.invokeMethod('listenForeground', {'value': value});
+    } catch (_) {}
+  }
+
+  /// Prompt once for a battery-optimization exemption so the listener survives Doze.
+  static Future<void> maybeAskBatteryExemption() async {
+    if (recorded != null || !_android) return;
+    try {
+      final exempt = await _ch.invokeMethod<bool>('batteryExempt');
+      if (exempt == true) return;
+      final asked = await _ch.invokeMethod<bool>('batteryAsked');
+      if (asked == true) return;
+      await _ch.invokeMethod('requestBatteryExemption');
+    } catch (_) {}
+  }
 }
 
 /// molaplan:// links (notification taps, the ntfy app's Click action). The app listens to [links].

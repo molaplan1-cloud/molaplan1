@@ -18,6 +18,7 @@ import '../core/template.dart';
 import '../l10n/l10n.dart';
 import '../remote/protocol.dart' show RemoteUnavailable;
 import '../ui/notify.dart';
+import '../notify/ntfy_listen.dart';
 import 'app_state.dart';
 import 'tile_runtime.dart';
 
@@ -571,8 +572,10 @@ class AutomationState extends ChangeNotifier {
     if (received.length > 50) received.removeLast();
     final fg = !LocalNotify.appInBackground;
     if (fg && _inApp.hasListener) _inApp.add(m);
-    // Windows: always a toast (the window may be hidden in the tray). Android: when in background.
-    if (!fg || defaultTargetPlatform == TargetPlatform.windows) {
+    // Windows: always a toast (the window may be hidden in the tray). Android: when in
+    // background, unless the native ntfy listener (t282u) already posts the OS notification.
+    final androidNative = !kIsWeb && defaultTargetPlatform == TargetPlatform.android && NtfyListen.nativeActive;
+    if ((!fg || defaultTargetPlatform == TargetPlatform.windows) && !androidNative) {
       unawaited(
         LocalNotify.show(title, body, link: tileId == null ? null : 'molaplan://tile/$tileId', priority: priority),
       );
