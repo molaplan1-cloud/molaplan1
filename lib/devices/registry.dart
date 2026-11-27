@@ -3,9 +3,12 @@ import '../heatpumps/hp_providers.dart';
 import 'dirigera.dart';
 import 'ewelink_lan.dart';
 import 'hue.dart';
+import 'light_hubs.dart';
 import 'provider.dart';
 import 'shelly.dart';
 import 'sonoff.dart';
+import 'zigbee2mqtt.dart';
+import 'zwavejs.dart';
 import '../tuya/tuya_provider.dart';
 import '../energy/solar_providers.dart';
 import '../ev/ev_providers.dart';
@@ -26,6 +29,10 @@ final deviceProviders = <DeviceProvider>[
   SolarChooser(),
   ChargerChooser(),
   MediaChooser(),
+  Zigbee2MqttProvider(),
+  ZwaveJsProvider(),
+  NanoleafProvider(),
+  WledProvider(),
 ];
 
 DeviceProvider? providerById(String id) =>
@@ -57,17 +64,52 @@ const roadmapBrands = <RoadmapBrand>[
     useTemplate: 'homeassistant',
   ),
   RoadmapBrand(
-    'Zigbee2MQTT',
-    ['zigbee', 'z2m', 'zigbee2mqtt', 'aqara', 'sonoff zigbee'],
-    'Tulossa automaattihaku. Nyt: MQTT-laite (zigbee2mqtt/<laite>/set).',
-    'Auto-discovery coming. Today: generic MQTT.',
-    useTemplate: 'mqtt',
+    'Matter (Eve, Nanoleaf, Aqara M3, Meross, tado X, Nuki…)',
+    ['matter', 'thread', 'eve', 'eve energy', 'aqara m3', 'meross matter', 'tado x', 'nuki matter', 'homekit'],
+    'Tulossa (Matter-palvelimen kautta). Nyt: Home Assistantin Matter-integraation kautta.',
+    'Coming (through a Matter server). Today: via Home Assistant\'s Matter integration.',
+    useTemplate: 'homeassistant',
   ),
   RoadmapBrand(
-    'Z-Wave JS',
-    ['zwave', 'z-wave', 'zwave js'],
-    'Tulossa. Nyt: Home Assistantin kautta.',
-    'Coming. Today: via Home Assistant.',
+    'tado°',
+    ['tado', 'termostaatti', 'patteriventtiili', 'thermostat'],
+    'Tulossa (tado-tili, pilvi). Nyt: Home Assistantin kautta; tado X myös Matterilla.',
+    'Coming (tado account, cloud). Today: via Home Assistant; tado X also over Matter.',
+    useTemplate: 'homeassistant',
+  ),
+  RoadmapBrand(
+    'Nuki, tedee, Danalock (älylukot)',
+    ['nuki', 'tedee', 'danalock', 'älylukko', 'smart lock', 'lukko'],
+    'Tulossa: Nuki Bridge ja tedee Bridge paikallisesti. Nyt: Z-Wave/Zigbee-mallit Z-Wave JS:n tai Zigbee2MQTT:n kautta, muut Home Assistantin kautta.',
+    'Coming: Nuki Bridge and tedee Bridge locally. Today: Z-Wave/Zigbee models via Z-Wave JS or Zigbee2MQTT, others via Home Assistant.',
+    useTemplate: 'homeassistant',
+  ),
+  RoadmapBrand(
+    'DoorBird',
+    ['doorbird', 'ovikello', 'ovipuhelin', 'doorbell', 'intercom'],
+    'Tulossa (paikallinen LAN-API: oven avaus, tapahtumat). Nyt: kamerana RTSP-osoitteella tai Home Assistantin kautta.',
+    'Coming (local LAN API: door open, events). Today: as a camera (RTSP) or via Home Assistant.',
+    useTemplate: 'homeassistant',
+  ),
+  RoadmapBrand(
+    'FIBARO Home Center, Homey, Z-Way, Phoscon (deCONZ), Zipato',
+    ['fibaro home center', 'hc3', 'homey', 'z-way', 'razberry', 'phoscon', 'deconz', 'conbee', 'zipato'],
+    'Tulossa (keskusten paikalliset API:t). Nyt: laitteet suoraan Z-Wave JS:n tai Zigbee2MQTT:n kautta, tai Home Assistant.',
+    'Coming (the hubs\' local APIs). Today: the devices directly via Z-Wave JS or Zigbee2MQTT, or Home Assistant.',
+    useTemplate: 'homeassistant',
+  ),
+  RoadmapBrand(
+    'Meross',
+    ['meross', 'pistorasia', 'smart plug'],
+    'Tulossa (paikallinen HTTP, avain Meross-tililtä kerran). Nyt: Matter-mallit Matterilla tai Home Assistant.',
+    'Coming (local HTTP, key fetched once from the Meross account). Today: Matter models over Matter, or Home Assistant.',
+    useTemplate: 'homeassistant',
+  ),
+  RoadmapBrand(
+    'Danfoss Ally, Salus, Nice, Dreame',
+    ['danfoss', 'ally', 'salus', 'nice', 'portti', 'gate', 'dreame', 'robotti-imuri'],
+    'Ei omaa integraatiota vielä. Zigbee-mallit: Zigbee2MQTT. Muut: Home Assistantin kautta.',
+    'No built-in integration yet. Zigbee models: Zigbee2MQTT. Others: via Home Assistant.',
     useTemplate: 'homeassistant',
   ),
   RoadmapBrand(

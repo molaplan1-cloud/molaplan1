@@ -10,6 +10,7 @@ import 'airthings.dart';
 import 'camera_driver.dart';
 import 'driver.dart';
 import 'ha_driver.dart';
+import 'zwavejs_driver.dart';
 import 'http_driver.dart';
 import 'ir_driver.dart';
 import 'modbus.dart';
@@ -42,6 +43,7 @@ const driverDescriptors = <DriverDescriptor>[
   MediaDriver.descriptor,
   EwelinkLanDriver.descriptor,
   TuyaDriver.descriptor,
+  ZwaveJsDriver.descriptor,
 ];
 
 DriverDescriptor descriptorFor(String type) =>
