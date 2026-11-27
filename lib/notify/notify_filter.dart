@@ -30,7 +30,7 @@ final _patterns = <(NotifyKind, RegExp)>[
   (
     NotifyKind.alarmEnd,
     RegExp(
-      r'(hälytys|halytys|alarm|larm|häire|alarma)\S*\s*[:,-]?\s*(kuitattu|päättyi|paattyi|loppui|ohi|pois|cleared|ended|over|stopped|acknowledged|silenced|kvitterat|slut|avslutat|lõppes|kinnitatud|finalizada|terminada|reconocida)|^(kuitattu|alarm cleared|alarm ended|alarm acknowledged)',
+      r'(hälytys|halytys|alarm|larm|häire|alarma)\S*\s*[:,-]?\s*(kuitattu|päättyi|paattyi|loppui|ohi|pois|cleared|ended|over|stopped|acknowledged|silenced|kvitterat|slut|avslutat|lõppes|kinnitatud|finalizada|terminada|reconocida)|^(kuitattu|alarm cleared|alarm ended|alarm acknowledged)|kesken hälytyksen|during (an )?alarm|under (ett )?larm|häire ajal|durante (la|una) alarma',
       caseSensitive: false,
       unicode: true,
     ),

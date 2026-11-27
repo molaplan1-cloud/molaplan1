@@ -117,4 +117,38 @@ class NtfyAlarmGateTest {
         assertFalse(NtfyAlarmGate.shouldRestartSound(playing = true, coalesce = true))
         assertTrue(NtfyAlarmGate.shouldRestartSound(playing = true, coalesce = false)) // the test button
     }
+
+    // R508 (t320u): the panel repeats an unacknowledged alarm every 10 min at priority 5 (fw texts).
+    private val reminder = Triple("HÄLYTYS jatkuu – kuittaamatta",
+        "Hälytys on ollut päällä 10 min, kuittaamatta. Sireeni: soi. Lähde: sisäkamera. (muistutus 1/6)", 5 to listOf("rotating_light"))
+
+    @Test
+    fun reminderNeverStartsASecondOverlappingSound() {
+        val (t, m, pt) = reminder
+        // A fresh reminder is a real alarm message …
+        assertEquals(NtfyAlarmGate.Action.ALARM, decide(line("r1", now - 3, t, m, pt.first, pt.second)).action)
+        // … but while the first alarm sound plays it does not restart / overlap it.
+        assertFalse(NtfyAlarmGate.shouldRestartSound(playing = true, coalesce = true))
+        // Not within a minute after the user silenced it either.
+        assertFalse(NtfyAlarmGate.shouldRestartSound(playing = false, coalesce = true, msSinceUserSilenced = 5_000))
+        // After the sound stopped (timeout or silenced > 60 s ago) a fresh reminder rings once again.
+        assertTrue(NtfyAlarmGate.shouldRestartSound(playing = false, coalesce = true, msSinceUserSilenced = 61_000))
+        assertTrue(NtfyAlarmGate.shouldRestartSound(playing = false, coalesce = true))
+        // A replayed (stale) reminder never rings, a seen one never at all.
+        assertEquals(NtfyAlarmGate.Action.STATE_ONLY, decide(line("r2", now - 600, t, m, pt.first, pt.second)).action)
+        assertEquals(NtfyAlarmGate.Action.STATE_ONLY, decide(line("r1", now - 3, t, m, pt.first, pt.second), seen = setOf("r1")).action)
+    }
+
+    @Test
+    fun rebootDuringAlarmMessages() {
+        // Alarm continues after a power cut: siren on again → real alarm.
+        assertEquals(NtfyAlarmGate.Action.ALARM, decide(line("b1", now - 2, "HÄLYTYS jatkuu – laite käynnistyi uudelleen",
+            "Laite käynnistyi uudelleen (sähkökatko?) kesken kuittaamattoman hälytyksen.", 5, listOf("rotating_light"))).action)
+        // Boot-loop guard: siren not restarted → notify, no ring.
+        assertEquals(NtfyAlarmGate.Action.NOTIFY, decide(line("b2", now - 2, "Laite käynnistyi uudelleen kesken hälytyksen",
+            "Laite käynnistyi toistuvasti uudelleen hälytyksen aikana – sireeniä ei käynnistetty uudelleen.", 5, listOf("rotating_light"))).action)
+        // "Siren off" refused during an alarm: a notice to the user, no ring.
+        assertEquals(NtfyAlarmGate.Action.NOTIFY, decide(line("b3", now - 2, "Sireeni pois estetty",
+            "Sireeni pois estetty hälytyksen aikana, kuittaa hälytys.", 4, listOf("no_entry"))).action)
+    }
 }

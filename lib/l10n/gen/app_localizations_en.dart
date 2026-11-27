@@ -7172,6 +7172,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'The command reached the ntfy server, but no reply came from the device. Check the connection\'s \"Reply topic\" – the device may answer on your own notification topic – and that the device is online.';
 
   @override
+  String get sa6d9ad626d => 'The alarm is on – acknowledge the alarm first';
+
+  @override
+  String get s40ddc7d4c4 =>
+      'The device does not allow this command during an alarm. Acknowledge the alarm first – that also turns the siren off.';
+
+  @override
   String get sb7b4d4f624 =>
       'The indoor light is not tracked or controlled during the day. It is not off – it is not being followed.';
 

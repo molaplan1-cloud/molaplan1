@@ -7180,6 +7180,13 @@ class AppLocalizationsSv extends AppLocalizations {
       'Kommandot nådde ntfy-servern, men inget svar kom från enheten. Kontrollera anslutningens \"Reply-ämne\" - enheten kan svara på ditt eget anmälningsämne - och att enheten är online.';
 
   @override
+  String get sa6d9ad626d => 'Larmet är på – kvittera larmet först';
+
+  @override
+  String get s40ddc7d4c4 =>
+      'Enheten tillåter inte detta kommando under ett larm. Kvittera larmet först – det stänger även av sirenen.';
+
+  @override
   String get sb7b4d4f624 =>
       'Inomhusbelysningen följs eller styrs inte under dagen. Den är inte avstängd – den följs inte.';
 

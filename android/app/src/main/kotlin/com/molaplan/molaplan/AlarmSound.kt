@@ -49,7 +49,10 @@ object AlarmSound {
     @Volatile private var tone: ToneGenerator? = null
     private var focus: AudioFocusRequest? = null
     private var appCtx: Context? = null
-    private val stopTask = Runnable { stop() }
+    private val stopTask = Runnable { stopNow() } // timeout (not the user)
+
+    /** t320u: when the user last silenced the alarm (elapsedRealtime ms; 0 = never). */
+    @Volatile var userSilencedAt = 0L
 
     @Volatile var playing = false
         private set
@@ -85,8 +88,9 @@ object AlarmSound {
             return true
         }
         // t319u: one alarm sound at a time – a burst of alarm messages does not restart it.
-        if (!NtfyAlarmGate.shouldRestartSound(playing, coalesce)) {
-            Log.i(TAG, "already playing – coalesced")
+        val sinceSilenced = if (userSilencedAt == 0L) Long.MAX_VALUE else android.os.SystemClock.elapsedRealtime() - userSilencedAt
+        if (!NtfyAlarmGate.shouldRestartSound(playing, coalesce, sinceSilenced)) {
+            Log.i(TAG, if (playing) "already playing – coalesced" else "silenced ${sinceSilenced / 1000} s ago – not restarted")
             return true
         }
         stopNow()
@@ -193,8 +197,9 @@ object AlarmSound {
         playing = false
     }
 
-    /** Silences the alarm (any thread). */
+    /** Silences the alarm (any thread) – the user's "Hiljennä" / swipe-away / settings button. */
     fun stop() {
+        userSilencedAt = android.os.SystemClock.elapsedRealtime()
         if (Looper.myLooper() != Looper.getMainLooper()) { main.post { stopNow() }; return }
         stopNow()
     }

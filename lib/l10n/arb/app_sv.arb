@@ -6527,6 +6527,8 @@
  "@s7aa9e16c41": {
   "x-mt": true
  },
+ "sa6d9ad626d": "Larmet är på – kvittera larmet först",
+ "s40ddc7d4c4": "Enheten tillåter inte detta kommando under ett larm. Kvittera larmet först – det stänger även av sirenen.",
  "sb7b4d4f624": "Inomhusbelysningen följs eller styrs inte under dagen. Den är inte avstängd – den följs inte.",
  "sdfb639365a": "Ingen internetanslutning",
  "s390dd51af3": "{p0} är på internet och kan inte nås. Kontrollera den här enhetens internetanslutning. De senaste uppgifterna visas när de är tillgängliga.",

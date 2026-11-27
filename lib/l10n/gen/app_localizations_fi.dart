@@ -7199,6 +7199,13 @@ class AppLocalizationsFi extends AppLocalizations {
       'Komento lähti ntfy-palvelimelle, mutta laitteen vastausta ei tullut. Tarkista yhteyden \"Vastauskanava\" – laite voi vastata omaan ilmoituskanavaasi – ja että laite on verkossa.';
 
   @override
+  String get sa6d9ad626d => 'Hälytys on päällä – kuittaa hälytys ensin';
+
+  @override
+  String get s40ddc7d4c4 =>
+      'Laite ei salli tätä komentoa hälytyksen aikana. Kuittaa hälytys ensin – kuittaus sammuttaa myös sireenin.';
+
+  @override
   String get sb7b4d4f624 =>
       'Sisävaloa ei seurata eikä ohjata päivällä. Valo ei ole pois – se ei ole seurannassa.';
 

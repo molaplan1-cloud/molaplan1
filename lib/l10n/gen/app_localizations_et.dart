@@ -7171,6 +7171,13 @@ class AppLocalizationsEt extends AppLocalizations {
       'Käsk jõudis ntfy serverisse, kuid seadmelt vastust ei tulnud. Kontrolli ühenduse \"Vasta teemale\" - seade võib vastata sinu enda märguannete teemale - ja kas seade on võrgus.';
 
   @override
+  String get sa6d9ad626d => 'Häire on sees – kinnita esmalt häire';
+
+  @override
+  String get s40ddc7d4c4 =>
+      'Seade ei luba seda käsku häire ajal. Kinnita esmalt häire – see lülitab ka sireeni välja.';
+
+  @override
   String get sb7b4d4f624 =>
       'Sisevalgustit päeval ei jälgita ega juhita. See ei ole väljas – seda ei jälgita.';
 

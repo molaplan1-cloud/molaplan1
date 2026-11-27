@@ -262,7 +262,7 @@ void main() {
     expect(gate.indexOf('isFresh(time, nowSec)'), lessThan(gate.indexOf('isRealAlarm(rules, topic')));
     expect(svc, contains('KEY_SEEN'));
     // One alarm sound at a time (the test button still restarts it).
-    expect(sound, contains('NtfyAlarmGate.shouldRestartSound(playing, coalesce)'));
+    expect(sound, contains('NtfyAlarmGate.shouldRestartSound(playing, coalesce, sinceSilenced)'));
     expect(notifier, contains('coalesce = !test'));
     // JVM unit test replaying a historical burst exists.
     expect(File('android/app/src/test/kotlin/com/molaplan/molaplan/NtfyAlarmGateTest.kt').existsSync(), isTrue);

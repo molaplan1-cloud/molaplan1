@@ -2165,6 +2165,8 @@
  "sd3d9c263ed": "Palvelu",
  "s5d151d0815": "ntfy.sh sallii 250 viestiä 12 tunnissa kotisi julkisesta IP-osoitteesta (kaikki puhelimet, tabletit, PC ja laitteen omat vastaukset yhteensä). Viestejä vapautuu muutaman minuutin välein – sovellus kysyy tilaa nyt harvemmin. Pysyvä ratkaisu: oma ntfy-palvelin tai ntfy-tili, jolla on suurempi raja.",
  "s7aa9e16c41": "Komento lähti ntfy-palvelimelle, mutta laitteen vastausta ei tullut. Tarkista yhteyden \"Vastauskanava\" – laite voi vastata omaan ilmoituskanavaasi – ja että laite on verkossa.",
+ "sa6d9ad626d": "Hälytys on päällä – kuittaa hälytys ensin",
+ "s40ddc7d4c4": "Laite ei salli tätä komentoa hälytyksen aikana. Kuittaa hälytys ensin – kuittaus sammuttaa myös sireenin.",
  "sb7b4d4f624": "Sisävaloa ei seurata eikä ohjata päivällä. Valo ei ole pois – se ei ole seurannassa.",
  "sdfb639365a": "Ei nettiyhteyttä",
  "s390dd51af3": "{p0} on internetissä, eikä siihen saatu yhteyttä. Tarkista tämän laitteen nettiyhteys. Viimeisimmät tiedot näytetään, kun niitä on.",

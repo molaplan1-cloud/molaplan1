@@ -193,7 +193,7 @@ String? ntfyDeviceError(NtfyMessage m, String? pattern) {
     if (j['ok'] == false || j['error'] != null) return '${j['err'] ?? j['error'] ?? j['message'] ?? m.message}';
     return null;
   }
-  final p = pattern ?? r'väärä pin|wrong pin|invalid pin|virhe|error|denied|kielletty|ei sallittu';
+  final p = pattern ?? r'väärä pin|wrong pin|invalid pin|virhe|error|denied|kielletty|ei sallittu|estetty|blocked|refused';
   if (p.trim().isEmpty) return null;
   try {
     if (RegExp(p, caseSensitive: false).hasMatch(m.message)) return m.text;
@@ -847,6 +847,7 @@ class NtfyDeviceDriver extends NtfyDriver {
     }
     final err = ntfyDeviceError(m, s.strOrNull('errorMatch'));
     if (err != null) {
+      if (ntfyErrorIsSelfExplaining(err)) throw DriverException(ntfyErrorText(err));
       throw DriverException(dtx('Laite vastasi: ${ntfyErrorText(err)}', 'The device answered: ${ntfyErrorText(err)}'));
     }
     return m;
@@ -1191,6 +1192,15 @@ String ntfyErrorText(String err) {
     case 'rate_limited':
     case 'busy':
       return dtx('liian monta komentoa – odota hetki ($e)', 'too many commands – wait a moment ($e)');
+    case 'alarm_active':
+      // R509 (t320u): e.g. "sireeni pois" refused while the alarm is on – acknowledge first.
+      return ntfyAlarmActiveText();
   }
   return e;
 }
+
+/// R509 (t320u): the device refused a command because an alarm is on (err `alarm_active`).
+String ntfyAlarmActiveText() => '${dtx('Hälytys on päällä – kuittaa hälytys ensin', 'The alarm is on – acknowledge the alarm first')} (alarm_active)';
+
+/// Error codes whose text is clear on its own (no "The device answered:" prefix).
+bool ntfyErrorIsSelfExplaining(String err) => err.trim().toLowerCase() == 'alarm_active';

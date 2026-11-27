@@ -6518,6 +6518,8 @@
  "@s7aa9e16c41": {
   "x-mt": true
  },
+ "sa6d9ad626d": "La alarma está activa: reconoce primero la alarma",
+ "s40ddc7d4c4": "El dispositivo no permite este comando durante una alarma. Reconoce primero la alarma; eso también apaga la sirena.",
  "sb7b4d4f624": "La luz interior no se sigue ni se controla durante el día. No está apagada: no se está siguiendo.",
  "sdfb639365a": "Sin conexión a internet",
  "s390dd51af3": "{p0} está en Internet y no se puede llegar. Compruebe la conexión a Internet de este dispositivo. Los últimos datos se muestran cuando está disponible.",

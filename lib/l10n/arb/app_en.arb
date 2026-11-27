@@ -11633,27 +11633,37 @@
  "s5d151d0815": "ntfy.sh allows 250 messages per 12 hours from your home''s public IP (all phones, tablets, PCs and the device''s own replies together). Messages free up every few minutes – the app now asks for the state less often. A lasting fix: your own ntfy server or an ntfy account with a higher limit.",
  "@s5d151d0815": {
   "description": "fi: ntfy.sh sallii 250 viestiä 12 tunnissa kotisi julkisesta IP-osoitteesta (kaikki puhelimet, tabletit, PC ja laitteen omat",
-  "x-where": "core/friendly_error.dart:294"
+  "x-where": "core/friendly_error.dart:296"
  },
  "s7aa9e16c41": "The command reached the ntfy server, but no reply came from the device. Check the connection''s \"Reply topic\" – the device may answer on your own notification topic – and that the device is online.",
  "@s7aa9e16c41": {
   "description": "fi: Komento lähti ntfy-palvelimelle, mutta laitteen vastausta ei tullut. Tarkista yhteyden \"Vastauskanava\" – laite voi vasta",
-  "x-where": "core/friendly_error.dart:306"
+  "x-where": "core/friendly_error.dart:308"
+ },
+ "sa6d9ad626d": "The alarm is on – acknowledge the alarm first",
+ "@sa6d9ad626d": {
+  "description": "fi: Hälytys on päällä – kuittaa hälytys ensin",
+  "x-where": "core/friendly_error.dart:319"
+ },
+ "s40ddc7d4c4": "The device does not allow this command during an alarm. Acknowledge the alarm first – that also turns the siren off.",
+ "@s40ddc7d4c4": {
+  "description": "fi: Laite ei salli tätä komentoa hälytyksen aikana. Kuittaa hälytys ensin – kuittaus sammuttaa myös sireenin.",
+  "x-where": "core/friendly_error.dart:320"
  },
  "sb7b4d4f624": "The indoor light is not tracked or controlled during the day. It is not off – it is not being followed.",
  "@sb7b4d4f624": {
   "description": "fi: Sisävaloa ei seurata eikä ohjata päivällä. Valo ei ole pois – se ei ole seurannassa.",
-  "x-where": "core/friendly_error.dart:317"
+  "x-where": "core/friendly_error.dart:331"
  },
  "sdfb639365a": "No internet connection",
  "@sdfb639365a": {
   "description": "fi: Ei nettiyhteyttä",
-  "x-where": "core/friendly_error.dart:332"
+  "x-where": "core/friendly_error.dart:346"
  },
  "s390dd51af3": "{p0} is on the internet and could not be reached. Check this device''s internet connection. The latest data is shown when available.",
  "@s390dd51af3": {
   "description": "fi: {p0} on internetissä, eikä siihen saatu yhteyttä. Tarkista tämän laitteen nettiyhteys. Viimeisimmät tiedot näytetään, ku",
-  "x-where": "core/friendly_error.dart:333",
+  "x-where": "core/friendly_error.dart:347",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -11663,7 +11673,7 @@
  "sbb750bf9d6": "{p0} is not answering, trying a backup source",
  "@sbb750bf9d6": {
   "description": "fi: {p0} ei vastaa, yritetään varalähdettä",
-  "x-where": "core/friendly_error.dart:343",
+  "x-where": "core/friendly_error.dart:357",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -11673,7 +11683,7 @@
  "s4284ebac1e": "{p0} is not answering",
  "@s4284ebac1e": {
   "description": "fi: {p0} ei vastaa",
-  "x-where": "core/friendly_error.dart:344",
+  "x-where": "core/friendly_error.dart:358",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -11683,22 +11693,22 @@
  "s828d009fa6": "The backup sources did not answer right now either. The problem is most likely at the services, not your home network. Retrying automatically.",
  "@s828d009fa6": {
   "description": "fi: Myöskään varalähteistä ei saatu tietoja juuri nyt. Vika on todennäköisesti palveluissa, ei kotiverkossasi. Yritetään aut",
-  "x-where": "core/friendly_error.dart:346"
+  "x-where": "core/friendly_error.dart:360"
  },
  "se21c801ba6": "The service has a problem, most likely at the service and not your home network. Retrying automatically.",
  "@se21c801ba6": {
   "description": "fi: Palvelussa on häiriö. Vika on todennäköisesti palvelussa, ei kotiverkossasi. Yritetään automaattisesti uudelleen.",
-  "x-where": "core/friendly_error.dart:350"
+  "x-where": "core/friendly_error.dart:364"
  },
  "s35e0766add": "Signing in to the service failed",
  "@s35e0766add": {
   "description": "fi: Kirjautuminen palveluun ei onnistunut",
-  "x-where": "core/friendly_error.dart:359"
+  "x-where": "core/friendly_error.dart:373"
  },
  "sa4d255e53c": "Check the account, key or token for {p0}.",
  "@sa4d255e53c": {
   "description": "fi: Tarkista palvelun tunnus, avain tai token ({p0}).",
-  "x-where": "core/friendly_error.dart:360",
+  "x-where": "core/friendly_error.dart:374",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -11708,127 +11718,127 @@
  "sd0a2130950": "The expected device does not answer at this address – check it (http or https?)",
  "@sd0a2130950": {
   "description": "fi: Osoitteessa ei vastaa odotettu laite – tarkista osoite (http vai https?)",
-  "x-where": "core/friendly_error.dart:366"
+  "x-where": "core/friendly_error.dart:380"
  },
  "sdd5742468b": "Something answers, but not as expected. Try https:// or http:// in front and check the port.",
  "@sdd5742468b": {
   "description": "fi: Osoitteessa vastaa jokin, mutta ei odotetulla tavalla. Kokeile https:// tai http:// osoitteen alkuun ja tarkista portti.",
-  "x-where": "core/friendly_error.dart:370"
+  "x-where": "core/friendly_error.dart:384"
  },
  "s03c0a5192b": "Address not found",
  "@s03c0a5192b": {
   "description": "fi: Osoitetta ei löydy",
-  "x-where": "core/friendly_error.dart:379"
+  "x-where": "core/friendly_error.dart:393"
  },
  "sb3ef01a6fa": "Check the spelling. Try the IP address (e.g. 192.168.1.50) instead of a name.",
  "@sb3ef01a6fa": {
   "description": "fi: Tarkista osoitteen kirjoitusasu. Kokeile IP-osoitetta (esim. 192.168.1.50) nimen sijaan.",
-  "x-where": "core/friendly_error.dart:380"
+  "x-where": "core/friendly_error.dart:394"
  },
  "s274a753ad6": "Device not found at this address",
  "@s274a753ad6": {
   "description": "fi: Laitetta ei löydy osoitteesta",
-  "x-where": "core/friendly_error.dart:389"
+  "x-where": "core/friendly_error.dart:403"
  },
  "s2b503695b6": "Check that the device is on and that your phone or PC is on the same Wi-Fi. Also check the IP address – it can change, so reserve a fixed address in your router.",
  "@s2b503695b6": {
   "description": "fi: Tarkista että laite on päällä ja että puhelin tai PC on samassa wifissä. Tarkista myös IP-osoite – se voi vaihtua, joten",
-  "x-where": "core/friendly_error.dart:390"
+  "x-where": "core/friendly_error.dart:404"
  },
  "sff9ca463e3": "Device found but the port is closed",
  "@sff9ca463e3": {
   "description": "fi: Laite löytyi, mutta ei vastaa tähän porttiin",
-  "x-where": "core/friendly_error.dart:399"
+  "x-where": "core/friendly_error.dart:413"
  },
  "s1d4f4506de": "Check the port number and that the service (web UI, MQTT or Modbus TCP) is enabled on the device.",
  "@s1d4f4506de": {
   "description": "fi: Tarkista portin numero ja että palvelu (esim. web-käyttöliittymä, MQTT tai Modbus TCP) on laitteessa päällä.",
-  "x-where": "core/friendly_error.dart:400"
+  "x-where": "core/friendly_error.dart:414"
  },
  "s8523a9cfd0": "Secure connection (https) failed",
  "@s8523a9cfd0": {
   "description": "fi: Suojattu yhteys (https) epäonnistui",
-  "x-where": "core/friendly_error.dart:409"
+  "x-where": "core/friendly_error.dart:423"
  },
  "sdfd499c1f1": "Try http:// instead, or enable \"Allow self-signed certificate\" under Advanced.",
  "@sdfd499c1f1": {
   "description": "fi: Kokeile osoitetta http:// -alkuisena, tai Lisäasetuksista \"Salli itse allekirjoitettu sertifikaatti\".",
-  "x-where": "core/friendly_error.dart:410"
+  "x-where": "core/friendly_error.dart:424"
  },
  "s3fabccc1cd": "Login, password or token rejected",
  "@s3fabccc1cd": {
   "description": "fi: Tunnus, salasana tai token ei kelpaa",
-  "x-where": "core/friendly_error.dart:419"
+  "x-where": "core/friendly_error.dart:433"
  },
  "sdc2d65f8eb": "Check the credentials. In Home Assistant you can create a new long-lived token in your profile.",
  "@sdc2d65f8eb": {
   "description": "fi: Tarkista tunnukset. Home Assistantissa voit luoda uuden pitkäikäisen tunnuksen omasta profiilista.",
-  "x-where": "core/friendly_error.dart:420"
+  "x-where": "core/friendly_error.dart:434"
  },
  "se0a7cef6c4": "Device answered but the item was not found",
  "@se0a7cef6c4": {
   "description": "fi: Laite vastasi, mutta kohdetta ei löytynyt",
-  "x-where": "core/friendly_error.dart:429"
+  "x-where": "core/friendly_error.dart:443"
  },
  "see02239a35": "Check the path or entity name (e.g. light.living_room).",
  "@see02239a35": {
   "description": "fi: Tarkista polku tai entiteetin nimi (esim. light.olohuone). Isot ja pienet kirjaimet ovat merkitseviä.",
-  "x-where": "core/friendly_error.dart:430"
+  "x-where": "core/friendly_error.dart:444"
  },
  "sdec83d1e90": "The device reported an error",
  "@sdec83d1e90": {
   "description": "fi: Laitteessa tapahtui virhe",
-  "x-where": "core/friendly_error.dart:439"
+  "x-where": "core/friendly_error.dart:453"
  },
  "s3de239ffc5": "Check the path and payload.",
  "@s3de239ffc5": {
   "description": "fi: Komento tai kysely ei kelvannut laitteelle. Tarkista polku ja lähetettävä sisältö.",
-  "x-where": "core/friendly_error.dart:440"
+  "x-where": "core/friendly_error.dart:454"
  },
  "s6121e8d8f1": "Unknown register on the device",
  "@s6121e8d8f1": {
   "description": "fi: Laite ei tunne tätä rekisteriä",
-  "x-where": "core/friendly_error.dart:449"
+  "x-where": "core/friendly_error.dart:463"
  },
  "s3474aedf54": "Check the register number. If the table starts at 1 (e.g. 40001), subtract 1. Also check holding vs input.",
  "@s3474aedf54": {
   "description": "fi: Tarkista rekisterin numero laitteen Modbus-taulukosta. Jos taulukko alkaa 1:stä (esim. 40001), vähennä 1. Tarkista myös ",
-  "x-where": "core/friendly_error.dart:450"
+  "x-where": "core/friendly_error.dart:464"
  },
  "s2c303f6774": "Register type not supported",
  "@s2c303f6774": {
   "description": "fi: Laite ei tue tätä rekisterityyppiä",
-  "x-where": "core/friendly_error.dart:459"
+  "x-where": "core/friendly_error.dart:473"
  },
  "s945685fcda": "Try the other register type (holding ↔ input).",
  "@s945685fcda": {
   "description": "fi: Kokeile toista rekisterityyppiä (holding ↔ input).",
-  "x-where": "core/friendly_error.dart:460"
+  "x-where": "core/friendly_error.dart:474"
  },
  "s07ffbc349a": "Value rejected by the device",
  "@s07ffbc349a": {
   "description": "fi: Laite ei hyväksynyt arvoa",
-  "x-where": "core/friendly_error.dart:466"
+  "x-where": "core/friendly_error.dart:480"
  },
  "s76b95eef9f": "The value is probably out of range. Check the scale too.",
  "@s76b95eef9f": {
   "description": "fi: Arvo on luultavasti sallitun alueen ulkopuolella. Tarkista myös kerroin.",
-  "x-where": "core/friendly_error.dart:467"
+  "x-where": "core/friendly_error.dart:481"
  },
  "s7746921882": "Device found, but Modbus TCP is off",
  "@s7746921882": {
   "description": "fi: Laite löytyi, mutta Modbus TCP ei ole päällä",
-  "x-where": "core/friendly_error.dart:476"
+  "x-where": "core/friendly_error.dart:490"
  },
  "s7e552bd146": "There is a device at this address, but it does not accept Modbus on this port. Turn on Modbus TCP in the device settings (often under Network / Modbus / Remote control) and check the port (usually 502). You can also tap \"Scan Modbus\". If the device works in Home Assistant, it may already have a connection (many allow only one) – read the values through HA.",
  "@s7e552bd146": {
   "description": "fi: Osoitteessa on laite, mutta se ei ota vastaan Modbus-yhteyttä tähän porttiin. Laita Modbus TCP päälle laitteen asetuksis",
-  "x-where": "core/friendly_error.dart:477"
+  "x-where": "core/friendly_error.dart:491"
  },
  "s0ebc613f20": "The device is in lockout, retrying at {p0}",
  "@s0ebc613f20": {
   "description": "fi: Laite on estotilassa, yritetään uudelleen klo {p0}",
-  "x-where": "core/friendly_error.dart:487",
+  "x-where": "core/friendly_error.dart:501",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -11838,177 +11848,177 @@
  "s317b2b59af": "The device did not answer, so it is left alone for a while – many devices lock out clients that poll too often. The pause grows from 30 seconds to 5 minutes. If the device already has a connection (e.g. Home Assistant), read the values through HA. The read interval and pauses are under Advanced in the connection.",
  "@s317b2b59af": {
   "description": "fi: Laite ei vastannut, joten sitä ei kysytä hetkeen – moni laite menee estotilaan, jos sitä kysytään liian usein. Tauko pit",
-  "x-where": "core/friendly_error.dart:488"
+  "x-where": "core/friendly_error.dart:502"
  },
  "s33e09089b2": "The device address is missing",
  "@s33e09089b2": {
   "description": "fi: Laitteen osoite puuttuu",
-  "x-where": "core/friendly_error.dart:497"
+  "x-where": "core/friendly_error.dart:511"
  },
  "s6180bd540e": "Open the connection and enter the device IP address, or tap \"Scan Modbus\" to find the device on the network.",
  "@s6180bd540e": {
   "description": "fi: Avaa yhteys ja anna laitteen IP-osoite, tai paina \"Skannaa Modbus\", niin sovellus etsii laitteen verkosta.",
-  "x-where": "core/friendly_error.dart:498"
+  "x-where": "core/friendly_error.dart:512"
  },
  "sd73581c910": "The device may already have a connection",
  "@sd73581c910": {
   "description": "fi: Laitteella voi olla jo yhteys",
-  "x-where": "core/friendly_error.dart:507"
+  "x-where": "core/friendly_error.dart:521"
  },
  "scee8d982a2": "The device dropped the Modbus connection right away. Many devices allow only one Modbus TCP connection at a time. If the device is already in Home Assistant (e.g. modbus.yaml), read the values through HA.",
  "@scee8d982a2": {
   "description": "fi: Laite katkaisi Modbus-yhteyden heti. Moni laite sallii vain yhden Modbus TCP -yhteyden kerrallaan. Jos laite on jo Home ",
-  "x-where": "core/friendly_error.dart:508"
+  "x-where": "core/friendly_error.dart:522"
  },
  "s6ca672a111": "Nothing at this address",
  "@s6ca672a111": {
   "description": "fi: Osoitteessa ei ole laitetta",
-  "x-where": "core/friendly_error.dart:517"
+  "x-where": "core/friendly_error.dart:531"
  },
  "sf7a98e1c70": "Nothing answered at this IP address. Check that the device is on and in the same network and that the IP is right (it can change – reserve a fixed address in the router). \"Scan Modbus\" finds devices on the network.",
  "@sf7a98e1c70": {
   "description": "fi: Tähän IP-osoitteeseen ei saatu yhteyttä. Tarkista että laite on päällä ja samassa verkossa, ja että IP-osoite on oikein ",
-  "x-where": "core/friendly_error.dart:518"
+  "x-where": "core/friendly_error.dart:532"
  },
  "scb0cba44ea": "The Modbus device did not answer in time",
  "@scb0cba44ea": {
   "description": "fi: Modbus-laite ei vastannut ajoissa",
-  "x-where": "core/friendly_error.dart:527"
+  "x-where": "core/friendly_error.dart:541"
  },
  "sc03ae7e1c5": "Could not open the port. Most common causes: wrong IP, the device is in another network (guest Wi-Fi), Modbus TCP is off or a firewall blocks the port. Check the address and port or tap \"Scan Modbus\".",
  "@sc03ae7e1c5": {
   "description": "fi: Yhteyttä porttiin ei saatu muodostettua. Yleisimmät syyt: väärä IP-osoite, laite on toisessa verkossa (vieras-wifi), Mod",
-  "x-where": "core/friendly_error.dart:528"
+  "x-where": "core/friendly_error.dart:542"
  },
  "sefba540275": "The gateway cannot reach a device with this unit id",
  "@sefba540275": {
   "description": "fi: Yhdyskäytävä ei tavoita laitetta tällä unit id:llä",
-  "x-where": "core/friendly_error.dart:537"
+  "x-where": "core/friendly_error.dart:551"
  },
  "s6e4ed361f3": "The Modbus gateway answered, but no device with this unit id is behind it. Check the device''s Modbus address (often 1) and the serial speed and parity. \"Scan Modbus\" tries addresses 1–247.",
  "@s6e4ed361f3": {
   "description": "fi: Modbus-yhdyskäytävä vastasi, mutta sen takana ei ole laitetta tällä osoitteella (unit id). Tarkista laitteen Modbus-osoi",
-  "x-where": "core/friendly_error.dart:538"
+  "x-where": "core/friendly_error.dart:552"
  },
  "sb66bc0e677": "No Modbus reply",
  "@sb66bc0e677": {
   "description": "fi: Laite ei vastannut Modbus-kyselyyn",
-  "x-where": "core/friendly_error.dart:547"
+  "x-where": "core/friendly_error.dart:561"
  },
  "s6ef5539bc2": "Connected but no reply. Check the unit id (often 1) and the gateway serial settings.",
  "@s6ef5539bc2": {
   "description": "fi: Yhteys aukesi, mutta vastausta ei tullut. Tarkista laitteen osoite (unit id, usein 1) ja yhdyskäytävän sarjaportin asetu",
-  "x-where": "core/friendly_error.dart:548"
+  "x-where": "core/friendly_error.dart:562"
  },
  "s17ea4c52d5": "No reply from the device",
  "@s17ea4c52d5": {
   "description": "fi: Laite ei vastannut",
-  "x-where": "core/friendly_error.dart:557"
+  "x-where": "core/friendly_error.dart:571"
  },
  "s50ecf9ba6f": "Connected but no reply in time. Check the message.",
  "@s50ecf9ba6f": {
   "description": "fi: Yhteys toimi, mutta vastausta ei tullut ajoissa. Tarkista lähetettävä viesti.",
-  "x-where": "core/friendly_error.dart:558"
+  "x-where": "core/friendly_error.dart:572"
  },
  "sf93db545a1": "There is a mistake in the settings",
  "@sf93db545a1": {
   "description": "fi: Asetuksissa on virhe",
-  "x-where": "core/friendly_error.dart:567"
+  "x-where": "core/friendly_error.dart:581"
  },
  "sf19a9f0856": "Check the fields, e.g. that the address starts with http:// and numbers are numbers.",
  "@sf19a9f0856": {
   "description": "fi: Tarkista kentät, esim. että osoite alkaa http:// ja että numerot ovat numeroita.",
-  "x-where": "core/friendly_error.dart:568"
+  "x-where": "core/friendly_error.dart:582"
  },
  "s3976954bef": "This tile has no device",
  "@s3976954bef": {
   "description": "fi: Ruudulta puuttuu laite",
-  "x-where": "core/friendly_error.dart:577"
+  "x-where": "core/friendly_error.dart:591"
  },
  "sc025e0a1f4": "Open edit mode (pencil) and choose a device for the tile.",
  "@sc025e0a1f4": {
   "description": "fi: Avaa muokkaus (kynä) ja valitse ruudulle laite.",
-  "x-where": "core/friendly_error.dart:578"
+  "x-where": "core/friendly_error.dart:592"
  },
  "s2cd1df086e": "Remote access goes through the bridge at home (tablet or PC). Check that it is on, Molaplan is open and it has internet.",
  "@s2cd1df086e": {
   "description": "fi: Etäyhteys kulkee kotona olevan sillan (tabletti tai PC) kautta. Tarkista että se on päällä, Molaplan on auki ja sillä on",
-  "x-where": "core/friendly_error.dart:588"
+  "x-where": "core/friendly_error.dart:602"
  },
  "sdbf06d05d9": "Your device cannot reach the Molaplan remote service. Check mobile data or Wi-Fi.",
  "@sdbf06d05d9": {
   "description": "fi: Laitteesi ei saa yhteyttä Molaplanin etäpalveluun. Tarkista mobiilidata tai wifi.",
-  "x-where": "core/friendly_error.dart:598"
+  "x-where": "core/friendly_error.dart:612"
  },
  "s8b737f4026": "Remote access was removed",
  "@s8b737f4026": {
   "description": "fi: Etäyhteys on poistettu",
-  "x-where": "core/friendly_error.dart:607"
+  "x-where": "core/friendly_error.dart:621"
  },
  "s4b9e4ca079": "This device was removed on the home bridge. Pair again: Settings → Remote access.",
  "@s4b9e4ca079": {
   "description": "fi: Tämä laite on poistettu kotisillalta. Yhdistä uudelleen: Asetukset → Etäyhteys.",
-  "x-where": "core/friendly_error.dart:608"
+  "x-where": "core/friendly_error.dart:622"
  },
  "s5b3116ed94": "The home bridge did not answer in time",
  "@s5b3116ed94": {
   "description": "fi: Kotisilta ei vastannut ajoissa",
-  "x-where": "core/friendly_error.dart:617"
+  "x-where": "core/friendly_error.dart:631"
  },
  "se082095a34": "The connection may be slow. Try again in a moment.",
  "@se082095a34": {
   "description": "fi: Yhteys voi olla hidas. Yritä hetken päästä uudelleen.",
-  "x-where": "core/friendly_error.dart:618"
+  "x-where": "core/friendly_error.dart:632"
  },
  "s688a4f4ccb": "The code is not valid",
  "@s688a4f4ccb": {
   "description": "fi: Koodi ei kelpaa",
-  "x-where": "core/friendly_error.dart:627"
+  "x-where": "core/friendly_error.dart:641"
  },
  "sfa0e226cd0": "Check the 6 digits on the bridge screen. A code is valid for 10 minutes and works once – press \"Pair a phone\" on the bridge again if needed.",
  "@sfa0e226cd0": {
   "description": "fi: Tarkista 6 numeroa kotisillan näytöltä. Koodi on voimassa 10 minuuttia ja kelpaa kerran – paina tarvittaessa sillalla \"Y",
-  "x-where": "core/friendly_error.dart:628"
+  "x-where": "core/friendly_error.dart:642"
  },
  "sfa5c1fb1ac": "The bridge did not accept this device",
  "@sfa5c1fb1ac": {
   "description": "fi: Kotisilta ei hyväksynyt laitetta",
-  "x-where": "core/friendly_error.dart:637"
+  "x-where": "core/friendly_error.dart:651"
  },
  "s9ad07ab36e": "When pairing with the code, the bridge asks for confirmation – press \"Accept\" there. Or scan the QR code, then no confirmation is needed.",
  "@s9ad07ab36e": {
   "description": "fi: Kun yhdistät koodilla, sillan näytölle tulee kysymys – paina siellä \"Hyväksy\". Tai skannaa QR-koodi, silloin hyväksyntää",
-  "x-where": "core/friendly_error.dart:638"
+  "x-where": "core/friendly_error.dart:652"
  },
  "sb5c271ae6a": "Security check failed",
  "@sb5c271ae6a": {
   "description": "fi: Turvatarkistus epäonnistui",
-  "x-where": "core/friendly_error.dart:647"
+  "x-where": "core/friendly_error.dart:661"
  },
  "s3d7ca280db": "The connection could not be verified as safe, so it was not used. Try again with the QR code.",
  "@s3d7ca280db": {
   "description": "fi: Yhteyttä ei voitu varmistaa turvalliseksi, joten sitä ei otettu käyttöön. Yritä uudelleen QR-koodilla.",
-  "x-where": "core/friendly_error.dart:648"
+  "x-where": "core/friendly_error.dart:662"
  },
  "s0061b44673": "The bridge did not answer",
  "@s0061b44673": {
   "description": "fi: Kotisilta ei vastannut",
-  "x-where": "core/friendly_error.dart:657"
+  "x-where": "core/friendly_error.dart:671"
  },
  "sceb894b9b3": "Accept the device on the bridge screen within 3 minutes, or scan the QR code.",
  "@sceb894b9b3": {
   "description": "fi: Hyväksy laite sillan näytöllä 3 minuutin sisällä, tai skannaa QR-koodi.",
-  "x-where": "core/friendly_error.dart:658"
+  "x-where": "core/friendly_error.dart:672"
  },
  "s700b0ef4de": "The connection did not work",
  "@s700b0ef4de": {
   "description": "fi: Yhteys ei onnistunut",
-  "x-where": "core/friendly_error.dart:667"
+  "x-where": "core/friendly_error.dart:681"
  },
  "s53a891e670": "Check the address and settings and try again. The technical details show the exact reason.",
  "@s53a891e670": {
   "description": "fi: Tarkista osoite ja asetukset ja yritä uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.",
-  "x-where": "core/friendly_error.dart:668"
+  "x-where": "core/friendly_error.dart:682"
  },
  "s1e02f457b4": "Works in the app or through a home bridge",
  "@s1e02f457b4": {
@@ -13535,7 +13545,7 @@
  "s1257447096": "The device answered: {p0}",
  "@s1257447096": {
   "description": "fi: Laite vastasi: {p0}",
-  "x-where": "drivers/ntfy_device.dart:850",
+  "x-where": "drivers/ntfy_device.dart:851",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13545,42 +13555,42 @@
  "sc112a20bf5": "If the device replies on another topic (e.g. your notification topic), set it as \"Reply topic\".",
  "@sc112a20bf5": {
   "description": "fi: Jos laite vastaa toiselle kanavalle (esim. ilmoituskanavallesi), aseta se kohtaan \"Vastauskanava\".",
-  "x-where": "drivers/ntfy_device.dart:908"
+  "x-where": "drivers/ntfy_device.dart:909"
  },
  "sb9873b4f15": "The state topic is being listened to, but no state has arrived yet.",
  "@sb9873b4f15": {
   "description": "fi: Tilakanavaa kuunnellaan, mutta tilaa ei ole vielä tullut.",
-  "x-where": "drivers/ntfy_device.dart:920"
+  "x-where": "drivers/ntfy_device.dart:921"
  },
  "sf03877dd0a": " A PIN is stored.",
  "@sf03877dd0a": {
   "description": "fi:  PIN on tallennettu.",
-  "x-where": "drivers/ntfy_device.dart:1110"
+  "x-where": "drivers/ntfy_device.dart:1111"
  },
  "s91089c4d9f": " The state topic is being listened to.",
  "@s91089c4d9f": {
   "description": "fi:  Tilakanavaa kuunnellaan.",
-  "x-where": "drivers/ntfy_device.dart:1112"
+  "x-where": "drivers/ntfy_device.dart:1113"
  },
  "sab4a606e33": "The device has not sent state in over an hour – is the device online?",
  "@sab4a606e33": {
   "description": "fi: Laite ei ole lähettänyt tilaa yli tuntiin – onko laite verkossa?",
-  "x-where": "drivers/ntfy_device.dart:1128"
+  "x-where": "drivers/ntfy_device.dart:1129"
  },
  "s33cfb86f9f": "The command was sent, but the device did not answer in time – is the device online? (The ntfy server works.)",
  "@s33cfb86f9f": {
   "description": "fi: Komento lähti, mutta laite ei vastannut ajoissa – onko laite verkossa? (ntfy-palvelin toimii.)",
-  "x-where": "drivers/ntfy_device.dart:1144"
+  "x-where": "drivers/ntfy_device.dart:1145"
  },
  "s7087533324": "not allowed in daylight (day_blocked) – the light follows daylight",
  "@s7087533324": {
   "description": "fi: ei sallittu päivällä (day_blocked) – valo ohjautuu päivänvalon mukaan",
-  "x-where": "drivers/ntfy_device.dart:1184"
+  "x-where": "drivers/ntfy_device.dart:1185"
  },
  "sf3066f08eb": "wrong PIN ({p0})",
  "@sf3066f08eb": {
   "description": "fi: väärä PIN-koodi ({p0})",
-  "x-where": "drivers/ntfy_device.dart:1190",
+  "x-where": "drivers/ntfy_device.dart:1191",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13590,7 +13600,7 @@
  "s14fac6d719": "too many commands – wait a moment ({p0})",
  "@s14fac6d719": {
   "description": "fi: liian monta komentoa – odota hetki ({p0})",
-  "x-where": "drivers/ntfy_device.dart:1193",
+  "x-where": "drivers/ntfy_device.dart:1194",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17049,22 +17059,22 @@
  "s7e5f6a29e3": "Good night",
  "@s7e5f6a29e3": {
   "description": "fi: Hyvää yötä",
-  "x-where": "state/automation_state.dart:662"
+  "x-where": "state/automation_state.dart:669"
  },
  "s253122823a": "Good morning",
  "@s253122823a": {
   "description": "fi: Hyvää huomenta",
-  "x-where": "state/automation_state.dart:664"
+  "x-where": "state/automation_state.dart:671"
  },
  "s640293f08f": "Good afternoon",
  "@s640293f08f": {
   "description": "fi: Hyvää päivää",
-  "x-where": "state/automation_state.dart:666"
+  "x-where": "state/automation_state.dart:673"
  },
  "sd8c5bed7de": "Good evening",
  "@sd8c5bed7de": {
   "description": "fi: Hyvää iltaa",
-  "x-where": "state/automation_state.dart:668"
+  "x-where": "state/automation_state.dart:675"
  },
  "s834e3e8c5d": "Apple",
  "@s834e3e8c5d": {

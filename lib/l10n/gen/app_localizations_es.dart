@@ -7237,6 +7237,13 @@ class AppLocalizationsEs extends AppLocalizations {
       'El comando alcanzó el servidor ntfy, pero ninguna respuesta vino del dispositivo. Compruebe el \"tópico de respuesta\" de la conexión – el dispositivo puede responder en su propio tema de notificación – y que el dispositivo está en línea.';
 
   @override
+  String get sa6d9ad626d => 'La alarma está activa: reconoce primero la alarma';
+
+  @override
+  String get s40ddc7d4c4 =>
+      'El dispositivo no permite este comando durante una alarma. Reconoce primero la alarma; eso también apaga la sirena.';
+
+  @override
   String get sb7b4d4f624 =>
       'La luz interior no se sigue ni se controla durante el día. No está apagada: no se está siguiendo.';
 

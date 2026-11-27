@@ -6551,6 +6551,8 @@
  "@s7aa9e16c41": {
   "x-mt": true
  },
+ "sa6d9ad626d": "Häire on sees – kinnita esmalt häire",
+ "s40ddc7d4c4": "Seade ei luba seda käsku häire ajal. Kinnita esmalt häire – see lülitab ka sireeni välja.",
  "sb7b4d4f624": "Sisevalgustit päeval ei jälgita ega juhita. See ei ole väljas – seda ei jälgita.",
  "sdfb639365a": "Internetiühendus puudub",
  "s390dd51af3": "{p0} on internetis ja seda ei ole võimalik kasutada. Kontrolli seadme internetiühendust. Kui see on saadaval, näidatakse uusimaid andmeid.",

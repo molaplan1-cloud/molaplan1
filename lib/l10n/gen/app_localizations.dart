@@ -13109,6 +13109,18 @@ abstract class AppLocalizations {
   /// **'The command reached the ntfy server, but no reply came from the device. Check the connection\'\'s \"Reply topic\" – the device may answer on your own notification topic – and that the device is online.'**
   String get s7aa9e16c41;
 
+  /// fi: Hälytys on päällä – kuittaa hälytys ensin
+  ///
+  /// In en, this message translates to:
+  /// **'The alarm is on – acknowledge the alarm first'**
+  String get sa6d9ad626d;
+
+  /// fi: Laite ei salli tätä komentoa hälytyksen aikana. Kuittaa hälytys ensin – kuittaus sammuttaa myös sireenin.
+  ///
+  /// In en, this message translates to:
+  /// **'The device does not allow this command during an alarm. Acknowledge the alarm first – that also turns the siren off.'**
+  String get s40ddc7d4c4;
+
   /// fi: Sisävaloa ei seurata eikä ohjata päivällä. Valo ei ole pois – se ei ole seurannassa.
   ///
   /// In en, this message translates to:

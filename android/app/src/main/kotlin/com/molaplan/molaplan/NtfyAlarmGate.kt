@@ -35,8 +35,18 @@ object NtfyAlarmGate {
         val click: String = "",
     )
 
-    /** One alarm sound at a time: a new alarm restarts the sound only when none is playing (a test always restarts). */
-    fun shouldRestartSound(playing: Boolean, coalesce: Boolean): Boolean = !coalesce || !playing
+    /** Quiet window after the user silenced the alarm (R508). */
+    const val SILENCE_GRACE_MS = 60_000L
+
+    /**
+     * R507 / R508: one alarm sound at a time. A new alarm message (e.g. the panel's prio-5
+     * "HÄLYTYS jatkuu – kuittaamatta" reminder every 10 min while unacknowledged) never restarts a
+     * sound that is playing, and not within [SILENCE_GRACE_MS] after the user silenced it. After
+     * that a fresh reminder rings again: the alarm is still unacknowledged at the panel (the siren
+     * at home is on) – acknowledging ("Kuittaa") stops the reminders. The test button always restarts.
+     */
+    fun shouldRestartSound(playing: Boolean, coalesce: Boolean, msSinceUserSilenced: Long = Long.MAX_VALUE): Boolean =
+        !coalesce || (!playing && msSinceUserSilenced >= SILENCE_GRACE_MS)
 
     fun isFresh(msgTime: Long, nowSec: Long): Boolean =
         msgTime > 0 && nowSec - msgTime <= MAX_AGE_S && msgTime - nowSec <= FUTURE_SKEW_S
