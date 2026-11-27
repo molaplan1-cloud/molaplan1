@@ -402,7 +402,7 @@ T = {
  'Look': ('Utseende', 'Välimus', 'Aspecto'),
  'Size': ('Storlek', 'Suurus', 'Tamaño'),
  'Small': ('Liten', 'Väike', 'Pequeña'),
- 'Wide': ('Bred', 'Lai', 'Ancha'),
+ 'Wide': ('Bred', 'Lai', 'Ancho'),
  'Large': ('Stor', 'Suur', 'Grande'),
  'Background picture (optional)': ('Bakgrundsbild (valfri)', 'Taustapilt (valikuline)', 'Imagen de fondo (opcional)'),
  'Choose picture': ('Välj bild', 'Vali pilt', 'Elegir imagen'),

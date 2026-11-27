@@ -14141,7 +14141,7 @@ const l10nEs = <String>[
   'Aspecto',
   'Tamaño',
   'Pequeña',
-  'Ancha',
+  'Ancho',
   'Grande',
   'Icono',
   'Imagen de fondo (opcional)',

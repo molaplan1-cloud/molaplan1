@@ -3008,7 +3008,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s64c916e299 => 'Pequeña';
 
   @override
-  String get s5e3097232a => 'Ancha';
+  String get s5e3097232a => 'Ancho';
 
   @override
   String get s8971788287 => 'Grande';
