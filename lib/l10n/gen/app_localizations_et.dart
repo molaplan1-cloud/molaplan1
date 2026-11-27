@@ -3037,22 +3037,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sd7314e8237 => 'Kuvamine';
 
   @override
-  String get s7d6cee9e42 => 'Baarid (15 min)';
-
-  @override
-  String get sc0e069225b => 'Trend + Nüüd liin';
-
-  @override
-  String get s07647fa07d => 'Range';
-
-  @override
-  String get s8feeef3110 => 'Näita homme, kui see on saadaval';
-
-  @override
-  String get sad692e6ae5 =>
-      'Homsed hinnad ilmuvad iseenesest, kui need on avaldatud (umbes kell 14.00).';
-
-  @override
   String get s1c72b8c56a => 'Trendi pikkus';
 
   @override
@@ -3160,7 +3144,95 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s77d2309fd5 => 'Hilinemine enne (ms)';
 
   @override
+  String get s7d6cee9e42 => 'Baarid (15 min)';
+
+  @override
+  String get sc0e069225b => 'Trend + Nüüd liin';
+
+  @override
+  String get s07647fa07d => 'Range';
+
+  @override
+  String get sbf6aaf9bb8 => 'Resolutsioon';
+
+  @override
   String get sd032c3efec => 'Auto';
+
+  @override
+  String get sa6dc2ff399 => '15 min';
+
+  @override
+  String get s96093c8f41 => '1 h';
+
+  @override
+  String get s0a3e006fda => 'Värvimine';
+
+  @override
+  String get sb6bfec83a2 => 'Suhteline (päeva min–max)';
+
+  @override
+  String get sd13fe2ac25 => 'Absoluutsed piirid';
+
+  @override
+  String get s717db0e103 => 'Üks värv';
+
+  @override
+  String get sdc398885dc => 'Täpsemad seaded';
+
+  @override
+  String get s8feeef3110 => 'Näita homme, kui see on saadaval';
+
+  @override
+  String get sad692e6ae5 =>
+      'Homsed hinnad ilmuvad iseenesest, kui need on avaldatud (umbes kell 14.00).';
+
+  @override
+  String get s3221d2c8b7 => 'Tulpade laius';
+
+  @override
+  String get s2c890951b7 => 'Peenike';
+
+  @override
+  String get s0223c26f61 => 'Keskmine';
+
+  @override
+  String get s4b97930585 => 'Min- ja max-märgised';
+
+  @override
+  String get seef35b192d => 'Nüüd-joon';
+
+  @override
+  String get s8c6a205222 => 'Statistikarida (nüüd, min, keskm, max)';
+
+  @override
+  String get sbeeaa6cf12 => 'Automaatne Y-telg';
+
+  @override
+  String get s29e7f8092d => 'Y-telje maksimum (c/kWh)';
+
+  @override
+  String get sd84d7d09c2 => 'Kaasa käibemaks';
+
+  @override
+  String get s6817cff974 => 'Kaasa marginaal';
+
+  @override
+  String get sd85f1b089e => 'Joone / kindel värv';
+
+  @override
+  String get s147f0af2a4 => 'Teema värv';
+
+  @override
+  String get s173772c66f => 'Värvivahemikud (c/kWh, alates–kuni)';
+
+  @override
+  String get sc26d444f90 => 'Alates';
+
+  @override
+  String get s6ef23d86e0 => 'ja üle';
+
+  @override
+  String get sf8c043ddca => 'Lisa vahemik';
 
   @override
   String get sb06bee9921 => 'Näita';
@@ -3835,9 +3907,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s6019108a01 => 'Seisund';
-
-  @override
-  String get sc26d444f90 => 'Alates';
 
   @override
   String get s796739363a => 'To';
@@ -6216,9 +6285,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sed9b5e52f6 => 'praegu';
-
-  @override
-  String get sdc398885dc => 'Täpsemad seaded';
 
   @override
   String get s5d477f3cd8 => 'Tavaliselt sa ei vaja neid';

@@ -128,7 +128,10 @@ class PriceDriver extends Driver {
           'max': ('Päivän kallein', 'Highest today'),
           'avg': ('Päivän keskihinta', 'Average today'),
           'next_cheap': ('Seuraava halpa tunti', 'Next cheap hour'),
-          'chart': ('Hintakaavio (tänään ja huomenna)', 'Price chart (today and tomorrow)'),
+          'chart': (
+            'Hintakaavio (tänään ja huomenna)',
+            'Price chart (today and tomorrow)',
+          ),
         },
         helpFi: 'Mikä hinnan tieto ruudussa näkyy: hinta nyt, päivän halvin / kallein / keskihinta, seuraava halpa tunti tai kaavio.',
         helpEn: 'Which price figure the tile shows: now, today\'s lowest / highest / average, the next cheap hour or the chart.',
@@ -140,7 +143,11 @@ class PriceDriver extends Driver {
 
   String get zone => s.str('zone', 'FI');
   PriceSettings get settings => PriceSettings(
-    vat: double.tryParse(s.str('vat', '${priceZones[zone]?.$2 ?? 25.5}').replaceAll(',', '.')) ?? 25.5,
+    vat:
+        double.tryParse(
+          s.str('vat', '${priceZones[zone]?.$2 ?? 25.5}').replaceAll(',', '.'),
+        ) ??
+        25.5,
     margin: double.tryParse(s.str('margin', '0').replaceAll(',', '.')) ?? 0,
     transfer: double.tryParse(s.str('transfer', '0').replaceAll(',', '.')) ?? 0,
   );
@@ -148,7 +155,8 @@ class PriceDriver extends Driver {
   Future<PriceSeries> _series({bool force = false}) async {
     final srv = s.str('server', defaultPriceServer);
     try {
-      if (custom == null && srv != defaultPriceServer) return await PriceService(server: srv).get(zone, force: force);
+      if (custom == null && srv != defaultPriceServer)
+        return await PriceService(server: srv).get(zone, force: force);
       return await service.get(zone, force: force);
     } catch (e) {
       throw priceCloudError(e);
@@ -161,13 +169,34 @@ class PriceDriver extends Driver {
     final tried = e is PriceException ? e.tried : const <String>[];
     final tech = tried.isEmpty ? e.toString() : tried.join('\n');
     if (e is PriceException && e.message == 'unknown_zone') {
-      return CloudError(ErrorKind.cloudService, 'Hintapalvelu', 'The price service', 'unknown_zone');
+      return CloudError(
+        ErrorKind.cloudService,
+        'Hintapalvelu',
+        'The price service',
+        'unknown_zone',
+      );
     }
     if (e is PriceException && e.offline) {
-      return CloudError(ErrorKind.cloudOffline, 'Hintapalvelu', 'The price service', tech);
+      return CloudError(
+        ErrorKind.cloudOffline,
+        'Hintapalvelu',
+        'The price service',
+        tech,
+      );
     }
-    final c = cloudErrorFrom(e, 'Hintapalvelu', 'The price service', fallbackTried: tried.length > 1);
-    return CloudError(c.kind, c.serviceFi, c.serviceEn, tech, fallbackTried: tried.length > 1);
+    final c = cloudErrorFrom(
+      e,
+      'Hintapalvelu',
+      'The price service',
+      fallbackTried: tried.length > 1,
+    );
+    return CloudError(
+      c.kind,
+      c.serviceFi,
+      c.serviceEn,
+      tech,
+      fallbackTried: tried.length > 1,
+    );
   }
 
   static double _r(double v) => (v * 100).round() / 100;
@@ -182,7 +211,12 @@ class PriceDriver extends Driver {
     final st = settings;
     final today = se.day(now, 0);
     if (today.isEmpty) {
-      throw DriverException(dtx('Tämän päivän hintoja ei ole vielä saatavilla.', 'No prices for today yet.'));
+      throw DriverException(
+        dtx(
+          'Tämän päivän hintoja ei ole vielä saatavilla.',
+          'No prices for today yet.',
+        ),
+      );
     }
     final cents = today.map((p) => st.cents(p.eurMwh)).toList();
     switch (spec.str('field', 'now')) {
@@ -194,7 +228,12 @@ class PriceDriver extends Driver {
         return _r(cents.reduce((a, b) => a + b) / cents.length);
       case 'next_cheap':
         // t166u / t168u: the cheapest slot still ahead (next 24 h) at the shown resolution.
-        final w = priceWindowAhead(se.points, now, quarters: se.resolution < 3600, toCents: st.cents);
+        final w = priceWindowAhead(
+          se.points,
+          now,
+          quarters: se.resolution < 3600,
+          toCents: st.cents,
+        );
         if (w == null) return '–';
         return '${windowRange(w, now, driverLang)} (${centsText(w.cents, driverLang)} c)';
       case 'chart':
@@ -207,20 +246,36 @@ class PriceDriver extends Driver {
           'res': raw.resolution,
           if (hourly) 'hourly': true,
           'unit': 'c/kWh',
+          'vat': st.vat,
+          'margin': st.margin,
+          'transfer': st.transfer,
           'points': [
-            for (final p in pts) [p.start.millisecondsSinceEpoch, _r(st.cents(p.eurMwh))],
+            for (final p in pts)
+              [
+                p.start.millisecondsSinceEpoch,
+                _r(st.cents(p.eurMwh)),
+                _r(p.eurMwh),
+              ],
           ],
         };
       default:
         final p = se.at(now);
-        if (p == null) throw DriverException(dtx('Hintaa ei ole tälle hetkelle.', 'No price for now.'));
+        if (p == null)
+          throw DriverException(
+            dtx('Hintaa ei ole tälle hetkelle.', 'No price for now.'),
+          );
         return _r(st.cents(p.eurMwh));
     }
   }
 
   @override
   Future<Object?> send(Map<String, dynamic> spec, {Object? value}) =>
-      throw DriverException(dtx('Sähkön hinta on vain luettava.', 'Electricity price is read-only.'));
+      throw DriverException(
+        dtx(
+          'Sähkön hinta on vain luettava.',
+          'Electricity price is read-only.',
+        ),
+      );
 
   @override
   Future<String> test() async {
@@ -246,7 +301,10 @@ class PriceDriver extends Driver {
     }
     final tomorrow = se.hasTomorrow(now)
         ? dtx('Huominen: kyllä.', 'Tomorrow: yes.')
-        : dtx('Huominen: ei vielä (julkaistaan n. klo 14).', 'Tomorrow: not yet (published around 14:00).');
+        : dtx(
+            'Huominen: ei vielä (julkaistaan n. klo 14).',
+            'Tomorrow: not yet (published around 14:00).',
+          );
     return '${dtx('✓ Hinnat haettu alueelle $zone (${se.points.length} jaksoa, ${se.resolution ~/ 60} min, lähde ${se.source}).', '✓ Prices for $zone (${se.points.length} slots, ${se.resolution ~/ 60} min, source ${se.source}).')} $tomorrow';
   }
 }

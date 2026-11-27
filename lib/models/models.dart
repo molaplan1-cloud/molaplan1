@@ -16,11 +16,13 @@ import '../energy/weather.dart';
 /// Price area for energy costs and heating plans: set in energy settings, else from the
 /// electricity price device, else Finland.
 String energyZoneOf(AppConfig c) =>
-    c.energy.zone ?? '${c.connections.where((x) => x.type == 'price').firstOrNull?.settings['zone'] ?? 'FI'}';
+    c.energy.zone ??
+    '${c.connections.where((x) => x.type == 'price').firstOrNull?.settings['zone'] ?? 'FI'}';
 
 /// t168u: "Näytä tuntikeskiarvona" (hourly-billed contracts) – set on the price connection(s).
 /// Off (default) = the data's own resolution, 15 min wherever the area publishes it.
-bool priceHourlyOf(AppConfig c) => c.connections.any((x) => x.type == 'price' && x.settings['hourly'] == true);
+bool priceHourlyOf(AppConfig c) =>
+    c.connections.any((x) => x.type == 'price' && x.settings['hourly'] == true);
 
 class EnergySettings {
   EnergySettings({
@@ -46,14 +48,21 @@ class EnergySettings {
   SmartHeatingConfig? smartHeating;
 
   bool get isEmpty =>
-      zone == null && contract == null && home == null && meters.isEmpty && thermostats.isEmpty && smartHeating == null;
+      zone == null &&
+      contract == null &&
+      home == null &&
+      meters.isEmpty &&
+      thermostats.isEmpty &&
+      smartHeating == null;
 
   Map<String, dynamic> toJson() => {
     'zone': ?zone,
     if (contract != null) 'contract': contract!.toJson(),
     if (home != null) 'home': home!.toJson(),
-    if (meters.isNotEmpty) 'meters': {for (final e in meters.entries) e.key: e.value.toJson()},
-    if (thermostats.isNotEmpty) 'thermostats': [for (final t in thermostats) t.toJson()],
+    if (meters.isNotEmpty)
+      'meters': {for (final e in meters.entries) e.key: e.value.toJson()},
+    if (thermostats.isNotEmpty)
+      'thermostats': [for (final t in thermostats) t.toJson()],
     if (smartHeating != null) 'smartHeating': smartHeating!.toJson(),
   };
 
@@ -62,18 +71,25 @@ class EnergySettings {
     return EnergySettings(
       zone: j['zone'] as String?,
       contract: j['contract'] is Map
-          ? ElectricityContract.fromJson(Map<String, dynamic>.from(j['contract'] as Map))
+          ? ElectricityContract.fromJson(
+              Map<String, dynamic>.from(j['contract'] as Map),
+            )
           : null,
       home: HomeLocation.fromJson(j['home']),
       meters: {
         for (final e in (j['meters'] as Map? ?? const {}).entries)
-          if (e.value is Map) '${e.key}': MeterInfo.fromJson(Map<String, dynamic>.from(e.value as Map)),
+          if (e.value is Map)
+            '${e.key}': MeterInfo.fromJson(
+              Map<String, dynamic>.from(e.value as Map),
+            ),
       },
       thermostats: [
         for (final t in (j['thermostats'] as List? ?? const []))
           if (t is Map) ThermostatConfig.fromJson(Map<String, dynamic>.from(t)),
       ],
-      smartHeating: j['smartHeating'] is Map ? SmartHeatingConfig.fromJson(j['smartHeating']) : null,
+      smartHeating: j['smartHeating'] is Map
+          ? SmartHeatingConfig.fromJson(j['smartHeating'])
+          : null,
     );
   }
 }
@@ -81,7 +97,8 @@ class EnergySettings {
 const _uuid = Uuid();
 String newId() => _uuid.v4().substring(0, 8);
 
-Map<String, dynamic> _map(Object? v) => v is Map ? Map<String, dynamic>.from(v) : <String, dynamic>{};
+Map<String, dynamic> _map(Object? v) =>
+    v is Map ? Map<String, dynamic>.from(v) : <String, dynamic>{};
 
 /// A user-defined device/service connection (HTTP API, MQTT broker, ...).
 class ConnectionConfig {
@@ -122,7 +139,9 @@ class ConnectionConfig {
     secrets: _map(j['secrets']).map((k, v) => MapEntry(k, v.toString())),
   );
 
-  ConnectionConfig copy() => ConnectionConfig.fromJson(jsonDecode(jsonEncode(toJson(includeSecrets: true))));
+  ConnectionConfig copy() => ConnectionConfig.fromJson(
+    jsonDecode(jsonEncode(toJson(includeSecrets: true))),
+  );
 }
 
 /// One command to execute: on a connection with a driver-specific spec.
@@ -131,9 +150,17 @@ class CommandStep {
   Map<String, dynamic> spec;
   int delayMs;
 
-  CommandStep({required this.connectionId, Map<String, dynamic>? spec, this.delayMs = 0}) : spec = spec ?? {};
+  CommandStep({
+    required this.connectionId,
+    Map<String, dynamic>? spec,
+    this.delayMs = 0,
+  }) : spec = spec ?? {};
 
-  Map<String, dynamic> toJson() => {'connectionId': connectionId, 'spec': spec, 'delayMs': delayMs};
+  Map<String, dynamic> toJson() => {
+    'connectionId': connectionId,
+    'spec': spec,
+    'delayMs': delayMs,
+  };
 
   factory CommandStep.fromJson(Map<String, dynamic> j) => CommandStep(
     connectionId: (j['connectionId'] ?? '') as String,
@@ -237,6 +264,31 @@ class TileConfig {
 
   /// t170u "Näytä huomenna kun saatavilla" (default on): off = never past today's midnight.
   bool priceTomorrow;
+
+  /// t303u: bar/trend extras. Defaults match the pre-0.20 look so existing tiles stay the same.
+  /// Resolution: auto (connection / published 15 min) | 15min | hourly.
+  String priceResolution;
+
+  /// Color mode: auto (bars = relative terciles, trend = absolute thresholds) | relative |
+  /// thresholds | fixed.
+  String priceColorMode;
+
+  /// Trend line / fixed-color ARGB; null = theme primary.
+  int? priceLineColor;
+
+  /// Bar width: auto (fill the window) | thin | medium | wide.
+  String priceBarWidth;
+
+  bool priceShowMinMax;
+  bool priceShowNowLine;
+  bool priceShowStats;
+
+  /// Y-axis maximum in c/kWh; null = automatic.
+  double? priceYMax;
+
+  /// When false, the tile shows prices without VAT or without the seller margin.
+  bool priceIncludeVat;
+  bool priceIncludeMargin;
   String trendYAxis;
   String trendXAxis;
   bool trendDots;
@@ -300,6 +352,16 @@ class TileConfig {
     this.trendGrid = 'auto',
     this.priceWindow = 'auto',
     this.priceTomorrow = true,
+    this.priceResolution = 'auto',
+    this.priceColorMode = 'auto',
+    this.priceLineColor,
+    this.priceBarWidth = 'auto',
+    this.priceShowMinMax = true,
+    this.priceShowNowLine = true,
+    this.priceShowStats = true,
+    this.priceYMax,
+    this.priceIncludeVat = true,
+    this.priceIncludeMargin = true,
     this.trendYAxis = 'auto',
     this.trendXAxis = 'auto',
     this.trendDots = false,
@@ -352,6 +414,16 @@ class TileConfig {
     if (trendGrid != 'auto') 'trendGrid': trendGrid,
     if (priceWindow != 'auto') 'priceWindow': priceWindow,
     if (!priceTomorrow) 'priceTomorrow': false,
+    if (priceResolution != 'auto') 'priceResolution': priceResolution,
+    if (priceColorMode != 'auto') 'priceColorMode': priceColorMode,
+    'priceLineColor': ?priceLineColor,
+    if (priceBarWidth != 'auto') 'priceBarWidth': priceBarWidth,
+    if (!priceShowMinMax) 'priceShowMinMax': false,
+    if (!priceShowNowLine) 'priceShowNowLine': false,
+    if (!priceShowStats) 'priceShowStats': false,
+    'priceYMax': ?priceYMax,
+    if (!priceIncludeVat) 'priceIncludeVat': false,
+    if (!priceIncludeMargin) 'priceIncludeMargin': false,
     if (trendYAxis != 'auto') 'trendYAxis': trendYAxis,
     if (trendXAxis != 'auto') 'trendXAxis': trendXAxis,
     if (trendDots) 'trendDots': true,
@@ -366,23 +438,38 @@ class TileConfig {
 
   factory TileConfig.fromJson(Map<String, dynamic> j) => TileConfig(
     id: j['id'] as String?,
-    type: TileType.values.firstWhere((t) => t.name == j['type'], orElse: () => TileType.value),
+    type: TileType.values.firstWhere(
+      (t) => t.name == j['type'],
+      orElse: () => TileType.value,
+    ),
     title: (j['title'] ?? '') as String,
     icon: (j['icon'] ?? 'auto') as String,
     // t144u migration: old configs only have whole units → ×2.
-    w2: (j['w2'] as num?)?.toInt() ?? ((j['colSpan'] as num?)?.toInt() ?? 1) * 2,
-    h2: (j['h2'] as num?)?.toInt() ?? ((j['rowSpan'] as num?)?.toInt() ?? 1) * 2,
+    w2:
+        (j['w2'] as num?)?.toInt() ??
+        ((j['colSpan'] as num?)?.toInt() ?? 1) * 2,
+    h2:
+        (j['h2'] as num?)?.toInt() ??
+        ((j['rowSpan'] as num?)?.toInt() ?? 1) * 2,
     connectionId: j['connectionId'] as String?,
     read: _map(j['read']),
     pollSeconds: (j['pollSeconds'] as num?)?.toInt() ?? 10,
     unit: (j['unit'] ?? '') as String,
     decimals: (j['decimals'] as num?)?.toInt() ?? 1,
-    thresholds: ((j['thresholds'] as List?) ?? []).map((e) => Threshold.fromJson(_map(e))).toList(),
+    thresholds: ((j['thresholds'] as List?) ?? [])
+        .map((e) => Threshold.fromJson(_map(e)))
+        .toList(),
     valueMap: (j['valueMap'] ?? '') as String,
     onValue: (j['onValue'] ?? '') as String,
-    onCommand: j['onCommand'] == null ? null : CommandStep.fromJson(_map(j['onCommand'])),
-    offCommand: j['offCommand'] == null ? null : CommandStep.fromJson(_map(j['offCommand'])),
-    commands: ((j['commands'] as List?) ?? []).map((e) => CommandStep.fromJson(_map(e))).toList(),
+    onCommand: j['onCommand'] == null
+        ? null
+        : CommandStep.fromJson(_map(j['onCommand'])),
+    offCommand: j['offCommand'] == null
+        ? null
+        : CommandStep.fromJson(_map(j['offCommand'])),
+    commands: ((j['commands'] as List?) ?? [])
+        .map((e) => CommandStep.fromJson(_map(e)))
+        .toList(),
     confirm: (j['confirm'] ?? false) as bool,
     min: (j['min'] as num?)?.toDouble() ?? 0,
     max: (j['max'] as num?)?.toDouble() ?? 100,
@@ -391,20 +478,54 @@ class TileConfig {
     bgImage: j['bgImage'] as String?,
     bgScrim: (j['bgScrim'] as num?)?.toDouble() ?? 0.45,
     bgDimOff: j['bgDimOff'] == true,
-    display: const ['value', 'gauge', 'trend', 'gauge_trend'].contains(j['display']) ? j['display'] as String : 'auto',
-    trendHours: trendRanges.contains(j['trendHours']) ? (j['trendHours'] as num).toInt() : 1,
-    trendGrid: const ['none', 'h', 'full'].contains(j['trendGrid']) ? j['trendGrid'] as String : 'auto',
-    priceWindow: priceWindows.contains(j['priceWindow']) ? j['priceWindow'] as String : 'auto',
+    display:
+        const ['value', 'gauge', 'trend', 'gauge_trend'].contains(j['display'])
+        ? j['display'] as String
+        : 'auto',
+    trendHours: trendRanges.contains(j['trendHours'])
+        ? (j['trendHours'] as num).toInt()
+        : 1,
+    trendGrid: const ['none', 'h', 'full'].contains(j['trendGrid'])
+        ? j['trendGrid'] as String
+        : 'auto',
+    priceWindow: priceWindows.contains(j['priceWindow'])
+        ? j['priceWindow'] as String
+        : 'auto',
     priceTomorrow: j['priceTomorrow'] != false,
-    trendYAxis: const ['on', 'off'].contains(j['trendYAxis']) ? j['trendYAxis'] as String : 'auto',
-    trendXAxis: const ['on', 'off'].contains(j['trendXAxis']) ? j['trendXAxis'] as String : 'auto',
+    priceResolution: const ['15min', 'hourly'].contains(j['priceResolution'])
+        ? j['priceResolution'] as String
+        : 'auto',
+    priceColorMode:
+        const ['relative', 'thresholds', 'fixed'].contains(j['priceColorMode'])
+        ? j['priceColorMode'] as String
+        : 'auto',
+    priceLineColor: (j['priceLineColor'] as num?)?.toInt(),
+    priceBarWidth: const ['thin', 'medium', 'wide'].contains(j['priceBarWidth'])
+        ? j['priceBarWidth'] as String
+        : 'auto',
+    priceShowMinMax: j['priceShowMinMax'] != false,
+    priceShowNowLine: j['priceShowNowLine'] != false,
+    priceShowStats: j['priceShowStats'] != false,
+    priceYMax: (j['priceYMax'] as num?)?.toDouble(),
+    priceIncludeVat: j['priceIncludeVat'] != false,
+    priceIncludeMargin: j['priceIncludeMargin'] != false,
+    trendYAxis: const ['on', 'off'].contains(j['trendYAxis'])
+        ? j['trendYAxis'] as String
+        : 'auto',
+    trendXAxis: const ['on', 'off'].contains(j['trendXAxis'])
+        ? j['trendXAxis'] as String
+        : 'auto',
     trendDots: j['trendDots'] == true,
     colorSmooth: j['colorSmooth'] == true,
     gaugeMin: (j['gaugeMin'] as num?)?.toDouble(),
     gaugeMax: (j['gaugeMax'] as num?)?.toDouble(),
-    light: j['light'] is Map ? Map<String, dynamic>.from(j['light'] as Map) : null,
+    light: j['light'] is Map
+        ? Map<String, dynamic>.from(j['light'] as Map)
+        : null,
     sensor: j['sensor'] as String?,
-    battery: j['battery'] is Map ? Map<String, dynamic>.from(j['battery'] as Map) : null,
+    battery: j['battery'] is Map
+        ? Map<String, dynamic>.from(j['battery'] as Map)
+        : null,
     lastAlarm: (j['lastAlarm'] as num?)?.toInt(),
   );
 
@@ -413,11 +534,14 @@ class TileConfig {
   /// Maps a raw value through [valueMap] ("0=Off;1=On").
   String? mapValue(Object? v) {
     if (valueMap.trim().isEmpty || v == null) return null;
-    final key = v is double && v == v.roundToDouble() ? v.toInt().toString() : v.toString();
+    final key = v is double && v == v.roundToDouble()
+        ? v.toInt().toString()
+        : v.toString();
     for (final part in valueMap.split(RegExp(r'[;\n]'))) {
       final i = part.indexOf('=');
       if (i <= 0) continue;
-      if (part.substring(0, i).trim().toLowerCase() == key.trim().toLowerCase()) {
+      if (part.substring(0, i).trim().toLowerCase() ==
+          key.trim().toLowerCase()) {
         return part.substring(i + 1).trim();
       }
     }
@@ -514,7 +638,9 @@ class Dashboard {
     photoMode: j['photoMode'] == 'background' ? 'background' : 'header',
     bgDim: ((j['bgDim'] as num?)?.toDouble() ?? 0.55).clamp(0, 0.9),
     bgBlur: ((j['bgBlur'] as num?)?.toDouble() ?? 6).clamp(0, 20),
-    tiles: ((j['tiles'] as List?) ?? []).map((e) => TileConfig.fromJson(_map(e))).toList(),
+    tiles: ((j['tiles'] as List?) ?? [])
+        .map((e) => TileConfig.fromJson(_map(e)))
+        .toList(),
   );
 }
 
@@ -615,7 +741,9 @@ class AppConfig {
     this.animations = true,
     this.homeStrip = true,
   }) : automation = automation ?? AutomationSettings(),
-       favoriteColors = favoriteColors ?? ['#FF8A3D', '#FFD166', '#4D96FF', '#C77DFF', 'K2700', 'K5000'],
+       favoriteColors =
+           favoriteColors ??
+           ['#FF8A3D', '#FFD166', '#4D96FF', '#C77DFF', 'K2700', 'K5000'],
        scanNames = scanNames ?? {},
        rules = rules ?? [],
        energy = energy ?? EnergySettings(),
@@ -647,7 +775,9 @@ class AppConfig {
     if (remoteCameraSeconds != 2) 'remoteCameraSeconds': remoteCameraSeconds,
     'updateCheckedAt': ?updateCheckedAt,
     'updateSkip': ?updateSkip,
-    'connections': connections.map((c) => c.toJson(includeSecrets: includeSecrets)).toList(),
+    'connections': connections
+        .map((c) => c.toJson(includeSecrets: includeSecrets))
+        .toList(),
     'dashboards': dashboards.map((d) => d.toJson()).toList(),
     if (rules.isNotEmpty) 'rules': rules.map((r) => r.toJson()).toList(),
     if (!energy.isEmpty) 'energy': energy.toJson(),
@@ -664,12 +794,21 @@ class AppConfig {
       bridgeAutoUpdate: j['bridgeAutoUpdate'] == true,
       advanced: j['advanced'] == true,
       viewLocked: j['viewLocked'] == true,
-      tileDensity: const ['small', 'large'].contains(j['tileDensity']) ? j['tileDensity'] as String : 'normal',
+      tileDensity: const ['small', 'large'].contains(j['tileDensity'])
+          ? j['tileDensity'] as String
+          : 'normal',
       theme: themeChoices.contains(j['theme']) ? j['theme'] as String : '',
-      defaultTheme: themeChoices.contains(j['defaultTheme']) ? j['defaultTheme'] as String : 'dark',
+      defaultTheme: themeChoices.contains(j['defaultTheme'])
+          ? j['defaultTheme'] as String
+          : 'dark',
       hideAwayTiles: j['hideAwayTiles'] == true,
-      favoriteColors: j['favoriteColors'] is List ? [for (final c in j['favoriteColors'] as List) '$c'] : null,
-      scanNames: {for (final e in _map(j['scanNames'] ?? const {}).entries) e.key: '${e.value}'},
+      favoriteColors: j['favoriteColors'] is List
+          ? [for (final c in j['favoriteColors'] as List) '$c']
+          : null,
+      scanNames: {
+        for (final e in _map(j['scanNames'] ?? const {}).entries)
+          e.key: '${e.value}',
+      },
       automation: AutomationSettings.fromJson(j['automation']),
       autoLocal: j['autoLocal'] != false,
       notifyInApp: j['notifyInApp'] != false,
@@ -683,8 +822,12 @@ class AppConfig {
       connections: ((j['connections'] as List?) ?? [])
           .map((e) => clearPlaceholderHost(ConnectionConfig.fromJson(_map(e))))
           .toList(),
-      dashboards: ((j['dashboards'] as List?) ?? []).map((e) => Dashboard.fromJson(_map(e))).toList(),
-      rules: ((j['rules'] as List?) ?? []).map((e) => PriceRule.fromJson(_map(e))).toList(),
+      dashboards: ((j['dashboards'] as List?) ?? [])
+          .map((e) => Dashboard.fromJson(_map(e)))
+          .toList(),
+      rules: ((j['rules'] as List?) ?? [])
+          .map((e) => PriceRule.fromJson(_map(e)))
+          .toList(),
       energy: EnergySettings.fromJson(j['energy']),
     );
   }
@@ -709,7 +852,8 @@ bool isPlaceholderHost(Object? v) {
 }
 
 ConnectionConfig clearPlaceholderHost(ConnectionConfig c) {
-  if (c.settings['placeholderChecked'] == true || c.settings['demo'] == true) return c;
+  if (c.settings['placeholderChecked'] == true || c.settings['demo'] == true)
+    return c;
   final example = exampleConnectionNames.contains(c.name);
   var cleared = false;
   for (final k in const ['host', 'baseUrl', 'address']) {
@@ -717,7 +861,9 @@ ConnectionConfig clearPlaceholderHost(ConnectionConfig c) {
     if (!isPlaceholderHost(v)) continue;
     // Our seed put 192.168.1.60 on a Modbus device and 192.168.1.70 on the example camera; a
     // user's own device with one of these is only touched when it is still the example one.
-    final fromSeed = example || (c.type == 'modbus' && (v as String).contains('192.168.1.60'));
+    final fromSeed =
+        example ||
+        (c.type == 'modbus' && (v as String).contains('192.168.1.60'));
     if (!fromSeed) continue;
     c.settings.remove(k);
     cleared = true;

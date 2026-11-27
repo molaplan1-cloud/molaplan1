@@ -374,6 +374,17 @@ Source: https://smarterhome.sk/en/brands – full table in docs/BRANDS-SMARTERHO
 | R334 | More media devices without Home Assistant: Android TV / Google TV remote (keys, channels, pairing), Sonos (local UPnP), Roku (ECP), Apple TV (documented – later); Home Assistant bridge extras (media players, vacuums, valves, humidifiers) kept optional – detail rows R335–R340 | Batch after R290 (27.11.2026, Enn: "R324") | Done (simulated; untested on hardware; Apple TV later) | 0.19.0 |
 | R341 | smarterhome.sk brands (t298u, Enn: "https://smarterhome.sk/en/brands Nämä brändit"): full brand list with support status, protocols and Dart/no-GPL feasibility (docs/BRANDS-SMARTERHOME.md); generic drivers first (Zigbee2MQTT discovery, Z-Wave JS), then brand drivers (Nanoleaf, WLED, Phoscon/deCONZ, Nuki Bridge) – generic rows R342–R347, per-brand rows R348–R395 | t298u | Done for the first set (simulated; testaamatta laitteella); Matter, DoorBird, tedee Bridge, FIBARO HC3, Intesis, hub APIs later | 0.20.0 |
 
+## Electricity price chart: complete tomorrow and tile settings (t302u, t303u)
+
+| ID | Requirement | Source | Status | Version |
+|---|---|---|---|---|
+| R430 | The 'Tänään + huomenna' electricity price chart (bar and trend modes) shows tomorrow in full once the Nord Pool / SDAC day-ahead is published (~12:45 CET, 13:45 EET in winter). A UTC-date fetch end (tomorrow 00:00 UTC = 02:00 EET) or a cache of only the first 1–2 hours after 'huom.' must not leave the bars or the line ending there. | t302u, t303u | Done (tests) | next |
+| R431 | Tomorrow is treated as present only when the local calendar day is complete: 96 quarter-hour slots (or 24 hourly slots), or 23/25 hours (92/100 quarters) on DST days. A stump ending at 00:00 UTC is incomplete. | t302u | Done (tests) | next |
+| R432 | After publication (~13:45 local in winter) the app refetches at least every 15 minutes (then 30 min back-off) until tomorrow is complete, then keeps the published prices (no constant polling). Incomplete disk/memory caches are not kept as 'has tomorrow'. | t302u | Done (tests) | next |
+| R433 | The price relay (relay.molaplan.com/v1/prices) requests a window from UTC midnight of today−2 to UTC midnight of today+3, so Elering / Energy-Charts / other sources cannot cut tomorrow at 00:00 UTC. Direct device fetches use local yesterday 00:00 … day-after-tomorrow 00:00 converted to UTC instants. | t302u | Done (relay source; deploy with the next release) | next |
+| R434 | Tile editor for the price chart ('Muokkaa ruutua'): basic options stay visible (display bars/trend, time range today / 24 h ahead / today+tomorrow / 48 h, resolution 15 min / 1 h / auto, colour mode auto / relative to the day's min–max / absolute thresholds / fixed colour). Finer options are under an 'Lisäasetukset' expander (not the global Edistyneet): bar width auto/thin/medium/wide, from–to colour bands with add/remove and a colour picker, trend-line colour, show/hide min/max markers, now-line and the stats row, y-axis max auto or fixed, include VAT and include margin when those are configured. | t303u | Done (tests) | next |
+| R435 | Existing price tiles keep the current look when loaded (defaults: auto window, tomorrow on, auto resolution, auto colour, auto bar width, min/max + now-line + stats shown, y-axis automatic, VAT and margin included). New fields are stored on the tile in user_sync config. All new strings are in fi, en, sv, et and es. | t303u | Done (tests, l10n) | next |
+
 ## Process
 | ID | Requirement | Source | Status | Version |
 |---|---|---|---|---|

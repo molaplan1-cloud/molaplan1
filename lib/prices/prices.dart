@@ -74,7 +74,9 @@ class PriceSettings {
   double cents(double eurMwh) {
     final spot = eurMwh / 10; // €/MWh -> c/kWh
     final energy = spot + margin;
-    final withVat = spot > 0 ? energy * (1 + vat / 100) : spot + margin * (1 + vat / 100);
+    final withVat = spot > 0
+        ? energy * (1 + vat / 100)
+        : spot + margin * (1 + vat / 100);
     return withVat + transfer;
   }
 }
@@ -101,7 +103,8 @@ class PriceSeries {
     'source': source,
     'license': license,
     'points': [
-      for (final p in points) [p.start.millisecondsSinceEpoch ~/ 1000, p.eurMwh],
+      for (final p in points)
+        [p.start.millisecondsSinceEpoch ~/ 1000, p.eurMwh],
     ],
   };
 
@@ -113,13 +116,16 @@ class PriceSeries {
   final String license;
   final DateTime fetched;
 
-  int get resolution => points.length > 1 ? points[1].start.difference(points[0].start).inSeconds : 3600;
+  int get resolution => points.length > 1
+      ? points[1].start.difference(points[0].start).inSeconds
+      : 3600;
 
   PricePoint? at(DateTime t) => points.where((p) => p.covers(t)).firstOrNull;
 
   /// Points that start in [from, to).
-  List<PricePoint> between(DateTime from, DateTime to) =>
-      points.where((p) => !p.start.isBefore(from) && p.start.isBefore(to)).toList();
+  List<PricePoint> between(DateTime from, DateTime to) => points
+      .where((p) => !p.start.isBefore(from) && p.start.isBefore(to))
+      .toList();
 
   /// Local calendar day (0 = today, 1 = tomorrow).
   List<PricePoint> day(DateTime now, int offset) {
@@ -127,18 +133,44 @@ class PriceSeries {
     return between(d, DateTime(d.year, d.month, d.day + 1));
   }
 
-  bool hasTomorrow(DateTime now) => day(now, 1).isNotEmpty;
+  /// True when any slot starts on the local calendar day [offset] days from [now].
+  bool hasAnyOnDay(DateTime now, int offset) => day(now, offset).isNotEmpty;
+
+  /// True when the local calendar day [offset] is fully covered (see [dayIsComplete]).
+  bool coversDay(DateTime now, int offset) =>
+      dayIsComplete([for (final p in points) p.start], now, offset, resolution);
+
+  /// True when tomorrow's local day is fully covered (see [dayIsComplete]).
+  /// A stump that ends at 00:00 UTC (02:00 EET in winter) is not enough.
+  bool hasTomorrow(DateTime now) => coversDay(now, 1);
 
   /// Averages to whole hours (for zones / settings that work per hour).
   PriceSeries hourly() {
     final by = <DateTime, List<double>>{};
     for (final p in points) {
-      final h = DateTime(p.start.year, p.start.month, p.start.day, p.start.hour);
+      final h = DateTime(
+        p.start.year,
+        p.start.month,
+        p.start.day,
+        p.start.hour,
+      );
       by.putIfAbsent(h, () => []).add(p.eurMwh);
     }
-    final out = [for (final e in by.entries) PricePoint(e.key, 3600, e.value.reduce((a, b) => a + b) / e.value.length)]
-      ..sort((a, b) => a.start.compareTo(b.start));
-    return PriceSeries(zone, out, source: source, license: license, fetched: fetched);
+    final out = [
+      for (final e in by.entries)
+        PricePoint(
+          e.key,
+          3600,
+          e.value.reduce((a, b) => a + b) / e.value.length,
+        ),
+    ]..sort((a, b) => a.start.compareTo(b.start));
+    return PriceSeries(
+      zone,
+      out,
+      source: source,
+      license: license,
+      fetched: fetched,
+    );
   }
 
   static PriceSeries fromJson(
@@ -151,7 +183,11 @@ class PriceSeries {
     final pts = <PricePoint>[
       for (final p in (j['points'] as List? ?? const []))
         if (p is List && p.length >= 2 && p[1] is num)
-          PricePoint(DateTime.fromMillisecondsSinceEpoch((p[0] as num).toInt() * 1000), res, (p[1] as num).toDouble()),
+          PricePoint(
+            DateTime.fromMillisecondsSinceEpoch((p[0] as num).toInt() * 1000),
+            res,
+            (p[1] as num).toDouble(),
+          ),
     ]..sort((a, b) => a.start.compareTo(b.start));
     return PriceSeries(
       '${j['zone'] ?? ''}',
@@ -161,7 +197,9 @@ class PriceSeries {
       fetched:
           fetched ??
           (j['stale'] == true && j['updated'] is num
-              ? DateTime.fromMillisecondsSinceEpoch((j['updated'] as num).toInt())
+              ? DateTime.fromMillisecondsSinceEpoch(
+                  (j['updated'] as num).toInt(),
+                )
               : null),
       stale: stale || j['stale'] == true,
       tried: tried,
@@ -175,7 +213,9 @@ const eleringZones = {'FI', 'EE', 'LV', 'LT'};
 /// Resolution from the gaps between consecutive start times (15-min since 1.10.2025).
 int _resolutionOf(List<int> secs) {
   if (secs.length < 2) return 3600;
-  final gaps = <int>[for (var i = 1; i < secs.length; i++) secs[i] - secs[i - 1]]..sort();
+  final gaps = <int>[
+    for (var i = 1; i < secs.length; i++) secs[i] - secs[i - 1],
+  ]..sort();
   final g = gaps[gaps.length ~/ 2];
   return g > 0 ? g : 3600;
 }
@@ -188,7 +228,12 @@ PriceSeries parseElering(String zone, Map<String, dynamic> j) {
       if (r is Map && r['timestamp'] is num && r['price'] is num)
         ((r['timestamp'] as num).toInt(), (r['price'] as num).toDouble()),
   ]..sort((a, b) => a.$1.compareTo(b.$1));
-  return _series(zone, pairs, 'Elering / Nord Pool (varalähde)', 'Elering AS, avoin data');
+  return _series(
+    zone,
+    pairs,
+    'Elering / Nord Pool (varalähde)',
+    'Elering AS, avoin data',
+  );
 }
 
 /// api.energy-charts.info/price → {unix_seconds: [...], price: [...]} (EUR/MWh).
@@ -197,19 +242,69 @@ PriceSeries parseEnergyCharts(String zone, Map<String, dynamic> j) {
   final p = (j['price'] as List?) ?? const [];
   final pairs = <(int, double)>[
     for (var i = 0; i < t.length && i < p.length; i++)
-      if (t[i] is num && p[i] is num) ((t[i] as num).toInt(), (p[i] as num).toDouble()),
+      if (t[i] is num && p[i] is num)
+        ((t[i] as num).toInt(), (p[i] as num).toDouble()),
   ]..sort((a, b) => a.$1.compareTo(b.$1));
-  return _series(zone, pairs, 'Energy-Charts / Fraunhofer ISE (varalähde)', 'CC BY 4.0, energy-charts.info');
+  return _series(
+    zone,
+    pairs,
+    'Energy-Charts / Fraunhofer ISE (varalähde)',
+    'CC BY 4.0, energy-charts.info',
+  );
 }
 
-PriceSeries _series(String zone, List<(int, double)> pairs, String source, String license) {
+PriceSeries _series(
+  String zone,
+  List<(int, double)> pairs,
+  String source,
+  String license,
+) {
   final res = _resolutionOf([for (final p in pairs) p.$1]);
   return PriceSeries(
     zone,
-    [for (final p in pairs) PricePoint(DateTime.fromMillisecondsSinceEpoch(p.$1 * 1000), res, p.$2)],
+    [
+      for (final p in pairs)
+        PricePoint(DateTime.fromMillisecondsSinceEpoch(p.$1 * 1000), res, p.$2),
+    ],
     source: source,
     license: license,
   );
+}
+
+/// Local midnight of [now]'s calendar day plus [offset] days.
+DateTime localDayStart(DateTime now, int offset) =>
+    DateTime(now.year, now.month, now.day + offset);
+
+/// How many slots of [resolutionSec] fit between local midnights (23/24/25 h on DST days).
+int expectedSlotsForDay(DateTime now, int offset, int resolutionSec) {
+  final start = localDayStart(now, offset);
+  final end = DateTime(start.year, start.month, start.day + 1);
+  final res = resolutionSec <= 0 ? 3600 : resolutionSec;
+  return (end.difference(start).inSeconds / res).round();
+}
+
+/// Whether slot starts cover the whole local calendar day [offset] days from [now]
+/// (0 = today, 1 = tomorrow). DST 23 h / 25 h days follow the midnight-to-midnight
+/// duration: 92 or 100 quarter-hour slots, or 23 / 25 hourly slots. A series that
+/// stops at 00:00 UTC (02:00 EET in winter — the usual UTC-date cutoff) is not complete.
+bool dayIsComplete(
+  Iterable<DateTime> starts,
+  DateTime now,
+  int offset,
+  int resolutionSec,
+) {
+  final start = localDayStart(now, offset);
+  final end = DateTime(start.year, start.month, start.day + 1);
+  final res = resolutionSec <= 0 ? 3600 : resolutionSec;
+  final pts = [for (final t in starts) t.toLocal()]
+    ..removeWhere((s) => s.isBefore(start) || !s.isBefore(end))
+    ..sort();
+  if (pts.isEmpty) return false;
+  if (pts.first.isAfter(start.add(Duration(seconds: res)))) return false;
+  final lastEnd = pts.last.add(Duration(seconds: res));
+  if (lastEnd.isBefore(end.subtract(Duration(seconds: res)))) return false;
+  final expected = expectedSlotsForDay(now, offset, res);
+  return pts.length >= expected - 2;
 }
 
 /// Fetches and caches prices (shared by all tiles and rules; when the network is used: see [pricesNeedFetch]).
@@ -224,22 +319,31 @@ DateTime tomorrowPublication(DateTime now, {String zone = 'FI'}) {
     return DateTime.utc(y, m, d.day - d.weekday % 7, 1);
   }
 
-  final summer = !u.isBefore(lastSunday(u.year, 3)) && u.isBefore(lastSunday(u.year, 10));
+  final summer =
+      !u.isBefore(lastSunday(u.year, 3)) && u.isBefore(lastSunday(u.year, 10));
   // 13:00 Brussels time (rounded up from ~12:45 so the label never promises too early).
   final local = now.toLocal();
-  return DateTime.utc(local.year, local.month, local.day, summer ? 11 : 12).toLocal();
+  return DateTime.utc(
+    local.year,
+    local.month,
+    local.day,
+    summer ? 11 : 12,
+  ).toLocal();
 }
 
 /// "n. klo 14" / "around 14:00" for [tomorrowPublication].
 String publicationLabel(DateTime now, String lang, {String zone = 'FI'}) {
   final t = tomorrowPublication(now, zone: zone);
-  final hm = t.minute == 0 ? '${t.hour}' : '${t.hour}:${t.minute.toString().padLeft(2, '0')}';
+  final hm = t.minute == 0
+      ? '${t.hour}'
+      : '${t.hour}:${t.minute.toString().padLeft(2, '0')}';
   return switch (lang) {
     'fi' => 'n. klo $hm',
     'sv' => 'ca kl. $hm',
     'et' => 'u kell $hm',
     'es' => 'hacia las $hm h',
-    _ => 'around ${t.hour.toString().padLeft(2, '0')}:${t.minute.toString().padLeft(2, '0')}',
+    _ =>
+      'around ${t.hour.toString().padLeft(2, '0')}:${t.minute.toString().padLeft(2, '0')}',
   };
 }
 
@@ -255,27 +359,35 @@ String tomorrowPendingText(DateTime now, String lang, {String zone = 'FI'}) {
   };
 }
 
-/// t186u: published day-ahead prices never change, so they are fetched once and kept (memory +
-/// disk, per area). The network is used only when
+/// t186u / t302u: published day-ahead prices never change, so they are fetched once and kept
+/// (memory + disk, per area) only when they are complete. The network is used when
 /// - there is nothing cached, or the cache does not cover the current time (a new day without
 ///   prices – retried every [pricesRetryFirst] after a failure), or
-/// - tomorrow's prices are missing and it is past [tomorrowDue] (≈ 13:45 CET): retried with
-///   back-off ([pricesRetryFirst], then [pricesRetryLater]) until they arrive, then never again
-///   that day.
-/// Before 13:45 a complete "today" cache makes no network calls at all; tiles, the current
-/// price and the cheapest windows are computed locally from it as time passes.
+/// - tomorrow's prices are missing or incomplete (e.g. only the first 1–2 h after a UTC-midnight
+///   cutoff) and it is past [tomorrowDue] (≈ 12:45 CET / 13:45 EET): retried every
+///   [pricesRetryFirst] (then [pricesRetryLater]) until the local tomorrow has a full set of
+///   slots (96 × 15 min, or 24 h, or 23/25 h on DST days), then never again that day.
+/// Before [tomorrowDue] a complete "today" cache makes no network calls at all; tiles, the
+/// current price and the cheapest windows are computed locally from it as time passes.
 const pricesRetryFirst = Duration(minutes: 15);
 const pricesRetryLater = Duration(minutes: 30);
 
-/// When to start asking for tomorrow's prices: 45 min after the SDAC publication (13:45 CET).
+/// When to start asking for tomorrow's prices: SDAC publishes around 12:45 Brussels time
+/// (13:45 EET in winter). The on-tile label stays "n. klo 14" ([tomorrowPublication]).
 DateTime tomorrowDue(DateTime now, {String zone = 'FI'}) =>
-    tomorrowPublication(now, zone: zone).add(const Duration(minutes: 45));
+    tomorrowPublication(now, zone: zone).subtract(const Duration(minutes: 15));
 
 /// Should the price service go to the network now? [lastTry] = the last network attempt for
 /// this area, [misses] = attempts since then that came back without the wanted day.
-bool pricesNeedFetch(PriceSeries? c, DateTime now, {DateTime? lastTry, int misses = 0}) {
+bool pricesNeedFetch(
+  PriceSeries? c,
+  DateTime now, {
+  DateTime? lastTry,
+  int misses = 0,
+}) {
   bool waited(Duration d) => lastTry == null || !now.isBefore(lastTry.add(d));
-  if (c == null || c.points.isEmpty || c.at(now) == null) return waited(pricesRetryFirst);
+  if (c == null || c.points.isEmpty || c.at(now) == null)
+    return waited(pricesRetryFirst);
   if (c.hasTomorrow(now)) return false;
   if (now.isBefore(tomorrowDue(now, zone: c.zone))) return false;
   return waited(misses <= 1 ? pricesRetryFirst : pricesRetryLater);
@@ -295,7 +407,8 @@ Duration priceCacheTtl(PriceSeries? c, DateTime now) {
 }
 
 class PriceService {
-  PriceService({http.Client? client, this.server = defaultPriceServer}) : _client = client ?? http.Client();
+  PriceService({http.Client? client, this.server = defaultPriceServer})
+    : _client = client ?? http.Client();
   final http.Client _client;
   final String server;
   final _cache = <String, PriceSeries>{};
@@ -326,7 +439,14 @@ class PriceService {
     }
     final c = _cache[zone];
     final now = clock();
-    if (!force && c != null && !pricesNeedFetch(c, now, lastTry: _lastTry[zone], misses: _misses[zone] ?? 0)) {
+    if (!force &&
+        c != null &&
+        !pricesNeedFetch(
+          c,
+          now,
+          lastTry: _lastTry[zone],
+          misses: _misses[zone] ?? 0,
+        )) {
       return c;
     }
     _lastTry[zone] = now;
@@ -361,7 +481,10 @@ class PriceService {
     lastTried[zone] = tried;
     var allOffline = true;
     PriceSeries? staleRelay;
-    Future<PriceSeries?> attempt(String name, Future<PriceSeries> Function() f) async {
+    Future<PriceSeries?> attempt(
+      String name,
+      Future<PriceSeries> Function() f,
+    ) async {
       try {
         final s = await f().timeout(requestTimeout);
         if (s.points.isEmpty) throw PriceException('no data');
@@ -385,16 +508,25 @@ class PriceService {
       return null;
     }
 
-    PriceSeries? got = await attempt(Uri.parse(server).host, () => _fromRelay(zone));
+    PriceSeries? got = await attempt(
+      Uri.parse(server).host,
+      () => _fromRelay(zone),
+    );
     if (got == null && !allOffline && staleRelay == null) {
       // A quick second try only when the relay answered (5xx/429), not when the network is down.
       await Future<void>.delayed(retryDelay);
-      got = await attempt('${Uri.parse(server).host} (2)', () => _fromRelay(zone));
+      got = await attempt(
+        '${Uri.parse(server).host} (2)',
+        () => _fromRelay(zone),
+      );
     }
     if (got == null && eleringZones.contains(zone)) {
       got = await attempt('dashboard.elering.ee', () => _fromElering(zone));
     }
-    got ??= await attempt('api.energy-charts.info', () => _fromEnergyCharts(zone));
+    got ??= await attempt(
+      'api.energy-charts.info',
+      () => _fromEnergyCharts(zone),
+    );
     if (got != null) {
       _cache[zone] = got;
       _persist(zone, jsonEncode(got.toJson()));
@@ -418,7 +550,11 @@ class PriceService {
       _cache[zone] = disk;
       return disk;
     }
-    throw PriceException(tried.join('; '), offline: allOffline, tried: List.of(tried));
+    throw PriceException(
+      tried.join('; '),
+      offline: allOffline,
+      tried: List.of(tried),
+    );
   }
 
   static bool _offlineError(Object e) {
@@ -433,21 +569,32 @@ class PriceService {
   }
 
   Future<PriceSeries> _fromRelay(String zone) async {
-    final r = await _client.get(Uri.parse('$server/v1/prices?zone=${Uri.encodeQueryComponent(zone)}'));
+    final r = await _client.get(
+      Uri.parse('$server/v1/prices?zone=${Uri.encodeQueryComponent(zone)}'),
+    );
     final body = utf8.decode(r.bodyBytes, allowMalformed: true);
-    if (r.statusCode == 400 && body.contains('unknown_zone')) throw PriceException('unknown_zone');
+    if (r.statusCode == 400 && body.contains('unknown_zone'))
+      throw PriceException('unknown_zone');
     if (r.statusCode != 200) {
-      final detail = RegExp(r'"detail"\s*:\s*"([^"]*)"').firstMatch(body)?.group(1);
-      throw PriceException('HTTP ${r.statusCode}${detail == null ? '' : ' ($detail)'}');
+      final detail = RegExp(r'"detail"\s*:\s*"([^"]*)"')
+          .firstMatch(body)
+          ?.group(1);
+      throw PriceException(
+        'HTTP ${r.statusCode}${detail == null ? '' : ' ($detail)'}',
+      );
     }
     return PriceSeries.fromJson(jsonDecode(body) as Map<String, dynamic>);
   }
 
-  /// Fetch window for the direct sources: yesterday 00:00 .. day after tomorrow 00:00 (local), so
-  /// today and tomorrow are covered whatever the device's time zone.
+  /// Fetch window for the direct sources: yesterday 00:00 .. day after tomorrow 00:00 (local),
+  /// converted to UTC instants. Must not use the UTC calendar date of "tomorrow" as an exclusive
+  /// end (that is 00:00 UTC = 02:00 EET in winter and cuts day-ahead short, t302u).
   static (DateTime, DateTime) _window() {
     final n = clock();
-    return (DateTime(n.year, n.month, n.day - 1), DateTime(n.year, n.month, n.day + 2));
+    return (
+      DateTime(n.year, n.month, n.day - 1),
+      DateTime(n.year, n.month, n.day + 2),
+    );
   }
 
   Future<PriceSeries> _fromElering(String zone) async {
@@ -458,17 +605,25 @@ class PriceService {
       ),
     );
     if (r.statusCode != 200) throw PriceException('HTTP ${r.statusCode}');
-    return parseElering(zone, jsonDecode(utf8.decode(r.bodyBytes)) as Map<String, dynamic>);
+    return parseElering(
+      zone,
+      jsonDecode(utf8.decode(r.bodyBytes)) as Map<String, dynamic>,
+    );
   }
 
   Future<PriceSeries> _fromEnergyCharts(String zone) async {
     final (a, b) = _window();
     String d(DateTime t) => t.toIso8601String().substring(0, 10);
     final r = await _client.get(
-      Uri.parse('https://api.energy-charts.info/price?bzn=${Uri.encodeQueryComponent(zone)}&start=${d(a)}&end=${d(b)}'),
+      Uri.parse(
+        'https://api.energy-charts.info/price?bzn=${Uri.encodeQueryComponent(zone)}&start=${d(a)}&end=${d(b)}',
+      ),
     );
     if (r.statusCode != 200) throw PriceException('HTTP ${r.statusCode}');
-    return parseEnergyCharts(zone, jsonDecode(utf8.decode(r.bodyBytes)) as Map<String, dynamic>);
+    return parseEnergyCharts(
+      zone,
+      jsonDecode(utf8.decode(r.bodyBytes)) as Map<String, dynamic>,
+    );
   }
 
   static Duration retryDelay = const Duration(seconds: 2);

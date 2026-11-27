@@ -2623,26 +2623,6 @@
   "x-mt": true
  },
  "sd7314e8237": "Visning",
- "s7d6cee9e42": "Barer (15 min)",
- "@s7d6cee9e42": {
-  "x-mt": true
- },
- "sc0e069225b": "Trend + Nu linje",
- "@sc0e069225b": {
-  "x-mt": true
- },
- "s07647fa07d": "Range",
- "@s07647fa07d": {
-  "x-mt": true
- },
- "s8feeef3110": "Visa imorgon när tillgängligt",
- "@s8feeef3110": {
-  "x-mt": true
- },
- "sad692e6ae5": "Morgondagens priser visas av sig själva en gång publicerad (cirka 14:00).",
- "@sad692e6ae5": {
-  "x-mt": true
- },
  "s1c72b8c56a": "Trendlängd",
  "@s1c72b8c56a": {
   "x-mt": true
@@ -2752,7 +2732,51 @@
  "@s77d2309fd5": {
   "x-mt": true
  },
+ "s7d6cee9e42": "Barer (15 min)",
+ "@s7d6cee9e42": {
+  "x-mt": true
+ },
+ "sc0e069225b": "Trend + Nu linje",
+ "@sc0e069225b": {
+  "x-mt": true
+ },
+ "s07647fa07d": "Range",
+ "@s07647fa07d": {
+  "x-mt": true
+ },
+ "sbf6aaf9bb8": "Upplösning",
  "sd032c3efec": "Auto",
+ "sa6dc2ff399": "15 min",
+ "s96093c8f41": "1 h",
+ "s0a3e006fda": "Färgläggning",
+ "sb6bfec83a2": "Relativt (dagens min–max)",
+ "sd13fe2ac25": "Absoluta gränser",
+ "s717db0e103": "En färg",
+ "sdc398885dc": "Avancerade inställningar",
+ "s8feeef3110": "Visa imorgon när tillgängligt",
+ "@s8feeef3110": {
+  "x-mt": true
+ },
+ "sad692e6ae5": "Morgondagens priser visas av sig själva en gång publicerad (cirka 14:00).",
+ "@sad692e6ae5": {
+  "x-mt": true
+ },
+ "s3221d2c8b7": "Stapelbredd",
+ "s2c890951b7": "Tunn",
+ "s0223c26f61": "Medel",
+ "s4b97930585": "Min- och maxmarkörer",
+ "seef35b192d": "Nu-linje",
+ "s8c6a205222": "Statistikrad (nu, min, medel, max)",
+ "sbeeaa6cf12": "Automatisk y-axel",
+ "s29e7f8092d": "Y-axelns maximum (c/kWh)",
+ "sd84d7d09c2": "Inkludera moms",
+ "s6817cff974": "Inkludera marginal",
+ "sd85f1b089e": "Linje- / fast färg",
+ "s147f0af2a4": "Temafärg",
+ "s173772c66f": "Färgintervall (c/kWh, från–till)",
+ "sc26d444f90": "Från",
+ "s6ef23d86e0": "och uppåt",
+ "sf8c043ddca": "Lägg till intervall",
  "sb06bee9921": "Föreställning",
  "@sb06bee9921": {
   "x-mt": true
@@ -3529,10 +3553,6 @@
  },
  "s6019108a01": "Villkor",
  "@s6019108a01": {
-  "x-mt": true
- },
- "sc26d444f90": "Från",
- "@sc26d444f90": {
   "x-mt": true
  },
  "s796739363a": "för att",
@@ -5219,10 +5239,7 @@
  "@s90ba0c57d4": {
   "x-mt": true
  },
- "s0cb68026a7": "Medium",
- "@s0cb68026a7": {
-  "x-mt": true
- },
+ "s0cb68026a7": "Medel",
  "s9c5e4ed5cb": "Medium-hög",
  "@s9c5e4ed5cb": {
   "x-mt": true
@@ -5855,7 +5872,6 @@
  "@sed9b5e52f6": {
   "x-mt": true
  },
- "sdc398885dc": "Avancerade inställningar",
  "s5d477f3cd8": "Vanligtvis behöver du inte dessa",
  "@s5d477f3cd8": {
   "x-mt": true

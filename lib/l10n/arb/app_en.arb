@@ -4834,262 +4834,382 @@
  "sd7314e8237": "Display",
  "@sd7314e8237": {
   "description": "fi: Näyttötapa",
-  "x-where": "ui/tile_editor.dart:471"
- },
- "s7d6cee9e42": "Bars (15 min)",
- "@s7d6cee9e42": {
-  "description": "fi: Pylväät (15 min)",
-  "x-where": "ui/tile_editor.dart:480"
- },
- "sc0e069225b": "Trend + Now line",
- "@sc0e069225b": {
-  "description": "fi: Trendi + Nyt-viiva",
-  "x-where": "ui/tile_editor.dart:487"
- },
- "s07647fa07d": "Range",
- "@s07647fa07d": {
-  "description": "fi: Aikaväli",
-  "x-where": "ui/tile_editor.dart:501"
- },
- "s8feeef3110": "Show tomorrow when available",
- "@s8feeef3110": {
-  "description": "fi: Näytä huomenna kun saatavilla",
-  "x-where": "ui/tile_editor.dart:513"
- },
- "sad692e6ae5": "Tomorrow''s prices appear by themselves once published (around 14:00).",
- "@sad692e6ae5": {
-  "description": "fi: Huomisen hinnat tulevat näkyviin itsestään, kun ne julkaistaan (n. klo 14).",
-  "x-where": "ui/tile_editor.dart:515"
+  "x-where": "ui/tile_editor.dart:472"
  },
  "s1c72b8c56a": "Trend length",
  "@s1c72b8c56a": {
   "description": "fi: Trendin pituus",
-  "x-where": "ui/tile_editor.dart:557"
+  "x-where": "ui/tile_editor.dart:500"
  },
  "s6bb0c0c7e3": "Gauge minimum",
  "@s6bb0c0c7e3": {
   "description": "fi: Mittarin minimi",
-  "x-where": "ui/tile_editor.dart:583"
+  "x-where": "ui/tile_editor.dart:526"
  },
  "sa444aab286": "Automatic",
  "@sa444aab286": {
   "description": "fi: Automaattinen",
-  "x-where": "ui/tile_editor.dart:584"
+  "x-where": "ui/tile_editor.dart:527"
  },
  "sbf29caff87": "Gauge maximum",
  "@sbf29caff87": {
   "description": "fi: Mittarin maksimi",
-  "x-where": "ui/tile_editor.dart:596"
+  "x-where": "ui/tile_editor.dart:539"
  },
  "sea30815e6a": "Technical tile settings appear when you turn on \"Advanced\" in Settings.",
  "@sea30815e6a": {
   "description": "fi: Ruudun tekniset asetukset (mistä tila luetaan, mitä komento lähettää) näkyvät, kun otat Asetuksista käyttöön \"Edistyneet",
-  "x-where": "ui/tile_editor.dart:609"
+  "x-where": "ui/tile_editor.dart:552"
  },
  "s382afc832f": "State source",
  "@s382afc832f": {
   "description": "fi: Tilan luku",
-  "x-where": "ui/tile_editor.dart:622"
+  "x-where": "ui/tile_editor.dart:565"
  },
  "s581aee3e96": "Optional: where the current state is read from.",
  "@s581aee3e96": {
   "description": "fi: Valinnainen: mistä nykyinen tila luetaan.",
-  "x-where": "ui/tile_editor.dart:624"
+  "x-where": "ui/tile_editor.dart:567"
  },
  "s3adc51170c": "Raw combination (Advanced)",
  "@s3adc51170c": {
   "description": "fi: Raaka yhdistelmä (Edistyneet)",
-  "x-where": "ui/tile_editor.dart:657"
+  "x-where": "ui/tile_editor.dart:600"
  },
  "s5f542e17e2": "⚠ Every tile type is allowed on every connection. A wrong combination can show misleading data, e.g. \"On\" for the electricity price.",
  "@s5f542e17e2": {
   "description": "fi: ⚠ Kaikki ruututyypit sallitaan kaikille yhteyksille. Väärä yhdistelmä voi näyttää harhaanjohtavaa tietoa, esim. \"Päällä\"",
-  "x-where": "ui/tile_editor.dart:660"
+  "x-where": "ui/tile_editor.dart:603"
  },
  "scb988b1a4a": "Off: only the tile types the connection supports.",
  "@scb988b1a4a": {
   "description": "fi: Pois: vain yhteyden tukemat ruututyypit.",
-  "x-where": "ui/tile_editor.dart:665"
+  "x-where": "ui/tile_editor.dart:608"
  },
  "se6b18b17d9": "Poll interval (s, 0 = none)",
  "@se6b18b17d9": {
   "description": "fi: Päivitysväli (s, 0 = ei kyselyä)",
-  "x-where": "ui/tile_editor.dart:674"
+  "x-where": "ui/tile_editor.dart:617"
  },
  "s01f2b1ee0c": "MQTT, Home Assistant and WebSocket update live without polling.",
  "@s01f2b1ee0c": {
   "description": "fi: MQTT, Home Assistant ja WebSocket päivittyvät reaaliajassa ilman kyselyä.",
-  "x-where": "ui/tile_editor.dart:677"
+  "x-where": "ui/tile_editor.dart:620"
  },
  "s937448ecf5": "Test read",
  "@s937448ecf5": {
   "description": "fi: Testaa luku",
-  "x-where": "ui/tile_editor.dart:689"
+  "x-where": "ui/tile_editor.dart:632"
  },
  "s5cbdea7f7e": "Display",
  "@s5cbdea7f7e": {
   "description": "fi: Näyttö",
-  "x-where": "ui/tile_editor.dart:708"
+  "x-where": "ui/tile_editor.dart:651"
  },
  "se6af4b33df": "Unit",
  "@se6af4b33df": {
   "description": "fi: Yksikkö",
-  "x-where": "ui/tile_editor.dart:715"
+  "x-where": "ui/tile_editor.dart:658"
  },
  "sd5498697da": "Decimals",
  "@sd5498697da": {
   "description": "fi: Desimaalit",
-  "x-where": "ui/tile_editor.dart:722"
+  "x-where": "ui/tile_editor.dart:665"
  },
  "s4f7007db78": "Value names",
  "@s4f7007db78": {
   "description": "fi: Arvojen nimet",
-  "x-where": "ui/tile_editor.dart:734"
+  "x-where": "ui/tile_editor.dart:677"
  },
  "s4aae179c52": "0=Off;1=Home;2=Away",
  "@s4aae179c52": {
   "description": "fi: 0=Pois;1=Kotona;2=Poissa",
-  "x-where": "ui/tile_editor.dart:735"
+  "x-where": "ui/tile_editor.dart:678"
  },
  "s0c12fda7ca": "Toggle commands",
  "@s0c12fda7ca": {
   "description": "fi: Kytkimen komennot",
-  "x-where": "ui/tile_editor.dart:741"
+  "x-where": "ui/tile_editor.dart:684"
  },
  "s3a9d9e16ef": "\"On\" values (comma separated, empty = auto)",
  "@s3a9d9e16ef": {
   "description": "fi: \"Päällä\"-arvot (pilkuin, tyhjä = automaattinen)",
-  "x-where": "ui/tile_editor.dart:745"
+  "x-where": "ui/tile_editor.dart:688"
  },
  "s1509c5a2a6": "ON command",
  "@s1509c5a2a6": {
   "description": "fi: PÄÄLLE-komento",
-  "x-where": "ui/tile_editor.dart:755"
+  "x-where": "ui/tile_editor.dart:698"
  },
  "s2a1e131afd": "OFF command",
  "@s2a1e131afd": {
   "description": "fi: POIS-komento",
-  "x-where": "ui/tile_editor.dart:761"
+  "x-where": "ui/tile_editor.dart:704"
  },
  "s0201de52c0": "'{{value}} in the command is replaced by the slider value.'",
  "@s0201de52c0": {
   "description": "fi: Komennossa {{value}} korvataan säätimen arvolla.",
-  "x-where": "ui/tile_editor.dart:770"
+  "x-where": "ui/tile_editor.dart:713"
  },
  "sc30c9a7e51": "Step",
  "@sc30c9a7e51": {
   "description": "fi: Askel",
-  "x-where": "ui/tile_editor.dart:784"
+  "x-where": "ui/tile_editor.dart:727"
  },
  "s4d6451a63a": "Set command",
  "@s4d6451a63a": {
   "description": "fi: Asetuskomento",
-  "x-where": "ui/tile_editor.dart:794"
+  "x-where": "ui/tile_editor.dart:737"
  },
  "sa4082e1a79": "Commands (run in order)",
  "@sa4082e1a79": {
   "description": "fi: Komennot (suoritetaan järjestyksessä)",
-  "x-where": "ui/tile_editor.dart:803"
+  "x-where": "ui/tile_editor.dart:746"
  },
  "s467488e572": "A shortcut can control several devices in sequence, with delays.",
  "@s467488e572": {
   "description": "fi: Pikakomento voi ohjata useaa laitetta peräkkäin, viiveillä.",
-  "x-where": "ui/tile_editor.dart:804"
+  "x-where": "ui/tile_editor.dart:747"
  },
  "sad43973fb3": "Add command",
  "@sad43973fb3": {
   "description": "fi: Lisää komento",
-  "x-where": "ui/tile_editor.dart:830"
+  "x-where": "ui/tile_editor.dart:773"
  },
  "sdaef43c622": "Ask for confirmation",
  "@sdaef43c622": {
   "description": "fi: Kysy vahvistus ennen komentoa",
-  "x-where": "ui/tile_editor.dart:836"
+  "x-where": "ui/tile_editor.dart:779"
  },
  "s5210a5ad23": "Connection",
  "@s5210a5ad23": {
   "description": "fi: Yhteys",
-  "x-where": "ui/tile_editor.dart:908"
+  "x-where": "ui/tile_editor.dart:851"
  },
  "s776d8b06bf": "New connection",
  "@s776d8b06bf": {
   "description": "fi: Uusi yhteys",
-  "x-where": "ui/tile_editor.dart:926"
+  "x-where": "ui/tile_editor.dart:869"
  },
  "s96705fc3df": "Command sent",
  "@s96705fc3df": {
   "description": "fi: Komento lähetetty",
-  "x-where": "ui/tile_editor.dart:963"
+  "x-where": "ui/tile_editor.dart:906"
  },
  "sb41db1e809": "Try",
  "@sb41db1e809": {
   "description": "fi: Kokeile",
-  "x-where": "ui/tile_editor.dart:969"
+  "x-where": "ui/tile_editor.dart:912"
  },
  "s77d2309fd5": "Delay before (ms)",
  "@s77d2309fd5": {
   "description": "fi: Viive ennen (ms)",
-  "x-where": "ui/tile_editor.dart:992"
+  "x-where": "ui/tile_editor.dart:935"
+ },
+ "s7d6cee9e42": "Bars (15 min)",
+ "@s7d6cee9e42": {
+  "description": "fi: Pylväät (15 min)",
+  "x-where": "ui/tile_editor.dart:972"
+ },
+ "sc0e069225b": "Trend + Now line",
+ "@sc0e069225b": {
+  "description": "fi: Trendi + Nyt-viiva",
+  "x-where": "ui/tile_editor.dart:973"
+ },
+ "s07647fa07d": "Range",
+ "@s07647fa07d": {
+  "description": "fi: Aikaväli",
+  "x-where": "ui/tile_editor.dart:979"
+ },
+ "sbf6aaf9bb8": "Resolution",
+ "@sbf6aaf9bb8": {
+  "description": "fi: Tarkkuus",
+  "x-where": "ui/tile_editor.dart:986"
  },
  "sd032c3efec": "Auto",
  "@sd032c3efec": {
   "description": "fi: Auto",
+  "x-where": "ui/tile_editor.dart:989"
+ },
+ "sa6dc2ff399": "15 min",
+ "@sa6dc2ff399": {
+  "description": "fi: 15 min",
+  "x-where": "ui/tile_editor.dart:990"
+ },
+ "s96093c8f41": "1 h",
+ "@s96093c8f41": {
+  "description": "fi: 1 h",
+  "x-where": "ui/tile_editor.dart:991"
+ },
+ "s0a3e006fda": "Colouring",
+ "@s0a3e006fda": {
+  "description": "fi: Väritys",
+  "x-where": "ui/tile_editor.dart:994"
+ },
+ "sb6bfec83a2": "Relative (day min–max)",
+ "@sb6bfec83a2": {
+  "description": "fi: Suhteellinen (päivän min–max)",
+  "x-where": "ui/tile_editor.dart:998"
+ },
+ "sd13fe2ac25": "Absolute thresholds",
+ "@sd13fe2ac25": {
+  "description": "fi: Kiinteät rajat",
+  "x-where": "ui/tile_editor.dart:999"
+ },
+ "s717db0e103": "Fixed colour",
+ "@s717db0e103": {
+  "description": "fi: Yksi väri",
+  "x-where": "ui/tile_editor.dart:1000"
+ },
+ "sdc398885dc": "Advanced settings",
+ "@sdc398885dc": {
+  "description": "fi: Lisäasetukset",
+  "x-where": "ui/tile_editor.dart:1017"
+ },
+ "s8feeef3110": "Show tomorrow when available",
+ "@s8feeef3110": {
+  "description": "fi: Näytä huomenna kun saatavilla",
   "x-where": "ui/tile_editor.dart:1024"
+ },
+ "sad692e6ae5": "Tomorrow''s prices appear by themselves once published (around 14:00).",
+ "@sad692e6ae5": {
+  "description": "fi: Huomisen hinnat tulevat näkyviin itsestään, kun ne julkaistaan (n. klo 14).",
+  "x-where": "ui/tile_editor.dart:1026"
+ },
+ "s3221d2c8b7": "Bar width",
+ "@s3221d2c8b7": {
+  "description": "fi: Pylvään leveys",
+  "x-where": "ui/tile_editor.dart:1035"
+ },
+ "s2c890951b7": "Thin",
+ "@s2c890951b7": {
+  "description": "fi: Ohut",
+  "x-where": "ui/tile_editor.dart:1039"
+ },
+ "s0223c26f61": "Medium",
+ "@s0223c26f61": {
+  "description": "fi: Keskitaso",
+  "x-where": "ui/tile_editor.dart:1040"
+ },
+ "s4b97930585": "Min and max markers",
+ "@s4b97930585": {
+  "description": "fi: Min- ja max-merkinnät",
+  "x-where": "ui/tile_editor.dart:1060"
+ },
+ "seef35b192d": "Now line",
+ "@seef35b192d": {
+  "description": "fi: Nyt-viiva",
+  "x-where": "ui/tile_editor.dart:1067"
+ },
+ "s8c6a205222": "Stats row (now, min, avg, max)",
+ "@s8c6a205222": {
+  "description": "fi: Tilastorivi (nyt, min, ka, max)",
+  "x-where": "ui/tile_editor.dart:1074"
+ },
+ "sbeeaa6cf12": "Automatic y-axis",
+ "@sbeeaa6cf12": {
+  "description": "fi: Y-asteikko automaattinen",
+  "x-where": "ui/tile_editor.dart:1081"
+ },
+ "s29e7f8092d": "Y-axis maximum (c/kWh)",
+ "@s29e7f8092d": {
+  "description": "fi: Y-asteikon maksimi (c/kWh)",
+  "x-where": "ui/tile_editor.dart:1084"
+ },
+ "sd84d7d09c2": "Include VAT",
+ "@sd84d7d09c2": {
+  "description": "fi: Sisällytä ALV",
+  "x-where": "ui/tile_editor.dart:1093"
+ },
+ "s6817cff974": "Include margin",
+ "@s6817cff974": {
+  "description": "fi: Sisällytä marginaali",
+  "x-where": "ui/tile_editor.dart:1101"
+ },
+ "sd85f1b089e": "Line / fixed colour",
+ "@sd85f1b089e": {
+  "description": "fi: Viivan / kiinteä väri",
+  "x-where": "ui/tile_editor.dart:1113"
+ },
+ "s147f0af2a4": "Theme colour",
+ "@s147f0af2a4": {
+  "description": "fi: Teeman väri",
+  "x-where": "ui/tile_editor.dart:1122"
+ },
+ "s173772c66f": "Colour bands (c/kWh, from–to)",
+ "@s173772c66f": {
+  "description": "fi: Värialueet (c/kWh, mistä–mihin)",
+  "x-where": "ui/tile_editor.dart:1161"
+ },
+ "sc26d444f90": "From",
+ "@sc26d444f90": {
+  "description": "fi: Alkaen",
+  "x-where": "ui/tile_editor.dart:1174"
+ },
+ "s6ef23d86e0": "and up",
+ "@s6ef23d86e0": {
+  "description": "fi: ja yli",
+  "x-where": "ui/tile_editor.dart:1181"
+ },
+ "sf8c043ddca": "Add band",
+ "@sf8c043ddca": {
+  "description": "fi: Lisää alue",
+  "x-where": "ui/tile_editor.dart:1229"
  },
  "sb06bee9921": "Show",
  "@sb06bee9921": {
   "description": "fi: Näytä",
-  "x-where": "ui/tile_editor.dart:1025"
+  "x-where": "ui/tile_editor.dart:1257"
  },
  "s2594346d86": "Guide lines",
  "@s2594346d86": {
   "description": "fi: Apuviivat",
-  "x-where": "ui/tile_editor.dart:1027"
+  "x-where": "ui/tile_editor.dart:1259"
  },
  "sfdffaffea4": "None",
  "@sfdffaffea4": {
   "description": "fi: Ei",
-  "x-where": "ui/tile_editor.dart:1029"
+  "x-where": "ui/tile_editor.dart:1261"
  },
  "sd6c2de0256": "Horizontal",
  "@sd6c2de0256": {
   "description": "fi: Vaaka",
-  "x-where": "ui/tile_editor.dart:1030"
+  "x-where": "ui/tile_editor.dart:1262"
  },
  "sb8ef66c33e": "Grid",
  "@sb8ef66c33e": {
   "description": "fi: Ruudukko",
-  "x-where": "ui/tile_editor.dart:1031"
+  "x-where": "ui/tile_editor.dart:1263"
  },
  "s0bee1b8ed3": "Value scale",
  "@s0bee1b8ed3": {
   "description": "fi: Arvoasteikko",
-  "x-where": "ui/tile_editor.dart:1033"
+  "x-where": "ui/tile_editor.dart:1265"
  },
  "sd4e9b57931": "Time axis",
  "@sd4e9b57931": {
   "description": "fi: Aika-akseli",
-  "x-where": "ui/tile_editor.dart:1034"
+  "x-where": "ui/tile_editor.dart:1266"
  },
  "s7abdb12fef": "Data point markers",
  "@s7abdb12fef": {
   "description": "fi: Datapisteet viivalla",
-  "x-where": "ui/tile_editor.dart:1038"
+  "x-where": "ui/tile_editor.dart:1270"
  },
  "s29135ed75a": "Auto: axes and guide lines show when the tile is at least 2×2.",
  "@s29135ed75a": {
   "description": "fi: Auto: akselit ja apuviivat näkyvät, kun ruutu on vähintään 2×2.",
-  "x-where": "ui/tile_editor.dart:1043"
+  "x-where": "ui/tile_editor.dart:1275"
  },
  "s638c648b40": "Stream",
  "@s638c648b40": {
   "description": "fi: Kuvavirta",
-  "x-where": "ui/tile_editor.dart:1063"
+  "x-where": "ui/tile_editor.dart:1295"
  },
  "s32ef3895b8": "Lens / channel {p0}",
  "@s32ef3895b8": {
   "description": "fi: Linssi / kanava {p0}",
-  "x-where": "ui/tile_editor.dart:1072",
+  "x-where": "ui/tile_editor.dart:1304",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -5099,37 +5219,37 @@
  "s939603242a": "Colours by value",
  "@s939603242a": {
   "description": "fi: Värit arvon mukaan",
-  "x-where": "ui/tile_editor.dart:1093"
+  "x-where": "ui/tile_editor.dart:1325"
  },
  "s45f927bc62": "Custom",
  "@s45f927bc62": {
   "description": "fi: Omat rajat",
-  "x-where": "ui/tile_editor.dart:1118"
+  "x-where": "ui/tile_editor.dart:1350"
  },
  "s319dab47d8": "Smooth",
  "@s319dab47d8": {
   "description": "fi: Liukuva",
-  "x-where": "ui/tile_editor.dart:1126"
+  "x-where": "ui/tile_editor.dart:1358"
  },
  "s613fbec20e": "Steps",
  "@s613fbec20e": {
   "description": "fi: Jyrkkä",
-  "x-where": "ui/tile_editor.dart:1127"
+  "x-where": "ui/tile_editor.dart:1359"
  },
  "s25d9db075e": "Own limits and colours: Settings → Advanced.",
  "@s25d9db075e": {
   "description": "fi: Omat rajat ja värit: Asetukset → Edistyneet.",
-  "x-where": "ui/tile_editor.dart:1136"
+  "x-where": "ui/tile_editor.dart:1368"
  },
  "sc0f5a14d2b": "Color thresholds (value ≥ limit → color)",
  "@sc0f5a14d2b": {
   "description": "fi: Värirajat (arvo ≥ raja → väri)",
-  "x-where": "ui/tile_editor.dart:1169"
+  "x-where": "ui/tile_editor.dart:1401"
  },
  "s30a2c0f460": "Add threshold",
  "@s30a2c0f460": {
   "description": "fi: Lisää raja",
-  "x-where": "ui/tile_editor.dart:1231"
+  "x-where": "ui/tile_editor.dart:1463"
  },
  "sd408a5dbe9": "Cheapest hours",
  "@sd408a5dbe9": {
@@ -6162,11 +6282,6 @@
  "@s6019108a01": {
   "description": "fi: Ehto",
   "x-where": "ui/automation_pages.dart:973"
- },
- "sc26d444f90": "From",
- "@sc26d444f90": {
-  "description": "fi: Alkaen",
-  "x-where": "ui/automation_pages.dart:992"
  },
  "s796739363a": "To",
  "@s796739363a": {
@@ -9112,77 +9227,77 @@
  "s306729fe62": "No prices",
  "@s306729fe62": {
   "description": "fi: Ei hintoja",
-  "x-where": "ui/price_tile.dart:81"
+  "x-where": "ui/price_tile.dart:123"
  },
  "s80c4ecec94": "c/h",
  "@s80c4ecec94": {
   "description": "fi: c/t",
-  "x-where": "ui/price_tile.dart:85"
+  "x-where": "ui/price_tile.dart:127"
  },
  "sb68e905fc4": "Usage (kWh)",
  "@sb68e905fc4": {
   "description": "fi: Kulutus (kWh)",
-  "x-where": "ui/price_tile.dart:105"
+  "x-where": "ui/price_tile.dart:154"
  },
  "s5fc5085143": "Cost",
  "@s5fc5085143": {
   "description": "fi: Kustannus",
-  "x-where": "ui/price_tile.dart:106"
+  "x-where": "ui/price_tile.dart:155"
  },
  "s2b2118a93b": "Old data",
  "@s2b2118a93b": {
   "description": "fi: Vanha tieto",
-  "x-where": "ui/price_tile.dart:148"
+  "x-where": "ui/price_tile.dart:207"
  },
  "sb730159a01": "Price now",
  "@sb730159a01": {
   "description": "fi: Hinta nyt",
-  "x-where": "ui/price_tile.dart:148"
+  "x-where": "ui/price_tile.dart:207"
  },
  "s68fcfcfed1": "Cheapest hour today",
  "@s68fcfcfed1": {
   "description": "fi: Halvin tunti tänään",
-  "x-where": "ui/price_tile.dart:155"
+  "x-where": "ui/price_tile.dart:214"
  },
  "s86ff059f5e": "Average today",
  "@s86ff059f5e": {
   "description": "fi: Tänään keskihinta",
-  "x-where": "ui/price_tile.dart:158"
+  "x-where": "ui/price_tile.dart:217"
  },
  "s7b911d48c6": "Priciest hour today",
  "@s7b911d48c6": {
   "description": "fi: Kallein tunti tänään",
-  "x-where": "ui/price_tile.dart:163"
+  "x-where": "ui/price_tile.dart:222"
  },
  "s29dbf49d92": "Instant cost",
  "@s29dbf49d92": {
   "description": "fi: Hetkellinen kustannus",
-  "x-where": "ui/price_tile.dart:167"
+  "x-where": "ui/price_tile.dart:226"
  },
  "s723c887da6": "min",
  "@s723c887da6": {
   "description": "fi: halvin",
-  "x-where": "ui/price_tile.dart:192"
+  "x-where": "ui/price_tile.dart:251"
  },
  "s3b36524e04": "avg",
  "@s3b36524e04": {
   "description": "fi: ka",
-  "x-where": "ui/price_tile.dart:194"
+  "x-where": "ui/price_tile.dart:253"
  },
  "scaaff6345d": "max",
  "@scaaff6345d": {
   "description": "fi: kallein",
-  "x-where": "ui/price_tile.dart:196"
+  "x-where": "ui/price_tile.dart:255"
  },
  "s5f131c3ec4": "Usage",
  "@s5f131c3ec4": {
   "description": "fi: Kulutus",
-  "x-where": "ui/price_tile.dart:324"
+  "x-where": "ui/price_tile.dart:385"
  },
  "s039bb374fe": "Figures are hourly averages",
  "@s039bb374fe": {
   "description": "fi: Luvut tuntikeskiarvoina",
-  "x-where": "ui/price_tile.dart:331"
+  "x-where": "ui/price_tile.dart:392"
  },
  "se455dc672b": "Step",
  "@se455dc672b": {
@@ -10064,11 +10179,6 @@
   "description": "fi: nyt",
   "x-where": "ui/measure_view.dart:623"
  },
- "sdc398885dc": "Advanced settings",
- "@sdc398885dc": {
-  "description": "fi: Lisäasetukset",
-  "x-where": "ui/spec_form.dart:53"
- },
  "s5d477f3cd8": "Usually you don''t need these",
  "@s5d477f3cd8": {
   "description": "fi: Yleensä näihin ei tarvitse koskea",
@@ -10082,27 +10192,27 @@
  "s66ad384363": "24 h ahead",
  "@s66ad384363": {
   "description": "fi: 24 h eteenpäin",
-  "x-where": "ui/price_trend.dart:58"
+  "x-where": "ui/price_trend.dart:69"
  },
  "s6df3187e65": "Today + tomorrow",
  "@s6df3187e65": {
   "description": "fi: Tänään + huomenna",
-  "x-where": "ui/price_trend.dart:59"
+  "x-where": "ui/price_trend.dart:70"
  },
  "s76379cf7c6": "48 h",
  "@s76379cf7c6": {
   "description": "fi: 48h",
-  "x-where": "ui/price_trend.dart:60"
+  "x-where": "ui/price_trend.dart:71"
  },
  "sff03a35d96": "in 1 h",
  "@sff03a35d96": {
   "description": "fi: tunnin päästä",
-  "x-where": "ui/price_trend.dart:175"
+  "x-where": "ui/price_trend.dart:208"
  },
  "sf9e22ac5e7": "old prices",
  "@sf9e22ac5e7": {
   "description": "fi: vanhat hinnat",
-  "x-where": "ui/price_trend.dart:181"
+  "x-where": "ui/price_trend.dart:214"
  },
  "s58aaa6dade": "The view is locked",
  "@s58aaa6dade": {
@@ -13851,27 +13961,27 @@
  "s18faad19ed": "No price for now.",
  "@s18faad19ed": {
   "description": "fi: Hintaa ei ole tälle hetkelle.",
-  "x-where": "drivers/price_driver.dart:216"
+  "x-where": "drivers/price_driver.dart:219"
  },
  "s29178b43f4": "Electricity price is read-only.",
  "@s29178b43f4": {
   "description": "fi: Sähkön hinta on vain luettava.",
-  "x-where": "drivers/price_driver.dart:223"
+  "x-where": "drivers/price_driver.dart:226"
  },
  "s1a707f2788": "Tomorrow: yes.",
  "@s1a707f2788": {
   "description": "fi: Huominen: kyllä.",
-  "x-where": "drivers/price_driver.dart:248"
+  "x-where": "drivers/price_driver.dart:251"
  },
  "sb85af981c1": "Tomorrow: not yet (published around 14:00).",
  "@sb85af981c1": {
   "description": "fi: Huominen: ei vielä (julkaistaan n. klo 14).",
-  "x-where": "drivers/price_driver.dart:249"
+  "x-where": "drivers/price_driver.dart:252"
  },
  "s6270faf138": "✓ Prices for {p0} ({p1} slots, {p2} min, source {p3}).",
  "@s6270faf138": {
   "description": "fi: ✓ Hinnat haettu alueelle {p0} ({p1} jaksoa, {p2} min, lähde {p3}).",
-  "x-where": "drivers/price_driver.dart:250",
+  "x-where": "drivers/price_driver.dart:253",
   "placeholders": {
    "p0": {
     "type": "String"

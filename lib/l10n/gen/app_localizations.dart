@@ -5582,36 +5582,6 @@ abstract class AppLocalizations {
   /// **'Display'**
   String get sd7314e8237;
 
-  /// fi: Pylväät (15 min)
-  ///
-  /// In en, this message translates to:
-  /// **'Bars (15 min)'**
-  String get s7d6cee9e42;
-
-  /// fi: Trendi + Nyt-viiva
-  ///
-  /// In en, this message translates to:
-  /// **'Trend + Now line'**
-  String get sc0e069225b;
-
-  /// fi: Aikaväli
-  ///
-  /// In en, this message translates to:
-  /// **'Range'**
-  String get s07647fa07d;
-
-  /// fi: Näytä huomenna kun saatavilla
-  ///
-  /// In en, this message translates to:
-  /// **'Show tomorrow when available'**
-  String get s8feeef3110;
-
-  /// fi: Huomisen hinnat tulevat näkyviin itsestään, kun ne julkaistaan (n. klo 14).
-  ///
-  /// In en, this message translates to:
-  /// **'Tomorrow\'\'s prices appear by themselves once published (around 14:00).'**
-  String get sad692e6ae5;
-
   /// fi: Trendin pituus
   ///
   /// In en, this message translates to:
@@ -5816,11 +5786,185 @@ abstract class AppLocalizations {
   /// **'Delay before (ms)'**
   String get s77d2309fd5;
 
+  /// fi: Pylväät (15 min)
+  ///
+  /// In en, this message translates to:
+  /// **'Bars (15 min)'**
+  String get s7d6cee9e42;
+
+  /// fi: Trendi + Nyt-viiva
+  ///
+  /// In en, this message translates to:
+  /// **'Trend + Now line'**
+  String get sc0e069225b;
+
+  /// fi: Aikaväli
+  ///
+  /// In en, this message translates to:
+  /// **'Range'**
+  String get s07647fa07d;
+
+  /// fi: Tarkkuus
+  ///
+  /// In en, this message translates to:
+  /// **'Resolution'**
+  String get sbf6aaf9bb8;
+
   /// fi: Auto
   ///
   /// In en, this message translates to:
   /// **'Auto'**
   String get sd032c3efec;
+
+  /// fi: 15 min
+  ///
+  /// In en, this message translates to:
+  /// **'15 min'**
+  String get sa6dc2ff399;
+
+  /// fi: 1 h
+  ///
+  /// In en, this message translates to:
+  /// **'1 h'**
+  String get s96093c8f41;
+
+  /// fi: Väritys
+  ///
+  /// In en, this message translates to:
+  /// **'Colouring'**
+  String get s0a3e006fda;
+
+  /// fi: Suhteellinen (päivän min–max)
+  ///
+  /// In en, this message translates to:
+  /// **'Relative (day min–max)'**
+  String get sb6bfec83a2;
+
+  /// fi: Kiinteät rajat
+  ///
+  /// In en, this message translates to:
+  /// **'Absolute thresholds'**
+  String get sd13fe2ac25;
+
+  /// fi: Yksi väri
+  ///
+  /// In en, this message translates to:
+  /// **'Fixed colour'**
+  String get s717db0e103;
+
+  /// fi: Lisäasetukset
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced settings'**
+  String get sdc398885dc;
+
+  /// fi: Näytä huomenna kun saatavilla
+  ///
+  /// In en, this message translates to:
+  /// **'Show tomorrow when available'**
+  String get s8feeef3110;
+
+  /// fi: Huomisen hinnat tulevat näkyviin itsestään, kun ne julkaistaan (n. klo 14).
+  ///
+  /// In en, this message translates to:
+  /// **'Tomorrow\'\'s prices appear by themselves once published (around 14:00).'**
+  String get sad692e6ae5;
+
+  /// fi: Pylvään leveys
+  ///
+  /// In en, this message translates to:
+  /// **'Bar width'**
+  String get s3221d2c8b7;
+
+  /// fi: Ohut
+  ///
+  /// In en, this message translates to:
+  /// **'Thin'**
+  String get s2c890951b7;
+
+  /// fi: Keskitaso
+  ///
+  /// In en, this message translates to:
+  /// **'Medium'**
+  String get s0223c26f61;
+
+  /// fi: Min- ja max-merkinnät
+  ///
+  /// In en, this message translates to:
+  /// **'Min and max markers'**
+  String get s4b97930585;
+
+  /// fi: Nyt-viiva
+  ///
+  /// In en, this message translates to:
+  /// **'Now line'**
+  String get seef35b192d;
+
+  /// fi: Tilastorivi (nyt, min, ka, max)
+  ///
+  /// In en, this message translates to:
+  /// **'Stats row (now, min, avg, max)'**
+  String get s8c6a205222;
+
+  /// fi: Y-asteikko automaattinen
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic y-axis'**
+  String get sbeeaa6cf12;
+
+  /// fi: Y-asteikon maksimi (c/kWh)
+  ///
+  /// In en, this message translates to:
+  /// **'Y-axis maximum (c/kWh)'**
+  String get s29e7f8092d;
+
+  /// fi: Sisällytä ALV
+  ///
+  /// In en, this message translates to:
+  /// **'Include VAT'**
+  String get sd84d7d09c2;
+
+  /// fi: Sisällytä marginaali
+  ///
+  /// In en, this message translates to:
+  /// **'Include margin'**
+  String get s6817cff974;
+
+  /// fi: Viivan / kiinteä väri
+  ///
+  /// In en, this message translates to:
+  /// **'Line / fixed colour'**
+  String get sd85f1b089e;
+
+  /// fi: Teeman väri
+  ///
+  /// In en, this message translates to:
+  /// **'Theme colour'**
+  String get s147f0af2a4;
+
+  /// fi: Värialueet (c/kWh, mistä–mihin)
+  ///
+  /// In en, this message translates to:
+  /// **'Colour bands (c/kWh, from–to)'**
+  String get s173772c66f;
+
+  /// fi: Alkaen
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get sc26d444f90;
+
+  /// fi: ja yli
+  ///
+  /// In en, this message translates to:
+  /// **'and up'**
+  String get s6ef23d86e0;
+
+  /// fi: Lisää alue
+  ///
+  /// In en, this message translates to:
+  /// **'Add band'**
+  String get sf8c043ddca;
 
   /// fi: Näytä
   ///
@@ -7051,12 +7195,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Condition'**
   String get s6019108a01;
-
-  /// fi: Alkaen
-  ///
-  /// In en, this message translates to:
-  /// **'From'**
-  String get sc26d444f90;
 
   /// fi: Asti
   ///
@@ -11378,12 +11516,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'now'**
   String get sed9b5e52f6;
-
-  /// fi: Lisäasetukset
-  ///
-  /// In en, this message translates to:
-  /// **'Advanced settings'**
-  String get sdc398885dc;
 
   /// fi: Yleensä näihin ei tarvitse koskea
   ///

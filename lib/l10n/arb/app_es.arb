@@ -2466,7 +2466,7 @@
  "s12a7d631af": "Aspecto",
  "s0d83798030": "Tamaño",
  "s64c916e299": "Pequeña",
- "s5e3097232a": "Ancha",
+ "s5e3097232a": "Ancho",
  "s8971788287": "Grande",
  "scf37cbeda8": "Icono",
  "s254a1d8e12": "Imagen de fondo (opcional)",
@@ -2623,26 +2623,6 @@
   "x-mt": true
  },
  "sd7314e8237": "Visualización",
- "s7d6cee9e42": "Bares (15 min)",
- "@s7d6cee9e42": {
-  "x-mt": true
- },
- "sc0e069225b": "Trend + línea Ahora",
- "@sc0e069225b": {
-  "x-mt": true
- },
- "s07647fa07d": "Rango",
- "@s07647fa07d": {
-  "x-mt": true
- },
- "s8feeef3110": "Mostrar mañana cuando esté disponible",
- "@s8feeef3110": {
-  "x-mt": true
- },
- "sad692e6ae5": "Los precios del mañana aparecen por sí mismos una vez publicados (alrededor de las 14:00).",
- "@sad692e6ae5": {
-  "x-mt": true
- },
  "s1c72b8c56a": "Longitud de la tendencia",
  "@s1c72b8c56a": {
   "x-mt": true
@@ -2755,7 +2735,51 @@
  "@s77d2309fd5": {
   "x-mt": true
  },
+ "s7d6cee9e42": "Bares (15 min)",
+ "@s7d6cee9e42": {
+  "x-mt": true
+ },
+ "sc0e069225b": "Trend + línea Ahora",
+ "@sc0e069225b": {
+  "x-mt": true
+ },
+ "s07647fa07d": "Rango",
+ "@s07647fa07d": {
+  "x-mt": true
+ },
+ "sbf6aaf9bb8": "Resolución",
  "sd032c3efec": "Auto",
+ "sa6dc2ff399": "15 min",
+ "s96093c8f41": "1 h",
+ "s0a3e006fda": "Coloración",
+ "sb6bfec83a2": "Relativo (mín–máx del día)",
+ "sd13fe2ac25": "Umbrales absolutos",
+ "s717db0e103": "Un color",
+ "sdc398885dc": "Ajustes avanzados",
+ "s8feeef3110": "Mostrar mañana cuando esté disponible",
+ "@s8feeef3110": {
+  "x-mt": true
+ },
+ "sad692e6ae5": "Los precios del mañana aparecen por sí mismos una vez publicados (alrededor de las 14:00).",
+ "@sad692e6ae5": {
+  "x-mt": true
+ },
+ "s3221d2c8b7": "Ancho de barra",
+ "s2c890951b7": "Fino",
+ "s0223c26f61": "Medio",
+ "s4b97930585": "Marcadores de mín. y máx.",
+ "seef35b192d": "Línea de ahora",
+ "s8c6a205222": "Fila de estadísticas (ahora, mín., media, máx.)",
+ "sbeeaa6cf12": "Eje Y automático",
+ "s29e7f8092d": "Máximo del eje Y (c/kWh)",
+ "sd84d7d09c2": "Incluir IVA",
+ "s6817cff974": "Incluir margen",
+ "sd85f1b089e": "Color de línea / fijo",
+ "s147f0af2a4": "Color del tema",
+ "s173772c66f": "Bandas de color (c/kWh, de–a)",
+ "sc26d444f90": "Desde",
+ "s6ef23d86e0": "y más",
+ "sf8c043ddca": "Añadir banda",
  "sb06bee9921": "Show",
  "@sb06bee9921": {
   "x-mt": true
@@ -3532,10 +3556,6 @@
  },
  "s6019108a01": "Estado",
  "@s6019108a01": {
-  "x-mt": true
- },
- "sc26d444f90": "Desde",
- "@sc26d444f90": {
   "x-mt": true
  },
  "s796739363a": "A",
@@ -5216,10 +5236,7 @@
  "@s90ba0c57d4": {
   "x-mt": true
  },
- "s0cb68026a7": "Mediana",
- "@s0cb68026a7": {
-  "x-mt": true
- },
+ "s0cb68026a7": "Medio",
  "s9c5e4ed5cb": "Medio-alto",
  "@s9c5e4ed5cb": {
   "x-mt": true
@@ -5849,7 +5866,6 @@
  "@sed9b5e52f6": {
   "x-mt": true
  },
- "sdc398885dc": "Ajustes avanzados",
  "s5d477f3cd8": "Normalmente no necesitas estos",
  "@s5d477f3cd8": {
   "x-mt": true

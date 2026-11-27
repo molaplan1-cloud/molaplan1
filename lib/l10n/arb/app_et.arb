@@ -2629,26 +2629,6 @@
   "x-mt": true
  },
  "sd7314e8237": "Kuvamine",
- "s7d6cee9e42": "Baarid (15 min)",
- "@s7d6cee9e42": {
-  "x-mt": true
- },
- "sc0e069225b": "Trend + Nüüd liin",
- "@sc0e069225b": {
-  "x-mt": true
- },
- "s07647fa07d": "Range",
- "@s07647fa07d": {
-  "x-mt": true
- },
- "s8feeef3110": "Näita homme, kui see on saadaval",
- "@s8feeef3110": {
-  "x-mt": true
- },
- "sad692e6ae5": "Homsed hinnad ilmuvad iseenesest, kui need on avaldatud (umbes kell 14.00).",
- "@sad692e6ae5": {
-  "x-mt": true
- },
  "s1c72b8c56a": "Trendi pikkus",
  "@s1c72b8c56a": {
   "x-mt": true
@@ -2764,7 +2744,51 @@
  "@s77d2309fd5": {
   "x-mt": true
  },
+ "s7d6cee9e42": "Baarid (15 min)",
+ "@s7d6cee9e42": {
+  "x-mt": true
+ },
+ "sc0e069225b": "Trend + Nüüd liin",
+ "@sc0e069225b": {
+  "x-mt": true
+ },
+ "s07647fa07d": "Range",
+ "@s07647fa07d": {
+  "x-mt": true
+ },
+ "sbf6aaf9bb8": "Resolutsioon",
  "sd032c3efec": "Auto",
+ "sa6dc2ff399": "15 min",
+ "s96093c8f41": "1 h",
+ "s0a3e006fda": "Värvimine",
+ "sb6bfec83a2": "Suhteline (päeva min–max)",
+ "sd13fe2ac25": "Absoluutsed piirid",
+ "s717db0e103": "Üks värv",
+ "sdc398885dc": "Täpsemad seaded",
+ "s8feeef3110": "Näita homme, kui see on saadaval",
+ "@s8feeef3110": {
+  "x-mt": true
+ },
+ "sad692e6ae5": "Homsed hinnad ilmuvad iseenesest, kui need on avaldatud (umbes kell 14.00).",
+ "@sad692e6ae5": {
+  "x-mt": true
+ },
+ "s3221d2c8b7": "Tulpade laius",
+ "s2c890951b7": "Peenike",
+ "s0223c26f61": "Keskmine",
+ "s4b97930585": "Min- ja max-märgised",
+ "seef35b192d": "Nüüd-joon",
+ "s8c6a205222": "Statistikarida (nüüd, min, keskm, max)",
+ "sbeeaa6cf12": "Automaatne Y-telg",
+ "s29e7f8092d": "Y-telje maksimum (c/kWh)",
+ "sd84d7d09c2": "Kaasa käibemaks",
+ "s6817cff974": "Kaasa marginaal",
+ "sd85f1b089e": "Joone / kindel värv",
+ "s147f0af2a4": "Teema värv",
+ "s173772c66f": "Värvivahemikud (c/kWh, alates–kuni)",
+ "sc26d444f90": "Alates",
+ "s6ef23d86e0": "ja üle",
+ "sf8c043ddca": "Lisa vahemik",
  "sb06bee9921": "Näita",
  "@sb06bee9921": {
   "x-mt": true
@@ -3541,10 +3565,6 @@
  },
  "s6019108a01": "Seisund",
  "@s6019108a01": {
-  "x-mt": true
- },
- "sc26d444f90": "Alates",
- "@sc26d444f90": {
   "x-mt": true
  },
  "s796739363a": "To",
@@ -5241,9 +5261,6 @@
   "x-mt": true
  },
  "s0cb68026a7": "Keskmine",
- "@s0cb68026a7": {
-  "x-mt": true
- },
  "s9c5e4ed5cb": "Keskmise kõrgusega",
  "@s9c5e4ed5cb": {
   "x-mt": true
@@ -5876,7 +5893,6 @@
  "@sed9b5e52f6": {
   "x-mt": true
  },
- "sdc398885dc": "Täpsemad seaded",
  "s5d477f3cd8": "Tavaliselt sa ei vaja neid",
  "@s5d477f3cd8": {
   "x-mt": true
