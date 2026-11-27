@@ -11,10 +11,12 @@
 library;
 
 import 'dart:convert';
-import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:http/http.dart' as http;
+
 import '../core/fields.dart';
+import '../core/http_client.dart';
 import '../models/models.dart';
 import 'driver.dart';
 
@@ -156,19 +158,44 @@ typedef AirthingsHttp = Future<(int, String)> Function(
 );
 
 Future<(int, String)> _defaultHttp(String method, Uri url, Map<String, String> headers, String? body) async {
-  final c = HttpClient()..connectionTimeout = const Duration(seconds: 15);
+  // package:http: IOClient in the apps, BrowserClient on the web (R331). dart:io HttpClient
+  // throws `Unsupported operation: Platform._version` in a browser.
+  final c = newHttpClient(connectTimeout: const Duration(seconds: 15));
   try {
-    final req = await c.openUrl(method, url).timeout(const Duration(seconds: 15));
-    headers.forEach(req.headers.set);
-    if (body != null) req.write(body);
-    final res = await req.close().timeout(const Duration(seconds: 20));
-    return (res.statusCode, await res.transform(utf8.decoder).join());
+    final req = http.Request(method, url)..headers.addAll(headers);
+    if (body != null) req.body = body;
+    final res = await c.send(req).timeout(const Duration(seconds: 20));
+    return (res.statusCode, await res.stream.bytesToString());
   } finally {
-    c.close(force: true);
+    c.close();
   }
 }
 
 AirthingsHttp airthingsHttp = _defaultHttp;
+
+/// Cloud API (or dart:io) cannot be used from this browser; use the app or a home bridge.
+class AirthingsWebUnavailable implements Exception {
+  const AirthingsWebUnavailable();
+  static const fi = webAppOrBridgeFi;
+  static const en = webAppOrBridgeEn;
+  @override
+  String toString() => fi;
+}
+
+Future<(int, String)> _callAirthingsHttp(
+  String method,
+  Uri url,
+  Map<String, String> headers,
+  String? body,
+) async {
+  try {
+    return await airthingsHttp(method, url, headers, body);
+  } catch (e) {
+    if (e is AirthingsWebUnavailable) rethrow;
+    if (isWebTransportFailure(e)) throw const AirthingsWebUnavailable();
+    rethrow;
+  }
+}
 
 /// Clock hook for tests.
 DateTime Function() airthingsClock = DateTime.now;
@@ -271,7 +298,7 @@ class AirthingsCloudDriver extends Driver {
   Future<String> _token() async {
     final t = _tokens[_cid];
     if (t != null && airthingsClock().isBefore(t.$2)) return t.$1;
-    final (code, body) = await airthingsHttp(
+    final (code, body) = await _callAirthingsHttp(
       'POST',
       Uri.parse(tokenUrl),
       {'Content-Type': 'application/json'},
@@ -294,7 +321,7 @@ class AirthingsCloudDriver extends Driver {
   }
 
   Future<Object?> _get(String path) async {
-    final (code, body) = await airthingsHttp('GET', Uri.parse('$apiBase$path'), {
+    final (code, body) = await _callAirthingsHttp('GET', Uri.parse('$apiBase$path'), {
       'Authorization': 'Bearer ${await _token()}',
     }, null);
     if (code == 401) {

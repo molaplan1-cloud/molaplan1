@@ -5,6 +5,7 @@ library;
 
 import 'package:material_ui/material_ui.dart' hide Threshold;
 
+import '../core/http_client.dart';
 import '../drivers/airthings.dart';
 import '../models/models.dart';
 import 'app_scope.dart';
@@ -23,6 +24,9 @@ class _AirthingsDevicesPageState extends State<AirthingsDevicesPage> {
   Map<String, Map<String, num>> _values = const {};
   Object? _error;
   final _picked = <String>{}; // serial|sensor
+
+  bool get _webUnavailable =>
+      _error is AirthingsWebUnavailable || (_error != null && isWebTransportFailure(_error!));
 
   @override
   void initState() {
@@ -96,7 +100,12 @@ class _AirthingsDevicesPageState extends State<AirthingsDevicesPage> {
               icon: const Icon(Icons.add),
               label: Text(tx(context, 'Lisää ${_picked.length} ruutua', 'Add ${_picked.length} tiles')),
             ),
-      body: _error != null
+      body: _webUnavailable
+          ? Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(tx(context, webAppOrBridgeFi, webAppOrBridgeEn)),
+            )
+          : _error != null
           ? Padding(
               padding: const EdgeInsets.all(16),
               child: Text(

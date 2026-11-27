@@ -24,7 +24,7 @@ class UpdatePlatform {
   Future<Directory> downloadDir() async {
     if (os == 'android') return Directory((await _ch.invokeMethod<String>('cacheDir'))!);
     final d = await getDownloadsDirectory() ?? await getTemporaryDirectory();
-    return Directory('${d.path}${Platform.pathSeparator}Molaplan');
+    return Directory('${d.path}${(kIsWeb ? '/' : Platform.pathSeparator)}Molaplan');
   }
 
   Future<bool> canInstall() async => os != 'android' || ((await _ch.invokeMethod<bool>('canInstall')) ?? false);
@@ -236,7 +236,7 @@ class UpdateState extends ChangeNotifier {
       }
       final f = await download(
         asset.url,
-        File('${dir.path}${Platform.pathSeparator}${asset.name}'),
+        File('${dir.path}${(kIsWeb ? '/' : Platform.pathSeparator)}${asset.name}'),
         client: client,
         progress: (p) {
           progress = p;

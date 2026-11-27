@@ -1,22 +1,17 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:http/io_client.dart';
 
 import '../core/fields.dart';
+import '../core/http_client.dart';
 import '../core/template.dart';
 import 'digest_auth.dart';
 import '../devices/shelly_push.dart';
 import 'driver.dart';
 import 'hue_hub.dart';
 
-http.Client makeHttpClient(bool allowSelfSigned, {Duration? timeout}) {
-  final c = HttpClient();
-  if (timeout != null) c.connectionTimeout = timeout;
-  if (allowSelfSigned) c.badCertificateCallback = (_, _, _) => true;
-  return IOClient(c);
-}
+http.Client makeHttpClient(bool allowSelfSigned, {Duration? timeout}) =>
+    newHttpClient(connectTimeout: timeout ?? const Duration(seconds: 10), allowSelfSigned: allowSelfSigned);
 
 Uri joinUrl(String base, String path) {
   if (path.startsWith('http://') || path.startsWith('https://')) return Uri.parse(path);

@@ -5,6 +5,7 @@ library;
 
 import 'dart:convert';
 import 'dart:io';
+import '../core/io_http.dart';
 
 /// Parses a relay list: "1", "1,2,3,4", "1 - 4", "1,3-4", "kaikki" / "all" / "*".
 /// [count] is the detected number of relays (needed for "kaikki", used to validate).
@@ -99,7 +100,7 @@ RelayCaps parseTasmotaStatus(Object? json) {
 Future<String> Function(Uri url) multichannelGet = _get;
 
 Future<String> _get(Uri url) async {
-  final c = HttpClient()..connectionTimeout = const Duration(seconds: 4);
+  final c = requireIoHttpClient(timeout: const Duration(seconds: 4));
   try {
     final req = await c.getUrl(url).timeout(const Duration(seconds: 4));
     final res = await req.close().timeout(const Duration(seconds: 6));

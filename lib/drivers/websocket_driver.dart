@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:io';
+import '../core/io_http.dart';
 
 import 'package:web_socket_channel/io.dart';
 
@@ -66,8 +66,7 @@ class WebSocketDriver extends Driver {
   }
 
   Future<void> _connect() async {
-    final hc = HttpClient();
-    if (s.flag('allowSelfSigned')) hc.badCertificateCallback = (_, _, _) => true;
+    final hc = requireIoHttpClient(allowSelfSigned: s.flag('allowSelfSigned'));
     final headers = <String, dynamic>{...parseHeaders(s.strOrNull('headers'))};
     final tok = s.strOrNull('token');
     if (tok != null) headers['Authorization'] = 'Bearer $tok';

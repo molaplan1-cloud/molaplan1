@@ -9,6 +9,7 @@ import 'dart:async';
 import '../core/plat.dart';
 import 'dart:convert';
 import 'dart:io';
+import '../core/io_http.dart';
 
 import '../core/discovery.dart';
 import 'identify.dart';
@@ -713,7 +714,7 @@ Future<void> identifyHits(Map<String, ScanHit> all, List<String> locals, Map<Str
     for (final h in all.values)
       if (h.role != 'self') h.ip,
   ];
-  final c = HttpClient()..connectionTimeout = const Duration(milliseconds: 1200);
+  final c = requireIoHttpClient(timeout: const Duration(milliseconds: 1200));
   try {
     final nb = netbiosNames(others);
     final ll = llmnrNames(others);

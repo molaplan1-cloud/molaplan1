@@ -8,7 +8,7 @@ library;
 
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
+import '../core/io_http.dart';
 
 import 'package:http/http.dart' as http;
 
@@ -24,8 +24,7 @@ bool isHuePath(String path) => huePathRe.hasMatch(path);
 typedef HueSse = Stream<String> Function(Uri url, Map<String, String> headers);
 
 Stream<String> _defaultSse(Uri url, Map<String, String> headers) async* {
-  final hc = HttpClient()..badCertificateCallback = (_, _, _) => true; // the bridge's own cert
-  hc.connectionTimeout = const Duration(seconds: 8);
+  final hc = requireIoHttpClient(timeout: const Duration(seconds: 8), allowSelfSigned: true); // the bridge's own cert
   try {
     final req = await hc.getUrl(url);
     headers.forEach(req.headers.set);

@@ -9,6 +9,7 @@ library;
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import '../core/io_http.dart';
 
 import '../drivers/driver.dart';
 import '../models/models.dart';
@@ -312,9 +313,7 @@ Future<List<T>> scanSubnet<T>(
       }
     }
   }
-  final client = HttpClient()
-    ..connectionTimeout = timeout
-    ..badCertificateCallback = (_, _, _) => true;
+  final client = requireIoHttpClient(timeout: timeout, allowSelfSigned: true);
   final out = <T>[];
   var next = 0;
   Future<void> worker() async {

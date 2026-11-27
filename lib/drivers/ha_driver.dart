@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
+import '../core/io_http.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:web_socket_channel/io.dart';
@@ -155,8 +155,7 @@ class HomeAssistantDriver extends Driver {
 
   Future<void> _connectWs() async {
     final wsUrl = '${_base.replaceFirst(RegExp('^http'), 'ws')}/api/websocket';
-    final hc = HttpClient();
-    if (s.flag('allowSelfSigned')) hc.badCertificateCallback = (_, _, _) => true;
+    final hc = requireIoHttpClient(allowSelfSigned: s.flag('allowSelfSigned'));
     final ch = IOWebSocketChannel.connect(Uri.parse(wsUrl), customClient: hc);
     final authed = Completer<void>();
     final subId = _msgId++;

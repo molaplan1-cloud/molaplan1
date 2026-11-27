@@ -3,6 +3,7 @@ library;
 
 import 'dart:convert';
 import 'dart:io';
+import '../core/io_http.dart';
 
 import '../core/fields.dart';
 import '../drivers/driver.dart';
@@ -945,7 +946,7 @@ class ShellyCloudDriver extends Driver {
     commandFields: [],
   );
 
-  final _client = HttpClient()..connectionTimeout = const Duration(seconds: 10);
+  final _client = requireIoHttpClient(timeout: const Duration(seconds: 10));
   final _cache = <String, (DateTime, Map<String, dynamic>)>{};
   // Shared by all cloud connections: Shelly allows about one request per second per account.
   static Future<void> _gate = Future.value();

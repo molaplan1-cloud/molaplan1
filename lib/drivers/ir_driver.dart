@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import '../core/io_http.dart';
 
 import 'package:http/http.dart' as http;
 
@@ -983,7 +984,7 @@ class IrDriver extends Driver {
 
   /// ESPHome web_server /events (SSE) includes log lines; remote_receiver dump prints "Received …".
   Future<IrCode> _learnEsphome(Duration timeout, Exception fail) async {
-    final hc = HttpClient()..connectionTimeout = const Duration(seconds: 8);
+    final hc = requireIoHttpClient(timeout: const Duration(seconds: 8));
     try {
       final req = await hc.getUrl(Uri.parse('$_base/events'));
       req.headers.set('Accept', 'text/event-stream');
@@ -1082,7 +1083,7 @@ Future<List<EsphomeClimate>> discoverEsphomeClimates(
   while (base.endsWith('/')) {
     base = base.substring(0, base.length - 1);
   }
-  final hc = HttpClient()..connectionTimeout = const Duration(seconds: 6);
+  final hc = requireIoHttpClient(timeout: const Duration(seconds: 6));
   final found = <String, EsphomeClimate>{};
   try {
     final req = await hc.getUrl(Uri.parse('$base/events')).timeout(const Duration(seconds: 6));

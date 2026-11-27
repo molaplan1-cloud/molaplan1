@@ -6,7 +6,7 @@ import 'dart:math' as math;
 
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
+import '../core/io_http.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:web_socket_channel/io.dart';
@@ -204,8 +204,7 @@ Future<(List<Map>, List<Map>, List<Map>)> _registries(
   bool selfSigned,
   Duration timeout,
 ) async {
-  final hc = HttpClient();
-  if (selfSigned) hc.badCertificateCallback = (_, _, _) => true;
+  final hc = requireIoHttpClient(allowSelfSigned: selfSigned);
   final ch = IOWebSocketChannel.connect(
     Uri.parse('${base.replaceFirst(RegExp('^http'), 'ws')}/api/websocket'),
     customClient: hc,
