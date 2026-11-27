@@ -1715,10 +1715,7 @@
  "@sd8332d82ec": {
   "x-mt": true
  },
- "s109b35551a": "Max",
- "@s109b35551a": {
-  "x-mt": true
- },
+ "s109b35551a": "Máx",
  "sf2c65c5aeb": "Promedio",
  "s8653f173b6": "Temperatura",
  "@s8653f173b6": {
@@ -2184,6 +2181,8 @@
  "s29fae6a0e8": "Control por precio activado",
  "sbfe79d1f5f": "Actualizado",
  "s71f145905e": "Atajo / compartir",
+ "sff8f7a1947": "Añadir registro / tendencia",
+ "se893c16dba": "Registro / tendencia",
  "s46d0983ce8": "Añadir a la pantalla de inicio",
  "s59d55f8882": "Renombrar",
  "s84ada1ae69": "Cambio PIN",
@@ -4058,10 +4057,7 @@
  "@s58a8bfdd9f": {
   "x-mt": true
  },
- "s5c380d76b6": "Últimas",
- "@s5c380d76b6": {
-  "x-mt": true
- },
+ "s5c380d76b6": "Último",
  "s9d75942e41": "Automatización lista",
  "@s9d75942e41": {
   "x-mt": true
@@ -4291,6 +4287,7 @@
  "@sc84689a549": {
   "x-mt": true
  },
+ "s2b6f77fa62": "Registros y tendencias",
  "sca4c8b88b7": "Home Assistant: añadir dispositivos",
  "saec69088a5": "Controla tu casa desde fuera también.",
  "@saec69088a5": {
@@ -6131,6 +6128,72 @@
  "@sa4e9c86a86": {
   "x-mt": true
  },
+ "s9f02ad954d": "Armada",
+ "s8352b34316": "Armada (en casa)",
+ "s49e6af4fbd": "Desarmada",
+ "s3dfa789b85": "ALARMA",
+ "s06273ba893": "Retardo de salida",
+ "sfcf7462d8b": "Retardo de entrada",
+ "s55142f0816": "Alarma / abierto / movimiento",
+ "s6f0481deb7": "En calma / cerrado",
+ "s4b77da40d6": "Este dispositivo (Molaplan)",
+ "s1cbfbc5ff7": "Tarjeta eliminada",
+ "s7843a19ea0": "24 h",
+ "s4b87fa9575": "7 días",
+ "s1e72f886c1": "30 días",
+ "s78266c553c": "Solo cuando cambia el valor",
+ "sf224f07b80": "Cambios y como mínimo cada minuto",
+ "s41ef71d809": "Cambios y como mínimo cada 5 min",
+ "s12e38f800c": "Cambios y como mínimo cada 15 min",
+ "sa7c19cc4e2": "Cambios y como mínimo cada hora",
+ "sc0d4464ce2": "Puedes tener como máximo 40 registros.",
+ "s7001f80c75": "Aún no hay tarjetas que registrar.",
+ "s25729ac0be": "¿Qué tarjeta?",
+ "se93448dca9": "Registro de eventos",
+ "s79a52f607c": "Crea un registro o una tendencia desde cualquier tarjeta: temperatura, potencia, precio, sensor, relé o estado. Pulsa Añadir, o mantén pulsada una tarjeta y elige Añadir registro / tendencia.",
+ "s4ff01d5c5f": "se guarda",
+ "s11c71ee131": "días",
+ "sbbb938f28f": "Los datos se guardan en este dispositivo. La recogida funciona siempre que Molaplan esté en marcha (también en segundo plano en Windows y como puente doméstico). En Android los valores también se leen cada 15 minutos aproximadamente con la app cerrada. En el navegador solo se recogen mientras la página está abierta; los precios y los dispositivos con historial propio rellenan los huecos.",
+ "s5e9f9fcae5": "Nuevo registro / tendencia",
+ "sb0ced9bdb6": "Nombre (opcional)",
+ "s237da9d739": "Gráfico",
+ "s89fd2c0b0b": "Línea",
+ "sc18ac46162": "Barras",
+ "se256c45d40": "Guardar",
+ "sd185524df1": "Qué cambios se registran",
+ "s0918947c1c": "Todos los cambios",
+ "sae3c62f7d0": "Los valores aparecen aquí cuando la tarjeta los haya enviado. Hasta entonces registra todos los cambios.",
+ "s16b24be503": "Guardar quién / qué lo cambió",
+ "se2badd71f2": "Cuando el dispositivo lo indica (p. ej., el usuario del panel de alarma) o el cambio se hizo desde esta app.",
+ "s56acf29de0": "Mostrar como tarjeta en la vista",
+ "s40e7046009": "Más ajustes",
+ "s3f5977d9b6": "Guardar datos durante",
+ "se668520c52": "Intervalo predeterminado",
+ "s92c8a02204": "Ignorar cambios menores que",
+ "sf84e8b990b": "Los datos antiguos se condensan: detalle de 1 minuto durante 6 h, luego 5 min, 15 min, 1 hora. Los datos se quedan en este dispositivo; exporta CSV para usarlos en otro lugar.",
+ "s7036f1191e": "Como máximo 2000 eventos. Los datos se quedan en este dispositivo; exporta CSV para usarlos en otro lugar.",
+ "s62cd475497": "Exportar CSV",
+ "sd0271d93a1": "CSV exportado",
+ "sb130aae279": "Tarjeta añadida a la vista",
+ "s950023174c": "¿Borrar los datos?",
+ "s5c6181d628": "Los datos recogidos se eliminan de este dispositivo. La recogida continúa.",
+ "s6d02a02a84": "¿Eliminar el registro?",
+ "s352ff3dfcd": "Se eliminan el registro, sus datos y su tarjeta.",
+ "s4a997986a1": "El registro se ha eliminado.",
+ "s7a0680e628": "Borrar datos",
+ "sdbf5997eb6": "Eliminar registro",
+ "s861cfdceb8": "Aún no hay datos para este intervalo. Recogiendo.",
+ "saa1ac2854a": "Min",
+ "s3f80c515c3": "Máx",
+ "s0995036cd3": "Último",
+ "safecdd6b93": "Aún no hay eventos. El registro guarda los cambios elegidos a partir de ahora.",
+ "s4ba3b23ae1": "Duró",
+ "s5fb1d3d53a": "Quién",
+ "s23f691770e": "Recogiendo…",
+ "s35be191f52": "Aún no hay eventos",
+ "@s35be191f52": {
+  "x-mt": true
+ },
  "sfe55fd97fa": "Todo tranquilo.",
  "@sfe55fd97fa": {
   "x-mt": true
@@ -6478,14 +6541,11 @@
  "s87c07d09ce": "Aún no hay eventos. El registro recoge activaciones, desactivaciones y alarmas.",
  "s6a2900d1fc": "Vigilancia activada",
  "sdfb732c84f": "Vigilancia desactivada",
- "s3dfa789b85": "ALARMA",
  "s6b2ed1dd31": "Terminó",
  "sa7e8a5c23b": "En curso o hora de fin desconocida",
  "s9909138be0": "Causa",
- "s5fb1d3d53a": "Quién",
  "s93b4695981": "Armada",
  "s489ed73bfa": "Armada (en casa)",
- "s49e6af4fbd": "Desarmada",
  "s1ba2cffb00": "Retardo de salida: armando",
  "s2b765e2c1f": "Retardo de entrada: introduce el PIN",
  "s34de2943cc": "¡ALARMA!",

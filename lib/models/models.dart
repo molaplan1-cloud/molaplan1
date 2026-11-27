@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:uuid/uuid.dart';
 
 import '../automation/model.dart';
+import '../log/log_def.dart' show LogDef;
 import '../rules/price_rules.dart';
 
 export '../rules/price_rules.dart' show PriceRule;
@@ -721,6 +722,10 @@ class AppConfig {
   bool animations;
   bool homeStrip;
 
+  /// R480 (t312u): user-built logs and trends ("Lokit ja trendit"). The definitions sync with
+  /// the account; the collected data stays on each device (lib/log/).
+  List<LogDef> logs;
+
   AppConfig({
     List<ConnectionConfig>? connections,
     List<Dashboard>? dashboards,
@@ -748,7 +753,9 @@ class AppConfig {
     this.trayOnClose = true,
     this.animations = true,
     this.homeStrip = true,
-  }) : automation = automation ?? AutomationSettings(),
+    List<LogDef>? logs,
+  }) : logs = logs ?? [],
+       automation = automation ?? AutomationSettings(),
        favoriteColors =
            favoriteColors ??
            ['#FF8A3D', '#FFD166', '#4D96FF', '#C77DFF', 'K2700', 'K5000'],
@@ -789,6 +796,7 @@ class AppConfig {
     'dashboards': dashboards.map((d) => d.toJson()).toList(),
     if (rules.isNotEmpty) 'rules': rules.map((r) => r.toJson()).toList(),
     if (!energy.isEmpty) 'energy': energy.toJson(),
+    if (logs.isNotEmpty) 'logs': [for (final l in logs) l.toJson()],
   };
 
   factory AppConfig.fromJson(Map<String, dynamic> j) {
@@ -837,6 +845,10 @@ class AppConfig {
           .map((e) => PriceRule.fromJson(_map(e)))
           .toList(),
       energy: EnergySettings.fromJson(j['energy']),
+      logs: [
+        for (final l in (j['logs'] is List ? j['logs'] as List : const []))
+          ?LogDef.fromJson(l),
+      ],
     );
   }
 }

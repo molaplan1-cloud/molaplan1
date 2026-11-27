@@ -2533,6 +2533,12 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s71f145905e => 'Pikakomento / jaa';
 
   @override
+  String get sff8f7a1947 => 'Lisää loki / trendi';
+
+  @override
+  String get se893c16dba => 'Loki / trendi';
+
+  @override
   String get s46d0983ce8 => 'Lisää aloitusnäytölle';
 
   @override
@@ -4803,6 +4809,9 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sc84689a549 => 'Laitteet ja integraatiot';
 
   @override
+  String get s2b6f77fa62 => 'Lokit ja trendit';
+
+  @override
   String get sca4c8b88b7 => 'Home Assistant: lisää laitteita';
 
   @override
@@ -6778,6 +6787,204 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sa4e9c86a86 => 'Lopeta';
 
   @override
+  String get s9f02ad954d => 'Valvonta päälle';
+
+  @override
+  String get s8352b34316 => 'Valvonta päälle (kotona)';
+
+  @override
+  String get s49e6af4fbd => 'Valvonta pois';
+
+  @override
+  String get s3dfa789b85 => 'HÄLYTYS';
+
+  @override
+  String get s06273ba893 => 'Lähtöviive';
+
+  @override
+  String get sfcf7462d8b => 'Tuloviive';
+
+  @override
+  String get s55142f0816 => 'Hälytys / auki / liike';
+
+  @override
+  String get s6f0481deb7 => 'Rauhallinen / kiinni';
+
+  @override
+  String get s4b77da40d6 => 'Tämä laite (Molaplan)';
+
+  @override
+  String get s1cbfbc5ff7 => 'Poistettu ruutu';
+
+  @override
+  String get s7843a19ea0 => '24 h';
+
+  @override
+  String get s4b87fa9575 => '7 vrk';
+
+  @override
+  String get s1e72f886c1 => '30 vrk';
+
+  @override
+  String get s78266c553c => 'Vain kun arvo muuttuu';
+
+  @override
+  String get sf224f07b80 => 'Muutokset ja vähintään minuutin välein';
+
+  @override
+  String get s41ef71d809 => 'Muutokset ja vähintään 5 min välein';
+
+  @override
+  String get s12e38f800c => 'Muutokset ja vähintään 15 min välein';
+
+  @override
+  String get sa7c19cc4e2 => 'Muutokset ja vähintään kerran tunnissa';
+
+  @override
+  String get sc0d4464ce2 => 'Lokeja voi olla enintään 40.';
+
+  @override
+  String get s7001f80c75 => 'Ei ruutuja, joista voisi kerätä lokia.';
+
+  @override
+  String get s25729ac0be => 'Mistä ruudusta?';
+
+  @override
+  String get se93448dca9 => 'Tapahtumaloki';
+
+  @override
+  String get s79a52f607c =>
+      'Rakenna loki tai trendi mistä tahansa ruudusta: lämpötila, teho, hinta, anturi, rele tai tila. Paina Lisää tai pidä ruutua painettuna ja valitse Lisää loki / trendi.';
+
+  @override
+  String get s4ff01d5c5f => 'säilytys';
+
+  @override
+  String get s11c71ee131 => 'vrk';
+
+  @override
+  String get sbbb938f28f =>
+      'Tiedot tallennetaan tälle laitteelle. Keräys toimii aina, kun Molaplan on käynnissä (myös taustalla Windowsissa ja kotisiltana). Androidilla arvot luetaan lisäksi noin 15 minuutin välein, vaikka sovellus olisi kiinni. Selaimessa keräys toimii vain sivun ollessa auki; hinnat ja laitteet, joilla on oma historia, täydentävät aukot.';
+
+  @override
+  String get s5e9f9fcae5 => 'Uusi loki / trendi';
+
+  @override
+  String get sb0ced9bdb6 => 'Nimi (vapaaehtoinen)';
+
+  @override
+  String get s237da9d739 => 'Kuvaaja';
+
+  @override
+  String get s89fd2c0b0b => 'Viiva';
+
+  @override
+  String get sc18ac46162 => 'Pylväät';
+
+  @override
+  String get se256c45d40 => 'Tallenna';
+
+  @override
+  String get sd185524df1 => 'Mitkä muutokset kirjataan';
+
+  @override
+  String get s0918947c1c => 'Kaikki muutokset';
+
+  @override
+  String get sae3c62f7d0 =>
+      'Arvot tulevat näkyviin, kun ruutu on raportoinut niitä. Kirjaa siihen asti kaikki muutokset.';
+
+  @override
+  String get s16b24be503 => 'Kirjaa kuka / mikä muutti';
+
+  @override
+  String get se2badd71f2 =>
+      'Kun laite kertoo sen (esim. hälytyspaneelin käyttäjä) tai muutos tehtiin tästä sovelluksesta.';
+
+  @override
+  String get s56acf29de0 => 'Näytä ruutuna etusivulla';
+
+  @override
+  String get s40e7046009 => 'Lisäasetukset';
+
+  @override
+  String get s3f5977d9b6 => 'Säilytä tiedot';
+
+  @override
+  String get se668520c52 => 'Oletusaikaväli';
+
+  @override
+  String get s92c8a02204 => 'Ohita pienemmät muutokset kuin';
+
+  @override
+  String get sf84e8b990b =>
+      'Vanhat tiedot tiivistetään: minuutin tarkkuus 6 h, sitten 5 min, 15 min, tunti. Tieto pysyy tällä laitteella; vie CSV, jos haluat sen muualle.';
+
+  @override
+  String get s7036f1191e =>
+      'Enintään 2000 tapahtumaa. Tieto pysyy tällä laitteella; vie CSV, jos haluat sen muualle.';
+
+  @override
+  String get s62cd475497 => 'Vie CSV';
+
+  @override
+  String get sd0271d93a1 => 'CSV viety';
+
+  @override
+  String get sb130aae279 => 'Ruutu lisätty etusivulle';
+
+  @override
+  String get s950023174c => 'Tyhjennetäänkö tiedot?';
+
+  @override
+  String get s5c6181d628 =>
+      'Kerätyt tiedot poistetaan tältä laitteelta. Keräys jatkuu.';
+
+  @override
+  String get s6d02a02a84 => 'Poistetaanko loki?';
+
+  @override
+  String get s352ff3dfcd => 'Loki, sen tiedot ja sen ruutu poistetaan.';
+
+  @override
+  String get s4a997986a1 => 'Loki on poistettu.';
+
+  @override
+  String get s7a0680e628 => 'Tyhjennä tiedot';
+
+  @override
+  String get sdbf5997eb6 => 'Poista loki';
+
+  @override
+  String get s861cfdceb8 =>
+      'Ei vielä tietoja tältä ajalta. Keräys on käynnissä.';
+
+  @override
+  String get saa1ac2854a => 'Min';
+
+  @override
+  String get s3f80c515c3 => 'Max';
+
+  @override
+  String get s0995036cd3 => 'Viimeisin';
+
+  @override
+  String get safecdd6b93 =>
+      'Ei tapahtumia vielä. Loki kirjaa valitut muutokset tästä eteenpäin.';
+
+  @override
+  String get s4ba3b23ae1 => 'Kesti';
+
+  @override
+  String get s5fb1d3d53a => 'Kuka';
+
+  @override
+  String get s23f691770e => 'Kerätään…';
+
+  @override
+  String get s35be191f52 => 'Ei tapahtumia vielä';
+
+  @override
   String get sfe55fd97fa => 'Kaikki rauhallista.';
 
   @override
@@ -7131,9 +7338,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sdfb732c84f => 'Valvonta pois';
 
   @override
-  String get s3dfa789b85 => 'HÄLYTYS';
-
-  @override
   String get s6b2ed1dd31 => 'Päättyi';
 
   @override
@@ -7143,16 +7347,10 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s9909138be0 => 'Syy';
 
   @override
-  String get s5fb1d3d53a => 'Kuka';
-
-  @override
   String get s93b4695981 => 'Valvonta päällä';
 
   @override
   String get s489ed73bfa => 'Valvonta päällä (kotona)';
-
-  @override
-  String get s49e6af4fbd => 'Valvonta pois';
 
   @override
   String get s1ba2cffb00 => 'Lähtöviive – valvonta kytkeytyy';

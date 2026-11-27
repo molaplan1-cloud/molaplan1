@@ -2031,7 +2031,7 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sd8332d82ec => 'Min';
 
   @override
-  String get s109b35551a => 'Max';
+  String get s109b35551a => 'Maks';
 
   @override
   String get sf2c65c5aeb => 'Keskmine';
@@ -2517,6 +2517,12 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s71f145905e => 'Otsetee / jaga';
+
+  @override
+  String get sff8f7a1947 => 'Lisa logi / trend';
+
+  @override
+  String get se893c16dba => 'Logi / trend';
 
   @override
   String get s46d0983ce8 => 'Lisa avaekraanile';
@@ -4782,6 +4788,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sc84689a549 => 'Seadmed ja integratsioonid';
 
   @override
+  String get s2b6f77fa62 => 'Logid ja trendid';
+
+  @override
   String get sca4c8b88b7 => 'Koduabiline: lisa seadmeid';
 
   @override
@@ -6752,6 +6761,203 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sa4e9c86a86 => 'Lõpeta';
 
   @override
+  String get s9f02ad954d => 'Valve sees';
+
+  @override
+  String get s8352b34316 => 'Valve sees (kodus)';
+
+  @override
+  String get s49e6af4fbd => 'Valve väljas';
+
+  @override
+  String get s3dfa789b85 => 'HÄIRE';
+
+  @override
+  String get s06273ba893 => 'Väljumisviivitus';
+
+  @override
+  String get sfcf7462d8b => 'Sisenemisviivitus';
+
+  @override
+  String get s55142f0816 => 'Häire / avatud / liikumine';
+
+  @override
+  String get s6f0481deb7 => 'Rahulik / suletud';
+
+  @override
+  String get s4b77da40d6 => 'See seade (Molaplan)';
+
+  @override
+  String get s1cbfbc5ff7 => 'Eemaldatud kaart';
+
+  @override
+  String get s7843a19ea0 => '24 h';
+
+  @override
+  String get s4b87fa9575 => '7 päeva';
+
+  @override
+  String get s1e72f886c1 => '30 päeva';
+
+  @override
+  String get s78266c553c => 'Ainult kui väärtus muutub';
+
+  @override
+  String get sf224f07b80 => 'Muutused ja vähemalt iga minut';
+
+  @override
+  String get s41ef71d809 => 'Muutused ja vähemalt iga 5 min järel';
+
+  @override
+  String get s12e38f800c => 'Muutused ja vähemalt iga 15 min järel';
+
+  @override
+  String get sa7c19cc4e2 => 'Muutused ja vähemalt kord tunnis';
+
+  @override
+  String get sc0d4464ce2 => 'Logisid võib olla kuni 40.';
+
+  @override
+  String get s7001f80c75 => 'Pole veel kaarte, mida logida.';
+
+  @override
+  String get s25729ac0be => 'Milline kaart?';
+
+  @override
+  String get se93448dca9 => 'Sündmuste logi';
+
+  @override
+  String get s79a52f607c =>
+      'Loo logi või trend mis tahes kaardist: temperatuur, võimsus, hind, andur, relee või olek. Vajuta Lisa või hoia kaarti all ja vali Lisa logi / trend.';
+
+  @override
+  String get s4ff01d5c5f => 'säilitatakse';
+
+  @override
+  String get s11c71ee131 => 'päeva';
+
+  @override
+  String get sbbb938f28f =>
+      'Andmed salvestatakse selles seadmes. Kogumine toimib alati, kui Molaplan töötab (ka Windowsis taustal ja kodusillana). Androidis loetakse väärtusi ka umbes iga 15 minuti järel, kui rakendus on suletud. Brauseris kogutakse andmeid ainult siis, kui leht on avatud; hinnad ja oma ajalooga seadmed täidavad lüngad.';
+
+  @override
+  String get s5e9f9fcae5 => 'Uus logi / trend';
+
+  @override
+  String get sb0ced9bdb6 => 'Nimi (valikuline)';
+
+  @override
+  String get s237da9d739 => 'Graafik';
+
+  @override
+  String get s89fd2c0b0b => 'Joon';
+
+  @override
+  String get sc18ac46162 => 'Tulbad';
+
+  @override
+  String get se256c45d40 => 'Salvesta';
+
+  @override
+  String get sd185524df1 => 'Milliseid muutusi logitakse';
+
+  @override
+  String get s0918947c1c => 'Kõik muutused';
+
+  @override
+  String get sae3c62f7d0 =>
+      'Väärtused ilmuvad siia, kui kaart on neist teatanud. Seni logi kõik muutused.';
+
+  @override
+  String get s16b24be503 => 'Salvesta, kes / mis muutis';
+
+  @override
+  String get se2badd71f2 =>
+      'Kui seade selle teatab (nt valvepaneeli kasutaja) või muudatus tehti sellest rakendusest.';
+
+  @override
+  String get s56acf29de0 => 'Näita kaardina vaates';
+
+  @override
+  String get s40e7046009 => 'Rohkem seadeid';
+
+  @override
+  String get s3f5977d9b6 => 'Säilita andmeid';
+
+  @override
+  String get se668520c52 => 'Vaikimisi ajavahemik';
+
+  @override
+  String get s92c8a02204 => 'Eira väiksemaid muutusi kui';
+
+  @override
+  String get sf84e8b990b =>
+      'Vanemad andmed tihendatakse: 6 h minutitäpsusega, seejärel 5 min, 15 min, 1 tund. Andmed jäävad sellesse seadmesse; ekspordi CSV, et neid mujal kasutada.';
+
+  @override
+  String get s7036f1191e =>
+      'Kuni 2000 sündmust. Andmed jäävad sellesse seadmesse; ekspordi CSV, et neid mujal kasutada.';
+
+  @override
+  String get s62cd475497 => 'Ekspordi CSV';
+
+  @override
+  String get sd0271d93a1 => 'CSV eksporditud';
+
+  @override
+  String get sb130aae279 => 'Kaart lisati vaatesse';
+
+  @override
+  String get s950023174c => 'Kas tühjendada andmed?';
+
+  @override
+  String get s5c6181d628 =>
+      'Kogutud andmed eemaldatakse sellest seadmest. Kogumine jätkub.';
+
+  @override
+  String get s6d02a02a84 => 'Kas kustutada logi?';
+
+  @override
+  String get s352ff3dfcd => 'Logi, selle andmed ja kaart eemaldatakse.';
+
+  @override
+  String get s4a997986a1 => 'Logi on eemaldatud.';
+
+  @override
+  String get s7a0680e628 => 'Tühjenda andmed';
+
+  @override
+  String get sdbf5997eb6 => 'Kustuta logi';
+
+  @override
+  String get s861cfdceb8 => 'Selle ajavahemiku andmeid veel pole. Kogutakse.';
+
+  @override
+  String get saa1ac2854a => 'Min';
+
+  @override
+  String get s3f80c515c3 => 'Maks';
+
+  @override
+  String get s0995036cd3 => 'Viimane';
+
+  @override
+  String get safecdd6b93 =>
+      'Sündmusi veel pole. Logi salvestab valitud muutused nüüdsest alates.';
+
+  @override
+  String get s4ba3b23ae1 => 'Kestis';
+
+  @override
+  String get s5fb1d3d53a => 'Kes';
+
+  @override
+  String get s23f691770e => 'Kogutakse…';
+
+  @override
+  String get s35be191f52 => 'Sündmusi veel pole';
+
+  @override
   String get sfe55fd97fa => 'Kõik on vaikne.';
 
   @override
@@ -7103,9 +7309,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sdfb732c84f => 'Valve välja';
 
   @override
-  String get s3dfa789b85 => 'HÄIRE';
-
-  @override
   String get s6b2ed1dd31 => 'Lõppes';
 
   @override
@@ -7115,16 +7318,10 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s9909138be0 => 'Põhjus';
 
   @override
-  String get s5fb1d3d53a => 'Kes';
-
-  @override
   String get s93b4695981 => 'Valve sees';
 
   @override
   String get s489ed73bfa => 'Valve sees (kodus)';
-
-  @override
-  String get s49e6af4fbd => 'Valve väljas';
 
   @override
   String get s1ba2cffb00 => 'Väljumisviivitus – valve lülitub sisse';

@@ -26,6 +26,7 @@ import 'installer_pages.dart';
 import 'update_ui.dart';
 import '../version.dart';
 import 'language_picker.dart';
+import 'log_pages.dart' show LogsPage;
 
 export '../version.dart' show appVersion;
 
@@ -341,6 +342,17 @@ class _SettingsPageState extends State<SettingsPage> {
                   onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ConnectionsPage())),
                   icon: const Icon(Icons.device_hub),
                   label: Text('${tx(context, 'Yhteydet', 'Connections')} (${st.config.connections.length})'),
+                ),
+              ),
+              const SizedBox(height: 8),
+              // R487 (t312u): logs and trends built from any tile.
+              Align(
+                alignment: Alignment.centerLeft,
+                child: OutlinedButton.icon(
+                  key: const ValueKey('settings-logs'),
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const LogsPage())),
+                  icon: const Icon(Icons.show_chart),
+                  label: Text('${tx(context, 'Lokit ja trendit', 'Logs and trends')} (${st.config.logs.length})'),
                 ),
               ),
               if (haServers(st).isNotEmpty) ...[

@@ -1721,10 +1721,7 @@
  "@sd8332d82ec": {
   "x-mt": true
  },
- "s109b35551a": "Max Max Max Max Max",
- "@s109b35551a": {
-  "x-mt": true
- },
+ "s109b35551a": "Max",
  "sf2c65c5aeb": "Medelvärde",
  "s8653f173b6": "Temperatur",
  "@s8653f173b6": {
@@ -2190,6 +2187,8 @@
  "s29fae6a0e8": "Prisstyrning på",
  "sbfe79d1f5f": "Uppdaterad",
  "s71f145905e": "Genväg / dela",
+ "sff8f7a1947": "Lägg till logg / trend",
+ "se893c16dba": "Logg / trend",
  "s46d0983ce8": "Lägg till på startskärmen",
  "s59d55f8882": "Byt namn",
  "s84ada1ae69": "Ändra PIN",
@@ -4062,9 +4061,6 @@
   "x-mt": true
  },
  "s5c380d76b6": "Senaste",
- "@s5c380d76b6": {
-  "x-mt": true
- },
  "s9d75942e41": "Redo automation",
  "@s9d75942e41": {
   "x-mt": true
@@ -4294,6 +4290,7 @@
  "@sc84689a549": {
   "x-mt": true
  },
+ "s2b6f77fa62": "Loggar och trender",
  "sca4c8b88b7": "Home Assistant: Lägg till enheter",
  "@sca4c8b88b7": {
   "x-mt": true
@@ -6137,6 +6134,72 @@
  "@sa4e9c86a86": {
   "x-mt": true
  },
+ "s9f02ad954d": "Larmat",
+ "s8352b34316": "Larmat (hemma)",
+ "s49e6af4fbd": "Avlarmat",
+ "s3dfa789b85": "LARM",
+ "s06273ba893": "Utpasseringstid",
+ "sfcf7462d8b": "Inpasseringstid",
+ "s55142f0816": "Larm / öppen / rörelse",
+ "s6f0481deb7": "Lugnt / stängd",
+ "s4b77da40d6": "Den här enheten (Molaplan)",
+ "s1cbfbc5ff7": "Borttaget kort",
+ "s7843a19ea0": "24 h",
+ "s4b87fa9575": "7 dygn",
+ "s1e72f886c1": "30 dygn",
+ "s78266c553c": "Bara när värdet ändras",
+ "sf224f07b80": "Ändringar och minst varje minut",
+ "s41ef71d809": "Ändringar och minst var 5:e min",
+ "s12e38f800c": "Ändringar och minst var 15:e min",
+ "sa7c19cc4e2": "Ändringar och minst en gång i timmen",
+ "sc0d4464ce2": "Du kan ha högst 40 loggar.",
+ "s7001f80c75": "Inga kort att logga ännu.",
+ "s25729ac0be": "Vilket kort?",
+ "se93448dca9": "Händelselogg",
+ "s79a52f607c": "Skapa en logg eller trend från vilket kort som helst: temperatur, effekt, pris, sensor, relä eller status. Tryck på Lägg till, eller håll ett kort intryckt och välj Lägg till logg / trend.",
+ "s4ff01d5c5f": "sparas",
+ "s11c71ee131": "dygn",
+ "sbbb938f28f": "Data sparas på den här enheten. Insamlingen pågår när Molaplan körs (även i bakgrunden i Windows och som hembrygga). På Android läses värdena dessutom ungefär var 15:e minut när appen är stängd. I webbläsaren samlas data bara när sidan är öppen; priser och enheter med egen historik fyller luckorna.",
+ "s5e9f9fcae5": "Ny logg / trend",
+ "sb0ced9bdb6": "Namn (valfritt)",
+ "s237da9d739": "Diagram",
+ "s89fd2c0b0b": "Linje",
+ "sc18ac46162": "Staplar",
+ "se256c45d40": "Spara",
+ "sd185524df1": "Vilka ändringar loggas",
+ "s0918947c1c": "Alla ändringar",
+ "sae3c62f7d0": "Värdena visas här när kortet har rapporterat dem. Logga alla ändringar tills dess.",
+ "s16b24be503": "Spara vem / vad som ändrade",
+ "se2badd71f2": "När enheten berättar det (t.ex. larmpanelens användare) eller ändringen gjordes i den här appen.",
+ "s56acf29de0": "Visa som kort i vyn",
+ "s40e7046009": "Fler inställningar",
+ "s3f5977d9b6": "Spara data i",
+ "se668520c52": "Standardintervall",
+ "s92c8a02204": "Ignorera ändringar mindre än",
+ "sf84e8b990b": "Äldre data komprimeras: minutnoggrannhet i 6 h, sedan 5 min, 15 min, 1 timme. Data stannar på den här enheten; exportera CSV för att använda den någon annanstans.",
+ "s7036f1191e": "Högst 2000 händelser. Data stannar på den här enheten; exportera CSV för att använda den någon annanstans.",
+ "s62cd475497": "Exportera CSV",
+ "sd0271d93a1": "CSV exporterad",
+ "sb130aae279": "Kortet lades till i vyn",
+ "s950023174c": "Rensa data?",
+ "s5c6181d628": "Insamlad data tas bort från den här enheten. Insamlingen fortsätter.",
+ "s6d02a02a84": "Ta bort loggen?",
+ "s352ff3dfcd": "Loggen, dess data och dess kort tas bort.",
+ "s4a997986a1": "Loggen har tagits bort.",
+ "s7a0680e628": "Rensa data",
+ "sdbf5997eb6": "Ta bort logg",
+ "s861cfdceb8": "Ingen data för det här intervallet ännu. Samlar in.",
+ "saa1ac2854a": "Min",
+ "s3f80c515c3": "Max",
+ "s0995036cd3": "Senaste",
+ "safecdd6b93": "Inga händelser ännu. Loggen sparar de valda ändringarna från och med nu.",
+ "s4ba3b23ae1": "Varade",
+ "s5fb1d3d53a": "Vem",
+ "s23f691770e": "Samlar in…",
+ "s35be191f52": "Inga händelser ännu",
+ "@s35be191f52": {
+  "x-mt": true
+ },
  "sfe55fd97fa": "All tyst.",
  "@sfe55fd97fa": {
   "x-mt": true
@@ -6487,14 +6550,11 @@
  "s87c07d09ce": "Inga händelser ännu. Loggen samlar på- och avlarmningar samt larm.",
  "s6a2900d1fc": "Larmet på",
  "sdfb732c84f": "Larmet av",
- "s3dfa789b85": "LARM",
  "s6b2ed1dd31": "Slutade",
  "sa7e8a5c23b": "Pågår eller sluttid okänd",
  "s9909138be0": "Orsak",
- "s5fb1d3d53a": "Vem",
  "s93b4695981": "Larmat",
  "s489ed73bfa": "Larmat (hemma)",
- "s49e6af4fbd": "Avlarmat",
  "s1ba2cffb00": "Utpasseringstid – larmet kopplas på",
  "s2b765e2c1f": "Inpasseringstid – ange PIN",
  "s34de2943cc": "LARM!",

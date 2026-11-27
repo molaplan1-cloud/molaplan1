@@ -110,6 +110,11 @@ Future<void> main() async {
     const Duration(minutes: 30),
     (_) => unawaited(backfillAlarmLogs(state.config)),
   );
+  // R482 (t312u): user-built logs and trends collect while the app runs (also in the tray /
+  // as a home bridge); on Android the WorkManager refresh adds samples with the app closed.
+  state.logs.start();
+  unawaited(syncLogBackgroundCollect(state.config.logs.isNotEmpty));
+  state.addListener(() => unawaited(syncLogBackgroundCollect(state.config.logs.isNotEmpty)));
   await DesktopTray.init(state);
   if (state.config.automation.automations.isNotEmpty) {
     unawaited(LocalNotify.askPermission());
@@ -153,6 +158,8 @@ Future<void> widgetRefreshMain() async {
   launcherAppState = () => state;
   try {
     await refreshLauncherWidgets(state);
+    // R482 (t312u): one sample for every log / trend with the app closed.
+    await state.logs.collectOnce();
   } finally {
     try {
       await const MethodChannel(launcherChannelName)

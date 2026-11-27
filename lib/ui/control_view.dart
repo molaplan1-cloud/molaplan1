@@ -1,3 +1,4 @@
+import 'log_pages.dart' show LogsPage;
 import '../state/net_health.dart';
 import 'add_sheet.dart';
 import 'tile_grid.dart';
@@ -217,6 +218,8 @@ class ControlView extends StatelessWidget {
             await Navigator.push(context, MaterialPageRoute(builder: (_) => const SmartHeatingPage()));
           case 'reminders':
             await Navigator.push(context, MaterialPageRoute(builder: (_) => const RemindersPage()));
+          case 'logs':
+            await Navigator.push(context, MaterialPageRoute(builder: (_) => const LogsPage()));
           case 'room-photo':
             await showRoomPhotoSheet(context, st.config.dashboards);
           case 'settings':
@@ -269,6 +272,12 @@ class ControlView extends StatelessWidget {
             const Icon(Icons.notifications_active_outlined),
             Text(tx(c, 'Ilmoitukset ja muistutukset', 'Notifications and reminders')),
           ),
+        ),
+        // R487 (t312u): every user-built log and trend.
+        PopupMenuItem(
+          key: const ValueKey('control-logs'),
+          value: 'logs',
+          child: _item(const Icon(Icons.show_chart), Text(tx(c, 'Lokit ja trendit', 'Logs and trends'))),
         ),
         const PopupMenuDivider(),
         PopupMenuItem(
