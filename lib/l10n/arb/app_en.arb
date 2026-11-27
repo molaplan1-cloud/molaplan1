@@ -718,27 +718,27 @@
  "scb28b11e70": "New dashboard",
  "@scb28b11e70": {
   "description": "fi: Uusi näkymä",
-  "x-where": "ui/home_page.dart:111"
+  "x-where": "ui/home_page.dart:112"
  },
  "s1f9799af4e": "e.g. Cottage",
  "@s1f9799af4e": {
   "description": "fi: esim. Mökki",
-  "x-where": "ui/home_page.dart:112"
+  "x-where": "ui/home_page.dart:113"
  },
  "s3a13f9d077": "Rename dashboard",
  "@s3a13f9d077": {
   "description": "fi: Nimeä näkymä",
-  "x-where": "ui/home_page.dart:124"
+  "x-where": "ui/home_page.dart:125"
  },
  "sa5bf37213b": "Delete dashboard?",
  "@sa5bf37213b": {
   "description": "fi: Poistetaanko näkymä?",
-  "x-where": "ui/home_page.dart:132"
+  "x-where": "ui/home_page.dart:133"
  },
  "s10671afc00": "\"{p0}\" and its {p1} tiles will be deleted.",
  "@s10671afc00": {
   "description": "fi: \"{p0}\" ja sen {p1} ruutua poistetaan.",
-  "x-where": "ui/home_page.dart:133",
+  "x-where": "ui/home_page.dart:134",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -751,12 +751,12 @@
  "sc1845eb440": "Delete",
  "@sc1845eb440": {
   "description": "fi: Poista",
-  "x-where": "ui/home_page.dart:138"
+  "x-where": "ui/home_page.dart:139"
  },
  "s897761b5f4": "Dashboard \"{p0}\" deleted",
  "@s897761b5f4": {
   "description": "fi: Näkymä \"{p0}\" poistettu",
-  "x-where": "ui/home_page.dart:145",
+  "x-where": "ui/home_page.dart:146",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -766,127 +766,127 @@
  "scc5cf9957d": "Choose tile type",
  "@scc5cf9957d": {
   "description": "fi: Valitse ruudun tyyppi",
-  "x-where": "ui/home_page.dart:166"
+  "x-where": "ui/home_page.dart:167"
  },
  "s7cf6340503": "New device with ready tiles",
  "@s7cf6340503": {
   "description": "fi: Uusi laite valmiilla ruuduilla",
-  "x-where": "ui/home_page.dart:172"
+  "x-where": "ui/home_page.dart:173"
  },
  "se6ca707cf3": "Easiest: Shelly, ESP32-CAM, Home Assistant…",
  "@se6ca707cf3": {
   "description": "fi: Helpoin tapa: Shelly, ESP32-CAM, Home Assistant, IV-kone…",
-  "x-where": "ui/home_page.dart:174"
+  "x-where": "ui/home_page.dart:175"
  },
  "s0789f5f14f": "DASHBOARDS",
  "@s0789f5f14f": {
   "description": "fi: NÄKYMÄT",
-  "x-where": "ui/home_page.dart:259"
+  "x-where": "ui/home_page.dart:260"
  },
  "sedb7b77645": "All",
  "@sedb7b77645": {
   "description": "fi: Kaikki",
-  "x-where": "ui/home_page.dart:272"
+  "x-where": "ui/home_page.dart:273"
  },
  "s78d94155f1": "Connections",
  "@s78d94155f1": {
   "description": "fi: Yhteydet",
-  "x-where": "ui/home_page.dart:316"
+  "x-where": "ui/home_page.dart:317"
  },
  "se9ca7cb470": "Automations",
  "@se9ca7cb470": {
   "description": "fi: Automaatiot",
-  "x-where": "ui/home_page.dart:327"
+  "x-where": "ui/home_page.dart:328"
  },
  "s798f7b2876": "Smart heating",
  "@s798f7b2876": {
   "description": "fi: Älykäs lämmitys",
-  "x-where": "ui/home_page.dart:341"
+  "x-where": "ui/home_page.dart:342"
  },
  "s356d822497": "off",
  "@s356d822497": {
   "description": "fi: pois",
-  "x-where": "ui/home_page.dart:345"
+  "x-where": "ui/home_page.dart:346"
  },
  "s41bb837a83": "Notifications and reminders",
  "@s41bb837a83": {
   "description": "fi: Ilmoitukset ja muistutukset",
-  "x-where": "ui/home_page.dart:358"
+  "x-where": "ui/home_page.dart:359"
  },
  "s49de879696": "Energy",
  "@s49de879696": {
   "description": "fi: Energia",
-  "x-where": "ui/home_page.dart:371"
+  "x-where": "ui/home_page.dart:372"
  },
  "s1da81fd6c3": "Settings",
  "@s1da81fd6c3": {
   "description": "fi: Asetukset",
-  "x-where": "ui/home_page.dart:380"
+  "x-where": "ui/home_page.dart:381"
  },
  "s59622d792b": "Rename",
  "@s59622d792b": {
   "description": "fi: Nimeä",
-  "x-where": "ui/home_page.dart:460"
+  "x-where": "ui/home_page.dart:461"
  },
  "sfb3e3c456c": "Delete dashboard",
  "@sfb3e3c456c": {
   "description": "fi: Poista näkymä",
-  "x-where": "ui/home_page.dart:465"
+  "x-where": "ui/home_page.dart:466"
  },
  "s2acab0eccd": "Done",
  "@s2acab0eccd": {
   "description": "fi: Valmis",
-  "x-where": "ui/home_page.dart:473"
+  "x-where": "ui/home_page.dart:474"
  },
  "s187d328bb1": "Edit",
  "@s187d328bb1": {
   "description": "fi: Muokkaa",
-  "x-where": "ui/home_page.dart:477"
+  "x-where": "ui/home_page.dart:478"
  },
  "scdfd80f963": "Add tile",
  "@scdfd80f963": {
   "description": "fi: Lisää ruutu",
-  "x-where": "ui/home_page.dart:489"
+  "x-where": "ui/home_page.dart:490"
  },
  "s5a40f12b6a": "Add",
  "@s5a40f12b6a": {
   "description": "fi: Lisää",
-  "x-where": "ui/home_page.dart:498"
+  "x-where": "ui/home_page.dart:499"
  },
  "s71af34b8e9": "Empty dashboard",
  "@s71af34b8e9": {
   "description": "fi: Tyhjä näkymä",
-  "x-where": "ui/home_page.dart:595"
+  "x-where": "ui/home_page.dart:594"
  },
  "s6a210970eb": "Your device tiles appear here: temperatures, switches, cameras and shortcuts. Start by adding a device.",
  "@s6a210970eb": {
   "description": "fi: Täällä näkyvät laitteidesi ruudut: lämpötilat, kytkimet, kamerat ja pikakomennot. Aloita lisäämällä laite.",
-  "x-where": "ui/home_page.dart:598"
+  "x-where": "ui/home_page.dart:597"
  },
  "s4229fb4103": "Add your first device",
  "@s4229fb4103": {
   "description": "fi: Lisää ensimmäinen laite",
-  "x-where": "ui/home_page.dart:616"
+  "x-where": "ui/home_page.dart:615"
  },
  "s41c3cebc48": "Add device",
  "@s41c3cebc48": {
   "description": "fi: Lisää laite",
-  "x-where": "ui/home_page.dart:617"
+  "x-where": "ui/home_page.dart:616"
  },
  "s147f47be4c": "Add a tile",
  "@s147f47be4c": {
   "description": "fi: Lisää ruutu",
-  "x-where": "ui/home_page.dart:628"
+  "x-where": "ui/home_page.dart:627"
  },
  "sf67e0d5752": "Delete tile?",
  "@sf67e0d5752": {
   "description": "fi: Poistetaanko ruutu?",
-  "x-where": "ui/home_page.dart:787"
+  "x-where": "ui/home_page.dart:784"
  },
  "s97f46743e0": "Tile \"{p0}\" deleted",
  "@s97f46743e0": {
   "description": "fi: Ruutu \"{p0}\" poistettu",
-  "x-where": "ui/home_page.dart:796",
+  "x-where": "ui/home_page.dart:793",
   "placeholders": {
    "p0": {
     "type": "String"
