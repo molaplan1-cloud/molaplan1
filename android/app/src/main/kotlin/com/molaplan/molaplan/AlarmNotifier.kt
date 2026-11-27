@@ -200,7 +200,7 @@ object AlarmNotifier {
      */
     fun post(ctx: Context, notifyId: Int, title: String, body: String, tap: Intent, insistent: Boolean, test: Boolean = false): Boolean {
         val app = ctx.applicationContext
-        val played = AlarmSound.start(app, soundMs(test, insistent))
+        val played = AlarmSound.start(app, soundMs(test, insistent), coalesce = !test)
         try {
             show(app, notifyId, title, body, tap, insistent && !test)
         } catch (e: Exception) {

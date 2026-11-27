@@ -18,9 +18,10 @@ void main() {
   // Titles / priorities / tags seen on a kamera-valvonta panel's reply topics (27.11.2026).
   final panel = <(String, int, List<String>, bool)>[
     ('HÄLYTYS: sisäkamera: ihminen', 5, ['rotating_light'], true),
-    ('Tulo havaittu', 4, ['warning'], true),
-    ('Hälytyskuva – Sisäkamera', 4, ['camera'], true),
-    ('Hälytyskuva – Ulkokamera', 4, ['camera'], true),
+    // t317u: entry delay is not an alarm any more (the real alarm follows it).
+    ('Tulo havaittu', 4, ['warning'], false),
+    ('Hälytyskuva – Sisäkamera', 4, ['camera'], false), // t319u: pictures notify, never ring again
+    ('Hälytyskuva – Ulkokamera', 4, ['camera'], false),
     ('Hälytys kuitattu, valvonta aktiivinen', 4, ['white_check_mark'], false),
     ('Laite käynnistyi uudelleen, valvonta aktiivinen', 4, ['lock'], false),
     ('Valvonta päälle (etä)', 3, ['lock'], false),
@@ -85,10 +86,13 @@ void main() {
     expect(kt, contains('canUseFullScreenIntent'));
     expect(kt, contains('setFullScreenIntent'));
     final svc = File('android/app/src/main/kotlin/com/molaplan/molaplan/NtfyListenService.kt').readAsStringSync();
-    expect(svc, contains('AlarmNotifier.isAlarm'));
     expect(svc, contains('"insistent"'));
-    // Tila JSON never notifies (checked before any alarm rule).
-    expect(svc.indexOf('shouldNotify(event, title, message, tags)'), lessThan(svc.indexOf('AlarmNotifier.isAlarm')));
+    // t319u: the decision moved to NtfyAlarmGate (pure, JVM-tested). Tila JSON never notifies
+    // (checked before any alarm rule).
+    final gate = File('android/app/src/main/kotlin/com/molaplan/molaplan/NtfyAlarmGate.kt').readAsStringSync();
+    expect(svc, contains('NtfyAlarmGate.decide('));
+    expect(gate, contains('AlarmNotifier.isAlarm'));
+    expect(gate.indexOf('shouldNotify(event, title, message, tags)'), lessThan(gate.indexOf('isRealAlarm(rules, topic')));
     final manifest = File('android/app/src/main/AndroidManifest.xml').readAsStringSync();
     expect(manifest, contains('android.permission.ACCESS_NOTIFICATION_POLICY'));
     expect(manifest, contains('android.permission.USE_FULL_SCREEN_INTENT'));

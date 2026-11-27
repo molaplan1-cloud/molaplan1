@@ -73,6 +73,44 @@ object NtfyListenFilter {
     }
 }
 
+/**
+ * R500–R502 (t317u): which ntfy messages notify. Mirrors lib/notify/notify_filter.dart and the
+ * ntfy.molaplan.com Worker. "auto" (default for device topics) = arm, disarm, alarm and alarm end
+ * notify, recognised status/info is silent, the rest notifies at priority >= 3; "security" = only
+ * arm/disarm/alarm; "all" = every human message; "none" = nothing. Silent messages still refresh state.
+ */
+object NtfyNotifyFilter {
+    enum class Kind { ARM, DISARM, ALARM, ALARM_END, STATUS, OTHER }
+
+    private val patterns: List<Pair<Kind, Regex>> = listOf(
+        Kind.ALARM_END to Regex("(hälytys|halytys|alarm|larm|häire|alarma)\\S*\\s*[:,-]?\\s*(kuitattu|päättyi|paattyi|loppui|ohi|pois|cleared|ended|over|stopped|acknowledged|silenced|kvitterat|slut|avslutat|lõppes|kinnitatud|finalizada|terminada|reconocida)|^(kuitattu|alarm cleared|alarm ended|alarm acknowledged)|kesken hälytyksen|during (an )?alarm|under (ett )?larm|häire ajal|durante (la|una) alarma", setOf(RegexOption.IGNORE_CASE)),
+        Kind.DISARM to Regex("^(valvonta|vartiointi|hälytin|halytin)\\s*(pois|poistettu|kytketty pois|off)|^(disarm|alarm (system )?(off|disarmed)|system disarmed|security off|larm(et)?\\s*(av|frånslaget|avaktiverat)|bortalarm av|valve (välja|maas|väljas)|valvest(us)? (välja|maha)|desarmad|alarma desactivada|sistema desarmado)", setOf(RegexOption.IGNORE_CASE)),
+        Kind.ARM to Regex("^(valvonta|vartiointi|hälytin|halytin)\\s*(päälle|paalle|päällä|kytketty|aktiivinen|on\\b)|^(arm(ed|ing)?\\b|alarm (system )?(on|armed)|system armed|security on|larm(et)?\\s*(på|tillslaget|aktiverat)|bortalarm på|valve (sisse|peal)|valvestatud|armad|alarma activada|sistema armado)", setOf(RegexOption.IGNORE_CASE)),
+        Kind.STATUS to Regex("^(tila( json)?|status( json)?|state|heartbeat|syke|keepalive|ping|info|ei muutosta|no change|ingen ändring|muutust pole|sin cambios|meno\\b|tulo\\b|tulo havaittu|lähtöviive|lahtoviive|tuloviive|poistumisviive|exit delay|entry delay|arrival|departure|utpasseringsfördröjning|inpasseringsfördröjning|väljumisviivitus|sisenemisviivitus|retardo de (salida|entrada)|pelote|deterr|päivitys|paivitys|update|uppdatering|uuendus|actualización|sisävalo|pihavalo|valo\\b|light\\b|laite käynnistyi|device restarted|rebooted|käynnistyi uudelleen)", setOf(RegexOption.IGNORE_CASE)),
+        Kind.ALARM to Regex("(hälytys|halytys|\\balarm\\b|\\blarm\\b|häire|alarma|intrusion|intrång|sissetung|intrusión|burglar|murto|sireeni päällä|siren on)", setOf(RegexOption.IGNORE_CASE)),
+    )
+
+    fun classify(title: String, message: String, tags: List<String>): Kind {
+        val t = title.trim()
+        if (t.equals("tila json", ignoreCase = true)) return Kind.STATUS
+        for (text in listOf(t, message.trim())) {
+            if (text.isEmpty()) continue
+            for ((kind, re) in patterns) if (re.containsMatchIn(text)) return kind
+        }
+        if (tags.any { it.trim().lowercase() in setOf("rotating_light", "rotating-light", "sos") }) return Kind.ALARM
+        return Kind.OTHER
+    }
+
+    fun allows(mode: String, title: String, message: String, tags: List<String>, prio: Int = 3): Boolean {
+        if (mode == "none") return false
+        if (mode == "all") return true
+        val kind = classify(title, message, tags)
+        if (kind in setOf(Kind.ARM, Kind.DISARM, Kind.ALARM, Kind.ALARM_END)) return true
+        if (mode == "security" || kind == Kind.STATUS) return false
+        return prio >= 3 // "auto": unrecognised messages of generic devices still notify
+    }
+}
+
 class NtfyListenService : Service() {
     @Volatile private var stop = false
     @Volatile private var generation = 0
@@ -149,7 +187,9 @@ class NtfyListenService : Service() {
         while (!stop && gen == generation && !Thread.currentThread().isInterrupted) {
             var conn: HttpURLConnection? = null
             try {
-                val since = lastId(t) ?: (System.currentTimeMillis() / 1000).toString()
+                // t319u: resume from the last real message's time (an unknown id made the server
+                // replay its whole cache); first run = from now (no backfill).
+                val since = lastTime(t)?.toString() ?: (System.currentTimeMillis() / 1000).toString()
                 val url = URL("${t.server}/${t.topic}/json?since=$since")
                 conn = (url.openConnection() as HttpURLConnection).apply {
                     connectTimeout = 15000
@@ -193,34 +233,45 @@ class NtfyListenService : Service() {
     }
 
     private fun handleLine(t: Topic, line: String) {
-        val j = try { JSONObject(line) } catch (_: Exception) { return }
-        val event = j.optString("event", "message")
-        val id = j.optString("id", "")
-        if (id.isNotEmpty()) saveLastId(t, id)
-        if (event != "message") return
+        val rules = config().optJSONObject("alarm")
+        // t319u: replay-safe decision (old / seen messages and control events never notify).
+        val d = NtfyAlarmGate.decide(line, t.topic, t.filter, rules, System.currentTimeMillis() / 1000) { isSeen(it) }
+        if (d.action == NtfyAlarmGate.Action.IGNORE) return
+        // Only real messages move the resume point (never open/keepalive ids, see NtfyAlarmGate).
+        if (d.cursorId != null) saveCursor(t, d.cursorId, d.cursorTime)
         // t290u: status widgets refresh on any ntfy message, including silent Tila JSON.
         LauncherBridge.onIncoming(applicationContext)
-        val title = j.optString("title", "")
-        val message = j.optString("message", "")
-        val tags = mutableListOf<String>()
-        val ta = j.optJSONArray("tags")
-        if (ta != null) for (i in 0 until ta.length()) tags.add(ta.optString(i))
-        if (!NtfyListenFilter.shouldNotify(event, title, message, tags)) return
-        if (id.isNotEmpty() && !seenIds.add(id)) return
-        trimSeen()
-        val prio = j.optInt("priority", 3).coerceIn(1, 5)
-        // R461 (t307u): real alarms (priority 5, alarm words / tags, per-topic setting) go to the
-        // loud alarm channel and pass quiet hours like urgent messages.
-        val rules = config().optJSONObject("alarm")
-        val alarm = AlarmNotifier.isAlarm(rules, t.topic, title, tags, prio)
-        if (!allowedByQuiet(if (alarm) 5 else prio)) return
+        if (d.action == NtfyAlarmGate.Action.STATE_ONLY) {
+            if (d.reason.startsWith("old")) android.util.Log.i("MolaplanNtfy", "${t.topic}: ${d.id} ${d.reason} – no notification")
+            return
+        }
+        markSeen(d.id)
+        val alarm = d.action == NtfyAlarmGate.Action.ALARM
+        // R461 (t307u): real alarms go to the loud alarm channel and pass quiet hours like urgent messages.
+        if (!allowedByQuiet(if (alarm) 5 else d.prio)) return
         // Flutter already shows in-app banners for the automation topic while the UI is open
         // (an alarm still sounds – the banner is silent).
         if (t.kind == "notify" && appForeground && !alarm) return
         postNotification(
-            title.ifBlank { "Molaplan" }, message, prio, j.optString("click", ""),
+            d.title.ifBlank { "Molaplan" }, d.message, d.prio, d.click,
             alarm, rules?.optBoolean("insistent", false) ?: false
         )
+    }
+
+    /** Seen ids survive restarts and reinstalls (t319u). */
+    private fun isSeen(id: String): Boolean {
+        if (seenIds.contains(id)) return true
+        val raw = getSharedPreferences(PREFS, MODE_PRIVATE).getString(KEY_SEEN, "") ?: ""
+        return raw.split(',').contains(id)
+    }
+
+    private fun markSeen(id: String) {
+        if (id.isEmpty()) return
+        seenIds.add(id)
+        trimSeen()
+        val sp = getSharedPreferences(PREFS, MODE_PRIVATE)
+        val list = (sp.getString(KEY_SEEN, "") ?: "").split(',').filter { it.isNotEmpty() && it != id }.takeLast(199) + id
+        sp.edit().putString(KEY_SEEN, list.joinToString(",")).apply()
     }
 
     private fun allowedByQuiet(prio: Int): Boolean {
@@ -324,7 +375,7 @@ class NtfyListenService : Service() {
         }
     }
 
-    data class Topic(val server: String, val topic: String, val token: String, val kind: String)
+    data class Topic(val server: String, val topic: String, val token: String, val kind: String, val filter: String = "auto")
 
     private fun config(): JSONObject {
         val raw = getSharedPreferences(PREFS, MODE_PRIVATE).getString(KEY_CONFIG, "{}") ?: "{}"
@@ -340,29 +391,38 @@ class NtfyListenService : Service() {
             val topic = o.optString("topic").trim()
             if (server.isEmpty() || topic.isEmpty()) continue
             if (NtfyListenFilter.isCommandTopic(topic)) continue
-            out.add(Topic(server, topic, o.optString("token"), o.optString("kind", "device")))
+            val kind = o.optString("kind", "device")
+            val filter = o.optString("filter", "").ifBlank { if (kind == "notify") "all" else "auto" }
+            out.add(Topic(server, topic, o.optString("token"), kind, filter))
         }
         return out
     }
 
-    private fun lastId(t: Topic): String? {
-        val raw = getSharedPreferences(PREFS, MODE_PRIVATE).getString(KEY_IDS, "{}") ?: "{}"
+    private fun lastTime(t: Topic): Long? {
+        val raw = getSharedPreferences(PREFS, MODE_PRIVATE).getString(KEY_CURSOR, "{}") ?: "{}"
         val j = try { JSONObject(raw) } catch (_: Exception) { return null }
-        val id = j.optString("${t.server}|${t.topic}", "")
-        return id.ifEmpty { null }
+        val v = j.optLong("${t.server}|${t.topic}", 0L)
+        return if (v > 0) v else null
     }
 
-    private fun saveLastId(t: Topic, id: String) {
+    private fun saveCursor(t: Topic, id: String, time: Long) {
+        if (time <= 0) return
         val sp = getSharedPreferences(PREFS, MODE_PRIVATE)
-        val j = try { JSONObject(sp.getString(KEY_IDS, "{}") ?: "{}") } catch (_: Exception) { JSONObject() }
-        j.put("${t.server}|${t.topic}", id)
-        sp.edit().putString(KEY_IDS, j.toString()).apply()
+        val j = try { JSONObject(sp.getString(KEY_CURSOR, "{}") ?: "{}") } catch (_: Exception) { JSONObject() }
+        val key = "${t.server}|${t.topic}"
+        if (time < j.optLong(key, 0L)) return
+        j.put(key, time)
+        val ids = try { JSONObject(sp.getString(KEY_IDS, "{}") ?: "{}") } catch (_: Exception) { JSONObject() }
+        ids.put(key, id)
+        sp.edit().putString(KEY_CURSOR, j.toString()).putString(KEY_IDS, ids.toString()).apply()
     }
 
     companion object {
         const val PREFS = "molaplan_ntfy_listen"
         const val KEY_CONFIG = "config"
         const val KEY_IDS = "last_ids"
+        const val KEY_CURSOR = "last_times"
+        const val KEY_SEEN = "seen_ids"
         const val KEY_FG = "app_fg"
         const val KEY_BATTERY_ASKED = "battery_asked"
         const val CH_LISTEN = "ntfy_listen"

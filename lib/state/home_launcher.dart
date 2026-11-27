@@ -369,6 +369,16 @@ Future<void> loadWatchedTiles() async {
   if (r is List) _watched.addAll(r.map((e) => "$e"));
 }
 
+bool? _logCollect;
+
+/// R482 (t312u): Android – keep the 15-minute WorkManager refresh running while there are
+/// user logs / trends, even without home-screen widgets (it reads the logged tiles once).
+Future<void> syncLogBackgroundCollect(bool on) async {
+  if (!launcherSupported || _logCollect == on) return;
+  _logCollect = on;
+  await _invoke<dynamic>('logCollect', {'on': on});
+}
+
 Future<void> scheduleLauncherRefresh() async {
   await _invoke<dynamic>('scheduleRefresh', {'minutes': launcherRefreshMinutes});
 }

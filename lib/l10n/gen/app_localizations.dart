@@ -2162,6 +2162,72 @@ abstract class AppLocalizations {
   /// **'Open full Molaplan'**
   String get s6659f500d5;
 
+  /// fi: Kaikki
+  ///
+  /// In en, this message translates to:
+  /// **'Everything'**
+  String get s3ac2079668;
+
+  /// fi: Ei mitään
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing'**
+  String get sc45a6d2e30;
+
+  /// fi: Vain valvonta ja hälytykset
+  ///
+  /// In en, this message translates to:
+  /// **'Only arming and alarms'**
+  String get s08541d02f1;
+
+  /// fi: Automaattinen (suositus)
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic (recommended)'**
+  String get s92f67aa475;
+
+  /// fi: Lisäasetukset: mistä tulee ilmoitus
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced: what notifies'**
+  String get sd506bb5c34;
+
+  /// fi: Molaplan lukee kaikki viestit (tila, syke, viiveet, vastaukset), mutta ilmoittaa oletuksena vain valvonnan kytkemisestä
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan reads every message (status, heartbeat, delays, replies) but by default only notifies when monitoring is armed or disarmed, about alarms and about other devices\'\' ordinary messages. The same choice applies to the iPhone ntfy app when the server supports it (ntfy.molaplan.com).'**
+  String get s57cfeb1fe7;
+
+  /// fi: Ei kuunneltavia aiheita
+  ///
+  /// In en, this message translates to:
+  /// **'No topics to listen to'**
+  String get sa7251b3fca;
+
+  /// fi: Molaplanin omat ilmoitukset
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan\'\'s own notifications'**
+  String get s6f3a092e07;
+
+  /// fi: Laitteen vastaukset
+  ///
+  /// In en, this message translates to:
+  /// **'Device replies'**
+  String get sba0a4fbaba;
+
+  /// fi: Tallennettu, myös palvelimelle (iPhone)
+  ///
+  /// In en, this message translates to:
+  /// **'Saved, also on the server (iPhone)'**
+  String get sdf08a348ba;
+
+  /// fi: Tallennettu tähän sovellukseen
+  ///
+  /// In en, this message translates to:
+  /// **'Saved in this app'**
+  String get s6b8c0469dc;
+
   /// fi: Kopioitu
   ///
   /// In en, this message translates to:
@@ -4621,6 +4687,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Shortcut / share'**
   String get s71f145905e;
+
+  /// fi: Lisää loki / trendi
+  ///
+  /// In en, this message translates to:
+  /// **'Add log / trend'**
+  String get sff8f7a1947;
+
+  /// fi: Loki / trendi
+  ///
+  /// In en, this message translates to:
+  /// **'Log / trend'**
+  String get se893c16dba;
 
   /// fi: Lisää aloitusnäytölle
   ///
@@ -8805,6 +8883,12 @@ abstract class AppLocalizations {
   /// **'Devices and integrations'**
   String get sc84689a549;
 
+  /// fi: Lokit ja trendit
+  ///
+  /// In en, this message translates to:
+  /// **'Logs and trends'**
+  String get s2b6f77fa62;
+
   /// fi: Home Assistant: lisää laitteita
   ///
   /// In en, this message translates to:
@@ -12453,6 +12537,378 @@ abstract class AppLocalizations {
   /// **'Quit'**
   String get sa4e9c86a86;
 
+  /// fi: Valvonta päälle
+  ///
+  /// In en, this message translates to:
+  /// **'Armed'**
+  String get s9f02ad954d;
+
+  /// fi: Valvonta päälle (kotona)
+  ///
+  /// In en, this message translates to:
+  /// **'Armed (at home)'**
+  String get s8352b34316;
+
+  /// fi: Valvonta pois
+  ///
+  /// In en, this message translates to:
+  /// **'Disarmed'**
+  String get s49e6af4fbd;
+
+  /// fi: HÄLYTYS
+  ///
+  /// In en, this message translates to:
+  /// **'ALARM'**
+  String get s3dfa789b85;
+
+  /// fi: Lähtöviive
+  ///
+  /// In en, this message translates to:
+  /// **'Exit delay'**
+  String get s06273ba893;
+
+  /// fi: Tuloviive
+  ///
+  /// In en, this message translates to:
+  /// **'Entry delay'**
+  String get sfcf7462d8b;
+
+  /// fi: Hälytys / auki / liike
+  ///
+  /// In en, this message translates to:
+  /// **'Alarm / open / motion'**
+  String get s55142f0816;
+
+  /// fi: Rauhallinen / kiinni
+  ///
+  /// In en, this message translates to:
+  /// **'Calm / closed'**
+  String get s6f0481deb7;
+
+  /// fi: Tämä laite (Molaplan)
+  ///
+  /// In en, this message translates to:
+  /// **'This device (Molaplan)'**
+  String get s4b77da40d6;
+
+  /// fi: Poistettu ruutu
+  ///
+  /// In en, this message translates to:
+  /// **'Removed tile'**
+  String get s1cbfbc5ff7;
+
+  /// fi: 24 h
+  ///
+  /// In en, this message translates to:
+  /// **'24 h'**
+  String get s7843a19ea0;
+
+  /// fi: 7 vrk
+  ///
+  /// In en, this message translates to:
+  /// **'7 days'**
+  String get s4b87fa9575;
+
+  /// fi: 30 vrk
+  ///
+  /// In en, this message translates to:
+  /// **'30 days'**
+  String get s1e72f886c1;
+
+  /// fi: Vain kun arvo muuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'Only when the value changes'**
+  String get s78266c553c;
+
+  /// fi: Muutokset ja vähintään minuutin välein
+  ///
+  /// In en, this message translates to:
+  /// **'Changes and at least every minute'**
+  String get sf224f07b80;
+
+  /// fi: Muutokset ja vähintään 5 min välein
+  ///
+  /// In en, this message translates to:
+  /// **'Changes and at least every 5 min'**
+  String get s41ef71d809;
+
+  /// fi: Muutokset ja vähintään 15 min välein
+  ///
+  /// In en, this message translates to:
+  /// **'Changes and at least every 15 min'**
+  String get s12e38f800c;
+
+  /// fi: Muutokset ja vähintään kerran tunnissa
+  ///
+  /// In en, this message translates to:
+  /// **'Changes and at least hourly'**
+  String get sa7c19cc4e2;
+
+  /// fi: Lokeja voi olla enintään 40.
+  ///
+  /// In en, this message translates to:
+  /// **'You can have at most 40 logs.'**
+  String get sc0d4464ce2;
+
+  /// fi: Ei ruutuja, joista voisi kerätä lokia.
+  ///
+  /// In en, this message translates to:
+  /// **'No tiles to log yet.'**
+  String get s7001f80c75;
+
+  /// fi: Mistä ruudusta?
+  ///
+  /// In en, this message translates to:
+  /// **'Which tile?'**
+  String get s25729ac0be;
+
+  /// fi: Tapahtumaloki
+  ///
+  /// In en, this message translates to:
+  /// **'Event log'**
+  String get se93448dca9;
+
+  /// fi: Rakenna loki tai trendi mistä tahansa ruudusta: lämpötila, teho, hinta, anturi, rele tai tila. Paina Lisää tai pidä ruut
+  ///
+  /// In en, this message translates to:
+  /// **'Build a log or trend from any tile: temperature, power, price, sensor, relay or state. Tap Add, or long-press a tile and choose Add log / trend.'**
+  String get s79a52f607c;
+
+  /// fi: säilytys
+  ///
+  /// In en, this message translates to:
+  /// **'kept'**
+  String get s4ff01d5c5f;
+
+  /// fi: vrk
+  ///
+  /// In en, this message translates to:
+  /// **'days'**
+  String get s11c71ee131;
+
+  /// fi: Tiedot tallennetaan tälle laitteelle. Keräys toimii aina, kun Molaplan on käynnissä (myös taustalla Windowsissa ja kotis
+  ///
+  /// In en, this message translates to:
+  /// **'Data is stored on this device. Collection runs whenever Molaplan runs (also in the background on Windows and as a home bridge). On Android values are also read about every 15 minutes with the app closed. In the browser collection runs only while the page is open; prices and devices with their own history fill the gaps.'**
+  String get sbbb938f28f;
+
+  /// fi: Uusi loki / trendi
+  ///
+  /// In en, this message translates to:
+  /// **'New log / trend'**
+  String get s5e9f9fcae5;
+
+  /// fi: Nimi (vapaaehtoinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Name (optional)'**
+  String get sb0ced9bdb6;
+
+  /// fi: Kuvaaja
+  ///
+  /// In en, this message translates to:
+  /// **'Chart'**
+  String get s237da9d739;
+
+  /// fi: Viiva
+  ///
+  /// In en, this message translates to:
+  /// **'Line'**
+  String get s89fd2c0b0b;
+
+  /// fi: Tallenna
+  ///
+  /// In en, this message translates to:
+  /// **'Record'**
+  String get se256c45d40;
+
+  /// fi: Mitkä muutokset kirjataan
+  ///
+  /// In en, this message translates to:
+  /// **'Which changes are logged'**
+  String get sd185524df1;
+
+  /// fi: Kaikki muutokset
+  ///
+  /// In en, this message translates to:
+  /// **'Every change'**
+  String get s0918947c1c;
+
+  /// fi: Arvot tulevat näkyviin, kun ruutu on raportoinut niitä. Kirjaa siihen asti kaikki muutokset.
+  ///
+  /// In en, this message translates to:
+  /// **'Values appear here once the tile has reported them. Until then log every change.'**
+  String get sae3c62f7d0;
+
+  /// fi: Kirjaa kuka / mikä muutti
+  ///
+  /// In en, this message translates to:
+  /// **'Record who / what changed it'**
+  String get s16b24be503;
+
+  /// fi: Kun laite kertoo sen (esim. hälytyspaneelin käyttäjä) tai muutos tehtiin tästä sovelluksesta.
+  ///
+  /// In en, this message translates to:
+  /// **'When the device tells (e.g. the alarm panel user) or the change was made from this app.'**
+  String get se2badd71f2;
+
+  /// fi: Näytä ruutuna etusivulla
+  ///
+  /// In en, this message translates to:
+  /// **'Show as a tile on the dashboard'**
+  String get s56acf29de0;
+
+  /// fi: Lisäasetukset
+  ///
+  /// In en, this message translates to:
+  /// **'More settings'**
+  String get s40e7046009;
+
+  /// fi: Säilytä tiedot
+  ///
+  /// In en, this message translates to:
+  /// **'Keep data for'**
+  String get s3f5977d9b6;
+
+  /// fi: Oletusaikaväli
+  ///
+  /// In en, this message translates to:
+  /// **'Default range'**
+  String get se668520c52;
+
+  /// fi: Ohita pienemmät muutokset kuin
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore changes smaller than'**
+  String get s92c8a02204;
+
+  /// fi: Vanhat tiedot tiivistetään: minuutin tarkkuus 6 h, sitten 5 min, 15 min, tunti. Tieto pysyy tällä laitteella; vie CSV, j
+  ///
+  /// In en, this message translates to:
+  /// **'Older data is condensed: 1-minute detail for 6 h, then 5 min, 15 min, 1 hour. Data stays on this device; export CSV to use it elsewhere.'**
+  String get sf84e8b990b;
+
+  /// fi: Enintään 2000 tapahtumaa. Tieto pysyy tällä laitteella; vie CSV, jos haluat sen muualle.
+  ///
+  /// In en, this message translates to:
+  /// **'At most 2000 events. Data stays on this device; export CSV to use it elsewhere.'**
+  String get s7036f1191e;
+
+  /// fi: Vie CSV
+  ///
+  /// In en, this message translates to:
+  /// **'Export CSV'**
+  String get s62cd475497;
+
+  /// fi: CSV viety
+  ///
+  /// In en, this message translates to:
+  /// **'CSV exported'**
+  String get sd0271d93a1;
+
+  /// fi: Ruutu lisätty etusivulle
+  ///
+  /// In en, this message translates to:
+  /// **'Tile added to the dashboard'**
+  String get sb130aae279;
+
+  /// fi: Tyhjennetäänkö tiedot?
+  ///
+  /// In en, this message translates to:
+  /// **'Clear the data?'**
+  String get s950023174c;
+
+  /// fi: Kerätyt tiedot poistetaan tältä laitteelta. Keräys jatkuu.
+  ///
+  /// In en, this message translates to:
+  /// **'The collected data is removed from this device. Collection continues.'**
+  String get s5c6181d628;
+
+  /// fi: Poistetaanko loki?
+  ///
+  /// In en, this message translates to:
+  /// **'Delete the log?'**
+  String get s6d02a02a84;
+
+  /// fi: Loki, sen tiedot ja sen ruutu poistetaan.
+  ///
+  /// In en, this message translates to:
+  /// **'The log, its data and its tile are removed.'**
+  String get s352ff3dfcd;
+
+  /// fi: Loki on poistettu.
+  ///
+  /// In en, this message translates to:
+  /// **'The log was removed.'**
+  String get s4a997986a1;
+
+  /// fi: Tyhjennä tiedot
+  ///
+  /// In en, this message translates to:
+  /// **'Clear data'**
+  String get s7a0680e628;
+
+  /// fi: Poista loki
+  ///
+  /// In en, this message translates to:
+  /// **'Delete log'**
+  String get sdbf5997eb6;
+
+  /// fi: Ei vielä tietoja tältä ajalta. Keräys on käynnissä.
+  ///
+  /// In en, this message translates to:
+  /// **'No data for this range yet. Collecting.'**
+  String get s861cfdceb8;
+
+  /// fi: Min
+  ///
+  /// In en, this message translates to:
+  /// **'Min'**
+  String get saa1ac2854a;
+
+  /// fi: Max
+  ///
+  /// In en, this message translates to:
+  /// **'Max'**
+  String get s3f80c515c3;
+
+  /// fi: Viimeisin
+  ///
+  /// In en, this message translates to:
+  /// **'Latest'**
+  String get s0995036cd3;
+
+  /// fi: Ei tapahtumia vielä. Loki kirjaa valitut muutokset tästä eteenpäin.
+  ///
+  /// In en, this message translates to:
+  /// **'No events yet. The log records the chosen changes from now on.'**
+  String get safecdd6b93;
+
+  /// fi: Kesti
+  ///
+  /// In en, this message translates to:
+  /// **'Lasted'**
+  String get s4ba3b23ae1;
+
+  /// fi: Kuka
+  ///
+  /// In en, this message translates to:
+  /// **'Who'**
+  String get s5fb1d3d53a;
+
+  /// fi: Kerätään…
+  ///
+  /// In en, this message translates to:
+  /// **'Collecting…'**
+  String get s23f691770e;
+
+  /// fi: Ei tapahtumia vielä
+  ///
+  /// In en, this message translates to:
+  /// **'No events yet'**
+  String get s35be191f52;
+
   /// fi: Kaikki rauhallista.
   ///
   /// In en, this message translates to:
@@ -13043,12 +13499,6 @@ abstract class AppLocalizations {
   /// **'Monitoring off'**
   String get sdfb732c84f;
 
-  /// fi: HÄLYTYS
-  ///
-  /// In en, this message translates to:
-  /// **'ALARM'**
-  String get s3dfa789b85;
-
   /// fi: Päättyi
   ///
   /// In en, this message translates to:
@@ -13067,12 +13517,6 @@ abstract class AppLocalizations {
   /// **'Cause'**
   String get s9909138be0;
 
-  /// fi: Kuka
-  ///
-  /// In en, this message translates to:
-  /// **'Who'**
-  String get s5fb1d3d53a;
-
   /// fi: Valvonta päällä
   ///
   /// In en, this message translates to:
@@ -13084,12 +13528,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Armed (at home)'**
   String get s489ed73bfa;
-
-  /// fi: Valvonta pois
-  ///
-  /// In en, this message translates to:
-  /// **'Disarmed'**
-  String get s49e6af4fbd;
 
   /// fi: Lähtöviive – valvonta kytkeytyy
   ///
@@ -13174,6 +13612,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The command reached the ntfy server, but no reply came from the device. Check the connection\'\'s \"Reply topic\" – the device may answer on your own notification topic – and that the device is online.'**
   String get s7aa9e16c41;
+
+  /// fi: Hälytys on päällä – kuittaa hälytys ensin
+  ///
+  /// In en, this message translates to:
+  /// **'The alarm is on – acknowledge the alarm first'**
+  String get sa6d9ad626d;
+
+  /// fi: Laite ei salli tätä komentoa hälytyksen aikana. Kuittaa hälytys ensin – kuittaus sammuttaa myös sireenin.
+  ///
+  /// In en, this message translates to:
+  /// **'The device does not allow this command during an alarm. Acknowledge the alarm first – that also turns the siren off.'**
+  String get s40ddc7d4c4;
 
   /// fi: Sisävaloa ei seurata eikä ohjata päivällä. Valo ei ole pois – se ei ole seurannassa.
   ///

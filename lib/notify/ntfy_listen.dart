@@ -9,10 +9,17 @@ import '../core/plat.dart';
 import '../drivers/ntfy_driver.dart';
 import '../models/models.dart';
 import '../ui/notify.dart';
+import 'notify_filter.dart';
 
 /// One ntfy topic the Android foreground service should stream.
 class NtfyListenTarget {
-  const NtfyListenTarget({required this.server, required this.topic, this.token = '', this.kind = 'device'});
+  const NtfyListenTarget({
+    required this.server,
+    required this.topic,
+    this.token = '',
+    this.kind = 'device',
+    this.filter = 'auto',
+  });
 
   final String server;
   final String topic;
@@ -22,7 +29,10 @@ class NtfyListenTarget {
   /// `device` = a command-device reply topic (human alarms such as HÄLYTYS).
   final String kind;
 
-  Map<String, String> toJson() => {'server': server, 'topic': topic, 'token': token, 'kind': kind};
+  /// R501 (t317u): which messages notify ('auto' | 'security' | 'all' | 'none'); the rest only update state.
+  final String filter;
+
+  Map<String, String> toJson() => {'server': server, 'topic': topic, 'token': token, 'kind': kind, 'filter': filter};
 
   String get key => '${server.toLowerCase()}|${topic.toLowerCase()}';
 }
@@ -89,7 +99,13 @@ List<NtfyListenTarget> ntfyListenTargets({
     if (srv.isEmpty || top.isEmpty) return;
     if (ntfyListenIsCommandTopic(top)) return;
     srv = srv.replaceAll(RegExp(r'/+$'), '');
-    final t = NtfyListenTarget(server: srv, topic: top, token: token, kind: kind);
+    final t = NtfyListenTarget(
+      server: srv,
+      topic: top,
+      token: token,
+      kind: kind,
+      filter: notify?.filterFor(top, kind: kind) ?? notifyFilterDefault(kind),
+    );
     if (!seen.add(t.key)) return;
     out.add(t);
   }

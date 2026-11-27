@@ -1132,6 +1132,40 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s6659f500d5 => 'Öppna hela Molaplan';
 
   @override
+  String get s3ac2079668 => 'Allt';
+
+  @override
+  String get sc45a6d2e30 => 'Inget';
+
+  @override
+  String get s08541d02f1 => 'Endast till-/frånkoppling och larm';
+
+  @override
+  String get s92f67aa475 => 'Automatiskt (rekommenderas)';
+
+  @override
+  String get sd506bb5c34 => 'Avancerat: vad som ger avisering';
+
+  @override
+  String get s57cfeb1fe7 =>
+      'Molaplan läser alla meddelanden (status, puls, fördröjningar, svar) men aviserar som standard bara när larmet kopplas till eller från, om larm och om andra enheters vanliga meddelanden. Samma val gäller ntfy-appen på iPhone om servern stöder det (ntfy.molaplan.com).';
+
+  @override
+  String get sa7251b3fca => 'Inga ämnen att lyssna på';
+
+  @override
+  String get s6f3a092e07 => 'Molaplans egna aviseringar';
+
+  @override
+  String get sba0a4fbaba => 'Enhetens svar';
+
+  @override
+  String get sdf08a348ba => 'Sparat, även på servern (iPhone)';
+
+  @override
+  String get s6b8c0469dc => 'Sparat i den här appen';
+
+  @override
   String get sd9762f0556 => 'Kopierat';
 
   @override
@@ -2020,7 +2054,7 @@ class AppLocalizationsSv extends AppLocalizations {
       'Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min Min';
 
   @override
-  String get s109b35551a => 'Max Max Max Max Max';
+  String get s109b35551a => 'Max';
 
   @override
   String get sf2c65c5aeb => 'Medelvärde';
@@ -2507,6 +2541,12 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s71f145905e => 'Genväg / dela';
+
+  @override
+  String get sff8f7a1947 => 'Lägg till logg / trend';
+
+  @override
+  String get se893c16dba => 'Logg / trend';
 
   @override
   String get s46d0983ce8 => 'Lägg till på startskärmen';
@@ -4788,6 +4828,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sc84689a549 => 'Enheter och integrationer';
 
   @override
+  String get s2b6f77fa62 => 'Loggar och trender';
+
+  @override
   String get sca4c8b88b7 => 'Home Assistant: Lägg till enheter';
 
   @override
@@ -6801,6 +6844,201 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sa4e9c86a86 => 'Quit';
 
   @override
+  String get s9f02ad954d => 'Larmat';
+
+  @override
+  String get s8352b34316 => 'Larmat (hemma)';
+
+  @override
+  String get s49e6af4fbd => 'Avlarmat';
+
+  @override
+  String get s3dfa789b85 => 'LARM';
+
+  @override
+  String get s06273ba893 => 'Utpasseringstid';
+
+  @override
+  String get sfcf7462d8b => 'Inpasseringstid';
+
+  @override
+  String get s55142f0816 => 'Larm / öppen / rörelse';
+
+  @override
+  String get s6f0481deb7 => 'Lugnt / stängd';
+
+  @override
+  String get s4b77da40d6 => 'Den här enheten (Molaplan)';
+
+  @override
+  String get s1cbfbc5ff7 => 'Borttaget kort';
+
+  @override
+  String get s7843a19ea0 => '24 h';
+
+  @override
+  String get s4b87fa9575 => '7 dygn';
+
+  @override
+  String get s1e72f886c1 => '30 dygn';
+
+  @override
+  String get s78266c553c => 'Bara när värdet ändras';
+
+  @override
+  String get sf224f07b80 => 'Ändringar och minst varje minut';
+
+  @override
+  String get s41ef71d809 => 'Ändringar och minst var 5:e min';
+
+  @override
+  String get s12e38f800c => 'Ändringar och minst var 15:e min';
+
+  @override
+  String get sa7c19cc4e2 => 'Ändringar och minst en gång i timmen';
+
+  @override
+  String get sc0d4464ce2 => 'Du kan ha högst 40 loggar.';
+
+  @override
+  String get s7001f80c75 => 'Inga kort att logga ännu.';
+
+  @override
+  String get s25729ac0be => 'Vilket kort?';
+
+  @override
+  String get se93448dca9 => 'Händelselogg';
+
+  @override
+  String get s79a52f607c =>
+      'Skapa en logg eller trend från vilket kort som helst: temperatur, effekt, pris, sensor, relä eller status. Tryck på Lägg till, eller håll ett kort intryckt och välj Lägg till logg / trend.';
+
+  @override
+  String get s4ff01d5c5f => 'sparas';
+
+  @override
+  String get s11c71ee131 => 'dygn';
+
+  @override
+  String get sbbb938f28f =>
+      'Data sparas på den här enheten. Insamlingen pågår när Molaplan körs (även i bakgrunden i Windows och som hembrygga). På Android läses värdena dessutom ungefär var 15:e minut när appen är stängd. I webbläsaren samlas data bara när sidan är öppen; priser och enheter med egen historik fyller luckorna.';
+
+  @override
+  String get s5e9f9fcae5 => 'Ny logg / trend';
+
+  @override
+  String get sb0ced9bdb6 => 'Namn (valfritt)';
+
+  @override
+  String get s237da9d739 => 'Diagram';
+
+  @override
+  String get s89fd2c0b0b => 'Linje';
+
+  @override
+  String get se256c45d40 => 'Spara';
+
+  @override
+  String get sd185524df1 => 'Vilka ändringar loggas';
+
+  @override
+  String get s0918947c1c => 'Alla ändringar';
+
+  @override
+  String get sae3c62f7d0 =>
+      'Värdena visas här när kortet har rapporterat dem. Logga alla ändringar tills dess.';
+
+  @override
+  String get s16b24be503 => 'Spara vem / vad som ändrade';
+
+  @override
+  String get se2badd71f2 =>
+      'När enheten berättar det (t.ex. larmpanelens användare) eller ändringen gjordes i den här appen.';
+
+  @override
+  String get s56acf29de0 => 'Visa som kort i vyn';
+
+  @override
+  String get s40e7046009 => 'Fler inställningar';
+
+  @override
+  String get s3f5977d9b6 => 'Spara data i';
+
+  @override
+  String get se668520c52 => 'Standardintervall';
+
+  @override
+  String get s92c8a02204 => 'Ignorera ändringar mindre än';
+
+  @override
+  String get sf84e8b990b =>
+      'Äldre data komprimeras: minutnoggrannhet i 6 h, sedan 5 min, 15 min, 1 timme. Data stannar på den här enheten; exportera CSV för att använda den någon annanstans.';
+
+  @override
+  String get s7036f1191e =>
+      'Högst 2000 händelser. Data stannar på den här enheten; exportera CSV för att använda den någon annanstans.';
+
+  @override
+  String get s62cd475497 => 'Exportera CSV';
+
+  @override
+  String get sd0271d93a1 => 'CSV exporterad';
+
+  @override
+  String get sb130aae279 => 'Kortet lades till i vyn';
+
+  @override
+  String get s950023174c => 'Rensa data?';
+
+  @override
+  String get s5c6181d628 =>
+      'Insamlad data tas bort från den här enheten. Insamlingen fortsätter.';
+
+  @override
+  String get s6d02a02a84 => 'Ta bort loggen?';
+
+  @override
+  String get s352ff3dfcd => 'Loggen, dess data och dess kort tas bort.';
+
+  @override
+  String get s4a997986a1 => 'Loggen har tagits bort.';
+
+  @override
+  String get s7a0680e628 => 'Rensa data';
+
+  @override
+  String get sdbf5997eb6 => 'Ta bort logg';
+
+  @override
+  String get s861cfdceb8 =>
+      'Ingen data för det här intervallet ännu. Samlar in.';
+
+  @override
+  String get saa1ac2854a => 'Min';
+
+  @override
+  String get s3f80c515c3 => 'Max';
+
+  @override
+  String get s0995036cd3 => 'Senaste';
+
+  @override
+  String get safecdd6b93 =>
+      'Inga händelser ännu. Loggen sparar de valda ändringarna från och med nu.';
+
+  @override
+  String get s4ba3b23ae1 => 'Varade';
+
+  @override
+  String get s5fb1d3d53a => 'Vem';
+
+  @override
+  String get s23f691770e => 'Samlar in…';
+
+  @override
+  String get s35be191f52 => 'Inga händelser ännu';
+
+  @override
   String get sfe55fd97fa => 'All tyst.';
 
   @override
@@ -7153,9 +7391,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sdfb732c84f => 'Larmet av';
 
   @override
-  String get s3dfa789b85 => 'LARM';
-
-  @override
   String get s6b2ed1dd31 => 'Slutade';
 
   @override
@@ -7165,16 +7400,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s9909138be0 => 'Orsak';
 
   @override
-  String get s5fb1d3d53a => 'Vem';
-
-  @override
   String get s93b4695981 => 'Larmat';
 
   @override
   String get s489ed73bfa => 'Larmat (hemma)';
-
-  @override
-  String get s49e6af4fbd => 'Avlarmat';
 
   @override
   String get s1ba2cffb00 => 'Utpasseringstid – larmet kopplas på';
@@ -7219,6 +7448,13 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s7aa9e16c41 =>
       'Kommandot nådde ntfy-servern, men inget svar kom från enheten. Kontrollera anslutningens \"Reply-ämne\" - enheten kan svara på ditt eget anmälningsämne - och att enheten är online.';
+
+  @override
+  String get sa6d9ad626d => 'Larmet är på – kvittera larmet först';
+
+  @override
+  String get s40ddc7d4c4 =>
+      'Enheten tillåter inte detta kommando under ett larm. Kvittera larmet först – det stänger även av sirenen.';
 
   @override
   String get sb7b4d4f624 =>

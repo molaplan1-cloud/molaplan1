@@ -83,6 +83,7 @@ Object cloudMapped(Object e, String type) {
       low.contains('laite vastasi:') ||
       low.contains('the device answered:') ||
       low.contains('day_blocked') ||
+      low.contains('alarm_active') ||
       low.contains('ei sallittu päivällä')) {
     return e;
   }
@@ -175,6 +176,7 @@ ErrorKind classifyError(Object e) {
     return ErrorKind.noResponse;
   }
   if (s.contains('day_blocked') ||
+      s.contains('alarm_active') ||
       s.contains('ei sallittu päivällä') ||
       s.contains('laite vastasi:') ||
       s.contains('the device answered:')) {
@@ -306,6 +308,18 @@ FriendlyError friendlyError(Object e, String lang) {
       t(
         'Komento lähti ntfy-palvelimelle, mutta laitteen vastausta ei tullut. Tarkista yhteyden "Vastauskanava" – laite voi vastata omaan ilmoituskanavaasi – ja että laite on verkossa.',
         'The command reached the ntfy server, but no reply came from the device. Check the connection\'s "Reply topic" – the device may answer on your own notification topic – and that the device is online.',
+      ),
+      tech,
+    );
+  }
+  // R509 (t320u): a device refused a command because an alarm is on (err alarm_active).
+  if (tech.contains('alarm_active')) {
+    return FriendlyError(
+      ErrorKind.deviceError,
+      t('Hälytys on päällä – kuittaa hälytys ensin', 'The alarm is on – acknowledge the alarm first'),
+      t(
+        'Laite ei salli tätä komentoa hälytyksen aikana. Kuittaa hälytys ensin – kuittaus sammuttaa myös sireenin.',
+        'The device does not allow this command during an alarm. Acknowledge the alarm first – that also turns the siren off.',
       ),
       tech,
     );

@@ -16,7 +16,10 @@ import java.util.concurrent.TimeUnit
 /** t290u: at least every 15 minutes, re-read widget tiles through Dart. */
 class WidgetRefreshWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, params) {
     override fun doWork(): Result {
-        if (!LauncherBridge.hasWidgets(applicationContext)) return Result.success()
+        // R482 (t312u): also runs for user logs / trends (Dart reads the logged tiles once).
+        if (!LauncherBridge.hasWidgets(applicationContext) && !LauncherBridge.collectsLogs(applicationContext)) {
+            return Result.success()
+        }
         val existing = FlutterEngineCache.getInstance().get(EngineHolder.ID)
         if (existing != null) return invokeRefresh(existing, destroy = false)
         return runEntrypoint()
@@ -70,6 +73,7 @@ class WidgetRefreshWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, 
                             result.success(mapOf("ok" to true))
                         }
                         "watched" -> result.success(LauncherBridge.watchedIds(app))
+                        "logCollect" -> result.success(mapOf("ok" to true))
                         "scheduleRefresh" -> {
                             LauncherBridge.schedulePeriodic(app)
                             result.success(mapOf("ok" to true))

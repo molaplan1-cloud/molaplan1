@@ -1143,6 +1143,40 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s6659f500d5 => 'Abrir Molaplan completo';
 
   @override
+  String get s3ac2079668 => 'Todo';
+
+  @override
+  String get sc45a6d2e30 => 'Nada';
+
+  @override
+  String get s08541d02f1 => 'Solo armado/desarmado y alarmas';
+
+  @override
+  String get s92f67aa475 => 'Automático (recomendado)';
+
+  @override
+  String get sd506bb5c34 => 'Avanzado: qué genera notificación';
+
+  @override
+  String get s57cfeb1fe7 =>
+      'Molaplan lee todos los mensajes (estado, latido, retardos, respuestas), pero por defecto solo notifica cuando la vigilancia se arma o desarma, las alarmas y los mensajes normales de otros dispositivos. La misma opción se aplica a la app ntfy del iPhone si el servidor lo admite (ntfy.molaplan.com).';
+
+  @override
+  String get sa7251b3fca => 'No hay temas que escuchar';
+
+  @override
+  String get s6f3a092e07 => 'Notificaciones propias de Molaplan';
+
+  @override
+  String get sba0a4fbaba => 'Respuestas del dispositivo';
+
+  @override
+  String get sdf08a348ba => 'Guardado, también en el servidor (iPhone)';
+
+  @override
+  String get s6b8c0469dc => 'Guardado en esta app';
+
+  @override
   String get sd9762f0556 => 'Copiado';
 
   @override
@@ -2044,7 +2078,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sd8332d82ec => 'Min';
 
   @override
-  String get s109b35551a => 'Max';
+  String get s109b35551a => 'Máx';
 
   @override
   String get sf2c65c5aeb => 'Promedio';
@@ -2534,6 +2568,12 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s71f145905e => 'Atajo / compartir';
+
+  @override
+  String get sff8f7a1947 => 'Añadir registro / tendencia';
+
+  @override
+  String get se893c16dba => 'Registro / tendencia';
 
   @override
   String get s46d0983ce8 => 'Añadir a la pantalla de inicio';
@@ -4589,7 +4629,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s58a8bfdd9f => 'Test enviado';
 
   @override
-  String get s5c380d76b6 => 'Últimas';
+  String get s5c380d76b6 => 'Último';
 
   @override
   String get s9d75942e41 => 'Automatización lista';
@@ -4828,6 +4868,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sc84689a549 => 'Dispositivos e integraciones';
+
+  @override
+  String get s2b6f77fa62 => 'Registros y tendencias';
 
   @override
   String get sca4c8b88b7 => 'Home Assistant: añadir dispositivos';
@@ -6858,6 +6901,200 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sa4e9c86a86 => 'Quit';
 
   @override
+  String get s9f02ad954d => 'Armada';
+
+  @override
+  String get s8352b34316 => 'Armada (en casa)';
+
+  @override
+  String get s49e6af4fbd => 'Desarmada';
+
+  @override
+  String get s3dfa789b85 => 'ALARMA';
+
+  @override
+  String get s06273ba893 => 'Retardo de salida';
+
+  @override
+  String get sfcf7462d8b => 'Retardo de entrada';
+
+  @override
+  String get s55142f0816 => 'Alarma / abierto / movimiento';
+
+  @override
+  String get s6f0481deb7 => 'En calma / cerrado';
+
+  @override
+  String get s4b77da40d6 => 'Este dispositivo (Molaplan)';
+
+  @override
+  String get s1cbfbc5ff7 => 'Tarjeta eliminada';
+
+  @override
+  String get s7843a19ea0 => '24 h';
+
+  @override
+  String get s4b87fa9575 => '7 días';
+
+  @override
+  String get s1e72f886c1 => '30 días';
+
+  @override
+  String get s78266c553c => 'Solo cuando cambia el valor';
+
+  @override
+  String get sf224f07b80 => 'Cambios y como mínimo cada minuto';
+
+  @override
+  String get s41ef71d809 => 'Cambios y como mínimo cada 5 min';
+
+  @override
+  String get s12e38f800c => 'Cambios y como mínimo cada 15 min';
+
+  @override
+  String get sa7c19cc4e2 => 'Cambios y como mínimo cada hora';
+
+  @override
+  String get sc0d4464ce2 => 'Puedes tener como máximo 40 registros.';
+
+  @override
+  String get s7001f80c75 => 'Aún no hay tarjetas que registrar.';
+
+  @override
+  String get s25729ac0be => '¿Qué tarjeta?';
+
+  @override
+  String get se93448dca9 => 'Registro de eventos';
+
+  @override
+  String get s79a52f607c =>
+      'Crea un registro o una tendencia desde cualquier tarjeta: temperatura, potencia, precio, sensor, relé o estado. Pulsa Añadir, o mantén pulsada una tarjeta y elige Añadir registro / tendencia.';
+
+  @override
+  String get s4ff01d5c5f => 'se guarda';
+
+  @override
+  String get s11c71ee131 => 'días';
+
+  @override
+  String get sbbb938f28f =>
+      'Los datos se guardan en este dispositivo. La recogida funciona siempre que Molaplan esté en marcha (también en segundo plano en Windows y como puente doméstico). En Android los valores también se leen cada 15 minutos aproximadamente con la app cerrada. En el navegador solo se recogen mientras la página está abierta; los precios y los dispositivos con historial propio rellenan los huecos.';
+
+  @override
+  String get s5e9f9fcae5 => 'Nuevo registro / tendencia';
+
+  @override
+  String get sb0ced9bdb6 => 'Nombre (opcional)';
+
+  @override
+  String get s237da9d739 => 'Gráfico';
+
+  @override
+  String get s89fd2c0b0b => 'Línea';
+
+  @override
+  String get se256c45d40 => 'Guardar';
+
+  @override
+  String get sd185524df1 => 'Qué cambios se registran';
+
+  @override
+  String get s0918947c1c => 'Todos los cambios';
+
+  @override
+  String get sae3c62f7d0 =>
+      'Los valores aparecen aquí cuando la tarjeta los haya enviado. Hasta entonces registra todos los cambios.';
+
+  @override
+  String get s16b24be503 => 'Guardar quién / qué lo cambió';
+
+  @override
+  String get se2badd71f2 =>
+      'Cuando el dispositivo lo indica (p. ej., el usuario del panel de alarma) o el cambio se hizo desde esta app.';
+
+  @override
+  String get s56acf29de0 => 'Mostrar como tarjeta en la vista';
+
+  @override
+  String get s40e7046009 => 'Más ajustes';
+
+  @override
+  String get s3f5977d9b6 => 'Guardar datos durante';
+
+  @override
+  String get se668520c52 => 'Intervalo predeterminado';
+
+  @override
+  String get s92c8a02204 => 'Ignorar cambios menores que';
+
+  @override
+  String get sf84e8b990b =>
+      'Los datos antiguos se condensan: detalle de 1 minuto durante 6 h, luego 5 min, 15 min, 1 hora. Los datos se quedan en este dispositivo; exporta CSV para usarlos en otro lugar.';
+
+  @override
+  String get s7036f1191e =>
+      'Como máximo 2000 eventos. Los datos se quedan en este dispositivo; exporta CSV para usarlos en otro lugar.';
+
+  @override
+  String get s62cd475497 => 'Exportar CSV';
+
+  @override
+  String get sd0271d93a1 => 'CSV exportado';
+
+  @override
+  String get sb130aae279 => 'Tarjeta añadida a la vista';
+
+  @override
+  String get s950023174c => '¿Borrar los datos?';
+
+  @override
+  String get s5c6181d628 =>
+      'Los datos recogidos se eliminan de este dispositivo. La recogida continúa.';
+
+  @override
+  String get s6d02a02a84 => '¿Eliminar el registro?';
+
+  @override
+  String get s352ff3dfcd => 'Se eliminan el registro, sus datos y su tarjeta.';
+
+  @override
+  String get s4a997986a1 => 'El registro se ha eliminado.';
+
+  @override
+  String get s7a0680e628 => 'Borrar datos';
+
+  @override
+  String get sdbf5997eb6 => 'Eliminar registro';
+
+  @override
+  String get s861cfdceb8 => 'Aún no hay datos para este intervalo. Recogiendo.';
+
+  @override
+  String get saa1ac2854a => 'Min';
+
+  @override
+  String get s3f80c515c3 => 'Máx';
+
+  @override
+  String get s0995036cd3 => 'Último';
+
+  @override
+  String get safecdd6b93 =>
+      'Aún no hay eventos. El registro guarda los cambios elegidos a partir de ahora.';
+
+  @override
+  String get s4ba3b23ae1 => 'Duró';
+
+  @override
+  String get s5fb1d3d53a => 'Quién';
+
+  @override
+  String get s23f691770e => 'Recogiendo…';
+
+  @override
+  String get s35be191f52 => 'Aún no hay eventos';
+
+  @override
   String get sfe55fd97fa => 'Todo tranquilo.';
 
   @override
@@ -7211,9 +7448,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sdfb732c84f => 'Vigilancia desactivada';
 
   @override
-  String get s3dfa789b85 => 'ALARMA';
-
-  @override
   String get s6b2ed1dd31 => 'Terminó';
 
   @override
@@ -7223,16 +7457,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s9909138be0 => 'Causa';
 
   @override
-  String get s5fb1d3d53a => 'Quién';
-
-  @override
   String get s93b4695981 => 'Armada';
 
   @override
   String get s489ed73bfa => 'Armada (en casa)';
-
-  @override
-  String get s49e6af4fbd => 'Desarmada';
 
   @override
   String get s1ba2cffb00 => 'Retardo de salida: armando';
@@ -7277,6 +7505,13 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s7aa9e16c41 =>
       'El comando alcanzó el servidor ntfy, pero ninguna respuesta vino del dispositivo. Compruebe el \"tópico de respuesta\" de la conexión – el dispositivo puede responder en su propio tema de notificación – y que el dispositivo está en línea.';
+
+  @override
+  String get sa6d9ad626d => 'La alarma está activa: reconoce primero la alarma';
+
+  @override
+  String get s40ddc7d4c4 =>
+      'El dispositivo no permite este comando durante una alarma. Reconoce primero la alarma; eso también apaga la sirena.';
 
   @override
   String get sb7b4d4f624 =>

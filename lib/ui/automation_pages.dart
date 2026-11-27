@@ -19,6 +19,7 @@ import 'duplicate_check.dart';
 import 'icons.dart';
 import 'notify_prefs.dart';
 import 'alarm_notify_page.dart';
+import 'notify_filter_section.dart';
 import '../notify/event_prefs.dart';
 
 List<TileConfig> _allTiles(AppState st) => [for (final d in st.config.dashboards) ...d.tiles];
@@ -2155,6 +2156,8 @@ class NotifySettingsView extends StatelessWidget {
           trailing: const Icon(Icons.chevron_right),
           onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AlarmNotifyPage())),
         ),
+        // R501 (t317u): which ntfy messages notify (advanced, hidden).
+        const NotifyFilterSection(),
         const Divider(height: 28),
         GlobalNotifyPrefsSection(
           values: notifyEventsFrom(n.events),

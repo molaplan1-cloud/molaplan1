@@ -3,10 +3,12 @@
 /// not tied to one device. Mirrored in android/…/AlarmNotifier.kt isAlarm().
 library;
 
+import 'notify_filter.dart';
+
 /// Title words (lower case, substring). fi / en / sv / et / es.
 const defaultAlarmKeywords = <String>[
   'hälytys',
-  'tulo havaittu',
+  // t317u: 'tulo havaittu' (entry delay) is no longer an alarm – the real alarm follows it.
   'murto',
   'palohälytys',
   'alarm',
@@ -33,6 +35,13 @@ const defaultAlarmExclude = <String>[
   'kvitterad',
   'kinnitatud',
   'reconocida',
+  // t319u: alarm pictures follow the alarm – they notify but never ring the alarm again.
+  'hälytyskuva',
+  'alarm picture',
+  'alarm image',
+  'larmbild',
+  'häirepilt',
+  'imagen de alarma',
 ];
 
 /// ntfy tags (emoji short codes) that mark an alarm.
@@ -135,6 +144,7 @@ bool alarmMatches(
   required String title,
   required int priority,
   List<String> tags = const [],
+  String message = '',
 }) {
   if (!r.enabled) return false;
   switch (r.topics[topic] ?? 'auto') {
@@ -142,6 +152,12 @@ bool alarmMatches(
       return false;
     case 'always':
       return true;
+  }
+  // t319u: arming, disarming, alarm end and status replies are never alarms (NtfyAlarmGate.isRealAlarm).
+  switch (classifyNtfyMessage(title, message, tags: tags)) {
+    case NotifyKind.arm || NotifyKind.disarm || NotifyKind.alarmEnd || NotifyKind.status:
+      return false;
+    default:
   }
   if (r.urgentIsAlarm && priority >= 5) return true;
   final t = title.toLowerCase();

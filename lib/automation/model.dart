@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import '../notify/alarm_rules.dart';
+import '../notify/notify_filter.dart';
 import 'reminders.dart';
 
 Map<String, dynamic> _m(Object? o) => o is Map ? Map<String, dynamic>.from(o) : <String, dynamic>{};
@@ -196,9 +197,11 @@ class NotifySettings {
     this.enabled = true,
     Map<String, int>? events,
     AlarmRules? alarm,
+    Map<String, String>? filters,
   }) : topic = topic ?? 'molaplan-${_rand(20)}',
        events = events ?? {},
-       alarm = alarm ?? AlarmRules();
+       alarm = alarm ?? AlarmRules(),
+       filters = filters ?? {};
   String server;
   String topic;
   String? token;
@@ -208,6 +211,17 @@ class NotifySettings {
 
   /// R461 (t307u): which messages use the loud alarm channel (Android).
   AlarmRules alarm;
+
+  /// R501 (t317u): per listened topic, which messages notify: 'auto' | 'security' | 'all' |
+  /// 'none'. Missing = [notifyFilterDefault] for the topic's kind (device reply topics: 'auto' =
+  /// arm, disarm and alarms; recognised status / info silent).
+  Map<String, String> filters;
+
+  /// The notification choice for one listened topic.
+  String filterFor(String topic, {String kind = 'device'}) {
+    final v = filters[topic];
+    return v != null && notifyFilterModes.contains(v) ? v : notifyFilterDefault(kind);
+  }
 
   /// Quiet hours 'HH:MM' (may wrap midnight): only priority 5 (urgent) comes through.
   String? quietFrom, quietTo;
@@ -234,6 +248,7 @@ class NotifySettings {
     if (!enabled) 'enabled': false,
     if (events.isNotEmpty) 'events': events,
     if (!alarm.isDefault) 'alarm': alarm.toJson(),
+    if (filters.isNotEmpty) 'filters': filters,
   };
   factory NotifySettings.fromJson(Map<String, dynamic> j) => NotifySettings(
     server: '${j['server'] ?? 'https://ntfy.sh'}',
@@ -248,6 +263,10 @@ class NotifySettings {
         if (e.value is num) '${e.key}': (e.value as num).toInt(),
     },
     alarm: AlarmRules.fromJson(j['alarm']),
+    filters: {
+      for (final e in ((j['filters'] as Map?) ?? const {}).entries)
+        if (notifyFilterModes.contains('${e.value}')) '${e.key}': '${e.value}',
+    },
   );
 }
 
