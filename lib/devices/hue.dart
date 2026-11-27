@@ -4,6 +4,7 @@ library;
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import '../core/io_http.dart';
 
 import '../models/models.dart';
 import 'sensors.dart';
@@ -24,7 +25,7 @@ Future<Candidate?> probeHueAt(HttpClient c, String ip) async {
 
 /// Hue's own "where is my bridge" service (returns the bridge's LAN address).
 Future<List<Candidate>> hueCloudDiscovery() async {
-  final c = HttpClient()..connectionTimeout = const Duration(seconds: 4);
+  final c = requireIoHttpClient(timeout: const Duration(seconds: 4));
   try {
     final j = await probeJson(c, Uri.parse('https://discovery.meethue.com/'), timeout: const Duration(seconds: 5));
     return [
