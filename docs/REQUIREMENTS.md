@@ -227,6 +227,37 @@ Source = the request id (tNNNu) or the brief/round it came from. Version = the r
 | R265 | Persistent small banner in guest mode: data is only in this browser, with a sign-in-to-sync action (not dismissible). The remote-only notice (R253) and the invitation to request the PC app or a ready-programmed Android device stay. | t266u | Done (widget tests) | 0.14.0 |
 | R266 | When a guest signs in or creates an account, the local setup can move to the account: an empty account receives it automatically; if the account already has a setup the user is asked whether to combine both (recommended), keep the account's, or keep this browser's (which replaces the account). Nothing is silently overwritten. Cancelling signs out but keeps the browser's guest setup (no wipe). | t266u | Done (widget tests) | 0.14.0 |
 | R267 | Guests have 'Poista selaimen tiedot' in Settings: after confirmation it wipes the same data as signing out (setup, secrets, key, guest flag) and returns to the intro. | t266u | Done (widget tests) | 0.14.0 |
+## Heat pumps – built-in integrations (t267u–t270u)
+| ID | Requirement | Source | Status | Version |
+|---|---|---|---|---|
+| R268 | Own device integrations without Home Assistant: brands are learned from open-source HA integrations/libraries but re-written in Dart (no GPL code copied, licences checked, docs/THIRD-PARTY-NOTICES.md); local protocols preferred over cloud; generic (no test-home devices or addresses); HA bridge stays an optional extra | t267u, t268u | Done | 0.15.0 |
+| R269 | Daikin local Wi-Fi: BRP069A/B (HTTP), BRP072C (HTTPS + key from the sticker, terminal registration), Airbase BRP15B61 (/skyfi); automatic variant detection; per-mode setpoints kept; UDP discovery (port 30050) | t269u | Done (mock adapter + UDP tests; untested on hardware) | 0.15.0 |
+| R270 | Mitsubishi Heavy Smart M-Air / WF-RAC local API (port 51443): state frame decode/encode with CRC, app registers itself in the module (clear message when the account table is full), mDNS discovery | t269u | Done (CRC/frame + mock module tests; untested on hardware) | 0.15.0 |
+| R271 | Mitsubishi Electric MELCloud (cloud): air-to-air and Ecodan air-to-water (zone 1 + hot water reading), automatic re-login | t269u | Done (mock API; untested against MELCloud) | 0.15.0 |
+| R272 | Toshiba Home AC Control (cloud): REST login/state, commands over the Azure IoT Hub MQTT like the phone app | t269u | Done (mock REST + test MQTT broker; untested against Toshiba) | 0.15.0 |
+| R273 | Samsung via the official SmartThings API (personal access token; the 24 h token limit is explained, OAuth later) | t269u | Done (mock API; untested against SmartThings) | 0.15.0 |
+| R274 | Hitachi room air conditioners via airCloud Go / AirCloud Home (cloud, global or Japan region) | t269u | Done (mock API; untested against airCloud) | 0.15.0 |
+| R275 | NIBE via the official myUplink API (user's own client ID/secret from dev.myuplink.com): readings, room setpoint or heating-curve offset | t269u | Done (mock API; untested against myUplink) | 0.15.0 |
+| R276 | NIBE over local Modbus TCP: S-series register map from NIBE's manual (documented), F-series + MODBUS 40 map marked 'verify'; import of the pump's own register export (CSV) for any model | t269u | Done (Modbus simulator + CSV tests; untested on hardware) | 0.15.0 |
+| R277 | Thermia Genesis (Atlas, Calibra, Diplomat Inverter, Mega) over local Modbus TCP from Thermia's protocol document: readings, comfort setpoint, on/off | t269u | Done (Modbus simulator; untested on hardware) | 0.15.0 |
+| R278 | Common heat pump tile: current/target temperature, mode, fan, on/off; ground-source pumps show the curve offset; one tile per unit by default, extra tiles (on/off, setpoint, outdoor, supply, hot water, compressor…) offered unticked for automations | t269u | Done (widget tests) | 0.15.0 |
+| R279 | Add-device flow: one 'Lämpöpumppu' card in the gallery → brand sheet (local, cloud, IR, service port, HA, 'why not yet' list) → wizard with discovery (Daikin UDP, MHI mDNS) or login; main view stays simple, advanced fields hidden | t269u | Done (widget tests) | 0.15.0 |
+| R280 | Cloud credentials only in the device's secure storage / the user's E2E vault, sent only to the manufacturer; never to Molaplan servers | t269u | Done | 0.15.0 |
+| R281 | IR for any brand without Wi-Fi: Tasmota IRhvac / ESPHome full-state sending (existing R054/R192); the learn flow is now called 'Opeta uusi komento' / 'Teach a new command' (IR and RF433, e.g. Athom IR & RF bridge) | t269u | Done | 0.15.0 |
+| R282 | Heat pump readings usable in automations (value tiles + hp set commands through the same driver, also via the home bridge 0.15.0+) | t269u | Done (unit tests) | 0.15.0 |
+| R283 | Every built-in heat pump protocol marked untested on hardware in the code, docs/HEATPUMPS.md and the release notes until confirmed on a real unit | t269u | Done | 0.15.0 |
+| R284 | Thermia Online (cloud) – not built: unofficial API behind a changing Azure B2C login, reference library GPL; Modbus covers Genesis models | t269u | Later | – |
+| R285 | Daikin Onecta cloud / new BRP069C firmware – not built: needs a Daikin developer agreement, new firmware has no local API (IR / ESPHome meanwhile) | t269u | Later | – |
+| R286 | Hitachi Yutaki (air-to-water) – needs the ATW-MBS-02 Modbus gateway; Samsung local API needs a per-device certificate; Panasonic, LG, Gree, Midea next | t269u | Later | – |
+
+## Next device batches (t270u)
+| ID | Requirement | Source | Status | Version |
+|---|---|---|---|---|
+| R287 | Next batch: Shelly (local, all generations) and Powerant (Tuya local protocol) | t270u | Planned | next |
+| R288 | Solar inverters: Huawei, Fronius, SolarEdge, Growatt, SMA (local Modbus/HTTP first) | t270u | Planned | later |
+| R289 | EV chargers: OCPP, Easee, Zaptec, Wallbox | t270u | Planned | later |
+| R290 | Other common devices in Finland after that; Home Assistant bridge kept as an optional extra | t267u, t270u | Planned | later |
+
 ## Process
 | ID | Requirement | Source | Status | Version |
 |---|---|---|---|---|

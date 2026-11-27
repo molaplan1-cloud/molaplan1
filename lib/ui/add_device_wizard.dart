@@ -22,6 +22,7 @@ IconData providerIcon(DeviceProvider p) => switch (p.category) {
   'hub' => Icons.hub_outlined,
   'cloud' => Icons.cloud_outlined,
   'camera' => Icons.videocam_outlined,
+  'climate' => Icons.heat_pump_outlined,
   _ => Icons.power_outlined,
 };
 
@@ -31,6 +32,7 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
   'shelly_cloud' => const Color(0xFF7E57C2),
   'sonoff' => const Color(0xFF1E88E5),
   _ when p.category == 'camera' => const Color(0xFF5C6BC0),
+  _ when p.category == 'climate' => const Color(0xFFFF7043),
   _ => const Color(0xFF26A69A),
 };
 

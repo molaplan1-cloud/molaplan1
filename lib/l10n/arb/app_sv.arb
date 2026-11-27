@@ -1629,7 +1629,10 @@
  "@s0d353281af": {
   "x-mt": true
  },
- "s8e4e78e067": "Lär in fjärrkontroll",
+ "sd2a872d1ba": "Lär ett nytt kommando",
+ "@sd2a872d1ba": {
+  "x-mt": true
+ },
  "s2acab0eccd": "Klar",
  "s608a56ad4b": "Spara fjärrknappar till Molaplan, t.ex. \"Turbo\". Blastaren behöver en IR-mottagare.",
  "@s608a56ad4b": {
@@ -2231,7 +2234,41 @@
  "sd032c3efec": "Auto",
  "s9db8aefc43": "Avfuktning",
  "s0117dea8bc": "Fläkt",
+ "sb680eb3021": "Tyst",
+ "@sb680eb3021": {
+  "x-mt": true
+ },
+ "s4299eb9d18": "Låg",
+ "@s4299eb9d18": {
+  "x-mt": true
+ },
+ "s90ba0c57d4": "Medium-low",
+ "@s90ba0c57d4": {
+  "x-mt": true
+ },
+ "s0cb68026a7": "Medium",
+ "@s0cb68026a7": {
+  "x-mt": true
+ },
+ "s9c5e4ed5cb": "Medium-hög",
+ "@s9c5e4ed5cb": {
+  "x-mt": true
+ },
+ "s688b92a62f": "Högt högt",
+ "@s688b92a62f": {
+  "x-mt": true
+ },
+ "sb1ef6ab439": "Turbo",
+ "s339446ffe7": "Utomhus",
+ "@s339446ffe7": {
+  "x-mt": true
+ },
+ "s018d2e08f4": "Fläkt",
  "s11a7c24b38": "Inget värde",
+ "s79bbbe6195": "kurva",
+ "@s79bbbe6195": {
+  "x-mt": true
+ },
  "s28b7c227f0": "börvärde",
  "s81e0c3084b": "Lampans läge kunde inte läsas – styrningen kan ändå fungera.",
  "s7400a53ab2": "Färg",
@@ -3076,6 +3113,22 @@
  },
  "s35e8813a82": "Varningar",
  "@s35e8813a82": {
+  "x-mt": true
+ },
+ "sf1ed8904bb": "Välj registreringslistan (CSV)",
+ "@sf1ed8904bb": {
+  "x-mt": true
+ },
+ "s5bf50963d1": "Inte erkänt som en NIBE-registreringslista.",
+ "@s5bf50963d1": {
+  "x-mt": true
+ },
+ "s0cba536d9c": "Listan hade inga register.",
+ "@s0cba536d9c": {
+  "x-mt": true
+ },
+ "s80d7fd2d3c": "{p0} registrerar importerade, {p1} erkända (utomhus, försörjning, varmt vatten, kurva kompensation ...).",
+ "@s80d7fd2d3c": {
   "x-mt": true
  },
  "sc3abd09cd9": "Anpassad färg",
@@ -3961,8 +4014,8 @@
  "@sd51ee1ec8d": {
   "x-mt": true
  },
- "s566585dc66": "IR är envägs: värmepumpen bekräftar inte. Molaplan skickar alltid hela staten och visar vad den skickade. Lär dig andra fjärrknappar senare: Anslutningar → blaster → \"Lär fjärrkontroll\".",
- "@s566585dc66": {
+ "s2e99b59497": "IR är en-vägs: värmepumpen bekräftar inte. Molaplan skickar alltid hela staten och visar vad den skickade. Undervisa andra fjärrknappar senare: Anslutningar → IR-sändare → \"Lär ett nytt kommando\".",
+ "@s2e99b59497": {
   "x-mt": true
  },
  "s0dd21e026c": "Guide och automatisk sökning",
@@ -4020,6 +4073,42 @@
  },
  "s67bf18fb6f": "Övrig kamera (ONVIF)",
  "@s67bf18fb6f": {
+  "x-mt": true
+ },
+ "sdbbc24198f": "Vilken värmepump har du?",
+ "@sdbbc24198f": {
+  "x-mt": true
+ },
+ "sdfd0407af6": "Verifiera – inget officiellt leverantörsdokument.",
+ "@sdfd0407af6": {
+  "x-mt": true
+ },
+ "s5562a66892": "No Wi-Fi – IR-sändare (varje varumärke)",
+ "@s5562a66892": {
+  "x-mt": true
+ },
+ "sc6411a9010": "En Tasmota eller ESPHome IR-sändare (t.ex. Athom IR & RF) skickar hela staten som fjärrkontrollen. Du kan också lära dina egna kommandon.",
+ "@sc6411a9010": {
+  "x-mt": true
+ },
+ "s6cce12c7e3": "Serviceport (ESPHome)",
+ "@s6cce12c7e3": {
+  "x-mt": true
+ },
+ "s0d3bc6d125": "En ESP på inomhusenhetskontakt, tvåvägs.",
+ "@s0d3bc6d125": {
+  "x-mt": true
+ },
+ "s8275426406": "Via Home Assistant",
+ "@s8275426406": {
+  "x-mt": true
+ },
+ "s5b10465c5b": "Om du redan har Home Assistant.",
+ "@s5b10465c5b": {
+  "x-mt": true
+ },
+ "s417228f48f": "Andra varumärken – varför ännu inte",
+ "@s417228f48f": {
   "x-mt": true
  },
  "s772c158a57": "TCP",
@@ -4430,6 +4519,10 @@
  },
  "s837e0fc5e6": "IR är envägs: värmepumpen bekräftar inte kommandon. Tiles visar det sista skickade tillståndet.",
  "@s837e0fc5e6": {
+  "x-mt": true
+ },
+ "sf1ffb49d9c": "Importera pumpens registerlista (CSV)",
+ "@sf1ffb49d9c": {
   "x-mt": true
  },
  "s09737988fd": "Anslutningen fungerar!",
@@ -6978,7 +7071,6 @@
  "@s5db6506824": {
   "x-mt": true
  },
- "s018d2e08f4": "Fläkt",
  "sa00d64c920": "Vane",
  "@sa00d64c920": {
   "x-mt": true
@@ -7789,6 +7881,308 @@
  "@sbe208615d0": {
   "x-mt": true
  },
+ "s14e68f6852": "udda svar",
+ "@s14e68f6852": {
+  "x-mt": true
+ },
+ "s31ec8d716e": "Enhetens kontotabell är full. Ta bort en gammal telefon i Smart M-Air-appen och försök igen.",
+ "@s31ec8d716e": {
+  "x-mt": true
+ },
+ "sbaecc9fbed": "Enheten är upptagen (en annan app) - försök på en minut.",
+ "@sbaecc9fbed": {
+  "x-mt": true
+ },
+ "sc2474a4b0b": "Daikin vägrade - kontrollera nyckeln på klistermärket.",
+ "@sc2474a4b0b": {
+  "x-mt": true
+ },
+ "s2f7a41de7a": "Daikin accepterade inte nyckeln.",
+ "@s2f7a41de7a": {
+  "x-mt": true
+ },
+ "sc499fab53f": "Ingen Daikin adapter på {p0}",
+ "@sc499fab53f": {
+  "x-mt": true
+ },
+ "s4cfb5a36c9": "Daikin (lokalt Wi-Fi)",
+ "@s4cfb5a36c9": {
+  "x-mt": true
+ },
+ "s2089a88d1f": "Mitsubishi Heavy (Smart M-Air, lokal)",
+ "@s2089a88d1f": {
+  "x-mt": true
+ },
+ "s050c379c67": "Mitsubishi Electric (MELCloud)",
+ "s339fd47e4a": "Toshiba (Home AC Control)",
+ "sf71a945a1d": "Samsung (SmartThings)",
+ "sf7aed9c9e0": "Hitachi (airCloud Go)",
+ "sb33215fa8b": "NIBE (myUplink cloud)",
+ "@sb33215fa8b": {
+  "x-mt": true
+ },
+ "se9b4e55058": "NIBE / Thermia (Modbus TCP, lokal)",
+ "@se9b4e55058": {
+  "x-mt": true
+ },
+ "sddd6b1d42e": "Värmepump (inbyggd integration)",
+ "@sddd6b1d42e": {
+  "x-mt": true
+ },
+ "s1c9df5579f": "Märke",
+ "s88688d2809": "Enhet IP (lokala varumärken)",
+ "@s88688d2809": {
+  "x-mt": true
+ },
+ "sc0bc183c3e": "E-post (moln)",
+ "@sc0bc183c3e": {
+  "x-mt": true
+ },
+ "s25f561c483": "Användarnamn (Toshiba)",
+ "@s25f561c483": {
+  "x-mt": true
+ },
+ "s2862f25983": "Token (SmartThings)",
+ "@s2862f25983": {
+  "x-mt": true
+ },
+ "sef37e5048d": "Nyckel (Daikin BRP072C, klistermärke)",
+ "@sef37e5048d": {
+  "x-mt": true
+ },
+ "se67e3e0eb9": "Client ID (myUplink)",
+ "sa165e50f99": "Client Secret (myUplink)",
+ "sd1d4b22fc6": "Registrera karta (Modbus)",
+ "@sd1d4b22fc6": {
+  "x-mt": true
+ },
+ "s7dc3b152a8": "NIBE S-serien",
+ "@s7dc3b152a8": {
+  "x-mt": true
+ },
+ "sad9fd728f9": "NIBE F-serien + MODBUS 40",
+ "@sad9fd728f9": {
+  "x-mt": true
+ },
+ "seba6d1ba70": "Thermia Genesis",
+ "sfdc0bbf134": "Importerad registerförteckning",
+ "@sfdc0bbf134": {
+  "x-mt": true
+ },
+ "s58f0665e29": "Modbus unit id",
+ "sb064bec4c8": "Server URL (endast testa)",
+ "@sb064bec4c8": {
+  "x-mt": true
+ },
+ "sabab3f2fae": "Vad man ska läsa",
+ "@sabab3f2fae": {
+  "x-mt": true
+ },
+ "s6d1827b58e": "Enhet Id",
+ "@s6d1827b58e": {
+  "x-mt": true
+ },
+ "sa643668bec": "Läsning (nuvarande, mål, utomhus, kraft ...)",
+ "@sa643668bec": {
+  "x-mt": true
+ },
+ "s155de09d38": "Vad man ska ställa in",
+ "@s155de09d38": {
+  "x-mt": true
+ },
+ "seb4c438a42": "'Värde ({{value}})'",
+ "@seb4c438a42": {
+  "x-mt": true
+ },
+ "s6478b264c0": "Värmepump \"{p0}\" är inte längre i kontot",
+ "@s6478b264c0": {
+  "x-mt": true
+ },
+ "s4937d259b8": "Setpoint saknas",
+ "@s4937d259b8": {
+  "x-mt": true
+ },
+ "s10f42a9a20": "Curve Offset",
+ "@s10f42a9a20": {
+  "x-mt": true
+ },
+ "sbc996a7d25": "börvärde",
+ "s620c04d73e": "Leverans",
+ "@s620c04d73e": {
+  "x-mt": true
+ },
+ "s922f77d2f1": "Återvänd",
+ "@s922f77d2f1": {
+  "x-mt": true
+ },
+ "sbfee72daca": "Varmt vatten",
+ "@sbfee72daca": {
+  "x-mt": true
+ },
+ "s0be9e35521": "Brine in",
+ "@s0be9e35521": {
+  "x-mt": true
+ },
+ "s3a0d796501": "Brine out",
+ "@s3a0d796501": {
+  "x-mt": true
+ },
+ "s23bbe9b4ed": "Examen minuter",
+ "@s23bbe9b4ed": {
+  "x-mt": true
+ },
+ "s3ca74f3ef8": "Kompressor",
+ "@s3ca74f3ef8": {
+  "x-mt": true
+ },
+ "s6d21845355": "Hitta det i routerns enhetslista eller tillverkarens app (enhetsinformation).",
+ "@s6d21845355": {
+  "x-mt": true
+ },
+ "se74bcc1028": "Extra kort för automation",
+ "@se74bcc1028": {
+  "x-mt": true
+ },
+ "s4a91d07711": "Daikin (Wi-Fi, lokal)",
+ "@s4a91d07711": {
+  "x-mt": true
+ },
+ "s8e339844a9": "Daikin med en Wi-Fi-adapter (BRP069, BRP072C, Airbase) fungerar utan molnet; finns på nätverket.",
+ "@s8e339844a9": {
+  "x-mt": true
+ },
+ "sdb368f83d9": "Nyare BRP072C-adaptrar: den 13-siffriga nyckeln är på adapterklistermärket. Äldre behöver ingen.",
+ "@sdb368f83d9": {
+  "x-mt": true
+ },
+ "se19c918d2d": "MHI värmepump med WF-RAC Wi-Fi-modulen (Smart M-Air app). Lokal kontroll, inget moln.",
+ "@se19c918d2d": {
+  "x-mt": true
+ },
+ "sc24b0de42d": "Luft-till-luft- och Ecodan-luft-till-vattenpumpar genom ditt MELCloud-konto, var som helst.",
+ "@sc24b0de42d": {
+  "x-mt": true
+ },
+ "s41d69e699d": "Samma som i MELCloud-appen.",
+ "@s41d69e699d": {
+  "x-mt": true
+ },
+ "s7a7ab0d238": "lagras krypterad på den här enheten bara.",
+ "@s7a7ab0d238": {
+  "x-mt": true
+ },
+ "sa8405bf705": "Toshiba Wi-Fi-värmepumpar genom ditt Toshiba Home AC Control-konto.",
+ "@sa8405bf705": {
+  "x-mt": true
+ },
+ "s703279c03e": "Samma som i Toshiba-appen.",
+ "@s703279c03e": {
+  "x-mt": true
+ },
+ "se26b321a29": "Samsung Wi-Fi värmepumpar genom den officiella SmartThings API.",
+ "@se26b321a29": {
+  "x-mt": true
+ },
+ "s550793ea4a": "Skapa en på account.smartthings.com/tokens with the Devices-omfattningarna. Note: Samsung begränsar nya tokens till 24 timmar.",
+ "@s550793ea4a": {
+  "x-mt": true
+ },
+ "se2f1cb488d": "Hitachi värmepumpar genom ditt AirCloud Go-konto.",
+ "@se2f1cb488d": {
+  "x-mt": true
+ },
+ "s2e3665e309": "NIBE markkälla och avgaspumpar genom den officiella myUplink API (även CTC, Høiax...).",
+ "@s2e3665e309": {
+  "x-mt": true
+ },
+ "sf2e635afad": "Logga in på dev.myuplink.com → Applikationer → Skapa. Kopiera kundidentifieraren.",
+ "@sf2e635afad": {
+  "x-mt": true
+ },
+ "s9db9eb22f8": "Från samma sida.",
+ "@s9db9eb22f8": {
+  "x-mt": true
+ },
+ "s412987475c": "NIBE S-serien (Modbus TCP, lokal)",
+ "@s412987475c": {
+  "x-mt": true
+ },
+ "s3fc8f4ce0d": "S1155, S1255, SMO S40... Aktivera Modbus TCP i pumpmenyn 7.5.9. Inget moln.",
+ "@s3fc8f4ce0d": {
+  "x-mt": true
+ },
+ "s9b15cf6f63": "Pumpens IP: meny 3.1.13 (Connections) eller routerns enhetslista.",
+ "@s9b15cf6f63": {
+  "x-mt": true
+ },
+ "s29ed152759": "NIBE F-serien + MODBUS 40 (lokal)",
+ "@s29ed152759": {
+  "x-mt": true
+ },
+ "sa723788d3c": "F-serie / SMO med MODBUS 40-tillbehör och en RS485→TCP-gateway. Verifiera registren.",
+ "@sa723788d3c": {
+  "x-mt": true
+ },
+ "sb001c51087": "IP-adress för RS485→Modbus TCP-gateway.",
+ "@sb001c51087": {
+  "x-mt": true
+ },
+ "sde4b0f4525": "Thermia (Modbus TCP, lokal)",
+ "@sde4b0f4525": {
+  "x-mt": true
+ },
+ "s9280f807a6": "Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis) Modbus TCP: Inställningar → BMS.",
+ "@s9280f807a6": {
+  "x-mt": true
+ },
+ "scab35073e8": "Pumpens IP-adress (display eller router).",
+ "@scab35073e8": {
+  "x-mt": true
+ },
+ "s5ddd513689": "Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia - eller någon med en IR-fjärrkontroll.",
+ "@s5ddd513689": {
+  "x-mt": true
+ },
+ "s9622976fd3": "Inga enheter hittades",
+ "@s9622976fd3": {
+  "x-mt": true
+ },
+ "sa93876ac9d": "Enhet(s)",
+ "@sa93876ac9d": {
+  "x-mt": true
+ },
+ "sf3d77f10b9": "för många förfrågningar",
+ "@sf3d77f10b9": {
+  "x-mt": true
+ },
+ "se62d52c336": "AirCloud: sign-in misslyckades",
+ "@se62d52c336": {
+  "x-mt": true
+ },
+ "sc5f4490c42": "AirCloud: Enhet som inte hittats",
+ "@sc5f4490c42": {
+  "x-mt": true
+ },
+ "s00c7f00681": "MELCloud: fel e-post eller lösenord",
+ "@s00c7f00681": {
+  "x-mt": true
+ },
+ "s4bd0e3110e": "Denna pump är inte påslagen / av över Modbus.",
+ "@s4bd0e3110e": {
+  "x-mt": true
+ },
+ "s4558be4f09": "myUplink: fel klient-ID eller hemlighet",
+ "@s4558be4f09": {
+  "x-mt": true
+ },
+ "s370bf1904d": "läget för en mark-source pump är inte ändras här - bara inställningen.",
+ "@s370bf1904d": {
+  "x-mt": true
+ },
+ "s8f016f0e29": "Toshiba: fel användarnamn eller lösenord",
+ "@s8f016f0e29": {
+  "x-mt": true
+ },
  "s589eb1bcd3": "Home Assistant (exempel)",
  "@s589eb1bcd3": {
   "x-mt": true
@@ -8026,7 +8420,6 @@
   "x-mt": true
  },
  "s9783a8fd53": "rum",
- "sbc996a7d25": "börvärde",
  "sa69c0e1ca3": "Luftvärmepump (IR)",
  "s025e7bf04d": "Styr någon fjärrstyrd värmepump med en IR-blastare (Tasmota eller ESPHome). IR är envägs: Molaplan visar vad den senast skickade.",
  "@s025e7bf04d": {
@@ -8514,6 +8907,94 @@
  },
  "s0ceafaa97c": "Energi energi",
  "@s0ceafaa97c": {
+  "x-mt": true
+ },
+ "s34a3681441": "Skapare och anslutningstyp. Lokala arbetar utan molnet.",
+ "@s34a3681441": {
+  "x-mt": true
+ },
+ "s87e0a93996": "IP-adress för en lokal enhet (från routerns enhetslista).",
+ "@s87e0a93996": {
+  "x-mt": true
+ },
+ "s0cc25259c7": "Det e-postmeddelande du loggar in på tillverkarens app med (MELCloud, airCloud).",
+ "@s0cc25259c7": {
+  "x-mt": true
+ },
+ "s92e7ac8d3c": "Ditt Toshiba Home AC Control användarnamn.",
+ "@s92e7ac8d3c": {
+  "x-mt": true
+ },
+ "safde071183": "Skaparens app lösenord. lagras endast på den här enheten / i ditt eget valv.",
+ "@safde071183": {
+  "x-mt": true
+ },
+ "s23a4bc8253": "SmartThings personliga åtkomsttoken (account.smartthings.com/tokens).",
+ "@s23a4bc8253": {
+  "x-mt": true
+ },
+ "s1c339065e1": "Nyckeln tryckt på BRP072C adapterns klistermärke.",
+ "@s1c339065e1": {
+  "x-mt": true
+ },
+ "sc2d5225ae8": "Klient-ID för din egen app på dev.myuplink.com.",
+ "@sc2d5225ae8": {
+  "x-mt": true
+ },
+ "s332f9bc1a1": "Kundhemlighet för din egen app på dev.myuplink.com.",
+ "@s332f9bc1a1": {
+  "x-mt": true
+ },
+ "s5a9d485e7f": "Pumpserien. \"Importerad registerlista\" = pumpens egen CSV-export.",
+ "@s5a9d485e7f": {
+  "x-mt": true
+ },
+ "scd35ffb8e9": "Vanligtvis standard (Modbus 502, MHI 51443).",
+ "@scd35ffb8e9": {
+  "x-mt": true
+ },
+ "sab25ff8075": "Modbus enhet adress, vanligtvis 1.",
+ "@sab25ff8075": {
+  "x-mt": true
+ },
+ "s67b2ac9328": "Testning endast: ersätter tillverkarens serveradress.",
+ "@s67b2ac9328": {
+  "x-mt": true
+ },
+ "sf5e949d20c": "Fullständigt tillstånd (värmepumpkort) eller en läsning.",
+ "@sf5e949d20c": {
+  "x-mt": true
+ },
+ "s46ce82ef9c": "Full stat",
+ "@s46ce82ef9c": {
+  "x-mt": true
+ },
+ "s8cbd66456f": "En läsning",
+ "@s8cbd66456f": {
+  "x-mt": true
+ },
+ "s89308ddc6d": "Inomhus enhet id; \"huvud\" för en-enhet enheter.",
+ "@s89308ddc6d": {
+  "x-mt": true
+ },
+ "s02d24152f0": "Vilken läsning: nuvarande, mål, utomhus, ström, försörjning, hot_water ...",
+ "@s02d24152f0": {
+  "x-mt": true
+ },
+ "se16e293d6b": "Set",
+ "@se16e293d6b": {
+  "x-mt": true
+ },
+ "s94ecb845c8": "Setpoint, power, mode eller fan.",
+ "@s94ecb845c8": {
+  "x-mt": true
+ },
+ "sba2eb6d9b9": "Setpoint",
+ "@sba2eb6d9b9": {
+  "x-mt": true
+ },
+ "s033b6b8c6c": "'Värde att skicka; {{value}} = kortets värde.'",
+ "@s033b6b8c6c": {
   "x-mt": true
  }
 }

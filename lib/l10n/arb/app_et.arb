@@ -1635,7 +1635,10 @@
  "@s0d353281af": {
   "x-mt": true
  },
- "s8e4e78e067": "Õpeta pult",
+ "sd2a872d1ba": "Uue käsu õpetamine",
+ "@sd2a872d1ba": {
+  "x-mt": true
+ },
  "s2acab0eccd": "Valmis",
  "s608a56ad4b": "Salvestab Molaplanile kaugnupud, nt \"Turbo\". Lõhkeaine vajab infrapunavastuvõtjat.",
  "@s608a56ad4b": {
@@ -2243,7 +2246,41 @@
  "sd032c3efec": "Auto",
  "s9db8aefc43": "Kuivatus",
  "s0117dea8bc": "Ventilaator",
+ "sb680eb3021": "Vaikust",
+ "@sb680eb3021": {
+  "x-mt": true
+ },
+ "s4299eb9d18": "Madalamad",
+ "@s4299eb9d18": {
+  "x-mt": true
+ },
+ "s90ba0c57d4": "Keskmiselt madal",
+ "@s90ba0c57d4": {
+  "x-mt": true
+ },
+ "s0cb68026a7": "Keskmine",
+ "@s0cb68026a7": {
+  "x-mt": true
+ },
+ "s9c5e4ed5cb": "Keskmise kõrgusega",
+ "@s9c5e4ed5cb": {
+  "x-mt": true
+ },
+ "s688b92a62f": "Kõrge",
+ "@s688b92a62f": {
+  "x-mt": true
+ },
+ "sb1ef6ab439": "Turbo",
+ "s339446ffe7": "Väljas",
+ "@s339446ffe7": {
+  "x-mt": true
+ },
+ "s018d2e08f4": "Ventilaator",
  "s11a7c24b38": "Näit puudub",
+ "s79bbbe6195": "kõver",
+ "@s79bbbe6195": {
+  "x-mt": true
+ },
  "s28b7c227f0": "seade",
  "s81e0c3084b": "Valgusti olekut ei saanud lugeda – juhtimine võib siiski toimida.",
  "s7400a53ab2": "Värv",
@@ -3091,6 +3128,22 @@
  },
  "s35e8813a82": "häireid",
  "@s35e8813a82": {
+  "x-mt": true
+ },
+ "sf1ed8904bb": "Registrite nimekirja (CSV) valimine",
+ "@sf1ed8904bb": {
+  "x-mt": true
+ },
+ "s5bf50963d1": "Ei ole tunnustatud NIBE registriloendina.",
+ "@s5bf50963d1": {
+  "x-mt": true
+ },
+ "s0cba536d9c": "Nimekirjas ei olnud registreid.",
+ "@s0cba536d9c": {
+  "x-mt": true
+ },
+ "s80d7fd2d3c": "{p0} registrid imporditud, {p1} tunnustatud (välisruum, varustus, soe vesi, kurvi nihe...).",
+ "@s80d7fd2d3c": {
   "x-mt": true
  },
  "sc3abd09cd9": "Kohandatud värv",
@@ -3976,8 +4029,8 @@
  "@sd51ee1ec8d": {
   "x-mt": true
  },
- "s566585dc66": "IR on ühesuunaline: soojuspump ei kinnita. Molaplan saadab alati kogu oleku ja näitab, mida ta saatis. Õpi teisi kaugnuppe hiljem: ühendused → blaster → \"Õpi kaugjuhtimispult\".",
- "@s566585dc66": {
+ "s2e99b59497": "IR on ühesuunaline: soojuspump ei kinnita. Molaplan saadab alati kogu oleku ja näitab, mida ta saatis. Õpeta teisi kaugnuppe hiljem: ühendused → IR saatja → \"Õppige uut käsku\".",
+ "@s2e99b59497": {
   "x-mt": true
  },
  "s0dd21e026c": "Juhend ja automaatne otsing",
@@ -4035,6 +4088,42 @@
  },
  "s67bf18fb6f": "Muu kaamera (ONVIF)",
  "@s67bf18fb6f": {
+  "x-mt": true
+ },
+ "sdbbc24198f": "Milline soojuspump sul on?",
+ "@sdbbc24198f": {
+  "x-mt": true
+ },
+ "sdfd0407af6": "Kontrollige - ei ole ametlikku müüja dokumenti.",
+ "@sdfd0407af6": {
+  "x-mt": true
+ },
+ "s5562a66892": "Wi-Fi - IR-saatja puudub (mis tahes kaubamärk)",
+ "@s5562a66892": {
+  "x-mt": true
+ },
+ "sc6411a9010": "Tasmota või ESPHome IR saatja (nt Athom IR & RF) saadab täisoleku nagu pult. Samuti saab õpetada omaenda käske.",
+ "@sc6411a9010": {
+  "x-mt": true
+ },
+ "s6cce12c7e3": "Teenindussadam (ESPHome)",
+ "@s6cce12c7e3": {
+  "x-mt": true
+ },
+ "s0d3bc6d125": "ESP siseseadme pistikul, kahesuunaline.",
+ "@s0d3bc6d125": {
+  "x-mt": true
+ },
+ "s8275426406": "Koduabilise kaudu",
+ "@s8275426406": {
+  "x-mt": true
+ },
+ "s5b10465c5b": "Kui sul on juba koduabiline olemas.",
+ "@s5b10465c5b": {
+  "x-mt": true
+ },
+ "s417228f48f": "Teised kaubamärgid – miks mitte veel",
+ "@s417228f48f": {
   "x-mt": true
  },
  "s772c158a57": "tcp",
@@ -4445,6 +4534,10 @@
  },
  "s837e0fc5e6": "IR on ühesuunaline: soojuspump ei kinnita käske. Plaadid näitavad viimast saadetud olekut.",
  "@s837e0fc5e6": {
+  "x-mt": true
+ },
+ "sf1ffb49d9c": "Pumba registriloendi (CSV) import",
+ "@sf1ffb49d9c": {
   "x-mt": true
  },
  "s09737988fd": "Ühendus töötab!",
@@ -7017,7 +7110,6 @@
  "@s5db6506824": {
   "x-mt": true
  },
- "s018d2e08f4": "Ventilaator",
  "sa00d64c920": "Vane",
  "@sa00d64c920": {
   "x-mt": true
@@ -7837,6 +7929,308 @@
  "@sbe208615d0": {
   "x-mt": true
  },
+ "s14e68f6852": "paaritu vastus",
+ "@s14e68f6852": {
+  "x-mt": true
+ },
+ "s31ec8d716e": "Seadme kontotabel on täis. Eemalda vana telefon rakenduses Smart M- Air ja proovi uuesti.",
+ "@s31ec8d716e": {
+  "x-mt": true
+ },
+ "sbaecc9fbed": "Seade on hõivatud (teine rakendus) - proovige minuti jooksul.",
+ "@sbaecc9fbed": {
+  "x-mt": true
+ },
+ "sc2474a4b0b": "Daikin keeldus - kontrollige kleebisel olevat võtit.",
+ "@sc2474a4b0b": {
+  "x-mt": true
+ },
+ "s2f7a41de7a": "Daikin ei võtnud võtit vastu.",
+ "@s2f7a41de7a": {
+  "x-mt": true
+ },
+ "sc499fab53f": "Daikini adapter puudub {p0}",
+ "@sc499fab53f": {
+  "x-mt": true
+ },
+ "s4cfb5a36c9": "Daikin (kohalik Wi-Fi)",
+ "@s4cfb5a36c9": {
+  "x-mt": true
+ },
+ "s2089a88d1f": "Mitsubishi Heavy (Smart M-Air, kohalik)",
+ "@s2089a88d1f": {
+  "x-mt": true
+ },
+ "s050c379c67": "Mitsubishi Electric (MELCloud)",
+ "s339fd47e4a": "Toshiba (Home AC Control)",
+ "sf71a945a1d": "Samsung (SmartThings)",
+ "sf7aed9c9e0": "Hitachi (airCloud Go)",
+ "sb33215fa8b": "NIBE (myUplink cloud)",
+ "@sb33215fa8b": {
+  "x-mt": true
+ },
+ "se9b4e55058": "NIBE / Thermia (Modbus TCP, kohalik)",
+ "@se9b4e55058": {
+  "x-mt": true
+ },
+ "sddd6b1d42e": "Soojuspump (sisseehitatud integreerimine)",
+ "@sddd6b1d42e": {
+  "x-mt": true
+ },
+ "s1c9df5579f": "Kaubamärk",
+ "s88688d2809": "Seadme IP (kohalikud kaubamärgid)",
+ "@s88688d2809": {
+  "x-mt": true
+ },
+ "sc0bc183c3e": "E-post (pilv)",
+ "@sc0bc183c3e": {
+  "x-mt": true
+ },
+ "s25f561c483": "Kasutajanimi (Toshiba)",
+ "@s25f561c483": {
+  "x-mt": true
+ },
+ "s2862f25983": "Token (SmartThings)",
+ "@s2862f25983": {
+  "x-mt": true
+ },
+ "sef37e5048d": "Võti (Daikin BRP072C, kleebis)",
+ "@sef37e5048d": {
+  "x-mt": true
+ },
+ "se67e3e0eb9": "Client ID (myUplink)",
+ "sa165e50f99": "Client Secret (myUplink)",
+ "sd1d4b22fc6": "Registrikaart (Modbus)",
+ "@sd1d4b22fc6": {
+  "x-mt": true
+ },
+ "s7dc3b152a8": "NIBE S-seeria",
+ "@s7dc3b152a8": {
+  "x-mt": true
+ },
+ "sad9fd728f9": "NIBE F-seeria + MODBUS 40",
+ "@sad9fd728f9": {
+  "x-mt": true
+ },
+ "seba6d1ba70": "Thermia Genesis",
+ "sfdc0bbf134": "Imporditud registrite nimekiri",
+ "@sfdc0bbf134": {
+  "x-mt": true
+ },
+ "s58f0665e29": "Modbus unit id",
+ "sb064bec4c8": "Serveri URL (ainult testimine)",
+ "@sb064bec4c8": {
+  "x-mt": true
+ },
+ "sabab3f2fae": "Mida lugeda",
+ "@sabab3f2fae": {
+  "x-mt": true
+ },
+ "s6d1827b58e": "Ühiku ID",
+ "@s6d1827b58e": {
+  "x-mt": true
+ },
+ "sa643668bec": "Lugemine (jooksev, sihtmärk, väljas, võimsus...)",
+ "@sa643668bec": {
+  "x-mt": true
+ },
+ "s155de09d38": "Mida seada",
+ "@s155de09d38": {
+  "x-mt": true
+ },
+ "seb4c438a42": "'Väärtus ({{value}})'",
+ "@seb4c438a42": {
+  "x-mt": true
+ },
+ "s6478b264c0": "Soojuspump \"{p0}\" ei ole enam kontol",
+ "@s6478b264c0": {
+  "x-mt": true
+ },
+ "s4937d259b8": "Seadistuspunkt puudub",
+ "@s4937d259b8": {
+  "x-mt": true
+ },
+ "s10f42a9a20": "kõverat",
+ "@s10f42a9a20": {
+  "x-mt": true
+ },
+ "sbc996a7d25": "seadeväärtus",
+ "s620c04d73e": "Varustus",
+ "@s620c04d73e": {
+  "x-mt": true
+ },
+ "s922f77d2f1": "Tagasi",
+ "@s922f77d2f1": {
+  "x-mt": true
+ },
+ "sbfee72daca": "Kuum vesi",
+ "@sbfee72daca": {
+  "x-mt": true
+ },
+ "s0be9e35521": "Soolvee",
+ "@s0be9e35521": {
+  "x-mt": true
+ },
+ "s3a0d796501": "Soolvesi",
+ "@s3a0d796501": {
+  "x-mt": true
+ },
+ "s23bbe9b4ed": "Kraadiminutid",
+ "@s23bbe9b4ed": {
+  "x-mt": true
+ },
+ "s3ca74f3ef8": "Kompressor",
+ "@s3ca74f3ef8": {
+  "x-mt": true
+ },
+ "s6d21845355": "Leidke see ruuteri seadmete loendist või valmistaja rakendusest (seadme info).",
+ "@s6d21845355": {
+  "x-mt": true
+ },
+ "se74bcc1028": "Lisakaardid automatiseerimiseks",
+ "@se74bcc1028": {
+  "x-mt": true
+ },
+ "s4a91d07711": "Daikin (Wi-Fi, kohalik)",
+ "@s4a91d07711": {
+  "x-mt": true
+ },
+ "s8e339844a9": "Daikin Wi-Fi- adapteriga (BRP069, BRP072C, Airbase). Töötab ilma pilveta; leitud võrgust.",
+ "@s8e339844a9": {
+  "x-mt": true
+ },
+ "sdb368f83d9": "Uuemad BRP072C adapterid: 13-kohaline võti asub adapteri kleebisel. Vanemad ei vaja seda.",
+ "@sdb368f83d9": {
+  "x-mt": true
+ },
+ "se19c918d2d": "MHI soojuspump WF-RAC Wi-Fi mooduliga (Smart M-Air rakendus). Kohalik juhtimine, pilv puudub.",
+ "@se19c918d2d": {
+  "x-mt": true
+ },
+ "sc24b0de42d": "Õhk-õhk ja Ecodan õhk-vesi pumbad läbi oma MELCloudi konto kõikjal.",
+ "@sc24b0de42d": {
+  "x-mt": true
+ },
+ "s41d69e699d": "Sama, mis MELCloudi rakenduses.",
+ "@s41d69e699d": {
+  "x-mt": true
+ },
+ "s7a7ab0d238": "Salvestatud krüptitud ainult selles seadmes.",
+ "@s7a7ab0d238": {
+  "x-mt": true
+ },
+ "sa8405bf705": "Toshiba Wi-Fi soojuspumbad läbi oma Toshiba Home AC Control konto.",
+ "@sa8405bf705": {
+  "x-mt": true
+ },
+ "s703279c03e": "Sama, mis Toshiba rakenduses.",
+ "@s703279c03e": {
+  "x-mt": true
+ },
+ "se26b321a29": "Samsung Wi-Fi soojuspumbad läbi ametliku SmartThingsi API.",
+ "@se26b321a29": {
+  "x-mt": true
+ },
+ "s550793ea4a": "Loo üks aadressil account.smartthings.com/tokens seadmete ulatusega. Märkus: Samsung piirab uusi märke 24 tunniga.",
+ "@s550793ea4a": {
+  "x-mt": true
+ },
+ "se2f1cb488d": "Hitachi soojuspumbad läbi oma airCloud Go konto.",
+ "@se2f1cb488d": {
+  "x-mt": true
+ },
+ "s2e3665e309": "NIBE maapealsed ja heitõhupumbad läbi ametliku myUplink API (ka CTC, Høiax...).",
+ "@s2e3665e309": {
+  "x-mt": true
+ },
+ "sf2e635afad": "Logige sisse aadressil dev.myuplink.com → Rakendused → Loo. Kopeeri kliendi identifikaator.",
+ "@sf2e635afad": {
+  "x-mt": true
+ },
+ "s9db9eb22f8": "Samalt leheküljelt.",
+ "@s9db9eb22f8": {
+  "x-mt": true
+ },
+ "s412987475c": "NIBE S-seeria (Modbus TCP, kohalik)",
+ "@s412987475c": {
+  "x-mt": true
+ },
+ "s3fc8f4ce0d": "S1155, S1255, SMO S40... Modbus TCP lubamine pumbamenüüs 7.5.9. Pilve pole.",
+ "@s3fc8f4ce0d": {
+  "x-mt": true
+ },
+ "s9b15cf6f63": "Pump IP: menu 3.1.13 (Ühendused) või ruuteri seadmete nimekiri.",
+ "@s9b15cf6f63": {
+  "x-mt": true
+ },
+ "s29ed152759": "NIBE F-seeria + MODBUS 40 (kohalik)",
+ "@s29ed152759": {
+  "x-mt": true
+ },
+ "sa723788d3c": "F- seeria / SMO koos MODBUS 40 tarviku ja RS485→TCP lüüsiga. Kontrolli registreid.",
+ "@sa723788d3c": {
+  "x-mt": true
+ },
+ "sb001c51087": "RS485 IP-aadress→Modbus TCP gateway.",
+ "@sb001c51087": {
+  "x-mt": true
+ },
+ "sde4b0f4525": "Thermia (Modbus TCP, kohalik)",
+ "@sde4b0f4525": {
+  "x-mt": true
+ },
+ "s9280f807a6": "Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis). Modbus TCP: Settings → BMS.",
+ "@s9280f807a6": {
+  "x-mt": true
+ },
+ "scab35073e8": "Pumba IP-aadress (kuva või ruuter).",
+ "@scab35073e8": {
+  "x-mt": true
+ },
+ "s5ddd513689": "Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – või mõni muu IR-puldiga.",
+ "@s5ddd513689": {
+  "x-mt": true
+ },
+ "s9622976fd3": "Ühtegi ühikut ei leitud",
+ "@s9622976fd3": {
+  "x-mt": true
+ },
+ "sa93876ac9d": "üksus(ed)",
+ "@sa93876ac9d": {
+  "x-mt": true
+ },
+ "sf3d77f10b9": "liiga palju taotlusi",
+ "@sf3d77f10b9": {
+  "x-mt": true
+ },
+ "se62d52c336": "airCloud: sisselogimine nurjus",
+ "@se62d52c336": {
+  "x-mt": true
+ },
+ "sc5f4490c42": "airCloud: üksust ei leitud",
+ "@sc5f4490c42": {
+  "x-mt": true
+ },
+ "s00c7f00681": "MELCloud: vale e-post või parool",
+ "@s00c7f00681": {
+  "x-mt": true
+ },
+ "s4bd0e3110e": "See pump ei ole Modbusi kohal sisse/välja lülitatud.",
+ "@s4bd0e3110e": {
+  "x-mt": true
+ },
+ "s4558be4f09": "MyUplink: vale kliendi ID või saladus",
+ "@s4558be4f09": {
+  "x-mt": true
+ },
+ "s370bf1904d": "Maapealse allika pumba režiimi siin ei muudeta - ainult seadeväärtus.",
+ "@s370bf1904d": {
+  "x-mt": true
+ },
+ "s8f016f0e29": "Toshiba: vale kasutajanimi või parool",
+ "@s8f016f0e29": {
+  "x-mt": true
+ },
  "s589eb1bcd3": "Koduabiline (näide)",
  "@s589eb1bcd3": {
   "x-mt": true
@@ -8074,7 +8468,6 @@
   "x-mt": true
  },
  "s9783a8fd53": "tuba",
- "sbc996a7d25": "seadeväärtus",
  "sa69c0e1ca3": "Õhksoojuspump (IR)",
  "s025e7bf04d": "Iga kaugjuhitava soojuspumba juhtimine infrapunalõhkeseadmega (Tasmota või ESPHome). IR on ühesuunaline: Molaplan näitab, mida ta viimati saatis.",
  "@s025e7bf04d": {
@@ -8559,6 +8952,94 @@
  },
  "s0ceafaa97c": "energia",
  "@s0ceafaa97c": {
+  "x-mt": true
+ },
+ "s34a3681441": "Looja ja ühenduse tüüp. Kohalikud töötavad ilma pilveta.",
+ "@s34a3681441": {
+  "x-mt": true
+ },
+ "s87e0a93996": "Kohaliku üksuse IP-aadress (teie ruuteri seadmete loendist).",
+ "@s87e0a93996": {
+  "x-mt": true
+ },
+ "s0cc25259c7": "E-kiri, millega logite sisse valmistaja rakendusele (MELCloud, airCloud).",
+ "@s0cc25259c7": {
+  "x-mt": true
+ },
+ "s92e7ac8d3c": "Toshiba Home AC Control kasutajanimi.",
+ "@s92e7ac8d3c": {
+  "x-mt": true
+ },
+ "safde071183": "Valmistaja rakenduse parool. Salvestatud ainult selles seadmes / sinu enda seifis.",
+ "@safde071183": {
+  "x-mt": true
+ },
+ "s23a4bc8253": "SmartThingsi isikliku juurdepääsu luba (account.smartthings.com/tokens).",
+ "@s23a4bc8253": {
+  "x-mt": true
+ },
+ "s1c339065e1": "Võti, mis on trükitud BRP072C adapteri kleebisele.",
+ "@s1c339065e1": {
+  "x-mt": true
+ },
+ "sc2d5225ae8": "Teie enda rakenduse kliendi ID aadressil dev.myuplink.com.",
+ "@sc2d5225ae8": {
+  "x-mt": true
+ },
+ "s332f9bc1a1": "Oma rakenduse kliendisaladus aadressil dev.myuplink.com.",
+ "@s332f9bc1a1": {
+  "x-mt": true
+ },
+ "s5a9d485e7f": "Pumpade seeria. ''Imported register list'' = pumba enda CSV eksport.",
+ "@s5a9d485e7f": {
+  "x-mt": true
+ },
+ "scd35ffb8e9": "Tavaliselt vaikimisi (Modbus 502, MHI 51443).",
+ "@scd35ffb8e9": {
+  "x-mt": true
+ },
+ "sab25ff8075": "Modbusi üksuse aadress, tavaliselt 1.",
+ "@sab25ff8075": {
+  "x-mt": true
+ },
+ "s67b2ac9328": "Ainult testimine: asendab valmistaja serveri aadressi.",
+ "@s67b2ac9328": {
+  "x-mt": true
+ },
+ "sf5e949d20c": "Täisolekus (soojuspumba kaart) või üks näit.",
+ "@sf5e949d20c": {
+  "x-mt": true
+ },
+ "s46ce82ef9c": "Täisosa",
+ "@s46ce82ef9c": {
+  "x-mt": true
+ },
+ "s8cbd66456f": "Üks lugemine",
+ "@s8cbd66456f": {
+  "x-mt": true
+ },
+ "s89308ddc6d": "Siseseade id; ''peamine'' üheüksuseliste seadmete puhul.",
+ "@s89308ddc6d": {
+  "x-mt": true
+ },
+ "s02d24152f0": "Milline lugemine: praegune, sihtmärk, väljas, elekter, varustus, kuum vesi...",
+ "@s02d24152f0": {
+  "x-mt": true
+ },
+ "se16e293d6b": "Seadke",
+ "@se16e293d6b": {
+  "x-mt": true
+ },
+ "s94ecb845c8": "Seadistuspunkt, võimsus, režiim või ventilaator.",
+ "@s94ecb845c8": {
+  "x-mt": true
+ },
+ "sba2eb6d9b9": "Setpoint",
+ "@sba2eb6d9b9": {
+  "x-mt": true
+ },
+ "s033b6b8c6c": "'Saadatav väärtus; {{value}} = kaardi väärtus.'",
+ "@s033b6b8c6c": {
   "x-mt": true
  }
 }

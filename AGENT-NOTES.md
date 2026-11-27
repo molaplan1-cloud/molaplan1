@@ -250,3 +250,11 @@ t155u–t157u (also v0.7.3): ModbusTcpClient.acquire/release (one pooled connect
 - Persistent banner: data only in this browser + sign in to sync. Remote-only notice and Tilaa stay. Account-required features (sync, installer, shop downloads) show 'Vaatii tilin' + sign-in.
 - Sign-in from guest: empty account auto-uploads; conflict asks merge / use account / use local (no silent overwrite). Cancel signs out with `keepLocal` so the web gate does not wipe.
 - Settings: 'Poista selaimen tiedot' (same wipe as sign-out). Tests: test/web_guest_test.dart.
+
+## v0.15.0 – built-in heat pump integrations (t267u–t270u, R268–R290)
+- `lib/heatpumps/`: `hp_model.dart` (HpUnit/HpState/HpChange/HpBackend), one backend per brand (daikin, mhi_wfrac, melcloud, toshiba, smartthings, aircloud, myuplink, gshp_modbus), `hp_driver.dart` (connection type `heatpump`, `hpTestClient` hook, `heatPumpTiles`), `hp_providers.dart` (HeatPumpProvider per brand, HeatPumpChooser gallery card, `heatPumpNotYet`).
+- Gallery: card 'heatpump' → `pickHeatPumpBrand` (template_gallery.dart). Climate tile: hp branch in `readClimate`, `climateFanCommand` / `climatePowerCommand`, offset label 'käyrä'.
+- NIBE CSV import: `lib/ui/heatpump_import.dart` (button 'nibe-csv-import' on a gshp_modbus connection; stores profile 'custom' + settings.registers).
+- Tests: test/heatpumps_local_test.dart (mock Daikin/MHI HTTP servers, UDP, ModbusSim), test/heatpumps_cloud_test.dart (MockClient APIs, `test/support/mini_mqtt.dart` broker for Toshiba), test/heatpumps_ui_test.dart. All UNTESTED ON HARDWARE.
+- Licences: docs/THIRD-PARTY-NOTICES.md; protocol notes docs/HEATPUMPS.md. GPL refs (pydaikin, nibe, thermia-online) not copied.
+- Push: no `origin` remote; push with `git -c 'credential.https://github.com.helper=' -c credential.helper= -c credential.helper=store push https://x-access-token@github.com/molaplan1-cloud/molaplan1.git` (saved x-access-token login; gh helper is remonttireitti – keep it out).

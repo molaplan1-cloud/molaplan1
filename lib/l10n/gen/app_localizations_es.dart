@@ -1739,7 +1739,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get s8e4e78e067 => 'Aprender mando';
+  String get sd2a872d1ba => 'Enseñe un nuevo comando';
 
   @override
   String get s2acab0eccd => 'Listo';
@@ -2490,7 +2490,37 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s0117dea8bc => 'Ventilador';
 
   @override
+  String get sb680eb3021 => 'Silencio';
+
+  @override
+  String get s4299eb9d18 => 'Baja';
+
+  @override
+  String get s90ba0c57d4 => 'Medio-bajo';
+
+  @override
+  String get s0cb68026a7 => 'Mediana';
+
+  @override
+  String get s9c5e4ed5cb => 'Medio-alto';
+
+  @override
+  String get s688b92a62f => 'Alto';
+
+  @override
+  String get sb1ef6ab439 => 'Turbo';
+
+  @override
+  String get s339446ffe7 => 'Outdoor';
+
+  @override
+  String get s018d2e08f4 => 'Ventilador';
+
+  @override
   String get s11a7c24b38 => 'Sin lectura';
+
+  @override
+  String get s79bbbe6195 => 'curva';
 
   @override
   String get s28b7c227f0 => 'consigna';
@@ -3526,6 +3556,20 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s35e8813a82 => 'alertas';
 
   @override
+  String get sf1ed8904bb => 'Elija la lista de registro (CSV)';
+
+  @override
+  String get s5bf50963d1 => 'No se reconoce como una lista de registro NIBE.';
+
+  @override
+  String get s0cba536d9c => 'La lista no tenía registros.';
+
+  @override
+  String s80d7fd2d3c(String p0, String p1) {
+    return '$p0 registros importados, $p1 reconocido (outdoor, suministro, agua caliente, curva offset...).';
+  }
+
+  @override
   String get sc3abd09cd9 => 'Color personalizado';
 
   @override
@@ -4322,8 +4366,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'La configuración de Preset son ejemplos. Reviselos contra el manual del dispositivo antes de confiar en ellos.';
 
   @override
-  String get s566585dc66 =>
-      'IR es unidireccional: la bomba de calor no confirma. Molaplan siempre envía todo el estado y muestra lo que envió. Aprenda otros botones remotos más tarde: Conexiones → blaster → \"Aprende remoto\".';
+  String get s2e99b59497 =>
+      'IR es una sola vía: la bomba de calor no confirma. Molaplan siempre envía todo el estado y muestra lo que envió. Enseña otros botones remotos más tarde: Conexiones → Transmisor IR → \"Enseña un nuevo comando\".';
 
   @override
   String get s0dd21e026c => 'Guía y búsqueda automática';
@@ -4391,6 +4435,36 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s67bf18fb6f => 'Otra cámara (ONVIF)';
+
+  @override
+  String get sdbbc24198f => '¿Qué bomba de calor tienes?';
+
+  @override
+  String get sdfd0407af6 =>
+      'Verificar – ningún documento oficial de proveedores.';
+
+  @override
+  String get s5562a66892 => 'No Wi-Fi – Transmisor IR (cualquier marca)';
+
+  @override
+  String get sc6411a9010 =>
+      'Un transmisor IR Tasmota o ESPHome (por ejemplo, Athom IR & RF) envía el estado completo como el remoto. También puede enseñar sus propios comandos.';
+
+  @override
+  String get s6cce12c7e3 => 'Puerto de servicio (ESPHome)';
+
+  @override
+  String get s0d3bc6d125 =>
+      'Un ESP en el conector de unidad interior, de dos vías.';
+
+  @override
+  String get s8275426406 => 'Via Home Assistant';
+
+  @override
+  String get s5b10465c5b => 'Si ya tienes a Home Assistant.';
+
+  @override
+  String get s417228f48f => 'Otras marcas – por qué aún no';
 
   @override
   String get s772c158a57 => 'tcp';
@@ -4811,6 +4885,9 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s837e0fc5e6 =>
       'IR es unidireccional: la bomba de calor no confirma los comandos. Los azulejos muestran el último estado enviado.';
+
+  @override
+  String get sf1ffb49d9c => 'Importar la lista de registro de la bomba (CSV)';
 
   @override
   String get s09737988fd => '¡La conexión funciona!';
@@ -7512,9 +7589,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s5db6506824 => 'Temperatura de montaje';
 
   @override
-  String get s018d2e08f4 => 'Ventilador';
-
-  @override
   String get sa00d64c920 => 'Vane';
 
   @override
@@ -8261,6 +8335,363 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get s14e68f6852 => 'respuesta extraña';
+
+  @override
+  String get s31ec8d716e =>
+      'La mesa de cuenta de la unidad está llena. Retire un teléfono antiguo en la aplicación Smart M-Air e inténtelo de nuevo.';
+
+  @override
+  String get sbaecc9fbed =>
+      'La unidad está ocupada (otra aplicación) – intente en un minuto.';
+
+  @override
+  String get sc2474a4b0b =>
+      'Daikin se negó – comprobar la llave en la pegatina.';
+
+  @override
+  String get s2f7a41de7a => 'Daikin no aceptó la llave.';
+
+  @override
+  String sc499fab53f(String p0) {
+    return 'No hay adaptador de Daikin en $p0';
+  }
+
+  @override
+  String get s4cfb5a36c9 => 'Daikin (Wi-Fi local)';
+
+  @override
+  String get s2089a88d1f => 'Mitsubishi Heavy (Smart M-Air, local)';
+
+  @override
+  String get s050c379c67 => 'Mitsubishi Electric (MELCloud)';
+
+  @override
+  String get s339fd47e4a => 'Toshiba (Home AC Control)';
+
+  @override
+  String get sf71a945a1d => 'Samsung (SmartThings)';
+
+  @override
+  String get sf7aed9c9e0 => 'Hitachi (airCloud Go)';
+
+  @override
+  String get sb33215fa8b => 'NIBE (mi nube Uplink)';
+
+  @override
+  String get se9b4e55058 => 'NIBE / Thermia (Modbus TCP, local)';
+
+  @override
+  String get sddd6b1d42e => 'Bomba de calor (integración incorporada)';
+
+  @override
+  String get s1c9df5579f => 'Marca';
+
+  @override
+  String get s34a3681441 =>
+      'Marcador y tipo de conexión. Los locales trabajan sin la nube.';
+
+  @override
+  String get s88688d2809 => 'Dispositivo IP (marcas locales)';
+
+  @override
+  String get s87e0a93996 =>
+      'Dirección IP de una unidad local (de la lista de dispositivos del router).';
+
+  @override
+  String get sc0bc183c3e => 'E-mail (cloud)';
+
+  @override
+  String get s0cc25259c7 =>
+      'El e-mail que ingresa a la aplicación del fabricante con (MELCloud, airCloud).';
+
+  @override
+  String get s25f561c483 => 'Nombre de usuario (Toshiba)';
+
+  @override
+  String get s92e7ac8d3c => 'Tu nombre de usuario de Toshiba Home AC Control.';
+
+  @override
+  String get safde071183 =>
+      'La contraseña de la aplicación del fabricante. Almacenado sólo en este dispositivo / en su propia bóveda.';
+
+  @override
+  String get s2862f25983 => 'Token (SmartThings)';
+
+  @override
+  String get s23a4bc8253 =>
+      'SmartThings acceso personal token (account.smartthings.com/tokens).';
+
+  @override
+  String get sef37e5048d => 'Clave (Daikin BRP072C, pegatina)';
+
+  @override
+  String get s1c339065e1 =>
+      'La llave impresa en la pegatina del adaptador BRP072C.';
+
+  @override
+  String get se67e3e0eb9 => 'Client ID (myUplink)';
+
+  @override
+  String get sc2d5225ae8 =>
+      'ID de cliente de su propia aplicación en dev.myuplink.com.';
+
+  @override
+  String get sa165e50f99 => 'Client Secret (myUplink)';
+
+  @override
+  String get s332f9bc1a1 =>
+      'Cliente Secret de su propia aplicación en dev.myuplink.com.';
+
+  @override
+  String get sd1d4b22fc6 => 'Mapa del registro (Modbus)';
+
+  @override
+  String get s5a9d485e7f =>
+      'La serie de la bomba. \'lista de registro importada\' = la propia exportación CSV de la bomba.';
+
+  @override
+  String get s7dc3b152a8 => 'NIBE S-series';
+
+  @override
+  String get sad9fd728f9 => 'NIBE F-series + MODBUS 40';
+
+  @override
+  String get seba6d1ba70 => 'Thermia Genesis';
+
+  @override
+  String get sfdc0bbf134 => 'Lista de registro importada';
+
+  @override
+  String get scd35ffb8e9 =>
+      'Por lo general el predeterminado (Modbus 502, MHI 51443).';
+
+  @override
+  String get s58f0665e29 => 'Modbus unit id';
+
+  @override
+  String get sab25ff8075 => 'Dirección de unidad Modbus, generalmente 1.';
+
+  @override
+  String get sb064bec4c8 => 'URL del servidor (sólo prueba)';
+
+  @override
+  String get s67b2ac9328 =>
+      'Probando solamente: reemplaza la dirección del servidor del fabricante.';
+
+  @override
+  String get sabab3f2fae => 'Qué leer';
+
+  @override
+  String get sf5e949d20c =>
+      'Estado completo (tarjeta de bomba de calor) o una lectura.';
+
+  @override
+  String get s46ce82ef9c => 'Estado completo';
+
+  @override
+  String get s8cbd66456f => 'Una lectura';
+
+  @override
+  String get s6d1827b58e => 'Unidad id';
+
+  @override
+  String get s89308ddc6d =>
+      'Unidad interior id; \'mantenimiento\' para dispositivos de unidad única.';
+
+  @override
+  String get sa643668bec =>
+      'Lectura (corriente, objetivo, exterior, potencia...)';
+
+  @override
+  String get s02d24152f0 =>
+      'Que lectura: actual, objetivo, exterior, energía, suministro, hot_water...';
+
+  @override
+  String get se16e293d6b => 'Set';
+
+  @override
+  String get s155de09d38 => 'Qué establecer';
+
+  @override
+  String get s94ecb845c8 => 'Punto de juego, potencia, modo o ventilador.';
+
+  @override
+  String get sba2eb6d9b9 => 'Setpoint';
+
+  @override
+  String get seb4c438a42 => 'Valor ({{value}})';
+
+  @override
+  String get s033b6b8c6c =>
+      'Valor para enviar; {{value}} = el valor de la tarjeta.';
+
+  @override
+  String s6478b264c0(String p0) {
+    return 'Bomba de calor \"$p0\" ya no está en la cuenta';
+  }
+
+  @override
+  String get s4937d259b8 => 'Punto de juego desaparecido';
+
+  @override
+  String get s10f42a9a20 => 'curva';
+
+  @override
+  String get sbc996a7d25 => 'consigna';
+
+  @override
+  String get s620c04d73e => 'Suministro';
+
+  @override
+  String get s922f77d2f1 => 'Regreso';
+
+  @override
+  String get sbfee72daca => 'Agua caliente';
+
+  @override
+  String get s0be9e35521 => 'Brine in';
+
+  @override
+  String get s3a0d796501 => 'Brine out';
+
+  @override
+  String get s23bbe9b4ed => 'Horas de carrera';
+
+  @override
+  String get s3ca74f3ef8 => 'Compresor';
+
+  @override
+  String get s6d21845355 =>
+      'Encuéntrelo en la lista de dispositivos de su router o en la aplicación del fabricante (información del dispositivo).';
+
+  @override
+  String get se74bcc1028 => 'Tarjetas adicionales para automatizaciones';
+
+  @override
+  String get s4a91d07711 => 'Daikin (Wi-Fi, local)';
+
+  @override
+  String get s8e339844a9 =>
+      'Daikin con adaptador Wi-Fi (BRP069, BRP072C, Airbase). Funciona sin la nube; se encuentra en la red.';
+
+  @override
+  String get sdb368f83d9 =>
+      'Adaptadores BRP072C más recientes: la llave de 13 dígitos está en la pegatina de adaptador. Los más antiguos no necesitan ninguno.';
+
+  @override
+  String get se19c918d2d =>
+      'Bomba de calor MHI con el módulo Wi-Fi WF-RAC (Smart M-Air app). Control local, sin nube.';
+
+  @override
+  String get sc24b0de42d =>
+      'Air-to-air y Ecodan bombas de aire a agua a través de su cuenta MELCloud, desde cualquier lugar.';
+
+  @override
+  String get s41d69e699d => 'Igual que en la aplicación MELCloud.';
+
+  @override
+  String get s7a7ab0d238 => 'Almacenado encriptado en este dispositivo sólo.';
+
+  @override
+  String get sa8405bf705 =>
+      'Bombas de calor Toshiba Wi-Fi a través de su cuenta Toshiba Home AC Control.';
+
+  @override
+  String get s703279c03e => 'Igual que en la aplicación Toshiba.';
+
+  @override
+  String get se26b321a29 =>
+      'Bombas de calor Samsung Wi-Fi a través de la API SmartThings oficial.';
+
+  @override
+  String get s550793ea4a =>
+      'Crear uno en cuenta.smartthings.com/tokens con los alcances de los dispositivos. Nota: Samsung limita nuevas fichas a 24 horas.';
+
+  @override
+  String get se2f1cb488d =>
+      'Bombas de calor de Hitachi a través de su cuenta de airCloud Go.';
+
+  @override
+  String get s2e3665e309 =>
+      'Bombas de fuentes terrestres y de escape NIBE a través de la API oficial myUplink (también CTC, Høiax...).';
+
+  @override
+  String get sf2e635afad =>
+      'Inicie sesión en dev.myuplink.com → Aplicaciones → Crear. Copiar el identificador del cliente.';
+
+  @override
+  String get s9db9eb22f8 => 'De la misma página.';
+
+  @override
+  String get s412987475c => 'NIBE S-series (Modbus TCP, local)';
+
+  @override
+  String get s3fc8f4ce0d =>
+      'S1155, S1255, SMO S40... Permite Modbus TCP en el menú de la bomba 7.5.9. No hay nube.';
+
+  @override
+  String get s9b15cf6f63 =>
+      'IP de la bomba: menú 3.1.13 (Connecciones) o lista de dispositivos del router.';
+
+  @override
+  String get s29ed152759 => 'NIBE F-series + MODBUS 40 (local)';
+
+  @override
+  String get sa723788d3c =>
+      'F-series / SMO con el accesorio MODBUS 40 y un gateway RS485→TCP. Verifica los registros.';
+
+  @override
+  String get sb001c51087 => 'IP address of the RS485→Modbus TCP gateway.';
+
+  @override
+  String get sde4b0f4525 => 'Thermia (Modbus TCP, local)';
+
+  @override
+  String get s9280f807a6 =>
+      'Thermia Atlas, Calibra, Diplomat Inverter, Mega (Génesis). Modbus TCP: Settings → BMS.';
+
+  @override
+  String get scab35073e8 => 'Dirección IP de la bomba (display o router).';
+
+  @override
+  String get s5ddd513689 =>
+      'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – o cualquier otro con un mando de IR.';
+
+  @override
+  String get s9622976fd3 => 'No hay unidades encontradas';
+
+  @override
+  String get sa93876ac9d => 'unidad(s)';
+
+  @override
+  String get sf3d77f10b9 => 'demasiadas solicitudes';
+
+  @override
+  String get se62d52c336 => 'airCloud: el registro falló';
+
+  @override
+  String get sc5f4490c42 => 'airCloud: unidad no encontrada';
+
+  @override
+  String get s00c7f00681 => 'MELCloud: e-mail equivocado o contraseña';
+
+  @override
+  String get s4bd0e3110e =>
+      'Esta bomba no se enciende ni se apaga sobre Modbus.';
+
+  @override
+  String get s4558be4f09 => 'myUplink: ID de cliente incorrecto o secreto';
+
+  @override
+  String get s370bf1904d =>
+      'El modo de una bomba de fuentes subterráneas no se cambia aquí – sólo el punto de ajuste.';
+
+  @override
+  String get s8f016f0e29 =>
+      'Toshiba: nombre de usuario incorrecto o contraseña';
+
+  @override
   String get s589eb1bcd3 => 'Asistente de casa (ejemplo)';
 
   @override
@@ -8485,9 +8916,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s9783a8fd53 => 'habitación';
-
-  @override
-  String get sbc996a7d25 => 'consigna';
 
   @override
   String get sa69c0e1ca3 => 'Bomba de calor aire (IR)';

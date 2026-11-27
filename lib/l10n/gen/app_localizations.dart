@@ -3156,11 +3156,11 @@ abstract class AppLocalizations {
   /// **'Button \"{p0}\" added.'**
   String s0d353281af(String p0);
 
-  /// fi: Opettele kaukosäädin
+  /// fi: Opeta uusi komento
   ///
   /// In en, this message translates to:
-  /// **'Learn remote'**
-  String get s8e4e78e067;
+  /// **'Teach a new command'**
+  String get sd2a872d1ba;
 
   /// fi: Valmis
   ///
@@ -4518,11 +4518,71 @@ abstract class AppLocalizations {
   /// **'Fan'**
   String get s0117dea8bc;
 
+  /// fi: Hiljainen
+  ///
+  /// In en, this message translates to:
+  /// **'Quiet'**
+  String get sb680eb3021;
+
+  /// fi: Pieni
+  ///
+  /// In en, this message translates to:
+  /// **'Low'**
+  String get s4299eb9d18;
+
+  /// fi: Pieni–keski
+  ///
+  /// In en, this message translates to:
+  /// **'Medium-low'**
+  String get s90ba0c57d4;
+
+  /// fi: Keski
+  ///
+  /// In en, this message translates to:
+  /// **'Medium'**
+  String get s0cb68026a7;
+
+  /// fi: Keski–suuri
+  ///
+  /// In en, this message translates to:
+  /// **'Medium-high'**
+  String get s9c5e4ed5cb;
+
+  /// fi: Suuri
+  ///
+  /// In en, this message translates to:
+  /// **'High'**
+  String get s688b92a62f;
+
+  /// fi: Turbo
+  ///
+  /// In en, this message translates to:
+  /// **'Turbo'**
+  String get sb1ef6ab439;
+
+  /// fi: Ulkona
+  ///
+  /// In en, this message translates to:
+  /// **'Outdoor'**
+  String get s339446ffe7;
+
+  /// fi: Puhallin
+  ///
+  /// In en, this message translates to:
+  /// **'Fan'**
+  String get s018d2e08f4;
+
   /// fi: Ei lukemaa
   ///
   /// In en, this message translates to:
   /// **'No reading'**
   String get s11a7c24b38;
+
+  /// fi: käyrä
+  ///
+  /// In en, this message translates to:
+  /// **'curve'**
+  String get s79bbbe6195;
 
   /// fi: asetus
   ///
@@ -6362,6 +6422,30 @@ abstract class AppLocalizations {
   /// **'alerts'**
   String get s35e8813a82;
 
+  /// fi: Valitse rekisterilista (CSV)
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the register list (CSV)'**
+  String get sf1ed8904bb;
+
+  /// fi: Tiedostoa ei tunnistettu NIBEn rekisterilistaksi.
+  ///
+  /// In en, this message translates to:
+  /// **'Not recognised as a NIBE register list.'**
+  String get s5bf50963d1;
+
+  /// fi: Listassa ei ollut rekistereitä.
+  ///
+  /// In en, this message translates to:
+  /// **'The list had no registers.'**
+  String get s0cba536d9c;
+
+  /// fi: {p0} rekisteriä tuotu, {p1} tunnistettu (ulkolämpö, menovesi, käyttövesi, käyrän siirto…).
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} registers imported, {p1} recognised (outdoor, supply, hot water, curve offset…).'**
+  String s80d7fd2d3c(String p0, String p1);
+
   /// fi: Oma väri
   ///
   /// In en, this message translates to:
@@ -7830,8 +7914,8 @@ abstract class AppLocalizations {
   /// fi: IR on yksisuuntainen: lämpöpumppu ei kerro takaisin, menikö komento perille. Molaplan lähettää aina koko tilan (virta, t
   ///
   /// In en, this message translates to:
-  /// **'IR is one-way: the heat pump does not confirm. Molaplan always sends the whole state and shows what it sent. Learn other remote buttons later: Connections → blaster → \"Learn remote\".'**
-  String get s566585dc66;
+  /// **'IR is one-way: the heat pump does not confirm. Molaplan always sends the whole state and shows what it sent. Teach other remote buttons later: Connections → blaster → \"Teach a new command\".'**
+  String get s2e99b59497;
 
   /// fi: Ohje ja automaattinen haku
   ///
@@ -7958,6 +8042,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Other camera (ONVIF)'**
   String get s67bf18fb6f;
+
+  /// fi: Mikä lämpöpumppu sinulla on?
+  ///
+  /// In en, this message translates to:
+  /// **'Which heat pump do you have?'**
+  String get sdbbc24198f;
+
+  /// fi: Tarkista asetukset – ei valmistajan virallista dokumenttia.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify – no official vendor document.'**
+  String get sdfd0407af6;
+
+  /// fi: Ei wifiä – IR-ohjain (mikä tahansa merkki)
+  ///
+  /// In en, this message translates to:
+  /// **'No Wi-Fi – IR blaster (any brand)'**
+  String get s5562a66892;
+
+  /// fi: Tasmota- tai ESPHome-IR-lähetin (esim. Athom IR & RF) lähettää koko tilan kuten kaukosäädin. Voit myös opettaa omia kome
+  ///
+  /// In en, this message translates to:
+  /// **'A Tasmota or ESPHome IR blaster (e.g. Athom IR & RF) sends the full state like the remote. You can also teach your own commands.'**
+  String get sc6411a9010;
+
+  /// fi: Huoltoliitäntä (ESPHome)
+  ///
+  /// In en, this message translates to:
+  /// **'Service port (ESPHome)'**
+  String get s6cce12c7e3;
+
+  /// fi: ESP sisäyksikön liittimeen, kaksisuuntainen.
+  ///
+  /// In en, this message translates to:
+  /// **'An ESP on the indoor unit connector, two-way.'**
+  String get s0d3bc6d125;
+
+  /// fi: Home Assistantin kautta
+  ///
+  /// In en, this message translates to:
+  /// **'Via Home Assistant'**
+  String get s8275426406;
+
+  /// fi: Jos sinulla on jo Home Assistant.
+  ///
+  /// In en, this message translates to:
+  /// **'If you already have Home Assistant.'**
+  String get s5b10465c5b;
+
+  /// fi: Muut merkit – miksi ei vielä
+  ///
+  /// In en, this message translates to:
+  /// **'Other brands – why not yet'**
+  String get s417228f48f;
 
   /// fi: rtsp-transport
   ///
@@ -8726,6 +8864,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'IR is one-way: the heat pump does not confirm commands. Tiles show the last sent state.'**
   String get s837e0fc5e6;
+
+  /// fi: Tuo pumpun rekisterilista (CSV)
+  ///
+  /// In en, this message translates to:
+  /// **'Import the pump\'\'s register list (CSV)'**
+  String get sf1ffb49d9c;
 
   /// fi: Yhteys toimii!
   ///
@@ -13511,12 +13655,6 @@ abstract class AppLocalizations {
   /// **'Set temperature'**
   String get s5db6506824;
 
-  /// fi: Puhallin
-  ///
-  /// In en, this message translates to:
-  /// **'Fan'**
-  String get s018d2e08f4;
-
   /// fi: Siivekkeet
   ///
   /// In en, this message translates to:
@@ -14777,6 +14915,636 @@ abstract class AppLocalizations {
   /// **'{p0} not answering'**
   String sbe208615d0(String p0);
 
+  /// fi: outo vastaus
+  ///
+  /// In en, this message translates to:
+  /// **'odd answer'**
+  String get s14e68f6852;
+
+  /// fi: Ilmastointilaitteen käyttäjätaulukko on täynnä. Poista vanha puhelin Smart M-Air -sovelluksesta ja yritä uudelleen.
+  ///
+  /// In en, this message translates to:
+  /// **'The unit\'\'s account table is full. Remove an old phone in the Smart M-Air app and try again.'**
+  String get s31ec8d716e;
+
+  /// fi: Laite on varattu (toinen sovellus ohjaa) – yritä minuutin päästä.
+  ///
+  /// In en, this message translates to:
+  /// **'The unit is busy (another app) – try in a minute.'**
+  String get sbaecc9fbed;
+
+  /// fi: Daikin hylkäsi pyynnön – tarkista avain (key) tarrasta.
+  ///
+  /// In en, this message translates to:
+  /// **'Daikin refused – check the key on the sticker.'**
+  String get sc2474a4b0b;
+
+  /// fi: Daikin ei hyväksynyt avainta (key).
+  ///
+  /// In en, this message translates to:
+  /// **'Daikin did not accept the key.'**
+  String get s2f7a41de7a;
+
+  /// fi: Daikin-ohjainta ei löytynyt osoitteesta {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'No Daikin adapter at {p0}'**
+  String sc499fab53f(String p0);
+
+  /// fi: Daikin (paikallinen wifi)
+  ///
+  /// In en, this message translates to:
+  /// **'Daikin (local Wi-Fi)'**
+  String get s4cfb5a36c9;
+
+  /// fi: Mitsubishi Heavy (Smart M-Air, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Mitsubishi Heavy (Smart M-Air, local)'**
+  String get s2089a88d1f;
+
+  /// fi: Mitsubishi Electric (MELCloud)
+  ///
+  /// In en, this message translates to:
+  /// **'Mitsubishi Electric (MELCloud)'**
+  String get s050c379c67;
+
+  /// fi: Toshiba (Home AC Control)
+  ///
+  /// In en, this message translates to:
+  /// **'Toshiba (Home AC Control)'**
+  String get s339fd47e4a;
+
+  /// fi: Samsung (SmartThings)
+  ///
+  /// In en, this message translates to:
+  /// **'Samsung (SmartThings)'**
+  String get sf71a945a1d;
+
+  /// fi: Hitachi (airCloud Go)
+  ///
+  /// In en, this message translates to:
+  /// **'Hitachi (airCloud Go)'**
+  String get sf7aed9c9e0;
+
+  /// fi: NIBE (myUplink-pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'NIBE (myUplink cloud)'**
+  String get sb33215fa8b;
+
+  /// fi: NIBE / Thermia (Modbus TCP, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'NIBE / Thermia (Modbus TCP, local)'**
+  String get se9b4e55058;
+
+  /// fi: Lämpöpumppu (oma integraatio)
+  ///
+  /// In en, this message translates to:
+  /// **'Heat pump (built-in integration)'**
+  String get sddd6b1d42e;
+
+  /// fi: Merkki
+  ///
+  /// In en, this message translates to:
+  /// **'Brand'**
+  String get s1c9df5579f;
+
+  /// fi: Valmistaja ja yhteystapa. Paikalliset toimivat ilman pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'Maker and connection type. Local ones work without the cloud.'**
+  String get s34a3681441;
+
+  /// fi: Laitteen IP-osoite (paikalliset)
+  ///
+  /// In en, this message translates to:
+  /// **'Device IP (local brands)'**
+  String get s88688d2809;
+
+  /// fi: Paikallisen laitteen IP-osoite (reitittimen laitelistasta).
+  ///
+  /// In en, this message translates to:
+  /// **'IP address of a local unit (from your router\'\'s device list).'**
+  String get s87e0a93996;
+
+  /// fi: Sähköposti (pilvi)
+  ///
+  /// In en, this message translates to:
+  /// **'E-mail (cloud)'**
+  String get sc0bc183c3e;
+
+  /// fi: Valmistajan sovelluksen kirjautumissähköposti (MELCloud, airCloud).
+  ///
+  /// In en, this message translates to:
+  /// **'The e-mail you sign in to the maker\'\'s app with (MELCloud, airCloud).'**
+  String get s0cc25259c7;
+
+  /// fi: Käyttäjätunnus (Toshiba)
+  ///
+  /// In en, this message translates to:
+  /// **'Username (Toshiba)'**
+  String get s25f561c483;
+
+  /// fi: Toshiba Home AC Control -sovelluksen käyttäjätunnus.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Toshiba Home AC Control username.'**
+  String get s92e7ac8d3c;
+
+  /// fi: Valmistajan sovelluksen salasana. Tallentuu vain tälle laitteelle / omaan holviisi.
+  ///
+  /// In en, this message translates to:
+  /// **'The maker\'\'s app password. Stored only on this device / in your own vault.'**
+  String get safde071183;
+
+  /// fi: Tunnus (SmartThings token)
+  ///
+  /// In en, this message translates to:
+  /// **'Token (SmartThings)'**
+  String get s2862f25983;
+
+  /// fi: SmartThingsin henkilökohtainen token (account.smartthings.com/tokens).
+  ///
+  /// In en, this message translates to:
+  /// **'SmartThings personal access token (account.smartthings.com/tokens).'**
+  String get s23a4bc8253;
+
+  /// fi: Avain (Daikin BRP072C, tarrasta)
+  ///
+  /// In en, this message translates to:
+  /// **'Key (Daikin BRP072C, sticker)'**
+  String get sef37e5048d;
+
+  /// fi: BRP072C-ohjaimen tarrassa oleva avain (key).
+  ///
+  /// In en, this message translates to:
+  /// **'The key printed on the BRP072C adapter\'\'s sticker.'**
+  String get s1c339065e1;
+
+  /// fi: Client ID (myUplink)
+  ///
+  /// In en, this message translates to:
+  /// **'Client ID (myUplink)'**
+  String get se67e3e0eb9;
+
+  /// fi: Oman sovelluksen Client ID osoitteesta dev.myuplink.com.
+  ///
+  /// In en, this message translates to:
+  /// **'Client ID of your own app at dev.myuplink.com.'**
+  String get sc2d5225ae8;
+
+  /// fi: Client Secret (myUplink)
+  ///
+  /// In en, this message translates to:
+  /// **'Client Secret (myUplink)'**
+  String get sa165e50f99;
+
+  /// fi: Oman sovelluksen Client Secret osoitteesta dev.myuplink.com.
+  ///
+  /// In en, this message translates to:
+  /// **'Client Secret of your own app at dev.myuplink.com.'**
+  String get s332f9bc1a1;
+
+  /// fi: Rekisterikartta (Modbus)
+  ///
+  /// In en, this message translates to:
+  /// **'Register map (Modbus)'**
+  String get sd1d4b22fc6;
+
+  /// fi: Pumpun mallisarja. 'Tuotu rekisterilista' = pumpun oma CSV-vienti.
+  ///
+  /// In en, this message translates to:
+  /// **'The pump series. \'\'Imported register list\'\' = the pump\'\'s own CSV export.'**
+  String get s5a9d485e7f;
+
+  /// fi: NIBE S-sarja
+  ///
+  /// In en, this message translates to:
+  /// **'NIBE S-series'**
+  String get s7dc3b152a8;
+
+  /// fi: NIBE F-sarja + MODBUS 40
+  ///
+  /// In en, this message translates to:
+  /// **'NIBE F-series + MODBUS 40'**
+  String get sad9fd728f9;
+
+  /// fi: Thermia Genesis
+  ///
+  /// In en, this message translates to:
+  /// **'Thermia Genesis'**
+  String get seba6d1ba70;
+
+  /// fi: Tuotu rekisterilista
+  ///
+  /// In en, this message translates to:
+  /// **'Imported register list'**
+  String get sfdc0bbf134;
+
+  /// fi: Yleensä oletus (Modbus 502, MHI 51443).
+  ///
+  /// In en, this message translates to:
+  /// **'Usually the default (Modbus 502, MHI 51443).'**
+  String get scd35ffb8e9;
+
+  /// fi: Modbus unit id
+  ///
+  /// In en, this message translates to:
+  /// **'Modbus unit id'**
+  String get s58f0665e29;
+
+  /// fi: Modbus-laitteen osoite, yleensä 1.
+  ///
+  /// In en, this message translates to:
+  /// **'Modbus unit address, usually 1.'**
+  String get sab25ff8075;
+
+  /// fi: Palvelimen osoite (vain testaukseen)
+  ///
+  /// In en, this message translates to:
+  /// **'Server URL (testing only)'**
+  String get sb064bec4c8;
+
+  /// fi: Vain testaukseen: korvaa valmistajan palvelimen osoitteen.
+  ///
+  /// In en, this message translates to:
+  /// **'Testing only: replaces the maker\'\'s server address.'**
+  String get s67b2ac9328;
+
+  /// fi: Mitä luetaan
+  ///
+  /// In en, this message translates to:
+  /// **'What to read'**
+  String get sabab3f2fae;
+
+  /// fi: Koko tila (lämpöpumppuruutu) tai yksi lukema.
+  ///
+  /// In en, this message translates to:
+  /// **'Full state (heat pump tile) or one reading.'**
+  String get sf5e949d20c;
+
+  /// fi: Koko tila
+  ///
+  /// In en, this message translates to:
+  /// **'Full state'**
+  String get s46ce82ef9c;
+
+  /// fi: Yksi lukema
+  ///
+  /// In en, this message translates to:
+  /// **'One reading'**
+  String get s8cbd66456f;
+
+  /// fi: Sisäyksikön tunnus
+  ///
+  /// In en, this message translates to:
+  /// **'Unit id'**
+  String get s6d1827b58e;
+
+  /// fi: Sisäyksikön tunnus; yhden laitteen tileillä 'main'.
+  ///
+  /// In en, this message translates to:
+  /// **'Indoor unit id; \'\'main\'\' for single-unit devices.'**
+  String get s89308ddc6d;
+
+  /// fi: Lukema (current, target, outdoor, power…)
+  ///
+  /// In en, this message translates to:
+  /// **'Reading (current, target, outdoor, power…)'**
+  String get sa643668bec;
+
+  /// fi: Mikä lukema: current, target, outdoor, power, supply, hot_water…
+  ///
+  /// In en, this message translates to:
+  /// **'Which reading: current, target, outdoor, power, supply, hot_water…'**
+  String get s02d24152f0;
+
+  /// fi: Aseta
+  ///
+  /// In en, this message translates to:
+  /// **'Set'**
+  String get se16e293d6b;
+
+  /// fi: Mitä asetetaan
+  ///
+  /// In en, this message translates to:
+  /// **'What to set'**
+  String get s155de09d38;
+
+  /// fi: Asetusarvo, virta, tila tai puhallin.
+  ///
+  /// In en, this message translates to:
+  /// **'Setpoint, power, mode or fan.'**
+  String get s94ecb845c8;
+
+  /// fi: Asetusarvo
+  ///
+  /// In en, this message translates to:
+  /// **'Setpoint'**
+  String get sba2eb6d9b9;
+
+  /// fi: Arvo ({{value}})
+  ///
+  /// In en, this message translates to:
+  /// **'\'Value ({{value}})\''**
+  String get seb4c438a42;
+
+  /// fi: Lähetettävä arvo; {{value}} = ruudun arvo.
+  ///
+  /// In en, this message translates to:
+  /// **'\'Value to send; {{value}} = the tile\'\'s value.\''**
+  String get s033b6b8c6c;
+
+  /// fi: Lämpöpumppua "{p0}" ei löydy enää tililtä
+  ///
+  /// In en, this message translates to:
+  /// **'Heat pump \"{p0}\" is no longer in the account'**
+  String s6478b264c0(String p0);
+
+  /// fi: Asetusarvo puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'Setpoint missing'**
+  String get s4937d259b8;
+
+  /// fi: käyrän siirto
+  ///
+  /// In en, this message translates to:
+  /// **'curve offset'**
+  String get s10f42a9a20;
+
+  /// fi: asetus
+  ///
+  /// In en, this message translates to:
+  /// **'setpoint'**
+  String get sbc996a7d25;
+
+  /// fi: Menovesi
+  ///
+  /// In en, this message translates to:
+  /// **'Supply'**
+  String get s620c04d73e;
+
+  /// fi: Paluuvesi
+  ///
+  /// In en, this message translates to:
+  /// **'Return'**
+  String get s922f77d2f1;
+
+  /// fi: Käyttövesi
+  ///
+  /// In en, this message translates to:
+  /// **'Hot water'**
+  String get sbfee72daca;
+
+  /// fi: Keruuliuos sisään
+  ///
+  /// In en, this message translates to:
+  /// **'Brine in'**
+  String get s0be9e35521;
+
+  /// fi: Keruuliuos ulos
+  ///
+  /// In en, this message translates to:
+  /// **'Brine out'**
+  String get s3a0d796501;
+
+  /// fi: Astetminuutit
+  ///
+  /// In en, this message translates to:
+  /// **'Degree minutes'**
+  String get s23bbe9b4ed;
+
+  /// fi: Kompressori
+  ///
+  /// In en, this message translates to:
+  /// **'Compressor'**
+  String get s3ca74f3ef8;
+
+  /// fi: Löytyy reitittimen laitelistasta tai valmistajan sovelluksesta (laitteen tiedot).
+  ///
+  /// In en, this message translates to:
+  /// **'Find it in your router\'\'s device list or the maker\'\'s app (device info).'**
+  String get s6d21845355;
+
+  /// fi: Lisäruudut automaatioihin
+  ///
+  /// In en, this message translates to:
+  /// **'Extra tiles for automations'**
+  String get se74bcc1028;
+
+  /// fi: Daikin (wifi, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Daikin (Wi-Fi, local)'**
+  String get s4a91d07711;
+
+  /// fi: Daikin-ilmalämpöpumppu wifi-ohjaimella (BRP069, BRP072C, Airbase). Toimii ilman pilveä, haetaan verkosta.
+  ///
+  /// In en, this message translates to:
+  /// **'Daikin with a Wi-Fi adapter (BRP069, BRP072C, Airbase). Works without the cloud; found on the network.'**
+  String get s8e339844a9;
+
+  /// fi: Uudemmissa BRP072C-ohjaimissa 13-numeroinen avain on ohjaimen tarrassa. Vanhemmat eivät tarvitse sitä.
+  ///
+  /// In en, this message translates to:
+  /// **'Newer BRP072C adapters: the 13-digit key is on the adapter sticker. Older ones need none.'**
+  String get sdb368f83d9;
+
+  /// fi: MHI-ilmalämpöpumppu WF-RAC-wifimoduulilla (Smart M-Air -sovellus). Paikallinen ohjaus ilman pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'MHI heat pump with the WF-RAC Wi-Fi module (Smart M-Air app). Local control, no cloud.'**
+  String get se19c918d2d;
+
+  /// fi: Ilmalämpöpumput ja Ecodan-ilma-vesipumput MELCloud-tilin kautta, mistä tahansa.
+  ///
+  /// In en, this message translates to:
+  /// **'Air-to-air and Ecodan air-to-water pumps through your MELCloud account, from anywhere.'**
+  String get sc24b0de42d;
+
+  /// fi: Sama kuin MELCloud-sovelluksessa.
+  ///
+  /// In en, this message translates to:
+  /// **'Same as in the MELCloud app.'**
+  String get s41d69e699d;
+
+  /// fi: Tallentuu vain tähän laitteeseen salattuna.
+  ///
+  /// In en, this message translates to:
+  /// **'Stored encrypted on this device only.'**
+  String get s7a7ab0d238;
+
+  /// fi: Toshiban wifi-ilmalämpöpumput Toshiba Home AC Control -tilin kautta.
+  ///
+  /// In en, this message translates to:
+  /// **'Toshiba Wi-Fi heat pumps through your Toshiba Home AC Control account.'**
+  String get sa8405bf705;
+
+  /// fi: Sama kuin Toshiba Home AC Control -sovelluksessa.
+  ///
+  /// In en, this message translates to:
+  /// **'Same as in the Toshiba app.'**
+  String get s703279c03e;
+
+  /// fi: Samsungin wifi-ilmalämpöpumput SmartThingsin virallisen rajapinnan kautta.
+  ///
+  /// In en, this message translates to:
+  /// **'Samsung Wi-Fi heat pumps through the official SmartThings API.'**
+  String get se26b321a29;
+
+  /// fi: Luo osoitteessa account.smartthings.com/tokens: valitse "Devices" (lue ja ohjaa). Huom: Samsung rajoittaa uudet tunnukse
+  ///
+  /// In en, this message translates to:
+  /// **'Create one at account.smartthings.com/tokens with the Devices scopes. Note: Samsung limits new tokens to 24 hours.'**
+  String get s550793ea4a;
+
+  /// fi: Hitachin ilmalämpöpumput airCloud Go -tilin kautta.
+  ///
+  /// In en, this message translates to:
+  /// **'Hitachi heat pumps through your airCloud Go account.'**
+  String get se2f1cb488d;
+
+  /// fi: NIBE-maalämpö- ja poistoilmapumput myUplinkin virallisen rajapinnan kautta (myös CTC, Høiax…).
+  ///
+  /// In en, this message translates to:
+  /// **'NIBE ground-source and exhaust-air pumps through the official myUplink API (also CTC, Høiax…).'**
+  String get s2e3665e309;
+
+  /// fi: Kirjaudu dev.myuplink.com → Applications → Create (Callback URL voi olla esim. https://molaplan.com). Kopioi Client Iden
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in at dev.myuplink.com → Applications → Create. Copy the Client Identifier.'**
+  String get sf2e635afad;
+
+  /// fi: Samalta sivulta.
+  ///
+  /// In en, this message translates to:
+  /// **'From the same page.'**
+  String get s9db9eb22f8;
+
+  /// fi: NIBE S-sarja (Modbus TCP, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'NIBE S-series (Modbus TCP, local)'**
+  String get s412987475c;
+
+  /// fi: S1155, S1255, SMO S40… Ota Modbus TCP käyttöön pumpun valikosta 7.5.9. Ei pilveä.
+  ///
+  /// In en, this message translates to:
+  /// **'S1155, S1255, SMO S40… Enable Modbus TCP in the pump menu 7.5.9. No cloud.'**
+  String get s3fc8f4ce0d;
+
+  /// fi: Pumpun IP-osoite: valikko 3.1.13 (Yhteydet) tai reitittimen laitelista.
+  ///
+  /// In en, this message translates to:
+  /// **'The pump\'\'s IP: menu 3.1.13 (Connections) or your router\'\'s device list.'**
+  String get s9b15cf6f63;
+
+  /// fi: NIBE F-sarja + MODBUS 40 (paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'NIBE F-series + MODBUS 40 (local)'**
+  String get s29ed152759;
+
+  /// fi: F1145/F1155/F1255/F750/SMO + MODBUS 40 -lisävaruste ja RS485→TCP-muunnin. Tarkista rekisterit.
+  ///
+  /// In en, this message translates to:
+  /// **'F-series / SMO with the MODBUS 40 accessory and an RS485→TCP gateway. Verify the registers.'**
+  String get sa723788d3c;
+
+  /// fi: RS485→Modbus TCP -muuntimen IP-osoite.
+  ///
+  /// In en, this message translates to:
+  /// **'IP address of the RS485→Modbus TCP gateway.'**
+  String get sb001c51087;
+
+  /// fi: Thermia (Modbus TCP, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Thermia (Modbus TCP, local)'**
+  String get sde4b0f4525;
+
+  /// fi: Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis). Modbus TCP: Asetukset → BMS.
+  ///
+  /// In en, this message translates to:
+  /// **'Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis). Modbus TCP: Settings → BMS.'**
+  String get s9280f807a6;
+
+  /// fi: Pumpun IP-osoite (näytöltä tai reitittimestä).
+  ///
+  /// In en, this message translates to:
+  /// **'The pump\'\'s IP address (display or router).'**
+  String get scab35073e8;
+
+  /// fi: Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – tai mikä tahansa IR-kaukosäätimellä.
+  ///
+  /// In en, this message translates to:
+  /// **'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – or any with an IR remote.'**
+  String get s5ddd513689;
+
+  /// fi: Ei laitteita
+  ///
+  /// In en, this message translates to:
+  /// **'No units found'**
+  String get s9622976fd3;
+
+  /// fi: laitetta
+  ///
+  /// In en, this message translates to:
+  /// **'unit(s)'**
+  String get sa93876ac9d;
+
+  /// fi: liian monta pyyntöä
+  ///
+  /// In en, this message translates to:
+  /// **'too many requests'**
+  String get sf3d77f10b9;
+
+  /// fi: airCloud: kirjautuminen epäonnistui
+  ///
+  /// In en, this message translates to:
+  /// **'airCloud: sign-in failed'**
+  String get se62d52c336;
+
+  /// fi: airCloud: laitetta ei löydy
+  ///
+  /// In en, this message translates to:
+  /// **'airCloud: unit not found'**
+  String get sc5f4490c42;
+
+  /// fi: MELCloud: väärä sähköposti tai salasana
+  ///
+  /// In en, this message translates to:
+  /// **'MELCloud: wrong e-mail or password'**
+  String get s00c7f00681;
+
+  /// fi: Tätä pumppua ei kytketä päälle/pois Modbusilla.
+  ///
+  /// In en, this message translates to:
+  /// **'This pump is not switched on/off over Modbus.'**
+  String get s4bd0e3110e;
+
+  /// fi: myUplink: väärä Client ID tai Secret
+  ///
+  /// In en, this message translates to:
+  /// **'myUplink: wrong Client ID or Secret'**
+  String get s4558be4f09;
+
+  /// fi: Maalämpöpumpun tilaa ei vaihdeta täältä – vain asetusarvo.
+  ///
+  /// In en, this message translates to:
+  /// **'The mode of a ground-source pump is not changed here – only the setpoint.'**
+  String get s370bf1904d;
+
+  /// fi: Toshiba: väärä käyttäjätunnus tai salasana
+  ///
+  /// In en, this message translates to:
+  /// **'Toshiba: wrong username or password'**
+  String get s8f016f0e29;
+
   /// fi: Home Assistant (esimerkki)
   ///
   /// In en, this message translates to:
@@ -15190,12 +15958,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'room'**
   String get s9783a8fd53;
-
-  /// fi: asetus
-  ///
-  /// In en, this message translates to:
-  /// **'setpoint'**
-  String get sbc996a7d25;
 
   /// fi: Ilmalämpöpumppu (IR)
   ///

@@ -1727,7 +1727,7 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
-  String get s8e4e78e067 => 'Õpeta pult';
+  String get sd2a872d1ba => 'Uue käsu õpetamine';
 
   @override
   String get s2acab0eccd => 'Valmis';
@@ -2470,7 +2470,37 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s0117dea8bc => 'Ventilaator';
 
   @override
+  String get sb680eb3021 => 'Vaikust';
+
+  @override
+  String get s4299eb9d18 => 'Madalamad';
+
+  @override
+  String get s90ba0c57d4 => 'Keskmiselt madal';
+
+  @override
+  String get s0cb68026a7 => 'Keskmine';
+
+  @override
+  String get s9c5e4ed5cb => 'Keskmise kõrgusega';
+
+  @override
+  String get s688b92a62f => 'Kõrge';
+
+  @override
+  String get sb1ef6ab439 => 'Turbo';
+
+  @override
+  String get s339446ffe7 => 'Väljas';
+
+  @override
+  String get s018d2e08f4 => 'Ventilaator';
+
+  @override
   String get s11a7c24b38 => 'Näit puudub';
+
+  @override
+  String get s79bbbe6195 => 'kõver';
 
   @override
   String get s28b7c227f0 => 'seade';
@@ -3499,6 +3529,20 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s35e8813a82 => 'häireid';
 
   @override
+  String get sf1ed8904bb => 'Registrite nimekirja (CSV) valimine';
+
+  @override
+  String get s5bf50963d1 => 'Ei ole tunnustatud NIBE registriloendina.';
+
+  @override
+  String get s0cba536d9c => 'Nimekirjas ei olnud registreid.';
+
+  @override
+  String s80d7fd2d3c(String p0, String p1) {
+    return '$p0 registrid imporditud, $p1 tunnustatud (välisruum, varustus, soe vesi, kurvi nihe...).';
+  }
+
+  @override
   String get sc3abd09cd9 => 'Kohandatud värv';
 
   @override
@@ -4294,8 +4338,8 @@ class AppLocalizationsEt extends AppLocalizations {
       'Eelseadistused on näited. Kontrolli neid enne nende kasutamist seadme kasutusjuhendis.';
 
   @override
-  String get s566585dc66 =>
-      'IR on ühesuunaline: soojuspump ei kinnita. Molaplan saadab alati kogu oleku ja näitab, mida ta saatis. Õpi teisi kaugnuppe hiljem: ühendused → blaster → \"Õpi kaugjuhtimispult\".';
+  String get s2e99b59497 =>
+      'IR on ühesuunaline: soojuspump ei kinnita. Molaplan saadab alati kogu oleku ja näitab, mida ta saatis. Õpeta teisi kaugnuppe hiljem: ühendused → IR saatja → \"Õppige uut käsku\".';
 
   @override
   String get s0dd21e026c => 'Juhend ja automaatne otsing';
@@ -4363,6 +4407,34 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s67bf18fb6f => 'Muu kaamera (ONVIF)';
+
+  @override
+  String get sdbbc24198f => 'Milline soojuspump sul on?';
+
+  @override
+  String get sdfd0407af6 => 'Kontrollige - ei ole ametlikku müüja dokumenti.';
+
+  @override
+  String get s5562a66892 => 'Wi-Fi - IR-saatja puudub (mis tahes kaubamärk)';
+
+  @override
+  String get sc6411a9010 =>
+      'Tasmota või ESPHome IR saatja (nt Athom IR & RF) saadab täisoleku nagu pult. Samuti saab õpetada omaenda käske.';
+
+  @override
+  String get s6cce12c7e3 => 'Teenindussadam (ESPHome)';
+
+  @override
+  String get s0d3bc6d125 => 'ESP siseseadme pistikul, kahesuunaline.';
+
+  @override
+  String get s8275426406 => 'Koduabilise kaudu';
+
+  @override
+  String get s5b10465c5b => 'Kui sul on juba koduabiline olemas.';
+
+  @override
+  String get s417228f48f => 'Teised kaubamärgid – miks mitte veel';
 
   @override
   String get s772c158a57 => 'tcp';
@@ -4782,6 +4854,9 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s837e0fc5e6 =>
       'IR on ühesuunaline: soojuspump ei kinnita käske. Plaadid näitavad viimast saadetud olekut.';
+
+  @override
+  String get sf1ffb49d9c => 'Pumba registriloendi (CSV) import';
 
   @override
   String get s09737988fd => 'Ühendus töötab!';
@@ -7457,9 +7532,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s5db6506824 => 'Temperatuuri määramine';
 
   @override
-  String get s018d2e08f4 => 'Ventilaator';
-
-  @override
   String get sa00d64c920 => 'Vane';
 
   @override
@@ -8198,6 +8270,357 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String get s14e68f6852 => 'paaritu vastus';
+
+  @override
+  String get s31ec8d716e =>
+      'Seadme kontotabel on täis. Eemalda vana telefon rakenduses Smart M- Air ja proovi uuesti.';
+
+  @override
+  String get sbaecc9fbed =>
+      'Seade on hõivatud (teine rakendus) - proovige minuti jooksul.';
+
+  @override
+  String get sc2474a4b0b =>
+      'Daikin keeldus - kontrollige kleebisel olevat võtit.';
+
+  @override
+  String get s2f7a41de7a => 'Daikin ei võtnud võtit vastu.';
+
+  @override
+  String sc499fab53f(String p0) {
+    return 'Daikini adapter puudub $p0';
+  }
+
+  @override
+  String get s4cfb5a36c9 => 'Daikin (kohalik Wi-Fi)';
+
+  @override
+  String get s2089a88d1f => 'Mitsubishi Heavy (Smart M-Air, kohalik)';
+
+  @override
+  String get s050c379c67 => 'Mitsubishi Electric (MELCloud)';
+
+  @override
+  String get s339fd47e4a => 'Toshiba (Home AC Control)';
+
+  @override
+  String get sf71a945a1d => 'Samsung (SmartThings)';
+
+  @override
+  String get sf7aed9c9e0 => 'Hitachi (airCloud Go)';
+
+  @override
+  String get sb33215fa8b => 'NIBE (myUplink cloud)';
+
+  @override
+  String get se9b4e55058 => 'NIBE / Thermia (Modbus TCP, kohalik)';
+
+  @override
+  String get sddd6b1d42e => 'Soojuspump (sisseehitatud integreerimine)';
+
+  @override
+  String get s1c9df5579f => 'Kaubamärk';
+
+  @override
+  String get s34a3681441 =>
+      'Looja ja ühenduse tüüp. Kohalikud töötavad ilma pilveta.';
+
+  @override
+  String get s88688d2809 => 'Seadme IP (kohalikud kaubamärgid)';
+
+  @override
+  String get s87e0a93996 =>
+      'Kohaliku üksuse IP-aadress (teie ruuteri seadmete loendist).';
+
+  @override
+  String get sc0bc183c3e => 'E-post (pilv)';
+
+  @override
+  String get s0cc25259c7 =>
+      'E-kiri, millega logite sisse valmistaja rakendusele (MELCloud, airCloud).';
+
+  @override
+  String get s25f561c483 => 'Kasutajanimi (Toshiba)';
+
+  @override
+  String get s92e7ac8d3c => 'Toshiba Home AC Control kasutajanimi.';
+
+  @override
+  String get safde071183 =>
+      'Valmistaja rakenduse parool. Salvestatud ainult selles seadmes / sinu enda seifis.';
+
+  @override
+  String get s2862f25983 => 'Token (SmartThings)';
+
+  @override
+  String get s23a4bc8253 =>
+      'SmartThingsi isikliku juurdepääsu luba (account.smartthings.com/tokens).';
+
+  @override
+  String get sef37e5048d => 'Võti (Daikin BRP072C, kleebis)';
+
+  @override
+  String get s1c339065e1 =>
+      'Võti, mis on trükitud BRP072C adapteri kleebisele.';
+
+  @override
+  String get se67e3e0eb9 => 'Client ID (myUplink)';
+
+  @override
+  String get sc2d5225ae8 =>
+      'Teie enda rakenduse kliendi ID aadressil dev.myuplink.com.';
+
+  @override
+  String get sa165e50f99 => 'Client Secret (myUplink)';
+
+  @override
+  String get s332f9bc1a1 =>
+      'Oma rakenduse kliendisaladus aadressil dev.myuplink.com.';
+
+  @override
+  String get sd1d4b22fc6 => 'Registrikaart (Modbus)';
+
+  @override
+  String get s5a9d485e7f =>
+      'Pumpade seeria. \'Imported register list\' = pumba enda CSV eksport.';
+
+  @override
+  String get s7dc3b152a8 => 'NIBE S-seeria';
+
+  @override
+  String get sad9fd728f9 => 'NIBE F-seeria + MODBUS 40';
+
+  @override
+  String get seba6d1ba70 => 'Thermia Genesis';
+
+  @override
+  String get sfdc0bbf134 => 'Imporditud registrite nimekiri';
+
+  @override
+  String get scd35ffb8e9 => 'Tavaliselt vaikimisi (Modbus 502, MHI 51443).';
+
+  @override
+  String get s58f0665e29 => 'Modbus unit id';
+
+  @override
+  String get sab25ff8075 => 'Modbusi üksuse aadress, tavaliselt 1.';
+
+  @override
+  String get sb064bec4c8 => 'Serveri URL (ainult testimine)';
+
+  @override
+  String get s67b2ac9328 =>
+      'Ainult testimine: asendab valmistaja serveri aadressi.';
+
+  @override
+  String get sabab3f2fae => 'Mida lugeda';
+
+  @override
+  String get sf5e949d20c => 'Täisolekus (soojuspumba kaart) või üks näit.';
+
+  @override
+  String get s46ce82ef9c => 'Täisosa';
+
+  @override
+  String get s8cbd66456f => 'Üks lugemine';
+
+  @override
+  String get s6d1827b58e => 'Ühiku ID';
+
+  @override
+  String get s89308ddc6d =>
+      'Siseseade id; \'peamine\' üheüksuseliste seadmete puhul.';
+
+  @override
+  String get sa643668bec => 'Lugemine (jooksev, sihtmärk, väljas, võimsus...)';
+
+  @override
+  String get s02d24152f0 =>
+      'Milline lugemine: praegune, sihtmärk, väljas, elekter, varustus, kuum vesi...';
+
+  @override
+  String get se16e293d6b => 'Seadke';
+
+  @override
+  String get s155de09d38 => 'Mida seada';
+
+  @override
+  String get s94ecb845c8 => 'Seadistuspunkt, võimsus, režiim või ventilaator.';
+
+  @override
+  String get sba2eb6d9b9 => 'Setpoint';
+
+  @override
+  String get seb4c438a42 => 'Väärtus ({{value}})';
+
+  @override
+  String get s033b6b8c6c => 'Saadatav väärtus; {{value}} = kaardi väärtus.';
+
+  @override
+  String s6478b264c0(String p0) {
+    return 'Soojuspump \"$p0\" ei ole enam kontol';
+  }
+
+  @override
+  String get s4937d259b8 => 'Seadistuspunkt puudub';
+
+  @override
+  String get s10f42a9a20 => 'kõverat';
+
+  @override
+  String get sbc996a7d25 => 'seadeväärtus';
+
+  @override
+  String get s620c04d73e => 'Varustus';
+
+  @override
+  String get s922f77d2f1 => 'Tagasi';
+
+  @override
+  String get sbfee72daca => 'Kuum vesi';
+
+  @override
+  String get s0be9e35521 => 'Soolvee';
+
+  @override
+  String get s3a0d796501 => 'Soolvesi';
+
+  @override
+  String get s23bbe9b4ed => 'Kraadiminutid';
+
+  @override
+  String get s3ca74f3ef8 => 'Kompressor';
+
+  @override
+  String get s6d21845355 =>
+      'Leidke see ruuteri seadmete loendist või valmistaja rakendusest (seadme info).';
+
+  @override
+  String get se74bcc1028 => 'Lisakaardid automatiseerimiseks';
+
+  @override
+  String get s4a91d07711 => 'Daikin (Wi-Fi, kohalik)';
+
+  @override
+  String get s8e339844a9 =>
+      'Daikin Wi-Fi- adapteriga (BRP069, BRP072C, Airbase). Töötab ilma pilveta; leitud võrgust.';
+
+  @override
+  String get sdb368f83d9 =>
+      'Uuemad BRP072C adapterid: 13-kohaline võti asub adapteri kleebisel. Vanemad ei vaja seda.';
+
+  @override
+  String get se19c918d2d =>
+      'MHI soojuspump WF-RAC Wi-Fi mooduliga (Smart M-Air rakendus). Kohalik juhtimine, pilv puudub.';
+
+  @override
+  String get sc24b0de42d =>
+      'Õhk-õhk ja Ecodan õhk-vesi pumbad läbi oma MELCloudi konto kõikjal.';
+
+  @override
+  String get s41d69e699d => 'Sama, mis MELCloudi rakenduses.';
+
+  @override
+  String get s7a7ab0d238 => 'Salvestatud krüptitud ainult selles seadmes.';
+
+  @override
+  String get sa8405bf705 =>
+      'Toshiba Wi-Fi soojuspumbad läbi oma Toshiba Home AC Control konto.';
+
+  @override
+  String get s703279c03e => 'Sama, mis Toshiba rakenduses.';
+
+  @override
+  String get se26b321a29 =>
+      'Samsung Wi-Fi soojuspumbad läbi ametliku SmartThingsi API.';
+
+  @override
+  String get s550793ea4a =>
+      'Loo üks aadressil account.smartthings.com/tokens seadmete ulatusega. Märkus: Samsung piirab uusi märke 24 tunniga.';
+
+  @override
+  String get se2f1cb488d => 'Hitachi soojuspumbad läbi oma airCloud Go konto.';
+
+  @override
+  String get s2e3665e309 =>
+      'NIBE maapealsed ja heitõhupumbad läbi ametliku myUplink API (ka CTC, Høiax...).';
+
+  @override
+  String get sf2e635afad =>
+      'Logige sisse aadressil dev.myuplink.com → Rakendused → Loo. Kopeeri kliendi identifikaator.';
+
+  @override
+  String get s9db9eb22f8 => 'Samalt leheküljelt.';
+
+  @override
+  String get s412987475c => 'NIBE S-seeria (Modbus TCP, kohalik)';
+
+  @override
+  String get s3fc8f4ce0d =>
+      'S1155, S1255, SMO S40... Modbus TCP lubamine pumbamenüüs 7.5.9. Pilve pole.';
+
+  @override
+  String get s9b15cf6f63 =>
+      'Pump IP: menu 3.1.13 (Ühendused) või ruuteri seadmete nimekiri.';
+
+  @override
+  String get s29ed152759 => 'NIBE F-seeria + MODBUS 40 (kohalik)';
+
+  @override
+  String get sa723788d3c =>
+      'F- seeria / SMO koos MODBUS 40 tarviku ja RS485→TCP lüüsiga. Kontrolli registreid.';
+
+  @override
+  String get sb001c51087 => 'RS485 IP-aadress→Modbus TCP gateway.';
+
+  @override
+  String get sde4b0f4525 => 'Thermia (Modbus TCP, kohalik)';
+
+  @override
+  String get s9280f807a6 =>
+      'Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis). Modbus TCP: Settings → BMS.';
+
+  @override
+  String get scab35073e8 => 'Pumba IP-aadress (kuva või ruuter).';
+
+  @override
+  String get s5ddd513689 =>
+      'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – või mõni muu IR-puldiga.';
+
+  @override
+  String get s9622976fd3 => 'Ühtegi ühikut ei leitud';
+
+  @override
+  String get sa93876ac9d => 'üksus(ed)';
+
+  @override
+  String get sf3d77f10b9 => 'liiga palju taotlusi';
+
+  @override
+  String get se62d52c336 => 'airCloud: sisselogimine nurjus';
+
+  @override
+  String get sc5f4490c42 => 'airCloud: üksust ei leitud';
+
+  @override
+  String get s00c7f00681 => 'MELCloud: vale e-post või parool';
+
+  @override
+  String get s4bd0e3110e =>
+      'See pump ei ole Modbusi kohal sisse/välja lülitatud.';
+
+  @override
+  String get s4558be4f09 => 'MyUplink: vale kliendi ID või saladus';
+
+  @override
+  String get s370bf1904d =>
+      'Maapealse allika pumba režiimi siin ei muudeta - ainult seadeväärtus.';
+
+  @override
+  String get s8f016f0e29 => 'Toshiba: vale kasutajanimi või parool';
+
+  @override
   String get s589eb1bcd3 => 'Koduabiline (näide)';
 
   @override
@@ -8418,9 +8841,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s9783a8fd53 => 'tuba';
-
-  @override
-  String get sbc996a7d25 => 'seadeväärtus';
 
   @override
   String get sa69c0e1ca3 => 'Õhksoojuspump (IR)';

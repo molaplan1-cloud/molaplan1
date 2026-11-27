@@ -137,7 +137,7 @@ class _IrLearnPageState extends State<IrLearnPage> {
     final code = _code;
     return Scaffold(
       appBar: AppBar(
-        title: Text(tx(context, 'Opettele kaukosäädin', 'Learn remote')),
+        title: Text(tx(context, 'Opeta uusi komento', 'Teach a new command')),
         automaticallyImplyLeading: !widget.guided,
         actions: [
           if (widget.guided)

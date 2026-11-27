@@ -9,6 +9,7 @@ import 'account_nudge.dart';
 import 'channel_repair.dart';
 import 'app_scope.dart';
 import 'heatpump_pages.dart';
+import 'heatpump_import.dart';
 import 'error_box.dart';
 import 'modbus_scan_page.dart';
 import 'spec_form.dart';
@@ -344,10 +345,33 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
                       key: const ValueKey('ir-learn'),
                       onPressed: () => openIrLearn(context, c),
                       icon: const Icon(Icons.settings_remote_outlined),
-                      label: Text(tx(context, 'Opettele kaukosäädin', 'Learn remote')),
+                      label: Text(tx(context, 'Opeta uusi komento', 'Teach a new command')),
                     ),
                   ),
               ],
+              if (c.type == 'heatpump' &&
+                  '${values['brand'] ?? ''}' == 'gshp_modbus' &&
+                  st.config.connections.any((e) => e.id == c.id))
+                Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  child: OutlinedButton.icon(
+                    key: const ValueKey('nibe-csv-import'),
+                    onPressed: () async {
+                      final saved = st.config.connections.firstWhere((e) => e.id == c.id);
+                      final n = await importNibeCsv(context, saved);
+                      if (n != null && mounted) {
+                        // Keep the editor's copy in step, so "Tallenna" does not drop the list.
+                        setState(() {
+                          values['profile'] = 'custom';
+                          values['registers'] = saved.settings['registers'];
+                          _formKey++;
+                        });
+                      }
+                    },
+                    icon: const Icon(Icons.upload_file),
+                    label: Text(tx(context, 'Tuo pumpun rekisterilista (CSV)', 'Import the pump\'s register list (CSV)')),
+                  ),
+                ),
               if (_result != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 12),

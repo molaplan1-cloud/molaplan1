@@ -1732,7 +1732,7 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
-  String get s8e4e78e067 => 'Opettele kaukosäädin';
+  String get sd2a872d1ba => 'Opeta uusi komento';
 
   @override
   String get s2acab0eccd => 'Valmis';
@@ -2480,7 +2480,37 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s0117dea8bc => 'Puhallus';
 
   @override
+  String get sb680eb3021 => 'Hiljainen';
+
+  @override
+  String get s4299eb9d18 => 'Pieni';
+
+  @override
+  String get s90ba0c57d4 => 'Pieni–keski';
+
+  @override
+  String get s0cb68026a7 => 'Keski';
+
+  @override
+  String get s9c5e4ed5cb => 'Keski–suuri';
+
+  @override
+  String get s688b92a62f => 'Suuri';
+
+  @override
+  String get sb1ef6ab439 => 'Turbo';
+
+  @override
+  String get s339446ffe7 => 'Ulkona';
+
+  @override
+  String get s018d2e08f4 => 'Puhallin';
+
+  @override
   String get s11a7c24b38 => 'Ei lukemaa';
+
+  @override
+  String get s79bbbe6195 => 'käyrä';
 
   @override
   String get s28b7c227f0 => 'asetus';
@@ -3510,6 +3540,20 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s35e8813a82 => 'huomiota';
 
   @override
+  String get sf1ed8904bb => 'Valitse rekisterilista (CSV)';
+
+  @override
+  String get s5bf50963d1 => 'Tiedostoa ei tunnistettu NIBEn rekisterilistaksi.';
+
+  @override
+  String get s0cba536d9c => 'Listassa ei ollut rekistereitä.';
+
+  @override
+  String s80d7fd2d3c(String p0, String p1) {
+    return '$p0 rekisteriä tuotu, $p1 tunnistettu (ulkolämpö, menovesi, käyttövesi, käyrän siirto…).';
+  }
+
+  @override
   String get sc3abd09cd9 => 'Oma väri';
 
   @override
@@ -4306,8 +4350,8 @@ class AppLocalizationsFi extends AppLocalizations {
       'Valmiit asetukset ovat esimerkkejä. Tarkista ne laitteesi ohjeesta ennen kuin luotat arvoihin.';
 
   @override
-  String get s566585dc66 =>
-      'IR on yksisuuntainen: lämpöpumppu ei kerro takaisin, menikö komento perille. Molaplan lähettää aina koko tilan (virta, tila, lämpö, puhallin, suuntaus) kerralla ja näyttää, mitä se lähetti. Kaukosäätimen muita nappeja voit opettaa myöhemmin: Yhteydet → lähetin → \"Opettele kaukosäädin\".';
+  String get s2e99b59497 =>
+      'IR on yksisuuntainen: lämpöpumppu ei kerro takaisin, menikö komento perille. Molaplan lähettää aina koko tilan (virta, tila, lämpö, puhallin, suuntaus) kerralla ja näyttää, mitä se lähetti. Kaukosäätimen muita nappeja voit opettaa myöhemmin: Yhteydet → lähetin → \"Opeta uusi komento\".';
 
   @override
   String get s0dd21e026c => 'Ohje ja automaattinen haku';
@@ -4375,6 +4419,35 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s67bf18fb6f => 'Muu kamera (ONVIF)';
+
+  @override
+  String get sdbbc24198f => 'Mikä lämpöpumppu sinulla on?';
+
+  @override
+  String get sdfd0407af6 =>
+      'Tarkista asetukset – ei valmistajan virallista dokumenttia.';
+
+  @override
+  String get s5562a66892 => 'Ei wifiä – IR-ohjain (mikä tahansa merkki)';
+
+  @override
+  String get sc6411a9010 =>
+      'Tasmota- tai ESPHome-IR-lähetin (esim. Athom IR & RF) lähettää koko tilan kuten kaukosäädin. Voit myös opettaa omia komentoja.';
+
+  @override
+  String get s6cce12c7e3 => 'Huoltoliitäntä (ESPHome)';
+
+  @override
+  String get s0d3bc6d125 => 'ESP sisäyksikön liittimeen, kaksisuuntainen.';
+
+  @override
+  String get s8275426406 => 'Home Assistantin kautta';
+
+  @override
+  String get s5b10465c5b => 'Jos sinulla on jo Home Assistant.';
+
+  @override
+  String get s417228f48f => 'Muut merkit – miksi ei vielä';
 
   @override
   String get s772c158a57 => 'rtsp-transport';
@@ -4797,6 +4870,9 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s837e0fc5e6 =>
       'IR on yksisuuntainen: lämpöpumppu ei kerro takaisin, menikö komento perille. Ruuduissa näkyy viimeksi lähetetty tila.';
+
+  @override
+  String get sf1ffb49d9c => 'Tuo pumpun rekisterilista (CSV)';
 
   @override
   String get s09737988fd => 'Yhteys toimii!';
@@ -7484,9 +7560,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s5db6506824 => 'Asetuslämpö';
 
   @override
-  String get s018d2e08f4 => 'Puhallin';
-
-  @override
   String get sa00d64c920 => 'Siivekkeet';
 
   @override
@@ -8233,6 +8306,357 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
+  String get s14e68f6852 => 'outo vastaus';
+
+  @override
+  String get s31ec8d716e =>
+      'Ilmastointilaitteen käyttäjätaulukko on täynnä. Poista vanha puhelin Smart M-Air -sovelluksesta ja yritä uudelleen.';
+
+  @override
+  String get sbaecc9fbed =>
+      'Laite on varattu (toinen sovellus ohjaa) – yritä minuutin päästä.';
+
+  @override
+  String get sc2474a4b0b =>
+      'Daikin hylkäsi pyynnön – tarkista avain (key) tarrasta.';
+
+  @override
+  String get s2f7a41de7a => 'Daikin ei hyväksynyt avainta (key).';
+
+  @override
+  String sc499fab53f(String p0) {
+    return 'Daikin-ohjainta ei löytynyt osoitteesta $p0';
+  }
+
+  @override
+  String get s4cfb5a36c9 => 'Daikin (paikallinen wifi)';
+
+  @override
+  String get s2089a88d1f => 'Mitsubishi Heavy (Smart M-Air, paikallinen)';
+
+  @override
+  String get s050c379c67 => 'Mitsubishi Electric (MELCloud)';
+
+  @override
+  String get s339fd47e4a => 'Toshiba (Home AC Control)';
+
+  @override
+  String get sf71a945a1d => 'Samsung (SmartThings)';
+
+  @override
+  String get sf7aed9c9e0 => 'Hitachi (airCloud Go)';
+
+  @override
+  String get sb33215fa8b => 'NIBE (myUplink-pilvi)';
+
+  @override
+  String get se9b4e55058 => 'NIBE / Thermia (Modbus TCP, paikallinen)';
+
+  @override
+  String get sddd6b1d42e => 'Lämpöpumppu (oma integraatio)';
+
+  @override
+  String get s1c9df5579f => 'Merkki';
+
+  @override
+  String get s34a3681441 =>
+      'Valmistaja ja yhteystapa. Paikalliset toimivat ilman pilveä.';
+
+  @override
+  String get s88688d2809 => 'Laitteen IP-osoite (paikalliset)';
+
+  @override
+  String get s87e0a93996 =>
+      'Paikallisen laitteen IP-osoite (reitittimen laitelistasta).';
+
+  @override
+  String get sc0bc183c3e => 'Sähköposti (pilvi)';
+
+  @override
+  String get s0cc25259c7 =>
+      'Valmistajan sovelluksen kirjautumissähköposti (MELCloud, airCloud).';
+
+  @override
+  String get s25f561c483 => 'Käyttäjätunnus (Toshiba)';
+
+  @override
+  String get s92e7ac8d3c =>
+      'Toshiba Home AC Control -sovelluksen käyttäjätunnus.';
+
+  @override
+  String get safde071183 =>
+      'Valmistajan sovelluksen salasana. Tallentuu vain tälle laitteelle / omaan holviisi.';
+
+  @override
+  String get s2862f25983 => 'Tunnus (SmartThings token)';
+
+  @override
+  String get s23a4bc8253 =>
+      'SmartThingsin henkilökohtainen token (account.smartthings.com/tokens).';
+
+  @override
+  String get sef37e5048d => 'Avain (Daikin BRP072C, tarrasta)';
+
+  @override
+  String get s1c339065e1 => 'BRP072C-ohjaimen tarrassa oleva avain (key).';
+
+  @override
+  String get se67e3e0eb9 => 'Client ID (myUplink)';
+
+  @override
+  String get sc2d5225ae8 =>
+      'Oman sovelluksen Client ID osoitteesta dev.myuplink.com.';
+
+  @override
+  String get sa165e50f99 => 'Client Secret (myUplink)';
+
+  @override
+  String get s332f9bc1a1 =>
+      'Oman sovelluksen Client Secret osoitteesta dev.myuplink.com.';
+
+  @override
+  String get sd1d4b22fc6 => 'Rekisterikartta (Modbus)';
+
+  @override
+  String get s5a9d485e7f =>
+      'Pumpun mallisarja. \'Tuotu rekisterilista\' = pumpun oma CSV-vienti.';
+
+  @override
+  String get s7dc3b152a8 => 'NIBE S-sarja';
+
+  @override
+  String get sad9fd728f9 => 'NIBE F-sarja + MODBUS 40';
+
+  @override
+  String get seba6d1ba70 => 'Thermia Genesis';
+
+  @override
+  String get sfdc0bbf134 => 'Tuotu rekisterilista';
+
+  @override
+  String get scd35ffb8e9 => 'Yleensä oletus (Modbus 502, MHI 51443).';
+
+  @override
+  String get s58f0665e29 => 'Modbus unit id';
+
+  @override
+  String get sab25ff8075 => 'Modbus-laitteen osoite, yleensä 1.';
+
+  @override
+  String get sb064bec4c8 => 'Palvelimen osoite (vain testaukseen)';
+
+  @override
+  String get s67b2ac9328 =>
+      'Vain testaukseen: korvaa valmistajan palvelimen osoitteen.';
+
+  @override
+  String get sabab3f2fae => 'Mitä luetaan';
+
+  @override
+  String get sf5e949d20c => 'Koko tila (lämpöpumppuruutu) tai yksi lukema.';
+
+  @override
+  String get s46ce82ef9c => 'Koko tila';
+
+  @override
+  String get s8cbd66456f => 'Yksi lukema';
+
+  @override
+  String get s6d1827b58e => 'Sisäyksikön tunnus';
+
+  @override
+  String get s89308ddc6d =>
+      'Sisäyksikön tunnus; yhden laitteen tileillä \'main\'.';
+
+  @override
+  String get sa643668bec => 'Lukema (current, target, outdoor, power…)';
+
+  @override
+  String get s02d24152f0 =>
+      'Mikä lukema: current, target, outdoor, power, supply, hot_water…';
+
+  @override
+  String get se16e293d6b => 'Aseta';
+
+  @override
+  String get s155de09d38 => 'Mitä asetetaan';
+
+  @override
+  String get s94ecb845c8 => 'Asetusarvo, virta, tila tai puhallin.';
+
+  @override
+  String get sba2eb6d9b9 => 'Asetusarvo';
+
+  @override
+  String get seb4c438a42 => 'Arvo ({{value}})';
+
+  @override
+  String get s033b6b8c6c => 'Lähetettävä arvo; {{value}} = ruudun arvo.';
+
+  @override
+  String s6478b264c0(String p0) {
+    return 'Lämpöpumppua \"$p0\" ei löydy enää tililtä';
+  }
+
+  @override
+  String get s4937d259b8 => 'Asetusarvo puuttuu';
+
+  @override
+  String get s10f42a9a20 => 'käyrän siirto';
+
+  @override
+  String get sbc996a7d25 => 'asetus';
+
+  @override
+  String get s620c04d73e => 'Menovesi';
+
+  @override
+  String get s922f77d2f1 => 'Paluuvesi';
+
+  @override
+  String get sbfee72daca => 'Käyttövesi';
+
+  @override
+  String get s0be9e35521 => 'Keruuliuos sisään';
+
+  @override
+  String get s3a0d796501 => 'Keruuliuos ulos';
+
+  @override
+  String get s23bbe9b4ed => 'Astetminuutit';
+
+  @override
+  String get s3ca74f3ef8 => 'Kompressori';
+
+  @override
+  String get s6d21845355 =>
+      'Löytyy reitittimen laitelistasta tai valmistajan sovelluksesta (laitteen tiedot).';
+
+  @override
+  String get se74bcc1028 => 'Lisäruudut automaatioihin';
+
+  @override
+  String get s4a91d07711 => 'Daikin (wifi, paikallinen)';
+
+  @override
+  String get s8e339844a9 =>
+      'Daikin-ilmalämpöpumppu wifi-ohjaimella (BRP069, BRP072C, Airbase). Toimii ilman pilveä, haetaan verkosta.';
+
+  @override
+  String get sdb368f83d9 =>
+      'Uudemmissa BRP072C-ohjaimissa 13-numeroinen avain on ohjaimen tarrassa. Vanhemmat eivät tarvitse sitä.';
+
+  @override
+  String get se19c918d2d =>
+      'MHI-ilmalämpöpumppu WF-RAC-wifimoduulilla (Smart M-Air -sovellus). Paikallinen ohjaus ilman pilveä.';
+
+  @override
+  String get sc24b0de42d =>
+      'Ilmalämpöpumput ja Ecodan-ilma-vesipumput MELCloud-tilin kautta, mistä tahansa.';
+
+  @override
+  String get s41d69e699d => 'Sama kuin MELCloud-sovelluksessa.';
+
+  @override
+  String get s7a7ab0d238 => 'Tallentuu vain tähän laitteeseen salattuna.';
+
+  @override
+  String get sa8405bf705 =>
+      'Toshiban wifi-ilmalämpöpumput Toshiba Home AC Control -tilin kautta.';
+
+  @override
+  String get s703279c03e => 'Sama kuin Toshiba Home AC Control -sovelluksessa.';
+
+  @override
+  String get se26b321a29 =>
+      'Samsungin wifi-ilmalämpöpumput SmartThingsin virallisen rajapinnan kautta.';
+
+  @override
+  String get s550793ea4a =>
+      'Luo osoitteessa account.smartthings.com/tokens: valitse \"Devices\" (lue ja ohjaa). Huom: Samsung rajoittaa uudet tunnukset 24 tuntiin.';
+
+  @override
+  String get se2f1cb488d =>
+      'Hitachin ilmalämpöpumput airCloud Go -tilin kautta.';
+
+  @override
+  String get s2e3665e309 =>
+      'NIBE-maalämpö- ja poistoilmapumput myUplinkin virallisen rajapinnan kautta (myös CTC, Høiax…).';
+
+  @override
+  String get sf2e635afad =>
+      'Kirjaudu dev.myuplink.com → Applications → Create (Callback URL voi olla esim. https://molaplan.com). Kopioi Client Identifier.';
+
+  @override
+  String get s9db9eb22f8 => 'Samalta sivulta.';
+
+  @override
+  String get s412987475c => 'NIBE S-sarja (Modbus TCP, paikallinen)';
+
+  @override
+  String get s3fc8f4ce0d =>
+      'S1155, S1255, SMO S40… Ota Modbus TCP käyttöön pumpun valikosta 7.5.9. Ei pilveä.';
+
+  @override
+  String get s9b15cf6f63 =>
+      'Pumpun IP-osoite: valikko 3.1.13 (Yhteydet) tai reitittimen laitelista.';
+
+  @override
+  String get s29ed152759 => 'NIBE F-sarja + MODBUS 40 (paikallinen)';
+
+  @override
+  String get sa723788d3c =>
+      'F1145/F1155/F1255/F750/SMO + MODBUS 40 -lisävaruste ja RS485→TCP-muunnin. Tarkista rekisterit.';
+
+  @override
+  String get sb001c51087 => 'RS485→Modbus TCP -muuntimen IP-osoite.';
+
+  @override
+  String get sde4b0f4525 => 'Thermia (Modbus TCP, paikallinen)';
+
+  @override
+  String get s9280f807a6 =>
+      'Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis). Modbus TCP: Asetukset → BMS.';
+
+  @override
+  String get scab35073e8 => 'Pumpun IP-osoite (näytöltä tai reitittimestä).';
+
+  @override
+  String get s5ddd513689 =>
+      'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – tai mikä tahansa IR-kaukosäätimellä.';
+
+  @override
+  String get s9622976fd3 => 'Ei laitteita';
+
+  @override
+  String get sa93876ac9d => 'laitetta';
+
+  @override
+  String get sf3d77f10b9 => 'liian monta pyyntöä';
+
+  @override
+  String get se62d52c336 => 'airCloud: kirjautuminen epäonnistui';
+
+  @override
+  String get sc5f4490c42 => 'airCloud: laitetta ei löydy';
+
+  @override
+  String get s00c7f00681 => 'MELCloud: väärä sähköposti tai salasana';
+
+  @override
+  String get s4bd0e3110e => 'Tätä pumppua ei kytketä päälle/pois Modbusilla.';
+
+  @override
+  String get s4558be4f09 => 'myUplink: väärä Client ID tai Secret';
+
+  @override
+  String get s370bf1904d =>
+      'Maalämpöpumpun tilaa ei vaihdeta täältä – vain asetusarvo.';
+
+  @override
+  String get s8f016f0e29 => 'Toshiba: väärä käyttäjätunnus tai salasana';
+
+  @override
   String get s589eb1bcd3 => 'Home Assistant (esimerkki)';
 
   @override
@@ -8464,9 +8888,6 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s9783a8fd53 => 'huone';
-
-  @override
-  String get sbc996a7d25 => 'asetus';
 
   @override
   String get sa69c0e1ca3 => 'Ilmalämpöpumppu (IR)';

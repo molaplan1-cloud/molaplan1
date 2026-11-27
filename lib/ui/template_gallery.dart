@@ -8,6 +8,7 @@ import '../core/fields.dart';
 import '../core/friendly_error.dart';
 import '../core/discovery.dart';
 import '../devices/ha_setup.dart';
+import '../heatpumps/hp_providers.dart';
 import '../drivers/registry.dart';
 import '../drivers/ntfy_device.dart' show ntfyNoReplyText;
 import '../drivers/driver.dart' show DriverException;
@@ -228,6 +229,16 @@ class _TemplateGridState extends State<TemplateGrid> {
                             final c = await pickCameraBrand(context);
                             if (c == null || !context.mounted) return;
                             pick = c;
+                          }
+                          if (p is HeatPumpChooser) {
+                            final c = await pickHeatPumpBrand(context);
+                            if (c == null || !context.mounted) return;
+                            if (c is String) {
+                              final tpl = templateById(c);
+                              if (tpl != null) widget.onPick(tpl);
+                              return;
+                            }
+                            pick = c as DeviceProvider;
                           }
                           if (widget.onBrand != null) return widget.onBrand!(pick);
                           await Navigator.push<bool>(
@@ -996,8 +1007,8 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
                     color: cs.tertiary,
                     text: tx(
                       context,
-                      'IR on yksisuuntainen: lämpöpumppu ei kerro takaisin, menikö komento perille. Molaplan lähettää aina koko tilan (virta, tila, lämpö, puhallin, suuntaus) kerralla ja näyttää, mitä se lähetti. Kaukosäätimen muita nappeja voit opettaa myöhemmin: Yhteydet → lähetin → "Opettele kaukosäädin".',
-                      'IR is one-way: the heat pump does not confirm. Molaplan always sends the whole state and shows what it sent. Learn other remote buttons later: Connections → blaster → "Learn remote".',
+                      'IR on yksisuuntainen: lämpöpumppu ei kerro takaisin, menikö komento perille. Molaplan lähettää aina koko tilan (virta, tila, lämpö, puhallin, suuntaus) kerralla ja näyttää, mitä se lähetti. Kaukosäätimen muita nappeja voit opettaa myöhemmin: Yhteydet → lähetin → "Opeta uusi komento".',
+                      'IR is one-way: the heat pump does not confirm. Molaplan always sends the whole state and shows what it sent. Teach other remote buttons later: Connections → blaster → "Teach a new command".',
                     ),
                   ),
                 ),
@@ -1277,6 +1288,81 @@ Future<DeviceProvider?> pickCameraBrand(BuildContext context) => showModalBottom
             subtitle: p.preset.setupFi.isEmpty ? null : Text(tx(c, p.preset.setupFi, p.preset.setupEn), maxLines: 3),
             onTap: () => Navigator.pop(c, p),
           ),
+        const SizedBox(height: 8),
+      ],
+    ),
+  ),
+);
+
+/// t267u–t270u: which heat pump? Built-in brands first, then IR / service port / Home Assistant,
+/// then the ones not built yet (with the reason). Returns a [DeviceProvider] or a template id.
+Future<Object?> pickHeatPumpBrand(BuildContext context) => showModalBottomSheet<Object>(
+  context: context,
+  showDragHandle: true,
+  isScrollControlled: true,
+  builder: (c) => SafeArea(
+    child: ListView(
+      key: const ValueKey('heatpump-brands'),
+      shrinkWrap: true,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
+          child: Text(tx(c, 'Mikä lämpöpumppu sinulla on?', 'Which heat pump do you have?'), style: Theme.of(c).textTheme.titleLarge),
+        ),
+        for (final p in heatPumpProviders)
+          ListTile(
+            key: ValueKey('hp-brand-${p.id}'),
+            leading: Icon(p.kind == ProviderKind.cloud ? Icons.cloud_outlined : Icons.heat_pump_outlined),
+            title: Text(p.name(AppScope.of(c).lang)),
+            subtitle: Text(
+              [
+                p.desc(AppScope.of(c).lang),
+                if (!p.documented) tx(c, 'Tarkista asetukset – ei valmistajan virallista dokumenttia.', 'Verify – no official vendor document.'),
+              ].join(' '),
+              maxLines: 3,
+            ),
+            onTap: () => Navigator.pop(c, p),
+          ),
+        const Divider(),
+        ListTile(
+          key: const ValueKey('hp-brand-ir'),
+          leading: const Icon(Icons.settings_remote_outlined),
+          title: Text(tx(c, 'Ei wifiä – IR-ohjain (mikä tahansa merkki)', 'No Wi-Fi – IR blaster (any brand)')),
+          subtitle: Text(
+            tx(
+              c,
+              'Tasmota- tai ESPHome-IR-lähetin (esim. Athom IR & RF) lähettää koko tilan kuten kaukosäädin. Voit myös opettaa omia komentoja.',
+              'A Tasmota or ESPHome IR blaster (e.g. Athom IR & RF) sends the full state like the remote. You can also teach your own commands.',
+            ),
+            maxLines: 3,
+          ),
+          onTap: () => Navigator.pop(c, 'heatpump_ir'),
+        ),
+        ListTile(
+          leading: const Icon(Icons.memory_outlined),
+          title: Text(tx(c, 'Huoltoliitäntä (ESPHome)', 'Service port (ESPHome)')),
+          subtitle: Text(tx(c, 'ESP sisäyksikön liittimeen, kaksisuuntainen.', 'An ESP on the indoor unit connector, two-way.'), maxLines: 2),
+          onTap: () => Navigator.pop(c, 'heatpump_esphome'),
+        ),
+        ListTile(
+          leading: const Icon(Icons.home_outlined),
+          title: Text(tx(c, 'Home Assistantin kautta', 'Via Home Assistant')),
+          subtitle: Text(tx(c, 'Jos sinulla on jo Home Assistant.', 'If you already have Home Assistant.'), maxLines: 2),
+          onTap: () => Navigator.pop(c, 'heatpump_ha'),
+        ),
+        ExpansionTile(
+          key: const ValueKey('hp-not-yet'),
+          leading: const Icon(Icons.schedule),
+          title: Text(tx(c, 'Muut merkit – miksi ei vielä', 'Other brands – why not yet')),
+          children: [
+            for (final n in heatPumpNotYet)
+              ListTile(
+                title: Text(n.name),
+                subtitle: Text(tx(c, n.fi, n.en)),
+                onTap: n.template == null ? null : () => Navigator.pop(c, n.template),
+              ),
+          ],
+        ),
         const SizedBox(height: 8),
       ],
     ),

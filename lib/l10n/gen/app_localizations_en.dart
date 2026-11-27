@@ -1726,7 +1726,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get s8e4e78e067 => 'Learn remote';
+  String get sd2a872d1ba => 'Teach a new command';
 
   @override
   String get s2acab0eccd => 'Done';
@@ -2467,7 +2467,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s0117dea8bc => 'Fan';
 
   @override
+  String get sb680eb3021 => 'Quiet';
+
+  @override
+  String get s4299eb9d18 => 'Low';
+
+  @override
+  String get s90ba0c57d4 => 'Medium-low';
+
+  @override
+  String get s0cb68026a7 => 'Medium';
+
+  @override
+  String get s9c5e4ed5cb => 'Medium-high';
+
+  @override
+  String get s688b92a62f => 'High';
+
+  @override
+  String get sb1ef6ab439 => 'Turbo';
+
+  @override
+  String get s339446ffe7 => 'Outdoor';
+
+  @override
+  String get s018d2e08f4 => 'Fan';
+
+  @override
   String get s11a7c24b38 => 'No reading';
+
+  @override
+  String get s79bbbe6195 => 'curve';
 
   @override
   String get s28b7c227f0 => 'set';
@@ -3496,6 +3526,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s35e8813a82 => 'alerts';
 
   @override
+  String get sf1ed8904bb => 'Choose the register list (CSV)';
+
+  @override
+  String get s5bf50963d1 => 'Not recognised as a NIBE register list.';
+
+  @override
+  String get s0cba536d9c => 'The list had no registers.';
+
+  @override
+  String s80d7fd2d3c(String p0, String p1) {
+    return '$p0 registers imported, $p1 recognised (outdoor, supply, hot water, curve offset…).';
+  }
+
+  @override
   String get sc3abd09cd9 => 'Custom colour';
 
   @override
@@ -4289,8 +4333,8 @@ class AppLocalizationsEn extends AppLocalizations {
       'Preset settings are examples. Check them against your device manual before relying on them.';
 
   @override
-  String get s566585dc66 =>
-      'IR is one-way: the heat pump does not confirm. Molaplan always sends the whole state and shows what it sent. Learn other remote buttons later: Connections → blaster → \"Learn remote\".';
+  String get s2e99b59497 =>
+      'IR is one-way: the heat pump does not confirm. Molaplan always sends the whole state and shows what it sent. Teach other remote buttons later: Connections → blaster → \"Teach a new command\".';
 
   @override
   String get s0dd21e026c => 'Guide and automatic search';
@@ -4358,6 +4402,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s67bf18fb6f => 'Other camera (ONVIF)';
+
+  @override
+  String get sdbbc24198f => 'Which heat pump do you have?';
+
+  @override
+  String get sdfd0407af6 => 'Verify – no official vendor document.';
+
+  @override
+  String get s5562a66892 => 'No Wi-Fi – IR blaster (any brand)';
+
+  @override
+  String get sc6411a9010 =>
+      'A Tasmota or ESPHome IR blaster (e.g. Athom IR & RF) sends the full state like the remote. You can also teach your own commands.';
+
+  @override
+  String get s6cce12c7e3 => 'Service port (ESPHome)';
+
+  @override
+  String get s0d3bc6d125 => 'An ESP on the indoor unit connector, two-way.';
+
+  @override
+  String get s8275426406 => 'Via Home Assistant';
+
+  @override
+  String get s5b10465c5b => 'If you already have Home Assistant.';
+
+  @override
+  String get s417228f48f => 'Other brands – why not yet';
 
   @override
   String get s772c158a57 => 'tcp';
@@ -4778,6 +4850,9 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s837e0fc5e6 =>
       'IR is one-way: the heat pump does not confirm commands. Tiles show the last sent state.';
+
+  @override
+  String get sf1ffb49d9c => 'Import the pump\'s register list (CSV)';
 
   @override
   String get s09737988fd => 'Connection works!';
@@ -7456,9 +7531,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s5db6506824 => 'Set temperature';
 
   @override
-  String get s018d2e08f4 => 'Fan';
-
-  @override
   String get sa00d64c920 => 'Vane';
 
   @override
@@ -8202,6 +8274,353 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get s14e68f6852 => 'odd answer';
+
+  @override
+  String get s31ec8d716e =>
+      'The unit\'s account table is full. Remove an old phone in the Smart M-Air app and try again.';
+
+  @override
+  String get sbaecc9fbed => 'The unit is busy (another app) – try in a minute.';
+
+  @override
+  String get sc2474a4b0b => 'Daikin refused – check the key on the sticker.';
+
+  @override
+  String get s2f7a41de7a => 'Daikin did not accept the key.';
+
+  @override
+  String sc499fab53f(String p0) {
+    return 'No Daikin adapter at $p0';
+  }
+
+  @override
+  String get s4cfb5a36c9 => 'Daikin (local Wi-Fi)';
+
+  @override
+  String get s2089a88d1f => 'Mitsubishi Heavy (Smart M-Air, local)';
+
+  @override
+  String get s050c379c67 => 'Mitsubishi Electric (MELCloud)';
+
+  @override
+  String get s339fd47e4a => 'Toshiba (Home AC Control)';
+
+  @override
+  String get sf71a945a1d => 'Samsung (SmartThings)';
+
+  @override
+  String get sf7aed9c9e0 => 'Hitachi (airCloud Go)';
+
+  @override
+  String get sb33215fa8b => 'NIBE (myUplink cloud)';
+
+  @override
+  String get se9b4e55058 => 'NIBE / Thermia (Modbus TCP, local)';
+
+  @override
+  String get sddd6b1d42e => 'Heat pump (built-in integration)';
+
+  @override
+  String get s1c9df5579f => 'Brand';
+
+  @override
+  String get s34a3681441 =>
+      'Maker and connection type. Local ones work without the cloud.';
+
+  @override
+  String get s88688d2809 => 'Device IP (local brands)';
+
+  @override
+  String get s87e0a93996 =>
+      'IP address of a local unit (from your router\'s device list).';
+
+  @override
+  String get sc0bc183c3e => 'E-mail (cloud)';
+
+  @override
+  String get s0cc25259c7 =>
+      'The e-mail you sign in to the maker\'s app with (MELCloud, airCloud).';
+
+  @override
+  String get s25f561c483 => 'Username (Toshiba)';
+
+  @override
+  String get s92e7ac8d3c => 'Your Toshiba Home AC Control username.';
+
+  @override
+  String get safde071183 =>
+      'The maker\'s app password. Stored only on this device / in your own vault.';
+
+  @override
+  String get s2862f25983 => 'Token (SmartThings)';
+
+  @override
+  String get s23a4bc8253 =>
+      'SmartThings personal access token (account.smartthings.com/tokens).';
+
+  @override
+  String get sef37e5048d => 'Key (Daikin BRP072C, sticker)';
+
+  @override
+  String get s1c339065e1 =>
+      'The key printed on the BRP072C adapter\'s sticker.';
+
+  @override
+  String get se67e3e0eb9 => 'Client ID (myUplink)';
+
+  @override
+  String get sc2d5225ae8 => 'Client ID of your own app at dev.myuplink.com.';
+
+  @override
+  String get sa165e50f99 => 'Client Secret (myUplink)';
+
+  @override
+  String get s332f9bc1a1 =>
+      'Client Secret of your own app at dev.myuplink.com.';
+
+  @override
+  String get sd1d4b22fc6 => 'Register map (Modbus)';
+
+  @override
+  String get s5a9d485e7f =>
+      'The pump series. \'Imported register list\' = the pump\'s own CSV export.';
+
+  @override
+  String get s7dc3b152a8 => 'NIBE S-series';
+
+  @override
+  String get sad9fd728f9 => 'NIBE F-series + MODBUS 40';
+
+  @override
+  String get seba6d1ba70 => 'Thermia Genesis';
+
+  @override
+  String get sfdc0bbf134 => 'Imported register list';
+
+  @override
+  String get scd35ffb8e9 => 'Usually the default (Modbus 502, MHI 51443).';
+
+  @override
+  String get s58f0665e29 => 'Modbus unit id';
+
+  @override
+  String get sab25ff8075 => 'Modbus unit address, usually 1.';
+
+  @override
+  String get sb064bec4c8 => 'Server URL (testing only)';
+
+  @override
+  String get s67b2ac9328 =>
+      'Testing only: replaces the maker\'s server address.';
+
+  @override
+  String get sabab3f2fae => 'What to read';
+
+  @override
+  String get sf5e949d20c => 'Full state (heat pump tile) or one reading.';
+
+  @override
+  String get s46ce82ef9c => 'Full state';
+
+  @override
+  String get s8cbd66456f => 'One reading';
+
+  @override
+  String get s6d1827b58e => 'Unit id';
+
+  @override
+  String get s89308ddc6d => 'Indoor unit id; \'main\' for single-unit devices.';
+
+  @override
+  String get sa643668bec => 'Reading (current, target, outdoor, power…)';
+
+  @override
+  String get s02d24152f0 =>
+      'Which reading: current, target, outdoor, power, supply, hot_water…';
+
+  @override
+  String get se16e293d6b => 'Set';
+
+  @override
+  String get s155de09d38 => 'What to set';
+
+  @override
+  String get s94ecb845c8 => 'Setpoint, power, mode or fan.';
+
+  @override
+  String get sba2eb6d9b9 => 'Setpoint';
+
+  @override
+  String get seb4c438a42 => 'Value ({{value}})';
+
+  @override
+  String get s033b6b8c6c => 'Value to send; {{value}} = the tile\'s value.';
+
+  @override
+  String s6478b264c0(String p0) {
+    return 'Heat pump \"$p0\" is no longer in the account';
+  }
+
+  @override
+  String get s4937d259b8 => 'Setpoint missing';
+
+  @override
+  String get s10f42a9a20 => 'curve offset';
+
+  @override
+  String get sbc996a7d25 => 'setpoint';
+
+  @override
+  String get s620c04d73e => 'Supply';
+
+  @override
+  String get s922f77d2f1 => 'Return';
+
+  @override
+  String get sbfee72daca => 'Hot water';
+
+  @override
+  String get s0be9e35521 => 'Brine in';
+
+  @override
+  String get s3a0d796501 => 'Brine out';
+
+  @override
+  String get s23bbe9b4ed => 'Degree minutes';
+
+  @override
+  String get s3ca74f3ef8 => 'Compressor';
+
+  @override
+  String get s6d21845355 =>
+      'Find it in your router\'s device list or the maker\'s app (device info).';
+
+  @override
+  String get se74bcc1028 => 'Extra tiles for automations';
+
+  @override
+  String get s4a91d07711 => 'Daikin (Wi-Fi, local)';
+
+  @override
+  String get s8e339844a9 =>
+      'Daikin with a Wi-Fi adapter (BRP069, BRP072C, Airbase). Works without the cloud; found on the network.';
+
+  @override
+  String get sdb368f83d9 =>
+      'Newer BRP072C adapters: the 13-digit key is on the adapter sticker. Older ones need none.';
+
+  @override
+  String get se19c918d2d =>
+      'MHI heat pump with the WF-RAC Wi-Fi module (Smart M-Air app). Local control, no cloud.';
+
+  @override
+  String get sc24b0de42d =>
+      'Air-to-air and Ecodan air-to-water pumps through your MELCloud account, from anywhere.';
+
+  @override
+  String get s41d69e699d => 'Same as in the MELCloud app.';
+
+  @override
+  String get s7a7ab0d238 => 'Stored encrypted on this device only.';
+
+  @override
+  String get sa8405bf705 =>
+      'Toshiba Wi-Fi heat pumps through your Toshiba Home AC Control account.';
+
+  @override
+  String get s703279c03e => 'Same as in the Toshiba app.';
+
+  @override
+  String get se26b321a29 =>
+      'Samsung Wi-Fi heat pumps through the official SmartThings API.';
+
+  @override
+  String get s550793ea4a =>
+      'Create one at account.smartthings.com/tokens with the Devices scopes. Note: Samsung limits new tokens to 24 hours.';
+
+  @override
+  String get se2f1cb488d =>
+      'Hitachi heat pumps through your airCloud Go account.';
+
+  @override
+  String get s2e3665e309 =>
+      'NIBE ground-source and exhaust-air pumps through the official myUplink API (also CTC, Høiax…).';
+
+  @override
+  String get sf2e635afad =>
+      'Sign in at dev.myuplink.com → Applications → Create. Copy the Client Identifier.';
+
+  @override
+  String get s9db9eb22f8 => 'From the same page.';
+
+  @override
+  String get s412987475c => 'NIBE S-series (Modbus TCP, local)';
+
+  @override
+  String get s3fc8f4ce0d =>
+      'S1155, S1255, SMO S40… Enable Modbus TCP in the pump menu 7.5.9. No cloud.';
+
+  @override
+  String get s9b15cf6f63 =>
+      'The pump\'s IP: menu 3.1.13 (Connections) or your router\'s device list.';
+
+  @override
+  String get s29ed152759 => 'NIBE F-series + MODBUS 40 (local)';
+
+  @override
+  String get sa723788d3c =>
+      'F-series / SMO with the MODBUS 40 accessory and an RS485→TCP gateway. Verify the registers.';
+
+  @override
+  String get sb001c51087 => 'IP address of the RS485→Modbus TCP gateway.';
+
+  @override
+  String get sde4b0f4525 => 'Thermia (Modbus TCP, local)';
+
+  @override
+  String get s9280f807a6 =>
+      'Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis). Modbus TCP: Settings → BMS.';
+
+  @override
+  String get scab35073e8 => 'The pump\'s IP address (display or router).';
+
+  @override
+  String get s5ddd513689 =>
+      'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – or any with an IR remote.';
+
+  @override
+  String get s9622976fd3 => 'No units found';
+
+  @override
+  String get sa93876ac9d => 'unit(s)';
+
+  @override
+  String get sf3d77f10b9 => 'too many requests';
+
+  @override
+  String get se62d52c336 => 'airCloud: sign-in failed';
+
+  @override
+  String get sc5f4490c42 => 'airCloud: unit not found';
+
+  @override
+  String get s00c7f00681 => 'MELCloud: wrong e-mail or password';
+
+  @override
+  String get s4bd0e3110e => 'This pump is not switched on/off over Modbus.';
+
+  @override
+  String get s4558be4f09 => 'myUplink: wrong Client ID or Secret';
+
+  @override
+  String get s370bf1904d =>
+      'The mode of a ground-source pump is not changed here – only the setpoint.';
+
+  @override
+  String get s8f016f0e29 => 'Toshiba: wrong username or password';
+
+  @override
   String get s589eb1bcd3 => 'Home Assistant (example)';
 
   @override
@@ -8421,9 +8840,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s9783a8fd53 => 'room';
-
-  @override
-  String get sbc996a7d25 => 'setpoint';
 
   @override
   String get sa69c0e1ca3 => 'Air heat pump (IR)';

@@ -1731,7 +1731,7 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get s8e4e78e067 => 'Lär in fjärrkontroll';
+  String get sd2a872d1ba => 'Lär ett nytt kommando';
 
   @override
   String get s2acab0eccd => 'Klar';
@@ -2475,7 +2475,37 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s0117dea8bc => 'Fläkt';
 
   @override
+  String get sb680eb3021 => 'Tyst';
+
+  @override
+  String get s4299eb9d18 => 'Låg';
+
+  @override
+  String get s90ba0c57d4 => 'Medium-low';
+
+  @override
+  String get s0cb68026a7 => 'Medium';
+
+  @override
+  String get s9c5e4ed5cb => 'Medium-hög';
+
+  @override
+  String get s688b92a62f => 'Högt högt';
+
+  @override
+  String get sb1ef6ab439 => 'Turbo';
+
+  @override
+  String get s339446ffe7 => 'Utomhus';
+
+  @override
+  String get s018d2e08f4 => 'Fläkt';
+
+  @override
   String get s11a7c24b38 => 'Inget värde';
+
+  @override
+  String get s79bbbe6195 => 'kurva';
 
   @override
   String get s28b7c227f0 => 'börvärde';
@@ -3507,6 +3537,20 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s35e8813a82 => 'Varningar';
 
   @override
+  String get sf1ed8904bb => 'Välj registreringslistan (CSV)';
+
+  @override
+  String get s5bf50963d1 => 'Inte erkänt som en NIBE-registreringslista.';
+
+  @override
+  String get s0cba536d9c => 'Listan hade inga register.';
+
+  @override
+  String s80d7fd2d3c(String p0, String p1) {
+    return '$p0 registrerar importerade, $p1 erkända (utomhus, försörjning, varmt vatten, kurva kompensation ...).';
+  }
+
+  @override
   String get sc3abd09cd9 => 'Anpassad färg';
 
   @override
@@ -4303,8 +4347,8 @@ class AppLocalizationsSv extends AppLocalizations {
       'Förinställda inställningar är exempel. Kontrollera dem mot din enhetsmanual innan du förlitar dig på dem.';
 
   @override
-  String get s566585dc66 =>
-      'IR är envägs: värmepumpen bekräftar inte. Molaplan skickar alltid hela staten och visar vad den skickade. Lär dig andra fjärrknappar senare: Anslutningar → blaster → \"Lär fjärrkontroll\".';
+  String get s2e99b59497 =>
+      'IR är en-vägs: värmepumpen bekräftar inte. Molaplan skickar alltid hela staten och visar vad den skickade. Undervisa andra fjärrknappar senare: Anslutningar → IR-sändare → \"Lär ett nytt kommando\".';
 
   @override
   String get s0dd21e026c => 'Guide och automatisk sökning';
@@ -4371,6 +4415,34 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s67bf18fb6f => 'Övrig kamera (ONVIF)';
+
+  @override
+  String get sdbbc24198f => 'Vilken värmepump har du?';
+
+  @override
+  String get sdfd0407af6 => 'Verifiera – inget officiellt leverantörsdokument.';
+
+  @override
+  String get s5562a66892 => 'No Wi-Fi – IR-sändare (varje varumärke)';
+
+  @override
+  String get sc6411a9010 =>
+      'En Tasmota eller ESPHome IR-sändare (t.ex. Athom IR & RF) skickar hela staten som fjärrkontrollen. Du kan också lära dina egna kommandon.';
+
+  @override
+  String get s6cce12c7e3 => 'Serviceport (ESPHome)';
+
+  @override
+  String get s0d3bc6d125 => 'En ESP på inomhusenhetskontakt, tvåvägs.';
+
+  @override
+  String get s8275426406 => 'Via Home Assistant';
+
+  @override
+  String get s5b10465c5b => 'Om du redan har Home Assistant.';
+
+  @override
+  String get s417228f48f => 'Andra varumärken – varför ännu inte';
 
   @override
   String get s772c158a57 => 'TCP';
@@ -4793,6 +4865,9 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s837e0fc5e6 =>
       'IR är envägs: värmepumpen bekräftar inte kommandon. Tiles visar det sista skickade tillståndet.';
+
+  @override
+  String get sf1ffb49d9c => 'Importera pumpens registerlista (CSV)';
 
   @override
   String get s09737988fd => 'Anslutningen fungerar!';
@@ -7466,9 +7541,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s5db6506824 => 'Sätt temperatur';
 
   @override
-  String get s018d2e08f4 => 'Fläkt';
-
-  @override
   String get sa00d64c920 => 'Vane';
 
   @override
@@ -8212,6 +8284,354 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String get s14e68f6852 => 'udda svar';
+
+  @override
+  String get s31ec8d716e =>
+      'Enhetens kontotabell är full. Ta bort en gammal telefon i Smart M-Air-appen och försök igen.';
+
+  @override
+  String get sbaecc9fbed =>
+      'Enheten är upptagen (en annan app) - försök på en minut.';
+
+  @override
+  String get sc2474a4b0b =>
+      'Daikin vägrade - kontrollera nyckeln på klistermärket.';
+
+  @override
+  String get s2f7a41de7a => 'Daikin accepterade inte nyckeln.';
+
+  @override
+  String sc499fab53f(String p0) {
+    return 'Ingen Daikin adapter på $p0';
+  }
+
+  @override
+  String get s4cfb5a36c9 => 'Daikin (lokalt Wi-Fi)';
+
+  @override
+  String get s2089a88d1f => 'Mitsubishi Heavy (Smart M-Air, lokal)';
+
+  @override
+  String get s050c379c67 => 'Mitsubishi Electric (MELCloud)';
+
+  @override
+  String get s339fd47e4a => 'Toshiba (Home AC Control)';
+
+  @override
+  String get sf71a945a1d => 'Samsung (SmartThings)';
+
+  @override
+  String get sf7aed9c9e0 => 'Hitachi (airCloud Go)';
+
+  @override
+  String get sb33215fa8b => 'NIBE (myUplink cloud)';
+
+  @override
+  String get se9b4e55058 => 'NIBE / Thermia (Modbus TCP, lokal)';
+
+  @override
+  String get sddd6b1d42e => 'Värmepump (inbyggd integration)';
+
+  @override
+  String get s1c9df5579f => 'Märke';
+
+  @override
+  String get s34a3681441 =>
+      'Skapare och anslutningstyp. Lokala arbetar utan molnet.';
+
+  @override
+  String get s88688d2809 => 'Enhet IP (lokala varumärken)';
+
+  @override
+  String get s87e0a93996 =>
+      'IP-adress för en lokal enhet (från routerns enhetslista).';
+
+  @override
+  String get sc0bc183c3e => 'E-post (moln)';
+
+  @override
+  String get s0cc25259c7 =>
+      'Det e-postmeddelande du loggar in på tillverkarens app med (MELCloud, airCloud).';
+
+  @override
+  String get s25f561c483 => 'Användarnamn (Toshiba)';
+
+  @override
+  String get s92e7ac8d3c => 'Ditt Toshiba Home AC Control användarnamn.';
+
+  @override
+  String get safde071183 =>
+      'Skaparens app lösenord. lagras endast på den här enheten / i ditt eget valv.';
+
+  @override
+  String get s2862f25983 => 'Token (SmartThings)';
+
+  @override
+  String get s23a4bc8253 =>
+      'SmartThings personliga åtkomsttoken (account.smartthings.com/tokens).';
+
+  @override
+  String get sef37e5048d => 'Nyckel (Daikin BRP072C, klistermärke)';
+
+  @override
+  String get s1c339065e1 => 'Nyckeln tryckt på BRP072C adapterns klistermärke.';
+
+  @override
+  String get se67e3e0eb9 => 'Client ID (myUplink)';
+
+  @override
+  String get sc2d5225ae8 => 'Klient-ID för din egen app på dev.myuplink.com.';
+
+  @override
+  String get sa165e50f99 => 'Client Secret (myUplink)';
+
+  @override
+  String get s332f9bc1a1 =>
+      'Kundhemlighet för din egen app på dev.myuplink.com.';
+
+  @override
+  String get sd1d4b22fc6 => 'Registrera karta (Modbus)';
+
+  @override
+  String get s5a9d485e7f =>
+      'Pumpserien. \"Importerad registerlista\" = pumpens egen CSV-export.';
+
+  @override
+  String get s7dc3b152a8 => 'NIBE S-serien';
+
+  @override
+  String get sad9fd728f9 => 'NIBE F-serien + MODBUS 40';
+
+  @override
+  String get seba6d1ba70 => 'Thermia Genesis';
+
+  @override
+  String get sfdc0bbf134 => 'Importerad registerförteckning';
+
+  @override
+  String get scd35ffb8e9 => 'Vanligtvis standard (Modbus 502, MHI 51443).';
+
+  @override
+  String get s58f0665e29 => 'Modbus unit id';
+
+  @override
+  String get sab25ff8075 => 'Modbus enhet adress, vanligtvis 1.';
+
+  @override
+  String get sb064bec4c8 => 'Server URL (endast testa)';
+
+  @override
+  String get s67b2ac9328 =>
+      'Testning endast: ersätter tillverkarens serveradress.';
+
+  @override
+  String get sabab3f2fae => 'Vad man ska läsa';
+
+  @override
+  String get sf5e949d20c =>
+      'Fullständigt tillstånd (värmepumpkort) eller en läsning.';
+
+  @override
+  String get s46ce82ef9c => 'Full stat';
+
+  @override
+  String get s8cbd66456f => 'En läsning';
+
+  @override
+  String get s6d1827b58e => 'Enhet Id';
+
+  @override
+  String get s89308ddc6d => 'Inomhus enhet id; \"huvud\" för en-enhet enheter.';
+
+  @override
+  String get sa643668bec => 'Läsning (nuvarande, mål, utomhus, kraft ...)';
+
+  @override
+  String get s02d24152f0 =>
+      'Vilken läsning: nuvarande, mål, utomhus, ström, försörjning, hot_water ...';
+
+  @override
+  String get se16e293d6b => 'Set';
+
+  @override
+  String get s155de09d38 => 'Vad man ska ställa in';
+
+  @override
+  String get s94ecb845c8 => 'Setpoint, power, mode eller fan.';
+
+  @override
+  String get sba2eb6d9b9 => 'Setpoint';
+
+  @override
+  String get seb4c438a42 => 'Värde ({{value}})';
+
+  @override
+  String get s033b6b8c6c => 'Värde att skicka; {{value}} = kortets värde.';
+
+  @override
+  String s6478b264c0(String p0) {
+    return 'Värmepump \"$p0\" är inte längre i kontot';
+  }
+
+  @override
+  String get s4937d259b8 => 'Setpoint saknas';
+
+  @override
+  String get s10f42a9a20 => 'Curve Offset';
+
+  @override
+  String get sbc996a7d25 => 'börvärde';
+
+  @override
+  String get s620c04d73e => 'Leverans';
+
+  @override
+  String get s922f77d2f1 => 'Återvänd';
+
+  @override
+  String get sbfee72daca => 'Varmt vatten';
+
+  @override
+  String get s0be9e35521 => 'Brine in';
+
+  @override
+  String get s3a0d796501 => 'Brine out';
+
+  @override
+  String get s23bbe9b4ed => 'Examen minuter';
+
+  @override
+  String get s3ca74f3ef8 => 'Kompressor';
+
+  @override
+  String get s6d21845355 =>
+      'Hitta det i routerns enhetslista eller tillverkarens app (enhetsinformation).';
+
+  @override
+  String get se74bcc1028 => 'Extra kort för automation';
+
+  @override
+  String get s4a91d07711 => 'Daikin (Wi-Fi, lokal)';
+
+  @override
+  String get s8e339844a9 =>
+      'Daikin med en Wi-Fi-adapter (BRP069, BRP072C, Airbase) fungerar utan molnet; finns på nätverket.';
+
+  @override
+  String get sdb368f83d9 =>
+      'Nyare BRP072C-adaptrar: den 13-siffriga nyckeln är på adapterklistermärket. Äldre behöver ingen.';
+
+  @override
+  String get se19c918d2d =>
+      'MHI värmepump med WF-RAC Wi-Fi-modulen (Smart M-Air app). Lokal kontroll, inget moln.';
+
+  @override
+  String get sc24b0de42d =>
+      'Luft-till-luft- och Ecodan-luft-till-vattenpumpar genom ditt MELCloud-konto, var som helst.';
+
+  @override
+  String get s41d69e699d => 'Samma som i MELCloud-appen.';
+
+  @override
+  String get s7a7ab0d238 => 'lagras krypterad på den här enheten bara.';
+
+  @override
+  String get sa8405bf705 =>
+      'Toshiba Wi-Fi-värmepumpar genom ditt Toshiba Home AC Control-konto.';
+
+  @override
+  String get s703279c03e => 'Samma som i Toshiba-appen.';
+
+  @override
+  String get se26b321a29 =>
+      'Samsung Wi-Fi värmepumpar genom den officiella SmartThings API.';
+
+  @override
+  String get s550793ea4a =>
+      'Skapa en på account.smartthings.com/tokens with the Devices-omfattningarna. Note: Samsung begränsar nya tokens till 24 timmar.';
+
+  @override
+  String get se2f1cb488d => 'Hitachi värmepumpar genom ditt AirCloud Go-konto.';
+
+  @override
+  String get s2e3665e309 =>
+      'NIBE markkälla och avgaspumpar genom den officiella myUplink API (även CTC, Høiax...).';
+
+  @override
+  String get sf2e635afad =>
+      'Logga in på dev.myuplink.com → Applikationer → Skapa. Kopiera kundidentifieraren.';
+
+  @override
+  String get s9db9eb22f8 => 'Från samma sida.';
+
+  @override
+  String get s412987475c => 'NIBE S-serien (Modbus TCP, lokal)';
+
+  @override
+  String get s3fc8f4ce0d =>
+      'S1155, S1255, SMO S40... Aktivera Modbus TCP i pumpmenyn 7.5.9. Inget moln.';
+
+  @override
+  String get s9b15cf6f63 =>
+      'Pumpens IP: meny 3.1.13 (Connections) eller routerns enhetslista.';
+
+  @override
+  String get s29ed152759 => 'NIBE F-serien + MODBUS 40 (lokal)';
+
+  @override
+  String get sa723788d3c =>
+      'F-serie / SMO med MODBUS 40-tillbehör och en RS485→TCP-gateway. Verifiera registren.';
+
+  @override
+  String get sb001c51087 => 'IP-adress för RS485→Modbus TCP-gateway.';
+
+  @override
+  String get sde4b0f4525 => 'Thermia (Modbus TCP, lokal)';
+
+  @override
+  String get s9280f807a6 =>
+      'Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis) Modbus TCP: Inställningar → BMS.';
+
+  @override
+  String get scab35073e8 => 'Pumpens IP-adress (display eller router).';
+
+  @override
+  String get s5ddd513689 =>
+      'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia - eller någon med en IR-fjärrkontroll.';
+
+  @override
+  String get s9622976fd3 => 'Inga enheter hittades';
+
+  @override
+  String get sa93876ac9d => 'Enhet(s)';
+
+  @override
+  String get sf3d77f10b9 => 'för många förfrågningar';
+
+  @override
+  String get se62d52c336 => 'AirCloud: sign-in misslyckades';
+
+  @override
+  String get sc5f4490c42 => 'AirCloud: Enhet som inte hittats';
+
+  @override
+  String get s00c7f00681 => 'MELCloud: fel e-post eller lösenord';
+
+  @override
+  String get s4bd0e3110e => 'Denna pump är inte påslagen / av över Modbus.';
+
+  @override
+  String get s4558be4f09 => 'myUplink: fel klient-ID eller hemlighet';
+
+  @override
+  String get s370bf1904d =>
+      'läget för en mark-source pump är inte ändras här - bara inställningen.';
+
+  @override
+  String get s8f016f0e29 => 'Toshiba: fel användarnamn eller lösenord';
+
+  @override
   String get s589eb1bcd3 => 'Home Assistant (exempel)';
 
   @override
@@ -8432,9 +8852,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s9783a8fd53 => 'rum';
-
-  @override
-  String get sbc996a7d25 => 'börvärde';
 
   @override
   String get sa69c0e1ca3 => 'Luftvärmepump (IR)';

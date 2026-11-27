@@ -43,6 +43,26 @@ Color climateColor(String activity, ColorScheme cs) => switch (activity) {
 
 String _num(double? v) => v == null ? '–' : (v == v.roundToDouble() ? v.toStringAsFixed(0) : v.toStringAsFixed(1));
 
+/// Setpoint text: "21°" or, for a heating curve offset, "+2".
+String _tgt(double? v, String kind) {
+  if (v == null) return '–';
+  if (kind == 'offset') return v > 0 ? '+${_num(v)}' : _num(v);
+  return '${_num(v)}°';
+}
+
+String climateFanLabel(BuildContext context, String f) => switch (f) {
+  'auto' => tx(context, 'Auto', 'Auto'),
+  'quiet' => tx(context, 'Hiljainen', 'Quiet'),
+  'low' => tx(context, 'Pieni', 'Low'),
+  'medium_low' => tx(context, 'Pieni–keski', 'Medium-low'),
+  'medium' => tx(context, 'Keski', 'Medium'),
+  'medium_high' => tx(context, 'Keski–suuri', 'Medium-high'),
+  'high' => tx(context, 'Suuri', 'High'),
+  'turbo' => tx(context, 'Turbo', 'Turbo'),
+  _ when f.startsWith('lv') => f.substring(2),
+  _ => f,
+};
+
 class ClimateTile extends StatefulWidget {
   const ClimateTile({super.key, required this.tile, this.editing = false});
   final TileConfig tile;
@@ -135,6 +155,7 @@ class _ClimateTileState extends State<ClimateTile> {
                 Text(
                   [
                     '${tx(c, 'Nyt', 'Now')} ${_num(s?.temp)} °C',
+                    if (s?.outdoor != null) '${tx(c, 'Ulkona', 'Outdoor')} ${_num(s!.outdoor)} °C',
                     if (s?.humidity != null) '${_num(s!.humidity)} %',
                     if (s != null) climateActivityLabel(c, s.activity),
                   ].join(' · '),
@@ -142,7 +163,7 @@ class _ClimateTileState extends State<ClimateTile> {
                 const SizedBox(height: 16),
                 Center(
                   child: Text(
-                    '${_num(target)} °C',
+                    s?.targetKind == 'offset' ? _tgt(target, 'offset') : '${_num(target)} °C',
                     key: const ValueKey('climate-sheet-target'),
                     style: text.displaySmall,
                   ),
@@ -153,7 +174,7 @@ class _ClimateTileState extends State<ClimateTile> {
                   max: t.max,
                   divisions: ((t.max - t.min) / _step).round().clamp(1, 200),
                   value: target.clamp(t.min, t.max).toDouble(),
-                  label: '${_num(target)} °C',
+                  label: s?.targetKind == 'offset' ? _tgt(target, 'offset') : '${_num(target)} °C',
                   onChanged: (v) {
                     setTarget(v);
                     set(() {});
@@ -179,6 +200,53 @@ class _ClimateTileState extends State<ClimateTile> {
                           },
                         ),
                     ],
+                  ),
+                ],
+                if (s != null && s.fans.length > 1) ...[
+                  const SizedBox(height: 12),
+                  Text(tx(c, 'Puhallin', 'Fan'), style: text.labelLarge),
+                  const SizedBox(height: 4),
+                  Wrap(
+                    spacing: 8,
+                    children: [
+                      for (final f in s.fans)
+                        ChoiceChip(
+                          key: ValueKey('climate-fan-$f'),
+                          label: Text(climateFanLabel(c, f)),
+                          selected: s.fan == f,
+                          onSelected: (_) async {
+                            final cmd = climateFanCommand(t, f);
+                            if (cmd == null) return;
+                            try {
+                              await AppScope.read(context).runStep(cmd);
+                              s.fan = f;
+                            } catch (e) {
+                              if (mounted) showSnack(context, '${t.title}: ${friendlyText(context, e)}', error: true);
+                            }
+                            set(() {});
+                          },
+                        ),
+                    ],
+                  ),
+                ],
+                if (s != null && s.power != null && !s.modes.contains('off')) ...[
+                  const SizedBox(height: 8),
+                  SwitchListTile(
+                    key: const ValueKey('climate-power'),
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(tx(c, 'Päällä', 'On')),
+                    value: s.power!,
+                    onChanged: (v) async {
+                      final cmd = climatePowerCommand(t, v);
+                      if (cmd == null) return;
+                      try {
+                        await AppScope.read(context).runStep(cmd);
+                        s.power = v;
+                      } catch (e) {
+                        if (mounted) showSnack(context, '${t.title}: ${friendlyText(context, e)}', error: true);
+                      }
+                      set(() {});
+                    },
                   ),
                 ],
               ],
@@ -290,7 +358,7 @@ class _ClimateTileState extends State<ClimateTile> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            target == null ? '–' : '${_num(target)}°',
+                            _tgt(target, s?.targetKind ?? 'temp'),
                             key: const ValueKey('climate-target'),
                             style: (tall ? text.headlineSmall : text.titleMedium)?.copyWith(
                               fontWeight: FontWeight.w700,
@@ -298,7 +366,7 @@ class _ClimateTileState extends State<ClimateTile> {
                           ),
                           if (!compact)
                             Text(
-                              tx(context, 'asetus', 'set'),
+                              s?.targetKind == 'offset' ? tx(context, 'käyrä', 'curve') : tx(context, 'asetus', 'set'),
                               style: text.labelSmall?.copyWith(color: cs.onSurfaceVariant),
                             ),
                         ],

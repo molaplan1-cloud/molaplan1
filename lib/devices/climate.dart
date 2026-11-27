@@ -55,8 +55,29 @@ TileConfig pairClimateTile({
 );
 
 class ClimateState {
-  ClimateState({this.temp, this.target, this.humidity, this.mode = '', this.action = '', this.modes = const []});
+  ClimateState({
+    this.temp,
+    this.target,
+    this.humidity,
+    this.mode = '',
+    this.action = '',
+    this.modes = const [],
+    this.outdoor,
+    this.power,
+    this.fan = '',
+    this.fans = const [],
+    this.targetKind = 'temp',
+  });
   double? temp, target, humidity;
+
+  /// Built-in heat pump integrations (t267u–t270u): outdoor temperature, power, fan.
+  double? outdoor;
+  bool? power;
+  String fan;
+  List<String> fans;
+
+  /// 'temp' (°C setpoint) or 'offset' (ground-source heating curve offset −10…+10).
+  String targetKind;
 
   /// heat / cool / auto / heat_cool / off / '' (unknown)
   String mode;
@@ -70,6 +91,7 @@ class ClimateState {
     if (mode == 'off' || action == 'off') return 'off';
     if (action == 'heating' || action == 'preheating') return 'heating';
     if (action == 'cooling') return 'cooling';
+    if (action.isEmpty && targetKind == 'offset') return 'idle';
     if (action.isEmpty && temp != null && target != null && mode != 'cool') {
       return temp! < target! - 0.2 ? 'heating' : 'idle';
     }
@@ -85,6 +107,23 @@ double? _d(Object? v) {
 /// Reads the whole thermostat state with [d].
 Future<ClimateState> readClimate(Driver d, TileConfig t) async {
   final r = t.read;
+  if (r['hp'] == true) {
+    final raw = await d.read({'hp': 'state', 'unit': r['unit'] ?? 'main', 'meta': ?r['meta']});
+    final m = raw is Map ? raw : (raw is String ? jsonDecode(raw) as Map : const {});
+    return ClimateState(
+      temp: _d(m['current']),
+      target: _d(m['target']),
+      humidity: _d(m['humidity']),
+      mode: '${m['mode'] ?? ''}',
+      action: '${m['action'] ?? ''}',
+      modes: [for (final x in (m['modes'] as List? ?? const [])) '$x'],
+      outdoor: _d(m['outdoor']),
+      power: m['power'] is bool ? m['power'] as bool : null,
+      fan: '${m['fan'] ?? ''}',
+      fans: [for (final x in (m['fans'] as List? ?? const [])) '$x'],
+      targetKind: '${m['targetKind'] ?? 'temp'}',
+    );
+  }
   if (r['entityId'] != null) {
     final raw = await d.read({'entityId': r['entityId'], 'full': true});
     final m = raw is Map ? raw : (raw is String ? jsonDecode(raw) as Map : const {});
@@ -124,7 +163,12 @@ CommandStep climateSetCommand(TileConfig t, double v) {
   return t.commands.first;
 }
 
+Map<String, dynamic> _hpUnit(TileConfig t) => {'unit': t.read['unit'] ?? 'main', 'meta': ?t.read['meta']};
+
 CommandStep? climateModeCommand(TileConfig t, String mode) {
+  if (t.read['hp'] == true) {
+    return CommandStep(connectionId: t.connectionId!, spec: {'hp': 'set', 'field': 'mode', 'mode': mode, ..._hpUnit(t)});
+  }
   final e = t.read['entityId'];
   if (e == null) return null;
   return CommandStep(
@@ -132,6 +176,16 @@ CommandStep? climateModeCommand(TileConfig t, String mode) {
     spec: {'service': 'climate.set_hvac_mode', 'entityId': e, 'data': '{"hvac_mode": "$mode"}'},
   );
 }
+
+/// Fan speed (built-in heat pump integrations only).
+CommandStep? climateFanCommand(TileConfig t, String fan) => t.read['hp'] == true
+    ? CommandStep(connectionId: t.connectionId!, spec: {'hp': 'set', 'field': 'fan', 'fan': fan, ..._hpUnit(t)})
+    : null;
+
+/// On / off (built-in heat pump integrations only).
+CommandStep? climatePowerCommand(TileConfig t, bool on) => t.read['hp'] == true
+    ? CommandStep(connectionId: t.connectionId!, spec: {'hp': 'set', 'field': 'power', 'on': on, ..._hpUnit(t)})
+    : null;
 
 /// Older versions made three tiles for an HA climate entity (room temperature, "– asetus" slider,
 /// power toggle). Merges them into one climate tile in place of the first. Returns true if changed.

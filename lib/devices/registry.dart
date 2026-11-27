@@ -1,4 +1,5 @@
 import 'cameras.dart';
+import '../heatpumps/hp_providers.dart';
 import 'dirigera.dart';
 import 'hue.dart';
 import 'provider.dart';
@@ -14,10 +15,13 @@ final deviceProviders = <DeviceProvider>[
   HueProvider(),
   DirigeraProvider(),
   ShellyCloudProvider(),
+  HeatPumpChooser(),
 ];
 
 DeviceProvider? providerById(String id) =>
-    deviceProviders.where((p) => p.id == id).firstOrNull ?? cameraProviders.where((p) => p.id == id).firstOrNull;
+    deviceProviders.where((p) => p.id == id).firstOrNull ??
+    cameraProviders.where((p) => p.id == id).firstOrNull ??
+    heatPumpProviders.where((p) => p.id == id).firstOrNull;
 
 /// Brands not built in yet: shown in the picker with the best way to use them today.
 class RoadmapBrand {
@@ -67,18 +71,11 @@ const roadmapBrands = <RoadmapBrand>[
     useTemplate: 'homeassistant',
   ),
   RoadmapBrand(
-    'NIBE / Thermia (lämpöpumppu)',
-    ['nibe', 'thermia', 'lämpöpumppu', 'maalämpö', 'myuplink'],
-    'Tulossa (myUplink / Online-pilvi vaatii avaimen). Nyt: Modbus- tai Home Assistant -lämpöpumppupohja.',
-    'Coming (cloud needs a key). Today: Modbus or the Home Assistant heat pump template.',
-    useTemplate: 'heatpump_ha',
-  ),
-  RoadmapBrand(
-    'Mitsubishi / Daikin / Panasonic (ilmalämpöpumppu)',
-    ['mitsubishi', 'daikin', 'panasonic', 'melcloud', 'onecta', 'comfort cloud', 'ilmalämpöpumppu'],
-    'Tulossa (valmistajan pilvi). Nyt: Home Assistant -lämpöpumppupohja.',
-    'Coming (vendor cloud). Today: Home Assistant heat pump template.',
-    useTemplate: 'heatpump_ha',
+    'Panasonic / LG / Gree / Midea (ilmalämpöpumppu)',
+    ['panasonic', 'comfort cloud', 'lg', 'thinq', 'gree', 'midea', 'fujitsu', 'onecta'],
+    'Ei omaa integraatiota vielä. Nyt: IR-ohjain (Tasmota/ESPHome) tai Home Assistant. Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE ja Thermia: Lisää laite → Lämpöpumppu.',
+    'No built-in integration yet. Today: an IR blaster or Home Assistant. Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE and Thermia: Add device → Heat pump.',
+    useTemplate: 'heatpump_ir',
   ),
   RoadmapBrand(
     'IKEA Trådfri (vanha yhdyskäytävä)',
