@@ -376,8 +376,9 @@ class _TileEditorState extends State<TileEditor> {
             ],
             onChanged: (v) => setState(() {
               _setControl(v!, op);
-              if (_title.text.trim().isEmpty)
+              if (_title.text.trim().isEmpty) {
                 _title.text = controls.firstWhere((x) => x.id == v).title;
+              }
             }),
           ),
           const SizedBox(height: 10),
@@ -1175,18 +1176,20 @@ class _TileEditorState extends State<TileEditor> {
                               ? (t.min + t.max) / 2
                               : 1,
                         );
-                        if (mounted)
+                        if (mounted) {
                           showSnack(
                             context,
                             tx(context, 'Komento lähetetty', 'Command sent'),
                           );
+                        }
                       } catch (e) {
-                        if (mounted)
+                        if (mounted) {
                           showSnack(
                             context,
                             friendlyText(context, e),
                             error: true,
                           );
+                        }
                       }
                     },
                     icon: const Icon(Icons.send_outlined, size: 16),
@@ -1596,8 +1599,9 @@ class _TileEditorState extends State<TileEditor> {
                             context,
                             Color(rows[i].color),
                           );
-                          if (c != null)
+                          if (c != null) {
                             setState(() => rows[i].color = c.toARGB32());
+                          }
                         },
                         child: CircleAvatar(
                           radius: 13,

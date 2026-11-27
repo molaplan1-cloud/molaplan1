@@ -155,8 +155,9 @@ class PriceTrendBody extends StatelessWidget {
         ? 'thresholds'
         : tile.priceColorMode;
     Color? colorAt(double v) {
-      if (mode == 'fixed')
+      if (mode == 'fixed') {
         return Color(tile.priceLineColor ?? cs.primary.toARGB32());
+      }
       if (mode == 'relative') {
         final cs0 = [for (final p in win) p.$2]..sort();
         if (cs0.isEmpty) return null;

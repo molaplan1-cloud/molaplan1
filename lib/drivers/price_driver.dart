@@ -155,8 +155,9 @@ class PriceDriver extends Driver {
   Future<PriceSeries> _series({bool force = false}) async {
     final srv = s.str('server', defaultPriceServer);
     try {
-      if (custom == null && srv != defaultPriceServer)
+      if (custom == null && srv != defaultPriceServer) {
         return await PriceService(server: srv).get(zone, force: force);
+      }
       return await service.get(zone, force: force);
     } catch (e) {
       throw priceCloudError(e);
@@ -260,10 +261,11 @@ class PriceDriver extends Driver {
         };
       default:
         final p = se.at(now);
-        if (p == null)
+        if (p == null) {
           throw DriverException(
             dtx('Hintaa ei ole tälle hetkelle.', 'No price for now.'),
           );
+        }
         return _r(st.cents(p.eurMwh));
     }
   }

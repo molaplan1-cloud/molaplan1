@@ -386,8 +386,9 @@ bool pricesNeedFetch(
   int misses = 0,
 }) {
   bool waited(Duration d) => lastTry == null || !now.isBefore(lastTry.add(d));
-  if (c == null || c.points.isEmpty || c.at(now) == null)
+  if (c == null || c.points.isEmpty || c.at(now) == null) {
     return waited(pricesRetryFirst);
+  }
   if (c.hasTomorrow(now)) return false;
   if (now.isBefore(tomorrowDue(now, zone: c.zone))) return false;
   return waited(misses <= 1 ? pricesRetryFirst : pricesRetryLater);
@@ -573,8 +574,9 @@ class PriceService {
       Uri.parse('$server/v1/prices?zone=${Uri.encodeQueryComponent(zone)}'),
     );
     final body = utf8.decode(r.bodyBytes, allowMalformed: true);
-    if (r.statusCode == 400 && body.contains('unknown_zone'))
+    if (r.statusCode == 400 && body.contains('unknown_zone')) {
       throw PriceException('unknown_zone');
+    }
     if (r.statusCode != 200) {
       final detail = RegExp(r'"detail"\s*:\s*"([^"]*)"')
           .firstMatch(body)

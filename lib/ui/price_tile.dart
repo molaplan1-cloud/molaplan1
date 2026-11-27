@@ -196,13 +196,14 @@ class _PriceTileBodyState extends State<PriceTileBody> {
                 (widget.data['hourly'] == true || priceHourlyOf(st.config))));
     final v = PriceView.build(pts, res, now, hourly: hourly);
     final quarter = v.quarter;
-    if (v.slots.isEmpty)
+    if (v.slots.isEmpty) {
       return Center(
         child: Text(
           tx(context, 'Ei hintoja', 'No prices'),
           style: text.bodySmall,
         ),
       );
+    }
     final meter = widget.tile.read['meter'] as String?;
     final hasMeters = st.config.energy.meters.isNotEmpty;
     final cost = v.instantCost(st.powerNowKw(meter));

@@ -852,8 +852,9 @@ bool isPlaceholderHost(Object? v) {
 }
 
 ConnectionConfig clearPlaceholderHost(ConnectionConfig c) {
-  if (c.settings['placeholderChecked'] == true || c.settings['demo'] == true)
+  if (c.settings['placeholderChecked'] == true || c.settings['demo'] == true) {
     return c;
+  }
   final example = exampleConnectionNames.contains(c.name);
   var cleared = false;
   for (final k in const ['host', 'baseUrl', 'address']) {
