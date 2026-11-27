@@ -52,15 +52,75 @@
  "@s0ec3e3e11d": {
   "x-mt": true
  },
+ "s11d9226341": "Android TV / Google TV (remoción)",
+ "@s11d9226341": {
+  "x-mt": true
+ },
+ "s0992ee68bf": "Sony, Philips, TCL, Xiaomi, Chromecast con Google TV...: potencia, volumen, muda, canales, teclas de flecha y la aplicación abierta. Parejas con un código mostrado en la TV.",
+ "@s0992ee68bf": {
+  "x-mt": true
+ },
+ "s8a14ae9518": "TV: Ajustes → Red &amp; Internet → (network) → Dirección IP. O Google Home app → dispositivo → Información del dispositivo.",
+ "@s8a14ae9518": {
+  "x-mt": true
+ },
+ "s714e6f6143": "La TV muestra un código de seis caracteres (digitos y letras A–F) – escriba aquí.",
+ "@s714e6f6143": {
+  "x-mt": true
+ },
+ "sd92171df4d": "Se muestra en la pantalla de TV durante el emparejado.",
+ "@sd92171df4d": {
+  "x-mt": true
+ },
  "s6db078dbe3": "Sonos",
+ "s8f7a93b1ea": "Sonos altavoces y barras sonoras: volumen, mute, play/pause, siguiente y ahora jugando. Directamente sobre la red de la casa, sin cuenta.",
+ "@s8f7a93b1ea": {
+  "x-mt": true
+ },
+ "s1cf843ef3e": "Sonos app → Configuración → Sistema → Acerca de Mi Sistema → Dirección IP.",
+ "@s1cf843ef3e": {
+  "x-mt": true
+ },
  "s01d549ef4d": "Roku",
+ "s406bfe2259": "Jugadores Roku y Roku TVs: llaves, volumen +/−, mute, play/pause, la aplicación abierta; en Roku TVs también potencia y canales.",
+ "@s406bfe2259": {
+  "x-mt": true
+ },
+ "sb4f88e9b1b": "Roku: Ajustes → Red → Acerca → Dirección IP. Permitir el control: Ajustes → Sistema → Configuración avanzada del sistema → Control por aplicaciones móviles → Activado.",
+ "@sb4f88e9b1b": {
+  "x-mt": true
+ },
  "sd3b85fadc0": "TV y Chromecast",
  "@sd3b85fadc0": {
+  "x-mt": true
+ },
+ "sebd2ee78b0": "Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos y Roku: potencia, volumen, canales y reproducción.",
+ "@sebd2ee78b0": {
   "x-mt": true
  },
  "s50eb745165": "/MediaRenderer/RenderingControl/Control",
  "s9e4f134628": "/MediaRenderer/AVTransport/Control",
  "s77251a38d3": "/ZoneGroupTopology/Control",
+ "s7594076cbd": "fracasado",
+ "@s7594076cbd": {
+  "x-mt": true
+ },
+ "s01c48d363e": "Sonos no alcanzable",
+ "@s01c48d363e": {
+  "x-mt": true
+ },
+ "sc49795d7d1": "no un dispositivo Sonos",
+ "@sc49795d7d1": {
+  "x-mt": true
+ },
+ "s89541675fe": "Línea-en",
+ "@s89541675fe": {
+  "x-mt": true
+ },
+ "sdd6a5ac9b8": "Sonos no tiene canales",
+ "@sdd6a5ac9b8": {
+  "x-mt": true
+ },
  "sbd92a41506": "Un Chromecast no puede ser conmutado a distancia",
  "@sbd92a41506": {
   "x-mt": true
@@ -69,8 +129,36 @@
  "@sd8167370bc": {
   "x-mt": true
  },
+ "s0249d39100": "pares necesarios",
+ "@s0249d39100": {
+  "x-mt": true
+ },
  "se5b2692112": "TV no accesible",
  "@se5b2692112": {
+  "x-mt": true
+ },
+ "s536792efd0": "Código incorrecto",
+ "@s536792efd0": {
+  "x-mt": true
+ },
+ "s4a67144434": "pareja no comenzó",
+ "@s4a67144434": {
+  "x-mt": true
+ },
+ "s3f514c9aa2": "El código tiene 6 caracteres (0–9, A–F)",
+ "@s3f514c9aa2": {
+  "x-mt": true
+ },
+ "sb3712c846c": "Pare el Android TV primero (código en la TV)",
+ "@sb3712c846c": {
+  "x-mt": true
+ },
+ "sc7cbbc343d": "El Android TV se negó – pareado necesario",
+ "@sc7cbbc343d": {
+  "x-mt": true
+ },
+ "s85bb00e885": "La TV no reporta volumen",
+ "@s85bb00e885": {
   "x-mt": true
  },
  "sd42552b5c1": "La televisión se negó – permitir a Molaplan en el impulso en la televisión",
@@ -99,6 +187,10 @@
   "x-mt": true
  },
  "s1c9df5579f": "Marca",
+ "s22e7286858": "TV Android y Google TVs: Reparto (estado, volumen, reproducción) o el protocolo remoto (keys, canales, potencia; código de emparejamiento).",
+ "@s22e7286858": {
+  "x-mt": true
+ },
  "s178e07f06b": "Dirección IP",
  "s678a1d0824": "La dirección IP del dispositivo (lista del dispositivo de rotor). Reserve una dirección fija en el router.",
  "@s678a1d0824": {
@@ -150,6 +242,22 @@
  },
  "s8b34eb0ec5": "LG lo devuelve cuando aceptas la conexión en la TV. Almacenado en este dispositivo solamente.",
  "@s8b34eb0ec5": {
+  "x-mt": true
+ },
+ "sa14b4d0a62": "Certificado de cliente (Android TV)",
+ "@sa14b4d0a62": {
+  "x-mt": true
+ },
+ "sb6b8ce62e4": "El propio certificado de Molaplan que el televisor aceptó durante el emparejamiento. Almacenó en este dispositivo solamente.",
+ "@sb6b8ce62e4": {
+  "x-mt": true
+ },
+ "s55c0154762": "Clave de cliente (Android TV)",
+ "@s55c0154762": {
+  "x-mt": true
+ },
+ "s49678d6bba": "La llave privada del certificado, guardada sólo en este dispositivo.",
+ "@s49678d6bba": {
   "x-mt": true
  },
  "sbdf670977b": "Lectura",
@@ -209,16 +317,56 @@
  "@sdce14191c7": {
   "x-mt": true
  },
+ "sbefd940b7e": "Canal (valor = número)",
+ "@sbefd940b7e": {
+  "x-mt": true
+ },
+ "s8028880bf9": "Aplicación abierta (Android TV, valor = enlace)",
+ "@s8028880bf9": {
+  "x-mt": true
+ },
  "sc91823aedb": "Sólo para el comando \"Key\".",
  "@sc91823aedb": {
   "x-mt": true
  },
  "s6c3e76828b": "Siguiente",
+ "sd61993184d": "Anterior",
+ "@sd61993184d": {
+  "x-mt": true
+ },
+ "sd46979cb3c": "Mute on/off",
+ "@sd46979cb3c": {
+  "x-mt": true
+ },
+ "s9c350b0f5e": "Canal +",
+ "@s9c350b0f5e": {
+  "x-mt": true
+ },
+ "s66136ee35f": "Canal −",
+ "@s66136ee35f": {
+  "x-mt": true
+ },
  "sf936d0b01d": "Arriba",
  "@sf936d0b01d": {
   "x-mt": true
  },
+ "s09e8d49ceb": "Abajo",
+ "@s09e8d49ceb": {
+  "x-mt": true
+ },
+ "s34e61d8a2f": "Izquierda",
+ "@s34e61d8a2f": {
+  "x-mt": true
+ },
+ "s365a1e8626": "Bien",
+ "@s365a1e8626": {
+  "x-mt": true
+ },
  "s183ed60009": "OK",
+ "s8cbc3f33aa": "La clave del poder",
+ "@s8cbc3f33aa": {
+  "x-mt": true
+ },
  "sdac8f8b638": "Jugar / pausa",
  "@sdac8f8b638": {
   "x-mt": true
@@ -249,6 +397,10 @@
  "@s94e14089d6": {
   "x-mt": true
  },
+ "s483f02b584": "Aplicación abierta necesita la conexión remota de Android TV",
+ "@s483f02b584": {
+  "x-mt": true
+ },
  "s5d5363db20": "volumen",
  "@s5d5363db20": {
   "x-mt": true
@@ -272,6 +424,22 @@
  },
  "sbfbb3d52b3": "Acepta la conexión en la TV y prueba de nuevo",
  "@sbfbb3d52b3": {
+  "x-mt": true
+ },
+ "s9df7f078c6": "Roku no alcanzable",
+ "@s9df7f078c6": {
+  "x-mt": true
+ },
+ "s0dc1e158bc": "Control de bloques Roku: Ajustes → Sistema → Ajustes avanzados del sistema → Control por aplicaciones móviles → Activado",
+ "@s0dc1e158bc": {
+  "x-mt": true
+ },
+ "s58d9f3b1b1": "no un dispositivo Roku",
+ "@s58d9f3b1b1": {
+  "x-mt": true
+ },
+ "sd44e043ccc": "Roku no tiene volumen absoluto – utilizar volumen +/−",
+ "@sd44e043ccc": {
   "x-mt": true
  },
  "sf2993f0346": "La televisión necesita pares",
@@ -298,6 +466,10 @@
  "scc0cccf89d": "Apagado",
  "s4cbe24240f": "Encendido",
  "s4e1ea0bc65": "En reposo",
+ "sbeb26f2b64": "Número de canal desaparecido",
+ "@sbeb26f2b64": {
+  "x-mt": true
+ },
  "s095ca83913": "{p0} tarjetas agregadas",
  "@s095ca83913": {
   "x-mt": true
@@ -1292,6 +1464,10 @@
  },
  "se5084a149d": "¿Qué televisor o dispositivo?",
  "@se5084a149d": {
+  "x-mt": true
+ },
+ "s512db00a17": "Estado, potencia, volumen, muda, canales y reproducción como tarjetas y para automatizaciones – directamente sobre la red de la casa, sin nube y sin asistente de casa. Android TV y Google TV: Chromecast (estadio y volumen) o el remoto (keys, canales, potencia).",
+ "@s512db00a17": {
   "x-mt": true
  },
  "sca7e088857": "Precio de la electricidad",
@@ -2290,7 +2466,7 @@
  "s12a7d631af": "Aspecto",
  "s0d83798030": "Tamaño",
  "s64c916e299": "Pequeña",
- "s5e3097232a": "Ancha",
+ "s5e3097232a": "Ancho",
  "s8971788287": "Grande",
  "scf37cbeda8": "Icono",
  "s254a1d8e12": "Imagen de fondo (opcional)",
@@ -2447,26 +2623,6 @@
   "x-mt": true
  },
  "sd7314e8237": "Visualización",
- "s7d6cee9e42": "Bares (15 min)",
- "@s7d6cee9e42": {
-  "x-mt": true
- },
- "sc0e069225b": "Trend + línea Ahora",
- "@sc0e069225b": {
-  "x-mt": true
- },
- "s07647fa07d": "Rango",
- "@s07647fa07d": {
-  "x-mt": true
- },
- "s8feeef3110": "Mostrar mañana cuando esté disponible",
- "@s8feeef3110": {
-  "x-mt": true
- },
- "sad692e6ae5": "Los precios del mañana aparecen por sí mismos una vez publicados (alrededor de las 14:00).",
- "@sad692e6ae5": {
-  "x-mt": true
- },
  "s1c72b8c56a": "Longitud de la tendencia",
  "@s1c72b8c56a": {
   "x-mt": true
@@ -2579,7 +2735,51 @@
  "@s77d2309fd5": {
   "x-mt": true
  },
+ "s7d6cee9e42": "Bares (15 min)",
+ "@s7d6cee9e42": {
+  "x-mt": true
+ },
+ "sc0e069225b": "Trend + línea Ahora",
+ "@sc0e069225b": {
+  "x-mt": true
+ },
+ "s07647fa07d": "Rango",
+ "@s07647fa07d": {
+  "x-mt": true
+ },
+ "sbf6aaf9bb8": "Resolución",
  "sd032c3efec": "Auto",
+ "sa6dc2ff399": "15 min",
+ "s96093c8f41": "1 h",
+ "s0a3e006fda": "Coloración",
+ "sb6bfec83a2": "Relativo (mín–máx del día)",
+ "sd13fe2ac25": "Umbrales absolutos",
+ "s717db0e103": "Un color",
+ "sdc398885dc": "Ajustes avanzados",
+ "s8feeef3110": "Mostrar mañana cuando esté disponible",
+ "@s8feeef3110": {
+  "x-mt": true
+ },
+ "sad692e6ae5": "Los precios del mañana aparecen por sí mismos una vez publicados (alrededor de las 14:00).",
+ "@sad692e6ae5": {
+  "x-mt": true
+ },
+ "s3221d2c8b7": "Ancho de barra",
+ "s2c890951b7": "Fino",
+ "s0223c26f61": "Medio",
+ "s4b97930585": "Marcadores de mín. y máx.",
+ "seef35b192d": "Línea de ahora",
+ "s8c6a205222": "Fila de estadísticas (ahora, mín., media, máx.)",
+ "sbeeaa6cf12": "Eje Y automático",
+ "s29e7f8092d": "Máximo del eje Y (c/kWh)",
+ "sd84d7d09c2": "Incluir IVA",
+ "s6817cff974": "Incluir margen",
+ "sd85f1b089e": "Color de línea / fijo",
+ "s147f0af2a4": "Color del tema",
+ "s173772c66f": "Bandas de color (c/kWh, de–a)",
+ "sc26d444f90": "Desde",
+ "s6ef23d86e0": "y más",
+ "sf8c043ddca": "Añadir banda",
  "sb06bee9921": "Show",
  "@sb06bee9921": {
   "x-mt": true
@@ -3356,10 +3556,6 @@
  },
  "s6019108a01": "Estado",
  "@s6019108a01": {
-  "x-mt": true
- },
- "sc26d444f90": "Desde",
- "@sc26d444f90": {
   "x-mt": true
  },
  "s796739363a": "A",
@@ -5040,10 +5236,7 @@
  "@s90ba0c57d4": {
   "x-mt": true
  },
- "s0cb68026a7": "Mediana",
- "@s0cb68026a7": {
-  "x-mt": true
- },
+ "s0cb68026a7": "Medio",
  "s9c5e4ed5cb": "Medio-alto",
  "@s9c5e4ed5cb": {
   "x-mt": true
@@ -5673,7 +5866,6 @@
  "@sed9b5e52f6": {
   "x-mt": true
  },
- "sdc398885dc": "Ajustes avanzados",
  "s5d477f3cd8": "Normalmente no necesitas estos",
  "@s5d477f3cd8": {
   "x-mt": true
@@ -5778,6 +5970,18 @@
  "s3c2ed0c522": "Interruptores auxiliares",
  "sea20d169a3": "Jugadores de medios",
  "@sea20d169a3": {
+  "x-mt": true
+ },
+ "s5bfb23a680": "Vacunas de robot",
+ "@s5bfb23a680": {
+  "x-mt": true
+ },
+ "sc9735275b2": "Válvulas",
+ "@sc9735275b2": {
+  "x-mt": true
+ },
+ "s28cdff43bf": "Humidificadores",
+ "@s28cdff43bf": {
   "x-mt": true
  },
  "sbcb95e1e78": "La ficha no es aceptada. Cree una nueva en Home Assistant.",
@@ -10260,194 +10464,6 @@
  },
  "s7fc017b0f0": "cerca",
  "@s7fc017b0f0": {
-  "x-mt": true
- },
- "s11d9226341": "Android TV / Google TV (remoción)",
- "@s11d9226341": {
-  "x-mt": true
- },
- "s0992ee68bf": "Sony, Philips, TCL, Xiaomi, Chromecast con Google TV...: potencia, volumen, muda, canales, teclas de flecha y la aplicación abierta. Parejas con un código mostrado en la TV.",
- "@s0992ee68bf": {
-  "x-mt": true
- },
- "s8a14ae9518": "TV: Ajustes → Red &amp; Internet → (network) → Dirección IP. O Google Home app → dispositivo → Información del dispositivo.",
- "@s8a14ae9518": {
-  "x-mt": true
- },
- "s714e6f6143": "La TV muestra un código de seis caracteres (digitos y letras A–F) – escriba aquí.",
- "@s714e6f6143": {
-  "x-mt": true
- },
- "sd92171df4d": "Se muestra en la pantalla de TV durante el emparejado.",
- "@sd92171df4d": {
-  "x-mt": true
- },
- "s8f7a93b1ea": "Sonos altavoces y barras sonoras: volumen, mute, play/pause, siguiente y ahora jugando. Directamente sobre la red de la casa, sin cuenta.",
- "@s8f7a93b1ea": {
-  "x-mt": true
- },
- "s1cf843ef3e": "Sonos app → Configuración → Sistema → Acerca de Mi Sistema → Dirección IP.",
- "@s1cf843ef3e": {
-  "x-mt": true
- },
- "s406bfe2259": "Jugadores Roku y Roku TVs: llaves, volumen +/−, mute, play/pause, la aplicación abierta; en Roku TVs también potencia y canales.",
- "@s406bfe2259": {
-  "x-mt": true
- },
- "sb4f88e9b1b": "Roku: Ajustes → Red → Acerca → Dirección IP. Permitir el control: Ajustes → Sistema → Configuración avanzada del sistema → Control por aplicaciones móviles → Activado.",
- "@sb4f88e9b1b": {
-  "x-mt": true
- },
- "sebd2ee78b0": "Samsung, LG, Philips, Android TV / Google TV, Chromecast, Sonos y Roku: potencia, volumen, canales y reproducción.",
- "@sebd2ee78b0": {
-  "x-mt": true
- },
- "s7594076cbd": "fracasado",
- "@s7594076cbd": {
-  "x-mt": true
- },
- "s01c48d363e": "Sonos no alcanzable",
- "@s01c48d363e": {
-  "x-mt": true
- },
- "sc49795d7d1": "no un dispositivo Sonos",
- "@sc49795d7d1": {
-  "x-mt": true
- },
- "s89541675fe": "Línea-en",
- "@s89541675fe": {
-  "x-mt": true
- },
- "sdd6a5ac9b8": "Sonos no tiene canales",
- "@sdd6a5ac9b8": {
-  "x-mt": true
- },
- "s0249d39100": "pares necesarios",
- "@s0249d39100": {
-  "x-mt": true
- },
- "s536792efd0": "Código incorrecto",
- "@s536792efd0": {
-  "x-mt": true
- },
- "s4a67144434": "pareja no comenzó",
- "@s4a67144434": {
-  "x-mt": true
- },
- "s3f514c9aa2": "El código tiene 6 caracteres (0–9, A–F)",
- "@s3f514c9aa2": {
-  "x-mt": true
- },
- "sb3712c846c": "Pare el Android TV primero (código en la TV)",
- "@sb3712c846c": {
-  "x-mt": true
- },
- "sc7cbbc343d": "El Android TV se negó – pareado necesario",
- "@sc7cbbc343d": {
-  "x-mt": true
- },
- "s85bb00e885": "La TV no reporta volumen",
- "@s85bb00e885": {
-  "x-mt": true
- },
- "s22e7286858": "TV Android y Google TVs: Reparto (estado, volumen, reproducción) o el protocolo remoto (keys, canales, potencia; código de emparejamiento).",
- "@s22e7286858": {
-  "x-mt": true
- },
- "sa14b4d0a62": "Certificado de cliente (Android TV)",
- "@sa14b4d0a62": {
-  "x-mt": true
- },
- "sb6b8ce62e4": "El propio certificado de Molaplan que el televisor aceptó durante el emparejamiento. Almacenó en este dispositivo solamente.",
- "@sb6b8ce62e4": {
-  "x-mt": true
- },
- "s55c0154762": "Clave de cliente (Android TV)",
- "@s55c0154762": {
-  "x-mt": true
- },
- "s49678d6bba": "La llave privada del certificado, guardada sólo en este dispositivo.",
- "@s49678d6bba": {
-  "x-mt": true
- },
- "sbefd940b7e": "Canal (valor = número)",
- "@sbefd940b7e": {
-  "x-mt": true
- },
- "s8028880bf9": "Aplicación abierta (Android TV, valor = enlace)",
- "@s8028880bf9": {
-  "x-mt": true
- },
- "sd61993184d": "Anterior",
- "@sd61993184d": {
-  "x-mt": true
- },
- "sd46979cb3c": "Mute on/off",
- "@sd46979cb3c": {
-  "x-mt": true
- },
- "s9c350b0f5e": "Canal +",
- "@s9c350b0f5e": {
-  "x-mt": true
- },
- "s66136ee35f": "Canal −",
- "@s66136ee35f": {
-  "x-mt": true
- },
- "s09e8d49ceb": "Abajo",
- "@s09e8d49ceb": {
-  "x-mt": true
- },
- "s34e61d8a2f": "Izquierda",
- "@s34e61d8a2f": {
-  "x-mt": true
- },
- "s365a1e8626": "Bien",
- "@s365a1e8626": {
-  "x-mt": true
- },
- "s8cbc3f33aa": "La clave del poder",
- "@s8cbc3f33aa": {
-  "x-mt": true
- },
- "s483f02b584": "Aplicación abierta necesita la conexión remota de Android TV",
- "@s483f02b584": {
-  "x-mt": true
- },
- "s9df7f078c6": "Roku no alcanzable",
- "@s9df7f078c6": {
-  "x-mt": true
- },
- "s0dc1e158bc": "Control de bloques Roku: Ajustes → Sistema → Ajustes avanzados del sistema → Control por aplicaciones móviles → Activado",
- "@s0dc1e158bc": {
-  "x-mt": true
- },
- "s58d9f3b1b1": "no un dispositivo Roku",
- "@s58d9f3b1b1": {
-  "x-mt": true
- },
- "sd44e043ccc": "Roku no tiene volumen absoluto – utilizar volumen +/−",
- "@sd44e043ccc": {
-  "x-mt": true
- },
- "sbeb26f2b64": "Número de canal desaparecido",
- "@sbeb26f2b64": {
-  "x-mt": true
- },
- "s512db00a17": "Estado, potencia, volumen, muda, canales y reproducción como tarjetas y para automatizaciones – directamente sobre la red de la casa, sin nube y sin asistente de casa. Android TV y Google TV: Chromecast (estadio y volumen) o el remoto (keys, canales, potencia).",
- "@s512db00a17": {
-  "x-mt": true
- },
- "s5bfb23a680": "Vacunas de robot",
- "@s5bfb23a680": {
-  "x-mt": true
- },
- "sc9735275b2": "Válvulas",
- "@sc9735275b2": {
-  "x-mt": true
- },
- "s28cdff43bf": "Humidificadores",
- "@s28cdff43bf": {
   "x-mt": true
  }
 }

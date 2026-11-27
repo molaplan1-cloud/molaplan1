@@ -3041,22 +3041,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sd7314e8237 => 'Visning';
 
   @override
-  String get s7d6cee9e42 => 'Barer (15 min)';
-
-  @override
-  String get sc0e069225b => 'Trend + Nu linje';
-
-  @override
-  String get s07647fa07d => 'Range';
-
-  @override
-  String get s8feeef3110 => 'Visa imorgon när tillgängligt';
-
-  @override
-  String get sad692e6ae5 =>
-      'Morgondagens priser visas av sig själva en gång publicerad (cirka 14:00).';
-
-  @override
   String get s1c72b8c56a => 'Trendlängd';
 
   @override
@@ -3164,7 +3148,95 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s77d2309fd5 => 'Fördröjning före (ms)';
 
   @override
+  String get s7d6cee9e42 => 'Barer (15 min)';
+
+  @override
+  String get sc0e069225b => 'Trend + Nu linje';
+
+  @override
+  String get s07647fa07d => 'Range';
+
+  @override
+  String get sbf6aaf9bb8 => 'Upplösning';
+
+  @override
   String get sd032c3efec => 'Auto';
+
+  @override
+  String get sa6dc2ff399 => '15 min';
+
+  @override
+  String get s96093c8f41 => '1 h';
+
+  @override
+  String get s0a3e006fda => 'Färgläggning';
+
+  @override
+  String get sb6bfec83a2 => 'Relativt (dagens min–max)';
+
+  @override
+  String get sd13fe2ac25 => 'Absoluta gränser';
+
+  @override
+  String get s717db0e103 => 'En färg';
+
+  @override
+  String get sdc398885dc => 'Avancerade inställningar';
+
+  @override
+  String get s8feeef3110 => 'Visa imorgon när tillgängligt';
+
+  @override
+  String get sad692e6ae5 =>
+      'Morgondagens priser visas av sig själva en gång publicerad (cirka 14:00).';
+
+  @override
+  String get s3221d2c8b7 => 'Stapelbredd';
+
+  @override
+  String get s2c890951b7 => 'Tunn';
+
+  @override
+  String get s0223c26f61 => 'Medel';
+
+  @override
+  String get s4b97930585 => 'Min- och maxmarkörer';
+
+  @override
+  String get seef35b192d => 'Nu-linje';
+
+  @override
+  String get s8c6a205222 => 'Statistikrad (nu, min, medel, max)';
+
+  @override
+  String get sbeeaa6cf12 => 'Automatisk y-axel';
+
+  @override
+  String get s29e7f8092d => 'Y-axelns maximum (c/kWh)';
+
+  @override
+  String get sd84d7d09c2 => 'Inkludera moms';
+
+  @override
+  String get s6817cff974 => 'Inkludera marginal';
+
+  @override
+  String get sd85f1b089e => 'Linje- / fast färg';
+
+  @override
+  String get s147f0af2a4 => 'Temafärg';
+
+  @override
+  String get s173772c66f => 'Färgintervall (c/kWh, från–till)';
+
+  @override
+  String get sc26d444f90 => 'Från';
+
+  @override
+  String get s6ef23d86e0 => 'och uppåt';
+
+  @override
+  String get sf8c043ddca => 'Lägg till intervall';
 
   @override
   String get sb06bee9921 => 'Föreställning';
@@ -3840,9 +3912,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s6019108a01 => 'Villkor';
-
-  @override
-  String get sc26d444f90 => 'Från';
 
   @override
   String get s796739363a => 'för att';
@@ -5594,7 +5663,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s90ba0c57d4 => 'Medium-low';
 
   @override
-  String get s0cb68026a7 => 'Medium';
+  String get s0cb68026a7 => 'Medel';
 
   @override
   String get s9c5e4ed5cb => 'Medium-hög';
@@ -6225,9 +6294,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sed9b5e52f6 => 'Numera nu';
-
-  @override
-  String get sdc398885dc => 'Avancerade inställningar';
 
   @override
   String get s5d477f3cd8 => 'Vanligtvis behöver du inte dessa';

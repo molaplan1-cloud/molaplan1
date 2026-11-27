@@ -9,7 +9,7 @@ import 'package:material_ui/material_ui.dart' hide Threshold;
 
 import '../l10n/l10n.dart';
 import '../models/models.dart';
-import '../prices/prices.dart' show tomorrowPendingText;
+import '../prices/prices.dart' show dayIsComplete, tomorrowPendingText;
 import 'app_scope.dart';
 import 'measure_colors.dart';
 import 'measure_view.dart';
@@ -25,7 +25,12 @@ DateTime Function() priceTrendClock = DateTime.now;
 /// * '48h'   – today + tomorrow; tomorrow stays an empty "julkaistaan n. klo 14" area until published
 /// * '12h'   – older chip, 2 h back + 10 h ahead
 /// [tomorrow] = "Näytä huomenna kun saatavilla"; off → never past today's midnight.
-(DateTime, DateTime, String) priceWindowFor(String w, DateTime now, {required bool hasTomorrow, bool tomorrow = true}) {
+(DateTime, DateTime, String) priceWindowFor(
+  String w,
+  DateTime now, {
+  required bool hasTomorrow,
+  bool tomorrow = true,
+}) {
   final day0 = DateTime(now.year, now.month, now.day);
   final day1 = DateTime(now.year, now.month, now.day + 1);
   final day2 = DateTime(now.year, now.month, now.day + 2);
@@ -35,7 +40,10 @@ DateTime Function() priceTrendClock = DateTime.now;
       DateTime(now.year, now.month, now.day, now.hour - 2),
       DateTime(now.year, now.month, now.day, now.hour + 10),
     ),
-    '24h' => (DateTime(now.year, now.month, now.day, now.hour), DateTime(now.year, now.month, now.day, now.hour + 24)),
+    '24h' => (
+      DateTime(now.year, now.month, now.day, now.hour),
+      DateTime(now.year, now.month, now.day, now.hour + 24),
+    ),
     '48h' => (day0, day2),
     'today' => (day0, day1),
     _ => (day0, hasTomorrow ? day2 : day1),
@@ -43,13 +51,24 @@ DateTime Function() priceTrendClock = DateTime.now;
   return (ws, cap(we), priceWindows.contains(w) ? w : 'auto');
 }
 
-/// t171u: the part of [ws]–[we] that is tomorrow while its prices are not published yet.
-(DateTime, DateTime)? pendingTomorrow(DateTime ws, DateTime we, DateTime now, {required bool hasTomorrow}) {
+/// t171u / t302u: the part of [ws]–[we] that is still missing tomorrow's prices.
+/// [hasTomorrow] means the local tomorrow is complete. When only the first hours
+/// are in, pass [dataEnd] so the hatch starts after the last known slot.
+(DateTime, DateTime)? pendingTomorrow(
+  DateTime ws,
+  DateTime we,
+  DateTime now, {
+  required bool hasTomorrow,
+  DateTime? dataEnd,
+}) {
   if (hasTomorrow) return null;
   final day1 = DateTime(now.year, now.month, now.day + 1);
   final day2 = DateTime(now.year, now.month, now.day + 2);
   if (!we.isAfter(day1)) return null;
-  return (ws.isAfter(day1) ? ws : day1, we.isBefore(day2) ? we : day2);
+  var from = ws.isAfter(day1) ? ws : day1;
+  if (dataEnd != null && dataEnd.isAfter(from)) from = dataEnd;
+  if (!from.isBefore(we)) return null;
+  return (from, we.isBefore(day2) ? we : day2);
 }
 
 /// The on-tile chips (same choices as the tile settings' "Aikaväli").
@@ -84,21 +103,68 @@ class PriceTrendBody extends StatelessWidget {
     final pts = <(DateTime, double)>[
       for (final p in (data['points'] as List? ?? const []))
         if (p is List && p.length >= 2 && p[1] is num)
-          (DateTime.fromMillisecondsSinceEpoch((p[0] as num).toInt()), (p[1] as num).toDouble()),
+          (
+            DateTime.fromMillisecondsSinceEpoch((p[0] as num).toInt()),
+            (p[1] as num).toDouble(),
+          ),
     ]..sort((a, b) => a.$1.compareTo(b.$1));
     if (pts.isEmpty) {
-      return Center(child: Text(tx(context, 'Ei hintoja', 'No prices'), style: Theme.of(context).textTheme.bodySmall));
+      return Center(
+        child: Text(
+          tx(context, 'Ei hintoja', 'No prices'),
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
+      );
     }
     final tomorrow0 = DateTime(now.year, now.month, now.day + 1);
-    final hasTomorrow = pts.any((p) => !p.$1.isBefore(tomorrow0));
-    final (ws, we, eff) = priceWindowFor(tile.priceWindow, now, hasTomorrow: hasTomorrow, tomorrow: tile.priceTomorrow);
-    final pending = pendingTomorrow(ws, we, now, hasTomorrow: hasTomorrow);
+    final resSec = res <= 0 ? 900 : res;
+    final anyTomorrow = pts.any((p) => !p.$1.isBefore(tomorrow0));
+    final hasTomorrow = dayIsComplete(
+      [for (final p in pts) p.$1],
+      now,
+      1,
+      resSec,
+    );
+    final (ws, we, eff) = priceWindowFor(
+      tile.priceWindow,
+      now,
+      hasTomorrow: anyTomorrow,
+      tomorrow: tile.priceTomorrow,
+    );
+    final lastIn = [
+      for (final p in pts)
+        if (p.$1.add(Duration(seconds: resSec)).isAfter(ws) &&
+            p.$1.isBefore(we))
+          p.$1.add(Duration(seconds: resSec)),
+    ];
+    final pending = pendingTomorrow(
+      ws,
+      we,
+      now,
+      hasTomorrow: hasTomorrow,
+      dataEnd: lastIn.isEmpty ? null : lastIn.last,
+    );
     final win = [
       for (final p in pts)
         if (p.$1.add(step).isAfter(ws) && p.$1.isBefore(we)) p,
     ];
-    final th = tile.thresholds.isEmpty ? defaultPriceThresholds : tile.thresholds;
+    final th = tile.thresholds.isEmpty
+        ? defaultPriceThresholds
+        : tile.thresholds;
+    final mode = tile.priceColorMode == 'auto'
+        ? 'thresholds'
+        : tile.priceColorMode;
     Color? colorAt(double v) {
+      if (mode == 'fixed')
+        return Color(tile.priceLineColor ?? cs.primary.toARGB32());
+      if (mode == 'relative') {
+        final cs0 = [for (final p in win) p.$2]..sort();
+        if (cs0.isEmpty) return null;
+        double q(double f) => cs0[((cs0.length - 1) * f).round()];
+        final i = v <= q(1 / 3) ? 0 : (v <= q(2 / 3) ? 1 : 2);
+        const rel = [0xFF5E9E7C, 0xFFC2A15A, 0xFFBF6F68];
+        return Color(rel[i]);
+      }
       final c = thresholdColor(th, v, smooth: tile.colorSmooth);
       return c == null ? null : Color(c);
     }
@@ -107,7 +173,13 @@ class PriceTrendBody extends StatelessWidget {
     final next = priceAt(pts, now.add(const Duration(hours: 1)), step);
     final vals = win.isEmpty ? [0.0] : win.map((p) => p.$2).toList();
     final lo0 = vals.reduce(math.min), hi0 = vals.reduce(math.max);
-    final (lo, hi, _) = priceAxis(lo0, hi0 * 1.05, n: 4);
+    final (lo, hi, _) = priceAxis(
+      lo0,
+      (tile.priceYMax != null && tile.priceYMax! > 0)
+          ? tile.priceYMax!
+          : hi0 * 1.05,
+      n: 4,
+    );
     final base = TrendOptions.resolve(tile, lang: lang);
     final o = TrendOptions(
       grid: base.grid,
@@ -121,7 +193,9 @@ class PriceTrendBody extends StatelessWidget {
     final small = TextStyle(fontSize: 11, color: cs.onSurfaceVariant);
     final ch = cur == null || next == null ? null : next - cur;
     final dir = ch == null || ch.abs() < 0.05 ? 0 : (ch > 0 ? 1 : -1);
-    final chColor = dir > 0 ? changeUpColor : (dir < 0 ? changeDownColor : cs.onSurfaceVariant);
+    final chColor = dir > 0
+        ? changeUpColor
+        : (dir < 0 ? changeDownColor : cs.onSurfaceVariant);
     String c(double v) => priceNum(v, lang, decimals: v.abs() >= 100 ? 0 : 1);
 
     return Column(
@@ -142,14 +216,20 @@ class PriceTrendBody extends StatelessWidget {
                       TextSpan(text: cur == null ? '–' : priceNum(cur, lang)),
                       TextSpan(
                         text: ' c/kWh',
-                        style: TextStyle(fontSize: 13, color: cs.onSurfaceVariant, fontWeight: FontWeight.w400),
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: cs.onSurfaceVariant,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ],
                   ),
                   style: TextStyle(
                     fontSize: 26,
                     fontWeight: FontWeight.w600,
-                    color: cur == null ? cs.onSurface : (colorAt(cur) ?? cs.onSurface),
+                    color: cur == null
+                        ? cs.onSurface
+                        : (colorAt(cur) ?? cs.onSurface),
                   ),
                 ),
               ),
@@ -164,7 +244,11 @@ class PriceTrendBody extends StatelessWidget {
                 WidgetSpan(
                   alignment: PlaceholderAlignment.middle,
                   child: Icon(
-                    dir > 0 ? Icons.arrow_upward : (dir < 0 ? Icons.arrow_downward : Icons.arrow_forward),
+                    dir > 0
+                        ? Icons.arrow_upward
+                        : (dir < 0
+                              ? Icons.arrow_downward
+                              : Icons.arrow_forward),
                     key: ValueKey('price-change-$dir'),
                     size: 12,
                     color: chColor,
@@ -173,12 +257,18 @@ class PriceTrendBody extends StatelessWidget {
                 TextSpan(
                   text:
                       '${dir == 0 ? '±' : (ch > 0 ? '+' : '−')}${c(ch.abs())} c ${tr(lang, 'tunnin päästä', 'in 1 h')}',
-                  style: small.copyWith(color: chColor, fontWeight: FontWeight.w600),
+                  style: small.copyWith(
+                    color: chColor,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-                const TextSpan(text: ' · '),
+                if (tile.priceShowStats && tile.priceShowMinMax)
+                  const TextSpan(text: ' · '),
               ],
-              TextSpan(text: 'min ${c(lo0)} · max ${c(hi0)}'),
-              if (data['stale'] == true) TextSpan(text: ' · ${tr(lang, 'vanhat hinnat', 'old prices')}'),
+              if (tile.priceShowStats && tile.priceShowMinMax)
+                TextSpan(text: 'min ${c(lo0)} · max ${c(hi0)}'),
+              if (data['stale'] == true)
+                TextSpan(text: ' · ${tr(lang, 'vanhat hinnat', 'old prices')}'),
             ],
           ),
           maxLines: 1,
@@ -201,17 +291,26 @@ class PriceTrendBody extends StatelessWidget {
                       onTap: () => st.setPriceWindow(tile, id),
                       borderRadius: BorderRadius.circular(10),
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 7,
+                          vertical: 2,
+                        ),
                         decoration: BoxDecoration(
-                          color: id == eff ? cs.primary.withValues(alpha: 0.18) : null,
-                          border: Border.all(color: id == eff ? cs.primary : cs.outlineVariant),
+                          color: id == eff
+                              ? cs.primary.withValues(alpha: 0.18)
+                              : null,
+                          border: Border.all(
+                            color: id == eff ? cs.primary : cs.outlineVariant,
+                          ),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(
                           label,
                           style: TextStyle(
                             fontSize: 10.5,
-                            fontWeight: id == eff ? FontWeight.w700 : FontWeight.w400,
+                            fontWeight: id == eff
+                                ? FontWeight.w700
+                                : FontWeight.w400,
                             color: id == eff ? cs.primary : cs.onSurfaceVariant,
                           ),
                         ),
@@ -228,12 +327,15 @@ class PriceTrendBody extends StatelessWidget {
               Positioned.fill(
                 child: TrendChart(
                   key: const ValueKey('price-trend-chart'),
-                  series: [for (final p in win) (p.$1.millisecondsSinceEpoch / 60000, p.$2)],
+                  series: [
+                    for (final p in win)
+                      (p.$1.millisecondsSinceEpoch / 60000, p.$2),
+                  ],
                   hours: we.difference(ws).inHours,
-                  color: cs.primary,
+                  color: Color(tile.priceLineColor ?? cs.primary.toARGB32()),
                   options: o,
                   colorAt: colorAt,
-                  now: now,
+                  now: tile.priceShowNowLine ? now : null,
                   windowStart: ws,
                   windowEnd: we,
                   stepMinutes: res / 60,

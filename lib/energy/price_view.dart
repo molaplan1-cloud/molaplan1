@@ -1,3 +1,5 @@
+import '../prices/prices.dart';
+
 /// Data for the 'Sähkön hinta' tile and page: today+tomorrow slots in c/kWh, today's stats and
 /// a relative price level per slot. Pure Dart.
 ///
@@ -46,15 +48,27 @@ class PriceView {
   final int sourceMinutes;
   bool get quarter => sourceMinutes < 60;
 
+  /// Any slot on the local tomorrow (possibly only the first hours).
+  bool get hasAnyTomorrow {
+    final start = DateTime(now.year, now.month, now.day + 1);
+    return slots.any((s) => !s.start.isBefore(start));
+  }
+
   /// [pts]: (slot start, c/kWh). [resolutionSec] is a hint; the real slot length is read from the
   /// spacing of the points (a tile may say 3600 while the contract prices are 15-min).
-  factory PriceView.build(List<(DateTime, double)> pts, int resolutionSec, DateTime now, {bool hourly = true}) {
+  factory PriceView.build(
+    List<(DateTime, double)> pts,
+    int resolutionSec,
+    DateTime now, {
+    bool hourly = true,
+  }) {
     final byStart = <int, (DateTime, double)>{};
     for (final p in pts) {
       final t = p.$1.toLocal();
       byStart[t.millisecondsSinceEpoch] = (t, p.$2);
     }
-    final sorted = byStart.values.toList()..sort((a, b) => a.$1.compareTo(b.$1));
+    final sorted = byStart.values.toList()
+      ..sort((a, b) => a.$1.compareTo(b.$1));
     var res = (resolutionSec / 60).round().clamp(1, 1440);
     var gap = 0;
     for (var i = 1; i < sorted.length; i++) {
@@ -76,7 +90,9 @@ class PriceView {
       if (hi == null || s.cents > hi.cents) hi = s;
     }
     final mins = today.fold<int>(0, (a, s) => a + s.minutes);
-    final avg = today.isEmpty ? null : today.fold<double>(0, (a, s) => a + s.cents * s.minutes) / mins;
+    final avg = today.isEmpty
+        ? null
+        : today.fold<double>(0, (a, s) => a + s.cents * s.minutes) / mins;
     final cs = [for (final s in slots) s.cents]..sort();
     double q(double f) => cs.isEmpty ? 0 : cs[((cs.length - 1) * f).round()];
     final q1 = q(1 / 3), q2 = q(2 / 3);
@@ -88,24 +104,28 @@ class PriceView {
       hi,
       avg,
       [for (final s in slots) s.cents <= q1 ? 0 : (s.cents <= q2 ? 1 : 2)],
-      slots.any((s) => s.start.isAfter(now) && !_sameDay(s.start, now)),
+      dayIsComplete([for (final s in slots) s.start], now, 1, res * 60),
       res,
     );
   }
 
-  static bool _sameDay(DateTime a, DateTime b) => a.year == b.year && a.month == b.month && a.day == b.day;
+  static bool _sameDay(DateTime a, DateTime b) =>
+      a.year == b.year && a.month == b.month && a.day == b.day;
 
   static List<PriceSlot> toHourly(List<PriceSlot> s) {
     final by = <DateTime, List<PriceSlot>>{};
     for (final x in s) {
-      (by[DateTime(x.start.year, x.start.month, x.start.day, x.start.hour)] ??= []).add(x);
+      (by[DateTime(x.start.year, x.start.month, x.start.day, x.start.hour)] ??=
+              [])
+          .add(x);
     }
     return [
       for (final e in by.entries)
         PriceSlot(
           e.key,
           60,
-          e.value.fold<double>(0, (a, x) => a + x.cents * x.minutes) / e.value.fold<int>(0, (a, x) => a + x.minutes),
+          e.value.fold<double>(0, (a, x) => a + x.cents * x.minutes) /
+              e.value.fold<int>(0, (a, x) => a + x.minutes),
         ),
     ]..sort((a, b) => a.start.compareTo(b.start));
   }
@@ -113,9 +133,11 @@ class PriceView {
   /// Slots (with their level) that overlap [from, to).
   List<(PriceSlot, int)> window(DateTime from, DateTime to) => [
     for (var i = 0; i < slots.length; i++)
-      if (slots[i].end.isAfter(from) && slots[i].start.isBefore(to)) (slots[i], levels[i]),
+      if (slots[i].end.isAfter(from) && slots[i].start.isBefore(to))
+        (slots[i], levels[i]),
   ];
 
   /// Instant cost in c/h at [kw] kilowatts (null when there is no current price).
-  double? instantCost(double? kw) => kw == null || current == null ? null : kw * current!.cents;
+  double? instantCost(double? kw) =>
+      kw == null || current == null ? null : kw * current!.cents;
 }

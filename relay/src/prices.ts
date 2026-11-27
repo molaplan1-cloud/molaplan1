@@ -28,6 +28,21 @@ type Out = { zone: string; unit: string; resolution: number; source: string; lic
 
 const day = (d: Date) => d.toISOString().slice(0, 10);
 
+/** UTC midnight of the UTC calendar day of [now] plus [add] days. */
+export function utcDayStart(now: Date, add: number): Date {
+  return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + add));
+}
+
+/**
+ * Fetch window that always covers local yesterday…day-after-tomorrow in EU time zones
+ * (UTC+0…UTC+3, including EET UTC+2). Using `now ± 1/2 days` then `toISOString().slice(0,10)`
+ * as an exclusive end can become tomorrow 00:00 UTC (= 02:00 EET) and cut the day-ahead short
+ * (t302u). End is UTC midnight of today+3, start is UTC midnight of today-2.
+ */
+export function priceFetchWindow(now = new Date()): { from: Date; to: Date } {
+  return { from: utcDayStart(now, -2), to: utcDayStart(now, 3) };
+}
+
 async function energyCharts(zone: string, from: Date, to: Date): Promise<Out> {
   const u = `https://api.energy-charts.info/price?bzn=${encodeURIComponent(zone)}&start=${day(from)}&end=${day(to)}`;
   const r = await fetch(u, { headers: { "user-agent": "molaplan-relay" } });
@@ -106,8 +121,7 @@ export async function prices(req: Request, ctx: ExecutionContext): Promise<Respo
   if (hit) return new Response(hit.body, { headers: { "content-type": "application/json", ...cors, "x-cache": "hit" } });
 
   const now = new Date();
-  const from = new Date(now.getTime() - 86_400_000);
-  const to = new Date(now.getTime() + 2 * 86_400_000);
+  const { from, to } = priceFetchWindow(now);
   const chain: (() => Promise<Out>)[] = [];
   if (ELERING.has(zone)) chain.push(() => elering(zone, from, to));
   if (zone.startsWith("SE")) chain.push(() => elprisetjustnu(zone, [from, now, new Date(now.getTime() + 86_400_000)]));

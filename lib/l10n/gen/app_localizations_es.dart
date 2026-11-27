@@ -2872,7 +2872,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s64c916e299 => 'Pequeña';
 
   @override
-  String get s5e3097232a => 'Ancha';
+  String get s5e3097232a => 'Ancho';
 
   @override
   String get s8971788287 => 'Grande';
@@ -3073,22 +3073,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sd7314e8237 => 'Visualización';
 
   @override
-  String get s7d6cee9e42 => 'Bares (15 min)';
-
-  @override
-  String get sc0e069225b => 'Trend + línea Ahora';
-
-  @override
-  String get s07647fa07d => 'Rango';
-
-  @override
-  String get s8feeef3110 => 'Mostrar mañana cuando esté disponible';
-
-  @override
-  String get sad692e6ae5 =>
-      'Los precios del mañana aparecen por sí mismos una vez publicados (alrededor de las 14:00).';
-
-  @override
   String get s1c72b8c56a => 'Longitud de la tendencia';
 
   @override
@@ -3197,7 +3181,95 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s77d2309fd5 => 'Retraso antes (ms)';
 
   @override
+  String get s7d6cee9e42 => 'Bares (15 min)';
+
+  @override
+  String get sc0e069225b => 'Trend + línea Ahora';
+
+  @override
+  String get s07647fa07d => 'Rango';
+
+  @override
+  String get sbf6aaf9bb8 => 'Resolución';
+
+  @override
   String get sd032c3efec => 'Auto';
+
+  @override
+  String get sa6dc2ff399 => '15 min';
+
+  @override
+  String get s96093c8f41 => '1 h';
+
+  @override
+  String get s0a3e006fda => 'Coloración';
+
+  @override
+  String get sb6bfec83a2 => 'Relativo (mín–máx del día)';
+
+  @override
+  String get sd13fe2ac25 => 'Umbrales absolutos';
+
+  @override
+  String get s717db0e103 => 'Un color';
+
+  @override
+  String get sdc398885dc => 'Ajustes avanzados';
+
+  @override
+  String get s8feeef3110 => 'Mostrar mañana cuando esté disponible';
+
+  @override
+  String get sad692e6ae5 =>
+      'Los precios del mañana aparecen por sí mismos una vez publicados (alrededor de las 14:00).';
+
+  @override
+  String get s3221d2c8b7 => 'Ancho de barra';
+
+  @override
+  String get s2c890951b7 => 'Fino';
+
+  @override
+  String get s0223c26f61 => 'Medio';
+
+  @override
+  String get s4b97930585 => 'Marcadores de mín. y máx.';
+
+  @override
+  String get seef35b192d => 'Línea de ahora';
+
+  @override
+  String get s8c6a205222 => 'Fila de estadísticas (ahora, mín., media, máx.)';
+
+  @override
+  String get sbeeaa6cf12 => 'Eje Y automático';
+
+  @override
+  String get s29e7f8092d => 'Máximo del eje Y (c/kWh)';
+
+  @override
+  String get sd84d7d09c2 => 'Incluir IVA';
+
+  @override
+  String get s6817cff974 => 'Incluir margen';
+
+  @override
+  String get sd85f1b089e => 'Color de línea / fijo';
+
+  @override
+  String get s147f0af2a4 => 'Color del tema';
+
+  @override
+  String get s173772c66f => 'Bandas de color (c/kWh, de–a)';
+
+  @override
+  String get sc26d444f90 => 'Desde';
+
+  @override
+  String get s6ef23d86e0 => 'y más';
+
+  @override
+  String get sf8c043ddca => 'Añadir banda';
 
   @override
   String get sb06bee9921 => 'Show';
@@ -3875,9 +3947,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s6019108a01 => 'Estado';
-
-  @override
-  String get sc26d444f90 => 'Desde';
 
   @override
   String get s796739363a => 'A';
@@ -5644,7 +5713,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s90ba0c57d4 => 'Medio-bajo';
 
   @override
-  String get s0cb68026a7 => 'Mediana';
+  String get s0cb68026a7 => 'Medio';
 
   @override
   String get s9c5e4ed5cb => 'Medio-alto';
@@ -6276,9 +6345,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sed9b5e52f6 => 'Ahora';
-
-  @override
-  String get sdc398885dc => 'Ajustes avanzados';
 
   @override
   String get s5d477f3cd8 => 'Normalmente no necesitas estos';

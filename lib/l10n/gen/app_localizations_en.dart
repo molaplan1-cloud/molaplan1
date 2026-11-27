@@ -3039,22 +3039,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sd7314e8237 => 'Display';
 
   @override
-  String get s7d6cee9e42 => 'Bars (15 min)';
-
-  @override
-  String get sc0e069225b => 'Trend + Now line';
-
-  @override
-  String get s07647fa07d => 'Range';
-
-  @override
-  String get s8feeef3110 => 'Show tomorrow when available';
-
-  @override
-  String get sad692e6ae5 =>
-      'Tomorrow\'s prices appear by themselves once published (around 14:00).';
-
-  @override
   String get s1c72b8c56a => 'Trend length';
 
   @override
@@ -3162,7 +3146,95 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s77d2309fd5 => 'Delay before (ms)';
 
   @override
+  String get s7d6cee9e42 => 'Bars (15 min)';
+
+  @override
+  String get sc0e069225b => 'Trend + Now line';
+
+  @override
+  String get s07647fa07d => 'Range';
+
+  @override
+  String get sbf6aaf9bb8 => 'Resolution';
+
+  @override
   String get sd032c3efec => 'Auto';
+
+  @override
+  String get sa6dc2ff399 => '15 min';
+
+  @override
+  String get s96093c8f41 => '1 h';
+
+  @override
+  String get s0a3e006fda => 'Colouring';
+
+  @override
+  String get sb6bfec83a2 => 'Relative (day min–max)';
+
+  @override
+  String get sd13fe2ac25 => 'Absolute thresholds';
+
+  @override
+  String get s717db0e103 => 'Fixed colour';
+
+  @override
+  String get sdc398885dc => 'Advanced settings';
+
+  @override
+  String get s8feeef3110 => 'Show tomorrow when available';
+
+  @override
+  String get sad692e6ae5 =>
+      'Tomorrow\'s prices appear by themselves once published (around 14:00).';
+
+  @override
+  String get s3221d2c8b7 => 'Bar width';
+
+  @override
+  String get s2c890951b7 => 'Thin';
+
+  @override
+  String get s0223c26f61 => 'Medium';
+
+  @override
+  String get s4b97930585 => 'Min and max markers';
+
+  @override
+  String get seef35b192d => 'Now line';
+
+  @override
+  String get s8c6a205222 => 'Stats row (now, min, avg, max)';
+
+  @override
+  String get sbeeaa6cf12 => 'Automatic y-axis';
+
+  @override
+  String get s29e7f8092d => 'Y-axis maximum (c/kWh)';
+
+  @override
+  String get sd84d7d09c2 => 'Include VAT';
+
+  @override
+  String get s6817cff974 => 'Include margin';
+
+  @override
+  String get sd85f1b089e => 'Line / fixed colour';
+
+  @override
+  String get s147f0af2a4 => 'Theme colour';
+
+  @override
+  String get s173772c66f => 'Colour bands (c/kWh, from–to)';
+
+  @override
+  String get sc26d444f90 => 'From';
+
+  @override
+  String get s6ef23d86e0 => 'and up';
+
+  @override
+  String get sf8c043ddca => 'Add band';
 
   @override
   String get sb06bee9921 => 'Show';
@@ -3837,9 +3909,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s6019108a01 => 'Condition';
-
-  @override
-  String get sc26d444f90 => 'From';
 
   @override
   String get s796739363a => 'To';
@@ -6217,9 +6286,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sed9b5e52f6 => 'now';
-
-  @override
-  String get sdc398885dc => 'Advanced settings';
 
   @override
   String get s5d477f3cd8 => 'Usually you don\'t need these';
