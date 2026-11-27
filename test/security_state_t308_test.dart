@@ -170,7 +170,7 @@ void main() {
       await pump(tester, 'triggered', now);
       expect(find.text('HÄLYTYS!'), findsOneWidget);
       final card = tester.widget<Card>(find.byKey(const ValueKey('security-tile-sec')));
-      expect(card.color, Colors.red);
+      expect(card.color?.toARGB32(), Colors.red.toARGB32());
     });
 
     testWidgets('an old state shows its age', (tester) async {
