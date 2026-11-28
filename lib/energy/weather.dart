@@ -155,6 +155,9 @@ class WeatherService {
     return _cache[key] = f;
   }
 
+  /// The cached forecast for [l] without fetching (null when none is cached).
+  Forecast? cached(HomeLocation l) => _cache['${l.lat.toStringAsFixed(2)},${l.lon.toStringAsFixed(2)}'];
+
   void put(HomeLocation l, Forecast f) => _cache['${l.lat.toStringAsFixed(2)},${l.lon.toStringAsFixed(2)}'] = f;
 
   /// Place search ("Tampere") -> candidates.

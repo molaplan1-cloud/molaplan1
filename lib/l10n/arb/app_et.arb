@@ -1123,6 +1123,215 @@
   "x-mt": true
  },
  "s09f5da65e0": "Lülita Shelly Cloudile",
+ "sf5768a876d": "Keelatud",
+ "@sf5768a876d": {
+  "x-mt": true
+ },
+ "s8724f302ef": "Käsiraamat",
+ "@s8724f302ef": {
+  "x-mt": true
+ },
+ "s76bce4b6c2": "Käsitsi {p0}",
+ "@s76bce4b6c2": {
+  "x-mt": true
+ },
+ "s221a4ab646": "Kaminarežiim",
+ "@s221a4ab646": {
+  "x-mt": true
+ },
+ "s5da1e65941": "Puhkuserežiim",
+ "@s5da1e65941": {
+  "x-mt": true
+ },
+ "se50792831f": "Temperatuuri reguleerimine",
+ "@se50792831f": {
+  "x-mt": true
+ },
+ "sd408a5dbe9": "Odavamad tunnid",
+ "@sd408a5dbe9": {
+  "x-mt": true
+ },
+ "s5c33c7b488": "Jäta kallis vahele",
+ "@s5c33c7b488": {
+  "x-mt": true
+ },
+ "seaa748138e": "Ilma järgi",
+ "@seaa748138e": {
+  "x-mt": true
+ },
+ "saf3ce7f717": "Nutikas kütmine: seadistage",
+ "@saf3ce7f717": {
+  "x-mt": true
+ },
+ "scde8147260": "Nutikas küte: lisage seade",
+ "@scde8147260": {
+  "x-mt": true
+ },
+ "sea2ac9b443": "Kütteseade eemaldatud",
+ "@sea2ac9b443": {
+  "x-mt": true
+ },
+ "s27e0af845d": "Kodusild puudub: kütmine ei ole veel kontrolli all. Seadke kodus seadmele kaugjuurdepääs.",
+ "@s27e0af845d": {
+  "x-mt": true
+ },
+ "s04fcb24bc5": "Nüüd {p0} · setpoint {p1}",
+ "@s04fcb24bc5": {
+  "x-mt": true
+ },
+ "s3c3d6b5485": "Temperatuur {p0}",
+ "@s3c3d6b5485": {
+  "x-mt": true
+ },
+ "s670a6ed937": "{p0} c/kWh",
+ "s8272e84b1c": "{p0} c/kWh · piirnorm {p1} c",
+ "@s8272e84b1c": {
+  "x-mt": true
+ },
+ "s8235ae91c4": "Andur ei vasta - {p0}",
+ "@s8235ae91c4": {
+  "x-mt": true
+ },
+ "s0be7b030a0": "Hinna hinnang – kodusild puudub",
+ "@s0be7b030a0": {
+  "x-mt": true
+ },
+ "s9c543b2106": "Hinnang – kodusild pole veel vastanud",
+ "@s9c543b2106": {
+  "x-mt": true
+ },
+ "see998ca830": "hoiti",
+ "@see998ca830": {
+  "x-mt": true
+ },
+ "s9eb36d05e1": "hoiti",
+ "@s9eb36d05e1": {
+  "x-mt": true
+ },
+ "s871e341710": "hinnagraafik",
+ "@s871e341710": {
+  "x-mt": true
+ },
+ "s579f396ae5": "Olukord",
+ "@s579f396ae5": {
+  "x-mt": true
+ },
+ "s8653f173b6": "Õhutemperatuur",
+ "@s8653f173b6": {
+  "x-mt": true
+ },
+ "sb730159a01": "Hind praegu",
+ "s7dfe0e7977": "Järgmine muutus",
+ "@s7dfe0e7977": {
+  "x-mt": true
+ },
+ "sf77125583f": "Tehnilised üksikasjad",
+ "s5555a716bb": "See on hinnang hindade ja seadete järgi: kodusild ei ole veel vastanud, nii et seadme tegelik seisund on teadmata.",
+ "@s5555a716bb": {
+  "x-mt": true
+ },
+ "sbe50b10e9e": "Käsitsi lõpetamise tühistamine",
+ "@sbe50b10e9e": {
+  "x-mt": true
+ },
+ "s728ddd7778": "Käsitsi tühistamine...",
+ "@s728ddd7778": {
+  "x-mt": true
+ },
+ "sd661031615": "sensorit",
+ "@sd661031615": {
+  "x-mt": true
+ },
+ "scfb407cd2d": "andur ei vasta",
+ "@scfb407cd2d": {
+  "x-mt": true
+ },
+ "s1284293e15": "setpoint {p0} ± {p1}",
+ "@s1284293e15": {
+  "x-mt": true
+ },
+ "s07a15cf1d3": "ülempiir {p0}",
+ "@s07a15cf1d3": {
+  "x-mt": true
+ },
+ "s4e43228e07": "min {p0}",
+ "sd4db0fbbb5": "külma {p0}",
+ "@sd4db0fbbb5": {
+  "x-mt": true
+ },
+ "s63c3e9c766": "hinnaandmed puuduvad",
+ "@s63c3e9c766": {
+  "x-mt": true
+ },
+ "s8c60756474": "{p0} (jäetakse vahele ≥ {p1} c)",
+ "@s8c60756474": {
+  "x-mt": true
+ },
+ "sff29b84ddc": "{p0} (on at ≤ {p1} c)",
+ "@sff29b84ddc": {
+  "x-mt": true
+ },
+ "s750dcb984f": "Reeglid ja nende seisund",
+ "@s750dcb984f": {
+  "x-mt": true
+ },
+ "s39d300e3ea": "otsustab",
+ "@s39d300e3ea": {
+  "x-mt": true
+ },
+ "s55153c17b8": "Järgmine 24 h: hind ja planeeritud küttetunnid",
+ "@s55153c17b8": {
+  "x-mt": true
+ },
+ "sfb5a3f7da0": "Hinnaandmeid veel pole.",
+ "@sfb5a3f7da0": {
+  "x-mt": true
+ },
+ "sba9d60d97c": "Oranž = planeeritud kütmine. Kõrgem baar = kallim tund ({p0}–{p1} c/kWh).",
+ "@sba9d60d97c": {
+  "x-mt": true
+ },
+ "s3030d2947a": "Kõrgem riba = kallim tund ({p0}–{p1} c/kWh). Plaan näitab, millal kodusild on vastanud.",
+ "@s3030d2947a": {
+  "x-mt": true
+ },
+ "s3d99bc591b": "Käsitsi tühistamine",
+ "@s3d99bc591b": {
+  "x-mt": true
+ },
+ "sb65a9ab4a9": "Sihttemperatuuri tõstetakse või langetatakse valitud ajaks, seejärel jätkatakse automaatset juhtimist.",
+ "@sb65a9ab4a9": {
+  "x-mt": true
+ },
+ "sb1c3627dc7": "Kütmine surutakse valitud ajaks sisse või välja, seejärel jätkub automaatne juhtimine.",
+ "@sb1c3627dc7": {
+  "x-mt": true
+ },
+ "seeaa40c11e": "Boost",
+ "@seeaa40c11e": {
+  "x-mt": true
+ },
+ "s4cd3d92d4c": "Sees",
+ "sdb7d34e8e1": "Säästlik",
+ "s33831dd49f": "Väljas",
+ "s3ef843cf90": "Endiselt kehtivad ohutuspiirangud (külmakaitse ja minimaalne temperatuur).",
+ "@s3ef843cf90": {
+  "x-mt": true
+ },
+ "s3077b295d1": "Rakenda",
+ "@s3077b295d1": {
+  "x-mt": true
+ },
+ "s7926a59e29": "Näit puudub",
+ "s29fd8d5b5e": "Praegu",
+ "s961397a99b": "Seadistuspunkt {p0} °C",
+ "@s961397a99b": {
+  "x-mt": true
+ },
+ "sc47170dbe0": "Seadistuspunkt {p0} °C (hind: {p1} °C sellel tunnil)",
+ "@sc47170dbe0": {
+  "x-mt": true
+ },
  "s6b536de0c8": "Läbi oma kodu silla: tuled, pistikud, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, kaamera fotod",
  "@s6b536de0c8": {
   "x-mt": true
@@ -1734,17 +1943,11 @@
  },
  "s109b35551a": "Maks",
  "sf2c65c5aeb": "Keskmine",
- "s8653f173b6": "Õhutemperatuur",
- "@s8653f173b6": {
-  "x-mt": true
- },
  "s68b942c864": "Määra kodu asukoht (Energy → Settings) prognoosimiseks.",
  "@s68b942c864": {
   "x-mt": true
  },
  "s38ac222392": "Väärtus",
- "s4cd3d92d4c": "Sees",
- "s33831dd49f": "Väljas",
  "sa8e43f2b0e": "Võrguühenduseta",
  "s65f512f499": "Kui võrguühenduseta",
  "@s65f512f499": {
@@ -2434,7 +2637,6 @@
  "@sd9923cda70": {
   "x-mt": true
  },
- "sf77125583f": "Tehnilised üksikasjad",
  "s9cf8aec76a": "Olek on {p0} vana",
  "s1f8cf57b2c": "Ühendus puudub",
  "s84819cca05": "Viimane häire {p0}",
@@ -2625,6 +2827,34 @@
  },
  "s4529c1010a": "Kaameraühenduse valimine",
  "@s4529c1010a": {
+  "x-mt": true
+ },
+ "s0ab7f9db7c": "Selle kaamera videoaadressi ei salvestata. Eemalda see ja lisa see uuesti või kirjuta RTSP aadress käsitsi.",
+ "@s0ab7f9db7c": {
+  "x-mt": true
+ },
+ "sda6d2b0dbe": "Videovoost ei olnud võimalik pilti teha. Kodusillaarvuti vajab ffmpeg'' i või kasutab kodusillana Molaplani rakendust.",
+ "@sda6d2b0dbe": {
+  "x-mt": true
+ },
+ "sb8cbbd3d99": "Kaamera ({p0}) ei vasta sellele seadmele. Kontrolli, kas seade on kaameraga samas võrgus ja kas RTSP on kaameras sees.",
+ "@sb8cbbd3d99": {
+  "x-mt": true
+ },
+ "s4a6a89a47e": "Kaamera keeldus kasutajanimest või paroolist (RTSP 401). Kontrolli neid kaamera ONVIF/ RTSP seadistustes.",
+ "@s4a6a89a47e": {
+  "x-mt": true
+ },
+ "s5f36d79393": "Kaamera ei tea seda videoaadressi (RTSP 404). Lisa kaamera uuesti või kirjuta RTSP aadress käsitsi.",
+ "@s5f36d79393": {
+  "x-mt": true
+ },
+ "s4c88b1dfe4": "Kaamera vastas, kuid videot ei saa esitada {p0}. Proovi uuesti; kui see pidevalt ebaõnnestub, vaata tehnilisi üksikasju.",
+ "@s4c88b1dfe4": {
+  "x-mt": true
+ },
+ "sedafd495a6": "Kaamera vastas RTSP {p0} ja pilti ei tulnud. Kontrolli kasutajanime ja parooli ning seda, kas RTSP on sees.",
+ "@sedafd495a6": {
   "x-mt": true
  },
  "sc95fb5440b": "Stream lõppes",
@@ -2954,10 +3184,6 @@
   "x-mt": true
  },
  "s90b5b7e33f": "Värvivahemikud",
- "sd408a5dbe9": "Odavamad tunnid",
- "@sd408a5dbe9": {
-  "x-mt": true
- },
  "sa26ae27039": "Jäta vahele kalleimad tunnid",
  "@sa26ae27039": {
   "x-mt": true
@@ -3083,8 +3309,12 @@
  "@sd172900c2d": {
   "x-mt": true
  },
- "s5da1e65941": "Puhkuserežiim",
- "@s5da1e65941": {
+ "sdb217dcf7f": "Kaardi lisamine avaekraanile",
+ "@sdb217dcf7f": {
+  "x-mt": true
+ },
+ "s52d3e04a46": "Avaekraanile lisatud kaart",
+ "@s52d3e04a46": {
   "x-mt": true
  },
  "sdca3ad13dd": "Kütteseadmed",
@@ -3107,20 +3337,8 @@
  "@s8c3353e896": {
   "x-mt": true
  },
- "s38ccb420a7": "Ei toiminud: {p0}",
- "@s38ccb420a7": {
-  "x-mt": true
- },
- "s8847ee78e0": "Eesmärk {p0} °C",
- "@s8847ee78e0": {
-  "x-mt": true
- },
- "s4b761dad85": "Järgmisena: {p0}",
- "@s4b761dad85": {
-  "x-mt": true
- },
- "s622f5654cd": "Viga: {p0}",
- "@s622f5654cd": {
+ "s13a8a207ec": "Reeglid ja seadistused",
+ "@s13a8a207ec": {
   "x-mt": true
  },
  "s697b47220e": "Nutikas kütmine",
@@ -3227,16 +3445,60 @@
  "@s025d1c3db1": {
   "x-mt": true
  },
- "s11e21d4f75": "Kuidas seda kontrollitakse",
- "@s11e21d4f75": {
+ "se34a337d6d": "Temperatuurianduri valimine",
+ "@se34a337d6d": {
+  "x-mt": true
+ },
+ "scfa5e7964d": "Võite kasutada mis tahes kaarti, mis näitab temperatuuri: Shelly lisandandur, Zigbee või Home Assistant, Airthings, Bosch, Tuya...",
+ "@scfa5e7964d": {
+  "x-mt": true
+ },
+ "s20ec3fcfd8": "Temperatuurikaarti veel ei ole. Lisa kõigepealt temperatuurianduriga seade.",
+ "@s20ec3fcfd8": {
+  "x-mt": true
+ },
+ "sf37075044e": "Lisa uus seade",
+ "@sf37075044e": {
+  "x-mt": true
+ },
+ "se68cc54085": "Andurit pole",
+ "@se68cc54085": {
+  "x-mt": true
+ },
+ "s093677b5f1": "Juhtimisrežiim",
+ "@s093677b5f1": {
+  "x-mt": true
+ },
+ "sa6195c2696": "Hinna järgi",
+ "@sa6195c2696": {
+  "x-mt": true
+ },
+ "s9d6a4787c0": "Temperatuuri järgi",
+ "@s9d6a4787c0": {
+  "x-mt": true
+ },
+ "s84cf10acfd": "Kütmine järgib mõõdetud temperatuuri nagu termostaat. Hinnareeglid liigutavad ainult seadistuspunkti: üles odavatel tundidel, alla kallitel tundidel (kui see on määratud).",
+ "@s84cf10acfd": {
+  "x-mt": true
+ },
+ "sdf9dc612a6": "Kütte puhul lähtutakse elektrihinnast ja ilmast. Temperatuuriandur on valikuline ja annab ohutuspiirangud.",
+ "@sdf9dc612a6": {
+  "x-mt": true
+ },
+ "s01c555401a": "Temperatuurianduri valimine",
+ "@s01c555401a": {
+  "x-mt": true
+ },
+ "s249140bfd0": "Temperatuuri reguleerimine vajab andurit. Ilma selleta järgib kütmine hinnagraafikut.",
+ "@s249140bfd0": {
+  "x-mt": true
+ },
+ "sf9cbe76823": "Hinnareeglid",
+ "@sf9cbe76823": {
   "x-mt": true
  },
  "s8e6c8ffabb": " (soovitatav)",
  "@s8e6c8ffabb": {
-  "x-mt": true
- },
- "sa35e3e99f4": "Kontroll",
- "@sa35e3e99f4": {
   "x-mt": true
  },
  "s86c45674db": "Küttetunnid päevas",
@@ -3247,18 +3509,100 @@
  "@sbd3dbfd7e9": {
   "x-mt": true
  },
- "s1f3d8e19f4": "Pikim paus korraga",
- "@s1f3d8e19f4": {
+ "s1f32a43166": "Tänane hinnapiirang: vahele jäetud, kui hind on {p0} c/kWh või rohkem.",
+ "@s1f32a43166": {
+  "x-mt": true
+ },
+ "s3c010a59e8": "Tänane hinnapiir: kui hind on {p0} c/kWh või vähem.",
+ "@s3c010a59e8": {
+  "x-mt": true
+ },
+ "s68b3688217": "Seadke punkt maha kulukatel tundidel",
+ "@s68b3688217": {
+  "x-mt": true
+ },
+ "s108a800ffc": "ei kasutata",
+ "@s108a800ffc": {
+  "x-mt": true
+ },
+ "sb35d5f8afd": "Seadke koht üles odavatel tundidel",
+ "@sb35d5f8afd": {
+  "x-mt": true
+ },
+ "sd82fb84485": "Temperatuuripiirangud",
+ "@sd82fb84485": {
+  "x-mt": true
+ },
+ "s510de048b8": "Setpoint",
+ "@s510de048b8": {
   "x-mt": true
  },
  "s017c87df20": "Mugav temperatuur",
  "@s017c87df20": {
   "x-mt": true
  },
- "se68cc54085": "Andurit pole",
- "@se68cc54085": {
+ "sdb145487c3": "Minimaalne temperatuur (ohutuspiirang)",
+ "@sdb145487c3": {
   "x-mt": true
  },
+ "s0c40392b6a": "Andurit ei ole - ohutuspiirangud ei ole aktiivsed",
+ "@s0c40392b6a": {
+  "x-mt": true
+ },
+ "scf2e61da2c": "vastamata",
+ "@scf2e61da2c": {
+  "x-mt": true
+ },
+ "s6a37cdb806": "Viivitused",
+ "@s6a37cdb806": {
+  "x-mt": true
+ },
+ "s1f3d8e19f4": "Pikim paus korraga",
+ "@s1f3d8e19f4": {
+  "x-mt": true
+ },
+ "s061c02e7ea": "Minimaalsed ajad: piirangud puuduvad (edasijõudnud).",
+ "@s061c02e7ea": {
+  "x-mt": true
+ },
+ "se7bc20343e": "Minimaalne aeg {p0} min, off {p1} min.",
+ "@se7bc20343e": {
+  "x-mt": true
+ },
+ "sa35e3e99f4": "Kontroll",
+ "@sa35e3e99f4": {
+  "x-mt": true
+ },
+ "sd8084282ca": "Hüsterees (surnud abielu)",
+ "@sd8084282ca": {
+  "x-mt": true
+ },
+ "s3bded44765": "Alla {p0} °C, väljas üle {p1} °C (enne mis tahes hinnamuutust).",
+ "@s3bded44765": {
+  "x-mt": true
+ },
+ "s3df29f3fca": "Kui andur ei vasta",
+ "@s3df29f3fca": {
+  "x-mt": true
+ },
+ "s5f9a56b766": "Jälgi hinnagraafikut",
+ "@s5f9a56b766": {
+  "x-mt": true
+ },
+ "scc764046c2": "Hoia",
+ "@scc764046c2": {
+  "x-mt": true
+ },
+ "sd50c0e6c4d": "Hoia eemale",
+ "@sd50c0e6c4d": {
+  "x-mt": true
+ },
+ "s64540136ff": "Minimaalne sees-aeg",
+ "s5e55e17318": "limiiti",
+ "@s5e55e17318": {
+  "x-mt": true
+ },
+ "s21713a2177": "Minimaalne väljas-aeg",
  "s347ce4c3d2": "Vähendamine kaminarežiimis",
  "@s347ce4c3d2": {
   "x-mt": true
@@ -4397,7 +4741,6 @@
  "s8a1f52a37b": "Termostaat eemaldatud",
  "s28dc9bc46a": "Temperatuurinäit puudub",
  "s31be5697ba": "Kodusild puudub: termostaat ei juhi veel. Võta kaugjuurdepääs kasutusele kodus oleval seadmel.",
- "s29fd8d5b5e": "Praegu",
  "see9111ba68": "Relee või lüliti (sees/väljas)",
  "seaed91ad78": "Soojuspump või konditsioneer (seadeväärtus)",
  "sb757921c13": "Kütab",
@@ -4454,8 +4797,6 @@
  "s17cb86f49e": "Jäta nagu on",
  "s9624f070ee": "Hüsterees",
  "sf070be2c1e": "Surnud tsoon (küte/jahutus)",
- "s64540136ff": "Minimaalne sees-aeg",
- "s21713a2177": "Minimaalne väljas-aeg",
  "s8f7c8eb7d0": "Varukütteseade, kui see on allpool sihtmärki",
  "@s8f7c8eb7d0": {
   "x-mt": true
@@ -4714,10 +5055,6 @@
  },
  "sb9e406274e": "online",
  "@sb9e406274e": {
-  "x-mt": true
- },
- "scf2e61da2c": "vastamata",
- "@scf2e61da2c": {
   "x-mt": true
  },
  "sb981e102f1": "vana Molaplan (0.8.0 testkoostis või vanem)",
@@ -5382,7 +5719,6 @@
  "@s2b2118a93b": {
   "x-mt": true
  },
- "sb730159a01": "Hind praegu",
  "s68fcfcfed1": "Odavaim tund täna",
  "s86ff059f5e": "Keskmine täna",
  "s7b911d48c6": "Kalleim tund täna",
@@ -9450,6 +9786,409 @@
  "@s333643b4c4": {
   "x-mt": true
  },
+ "s741ad14d6e": "alla minuti",
+ "@s741ad14d6e": {
+  "x-mt": true
+ },
+ "s61cb8b20cf": "Seade",
+ "@s61cb8b20cf": {
+  "x-mt": true
+ },
+ "s69e8cc73cb": "{p0} ei reageeri (ühendus on aegunud)",
+ "@s69e8cc73cb": {
+  "x-mt": true
+ },
+ "sb6b6fb4fe1": "{p0} ei reageeri (timeout {p1} s)",
+ "@sb6b6fb4fe1": {
+  "x-mt": true
+ },
+ "s6f71cad9b6": "{p0} keeldub ühendusest (ühendus on keelatud)",
+ "@s6f71cad9b6": {
+  "x-mt": true
+ },
+ "sc45478e8fd": "{p0} ei ole võimalik saavutada (võrgu marsruut puudub)",
+ "@sc45478e8fd": {
+  "x-mt": true
+ },
+ "s0114e1e46c": "{p0}: aadressi ei leita",
+ "@s0114e1e46c": {
+  "x-mt": true
+ },
+ "s5c5afb4b38": "{p0} lükkas sisselogimise tagasi (HTTP {p1})",
+ "@s5c5afb4b38": {
+  "x-mt": true
+ },
+ "seb34841f6b": "{p0}: aadress ei ole korrektne (HTTP {p1})",
+ "@seb34841f6b": {
+  "x-mt": true
+ },
+ "sf2580c0069": "{p0} vastas veaga (HTTP {p1})",
+ "@sf2580c0069": {
+  "x-mt": true
+ },
+ "s0528a2ef9e": "Seadmel puudub sisse- ja väljalülitamiskäsk",
+ "@s0528a2ef9e": {
+  "x-mt": true
+ },
+ "sd0e9fc6760": "Kontroll ei toiminud",
+ "@sd0e9fc6760": {
+  "x-mt": true
+ },
+ "sc056006180": "Kontrolli, kas seade on kodusillaga samas võrgus sisse ja sisse. Nutikas kütmine proovib iga minut uuesti, kuni see töötab, jääb seade oma praegusesse olekusse.",
+ "@sc056006180": {
+  "x-mt": true
+ },
+ "s7a1cda0d24": "Kontrollige seadme parooli ühenduse seadistustes.",
+ "@s7a1cda0d24": {
+  "x-mt": true
+ },
+ "s4dc27a3272": "Kontrollige seadme aadressi ja käsku kaardi seadistustes.",
+ "@s4dc27a3272": {
+  "x-mt": true
+ },
+ "s54dbdeb56b": "Seade vastas, kuid ei võtnud käsku vastu. Proovi seade uuesti käivitada.",
+ "@s54dbdeb56b": {
+  "x-mt": true
+ },
+ "s8e9e56f68f": "Vaadake täpset põhjust tehniliste üksikasjade all.",
+ "@s8e9e56f68f": {
+  "x-mt": true
+ },
+ "s7279e2bdb1": "Käsitsi tühistamine",
+ "@s7279e2bdb1": {
+  "x-mt": true
+ },
+ "s8accab3bb7": "Hind nihutab seadeväärtust",
+ "@s8accab3bb7": {
+  "x-mt": true
+ },
+ "s78188d956e": "Tuba on piisavalt soe",
+ "@s78188d956e": {
+  "x-mt": true
+ },
+ "saa76f06f20": "Kallid töötunnid vahele jätta",
+ "@saa76f06f20": {
+  "x-mt": true
+ },
+ "s846c49053e": "Pikim vaheaeg",
+ "@s846c49053e": {
+  "x-mt": true
+ },
+ "se79c5ead71": "Hinnaandmed",
+ "@se79c5ead71": {
+  "x-mt": true
+ },
+ "sa30e1a2c14": "Temperatuuriandur",
+ "@sa30e1a2c14": {
+  "x-mt": true
+ },
+ "s39147d043d": "Kasutamata",
+ "@s39147d043d": {
+  "x-mt": true
+ },
+ "s7d4144c0a0": "Temperatuuri ei ole – ei saa kontrollida",
+ "@s7d4144c0a0": {
+  "x-mt": true
+ },
+ "s70d66e5f81": "{p0} °C on alla {p1} °C – kuumutatakse",
+ "@s70d66e5f81": {
+  "x-mt": true
+ },
+ "sd93442ff7c": "{p0} °C, piir {p1} °C",
+ "@sd93442ff7c": {
+  "x-mt": true
+ },
+ "s9bf02da8ca": "{p0} (kuni {p1})",
+ "@s9bf02da8ca": {
+  "x-mt": true
+ },
+ "sb8c4753e09": "Väljas {p0} (kuni {p1})",
+ "@sb8c4753e09": {
+  "x-mt": true
+ },
+ "sc9f92f4156": "Kamin kuumeneb: elektriküte väheneb",
+ "@sc9f92f4156": {
+  "x-mt": true
+ },
+ "sf78c1a349f": "Eemale: hoida {p0} °C",
+ "@sf78c1a349f": {
+  "x-mt": true
+ },
+ "s5faeeab2c8": "Praegu ei kehti",
+ "@s5faeeab2c8": {
+  "x-mt": true
+ },
+ "s2226c324ef": "Andur ei vasta - {p0}",
+ "@s2226c324ef": {
+  "x-mt": true
+ },
+ "se363372312": "{p0} °C, seadeväärtus {p1} °C ± {p2} °C (alla {p3}, välja üle {p4} °C)",
+ "@se363372312": {
+  "x-mt": true
+ },
+ "s0f95c71a7a": "Sellel tunnil ei muutu midagi",
+ "@s0f95c71a7a": {
+  "x-mt": true
+ },
+ "sc634878941": "Odav tund: seadeväärtus +{p0} °C",
+ "@sc634878941": {
+  "x-mt": true
+ },
+ "sedcfc0a927": "Kallis tund: seadeväärtus {p0} °C",
+ "@sedcfc0a927": {
+  "x-mt": true
+ },
+ "s642427fe2b": "{p0} °C ≥ {p1} °C – ei kuumutata",
+ "@s642427fe2b": {
+  "x-mt": true
+ },
+ "sda0b91c359": "{p0} °C, ülempiir {p1} °C",
+ "@sda0b91c359": {
+  "x-mt": true
+ },
+ "sf3a33e9bc5": "{p0} odavaimat tundi päevas: nüüd {p1} c/kWh {p2} piirang {p3} c",
+ "@sf3a33e9bc5": {
+  "x-mt": true
+ },
+ "s428ce35d71": "{p0} kõige kallimat tundi vahele jäetud: nüüd {p1} c/kWh {p2} piirang {p3} c",
+ "@s428ce35d71": {
+  "x-mt": true
+ },
+ "s6200d2086c": "Prognoosi pole",
+ "@s6200d2086c": {
+  "x-mt": true
+ },
+ "s29d9986638": "Prognoos {p0} °C keskmiselt → {p1} küttetunnid päevas",
+ "@s29d9986638": {
+  "x-mt": true
+ },
+ "sdcf4412899": "Väljas liiga kaua - kuumutada tund aega",
+ "@sdcf4412899": {
+  "x-mt": true
+ },
+ "s8a9723fbbb": "Väljas maksimaalselt {p0} h korraga",
+ "@s8a9723fbbb": {
+  "x-mt": true
+ },
+ "s9fe316f0b6": "Piirideta",
+ "@s9fe316f0b6": {
+  "x-mt": true
+ },
+ "s70094ce99b": "Ooteaeg: vähemalt {p0} min",
+ "@s70094ce99b": {
+  "x-mt": true
+ },
+ "s71d72597eb": "Vähemalt {p0} min",
+ "@s71d72597eb": {
+  "x-mt": true
+ },
+ "s84cf358040": "Hinnad puuduvad – küte käib tavapäraselt",
+ "@s84cf358040": {
+  "x-mt": true
+ },
+ "s0e19d6ac09": "Saadaolevad hinnad",
+ "@s0e19d6ac09": {
+  "x-mt": true
+ },
+ "s9583d61085": "Andurit pole valitud",
+ "@s9583d61085": {
+  "x-mt": true
+ },
+ "s756b49f274": "Ei vasta",
+ "@s756b49f274": {
+  "x-mt": true
+ },
+ "s3ddc69fd91": "Vastamine: {p0} °C",
+ "@s3ddc69fd91": {
+  "x-mt": true
+ },
+ "sa0c950bdca": "Ei vasta",
+ "@sa0c950bdca": {
+  "x-mt": true
+ },
+ "sc3b0eaf426": "Vastan",
+ "@sc3b0eaf426": {
+  "x-mt": true
+ },
+ "sa3f65879ff": "kuumutatakse",
+ "@sa3f65879ff": {
+  "x-mt": true
+ },
+ "s5906232c68": "Kütet hoitakse eemal",
+ "@s5906232c68": {
+  "x-mt": true
+ },
+ "sc084b8cbdf": "hinnagraafikut järgides",
+ "@sc084b8cbdf": {
+  "x-mt": true
+ },
+ "s136e7941a4": "DISABLED",
+ "s8847ee78e0": "Eesmärk {p0} °C",
+ "@s8847ee78e0": {
+  "x-mt": true
+ },
+ "sedcddfbb2f": "EI VASTUTA",
+ "@sedcddfbb2f": {
+  "x-mt": true
+ },
+ "s6ab8f97950": "ON",
+ "s509c668d7e": "OFF",
+ "s70d43f1209": "Kontroll on välja lülitatud",
+ "@s70d43f1209": {
+  "x-mt": true
+ },
+ "s4f7ef5d46a": "Andur ei vasta - hinnagraafiku järgi: ",
+ "@s4f7ef5d46a": {
+  "x-mt": true
+ },
+ "s9e31ebc1e8": "Külmakaitse: {p0} °C on alla {p1} °C",
+ "@s9e31ebc1e8": {
+  "x-mt": true
+ },
+ "s7cdb2a0cb6": "Temperatuur {p0} °C allpool minimaalset {p1} °C",
+ "@s7cdb2a0cb6": {
+  "x-mt": true
+ },
+ "sf3b0d012da": "Käsitsi tühistamine: on{p0}",
+ "@sf3b0d012da": {
+  "x-mt": true
+ },
+ "s14be0441f7": "Käsitsi tühistamine: off{p0}",
+ "@s14be0441f7": {
+  "x-mt": true
+ },
+ "sd735da4378": "Kaminarežiim: elektriküte väheneb",
+ "@sd735da4378": {
+  "x-mt": true
+ },
+ "s482b48b34c": "Puhkuserežiim: tuba hoitakse jahedamalt",
+ "@s482b48b34c": {
+  "x-mt": true
+ },
+ "s6a24d44a71": "Puhkuserežiim: soojendus naasmiseks",
+ "@s6a24d44a71": {
+  "x-mt": true
+ },
+ "s247db88d99": "Piisavalt soe ({p0} °C ≥ {p1} °C)",
+ "@s247db88d99": {
+  "x-mt": true
+ },
+ "s0d09da9167": "Odav tund ({p0} c/kWh ≤ piirang {p1} c)",
+ "@s0d09da9167": {
+  "x-mt": true
+ },
+ "sbbcaad0790": "Kütmine nii, et paus ei läheks liiga pikaks ({p0} c/kWh)",
+ "@sbbcaad0790": {
+  "x-mt": true
+ },
+ "sf56f514430": "{p0} c/kWh > piirnorm {p1} c",
+ "@sf56f514430": {
+  "x-mt": true
+ },
+ "s9cdd4b289a": "Kulukas tund - ladustamispõrand on piisav ({p0})",
+ "@s9cdd4b289a": {
+  "x-mt": true
+ },
+ "sbf758df617": "Mitte odav tund - ootamine ({p0})",
+ "@sbf758df617": {
+  "x-mt": true
+ },
+ "s03e2decc6e": "{p0} c/kWh ≥ piirnorm {p1} c",
+ "@s03e2decc6e": {
+  "x-mt": true
+ },
+ "s8285023fb8": "Kallimad tunnid vahele jäetud ({p0})",
+ "@s8285023fb8": {
+  "x-mt": true
+ },
+ "s8851083ec4": "Normaalne küte",
+ "@s8851083ec4": {
+  "x-mt": true
+ },
+ "s452449f24c": "Hinnaandmed puuduvad – kütted kulgevad tavapäraselt",
+ "@s452449f24c": {
+  "x-mt": true
+ },
+ "sadbee991d6": "Temperatuur {p0} °C on allpool seadeväärtust {p1} °C – kuumutamine",
+ "@sadbee991d6": {
+  "x-mt": true
+ },
+ "s0e20e8780d": "Saavutatud seadistuspunkt {p0} °C ({p1} °C)",
+ "@s0e20e8780d": {
+  "x-mt": true
+ },
+ "s3f74d751fe": "Kuumutamine kuni {p0} °C",
+ "@s3f74d751fe": {
+  "x-mt": true
+ },
+ "s91276ece64": "Väljalülitatud, kuni temperatuur langeb alla {p0} °C",
+ "@s91276ece64": {
+  "x-mt": true
+ },
+ "s4437d2666a": "Andur ei vasta - soojendamine jätkub",
+ "@s4437d2666a": {
+  "x-mt": true
+ },
+ "s127c973eb9": "Andur ei vasta - soojendamine hoitakse väljas",
+ "@s127c973eb9": {
+  "x-mt": true
+ },
+ "s7e2afd388e": "Ohutuspiirang: liiga kaua väljas – tund aega kütta",
+ "@s7e2afd388e": {
+  "x-mt": true
+ },
+ "s630919f15c": "Pealkiri: Minimaalne aeg ei ole läbi",
+ "@s630919f15c": {
+  "x-mt": true
+ },
+ "sf5f33530ca": "Hoiatud: minimaalne väljalülitusaeg ei ole lõppenud",
+ "@sf5f33530ca": {
+  "x-mt": true
+ },
+ "sd36f9bf75a": "Eelsoojendamine enne kallist või külma loitsu",
+ "@sd36f9bf75a": {
+  "x-mt": true
+ },
+ "s8ea3994a9b": "Säästmine kulukalt",
+ "@s8ea3994a9b": {
+  "x-mt": true
+ },
+ "s8ec3c3bdb9": "Teavet veel pole",
+ "@s8ec3c3bdb9": {
+  "x-mt": true
+ },
+ "sd80668c71a": "Järgmine muutus sõltub temperatuurist",
+ "@sd80668c71a": {
+  "x-mt": true
+ },
+ "s723147d2b2": "Automaatne kontroll jätkub {p0}",
+ "@s723147d2b2": {
+  "x-mt": true
+ },
+ "sc2c736c508": "Järgmisena {p0}",
+ "@sc2c736c508": {
+  "x-mt": true
+ },
+ "s2c7a2c7c84": "Järgmisena {p0}",
+ "@s2c7a2c7c84": {
+  "x-mt": true
+ },
+ "s6ebbbbc4a0": "Temperatuuri reguleerimine ja ohutuspiirid (külmakaitse, minimaalne temperatuur) on välja lülitatud ja {p0}.",
+ "@s6ebbbbc4a0": {
+  "x-mt": true
+ },
+ "sdba1212edb": "Ohutuspiirid (külmakaitse, minimaalne temperatuur) on välja lülitatud ja kütmine järgib hinnagraafikut.",
+ "@sdba1212edb": {
+  "x-mt": true
+ },
+ "sbf916076f9": "Temperatuuriandur ei reageeri.",
+ "@sbf916076f9": {
+  "x-mt": true
+ },
+ "s9fad63ec58": "Kontrollige anduri akut ja võrku või valige mõni muu andur.",
+ "@s9fad63ec58": {
+  "x-mt": true
+ },
  "s0a81072a1f": "Leia see ruuteri seadmete nimekirjast või valmistaja rakendusest (seadme info). Reserveeri sellele kindel IP.",
  "@s0a81072a1f": {
   "x-mt": true
@@ -11605,34 +12344,6 @@
  "sda8d9bf1cd": "Pistikupesa",
  "s06444f278d": "asukoht (100 = suletud)",
  "@s06444f278d": {
-  "x-mt": true
- },
- "s0ab7f9db7c": "Selle kaamera videoaadressi ei salvestata. Eemalda see ja lisa see uuesti või kirjuta RTSP aadress käsitsi.",
- "@s0ab7f9db7c": {
-  "x-mt": true
- },
- "sda6d2b0dbe": "Videovoost ei olnud võimalik pilti teha. Kodusillaarvuti vajab ffmpeg'' i või kasutab kodusillana Molaplani rakendust.",
- "@sda6d2b0dbe": {
-  "x-mt": true
- },
- "sb8cbbd3d99": "Kaamera ({p0}) ei vasta sellele seadmele. Kontrolli, kas seade on kaameraga samas võrgus ja kas RTSP on kaameras sees.",
- "@sb8cbbd3d99": {
-  "x-mt": true
- },
- "s4a6a89a47e": "Kaamera keeldus kasutajanimest või paroolist (RTSP 401). Kontrolli neid kaamera ONVIF/ RTSP seadistustes.",
- "@s4a6a89a47e": {
-  "x-mt": true
- },
- "s5f36d79393": "Kaamera ei tea seda videoaadressi (RTSP 404). Lisa kaamera uuesti või kirjuta RTSP aadress käsitsi.",
- "@s5f36d79393": {
-  "x-mt": true
- },
- "s4c88b1dfe4": "Kaamera vastas, kuid videot ei saa esitada {p0}. Proovi uuesti; kui see pidevalt ebaõnnestub, vaata tehnilisi üksikasju.",
- "@s4c88b1dfe4": {
-  "x-mt": true
- },
- "sedafd495a6": "Kaamera vastas RTSP {p0} ja pilti ei tulnud. Kontrolli kasutajanime ja parooli ning seda, kas RTSP on sees.",
- "@sedafd495a6": {
   "x-mt": true
  }
 }

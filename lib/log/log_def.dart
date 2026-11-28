@@ -119,7 +119,12 @@ bool isPriceChartTile(TileConfig t) => t.type == TileType.value && t.read['field
 
 /// Tiles that carry no value to log (buttons, cameras, weather, other log tiles).
 bool canLogTile(TileConfig t) {
-  if (t.read['kind'] == 'log' || t.read['kind'] == 'weather' || t.read['kind'] == 'climate') return false;
+  if (t.read['kind'] == 'log' ||
+      t.read['kind'] == 'weather' ||
+      t.read['kind'] == 'heating' ||
+      t.read['kind'] == 'climate') {
+    return false;
+  }
   if (t.type == TileType.camera) return false;
   if (t.type == TileType.button && t.read['activeWhen'] == null) return false;
   return t.read.isNotEmpty;

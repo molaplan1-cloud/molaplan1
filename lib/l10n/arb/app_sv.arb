@@ -1123,6 +1123,215 @@
   "x-mt": true
  },
  "s09f5da65e0": "Byt till Shelly Cloud",
+ "sf5768a876d": "Inaktiverad",
+ "@sf5768a876d": {
+  "x-mt": true
+ },
+ "s8724f302ef": "Manual Manual",
+ "@s8724f302ef": {
+  "x-mt": true
+ },
+ "s76bce4b6c2": "Manuell {p0}",
+ "@s76bce4b6c2": {
+  "x-mt": true
+ },
+ "s221a4ab646": "Fireplace läge",
+ "@s221a4ab646": {
+  "x-mt": true
+ },
+ "s5da1e65941": "Holiday läge",
+ "@s5da1e65941": {
+  "x-mt": true
+ },
+ "se50792831f": "Temperaturkontroll",
+ "@se50792831f": {
+  "x-mt": true
+ },
+ "sd408a5dbe9": "Billigaste timmar",
+ "@sd408a5dbe9": {
+  "x-mt": true
+ },
+ "s5c33c7b488": "Skip dyrt",
+ "@s5c33c7b488": {
+  "x-mt": true
+ },
+ "seaa748138e": "Vid vädret",
+ "@seaa748138e": {
+  "x-mt": true
+ },
+ "saf3ce7f717": "Smart uppvärmning: Ställ upp den",
+ "@saf3ce7f717": {
+  "x-mt": true
+ },
+ "scde8147260": "Smart uppvärmning: lägg till en enhet",
+ "@scde8147260": {
+  "x-mt": true
+ },
+ "sea2ac9b443": "Värmeanordning bort",
+ "@sea2ac9b443": {
+  "x-mt": true
+ },
+ "s27e0af845d": "Ingen hembro: uppvärmning är ännu inte kontrollerad. Ställ in fjärråtkomst på en enhet hemma.",
+ "@s27e0af845d": {
+  "x-mt": true
+ },
+ "s04fcb24bc5": "Nu {p0} · setpoint {p1}",
+ "@s04fcb24bc5": {
+  "x-mt": true
+ },
+ "s3c3d6b5485": "Temperatur {p0}",
+ "@s3c3d6b5485": {
+  "x-mt": true
+ },
+ "s670a6ed937": "{p0} c/kWh",
+ "s8272e84b1c": "{p0} c/kWh · gräns {p1} c",
+ "@s8272e84b1c": {
+  "x-mt": true
+ },
+ "s8235ae91c4": "Sensor svarar inte – {p0}",
+ "@s8235ae91c4": {
+  "x-mt": true
+ },
+ "s0be7b030a0": "Beräkning från priser – ingen hembro",
+ "@s0be7b030a0": {
+  "x-mt": true
+ },
+ "s9c543b2106": "Uppskattning – hembron har ännu inte svarat",
+ "@s9c543b2106": {
+  "x-mt": true
+ },
+ "see998ca830": "hålls på",
+ "@see998ca830": {
+  "x-mt": true
+ },
+ "s9eb36d05e1": "hålls av",
+ "@s9eb36d05e1": {
+  "x-mt": true
+ },
+ "s871e341710": "Prisplan",
+ "@s871e341710": {
+  "x-mt": true
+ },
+ "s579f396ae5": "Situation",
+ "@s579f396ae5": {
+  "x-mt": true
+ },
+ "s8653f173b6": "Temperatur",
+ "@s8653f173b6": {
+  "x-mt": true
+ },
+ "sb730159a01": "Pris nu",
+ "s7dfe0e7977": "Nästa förändring",
+ "@s7dfe0e7977": {
+  "x-mt": true
+ },
+ "sf77125583f": "Tekniska detaljer",
+ "s5555a716bb": "Detta är en uppskattning från priser och inställningar: hembron har ännu inte svarat, så enhetens verkliga tillstånd är okänt.",
+ "@s5555a716bb": {
+  "x-mt": true
+ },
+ "sbe50b10e9e": "End manual override",
+ "@sbe50b10e9e": {
+  "x-mt": true
+ },
+ "s728ddd7778": "Manuell överridning...",
+ "@s728ddd7778": {
+  "x-mt": true
+ },
+ "sd661031615": "Ingen sensor",
+ "@sd661031615": {
+  "x-mt": true
+ },
+ "scfb407cd2d": "sensor som inte svarar",
+ "@scfb407cd2d": {
+  "x-mt": true
+ },
+ "s1284293e15": "setpoint {p0} ± {p1}",
+ "@s1284293e15": {
+  "x-mt": true
+ },
+ "s07a15cf1d3": "Övre gränsen {p0}",
+ "@s07a15cf1d3": {
+  "x-mt": true
+ },
+ "s4e43228e07": "min {p0}",
+ "sd4db0fbbb5": "frost {p0}",
+ "@sd4db0fbbb5": {
+  "x-mt": true
+ },
+ "s63c3e9c766": "Inga prisdata",
+ "@s63c3e9c766": {
+  "x-mt": true
+ },
+ "s8c60756474": "{p0} (skippad vid ≥ {p1} c)",
+ "@s8c60756474": {
+  "x-mt": true
+ },
+ "sff29b84ddc": "{p0} (på ≤ {p1} c)",
+ "@sff29b84ddc": {
+  "x-mt": true
+ },
+ "s750dcb984f": "Varför? Reglerna och deras stat",
+ "@s750dcb984f": {
+  "x-mt": true
+ },
+ "s39d300e3ea": "beslutar nu",
+ "@s39d300e3ea": {
+  "x-mt": true
+ },
+ "s55153c17b8": "Nästa 24 h: Pris och planerade uppvärmningstimmar",
+ "@s55153c17b8": {
+  "x-mt": true
+ },
+ "sfb5a3f7da0": "Inga prisdata ännu.",
+ "@sfb5a3f7da0": {
+  "x-mt": true
+ },
+ "sba9d60d97c": "Orange = uppvärmning planerad på. En högre bar = en dyrare timme ({p0}-{p1} c/kWh).",
+ "@sba9d60d97c": {
+  "x-mt": true
+ },
+ "s3030d2947a": "En högre bar = en dyrare timme ({p0}-{p1} c/kWh). Planen visar när hembron har svarat.",
+ "@s3030d2947a": {
+  "x-mt": true
+ },
+ "s3d99bc591b": "Manuell överridning",
+ "@s3d99bc591b": {
+  "x-mt": true
+ },
+ "sb65a9ab4a9": "Måltemperaturen höjs eller sänks för den valda tiden, sedan fortsätter automatisk kontroll.",
+ "@sb65a9ab4a9": {
+  "x-mt": true
+ },
+ "sb1c3627dc7": "Uppvärmning tvingas på eller av för den valda tiden, sedan fortsätter automatisk kontroll.",
+ "@sb1c3627dc7": {
+  "x-mt": true
+ },
+ "seeaa40c11e": "Boost",
+ "@seeaa40c11e": {
+  "x-mt": true
+ },
+ "s4cd3d92d4c": "På",
+ "sdb7d34e8e1": "Sparsam",
+ "s33831dd49f": "Av",
+ "s3ef843cf90": "Säkerhetsgränserna (frostskydd och minimitemperatur) gäller fortfarande.",
+ "@s3ef843cf90": {
+  "x-mt": true
+ },
+ "s3077b295d1": "Applicera",
+ "@s3077b295d1": {
+  "x-mt": true
+ },
+ "s7926a59e29": "Inget värde",
+ "s29fd8d5b5e": "Nu",
+ "s961397a99b": "Setpoint {p0} °C",
+ "@s961397a99b": {
+  "x-mt": true
+ },
+ "sc47170dbe0": "Setpoint {p0} °C (pris: {p1} °C denna timme)",
+ "@sc47170dbe0": {
+  "x-mt": true
+ },
  "s6b536de0c8": "Genom din hembro: lampor, pluggar, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, kamera stillbilder",
  "@s6b536de0c8": {
   "x-mt": true
@@ -1734,17 +1943,11 @@
  },
  "s109b35551a": "Max",
  "sf2c65c5aeb": "Medelvärde",
- "s8653f173b6": "Temperatur",
- "@s8653f173b6": {
-  "x-mt": true
- },
  "s68b942c864": "Ställ in hemorten (Energy → Inställningar) för prognosen.",
  "@s68b942c864": {
   "x-mt": true
  },
  "s38ac222392": "Värde",
- "s4cd3d92d4c": "På",
- "s33831dd49f": "Av",
  "sa8e43f2b0e": "Offline",
  "s65f512f499": "När offline för",
  "@s65f512f499": {
@@ -2431,7 +2634,6 @@
  "@sd9923cda70": {
   "x-mt": true
  },
- "sf77125583f": "Tekniska detaljer",
  "s9cf8aec76a": "Tillståndet är {p0} gammalt",
  "s1f8cf57b2c": "Ingen anslutning",
  "s84819cca05": "Sista larmet {p0}",
@@ -2622,6 +2824,34 @@
  },
  "s4529c1010a": "Välj en kameraanslutning",
  "@s4529c1010a": {
+  "x-mt": true
+ },
+ "s0ab7f9db7c": "Ingen videoadress lagras för den här kameran. Ta bort den och lägg till den igen, eller skriv RTSP-adressen för hand.",
+ "@s0ab7f9db7c": {
+  "x-mt": true
+ },
+ "sda6d2b0dbe": "En stillbild kunde inte göras från videoströmmen. Hembrodatorn behöver ffmpeg, eller använd Molaplan-appen som hemmabron.",
+ "@sda6d2b0dbe": {
+  "x-mt": true
+ },
+ "sb8cbbd3d99": "Kameran ({p0}) svarar inte från den här enheten. Kontrollera att den här enheten är på samma nätverk som kameran och att RTSP är på i kameran.",
+ "@sb8cbbd3d99": {
+  "x-mt": true
+ },
+ "s4a6a89a47e": "Kameran vägrade användarnamnet eller lösenordet (RTSP 401). Kontrollera dem i kamerans ONVIF/RTSP-inställningar.",
+ "@s4a6a89a47e": {
+  "x-mt": true
+ },
+ "s5f36d79393": "Kameran känner inte till den här videoadressen (RTSP 404). Lägg till kameran igen eller skriv RTSP-adressen för hand.",
+ "@s5f36d79393": {
+  "x-mt": true
+ },
+ "s4c88b1dfe4": "Kameran svarade, men videon kunde inte spelas {p0}. Försök igen; om den fortsätter att misslyckas, se tekniska detaljer.",
+ "@s4c88b1dfe4": {
+  "x-mt": true
+ },
+ "sedafd495a6": "Kameran svarade RTSP {p0} och ingen bild kom. Kontrollera användarnamnet och lösenordet och att RTSP är på.",
+ "@sedafd495a6": {
   "x-mt": true
  },
  "sc95fb5440b": "Stream slutade",
@@ -2942,10 +3172,6 @@
   "x-mt": true
  },
  "s90b5b7e33f": "Färgintervall",
- "sd408a5dbe9": "Billigaste timmar",
- "@sd408a5dbe9": {
-  "x-mt": true
- },
  "sa26ae27039": "Hoppa över de dyraste timmarna",
  "@sa26ae27039": {
   "x-mt": true
@@ -3071,8 +3297,12 @@
  "@sd172900c2d": {
   "x-mt": true
  },
- "s5da1e65941": "Holiday läge",
- "@s5da1e65941": {
+ "sdb217dcf7f": "Lägg till ett kort till hemskärmen",
+ "@sdb217dcf7f": {
+  "x-mt": true
+ },
+ "s52d3e04a46": "Kort som läggs till på hemskärmen",
+ "@s52d3e04a46": {
   "x-mt": true
  },
  "sdca3ad13dd": "Värmeanordningar",
@@ -3095,20 +3325,8 @@
  "@s8c3353e896": {
   "x-mt": true
  },
- "s38ccb420a7": "Fungerade inte: {p0}",
- "@s38ccb420a7": {
-  "x-mt": true
- },
- "s8847ee78e0": "Mål {p0} °C",
- "@s8847ee78e0": {
-  "x-mt": true
- },
- "s4b761dad85": "Nästa: {p0}",
- "@s4b761dad85": {
-  "x-mt": true
- },
- "s622f5654cd": "Fel: {p0}",
- "@s622f5654cd": {
+ "s13a8a207ec": "Regler och inställningar",
+ "@s13a8a207ec": {
   "x-mt": true
  },
  "s697b47220e": "Smart värme på",
@@ -3215,16 +3433,60 @@
  "@s025d1c3db1": {
   "x-mt": true
  },
- "s11e21d4f75": "Hur den är kontrollerad",
- "@s11e21d4f75": {
+ "se34a337d6d": "Välj temperaturgivaren",
+ "@se34a337d6d": {
+  "x-mt": true
+ },
+ "scfa5e7964d": "Du kan använda alla kort som visar en temperatur: en Shelly add-on sensor, Zigbee eller Home Assistant, Airthings, Bosch, Tuya.",
+ "@scfa5e7964d": {
+  "x-mt": true
+ },
+ "s20ec3fcfd8": "Det finns inget temperaturkort ännu. Lägg till en enhet med en temperatursensor först.",
+ "@s20ec3fcfd8": {
+  "x-mt": true
+ },
+ "sf37075044e": "Lägg till en ny enhet",
+ "@sf37075044e": {
+  "x-mt": true
+ },
+ "se68cc54085": "Ingen sensor",
+ "@se68cc54085": {
+  "x-mt": true
+ },
+ "s093677b5f1": "Kontroll läge",
+ "@s093677b5f1": {
+  "x-mt": true
+ },
+ "sa6195c2696": "Priset",
+ "@sa6195c2696": {
+  "x-mt": true
+ },
+ "s9d6a4787c0": "Vid temperatur",
+ "@s9d6a4787c0": {
+  "x-mt": true
+ },
+ "s84cf10acfd": "Uppvärmning följer den uppmätta temperaturen som en termostat. Prisreglerna flyttar bara inställningspunkten: upp i billiga timmar, ner i dyra (om de är inställda).",
+ "@s84cf10acfd": {
+  "x-mt": true
+ },
+ "sdf9dc612a6": "Värme följer elpriset och vädret. En temperatursensor är valfri och ger säkerhetsgränserna.",
+ "@sdf9dc612a6": {
+  "x-mt": true
+ },
+ "s01c555401a": "Välj en temperatursensor",
+ "@s01c555401a": {
+  "x-mt": true
+ },
+ "s249140bfd0": "Temperaturkontroll behöver en sensor. Utan en följer uppvärmning prisschemat.",
+ "@s249140bfd0": {
+  "x-mt": true
+ },
+ "sf9cbe76823": "Prisregler",
+ "@sf9cbe76823": {
   "x-mt": true
  },
  "s8e6c8ffabb": " (rekommenderas)",
  "@s8e6c8ffabb": {
-  "x-mt": true
- },
- "sa35e3e99f4": "Kontroll på",
- "@sa35e3e99f4": {
   "x-mt": true
  },
  "s86c45674db": "Värme timmar om dagen",
@@ -3235,18 +3497,100 @@
  "@sbd3dbfd7e9": {
   "x-mt": true
  },
- "s1f3d8e19f4": "Längsta paus i taget",
- "@s1f3d8e19f4": {
+ "s1f32a43166": "Dagens prisgräns: hoppade över när priset är {p0} c/kWh eller mer.",
+ "@s1f32a43166": {
+  "x-mt": true
+ },
+ "s3c010a59e8": "Dagens prisgräns: när priset är {p0} c/kWh eller mindre.",
+ "@s3c010a59e8": {
+  "x-mt": true
+ },
+ "s68b3688217": "Ställ ner i dyra timmar",
+ "@s68b3688217": {
+  "x-mt": true
+ },
+ "s108a800ffc": "inte används",
+ "@s108a800ffc": {
+  "x-mt": true
+ },
+ "sb35d5f8afd": "Ställ upp i billiga timmar",
+ "@sb35d5f8afd": {
+  "x-mt": true
+ },
+ "sd82fb84485": "Temperaturgränser",
+ "@sd82fb84485": {
+  "x-mt": true
+ },
+ "s510de048b8": "Setpoint",
+ "@s510de048b8": {
   "x-mt": true
  },
  "s017c87df20": "Komforttemperatur",
  "@s017c87df20": {
   "x-mt": true
  },
- "se68cc54085": "Ingen sensor",
- "@se68cc54085": {
+ "sdb145487c3": "Minimitemperatur (säkerhetsgräns)",
+ "@sdb145487c3": {
   "x-mt": true
  },
+ "s0c40392b6a": "Ingen sensor – säkerhetsgränserna är inte aktiva",
+ "@s0c40392b6a": {
+  "x-mt": true
+ },
+ "scf2e61da2c": "inte svara",
+ "@scf2e61da2c": {
+  "x-mt": true
+ },
+ "s6a37cdb806": "Förseningar",
+ "@s6a37cdb806": {
+  "x-mt": true
+ },
+ "s1f3d8e19f4": "Längsta paus i taget",
+ "@s1f3d8e19f4": {
+  "x-mt": true
+ },
+ "s061c02e7ea": "Minsta tider: ingen gräns (avancerad).",
+ "@s061c02e7ea": {
+  "x-mt": true
+ },
+ "se7bc20343e": "Minst i tid {p0} min, av {p1} min.",
+ "@se7bc20343e": {
+  "x-mt": true
+ },
+ "sa35e3e99f4": "Kontroll på",
+ "@sa35e3e99f4": {
+  "x-mt": true
+ },
+ "sd8084282ca": "Hysteresis (dödband)",
+ "@sd8084282ca": {
+  "x-mt": true
+ },
+ "s3bded44765": "På under {p0} °C, utanför ovan {p1} °C (före varje prisskifte).",
+ "@s3bded44765": {
+  "x-mt": true
+ },
+ "s3df29f3fca": "När sensorn inte svarar",
+ "@s3df29f3fca": {
+  "x-mt": true
+ },
+ "s5f9a56b766": "Följ prisschemat",
+ "@s5f9a56b766": {
+  "x-mt": true
+ },
+ "scc764046c2": "Fortsätt",
+ "@scc764046c2": {
+  "x-mt": true
+ },
+ "sd50c0e6c4d": "Håll av",
+ "@sd50c0e6c4d": {
+  "x-mt": true
+ },
+ "s64540136ff": "Minsta tid på",
+ "s5e55e17318": "Ingen gräns",
+ "@s5e55e17318": {
+  "x-mt": true
+ },
+ "s21713a2177": "Minsta tid av",
  "s347ce4c3d2": "Minska i eldstad läge",
  "@s347ce4c3d2": {
   "x-mt": true
@@ -4385,7 +4729,6 @@
  "s8a1f52a37b": "Termostaten borttagen",
  "s28dc9bc46a": "Ingen temperaturavläsning",
  "s31be5697ba": "Ingen hembro: termostaten styr ännu inte. Ställ in fjärråtkomst på en enhet i hemmet.",
- "s29fd8d5b5e": "Nu",
  "see9111ba68": "Relä eller brytare (på/av)",
  "seaed91ad78": "Värmepump eller AC (börvärde)",
  "sb757921c13": "Värmer",
@@ -4442,8 +4785,6 @@
  "s17cb86f49e": "Behåll som det är",
  "s9624f070ee": "Hysteres",
  "sf070be2c1e": "Dödband (värme/kyla)",
- "s64540136ff": "Minsta tid på",
- "s21713a2177": "Minsta tid av",
  "s8f7c8eb7d0": "Backup värmare när under målet genom",
  "@s8f7c8eb7d0": {
   "x-mt": true
@@ -4696,10 +5037,6 @@
  },
  "sb9e406274e": "Online online online",
  "@sb9e406274e": {
-  "x-mt": true
- },
- "scf2e61da2c": "inte svara",
- "@scf2e61da2c": {
   "x-mt": true
  },
  "sb981e102f1": "gamla Molaplan (0.8.0 testbygge eller äldre)",
@@ -5361,7 +5698,6 @@
  "@s2b2118a93b": {
   "x-mt": true
  },
- "sb730159a01": "Pris nu",
  "s68fcfcfed1": "Billigaste timmen i dag",
  "s86ff059f5e": "Medelpris i dag",
  "s7b911d48c6": "Dyraste timmen i dag",
@@ -9408,6 +9744,409 @@
  "@s333643b4c4": {
   "x-mt": true
  },
+ "s741ad14d6e": "under en minut",
+ "@s741ad14d6e": {
+  "x-mt": true
+ },
+ "s61cb8b20cf": "Enheten",
+ "@s61cb8b20cf": {
+  "x-mt": true
+ },
+ "s69e8cc73cb": "{p0} svarar inte (anslutningen tidsbestämd)",
+ "@s69e8cc73cb": {
+  "x-mt": true
+ },
+ "sb6b6fb4fe1": "{p0} svarar inte (timeout {p1} s)",
+ "@sb6b6fb4fe1": {
+  "x-mt": true
+ },
+ "s6f71cad9b6": "{p0} vägrar anslutningen (anslutning vägrade)",
+ "@s6f71cad9b6": {
+  "x-mt": true
+ },
+ "sc45478e8fd": "{p0} kan inte nås (ingen nätverksväg)",
+ "@sc45478e8fd": {
+  "x-mt": true
+ },
+ "s0114e1e46c": "{p0}: Adressen kan inte hittas",
+ "@s0114e1e46c": {
+  "x-mt": true
+ },
+ "s5c5afb4b38": "{p0} avvisade inloggningen (HTTP {p1})",
+ "@s5c5afb4b38": {
+  "x-mt": true
+ },
+ "seb34841f6b": "{p0}: Adressen är inte giltig (HTTP {p1})",
+ "@seb34841f6b": {
+  "x-mt": true
+ },
+ "sf2580c0069": "{p0} svarade med ett fel (HTTP {p1})",
+ "@sf2580c0069": {
+  "x-mt": true
+ },
+ "s0528a2ef9e": "Enheten har ingen kommando på/off",
+ "@s0528a2ef9e": {
+  "x-mt": true
+ },
+ "sd0e9fc6760": "Kontrollen fungerade inte",
+ "@sd0e9fc6760": {
+  "x-mt": true
+ },
+ "sc056006180": "Kontrollera att enheten är på och på samma nätverk som hemmabron. Smart värme retries varje minut; tills det fungerar enheten stannar i sitt nuvarande tillstånd.",
+ "@sc056006180": {
+  "x-mt": true
+ },
+ "s7a1cda0d24": "Kontrollera enhetens lösenord i anslutningsinställningarna.",
+ "@s7a1cda0d24": {
+  "x-mt": true
+ },
+ "s4dc27a3272": "Kontrollera enhetsadressen och kommandot i kortinställningarna.",
+ "@s4dc27a3272": {
+  "x-mt": true
+ },
+ "s54dbdeb56b": "Enheten svarade men accepterade inte kommandot. Försök att starta om enheten.",
+ "@s54dbdeb56b": {
+  "x-mt": true
+ },
+ "s8e9e56f68f": "Se den exakta orsaken under tekniska detaljer.",
+ "@s8e9e56f68f": {
+  "x-mt": true
+ },
+ "s7279e2bdb1": "Manuell överridning",
+ "@s7279e2bdb1": {
+  "x-mt": true
+ },
+ "s8accab3bb7": "Priset skiftar setpoint",
+ "@s8accab3bb7": {
+  "x-mt": true
+ },
+ "s78188d956e": "Rummet varmt nog",
+ "@s78188d956e": {
+  "x-mt": true
+ },
+ "saa76f06f20": "Hoppa över dyra timmar",
+ "@saa76f06f20": {
+  "x-mt": true
+ },
+ "s846c49053e": "Längsta paus",
+ "@s846c49053e": {
+  "x-mt": true
+ },
+ "se79c5ead71": "Prisdata",
+ "@se79c5ead71": {
+  "x-mt": true
+ },
+ "sa30e1a2c14": "Temperaturgivare",
+ "@sa30e1a2c14": {
+  "x-mt": true
+ },
+ "s39147d043d": "Inte i bruk",
+ "@s39147d043d": {
+  "x-mt": true
+ },
+ "s7d4144c0a0": "Ingen temperatur – kan inte kontrolleras",
+ "@s7d4144c0a0": {
+  "x-mt": true
+ },
+ "s70d66e5f81": "{p0} °C är under {p1} °C - uppvärmning på",
+ "@s70d66e5f81": {
+  "x-mt": true
+ },
+ "sd93442ff7c": "{p0} °C, limit {p1} °C",
+ "@sd93442ff7c": {
+  "x-mt": true
+ },
+ "s9bf02da8ca": "På för {p0} (till {p1})",
+ "@s9bf02da8ca": {
+  "x-mt": true
+ },
+ "sb8c4753e09": "Av för {p0} (till {p1})",
+ "@sb8c4753e09": {
+  "x-mt": true
+ },
+ "sc9f92f4156": "Brandplatsvärmen: elektrisk uppvärmning minskas",
+ "@sc9f92f4156": {
+  "x-mt": true
+ },
+ "sf78c1a349f": "Away: hålla {p0} °C",
+ "@sf78c1a349f": {
+  "x-mt": true
+ },
+ "s5faeeab2c8": "Inte i kraft nu",
+ "@s5faeeab2c8": {
+  "x-mt": true
+ },
+ "s2226c324ef": "Sensorn svarar inte – {p0}",
+ "@s2226c324ef": {
+  "x-mt": true
+ },
+ "se363372312": "{p0} °C, setpoint {p1} °C ± {p2} °C (på under {p3}, utanför ovan {p4} °C)",
+ "@se363372312": {
+  "x-mt": true
+ },
+ "s0f95c71a7a": "Ingen förändring i denna timme",
+ "@s0f95c71a7a": {
+  "x-mt": true
+ },
+ "sc634878941": "Billig timme: setpoint +{p0} °C",
+ "@sc634878941": {
+  "x-mt": true
+ },
+ "sedcfc0a927": "Dyrtimme: setpoint {p0} °C",
+ "@sedcfc0a927": {
+  "x-mt": true
+ },
+ "s642427fe2b": "{p0} °C ≥ {p1} °C - inte uppvärmning",
+ "@s642427fe2b": {
+  "x-mt": true
+ },
+ "sda0b91c359": "{p0} °C, övre gränsen {p1} °C",
+ "@sda0b91c359": {
+  "x-mt": true
+ },
+ "sf3a33e9bc5": "{p0} billigaste timmar om dagen: nu {p1} c/kWh {p2} gräns {p3} c",
+ "@sf3a33e9bc5": {
+  "x-mt": true
+ },
+ "s428ce35d71": "{p0} dyraste timmar hoppade över: nu {p1} c/kWh {p2} gräns {p3} c",
+ "@s428ce35d71": {
+  "x-mt": true
+ },
+ "s6200d2086c": "Ingen prognos",
+ "@s6200d2086c": {
+  "x-mt": true
+ },
+ "s29d9986638": "Prognos {p0} °C i genomsnitt → {p1} uppvärmning timmar per dag",
+ "@s29d9986638": {
+  "x-mt": true
+ },
+ "sdcf4412899": "Av för länge – värme i en timme",
+ "@sdcf4412899": {
+  "x-mt": true
+ },
+ "s8a9723fbbb": "Av för högst {p0} h i taget",
+ "@s8a9723fbbb": {
+  "x-mt": true
+ },
+ "s9fe316f0b6": "Ingen gräns",
+ "@s9fe316f0b6": {
+  "x-mt": true
+ },
+ "s70094ce99b": "Väntar: åtminstone {p0} min",
+ "@s70094ce99b": {
+  "x-mt": true
+ },
+ "s71d72597eb": "Åtminstone {p0} min",
+ "@s71d72597eb": {
+  "x-mt": true
+ },
+ "s84cf358040": "Inga priser – uppvärmning går normalt",
+ "@s84cf358040": {
+  "x-mt": true
+ },
+ "s0e19d6ac09": "Priser tillgängliga",
+ "@s0e19d6ac09": {
+  "x-mt": true
+ },
+ "s9583d61085": "Ingen sensor vald",
+ "@s9583d61085": {
+  "x-mt": true
+ },
+ "s756b49f274": "Svara inte",
+ "@s756b49f274": {
+  "x-mt": true
+ },
+ "s3ddc69fd91": "Svar: {p0} °C",
+ "@s3ddc69fd91": {
+  "x-mt": true
+ },
+ "sa0c950bdca": "Svara inte",
+ "@sa0c950bdca": {
+  "x-mt": true
+ },
+ "sc3b0eaf426": "Svar",
+ "@sc3b0eaf426": {
+  "x-mt": true
+ },
+ "sa3f65879ff": "Värme hålls på",
+ "@sa3f65879ff": {
+  "x-mt": true
+ },
+ "s5906232c68": "Värme hålls av",
+ "@s5906232c68": {
+  "x-mt": true
+ },
+ "sc084b8cbdf": "efter prisschemat",
+ "@sc084b8cbdf": {
+  "x-mt": true
+ },
+ "s136e7941a4": "DISABLED",
+ "s8847ee78e0": "Mål {p0} °C",
+ "@s8847ee78e0": {
+  "x-mt": true
+ },
+ "sedcddfbb2f": "INGEN REPLY",
+ "@sedcddfbb2f": {
+  "x-mt": true
+ },
+ "s6ab8f97950": "ON",
+ "s509c668d7e": "OFF",
+ "s70d43f1209": "Kontrollen är avstängd",
+ "@s70d43f1209": {
+  "x-mt": true
+ },
+ "s4f7ef5d46a": "Sensor svarar inte – efter prisschemat: ",
+ "@s4f7ef5d46a": {
+  "x-mt": true
+ },
+ "s9e31ebc1e8": "Frostskydd: {p0} °C är under {p1} °C",
+ "@s9e31ebc1e8": {
+  "x-mt": true
+ },
+ "s7cdb2a0cb6": "Temperatur {p0} °C under minimum {p1} °C",
+ "@s7cdb2a0cb6": {
+  "x-mt": true
+ },
+ "sf3b0d012da": "Manuell åsidosättande: on{p0}",
+ "@sf3b0d012da": {
+  "x-mt": true
+ },
+ "s14be0441f7": "Manuell åsidosättande: off{p0}",
+ "@s14be0441f7": {
+  "x-mt": true
+ },
+ "sd735da4378": "Eldstadsläge: elektrisk uppvärmning minskas",
+ "@sd735da4378": {
+  "x-mt": true
+ },
+ "s482b48b34c": "Semesterläge: rummet hålls svalare",
+ "@s482b48b34c": {
+  "x-mt": true
+ },
+ "s6a24d44a71": "Semesterläge: Värme för din retur",
+ "@s6a24d44a71": {
+  "x-mt": true
+ },
+ "s247db88d99": "Varmt nog ({p0} °C ≥ {p1} °C)",
+ "@s247db88d99": {
+  "x-mt": true
+ },
+ "s0d09da9167": "Billig timme ({p0} c/kWh ≤ gräns {p1} c)",
+ "@s0d09da9167": {
+  "x-mt": true
+ },
+ "sbbcaad0790": "Uppvärmning så att pausen inte blir för lång ({p0} c/kWh)",
+ "@sbbcaad0790": {
+  "x-mt": true
+ },
+ "sf56f514430": "{p0} c/kWh > gräns {p1} c",
+ "@sf56f514430": {
+  "x-mt": true
+ },
+ "s9cdd4b289a": "Dyrtimme – lagringsgolvet räcker ({p0})",
+ "@s9cdd4b289a": {
+  "x-mt": true
+ },
+ "sbf758df617": "Inte en billig timme – vänta ({p0})",
+ "@sbf758df617": {
+  "x-mt": true
+ },
+ "s03e2decc6e": "{p0} c/kWh ≥gräns {p1} c",
+ "@s03e2decc6e": {
+  "x-mt": true
+ },
+ "s8285023fb8": "Dyrbar timme hoppad ({p0})",
+ "@s8285023fb8": {
+  "x-mt": true
+ },
+ "s8851083ec4": "Normal uppvärmning",
+ "@s8851083ec4": {
+  "x-mt": true
+ },
+ "s452449f24c": "Inga prisdata – värme körs normalt",
+ "@s452449f24c": {
+  "x-mt": true
+ },
+ "sadbee991d6": "Temperatur {p0} °C är under inställningen {p1} °C - uppvärmning",
+ "@sadbee991d6": {
+  "x-mt": true
+ },
+ "s0e20e8780d": "Setpoint {p0} °C nådde ({p1} °C)",
+ "@s0e20e8780d": {
+  "x-mt": true
+ },
+ "s3f74d751fe": "Uppvärmning till {p0} °C",
+ "@s3f74d751fe": {
+  "x-mt": true
+ },
+ "s91276ece64": "Tills temperaturen sjunker under {p0} °C",
+ "@s91276ece64": {
+  "x-mt": true
+ },
+ "s4437d2666a": "Sensorn svarar inte – värme hålls på",
+ "@s4437d2666a": {
+  "x-mt": true
+ },
+ "s127c973eb9": "Sensorn svarar inte – värme hålls av",
+ "@s127c973eb9": {
+  "x-mt": true
+ },
+ "s7e2afd388e": "Säkerhetsgräns: av för länge – uppvärmning i en timme",
+ "@s7e2afd388e": {
+  "x-mt": true
+ },
+ "s630919f15c": "Skicka på: minimum i tid är inte över",
+ "@s630919f15c": {
+  "x-mt": true
+ },
+ "sf5f33530ca": "Skickad: Minsta lediga tid är inte över",
+ "@sf5f33530ca": {
+  "x-mt": true
+ },
+ "sd36f9bf75a": "Förvärmning före en dyr eller kall stavning",
+ "@sd36f9bf75a": {
+  "x-mt": true
+ },
+ "s8ea3994a9b": "Spara medan dyrt",
+ "@s8ea3994a9b": {
+  "x-mt": true
+ },
+ "s8ec3c3bdb9": "Ingen information ännu",
+ "@s8ec3c3bdb9": {
+  "x-mt": true
+ },
+ "sd80668c71a": "Nästa förändring beror på temperaturen",
+ "@sd80668c71a": {
+  "x-mt": true
+ },
+ "s723147d2b2": "Automatisk kontroll återupptas på {p0}",
+ "@s723147d2b2": {
+  "x-mt": true
+ },
+ "sc2c736c508": "Nästa på {p0}",
+ "@sc2c736c508": {
+  "x-mt": true
+ },
+ "s2c7a2c7c84": "Nästa på {p0}",
+ "@s2c7a2c7c84": {
+  "x-mt": true
+ },
+ "s6ebbbbc4a0": "Temperaturkontroll och säkerhetsgränser (frostskydd, lägsta temperatur) är avstängda och {p0}.",
+ "@s6ebbbbc4a0": {
+  "x-mt": true
+ },
+ "sdba1212edb": "Säkerhetsgränserna (frostskydd, lägsta temperatur) är avstängda och uppvärmning följer prisschemat.",
+ "@sdba1212edb": {
+  "x-mt": true
+ },
+ "sbf916076f9": "Temperatursensorn svarar inte.",
+ "@sbf916076f9": {
+  "x-mt": true
+ },
+ "s9fad63ec58": "Kontrollera sensorbatteriet och nätverket eller välj en annan sensor.",
+ "@s9fad63ec58": {
+  "x-mt": true
+ },
  "s0a81072a1f": "Hitta den i routerns enhetslista eller tillverkarens app (enhetsinformation). Reservera en fast IP för den.",
  "@s0a81072a1f": {
   "x-mt": true
@@ -11560,34 +12299,6 @@
  "sda8d9bf1cd": "Uttag",
  "s06444f278d": "position (100 = stängd)",
  "@s06444f278d": {
-  "x-mt": true
- },
- "s0ab7f9db7c": "Ingen videoadress lagras för den här kameran. Ta bort den och lägg till den igen, eller skriv RTSP-adressen för hand.",
- "@s0ab7f9db7c": {
-  "x-mt": true
- },
- "sda6d2b0dbe": "En stillbild kunde inte göras från videoströmmen. Hembrodatorn behöver ffmpeg, eller använd Molaplan-appen som hemmabron.",
- "@sda6d2b0dbe": {
-  "x-mt": true
- },
- "sb8cbbd3d99": "Kameran ({p0}) svarar inte från den här enheten. Kontrollera att den här enheten är på samma nätverk som kameran och att RTSP är på i kameran.",
- "@sb8cbbd3d99": {
-  "x-mt": true
- },
- "s4a6a89a47e": "Kameran vägrade användarnamnet eller lösenordet (RTSP 401). Kontrollera dem i kamerans ONVIF/RTSP-inställningar.",
- "@s4a6a89a47e": {
-  "x-mt": true
- },
- "s5f36d79393": "Kameran känner inte till den här videoadressen (RTSP 404). Lägg till kameran igen eller skriv RTSP-adressen för hand.",
- "@s5f36d79393": {
-  "x-mt": true
- },
- "s4c88b1dfe4": "Kameran svarade, men videon kunde inte spelas {p0}. Försök igen; om den fortsätter att misslyckas, se tekniska detaljer.",
- "@s4c88b1dfe4": {
-  "x-mt": true
- },
- "sedafd495a6": "Kameran svarade RTSP {p0} och ingen bild kom. Kontrollera användarnamnet och lösenordet och att RTSP är på.",
- "@sedafd495a6": {
   "x-mt": true
  }
 }

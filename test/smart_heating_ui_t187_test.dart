@@ -106,16 +106,32 @@ void main() {
     expect(find.byKey(const ValueKey('sh-mode')), findsOneWidget);
     expect(find.text('Takka lämmitetty'), findsOneWidget);
     expect(find.text('Lomatila'), findsOneWidget);
-    expect(find.text('Lattian rele'), findsOneWidget);
+    expect(find.text('Lattian rele'), findsWidgets);
+    expect(find.byKey(const ValueKey('sh-situation')), findsOneWidget); // R611: Tilannekuva
     expect(find.textContaining('Tarvitsee kotisillan'), findsOneWidget);
     expect(find.text('Vähimmäislämpötila'), findsNothing); // inside the collapsed Edistyneet
+    await tester.scrollUntilVisible(
+      find.byKey(const ValueKey('sh-advanced')),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
     await tester.tap(find.byKey(const ValueKey('sh-advanced')));
     await _settle(tester);
     expect(find.text('Vähimmäislämpötila'), findsOneWidget);
 
     // A device: templates with the recommendation marked; choosing another one is stored.
+    await tester.scrollUntilVisible(
+      find.byKey(ValueKey('sh-load-${c.loads.first.id}')),
+      -300,
+      scrollable: find.byType(Scrollable).first,
+    );
     await tester.tap(find.byKey(ValueKey('sh-load-${c.loads.first.id}')));
     await _settle(tester);
+    await tester.scrollUntilVisible(
+      find.byKey(const ValueKey('tpl-cheapest')),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
     expect(find.text('Sään mukaan ennakoiva (suositus)'), findsOneWidget);
     await tester.tap(find.byKey(const ValueKey('tpl-cheapest')));
     await _settle(tester);

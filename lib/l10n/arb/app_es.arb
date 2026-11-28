@@ -1120,6 +1120,215 @@
   "x-mt": true
  },
  "s09f5da65e0": "Cambiar a Shelly Cloud",
+ "sf5768a876d": "Discapacitados",
+ "@sf5768a876d": {
+  "x-mt": true
+ },
+ "s8724f302ef": "Manual",
+ "@s8724f302ef": {
+  "x-mt": true
+ },
+ "s76bce4b6c2": "Manual {p0}",
+ "@s76bce4b6c2": {
+  "x-mt": true
+ },
+ "s221a4ab646": "Modo de lugar de fuego",
+ "@s221a4ab646": {
+  "x-mt": true
+ },
+ "s5da1e65941": "Modo de vacaciones",
+ "@s5da1e65941": {
+  "x-mt": true
+ },
+ "se50792831f": "Control de temperatura",
+ "@se50792831f": {
+  "x-mt": true
+ },
+ "sd408a5dbe9": "Horas más baratas",
+ "@sd408a5dbe9": {
+  "x-mt": true
+ },
+ "s5c33c7b488": "Skip expensive",
+ "@s5c33c7b488": {
+  "x-mt": true
+ },
+ "seaa748138e": "Por el clima",
+ "@seaa748138e": {
+  "x-mt": true
+ },
+ "saf3ce7f717": "Calefacción inteligente: configurarlo",
+ "@saf3ce7f717": {
+  "x-mt": true
+ },
+ "scde8147260": "Calefacción inteligente: añadir un dispositivo",
+ "@scde8147260": {
+  "x-mt": true
+ },
+ "sea2ac9b443": "Desmontaje del dispositivo de calefacción",
+ "@sea2ac9b443": {
+  "x-mt": true
+ },
+ "s27e0af845d": "No hay puente casero: la calefacción todavía no está controlada. Configurar acceso remoto en un dispositivo en casa.",
+ "@s27e0af845d": {
+  "x-mt": true
+ },
+ "s04fcb24bc5": "Ahora {p0} · punto {p1}",
+ "@s04fcb24bc5": {
+  "x-mt": true
+ },
+ "s3c3d6b5485": "Temperatura {p0}",
+ "@s3c3d6b5485": {
+  "x-mt": true
+ },
+ "s670a6ed937": "{p0} c/kWh",
+ "s8272e84b1c": "{p0} c/kWh · límite {p1} c",
+ "@s8272e84b1c": {
+  "x-mt": true
+ },
+ "s8235ae91c4": "Sensor no contesta – {p0}",
+ "@s8235ae91c4": {
+  "x-mt": true
+ },
+ "s0be7b030a0": "Estimación de precios – sin puente casero",
+ "@s0be7b030a0": {
+  "x-mt": true
+ },
+ "s9c543b2106": "Estimación – el puente de casa no ha respondido todavía",
+ "@s9c543b2106": {
+  "x-mt": true
+ },
+ "see998ca830": "mantenidos",
+ "@see998ca830": {
+  "x-mt": true
+ },
+ "s9eb36d05e1": "Mantente alejado",
+ "@s9eb36d05e1": {
+  "x-mt": true
+ },
+ "s871e341710": "precio",
+ "@s871e341710": {
+  "x-mt": true
+ },
+ "s579f396ae5": "Situación",
+ "@s579f396ae5": {
+  "x-mt": true
+ },
+ "s8653f173b6": "Temperatura",
+ "@s8653f173b6": {
+  "x-mt": true
+ },
+ "sb730159a01": "Precio ahora",
+ "s7dfe0e7977": "Siguiente cambio",
+ "@s7dfe0e7977": {
+  "x-mt": true
+ },
+ "sf77125583f": "Detalles técnicos",
+ "s5555a716bb": "Se trata de una estimación de precios y ajustes: el puente casero no ha respondido todavía, por lo que el estado real del dispositivo es desconocido.",
+ "@s5555a716bb": {
+  "x-mt": true
+ },
+ "sbe50b10e9e": "Anulación manual final",
+ "@sbe50b10e9e": {
+  "x-mt": true
+ },
+ "s728ddd7778": "Anulación manual...",
+ "@s728ddd7778": {
+  "x-mt": true
+ },
+ "sd661031615": "no sensor",
+ "@sd661031615": {
+  "x-mt": true
+ },
+ "scfb407cd2d": "sensor no contesta",
+ "@scfb407cd2d": {
+  "x-mt": true
+ },
+ "s1284293e15": "punto {p0} ± {p1}",
+ "@s1284293e15": {
+  "x-mt": true
+ },
+ "s07a15cf1d3": "límite superior {p0}",
+ "@s07a15cf1d3": {
+  "x-mt": true
+ },
+ "s4e43228e07": "min {p0}",
+ "sd4db0fbbb5": "helada {p0}",
+ "@sd4db0fbbb5": {
+  "x-mt": true
+ },
+ "s63c3e9c766": "no datos de precios",
+ "@s63c3e9c766": {
+  "x-mt": true
+ },
+ "s8c60756474": "{p0} (se desprendió a ≥ {p1} c)",
+ "@s8c60756474": {
+  "x-mt": true
+ },
+ "sff29b84ddc": "{p0} (en ≤ {p1} c)",
+ "@sff29b84ddc": {
+  "x-mt": true
+ },
+ "s750dcb984f": "Las reglas y su estado",
+ "@s750dcb984f": {
+  "x-mt": true
+ },
+ "s39d300e3ea": "decide ahora",
+ "@s39d300e3ea": {
+  "x-mt": true
+ },
+ "s55153c17b8": "Siguiente 24 h: precio y horas de calefacción planeadas",
+ "@s55153c17b8": {
+  "x-mt": true
+ },
+ "sfb5a3f7da0": "Todavía no hay datos de precios.",
+ "@sfb5a3f7da0": {
+  "x-mt": true
+ },
+ "sba9d60d97c": "Naranja = calefacción prevista. Un bar más alto = una hora más cara ({p0}–{p1} c/kWh).",
+ "@sba9d60d97c": {
+  "x-mt": true
+ },
+ "s3030d2947a": "Un bar más alto = una hora más cara ({p0}–{p1} c/kWh). El plan muestra cuando el puente de casa ha respondido.",
+ "@s3030d2947a": {
+  "x-mt": true
+ },
+ "s3d99bc591b": "Anulación manual",
+ "@s3d99bc591b": {
+  "x-mt": true
+ },
+ "sb65a9ab4a9": "La temperatura de destino se eleva o baja para el tiempo elegido, luego el control automático continúa.",
+ "@sb65a9ab4a9": {
+  "x-mt": true
+ },
+ "sb1c3627dc7": "La calefacción es forzada o apagada para el tiempo elegido, luego el control automático continúa.",
+ "@sb1c3627dc7": {
+  "x-mt": true
+ },
+ "seeaa40c11e": "Boost",
+ "@seeaa40c11e": {
+  "x-mt": true
+ },
+ "s4cd3d92d4c": "Encendido",
+ "sdb7d34e8e1": "Ahorro",
+ "s33831dd49f": "Apagado",
+ "s3ef843cf90": "Los límites de seguridad (protección de residuos y temperatura mínima) siguen vigentes.",
+ "@s3ef843cf90": {
+  "x-mt": true
+ },
+ "s3077b295d1": "Aplicar",
+ "@s3077b295d1": {
+  "x-mt": true
+ },
+ "s7926a59e29": "Sin lectura",
+ "s29fd8d5b5e": "Ahora",
+ "s961397a99b": "Setpoint {p0} °C",
+ "@s961397a99b": {
+  "x-mt": true
+ },
+ "sc47170dbe0": "Setpoint {p0} °C (price: {p1} °C esta hora)",
+ "@sc47170dbe0": {
+  "x-mt": true
+ },
  "s6b536de0c8": "A través de su puente de casa: luces, enchufes, Asistente de casa, Shelly, Tasmota, ESPHome, Modbus, cámaras de quietud",
  "@s6b536de0c8": {
   "x-mt": true
@@ -1728,17 +1937,11 @@
  },
  "s109b35551a": "Máx",
  "sf2c65c5aeb": "Promedio",
- "s8653f173b6": "Temperatura",
- "@s8653f173b6": {
-  "x-mt": true
- },
  "s68b942c864": "Establecer la ubicación de la casa (Energía → Ajustes) para el pronóstico.",
  "@s68b942c864": {
   "x-mt": true
  },
  "s38ac222392": "Valor",
- "s4cd3d92d4c": "Encendido",
- "s33831dd49f": "Apagado",
  "sa8e43f2b0e": "Sin conexión",
  "s65f512f499": "Cuando está fuera de línea",
  "@s65f512f499": {
@@ -2428,7 +2631,6 @@
  "@sd9923cda70": {
   "x-mt": true
  },
- "sf77125583f": "Detalles técnicos",
  "s9cf8aec76a": "El estado tiene {p0} de antigüedad",
  "s1f8cf57b2c": "Sin conexión",
  "s84819cca05": "Última alarma {p0}",
@@ -2619,6 +2821,34 @@
  },
  "s4529c1010a": "Elija una conexión de cámara",
  "@s4529c1010a": {
+  "x-mt": true
+ },
+ "s0ab7f9db7c": "No se almacena ninguna dirección de vídeo para esta cámara. Retire y agréguela de nuevo, o escriba la dirección RTSP a mano.",
+ "@s0ab7f9db7c": {
+  "x-mt": true
+ },
+ "sda6d2b0dbe": "Una imagen todavía no se puede hacer desde la secuencia de vídeo. La computadora del puente casero necesita ffmpeg, o utilizar la aplicación Molaplan como el puente casero.",
+ "@sda6d2b0dbe": {
+  "x-mt": true
+ },
+ "sb8cbbd3d99": "La cámara ({p0}) no responde de este dispositivo. Compruebe que este dispositivo está en la misma red que la cámara y que RTSP está en la cámara.",
+ "@sb8cbbd3d99": {
+  "x-mt": true
+ },
+ "s4a6a89a47e": "La cámara rechazó el nombre de usuario o contraseña (RTSP 401). Compruébalos en la configuración ONVIF/RTSP de la cámara.",
+ "@s4a6a89a47e": {
+  "x-mt": true
+ },
+ "s5f36d79393": "La cámara no conoce esta dirección de vídeo (RTSP 404). Agregue la cámara de nuevo o escriba la dirección RTSP a mano.",
+ "@s5f36d79393": {
+  "x-mt": true
+ },
+ "s4c88b1dfe4": "La cámara respondió, pero el video no se podía reproducir {p0}. Intente de nuevo; si sigue fallando, vea los detalles técnicos.",
+ "@s4c88b1dfe4": {
+  "x-mt": true
+ },
+ "sedafd495a6": "La cámara respondió RTSP {p0} y no llegó la imagen. Compruebe el nombre de usuario y la contraseña y que RTSP está encendido.",
+ "@sedafd495a6": {
   "x-mt": true
  },
  "sc95fb5440b": "Corriente terminada",
@@ -2945,10 +3175,6 @@
   "x-mt": true
  },
  "s90b5b7e33f": "Rangos de color",
- "sd408a5dbe9": "Horas más baratas",
- "@sd408a5dbe9": {
-  "x-mt": true
- },
  "sa26ae27039": "Pasar las horas más caras",
  "@sa26ae27039": {
   "x-mt": true
@@ -3074,8 +3300,12 @@
  "@sd172900c2d": {
   "x-mt": true
  },
- "s5da1e65941": "Modo de vacaciones",
- "@s5da1e65941": {
+ "sdb217dcf7f": "Añadir una tarjeta a la pantalla de inicio",
+ "@sdb217dcf7f": {
+  "x-mt": true
+ },
+ "s52d3e04a46": "Tarjeta agregada a la pantalla de inicio",
+ "@s52d3e04a46": {
   "x-mt": true
  },
  "sdca3ad13dd": "Calefacción dispositivos",
@@ -3098,20 +3328,8 @@
  "@s8c3353e896": {
   "x-mt": true
  },
- "s38ccb420a7": "No funcionó: {p0}",
- "@s38ccb420a7": {
-  "x-mt": true
- },
- "s8847ee78e0": "Objetivo {p0} °C",
- "@s8847ee78e0": {
-  "x-mt": true
- },
- "s4b761dad85": "Siguiente on: {p0}",
- "@s4b761dad85": {
-  "x-mt": true
- },
- "s622f5654cd": "Error: {p0}",
- "@s622f5654cd": {
+ "s13a8a207ec": "Reglas y ajustes",
+ "@s13a8a207ec": {
   "x-mt": true
  },
  "s697b47220e": "Calefacción inteligente en",
@@ -3218,16 +3436,60 @@
  "@s025d1c3db1": {
   "x-mt": true
  },
- "s11e21d4f75": "Cómo se controla",
- "@s11e21d4f75": {
+ "se34a337d6d": "Elija el sensor de temperatura",
+ "@se34a337d6d": {
+  "x-mt": true
+ },
+ "scfa5e7964d": "Usted puede utilizar cualquier tarjeta que muestre una temperatura: un sensor Shelly add-on, Zigbee o Home Assistant, Airthings, Bosch, Tuya...",
+ "@scfa5e7964d": {
+  "x-mt": true
+ },
+ "s20ec3fcfd8": "Aún no hay tarjeta de temperatura. Agregue un dispositivo con un sensor de temperatura primero.",
+ "@s20ec3fcfd8": {
+  "x-mt": true
+ },
+ "sf37075044e": "Añadir un nuevo dispositivo",
+ "@sf37075044e": {
+  "x-mt": true
+ },
+ "se68cc54085": "No sensor",
+ "@se68cc54085": {
+  "x-mt": true
+ },
+ "s093677b5f1": "Modo de control",
+ "@s093677b5f1": {
+  "x-mt": true
+ },
+ "sa6195c2696": "Por precio",
+ "@sa6195c2696": {
+  "x-mt": true
+ },
+ "s9d6a4787c0": "Temperatura",
+ "@s9d6a4787c0": {
+  "x-mt": true
+ },
+ "s84cf10acfd": "La calefacción sigue la temperatura medida como un termostato. Las reglas del precio sólo mueven el punto: arriba en horas baratas, abajo en costosos (si se establece).",
+ "@s84cf10acfd": {
+  "x-mt": true
+ },
+ "sdf9dc612a6": "La calefacción sigue el precio de la electricidad y el clima. Un sensor de temperatura es opcional y da los límites de seguridad.",
+ "@sdf9dc612a6": {
+  "x-mt": true
+ },
+ "s01c555401a": "Elija un sensor de temperatura",
+ "@s01c555401a": {
+  "x-mt": true
+ },
+ "s249140bfd0": "El control de temperatura necesita un sensor. Sin uno, la calefacción sigue el calendario de precios.",
+ "@s249140bfd0": {
+  "x-mt": true
+ },
+ "sf9cbe76823": "Reglas de precios",
+ "@sf9cbe76823": {
   "x-mt": true
  },
  "s8e6c8ffabb": " (recomendado)",
  "@s8e6c8ffabb": {
-  "x-mt": true
- },
- "sa35e3e99f4": "Control en",
- "@sa35e3e99f4": {
   "x-mt": true
  },
  "s86c45674db": "Horas de calefacción al día",
@@ -3238,18 +3500,100 @@
  "@sbd3dbfd7e9": {
   "x-mt": true
  },
- "s1f3d8e19f4": "El descanso más largo a la vez",
- "@s1f3d8e19f4": {
+ "s1f32a43166": "El límite de precio de hoy: saltado cuando el precio es {p0} c/kWh o más.",
+ "@s1f32a43166": {
+  "x-mt": true
+ },
+ "s3c010a59e8": "El límite de precio de hoy: en cuando el precio es {p0} c/kWh o menos.",
+ "@s3c010a59e8": {
+  "x-mt": true
+ },
+ "s68b3688217": "Punto abajo en horas caras",
+ "@s68b3688217": {
+  "x-mt": true
+ },
+ "s108a800ffc": "no utilizado",
+ "@s108a800ffc": {
+  "x-mt": true
+ },
+ "sb35d5f8afd": "Punto de juego en horas baratas",
+ "@sb35d5f8afd": {
+  "x-mt": true
+ },
+ "sd82fb84485": "Límites de temperatura",
+ "@sd82fb84485": {
+  "x-mt": true
+ },
+ "s510de048b8": "Setpoint",
+ "@s510de048b8": {
   "x-mt": true
  },
  "s017c87df20": "Temperatura de confort",
  "@s017c87df20": {
   "x-mt": true
  },
- "se68cc54085": "No sensor",
- "@se68cc54085": {
+ "sdb145487c3": "Temperatura mínima (límite de seguridad)",
+ "@sdb145487c3": {
   "x-mt": true
  },
+ "s0c40392b6a": "No sensor – los límites de seguridad no están activos",
+ "@s0c40392b6a": {
+  "x-mt": true
+ },
+ "scf2e61da2c": "no contestando",
+ "@scf2e61da2c": {
+  "x-mt": true
+ },
+ "s6a37cdb806": "Delays",
+ "@s6a37cdb806": {
+  "x-mt": true
+ },
+ "s1f3d8e19f4": "El descanso más largo a la vez",
+ "@s1f3d8e19f4": {
+  "x-mt": true
+ },
+ "s061c02e7ea": "Tiempos mínimos: sin límite (Advanced).",
+ "@s061c02e7ea": {
+  "x-mt": true
+ },
+ "se7bc20343e": "Mínimo a tiempo {p0} min, fuera {p1} min.",
+ "@se7bc20343e": {
+  "x-mt": true
+ },
+ "sa35e3e99f4": "Control en",
+ "@sa35e3e99f4": {
+  "x-mt": true
+ },
+ "sd8084282ca": "Histeresis (marido muerto)",
+ "@sd8084282ca": {
+  "x-mt": true
+ },
+ "s3bded44765": "En abajo {p0} °C, por encima {p1} °C (antes de cualquier cambio de precio).",
+ "@s3bded44765": {
+  "x-mt": true
+ },
+ "s3df29f3fca": "Cuando el sensor no responde",
+ "@s3df29f3fca": {
+  "x-mt": true
+ },
+ "s5f9a56b766": "Siga el calendario de precios",
+ "@s5f9a56b766": {
+  "x-mt": true
+ },
+ "scc764046c2": "Sigue",
+ "@scc764046c2": {
+  "x-mt": true
+ },
+ "sd50c0e6c4d": "Quítate",
+ "@sd50c0e6c4d": {
+  "x-mt": true
+ },
+ "s64540136ff": "Tiempo mínimo encendido",
+ "s5e55e17318": "no limite",
+ "@s5e55e17318": {
+  "x-mt": true
+ },
+ "s21713a2177": "Tiempo mínimo apagado",
  "s347ce4c3d2": "Reducir en modo chimenea",
  "@s347ce4c3d2": {
   "x-mt": true
@@ -4379,7 +4723,6 @@
  "s8a1f52a37b": "Termostato eliminado",
  "s28dc9bc46a": "Sin lectura de temperatura",
  "s31be5697ba": "No hay puente doméstico: el termostato todavía no controla. Configura el acceso remoto en un dispositivo en casa.",
- "s29fd8d5b5e": "Ahora",
  "see9111ba68": "Relé o interruptor (encendido/apagado)",
  "seaed91ad78": "Bomba de calor o aire acondicionado (consigna)",
  "sb757921c13": "Calienta",
@@ -4436,8 +4779,6 @@
  "s17cb86f49e": "Mantener como está",
  "s9624f070ee": "Histéresis",
  "sf070be2c1e": "Banda muerta (calor/frío)",
- "s64540136ff": "Tiempo mínimo encendido",
- "s21713a2177": "Tiempo mínimo apagado",
  "s8f7c8eb7d0": "Calentador de respaldo cuando debajo del objetivo por",
  "@s8f7c8eb7d0": {
   "x-mt": true
@@ -4693,10 +5034,6 @@
  },
  "sb9e406274e": "en línea",
  "@sb9e406274e": {
-  "x-mt": true
- },
- "scf2e61da2c": "no contestando",
- "@scf2e61da2c": {
   "x-mt": true
  },
  "sb981e102f1": "viejo Molaplan (0.8.0 test build or older)",
@@ -5358,7 +5695,6 @@
  "@s2b2118a93b": {
   "x-mt": true
  },
- "sb730159a01": "Precio ahora",
  "s68fcfcfed1": "Hora más barata hoy",
  "s86ff059f5e": "Precio medio hoy",
  "s7b911d48c6": "Hora más cara hoy",
@@ -9390,6 +9726,409 @@
  "@s333643b4c4": {
   "x-mt": true
  },
+ "s741ad14d6e": "debajo de un minuto",
+ "@s741ad14d6e": {
+  "x-mt": true
+ },
+ "s61cb8b20cf": "El dispositivo",
+ "@s61cb8b20cf": {
+  "x-mt": true
+ },
+ "s69e8cc73cb": "{p0} no está respondiendo (la conexión se dio tiempo fuera)",
+ "@s69e8cc73cb": {
+  "x-mt": true
+ },
+ "sb6b6fb4fe1": "{p0} no está respondiendo (timeout {p1} s)",
+ "@sb6b6fb4fe1": {
+  "x-mt": true
+ },
+ "s6f71cad9b6": "{p0} rechaza la conexión (la conexión se negó)",
+ "@s6f71cad9b6": {
+  "x-mt": true
+ },
+ "sc45478e8fd": "{p0} no se puede llegar (sin ruta de red)",
+ "@sc45478e8fd": {
+  "x-mt": true
+ },
+ "s0114e1e46c": "{p0}: la dirección no se puede encontrar",
+ "@s0114e1e46c": {
+  "x-mt": true
+ },
+ "s5c5afb4b38": "{p0} rechazó el login (HTTP {p1})",
+ "@s5c5afb4b38": {
+  "x-mt": true
+ },
+ "seb34841f6b": "{p0}: la dirección no es válida (HTTP {p1})",
+ "@seb34841f6b": {
+  "x-mt": true
+ },
+ "sf2580c0069": "{p0} respondió con un error (HTTP {p1})",
+ "@sf2580c0069": {
+  "x-mt": true
+ },
+ "s0528a2ef9e": "El dispositivo no tiene ningún comando on/off",
+ "@s0528a2ef9e": {
+  "x-mt": true
+ },
+ "sd0e9fc6760": "El control no funcionó",
+ "@sd0e9fc6760": {
+  "x-mt": true
+ },
+ "sc056006180": "Compruebe que el dispositivo está encendido y en la misma red que el puente casero. calefacción inteligente se alimenta cada minuto; hasta que funciona el dispositivo se queda en su estado actual.",
+ "@sc056006180": {
+  "x-mt": true
+ },
+ "s7a1cda0d24": "Compruebe la contraseña del dispositivo en la configuración de conexión.",
+ "@s7a1cda0d24": {
+  "x-mt": true
+ },
+ "s4dc27a3272": "Compruebe la dirección y el comando del dispositivo en la configuración de la tarjeta.",
+ "@s4dc27a3272": {
+  "x-mt": true
+ },
+ "s54dbdeb56b": "El dispositivo respondió pero no aceptó el comando. Intente reiniciar el dispositivo.",
+ "@s54dbdeb56b": {
+  "x-mt": true
+ },
+ "s8e9e56f68f": "Vea la razón exacta bajo detalles técnicos.",
+ "@s8e9e56f68f": {
+  "x-mt": true
+ },
+ "s7279e2bdb1": "Anulación manual",
+ "@s7279e2bdb1": {
+  "x-mt": true
+ },
+ "s8accab3bb7": "El precio cambia el punto de referencia",
+ "@s8accab3bb7": {
+  "x-mt": true
+ },
+ "s78188d956e": "Habitación lo suficientemente caliente",
+ "@s78188d956e": {
+  "x-mt": true
+ },
+ "saa76f06f20": "Pasando horas caras",
+ "@saa76f06f20": {
+  "x-mt": true
+ },
+ "s846c49053e": "El descanso más largo",
+ "@s846c49053e": {
+  "x-mt": true
+ },
+ "se79c5ead71": "Datos de precios",
+ "@se79c5ead71": {
+  "x-mt": true
+ },
+ "sa30e1a2c14": "Sensor de temperatura",
+ "@sa30e1a2c14": {
+  "x-mt": true
+ },
+ "s39147d043d": "No en uso",
+ "@s39147d043d": {
+  "x-mt": true
+ },
+ "s7d4144c0a0": "No hay temperatura – no se puede comprobar",
+ "@s7d4144c0a0": {
+  "x-mt": true
+ },
+ "s70d66e5f81": "{p0} °C está debajo {p1} °C – calefacción en",
+ "@s70d66e5f81": {
+  "x-mt": true
+ },
+ "sd93442ff7c": "{p0} °C, limit {p1} °C",
+ "@sd93442ff7c": {
+  "x-mt": true
+ },
+ "s9bf02da8ca": "Encendida para {p0} (hasta {p1})",
+ "@s9bf02da8ca": {
+  "x-mt": true
+ },
+ "sb8c4753e09": "Fuera para {p0} (hasta {p1})",
+ "@sb8c4753e09": {
+  "x-mt": true
+ },
+ "sc9f92f4156": "El calor de la chimenea: calefacción eléctrica se reduce",
+ "@sc9f92f4156": {
+  "x-mt": true
+ },
+ "sf78c1a349f": "Away: mantener {p0} °C",
+ "@sf78c1a349f": {
+  "x-mt": true
+ },
+ "s5faeeab2c8": "No está en vigor ahora",
+ "@s5faeeab2c8": {
+  "x-mt": true
+ },
+ "s2226c324ef": "El sensor no responde – {p0}",
+ "@s2226c324ef": {
+  "x-mt": true
+ },
+ "se363372312": "{p0} °C, setpoint {p1} °C ± {p2} °C (on below {p3}, off above {p4} °C)",
+ "@se363372312": {
+  "x-mt": true
+ },
+ "s0f95c71a7a": "No hay cambio en esta hora",
+ "@s0f95c71a7a": {
+  "x-mt": true
+ },
+ "sc634878941": "Hora barata: punto +{p0} °C",
+ "@sc634878941": {
+  "x-mt": true
+ },
+ "sedcfc0a927": "Hora expensiva: punto {p0} °C",
+ "@sedcfc0a927": {
+  "x-mt": true
+ },
+ "s642427fe2b": "{p0} °C ≥ {p1} °C – no calefacción",
+ "@s642427fe2b": {
+  "x-mt": true
+ },
+ "sda0b91c359": "{p0} °C, límite superior {p1} °C",
+ "@sda0b91c359": {
+  "x-mt": true
+ },
+ "sf3a33e9bc5": "{p0} horas más baratas al día: ahora {p1} c/kWh {p2} limit {p3} c",
+ "@sf3a33e9bc5": {
+  "x-mt": true
+ },
+ "s428ce35d71": "{p0} horas más caras saltadas: ahora {p1} {p2} limit {p3} c",
+ "@s428ce35d71": {
+  "x-mt": true
+ },
+ "s6200d2086c": "No hay pronóstico",
+ "@s6200d2086c": {
+  "x-mt": true
+ },
+ "s29d9986638": "Predicción {p0} °C en promedio → {p1} horas de calefacción al día",
+ "@s29d9986638": {
+  "x-mt": true
+ },
+ "sdcf4412899": "Off por demasiado tiempo – calefacción por una hora",
+ "@sdcf4412899": {
+  "x-mt": true
+ },
+ "s8a9723fbbb": "A la mayoría {p0} h a la vez",
+ "@s8a9723fbbb": {
+  "x-mt": true
+ },
+ "s9fe316f0b6": "No hay límite",
+ "@s9fe316f0b6": {
+  "x-mt": true
+ },
+ "s70094ce99b": "Esperando: al menos {p0} min",
+ "@s70094ce99b": {
+  "x-mt": true
+ },
+ "s71d72597eb": "Al menos {p0} min",
+ "@s71d72597eb": {
+  "x-mt": true
+ },
+ "s84cf358040": "No hay precios – la calefacción se ejecuta normalmente",
+ "@s84cf358040": {
+  "x-mt": true
+ },
+ "s0e19d6ac09": "Precios disponibles",
+ "@s0e19d6ac09": {
+  "x-mt": true
+ },
+ "s9583d61085": "No se ha elegido ningún sensor",
+ "@s9583d61085": {
+  "x-mt": true
+ },
+ "s756b49f274": "No contestando",
+ "@s756b49f274": {
+  "x-mt": true
+ },
+ "s3ddc69fd91": "Respuesta: {p0} °C",
+ "@s3ddc69fd91": {
+  "x-mt": true
+ },
+ "sa0c950bdca": "No responde",
+ "@sa0c950bdca": {
+  "x-mt": true
+ },
+ "sc3b0eaf426": "Respondiendo",
+ "@sc3b0eaf426": {
+  "x-mt": true
+ },
+ "sa3f65879ff": "calefacción se mantiene",
+ "@sa3f65879ff": {
+  "x-mt": true
+ },
+ "s5906232c68": "calefacción se mantiene apagado",
+ "@s5906232c68": {
+  "x-mt": true
+ },
+ "sc084b8cbdf": "siguiendo el calendario de precios",
+ "@sc084b8cbdf": {
+  "x-mt": true
+ },
+ "s136e7941a4": "DISABLED",
+ "s8847ee78e0": "Objetivo {p0} °C",
+ "@s8847ee78e0": {
+  "x-mt": true
+ },
+ "sedcddfbb2f": "NO REPLY",
+ "@sedcddfbb2f": {
+  "x-mt": true
+ },
+ "s6ab8f97950": "ON",
+ "s509c668d7e": "OFF",
+ "s70d43f1209": "El control se apaga",
+ "@s70d43f1209": {
+  "x-mt": true
+ },
+ "s4f7ef5d46a": "Sensor no contesta – siguiendo el calendario de precios: ",
+ "@s4f7ef5d46a": {
+  "x-mt": true
+ },
+ "s9e31ebc1e8": "Protección contra la escoria: {p0} °C está debajo {p1} °C",
+ "@s9e31ebc1e8": {
+  "x-mt": true
+ },
+ "s7cdb2a0cb6": "Temperatura {p0} °C debajo del mínimo {p1} °C",
+ "@s7cdb2a0cb6": {
+  "x-mt": true
+ },
+ "sf3b0d012da": "Anulación manual: en{p0}",
+ "@sf3b0d012da": {
+  "x-mt": true
+ },
+ "s14be0441f7": "Anulación manual: off{p0}",
+ "@s14be0441f7": {
+  "x-mt": true
+ },
+ "sd735da4378": "Modo de chimenea: la calefacción eléctrica se reduce",
+ "@sd735da4378": {
+  "x-mt": true
+ },
+ "s482b48b34c": "Modo de vacaciones: la habitación se mantiene más fría",
+ "@s482b48b34c": {
+  "x-mt": true
+ },
+ "s6a24d44a71": "Modo de vacaciones: calefacción para su regreso",
+ "@s6a24d44a71": {
+  "x-mt": true
+ },
+ "s247db88d99": "Suficientemente caluroso ({p0} °C ≥ {p1} °C)",
+ "@s247db88d99": {
+  "x-mt": true
+ },
+ "s0d09da9167": "Hora barata ({p0} c/kWh ≤ límite {p1} c)",
+ "@s0d09da9167": {
+  "x-mt": true
+ },
+ "sbbcaad0790": "Calefacción para que el descanso no llegue demasiado tiempo ({p0} c/kWh)",
+ "@sbbcaad0790": {
+  "x-mt": true
+ },
+ "sf56f514430": "{p0} c/kWh limit {p1} c",
+ "@sf56f514430": {
+  "x-mt": true
+ },
+ "s9cdd4b289a": "Hora expensiva – el suelo de almacenamiento es suficiente ({p0})",
+ "@s9cdd4b289a": {
+  "x-mt": true
+ },
+ "sbf758df617": "No es una hora barata – esperando ({p0})",
+ "@sbf758df617": {
+  "x-mt": true
+ },
+ "s03e2decc6e": "{p0} c/kWh ≥ limit {p1} c",
+ "@s03e2decc6e": {
+  "x-mt": true
+ },
+ "s8285023fb8": "Hora expensiva saltada ({p0})",
+ "@s8285023fb8": {
+  "x-mt": true
+ },
+ "s8851083ec4": "Calefacción normal",
+ "@s8851083ec4": {
+  "x-mt": true
+ },
+ "s452449f24c": "No hay datos de precio – la calefacción se ejecuta normalmente",
+ "@s452449f24c": {
+  "x-mt": true
+ },
+ "sadbee991d6": "Temperatura {p0} °C está debajo del punto de juego {p1} °C – calefacción",
+ "@sadbee991d6": {
+  "x-mt": true
+ },
+ "s0e20e8780d": "Setpoint {p0} °C reached ({p1} °C)",
+ "@s0e20e8780d": {
+  "x-mt": true
+ },
+ "s3f74d751fe": "Calefacción hasta {p0} °C",
+ "@s3f74d751fe": {
+  "x-mt": true
+ },
+ "s91276ece64": "Apagado hasta que la temperatura baja por debajo {p0} °C",
+ "@s91276ece64": {
+  "x-mt": true
+ },
+ "s4437d2666a": "Sensor no contesta – la calefacción se mantiene en",
+ "@s4437d2666a": {
+  "x-mt": true
+ },
+ "s127c973eb9": "Sensor no contesta – la calefacción se mantiene apagada",
+ "@s127c973eb9": {
+  "x-mt": true
+ },
+ "s7e2afd388e": "Límite de seguridad: apagado por demasiado tiempo – calefacción por una hora",
+ "@s7e2afd388e": {
+  "x-mt": true
+ },
+ "s630919f15c": "A continuación: el mínimo en el tiempo no se ha terminado",
+ "@s630919f15c": {
+  "x-mt": true
+ },
+ "sf5f33530ca": "Cierre: el tiempo mínimo de apagado no se ha terminado",
+ "@sf5f33530ca": {
+  "x-mt": true
+ },
+ "sd36f9bf75a": "Precalentamiento antes de un hechizo caro o frío",
+ "@sd36f9bf75a": {
+  "x-mt": true
+ },
+ "s8ea3994a9b": "Ahorro costoso",
+ "@s8ea3994a9b": {
+  "x-mt": true
+ },
+ "s8ec3c3bdb9": "Aún no hay información",
+ "@s8ec3c3bdb9": {
+  "x-mt": true
+ },
+ "sd80668c71a": "El próximo cambio depende de la temperatura",
+ "@sd80668c71a": {
+  "x-mt": true
+ },
+ "s723147d2b2": "Reanuda el control automático a {p0}",
+ "@s723147d2b2": {
+  "x-mt": true
+ },
+ "sc2c736c508": "Siguiente en {p0}",
+ "@sc2c736c508": {
+  "x-mt": true
+ },
+ "s2c7a2c7c84": "Siguiente en {p0}",
+ "@s2c7a2c7c84": {
+  "x-mt": true
+ },
+ "s6ebbbbc4a0": "El control de la temperatura y los límites de seguridad (protección de la tensión, temperatura mínima) están apagados, y {p0}.",
+ "@s6ebbbbc4a0": {
+  "x-mt": true
+ },
+ "sdba1212edb": "Los límites de seguridad (protección de residuos, temperatura mínima) están apagados, y la calefacción sigue el calendario de precios.",
+ "@sdba1212edb": {
+  "x-mt": true
+ },
+ "sbf916076f9": "El sensor de temperatura no responde.",
+ "@sbf916076f9": {
+  "x-mt": true
+ },
+ "s9fad63ec58": "Revise la batería y la red del sensor, o elija otro sensor.",
+ "@s9fad63ec58": {
+  "x-mt": true
+ },
  "s0a81072a1f": "Encuéntrelo en la lista de dispositivos de su router o en la aplicación del fabricante (información del dispositivo).",
  "@s0a81072a1f": {
   "x-mt": true
@@ -11542,34 +12281,6 @@
  "sda8d9bf1cd": "Enchufe",
  "s06444f278d": "posición (100 = cerrada)",
  "@s06444f278d": {
-  "x-mt": true
- },
- "s0ab7f9db7c": "No se almacena ninguna dirección de vídeo para esta cámara. Retire y agréguela de nuevo, o escriba la dirección RTSP a mano.",
- "@s0ab7f9db7c": {
-  "x-mt": true
- },
- "sda6d2b0dbe": "Una imagen todavía no se puede hacer desde la secuencia de vídeo. La computadora del puente casero necesita ffmpeg, o utilizar la aplicación Molaplan como el puente casero.",
- "@sda6d2b0dbe": {
-  "x-mt": true
- },
- "sb8cbbd3d99": "La cámara ({p0}) no responde de este dispositivo. Compruebe que este dispositivo está en la misma red que la cámara y que RTSP está en la cámara.",
- "@sb8cbbd3d99": {
-  "x-mt": true
- },
- "s4a6a89a47e": "La cámara rechazó el nombre de usuario o contraseña (RTSP 401). Compruébalos en la configuración ONVIF/RTSP de la cámara.",
- "@s4a6a89a47e": {
-  "x-mt": true
- },
- "s5f36d79393": "La cámara no conoce esta dirección de vídeo (RTSP 404). Agregue la cámara de nuevo o escriba la dirección RTSP a mano.",
- "@s5f36d79393": {
-  "x-mt": true
- },
- "s4c88b1dfe4": "La cámara respondió, pero el video no se podía reproducir {p0}. Intente de nuevo; si sigue fallando, vea los detalles técnicos.",
- "@s4c88b1dfe4": {
-  "x-mt": true
- },
- "sedafd495a6": "La cámara respondió RTSP {p0} y no llegó la imagen. Compruebe el nombre de usuario y la contraseña y que RTSP está encendido.",
- "@sedafd495a6": {
   "x-mt": true
  }
 }

@@ -14,6 +14,8 @@ import 'add_device_wizard.dart';
 import 'app_scope.dart';
 import 'automation_pages.dart';
 import 'connections_page.dart';
+import 'heating_view.dart';
+import 'smart_heating_pages.dart';
 import 'template_gallery.dart';
 import 'tile_editor.dart';
 import 'weather_tile.dart';
@@ -115,6 +117,15 @@ const _serviceTiles = [
     'Temperature, rain and wind at your home.',
   ),
   _ServiceTile(
+    'heating',
+    Icons.local_fire_department_outlined,
+    Color(0xFFE0703C),
+    'Älykäs lämmitys',
+    'Smart heating',
+    'Lämmitys päällä vai pois, miksi, lämpötila ja hinta yhdellä silmäyksellä.',
+    'Heating on or off, why, the temperature and the price at a glance.',
+  ),
+  _ServiceTile(
     'camera',
     Icons.videocam_outlined,
     Color(0xFF8E9AAF),
@@ -204,6 +215,13 @@ Future<void> showServiceTileSheet(BuildContext context, Dashboard d) async {
       await template('electricity_price');
     case 'weather':
       await addWeatherTile(context, d);
+    case 'heating':
+      final st = AppScope.read(context);
+      if (st.smartHeating == null) {
+        await Navigator.push(context, MaterialPageRoute(builder: (_) => const SmartHeatingPage()));
+      } else {
+        await addHeatingTile(st, d: d);
+      }
     case 'camera':
       final p = providerById('camera_onvif');
       if (p != null) {

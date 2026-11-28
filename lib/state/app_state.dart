@@ -482,6 +482,28 @@ class AppState extends ChangeNotifier implements SyncHost {
     await refreshHeatingStatus();
   }
 
+  /// R612: manual override of one heating device ([loadId] null = all): on / off for [hours] (1–12),
+  /// or [clear]. Runs on the home bridge; the safety limits still win. Only ever called from a button.
+  Future<void> heatingManual({String? loadId, bool on = true, int hours = 2, bool clear = false}) async {
+    final m = clear ? {'load': loadId, 'clear': true} : {'load': loadId, 'on': on, 'hours': hours};
+    final b = remote.bridge;
+    if (b != null) {
+      b.manualOp(m);
+    } else {
+      final c = remote.router.client;
+      if (c == null) throw StateError('no_bridge');
+      await pushRules();
+      final v = await c.call('rules', spec: {'manual': m});
+      final h = v is Map ? v['heating'] : null;
+      if (h is! Map || ((h['v'] as num?)?.toInt() ?? 1) < 2) {
+        heatingBridgeOld = true;
+        notifyListeners();
+        throw StateError('bridge_old');
+      }
+    }
+    await refreshHeatingStatus();
+  }
+
   // ---- virtual thermostats (run on the home bridge)
   ThermostatConfig? thermostat(String id) => config.energy.thermostats.where((t) => t.id == id).firstOrNull;
 
@@ -663,7 +685,13 @@ class AppState extends ChangeNotifier implements SyncHost {
     loaded = true;
     notifyListeners();
     attachDataFetch(notifySuccess: config.notifyFetchSuccess, lang: lang);
-    unawaited(NtfyListen.sync(connections: config.connections, notify: config.automation.notify, notifyFetchSuccess: config.notifyFetchSuccess));
+    unawaited(
+      NtfyListen.sync(
+        connections: config.connections,
+        notify: config.automation.notify,
+        notifyFetchSuccess: config.notifyFetchSuccess,
+      ),
+    );
   }
 
   Future<void> setBridgeMode(bool on) async {
@@ -714,7 +742,13 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (!_applyingSync) account.localChanged();
     _scheduleRulesPush();
     automations.changed();
-    unawaited(NtfyListen.sync(connections: config.connections, notify: config.automation.notify, notifyFetchSuccess: config.notifyFetchSuccess));
+    unawaited(
+      NtfyListen.sync(
+        connections: config.connections,
+        notify: config.automation.notify,
+        notifyFetchSuccess: config.notifyFetchSuccess,
+      ),
+    );
     if (sharing.mine.any((r) => r.status == ShareStatus.active)) {
       _sharePush?.cancel();
       _sharePush = Timer(const Duration(seconds: 3), () => unawaited(sharing.pushPackages()));

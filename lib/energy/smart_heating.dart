@@ -11,6 +11,7 @@ import 'dart:math' as math;
 import '../models/models.dart';
 import '../prices/prices.dart';
 import 'contract.dart';
+import 'heating_explain.dart';
 import 'heating_plan.dart';
 import 'thermostat.dart';
 import 'weather.dart';
@@ -232,6 +233,13 @@ class HeatLoad {
     this.comfort = 21,
     this.fireplace,
     this.enabled = true,
+    this.tempControl = false,
+    this.hysteresis = 0.5,
+    this.expensiveDrop = 0,
+    this.cheapBoost = 0,
+    this.fallback = 'price',
+    this.minOnMinutes = 0,
+    this.minOffMinutes = 0,
   }) : id = id ?? newId();
   String id;
   String name;
@@ -258,6 +266,24 @@ class HeatLoad {
   bool? fireplace;
   bool enabled;
 
+  /// R610: temperature control (switch loads with a room sensor): [comfort] is the setpoint and the
+  /// relay follows the measured temperature with a deadband of [hysteresis] °C. The price rules only
+  /// shift the setpoint: lowered by [expensiveDrop] in the expensive hours, raised by [cheapBoost]
+  /// in the cheap ones (0 = not used).
+  bool tempControl;
+  double hysteresis;
+  double expensiveDrop;
+  double cheapBoost;
+
+  /// What a temperature-controlled load does while its sensor is silent: 'price' (follow the price
+  /// schedule), 'on' or 'off'.
+  String fallback;
+
+  /// R611: shortest time a relay stays on / off after a change (0 = no limit). Safety limits and a
+  /// manual override ignore them.
+  int minOnMinutes;
+  int minOffMinutes;
+
   HeatingTypeInfo get info => heatingType(type);
   bool get followsFireplace => fireplace ?? info.space;
 
@@ -276,6 +302,13 @@ class HeatLoad {
     'comfort': comfort,
     'fireplace': ?fireplace,
     'enabled': enabled,
+    if (tempControl) 'tempControl': true,
+    if (hysteresis != 0.5) 'hysteresis': hysteresis,
+    if (expensiveDrop != 0) 'expensiveDrop': expensiveDrop,
+    if (cheapBoost != 0) 'cheapBoost': cheapBoost,
+    if (fallback != 'price') 'fallback': fallback,
+    if (minOnMinutes != 0) 'minOnMinutes': minOnMinutes,
+    if (minOffMinutes != 0) 'minOffMinutes': minOffMinutes,
   };
 
   factory HeatLoad.fromJson(Map<String, dynamic> j) => HeatLoad(
@@ -293,7 +326,16 @@ class HeatLoad {
     comfort: (j['comfort'] as num?)?.toDouble() ?? 21,
     fireplace: j['fireplace'] as bool?,
     enabled: j['enabled'] != false,
+    tempControl: j['tempControl'] == true,
+    hysteresis: ((j['hysteresis'] as num?)?.toDouble() ?? 0.5).clamp(0.1, 5.0),
+    expensiveDrop: ((j['expensiveDrop'] as num?)?.toDouble() ?? 0).clamp(0.0, 10.0),
+    cheapBoost: ((j['cheapBoost'] as num?)?.toDouble() ?? 0).clamp(0.0, 10.0),
+    fallback: const ['price', 'on', 'off'].contains(j['fallback']) ? '${j['fallback']}' : 'price',
+    minOnMinutes: ((j['minOnMinutes'] as num?)?.toInt() ?? 0).clamp(0, 240),
+    minOffMinutes: ((j['minOffMinutes'] as num?)?.toInt() ?? 0).clamp(0, 240),
   );
+
+  HeatLoad copy() => HeatLoad.fromJson(toJson());
 }
 
 class HeatingSafety {
@@ -367,6 +409,7 @@ class SmartHeatingConfig {
     this.fireplaceDrop = 2,
     this.fireplaceSensorTileId,
     this.notify = true,
+    this.homeTileDone = false,
   }) : site = site ?? SiteSurvey(),
        loads = loads ?? [],
        safety = safety ?? HeatingSafety(),
@@ -390,6 +433,9 @@ class SmartHeatingConfig {
   /// Smart heating notifications via ntfy (the same topic and quiet hours as automations).
   bool notify;
 
+  /// R613: the home-screen tile was offered once (added when none existed).
+  bool homeTileDone;
+
   Map<String, dynamic> toJson() => {
     'enabled': enabled,
     'site': site.toJson(),
@@ -401,6 +447,7 @@ class SmartHeatingConfig {
     'fireplaceDrop': fireplaceDrop,
     'fireplaceSensorTileId': ?fireplaceSensorTileId,
     'notify': notify,
+    if (homeTileDone) 'homeTileDone': true,
   };
 
   factory SmartHeatingConfig.fromJson(Object? j) {
@@ -419,6 +466,7 @@ class SmartHeatingConfig {
       fireplaceDrop: (j['fireplaceDrop'] as num?)?.toDouble() ?? 2,
       fireplaceSensorTileId: j['fireplaceSensorTileId'] as String?,
       notify: j['notify'] != false,
+      homeTileDone: j['homeTileDone'] == true,
     );
   }
 }
@@ -554,6 +602,9 @@ class HeatInputs {
     this.holiday = false,
     this.holidayEnd,
     this.fireplace = false,
+    this.manualOn,
+    this.manualUntil,
+    this.lastOn,
   });
   final DateTime now;
   final double? Function(DateTime hour) cost;
@@ -564,10 +615,38 @@ class HeatInputs {
   final bool holiday;
   final DateTime? holidayEnd;
   final bool fireplace;
+
+  /// R612: a manual override in force (on / off, or boost / saving for a thermostat) and when it ends.
+  final bool? manualOn;
+  final DateTime? manualUntil;
+
+  /// The relay state now (for the deadband of temperature control).
+  final bool? lastOn;
 }
 
 class HeatDecision {
-  HeatDecision({this.on, this.target, required this.reason, this.safety = false});
+  HeatDecision({
+    this.on,
+    this.target,
+    required this.reason,
+    this.safety = false,
+    this.setpoint,
+    this.shift = 0,
+    this.fallback = false,
+    this.until,
+  });
+
+  /// Temperature control: the setpoint in force now (comfort + price shift).
+  final double? setpoint;
+
+  /// Price shift of the setpoint (°C, negative in expensive hours, positive in cheap ones).
+  final double shift;
+
+  /// The sensor was silent: the fallback rule decided.
+  final bool fallback;
+
+  /// A manual override ends then.
+  final DateTime? until;
 
   /// Switch loads.
   final bool? on;
@@ -576,7 +655,8 @@ class HeatDecision {
   final double? target;
 
   /// cheap | not_cheap | expensive | normal | noprice | holiday | holiday_return | fireplace | warm |
-  /// min_temp | frost | preheat | coast
+  /// min_temp | frost | preheat | coast | manual_on | manual_off | temp_heat | temp_reached | temp_hold_on |
+  /// temp_hold_off | fallback_on | fallback_off | max_off | min_on | min_off
   final String reason;
 
   /// Forced by a safety limit.
@@ -602,6 +682,42 @@ int loadHours(HeatLoad l, SiteSurvey s, String template, HeatInputs x) {
 
 /// What a switch load should do now (before the runtime max-off guard).
 HeatDecision decideSwitch(SmartHeatingConfig c, HeatLoad l, HeatInputs x) {
+  final d = _decideSwitch(c, l, x);
+  if (!l.tempControl || !l.info.space || x.temp != null || x.holiday || d.fallback || d.safety) return d;
+  if (x.manualOn != null || (x.fireplace && l.followsFireplace)) return d;
+  // Temperature control without a reading: the price schedule decided.
+  return HeatDecision(on: d.on, target: d.target, reason: d.reason, fallback: true);
+}
+
+/// Price shift of the setpoint at [x.now]: −[HeatLoad.expensiveDrop] in the expensive hours,
+/// +[HeatLoad.cheapBoost] in the cheap ones (an hour that is both counts as cheap).
+double priceShift(SmartHeatingConfig c, HeatLoad l, HeatInputs x) {
+  if (l.expensiveDrop == 0 && l.cheapBoost == 0) return 0;
+  final day = dayCosts(x.now, x.cost);
+  if (day == null) return 0;
+  final rec = recommend(l.type, c.site, control: l.control);
+  final h = hourOf(x.now);
+  final maxOff = l.maxOffHours ?? c.safety.maxOffHours ?? rec.maxOff;
+  if (l.cheapBoost > 0 && cheapestHours(day, loadHours(l, c.site, 'cheapest', x)).contains(h)) return l.cheapBoost;
+  if (l.expensiveDrop > 0 && expensiveHours(day, l.skipHours ?? rec.skipHours, maxRun: maxOff).contains(h)) {
+    return -l.expensiveDrop;
+  }
+  return 0;
+}
+
+/// R610: thermostat behaviour for a switch load: on below setpoint − ½ deadband, off above
+/// setpoint + ½ deadband, inside the band it keeps its state.
+HeatDecision _decideByTemperature(SmartHeatingConfig c, HeatLoad l, HeatInputs x, double t) {
+  final shift = priceShift(c, l, x);
+  final sp = l.comfort + shift;
+  final half = l.hysteresis / 2;
+  if (t < sp - half) return HeatDecision(on: true, reason: 'temp_heat', setpoint: sp, shift: shift);
+  if (t > sp + half) return HeatDecision(on: false, reason: 'temp_reached', setpoint: sp, shift: shift);
+  final on = x.lastOn ?? (t < sp);
+  return HeatDecision(on: on, reason: on ? 'temp_hold_on' : 'temp_hold_off', setpoint: sp, shift: shift);
+}
+
+HeatDecision _decideSwitch(SmartHeatingConfig c, HeatLoad l, HeatInputs x) {
   final s = c.site;
   final rec = recommend(l.type, s, control: l.control);
   final template = l.template ?? rec.template;
@@ -612,8 +728,18 @@ HeatDecision decideSwitch(SmartHeatingConfig c, HeatLoad l, HeatInputs x) {
     if (c.safety.frost && t < c.safety.frostTemp) return HeatDecision(on: true, reason: 'frost', safety: true);
     if (t < c.safety.minTemp) return HeatDecision(on: true, reason: 'min_temp', safety: true);
   }
+  // R612: a manual override beats everything but the safety limits above.
+  if (x.manualOn != null) {
+    return HeatDecision(on: x.manualOn, reason: x.manualOn! ? 'manual_on' : 'manual_off', until: x.manualUntil);
+  }
   if (x.fireplace && l.followsFireplace) return HeatDecision(on: false, reason: 'fireplace');
   final maxOff = l.maxOffHours ?? c.safety.maxOffHours ?? rec.maxOff;
+  if (l.tempControl && space && !x.holiday) {
+    if (t != null) return _decideByTemperature(c, l, x, t);
+    // The sensor is silent: the fallback rule decides.
+    if (l.fallback == 'on') return HeatDecision(on: true, reason: 'fallback_on', fallback: true);
+    if (l.fallback == 'off') return HeatDecision(on: false, reason: 'fallback_off', fallback: true);
+  }
   if (x.holiday) {
     if (!space) {
       // Water heater: off while away, back on in time for the return.
@@ -662,6 +788,10 @@ HeatDecision decideThermostat(
     return HeatDecision(target: (math.max(v, floor) * 2).round() / 2, reason: safe ? 'min_temp' : r, safety: safe);
   }
 
+  // R612: manual override – boost (on) or saving (off) around the thermostat's own setpoint.
+  if (x.manualOn != null) {
+    return done(x.manualOn! ? comfort + s.swing : comfort - s.swing, x.manualOn! ? 'manual_on' : 'manual_off');
+  }
   if (x.holiday) return done(math.max(c.holiday.temp, c.safety.minTemp), 'holiday');
   var target = comfort;
   var reason = 'normal';
@@ -897,6 +1027,8 @@ class FireplaceState {
 // ------------------------------------------------------------------ runner (bridge)
 
 class LoadStatus {
+  LoadStatus();
+
   bool? on;
   double? target;
   String reason = '';
@@ -906,6 +1038,23 @@ class LoadStatus {
   DateTime? at;
   DateTime? offSince;
   DateTime? forcedUntil;
+
+  /// When the relay last changed (R611: shortest on / off times).
+  DateTime? changedAt;
+
+  /// Temperature control: the setpoint in force and its price shift (R610).
+  double? setpoint;
+  double shift = 0;
+
+  /// The sensor was silent and the fallback rule decided (R610).
+  bool fallback = false;
+
+  /// 'none' (no sensor chosen) | 'ok' | 'offline' (chosen, no fresh reading).
+  String sensor = 'none';
+
+  /// The raw reason of the last failed sensor read (shown only under technical details).
+  String? sensorError;
+  DateTime? errorAt;
 
   /// Upcoming ON periods (switch loads), for the app.
   List<(DateTime, DateTime)> plan = [];
@@ -918,10 +1067,72 @@ class LoadStatus {
     'temp': ?temp,
     'error': ?error,
     if (at != null) 'at': at!.millisecondsSinceEpoch,
+    if (setpoint != null) 'setpoint': setpoint,
+    if (shift != 0) 'shift': shift,
+    if (fallback) 'fallback': true,
+    'sensor': sensor,
+    'sensorError': ?sensorError,
+    if (errorAt != null) 'errorAt': errorAt!.millisecondsSinceEpoch,
+    if (changedAt != null) 'changedAt': changedAt!.millisecondsSinceEpoch,
     'plan': [
       for (final p in plan) [p.$1.millisecondsSinceEpoch, p.$2.millisecondsSinceEpoch],
     ],
   };
+
+  factory LoadStatus.fromJson(Object? j) {
+    final s = LoadStatus();
+    if (j is! Map) return s;
+    DateTime? t(Object? v) => v is num ? DateTime.fromMillisecondsSinceEpoch(v.toInt()) : null;
+    s
+      ..on = j['on'] as bool?
+      ..target = (j['target'] as num?)?.toDouble()
+      ..reason = '${j['reason'] ?? ''}'
+      ..safety = j['safety'] == true
+      ..temp = (j['temp'] as num?)?.toDouble()
+      ..error = j['error'] == null ? null : '${j['error']}'
+      ..at = t(j['at'])
+      ..setpoint = (j['setpoint'] as num?)?.toDouble()
+      ..shift = (j['shift'] as num?)?.toDouble() ?? 0
+      ..fallback = j['fallback'] == true
+      ..sensor = '${j['sensor'] ?? 'none'}'
+      ..sensorError = j['sensorError'] == null ? null : '${j['sensorError']}'
+      ..errorAt = t(j['errorAt'])
+      ..changedAt = t(j['changedAt'])
+      ..plan = [
+        for (final p in (j['plan'] as List? ?? const []))
+          if (p is List && p.length >= 2)
+            (
+              DateTime.fromMillisecondsSinceEpoch((p[0] as num).toInt()),
+              DateTime.fromMillisecondsSinceEpoch((p[1] as num).toInt()),
+            ),
+      ];
+    return s;
+  }
+}
+
+/// R612: a manual override of one load: on / off (switch) or boost / saving (thermostat) until [until].
+class ManualOverride {
+  ManualOverride({required this.on, required this.since, required this.until});
+  final bool on;
+  final DateTime since;
+  final DateTime until;
+
+  bool activeAt(DateTime t) => t.isBefore(until);
+
+  Map<String, dynamic> toJson() => {
+    'on': on,
+    'since': since.millisecondsSinceEpoch,
+    'until': until.millisecondsSinceEpoch,
+  };
+
+  static ManualOverride? fromJson(Object? j) {
+    if (j is! Map || j['until'] is! num) return null;
+    return ManualOverride(
+      on: j['on'] == true,
+      since: DateTime.fromMillisecondsSinceEpoch(((j['since'] ?? j['until']) as num).toInt()),
+      until: DateTime.fromMillisecondsSinceEpoch((j['until'] as num).toInt()),
+    );
+  }
 }
 
 typedef HeatRead = Future<Object?> Function(Map<String, dynamic> conn, Map<String, dynamic> spec);
@@ -973,6 +1184,10 @@ class SmartHeatingRunner {
   bool _running = false;
   static const sensorTimeout = Duration(minutes: 10);
   final _lastTemp = <String, (double, DateTime)>{};
+  final _sensorErr = <String, String>{};
+
+  /// R612: manual overrides by load id.
+  final manual = <String, ManualOverride>{};
 
   /// Cooling seen by the fireplace sensor that ends fireplace mode (°C below the peak).
   static const coolDrop = 1.0;
@@ -987,12 +1202,56 @@ class SmartHeatingRunner {
         for (final n in (s['notices'] as List? ?? const []))
           if (n is Map) HeatingNotice.fromJson(Map<String, dynamic>.from(n)),
       ]);
+    manual.clear();
+    final m = s['manual'];
+    if (m is Map) {
+      for (final e in m.entries) {
+        final o = ManualOverride.fromJson(e.value);
+        if (o != null) manual['${e.key}'] = o;
+      }
+    }
   }
 
   Map<String, dynamic> stateJson() => {
     'fireplace': fireplace.toJson(),
     'notices': [for (final n in notices.take(100)) n.toJson()],
+    'manual': {for (final e in manual.entries) e.key: e.value.toJson()},
   };
+
+  /// R612: manual override for [loadId] (null = every enabled load): on / off for [hours] (1–12).
+  /// Safety limits still win. Ends by itself.
+  void setManual({String? loadId, required bool on, int hours = 2}) {
+    final now = clock();
+    final until = now.add(Duration(hours: hours.clamp(1, 12)));
+    final ids = loadId != null
+        ? [loadId]
+        : [
+            for (final l in job?.config.loads ?? const <HeatLoad>[])
+              if (l.enabled) l.id,
+          ];
+    for (final id in ids) {
+      manual[id] = ManualOverride(on: on, since: now, until: until);
+      log?.call('smart heating "${_name(id)}": manual override ${on ? 'ON' : 'OFF'} until $until');
+    }
+    saveState?.call(stateJson());
+    unawaited(tick());
+  }
+
+  /// R612: ends the manual override of [loadId] (null = all).
+  void clearManual({String? loadId}) {
+    if (loadId == null) {
+      manual.clear();
+    } else {
+      manual.remove(loadId);
+    }
+    saveState?.call(stateJson());
+    unawaited(tick());
+  }
+
+  ManualOverride? manualFor(String loadId, DateTime now) {
+    final m = manual[loadId];
+    return m != null && m.activeAt(now) ? m : null;
+  }
 
   void update(SmartHeatingJob? j) {
     job = j;
@@ -1091,8 +1350,15 @@ class SmartHeatingRunner {
     if (c != null) {
       try {
         final v = _num(await read(c.conn, c.spec));
-        if (v != null) _lastTemp[key] = (v, now);
-      } catch (_) {}
+        if (v != null) {
+          _lastTemp[key] = (v, now);
+          _sensorErr.remove(key);
+        } else {
+          _sensorErr[key] = 'No temperature value in the reply';
+        }
+      } catch (e) {
+        _sensorErr[key] = '$e';
+      }
     }
     final l = _lastTemp[key];
     return l != null && now.difference(l.$2) < sensorTimeout ? l.$1 : null;
@@ -1124,12 +1390,19 @@ class SmartHeatingRunner {
       _planAt[l.id] = now;
       _planSp[l.id] = c.setpoint;
     }
-    final d = decideThermostat(job!.config, l, _inputs(now, temp), c.setpoint, plan: _plans[l.id] ?? const []);
+    final d = decideThermostat(
+      job!.config,
+      l,
+      _inputs(now, temp, loadId: l.id),
+      c.setpoint,
+      plan: _plans[l.id] ?? const [],
+    );
     final st = loads.putIfAbsent(l.id, LoadStatus.new)
       ..target = d.target
       ..reason = d.reason
       ..safety = d.safety
       ..temp = temp
+      ..sensor = temp == null ? 'offline' : 'ok'
       ..at = now;
     if (d.safety) {
       _notice(
@@ -1144,8 +1417,9 @@ class SmartHeatingRunner {
     return d.target;
   }
 
-  HeatInputs _inputs(DateTime now, double? temp) {
+  HeatInputs _inputs(DateTime now, double? temp, {String? loadId, bool? lastOn}) {
     final c = job!.config;
+    final m = loadId == null ? null : manualFor(loadId, now);
     return HeatInputs(
       now: now,
       cost: cost,
@@ -1154,6 +1428,9 @@ class SmartHeatingRunner {
       holiday: c.holiday.activeAt(now),
       holidayEnd: c.holiday.to,
       fireplace: fireplace.activeAt(now),
+      manualOn: m?.on,
+      manualUntil: m?.until,
+      lastOn: lastOn,
     );
   }
 
@@ -1181,6 +1458,9 @@ class SmartHeatingRunner {
       final j = job!;
       final c = j.config;
       final now = clock();
+      final before = manual.length;
+      manual.removeWhere((_, m) => !m.activeAt(now));
+      if (manual.length != before) saveState?.call(stateJson());
       try {
         if (j.zone != null) _series = await prices.get(j.zone!);
       } catch (_) {}
@@ -1232,25 +1512,43 @@ class SmartHeatingRunner {
         final st = loads.putIfAbsent(l.id, LoadStatus.new);
         final hasSensor = j.sensors.containsKey(l.id);
         final temp = await _readTemp(l.id, j.sensors[l.id], now);
+        st
+          ..sensor = !hasSensor ? 'none' : (temp == null ? 'offline' : 'ok')
+          ..sensorError = temp == null ? _sensorErr[l.id] : null;
         if (hasSensor && temp == null && l.info.space) {
+          final sensorFi = l.tempControl
+              ? 'lämpötilaohjaus ja turvarajat eivät ole käytössä, ${switch (l.fallback) {
+                  'on' => 'lämmitys pidetään päällä',
+                  'off' => 'lämmitys pidetään pois',
+                  _ => 'lämmitys noudattaa hintaohjausta',
+                }}'
+              : 'turvarajat eivät ole käytössä, lämmitys noudattaa hintaohjausta';
+          final sensorEn = l.tempControl
+              ? 'temperature control and safety limits are off, ${switch (l.fallback) {
+                  'on' => 'heating is kept on',
+                  'off' => 'heating is kept off',
+                  _ => 'heating follows the price schedule',
+                }}'
+              : 'safety limits are off, heating follows the price schedule';
           _notice(
             'sensor_lost',
-            '${_name(l.id)}: lämpöanturi ei vastaa – turvarajat eivät ole käytössä.',
-            '${_name(l.id)}: the temperature sensor is not answering – safety limits are not active.',
+            '${_name(l.id)}: lämpöanturi ei vastaa – $sensorFi. Tarkista anturin paristo ja verkkoyhteys tai valitse toinen anturi lämmityslaitteen asetuksista.',
+            '${_name(l.id)}: the temperature sensor is not answering – $sensorEn. Check the sensor battery and network, or pick another sensor in the heating device settings.',
             loadId: l.id,
             priority: 4,
             every: const Duration(hours: 12),
           );
         }
-        final x = _inputs(now, temp);
+        final x = _inputs(now, temp, loadId: l.id, lastOn: st.on);
         var d = decideSwitch(c, l, x);
         // Max-off guard: never off longer than allowed (not in fireplace mode – the fire heats).
         final maxOff = l.maxOffHours ?? c.safety.maxOffHours ?? recommend(l.type, c.site, control: l.control).maxOff;
-        if (st.forcedUntil != null && now.isBefore(st.forcedUntil!) && d.on == false && d.reason != 'warm') {
+        final tempOff = d.reason == 'warm' || d.reason.startsWith('temp_') || d.reason == 'manual_off';
+        if (st.forcedUntil != null && now.isBefore(st.forcedUntil!) && d.on == false && !tempOff) {
           d = HeatDecision(on: true, reason: 'max_off', safety: true);
         } else if (d.on == false &&
             !x.fireplace &&
-            d.reason != 'warm' &&
+            !tempOff &&
             !(x.holiday && !l.info.space) &&
             st.offSince != null &&
             now.difference(st.offSince!) >= Duration(minutes: (maxOff * 60).round())) {
@@ -1264,6 +1562,15 @@ class SmartHeatingRunner {
             priority: 2,
             every: const Duration(hours: 12),
           );
+        }
+        // R611: shortest on / off times (not for safety limits or a manual override).
+        if (!d.safety && d.until == null && st.on != null && st.changedAt != null && d.on != st.on) {
+          final since = now.difference(st.changedAt!);
+          if (st.on == true && l.minOnMinutes > 0 && since < Duration(minutes: l.minOnMinutes)) {
+            d = HeatDecision(on: true, reason: 'min_on', setpoint: d.setpoint, shift: d.shift);
+          } else if (st.on == false && l.minOffMinutes > 0 && since < Duration(minutes: l.minOffMinutes)) {
+            d = HeatDecision(on: false, reason: 'min_off', setpoint: d.setpoint, shift: d.shift);
+          }
         }
         if (d.reason == 'frost' || d.reason == 'min_temp') {
           _notice(
@@ -1282,6 +1589,9 @@ class SmartHeatingRunner {
           ..temp = temp
           ..reason = d.reason
           ..safety = d.safety
+          ..setpoint = d.setpoint
+          ..shift = d.shift
+          ..fallback = d.fallback
           ..at = now
           ..plan = _planFor(c, l, now);
         final want = d.on!;
@@ -1289,16 +1599,20 @@ class SmartHeatingRunner {
           final cmd = want ? j.on[l.id] : j.off[l.id];
           if (cmd == null) {
             st.error = 'no command';
+            st.errorAt = now;
             continue;
           }
           try {
             await send(cmd.conn, cmd.spec, want ? 1 : 0);
             st
               ..on = want
-              ..error = null;
+              ..changedAt = now
+              ..error = null
+              ..errorAt = null;
             log?.call('smart heating "${_name(l.id)}": ${want ? 'ON' : 'OFF'} (${d.reason})');
           } catch (e) {
             st.error = '$e';
+            st.errorAt = now;
             continue;
           }
         }
@@ -1329,7 +1643,7 @@ class SmartHeatingRunner {
         holidayEnd: c.holiday.to,
         fireplace: fireplace.activeAt(h),
       );
-      final d = decideSwitch(c, l, x);
+      final d = decideSwitch(c, l.tempControl ? (l.copy()..tempControl = false) : l, x);
       if (d.reason == 'noprice') break;
       last = DateTime(h.year, h.month, h.day, h.hour + 1);
       final on = d.on == true;
@@ -1354,8 +1668,34 @@ class SmartHeatingRunner {
           ? 'fireplace'
           : (c!.holiday.activeAt(now) ? 'holiday' : 'normal'),
       'fireplace': fireplace.toJson(),
-      'loads': {for (final e in loads.entries) e.key: e.value.toJson()},
+      'loads': {
+        for (final e in loads.entries)
+          e.key: {...e.value.toJson(), if (explainOf(e.key) != null) 'explain': explainOf(e.key)!.toJson()},
+      },
+      'manual': {
+        for (final e in manual.entries)
+          if (e.value.activeAt(now)) e.key: e.value.toJson(),
+      },
       'notices': [for (final n in notices.take(30)) n.toJson()],
+      'v': 2,
     };
+  }
+
+  /// The shared explanation of one load: the same state the app shows (R617).
+  HeatExplanation? explainOf(String loadId) {
+    final j = job;
+    final st = loads[loadId];
+    if (j == null || st == null) return null;
+    final l = j.config.loads.where((x) => x.id == loadId).firstOrNull;
+    if (l == null) return null;
+    final now = clock();
+    return explainLoad(
+      j.config,
+      l,
+      _inputs(now, st.temp, loadId: loadId, lastOn: st.on),
+      st: st,
+      manual: manual[loadId],
+      sensorChosen: j.sensors.containsKey(loadId),
+    );
   }
 }

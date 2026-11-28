@@ -317,3 +317,5 @@ v0.18.0:n CI:n android-job kaatui: values/strings.xml molaplan_widget_descriptio
 - dart format: always `-l 120` (repo width); plain `dart format` reflows whole files.
 - Screenshots without a Linux desktop: widget test + FontLoader (Roboto/MaterialIcons from
   $FLUTTER_ROOT/bin/cache/artifacts/material_fonts) + RepaintBoundary.toImage → PNG.
+
+v0.20.17 (t331u/t332u, R610–R618): smart heating status. `lib/energy/heating_explain.dart` (pure: HeatText, classifyHeatError, HeatCheck, HeatExplanation JSON, explainLoad), `lib/ui/heating_view.dart` (HeatingTile, HeatSnapshot, HeatRules, HeatTimeline, manual dialog, HeatSetpointDial), engine additions in smart_heating.dart (tempControl + hysteresis + price shift + sensor fallback, manual override, min on/off), bridge `rules` op `manual`, status `v: 2` with per-load `explain`. The tile reads `AppState.heatingStatus` (bridge) and falls back to a local preview ('Arvio'). Tests: test/heating_status_t331_test.dart, test/heating_tile_t331_test.dart. Do NOT run `dart format lib` on the whole tree (churns ~60 files); `cd tool/l10n && dart pub get` once on a fresh box before translate.py.

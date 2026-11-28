@@ -1448,6 +1448,220 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s09f5da65e0 => 'Switch to Shelly Cloud';
 
   @override
+  String get sf5768a876d => 'Disabled';
+
+  @override
+  String get s8724f302ef => 'Manual';
+
+  @override
+  String s76bce4b6c2(String p0) {
+    return 'Manual $p0';
+  }
+
+  @override
+  String get s221a4ab646 => 'Fireplace mode';
+
+  @override
+  String get s5da1e65941 => 'Holiday mode';
+
+  @override
+  String get se50792831f => 'Temperature control';
+
+  @override
+  String get sd408a5dbe9 => 'Cheapest hours';
+
+  @override
+  String get s5c33c7b488 => 'Skip expensive';
+
+  @override
+  String get seaa748138e => 'By the weather';
+
+  @override
+  String get saf3ce7f717 => 'Smart heating: set it up';
+
+  @override
+  String get scde8147260 => 'Smart heating: add a device';
+
+  @override
+  String get sea2ac9b443 => 'Heating device removed';
+
+  @override
+  String get s27e0af845d =>
+      'No home bridge: heating is not controlled yet. Set up remote access on a device at home.';
+
+  @override
+  String s04fcb24bc5(String p0, String p1) {
+    return 'Now $p0 · setpoint $p1';
+  }
+
+  @override
+  String s3c3d6b5485(String p0) {
+    return 'Temperature $p0';
+  }
+
+  @override
+  String s670a6ed937(String p0) {
+    return '$p0 c/kWh';
+  }
+
+  @override
+  String s8272e84b1c(String p0, String p1) {
+    return '$p0 c/kWh · limit $p1 c';
+  }
+
+  @override
+  String s8235ae91c4(String p0) {
+    return 'Sensor not answering – $p0';
+  }
+
+  @override
+  String get s0be7b030a0 => 'Estimate from prices – no home bridge';
+
+  @override
+  String get s9c543b2106 => 'Estimate – the home bridge has not answered yet';
+
+  @override
+  String get see998ca830 => 'kept on';
+
+  @override
+  String get s9eb36d05e1 => 'kept off';
+
+  @override
+  String get s871e341710 => 'price schedule';
+
+  @override
+  String get s579f396ae5 => 'Situation';
+
+  @override
+  String get s8653f173b6 => 'Temperature';
+
+  @override
+  String get sb730159a01 => 'Price now';
+
+  @override
+  String get s7dfe0e7977 => 'Next change';
+
+  @override
+  String get sf77125583f => 'Technical details';
+
+  @override
+  String get s5555a716bb =>
+      'This is an estimate from prices and settings: the home bridge has not answered yet, so the real state of the device is unknown.';
+
+  @override
+  String get sbe50b10e9e => 'End manual override';
+
+  @override
+  String get s728ddd7778 => 'Manual override…';
+
+  @override
+  String get sd661031615 => 'no sensor';
+
+  @override
+  String get scfb407cd2d => 'sensor not answering';
+
+  @override
+  String s1284293e15(String p0, String p1) {
+    return 'setpoint $p0 ± $p1';
+  }
+
+  @override
+  String s07a15cf1d3(String p0) {
+    return 'upper limit $p0';
+  }
+
+  @override
+  String s4e43228e07(String p0) {
+    return 'min $p0';
+  }
+
+  @override
+  String sd4db0fbbb5(String p0) {
+    return 'frost $p0';
+  }
+
+  @override
+  String get s63c3e9c766 => 'no price data';
+
+  @override
+  String s8c60756474(String p0, String p1) {
+    return '$p0 (skipped at ≥ $p1 c)';
+  }
+
+  @override
+  String sff29b84ddc(String p0, String p1) {
+    return '$p0 (on at ≤ $p1 c)';
+  }
+
+  @override
+  String get s750dcb984f => 'Why? The rules and their state';
+
+  @override
+  String get s39d300e3ea => 'decides now';
+
+  @override
+  String get s55153c17b8 => 'Next 24 h: price and planned heating hours';
+
+  @override
+  String get sfb5a3f7da0 => 'No price data yet.';
+
+  @override
+  String sba9d60d97c(String p0, String p1) {
+    return 'Orange = heating planned on. A taller bar = a more expensive hour ($p0–$p1 c/kWh).';
+  }
+
+  @override
+  String s3030d2947a(String p0, String p1) {
+    return 'A taller bar = a more expensive hour ($p0–$p1 c/kWh). The plan shows when the home bridge has answered.';
+  }
+
+  @override
+  String get s3d99bc591b => 'Manual override';
+
+  @override
+  String get sb65a9ab4a9 =>
+      'The target temperature is raised or lowered for the chosen time, then automatic control continues.';
+
+  @override
+  String get sb1c3627dc7 =>
+      'Heating is forced on or off for the chosen time, then automatic control continues.';
+
+  @override
+  String get seeaa40c11e => 'Boost';
+
+  @override
+  String get s4cd3d92d4c => 'On';
+
+  @override
+  String get sdb7d34e8e1 => 'Saving';
+
+  @override
+  String get s33831dd49f => 'Off';
+
+  @override
+  String get s3ef843cf90 =>
+      'The safety limits (frost protection and minimum temperature) still apply.';
+
+  @override
+  String get s3077b295d1 => 'Apply';
+
+  @override
+  String get s7926a59e29 => 'No reading';
+
+  @override
+  String get s29fd8d5b5e => 'Now';
+
+  @override
+  String s961397a99b(String p0) {
+    return 'Setpoint $p0 °C';
+  }
+
+  @override
+  String sc47170dbe0(String p0, String p1) {
+    return 'Setpoint $p0 °C (price: $p1 °C this hour)';
+  }
+
+  @override
   String get s6b536de0c8 =>
       'Through your home bridge: lights, plugs, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, camera stills';
 
@@ -2085,20 +2299,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sf2c65c5aeb => 'Average';
 
   @override
-  String get s8653f173b6 => 'Temperature';
-
-  @override
   String get s68b942c864 =>
       'Set the home location (Energy → Settings) for the forecast.';
 
   @override
   String get s38ac222392 => 'Value';
-
-  @override
-  String get s4cd3d92d4c => 'On';
-
-  @override
-  String get s33831dd49f => 'Off';
 
   @override
   String get sa8e43f2b0e => 'Offline';
@@ -2796,9 +3001,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sd9923cda70 => 'Not at home? Turn on remote access';
-
-  @override
-  String get sf77125583f => 'Technical details';
 
   @override
   String s9cf8aec76a(String p0) {
@@ -3672,9 +3874,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s90b5b7e33f => 'Colour ranges';
 
   @override
-  String get sd408a5dbe9 => 'Cheapest hours';
-
-  @override
   String get sa26ae27039 => 'Skip the most expensive hours';
 
   @override
@@ -3779,7 +3978,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sd172900c2d => 'Holiday: edit';
 
   @override
-  String get s5da1e65941 => 'Holiday mode';
+  String get sdb217dcf7f => 'Add a tile to the home screen';
+
+  @override
+  String get s52d3e04a46 => 'Tile added to the home screen';
 
   @override
   String get sdca3ad13dd => 'Heating devices';
@@ -3798,24 +4000,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s8c3353e896 => 'No home bridge is paired.';
 
   @override
-  String s38ccb420a7(String p0) {
-    return 'Did not work: $p0';
-  }
-
-  @override
-  String s8847ee78e0(String p0) {
-    return 'Target $p0 °C';
-  }
-
-  @override
-  String s4b761dad85(String p0) {
-    return 'Next on: $p0';
-  }
-
-  @override
-  String s622f5654cd(String p0) {
-    return 'Error: $p0';
-  }
+  String get s13a8a207ec => 'Rules and settings';
 
   @override
   String get s697b47220e => 'Smart heating on';
@@ -3902,13 +4087,51 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s025d1c3db1 => 'Temperature while away';
 
   @override
-  String get s11e21d4f75 => 'How it is controlled';
+  String get se34a337d6d => 'Choose the temperature sensor';
+
+  @override
+  String get scfa5e7964d =>
+      'You can use any tile that shows a temperature: a Shelly add-on sensor, Zigbee or Home Assistant, Airthings, Bosch, Tuya…';
+
+  @override
+  String get s20ec3fcfd8 =>
+      'There is no temperature tile yet. Add a device with a temperature sensor first.';
+
+  @override
+  String get sf37075044e => 'Add a new device';
+
+  @override
+  String get se68cc54085 => 'No sensor';
+
+  @override
+  String get s093677b5f1 => 'Control mode';
+
+  @override
+  String get sa6195c2696 => 'By price';
+
+  @override
+  String get s9d6a4787c0 => 'By temperature';
+
+  @override
+  String get s84cf10acfd =>
+      'Heating follows the measured temperature like a thermostat. The price rules only move the setpoint: up in cheap hours, down in expensive ones (if set).';
+
+  @override
+  String get sdf9dc612a6 =>
+      'Heating follows the electricity price and the weather. A temperature sensor is optional and gives the safety limits.';
+
+  @override
+  String get s01c555401a => 'Choose a temperature sensor';
+
+  @override
+  String get s249140bfd0 =>
+      'Temperature control needs a sensor. Without one, heating follows the price schedule.';
+
+  @override
+  String get sf9cbe76823 => 'Price rules';
 
   @override
   String get s8e6c8ffabb => ' (recommended)';
-
-  @override
-  String get sa35e3e99f4 => 'Control on';
 
   @override
   String get s86c45674db => 'Heating hours a day';
@@ -3917,13 +4140,87 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sbd3dbfd7e9 => 'Most expensive hours skipped';
 
   @override
-  String get s1f3d8e19f4 => 'Longest break at a time';
+  String s1f32a43166(String p0) {
+    return 'Today\'s price limit: skipped when the price is $p0 c/kWh or more.';
+  }
+
+  @override
+  String s3c010a59e8(String p0) {
+    return 'Today\'s price limit: on when the price is $p0 c/kWh or less.';
+  }
+
+  @override
+  String get s68b3688217 => 'Setpoint down in expensive hours';
+
+  @override
+  String get s108a800ffc => 'not used';
+
+  @override
+  String get sb35d5f8afd => 'Setpoint up in cheap hours';
+
+  @override
+  String get sd82fb84485 => 'Temperature limits';
+
+  @override
+  String get s510de048b8 => 'Setpoint';
 
   @override
   String get s017c87df20 => 'Comfort temperature';
 
   @override
-  String get se68cc54085 => 'No sensor';
+  String get sdb145487c3 => 'Minimum temperature (safety limit)';
+
+  @override
+  String get s0c40392b6a => 'No sensor – the safety limits are not active';
+
+  @override
+  String get scf2e61da2c => 'not answering';
+
+  @override
+  String get s6a37cdb806 => 'Delays';
+
+  @override
+  String get s1f3d8e19f4 => 'Longest break at a time';
+
+  @override
+  String get s061c02e7ea => 'Minimum times: no limit (Advanced).';
+
+  @override
+  String se7bc20343e(String p0, String p1) {
+    return 'Minimum on time $p0 min, off $p1 min.';
+  }
+
+  @override
+  String get sa35e3e99f4 => 'Control on';
+
+  @override
+  String get sd8084282ca => 'Hysteresis (deadband)';
+
+  @override
+  String s3bded44765(String p0, String p1) {
+    return 'On below $p0 °C, off above $p1 °C (before any price shift).';
+  }
+
+  @override
+  String get s3df29f3fca => 'When the sensor is not answering';
+
+  @override
+  String get s5f9a56b766 => 'Follow the price schedule';
+
+  @override
+  String get scc764046c2 => 'Keep on';
+
+  @override
+  String get sd50c0e6c4d => 'Keep off';
+
+  @override
+  String get s64540136ff => 'Minimum on time';
+
+  @override
+  String get s5e55e17318 => 'no limit';
+
+  @override
+  String get s21713a2177 => 'Minimum off time';
 
   @override
   String get s347ce4c3d2 => 'Reduce in fireplace mode';
@@ -4989,9 +5286,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'No home bridge: the thermostat is not controlling yet. Set up remote access on a device at home.';
 
   @override
-  String get s29fd8d5b5e => 'Now';
-
-  @override
   String get see9111ba68 => 'Relay or switch (on/off)';
 
   @override
@@ -5081,12 +5375,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sf070be2c1e => 'Deadband (heat/cool)';
-
-  @override
-  String get s64540136ff => 'Minimum on time';
-
-  @override
-  String get s21713a2177 => 'Minimum off time';
 
   @override
   String get s8f7c8eb7d0 => 'Backup heater when below target by';
@@ -5401,9 +5689,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sb9e406274e => 'online';
-
-  @override
-  String get scf2e61da2c => 'not answering';
 
   @override
   String get sb981e102f1 => 'old Molaplan (0.8.0 test build or older)';
@@ -6121,9 +6406,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s2b2118a93b => 'Old data';
-
-  @override
-  String get sb730159a01 => 'Price now';
 
   @override
   String get s68fcfcfed1 => 'Cheapest hour today';
@@ -10282,6 +10564,417 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s333643b4c4 =>
       'SMA Energy Meter: no broadcasts on the home network (multicast 239.12.255.254:9522)';
+
+  @override
+  String get s741ad14d6e => 'under a minute';
+
+  @override
+  String get s61cb8b20cf => 'The device';
+
+  @override
+  String s69e8cc73cb(String p0) {
+    return '$p0 is not responding (the connection timed out)';
+  }
+
+  @override
+  String sb6b6fb4fe1(String p0, String p1) {
+    return '$p0 is not responding (timeout $p1 s)';
+  }
+
+  @override
+  String s6f71cad9b6(String p0) {
+    return '$p0 refuses the connection (connection refused)';
+  }
+
+  @override
+  String sc45478e8fd(String p0) {
+    return '$p0 cannot be reached (no network route)';
+  }
+
+  @override
+  String s0114e1e46c(String p0) {
+    return '$p0: the address cannot be found';
+  }
+
+  @override
+  String s5c5afb4b38(String p0, String p1) {
+    return '$p0 rejected the login (HTTP $p1)';
+  }
+
+  @override
+  String seb34841f6b(String p0, String p1) {
+    return '$p0: the address is not valid (HTTP $p1)';
+  }
+
+  @override
+  String sf2580c0069(String p0, String p1) {
+    return '$p0 answered with an error (HTTP $p1)';
+  }
+
+  @override
+  String get s0528a2ef9e => 'The device has no on/off command';
+
+  @override
+  String get sd0e9fc6760 => 'The control did not work';
+
+  @override
+  String get sc056006180 =>
+      'Check that the device is on and on the same network as the home bridge. Smart heating retries every minute; until it works the device stays in its current state.';
+
+  @override
+  String get s7a1cda0d24 =>
+      'Check the device password in the connection settings.';
+
+  @override
+  String get s4dc27a3272 =>
+      'Check the device address and command in the tile settings.';
+
+  @override
+  String get s54dbdeb56b =>
+      'The device answered but did not accept the command. Try restarting the device.';
+
+  @override
+  String get s8e9e56f68f => 'See the exact reason under Technical details.';
+
+  @override
+  String get s7279e2bdb1 => 'Manual override';
+
+  @override
+  String get s8accab3bb7 => 'Price shifts the setpoint';
+
+  @override
+  String get s78188d956e => 'Room warm enough';
+
+  @override
+  String get saa76f06f20 => 'Skipping expensive hours';
+
+  @override
+  String get s846c49053e => 'Longest break';
+
+  @override
+  String get se79c5ead71 => 'Price data';
+
+  @override
+  String get sa30e1a2c14 => 'Temperature sensor';
+
+  @override
+  String get s39147d043d => 'Not in use';
+
+  @override
+  String get s7d4144c0a0 => 'No temperature – cannot be checked';
+
+  @override
+  String s70d66e5f81(String p0, String p1) {
+    return '$p0 °C is below $p1 °C – heating on';
+  }
+
+  @override
+  String sd93442ff7c(String p0, String p1) {
+    return '$p0 °C, limit $p1 °C';
+  }
+
+  @override
+  String s9bf02da8ca(String p0, String p1) {
+    return 'On for $p0 (until $p1)';
+  }
+
+  @override
+  String sb8c4753e09(String p0, String p1) {
+    return 'Off for $p0 (until $p1)';
+  }
+
+  @override
+  String get sc9f92f4156 => 'The fireplace heats: electric heating is reduced';
+
+  @override
+  String sf78c1a349f(String p0) {
+    return 'Away: keeping $p0 °C';
+  }
+
+  @override
+  String get s5faeeab2c8 => 'Not in force now';
+
+  @override
+  String s2226c324ef(String p0) {
+    return 'The sensor is not answering – $p0';
+  }
+
+  @override
+  String se363372312(String p0, String p1, String p2, String p3, String p4) {
+    return '$p0 °C, setpoint $p1 °C ± $p2 °C (on below $p3, off above $p4 °C)';
+  }
+
+  @override
+  String get s0f95c71a7a => 'No change in this hour';
+
+  @override
+  String sc634878941(String p0) {
+    return 'Cheap hour: setpoint +$p0 °C';
+  }
+
+  @override
+  String sedcfc0a927(String p0) {
+    return 'Expensive hour: setpoint $p0 °C';
+  }
+
+  @override
+  String s642427fe2b(String p0, String p1) {
+    return '$p0 °C ≥ $p1 °C – not heating';
+  }
+
+  @override
+  String sda0b91c359(String p0, String p1) {
+    return '$p0 °C, upper limit $p1 °C';
+  }
+
+  @override
+  String sf3a33e9bc5(String p0, String p1, String p2, String p3) {
+    return '$p0 cheapest hours a day: now $p1 c/kWh $p2 limit $p3 c';
+  }
+
+  @override
+  String s428ce35d71(String p0, String p1, String p2, String p3) {
+    return '$p0 most expensive hours skipped: now $p1 c/kWh $p2 limit $p3 c';
+  }
+
+  @override
+  String get s6200d2086c => 'No forecast';
+
+  @override
+  String s29d9986638(String p0, String p1) {
+    return 'Forecast $p0 °C on average → $p1 heating hours a day';
+  }
+
+  @override
+  String get sdcf4412899 => 'Off for too long – heating for an hour';
+
+  @override
+  String s8a9723fbbb(String p0) {
+    return 'Off for at most $p0 h at a time';
+  }
+
+  @override
+  String get s9fe316f0b6 => 'No limit';
+
+  @override
+  String s70094ce99b(String p0) {
+    return 'Waiting: at least $p0 min';
+  }
+
+  @override
+  String s71d72597eb(String p0) {
+    return 'At least $p0 min';
+  }
+
+  @override
+  String get s84cf358040 => 'No prices – heating runs normally';
+
+  @override
+  String get s0e19d6ac09 => 'Prices available';
+
+  @override
+  String get s9583d61085 => 'No sensor chosen';
+
+  @override
+  String get s756b49f274 => 'Not answering';
+
+  @override
+  String s3ddc69fd91(String p0) {
+    return 'Answering: $p0 °C';
+  }
+
+  @override
+  String get sa0c950bdca => 'Not responding';
+
+  @override
+  String get sc3b0eaf426 => 'Responding';
+
+  @override
+  String get sa3f65879ff => 'heating is kept on';
+
+  @override
+  String get s5906232c68 => 'heating is kept off';
+
+  @override
+  String get sc084b8cbdf => 'following the price schedule';
+
+  @override
+  String get s136e7941a4 => 'DISABLED';
+
+  @override
+  String s8847ee78e0(String p0) {
+    return 'Target $p0 °C';
+  }
+
+  @override
+  String get sedcddfbb2f => 'NO REPLY';
+
+  @override
+  String get s6ab8f97950 => 'ON';
+
+  @override
+  String get s509c668d7e => 'OFF';
+
+  @override
+  String get s70d43f1209 => 'Control is switched off';
+
+  @override
+  String get s4f7ef5d46a =>
+      'Sensor not answering – following the price schedule: ';
+
+  @override
+  String s9e31ebc1e8(String p0, String p1) {
+    return 'Frost protection: $p0 °C is below $p1 °C';
+  }
+
+  @override
+  String s7cdb2a0cb6(String p0, String p1) {
+    return 'Temperature $p0 °C below the minimum $p1 °C';
+  }
+
+  @override
+  String sf3b0d012da(String p0) {
+    return 'Manual override: on$p0';
+  }
+
+  @override
+  String s14be0441f7(String p0) {
+    return 'Manual override: off$p0';
+  }
+
+  @override
+  String get sd735da4378 => 'Fireplace mode: electric heating is reduced';
+
+  @override
+  String get s482b48b34c => 'Holiday mode: the room is kept cooler';
+
+  @override
+  String get s6a24d44a71 => 'Holiday mode: heating for your return';
+
+  @override
+  String s247db88d99(String p0, String p1) {
+    return 'Warm enough ($p0 °C ≥ $p1 °C)';
+  }
+
+  @override
+  String s0d09da9167(String p0, String p1) {
+    return 'Cheap hour ($p0 c/kWh ≤ limit $p1 c)';
+  }
+
+  @override
+  String sbbcaad0790(String p0) {
+    return 'Heating so that the break does not get too long ($p0 c/kWh)';
+  }
+
+  @override
+  String sf56f514430(String p0, String p1) {
+    return '$p0 c/kWh > limit $p1 c';
+  }
+
+  @override
+  String s9cdd4b289a(String p0) {
+    return 'Expensive hour – the storing floor is enough ($p0)';
+  }
+
+  @override
+  String sbf758df617(String p0) {
+    return 'Not a cheap hour – waiting ($p0)';
+  }
+
+  @override
+  String s03e2decc6e(String p0, String p1) {
+    return '$p0 c/kWh ≥ limit $p1 c';
+  }
+
+  @override
+  String s8285023fb8(String p0) {
+    return 'Expensive hour skipped ($p0)';
+  }
+
+  @override
+  String get s8851083ec4 => 'Normal heating';
+
+  @override
+  String get s452449f24c => 'No price data – heating runs normally';
+
+  @override
+  String sadbee991d6(String p0, String p1) {
+    return 'Temperature $p0 °C is below the setpoint $p1 °C – heating';
+  }
+
+  @override
+  String s0e20e8780d(String p0, String p1) {
+    return 'Setpoint $p0 °C reached ($p1 °C)';
+  }
+
+  @override
+  String s3f74d751fe(String p0) {
+    return 'Heating until $p0 °C';
+  }
+
+  @override
+  String s91276ece64(String p0) {
+    return 'Off until the temperature drops below $p0 °C';
+  }
+
+  @override
+  String get s4437d2666a => 'Sensor not answering – heating is kept on';
+
+  @override
+  String get s127c973eb9 => 'Sensor not answering – heating is kept off';
+
+  @override
+  String get s7e2afd388e =>
+      'Safety limit: off for too long – heating for an hour';
+
+  @override
+  String get s630919f15c => 'Kept on: the minimum on time is not over';
+
+  @override
+  String get sf5f33530ca => 'Kept off: the minimum off time is not over';
+
+  @override
+  String get sd36f9bf75a => 'Pre-heating before an expensive or cold spell';
+
+  @override
+  String get s8ea3994a9b => 'Saving while expensive';
+
+  @override
+  String get s8ec3c3bdb9 => 'No information yet';
+
+  @override
+  String get sd80668c71a => 'The next change depends on the temperature';
+
+  @override
+  String s723147d2b2(String p0) {
+    return 'Automatic control resumes at $p0';
+  }
+
+  @override
+  String sc2c736c508(String p0) {
+    return 'Next on at $p0';
+  }
+
+  @override
+  String s2c7a2c7c84(String p0) {
+    return 'Next off at $p0';
+  }
+
+  @override
+  String s6ebbbbc4a0(String p0) {
+    return 'Temperature control and the safety limits (frost protection, minimum temperature) are off, and $p0.';
+  }
+
+  @override
+  String get sdba1212edb =>
+      'The safety limits (frost protection, minimum temperature) are off, and heating follows the price schedule.';
+
+  @override
+  String get sbf916076f9 => 'The temperature sensor is not answering.';
+
+  @override
+  String get s9fad63ec58 =>
+      'Check the sensor battery and network, or choose another sensor.';
 
   @override
   String get s0a81072a1f =>

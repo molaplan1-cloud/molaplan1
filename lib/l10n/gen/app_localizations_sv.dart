@@ -1446,6 +1446,220 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s09f5da65e0 => 'Byt till Shelly Cloud';
 
   @override
+  String get sf5768a876d => 'Inaktiverad';
+
+  @override
+  String get s8724f302ef => 'Manual Manual';
+
+  @override
+  String s76bce4b6c2(String p0) {
+    return 'Manuell $p0';
+  }
+
+  @override
+  String get s221a4ab646 => 'Fireplace läge';
+
+  @override
+  String get s5da1e65941 => 'Holiday läge';
+
+  @override
+  String get se50792831f => 'Temperaturkontroll';
+
+  @override
+  String get sd408a5dbe9 => 'Billigaste timmar';
+
+  @override
+  String get s5c33c7b488 => 'Skip dyrt';
+
+  @override
+  String get seaa748138e => 'Vid vädret';
+
+  @override
+  String get saf3ce7f717 => 'Smart uppvärmning: Ställ upp den';
+
+  @override
+  String get scde8147260 => 'Smart uppvärmning: lägg till en enhet';
+
+  @override
+  String get sea2ac9b443 => 'Värmeanordning bort';
+
+  @override
+  String get s27e0af845d =>
+      'Ingen hembro: uppvärmning är ännu inte kontrollerad. Ställ in fjärråtkomst på en enhet hemma.';
+
+  @override
+  String s04fcb24bc5(String p0, String p1) {
+    return 'Nu $p0 · setpoint $p1';
+  }
+
+  @override
+  String s3c3d6b5485(String p0) {
+    return 'Temperatur $p0';
+  }
+
+  @override
+  String s670a6ed937(String p0) {
+    return '$p0 c/kWh';
+  }
+
+  @override
+  String s8272e84b1c(String p0, String p1) {
+    return '$p0 c/kWh · gräns $p1 c';
+  }
+
+  @override
+  String s8235ae91c4(String p0) {
+    return 'Sensor svarar inte – $p0';
+  }
+
+  @override
+  String get s0be7b030a0 => 'Beräkning från priser – ingen hembro';
+
+  @override
+  String get s9c543b2106 => 'Uppskattning – hembron har ännu inte svarat';
+
+  @override
+  String get see998ca830 => 'hålls på';
+
+  @override
+  String get s9eb36d05e1 => 'hålls av';
+
+  @override
+  String get s871e341710 => 'Prisplan';
+
+  @override
+  String get s579f396ae5 => 'Situation';
+
+  @override
+  String get s8653f173b6 => 'Temperatur';
+
+  @override
+  String get sb730159a01 => 'Pris nu';
+
+  @override
+  String get s7dfe0e7977 => 'Nästa förändring';
+
+  @override
+  String get sf77125583f => 'Tekniska detaljer';
+
+  @override
+  String get s5555a716bb =>
+      'Detta är en uppskattning från priser och inställningar: hembron har ännu inte svarat, så enhetens verkliga tillstånd är okänt.';
+
+  @override
+  String get sbe50b10e9e => 'End manual override';
+
+  @override
+  String get s728ddd7778 => 'Manuell överridning...';
+
+  @override
+  String get sd661031615 => 'Ingen sensor';
+
+  @override
+  String get scfb407cd2d => 'sensor som inte svarar';
+
+  @override
+  String s1284293e15(String p0, String p1) {
+    return 'setpoint $p0 ± $p1';
+  }
+
+  @override
+  String s07a15cf1d3(String p0) {
+    return 'Övre gränsen $p0';
+  }
+
+  @override
+  String s4e43228e07(String p0) {
+    return 'min $p0';
+  }
+
+  @override
+  String sd4db0fbbb5(String p0) {
+    return 'frost $p0';
+  }
+
+  @override
+  String get s63c3e9c766 => 'Inga prisdata';
+
+  @override
+  String s8c60756474(String p0, String p1) {
+    return '$p0 (skippad vid ≥ $p1 c)';
+  }
+
+  @override
+  String sff29b84ddc(String p0, String p1) {
+    return '$p0 (på ≤ $p1 c)';
+  }
+
+  @override
+  String get s750dcb984f => 'Varför? Reglerna och deras stat';
+
+  @override
+  String get s39d300e3ea => 'beslutar nu';
+
+  @override
+  String get s55153c17b8 => 'Nästa 24 h: Pris och planerade uppvärmningstimmar';
+
+  @override
+  String get sfb5a3f7da0 => 'Inga prisdata ännu.';
+
+  @override
+  String sba9d60d97c(String p0, String p1) {
+    return 'Orange = uppvärmning planerad på. En högre bar = en dyrare timme ($p0-$p1 c/kWh).';
+  }
+
+  @override
+  String s3030d2947a(String p0, String p1) {
+    return 'En högre bar = en dyrare timme ($p0-$p1 c/kWh). Planen visar när hembron har svarat.';
+  }
+
+  @override
+  String get s3d99bc591b => 'Manuell överridning';
+
+  @override
+  String get sb65a9ab4a9 =>
+      'Måltemperaturen höjs eller sänks för den valda tiden, sedan fortsätter automatisk kontroll.';
+
+  @override
+  String get sb1c3627dc7 =>
+      'Uppvärmning tvingas på eller av för den valda tiden, sedan fortsätter automatisk kontroll.';
+
+  @override
+  String get seeaa40c11e => 'Boost';
+
+  @override
+  String get s4cd3d92d4c => 'På';
+
+  @override
+  String get sdb7d34e8e1 => 'Sparsam';
+
+  @override
+  String get s33831dd49f => 'Av';
+
+  @override
+  String get s3ef843cf90 =>
+      'Säkerhetsgränserna (frostskydd och minimitemperatur) gäller fortfarande.';
+
+  @override
+  String get s3077b295d1 => 'Applicera';
+
+  @override
+  String get s7926a59e29 => 'Inget värde';
+
+  @override
+  String get s29fd8d5b5e => 'Nu';
+
+  @override
+  String s961397a99b(String p0) {
+    return 'Setpoint $p0 °C';
+  }
+
+  @override
+  String sc47170dbe0(String p0, String p1) {
+    return 'Setpoint $p0 °C (pris: $p1 °C denna timme)';
+  }
+
+  @override
   String get s6b536de0c8 =>
       'Genom din hembro: lampor, pluggar, Home Assistant, Shelly, Tasmota, ESPHome, Modbus, kamera stillbilder';
 
@@ -2080,20 +2294,11 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sf2c65c5aeb => 'Medelvärde';
 
   @override
-  String get s8653f173b6 => 'Temperatur';
-
-  @override
   String get s68b942c864 =>
       'Ställ in hemorten (Energy → Inställningar) för prognosen.';
 
   @override
   String get s38ac222392 => 'Värde';
-
-  @override
-  String get s4cd3d92d4c => 'På';
-
-  @override
-  String get s33831dd49f => 'Av';
 
   @override
   String get sa8e43f2b0e => 'Offline';
@@ -2797,9 +3002,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sd9923cda70 => 'Inte hemma? Sväng på fjärråtkomst';
-
-  @override
-  String get sf77125583f => 'Tekniska detaljer';
 
   @override
   String s9cf8aec76a(String p0) {
@@ -3675,9 +3877,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s90b5b7e33f => 'Färgintervall';
 
   @override
-  String get sd408a5dbe9 => 'Billigaste timmar';
-
-  @override
   String get sa26ae27039 => 'Hoppa över de dyraste timmarna';
 
   @override
@@ -3781,7 +3980,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sd172900c2d => 'Semester: edit';
 
   @override
-  String get s5da1e65941 => 'Holiday läge';
+  String get sdb217dcf7f => 'Lägg till ett kort till hemskärmen';
+
+  @override
+  String get s52d3e04a46 => 'Kort som läggs till på hemskärmen';
 
   @override
   String get sdca3ad13dd => 'Värmeanordningar';
@@ -3800,24 +4002,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s8c3353e896 => 'Ingen hembro är parad.';
 
   @override
-  String s38ccb420a7(String p0) {
-    return 'Fungerade inte: $p0';
-  }
-
-  @override
-  String s8847ee78e0(String p0) {
-    return 'Mål $p0 °C';
-  }
-
-  @override
-  String s4b761dad85(String p0) {
-    return 'Nästa: $p0';
-  }
-
-  @override
-  String s622f5654cd(String p0) {
-    return 'Fel: $p0';
-  }
+  String get s13a8a207ec => 'Regler och inställningar';
 
   @override
   String get s697b47220e => 'Smart värme på';
@@ -3904,13 +4089,51 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s025d1c3db1 => 'Temperatur medan borta';
 
   @override
-  String get s11e21d4f75 => 'Hur den är kontrollerad';
+  String get se34a337d6d => 'Välj temperaturgivaren';
+
+  @override
+  String get scfa5e7964d =>
+      'Du kan använda alla kort som visar en temperatur: en Shelly add-on sensor, Zigbee eller Home Assistant, Airthings, Bosch, Tuya.';
+
+  @override
+  String get s20ec3fcfd8 =>
+      'Det finns inget temperaturkort ännu. Lägg till en enhet med en temperatursensor först.';
+
+  @override
+  String get sf37075044e => 'Lägg till en ny enhet';
+
+  @override
+  String get se68cc54085 => 'Ingen sensor';
+
+  @override
+  String get s093677b5f1 => 'Kontroll läge';
+
+  @override
+  String get sa6195c2696 => 'Priset';
+
+  @override
+  String get s9d6a4787c0 => 'Vid temperatur';
+
+  @override
+  String get s84cf10acfd =>
+      'Uppvärmning följer den uppmätta temperaturen som en termostat. Prisreglerna flyttar bara inställningspunkten: upp i billiga timmar, ner i dyra (om de är inställda).';
+
+  @override
+  String get sdf9dc612a6 =>
+      'Värme följer elpriset och vädret. En temperatursensor är valfri och ger säkerhetsgränserna.';
+
+  @override
+  String get s01c555401a => 'Välj en temperatursensor';
+
+  @override
+  String get s249140bfd0 =>
+      'Temperaturkontroll behöver en sensor. Utan en följer uppvärmning prisschemat.';
+
+  @override
+  String get sf9cbe76823 => 'Prisregler';
 
   @override
   String get s8e6c8ffabb => ' (rekommenderas)';
-
-  @override
-  String get sa35e3e99f4 => 'Kontroll på';
 
   @override
   String get s86c45674db => 'Värme timmar om dagen';
@@ -3919,13 +4142,87 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sbd3dbfd7e9 => 'De flesta dyra timmar hoppade över';
 
   @override
-  String get s1f3d8e19f4 => 'Längsta paus i taget';
+  String s1f32a43166(String p0) {
+    return 'Dagens prisgräns: hoppade över när priset är $p0 c/kWh eller mer.';
+  }
+
+  @override
+  String s3c010a59e8(String p0) {
+    return 'Dagens prisgräns: när priset är $p0 c/kWh eller mindre.';
+  }
+
+  @override
+  String get s68b3688217 => 'Ställ ner i dyra timmar';
+
+  @override
+  String get s108a800ffc => 'inte används';
+
+  @override
+  String get sb35d5f8afd => 'Ställ upp i billiga timmar';
+
+  @override
+  String get sd82fb84485 => 'Temperaturgränser';
+
+  @override
+  String get s510de048b8 => 'Setpoint';
 
   @override
   String get s017c87df20 => 'Komforttemperatur';
 
   @override
-  String get se68cc54085 => 'Ingen sensor';
+  String get sdb145487c3 => 'Minimitemperatur (säkerhetsgräns)';
+
+  @override
+  String get s0c40392b6a => 'Ingen sensor – säkerhetsgränserna är inte aktiva';
+
+  @override
+  String get scf2e61da2c => 'inte svara';
+
+  @override
+  String get s6a37cdb806 => 'Förseningar';
+
+  @override
+  String get s1f3d8e19f4 => 'Längsta paus i taget';
+
+  @override
+  String get s061c02e7ea => 'Minsta tider: ingen gräns (avancerad).';
+
+  @override
+  String se7bc20343e(String p0, String p1) {
+    return 'Minst i tid $p0 min, av $p1 min.';
+  }
+
+  @override
+  String get sa35e3e99f4 => 'Kontroll på';
+
+  @override
+  String get sd8084282ca => 'Hysteresis (dödband)';
+
+  @override
+  String s3bded44765(String p0, String p1) {
+    return 'På under $p0 °C, utanför ovan $p1 °C (före varje prisskifte).';
+  }
+
+  @override
+  String get s3df29f3fca => 'När sensorn inte svarar';
+
+  @override
+  String get s5f9a56b766 => 'Följ prisschemat';
+
+  @override
+  String get scc764046c2 => 'Fortsätt';
+
+  @override
+  String get sd50c0e6c4d => 'Håll av';
+
+  @override
+  String get s64540136ff => 'Minsta tid på';
+
+  @override
+  String get s5e55e17318 => 'Ingen gräns';
+
+  @override
+  String get s21713a2177 => 'Minsta tid av';
 
   @override
   String get s347ce4c3d2 => 'Minska i eldstad läge';
@@ -4993,9 +5290,6 @@ class AppLocalizationsSv extends AppLocalizations {
       'Ingen hembro: termostaten styr ännu inte. Ställ in fjärråtkomst på en enhet i hemmet.';
 
   @override
-  String get s29fd8d5b5e => 'Nu';
-
-  @override
   String get see9111ba68 => 'Relä eller brytare (på/av)';
 
   @override
@@ -5085,12 +5379,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sf070be2c1e => 'Dödband (värme/kyla)';
-
-  @override
-  String get s64540136ff => 'Minsta tid på';
-
-  @override
-  String get s21713a2177 => 'Minsta tid av';
 
   @override
   String get s8f7c8eb7d0 => 'Backup värmare när under målet genom';
@@ -5405,9 +5693,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sb9e406274e => 'Online online online';
-
-  @override
-  String get scf2e61da2c => 'inte svara';
 
   @override
   String get sb981e102f1 => 'gamla Molaplan (0.8.0 testbygge eller äldre)';
@@ -6126,9 +6411,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s2b2118a93b => 'Gamla data';
-
-  @override
-  String get sb730159a01 => 'Pris nu';
 
   @override
   String get s68fcfcfed1 => 'Billigaste timmen i dag';
@@ -10288,6 +10570,416 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s333643b4c4 =>
       'SMA Energy Meter: inga sändningar i hemnätverket (multicast 239.12.255.254:9522)';
+
+  @override
+  String get s741ad14d6e => 'under en minut';
+
+  @override
+  String get s61cb8b20cf => 'Enheten';
+
+  @override
+  String s69e8cc73cb(String p0) {
+    return '$p0 svarar inte (anslutningen tidsbestämd)';
+  }
+
+  @override
+  String sb6b6fb4fe1(String p0, String p1) {
+    return '$p0 svarar inte (timeout $p1 s)';
+  }
+
+  @override
+  String s6f71cad9b6(String p0) {
+    return '$p0 vägrar anslutningen (anslutning vägrade)';
+  }
+
+  @override
+  String sc45478e8fd(String p0) {
+    return '$p0 kan inte nås (ingen nätverksväg)';
+  }
+
+  @override
+  String s0114e1e46c(String p0) {
+    return '$p0: Adressen kan inte hittas';
+  }
+
+  @override
+  String s5c5afb4b38(String p0, String p1) {
+    return '$p0 avvisade inloggningen (HTTP $p1)';
+  }
+
+  @override
+  String seb34841f6b(String p0, String p1) {
+    return '$p0: Adressen är inte giltig (HTTP $p1)';
+  }
+
+  @override
+  String sf2580c0069(String p0, String p1) {
+    return '$p0 svarade med ett fel (HTTP $p1)';
+  }
+
+  @override
+  String get s0528a2ef9e => 'Enheten har ingen kommando på/off';
+
+  @override
+  String get sd0e9fc6760 => 'Kontrollen fungerade inte';
+
+  @override
+  String get sc056006180 =>
+      'Kontrollera att enheten är på och på samma nätverk som hemmabron. Smart värme retries varje minut; tills det fungerar enheten stannar i sitt nuvarande tillstånd.';
+
+  @override
+  String get s7a1cda0d24 =>
+      'Kontrollera enhetens lösenord i anslutningsinställningarna.';
+
+  @override
+  String get s4dc27a3272 =>
+      'Kontrollera enhetsadressen och kommandot i kortinställningarna.';
+
+  @override
+  String get s54dbdeb56b =>
+      'Enheten svarade men accepterade inte kommandot. Försök att starta om enheten.';
+
+  @override
+  String get s8e9e56f68f => 'Se den exakta orsaken under tekniska detaljer.';
+
+  @override
+  String get s7279e2bdb1 => 'Manuell överridning';
+
+  @override
+  String get s8accab3bb7 => 'Priset skiftar setpoint';
+
+  @override
+  String get s78188d956e => 'Rummet varmt nog';
+
+  @override
+  String get saa76f06f20 => 'Hoppa över dyra timmar';
+
+  @override
+  String get s846c49053e => 'Längsta paus';
+
+  @override
+  String get se79c5ead71 => 'Prisdata';
+
+  @override
+  String get sa30e1a2c14 => 'Temperaturgivare';
+
+  @override
+  String get s39147d043d => 'Inte i bruk';
+
+  @override
+  String get s7d4144c0a0 => 'Ingen temperatur – kan inte kontrolleras';
+
+  @override
+  String s70d66e5f81(String p0, String p1) {
+    return '$p0 °C är under $p1 °C - uppvärmning på';
+  }
+
+  @override
+  String sd93442ff7c(String p0, String p1) {
+    return '$p0 °C, limit $p1 °C';
+  }
+
+  @override
+  String s9bf02da8ca(String p0, String p1) {
+    return 'På för $p0 (till $p1)';
+  }
+
+  @override
+  String sb8c4753e09(String p0, String p1) {
+    return 'Av för $p0 (till $p1)';
+  }
+
+  @override
+  String get sc9f92f4156 => 'Brandplatsvärmen: elektrisk uppvärmning minskas';
+
+  @override
+  String sf78c1a349f(String p0) {
+    return 'Away: hålla $p0 °C';
+  }
+
+  @override
+  String get s5faeeab2c8 => 'Inte i kraft nu';
+
+  @override
+  String s2226c324ef(String p0) {
+    return 'Sensorn svarar inte – $p0';
+  }
+
+  @override
+  String se363372312(String p0, String p1, String p2, String p3, String p4) {
+    return '$p0 °C, setpoint $p1 °C ± $p2 °C (på under $p3, utanför ovan $p4 °C)';
+  }
+
+  @override
+  String get s0f95c71a7a => 'Ingen förändring i denna timme';
+
+  @override
+  String sc634878941(String p0) {
+    return 'Billig timme: setpoint +$p0 °C';
+  }
+
+  @override
+  String sedcfc0a927(String p0) {
+    return 'Dyrtimme: setpoint $p0 °C';
+  }
+
+  @override
+  String s642427fe2b(String p0, String p1) {
+    return '$p0 °C ≥ $p1 °C - inte uppvärmning';
+  }
+
+  @override
+  String sda0b91c359(String p0, String p1) {
+    return '$p0 °C, övre gränsen $p1 °C';
+  }
+
+  @override
+  String sf3a33e9bc5(String p0, String p1, String p2, String p3) {
+    return '$p0 billigaste timmar om dagen: nu $p1 c/kWh $p2 gräns $p3 c';
+  }
+
+  @override
+  String s428ce35d71(String p0, String p1, String p2, String p3) {
+    return '$p0 dyraste timmar hoppade över: nu $p1 c/kWh $p2 gräns $p3 c';
+  }
+
+  @override
+  String get s6200d2086c => 'Ingen prognos';
+
+  @override
+  String s29d9986638(String p0, String p1) {
+    return 'Prognos $p0 °C i genomsnitt → $p1 uppvärmning timmar per dag';
+  }
+
+  @override
+  String get sdcf4412899 => 'Av för länge – värme i en timme';
+
+  @override
+  String s8a9723fbbb(String p0) {
+    return 'Av för högst $p0 h i taget';
+  }
+
+  @override
+  String get s9fe316f0b6 => 'Ingen gräns';
+
+  @override
+  String s70094ce99b(String p0) {
+    return 'Väntar: åtminstone $p0 min';
+  }
+
+  @override
+  String s71d72597eb(String p0) {
+    return 'Åtminstone $p0 min';
+  }
+
+  @override
+  String get s84cf358040 => 'Inga priser – uppvärmning går normalt';
+
+  @override
+  String get s0e19d6ac09 => 'Priser tillgängliga';
+
+  @override
+  String get s9583d61085 => 'Ingen sensor vald';
+
+  @override
+  String get s756b49f274 => 'Svara inte';
+
+  @override
+  String s3ddc69fd91(String p0) {
+    return 'Svar: $p0 °C';
+  }
+
+  @override
+  String get sa0c950bdca => 'Svara inte';
+
+  @override
+  String get sc3b0eaf426 => 'Svar';
+
+  @override
+  String get sa3f65879ff => 'Värme hålls på';
+
+  @override
+  String get s5906232c68 => 'Värme hålls av';
+
+  @override
+  String get sc084b8cbdf => 'efter prisschemat';
+
+  @override
+  String get s136e7941a4 => 'DISABLED';
+
+  @override
+  String s8847ee78e0(String p0) {
+    return 'Mål $p0 °C';
+  }
+
+  @override
+  String get sedcddfbb2f => 'INGEN REPLY';
+
+  @override
+  String get s6ab8f97950 => 'ON';
+
+  @override
+  String get s509c668d7e => 'OFF';
+
+  @override
+  String get s70d43f1209 => 'Kontrollen är avstängd';
+
+  @override
+  String get s4f7ef5d46a => 'Sensor svarar inte – efter prisschemat: ';
+
+  @override
+  String s9e31ebc1e8(String p0, String p1) {
+    return 'Frostskydd: $p0 °C är under $p1 °C';
+  }
+
+  @override
+  String s7cdb2a0cb6(String p0, String p1) {
+    return 'Temperatur $p0 °C under minimum $p1 °C';
+  }
+
+  @override
+  String sf3b0d012da(String p0) {
+    return 'Manuell åsidosättande: on$p0';
+  }
+
+  @override
+  String s14be0441f7(String p0) {
+    return 'Manuell åsidosättande: off$p0';
+  }
+
+  @override
+  String get sd735da4378 => 'Eldstadsläge: elektrisk uppvärmning minskas';
+
+  @override
+  String get s482b48b34c => 'Semesterläge: rummet hålls svalare';
+
+  @override
+  String get s6a24d44a71 => 'Semesterläge: Värme för din retur';
+
+  @override
+  String s247db88d99(String p0, String p1) {
+    return 'Varmt nog ($p0 °C ≥ $p1 °C)';
+  }
+
+  @override
+  String s0d09da9167(String p0, String p1) {
+    return 'Billig timme ($p0 c/kWh ≤ gräns $p1 c)';
+  }
+
+  @override
+  String sbbcaad0790(String p0) {
+    return 'Uppvärmning så att pausen inte blir för lång ($p0 c/kWh)';
+  }
+
+  @override
+  String sf56f514430(String p0, String p1) {
+    return '$p0 c/kWh > gräns $p1 c';
+  }
+
+  @override
+  String s9cdd4b289a(String p0) {
+    return 'Dyrtimme – lagringsgolvet räcker ($p0)';
+  }
+
+  @override
+  String sbf758df617(String p0) {
+    return 'Inte en billig timme – vänta ($p0)';
+  }
+
+  @override
+  String s03e2decc6e(String p0, String p1) {
+    return '$p0 c/kWh ≥gräns $p1 c';
+  }
+
+  @override
+  String s8285023fb8(String p0) {
+    return 'Dyrbar timme hoppad ($p0)';
+  }
+
+  @override
+  String get s8851083ec4 => 'Normal uppvärmning';
+
+  @override
+  String get s452449f24c => 'Inga prisdata – värme körs normalt';
+
+  @override
+  String sadbee991d6(String p0, String p1) {
+    return 'Temperatur $p0 °C är under inställningen $p1 °C - uppvärmning';
+  }
+
+  @override
+  String s0e20e8780d(String p0, String p1) {
+    return 'Setpoint $p0 °C nådde ($p1 °C)';
+  }
+
+  @override
+  String s3f74d751fe(String p0) {
+    return 'Uppvärmning till $p0 °C';
+  }
+
+  @override
+  String s91276ece64(String p0) {
+    return 'Tills temperaturen sjunker under $p0 °C';
+  }
+
+  @override
+  String get s4437d2666a => 'Sensorn svarar inte – värme hålls på';
+
+  @override
+  String get s127c973eb9 => 'Sensorn svarar inte – värme hålls av';
+
+  @override
+  String get s7e2afd388e =>
+      'Säkerhetsgräns: av för länge – uppvärmning i en timme';
+
+  @override
+  String get s630919f15c => 'Skicka på: minimum i tid är inte över';
+
+  @override
+  String get sf5f33530ca => 'Skickad: Minsta lediga tid är inte över';
+
+  @override
+  String get sd36f9bf75a => 'Förvärmning före en dyr eller kall stavning';
+
+  @override
+  String get s8ea3994a9b => 'Spara medan dyrt';
+
+  @override
+  String get s8ec3c3bdb9 => 'Ingen information ännu';
+
+  @override
+  String get sd80668c71a => 'Nästa förändring beror på temperaturen';
+
+  @override
+  String s723147d2b2(String p0) {
+    return 'Automatisk kontroll återupptas på $p0';
+  }
+
+  @override
+  String sc2c736c508(String p0) {
+    return 'Nästa på $p0';
+  }
+
+  @override
+  String s2c7a2c7c84(String p0) {
+    return 'Nästa på $p0';
+  }
+
+  @override
+  String s6ebbbbc4a0(String p0) {
+    return 'Temperaturkontroll och säkerhetsgränser (frostskydd, lägsta temperatur) är avstängda och $p0.';
+  }
+
+  @override
+  String get sdba1212edb =>
+      'Säkerhetsgränserna (frostskydd, lägsta temperatur) är avstängda och uppvärmning följer prisschemat.';
+
+  @override
+  String get sbf916076f9 => 'Temperatursensorn svarar inte.';
+
+  @override
+  String get s9fad63ec58 =>
+      'Kontrollera sensorbatteriet och nätverket eller välj en annan sensor.';
 
   @override
   String get s0a81072a1f =>

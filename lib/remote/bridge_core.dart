@@ -207,7 +207,10 @@ class BridgeCore {
         try {
           shares
             ..clear()
-            ..addAll(Map<String, dynamic>.from(jsonDecode(sh) as Map).map((k, v) => MapEntry(k, Map<String, dynamic>.from(v as Map))));
+            ..addAll(
+              Map<String, dynamic>.from(jsonDecode(sh) as Map)
+                  .map((k, v) => MapEntry(k, Map<String, dynamic>.from(v as Map))),
+            );
         } catch (_) {}
       }
       final rr = await store.read('$storageKey.rules');
@@ -323,6 +326,16 @@ class BridgeCore {
     }
   }
 
+  /// R612: manual override – {load, on, hours} or {load, clear:true} (load null = every device).
+  void manualOp(Map<String, dynamic> m) {
+    final id = m['load'] as String?;
+    if (m['clear'] == true) {
+      smart.clearManual(loadId: id);
+    } else {
+      smart.setManual(loadId: id, on: m['on'] == true, hours: (m['hours'] as num?)?.toInt() ?? 2);
+    }
+  }
+
   /// Replaces the automation package (with connections) and stores it.
   Future<void> setAutomations(AutomationPackage p) async {
     await store.write('$storageKey.auto', jsonEncode(p.toJson()));
@@ -395,6 +408,7 @@ class BridgeCore {
         await setSmartHeating(h is Map ? SmartHeatingJob.fromJson(Map<String, dynamic>.from(h)) : null);
       }
       if (spec['fireplace'] is Map) fireplaceOp(Map<String, dynamic>.from(spec['fireplace'] as Map));
+      if (spec['manual'] is Map) manualOp(Map<String, dynamic>.from(spec['manual'] as Map));
       return {
         'id': id,
         'ok': true,
@@ -705,7 +719,15 @@ class BridgeCore {
       final token = b64(randomBytes(32));
       await _allow(dev, recipientName, recipientPub, token, share: id);
       log?.call('share $id: device $dev allowed (${(package['tiles'] as Map).length} tiles)');
-      out = {'id': id, 'relay': relay, 'home': home, 'dev': dev, 'bridgePub': publicKey, 'token': token, 'name': homeName};
+      out = {
+        'id': id,
+        'relay': relay,
+        'home': home,
+        'dev': dev,
+        'bridgePub': publicKey,
+        'token': token,
+        'name': homeName,
+      };
     }
     _changes.add(null);
     return out;
@@ -799,7 +821,8 @@ class BridgeCore {
     final spec = Map<String, dynamic>.from((r['spec'] as Map?) ?? const {});
     TileConfig? tile(String tid) =>
         tiles[tid] is Map ? TileConfig.fromJson(Map<String, dynamic>.from(tiles[tid] as Map)) : null;
-    Map<String, dynamic>? conn(String? cid) => cid == null || conns[cid] is! Map ? null : Map<String, dynamic>.from(conns[cid] as Map);
+    Map<String, dynamic>? conn(String? cid) =>
+        cid == null || conns[cid] is! Map ? null : Map<String, dynamic>.from(conns[cid] as Map);
 
     Future<Map<String, dynamic>> readTile(TileConfig t, Object? rid) async {
       final c = conn(t.connectionId);
@@ -810,7 +833,11 @@ class BridgeCore {
 
     switch (r['op']) {
       case 'ping':
-        return {'id': id, 'ok': true, 'v': {'v': remoteProtocolVersion}};
+        return {
+          'id': id,
+          'ok': true,
+          'v': {'v': remoteProtocolVersion},
+        };
       case 's_config':
         return {
           'id': id,
@@ -821,7 +848,11 @@ class BridgeCore {
             'level': scope.level,
             'tiles': [
               for (final tid in tiles.keys)
-                if (tile(tid) case final t?) publicTile(t, {for (final c in ShareCap.values) if (scope.allows(tid, c)) c}),
+                if (tile(tid) case final t?)
+                  publicTile(t, {
+                    for (final c in ShareCap.values)
+                      if (scope.allows(tid, c)) c,
+                  }),
             ],
           },
         };
@@ -834,7 +865,9 @@ class BridgeCore {
               readTile(t, tid).then((v) {
                 out[tid] = v['ok'] == true ? {'v': v['v']} : {'e': v['e']};
                 final x = v['v'];
-                if (t.sensor != null && v['ok'] == true && (x == true || x == 1 || x == '1' || x == 'on' || x == 'true')) {
+                if (t.sensor != null &&
+                    v['ok'] == true &&
+                    (x == true || x == 1 || x == '1' || x == 'on' || x == 'true')) {
                   alarms.add({'tile': tid, 'title': t.title, 'sensor': t.sensor});
                 }
                 if (v['ok'] != true) alarms.add({'tile': tid, 'title': t.title, 'error': v['e']});

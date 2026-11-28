@@ -8,13 +8,13 @@ import 'energy_pages.dart';
 
 import 'dart:async';
 
-
 import 'package:material_ui/material_ui.dart';
 
 import '../models/models.dart';
 import 'account_nudge.dart';
 import 'add_sheet.dart';
 import 'app_scope.dart';
+import 'heating_view.dart';
 import 'automation_pages.dart';
 import 'remote_pages.dart';
 import 'connections_page.dart';
@@ -48,6 +48,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (!mounted) return;
       final st = AppScope.read(context);
+      if (st.loaded) unawaited(ensureHeatingTile(st)); // R613
       if (st.loaded && !st.config.onboardingDone && st.config.connections.isEmpty) {
         // On the web the intro already offered guest use / sign-in.
         if (accountNudges && !st.account.signedIn && !Plat.isWeb) {
@@ -810,16 +811,16 @@ class _EditableTileState extends State<_EditableTile> {
     );
     // Mouse/trackpad: press-and-drag. Touch: long-press, so the view can still scroll.
     Widget drag(Widget child) => MouseRegion(
-          cursor: SystemMouseCursors.grab,
-          child: EditTileDraggable<String>(
-            data: t.id,
-            feedback: feedback,
-            onDragStarted: widget.onDragStart,
-            onDragEnd: (_) => widget.onDragEnd(),
-            childWhenDragging: Opacity(opacity: 0.25, child: overlay),
-            child: child,
-          ),
-        );
+      cursor: SystemMouseCursors.grab,
+      child: EditTileDraggable<String>(
+        data: t.id,
+        feedback: feedback,
+        onDragStarted: widget.onDragStart,
+        onDragEnd: (_) => widget.onDragEnd(),
+        childWhenDragging: Opacity(opacity: 0.25, child: overlay),
+        child: child,
+      ),
+    );
 
     // Corner handle: drag to resize (snaps to grid units).
     final handle = Positioned(

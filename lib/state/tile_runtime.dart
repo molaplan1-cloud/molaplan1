@@ -30,6 +30,7 @@ class TileRuntime extends ChangeNotifier {
       tile.read.isNotEmpty &&
       tile.read['kind'] != 'climate' &&
       tile.read['kind'] != 'weather' &&
+      tile.read['kind'] != 'heating' && // R610: reads the shared heating state
       tile.read['kind'] != 'log'; // R485: a log / trend tile reads the log store
 
   /// t193u: live runtimes by tile id, so a script / scene / control button can refresh the
@@ -181,7 +182,12 @@ class TileRuntime extends ChangeNotifier {
   static void noteAction(TileConfig t) {
     final now = DateTime.now();
     lastActionAt[t.id] = now;
-    for (final c in [t.connectionId, t.onCommand?.connectionId, t.offCommand?.connectionId, ...t.commands.map((c) => c.connectionId)]) {
+    for (final c in [
+      t.connectionId,
+      t.onCommand?.connectionId,
+      t.offCommand?.connectionId,
+      ...t.commands.map((c) => c.connectionId),
+    ]) {
       if (c != null && c.isNotEmpty) lastActionAt['c:$c'] = now;
     }
   }

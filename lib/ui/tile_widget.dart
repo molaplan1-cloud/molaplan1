@@ -41,6 +41,7 @@ import 'tile_visuals.dart';
 import 'weather_tile.dart';
 import 'log_pages.dart' show LogTileView, openTileLog;
 import '../log/log_def.dart' show canLogTile, isLogViewTile;
+import 'heating_view.dart';
 import 'sensor_tile.dart';
 import 'alarm_log_page.dart';
 import 'security_tile.dart';
@@ -849,6 +850,7 @@ class _TileWidgetState extends State<TileWidget> {
   Widget _build(BuildContext context) {
     // t144u: 0,5-size tiles get a compact variant (icon + value, one button, a mini toggle).
     if (isLogViewTile(t)) return LogTileView(tile: t, editing: widget.editing); // R486
+    if (isHeatingTile(t)) return HeatingTile(tile: t, editing: widget.editing); // R610
     if (isMiniTile(t)) return _mini(context);
     if (isWeatherTile(t)) return WeatherTile(tile: t, editing: widget.editing);
     final away = awayLanConnection(AppScope.of(context), t);
