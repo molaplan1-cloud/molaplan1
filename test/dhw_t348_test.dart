@@ -5,12 +5,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:molaplan/energy/heating_explain.dart';
 import 'package:molaplan/energy/smart_heating.dart';
-import 'package:molaplan/models/models.dart';
 import 'package:molaplan/prices/prices.dart';
-import 'package:molaplan/state/app_state.dart';
 import 'package:molaplan/ui/app_scope.dart';
 import 'package:molaplan/ui/heat_program_pages.dart';
-import 'package:molaplan/ui/heating_view.dart';
 import 'package:molaplan/ui/smart_heating_pages.dart';
 
 import 'heat_programs_t338_test.dart' show end, makeState, settle, wide;

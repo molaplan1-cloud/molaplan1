@@ -9,7 +9,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:molaplan/energy/smart_heating.dart';
-import 'package:molaplan/models/models.dart';
 import 'package:molaplan/prices/prices.dart';
 import 'package:molaplan/state/app_state.dart';
 import 'package:molaplan/ui/app_scope.dart';
