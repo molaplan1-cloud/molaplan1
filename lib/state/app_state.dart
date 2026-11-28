@@ -120,6 +120,8 @@ class AppState extends ChangeNotifier implements SyncHost {
     update = UpdateState(
       checkedAt: () => config.updateCheckedAt,
       skipped: () => config.updateSkip,
+      autoOn: () => config.updateAuto,
+      autoInstallOn: () => config.updateAutoInstall,
       remember: ({int? checkedAt, String? skip}) async {
         if (checkedAt != null) config.updateCheckedAt = checkedAt;
         if (skip != null) config.updateSkip = skip;
@@ -1067,6 +1069,22 @@ class AppState extends ChangeNotifier implements SyncHost {
     notifyListeners();
   }
 
+  /// R703: "Tarkista päivitykset automaattisesti" (Asetukset).
+  Future<void> setUpdateAuto(bool on) async {
+    config.updateAuto = on;
+    if (!on) config.updateAutoInstall = false;
+    await save();
+    notifyListeners();
+  }
+
+  /// R703: "Asenna päivitykset automaattisesti" (Windows; off by default).
+  Future<void> setUpdateAutoInstall(bool on) async {
+    config.updateAutoInstall = on;
+    if (on) config.updateAuto = true;
+    await save();
+    notifyListeners();
+  }
+
   void _scheduleBridgeUpdates() {
     _autoUpdate?.cancel();
     _autoUpdate = null;
@@ -1315,6 +1333,8 @@ class AppState extends ChangeNotifier implements SyncHost {
     'remoteCameraSeconds',
     'updateCheckedAt',
     'updateSkip',
+    'updateAuto',
+    'updateAutoInstall',
     'viewLocked',
     'autoLocal',
     'notifyInApp',

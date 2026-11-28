@@ -13,7 +13,6 @@ import '../models/models.dart' hide Threshold;
 import '../state/examples.dart';
 import '../state/app_state.dart' show AppState;
 import '../state/migrations.dart' show connectionUses;
-import '../state/update_state.dart' show UpdatePhase;
 import 'account_page.dart';
 import 'account_nudge.dart';
 import 'app_scope.dart';
@@ -23,7 +22,7 @@ import 'onboarding_page.dart';
 import 'remote_pages.dart';
 import 'share_pages.dart';
 import 'installer_pages.dart';
-import 'update_ui.dart';
+import 'windows_update_ui.dart';
 import '../version.dart';
 import 'language_picker.dart';
 import 'log_pages.dart' show LogsPage;
@@ -720,24 +719,7 @@ class _SettingsPageState extends State<SettingsPage> {
               if (Plat.isWeb)
                 const WebLimitsCard()
               else
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: OutlinedButton.icon(
-                    key: const ValueKey('settings-check-updates'),
-                    onPressed: st.update.phase == UpdatePhase.checking
-                        ? null
-                        : () => manualUpdateCheck(context),
-                    icon: st.update.phase == UpdatePhase.checking
-                        ? const SizedBox.square(
-                            dimension: 18,
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          )
-                        : const Icon(Icons.system_update_alt),
-                    label: Text(
-                      tx(context, 'Tarkista päivitykset', 'Check for updates'),
-                    ),
-                  ),
-                ),
+                const UpdateSettingsSection(),
               const SizedBox(height: 8),
               Text(
                 tx(

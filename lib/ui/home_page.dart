@@ -30,6 +30,7 @@ import 'tile_look.dart';
 import 'tile_visuals.dart' show RoomBackdrop;
 import 'tile_widget.dart';
 import 'update_ui.dart';
+import 'windows_update_ui.dart' show showUpdateOutcome;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -71,6 +72,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         }
       }
       if (mounted && st.loaded) {
+        unawaited(showUpdateOutcome(context)); // R710: what an update that just ran did (Windows)
         unawaited(startupUpdateCheck(context));
         unawaited(st.account.syncNow(quiet: true));
       }

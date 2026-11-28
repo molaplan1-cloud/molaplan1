@@ -4879,7 +4879,6 @@
  "@s057b871ed2": {
   "x-mt": true
  },
- "s522d6584c5": "Sök efter uppdateringar",
  "sd178a1d809": "Din egen kontrollterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kameror, WebSocket, TCP och UDP. Utan ett konto stannar alla inställningar på den här enheten.",
  "@sd178a1d809": {
   "x-mt": true
@@ -5614,6 +5613,7 @@
   "x-mt": true
  },
  "sdd5c8f0a9d": "Senare",
+ "s696dfe5700": "Uppdatera nu",
  "s5a94ef2af1": "Nedladdningen var skadad",
  "@s5a94ef2af1": {
   "x-mt": true
@@ -5830,6 +5830,16 @@
  "@s9e8430c37b": {
   "x-mt": true
  },
+ "s22237546b7": "Windows ber om tillstånd",
+ "s1653ef3e98": "Uppdaterar…",
+ "se85804c09e": "Packar upp…",
+ "sfde238d022": "Uppdateringen kunde inte laddas ned",
+ "s97eb7f7a6e": "Uppdateringen lyckades inte – den gamla versionen återställdes",
+ "s4a001df75d": "Uppdateringen installerades inte – tillstånd saknades",
+ "s16ed002faf": "Uppdateringen blev inte klar",
+ "s522d6584c5": "Sök efter uppdateringar",
+ "sd67c7026fd": "Sök efter uppdateringar automatiskt",
+ "sa4003c37b9": "Installera uppdateringar automatiskt",
  "s7f308d40c8": "Värmer",
  "s41de361b3e": "Kyler",
  "s4f7ccb7138": "Avfuktar",
@@ -12246,6 +12256,18 @@
  "@s2e87289ebd": {
   "x-mt": true
  },
+ "s77a618c932": "Den här enheten kan inte spela kamerans videoformat (H.265) - prova underströmmen eller växla kameran till H.264 i dess inställningar",
+ "@s77a618c932": {
+  "x-mt": true
+ },
+ "sc32dfb8942": "Den här enheten kan inte spela kamerans videoformat ({p0})",
+ "@sc32dfb8942": {
+  "x-mt": true
+ },
+ "s4f556c0322": "Den här enheten kan inte spela kameravideon (dekodern öppnade inte)",
+ "@s4f556c0322": {
+  "x-mt": true
+ },
  "sd86b823895": "Sonoff",
  "s5f297ec9d8": "BASIC, MINI, POW, TH, 4CH ... i DIY-läge, med Tasmota eller ESPHome. Kort är gjorda för dig; fjärranvändning via hembron.",
  "@s5f297ec9d8": {
@@ -12934,16 +12956,128 @@
  "@s06444f278d": {
   "x-mt": true
  },
- "s77a618c932": "Den här enheten kan inte spela kamerans videoformat (H.265) - prova underströmmen eller växla kameran till H.264 i dess inställningar",
- "@s77a618c932": {
+ "s3cb3b0f9e9": "Molaplan laddar ner uppdateringen, stänger för ett ögonblick och startar om av sig själv. Dina inställningar hålls.",
+ "@s3cb3b0f9e9": {
   "x-mt": true
  },
- "sc32dfb8942": "Den här enheten kan inte spela kamerans videoformat ({p0})",
- "@sc32dfb8942": {
+ "sba5d22a11d": "Molaplan är installerad i {p0}, som en normal användare inte kan skriva till. När du trycker på Fortsätt ber Windows om tillstånd att installera uppdateringen. Välj Ja. Om du inte tillåter det ändras ingenting.",
+ "@sba5d22a11d": {
   "x-mt": true
  },
- "s4f556c0322": "Den här enheten kan inte spela kameravideon (dekodern öppnade inte)",
- "@s4f556c0322": {
+ "s0684e0b288": "Molaplan stänger för ett ögonblick och startar om sig själv i den nya versionen {p0}. Dina inställningar hålls.",
+ "@s0684e0b288": {
+  "x-mt": true
+ },
+ "s01f0721d12": "Du kan prova igen med Kontroll för uppdateringar i Inställningar.",
+ "@s01f0721d12": {
+  "x-mt": true
+ },
+ "saeb9f339ea": "Uppdatering {p0} är klar",
+ "@saeb9f339ea": {
+  "x-mt": true
+ },
+ "s584b333948": "Molaplan uppdaterar och startar om i {p0} s. Dina inställningar hålls.",
+ "@s584b333948": {
+  "x-mt": true
+ },
+ "sd34bc5b759": "Uppdateringen är inte tillgänglig för nedladdning ännu",
+ "@sd34bc5b759": {
+  "x-mt": true
+ },
+ "s69806434b6": "Uppdateringen kunde inte sparas till disk",
+ "@s69806434b6": {
+  "x-mt": true
+ },
+ "s91ef8085b3": "Uppdateringen kunde inte packas upp",
+ "@s91ef8085b3": {
+  "x-mt": true
+ },
+ "s9de25df723": "Den nedladdade filen är inte ett Molaplan-paket",
+ "@s9de25df723": {
+  "x-mt": true
+ },
+ "s9ae7791013": "Uppdateraren kunde inte startas",
+ "@s9ae7791013": {
+  "x-mt": true
+ },
+ "sea2070f532": "En äldre version är inte installerad",
+ "@sea2070f532": {
+  "x-mt": true
+ },
+ "s12b599bf15": "Uppdateringen fungerade inte",
+ "@s12b599bf15": {
+  "x-mt": true
+ },
+ "s4280d34c21": "Internetanslutningen fungerade inte. Ingenting ändrades och den aktuella versionen fortsätter att fungera. Kontrollera anslutningen och försök igen.",
+ "@s4280d34c21": {
+  "x-mt": true
+ },
+ "s00cf811000": "Den nya versionen har just publicerats och dess filer är inte tillgängliga ännu. Försök igen om några minuter.",
+ "@s00cf811000": {
+  "x-mt": true
+ },
+ "sbe407f9965": "Spara uppdateringen till disken misslyckades. Kontrollera att disken har minst 500 MB gratis och att antivirus inte blockerar filerna, försök sedan igen.",
+ "@sbe407f9965": {
+  "x-mt": true
+ },
+ "sf865bf69b9": "Den nedladdade filen kunde inte packas upp. Ingenting ändrades. Försök igen; om det fortsätter att misslyckas, ladda ner uppdateringen från släppsidan.",
+ "@sf865bf69b9": {
+  "x-mt": true
+ },
+ "s67ed401b44": "Den nedladdade filen innehåller inte Molaplan-programmet, så det var inte installerat. Ingenting ändrades.",
+ "@s67ed401b44": {
+  "x-mt": true
+ },
+ "s540be0ec41": "Windows eller antivirus stoppade uppdateringsprogrammet från att starta. Inget ändrades. Du kan ladda ner zip från släppsidan och extrahera den över den gamla Molaplan-mappen.",
+ "@s540be0ec41": {
+  "x-mt": true
+ },
+ "s43cad41986": "Den erbjudna versionen är inte nyare än den du har, så den var inte installerad.",
+ "@s43cad41986": {
+  "x-mt": true
+ },
+ "s58ef99cde3": "Ingenting har ändrats. Försök igen senare.",
+ "@s58ef99cde3": {
+  "x-mt": true
+ },
+ "s446ef05921": "Molaplan uppdaterades till version {p0}. Dina inställningar hölls.",
+ "@s446ef05921": {
+  "x-mt": true
+ },
+ "s7af95a89c6": "Den nya versionen {p0} startade inte eller dess filer kunde inte ersättas (antivirus kan ha låst dem), så Molaplan restaurerade den tidigare versionen {p1}. Dina inställningar är säkra. Du kan försöka igen senare.",
+ "@s7af95a89c6": {
+  "x-mt": true
+ },
+ "s3f72dd7b0f": "Uppdateringen och återställningen misslyckades",
+ "@s3f72dd7b0f": {
+  "x-mt": true
+ },
+ "s4f03259cc2": "Molaplans filer kan delvis uppdateras. Ladda ner den senaste Molaplan från releasesidan och extrahera den över den gamla mappen. Dina inställningar är inte förlorade.",
+ "@s4f03259cc2": {
+  "x-mt": true
+ },
+ "s1999eba26c": "Att skriva till Molaplan-mappen behöver administratörstillstånd, som inte gavs. Ingenting ändrades igen och välj Ja när Windows frågar, eller flytta Molaplan till en mapp du kan skriva till, till exempel dina egna filer.",
+ "@s1999eba26c": {
+  "x-mt": true
+ },
+ "sc06f4b5ed9": "Ingenting ändrades, eller den tidigare versionen återställdes. Stäng alla andra Molaplan-fönster och försök igen. Om det fortsätter att misslyckas, ladda ner uppdateringen från släppsidan.",
+ "@sc06f4b5ed9": {
+  "x-mt": true
+ },
+ "s7421af4664": "Senast kontrollerad {p0}",
+ "@s7421af4664": {
+  "x-mt": true
+ },
+ "s207fb68ce3": "Efter start och cirka var 6: e timme ser du ett meddelande när en ny version är tillgänglig.",
+ "@s207fb68ce3": {
+  "x-mt": true
+ },
+ "s5129b5c575": "Vid start och regelbundet ser du ett meddelande när en ny version är tillgänglig.",
+ "@s5129b5c575": {
+  "x-mt": true
+ },
+ "sc545f74ad9": "Nedladdningar och installerar den nya versionen själv. Ett 30-sekunders meddelande visas före omstart, och du kan skjuta upp det. Om det här är av, trycker du på Uppdatera nu själv.",
+ "@sc545f74ad9": {
   "x-mt": true
  }
 }

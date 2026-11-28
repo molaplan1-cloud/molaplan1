@@ -5442,9 +5442,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s057b871ed2 => 'browser version';
 
   @override
-  String get s522d6584c5 => 'Check for updates';
-
-  @override
   String get sd178a1d809 =>
       'Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. Without an account all settings stay on this device.';
 
@@ -6278,6 +6275,10 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get s3cb3b0f9e9 =>
+      'Molaplan downloads the update, closes for a moment and restarts by itself. Your settings are kept.';
+
+  @override
   String get se099b5797e => 'What\'s new:';
 
   @override
@@ -6285,6 +6286,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sdd5c8f0a9d => 'Later';
+
+  @override
+  String get s696dfe5700 => 'Update now';
 
   @override
   String get s5a94ef2af1 => 'The download was corrupted';
@@ -6529,6 +6533,156 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s9e8430c37b =>
       'Molaplan does not control these. iPhones show their name only while awake.';
+
+  @override
+  String get s22237546b7 => 'Windows will ask for permission';
+
+  @override
+  String sba5d22a11d(String p0) {
+    return 'Molaplan is installed in $p0, which a normal user cannot write to. When you tap Continue, Windows asks for permission to install the update. Choose Yes. If you do not allow it, nothing is changed.';
+  }
+
+  @override
+  String get s1653ef3e98 => 'Updating…';
+
+  @override
+  String s0684e0b288(String p0) {
+    return 'Molaplan closes for a moment and restarts by itself in the new version $p0. Your settings are kept.';
+  }
+
+  @override
+  String get s01f0721d12 =>
+      'You can try again with Check for updates in Settings.';
+
+  @override
+  String saeb9f339ea(String p0) {
+    return 'Update $p0 is ready';
+  }
+
+  @override
+  String s584b333948(String p0) {
+    return 'Molaplan updates and restarts in $p0 s. Your settings are kept.';
+  }
+
+  @override
+  String get se85804c09e => 'Unpacking…';
+
+  @override
+  String get sfde238d022 => 'The update could not be downloaded';
+
+  @override
+  String get sd34bc5b759 => 'The update is not available for download yet';
+
+  @override
+  String get s69806434b6 => 'The update could not be saved to disk';
+
+  @override
+  String get s91ef8085b3 => 'The update could not be unpacked';
+
+  @override
+  String get s9de25df723 => 'The downloaded file is not a Molaplan package';
+
+  @override
+  String get s9ae7791013 => 'The updater could not be started';
+
+  @override
+  String get sea2070f532 => 'An older version is not installed';
+
+  @override
+  String get s12b599bf15 => 'The update did not work';
+
+  @override
+  String get s4280d34c21 =>
+      'The internet connection did not work. Nothing was changed and the current version keeps working. Check the connection and try again.';
+
+  @override
+  String get s00cf811000 =>
+      'The new version has just been published and its files are not available yet. Try again in a few minutes.';
+
+  @override
+  String get sbe407f9965 =>
+      'Saving the update to disk failed. Check that the disk has at least 500 MB free and that antivirus is not blocking the files, then try again. Nothing was changed.';
+
+  @override
+  String get sf865bf69b9 =>
+      'The downloaded file could not be unpacked. Nothing was changed. Try again; if it keeps failing, download the update from the release page.';
+
+  @override
+  String get s67ed401b44 =>
+      'The downloaded file does not contain the Molaplan program, so it was not installed. Nothing was changed.';
+
+  @override
+  String get s540be0ec41 =>
+      'Windows or antivirus stopped the updater from starting. Nothing was changed. You can download the zip from the release page and extract it over the old Molaplan folder.';
+
+  @override
+  String get s43cad41986 =>
+      'The offered version is not newer than the one you have, so it was not installed.';
+
+  @override
+  String get s58ef99cde3 => 'Nothing was changed. Try again later.';
+
+  @override
+  String s446ef05921(String p0) {
+    return 'Molaplan was updated to version $p0. Your settings were kept.';
+  }
+
+  @override
+  String get s97eb7f7a6e =>
+      'The update did not work – the old version was restored';
+
+  @override
+  String s7af95a89c6(String p0, String p1) {
+    return 'The new version $p0 did not start or its files could not be replaced (antivirus may have locked them), so Molaplan restored the previous version $p1. Your settings are safe. You can try again later.';
+  }
+
+  @override
+  String get s3f72dd7b0f => 'The update and the restore both failed';
+
+  @override
+  String get s4f03259cc2 =>
+      'Molaplan\'s files may be partly updated. Download the latest Molaplan from the release page and extract it over the old folder. Your settings are not lost.';
+
+  @override
+  String get s4a001df75d =>
+      'The update was not installed – permission was missing';
+
+  @override
+  String get s1999eba26c =>
+      'Writing to the Molaplan folder needs administrator permission, which was not given. Nothing was changed. Try again and choose Yes when Windows asks, or move Molaplan to a folder you can write to, for example your own files.';
+
+  @override
+  String get s16ed002faf => 'The update did not finish';
+
+  @override
+  String get sc06f4b5ed9 =>
+      'Nothing was changed, or the previous version was restored. Close any other Molaplan windows and try again. If it keeps failing, download the update from the release page.';
+
+  @override
+  String get s522d6584c5 => 'Check for updates';
+
+  @override
+  String s7421af4664(String p0) {
+    return 'Last checked $p0';
+  }
+
+  @override
+  String get sd67c7026fd => 'Check for updates automatically';
+
+  @override
+  String get s207fb68ce3 =>
+      'After start-up and about every 6 hours. You see a notice when a new version is available.';
+
+  @override
+  String get s5129b5c575 =>
+      'At start-up and regularly. You see a notice when a new version is available.';
+
+  @override
+  String get sa4003c37b9 => 'Install updates automatically';
+
+  @override
+  String get sc545f74ad9 =>
+      'Downloads and installs the new version by itself. A 30-second notice appears before the restart, and you can postpone it. If this is off, you tap Update now yourself.';
 
   @override
   String get s7f308d40c8 => 'Heating';

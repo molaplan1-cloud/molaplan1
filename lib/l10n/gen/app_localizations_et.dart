@@ -5440,9 +5440,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s057b871ed2 => 'brauseri versioon';
 
   @override
-  String get s522d6584c5 => 'Otsi uuendusi';
-
-  @override
   String get sd178a1d809 =>
       'Oma juhtimisterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kaamerad, WebSocket, TCP ja UDP. Ilma kontota jäävad kõik seaded sellesse seadmesse.';
 
@@ -6278,6 +6275,10 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String get s3cb3b0f9e9 =>
+      'Molaplan laadib värskenduse alla, sulgeb selle hetkeks ja käivitab ise uuesti. Sinu seadistused säilitatakse.';
+
+  @override
   String get se099b5797e => 'Mis on uus:';
 
   @override
@@ -6285,6 +6286,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sdd5c8f0a9d => 'Hiljem';
+
+  @override
+  String get s696dfe5700 => 'Värskenda kohe';
 
   @override
   String get s5a94ef2af1 => 'Allalaadimine oli rikutud';
@@ -6528,6 +6532,154 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s9e8430c37b => 'See tähendab, et see ei ole Mistahes ammunition.';
+
+  @override
+  String get s22237546b7 => 'Windows küsib luba';
+
+  @override
+  String sba5d22a11d(String p0) {
+    return 'Molaplan on paigaldatud $p0 sisse, kuhu tavakasutaja ei saa kirjutada. Klõpsuga nupule Jätka küsib Windows värskenduse paigaldamiseks luba. Vali Jah. Kui sa seda ei luba, ei muudeta midagi.';
+  }
+
+  @override
+  String get s1653ef3e98 => 'Värskendan…';
+
+  @override
+  String s0684e0b288(String p0) {
+    return 'Molaplan sulgub hetkeks ja käivitub ise uues versioonis $p0 uuesti. Seadistused säilitatakse.';
+  }
+
+  @override
+  String get s01f0721d12 =>
+      'Võite uuesti proovida menüükäsuga Kontrolli värskendusi Seadistustes.';
+
+  @override
+  String saeb9f339ea(String p0) {
+    return 'Uuendamine $p0 on valmis';
+  }
+
+  @override
+  String s584b333948(String p0) {
+    return 'Molaplan uuendab ja taaskäivitab $p0 s. Teie seaded säilitatakse.';
+  }
+
+  @override
+  String get se85804c09e => 'Pakin lahti…';
+
+  @override
+  String get sfde238d022 => 'Värskendust ei saanud alla laadida';
+
+  @override
+  String get sd34bc5b759 => 'Värskendus pole veel allalaadimiseks saadaval';
+
+  @override
+  String get s69806434b6 => 'Uuenduse salvestamine kettale nurjus';
+
+  @override
+  String get s91ef8085b3 => 'Uuenduse lahtipakkimine nurjus';
+
+  @override
+  String get s9de25df723 => 'Allalaaditud fail ei ole Molaplani pakett';
+
+  @override
+  String get s9ae7791013 => 'Uuendaja käivitamine nurjus';
+
+  @override
+  String get sea2070f532 => 'Vanem versioon ei ole installitud';
+
+  @override
+  String get s12b599bf15 => 'Uuendus ei töötanud';
+
+  @override
+  String get s4280d34c21 =>
+      'Internetiühendus ei töötanud. Midagi ei muudetud ja aktiivne versioon töötab edasi. Kontrolli ühendust ja proovi uuesti.';
+
+  @override
+  String get s00cf811000 =>
+      'Uus versioon on äsja avaldatud ja selle failid pole veel saadaval. Proovi mõne minuti pärast uuesti.';
+
+  @override
+  String get sbe407f9965 =>
+      'Uuenduse salvestamine kettale nurjus. Kontrolli, et kettal oleks vähemalt 500 MB vaba ja et viirusetõrje ei blokeeriks faile, ning proovi uuesti. Midagi pole muudetud.';
+
+  @override
+  String get sf865bf69b9 =>
+      'Allalaaditud faili lahtipakkimine nurjus. Midagi ei muudetud. Proovi uuesti; kui see pidevalt ebaõnnestub, laadi värskendus alla väljalaskeleheküljelt.';
+
+  @override
+  String get s67ed401b44 =>
+      'Allalaaditud fail ei sisalda Molaplani programmi, mistõttu seda ei paigaldatud. Midagi ei muudetud.';
+
+  @override
+  String get s540be0ec41 =>
+      'Windows või viirusetõrje peatas uuendaja käivitumise. Midagi ei muudetud. Zip\' i saab alla laadida väljalaskeleheküljelt ja eemaldada vanast Molaplan\' i kataloogist.';
+
+  @override
+  String get s43cad41986 =>
+      'Pakutav versioon ei ole uuem kui see, mis teil on, nii et seda ei installitud.';
+
+  @override
+  String get s58ef99cde3 => 'Midagi ei muudetud, proovi hiljem uuesti.';
+
+  @override
+  String s446ef05921(String p0) {
+    return 'Molaplan uuendati versiooniks $p0. Sinu seadistused säilitati.';
+  }
+
+  @override
+  String get s97eb7f7a6e => 'Värskendus ei õnnestunud – vana versioon taastati';
+
+  @override
+  String s7af95a89c6(String p0, String p1) {
+    return 'Uus versioon $p0 ei käivitunud või selle faile ei olnud võimalik asendada (viirusetõrje võis need lukustada), nii et Molaplan taastas eelmise versiooni $p1. Sinu seadistused on turvalised. Proovi hiljem uuesti.';
+  }
+
+  @override
+  String get s3f72dd7b0f => 'Uuendamine ja taastamine nurjusid mõlemad';
+
+  @override
+  String get s4f03259cc2 =>
+      'Molaplani faile võib osaliselt uuendada. Laadi värskeim Molaplan väljalase leheküljelt alla ja eemalda see vanast kaustast. Sinu seadistused ei lähe kaotsi.';
+
+  @override
+  String get s4a001df75d => 'Värskendust ei paigaldatud – luba puudus';
+
+  @override
+  String get s1999eba26c =>
+      'Kataloogi Molaplan kirjutamine vajab administraatori luba, mida ei ole antud. Midagi ei ole muudetud. Proovi uuesti valida Jah, kui Windows küsib, või liiguta Molaplan kausta, kuhu saab kirjutada, näiteks omaenda failid.';
+
+  @override
+  String get s16ed002faf => 'Värskendus ei lõppenud';
+
+  @override
+  String get sc06f4b5ed9 =>
+      'Midagi ei muudetud või taastati eelmine versioon. Sulge kõik teised Molaplani aknad ja proovi uuesti. Kui see lakkab töötamast, laadi värskendus väljalaskeleheküljelt alla.';
+
+  @override
+  String get s522d6584c5 => 'Otsi uuendusi';
+
+  @override
+  String s7421af4664(String p0) {
+    return 'Viimati kontrollitud $p0';
+  }
+
+  @override
+  String get sd67c7026fd => 'Otsi värskendusi automaatselt';
+
+  @override
+  String get s207fb68ce3 =>
+      'Pärast käivitamist ja umbes iga 6 tunni järel. Kui uus versioon on saadaval, näete teadet.';
+
+  @override
+  String get s5129b5c575 =>
+      'Käivitamisel ja regulaarselt. Uue versiooni olemasolul näeb teadet.';
+
+  @override
+  String get sa4003c37b9 => 'Paigalda värskendused automaatselt';
+
+  @override
+  String get sc545f74ad9 =>
+      'Laadib uue versiooni alla ja paigaldab selle ise. Enne taaskäivitamist ilmub 30- sekundiline märguanne, mida saab edasi lükata. Kui see on välja lülitatud, klõpsa nüüd ise nupule Uuenda.';
 
   @override
   String get s7f308d40c8 => 'Kütab';

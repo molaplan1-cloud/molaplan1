@@ -5495,9 +5495,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s057b871ed2 => 'Versión del navegador';
 
   @override
-  String get s522d6584c5 => 'Buscar actualizaciones';
-
-  @override
   String get sd178a1d809 =>
       'Su propia terminal de control: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP y UDP. Sin una cuenta, todos los ajustes permanecen en este dispositivo.';
 
@@ -6340,6 +6337,10 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get s3cb3b0f9e9 =>
+      'Molaplan descarga la actualización, cierra por un momento y se reinicia por sí mismo. Tus ajustes se mantienen.';
+
+  @override
   String get se099b5797e => '¿Qué hay de nuevo?';
 
   @override
@@ -6347,6 +6348,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sdd5c8f0a9d => 'Más tarde';
+
+  @override
+  String get s696dfe5700 => 'Actualizar ahora';
 
   @override
   String get s5a94ef2af1 => 'La descarga estaba corrompida';
@@ -6594,6 +6598,157 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s9e8430c37b =>
       'Molaplan no controla estos. Los iPhones muestran su nombre sólo mientras están despiertos.';
+
+  @override
+  String get s22237546b7 => 'Windows pedirá permiso';
+
+  @override
+  String sba5d22a11d(String p0) {
+    return 'Molaplan se instala en $p0, a lo que un usuario normal no puede escribir. Al pulsar Continuar, Windows pide permiso para instalar la actualización. Elija Sí. Si no lo permite, nada se cambia.';
+  }
+
+  @override
+  String get s1653ef3e98 => 'Actualizando…';
+
+  @override
+  String s0684e0b288(String p0) {
+    return 'Molaplan cierra por un momento y se reinicia por sí mismo en la nueva versión $p0. Tus ajustes se guardan.';
+  }
+
+  @override
+  String get s01f0721d12 =>
+      'Puedes probar de nuevo con Check para actualizaciones en Ajustes.';
+
+  @override
+  String saeb9f339ea(String p0) {
+    return 'Actualización $p0 está listo';
+  }
+
+  @override
+  String s584b333948(String p0) {
+    return 'Actualizaciones de Molaplan y reinicia en $p0 s. Tus ajustes se guardan.';
+  }
+
+  @override
+  String get se85804c09e => 'Descomprimiendo…';
+
+  @override
+  String get sfde238d022 => 'No se pudo descargar la actualización';
+
+  @override
+  String get sd34bc5b759 =>
+      'La actualización aún no está disponible para su descarga';
+
+  @override
+  String get s69806434b6 => 'La actualización no se puede guardar en el disco';
+
+  @override
+  String get s91ef8085b3 => 'La actualización no se puede desempaquetar';
+
+  @override
+  String get s9de25df723 => 'El archivo descargado no es un paquete Molaplan';
+
+  @override
+  String get s9ae7791013 => 'El actualizador no pudo iniciarse';
+
+  @override
+  String get sea2070f532 => 'Una versión anterior no está instalada';
+
+  @override
+  String get s12b599bf15 => 'La actualización no funcionó';
+
+  @override
+  String get s4280d34c21 =>
+      'La conexión a Internet no funcionó. Nada fue cambiado y la versión actual sigue funcionando. Compruebe la conexión e inténtelo de nuevo.';
+
+  @override
+  String get s00cf811000 =>
+      'La nueva versión acaba de publicarse y sus archivos aún no están disponibles. Prueba de nuevo en unos minutos.';
+
+  @override
+  String get sbe407f9965 =>
+      'Ahorro de la actualización al disco falló. Compruebe que el disco tiene al menos 500 MB libre y que el antivirus no está bloqueando los archivos, luego intentarlo de nuevo. Nada fue cambiado.';
+
+  @override
+  String get sf865bf69b9 =>
+      'El archivo descargado no puede ser desempaquetado. Nada fue cambiado. Inténtelo de nuevo; si sigue fallando, descargue la actualización de la página de lanzamiento.';
+
+  @override
+  String get s67ed401b44 =>
+      'El archivo descargado no contiene el programa Molaplan, por lo que no fue instalado. Nada fue cambiado.';
+
+  @override
+  String get s540be0ec41 =>
+      'Windows o antivirus dejaron de empezar el actualizador. Nada fue cambiado. Puede descargar la cremallera de la página de lanzamiento y extraerla sobre la antigua carpeta Molaplan.';
+
+  @override
+  String get s43cad41986 =>
+      'La versión ofrecida no es más nueva que la que tienes, por lo que no fue instalada.';
+
+  @override
+  String get s58ef99cde3 => 'Nada cambió, vuelve a intentarlo más tarde.';
+
+  @override
+  String s446ef05921(String p0) {
+    return 'Molaplan fue actualizado a la versión $p0. Tus ajustes fueron guardados.';
+  }
+
+  @override
+  String get s97eb7f7a6e =>
+      'La actualización falló: se restauró la versión anterior';
+
+  @override
+  String s7af95a89c6(String p0, String p1) {
+    return 'La nueva versión $p0 no comenzó o sus archivos no podrían ser reemplazados (antivirus puede haber bloqueado), por lo que Molaplan restauró la versión anterior $p1. Sus ajustes son seguros. Usted puede intentarlo de nuevo más tarde.';
+  }
+
+  @override
+  String get s3f72dd7b0f => 'La actualización y la restauración fracasaron';
+
+  @override
+  String get s4f03259cc2 =>
+      'Los archivos de Molaplan pueden ser parcialmente actualizados. Descargar el último Molaplan de la página de lanzamiento y extraerlo sobre la antigua carpeta. Tus ajustes no se pierden.';
+
+  @override
+  String get s4a001df75d =>
+      'La actualización no se instaló: faltaba el permiso';
+
+  @override
+  String get s1999eba26c =>
+      'Escribir a la carpeta Molaplan necesita permiso de administrador, que no se dio. Nada fue cambiado. Pruebe de nuevo y elija Sí cuando Windows pregunta, o mueva Molaplan a una carpeta a la que puede escribir, por ejemplo sus propios archivos.';
+
+  @override
+  String get s16ed002faf => 'La actualización no se completó';
+
+  @override
+  String get sc06f4b5ed9 =>
+      'Nada cambió, o la versión anterior fue restaurada. Cierre cualquier otra ventana Molaplan y vuelva a intentarlo. Si sigue fallando, descargue la actualización de la página de lanzamiento.';
+
+  @override
+  String get s522d6584c5 => 'Buscar actualizaciones';
+
+  @override
+  String s7421af4664(String p0) {
+    return 'Última comprobación $p0';
+  }
+
+  @override
+  String get sd67c7026fd => 'Buscar actualizaciones automáticamente';
+
+  @override
+  String get s207fb68ce3 =>
+      'Después de la puesta en marcha y alrededor de cada 6 horas. Usted ve un aviso cuando una nueva versión está disponible.';
+
+  @override
+  String get s5129b5c575 =>
+      'Al inicio y regularmente. Usted ve un aviso cuando una nueva versión está disponible.';
+
+  @override
+  String get sa4003c37b9 => 'Instalar las actualizaciones automáticamente';
+
+  @override
+  String get sc545f74ad9 =>
+      'Descarga e instala la nueva versión por sí misma. Un aviso de 30 segundos aparece antes del reinicio, y se puede posponer. Si esto está apagado, pulsa Actualizar ahora mismo.';
 
   @override
   String get s7f308d40c8 => 'Calentando';

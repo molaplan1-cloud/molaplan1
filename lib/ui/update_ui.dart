@@ -6,6 +6,7 @@ import '../state/update_state.dart';
 import '../update/update_core.dart';
 import '../version.dart';
 import 'app_scope.dart';
+import 'windows_update_ui.dart';
 
 /// Release notes as plain readable text (GitHub markdown without the markup).
 String plainNotes(String md) {
@@ -27,10 +28,26 @@ String plainNotes(String md) {
 /// the non-blocking banner appears, so the bridge keeps working undisturbed.
 Future<void> startupUpdateCheck(BuildContext context) async {
   final st = AppScope.read(context);
+  // R703: Windows waits a little after start-up so the first screen is never slowed down.
+  if (!_startupDelayed && st.update.platform.os == 'windows' && st.update.autoCheck) {
+    _startupDelayed = true;
+    await Future<void>.delayed(windowsStartupDelay);
+    if (!context.mounted) return;
+  }
   final r = await st.update.checkOnStartup();
-  if (r == null || !context.mounted || st.config.bridgeMode) return;
+  if (r == null || !context.mounted) return;
+  // R709: "Asenna automaattisesti" (Windows, off by default) downloads in the background and gives a notice.
+  if (st.update.autoInstallEnabled && st.update.platform.os == 'windows') {
+    if (await autoInstallWindows(context, r)) return;
+  }
+  if (st.config.bridgeMode || !context.mounted) return;
   await showUpdateDialog(context, r);
 }
+
+bool _startupDelayed = false;
+
+/// Windows waits this long after start-up before the first automatic check (tests set it to zero).
+Duration windowsStartupDelay = const Duration(seconds: 8);
 
 /// Settings button: always asks GitHub, tells the result.
 Future<void> manualUpdateCheck(BuildContext context) async {
@@ -75,6 +92,17 @@ Future<void> showUpdateDialog(BuildContext context, ReleaseInfo r, {bool manual 
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(tx(c, 'Sinulla on nyt versio $appVersion.', 'You have version $appVersion.')),
+              if (AppScope.read(c).update.platform.canSelfUpdate) ...[
+                const SizedBox(height: 8),
+                Text(
+                  tx(
+                    c,
+                    'Molaplan lataa päivityksen, sulkeutuu hetkeksi ja käynnistyy itse uudelleen. Asetuksesi säilyvät.',
+                    'Molaplan downloads the update, closes for a moment and restarts by itself. Your settings are kept.',
+                  ),
+                  key: const ValueKey('update-self-note'),
+                ),
+              ],
               if (notes.isNotEmpty) ...[
                 const SizedBox(height: 12),
                 Text(tx(c, 'Mitä uutta:', "What's new:"), style: Theme.of(c).textTheme.titleSmall),
@@ -100,7 +128,9 @@ Future<void> showUpdateDialog(BuildContext context, ReleaseInfo r, {bool manual 
           key: const ValueKey('update-now'),
           onPressed: () => Navigator.pop(c, 'update'),
           icon: const Icon(Icons.download),
-          label: Text(tx(c, 'Päivitä', 'Update')),
+          label: Text(
+            AppScope.read(c).update.platform.canSelfUpdate ? tx(c, 'Päivitä nyt', 'Update now') : tx(c, 'Päivitä', 'Update'),
+          ),
         ),
       ],
     ),
@@ -128,6 +158,11 @@ Future<void> runUpdate(BuildContext from, ReleaseInfo r) async {
   if (!context.mounted) return;
   if (asset == null) {
     await p.openUrl(r.pageUrl);
+    return;
+  }
+  // R702: an installed Windows copy replaces itself (download, verify, unpack, updater, restart).
+  if (p.os == 'windows' && p.canSelfUpdate) {
+    await runWindowsUpdate(context, r);
     return;
   }
   // A device owner (bridge) installs silently and needs no "unknown sources" permission.

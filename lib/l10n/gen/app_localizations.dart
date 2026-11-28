@@ -9939,12 +9939,6 @@ abstract class AppLocalizations {
   /// **'browser version'**
   String get s057b871ed2;
 
-  /// fi: Tarkista päivitykset
-  ///
-  /// In en, this message translates to:
-  /// **'Check for updates'**
-  String get s522d6584c5;
-
   /// fi: Oma ohjauspääte: HTTP, MQTT, Modbus TCP, Home Assistant, kamerat, WebSocket, TCP ja UDP. Ilman tiliä kaikki asetukset py
   ///
   /// In en, this message translates to:
@@ -11399,6 +11393,12 @@ abstract class AppLocalizations {
   /// **'You have version {p0}.'**
   String sa5133b2c4a(String p0);
 
+  /// fi: Molaplan lataa päivityksen, sulkeutuu hetkeksi ja käynnistyy itse uudelleen. Asetuksesi säilyvät.
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan downloads the update, closes for a moment and restarts by itself. Your settings are kept.'**
+  String get s3cb3b0f9e9;
+
   /// fi: Mitä uutta:
   ///
   /// In en, this message translates to:
@@ -11416,6 +11416,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Later'**
   String get sdd5c8f0a9d;
+
+  /// fi: Päivitä nyt
+  ///
+  /// In en, this message translates to:
+  /// **'Update now'**
+  String get s696dfe5700;
 
   /// fi: Lataus oli viallinen
   ///
@@ -11858,6 +11864,246 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Molaplan does not control these. iPhones show their name only while awake.'**
   String get s9e8430c37b;
+
+  /// fi: Windows kysyy luvan
+  ///
+  /// In en, this message translates to:
+  /// **'Windows will ask for permission'**
+  String get s22237546b7;
+
+  /// fi: Molaplan on asennettu kansioon {p0}, johon tavallisella käyttäjällä ei ole kirjoitusoikeutta. Kun painat Jatka, Windows
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan is installed in {p0}, which a normal user cannot write to. When you tap Continue, Windows asks for permission to install the update. Choose Yes. If you do not allow it, nothing is changed.'**
+  String sba5d22a11d(String p0);
+
+  /// fi: Päivitetään…
+  ///
+  /// In en, this message translates to:
+  /// **'Updating…'**
+  String get s1653ef3e98;
+
+  /// fi: Molaplan sulkeutuu hetkeksi ja käynnistyy itse uudelleen uudessa versiossa {p0}. Asetuksesi säilyvät.
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan closes for a moment and restarts by itself in the new version {p0}. Your settings are kept.'**
+  String s0684e0b288(String p0);
+
+  /// fi: Voit yrittää Asetukset-sivun Tarkista päivitykset -napilla.
+  ///
+  /// In en, this message translates to:
+  /// **'You can try again with Check for updates in Settings.'**
+  String get s01f0721d12;
+
+  /// fi: Päivitys {p0} on valmis
+  ///
+  /// In en, this message translates to:
+  /// **'Update {p0} is ready'**
+  String saeb9f339ea(String p0);
+
+  /// fi: Molaplan päivittyy ja käynnistyy uudelleen {p0} s kuluttua. Asetuksesi säilyvät.
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan updates and restarts in {p0} s. Your settings are kept.'**
+  String s584b333948(String p0);
+
+  /// fi: Puretaan…
+  ///
+  /// In en, this message translates to:
+  /// **'Unpacking…'**
+  String get se85804c09e;
+
+  /// fi: Päivitystä ei voitu ladata
+  ///
+  /// In en, this message translates to:
+  /// **'The update could not be downloaded'**
+  String get sfde238d022;
+
+  /// fi: Päivitys ei ole vielä ladattavissa
+  ///
+  /// In en, this message translates to:
+  /// **'The update is not available for download yet'**
+  String get sd34bc5b759;
+
+  /// fi: Päivitystä ei voitu tallentaa levylle
+  ///
+  /// In en, this message translates to:
+  /// **'The update could not be saved to disk'**
+  String get s69806434b6;
+
+  /// fi: Päivityksen purku ei onnistunut
+  ///
+  /// In en, this message translates to:
+  /// **'The update could not be unpacked'**
+  String get s91ef8085b3;
+
+  /// fi: Ladattu tiedosto ei ole Molaplan-paketti
+  ///
+  /// In en, this message translates to:
+  /// **'The downloaded file is not a Molaplan package'**
+  String get s9de25df723;
+
+  /// fi: Päivitysohjelmaa ei saatu käynnistettyä
+  ///
+  /// In en, this message translates to:
+  /// **'The updater could not be started'**
+  String get s9ae7791013;
+
+  /// fi: Vanhempaa versiota ei asenneta
+  ///
+  /// In en, this message translates to:
+  /// **'An older version is not installed'**
+  String get sea2070f532;
+
+  /// fi: Päivitys ei onnistunut
+  ///
+  /// In en, this message translates to:
+  /// **'The update did not work'**
+  String get s12b599bf15;
+
+  /// fi: Nettiyhteys ei toiminut. Mitään ei muutettu, ja nykyinen versio toimii entiseen tapaan. Tarkista nettiyhteys ja yritä uu
+  ///
+  /// In en, this message translates to:
+  /// **'The internet connection did not work. Nothing was changed and the current version keeps working. Check the connection and try again.'**
+  String get s4280d34c21;
+
+  /// fi: Uusi versio on juuri julkaistu, eikä sen tiedostoja ole vielä saatavilla. Yritä uudelleen muutaman minuutin päästä.
+  ///
+  /// In en, this message translates to:
+  /// **'The new version has just been published and its files are not available yet. Try again in a few minutes.'**
+  String get s00cf811000;
+
+  /// fi: Päivityksen tallennus levylle epäonnistui. Tarkista, että levyllä on vähintään 500 Mt vapaata tilaa ja ettei virustorjun
+  ///
+  /// In en, this message translates to:
+  /// **'Saving the update to disk failed. Check that the disk has at least 500 MB free and that antivirus is not blocking the files, then try again. Nothing was changed.'**
+  String get sbe407f9965;
+
+  /// fi: Ladattua tiedostoa ei saatu purettua. Mitään ei muutettu. Yritä uudelleen; jos vika toistuu, lataa päivitys julkaisusivu
+  ///
+  /// In en, this message translates to:
+  /// **'The downloaded file could not be unpacked. Nothing was changed. Try again; if it keeps failing, download the update from the release page.'**
+  String get sf865bf69b9;
+
+  /// fi: Ladatusta tiedostosta puuttuu Molaplanin ohjelmatiedosto, joten sitä ei asennettu. Mitään ei muutettu.
+  ///
+  /// In en, this message translates to:
+  /// **'The downloaded file does not contain the Molaplan program, so it was not installed. Nothing was changed.'**
+  String get s67ed401b44;
+
+  /// fi: Windows tai virustorjunta esti päivitysohjelman käynnistyksen. Mitään ei muutettu. Voit ladata zip-tiedoston julkaisusiv
+  ///
+  /// In en, this message translates to:
+  /// **'Windows or antivirus stopped the updater from starting. Nothing was changed. You can download the zip from the release page and extract it over the old Molaplan folder.'**
+  String get s540be0ec41;
+
+  /// fi: Tarjottu versio ei ole uudempi kuin käytössäsi oleva, joten sitä ei asennettu.
+  ///
+  /// In en, this message translates to:
+  /// **'The offered version is not newer than the one you have, so it was not installed.'**
+  String get s43cad41986;
+
+  /// fi: Mitään ei muutettu. Yritä uudelleen myöhemmin.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing was changed. Try again later.'**
+  String get s58ef99cde3;
+
+  /// fi: Molaplan on päivitetty versioon {p0}. Asetuksesi säilyivät.
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan was updated to version {p0}. Your settings were kept.'**
+  String s446ef05921(String p0);
+
+  /// fi: Päivitys ei onnistunut – vanha versio palautettiin
+  ///
+  /// In en, this message translates to:
+  /// **'The update did not work – the old version was restored'**
+  String get s97eb7f7a6e;
+
+  /// fi: Uusi versio {p0} ei käynnistynyt tai sen tiedostoja ei saatu korvattua (esimerkiksi virustorjunta saattoi lukita ne), jo
+  ///
+  /// In en, this message translates to:
+  /// **'The new version {p0} did not start or its files could not be replaced (antivirus may have locked them), so Molaplan restored the previous version {p1}. Your settings are safe. You can try again later.'**
+  String s7af95a89c6(String p0, String p1);
+
+  /// fi: Päivitys ja palautus epäonnistuivat
+  ///
+  /// In en, this message translates to:
+  /// **'The update and the restore both failed'**
+  String get s3f72dd7b0f;
+
+  /// fi: Molaplanin tiedostot voivat olla vaiheittain päivittyneet. Lataa uusin Molaplan julkaisusivulta ja pura se vanhan kansio
+  ///
+  /// In en, this message translates to:
+  /// **'Molaplan\'\'s files may be partly updated. Download the latest Molaplan from the release page and extract it over the old folder. Your settings are not lost.'**
+  String get s4f03259cc2;
+
+  /// fi: Päivitystä ei asennettu – lupa puuttui
+  ///
+  /// In en, this message translates to:
+  /// **'The update was not installed – permission was missing'**
+  String get s4a001df75d;
+
+  /// fi: Molaplanin kansioon kirjoittaminen vaatii järjestelmänvalvojan luvan, jota ei annettu. Mitään ei muutettu. Yritä uudelle
+  ///
+  /// In en, this message translates to:
+  /// **'Writing to the Molaplan folder needs administrator permission, which was not given. Nothing was changed. Try again and choose Yes when Windows asks, or move Molaplan to a folder you can write to, for example your own files.'**
+  String get s1999eba26c;
+
+  /// fi: Päivitys ei valmistunut
+  ///
+  /// In en, this message translates to:
+  /// **'The update did not finish'**
+  String get s16ed002faf;
+
+  /// fi: Mitään ei muutettu tai edellinen versio palautettiin. Sulje mahdolliset muut Molaplan-ikkunat ja yritä uudelleen. Jos vi
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing was changed, or the previous version was restored. Close any other Molaplan windows and try again. If it keeps failing, download the update from the release page.'**
+  String get sc06f4b5ed9;
+
+  /// fi: Tarkista päivitykset
+  ///
+  /// In en, this message translates to:
+  /// **'Check for updates'**
+  String get s522d6584c5;
+
+  /// fi: Viimeksi tarkistettu {p0}
+  ///
+  /// In en, this message translates to:
+  /// **'Last checked {p0}'**
+  String s7421af4664(String p0);
+
+  /// fi: Tarkista päivitykset automaattisesti
+  ///
+  /// In en, this message translates to:
+  /// **'Check for updates automatically'**
+  String get sd67c7026fd;
+
+  /// fi: Käynnistyksen jälkeen ja noin 6 tunnin välein. Näet ilmoituksen, kun uusi versio on saatavilla.
+  ///
+  /// In en, this message translates to:
+  /// **'After start-up and about every 6 hours. You see a notice when a new version is available.'**
+  String get s207fb68ce3;
+
+  /// fi: Käynnistyksen yhteydessä ja säännöllisesti. Näet ilmoituksen, kun uusi versio on saatavilla.
+  ///
+  /// In en, this message translates to:
+  /// **'At start-up and regularly. You see a notice when a new version is available.'**
+  String get s5129b5c575;
+
+  /// fi: Asenna päivitykset automaattisesti
+  ///
+  /// In en, this message translates to:
+  /// **'Install updates automatically'**
+  String get sa4003c37b9;
+
+  /// fi: Lataa ja asentaa uuden version itse. Ennen uudelleenkäynnistystä näkyy 30 sekunnin ilmoitus, jonka voit siirtää myöhemmä
+  ///
+  /// In en, this message translates to:
+  /// **'Downloads and installs the new version by itself. A 30-second notice appears before the restart, and you can postpone it. If this is off, you tap Update now yourself.'**
+  String get sc545f74ad9;
 
   /// fi: Lämmittää
   ///

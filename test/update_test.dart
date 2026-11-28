@@ -202,7 +202,8 @@ void main() {
       },
       now: () => now,
       current: '0.3.1',
-      client: MockClient((_) async {
+      client: MockClient((req) async {
+        if (req.url.host == 'molaplan.com') return http.Response('', 404); // R701: manifest is tried first
         calls++;
         return http.Response(jsonEncode(ghRelease(tag)), status);
       }),

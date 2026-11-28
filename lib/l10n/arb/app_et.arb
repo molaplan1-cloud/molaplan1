@@ -4891,7 +4891,6 @@
  "@s057b871ed2": {
   "x-mt": true
  },
- "s522d6584c5": "Otsi uuendusi",
  "sd178a1d809": "Oma juhtimisterminal: HTTP, MQTT, Modbus TCP, Home Assistant, kaamerad, WebSocket, TCP ja UDP. Ilma kontota jäävad kõik seaded sellesse seadmesse.",
  "@sd178a1d809": {
   "x-mt": true
@@ -5629,6 +5628,7 @@
   "x-mt": true
  },
  "sdd5c8f0a9d": "Hiljem",
+ "s696dfe5700": "Värskenda kohe",
  "s5a94ef2af1": "Allalaadimine oli rikutud",
  "@s5a94ef2af1": {
   "x-mt": true
@@ -5851,6 +5851,16 @@
  "@s9e8430c37b": {
   "x-mt": true
  },
+ "s22237546b7": "Windows küsib luba",
+ "s1653ef3e98": "Värskendan…",
+ "se85804c09e": "Pakin lahti…",
+ "sfde238d022": "Värskendust ei saanud alla laadida",
+ "s97eb7f7a6e": "Värskendus ei õnnestunud – vana versioon taastati",
+ "s4a001df75d": "Värskendust ei paigaldatud – luba puudus",
+ "s16ed002faf": "Värskendus ei lõppenud",
+ "s522d6584c5": "Otsi uuendusi",
+ "sd67c7026fd": "Otsi värskendusi automaatselt",
+ "sa4003c37b9": "Paigalda värskendused automaatselt",
  "s7f308d40c8": "Kütab",
  "s41de361b3e": "Jahutab",
  "s4f7ccb7138": "Kuivatab",
@@ -12291,6 +12301,18 @@
  "@s2e87289ebd": {
   "x-mt": true
  },
+ "s77a618c932": "See seade ei saa esitada kaamera videoformaati (H.265) - proovige alamvoogu või lülitage kaamera oma seadistustes H.264-le",
+ "@s77a618c932": {
+  "x-mt": true
+ },
+ "sc32dfb8942": "See seade ei saa esitada kaamera videovormingut ({p0})",
+ "@sc32dfb8942": {
+  "x-mt": true
+ },
+ "s4f556c0322": "See seade ei saa esitada kaamera videot (dekooder ei avanenud)",
+ "@s4f556c0322": {
+  "x-mt": true
+ },
  "sd86b823895": "Sonoff",
  "s5f297ec9d8": "BASIC, MINI, POW, TH, 4CH... DIY režiimis koos Tasmota või ESPHome'' iga. Kaardid on loodud sinu eest; kaugkasutamine kodusilla kaudu.",
  "@s5f297ec9d8": {
@@ -12979,16 +13001,128 @@
  "@s06444f278d": {
   "x-mt": true
  },
- "s77a618c932": "See seade ei saa esitada kaamera videoformaati (H.265) - proovige alamvoogu või lülitage kaamera oma seadistustes H.264-le",
- "@s77a618c932": {
+ "s3cb3b0f9e9": "Molaplan laadib värskenduse alla, sulgeb selle hetkeks ja käivitab ise uuesti. Sinu seadistused säilitatakse.",
+ "@s3cb3b0f9e9": {
   "x-mt": true
  },
- "sc32dfb8942": "See seade ei saa esitada kaamera videovormingut ({p0})",
- "@sc32dfb8942": {
+ "sba5d22a11d": "Molaplan on paigaldatud {p0} sisse, kuhu tavakasutaja ei saa kirjutada. Klõpsuga nupule Jätka küsib Windows värskenduse paigaldamiseks luba. Vali Jah. Kui sa seda ei luba, ei muudeta midagi.",
+ "@sba5d22a11d": {
   "x-mt": true
  },
- "s4f556c0322": "See seade ei saa esitada kaamera videot (dekooder ei avanenud)",
- "@s4f556c0322": {
+ "s0684e0b288": "Molaplan sulgub hetkeks ja käivitub ise uues versioonis {p0} uuesti. Seadistused säilitatakse.",
+ "@s0684e0b288": {
+  "x-mt": true
+ },
+ "s01f0721d12": "Võite uuesti proovida menüükäsuga Kontrolli värskendusi Seadistustes.",
+ "@s01f0721d12": {
+  "x-mt": true
+ },
+ "saeb9f339ea": "Uuendamine {p0} on valmis",
+ "@saeb9f339ea": {
+  "x-mt": true
+ },
+ "s584b333948": "Molaplan uuendab ja taaskäivitab {p0} s. Teie seaded säilitatakse.",
+ "@s584b333948": {
+  "x-mt": true
+ },
+ "sd34bc5b759": "Värskendus pole veel allalaadimiseks saadaval",
+ "@sd34bc5b759": {
+  "x-mt": true
+ },
+ "s69806434b6": "Uuenduse salvestamine kettale nurjus",
+ "@s69806434b6": {
+  "x-mt": true
+ },
+ "s91ef8085b3": "Uuenduse lahtipakkimine nurjus",
+ "@s91ef8085b3": {
+  "x-mt": true
+ },
+ "s9de25df723": "Allalaaditud fail ei ole Molaplani pakett",
+ "@s9de25df723": {
+  "x-mt": true
+ },
+ "s9ae7791013": "Uuendaja käivitamine nurjus",
+ "@s9ae7791013": {
+  "x-mt": true
+ },
+ "sea2070f532": "Vanem versioon ei ole installitud",
+ "@sea2070f532": {
+  "x-mt": true
+ },
+ "s12b599bf15": "Uuendus ei töötanud",
+ "@s12b599bf15": {
+  "x-mt": true
+ },
+ "s4280d34c21": "Internetiühendus ei töötanud. Midagi ei muudetud ja aktiivne versioon töötab edasi. Kontrolli ühendust ja proovi uuesti.",
+ "@s4280d34c21": {
+  "x-mt": true
+ },
+ "s00cf811000": "Uus versioon on äsja avaldatud ja selle failid pole veel saadaval. Proovi mõne minuti pärast uuesti.",
+ "@s00cf811000": {
+  "x-mt": true
+ },
+ "sbe407f9965": "Uuenduse salvestamine kettale nurjus. Kontrolli, et kettal oleks vähemalt 500 MB vaba ja et viirusetõrje ei blokeeriks faile, ning proovi uuesti. Midagi pole muudetud.",
+ "@sbe407f9965": {
+  "x-mt": true
+ },
+ "sf865bf69b9": "Allalaaditud faili lahtipakkimine nurjus. Midagi ei muudetud. Proovi uuesti; kui see pidevalt ebaõnnestub, laadi värskendus alla väljalaskeleheküljelt.",
+ "@sf865bf69b9": {
+  "x-mt": true
+ },
+ "s67ed401b44": "Allalaaditud fail ei sisalda Molaplani programmi, mistõttu seda ei paigaldatud. Midagi ei muudetud.",
+ "@s67ed401b44": {
+  "x-mt": true
+ },
+ "s540be0ec41": "Windows või viirusetõrje peatas uuendaja käivitumise. Midagi ei muudetud. Zip'' i saab alla laadida väljalaskeleheküljelt ja eemaldada vanast Molaplan'' i kataloogist.",
+ "@s540be0ec41": {
+  "x-mt": true
+ },
+ "s43cad41986": "Pakutav versioon ei ole uuem kui see, mis teil on, nii et seda ei installitud.",
+ "@s43cad41986": {
+  "x-mt": true
+ },
+ "s58ef99cde3": "Midagi ei muudetud, proovi hiljem uuesti.",
+ "@s58ef99cde3": {
+  "x-mt": true
+ },
+ "s446ef05921": "Molaplan uuendati versiooniks {p0}. Sinu seadistused säilitati.",
+ "@s446ef05921": {
+  "x-mt": true
+ },
+ "s7af95a89c6": "Uus versioon {p0} ei käivitunud või selle faile ei olnud võimalik asendada (viirusetõrje võis need lukustada), nii et Molaplan taastas eelmise versiooni {p1}. Sinu seadistused on turvalised. Proovi hiljem uuesti.",
+ "@s7af95a89c6": {
+  "x-mt": true
+ },
+ "s3f72dd7b0f": "Uuendamine ja taastamine nurjusid mõlemad",
+ "@s3f72dd7b0f": {
+  "x-mt": true
+ },
+ "s4f03259cc2": "Molaplani faile võib osaliselt uuendada. Laadi värskeim Molaplan väljalase leheküljelt alla ja eemalda see vanast kaustast. Sinu seadistused ei lähe kaotsi.",
+ "@s4f03259cc2": {
+  "x-mt": true
+ },
+ "s1999eba26c": "Kataloogi Molaplan kirjutamine vajab administraatori luba, mida ei ole antud. Midagi ei ole muudetud. Proovi uuesti valida Jah, kui Windows küsib, või liiguta Molaplan kausta, kuhu saab kirjutada, näiteks omaenda failid.",
+ "@s1999eba26c": {
+  "x-mt": true
+ },
+ "sc06f4b5ed9": "Midagi ei muudetud või taastati eelmine versioon. Sulge kõik teised Molaplani aknad ja proovi uuesti. Kui see lakkab töötamast, laadi värskendus väljalaskeleheküljelt alla.",
+ "@sc06f4b5ed9": {
+  "x-mt": true
+ },
+ "s7421af4664": "Viimati kontrollitud {p0}",
+ "@s7421af4664": {
+  "x-mt": true
+ },
+ "s207fb68ce3": "Pärast käivitamist ja umbes iga 6 tunni järel. Kui uus versioon on saadaval, näete teadet.",
+ "@s207fb68ce3": {
+  "x-mt": true
+ },
+ "s5129b5c575": "Käivitamisel ja regulaarselt. Uue versiooni olemasolul näeb teadet.",
+ "@s5129b5c575": {
+  "x-mt": true
+ },
+ "sc545f74ad9": "Laadib uue versiooni alla ja paigaldab selle ise. Enne taaskäivitamist ilmub 30- sekundiline märguanne, mida saab edasi lükata. Kui see on välja lülitatud, klõpsa nüüd ise nupule Uuenda.",
+ "@sc545f74ad9": {
   "x-mt": true
  }
 }

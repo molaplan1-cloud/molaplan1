@@ -1,14 +1,17 @@
 import 'dart:async';
 import '../core/plat.dart';
 import 'dart:io';
+import 'dart:io' as io;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../update/update_core.dart';
+import '../update/windows_update.dart';
 import '../version.dart';
 
 /// OS hooks for updating (swapped out in tests).
@@ -23,6 +26,8 @@ class UpdatePlatform {
 
   Future<Directory> downloadDir() async {
     if (os == 'android') return Directory((await _ch.invokeMethod<String>('cacheDir'))!);
+    // R702: an installed Windows copy updates itself; its files live next to the updater's.
+    if (os == 'windows' && canSelfUpdate) return Directory(p.join(updateWorkDir().path, 'download'));
     final d = await getDownloadsDirectory() ?? await getTemporaryDirectory();
     return Directory('${d.path}${(kIsWeb ? '/' : Platform.pathSeparator)}Molaplan');
   }
@@ -87,12 +92,21 @@ class UpdatePlatform {
     }
   }
 
+  // ---- R702: Windows self-update (all of these are replaced in tests)
+  /// The folder Molaplan runs from when it is an installed Windows copy; null for `flutter run`.
+  Directory? installDir() => os == 'windows' ? installDirOf(Platform.resolvedExecutable) : null;
+  bool get canSelfUpdate => installDir() != null;
+  int get pid => io.pid;
+  Future<void> startUpdater(StagedUpdate s, {required String current}) =>
+      launchUpdater(s, pid: pid, current: current);
+  Future<void> exitApp() async => exit(0);
+
   Future<bool> openFolder(String path) => launchUrl(Uri.directory(path));
   Future<bool> openFile(String path) => launchUrl(Uri.file(path));
   Future<bool> openUrl(String url) => launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
 }
 
-enum UpdatePhase { idle, checking, downloading, verifying, ready, failed }
+enum UpdatePhase { idle, checking, downloading, verifying, extracting, ready, failed }
 
 class UpdateState extends ChangeNotifier {
   UpdateState({
@@ -103,7 +117,16 @@ class UpdateState extends ChangeNotifier {
     this.client,
     DateTime Function()? now,
     this.current = appVersion,
+    this.autoOn,
+    this.autoInstallOn,
   }) : now = now ?? DateTime.now;
+
+  /// R703: the user's "Tarkista automaattisesti" / "Asenna automaattisesti" choices (null = defaults:
+  /// checking on, installing off).
+  final bool Function()? autoOn;
+  final bool Function()? autoInstallOn;
+  bool get autoCheckEnabled => autoOn?.call() ?? true;
+  bool get autoInstallEnabled => (autoInstallOn?.call() ?? false) && platform.canSelfUpdate;
 
   final int? Function() checkedAt;
   final String? Function() skipped;
@@ -114,6 +137,9 @@ class UpdateState extends ChangeNotifier {
   final String current;
 
   static const interval = Duration(hours: 1);
+
+  /// R703: a Windows app that stays open checks every 6 h; the other platforms keep their hourly rhythm.
+  Duration get checkEvery => platform.os == 'windows' ? const Duration(hours: 6) : interval;
 
   /// Off by default so tests never touch the network; main() turns it on.
   bool autoCheck = false;
@@ -130,13 +156,13 @@ class UpdateState extends ChangeNotifier {
 
   bool get due {
     final t = checkedAt();
-    return t == null || now().difference(DateTime.fromMillisecondsSinceEpoch(t)) >= interval;
+    return t == null || now().difference(DateTime.fromMillisecondsSinceEpoch(t)) >= checkEvery;
   }
 
   /// Startup check: at most once per [interval], silent when offline/rate limited,
   /// skipped versions are not offered. Returns the release to offer, if any.
   Future<ReleaseInfo?> checkOnStartup() async {
-    if (!autoCheck || !due || phase != UpdatePhase.idle) return null;
+    if (!autoCheck || !autoCheckEnabled || !due || phase != UpdatePhase.idle) return null;
     final r = await _check();
     if (r.outcome == CheckOutcome.unavailable) return null; // try again next start
     await remember(checkedAt: now().millisecondsSinceEpoch);
@@ -154,7 +180,7 @@ class UpdateState extends ChangeNotifier {
   Future<CheckResult> _check() async {
     phase = UpdatePhase.checking;
     notifyListeners();
-    final r = await checkLatest(current: current, repo: releaseRepo, client: client);
+    final r = await checkUpdate(current: current, repo: releaseRepo, client: client);
     if (r.outcome == CheckOutcome.newer) {
       available = r.release;
       postponed = false;
@@ -234,12 +260,21 @@ class UpdateState extends ChangeNotifier {
           } catch (_) {}
         }
       }
-      final f = await download(
+      final target = File('${dir.path}${(kIsWeb ? '/' : Platform.pathSeparator)}${asset.name}');
+      // R705: a file from an interrupted earlier run that already matches is reused.
+      File? f;
+      if (platform.os == 'windows' && await target.exists()) {
+        try {
+          await verifyChecksum(target, asset.name, sums);
+          f = target;
+        } catch (_) {}
+      }
+      f ??= await download(
         asset.url,
-        File('${dir.path}${(kIsWeb ? '/' : Platform.pathSeparator)}${asset.name}'),
+        target,
         client: client,
-        progress: (p) {
-          progress = p;
+        progress: (pr) {
+          progress = pr;
           notifyListeners();
         },
       );
@@ -263,5 +298,39 @@ class UpdateState extends ChangeNotifier {
       notifyListeners();
       rethrow;
     }
+  }
+
+  /// R704-R707: Windows self-update, step 1 – download, verify against SHA256SUMS, unpack. Nothing is
+  /// changed on the PC; the result is handed to [launchStaged]. Throws [UpdateFailure].
+  Future<StagedUpdate> prepareWindows(ReleaseInfo r) async {
+    final dir = platform.installDir();
+    if (dir == null) throw UpdateFailure('notInstalled', 'not an installed copy');
+    ensureNewer(r.version, current);
+    try {
+      final zip = await downloadVerified(r);
+      if (zip == null) throw UpdateFailure('noAsset', 'no $windowsAsset in ${r.tag}');
+      phase = UpdatePhase.extracting;
+      notifyListeners();
+      final staged = await stageUpdate(zip: zip, version: r.version, current: current, installDir: dir);
+      phase = UpdatePhase.ready;
+      notifyListeners();
+      return staged;
+    } catch (e) {
+      final f = e is HttpException && e.message.contains('404')
+          ? UpdateFailure('notReady', e.message)
+          : classifyFailure(e);
+      error = f;
+      phase = UpdatePhase.failed;
+      notifyListeners();
+      throw f;
+    }
+  }
+
+  /// Step 2 – hand over to the updater and quit; the updater swaps the files and restarts Molaplan.
+  /// [beforeExit] saves the app's state first.
+  Future<void> launchStaged(StagedUpdate s, {Future<void> Function()? beforeExit}) async {
+    await platform.startUpdater(s, current: current);
+    await beforeExit?.call();
+    await platform.exitApp();
   }
 }

@@ -4873,7 +4873,6 @@
  "@s057b871ed2": {
   "x-mt": true
  },
- "s522d6584c5": "Buscar actualizaciones",
  "sd178a1d809": "Su propia terminal de control: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP y UDP. Sin una cuenta, todos los ajustes permanecen en este dispositivo.",
  "@sd178a1d809": {
   "x-mt": true
@@ -5611,6 +5610,7 @@
   "x-mt": true
  },
  "sdd5c8f0a9d": "Más tarde",
+ "s696dfe5700": "Actualizar ahora",
  "s5a94ef2af1": "La descarga estaba corrompida",
  "@s5a94ef2af1": {
   "x-mt": true
@@ -5827,6 +5827,16 @@
  "@s9e8430c37b": {
   "x-mt": true
  },
+ "s22237546b7": "Windows pedirá permiso",
+ "s1653ef3e98": "Actualizando…",
+ "se85804c09e": "Descomprimiendo…",
+ "sfde238d022": "No se pudo descargar la actualización",
+ "s97eb7f7a6e": "La actualización falló: se restauró la versión anterior",
+ "s4a001df75d": "La actualización no se instaló: faltaba el permiso",
+ "s16ed002faf": "La actualización no se completó",
+ "s522d6584c5": "Buscar actualizaciones",
+ "sd67c7026fd": "Buscar actualizaciones automáticamente",
+ "sa4003c37b9": "Instalar las actualizaciones automáticamente",
  "s7f308d40c8": "Calentando",
  "s41de361b3e": "Enfriando",
  "s4f7ccb7138": "Deshumidificando",
@@ -12228,6 +12238,18 @@
  "@s2e87289ebd": {
   "x-mt": true
  },
+ "s77a618c932": "Este dispositivo no puede reproducir el formato de vídeo de la cámara (H.265) – probar el sub-stream, o cambiar la cámara a H.264 en su configuración",
+ "@s77a618c932": {
+  "x-mt": true
+ },
+ "sc32dfb8942": "Este dispositivo no puede reproducir el formato de vídeo de la cámara ({p0})",
+ "@sc32dfb8942": {
+  "x-mt": true
+ },
+ "s4f556c0322": "Este dispositivo no puede reproducir el video de la cámara (el decodificador no abrió)",
+ "@s4f556c0322": {
+  "x-mt": true
+ },
  "sd86b823895": "Sonoff",
  "s5f297ec9d8": "BASIC, MINI, POW, TH, 4CH... en modo DIY, con Tasmota o ESPHome. Las tarjetas están hechas para usted; uso remoto a través del puente casero.",
  "@s5f297ec9d8": {
@@ -12916,16 +12938,128 @@
  "@s06444f278d": {
   "x-mt": true
  },
- "s77a618c932": "Este dispositivo no puede reproducir el formato de vídeo de la cámara (H.265) – probar el sub-stream, o cambiar la cámara a H.264 en su configuración",
- "@s77a618c932": {
+ "s3cb3b0f9e9": "Molaplan descarga la actualización, cierra por un momento y se reinicia por sí mismo. Tus ajustes se mantienen.",
+ "@s3cb3b0f9e9": {
   "x-mt": true
  },
- "sc32dfb8942": "Este dispositivo no puede reproducir el formato de vídeo de la cámara ({p0})",
- "@sc32dfb8942": {
+ "sba5d22a11d": "Molaplan se instala en {p0}, a lo que un usuario normal no puede escribir. Al pulsar Continuar, Windows pide permiso para instalar la actualización. Elija Sí. Si no lo permite, nada se cambia.",
+ "@sba5d22a11d": {
   "x-mt": true
  },
- "s4f556c0322": "Este dispositivo no puede reproducir el video de la cámara (el decodificador no abrió)",
- "@s4f556c0322": {
+ "s0684e0b288": "Molaplan cierra por un momento y se reinicia por sí mismo en la nueva versión {p0}. Tus ajustes se guardan.",
+ "@s0684e0b288": {
+  "x-mt": true
+ },
+ "s01f0721d12": "Puedes probar de nuevo con Check para actualizaciones en Ajustes.",
+ "@s01f0721d12": {
+  "x-mt": true
+ },
+ "saeb9f339ea": "Actualización {p0} está listo",
+ "@saeb9f339ea": {
+  "x-mt": true
+ },
+ "s584b333948": "Actualizaciones de Molaplan y reinicia en {p0} s. Tus ajustes se guardan.",
+ "@s584b333948": {
+  "x-mt": true
+ },
+ "sd34bc5b759": "La actualización aún no está disponible para su descarga",
+ "@sd34bc5b759": {
+  "x-mt": true
+ },
+ "s69806434b6": "La actualización no se puede guardar en el disco",
+ "@s69806434b6": {
+  "x-mt": true
+ },
+ "s91ef8085b3": "La actualización no se puede desempaquetar",
+ "@s91ef8085b3": {
+  "x-mt": true
+ },
+ "s9de25df723": "El archivo descargado no es un paquete Molaplan",
+ "@s9de25df723": {
+  "x-mt": true
+ },
+ "s9ae7791013": "El actualizador no pudo iniciarse",
+ "@s9ae7791013": {
+  "x-mt": true
+ },
+ "sea2070f532": "Una versión anterior no está instalada",
+ "@sea2070f532": {
+  "x-mt": true
+ },
+ "s12b599bf15": "La actualización no funcionó",
+ "@s12b599bf15": {
+  "x-mt": true
+ },
+ "s4280d34c21": "La conexión a Internet no funcionó. Nada fue cambiado y la versión actual sigue funcionando. Compruebe la conexión e inténtelo de nuevo.",
+ "@s4280d34c21": {
+  "x-mt": true
+ },
+ "s00cf811000": "La nueva versión acaba de publicarse y sus archivos aún no están disponibles. Prueba de nuevo en unos minutos.",
+ "@s00cf811000": {
+  "x-mt": true
+ },
+ "sbe407f9965": "Ahorro de la actualización al disco falló. Compruebe que el disco tiene al menos 500 MB libre y que el antivirus no está bloqueando los archivos, luego intentarlo de nuevo. Nada fue cambiado.",
+ "@sbe407f9965": {
+  "x-mt": true
+ },
+ "sf865bf69b9": "El archivo descargado no puede ser desempaquetado. Nada fue cambiado. Inténtelo de nuevo; si sigue fallando, descargue la actualización de la página de lanzamiento.",
+ "@sf865bf69b9": {
+  "x-mt": true
+ },
+ "s67ed401b44": "El archivo descargado no contiene el programa Molaplan, por lo que no fue instalado. Nada fue cambiado.",
+ "@s67ed401b44": {
+  "x-mt": true
+ },
+ "s540be0ec41": "Windows o antivirus dejaron de empezar el actualizador. Nada fue cambiado. Puede descargar la cremallera de la página de lanzamiento y extraerla sobre la antigua carpeta Molaplan.",
+ "@s540be0ec41": {
+  "x-mt": true
+ },
+ "s43cad41986": "La versión ofrecida no es más nueva que la que tienes, por lo que no fue instalada.",
+ "@s43cad41986": {
+  "x-mt": true
+ },
+ "s58ef99cde3": "Nada cambió, vuelve a intentarlo más tarde.",
+ "@s58ef99cde3": {
+  "x-mt": true
+ },
+ "s446ef05921": "Molaplan fue actualizado a la versión {p0}. Tus ajustes fueron guardados.",
+ "@s446ef05921": {
+  "x-mt": true
+ },
+ "s7af95a89c6": "La nueva versión {p0} no comenzó o sus archivos no podrían ser reemplazados (antivirus puede haber bloqueado), por lo que Molaplan restauró la versión anterior {p1}. Sus ajustes son seguros. Usted puede intentarlo de nuevo más tarde.",
+ "@s7af95a89c6": {
+  "x-mt": true
+ },
+ "s3f72dd7b0f": "La actualización y la restauración fracasaron",
+ "@s3f72dd7b0f": {
+  "x-mt": true
+ },
+ "s4f03259cc2": "Los archivos de Molaplan pueden ser parcialmente actualizados. Descargar el último Molaplan de la página de lanzamiento y extraerlo sobre la antigua carpeta. Tus ajustes no se pierden.",
+ "@s4f03259cc2": {
+  "x-mt": true
+ },
+ "s1999eba26c": "Escribir a la carpeta Molaplan necesita permiso de administrador, que no se dio. Nada fue cambiado. Pruebe de nuevo y elija Sí cuando Windows pregunta, o mueva Molaplan a una carpeta a la que puede escribir, por ejemplo sus propios archivos.",
+ "@s1999eba26c": {
+  "x-mt": true
+ },
+ "sc06f4b5ed9": "Nada cambió, o la versión anterior fue restaurada. Cierre cualquier otra ventana Molaplan y vuelva a intentarlo. Si sigue fallando, descargue la actualización de la página de lanzamiento.",
+ "@sc06f4b5ed9": {
+  "x-mt": true
+ },
+ "s7421af4664": "Última comprobación {p0}",
+ "@s7421af4664": {
+  "x-mt": true
+ },
+ "s207fb68ce3": "Después de la puesta en marcha y alrededor de cada 6 horas. Usted ve un aviso cuando una nueva versión está disponible.",
+ "@s207fb68ce3": {
+  "x-mt": true
+ },
+ "s5129b5c575": "Al inicio y regularmente. Usted ve un aviso cuando una nueva versión está disponible.",
+ "@s5129b5c575": {
+  "x-mt": true
+ },
+ "sc545f74ad9": "Descarga e instala la nueva versión por sí misma. Un aviso de 30 segundos aparece antes del reinicio, y se puede posponer. Si esto está apagado, pulsa Actualizar ahora mismo.",
+ "@sc545f74ad9": {
   "x-mt": true
  }
 }

@@ -718,6 +718,10 @@ class AppConfig {
   int? updateCheckedAt;
   String? updateSkip;
 
+  /// R703: check for new versions by itself (on) and, on Windows, also install them without asking (off).
+  bool updateAuto;
+  bool updateAutoInstall;
+
   /// Price-based automations (run on the home bridge).
   List<PriceRule> rules;
   EnergySettings energy;
@@ -788,6 +792,8 @@ class AppConfig {
     this.remoteCameraSeconds = 2,
     this.updateCheckedAt,
     this.updateSkip,
+    this.updateAuto = true,
+    this.updateAutoInstall = false,
     List<PriceRule>? rules,
     EnergySettings? energy,
     this.advanced = false,
@@ -849,6 +855,8 @@ class AppConfig {
     if (remoteCameraSeconds != 2) 'remoteCameraSeconds': remoteCameraSeconds,
     'updateCheckedAt': ?updateCheckedAt,
     'updateSkip': ?updateSkip,
+    if (!updateAuto) 'updateAuto': false,
+    if (updateAutoInstall) 'updateAutoInstall': true,
     'connections': connections
         .map((c) => c.toJson(includeSecrets: includeSecrets))
         .toList(),
@@ -900,6 +908,8 @@ class AppConfig {
       remoteCameraSeconds: (j['remoteCameraSeconds'] as num?)?.toInt() ?? 2,
       updateCheckedAt: (j['updateCheckedAt'] as num?)?.toInt(),
       updateSkip: j['updateSkip'] as String?,
+      updateAuto: j['updateAuto'] != false,
+      updateAutoInstall: j['updateAutoInstall'] == true,
       connections: ((j['connections'] as List?) ?? [])
           .map((e) => clearPlaceholderHost(ConnectionConfig.fromJson(_map(e))))
           .toList(),

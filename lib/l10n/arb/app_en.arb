@@ -778,27 +778,27 @@
  "scb28b11e70": "New dashboard",
  "@scb28b11e70": {
   "description": "fi: Uusi näkymä",
-  "x-where": "ui/home_page.dart:125"
+  "x-where": "ui/home_page.dart:127"
  },
  "s1f9799af4e": "e.g. Cottage",
  "@s1f9799af4e": {
   "description": "fi: esim. Mökki",
-  "x-where": "ui/home_page.dart:126"
+  "x-where": "ui/home_page.dart:128"
  },
  "s3a13f9d077": "Rename dashboard",
  "@s3a13f9d077": {
   "description": "fi: Nimeä näkymä",
-  "x-where": "ui/home_page.dart:140"
+  "x-where": "ui/home_page.dart:142"
  },
  "sa5bf37213b": "Delete dashboard?",
  "@sa5bf37213b": {
   "description": "fi: Poistetaanko näkymä?",
-  "x-where": "ui/home_page.dart:150"
+  "x-where": "ui/home_page.dart:152"
  },
  "s10671afc00": "\"{p0}\" and its {p1} tiles will be deleted.",
  "@s10671afc00": {
   "description": "fi: \"{p0}\" ja sen {p1} ruutua poistetaan.",
-  "x-where": "ui/home_page.dart:151",
+  "x-where": "ui/home_page.dart:153",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -811,12 +811,12 @@
  "sc1845eb440": "Delete",
  "@sc1845eb440": {
   "description": "fi: Poista",
-  "x-where": "ui/home_page.dart:156"
+  "x-where": "ui/home_page.dart:158"
  },
  "s897761b5f4": "Dashboard \"{p0}\" deleted",
  "@s897761b5f4": {
   "description": "fi: Näkymä \"{p0}\" poistettu",
-  "x-where": "ui/home_page.dart:165",
+  "x-where": "ui/home_page.dart:167",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -826,117 +826,117 @@
  "scc5cf9957d": "Choose tile type",
  "@scc5cf9957d": {
   "description": "fi: Valitse ruudun tyyppi",
-  "x-where": "ui/home_page.dart:192"
+  "x-where": "ui/home_page.dart:194"
  },
  "s7cf6340503": "New device with ready tiles",
  "@s7cf6340503": {
   "description": "fi: Uusi laite valmiilla ruuduilla",
-  "x-where": "ui/home_page.dart:199"
+  "x-where": "ui/home_page.dart:201"
  },
  "se6ca707cf3": "Easiest: Shelly, ESP32-CAM, Home Assistant…",
  "@se6ca707cf3": {
   "description": "fi: Helpoin tapa: Shelly, ESP32-CAM, Home Assistant, IV-kone…",
-  "x-where": "ui/home_page.dart:206"
+  "x-where": "ui/home_page.dart:208"
  },
  "s0789f5f14f": "DASHBOARDS",
  "@s0789f5f14f": {
   "description": "fi: NÄKYMÄT",
-  "x-where": "ui/home_page.dart:314"
+  "x-where": "ui/home_page.dart:316"
  },
  "sedb7b77645": "All",
  "@sedb7b77645": {
   "description": "fi: Kaikki",
-  "x-where": "ui/home_page.dart:333"
+  "x-where": "ui/home_page.dart:335"
  },
  "s78d94155f1": "Connections",
  "@s78d94155f1": {
   "description": "fi: Yhteydet",
-  "x-where": "ui/home_page.dart:385"
+  "x-where": "ui/home_page.dart:387"
  },
  "se9ca7cb470": "Automations",
  "@se9ca7cb470": {
   "description": "fi: Automaatiot",
-  "x-where": "ui/home_page.dart:403"
+  "x-where": "ui/home_page.dart:405"
  },
  "s798f7b2876": "Smart heating",
  "@s798f7b2876": {
   "description": "fi: Älykäs lämmitys",
-  "x-where": "ui/home_page.dart:426"
+  "x-where": "ui/home_page.dart:428"
  },
  "s356d822497": "off",
  "@s356d822497": {
   "description": "fi: pois",
-  "x-where": "ui/home_page.dart:433"
+  "x-where": "ui/home_page.dart:435"
  },
  "s41bb837a83": "Notifications and reminders",
  "@s41bb837a83": {
   "description": "fi: Ilmoitukset ja muistutukset",
-  "x-where": "ui/home_page.dart:454"
+  "x-where": "ui/home_page.dart:456"
  },
  "s49de879696": "Energy",
  "@s49de879696": {
   "description": "fi: Energia",
-  "x-where": "ui/home_page.dart:479"
+  "x-where": "ui/home_page.dart:481"
  },
  "s1da81fd6c3": "Settings",
  "@s1da81fd6c3": {
   "description": "fi: Asetukset",
-  "x-where": "ui/home_page.dart:493"
+  "x-where": "ui/home_page.dart:495"
  },
  "s59622d792b": "Rename",
  "@s59622d792b": {
   "description": "fi: Nimeä",
-  "x-where": "ui/home_page.dart:584"
+  "x-where": "ui/home_page.dart:586"
  },
  "sfb3e3c456c": "Delete dashboard",
  "@sfb3e3c456c": {
   "description": "fi: Poista näkymä",
-  "x-where": "ui/home_page.dart:589"
+  "x-where": "ui/home_page.dart:591"
  },
  "s2acab0eccd": "Done",
  "@s2acab0eccd": {
   "description": "fi: Valmis",
-  "x-where": "ui/home_page.dart:597"
+  "x-where": "ui/home_page.dart:599"
  },
  "s187d328bb1": "Edit",
  "@s187d328bb1": {
   "description": "fi: Muokkaa",
-  "x-where": "ui/home_page.dart:601"
+  "x-where": "ui/home_page.dart:603"
  },
  "s71af34b8e9": "Empty dashboard",
  "@s71af34b8e9": {
   "description": "fi: Tyhjä näkymä",
-  "x-where": "ui/home_page.dart:711"
+  "x-where": "ui/home_page.dart:713"
  },
  "s6a210970eb": "Your device tiles appear here: temperatures, switches, cameras and shortcuts. Start by adding a device.",
  "@s6a210970eb": {
   "description": "fi: Täällä näkyvät laitteidesi ruudut: lämpötilat, kytkimet, kamerat ja pikakomennot. Aloita lisäämällä laite.",
-  "x-where": "ui/home_page.dart:716"
+  "x-where": "ui/home_page.dart:718"
  },
  "s4229fb4103": "Add your first device",
  "@s4229fb4103": {
   "description": "fi: Lisää ensimmäinen laite",
-  "x-where": "ui/home_page.dart:737"
+  "x-where": "ui/home_page.dart:739"
  },
  "s41c3cebc48": "Add device",
  "@s41c3cebc48": {
   "description": "fi: Lisää laite",
-  "x-where": "ui/home_page.dart:742"
+  "x-where": "ui/home_page.dart:744"
  },
  "s147f47be4c": "Add a tile",
  "@s147f47be4c": {
   "description": "fi: Lisää ruutu",
-  "x-where": "ui/home_page.dart:754"
+  "x-where": "ui/home_page.dart:756"
  },
  "sf67e0d5752": "Delete tile?",
  "@sf67e0d5752": {
   "description": "fi: Poistetaanko ruutu?",
-  "x-where": "ui/home_page.dart:980"
+  "x-where": "ui/home_page.dart:982"
  },
  "s97f46743e0": "Tile \"{p0}\" deleted",
  "@s97f46743e0": {
   "description": "fi: Ruutu \"{p0}\" poistettu",
-  "x-where": "ui/home_page.dart:989",
+  "x-where": "ui/home_page.dart:991",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -946,17 +946,17 @@
  "sbeef9a7f21": "Move",
  "@sbeef9a7f21": {
   "description": "fi: Siirrä",
-  "x-where": "ui/home_page.dart:1107"
+  "x-where": "ui/home_page.dart:1109"
  },
  "sdb0cb19db6": "Move left",
  "@sdb0cb19db6": {
   "description": "fi: Siirrä vasemmalle",
-  "x-where": "ui/home_page.dart:1123"
+  "x-where": "ui/home_page.dart:1125"
  },
  "s5570ed5144": "Move right",
  "@s5570ed5144": {
   "description": "fi: Siirrä oikealle",
-  "x-where": "ui/home_page.dart:1129"
+  "x-where": "ui/home_page.dart:1131"
  },
  "sc3abd09cd9": "Custom colour",
  "@sc3abd09cd9": {
@@ -8552,327 +8552,322 @@
  "s4dab2d409b": "Export configuration",
  "@s4dab2d409b": {
   "description": "fi: Vie asetukset",
-  "x-where": "ui/settings_page.dart:50"
+  "x-where": "ui/settings_page.dart:49"
  },
  "s149c1e54d6": "Configuration exported",
  "@s149c1e54d6": {
   "description": "fi: Asetukset viety",
-  "x-where": "ui/settings_page.dart:55"
+  "x-where": "ui/settings_page.dart:54"
  },
  "s35f445793b": "Import configuration",
  "@s35f445793b": {
   "description": "fi: Tuo asetukset",
-  "x-where": "ui/settings_page.dart:68"
+  "x-where": "ui/settings_page.dart:67"
  },
  "sd55be829e3": "Replace current configuration?",
  "@sd55be829e3": {
   "description": "fi: Korvataanko nykyiset asetukset?",
-  "x-where": "ui/settings_page.dart:75"
+  "x-where": "ui/settings_page.dart:74"
  },
  "s852dd1795e": "All current connections and dashboards are replaced by the file contents.",
  "@s852dd1795e": {
   "description": "fi: Kaikki nykyiset yhteydet ja näkymät korvataan tiedoston sisällöllä.",
-  "x-where": "ui/settings_page.dart:80"
+  "x-where": "ui/settings_page.dart:79"
  },
  "s580678cb10": "Import",
  "@s580678cb10": {
   "description": "fi: Tuo",
-  "x-where": "ui/settings_page.dart:85"
+  "x-where": "ui/settings_page.dart:84"
  },
  "s5f2ec17730": "Configuration imported",
  "@s5f2ec17730": {
   "description": "fi: Asetukset tuotu",
-  "x-where": "ui/settings_page.dart:92"
+  "x-where": "ui/settings_page.dart:91"
  },
  "sa87fff54f3": "Import failed",
  "@sa87fff54f3": {
   "description": "fi: Tuonti epäonnistui",
-  "x-where": "ui/settings_page.dart:99"
+  "x-where": "ui/settings_page.dart:98"
  },
  "s2fd2bfedb8": "Account",
  "@s2fd2bfedb8": {
   "description": "fi: Tili",
-  "x-where": "ui/settings_page.dart:119"
+  "x-where": "ui/settings_page.dart:118"
  },
  "s4c0ff416ab": "The same homes and tiles on all your devices.",
  "@s4c0ff416ab": {
   "description": "fi: Samat kodit ja ruudut kaikilla laitteillasi.",
-  "x-where": "ui/settings_page.dart:123"
+  "x-where": "ui/settings_page.dart:122"
  },
  "scc7e418ee3": "Sign in to have the same homes, devices and tiles on PC, tablet and phone. Optional.",
  "@scc7e418ee3": {
   "description": "fi: Kirjaudu, niin kodit, laitteet ja ruudut ovat samat PC:llä, tabletilla ja puhelimella. Vapaaehtoinen.",
-  "x-where": "ui/settings_page.dart:128"
+  "x-where": "ui/settings_page.dart:127"
  },
  "sb386aff4b7": "Downloads",
  "@sb386aff4b7": {
   "description": "fi: Lataukset",
-  "x-where": "ui/settings_page.dart:179"
+  "x-where": "ui/settings_page.dart:178"
  },
  "sbb264ce105": "Downloading the PC app from the shop requires an account (the same one as on the order).",
  "@sbb264ce105": {
   "description": "fi: PC-sovelluksen lataus kaupan sivulta vaatii tilin (saman kuin tilauksessa).",
-  "x-where": "ui/settings_page.dart:184"
+  "x-where": "ui/settings_page.dart:183"
  },
  "se5ab008127": "Open downloads",
  "@se5ab008127": {
   "description": "fi: Avaa lataukset",
-  "x-where": "ui/settings_page.dart:196"
+  "x-where": "ui/settings_page.dart:195"
  },
  "s08d62fd281": "Appearance",
  "@s08d62fd281": {
   "description": "fi: Ulkoasu",
-  "x-where": "ui/settings_page.dart:208"
+  "x-where": "ui/settings_page.dart:207"
  },
  "s2b8a2754c6": "Theme",
  "@s2b8a2754c6": {
   "description": "fi: Teema",
-  "x-where": "ui/settings_page.dart:212"
+  "x-where": "ui/settings_page.dart:211"
  },
  "s79f67deb42": "Light",
  "@s79f67deb42": {
   "description": "fi: Vaalea",
-  "x-where": "ui/settings_page.dart:220"
+  "x-where": "ui/settings_page.dart:219"
  },
  "s0d6fb52039": "Dark",
  "@s0d6fb52039": {
   "description": "fi: Tumma",
-  "x-where": "ui/settings_page.dart:225"
+  "x-where": "ui/settings_page.dart:224"
  },
  "s70dd7fdd58": "By sunrise and sunset",
  "@s70dd7fdd58": {
   "description": "fi: Auringonnousun ja -laskun mukaan",
-  "x-where": "ui/settings_page.dart:243"
+  "x-where": "ui/settings_page.dart:242"
  },
  "s21206b61f7": "Needs the home location (Energy › Home). Until then the device setting is followed.",
  "@s21206b61f7": {
   "description": "fi: Vaatii kodin sijainnin (Energia › Koti). Siihen asti seurataan laitteen asetusta.",
-  "x-where": "ui/settings_page.dart:251"
+  "x-where": "ui/settings_page.dart:250"
  },
  "s4e23920823": "Light by day, dark in the evening. Off: follows the device setting.",
  "@s4e23920823": {
   "description": "fi: Vaalea päivällä, tumma illalla. Pois päältä: seuraa laitteen asetusta.",
-  "x-where": "ui/settings_page.dart:256"
+  "x-where": "ui/settings_page.dart:255"
  },
  "s4b847ce63e": "The choice applies to this device and is saved to your account as the default for new devices.",
  "@s4b847ce63e": {
   "description": "fi: Valinta koskee tätä laitetta ja tallentuu tiliisi uusien laitteiden oletukseksi.",
-  "x-where": "ui/settings_page.dart:266"
+  "x-where": "ui/settings_page.dart:265"
  },
  "s5ebc02022b": "Show as hourly average",
  "@s5ebc02022b": {
   "description": "fi: Näytä tuntikeskiarvona",
-  "x-where": "ui/settings_page.dart:281"
+  "x-where": "ui/settings_page.dart:280"
  },
  "s68b4d332ca": "Price, cheapest hours and price control per hour (hourly-billed contract). Off: 15 min where the area publishes 15-min prices.",
  "@s68b4d332ca": {
   "description": "fi: Sähkön hinta, halvimmat tunnit ja hintaohjaukset tunneittain (tuntihinnoiteltu sopimus). Pois: 15 min, kun alueen hinnat",
-  "x-where": "ui/settings_page.dart:288"
+  "x-where": "ui/settings_page.dart:287"
  },
  "saf496a12a3": "Morning card: also show the priciest hour",
  "@saf496a12a3": {
   "description": "fi: Aamukortti: näytä myös kallein tunti",
-  "x-where": "ui/settings_page.dart:304"
+  "x-where": "ui/settings_page.dart:303"
  },
  "sc53b1b78c0": "The cheapest hour of the next 24 h is always shown with its price.",
  "@sc53b1b78c0": {
   "description": "fi: Halvin tunti näytetään aina seuraavalta 24 tunnilta hintoineen.",
-  "x-where": "ui/settings_page.dart:311"
+  "x-where": "ui/settings_page.dart:310"
  },
  "s0625d54b38": "Tile size",
  "@s0625d54b38": {
   "description": "fi: Laattakoko",
-  "x-where": "ui/settings_page.dart:320"
+  "x-where": "ui/settings_page.dart:319"
  },
  "s8382da3467": "Normal",
  "@s8382da3467": {
   "description": "fi: Normaali",
-  "x-where": "ui/settings_page.dart:333"
+  "x-where": "ui/settings_page.dart:332"
  },
  "s7c1cd8314e": "Hide tiles that don''t work remotely",
  "@s7c1cd8314e": {
   "description": "fi: Piilota etänä toimimattomat",
-  "x-where": "ui/settings_page.dart:348"
+  "x-where": "ui/settings_page.dart:347"
  },
  "sa0cbbafb4e": "Away from home, tiles that only work on the home network are hidden. By default they stay in place, greyed out.",
  "@sa0cbbafb4e": {
   "description": "fi: Kotiverkon ulkopuolella vain kotiverkossa toimivat ruudut piilotetaan. Oletuksena ne näkyvät harmaina paikallaan.",
-  "x-where": "ui/settings_page.dart:355"
+  "x-where": "ui/settings_page.dart:354"
  },
  "se9702be418": "Hide tiles that don''t work in the browser",
  "@se9702be418": {
   "description": "fi: Piilota selaimessa toimimattomat",
-  "x-where": "ui/settings_page.dart:369"
+  "x-where": "ui/settings_page.dart:368"
  },
  "s25a2d52c2d": "In the browser, tiles this browser cannot reach, and tiles that have not answered for about ten minutes, are hidden. Hidden tiles can be opened from the bottom of the view. This browser only.",
  "@s25a2d52c2d": {
   "description": "fi: Selainversiossa piilotetaan ruudut, joihin ei saada yhteyttä tästä selaimesta, ja ruudut, jotka eivät ole vastanneet noi",
-  "x-where": "ui/settings_page.dart:376"
+  "x-where": "ui/settings_page.dart:375"
  },
  "s419166b895": "Clock and weather on the home screen",
  "@s419166b895": {
   "description": "fi: Kello ja sää etusivulla",
-  "x-where": "ui/settings_page.dart:389"
+  "x-where": "ui/settings_page.dart:388"
  },
  "sec30a8f23e": "Time, date, weather and electricity price at the top of the view. This device only.",
  "@sec30a8f23e": {
   "description": "fi: Kellonaika, päivä, sää ja sähkön hinta näkymän yläreunassa. Koskee vain tätä laitetta.",
-  "x-where": "ui/settings_page.dart:396"
+  "x-where": "ui/settings_page.dart:395"
  },
  "sf7205b268f": "Animations",
  "@sf7205b268f": {
   "description": "fi: Animaatiot",
-  "x-where": "ui/settings_page.dart:408"
+  "x-where": "ui/settings_page.dart:407"
  },
  "s1535c6411d": "Soft transitions when a device changes state. Off = calmer and lighter for an older tablet. This device only.",
  "@s1535c6411d": {
   "description": "fi: Pehmeät siirtymät, kun laite vaihtaa tilaa. Pois päältä = rauhallisempi ja kevyempi vanhalle tabletille. Koskee vain tät",
-  "x-where": "ui/settings_page.dart:410"
+  "x-where": "ui/settings_page.dart:409"
  },
  "s21f870dbc2": "Shows technical settings: connections (HTTP, MQTT, Modbus…), payloads, JSON paths and tile sources. Most people don''t need these.",
  "@s21f870dbc2": {
   "description": "fi: Näyttää tekniset asetukset: yhteydet (HTTP, MQTT, Modbus…), viestit, JSON-polut ja ruutujen lähteet. Useimmat eivät tarv",
-  "x-where": "ui/settings_page.dart:425"
+  "x-where": "ui/settings_page.dart:424"
  },
  "sc84689a549": "Devices and integrations",
  "@sc84689a549": {
   "description": "fi: Laitteet ja integraatiot",
-  "x-where": "ui/settings_page.dart:440"
+  "x-where": "ui/settings_page.dart:439"
  },
  "s2b6f77fa62": "Logs and trends",
  "@s2b6f77fa62": {
   "description": "fi: Lokit ja trendit",
-  "x-where": "ui/settings_page.dart:475"
+  "x-where": "ui/settings_page.dart:474"
  },
  "sca4c8b88b7": "Home Assistant: add devices",
  "@sca4c8b88b7": {
   "description": "fi: Home Assistant: lisää laitteita",
-  "x-where": "ui/settings_page.dart:488"
+  "x-where": "ui/settings_page.dart:487"
  },
  "saec69088a5": "Control your home from outside too.",
  "@saec69088a5": {
   "description": "fi: Ohjaa kotia myös kodin ulkopuolelta.",
-  "x-where": "ui/settings_page.dart:504"
+  "x-where": "ui/settings_page.dart:503"
  },
  "s417eb9a875": "Set up remote access",
  "@s417eb9a875": {
   "description": "fi: Ota etäkäyttö käyttöön",
-  "x-where": "ui/settings_page.dart:529"
+  "x-where": "ui/settings_page.dart:528"
  },
  "scc3d01ee5e": "Guides: VPN, Nabu Casa, cloud MQTT",
  "@scc3d01ee5e": {
   "description": "fi: Ohjeet: VPN, Nabu Casa, pilvi-MQTT",
-  "x-where": "ui/settings_page.dart:544"
+  "x-where": "ui/settings_page.dart:543"
  },
  "s844e081db8": "Sharing",
  "@s844e081db8": {
   "description": "fi: Jakaminen",
-  "x-where": "ui/settings_page.dart:556"
+  "x-where": "ui/settings_page.dart:555"
  },
  "s535358a517": "Give someone, or an installer, access to the devices you choose.",
  "@s535358a517": {
   "description": "fi: Anna toiselle tai asentajalle pääsy valitsemiisi laitteisiin.",
-  "x-where": "ui/settings_page.dart:561"
+  "x-where": "ui/settings_page.dart:560"
  },
  "s25c286a743": "Sharing – new invite",
  "@s25c286a743": {
   "description": "fi: Jakaminen – uusi kutsu",
-  "x-where": "ui/settings_page.dart:586"
+  "x-where": "ui/settings_page.dart:585"
  },
  "s90ba544719": "Help",
  "@s90ba544719": {
   "description": "fi: Ohjeet",
-  "x-where": "ui/settings_page.dart:610"
+  "x-where": "ui/settings_page.dart:609"
  },
  "sb915c42792": "Show the getting-started guide",
  "@sb915c42792": {
   "description": "fi: Näytä aloitusopas",
-  "x-where": "ui/settings_page.dart:622"
+  "x-where": "ui/settings_page.dart:621"
  },
  "sd337a7ddd5": "Backup and transfer",
  "@sd337a7ddd5": {
   "description": "fi: Varmuuskopio ja siirto",
-  "x-where": "ui/settings_page.dart:632"
+  "x-where": "ui/settings_page.dart:631"
  },
  "s07c1048b4f": "Export the configuration to a JSON file and import it on another device (e.g. PC → phone).",
  "@s07c1048b4f": {
   "description": "fi: Vie asetukset JSON-tiedostoon ja tuo ne toiselle laitteelle (esim. PC → puhelin).",
-  "x-where": "ui/settings_page.dart:637"
+  "x-where": "ui/settings_page.dart:636"
  },
  "s2f797098e7": "Include passwords and tokens",
  "@s2f797098e7": {
   "description": "fi: Sisällytä salasanat ja tokenit",
-  "x-where": "ui/settings_page.dart:647"
+  "x-where": "ui/settings_page.dart:646"
  },
  "s26f72949e3": "The file is then unencrypted – keep it safe.",
  "@s26f72949e3": {
   "description": "fi: Tiedosto on silloin salaamaton – säilytä se turvassa.",
-  "x-where": "ui/settings_page.dart:654"
+  "x-where": "ui/settings_page.dart:653"
  },
  "sdb12678e52": "Export",
  "@sdb12678e52": {
   "description": "fi: Vie",
-  "x-where": "ui/settings_page.dart:670"
+  "x-where": "ui/settings_page.dart:669"
  },
  "s34686ffb09": "Example",
  "@s34686ffb09": {
   "description": "fi: Esimerkki",
-  "x-where": "ui/settings_page.dart:681"
+  "x-where": "ui/settings_page.dart:680"
  },
  "sc8327738b3": "Add an example dashboard (camera, alarm, lights, ventilation). The example devices never connect anywhere – add your own with Add device.",
  "@sc8327738b3": {
   "description": "fi: Lisää esimerkkinäkymä (kamera, hälytys, valot, IV-kone). Esimerkkilaitteet eivät ota yhteyttä mihinkään – lisää omat lai",
-  "x-where": "ui/settings_page.dart:686"
+  "x-where": "ui/settings_page.dart:685"
  },
  "sec02c7c071": "Add example dashboard",
  "@sec02c7c071": {
   "description": "fi: Lisää esimerkkinäkymä",
-  "x-where": "ui/settings_page.dart:703"
+  "x-where": "ui/settings_page.dart:702"
  },
  "s057b871ed2": "browser version",
  "@s057b871ed2": {
   "description": "fi: selainversio",
-  "x-where": "ui/settings_page.dart:714"
- },
- "s522d6584c5": "Check for updates",
- "@s522d6584c5": {
-  "description": "fi: Tarkista päivitykset",
-  "x-where": "ui/settings_page.dart:737"
+  "x-where": "ui/settings_page.dart:713"
  },
  "sd178a1d809": "Your own control terminal: HTTP, MQTT, Modbus TCP, Home Assistant, cameras, WebSocket, TCP and UDP. Without an account all settings stay on this device.",
  "@sd178a1d809": {
   "description": "fi: Oma ohjauspääte: HTTP, MQTT, Modbus TCP, Home Assistant, kamerat, WebSocket, TCP ja UDP. Ilman tiliä kaikki asetukset py",
-  "x-where": "ui/settings_page.dart:743"
+  "x-where": "ui/settings_page.dart:725"
  },
  "sf5bfc4217c": "Which Home Assistant?",
  "@sf5bfc4217c": {
   "description": "fi: Mistä Home Assistantista?",
-  "x-where": "ui/settings_page.dart:781"
+  "x-where": "ui/settings_page.dart:763"
  },
  "sbc210f9634": "You have more than one Home Assistant connection. An unused one (no tiles) can be removed.",
  "@sbc210f9634": {
   "description": "fi: Sinulla on useampi Home Assistant -yhteys. Käyttämättömän (ei ruutuja) voi poistaa.",
-  "x-where": "ui/settings_page.dart:784"
+  "x-where": "ui/settings_page.dart:766"
  },
  "s4f62c41cb3": "no tiles",
  "@s4f62c41cb3": {
   "description": "fi: ei ruutuja",
-  "x-where": "ui/settings_page.dart:797"
+  "x-where": "ui/settings_page.dart:779"
  },
  "s92c338c3bd": "tiles",
  "@s92c338c3bd": {
   "description": "fi: ruutua",
-  "x-where": "ui/settings_page.dart:797"
+  "x-where": "ui/settings_page.dart:779"
  },
  "sd3089f07cc": "Remove unused connection",
  "@sd3089f07cc": {
   "description": "fi: Poista käyttämätön yhteys",
-  "x-where": "ui/settings_page.dart:804"
+  "x-where": "ui/settings_page.dart:786"
  },
  "s1333776c9f": "Remove the connection?",
  "@s1333776c9f": {
   "description": "fi: Poistetaanko yhteys?",
-  "x-where": "ui/settings_page.dart:813"
+  "x-where": "ui/settings_page.dart:795"
  },
  "s8efb99df1d": "Cooling",
  "@s8efb99df1d": {
@@ -10209,7 +10204,7 @@
  "sa0c07ccd04": "You have the latest version ({p0}).",
  "@sa0c07ccd04": {
   "description": "fi: Sinulla on uusin versio ({p0}).",
-  "x-where": "ui/update_ui.dart:46",
+  "x-where": "ui/update_ui.dart:63",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10219,12 +10214,12 @@
  "sa118d84538": "Could not check for updates right now. Check the internet connection and try again later.",
  "@sa118d84538": {
   "description": "fi: Päivityksiä ei voitu tarkistaa juuri nyt. Tarkista nettiyhteys ja yritä myöhemmin.",
-  "x-where": "ui/update_ui.dart:51"
+  "x-where": "ui/update_ui.dart:68"
  },
  "s9f2b092d8c": "Version {p0} is available",
  "@s9f2b092d8c": {
   "description": "fi: Uusi versio {p0} on saatavilla",
-  "x-where": "ui/update_ui.dart:69",
+  "x-where": "ui/update_ui.dart:86",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10234,57 +10229,67 @@
  "sa5133b2c4a": "You have version {p0}.",
  "@sa5133b2c4a": {
   "description": "fi: Sinulla on nyt versio {p0}.",
-  "x-where": "ui/update_ui.dart:77",
+  "x-where": "ui/update_ui.dart:94",
   "placeholders": {
    "p0": {
     "type": "String"
    }
   }
  },
+ "s3cb3b0f9e9": "Molaplan downloads the update, closes for a moment and restarts by itself. Your settings are kept.",
+ "@s3cb3b0f9e9": {
+  "description": "fi: Molaplan lataa päivityksen, sulkeutuu hetkeksi ja käynnistyy itse uudelleen. Asetuksesi säilyvät.",
+  "x-where": "ui/update_ui.dart:98"
+ },
  "se099b5797e": "What''s new:",
  "@se099b5797e": {
   "description": "fi: Mitä uutta:",
-  "x-where": "ui/update_ui.dart:80"
+  "x-where": "ui/update_ui.dart:108"
  },
  "s9315c3df42": "Skip this version",
  "@s9315c3df42": {
   "description": "fi: Ohita tämä versio",
-  "x-where": "ui/update_ui.dart:92"
+  "x-where": "ui/update_ui.dart:120"
  },
  "sdd5c8f0a9d": "Later",
  "@sdd5c8f0a9d": {
   "description": "fi: Myöhemmin",
-  "x-where": "ui/update_ui.dart:97"
+  "x-where": "ui/update_ui.dart:125"
+ },
+ "s696dfe5700": "Update now",
+ "@s696dfe5700": {
+  "description": "fi: Päivitä nyt",
+  "x-where": "ui/update_ui.dart:132"
  },
  "s5a94ef2af1": "The download was corrupted",
  "@s5a94ef2af1": {
   "description": "fi: Lataus oli viallinen",
-  "x-where": "ui/update_ui.dart:160"
+  "x-where": "ui/update_ui.dart:195"
  },
  "s81e4325573": "Download failed",
  "@s81e4325573": {
   "description": "fi: Lataus ei onnistunut",
-  "x-where": "ui/update_ui.dart:161"
+  "x-where": "ui/update_ui.dart:196"
  },
  "s4b1d3df588": "The file checksum did not match, so nothing was installed. Please try again in a moment.",
  "@s4b1d3df588": {
   "description": "fi: Tiedoston tarkistussumma ei täsmännyt, joten mitään ei asennettu. Yritä hetken päästä uudelleen.",
-  "x-where": "ui/update_ui.dart:165"
+  "x-where": "ui/update_ui.dart:200"
  },
  "s0c463c7069": "Check the internet connection and try again. You can also download the update from the release page.",
  "@s0c463c7069": {
   "description": "fi: Tarkista nettiyhteys ja yritä uudelleen. Voit myös ladata päivityksen julkaisusivulta.",
-  "x-where": "ui/update_ui.dart:170"
+  "x-where": "ui/update_ui.dart:205"
  },
  "s5dd4c9671f": "Open release page",
  "@s5dd4c9671f": {
   "description": "fi: Avaa julkaisusivu",
-  "x-where": "ui/update_ui.dart:179"
+  "x-where": "ui/update_ui.dart:214"
  },
  "s8f5be45ff1": "Installing {p0} – the app restarts in a moment.",
  "@s8f5be45ff1": {
   "description": "fi: Asennetaan versio {p0} – sovellus käynnistyy uudelleen hetken kuluttua.",
-  "x-where": "ui/update_ui.dart:198",
+  "x-where": "ui/update_ui.dart:233",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10294,7 +10299,7 @@
  "sf207ef6dc2": "Install failed: {p0}",
  "@sf207ef6dc2": {
   "description": "fi: Asennus epäonnistui: {p0}",
-  "x-where": "ui/update_ui.dart:203",
+  "x-where": "ui/update_ui.dart:238",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10304,12 +10309,12 @@
  "s49ddc3c3b6": "Update downloaded",
  "@s49ddc3c3b6": {
   "description": "fi: Päivitys ladattu",
-  "x-where": "ui/update_ui.dart:227"
+  "x-where": "ui/update_ui.dart:262"
  },
  "s04a05bb8fc": "The file is verified and saved:\n{p0}\n\nTo use it:\n1. Close Molaplan.\n2. Extract the zip over the old Molaplan folder (or into a new folder).\n3. Start molaplan.exe. Your settings are kept.",
  "@s04a05bb8fc": {
   "description": "fi: Tiedosto on tarkistettu ja tallennettu:\n{p0}\n\nNäin otat sen käyttöön:\n1. Sulje Molaplan.\n2. Pura zip-tiedosto vanhan Mol",
-  "x-where": "ui/update_ui.dart:229",
+  "x-where": "ui/update_ui.dart:264",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10319,42 +10324,42 @@
  "s1dd246ec69": "Release page",
  "@s1dd246ec69": {
   "description": "fi: Julkaisusivu",
-  "x-where": "ui/update_ui.dart:236"
+  "x-where": "ui/update_ui.dart:271"
  },
  "s0f07b20d45": "Open zip",
  "@s0f07b20d45": {
   "description": "fi: Avaa zip",
-  "x-where": "ui/update_ui.dart:237"
+  "x-where": "ui/update_ui.dart:272"
  },
  "s6e1ebc8baa": "Open folder",
  "@s6e1ebc8baa": {
   "description": "fi: Avaa kansio",
-  "x-where": "ui/update_ui.dart:244"
+  "x-where": "ui/update_ui.dart:279"
  },
  "s6d9de3f94b": "The install did not continue",
  "@s6d9de3f94b": {
   "description": "fi: Asennus ei jatkunut",
-  "x-where": "ui/update_ui.dart:263"
+  "x-where": "ui/update_ui.dart:298"
  },
  "s25a6f00343": "If you cancelled it yourself, all is well. If Android''s Install window did not appear, tap Try again.",
  "@s25a6f00343": {
   "description": "fi: Jos perut asennuksen itse, kaikki on kunnossa. Jos Androidin Asenna-ikkunaa ei näkynyt, paina Yritä uudelleen.",
-  "x-where": "ui/update_ui.dart:265"
+  "x-where": "ui/update_ui.dart:300"
  },
  "s29e92898c6": "Confirm the install in the Android window or notification.",
  "@s29e92898c6": {
   "description": "fi: Vahvista asennus Androidin ikkunasta tai ilmoituksesta.",
-  "x-where": "ui/update_ui.dart:287"
+  "x-where": "ui/update_ui.dart:322"
  },
  "s48093a1369": "Confirm the update",
  "@s48093a1369": {
   "description": "fi: Vahvista päivitys",
-  "x-where": "ui/update_ui.dart:313"
+  "x-where": "ui/update_ui.dart:348"
  },
  "s6d50eeae10": "Update {p0} is waiting for your confirmation. Tap Open install (or the \"Molaplan-päivitys valmis\" notification).",
  "@s6d50eeae10": {
   "description": "fi: Päivitys {p0} odottaa vahvistusta. Paina Avaa asennus (tai napauta ilmoitusta \"Molaplan-päivitys valmis\").",
-  "x-where": "ui/update_ui.dart:315",
+  "x-where": "ui/update_ui.dart:350",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10364,17 +10369,17 @@
  "s1a5c09b6e4": "Open install",
  "@s1a5c09b6e4": {
   "description": "fi: Avaa asennus",
-  "x-where": "ui/update_ui.dart:326"
+  "x-where": "ui/update_ui.dart:361"
  },
  "sd1cdbd3630": "The install did not start",
  "@sd1cdbd3630": {
   "description": "fi: Asennus ei käynnistynyt",
-  "x-where": "ui/update_ui.dart:343"
+  "x-where": "ui/update_ui.dart:378"
  },
  "s21972e23c1": "Android did not start installing {p0}.\n\nCheck that \"Allow from this source\" is on for Molaplan and tap Update again. You can also download the APK from the release page.\n\nDetail: {p1}",
  "@s21972e23c1": {
   "description": "fi: Android ei aloittanut päivityksen {p0} asennusta.\n\nTarkista, että \"Salli tästä lähteestä\" on päällä Molaplanille, ja pai",
-  "x-where": "ui/update_ui.dart:345",
+  "x-where": "ui/update_ui.dart:380",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10387,32 +10392,32 @@
  "sa1bd8d2533": "Open settings",
  "@sa1bd8d2533": {
   "description": "fi: Avaa asetukset",
-  "x-where": "ui/update_ui.dart:359"
+  "x-where": "ui/update_ui.dart:394"
  },
  "sa065e7f650": "Allow installing updates",
  "@sa065e7f650": {
   "description": "fi: Salli päivitysten asennus",
-  "x-where": "ui/update_ui.dart:373"
+  "x-where": "ui/update_ui.dart:408"
  },
  "sdc3bf71baf": "Android asks once for permission so Molaplan can install its own updates.\n\n1. Tap \"Open settings\".\n2. Turn on \"Allow from this source\".\n3. Come back and tap \"Update\" again.",
  "@sdc3bf71baf": {
   "description": "fi: Android kysyy kerran luvan, jotta Molaplan saa asentaa omat päivityksensä.\n\n1. Paina \"Avaa asetukset\".\n2. Kytke päälle \"",
-  "x-where": "ui/update_ui.dart:375"
+  "x-where": "ui/update_ui.dart:410"
  },
  "s441683b7a8": "Verifying…",
  "@s441683b7a8": {
   "description": "fi: Tarkistetaan…",
-  "x-where": "ui/update_ui.dart:408"
+  "x-where": "ui/update_ui.dart:443"
  },
  "se83b7fb2ac": "Downloading update…",
  "@se83b7fb2ac": {
   "description": "fi: Ladataan päivitystä…",
-  "x-where": "ui/update_ui.dart:409"
+  "x-where": "ui/update_ui.dart:444"
  },
  "s0b68f81d82": "Molaplan {p0} is available. The bridge keeps working.",
  "@s0b68f81d82": {
   "description": "fi: Molaplan {p0} on saatavilla. Silta toimii normaalisti.",
-  "x-where": "ui/update_ui.dart:444",
+  "x-where": "ui/update_ui.dart:479",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10663,6 +10668,244 @@
  "@s9e8430c37b": {
   "description": "fi: Näitä Molaplan ei ohjaa. iPhonet näkyvät nimellä vain hereillä ollessaan.",
   "x-where": "ui/network_scan.dart:492"
+ },
+ "s22237546b7": "Windows will ask for permission",
+ "@s22237546b7": {
+  "description": "fi: Windows kysyy luvan",
+  "x-where": "ui/windows_update_ui.dart:51"
+ },
+ "sba5d22a11d": "Molaplan is installed in {p0}, which a normal user cannot write to. When you tap Continue, Windows asks for permission to install the update. Choose Yes. If you do not allow it, nothing is changed.",
+ "@sba5d22a11d": {
+  "description": "fi: Molaplan on asennettu kansioon {p0}, johon tavallisella käyttäjällä ei ole kirjoitusoikeutta. Kun painat Jatka, Windows ",
+  "x-where": "ui/windows_update_ui.dart:53",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s1653ef3e98": "Updating…",
+ "@s1653ef3e98": {
+  "description": "fi: Päivitetään…",
+  "x-where": "ui/windows_update_ui.dart:81"
+ },
+ "s0684e0b288": "Molaplan closes for a moment and restarts by itself in the new version {p0}. Your settings are kept.",
+ "@s0684e0b288": {
+  "description": "fi: Molaplan sulkeutuu hetkeksi ja käynnistyy itse uudelleen uudessa versiossa {p0}. Asetuksesi säilyvät.",
+  "x-where": "ui/windows_update_ui.dart:88",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s01f0721d12": "You can try again with Check for updates in Settings.",
+ "@s01f0721d12": {
+  "description": "fi: Voit yrittää Asetukset-sivun Tarkista päivitykset -napilla.",
+  "x-where": "ui/windows_update_ui.dart:134"
+ },
+ "saeb9f339ea": "Update {p0} is ready",
+ "@saeb9f339ea": {
+  "description": "fi: Päivitys {p0} on valmis",
+  "x-where": "ui/windows_update_ui.dart:188",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s584b333948": "Molaplan updates and restarts in {p0} s. Your settings are kept.",
+ "@s584b333948": {
+  "description": "fi: Molaplan päivittyy ja käynnistyy uudelleen {p0} s kuluttua. Asetuksesi säilyvät.",
+  "x-where": "ui/windows_update_ui.dart:190",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "se85804c09e": "Unpacking…",
+ "@se85804c09e": {
+  "description": "fi: Puretaan…",
+  "x-where": "ui/windows_update_ui.dart:219"
+ },
+ "sfde238d022": "The update could not be downloaded",
+ "@sfde238d022": {
+  "description": "fi: Päivitystä ei voitu ladata",
+  "x-where": "ui/windows_update_ui.dart:242"
+ },
+ "sd34bc5b759": "The update is not available for download yet",
+ "@sd34bc5b759": {
+  "description": "fi: Päivitys ei ole vielä ladattavissa",
+  "x-where": "ui/windows_update_ui.dart:243"
+ },
+ "s69806434b6": "The update could not be saved to disk",
+ "@s69806434b6": {
+  "description": "fi: Päivitystä ei voitu tallentaa levylle",
+  "x-where": "ui/windows_update_ui.dart:245"
+ },
+ "s91ef8085b3": "The update could not be unpacked",
+ "@s91ef8085b3": {
+  "description": "fi: Päivityksen purku ei onnistunut",
+  "x-where": "ui/windows_update_ui.dart:246"
+ },
+ "s9de25df723": "The downloaded file is not a Molaplan package",
+ "@s9de25df723": {
+  "description": "fi: Ladattu tiedosto ei ole Molaplan-paketti",
+  "x-where": "ui/windows_update_ui.dart:247"
+ },
+ "s9ae7791013": "The updater could not be started",
+ "@s9ae7791013": {
+  "description": "fi: Päivitysohjelmaa ei saatu käynnistettyä",
+  "x-where": "ui/windows_update_ui.dart:248"
+ },
+ "sea2070f532": "An older version is not installed",
+ "@sea2070f532": {
+  "description": "fi: Vanhempaa versiota ei asenneta",
+  "x-where": "ui/windows_update_ui.dart:249"
+ },
+ "s12b599bf15": "The update did not work",
+ "@s12b599bf15": {
+  "description": "fi: Päivitys ei onnistunut",
+  "x-where": "ui/windows_update_ui.dart:250"
+ },
+ "s4280d34c21": "The internet connection did not work. Nothing was changed and the current version keeps working. Check the connection and try again.",
+ "@s4280d34c21": {
+  "description": "fi: Nettiyhteys ei toiminut. Mitään ei muutettu, ja nykyinen versio toimii entiseen tapaan. Tarkista nettiyhteys ja yritä uu",
+  "x-where": "ui/windows_update_ui.dart:254"
+ },
+ "s00cf811000": "The new version has just been published and its files are not available yet. Try again in a few minutes.",
+ "@s00cf811000": {
+  "description": "fi: Uusi versio on juuri julkaistu, eikä sen tiedostoja ole vielä saatavilla. Yritä uudelleen muutaman minuutin päästä.",
+  "x-where": "ui/windows_update_ui.dart:259"
+ },
+ "sbe407f9965": "Saving the update to disk failed. Check that the disk has at least 500 MB free and that antivirus is not blocking the files, then try again. Nothing was changed.",
+ "@sbe407f9965": {
+  "description": "fi: Päivityksen tallennus levylle epäonnistui. Tarkista, että levyllä on vähintään 500 Mt vapaata tilaa ja ettei virustorjun",
+  "x-where": "ui/windows_update_ui.dart:269"
+ },
+ "sf865bf69b9": "The downloaded file could not be unpacked. Nothing was changed. Try again; if it keeps failing, download the update from the release page.",
+ "@sf865bf69b9": {
+  "description": "fi: Ladattua tiedostoa ei saatu purettua. Mitään ei muutettu. Yritä uudelleen; jos vika toistuu, lataa päivitys julkaisusivu",
+  "x-where": "ui/windows_update_ui.dart:274"
+ },
+ "s67ed401b44": "The downloaded file does not contain the Molaplan program, so it was not installed. Nothing was changed.",
+ "@s67ed401b44": {
+  "description": "fi: Ladatusta tiedostosta puuttuu Molaplanin ohjelmatiedosto, joten sitä ei asennettu. Mitään ei muutettu.",
+  "x-where": "ui/windows_update_ui.dart:279"
+ },
+ "s540be0ec41": "Windows or antivirus stopped the updater from starting. Nothing was changed. You can download the zip from the release page and extract it over the old Molaplan folder.",
+ "@s540be0ec41": {
+  "description": "fi: Windows tai virustorjunta esti päivitysohjelman käynnistyksen. Mitään ei muutettu. Voit ladata zip-tiedoston julkaisusiv",
+  "x-where": "ui/windows_update_ui.dart:284"
+ },
+ "s43cad41986": "The offered version is not newer than the one you have, so it was not installed.",
+ "@s43cad41986": {
+  "description": "fi: Tarjottu versio ei ole uudempi kuin käytössäsi oleva, joten sitä ei asennettu.",
+  "x-where": "ui/windows_update_ui.dart:289"
+ },
+ "s58ef99cde3": "Nothing was changed. Try again later.",
+ "@s58ef99cde3": {
+  "description": "fi: Mitään ei muutettu. Yritä uudelleen myöhemmin.",
+  "x-where": "ui/windows_update_ui.dart:294"
+ },
+ "s446ef05921": "Molaplan was updated to version {p0}. Your settings were kept.",
+ "@s446ef05921": {
+  "description": "fi: Molaplan on päivitetty versioon {p0}. Asetuksesi säilyivät.",
+  "x-where": "ui/windows_update_ui.dart:364",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "s97eb7f7a6e": "The update did not work – the old version was restored",
+ "@s97eb7f7a6e": {
+  "description": "fi: Päivitys ei onnistunut – vanha versio palautettiin",
+  "x-where": "ui/windows_update_ui.dart:375"
+ },
+ "s7af95a89c6": "The new version {p0} did not start or its files could not be replaced (antivirus may have locked them), so Molaplan restored the previous version {p1}. Your settings are safe. You can try again later.",
+ "@s7af95a89c6": {
+  "description": "fi: Uusi versio {p0} ei käynnistynyt tai sen tiedostoja ei saatu korvattua (esimerkiksi virustorjunta saattoi lukita ne), jo",
+  "x-where": "ui/windows_update_ui.dart:376",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   },
+   "p1": {
+    "type": "String"
+   }
+  }
+ },
+ "s3f72dd7b0f": "The update and the restore both failed",
+ "@s3f72dd7b0f": {
+  "description": "fi: Päivitys ja palautus epäonnistuivat",
+  "x-where": "ui/windows_update_ui.dart:383"
+ },
+ "s4f03259cc2": "Molaplan''s files may be partly updated. Download the latest Molaplan from the release page and extract it over the old folder. Your settings are not lost.",
+ "@s4f03259cc2": {
+  "description": "fi: Molaplanin tiedostot voivat olla vaiheittain päivittyneet. Lataa uusin Molaplan julkaisusivulta ja pura se vanhan kansio",
+  "x-where": "ui/windows_update_ui.dart:384"
+ },
+ "s4a001df75d": "The update was not installed – permission was missing",
+ "@s4a001df75d": {
+  "description": "fi: Päivitystä ei asennettu – lupa puuttui",
+  "x-where": "ui/windows_update_ui.dart:391"
+ },
+ "s1999eba26c": "Writing to the Molaplan folder needs administrator permission, which was not given. Nothing was changed. Try again and choose Yes when Windows asks, or move Molaplan to a folder you can write to, for example your own files.",
+ "@s1999eba26c": {
+  "description": "fi: Molaplanin kansioon kirjoittaminen vaatii järjestelmänvalvojan luvan, jota ei annettu. Mitään ei muutettu. Yritä uudelle",
+  "x-where": "ui/windows_update_ui.dart:392"
+ },
+ "s16ed002faf": "The update did not finish",
+ "@s16ed002faf": {
+  "description": "fi: Päivitys ei valmistunut",
+  "x-where": "ui/windows_update_ui.dart:399"
+ },
+ "sc06f4b5ed9": "Nothing was changed, or the previous version was restored. Close any other Molaplan windows and try again. If it keeps failing, download the update from the release page.",
+ "@sc06f4b5ed9": {
+  "description": "fi: Mitään ei muutettu tai edellinen versio palautettiin. Sulje mahdolliset muut Molaplan-ikkunat ja yritä uudelleen. Jos vi",
+  "x-where": "ui/windows_update_ui.dart:400"
+ },
+ "s522d6584c5": "Check for updates",
+ "@s522d6584c5": {
+  "description": "fi: Tarkista päivitykset",
+  "x-where": "ui/windows_update_ui.dart:469"
+ },
+ "s7421af4664": "Last checked {p0}",
+ "@s7421af4664": {
+  "description": "fi: Viimeksi tarkistettu {p0}",
+  "x-where": "ui/windows_update_ui.dart:473",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "sd67c7026fd": "Check for updates automatically",
+ "@sd67c7026fd": {
+  "description": "fi: Tarkista päivitykset automaattisesti",
+  "x-where": "ui/windows_update_ui.dart:482"
+ },
+ "s207fb68ce3": "After start-up and about every 6 hours. You see a notice when a new version is available.",
+ "@s207fb68ce3": {
+  "description": "fi: Käynnistyksen jälkeen ja noin 6 tunnin välein. Näet ilmoituksen, kun uusi versio on saatavilla.",
+  "x-where": "ui/windows_update_ui.dart:485"
+ },
+ "s5129b5c575": "At start-up and regularly. You see a notice when a new version is available.",
+ "@s5129b5c575": {
+  "description": "fi: Käynnistyksen yhteydessä ja säännöllisesti. Näet ilmoituksen, kun uusi versio on saatavilla.",
+  "x-where": "ui/windows_update_ui.dart:490"
+ },
+ "sa4003c37b9": "Install updates automatically",
+ "@sa4003c37b9": {
+  "description": "fi: Asenna päivitykset automaattisesti",
+  "x-where": "ui/windows_update_ui.dart:503"
+ },
+ "sc545f74ad9": "Downloads and installs the new version by itself. A 30-second notice appears before the restart, and you can postpone it. If this is off, you tap Update now yourself.",
+ "@sc545f74ad9": {
+  "description": "fi: Lataa ja asentaa uuden version itse. Ennen uudelleenkäynnistystä näkyy 30 sekunnin ilmoitus, jonka voit siirtää myöhemmä",
+  "x-where": "ui/windows_update_ui.dart:505"
  },
  "s7f308d40c8": "Heating",
  "@s7f308d40c8": {
@@ -20712,7 +20955,7 @@
  "sb9964cfb3b": "Power {p0}",
  "@sb9964cfb3b": {
   "description": "fi: Teho {p0}",
-  "x-where": "state/app_state.dart:1920",
+  "x-where": "state/app_state.dart:1943",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -20722,7 +20965,7 @@
  "s08d04d58a9": "Channel {p0}",
  "@s08d04d58a9": {
   "description": "fi: Kanava {p0}",
-  "x-where": "state/app_state.dart:1921",
+  "x-where": "state/app_state.dart:1944",
   "placeholders": {
    "p0": {
     "type": "String"

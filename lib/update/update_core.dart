@@ -182,6 +182,77 @@ Future<CheckResult> checkLatest({
   }
 }
 
+/// R701: where the version of the live web app (= the latest release) is published. It is a plain
+/// static file on molaplan.com, so it has no API rate limit; GitHub is the fallback.
+const manifestUrl = 'https://molaplan.com/version.json';
+
+/// The version in molaplan.com/version.json (`{"version":"0.20.25",...}`), or null for anything else.
+String? parseManifestVersion(String body) {
+  try {
+    final j = jsonDecode(body);
+    if (j is! Map) return null;
+    final v = '${j['version'] ?? ''}';
+    return SemVer.tryParse(v)?.toString();
+  } catch (_) {
+    return null;
+  }
+}
+
+/// A [ReleaseInfo] built from a version number alone: the download links of a GitHub release follow
+/// a fixed pattern, and these links are not rate limited.
+ReleaseInfo releaseFromVersion(String version, {String repo = 'molaplan1-cloud/molaplan1'}) {
+  final base = 'https://github.com/$repo/releases/download/v$version';
+  return ReleaseInfo(
+    tag: 'v$version',
+    name: 'Molaplan v$version',
+    notes: '',
+    pageUrl: 'https://github.com/$repo/releases/tag/v$version',
+    assets: [
+      for (final n in [androidArm64Asset, androidUniversalAsset, windowsAsset, checksumAsset])
+        ReleaseAsset(n, '$base/$n', 0),
+    ],
+  );
+}
+
+/// R701: the update check. Asks molaplan.com first (no rate limit); when that says a newer version
+/// exists, the release (notes + files) comes from GitHub's tag endpoint, or, if the API is rate
+/// limited, from the fixed download links. When molaplan.com cannot be reached the GitHub "latest"
+/// endpoint decides. Never throws: [CheckOutcome.unavailable] means "could not tell".
+Future<CheckResult> checkUpdate({
+  required String current,
+  String repo = 'molaplan1-cloud/molaplan1',
+  http.Client? client,
+  Duration timeout = const Duration(seconds: 12),
+}) async {
+  final c = client ?? http.Client();
+  try {
+    String? latest;
+    try {
+      final r = await c
+          .get(Uri.parse('$manifestUrl?t=${DateTime.now().millisecondsSinceEpoch ~/ 60000}'), headers: {'Cache-Control': 'no-cache'})
+          .timeout(timeout);
+      if (r.statusCode == 200) latest = parseManifestVersion(r.body);
+    } catch (_) {}
+    if (latest == null) return await checkLatest(current: current, repo: repo, client: c, timeout: timeout);
+    if (!isNewer(latest, current)) return CheckResult(CheckOutcome.upToDate);
+    try {
+      final r = await c
+          .get(
+            Uri.parse('https://api.github.com/repos/$repo/releases/tags/v$latest'),
+            headers: {'Accept': 'application/vnd.github+json', 'User-Agent': 'molaplan-app/$current'},
+          )
+          .timeout(timeout);
+      if (r.statusCode == 200) {
+        final rel = ReleaseInfo.fromGitHub(jsonDecode(r.body) as Map<String, dynamic>);
+        if (rel.tag.isNotEmpty && rel.assets.isNotEmpty) return CheckResult(CheckOutcome.newer, rel);
+      }
+    } catch (_) {}
+    return CheckResult(CheckOutcome.newer, releaseFromVersion(latest, repo: repo));
+  } finally {
+    if (client == null) c.close();
+  }
+}
+
 /// Downloads [url] to [to], reporting progress 0..1 (null when the size is unknown).
 Future<File> download(String url, File to, {void Function(double?)? progress, http.Client? client}) async {
   final c = client ?? http.Client();

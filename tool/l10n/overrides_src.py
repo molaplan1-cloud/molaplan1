@@ -942,6 +942,18 @@ T = {
  'If this phase shows export as positive.': ('Om fasen visar export som positiv.', 'Kui see faas näitab müüki positiivsena.', 'Si esta fase muestra la exportación como positiva.'),
  'The grid power is the sum of the phases. If a phase is missing or does not update, the total is shown as partial (*).': ('Nätets effekt är summan av faserna. Om en fas saknas eller inte uppdateras visas summan som ofullständig (*).', 'Võrgu võimsus on faaside summa. Kui faas puudub või ei uuene, näidatakse summat osalisena (*).', 'La potencia de la red es la suma de las fases. Si falta una fase o no se actualiza, el total se muestra como parcial (*).'),
  'Inverts the whole total if the reading shows export as positive.': ('Vänder hela summan om mätningen visar export som positiv.', 'Pöörab kogu summa märgi, kui mõõtmine näitab müüki positiivsena.', 'Invierte todo el total si la medición muestra la exportación como positiva.'),
+
+ # R700-R719: Windows self-update
+ 'Check for updates automatically': ('Sök efter uppdateringar automatiskt', 'Otsi värskendusi automaatselt', 'Buscar actualizaciones automáticamente'),
+ 'Install updates automatically': ('Installera uppdateringar automatiskt', 'Paigalda värskendused automaatselt', 'Instalar las actualizaciones automáticamente'),
+ 'Update now': ('Uppdatera nu', 'Värskenda kohe', 'Actualizar ahora'),
+ 'Updating…': ('Uppdaterar…', 'Värskendan…', 'Actualizando…'),
+ 'Unpacking…': ('Packar upp…', 'Pakin lahti…', 'Descomprimiendo…'),
+ 'Windows will ask for permission': ('Windows ber om tillstånd', 'Windows küsib luba', 'Windows pedirá permiso'),
+ 'The update could not be downloaded': ('Uppdateringen kunde inte laddas ned', 'Värskendust ei saanud alla laadida', 'No se pudo descargar la actualización'),
+ 'The update did not work – the old version was restored': ('Uppdateringen lyckades inte – den gamla versionen återställdes', 'Värskendus ei õnnestunud – vana versioon taastati', 'La actualización falló: se restauró la versión anterior'),
+ 'The update did not finish': ('Uppdateringen blev inte klar', 'Värskendus ei lõppenud', 'La actualización no se completó'),
+ 'The update was not installed – permission was missing': ('Uppdateringen installerades inte – tillstånd saknades', 'Värskendust ei paigaldatud – luba puudus', 'La actualización no se instaló: faltaba el permiso'),
 }
 
 

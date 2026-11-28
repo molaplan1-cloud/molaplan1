@@ -26,6 +26,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter/services.dart' show MethodChannel;
 
 import 'core/net_fallback.dart';
+import 'update/windows_update.dart' show reportUpdateStarted;
+import 'version.dart';
 import 'prices/prices.dart';
 import 'state/app_state.dart';
 import 'state/home_launcher.dart';
@@ -129,6 +131,10 @@ Future<void> main() async {
   await DesktopTray.init(state);
   if (state.config.automation.automations.isNotEmpty) {
     unawaited(LocalNotify.askPermission());
+  }
+  // R710: the first frame is up – a waiting updater may keep this version (no rollback).
+  if (Plat.isWindows) {
+    WidgetsBinding.instance.addPostFrameCallback((_) => reportUpdateStarted(appVersion));
   }
   runApp(
     MolaplanApp(

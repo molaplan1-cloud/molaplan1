@@ -5461,9 +5461,6 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s057b871ed2 => 'selainversio';
 
   @override
-  String get s522d6584c5 => 'Tarkista päivitykset';
-
-  @override
   String get sd178a1d809 =>
       'Oma ohjauspääte: HTTP, MQTT, Modbus TCP, Home Assistant, kamerat, WebSocket, TCP ja UDP. Ilman tiliä kaikki asetukset pysyvät tällä laitteella.';
 
@@ -6298,6 +6295,10 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
+  String get s3cb3b0f9e9 =>
+      'Molaplan lataa päivityksen, sulkeutuu hetkeksi ja käynnistyy itse uudelleen. Asetuksesi säilyvät.';
+
+  @override
   String get se099b5797e => 'Mitä uutta:';
 
   @override
@@ -6305,6 +6306,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sdd5c8f0a9d => 'Myöhemmin';
+
+  @override
+  String get s696dfe5700 => 'Päivitä nyt';
 
   @override
   String get s5a94ef2af1 => 'Lataus oli viallinen';
@@ -6550,6 +6554,155 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s9e8430c37b =>
       'Näitä Molaplan ei ohjaa. iPhonet näkyvät nimellä vain hereillä ollessaan.';
+
+  @override
+  String get s22237546b7 => 'Windows kysyy luvan';
+
+  @override
+  String sba5d22a11d(String p0) {
+    return 'Molaplan on asennettu kansioon $p0, johon tavallisella käyttäjällä ei ole kirjoitusoikeutta. Kun painat Jatka, Windows kysyy luvan päivityksen asentamiseen. Valitse Kyllä. Jos et anna lupaa, mitään ei muuteta.';
+  }
+
+  @override
+  String get s1653ef3e98 => 'Päivitetään…';
+
+  @override
+  String s0684e0b288(String p0) {
+    return 'Molaplan sulkeutuu hetkeksi ja käynnistyy itse uudelleen uudessa versiossa $p0. Asetuksesi säilyvät.';
+  }
+
+  @override
+  String get s01f0721d12 =>
+      'Voit yrittää Asetukset-sivun Tarkista päivitykset -napilla.';
+
+  @override
+  String saeb9f339ea(String p0) {
+    return 'Päivitys $p0 on valmis';
+  }
+
+  @override
+  String s584b333948(String p0) {
+    return 'Molaplan päivittyy ja käynnistyy uudelleen $p0 s kuluttua. Asetuksesi säilyvät.';
+  }
+
+  @override
+  String get se85804c09e => 'Puretaan…';
+
+  @override
+  String get sfde238d022 => 'Päivitystä ei voitu ladata';
+
+  @override
+  String get sd34bc5b759 => 'Päivitys ei ole vielä ladattavissa';
+
+  @override
+  String get s69806434b6 => 'Päivitystä ei voitu tallentaa levylle';
+
+  @override
+  String get s91ef8085b3 => 'Päivityksen purku ei onnistunut';
+
+  @override
+  String get s9de25df723 => 'Ladattu tiedosto ei ole Molaplan-paketti';
+
+  @override
+  String get s9ae7791013 => 'Päivitysohjelmaa ei saatu käynnistettyä';
+
+  @override
+  String get sea2070f532 => 'Vanhempaa versiota ei asenneta';
+
+  @override
+  String get s12b599bf15 => 'Päivitys ei onnistunut';
+
+  @override
+  String get s4280d34c21 =>
+      'Nettiyhteys ei toiminut. Mitään ei muutettu, ja nykyinen versio toimii entiseen tapaan. Tarkista nettiyhteys ja yritä uudelleen.';
+
+  @override
+  String get s00cf811000 =>
+      'Uusi versio on juuri julkaistu, eikä sen tiedostoja ole vielä saatavilla. Yritä uudelleen muutaman minuutin päästä.';
+
+  @override
+  String get sbe407f9965 =>
+      'Päivityksen tallennus levylle epäonnistui. Tarkista, että levyllä on vähintään 500 Mt vapaata tilaa ja ettei virustorjunta estä tiedostoja, ja yritä uudelleen. Mitään ei muutettu.';
+
+  @override
+  String get sf865bf69b9 =>
+      'Ladattua tiedostoa ei saatu purettua. Mitään ei muutettu. Yritä uudelleen; jos vika toistuu, lataa päivitys julkaisusivulta.';
+
+  @override
+  String get s67ed401b44 =>
+      'Ladatusta tiedostosta puuttuu Molaplanin ohjelmatiedosto, joten sitä ei asennettu. Mitään ei muutettu.';
+
+  @override
+  String get s540be0ec41 =>
+      'Windows tai virustorjunta esti päivitysohjelman käynnistyksen. Mitään ei muutettu. Voit ladata zip-tiedoston julkaisusivulta ja purkaa sen vanhan Molaplan-kansion päälle.';
+
+  @override
+  String get s43cad41986 =>
+      'Tarjottu versio ei ole uudempi kuin käytössäsi oleva, joten sitä ei asennettu.';
+
+  @override
+  String get s58ef99cde3 => 'Mitään ei muutettu. Yritä uudelleen myöhemmin.';
+
+  @override
+  String s446ef05921(String p0) {
+    return 'Molaplan on päivitetty versioon $p0. Asetuksesi säilyivät.';
+  }
+
+  @override
+  String get s97eb7f7a6e =>
+      'Päivitys ei onnistunut – vanha versio palautettiin';
+
+  @override
+  String s7af95a89c6(String p0, String p1) {
+    return 'Uusi versio $p0 ei käynnistynyt tai sen tiedostoja ei saatu korvattua (esimerkiksi virustorjunta saattoi lukita ne), joten Molaplan palautti edellisen version $p1. Asetuksesi ovat tallessa. Voit yrittää myöhemmin uudelleen.';
+  }
+
+  @override
+  String get s3f72dd7b0f => 'Päivitys ja palautus epäonnistuivat';
+
+  @override
+  String get s4f03259cc2 =>
+      'Molaplanin tiedostot voivat olla vaiheittain päivittyneet. Lataa uusin Molaplan julkaisusivulta ja pura se vanhan kansion päälle. Asetuksesi eivät häviä.';
+
+  @override
+  String get s4a001df75d => 'Päivitystä ei asennettu – lupa puuttui';
+
+  @override
+  String get s1999eba26c =>
+      'Molaplanin kansioon kirjoittaminen vaatii järjestelmänvalvojan luvan, jota ei annettu. Mitään ei muutettu. Yritä uudelleen ja valitse Windowsin kysymykseen Kyllä, tai siirrä Molaplan kansioon, johon sinulla on kirjoitusoikeus, esimerkiksi omiin tiedostoihisi.';
+
+  @override
+  String get s16ed002faf => 'Päivitys ei valmistunut';
+
+  @override
+  String get sc06f4b5ed9 =>
+      'Mitään ei muutettu tai edellinen versio palautettiin. Sulje mahdolliset muut Molaplan-ikkunat ja yritä uudelleen. Jos vika toistuu, lataa päivitys julkaisusivulta.';
+
+  @override
+  String get s522d6584c5 => 'Tarkista päivitykset';
+
+  @override
+  String s7421af4664(String p0) {
+    return 'Viimeksi tarkistettu $p0';
+  }
+
+  @override
+  String get sd67c7026fd => 'Tarkista päivitykset automaattisesti';
+
+  @override
+  String get s207fb68ce3 =>
+      'Käynnistyksen jälkeen ja noin 6 tunnin välein. Näet ilmoituksen, kun uusi versio on saatavilla.';
+
+  @override
+  String get s5129b5c575 =>
+      'Käynnistyksen yhteydessä ja säännöllisesti. Näet ilmoituksen, kun uusi versio on saatavilla.';
+
+  @override
+  String get sa4003c37b9 => 'Asenna päivitykset automaattisesti';
+
+  @override
+  String get sc545f74ad9 =>
+      'Lataa ja asentaa uuden version itse. Ennen uudelleenkäynnistystä näkyy 30 sekunnin ilmoitus, jonka voit siirtää myöhemmäksi. Jos et valitse tätä, painat itse Päivitä nyt.';
 
   @override
   String get s7f308d40c8 => 'Lämmittää';
