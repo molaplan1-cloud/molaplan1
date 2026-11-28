@@ -8162,6 +8162,9 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String get s0e776e1574 => 'Visa mindre';
+
+  @override
   String get s2aaf585b6f =>
       'Välj avläsningarna för att visa i kortinställningarna.';
 
@@ -8319,6 +8322,16 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sac7ed506f3 => 'Energiflöde';
 
   @override
+  String get s6631dd4cc3 =>
+      'En energimätare, inte en förbrukare. Du kan använda den som nätmätning, eller fortfarande visa den som en enhet märkt som mätare.';
+
+  @override
+  String get sf43fda9dad => 'på (uppskattning)';
+
+  @override
+  String get s036ab2e742 => 'Mätad kraft';
+
+  @override
   String get s510927a4e5 => 'Används inte';
 
   @override
@@ -8446,10 +8459,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s16e6172f72 => 'Inga enheter som rapporterar ström ännu.';
 
   @override
-  String get sf43fda9dad => 'på (uppskattning)';
-
-  @override
-  String get s036ab2e742 => 'Mätad kraft';
+  String get sefefead6d2 => 'Använd som nätmätning';
 
   @override
   String get s5b72e0dd48 => 'Flytta flöde prickar';
@@ -8460,6 +8470,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get sda8d9bf1cd => 'Uttag';
+
+  @override
+  String get sba3876d071 => 'Energimätare';
 
   @override
   String get se21f8f0465 => 'Lampa';

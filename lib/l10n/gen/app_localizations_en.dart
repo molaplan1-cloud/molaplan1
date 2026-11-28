@@ -8153,6 +8153,9 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get s0e776e1574 => 'Show less';
+
+  @override
   String get s2aaf585b6f => 'Pick the readings to show in the tile settings.';
 
   @override
@@ -8310,6 +8313,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sac7ed506f3 => 'Energy flow';
 
   @override
+  String get s6631dd4cc3 =>
+      'An energy meter, not a consuming device. You can use it as the grid measurement, or still show it as a device labelled as a meter.';
+
+  @override
+  String get sf43fda9dad => 'while on (estimate)';
+
+  @override
+  String get s036ab2e742 => 'Measured power';
+
+  @override
   String get s510927a4e5 => 'Not used';
 
   @override
@@ -8438,10 +8451,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s16e6172f72 => 'No devices that report power yet.';
 
   @override
-  String get sf43fda9dad => 'while on (estimate)';
-
-  @override
-  String get s036ab2e742 => 'Measured power';
+  String get sefefead6d2 => 'Use as the grid measurement';
 
   @override
   String get s5b72e0dd48 => 'Moving flow dots';
@@ -8452,6 +8462,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sda8d9bf1cd => 'Plug';
+
+  @override
+  String get sba3876d071 => 'Energy meter';
 
   @override
   String get se21f8f0465 => 'Lamp';

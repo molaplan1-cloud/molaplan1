@@ -461,6 +461,32 @@ List<PhaseCandidate> phaseCandidates(Iterable<TileConfig> tiles) {
   ];
 }
 
+/// R718: whether [t] is an energy meter (site or phase meter), not a consuming device.
+/// Generic: the tile's name, how it is read (phase channels, meter paths) and [meter] role.
+/// A switch that only reports its own power is not a meter.
+bool isFlowMeterTile(TileConfig? t, {MeterInfo? meter}) {
+  if (t == null) return false;
+  if (meter != null) return true;
+  if (t.type != TileType.value || !isPowerUnit(t.unit)) return false;
+  if (phaseIndexOf(t) != null) return true;
+  final title = t.title.toLowerCase();
+  if (RegExp(
+    r'energiamittari|sähkömittari|energy\s*meter|electricity\s*meter|energimätare|energiamõõtja|medidor(?: de energ[ií]a)?|pääsähkö|site\s*meter|grid\s*meter',
+    unicode: true,
+  ).hasMatch(title)) {
+    return true;
+  }
+  // Common meter model names (not a plug or a PM switch).
+  if (RegExp(
+    r'(^|[^\p{L}\d])((?:shelly\s+)?(?:pro\s+)?(?:3em|em(?:-\d+)?|shem(?:-?\d+)?)|emeter)(?=$|[^\p{L}\d])',
+    unicode: true,
+  ).hasMatch(title)) {
+    return true;
+  }
+  final fields = [t.read['jsonPath'], t.read['field'], t.read['key'], t.read['path'], t.read['comp']].whereType<String>().join(' ');
+  return RegExp(r'/emeter/|\bemeters:|\bemeter\b|\bem:[0-2]').hasMatch(fields.toLowerCase());
+}
+
 /// One measurement of a summed node as read now.
 class PartReading {
   const PartReading({this.tileId, this.label, this.w, this.missing = false, this.stale = false, this.estimated = false});

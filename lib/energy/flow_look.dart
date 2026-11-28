@@ -114,6 +114,7 @@ class FlowLook {
 /// R671: device icons for chargers and consumers, in picker order.
 const flowIconKeys = [
   'plug',
+  'meter',
   'lamp',
   'sauna',
   'stove',
@@ -141,6 +142,19 @@ const flowIconKeys = [
 /// of 4 letters or less matches a whole word or the end of one (a compound such as "sähköauto"),
 /// a longer one anywhere in the name.
 const _iconWords = <(String, List<String>)>[
+  (
+    'meter',
+    [
+      'energiamittari',
+      'sähkömittari',
+      'energy meter',
+      'electricity meter',
+      'energimätare',
+      'energiamõõtja',
+      'medidor de energía',
+      'medidor de energia',
+    ],
+  ),
   ('dishwasher', ['astianpesu', 'dishwasher', 'diskmaskin', 'nõudepesu', 'lavavajillas', 'lavaplatos']),
   ('dryer', ['kuivausrumpu', 'kuivaaja', 'kuivain', 'dryer', 'tumble', 'torktumlare', 'kuivati', 'secadora']),
   ('washer', ['pesukone', 'pyykin', 'washer', 'washing', 'tvättmaskin', 'pesumasin', 'lavadora']),

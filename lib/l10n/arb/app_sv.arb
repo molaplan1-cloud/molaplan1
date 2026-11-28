@@ -5604,6 +5604,10 @@
  "@sa5133b2c4a": {
   "x-mt": true
  },
+ "s3cb3b0f9e9": "Molaplan laddar ner uppdateringen, stänger för ett ögonblick och startar om av sig själv. Dina inställningar hålls.",
+ "@s3cb3b0f9e9": {
+  "x-mt": true
+ },
  "se099b5797e": "Vad är nytt:",
  "@se099b5797e": {
   "x-mt": true
@@ -5831,15 +5835,135 @@
   "x-mt": true
  },
  "s22237546b7": "Windows ber om tillstånd",
+ "sba5d22a11d": "Molaplan är installerad i {p0}, som en normal användare inte kan skriva till. När du trycker på Fortsätt ber Windows om tillstånd att installera uppdateringen. Välj Ja. Om du inte tillåter det ändras ingenting.",
+ "@sba5d22a11d": {
+  "x-mt": true
+ },
  "s1653ef3e98": "Uppdaterar…",
+ "s0684e0b288": "Molaplan stänger för ett ögonblick och startar om sig själv i den nya versionen {p0}. Dina inställningar hålls.",
+ "@s0684e0b288": {
+  "x-mt": true
+ },
+ "s01f0721d12": "Du kan prova igen med Kontroll för uppdateringar i Inställningar.",
+ "@s01f0721d12": {
+  "x-mt": true
+ },
+ "saeb9f339ea": "Uppdatering {p0} är klar",
+ "@saeb9f339ea": {
+  "x-mt": true
+ },
+ "s584b333948": "Molaplan uppdaterar och startar om i {p0} s. Dina inställningar hålls.",
+ "@s584b333948": {
+  "x-mt": true
+ },
  "se85804c09e": "Packar upp…",
  "sfde238d022": "Uppdateringen kunde inte laddas ned",
+ "sd34bc5b759": "Uppdateringen är inte tillgänglig för nedladdning ännu",
+ "@sd34bc5b759": {
+  "x-mt": true
+ },
+ "s69806434b6": "Uppdateringen kunde inte sparas till disk",
+ "@s69806434b6": {
+  "x-mt": true
+ },
+ "s91ef8085b3": "Uppdateringen kunde inte packas upp",
+ "@s91ef8085b3": {
+  "x-mt": true
+ },
+ "s9de25df723": "Den nedladdade filen är inte ett Molaplan-paket",
+ "@s9de25df723": {
+  "x-mt": true
+ },
+ "s9ae7791013": "Uppdateraren kunde inte startas",
+ "@s9ae7791013": {
+  "x-mt": true
+ },
+ "sea2070f532": "En äldre version är inte installerad",
+ "@sea2070f532": {
+  "x-mt": true
+ },
+ "s12b599bf15": "Uppdateringen fungerade inte",
+ "@s12b599bf15": {
+  "x-mt": true
+ },
+ "s4280d34c21": "Internetanslutningen fungerade inte. Ingenting ändrades och den aktuella versionen fortsätter att fungera. Kontrollera anslutningen och försök igen.",
+ "@s4280d34c21": {
+  "x-mt": true
+ },
+ "s00cf811000": "Den nya versionen har just publicerats och dess filer är inte tillgängliga ännu. Försök igen om några minuter.",
+ "@s00cf811000": {
+  "x-mt": true
+ },
+ "sbe407f9965": "Spara uppdateringen till disken misslyckades. Kontrollera att disken har minst 500 MB gratis och att antivirus inte blockerar filerna, försök sedan igen.",
+ "@sbe407f9965": {
+  "x-mt": true
+ },
+ "sf865bf69b9": "Den nedladdade filen kunde inte packas upp. Ingenting ändrades. Försök igen; om det fortsätter att misslyckas, ladda ner uppdateringen från släppsidan.",
+ "@sf865bf69b9": {
+  "x-mt": true
+ },
+ "s67ed401b44": "Den nedladdade filen innehåller inte Molaplan-programmet, så det var inte installerat. Ingenting ändrades.",
+ "@s67ed401b44": {
+  "x-mt": true
+ },
+ "s540be0ec41": "Windows eller antivirus stoppade uppdateringsprogrammet från att starta. Inget ändrades. Du kan ladda ner zip från släppsidan och extrahera den över den gamla Molaplan-mappen.",
+ "@s540be0ec41": {
+  "x-mt": true
+ },
+ "s43cad41986": "Den erbjudna versionen är inte nyare än den du har, så den var inte installerad.",
+ "@s43cad41986": {
+  "x-mt": true
+ },
+ "s58ef99cde3": "Ingenting har ändrats. Försök igen senare.",
+ "@s58ef99cde3": {
+  "x-mt": true
+ },
+ "s446ef05921": "Molaplan uppdaterades till version {p0}. Dina inställningar hölls.",
+ "@s446ef05921": {
+  "x-mt": true
+ },
  "s97eb7f7a6e": "Uppdateringen lyckades inte – den gamla versionen återställdes",
+ "s7af95a89c6": "Den nya versionen {p0} startade inte eller dess filer kunde inte ersättas (antivirus kan ha låst dem), så Molaplan restaurerade den tidigare versionen {p1}. Dina inställningar är säkra. Du kan försöka igen senare.",
+ "@s7af95a89c6": {
+  "x-mt": true
+ },
+ "s3f72dd7b0f": "Uppdateringen och återställningen misslyckades",
+ "@s3f72dd7b0f": {
+  "x-mt": true
+ },
+ "s4f03259cc2": "Molaplans filer kan delvis uppdateras. Ladda ner den senaste Molaplan från releasesidan och extrahera den över den gamla mappen. Dina inställningar är inte förlorade.",
+ "@s4f03259cc2": {
+  "x-mt": true
+ },
  "s4a001df75d": "Uppdateringen installerades inte – tillstånd saknades",
+ "s1999eba26c": "Att skriva till Molaplan-mappen behöver administratörstillstånd, som inte gavs. Ingenting ändrades igen och välj Ja när Windows frågar, eller flytta Molaplan till en mapp du kan skriva till, till exempel dina egna filer.",
+ "@s1999eba26c": {
+  "x-mt": true
+ },
  "s16ed002faf": "Uppdateringen blev inte klar",
+ "sc06f4b5ed9": "Ingenting ändrades, eller den tidigare versionen återställdes. Stäng alla andra Molaplan-fönster och försök igen. Om det fortsätter att misslyckas, ladda ner uppdateringen från släppsidan.",
+ "@sc06f4b5ed9": {
+  "x-mt": true
+ },
  "s522d6584c5": "Sök efter uppdateringar",
+ "s7421af4664": "Senast kontrollerad {p0}",
+ "@s7421af4664": {
+  "x-mt": true
+ },
  "sd67c7026fd": "Sök efter uppdateringar automatiskt",
+ "s207fb68ce3": "Efter start och cirka var 6: e timme ser du ett meddelande när en ny version är tillgänglig.",
+ "@s207fb68ce3": {
+  "x-mt": true
+ },
+ "s5129b5c575": "Vid start och regelbundet ser du ett meddelande när en ny version är tillgänglig.",
+ "@s5129b5c575": {
+  "x-mt": true
+ },
  "sa4003c37b9": "Installera uppdateringar automatiskt",
+ "sc545f74ad9": "Nedladdningar och installerar den nya versionen själv. Ett 30-sekunders meddelande visas före omstart, och du kan skjuta upp det. Om det här är av, trycker du på Uppdatera nu själv.",
+ "@sc545f74ad9": {
+  "x-mt": true
+ },
  "s7f308d40c8": "Värmer",
  "s41de361b3e": "Kyler",
  "s4f7ccb7138": "Avfuktar",
@@ -7186,6 +7310,10 @@
  "@sd8070dcde7": {
   "x-mt": true
  },
+ "s0e776e1574": "Visa mindre",
+ "@s0e776e1574": {
+  "x-mt": true
+ },
  "s2aaf585b6f": "Välj avläsningarna för att visa i kortinställningarna.",
  "@s2aaf585b6f": {
   "x-mt": true
@@ -7278,6 +7406,15 @@
  "sa454eaaff2": "≈ = uppskattning utifrån enhetens märkeffekt, inte en mätning. * = ofullständig summa: ett värde saknas eller har inte uppdaterats. Mätarens egen energiräknare används när den finns.",
  "sac7ed506f3": "Energiflöde",
  "@sac7ed506f3": {
+  "x-mt": true
+ },
+ "s6631dd4cc3": "En energimätare, inte en förbrukare. Du kan använda den som nätmätning, eller fortfarande visa den som en enhet märkt som mätare.",
+ "sf43fda9dad": "på (uppskattning)",
+ "@sf43fda9dad": {
+  "x-mt": true
+ },
+ "s036ab2e742": "Mätad kraft",
+ "@s036ab2e742": {
   "x-mt": true
  },
  "s510927a4e5": "Används inte",
@@ -7397,14 +7534,7 @@
  "@s16e6172f72": {
   "x-mt": true
  },
- "sf43fda9dad": "på (uppskattning)",
- "@sf43fda9dad": {
-  "x-mt": true
- },
- "s036ab2e742": "Mätad kraft",
- "@s036ab2e742": {
-  "x-mt": true
- },
+ "sefefead6d2": "Använd som nätmätning",
  "s5b72e0dd48": "Flytta flöde prickar",
  "@s5b72e0dd48": {
   "x-mt": true
@@ -7414,6 +7544,7 @@
   "x-mt": true
  },
  "sda8d9bf1cd": "Uttag",
+ "sba3876d071": "Energimätare",
  "se21f8f0465": "Lampa",
  "s0be5afd833": "Bastuaggregat",
  "sa1f4becf2f": "Spis",
@@ -12954,130 +13085,6 @@
  },
  "s06444f278d": "position (100 = stängd)",
  "@s06444f278d": {
-  "x-mt": true
- },
- "s3cb3b0f9e9": "Molaplan laddar ner uppdateringen, stänger för ett ögonblick och startar om av sig själv. Dina inställningar hålls.",
- "@s3cb3b0f9e9": {
-  "x-mt": true
- },
- "sba5d22a11d": "Molaplan är installerad i {p0}, som en normal användare inte kan skriva till. När du trycker på Fortsätt ber Windows om tillstånd att installera uppdateringen. Välj Ja. Om du inte tillåter det ändras ingenting.",
- "@sba5d22a11d": {
-  "x-mt": true
- },
- "s0684e0b288": "Molaplan stänger för ett ögonblick och startar om sig själv i den nya versionen {p0}. Dina inställningar hålls.",
- "@s0684e0b288": {
-  "x-mt": true
- },
- "s01f0721d12": "Du kan prova igen med Kontroll för uppdateringar i Inställningar.",
- "@s01f0721d12": {
-  "x-mt": true
- },
- "saeb9f339ea": "Uppdatering {p0} är klar",
- "@saeb9f339ea": {
-  "x-mt": true
- },
- "s584b333948": "Molaplan uppdaterar och startar om i {p0} s. Dina inställningar hålls.",
- "@s584b333948": {
-  "x-mt": true
- },
- "sd34bc5b759": "Uppdateringen är inte tillgänglig för nedladdning ännu",
- "@sd34bc5b759": {
-  "x-mt": true
- },
- "s69806434b6": "Uppdateringen kunde inte sparas till disk",
- "@s69806434b6": {
-  "x-mt": true
- },
- "s91ef8085b3": "Uppdateringen kunde inte packas upp",
- "@s91ef8085b3": {
-  "x-mt": true
- },
- "s9de25df723": "Den nedladdade filen är inte ett Molaplan-paket",
- "@s9de25df723": {
-  "x-mt": true
- },
- "s9ae7791013": "Uppdateraren kunde inte startas",
- "@s9ae7791013": {
-  "x-mt": true
- },
- "sea2070f532": "En äldre version är inte installerad",
- "@sea2070f532": {
-  "x-mt": true
- },
- "s12b599bf15": "Uppdateringen fungerade inte",
- "@s12b599bf15": {
-  "x-mt": true
- },
- "s4280d34c21": "Internetanslutningen fungerade inte. Ingenting ändrades och den aktuella versionen fortsätter att fungera. Kontrollera anslutningen och försök igen.",
- "@s4280d34c21": {
-  "x-mt": true
- },
- "s00cf811000": "Den nya versionen har just publicerats och dess filer är inte tillgängliga ännu. Försök igen om några minuter.",
- "@s00cf811000": {
-  "x-mt": true
- },
- "sbe407f9965": "Spara uppdateringen till disken misslyckades. Kontrollera att disken har minst 500 MB gratis och att antivirus inte blockerar filerna, försök sedan igen.",
- "@sbe407f9965": {
-  "x-mt": true
- },
- "sf865bf69b9": "Den nedladdade filen kunde inte packas upp. Ingenting ändrades. Försök igen; om det fortsätter att misslyckas, ladda ner uppdateringen från släppsidan.",
- "@sf865bf69b9": {
-  "x-mt": true
- },
- "s67ed401b44": "Den nedladdade filen innehåller inte Molaplan-programmet, så det var inte installerat. Ingenting ändrades.",
- "@s67ed401b44": {
-  "x-mt": true
- },
- "s540be0ec41": "Windows eller antivirus stoppade uppdateringsprogrammet från att starta. Inget ändrades. Du kan ladda ner zip från släppsidan och extrahera den över den gamla Molaplan-mappen.",
- "@s540be0ec41": {
-  "x-mt": true
- },
- "s43cad41986": "Den erbjudna versionen är inte nyare än den du har, så den var inte installerad.",
- "@s43cad41986": {
-  "x-mt": true
- },
- "s58ef99cde3": "Ingenting har ändrats. Försök igen senare.",
- "@s58ef99cde3": {
-  "x-mt": true
- },
- "s446ef05921": "Molaplan uppdaterades till version {p0}. Dina inställningar hölls.",
- "@s446ef05921": {
-  "x-mt": true
- },
- "s7af95a89c6": "Den nya versionen {p0} startade inte eller dess filer kunde inte ersättas (antivirus kan ha låst dem), så Molaplan restaurerade den tidigare versionen {p1}. Dina inställningar är säkra. Du kan försöka igen senare.",
- "@s7af95a89c6": {
-  "x-mt": true
- },
- "s3f72dd7b0f": "Uppdateringen och återställningen misslyckades",
- "@s3f72dd7b0f": {
-  "x-mt": true
- },
- "s4f03259cc2": "Molaplans filer kan delvis uppdateras. Ladda ner den senaste Molaplan från releasesidan och extrahera den över den gamla mappen. Dina inställningar är inte förlorade.",
- "@s4f03259cc2": {
-  "x-mt": true
- },
- "s1999eba26c": "Att skriva till Molaplan-mappen behöver administratörstillstånd, som inte gavs. Ingenting ändrades igen och välj Ja när Windows frågar, eller flytta Molaplan till en mapp du kan skriva till, till exempel dina egna filer.",
- "@s1999eba26c": {
-  "x-mt": true
- },
- "sc06f4b5ed9": "Ingenting ändrades, eller den tidigare versionen återställdes. Stäng alla andra Molaplan-fönster och försök igen. Om det fortsätter att misslyckas, ladda ner uppdateringen från släppsidan.",
- "@sc06f4b5ed9": {
-  "x-mt": true
- },
- "s7421af4664": "Senast kontrollerad {p0}",
- "@s7421af4664": {
-  "x-mt": true
- },
- "s207fb68ce3": "Efter start och cirka var 6: e timme ser du ett meddelande när en ny version är tillgänglig.",
- "@s207fb68ce3": {
-  "x-mt": true
- },
- "s5129b5c575": "Vid start och regelbundet ser du ett meddelande när en ny version är tillgänglig.",
- "@s5129b5c575": {
-  "x-mt": true
- },
- "sc545f74ad9": "Nedladdningar och installerar den nya versionen själv. Ett 30-sekunders meddelande visas före omstart, och du kan skjuta upp det. Om det här är av, trycker du på Uppdatera nu själv.",
- "@sc545f74ad9": {
   "x-mt": true
  }
 }

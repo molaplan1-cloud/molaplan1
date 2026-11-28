@@ -921,7 +921,8 @@
   "{p0} – phase power": "{p0}: potencia de fase",
   "{p0} – retrying": "{p0} – se reintenta",
   "≈ = estimate from a device's nominal power, not a measurement. * = partial total: a reading is missing or has not updated. A meter's own energy counter is used when available.": "≈ = estimación según la potencia nominal del dispositivo, no una medición. * = total parcial: falta una lectura o no se ha actualizado. Se usa el contador de energía del propio medidor cuando existe.",
-  "≈ includes an estimate": "≈ incluye una estimación"
+  "≈ includes an estimate": "≈ incluye una estimación",
+  "An energy meter, not a consuming device. You can use it as the grid measurement, or still show it as a device labelled as a meter.": "Un medidor de energía, no un dispositivo de consumo. Puedes usarlo como medición de la red, o seguir mostrándolo como un dispositivo etiquetado como medidor."
  },
  "et": {
   " (optional)": " (valikuline)",
@@ -1845,7 +1846,9 @@
   "{p0} – phase power": "{p0} – faasi võimsus",
   "{p0} – retrying": "{p0} – proovitakse uuesti",
   "≈ = estimate from a device's nominal power, not a measurement. * = partial total: a reading is missing or has not updated. A meter's own energy counter is used when available.": "≈ = hinnang seadme nimivõimsuse järgi, mitte mõõtmine. * = osaline summa: näit puudub või pole uuenenud. Arvesti enda energialoendurit kasutatakse, kui see on olemas.",
-  "≈ includes an estimate": "≈ sisaldab hinnangut"
+  "≈ includes an estimate": "≈ sisaldab hinnangut",
+  "Use as the grid measurement": "Kasuta võrgu mõõtmisena",
+  "An energy meter, not a consuming device. You can use it as the grid measurement, or still show it as a device labelled as a meter.": "Energiamõõtja, mitte tarbiv seade. Seda saab kasutada võrgumõõtmisena või näidata seda ikkagi seadmena, mis on märgitud mõõtjaks."
  },
  "sv": {
   " (optional)": " (valfritt)",
@@ -2769,6 +2772,9 @@
   "{p0} – phase power": "{p0} – faseffekt",
   "{p0} – retrying": "{p0} – nytt försök",
   "≈ = estimate from a device's nominal power, not a measurement. * = partial total: a reading is missing or has not updated. A meter's own energy counter is used when available.": "≈ = uppskattning utifrån enhetens märkeffekt, inte en mätning. * = ofullständig summa: ett värde saknas eller har inte uppdaterats. Mätarens egen energiräknare används när den finns.",
-  "≈ includes an estimate": "≈ innehåller en uppskattning"
+  "≈ includes an estimate": "≈ innehåller en uppskattning",
+  "Use as the grid measurement": "Använd som nätmätning",
+  "Energy meter": "Energimätare",
+  "An energy meter, not a consuming device. You can use it as the grid measurement, or still show it as a device labelled as a meter.": "En energimätare, inte en förbrukare. Du kan använda den som nätmätning, eller fortfarande visa den som en enhet märkt som mätare."
  }
 }

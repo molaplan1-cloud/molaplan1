@@ -13287,75 +13287,80 @@
    }
   }
  },
+ "s0e776e1574": "Show less",
+ "@s0e776e1574": {
+  "description": "fi: Vähemmän",
+  "x-where": "ui/energy_flow_tile.dart:683"
+ },
  "s2aaf585b6f": "Pick the readings to show in the tile settings.",
  "@s2aaf585b6f": {
   "description": "fi: Valitse näytettävät mittaukset ruudun asetuksista.",
-  "x-where": "ui/energy_flow_tile.dart:784"
+  "x-where": "ui/energy_flow_tile.dart:1039"
  },
  "s49ee71cd97": "Imported from the grid",
  "@s49ee71cd97": {
   "description": "fi: Ostettu verkosta",
-  "x-where": "ui/energy_flow_tile.dart:938"
+  "x-where": "ui/energy_flow_tile.dart:1193"
  },
  "s5d21321a6f": "Exported to the grid",
  "@s5d21321a6f": {
   "description": "fi: Myyty verkkoon",
-  "x-where": "ui/energy_flow_tile.dart:939"
+  "x-where": "ui/energy_flow_tile.dart:1194"
  },
  "s7f605ef5bc": "Solar",
  "@s7f605ef5bc": {
   "description": "fi: Aurinkosähkö",
-  "x-where": "ui/energy_flow_tile.dart:941"
+  "x-where": "ui/energy_flow_tile.dart:1196"
  },
  "sd07fb61b79": "Charged into the battery",
  "@sd07fb61b79": {
   "description": "fi: Ladattu akkuun",
-  "x-where": "ui/energy_flow_tile.dart:943"
+  "x-where": "ui/energy_flow_tile.dart:1198"
  },
  "s0c7fceb3ee": "Discharged from the battery",
  "@s0c7fceb3ee": {
   "description": "fi: Purettu akusta",
-  "x-where": "ui/energy_flow_tile.dart:944"
+  "x-where": "ui/energy_flow_tile.dart:1199"
  },
  "sfee551e69b": "Home consumption",
  "@sfee551e69b": {
   "description": "fi: Kodin kulutus",
-  "x-where": "ui/energy_flow_tile.dart:947"
+  "x-where": "ui/energy_flow_tile.dart:1202"
  },
  "sdfe10bf834": "measured",
  "@sdfe10bf834": {
   "description": "fi: mitattu",
-  "x-where": "ui/energy_flow_tile.dart:985"
+  "x-where": "ui/energy_flow_tile.dart:1240"
  },
  "sae6d1ca515": "worked out from grid, solar and battery",
  "@sae6d1ca515": {
   "description": "fi: laskettu verkosta, aurinkosähköstä ja akusta",
-  "x-where": "ui/energy_flow_tile.dart:986"
+  "x-where": "ui/energy_flow_tile.dart:1241"
  },
  "s87cfa01b07": "sum of the chosen devices",
  "@s87cfa01b07": {
   "description": "fi: valittujen laitteiden summa",
-  "x-where": "ui/energy_flow_tile.dart:987"
+  "x-where": "ui/energy_flow_tile.dart:1242"
  },
  "sbd8dc92226": "no data",
  "@sbd8dc92226": {
   "description": "fi: ei tietoa",
-  "x-where": "ui/energy_flow_tile.dart:988"
+  "x-where": "ui/energy_flow_tile.dart:1243"
  },
  "s378c86207c": "not picked",
  "@s378c86207c": {
   "description": "fi: valitsematon",
-  "x-where": "ui/energy_flow_tile.dart:1007"
+  "x-where": "ui/energy_flow_tile.dart:1262"
  },
  "s35fbb49351": "Partial total",
  "@s35fbb49351": {
   "description": "fi: Osittainen summa",
-  "x-where": "ui/energy_flow_tile.dart:1017"
+  "x-where": "ui/energy_flow_tile.dart:1272"
  },
  "s219a787d6d": "Partial total: {p0} without a fresh reading",
  "@s219a787d6d": {
   "description": "fi: Osittainen summa: {p0} ilman tuoretta lukemaa",
-  "x-where": "ui/energy_flow_tile.dart:1018",
+  "x-where": "ui/energy_flow_tile.dart:1273",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13365,12 +13370,12 @@
  "saf4d8fcfb5": "no data for this period",
  "@saf4d8fcfb5": {
   "description": "fi: ei tietoja tältä ajalta",
-  "x-where": "ui/energy_flow_tile.dart:1026"
+  "x-where": "ui/energy_flow_tile.dart:1281"
  },
  "s102ab9f75d": "data for {p0} % of the time",
  "@s102ab9f75d": {
   "description": "fi: tiedot {p0} %:lta ajasta",
-  "x-where": "ui/energy_flow_tile.dart:1028",
+  "x-where": "ui/energy_flow_tile.dart:1283",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13380,82 +13385,82 @@
  "sac4a19a96a": "partly partial",
  "@sac4a19a96a": {
   "description": "fi: osin osittainen",
-  "x-where": "ui/energy_flow_tile.dart:1029"
+  "x-where": "ui/energy_flow_tile.dart:1284"
  },
  "s97c34b1448": "≈ includes an estimate",
  "@s97c34b1448": {
   "description": "fi: ≈ sisältää arvion",
-  "x-where": "ui/energy_flow_tile.dart:1030"
+  "x-where": "ui/energy_flow_tile.dart:1285"
  },
  "s96c54d9bff": "price missing for part",
  "@s96c54d9bff": {
   "description": "fi: hinta puuttuu osalta",
-  "x-where": "ui/energy_flow_tile.dart:1031"
+  "x-where": "ui/energy_flow_tile.dart:1286"
  },
  "s12a830f37c": "no sell price",
  "@s12a830f37c": {
   "description": "fi: ei myyntihintaa",
-  "x-where": "ui/energy_flow_tile.dart:1032"
+  "x-where": "ui/energy_flow_tile.dart:1287"
  },
  "sdd09c35163": "no reading",
  "@sdd09c35163": {
   "description": "fi: ei lukemaa",
-  "x-where": "ui/energy_flow_tile.dart:1054"
+  "x-where": "ui/energy_flow_tile.dart:1309"
  },
  "sa13b3e497f": "old reading",
  "@sa13b3e497f": {
   "description": "fi: vanha lukema",
-  "x-where": "ui/energy_flow_tile.dart:1055"
+  "x-where": "ui/energy_flow_tile.dart:1310"
  },
  "s2ded4b3731": "Yesterday",
  "@s2ded4b3731": {
   "description": "fi: Eilen",
-  "x-where": "ui/energy_flow_tile.dart:1069"
+  "x-where": "ui/energy_flow_tile.dart:1324"
  },
  "s80f05aa110": "This week",
  "@s80f05aa110": {
   "description": "fi: Tällä viikolla",
-  "x-where": "ui/energy_flow_tile.dart:1070"
+  "x-where": "ui/energy_flow_tile.dart:1325"
  },
  "s03341b3f0a": "This month",
  "@s03341b3f0a": {
   "description": "fi: Tässä kuussa",
-  "x-where": "ui/energy_flow_tile.dart:1071"
+  "x-where": "ui/energy_flow_tile.dart:1326"
  },
  "s2fc33c0a1d": "This year",
  "@s2fc33c0a1d": {
   "description": "fi: Tänä vuonna",
-  "x-where": "ui/energy_flow_tile.dart:1072"
+  "x-where": "ui/energy_flow_tile.dart:1327"
  },
  "sb4512d0ace": "fixed energy price",
  "@sb4512d0ace": {
   "description": "fi: kiinteä energiahinta",
-  "x-where": "ui/energy_flow_tile.dart:1077"
+  "x-where": "ui/energy_flow_tile.dart:1332"
  },
  "se22939d739": "night/day energy price",
  "@se22939d739": {
   "description": "fi: yö/päivä-energiahinta",
-  "x-where": "ui/energy_flow_tile.dart:1078"
+  "x-where": "ui/energy_flow_tile.dart:1333"
  },
  "se9ba1a6e47": "spot price (15 min / hourly) + margin",
  "@se9ba1a6e47": {
   "description": "fi: pörssihinta (15 min / tunti) + marginaali",
-  "x-where": "ui/energy_flow_tile.dart:1079"
+  "x-where": "ui/energy_flow_tile.dart:1334"
  },
  "sb6d9735f9f": "transfer",
  "@sb6d9735f9f": {
   "description": "fi: siirto",
-  "x-where": "ui/energy_flow_tile.dart:1081"
+  "x-where": "ui/energy_flow_tile.dart:1336"
  },
  "s4f57542ba9": "electricity tax",
  "@s4f57542ba9": {
   "description": "fi: sähkövero",
-  "x-where": "ui/energy_flow_tile.dart:1082"
+  "x-where": "ui/energy_flow_tile.dart:1337"
  },
  "s74dd546718": "Prices: {p0}. Monthly fees are not included.",
  "@s74dd546718": {
   "description": "fi: Hinnat: {p0}. Kuukausimaksut eivät sisälly.",
-  "x-where": "ui/energy_flow_tile.dart:1086",
+  "x-where": "ui/energy_flow_tile.dart:1341",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13465,32 +13470,32 @@
  "se70108b74a": "Default contract – set your own electricity contract in the energy settings.",
  "@se70108b74a": {
   "description": "fi: Oletussopimus – aseta oma sähkösopimus Energia-asetuksissa.",
-  "x-where": "ui/energy_flow_tile.dart:1088"
+  "x-where": "ui/energy_flow_tile.dart:1343"
  },
  "s8088b35607": "Sold electricity as income: spot price − buyer''s margin (no VAT).",
  "@s8088b35607": {
   "description": "fi: Myyty sähkö tulona: pörssihinta − ostajan marginaali (ilman ALV).",
-  "x-where": "ui/energy_flow_tile.dart:1091"
+  "x-where": "ui/energy_flow_tile.dart:1346"
  },
  "s2e1cdcfbc3": "Sold electricity as income: fixed sell price (no VAT).",
  "@s2e1cdcfbc3": {
   "description": "fi: Myyty sähkö tulona: kiinteä myyntihinta (ilman ALV).",
-  "x-where": "ui/energy_flow_tile.dart:1092"
+  "x-where": "ui/energy_flow_tile.dart:1347"
  },
  "sbd22ca9fe6": "There is no sell price for sold electricity – set it in the electricity contract to see the income.",
  "@sbd22ca9fe6": {
   "description": "fi: Myydylle sähkölle ei ole myyntihintaa – aseta se sähkösopimukseen, niin tulo näkyy.",
-  "x-where": "ui/energy_flow_tile.dart:1093"
+  "x-where": "ui/energy_flow_tile.dart:1348"
  },
  "s22b661b08e": "Power now · energy and price today",
  "@s22b661b08e": {
   "description": "fi: Teho nyt · energia ja hinta tänään",
-  "x-where": "ui/energy_flow_tile.dart:1153"
+  "x-where": "ui/energy_flow_tile.dart:1409"
  },
  "sb30ae5ae29": "Energy and price: {p0}",
  "@sb30ae5ae29": {
   "description": "fi: Energia ja hinta: {p0}",
-  "x-where": "ui/energy_flow_tile.dart:1154",
+  "x-where": "ui/energy_flow_tile.dart:1410",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13500,17 +13505,17 @@
  "s1de79b4241": "worth",
  "@s1de79b4241": {
   "description": "fi: arvo",
-  "x-where": "ui/energy_flow_tile.dart:1167"
+  "x-where": "ui/energy_flow_tile.dart:1423"
  },
  "scec6bf6cd3": "Phases",
  "@scec6bf6cd3": {
   "description": "fi: Vaiheet",
-  "x-where": "ui/energy_flow_tile.dart:1203"
+  "x-where": "ui/energy_flow_tile.dart:1459"
  },
  "s63d5f7f387": "The phases are loaded unevenly: {p0} the most, {p1} apart.",
  "@s63d5f7f387": {
   "description": "fi: Vaiheiden kuorma on epätasainen: {p0} eniten, ero {p1}.",
-  "x-where": "ui/energy_flow_tile.dart:1223",
+  "x-where": "ui/energy_flow_tile.dart:1479",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13523,7 +13528,7 @@
  "sb375780835": "The phases are balanced ({p0} apart).",
  "@sb375780835": {
   "description": "fi: Vaiheet ovat tasapainossa (ero {p0}).",
-  "x-where": "ui/energy_flow_tile.dart:1228",
+  "x-where": "ui/energy_flow_tile.dart:1484",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13533,77 +13538,92 @@
  "s98d58d9d74": "Data: the home bridge, which records all the time.",
  "@s98d58d9d74": {
   "description": "fi: Tiedot: kotisilta, joka tallentaa jatkuvasti.",
-  "x-where": "ui/energy_flow_tile.dart:1253"
+  "x-where": "ui/energy_flow_tile.dart:1509"
  },
  "scc4b0a4fd6": "Data: this device. Adds up whenever Molaplan runs (also in the background and the tray); a home bridge records all the time.",
  "@scc4b0a4fd6": {
   "description": "fi: Tiedot: tämä laite. Kertyy aina, kun Molaplan on käynnissä (myös taustalla ja ilmaisinalueella); kotisilta tallentaa jat",
-  "x-where": "ui/energy_flow_tile.dart:1254"
+  "x-where": "ui/energy_flow_tile.dart:1510"
  },
  "sa454eaaff2": "≈ = estimate from a device''s nominal power, not a measurement. * = partial total: a reading is missing or has not updated. A meter''s own energy counter is used when available.",
  "@sa454eaaff2": {
   "description": "fi: ≈ = arvio laitteen nimellistehosta, ei mittaus. * = osittainen summa: jokin mittaus puuttuu tai ei ole päivittynyt. Mitt",
-  "x-where": "ui/energy_flow_tile.dart:1264"
+  "x-where": "ui/energy_flow_tile.dart:1520"
  },
  "sac7ed506f3": "Energy flow",
  "@sac7ed506f3": {
   "description": "fi: Energiavirta",
-  "x-where": "ui/energy_flow_tile.dart:1289"
+  "x-where": "ui/energy_flow_tile.dart:1545"
+ },
+ "s6631dd4cc3": "An energy meter, not a consuming device. You can use it as the grid measurement, or still show it as a device labelled as a meter.",
+ "@s6631dd4cc3": {
+  "description": "fi: Energiamittari, ei kulutuslaite. Voit käyttää sitä verkon mittauksena, tai näyttää sen laitteena mittarina.",
+  "x-where": "ui/energy_flow_tile.dart:1612"
+ },
+ "sf43fda9dad": "while on (estimate)",
+ "@sf43fda9dad": {
+  "description": "fi: päällä ollessa (arvio)",
+  "x-where": "ui/energy_flow_tile.dart:1619"
+ },
+ "s036ab2e742": "Measured power",
+ "@s036ab2e742": {
+  "description": "fi: Mitattu teho",
+  "x-where": "ui/energy_flow_tile.dart:1621"
  },
  "s510927a4e5": "Not used",
  "@s510927a4e5": {
   "description": "fi: Ei käytössä",
-  "x-where": "ui/energy_flow_tile.dart:1382"
+  "x-where": "ui/energy_flow_tile.dart:1668"
  },
  "s5676582437": "+ Extra reading",
  "@s5676582437": {
   "description": "fi: + Lisämittaus",
-  "x-where": "ui/energy_flow_tile.dart:1433"
+  "x-where": "ui/energy_flow_tile.dart:1719"
  },
  "s2ba7850827": "Invert the sign of this reading",
  "@s2ba7850827": {
   "description": "fi: Käännä tämän mittauksen etumerkki",
-  "x-where": "ui/energy_flow_tile.dart:1458"
+  "x-where": "ui/energy_flow_tile.dart:1744"
  },
  "s734053be9c": "Before it is added to the total.",
  "@s734053be9c": {
   "description": "fi: Ennen kuin se lisätään summaan.",
-  "x-where": "ui/energy_flow_tile.dart:1461"
+  "x-where": "ui/energy_flow_tile.dart:1747"
  },
  "sbdecf6bb98": "Add a reading",
  "@sbdecf6bb98": {
   "description": "fi: Lisää mittaus",
-  "x-where": "ui/energy_flow_tile.dart:1474"
+  "x-where": "ui/energy_flow_tile.dart:1760"
  },
  "sfb7c031085": "The power is the sum of the readings.",
  "@sfb7c031085": {
   "description": "fi: Teho on mittausten summa.",
-  "x-where": "ui/energy_flow_tile.dart:1479"
+  "x-where": "ui/energy_flow_tile.dart:1765"
  },
  "s14a06fa0b3": "One reading",
  "@s14a06fa0b3": {
   "description": "fi: Yksi mittaus",
-  "x-where": "ui/energy_flow_tile.dart:1503"
+  "x-where": "ui/energy_flow_tile.dart:1789"
  },
  "s737f142c48": "3 phases",
  "@s737f142c48": {
   "description": "fi: 3 vaihetta",
-  "x-where": "ui/energy_flow_tile.dart:1504"
+  "x-where": "ui/energy_flow_tile.dart:1790"
  },
  "sdda3018439": "Three phases found",
  "@sdda3018439": {
   "description": "fi: Kolme vaihetta löytyi",
-  "x-where": "ui/energy_flow_tile.dart:1518"
+  "x-where": "ui/energy_flow_tile.dart:1804"
  },
  "sf3fe5a0c52": "Fill L1–L3",
  "@sf3fe5a0c52": {
   "description": "fi: Täytä L1–L3",
-  "x-where": "ui/energy_flow_tile.dart:1523"
+  "x-where": "ui/energy_flow_tile.dart:1809"
  },
  "s083754ccd4": "{p0} – phase power",
  "@s083754ccd4": {
   "description": "fi: {p0} – vaiheen teho",
-  "x-where": "ui/energy_flow_tile.dart:1533",
+  "x-where": "ui/energy_flow_tile.dart:1819",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13613,7 +13633,7 @@
  "sda9a1f7968": "Invert the sign of {p0}",
  "@sda9a1f7968": {
   "description": "fi: Käännä {p0}:n etumerkki",
-  "x-where": "ui/energy_flow_tile.dart:1542",
+  "x-where": "ui/energy_flow_tile.dart:1828",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -13623,372 +13643,372 @@
  "s3d36c35e44": "If this phase shows export as positive.",
  "@s3d36c35e44": {
   "description": "fi: Jos tämä vaihe näyttää myynnin positiivisena.",
-  "x-where": "ui/energy_flow_tile.dart:1545"
+  "x-where": "ui/energy_flow_tile.dart:1831"
  },
  "sb3cb340ba1": "The grid power is the sum of the phases. If a phase is missing or does not update, the total is shown as partial (*).",
  "@sb3cb340ba1": {
   "description": "fi: Verkon teho on vaiheiden summa. Jos jokin vaihe puuttuu tai ei päivity, summa näytetään osittaisena (*).",
-  "x-where": "ui/energy_flow_tile.dart:1551"
+  "x-where": "ui/energy_flow_tile.dart:1837"
  },
  "sef19b9c914": "Grid power",
  "@sef19b9c914": {
   "description": "fi: Verkon teho",
-  "x-where": "ui/energy_flow_tile.dart:1560"
+  "x-where": "ui/energy_flow_tile.dart:1846"
  },
  "s5369fe2e34": "Pick a tile that measures power (W or kW) for each part. Parts without a reading are left out of the picture.",
  "@s5369fe2e34": {
   "description": "fi: Valitse jokaiselle osalle ruutu, joka mittaa tehoa (W tai kW). Osa, jolle ei ole mittausta, jätetään kuvasta pois.",
-  "x-where": "ui/energy_flow_tile.dart:1634"
+  "x-where": "ui/energy_flow_tile.dart:1923"
  },
  "s915d1474dc": "Grid",
  "@s915d1474dc": {
   "description": "fi: Sähköverkko",
-  "x-where": "ui/energy_flow_tile.dart:1642"
+  "x-where": "ui/energy_flow_tile.dart:1931"
  },
  "sd03d6b17cd": "Main meter or the inverter''s grid reading: + = import, − = export.",
  "@sd03d6b17cd": {
   "description": "fi: Pääsähkömittari tai invertterin verkkolukema: + = osto, − = myynti.",
-  "x-where": "ui/energy_flow_tile.dart:1643"
+  "x-where": "ui/energy_flow_tile.dart:1932"
  },
  "s3e06947388": "Invert the sign",
  "@s3e06947388": {
   "description": "fi: Käännä etumerkki",
-  "x-where": "ui/energy_flow_tile.dart:1653"
+  "x-where": "ui/energy_flow_tile.dart:1942"
  },
  "sde2c6e8f6e": "Inverts the whole total if the reading shows export as positive.",
  "@sde2c6e8f6e": {
   "description": "fi: Kääntää koko summan, jos mittaus näyttää myynnin positiivisena.",
-  "x-where": "ui/energy_flow_tile.dart:1657"
+  "x-where": "ui/energy_flow_tile.dart:1946"
  },
  "s3e2c1fac2f": "If the meter shows export as positive.",
  "@s3e2c1fac2f": {
   "description": "fi: Jos mittari näyttää myynnin positiivisena.",
-  "x-where": "ui/energy_flow_tile.dart:1658"
+  "x-where": "ui/energy_flow_tile.dart:1947"
  },
  "s96b28d777e": "Show the current electricity price",
  "@s96b28d777e": {
   "description": "fi: Näytä sähkön hinta nyt",
-  "x-where": "ui/energy_flow_tile.dart:1664"
+  "x-where": "ui/energy_flow_tile.dart:1953"
  },
  "se587115beb": "The same price as the electricity price tile or your contract.",
  "@se587115beb": {
   "description": "fi: Sama hinta kuin sähkön hinta -ruudussa tai sopimuksessasi.",
-  "x-where": "ui/energy_flow_tile.dart:1666"
+  "x-where": "ui/energy_flow_tile.dart:1955"
  },
  "sabe392a0ed": "Production now",
  "@sabe392a0ed": {
   "description": "fi: Tuotto nyt",
-  "x-where": "ui/energy_flow_tile.dart:1672"
+  "x-where": "ui/energy_flow_tile.dart:1961"
  },
  "s25c37e112b": "+ = charging, − = discharging.",
  "@s25c37e112b": {
   "description": "fi: + = lataus, − = purku.",
-  "x-where": "ui/energy_flow_tile.dart:1673"
+  "x-where": "ui/energy_flow_tile.dart:1962"
  },
  "s9192f64397": "Battery power",
  "@s9192f64397": {
   "description": "fi: Akun teho",
-  "x-where": "ui/energy_flow_tile.dart:1674"
+  "x-where": "ui/energy_flow_tile.dart:1963"
  },
  "s275ffaa691": "Battery charge (%)",
  "@s275ffaa691": {
   "description": "fi: Akun varaus (%)",
-  "x-where": "ui/energy_flow_tile.dart:1675"
+  "x-where": "ui/energy_flow_tile.dart:1964"
  },
  "sf5e16169f6": "If the device shows discharging as positive.",
  "@sf5e16169f6": {
   "description": "fi: Jos laite näyttää purun positiivisena.",
-  "x-where": "ui/energy_flow_tile.dart:1682"
+  "x-where": "ui/energy_flow_tile.dart:1971"
  },
  "sa11ddb5c95": "Worked out automatically: import + solar + battery discharge − export − battery charge. Pick a reading only if the use is measured separately.",
  "@sa11ddb5c95": {
   "description": "fi: Lasketaan automaattisesti: osto + aurinko + akun purku − myynti − akun lataus. Valitse mittaus vain, jos kulutus mitataa",
-  "x-where": "ui/energy_flow_tile.dart:1686"
+  "x-where": "ui/energy_flow_tile.dart:1975"
  },
  "sfb9788b87b": "Measured use",
  "@sfb9788b87b": {
   "description": "fi: Mitattu kulutus",
-  "x-where": "ui/energy_flow_tile.dart:1694"
+  "x-where": "ui/energy_flow_tile.dart:1983"
  },
  "s9af24b04b0": "Work out automatically",
  "@s9af24b04b0": {
   "description": "fi: Laske automaattisesti",
-  "x-where": "ui/energy_flow_tile.dart:1698"
+  "x-where": "ui/energy_flow_tile.dart:1987"
  },
  "sfa9be496e3": "EV charging",
  "@sfa9be496e3": {
   "description": "fi: Auton lataus",
-  "x-where": "ui/energy_flow_tile.dart:1701"
+  "x-where": "ui/energy_flow_tile.dart:1990"
  },
  "sc8fa6ad802": "+ = charging the car, − = the car feeds the home.",
  "@sc8fa6ad802": {
   "description": "fi: + = auto latautuu, − = auto syöttää kotiin.",
-  "x-where": "ui/energy_flow_tile.dart:1702"
+  "x-where": "ui/energy_flow_tile.dart:1991"
  },
  "s522196a074": "Charger power",
  "@s522196a074": {
   "description": "fi: Laturin teho",
-  "x-where": "ui/energy_flow_tile.dart:1708"
+  "x-where": "ui/energy_flow_tile.dart:1997"
  },
  "s14584ca6fc": "Car battery charge (%), if available",
  "@s14584ca6fc": {
   "description": "fi: Auton akun varaus (%), jos saatavilla",
-  "x-where": "ui/energy_flow_tile.dart:1724"
+  "x-where": "ui/energy_flow_tile.dart:2013"
  },
  "s337d44cf0e": "If the charger shows charging as negative.",
  "@s337d44cf0e": {
   "description": "fi: Jos laturi näyttää latauksen negatiivisena.",
-  "x-where": "ui/energy_flow_tile.dart:1735"
+  "x-where": "ui/energy_flow_tile.dart:2024"
  },
  "scb742074fc": "Add a charger",
  "@scb742074fc": {
   "description": "fi: Lisää laturi",
-  "x-where": "ui/energy_flow_tile.dart:1745"
+  "x-where": "ui/energy_flow_tile.dart:2034"
  },
  "sa5564fdf2d": "Show single devices next to the home. For a constant-power device (e.g. a heater, sauna or pump) you can set a nominal power in its switch tile settings (Advanced); its use then shows as an estimate (≈).",
  "@sa5564fdf2d": {
   "description": "fi: Näytä yksittäisiä laitteita kodin vieressä. Vakiotehoiselle laitteelle (esim. lämmitin, sauna, pumppu) voit asettaa nime",
-  "x-where": "ui/energy_flow_tile.dart:1750"
+  "x-where": "ui/energy_flow_tile.dart:2039"
  },
  "s16e6172f72": "No devices that report power yet.",
  "@s16e6172f72": {
   "description": "fi: Ei vielä laitteita, jotka kertovat tehon.",
-  "x-where": "ui/energy_flow_tile.dart:1758"
+  "x-where": "ui/energy_flow_tile.dart:2047"
  },
- "sf43fda9dad": "while on (estimate)",
- "@sf43fda9dad": {
-  "description": "fi: päällä ollessa (arvio)",
-  "x-where": "ui/energy_flow_tile.dart:1770"
- },
- "s036ab2e742": "Measured power",
- "@s036ab2e742": {
-  "description": "fi: Mitattu teho",
-  "x-where": "ui/energy_flow_tile.dart:1771"
+ "sefefead6d2": "Use as the grid measurement",
+ "@sefefead6d2": {
+  "description": "fi: Käytä verkon mittauksena",
+  "x-where": "ui/energy_flow_tile.dart:2074"
  },
  "s5b72e0dd48": "Moving flow dots",
  "@s5b72e0dd48": {
   "description": "fi: Liikkuvat virtapisteet",
-  "x-where": "ui/energy_flow_tile.dart:1799"
+  "x-where": "ui/energy_flow_tile.dart:2094"
  },
  "sfa60643b58": "Stops by itself when the device asks for less motion, animations are off in the settings or battery saver is on.",
  "@sfa60643b58": {
   "description": "fi: Pysähtyy itsestään, kun laite pyytää vähemmän liikettä, animaatiot on poistettu asetuksista tai virransäästö on päällä.",
-  "x-where": "ui/energy_flow_tile.dart:1801"
+  "x-where": "ui/energy_flow_tile.dart:2096"
  },
  "sda8d9bf1cd": "Plug",
  "@sda8d9bf1cd": {
   "description": "fi: Pistorasia",
   "x-where": "ui/energy_flow_look.dart:41"
  },
+ "sba3876d071": "Energy meter",
+ "@sba3876d071": {
+  "description": "fi: Energiamittari",
+  "x-where": "ui/energy_flow_look.dart:42"
+ },
  "se21f8f0465": "Lamp",
  "@se21f8f0465": {
   "description": "fi: Valaisin",
-  "x-where": "ui/energy_flow_look.dart:42"
+  "x-where": "ui/energy_flow_look.dart:43"
  },
  "s0be5afd833": "Sauna stove",
  "@s0be5afd833": {
   "description": "fi: Kiuas",
-  "x-where": "ui/energy_flow_look.dart:43"
+  "x-where": "ui/energy_flow_look.dart:44"
  },
  "sa1f4becf2f": "Cooker",
  "@sa1f4becf2f": {
   "description": "fi: Liesi",
-  "x-where": "ui/energy_flow_look.dart:44"
+  "x-where": "ui/energy_flow_look.dart:45"
  },
  "s6c4b8fbb9e": "Oven",
  "@s6c4b8fbb9e": {
   "description": "fi: Uuni",
-  "x-where": "ui/energy_flow_look.dart:45"
+  "x-where": "ui/energy_flow_look.dart:46"
  },
  "se90e536d72": "Microwave",
  "@se90e536d72": {
   "description": "fi: Mikroaaltouuni",
-  "x-where": "ui/energy_flow_look.dart:46"
+  "x-where": "ui/energy_flow_look.dart:47"
  },
  "sa26b7280df": "Electric car",
  "@sa26b7280df": {
   "description": "fi: Sähköauto",
-  "x-where": "ui/energy_flow_look.dart:47"
+  "x-where": "ui/energy_flow_look.dart:48"
  },
  "s3a7d2e6848": "Water heater",
  "@s3a7d2e6848": {
   "description": "fi: Lämminvesivaraaja",
-  "x-where": "ui/energy_flow_look.dart:49"
+  "x-where": "ui/energy_flow_look.dart:50"
  },
  "s29e54ec911": "Heater",
  "@s29e54ec911": {
   "description": "fi: Lämmitin",
-  "x-where": "ui/energy_flow_look.dart:50"
+  "x-where": "ui/energy_flow_look.dart:51"
  },
  "s7dfad22b16": "Washing machine",
  "@s7dfad22b16": {
   "description": "fi: Pyykinpesukone",
-  "x-where": "ui/energy_flow_look.dart:51"
+  "x-where": "ui/energy_flow_look.dart:52"
  },
  "sd2d4c631a7": "Dishwasher",
  "@sd2d4c631a7": {
   "description": "fi: Astianpesukone",
-  "x-where": "ui/energy_flow_look.dart:52"
+  "x-where": "ui/energy_flow_look.dart:53"
  },
  "s240c5ad59e": "Dryer",
  "@s240c5ad59e": {
   "description": "fi: Kuivausrumpu",
-  "x-where": "ui/energy_flow_look.dart:53"
+  "x-where": "ui/energy_flow_look.dart:54"
  },
  "sff80af2747": "Fridge / freezer",
  "@sff80af2747": {
   "description": "fi: Jääkaappi / pakastin",
-  "x-where": "ui/energy_flow_look.dart:54"
+  "x-where": "ui/energy_flow_look.dart:55"
  },
  "s988822b6af": "Air conditioning",
  "@s988822b6af": {
   "description": "fi: Ilmastointi",
-  "x-where": "ui/energy_flow_look.dart:55"
+  "x-where": "ui/energy_flow_look.dart:56"
  },
  "s89f721b8bc": "Pump",
  "@s89f721b8bc": {
   "description": "fi: Pumppu",
-  "x-where": "ui/energy_flow_look.dart:56"
+  "x-where": "ui/energy_flow_look.dart:57"
  },
  "sec0a5085e5": "Coffee maker",
  "@sec0a5085e5": {
   "description": "fi: Kahvinkeitin",
-  "x-where": "ui/energy_flow_look.dart:60"
+  "x-where": "ui/energy_flow_look.dart:61"
  },
  "sb6c23efd84": "Colours",
  "@sb6c23efd84": {
   "description": "fi: Värit",
-  "x-where": "ui/energy_flow_look.dart:415"
+  "x-where": "ui/energy_flow_look.dart:424"
  },
  "s0a1d4b60b7": "Vivid",
  "@s0a1d4b60b7": {
   "description": "fi: Kirkas",
-  "x-where": "ui/energy_flow_look.dart:418"
+  "x-where": "ui/energy_flow_look.dart:427"
  },
  "s33864f6888": "Soft",
  "@s33864f6888": {
   "description": "fi: Pehmeä",
-  "x-where": "ui/energy_flow_look.dart:419"
+  "x-where": "ui/energy_flow_look.dart:428"
  },
  "sec7195c992": "Theme colours",
  "@sec7195c992": {
   "description": "fi: Teeman värit",
-  "x-where": "ui/energy_flow_look.dart:420"
+  "x-where": "ui/energy_flow_look.dart:429"
  },
  "sb81e7ad734": "Background",
  "@sb81e7ad734": {
   "description": "fi: Tausta",
-  "x-where": "ui/energy_flow_look.dart:439"
+  "x-where": "ui/energy_flow_look.dart:448"
  },
  "sb727b512bb": "Card",
  "@sb727b512bb": {
   "description": "fi: Kortti",
-  "x-where": "ui/energy_flow_look.dart:441"
+  "x-where": "ui/energy_flow_look.dart:450"
  },
  "sc108a932a2": "Transparent",
  "@sc108a932a2": {
   "description": "fi: Läpinäkyvä",
-  "x-where": "ui/energy_flow_look.dart:442"
+  "x-where": "ui/energy_flow_look.dart:451"
  },
  "s8c0a1eff26": "Own colour",
  "@s8c0a1eff26": {
   "description": "fi: Oma väri",
-  "x-where": "ui/energy_flow_look.dart:444"
+  "x-where": "ui/energy_flow_look.dart:453"
  },
  "sba2d136159": "More appearance settings",
  "@sba2d136159": {
   "description": "fi: Lisää ulkoasuasetuksia",
-  "x-where": "ui/energy_flow_look.dart:462"
+  "x-where": "ui/energy_flow_look.dart:471"
  },
  "s753518b06e": "Lines, motion, size and own colours",
  "@s753518b06e": {
   "description": "fi: Viivat, liike, koko ja omat värit",
-  "x-where": "ui/energy_flow_look.dart:464"
+  "x-where": "ui/energy_flow_look.dart:473"
  },
  "sc6e50f7236": "Line shape",
  "@sc6e50f7236": {
   "description": "fi: Viivan muoto",
-  "x-where": "ui/energy_flow_look.dart:468"
+  "x-where": "ui/energy_flow_look.dart:477"
  },
  "sedcb61bbe5": "Curved",
  "@sedcb61bbe5": {
   "description": "fi: Kaareva",
-  "x-where": "ui/energy_flow_look.dart:470"
+  "x-where": "ui/energy_flow_look.dart:479"
  },
  "sf2696d2e1c": "Straight",
  "@sf2696d2e1c": {
   "description": "fi: Suora",
-  "x-where": "ui/energy_flow_look.dart:471"
+  "x-where": "ui/energy_flow_look.dart:480"
  },
  "s7ab56ccf46": "Right-angled",
  "@s7ab56ccf46": {
   "description": "fi: Kulmikas",
-  "x-where": "ui/energy_flow_look.dart:472"
+  "x-where": "ui/energy_flow_look.dart:481"
  },
  "sa75698ff9a": "Solid",
  "@sa75698ff9a": {
   "description": "fi: Yhtenäinen",
-  "x-where": "ui/energy_flow_look.dart:475"
+  "x-where": "ui/energy_flow_look.dart:484"
  },
  "s4bfd9fc485": "Dashed",
  "@s4bfd9fc485": {
   "description": "fi: Katkoviiva",
-  "x-where": "ui/energy_flow_look.dart:476"
+  "x-where": "ui/energy_flow_look.dart:485"
  },
  "se3d5f0d99b": "Flow motion",
  "@se3d5f0d99b": {
   "description": "fi: Virran liike",
-  "x-where": "ui/energy_flow_look.dart:478"
+  "x-where": "ui/energy_flow_look.dart:487"
  },
  "sde7faf1768": "Dots",
  "@sde7faf1768": {
   "description": "fi: Pisteet",
-  "x-where": "ui/energy_flow_look.dart:480"
+  "x-where": "ui/energy_flow_look.dart:489"
  },
  "s1f73ace287": "Pulse",
  "@s1f73ace287": {
   "description": "fi: Sykkivä",
-  "x-where": "ui/energy_flow_look.dart:481"
+  "x-where": "ui/energy_flow_look.dart:490"
  },
  "sd5377755cf": "No motion",
  "@sd5377755cf": {
   "description": "fi: Ei liikettä",
-  "x-where": "ui/energy_flow_look.dart:482"
+  "x-where": "ui/energy_flow_look.dart:491"
  },
  "sd14aa9e2d0": "Line thickness",
  "@sd14aa9e2d0": {
   "description": "fi: Viivan paksuus",
-  "x-where": "ui/energy_flow_look.dart:484"
+  "x-where": "ui/energy_flow_look.dart:493"
  },
  "s6924390555": "Node size",
  "@s6924390555": {
   "description": "fi: Pallojen koko",
-  "x-where": "ui/energy_flow_look.dart:493"
+  "x-where": "ui/energy_flow_look.dart:502"
  },
  "sf796621b63": "Own colours",
  "@sf796621b63": {
   "description": "fi: Omat värit",
-  "x-where": "ui/energy_flow_look.dart:502"
+  "x-where": "ui/energy_flow_look.dart:511"
  },
  "sbcbf3076c3": "Preset colour",
  "@sbcbf3076c3": {
   "description": "fi: Esiasetuksen väri",
-  "x-where": "ui/energy_flow_look.dart:511"
+  "x-where": "ui/energy_flow_look.dart:520"
  },
  "s38a4b683f4": "Lines",
  "@s38a4b683f4": {
   "description": "fi: Viivat",
-  "x-where": "ui/energy_flow_look.dart:517"
+  "x-where": "ui/energy_flow_look.dart:526"
  },
  "s595bd3c0bb": "Same as the node",
  "@s595bd3c0bb": {
   "description": "fi: Pallon värinen",
-  "x-where": "ui/energy_flow_look.dart:522"
+  "x-where": "ui/energy_flow_look.dart:531"
  },
  "se83d4395d7": "Restore the default look",
  "@se83d4395d7": {
   "description": "fi: Palauta oletusulkoasu",
-  "x-where": "ui/energy_flow_look.dart:545"
+  "x-where": "ui/energy_flow_look.dart:554"
  },
  "sf3b3b45b00": "Log",
  "@sf3b3b45b00": {

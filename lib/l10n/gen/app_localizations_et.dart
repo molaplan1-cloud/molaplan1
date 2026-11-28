@@ -8149,6 +8149,9 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String get s0e776e1574 => 'Näita vähem';
+
+  @override
   String get s2aaf585b6f => 'Vali kaardi seadistustes näidatavad näidud.';
 
   @override
@@ -8305,6 +8308,16 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sac7ed506f3 => 'Energiavoog';
 
   @override
+  String get s6631dd4cc3 =>
+      'Energiamõõtja, mitte tarbiv seade. Seda saab kasutada võrgumõõtmisena või näidata seda ikkagi seadmena, mis on märgitud mõõtjaks.';
+
+  @override
+  String get sf43fda9dad => 'ajal (hinnanguline)';
+
+  @override
+  String get s036ab2e742 => 'Mõõdetud võimsus';
+
+  @override
   String get s510927a4e5 => 'Kasutamata';
 
   @override
@@ -8434,10 +8447,7 @@ class AppLocalizationsEt extends AppLocalizations {
       'Ei ole veel seadmeid, mis annaksid teada võimsusest.';
 
   @override
-  String get sf43fda9dad => 'ajal (hinnanguline)';
-
-  @override
-  String get s036ab2e742 => 'Mõõdetud võimsus';
+  String get sefefead6d2 => 'Kasuta võrgu mõõtmisena';
 
   @override
   String get s5b72e0dd48 => 'Liikuvad voolupunktid';
@@ -8448,6 +8458,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sda8d9bf1cd => 'Pistikupesa';
+
+  @override
+  String get sba3876d071 => 'Energiaarvesti';
 
   @override
   String get se21f8f0465 => 'Lamp';

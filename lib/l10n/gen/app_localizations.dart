@@ -14783,6 +14783,12 @@ abstract class AppLocalizations {
   /// **'+{p0} more'**
   String sd8070dcde7(String p0);
 
+  /// fi: Vähemmän
+  ///
+  /// In en, this message translates to:
+  /// **'Show less'**
+  String get s0e776e1574;
+
   /// fi: Valitse näytettävät mittaukset ruudun asetuksista.
   ///
   /// In en, this message translates to:
@@ -15059,6 +15065,24 @@ abstract class AppLocalizations {
   /// **'Energy flow'**
   String get sac7ed506f3;
 
+  /// fi: Energiamittari, ei kulutuslaite. Voit käyttää sitä verkon mittauksena, tai näyttää sen laitteena mittarina.
+  ///
+  /// In en, this message translates to:
+  /// **'An energy meter, not a consuming device. You can use it as the grid measurement, or still show it as a device labelled as a meter.'**
+  String get s6631dd4cc3;
+
+  /// fi: päällä ollessa (arvio)
+  ///
+  /// In en, this message translates to:
+  /// **'while on (estimate)'**
+  String get sf43fda9dad;
+
+  /// fi: Mitattu teho
+  ///
+  /// In en, this message translates to:
+  /// **'Measured power'**
+  String get s036ab2e742;
+
   /// fi: Ei käytössä
   ///
   /// In en, this message translates to:
@@ -15293,17 +15317,11 @@ abstract class AppLocalizations {
   /// **'No devices that report power yet.'**
   String get s16e6172f72;
 
-  /// fi: päällä ollessa (arvio)
+  /// fi: Käytä verkon mittauksena
   ///
   /// In en, this message translates to:
-  /// **'while on (estimate)'**
-  String get sf43fda9dad;
-
-  /// fi: Mitattu teho
-  ///
-  /// In en, this message translates to:
-  /// **'Measured power'**
-  String get s036ab2e742;
+  /// **'Use as the grid measurement'**
+  String get sefefead6d2;
 
   /// fi: Liikkuvat virtapisteet
   ///
@@ -15322,6 +15340,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Plug'**
   String get sda8d9bf1cd;
+
+  /// fi: Energiamittari
+  ///
+  /// In en, this message translates to:
+  /// **'Energy meter'**
+  String get sba3876d071;
 
   /// fi: Valaisin
   ///

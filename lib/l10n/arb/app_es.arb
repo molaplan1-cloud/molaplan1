@@ -5601,6 +5601,10 @@
  "@sa5133b2c4a": {
   "x-mt": true
  },
+ "s3cb3b0f9e9": "Molaplan descarga la actualización, cierra por un momento y se reinicia por sí mismo. Tus ajustes se mantienen.",
+ "@s3cb3b0f9e9": {
+  "x-mt": true
+ },
  "se099b5797e": "¿Qué hay de nuevo?",
  "@se099b5797e": {
   "x-mt": true
@@ -5828,15 +5832,135 @@
   "x-mt": true
  },
  "s22237546b7": "Windows pedirá permiso",
+ "sba5d22a11d": "Molaplan se instala en {p0}, a lo que un usuario normal no puede escribir. Al pulsar Continuar, Windows pide permiso para instalar la actualización. Elija Sí. Si no lo permite, nada se cambia.",
+ "@sba5d22a11d": {
+  "x-mt": true
+ },
  "s1653ef3e98": "Actualizando…",
+ "s0684e0b288": "Molaplan cierra por un momento y se reinicia por sí mismo en la nueva versión {p0}. Tus ajustes se guardan.",
+ "@s0684e0b288": {
+  "x-mt": true
+ },
+ "s01f0721d12": "Puedes probar de nuevo con Check para actualizaciones en Ajustes.",
+ "@s01f0721d12": {
+  "x-mt": true
+ },
+ "saeb9f339ea": "Actualización {p0} está listo",
+ "@saeb9f339ea": {
+  "x-mt": true
+ },
+ "s584b333948": "Actualizaciones de Molaplan y reinicia en {p0} s. Tus ajustes se guardan.",
+ "@s584b333948": {
+  "x-mt": true
+ },
  "se85804c09e": "Descomprimiendo…",
  "sfde238d022": "No se pudo descargar la actualización",
+ "sd34bc5b759": "La actualización aún no está disponible para su descarga",
+ "@sd34bc5b759": {
+  "x-mt": true
+ },
+ "s69806434b6": "La actualización no se puede guardar en el disco",
+ "@s69806434b6": {
+  "x-mt": true
+ },
+ "s91ef8085b3": "La actualización no se puede desempaquetar",
+ "@s91ef8085b3": {
+  "x-mt": true
+ },
+ "s9de25df723": "El archivo descargado no es un paquete Molaplan",
+ "@s9de25df723": {
+  "x-mt": true
+ },
+ "s9ae7791013": "El actualizador no pudo iniciarse",
+ "@s9ae7791013": {
+  "x-mt": true
+ },
+ "sea2070f532": "Una versión anterior no está instalada",
+ "@sea2070f532": {
+  "x-mt": true
+ },
+ "s12b599bf15": "La actualización no funcionó",
+ "@s12b599bf15": {
+  "x-mt": true
+ },
+ "s4280d34c21": "La conexión a Internet no funcionó. Nada fue cambiado y la versión actual sigue funcionando. Compruebe la conexión e inténtelo de nuevo.",
+ "@s4280d34c21": {
+  "x-mt": true
+ },
+ "s00cf811000": "La nueva versión acaba de publicarse y sus archivos aún no están disponibles. Prueba de nuevo en unos minutos.",
+ "@s00cf811000": {
+  "x-mt": true
+ },
+ "sbe407f9965": "Ahorro de la actualización al disco falló. Compruebe que el disco tiene al menos 500 MB libre y que el antivirus no está bloqueando los archivos, luego intentarlo de nuevo. Nada fue cambiado.",
+ "@sbe407f9965": {
+  "x-mt": true
+ },
+ "sf865bf69b9": "El archivo descargado no puede ser desempaquetado. Nada fue cambiado. Inténtelo de nuevo; si sigue fallando, descargue la actualización de la página de lanzamiento.",
+ "@sf865bf69b9": {
+  "x-mt": true
+ },
+ "s67ed401b44": "El archivo descargado no contiene el programa Molaplan, por lo que no fue instalado. Nada fue cambiado.",
+ "@s67ed401b44": {
+  "x-mt": true
+ },
+ "s540be0ec41": "Windows o antivirus dejaron de empezar el actualizador. Nada fue cambiado. Puede descargar la cremallera de la página de lanzamiento y extraerla sobre la antigua carpeta Molaplan.",
+ "@s540be0ec41": {
+  "x-mt": true
+ },
+ "s43cad41986": "La versión ofrecida no es más nueva que la que tienes, por lo que no fue instalada.",
+ "@s43cad41986": {
+  "x-mt": true
+ },
+ "s58ef99cde3": "Nada cambió, vuelve a intentarlo más tarde.",
+ "@s58ef99cde3": {
+  "x-mt": true
+ },
+ "s446ef05921": "Molaplan fue actualizado a la versión {p0}. Tus ajustes fueron guardados.",
+ "@s446ef05921": {
+  "x-mt": true
+ },
  "s97eb7f7a6e": "La actualización falló: se restauró la versión anterior",
+ "s7af95a89c6": "La nueva versión {p0} no comenzó o sus archivos no podrían ser reemplazados (antivirus puede haber bloqueado), por lo que Molaplan restauró la versión anterior {p1}. Sus ajustes son seguros. Usted puede intentarlo de nuevo más tarde.",
+ "@s7af95a89c6": {
+  "x-mt": true
+ },
+ "s3f72dd7b0f": "La actualización y la restauración fracasaron",
+ "@s3f72dd7b0f": {
+  "x-mt": true
+ },
+ "s4f03259cc2": "Los archivos de Molaplan pueden ser parcialmente actualizados. Descargar el último Molaplan de la página de lanzamiento y extraerlo sobre la antigua carpeta. Tus ajustes no se pierden.",
+ "@s4f03259cc2": {
+  "x-mt": true
+ },
  "s4a001df75d": "La actualización no se instaló: faltaba el permiso",
+ "s1999eba26c": "Escribir a la carpeta Molaplan necesita permiso de administrador, que no se dio. Nada fue cambiado. Pruebe de nuevo y elija Sí cuando Windows pregunta, o mueva Molaplan a una carpeta a la que puede escribir, por ejemplo sus propios archivos.",
+ "@s1999eba26c": {
+  "x-mt": true
+ },
  "s16ed002faf": "La actualización no se completó",
+ "sc06f4b5ed9": "Nada cambió, o la versión anterior fue restaurada. Cierre cualquier otra ventana Molaplan y vuelva a intentarlo. Si sigue fallando, descargue la actualización de la página de lanzamiento.",
+ "@sc06f4b5ed9": {
+  "x-mt": true
+ },
  "s522d6584c5": "Buscar actualizaciones",
+ "s7421af4664": "Última comprobación {p0}",
+ "@s7421af4664": {
+  "x-mt": true
+ },
  "sd67c7026fd": "Buscar actualizaciones automáticamente",
+ "s207fb68ce3": "Después de la puesta en marcha y alrededor de cada 6 horas. Usted ve un aviso cuando una nueva versión está disponible.",
+ "@s207fb68ce3": {
+  "x-mt": true
+ },
+ "s5129b5c575": "Al inicio y regularmente. Usted ve un aviso cuando una nueva versión está disponible.",
+ "@s5129b5c575": {
+  "x-mt": true
+ },
  "sa4003c37b9": "Instalar las actualizaciones automáticamente",
+ "sc545f74ad9": "Descarga e instala la nueva versión por sí misma. Un aviso de 30 segundos aparece antes del reinicio, y se puede posponer. Si esto está apagado, pulsa Actualizar ahora mismo.",
+ "@sc545f74ad9": {
+  "x-mt": true
+ },
  "s7f308d40c8": "Calentando",
  "s41de361b3e": "Enfriando",
  "s4f7ccb7138": "Deshumidificando",
@@ -7177,6 +7301,10 @@
  "@sd8070dcde7": {
   "x-mt": true
  },
+ "s0e776e1574": "Mostrar menos",
+ "@s0e776e1574": {
+  "x-mt": true
+ },
  "s2aaf585b6f": "Escoja las lecturas para mostrar en la configuración de la tarjeta.",
  "@s2aaf585b6f": {
   "x-mt": true
@@ -7269,6 +7397,15 @@
  "sa454eaaff2": "≈ = estimación según la potencia nominal del dispositivo, no una medición. * = total parcial: falta una lectura o no se ha actualizado. Se usa el contador de energía del propio medidor cuando existe.",
  "sac7ed506f3": "Flujo de energía",
  "@sac7ed506f3": {
+  "x-mt": true
+ },
+ "s6631dd4cc3": "Un medidor de energía, no un dispositivo de consumo. Puedes usarlo como medición de la red, o seguir mostrándolo como un dispositivo etiquetado como medidor.",
+ "sf43fda9dad": "(estimación)",
+ "@sf43fda9dad": {
+  "x-mt": true
+ },
+ "s036ab2e742": "Potencia asegurada",
+ "@s036ab2e742": {
   "x-mt": true
  },
  "s510927a4e5": "No utilizado",
@@ -7388,12 +7525,8 @@
  "@s16e6172f72": {
   "x-mt": true
  },
- "sf43fda9dad": "(estimación)",
- "@sf43fda9dad": {
-  "x-mt": true
- },
- "s036ab2e742": "Potencia asegurada",
- "@s036ab2e742": {
+ "sefefead6d2": "Usar como medida de la red",
+ "@sefefead6d2": {
   "x-mt": true
  },
  "s5b72e0dd48": "Puntos de flujo de movimiento",
@@ -7405,6 +7538,10 @@
   "x-mt": true
  },
  "sda8d9bf1cd": "Enchufe",
+ "sba3876d071": "Medidor de energía",
+ "@sba3876d071": {
+  "x-mt": true
+ },
  "se21f8f0465": "Lámpara",
  "s0be5afd833": "Estufa de sauna",
  "sa1f4becf2f": "Cocina",
@@ -12936,130 +13073,6 @@
  },
  "s06444f278d": "posición (100 = cerrada)",
  "@s06444f278d": {
-  "x-mt": true
- },
- "s3cb3b0f9e9": "Molaplan descarga la actualización, cierra por un momento y se reinicia por sí mismo. Tus ajustes se mantienen.",
- "@s3cb3b0f9e9": {
-  "x-mt": true
- },
- "sba5d22a11d": "Molaplan se instala en {p0}, a lo que un usuario normal no puede escribir. Al pulsar Continuar, Windows pide permiso para instalar la actualización. Elija Sí. Si no lo permite, nada se cambia.",
- "@sba5d22a11d": {
-  "x-mt": true
- },
- "s0684e0b288": "Molaplan cierra por un momento y se reinicia por sí mismo en la nueva versión {p0}. Tus ajustes se guardan.",
- "@s0684e0b288": {
-  "x-mt": true
- },
- "s01f0721d12": "Puedes probar de nuevo con Check para actualizaciones en Ajustes.",
- "@s01f0721d12": {
-  "x-mt": true
- },
- "saeb9f339ea": "Actualización {p0} está listo",
- "@saeb9f339ea": {
-  "x-mt": true
- },
- "s584b333948": "Actualizaciones de Molaplan y reinicia en {p0} s. Tus ajustes se guardan.",
- "@s584b333948": {
-  "x-mt": true
- },
- "sd34bc5b759": "La actualización aún no está disponible para su descarga",
- "@sd34bc5b759": {
-  "x-mt": true
- },
- "s69806434b6": "La actualización no se puede guardar en el disco",
- "@s69806434b6": {
-  "x-mt": true
- },
- "s91ef8085b3": "La actualización no se puede desempaquetar",
- "@s91ef8085b3": {
-  "x-mt": true
- },
- "s9de25df723": "El archivo descargado no es un paquete Molaplan",
- "@s9de25df723": {
-  "x-mt": true
- },
- "s9ae7791013": "El actualizador no pudo iniciarse",
- "@s9ae7791013": {
-  "x-mt": true
- },
- "sea2070f532": "Una versión anterior no está instalada",
- "@sea2070f532": {
-  "x-mt": true
- },
- "s12b599bf15": "La actualización no funcionó",
- "@s12b599bf15": {
-  "x-mt": true
- },
- "s4280d34c21": "La conexión a Internet no funcionó. Nada fue cambiado y la versión actual sigue funcionando. Compruebe la conexión e inténtelo de nuevo.",
- "@s4280d34c21": {
-  "x-mt": true
- },
- "s00cf811000": "La nueva versión acaba de publicarse y sus archivos aún no están disponibles. Prueba de nuevo en unos minutos.",
- "@s00cf811000": {
-  "x-mt": true
- },
- "sbe407f9965": "Ahorro de la actualización al disco falló. Compruebe que el disco tiene al menos 500 MB libre y que el antivirus no está bloqueando los archivos, luego intentarlo de nuevo. Nada fue cambiado.",
- "@sbe407f9965": {
-  "x-mt": true
- },
- "sf865bf69b9": "El archivo descargado no puede ser desempaquetado. Nada fue cambiado. Inténtelo de nuevo; si sigue fallando, descargue la actualización de la página de lanzamiento.",
- "@sf865bf69b9": {
-  "x-mt": true
- },
- "s67ed401b44": "El archivo descargado no contiene el programa Molaplan, por lo que no fue instalado. Nada fue cambiado.",
- "@s67ed401b44": {
-  "x-mt": true
- },
- "s540be0ec41": "Windows o antivirus dejaron de empezar el actualizador. Nada fue cambiado. Puede descargar la cremallera de la página de lanzamiento y extraerla sobre la antigua carpeta Molaplan.",
- "@s540be0ec41": {
-  "x-mt": true
- },
- "s43cad41986": "La versión ofrecida no es más nueva que la que tienes, por lo que no fue instalada.",
- "@s43cad41986": {
-  "x-mt": true
- },
- "s58ef99cde3": "Nada cambió, vuelve a intentarlo más tarde.",
- "@s58ef99cde3": {
-  "x-mt": true
- },
- "s446ef05921": "Molaplan fue actualizado a la versión {p0}. Tus ajustes fueron guardados.",
- "@s446ef05921": {
-  "x-mt": true
- },
- "s7af95a89c6": "La nueva versión {p0} no comenzó o sus archivos no podrían ser reemplazados (antivirus puede haber bloqueado), por lo que Molaplan restauró la versión anterior {p1}. Sus ajustes son seguros. Usted puede intentarlo de nuevo más tarde.",
- "@s7af95a89c6": {
-  "x-mt": true
- },
- "s3f72dd7b0f": "La actualización y la restauración fracasaron",
- "@s3f72dd7b0f": {
-  "x-mt": true
- },
- "s4f03259cc2": "Los archivos de Molaplan pueden ser parcialmente actualizados. Descargar el último Molaplan de la página de lanzamiento y extraerlo sobre la antigua carpeta. Tus ajustes no se pierden.",
- "@s4f03259cc2": {
-  "x-mt": true
- },
- "s1999eba26c": "Escribir a la carpeta Molaplan necesita permiso de administrador, que no se dio. Nada fue cambiado. Pruebe de nuevo y elija Sí cuando Windows pregunta, o mueva Molaplan a una carpeta a la que puede escribir, por ejemplo sus propios archivos.",
- "@s1999eba26c": {
-  "x-mt": true
- },
- "sc06f4b5ed9": "Nada cambió, o la versión anterior fue restaurada. Cierre cualquier otra ventana Molaplan y vuelva a intentarlo. Si sigue fallando, descargue la actualización de la página de lanzamiento.",
- "@sc06f4b5ed9": {
-  "x-mt": true
- },
- "s7421af4664": "Última comprobación {p0}",
- "@s7421af4664": {
-  "x-mt": true
- },
- "s207fb68ce3": "Después de la puesta en marcha y alrededor de cada 6 horas. Usted ve un aviso cuando una nueva versión está disponible.",
- "@s207fb68ce3": {
-  "x-mt": true
- },
- "s5129b5c575": "Al inicio y regularmente. Usted ve un aviso cuando una nueva versión está disponible.",
- "@s5129b5c575": {
-  "x-mt": true
- },
- "sc545f74ad9": "Descarga e instala la nueva versión por sí misma. Un aviso de 30 segundos aparece antes del reinicio, y se puede posponer. Si esto está apagado, pulsa Actualizar ahora mismo.",
- "@sc545f74ad9": {
   "x-mt": true
  }
 }

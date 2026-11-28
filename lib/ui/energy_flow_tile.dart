@@ -226,6 +226,7 @@ List<FlowNodeView> flowNodes(
         w: rest.fold<double>(0, (a, x) => a + (x.w ?? 0)),
         estimated: rest.any((x) => x.estimated),
         partial: rest.any((x) => x.partial),
+        sub: tr(lang, 'Näytä kaikki', 'Show all'),
       ),
     );
   } else {
@@ -255,20 +256,53 @@ const flowLabelH = 28.0;
 /// Small tiles (≈ 2 × 2): one label line, no second line, so the circles stay readable.
 const flowCompactLabelH = 13.0;
 
-/// Grid left, home right of the middle, solar on top, battery below, chargers and devices in a
-/// column on the right.
+/// Minimum gap between two node circles (px).
+const flowMinGap = 6.0;
+
+/// Smallest useful node radius.
+const flowMinRadius = 9.0;
+
+/// How many extra (charger / device) nodes fit on a tile of [size] before the rest fold
+/// into "+N more". [showAll] lifts the cap so every device is shown (smaller nodes / a grid).
+int flowMaxVisible(Size size, {double? labelH, bool showAll = false}) {
+  if (showAll) return 64;
+  final lh = labelH ?? (size.height < 260 ? flowCompactLabelH : flowLabelH);
+  final minSlot = 2 * flowMinRadius + lh + flowMinGap;
+  final rows = math.max(1, (size.height / minSlot).floor());
+  // Two columns when a single column would be tight; cap so labels stay readable.
+  return (rows * 2).clamp(1, 8);
+}
+
+/// 1 column when the devices fit with a clear gap, otherwise a 2-column grid.
+int flowExtraColumns(double height, int n, double labelH) {
+  if (n <= 1) return 1;
+  final minSlot = 2 * flowMinRadius + labelH + flowMinGap;
+  if (height / n >= minSlot + 4) return 1;
+  if (n <= 4 && height / n >= minSlot) return 1;
+  return 2;
+}
+
+/// Grid left, home right of the middle, solar on top, battery below, chargers and devices to
+/// the right of home: one column when they fit, otherwise a two-column grid. Node size shrinks
+/// with the count so circles and labels do not overlap (R715).
 FlowLayout flowLayout(Size size, List<FlowNodeView> nodes, {double scale = 1}) {
   final W = size.width, H = size.height;
   final labelH = H < 260 ? flowCompactLabelH : flowLabelH;
   final ids = nodes.map((n) => n.id).toSet();
-  final extras = nodes.where((n) => !const {FlowNodeId.grid, FlowNodeId.solar, FlowNodeId.battery, FlowNodeId.home}.contains(n.id)).toList();
+  final extras = nodes
+      .where((n) => !const {FlowNodeId.grid, FlowNodeId.solar, FlowNodeId.battery, FlowNodeId.home}.contains(n.id))
+      .toList();
   final rows = ids.contains(FlowNodeId.solar) || ids.contains(FlowNodeId.battery) ? 3 : 1;
-  final cols = extras.isEmpty ? const [0.15, 0.5, 0.85, 1.0] : const [0.12, 0.36, 0.6, 0.88];
-  final colW = W / 4.3;
+  final extraCols = flowExtraColumns(H, extras.length, labelH);
+  // Leave a corridor between home and the first extras column for the branches.
+  final cols = extras.isEmpty
+      ? const [0.15, 0.5, 0.85, 1.0]
+      : (extraCols == 1 ? const [0.12, 0.36, 0.60, 0.86] : const [0.10, 0.30, 0.50, 0.70, 0.90]);
+  final colW = W / (3.3 + (extras.isEmpty ? 0 : extraCols));
   final rowH = (H - rows * labelH) / (rows == 3 ? 3.1 : 1.4);
   // R675: node size scale (the room limits it still).
-  final rMax = math.max(9.0, math.min(56.0, math.min(colW / 2 + 6, rowH / 2 + 6)));
-  final double r = (math.min(colW / 2, rowH / 2).clamp(10.0, 44.0) * scale).clamp(9.0, rMax).toDouble();
+  final rMax = math.max(flowMinRadius, math.min(56.0, math.min(colW / 2 + 6, rowH / 2 + 6)));
+  final double r = (math.min(colW / 2, rowH / 2).clamp(10.0, 44.0) * scale).clamp(flowMinRadius, rMax).toDouble();
   final cellH = H / rows;
   double rowY(int i) => rows == 1 ? (H - labelH) / 2 : cellH * i + (cellH - labelH) / 2;
   final c = <String, Offset>{};
@@ -285,14 +319,48 @@ FlowLayout flowLayout(Size size, List<FlowNodeView> nodes, {double scale = 1}) {
   put(FlowNodeId.battery, Offset(W * cols[1], rowY(2)), r);
   put(FlowNodeId.home, Offset(W * cols[2], rowY(mid)), r);
   if (extras.isNotEmpty) {
-    final slot = H / extras.length;
-    for (final (i, n) in extras.indexed) {
-      final re = math.min(r * 0.82, (slot - labelH) / 2 - 1).clamp(9.0, 48.0);
-      c[n.id] = Offset(W * cols[3], slot * i + (slot - labelH) / 2);
-      rad[n.id] = re;
+    final n = extras.length;
+    // A 2-column grid is staggered (the right column sits in the gaps of the left)
+    // so a horizontal approach never runs through a sibling.
+    final vRows = extraCols == 1 ? n.toDouble() : ((n + 1) ~/ 2) + 0.5;
+    final slotH = H / vRows;
+    final fitR = math.max(flowMinRadius, (slotH - labelH - flowMinGap) / 2);
+    var re = math.min(r * 0.82, fitR).clamp(flowMinRadius, 48.0);
+    while (re > flowMinRadius && 2 * re + labelH + flowMinGap > slotH) {
+      re -= 0.5;
+    }
+    for (final (i, node) in extras.indexed) {
+      final col = extraCols == 1 ? 0 : i % extraCols;
+      final row = extraCols == 1 ? i : i ~/ extraCols;
+      final x = W * cols[3 + col];
+      final y = slotH * (row + (extraCols == 2 && col == 1 ? 0.5 : 0)) + (slotH - labelH) / 2;
+      c[node.id] = Offset(x, y);
+      rad[node.id] = re;
+    }
+    // Keep a clear corridor between the home and the first extras column so branches can fan out.
+    final home = c[FlowNodeId.home];
+    if (home != null) {
+      final extraLeft = extras.map((n) => c[n.id]!.dx - rad[n.id]!).reduce(math.min);
+      final maxR = extraLeft - home.dx - 16;
+      if (maxR < (rad[FlowNodeId.home] ?? r)) {
+        rad[FlowNodeId.home] = math.max(flowMinRadius, maxR);
+      }
     }
   }
   return FlowLayout(c, rad, labelH: labelH);
+}
+
+/// True when two node circles overlap or come closer than [minGap].
+bool flowNodesOverlap(FlowLayout l, {double minGap = flowMinGap}) {
+  final ids = l.centers.keys.toList();
+  for (var i = 0; i < ids.length; i++) {
+    for (var j = i + 1; j < ids.length; j++) {
+      final a = l.centers[ids[i]]!, b = l.centers[ids[j]]!;
+      final ra = l.radius[ids[i]] ?? 0, rb = l.radius[ids[j]] ?? 0;
+      if ((a - b).distance + 0.01 < ra + rb + minGap) return true;
+    }
+  }
+  return false;
 }
 
 /// The line between two nodes: straight along a row or column, otherwise a soft curve
@@ -324,6 +392,148 @@ Path flowPath(Offset a, Offset b, {String curve = 'curved'}) {
   return p;
 }
 
+Offset _edgeToward(Offset c, double r, Offset toward) {
+  final d = toward - c;
+  final len = d.distance;
+  if (len < 1 || r <= 0) return c;
+  return c + d / len * r;
+}
+
+/// A branch from the edge of [a] (radius [ra]) to the edge of [b] (radius [rb]) that stays
+/// clear of the other nodes in [layout]. No line passes under another node (R716).
+Path flowConnector(
+  Offset a,
+  double ra,
+  Offset b,
+  double rb, {
+  String curve = 'curved',
+  FlowLayout? layout,
+  String? from,
+  String? to,
+}) {
+  final start = _edgeToward(a, ra + 0.8, b);
+  final end = _edgeToward(b, rb + 0.8, a);
+
+  Path line() => Path()
+    ..moveTo(start.dx, start.dy)
+    ..lineTo(end.dx, end.dy);
+
+  Path ortho() {
+    final p = Path()..moveTo(start.dx, start.dy);
+    // Corridor first (halfway in the gap), then along the other axis, then into the
+    // target – never a segment that runs at the target's X through a column of devices.
+    if ((start.dx - end.dx).abs() < (start.dy - end.dy).abs() * 0.6) {
+      final midY = start.dy + (end.dy - start.dy) * 0.5;
+      p
+        ..lineTo(start.dx, midY)
+        ..lineTo(end.dx, midY)
+        ..lineTo(end.dx, end.dy);
+    } else {
+      final midX = start.dx + (end.dx - start.dx) * 0.5;
+      p
+        ..lineTo(midX, start.dy)
+        ..lineTo(midX, end.dy)
+        ..lineTo(end.dx, end.dy);
+    }
+    return p;
+  }
+
+  Path curved({double fan = 0.65, double midFrac = 0.4}) {
+    final p = Path()..moveTo(start.dx, start.dy);
+    // Move in Y early so the branch does not travel along the home's row through a
+    // sibling that sits at the same height (the middle device of a column).
+    final c1 = Offset(start.dx + (end.dx - start.dx) * midFrac, start.dy + (end.dy - start.dy) * fan);
+    final c2 = Offset(start.dx + (end.dx - start.dx) * 0.78, end.dy);
+    p.cubicTo(c1.dx, c1.dy, c2.dx, c2.dy, end.dx, end.dy);
+    return p;
+  }
+
+  bool hits(Path p) => layout != null && flowPathHitsOthers(p, layout, from: from, to: to, pad: 3);
+
+  Path via(Offset wp) {
+    final p = Path()..moveTo(start.dx, start.dy);
+    p.quadraticBezierTo(wp.dx, start.dy, wp.dx, wp.dy);
+    p.quadraticBezierTo(wp.dx, end.dy, end.dx, end.dy);
+    return p;
+  }
+
+  Path around() {
+    if (layout == null) return line();
+    // Waypoints stay in the corridor (to the start's side of every other node) and detour
+    // above or below the first blocker. Try a few offsets until the path is clear.
+    final side = end.dy >= start.dy ? 1.0 : -1.0;
+    for (final dy in [12.0, 20.0, 28.0, 40.0, -12.0, -20.0, -40.0]) {
+      for (final hitOn in [line(), curved(), ortho()]) {
+        final hit = flowPathFirstHit(hitOn, layout, from: from, to: to, pad: 4);
+        if (hit == null) return hitOn;
+        final (oc, or) = hit;
+        // Corridor X: on the start's side, clear of the blocker.
+        final towardRight = end.dx >= start.dx;
+        final wx = towardRight ? math.min(start.dx, oc.dx - or - 6) : math.max(start.dx, oc.dx + or + 6);
+        final wp = Offset(wx, oc.dy + (dy == 0 ? side * (or + 12) : side * (or + dy.abs())));
+        final p = via(wp);
+        if (!hits(p)) return p;
+      }
+    }
+    // Last resort: go well past every other node in Y, then across.
+    final others = [
+      for (final e in layout.centers.entries)
+        if (e.key != from && e.key != to) e.value.dy + (side > 0 ? 1 : -1) * ((layout.radius[e.key] ?? 0) + 8),
+    ];
+    final extremeY = others.isEmpty ? start.dy + side * 40 : (side > 0 ? others.reduce(math.max) : others.reduce(math.min));
+    return via(Offset(start.dx, extremeY));
+  }
+
+  if (curve == 'ortho') {
+    final p = ortho();
+    if (!hits(p)) return p;
+    final bent = curved(fan: 0.9, midFrac: 0.32);
+    return hits(bent) ? around() : bent;
+  }
+  final sameAxis = (start.dy - end.dy).abs() < 1 || (start.dx - end.dx).abs() < 1;
+  if (curve == 'straight' || sameAxis) {
+    final p = line();
+    if (!hits(p)) return p;
+    if (curve != 'straight') {
+      // fall through to a curve
+    } else {
+      final bent = curved(fan: 0.85, midFrac: 0.3);
+      return hits(bent) ? around() : bent;
+    }
+  }
+  var path = curved();
+  if (hits(path)) {
+    path = curved(fan: 0.9, midFrac: 0.28);
+    if (hits(path)) {
+      path = ortho();
+      if (hits(path)) path = around();
+    }
+  }
+  return path;
+}
+
+/// The first node (centre, radius+pad) that [path] passes through, or null.
+(Offset, double)? flowPathFirstHit(Path path, FlowLayout? layout, {String? from, String? to, double pad = 2}) {
+  if (layout == null) return null;
+  final metric = path.computeMetrics().firstOrNull;
+  if (metric == null || metric.length < 2) return null;
+  const steps = 32;
+  for (var i = 0; i <= steps; i++) {
+    final t = metric.getTangentForOffset(metric.length * i / steps);
+    if (t == null) continue;
+    for (final e in layout.centers.entries) {
+      if (e.key == from || e.key == to) continue;
+      final r = (layout.radius[e.key] ?? 0) + pad;
+      if (r > 0 && (t.position - e.value).distance < r) return (e.value, r);
+    }
+  }
+  return null;
+}
+
+/// True when [path] passes through another node's circle (not the endpoints [from] / [to]).
+bool flowPathHitsOthers(Path path, FlowLayout layout, {String? from, String? to, double pad = 2}) =>
+    flowPathFirstHit(path, layout, from: from, to: to, pad: pad) != null;
+
 /// Lines to draw: (from, to, W) between nodes that are shown; folded extras go to 'more'.
 List<FlowEdge> flowPairs(FlowSnapshot s, Set<String> shown) {
   String map(String id) => shown.contains(id) ? id : (shown.contains('more') ? 'more' : id);
@@ -348,6 +558,7 @@ class EnergyFlowView extends StatefulWidget {
     this.price,
     this.look,
     this.glyphOf,
+    this.showAll = false,
   });
   final FlowSnapshot snapshot;
   final bool animate;
@@ -357,6 +568,9 @@ class EnergyFlowView extends StatefulWidget {
   /// R670–R676 (t336u): colours, lines, motion, size (null = the defaults).
   final FlowLook? look;
   final String Function(FlowLoad load, bool ev)? glyphOf;
+
+  /// R715: show every charger and device (smaller nodes / a grid) instead of folding into "+N more".
+  final bool showAll;
 
   /// Tests: never move (pumpAndSettle-friendly).
   static bool forceStatic = false;
@@ -369,6 +583,13 @@ class _EnergyFlowViewState extends State<EnergyFlowView> with SingleTickerProvid
   late final Ticker _ticker = createTicker(_tick);
   final _time = ValueNotifier<double>(0);
   Duration _last = Duration.zero;
+  late bool _showAll = widget.showAll;
+
+  @override
+  void didUpdateWidget(EnergyFlowView old) {
+    super.didUpdateWidget(old);
+    if (old.showAll != widget.showAll) _showAll = widget.showAll;
+  }
 
   void _tick(Duration elapsed) {
     // ≈ 30 fps is plenty for slow dots and keeps an older tablet cool.
@@ -400,7 +621,7 @@ class _EnergyFlowViewState extends State<EnergyFlowView> with SingleTickerProvid
       builder: (context, box) {
         final size = Size(box.maxWidth, box.maxHeight);
         final labelH = size.height < 260 ? flowCompactLabelH : flowLabelH;
-        final maxExtras = (size.height / (labelH + 24)).floor().clamp(1, 6);
+        final maxExtras = flowMaxVisible(size, labelH: labelH, showAll: _showAll);
         final look = widget.look ?? FlowLook();
         final style = FlowStyle(look, Theme.of(context).colorScheme);
         final nodes = flowNodes(
@@ -416,6 +637,8 @@ class _EnergyFlowViewState extends State<EnergyFlowView> with SingleTickerProvid
         final edges = flowPairs(widget.snapshot, l.centers.keys.toSet());
         final animate = widget.animate && look.anim != 'none' && !EnergyFlowView.forceStatic && edges.isNotEmpty;
         _run(animate);
+        final extrasN = widget.snapshot.evs.length + widget.snapshot.consumers.length;
+        final canCollapse = _showAll && !widget.showAll && extrasN > flowMaxVisible(size, labelH: labelH);
         return Stack(
           clipBehavior: Clip.none,
           children: [
@@ -440,8 +663,26 @@ class _EnergyFlowViewState extends State<EnergyFlowView> with SingleTickerProvid
                   top: c.dy - l.radius[n.id]!,
                   width: math.max(92, l.radius[n.id]! * 2 + 8),
                   height: l.radius[n.id]! * 2 + l.labelH,
-                  child: _Node(node: n, r: l.radius[n.id]!, lang: lang, compact: l.compact),
+                  child: n.id == 'more'
+                      ? GestureDetector(
+                          key: const ValueKey('flow-show-all'),
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () => setState(() => _showAll = true),
+                          child: _Node(node: n, r: l.radius[n.id]!, lang: lang, compact: l.compact),
+                        )
+                      : _Node(node: n, r: l.radius[n.id]!, lang: lang, compact: l.compact),
                 ),
+            if (canCollapse)
+              Positioned(
+                right: 0,
+                bottom: 0,
+                child: TextButton(
+                  key: const ValueKey('flow-show-less'),
+                  style: TextButton.styleFrom(visualDensity: VisualDensity.compact, padding: const EdgeInsets.symmetric(horizontal: 8)),
+                  onPressed: () => setState(() => _showAll = false),
+                  child: Text(tr(lang, 'Vähemmän', 'Show less')),
+                ),
+              ),
           ],
         );
       },
@@ -466,7 +707,21 @@ class _FlowPainter extends CustomPainter {
   final FlowStyle style;
 
   FlowLook get look => style.look;
-  Path _path(Offset a, Offset b) => flowPath(a, b, curve: look.curve);
+  Path _path(String from, String to) {
+    final a = layout.centers[from], b = layout.centers[to];
+    if (a == null || b == null) return Path();
+    return flowConnector(
+      a,
+      layout.radius[from] ?? 0,
+      b,
+      layout.radius[to] ?? 0,
+      curve: look.curve,
+      layout: layout,
+      from: from,
+      to: to,
+    );
+  }
+
   Path _dash(Path p) => look.dashed ? flowDashed(p) : p;
 
   @override
@@ -480,14 +735,13 @@ class _FlowPainter extends CustomPainter {
     if (home != null) {
       for (final e in layout.centers.entries) {
         if (e.key == FlowNodeId.home) continue;
-        canvas.drawPath(_dash(_path(e.value, home)), idle);
+        canvas.drawPath(_dash(_path(e.key, FlowNodeId.home)), idle);
       }
     }
     for (final e in edges) {
-      final a = layout.centers[e.from], b = layout.centers[e.to];
-      if (a == null || b == null) continue;
+      if (layout.centers[e.from] == null || layout.centers[e.to] == null) continue;
       final color = style.line(e.from == FlowNodeId.home ? e.to : e.from);
-      final path = _path(a, b);
+      final path = _path(e.from, e.to);
       final th = flowThickness(e.w) * look.thick;
       // R674: 'pulse' – the line brightens and dims, faster with more power.
       final pulse = animate && look.anim == 'pulse';
@@ -502,13 +756,13 @@ class _FlowPainter extends CustomPainter {
       );
       final metric = path.computeMetrics().firstOrNull;
       if (metric == null) continue;
-      final ra = layout.radius[e.from] ?? 0, rb = layout.radius[e.to] ?? 0;
-      final len = metric.length - ra - rb;
+      // Paths are already trimmed to the node edges (R716); animate only real flow (R717).
+      final len = metric.length;
       if (len <= 4) continue;
       if (animate && !pulse) {
-        _dots(canvas, metric, ra, len, e.w, color, th);
+        _dots(canvas, metric, 0, len, e.w, color, th);
       } else {
-        _arrow(canvas, metric, ra + len / 2, color, th);
+        _arrow(canvas, metric, len / 2, color, th);
       }
     }
   }
@@ -700,6 +954,7 @@ String Function(FlowLoad load, bool ev) flowGlyphOf(AppState st, EnergyFlowConfi
   final own = f.look.icons[l.tileId];
   if (own != null) return own;
   final t = flowTileOf(st, l.tileId);
+  if (isFlowMeterTile(t, meter: st.config.energy.meters[l.tileId])) return 'meter';
   return suggestFlowIcon(t, ev: ev, connType: st.connection(t?.connectionId)?.type);
 };
 
@@ -1121,6 +1376,7 @@ class _EnergyFlowDetailPageState extends State<EnergyFlowDetailPage> {
               price: f.price && s.gridW != null ? flowPriceNow(st, t0) : null,
               look: f.look,
               glyphOf: flowGlyphOf(st, f),
+              showAll: true,
             ),
           ),
           const SizedBox(height: 12),
@@ -1348,6 +1604,36 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
     ];
   }
 
+  bool _isMeter(AppState st, TileConfig x) =>
+      isFlowMeterTile(x, meter: st.config.energy.meters[x.id]);
+
+  String _consumerSubtitle(BuildContext context, AppState st, TileConfig x) {
+    if (_isMeter(st, x)) {
+      return tx(
+        context,
+        'Energiamittari, ei kulutuslaite. Voit käyttää sitä verkon mittauksena, tai näyttää sen laitteena mittarina.',
+        'An energy meter, not a consuming device. You can use it as the grid measurement, or still show it as a device labelled as a meter.',
+      );
+    }
+    if (x.type == TileType.toggle) {
+      return '≈ ${formatPower(x.nominalW, lang: st.lang)} ${tx(context, 'päällä ollessa (arvio)', 'while on (estimate)')}';
+    }
+    return tx(context, 'Mitattu teho', 'Measured power');
+  }
+
+  /// R718: offer a meter as the grid (or its three phases when they are found).
+  void _useMeterAsGrid(TileConfig x, List<TileConfig> power) {
+    final cands = phaseCandidates(power);
+    final cand = cands
+        .where((c) => c.ids.contains(x.id) || (x.connectionId != null && c.connectionId == x.connectionId))
+        .firstOrNull;
+    setState(() {
+      f.gridSum = cand != null ? PowerSum.threePhase(cand.ids) : PowerSum.single(x.id);
+      f.consumers.remove(x.id);
+      f.consumerSums.remove(x.id);
+    });
+  }
+
   Future<void> _save() async {
     final st = AppScope.read(context);
     t.title = _title.text.trim().isEmpty ? tx(context, 'Energiavirta', 'Energy flow') : _title.text.trim();
@@ -1416,12 +1702,12 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
     return [
       if (withFirst)
         KeyedSubtree(
-          key: ObjectKey(sum.parts.firstOrNull),
+          key: ValueKey('$key-part-0'),
           child: _pick(key, label, sum.parts.firstOrNull?.tile, opts, (v) => sum.first = v, none: none),
         ),
       for (var i = 1; i < sum.parts.length; i++)
         KeyedSubtree(
-          key: ObjectKey(sum.parts[i]),
+          key: ValueKey('$key-part-$i'),
           child: Column(
             children: [
               Row(
@@ -1597,10 +1883,12 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
         child: Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 640),
-            child: ListView(
+            child: SingleChildScrollView(
               key: const ValueKey('flow-editor'),
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
-              children: [
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
                 TextField(
                   key: const ValueKey('flow-title'),
                   controller: _title,
@@ -1625,6 +1913,7 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
                               nameOf: (id) => flowNameOf(st, id),
                               look: f.look,
                               glyphOf: flowGlyphOf(st, f),
+                              showAll: true,
                             ),
                     ),
                   ),
@@ -1765,11 +2054,7 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
                     value: f.consumers.contains(x.id),
                     secondary: f.consumers.contains(x.id) ? _iconButton(st, x.id) : null,
                     title: Text(x.title),
-                    subtitle: Text(
-                      x.type == TileType.toggle
-                          ? '≈ ${formatPower(x.nominalW, lang: st.lang)} ${tx(context, 'päällä ollessa (arvio)', 'while on (estimate)')}'
-                          : tx(context, 'Mitattu teho', 'Measured power'),
-                    ),
+                    subtitle: Text(_consumerSubtitle(context, st, x)),
                     onChanged: (v) => setState(() {
                       if (v == true) {
                         if (!f.consumers.contains(x.id)) f.consumers.add(x.id);
@@ -1779,6 +2064,16 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
                       }
                     }),
                   ),
+                  if (_isMeter(st, x) && !f.gridSum.ids.contains(x.id))
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: TextButton.icon(
+                        key: ValueKey('flow-meter-as-grid-${x.id}'),
+                        onPressed: () => _useMeterAsGrid(x, power),
+                        icon: const Icon(Icons.electrical_services, size: 18),
+                        label: Text(tx(context, 'Käytä verkon mittauksena', 'Use as the grid measurement')),
+                      ),
+                    ),
                   if (f.consumers.contains(x.id) && x.type == TileType.value)
                     ..._sumRows(
                       'flow-consumer-${x.id}',
@@ -1807,7 +2102,8 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
                   value: f.motion != 'off',
                   onChanged: (v) => setState(() => f.motion = v ? 'auto' : 'off'),
                 ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

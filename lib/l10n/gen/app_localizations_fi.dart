@@ -8179,6 +8179,9 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
+  String get s0e776e1574 => 'Vähemmän';
+
+  @override
   String get s2aaf585b6f =>
       'Valitse näytettävät mittaukset ruudun asetuksista.';
 
@@ -8336,6 +8339,16 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sac7ed506f3 => 'Energiavirta';
 
   @override
+  String get s6631dd4cc3 =>
+      'Energiamittari, ei kulutuslaite. Voit käyttää sitä verkon mittauksena, tai näyttää sen laitteena mittarina.';
+
+  @override
+  String get sf43fda9dad => 'päällä ollessa (arvio)';
+
+  @override
+  String get s036ab2e742 => 'Mitattu teho';
+
+  @override
   String get s510927a4e5 => 'Ei käytössä';
 
   @override
@@ -8464,10 +8477,7 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s16e6172f72 => 'Ei vielä laitteita, jotka kertovat tehon.';
 
   @override
-  String get sf43fda9dad => 'päällä ollessa (arvio)';
-
-  @override
-  String get s036ab2e742 => 'Mitattu teho';
+  String get sefefead6d2 => 'Käytä verkon mittauksena';
 
   @override
   String get s5b72e0dd48 => 'Liikkuvat virtapisteet';
@@ -8478,6 +8488,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sda8d9bf1cd => 'Pistorasia';
+
+  @override
+  String get sba3876d071 => 'Energiamittari';
 
   @override
   String get se21f8f0465 => 'Valaisin';

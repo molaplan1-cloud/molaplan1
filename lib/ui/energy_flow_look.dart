@@ -39,6 +39,7 @@ String flowIconName(String key, String lang) {
   String t(String fi, String en) => tr(lang, fi, en);
   return switch (key) {
     'plug' => t('Pistorasia', 'Plug'),
+    'meter' => t('Energiamittari', 'Energy meter'),
     'lamp' => t('Valaisin', 'Lamp'),
     'sauna' => t('Kiuas', 'Sauna stove'),
     'stove' => t('Liesi', 'Cooker'),
@@ -116,6 +117,14 @@ class _GlyphPainter extends CustomPainter {
         for (final (x, y) in const [(4.0, 7.0), (20.0, 7.0), (6.0, 11.5), (18.0, 11.5)]) {
           line(x, y, x, y + 2.2);
         }
+      case 'meter': // a meter housing with a small dial
+        canvas.drawRRect(box(5, 3.5, 19, 20.5, 2.2), p);
+        canvas.drawRRect(box(7, 5.5, 17, 12.5, 1.2), p);
+        line(12, 12, 15.2, 8.2);
+        canvas.drawCircle(const Offset(12, 12), 1.15, fill);
+        line(8, 16.5, 16, 16.5);
+        line(8, 18.2, 13.5, 18.2);
+        break;
       case 'sauna': // a stove with stones and steam
         canvas.drawRRect(box(4.5, 12, 19.5, 21.5), p);
         for (final (x, y) in const [(8.0, 10.6), (12.0, 10.0), (16.0, 10.6)]) {

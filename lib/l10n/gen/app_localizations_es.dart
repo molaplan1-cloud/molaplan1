@@ -8228,6 +8228,9 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get s0e776e1574 => 'Mostrar menos';
+
+  @override
   String get s2aaf585b6f =>
       'Escoja las lecturas para mostrar en la configuración de la tarjeta.';
 
@@ -8386,6 +8389,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sac7ed506f3 => 'Flujo de energía';
 
   @override
+  String get s6631dd4cc3 =>
+      'Un medidor de energía, no un dispositivo de consumo. Puedes usarlo como medición de la red, o seguir mostrándolo como un dispositivo etiquetado como medidor.';
+
+  @override
+  String get sf43fda9dad => '(estimación)';
+
+  @override
+  String get s036ab2e742 => 'Potencia asegurada';
+
+  @override
   String get s510927a4e5 => 'No utilizado';
 
   @override
@@ -8518,10 +8531,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s16e6172f72 => 'Aún no hay dispositivos que reporten energía.';
 
   @override
-  String get sf43fda9dad => '(estimación)';
-
-  @override
-  String get s036ab2e742 => 'Potencia asegurada';
+  String get sefefead6d2 => 'Usar como medida de la red';
 
   @override
   String get s5b72e0dd48 => 'Puntos de flujo de movimiento';
@@ -8532,6 +8542,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sda8d9bf1cd => 'Enchufe';
+
+  @override
+  String get sba3876d071 => 'Medidor de energía';
 
   @override
   String get se21f8f0465 => 'Lámpara';
