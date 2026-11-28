@@ -3,8 +3,8 @@ import 'dart:typed_data';
 
 /// Tiny Modbus TCP server simulator for tests.
 class ModbusSim {
-  final holding = List<int>.filled(200, 0);
-  final input = List<int>.filled(200, 0);
+  final holding = List<int>.filled(300, 0);
+  final input = List<int>.filled(300, 0);
   final coils = List<bool>.filled(200, false);
   final discrete = List<bool>.filled(200, false);
   late ServerSocket _server;

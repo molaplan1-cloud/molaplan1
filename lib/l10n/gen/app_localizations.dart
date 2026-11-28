@@ -18971,11 +18971,191 @@ abstract class AppLocalizations {
   /// **'The mode of a ground-source pump is not changed here – only the setpoint.'**
   String get s370bf1904d;
 
+  /// fi: Midea: väärä token tai key
+  ///
+  /// In en, this message translates to:
+  /// **'Midea: wrong token or key'**
+  String get sb795949130;
+
+  /// fi: yhteys aikakatkaistiin
+  ///
+  /// In en, this message translates to:
+  /// **'connect timeout'**
+  String get sd6b2f21f4a;
+
+  /// fi: Midea V3 tarvitsee tokenin (128 merkkiä) ja keyn (64 merkkiä)
+  ///
+  /// In en, this message translates to:
+  /// **'Midea V3 needs a token (128 hex characters) and a key (64 hex characters)'**
+  String get s6831eae697;
+
+  /// fi: Midea: laite ei hyväksynyt tokenia ja keytä (tarkista ne)
+  ///
+  /// In en, this message translates to:
+  /// **'Midea: the device did not accept the token and key (check them)'**
+  String get s22a358f420;
+
+  /// fi: Midea: laite ei lähettänyt tilatietoa
+  ///
+  /// In en, this message translates to:
+  /// **'Midea: the device sent no state'**
+  String get s01f1dab4e3;
+
   /// fi: Löytyy reitittimen laitelistasta tai valmistajan sovelluksesta (laitteen tiedot).
   ///
   /// In en, this message translates to:
   /// **'Find it in your router\'\'s device list or the maker\'\'s app (device info).'**
   String get s6d21845355;
+
+  /// fi: Tämä laite (V3) tarvitsee laitekohtaisen tokenin ja keyn. Syötä ne, tai syötä oma Midea NetHome Plus -tilisi (sähköposti
+  ///
+  /// In en, this message translates to:
+  /// **'This unit (V3) needs a per-device token and key. Enter them, or enter your own Midea NetHome Plus account (e-mail and password) and Molaplan fetches them once from the Midea cloud. If the account was rejected, check the details. The token and key never go to Molaplan\'\'s servers.'**
+  String get s2a9d28aac1;
+
+  /// fi: Inventor ilmalämpöpumppu (INVmate II, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Inventor air conditioner (INVmate II, local)'**
+  String get s0fa435dd3b;
+
+  /// fi: Inventor-ilmalämpöpumput, joita ohjataan INVmate II -sovelluksella (wifi-moduuli EU-OSK105 tms.). Sama Midea LAN -protok
+  ///
+  /// In en, this message translates to:
+  /// **'Inventor air conditioners controlled with the INVmate II app (Wi-Fi module EU-OSK105 or similar). The same Midea LAN protocol also works for Midea, Comfee and other Midea-built units. Local, no cloud.'**
+  String get s355759f7fd;
+
+  /// fi: Laitteen IP-osoite reitittimen laitelistasta (nimi usein "midea_ac_…"). Haku löytää sen yleensä itse.
+  ///
+  /// In en, this message translates to:
+  /// **'The unit\'\'s IP from your router\'\'s device list (often named \"midea_ac_…\"). The search normally finds it by itself.'**
+  String get sfe4d46ec2d;
+
+  /// fi: Uudemmat laitteet (V3) tarvitsevat laitekohtaisen tokenin ja keyn. Jos et tiedä niitä, kirjoita alle oma Midea NetHome P
+  ///
+  /// In en, this message translates to:
+  /// **'Newer units (V3) need a per-device token and key. If you do not have them, enter your own Midea NetHome Plus account below and they are fetched once.'**
+  String get s08091212d0;
+
+  /// fi: Tokenin pari.
+  ///
+  /// In en, this message translates to:
+  /// **'The token\'\'s partner.'**
+  String get s0866bdcde6;
+
+  /// fi: Ilmainen tili NetHome Plus -sovelluksessa (Midea). Käytetään vain tokenin ja keyn hakuun kerran; salasanaa ei tallenneta
+  ///
+  /// In en, this message translates to:
+  /// **'A free account in the NetHome Plus app (Midea). Used only to fetch the token and key once; the password is not stored.'**
+  String get se0474ca270;
+
+  /// fi: Vain avainten hakuun. Ei tallennu laitteen asetuksiin.
+  ///
+  /// In en, this message translates to:
+  /// **'Only to fetch the keys. Not saved in the connection.'**
+  String get sc69d2abc31;
+
+  /// fi: Tarvitaan laitteen paikallinen avain (local key, 16 merkkiä) – kirjoita se, tai täytä oman ilmaisen Tuya-kehittäjäprojek
+  ///
+  /// In en, this message translates to:
+  /// **'The unit\'\'s local key (16 characters) is needed – type it, or fill in the Access ID and Secret of your own free Tuya developer project and the key is fetched once. If the key was rejected, check it and the device id. The key never goes to Molaplan\'\'s servers.'**
+  String get scea357a8db;
+
+  /// fi: Inventor ilmalämpöpumppu (Inventor Control, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Inventor air conditioner (Inventor Control, local)'**
+  String get s1737dca975;
+
+  /// fi: Inventor-ilmalämpöpumput, joita ohjataan Inventor Control -sovelluksella (malleja mm. Leon, Legend, Comfort, Supreme, Ve
+  ///
+  /// In en, this message translates to:
+  /// **'Inventor air conditioners controlled with the Inventor Control app (e.g. Leon, Legend, Comfort, Supreme, Vero). The app is Tuya-based; control on your home network without the cloud. Needs the unit\'\'s local key once.'**
+  String get s568208217c;
+
+  /// fi: Laitteen IP-osoite reitittimen laitelistasta. Haku löytää sen yleensä itse.
+  ///
+  /// In en, this message translates to:
+  /// **'The unit\'\'s IP from your router\'\'s device list. The search normally finds it by itself.'**
+  String get s0ef75068ac;
+
+  /// fi: 16 merkin avain. Jos et tiedä sitä, täytä alla oma Tuya-kehittäjäprojektisi tunnukset, niin se haetaan kerran. Uusimmat
+  ///
+  /// In en, this message translates to:
+  /// **'A 16-character key. If you do not have it, fill in your own Tuya developer project below and it is fetched once. The newest Inventor Control units cannot always be linked to the Tuya app – then the key has to be obtained another way (see docs/INVENTOR.md).'**
+  String get s7455130634;
+
+  /// fi: Täytetään automaattisesti, jos laite löytyi verkosta.
+  ///
+  /// In en, this message translates to:
+  /// **'Filled in automatically when the unit was found on the network.'**
+  String get s4b053856e0;
+
+  /// fi: 3.3, 3.4 tai 3.5. Jos jätät tyhjäksi, kokeillaan kaikki.
+  ///
+  /// In en, this message translates to:
+  /// **'3.3, 3.4 or 3.5. If left empty all are tried.'**
+  String get s3761f46313;
+
+  /// fi: Oma ilmainen Tuya-kehittäjäprojekti (iot.tuya.com → Cloud → Create Cloud Project → Devices → Link App Account). Sovelluk
+  ///
+  /// In en, this message translates to:
+  /// **'Your own free Tuya developer project (iot.tuya.com → Cloud → Create Cloud Project → Devices → Link App Account). Use the Tuya Smart / Smart Life app the unit was added to.'**
+  String get s5b0069af62;
+
+  /// fi: Samalta projektin sivulta. Ei tallennu.
+  ///
+  /// In en, this message translates to:
+  /// **'From the same project page. Not saved.'**
+  String get s96dbe019ed;
+
+  /// fi: Projektin data center, Euroopassa yleensä eu.
+  ///
+  /// In en, this message translates to:
+  /// **'The project\'\'s data center, usually eu in Europe.'**
+  String get s1573c32bab;
+
+  /// fi: Pumppu ei vastannut oletusasetuksilla (portti 502, Modbus-osoite 1, sekä Modbus TCP että läpinäkyvä RTU). Tarkista muunt
+  ///
+  /// In en, this message translates to:
+  /// **'The pump did not answer with the defaults (port 502, Modbus address 1, both Modbus TCP and transparent RTU). Check the converter\'\'s IP and type below the converter\'\'s port, the pump\'\'s Modbus address (DIP switches of the hydraulic module) and mode if they differ. RS-485: A/B to the wired controller\'\'s H1/H2 terminals, 9600 baud, 8 data bits, no parity, 1 stop bit.'**
+  String get s18e2dce10d;
+
+  /// fi: Inventor ilma-vesilämpöpumppu (Modbus RS-485)
+  ///
+  /// In en, this message translates to:
+  /// **'Inventor air-to-water heat pump (Modbus RS-485)'**
+  String get s3d0c432194;
+
+  /// fi: Inventor-ilma-vesilämpöpumput (monoblock-sarjat ja hydromoduulit). Ohjaus pumpun langallisen ohjaimen RS-485-liitännän (
+  ///
+  /// In en, this message translates to:
+  /// **'Inventor air-to-water heat pumps (monoblock series and hydro modules). Control through the RS-485 port (H1/H2) of the pump\'\'s wired controller with a cheap RS-485–Ethernet/Wi-Fi converter: mode, setpoint, hot water, water and outdoor temperature. Local, no cloud.'**
+  String get s299d1b40fe;
+
+  /// fi: RS-485–Modbus-muuntimen IP-osoite (esim. Waveshare, Elfin EW11, USR-TCP232). Sitä ei löydy haulla – kirjoita osoite.
+  ///
+  /// In en, this message translates to:
+  /// **'IP of the RS-485–Modbus converter (e.g. Waveshare, Elfin EW11, USR-TCP232). It cannot be searched – type the address.'**
+  String get s158de9d34a;
+
+  /// fi: Muuntimen Modbus-portti, yleensä 502 (joillain 8899 tai 23).
+  ///
+  /// In en, this message translates to:
+  /// **'The converter\'\'s Modbus port, usually 502 (some use 8899 or 23).'**
+  String get sbe411b8e53;
+
+  /// fi: Sama kuin hydromoduulin DIP-kytkimillä asetettu osoite, oletus 1.
+  ///
+  /// In en, this message translates to:
+  /// **'The address set with the DIP switches of the hydraulic module, default 1.'**
+  String get s1f7582a270;
+
+  /// fi: Jätä tyhjäksi: kokeillaan sekä Modbus TCP että läpinäkyvä RTU. Muuntimen asetus 9600 baud, 8 databittiä, ei pariteettia,
+  ///
+  /// In en, this message translates to:
+  /// **'Leave empty: both Modbus TCP and transparent RTU are tried. Set the converter to 9600 baud, 8 data bits, no parity, 1 stop bit.'**
+  String get sa51903d6fa;
 
   /// fi: Daikin (wifi, paikallinen)
   ///
@@ -19181,11 +19361,11 @@ abstract class AppLocalizations {
   /// **'The password you set in the maker\'\'s app (MyDevice, EasyControl or the Buderus app).'**
   String get s7af1e0507c;
 
-  /// fi: Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – tai mikä tahansa IR-kaukosäätimellä.
+  /// fi: Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia, Inventor – tai mikä tahansa IR-kaukosäätimellä.
   ///
   /// In en, this message translates to:
-  /// **'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – or any with an IR remote.'**
-  String get s5ddd513689;
+  /// **'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia, Inventor – or any with an IR remote.'**
+  String get s6b99f7c0e5;
 
   /// fi: Ei laitteita
   ///
@@ -19204,6 +19384,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'too many requests'**
   String get sf3d77f10b9;
+
+  /// fi: Tila "{p0}" ei ole käytössä tässä pumpussa
+  ///
+  /// In en, this message translates to:
+  /// **'Mode \"{p0}\" is not available on this pump'**
+  String s2c5094f4e4(String p0);
+
+  /// fi: Ilma-vesipumpulla ei ole puhallinasetusta
+  ///
+  /// In en, this message translates to:
+  /// **'An air-to-water pump has no fan setting'**
+  String get sb6729e0077;
 
   /// fi: MELCloud: väärä sähköposti tai salasana
   ///
@@ -19235,6 +19427,18 @@ abstract class AppLocalizations {
   /// **'No Daikin adapter at {p0}'**
   String sc499fab53f(String p0);
 
+  /// fi: Tämä malli ei tue puhaltimen automaattitilaa
+  ///
+  /// In en, this message translates to:
+  /// **'This model has no automatic fan mode'**
+  String get s642f888a5f;
+
+  /// fi: Tämä ei näytä ilmastointilaitteelta (ei virta-datapistettä)
+  ///
+  /// In en, this message translates to:
+  /// **'This does not look like an air conditioner (no power data point)'**
+  String get s77890f9215;
+
   /// fi: Daikin (paikallinen wifi)
   ///
   /// In en, this message translates to:
@@ -19252,6 +19456,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Bosch / Buderus (KM200 gateway, local)'**
   String get s16f7124e42;
+
+  /// fi: Inventor INVmate II / Midea LAN (paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Inventor INVmate II / Midea LAN (local)'**
+  String get sc207ec4ed9;
+
+  /// fi: Inventor Control (Tuya, paikallinen)
+  ///
+  /// In en, this message translates to:
+  /// **'Inventor Control (Tuya, local)'**
+  String get sd0746c8b58;
+
+  /// fi: Inventor ilma-vesi (Modbus)
+  ///
+  /// In en, this message translates to:
+  /// **'Inventor air-to-water (Modbus)'**
+  String get s49df2050fd;
 
   /// fi: Lämpöpumppu (oma integraatio)
   ///
@@ -19307,29 +19529,95 @@ abstract class AppLocalizations {
   /// **'The maker\'\'s app password. Stored only on this device / in your own vault.'**
   String get safde071183;
 
-  /// fi: Tunnus (SmartThings token)
+  /// fi: Tunnus (SmartThings token / Midea V3 token)
   ///
   /// In en, this message translates to:
-  /// **'Token (SmartThings)'**
-  String get s2862f25983;
+  /// **'Token (SmartThings / Midea V3 token)'**
+  String get sca7b0f8de6;
 
-  /// fi: SmartThingsin henkilökohtainen token (account.smartthings.com/tokens).
+  /// fi: SmartThingsin henkilökohtainen token (account.smartthings.com/tokens), tai Midea V3 -laitteen token (128 heksamerkkiä).
   ///
   /// In en, this message translates to:
-  /// **'SmartThings personal access token (account.smartthings.com/tokens).'**
-  String get s23a4bc8253;
+  /// **'SmartThings personal access token (account.smartthings.com/tokens), or the Midea V3 device token (128 hex characters).'**
+  String get s0f1eaf350b;
 
-  /// fi: Avain (Daikin BRP072C, tarrasta)
+  /// fi: Avain (Daikin BRP072C tarrasta / Midea V3 key)
   ///
   /// In en, this message translates to:
-  /// **'Key (Daikin BRP072C, sticker)'**
-  String get sef37e5048d;
+  /// **'Key (Daikin BRP072C sticker / Midea V3 key)'**
+  String get se263eae5bc;
 
-  /// fi: BRP072C-ohjaimen tarrassa oleva avain (key).
+  /// fi: BRP072C-ohjaimen tarrassa oleva avain (key), tai Midea V3 -laitteen key (64 heksamerkkiä).
   ///
   /// In en, this message translates to:
-  /// **'The key printed on the BRP072C adapter\'\'s sticker.'**
-  String get s1c339065e1;
+  /// **'The key printed on the BRP072C adapter\'\'s sticker, or the Midea V3 device key (64 hex characters).'**
+  String get s29ea4d7472;
+
+  /// fi: Laitteen tunnus (Midea / Tuya)
+  ///
+  /// In en, this message translates to:
+  /// **'Device id (Midea / Tuya)'**
+  String get s5e51da0364;
+
+  /// fi: Midea: laitteen numerotunnus (löytyy haussa). Tuya: Device ID (Tuya-sovelluksesta tai kehittäjäprojektista).
+  ///
+  /// In en, this message translates to:
+  /// **'Midea: the numeric appliance id (found by the search). Tuya: the Device ID (from the Tuya app or developer project).'**
+  String get se463b24b80;
+
+  /// fi: Midea-protokolla (2 tai 3)
+  ///
+  /// In en, this message translates to:
+  /// **'Midea protocol (2 or 3)'**
+  String get s21214b52f5;
+
+  /// fi: 2 = ei tunnuksia. 3 = uudempi laiteohjelmisto, tarvitsee tokenin ja keyn.
+  ///
+  /// In en, this message translates to:
+  /// **'2 = no credentials. 3 = newer firmware, needs a token and key.'**
+  String get sfd9749e4c3;
+
+  /// fi: Paikallinen avain (Tuya local key)
+  ///
+  /// In en, this message translates to:
+  /// **'Local key (Tuya)'**
+  String get s7b9cbd8fc1;
+
+  /// fi: 16 merkin Tuya-laitteen paikallinen avain.
+  ///
+  /// In en, this message translates to:
+  /// **'The Tuya device\'\'s 16-character local key.'**
+  String get sefa4614c28;
+
+  /// fi: Tuya-protokollaversio
+  ///
+  /// In en, this message translates to:
+  /// **'Tuya protocol version'**
+  String get sb1d45b679e;
+
+  /// fi: 3.3, 3.4 tai 3.5 (löytyy haussa).
+  ///
+  /// In en, this message translates to:
+  /// **'3.3, 3.4 or 3.5 (found by the search).'**
+  String get s2fb2791b81;
+
+  /// fi: Modbus-kehystys (tcp / rtu)
+  ///
+  /// In en, this message translates to:
+  /// **'Modbus framing (tcp / rtu)'**
+  String get s284d1ca043;
+
+  /// fi: RS-485-muuntimen tila: Modbus TCP tai läpinäkyvä RTU.
+  ///
+  /// In en, this message translates to:
+  /// **'The RS-485 gateway\'\'s mode: Modbus TCP or transparent RTU.'**
+  String get s8671c4de95;
+
+  /// fi: RTU TCP:n yli (läpinäkyvä)
+  ///
+  /// In en, this message translates to:
+  /// **'RTU over TCP (transparent)'**
+  String get s797055e399;
 
   /// fi: Client ID (myUplink)
   ///
@@ -19517,11 +19805,29 @@ abstract class AppLocalizations {
   /// **'Setpoint, power, mode or fan.'**
   String get s94ecb845c8;
 
+  /// fi: Muu asetus (key)
+  ///
+  /// In en, this message translates to:
+  /// **'Other setting (key)'**
+  String get s6ff46b02d2;
+
   /// fi: Asetusarvo
   ///
   /// In en, this message translates to:
   /// **'Setpoint'**
   String get sba2eb6d9b9;
+
+  /// fi: Asetuksen tunnus (vain "Muu asetus")
+  ///
+  /// In en, this message translates to:
+  /// **'Setting key (only \"Other setting\")'**
+  String get sc8c47b547a;
+
+  /// fi: Esim. dhw_set (käyttöveden lämpötila) tai dhw_power (käyttöveden lämmitys päälle/pois).
+  ///
+  /// In en, this message translates to:
+  /// **'E.g. dhw_set (hot water setpoint) or dhw_power (hot water heating on/off).'**
+  String get s679e5f90c2;
 
   /// fi: Lämpöpumppua "{p0}" ei löydy enää tililtä
   ///
@@ -19535,11 +19841,35 @@ abstract class AppLocalizations {
   /// **'Setpoint missing'**
   String get s4937d259b8;
 
+  /// fi: Asetuksen tunnus tai arvo puuttuu
+  ///
+  /// In en, this message translates to:
+  /// **'Setting key or value missing'**
+  String get sbd33d78695;
+
   /// fi: käyrän siirto
   ///
   /// In en, this message translates to:
   /// **'curve offset'**
   String get s10f42a9a20;
+
+  /// fi: Käyttöveden tavoite
+  ///
+  /// In en, this message translates to:
+  /// **'Hot water setpoint'**
+  String get s3795df7c35;
+
+  /// fi: Menoveden tavoite
+  ///
+  /// In en, this message translates to:
+  /// **'Water setpoint'**
+  String get sf5a30e3b51;
+
+  /// fi: Käyttövesi päällä
+  ///
+  /// In en, this message translates to:
+  /// **'Hot water on'**
+  String get s8b6dbf3df6;
 
   /// fi: Menovesi
   ///
@@ -19588,6 +19918,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Burner modulation'**
   String get s79f91561d9;
+
+  /// fi: Vesivirtaus
+  ///
+  /// In en, this message translates to:
+  /// **'Water flow'**
+  String get s447ce92cd0;
+
+  /// fi: Lämpöteho
+  ///
+  /// In en, this message translates to:
+  /// **'Heating capacity'**
+  String get s54fd87bce8;
 
   /// fi: Anna yhdyskäytävän salasana ja oma salasana
   ///

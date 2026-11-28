@@ -16952,200 +16952,365 @@
   "description": "fi: Maalämpöpumpun tilaa ei vaihdeta täältä – vain asetusarvo.",
   "x-where": "heatpumps/myuplink.dart:164"
  },
+ "sb795949130": "Midea: wrong token or key",
+ "@sb795949130": {
+  "description": "fi: Midea: väärä token tai key",
+  "x-where": "heatpumps/midea_lan.dart:381"
+ },
+ "sd6b2f21f4a": "connect timeout",
+ "@sd6b2f21f4a": {
+  "description": "fi: yhteys aikakatkaistiin",
+  "x-where": "heatpumps/midea_lan.dart:598"
+ },
+ "s6831eae697": "Midea V3 needs a token (128 hex characters) and a key (64 hex characters)",
+ "@s6831eae697": {
+  "description": "fi: Midea V3 tarvitsee tokenin (128 merkkiä) ja keyn (64 merkkiä)",
+  "x-where": "heatpumps/midea_lan.dart:623"
+ },
+ "s22a358f420": "Midea: the device did not accept the token and key (check them)",
+ "@s22a358f420": {
+  "description": "fi: Midea: laite ei hyväksynyt tokenia ja keytä (tarkista ne)",
+  "x-where": "heatpumps/midea_lan.dart:636"
+ },
+ "s01f1dab4e3": "Midea: the device sent no state",
+ "@s01f1dab4e3": {
+  "description": "fi: Midea: laite ei lähettänyt tilatietoa",
+  "x-where": "heatpumps/midea_lan.dart:769"
+ },
  "s6d21845355": "Find it in your router''s device list or the maker''s app (device info).",
  "@s6d21845355": {
   "description": "fi: Löytyy reitittimen laitelistasta tai valmistajan sovelluksesta (laitteen tiedot).",
-  "x-where": "heatpumps/hp_providers.dart:231"
+  "x-where": "heatpumps/hp_providers.dart:239"
+ },
+ "s2a9d28aac1": "This unit (V3) needs a per-device token and key. Enter them, or enter your own Midea NetHome Plus account (e-mail and password) and Molaplan fetches them once from the Midea cloud. If the account was rejected, check the details. The token and key never go to Molaplan''s servers.",
+ "@s2a9d28aac1": {
+  "description": "fi: Tämä laite (V3) tarvitsee laitekohtaisen tokenin ja keyn. Syötä ne, tai syötä oma Midea NetHome Plus -tilisi (sähköposti",
+  "x-where": "heatpumps/hp_providers.dart:249"
+ },
+ "s0fa435dd3b": "Inventor air conditioner (INVmate II, local)",
+ "@s0fa435dd3b": {
+  "description": "fi: Inventor ilmalämpöpumppu (INVmate II, paikallinen)",
+  "x-where": "heatpumps/hp_providers.dart:250"
+ },
+ "s355759f7fd": "Inventor air conditioners controlled with the INVmate II app (Wi-Fi module EU-OSK105 or similar). The same Midea LAN protocol also works for Midea, Comfee and other Midea-built units. Local, no cloud.",
+ "@s355759f7fd": {
+  "description": "fi: Inventor-ilmalämpöpumput, joita ohjataan INVmate II -sovelluksella (wifi-moduuli EU-OSK105 tms.). Sama Midea LAN -protok",
+  "x-where": "heatpumps/hp_providers.dart:250"
+ },
+ "sfe4d46ec2d": "The unit''s IP from your router''s device list (often named \"midea_ac_…\"). The search normally finds it by itself.",
+ "@sfe4d46ec2d": {
+  "description": "fi: Laitteen IP-osoite reitittimen laitelistasta (nimi usein \"midea_ac_…\"). Haku löytää sen yleensä itse.",
+  "x-where": "heatpumps/hp_providers.dart:250"
+ },
+ "s08091212d0": "Newer units (V3) need a per-device token and key. If you do not have them, enter your own Midea NetHome Plus account below and they are fetched once.",
+ "@s08091212d0": {
+  "description": "fi: Uudemmat laitteet (V3) tarvitsevat laitekohtaisen tokenin ja keyn. Jos et tiedä niitä, kirjoita alle oma Midea NetHome P",
+  "x-where": "heatpumps/hp_providers.dart:265"
+ },
+ "s0866bdcde6": "The token''s partner.",
+ "@s0866bdcde6": {
+  "description": "fi: Tokenin pari.",
+  "x-where": "heatpumps/hp_providers.dart:275"
+ },
+ "se0474ca270": "A free account in the NetHome Plus app (Midea). Used only to fetch the token and key once; the password is not stored.",
+ "@se0474ca270": {
+  "description": "fi: Ilmainen tili NetHome Plus -sovelluksessa (Midea). Käytetään vain tokenin ja keyn hakuun kerran; salasanaa ei tallenneta",
+  "x-where": "heatpumps/hp_providers.dart:285"
+ },
+ "sc69d2abc31": "Only to fetch the keys. Not saved in the connection.",
+ "@sc69d2abc31": {
+  "description": "fi: Vain avainten hakuun. Ei tallennu laitteen asetuksiin.",
+  "x-where": "heatpumps/hp_providers.dart:293"
+ },
+ "scea357a8db": "The unit''s local key (16 characters) is needed – type it, or fill in the Access ID and Secret of your own free Tuya developer project and the key is fetched once. If the key was rejected, check it and the device id. The key never goes to Molaplan''s servers.",
+ "@scea357a8db": {
+  "description": "fi: Tarvitaan laitteen paikallinen avain (local key, 16 merkkiä) – kirjoita se, tai täytä oman ilmaisen Tuya-kehittäjäprojek",
+  "x-where": "heatpumps/hp_providers.dart:400"
+ },
+ "s1737dca975": "Inventor air conditioner (Inventor Control, local)",
+ "@s1737dca975": {
+  "description": "fi: Inventor ilmalämpöpumppu (Inventor Control, paikallinen)",
+  "x-where": "heatpumps/hp_providers.dart:401"
+ },
+ "s568208217c": "Inventor air conditioners controlled with the Inventor Control app (e.g. Leon, Legend, Comfort, Supreme, Vero). The app is Tuya-based; control on your home network without the cloud. Needs the unit''s local key once.",
+ "@s568208217c": {
+  "description": "fi: Inventor-ilmalämpöpumput, joita ohjataan Inventor Control -sovelluksella (malleja mm. Leon, Legend, Comfort, Supreme, Ve",
+  "x-where": "heatpumps/hp_providers.dart:401"
+ },
+ "s0ef75068ac": "The unit''s IP from your router''s device list. The search normally finds it by itself.",
+ "@s0ef75068ac": {
+  "description": "fi: Laitteen IP-osoite reitittimen laitelistasta. Haku löytää sen yleensä itse.",
+  "x-where": "heatpumps/hp_providers.dart:401"
+ },
+ "s7455130634": "A 16-character key. If you do not have it, fill in your own Tuya developer project below and it is fetched once. The newest Inventor Control units cannot always be linked to the Tuya app – then the key has to be obtained another way (see docs/INVENTOR.md).",
+ "@s7455130634": {
+  "description": "fi: 16 merkin avain. Jos et tiedä sitä, täytä alla oma Tuya-kehittäjäprojektisi tunnukset, niin se haetaan kerran. Uusimmat ",
+  "x-where": "heatpumps/hp_providers.dart:416"
+ },
+ "s4b053856e0": "Filled in automatically when the unit was found on the network.",
+ "@s4b053856e0": {
+  "description": "fi: Täytetään automaattisesti, jos laite löytyi verkosta.",
+  "x-where": "heatpumps/hp_providers.dart:426"
+ },
+ "s3761f46313": "3.3, 3.4 or 3.5. If left empty all are tried.",
+ "@s3761f46313": {
+  "description": "fi: 3.3, 3.4 tai 3.5. Jos jätät tyhjäksi, kokeillaan kaikki.",
+  "x-where": "heatpumps/hp_providers.dart:434"
+ },
+ "s5b0069af62": "Your own free Tuya developer project (iot.tuya.com → Cloud → Create Cloud Project → Devices → Link App Account). Use the Tuya Smart / Smart Life app the unit was added to.",
+ "@s5b0069af62": {
+  "description": "fi: Oma ilmainen Tuya-kehittäjäprojekti (iot.tuya.com → Cloud → Create Cloud Project → Devices → Link App Account). Sovelluk",
+  "x-where": "heatpumps/hp_providers.dart:443"
+ },
+ "s96dbe019ed": "From the same project page. Not saved.",
+ "@s96dbe019ed": {
+  "description": "fi: Samalta projektin sivulta. Ei tallennu.",
+  "x-where": "heatpumps/hp_providers.dart:451"
+ },
+ "s1573c32bab": "The project''s data center, usually eu in Europe.",
+ "@s1573c32bab": {
+  "description": "fi: Projektin data center, Euroopassa yleensä eu.",
+  "x-where": "heatpumps/hp_providers.dart:452"
+ },
+ "s18e2dce10d": "The pump did not answer with the defaults (port 502, Modbus address 1, both Modbus TCP and transparent RTU). Check the converter''s IP and type below the converter''s port, the pump''s Modbus address (DIP switches of the hydraulic module) and mode if they differ. RS-485: A/B to the wired controller''s H1/H2 terminals, 9600 baud, 8 data bits, no parity, 1 stop bit.",
+ "@s18e2dce10d": {
+  "description": "fi: Pumppu ei vastannut oletusasetuksilla (portti 502, Modbus-osoite 1, sekä Modbus TCP että läpinäkyvä RTU). Tarkista muunt",
+  "x-where": "heatpumps/hp_providers.dart:545"
+ },
+ "s3d0c432194": "Inventor air-to-water heat pump (Modbus RS-485)",
+ "@s3d0c432194": {
+  "description": "fi: Inventor ilma-vesilämpöpumppu (Modbus RS-485)",
+  "x-where": "heatpumps/hp_providers.dart:546"
+ },
+ "s299d1b40fe": "Inventor air-to-water heat pumps (monoblock series and hydro modules). Control through the RS-485 port (H1/H2) of the pump''s wired controller with a cheap RS-485–Ethernet/Wi-Fi converter: mode, setpoint, hot water, water and outdoor temperature. Local, no cloud.",
+ "@s299d1b40fe": {
+  "description": "fi: Inventor-ilma-vesilämpöpumput (monoblock-sarjat ja hydromoduulit). Ohjaus pumpun langallisen ohjaimen RS-485-liitännän (",
+  "x-where": "heatpumps/hp_providers.dart:546"
+ },
+ "s158de9d34a": "IP of the RS-485–Modbus converter (e.g. Waveshare, Elfin EW11, USR-TCP232). It cannot be searched – type the address.",
+ "@s158de9d34a": {
+  "description": "fi: RS-485–Modbus-muuntimen IP-osoite (esim. Waveshare, Elfin EW11, USR-TCP232). Sitä ei löydy haulla – kirjoita osoite.",
+  "x-where": "heatpumps/hp_providers.dart:546"
+ },
+ "sbe411b8e53": "The converter''s Modbus port, usually 502 (some use 8899 or 23).",
+ "@sbe411b8e53": {
+  "description": "fi: Muuntimen Modbus-portti, yleensä 502 (joillain 8899 tai 23).",
+  "x-where": "heatpumps/hp_providers.dart:561"
+ },
+ "s1f7582a270": "The address set with the DIP switches of the hydraulic module, default 1.",
+ "@s1f7582a270": {
+  "description": "fi: Sama kuin hydromoduulin DIP-kytkimillä asetettu osoite, oletus 1.",
+  "x-where": "heatpumps/hp_providers.dart:570"
+ },
+ "sa51903d6fa": "Leave empty: both Modbus TCP and transparent RTU are tried. Set the converter to 9600 baud, 8 data bits, no parity, 1 stop bit.",
+ "@sa51903d6fa": {
+  "description": "fi: Jätä tyhjäksi: kokeillaan sekä Modbus TCP että läpinäkyvä RTU. Muuntimen asetus 9600 baud, 8 databittiä, ei pariteettia,",
+  "x-where": "heatpumps/hp_providers.dart:579"
  },
  "s4a91d07711": "Daikin (Wi-Fi, local)",
  "@s4a91d07711": {
   "description": "fi: Daikin (wifi, paikallinen)",
-  "x-where": "heatpumps/hp_providers.dart:235"
+  "x-where": "heatpumps/hp_providers.dart:620"
  },
  "s8e339844a9": "Daikin with a Wi-Fi adapter (BRP069, BRP072C, Airbase). Works without the cloud; found on the network.",
  "@s8e339844a9": {
   "description": "fi: Daikin-ilmalämpöpumppu wifi-ohjaimella (BRP069, BRP072C, Airbase). Toimii ilman pilveä, haetaan verkosta.",
-  "x-where": "heatpumps/hp_providers.dart:235"
+  "x-where": "heatpumps/hp_providers.dart:620"
  },
  "sdb368f83d9": "Newer BRP072C adapters: the 13-digit key is on the adapter sticker. Older ones need none.",
  "@sdb368f83d9": {
   "description": "fi: Uudemmissa BRP072C-ohjaimissa 13-numeroinen avain on ohjaimen tarrassa. Vanhemmat eivät tarvitse sitä.",
-  "x-where": "heatpumps/hp_providers.dart:246"
+  "x-where": "heatpumps/hp_providers.dart:631"
  },
  "s2089a88d1f": "Mitsubishi Heavy (Smart M-Air, local)",
  "@s2089a88d1f": {
   "description": "fi: Mitsubishi Heavy (Smart M-Air, paikallinen)",
-  "x-where": "heatpumps/hp_providers.dart:258"
+  "x-where": "heatpumps/hp_providers.dart:643"
  },
  "se19c918d2d": "MHI heat pump with the WF-RAC Wi-Fi module (Smart M-Air app). Local control, no cloud.",
  "@se19c918d2d": {
   "description": "fi: MHI-ilmalämpöpumppu WF-RAC-wifimoduulilla (Smart M-Air -sovellus). Paikallinen ohjaus ilman pilveä.",
-  "x-where": "heatpumps/hp_providers.dart:258"
+  "x-where": "heatpumps/hp_providers.dart:643"
  },
  "s050c379c67": "Mitsubishi Electric (MELCloud)",
  "@s050c379c67": {
   "description": "fi: Mitsubishi Electric (MELCloud)",
-  "x-where": "heatpumps/hp_providers.dart:270"
+  "x-where": "heatpumps/hp_providers.dart:655"
  },
  "sc24b0de42d": "Air-to-air and Ecodan air-to-water pumps through your MELCloud account, from anywhere.",
  "@sc24b0de42d": {
   "description": "fi: Ilmalämpöpumput ja Ecodan-ilma-vesipumput MELCloud-tilin kautta, mistä tahansa.",
-  "x-where": "heatpumps/hp_providers.dart:270"
+  "x-where": "heatpumps/hp_providers.dart:655"
  },
  "s41d69e699d": "Same as in the MELCloud app.",
  "@s41d69e699d": {
   "description": "fi: Sama kuin MELCloud-sovelluksessa.",
-  "x-where": "heatpumps/hp_providers.dart:280"
+  "x-where": "heatpumps/hp_providers.dart:665"
  },
  "s339fd47e4a": "Toshiba (Home AC Control)",
  "@s339fd47e4a": {
   "description": "fi: Toshiba (Home AC Control)",
-  "x-where": "heatpumps/hp_providers.dart:284"
+  "x-where": "heatpumps/hp_providers.dart:669"
  },
  "sa8405bf705": "Toshiba Wi-Fi heat pumps through your Toshiba Home AC Control account.",
  "@sa8405bf705": {
   "description": "fi: Toshiban wifi-ilmalämpöpumput Toshiba Home AC Control -tilin kautta.",
-  "x-where": "heatpumps/hp_providers.dart:284"
+  "x-where": "heatpumps/hp_providers.dart:669"
  },
  "s703279c03e": "Same as in the Toshiba app.",
  "@s703279c03e": {
   "description": "fi: Sama kuin Toshiba Home AC Control -sovelluksessa.",
-  "x-where": "heatpumps/hp_providers.dart:294"
+  "x-where": "heatpumps/hp_providers.dart:679"
  },
  "sf71a945a1d": "Samsung (SmartThings)",
  "@sf71a945a1d": {
   "description": "fi: Samsung (SmartThings)",
-  "x-where": "heatpumps/hp_providers.dart:298"
+  "x-where": "heatpumps/hp_providers.dart:683"
  },
  "se26b321a29": "Samsung Wi-Fi heat pumps through the official SmartThings API.",
  "@se26b321a29": {
   "description": "fi: Samsungin wifi-ilmalämpöpumput SmartThingsin virallisen rajapinnan kautta.",
-  "x-where": "heatpumps/hp_providers.dart:298"
+  "x-where": "heatpumps/hp_providers.dart:683"
  },
  "s550793ea4a": "Create one at account.smartthings.com/tokens with the Devices scopes. Note: Samsung limits new tokens to 24 hours.",
  "@s550793ea4a": {
   "description": "fi: Luo osoitteessa account.smartthings.com/tokens: valitse \"Devices\" (lue ja ohjaa). Huom: Samsung rajoittaa uudet tunnukse",
-  "x-where": "heatpumps/hp_providers.dart:308"
+  "x-where": "heatpumps/hp_providers.dart:693"
  },
  "sf7aed9c9e0": "Hitachi (airCloud Go)",
  "@sf7aed9c9e0": {
   "description": "fi: Hitachi (airCloud Go)",
-  "x-where": "heatpumps/hp_providers.dart:318"
+  "x-where": "heatpumps/hp_providers.dart:703"
  },
  "se2f1cb488d": "Hitachi heat pumps through your airCloud Go account.",
  "@se2f1cb488d": {
   "description": "fi: Hitachin ilmalämpöpumput airCloud Go -tilin kautta.",
-  "x-where": "heatpumps/hp_providers.dart:318"
+  "x-where": "heatpumps/hp_providers.dart:703"
  },
  "sb33215fa8b": "NIBE (myUplink cloud)",
  "@sb33215fa8b": {
   "description": "fi: NIBE (myUplink-pilvi)",
-  "x-where": "heatpumps/hp_providers.dart:333"
+  "x-where": "heatpumps/hp_providers.dart:718"
  },
  "s2e3665e309": "NIBE ground-source and exhaust-air pumps through the official myUplink API (also CTC, Høiax…).",
  "@s2e3665e309": {
   "description": "fi: NIBE-maalämpö- ja poistoilmapumput myUplinkin virallisen rajapinnan kautta (myös CTC, Høiax…).",
-  "x-where": "heatpumps/hp_providers.dart:333"
+  "x-where": "heatpumps/hp_providers.dart:718"
  },
  "sf2e635afad": "Sign in at dev.myuplink.com → Applications → Create. Copy the Client Identifier.",
  "@sf2e635afad": {
   "description": "fi: Kirjaudu dev.myuplink.com → Applications → Create (Callback URL voi olla esim. https://molaplan.com). Kopioi Client Iden",
-  "x-where": "heatpumps/hp_providers.dart:343"
+  "x-where": "heatpumps/hp_providers.dart:728"
  },
  "s9db9eb22f8": "From the same page.",
  "@s9db9eb22f8": {
   "description": "fi: Samalta sivulta.",
-  "x-where": "heatpumps/hp_providers.dart:350"
+  "x-where": "heatpumps/hp_providers.dart:735"
  },
  "s412987475c": "NIBE S-series (Modbus TCP, local)",
  "@s412987475c": {
   "description": "fi: NIBE S-sarja (Modbus TCP, paikallinen)",
-  "x-where": "heatpumps/hp_providers.dart:353"
+  "x-where": "heatpumps/hp_providers.dart:738"
  },
  "s3fc8f4ce0d": "S1155, S1255, SMO S40… Enable Modbus TCP in the pump menu 7.5.9. No cloud.",
  "@s3fc8f4ce0d": {
   "description": "fi: S1155, S1255, SMO S40… Ota Modbus TCP käyttöön pumpun valikosta 7.5.9. Ei pilveä.",
-  "x-where": "heatpumps/hp_providers.dart:353"
+  "x-where": "heatpumps/hp_providers.dart:738"
  },
  "s9b15cf6f63": "The pump''s IP: menu 3.1.13 (Connections) or your router''s device list.",
  "@s9b15cf6f63": {
   "description": "fi: Pumpun IP-osoite: valikko 3.1.13 (Yhteydet) tai reitittimen laitelista.",
-  "x-where": "heatpumps/hp_providers.dart:353"
+  "x-where": "heatpumps/hp_providers.dart:738"
  },
  "s29ed152759": "NIBE F-series + MODBUS 40 (local)",
  "@s29ed152759": {
   "description": "fi: NIBE F-sarja + MODBUS 40 (paikallinen)",
-  "x-where": "heatpumps/hp_providers.dart:365"
+  "x-where": "heatpumps/hp_providers.dart:750"
  },
  "sa723788d3c": "F-series / SMO with the MODBUS 40 accessory and an RS485→TCP gateway. Verify the registers.",
  "@sa723788d3c": {
   "description": "fi: F1145/F1155/F1255/F750/SMO + MODBUS 40 -lisävaruste ja RS485→TCP-muunnin. Tarkista rekisterit.",
-  "x-where": "heatpumps/hp_providers.dart:365"
+  "x-where": "heatpumps/hp_providers.dart:750"
  },
  "sb001c51087": "IP address of the RS485→Modbus TCP gateway.",
  "@sb001c51087": {
   "description": "fi: RS485→Modbus TCP -muuntimen IP-osoite.",
-  "x-where": "heatpumps/hp_providers.dart:365"
+  "x-where": "heatpumps/hp_providers.dart:750"
  },
  "sde4b0f4525": "Thermia (Modbus TCP, local)",
  "@sde4b0f4525": {
   "description": "fi: Thermia (Modbus TCP, paikallinen)",
-  "x-where": "heatpumps/hp_providers.dart:378"
+  "x-where": "heatpumps/hp_providers.dart:763"
  },
  "s9280f807a6": "Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis). Modbus TCP: Settings → BMS.",
  "@s9280f807a6": {
   "description": "fi: Thermia Atlas, Calibra, Diplomat Inverter, Mega (Genesis). Modbus TCP: Asetukset → BMS.",
-  "x-where": "heatpumps/hp_providers.dart:378"
+  "x-where": "heatpumps/hp_providers.dart:763"
  },
  "scab35073e8": "The pump''s IP address (display or router).",
  "@scab35073e8": {
   "description": "fi: Pumpun IP-osoite (näytöltä tai reitittimestä).",
-  "x-where": "heatpumps/hp_providers.dart:378"
+  "x-where": "heatpumps/hp_providers.dart:763"
  },
  "s6ad1f33b9a": "Bosch / Buderus heating (KM200 gateway, local)",
  "@s6ad1f33b9a": {
   "description": "fi: Bosch / Buderus lämmitys (KM200-yhdyskäytävä, paikallinen)",
-  "x-where": "heatpumps/hp_providers.dart:391"
+  "x-where": "heatpumps/hp_providers.dart:776"
  },
  "sd3415a288c": "Boilers and heat pumps with a Logamatic web KM50/KM100/KM200/KM300 gateway (Bosch, Buderus, Junkers, IVT). Local, no cloud, no fees.",
  "@sd3415a288c": {
   "description": "fi: Kaasu-/öljykattilat ja lämpöpumput, joissa on Logamatic web KM50/KM100/KM200/KM300 -yhdyskäytävä (Bosch, Buderus, Junker",
-  "x-where": "heatpumps/hp_providers.dart:391"
+  "x-where": "heatpumps/hp_providers.dart:776"
  },
  "s87ab70204b": "The KM gateway''s IP from your router''s device list (often named \"KM200\" or its serial).",
  "@s87ab70204b": {
   "description": "fi: KM-yhdyskäytävän IP-osoite reitittimen laitelistasta (nimi usein \"KM200\" tai sarjanumero).",
-  "x-where": "heatpumps/hp_providers.dart:391"
+  "x-where": "heatpumps/hp_providers.dart:776"
  },
  "s85e666e6d0": "On the gateway sticker or in the boiler menu: Info → Internet → Login data.",
  "@s85e666e6d0": {
   "description": "fi: Yhdyskäytävän tarrassa tai lämmityslaitteen valikossa: Info → Internet → Kirjautumistiedot.",
-  "x-where": "heatpumps/hp_providers.dart:405"
+  "x-where": "heatpumps/hp_providers.dart:790"
  },
  "s7af1e0507c": "The password you set in the maker''s app (MyDevice, EasyControl or the Buderus app).",
  "@s7af1e0507c": {
   "description": "fi: Salasana, jonka asetit valmistajan sovelluksessa (MyDevice, EasyControl tai Buderus-sovellus).",
-  "x-where": "heatpumps/hp_providers.dart:414"
+  "x-where": "heatpumps/hp_providers.dart:799"
  },
- "s5ddd513689": "Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – or any with an IR remote.",
- "@s5ddd513689": {
-  "description": "fi: Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – tai mikä tahansa IR-kaukosäätimellä.",
-  "x-where": "heatpumps/hp_providers.dart:428"
+ "s6b99f7c0e5": "Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia, Inventor – or any with an IR remote.",
+ "@s6b99f7c0e5": {
+  "description": "fi: Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia, Inventor – tai mikä tahansa IR-kaukosäätimellä.",
+  "x-where": "heatpumps/hp_providers.dart:817"
  },
  "s9622976fd3": "No units found",
  "@s9622976fd3": {
   "description": "fi: Ei laitteita",
-  "x-where": "heatpumps/hp_model.dart:151"
+  "x-where": "heatpumps/hp_model.dart:166"
  },
  "sa93876ac9d": "unit(s)",
  "@sa93876ac9d": {
   "description": "fi: laitetta",
-  "x-where": "heatpumps/hp_model.dart:153"
+  "x-where": "heatpumps/hp_model.dart:168"
  },
  "sf3d77f10b9": "too many requests",
  "@sf3d77f10b9": {
   "description": "fi: liian monta pyyntöä",
-  "x-where": "heatpumps/hp_model.dart:177"
+  "x-where": "heatpumps/hp_model.dart:192"
+ },
+ "s2c5094f4e4": "Mode \"{p0}\" is not available on this pump",
+ "@s2c5094f4e4": {
+  "description": "fi: Tila \"{p0}\" ei ole käytössä tässä pumpussa",
+  "x-where": "heatpumps/inventor_atw.dart:157",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
+ "sb6729e0077": "An air-to-water pump has no fan setting",
+ "@sb6729e0077": {
+  "description": "fi: Ilma-vesipumpulla ei ole puhallinasetusta",
+  "x-where": "heatpumps/inventor_atw.dart:162"
  },
  "s00c7f00681": "MELCloud: wrong e-mail or password",
  "@s00c7f00681": {
@@ -17177,250 +17342,345 @@
    }
   }
  },
+ "s642f888a5f": "This model has no automatic fan mode",
+ "@s642f888a5f": {
+  "description": "fi: Tämä malli ei tue puhaltimen automaattitilaa",
+  "x-where": "heatpumps/inventor_tuya.dart:117"
+ },
+ "s77890f9215": "This does not look like an air conditioner (no power data point)",
+ "@s77890f9215": {
+  "description": "fi: Tämä ei näytä ilmastointilaitteelta (ei virta-datapistettä)",
+  "x-where": "heatpumps/inventor_tuya.dart:158"
+ },
  "s4cfb5a36c9": "Daikin (local Wi-Fi)",
  "@s4cfb5a36c9": {
   "description": "fi: Daikin (paikallinen wifi)",
-  "x-where": "heatpumps/hp_driver.dart:30"
+  "x-where": "heatpumps/hp_driver.dart:34"
  },
  "se9b4e55058": "NIBE / Thermia (Modbus TCP, local)",
  "@se9b4e55058": {
   "description": "fi: NIBE / Thermia (Modbus TCP, paikallinen)",
-  "x-where": "heatpumps/hp_driver.dart:37"
+  "x-where": "heatpumps/hp_driver.dart:41"
  },
  "s16f7124e42": "Bosch / Buderus (KM200 gateway, local)",
  "@s16f7124e42": {
   "description": "fi: Bosch / Buderus (KM200-yhdyskäytävä, paikallinen)",
-  "x-where": "heatpumps/hp_driver.dart:38"
+  "x-where": "heatpumps/hp_driver.dart:42"
+ },
+ "sc207ec4ed9": "Inventor INVmate II / Midea LAN (local)",
+ "@sc207ec4ed9": {
+  "description": "fi: Inventor INVmate II / Midea LAN (paikallinen)",
+  "x-where": "heatpumps/hp_driver.dart:43"
+ },
+ "sd0746c8b58": "Inventor Control (Tuya, local)",
+ "@sd0746c8b58": {
+  "description": "fi: Inventor Control (Tuya, paikallinen)",
+  "x-where": "heatpumps/hp_driver.dart:44"
+ },
+ "s49df2050fd": "Inventor air-to-water (Modbus)",
+ "@s49df2050fd": {
+  "description": "fi: Inventor ilma-vesi (Modbus)",
+  "x-where": "heatpumps/hp_driver.dart:45"
  },
  "sddd6b1d42e": "Heat pump (built-in integration)",
  "@sddd6b1d42e": {
   "description": "fi: Lämpöpumppu (oma integraatio)",
-  "x-where": "heatpumps/hp_driver.dart:74"
+  "x-where": "heatpumps/hp_driver.dart:84"
  },
  "s34a3681441": "Maker and connection type. Local ones work without the cloud.",
  "@s34a3681441": {
   "description": "fi: Valmistaja ja yhteystapa. Paikalliset toimivat ilman pilveä.",
-  "x-where": "heatpumps/hp_driver.dart:80"
+  "x-where": "heatpumps/hp_driver.dart:90"
  },
  "s88688d2809": "Device IP (local brands)",
  "@s88688d2809": {
   "description": "fi: Laitteen IP-osoite (paikalliset)",
-  "x-where": "heatpumps/hp_driver.dart:91"
+  "x-where": "heatpumps/hp_driver.dart:114"
  },
  "s87e0a93996": "IP address of a local unit (from your router''s device list).",
  "@s87e0a93996": {
   "description": "fi: Paikallisen laitteen IP-osoite (reitittimen laitelistasta).",
-  "x-where": "heatpumps/hp_driver.dart:91"
+  "x-where": "heatpumps/hp_driver.dart:114"
  },
  "sc0bc183c3e": "E-mail (cloud)",
  "@sc0bc183c3e": {
   "description": "fi: Sähköposti (pilvi)",
-  "x-where": "heatpumps/hp_driver.dart:99"
+  "x-where": "heatpumps/hp_driver.dart:122"
  },
  "s0cc25259c7": "The e-mail you sign in to the maker''s app with (MELCloud, airCloud).",
  "@s0cc25259c7": {
   "description": "fi: Valmistajan sovelluksen kirjautumissähköposti (MELCloud, airCloud).",
-  "x-where": "heatpumps/hp_driver.dart:99"
+  "x-where": "heatpumps/hp_driver.dart:122"
  },
  "s25f561c483": "Username (Toshiba)",
  "@s25f561c483": {
   "description": "fi: Käyttäjätunnus (Toshiba)",
-  "x-where": "heatpumps/hp_driver.dart:107"
+  "x-where": "heatpumps/hp_driver.dart:130"
  },
  "s92e7ac8d3c": "Your Toshiba Home AC Control username.",
  "@s92e7ac8d3c": {
   "description": "fi: Toshiba Home AC Control -sovelluksen käyttäjätunnus.",
-  "x-where": "heatpumps/hp_driver.dart:107"
+  "x-where": "heatpumps/hp_driver.dart:130"
  },
  "safde071183": "The maker''s app password. Stored only on this device / in your own vault.",
  "@safde071183": {
   "description": "fi: Valmistajan sovelluksen salasana. Tallentuu vain tälle laitteelle / omaan holviisi.",
-  "x-where": "heatpumps/hp_driver.dart:115"
+  "x-where": "heatpumps/hp_driver.dart:138"
  },
- "s2862f25983": "Token (SmartThings)",
- "@s2862f25983": {
-  "description": "fi: Tunnus (SmartThings token)",
-  "x-where": "heatpumps/hp_driver.dart:124"
+ "sca7b0f8de6": "Token (SmartThings / Midea V3 token)",
+ "@sca7b0f8de6": {
+  "description": "fi: Tunnus (SmartThings token / Midea V3 token)",
+  "x-where": "heatpumps/hp_driver.dart:147"
  },
- "s23a4bc8253": "SmartThings personal access token (account.smartthings.com/tokens).",
- "@s23a4bc8253": {
-  "description": "fi: SmartThingsin henkilökohtainen token (account.smartthings.com/tokens).",
-  "x-where": "heatpumps/hp_driver.dart:124"
+ "s0f1eaf350b": "SmartThings personal access token (account.smartthings.com/tokens), or the Midea V3 device token (128 hex characters).",
+ "@s0f1eaf350b": {
+  "description": "fi: SmartThingsin henkilökohtainen token (account.smartthings.com/tokens), tai Midea V3 -laitteen token (128 heksamerkkiä).",
+  "x-where": "heatpumps/hp_driver.dart:147"
  },
- "sef37e5048d": "Key (Daikin BRP072C, sticker)",
- "@sef37e5048d": {
-  "description": "fi: Avain (Daikin BRP072C, tarrasta)",
-  "x-where": "heatpumps/hp_driver.dart:133"
+ "se263eae5bc": "Key (Daikin BRP072C sticker / Midea V3 key)",
+ "@se263eae5bc": {
+  "description": "fi: Avain (Daikin BRP072C tarrasta / Midea V3 key)",
+  "x-where": "heatpumps/hp_driver.dart:156"
  },
- "s1c339065e1": "The key printed on the BRP072C adapter''s sticker.",
- "@s1c339065e1": {
-  "description": "fi: BRP072C-ohjaimen tarrassa oleva avain (key).",
-  "x-where": "heatpumps/hp_driver.dart:133"
+ "s29ea4d7472": "The key printed on the BRP072C adapter''s sticker, or the Midea V3 device key (64 hex characters).",
+ "@s29ea4d7472": {
+  "description": "fi: BRP072C-ohjaimen tarrassa oleva avain (key), tai Midea V3 -laitteen key (64 heksamerkkiä).",
+  "x-where": "heatpumps/hp_driver.dart:156"
+ },
+ "s5e51da0364": "Device id (Midea / Tuya)",
+ "@s5e51da0364": {
+  "description": "fi: Laitteen tunnus (Midea / Tuya)",
+  "x-where": "heatpumps/hp_driver.dart:165"
+ },
+ "se463b24b80": "Midea: the numeric appliance id (found by the search). Tuya: the Device ID (from the Tuya app or developer project).",
+ "@se463b24b80": {
+  "description": "fi: Midea: laitteen numerotunnus (löytyy haussa). Tuya: Device ID (Tuya-sovelluksesta tai kehittäjäprojektista).",
+  "x-where": "heatpumps/hp_driver.dart:165"
+ },
+ "s21214b52f5": "Midea protocol (2 or 3)",
+ "@s21214b52f5": {
+  "description": "fi: Midea-protokolla (2 tai 3)",
+  "x-where": "heatpumps/hp_driver.dart:173"
+ },
+ "sfd9749e4c3": "2 = no credentials. 3 = newer firmware, needs a token and key.",
+ "@sfd9749e4c3": {
+  "description": "fi: 2 = ei tunnuksia. 3 = uudempi laiteohjelmisto, tarvitsee tokenin ja keyn.",
+  "x-where": "heatpumps/hp_driver.dart:173"
+ },
+ "s7b9cbd8fc1": "Local key (Tuya)",
+ "@s7b9cbd8fc1": {
+  "description": "fi: Paikallinen avain (Tuya local key)",
+  "x-where": "heatpumps/hp_driver.dart:182"
+ },
+ "sefa4614c28": "The Tuya device''s 16-character local key.",
+ "@sefa4614c28": {
+  "description": "fi: 16 merkin Tuya-laitteen paikallinen avain.",
+  "x-where": "heatpumps/hp_driver.dart:182"
+ },
+ "sb1d45b679e": "Tuya protocol version",
+ "@sb1d45b679e": {
+  "description": "fi: Tuya-protokollaversio",
+  "x-where": "heatpumps/hp_driver.dart:191"
+ },
+ "s2fb2791b81": "3.3, 3.4 or 3.5 (found by the search).",
+ "@s2fb2791b81": {
+  "description": "fi: 3.3, 3.4 tai 3.5 (löytyy haussa).",
+  "x-where": "heatpumps/hp_driver.dart:191"
+ },
+ "s284d1ca043": "Modbus framing (tcp / rtu)",
+ "@s284d1ca043": {
+  "description": "fi: Modbus-kehystys (tcp / rtu)",
+  "x-where": "heatpumps/hp_driver.dart:200"
+ },
+ "s8671c4de95": "The RS-485 gateway''s mode: Modbus TCP or transparent RTU.",
+ "@s8671c4de95": {
+  "description": "fi: RS-485-muuntimen tila: Modbus TCP tai läpinäkyvä RTU.",
+  "x-where": "heatpumps/hp_driver.dart:200"
+ },
+ "s797055e399": "RTU over TCP (transparent)",
+ "@s797055e399": {
+  "description": "fi: RTU TCP:n yli (läpinäkyvä)",
+  "x-where": "heatpumps/hp_driver.dart:206"
  },
  "se67e3e0eb9": "Client ID (myUplink)",
  "@se67e3e0eb9": {
   "description": "fi: Client ID (myUplink)",
-  "x-where": "heatpumps/hp_driver.dart:142"
+  "x-where": "heatpumps/hp_driver.dart:212"
  },
  "sc2d5225ae8": "Client ID of your own app at dev.myuplink.com.",
  "@sc2d5225ae8": {
   "description": "fi: Oman sovelluksen Client ID osoitteesta dev.myuplink.com.",
-  "x-where": "heatpumps/hp_driver.dart:142"
+  "x-where": "heatpumps/hp_driver.dart:212"
  },
  "sa165e50f99": "Client Secret (myUplink)",
  "@sa165e50f99": {
   "description": "fi: Client Secret (myUplink)",
-  "x-where": "heatpumps/hp_driver.dart:150"
+  "x-where": "heatpumps/hp_driver.dart:220"
  },
  "s332f9bc1a1": "Client Secret of your own app at dev.myuplink.com.",
  "@s332f9bc1a1": {
   "description": "fi: Oman sovelluksen Client Secret osoitteesta dev.myuplink.com.",
-  "x-where": "heatpumps/hp_driver.dart:150"
+  "x-where": "heatpumps/hp_driver.dart:220"
  },
  "s911c662d27": "Gateway password (KM200)",
  "@s911c662d27": {
   "description": "fi: Yhdyskäytävän salasana (KM200)",
-  "x-where": "heatpumps/hp_driver.dart:159"
+  "x-where": "heatpumps/hp_driver.dart:229"
  },
  "s52d4fcbe67": "On the Bosch/Buderus KM gateway sticker or in the boiler menu (Info → Internet → Login data).",
  "@s52d4fcbe67": {
   "description": "fi: Bosch/Buderus KM-yhdyskäytävän tarrassa tai lämmityslaitteen valikossa (Info → Internet → Kirjautumistiedot).",
-  "x-where": "heatpumps/hp_driver.dart:159"
+  "x-where": "heatpumps/hp_driver.dart:229"
  },
  "se7829f1ac5": "Private password (KM200)",
  "@se7829f1ac5": {
   "description": "fi: Oma salasana (KM200)",
-  "x-where": "heatpumps/hp_driver.dart:168"
+  "x-where": "heatpumps/hp_driver.dart:238"
  },
  "sc6b9b9dafe": "The password you set in the maker''s app (MyDevice / EasyControl / Buderus).",
  "@sc6b9b9dafe": {
   "description": "fi: Salasana, jonka asetit valmistajan sovelluksessa (MyDevice / EasyControl / Buderus).",
-  "x-where": "heatpumps/hp_driver.dart:168"
+  "x-where": "heatpumps/hp_driver.dart:238"
  },
  "s26eefc92ad": "Salt (KM200, only if the maker uses its own)",
  "@s26eefc92ad": {
   "description": "fi: Salaus-suola (KM200, vain jos valmistaja käyttää omaa)",
-  "x-where": "heatpumps/hp_driver.dart:177"
+  "x-where": "heatpumps/hp_driver.dart:247"
  },
  "s333668bcad": "Leave empty to use Bosch/Buderus'' published default.",
  "@s333668bcad": {
   "description": "fi: Jätä tyhjäksi: käytetään Boschin/Buderuksen julkaistua oletusta.",
-  "x-where": "heatpumps/hp_driver.dart:177"
+  "x-where": "heatpumps/hp_driver.dart:247"
  },
  "sd1d4b22fc6": "Register map (Modbus)",
  "@sd1d4b22fc6": {
   "description": "fi: Rekisterikartta (Modbus)",
-  "x-where": "heatpumps/hp_driver.dart:185"
+  "x-where": "heatpumps/hp_driver.dart:255"
  },
  "s5a9d485e7f": "The pump series. ''Imported register list'' = the pump''s own CSV export.",
  "@s5a9d485e7f": {
   "description": "fi: Pumpun mallisarja. 'Tuotu rekisterilista' = pumpun oma CSV-vienti.",
-  "x-where": "heatpumps/hp_driver.dart:185"
+  "x-where": "heatpumps/hp_driver.dart:255"
  },
  "s7dc3b152a8": "NIBE S-series",
  "@s7dc3b152a8": {
   "description": "fi: NIBE S-sarja",
-  "x-where": "heatpumps/hp_driver.dart:192"
+  "x-where": "heatpumps/hp_driver.dart:262"
  },
  "sad9fd728f9": "NIBE F-series + MODBUS 40",
  "@sad9fd728f9": {
   "description": "fi: NIBE F-sarja + MODBUS 40",
-  "x-where": "heatpumps/hp_driver.dart:193"
+  "x-where": "heatpumps/hp_driver.dart:263"
  },
  "seba6d1ba70": "Thermia Genesis",
  "@seba6d1ba70": {
   "description": "fi: Thermia Genesis",
-  "x-where": "heatpumps/hp_driver.dart:194"
+  "x-where": "heatpumps/hp_driver.dart:264"
  },
  "sfdc0bbf134": "Imported register list",
  "@sfdc0bbf134": {
   "description": "fi: Tuotu rekisterilista",
-  "x-where": "heatpumps/hp_driver.dart:195"
+  "x-where": "heatpumps/hp_driver.dart:265"
  },
  "scd35ffb8e9": "Usually the default (Modbus 502, MHI 51443).",
  "@scd35ffb8e9": {
   "description": "fi: Yleensä oletus (Modbus 502, MHI 51443).",
-  "x-where": "heatpumps/hp_driver.dart:202"
+  "x-where": "heatpumps/hp_driver.dart:272"
  },
  "sab25ff8075": "Modbus unit address, usually 1.",
  "@sab25ff8075": {
   "description": "fi: Modbus-laitteen osoite, yleensä 1.",
-  "x-where": "heatpumps/hp_driver.dart:211"
+  "x-where": "heatpumps/hp_driver.dart:281"
  },
  "sb064bec4c8": "Server URL (testing only)",
  "@sb064bec4c8": {
   "description": "fi: Palvelimen osoite (vain testaukseen)",
-  "x-where": "heatpumps/hp_driver.dart:221"
+  "x-where": "heatpumps/hp_driver.dart:291"
  },
  "s67b2ac9328": "Testing only: replaces the maker''s server address.",
  "@s67b2ac9328": {
   "description": "fi: Vain testaukseen: korvaa valmistajan palvelimen osoitteen.",
-  "x-where": "heatpumps/hp_driver.dart:221"
+  "x-where": "heatpumps/hp_driver.dart:291"
  },
  "sabab3f2fae": "What to read",
  "@sabab3f2fae": {
   "description": "fi: Mitä luetaan",
-  "x-where": "heatpumps/hp_driver.dart:231"
+  "x-where": "heatpumps/hp_driver.dart:301"
  },
  "sf5e949d20c": "Full state (heat pump tile) or one reading.",
  "@sf5e949d20c": {
   "description": "fi: Koko tila (lämpöpumppuruutu) tai yksi lukema.",
-  "x-where": "heatpumps/hp_driver.dart:231"
+  "x-where": "heatpumps/hp_driver.dart:301"
  },
  "s46ce82ef9c": "Full state",
  "@s46ce82ef9c": {
   "description": "fi: Koko tila",
-  "x-where": "heatpumps/hp_driver.dart:237"
+  "x-where": "heatpumps/hp_driver.dart:307"
  },
  "s8cbd66456f": "One reading",
  "@s8cbd66456f": {
   "description": "fi: Yksi lukema",
-  "x-where": "heatpumps/hp_driver.dart:237"
+  "x-where": "heatpumps/hp_driver.dart:307"
  },
  "s6d1827b58e": "Unit id",
  "@s6d1827b58e": {
   "description": "fi: Sisäyksikön tunnus",
-  "x-where": "heatpumps/hp_driver.dart:242"
+  "x-where": "heatpumps/hp_driver.dart:312"
  },
  "s89308ddc6d": "Indoor unit id; ''main'' for single-unit devices.",
  "@s89308ddc6d": {
   "description": "fi: Sisäyksikön tunnus; yhden laitteen tileillä 'main'.",
-  "x-where": "heatpumps/hp_driver.dart:242"
+  "x-where": "heatpumps/hp_driver.dart:312"
  },
  "sa643668bec": "Reading (current, target, outdoor, power…)",
  "@sa643668bec": {
   "description": "fi: Lukema (current, target, outdoor, power…)",
-  "x-where": "heatpumps/hp_driver.dart:250"
+  "x-where": "heatpumps/hp_driver.dart:320"
  },
  "s02d24152f0": "Which reading: current, target, outdoor, power, supply, hot_water…",
  "@s02d24152f0": {
   "description": "fi: Mikä lukema: current, target, outdoor, power, supply, hot_water…",
-  "x-where": "heatpumps/hp_driver.dart:250"
+  "x-where": "heatpumps/hp_driver.dart:320"
  },
  "se16e293d6b": "Set",
  "@se16e293d6b": {
   "description": "fi: Aseta",
-  "x-where": "heatpumps/hp_driver.dart:266"
+  "x-where": "heatpumps/hp_driver.dart:336"
  },
  "s155de09d38": "What to set",
  "@s155de09d38": {
   "description": "fi: Mitä asetetaan",
-  "x-where": "heatpumps/hp_driver.dart:279"
+  "x-where": "heatpumps/hp_driver.dart:349"
  },
  "s94ecb845c8": "Setpoint, power, mode or fan.",
  "@s94ecb845c8": {
   "description": "fi: Asetusarvo, virta, tila tai puhallin.",
-  "x-where": "heatpumps/hp_driver.dart:279"
+  "x-where": "heatpumps/hp_driver.dart:349"
+ },
+ "s6ff46b02d2": "Other setting (key)",
+ "@s6ff46b02d2": {
+  "description": "fi: Muu asetus (key)",
+  "x-where": "heatpumps/hp_driver.dart:356"
  },
  "sba2eb6d9b9": "Setpoint",
  "@sba2eb6d9b9": {
   "description": "fi: Asetusarvo",
-  "x-where": "heatpumps/hp_driver.dart:286"
+  "x-where": "heatpumps/hp_driver.dart:357"
+ },
+ "sc8c47b547a": "Setting key (only \"Other setting\")",
+ "@sc8c47b547a": {
+  "description": "fi: Asetuksen tunnus (vain \"Muu asetus\")",
+  "x-where": "heatpumps/hp_driver.dart:366"
+ },
+ "s679e5f90c2": "E.g. dhw_set (hot water setpoint) or dhw_power (hot water heating on/off).",
+ "@s679e5f90c2": {
+  "description": "fi: Esim. dhw_set (käyttöveden lämpötila) tai dhw_power (käyttöveden lämmitys päälle/pois).",
+  "x-where": "heatpumps/hp_driver.dart:366"
  },
  "s6478b264c0": "Heat pump \"{p0}\" is no longer in the account",
  "@s6478b264c0": {
   "description": "fi: Lämpöpumppua \"{p0}\" ei löydy enää tililtä",
-  "x-where": "heatpumps/hp_driver.dart:319",
+  "x-where": "heatpumps/hp_driver.dart:397",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17430,97 +17690,127 @@
  "s4937d259b8": "Setpoint missing",
  "@s4937d259b8": {
   "description": "fi: Asetusarvo puuttuu",
-  "x-where": "heatpumps/hp_driver.dart:363"
+  "x-where": "heatpumps/hp_driver.dart:453"
+ },
+ "sbd33d78695": "Setting key or value missing",
+ "@sbd33d78695": {
+  "description": "fi: Asetuksen tunnus tai arvo puuttuu",
+  "x-where": "heatpumps/hp_driver.dart:465"
  },
  "s10f42a9a20": "curve offset",
  "@s10f42a9a20": {
   "description": "fi: käyrän siirto",
-  "x-where": "heatpumps/hp_driver.dart:444"
+  "x-where": "heatpumps/hp_driver.dart:539"
+ },
+ "s3795df7c35": "Hot water setpoint",
+ "@s3795df7c35": {
+  "description": "fi: Käyttöveden tavoite",
+  "x-where": "heatpumps/hp_driver.dart:556"
+ },
+ "sf5a30e3b51": "Water setpoint",
+ "@sf5a30e3b51": {
+  "description": "fi: Menoveden tavoite",
+  "x-where": "heatpumps/hp_driver.dart:557"
+ },
+ "s8b6dbf3df6": "Hot water on",
+ "@s8b6dbf3df6": {
+  "description": "fi: Käyttövesi päällä",
+  "x-where": "heatpumps/hp_driver.dart:580"
  },
  "s620c04d73e": "Supply",
  "@s620c04d73e": {
   "description": "fi: Menovesi",
-  "x-where": "heatpumps/hp_driver.dart:461"
+  "x-where": "heatpumps/hp_driver.dart:599"
  },
  "s922f77d2f1": "Return",
  "@s922f77d2f1": {
   "description": "fi: Paluuvesi",
-  "x-where": "heatpumps/hp_driver.dart:462"
+  "x-where": "heatpumps/hp_driver.dart:600"
  },
  "sbfee72daca": "Hot water",
  "@sbfee72daca": {
   "description": "fi: Käyttövesi",
-  "x-where": "heatpumps/hp_driver.dart:463"
+  "x-where": "heatpumps/hp_driver.dart:601"
  },
  "s0be9e35521": "Brine in",
  "@s0be9e35521": {
   "description": "fi: Keruuliuos sisään",
-  "x-where": "heatpumps/hp_driver.dart:464"
+  "x-where": "heatpumps/hp_driver.dart:602"
  },
  "s3a0d796501": "Brine out",
  "@s3a0d796501": {
   "description": "fi: Keruuliuos ulos",
-  "x-where": "heatpumps/hp_driver.dart:465"
+  "x-where": "heatpumps/hp_driver.dart:603"
  },
  "s23bbe9b4ed": "Degree minutes",
  "@s23bbe9b4ed": {
   "description": "fi: Astetminuutit",
-  "x-where": "heatpumps/hp_driver.dart:466"
+  "x-where": "heatpumps/hp_driver.dart:604"
  },
  "s3ca74f3ef8": "Compressor",
  "@s3ca74f3ef8": {
   "description": "fi: Kompressori",
-  "x-where": "heatpumps/hp_driver.dart:467"
+  "x-where": "heatpumps/hp_driver.dart:605"
  },
  "s79f91561d9": "Burner modulation",
  "@s79f91561d9": {
   "description": "fi: Polttimen teho",
-  "x-where": "heatpumps/hp_driver.dart:469"
+  "x-where": "heatpumps/hp_driver.dart:607"
+ },
+ "s447ce92cd0": "Water flow",
+ "@s447ce92cd0": {
+  "description": "fi: Vesivirtaus",
+  "x-where": "heatpumps/hp_driver.dart:608"
+ },
+ "s54fd87bce8": "Heating capacity",
+ "@s54fd87bce8": {
+  "description": "fi: Lämpöteho",
+  "x-where": "heatpumps/hp_driver.dart:609"
  },
  "sc272460629": "Enter the gateway password and your own password",
  "@sc272460629": {
   "description": "fi: Anna yhdyskäytävän salasana ja oma salasana",
-  "x-where": "heatpumps/km200.dart:94"
+  "x-where": "heatpumps/km200.dart:96"
  },
  "s684b127b9d": "The heating gateway answered but the data could not be decrypted – check both passwords.",
  "@s684b127b9d": {
   "description": "fi: Lämmityslaite vastasi, mutta tietoja ei saatu auki – tarkista molemmat salasanat.",
-  "x-where": "heatpumps/km200.dart:105"
+  "x-where": "heatpumps/km200.dart:108"
  },
  "sbe369d8548": "The heating gateway does not allow changing this value",
  "@sbe369d8548": {
   "description": "fi: Lämmityslaite ei salli tämän arvon muuttamista",
-  "x-where": "heatpumps/km200.dart:118"
+  "x-where": "heatpumps/km200.dart:126"
  },
  "s1222da1433": "Heating circuit",
  "@s1222da1433": {
   "description": "fi: Lämmityspiiri",
-  "x-where": "heatpumps/km200.dart:150"
+  "x-where": "heatpumps/km200.dart:159"
  },
  "s131d0eb266": "/system/sensors/temperatures/supply_t1",
  "@s131d0eb266": {
   "description": "fi: supply",
-  "x-where": "heatpumps/km200.dart:171"
+  "x-where": "heatpumps/km200.dart:180"
  },
  "sac20961d10": "/system/sensors/temperatures/return",
  "@sac20961d10": {
   "description": "fi: return",
-  "x-where": "heatpumps/km200.dart:172"
+  "x-where": "heatpumps/km200.dart:181"
  },
  "s2a35dc0822": "/dhwCircuits/dhw1/actualTemp",
  "@s2a35dc0822": {
   "description": "fi: hot_water",
-  "x-where": "heatpumps/km200.dart:173"
+  "x-where": "heatpumps/km200.dart:182"
  },
  "s85a3e678f3": "/heatSources/actualModulation",
  "@s85a3e678f3": {
   "description": "fi: modulation",
-  "x-where": "heatpumps/km200.dart:174"
+  "x-where": "heatpumps/km200.dart:183"
  },
  "s4159d585e2": "heating circuit(s)",
  "@s4159d585e2": {
   "description": "fi: lämmityspiiriä",
-  "x-where": "heatpumps/km200.dart:216"
+  "x-where": "heatpumps/km200.dart:225"
  },
  "s31ec8d716e": "The unit''s account table is full. Remove an old phone in the Smart M-Air app and try again.",
  "@s31ec8d716e": {
@@ -17620,7 +17910,7 @@
  "s65320ede20": "Calm",
  "@s65320ede20": {
   "description": "fi: Rauhallinen",
-  "x-where": "state/home_launcher.dart:180"
+  "x-where": "state/home_launcher.dart:179"
  },
  "s7e5f6a29e3": "Good night",
  "@s7e5f6a29e3": {
@@ -17945,92 +18235,92 @@
  "s29c5b59ddb": "Bosch Smart Home Controller",
  "@s29c5b59ddb": {
   "description": "fi: Bosch Smart Home -ohjain",
-  "x-where": "devices/bosch_shc.dart:93"
+  "x-where": "devices/bosch_shc.dart:96"
  },
  "sfb05679ced": "Controller IP address",
  "@sfb05679ced": {
   "description": "fi: Ohjaimen IP-osoite",
-  "x-where": "devices/bosch_shc.dart:99"
+  "x-where": "devices/bosch_shc.dart:102"
  },
  "sd65da878fe": "The controller''s address (app: More → System → Controller, or your router''s device list).",
  "@sd65da878fe": {
   "description": "fi: Bosch Smart Home -ohjaimen osoite (sovellus: Lisää → Järjestelmä → Ohjain, tai reitittimen laitelista).",
-  "x-where": "devices/bosch_shc.dart:99"
+  "x-where": "devices/bosch_shc.dart:102"
  },
  "s6f7b5bb729": "Client certificate (PEM)",
  "@s6f7b5bb729": {
   "description": "fi: Asiakasvarmenne (PEM)",
-  "x-where": "devices/bosch_shc.dart:108"
+  "x-where": "devices/bosch_shc.dart:112"
  },
  "sd21135f561": "Created by Molaplan when pairing. Do not change.",
  "@sd21135f561": {
   "description": "fi: Molaplan luo tämän parituksessa. Älä muuta.",
-  "x-where": "devices/bosch_shc.dart:108"
+  "x-where": "devices/bosch_shc.dart:112"
  },
  "s2bc685129f": "Client key (PEM)",
  "@s2bc685129f": {
   "description": "fi: Asiakasavain (PEM)",
-  "x-where": "devices/bosch_shc.dart:117"
+  "x-where": "devices/bosch_shc.dart:121"
  },
  "sd5bfa709a3": "Controller certificate fingerprint",
  "@sd5bfa709a3": {
   "description": "fi: Ohjaimen varmenteen sormenjälki",
-  "x-where": "devices/bosch_shc.dart:126"
+  "x-where": "devices/bosch_shc.dart:130"
  },
  "s8b133a2da5": "Saved when pairing: Molaplan only talks to this controller. Empty = accept the first one.",
  "@s8b133a2da5": {
   "description": "fi: Tallennettu parituksessa: Molaplan puhuu vain tälle ohjaimelle. Tyhjä = hyväksy ensimmäinen.",
-  "x-where": "devices/bosch_shc.dart:126"
+  "x-where": "devices/bosch_shc.dart:130"
  },
  "s46f9aaf504": "The Bosch device id.",
  "@s46f9aaf504": {
   "description": "fi: Bosch-laitteen tunnus (id).",
-  "x-where": "devices/bosch_shc.dart:136"
+  "x-where": "devices/bosch_shc.dart:140"
  },
  "s84d11d45ce": "E.g. TemperatureLevel, ShutterContact, PowerSwitch.",
  "@s84d11d45ce": {
   "description": "fi: Esim. TemperatureLevel, ShutterContact, PowerSwitch.",
-  "x-where": "devices/bosch_shc.dart:144"
+  "x-where": "devices/bosch_shc.dart:148"
  },
  "s4dabf0e462": "Field",
  "@s4dabf0e462": {
   "description": "fi: Kenttä",
-  "x-where": "devices/bosch_shc.dart:152"
+  "x-where": "devices/bosch_shc.dart:156"
  },
  "s9a1eb4b849": "A field of the service state, e.g. temperature, value, switchState.",
  "@s9a1eb4b849": {
   "description": "fi: Kenttä palvelun tilasta, esim. temperature, value, switchState.",
-  "x-where": "devices/bosch_shc.dart:152"
+  "x-where": "devices/bosch_shc.dart:156"
  },
  "se83f02e6bd": "Path (other)",
  "@se83f02e6bd": {
   "description": "fi: Polku (muut)",
-  "x-where": "devices/bosch_shc.dart:160"
+  "x-where": "devices/bosch_shc.dart:164"
  },
  "s3a985d4cc3": "Another path to read, e.g. /intrusion/states/system.",
  "@s3a985d4cc3": {
   "description": "fi: Muu luettava polku, esim. /intrusion/states/system.",
-  "x-where": "devices/bosch_shc.dart:160"
+  "x-where": "devices/bosch_shc.dart:164"
  },
  "s0d34dfcd38": "PUT to change a state, POST for actions.",
  "@s0d34dfcd38": {
   "description": "fi: PUT tilan muuttamiseen, POST toimintoihin.",
-  "x-where": "devices/bosch_shc.dart:170"
+  "x-where": "devices/bosch_shc.dart:174"
  },
  "sf8c4f6beb9": "Path after /smarthome.",
  "@sf8c4f6beb9": {
   "description": "fi: Polku /smarthome-osoitteen jälkeen.",
-  "x-where": "devices/bosch_shc.dart:180"
+  "x-where": "devices/bosch_shc.dart:184"
  },
  "s5632684130": "'JSON, e.g. {\"@type\":\"powerSwitchState\",\"switchState\":\"ON\"}.'",
  "@s5632684130": {
   "description": "fi: JSON, esim. {\"@type\":\"powerSwitchState\",\"switchState\":\"ON\"}.",
-  "x-where": "devices/bosch_shc.dart:188"
+  "x-where": "devices/bosch_shc.dart:192"
  },
  "s3addc3df37": "The Bosch controller refused the connection (not paired or a different controller) – add it again. ({p0})",
  "@s3addc3df37": {
   "description": "fi: Bosch-ohjain ei hyväksynyt yhteyttä (paritus puuttuu tai ohjain vaihtui) – lisää ohjain uudelleen. ({p0})",
-  "x-where": "devices/bosch_shc.dart:242",
+  "x-where": "devices/bosch_shc.dart:249",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18040,7 +18330,7 @@
  "sc76c98702f": "✓ The Bosch Smart Home Controller answered: {p0} devices. No commands were sent.",
  "@sc76c98702f": {
   "description": "fi: ✓ Bosch Smart Home -ohjain vastasi: {p0} laitetta. Komentoja ei lähetetty.",
-  "x-where": "devices/bosch_shc.dart:528",
+  "x-where": "devices/bosch_shc.dart:535",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18050,182 +18340,182 @@
  "sd9b6de0a6a": "Other",
  "@sd9b6de0a6a": {
   "description": "fi: Muut",
-  "x-where": "devices/bosch_shc.dart:584"
+  "x-where": "devices/bosch_shc.dart:591"
  },
  "s4dbb677293": "unreachable",
  "@s4dbb677293": {
   "description": "fi: ei tavoitettavissa",
-  "x-where": "devices/bosch_shc.dart:589"
+  "x-where": "devices/bosch_shc.dart:597"
  },
  "sd0368ed590": "target",
  "@sd0368ed590": {
   "description": "fi: tavoitelämpö",
-  "x-where": "devices/bosch_shc.dart:610"
+  "x-where": "devices/bosch_shc.dart:628"
  },
  "sec17dd81e8": "valve",
  "@sec17dd81e8": {
   "description": "fi: venttiili",
-  "x-where": "devices/bosch_shc.dart:612"
+  "x-where": "devices/bosch_shc.dart:631"
  },
  "s0b2f7d7c80": "open",
  "@s0b2f7d7c80": {
   "description": "fi: auki",
-  "x-where": "devices/bosch_shc.dart:614"
+  "x-where": "devices/bosch_shc.dart:633"
  },
  "s7009587b85": "closed",
  "@s7009587b85": {
   "description": "fi: kiinni",
-  "x-where": "devices/bosch_shc.dart:614"
+  "x-where": "devices/bosch_shc.dart:633"
  },
  "saf40fb40b3": "smoke detector",
  "@saf40fb40b3": {
   "description": "fi: palovaroitin",
-  "x-where": "devices/bosch_shc.dart:616"
+  "x-where": "devices/bosch_shc.dart:635"
  },
  "s4d85116fcb": "test",
  "@s4d85116fcb": {
   "description": "fi: testi",
-  "x-where": "devices/bosch_shc.dart:618"
+  "x-where": "devices/bosch_shc.dart:637"
  },
  "s54345410a1": "test alarm",
  "@s54345410a1": {
   "description": "fi: testaa hälytin",
-  "x-where": "devices/bosch_shc.dart:618"
+  "x-where": "devices/bosch_shc.dart:637"
  },
  "s67c7f22d99": "air quality",
  "@s67c7f22d99": {
   "description": "fi: ilmanlaatu",
-  "x-where": "devices/bosch_shc.dart:620"
+  "x-where": "devices/bosch_shc.dart:639"
  },
  "s4c3bb5ea0a": "motion detector",
  "@s4c3bb5ea0a": {
   "description": "fi: liiketunnistin",
-  "x-where": "devices/bosch_shc.dart:630"
+  "x-where": "devices/bosch_shc.dart:649"
  },
  "sa6a56fa019": "water leak",
  "@sa6a56fa019": {
   "description": "fi: vesivuoto",
-  "x-where": "devices/bosch_shc.dart:632"
+  "x-where": "devices/bosch_shc.dart:651"
  },
  "s7c51d00219": "camera on",
  "@s7c51d00219": {
   "description": "fi: kamera päällä",
-  "x-where": "devices/bosch_shc.dart:634"
+  "x-where": "devices/bosch_shc.dart:656"
  },
  "s51cd662d6c": "privacy mode",
  "@s51cd662d6c": {
   "description": "fi: yksityisyystila",
-  "x-where": "devices/bosch_shc.dart:634"
+  "x-where": "devices/bosch_shc.dart:656"
  },
  "scdc860be9e": "notifications",
  "@scdc860be9e": {
   "description": "fi: ilmoitukset",
-  "x-where": "devices/bosch_shc.dart:636"
+  "x-where": "devices/bosch_shc.dart:659"
  },
  "s45c8904016": "light",
  "@s45c8904016": {
   "description": "fi: valo",
-  "x-where": "devices/bosch_shc.dart:638"
+  "x-where": "devices/bosch_shc.dart:661"
  },
  "s416ac1459c": "Intrusion alarm",
  "@s416ac1459c": {
   "description": "fi: Murtohälytin",
-  "x-where": "devices/bosch_shc.dart:648"
+  "x-where": "devices/bosch_shc.dart:671"
  },
  "s607339c984": "Security",
  "@s607339c984": {
   "description": "fi: Turvallisuus",
-  "x-where": "devices/bosch_shc.dart:650"
+  "x-where": "devices/bosch_shc.dart:673"
  },
  "sd1d17eca81": "state + arm/disarm + mute",
  "@sd1d17eca81": {
   "description": "fi: tila + valvonta päälle/pois + kuittaus",
-  "x-where": "devices/bosch_shc.dart:651"
+  "x-where": "devices/bosch_shc.dart:674"
  },
  "s499d3aa6f1": "Water alarm",
  "@s499d3aa6f1": {
   "description": "fi: Vesivuotohälytys",
-  "x-where": "devices/bosch_shc.dart:659"
+  "x-where": "devices/bosch_shc.dart:682"
  },
  "se57c2c4920": "whole system + mute",
  "@se57c2c4920": {
   "description": "fi: koko järjestelmä + kuittaus",
-  "x-where": "devices/bosch_shc.dart:663"
+  "x-where": "devices/bosch_shc.dart:686"
  },
  "s2eb00b7c28": "Scenarios",
  "@s2eb00b7c28": {
   "description": "fi: Skenaariot",
-  "x-where": "devices/bosch_shc.dart:674"
+  "x-where": "devices/bosch_shc.dart:697"
  },
  "s38df0b3b2b": "Mute alarm",
  "@s38df0b3b2b": {
   "description": "fi: Kuittaa hälytys",
-  "x-where": "devices/bosch_shc.dart:722"
+  "x-where": "devices/bosch_shc.dart:751"
  },
  "s1ff3dea39b": "mute",
  "@s1ff3dea39b": {
   "description": "fi: kuittaa",
-  "x-where": "devices/bosch_shc.dart:744"
+  "x-where": "devices/bosch_shc.dart:773"
  },
  "s373ab1c97c": "GOOD=Good;MEDIUM=Medium;BAD=Bad",
  "@s373ab1c97c": {
   "description": "fi: GOOD=Hyvä;MEDIUM=Kohtalainen;BAD=Huono",
-  "x-where": "devices/bosch_shc.dart:830"
+  "x-where": "devices/bosch_shc.dart:910"
  },
  "s129317999a": "purity",
  "@s129317999a": {
   "description": "fi: ilman puhtaus",
-  "x-where": "devices/bosch_shc.dart:835"
+  "x-where": "devices/bosch_shc.dart:935"
  },
  "sd0807cf61e": "position (100 = open)",
  "@sd0807cf61e": {
   "description": "fi: asento (100 = auki)",
-  "x-where": "devices/bosch_shc.dart:857"
+  "x-where": "devices/bosch_shc.dart:975"
  },
  "sdb34e99ef6": "open",
  "@sdb34e99ef6": {
   "description": "fi: avaa",
-  "x-where": "devices/bosch_shc.dart:869"
+  "x-where": "devices/bosch_shc.dart:989"
  },
  "s7fc017b0f0": "close",
  "@s7fc017b0f0": {
   "description": "fi: sulje",
-  "x-where": "devices/bosch_shc.dart:870"
+  "x-where": "devices/bosch_shc.dart:996"
  },
  "sb02c7ee226": "stop",
  "@sb02c7ee226": {
   "description": "fi: pysäytä",
-  "x-where": "devices/bosch_shc.dart:871"
+  "x-where": "devices/bosch_shc.dart:1003"
  },
  "sefdd3f7ade": "Presence simulation",
  "@sefdd3f7ade": {
   "description": "fi: Läsnäolosimulaatio",
-  "x-where": "devices/bosch_shc.dart:923"
+  "x-where": "devices/bosch_shc.dart:1076"
  },
  "s16bc9ff328": "Bosch Smart Home",
  "@s16bc9ff328": {
   "description": "fi: Bosch Smart Home",
-  "x-where": "devices/bosch_shc.dart:938"
+  "x-where": "devices/bosch_shc.dart:1091"
  },
  "sde61b8a8a4": "Bosch Smart Home Controller (I or II): thermostats, radiator valves, window/door contacts, smoke detectors, plugs, lights, shutters, motion detectors, cameras and the intrusion alarm. Local, no cloud.",
  "@sde61b8a8a4": {
   "description": "fi: Bosch Smart Home -ohjain (I tai II): termostaatit, patteriventtiilit, ikkuna-/ovianturit, palovaroittimet, pistorasiat, ",
-  "x-where": "devices/bosch_shc.dart:938"
+  "x-where": "devices/bosch_shc.dart:1091"
  },
  "s3b276dcad6": "In the Bosch Smart Home app: More → System → Smart Home Controller → Network. Or your router''s device list (\"shc…\").",
  "@s3b276dcad6": {
   "description": "fi: Bosch Smart Home -sovelluksessa: Lisää → Järjestelmä → Smart Home -ohjain → Verkkotiedot. Tai reitittimen laitelistasta ",
-  "x-where": "devices/bosch_shc.dart:938"
+  "x-where": "devices/bosch_shc.dart:1091"
  },
  "sc7c8ed347e": "Type the Bosch Smart Home system password (the one you created when setting up the controller). It is not saved. After tapping \"Connect\", press the button on the front of the controller.",
  "@sc7c8ed347e": {
   "description": "fi: Kirjoita Bosch Smart Home -järjestelmän salasana (sama, jonka loit ohjainta asentaessa). Sitä ei tallenneta. Kun painat ",
-  "x-where": "devices/bosch_shc.dart:938"
+  "x-where": "devices/bosch_shc.dart:1091"
  },
  "s608bdcb257": "Press the button on the front of the controller now: Controller II – a short press; the old controller (I) – hold until the lights flash. Wait here.",
  "@s608bdcb257": {
   "description": "fi: Paina nyt ohjaimen etupainiketta: Smart Home Controller II – lyhyt painallus; vanha ohjain (I) – pidä pohjassa, kunnes v",
-  "x-where": "devices/bosch_shc.dart:938"
+  "x-where": "devices/bosch_shc.dart:1091"
  },
  "s1a73b397a1": "sonoff",
  "@s1a73b397a1": {
@@ -18775,147 +19065,147 @@
  "s623040a63a": "Inactive=Inactive;Ready=Ready;DelayedStart=Delayed start;Run=Running;Pause=Paused;ActionRequired=Action required;Finished=Finished;Error=Error;Aborting=Aborting;Offline=Offline",
  "@s623040a63a": {
   "description": "fi: Inactive=Ei käytössä;Ready=Valmiina;DelayedStart=Ajastettu;Run=Käynnissä;Pause=Tauko;ActionRequired=Toimenpide tarvitaan",
-  "x-where": "devices/home_connect.dart:59"
+  "x-where": "devices/home_connect.dart:77"
  },
  "s417e8a2ba4": "Home Connect (Bosch, Siemens, Neff, Gaggenau)",
  "@s417e8a2ba4": {
   "description": "fi: Home Connect (Bosch, Siemens, Neff, Gaggenau)",
-  "x-where": "devices/home_connect.dart:75"
+  "x-where": "devices/home_connect.dart:93"
  },
  "sb98e3e97cd": "Client ID of your own Home Connect application (developer.home-connect.com → Applications).",
  "@sb98e3e97cd": {
   "description": "fi: Oman Home Connect -sovelluksesi Client ID (developer.home-connect.com → Applications).",
-  "x-where": "devices/home_connect.dart:81"
+  "x-where": "devices/home_connect.dart:99"
  },
  "s6e05e7371c": "Client Secret (if your app has one)",
  "@s6e05e7371c": {
   "description": "fi: Client Secret (jos sovelluksella on)",
-  "x-where": "devices/home_connect.dart:88"
+  "x-where": "devices/home_connect.dart:106"
  },
  "s8189ed86b7": "From the same page. A Device Flow app usually works without it.",
  "@s8189ed86b7": {
   "description": "fi: Samalta sivulta. Device Flow -sovellus toimii yleensä ilmankin.",
-  "x-where": "devices/home_connect.dart:88"
+  "x-where": "devices/home_connect.dart:106"
  },
  "sda4f3457c2": "Sign-in token",
  "@sda4f3457c2": {
   "description": "fi: Kirjautumisavain",
-  "x-where": "devices/home_connect.dart:97"
+  "x-where": "devices/home_connect.dart:115"
  },
  "sa134f8dd4c": "Comes from signing in in the add wizard. Do not change.",
  "@sa134f8dd4c": {
   "description": "fi: Saadaan kirjautumalla lisäysvelhossa. Älä muuta.",
-  "x-where": "devices/home_connect.dart:97"
+  "x-where": "devices/home_connect.dart:115"
  },
  "s560a9b1bab": "The simulator is for developers (virtual appliances).",
  "@s560a9b1bab": {
   "description": "fi: Simulaattori on kehittäjille (virtuaaliset laitteet).",
-  "x-where": "devices/home_connect.dart:106"
+  "x-where": "devices/home_connect.dart:124"
  },
  "s5f614bf8c1": "Real appliances",
  "@s5f614bf8c1": {
   "description": "fi: Oikeat laitteet",
-  "x-where": "devices/home_connect.dart:112"
+  "x-where": "devices/home_connect.dart:131"
  },
  "s3a5c09be5b": "Home Connect simulator",
  "@s3a5c09be5b": {
   "description": "fi: Home Connect -simulaattori",
-  "x-where": "devices/home_connect.dart:112"
+  "x-where": "devices/home_connect.dart:132"
  },
  "s6dcd74c435": "Testing only: replaces Home Connect''s address.",
  "@s6dcd74c435": {
   "description": "fi: Vain testaukseen: korvaa Home Connectin osoitteen.",
-  "x-where": "devices/home_connect.dart:118"
+  "x-where": "devices/home_connect.dart:139"
  },
  "s9de7817d1f": "Appliance id (haId)",
  "@s9de7817d1f": {
   "description": "fi: Laitteen tunnus (haId)",
-  "x-where": "devices/home_connect.dart:128"
+  "x-where": "devices/home_connect.dart:149"
  },
  "s1839d16bcc": "The Home Connect haId.",
  "@s1839d16bcc": {
   "description": "fi: Home Connect -laitteen haId.",
-  "x-where": "devices/home_connect.dart:128"
+  "x-where": "devices/home_connect.dart:149"
  },
  "s6efa690ee3": "Key",
  "@s6efa690ee3": {
   "description": "fi: Avain",
-  "x-where": "devices/home_connect.dart:129"
+  "x-where": "devices/home_connect.dart:156"
  },
  "sf69f72bbac": "Status or setting key, e.g. BSH.Common.Status.DoorState.",
  "@sf69f72bbac": {
   "description": "fi: Tila- tai asetusavain, esim. BSH.Common.Status.DoorState.",
-  "x-where": "devices/home_connect.dart:129"
+  "x-where": "devices/home_connect.dart:156"
  },
  "s9d3115f45d": "What to do on the appliance.",
  "@s9d3115f45d": {
   "description": "fi: Mitä laitteelle tehdään.",
-  "x-where": "devices/home_connect.dart:139"
+  "x-where": "devices/home_connect.dart:166"
  },
  "s07c53aa821": "Start the selected program",
  "@s07c53aa821": {
   "description": "fi: Käynnistä valittu ohjelma",
-  "x-where": "devices/home_connect.dart:146"
+  "x-where": "devices/home_connect.dart:173"
  },
  "sf918a12f32": "Stop the program",
  "@sf918a12f32": {
   "description": "fi: Pysäytä ohjelma",
-  "x-where": "devices/home_connect.dart:147"
+  "x-where": "devices/home_connect.dart:174"
  },
  "s9384bc6f7e": "Setting",
  "@s9384bc6f7e": {
   "description": "fi: Asetus",
-  "x-where": "devices/home_connect.dart:149"
+  "x-where": "devices/home_connect.dart:176"
  },
  "s6a395924ea": "Setting key",
  "@s6a395924ea": {
   "description": "fi: Asetuksen avain",
-  "x-where": "devices/home_connect.dart:156"
+  "x-where": "devices/home_connect.dart:189"
  },
  "sc58b6af7f5": "Only \"Setting\": the key.",
  "@sc58b6af7f5": {
   "description": "fi: Vain \"Asetus\": avain.",
-  "x-where": "devices/home_connect.dart:156"
+  "x-where": "devices/home_connect.dart:189"
  },
  "s378202fe0b": "Power: On / Off / Standby. Setting: the value.",
  "@s378202fe0b": {
   "description": "fi: Virta: On / Off / Standby. Asetus: arvo.",
-  "x-where": "devices/home_connect.dart:157"
+  "x-where": "devices/home_connect.dart:196"
  },
  "sb1baaa4494": "sign in to Home Connect again",
  "@sb1baaa4494": {
   "description": "fi: kirjaudu Home Connectiin uudelleen",
-  "x-where": "devices/home_connect.dart:196"
+  "x-where": "devices/home_connect.dart:246"
  },
  "saa6e9765a0": "sign in again (Connections → Home Connect)",
  "@saa6e9765a0": {
   "description": "fi: kirjaudu uudelleen (Yhteydet → Home Connect)",
-  "x-where": "devices/home_connect.dart:204"
+  "x-where": "devices/home_connect.dart:256"
  },
  "s7af74cd31e": "Home Connect rate limit reached, wait",
  "@s7af74cd31e": {
   "description": "fi: Home Connectin pyyntöraja täynnä, odota",
-  "x-where": "devices/home_connect.dart:219"
+  "x-where": "devices/home_connect.dart:273"
  },
  "s3cdfd26282": "Home Connect rate limit reached",
  "@s3cdfd26282": {
   "description": "fi: Home Connectin pyyntöraja täynnä",
-  "x-where": "devices/home_connect.dart:240"
+  "x-where": "devices/home_connect.dart:296"
  },
  "sf8050ebbd9": "Select a program on the appliance first",
  "@sf8050ebbd9": {
   "description": "fi: Valitse ensin ohjelma laitteesta",
-  "x-where": "devices/home_connect.dart:428"
+  "x-where": "devices/home_connect.dart:489"
  },
  "s4673002a7e": "Remote start is not allowed: turn on \"Remote Start\" on the appliance and close the door.",
  "@s4673002a7e": {
   "description": "fi: Etäkäynnistys ei ole sallittu: kytke laitteesta \"Etäkäynnistys\" (Remote Start) päälle ja sulje luukku.",
-  "x-where": "devices/home_connect.dart:445"
+  "x-where": "devices/home_connect.dart:513"
  },
  "scf29ca4038": "✓ Home Connect answered: {p0} appliances. No commands were sent.",
  "@scf29ca4038": {
   "description": "fi: ✓ Home Connect vastasi: {p0} laitetta. Komentoja ei lähetetty.",
-  "x-where": "devices/home_connect.dart:619",
+  "x-where": "devices/home_connect.dart:695",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -18925,67 +19215,67 @@
  "see67742c70": "offline",
  "@see67742c70": {
   "description": "fi: ei yhteyttä",
-  "x-where": "devices/home_connect.dart:667"
+  "x-where": "devices/home_connect.dart:746"
  },
  "s77140ea0df": "program",
  "@s77140ea0df": {
   "description": "fi: ohjelma",
-  "x-where": "devices/home_connect.dart:673"
+  "x-where": "devices/home_connect.dart:759"
  },
  "s09166e1ea6": "time left",
  "@s09166e1ea6": {
   "description": "fi: aikaa jäljellä",
-  "x-where": "devices/home_connect.dart:674"
+  "x-where": "devices/home_connect.dart:760"
  },
  "sfb70dcb933": "progress",
  "@sfb70dcb933": {
   "description": "fi: edistyminen",
-  "x-where": "devices/home_connect.dart:675"
+  "x-where": "devices/home_connect.dart:761"
  },
  "sabadf329bd": "door",
  "@sabadf329bd": {
   "description": "fi: luukku",
-  "x-where": "devices/home_connect.dart:677"
+  "x-where": "devices/home_connect.dart:773"
  },
  "s7152ef5dbd": "oven temperature",
  "@s7152ef5dbd": {
   "description": "fi: uunin lämpötila",
-  "x-where": "devices/home_connect.dart:679"
+  "x-where": "devices/home_connect.dart:775"
  },
  "s68d00964af": "fridge temperature",
  "@s68d00964af": {
   "description": "fi: jääkaapin lämpötila",
-  "x-where": "devices/home_connect.dart:680"
+  "x-where": "devices/home_connect.dart:776"
  },
  "s824d365527": "freezer temperature",
  "@s824d365527": {
   "description": "fi: pakastimen lämpötila",
-  "x-where": "devices/home_connect.dart:681"
+  "x-where": "devices/home_connect.dart:777"
  },
  "sfc4a054c1a": "door alarm",
  "@sfc4a054c1a": {
   "description": "fi: ovihälytys",
-  "x-where": "devices/home_connect.dart:682"
+  "x-where": "devices/home_connect.dart:779"
  },
  "s8253ea43e9": "start selected program",
  "@s8253ea43e9": {
   "description": "fi: käynnistä valittu ohjelma",
-  "x-where": "devices/home_connect.dart:688"
+  "x-where": "devices/home_connect.dart:786"
  },
  "s1462af9000": "Home appliances through your Home Connect account: washers, dryers, dishwashers, ovens, fridges, coffee machines… State, time left, door, start and stop. Free.",
  "@s1462af9000": {
   "description": "fi: Kodinkoneet Home Connect -tilin kautta: pesu- ja kuivauskoneet, astianpesukoneet, uunit, jääkaapit, kahvikoneet… Tila, j",
-  "x-where": "devices/home_connect.dart:782"
+  "x-where": "devices/home_connect.dart:963"
  },
  "sdc0ed8435b": "Free, once: sign in at developer.home-connect.com (same e-mail as the Home Connect app) → Applications → Register application → OAuth Flow: \"Device Flow\", Home Connect User Account for Testing: your e-mail. Copy the Client ID here. A new application can take 15–30 min to start working.",
  "@sdc0ed8435b": {
   "description": "fi: Ilmainen, kerran: kirjaudu developer.home-connect.com (samalla sähköpostilla kuin Home Connect -sovellus) → Applications",
-  "x-where": "devices/home_connect.dart:837"
+  "x-where": "devices/home_connect.dart:1018"
  },
  "s625166a5a9": "Only if your application page shows a Client Secret.",
  "@s625166a5a9": {
   "description": "fi: Vain jos sovelluksesi sivulla on Client Secret.",
-  "x-where": "devices/home_connect.dart:847"
+  "x-where": "devices/home_connect.dart:1026"
  },
  "s0185672be7": "The camera user (usually admin) and the password you set when activating it.",
  "@s0185672be7": {

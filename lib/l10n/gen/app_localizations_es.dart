@@ -10609,8 +10609,122 @@ class AppLocalizationsEs extends AppLocalizations {
       'El modo de una bomba de fuentes subterráneas no se cambia aquí – sólo el punto de ajuste.';
 
   @override
+  String get sb795949130 => '- ¿Qué? - ¿Qué?';
+
+  @override
+  String get sd6b2f21f4a => 'tiempo de conexión';
+
+  @override
+  String get s6831eae697 =>
+      'Midea V3 necesita un token (128 caracteres hex) y una clave (64 caracteres hex)';
+
+  @override
+  String get s22a358f420 =>
+      'Midea: el dispositivo no aceptó el token y la llave (ver ellos)';
+
+  @override
+  String get s01f1dab4e3 => 'El dispositivo no envió el estado';
+
+  @override
   String get s6d21845355 =>
       'Encuéntrelo en la lista de dispositivos de su router o en la aplicación del fabricante (información del dispositivo).';
+
+  @override
+  String get s2a9d28aac1 =>
+      'Esta unidad (V3) necesita un token y una llave por dispositivo. Ingrese, o ingrese su propia cuenta Midea NetHome Plus (e-mail y contraseña) y Molaplan los eches una vez desde la nube de Midea. Si la cuenta fue rechazada, compruebe los detalles. La ficha y la llave nunca van a los servidores de Molaplan.';
+
+  @override
+  String get s0fa435dd3b =>
+      'Acondicionador de aire del inventor (INVmate II, local)';
+
+  @override
+  String get s355759f7fd =>
+      'Acondicionadores de aire de inventario controlados con la aplicación INVmate II (modulo Wi-Fi EU-OSK105 o similar).El mismo protocolo Midea LAN también trabaja para Midea, Comfee y otras unidades construidas por Midea. Local, sin nube.';
+
+  @override
+  String get sfe4d46ec2d =>
+      'La IP de la unidad de su lista de dispositivos del router (a menudo llamada \"midea\".';
+
+  @override
+  String get s08091212d0 =>
+      'Unidades más recientes (V3) necesitan un token  token per-dispositivo y una llave. Si no los tiene, ingrese su propia cuenta Midea NetHome Plus a continuación y se capturan una vez.';
+
+  @override
+  String get s0866bdcde6 => 'El compañero de Token.';
+
+  @override
+  String get se0474ca270 =>
+      'La ficha y la clave de la contraseña no se almacenan.';
+
+  @override
+  String get sc69d2abc31 =>
+      'Sólo para buscar las llaves, no guardadas en la conexión.';
+
+  @override
+  String get scea357a8db =>
+      'La clave local de la unidad (16 caracteres) es necesaria – escribirla, o rellenar el ID de acceso y el Secreto de su propio proyecto desarrollador gratuito de Tuya y la llave es traída una vez. Si la clave es rechazada, compruebe y el id del dispositivo. La clave nunca va a los servidores de Molaplan.';
+
+  @override
+  String get s1737dca975 =>
+      'Acondicionador de aire de Inventor (Control de Inventor, local)';
+
+  @override
+  String get s568208217c =>
+      'Acondicionadores de aire de Inventor controlado con la aplicación Inventor Control (p. ej. Leon, Legend, Comfort, Supreme, Vero). La aplicación está basada en Tuya; control sobre su red de inicio sin la nube. Necesita la llave local de la unidad una vez.';
+
+  @override
+  String get s0ef75068ac =>
+      'La IP de la unidad de la lista de dispositivos del router. La búsqueda normalmente la encuentra por sí misma.';
+
+  @override
+  String get s7455130634 =>
+      'Una llave de 16 caracteres. Si no la tienes, rellena tu propio proyecto desarrollador Tuya a continuación y se recoge una vez. Las unidades de Control Inventor más nuevas no pueden ser siempre las más necesarias para la aplicación Tuya.';
+
+  @override
+  String get s4b053856e0 =>
+      'Llenado automáticamente cuando la unidad se encuentra en la red.';
+
+  @override
+  String get s3761f46313 =>
+      '3.3, 3.4 o 3.5. Si se deja vacío todos son juzgados.';
+
+  @override
+  String get s5b0069af62 =>
+      'Tu propio proyecto gratuito de desarrollador Tuya (io Yot.tuya.com → Cloud → Crear Cloud Project → Dispositivos → Link App Account). Usar la aplicación Tuya Smart / Smart Life se añadió a la unidad.';
+
+  @override
+  String get s96dbe019ed => 'A partir de la página del proyecto, no se guarda.';
+
+  @override
+  String get s1573c32bab =>
+      'El centro de datos del proyecto, generalmente eu en Europa.';
+
+  @override
+  String get s18e2dce10d =>
+      'La bomba no respondió con los defectos (porto 502, dirección Modbus 1, ambos Modbus TCP y RTU transparente). Revise el convertidor de los terminales H1/H2, 9600 baud, 8 bits de datos, no parity. RS-485: A/B a los terminales H1/H2 del controlador cableado, 9600 baud, 8 bits de datos 1 no parity';
+
+  @override
+  String get s3d0c432194 => 'Bomba de calor de aire a agua (Modbus RS-485)';
+
+  @override
+  String get s299d1b40fe =>
+      'Bombas de calor de aire a agua de inventor (monoblock series y módulos hidroeléctricos). Control a través del puerto RS-485 (H1/H2) del controlador cableado de la bomba con un convertidor RS-485–Ethernet/Wi-Fi barato: modo, punto, agua caliente, agua y temperatura exterior. Local, sin nube.';
+
+  @override
+  String get s158de9d34a =>
+      'IP del convertidor de RS-485–Modbus (por ejemplo, Waveshare, Elfin EW11, USR-TCP232). No se puede buscar – escriba la dirección.';
+
+  @override
+  String get sbe411b8e53 =>
+      'Puerto Modbus del convertidor, por lo general 502 (algunos usan 8899 o 23).';
+
+  @override
+  String get s1f7582a270 =>
+      'El conjunto de la dirección con los interruptores DIP del módulo hidráulico, predeterminado 1.';
+
+  @override
+  String get sa51903d6fa =>
+      'Dejar vacío: Modbus TCP y RTU transparente son probados. Establecer el convertidor a 9600 baud, 8 bits de datos, sin paridad, 1 bit de parada.';
 
   @override
   String get s4a91d07711 => 'Daikin (Wi-Fi, local)';
@@ -10734,8 +10848,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'La contraseña que se establece en la aplicación del fabricante (MyDevice, EasyControl o la aplicación Buderus).';
 
   @override
-  String get s5ddd513689 =>
-      'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – o cualquier otro con un mando de IR.';
+  String get s6b99f7c0e5 =>
+      'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia, Inventor, o cualquiera con un control remoto IR.';
 
   @override
   String get s9622976fd3 => 'No hay unidades encontradas';
@@ -10745,6 +10859,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sf3d77f10b9 => 'demasiadas solicitudes';
+
+  @override
+  String s2c5094f4e4(String p0) {
+    return 'El modo \"$p0\" no está disponible en esta bomba';
+  }
+
+  @override
+  String get sb6729e0077 =>
+      'Una bomba de aire a agua no tiene entorno de ventilador';
 
   @override
   String get s00c7f00681 => 'MELCloud: e-mail equivocado o contraseña';
@@ -10766,6 +10889,14 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get s642f888a5f =>
+      'Este modelo no tiene modo de ventilador automático';
+
+  @override
+  String get s77890f9215 =>
+      'Esto no parece un acondicionador de aire (sin punto de datos de energía)';
+
+  @override
   String get s4cfb5a36c9 => 'Daikin (Wi-Fi local)';
 
   @override
@@ -10773,6 +10904,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s16f7124e42 => 'Bosch / Buderus (puerta KM200, local)';
+
+  @override
+  String get sc207ec4ed9 => 'Inventor INVmate II / Midea LAN (local)';
+
+  @override
+  String get sd0746c8b58 => 'Control de Inventor (Tuya, local)';
+
+  @override
+  String get s49df2050fd => 'Inventor air-to-water (Modbus)';
 
   @override
   String get sddd6b1d42e => 'Bomba de calor (integración incorporada)';
@@ -10806,18 +10946,55 @@ class AppLocalizationsEs extends AppLocalizations {
       'La contraseña de la aplicación del fabricante. Almacenado sólo en este dispositivo / en su propia bóveda.';
 
   @override
-  String get s2862f25983 => 'Token (SmartThings)';
+  String get sca7b0f8de6 => 'Token (SmartThings / Midea V3 token)';
 
   @override
-  String get s23a4bc8253 =>
-      'SmartThings acceso personal token (account.smartthings.com/tokens).';
+  String get s0f1eaf350b =>
+      'SmartThings acceso personal token (account.smartthings.com/tokens), o el dispositivo Midea V3 token (128 caracteres hex).';
 
   @override
-  String get sef37e5048d => 'Clave (Daikin BRP072C, pegatina)';
+  String get se263eae5bc => 'Key (Daikin BRP072C sticker / Midea V3 llave)';
 
   @override
-  String get s1c339065e1 =>
-      'La llave impresa en la pegatina del adaptador BRP072C.';
+  String get s29ea4d7472 =>
+      'La llave impresa en la pegatina del adaptador BRP072C, o la llave del dispositivo Midea V3 (64 caracteres hex).';
+
+  @override
+  String get s5e51da0364 => 'Dispositivo id (Midea / Tuya)';
+
+  @override
+  String get se463b24b80 =>
+      'Midea: el id numérico appliance (fundado por la búsqueda). Tuya: el ID de dispositivo (desde la aplicación Tuya o proyecto desarrollador).';
+
+  @override
+  String get s21214b52f5 => 'Protocolo de Midea (2 o 3)';
+
+  @override
+  String get sfd9749e4c3 =>
+      '2 = no credenciales. 3 = firmware más nuevo, necesita un token y clave.';
+
+  @override
+  String get s7b9cbd8fc1 => 'Clave local (Tuya)';
+
+  @override
+  String get sefa4614c28 =>
+      'La llave local de 16 caracteres del dispositivo Tuya.';
+
+  @override
+  String get sb1d45b679e => 'Versión del protocolo Tuya';
+
+  @override
+  String get s2fb2791b81 => '3.3, 3.4 o 3.5 (fundado por la búsqueda).';
+
+  @override
+  String get s284d1ca043 => 'Modbus framing (tcp / rtu)';
+
+  @override
+  String get s8671c4de95 =>
+      'El modo de entrada RS-485: Modbus TCP o RTU transparente.';
+
+  @override
+  String get s797055e399 => 'RTU over TCP (transparent)';
 
   @override
   String get se67e3e0eb9 => 'Client ID (myUplink)';
@@ -10926,7 +11103,17 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s94ecb845c8 => 'Punto de juego, potencia, modo o ventilador.';
 
   @override
+  String get s6ff46b02d2 => 'Other setting (key)';
+
+  @override
   String get sba2eb6d9b9 => 'Setpoint';
+
+  @override
+  String get sc8c47b547a => 'Configuración de la llave (sólo \"Otro ajuste\")';
+
+  @override
+  String get s679e5f90c2 =>
+      'E.g. dhw_set (punto de agua caliente) o dhw_power (calor de agua caliente en/off).';
 
   @override
   String s6478b264c0(String p0) {
@@ -10937,7 +11124,19 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s4937d259b8 => 'Punto de juego desaparecido';
 
   @override
+  String get sbd33d78695 => 'Configuración de clave o valor perdido';
+
+  @override
   String get s10f42a9a20 => 'curva';
+
+  @override
+  String get s3795df7c35 => 'Punto de encuentro de agua caliente';
+
+  @override
+  String get sf5a30e3b51 => 'Punto de referencia del agua';
+
+  @override
+  String get s8b6dbf3df6 => 'Agua caliente en';
 
   @override
   String get s620c04d73e => 'Suministro';
@@ -10962,6 +11161,12 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s79f91561d9 => 'Modulación de quemador';
+
+  @override
+  String get s447ce92cd0 => 'Flujo de agua';
+
+  @override
+  String get s54fd87bce8 => 'Capacidad de calefacción';
 
   @override
   String get sc272460629 =>

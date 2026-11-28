@@ -10574,8 +10574,121 @@ class AppLocalizationsFi extends AppLocalizations {
       'Maalämpöpumpun tilaa ei vaihdeta täältä – vain asetusarvo.';
 
   @override
+  String get sb795949130 => 'Midea: väärä token tai key';
+
+  @override
+  String get sd6b2f21f4a => 'yhteys aikakatkaistiin';
+
+  @override
+  String get s6831eae697 =>
+      'Midea V3 tarvitsee tokenin (128 merkkiä) ja keyn (64 merkkiä)';
+
+  @override
+  String get s22a358f420 =>
+      'Midea: laite ei hyväksynyt tokenia ja keytä (tarkista ne)';
+
+  @override
+  String get s01f1dab4e3 => 'Midea: laite ei lähettänyt tilatietoa';
+
+  @override
   String get s6d21845355 =>
       'Löytyy reitittimen laitelistasta tai valmistajan sovelluksesta (laitteen tiedot).';
+
+  @override
+  String get s2a9d28aac1 =>
+      'Tämä laite (V3) tarvitsee laitekohtaisen tokenin ja keyn. Syötä ne, tai syötä oma Midea NetHome Plus -tilisi (sähköposti ja salasana), niin Molaplan hakee ne kerran Mideen pilvestä. Jos tili hylättiin, tarkista tunnukset. Tokenia ja keytä ei lähetetä Molaplanin palvelimille.';
+
+  @override
+  String get s0fa435dd3b =>
+      'Inventor ilmalämpöpumppu (INVmate II, paikallinen)';
+
+  @override
+  String get s355759f7fd =>
+      'Inventor-ilmalämpöpumput, joita ohjataan INVmate II -sovelluksella (wifi-moduuli EU-OSK105 tms.). Sama Midea LAN -protokolla toimii myös Midea-, Comfee- ja muissa Midean valmistamissa laitteissa. Paikallinen, ei pilveä.';
+
+  @override
+  String get sfe4d46ec2d =>
+      'Laitteen IP-osoite reitittimen laitelistasta (nimi usein \"midea_ac_…\"). Haku löytää sen yleensä itse.';
+
+  @override
+  String get s08091212d0 =>
+      'Uudemmat laitteet (V3) tarvitsevat laitekohtaisen tokenin ja keyn. Jos et tiedä niitä, kirjoita alle oma Midea NetHome Plus -tilisi, niin ne haetaan kerran.';
+
+  @override
+  String get s0866bdcde6 => 'Tokenin pari.';
+
+  @override
+  String get se0474ca270 =>
+      'Ilmainen tili NetHome Plus -sovelluksessa (Midea). Käytetään vain tokenin ja keyn hakuun kerran; salasanaa ei tallenneta.';
+
+  @override
+  String get sc69d2abc31 =>
+      'Vain avainten hakuun. Ei tallennu laitteen asetuksiin.';
+
+  @override
+  String get scea357a8db =>
+      'Tarvitaan laitteen paikallinen avain (local key, 16 merkkiä) – kirjoita se, tai täytä oman ilmaisen Tuya-kehittäjäprojektisi Access ID ja Secret, niin avain haetaan kerran. Jos avain ei kelvannut, tarkista se ja laitteen tunnus. Avain ei mene Molaplanin palvelimille.';
+
+  @override
+  String get s1737dca975 =>
+      'Inventor ilmalämpöpumppu (Inventor Control, paikallinen)';
+
+  @override
+  String get s568208217c =>
+      'Inventor-ilmalämpöpumput, joita ohjataan Inventor Control -sovelluksella (malleja mm. Leon, Legend, Comfort, Supreme, Vero). Sovellus on Tuya-pohjainen; ohjaus kotiverkossa ilman pilveä. Tarvitsee laitteen paikallisen avaimen kerran.';
+
+  @override
+  String get s0ef75068ac =>
+      'Laitteen IP-osoite reitittimen laitelistasta. Haku löytää sen yleensä itse.';
+
+  @override
+  String get s7455130634 =>
+      '16 merkin avain. Jos et tiedä sitä, täytä alla oma Tuya-kehittäjäprojektisi tunnukset, niin se haetaan kerran. Uusimmat Inventor Control -laitteet eivät aina yhdisty Tuya-sovellukseen – silloin avain pitää hakea muulla tavalla (ohje: docs/INVENTOR.md).';
+
+  @override
+  String get s4b053856e0 =>
+      'Täytetään automaattisesti, jos laite löytyi verkosta.';
+
+  @override
+  String get s3761f46313 =>
+      '3.3, 3.4 tai 3.5. Jos jätät tyhjäksi, kokeillaan kaikki.';
+
+  @override
+  String get s5b0069af62 =>
+      'Oma ilmainen Tuya-kehittäjäprojekti (iot.tuya.com → Cloud → Create Cloud Project → Devices → Link App Account). Sovellukseksi käy Tuya Smart / Smart Life, johon laite on lisätty.';
+
+  @override
+  String get s96dbe019ed => 'Samalta projektin sivulta. Ei tallennu.';
+
+  @override
+  String get s1573c32bab => 'Projektin data center, Euroopassa yleensä eu.';
+
+  @override
+  String get s18e2dce10d =>
+      'Pumppu ei vastannut oletusasetuksilla (portti 502, Modbus-osoite 1, sekä Modbus TCP että läpinäkyvä RTU). Tarkista muuntimen IP-osoite ja kirjoita alle muuntimen portti, pumpun Modbus-osoite (hydromoduulin DIP-kytkimet) ja tila, jos ne poikkeavat. RS-485: A/B langallisen ohjaimen H1/H2-liittimiin, 9600 baud, 8 databittiä, ei pariteettia, 1 stop-bitti.';
+
+  @override
+  String get s3d0c432194 => 'Inventor ilma-vesilämpöpumppu (Modbus RS-485)';
+
+  @override
+  String get s299d1b40fe =>
+      'Inventor-ilma-vesilämpöpumput (monoblock-sarjat ja hydromoduulit). Ohjaus pumpun langallisen ohjaimen RS-485-liitännän (H1/H2) kautta halvalla RS-485–Ethernet/wifi-muuntimella: tila, tavoitelämpötila, käyttövesi, menovesi, ulkolämpötila. Paikallinen, ei pilveä.';
+
+  @override
+  String get s158de9d34a =>
+      'RS-485–Modbus-muuntimen IP-osoite (esim. Waveshare, Elfin EW11, USR-TCP232). Sitä ei löydy haulla – kirjoita osoite.';
+
+  @override
+  String get sbe411b8e53 =>
+      'Muuntimen Modbus-portti, yleensä 502 (joillain 8899 tai 23).';
+
+  @override
+  String get s1f7582a270 =>
+      'Sama kuin hydromoduulin DIP-kytkimillä asetettu osoite, oletus 1.';
+
+  @override
+  String get sa51903d6fa =>
+      'Jätä tyhjäksi: kokeillaan sekä Modbus TCP että läpinäkyvä RTU. Muuntimen asetus 9600 baud, 8 databittiä, ei pariteettia, 1 stop-bitti.';
 
   @override
   String get s4a91d07711 => 'Daikin (wifi, paikallinen)';
@@ -10699,8 +10812,8 @@ class AppLocalizationsFi extends AppLocalizations {
       'Salasana, jonka asetit valmistajan sovelluksessa (MyDevice, EasyControl tai Buderus-sovellus).';
 
   @override
-  String get s5ddd513689 =>
-      'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – tai mikä tahansa IR-kaukosäätimellä.';
+  String get s6b99f7c0e5 =>
+      'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia, Inventor – tai mikä tahansa IR-kaukosäätimellä.';
 
   @override
   String get s9622976fd3 => 'Ei laitteita';
@@ -10710,6 +10823,14 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get sf3d77f10b9 => 'liian monta pyyntöä';
+
+  @override
+  String s2c5094f4e4(String p0) {
+    return 'Tila \"$p0\" ei ole käytössä tässä pumpussa';
+  }
+
+  @override
+  String get sb6729e0077 => 'Ilma-vesipumpulla ei ole puhallinasetusta';
 
   @override
   String get s00c7f00681 => 'MELCloud: väärä sähköposti tai salasana';
@@ -10730,6 +10851,13 @@ class AppLocalizationsFi extends AppLocalizations {
   }
 
   @override
+  String get s642f888a5f => 'Tämä malli ei tue puhaltimen automaattitilaa';
+
+  @override
+  String get s77890f9215 =>
+      'Tämä ei näytä ilmastointilaitteelta (ei virta-datapistettä)';
+
+  @override
   String get s4cfb5a36c9 => 'Daikin (paikallinen wifi)';
 
   @override
@@ -10737,6 +10865,15 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s16f7124e42 => 'Bosch / Buderus (KM200-yhdyskäytävä, paikallinen)';
+
+  @override
+  String get sc207ec4ed9 => 'Inventor INVmate II / Midea LAN (paikallinen)';
+
+  @override
+  String get sd0746c8b58 => 'Inventor Control (Tuya, paikallinen)';
+
+  @override
+  String get s49df2050fd => 'Inventor ilma-vesi (Modbus)';
 
   @override
   String get sddd6b1d42e => 'Lämpöpumppu (oma integraatio)';
@@ -10771,17 +10908,54 @@ class AppLocalizationsFi extends AppLocalizations {
       'Valmistajan sovelluksen salasana. Tallentuu vain tälle laitteelle / omaan holviisi.';
 
   @override
-  String get s2862f25983 => 'Tunnus (SmartThings token)';
+  String get sca7b0f8de6 => 'Tunnus (SmartThings token / Midea V3 token)';
 
   @override
-  String get s23a4bc8253 =>
-      'SmartThingsin henkilökohtainen token (account.smartthings.com/tokens).';
+  String get s0f1eaf350b =>
+      'SmartThingsin henkilökohtainen token (account.smartthings.com/tokens), tai Midea V3 -laitteen token (128 heksamerkkiä).';
 
   @override
-  String get sef37e5048d => 'Avain (Daikin BRP072C, tarrasta)';
+  String get se263eae5bc => 'Avain (Daikin BRP072C tarrasta / Midea V3 key)';
 
   @override
-  String get s1c339065e1 => 'BRP072C-ohjaimen tarrassa oleva avain (key).';
+  String get s29ea4d7472 =>
+      'BRP072C-ohjaimen tarrassa oleva avain (key), tai Midea V3 -laitteen key (64 heksamerkkiä).';
+
+  @override
+  String get s5e51da0364 => 'Laitteen tunnus (Midea / Tuya)';
+
+  @override
+  String get se463b24b80 =>
+      'Midea: laitteen numerotunnus (löytyy haussa). Tuya: Device ID (Tuya-sovelluksesta tai kehittäjäprojektista).';
+
+  @override
+  String get s21214b52f5 => 'Midea-protokolla (2 tai 3)';
+
+  @override
+  String get sfd9749e4c3 =>
+      '2 = ei tunnuksia. 3 = uudempi laiteohjelmisto, tarvitsee tokenin ja keyn.';
+
+  @override
+  String get s7b9cbd8fc1 => 'Paikallinen avain (Tuya local key)';
+
+  @override
+  String get sefa4614c28 => '16 merkin Tuya-laitteen paikallinen avain.';
+
+  @override
+  String get sb1d45b679e => 'Tuya-protokollaversio';
+
+  @override
+  String get s2fb2791b81 => '3.3, 3.4 tai 3.5 (löytyy haussa).';
+
+  @override
+  String get s284d1ca043 => 'Modbus-kehystys (tcp / rtu)';
+
+  @override
+  String get s8671c4de95 =>
+      'RS-485-muuntimen tila: Modbus TCP tai läpinäkyvä RTU.';
+
+  @override
+  String get s797055e399 => 'RTU TCP:n yli (läpinäkyvä)';
 
   @override
   String get se67e3e0eb9 => 'Client ID (myUplink)';
@@ -10887,7 +11061,17 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s94ecb845c8 => 'Asetusarvo, virta, tila tai puhallin.';
 
   @override
+  String get s6ff46b02d2 => 'Muu asetus (key)';
+
+  @override
   String get sba2eb6d9b9 => 'Asetusarvo';
+
+  @override
+  String get sc8c47b547a => 'Asetuksen tunnus (vain \"Muu asetus\")';
+
+  @override
+  String get s679e5f90c2 =>
+      'Esim. dhw_set (käyttöveden lämpötila) tai dhw_power (käyttöveden lämmitys päälle/pois).';
 
   @override
   String s6478b264c0(String p0) {
@@ -10898,7 +11082,19 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s4937d259b8 => 'Asetusarvo puuttuu';
 
   @override
+  String get sbd33d78695 => 'Asetuksen tunnus tai arvo puuttuu';
+
+  @override
   String get s10f42a9a20 => 'käyrän siirto';
+
+  @override
+  String get s3795df7c35 => 'Käyttöveden tavoite';
+
+  @override
+  String get sf5a30e3b51 => 'Menoveden tavoite';
+
+  @override
+  String get s8b6dbf3df6 => 'Käyttövesi päällä';
 
   @override
   String get s620c04d73e => 'Menovesi';
@@ -10923,6 +11119,12 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s79f91561d9 => 'Polttimen teho';
+
+  @override
+  String get s447ce92cd0 => 'Vesivirtaus';
+
+  @override
+  String get s54fd87bce8 => 'Lämpöteho';
 
   @override
   String get sc272460629 => 'Anna yhdyskäytävän salasana ja oma salasana';

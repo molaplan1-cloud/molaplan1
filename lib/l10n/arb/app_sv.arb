@@ -6483,6 +6483,14 @@
   "x-mt": true
  },
  "s9b9b0d01a2": " (valfritt)",
+ "s7acc8096d2": "Logga in och godkänna",
+ "@s7acc8096d2": {
+  "x-mt": true
+ },
+ "sa2ffc9d3a6": "Öppna inloggningssidan",
+ "@sa2ffc9d3a6": {
+  "x-mt": true
+ },
  "s43118959d5": "{p0} vänster",
  "@s43118959d5": {
   "x-mt": true
@@ -6490,6 +6498,10 @@
  "s0a7134d0e3": "Tryck på knappen nu",
  "s46c87a553f": "Logga in på kameran",
  "@s46c87a553f": {
+  "x-mt": true
+ },
+ "sf11edd7621": "Systemlösenord",
+ "@sf11edd7621": {
   "x-mt": true
  },
  "se4095d7d95": "Enhetens lösenord",
@@ -9709,8 +9721,128 @@
  "@s370bf1904d": {
   "x-mt": true
  },
+ "sb795949130": "Midea: fel token eller nyckel",
+ "@sb795949130": {
+  "x-mt": true
+ },
+ "sd6b2f21f4a": "Anslut timeout",
+ "@sd6b2f21f4a": {
+  "x-mt": true
+ },
+ "s6831eae697": "Midea V3 behöver en token (128 hex tecken) och en nyckel (64 hex tecken)",
+ "@s6831eae697": {
+  "x-mt": true
+ },
+ "s22a358f420": "Midea: enheten accepterade inte token och nyckeln (kolla dem)",
+ "@s22a358f420": {
+  "x-mt": true
+ },
+ "s01f1dab4e3": "Midea: enheten skickade inget tillstånd",
+ "@s01f1dab4e3": {
+  "x-mt": true
+ },
  "s6d21845355": "Hitta det i routerns enhetslista eller tillverkarens app (enhetsinformation).",
  "@s6d21845355": {
+  "x-mt": true
+ },
+ "s2a9d28aac1": "Den här enheten (V3) behöver en per-den-tecken och nyckeln. Ange dem, eller ange din egen Midea NetHome Plus-konto (e-post och lösenord) och Molaplan hämtar dem en gång från Midea-molnet. Om kontot avvisades, kontrollera detaljerna. Token och nyckeln går aldrig till Molaplans servrar.",
+ "@s2a9d28aac1": {
+  "x-mt": true
+ },
+ "s0fa435dd3b": "Inventor luftkonditionering (INVmate II, lokal)",
+ "@s0fa435dd3b": {
+  "x-mt": true
+ },
+ "s355759f7fd": "Uppfinnare luftkonditioneringar som styrs med INVmate II-appen (Wi-Fi-modulen EU-OSK105 eller liknande). Samma Midea LAN-protokoll fungerar också för Midea, Comfee och andra Midea-byggda enheter. Lokalt, inget moln.",
+ "@s355759f7fd": {
+  "x-mt": true
+ },
+ "sfe4d46ec2d": "Enhetens IP från routerns enhetslista (ofta kallad \"midea_ac_...\"). Sökningen finner det normalt i sig själv.",
+ "@sfe4d46ec2d": {
+  "x-mt": true
+ },
+ "s08091212d0": "Nyare enheter (V3) behöver en per-enhet token och nyckel. Om du inte har dem, ange ditt eget Midea NetHome Plus-konto nedan och de hämtas en gång.",
+ "@s08091212d0": {
+  "x-mt": true
+ },
+ "s0866bdcde6": "Tokens partner.",
+ "@s0866bdcde6": {
+  "x-mt": true
+ },
+ "se0474ca270": "Ett gratis konto i NetHome Plus-appen (Midea). Används endast för att hämta token och nyckeln en gång; lösenordet lagras inte.",
+ "@se0474ca270": {
+  "x-mt": true
+ },
+ "sc69d2abc31": "Endast för att hämta nycklarna. Inte sparas i anslutningen.",
+ "@sc69d2abc31": {
+  "x-mt": true
+ },
+ "scea357a8db": "Enhetens lokala nyckel (16 tecken) behövs - skriv den, eller fyll i Access ID och Secret of av Molaplans servrar.",
+ "@scea357a8db": {
+  "x-mt": true
+ },
+ "s1737dca975": "Inventor luftkonditionering (Inventor Control, lokal)",
+ "@s1737dca975": {
+  "x-mt": true
+ },
+ "s568208217c": "Uppfinnare luftkonditioneringar kontrolleras med Inventor Control app (t.ex. Leon, Legend, Comfort, Supreme, Vero). Appen är Tuya-baserad; kontroll på ditt hemnätverk utan molnet. Behöver enhetens lokala nyckel en gång.",
+ "@s568208217c": {
+  "x-mt": true
+ },
+ "s0ef75068ac": "Enhetens IP från routerns enhetslista. Sökningen finner det normalt av sig själv.",
+ "@s0ef75068ac": {
+  "x-mt": true
+ },
+ "s7455130634": "En 16-karaktärsnyckel. Om du inte har det, fyll i ditt eget Tuya-utvecklarprojekt nedan och det hämtas en gång. De nyaste uppfinnarkontrollenheterna kan inte alltid kopplas till Tuya-appen - då måste nyckeln erhållas på ett annat sätt (se docs/INVENTOR.md).",
+ "@s7455130634": {
+  "x-mt": true
+ },
+ "s4b053856e0": "Fylls i automatiskt när enheten hittades i nätverket.",
+ "@s4b053856e0": {
+  "x-mt": true
+ },
+ "s3761f46313": "3.3, 3.4 eller 3.5. Om vänster tomt alla prövas.",
+ "@s3761f46313": {
+  "x-mt": true
+ },
+ "s5b0069af62": "Ditt eget gratis Tuya-utvecklarprojekt (iot.tuya.com → Cloud → Skapa Cloud Project → Enheter → Länk App-konto). Använd Tuya Smart / Smart Life-appen som enheten har lagts till.",
+ "@s5b0069af62": {
+  "x-mt": true
+ },
+ "s96dbe019ed": "Från samma projektsida. Inte sparad.",
+ "@s96dbe019ed": {
+  "x-mt": true
+ },
+ "s1573c32bab": "Projektets datacenter, vanligtvis eu i Europa.",
+ "@s1573c32bab": {
+  "x-mt": true
+ },
+ "s18e2dce10d": "Pumpen svarade inte med standarderna (port 502, Modbus adress 1, både Modbus TCP och transparent RTU). Kontrollera omvandlarens IP och skriva under omvandlarens port, pumpens Modbus-adress (DIP-brytare av hydraulmodulen) och läge om de skiljer sig. RS-485: A / B till den trådbundna styrenhetens H1 / H2-terminaler, 9600 baud, 8 databitar, ingen paritet, 1 stop bit.",
+ "@s18e2dce10d": {
+  "x-mt": true
+ },
+ "s3d0c432194": "Uppfinnare luft-till-vatten värmepump (Modbus RS-485)",
+ "@s3d0c432194": {
+  "x-mt": true
+ },
+ "s299d1b40fe": "Uppfinnare luft till vatten värmepumpar (monoblock serier och hydromoduler). Kontrollera genom RS-485-porten (H1 / H2) av pumpens trådbundna styrenhet med en billig RS-485-Ethernet / Wi-Fi-omvandlare: läge, inställpunkt, varmt vatten, vatten och utomhustemperatur. Lokalt, inget moln.",
+ "@s299d1b40fe": {
+  "x-mt": true
+ },
+ "s158de9d34a": "IP av RS-485-Modbus-omvandlaren (t.ex. Waveshare, Elfin EW11, USR-TCP232). Det kan inte sökas - skriv adressen.",
+ "@s158de9d34a": {
+  "x-mt": true
+ },
+ "sbe411b8e53": "Konverterarens Modbus-port, vanligtvis 502 (viss användning 8899 eller 23).",
+ "@sbe411b8e53": {
+  "x-mt": true
+ },
+ "s1f7582a270": "Adressen som är inställd på DIP-brytare av den hydrauliska modulen, standard 1.",
+ "@s1f7582a270": {
+  "x-mt": true
+ },
+ "sa51903d6fa": "Lämna tom: både Modbus TCP och transparent RTU prövas. Ställ in omvandlaren till 9600 baud, 8 data bitar, ingen paritet, 1 stop bit.",
+ "@sa51903d6fa": {
   "x-mt": true
  },
  "s4a91d07711": "Daikin (Wi-Fi, lokal)",
@@ -9817,8 +9949,28 @@
  "@scab35073e8": {
   "x-mt": true
  },
- "s5ddd513689": "Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia - eller någon med en IR-fjärrkontroll.",
- "@s5ddd513689": {
+ "s6ad1f33b9a": "Bosch / Buderus uppvärmning (KM200 gateway, lokal)",
+ "@s6ad1f33b9a": {
+  "x-mt": true
+ },
+ "sd3415a288c": "Pannor och värmepumpar med en logamatisk webb KM50/KM100/KM200/KM300 gateway (Bosch, Buderus, Junkers, IVT). Lokalt, inget moln, inga avgifter.",
+ "@sd3415a288c": {
+  "x-mt": true
+ },
+ "s87ab70204b": "KM-gatewayens IP från routerns enhetslista (kallas ofta \"KM200\" eller dess seriell).",
+ "@s87ab70204b": {
+  "x-mt": true
+ },
+ "s85e666e6d0": "På gateway klistermärke eller i pannmenyn: Info → Internet → Inloggningsdata.",
+ "@s85e666e6d0": {
+  "x-mt": true
+ },
+ "s7af1e0507c": "Lösenordet du ställer in i tillverkarens app (MyDevice, EasyControl eller Buderus-appen).",
+ "@s7af1e0507c": {
+  "x-mt": true
+ },
+ "s6b99f7c0e5": "Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia, Inventor - eller någon med en IR-fjärrkontroll.",
+ "@s6b99f7c0e5": {
   "x-mt": true
  },
  "s9622976fd3": "Inga enheter hittades",
@@ -9831,6 +9983,14 @@
  },
  "sf3d77f10b9": "för många förfrågningar",
  "@sf3d77f10b9": {
+  "x-mt": true
+ },
+ "s2c5094f4e4": "Mode \"{p0}\" är inte tillgänglig på denna pump",
+ "@s2c5094f4e4": {
+  "x-mt": true
+ },
+ "sb6729e0077": "En luft-till-vattenpump har ingen fläkt inställning",
+ "@sb6729e0077": {
   "x-mt": true
  },
  "s00c7f00681": "MELCloud: fel e-post eller lösenord",
@@ -9853,12 +10013,36 @@
  "@sc499fab53f": {
   "x-mt": true
  },
+ "s642f888a5f": "Denna modell har ingen automatisk fläktläge",
+ "@s642f888a5f": {
+  "x-mt": true
+ },
+ "s77890f9215": "Detta ser inte ut som en luftkonditionering (ingen strömdatapunkt)",
+ "@s77890f9215": {
+  "x-mt": true
+ },
  "s4cfb5a36c9": "Daikin (lokalt Wi-Fi)",
  "@s4cfb5a36c9": {
   "x-mt": true
  },
  "se9b4e55058": "NIBE / Thermia (Modbus TCP, lokal)",
  "@se9b4e55058": {
+  "x-mt": true
+ },
+ "s16f7124e42": "Bosch / Buderus (KM200 gateway, lokal)",
+ "@s16f7124e42": {
+  "x-mt": true
+ },
+ "sc207ec4ed9": "Uppfinnare INVmate II / Midea LAN (lokal)",
+ "@sc207ec4ed9": {
+  "x-mt": true
+ },
+ "sd0746c8b58": "Uppfinnare kontroll (Tuya, lokal)",
+ "@sd0746c8b58": {
+  "x-mt": true
+ },
+ "s49df2050fd": "Uppfinnaren air-to-water (Modbus)",
+ "@s49df2050fd": {
   "x-mt": true
  },
  "sddd6b1d42e": "Värmepump (inbyggd integration)",
@@ -9897,20 +10081,64 @@
  "@safde071183": {
   "x-mt": true
  },
- "s2862f25983": "Token (SmartThings)",
- "@s2862f25983": {
+ "sca7b0f8de6": "Token (SmartThings / Midea V3 token)",
+ "@sca7b0f8de6": {
   "x-mt": true
  },
- "s23a4bc8253": "SmartThings personliga åtkomsttoken (account.smartthings.com/tokens).",
- "@s23a4bc8253": {
+ "s0f1eaf350b": "SmartThings personliga åtkomsttoken (account.smartthings.com/tokens), eller Midea V3-enhetstoken (128 hex-karaktärer).",
+ "@s0f1eaf350b": {
   "x-mt": true
  },
- "sef37e5048d": "Nyckel (Daikin BRP072C, klistermärke)",
- "@sef37e5048d": {
+ "se263eae5bc": "Nyckel (Daikin BRP072C klistermärke / Midea V3 nyckel)",
+ "@se263eae5bc": {
   "x-mt": true
  },
- "s1c339065e1": "Nyckeln tryckt på BRP072C adapterns klistermärke.",
- "@s1c339065e1": {
+ "s29ea4d7472": "Nyckeln tryckt på BRP072C-adapterns klistermärke eller Midea V3-enhetsnyckeln (64 hex-tecken).",
+ "@s29ea4d7472": {
+  "x-mt": true
+ },
+ "s5e51da0364": "Enhet id (Midea / Tuya)",
+ "@s5e51da0364": {
+  "x-mt": true
+ },
+ "se463b24b80": "Midea: numerisk apparat id (grundad av sökningen). Tuya: Enhets-ID (från Tuya-appen eller utvecklarprojektet).",
+ "@se463b24b80": {
+  "x-mt": true
+ },
+ "s21214b52f5": "Midea protokoll (2 eller 3)",
+ "@s21214b52f5": {
+  "x-mt": true
+ },
+ "sfd9749e4c3": "2 = inga referenser. 3 = nyare firmware, behöver en token och nyckel.",
+ "@sfd9749e4c3": {
+  "x-mt": true
+ },
+ "s7b9cbd8fc1": "Lokal nyckel (Tuya)",
+ "@s7b9cbd8fc1": {
+  "x-mt": true
+ },
+ "sefa4614c28": "Tuya-enhetens 16-karaktärs lokala nyckel.",
+ "@sefa4614c28": {
+  "x-mt": true
+ },
+ "sb1d45b679e": "Tuya protokoll version",
+ "@sb1d45b679e": {
+  "x-mt": true
+ },
+ "s2fb2791b81": "3.3, 3.4 eller 3.5 (finns genom sökningen).",
+ "@s2fb2791b81": {
+  "x-mt": true
+ },
+ "s284d1ca043": "Modbus inramning (tcp / rtu)",
+ "@s284d1ca043": {
+  "x-mt": true
+ },
+ "s8671c4de95": "RS-485-gatewayens läge: Modbus TCP eller transparent RTU.",
+ "@s8671c4de95": {
+  "x-mt": true
+ },
+ "s797055e399": "RTU över TCP (transparent)",
+ "@s797055e399": {
   "x-mt": true
  },
  "se67e3e0eb9": "Client ID (myUplink)",
@@ -9921,6 +10149,30 @@
  "sa165e50f99": "Client Secret (myUplink)",
  "s332f9bc1a1": "Kundhemlighet för din egen app på dev.myuplink.com.",
  "@s332f9bc1a1": {
+  "x-mt": true
+ },
+ "s911c662d27": "Gateway lösenord (KM200)",
+ "@s911c662d27": {
+  "x-mt": true
+ },
+ "s52d4fcbe67": "På Bosch/Buderus KM gateway klistermärke eller i pannmenyn (Info → Internet → Login data).",
+ "@s52d4fcbe67": {
+  "x-mt": true
+ },
+ "se7829f1ac5": "Privat lösenord (KM200)",
+ "@se7829f1ac5": {
+  "x-mt": true
+ },
+ "sc6b9b9dafe": "Lösenordet du ställer in i tillverkarens app (MyDevice / EasyControl / Buderus).",
+ "@sc6b9b9dafe": {
+  "x-mt": true
+ },
+ "s26eefc92ad": "Salt (KM200, endast om tillverkaren använder sin egen)",
+ "@s26eefc92ad": {
+  "x-mt": true
+ },
+ "s333668bcad": "Lämna tom för att använda Bosch/Buderus publicerade standard.",
+ "@s333668bcad": {
   "x-mt": true
  },
  "sd1d4b22fc6": "Registrera karta (Modbus)",
@@ -10004,8 +10256,20 @@
  "@s94ecb845c8": {
   "x-mt": true
  },
+ "s6ff46b02d2": "Övriga inställningar (nyckel)",
+ "@s6ff46b02d2": {
+  "x-mt": true
+ },
  "sba2eb6d9b9": "Setpoint",
  "@sba2eb6d9b9": {
+  "x-mt": true
+ },
+ "sc8c47b547a": "Ange nyckel (endast \"Övrig inställning\")",
+ "@sc8c47b547a": {
+  "x-mt": true
+ },
+ "s679e5f90c2": "E.g. dhw_set (hot water setpoint) eller dhw_power (hot water heating on/off).",
+ "@s679e5f90c2": {
   "x-mt": true
  },
  "s6478b264c0": "Värmepump \"{p0}\" är inte längre i kontot",
@@ -10016,8 +10280,24 @@
  "@s4937d259b8": {
   "x-mt": true
  },
+ "sbd33d78695": "Ange nyckel eller värde saknas",
+ "@sbd33d78695": {
+  "x-mt": true
+ },
  "s10f42a9a20": "Curve Offset",
  "@s10f42a9a20": {
+  "x-mt": true
+ },
+ "s3795df7c35": "Varmvattensuppsättning",
+ "@s3795df7c35": {
+  "x-mt": true
+ },
+ "sf5a30e3b51": "Vatten setpoint",
+ "@sf5a30e3b51": {
+  "x-mt": true
+ },
+ "s8b6dbf3df6": "Varmt vatten på",
+ "@s8b6dbf3df6": {
   "x-mt": true
  },
  "s620c04d73e": "Leverans",
@@ -10048,10 +10328,42 @@
  "@s3ca74f3ef8": {
   "x-mt": true
  },
+ "s79f91561d9": "Burner modulering",
+ "@s79f91561d9": {
+  "x-mt": true
+ },
+ "s447ce92cd0": "Vattenflöde",
+ "@s447ce92cd0": {
+  "x-mt": true
+ },
+ "s54fd87bce8": "Värmekapacitet",
+ "@s54fd87bce8": {
+  "x-mt": true
+ },
+ "sc272460629": "Ange gateway-lösenordet och ditt eget lösenord",
+ "@sc272460629": {
+  "x-mt": true
+ },
+ "s684b127b9d": "Värmegateway svarade men data kunde inte dekrypteras - kontrollera båda lösenorden.",
+ "@s684b127b9d": {
+  "x-mt": true
+ },
+ "sbe369d8548": "Värmegatewayen tillåter inte att ändra detta värde",
+ "@sbe369d8548": {
+  "x-mt": true
+ },
+ "s1222da1433": "Värmekrets",
+ "@s1222da1433": {
+  "x-mt": true
+ },
  "s131d0eb266": "/system/sensors/temperatures/supply_t1",
  "sac20961d10": "/system/sensors/temperatures/return",
  "s2a35dc0822": "/dhwCircuits/dhw1/actualTemp",
  "s85a3e678f3": "/heatSources/actualModulation",
+ "s4159d585e2": "Värmekrets(s)",
+ "@s4159d585e2": {
+  "x-mt": true
+ },
  "s31ec8d716e": "Enhetens kontotabell är full. Ta bort en gammal telefon i Smart M-Air-appen och försök igen.",
  "@s31ec8d716e": {
   "x-mt": true
@@ -10299,12 +10611,92 @@
   "x-mt": true
  },
  "s50c459fbff": "Larm",
+ "s29c5b59ddb": "Bosch Smart Home Controller",
+ "@s29c5b59ddb": {
+  "x-mt": true
+ },
+ "sfb05679ced": "Controller IP-adress",
+ "@sfb05679ced": {
+  "x-mt": true
+ },
+ "sd65da878fe": "Kontrollörens adress (app: Mer → System → Kontrollör, eller routerns enhetslista).",
+ "@sd65da878fe": {
+  "x-mt": true
+ },
+ "s6f7b5bb729": "Kundcertifikat (PEM)",
+ "@s6f7b5bb729": {
+  "x-mt": true
+ },
+ "sd21135f561": "Skapad av Molaplan när du parar. Ändra inte.",
+ "@sd21135f561": {
+  "x-mt": true
+ },
+ "s2bc685129f": "Kundnyckel (PEM)",
+ "@s2bc685129f": {
+  "x-mt": true
+ },
+ "sd5bfa709a3": "Controller certifikat fingeravtryck",
+ "@sd5bfa709a3": {
+  "x-mt": true
+ },
+ "s8b133a2da5": "Säljs när du parar: Molaplan pratar bara med denna kontroller. Empty = acceptera den första.",
+ "@s8b133a2da5": {
+  "x-mt": true
+ },
+ "s46f9aaf504": "Bosch enhet id.",
+ "@s46f9aaf504": {
+  "x-mt": true
+ },
+ "s84d11d45ce": "E.g. TemperatureLevel, ShutterContact, PowerSwitch.",
+ "@s84d11d45ce": {
+  "x-mt": true
+ },
+ "s4dabf0e462": "Fält",
+ "@s4dabf0e462": {
+  "x-mt": true
+ },
+ "s9a1eb4b849": "Ett fält av servicetillståndet, t.ex. temperatur, värde, switchState.",
+ "@s9a1eb4b849": {
+  "x-mt": true
+ },
+ "se83f02e6bd": "Vägen (andra)",
+ "@se83f02e6bd": {
+  "x-mt": true
+ },
+ "s3a985d4cc3": "En annan väg att läsa, t.ex. /intrusion/states/system.",
+ "@s3a985d4cc3": {
+  "x-mt": true
+ },
+ "s0d34dfcd38": "För att ändra ett tillstånd, POST för handlingar.",
+ "@s0d34dfcd38": {
+  "x-mt": true
+ },
+ "sf8c4f6beb9": "Vägen efter /smarthome.",
+ "@sf8c4f6beb9": {
+  "x-mt": true
+ },
  "s5632684130": "'JSON, e.g. {\"@type\":\"powerSwitchState\",\"switchState\":\"ON\"}.'",
+ "s3addc3df37": "Bosch-kontrollanten vägrade anslutningen (inte parad eller annan styrenhet) - lägg till den igen. ({p0})",
+ "@s3addc3df37": {
+  "x-mt": true
+ },
+ "sc76c98702f": "Bosch Smart Home Controller svarade: {p0} enheter. Inga kommandon skickades.",
+ "@sc76c98702f": {
+  "x-mt": true
+ },
  "sd9b6de0a6a": "Andra andra",
  "@sd9b6de0a6a": {
   "x-mt": true
  },
  "s4dbb677293": "nås inte",
+ "sd0368ed590": "måltavla",
+ "@sd0368ed590": {
+  "x-mt": true
+ },
+ "sec17dd81e8": "Valve",
+ "@sec17dd81e8": {
+  "x-mt": true
+ },
  "s0b2f7d7c80": "öppet öppet öppna",
  "@s0b2f7d7c80": {
   "x-mt": true
@@ -10313,7 +10705,87 @@
  "@s7009587b85": {
   "x-mt": true
  },
+ "saf40fb40b3": "Rökdetektor",
+ "@saf40fb40b3": {
+  "x-mt": true
+ },
+ "s4d85116fcb": "test test test",
+ "@s4d85116fcb": {
+  "x-mt": true
+ },
+ "s54345410a1": "Testlarm",
+ "@s54345410a1": {
+  "x-mt": true
+ },
+ "s67c7f22d99": "Luftkvalitet",
+ "@s67c7f22d99": {
+  "x-mt": true
+ },
+ "s4c3bb5ea0a": "rörelsedetektor",
+ "@s4c3bb5ea0a": {
+  "x-mt": true
+ },
+ "sa6a56fa019": "Vattenläckage",
+ "@sa6a56fa019": {
+  "x-mt": true
+ },
+ "s7c51d00219": "Kamera på",
+ "@s7c51d00219": {
+  "x-mt": true
+ },
+ "s51cd662d6c": "Integritetsläge",
+ "@s51cd662d6c": {
+  "x-mt": true
+ },
+ "scdc860be9e": "anmälningar",
+ "@scdc860be9e": {
+  "x-mt": true
+ },
+ "s45c8904016": "ljust ljust ljus",
+ "@s45c8904016": {
+  "x-mt": true
+ },
+ "s416ac1459c": "Intrångslarm",
+ "@s416ac1459c": {
+  "x-mt": true
+ },
+ "s607339c984": "Säkerhetssäkerhet",
+ "@s607339c984": {
+  "x-mt": true
+ },
+ "sd1d17eca81": "State + arm/disarm + mute",
+ "@sd1d17eca81": {
+  "x-mt": true
+ },
+ "s499d3aa6f1": "Vattenlarm",
+ "@s499d3aa6f1": {
+  "x-mt": true
+ },
+ "se57c2c4920": "Hela systemet + mute",
+ "@se57c2c4920": {
+  "x-mt": true
+ },
+ "s2eb00b7c28": "Scenarios",
+ "@s2eb00b7c28": {
+  "x-mt": true
+ },
+ "s38df0b3b2b": "Mute larm",
+ "@s38df0b3b2b": {
+  "x-mt": true
+ },
+ "s1ff3dea39b": "Mössa",
+ "@s1ff3dea39b": {
+  "x-mt": true
+ },
  "s373ab1c97c": "GOOD=Good;MEDIUM=Medium;BAD=Bad",
+ "s129317999a": "renhet",
+ "@s129317999a": {
+  "x-mt": true
+ },
+ "sd0807cf61e": "position (100 = öppen)",
+ "@sd0807cf61e": {
+  "x-mt": true
+ },
  "sdb34e99ef6": "Öppet öppet",
  "@sdb34e99ef6": {
   "x-mt": true
@@ -10322,7 +10794,31 @@
  "@s7fc017b0f0": {
   "x-mt": true
  },
+ "sb02c7ee226": "Stopp stopp",
+ "@sb02c7ee226": {
+  "x-mt": true
+ },
+ "sefdd3f7ade": "Närvaro simulering",
+ "@sefdd3f7ade": {
+  "x-mt": true
+ },
  "s16bc9ff328": "Bosch Smart Home",
+ "sde61b8a8a4": "Bosch Smart Home Controller (I eller II): termostater, radiatorventiler, fönster/dörrkontakter, rökdetektorer, pluggar, ljus, slutare, rörelsedetektorer, kameror och intrångslarm. Lokalt, inget moln.",
+ "@sde61b8a8a4": {
+  "x-mt": true
+ },
+ "s3b276dcad6": "I Bosch Smart Home-appen: Mer → System → Smart Home Controller → Nätverk. Eller routerns enhetslista ( \"shc...\").",
+ "@s3b276dcad6": {
+  "x-mt": true
+ },
+ "sc7c8ed347e": "Skriv Bosch Smart Home-lösenordet (den du skapade när du ställer in kontrollenheten). Det sparas inte. Efter att du har tryckt på \"Konnect\", tryck på knappen på framsidan av kontrollen.",
+ "@sc7c8ed347e": {
+  "x-mt": true
+ },
+ "s608bdcb257": "Tryck på knappen på framsidan av kontrollern nu: Controller II - en kort press; den gamla kontrollern (I) - håll tills lamporna blinkar. Vänta här.",
+ "@s608bdcb257": {
+  "x-mt": true
+ },
  "s1a73b397a1": "sonoff",
  "@s1a73b397a1": {
   "x-mt": true
@@ -10628,8 +11124,160 @@
  },
  "s623040a63a": "Inactive=Inactive;Ready=Ready;DelayedStart=Delayed start;Run=Running;Pause=Paused;ActionRequired=Action required;Finished=Finished;Error=Error;Aborting=Aborting;Offline=Offline",
  "s417e8a2ba4": "Home Connect (Bosch, Siemens, Neff, Gaggenau)",
+ "sb98e3e97cd": "Klient-ID för din egen Home Connect-applikation (developer.home-connect.com → Applikationer).",
+ "@sb98e3e97cd": {
+  "x-mt": true
+ },
+ "s6e05e7371c": "Kundhemlighet (om din app har en)",
+ "@s6e05e7371c": {
+  "x-mt": true
+ },
+ "s8189ed86b7": "Från samma sida. En enhetsflödesapp fungerar vanligtvis utan den.",
+ "@s8189ed86b7": {
+  "x-mt": true
+ },
+ "sda4f3457c2": "Sign-in Token",
+ "@sda4f3457c2": {
+  "x-mt": true
+ },
+ "sa134f8dd4c": "Kommer från att logga in i tilläggsguiden. Ändra inte.",
+ "@sa134f8dd4c": {
+  "x-mt": true
+ },
+ "s560a9b1bab": "Simulatorn är för utvecklare (virtuella apparater).",
+ "@s560a9b1bab": {
+  "x-mt": true
+ },
+ "s5f614bf8c1": "Verkliga apparater",
+ "@s5f614bf8c1": {
+  "x-mt": true
+ },
+ "s3a5c09be5b": "Home Connect simulator",
+ "@s3a5c09be5b": {
+  "x-mt": true
+ },
+ "s6dcd74c435": "Testning endast: ersätter Home Connects adress.",
+ "@s6dcd74c435": {
+  "x-mt": true
+ },
+ "s9de7817d1f": "Appliance id (haId)",
+ "@s9de7817d1f": {
+  "x-mt": true
+ },
+ "s1839d16bcc": "Home Connect HaId.",
+ "@s1839d16bcc": {
+  "x-mt": true
+ },
+ "s6efa690ee3": "Nyckeln",
+ "@s6efa690ee3": {
+  "x-mt": true
+ },
+ "sf69f72bbac": "Status eller inställning nyckel, t.ex. BSH.Common.Status.DoorState.",
+ "@sf69f72bbac": {
+  "x-mt": true
+ },
+ "s9d3115f45d": "Vad man ska göra på apparaten.",
+ "@s9d3115f45d": {
+  "x-mt": true
+ },
+ "s07c53aa821": "Starta det valda programmet",
+ "@s07c53aa821": {
+  "x-mt": true
+ },
+ "sf918a12f32": "Stoppa programmet",
+ "@sf918a12f32": {
+  "x-mt": true
+ },
+ "s9384bc6f7e": "Inställning",
+ "@s9384bc6f7e": {
+  "x-mt": true
+ },
+ "s6a395924ea": "Inställning av nyckel",
+ "@s6a395924ea": {
+  "x-mt": true
+ },
  "sc58b6af7f5": "Only \"Setting\": the key.",
+ "s378202fe0b": "Power: On / Off / Standby. Setting: värdet.",
+ "@s378202fe0b": {
+  "x-mt": true
+ },
+ "sb1baaa4494": "Logga in på Home Connect igen",
+ "@sb1baaa4494": {
+  "x-mt": true
+ },
+ "saa6e9765a0": "Logga in igen (Connections → Home Connect)",
+ "@saa6e9765a0": {
+  "x-mt": true
+ },
+ "s7af74cd31e": "Home Connect-ränta nått, vänta",
+ "@s7af74cd31e": {
+  "x-mt": true
+ },
+ "s3cdfd26282": "Home Connect räntegräns nådde",
+ "@s3cdfd26282": {
+  "x-mt": true
+ },
+ "sf8050ebbd9": "Välj ett program på apparaten först",
+ "@sf8050ebbd9": {
+  "x-mt": true
+ },
+ "s4673002a7e": "Fjärrstart är inte tillåtet: slå på \"Fjärrstart\" på apparaten och stäng dörren.",
+ "@s4673002a7e": {
+  "x-mt": true
+ },
+ "scf29ca4038": "Home Connect svarade: {p0} apparater. Inga kommandon skickades.",
+ "@scf29ca4038": {
+  "x-mt": true
+ },
  "see67742c70": "offline",
+ "s77140ea0df": "Programprogram",
+ "@s77140ea0df": {
+  "x-mt": true
+ },
+ "s09166e1ea6": "Tiden kvar",
+ "@s09166e1ea6": {
+  "x-mt": true
+ },
+ "sfb70dcb933": "Framsteg",
+ "@sfb70dcb933": {
+  "x-mt": true
+ },
+ "sabadf329bd": "Dörrdörr",
+ "@sabadf329bd": {
+  "x-mt": true
+ },
+ "s7152ef5dbd": "ugnstemperatur",
+ "@s7152ef5dbd": {
+  "x-mt": true
+ },
+ "s68d00964af": "Fridge temperature",
+ "@s68d00964af": {
+  "x-mt": true
+ },
+ "s824d365527": "Frystemperatur",
+ "@s824d365527": {
+  "x-mt": true
+ },
+ "sfc4a054c1a": "Dörrlarm",
+ "@sfc4a054c1a": {
+  "x-mt": true
+ },
+ "s8253ea43e9": "Starta valt program",
+ "@s8253ea43e9": {
+  "x-mt": true
+ },
+ "s1462af9000": "Home apparater genom ditt Home Connect-konto: tvättmaskiner, torktumlare, diskmaskiner, ugnar, kylskåp, kaffemaskiner... State, tid kvar, dörr, start och stopp.",
+ "@s1462af9000": {
+  "x-mt": true
+ },
+ "sdc0ed8435b": "Gratis, en gång: logga in på utvecklare.home-connect.com (samma e-post som Home Connect-appen) → Ansökningar → Registrera ansökan → OAuth Flow: \"Device Flow\", Home Connect-användarkonto för testning: din e-post. Kopiera klient-ID här. En ny ansökan kan ta 15-30 min för att börja arbeta.",
+ "@sdc0ed8435b": {
+  "x-mt": true
+ },
+ "s625166a5a9": "Endast om din ansökningssida visar en kundhemlighet.",
+ "@s625166a5a9": {
+  "x-mt": true
+ },
  "s0185672be7": "Kameraanvändaren (vanligtvis admin) och lösenordet du ställer in när du aktiverar det.",
  "@s0185672be7": {
   "x-mt": true
@@ -10668,6 +11316,14 @@
  },
  "s1a3c354399": "eWeLink app → kamera → Inställningar: slå på RTSP/ONVIF och ange en användare och lösenord för det (om alternativet finns).",
  "@s1a3c354399": {
+  "x-mt": true
+ },
+ "s0ae408f9a0": "Kameraanvändaren (tjänst, användare eller live) och lösenordet du ställer in i Konfigurationshanteraren eller på kamerans webbsida.",
+ "@s0ae408f9a0": {
+  "x-mt": true
+ },
+ "s61c9b76fa1": "Bosch Smart Home-kameror (Eyes, 360) strömmar inte video på hemmanätverket - lägg till dem med \"Bosch Smart Home\" (privacy mode, meddelanden, ljus).",
+ "@s61c9b76fa1": {
   "x-mt": true
  },
  "s1c2786e15f": "Kameraanvändaren och lösenordet (ofta admin). ONVIF kan behöva aktiveras i kamerainställningarna.",
@@ -10846,434 +11502,6 @@
  "sda8d9bf1cd": "Uttag",
  "s06444f278d": "position (100 = stängd)",
  "@s06444f278d": {
-  "x-mt": true
- },
- "s7acc8096d2": "Logga in och godkänna",
- "@s7acc8096d2": {
-  "x-mt": true
- },
- "sa2ffc9d3a6": "Öppna inloggningssidan",
- "@sa2ffc9d3a6": {
-  "x-mt": true
- },
- "sf11edd7621": "Systemlösenord",
- "@sf11edd7621": {
-  "x-mt": true
- },
- "s6ad1f33b9a": "Bosch / Buderus uppvärmning (KM200 gateway, lokal)",
- "@s6ad1f33b9a": {
-  "x-mt": true
- },
- "sd3415a288c": "Pannor och värmepumpar med en logamatisk webb KM50/KM100/KM200/KM300 gateway (Bosch, Buderus, Junkers, IVT). Lokalt, inget moln, inga avgifter.",
- "@sd3415a288c": {
-  "x-mt": true
- },
- "s87ab70204b": "KM-gatewayens IP från routerns enhetslista (kallas ofta \"KM200\" eller dess seriell).",
- "@s87ab70204b": {
-  "x-mt": true
- },
- "s85e666e6d0": "På gateway klistermärke eller i pannmenyn: Info → Internet → Inloggningsdata.",
- "@s85e666e6d0": {
-  "x-mt": true
- },
- "s7af1e0507c": "Lösenordet du ställer in i tillverkarens app (MyDevice, EasyControl eller Buderus-appen).",
- "@s7af1e0507c": {
-  "x-mt": true
- },
- "s16f7124e42": "Bosch / Buderus (KM200 gateway, lokal)",
- "@s16f7124e42": {
-  "x-mt": true
- },
- "s911c662d27": "Gateway lösenord (KM200)",
- "@s911c662d27": {
-  "x-mt": true
- },
- "s52d4fcbe67": "På Bosch/Buderus KM gateway klistermärke eller i pannmenyn (Info → Internet → Login data).",
- "@s52d4fcbe67": {
-  "x-mt": true
- },
- "se7829f1ac5": "Privat lösenord (KM200)",
- "@se7829f1ac5": {
-  "x-mt": true
- },
- "sc6b9b9dafe": "Lösenordet du ställer in i tillverkarens app (MyDevice / EasyControl / Buderus).",
- "@sc6b9b9dafe": {
-  "x-mt": true
- },
- "s26eefc92ad": "Salt (KM200, endast om tillverkaren använder sin egen)",
- "@s26eefc92ad": {
-  "x-mt": true
- },
- "s333668bcad": "Lämna tom för att använda Bosch/Buderus publicerade standard.",
- "@s333668bcad": {
-  "x-mt": true
- },
- "s79f91561d9": "Burner modulering",
- "@s79f91561d9": {
-  "x-mt": true
- },
- "sc272460629": "Ange gateway-lösenordet och ditt eget lösenord",
- "@sc272460629": {
-  "x-mt": true
- },
- "s684b127b9d": "Värmegateway svarade men data kunde inte dekrypteras - kontrollera båda lösenorden.",
- "@s684b127b9d": {
-  "x-mt": true
- },
- "sbe369d8548": "Värmegatewayen tillåter inte att ändra detta värde",
- "@sbe369d8548": {
-  "x-mt": true
- },
- "s1222da1433": "Värmekrets",
- "@s1222da1433": {
-  "x-mt": true
- },
- "s4159d585e2": "Värmekrets(s)",
- "@s4159d585e2": {
-  "x-mt": true
- },
- "s29c5b59ddb": "Bosch Smart Home Controller",
- "@s29c5b59ddb": {
-  "x-mt": true
- },
- "sfb05679ced": "Controller IP-adress",
- "@sfb05679ced": {
-  "x-mt": true
- },
- "sd65da878fe": "Kontrollörens adress (app: Mer → System → Kontrollör, eller routerns enhetslista).",
- "@sd65da878fe": {
-  "x-mt": true
- },
- "s6f7b5bb729": "Kundcertifikat (PEM)",
- "@s6f7b5bb729": {
-  "x-mt": true
- },
- "sd21135f561": "Skapad av Molaplan när du parar. Ändra inte.",
- "@sd21135f561": {
-  "x-mt": true
- },
- "s2bc685129f": "Kundnyckel (PEM)",
- "@s2bc685129f": {
-  "x-mt": true
- },
- "sd5bfa709a3": "Controller certifikat fingeravtryck",
- "@sd5bfa709a3": {
-  "x-mt": true
- },
- "s8b133a2da5": "Säljs när du parar: Molaplan pratar bara med denna kontroller. Empty = acceptera den första.",
- "@s8b133a2da5": {
-  "x-mt": true
- },
- "s46f9aaf504": "Bosch enhet id.",
- "@s46f9aaf504": {
-  "x-mt": true
- },
- "s84d11d45ce": "E.g. TemperatureLevel, ShutterContact, PowerSwitch.",
- "@s84d11d45ce": {
-  "x-mt": true
- },
- "s4dabf0e462": "Fält",
- "@s4dabf0e462": {
-  "x-mt": true
- },
- "s9a1eb4b849": "Ett fält av servicetillståndet, t.ex. temperatur, värde, switchState.",
- "@s9a1eb4b849": {
-  "x-mt": true
- },
- "se83f02e6bd": "Vägen (andra)",
- "@se83f02e6bd": {
-  "x-mt": true
- },
- "s3a985d4cc3": "En annan väg att läsa, t.ex. /intrusion/states/system.",
- "@s3a985d4cc3": {
-  "x-mt": true
- },
- "s0d34dfcd38": "För att ändra ett tillstånd, POST för handlingar.",
- "@s0d34dfcd38": {
-  "x-mt": true
- },
- "sf8c4f6beb9": "Vägen efter /smarthome.",
- "@sf8c4f6beb9": {
-  "x-mt": true
- },
- "s3addc3df37": "Bosch-kontrollanten vägrade anslutningen (inte parad eller annan styrenhet) - lägg till den igen. ({p0})",
- "@s3addc3df37": {
-  "x-mt": true
- },
- "sc76c98702f": "Bosch Smart Home Controller svarade: {p0} enheter. Inga kommandon skickades.",
- "@sc76c98702f": {
-  "x-mt": true
- },
- "sd0368ed590": "måltavla",
- "@sd0368ed590": {
-  "x-mt": true
- },
- "sec17dd81e8": "Valve",
- "@sec17dd81e8": {
-  "x-mt": true
- },
- "saf40fb40b3": "Rökdetektor",
- "@saf40fb40b3": {
-  "x-mt": true
- },
- "s4d85116fcb": "test test test",
- "@s4d85116fcb": {
-  "x-mt": true
- },
- "s54345410a1": "Testlarm",
- "@s54345410a1": {
-  "x-mt": true
- },
- "s67c7f22d99": "Luftkvalitet",
- "@s67c7f22d99": {
-  "x-mt": true
- },
- "s4c3bb5ea0a": "rörelsedetektor",
- "@s4c3bb5ea0a": {
-  "x-mt": true
- },
- "sa6a56fa019": "Vattenläckage",
- "@sa6a56fa019": {
-  "x-mt": true
- },
- "s7c51d00219": "Kamera på",
- "@s7c51d00219": {
-  "x-mt": true
- },
- "s51cd662d6c": "Integritetsläge",
- "@s51cd662d6c": {
-  "x-mt": true
- },
- "scdc860be9e": "anmälningar",
- "@scdc860be9e": {
-  "x-mt": true
- },
- "s45c8904016": "ljust ljust ljus",
- "@s45c8904016": {
-  "x-mt": true
- },
- "s416ac1459c": "Intrångslarm",
- "@s416ac1459c": {
-  "x-mt": true
- },
- "s607339c984": "Säkerhetssäkerhet",
- "@s607339c984": {
-  "x-mt": true
- },
- "sd1d17eca81": "State + arm/disarm + mute",
- "@sd1d17eca81": {
-  "x-mt": true
- },
- "s499d3aa6f1": "Vattenlarm",
- "@s499d3aa6f1": {
-  "x-mt": true
- },
- "se57c2c4920": "Hela systemet + mute",
- "@se57c2c4920": {
-  "x-mt": true
- },
- "s2eb00b7c28": "Scenarios",
- "@s2eb00b7c28": {
-  "x-mt": true
- },
- "s38df0b3b2b": "Mute larm",
- "@s38df0b3b2b": {
-  "x-mt": true
- },
- "s1ff3dea39b": "Mössa",
- "@s1ff3dea39b": {
-  "x-mt": true
- },
- "s129317999a": "renhet",
- "@s129317999a": {
-  "x-mt": true
- },
- "sd0807cf61e": "position (100 = öppen)",
- "@sd0807cf61e": {
-  "x-mt": true
- },
- "sb02c7ee226": "Stopp stopp",
- "@sb02c7ee226": {
-  "x-mt": true
- },
- "sefdd3f7ade": "Närvaro simulering",
- "@sefdd3f7ade": {
-  "x-mt": true
- },
- "sde61b8a8a4": "Bosch Smart Home Controller (I eller II): termostater, radiatorventiler, fönster/dörrkontakter, rökdetektorer, pluggar, ljus, slutare, rörelsedetektorer, kameror och intrångslarm. Lokalt, inget moln.",
- "@sde61b8a8a4": {
-  "x-mt": true
- },
- "s3b276dcad6": "I Bosch Smart Home-appen: Mer → System → Smart Home Controller → Nätverk. Eller routerns enhetslista ( \"shc...\").",
- "@s3b276dcad6": {
-  "x-mt": true
- },
- "sc7c8ed347e": "Skriv Bosch Smart Home-lösenordet (den du skapade när du ställer in kontrollenheten). Det sparas inte. Efter att du har tryckt på \"Konnect\", tryck på knappen på framsidan av kontrollen.",
- "@sc7c8ed347e": {
-  "x-mt": true
- },
- "s608bdcb257": "Tryck på knappen på framsidan av kontrollern nu: Controller II - en kort press; den gamla kontrollern (I) - håll tills lamporna blinkar. Vänta här.",
- "@s608bdcb257": {
-  "x-mt": true
- },
- "sb98e3e97cd": "Klient-ID för din egen Home Connect-applikation (developer.home-connect.com → Applikationer).",
- "@sb98e3e97cd": {
-  "x-mt": true
- },
- "s6e05e7371c": "Kundhemlighet (om din app har en)",
- "@s6e05e7371c": {
-  "x-mt": true
- },
- "s8189ed86b7": "Från samma sida. En enhetsflödesapp fungerar vanligtvis utan den.",
- "@s8189ed86b7": {
-  "x-mt": true
- },
- "sda4f3457c2": "Sign-in Token",
- "@sda4f3457c2": {
-  "x-mt": true
- },
- "sa134f8dd4c": "Kommer från att logga in i tilläggsguiden. Ändra inte.",
- "@sa134f8dd4c": {
-  "x-mt": true
- },
- "s560a9b1bab": "Simulatorn är för utvecklare (virtuella apparater).",
- "@s560a9b1bab": {
-  "x-mt": true
- },
- "s5f614bf8c1": "Verkliga apparater",
- "@s5f614bf8c1": {
-  "x-mt": true
- },
- "s3a5c09be5b": "Home Connect simulator",
- "@s3a5c09be5b": {
-  "x-mt": true
- },
- "s6dcd74c435": "Testning endast: ersätter Home Connects adress.",
- "@s6dcd74c435": {
-  "x-mt": true
- },
- "s9de7817d1f": "Appliance id (haId)",
- "@s9de7817d1f": {
-  "x-mt": true
- },
- "s1839d16bcc": "Home Connect HaId.",
- "@s1839d16bcc": {
-  "x-mt": true
- },
- "s6efa690ee3": "Nyckeln",
- "@s6efa690ee3": {
-  "x-mt": true
- },
- "sf69f72bbac": "Status eller inställning nyckel, t.ex. BSH.Common.Status.DoorState.",
- "@sf69f72bbac": {
-  "x-mt": true
- },
- "s9d3115f45d": "Vad man ska göra på apparaten.",
- "@s9d3115f45d": {
-  "x-mt": true
- },
- "s07c53aa821": "Starta det valda programmet",
- "@s07c53aa821": {
-  "x-mt": true
- },
- "sf918a12f32": "Stoppa programmet",
- "@sf918a12f32": {
-  "x-mt": true
- },
- "s9384bc6f7e": "Inställning",
- "@s9384bc6f7e": {
-  "x-mt": true
- },
- "s6a395924ea": "Inställning av nyckel",
- "@s6a395924ea": {
-  "x-mt": true
- },
- "s378202fe0b": "Power: On / Off / Standby. Setting: värdet.",
- "@s378202fe0b": {
-  "x-mt": true
- },
- "sb1baaa4494": "Logga in på Home Connect igen",
- "@sb1baaa4494": {
-  "x-mt": true
- },
- "saa6e9765a0": "Logga in igen (Connections → Home Connect)",
- "@saa6e9765a0": {
-  "x-mt": true
- },
- "s7af74cd31e": "Home Connect-ränta nått, vänta",
- "@s7af74cd31e": {
-  "x-mt": true
- },
- "s3cdfd26282": "Home Connect räntegräns nådde",
- "@s3cdfd26282": {
-  "x-mt": true
- },
- "sf8050ebbd9": "Välj ett program på apparaten först",
- "@sf8050ebbd9": {
-  "x-mt": true
- },
- "s4673002a7e": "Fjärrstart är inte tillåtet: slå på \"Fjärrstart\" på apparaten och stäng dörren.",
- "@s4673002a7e": {
-  "x-mt": true
- },
- "scf29ca4038": "Home Connect svarade: {p0} apparater. Inga kommandon skickades.",
- "@scf29ca4038": {
-  "x-mt": true
- },
- "s77140ea0df": "Programprogram",
- "@s77140ea0df": {
-  "x-mt": true
- },
- "s09166e1ea6": "Tiden kvar",
- "@s09166e1ea6": {
-  "x-mt": true
- },
- "sfb70dcb933": "Framsteg",
- "@sfb70dcb933": {
-  "x-mt": true
- },
- "sabadf329bd": "Dörrdörr",
- "@sabadf329bd": {
-  "x-mt": true
- },
- "s7152ef5dbd": "ugnstemperatur",
- "@s7152ef5dbd": {
-  "x-mt": true
- },
- "s68d00964af": "Fridge temperature",
- "@s68d00964af": {
-  "x-mt": true
- },
- "s824d365527": "Frystemperatur",
- "@s824d365527": {
-  "x-mt": true
- },
- "sfc4a054c1a": "Dörrlarm",
- "@sfc4a054c1a": {
-  "x-mt": true
- },
- "s8253ea43e9": "Starta valt program",
- "@s8253ea43e9": {
-  "x-mt": true
- },
- "s1462af9000": "Home apparater genom ditt Home Connect-konto: tvättmaskiner, torktumlare, diskmaskiner, ugnar, kylskåp, kaffemaskiner... State, tid kvar, dörr, start och stopp.",
- "@s1462af9000": {
-  "x-mt": true
- },
- "sdc0ed8435b": "Gratis, en gång: logga in på utvecklare.home-connect.com (samma e-post som Home Connect-appen) → Ansökningar → Registrera ansökan → OAuth Flow: \"Device Flow\", Home Connect-användarkonto för testning: din e-post. Kopiera klient-ID här. En ny ansökan kan ta 15-30 min för att börja arbeta.",
- "@sdc0ed8435b": {
-  "x-mt": true
- },
- "s625166a5a9": "Endast om din ansökningssida visar en kundhemlighet.",
- "@s625166a5a9": {
-  "x-mt": true
- },
- "s0ae408f9a0": "Kameraanvändaren (tjänst, användare eller live) och lösenordet du ställer in i Konfigurationshanteraren eller på kamerans webbsida.",
- "@s0ae408f9a0": {
-  "x-mt": true
- },
- "s61c9b76fa1": "Bosch Smart Home-kameror (Eyes, 360) strömmar inte video på hemmanätverket - lägg till dem med \"Bosch Smart Home\" (privacy mode, meddelanden, ljus).",
- "@s61c9b76fa1": {
   "x-mt": true
  }
 }

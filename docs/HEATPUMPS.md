@@ -22,6 +22,9 @@ mock API built to the documentation (`test/heatpumps_*_test.dart`). Please repor
 | Any NIBE | Import the pump's own register export (CSV) on the connection page | Local | The pump's export | CSV parser tests |
 | Thermia Genesis (Atlas, Calibra, Diplomat Inverter, Mega) | Modbus TCP, Thermia doc 17.1; comfort wheel + on/off (op mode) | Local | Thermia document | Modbus simulator |
 | Bosch / Buderus / Junkers / IVT with a KM50/KM100/KM200/KM300 gateway (EMS bus boilers and heat pumps) | HTTP on port 80, AES-256-ECB body (key = MD5(gateway password + salt) ‖ MD5(salt + own password)); heating circuits, room/outdoor/supply/return/hot water, modulation, operation mode auto/manual, room setpoint | Local | Community-documented (KM200 web-km200 / km200 notes) | Mock gateway, AES-256 FIPS-197 vectors, published key example |
+| Inventor A/C air-to-air (INVmate II / EU-OSK105) and Midea, Comfee, other Midea-built units | Midea LAN V2 / V3: UDP discovery 6445/20086, TCP 6444, AES packets, V3 token + key (own NetHome Plus account, one-off) | Local | Community-documented (msmart-ng / midea-local, MIT) | Simulated unit (V2 + V3), discovery responder, mock cloud |
+| Inventor Control (Tuya white-label) | Tuya LAN 3.3 / 3.4 / 3.5, local key via own Tuya developer project; classic + "legend" data-point profiles | Local | tuya-local (MIT) | Fake Tuya device |
+| Inventor air-to-water (monoblock, hydro modules) | Modbus via RS-485→TCP converter on the wired controller port; DHW, flow water, setpoints | Local | Inventor wired-controller manual | Modbus simulator |
 | Any brand without Wi-Fi | IR blaster (Tasmota IRhvac / ESPHome, e.g. Athom IR & RF): full state each time; **Opeta uusi komento** learns extra remote buttons (IR and RF433) | Local | Existing (R054, R192) | Existing IR tests |
 
 ## Not built yet (and why)
@@ -37,7 +40,7 @@ mock API built to the documentation (`test/heatpumps_*_test.dart`). Please repor
 - **Hitachi Yutaki** (air-to-water): needs the ATW-MBS-02 Modbus gateway – a later batch.
 - **Samsung local** (port 8888): needs a per-device certificate; SmartThings covers it.
 - **MHI cloud**: not needed, the local API covers the same units.
-- **Panasonic (Comfort Cloud), LG ThinQ, Gree, Midea**: next candidates; until then IR.
+- **Panasonic (Comfort Cloud), LG ThinQ, Gree**: next candidates; until then IR.
 
 ## Architecture
 - Connection type `heatpump` (`lib/heatpumps/hp_driver.dart`): one driver, brand chosen by

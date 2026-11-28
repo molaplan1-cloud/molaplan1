@@ -6474,6 +6474,14 @@
   "x-mt": true
  },
  "s9b9b0d01a2": " (opcional)",
+ "s7acc8096d2": "Iniciar sesión y aprobar",
+ "@s7acc8096d2": {
+  "x-mt": true
+ },
+ "sa2ffc9d3a6": "Abra la página de inicio de sesión",
+ "@sa2ffc9d3a6": {
+  "x-mt": true
+ },
  "s43118959d5": "{p0} s left",
  "@s43118959d5": {
   "x-mt": true
@@ -6481,6 +6489,10 @@
  "s0a7134d0e3": "Pulsa el botón ahora",
  "s46c87a553f": "Inicia sesión en la cámara",
  "@s46c87a553f": {
+  "x-mt": true
+ },
+ "sf11edd7621": "Contraseña de sistema",
+ "@sf11edd7621": {
   "x-mt": true
  },
  "se4095d7d95": "Contraseña del dispositivo",
@@ -9691,8 +9703,128 @@
  "@s370bf1904d": {
   "x-mt": true
  },
+ "sb795949130": "- ¿Qué? - ¿Qué?",
+ "@sb795949130": {
+  "x-mt": true
+ },
+ "sd6b2f21f4a": "tiempo de conexión",
+ "@sd6b2f21f4a": {
+  "x-mt": true
+ },
+ "s6831eae697": "Midea V3 necesita un token (128 caracteres hex) y una clave (64 caracteres hex)",
+ "@s6831eae697": {
+  "x-mt": true
+ },
+ "s22a358f420": "Midea: el dispositivo no aceptó el token y la llave (ver ellos)",
+ "@s22a358f420": {
+  "x-mt": true
+ },
+ "s01f1dab4e3": "El dispositivo no envió el estado",
+ "@s01f1dab4e3": {
+  "x-mt": true
+ },
  "s6d21845355": "Encuéntrelo en la lista de dispositivos de su router o en la aplicación del fabricante (información del dispositivo).",
  "@s6d21845355": {
+  "x-mt": true
+ },
+ "s2a9d28aac1": "Esta unidad (V3) necesita un token y una llave por dispositivo. Ingrese, o ingrese su propia cuenta Midea NetHome Plus (e-mail y contraseña) y Molaplan los eches una vez desde la nube de Midea. Si la cuenta fue rechazada, compruebe los detalles. La ficha y la llave nunca van a los servidores de Molaplan.",
+ "@s2a9d28aac1": {
+  "x-mt": true
+ },
+ "s0fa435dd3b": "Acondicionador de aire del inventor (INVmate II, local)",
+ "@s0fa435dd3b": {
+  "x-mt": true
+ },
+ "s355759f7fd": "Acondicionadores de aire de inventario controlados con la aplicación INVmate II (modulo Wi-Fi EU-OSK105 o similar).El mismo protocolo Midea LAN también trabaja para Midea, Comfee y otras unidades construidas por Midea. Local, sin nube.",
+ "@s355759f7fd": {
+  "x-mt": true
+ },
+ "sfe4d46ec2d": "La IP de la unidad de su lista de dispositivos del router (a menudo llamada \"midea\".",
+ "@sfe4d46ec2d": {
+  "x-mt": true
+ },
+ "s08091212d0": "Unidades más recientes (V3) necesitan un token  token per-dispositivo y una llave. Si no los tiene, ingrese su propia cuenta Midea NetHome Plus a continuación y se capturan una vez.",
+ "@s08091212d0": {
+  "x-mt": true
+ },
+ "s0866bdcde6": "El compañero de Token.",
+ "@s0866bdcde6": {
+  "x-mt": true
+ },
+ "se0474ca270": "La ficha y la clave de la contraseña no se almacenan.",
+ "@se0474ca270": {
+  "x-mt": true
+ },
+ "sc69d2abc31": "Sólo para buscar las llaves, no guardadas en la conexión.",
+ "@sc69d2abc31": {
+  "x-mt": true
+ },
+ "scea357a8db": "La clave local de la unidad (16 caracteres) es necesaria – escribirla, o rellenar el ID de acceso y el Secreto de su propio proyecto desarrollador gratuito de Tuya y la llave es traída una vez. Si la clave es rechazada, compruebe y el id del dispositivo. La clave nunca va a los servidores de Molaplan.",
+ "@scea357a8db": {
+  "x-mt": true
+ },
+ "s1737dca975": "Acondicionador de aire de Inventor (Control de Inventor, local)",
+ "@s1737dca975": {
+  "x-mt": true
+ },
+ "s568208217c": "Acondicionadores de aire de Inventor controlado con la aplicación Inventor Control (p. ej. Leon, Legend, Comfort, Supreme, Vero). La aplicación está basada en Tuya; control sobre su red de inicio sin la nube. Necesita la llave local de la unidad una vez.",
+ "@s568208217c": {
+  "x-mt": true
+ },
+ "s0ef75068ac": "La IP de la unidad de la lista de dispositivos del router. La búsqueda normalmente la encuentra por sí misma.",
+ "@s0ef75068ac": {
+  "x-mt": true
+ },
+ "s7455130634": "Una llave de 16 caracteres. Si no la tienes, rellena tu propio proyecto desarrollador Tuya a continuación y se recoge una vez. Las unidades de Control Inventor más nuevas no pueden ser siempre las más necesarias para la aplicación Tuya.",
+ "@s7455130634": {
+  "x-mt": true
+ },
+ "s4b053856e0": "Llenado automáticamente cuando la unidad se encuentra en la red.",
+ "@s4b053856e0": {
+  "x-mt": true
+ },
+ "s3761f46313": "3.3, 3.4 o 3.5. Si se deja vacío todos son juzgados.",
+ "@s3761f46313": {
+  "x-mt": true
+ },
+ "s5b0069af62": "Tu propio proyecto gratuito de desarrollador Tuya (io Yot.tuya.com → Cloud → Crear Cloud Project → Dispositivos → Link App Account). Usar la aplicación Tuya Smart / Smart Life se añadió a la unidad.",
+ "@s5b0069af62": {
+  "x-mt": true
+ },
+ "s96dbe019ed": "A partir de la página del proyecto, no se guarda.",
+ "@s96dbe019ed": {
+  "x-mt": true
+ },
+ "s1573c32bab": "El centro de datos del proyecto, generalmente eu en Europa.",
+ "@s1573c32bab": {
+  "x-mt": true
+ },
+ "s18e2dce10d": "La bomba no respondió con los defectos (porto 502, dirección Modbus 1, ambos Modbus TCP y RTU transparente). Revise el convertidor de los terminales H1/H2, 9600 baud, 8 bits de datos, no parity. RS-485: A/B a los terminales H1/H2 del controlador cableado, 9600 baud, 8 bits de datos 1 no parity",
+ "@s18e2dce10d": {
+  "x-mt": true
+ },
+ "s3d0c432194": "Bomba de calor de aire a agua (Modbus RS-485)",
+ "@s3d0c432194": {
+  "x-mt": true
+ },
+ "s299d1b40fe": "Bombas de calor de aire a agua de inventor (monoblock series y módulos hidroeléctricos). Control a través del puerto RS-485 (H1/H2) del controlador cableado de la bomba con un convertidor RS-485–Ethernet/Wi-Fi barato: modo, punto, agua caliente, agua y temperatura exterior. Local, sin nube.",
+ "@s299d1b40fe": {
+  "x-mt": true
+ },
+ "s158de9d34a": "IP del convertidor de RS-485–Modbus (por ejemplo, Waveshare, Elfin EW11, USR-TCP232). No se puede buscar – escriba la dirección.",
+ "@s158de9d34a": {
+  "x-mt": true
+ },
+ "sbe411b8e53": "Puerto Modbus del convertidor, por lo general 502 (algunos usan 8899 o 23).",
+ "@sbe411b8e53": {
+  "x-mt": true
+ },
+ "s1f7582a270": "El conjunto de la dirección con los interruptores DIP del módulo hidráulico, predeterminado 1.",
+ "@s1f7582a270": {
+  "x-mt": true
+ },
+ "sa51903d6fa": "Dejar vacío: Modbus TCP y RTU transparente son probados. Establecer el convertidor a 9600 baud, 8 bits de datos, sin paridad, 1 bit de parada.",
+ "@sa51903d6fa": {
   "x-mt": true
  },
  "s4a91d07711": "Daikin (Wi-Fi, local)",
@@ -9799,8 +9931,28 @@
  "@scab35073e8": {
   "x-mt": true
  },
- "s5ddd513689": "Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – o cualquier otro con un mando de IR.",
- "@s5ddd513689": {
+ "s6ad1f33b9a": "CalefacciÃ3n Bosch / Buderus (puerta KM200, local)",
+ "@s6ad1f33b9a": {
+  "x-mt": true
+ },
+ "sd3415a288c": "Boilers and heat pumps with a Logamatic web KM50/KM100/KM200/KM300 gateway (Bosch, Buderus, Junkers, IVT). Local, sin nube, sin cargos.",
+ "@sd3415a288c": {
+  "x-mt": true
+ },
+ "s87ab70204b": "La IP de la puerta de entrada KM de la lista de dispositivos de su router (a menudo llamada \"KM200\" o su serie).",
+ "@s87ab70204b": {
+  "x-mt": true
+ },
+ "s85e666e6d0": "En la pegatina de la puerta o en el menú de la caldera: Info → Internet → Datos de inicio de sesión.",
+ "@s85e666e6d0": {
+  "x-mt": true
+ },
+ "s7af1e0507c": "La contraseña que se establece en la aplicación del fabricante (MyDevice, EasyControl o la aplicación Buderus).",
+ "@s7af1e0507c": {
+  "x-mt": true
+ },
+ "s6b99f7c0e5": "Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia, Inventor, o cualquiera con un control remoto IR.",
+ "@s6b99f7c0e5": {
   "x-mt": true
  },
  "s9622976fd3": "No hay unidades encontradas",
@@ -9813,6 +9965,14 @@
  },
  "sf3d77f10b9": "demasiadas solicitudes",
  "@sf3d77f10b9": {
+  "x-mt": true
+ },
+ "s2c5094f4e4": "El modo \"{p0}\" no está disponible en esta bomba",
+ "@s2c5094f4e4": {
+  "x-mt": true
+ },
+ "sb6729e0077": "Una bomba de aire a agua no tiene entorno de ventilador",
+ "@sb6729e0077": {
   "x-mt": true
  },
  "s00c7f00681": "MELCloud: e-mail equivocado o contraseña",
@@ -9835,12 +9995,36 @@
  "@sc499fab53f": {
   "x-mt": true
  },
+ "s642f888a5f": "Este modelo no tiene modo de ventilador automático",
+ "@s642f888a5f": {
+  "x-mt": true
+ },
+ "s77890f9215": "Esto no parece un acondicionador de aire (sin punto de datos de energía)",
+ "@s77890f9215": {
+  "x-mt": true
+ },
  "s4cfb5a36c9": "Daikin (Wi-Fi local)",
  "@s4cfb5a36c9": {
   "x-mt": true
  },
  "se9b4e55058": "NIBE / Thermia (Modbus TCP, local)",
  "@se9b4e55058": {
+  "x-mt": true
+ },
+ "s16f7124e42": "Bosch / Buderus (puerta KM200, local)",
+ "@s16f7124e42": {
+  "x-mt": true
+ },
+ "sc207ec4ed9": "Inventor INVmate II / Midea LAN (local)",
+ "@sc207ec4ed9": {
+  "x-mt": true
+ },
+ "sd0746c8b58": "Control de Inventor (Tuya, local)",
+ "@sd0746c8b58": {
+  "x-mt": true
+ },
+ "s49df2050fd": "Inventor air-to-water (Modbus)",
+ "@s49df2050fd": {
   "x-mt": true
  },
  "sddd6b1d42e": "Bomba de calor (integración incorporada)",
@@ -9879,20 +10063,64 @@
  "@safde071183": {
   "x-mt": true
  },
- "s2862f25983": "Token (SmartThings)",
- "@s2862f25983": {
+ "sca7b0f8de6": "Token (SmartThings / Midea V3 token)",
+ "@sca7b0f8de6": {
   "x-mt": true
  },
- "s23a4bc8253": "SmartThings acceso personal token (account.smartthings.com/tokens).",
- "@s23a4bc8253": {
+ "s0f1eaf350b": "SmartThings acceso personal token (account.smartthings.com/tokens), o el dispositivo Midea V3 token (128 caracteres hex).",
+ "@s0f1eaf350b": {
   "x-mt": true
  },
- "sef37e5048d": "Clave (Daikin BRP072C, pegatina)",
- "@sef37e5048d": {
+ "se263eae5bc": "Key (Daikin BRP072C sticker / Midea V3 llave)",
+ "@se263eae5bc": {
   "x-mt": true
  },
- "s1c339065e1": "La llave impresa en la pegatina del adaptador BRP072C.",
- "@s1c339065e1": {
+ "s29ea4d7472": "La llave impresa en la pegatina del adaptador BRP072C, o la llave del dispositivo Midea V3 (64 caracteres hex).",
+ "@s29ea4d7472": {
+  "x-mt": true
+ },
+ "s5e51da0364": "Dispositivo id (Midea / Tuya)",
+ "@s5e51da0364": {
+  "x-mt": true
+ },
+ "se463b24b80": "Midea: el id numérico appliance (fundado por la búsqueda). Tuya: el ID de dispositivo (desde la aplicación Tuya o proyecto desarrollador).",
+ "@se463b24b80": {
+  "x-mt": true
+ },
+ "s21214b52f5": "Protocolo de Midea (2 o 3)",
+ "@s21214b52f5": {
+  "x-mt": true
+ },
+ "sfd9749e4c3": "2 = no credenciales. 3 = firmware más nuevo, necesita un token y clave.",
+ "@sfd9749e4c3": {
+  "x-mt": true
+ },
+ "s7b9cbd8fc1": "Clave local (Tuya)",
+ "@s7b9cbd8fc1": {
+  "x-mt": true
+ },
+ "sefa4614c28": "La llave local de 16 caracteres del dispositivo Tuya.",
+ "@sefa4614c28": {
+  "x-mt": true
+ },
+ "sb1d45b679e": "Versión del protocolo Tuya",
+ "@sb1d45b679e": {
+  "x-mt": true
+ },
+ "s2fb2791b81": "3.3, 3.4 o 3.5 (fundado por la búsqueda).",
+ "@s2fb2791b81": {
+  "x-mt": true
+ },
+ "s284d1ca043": "Modbus framing (tcp / rtu)",
+ "@s284d1ca043": {
+  "x-mt": true
+ },
+ "s8671c4de95": "El modo de entrada RS-485: Modbus TCP o RTU transparente.",
+ "@s8671c4de95": {
+  "x-mt": true
+ },
+ "s797055e399": "RTU over TCP (transparent)",
+ "@s797055e399": {
   "x-mt": true
  },
  "se67e3e0eb9": "Client ID (myUplink)",
@@ -9903,6 +10131,30 @@
  "sa165e50f99": "Client Secret (myUplink)",
  "s332f9bc1a1": "Cliente Secret de su propia aplicación en dev.myuplink.com.",
  "@s332f9bc1a1": {
+  "x-mt": true
+ },
+ "s911c662d27": "contraseña de puerta (KM200)",
+ "@s911c662d27": {
+  "x-mt": true
+ },
+ "s52d4fcbe67": "En la pegatina de puerta Bosch/Buderus KM o en el menú de calderas (Info → Internet → Datos de inicio de sesión).",
+ "@s52d4fcbe67": {
+  "x-mt": true
+ },
+ "se7829f1ac5": "Contraseña privada (KM200)",
+ "@se7829f1ac5": {
+  "x-mt": true
+ },
+ "sc6b9b9dafe": "La contraseña que se establece en la aplicación del fabricante (MyDevice / EasyControl / Buderus).",
+ "@sc6b9b9dafe": {
+  "x-mt": true
+ },
+ "s26eefc92ad": "Sal (KM200, sólo si el fabricante utiliza su propio)",
+ "@s26eefc92ad": {
+  "x-mt": true
+ },
+ "s333668bcad": "Deja vacío para usar Bosch/Buderus'' publicado predeterminado.",
+ "@s333668bcad": {
   "x-mt": true
  },
  "sd1d4b22fc6": "Mapa del registro (Modbus)",
@@ -9986,8 +10238,20 @@
  "@s94ecb845c8": {
   "x-mt": true
  },
+ "s6ff46b02d2": "Other setting (key)",
+ "@s6ff46b02d2": {
+  "x-mt": true
+ },
  "sba2eb6d9b9": "Setpoint",
  "@sba2eb6d9b9": {
+  "x-mt": true
+ },
+ "sc8c47b547a": "Configuración de la llave (sólo \"Otro ajuste\")",
+ "@sc8c47b547a": {
+  "x-mt": true
+ },
+ "s679e5f90c2": "E.g. dhw_set (punto de agua caliente) o dhw_power (calor de agua caliente en/off).",
+ "@s679e5f90c2": {
   "x-mt": true
  },
  "s6478b264c0": "Bomba de calor \"{p0}\" ya no está en la cuenta",
@@ -9998,8 +10262,24 @@
  "@s4937d259b8": {
   "x-mt": true
  },
+ "sbd33d78695": "Configuración de clave o valor perdido",
+ "@sbd33d78695": {
+  "x-mt": true
+ },
  "s10f42a9a20": "curva",
  "@s10f42a9a20": {
+  "x-mt": true
+ },
+ "s3795df7c35": "Punto de encuentro de agua caliente",
+ "@s3795df7c35": {
+  "x-mt": true
+ },
+ "sf5a30e3b51": "Punto de referencia del agua",
+ "@sf5a30e3b51": {
+  "x-mt": true
+ },
+ "s8b6dbf3df6": "Agua caliente en",
+ "@s8b6dbf3df6": {
   "x-mt": true
  },
  "s620c04d73e": "Suministro",
@@ -10030,10 +10310,42 @@
  "@s3ca74f3ef8": {
   "x-mt": true
  },
+ "s79f91561d9": "Modulación de quemador",
+ "@s79f91561d9": {
+  "x-mt": true
+ },
+ "s447ce92cd0": "Flujo de agua",
+ "@s447ce92cd0": {
+  "x-mt": true
+ },
+ "s54fd87bce8": "Capacidad de calefacción",
+ "@s54fd87bce8": {
+  "x-mt": true
+ },
+ "sc272460629": "Introduzca la contraseña de entrada y su propia contraseña",
+ "@sc272460629": {
+  "x-mt": true
+ },
+ "s684b127b9d": "La pasarela de calefacción respondió pero los datos no podían ser descifrados – comprobar ambas contraseñas.",
+ "@s684b127b9d": {
+  "x-mt": true
+ },
+ "sbe369d8548": "La pasarela de calefacción no permite cambiar este valor",
+ "@sbe369d8548": {
+  "x-mt": true
+ },
+ "s1222da1433": "Circuito de calefacción",
+ "@s1222da1433": {
+  "x-mt": true
+ },
  "s131d0eb266": "/system/sensors/temperatures/supply_t1",
  "sac20961d10": "/system/sensors/temperatures/return",
  "s2a35dc0822": "/dhwCircuits/dhw1/actualTemp",
  "s85a3e678f3": "/heatSources/actualModulation",
+ "s4159d585e2": "circuitos de calefacción",
+ "@s4159d585e2": {
+  "x-mt": true
+ },
  "s31ec8d716e": "La mesa de cuenta de la unidad está llena. Retire un teléfono antiguo en la aplicación Smart M-Air e inténtelo de nuevo.",
  "@s31ec8d716e": {
   "x-mt": true
@@ -10281,12 +10593,92 @@
   "x-mt": true
  },
  "s50c459fbff": "Alarma",
+ "s29c5b59ddb": "Controlador de casa inteligente Bosch",
+ "@s29c5b59ddb": {
+  "x-mt": true
+ },
+ "sfb05679ced": "Dirección IP de control",
+ "@sfb05679ced": {
+  "x-mt": true
+ },
+ "sd65da878fe": "Dirección del controlador (app: More → Sistema → Controlador, o lista de dispositivos del router).",
+ "@sd65da878fe": {
+  "x-mt": true
+ },
+ "s6f7b5bb729": "Certificado de cliente (PEM)",
+ "@s6f7b5bb729": {
+  "x-mt": true
+ },
+ "sd21135f561": "Creado por Molaplan al emparejar. No cambies.",
+ "@sd21135f561": {
+  "x-mt": true
+ },
+ "s2bc685129f": "Clave de cliente (PEM)",
+ "@s2bc685129f": {
+  "x-mt": true
+ },
+ "sd5bfa709a3": "Marca del certificado de control",
+ "@sd5bfa709a3": {
+  "x-mt": true
+ },
+ "s8b133a2da5": "Guardado al emparejar: Molaplan sólo habla con este controlador. Vacío = aceptar el primero.",
+ "@s8b133a2da5": {
+  "x-mt": true
+ },
+ "s46f9aaf504": "El dispositivo Bosch id.",
+ "@s46f9aaf504": {
+  "x-mt": true
+ },
+ "s84d11d45ce": "Por ejemplo, TemperaturaNivel, ShutterContacto, PowerSwitch.",
+ "@s84d11d45ce": {
+  "x-mt": true
+ },
+ "s4dabf0e462": "Campo",
+ "@s4dabf0e462": {
+  "x-mt": true
+ },
+ "s9a1eb4b849": "Un campo del estado de servicio, por ejemplo temperatura, valor, cambio de estado.",
+ "@s9a1eb4b849": {
+  "x-mt": true
+ },
+ "se83f02e6bd": "Camino (otro)",
+ "@se83f02e6bd": {
+  "x-mt": true
+ },
+ "s3a985d4cc3": "Otro camino para leer, por ejemplo /intrusión/estados/sistema.",
+ "@s3a985d4cc3": {
+  "x-mt": true
+ },
+ "s0d34dfcd38": "PUT para cambiar un estado, POST para acciones.",
+ "@s0d34dfcd38": {
+  "x-mt": true
+ },
+ "sf8c4f6beb9": "Camino tras / casa.",
+ "@sf8c4f6beb9": {
+  "x-mt": true
+ },
  "s5632684130": "'JSON, e.g. {\"@type\":\"powerSwitchState\",\"switchState\":\"ON\"}.'",
+ "s3addc3df37": "El controlador Bosch rechazó la conexión (no emparejado o un controlador diferente) – añadirlo de nuevo. ({p0})",
+ "@s3addc3df37": {
+  "x-mt": true
+ },
+ "sc76c98702f": "✓ El controlador Bosch Smart Home respondió: {p0} dispositivos. No se enviaron comandos.",
+ "@sc76c98702f": {
+  "x-mt": true
+ },
  "sd9b6de0a6a": "Otros",
  "@sd9b6de0a6a": {
   "x-mt": true
  },
  "s4dbb677293": "inalcanzable",
+ "sd0368ed590": "objetivo",
+ "@sd0368ed590": {
+  "x-mt": true
+ },
+ "sec17dd81e8": "válvula",
+ "@sec17dd81e8": {
+  "x-mt": true
+ },
  "s0b2f7d7c80": "abierto",
  "@s0b2f7d7c80": {
   "x-mt": true
@@ -10295,7 +10687,87 @@
  "@s7009587b85": {
   "x-mt": true
  },
+ "saf40fb40b3": "detector de humos",
+ "@saf40fb40b3": {
+  "x-mt": true
+ },
+ "s4d85116fcb": "prueba",
+ "@s4d85116fcb": {
+  "x-mt": true
+ },
+ "s54345410a1": "alarma de prueba",
+ "@s54345410a1": {
+  "x-mt": true
+ },
+ "s67c7f22d99": "calidad del aire",
+ "@s67c7f22d99": {
+  "x-mt": true
+ },
+ "s4c3bb5ea0a": "detector de movimiento",
+ "@s4c3bb5ea0a": {
+  "x-mt": true
+ },
+ "sa6a56fa019": "filtración de agua",
+ "@sa6a56fa019": {
+  "x-mt": true
+ },
+ "s7c51d00219": "cámara en",
+ "@s7c51d00219": {
+  "x-mt": true
+ },
+ "s51cd662d6c": "modo de privacidad",
+ "@s51cd662d6c": {
+  "x-mt": true
+ },
+ "scdc860be9e": "notificaciones",
+ "@scdc860be9e": {
+  "x-mt": true
+ },
+ "s45c8904016": "luz",
+ "@s45c8904016": {
+  "x-mt": true
+ },
+ "s416ac1459c": "Alarma de intrusión",
+ "@s416ac1459c": {
+  "x-mt": true
+ },
+ "s607339c984": "Seguridad",
+ "@s607339c984": {
+  "x-mt": true
+ },
+ "sd1d17eca81": "estado + brazo/desarma + mute",
+ "@sd1d17eca81": {
+  "x-mt": true
+ },
+ "s499d3aa6f1": "Alarma de agua",
+ "@s499d3aa6f1": {
+  "x-mt": true
+ },
+ "se57c2c4920": "sistema completo + mute",
+ "@se57c2c4920": {
+  "x-mt": true
+ },
+ "s2eb00b7c28": "Escenarios",
+ "@s2eb00b7c28": {
+  "x-mt": true
+ },
+ "s38df0b3b2b": "Mute alarm",
+ "@s38df0b3b2b": {
+  "x-mt": true
+ },
+ "s1ff3dea39b": "mute",
+ "@s1ff3dea39b": {
+  "x-mt": true
+ },
  "s373ab1c97c": "GOOD=Good;MEDIUM=Medium;BAD=Bad",
+ "s129317999a": "pureza",
+ "@s129317999a": {
+  "x-mt": true
+ },
+ "sd0807cf61e": "posición (100 = abierta)",
+ "@sd0807cf61e": {
+  "x-mt": true
+ },
  "sdb34e99ef6": "abierto",
  "@sdb34e99ef6": {
   "x-mt": true
@@ -10304,7 +10776,31 @@
  "@s7fc017b0f0": {
   "x-mt": true
  },
+ "sb02c7ee226": "Para",
+ "@sb02c7ee226": {
+  "x-mt": true
+ },
+ "sefdd3f7ade": "simulación de presencia",
+ "@sefdd3f7ade": {
+  "x-mt": true
+ },
  "s16bc9ff328": "Bosch Smart Home",
+ "sde61b8a8a4": "Controlador de casa inteligente Bosch (I o II): termostatos, válvulas de radiador, contactos de ventana / puerta, detectores de humo, enchufes, luces, persianas, detectores de movimiento, cámaras y la alarma de intrusión. Local, ninguna nube.",
+ "@sde61b8a8a4": {
+  "x-mt": true
+ },
+ "s3b276dcad6": "En la aplicación Bosch Smart Home: Más → Sistema → Smart Home Controller → Red. O lista de dispositivos del router (\"shc...\").",
+ "@s3b276dcad6": {
+  "x-mt": true
+ },
+ "sc7c8ed347e": "Escriba la contraseña del sistema Bosch Smart Home (el que creó al configurar el controlador). No se guarda. Después de tocar \"Connect\", presione el botón en la parte frontal del controlador.",
+ "@sc7c8ed347e": {
+  "x-mt": true
+ },
+ "s608bdcb257": "Presione el botón en la parte frontal del controlador ahora: Controlador II – una prensa corta; el viejo controlador (I) – espere hasta que las luces parpadeen. Espere aquí.",
+ "@s608bdcb257": {
+  "x-mt": true
+ },
  "s1a73b397a1": "hijo de puta",
  "@s1a73b397a1": {
   "x-mt": true
@@ -10610,8 +11106,160 @@
  },
  "s623040a63a": "Inactive=Inactive;Ready=Ready;DelayedStart=Delayed start;Run=Running;Pause=Paused;ActionRequired=Action required;Finished=Finished;Error=Error;Aborting=Aborting;Offline=Offline",
  "s417e8a2ba4": "Home Connect (Bosch, Siemens, Neff, Gaggenau)",
+ "sb98e3e97cd": "ID de cliente de su propia aplicación Home Connect (developer.home-connect.com → Aplicaciones).",
+ "@sb98e3e97cd": {
+  "x-mt": true
+ },
+ "s6e05e7371c": "Secreto del Cliente (si su aplicación tiene uno)",
+ "@s6e05e7371c": {
+  "x-mt": true
+ },
+ "s8189ed86b7": "Desde la misma página. Una aplicación de flujo de dispositivo generalmente funciona sin ella.",
+ "@s8189ed86b7": {
+  "x-mt": true
+ },
+ "sda4f3457c2": "Sign-in token",
+ "@sda4f3457c2": {
+  "x-mt": true
+ },
+ "sa134f8dd4c": "Viene de firmar en el asistente adicional. No cambies.",
+ "@sa134f8dd4c": {
+  "x-mt": true
+ },
+ "s560a9b1bab": "El simulador es para desarrolladores (electrodomésticos virtuales).",
+ "@s560a9b1bab": {
+  "x-mt": true
+ },
+ "s5f614bf8c1": "Electrodomésticos reales",
+ "@s5f614bf8c1": {
+  "x-mt": true
+ },
+ "s3a5c09be5b": "Home Connect simulator",
+ "@s3a5c09be5b": {
+  "x-mt": true
+ },
+ "s6dcd74c435": "Probando solamente: reemplaza la dirección de Home Connect.",
+ "@s6dcd74c435": {
+  "x-mt": true
+ },
+ "s9de7817d1f": "Aplicar id (haId)",
+ "@s9de7817d1f": {
+  "x-mt": true
+ },
+ "s1839d16bcc": "El casco de Home Connect.",
+ "@s1839d16bcc": {
+  "x-mt": true
+ },
+ "s6efa690ee3": "Clave",
+ "@s6efa690ee3": {
+  "x-mt": true
+ },
+ "sf69f72bbac": "Estado o clave de configuración, por ejemplo BSH.Common.Status.DoorState.",
+ "@sf69f72bbac": {
+  "x-mt": true
+ },
+ "s9d3115f45d": "Qué hacer con el aparato.",
+ "@s9d3115f45d": {
+  "x-mt": true
+ },
+ "s07c53aa821": "Iniciar el programa seleccionado",
+ "@s07c53aa821": {
+  "x-mt": true
+ },
+ "sf918a12f32": "Para el programa",
+ "@sf918a12f32": {
+  "x-mt": true
+ },
+ "s9384bc6f7e": "Configuración",
+ "@s9384bc6f7e": {
+  "x-mt": true
+ },
+ "s6a395924ea": "Configuración de la clave",
+ "@s6a395924ea": {
+  "x-mt": true
+ },
  "sc58b6af7f5": "Only \"Setting\": the key.",
+ "s378202fe0b": "Potencia: En / Off / Standby. Ajuste: el valor.",
+ "@s378202fe0b": {
+  "x-mt": true
+ },
+ "sb1baaa4494": "iniciar sesión en Inicio Conectar de nuevo",
+ "@sb1baaa4494": {
+  "x-mt": true
+ },
+ "saa6e9765a0": "iniciar sesión de nuevo (Connecciones → Inicio Conectar)",
+ "@saa6e9765a0": {
+  "x-mt": true
+ },
+ "s7af74cd31e": "Inicio límite de velocidad de conexión alcanzado, espera",
+ "@s7af74cd31e": {
+  "x-mt": true
+ },
+ "s3cdfd26282": "Inicio límite de velocidad de conexión alcanzado",
+ "@s3cdfd26282": {
+  "x-mt": true
+ },
+ "sf8050ebbd9": "Seleccione un programa en el dispositivo primero",
+ "@sf8050ebbd9": {
+  "x-mt": true
+ },
+ "s4673002a7e": "No se permite el arranque remoto: encienda \"Remote Start\" en el dispositivo y cierre la puerta.",
+ "@s4673002a7e": {
+  "x-mt": true
+ },
+ "scf29ca4038": "✓ Home Connect respondió: {p0} electrodomésticos. No se enviaron órdenes.",
+ "@scf29ca4038": {
+  "x-mt": true
+ },
  "see67742c70": "sin conexión",
+ "s77140ea0df": "programa",
+ "@s77140ea0df": {
+  "x-mt": true
+ },
+ "s09166e1ea6": "tiempo restante",
+ "@s09166e1ea6": {
+  "x-mt": true
+ },
+ "sfb70dcb933": "Avances",
+ "@sfb70dcb933": {
+  "x-mt": true
+ },
+ "sabadf329bd": "puerta",
+ "@sabadf329bd": {
+  "x-mt": true
+ },
+ "s7152ef5dbd": "temperatura del horno",
+ "@s7152ef5dbd": {
+  "x-mt": true
+ },
+ "s68d00964af": "temperatura de frigorífico",
+ "@s68d00964af": {
+  "x-mt": true
+ },
+ "s824d365527": "Temperatura del congelador",
+ "@s824d365527": {
+  "x-mt": true
+ },
+ "sfc4a054c1a": "alarma de puerta",
+ "@sfc4a054c1a": {
+  "x-mt": true
+ },
+ "s8253ea43e9": "inicio programa seleccionado",
+ "@s8253ea43e9": {
+  "x-mt": true
+ },
+ "s1462af9000": "Electrodomésticos a través de su cuenta Home Connect: lavadoras, secadoras, lavavajillas, hornos, neveras, cafeteras... Estado, hora izquierda, puerta, inicio y parada. Gratis.",
+ "@s1462af9000": {
+  "x-mt": true
+ },
+ "sdc0ed8435b": "Gratis, una vez: inicia sesión en developer.home-connect.com (same e-mail as the Home Connect app) → Aplicaciones → Regístrate aplicación → OAuth Flow: \"Device Flow\", Inicio Conectar Cuenta de Usuario para Pruebas: tu e-mail. Copiar el ID de cliente aquí. Una nueva aplicación puede tomar 15–30 min para empezar a trabajar.",
+ "@sdc0ed8435b": {
+  "x-mt": true
+ },
+ "s625166a5a9": "Sólo si su página de aplicación muestra un Secreto del Cliente.",
+ "@s625166a5a9": {
+  "x-mt": true
+ },
  "s0185672be7": "El usuario de la cámara (generalmente admin) y la contraseña que se establece al activarla.",
  "@s0185672be7": {
   "x-mt": true
@@ -10650,6 +11298,14 @@
  },
  "s1a3c354399": "eWeLink app → cámara → Ajustes: encienda RTSP/ONVIF y establezca un usuario y contraseña para él (si la opción existe).",
  "@s1a3c354399": {
+  "x-mt": true
+ },
+ "s0ae408f9a0": "El usuario de la cámara (servicio, usuario o en vivo) y la contraseña que se establece en Configuration Manager o en la página web de la cámara.",
+ "@s0ae408f9a0": {
+  "x-mt": true
+ },
+ "s61c9b76fa1": "Las cámaras Bosch Smart Home (Eyes, 360) no transmiten vídeo en la red de inicio – agreguelas con \"Bosch Smart Home\" (modo privado, notificaciones, luz).",
+ "@s61c9b76fa1": {
   "x-mt": true
  },
  "s1c2786e15f": "El usuario de la cámara y la contraseña (a menudo admin). ONVIF puede necesitar ser habilitado en la configuración de la cámara.",
@@ -10828,434 +11484,6 @@
  "sda8d9bf1cd": "Enchufe",
  "s06444f278d": "posición (100 = cerrada)",
  "@s06444f278d": {
-  "x-mt": true
- },
- "s7acc8096d2": "Iniciar sesión y aprobar",
- "@s7acc8096d2": {
-  "x-mt": true
- },
- "sa2ffc9d3a6": "Abra la página de inicio de sesión",
- "@sa2ffc9d3a6": {
-  "x-mt": true
- },
- "sf11edd7621": "Contraseña de sistema",
- "@sf11edd7621": {
-  "x-mt": true
- },
- "s6ad1f33b9a": "CalefacciÃ3n Bosch / Buderus (puerta KM200, local)",
- "@s6ad1f33b9a": {
-  "x-mt": true
- },
- "sd3415a288c": "Boilers and heat pumps with a Logamatic web KM50/KM100/KM200/KM300 gateway (Bosch, Buderus, Junkers, IVT). Local, sin nube, sin cargos.",
- "@sd3415a288c": {
-  "x-mt": true
- },
- "s87ab70204b": "La IP de la puerta de entrada KM de la lista de dispositivos de su router (a menudo llamada \"KM200\" o su serie).",
- "@s87ab70204b": {
-  "x-mt": true
- },
- "s85e666e6d0": "En la pegatina de la puerta o en el menú de la caldera: Info → Internet → Datos de inicio de sesión.",
- "@s85e666e6d0": {
-  "x-mt": true
- },
- "s7af1e0507c": "La contraseña que se establece en la aplicación del fabricante (MyDevice, EasyControl o la aplicación Buderus).",
- "@s7af1e0507c": {
-  "x-mt": true
- },
- "s16f7124e42": "Bosch / Buderus (puerta KM200, local)",
- "@s16f7124e42": {
-  "x-mt": true
- },
- "s911c662d27": "contraseña de puerta (KM200)",
- "@s911c662d27": {
-  "x-mt": true
- },
- "s52d4fcbe67": "En la pegatina de puerta Bosch/Buderus KM o en el menú de calderas (Info → Internet → Datos de inicio de sesión).",
- "@s52d4fcbe67": {
-  "x-mt": true
- },
- "se7829f1ac5": "Contraseña privada (KM200)",
- "@se7829f1ac5": {
-  "x-mt": true
- },
- "sc6b9b9dafe": "La contraseña que se establece en la aplicación del fabricante (MyDevice / EasyControl / Buderus).",
- "@sc6b9b9dafe": {
-  "x-mt": true
- },
- "s26eefc92ad": "Sal (KM200, sólo si el fabricante utiliza su propio)",
- "@s26eefc92ad": {
-  "x-mt": true
- },
- "s333668bcad": "Deja vacío para usar Bosch/Buderus'' publicado predeterminado.",
- "@s333668bcad": {
-  "x-mt": true
- },
- "s79f91561d9": "Modulación de quemador",
- "@s79f91561d9": {
-  "x-mt": true
- },
- "sc272460629": "Introduzca la contraseña de entrada y su propia contraseña",
- "@sc272460629": {
-  "x-mt": true
- },
- "s684b127b9d": "La pasarela de calefacción respondió pero los datos no podían ser descifrados – comprobar ambas contraseñas.",
- "@s684b127b9d": {
-  "x-mt": true
- },
- "sbe369d8548": "La pasarela de calefacción no permite cambiar este valor",
- "@sbe369d8548": {
-  "x-mt": true
- },
- "s1222da1433": "Circuito de calefacción",
- "@s1222da1433": {
-  "x-mt": true
- },
- "s4159d585e2": "circuitos de calefacción",
- "@s4159d585e2": {
-  "x-mt": true
- },
- "s29c5b59ddb": "Controlador de casa inteligente Bosch",
- "@s29c5b59ddb": {
-  "x-mt": true
- },
- "sfb05679ced": "Dirección IP de control",
- "@sfb05679ced": {
-  "x-mt": true
- },
- "sd65da878fe": "Dirección del controlador (app: More → Sistema → Controlador, o lista de dispositivos del router).",
- "@sd65da878fe": {
-  "x-mt": true
- },
- "s6f7b5bb729": "Certificado de cliente (PEM)",
- "@s6f7b5bb729": {
-  "x-mt": true
- },
- "sd21135f561": "Creado por Molaplan al emparejar. No cambies.",
- "@sd21135f561": {
-  "x-mt": true
- },
- "s2bc685129f": "Clave de cliente (PEM)",
- "@s2bc685129f": {
-  "x-mt": true
- },
- "sd5bfa709a3": "Marca del certificado de control",
- "@sd5bfa709a3": {
-  "x-mt": true
- },
- "s8b133a2da5": "Guardado al emparejar: Molaplan sólo habla con este controlador. Vacío = aceptar el primero.",
- "@s8b133a2da5": {
-  "x-mt": true
- },
- "s46f9aaf504": "El dispositivo Bosch id.",
- "@s46f9aaf504": {
-  "x-mt": true
- },
- "s84d11d45ce": "Por ejemplo, TemperaturaNivel, ShutterContacto, PowerSwitch.",
- "@s84d11d45ce": {
-  "x-mt": true
- },
- "s4dabf0e462": "Campo",
- "@s4dabf0e462": {
-  "x-mt": true
- },
- "s9a1eb4b849": "Un campo del estado de servicio, por ejemplo temperatura, valor, cambio de estado.",
- "@s9a1eb4b849": {
-  "x-mt": true
- },
- "se83f02e6bd": "Camino (otro)",
- "@se83f02e6bd": {
-  "x-mt": true
- },
- "s3a985d4cc3": "Otro camino para leer, por ejemplo /intrusión/estados/sistema.",
- "@s3a985d4cc3": {
-  "x-mt": true
- },
- "s0d34dfcd38": "PUT para cambiar un estado, POST para acciones.",
- "@s0d34dfcd38": {
-  "x-mt": true
- },
- "sf8c4f6beb9": "Camino tras / casa.",
- "@sf8c4f6beb9": {
-  "x-mt": true
- },
- "s3addc3df37": "El controlador Bosch rechazó la conexión (no emparejado o un controlador diferente) – añadirlo de nuevo. ({p0})",
- "@s3addc3df37": {
-  "x-mt": true
- },
- "sc76c98702f": "✓ El controlador Bosch Smart Home respondió: {p0} dispositivos. No se enviaron comandos.",
- "@sc76c98702f": {
-  "x-mt": true
- },
- "sd0368ed590": "objetivo",
- "@sd0368ed590": {
-  "x-mt": true
- },
- "sec17dd81e8": "válvula",
- "@sec17dd81e8": {
-  "x-mt": true
- },
- "saf40fb40b3": "detector de humos",
- "@saf40fb40b3": {
-  "x-mt": true
- },
- "s4d85116fcb": "prueba",
- "@s4d85116fcb": {
-  "x-mt": true
- },
- "s54345410a1": "alarma de prueba",
- "@s54345410a1": {
-  "x-mt": true
- },
- "s67c7f22d99": "calidad del aire",
- "@s67c7f22d99": {
-  "x-mt": true
- },
- "s4c3bb5ea0a": "detector de movimiento",
- "@s4c3bb5ea0a": {
-  "x-mt": true
- },
- "sa6a56fa019": "filtración de agua",
- "@sa6a56fa019": {
-  "x-mt": true
- },
- "s7c51d00219": "cámara en",
- "@s7c51d00219": {
-  "x-mt": true
- },
- "s51cd662d6c": "modo de privacidad",
- "@s51cd662d6c": {
-  "x-mt": true
- },
- "scdc860be9e": "notificaciones",
- "@scdc860be9e": {
-  "x-mt": true
- },
- "s45c8904016": "luz",
- "@s45c8904016": {
-  "x-mt": true
- },
- "s416ac1459c": "Alarma de intrusión",
- "@s416ac1459c": {
-  "x-mt": true
- },
- "s607339c984": "Seguridad",
- "@s607339c984": {
-  "x-mt": true
- },
- "sd1d17eca81": "estado + brazo/desarma + mute",
- "@sd1d17eca81": {
-  "x-mt": true
- },
- "s499d3aa6f1": "Alarma de agua",
- "@s499d3aa6f1": {
-  "x-mt": true
- },
- "se57c2c4920": "sistema completo + mute",
- "@se57c2c4920": {
-  "x-mt": true
- },
- "s2eb00b7c28": "Escenarios",
- "@s2eb00b7c28": {
-  "x-mt": true
- },
- "s38df0b3b2b": "Mute alarm",
- "@s38df0b3b2b": {
-  "x-mt": true
- },
- "s1ff3dea39b": "mute",
- "@s1ff3dea39b": {
-  "x-mt": true
- },
- "s129317999a": "pureza",
- "@s129317999a": {
-  "x-mt": true
- },
- "sd0807cf61e": "posición (100 = abierta)",
- "@sd0807cf61e": {
-  "x-mt": true
- },
- "sb02c7ee226": "Para",
- "@sb02c7ee226": {
-  "x-mt": true
- },
- "sefdd3f7ade": "simulación de presencia",
- "@sefdd3f7ade": {
-  "x-mt": true
- },
- "sde61b8a8a4": "Controlador de casa inteligente Bosch (I o II): termostatos, válvulas de radiador, contactos de ventana / puerta, detectores de humo, enchufes, luces, persianas, detectores de movimiento, cámaras y la alarma de intrusión. Local, ninguna nube.",
- "@sde61b8a8a4": {
-  "x-mt": true
- },
- "s3b276dcad6": "En la aplicación Bosch Smart Home: Más → Sistema → Smart Home Controller → Red. O lista de dispositivos del router (\"shc...\").",
- "@s3b276dcad6": {
-  "x-mt": true
- },
- "sc7c8ed347e": "Escriba la contraseña del sistema Bosch Smart Home (el que creó al configurar el controlador). No se guarda. Después de tocar \"Connect\", presione el botón en la parte frontal del controlador.",
- "@sc7c8ed347e": {
-  "x-mt": true
- },
- "s608bdcb257": "Presione el botón en la parte frontal del controlador ahora: Controlador II – una prensa corta; el viejo controlador (I) – espere hasta que las luces parpadeen. Espere aquí.",
- "@s608bdcb257": {
-  "x-mt": true
- },
- "sb98e3e97cd": "ID de cliente de su propia aplicación Home Connect (developer.home-connect.com → Aplicaciones).",
- "@sb98e3e97cd": {
-  "x-mt": true
- },
- "s6e05e7371c": "Secreto del Cliente (si su aplicación tiene uno)",
- "@s6e05e7371c": {
-  "x-mt": true
- },
- "s8189ed86b7": "Desde la misma página. Una aplicación de flujo de dispositivo generalmente funciona sin ella.",
- "@s8189ed86b7": {
-  "x-mt": true
- },
- "sda4f3457c2": "Sign-in token",
- "@sda4f3457c2": {
-  "x-mt": true
- },
- "sa134f8dd4c": "Viene de firmar en el asistente adicional. No cambies.",
- "@sa134f8dd4c": {
-  "x-mt": true
- },
- "s560a9b1bab": "El simulador es para desarrolladores (electrodomésticos virtuales).",
- "@s560a9b1bab": {
-  "x-mt": true
- },
- "s5f614bf8c1": "Electrodomésticos reales",
- "@s5f614bf8c1": {
-  "x-mt": true
- },
- "s3a5c09be5b": "Home Connect simulator",
- "@s3a5c09be5b": {
-  "x-mt": true
- },
- "s6dcd74c435": "Probando solamente: reemplaza la dirección de Home Connect.",
- "@s6dcd74c435": {
-  "x-mt": true
- },
- "s9de7817d1f": "Aplicar id (haId)",
- "@s9de7817d1f": {
-  "x-mt": true
- },
- "s1839d16bcc": "El casco de Home Connect.",
- "@s1839d16bcc": {
-  "x-mt": true
- },
- "s6efa690ee3": "Clave",
- "@s6efa690ee3": {
-  "x-mt": true
- },
- "sf69f72bbac": "Estado o clave de configuración, por ejemplo BSH.Common.Status.DoorState.",
- "@sf69f72bbac": {
-  "x-mt": true
- },
- "s9d3115f45d": "Qué hacer con el aparato.",
- "@s9d3115f45d": {
-  "x-mt": true
- },
- "s07c53aa821": "Iniciar el programa seleccionado",
- "@s07c53aa821": {
-  "x-mt": true
- },
- "sf918a12f32": "Para el programa",
- "@sf918a12f32": {
-  "x-mt": true
- },
- "s9384bc6f7e": "Configuración",
- "@s9384bc6f7e": {
-  "x-mt": true
- },
- "s6a395924ea": "Configuración de la clave",
- "@s6a395924ea": {
-  "x-mt": true
- },
- "s378202fe0b": "Potencia: En / Off / Standby. Ajuste: el valor.",
- "@s378202fe0b": {
-  "x-mt": true
- },
- "sb1baaa4494": "iniciar sesión en Inicio Conectar de nuevo",
- "@sb1baaa4494": {
-  "x-mt": true
- },
- "saa6e9765a0": "iniciar sesión de nuevo (Connecciones → Inicio Conectar)",
- "@saa6e9765a0": {
-  "x-mt": true
- },
- "s7af74cd31e": "Inicio límite de velocidad de conexión alcanzado, espera",
- "@s7af74cd31e": {
-  "x-mt": true
- },
- "s3cdfd26282": "Inicio límite de velocidad de conexión alcanzado",
- "@s3cdfd26282": {
-  "x-mt": true
- },
- "sf8050ebbd9": "Seleccione un programa en el dispositivo primero",
- "@sf8050ebbd9": {
-  "x-mt": true
- },
- "s4673002a7e": "No se permite el arranque remoto: encienda \"Remote Start\" en el dispositivo y cierre la puerta.",
- "@s4673002a7e": {
-  "x-mt": true
- },
- "scf29ca4038": "✓ Home Connect respondió: {p0} electrodomésticos. No se enviaron órdenes.",
- "@scf29ca4038": {
-  "x-mt": true
- },
- "s77140ea0df": "programa",
- "@s77140ea0df": {
-  "x-mt": true
- },
- "s09166e1ea6": "tiempo restante",
- "@s09166e1ea6": {
-  "x-mt": true
- },
- "sfb70dcb933": "Avances",
- "@sfb70dcb933": {
-  "x-mt": true
- },
- "sabadf329bd": "puerta",
- "@sabadf329bd": {
-  "x-mt": true
- },
- "s7152ef5dbd": "temperatura del horno",
- "@s7152ef5dbd": {
-  "x-mt": true
- },
- "s68d00964af": "temperatura de frigorífico",
- "@s68d00964af": {
-  "x-mt": true
- },
- "s824d365527": "Temperatura del congelador",
- "@s824d365527": {
-  "x-mt": true
- },
- "sfc4a054c1a": "alarma de puerta",
- "@sfc4a054c1a": {
-  "x-mt": true
- },
- "s8253ea43e9": "inicio programa seleccionado",
- "@s8253ea43e9": {
-  "x-mt": true
- },
- "s1462af9000": "Electrodomésticos a través de su cuenta Home Connect: lavadoras, secadoras, lavavajillas, hornos, neveras, cafeteras... Estado, hora izquierda, puerta, inicio y parada. Gratis.",
- "@s1462af9000": {
-  "x-mt": true
- },
- "sdc0ed8435b": "Gratis, una vez: inicia sesión en developer.home-connect.com (same e-mail as the Home Connect app) → Aplicaciones → Regístrate aplicación → OAuth Flow: \"Device Flow\", Inicio Conectar Cuenta de Usuario para Pruebas: tu e-mail. Copiar el ID de cliente aquí. Una nueva aplicación puede tomar 15–30 min para empezar a trabajar.",
- "@sdc0ed8435b": {
-  "x-mt": true
- },
- "s625166a5a9": "Sólo si su página de aplicación muestra un Secreto del Cliente.",
- "@s625166a5a9": {
-  "x-mt": true
- },
- "s0ae408f9a0": "El usuario de la cámara (servicio, usuario o en vivo) y la contraseña que se establece en Configuration Manager o en la página web de la cámara.",
- "@s0ae408f9a0": {
-  "x-mt": true
- },
- "s61c9b76fa1": "Las cámaras Bosch Smart Home (Eyes, 360) no transmiten vídeo en la red de inicio – agreguelas con \"Bosch Smart Home\" (modo privado, notificaciones, luz).",
- "@s61c9b76fa1": {
   "x-mt": true
  }
 }

@@ -54,8 +54,11 @@ class HpState {
     this.targetKind = 'temp',
     this.action = '',
     Map<String, double>? extra,
+    Map<String, List<double>>? setpoints,
+    this.switches = const [],
     this.online = true,
-  }) : extra = extra ?? {};
+  }) : extra = extra ?? {},
+       setpoints = setpoints ?? {};
 
   bool? power;
   String mode;
@@ -74,6 +77,13 @@ class HpState {
   /// Other readings with stable keys: supply, return, hot_water, brine_in, brine_out,
   /// degree_minutes, compressor_hz, energy_kwh … (shown as optional value tiles).
   Map<String, double> extra;
+
+  /// R573 (t326u): further settable values (key → [min, max, step]), e.g. `dhw_set` (hot water
+  /// setpoint of an air-to-water pump). Their current value is in [extra]; they get slider tiles.
+  Map<String, List<double>> setpoints;
+
+  /// Keys of on/off switches besides the main power (e.g. `dhw_power`); the state (1 / 0) is in [extra].
+  List<String> switches;
   bool online;
 
   /// Mode shown by the climate tile ('off' when the unit is off).
@@ -97,6 +107,8 @@ class HpState {
     'targetKind': targetKind,
     'action': action,
     'extra': extra,
+    if (setpoints.isNotEmpty) 'setpoints': setpoints,
+    if (switches.isNotEmpty) 'switches': switches,
     'online': online,
   };
 
@@ -116,15 +128,18 @@ class HpState {
 
 /// What to change. Null fields stay as they are.
 class HpChange {
-  HpChange({this.power, this.mode, this.target, this.fan});
+  HpChange({this.power, this.mode, this.target, this.fan, this.extra});
   bool? power;
   String? mode;
   double? target;
   String? fan;
 
-  bool get isEmpty => power == null && mode == null && target == null && fan == null;
+  /// Other settable values by key (see [HpState.setpoints] / [HpState.switches]); switches 1 / 0.
+  Map<String, double>? extra;
+
+  bool get isEmpty => power == null && mode == null && target == null && fan == null && (extra?.isEmpty ?? true);
   @override
-  String toString() => 'HpChange(power: $power, mode: $mode, target: $target, fan: $fan)';
+  String toString() => 'HpChange(power: $power, mode: $mode, target: $target, fan: $fan, extra: $extra)';
 }
 
 class HpAuthError extends DriverException {

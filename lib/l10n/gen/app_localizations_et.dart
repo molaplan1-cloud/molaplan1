@@ -10500,8 +10500,119 @@ class AppLocalizationsEt extends AppLocalizations {
       'Maapealse allika pumba režiimi siin ei muudeta - ainult seadeväärtus.';
 
   @override
+  String get sb795949130 => 'Midea: vale märk või võti';
+
+  @override
+  String get sd6b2f21f4a => 'ühenduse aegumine';
+
+  @override
+  String get s6831eae697 =>
+      'Midea V3 vajab märki (128 hex märki) ja võtit (64 kuus märki)';
+
+  @override
+  String get s22a358f420 =>
+      'Midea: seade ei aktsepteerinud märki ja võtit (kontrollige neid)';
+
+  @override
+  String get s01f1dab4e3 => 'Midea: seade ei saatnud olekut';
+
+  @override
   String get s6d21845355 =>
       'Leidke see ruuteri seadmete loendist või valmistaja rakendusest (seadme info).';
+
+  @override
+  String get s2a9d28aac1 =>
+      'See üksus (V3) vajab seadmepõhist märki ja võtit. Sisesta need või sisesta oma Midea NetHome Plusi konto (e- post ja parool) ning Molaplan tõmbab need üks kord Midea pilvest. Kui konto on tagasi lükatud, kontrolli üksikasju. Märk ja võti ei lähe kunagi Molaplani serveritesse.';
+
+  @override
+  String get s0fa435dd3b => 'Leiutajate kliimaseade (INVmate II, kohalik)';
+
+  @override
+  String get s355759f7fd =>
+      'INVmate II rakendusega (Wi-Fi moodul EU- OSK105 või sarnane). Sama Midea LAN protokoll töötab ka Midea, Comfee ja teiste Midea ehitatud seadmete puhul. Kohalik, pilve ei ole.';
+
+  @override
+  String get sfe4d46ec2d =>
+      'Ühiku IP ruuteri seadmete nimekirjast (sageli nimega \"midea_ ac_...\"). Otsing leiab selle tavaliselt ise.';
+
+  @override
+  String get s08091212d0 =>
+      'Uuemad üksused (V3) vajavad seadmepõhist märki ja võtit. Kui sul neid ei ole, sisesta allpool oma Midea NetHome Plus konto ja need tõmmatakse üks kord.';
+
+  @override
+  String get s0866bdcde6 => 'Token\'i partner.';
+
+  @override
+  String get se0474ca270 =>
+      'Tasuta konto rakenduses NetHome Plus (Midea). Seda kasutatakse ainult märgi ja võtme ühe korra tõmbamiseks. Parool ei ole salvestatud.';
+
+  @override
+  String get sc69d2abc31 =>
+      'Ainult võtmete tõmbamiseks, mitte ühenduses salvestatud.';
+
+  @override
+  String get scea357a8db =>
+      'Vajalik on seadme kohalik võti (16 märki) – kirjuta see või täida enda tasuta Tuya arendaja projekti Access ID ja Secret ning võti tõmmatakse üks kord. Kui võti on tagasi lükatud, kontrolli seda ja seadme ID- d. Võti ei lähe kunagi Molaplani serveritesse.';
+
+  @override
+  String get s1737dca975 =>
+      'Leiutajate kliimaseade (leiutajate kontroll, kohalik)';
+
+  @override
+  String get s568208217c =>
+      'Leiutajate kliimaseadmed, mida saab juhtida rakendusega Inventor Control (nt Leon, Legend, Comfort, Supreme, Vero). Rakendus on Tuya põhine. Juhtida oma koduvõrku ilma pilveta. Korraks on vaja seadme kohalikku võtit.';
+
+  @override
+  String get s0ef75068ac =>
+      'Seadme IP ruuteri seadmete nimekirjast. Tavaliselt leiab otsing selle ise.';
+
+  @override
+  String get s7455130634 =>
+      '16- märgiline võti. Kui sul seda ei ole, täida allpool oma Tuya arendaja projekt ja see tõmmatakse üks kord. Uuemaid leiutaja juhtimise üksusi ei saa alati seostada Tuya rakendusega – siis tuleb võti hankida muul viisil (vt docs/ INVENTOR. md).';
+
+  @override
+  String get s4b053856e0 => 'Täideti automaatselt, kui seade võrgust leiti.';
+
+  @override
+  String get s3761f46313 =>
+      '3.3, 3.4 või 3.5 Kui Jääb tühjaks, proovitakse kõiki.';
+
+  @override
+  String get s5b0069af62 =>
+      'Oma tasuta Tuya arendaja projekt (iot.tuya.com → Cloud → Loo pilveprojekt → Seadmed → Link rakenduse konto). Kasutage rakendust Tuya Smart / Smart Life, millele seade lisati.';
+
+  @override
+  String get s96dbe019ed => 'Sama projekti leheküljelt. Salvestamata.';
+
+  @override
+  String get s1573c32bab => 'Projekti andmekeskus, tavaliselt Euroopas eu.';
+
+  @override
+  String get s18e2dce10d =>
+      'Pump ei vastanud vaikeväärtustele (port 502, Modbus aadress 1, nii Modbus TCP kui ka läbipaistev RTU). Kontrollige konverteri IP- d ja sisestage konverteri port, pumba Modbusi aadress (hüdraulilise mooduli DIP- lülitid) ja režiim, kui need erinevad. RS-485: A/ B juhtmega kontrolleri H1/H2 klemmidele, 9600 baud, 8 andmebitti, pariteet puudub, 1 stopp bitt.';
+
+  @override
+  String get s3d0c432194 => 'Leiutaja õhk-vesi-soojuspump (Modbus RS-485)';
+
+  @override
+  String get s299d1b40fe =>
+      'Leiutaja õhk-vesi soojuspumbad (monoblokeeruv seeria ja hüdromoodulid). Juhtimine läbi pumba juhtmega kontrolleri RS-485 porti (H1/H2) odava RS-485– Ethernet/Wi-Fi muunduriga: režiim, seadepunkt, kuum vesi, vesi ja välistemperatuur. Kohalik, pilv puudub.';
+
+  @override
+  String get s158de9d34a =>
+      'RS-485–Modbus muunduri IP (nt Waveshare, Elfin EW11, USR-TCP232). Seda ei saa otsida – sisesta aadress.';
+
+  @override
+  String get sbe411b8e53 =>
+      'Konverteri Modbusi port, tavaliselt 502 (mõned kasutavad ka 8899 või 23).';
+
+  @override
+  String get s1f7582a270 =>
+      'Hüdraulilise mooduli DIP-lülititega määratud aadress, vaikeväärtus 1.';
+
+  @override
+  String get sa51903d6fa =>
+      'Jätta tühjaks: proovitakse nii Modbus TCP kui ka läbipaistvat RKT- d. Teisendaja väärtuseks seatakse 9600 baud, 8 andmebitti, pariteeti ei ole, 1 stop bitt.';
 
   @override
   String get s4a91d07711 => 'Daikin (Wi-Fi, kohalik)';
@@ -10623,8 +10734,8 @@ class AppLocalizationsEt extends AppLocalizations {
       'Parool, mille määrasite tegija rakenduses (MyDevice, EasyControl või Buderuse rakendus).';
 
   @override
-  String get s5ddd513689 =>
-      'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – või mõni muu IR-puldiga.';
+  String get s6b99f7c0e5 =>
+      'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia, leiutaja – või mõni muu IR-puldiga.';
 
   @override
   String get s9622976fd3 => 'Ühtegi ühikut ei leitud';
@@ -10634,6 +10745,14 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sf3d77f10b9 => 'liiga palju taotlusi';
+
+  @override
+  String s2c5094f4e4(String p0) {
+    return 'Režiim \"$p0\" ei ole selles pumbas saadaval';
+  }
+
+  @override
+  String get sb6729e0077 => 'Õhk-vesi-pumbal ei ole ventilaatori seadistust';
 
   @override
   String get s00c7f00681 => 'MELCloud: vale e-post või parool';
@@ -10655,6 +10774,14 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String get s642f888a5f =>
+      'See mudel ei sisalda automaatset ventilaatorirežiimi';
+
+  @override
+  String get s77890f9215 =>
+      'See ei näe välja nagu kliimaseade (võimsusandmete punkt puudub)';
+
+  @override
   String get s4cfb5a36c9 => 'Daikin (kohalik Wi-Fi)';
 
   @override
@@ -10662,6 +10789,15 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s16f7124e42 => 'Bosch / Buderus (KM200 värav, kohalik)';
+
+  @override
+  String get sc207ec4ed9 => 'Inventor INVmate II / Midea LAN (kohalik)';
+
+  @override
+  String get sd0746c8b58 => 'Leiutajate kontroll (Tuya, kohalik)';
+
+  @override
+  String get s49df2050fd => 'Õhk-vesi-leiutaja (Modbus)';
 
   @override
   String get sddd6b1d42e => 'Soojuspump (sisseehitatud integreerimine)';
@@ -10695,18 +10831,54 @@ class AppLocalizationsEt extends AppLocalizations {
       'Valmistaja rakenduse parool. Salvestatud ainult selles seadmes / sinu enda seifis.';
 
   @override
-  String get s2862f25983 => 'Token (SmartThings)';
+  String get sca7b0f8de6 => 'Token (SmartThings / Midea V3 token)';
 
   @override
-  String get s23a4bc8253 =>
-      'SmartThingsi isikliku juurdepääsu luba (account.smartthings.com/tokens).';
+  String get s0f1eaf350b =>
+      'SmartThingsi isiklik juurdepääsumärk (account.smartthings.com/tokens) või Midea V3 seadme token (128 hex märki).';
 
   @override
-  String get sef37e5048d => 'Võti (Daikin BRP072C, kleebis)';
+  String get se263eae5bc => 'Võti (Daikin BRP072C kleebis / Midea V3 võti)';
 
   @override
-  String get s1c339065e1 =>
-      'Võti, mis on trükitud BRP072C adapteri kleebisele.';
+  String get s29ea4d7472 =>
+      'Võti, mis on trükitud BRP072C adapteri kleebis, või Midea V3 seadme võti (64 hex märki).';
+
+  @override
+  String get s5e51da0364 => 'Seadme ID (Midea / Tuya)';
+
+  @override
+  String get se463b24b80 =>
+      'Midea: numbriline seadme ID (leidis otsinguga). Tuya on seadme ID (tuya rakendusest või arendaja projektist).';
+
+  @override
+  String get s21214b52f5 => 'Midea protokoll (2 või 3)';
+
+  @override
+  String get sfd9749e4c3 =>
+      '2 = ei mingeid volitusi. 3 = uuem püsivara, vajab märki ja võtit.';
+
+  @override
+  String get s7b9cbd8fc1 => 'Kohalik võti (Tuya)';
+
+  @override
+  String get sefa4614c28 => 'Tuya seadme 16-kohaline kohalik võti.';
+
+  @override
+  String get sb1d45b679e => 'Tuya protokolli versioon';
+
+  @override
+  String get s2fb2791b81 => '3.3, 3.4 või 3.5 (leitud otsinguga).';
+
+  @override
+  String get s284d1ca043 => 'Modbusi raamimine (tcp / rtu)';
+
+  @override
+  String get s8671c4de95 =>
+      'RS-485 gateway režiim: Modbus TCP või läbipaistev RTU.';
+
+  @override
+  String get s797055e399 => 'RTU üle TCP (läbipaistev)';
 
   @override
   String get se67e3e0eb9 => 'Client ID (myUplink)';
@@ -10812,7 +10984,17 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s94ecb845c8 => 'Seadistuspunkt, võimsus, režiim või ventilaator.';
 
   @override
+  String get s6ff46b02d2 => 'Muu seadistus (võti)';
+
+  @override
   String get sba2eb6d9b9 => 'Setpoint';
+
+  @override
+  String get sc8c47b547a => 'Klahvi määramine (ainult \"Muu seadistus\")';
+
+  @override
+  String get s679e5f90c2 =>
+      'Nt dhw_set (kuuma vee seadeväärtus) või dhw_power (kuuma vee soojendamine sisse/välja).';
 
   @override
   String s6478b264c0(String p0) {
@@ -10823,7 +11005,19 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s4937d259b8 => 'Seadistuspunkt puudub';
 
   @override
+  String get sbd33d78695 => 'Võtme või väärtuse määramine puudub';
+
+  @override
   String get s10f42a9a20 => 'kõverat';
+
+  @override
+  String get s3795df7c35 => 'Kuuma vee seadeväärtus';
+
+  @override
+  String get sf5a30e3b51 => 'Vee seadeväärtus';
+
+  @override
+  String get s8b6dbf3df6 => 'Kuum vesi';
 
   @override
   String get s620c04d73e => 'Varustus';
@@ -10848,6 +11042,12 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s79f91561d9 => 'Põleti modulatsioon';
+
+  @override
+  String get s447ce92cd0 => 'Veevool';
+
+  @override
+  String get s54fd87bce8 => 'Küttevõimsus';
 
   @override
   String get sc272460629 => 'Sisestage värava parool ja oma parool';

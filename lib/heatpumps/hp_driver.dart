@@ -3,6 +3,7 @@
 /// read  {'hp': 'state', 'unit': id, 'meta': {...}}  -> HpState.toJson() (climate tile)
 /// read  {'hp': 'value', 'unit': id, 'key': 'outdoor'} -> one reading (value tiles, automations)
 /// read  {'hp': 'units'}                               -> [HpUnit.toJson()] (add wizard)
+/// read  {'hp': 'probe'} / {'hp': 'midea_token', ...}  -> Midea: what answers at the address / cloud token (add wizard)
 /// send  {'hp': 'set', 'unit': id, 'field': 'target'|'power'|'mode'|'fan', ...} with value
 library;
 
@@ -17,8 +18,11 @@ import '../models/models.dart';
 import 'aircloud.dart';
 import 'daikin.dart';
 import 'gshp_modbus.dart';
+import 'inventor_atw.dart';
+import 'inventor_tuya.dart';
 import 'km200.dart';
 import 'hp_model.dart';
+import 'midea_lan.dart';
 import 'melcloud.dart';
 import 'mhi_wfrac.dart';
 import 'myuplink.dart';
@@ -36,6 +40,9 @@ const hpBrands = <String, (String, String)>{
   'myuplink': ('NIBE (myUplink-pilvi)', 'NIBE (myUplink cloud)'),
   'gshp_modbus': ('NIBE / Thermia (Modbus TCP, paikallinen)', 'NIBE / Thermia (Modbus TCP, local)'),
   'km200': ('Bosch / Buderus (KM200-yhdyskäytävä, paikallinen)', 'Bosch / Buderus (KM200 gateway, local)'),
+  'inventor_midea': ('Inventor INVmate II / Midea LAN (paikallinen)', 'Inventor INVmate II / Midea LAN (local)'),
+  'inventor_tuya': ('Inventor Control (Tuya, paikallinen)', 'Inventor Control (Tuya, local)'),
+  'inventor_atw': ('Inventor ilma-vesi (Modbus)', 'Inventor air-to-water (Modbus)'),
 };
 
 /// Test hook: backends get this client instead of a real one.
@@ -56,6 +63,9 @@ HpBackend createHpBackend(Map<String, dynamic> s) {
     'myuplink' => MyUplinkBackend(s, client),
     'gshp_modbus' => GshpModbusBackend(s, client),
     'km200' => Km200Backend(s, client),
+    'inventor_midea' => MideaBackend(s, client),
+    'inventor_tuya' => InventorTuyaBackend(s, client),
+    'inventor_atw' => InventorAtwBackend(s, client),
     _ => throw DriverException('Heat pump: unknown brand "$brand"'),
   };
 }
@@ -82,7 +92,20 @@ class HeatPumpDriver extends Driver {
         'Merkki',
         'Brand',
         kind: FieldKind.choice,
-        options: ['daikin', 'mhi', 'melcloud', 'toshiba', 'smartthings', 'aircloud', 'myuplink', 'gshp_modbus', 'km200'],
+        options: [
+          'daikin',
+          'mhi',
+          'melcloud',
+          'toshiba',
+          'smartthings',
+          'aircloud',
+          'myuplink',
+          'gshp_modbus',
+          'km200',
+          'inventor_midea',
+          'inventor_tuya',
+          'inventor_atw',
+        ],
         optionLabels: hpBrands,
         defaultValue: 'daikin',
         helpFi: 'Valmistaja ja yhteystapa. Paikalliset toimivat ilman pilveä.',
@@ -123,21 +146,68 @@ class HeatPumpDriver extends Driver {
       ),
       FieldSpec(
         'token',
-        'Tunnus (SmartThings token)',
-        'Token (SmartThings)',
+        'Tunnus (SmartThings token / Midea V3 token)',
+        'Token (SmartThings / Midea V3 token)',
         kind: FieldKind.secret,
         advanced: true,
-        helpFi: 'SmartThingsin henkilökohtainen token (account.smartthings.com/tokens).',
-        helpEn: 'SmartThings personal access token (account.smartthings.com/tokens).',
+        helpFi: 'SmartThingsin henkilökohtainen token (account.smartthings.com/tokens), tai Midea V3 -laitteen token (128 heksamerkkiä).',
+        helpEn: 'SmartThings personal access token (account.smartthings.com/tokens), or the Midea V3 device token (128 hex characters).',
       ),
       FieldSpec(
         'key',
-        'Avain (Daikin BRP072C, tarrasta)',
-        'Key (Daikin BRP072C, sticker)',
+        'Avain (Daikin BRP072C tarrasta / Midea V3 key)',
+        'Key (Daikin BRP072C sticker / Midea V3 key)',
         kind: FieldKind.secret,
         advanced: true,
-        helpFi: 'BRP072C-ohjaimen tarrassa oleva avain (key).',
-        helpEn: "The key printed on the BRP072C adapter's sticker.",
+        helpFi: 'BRP072C-ohjaimen tarrassa oleva avain (key), tai Midea V3 -laitteen key (64 heksamerkkiä).',
+        helpEn: "The key printed on the BRP072C adapter's sticker, or the Midea V3 device key (64 hex characters).",
+      ),
+      FieldSpec(
+        'deviceId',
+        'Laitteen tunnus (Midea / Tuya)',
+        'Device id (Midea / Tuya)',
+        advanced: true,
+        helpFi: 'Midea: laitteen numerotunnus (löytyy haussa). Tuya: Device ID (Tuya-sovelluksesta tai kehittäjäprojektista).',
+        helpEn: 'Midea: the numeric appliance id (found by the search). Tuya: the Device ID (from the Tuya app or developer project).',
+      ),
+      FieldSpec(
+        'protocol',
+        'Midea-protokolla (2 tai 3)',
+        'Midea protocol (2 or 3)',
+        advanced: true,
+        defaultValue: '2',
+        helpFi: '2 = ei tunnuksia. 3 = uudempi laiteohjelmisto, tarvitsee tokenin ja keyn.',
+        helpEn: '2 = no credentials. 3 = newer firmware, needs a token and key.',
+      ),
+      FieldSpec(
+        'localKey',
+        'Paikallinen avain (Tuya local key)',
+        'Local key (Tuya)',
+        kind: FieldKind.secret,
+        advanced: true,
+        helpFi: '16 merkin Tuya-laitteen paikallinen avain.',
+        helpEn: "The Tuya device's 16-character local key.",
+      ),
+      FieldSpec(
+        'version',
+        'Tuya-protokollaversio',
+        'Tuya protocol version',
+        advanced: true,
+        defaultValue: '3.3',
+        helpFi: '3.3, 3.4 tai 3.5 (löytyy haussa).',
+        helpEn: '3.3, 3.4 or 3.5 (found by the search).',
+      ),
+      FieldSpec(
+        'framing',
+        'Modbus-kehystys (tcp / rtu)',
+        'Modbus framing (tcp / rtu)',
+        kind: FieldKind.choice,
+        options: ['tcp', 'rtu'],
+        optionLabels: {'tcp': ('Modbus TCP', 'Modbus TCP'), 'rtu': ('RTU TCP:n yli (läpinäkyvä)', 'RTU over TCP (transparent)')},
+        defaultValue: 'tcp',
+        advanced: true,
+        helpFi: 'RS-485-muuntimen tila: Modbus TCP tai läpinäkyvä RTU.',
+        helpEn: "The RS-485 gateway's mode: Modbus TCP or transparent RTU.",
       ),
       FieldSpec(
         'clientId',
@@ -281,8 +351,9 @@ class HeatPumpDriver extends Driver {
         'Mitä asetetaan',
         'What to set',
         kind: FieldKind.choice,
-        options: ['target', 'power', 'mode', 'fan'],
+        options: ['target', 'power', 'mode', 'fan', 'extra'],
         optionLabels: {
+          'extra': ('Muu asetus (key)', 'Other setting (key)'),
           'target': ('Asetusarvo', 'Setpoint'),
           'power': ('Virta', 'Power'),
           'mode': ('Tila', 'Mode'),
@@ -291,6 +362,13 @@ class HeatPumpDriver extends Driver {
         defaultValue: 'target',
         helpFi: 'Asetusarvo, virta, tila tai puhallin.',
         helpEn: 'Setpoint, power, mode or fan.',
+      ),
+      FieldSpec(
+        'key',
+        'Asetuksen tunnus (vain "Muu asetus")',
+        'Setting key (only "Other setting")',
+        helpFi: 'Esim. dhw_set (käyttöveden lämpötila) tai dhw_power (käyttöveden lämmitys päälle/pois).',
+        helpEn: 'E.g. dhw_set (hot water setpoint) or dhw_power (hot water heating on/off).',
       ),
       FieldSpec(
         'value',
@@ -341,6 +419,18 @@ class HeatPumpDriver extends Driver {
         return [for (final u in l) u.toJson()];
       case 'state':
         return (await _state(await _unit(spec))).toJson();
+      case 'probe':
+        // Wizard (also through the home bridge): what answers on the typed address? (Midea)
+        final host = '${s['address'] ?? ''}'.replaceAll(RegExp(r'^\w+://'), '').split(':').first;
+        final f = await discoverMidea(target: host, wait: const Duration(seconds: 2));
+        return [
+          for (final x in f) {'ip': x.ip, 'port': x.port, 'id': x.id, 'version': x.version, 'type': x.type, 'name': x.name},
+        ];
+      case 'midea_token':
+        // Token + key of a Midea V3 device from the user's own NetHome Plus account (once).
+        final cloud = MideaCloud(backend.client, account: '${spec['account'] ?? ''}', password: '${spec['password'] ?? ''}');
+        final (t, k) = await cloud.token(int.tryParse('${spec['id']}') ?? 0);
+        return {'token': t, 'key': k};
       default:
         final u = await _unit(spec);
         final key = '${spec['key'] ?? 'current'}';
@@ -369,6 +459,11 @@ class HeatPumpDriver extends Driver {
         ch.mode = '${spec['mode'] ?? raw}';
       case 'fan':
         ch.fan = '${spec['fan'] ?? raw}';
+      case 'extra':
+        final k = '${spec['key'] ?? ''}';
+        final v = raw is bool ? (raw ? 1.0 : 0.0) : hpNum(raw);
+        if (k.isEmpty || v == null) throw DriverException(dtx('Asetuksen tunnus tai arvo puuttuu', 'Setting key or value missing'));
+        ch.extra = {k: v};
       default:
         throw DriverException('Heat pump: field $field?');
     }
@@ -456,6 +551,49 @@ List<TileConfig> heatPumpTiles(
       ],
     ),
   );
+  // R573 (t326u): further settings of the pump (hot water setpoint…) and its on/off switches.
+  const setpointNames = <String, (String, String)>{
+    'dhw_set': ('Käyttöveden tavoite', 'Hot water setpoint'),
+    'flow_set': ('Menoveden tavoite', 'Water setpoint'),
+  };
+  for (final e in st.setpoints.entries) {
+    final n = setpointNames[e.key] ?? (e.key, e.key);
+    out.add(
+      TileConfig(
+        type: TileType.slider,
+        title: '$title – ${t(n.$1, n.$2)}',
+        icon: 'thermostat',
+        unit: '°C',
+        min: e.value[0],
+        max: e.value[1],
+        step: e.value.length > 2 ? e.value[2] : 1,
+        decimals: 0,
+        connectionId: connId,
+        pollSeconds: 60,
+        read: {'hp': 'value', 'key': e.key, ...unitSpec},
+        commands: [
+          CommandStep(connectionId: connId, spec: {'hp': 'set', 'field': 'extra', 'key': e.key, 'value': '{{value}}', ...unitSpec}),
+        ],
+      ),
+    );
+  }
+  const switchNames = <String, (String, String)>{'dhw_power': ('Käyttövesi päällä', 'Hot water on')};
+  for (final k in st.switches) {
+    final n = switchNames[k] ?? (k, k);
+    out.add(
+      TileConfig(
+        type: TileType.toggle,
+        title: '$title – ${t(n.$1, n.$2)}',
+        icon: 'power',
+        connectionId: connId,
+        pollSeconds: 60,
+        read: {'hp': 'value', 'key': k, ...unitSpec},
+        onValue: '1',
+        onCommand: CommandStep(connectionId: connId, spec: {'hp': 'set', 'field': 'extra', 'key': k, 'value': '1', ...unitSpec}),
+        offCommand: CommandStep(connectionId: connId, spec: {'hp': 'set', 'field': 'extra', 'key': k, 'value': '0', ...unitSpec}),
+      ),
+    );
+  }
   final names = <String, (String, String)>{
     'outdoor': ('Ulkolämpötila', 'Outdoor temperature'),
     'supply': ('Menovesi', 'Supply'),
@@ -467,6 +605,8 @@ List<TileConfig> heatPumpTiles(
     'compressor_hz': ('Kompressori', 'Compressor'),
     'energy_kwh': ('Energia', 'Energy'),
     'modulation': ('Polttimen teho', 'Burner modulation'),
+    'water_flow': ('Vesivirtaus', 'Water flow'),
+    'capacity_kw': ('Lämpöteho', 'Heating capacity'),
   };
   final keys = [
     if (st.outdoor != null) 'outdoor',
@@ -478,15 +618,17 @@ List<TileConfig> heatPumpTiles(
       TileConfig(
         type: TileType.value,
         title: '$title – ${t(n.$1, n.$2)}',
-        icon: k == 'compressor_hz' ? 'speed' : (k == 'energy_kwh' ? 'bolt' : 'thermostat'),
+        icon: k == 'compressor_hz' ? 'speed' : (k == 'energy_kwh' || k == 'capacity_kw' ? 'bolt' : 'thermostat'),
         unit: switch (k) {
           'compressor_hz' => 'Hz',
           'energy_kwh' => 'kWh',
           'degree_minutes' => '',
           'modulation' => '%',
+          'water_flow' => 'm³/h',
+          'capacity_kw' => 'kW',
           _ => '°C',
         },
-        decimals: k == 'degree_minutes' || k == 'compressor_hz' || k == 'modulation' ? 0 : 1,
+        decimals: k == 'degree_minutes' || k == 'compressor_hz' || k == 'modulation' ? 0 : (k == 'water_flow' || k == 'capacity_kw' ? 2 : 1),
         connectionId: connId,
         pollSeconds: 60,
         read: {'hp': 'value', 'key': k, ...unitSpec},

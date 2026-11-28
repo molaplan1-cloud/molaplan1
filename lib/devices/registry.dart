@@ -134,10 +134,10 @@ const roadmapBrands = <RoadmapBrand>[
     useTemplate: 'homeassistant',
   ),
   RoadmapBrand(
-    'Panasonic / LG / Gree / Midea (ilmalämpöpumppu)',
-    ['panasonic', 'comfort cloud', 'lg', 'thinq', 'gree', 'midea', 'fujitsu', 'onecta'],
-    'Ei omaa integraatiota vielä. Nyt: IR-ohjain (Tasmota/ESPHome) tai Home Assistant. Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE ja Thermia: Lisää laite → Lämpöpumppu.',
-    'No built-in integration yet. Today: an IR blaster or Home Assistant. Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE and Thermia: Add device → Heat pump.',
+    'Panasonic / LG / Gree (ilmalämpöpumppu)',
+    ['panasonic', 'comfort cloud', 'lg', 'thinq', 'gree', 'fujitsu', 'onecta'],
+    'Ei omaa integraatiota vielä. Nyt: IR-ohjain (Tasmota/ESPHome) tai Home Assistant. Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia ja Inventor (myös Midea): Lisää laite → Lämpöpumppu.',
+    'No built-in integration yet. Today: an IR blaster or Home Assistant. Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia and Inventor (also Midea): Add device → Heat pump.',
     useTemplate: 'heatpump_ir',
   ),
   RoadmapBrand(

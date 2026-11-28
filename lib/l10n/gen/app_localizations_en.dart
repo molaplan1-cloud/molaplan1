@@ -10514,8 +10514,119 @@ class AppLocalizationsEn extends AppLocalizations {
       'The mode of a ground-source pump is not changed here – only the setpoint.';
 
   @override
+  String get sb795949130 => 'Midea: wrong token or key';
+
+  @override
+  String get sd6b2f21f4a => 'connect timeout';
+
+  @override
+  String get s6831eae697 =>
+      'Midea V3 needs a token (128 hex characters) and a key (64 hex characters)';
+
+  @override
+  String get s22a358f420 =>
+      'Midea: the device did not accept the token and key (check them)';
+
+  @override
+  String get s01f1dab4e3 => 'Midea: the device sent no state';
+
+  @override
   String get s6d21845355 =>
       'Find it in your router\'s device list or the maker\'s app (device info).';
+
+  @override
+  String get s2a9d28aac1 =>
+      'This unit (V3) needs a per-device token and key. Enter them, or enter your own Midea NetHome Plus account (e-mail and password) and Molaplan fetches them once from the Midea cloud. If the account was rejected, check the details. The token and key never go to Molaplan\'s servers.';
+
+  @override
+  String get s0fa435dd3b => 'Inventor air conditioner (INVmate II, local)';
+
+  @override
+  String get s355759f7fd =>
+      'Inventor air conditioners controlled with the INVmate II app (Wi-Fi module EU-OSK105 or similar). The same Midea LAN protocol also works for Midea, Comfee and other Midea-built units. Local, no cloud.';
+
+  @override
+  String get sfe4d46ec2d =>
+      'The unit\'s IP from your router\'s device list (often named \"midea_ac_…\"). The search normally finds it by itself.';
+
+  @override
+  String get s08091212d0 =>
+      'Newer units (V3) need a per-device token and key. If you do not have them, enter your own Midea NetHome Plus account below and they are fetched once.';
+
+  @override
+  String get s0866bdcde6 => 'The token\'s partner.';
+
+  @override
+  String get se0474ca270 =>
+      'A free account in the NetHome Plus app (Midea). Used only to fetch the token and key once; the password is not stored.';
+
+  @override
+  String get sc69d2abc31 =>
+      'Only to fetch the keys. Not saved in the connection.';
+
+  @override
+  String get scea357a8db =>
+      'The unit\'s local key (16 characters) is needed – type it, or fill in the Access ID and Secret of your own free Tuya developer project and the key is fetched once. If the key was rejected, check it and the device id. The key never goes to Molaplan\'s servers.';
+
+  @override
+  String get s1737dca975 =>
+      'Inventor air conditioner (Inventor Control, local)';
+
+  @override
+  String get s568208217c =>
+      'Inventor air conditioners controlled with the Inventor Control app (e.g. Leon, Legend, Comfort, Supreme, Vero). The app is Tuya-based; control on your home network without the cloud. Needs the unit\'s local key once.';
+
+  @override
+  String get s0ef75068ac =>
+      'The unit\'s IP from your router\'s device list. The search normally finds it by itself.';
+
+  @override
+  String get s7455130634 =>
+      'A 16-character key. If you do not have it, fill in your own Tuya developer project below and it is fetched once. The newest Inventor Control units cannot always be linked to the Tuya app – then the key has to be obtained another way (see docs/INVENTOR.md).';
+
+  @override
+  String get s4b053856e0 =>
+      'Filled in automatically when the unit was found on the network.';
+
+  @override
+  String get s3761f46313 => '3.3, 3.4 or 3.5. If left empty all are tried.';
+
+  @override
+  String get s5b0069af62 =>
+      'Your own free Tuya developer project (iot.tuya.com → Cloud → Create Cloud Project → Devices → Link App Account). Use the Tuya Smart / Smart Life app the unit was added to.';
+
+  @override
+  String get s96dbe019ed => 'From the same project page. Not saved.';
+
+  @override
+  String get s1573c32bab => 'The project\'s data center, usually eu in Europe.';
+
+  @override
+  String get s18e2dce10d =>
+      'The pump did not answer with the defaults (port 502, Modbus address 1, both Modbus TCP and transparent RTU). Check the converter\'s IP and type below the converter\'s port, the pump\'s Modbus address (DIP switches of the hydraulic module) and mode if they differ. RS-485: A/B to the wired controller\'s H1/H2 terminals, 9600 baud, 8 data bits, no parity, 1 stop bit.';
+
+  @override
+  String get s3d0c432194 => 'Inventor air-to-water heat pump (Modbus RS-485)';
+
+  @override
+  String get s299d1b40fe =>
+      'Inventor air-to-water heat pumps (monoblock series and hydro modules). Control through the RS-485 port (H1/H2) of the pump\'s wired controller with a cheap RS-485–Ethernet/Wi-Fi converter: mode, setpoint, hot water, water and outdoor temperature. Local, no cloud.';
+
+  @override
+  String get s158de9d34a =>
+      'IP of the RS-485–Modbus converter (e.g. Waveshare, Elfin EW11, USR-TCP232). It cannot be searched – type the address.';
+
+  @override
+  String get sbe411b8e53 =>
+      'The converter\'s Modbus port, usually 502 (some use 8899 or 23).';
+
+  @override
+  String get s1f7582a270 =>
+      'The address set with the DIP switches of the hydraulic module, default 1.';
+
+  @override
+  String get sa51903d6fa =>
+      'Leave empty: both Modbus TCP and transparent RTU are tried. Set the converter to 9600 baud, 8 data bits, no parity, 1 stop bit.';
 
   @override
   String get s4a91d07711 => 'Daikin (Wi-Fi, local)';
@@ -10638,8 +10749,8 @@ class AppLocalizationsEn extends AppLocalizations {
       'The password you set in the maker\'s app (MyDevice, EasyControl or the Buderus app).';
 
   @override
-  String get s5ddd513689 =>
-      'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia – or any with an IR remote.';
+  String get s6b99f7c0e5 =>
+      'Daikin, Mitsubishi, Toshiba, Samsung, Hitachi, NIBE, Thermia, Inventor – or any with an IR remote.';
 
   @override
   String get s9622976fd3 => 'No units found';
@@ -10649,6 +10760,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sf3d77f10b9 => 'too many requests';
+
+  @override
+  String s2c5094f4e4(String p0) {
+    return 'Mode \"$p0\" is not available on this pump';
+  }
+
+  @override
+  String get sb6729e0077 => 'An air-to-water pump has no fan setting';
 
   @override
   String get s00c7f00681 => 'MELCloud: wrong e-mail or password';
@@ -10668,6 +10787,13 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get s642f888a5f => 'This model has no automatic fan mode';
+
+  @override
+  String get s77890f9215 =>
+      'This does not look like an air conditioner (no power data point)';
+
+  @override
   String get s4cfb5a36c9 => 'Daikin (local Wi-Fi)';
 
   @override
@@ -10675,6 +10801,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s16f7124e42 => 'Bosch / Buderus (KM200 gateway, local)';
+
+  @override
+  String get sc207ec4ed9 => 'Inventor INVmate II / Midea LAN (local)';
+
+  @override
+  String get sd0746c8b58 => 'Inventor Control (Tuya, local)';
+
+  @override
+  String get s49df2050fd => 'Inventor air-to-water (Modbus)';
 
   @override
   String get sddd6b1d42e => 'Heat pump (built-in integration)';
@@ -10708,18 +10843,54 @@ class AppLocalizationsEn extends AppLocalizations {
       'The maker\'s app password. Stored only on this device / in your own vault.';
 
   @override
-  String get s2862f25983 => 'Token (SmartThings)';
+  String get sca7b0f8de6 => 'Token (SmartThings / Midea V3 token)';
 
   @override
-  String get s23a4bc8253 =>
-      'SmartThings personal access token (account.smartthings.com/tokens).';
+  String get s0f1eaf350b =>
+      'SmartThings personal access token (account.smartthings.com/tokens), or the Midea V3 device token (128 hex characters).';
 
   @override
-  String get sef37e5048d => 'Key (Daikin BRP072C, sticker)';
+  String get se263eae5bc => 'Key (Daikin BRP072C sticker / Midea V3 key)';
 
   @override
-  String get s1c339065e1 =>
-      'The key printed on the BRP072C adapter\'s sticker.';
+  String get s29ea4d7472 =>
+      'The key printed on the BRP072C adapter\'s sticker, or the Midea V3 device key (64 hex characters).';
+
+  @override
+  String get s5e51da0364 => 'Device id (Midea / Tuya)';
+
+  @override
+  String get se463b24b80 =>
+      'Midea: the numeric appliance id (found by the search). Tuya: the Device ID (from the Tuya app or developer project).';
+
+  @override
+  String get s21214b52f5 => 'Midea protocol (2 or 3)';
+
+  @override
+  String get sfd9749e4c3 =>
+      '2 = no credentials. 3 = newer firmware, needs a token and key.';
+
+  @override
+  String get s7b9cbd8fc1 => 'Local key (Tuya)';
+
+  @override
+  String get sefa4614c28 => 'The Tuya device\'s 16-character local key.';
+
+  @override
+  String get sb1d45b679e => 'Tuya protocol version';
+
+  @override
+  String get s2fb2791b81 => '3.3, 3.4 or 3.5 (found by the search).';
+
+  @override
+  String get s284d1ca043 => 'Modbus framing (tcp / rtu)';
+
+  @override
+  String get s8671c4de95 =>
+      'The RS-485 gateway\'s mode: Modbus TCP or transparent RTU.';
+
+  @override
+  String get s797055e399 => 'RTU over TCP (transparent)';
 
   @override
   String get se67e3e0eb9 => 'Client ID (myUplink)';
@@ -10822,7 +10993,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s94ecb845c8 => 'Setpoint, power, mode or fan.';
 
   @override
+  String get s6ff46b02d2 => 'Other setting (key)';
+
+  @override
   String get sba2eb6d9b9 => 'Setpoint';
+
+  @override
+  String get sc8c47b547a => 'Setting key (only \"Other setting\")';
+
+  @override
+  String get s679e5f90c2 =>
+      'E.g. dhw_set (hot water setpoint) or dhw_power (hot water heating on/off).';
 
   @override
   String s6478b264c0(String p0) {
@@ -10833,7 +11014,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s4937d259b8 => 'Setpoint missing';
 
   @override
+  String get sbd33d78695 => 'Setting key or value missing';
+
+  @override
   String get s10f42a9a20 => 'curve offset';
+
+  @override
+  String get s3795df7c35 => 'Hot water setpoint';
+
+  @override
+  String get sf5a30e3b51 => 'Water setpoint';
+
+  @override
+  String get s8b6dbf3df6 => 'Hot water on';
 
   @override
   String get s620c04d73e => 'Supply';
@@ -10858,6 +11051,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s79f91561d9 => 'Burner modulation';
+
+  @override
+  String get s447ce92cd0 => 'Water flow';
+
+  @override
+  String get s54fd87bce8 => 'Heating capacity';
 
   @override
   String get sc272460629 => 'Enter the gateway password and your own password';
