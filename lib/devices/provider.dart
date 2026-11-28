@@ -59,13 +59,35 @@ class Candidate {
     this.model = '',
     this.name,
     this.viaBridge = false,
-  });
+    this.local = false,
+    bool? bridge,
+  }) : bridge = bridge ?? viaBridge;
   final String provider;
   final String address;
   final String id;
   final String model;
   final String? name;
+
+  /// Talk to it THROUGH the home bridge (it was found only there).
   final bool viaBridge;
+
+  /// R558: found on this device's own network / found by the home bridge. Both can be true (the
+  /// same device seen from both); then the app talks to it directly.
+  final bool local, bridge;
+
+  Candidate copyWith({String? model, String? name, bool? local, bool? bridge}) {
+    final l = local ?? this.local, b = bridge ?? this.bridge;
+    return Candidate(
+      provider: provider,
+      address: address,
+      id: id,
+      model: model ?? this.model,
+      name: name ?? this.name,
+      viaBridge: b && !l,
+      local: l,
+      bridge: b,
+    );
+  }
 
   String get title => (name?.isNotEmpty ?? false) ? name! : (model.isNotEmpty ? model : address);
 

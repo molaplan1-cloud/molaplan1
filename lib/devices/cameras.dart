@@ -6,6 +6,7 @@ library;
 
 import 'dart:typed_data';
 
+import '../core/plat.dart';
 import '../drivers/camera_driver.dart';
 import '../models/models.dart';
 import '../l10n/l10n.dart';
@@ -114,13 +115,14 @@ const cameraPresets = <CameraPreset>[
   CameraPreset(
     id: 'sonoff_cam',
     name: 'Sonoff',
-    keywords: ['sonoff cam', 'cam slim', 'cam dual', 'gk-200', 'ewelink'],
+    keywords: ['sonoff cam', 'cam slim', 'cam dual', 'cam-pt2', 'cam-b1p', 'gk-200', 'ewelink'],
+    defaultUser: '',
     useOnvif: true,
     rtsp: 'rtsp://{{host}}:554/av_stream/ch0',
-    loginHelpFi: 'eWeLink-sovelluksessa kameralle asetettu käyttäjä ja salasana (RTSP/ONVIF). Kaksilinssisessä mallissa molemmat linssit tulevat samasta laitteesta.',
-    loginHelpEn: 'The user and password set for the camera in the eWeLink app (RTSP/ONVIF). On a dual-lens model both lenses come from the same device.',
-    setupFi: 'eWeLink-sovellus → kamera → Asetukset: laita RTSP/ONVIF päälle ja aseta sille käyttäjä ja salasana (jos valinta on).',
-    setupEn: 'eWeLink app → camera → Settings: turn on RTSP/ONVIF and set a user and password for it (if the option exists).',
+    loginHelpFi: 'Käyttäjätunnus ja salasana, jotka eWeLink-sovelluksen kameran ONVIF/RTSP-sivu näyttää (Asetukset → Lisäasetukset → ONVIF/RTSP). Ne eivät ole eWeLink-tilisi tunnukset. Kaksilinssisessä mallissa molemmat linssit tulevat samasta laitteesta.',
+    loginHelpEn: 'The username and password shown on the camera\'s ONVIF/RTSP page in the eWeLink app (Settings → More settings → ONVIF/RTSP). They are not your eWeLink account login. On a dual-lens model both lenses come from the same device.',
+    setupFi: 'eWeLink-sovellus → kamera → Asetukset → Lisäasetukset → ONVIF/RTSP: laita päälle ja katso kameran IP-osoite, käyttäjätunnus ja salasana.',
+    setupEn: 'eWeLink app → camera → Settings → More settings → ONVIF/RTSP: turn it on and note the camera IP address, username and password.',
   ),
   // R549 (t322u): Bosch professional IP cameras (Flexidome, Dinion, Autodome – now Bosch Video
   // Systems / Keenfinity): ONVIF + RTSP. Bosch Smart Home Eyes / 360 have no local video – those
@@ -200,11 +202,14 @@ class CameraProvider extends DeviceProvider {
     this.preset, {
     Future<int> Function(String url)? rtspCheck,
     Future<List<OnvifFound>> Function()? discover,
+    Future<List<OnvifFound>> Function(List<String> locals)? subnet,
   }) : _rtspCheck = rtspCheck ?? rtspDescribe,
-       _discover = discover ?? onvifDiscover;
+       _discover = discover ?? onvifDiscover,
+       _subnet = subnet ?? _onvifSubnetScan;
   final CameraPreset preset;
   final Future<int> Function(String url) _rtspCheck;
   final Future<List<OnvifFound>> Function() _discover;
+  final Future<List<OnvifFound>> Function(List<String> locals) _subnet;
 
   @override
   String get id => 'camera_${preset.id}';
@@ -243,18 +248,31 @@ class CameraProvider extends DeviceProvider {
     ),
   ];
 
+  /// WS-Discovery (multicast) AND a look at the usual ONVIF ports of the local /24 – multicast
+  /// is often blocked (Windows firewall, guest Wi-Fi), the port look is not.
   @override
-  Future<List<Candidate>> scan(List<String> locals) async => [
-    for (final f in await _discover())
-      if (preset.id == 'onvif' || f.brand.isEmpty || f.brand == preset.id)
-        Candidate(
-          provider: id,
-          address: f.host,
-          id: preset.useOnvif && f.port != 80 ? ':${f.port}${Uri.parse(f.xaddr).path}' : '',
-          model: f.hardware,
-          name: f.name.isEmpty ? null : f.name,
-        ),
-  ];
+  Future<List<Candidate>> scan(List<String> locals) async {
+    final all = await Future.wait([
+      _discover().catchError((_) => <OnvifFound>[]),
+      if (locals.isNotEmpty) _subnet(locals).catchError((_) => <OnvifFound>[]),
+    ]);
+    final byHost = <String, OnvifFound>{};
+    for (final f in all.expand((x) => x)) {
+      final old = byHost[f.host];
+      if (old == null || (old.scopes.isEmpty && f.scopes.isNotEmpty)) byHost[f.host] = f;
+    }
+    return [
+      for (final f in byHost.values)
+        if (preset.id == 'onvif' || f.brand.isEmpty || f.brand == preset.id)
+          Candidate(
+            provider: id,
+            address: f.host,
+            id: preset.useOnvif && f.port != 80 ? ':${f.port}${Uri.parse(f.xaddr).path}' : '',
+            model: f.hardware.isNotEmpty ? f.hardware : (f.brand == 'sonoff_cam' ? 'Sonoff' : 'ONVIF'),
+            name: f.name.isEmpty ? null : f.name,
+          ),
+    ];
+  }
 
   @override
   Future<Connected> connect(AddContext ctx, Candidate c, Map<String, String> creds) async {
@@ -281,7 +299,12 @@ class CameraProvider extends DeviceProvider {
     var model = c.model;
     var streams = <Map<String, dynamic>>[];
     final notes = <String>[];
+    final log = <String>[]; // what the camera answered (no logins): "Tekniset tiedot"
+    final warnings = <String>[];
     var notOnvif = false;
+    var viaOnvif = false;
+    OnvifMedia? onvif;
+    String det(String more) => [...log, if (more.isNotEmpty) more].join('\n');
 
     /// Address typed by hand (offered when nothing else worked): used as is.
     final manual = (creds['rtsp'] ?? '').trim();
@@ -290,6 +313,7 @@ class CameraProvider extends DeviceProvider {
       if (u == null || u.scheme != 'rtsp') throw AddDeviceError(AddProblem.cameraNoStream, 'bad RTSP address: $manual');
       settings = {...settings, 'rtsp': rtspTemplate(u.toString(), host)}..remove('rtspSub');
       snapshot = null;
+      log.add('RTSP address typed by hand: ${rtspTemplate(u.toString(), host)}');
     } else if (preset.useOnvif) {
       final d = ctx.driver(conn({...settings, 'auth': 'digest'}));
       try {
@@ -299,12 +323,19 @@ class CameraProvider extends DeviceProvider {
           user: user,
           password: pw,
           host: host,
+          log: log,
         );
+        onvif = m;
+        viaOnvif = true;
         settings = {
           ...settings,
           'auth': 'digest',
           'rtsp': ?rtspTemplate(m.rtsp, host),
           'rtspSub': ?rtspTemplate(m.rtspSub, host),
+          if (m.hasPtz) ...{
+            'ptz': {'path': _relative(m.ptzPath, host), 'skewMs': m.skew.inMilliseconds, 'ws': m.ws},
+            if (m.streams.length == 1) 'ptzToken': m.streams.first.ptzToken,
+          },
         };
         streams = [
           for (final st in m.streams)
@@ -312,14 +343,28 @@ class CameraProvider extends DeviceProvider {
               'rtsp': ?rtspTemplate(st.rtsp, host),
               'rtspSub': ?rtspTemplate(st.rtspSub, host),
               'snapshot': ?_relative(st.snapshot, host),
+              'ptzToken': ?st.ptzToken,
             },
         ];
         snapshot = _relative(m.snapshot, host);
         if (m.model.isNotEmpty) model = m.model;
+        // An OEM / differently named maker is no reason to refuse a camera that speaks ONVIF.
+        final said = guessCameraBrand('${m.manufacturer} ${m.modelName}');
+        if (preset.id != 'onvif' && said.isNotEmpty && said != preset.id) {
+          warnings.add(
+            tr(
+              ctx.lang,
+              'Kamera kertoo olevansa "${m.model}", ei ${preset.name}. Se on lisätty silti ONVIF-kamerana.',
+              'The camera says it is "${m.model}", not ${preset.name}. It was added anyway as an ONVIF camera.',
+            ),
+          );
+        }
       } on OnvifAuthError {
-        throw AddDeviceError(AddProblem.wrongPassword, 'ONVIF: login refused (WS-Security and HTTP Digest)');
+        throw AddDeviceError(AddProblem.wrongPassword, det('ONVIF: login refused (WS-Security and HTTP Digest)'));
       } on OnvifNeedsLogin {
-        throw AddDeviceError(AddProblem.needsPassword, 'ONVIF: login required');
+        throw AddDeviceError(AddProblem.needsPassword, det('ONVIF: login required'));
+      } on OnvifUnreachable catch (e) {
+        throw AddDeviceError(AddProblem.unreachable, det('$e'));
       } on OnvifNoProfiles catch (e) {
         if (e.model.isNotEmpty) model = e.model;
         notes.add('$e');
@@ -331,7 +376,7 @@ class CameraProvider extends DeviceProvider {
         if (p.problem == AddProblem.unreachable ||
             p.problem == AddProblem.bridgeOffline ||
             p.problem == AddProblem.wrongPassword) {
-          throw p;
+          throw AddDeviceError(p.problem, det(p.detail));
         }
         notes.add('ONVIF: $e');
       } finally {
@@ -340,7 +385,10 @@ class CameraProvider extends DeviceProvider {
       if (streams.isEmpty) {
         // t153u: ONVIF said nothing useful – look for the stream like a person would, with the
         // usual addresses of every big brand (Sonoff first for a Sonoff, and so on).
-        final found = await _probe(c, host, user, pw, '$model ${c.model} ${c.name ?? ''}', notes, notOnvif: notOnvif);
+        final found = await _probe(c, host, user, pw, '$model ${c.model} ${c.name ?? ''}', [
+          ...log,
+          ...notes,
+        ], notOnvif: notOnvif);
         settings = {...settings, ...found.$1};
         streams = found.$2;
         snapshot = null;
@@ -355,7 +403,7 @@ class CameraProvider extends DeviceProvider {
         if (!_isJpeg(img)) {
           final t = String.fromCharCodes(img.take(400));
           if (t.contains('login') || t.contains('-6') || t.toLowerCase().contains('unauthorized')) {
-            throw AddDeviceError(AddProblem.wrongPassword, t);
+            throw AddDeviceError(AddProblem.wrongPassword, det(t));
           }
           snapshot = null; // answered but not a picture: live video only
         }
@@ -365,7 +413,10 @@ class CameraProvider extends DeviceProvider {
         if (p.problem == AddProblem.wrongPassword ||
             p.problem == AddProblem.unreachable ||
             p.problem == AddProblem.bridgeOffline) {
-          throw p;
+          // The ONVIF answers already proved that the camera is there and the login works:
+          // a snapshot address that fails is no reason to refuse the camera.
+          if (!viaOnvif) throw AddDeviceError(p.problem, det(p.detail));
+          log.add('Snapshot: ${p.problem.name} – live video only');
         }
         snapshot = null; // e.g. ISAPI off on an Ezviz: RTSP still works
       } finally {
@@ -374,25 +425,48 @@ class CameraProvider extends DeviceProvider {
     }
     if (snapshot == null) {
       final url = cameraRtspUrl({...settings, 'password': pw});
-      if (url == null) throw AddDeviceError(AddProblem.cameraNoStream, 'no RTSP or snapshot');
-      if (!c.viaBridge) {
+      if (url == null) throw AddDeviceError(AddProblem.cameraNoStream, det('no RTSP or snapshot'));
+      // A browser (or a device reaching the camera only through the home bridge) cannot open the
+      // RTSP port itself: the address is kept unchecked, the picture is checked on the real device.
+      final canCheck = !c.viaBridge && !Plat.isWeb;
+      if (!canCheck) {
+        log.add('RTSP address not checked from this device (${Plat.isWeb ? 'browser' : 'home bridge'})');
+      } else {
         int code;
         try {
           code = await _rtspCheck(url);
         } catch (e) {
-          throw explain(e, havePassword: true);
+          if (viaOnvif || manual.isNotEmpty) {
+            // ONVIF said where the stream is: a port that does not answer from here is only a note.
+            log.add('RTSP check: $e');
+            code = -1;
+          } else {
+            throw AddDeviceError(explain(e, havePassword: true).problem, det('$e'));
+          }
         }
-        if (code == 401) throw AddDeviceError(AddProblem.wrongPassword, 'RTSP 401');
-        if (code != 200 && manual.isNotEmpty) {
-          throw AddDeviceError(AddProblem.cameraNoStream, 'RTSP $code: ${rtspTemplate(url, host)}');
+        if (code != -1) log.add('RTSP DESCRIBE ${rtspTemplate(url, host)}: $code');
+        if (code == 401) throw AddDeviceError(AddProblem.wrongPassword, det('RTSP 401'));
+        if (code == 404 && manual.isNotEmpty) {
+          throw AddDeviceError(AddProblem.cameraNoStream, det('RTSP 404: ${rtspTemplate(url, host)}'));
         }
         if (code == 404) {
           // The brand's usual address is not it: try the other brands' addresses before giving up.
           final found = await _probe(c, host, user, pw, '${preset.id} $model', [
+            ...log,
             'RTSP 404: ${preset.rtsp}',
           ], notOnvif: false);
           settings = {...settings, ...found.$1};
           streams = found.$2;
+        } else if (code != 200 && code != -1) {
+          // E.g. Sonoff answers 454 to a DESCRIBE it cannot tell the login of: not a reason to
+          // refuse; the live view on the device itself is the real test.
+          warnings.add(
+            tr(
+              ctx.lang,
+              'Videon osoitetta ei voitu varmistaa (kamera vastasi RTSP $code). Se on lisätty silti – jos kuva ei näy, tarkista tunnus ja salasana.',
+              'The video address could not be verified (the camera answered RTSP $code). It was added anyway – if no picture shows, check the username and password.',
+            ),
+          );
         }
       }
     }
@@ -400,6 +474,8 @@ class CameraProvider extends DeviceProvider {
     final connection = conn(settings);
     final title = c.name?.isNotEmpty == true ? c.name! : tr(ctx.lang, 'Kamera', 'Camera');
     final n = streams.length > 1 ? streams.length : 1;
+    final ptzOn = onvif?.hasPtz ?? false;
+    if (ptzOn) log.add('PTZ: available (${onvif!.streams.where((s) => s.ptzToken != null).length} stream(s))');
     return Connected(
       connection: connection,
       label: model.isNotEmpty ? model : preset.name,
@@ -419,11 +495,19 @@ class CameraProvider extends DeviceProvider {
               (i == 0 ? snapshot : streams.elementAtOrNull(i)?['snapshot']) != null
                   ? tr(ctx.lang, 'Kuva ruutuun, live-video kotiverkossa', 'Picture on the tile, live video at home')
                   : tr(ctx.lang, 'Live-video kotiverkossa (ei kuvaa etänä)', 'Live video at home (no picture away)'),
+              if (_ptzToken(settings, streams, i) != null) tr(ctx.lang, 'PTZ-ohjaus', 'PTZ control'),
             ].join(' · '),
           ),
       ],
-      data: {'snapshot': ?snapshot, 'streams': n},
+      data: {'snapshot': ?snapshot, 'streams': n, 'warnings': warnings, 'tech': log},
     );
+  }
+
+  /// PTZ profile token of stream [i] (single-stream cameras keep it in the settings).
+  static String? _ptzToken(Map<String, dynamic> settings, List<Map<String, dynamic>> streams, int i) {
+    if (settings['ptz'] is! Map) return null;
+    if (streams.length > 1) return streams.elementAtOrNull(i)?['ptzToken'] as String?;
+    return (settings['ptzToken'] ?? streams.firstOrNull?['ptzToken']) as String?;
   }
 
   /// RTSP search over [rtspPatterns]; returns the settings to merge and the stream list.
@@ -495,10 +579,19 @@ class CameraProvider extends DeviceProvider {
       read: {
         if (snap != null) ...{'mode': 'snapshot', 'path': snap, 'refreshSeconds': 2} else 'mode': 'rtsp',
         if (i > 0) 'stream': i,
+        if (_ptzToken(r.connection.settings, [
+              for (final e in (r.connection.settings['streams'] as List?) ?? const [])
+                Map<String, dynamic>.from(e as Map),
+            ], i) !=
+            null)
+          'ptz': true,
       },
     );
   }
 }
+
+Future<List<OnvifFound>> _onvifSubnetScan(List<String> locals) =>
+    scanSubnet<OnvifFound>(locals, probeOnvifAt, parallel: 48, timeout: const Duration(seconds: 3));
 
 /// Preset id → [rtspPatterns] brand.
 String _presetBrand(String id) => switch (id) {

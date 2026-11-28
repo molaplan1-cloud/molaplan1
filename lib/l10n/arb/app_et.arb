@@ -6278,10 +6278,6 @@
  "@sd4d7ad1bab": {
   "x-mt": true
  },
- "s5b7d02a301": "Seade sellel aadressil ei ole {p0}. Kontrolli aadressi.",
- "@s5b7d02a301": {
-  "x-mt": true
- },
  "sdac5622fa8": "Seade küsib parooli",
  "@sdac5622fa8": {
   "x-mt": true
@@ -6470,14 +6466,6 @@
  "@s6f326a48f9": {
   "x-mt": true
  },
- "sc788897ba0": "Otsides läbi kodu silla, töötab see ka kodust eemal.",
- "@sc788897ba0": {
-  "x-mt": true
- },
- "s0f7361f40c": "Vaatan sinu kodu Wi-Fi-d.",
- "@s0f7361f40c": {
-  "x-mt": true
- },
  "sda2b4c9721": "Ava Wi-Fi seadistused",
  "@sda2b4c9721": {
   "x-mt": true
@@ -6488,10 +6476,6 @@
  },
  "s13f0596b74": "Otsimine... (umbes 5 sekundit)",
  "@s13f0596b74": {
-  "x-mt": true
- },
- "s8eabd27f68": "Automaatselt ei leitud midagi. Kontrolli, kas {p0} on samal Wi-Fi- l. Allpool saab kirjutada ka aadressi.",
- "@s8eabd27f68": {
   "x-mt": true
  },
  "sa616ab181e": "Kirjuta aadress",
@@ -11355,14 +11339,6 @@
  "@s1866ef6dc8": {
   "x-mt": true
  },
- "s70625d8bbe": "Kasutaja ja parool, mis on määratud kaamerale rakenduses eWeLink (RTSP/ONVIF). Kahe objektiiviga mudelil pärinevad mõlemad objektiivid samast seadmest.",
- "@s70625d8bbe": {
-  "x-mt": true
- },
- "s1a3c354399": "eWeLink app → camera → Seaded: lülitage RTSP/ONVIF sisse ja määrake sellele kasutaja ja parool (kui see on olemas).",
- "@s1a3c354399": {
-  "x-mt": true
- },
  "s0ae408f9a0": "Kaamera kasutaja (teenus, kasutaja või reaalajas) ja parool, mille olete määranud Konfiguratsioonihalduris või kaamera veebilehel.",
  "@s0ae408f9a0": {
   "x-mt": true
@@ -11547,6 +11523,86 @@
  "sda8d9bf1cd": "Pistikupesa",
  "s06444f278d": "asukoht (100 = suletud)",
  "@s06444f278d": {
+  "x-mt": true
+ },
+ "s8e3624e844": "Suurenda",
+ "@s8e3624e844": {
+  "x-mt": true
+ },
+ "s0071c4430f": "Suurenda",
+ "@s0071c4430f": {
+  "x-mt": true
+ },
+ "s359970020b": "PTZ käsk nurjus ({p0}). Kontrolli, kas oled koduvõrgus.",
+ "@s359970020b": {
+  "x-mt": true
+ },
+ "sd24649df81": "Brauser ei jõua teie koduvõrgu seadmeteni",
+ "@sd24649df81": {
+  "x-mt": true
+ },
+ "s634ae3a263": "Veebileht ei saa otsida ega avada ühendusi oma koduvõrgu seadmetega (nt {p0}). Kasuta Molaplan Windowsi või Androidi rakendust koduvõrgus või seadista kodusild – otsing ja juhtimine läbivad seadme kodus.",
+ "@s634ae3a263": {
+  "x-mt": true
+ },
+ "s49a0fab5c2": "Seade sellel aadressil ei ole {p0}. Kontrolli aadressi. Tehnilised üksikasjad näitavad, mida vastas.",
+ "@s49a0fab5c2": {
+  "x-mt": true
+ },
+ "sd621d69823": "Brauser ei saa otsida oma võrku, nii et otsing käib läbi kodusilla (töötab ka kodust eemal).",
+ "@sd621d69823": {
+  "x-mt": true
+ },
+ "s6989f8d0c7": "Veebilehitseja ei saa koduvõrgust otsida. Kasuta Windowsi või Androidi rakendust, seadista kodusild või sisesta seadme aadress.",
+ "@s6989f8d0c7": {
+  "x-mt": true
+ },
+ "s0ae25246a7": "Otsimine nii selle seadme Wi-Fi- lt kui ka kodusillalt (töötab ka kodust eemal). Puuduta enda oma.",
+ "@s0ae25246a7": {
+  "x-mt": true
+ },
+ "saa8c9298e3": "Vaatan selle seadme Wi-Fi-d.",
+ "@saa8c9298e3": {
+  "x-mt": true
+ },
+ "sf7eb5738cc": "Selles võrgus",
+ "@sf7eb5738cc": {
+  "x-mt": true
+ },
+ "sf35976eff1": "Läbi kodusilla",
+ "@sf35976eff1": {
+  "x-mt": true
+ },
+ "sa8cf19feed": "selle võrgu ja kodusilla kaudu",
+ "@sa8cf19feed": {
+  "x-mt": true
+ },
+ "s4019a442d9": "võrgus",
+ "@s4019a442d9": {
+  "x-mt": true
+ },
+ "s117fa4a840": "Lisa kasvõi ONVIF/RTSP kaamerana",
+ "@s117fa4a840": {
+  "x-mt": true
+ },
+ "sceda303e37": "Kasutajanimi ja parool, mida näidatakse kaamera ONVIF/ RTSP leheküljel rakenduses eWeLink (Seaded → Rohkem seadistusi → ONVIF/ RTSP). Need ei ole sinu eWeLinki konto sisselogimine. Kahe objektiiviga mudeli puhul pärinevad mõlemad objektiivid samast seadmest.",
+ "@sceda303e37": {
+  "x-mt": true
+ },
+ "s9134959509": "eWeLink app → camera → Settings → More Settings → ONVIF/RTSP: lülitage see sisse ja märkige üles kaamera IP-aadress, kasutajanimi ja parool.",
+ "@s9134959509": {
+  "x-mt": true
+ },
+ "sbfd6f856ef": "Kaamera ütleb, et see on \"{p0}\", mitte {p1}. See lisati niikuinii ONVIF- kaamerana.",
+ "@sbfd6f856ef": {
+  "x-mt": true
+ },
+ "s56ef345ef2": "Video aadressi ei õnnestunud kontrollida (kaamera vastas RTSP {p0}). See lisati ikkagi – kui pilti ei näidata, kontrolli kasutajanime ja parooli.",
+ "@s56ef345ef2": {
+  "x-mt": true
+ },
+ "s208a59a323": "PTZ kontroll",
+ "@s208a59a323": {
   "x-mt": true
  }
 }

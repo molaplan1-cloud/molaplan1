@@ -8,6 +8,7 @@ import '../drivers/camera_driver.dart';
 import '../models/models.dart';
 import 'app_scope.dart';
 import 'error_box.dart';
+import 'ptz_pad.dart';
 import 'rtsp_view.dart';
 
 /// Shows an MJPEG stream, a periodically refreshed snapshot, or live RTSP video.
@@ -218,9 +219,23 @@ class CameraFullscreen extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
     backgroundColor: Colors.black,
     appBar: AppBar(backgroundColor: Colors.black, title: Text(tile.title)),
-    body: InteractiveViewer(
-      maxScale: 5,
-      child: CameraView(tile: tile, fit: BoxFit.contain, live: true),
+    body: Stack(
+      fit: StackFit.expand,
+      children: [
+        InteractiveViewer(
+          maxScale: 5,
+          child: CameraView(tile: tile, fit: BoxFit.contain, live: true),
+        ),
+        // R554: PTZ buttons when the camera's ONVIF profile has pan / tilt / zoom.
+        if (PtzPad.available(context, tile)) PtzPad(tile: tile),
+      ],
     ),
   );
 }
+
+/// A short, plain text for a failed PTZ command.
+String friendlyPtzError(BuildContext context, Object e) => tx(
+  context,
+  'PTZ-ohjaus ei onnistunut (${e.toString().replaceFirst('DriverException: ', '')}). Tarkista, että olet kotiverkossa.',
+  'PTZ command failed (${e.toString().replaceFirst('DriverException: ', '')}). Check that you are on the home network.',
+);

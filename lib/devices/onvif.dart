@@ -11,9 +11,12 @@ import 'package:crypto/crypto.dart';
 
 /// A camera that answered the WS-Discovery probe.
 class OnvifFound {
-  OnvifFound({required this.xaddr, this.scopes = const []});
+  OnvifFound({required this.xaddr, this.scopes = const [], this.banner = ''});
   final String xaddr;
   final List<String> scopes;
+
+  /// Text that identified the maker without a login (e.g. the RTSP server name on port 554).
+  final String banner;
 
   String get host => Uri.tryParse(xaddr)?.host ?? '';
   int get port => Uri.tryParse(xaddr)?.port ?? 80;
@@ -30,7 +33,7 @@ class OnvifFound {
   String get hardware => _scope('hardware');
 
   /// Best guess of the brand ('hikvision', 'dahua', 'reolink', 'tapo', 'ezviz' or '').
-  String get brand => guessCameraBrand('$name $hardware');
+  String get brand => guessCameraBrand('$name $hardware $banner');
 }
 
 String guessCameraBrand(String text) {
@@ -111,6 +114,75 @@ Future<List<OnvifFound>> onvifDiscover({Duration timeout = const Duration(second
   return out.values.toList();
 }
 
+/// Fallback when WS-Discovery (multicast) finds nothing – common on Windows firewalls, guest
+/// Wi-Fi and many routers: look at the usual ONVIF ports of every address of the local /24
+/// and ask the ones that are open for GetSystemDateAndTime (needs no login, changes nothing).
+/// Pure Dart; runs on this device and on the home bridge.
+Future<OnvifFound?> probeOnvifAt(
+  HttpClient client,
+  String ip, {
+  List<int> ports = const [80, 2020, 8080, 8000, 8899],
+  Duration connectTimeout = const Duration(milliseconds: 700),
+}) async {
+  Future<bool> open(int port) async {
+    try {
+      final s = await Socket.connect(ip, port, timeout: connectTimeout);
+      s.destroy();
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  final openPorts = <int>[
+    for (final (i, ok) in (await Future.wait([for (final p in ports) open(p)])).indexed)
+      if (ok) ports[i],
+  ];
+  for (final port in openPorts) {
+    try {
+      final req = await client.postUrl(Uri.parse('http://$ip:$port/onvif/device_service')).timeout(connectTimeout * 3);
+      req.headers.contentType = ContentType('application', 'soap+xml', charset: 'utf-8');
+      req.write(onvifEnvelope('<tds:GetSystemDateAndTime/>'));
+      final res = await req.close().timeout(connectTimeout * 3);
+      final body = await res.transform(utf8.decoder).join().timeout(connectTimeout * 3);
+      if (body.contains('GetSystemDateAndTimeResponse') || (body.contains('Envelope') && body.contains('onvif.org'))) {
+        return OnvifFound(
+          xaddr: 'http://$ip${port == 80 ? '' : ':$port'}/onvif/device_service',
+          banner: await rtspBanner(ip),
+        );
+      }
+    } catch (_) {}
+  }
+  return null;
+}
+
+/// RTSP `Server:` header from an OPTIONS request on port 554 ('' when there is none).
+Future<String> rtspBanner(String ip, {Duration timeout = const Duration(milliseconds: 900)}) async {
+  Socket? s;
+  try {
+    s = await Socket.connect(ip, 554, timeout: timeout);
+    s.write('OPTIONS rtsp://$ip:554/ RTSP/1.0\r\nCSeq: 1\r\nUser-Agent: Molaplan\r\n\r\n');
+    await s.flush();
+    final text = await s.cast<List<int>>().transform(utf8.decoder).first.timeout(timeout);
+    final m = RegExp(r'^Server:\s*(.+)$', multiLine: true, caseSensitive: false).firstMatch(text);
+    return m?.group(1)?.trim() ?? '';
+  } catch (_) {
+    return '';
+  } finally {
+    s?.destroy();
+  }
+}
+
+// ---------------------------------------------------------------- PTZ
+
+String onvifPtzMoveBody(String token, {double pan = 0, double tilt = 0, double zoom = 0}) =>
+    '<tptz:ContinuousMove xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl"><tptz:ProfileToken>${_esc(token)}</tptz:ProfileToken>'
+    '<tptz:Velocity><tt:PanTilt x="$pan" y="$tilt"/><tt:Zoom x="$zoom"/></tptz:Velocity></tptz:ContinuousMove>';
+
+String onvifPtzStopBody(String token) =>
+    '<tptz:Stop xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl"><tptz:ProfileToken>${_esc(token)}</tptz:ProfileToken>'
+    '<tptz:PanTilt>true</tptz:PanTilt><tptz:Zoom>true</tptz:Zoom></tptz:Stop>';
+
 // ---------------------------------------------------------------- SOAP client
 
 /// WS-Security UsernameToken (PasswordDigest = base64(sha1(nonce + created + password))).
@@ -173,25 +245,67 @@ class OnvifNotFound implements Exception {
   String toString() => 'not ONVIF: $detail';
 }
 
+/// Nothing answered at all (timeouts, refused connections, no route, a browser that may not
+/// reach the LAN): the address is not "another device", it is simply not reachable.
+class OnvifUnreachable implements Exception {
+  OnvifUnreachable(this.detail);
+  final String detail;
+  @override
+  String toString() => 'ONVIF: no answer: $detail';
+}
+
 /// One video source (lens / channel): its main and light stream.
 class OnvifStream {
-  OnvifStream({this.rtsp, this.rtspSub, this.snapshot, this.source = ''});
+  OnvifStream({this.rtsp, this.rtspSub, this.snapshot, this.source = '', this.ptzToken});
   final String? rtsp;
   final String? rtspSub;
   final String? snapshot;
   final String source;
+
+  /// Media profile token to steer with PTZ (null = this lens cannot pan/tilt/zoom).
+  final String? ptzToken;
 }
 
 /// What an ONVIF camera offers: [streams] has one entry per video source (two on a dual-lens
 /// camera); [rtsp]/[rtspSub]/[snapshot] are the first one.
 class OnvifMedia {
-  OnvifMedia({this.rtsp, this.rtspSub, this.snapshot, this.model = '', List<OnvifStream>? streams})
-    : streams = streams ?? [if (rtsp != null) OnvifStream(rtsp: rtsp, rtspSub: rtspSub, snapshot: snapshot)];
+  OnvifMedia({
+    this.rtsp,
+    this.rtspSub,
+    this.snapshot,
+    this.model = '',
+    this.manufacturer = '',
+    this.modelName = '',
+    this.firmware = '',
+    this.ptzPath,
+    this.skew = Duration.zero,
+    this.ws = true,
+    this.tech = const [],
+    List<OnvifStream>? streams,
+  }) : streams = streams ?? [if (rtsp != null) OnvifStream(rtsp: rtsp, rtspSub: rtspSub, snapshot: snapshot)];
   final String? rtsp;
   final String? rtspSub;
   final String? snapshot;
+
+  /// "Manufacturer Model" as one text.
   final String model;
+  final String manufacturer, modelName, firmware;
+
+  /// PTZ service address (path / ":port/path" like the other addresses), null = no PTZ service.
+  final String? ptzPath;
+
+  /// Camera clock − our clock (WS-Security needs it for every later request).
+  final Duration skew;
+
+  /// The camera took WS-Security (true) or only HTTP Digest (false) – the same must be used for PTZ.
+  final bool ws;
+
+  /// What the camera answered, step by step (no logins, no secrets): for "Tekniset tiedot".
+  final List<String> tech;
   final List<OnvifStream> streams;
+
+  /// A PTZ service and at least one lens with a PTZ-capable profile.
+  bool get hasPtz => ptzPath != null && streams.any((s) => s.ptzToken != null);
 }
 
 /// GetSystemDateAndTime → the camera's UTC clock (null when it does not say).
@@ -223,6 +337,14 @@ List<(String, String)> parseOnvifProfiles(String xml) => [
       (tok, _tag(m.group(2) ?? '', 'SourceToken') ?? ''),
 ];
 
+/// Tokens of the profiles that carry a PTZ configuration (Media1 `PTZConfiguration`,
+/// Media2 `Configurations/PTZ`).
+Set<String> parseOnvifPtzTokens(String xml) => {
+  for (final m in RegExp(r'<(?:[\w-]+:)?Profiles\b([^>]*?)>([\s\S]*?)</(?:[\w-]+:)?Profiles>').allMatches(xml))
+    if (RegExp(r'<(?:[\w-]+:)?(?:PTZConfiguration|PTZ)\b').hasMatch(m.group(2) ?? ''))
+      ?RegExp(r'\btoken="([^"]+)"').firstMatch(m.group(1) ?? '')?.group(1),
+};
+
 bool _isAuthFault(String r) =>
     r.contains('NotAuthorized') ||
     r.contains('FailedAuthentication') ||
@@ -245,25 +367,38 @@ Future<OnvifMedia> onvifMedia(
   String user = '',
   String password = '',
   String host = '',
+  List<String>? log,
 }) async {
   var skew = Duration.zero;
   var useWs = user.isNotEmpty;
   var soapSeen = false;
+  var httpAnswered = false;
   final tried = <String>[];
+  void note(String s) => log?.add(s);
 
-  Future<String> call(String path, String body, {bool auth = true}) async {
+  Future<String> call(String path, String body, {bool auth = true, bool auth400 = true}) async {
     Future<String> once(bool ws) async {
       final String r;
       try {
         r = await post(path, onvifEnvelope(body, user: ws ? user : '', password: ws ? password : '', skew: skew));
       } catch (e) {
+        final s = e.toString();
         // HTTP Digest refused at the web server level: a login problem, not "another device".
-        if (e.toString().contains('HTTP 401')) {
+        if (s.contains('HTTP 401')) {
           soapSeen = true;
+          httpAnswered = true;
           return 'NotAuthorized (HTTP 401)';
         }
+        // Real Sonoff cameras (gSOAP): a wrong or missing login is an empty "HTTP 400", not a
+        // SOAP fault. Once the camera has shown that it speaks SOAP, that is a login problem.
+        if (auth400 && soapSeen && s.contains('HTTP 400')) {
+          httpAnswered = true;
+          return 'NotAuthorized (HTTP 400, empty answer)';
+        }
+        if (s.contains('HTTP ')) httpAnswered = true;
         rethrow;
       }
+      httpAnswered = true;
       if (r.contains('Envelope')) soapSeen = true;
       return r;
     }
@@ -290,67 +425,112 @@ Future<OnvifMedia> onvifMedia(
   }
 
   try {
-    final t = parseOnvifUtc(await call(devicePath, '<tds:GetSystemDateAndTime/>', auth: false));
+    final tr = await call(devicePath, '<tds:GetSystemDateAndTime/>', auth: false);
+    final t = parseOnvifUtc(tr);
     if (t != null) skew = t.difference(DateTime.now().toUtc());
     // Under a minute is normal jitter; a camera with a reset clock may be years off.
     if (skew.inSeconds.abs() < 5) skew = Duration.zero;
+    note(
+      'GetSystemDateAndTime $devicePath: ${tr.contains('Envelope') ? 'SOAP answer' : 'no SOAP'}'
+      '${t == null ? '' : ', camera clock ${skew.inSeconds >= 0 ? '+' : ''}${skew.inSeconds} s'}',
+    );
   } on OnvifAuthError {
     rethrow;
   } catch (e) {
     tried.add('time: $e');
+    note('GetSystemDateAndTime $devicePath: $e');
   }
 
-  var model = '';
+  var model = '', maker = '', modelName = '', firmware = '';
   try {
     final info = await call(devicePath, '<tds:GetDeviceInformation/>');
-    model = [_tag(info, 'Manufacturer'), _tag(info, 'Model')].whereType<String>().join(' ').trim();
+    maker = _tag(info, 'Manufacturer') ?? '';
+    modelName = _tag(info, 'Model') ?? '';
+    firmware = _tag(info, 'FirmwareVersion') ?? '';
+    model = [maker, modelName].where((x) => x.isNotEmpty).join(' ').trim();
+    note(
+      'GetDeviceInformation: ${user.isEmpty ? 'without login' : 'with login'}, '
+      'manufacturer "$maker", model "$modelName"${firmware.isEmpty ? '' : ', firmware $firmware'}',
+    );
   } on OnvifAuthError {
+    note('GetDeviceInformation: login refused');
     rethrow;
   } on OnvifNeedsLogin {
+    note('GetDeviceInformation: login required (HTTP 400/401 without login)');
     rethrow;
   } catch (e) {
     tried.add('info: $e');
+    note('GetDeviceInformation: $e');
   }
-  if (!soapSeen) throw OnvifNotFound(tried.join('; '));
+  if (!soapSeen) {
+    if (!httpAnswered) throw OnvifUnreachable(tried.join('; '));
+    throw OnvifNotFound(tried.join('; '));
+  }
 
-  String? media1, media2;
+  String? media1, media2, ptzX;
   try {
     final sv = parseOnvifServices(
-      await call(devicePath, '<tds:GetServices><tds:IncludeCapability>false</tds:IncludeCapability></tds:GetServices>'),
+      await call(
+        devicePath,
+        '<tds:GetServices><tds:IncludeCapability>false</tds:IncludeCapability></tds:GetServices>',
+        auth400: false,
+      ),
     );
     media1 = sv['http://www.onvif.org/ver10/media/wsdl'];
     media2 = sv['http://www.onvif.org/ver20/media/wsdl'];
+    ptzX = sv['http://www.onvif.org/ver20/ptz/wsdl'];
+    note(
+      'GetServices: ${[if (media1 != null) 'Media', if (media2 != null) 'Media2', if (ptzX != null) 'PTZ'].join(', ')}'
+      '${sv.isEmpty ? 'none listed' : ''}',
+    );
   } on OnvifAuthError {
     rethrow;
-  } catch (_) {}
-  if (media1 == null) {
+  } catch (e) {
+    note('GetServices: $e');
+  }
+  if (media1 == null || ptzX == null) {
     try {
       final caps = await call(
         devicePath,
         '<tds:GetCapabilities><tds:Category>All</tds:Category></tds:GetCapabilities>',
+        auth400: false,
       );
-      final m = _tag(caps, 'Media');
-      final x = m == null ? null : _tag(m, 'XAddr');
-      if (x != null && x.isNotEmpty) media1 = x;
+      if (media1 == null) {
+        final m = _tag(caps, 'Media');
+        final x = m == null ? null : _tag(m, 'XAddr');
+        if (x != null && x.isNotEmpty) media1 = x;
+      }
+      if (ptzX == null) {
+        final m = _tag(caps, 'PTZ');
+        final x = m == null ? null : _tag(m, 'XAddr');
+        if (x != null && x.isNotEmpty) ptzX = x;
+      }
+      note('GetCapabilities: media ${media1 ?? 'none'}${ptzX == null ? '' : ', PTZ'}');
     } on OnvifAuthError {
       rethrow;
-    } catch (_) {}
+    } catch (e) {
+      note('GetCapabilities: $e');
+    }
   }
   final m1 = local(media1 ?? devicePath);
   final m2 = media2 == null ? null : local(media2);
 
   // ---- Media1 (Profile S)
+  final ptzTokens = <String>{};
   Future<List<(String, String)>> profiles1() async {
-    var p = parseOnvifProfiles(await call(m1, '<trt:GetProfiles/>'));
+    var xml = await call(m1, '<trt:GetProfiles/>');
+    var p = parseOnvifProfiles(xml);
     if (p.isEmpty && user.isNotEmpty) {
       // An empty list from a request the camera did not authenticate: try the other login style.
       final saved = useWs;
       useWs = !useWs;
       try {
-        p = parseOnvifProfiles(await call(m1, '<trt:GetProfiles/>'));
+        xml = await call(m1, '<trt:GetProfiles/>');
+        p = parseOnvifProfiles(xml);
       } catch (_) {}
       if (p.isEmpty) useWs = saved;
     }
+    ptzTokens.addAll(parseOnvifPtzTokens(xml));
     return p;
   }
 
@@ -368,9 +548,12 @@ Future<OnvifMedia> onvifMedia(
   if (profiles.isEmpty) {
     for (final path in {?m2, if (m2 == null) m1}) {
       try {
-        profiles = parseOnvifProfiles(
-          await call(path, '<tr2:GetProfiles><tr2:Type>VideoSource</tr2:Type></tr2:GetProfiles>'),
+        final xml = await call(
+          path,
+          '<tr2:GetProfiles><tr2:Type>VideoSource</tr2:Type><tr2:Type>PTZ</tr2:Type></tr2:GetProfiles>',
         );
+        profiles = parseOnvifProfiles(xml);
+        ptzTokens.addAll(parseOnvifPtzTokens(xml));
         if (profiles.isNotEmpty) {
           v2 = true;
           media2 = path;
@@ -427,18 +610,56 @@ Future<OnvifMedia> onvifMedia(
   for (final (tok, src) in profiles) {
     bySource.putIfAbsent(src.isEmpty ? '_' : src, () => []).add(tok);
   }
+  final hasPtzService = ptzX != null;
   final streams = <OnvifStream>[];
   for (final e in bySource.entries) {
     final main = await streamUri(e.value.first);
     if (main == null) continue;
     final sub = e.value.length > 1 ? await streamUri(e.value[1]) : null;
+    // PTZ only on the lens whose profile carries a PTZ configuration ("PTZ View" of a dual-lens
+    // camera); the "Fixed View" lens has none.
+    final ptzTok = hasPtzService ? e.value.where(ptzTokens.contains).firstOrNull : null;
     streams.add(
-      OnvifStream(rtsp: main, rtspSub: sub, snapshot: await snapUri(e.value.first), source: e.key == '_' ? '' : e.key),
+      OnvifStream(
+        rtsp: main,
+        rtspSub: sub,
+        snapshot: await snapUri(e.value.first),
+        source: e.key == '_' ? '' : e.key,
+        ptzToken: ptzTok,
+      ),
     );
+  }
+  note(
+    'GetProfiles (${v2 ? 'Media2' : 'Media1'}): ${profiles.length} profile(s), ${bySource.length} video source(s)'
+    '${hasPtzService ? ', PTZ on ${streams.where((s) => s.ptzToken != null).length} of ${streams.length} stream(s)' : ''}',
+  );
+  for (final (i, st) in streams.indexed) {
+    note('GetStreamUri #${i + 1}: ${_noLogin(st.rtsp)}${st.rtspSub == null ? '' : ' (+ light stream)'}');
   }
   if (streams.isEmpty) throw OnvifNoProfiles(model, [...tried, 'profiles without RTSP address']);
   final f = streams.first;
-  return OnvifMedia(rtsp: f.rtsp, rtspSub: f.rtspSub, snapshot: f.snapshot, model: model, streams: streams);
+  return OnvifMedia(
+    rtsp: f.rtsp,
+    rtspSub: f.rtspSub,
+    snapshot: f.snapshot,
+    model: model,
+    manufacturer: maker,
+    modelName: modelName,
+    firmware: firmware,
+    ptzPath: ptzX == null ? null : local(ptzX),
+    skew: skew,
+    ws: useWs,
+    tech: log == null ? const [] : List.of(log),
+    streams: streams,
+  );
+}
+
+/// The address without any login part (so details never carry a password).
+String _noLogin(String? uri) {
+  if (uri == null) return '-';
+  final u = Uri.tryParse(uri);
+  if (u == null || u.userInfo.isEmpty) return uri;
+  return u.replace(userInfo: '').toString();
 }
 
 /// A camera behind NAT / with two NICs tells addresses on another IP: use the one we reached.

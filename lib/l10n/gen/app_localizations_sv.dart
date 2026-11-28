@@ -2579,6 +2579,12 @@ class AppLocalizationsSv extends AppLocalizations {
   String get se38a9bb2ed => 'Senaste';
 
   @override
+  String get s8e3624e844 => 'Zooma in';
+
+  @override
+  String get s0071c4430f => 'Zooma ut';
+
+  @override
   String get sf1ed8904bb => 'Välj registreringslistan (CSV)';
 
   @override
@@ -3254,6 +3260,11 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get sd55dd196f6 =>
       'Ingen live-video. Kontrollera att du är på hemmanätverket och RTSP är på i kameran.';
+
+  @override
+  String s359970020b(String p0) {
+    return 'PTZ kommandot misslyckades ($p0). Kontrollera att du är på hemmanätverket.';
+  }
 
   @override
   String get s1cf33c1fbc => 'Värde';
@@ -7068,6 +7079,15 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sb1f0e72163 => 'Söndag söndag';
 
   @override
+  String get sd24649df81 =>
+      'webbläsaren kan inte nå enheter på ditt hemnätverk';
+
+  @override
+  String s634ae3a263(String p0) {
+    return 'En webbsida kan inte söka efter eller öppna anslutningar till enheter på ditt hemnätverk (t.ex. $p0). Använd Molaplan Windows eller Android-appen på hemmanätverket, eller ställa in hembroen - sedan söka och kontrollera gå igenom en enhet hemma.';
+  }
+
+  @override
   String get s55d52c5ae1 => 'Denna enhet är inte på Wi-Fi';
 
   @override
@@ -7092,8 +7112,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sd4d7ad1bab => 'En annan enhet svarade';
 
   @override
-  String s5b7d02a301(String p0) {
-    return 'Enheten på den adressen är inte $p0. Kontrollera adressen.';
+  String s49a0fab5c2(String p0) {
+    return 'Enheten på den adressen är inte $p0. Kontrollera adressen. De tekniska detaljerna visar vad som svarade.';
   }
 
   @override
@@ -7279,11 +7299,25 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get sc788897ba0 =>
-      'Söker genom hembron, så detta fungerar också hemifrån.';
+  String get sd621d69823 =>
+      'En webbläsare kan inte söka sitt eget nätverk, så sökningen går igenom hembron (arbetar också hemifrån).';
 
   @override
-  String get s0f7361f40c => 'Titta på ditt hem Wi-Fi. Tryck på din.';
+  String get s6989f8d0c7 =>
+      'En webbläsare kan inte söka hemnätverket. Använd Windows- eller Android-appen, konfigurera hembroen eller skriv enhetsadressen.';
+
+  @override
+  String get s0ae25246a7 =>
+      'Söker både på den här enhetens Wi-Fi och genom hembron (arbetar också hemifrån).';
+
+  @override
+  String get saa8c9298e3 => 'Titta på den här enhetens Wi-Fi. Tryck på din.';
+
+  @override
+  String get sf7eb5738cc => 'På detta nätverk';
+
+  @override
+  String get sf35976eff1 => 'genom hembron';
 
   @override
   String get sda2b4c9721 => 'Öppna Wi-Fi inställningar';
@@ -7295,9 +7329,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s13f0596b74 => 'Söker... (ca 5 sekunder)';
 
   @override
-  String s8eabd27f68(String p0, String p1) {
-    return 'Ingenting hittas automatiskt. Kontrollera att $p0 är på och på samma Wi-Fi. Du kan också skriva adressen nedan.';
-  }
+  String get sa8cf19feed => 'på detta nätverk och via hembron';
+
+  @override
+  String get s4019a442d9 => 'på detta nätverk';
 
   @override
   String get sa616ab181e => 'Skriv adressen';
@@ -7333,6 +7368,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get se4095d7d95 => 'Enhetens lösenord';
+
+  @override
+  String get s117fa4a840 => 'Lägg ändå till som en ONVIF/RTSP-kamera';
 
   @override
   String get s8f610a3bb2 => 'Jag är hemifrån';
@@ -12054,12 +12092,12 @@ class AppLocalizationsSv extends AppLocalizations {
       'Ezviz app → kamera → Inställningar → LAN Live View / RTSP: slå på den (om alternativet finns).';
 
   @override
-  String get s70625d8bbe =>
-      'Användaren och lösenordet för kameran i eWeLink-appen (RTSP/ONVIF). På en dual-lens-modell kommer båda linserna från samma enhet.';
+  String get sceda303e37 =>
+      'Användarnamnet och lösenordet som visas på kamerans ONVIF / RTSP-sida i eWeLink-appen (inställningar → Fler inställningar → ONVIF / RTSP). De är inte din eWeLink-kontoinloggning. På en dubbellinsmodell kommer båda linserna från samma enhet.';
 
   @override
-  String get s1a3c354399 =>
-      'eWeLink app → kamera → Inställningar: slå på RTSP/ONVIF och ange en användare och lösenord för det (om alternativet finns).';
+  String get s9134959509 =>
+      'eWeLink app → kamera → Inställningar → Fler inställningar → ONVIF/RTSP: slå på den och notera kamera IP-adressen, användarnamn och lösenord.';
 
   @override
   String get s0ae408f9a0 =>
@@ -12088,6 +12126,16 @@ class AppLocalizationsSv extends AppLocalizations {
   String get s1577068729 => 'Kamera kamera';
 
   @override
+  String sbfd6f856ef(String p0, String p1) {
+    return 'Kameran säger att det är \"$p0\", inte $p1. Det lades ändå som en ONVIF-kamera.';
+  }
+
+  @override
+  String s56ef345ef2(String p0) {
+    return 'Videoadressen kunde inte verifieras (kameran svarade RTSP $p0). Det lades ändå - om ingen bild visar, kontrollera användarnamnet och lösenordet.';
+  }
+
+  @override
   String s83d937ae6b(String p0, String p1) {
     return 'Stream $p0/$p1 (egen lins eller kanal)';
   }
@@ -12097,6 +12145,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s2101774157 => 'Live video hemma (ingen bild bort)';
+
+  @override
+  String get s208a59a323 => 'PTZ kontroll';
 
   @override
   String get sdd483f7f78 => 'Enhetsnyckel saknas';

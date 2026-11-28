@@ -4760,6 +4760,18 @@ abstract class AppLocalizations {
   /// **'Last'**
   String get se38a9bb2ed;
 
+  /// fi: Lähennä
+  ///
+  /// In en, this message translates to:
+  /// **'Zoom in'**
+  String get s8e3624e844;
+
+  /// fi: Loitonna
+  ///
+  /// In en, this message translates to:
+  /// **'Zoom out'**
+  String get s0071c4430f;
+
   /// fi: Valitse rekisterilista (CSV)
   ///
   /// In en, this message translates to:
@@ -5977,6 +5989,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No live video. Check that you are on the home network and RTSP is on in the camera.'**
   String get sd55dd196f6;
+
+  /// fi: PTZ-ohjaus ei onnistunut ({p0}). Tarkista, että olet kotiverkossa.
+  ///
+  /// In en, this message translates to:
+  /// **'PTZ command failed ({p0}). Check that you are on the home network.'**
+  String s359970020b(String p0);
 
   /// fi: Tila / arvo
   ///
@@ -12963,6 +12981,18 @@ abstract class AppLocalizations {
   /// **'Sunday'**
   String get sb1f0e72163;
 
+  /// fi: Selain ei pääse kotiverkon laitteisiin
+  ///
+  /// In en, this message translates to:
+  /// **'The browser cannot reach devices on your home network'**
+  String get sd24649df81;
+
+  /// fi: Verkkosivu ei voi etsiä eikä avata yhteyttä kotiverkon laitteisiin (esim. {p0}). Käytä Molaplan Windows- tai Android-sov
+  ///
+  /// In en, this message translates to:
+  /// **'A web page cannot search for or open connections to devices on your home network (e.g. {p0}). Use the Molaplan Windows or Android app on the home network, or set up the home bridge – then search and control go through a device at home.'**
+  String s634ae3a263(String p0);
+
   /// fi: Tämä laite ei ole yhteydessä wifiin
   ///
   /// In en, this message translates to:
@@ -13001,11 +13031,11 @@ abstract class AppLocalizations {
   /// **'A different device answered'**
   String get sd4d7ad1bab;
 
-  /// fi: Osoitteesta vastasi laite, joka ei ole {p0}. Tarkista osoite ja kokeile uudelleen.
+  /// fi: Osoitteesta vastasi laite, joka ei ole {p0}. Tarkista osoite ja kokeile uudelleen. Tarkempi syy näkyy teknisissä tiedois
   ///
   /// In en, this message translates to:
-  /// **'The device at that address is not {p0}. Check the address.'**
-  String s5b7d02a301(String p0);
+  /// **'The device at that address is not {p0}. Check the address. The technical details show what answered.'**
+  String s49a0fab5c2(String p0);
 
   /// fi: Laite pyytää salasanaa
   ///
@@ -13307,17 +13337,41 @@ abstract class AppLocalizations {
   /// **'Finding: {p0}'**
   String s6f326a48f9(String p0);
 
-  /// fi: Haku tehdään kotisillan kautta, joten tämä toimii myös kodin ulkopuolella.
+  /// fi: Selain ei voi etsiä laitteita omasta verkostaan, joten haku tehdään kotisillan kautta (toimii myös kodin ulkopuolella).
   ///
   /// In en, this message translates to:
-  /// **'Searching through the home bridge, so this works away from home too.'**
-  String get sc788897ba0;
+  /// **'A browser cannot search its own network, so the search goes through the home bridge (works away from home too).'**
+  String get sd621d69823;
 
-  /// fi: Etsin laitteita kodin wifistä. Napauta omaasi.
+  /// fi: Selain ei voi etsiä laitteita kotiverkosta. Käytä Windows- tai Android-sovellusta, ota kotisilta käyttöön tai kirjoita l
   ///
   /// In en, this message translates to:
-  /// **'Looking on your home Wi-Fi. Tap yours.'**
-  String get s0f7361f40c;
+  /// **'A browser cannot search the home network. Use the Windows or Android app, set up the home bridge, or type the device address.'**
+  String get s6989f8d0c7;
+
+  /// fi: Etsin sekä tämän laitteen wifistä että kotisillan kautta (toimii myös kodin ulkopuolella). Napauta omaasi.
+  ///
+  /// In en, this message translates to:
+  /// **'Searching both on this device\'\'s Wi-Fi and through the home bridge (works away from home too). Tap yours.'**
+  String get s0ae25246a7;
+
+  /// fi: Etsin laitteita tämän laitteen wifistä. Napauta omaasi.
+  ///
+  /// In en, this message translates to:
+  /// **'Looking on this device\'\'s Wi-Fi. Tap yours.'**
+  String get saa8c9298e3;
+
+  /// fi: Tässä verkossa
+  ///
+  /// In en, this message translates to:
+  /// **'On this network'**
+  String get sf7eb5738cc;
+
+  /// fi: Kotisillan kautta
+  ///
+  /// In en, this message translates to:
+  /// **'Through the home bridge'**
+  String get sf35976eff1;
 
   /// fi: Avaa wifi-asetukset
   ///
@@ -13337,11 +13391,17 @@ abstract class AppLocalizations {
   /// **'Searching… (about 5 seconds)'**
   String get s13f0596b74;
 
-  /// fi: Laitteita ei löytynyt automaattisesti. Tarkista että {p0} on päällä ja samassa wifissä{p1}. Voit myös kirjoittaa osoitte
+  /// fi: tässä verkossa ja kotisillan kautta
   ///
   /// In en, this message translates to:
-  /// **'Nothing found automatically. Check that {p0} is on and on the same Wi-Fi. You can also type the address below.'**
-  String s8eabd27f68(String p0, String p1);
+  /// **'on this network and via the home bridge'**
+  String get sa8cf19feed;
+
+  /// fi: tässä verkossa
+  ///
+  /// In en, this message translates to:
+  /// **'on this network'**
+  String get s4019a442d9;
 
   /// fi: Kirjoita osoite itse
   ///
@@ -13408,6 +13468,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Device password'**
   String get se4095d7d95;
+
+  /// fi: Lisää silti ONVIF/RTSP-kamerana
+  ///
+  /// In en, this message translates to:
+  /// **'Add anyway as an ONVIF/RTSP camera'**
+  String get s117fa4a840;
 
   /// fi: Olen kodin ulkopuolella
   ///
@@ -21701,17 +21767,17 @@ abstract class AppLocalizations {
   /// **'Ezviz app → camera → Settings → LAN Live View / RTSP: turn it on (if the option exists).'**
   String get s1866ef6dc8;
 
-  /// fi: eWeLink-sovelluksessa kameralle asetettu käyttäjä ja salasana (RTSP/ONVIF). Kaksilinssisessä mallissa molemmat linssit t
+  /// fi: Käyttäjätunnus ja salasana, jotka eWeLink-sovelluksen kameran ONVIF/RTSP-sivu näyttää (Asetukset → Lisäasetukset → ONVIF
   ///
   /// In en, this message translates to:
-  /// **'The user and password set for the camera in the eWeLink app (RTSP/ONVIF). On a dual-lens model both lenses come from the same device.'**
-  String get s70625d8bbe;
+  /// **'The username and password shown on the camera\'\'s ONVIF/RTSP page in the eWeLink app (Settings → More settings → ONVIF/RTSP). They are not your eWeLink account login. On a dual-lens model both lenses come from the same device.'**
+  String get sceda303e37;
 
-  /// fi: eWeLink-sovellus → kamera → Asetukset: laita RTSP/ONVIF päälle ja aseta sille käyttäjä ja salasana (jos valinta on).
+  /// fi: eWeLink-sovellus → kamera → Asetukset → Lisäasetukset → ONVIF/RTSP: laita päälle ja katso kameran IP-osoite, käyttäjätun
   ///
   /// In en, this message translates to:
-  /// **'eWeLink app → camera → Settings: turn on RTSP/ONVIF and set a user and password for it (if the option exists).'**
-  String get s1a3c354399;
+  /// **'eWeLink app → camera → Settings → More settings → ONVIF/RTSP: turn it on and note the camera IP address, username and password.'**
+  String get s9134959509;
 
   /// fi: Kameran käyttäjä (service, user tai live) ja salasana, jonka asetit Configuration Managerissa tai kameran web-sivulla.
   ///
@@ -21755,6 +21821,18 @@ abstract class AppLocalizations {
   /// **'camera'**
   String get s1577068729;
 
+  /// fi: Kamera kertoo olevansa "{p0}", ei {p1}. Se on lisätty silti ONVIF-kamerana.
+  ///
+  /// In en, this message translates to:
+  /// **'The camera says it is \"{p0}\", not {p1}. It was added anyway as an ONVIF camera.'**
+  String sbfd6f856ef(String p0, String p1);
+
+  /// fi: Videon osoitetta ei voitu varmistaa (kamera vastasi RTSP {p0}). Se on lisätty silti – jos kuva ei näy, tarkista tunnus j
+  ///
+  /// In en, this message translates to:
+  /// **'The video address could not be verified (the camera answered RTSP {p0}). It was added anyway – if no picture shows, check the username and password.'**
+  String s56ef345ef2(String p0);
+
   /// fi: Kuvavirta {p0}/{p1} (oma linssi tai kanava)
   ///
   /// In en, this message translates to:
@@ -21772,6 +21850,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Live video at home (no picture away)'**
   String get s2101774157;
+
+  /// fi: PTZ-ohjaus
+  ///
+  /// In en, this message translates to:
+  /// **'PTZ control'**
+  String get s208a59a323;
 
   /// fi: Laitteen avain puuttuu
   ///

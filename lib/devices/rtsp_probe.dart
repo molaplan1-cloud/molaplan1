@@ -9,7 +9,26 @@ import '../drivers/digest_auth.dart';
 
 /// Returns the RTSP status code (200 = video available, 401 = login refused).
 /// Throws a SocketException/TimeoutException when the camera does not answer.
-Future<int> rtspDescribe(String url, {Duration timeout = const Duration(seconds: 5)}) async {
+Future<int> rtspDescribe(String url, {Duration timeout = const Duration(seconds: 5)}) async =>
+    (await rtspDescribeDetail(url, timeout: timeout)).status;
+
+/// One DESCRIBE answer: the status and what the server calls itself (no login inside).
+class RtspReply {
+  const RtspReply(this.status, {this.server = '', this.basicRetried = false});
+  final int status;
+  final String server;
+
+  /// The first answer was neither 200 nor 401 although a login was given, so the request was
+  /// repeated with the login sent up front (Basic) – some servers (Sonoff: 454) never send a
+  /// challenge.
+  final bool basicRetried;
+  @override
+  String toString() => 'RTSP $status${server.isEmpty ? '' : ' ($server)'}${basicRetried ? ', retried with login' : ''}';
+}
+
+/// [rtspDescribe] with the server name; also retries once with the login sent up front when the
+/// server answers neither 200 nor 401.
+Future<RtspReply> rtspDescribeDetail(String url, {Duration timeout = const Duration(seconds: 5)}) async {
   final u = Uri.parse(url);
   final user = Uri.decodeComponent(u.userInfo.split(':').first);
   final pw = u.userInfo.contains(':') ? Uri.decodeComponent(u.userInfo.substring(u.userInfo.indexOf(':') + 1)) : '';
@@ -49,15 +68,31 @@ Future<int> rtspDescribe(String url, {Duration timeout = const Duration(seconds:
     }
 
     var (status, headers) = await describe(null);
-    if (status == 401 && (user.isNotEmpty || pw.isNotEmpty)) {
+    final hasLogin = user.isNotEmpty || pw.isNotEmpty;
+    final basic = 'Basic ${base64Encode(utf8.encode('$user:$pw'))}';
+    var retried = false;
+    if (status == 401 && hasLogin) {
       final wa = headers['www-authenticate'] ?? '';
       final ch = DigestChallenge.parse(wa);
       final auth = ch != null
           ? digestAuthorization(ch: ch, username: user, password: pw, method: 'DESCRIBE', uri: clean)
-          : 'Basic ${base64Encode(utf8.encode('$user:$pw'))}';
+          : basic;
       (status, headers) = await describe(auth);
+    } else if (status != 200 && status != 401 && status != 404 && hasLogin) {
+      // No challenge at all (e.g. Sonoff answers "454 Session Not Found" to a request without a
+      // login): send the login up front.
+      retried = true;
+      try {
+        final (s2, h2) = await describe(basic);
+        if (s2 == 200 || s2 == 401) {
+          status = s2;
+          headers = h2;
+        }
+      } catch (_) {
+        // The server closed the connection on the second request: keep the first answer.
+      }
     }
-    return status;
+    return RtspReply(status, server: headers['server'] ?? '', basicRetried: retried);
   } finally {
     sock.destroy();
   }

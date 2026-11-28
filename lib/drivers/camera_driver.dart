@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 
 import '../core/fields.dart';
+import '../devices/onvif.dart' show onvifEnvelope, onvifPtzMoveBody, onvifPtzStopBody;
 import 'digest_auth.dart';
 import 'driver.dart';
 import 'http_driver.dart';
@@ -148,6 +149,47 @@ class CameraDriver extends Driver {
 
   /// Streams this camera offers (1, or one per lens / channel).
   int get streamCount => s['streams'] is List && (s['streams'] as List).length > 1 ? (s['streams'] as List).length : 1;
+
+  /// ONVIF PTZ profile token of [stream] (null = this lens cannot move).
+  String? ptzToken({int stream = 0}) {
+    if (s['ptz'] is! Map) return null;
+    final list = s['streams'];
+    if (list is List && list.length > 1) {
+      final e = stream < list.length ? list[stream] : null;
+      return e is Map ? e['ptzToken'] as String? : null;
+    }
+    return s.strOrNull('ptzToken');
+  }
+
+  /// Pan/tilt/zoom with ONVIF ContinuousMove until [ptzStop]. [pan], [tilt], [zoom] are -1…1.
+  Future<void> ptzMove({double pan = 0, double tilt = 0, double zoom = 0, int stream = 0}) async {
+    final tok = ptzToken(stream: stream);
+    if (tok == null) return;
+    await _ptz(onvifPtzMoveBody(tok, pan: pan, tilt: tilt, zoom: zoom));
+  }
+
+  Future<void> ptzStop({int stream = 0}) async {
+    final tok = ptzToken(stream: stream);
+    if (tok == null) return;
+    await _ptz(onvifPtzStopBody(tok));
+  }
+
+  Future<void> _ptz(String body) async {
+    final p = s['ptz'] as Map;
+    final ws = p['ws'] != false;
+    final skew = Duration(milliseconds: (p['skewMs'] as num?)?.toInt() ?? 0);
+    final env = onvifEnvelope(
+      body,
+      user: ws ? s.str('username') : '',
+      password: ws ? s.str('password') : '',
+      skew: skew,
+    );
+    final r = await _send(client, 'POST', url('${p['path']}'), body: env);
+    final text = await r.stream.bytesToString().timeout(const Duration(seconds: 10));
+    if (r.statusCode >= 400 || text.contains('Fault')) {
+      throw DriverException('PTZ: HTTP ${r.statusCode}');
+    }
+  }
 
   DigestChallenge? _digest;
   int _nc = 0;

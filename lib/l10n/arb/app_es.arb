@@ -6251,10 +6251,6 @@
  "@sd4d7ad1bab": {
   "x-mt": true
  },
- "s5b7d02a301": "El dispositivo en esa dirección no es {p0}. Revisa la dirección.",
- "@s5b7d02a301": {
-  "x-mt": true
- },
  "sdac5622fa8": "El dispositivo pide una contraseña",
  "@sdac5622fa8": {
   "x-mt": true
@@ -6437,14 +6433,6 @@
  "@s6f326a48f9": {
   "x-mt": true
  },
- "sc788897ba0": "Buscando a través del puente de casa, así que esto funciona lejos de casa también.",
- "@sc788897ba0": {
-  "x-mt": true
- },
- "s0f7361f40c": "Mirando tu Wi-Fi en casa, toca el tuyo.",
- "@s0f7361f40c": {
-  "x-mt": true
- },
  "sda2b4c9721": "Configuración abierta de Wi-Fi",
  "@sda2b4c9721": {
   "x-mt": true
@@ -6455,10 +6443,6 @@
  },
  "s13f0596b74": "Buscando... (unos 5 segundos)",
  "@s13f0596b74": {
-  "x-mt": true
- },
- "s8eabd27f68": "No se encuentra automáticamente. Compruebe que {p0} está en y en el mismo Wi-Fi. También puede escribir la dirección a continuación.",
- "@s8eabd27f68": {
   "x-mt": true
  },
  "sa616ab181e": "Introduzca la dirección",
@@ -11292,14 +11276,6 @@
  "@s1866ef6dc8": {
   "x-mt": true
  },
- "s70625d8bbe": "El usuario y la contraseña fijada para la cámara en la aplicación eWeLink (RTSP/ONVIF). En un modelo de doble-lentes ambos lentes provienen del mismo dispositivo.",
- "@s70625d8bbe": {
-  "x-mt": true
- },
- "s1a3c354399": "eWeLink app → cámara → Ajustes: encienda RTSP/ONVIF y establezca un usuario y contraseña para él (si la opción existe).",
- "@s1a3c354399": {
-  "x-mt": true
- },
  "s0ae408f9a0": "El usuario de la cámara (servicio, usuario o en vivo) y la contraseña que se establece en Configuration Manager o en la página web de la cámara.",
  "@s0ae408f9a0": {
   "x-mt": true
@@ -11484,6 +11460,86 @@
  "sda8d9bf1cd": "Enchufe",
  "s06444f278d": "posición (100 = cerrada)",
  "@s06444f278d": {
+  "x-mt": true
+ },
+ "s8e3624e844": "Acérquese",
+ "@s8e3624e844": {
+  "x-mt": true
+ },
+ "s0071c4430f": "¡Afuera!",
+ "@s0071c4430f": {
+  "x-mt": true
+ },
+ "s359970020b": "El comando PTZ falló ({p0}). Compruebe que usted está en la red de la casa.",
+ "@s359970020b": {
+  "x-mt": true
+ },
+ "sd24649df81": "El navegador no puede llegar a dispositivos en su red de inicio",
+ "@sd24649df81": {
+  "x-mt": true
+ },
+ "s634ae3a263": "Una página web no puede buscar ni abrir conexiones a dispositivos en su red de inicio (por ejemplo {p0}).Usa la aplicación Molaplan Windows o Android en la red de inicio, o establece el puente de inicio – luego la búsqueda y el control pasan a través de un dispositivo en casa.",
+ "@s634ae3a263": {
+  "x-mt": true
+ },
+ "s49a0fab5c2": "El dispositivo en esa dirección no es {p0}. Compruebe la dirección. Los detalles técnicos muestran lo que respondió.",
+ "@s49a0fab5c2": {
+  "x-mt": true
+ },
+ "sd621d69823": "Un navegador no puede buscar su propia red, por lo que la búsqueda pasa por el puente casero (trabaja lejos de casa también).",
+ "@sd621d69823": {
+  "x-mt": true
+ },
+ "s6989f8d0c7": "Un navegador no puede buscar la red de inicio. Utilice la aplicación Windows o Android, configurar el puente de inicio, o escriba la dirección del dispositivo.",
+ "@s6989f8d0c7": {
+  "x-mt": true
+ },
+ "s0ae25246a7": "Buscando ambos en el Wi-Fi de este dispositivo y a través del puente de inicio (trabaja lejos de casa también). Pulsa el tuyo.",
+ "@s0ae25246a7": {
+  "x-mt": true
+ },
+ "saa8c9298e3": "Mirando el Wi-Fi de este dispositivo, toca el tuyo.",
+ "@saa8c9298e3": {
+  "x-mt": true
+ },
+ "sf7eb5738cc": "En esta red",
+ "@sf7eb5738cc": {
+  "x-mt": true
+ },
+ "sf35976eff1": "A través del puente casero",
+ "@sf35976eff1": {
+  "x-mt": true
+ },
+ "sa8cf19feed": "en esta red y a través del puente casero",
+ "@sa8cf19feed": {
+  "x-mt": true
+ },
+ "s4019a442d9": "en esta red",
+ "@s4019a442d9": {
+  "x-mt": true
+ },
+ "s117fa4a840": "Añadir de todos modos como cámara ONVIF/RTSP",
+ "@s117fa4a840": {
+  "x-mt": true
+ },
+ "sceda303e37": "El nombre de usuario y la contraseña que se muestra en la página ONVIF/RTSP de la cámara en la aplicación eWeLink (Configuración → Más ajustes → ONVIF/RTSP). No son tu login de cuenta de eWeLink. En un modelo de doble lente ambos lentes vienen del mismo dispositivo.",
+ "@sceda303e37": {
+  "x-mt": true
+ },
+ "s9134959509": "eWeLink app → cámara → Ajustes → Más ajustes → ONVIF/RTSP: encienda y observe la dirección IP de la cámara, nombre de usuario y contraseña.",
+ "@s9134959509": {
+  "x-mt": true
+ },
+ "sbfd6f856ef": "La cámara dice que es \"{p0}\", no {p1}. Se agregó de todos modos como una cámara ONVIF.",
+ "@sbfd6f856ef": {
+  "x-mt": true
+ },
+ "s56ef345ef2": "La dirección de vídeo no podía ser verificada (la cámara respondió RTSP {p0}). Se agregó de todos modos – si ninguna imagen muestra, compruebe el nombre de usuario y contraseña.",
+ "@s56ef345ef2": {
+  "x-mt": true
+ },
+ "s208a59a323": "Control PTZ",
+ "@s208a59a323": {
   "x-mt": true
  }
 }

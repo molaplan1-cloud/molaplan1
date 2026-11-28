@@ -2579,6 +2579,12 @@ class AppLocalizationsEt extends AppLocalizations {
   String get se38a9bb2ed => 'Viimane';
 
   @override
+  String get s8e3624e844 => 'Suurenda';
+
+  @override
+  String get s0071c4430f => 'Suurenda';
+
+  @override
   String get sf1ed8904bb => 'Registrite nimekirja (CSV) valimine';
 
   @override
@@ -3250,6 +3256,11 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sd55dd196f6 =>
       'Otsevideo puudub. Kontrolli, kas oled koduvõrgus ja RTSP on kaameras sees.';
+
+  @override
+  String s359970020b(String p0) {
+    return 'PTZ käsk nurjus ($p0). Kontrolli, kas oled koduvõrgus.';
+  }
 
   @override
   String get s1cf33c1fbc => 'Väärtus';
@@ -7059,6 +7070,14 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sb1f0e72163 => 'Pühapäev';
 
   @override
+  String get sd24649df81 => 'Brauser ei jõua teie koduvõrgu seadmeteni';
+
+  @override
+  String s634ae3a263(String p0) {
+    return 'Veebileht ei saa otsida ega avada ühendusi oma koduvõrgu seadmetega (nt $p0). Kasuta Molaplan Windowsi või Androidi rakendust koduvõrgus või seadista kodusild – otsing ja juhtimine läbivad seadme kodus.';
+  }
+
+  @override
   String get s55d52c5ae1 => 'See seade ei ole Wi-Fi-s';
 
   @override
@@ -7083,8 +7102,8 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sd4d7ad1bab => 'Vastas teine seade';
 
   @override
-  String s5b7d02a301(String p0) {
-    return 'Seade sellel aadressil ei ole $p0. Kontrolli aadressi.';
+  String s49a0fab5c2(String p0) {
+    return 'Seade sellel aadressil ei ole $p0. Kontrolli aadressi. Tehnilised üksikasjad näitavad, mida vastas.';
   }
 
   @override
@@ -7269,11 +7288,25 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
-  String get sc788897ba0 =>
-      'Otsides läbi kodu silla, töötab see ka kodust eemal.';
+  String get sd621d69823 =>
+      'Brauser ei saa otsida oma võrku, nii et otsing käib läbi kodusilla (töötab ka kodust eemal).';
 
   @override
-  String get s0f7361f40c => 'Vaatan sinu kodu Wi-Fi-d.';
+  String get s6989f8d0c7 =>
+      'Veebilehitseja ei saa koduvõrgust otsida. Kasuta Windowsi või Androidi rakendust, seadista kodusild või sisesta seadme aadress.';
+
+  @override
+  String get s0ae25246a7 =>
+      'Otsimine nii selle seadme Wi-Fi- lt kui ka kodusillalt (töötab ka kodust eemal). Puuduta enda oma.';
+
+  @override
+  String get saa8c9298e3 => 'Vaatan selle seadme Wi-Fi-d.';
+
+  @override
+  String get sf7eb5738cc => 'Selles võrgus';
+
+  @override
+  String get sf35976eff1 => 'Läbi kodusilla';
 
   @override
   String get sda2b4c9721 => 'Ava Wi-Fi seadistused';
@@ -7285,9 +7318,10 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s13f0596b74 => 'Otsimine... (umbes 5 sekundit)';
 
   @override
-  String s8eabd27f68(String p0, String p1) {
-    return 'Automaatselt ei leitud midagi. Kontrolli, kas $p0 on samal Wi-Fi- l. Allpool saab kirjutada ka aadressi.';
-  }
+  String get sa8cf19feed => 'selle võrgu ja kodusilla kaudu';
+
+  @override
+  String get s4019a442d9 => 'võrgus';
 
   @override
   String get sa616ab181e => 'Kirjuta aadress';
@@ -7323,6 +7357,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get se4095d7d95 => 'Seadme parool';
+
+  @override
+  String get s117fa4a840 => 'Lisa kasvõi ONVIF/RTSP kaamerana';
 
   @override
   String get s8f610a3bb2 => 'Ma olen kodust eemal';
@@ -12031,12 +12068,12 @@ class AppLocalizationsEt extends AppLocalizations {
       'Ezviz app → camera → Settings → LAN Live View / RTSP: lülita see sisse (kui see on olemas).';
 
   @override
-  String get s70625d8bbe =>
-      'Kasutaja ja parool, mis on määratud kaamerale rakenduses eWeLink (RTSP/ONVIF). Kahe objektiiviga mudelil pärinevad mõlemad objektiivid samast seadmest.';
+  String get sceda303e37 =>
+      'Kasutajanimi ja parool, mida näidatakse kaamera ONVIF/ RTSP leheküljel rakenduses eWeLink (Seaded → Rohkem seadistusi → ONVIF/ RTSP). Need ei ole sinu eWeLinki konto sisselogimine. Kahe objektiiviga mudeli puhul pärinevad mõlemad objektiivid samast seadmest.';
 
   @override
-  String get s1a3c354399 =>
-      'eWeLink app → camera → Seaded: lülitage RTSP/ONVIF sisse ja määrake sellele kasutaja ja parool (kui see on olemas).';
+  String get s9134959509 =>
+      'eWeLink app → camera → Settings → More Settings → ONVIF/RTSP: lülitage see sisse ja märkige üles kaamera IP-aadress, kasutajanimi ja parool.';
 
   @override
   String get s0ae408f9a0 =>
@@ -12065,6 +12102,16 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s1577068729 => 'kaamera';
 
   @override
+  String sbfd6f856ef(String p0, String p1) {
+    return 'Kaamera ütleb, et see on \"$p0\", mitte $p1. See lisati niikuinii ONVIF- kaamerana.';
+  }
+
+  @override
+  String s56ef345ef2(String p0) {
+    return 'Video aadressi ei õnnestunud kontrollida (kaamera vastas RTSP $p0). See lisati ikkagi – kui pilti ei näidata, kontrolli kasutajanime ja parooli.';
+  }
+
+  @override
   String s83d937ae6b(String p0, String p1) {
     return 'Stream $p0/$p1 (oma objektiiv või kanal)';
   }
@@ -12074,6 +12121,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s2101774157 => 'Video kodus (ilma pildita)';
+
+  @override
+  String get s208a59a323 => 'PTZ kontroll';
 
   @override
   String get sdd483f7f78 => 'Seadme võti puudub';

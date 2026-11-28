@@ -4,6 +4,8 @@
 /// R324: + Android TV / Google TV remote (keys, channels, pairing code), Sonos (UPnP) and Roku (ECP).
 library;
 
+import 'dart:io';
+
 import '../devices/provider.dart';
 import '../models/models.dart';
 import 'android_tv.dart';
@@ -110,6 +112,19 @@ class MediaProvider extends DeviceProvider {
         final r = await probeSonos(client, ip);
         return r == null ? null : Candidate(provider: id, address: ip, model: r.$2, name: r.$1);
       });
+    }
+    if (brand == 'androidtv') {
+      // R558: besides mDNS (_androidtvremote2._tcp, which many routers and Windows firewalls drop)
+      // look at the Android TV Remote pairing port 6466 of every address of the local /24.
+      return scanSubnet<Candidate>(locals, (client, ip) async {
+        try {
+          final sock = await Socket.connect(ip, 6466, timeout: const Duration(milliseconds: 700));
+          sock.destroy();
+          return Candidate(provider: id, address: ip, model: 'Android TV');
+        } catch (_) {
+          return null;
+        }
+      }, timeout: const Duration(milliseconds: 900));
     }
     if (brand == 'philips') {
       return scanSubnet<Candidate>(locals, (client, ip) async {

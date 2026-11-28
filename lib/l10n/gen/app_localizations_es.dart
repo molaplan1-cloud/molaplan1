@@ -2606,6 +2606,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se38a9bb2ed => 'El último';
 
   @override
+  String get s8e3624e844 => 'Acérquese';
+
+  @override
+  String get s0071c4430f => '¡Afuera!';
+
+  @override
   String get sf1ed8904bb => 'Elija la lista de registro (CSV)';
 
   @override
@@ -3287,6 +3293,11 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sd55dd196f6 =>
       'No hay video en vivo. Compruebe que usted está en la red de la casa y RTSP está en la cámara.';
+
+  @override
+  String s359970020b(String p0) {
+    return 'El comando PTZ falló ($p0). Compruebe que usted está en la red de la casa.';
+  }
 
   @override
   String get s1cf33c1fbc => 'Valor';
@@ -7124,6 +7135,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sb1f0e72163 => 'Domingo';
 
   @override
+  String get sd24649df81 =>
+      'El navegador no puede llegar a dispositivos en su red de inicio';
+
+  @override
+  String s634ae3a263(String p0) {
+    return 'Una página web no puede buscar ni abrir conexiones a dispositivos en su red de inicio (por ejemplo $p0).Usa la aplicación Molaplan Windows o Android en la red de inicio, o establece el puente de inicio – luego la búsqueda y el control pasan a través de un dispositivo en casa.';
+  }
+
+  @override
   String get s55d52c5ae1 => 'Este dispositivo no está en Wi-Fi';
 
   @override
@@ -7148,8 +7168,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sd4d7ad1bab => 'Un dispositivo diferente respondió';
 
   @override
-  String s5b7d02a301(String p0) {
-    return 'El dispositivo en esa dirección no es $p0. Revisa la dirección.';
+  String s49a0fab5c2(String p0) {
+    return 'El dispositivo en esa dirección no es $p0. Compruebe la dirección. Los detalles técnicos muestran lo que respondió.';
   }
 
   @override
@@ -7335,11 +7355,26 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get sc788897ba0 =>
-      'Buscando a través del puente de casa, así que esto funciona lejos de casa también.';
+  String get sd621d69823 =>
+      'Un navegador no puede buscar su propia red, por lo que la búsqueda pasa por el puente casero (trabaja lejos de casa también).';
 
   @override
-  String get s0f7361f40c => 'Mirando tu Wi-Fi en casa, toca el tuyo.';
+  String get s6989f8d0c7 =>
+      'Un navegador no puede buscar la red de inicio. Utilice la aplicación Windows o Android, configurar el puente de inicio, o escriba la dirección del dispositivo.';
+
+  @override
+  String get s0ae25246a7 =>
+      'Buscando ambos en el Wi-Fi de este dispositivo y a través del puente de inicio (trabaja lejos de casa también). Pulsa el tuyo.';
+
+  @override
+  String get saa8c9298e3 =>
+      'Mirando el Wi-Fi de este dispositivo, toca el tuyo.';
+
+  @override
+  String get sf7eb5738cc => 'En esta red';
+
+  @override
+  String get sf35976eff1 => 'A través del puente casero';
 
   @override
   String get sda2b4c9721 => 'Configuración abierta de Wi-Fi';
@@ -7351,9 +7386,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s13f0596b74 => 'Buscando... (unos 5 segundos)';
 
   @override
-  String s8eabd27f68(String p0, String p1) {
-    return 'No se encuentra automáticamente. Compruebe que $p0 está en y en el mismo Wi-Fi. También puede escribir la dirección a continuación.';
-  }
+  String get sa8cf19feed => 'en esta red y a través del puente casero';
+
+  @override
+  String get s4019a442d9 => 'en esta red';
 
   @override
   String get sa616ab181e => 'Introduzca la dirección';
@@ -7389,6 +7425,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get se4095d7d95 => 'Contraseña del dispositivo';
+
+  @override
+  String get s117fa4a840 => 'Añadir de todos modos como cámara ONVIF/RTSP';
 
   @override
   String get s8f610a3bb2 => 'Estoy lejos de casa';
@@ -12156,12 +12195,12 @@ class AppLocalizationsEs extends AppLocalizations {
       'Aplicación Ezviz → cámara → Ajustes → LAN Vista en vivo / RTSP: encienda (si la opción existe).';
 
   @override
-  String get s70625d8bbe =>
-      'El usuario y la contraseña fijada para la cámara en la aplicación eWeLink (RTSP/ONVIF). En un modelo de doble-lentes ambos lentes provienen del mismo dispositivo.';
+  String get sceda303e37 =>
+      'El nombre de usuario y la contraseña que se muestra en la página ONVIF/RTSP de la cámara en la aplicación eWeLink (Configuración → Más ajustes → ONVIF/RTSP). No son tu login de cuenta de eWeLink. En un modelo de doble lente ambos lentes vienen del mismo dispositivo.';
 
   @override
-  String get s1a3c354399 =>
-      'eWeLink app → cámara → Ajustes: encienda RTSP/ONVIF y establezca un usuario y contraseña para él (si la opción existe).';
+  String get s9134959509 =>
+      'eWeLink app → cámara → Ajustes → Más ajustes → ONVIF/RTSP: encienda y observe la dirección IP de la cámara, nombre de usuario y contraseña.';
 
   @override
   String get s0ae408f9a0 =>
@@ -12190,6 +12229,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s1577068729 => 'cámara';
 
   @override
+  String sbfd6f856ef(String p0, String p1) {
+    return 'La cámara dice que es \"$p0\", no $p1. Se agregó de todos modos como una cámara ONVIF.';
+  }
+
+  @override
+  String s56ef345ef2(String p0) {
+    return 'La dirección de vídeo no podía ser verificada (la cámara respondió RTSP $p0). Se agregó de todos modos – si ninguna imagen muestra, compruebe el nombre de usuario y contraseña.';
+  }
+
+  @override
   String s83d937ae6b(String p0, String p1) {
     return 'Corriente $p0/$p1 ( lente o canal propio)';
   }
@@ -12199,6 +12248,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s2101774157 => 'Video en vivo en casa (sin imagen)';
+
+  @override
+  String get s208a59a323 => 'Control PTZ';
 
   @override
   String get sdd483f7f78 => 'Falta la clave del dispositivo';

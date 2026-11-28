@@ -26,16 +26,33 @@ Future<List<Candidate>> findLocal(DeviceProvider p, {List<String>? locals}) asyn
           })
           .catchError((_) => <Candidate>[]),
   ]);
-  return mergeCandidates(results.expand((x) => x));
+  return mergeCandidates(results.expand((x) => x)).map((c) => c.copyWith(local: true)).toList();
 }
 
-/// Prefers entries with more detail (scan results carry the model).
+/// One entry per device. The same address found by this device's own network AND by the home
+/// bridge is one entry that remembers both sources (R558); the one with more detail (model, name)
+/// wins. Two entries with the same address but clearly different names stay separate – they can
+/// be two homes that happen to use the same private address.
 List<Candidate> mergeCandidates(Iterable<Candidate> all) {
   final byAddr = <String, Candidate>{};
+  bool differs(Candidate a, Candidate b) {
+    final x = (a.name ?? '').trim().toLowerCase(), y = (b.name ?? '').trim().toLowerCase();
+    return x.isNotEmpty && y.isNotEmpty && x != y && a.local != b.local;
+  }
+
   for (final c in all) {
-    final k = hostOf(c.address);
+    var k = hostOf(c.address);
     final old = byAddr[k];
-    if (old == null || (old.model.isEmpty && c.model.isNotEmpty)) byAddr[k] = c;
+    if (old == null) {
+      byAddr[k] = c;
+      continue;
+    }
+    if (differs(old, c)) {
+      byAddr['$k#${c.local ? 'local' : 'bridge'}'] = c;
+      continue;
+    }
+    final best = old.model.isEmpty && c.model.isNotEmpty ? c : old;
+    byAddr[k] = best.copyWith(local: old.local || c.local, bridge: old.bridge || c.bridge);
   }
   return byAddr.values.toList()..sort((a, b) => a.title.toLowerCase().compareTo(b.title.toLowerCase()));
 }

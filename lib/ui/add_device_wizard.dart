@@ -48,6 +48,13 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
 (String, String) problemText(BuildContext context, AddProblem p, {String brand = 'laite', String address = ''}) {
   String t(String fi, String en) => tx(context, fi, en);
   return switch (p) {
+    AddProblem.noNetwork when Plat.isWeb => (
+      t('Selain ei pääse kotiverkon laitteisiin', 'The browser cannot reach devices on your home network'),
+      t(
+        'Verkkosivu ei voi etsiä eikä avata yhteyttä kotiverkon laitteisiin (esim. $brand). Käytä Molaplan Windows- tai Android-sovellusta kotiverkossa, tai ota käyttöön kotisilta – silloin haku ja ohjaus kulkevat kotona olevan laitteen kautta.',
+        'A web page cannot search for or open connections to devices on your home network (e.g. $brand). Use the Molaplan Windows or Android app on the home network, or set up the home bridge – then search and control go through a device at home.',
+      ),
+    ),
     AddProblem.noNetwork => (
       t('Tämä laite ei ole yhteydessä wifiin', 'This device is not on Wi-Fi'),
       t(
@@ -67,8 +74,8 @@ Color providerColor(DeviceProvider p) => switch (p.id) {
     AddProblem.notThisBrand => (
       t('Osoitteessa on jokin muu laite', 'A different device answered'),
       t(
-        'Osoitteesta vastasi laite, joka ei ole $brand. Tarkista osoite ja kokeile uudelleen.',
-        'The device at that address is not $brand. Check the address.',
+        'Osoitteesta vastasi laite, joka ei ole $brand. Tarkista osoite ja kokeile uudelleen. Tarkempi syy näkyy teknisissä tiedoissa.',
+        'The device at that address is not $brand. Check the address. The technical details show what answered.',
       ),
     ),
     AddProblem.needsPassword => (
@@ -184,7 +191,10 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
   List<Candidate> found = [];
   List<String> locals = [];
   bool searching = false;
-  bool searchedViaBridge = false;
+  bool searchedBridge = false;
+
+  /// R558: how many each source found (shown as 'Tässä verkossa: N · Kotisillan kautta: M').
+  int foundLocal = 0, foundBridge = 0;
   AddDeviceError? searchError;
   bool manual = false;
   final addrCtl = TextEditingController();
@@ -252,23 +262,31 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       searchError = null;
     });
     locals = await (widget.locals ?? localIPv4s)();
-    final results = <Candidate>[];
+    final localRes = <Candidate>[], bridgeRes = <Candidate>[];
     AddDeviceError? err;
     final viaBridge = st.remote.isPaired && !st.remote.bridgeOn;
+    // R558: BOTH at once – this device's own network (where the platform allows it) and, when one
+    // is set up, the home bridge's network – then merged into one list.
     await Future.wait([
       (widget.finder != null ? widget.finder!(p) : findLocal(p, locals: locals))
-          .then(results.addAll)
+          .then(localRes.addAll)
           .catchError((_) {}),
       if (viaBridge && widget.finder == null)
-        findViaBridge(st.remote.router, p).then(results.addAll).catchError((Object e) {
+        findViaBridge(st.remote.router, p).then(bridgeRes.addAll).catchError((Object e) {
           err = explain(e);
         }),
     ]);
     if (!mounted) return;
+    final merged = mergeCandidates([
+      for (final c in localRes) c.viaBridge || c.local ? c : c.copyWith(local: true),
+      ...bridgeRes,
+    ]);
     setState(() {
       searching = false;
-      searchedViaBridge = viaBridge;
-      found = mergeCandidates(results);
+      searchedBridge = viaBridge;
+      foundLocal = merged.where((c) => c.local).length;
+      foundBridge = merged.where((c) => c.bridge).length;
+      found = merged;
       searchError = found.isEmpty ? err : null;
       if (found.isEmpty) manual = true;
     });
@@ -657,27 +675,27 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
       ...cloud,
       if (!Plat.isWeb)
         _bigChoice(
-        context,
-        key: const ValueKey('wiz-make-bridge'),
-        icon: Icons.router_outlined,
-        title: tx(
           context,
-          'Tämä laite jää aina kotiin – tee siitä kotisilta',
-          'This device always stays home – make it the bridge',
+          key: const ValueKey('wiz-make-bridge'),
+          icon: Icons.router_outlined,
+          title: tx(
+            context,
+            'Tämä laite jää aina kotiin – tee siitä kotisilta',
+            'This device always stays home – make it the bridge',
+          ),
+          body: tx(
+            context,
+            'Pidä laite laturissa ja Molaplan auki. Muut laitteet yhdistetään siihen QR-koodilla tai kirjautumalla samalle tilille.',
+            'Keep it charging with Molaplan open. Other devices connect with a QR code or by signing in to the same account.',
+          ),
+          onTap: () async {
+            await st.setBridgeMode(true);
+            await keepScreenOn(true);
+            if (!mounted) return;
+            _go(WizStep.find);
+            unawaited(_search());
+          },
         ),
-        body: tx(
-          context,
-          'Pidä laite laturissa ja Molaplan auki. Muut laitteet yhdistetään siihen QR-koodilla tai kirjautumalla samalle tilille.',
-          'Keep it charging with Molaplan open. Other devices connect with a QR code or by signing in to the same account.',
-        ),
-        onTap: () async {
-          await st.setBridgeMode(true);
-          await keepScreenOn(true);
-          if (!mounted) return;
-          _go(WizStep.find);
-          unawaited(_search());
-        },
-      ),
       _bigChoice(
         context,
         key: const ValueKey('wiz-pair'),
@@ -752,19 +770,46 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
 
   List<Widget> _find(BuildContext context) {
     final st = AppScope.read(context);
-    final noWifi = !searching && locals.isEmpty && !st.remote.isPaired;
+    // The browser cannot search the home network itself: that is not "no Wi-Fi".
+    final noWifi = !searching && locals.isEmpty && !st.remote.isPaired && !Plat.isWeb;
+    final bridge = st.remote.isPaired && !st.remote.bridgeOn;
     return [
       _title(
         context,
         tx(context, 'Etsitään: $brand', 'Finding: $brand'),
-        searchedViaBridge || (st.remote.isPaired && searching)
-            ? tx(
-                context,
-                'Haku tehdään kotisillan kautta, joten tämä toimii myös kodin ulkopuolella.',
-                'Searching through the home bridge, so this works away from home too.',
-              )
-            : tx(context, 'Etsin laitteita kodin wifistä. Napauta omaasi.', 'Looking on your home Wi-Fi. Tap yours.'),
+        Plat.isWeb
+            ? (bridge
+                  ? tx(
+                      context,
+                      'Selain ei voi etsiä laitteita omasta verkostaan, joten haku tehdään kotisillan kautta (toimii myös kodin ulkopuolella).',
+                      'A browser cannot search its own network, so the search goes through the home bridge (works away from home too).',
+                    )
+                  : tx(
+                      context,
+                      'Selain ei voi etsiä laitteita kotiverkosta. Käytä Windows- tai Android-sovellusta, ota kotisilta käyttöön tai kirjoita laitteen osoite itse.',
+                      'A browser cannot search the home network. Use the Windows or Android app, set up the home bridge, or type the device address.',
+                    ))
+            : (bridge
+                  ? tx(
+                      context,
+                      'Etsin sekä tämän laitteen wifistä että kotisillan kautta (toimii myös kodin ulkopuolella). Napauta omaasi.',
+                      'Searching both on this device\'s Wi-Fi and through the home bridge (works away from home too). Tap yours.',
+                    )
+                  : tx(
+                      context,
+                      'Etsin laitteita tämän laitteen wifistä. Napauta omaasi.',
+                      'Looking on this device\'s Wi-Fi. Tap yours.',
+                    )),
       ),
+      if (!searching && bridge && !Plat.isWeb)
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Text(
+            '${tx(context, 'Tässä verkossa', 'On this network')}: $foundLocal · ${tx(context, 'Kotisillan kautta', 'Through the home bridge')}: $foundBridge',
+            key: const ValueKey('wiz-source-counts'),
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+        ),
       if (noWifi)
         _banner(
           context,
@@ -819,7 +864,12 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
                 [
                   if (c.model.isNotEmpty && c.model != c.title) c.model,
                   c.address,
-                  if (c.viaBridge) tx(context, 'kotisillan kautta', 'via home bridge'),
+                  if (c.local && c.bridge)
+                    tx(context, 'tässä verkossa ja kotisillan kautta', 'on this network and via the home bridge')
+                  else if (c.local)
+                    tx(context, 'tässä verkossa', 'on this network')
+                  else if (c.bridge)
+                    tx(context, 'kotisillan kautta', 'via home bridge'),
                 ].join(' · '),
               ),
               trailing: const Icon(Icons.chevron_right),
@@ -833,8 +883,12 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
             color: Colors.blueGrey,
             text: tx(
               context,
-              'Laitteita ei löytynyt automaattisesti. Tarkista että $brand on päällä ja samassa wifissä${st.remote.isPaired ? ' kuin kotisilta' : ''}. Voit myös kirjoittaa osoitteen alle.',
-              'Nothing found automatically. Check that $brand is on and on the same Wi-Fi. You can also type the address below.',
+              Plat.isWeb
+                  ? 'Selain ei voi etsiä laitteita kotiverkosta${bridge ? ', ja kotisillan kautta ei löytynyt mitään' : ''}. Kirjoita laitteen osoite alle tai käytä Windows- tai Android-sovellusta.'
+                  : 'Laitteita ei löytynyt automaattisesti. Tarkista että $brand on päällä ja samassa wifissä kuin tämä laite${bridge ? ' tai kotisilta' : ''}. Voit myös kirjoittaa osoitteen alle.',
+              Plat.isWeb
+                  ? 'A browser cannot search the home network${bridge ? ', and nothing was found through the home bridge' : ''}. Type the device address below or use the Windows or Android app.'
+                  : 'Nothing found automatically. Check that $brand is on and on the same Wi-Fi as this device${bridge ? ' (or the home bridge)' : ''}. You can also type the address below.',
             ),
           ),
         Wrap(
@@ -977,7 +1031,15 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
     var (title, body) = problemText(context, e.problem, brand: brand, address: cloud ? '' : c.address);
     final st = AppScope.read(context);
     final login = e.problem == AddProblem.needsPassword || e.problem == AddProblem.wrongPassword;
-    final noStream = e.problem == AddProblem.cameraNoStream && p.category == 'camera';
+    // Cameras: when the address answers but no video address is known (or the maker is not the
+    // expected one), the video address can be typed / chosen by hand, or the camera is added as a
+    // plain ONVIF/RTSP camera.
+    final noStream =
+        (e.problem == AddProblem.cameraNoStream || e.problem == AddProblem.notThisBrand) && p.category == 'camera';
+    final addAnyway =
+        p.category == 'camera' &&
+        p.id != 'camera_onvif' &&
+        const {AddProblem.cameraNoStream, AddProblem.notThisBrand, AddProblem.unknown}.contains(e.problem);
     final details = !cloud && (login || noStream || e.problem == AddProblem.needsDetails);
     if (p.category == 'camera' && e.problem == AddProblem.needsPassword) {
       title = tx(context, 'Kirjaudu kameraan', 'Sign in to the camera');
@@ -1039,9 +1101,34 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
             icon: Icon(details ? Icons.login : Icons.refresh),
             label: Text(details ? tx(context, 'Yhdistä', 'Connect') : tx(context, 'Yritä uudelleen', 'Try again')),
           ),
+          if (addAnyway)
+            OutlinedButton.icon(
+              key: const ValueKey('wiz-add-anyway'),
+              onPressed: () {
+                final generic = providerById('camera_onvif');
+                if (generic == null) return;
+                setState(() {
+                  p = generic;
+                  picked = Candidate(
+                    provider: generic.id,
+                    address: picked!.address,
+                    id: picked!.id,
+                    model: picked!.model,
+                    name: picked!.name,
+                    viaBridge: picked!.viaBridge,
+                    local: picked!.local,
+                    bridge: picked!.bridge,
+                  );
+                });
+                _connect();
+              },
+              icon: const Icon(Icons.videocam_outlined),
+              label: Text(tx(context, 'Lisää silti ONVIF/RTSP-kamerana', 'Add anyway as an ONVIF/RTSP camera')),
+            ),
           if ((e.problem == AddProblem.unreachable || e.problem == AddProblem.noNetwork) &&
               !st.remote.isPaired &&
-              !st.remote.bridgeOn)
+              !st.remote.bridgeOn &&
+              !Plat.isWeb)
             OutlinedButton.icon(
               onPressed: () => _go(WizStep.remote),
               icon: const Icon(Icons.router_outlined),
@@ -1129,6 +1216,23 @@ class _AddDeviceWizardState extends State<AddDeviceWizard> {
           'Pick what goes on the home view and name them.',
         ),
       ),
+      for (final w in (r.data['warnings'] as List?) ?? const [])
+        _banner(context, icon: Icons.info_outline, color: Colors.orange, text: '$w'),
+      if (((r.data['tech'] as List?) ?? const []).isNotEmpty)
+        ExpansionTile(
+          key: const ValueKey('wiz-tech'),
+          tilePadding: EdgeInsets.zero,
+          title: Text(
+            tx(context, 'Tekniset tiedot', 'Technical details'),
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+          children: [
+            SelectableText(
+              ((r.data['tech'] as List).map((x) => '$x')).join('\n'),
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ],
+        ),
       if (entities.length > 3)
         Align(
           alignment: Alignment.centerRight,
