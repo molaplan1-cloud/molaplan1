@@ -48,6 +48,7 @@ import '../sharing/share_state.dart';
 import '../remote/protocol.dart' show RemoteDeviceError, RemoteUnavailable;
 import 'storage.dart';
 import 'update_state.dart';
+import 'browser_tile_hide.dart';
 import '../l10n/l10n.dart';
 import '../log/log_collector.dart';
 import '../log/log_def.dart';
@@ -68,12 +69,24 @@ class AppState extends ChangeNotifier implements SyncHost {
        energyStore = energyStore ?? MemoryConfigStore(),
        historyStore = historyStore ?? MemoryConfigStore() {
     TileRuntime.observer = onTileValue;
+    TileRuntime.onIssue = (t, err) {
+      if (!Plat.isWeb) return;
+      browserHide.ping();
+      if (err != null && err.isNotEmpty) browserHide.ensureTimer();
+    };
     logs = LogCollector(config: () => config, driverFor: driverFor);
     // t241u: no status polls for a device whose commands need a PIN that is not entered yet.
     TileRuntime.paused = (t) => needsPin(t.connectionId);
     TileRuntime.needsPrefill = (t) =>
-        isMeasureTile(t) && !measureHistory.covers(measureKey(t), t.trendHours) && _backfilled.add(_bfKey(t));
-    account = AccountState(store: secretStore, host: this, api: accountApi, kdfIterations: kdfIterations);
+        isMeasureTile(t) &&
+        !measureHistory.covers(measureKey(t), t.trendHours) &&
+        _backfilled.add(_bfKey(t));
+    account = AccountState(
+      store: secretStore,
+      host: this,
+      api: accountApi,
+      kdfIterations: kdfIterations,
+    );
     account.addListener(notifyListeners);
     sharing = ShareState(host: _AppShareHost(this), api: account.api);
     sharing.addListener(notifyListeners);
@@ -83,11 +96,16 @@ class AppState extends ChangeNotifier implements SyncHost {
         if (shareAuto) unawaited(sharing.refresh(quiet: true));
       }
     });
-    remote = RemoteState(store: secretStore, configJson: () => exportJson(includeSecrets: true));
+    remote = RemoteState(
+      store: secretStore,
+      configJson: () => exportJson(includeSecrets: true),
+    );
     remote.addListener(notifyListeners);
     this.bridgeService.listen((up) {
       remote.bridge?.networkChanged(up);
-      unawaited(NetHealth.instance.check(force: true)); // t213u: banner follows network changes
+      unawaited(
+        NetHealth.instance.check(force: true),
+      ); // t213u: banner follows network changes
     });
     remote.addListener(() {
       final p = remote.paired;
@@ -108,7 +126,9 @@ class AppState extends ChangeNotifier implements SyncHost {
     );
     update.addListener(notifyListeners);
     IrDriver.tileValue = (id) => _lastTileValues[id];
-    IrDriver.persist = (all) => unawaited(secretStore.write(_irStatesKey, jsonEncode(all)).catchError((_) {}));
+    IrDriver.persist = (all) => unawaited(
+      secretStore.write(_irStatesKey, jsonEncode(all)).catchError((_) {}),
+    );
     // t211u: the phone can ask the bridge for its version and tell it to update itself.
     remote.bridgeInfo = () async => {
       'app': appVersion,
@@ -119,7 +139,8 @@ class AppState extends ChangeNotifier implements SyncHost {
       'autoUpdate': config.bridgeAutoUpdate,
       'lastUpdate': await update.platform.lastUpdate(),
     };
-    remote.bridgeUpdater = (spec) => update.unattendedUpdate(install: spec['install'] != false);
+    remote.bridgeUpdater = (spec) =>
+        update.unattendedUpdate(install: spec['install'] != false);
     automations = AutomationState(this);
     automations.addListener(notifyListeners);
     remote.addListener(automations.changed);
@@ -147,7 +168,11 @@ class AppState extends ChangeNotifier implements SyncHost {
     notifyListeners();
   }
 
-  Future<void> _applyNtfyDeviceSettings(String id, Map<String, dynamic> patch, {String? offeredStateTopic}) async {
+  Future<void> _applyNtfyDeviceSettings(
+    String id,
+    Map<String, dynamic> patch, {
+    String? offeredStateTopic,
+  }) async {
     final c = connection(id);
     if (c == null) return;
     if (patch.isNotEmpty) {
@@ -160,14 +185,21 @@ class AppState extends ChangeNotifier implements SyncHost {
     notifyListeners();
   }
 
-  void _onNtfyDeviceEvent(ConnectionConfig cfg, String event, String title, String body) {
+  void _onNtfyDeviceEvent(
+    ConnectionConfig cfg,
+    String event,
+    String title,
+    String body,
+  ) {
     final prio = notifyPriorityFor(
       event,
       device: notifyEventsFrom(cfg.settings['notifyEvents']),
       global: notifyEventsFrom(automations.settings.notify.events),
     );
     if (prio <= 0) return;
-    unawaited(automations.local.engine.sendNotification(title, body, priority: prio));
+    unawaited(
+      automations.local.engine.sendNotification(title, body, priority: prio),
+    );
   }
 
   /// Automations, scenes, scripts and push notifications (v0.7.0).
@@ -215,7 +247,9 @@ class AppState extends ChangeNotifier implements SyncHost {
   String get energyZone => energyZoneOf(config);
 
   /// The contract in use (a spot contract with typical values until the user sets one).
-  ElectricityContract get contract => config.energy.contract ?? ElectricityContract(country: countryOfZone(energyZone));
+  ElectricityContract get contract =>
+      config.energy.contract ??
+      ElectricityContract(country: countryOfZone(energyZone));
 
   /// Consumer price c/kWh at [t] from the contract and the cached spot prices.
   Vat2? unitPriceAt(DateTime t) {
@@ -225,7 +259,9 @@ class AppState extends ChangeNotifier implements SyncHost {
       final s = PriceService.shared.cached(energyZone);
       spot = s?.at(t)?.eurMwh;
       if (s == null || spot == null) {
-        unawaited(PriceService.shared.get(energyZone).then((_) {}, onError: (_) {}));
+        unawaited(
+          PriceService.shared.get(energyZone).then((_) {}, onError: (_) {}),
+        );
       }
     }
     return c.unitAt(t, spotEurMwh: spot);
@@ -243,7 +279,8 @@ class AppState extends ChangeNotifier implements SyncHost {
     final now = DateTime.now();
     return [
       for (final p in [...s.day(now, 0), ...s.day(now, 1)])
-        if (c.unitAt(p.start, spotEurMwh: p.eurMwh)?.inc case final v?) (p.start, v),
+        if (c.unitAt(p.start, spotEurMwh: p.eurMwh)?.inc case final v?)
+          (p.start, v),
     ];
   }
 
@@ -255,14 +292,22 @@ class AppState extends ChangeNotifier implements SyncHost {
     final now = DateTime.now();
     double? fresh(String id) {
       final p = livePower[id];
-      return p == null || now.difference(p.$1) > const Duration(minutes: 10) ? null : p.$2;
+      return p == null || now.difference(p.$1) > const Duration(minutes: 10)
+          ? null
+          : p.$2;
     }
 
     if (meterId != null) return fresh(meterId);
     final ms = config.energy.meters;
-    final site = ms.entries.where((e) => e.value.role == 'site').map((e) => fresh(e.key)).nonNulls;
+    final site = ms.entries
+        .where((e) => e.value.role == 'site')
+        .map((e) => fresh(e.key))
+        .nonNulls;
     if (site.isNotEmpty) return site.reduce((a, b) => a + b);
-    final subs = ms.entries.where((e) => e.value.parent == null).map((e) => fresh(e.key)).nonNulls;
+    final subs = ms.entries
+        .where((e) => e.value.parent == null)
+        .map((e) => fresh(e.key))
+        .nonNulls;
     return subs.isEmpty ? null : subs.reduce((a, b) => a + b);
   }
 
@@ -305,12 +350,15 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   /// Fetches the device's own history for [t]'s trend window into the measure history.
   Future<void> backfillTrend(TileConfig t) async {
-    if (!isMeasureTile(t) || measureHistory.covers(measureKey(t), t.trendHours)) return;
+    if (!isMeasureTile(t) || measureHistory.covers(measureKey(t), t.trendHours))
+      return;
     if (!_backfilled.add(_bfKey(t))) return;
     final d = driverFor(t.connectionId);
     if (d == null) return;
     try {
-      final h = await d.history(t.read, hours: t.trendHours).timeout(const Duration(seconds: 12));
+      final h = await d
+          .history(t.read, hours: t.trendHours)
+          .timeout(const Duration(seconds: 12));
       for (final p in h) {
         measureHistory.add(measureKey(t), p.$2, p.$1);
       }
@@ -394,36 +442,66 @@ class AppState extends ChangeNotifier implements SyncHost {
       return;
     }
     if (isMeasureTile(t)) {
-      final d = v is num ? v.toDouble() : double.tryParse('${v ?? ''}'.replaceAll(',', '.'));
+      final d = v is num
+          ? v.toDouble()
+          : double.tryParse('${v ?? ''}'.replaceAll(',', '.'));
       if (d != null) {
         measureHistory.add(measureKey(t), d, at ?? DateTime.now());
-        if (historyStore is! MemoryConfigStore) _historySaveTimer ??= Timer(const Duration(seconds: 60), saveHistory);
+        if (historyStore is! MemoryConfigStore)
+          _historySaveTimer ??= Timer(const Duration(seconds: 60), saveHistory);
       }
     }
     // R593 (t328u): a constant-power device with a nominal power: its estimated consumption
     // goes to the energy log (flagged as estimated) and to the live power, meter role or not.
-    final est = estimatedPowerW(t, v, connType: connection(t.connectionId)?.type);
+    final est = estimatedPowerW(
+      t,
+      v,
+      connType: connection(t.connectionId)?.type,
+    );
     if (est != null) {
       final when = at ?? DateTime.now();
       livePower[t.id] = (when, est / 1000);
-      energyLog.record(t.id, 'step', est / 1000, when, unitPriceAt, estimated: true);
-      if (energyStore is! MemoryConfigStore) _energySaveTimer ??= Timer(const Duration(seconds: 60), saveEnergy);
+      energyLog.record(
+        t.id,
+        'step',
+        est / 1000,
+        when,
+        unitPriceAt,
+        estimated: true,
+      );
+      if (energyStore is! MemoryConfigStore)
+        _energySaveTimer ??= Timer(const Duration(seconds: 60), saveEnergy);
       return;
     }
     final m = config.energy.meters[t.id];
     if (m == null) return;
     final kind = meterKind(t.unit);
-    final d = v is num ? v.toDouble() : double.tryParse('${v ?? ''}'.replaceAll(',', '.'));
+    final d = v is num
+        ? v.toDouble()
+        : double.tryParse('${v ?? ''}'.replaceAll(',', '.'));
     if (kind == null || d == null) return;
-    if (kind == 'power') livePower[t.id] = (at ?? DateTime.now(), toK(d, t.unit));
-    energyLog.record(t.id, kind, toK(d, t.unit), at ?? DateTime.now(), unitPriceAt);
+    if (kind == 'power')
+      livePower[t.id] = (at ?? DateTime.now(), toK(d, t.unit));
+    energyLog.record(
+      t.id,
+      kind,
+      toK(d, t.unit),
+      at ?? DateTime.now(),
+      unitPriceAt,
+    );
     _energySaveTimer ??= Timer(const Duration(seconds: 60), saveEnergy);
   }
 
   /// R591 (t328u): an energy flow tile logs its node powers (kW) for "today" per node.
-  void recordFlowPower(String id, double kw, DateTime at, {bool estimated = false}) {
+  void recordFlowPower(
+    String id,
+    double kw,
+    DateTime at, {
+    bool estimated = false,
+  }) {
     energyLog.record(id, 'power', kw, at, unitPriceAt, estimated: estimated);
-    if (energyStore is! MemoryConfigStore) _energySaveTimer ??= Timer(const Duration(seconds: 60), saveEnergy);
+    if (energyStore is! MemoryConfigStore)
+      _energySaveTimer ??= Timer(const Duration(seconds: 60), saveEnergy);
   }
 
   Future<void> saveHistory() async {
@@ -464,7 +542,11 @@ class AppState extends ChangeNotifier implements SyncHost {
       final s = await rulesStatus();
       final h = s?['heating'];
       heatingStatus = h is Map ? Map<String, dynamic>.from(h) : null;
-      if (s != null && h == null && smartHeating != null && rulesRunWhere == 'bridge') heatingBridgeOld = true;
+      if (s != null &&
+          h == null &&
+          smartHeating != null &&
+          rulesRunWhere == 'bridge')
+        heatingBridgeOld = true;
       if (h != null) heatingBridgeOld = false;
       heatingStatusAt = DateTime.now();
     } catch (_) {
@@ -480,8 +562,14 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   /// 'Takka lämmitetty': fireplace mode on the bridge for [hours] (12–24) or until the room cools.
-  Future<void> fireplace({bool stop = false, int? hours, bool? untilCool}) async {
-    final f = stop ? {'stop': true} : {'start': true, 'hours': ?hours, 'untilCool': ?untilCool};
+  Future<void> fireplace({
+    bool stop = false,
+    int? hours,
+    bool? untilCool,
+  }) async {
+    final f = stop
+        ? {'stop': true}
+        : {'start': true, 'hours': ?hours, 'untilCool': ?untilCool};
     final b = remote.bridge;
     if (b != null) {
       b.fireplaceOp(f);
@@ -501,8 +589,15 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   /// R612: manual override of one heating device ([loadId] null = all): on / off for [hours] (1–12),
   /// or [clear]. Runs on the home bridge; the safety limits still win. Only ever called from a button.
-  Future<void> heatingManual({String? loadId, bool on = true, int hours = 2, bool clear = false}) async {
-    final m = clear ? {'load': loadId, 'clear': true} : {'load': loadId, 'on': on, 'hours': hours};
+  Future<void> heatingManual({
+    String? loadId,
+    bool on = true,
+    int hours = 2,
+    bool clear = false,
+  }) async {
+    final m = clear
+        ? {'load': loadId, 'clear': true}
+        : {'load': loadId, 'on': on, 'hours': hours};
     final b = remote.bridge;
     if (b != null) {
       b.manualOp(m);
@@ -522,7 +617,8 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   // ---- virtual thermostats (run on the home bridge)
-  ThermostatConfig? thermostat(String id) => config.energy.thermostats.where((t) => t.id == id).firstOrNull;
+  ThermostatConfig? thermostat(String id) =>
+      config.energy.thermostats.where((t) => t.id == id).firstOrNull;
 
   /// Thermostat status from the bridge: id -> {temp, target, state, sensorOk, plan, …}.
   Map<String, Map<String, dynamic>> thermoStatus = {};
@@ -532,7 +628,12 @@ class AppState extends ChangeNotifier implements SyncHost {
     try {
       final s = await rulesStatus();
       final t = s?['thermostats'];
-      thermoStatus = t is Map ? {for (final e in t.entries) '${e.key}': Map<String, dynamic>.from(e.value as Map)} : {};
+      thermoStatus = t is Map
+          ? {
+              for (final e in t.entries)
+                '${e.key}': Map<String, dynamic>.from(e.value as Map),
+            }
+          : {};
       thermoStatusAt = DateTime.now();
     } catch (_) {
       thermoStatus = {};
@@ -549,12 +650,18 @@ class AppState extends ChangeNotifier implements SyncHost {
       list[i] = c;
       for (final db in config.dashboards) {
         for (final t in db.tiles) {
-          if (t.type == TileType.thermostat && t.read['thermostat'] == c.id) t.title = c.name;
+          if (t.type == TileType.thermostat && t.read['thermostat'] == c.id)
+            t.title = c.name;
         }
       }
     } else {
       list.add(c);
-      tile = TileConfig(type: TileType.thermostat, title: c.name, read: {'thermostat': c.id}, colSpan: 2);
+      tile = TileConfig(
+        type: TileType.thermostat,
+        title: c.name,
+        read: {'thermostat': c.id},
+        colSpan: 2,
+      );
       (d ?? config.dashboards.first).tiles.add(tile);
     }
     await save();
@@ -565,7 +672,9 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<void> deleteThermostat(String id) async {
     config.energy.thermostats.removeWhere((x) => x.id == id);
     for (final db in config.dashboards) {
-      db.tiles.removeWhere((t) => t.type == TileType.thermostat && t.read['thermostat'] == id);
+      db.tiles.removeWhere(
+        (t) => t.type == TileType.thermostat && t.read['thermostat'] == id,
+      );
     }
     await save();
     notifyListeners();
@@ -604,15 +713,20 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   /// The language in use: chosen in settings, or the device language ('auto').
-  String get lang => appLanguages.containsKey(config.language) ? config.language : languageForLocale(systemLocale());
+  String get lang => appLanguages.containsKey(config.language)
+      ? config.language
+      : languageForLocale(systemLocale());
 
-  static String secretKey(String connId, String field) => 'molaplan.secret.$connId.$field';
+  static String secretKey(String connId, String field) =>
+      'molaplan.secret.$connId.$field';
 
   Future<void> load() async {
     final raw = await configStore.load();
     if (raw != null) {
       try {
-        config = AppConfig.fromJson(Map<String, dynamic>.from(jsonDecode(raw) as Map));
+        config = AppConfig.fromJson(
+          Map<String, dynamic>.from(jsonDecode(raw) as Map),
+        );
         final a = migratePriceConnections(config);
         final b = removeEmptyIntegrationViews(config);
         final c = migrateSplitClimateTiles(config);
@@ -622,7 +736,8 @@ class AppState extends ChangeNotifier implements SyncHost {
         final g = repairIncompatibleTiles(config).isNotEmpty;
         // R467/R468 (t308u): alarm panel status + "Valvonta päälle/pois" buttons.
         final h = migrateSecurityPanelTiles(config, lang);
-        if (a || b || c || e || f || g || h) unawaited(configStore.save(jsonEncode(config.toJson())));
+        if (a || b || c || e || f || g || h)
+          unawaited(configStore.save(jsonEncode(config.toJson())));
       } catch (_) {
         config = AppConfig();
       }
@@ -639,13 +754,17 @@ class AppState extends ChangeNotifier implements SyncHost {
     }
     await _loadDevicePins();
     // t237u: the same Home Assistant saved more than once becomes one connection.
-    if (await _dedupeHa()) unawaited(configStore.save(jsonEncode(config.toJson())));
+    if (await _dedupeHa())
+      unawaited(configStore.save(jsonEncode(config.toJson())));
     if (config.dashboards.isEmpty) {
       config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     }
     try {
       final ir = await secretStore.read(_irStatesKey);
-      if (ir != null) IrDriver.restoreStates(Map<String, dynamic>.from(jsonDecode(ir) as Map));
+      if (ir != null)
+        IrDriver.restoreStates(
+          Map<String, dynamic>.from(jsonDecode(ir) as Map),
+        );
     } catch (_) {}
     remote.relay = config.relayUrl ?? remote.relay;
     NetHealth.instance.relayHost = switch (Uri.tryParse(remote.relay)?.host) {
@@ -671,11 +790,15 @@ class AppState extends ChangeNotifier implements SyncHost {
     };
     try {
       final e = await energyStore.load();
-      if (e != null) energyLog.loadJson(Map<String, dynamic>.from(jsonDecode(e) as Map));
+      if (e != null)
+        energyLog.loadJson(Map<String, dynamic>.from(jsonDecode(e) as Map));
     } catch (_) {}
     try {
       final h = await historyStore.load();
-      if (h != null) measureHistory.loadJson(Map<String, dynamic>.from(jsonDecode(h) as Map));
+      if (h != null)
+        measureHistory.loadJson(
+          Map<String, dynamic>.from(jsonDecode(h) as Map),
+        );
     } catch (_) {}
     _lastHome = remote.paired?.home;
     await account.load();
@@ -712,8 +835,11 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   Future<void> setBridgeMode(bool on) async {
-    if (on && Plat.isWeb) return; // R250: a browser tab is never the home bridge
-    on ? await remote.enableBridge(name: tr(lang, 'Koti', 'Home')) : await remote.disableBridge();
+    if (on && Plat.isWeb)
+      return; // R250: a browser tab is never the home bridge
+    on
+        ? await remote.enableBridge(name: tr(lang, 'Koti', 'Home'))
+        : await remote.disableBridge();
     config.bridgeMode = on;
     await bridgeService.setEnabled(on);
     await save();
@@ -736,7 +862,10 @@ class AppState extends ChangeNotifier implements SyncHost {
   void _scheduleBridgeUpdates() {
     _autoUpdate?.cancel();
     _autoUpdate = null;
-    if (!config.bridgeMode || !config.bridgeAutoUpdate || !bridgeService.supported) return;
+    if (!config.bridgeMode ||
+        !config.bridgeAutoUpdate ||
+        !bridgeService.supported)
+      return;
     _autoUpdate = Timer.periodic(const Duration(hours: 6), (_) async {
       if (!config.bridgeMode || !config.bridgeAutoUpdate) return;
       try {
@@ -768,12 +897,18 @@ class AppState extends ChangeNotifier implements SyncHost {
     );
     if (sharing.mine.any((r) => r.status == ShareStatus.active)) {
       _sharePush?.cancel();
-      _sharePush = Timer(const Duration(seconds: 3), () => unawaited(sharing.pushPackages()));
+      _sharePush = Timer(
+        const Duration(seconds: 3),
+        () => unawaited(sharing.pushPackages()),
+      );
     }
   }
 
   /// Owner side of sharing: this device's bridge, or the paired one over the relay.
-  Future<Map<String, dynamic>> shareBridgeCall(String op, Map<String, dynamic> spec) async {
+  Future<Map<String, dynamic>> shareBridgeCall(
+    String op,
+    Map<String, dynamic> spec,
+  ) async {
     final b = remote.bridge;
     if (b != null) {
       if (op == 'share_put') {
@@ -793,10 +928,15 @@ class AppState extends ChangeNotifier implements SyncHost {
     final c = remote.router.client;
     if (c == null) throw ShareError(ShareProblem.noBridge);
     try {
-      final v = await c.call(op, spec: spec, timeout: const Duration(seconds: 25));
+      final v = await c.call(
+        op,
+        spec: spec,
+        timeout: const Duration(seconds: 25),
+      );
       return Map<String, dynamic>.from(v as Map);
     } on RemoteDeviceError catch (e) {
-      if (e.message.contains('Unknown op')) throw ShareError(ShareProblem.bridgeOld, e.message);
+      if (e.message.contains('Unknown op'))
+        throw ShareError(ShareProblem.bridgeOld, e.message);
       rethrow;
     } on RemoteUnavailable catch (e) {
       throw ShareError(ShareProblem.noBridge, e.reason);
@@ -808,7 +948,9 @@ class AppState extends ChangeNotifier implements SyncHost {
   String? _rulesSent;
 
   /// Where rules run: 'self' (this device is the bridge), 'bridge' (paired to a home bridge) or null (nowhere yet).
-  String? get rulesRunWhere => remote.bridge != null ? 'self' : (remote.router.client != null ? 'bridge' : null);
+  String? get rulesRunWhere => remote.bridge != null
+      ? 'self'
+      : (remote.router.client != null ? 'bridge' : null);
 
   void _scheduleRulesPush() {
     if (config.rules.isEmpty &&
@@ -849,7 +991,8 @@ class AppState extends ChangeNotifier implements SyncHost {
       if (c == null) throw StateError('no_bridge');
       final v = await c.call('rules', spec: spec);
       // R194: a bridge older than 0.10.0 ignores 'heating' and does not report it.
-      heatingBridgeOld = heating != null && !(v is Map && v.containsKey('heating'));
+      heatingBridgeOld =
+          heating != null && !(v is Map && v.containsKey('heating'));
     }
     _rulesSent = j;
     return true;
@@ -893,6 +1036,8 @@ class AppState extends ChangeNotifier implements SyncHost {
     'animations',
     'homeStrip',
     'theme',
+    'autoHideBrowserTiles',
+    'tileBrowserVisibility',
   ];
 
   @override
@@ -911,7 +1056,9 @@ class AppState extends ChangeNotifier implements SyncHost {
       final m = {
         for (final e in c.secrets.entries)
           // t241u: a PIN typed on this device stays on this device.
-          if (e.value.isNotEmpty && !(e.key == 'pin' && _devicePin.contains(c.id))) e.key: e.value,
+          if (e.value.isNotEmpty &&
+              !(e.key == 'pin' && _devicePin.contains(c.id)))
+            e.key: e.value,
       };
       if (m.isNotEmpty) out[c.id] = m;
     }
@@ -926,21 +1073,27 @@ class AppState extends ChangeNotifier implements SyncHost {
   /// tile command) while none is entered on this device? Then the tiles ask for it first.
   bool needsPin(String? connId) {
     final c = connection(connId);
-    if (c == null || !descriptorFor(c.type).secretKeys.contains('pin')) return false;
+    if (c == null || !descriptorFor(c.type).secretKeys.contains('pin'))
+      return false;
     if ((c.secrets['pin'] ?? '').isNotEmpty) return false;
     return connectionUsesPin(c);
   }
 
   bool connectionUsesPin(ConnectionConfig c) {
     if (!descriptorFor(c.type).secretKeys.contains('pin')) return false;
-    if (c.type == 'ntfy_device' && (c.settings['template'] == null || '${c.settings['template']}'.trim().isEmpty)) {
+    if (c.type == 'ntfy_device' &&
+        (c.settings['template'] == null ||
+            '${c.settings['template']}'.trim().isEmpty)) {
       return true; // default template '{cmd} {pin}'
     }
     if (c.settings.values.any((v) => '$v'.contains('{pin}'))) return true;
     for (final d in config.dashboards) {
       for (final t in d.tiles) {
         for (final s in [t.onCommand, t.offCommand, ...t.commands]) {
-          if (s != null && s.connectionId == c.id && '${s.spec['command'] ?? ''}'.contains('{pin}')) return true;
+          if (s != null &&
+              s.connectionId == c.id &&
+              '${s.spec['command'] ?? ''}'.contains('{pin}'))
+            return true;
         }
       }
     }
@@ -949,7 +1102,11 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   /// Saves a PIN typed at a tile: [remember] = encrypted secure storage on this device only
   /// (never synced to the account); otherwise only until the app closes.
-  Future<void> setConnectionPin(String connId, String pin, {required bool remember}) async {
+  Future<void> setConnectionPin(
+    String connId,
+    String pin, {
+    required bool remember,
+  }) async {
     final c = connection(connId);
     if (c == null) return;
     c.secrets['pin'] = pin;
@@ -1003,10 +1160,15 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   @override
-  bool get hasLocalSetup => config.connections.isNotEmpty || config.dashboards.any((d) => d.tiles.isNotEmpty);
+  bool get hasLocalSetup =>
+      config.connections.isNotEmpty ||
+      config.dashboards.any((d) => d.tiles.isNotEmpty);
 
   @override
-  Future<void> applySynced(Map<String, dynamic> cfg, Map<String, Map<String, String>>? secrets) async {
+  Future<void> applySynced(
+    Map<String, dynamic> cfg,
+    Map<String, Map<String, String>>? secrets,
+  ) async {
     final other = AppConfig.fromJson({...cfg, 'app': 'molaplan'});
     final oldSecrets = {for (final c in config.connections) c.id: c.secrets};
     for (final d in _drivers.values) {
@@ -1017,15 +1179,19 @@ class AppState extends ChangeNotifier implements SyncHost {
       final s = secrets?[c.id] ?? oldSecrets[c.id];
       if (s != null) c.secrets.addAll(s);
     }
-    final removed = oldSecrets.keys.toSet().difference({for (final c in other.connections) c.id});
+    final removed = oldSecrets.keys.toSet().difference({
+      for (final c in other.connections) c.id,
+    });
     config.connections = other.connections;
     config.dashboards = other.dashboards;
     config.rules = other.rules;
     config.energy = other.energy;
-    if (themeChoices.contains(cfg['defaultTheme'])) config.defaultTheme = other.defaultTheme;
+    if (themeChoices.contains(cfg['defaultTheme']))
+      config.defaultTheme = other.defaultTheme;
     // Older apps do not sync automations: keep ours instead of a fresh empty set.
     if (cfg['automation'] is Map) config.automation = other.automation;
-    if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
+    if (config.dashboards.isEmpty)
+      config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     if (hasLocalSetup) config.onboardingDone = true;
     await _loadDevicePins();
     final dupes = dedupeHaConnections(config);
@@ -1053,7 +1219,10 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   @override
-  Future<void> mergeSynced(Map<String, dynamic> cfg, Map<String, Map<String, String>>? secrets) async {
+  Future<void> mergeSynced(
+    Map<String, dynamic> cfg,
+    Map<String, Map<String, String>>? secrets,
+  ) async {
     final other = AppConfig.fromJson({...cfg, 'app': 'molaplan'});
     for (final c in other.connections) {
       final s = secrets?[c.id];
@@ -1066,7 +1235,8 @@ class AppState extends ChangeNotifier implements SyncHost {
   Map<String, dynamic>? homeCredential() => remote.paired?.toJson();
 
   @override
-  Future<bool> adoptHome(Map<String, dynamic> grant) => remote.adoptAccountHome(grant);
+  Future<bool> adoptHome(Map<String, dynamic> grant) =>
+      remote.adoptAccountHome(grant);
 
   @override
   Future<Map<String, dynamic>?> makeHomeGrant() => _accountGrant();
@@ -1124,11 +1294,15 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   /// The account's bridges plus this device's own home(s), one row per home.
-  List<OwnBridge> get ownBridges => remote.ownBridges(vault: account.accountBridges, accountHome: account.vaultHome);
+  List<OwnBridge> get ownBridges => remote.ownBridges(
+    vault: account.accountBridges,
+    accountHome: account.vaultHome,
+  );
 
   Future<void> _persistSecrets(ConnectionConfig c) async {
     for (final k in descriptorFor(c.type).secretKeys) {
-      if (k == 'pin' && _devicePin.contains(c.id)) continue; // t241u: kept under devicePinKey
+      if (k == 'pin' && _devicePin.contains(c.id))
+        continue; // t241u: kept under devicePinKey
       final v = c.secrets[k];
       if (v == null || v.isEmpty) {
         try {
@@ -1237,7 +1411,8 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<Object?> runSequence(List<CommandStep> steps, {Object? value}) async {
     Object? last;
     for (final s in steps) {
-      if (s.delayMs > 0) await Future<void>.delayed(Duration(milliseconds: s.delayMs));
+      if (s.delayMs > 0)
+        await Future<void>.delayed(Duration(milliseconds: s.delayMs));
       last = await runStep(s, value: value) ?? last;
     }
     return last;
@@ -1262,7 +1437,8 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   Future<void> deleteDashboard(Dashboard d) async {
     config.dashboards.remove(d);
-    if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
+    if (config.dashboards.isEmpty)
+      config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     await save();
     notifyListeners();
   }
@@ -1279,8 +1455,13 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   Future<void> deleteTile(Dashboard d, String tileId) async {
-    final gone = d.tiles.where((e) => e.id == tileId && e.type == TileType.thermostat).firstOrNull;
-    if (gone != null) config.energy.thermostats.removeWhere((x) => x.id == gone.read['thermostat']);
+    final gone = d.tiles
+        .where((e) => e.id == tileId && e.type == TileType.thermostat)
+        .firstOrNull;
+    if (gone != null)
+      config.energy.thermostats.removeWhere(
+        (x) => x.id == gone.read['thermostat'],
+      );
     config.energy.meters.remove(tileId);
     d.tiles.removeWhere((e) => e.id == tileId);
     await save();
@@ -1314,7 +1495,8 @@ class AppState extends ChangeNotifier implements SyncHost {
     for (final d in config.dashboards)
       for (final t in d.tiles) ?t.bgImage,
     for (final d in config.dashboards)
-      if (d.headerImage != null && !d.headerImage!.startsWith('preset:')) d.headerImage!,
+      if (d.headerImage != null && !d.headerImage!.startsWith('preset:'))
+        d.headerImage!,
   };
 
   /// t172u: a built-in room picture ([id] from roomPresets) – no upload, no image slot.
@@ -1327,8 +1509,14 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   /// t172u: Otsikkokuva / Koko näkymän tausta, and the background's dimming and blur.
-  Future<void> setRoomPhotoMode(Dashboard d, {String? mode, double? dim, double? blur}) async {
-    if (mode != null) d.photoMode = mode == 'background' ? 'background' : 'header';
+  Future<void> setRoomPhotoMode(
+    Dashboard d, {
+    String? mode,
+    double? dim,
+    double? blur,
+  }) async {
+    if (mode != null)
+      d.photoMode = mode == 'background' ? 'background' : 'header';
     if (dim != null) d.bgDim = dim.clamp(0, 0.9);
     if (blur != null) d.bgBlur = blur.clamp(0, 20);
     await save();
@@ -1340,7 +1528,8 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<bool> setTileImage(TileConfig t, Uint8List raw) async {
     final p = await processTileImageAsync(raw);
     final used = usedImages..remove(t.bgImage);
-    if (!used.contains(p.name) && used.length >= tileImageMaxCount) return false;
+    if (!used.contains(p.name) && used.length >= tileImageMaxCount)
+      return false;
     await images.write(p.name, p.bytes);
     t.bgImage = p.name;
     t.bgScrim = p.scrim;
@@ -1354,7 +1543,8 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<bool> setHeaderImage(Dashboard d, Uint8List raw) async {
     final p = await processTileImageAsync(raw);
     final used = usedImages..remove(d.headerImage);
-    if (!used.contains(p.name) && used.length >= tileImageMaxCount) return false;
+    if (!used.contains(p.name) && used.length >= tileImageMaxCount)
+      return false;
     await images.write(p.name, p.bytes);
     d.headerImage = p.name;
     d.headerScrim = p.scrim;
@@ -1379,7 +1569,10 @@ class AppState extends ChangeNotifier implements SyncHost {
     unawaited(account.syncNow(quiet: true));
   }
 
-  Future<void> updateTileLook(TileConfig t, void Function(TileConfig t) change) async {
+  Future<void> updateTileLook(
+    TileConfig t,
+    void Function(TileConfig t) change,
+  ) async {
     change(t);
     await save();
     notifyListeners();
@@ -1412,13 +1605,17 @@ class AppState extends ChangeNotifier implements SyncHost {
       await api.deleteImages(s, stale);
       done.removeAll(stale);
     }
-    if (done.length != before.length || !done.containsAll(before)) await images.setUploaded(s.userId, done);
+    if (done.length != before.length || !done.containsAll(before))
+      await images.setUploaded(s.userId, done);
     if (changed) notifyListeners();
   }
 
   /// v0.4 Shelly Cloud tiles could be titled with the raw device id (`"<laitetunnus> – teho"`).
   void _fixRawIdTitles() {
-    final raw = RegExp(r'^(shelly[\w-]*-)?[0-9a-f]{12}( – (teho|power))?$', caseSensitive: false);
+    final raw = RegExp(
+      r'^(shelly[\w-]*-)?[0-9a-f]{12}( – (teho|power))?$',
+      caseSensitive: false,
+    );
     for (final d in config.dashboards) {
       for (final t in d.tiles) {
         if (!raw.hasMatch(t.title.trim())) continue;
@@ -1433,7 +1630,8 @@ class AppState extends ChangeNotifier implements SyncHost {
   Future<void> renameTile(TileConfig t, String title) async {
     t.title = title.trim();
     for (final th in config.energy.thermostats) {
-      if (t.type == TileType.thermostat && t.read['thermostat'] == th.id) th.name = t.title;
+      if (t.type == TileType.thermostat && t.read['thermostat'] == th.id)
+        th.name = t.title;
     }
     await save();
     notifyListeners();
@@ -1459,7 +1657,8 @@ class AppState extends ChangeNotifier implements SyncHost {
     notifyListeners();
   }
 
-  Future<bool> get lockHasPin async => ((await secretStore.read(lockPinKey)) ?? '').isNotEmpty;
+  Future<bool> get lockHasPin async =>
+      ((await secretStore.read(lockPinKey)) ?? '').isNotEmpty;
 
   /// Returns false when the PIN is wrong.
   Future<bool> unlockView([String? pin]) async {
@@ -1474,7 +1673,9 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   /// Remembers an own name for a scanned device (empty = forget).
   Future<void> setScanName(String key, String name) async {
-    name.trim().isEmpty ? config.scanNames.remove(key) : config.scanNames[key] = name.trim();
+    name.trim().isEmpty
+        ? config.scanNames.remove(key)
+        : config.scanNames[key] = name.trim();
     await save();
     notifyListeners();
   }
@@ -1491,8 +1692,57 @@ class AppState extends ChangeNotifier implements SyncHost {
     notifyListeners();
   }
 
+  /// R625 (t334u): device-local. Turn browser auto-hide off or on.
+  Future<void> setAutoHideBrowserTiles(bool v) async {
+    config.autoHideBrowserTiles = v;
+    await save();
+    notifyListeners();
+  }
+
+  /// R624 (t334u): device-local per-tile browser visibility ('always' or 'auto').
+  String tileBrowserShow(String tileId) {
+    final v = config.tileBrowserVisibility[tileId];
+    return v == tileBrowserShowAlways
+        ? tileBrowserShowAlways
+        : tileBrowserShowAuto;
+  }
+
+  Future<void> setTileBrowserVisibility(String tileId, String mode) async {
+    if (mode == tileBrowserShowAlways) {
+      config.tileBrowserVisibility[tileId] = tileBrowserShowAlways;
+    } else {
+      config.tileBrowserVisibility.remove(tileId);
+    }
+    await save();
+    notifyListeners();
+  }
+
+  /// R620: should this tile be omitted from the browser grid (never in native apps).
+  bool hideTileInBrowser(TileConfig t, {bool editing = false}) {
+    if (editing || !Plat.isWeb) return false;
+    return shouldHideBrowserTile(
+      tile: t,
+      connection: connection,
+      hasBridge: remote.isPaired,
+      autoHide: config.autoHideBrowserTiles,
+      showMode: tileBrowserShow(t.id),
+      error: browserTileError(t),
+      hasValue: browserTileHasValue(t),
+      isWeb: true,
+    );
+  }
+
+  List<TileConfig> hiddenBrowserTiles(Dashboard d, {bool editing = false}) {
+    if (editing || !Plat.isWeb || !config.autoHideBrowserTiles) return const [];
+    return [
+      for (final t in d.tiles)
+        if (hideTileInBrowser(t)) t,
+    ];
+  }
+
   /// t162u: the theme in use on this device (its own choice, else the account default).
-  String get themeChoice => config.theme.isNotEmpty ? config.theme : config.defaultTheme;
+  String get themeChoice =>
+      config.theme.isNotEmpty ? config.theme : config.defaultTheme;
 
   Future<void> setTheme(String v) async {
     if (!themeChoices.contains(v)) return;
@@ -1559,16 +1809,20 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   // ---- import / export
   String exportJson({bool includeSecrets = false}) =>
-      const JsonEncoder.withIndent('  ').convert(config.toJson(includeSecrets: includeSecrets));
+      const JsonEncoder.withIndent('  ')
+          .convert(config.toJson(includeSecrets: includeSecrets));
 
   Future<void> importJson(String json) async {
-    final imported = AppConfig.fromJson(Map<String, dynamic>.from(jsonDecode(json) as Map));
+    final imported = AppConfig.fromJson(
+      Map<String, dynamic>.from(jsonDecode(json) as Map),
+    );
     for (final d in _drivers.values) {
       unawaited(d.dispose());
     }
     _drivers.clear();
     config = imported;
-    if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
+    if (config.dashboards.isEmpty)
+      config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     dedupeHaConnections(config);
     for (final c in config.connections) {
       await _persistSecrets(c);
@@ -1595,7 +1849,11 @@ class AppState extends ChangeNotifier implements SyncHost {
     config.dashboards.insert(index.clamp(0, config.dashboards.length), d);
     // drop the auto-created empty default, if deleting left one behind
     config.dashboards.removeWhere(
-      (x) => x != d && x.tiles.isEmpty && config.dashboards.length > 1 && x.name == tr(lang, 'Koti', 'Home'),
+      (x) =>
+          x != d &&
+          x.tiles.isEmpty &&
+          config.dashboards.length > 1 &&
+          x.name == tr(lang, 'Koti', 'Home'),
     );
     await save();
     notifyListeners();
@@ -1603,8 +1861,13 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   static String _addrKey(ConnectionConfig c) {
     final s = c.settings;
-    final a = (s['baseUrl'] ?? s['host'] ?? s['url'] ?? '').toString().toLowerCase().replaceAll(RegExp(r'/+$'), '');
-    final extra = c.type == 'ir' ? '|${s['entity'] ?? ''}|${s['topic'] ?? ''}' : '';
+    final a = (s['baseUrl'] ?? s['host'] ?? s['url'] ?? '')
+        .toString()
+        .toLowerCase()
+        .replaceAll(RegExp(r'/+$'), '');
+    final extra = c.type == 'ir'
+        ? '|${s['entity'] ?? ''}|${s['topic'] ?? ''}'
+        : '';
     return '${c.type}|$a|${s['port'] ?? ''}|${s['unitId'] ?? ''}$extra';
   }
 
@@ -1612,10 +1875,12 @@ class AppState extends ChangeNotifier implements SyncHost {
   /// device (by address) + what it reads and sends. Two tiles with the same key are duplicates.
   String tileKey(TileConfig t, {List<ConnectionConfig> extra = const []}) {
     final k = t.read['kind'];
-    if (k == 'script' || k == 'scene' || k == 'automation') return '$k:${t.read['${k}Id']}';
+    if (k == 'script' || k == 'scene' || k == 'automation')
+      return '$k:${t.read['${k}Id']}';
     if (k == 'tile') return 'tile:${t.read['tileId']}:${t.read['op']}';
     if (k == 'group') {
-      final m = [for (final m in (t.read['members'] as List? ?? const [])) '$m']..sort();
+      final m = [for (final m in (t.read['members'] as List? ?? const [])) '$m']
+        ..sort();
       return 'group:${m.join(',')}';
     }
     String conn(String? id) {
@@ -1624,7 +1889,8 @@ class AppState extends ChangeNotifier implements SyncHost {
       return c == null ? id : _addrKey(c);
     }
 
-    String step(CommandStep? s) => s == null ? '' : '${conn(s.connectionId)}${jsonEncode(s.spec)}';
+    String step(CommandStep? s) =>
+        s == null ? '' : '${conn(s.connectionId)}${jsonEncode(s.spec)}';
     final read = Map<String, dynamic>.from(t.read)..remove('raw');
     return [
       t.type.name,
@@ -1636,7 +1902,11 @@ class AppState extends ChangeNotifier implements SyncHost {
   }
 
   /// Tiles of [tiles] that [d] already has (t173u "On jo näkymässä").
-  List<TileConfig> duplicatesIn(Dashboard d, Iterable<TileConfig> tiles, {List<ConnectionConfig> extra = const []}) {
+  List<TileConfig> duplicatesIn(
+    Dashboard d,
+    Iterable<TileConfig> tiles, {
+    List<ConnectionConfig> extra = const [],
+  }) {
     final have = {for (final t in d.tiles) tileKey(t)};
     return [
       for (final t in tiles)
@@ -1647,11 +1917,17 @@ class AppState extends ChangeNotifier implements SyncHost {
   /// Adds a template result. Connections that already exist (same type +
   /// address) are reused so e.g. a second HA template doesn't duplicate HA.
   /// Returns the connections actually used.
-  Future<List<ConnectionConfig>> applyTemplate(TemplateResult r, {Dashboard? into, List<TileConfig>? tiles}) async {
+  Future<List<ConnectionConfig>> applyTemplate(
+    TemplateResult r, {
+    Dashboard? into,
+    List<TileConfig>? tiles,
+  }) async {
     final remap = <String, String>{};
     final used = <ConnectionConfig>[];
     for (final c in r.connections) {
-      final existing = config.connections.where((e) => _addrKey(e) == _addrKey(c)).firstOrNull;
+      final existing = config.connections
+          .where((e) => _addrKey(e) == _addrKey(c))
+          .firstOrNull;
       if (existing != null) {
         remap[c.id] = existing.id;
         // Newer settings/credentials win (e.g. a password added in the wizard).
@@ -1686,16 +1962,21 @@ class AppState extends ChangeNotifier implements SyncHost {
   /// Device-local settings (language, bridge mode, relay) are not copied.
   /// Returns the number of dashboards added.
   Future<int> adoptHomeSetup(String json) async {
-    final other = AppConfig.fromJson(Map<String, dynamic>.from(jsonDecode(json) as Map));
+    final other = AppConfig.fromJson(
+      Map<String, dynamic>.from(jsonDecode(json) as Map),
+    );
     final known = {for (final c in config.connections) _addrKey(c)};
     final remap = <String, String>{};
     final add = <ConnectionConfig>[];
     for (final c in other.connections) {
-      final same = config.connections.where((e) => _addrKey(e) == _addrKey(c)).firstOrNull;
+      final same = config.connections
+          .where((e) => _addrKey(e) == _addrKey(c))
+          .firstOrNull;
       if (same != null && known.contains(_addrKey(c))) {
         remap[c.id] = same.id;
       } else if (connection(c.id) != null) {
-        final n = ConnectionConfig.fromJson(c.toJson(includeSecrets: true))..id = newId();
+        final n = ConnectionConfig.fromJson(c.toJson(includeSecrets: true))
+          ..id = newId();
         remap[c.id] = n.id;
         add.add(n);
       } else {
@@ -1713,11 +1994,14 @@ class AppState extends ChangeNotifier implements SyncHost {
         }
       }
     }
-    final emptyDefault = config.connections.isEmpty && config.dashboards.every((d) => d.tiles.isEmpty);
+    final emptyDefault =
+        config.connections.isEmpty &&
+        config.dashboards.every((d) => d.tiles.isEmpty);
     if (emptyDefault) config.dashboards.clear();
     config.connections.addAll(add);
     config.dashboards.addAll(other.dashboards);
-    if (config.dashboards.isEmpty) config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
+    if (config.dashboards.isEmpty)
+      config.dashboards.add(Dashboard(name: tr(lang, 'Koti', 'Home')));
     for (final c in add) {
       await _persistSecrets(c);
     }
@@ -1779,7 +2063,8 @@ class _AppShareHost implements ShareHost {
   @override
   AppConfig get config => app.config;
   @override
-  Future<Session?> session() async => app.account.signedIn ? app.account.freshSession() : null;
+  Future<Session?> session() async =>
+      app.account.signedIn ? app.account.freshSession() : null;
   @override
   List<int>? get accountKey => app.account.accountKey;
   @override
@@ -1789,5 +2074,8 @@ class _AppShareHost implements ShareHost {
   }
 
   @override
-  Future<Map<String, dynamic>> bridgeCall(String op, Map<String, dynamic> spec) => app.shareBridgeCall(op, spec);
+  Future<Map<String, dynamic>> bridgeCall(
+    String op,
+    Map<String, dynamic> spec,
+  ) => app.shareBridgeCall(op, spec);
 }

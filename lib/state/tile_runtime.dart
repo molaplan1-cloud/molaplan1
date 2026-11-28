@@ -31,8 +31,10 @@ class TileRuntime extends ChangeNotifier {
       tile.read['kind'] != 'climate' &&
       tile.read['kind'] != 'weather' &&
       tile.read['kind'] != 'heating' && // R610: reads the shared heating state
-      tile.read['kind'] != 'energyflow' && // R590: the energy flow reads its source tiles
-      tile.read['kind'] != 'log'; // R485: a log / trend tile reads the log store
+      tile.read['kind'] !=
+          'energyflow' && // R590: the energy flow reads its source tiles
+      tile.read['kind'] !=
+          'log'; // R485: a log / trend tile reads the log store
 
   /// t193u: live runtimes by tile id, so a script / scene / control button can refresh the
   /// tiles it switched right away (Shelly Cloud / polled tiles otherwise lag up to a poll).
@@ -42,7 +44,11 @@ class TileRuntime extends ChangeNotifier {
   /// shortly after – cloud devices report a new state with a delay.
   static void refreshSoon(
     Iterable<String>? tileIds, {
-    List<Duration> after = const [Duration(milliseconds: 700), Duration(seconds: 3), Duration(seconds: 8)],
+    List<Duration> after = const [
+      Duration(milliseconds: 700),
+      Duration(seconds: 3),
+      Duration(seconds: 8),
+    ],
   }) {
     final ids = tileIds?.toSet();
     for (final d in after) {
@@ -50,7 +56,8 @@ class TileRuntime extends ChangeNotifier {
         for (final e in live.entries.toList()) {
           if (ids != null && !ids.contains(e.key)) continue;
           for (final rt in e.value.toList()) {
-            if (!rt._disposed && rt.readsState && !rt.busy) unawaited(rt.refresh());
+            if (!rt._disposed && rt.readsState && !rt.busy)
+              unawaited(rt.refresh());
           }
         }
       });
@@ -78,7 +85,8 @@ class TileRuntime extends ChangeNotifier {
     } else {
       refresh();
       final secs = tile.pollSeconds <= 0 ? 0 : tile.pollSeconds.clamp(1, 86400);
-      if (secs > 0) _timer = Timer.periodic(Duration(seconds: secs), (_) => refresh());
+      if (secs > 0)
+        _timer = Timer.periodic(Duration(seconds: secs), (_) => refresh());
     }
   }
 
@@ -103,7 +111,9 @@ class TileRuntime extends ChangeNotifier {
       _prefilled = true;
       if (needsPrefill?.call(tile) ?? false) {
         try {
-          final h = await d.history(tile.read, hours: tile.trendHours).timeout(const Duration(seconds: 12));
+          final h = await d
+              .history(tile.read, hours: tile.trendHours)
+              .timeout(const Duration(seconds: 12));
           for (final p in h) {
             observer?.call(tile, p.$2, p.$1);
           }
@@ -118,12 +128,22 @@ class TileRuntime extends ChangeNotifier {
     } catch (e) {
       NetHealth.instance.report(e);
       _set(value, e.toString());
-      unawaited(DataFetch.instance.fail('tile:${tile.id}', label: tile.title, message: e.toString()));
+      unawaited(
+        DataFetch.instance.fail(
+          'tile:${tile.id}',
+          label: tile.title,
+          message: e.toString(),
+        ),
+      );
     }
   }
 
   /// Every fresh value of every visible tile (energy meters are logged from here).
-  static void Function(TileConfig tile, Object? value, [DateTime? at])? observer;
+  static void Function(TileConfig tile, Object? value, [DateTime? at])?
+  observer;
+
+  /// R622 (t334u): a tile's error or recovery changed (browser auto-hide listens).
+  static void Function(TileConfig tile, String? error)? onIssue;
 
   /// Set when the value is an old report from a sleeping device (shown as "last HH.MM").
   DateTime? reportedAt;
@@ -144,8 +164,10 @@ class TileRuntime extends ChangeNotifier {
     if (_disposed) return;
     if (err != null) {
       _fails++;
-      final fresh = _lastOk != null && DateTime.now().difference(_lastOk!) < staleAfter;
-      if (value != null && error == null && _fails < failLimit && fresh) return; // keep the good state
+      final fresh =
+          _lastOk != null && DateTime.now().difference(_lastOk!) < staleAfter;
+      if (value != null && error == null && _fails < failLimit && fresh)
+        return; // keep the good state
     } else {
       _fails = 0;
       _lastOk = DateTime.now();
@@ -159,8 +181,13 @@ class TileRuntime extends ChangeNotifier {
     if (at != null) _reportAt = at;
     value = v;
     error = err;
+    onIssue?.call(tile, err);
     if (err == null) {
-      reportedAt = at != null && DateTime.now().difference(at) > const Duration(minutes: 10) ? at : null;
+      reportedAt =
+          at != null &&
+              DateTime.now().difference(at) > const Duration(minutes: 10)
+          ? at
+          : null;
       if (repeat) {
         notifyListeners();
         return;
@@ -202,8 +229,10 @@ class TileRuntime extends ChangeNotifier {
     try {
       await action();
       error = null;
+      onIssue?.call(tile, null);
     } catch (e) {
       error = e.toString();
+      onIssue?.call(tile, error);
       rethrow;
     } finally {
       busy = false;

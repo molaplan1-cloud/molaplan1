@@ -13370,4 +13370,58 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s06444f278d => 'posición (100 = cerrada)';
+
+  @override
+  String get s1882976d8c =>
+      'El dispositivo funciona en la aplicación Molaplan.';
+
+  @override
+  String get s25a2d52c2d =>
+      'En el navegador se ocultan los recuadros a los que este navegador no puede acceder y los que no han respondido durante unos diez minutos. Los recuadros ocultos se abren desde la parte inferior de la vista. Solo este navegador.';
+
+  @override
+  String get s493a65113f => 'Mostrar siempre';
+
+  @override
+  String get s5972cf4f3b =>
+      'No se pudo crear una imagen fija a partir de la secuencia de vídeo en el navegador.';
+
+  @override
+  String get s70aa3dc5be =>
+      'El recuadro vuelve a aparecer en cuanto el dispositivo responde.';
+
+  @override
+  String get s786c05c9e1 =>
+      'Este dispositivo no se puede usar desde el navegador.';
+
+  @override
+  String get s98ffbf5518 =>
+      'El dispositivo no ha respondido durante un tiempo.';
+
+  @override
+  String sa59af4f48b(String p0) {
+    return '$p0 recuadros ocultos – no disponibles en el navegador';
+  }
+
+  @override
+  String get sb3a5e212e2 =>
+      'Añade un puente de casa para que esto también funcione en el navegador.';
+
+  @override
+  String get sbfd72f3328 => 'Ocultar automáticamente';
+
+  @override
+  String get scdf43305db =>
+      'Instala ffmpeg en el ordenador del puente de casa, o usa la aplicación Molaplan como puente de casa.';
+
+  @override
+  String get se24b0e7f60 =>
+      'Se aplica solo en este navegador. En otros dispositivos el recuadro permanece en su sitio.';
+
+  @override
+  String get se9702be418 =>
+      'Ocultar recuadros que no funcionan en el navegador';
+
+  @override
+  String get sf328dcc536 => 'Vista del navegador';
 }

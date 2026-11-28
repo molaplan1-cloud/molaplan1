@@ -13230,4 +13230,54 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s06444f278d => 'position (100 = closed)';
+
+  @override
+  String get s1882976d8c => 'The device works in the Molaplan app.';
+
+  @override
+  String get s25a2d52c2d =>
+      'In the browser, tiles this browser cannot reach, and tiles that have not answered for about ten minutes, are hidden. Hidden tiles can be opened from the bottom of the view. This browser only.';
+
+  @override
+  String get s493a65113f => 'Always show';
+
+  @override
+  String get s5972cf4f3b =>
+      'A still picture could not be made from the video stream in the browser.';
+
+  @override
+  String get s70aa3dc5be =>
+      'The tile comes back as soon as the device answers.';
+
+  @override
+  String get s786c05c9e1 => 'This device cannot be used from the browser.';
+
+  @override
+  String get s98ffbf5518 => 'The device has not answered for a while.';
+
+  @override
+  String sa59af4f48b(String p0) {
+    return '$p0 devices hidden – not available in the browser';
+  }
+
+  @override
+  String get sb3a5e212e2 =>
+      'Add a home bridge so this also works in the browser.';
+
+  @override
+  String get sbfd72f3328 => 'Hide automatically';
+
+  @override
+  String get scdf43305db =>
+      'Install ffmpeg on the home-bridge computer, or use the Molaplan app as the home bridge.';
+
+  @override
+  String get se24b0e7f60 =>
+      'Applies only in this browser. On other devices the tile stays in place.';
+
+  @override
+  String get se9702be418 => 'Hide tiles that don\'t work in the browser';
+
+  @override
+  String get sf328dcc536 => 'Browser view';
 }

@@ -49,7 +49,11 @@ class _SettingsPageState extends State<SettingsPage> {
         mimeType: 'application/json',
         dialogTitle: tx(context, 'Vie asetukset', 'Export configuration'),
       );
-      if (uri != null && mounted) showSnack(context, tx(context, 'Asetukset viety', 'Configuration exported'));
+      if (uri != null && mounted)
+        showSnack(
+          context,
+          tx(context, 'Asetukset viety', 'Configuration exported'),
+        );
     } catch (e) {
       if (mounted) showSnack(context, e.toString(), error: true);
     }
@@ -67,7 +71,11 @@ class _SettingsPageState extends State<SettingsPage> {
       if (!mounted) return;
       final ok = await confirmDialog(
         context,
-        tx(context, 'Korvataanko nykyiset asetukset?', 'Replace current configuration?'),
+        tx(
+          context,
+          'Korvataanko nykyiset asetukset?',
+          'Replace current configuration?',
+        ),
         tx(
           context,
           'Kaikki nykyiset yhteydet ja näkymät korvataan tiedoston sisällöllä.',
@@ -77,9 +85,18 @@ class _SettingsPageState extends State<SettingsPage> {
       );
       if (!ok) return;
       await st.importJson(text);
-      if (mounted) showSnack(context, tx(context, 'Asetukset tuotu', 'Configuration imported'));
+      if (mounted)
+        showSnack(
+          context,
+          tx(context, 'Asetukset tuotu', 'Configuration imported'),
+        );
     } catch (e) {
-      if (mounted) showSnack(context, '${tx(context, 'Tuonti epäonnistui', 'Import failed')}: $e', error: true);
+      if (mounted)
+        showSnack(
+          context,
+          '${tx(context, 'Tuonti epäonnistui', 'Import failed')}: $e',
+          error: true,
+        );
     }
   }
 
@@ -117,12 +134,21 @@ class _SettingsPageState extends State<SettingsPage> {
                 alignment: Alignment.centerLeft,
                 child: FilledButton.tonalIcon(
                   key: const ValueKey('settings-account'),
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AccountPage())),
-                  icon: Icon(st.account.signedIn ? Icons.account_circle : Icons.login),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const AccountPage()),
+                  ),
+                  icon: Icon(
+                    st.account.signedIn ? Icons.account_circle : Icons.login,
+                  ),
                   label: Text(
                     st.account.signedIn
                         ? '${tx(context, 'Tili', 'Account')}: ${st.account.email}'
-                        : tx(context, 'Kirjaudu tai luo tili', 'Sign in or create an account'),
+                        : tx(
+                            context,
+                            'Kirjaudu tai luo tili',
+                            'Sign in or create an account',
+                          ),
                   ),
                 ),
               ),
@@ -134,13 +160,22 @@ class _SettingsPageState extends State<SettingsPage> {
                     key: const ValueKey('web-wipe-local'),
                     onPressed: () => confirmWipeBrowser(context, st),
                     icon: const Icon(Icons.delete_outline),
-                    label: Text(tx(context, 'Poista selaimen tiedot', 'Delete browser data')),
+                    label: Text(
+                      tx(
+                        context,
+                        'Poista selaimen tiedot',
+                        'Delete browser data',
+                      ),
+                    ),
                   ),
                 ),
               ],
               if (Plat.isWeb) ...[
                 const SizedBox(height: 28),
-                Text(tx(context, 'Lataukset', 'Downloads'), style: text.titleMedium),
+                Text(
+                  tx(context, 'Lataukset', 'Downloads'),
+                  style: text.titleMedium,
+                ),
                 const SizedBox(height: 4),
                 if (!st.account.signedIn)
                   const NeedsAccountNote(
@@ -154,7 +189,9 @@ class _SettingsPageState extends State<SettingsPage> {
                       key: const ValueKey('settings-downloads'),
                       onPressed: () => openMolaplanUrl(molaplanDownloads),
                       icon: const Icon(Icons.download_outlined),
-                      label: Text(tx(context, 'Avaa lataukset', 'Open downloads')),
+                      label: Text(
+                        tx(context, 'Avaa lataukset', 'Open downloads'),
+                      ),
                     ),
                   ),
               ],
@@ -164,7 +201,10 @@ class _SettingsPageState extends State<SettingsPage> {
               const LanguagePicker(),
               const SizedBox(height: 28),
               // t162u: Ulkoasu › Teema.
-              Text(tx(context, 'Ulkoasu', 'Appearance'), style: text.titleMedium),
+              Text(
+                tx(context, 'Ulkoasu', 'Appearance'),
+                style: text.titleMedium,
+              ),
               const SizedBox(height: 8),
               Text(tx(context, 'Teema', 'Theme'), style: text.bodyMedium),
               const SizedBox(height: 6),
@@ -196,7 +236,13 @@ class _SettingsPageState extends State<SettingsPage> {
                   contentPadding: EdgeInsets.zero,
                   value: st.themeChoice == 'sun',
                   onChanged: (v) => st.setTheme(v ? 'sun' : 'system'),
-                  title: Text(tx(context, 'Auringonnousun ja -laskun mukaan', 'By sunrise and sunset')),
+                  title: Text(
+                    tx(
+                      context,
+                      'Auringonnousun ja -laskun mukaan',
+                      'By sunrise and sunset',
+                    ),
+                  ),
                   subtitle: Text(
                     st.config.energy.home == null
                         ? tx(
@@ -228,7 +274,13 @@ class _SettingsPageState extends State<SettingsPage> {
                   contentPadding: EdgeInsets.zero,
                   value: priceHourlyOf(st.config),
                   onChanged: (v) => st.setPriceHourly(v),
-                  title: Text(tx(context, 'Näytä tuntikeskiarvona', 'Show as hourly average')),
+                  title: Text(
+                    tx(
+                      context,
+                      'Näytä tuntikeskiarvona',
+                      'Show as hourly average',
+                    ),
+                  ),
                   subtitle: Text(
                     tx(
                       context,
@@ -246,7 +298,11 @@ class _SettingsPageState extends State<SettingsPage> {
                   if (context.mounted) setState(() {});
                 },
                 title: Text(
-                  tx(context, 'Aamukortti: näytä myös kallein tunti', 'Morning card: also show the priciest hour'),
+                  tx(
+                    context,
+                    'Aamukortti: näytä myös kallein tunti',
+                    'Morning card: also show the priciest hour',
+                  ),
                 ),
                 subtitle: Text(
                   tx(
@@ -257,14 +313,26 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              Text(tx(context, 'Laattakoko', 'Tile size'), style: text.titleMedium),
+              Text(
+                tx(context, 'Laattakoko', 'Tile size'),
+                style: text.titleMedium,
+              ),
               const SizedBox(height: 8),
               SegmentedButton<String>(
                 key: const ValueKey('settings-tile-density'),
                 segments: [
-                  ButtonSegment(value: 'small', label: Text(tx(context, 'Pieni', 'Small'))),
-                  ButtonSegment(value: 'normal', label: Text(tx(context, 'Normaali', 'Normal'))),
-                  ButtonSegment(value: 'large', label: Text(tx(context, 'Iso', 'Large'))),
+                  ButtonSegment(
+                    value: 'small',
+                    label: Text(tx(context, 'Pieni', 'Small')),
+                  ),
+                  ButtonSegment(
+                    value: 'normal',
+                    label: Text(tx(context, 'Normaali', 'Normal')),
+                  ),
+                  ButtonSegment(
+                    value: 'large',
+                    label: Text(tx(context, 'Iso', 'Large')),
+                  ),
                 ],
                 selected: {st.config.tileDensity},
                 onSelectionChanged: (v) => st.setTileDensity(v.first),
@@ -273,7 +341,13 @@ class _SettingsPageState extends State<SettingsPage> {
               SwitchListTile(
                 key: const ValueKey('settings-hide-away'),
                 contentPadding: EdgeInsets.zero,
-                title: Text(tx(context, 'Piilota etänä toimimattomat', 'Hide tiles that don\'t work remotely')),
+                title: Text(
+                  tx(
+                    context,
+                    'Piilota etänä toimimattomat',
+                    'Hide tiles that don\'t work remotely',
+                  ),
+                ),
                 subtitle: Text(
                   tx(
                     context,
@@ -284,10 +358,37 @@ class _SettingsPageState extends State<SettingsPage> {
                 value: st.config.hideAwayTiles,
                 onChanged: st.setHideAwayTiles,
               ),
+              if (Plat.isWeb && st.config.advanced)
+                SwitchListTile(
+                  key: const ValueKey('settings-auto-hide-browser'),
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(
+                    tx(
+                      context,
+                      'Piilota selaimessa toimimattomat',
+                      'Hide tiles that don\'t work in the browser',
+                    ),
+                  ),
+                  subtitle: Text(
+                    tx(
+                      context,
+                      'Selainversiossa piilotetaan ruudut, joihin ei saada yhteyttä tästä selaimesta, ja ruudut, jotka eivät ole vastanneet noin kymmeneen minuuttiin. Piilotetut saa näkyviin näkymän alareunasta. Koskee vain tätä selainta.',
+                      'In the browser, tiles this browser cannot reach, and tiles that have not answered for about ten minutes, are hidden. Hidden tiles can be opened from the bottom of the view. This browser only.',
+                    ),
+                  ),
+                  value: st.config.autoHideBrowserTiles,
+                  onChanged: st.setAutoHideBrowserTiles,
+                ),
               SwitchListTile(
                 key: const ValueKey('settings-strip'),
                 contentPadding: EdgeInsets.zero,
-                title: Text(tx(context, 'Kello ja sää etusivulla', 'Clock and weather on the home screen')),
+                title: Text(
+                  tx(
+                    context,
+                    'Kello ja sää etusivulla',
+                    'Clock and weather on the home screen',
+                  ),
+                ),
                 subtitle: Text(
                   tx(
                     context,
@@ -332,16 +433,28 @@ class _SettingsPageState extends State<SettingsPage> {
               // t237u: ONE Home Assistant button (a picker when there are several servers),
               // under its own "Laitteet ja integraatiot" heading instead of inside Energia.
               const SizedBox(height: 20),
-              Text(tx(context, 'Laitteet ja integraatiot', 'Devices and integrations'), style: text.titleMedium),
+              Text(
+                tx(
+                  context,
+                  'Laitteet ja integraatiot',
+                  'Devices and integrations',
+                ),
+                style: text.titleMedium,
+              ),
               const SizedBox(height: 8),
               // t245u: connections (PIN, reply topic…) without the Edistyneet switch.
               Align(
                 alignment: Alignment.centerLeft,
                 child: OutlinedButton.icon(
                   key: const ValueKey('settings-connections'),
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ConnectionsPage())),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const ConnectionsPage()),
+                  ),
                   icon: const Icon(Icons.device_hub),
-                  label: Text('${tx(context, 'Yhteydet', 'Connections')} (${st.config.connections.length})'),
+                  label: Text(
+                    '${tx(context, 'Yhteydet', 'Connections')} (${st.config.connections.length})',
+                  ),
                 ),
               ),
               const SizedBox(height: 8),
@@ -350,9 +463,14 @@ class _SettingsPageState extends State<SettingsPage> {
                 alignment: Alignment.centerLeft,
                 child: OutlinedButton.icon(
                   key: const ValueKey('settings-logs'),
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const LogsPage())),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const LogsPage()),
+                  ),
                   icon: const Icon(Icons.show_chart),
-                  label: Text('${tx(context, 'Lokit ja trendit', 'Logs and trends')} (${st.config.logs.length})'),
+                  label: Text(
+                    '${tx(context, 'Lokit ja trendit', 'Logs and trends')} (${st.config.logs.length})',
+                  ),
                 ),
               ),
               if (haServers(st).isNotEmpty) ...[
@@ -363,15 +481,28 @@ class _SettingsPageState extends State<SettingsPage> {
                     key: const ValueKey('settings-ha'),
                     onPressed: () => openHaPicker(context),
                     icon: const Icon(Icons.home_outlined),
-                    label: Text(tx(context, 'Home Assistant: lisää laitteita', 'Home Assistant: add devices')),
+                    label: Text(
+                      tx(
+                        context,
+                        'Home Assistant: lisää laitteita',
+                        'Home Assistant: add devices',
+                      ),
+                    ),
                   ),
                 ),
               ],
               const SizedBox(height: 20),
-              Text(tx(context, 'Etäkäyttö', 'Remote access'), style: text.titleMedium),
+              Text(
+                tx(context, 'Etäkäyttö', 'Remote access'),
+                style: text.titleMedium,
+              ),
               const SizedBox(height: 4),
               Text(
-                tx(context, 'Ohjaa kotia myös kodin ulkopuolelta.', 'Control your home from outside too.'),
+                tx(
+                  context,
+                  'Ohjaa kotia myös kodin ulkopuolelta.',
+                  'Control your home from outside too.',
+                ),
                 style: text.bodySmall,
               ),
               const SizedBox(height: 8),
@@ -384,27 +515,44 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: [
                   FilledButton.tonalIcon(
                     key: const ValueKey('settings-remote'),
-                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RemoteHubPage())),
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const RemoteHubPage()),
+                    ),
                     icon: const Icon(Icons.cloud_outlined),
                     label: Text(
                       st.remote.isPaired || st.remote.bridgeOn
                           ? '${tx(context, 'Etäkäyttö', 'Remote access')}: ${RemoteStatusChip.describe(context).$3}'
-                          : tx(context, 'Ota etäkäyttö käyttöön', 'Set up remote access'),
+                          : tx(
+                              context,
+                              'Ota etäkäyttö käyttöön',
+                              'Set up remote access',
+                            ),
                     ),
                   ),
                   OutlinedButton.icon(
                     key: const ValueKey('settings-guides'),
-                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const GuidesPage())),
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const GuidesPage()),
+                    ),
                     icon: const Icon(Icons.menu_book_outlined),
                     label: Text(
-                      tx(context, 'Ohjeet: VPN, Nabu Casa, pilvi-MQTT', 'Guides: VPN, Nabu Casa, cloud MQTT'),
+                      tx(
+                        context,
+                        'Ohjeet: VPN, Nabu Casa, pilvi-MQTT',
+                        'Guides: VPN, Nabu Casa, cloud MQTT',
+                      ),
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: 20),
               // R215–R217: sharing + installer.
-              Text(tx(context, 'Jakaminen', 'Sharing'), style: text.titleMedium),
+              Text(
+                tx(context, 'Jakaminen', 'Sharing'),
+                style: text.titleMedium,
+              ),
               const SizedBox(height: 4),
               Text(
                 tx(
@@ -421,7 +569,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 children: [
                   FilledButton.tonalIcon(
                     key: const ValueKey('settings-sharing'),
-                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SharingPage())),
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const SharingPage()),
+                    ),
                     icon: Badge(
                       isLabelVisible: st.sharing.badge > 0,
                       label: Text('${st.sharing.badge}'),
@@ -429,7 +580,11 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                     label: Text(
                       st.sharing.badge > 0
-                          ? tx(context, 'Jakaminen – uusi kutsu', 'Sharing – new invite')
+                          ? tx(
+                              context,
+                              'Jakaminen – uusi kutsu',
+                              'Sharing – new invite',
+                            )
                           : tx(context, 'Jakaminen', 'Sharing'),
                     ),
                   ),
@@ -437,8 +592,12 @@ class _SettingsPageState extends State<SettingsPage> {
                   // their ID and customers here too.
                   OutlinedButton.icon(
                     key: const ValueKey('settings-installer'),
-                    onPressed: () =>
-                        Navigator.push(context, MaterialPageRoute(builder: (_) => const InstallerHubPage())),
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const InstallerHubPage(),
+                      ),
+                    ),
                     icon: const Icon(Icons.engineering_outlined),
                     label: Text(tx(context, 'Asentaja', 'Installer')),
                   ),
@@ -451,13 +610,25 @@ class _SettingsPageState extends State<SettingsPage> {
                 alignment: Alignment.centerLeft,
                 child: FilledButton.tonalIcon(
                   key: const ValueKey('settings-onboarding'),
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const OnboardingPage())),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const OnboardingPage()),
+                  ),
                   icon: const Icon(Icons.school_outlined),
-                  label: Text(tx(context, 'Näytä aloitusopas', 'Show the getting-started guide')),
+                  label: Text(
+                    tx(
+                      context,
+                      'Näytä aloitusopas',
+                      'Show the getting-started guide',
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: 28),
-              Text(tx(context, 'Varmuuskopio ja siirto', 'Backup and transfer'), style: text.titleMedium),
+              Text(
+                tx(context, 'Varmuuskopio ja siirto', 'Backup and transfer'),
+                style: text.titleMedium,
+              ),
               const SizedBox(height: 4),
               Text(
                 tx(
@@ -469,7 +640,13 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               SwitchListTile(
                 contentPadding: EdgeInsets.zero,
-                title: Text(tx(context, 'Sisällytä salasanat ja tokenit', 'Include passwords and tokens')),
+                title: Text(
+                  tx(
+                    context,
+                    'Sisällytä salasanat ja tokenit',
+                    'Include passwords and tokens',
+                  ),
+                ),
                 subtitle: Text(
                   tx(
                     context,
@@ -497,7 +674,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 ],
               ),
               const SizedBox(height: 28),
-              Text(tx(context, 'Esimerkki', 'Example'), style: text.titleMedium),
+              Text(
+                tx(context, 'Esimerkki', 'Example'),
+                style: text.titleMedium,
+              ),
               const SizedBox(height: 4),
               Text(
                 tx(
@@ -516,7 +696,13 @@ class _SettingsPageState extends State<SettingsPage> {
                     if (context.mounted) Navigator.pop(context, 'example');
                   },
                   icon: const Icon(Icons.auto_awesome_outlined),
-                  label: Text(tx(context, 'Lisää esimerkkinäkymä', 'Add example dashboard')),
+                  label: Text(
+                    tx(
+                      context,
+                      'Lisää esimerkkinäkymä',
+                      'Add example dashboard',
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: 28),
@@ -535,11 +721,18 @@ class _SettingsPageState extends State<SettingsPage> {
                   alignment: Alignment.centerLeft,
                   child: OutlinedButton.icon(
                     key: const ValueKey('settings-check-updates'),
-                    onPressed: st.update.phase == UpdatePhase.checking ? null : () => manualUpdateCheck(context),
+                    onPressed: st.update.phase == UpdatePhase.checking
+                        ? null
+                        : () => manualUpdateCheck(context),
                     icon: st.update.phase == UpdatePhase.checking
-                        ? const SizedBox.square(dimension: 18, child: CircularProgressIndicator(strokeWidth: 2))
+                        ? const SizedBox.square(
+                            dimension: 18,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          )
                         : const Icon(Icons.system_update_alt),
-                    label: Text(tx(context, 'Tarkista päivitykset', 'Check for updates')),
+                    label: Text(
+                      tx(context, 'Tarkista päivitykset', 'Check for updates'),
+                    ),
                   ),
                 ),
               const SizedBox(height: 8),
@@ -560,8 +753,9 @@ class _SettingsPageState extends State<SettingsPage> {
 }
 
 /// t237u: the Home Assistant servers you can add devices from (demo examples excluded).
-List<ConnectionConfig> haServers(AppState st) =>
-    st.config.connections.where((c) => c.type == 'homeassistant' && c.settings['demo'] != true).toList();
+List<ConnectionConfig> haServers(AppState st) => st.config.connections
+    .where((c) => c.type == 'homeassistant' && c.settings['demo'] != true)
+    .toList();
 
 /// Opens the entity picker; with several HA servers first asks which one (by name + address).
 Future<void> openHaPicker(BuildContext context) async {
@@ -580,7 +774,9 @@ Future<void> openHaPicker(BuildContext context) async {
             shrinkWrap: true,
             children: [
               ListTile(
-                title: Text(tx(ctx, 'Mistä Home Assistantista?', 'Which Home Assistant?')),
+                title: Text(
+                  tx(ctx, 'Mistä Home Assistantista?', 'Which Home Assistant?'),
+                ),
                 subtitle: Text(
                   tx(
                     ctx,
@@ -598,15 +794,24 @@ Future<void> openHaPicker(BuildContext context) async {
                     '${_haHost(c)} · ${connectionUses(st.config, c.id) == 0 ? tx(ctx, 'ei ruutuja', 'no tiles') : '${connectionUses(st.config, c.id)} ${tx(ctx, 'ruutua', 'tiles')}'}',
                   ),
                   onTap: () => Navigator.pop(ctx, c),
-                  trailing: connectionUses(st.config, c.id) == 0 && now.length > 1
+                  trailing:
+                      connectionUses(st.config, c.id) == 0 && now.length > 1
                       ? IconButton(
                           key: ValueKey('ha-remove-${c.id}'),
-                          tooltip: tx(ctx, 'Poista käyttämätön yhteys', 'Remove unused connection'),
+                          tooltip: tx(
+                            ctx,
+                            'Poista käyttämätön yhteys',
+                            'Remove unused connection',
+                          ),
                           icon: const Icon(Icons.delete_outline),
                           onPressed: () async {
                             final ok = await confirmDialog(
                               ctx,
-                              tx(ctx, 'Poistetaanko yhteys?', 'Remove the connection?'),
+                              tx(
+                                ctx,
+                                'Poistetaanko yhteys?',
+                                'Remove the connection?',
+                              ),
                               '${c.name} (${_haHost(c)})',
                             );
                             if (!ok) return;
@@ -628,7 +833,10 @@ Future<void> openHaPicker(BuildContext context) async {
   );
   if (pick == null || !context.mounted) return;
   final c = pick;
-  await Navigator.push(context, MaterialPageRoute(builder: (_) => HaEntityPickerPage(connection: c)));
+  await Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => HaEntityPickerPage(connection: c)),
+  );
 }
 
 String _haHost(ConnectionConfig c) {

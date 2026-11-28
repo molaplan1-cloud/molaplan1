@@ -7,6 +7,8 @@ import '../core/fields.dart';
 import '../devices/rtsp_still.dart';
 import '../drivers/camera_driver.dart';
 import '../models/models.dart';
+import '../core/plat.dart';
+import '../state/browser_tile_hide.dart';
 import 'app_scope.dart';
 import 'error_box.dart';
 import 'ptz_pad.dart';
@@ -16,7 +18,12 @@ import 'rtsp_view.dart';
 /// RTSP plays only on the home network; away from home the picture comes as
 /// throttled snapshots through the relay (or a clear note when the camera has none).
 class CameraView extends StatefulWidget {
-  const CameraView({super.key, required this.tile, this.fit = BoxFit.cover, this.live = false});
+  const CameraView({
+    super.key,
+    required this.tile,
+    this.fit = BoxFit.cover,
+    this.live = false,
+  });
   final TileConfig tile;
   final BoxFit fit;
 
@@ -30,6 +37,21 @@ class CameraView extends StatefulWidget {
 class _CameraViewState extends State<CameraView> {
   Uint8List? _frame;
   String? _error;
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+    _reportHide();
+  }
+
+  void _reportHide() {
+    if (!Plat.isWeb || !mounted) return;
+    final ok =
+        (_frame != null || _rtsp != null) &&
+        (_error == null || _error!.isEmpty);
+    browserHide.reportCamera(widget.tile.id, error: _error, ok: ok);
+  }
+
   StreamSubscription? _sub;
   Timer? _timer;
   Timer? _retry;
@@ -56,7 +78,11 @@ class _CameraViewState extends State<CameraView> {
   void _start() {
     _plainNote = false;
     final d = _driver;
-    if (d == null && AppScope.read(context).connection(widget.tile.connectionId)?.settings['demo'] == true) {
+    if (d == null &&
+        AppScope.read(context)
+                .connection(widget.tile.connectionId)
+                ?.settings['demo'] ==
+            true) {
       _plainNote = true;
       setState(
         () => _error = tx(
@@ -69,7 +95,13 @@ class _CameraViewState extends State<CameraView> {
     }
     if (d == null) {
       _plainNote = true;
-      setState(() => _error = tx(context, 'Valitse kamerayhteys', 'Choose a camera connection'));
+      setState(
+        () => _error = tx(
+          context,
+          'Valitse kamerayhteys',
+          'Choose a camera connection',
+        ),
+      );
       return;
     }
     final spec = widget.tile.read;
@@ -104,7 +136,9 @@ class _CameraViewState extends State<CameraView> {
         return;
       }
       if (!rtspSupported) {
-        _tech.add('live video: not available on this platform (browser) – stills through the home bridge');
+        _tech.add(
+          'live video: not available on this platform (browser) – stills through the home bridge',
+        );
       }
       _startRtspStills(d);
       return;
@@ -117,7 +151,8 @@ class _CameraViewState extends State<CameraView> {
   static final _unreachable = <String, DateTime>{};
   bool _skipLocalRtsp(String url) {
     final t = _unreachable[Uri.tryParse(url)?.host ?? ''];
-    return t != null && DateTime.now().difference(t) < const Duration(minutes: 1);
+    return t != null &&
+        DateTime.now().difference(t) < const Duration(minutes: 1);
   }
 
   final _tech = <String>[];
@@ -169,14 +204,16 @@ class _CameraViewState extends State<CameraView> {
               }
             });
             if (_tech.length < 30) {
-              if (e is RtspStillException) _tech.addAll(e.tech.where((l) => !_tech.contains(l)));
+              if (e is RtspStillException)
+                _tech.addAll(e.tech.where((l) => !_tech.contains(l)));
               _tech.add('still from RTSP: ${_clean(text)}');
             }
           },
         );
   }
 
-  static String _clean(String e) => e.replaceAll(RegExp(r'rtsp://[^@\s/]*@'), 'rtsp://');
+  static String _clean(String e) =>
+      e.replaceAll(RegExp(r'rtsp://[^@\s/]*@'), 'rtsp://');
 
   /// The real reason live video did not start, in plain words.
   String _rtspReason(RtspFailure f, String host) {
@@ -233,8 +270,15 @@ class _CameraViewState extends State<CameraView> {
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text(tx(ctx, 'Tekniset tiedot', 'Technical details')),
-        content: SingleChildScrollView(child: SelectableText(text, style: const TextStyle(fontSize: 12))),
-        actions: [TextButton(onPressed: () => Navigator.pop(ctx), child: Text(tx(ctx, 'Sulje', 'Close')))],
+        content: SingleChildScrollView(
+          child: SelectableText(text, style: const TextStyle(fontSize: 12)),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: Text(tx(ctx, 'Sulje', 'Close')),
+          ),
+        ],
       ),
     );
   }
@@ -243,7 +287,10 @@ class _CameraViewState extends State<CameraView> {
     final spec = widget.tile.read;
     if (spec.str('mode', 'mjpeg') == 'snapshot') {
       _snap(d);
-      _timer = Timer.periodic(Duration(seconds: spec.integer('refreshSeconds', 2).clamp(1, 3600)), (_) => _snap(d));
+      _timer = Timer.periodic(
+        Duration(seconds: spec.integer('refreshSeconds', 2).clamp(1, 3600)),
+        (_) => _snap(d),
+      );
     } else {
       _sub = d
           .mjpeg(spec.str('path'))
@@ -257,7 +304,9 @@ class _CameraViewState extends State<CameraView> {
               }
             },
             onError: (Object e) => _fail(e),
-            onDone: () => _fail(mounted ? tx(context, 'Virta päättyi', 'Stream ended') : 'ended'),
+            onDone: () => _fail(
+              mounted ? tx(context, 'Virta päättyi', 'Stream ended') : 'ended',
+            ),
           );
     }
   }
@@ -328,11 +377,14 @@ class _CameraViewState extends State<CameraView> {
                   _error = _rtspReason(f, host);
                 }
               });
-              if (f.kind == RtspFailKind.unreachable) _unreachable[host] = DateTime.now();
+              if (f.kind == RtspFailKind.unreachable)
+                _unreachable[host] = DateTime.now();
               if (hasSnap) {
                 // Fall back to the still picture / MJPEG (e.g. RTSP switched off on the camera).
                 if (d != null) _startStill(d);
-              } else if (f.kind == RtspFailKind.unreachable && d != null && router.enabled) {
+              } else if (f.kind == RtspFailKind.unreachable &&
+                  d != null &&
+                  router.enabled) {
                 // Not reachable from here: stills through the home bridge.
                 _startRtspStills(d);
                 if (_error == null) setState(() => _plainNote = false);
@@ -345,7 +397,12 @@ class _CameraViewState extends State<CameraView> {
             },
           ),
         if (_frame != null)
-          Image.memory(_frame!, fit: widget.fit, gaplessPlayback: true, errorBuilder: (_, _, _) => const SizedBox()),
+          Image.memory(
+            _frame!,
+            fit: widget.fit,
+            gaplessPlayback: true,
+            errorBuilder: (_, _, _) => const SizedBox(),
+          ),
         if (_frame == null && _error == null && _rtsp == null)
           const Center(child: CircularProgressIndicator(strokeWidth: 2)),
         if (_error != null)
@@ -369,7 +426,8 @@ class _CameraViewState extends State<CameraView> {
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(fontSize: 11),
                   ),
-                  if (_tech.isNotEmpty || widget.tile.read.str('mode', 'mjpeg') == 'rtsp')
+                  if (_tech.isNotEmpty ||
+                      widget.tile.read.str('mode', 'mjpeg') == 'rtsp')
                     Wrap(
                       spacing: 4,
                       children: [
@@ -378,14 +436,22 @@ class _CameraViewState extends State<CameraView> {
                             key: const ValueKey('cam-retry'),
                             style: _smallButton,
                             onPressed: _retryNow,
-                            child: Text(tx(context, 'Yritä uudelleen', 'Try again')),
+                            child: Text(
+                              tx(context, 'Yritä uudelleen', 'Try again'),
+                            ),
                           ),
                         if (_tech.isNotEmpty)
                           TextButton(
                             key: const ValueKey('cam-tech'),
                             style: _smallButton,
                             onPressed: _showTech,
-                            child: Text(tx(context, 'Tekniset tiedot', 'Technical details')),
+                            child: Text(
+                              tx(
+                                context,
+                                'Tekniset tiedot',
+                                'Technical details',
+                              ),
+                            ),
                           ),
                       ],
                     ),

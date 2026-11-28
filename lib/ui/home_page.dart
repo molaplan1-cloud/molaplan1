@@ -2,6 +2,8 @@ import '../state/net_health.dart';
 import '../core/plat.dart';
 
 import 'tile_grid.dart';
+import 'browser_hidden_row.dart';
+import '../state/browser_tile_hide.dart';
 import 'tile_status.dart';
 import 'control_view.dart';
 import 'energy_pages.dart';
@@ -49,14 +51,23 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       if (!mounted) return;
       final st = AppScope.read(context);
       if (st.loaded) unawaited(ensureHeatingTile(st)); // R613
-      if (st.loaded && !st.config.onboardingDone && st.config.connections.isEmpty) {
+      if (st.loaded &&
+          !st.config.onboardingDone &&
+          st.config.connections.isEmpty) {
         // On the web the intro already offered guest use / sign-in.
         if (accountNudges && !st.account.signedIn && !Plat.isWeb) {
-          await Navigator.push(context, MaterialPageRoute(builder: (_) => const WelcomePage()));
+          await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const WelcomePage()),
+          );
           if (!mounted) return;
         }
         // Signed in to an account that already has a setup: no device guide needed.
-        if (!st.hasTiles) await Navigator.push(context, MaterialPageRoute(builder: (_) => const OnboardingPage()));
+        if (!st.hasTiles)
+          await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const OnboardingPage()),
+          );
       }
       if (mounted && st.loaded) {
         unawaited(startupUpdateCheck(context));
@@ -123,7 +134,11 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   Future<void> _renameDashboard(Dashboard d) async {
     final st = AppScope.read(context);
-    final name = await promptText(context, tx(context, 'Nimeä näkymä', 'Rename dashboard'), initial: d.name);
+    final name = await promptText(
+      context,
+      tx(context, 'Nimeä näkymä', 'Rename dashboard'),
+      initial: d.name,
+    );
     if (name != null && name.isNotEmpty) await st.renameDashboard(d, name);
   }
 
@@ -144,10 +159,18 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     await st.deleteDashboard(d);
     setState(() => _dashId = null);
     if (!mounted) return;
-    showUndo(context, tx(context, 'Näkymä "${d.name}" poistettu', 'Dashboard "${d.name}" deleted'), () async {
-      await st.restoreDashboard(d, index);
-      if (mounted) setState(() => _dashId = d.id);
-    });
+    showUndo(
+      context,
+      tx(
+        context,
+        'Näkymä "${d.name}" poistettu',
+        'Dashboard "${d.name}" deleted',
+      ),
+      () async {
+        await st.restoreDashboard(d, index);
+        if (mounted) setState(() => _dashId = d.id);
+      },
+    );
   }
 
   Future<void> _addTile(Dashboard d) async {
@@ -171,7 +194,13 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             ),
             ListTile(
               leading: const Icon(Icons.auto_awesome_outlined),
-              title: Text(tx(context, 'Uusi laite valmiilla ruuduilla', 'New device with ready tiles')),
+              title: Text(
+                tx(
+                  context,
+                  'Uusi laite valmiilla ruuduilla',
+                  'New device with ready tiles',
+                ),
+              ),
               subtitle: Text(
                 tx(
                   context,
@@ -186,7 +215,9 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
               trailing: const Icon(Icons.chevron_right),
             ),
             const Divider(),
-            for (final t in TileType.values.where((x) => x != TileType.thermostat))
+            for (final t in TileType.values.where(
+              (x) => x != TileType.thermostat,
+            ))
               ListTile(
                 leading: Icon(tileTypeIcon(t)),
                 title: Text(tileTypeLabel(context, t)),
@@ -220,16 +251,25 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   }
 
   Future<void> _openSettings() async {
-    final r = await Navigator.push<String>(context, MaterialPageRoute(builder: (_) => const SettingsPage()));
+    final r = await Navigator.push<String>(
+      context,
+      MaterialPageRoute(builder: (_) => const SettingsPage()),
+    );
     if (r == 'example' && mounted) {
-      setState(() => _dashId = AppScope.read(context).config.dashboards.last.id);
+      setState(
+        () => _dashId = AppScope.read(context).config.dashboards.last.id,
+      );
     }
   }
 
   /// t245u: in the normal (control) view the side menu shows one view or all of them.
   String? _viewFilter;
 
-  Widget _nav(BuildContext context, {required bool drawer, bool control = false}) {
+  Widget _nav(
+    BuildContext context, {
+    required bool drawer,
+    bool control = false,
+  }) {
     final st = AppScope.of(context);
     final cs = Theme.of(context).colorScheme;
     final cur = _current();
@@ -248,17 +288,31 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                 Container(
                   width: 34,
                   height: 34,
-                  decoration: BoxDecoration(color: cs.primary, borderRadius: BorderRadius.circular(10)),
-                  child: Icon(Icons.dashboard_customize_outlined, color: cs.onPrimary, size: 20),
+                  decoration: BoxDecoration(
+                    color: cs.primary,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Icon(
+                    Icons.dashboard_customize_outlined,
+                    color: cs.onPrimary,
+                    size: 20,
+                  ),
                 ),
                 const SizedBox(width: 10),
-                Text('Molaplan', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700)),
+                Text(
+                  'Molaplan',
+                  style: Theme.of(context).textTheme.titleLarge
+                      ?.copyWith(fontWeight: FontWeight.w700),
+                ),
               ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 8, 20, 4),
-            child: Text(tx(context, 'NÄKYMÄT', 'DASHBOARDS'), style: Theme.of(context).textTheme.labelSmall),
+            child: Text(
+              tx(context, 'NÄKYMÄT', 'DASHBOARDS'),
+              style: Theme.of(context).textTheme.labelSmall,
+            ),
           ),
           Expanded(
             child: ListView(
@@ -268,8 +322,12 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   ListTile(
                     key: const ValueKey('nav-all-views'),
                     selected: _viewFilter == null,
-                    selectedTileColor: cs.secondaryContainer.withValues(alpha: 0.5),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    selectedTileColor: cs.secondaryContainer.withValues(
+                      alpha: 0.5,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     leading: const Icon(Icons.home_outlined),
                     title: Text(tx(context, 'Kaikki', 'All')),
                     onTap: () {
@@ -281,8 +339,12 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   ListTile(
                     key: ValueKey('nav-view-${d.id}'),
                     selected: control ? _viewFilter == d.id : d.id == cur.id,
-                    selectedTileColor: cs.secondaryContainer.withValues(alpha: 0.5),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    selectedTileColor: cs.secondaryContainer.withValues(
+                      alpha: 0.5,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     leading: const Icon(Icons.space_dashboard_outlined),
                     title: Text(d.name, overflow: TextOverflow.ellipsis),
                     onTap: () {
@@ -294,7 +356,9 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                     },
                   ),
                 ListTile(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   leading: const Icon(Icons.add),
                   title: Text(tx(context, 'Uusi näkymä', 'New dashboard')),
                   onTap: () {
@@ -313,71 +377,117 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                 // t245u: always reachable (PINs, reply topics) – not only in Edistyneet.
                 ListTile(
                   key: const ValueKey('nav-connections'),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   leading: const Icon(Icons.device_hub),
                   title: Text(tx(context, 'Yhteydet', 'Connections')),
                   trailing: Text('${st.config.connections.length}'),
                   onTap: () {
                     close();
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ConnectionsPage()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const ConnectionsPage(),
+                      ),
+                    );
                   },
                 ),
                 ListTile(
                   key: const ValueKey('nav-automations'),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   leading: const Icon(Icons.auto_mode),
                   title: Text(tx(context, 'Automaatiot', 'Automations')),
                   trailing: st.config.automation.automations.isEmpty
                       ? null
-                      : Text('${st.config.automation.automations.where((a) => a.enabled).length}'),
+                      : Text(
+                          '${st.config.automation.automations.where((a) => a.enabled).length}',
+                        ),
                   onTap: () {
                     close();
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const AutomationsPage()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const AutomationsPage(),
+                      ),
+                    );
                   },
                 ),
                 // R194: its own section, separate from automations.
                 ListTile(
                   key: const ValueKey('nav-smart-heating'),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   leading: const Icon(Icons.local_fire_department_outlined),
                   title: Text(tx(context, 'Älykäs lämmitys', 'Smart heating')),
                   trailing: switch (st.smartHeating) {
                     null => null,
-                    final c when c.holiday.on => const Icon(Icons.luggage, size: 18),
+                    final c when c.holiday.on => const Icon(
+                      Icons.luggage,
+                      size: 18,
+                    ),
                     final c when !c.enabled => Text(tx(context, 'pois', 'off')),
                     _ => const Icon(Icons.check, size: 18),
                   },
                   onTap: () {
                     close();
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const SmartHeatingPage()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const SmartHeatingPage(),
+                      ),
+                    );
                   },
                 ),
                 // v0.11.0 (t189u): the general notification section.
                 ListTile(
                   key: const ValueKey('nav-reminders'),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   leading: const Icon(Icons.notifications_active_outlined),
-                  title: Text(tx(context, 'Ilmoitukset ja muistutukset', 'Notifications and reminders')),
+                  title: Text(
+                    tx(
+                      context,
+                      'Ilmoitukset ja muistutukset',
+                      'Notifications and reminders',
+                    ),
+                  ),
                   trailing: st.config.automation.reminders.isEmpty
                       ? null
-                      : Text('${st.config.automation.reminders.where((r) => r.enabled).length}'),
+                      : Text(
+                          '${st.config.automation.reminders.where((r) => r.enabled).length}',
+                        ),
                   onTap: () {
                     close();
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const RemindersPage()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const RemindersPage()),
+                    );
                   },
                 ),
                 if (st.config.energy.meters.isNotEmpty)
                   ListTile(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     leading: const Icon(Icons.bolt_outlined),
                     title: Text(tx(context, 'Energia', 'Energy')),
                     onTap: () {
                       close();
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => const EnergyPage()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const EnergyPage()),
+                      );
                     },
                   ),
                 ListTile(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   leading: const Icon(Icons.settings_outlined),
                   title: Text(tx(context, 'Asetukset', 'Settings')),
                   onTap: () {
@@ -396,7 +506,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     final st = AppScope.of(context);
-    if (!st.loaded) return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    if (!st.loaded)
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     // After setup: the clean control view (tiles only). Editing is one tap away in its gear menu.
     if (!_editing && st.hasTiles) {
       // t245u: the main menu is always there in normal use – a side menu on wide screens, the
@@ -405,8 +516,11 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       final showNav = !st.viewLocked;
       final cv = ControlView(
         only: _viewFilter,
-        drawer: showNav && !wideCv ? Drawer(child: _nav(context, drawer: true, control: true)) : null,
-        onAddDevice: () => ConnectionsPage.addNew(context, dashboard: _current()),
+        drawer: showNav && !wideCv
+            ? Drawer(child: _nav(context, drawer: true, control: true))
+            : null,
+        onAddDevice: () =>
+            ConnectionsPage.addNew(context, dashboard: _current()),
         onEdit: (d) => setState(() {
           _dashId ??= d.id;
           _editing = true;
@@ -414,7 +528,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         onSettings: _openSettings,
         onEnergy: st.config.energy.meters.isEmpty
             ? null
-            : () => Navigator.push(context, MaterialPageRoute(builder: (_) => const EnergyPage())),
+            : () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const EnergyPage()),
+              ),
       );
       if (!showNav || !wideCv) return cv;
       final cs0 = Theme.of(context).colorScheme;
@@ -423,7 +540,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
           SizedBox(
             key: const ValueKey('side-nav'),
             width: 260,
-            child: Material(color: cs0.surfaceContainerLowest, child: _nav(context, drawer: false, control: true)),
+            child: Material(
+              color: cs0.surfaceContainerLowest,
+              child: _nav(context, drawer: false, control: true),
+            ),
           ),
           const VerticalDivider(width: 1),
           Expanded(child: cv),
@@ -493,7 +613,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       children: [
         SizedBox(
           width: 260,
-          child: Material(color: cs.surfaceContainerLowest, child: _nav(context, drawer: false)),
+          child: Material(
+            color: cs.surfaceContainerLowest,
+            child: _nav(context, drawer: false),
+          ),
         ),
         const VerticalDivider(width: 1),
         Expanded(child: scaffold),
@@ -576,9 +699,16 @@ class _DashboardGridState extends State<_DashboardGrid> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.dashboard_customize_outlined, size: 56, color: cs.primary),
+              Icon(
+                Icons.dashboard_customize_outlined,
+                size: 56,
+                color: cs.primary,
+              ),
               const SizedBox(height: 16),
-              Text(tx(context, 'Tyhjä näkymä', 'Empty dashboard'), style: Theme.of(context).textTheme.titleLarge),
+              Text(
+                tx(context, 'Tyhjä näkymä', 'Empty dashboard'),
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
               const SizedBox(height: 8),
               Text(
                 tx(
@@ -595,11 +725,18 @@ class _DashboardGridState extends State<_DashboardGrid> {
                 child: st.config.connections.isEmpty || !st.config.advanced
                     ? FilledButton.icon(
                         key: const ValueKey('empty-add-device'),
-                        onPressed: () => ConnectionsPage.addNew(context, dashboard: dashboard),
+                        onPressed: () => ConnectionsPage.addNew(
+                          context,
+                          dashboard: dashboard,
+                        ),
                         icon: const Icon(Icons.add, size: 28),
                         label: Text(
                           st.config.connections.isEmpty
-                              ? tx(context, 'Lisää ensimmäinen laite', 'Add your first device')
+                              ? tx(
+                                  context,
+                                  'Lisää ensimmäinen laite',
+                                  'Add your first device',
+                                )
                               : tx(context, 'Lisää laite', 'Add device'),
                           style: const TextStyle(fontSize: 18),
                         ),
@@ -611,7 +748,10 @@ class _DashboardGridState extends State<_DashboardGrid> {
                           widget.onAddTile();
                         },
                         icon: const Icon(Icons.add, size: 28),
-                        label: Text(tx(context, 'Lisää ruutu', 'Add a tile'), style: const TextStyle(fontSize: 18)),
+                        label: Text(
+                          tx(context, 'Lisää ruutu', 'Add a tile'),
+                          style: const TextStyle(fontSize: 18),
+                        ),
                       ),
               ),
             ],
@@ -621,36 +761,85 @@ class _DashboardGridState extends State<_DashboardGrid> {
     }
 
     return ListenableBuilder(
-      listenable: NetHealth.instance,
+      listenable: Listenable.merge([NetHealth.instance, browserHide]),
       builder: (context, _) => LayoutBuilder(
         builder: (context, box) {
-          final g = tileGridFor(box.maxWidth, AppScope.of(context).config.tileDensity);
+          final g = tileGridFor(
+            box.maxWidth,
+            AppScope.of(context).config.tileDensity,
+          );
           final byId = {for (final t in dashboard.tiles) t.id: t};
           final ids = _order ?? [for (final t in dashboard.tiles) t.id];
+          final hidden = [
+            for (final id in ids)
+              if (byId[id] != null &&
+                  !widget.editing &&
+                  st.hideTileInBrowser(byId[id]!))
+                byId[id]!,
+          ];
+          if (hidden.isNotEmpty) browserHide.ensureTimer();
           // t172u: "Koko näkymän tausta" also while editing.
           return RoomBackdrop(
             dashboard: dashboard,
             child: SingleChildScrollView(
               padding: EdgeInsets.fromLTRB(g.gap, 4, g.gap, 32),
-              child: Wrap(
-                spacing: g.gap,
-                runSpacing: g.gap,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  for (final id in ids)
-                    if (byId[id] != null &&
-                        (widget.editing || !st.config.hideAwayTiles || awayLanConnection(st, byId[id]!) == null))
-                      _sized(context, byId[id]!, g),
-                  // R598 (t329u): always the last tile, also while editing (the only add button).
-                  SizedBox(
-                    width: g.width(1),
-                    height: g.height(1),
-                    child: AddPlaceholderTile(
-                      key: const ValueKey('add-placeholder'),
-                      onTap: widget.editing && st.config.advanced
-                          ? widget.onAddTile
-                          : () => showAddSheet(context, dashboard: dashboard),
-                    ),
+                  Wrap(
+                    spacing: g.gap,
+                    runSpacing: g.gap,
+                    children: [
+                      for (final id in ids)
+                        if (byId[id] != null &&
+                            (widget.editing ||
+                                !st.config.hideAwayTiles ||
+                                awayLanConnection(st, byId[id]!) == null) &&
+                            (widget.editing ||
+                                !st.hideTileInBrowser(byId[id]!)))
+                          _sized(context, byId[id]!, g),
+                      // R598 (t329u): always the last tile, also while editing (the only add button).
+                      SizedBox(
+                        width: g.width(1),
+                        height: g.height(1),
+                        child: AddPlaceholderTile(
+                          key: const ValueKey('add-placeholder'),
+                          onTap: widget.editing && st.config.advanced
+                              ? widget.onAddTile
+                              : () =>
+                                    showAddSheet(context, dashboard: dashboard),
+                        ),
+                      ),
+                    ],
                   ),
+                  if (!widget.editing)
+                    BrowserHiddenTilesRow(
+                      tiles: hidden,
+                      hasBridge: st.remote.isPaired,
+                    ),
+                  // Keep hidden tiles mounted so their runtime keeps polling and they reappear
+                  // as soon as they answer (R622). No layout gap: they are offstage.
+                  if (hidden.isNotEmpty)
+                    Offstage(
+                      child: ExcludeSemantics(
+                        child: IgnorePointer(
+                          child: Column(
+                            children: [
+                              for (final t in hidden)
+                                SizedBox(
+                                  width: 400,
+                                  height: 240,
+                                  child: TileWidget(
+                                    key: ValueKey('hidden-live-${t.id}'),
+                                    tile: t,
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ),
@@ -687,7 +876,8 @@ class _DashboardGridState extends State<_DashboardGrid> {
       onResize: (dx, dy) {
         // t144u: snap to HALF grid units: 0,5–4 wide (as the grid allows) and tall.
         final (nc, nr) = snapResize(g, t, dx, dy);
-        if (_resize?.$2 != nc || _resize?.$3 != nr) setState(() => _resize = (t.id, nc, nr));
+        if (_resize?.$2 != nc || _resize?.$3 != nr)
+          setState(() => _resize = (t.id, nc, nr));
       },
       onResizeEnd: _commitResize,
       child: tile,
@@ -752,7 +942,10 @@ class _EditableTileState extends State<_EditableTile> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: cs.primary.withValues(alpha: 0.7), width: 1.5),
+                  border: Border.all(
+                    color: cs.primary.withValues(alpha: 0.7),
+                    width: 1.5,
+                  ),
                 ),
               ),
             ),
@@ -765,7 +958,12 @@ class _EditableTileState extends State<_EditableTile> {
             mainAxisSize: MainAxisSize.min,
             children: [
               _moveMenu(context, d, t),
-              _mini(context, Icons.palette_outlined, () => showTileLook(context, t), key: 'tile-look-${t.id}'),
+              _mini(
+                context,
+                Icons.palette_outlined,
+                () => showTileLook(context, t),
+                key: 'tile-look-${t.id}',
+              ),
               _mini(context, Icons.delete_outline, () async {
                 final index = d.tiles.indexWhere((x) => x.id == t.id);
                 final ok = await confirmDialog(
@@ -779,7 +977,11 @@ class _EditableTileState extends State<_EditableTile> {
                 if (context.mounted) {
                   showUndo(
                     context,
-                    tx(context, 'Ruutu "${t.title}" poistettu', 'Tile "${t.title}" deleted'),
+                    tx(
+                      context,
+                      'Ruutu "${t.title}" poistettu',
+                      'Tile "${t.title}" deleted',
+                    ),
                     () => st.restoreTile(d, t, index),
                   );
                 }
@@ -794,7 +996,11 @@ class _EditableTileState extends State<_EditableTile> {
       color: Colors.transparent,
       child: Opacity(
         opacity: 0.85,
-        child: SizedBox(width: widget.width, height: widget.height, child: widget.child),
+        child: SizedBox(
+          width: widget.width,
+          height: widget.height,
+          child: widget.child,
+        ),
       ),
     );
     // Mouse/trackpad: press-and-drag. Touch: long-press, so the view can still scroll.
@@ -833,7 +1039,10 @@ class _EditableTileState extends State<_EditableTile> {
               alignment: Alignment.bottomRight,
               child: Padding(
                 padding: const EdgeInsets.all(5),
-                child: CustomPaint(size: const Size(14, 14), painter: _CornerPainter(cs.primary)),
+                child: CustomPaint(
+                  size: const Size(14, 14),
+                  painter: _CornerPainter(cs.primary),
+                ),
               ),
             ),
           ),
@@ -880,7 +1089,8 @@ class _EditableTileState extends State<_EditableTile> {
     return Padding(
       padding: const EdgeInsets.only(left: 2),
       child: Material(
-        color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.92),
+        color: Theme.of(context).colorScheme.surfaceContainerHighest
+            .withValues(alpha: 0.92),
         shape: const CircleBorder(),
         elevation: 1,
         child: PopupMenuButton<int>(
@@ -915,17 +1125,26 @@ class _EditableTileState extends State<_EditableTile> {
     );
   }
 
-  Widget _mini(BuildContext context, IconData icon, VoidCallback onTap, {String? key}) => Padding(
+  Widget _mini(
+    BuildContext context,
+    IconData icon,
+    VoidCallback onTap, {
+    String? key,
+  }) => Padding(
     padding: const EdgeInsets.only(left: 2),
     child: Material(
-      color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.92),
+      color: Theme.of(context).colorScheme.surfaceContainerHighest
+          .withValues(alpha: 0.92),
       shape: const CircleBorder(),
       elevation: 1,
       child: InkWell(
         key: key == null ? null : ValueKey(key),
         customBorder: const CircleBorder(),
         onTap: onTap,
-        child: Padding(padding: const EdgeInsets.all(5), child: Icon(icon, size: 15)),
+        child: Padding(
+          padding: const EdgeInsets.all(5),
+          child: Icon(icon, size: 15),
+        ),
       ),
     ),
   );
@@ -941,7 +1160,11 @@ class _CornerPainter extends CustomPainter {
       ..strokeWidth = 2
       ..strokeCap = StrokeCap.round;
     for (final f in const [0.35, 0.7, 1.0]) {
-      canvas.drawLine(Offset(size.width * (1 - f), size.height), Offset(size.width, size.height * (1 - f)), p);
+      canvas.drawLine(
+        Offset(size.width * (1 - f), size.height),
+        Offset(size.width, size.height * (1 - f)),
+        p,
+      );
     }
   }
 
@@ -955,6 +1178,9 @@ class _CornerPainter extends CustomPainter {
   final unitW = g.cell + g.gap, unitH = g.cellH + g.gap;
   final raw = ((g.widthOf(t.w2) + dx + g.gap) / unitW * 2).round();
   final nc = raw > 8 || raw >= g.cols * 2 ? fullWidthW2 : raw.clamp(1, 8);
-  final nr = ((g.height(t.hUnits) + dy + g.gap) / unitH * 2).round().clamp(1, maxH2).toInt();
+  final nr = ((g.height(t.hUnits) + dy + g.gap) / unitH * 2)
+      .round()
+      .clamp(1, maxH2)
+      .toInt();
   return (nc, nr);
 }

@@ -557,8 +557,12 @@ class TileConfig {
         ? Map<String, dynamic>.from(j['battery'] as Map)
         : null,
     lastAlarm: (j['lastAlarm'] as num?)?.toInt(),
-    feed: j['feed'] is String && (j['feed'] as String).isNotEmpty ? j['feed'] as String : null,
-    powerMode: const ['const', 'variable'].contains(j['powerMode']) ? j['powerMode'] as String : 'auto',
+    feed: j['feed'] is String && (j['feed'] as String).isNotEmpty
+        ? j['feed'] as String
+        : null,
+    powerMode: const ['const', 'variable'].contains(j['powerMode'])
+        ? j['powerMode'] as String
+        : 'auto',
     nominalW: switch (j['nominalW']) {
       final num v when v > 0 && v.isFinite => v.toDouble(),
       _ => null,
@@ -607,7 +611,9 @@ int? thresholdColor(List<Threshold> list, double d, {bool smooth = false}) {
   // -1e9 (which made everything below X look like X's colour).
   if (s.length >= 2 && (s.first.above <= -1e6 || s.first.above == -1000)) {
     final x = s[1].above;
-    final span = s.length >= 3 ? s[2].above - x : (x.abs() * 0.5).clamp(1.0, 1e9);
+    final span = s.length >= 3
+        ? s[2].above - x
+        : (x.abs() * 0.5).clamp(1.0, 1e9);
     s[0] = Threshold(x - (span > 0 ? span : 1), s[0].color);
   }
   if (d <= s.first.above) return s.first.color;
@@ -736,6 +742,13 @@ class AppConfig {
   /// t131u: hide LAN-only tiles while away from home (off by default – they're greyed instead).
   bool hideAwayTiles;
 
+  /// R625 (t334u): device-local. In the browser, hide tiles that cannot be used there
+  /// (no path, or offline longer than the grace period). Default on. Native apps ignore this.
+  bool autoHideBrowserTiles;
+
+  /// R624 (t334u): device-local per-tile browser visibility: tile id → 'always' | 'auto'.
+  Map<String, String> tileBrowserVisibility;
+
   /// t134u: saved light colours: '#RRGGBB' or 'K2700' (white temperature).
   List<String> favoriteColors;
 
@@ -783,6 +796,8 @@ class AppConfig {
     this.theme = '',
     this.defaultTheme = 'dark',
     this.hideAwayTiles = false,
+    this.autoHideBrowserTiles = true,
+    Map<String, String>? tileBrowserVisibility,
     List<String>? favoriteColors,
     Map<String, String>? scanNames,
     AutomationSettings? automation,
@@ -799,6 +814,7 @@ class AppConfig {
            favoriteColors ??
            ['#FF8A3D', '#FFD166', '#4D96FF', '#C77DFF', 'K2700', 'K5000'],
        scanNames = scanNames ?? {},
+       tileBrowserVisibility = tileBrowserVisibility ?? {},
        rules = rules ?? [],
        energy = energy ?? EnergySettings(),
        connections = connections ?? [],
@@ -817,6 +833,9 @@ class AppConfig {
     if (theme.isNotEmpty) 'theme': theme,
     if (defaultTheme != 'dark') 'defaultTheme': defaultTheme,
     if (hideAwayTiles) 'hideAwayTiles': true,
+    if (!autoHideBrowserTiles) 'autoHideBrowserTiles': false,
+    if (tileBrowserVisibility.isNotEmpty)
+      'tileBrowserVisibility': tileBrowserVisibility,
     'favoriteColors': favoriteColors,
     if (scanNames.isNotEmpty) 'scanNames': scanNames,
     'automation': automation.toJson(),
@@ -858,6 +877,11 @@ class AppConfig {
           ? j['defaultTheme'] as String
           : 'dark',
       hideAwayTiles: j['hideAwayTiles'] == true,
+      autoHideBrowserTiles: j['autoHideBrowserTiles'] != false,
+      tileBrowserVisibility: {
+        for (final e in _map(j['tileBrowserVisibility'] ?? const {}).entries)
+          e.key: '${e.value}',
+      },
       favoriteColors: j['favoriteColors'] is List
           ? [for (final c in j['favoriteColors'] as List) '$c']
           : null,

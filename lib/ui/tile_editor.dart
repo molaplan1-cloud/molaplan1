@@ -17,6 +17,7 @@ import 'color_ranges_editor.dart';
 import 'energy_flow_tile.dart' show EnergyFlowEditor;
 import '../energy/energy_flow.dart';
 import 'app_scope.dart';
+import 'browser_hidden_row.dart';
 import 'automation_pages.dart' show pickTiles;
 import 'error_box.dart';
 import 'connections_page.dart';
@@ -117,6 +118,7 @@ class _TileEditorState extends State<TileEditor> {
   }
 
   late final _title = TextEditingController(text: t.title);
+  String? _browserShow;
   late final _unit = TextEditingController(text: t.unit);
   late final _valueMap = TextEditingController(text: t.valueMap);
   late final _onValue = TextEditingController(text: t.onValue);
@@ -150,9 +152,9 @@ class _TileEditorState extends State<TileEditor> {
       return;
     }
     // t318u (R521): ranges sorted and duplicate limits removed on save.
-    t.thresholds = ColorRanges.fromThresholds(
-      t.thresholds,
-    ).normalized().toThresholds();
+    t.thresholds = ColorRanges.fromThresholds(t.thresholds)
+        .normalized()
+        .toThresholds();
     t.title = _title.text.trim().isEmpty
         ? tileTypeLabel(context, t.type)
         : _title.text.trim();
@@ -169,7 +171,11 @@ class _TileEditorState extends State<TileEditor> {
     } else {
       t.read.remove('raw');
     }
-    await AppScope.read(context).upsertTile(widget.dashboard, t);
+    final st = AppScope.read(context);
+    await st.upsertTile(widget.dashboard, t);
+    if (_browserShow != null) {
+      await st.setTileBrowserVisibility(t.id, _browserShow!);
+    }
     if (mounted) Navigator.pop(context);
   }
 
@@ -465,7 +471,11 @@ class _TileEditorState extends State<TileEditor> {
   Widget build(BuildContext context) {
     // R590 (t328u): the energy flow tile has its own editor (sources, not a connection).
     if (isEnergyFlowTile(t)) {
-      return EnergyFlowEditor(dashboard: widget.dashboard, initial: t, isNew: widget.isNew);
+      return EnergyFlowEditor(
+        dashboard: widget.dashboard,
+        initial: t,
+        isNew: widget.isNew,
+      );
     }
     final st = AppScope.of(context);
     final text = Theme.of(context).textTheme;
@@ -542,6 +552,11 @@ class _TileEditorState extends State<TileEditor> {
                 decoration: InputDecoration(
                   labelText: tx(context, 'Otsikko', 'Title'),
                 ),
+              ),
+              BrowserTileShowSetting(
+                tileId: t.id,
+                mode: _browserShow ?? st.tileBrowserShow(t.id),
+                onChanged: (v) => setState(() => _browserShow = v),
               ),
               const SizedBox(height: 10),
               // v0.8.0: an IR heat pump knows only what it sent – show the room temperature from
@@ -1070,7 +1085,10 @@ class _TileEditorState extends State<TileEditor> {
   /// estimate) or variable power (muuttuva teho, only a measurement counts).
   List<Widget> _powerSection(BuildContext context, TextTheme text) {
     final type = AppScope.read(context).connection(t.connectionId)?.type;
-    final auto = effectivePowerMode(TileConfig(type: t.type, read: t.read), connType: type);
+    final auto = effectivePowerMode(
+      TileConfig(type: t.type, read: t.read),
+      connType: type,
+    );
     final mode = effectivePowerMode(t, connType: type);
     return [
       _section(
@@ -1090,11 +1108,21 @@ class _TileEditorState extends State<TileEditor> {
             label: Text(
               auto == 'const'
                   ? tx(context, 'Automaattinen (vakio)', 'Automatic (constant)')
-                  : tx(context, 'Automaattinen (muuttuva)', 'Automatic (variable)'),
+                  : tx(
+                      context,
+                      'Automaattinen (muuttuva)',
+                      'Automatic (variable)',
+                    ),
             ),
           ),
-          ButtonSegment(value: 'const', label: Text(tx(context, 'Vakioteho', 'Constant power'))),
-          ButtonSegment(value: 'variable', label: Text(tx(context, 'Muuttuva teho', 'Variable power'))),
+          ButtonSegment(
+            value: 'const',
+            label: Text(tx(context, 'Vakioteho', 'Constant power')),
+          ),
+          ButtonSegment(
+            value: 'variable',
+            label: Text(tx(context, 'Muuttuva teho', 'Variable power')),
+          ),
         ],
         selected: {t.powerMode},
         showSelectedIcon: false,

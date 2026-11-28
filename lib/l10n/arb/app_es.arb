@@ -12546,5 +12546,19 @@
  "sf361b8971e": "Dejar vacío para probar los puertos habituales (80, 2020, 8000, 8080...). Tapo: 2020.",
  "@sf361b8971e": {
   "x-mt": true
- }
+ },
+ "s1882976d8c": "El dispositivo funciona en la aplicación Molaplan.",
+ "s25a2d52c2d": "En el navegador se ocultan los recuadros a los que este navegador no puede acceder y los que no han respondido durante unos diez minutos. Los recuadros ocultos se abren desde la parte inferior de la vista. Solo este navegador.",
+ "s493a65113f": "Mostrar siempre",
+ "s5972cf4f3b": "No se pudo crear una imagen fija a partir de la secuencia de vídeo en el navegador.",
+ "s70aa3dc5be": "El recuadro vuelve a aparecer en cuanto el dispositivo responde.",
+ "s786c05c9e1": "Este dispositivo no se puede usar desde el navegador.",
+ "s98ffbf5518": "El dispositivo no ha respondido durante un tiempo.",
+ "sa59af4f48b": "{p0} recuadros ocultos – no disponibles en el navegador",
+ "sb3a5e212e2": "Añade un puente de casa para que esto también funcione en el navegador.",
+ "sbfd72f3328": "Ocultar automáticamente",
+ "scdf43305db": "Instala ffmpeg en el ordenador del puente de casa, o usa la aplicación Molaplan como puente de casa.",
+ "se24b0e7f60": "Se aplica solo en este navegador. En otros dispositivos el recuadro permanece en su sitio.",
+ "se9702be418": "Ocultar recuadros que no funcionan en el navegador",
+ "sf328dcc536": "Vista del navegador"
 }

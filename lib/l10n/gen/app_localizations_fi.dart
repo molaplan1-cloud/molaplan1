@@ -13297,4 +13297,53 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s06444f278d => 'asento (100 = kiinni)';
+
+  @override
+  String get s1882976d8c => 'Laite toimii Molaplan-sovelluksessa.';
+
+  @override
+  String get s25a2d52c2d =>
+      'Selainversiossa piilotetaan ruudut, joihin ei saada yhteyttä tästä selaimesta, ja ruudut, jotka eivät ole vastanneet noin kymmeneen minuuttiin. Piilotetut saa näkyviin näkymän alareunasta. Koskee vain tätä selainta.';
+
+  @override
+  String get s493a65113f => 'Näytä aina';
+
+  @override
+  String get s5972cf4f3b =>
+      'Still-kuvaa ei saatu tehtyä videovirrasta selaimessa.';
+
+  @override
+  String get s70aa3dc5be => 'Ruutu tulee näkyviin heti, kun laite vastaa.';
+
+  @override
+  String get s786c05c9e1 => 'Tätä laitetta ei voi käyttää selaimesta.';
+
+  @override
+  String get s98ffbf5518 => 'Laite ei ole vastannut tarpeeksi pitkään.';
+
+  @override
+  String sa59af4f48b(String p0) {
+    return '$p0 laitetta piilotettu – ei käytettävissä selaimessa';
+  }
+
+  @override
+  String get sb3a5e212e2 =>
+      'Lisää kotisilta, niin tämä toimii myös selaimessa.';
+
+  @override
+  String get sbfd72f3328 => 'Piilota automaattisesti';
+
+  @override
+  String get scdf43305db =>
+      'Asenna ffmpeg kotisillan tietokoneelle, tai käytä Molaplan-sovellusta kotisiltana.';
+
+  @override
+  String get se24b0e7f60 =>
+      'Koskee vain tätä selainta. Muissa laitteissa ruutu pysyy paikallaan.';
+
+  @override
+  String get se9702be418 => 'Piilota selaimessa toimimattomat';
+
+  @override
+  String get sf328dcc536 => 'Selainnäkymä';
 }

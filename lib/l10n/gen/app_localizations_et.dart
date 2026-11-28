@@ -13224,4 +13224,51 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s06444f278d => 'asukoht (100 = suletud)';
+
+  @override
+  String get s1882976d8c => 'Seade töötab Molaplani rakenduses.';
+
+  @override
+  String get s25a2d52c2d =>
+      'Brauseris peidetakse ruudud, milleni see brauser ei ulatu, ja ruudud, mis ei ole umbes kümme minutit vastanud. Peidetud ruudud saab avada vaate allosast. Kehtib ainult selles brauseris.';
+
+  @override
+  String get s493a65113f => 'Näita alati';
+
+  @override
+  String get s5972cf4f3b => 'Videovoost ei õnnestunud brauseris pilti teha.';
+
+  @override
+  String get s70aa3dc5be => 'Ruut tuleb tagasi kohe, kui seade vastab.';
+
+  @override
+  String get s786c05c9e1 => 'Seda seadet ei saa brauserist kasutada.';
+
+  @override
+  String get s98ffbf5518 => 'Seade ei ole juba mõnda aega vastanud.';
+
+  @override
+  String sa59af4f48b(String p0) {
+    return '$p0 ruutu peidetud – pole brauseris saadaval';
+  }
+
+  @override
+  String get sb3a5e212e2 => 'Lisage kodusild, siis see toimib ka brauseris.';
+
+  @override
+  String get sbfd72f3328 => 'Peida automaatselt';
+
+  @override
+  String get scdf43305db =>
+      'Paigaldage ffmpeg kodusilla arvutisse või kasutage kodusillana Molaplani rakendust.';
+
+  @override
+  String get se24b0e7f60 =>
+      'Kehtib ainult selles brauseris. Teistes seadmetes jääb ruut paigale.';
+
+  @override
+  String get se9702be418 => 'Peida ruudud, mis brauseris ei tööta';
+
+  @override
+  String get sf328dcc536 => 'Brauserivaade';
 }

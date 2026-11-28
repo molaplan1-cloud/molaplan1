@@ -23668,6 +23668,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'position (100 = closed)'**
   String get s06444f278d;
+
+  /// fi: Laite toimii Molaplan-sovelluksessa.
+  ///
+  /// In en, this message translates to:
+  /// **'The device works in the Molaplan app.'**
+  String get s1882976d8c;
+
+  /// fi: Selainversiossa piilotetaan ruudut, joihin ei saada yhteyttä tästä selaimesta, ja ruudut, jotka eivät ole vastanneet noin kymmeneen minuuttiin. Piilotetut saa näkyviin näkymän alareunasta. Koskee vain tätä selainta.
+  ///
+  /// In en, this message translates to:
+  /// **'In the browser, tiles this browser cannot reach, and tiles that have not answered for about ten minutes, are hidden. Hidden tiles can be opened from the bottom of the view. This browser only.'**
+  String get s25a2d52c2d;
+
+  /// fi: Näytä aina
+  ///
+  /// In en, this message translates to:
+  /// **'Always show'**
+  String get s493a65113f;
+
+  /// fi: Still-kuvaa ei saatu tehtyä videovirrasta selaimessa.
+  ///
+  /// In en, this message translates to:
+  /// **'A still picture could not be made from the video stream in the browser.'**
+  String get s5972cf4f3b;
+
+  /// fi: Ruutu tulee näkyviin heti, kun laite vastaa.
+  ///
+  /// In en, this message translates to:
+  /// **'The tile comes back as soon as the device answers.'**
+  String get s70aa3dc5be;
+
+  /// fi: Tätä laitetta ei voi käyttää selaimesta.
+  ///
+  /// In en, this message translates to:
+  /// **'This device cannot be used from the browser.'**
+  String get s786c05c9e1;
+
+  /// fi: Laite ei ole vastannut tarpeeksi pitkään.
+  ///
+  /// In en, this message translates to:
+  /// **'The device has not answered for a while.'**
+  String get s98ffbf5518;
+
+  /// fi: {p0} laitetta piilotettu – ei käytettävissä selaimessa
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} devices hidden – not available in the browser'**
+  String sa59af4f48b(String p0);
+
+  /// fi: Lisää kotisilta, niin tämä toimii myös selaimessa.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a home bridge so this also works in the browser.'**
+  String get sb3a5e212e2;
+
+  /// fi: Piilota automaattisesti
+  ///
+  /// In en, this message translates to:
+  /// **'Hide automatically'**
+  String get sbfd72f3328;
+
+  /// fi: Asenna ffmpeg kotisillan tietokoneelle, tai käytä Molaplan-sovellusta kotisiltana.
+  ///
+  /// In en, this message translates to:
+  /// **'Install ffmpeg on the home-bridge computer, or use the Molaplan app as the home bridge.'**
+  String get scdf43305db;
+
+  /// fi: Koskee vain tätä selainta. Muissa laitteissa ruutu pysyy paikallaan.
+  ///
+  /// In en, this message translates to:
+  /// **'Applies only in this browser. On other devices the tile stays in place.'**
+  String get se24b0e7f60;
+
+  /// fi: Piilota selaimessa toimimattomat
+  ///
+  /// In en, this message translates to:
+  /// **'Hide tiles that don\'\'t work in the browser'**
+  String get se9702be418;
+
+  /// fi: Selainnäkymä
+  ///
+  /// In en, this message translates to:
+  /// **'Browser view'**
+  String get sf328dcc536;
 }
 
 class _AppLocalizationsDelegate

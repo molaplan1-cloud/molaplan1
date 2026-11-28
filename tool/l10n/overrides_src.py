@@ -837,6 +837,21 @@ T = {
  'Device replies': ('Enhetens svar', 'Seadme vastused', 'Respuestas del dispositivo'),
  'Saved, also on the server (iPhone)': ('Sparat, även på servern (iPhone)', 'Salvestatud, ka serverisse (iPhone)', 'Guardado, también en el servidor (iPhone)'),
  'Saved in this app': ('Sparat i den här appen', 'Salvestatud sellesse rakendusse', 'Guardado en esta app'),
+ # R620–R629 (t334u): hide unusable tiles in the browser
+ '{p0} devices hidden – not available in the browser': ('{p0} rutor dolda – inte tillgängliga i webbläsaren', '{p0} ruutu peidetud – pole brauseris saadaval', '{p0} recuadros ocultos – no disponibles en el navegador'),
+ 'Always show': ('Visa alltid', 'Näita alati', 'Mostrar siempre'),
+ 'Browser view': ('Webbläsarvy', 'Brauserivaade', 'Vista del navegador'),
+ 'Applies only in this browser. On other devices the tile stays in place.': ('Gäller bara den här webbläsaren. På andra enheter stannar rutan på sin plats.', 'Kehtib ainult selles brauseris. Teistes seadmetes jääb ruut paigale.', 'Se aplica solo en este navegador. En otros dispositivos el recuadro permanece en su sitio.'),
+ 'Hide automatically': ('Dölj automatiskt', 'Peida automaatselt', 'Ocultar automáticamente'),
+ "Hide tiles that don't work in the browser": ('Dölj rutor som inte fungerar i webbläsaren', 'Peida ruudud, mis brauseris ei tööta', 'Ocultar recuadros que no funcionan en el navegador'),
+ 'In the browser, tiles this browser cannot reach, and tiles that have not answered for about ten minutes, are hidden. Hidden tiles can be opened from the bottom of the view. This browser only.': ('I webbläsaren döljs rutor som den här webbläsaren inte når, och rutor som inte har svarat på ungefär tio minuter. Dolda rutor öppnas från nederkanten av vyn. Gäller bara den här webbläsaren.', 'Brauseris peidetakse ruudud, milleni see brauser ei ulatu, ja ruudud, mis ei ole umbes kümme minutit vastanud. Peidetud ruudud saab avada vaate allosast. Kehtib ainult selles brauseris.', 'En el navegador se ocultan los recuadros a los que este navegador no puede acceder y los que no han respondido durante unos diez minutos. Los recuadros ocultos se abren desde la parte inferior de la vista. Solo este navegador.'),
+ 'The device has not answered for a while.': ('Enheten har inte svarat på ett tag.', 'Seade ei ole juba mõnda aega vastanud.', 'El dispositivo no ha respondido durante un tiempo.'),
+ 'A still picture could not be made from the video stream in the browser.': ('En stillbild kunde inte tas från videoströmmen i webbläsaren.', 'Videovoost ei õnnestunud brauseris pilti teha.', 'No se pudo crear una imagen fija a partir de la secuencia de vídeo en el navegador.'),
+ 'This device cannot be used from the browser.': ('Den här enheten kan inte användas från webbläsaren.', 'Seda seadet ei saa brauserist kasutada.', 'Este dispositivo no se puede usar desde el navegador.'),
+ 'The tile comes back as soon as the device answers.': ('Rutan kommer tillbaka så snart enheten svarar.', 'Ruut tuleb tagasi kohe, kui seade vastab.', 'El recuadro vuelve a aparecer en cuanto el dispositivo responde.'),
+ 'Install ffmpeg on the home-bridge computer, or use the Molaplan app as the home bridge.': ('Installera ffmpeg på hemmabrons dator, eller använd Molaplan-appen som hemmabro.', 'Paigaldage ffmpeg kodusilla arvutisse või kasutage kodusillana Molaplani rakendust.', 'Instala ffmpeg en el ordenador del puente de casa, o usa la aplicación Molaplan como puente de casa.'),
+ 'The device works in the Molaplan app.': ('Enheten fungerar i Molaplan-appen.', 'Seade töötab Molaplani rakenduses.', 'El dispositivo funciona en la aplicación Molaplan.'),
+ 'Add a home bridge so this also works in the browser.': ('Lägg till en hemmabro, så fungerar detta också i webbläsaren.', 'Lisage kodusild, siis see toimib ka brauseris.', 'Añade un puente de casa para que esto también funcione en el navegador.'),
 }
 
 

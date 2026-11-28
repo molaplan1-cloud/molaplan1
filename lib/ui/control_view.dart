@@ -2,6 +2,8 @@ import 'log_pages.dart' show LogsPage;
 import '../state/net_health.dart';
 import 'add_sheet.dart';
 import 'tile_grid.dart';
+import 'browser_hidden_row.dart';
+import '../state/browser_tile_hide.dart';
 import 'tile_visuals.dart' show RoomBackdrop;
 import 'tile_status.dart';
 import 'web_info.dart';
@@ -51,11 +53,14 @@ class ControlView extends StatelessWidget {
     final all = st.config.dashboards.where((d) => d.tiles.isNotEmpty).toList();
     final groups = only == null
         ? all
-        : (all.where((d) => d.id == only).toList().isEmpty ? all : all.where((d) => d.id == only).toList());
+        : (all.where((d) => d.id == only).toList().isEmpty
+              ? all
+              : all.where((d) => d.id == only).toList());
     final single = groups.length == 1;
     final title = single ? groups.first.name : tx(context, 'Koti', 'Home');
     // t147u: never "Koti" in the app bar and again as the first section header.
-    bool sameAsTitle(Dashboard d) => d.name.trim().toLowerCase() == title.trim().toLowerCase();
+    bool sameAsTitle(Dashboard d) =>
+        d.name.trim().toLowerCase() == title.trim().toLowerCase();
     return Scaffold(
       key: const ValueKey('control-view'),
       drawer: drawer,
@@ -86,12 +91,18 @@ class ControlView extends StatelessWidget {
           const WebNoticeBanner(),
           Expanded(
             child: ListenableBuilder(
-              listenable: NetHealth.instance,
+              listenable: Listenable.merge([NetHealth.instance, browserHide]),
               builder: (context, _) => LayoutBuilder(
                 builder: (context, box) {
-                  final g = tileGridFor(box.maxWidth, AppScope.of(context).config.tileDensity);
+                  final g = tileGridFor(
+                    box.maxWidth,
+                    AppScope.of(context).config.tileDensity,
+                  );
                   final gap = g.gap;
-                  final whole = single && groups.isNotEmpty && groups.first.photoBackground;
+                  final whole =
+                      single &&
+                      groups.isNotEmpty &&
+                      groups.first.photoBackground;
                   final list = ListView(
                     padding: EdgeInsets.fromLTRB(gap, 6, gap, 32),
                     children: [
@@ -107,15 +118,25 @@ class ControlView extends StatelessWidget {
                               child: Padding(
                                 padding: EdgeInsets.all(gap),
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.fromLTRB(4, 4, 4, 10),
+                                      padding: const EdgeInsets.fromLTRB(
+                                        4,
+                                        4,
+                                        4,
+                                        10,
+                                      ),
                                       child: Text(
                                         d.name,
                                         key: ValueKey('group-${d.id}'),
-                                        style: Theme.of(context).textTheme.titleLarge
-                                            ?.copyWith(fontWeight: FontWeight.w600),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge
+                                            ?.copyWith(
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                       ),
                                     ),
                                     _tiles(context, d, groups, g),
@@ -133,7 +154,8 @@ class ControlView extends StatelessWidget {
                               child: Text(
                                 d.name,
                                 key: ValueKey('group-${d.id}'),
-                                style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
+                                style: Theme.of(context).textTheme.titleLarge
+                                    ?.copyWith(fontWeight: FontWeight.w600),
                               ),
                             ),
                           _tiles(context, d, groups, g),
@@ -141,7 +163,9 @@ class ControlView extends StatelessWidget {
                     ],
                   );
                   // t172u "Koko näkymän tausta": the whole view behind its tiles.
-                  return whole ? RoomBackdrop(dashboard: groups.first, child: list) : list;
+                  return whole
+                      ? RoomBackdrop(dashboard: groups.first, child: list)
+                      : list;
                 },
               ),
             ),
@@ -151,26 +175,70 @@ class ControlView extends StatelessWidget {
     );
   }
 
-  Widget _tiles(BuildContext context, Dashboard d, List<Dashboard> groups, TileGridMetrics g) {
+  Widget _tiles(
+    BuildContext context,
+    Dashboard d,
+    List<Dashboard> groups,
+    TileGridMetrics g,
+  ) {
     final st = AppScope.of(context);
-    return Wrap(
-      spacing: g.gap,
-      runSpacing: g.gap,
+    final hidden = [
+      for (final t in d.tiles)
+        if (st.hideTileInBrowser(t)) t,
+    ];
+    if (hidden.isNotEmpty) browserHide.ensureTimer();
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        for (final t in d.tiles)
-          if (!st.config.hideAwayTiles || awayLanConnection(st, t) == null)
-            SizedBox(
-              width: g.widthOf(t.w2),
-              height: g.height(t.hUnits),
-              child: TileWidget(key: ValueKey('cv-${t.id}'), tile: t, control: true),
-            ),
-        if (!st.viewLocked && d == groups.last)
-          SizedBox(
-            width: g.width(1),
-            height: g.height(1),
-            child: AddPlaceholderTile(
-              key: const ValueKey('add-placeholder'),
-              onTap: () => showAddSheet(context, dashboard: d),
+        Wrap(
+          spacing: g.gap,
+          runSpacing: g.gap,
+          children: [
+            for (final t in d.tiles)
+              if ((!st.config.hideAwayTiles ||
+                      awayLanConnection(st, t) == null) &&
+                  !st.hideTileInBrowser(t))
+                SizedBox(
+                  width: g.widthOf(t.w2),
+                  height: g.height(t.hUnits),
+                  child: TileWidget(
+                    key: ValueKey('cv-${t.id}'),
+                    tile: t,
+                    control: true,
+                  ),
+                ),
+            if (!st.viewLocked && d == groups.last)
+              SizedBox(
+                width: g.width(1),
+                height: g.height(1),
+                child: AddPlaceholderTile(
+                  key: const ValueKey('add-placeholder'),
+                  onTap: () => showAddSheet(context, dashboard: d),
+                ),
+              ),
+          ],
+        ),
+        BrowserHiddenTilesRow(tiles: hidden, hasBridge: st.remote.isPaired),
+        if (hidden.isNotEmpty)
+          Offstage(
+            child: ExcludeSemantics(
+              child: IgnorePointer(
+                child: Column(
+                  children: [
+                    for (final t in hidden)
+                      SizedBox(
+                        width: 400,
+                        height: 240,
+                        child: TileWidget(
+                          key: ValueKey('hidden-live-${t.id}'),
+                          tile: t,
+                          control: true,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
             ),
           ),
       ],
@@ -200,13 +268,25 @@ class ControlView extends StatelessWidget {
           case 'energy':
             onEnergy?.call();
           case 'automations':
-            await Navigator.push(context, MaterialPageRoute(builder: (_) => const AutomationsPage()));
+            await Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const AutomationsPage()),
+            );
           case 'heating':
-            await Navigator.push(context, MaterialPageRoute(builder: (_) => const SmartHeatingPage()));
+            await Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const SmartHeatingPage()),
+            );
           case 'reminders':
-            await Navigator.push(context, MaterialPageRoute(builder: (_) => const RemindersPage()));
+            await Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const RemindersPage()),
+            );
           case 'logs':
-            await Navigator.push(context, MaterialPageRoute(builder: (_) => const LogsPage()));
+            await Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const LogsPage()),
+            );
           case 'room-photo':
             await showRoomPhotoSheet(context, st.config.dashboards);
           case 'settings':
@@ -219,29 +299,44 @@ class ControlView extends StatelessWidget {
         PopupMenuItem(
           key: const ValueKey('home-add-device'),
           value: 'add',
-          child: _item(const Icon(Icons.add), Text(tx(c, 'Lisää laite', 'Add device'))),
+          child: _item(
+            const Icon(Icons.add),
+            Text(tx(c, 'Lisää laite', 'Add device')),
+          ),
         ),
         PopupMenuItem(
           key: const ValueKey('control-edit'),
           value: 'edit',
-          child: _item(const Icon(Icons.edit_outlined), Text(tx(c, 'Muokkaa näkymää', 'Edit the view'))),
+          child: _item(
+            const Icon(Icons.edit_outlined),
+            Text(tx(c, 'Muokkaa näkymää', 'Edit the view')),
+          ),
         ),
         PopupMenuItem(
           key: const ValueKey('control-room-photo'),
           value: 'room-photo',
-          child: _item(const Icon(Icons.photo_outlined), Text(tx(c, 'Huoneen kuva', 'Room photo'))),
+          child: _item(
+            const Icon(Icons.photo_outlined),
+            Text(tx(c, 'Huoneen kuva', 'Room photo')),
+          ),
         ),
         // t231u: grouped – the view, then the smart parts, then settings.
         const PopupMenuDivider(),
         if (onEnergy != null)
           PopupMenuItem(
             value: 'energy',
-            child: _item(const Icon(Icons.bolt_outlined), Text(tx(c, 'Energia', 'Energy'))),
+            child: _item(
+              const Icon(Icons.bolt_outlined),
+              Text(tx(c, 'Energia', 'Energy')),
+            ),
           ),
         PopupMenuItem(
           key: const ValueKey('control-automations'),
           value: 'automations',
-          child: _item(const Icon(Icons.auto_mode), Text(tx(c, 'Automaatiot', 'Automations'))),
+          child: _item(
+            const Icon(Icons.auto_mode),
+            Text(tx(c, 'Automaatiot', 'Automations')),
+          ),
         ),
         // R194: its own section, separate from automations.
         PopupMenuItem(
@@ -257,25 +352,40 @@ class ControlView extends StatelessWidget {
           value: 'reminders',
           child: _item(
             const Icon(Icons.notifications_active_outlined),
-            Text(tx(c, 'Ilmoitukset ja muistutukset', 'Notifications and reminders')),
+            Text(
+              tx(
+                c,
+                'Ilmoitukset ja muistutukset',
+                'Notifications and reminders',
+              ),
+            ),
           ),
         ),
         // R487 (t312u): every user-built log and trend.
         PopupMenuItem(
           key: const ValueKey('control-logs'),
           value: 'logs',
-          child: _item(const Icon(Icons.show_chart), Text(tx(c, 'Lokit ja trendit', 'Logs and trends'))),
+          child: _item(
+            const Icon(Icons.show_chart),
+            Text(tx(c, 'Lokit ja trendit', 'Logs and trends')),
+          ),
         ),
         const PopupMenuDivider(),
         PopupMenuItem(
           key: const ValueKey('control-settings'),
           value: 'settings',
-          child: _item(const Icon(Icons.tune), Text(tx(c, 'Asetukset', 'Settings'))),
+          child: _item(
+            const Icon(Icons.tune),
+            Text(tx(c, 'Asetukset', 'Settings')),
+          ),
         ),
         PopupMenuItem(
           key: const ValueKey('control-lock'),
           value: 'lock',
-          child: _item(const Icon(Icons.lock_outline), Text(tx(c, 'Lukitse näkymä', 'Lock the view'))),
+          child: _item(
+            const Icon(Icons.lock_outline),
+            Text(tx(c, 'Lukitse näkymä', 'Lock the view')),
+          ),
         ),
       ],
     );
@@ -315,9 +425,16 @@ class ControlView extends StatelessWidget {
               controller: pin,
               obscureText: true,
               keyboardType: TextInputType.number,
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(8)],
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                LengthLimitingTextInputFormatter(8),
+              ],
               decoration: InputDecoration(
-                labelText: tx(c, 'PIN-koodi (valinnainen)', 'PIN code (optional)'),
+                labelText: tx(
+                  c,
+                  'PIN-koodi (valinnainen)',
+                  'PIN code (optional)',
+                ),
                 helperText: tx(
                   c,
                   'Ilman PIN-koodia lukitus avataan yhdellä napautuksella.',
@@ -328,7 +445,10 @@ class ControlView extends StatelessWidget {
           ],
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(c, false), child: Text(tx(c, 'Peruuta', 'Cancel'))),
+          TextButton(
+            onPressed: () => Navigator.pop(c, false),
+            child: Text(tx(c, 'Peruuta', 'Cancel')),
+          ),
           FilledButton.icon(
             key: const ValueKey('lock-confirm'),
             onPressed: () => Navigator.pop(c, true),
@@ -348,7 +468,11 @@ class ControlView extends StatelessWidget {
       final ok = await confirmDialog(
         context,
         tx(context, 'Avaa lukitus?', 'Unlock?'),
-        tx(context, 'Muokkaus ja asetukset tulevat taas näkyviin.', 'Editing and settings become visible again.'),
+        tx(
+          context,
+          'Muokkaus ja asetukset tulevat taas näkyviin.',
+          'Editing and settings become visible again.',
+        ),
         ok: tx(context, 'Avaa', 'Unlock'),
       );
       if (ok) await st.unlockView();
@@ -369,10 +493,16 @@ class ControlView extends StatelessWidget {
             obscureText: true,
             keyboardType: TextInputType.number,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration: InputDecoration(labelText: tx(c, 'PIN-koodi', 'PIN code'), errorText: error),
+            decoration: InputDecoration(
+              labelText: tx(c, 'PIN-koodi', 'PIN code'),
+              errorText: error,
+            ),
           ),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(c), child: Text(tx(c, 'Peruuta', 'Cancel'))),
+            TextButton(
+              onPressed: () => Navigator.pop(c),
+              child: Text(tx(c, 'Peruuta', 'Cancel')),
+            ),
             FilledButton(
               key: const ValueKey('unlock-confirm'),
               onPressed: () async {

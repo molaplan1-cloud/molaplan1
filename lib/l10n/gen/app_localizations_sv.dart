@@ -13244,4 +13244,54 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s06444f278d => 'position (100 = stängd)';
+
+  @override
+  String get s1882976d8c => 'Enheten fungerar i Molaplan-appen.';
+
+  @override
+  String get s25a2d52c2d =>
+      'I webbläsaren döljs rutor som den här webbläsaren inte når, och rutor som inte har svarat på ungefär tio minuter. Dolda rutor öppnas från nederkanten av vyn. Gäller bara den här webbläsaren.';
+
+  @override
+  String get s493a65113f => 'Visa alltid';
+
+  @override
+  String get s5972cf4f3b =>
+      'En stillbild kunde inte tas från videoströmmen i webbläsaren.';
+
+  @override
+  String get s70aa3dc5be => 'Rutan kommer tillbaka så snart enheten svarar.';
+
+  @override
+  String get s786c05c9e1 =>
+      'Den här enheten kan inte användas från webbläsaren.';
+
+  @override
+  String get s98ffbf5518 => 'Enheten har inte svarat på ett tag.';
+
+  @override
+  String sa59af4f48b(String p0) {
+    return '$p0 rutor dolda – inte tillgängliga i webbläsaren';
+  }
+
+  @override
+  String get sb3a5e212e2 =>
+      'Lägg till en hemmabro, så fungerar detta också i webbläsaren.';
+
+  @override
+  String get sbfd72f3328 => 'Dölj automatiskt';
+
+  @override
+  String get scdf43305db =>
+      'Installera ffmpeg på hemmabrons dator, eller använd Molaplan-appen som hemmabro.';
+
+  @override
+  String get se24b0e7f60 =>
+      'Gäller bara den här webbläsaren. På andra enheter stannar rutan på sin plats.';
+
+  @override
+  String get se9702be418 => 'Dölj rutor som inte fungerar i webbläsaren';
+
+  @override
+  String get sf328dcc536 => 'Webbläsarvy';
 }

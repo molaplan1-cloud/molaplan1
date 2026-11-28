@@ -3924,5 +3924,19 @@
  "s92d24d0543": "Sälekaihdin",
  "s7727759a28": "Ilmanpuhdistin",
  "sda8d9bf1cd": "Pistorasia",
- "s06444f278d": "asento (100 = kiinni)"
+ "s06444f278d": "asento (100 = kiinni)",
+ "s1882976d8c": "Laite toimii Molaplan-sovelluksessa.",
+ "s25a2d52c2d": "Selainversiossa piilotetaan ruudut, joihin ei saada yhteyttä tästä selaimesta, ja ruudut, jotka eivät ole vastanneet noin kymmeneen minuuttiin. Piilotetut saa näkyviin näkymän alareunasta. Koskee vain tätä selainta.",
+ "s493a65113f": "Näytä aina",
+ "s5972cf4f3b": "Still-kuvaa ei saatu tehtyä videovirrasta selaimessa.",
+ "s70aa3dc5be": "Ruutu tulee näkyviin heti, kun laite vastaa.",
+ "s786c05c9e1": "Tätä laitetta ei voi käyttää selaimesta.",
+ "s98ffbf5518": "Laite ei ole vastannut tarpeeksi pitkään.",
+ "sa59af4f48b": "{p0} laitetta piilotettu – ei käytettävissä selaimessa",
+ "sb3a5e212e2": "Lisää kotisilta, niin tämä toimii myös selaimessa.",
+ "sbfd72f3328": "Piilota automaattisesti",
+ "scdf43305db": "Asenna ffmpeg kotisillan tietokoneelle, tai käytä Molaplan-sovellusta kotisiltana.",
+ "se24b0e7f60": "Koskee vain tätä selainta. Muissa laitteissa ruutu pysyy paikallaan.",
+ "se9702be418": "Piilota selaimessa toimimattomat",
+ "sf328dcc536": "Selainnäkymä"
 }
