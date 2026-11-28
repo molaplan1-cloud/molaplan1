@@ -22,6 +22,7 @@ import '../drivers/ntfy_device.dart';
 import '../notify/event_prefs.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
+import '../account/tile_power_persist.dart';
 import '../notify/data_fetch_host.dart';
 import '../notify/ntfy_listen.dart';
 import '../energy/contract.dart';
@@ -1476,12 +1477,30 @@ class AppState extends ChangeNotifier implements SyncHost {
       config.connections.isNotEmpty ||
       config.dashboards.any((d) => d.tiles.isNotEmpty);
 
+  void _restoreIncomingTilePower(Map<String, dynamic> cfg) {
+    final previous = [for (final d in config.dashboards) ...d.tiles];
+    restoreOmittedTilePowerInConfig(
+      cfg,
+      previous,
+      tileKey: (x) => tileKey(x),
+      jsonTileKey: (m) {
+        try {
+          return tileKey(TileConfig.fromJson(Map<String, dynamic>.from(m)));
+        } catch (_) {
+          return '';
+        }
+      },
+    );
+  }
+
   @override
   Future<void> applySynced(
     Map<String, dynamic> cfg,
     Map<String, Map<String, String>>? secrets,
   ) async {
-    final other = AppConfig.fromJson({...cfg, 'app': 'molaplan'});
+    final incoming = Map<String, dynamic>.from(cfg);
+    _restoreIncomingTilePower(incoming);
+    final other = AppConfig.fromJson({...incoming, 'app': 'molaplan'});
     final oldSecrets = {for (final c in config.connections) c.id: c.secrets};
     for (final d in _drivers.values) {
       unawaited(d.dispose());
@@ -1651,7 +1670,9 @@ class AppState extends ChangeNotifier implements SyncHost {
   /// Re-probes Home Assistant routes when the network comes back (local first).
   Future<void> refreshHaRoutes() async {
     var changed = false;
-    for (final c in config.connections.where((c) => c.type == 'homeassistant' && c.settings['demo'] != true)) {
+    for (final c in config.connections.where(
+      (c) => c.type == 'homeassistant' && c.settings['demo'] != true,
+    )) {
       final d = _drivers[c.id];
       try {
         if (d is HomeAssistantDriver) {
@@ -2156,9 +2177,9 @@ class AppState extends ChangeNotifier implements SyncHost {
           .convert(config.toJson(includeSecrets: includeSecrets));
 
   Future<void> importJson(String json) async {
-    final imported = AppConfig.fromJson(
-      Map<String, dynamic>.from(jsonDecode(json) as Map),
-    );
+    final incoming = Map<String, dynamic>.from(jsonDecode(json) as Map);
+    _restoreIncomingTilePower(incoming);
+    final imported = AppConfig.fromJson(incoming);
     for (final d in _drivers.values) {
       unawaited(d.dispose());
     }
@@ -2208,7 +2229,10 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (c.type == 'homeassistant') {
       final urls = haUrlSet(c).toList()..sort();
       final a = urls.isEmpty
-          ? (s['baseUrl'] ?? '').toString().toLowerCase().replaceAll(RegExp(r'/+$'), '')
+          ? (s['baseUrl'] ?? '').toString().toLowerCase().replaceAll(
+              RegExp(r'/+$'),
+              '',
+            )
           : urls.join(',');
       return 'homeassistant|$a';
     }
@@ -2279,12 +2303,18 @@ class AppState extends ChangeNotifier implements SyncHost {
     for (final c in r.connections) {
       final existing = c.type == 'homeassistant'
           ? existingHaConnection(config.connections, candidate: c)
-          : config.connections.where((e) => _addrKey(e) == _addrKey(c)).firstOrNull;
+          : config.connections
+                .where((e) => _addrKey(e) == _addrKey(c))
+                .firstOrNull;
       if (existing != null) {
         remap[c.id] = existing.id;
         // Newer settings/credentials win (e.g. a password added in the wizard).
         if (c.type == 'homeassistant') {
-          mergeHaRoutes(existing, haRoutesOf(c), activeUrl: '${existing.settings['baseUrl'] ?? ''}');
+          mergeHaRoutes(
+            existing,
+            haRoutesOf(c),
+            activeUrl: '${existing.settings['baseUrl'] ?? ''}',
+          );
           // Do not let an empty token from a reuse form wipe the stored one.
           c.secrets.forEach((k, v) {
             if (v.trim().isNotEmpty) existing.secrets[k] = v;
@@ -2311,6 +2341,13 @@ class AppState extends ChangeNotifier implements SyncHost {
       for (final c in t.commands) {
         c.connectionId = m(c.connectionId);
       }
+      // t354u: re-adding the same device (new tile id, same entity) keeps nominal power.
+      final existing = [
+        for (final dash in config.dashboards)
+          for (final x in dash.tiles)
+            if (tileKey(x) == tileKey(t, extra: used)) x,
+      ].firstOrNull;
+      preservePowerSettings(t, existing);
       d.tiles.add(t);
     }
     await save();

@@ -18,7 +18,6 @@ import 'package:molaplan/ui/settings_page.dart';
 import 'package:molaplan/ui/update_ui.dart' show windowsStartupDelay;
 import 'package:molaplan/ui/windows_update_ui.dart';
 import 'package:molaplan/update/update_core.dart';
-import 'package:molaplan/version.dart';
 import 'package:molaplan/update/windows_update.dart';
 import 'package:path/path.dart' as p;
 

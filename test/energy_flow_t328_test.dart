@@ -307,8 +307,9 @@ void main() {
       expect(back.powerMode, 'const');
       expect(back.nominalW, 1500);
       final j = TileConfig(type: TileType.toggle).toJson();
-      expect(j.containsKey('powerMode'), isFalse);
-      expect(j.containsKey('nominalW'), isFalse);
+      expect(j['powerMode'], 'auto');
+      expect(j.containsKey('nominalW'), isTrue);
+      expect(j['nominalW'], isNull);
       final bad = TileConfig.fromJson({...j, 'powerMode': 'x', 'nominalW': -5});
       expect(bad.powerMode, 'auto');
       expect(bad.nominalW, isNull);

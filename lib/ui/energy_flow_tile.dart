@@ -91,6 +91,9 @@ class FlowNodeView {
     this.soc,
     this.partial = false,
     this.glyph,
+    this.on,
+    this.suggestGrid = false,
+    this.tileId,
   });
   final String id;
   final String label;
@@ -108,6 +111,13 @@ class FlowNodeView {
 
   /// R662 (t335u): the total misses a part or has a stale one – shown with a marker (*).
   final bool partial;
+
+  /// R740: switch on/off when there is no wattage to show.
+  final bool? on;
+
+  /// R741: offer "Käytä verkon mittauksena" on this node.
+  final bool suggestGrid;
+  final String? tileId;
 }
 
 String _pct(double v) => '${v.round()} %';
@@ -209,7 +219,14 @@ List<FlowNodeView> flowNodes(
         w: c.w,
         estimated: c.estimated,
         partial: c.partial,
-        sub: c.estimated ? t('arvio', 'estimate') : null,
+        on: c.on,
+        suggestGrid: c.suggestGrid,
+        tileId: c.tileId,
+        sub: [
+          if (c.meter) t('Mittari', 'Meter'),
+          if (c.meter && c.on != null && c.w != null) (c.on! ? t('Päällä', 'On') : t('Pois', 'Off')),
+          if (c.estimated && c.w != null) t('arvio', 'estimate'),
+        ].join(' · ').ifEmpty,
       ),
   ];
   if (extras.length > maxExtras) {
@@ -538,12 +555,17 @@ bool flowPathHitsOthers(Path path, FlowLayout layout, {String? from, String? to,
 List<FlowEdge> flowPairs(FlowSnapshot s, Set<String> shown) {
   String map(String id) => shown.contains(id) ? id : (shown.contains('more') ? 'more' : id);
   final m = <(String, String), double>{};
+  final on = <(String, String), bool>{};
   for (final e in s.edges) {
     final a = map(e.from), b = map(e.to);
     if (!shown.contains(a) || !shown.contains(b) || a == b) continue;
     m[(a, b)] = (m[(a, b)] ?? 0) + e.w;
+    if (e.onOnly) on[(a, b)] = true;
   }
-  return [for (final e in m.entries) FlowEdge(e.key.$1, e.key.$2, e.value)];
+  return [
+    for (final e in m.entries)
+      FlowEdge(e.key.$1, e.key.$2, e.value, onOnly: (on[e.key] ?? false) && e.value < flowMinW),
+  ];
 }
 
 // ---------------------------------------------------------------- the view
@@ -559,6 +581,7 @@ class EnergyFlowView extends StatefulWidget {
     this.look,
     this.glyphOf,
     this.showAll = false,
+    this.onUseAsGrid,
   });
   final FlowSnapshot snapshot;
   final bool animate;
@@ -571,6 +594,9 @@ class EnergyFlowView extends StatefulWidget {
 
   /// R715: show every charger and device (smaller nodes / a grid) instead of folding into "+N more".
   final bool showAll;
+
+  /// R741: inline "Käytä verkon mittauksena" on a meter that is not yet the grid source.
+  final void Function(String tileId)? onUseAsGrid;
 
   /// Tests: never move (pumpAndSettle-friendly).
   static bool forceStatic = false;
@@ -662,13 +688,36 @@ class _EnergyFlowViewState extends State<EnergyFlowView> with SingleTickerProvid
                   left: c.dx - math.max(46, l.radius[n.id]! + 4),
                   top: c.dy - l.radius[n.id]!,
                   width: math.max(92, l.radius[n.id]! * 2 + 8),
-                  height: l.radius[n.id]! * 2 + l.labelH,
+                  height: l.radius[n.id]! * 2 + l.labelH + (n.suggestGrid ? 22 : 0),
                   child: n.id == 'more'
                       ? GestureDetector(
                           key: const ValueKey('flow-show-all'),
                           behavior: HitTestBehavior.opaque,
                           onTap: () => setState(() => _showAll = true),
                           child: _Node(node: n, r: l.radius[n.id]!, lang: lang, compact: l.compact),
+                        )
+                      : n.suggestGrid && widget.onUseAsGrid != null && n.tileId != null
+                      ? Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            _Node(node: n, r: l.radius[n.id]!, lang: lang, compact: l.compact),
+                            TextButton(
+                              key: ValueKey('flow-use-as-grid-${n.tileId}'),
+                              style: TextButton.styleFrom(
+                                visualDensity: VisualDensity.compact,
+                                padding: const EdgeInsets.symmetric(horizontal: 4),
+                                minimumSize: Size.zero,
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              ),
+                              onPressed: () => widget.onUseAsGrid!(n.tileId!),
+                              child: Text(
+                                tr(lang, 'Käytä verkon mittauksena', 'Use as the grid measurement'),
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                                style: const TextStyle(fontSize: 10, height: 1.05),
+                              ),
+                            ),
+                          ],
                         )
                       : _Node(node: n, r: l.radius[n.id]!, lang: lang, compact: l.compact),
                 ),
@@ -742,6 +791,19 @@ class _FlowPainter extends CustomPainter {
       if (layout.centers[e.from] == null || layout.centers[e.to] == null) continue;
       final color = style.line(e.from == FlowNodeId.home ? e.to : e.from);
       final path = _path(e.from, e.to);
+      if (e.onOnly) {
+        final pulse = animate && look.anim != 'none';
+        final alpha = pulse ? 0.42 + 0.32 * (0.5 + 0.5 * math.sin(time.value * 1.4)) : 0.72;
+        canvas.drawPath(
+          path,
+          Paint()
+            ..color = color.withValues(alpha: alpha)
+            ..style = PaintingStyle.stroke
+            ..strokeCap = StrokeCap.round
+            ..strokeWidth = 2.4 * look.thick,
+        );
+        continue;
+      }
       final th = flowThickness(e.w) * look.thick;
       // R674: 'pulse' – the line brightens and dims, faster with more power.
       final pulse = animate && look.anim == 'pulse';
@@ -827,7 +889,13 @@ class _Node extends StatelessWidget {
     final cs = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
     final color = node.color;
-    final value = node.w == null ? '–' : formatPower(node.w, lang: lang, estimated: false);
+    final value = node.w != null
+        ? formatPower(node.w, lang: lang, estimated: false)
+        : node.on == true
+        ? tr(lang, 'Päällä', 'On')
+        : node.on == false
+        ? tr(lang, 'Pois', 'Off')
+        : '–';
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -978,6 +1046,16 @@ class _EnergyFlowTileState extends State<EnergyFlowTile> {
 
   EnergyFlowConfig get _f => EnergyFlowConfig.fromRead(widget.tile.read);
 
+  Future<void> _useMeterAsGridFromView(AppState st, EnergyFlowConfig f, String id) async {
+    final meter = flowTileOf(st, id);
+    if (meter == null) return;
+    applyMeterAsGrid(f, meter, flowAllTiles(st));
+    widget.tile.read = f.toRead();
+    final dash = st.config.dashboards.where((d) => d.tiles.any((x) => x.id == widget.tile.id)).firstOrNull;
+    if (dash != null) await st.upsertTile(dash, widget.tile);
+    if (mounted) setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
@@ -1050,6 +1128,7 @@ class _EnergyFlowTileState extends State<EnergyFlowTile> {
             price: f.price && s.gridW != null ? flowPriceNow(st) : null,
             look: f.look,
             glyphOf: flowGlyphOf(st, f),
+            onUseAsGrid: (id) => _useMeterAsGridFromView(st, f, id),
           );
     // R673: the background – the normal card, transparent, dark or the user's colour.
     final (bg, bright) = flowBackground(
@@ -1144,6 +1223,17 @@ class _EnergyFlowDetailPageState extends State<EnergyFlowDetailPage> {
   Map<String, EnergyBucket>? _bridge;
   bool _bridgeAsked = false;
   int _ask = 0;
+
+  Future<void> _useMeterAsGridFromView(AppState st, EnergyFlowConfig f, String id) async {
+    final meter = flowTileOf(st, id);
+    if (meter == null) return;
+    applyMeterAsGrid(f, meter, flowAllTiles(st));
+    final live = flowTileOf(st, widget.tile.id) ?? widget.tile;
+    live.read = f.toRead();
+    final dash = st.config.dashboards.where((d) => d.tiles.any((x) => x.id == live.id)).firstOrNull;
+    if (dash != null) await st.upsertTile(dash, live);
+    if (mounted) setState(() {});
+  }
 
   @override
   void didChangeDependencies() {
@@ -1377,6 +1467,7 @@ class _EnergyFlowDetailPageState extends State<EnergyFlowDetailPage> {
               look: f.look,
               glyphOf: flowGlyphOf(st, f),
               showAll: true,
+              onUseAsGrid: (id) => _useMeterAsGridFromView(st, f, id),
             ),
           ),
           const SizedBox(height: 12),
@@ -1623,15 +1714,7 @@ class _EnergyFlowEditorState extends State<EnergyFlowEditor> {
 
   /// R718: offer a meter as the grid (or its three phases when they are found).
   void _useMeterAsGrid(TileConfig x, List<TileConfig> power) {
-    final cands = phaseCandidates(power);
-    final cand = cands
-        .where((c) => c.ids.contains(x.id) || (x.connectionId != null && c.connectionId == x.connectionId))
-        .firstOrNull;
-    setState(() {
-      f.gridSum = cand != null ? PowerSum.threePhase(cand.ids) : PowerSum.single(x.id);
-      f.consumers.remove(x.id);
-      f.consumerSums.remove(x.id);
-    });
+    setState(() => applyMeterAsGrid(f, x, power));
   }
 
   Future<void> _save() async {

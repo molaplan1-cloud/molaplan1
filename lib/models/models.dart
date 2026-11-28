@@ -459,8 +459,9 @@ class TileConfig {
     'battery': ?battery,
     'lastAlarm': ?lastAlarm,
     'feed': ?feed,
-    if (powerMode != 'auto') 'powerMode': powerMode,
-    'nominalW': ?nominalW,
+    // t354u: always emit, including auto/null, so a sync can tell a clear from an omit.
+    'powerMode': powerMode,
+    'nominalW': nominalW,
   };
 
   factory TileConfig.fromJson(Map<String, dynamic> j) => TileConfig(

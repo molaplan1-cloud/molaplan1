@@ -464,27 +464,66 @@ List<PhaseCandidate> phaseCandidates(Iterable<TileConfig> tiles) {
 /// R718: whether [t] is an energy meter (site or phase meter), not a consuming device.
 /// Generic: the tile's name, how it is read (phase channels, meter paths) and [meter] role.
 /// A switch that only reports its own power is not a meter.
-bool isFlowMeterTile(TileConfig? t, {MeterInfo? meter}) {
-  if (t == null) return false;
-  if (meter != null) return true;
-  if (t.type != TileType.value || !isPowerUnit(t.unit)) return false;
-  if (phaseIndexOf(t) != null) return true;
-  final title = t.title.toLowerCase();
+bool isFlowMeterTitle(String title) {
+  final s = title.toLowerCase();
   if (RegExp(
     r'energiamittari|sähkömittari|energy\s*meter|electricity\s*meter|energimätare|energiamõõtja|medidor(?: de energ[ií]a)?|pääsähkö|site\s*meter|grid\s*meter',
     unicode: true,
-  ).hasMatch(title)) {
+  ).hasMatch(s)) {
     return true;
   }
   // Common meter model names (not a plug or a PM switch).
-  if (RegExp(
+  return RegExp(
     r'(^|[^\p{L}\d])((?:shelly\s+)?(?:pro\s+)?(?:3em|em(?:-\d+)?|shem(?:-?\d+)?)|emeter)(?=$|[^\p{L}\d])',
     unicode: true,
-  ).hasMatch(title)) {
-    return true;
-  }
+  ).hasMatch(s);
+}
+
+bool isFlowMeterRead(TileConfig t) {
   final fields = [t.read['jsonPath'], t.read['field'], t.read['key'], t.read['path'], t.read['comp']].whereType<String>().join(' ');
   return RegExp(r'/emeter/|\bemeters:|\bemeter\b|\bem:[0-2]').hasMatch(fields.toLowerCase());
+}
+
+/// R718 / R741: whether [t] is an energy meter (site or phase meter), not a consuming device.
+/// Generic: the tile's name, how it is read (phase channels, meter paths) and [meter] role.
+/// A switch that only reports its own power is not a meter. A relay on a meter (same name
+/// or the same device as the phase channels) is a meter.
+bool isFlowMeterTile(TileConfig? t, {MeterInfo? meter, Iterable<TileConfig>? all}) {
+  if (t == null) return false;
+  if (meter != null) return true;
+  if (isFlowMeterTitle(t.title) || isFlowMeterRead(t)) return true;
+  if (t.type == TileType.value && isPowerUnit(t.unit) && phaseIndexOf(t) != null) return true;
+  if (all != null && t.connectionId != null) {
+    return phaseCandidates(all).any((c) => c.connectionId == t.connectionId);
+  }
+  return false;
+}
+
+/// Whether this meter's own tile or its phase channels already feed the grid node.
+bool meterFeedsGrid(TileConfig t, EnergyFlowConfig f, Iterable<TileConfig> all) {
+  final ids = f.gridSum.ids;
+  if (ids.contains(t.id)) return true;
+  if (t.connectionId == null) return false;
+  return phaseCandidates(all).any(
+    (c) => c.connectionId == t.connectionId && c.ids.any(ids.contains),
+  );
+}
+
+/// R718: use [meter] as the grid reading (its three phases when they are found).
+void applyMeterAsGrid(EnergyFlowConfig f, TileConfig meter, Iterable<TileConfig> all) {
+  final cand = phaseCandidates(all)
+      .where((c) => c.ids.contains(meter.id) || (meter.connectionId != null && c.connectionId == meter.connectionId))
+      .firstOrNull;
+  f.gridSum = cand != null ? PowerSum.threePhase(cand.ids) : PowerSum.single(meter.id);
+  f.consumers.remove(meter.id);
+  f.consumerSums.remove(meter.id);
+}
+
+/// On / off of a switchable tile from its last value; null when unknown or not a switch.
+bool? switchOnOf(TileConfig t, Object? v) {
+  if (v == null) return null;
+  if (t.type != TileType.toggle && t.onCommand == null && t.offCommand == null) return null;
+  return isTruthy(v, onValue: t.onValue.trim().isEmpty ? null : t.onValue);
 }
 
 /// One measurement of a summed node as read now.
@@ -598,6 +637,9 @@ class FlowLoad {
     this.soc,
     this.partial = false,
     this.parts = const [],
+    this.on,
+    this.meter = false,
+    this.suggestGrid = false,
   });
   final String id;
   final String tileId;
@@ -610,6 +652,15 @@ class FlowLoad {
 
   /// The summed tiles when there are several (t335u).
   final List<PartReading> parts;
+
+  /// R740: switch state when known (a relay / plug), independent of wattage.
+  final bool? on;
+
+  /// R741: an energy meter, not a consuming load.
+  final bool meter;
+
+  /// R741: the meter is not yet the grid source – offer it inline.
+  final bool suggestGrid;
 }
 
 /// How the home consumption is known.
@@ -617,13 +668,17 @@ enum HomeSource { measured, balance, sum, none }
 
 /// A line with power flowing [from] → [to].
 class FlowEdge {
-  const FlowEdge(this.from, this.to, this.w);
+  const FlowEdge(this.from, this.to, this.w, {this.onOnly = false});
   final String from;
   final String to;
   final double w;
 
+  /// R740: the device is on but has no measured or estimated watts – a solid
+  /// "on" branch, no invented flow amount.
+  final bool onOnly;
+
   @override
-  String toString() => '$from→$to ${w.toStringAsFixed(1)}';
+  String toString() => '$from→$to ${w.toStringAsFixed(1)}${onOnly ? ' on' : ''}';
 }
 
 /// The state of the picture at one moment.
@@ -681,6 +736,22 @@ class FlowSnapshot {
   /// Power on the line [from] → [to] (0 when none).
   double edge(String from, String to) =>
       edges.where((e) => e.from == from && e.to == to).fold(0, (a, e) => a + e.w);
+
+  FlowSnapshot copyWith({List<FlowLoad>? consumers, List<FlowEdge>? edges}) => FlowSnapshot(
+        gridW: gridW,
+        solarW: solarW,
+        batteryW: batteryW,
+        batterySoc: batterySoc,
+        homeW: homeW,
+        homeSource: homeSource,
+        homeEstimated: homeEstimated,
+        evs: evs,
+        consumers: consumers ?? this.consumers,
+        edges: edges ?? this.edges,
+        partial: partial,
+        parts: parts,
+        gridPhases: gridPhases,
+      );
 }
 
 /// R591: works out the home consumption and splits the power onto the lines.
@@ -804,10 +875,15 @@ FlowSnapshot snapshotFor(
   required PowerReading? Function(String id) reading,
   required double? Function(String id) soc,
   bool Function(String id)? stale,
+  bool? Function(String id)? onOf,
+  Iterable<TileConfig>? all,
 }) {
   SumReading sum(PowerSum s, [bool invert = false]) =>
       sumOf(s, invert: invert, tileOf: tileOf, reading: reading, stale: stale);
   double? pct(String? id) => id == null || tileOf(id) == null ? null : soc(id);
+  final known = all ?? const <TileConfig>[];
+  bool meterOf(TileConfig? t) => isFlowMeterTile(t, all: known.isEmpty ? null : known);
+  bool feeds(TileConfig t) => meterFeedsGrid(t, f, known.isEmpty ? [t] : known);
   final partial = <String>{};
   final parts = <String, List<PartReading>>{};
   double? node(String id, PowerSum s, SumReading r) {
@@ -821,7 +897,7 @@ FlowSnapshot snapshotFor(
   final b = sum(f.batterySum, f.batteryInvert);
   final h = sum(f.homeSum);
   final solarW = node(FlowNodeId.solar, f.solarSum, so);
-  return computeFlow(
+  final s = computeFlow(
     gridW: node(FlowNodeId.grid, f.gridSum, g),
     solarW: solarW,
     batteryW: node(FlowNodeId.battery, f.batterySum, b),
@@ -840,29 +916,42 @@ FlowSnapshot snapshotFor(
               soc: pct(e.soc),
               partial: x.partial,
               parts: e.sum.parts.length > 1 ? x.parts : const [],
+              on: onOf?.call(e.tile),
             );
           }(),
     ],
     consumers: [
       for (final id in f.consumers)
         if (tileOf(id) != null)
-          () {
-            final cs = f.consumerSum(id);
-            final x = sum(cs);
-            return FlowLoad(
-              id: FlowNodeId.consumer(id),
-              tileId: id,
-              w: x.w,
-              estimated: x.estimated,
-              partial: x.partial,
-              parts: cs.parts.length > 1 ? x.parts : const [],
-            );
-          }(),
+          if (!(meterOf(tileOf(id)) && feeds(tileOf(id)!)))
+            () {
+              final t = tileOf(id)!;
+              final cs = f.consumerSum(id);
+              final x = sum(cs);
+              final meter = meterOf(t);
+              return FlowLoad(
+                id: FlowNodeId.consumer(id),
+                tileId: id,
+                w: x.w,
+                estimated: x.estimated,
+                partial: x.partial,
+                parts: cs.parts.length > 1 ? x.parts : const [],
+                on: onOf?.call(id),
+                meter: meter,
+                suggestGrid: meter && !feeds(t),
+              );
+            }(),
     ],
     partial: partial,
     parts: parts,
     gridPhases: f.gridSum.phases,
   );
+  final onEdges = [
+    for (final c in s.consumers)
+      if (c.on == true && (c.w == null || c.w!.abs() < flowMinW))
+        FlowEdge(FlowNodeId.home, c.id, 0, onOnly: true),
+  ];
+  return onEdges.isEmpty ? s : s.copyWith(edges: [...s.edges, ...onEdges]);
 }
 
 /// "465 W", "1,53 kW" (decimal comma except in English), "≈ 2,0 kW" for estimates.

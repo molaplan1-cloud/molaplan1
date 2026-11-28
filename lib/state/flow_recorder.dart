@@ -55,17 +55,26 @@ bool flowStale(AppState st, String id, [DateTime? now]) {
 }
 
 /// The snapshot of [f] from the latest tile values.
-FlowSnapshot flowSnapshotOf(AppState st, EnergyFlowConfig f, {DateTime? now}) => snapshotFor(
-  f,
-  tileOf: (id) => flowTileOf(st, id),
-  reading: (id) {
-    final t = flowTileOf(st, id);
-    if (t == null) return null;
-    return powerReadingOf(t, st.lastTileValue(id), connType: st.connection(t.connectionId)?.type);
-  },
-  soc: (id) => percentOf(st.lastTileValue(id)),
-  stale: (id) => flowStale(st, id, now),
-);
+FlowSnapshot flowSnapshotOf(AppState st, EnergyFlowConfig f, {DateTime? now}) {
+  final all = flowAllTiles(st);
+  return snapshotFor(
+    f,
+    tileOf: (id) => flowTileOf(st, id),
+    reading: (id) {
+      final t = flowTileOf(st, id);
+      if (t == null) return null;
+      return powerReadingOf(t, st.lastTileValue(id), connType: st.connection(t.connectionId)?.type);
+    },
+    soc: (id) => percentOf(st.lastTileValue(id)),
+    stale: (id) => flowStale(st, id, now),
+    onOf: (id) {
+      final t = flowTileOf(st, id);
+      if (t == null) return null;
+      return switchOnOf(t, st.lastTileValue(id));
+    },
+    all: all,
+  );
+}
 
 // ---------------------------------------------------------------- energy counters
 
