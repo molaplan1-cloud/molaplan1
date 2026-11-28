@@ -304,6 +304,7 @@ class HeatCheck {
     'shift' => x.t('Hinta siirtää tavoitetta', 'Price shifts the setpoint'),
     'warm' => x.t('Huone riittävän lämmin', 'Room warm enough'),
     'cheapest' => x.t('Halvimmat tunnit', 'Cheapest hours'),
+    'legionella' => x.t('Legionellasuoja', 'Legionella protection'),
     'pricelimit' => x.t('Hintaraja', 'Price limit'),
     'skip' => x.t('Kalleimpien tuntien ohitus', 'Skipping expensive hours'),
     'weather' => x.t('Sääennuste', 'Weather forecast'),
@@ -487,6 +488,19 @@ class HeatExplanation {
     this.storage = false,
     this.fallbackRule = 'price',
     this.checks = const [],
+    this.dhw = false,
+    this.waterTarget,
+    this.waterMin,
+    this.costToday,
+    this.heatHoursToday,
+    this.powerKw,
+    this.nextSetpoint,
+    this.nextWhy,
+    this.priceNext,
+    this.outdoorNow,
+    this.outdoorNext,
+    this.slotMinutes = 60,
+    this.plan = const [],
   });
 
   final String loadId;
@@ -554,6 +568,28 @@ class HeatExplanation {
   final String fallbackRule;
   final List<HeatCheck> checks;
 
+  /// R720: a domestic hot water program.
+  final bool dhw;
+  final double? waterTarget;
+  final double? waterMin;
+
+  /// Estimated cost (euros) and heated hours of today's cycle (DHW, when power is set).
+  final double? costToday;
+  final double? heatHoursToday;
+  final double? powerKw;
+
+  /// R725: the setpoint / target after [nextAt], and why it changes (price_up / price_down /
+  /// weather_warm / weather_cool / cheap / not_cheap / legionella / ready).
+  final double? nextSetpoint;
+  final String? nextWhy;
+  final double? priceNext;
+  final double? outdoorNow;
+  final double? outdoorNext;
+  final int slotMinutes;
+
+  /// Planned ON periods (today and tomorrow when known).
+  final List<(DateTime, DateTime)> plan;
+
   bool get hasError => error != null && error!.isNotEmpty;
   HeatError? get heatError => hasError ? classifyHeatError(error!) : null;
   bool get sensorOffline => sensor == 'offline';
@@ -601,6 +637,22 @@ class HeatExplanation {
     if (storage) 'storage': true,
     if (fallbackRule != 'price') 'fallbackRule': fallbackRule,
     'checks': [for (final c in checks) c.toJson()],
+    if (dhw) 'dhw': true,
+    'waterTarget': ?waterTarget,
+    'waterMin': ?waterMin,
+    'costToday': ?costToday,
+    'heatHoursToday': ?heatHoursToday,
+    'powerKw': ?powerKw,
+    'nextSetpoint': ?nextSetpoint,
+    'nextWhy': ?nextWhy,
+    'priceNext': ?priceNext,
+    'outdoorNow': ?outdoorNow,
+    'outdoorNext': ?outdoorNext,
+    if (slotMinutes != 60) 'slotMinutes': slotMinutes,
+    if (plan.isNotEmpty)
+      'plan': [
+        for (final p in plan) [p.$1.millisecondsSinceEpoch, p.$2.millisecondsSinceEpoch],
+      ],
   };
 
   factory HeatExplanation.fromJson(Map<String, dynamic> j) {
@@ -648,6 +700,26 @@ class HeatExplanation {
       checks: [
         for (final c in (j['checks'] as List? ?? const []))
           if (c is Map) HeatCheck.fromJson(Map<String, dynamic>.from(c)),
+      ],
+      dhw: j['dhw'] == true,
+      waterTarget: d('waterTarget'),
+      waterMin: d('waterMin'),
+      costToday: d('costToday'),
+      heatHoursToday: d('heatHoursToday'),
+      powerKw: d('powerKw'),
+      nextSetpoint: d('nextSetpoint'),
+      nextWhy: j['nextWhy'] as String?,
+      priceNext: d('priceNext'),
+      outdoorNow: d('outdoorNow'),
+      outdoorNext: d('outdoorNext'),
+      slotMinutes: (j['slotMinutes'] as num?)?.toInt() ?? 60,
+      plan: [
+        for (final p in (j['plan'] as List? ?? const []))
+          if (p is List && p.length >= 2)
+            (
+              DateTime.fromMillisecondsSinceEpoch((p[0] as num).toInt()),
+              DateTime.fromMillisecondsSinceEpoch((p[1] as num).toInt()),
+            ),
       ],
     );
   }
@@ -722,10 +794,15 @@ class HeatExplanation {
           'Frost protection: ${n(temp)} °C is below ${n(frostTemp)} °C',
         );
       case 'min_temp':
-        return x.t(
-          'Lämpötila ${n(temp)} °C alle minimin ${n(minTemp)} °C',
-          'Temperature ${n(temp)} °C below the minimum ${n(minTemp)} °C',
-        );
+        return dhw
+            ? x.t(
+                'Käyttövesi ${n(temp)} °C alle minimin ${n(waterMin ?? minTemp)} °C – lämmitetään hinnasta riippumatta',
+                'Hot water ${n(temp)} °C is below the minimum ${n(waterMin ?? minTemp)} °C – heating regardless of the price',
+              )
+            : x.t(
+                'Lämpötila ${n(temp)} °C alle minimin ${n(minTemp)} °C',
+                'Temperature ${n(temp)} °C below the minimum ${n(minTemp)} °C',
+              );
       case 'manual_on':
       case 'manual_off':
         final left = modeUntil?.difference(now ?? DateTime.now());
@@ -746,6 +823,11 @@ class HeatExplanation {
           'Tarpeeksi lämmin (${n(temp)} °C ≥ ${n(maxTemp)} °C)',
           'Warm enough (${n(temp)} °C ≥ ${n(maxTemp)} °C)',
         );
+      case 'legionella':
+        return x.t(
+          'Legionellasuoja: vesi lämmitetään vähintään 60 °C:een',
+          'Legionella protection: the water is heated to at least 60 °C',
+        );
       case 'cheap':
         final within = price != null && limit != null && price! <= limit!;
         return '$fb${within ? x.t('Halpa tunti (${n(price)} c/kWh ≤ raja $limitS c)', 'Cheap hour (${n(price)} c/kWh ≤ limit $limitS c)') : x.t('Lämmitetään, ettei tauko veny liian pitkäksi (${n(price)} c/kWh)', 'Heating so that the break does not get too long (${n(price)} c/kWh)')}';
@@ -754,10 +836,26 @@ class HeatExplanation {
         final cmp = above
             ? (x.t('${n(price)} c/kWh > raja $limitS c', '${n(price)} c/kWh > limit $limitS c'))
             : '${n(price)} c/kWh';
-        return '$fb${storage ? x.t('Kallis tunti – varaava lattia riittää ($cmp)', 'Expensive hour – the storing floor is enough ($cmp)') : x.t('Ei halpa tunti – odottaa ($cmp)', 'Not a cheap hour – waiting ($cmp)')}';
+        final store = dhw
+            ? x.t('Kallis tunti – varaaja riittää ($cmp)', 'Expensive hour – the tank is enough ($cmp)')
+            : (storage
+                  ? x.t(
+                      'Kallis tunti – varaava lattia riittää ($cmp)',
+                      'Expensive hour – the storing floor is enough ($cmp)',
+                    )
+                  : x.t('Ei halpa tunti – odottaa ($cmp)', 'Not a cheap hour – waiting ($cmp)'));
+        return '$fb$store';
       case 'expensive':
         final cmp = x.t('${n(price)} c/kWh ≥ raja $limitS c', '${n(price)} c/kWh ≥ limit $limitS c');
-        return '$fb${storage ? x.t('Kallis tunti – varaava lattia riittää ($cmp)', 'Expensive hour – the storing floor is enough ($cmp)') : x.t('Kallis tunti ohitetaan ($cmp)', 'Expensive hour skipped ($cmp)')}';
+        final store = dhw
+            ? x.t('Kallis tunti – varaaja riittää ($cmp)', 'Expensive hour – the tank is enough ($cmp)')
+            : (storage
+                  ? x.t(
+                      'Kallis tunti – varaava lattia riittää ($cmp)',
+                      'Expensive hour – the storing floor is enough ($cmp)',
+                    )
+                  : x.t('Kallis tunti ohitetaan ($cmp)', 'Expensive hour skipped ($cmp)'));
+        return '$fb$store';
       case 'normal':
         return '$fb${x.t('Normaali lämmitys', 'Normal heating')}${price == null ? '' : ' (${n(price)} c/kWh)'}';
       case 'noprice':
@@ -768,10 +866,15 @@ class HeatExplanation {
           'Temperature ${n(temp)} °C is below the setpoint ${n(setpoint)} °C – heating',
         );
       case 'temp_reached':
-        return x.t(
-          'Tavoite ${n(setpoint)} °C saavutettu (${n(temp)} °C)',
-          'Setpoint ${n(setpoint)} °C reached (${n(temp)} °C)',
-        );
+        return dhw
+            ? x.t(
+                'Käyttövesi ${n(temp)} °C on tavoitteessa (${n(waterTarget ?? setpoint)} °C) – tauko',
+                'Hot water ${n(temp)} °C has reached the target (${n(waterTarget ?? setpoint)} °C) – pausing',
+              )
+            : x.t(
+                'Tavoite ${n(setpoint)} °C saavutettu (${n(temp)} °C)',
+                'Setpoint ${n(setpoint)} °C reached (${n(temp)} °C)',
+              );
       case 'temp_hold_on':
         return x.t(
           'Lämmitetään, kunnes ${n((setpoint ?? 0) + (hysteresis ?? 0) / 2)} °C',
@@ -816,9 +919,103 @@ class HeatExplanation {
         : x.t('Seuraavaksi pois klo $when', 'Next off at $when');
   }
 
+  String _whyPhrase(HeatText x) {
+    String n(num? v, [int d = 1]) => v == null ? '–' : x.n(v, d);
+    final rise = (priceNext ?? 0) - (price ?? 0);
+    return switch (nextWhy) {
+      'price_up' => x.t('hinta nousee ${n(rise.abs())} c', 'the price rises ${n(rise.abs())} c'),
+      'price_down' => x.t('hinta laskee ${n(rise.abs())} c', 'the price falls ${n(rise.abs())} c'),
+      'weather_warm' => x.t('sää lämpenee', 'the weather warms'),
+      'weather_cool' => x.t('sää kylmenee', 'the weather cools'),
+      'cheap' => x.t('halvin tunti', 'a cheap hour'),
+      'not_cheap' => x.t('kallis tunti', 'an expensive hour'),
+      'legionella' => x.t('legionellasuoja', 'legionella protection'),
+      'ready' => x.t('valmis tähän kelloon', 'ready by this time'),
+      'temp_reached' => x.t('tavoite saavutettu', 'the target is reached'),
+      'min_temp' => x.t('alle minimin', 'below the minimum'),
+      _ => reasonText(x).split('–').first.trim().toLowerCase(),
+    };
+  }
+
+  /// R725: the line at the top of the page – the value now, what it changes to and when, and why.
+  String? headline(HeatText x) {
+    String n(num? v, [int d = 1]) => v == null ? '–' : x.n(v, d);
+    final when = nextAt == null ? null : x.hm(nextAt!);
+    final sp = control == 'thermostat' || tempControl || control == 'setpoint' || dhw
+        ? (setpoint ?? target ?? comfort)
+        : null;
+    if (sp != null && nextSetpoint != null && when != null && (sp - nextSetpoint!).abs() >= 0.25) {
+      return x.t(
+        'Asetusarvo nyt ${n(sp)} °C → ${n(nextSetpoint)} °C klo $when (${_whyPhrase(x)})',
+        'Setpoint now ${n(sp)} °C → ${n(nextSetpoint)} °C at $when (${_whyPhrase(x)})',
+      );
+    }
+    if (when != null && nextOn != null) {
+      final nowW = shownOn == true ? x.t('päällä', 'on') : x.t('pois', 'off');
+      final nextW = nextOn! ? x.t('päällä', 'on') : x.t('pois', 'off');
+      return x.t('Nyt $nowW → $nextW klo $when (${_whyPhrase(x)})', 'Now $nowW → $nextW at $when (${_whyPhrase(x)})');
+    }
+    return nextText(x);
+  }
+
+  /// A short weather-effect line, or null when there is no forecast.
+  String? weatherLine(HeatText x) {
+    String n(num? v, [int d = 1]) => v == null ? '–' : x.n(v, d);
+    if (outdoorNow == null) return null;
+    if (outdoorNext != null && nextAt != null && (outdoorNow! - outdoorNext!).abs() >= 1) {
+      final warmer = outdoorNext! > outdoorNow!;
+      return warmer
+          ? x.t(
+              'Sää: ulkona nyt ${n(outdoorNow)} °C → ${n(outdoorNext)} °C klo ${x.hm(nextAt!)} (lämpenee, lämmitystarve laskee)',
+              'Weather: outside now ${n(outdoorNow)} °C → ${n(outdoorNext)} °C at ${x.hm(nextAt!)} (warming, the heat demand falls)',
+            )
+          : x.t(
+              'Sää: ulkona nyt ${n(outdoorNow)} °C → ${n(outdoorNext)} °C klo ${x.hm(nextAt!)} (kylmenee, lämmitystarve nousee)',
+              'Weather: outside now ${n(outdoorNow)} °C → ${n(outdoorNext)} °C at ${x.hm(nextAt!)} (cooling, the heat demand rises)',
+            );
+    }
+    return x.t('Sää: ulkona nyt ${n(outdoorNow)} °C', 'Weather: outside now ${n(outdoorNow)} °C');
+  }
+
+  String _hmRange(HeatText x, DateTime a, DateTime b) {
+    if (slotMinutes < 60 || a.minute != 0 || b.minute != 0) {
+      return '${x.hm(a)}–${x.hm(b)}';
+    }
+    return '${a.hour.toString().padLeft(2, '0')}–${b.hour.toString().padLeft(2, '0')}';
+  }
+
+  /// Upcoming heating periods, e.g. '23–02, 04–06'.
+  String? nextHoursText(HeatText x, {DateTime? now}) {
+    final t = now ?? DateTime.now();
+    final ahead = [
+      for (final p in plan)
+        if (p.$2.isAfter(t)) (p.$1.isBefore(t) ? t : p.$1, p.$2),
+    ];
+    if (ahead.isEmpty) return null;
+    return ahead.take(6).map((p) => _hmRange(x, p.$1, p.$2)).join(', ');
+  }
+
+  /// 'Tänään n. 1,20 € (3 h)' – only when the power or the hours are known.
+  String? costTodayText(HeatText x) {
+    String n(num? v, [int d = 1]) => v == null ? '–' : x.n(v, d);
+    if (heatHoursToday == null) return null;
+    if (costToday == null) {
+      return x.t('${n(heatHoursToday)} h tänään', '${n(heatHoursToday)} h today');
+    }
+    return x.t(
+      'Tänään n. ${n(costToday, 2)} € (${n(heatHoursToday)} h)',
+      'Today about ${n(costToday, 2)} € (${n(heatHoursToday)} h)',
+    );
+  }
+
   /// Consequence + what to do when the sensor is silent (R615).
   String? sensorWarning(HeatText x) {
     if (!sensorOffline) return null;
+    if (dhw) {
+      return '${x.t('Lämpöanturi ei vastaa.', 'The temperature sensor is not answering.')} '
+          '${x.t('Käyttövesi noudattaa kellonaikaa, kunnes anturi vastaa. Alle minimin ei voida lämmittää hinnasta riippumatta.', 'Hot water follows the clock until the sensor answers. It cannot be force-heated below the minimum.')} '
+          '${x.t('Tarkista anturin paristo ja verkkoyhteys tai valitse toinen anturi.', 'Check the sensor battery and network, or choose another sensor.')}';
+    }
     final what = tempControl
         ? x.t(
             'Lämpötilaohjaus ja turvarajat (jäätymissuoja, vähimmäislämpötila) eivät ole käytössä, ja ${_fallbackText(x, fallbackRule)}.',
@@ -876,6 +1073,7 @@ HeatExplanation explainLoad(
       manualOn: manual != null && manual.activeAt(now) ? manual.on : null,
       manualUntil: manual?.until,
       lastOn: s.on,
+      slotMinutes: x.slotMinutes,
     );
     if (thermo) {
       final d = decideThermostat(c, l, xi, thermoSetpoint ?? l.comfort);
@@ -906,6 +1104,7 @@ HeatExplanation explainLoad(
       fireplace: x.fireplace,
       manualOn: manual != null && manual.activeAt(now) ? manual.on : null,
       manualUntil: manual?.until,
+      slotMinutes: x.slotMinutes,
     );
     want = decideSwitch(c, l, xi).on;
   }
@@ -928,8 +1127,8 @@ HeatExplanation explainLoad(
   };
 
   // ---- price against its limit
-  final day = dayCosts(now, x.cost);
-  final hour = hourOf(now);
+  final day = dayCosts(now, x.cost, slotMinutes: x.slotMinutes);
+  final hour = slotOf(now, x.slotMinutes);
   final price = x.cost(hour);
   double? limit;
   String? limitKind;
@@ -938,8 +1137,9 @@ HeatExplanation explainLoad(
     final skip = template == 'skip_expensive' && !l.tempControl && l.priceLimit == null;
     final maxOff = l.maxOffHours ?? c.safety.maxOffHours ?? rec.maxOff;
     if (skip) {
-      final k = ((l.skipHours ?? rec.skipHours) * (x.holiday ? 2 : 1)).clamp(1, day.length);
-      final chosen = expensiveHours(day, k, maxRun: maxOff);
+      final kHours = ((l.skipHours ?? rec.skipHours) * (x.holiday ? 2 : 1)).clamp(1, 24);
+      final k = slotsFromHours(kHours, x.slotMinutes).clamp(1, day.length);
+      final chosen = expensiveHours(day, k, maxRun: maxOff * (60 / x.slotMinutes));
       final costs = [
         for (final e in day)
           if (chosen.contains(e.$1)) e.$2,
@@ -947,51 +1147,110 @@ HeatExplanation explainLoad(
       // The price from which an hour is skipped (the cheapest of the skipped hours).
       limit = costs.isEmpty ? null : costs.reduce(math.min);
       limitKind = 'skip';
-      limitHours = k;
+      limitHours = kHours;
     } else if (l.priceLimit != null) {
       // R634: the price limit itself; the hours of the day at or under it.
       limit = l.priceLimit;
       limitKind = 'price';
-      limitHours = day.where((e) => e.$2 <= l.priceLimit!).length;
+      limitHours = math.max(1, (day.where((e) => e.$2 <= l.priceLimit!).length * x.slotMinutes / 60).round());
     } else {
-      var n = thermo ? loadHours(l, c.site, 'cheapest', x) : loadHours(l, c.site, template, x);
-      if (x.holiday && space) n = (n / 2).ceil();
-      n = n.clamp(1, day.length);
+      var nHours = thermo ? loadHours(l, c.site, 'cheapest', x) : loadHours(l, c.site, template, x);
+      if (x.holiday && space) nHours = (nHours / 2).ceil();
+      final n = slotsFromHours(nHours, x.slotMinutes).clamp(1, day.length);
       final asc = [for (final e in day) e.$2]..sort();
-      // The n-th cheapest price: hours at or below it are the cheap hours.
+      // The n-th cheapest price: slots at or below it are the cheap ones.
       limit = asc[n - 1];
       limitKind = 'cheap';
-      limitHours = n;
+      limitHours = nHours;
     }
   }
 
   // ---- next change from the price plan (the sensor is not known ahead)
+  final plan = s.plan.isNotEmpty
+      ? s.plan
+      : heatPlan(c, l, x, from: DateTime(now.year, now.month, now.day), to: DateTime(now.year, now.month, now.day + 2));
   DateTime? nextAt;
   bool? nextOn;
   var nextAuto = false;
   if (manualNow != null) {
     nextAt = manualNow.until;
-  } else if (!thermo) {
-    if (l.tempControl && sensorState == 'ok') {
-      nextAuto = true;
-    } else {
-      for (final p in s.plan) {
-        if (!now.isBefore(p.$1) && now.isBefore(p.$2)) {
-          nextAt = p.$2;
-          nextOn = false;
-          break;
-        }
-        if (p.$1.isAfter(now)) {
-          nextAt = p.$1;
-          nextOn = true;
-          break;
-        }
+  } else if (l.tempControl && sensorState == 'ok' && !thermo && !l.isDhw) {
+    nextAuto = true;
+  } else {
+    for (final p in plan) {
+      if (!now.isBefore(p.$1) && now.isBefore(p.$2)) {
+        nextAt = p.$2;
+        nextOn = false;
+        break;
+      }
+      if (p.$1.isAfter(now)) {
+        nextAt = p.$1;
+        nextOn = true;
+        break;
       }
     }
   }
 
+  // R725: the next setpoint / why (price or weather), walking one slot ahead of the change.
+  double? nextSetpoint;
+  String? nextWhy;
+  double? priceNext;
+  final outdoorNow = x.outdoor(now);
+  double? outdoorNext;
+  if (nextAt != null) {
+    priceNext = x.cost(nextAt);
+    outdoorNext = x.outdoor(nextAt);
+    final xi = HeatInputs(
+      now: nextAt,
+      cost: x.cost,
+      outdoor: x.outdoor,
+      temp: temp,
+      holiday: c.holiday.activeAt(nextAt),
+      holidayEnd: c.holiday.to ?? x.holidayEnd,
+      fireplace: x.fireplace,
+      slotMinutes: x.slotMinutes,
+    );
+    final d = thermo ? decideThermostat(c, l, xi, thermoSetpoint ?? l.comfort) : decideSwitch(c, l, xi);
+    nextSetpoint = d.setpoint ?? d.target;
+    if ((priceNext ?? 0) - (price ?? 0) >= 0.5) {
+      nextWhy = 'price_up';
+    } else if ((price ?? 0) - (priceNext ?? 0) >= 0.5) {
+      nextWhy = 'price_down';
+    } else if (outdoorNow != null && outdoorNext != null && outdoorNext - outdoorNow >= 2) {
+      nextWhy = 'weather_warm';
+    } else if (outdoorNow != null && outdoorNext != null && outdoorNow - outdoorNext >= 2) {
+      nextWhy = 'weather_cool';
+    } else {
+      nextWhy = d.reason;
+    }
+  }
+
+  double? heatHoursToday;
+  double? costToday;
+  if (l.isDhw) {
+    final est = dhwCostEstimate(c, l, x);
+    heatHoursToday = est.$1;
+    costToday = est.$2;
+  }
+
   // ---- checks
   final checks = <HeatCheck>[];
+  if (l.isDhw) {
+    checks.add(
+      HeatCheck(
+        'min_temp',
+        l.waterMin == null || temp == null ? 'unknown' : (reason == 'min_temp' ? 'active' : 'pass'),
+        {'temp': temp, 'limit': l.waterMin},
+      ),
+    );
+    checks.add(
+      HeatCheck('legionella', l.legionellaWeekday == null ? 'inactive' : (reason == 'legionella' ? 'active' : 'pass'), {
+        'weekday': l.legionellaWeekday,
+        'hour': l.legionellaHour,
+        'temp': l.legionellaTemp,
+      }),
+    );
+  }
   final safetyOn = space && !thermo;
   if (safetyOn || thermo) {
     checks.add(
@@ -1160,5 +1419,18 @@ HeatExplanation explainLoad(
     storage: l.type == 'concrete_floor' || l.type == 'water_heater',
     fallbackRule: l.fallback,
     checks: checks,
+    dhw: l.isDhw,
+    waterTarget: l.waterTarget,
+    waterMin: l.waterMin,
+    costToday: costToday,
+    heatHoursToday: heatHoursToday,
+    powerKw: l.powerKw,
+    nextSetpoint: nextSetpoint,
+    nextWhy: nextWhy,
+    priceNext: priceNext,
+    outdoorNow: outdoorNow,
+    outdoorNext: outdoorNext,
+    slotMinutes: x.slotMinutes,
+    plan: plan,
   );
 }

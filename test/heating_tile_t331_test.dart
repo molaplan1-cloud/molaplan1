@@ -449,53 +449,60 @@ void main() {
     await end(tester);
   });
 
-  testWidgets('detail page: Tilannekuva on top, rules, 24 h timeline, grouped settings; advanced stays folded', (
-    tester,
-  ) async {
-    await wide(tester);
-    final st = await makeState();
-    st.heatingStatus = bridgeStatus(st, now: DateTime.now(), on: false, reason: 'not_cheap', temp: 20.4);
-    await tester.pumpWidget(
-      AppScope(
-        state: st,
-        child: const MaterialApp(home: HeatLoadPage(loadId: 'L1')),
-      ),
-    );
-    await settle(tester);
-    expect(find.byKey(const ValueKey('heat-snapshot')), findsOneWidget);
-    expect(find.byKey(const ValueKey('heat-snapshot-state')), findsOneWidget);
-    expect(find.byKey(const ValueKey('heat-snapshot-reason')), findsOneWidget);
-    expect(find.text('Tilannekuva'), findsOneWidget);
-    expect(find.byKey(const ValueKey('heat-timeline')), findsOneWidget);
-    expect(find.byKey(const ValueKey('heat-rules')), findsOneWidget);
-    expect(find.byKey(const ValueKey('rule-cheapest')), findsOneWidget);
-    expect(find.byKey(const ValueKey('rule-frost')), findsOneWidget);
-    expect(find.byKey(const ValueKey('rule-min_temp')), findsOneWidget);
-    // 24 bars
-    for (final i in [0, 12, 23]) {
-      expect(find.byKey(ValueKey('tl-$i')), findsOneWidget);
-    }
-    final list = find.byType(Scrollable).first;
-    // R637: the program card (device, mode, one main setting) first; everything else is folded.
-    await tester.scrollUntilVisible(find.byKey(const ValueKey('load-program')), 400, scrollable: list);
-    expect(find.byKey(const ValueKey('load-mode')), findsOneWidget);
-    expect(find.byKey(const ValueKey('load-main')), findsOneWidget);
-    expect(find.byKey(const ValueKey('load-prices')), findsNothing, reason: 'advanced is folded');
-    expect(find.byKey(const ValueKey('load-hyst')), findsNothing);
-    expect(find.byKey(const ValueKey('load-minon')), findsNothing);
-    await tester.scrollUntilVisible(find.byKey(const ValueKey('load-advanced')), 400, scrollable: list);
-    await tester.ensureVisible(find.byKey(const ValueKey('load-advanced')));
-    await tester.pump();
-    await tester.tap(find.byKey(const ValueKey('load-advanced')));
-    await settle(tester);
-    await tester.scrollUntilVisible(find.byKey(const ValueKey('load-prices')), 400, scrollable: list);
-    await tester.scrollUntilVisible(find.byKey(const ValueKey('load-temps')), 400, scrollable: list);
-    await tester.scrollUntilVisible(find.byKey(const ValueKey('load-delays')), 400, scrollable: list);
-    expect(find.text('Hintasäännöt'), findsOneWidget);
-    expect(find.text('Lämpötilarajat'), findsOneWidget);
-    expect(find.text('Viiveet'), findsOneWidget);
-    await end(tester);
-  });
+  testWidgets(
+    'detail page: Tilannekuva on top, headline, 00–24 timeline, folded rules and limits; advanced stays folded',
+    (tester) async {
+      await wide(tester);
+      final st = await makeState();
+      st.heatingStatus = bridgeStatus(st, now: DateTime.now(), on: false, reason: 'not_cheap', temp: 20.4);
+      await tester.pumpWidget(
+        AppScope(
+          state: st,
+          child: const MaterialApp(home: HeatLoadPage(loadId: 'L1')),
+        ),
+      );
+      await settle(tester);
+      expect(find.byKey(const ValueKey('heat-snapshot')), findsOneWidget);
+      expect(find.byKey(const ValueKey('heat-snapshot-state')), findsOneWidget);
+      expect(find.byKey(const ValueKey('heat-headline')), findsOneWidget);
+      expect(find.text('Tilannekuva'), findsOneWidget);
+      expect(find.byKey(const ValueKey('heat-timeline')), findsOneWidget);
+      expect(find.byKey(const ValueKey('heat-rules')), findsOneWidget);
+      expect(find.byKey(const ValueKey('rule-cheapest')), findsNothing, reason: 'rules are folded');
+      expect(find.byKey(const ValueKey('heat-limits')), findsOneWidget);
+      expect(find.text('Hinta ja rajat'), findsOneWidget);
+      // Today's hours 00, 12, 23 as hour keys (plus a now marker)
+      for (final i in [0, 12, 23]) {
+        expect(find.byKey(ValueKey('tl-h-$i')), findsOneWidget);
+      }
+      expect(find.byKey(const ValueKey('tl-now')), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('heat-rules-toggle')));
+      await settle(tester);
+      expect(find.byKey(const ValueKey('rule-cheapest')), findsOneWidget);
+      expect(find.byKey(const ValueKey('rule-frost')), findsOneWidget);
+      expect(find.byKey(const ValueKey('rule-min_temp')), findsOneWidget);
+      final list = find.byType(Scrollable).first;
+      // R637: the program card (device, mode, one main setting) first; everything else is folded.
+      await tester.scrollUntilVisible(find.byKey(const ValueKey('load-program')), 400, scrollable: list);
+      expect(find.byKey(const ValueKey('load-mode')), findsOneWidget);
+      expect(find.byKey(const ValueKey('load-main')), findsOneWidget);
+      expect(find.byKey(const ValueKey('load-prices')), findsNothing, reason: 'advanced is folded');
+      expect(find.byKey(const ValueKey('load-hyst')), findsNothing);
+      expect(find.byKey(const ValueKey('load-minon')), findsNothing);
+      await tester.scrollUntilVisible(find.byKey(const ValueKey('load-advanced')), 400, scrollable: list);
+      await tester.ensureVisible(find.byKey(const ValueKey('load-advanced')));
+      await tester.pump();
+      await tester.tap(find.byKey(const ValueKey('load-advanced')));
+      await settle(tester);
+      await tester.scrollUntilVisible(find.byKey(const ValueKey('load-prices')), 400, scrollable: list);
+      await tester.scrollUntilVisible(find.byKey(const ValueKey('load-temps')), 400, scrollable: list);
+      await tester.scrollUntilVisible(find.byKey(const ValueKey('load-delays')), 400, scrollable: list);
+      expect(find.text('Hintasäännöt'), findsOneWidget);
+      expect(find.text('Lämpötilarajat'), findsOneWidget);
+      expect(find.text('Viiveet'), findsOneWidget);
+      await end(tester);
+    },
+  );
 
   testWidgets('manual override asks first: cancel sends nothing; confirm goes to the bridge (R612)', (tester) async {
     await wide(tester);

@@ -505,6 +505,138 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s8b8e9ac677 => 'Failed';
 
   @override
+  String get se26e839c2f => 'Monday';
+
+  @override
+  String get s763254941f => 'Tuesday';
+
+  @override
+  String get sf3448cdd52 => 'Wednesday';
+
+  @override
+  String get sc34ca7eddb => 'Thursday';
+
+  @override
+  String get sfa82438bec => 'Friday';
+
+  @override
+  String get s517c348371 => 'Saturday';
+
+  @override
+  String get sb1f0e72163 => 'Sunday';
+
+  @override
+  String get s401ab20baa => 'Domestic hot water';
+
+  @override
+  String get sd5f46903a1 => 'Target temperature';
+
+  @override
+  String get sf9cd32fb4f => 'Minimum temperature';
+
+  @override
+  String get sc4b5aaad1f => 'Heat only in a time window';
+
+  @override
+  String get s818fe9e314 => 'For example 22–07. Otherwise the whole day.';
+
+  @override
+  String s6518b3c8cd(String p0, String p1) {
+    return 'Window $p0–$p1';
+  }
+
+  @override
+  String get s0d3960eb3b => 'Window starts at';
+
+  @override
+  String get s02508fe60e => 'Window ends at';
+
+  @override
+  String get s864ccac46c => 'Ready by this time';
+
+  @override
+  String get sf5ef6d3923 => 'Off – cheapest hours around the clock.';
+
+  @override
+  String sd5607dfabc(String p0) {
+    return 'Ready at $p0';
+  }
+
+  @override
+  String get s4d02b57785 => 'Ready at';
+
+  @override
+  String get s7ec7bbadbb =>
+      'Without a sensor the program heats in the chosen hours or window. With a sensor it stops at the target and force-heats when the water is below the minimum.';
+
+  @override
+  String get sbb9faf8374 => 'Domestic hot water, advanced';
+
+  @override
+  String get s64bd3ab3ff => 'Temperature sensor (optional)';
+
+  @override
+  String get sd043d39316 => 'No sensor – control by time and price';
+
+  @override
+  String get s2444634bdc => 'Heat-pump hot-water setpoint';
+
+  @override
+  String get s45c2cea1b1 => 'Setpoint chosen';
+
+  @override
+  String get se86407966b =>
+      'Write a high or low setpoint by price instead of a relay.';
+
+  @override
+  String get s9ebc215a7a => 'Choose the hot-water setpoint';
+
+  @override
+  String get s24c5940457 =>
+      'No setpoint tile. Add a heat pump with a hot-water target first.';
+
+  @override
+  String get sc012905dab => 'High setpoint (cheap price)';
+
+  @override
+  String get s31ef35d933 => 'Low setpoint (expensive price)';
+
+  @override
+  String get s240c0e0824 => 'Weekly legionella protection';
+
+  @override
+  String get sb95cea244f => 'Off';
+
+  @override
+  String s7f9a03282e(String p0, String p1, String p2) {
+    return '$p0 at $p1, $p2 °C';
+  }
+
+  @override
+  String get sef4d24cdd4 => 'Day';
+
+  @override
+  String get sad0fdcc679 => 'Starts at';
+
+  @override
+  String get s79786b9f7d => 'Target';
+
+  @override
+  String get s3228fda646 => 'Maximum price';
+
+  @override
+  String get s108a800ffc => 'not used';
+
+  @override
+  String get s129338afa1 => 'Minimum heating time';
+
+  @override
+  String get sfe7bad8c23 => 'Power for the cost estimate';
+
+  @override
+  String get s9eb77670df => 'unknown';
+
+  @override
   String get scb28b11e70 => 'New dashboard';
 
   @override
@@ -1033,9 +1165,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s43dead6994 => 'Electricity contract';
-
-  @override
-  String get sef4d24cdd4 => 'Day';
 
   @override
   String get sa62dd794ce => 'Month';
@@ -1618,13 +1747,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s579f396ae5 => 'Situation';
 
   @override
-  String get s8653f173b6 => 'Temperature';
+  String get sdffada0297 => 'Hot water now';
 
   @override
-  String get s3c6fedc117 => 'Price now (total)';
+  String get s24335ec1b2 => 'Next heating hours';
 
   @override
-  String get s7dfe0e7977 => 'Next change';
+  String get s5fc5085143 => 'Cost';
 
   @override
   String get s5555a716bb =>
@@ -1635,6 +1764,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s728ddd7778 => 'Manual override…';
+
+  @override
+  String get s29ae62461a => '+1 h heating now';
 
   @override
   String get sd661031615 => 'no sensor';
@@ -1687,19 +1819,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s39d300e3ea => 'decides now';
 
   @override
-  String get s55153c17b8 => 'Next 24 h: price and planned heating hours';
+  String get sdb0bb1e577 =>
+      'Today and tomorrow: price and planned heating hours';
+
+  @override
+  String get se94c8fdb93 => 'Today: price and planned heating hours';
 
   @override
   String get sfb5a3f7da0 => 'No price data yet.';
 
   @override
-  String sba9d60d97c(String p0, String p1) {
-    return 'Orange = heating planned on. A taller bar = a more expensive hour ($p0–$p1 c/kWh).';
+  String s867307e8a6(String p0, String p1, String p2) {
+    return 'Orange = heating planned on. A taller bar = a more expensive  ($p1–$p2 c/kWh). The line is now.';
   }
 
   @override
-  String s3030d2947a(String p0, String p1) {
-    return 'A taller bar = a more expensive hour ($p0–$p1 c/kWh). The plan shows when the home bridge has answered.';
+  String s688a9cae66(String p0, String p1, String p2) {
+    return 'A taller bar = a more expensive  ($p1–$p2 c/kWh). The plan shows when the home bridge has answered. The line is now.';
   }
 
   @override
@@ -2387,6 +2523,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sf2c65c5aeb => 'Average';
 
   @override
+  String get s8653f173b6 => 'Temperature';
+
+  @override
   String get s68b942c864 =>
       'Set the home location (Energy → Settings) for the forecast.';
 
@@ -2965,9 +3104,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get sd5f46903a1 => 'Target temperature';
-
-  @override
   String get sd2758727f5 => 'Temperature sensor';
 
   @override
@@ -3049,6 +3185,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String scb39988da3(String p0) {
     return 'Already has a program: $p0';
   }
+
+  @override
+  String get s8e2e55aae8 => 'Hot-water setpoint';
 
   @override
   String get s8ea88baef9 => 'Relay or plug';
@@ -4306,6 +4445,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s8c3353e896 => 'No home bridge is paired.';
 
   @override
+  String get sfa229e528f =>
+      'Hot water is heated for one hour now, then automatic control resumes.';
+
+  @override
+  String get s66ce56ca38 => 'Start';
+
+  @override
   String get s13a8a207ec => 'Rules and settings';
 
   @override
@@ -4316,9 +4462,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sf5dbb363af => 'Safety limits';
-
-  @override
-  String get sf9cd32fb4f => 'Minimum temperature';
 
   @override
   String get sfb0553315b => 'Frost protection';
@@ -4377,9 +4520,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s58b2cdb4e2 => 'End earlier when the room starts to cool';
 
   @override
-  String get s66ce56ca38 => 'Start';
-
-  @override
   String get s632723d95f =>
       'While you are away rooms are kept cooler, and the water heater is heated only the night before you return. Safety limits and frost protection apply.';
 
@@ -4410,6 +4550,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get se68cc54085 => 'No sensor';
 
   @override
+  String get s3fbca4acdd => 'Price and limits';
+
+  @override
+  String get s3c6fedc117 => 'Price now (total)';
+
+  @override
+  String get s7dfe0e7977 => 'Next change';
+
+  @override
   String get sf9cbe76823 => 'Price rules';
 
   @override
@@ -4427,9 +4576,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s68b3688217 => 'Setpoint down in expensive hours';
-
-  @override
-  String get s108a800ffc => 'not used';
 
   @override
   String get sb35d5f8afd => 'Setpoint up in cheap hours';
@@ -5644,9 +5790,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s87984716cb => 'Delete the thermostat?';
 
   @override
-  String get s79786b9f7d => 'Target';
-
-  @override
   String get sdd309c0a63 => 'The thermostat runs on the home bridge';
 
   @override
@@ -6808,9 +6951,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sb68e905fc4 => 'Usage (kWh)';
 
   @override
-  String get s5fc5085143 => 'Cost';
-
-  @override
   String get s2b2118a93b => 'Old data';
 
   @override
@@ -7798,27 +7938,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s1e9eca6676 =>
       'Spot price now with VAT. Transfer, tax and margin are not included – Smart heating compares the total price.';
-
-  @override
-  String get se26e839c2f => 'Monday';
-
-  @override
-  String get s763254941f => 'Tuesday';
-
-  @override
-  String get sf3448cdd52 => 'Wednesday';
-
-  @override
-  String get sc34ca7eddb => 'Thursday';
-
-  @override
-  String get sfa82438bec => 'Friday';
-
-  @override
-  String get s517c348371 => 'Saturday';
-
-  @override
-  String get sb1f0e72163 => 'Sunday';
 
   @override
   String get sd24649df81 =>
@@ -11290,8 +11409,8 @@ class AppLocalizationsEn extends AppLocalizations {
       'Ground-source heat with water circulation stores some heat: the most expensive hours are skipped in breaks of a few hours at most.';
 
   @override
-  String get s4eec9a0479 =>
-      'A water heater stays hot for a day: it is heated in the cheapest hours of the day.';
+  String get s7794246dd8 =>
+      'Domestic hot water is heated in the cheapest hours of the day, optionally in a time window or ready by a clock time. A sensor is optional: without one the control is time-based only.';
 
   @override
   String get sa2dc343545 =>
@@ -11651,6 +11770,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s78188d956e => 'Room warm enough';
 
   @override
+  String get se873f8e023 => 'Legionella protection';
+
+  @override
   String get saa76f06f20 => 'Skipping expensive hours';
 
   @override
@@ -11870,6 +11992,11 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String s6d7231b90b(String p0, String p1) {
+    return 'Hot water $p0 °C is below the minimum $p1 °C – heating regardless of the price';
+  }
+
+  @override
   String s7cdb2a0cb6(String p0, String p1) {
     return 'Temperature $p0 °C below the minimum $p1 °C';
   }
@@ -11899,6 +12026,10 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get s83b24d9798 =>
+      'Legionella protection: the water is heated to at least 60 °C';
+
+  @override
   String s0d09da9167(String p0, String p1) {
     return 'Cheap hour ($p0 c/kWh ≤ limit $p1 c)';
   }
@@ -11911,6 +12042,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String sf56f514430(String p0, String p1) {
     return '$p0 c/kWh > limit $p1 c';
+  }
+
+  @override
+  String scfd2c6b3c6(String p0) {
+    return 'Expensive hour – the tank is enough ($p0)';
   }
 
   @override
@@ -11942,6 +12078,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String sadbee991d6(String p0, String p1) {
     return 'Temperature $p0 °C is below the setpoint $p1 °C – heating';
+  }
+
+  @override
+  String s6fced7323b(String p0, String p1) {
+    return 'Hot water $p0 °C has reached the target ($p1 °C) – pausing';
   }
 
   @override
@@ -12003,6 +12144,86 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String s7efd6e02bf(String p0) {
+    return 'the price rises $p0 c';
+  }
+
+  @override
+  String s0ebd550167(String p0) {
+    return 'the price falls $p0 c';
+  }
+
+  @override
+  String get s897fd4ff6f => 'the weather warms';
+
+  @override
+  String get s63e831118b => 'the weather cools';
+
+  @override
+  String get s323434468b => 'a cheap hour';
+
+  @override
+  String get s7ead54b4cd => 'an expensive hour';
+
+  @override
+  String get s6eb11a0979 => 'legionella protection';
+
+  @override
+  String get s3e1542b6fd => 'ready by this time';
+
+  @override
+  String get sc9ee0a28fe => 'the target is reached';
+
+  @override
+  String get saa18ab9c50 => 'below the minimum';
+
+  @override
+  String s183739696a(String p0, String p1, String p2, String p3) {
+    return 'Setpoint now $p0 °C → $p1 °C at $p2 ($p3)';
+  }
+
+  @override
+  String sddf1e59c0e(String p0, String p1, String p2, String p3) {
+    return 'Now $p0 → $p1 at $p2 ($p3)';
+  }
+
+  @override
+  String s4c7b4375ee(String p0, String p1, String p2) {
+    return 'Weather: outside now $p0 °C → $p1 °C at $p2 (warming, the heat demand falls)';
+  }
+
+  @override
+  String s89f83771d1(String p0, String p1, String p2) {
+    return 'Weather: outside now $p0 °C → $p1 °C at $p2 (cooling, the heat demand rises)';
+  }
+
+  @override
+  String s4ec19937a8(String p0) {
+    return 'Weather: outside now $p0 °C';
+  }
+
+  @override
+  String s7e0277d646(String p0) {
+    return '$p0 h today';
+  }
+
+  @override
+  String s379b002672(String p0, String p1) {
+    return 'Today about $p0 € ($p1 h)';
+  }
+
+  @override
+  String get sbf916076f9 => 'The temperature sensor is not answering.';
+
+  @override
+  String get sd7ded67308 =>
+      'Hot water follows the clock until the sensor answers. It cannot be force-heated below the minimum.';
+
+  @override
+  String get s9fad63ec58 =>
+      'Check the sensor battery and network, or choose another sensor.';
+
+  @override
   String s6ebbbbc4a0(String p0) {
     return 'Temperature control and the safety limits (frost protection, minimum temperature) are off, and $p0.';
   }
@@ -12010,13 +12231,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get sdba1212edb =>
       'The safety limits (frost protection, minimum temperature) are off, and heating follows the price schedule.';
-
-  @override
-  String get sbf916076f9 => 'The temperature sensor is not answering.';
-
-  @override
-  String get s9fad63ec58 =>
-      'Check the sensor battery and network, or choose another sensor.';
 
   @override
   String get s0a81072a1f =>

@@ -93,7 +93,7 @@ void main() {
     // 4: recommendations
     expect(find.byKey(const ValueKey('rec-concrete_floor')), findsOneWidget);
     expect(find.textContaining('Sään mukaan ennakoiva'), findsWidgets);
-    expect(find.textContaining('Lämminvesivaraaja: Halvimmat tunnit'), findsOneWidget);
+    expect(find.textContaining('Käyttövesi: Halvimmat tunnit'), findsOneWidget);
     await tester.tap(find.byKey(const ValueKey('sh-apply')));
     await _settle(tester);
 

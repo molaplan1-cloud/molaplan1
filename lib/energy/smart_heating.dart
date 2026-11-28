@@ -132,8 +132,8 @@ const heatingTypes = [
   ),
   HeatingTypeInfo(
     'water_heater',
-    fi: 'Lämminvesivaraaja',
-    en: 'Water heater',
+    fi: 'Käyttövesi',
+    en: 'Domestic hot water',
     space: false,
     template: 'cheapest',
     fullHours: 4,
@@ -141,8 +141,8 @@ const heatingTypes = [
     maxOff: 22,
     skipHours: 8,
     planPreset: 'eco',
-    whyFi: 'Varaaja pysyy lämpimänä vuorokauden: se lämmitetään päivän halvimpina tunteina.',
-    whyEn: 'A water heater stays hot for a day: it is heated in the cheapest hours of the day.',
+    whyFi: 'Käyttövesi lämmitetään päivän halvimpina tunteina, halutessa tietyllä aikavälillä tai valmiiksi kelloon mennessä. Anturi on valinnainen: ilman sitä ohjaus on pelkkä kellonaika.',
+    whyEn: 'Domestic hot water is heated in the cheapest hours of the day, optionally in a time window or ready by a clock time. A sensor is optional: without one the control is time-based only.',
   ),
 ];
 
@@ -242,12 +242,26 @@ class HeatLoad {
     this.minOffMinutes = 0,
     this.priceLimit,
     this.home,
+    this.waterTarget,
+    this.waterMin,
+    this.windowStart,
+    this.windowEnd,
+    this.readyByHour,
+    this.legionellaWeekday,
+    this.legionellaHour = 3,
+    this.legionellaTemp = 65,
+    this.maxPriceCap,
+    this.minHeatMinutes = 0,
+    this.powerKw,
+    this.dhwHigh,
+    this.dhwLow,
   }) : id = id ?? newId();
   String id;
   String name;
   String type;
 
-  /// 'switch' (relay / plug toggle tile) or 'thermostat' (a Molaplan thermostat: its target is set).
+  /// 'switch' (relay / plug), 'thermostat' (a Molaplan thermostat) or 'setpoint' (a heat pump or
+  /// water-heater entity whose target is set high or low by the price).
   String control;
   String? tileId;
   String? thermostatId;
@@ -294,6 +308,41 @@ class HeatLoad {
   /// paired to (or is), as before; the app stamps it when the account has two or more bridges.
   String? home;
 
+  /// R720: domestic hot water (type `water_heater`). All of these are optional: an existing
+  /// program without them keeps the previous time-based behaviour.
+
+  /// Target water temperature (°C). With a sensor, heating stops once this is reached.
+  double? waterTarget;
+
+  /// Safety floor (°C). With a sensor, heating is forced on below this, regardless of price.
+  double? waterMin;
+
+  /// Time window for cheap-hour heating (start hour 0–23, end hour 0–23, end may be the next
+  /// morning). Both null = the whole day.
+  int? windowStart;
+  int? windowEnd;
+
+  /// Water should be ready by this clock hour (0–23). The cheapest hours are taken from the
+  /// 24 h that end then. null = the calendar day, as before.
+  int? readyByHour;
+
+  /// R721: weekly legionella cycle. ISO weekday 1=Mon … 7=Sun; null = off.
+  int? legionellaWeekday;
+  int legionellaHour;
+  double legionellaTemp;
+
+  /// R721: skip hours over this cap (c/kWh) unless the day's forced minimum heating time is unmet.
+  double? maxPriceCap;
+  int minHeatMinutes;
+
+  /// R721: heater power (kW) for the day's cost estimate. null = not shown.
+  double? powerKw;
+
+  /// R721: heat-pump / water-heater setpoints (°C) when [control] is `setpoint`: high in cheap
+  /// hours, low in expensive ones. null = use [waterTarget] / [waterMin] (or 55 / 45).
+  double? dhwHigh;
+  double? dhwLow;
+
   /// The control mode shown first: 'temp' (temperature control), 'price' (price limit) or
   /// 'hours' (the cheapest hours, also the price templates).
   String get mode => tempControl ? 'temp' : (priceLimit != null ? 'price' : 'hours');
@@ -305,6 +354,14 @@ class HeatLoad {
 
   HeatingTypeInfo get info => heatingType(type);
   bool get followsFireplace => fireplace ?? info.space;
+
+  /// Domestic hot water (käyttövesi / varaaja / boileri).
+  bool get isDhw => type == 'water_heater';
+
+  /// Default target / floor used when a new DHW program is created, or when a setpoint is written
+  /// and the user has not set their own values.
+  double get dhwTargetOr => waterTarget ?? 55;
+  double get dhwMinOr => waterMin ?? 45;
 
   Map<String, dynamic> toJson() => {
     'id': id,
@@ -330,13 +387,26 @@ class HeatLoad {
     if (minOffMinutes != 0) 'minOffMinutes': minOffMinutes,
     'priceLimit': ?priceLimit,
     'home': ?home,
+    'waterTarget': ?waterTarget,
+    'waterMin': ?waterMin,
+    'windowStart': ?windowStart,
+    'windowEnd': ?windowEnd,
+    'readyByHour': ?readyByHour,
+    'legionellaWeekday': ?legionellaWeekday,
+    if (legionellaHour != 3) 'legionellaHour': legionellaHour,
+    if (legionellaTemp != 65) 'legionellaTemp': legionellaTemp,
+    'maxPriceCap': ?maxPriceCap,
+    if (minHeatMinutes != 0) 'minHeatMinutes': minHeatMinutes,
+    'powerKw': ?powerKw,
+    'dhwHigh': ?dhwHigh,
+    'dhwLow': ?dhwLow,
   };
 
   factory HeatLoad.fromJson(Map<String, dynamic> j) => HeatLoad(
     id: j['id'] as String?,
     name: '${j['name'] ?? ''}',
     type: '${j['type'] ?? 'radiator'}',
-    control: j['control'] == 'thermostat' ? 'thermostat' : 'switch',
+    control: const ['thermostat', 'setpoint'].contains(j['control']) ? '${j['control']}' : 'switch',
     tileId: j['tileId'] as String?,
     thermostatId: j['thermostatId'] as String?,
     sensorTileId: j['sensorTileId'] as String?,
@@ -356,6 +426,19 @@ class HeatLoad {
     minOffMinutes: ((j['minOffMinutes'] as num?)?.toInt() ?? 0).clamp(0, 240),
     priceLimit: (j['priceLimit'] as num?)?.toDouble(),
     home: (j['home'] is String && (j['home'] as String).isNotEmpty) ? j['home'] as String : null,
+    waterTarget: (j['waterTarget'] as num?)?.toDouble(),
+    waterMin: (j['waterMin'] as num?)?.toDouble(),
+    windowStart: ((j['windowStart'] as num?)?.toInt())?.clamp(0, 23),
+    windowEnd: ((j['windowEnd'] as num?)?.toInt())?.clamp(0, 23),
+    readyByHour: ((j['readyByHour'] as num?)?.toInt())?.clamp(0, 23),
+    legionellaWeekday: ((j['legionellaWeekday'] as num?)?.toInt())?.clamp(1, 7),
+    legionellaHour: ((j['legionellaHour'] as num?)?.toInt() ?? 3).clamp(0, 23),
+    legionellaTemp: ((j['legionellaTemp'] as num?)?.toDouble() ?? 65).clamp(60, 80),
+    maxPriceCap: (j['maxPriceCap'] as num?)?.toDouble(),
+    minHeatMinutes: ((j['minHeatMinutes'] as num?)?.toInt() ?? 0).clamp(0, 24 * 60),
+    powerKw: (j['powerKw'] as num?)?.toDouble(),
+    dhwHigh: (j['dhwHigh'] as num?)?.toDouble(),
+    dhwLow: (j['dhwLow'] as num?)?.toDouble(),
   );
 
   HeatLoad copy() => HeatLoad.fromJson(toJson());
@@ -587,14 +670,18 @@ Recommendation recommend(String type, SiteSurvey s, {String control = 'switch'})
 
 // ------------------------------------------------------------------ decisions (pure)
 
-/// Hour starts of the local day containing [t] with their cost (null = prices incomplete).
-List<(DateTime, double)>? dayCosts(DateTime t, double? Function(DateTime hour) cost) {
+/// Starts of the local day containing [t] with their cost (null = prices incomplete).
+/// [slotMinutes] is 15 or 60: quarter-hour prices produce 96 slots, hourly prices 24.
+List<(DateTime, double)>? dayCosts(DateTime t, double? Function(DateTime hour) cost, {int slotMinutes = 60}) {
+  final step = slotMinutes.clamp(1, 60);
+  final start = DateTime(t.year, t.month, t.day);
   final out = <(DateTime, double)>[];
   final seen = <int>{};
-  for (var h = 0; h < 24; h++) {
-    final s = DateTime(t.year, t.month, t.day, h);
+  final n = 24 * 60 ~/ step;
+  for (var i = 0; i < n; i++) {
+    final s = start.add(Duration(minutes: i * step));
     if (s.day != t.day || !seen.add(s.millisecondsSinceEpoch)) continue;
-    final c = cost(s);
+    final c = cost(s) ?? (step < 60 ? cost(DateTime(s.year, s.month, s.day, s.hour)) : null);
     if (c == null) return null;
     out.add((s, c));
   }
@@ -602,6 +689,27 @@ List<(DateTime, double)>? dayCosts(DateTime t, double? Function(DateTime hour) c
 }
 
 DateTime hourOf(DateTime t) => DateTime(t.year, t.month, t.day, t.hour);
+
+/// Start of the slot containing [t] (15 or 60 minutes).
+DateTime slotOf(DateTime t, [int slotMinutes = 60]) {
+  final step = slotMinutes.clamp(1, 60);
+  final m = (t.minute ~/ step) * step;
+  return DateTime(t.year, t.month, t.day, t.hour, m);
+}
+
+/// How many slots [hours] of heating maps to.
+int slotsFromHours(int hours, int slotMinutes) {
+  final step = slotMinutes.clamp(1, 60);
+  final max = 24 * 60 ~/ step;
+  return math.max(1, (hours * 60 / step).round()).clamp(1, max);
+}
+
+/// Slot length of a price series: 15 min when the points are quarter-hours, otherwise 60.
+int slotMinutesOf(PriceSeries? s) {
+  if (s == null) return 60;
+  final r = s.resolution;
+  return r > 0 && r <= 900 ? 15 : 60;
+}
 
 /// The [n] cheapest hours; then long gaps (> [maxOff] h) get their cheapest hour added.
 Set<DateTime> cheapestHours(List<(DateTime, double)> day, int n, {double? maxOff}) {
@@ -665,10 +773,15 @@ class HeatInputs {
     this.manualOn,
     this.manualUntil,
     this.lastOn,
+    this.slotMinutes = 60,
   });
   final DateTime now;
   final double? Function(DateTime hour) cost;
   final double? Function(DateTime hour) outdoor;
+
+  /// R725: 15 when the price series has quarter-hour slots, otherwise 60. Decisions, the plan and
+  /// the chart use this step; hourly prices keep the previous hour-by-hour behaviour.
+  final int slotMinutes;
 
   /// Room temperature (null = no sensor or no reading).
   final double? temp;
@@ -740,6 +853,178 @@ int loadHours(HeatLoad l, SiteSurvey s, String template, HeatInputs x) {
   return l.hours ?? rec.hours;
 }
 
+/// R720: domestic hot water helpers.
+
+/// Whether [hour] (0–23) is inside the window [start]–[end]. A window that ends earlier than it
+/// starts crosses midnight (e.g. 22–7). Both null, or equal, means the whole day.
+bool dhwInWindow(int hour, int? start, int? end) {
+  if (start == null || end == null || start == end) return true;
+  return start < end ? hour >= start && hour < end : hour >= start || hour < end;
+}
+
+/// End of the current DHW cycle: today at [readyByHour] if that is still ahead, otherwise tomorrow
+/// at that hour. With no ready-by time, midnight tonight (the end of the calendar day).
+DateTime dhwCycleEnd(DateTime now, int? readyByHour) {
+  if (readyByHour == null) {
+    return DateTime(now.year, now.month, now.day + 1);
+  }
+  final today = DateTime(now.year, now.month, now.day, readyByHour);
+  return now.isBefore(today) ? today : today.add(const Duration(days: 1));
+}
+
+/// Hours of the current cycle, with their cost, limited to the program's window. null when a price
+/// is missing (same contract as [dayCosts]).
+List<(DateTime, double)>? dhwCycleCosts(HeatLoad l, HeatInputs x) {
+  final end = dhwCycleEnd(x.now, l.readyByHour);
+  final start = end.subtract(const Duration(hours: 24));
+  final step = x.slotMinutes.clamp(1, 60);
+  final out = <(DateTime, double)>[];
+  final n = 24 * 60 ~/ step;
+  for (var i = 0; i < n; i++) {
+    final h = start.add(Duration(minutes: i * step));
+    if (!h.isBefore(end)) break;
+    if (!dhwInWindow(h.hour, l.windowStart, l.windowEnd)) continue;
+    final c = x.cost(h) ?? (step < 60 ? x.cost(hourOf(h)) : null);
+    if (c == null) return null;
+    out.add((h, c));
+  }
+  return out;
+}
+
+/// The hours a DHW program heats in this cycle (cheapest [n], then the cap and the minimum time).
+Set<DateTime> dhwSchedule(SmartHeatingConfig c, HeatLoad l, HeatInputs x) {
+  final rec = recommend(l.type, c.site, control: l.control);
+  final n = slotsFromHours(loadHours(l, c.site, l.template ?? rec.template, x), x.slotMinutes);
+  final day = dhwCycleCosts(l, x);
+  if (day == null || day.isEmpty) return {};
+  var chosen = cheapestHours(day, n);
+  if (l.maxPriceCap != null) {
+    chosen = {
+      for (final e in day)
+        if (chosen.contains(e.$1) && e.$2 <= l.maxPriceCap!) e.$1,
+    };
+  }
+  final need = l.minHeatMinutes;
+  if (need > 0 && chosen.length * x.slotMinutes < need) {
+    final rest = [...day]..sort((a, b) => a.$2.compareTo(b.$2));
+    for (final e in rest) {
+      if (chosen.length * x.slotMinutes >= need) break;
+      chosen.add(e.$1);
+    }
+  }
+  return chosen;
+}
+
+/// Estimated cost (euros) and heated hours of the current cycle, from the schedule and [powerKw].
+(double hours, double? euros) dhwCostEstimate(SmartHeatingConfig c, HeatLoad l, HeatInputs x) {
+  final on = dhwSchedule(c, l, x);
+  final hours = on.length * x.slotMinutes / 60.0;
+  final kw = l.powerKw;
+  if (kw == null || kw <= 0) return (hours, null);
+  var euros = 0.0;
+  for (final h in on) {
+    final p = x.cost(h);
+    if (p != null) euros += kw * (x.slotMinutes / 60.0) * p / 100; // p is c/kWh
+  }
+  return (hours, euros);
+}
+
+/// True when the weekly legionella cycle is in force at [x.now].
+bool dhwLegionellaNow(HeatLoad l, HeatInputs x) {
+  final day = l.legionellaWeekday;
+  if (day == null) return false;
+  if (x.now.weekday != day) return false;
+  final start = DateTime(x.now.year, x.now.month, x.now.day, l.legionellaHour);
+  if (x.now.isBefore(start)) return false;
+  final t = x.temp;
+  if (t != null) return t < l.legionellaTemp;
+  // No sensor: two hours from the start.
+  return x.now.isBefore(start.add(const Duration(hours: 2)));
+}
+
+/// Setpoint written to a heat pump / water-heater entity (high in cheap / forced hours, low otherwise).
+double dhwSetpointFor(HeatLoad l, HeatDecision d) {
+  if (d.reason == 'legionella') return l.legionellaTemp;
+  if (d.on == true) return l.dhwHigh ?? l.dhwTargetOr;
+  return l.dhwLow ?? l.dhwMinOr;
+}
+
+/// R720: what a domestic-hot-water program should do now. Works without a sensor (time-based).
+/// An existing program with none of the new fields follows the same cheapest-hours rule as before.
+HeatDecision decideDhw(SmartHeatingConfig c, HeatLoad l, HeatInputs x) {
+  final t = x.temp;
+  // Safety floor (only with a reading): force heat, regardless of price.
+  if (t != null && l.waterMin != null && t < l.waterMin!) {
+    return HeatDecision(on: true, reason: 'min_temp', safety: true, setpoint: l.dhwHigh ?? l.dhwTargetOr);
+  }
+  if (x.manualOn != null) {
+    return HeatDecision(on: x.manualOn, reason: x.manualOn! ? 'manual_on' : 'manual_off', until: x.manualUntil);
+  }
+  if (dhwLegionellaNow(l, x)) {
+    return HeatDecision(on: true, reason: 'legionella', safety: true, setpoint: l.legionellaTemp);
+  }
+  // Target reached: stop, even in a cheap hour (the next cheap hour can top up if it cools).
+  if (t != null && l.waterTarget != null && t >= l.waterTarget!) {
+    return HeatDecision(on: false, reason: 'temp_reached', setpoint: l.dhwLow ?? l.dhwMinOr);
+  }
+  if (x.holiday) {
+    final end = x.holidayEnd;
+    if (end == null || end.difference(x.now) > const Duration(hours: 24)) {
+      return HeatDecision(on: false, reason: 'holiday');
+    }
+  }
+  final day = dhwCycleCosts(l, x);
+  if (day == null) {
+    // Same as before: no prices → heat (so the tank is not left cold).
+    return HeatDecision(on: true, reason: 'noprice');
+  }
+  // Price-limit mode (R634) still applies when the user chose it.
+  if (l.priceLimit != null) {
+    final price = x.cost(slotOf(x.now, x.slotMinutes));
+    final on = price == null || price <= l.priceLimit!;
+    return HeatDecision(
+      on: on,
+      reason: on ? 'cheap' : 'not_cheap',
+      setpoint: on ? (l.dhwHigh ?? l.dhwTargetOr) : (l.dhwLow ?? l.dhwMinOr),
+    );
+  }
+  final chosen = dhwSchedule(c, l, x);
+  final on = chosen.contains(slotOf(x.now, x.slotMinutes));
+  final reason = x.holiday ? 'holiday_return' : (on ? 'cheap' : 'not_cheap');
+  return HeatDecision(on: on, reason: reason, setpoint: on ? (l.dhwHigh ?? l.dhwTargetOr) : (l.dhwLow ?? l.dhwMinOr));
+}
+
+/// Upcoming ON periods of [l] from [from] (default: today's midnight) to [to] (default: +2 days).
+List<(DateTime, DateTime)> heatPlan(SmartHeatingConfig c, HeatLoad l, HeatInputs base, {DateTime? from, DateTime? to}) {
+  final step = base.slotMinutes.clamp(1, 60);
+  final start = from ?? DateTime(base.now.year, base.now.month, base.now.day);
+  final end = to ?? start.add(const Duration(days: 2));
+  final out = <(DateTime, DateTime)>[];
+  DateTime? onFrom;
+  var last = start;
+  for (var t = start; t.isBefore(end); t = t.add(Duration(minutes: step))) {
+    final xi = HeatInputs(
+      now: t,
+      cost: base.cost,
+      outdoor: base.outdoor,
+      holiday: c.holiday.activeAt(t),
+      holidayEnd: c.holiday.to ?? base.holidayEnd,
+      fireplace: base.fireplace,
+      slotMinutes: step,
+    );
+    final d = decideSwitch(c, l.tempControl ? (l.copy()..tempControl = false) : l, xi);
+    if (d.reason == 'noprice' && t.isAfter(base.now)) break;
+    last = t.add(Duration(minutes: step));
+    if (d.on == true && onFrom == null) onFrom = t;
+    if (d.on != true && onFrom != null) {
+      out.add((onFrom, t));
+      onFrom = null;
+    }
+  }
+  if (onFrom != null) out.add((onFrom, last));
+  return out;
+}
+
 /// What a switch load should do now (before the runtime max-off guard).
 HeatDecision decideSwitch(SmartHeatingConfig c, HeatLoad l, HeatInputs x) {
   final d = _decideSwitch(c, l, x);
@@ -753,13 +1038,21 @@ HeatDecision decideSwitch(SmartHeatingConfig c, HeatLoad l, HeatInputs x) {
 /// +[HeatLoad.cheapBoost] in the cheap ones (an hour that is both counts as cheap).
 double priceShift(SmartHeatingConfig c, HeatLoad l, HeatInputs x) {
   if (l.expensiveDrop == 0 && l.cheapBoost == 0) return 0;
-  final day = dayCosts(x.now, x.cost);
+  final day = dayCosts(x.now, x.cost, slotMinutes: x.slotMinutes);
   if (day == null) return 0;
   final rec = recommend(l.type, c.site, control: l.control);
-  final h = hourOf(x.now);
+  final h = slotOf(x.now, x.slotMinutes);
   final maxOff = l.maxOffHours ?? c.safety.maxOffHours ?? rec.maxOff;
-  if (l.cheapBoost > 0 && cheapestHours(day, loadHours(l, c.site, 'cheapest', x)).contains(h)) return l.cheapBoost;
-  if (l.expensiveDrop > 0 && expensiveHours(day, l.skipHours ?? rec.skipHours, maxRun: maxOff).contains(h)) {
+  if (l.cheapBoost > 0 &&
+      cheapestHours(day, slotsFromHours(loadHours(l, c.site, 'cheapest', x), x.slotMinutes)).contains(h)) {
+    return l.cheapBoost;
+  }
+  if (l.expensiveDrop > 0 &&
+      expensiveHours(
+        day,
+        slotsFromHours(l.skipHours ?? rec.skipHours, x.slotMinutes),
+        maxRun: maxOff * (60 / x.slotMinutes),
+      ).contains(h)) {
     return -l.expensiveDrop;
   }
   return 0;
@@ -778,6 +1071,7 @@ HeatDecision _decideByTemperature(SmartHeatingConfig c, HeatLoad l, HeatInputs x
 }
 
 HeatDecision _decideSwitch(SmartHeatingConfig c, HeatLoad l, HeatInputs x) {
+  if (l.isDhw) return decideDhw(c, l, x);
   final s = c.site;
   final rec = recommend(l.type, s, control: l.control);
   final template = l.template ?? rec.template;
@@ -814,9 +1108,9 @@ HeatDecision _decideSwitch(SmartHeatingConfig c, HeatLoad l, HeatInputs x) {
   }
   // Comfort cap: warm enough already.
   if (space && t != null && t >= l.comfort + s.swing) return HeatDecision(on: false, reason: 'warm');
-  final day = dayCosts(x.now, x.cost);
+  final day = dayCosts(x.now, x.cost, slotMinutes: x.slotMinutes);
   if (day == null) return HeatDecision(on: true, reason: 'noprice');
-  final h = hourOf(x.now);
+  final h = slotOf(x.now, x.slotMinutes);
   // R634: price limit – on while the hour costs no more than the limit.
   if (l.priceLimit != null) {
     final price = x.cost(h);
@@ -825,13 +1119,17 @@ HeatDecision _decideSwitch(SmartHeatingConfig c, HeatLoad l, HeatInputs x) {
   }
   if (template == 'skip_expensive') {
     final k = l.skipHours ?? rec.skipHours;
-    final skip = expensiveHours(day, x.holiday ? k * 2 : k, maxRun: maxOff);
+    final skip = expensiveHours(
+      day,
+      slotsFromHours(x.holiday ? k * 2 : k, x.slotMinutes),
+      maxRun: maxOff * (60 / x.slotMinutes),
+    );
     final off = skip.contains(h);
     return HeatDecision(on: !off, reason: off ? 'expensive' : (x.holiday ? 'holiday' : 'normal'));
   }
   var n = loadHours(l, s, template, x);
   if (x.holiday && space) n = (n / 2).ceil();
-  final on = cheapestHours(day, n, maxOff: maxOff).contains(h);
+  final on = cheapestHours(day, slotsFromHours(n, x.slotMinutes), maxOff: maxOff * (60 / x.slotMinutes)).contains(h);
   final reason = x.holiday && space ? 'holiday' : (x.holiday ? 'holiday_return' : (on ? 'cheap' : 'not_cheap'));
   return HeatDecision(on: on, reason: reason);
 }
@@ -845,6 +1143,18 @@ HeatDecision decideThermostat(
   double comfort, {
   List<PlanHour> plan = const [],
 }) {
+  if (l.isDhw) {
+    final d = decideDhw(c, l, x);
+    final target = d.target ?? d.setpoint ?? (d.on == true ? (l.dhwHigh ?? comfort) : (l.dhwLow ?? l.dhwMinOr));
+    return HeatDecision(
+      on: d.on,
+      target: target,
+      reason: d.reason,
+      safety: d.safety,
+      setpoint: d.setpoint,
+      until: d.until,
+    );
+  }
   final s = c.site;
   final rec = recommend(l.type, s, control: l.control);
   final template = l.template ?? rec.template;
@@ -861,8 +1171,8 @@ HeatDecision decideThermostat(
   if (x.holiday) return done(math.max(c.holiday.temp, c.safety.minTemp), 'holiday');
   var target = comfort;
   var reason = 'normal';
-  final day = dayCosts(x.now, x.cost);
-  final h = hourOf(x.now);
+  final day = dayCosts(x.now, x.cost, slotMinutes: x.slotMinutes);
+  final h = slotOf(x.now, x.slotMinutes);
   if (l.priceLimit != null) {
     // R634: price limit – a little warmer under the limit, a little cooler over it.
     if (day == null) {
@@ -886,12 +1196,16 @@ HeatDecision decideThermostat(
     reason = 'noprice';
   } else if (template == 'skip_expensive') {
     final maxOff = l.maxOffHours ?? c.safety.maxOffHours ?? rec.maxOff;
-    if (expensiveHours(day, l.skipHours ?? rec.skipHours, maxRun: maxOff).contains(h)) {
+    if (expensiveHours(
+      day,
+      slotsFromHours(l.skipHours ?? rec.skipHours, x.slotMinutes),
+      maxRun: maxOff * (60 / x.slotMinutes),
+    ).contains(h)) {
       target = comfort - s.swing;
       reason = 'expensive';
     }
   } else {
-    final on = cheapestHours(day, loadHours(l, s, template, x)).contains(h);
+    final on = cheapestHours(day, slotsFromHours(loadHours(l, s, template, x), x.slotMinutes)).contains(h);
     target = on ? comfort + s.swing / 2 : comfort - s.swing / 2;
     reason = on ? 'cheap' : 'not_cheap';
   }
@@ -958,6 +1272,7 @@ class SmartHeatingJob {
     this.config, {
     this.on = const {},
     this.off = const {},
+    this.set = const {},
     this.sensors = const {},
     this.fireSensor,
     this.names = const {},
@@ -969,6 +1284,9 @@ class SmartHeatingJob {
   final SmartHeatingConfig config;
   final Map<String, ThermoCommand> on;
   final Map<String, ThermoCommand> off;
+
+  /// R721: loadId -> write the DHW / heat-pump setpoint (high or low by the price).
+  final Map<String, ThermoCommand> set;
 
   /// loadId -> room temperature read.
   final Map<String, ThermoCommand> sensors;
@@ -985,6 +1303,7 @@ class SmartHeatingJob {
     'config': config.toJson()..remove('pushedHomes'),
     'on': {for (final e in on.entries) e.key: e.value.toJson()},
     'off': {for (final e in off.entries) e.key: e.value.toJson()},
+    if (set.isNotEmpty) 'set': {for (final e in set.entries) e.key: e.value.toJson()},
     'sensors': {for (final e in sensors.entries) e.key: e.value.toJson()},
     if (fireSensor != null) 'fireSensor': fireSensor!.toJson(),
     'names': names,
@@ -1003,6 +1322,7 @@ class SmartHeatingJob {
       SmartHeatingConfig.fromJson(j['config']),
       on: cmds(j['on']),
       off: cmds(j['off']),
+      set: cmds(j['set']),
       sensors: cmds(j['sensors']),
       fireSensor: ThermoCommand.fromJson(j['fireSensor']),
       names: {for (final e in (j['names'] as Map? ?? const {}).entries) '${e.key}': '${e.value}'},
@@ -1065,6 +1385,14 @@ class SmartHeatingJob {
         for (final l in sh.loads)
           if (l.control == 'switch' && cmd(tiles[l.tileId]?.offCommand) != null)
             l.id: cmd(tiles[l.tileId]?.offCommand)!,
+      },
+      set: {
+        for (final l in sh.loads)
+          if (l.control == 'setpoint' &&
+              tiles[l.tileId] != null &&
+              tiles[l.tileId]!.commands.isNotEmpty &&
+              cmd(tiles[l.tileId]!.commands.first) != null)
+            l.id: cmd(tiles[l.tileId]!.commands.first)!,
       },
       sensors: {
         for (final l in sh.loads)
@@ -1363,8 +1691,10 @@ class SmartHeatingRunner {
 
   bool get _active => job != null && job!.config.enabled;
 
+  int get slotMinutes => slotMinutesOf(_series);
+
   double? cost(DateTime h) {
-    final p = _series?.hourly().at(h);
+    final p = _series?.at(h) ?? _series?.hourly().at(h);
     if (p == null) return null;
     return job?.contract?.unitAt(h, spotEurMwh: p.eurMwh)?.inc ?? p.eurMwh / 10;
   }
@@ -1522,6 +1852,7 @@ class SmartHeatingRunner {
       manualOn: m?.on,
       manualUntil: m?.until,
       lastOn: lastOn,
+      slotMinutes: slotMinutes,
     );
   }
 
@@ -1558,7 +1889,7 @@ class SmartHeatingRunner {
       try {
         if (j.home != null) _forecast = await weather.forecast(j.home!);
       } catch (_) {}
-      if (_series == null || dayCosts(now, cost) == null) {
+      if (_series == null || dayCosts(now, cost, slotMinutes: slotMinutes) == null) {
         _notice(
           'noprice',
           'Sähkön hintoja ei saatu: lämmitys toimii tavallisesti, kunnes hinnat tulevat.',
@@ -1599,7 +1930,7 @@ class SmartHeatingRunner {
       }
       _holidayWas = hol;
       for (final l in c.loads) {
-        if (!l.enabled || l.control != 'switch') continue;
+        if (!l.enabled || (l.control != 'switch' && l.control != 'setpoint')) continue;
         final st = loads.putIfAbsent(l.id, LoadStatus.new);
         final hasSensor = j.sensors.containsKey(l.id);
         final temp = await _readTemp(l.id, j.sensors[l.id], now);
@@ -1686,6 +2017,41 @@ class SmartHeatingRunner {
           ..fallback = d.fallback
           ..at = now
           ..plan = _planFor(c, l, now);
+        if (l.control == 'setpoint') {
+          final sp = dhwSetpointFor(l, d);
+          st
+            ..target = sp
+            ..setpoint = sp
+            ..want = d.on
+            ..plan = _planFor(c, l, now);
+          final cmd = j.set[l.id];
+          if (cmd == null) {
+            st.error = 'no command';
+            st.errorAt = now;
+            continue;
+          }
+          if (st.on != d.on || (st.target != null && (st.target! - sp).abs() > 0.05) || st.error != null) {
+            try {
+              await send(cmd.conn, cmd.spec, sp);
+              st
+                ..on = d.on
+                ..changedAt = now
+                ..error = null
+                ..errorAt = null;
+              log?.call('smart heating "${_name(l.id)}": setpoint ${sp.toStringAsFixed(1)} °C (${d.reason})');
+            } catch (e) {
+              st.error = '$e';
+              st.errorAt = now;
+              continue;
+            }
+          }
+          if (d.on == true) {
+            st.offSince = null;
+          } else {
+            st.offSince ??= now;
+          }
+          continue;
+        }
         final want = d.on!;
         if (want != st.on) {
           final cmd = want ? j.on[l.id] : j.off[l.id];
@@ -1719,29 +2085,32 @@ class SmartHeatingRunner {
     }
   }
 
-  /// Upcoming ON periods of a switch load for the next 36 h (no sensor, no runtime guards).
+  /// Upcoming ON periods of a switch load from today's midnight through tomorrow (no sensor, no
+  /// runtime guards). Steps are 15 min when prices are quarter-hourly, otherwise one hour.
   List<(DateTime, DateTime)> _planFor(SmartHeatingConfig c, HeatLoad l, DateTime now) {
+    final step = slotMinutes;
     final out = <(DateTime, DateTime)>[];
     DateTime? start;
-    final t = hourOf(now);
-    var last = t;
-    for (var i = 0; i < 36; i++) {
-      final h = DateTime(t.year, t.month, t.day, t.hour + i);
+    final midnight = DateTime(now.year, now.month, now.day);
+    final end = midnight.add(const Duration(days: 2));
+    var last = midnight;
+    for (var t = midnight; t.isBefore(end); t = t.add(Duration(minutes: step))) {
       final x = HeatInputs(
-        now: h,
+        now: t,
         cost: cost,
         outdoor: outdoor,
-        holiday: c.holiday.activeAt(h),
+        holiday: c.holiday.activeAt(t),
         holidayEnd: c.holiday.to,
-        fireplace: fireplace.activeAt(h),
+        fireplace: fireplace.activeAt(t),
+        slotMinutes: step,
       );
       final d = decideSwitch(c, l.tempControl ? (l.copy()..tempControl = false) : l, x);
-      if (d.reason == 'noprice') break;
-      last = DateTime(h.year, h.month, h.day, h.hour + 1);
+      if (d.reason == 'noprice' && t.isAfter(now)) break;
+      last = t.add(Duration(minutes: step));
       final on = d.on == true;
-      if (on && start == null) start = h;
+      if (on && start == null) start = t;
       if (!on && start != null) {
-        out.add((start, h));
+        out.add((start, t));
         start = null;
       }
     }

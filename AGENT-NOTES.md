@@ -4,6 +4,18 @@ New Molaplan (Nov 2026): user-customisable remote control / status terminal.
 Flutter, targets Windows + Android. UI default Finnish, English switchable in Settings.
 (The old Molaplan meetup web app was wiped separately; this repo is unrelated to it.)
 
+
+## Status v0.20.33 (28.11.2026, t348u + t350u)
+- Käyttövesi program type (water_heater relabelled): wizard basics (55/45 °C, window, ready-by), optional sensor,
+  legionella, price cap, min heat time, power kW, heat-pump setpoint high/low, +1 h boost after confirm.
+  Old programs without new keys decide as before. Testaamatta laitteella. R727–R730, R734.
+- Heating detail page: headline (value now → next at time + why), weather line, today 00–24 + tomorrow chart
+  with a now marker, 15-min plan/switch/bars when prices are quarter-hourly (hourly fallback). Rules, price
+  breakdown and limits are folded. R731–R733.
+- Screenshots (ESIMERKKIDATA): /workspace/t348-shots/. Tests: test/dhw_t348_test.dart, test/dhw_shots_t348_test.dart.
+- Next free after this tag: 0.20.34; next R after R734.
+
+
 ## Env (box)
 - Flutter: ~/flutter (3.50.1 stable, Dart 3.14). Material is `package:material_ui/material_ui.dart`
   (`package:flutter/material.dart` is deprecated since 3.47). `Threshold` clashes with our model -> `hide Threshold`.

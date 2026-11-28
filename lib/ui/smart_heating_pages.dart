@@ -12,6 +12,7 @@ import '../models/models.dart';
 import 'app_scope.dart';
 import 'connections_page.dart';
 import 'heat_program_pages.dart';
+import 'heat_dhw_fields.dart';
 import 'heating_view.dart';
 
 String heatingTypeLabel(BuildContext context, String id) {
@@ -99,6 +100,8 @@ List<TileConfig> _tiles(AppConfig c, bool Function(TileConfig) f) => [
 ];
 
 List<TileConfig> switchTiles(AppConfig c) => _tiles(c, (t) => t.type == TileType.toggle && t.onCommand != null);
+
+List<TileConfig> setpointTiles(AppConfig c) => _tiles(c, (t) => t.type == TileType.slider && t.commands.isNotEmpty);
 
 List<TileConfig> tempTiles(AppConfig c) {
   final all = _tiles(c, (t) => t.type == TileType.value && t.connectionId != null);
@@ -405,6 +408,40 @@ Future<void> heatingManualClear(BuildContext context, HeatLoad l) async {
   }
 }
 
+/// R723: one hour of heating starting now, after the user confirms.
+Future<void> heatingBoostHour(BuildContext context, HeatLoad l) async {
+  final st = AppScope.read(context);
+  final x = HeatText(langOf(context));
+  final ok = await showDialog<bool>(
+    context: context,
+    builder: (d) => AlertDialog(
+      key: const ValueKey('heat-boost-confirm'),
+      title: Text(x.t('+1 h lämmitys nyt', '+1 h heating now')),
+      content: Text(
+        x.t(
+          'Käyttövettä lämmitetään yksi tunti nyt, sen jälkeen palataan automaattiseen ohjaukseen.',
+          'Hot water is heated for one hour now, then automatic control resumes.',
+        ),
+      ),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(d, false), child: Text(x.t('Peruuta', 'Cancel'))),
+        FilledButton(
+          key: const ValueKey('heat-boost-ok'),
+          onPressed: () => Navigator.pop(d, true),
+          child: Text(x.t('Käynnistä', 'Start')),
+        ),
+      ],
+    ),
+  );
+  if (ok != true || !context.mounted) return;
+  try {
+    await st.heatingManual(loadId: l.id, on: true, hours: 1);
+  } catch (e) {
+    if (!context.mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(heatingErrorText(context, e))));
+  }
+}
+
 /// 'Tilannekuva' of one device with a way to its rules and settings.
 class _SnapshotFor extends StatelessWidget {
   const _SnapshotFor({super.key, required this.load, this.title, this.bridge});
@@ -434,6 +471,7 @@ class _SnapshotFor extends StatelessWidget {
           explanation: e,
           onManual: () => heatingManualOverride(context, load),
           onClearManual: () => heatingManualClear(context, load),
+          onBoost: load.isDhw ? () => heatingBoostHour(context, load) : null,
         ),
         Align(
           alignment: Alignment.centerRight,
@@ -974,10 +1012,41 @@ class _HeatLoadPageState extends State<HeatLoadPage> {
             explanation: e,
             onManual: () => heatingManualOverride(context, l),
             onClearManual: () => heatingManualClear(context, l),
+            onBoost: l.isDhw ? () => heatingBoostHour(context, l) : null,
           ),
           if (e.tempControl) HeatSetpointDial(load: l, explanation: e),
           HeatTimeline(load: l),
           HeatRules(explanation: e),
+          Card(
+            key: const ValueKey('heat-limits'),
+            child: ExpansionTile(
+              key: const ValueKey('heat-limits-toggle'),
+              initiallyExpanded: false,
+              title: Text(x.t('Hinta ja rajat', 'Price and limits'), style: text.titleSmall),
+              childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+              children: [
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: const Icon(Icons.thermostat),
+                  title: Text(x.t('Lämpötila', 'Temperature')),
+                  subtitle: Text(HeatSnapshot.tempFact(x, e)),
+                ),
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: const Icon(Icons.bolt),
+                  title: Text(x.t('Hinta nyt (kokonaishinta)', 'Price now (total)')),
+                  subtitle: Text(HeatSnapshot.priceFact(x, e, heatSpotNow(st))),
+                ),
+                if (e.nextText(x) != null)
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    leading: const Icon(Icons.schedule),
+                    title: Text(x.t('Seuraava muutos', 'Next change')),
+                    subtitle: Text(e.nextText(x)!),
+                  ),
+              ],
+            ),
+          ),
           HeatProgramBasics(key: const ValueKey('load-basics'), loadId: l.id),
           Card(
             child: ExpansionTile(
@@ -985,6 +1054,16 @@ class _HeatLoadPageState extends State<HeatLoadPage> {
               title: Text(tx(context, 'Edistyneet', 'Advanced')),
               childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
               children: [
+                if (l.isDhw)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: HeatDhwAdvanced(
+                      load: l,
+                      onChanged: () {
+                        save();
+                      },
+                    ),
+                  ),
                 ...[
                   section(tx(context, 'Hintasäännöt', 'Price rules'), [
                     for (final t in heatingTemplates)

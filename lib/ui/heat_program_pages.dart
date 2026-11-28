@@ -10,6 +10,7 @@ import '../energy/smart_heating.dart';
 import '../state/app_state.dart';
 import '../state/remote_state.dart';
 import 'app_scope.dart';
+import 'heat_dhw_fields.dart';
 import 'heating_view.dart';
 import 'smart_heating_pages.dart';
 
@@ -376,6 +377,7 @@ class HeatProgramBasics extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             HeatMainSetting(load: l, onChanged: save),
+            if (l.isDhw) HeatDhwBasics(load: l, onChanged: save),
             if (l.mode == 'temp' && l.sensorTileId == null)
               InkWell(
                 key: const ValueKey('sensor-needed'),
@@ -556,9 +558,10 @@ class _HeatProgramWizardState extends State<HeatProgramWizard> {
   HeatLoad _make(AppState st) {
     final c = st.smartHeating!;
     final thermo = thermostatId != null;
+    final isSet = !thermo && tileId != null && setpointTiles(st.config).any((t) => t.id == tileId);
     final l = HeatLoad(
       type: type,
-      control: thermo ? 'thermostat' : 'switch',
+      control: thermo ? 'thermostat' : (isSet ? 'setpoint' : 'switch'),
       tileId: thermo ? null : tileId,
       thermostatId: thermo ? thermostatId : null,
       home: home,
@@ -567,6 +570,14 @@ class _HeatProgramWizardState extends State<HeatProgramWizard> {
     l.template = 'cheapest';
     l.hours = rec.hours;
     l.comfort = 21;
+    if (type == 'water_heater') {
+      l.waterTarget = 55;
+      l.waterMin = 45;
+      if (l.control == 'setpoint') {
+        l.dhwHigh = 55;
+        l.dhwLow = 45;
+      }
+    }
     return l;
   }
 
@@ -585,6 +596,9 @@ class _HeatProgramWizardState extends State<HeatProgramWizard> {
     }
     for (final t in st.config.energy.thermostats) {
       out.add(('th:${t.id}', t.name.isEmpty ? t.id : t.name, 'thermo', true, usedBy('th:${t.id}')));
+    }
+    for (final t in setpointTiles(st.config)) {
+      out.add(('tile:${t.id}', t.title.isEmpty ? t.id : t.title, 'setpoint', true, usedBy('tile:${t.id}')));
     }
     return out;
   }
@@ -643,7 +657,9 @@ class _HeatProgramWizardState extends State<HeatProgramWizard> {
                               ? tx(context, 'Ohjelma on jo: ${d.$5}', 'Already has a program: ${d.$5}')
                               : (d.$3 == 'thermo'
                                     ? tx(context, 'Termostaatti', 'Thermostat')
-                                    : tx(context, 'Rele tai pistorasia', 'Relay or plug')),
+                                    : (d.$3 == 'setpoint'
+                                          ? tx(context, 'Käyttöveden asetusarvo', 'Hot-water setpoint')
+                                          : tx(context, 'Rele tai pistorasia', 'Relay or plug'))),
                         ),
                         onTap: d.$5 != null
                             ? null
@@ -656,6 +672,7 @@ class _HeatProgramWizardState extends State<HeatProgramWizard> {
                                 } else {
                                   tileId = d.$1.substring(5);
                                   thermostatId = null;
+                                  if (d.$3 == 'setpoint' && type == 'radiator') type = 'water_heater';
                                 }
                               }),
                       ),
@@ -705,6 +722,7 @@ class _HeatProgramWizardState extends State<HeatProgramWizard> {
                   Text(heatModeLabel(context, l.mode), style: text.titleSmall),
                   const SizedBox(height: 6),
                   HeatMainSetting(load: l, onChanged: () => setState(() {})),
+                  if (l.isDhw) HeatDhwBasics(load: l, onChanged: () => setState(() {})),
                   const SizedBox(height: 12),
                   Text(
                     tx(

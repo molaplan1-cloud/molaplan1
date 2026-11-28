@@ -510,6 +510,138 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s8b8e9ac677 => 'Falló';
 
   @override
+  String get se26e839c2f => 'Lunes';
+
+  @override
+  String get s763254941f => 'Martes';
+
+  @override
+  String get sf3448cdd52 => 'Miércoles';
+
+  @override
+  String get sc34ca7eddb => 'Jueves';
+
+  @override
+  String get sfa82438bec => 'Viernes';
+
+  @override
+  String get s517c348371 => 'Sábado';
+
+  @override
+  String get sb1f0e72163 => 'Domingo';
+
+  @override
+  String get s401ab20baa => 'Agua caliente doméstica';
+
+  @override
+  String get sd5f46903a1 => 'Temperatura objetivo';
+
+  @override
+  String get sf9cd32fb4f => 'Temperatura mínima';
+
+  @override
+  String get sc4b5aaad1f => 'Calentar sólo en una ventana de tiempo';
+
+  @override
+  String get s818fe9e314 => 'Por ejemplo 22–07. De lo contrario todo el día.';
+
+  @override
+  String s6518b3c8cd(String p0, String p1) {
+    return 'Ventana $p0–$p1';
+  }
+
+  @override
+  String get s0d3960eb3b => 'La ventana comienza en';
+
+  @override
+  String get s02508fe60e => 'Ventana termina en';
+
+  @override
+  String get s864ccac46c => 'Listo para este momento';
+
+  @override
+  String get sf5ef6d3923 => 'Fuera – horas más baratas alrededor del reloj.';
+
+  @override
+  String sd5607dfabc(String p0) {
+    return 'Listo para $p0';
+  }
+
+  @override
+  String get s4d02b57785 => 'Listo';
+
+  @override
+  String get s7ec7bbadbb =>
+      'Sin un sensor el programa se calienta en las horas o la ventana elegidas. Con un sensor se detiene en el objetivo y se calienta la fuerza cuando el agua está por debajo del mínimo.';
+
+  @override
+  String get sbb9faf8374 => 'Agua caliente doméstica, avanzada';
+
+  @override
+  String get s64bd3ab3ff => 'Sensor de temperatura (opcional)';
+
+  @override
+  String get sd043d39316 => 'No sensor – control por tiempo y precio';
+
+  @override
+  String get s2444634bdc => 'Punto de set de agua caliente bomba de calor';
+
+  @override
+  String get s45c2cea1b1 => 'Punto elegido';
+
+  @override
+  String get se86407966b =>
+      'Escribe un punto alto o bajo por precio en lugar de un relé.';
+
+  @override
+  String get s9ebc215a7a => 'Elija el punto de conexión de agua caliente';
+
+  @override
+  String get s24c5940457 =>
+      'Sin tarjeta de punto. Agregue una bomba de calor con un objetivo de agua caliente primero.';
+
+  @override
+  String get sc012905dab => 'Punto de juego alto (precio de la fecha)';
+
+  @override
+  String get s31ef35d933 => 'Punto bajo (precio económico)';
+
+  @override
+  String get s240c0e0824 => 'Protección semanal de legionela';
+
+  @override
+  String get sb95cea244f => 'Apagado';
+
+  @override
+  String s7f9a03282e(String p0, String p1, String p2) {
+    return '$p0 en $p1, $p2 °C';
+  }
+
+  @override
+  String get sef4d24cdd4 => 'Día';
+
+  @override
+  String get sad0fdcc679 => 'Empieza en';
+
+  @override
+  String get s79786b9f7d => 'Objetivo';
+
+  @override
+  String get s3228fda646 => 'Precio máximo';
+
+  @override
+  String get s108a800ffc => 'no utilizado';
+
+  @override
+  String get s129338afa1 => 'Tiempo mínimo de calefacción';
+
+  @override
+  String get sfe7bad8c23 => 'Potencia para la estimación de los gastos';
+
+  @override
+  String get s9eb77670df => 'desconocida';
+
+  @override
   String get scb28b11e70 => 'Nueva vista';
 
   @override
@@ -1042,9 +1174,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s43dead6994 => 'Contrato eléctrico';
-
-  @override
-  String get sef4d24cdd4 => 'Día';
 
   @override
   String get sa62dd794ce => 'Mes';
@@ -1631,13 +1760,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s579f396ae5 => 'Situación';
 
   @override
-  String get s8653f173b6 => 'Temperatura';
+  String get sdffada0297 => 'Agua caliente ahora';
 
   @override
-  String get s3c6fedc117 => 'Precio ahora (total)';
+  String get s24335ec1b2 => 'Próximas horas de calefacción';
 
   @override
-  String get s7dfe0e7977 => 'Siguiente cambio';
+  String get s5fc5085143 => 'Coste';
 
   @override
   String get s5555a716bb =>
@@ -1648,6 +1777,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s728ddd7778 => 'Anulación manual...';
+
+  @override
+  String get s29ae62461a => '+1 h calefacción ahora';
 
   @override
   String get sd661031615 => 'no sensor';
@@ -1700,20 +1832,23 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s39d300e3ea => 'decide ahora';
 
   @override
-  String get s55153c17b8 =>
-      'Siguiente 24 h: precio y horas de calefacción planeadas';
+  String get sdb0bb1e577 =>
+      'Hoy y mañana: precio y horas de calefacción planificadas';
+
+  @override
+  String get se94c8fdb93 => 'Hoy: precio y horas de calefacción planificadas';
 
   @override
   String get sfb5a3f7da0 => 'Todavía no hay datos de precios.';
 
   @override
-  String sba9d60d97c(String p0, String p1) {
-    return 'Naranja = calefacción prevista. Un bar más alto = una hora más cara ($p0–$p1 c/kWh).';
+  String s867307e8a6(String p0, String p1, String p2) {
+    return 'Naranja = calefacción prevista. Un bar más alto = un más caro ($p1–$p2 c/kWh). La línea es ahora.';
   }
 
   @override
-  String s3030d2947a(String p0, String p1) {
-    return 'Un bar más alto = una hora más cara ($p0–$p1 c/kWh). El plan muestra cuando el puente de casa ha respondido.';
+  String s688a9cae66(String p0, String p1, String p2) {
+    return 'Un bar más alto = un más caro ($p1–$p2 c/kWh). El plan muestra cuando el puente de casa ha respondido. La línea es ahora.';
   }
 
   @override
@@ -2410,6 +2545,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sf2c65c5aeb => 'Promedio';
 
   @override
+  String get s8653f173b6 => 'Temperatura';
+
+  @override
   String get s68b942c864 =>
       'Establecer la ubicación de la casa (Energía → Ajustes) para el pronóstico.';
 
@@ -2993,9 +3131,6 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get sd5f46903a1 => 'Temperatura objetivo';
-
-  @override
   String get sd2758727f5 => 'Sensor de temperatura';
 
   @override
@@ -3077,6 +3212,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String scb39988da3(String p0) {
     return 'Ya tiene un programa: $p0';
   }
+
+  @override
+  String get s8e2e55aae8 => 'Punto de set de agua caliente';
 
   @override
   String get s8ea88baef9 => 'Relé o enchufe';
@@ -4350,6 +4488,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s8c3353e896 => 'No hay puente casero emparejado.';
 
   @override
+  String get sfa229e528f =>
+      'El agua caliente está calentada por una hora ahora, luego el control automático se reanudará.';
+
+  @override
+  String get s66ce56ca38 => 'Comienzo';
+
+  @override
   String get s13a8a207ec => 'Reglas y ajustes';
 
   @override
@@ -4360,9 +4505,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sf5dbb363af => 'Límites de seguridad';
-
-  @override
-  String get sf9cd32fb4f => 'Temperatura mínima';
 
   @override
   String get sfb0553315b => 'Protección contra la escotilla';
@@ -4421,9 +4563,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s58b2cdb4e2 => 'Fin antes cuando la habitación comienza a enfriar';
 
   @override
-  String get s66ce56ca38 => 'Comienzo';
-
-  @override
   String get s632723d95f =>
       'Mientras usted está lejos las habitaciones se mantienen más frías, y el calentador de agua se calienta sólo la noche antes de regresar. Se aplican límites de seguridad y protección contra la helada.';
 
@@ -4454,6 +4593,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get se68cc54085 => 'No sensor';
 
   @override
+  String get s3fbca4acdd => 'Precio y límites';
+
+  @override
+  String get s3c6fedc117 => 'Precio ahora (total)';
+
+  @override
+  String get s7dfe0e7977 => 'Siguiente cambio';
+
+  @override
   String get sf9cbe76823 => 'Reglas de precios';
 
   @override
@@ -4471,9 +4619,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s68b3688217 => 'Punto abajo en horas caras';
-
-  @override
-  String get s108a800ffc => 'no utilizado';
 
   @override
   String get sb35d5f8afd => 'Punto de juego en horas baratas';
@@ -5700,9 +5845,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s87984716cb => '¿Eliminar el termostato?';
 
   @override
-  String get s79786b9f7d => 'Objetivo';
-
-  @override
   String get sdd309c0a63 => 'El termostato funciona en el puente de casa';
 
   @override
@@ -6874,9 +7016,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sb68e905fc4 => 'Consumo (kWh)';
 
   @override
-  String get s5fc5085143 => 'Coste';
-
-  @override
   String get s2b2118a93b => 'Datos antiguos';
 
   @override
@@ -7869,27 +8008,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s1e9eca6676 =>
       'Precio del sitio ahora con IVA. Transferencia, impuestos y margen no están incluidos – La calefacción inteligente compara el precio total.';
-
-  @override
-  String get se26e839c2f => 'Lunes';
-
-  @override
-  String get s763254941f => 'Martes';
-
-  @override
-  String get sf3448cdd52 => 'Miércoles';
-
-  @override
-  String get sc34ca7eddb => 'Jueves';
-
-  @override
-  String get sfa82438bec => 'Viernes';
-
-  @override
-  String get s517c348371 => 'Sábado';
-
-  @override
-  String get sb1f0e72163 => 'Domingo';
 
   @override
   String get sd24649df81 =>
@@ -11396,8 +11514,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'Calor de fuente baja con la circulación de agua almacena un poco de calor: las horas más caras se saltan en pausas de unas pocas horas a la mayoría.';
 
   @override
-  String get s4eec9a0479 =>
-      'Un calentador de agua permanece caliente durante un día: se calienta en las horas más baratas del día.';
+  String get s7794246dd8 =>
+      'El agua caliente doméstica se calienta en las horas más baratas del día, opcionalmente en una ventana de tiempo o listo por un tiempo de reloj. Un sensor es opcional: sin uno el control solo se basa en el tiempo.';
 
   @override
   String get sa2dc343545 =>
@@ -11758,6 +11876,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get s78188d956e => 'Habitación lo suficientemente caliente';
 
   @override
+  String get se873f8e023 => 'Legionella protection';
+
+  @override
   String get saa76f06f20 => 'Pasando horas caras';
 
   @override
@@ -11980,6 +12101,11 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String s6d7231b90b(String p0, String p1) {
+    return 'Agua caliente $p0 °C está por debajo del mínimo $p1 °C – calefacción independientemente del precio';
+  }
+
+  @override
   String s7cdb2a0cb6(String p0, String p1) {
     return 'Temperatura $p0 °C debajo del mínimo $p1 °C';
   }
@@ -12011,6 +12137,10 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get s83b24d9798 =>
+      'Protección de la Legionella: el agua se calienta al menos 60 °C';
+
+  @override
   String s0d09da9167(String p0, String p1) {
     return 'Hora barata ($p0 c/kWh ≤ límite $p1 c)';
   }
@@ -12023,6 +12153,11 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String sf56f514430(String p0, String p1) {
     return '$p0 c/kWh limit $p1 c';
+  }
+
+  @override
+  String scfd2c6b3c6(String p0) {
+    return 'Hora expensiva – el tanque es suficiente ($p0)';
   }
 
   @override
@@ -12055,6 +12190,11 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String sadbee991d6(String p0, String p1) {
     return 'Temperatura $p0 °C está debajo del punto de juego $p1 °C – calefacción';
+  }
+
+  @override
+  String s6fced7323b(String p0, String p1) {
+    return 'Agua caliente $p0 °C ha alcanzado el objetivo ($p1 °C) – pausing';
   }
 
   @override
@@ -12120,6 +12260,86 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String s7efd6e02bf(String p0) {
+    return 'el precio sube $p0 c';
+  }
+
+  @override
+  String s0ebd550167(String p0) {
+    return 'el precio cae $p0 c';
+  }
+
+  @override
+  String get s897fd4ff6f => 'el clima caliente';
+
+  @override
+  String get s63e831118b => 'el tiempo fresco';
+
+  @override
+  String get s323434468b => 'una hora barata';
+
+  @override
+  String get s7ead54b4cd => 'una hora cara';
+
+  @override
+  String get s6eb11a0979 => 'protección de legionela';
+
+  @override
+  String get s3e1542b6fd => 'listo para este tiempo';
+
+  @override
+  String get sc9ee0a28fe => 'se ha alcanzado el objetivo';
+
+  @override
+  String get saa18ab9c50 => 'debajo del mínimo';
+
+  @override
+  String s183739696a(String p0, String p1, String p2, String p3) {
+    return 'Setpoint now $p0 °C → $p1 °C at $p2 ($p3)';
+  }
+
+  @override
+  String sddf1e59c0e(String p0, String p1, String p2, String p3) {
+    return 'Ahora $p0 → $p1 en $p2 ($p3)';
+  }
+
+  @override
+  String s4c7b4375ee(String p0, String p1, String p2) {
+    return 'El tiempo: fuera ahora $p0 °C → $p1 °C a $p2 (encendimiento, la demanda de calor cae)';
+  }
+
+  @override
+  String s89f83771d1(String p0, String p1, String p2) {
+    return 'Tiempo: afuera ahora $p0 °C → $p1 °C a $p2 (cooling, la demanda de calor aumenta)';
+  }
+
+  @override
+  String s4ec19937a8(String p0) {
+    return 'Tiempo: afuera ahora $p0 °C';
+  }
+
+  @override
+  String s7e0277d646(String p0) {
+    return '$p0 h hoy';
+  }
+
+  @override
+  String s379b002672(String p0, String p1) {
+    return 'Hoy sobre $p0 € ($p1 h)';
+  }
+
+  @override
+  String get sbf916076f9 => 'El sensor de temperatura no responde.';
+
+  @override
+  String get sd7ded67308 =>
+      'El agua caliente sigue el reloj hasta que el sensor responde. No se puede calentar por la fuerza debajo del mínimo.';
+
+  @override
+  String get s9fad63ec58 =>
+      'Revise la batería y la red del sensor, o elija otro sensor.';
+
+  @override
   String s6ebbbbc4a0(String p0) {
     return 'El control de la temperatura y los límites de seguridad (protección de la tensión, temperatura mínima) están apagados, y $p0.';
   }
@@ -12127,13 +12347,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get sdba1212edb =>
       'Los límites de seguridad (protección de residuos, temperatura mínima) están apagados, y la calefacción sigue el calendario de precios.';
-
-  @override
-  String get sbf916076f9 => 'El sensor de temperatura no responde.';
-
-  @override
-  String get s9fad63ec58 =>
-      'Revise la batería y la red del sensor, o elija otro sensor.';
 
   @override
   String get s0a81072a1f =>

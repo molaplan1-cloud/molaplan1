@@ -506,6 +506,155 @@
  "s472700f0f5": "Lyckade datahämtningar listas här. En avisering skickas bara om en hämtning fortsätter att misslyckas.",
  "sdfa5b44030": "Lyckades",
  "s8b8e9ac677": "Misslyckades",
+ "se26e839c2f": "Måndag Måndag Måndag",
+ "@se26e839c2f": {
+  "x-mt": true
+ },
+ "s763254941f": "Tisdag tisdag tisdag",
+ "@s763254941f": {
+  "x-mt": true
+ },
+ "sf3448cdd52": "Onsdag onsdag onsdag",
+ "@sf3448cdd52": {
+  "x-mt": true
+ },
+ "sc34ca7eddb": "Torsdag torsdag torsdag",
+ "@sc34ca7eddb": {
+  "x-mt": true
+ },
+ "sfa82438bec": "fredag fredag fredag",
+ "@sfa82438bec": {
+  "x-mt": true
+ },
+ "s517c348371": "Lördag lördag",
+ "@s517c348371": {
+  "x-mt": true
+ },
+ "sb1f0e72163": "Söndag söndag",
+ "@sb1f0e72163": {
+  "x-mt": true
+ },
+ "s401ab20baa": "Inrikes varmt vatten",
+ "@s401ab20baa": {
+  "x-mt": true
+ },
+ "sd5f46903a1": "Måltemperatur",
+ "sf9cd32fb4f": "Minsta temperaturen",
+ "@sf9cd32fb4f": {
+  "x-mt": true
+ },
+ "sc4b5aaad1f": "Värme endast i ett tidsfönster",
+ "@sc4b5aaad1f": {
+  "x-mt": true
+ },
+ "s818fe9e314": "Till exempel 22-07. Annars hela dagen.",
+ "@s818fe9e314": {
+  "x-mt": true
+ },
+ "s6518b3c8cd": "Fönster {p0}-{p1}",
+ "@s6518b3c8cd": {
+  "x-mt": true
+ },
+ "s0d3960eb3b": "Fönster börjar vid",
+ "@s0d3960eb3b": {
+  "x-mt": true
+ },
+ "s02508fe60e": "Fönster slutar vid",
+ "@s02508fe60e": {
+  "x-mt": true
+ },
+ "s864ccac46c": "Redo vid denna tid",
+ "@s864ccac46c": {
+  "x-mt": true
+ },
+ "sf5ef6d3923": "Av - billigaste timmar dygnet runt.",
+ "@sf5ef6d3923": {
+  "x-mt": true
+ },
+ "sd5607dfabc": "Redo på {p0}",
+ "@sd5607dfabc": {
+  "x-mt": true
+ },
+ "s4d02b57785": "Redo på",
+ "@s4d02b57785": {
+  "x-mt": true
+ },
+ "s7ec7bbadbb": "Utan en sensor värmer programmet i de valda timmarna eller fönstret. Med en sensor stannar det vid målet och kraftvärmen när vattnet är under minimum.",
+ "@s7ec7bbadbb": {
+  "x-mt": true
+ },
+ "sbb9faf8374": "Inrikes varmt vatten, avancerat",
+ "@sbb9faf8374": {
+  "x-mt": true
+ },
+ "s64bd3ab3ff": "Temperaturgivare (valfritt)",
+ "sd043d39316": "Ingen sensor – styrning efter tid och pris",
+ "@sd043d39316": {
+  "x-mt": true
+ },
+ "s2444634bdc": "Värmepump hot-water setpoint",
+ "@s2444634bdc": {
+  "x-mt": true
+ },
+ "s45c2cea1b1": "Setpoint vald",
+ "@s45c2cea1b1": {
+  "x-mt": true
+ },
+ "se86407966b": "Skriv en hög eller låg utgångspunkt per pris istället för ett relä.",
+ "@se86407966b": {
+  "x-mt": true
+ },
+ "s9ebc215a7a": "Välj varmvattensuppsättningen",
+ "@s9ebc215a7a": {
+  "x-mt": true
+ },
+ "s24c5940457": "Inget setpoint-kort. Lägg till en värmepump med ett varmvattenmål först.",
+ "@s24c5940457": {
+  "x-mt": true
+ },
+ "sc012905dab": "Hög uppsättning (billigt pris)",
+ "@sc012905dab": {
+  "x-mt": true
+ },
+ "s31ef35d933": "Lågt setpoint (expensivt pris)",
+ "@s31ef35d933": {
+  "x-mt": true
+ },
+ "s240c0e0824": "Veckovis legionella skydd",
+ "@s240c0e0824": {
+  "x-mt": true
+ },
+ "sb95cea244f": "Av",
+ "s7f9a03282e": "{p0} på {p1}, {p2} °C",
+ "@s7f9a03282e": {
+  "x-mt": true
+ },
+ "sef4d24cdd4": "Dag",
+ "sad0fdcc679": "Börjar på",
+ "@sad0fdcc679": {
+  "x-mt": true
+ },
+ "s79786b9f7d": "Mål",
+ "s3228fda646": "Maximalt pris",
+ "@s3228fda646": {
+  "x-mt": true
+ },
+ "s108a800ffc": "inte används",
+ "@s108a800ffc": {
+  "x-mt": true
+ },
+ "s129338afa1": "Minsta uppvärmningstid",
+ "@s129338afa1": {
+  "x-mt": true
+ },
+ "sfe7bad8c23": "Kraft för kostnadsuppskattningen",
+ "@sfe7bad8c23": {
+  "x-mt": true
+ },
+ "s9eb77670df": "Okänd",
+ "@s9eb77670df": {
+  "x-mt": true
+ },
  "scb28b11e70": "Ny vy",
  "s1f9799af4e": "t.ex. stuga",
  "@s1f9799af4e": {
@@ -861,7 +1010,6 @@
  "se12fc46923": "Ingen",
  "s9773c92c92": "Energi och kostnader",
  "s43dead6994": "Elavtal",
- "sef4d24cdd4": "Dag",
  "sa62dd794ce": "Månad",
  "s6b2ebe5aca": "Välj dina mätare först",
  "sde41f2fac9": "Markera nedan vilken mätare mäter hela webbplatsen och vilka enstaka enheter.",
@@ -1256,18 +1404,15 @@
  "@s579f396ae5": {
   "x-mt": true
  },
- "s8653f173b6": "Temperatur",
- "@s8653f173b6": {
+ "sdffada0297": "Varmt vatten nu",
+ "@sdffada0297": {
   "x-mt": true
  },
- "s3c6fedc117": "Pris nu (totalt)",
- "@s3c6fedc117": {
+ "s24335ec1b2": "Nästa värmetimmar",
+ "@s24335ec1b2": {
   "x-mt": true
  },
- "s7dfe0e7977": "Nästa förändring",
- "@s7dfe0e7977": {
-  "x-mt": true
- },
+ "s5fc5085143": "Kostnad",
  "s5555a716bb": "Detta är en uppskattning från priser och inställningar: hembron har ännu inte svarat, så enhetens verkliga tillstånd är okänt.",
  "@s5555a716bb": {
   "x-mt": true
@@ -1278,6 +1423,10 @@
  },
  "s728ddd7778": "Manuell överridning...",
  "@s728ddd7778": {
+  "x-mt": true
+ },
+ "s29ae62461a": "+1 h uppvärmning nu",
+ "@s29ae62461a": {
   "x-mt": true
  },
  "sd661031615": "Ingen sensor",
@@ -1325,20 +1474,24 @@
  "@s39d300e3ea": {
   "x-mt": true
  },
- "s55153c17b8": "Nästa 24 h: Pris och planerade uppvärmningstimmar",
- "@s55153c17b8": {
+ "sdb0bb1e577": "I dag och i morgon: pris och planerade värmetimmar",
+ "@sdb0bb1e577": {
+  "x-mt": true
+ },
+ "se94c8fdb93": "Idag: Pris och planerade uppvärmningstimmar",
+ "@se94c8fdb93": {
   "x-mt": true
  },
  "sfb5a3f7da0": "Inga prisdata ännu.",
  "@sfb5a3f7da0": {
   "x-mt": true
  },
- "sba9d60d97c": "Orange = uppvärmning planerad på. En högre bar = en dyrare timme ({p0}-{p1} c/kWh).",
- "@sba9d60d97c": {
+ "s867307e8a6": "Orange = uppvärmning planerad på. En högre bar = en dyrare ({p1}-{p2} c/kWh).",
+ "@s867307e8a6": {
   "x-mt": true
  },
- "s3030d2947a": "En högre bar = en dyrare timme ({p0}-{p1} c/kWh). Planen visar när hembron har svarat.",
- "@s3030d2947a": {
+ "s688a9cae66": "En högre bar = en dyrare ({p1}-{p2} c/kWh). Planen visar när hembron har svarat.",
+ "@s688a9cae66": {
   "x-mt": true
  },
  "s3d99bc591b": "Manuell överridning",
@@ -1989,6 +2142,10 @@
  },
  "s109b35551a": "Max",
  "sf2c65c5aeb": "Medelvärde",
+ "s8653f173b6": "Temperatur",
+ "@s8653f173b6": {
+  "x-mt": true
+ },
  "s68b942c864": "Ställ in hemorten (Energy → Inställningar) för prognosen.",
  "@s68b942c864": {
   "x-mt": true
@@ -2537,7 +2694,6 @@
  "@s5fab7a2144": {
   "x-mt": true
  },
- "sd5f46903a1": "Måltemperatur",
  "sd2758727f5": "Temperaturgivare",
  "@sd2758727f5": {
   "x-mt": true
@@ -2632,6 +2788,10 @@
  },
  "scb39988da3": "Har redan ett program: {p0}",
  "@scb39988da3": {
+  "x-mt": true
+ },
+ "s8e2e55aae8": "Hot-water setpoint",
+ "@s8e2e55aae8": {
   "x-mt": true
  },
  "s8ea88baef9": "Relä eller plug",
@@ -3586,6 +3746,14 @@
  "@s8c3353e896": {
   "x-mt": true
  },
+ "sfa229e528f": "Varmt vatten värms i en timme nu, då automatisk kontroll återupptar.",
+ "@sfa229e528f": {
+  "x-mt": true
+ },
+ "s66ce56ca38": "Börja",
+ "@s66ce56ca38": {
+  "x-mt": true
+ },
  "s13a8a207ec": "Regler och inställningar",
  "@s13a8a207ec": {
   "x-mt": true
@@ -3600,10 +3768,6 @@
  },
  "sf5dbb363af": "Säkerhetsgränser",
  "@sf5dbb363af": {
-  "x-mt": true
- },
- "sf9cd32fb4f": "Minsta temperaturen",
- "@sf9cd32fb4f": {
   "x-mt": true
  },
  "sfb0553315b": "Frostskydd",
@@ -3674,10 +3838,6 @@
  "@s58b2cdb4e2": {
   "x-mt": true
  },
- "s66ce56ca38": "Börja",
- "@s66ce56ca38": {
-  "x-mt": true
- },
  "s632723d95f": "Medan du är borta rum hålls svalare, och vattenvärmaren värms bara natten innan du återvänder. Säkerhetsgränser och frostskydd gäller.",
  "@s632723d95f": {
   "x-mt": true
@@ -3714,6 +3874,18 @@
  "@se68cc54085": {
   "x-mt": true
  },
+ "s3fbca4acdd": "Pris och gränser",
+ "@s3fbca4acdd": {
+  "x-mt": true
+ },
+ "s3c6fedc117": "Pris nu (totalt)",
+ "@s3c6fedc117": {
+  "x-mt": true
+ },
+ "s7dfe0e7977": "Nästa förändring",
+ "@s7dfe0e7977": {
+  "x-mt": true
+ },
  "sf9cbe76823": "Prisregler",
  "@sf9cbe76823": {
   "x-mt": true
@@ -3732,10 +3904,6 @@
  },
  "s68b3688217": "Ställ ner i dyra timmar",
  "@s68b3688217": {
-  "x-mt": true
- },
- "s108a800ffc": "inte används",
- "@s108a800ffc": {
   "x-mt": true
  },
  "sb35d5f8afd": "Ställ upp i billiga timmar",
@@ -4992,7 +5160,6 @@
  "s0ab1430151": "Ny termostat",
  "sbbc98d573d": "Redigera termostat",
  "s87984716cb": "Ta bort termostaten?",
- "s79786b9f7d": "Mål",
  "sdd309c0a63": "Termostaten körs på hembryggan",
  "sa4701693b6": "Ställ in fjärråtkomst på en enhet i hemmet (Inställningar → Fjärråtkomst). Tills dess styr den ingenting.",
  "s06cda8c0de": "Körs på den här enheten (hembrygga).",
@@ -6023,7 +6190,6 @@
  },
  "s80c4ecec94": "c/h",
  "sb68e905fc4": "Förbrukning (kWh)",
- "s5fc5085143": "Kostnad",
  "s2b2118a93b": "Gamla data",
  "@s2b2118a93b": {
   "x-mt": true
@@ -6887,34 +7053,6 @@
  },
  "s1e9eca6676": "Spotpriset nu med moms. Överföring, skatt och marginal ingår inte – Smart uppvärmning jämför det totala priset.",
  "@s1e9eca6676": {
-  "x-mt": true
- },
- "se26e839c2f": "Måndag Måndag Måndag",
- "@se26e839c2f": {
-  "x-mt": true
- },
- "s763254941f": "Tisdag tisdag tisdag",
- "@s763254941f": {
-  "x-mt": true
- },
- "sf3448cdd52": "Onsdag onsdag onsdag",
- "@sf3448cdd52": {
-  "x-mt": true
- },
- "sc34ca7eddb": "Torsdag torsdag torsdag",
- "@sc34ca7eddb": {
-  "x-mt": true
- },
- "sfa82438bec": "fredag fredag fredag",
- "@sfa82438bec": {
-  "x-mt": true
- },
- "s517c348371": "Lördag lördag",
- "@s517c348371": {
-  "x-mt": true
- },
- "sb1f0e72163": "Söndag söndag",
- "@sb1f0e72163": {
   "x-mt": true
  },
  "sd24649df81": "webbläsaren kan inte nå enheter på ditt hemnätverk",
@@ -10219,8 +10357,8 @@
  "@s33536024e7": {
   "x-mt": true
  },
- "s4eec9a0479": "En varmvattenberedare stannar varmt för en dag: den värms upp i de billigaste timmarna på dagen.",
- "@s4eec9a0479": {
+ "s7794246dd8": "Inhemskt varmt vatten värms upp i de billigaste timmarna på dagen, valfritt i ett tidsfönster eller klar med en klocktid. En sensor är valfri: utan en är kontrollen endast tidsbaserad.",
+ "@s7794246dd8": {
   "x-mt": true
  },
  "sa2dc343545": "Fireplace läge slutar: rummet kyls. Uppvärmning är tillbaka till det normala.",
@@ -10566,6 +10704,10 @@
  "@s78188d956e": {
   "x-mt": true
  },
+ "se873f8e023": "Legionella skydd",
+ "@se873f8e023": {
+  "x-mt": true
+ },
  "saa76f06f20": "Hoppa över dyra timmar",
  "@saa76f06f20": {
   "x-mt": true
@@ -10777,6 +10919,10 @@
  "@s9e31ebc1e8": {
   "x-mt": true
  },
+ "s6d7231b90b": "Varmt vatten {p0} °C är under det minsta {p1} °C - uppvärmning oavsett priset",
+ "@s6d7231b90b": {
+  "x-mt": true
+ },
  "s7cdb2a0cb6": "Temperatur {p0} °C under minimum {p1} °C",
  "@s7cdb2a0cb6": {
   "x-mt": true
@@ -10805,6 +10951,10 @@
  "@s247db88d99": {
   "x-mt": true
  },
+ "s83b24d9798": "Legionella skydd: vattnet värms till minst 60 °C",
+ "@s83b24d9798": {
+  "x-mt": true
+ },
  "s0d09da9167": "Billig timme ({p0} c/kWh ≤ gräns {p1} c)",
  "@s0d09da9167": {
   "x-mt": true
@@ -10815,6 +10965,10 @@
  },
  "sf56f514430": "{p0} c/kWh > gräns {p1} c",
  "@sf56f514430": {
+  "x-mt": true
+ },
+ "scfd2c6b3c6": "Dyrt timme – tanken räcker ({p0})",
+ "@scfd2c6b3c6": {
   "x-mt": true
  },
  "s9cdd4b289a": "Dyrtimme – lagringsgolvet räcker ({p0})",
@@ -10843,6 +10997,10 @@
  },
  "sadbee991d6": "Temperatur {p0} °C är under inställningen {p1} °C - uppvärmning",
  "@sadbee991d6": {
+  "x-mt": true
+ },
+ "s6fced7323b": "Varmt vatten {p0} °C har nått målet ({p1} °C) - pausning",
+ "@s6fced7323b": {
   "x-mt": true
  },
  "s0e20e8780d": "Setpoint {p0} °C nådde ({p1} °C)",
@@ -10905,20 +11063,92 @@
  "@s2c7a2c7c84": {
   "x-mt": true
  },
- "s6ebbbbc4a0": "Temperaturkontroll och säkerhetsgränser (frostskydd, lägsta temperatur) är avstängda och {p0}.",
- "@s6ebbbbc4a0": {
+ "s7efd6e02bf": "priset stiger {p0} c",
+ "@s7efd6e02bf": {
   "x-mt": true
  },
- "sdba1212edb": "Säkerhetsgränserna (frostskydd, lägsta temperatur) är avstängda och uppvärmning följer prisschemat.",
- "@sdba1212edb": {
+ "s0ebd550167": "priset faller {p0} c",
+ "@s0ebd550167": {
+  "x-mt": true
+ },
+ "s897fd4ff6f": "Vädret värms",
+ "@s897fd4ff6f": {
+  "x-mt": true
+ },
+ "s63e831118b": "Vädret svalnar",
+ "@s63e831118b": {
+  "x-mt": true
+ },
+ "s323434468b": "En billig timme",
+ "@s323434468b": {
+  "x-mt": true
+ },
+ "s7ead54b4cd": "En dyr timme",
+ "@s7ead54b4cd": {
+  "x-mt": true
+ },
+ "s6eb11a0979": "legionella skydd",
+ "@s6eb11a0979": {
+  "x-mt": true
+ },
+ "s3e1542b6fd": "redo vid denna tid",
+ "@s3e1542b6fd": {
+  "x-mt": true
+ },
+ "sc9ee0a28fe": "målet uppnås",
+ "@sc9ee0a28fe": {
+  "x-mt": true
+ },
+ "saa18ab9c50": "under det minsta",
+ "@saa18ab9c50": {
+  "x-mt": true
+ },
+ "s183739696a": "Setpoint nu {p0} °C → {p1} °C vid {p2} ({p3})",
+ "@s183739696a": {
+  "x-mt": true
+ },
+ "sddf1e59c0e": "Nu {p0} {p1} på {p2} ({p3})",
+ "@sddf1e59c0e": {
+  "x-mt": true
+ },
+ "s4c7b4375ee": "Väder: utanför nu {p0} °C → {p1} °C vid {p2} (värme, värmebehovet faller)",
+ "@s4c7b4375ee": {
+  "x-mt": true
+ },
+ "s89f83771d1": "Vädret: utanför nu {p0} °C → {p1} °C vid {p2} (kylning, värmebehovet stiger)",
+ "@s89f83771d1": {
+  "x-mt": true
+ },
+ "s4ec19937a8": "Vädret: utanför nu {p0} °C",
+ "@s4ec19937a8": {
+  "x-mt": true
+ },
+ "s7e0277d646": "{p0} idag",
+ "@s7e0277d646": {
+  "x-mt": true
+ },
+ "s379b002672": "Idag om {p0} € ({p1} h)",
+ "@s379b002672": {
   "x-mt": true
  },
  "sbf916076f9": "Temperatursensorn svarar inte.",
  "@sbf916076f9": {
   "x-mt": true
  },
+ "sd7ded67308": "Varmt vatten följer klockan tills sensorn svarar. Det kan inte vara kraftuppvärmt under minimum.",
+ "@sd7ded67308": {
+  "x-mt": true
+ },
  "s9fad63ec58": "Kontrollera sensorbatteriet och nätverket eller välj en annan sensor.",
  "@s9fad63ec58": {
+  "x-mt": true
+ },
+ "s6ebbbbc4a0": "Temperaturkontroll och säkerhetsgränser (frostskydd, lägsta temperatur) är avstängda och {p0}.",
+ "@s6ebbbbc4a0": {
+  "x-mt": true
+ },
+ "sdba1212edb": "Säkerhetsgränserna (frostskydd, lägsta temperatur) är avstängda och uppvärmning följer prisschemat.",
+ "@sdba1212edb": {
   "x-mt": true
  },
  "s0a81072a1f": "Hitta den i routerns enhetslista eller tillverkarens app (enhetsinformation). Reservera en fast IP för den.",

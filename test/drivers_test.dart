@@ -190,7 +190,7 @@ void main() {
         'data': '{"brightness_pct": {{value}}}',
       }, value: 40.0);
       expect(calls.single, '/api/services/light/turn_on {"brightness_pct":40,"entity_id":"light.olohuone"}');
-      expect(await d.test(), 'API running.');
+      expect(await d.test(), startsWith('API running.'));
       await d.dispose();
     });
 

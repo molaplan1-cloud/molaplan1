@@ -506,6 +506,155 @@
  "s472700f0f5": "Aquí se listan las consultas de datos correctas. Solo se envía una notificación si una consulta sigue fallando.",
  "sdfa5b44030": "Correcto",
  "s8b8e9ac677": "Falló",
+ "se26e839c2f": "Lunes",
+ "@se26e839c2f": {
+  "x-mt": true
+ },
+ "s763254941f": "Martes",
+ "@s763254941f": {
+  "x-mt": true
+ },
+ "sf3448cdd52": "Miércoles",
+ "@sf3448cdd52": {
+  "x-mt": true
+ },
+ "sc34ca7eddb": "Jueves",
+ "@sc34ca7eddb": {
+  "x-mt": true
+ },
+ "sfa82438bec": "Viernes",
+ "@sfa82438bec": {
+  "x-mt": true
+ },
+ "s517c348371": "Sábado",
+ "@s517c348371": {
+  "x-mt": true
+ },
+ "sb1f0e72163": "Domingo",
+ "@sb1f0e72163": {
+  "x-mt": true
+ },
+ "s401ab20baa": "Agua caliente doméstica",
+ "@s401ab20baa": {
+  "x-mt": true
+ },
+ "sd5f46903a1": "Temperatura objetivo",
+ "sf9cd32fb4f": "Temperatura mínima",
+ "@sf9cd32fb4f": {
+  "x-mt": true
+ },
+ "sc4b5aaad1f": "Calentar sólo en una ventana de tiempo",
+ "@sc4b5aaad1f": {
+  "x-mt": true
+ },
+ "s818fe9e314": "Por ejemplo 22–07. De lo contrario todo el día.",
+ "@s818fe9e314": {
+  "x-mt": true
+ },
+ "s6518b3c8cd": "Ventana {p0}–{p1}",
+ "@s6518b3c8cd": {
+  "x-mt": true
+ },
+ "s0d3960eb3b": "La ventana comienza en",
+ "@s0d3960eb3b": {
+  "x-mt": true
+ },
+ "s02508fe60e": "Ventana termina en",
+ "@s02508fe60e": {
+  "x-mt": true
+ },
+ "s864ccac46c": "Listo para este momento",
+ "@s864ccac46c": {
+  "x-mt": true
+ },
+ "sf5ef6d3923": "Fuera – horas más baratas alrededor del reloj.",
+ "@sf5ef6d3923": {
+  "x-mt": true
+ },
+ "sd5607dfabc": "Listo para {p0}",
+ "@sd5607dfabc": {
+  "x-mt": true
+ },
+ "s4d02b57785": "Listo",
+ "@s4d02b57785": {
+  "x-mt": true
+ },
+ "s7ec7bbadbb": "Sin un sensor el programa se calienta en las horas o la ventana elegidas. Con un sensor se detiene en el objetivo y se calienta la fuerza cuando el agua está por debajo del mínimo.",
+ "@s7ec7bbadbb": {
+  "x-mt": true
+ },
+ "sbb9faf8374": "Agua caliente doméstica, avanzada",
+ "@sbb9faf8374": {
+  "x-mt": true
+ },
+ "s64bd3ab3ff": "Sensor de temperatura (opcional)",
+ "sd043d39316": "No sensor – control por tiempo y precio",
+ "@sd043d39316": {
+  "x-mt": true
+ },
+ "s2444634bdc": "Punto de set de agua caliente bomba de calor",
+ "@s2444634bdc": {
+  "x-mt": true
+ },
+ "s45c2cea1b1": "Punto elegido",
+ "@s45c2cea1b1": {
+  "x-mt": true
+ },
+ "se86407966b": "Escribe un punto alto o bajo por precio en lugar de un relé.",
+ "@se86407966b": {
+  "x-mt": true
+ },
+ "s9ebc215a7a": "Elija el punto de conexión de agua caliente",
+ "@s9ebc215a7a": {
+  "x-mt": true
+ },
+ "s24c5940457": "Sin tarjeta de punto. Agregue una bomba de calor con un objetivo de agua caliente primero.",
+ "@s24c5940457": {
+  "x-mt": true
+ },
+ "sc012905dab": "Punto de juego alto (precio de la fecha)",
+ "@sc012905dab": {
+  "x-mt": true
+ },
+ "s31ef35d933": "Punto bajo (precio económico)",
+ "@s31ef35d933": {
+  "x-mt": true
+ },
+ "s240c0e0824": "Protección semanal de legionela",
+ "@s240c0e0824": {
+  "x-mt": true
+ },
+ "sb95cea244f": "Apagado",
+ "s7f9a03282e": "{p0} en {p1}, {p2} °C",
+ "@s7f9a03282e": {
+  "x-mt": true
+ },
+ "sef4d24cdd4": "Día",
+ "sad0fdcc679": "Empieza en",
+ "@sad0fdcc679": {
+  "x-mt": true
+ },
+ "s79786b9f7d": "Objetivo",
+ "s3228fda646": "Precio máximo",
+ "@s3228fda646": {
+  "x-mt": true
+ },
+ "s108a800ffc": "no utilizado",
+ "@s108a800ffc": {
+  "x-mt": true
+ },
+ "s129338afa1": "Tiempo mínimo de calefacción",
+ "@s129338afa1": {
+  "x-mt": true
+ },
+ "sfe7bad8c23": "Potencia para la estimación de los gastos",
+ "@sfe7bad8c23": {
+  "x-mt": true
+ },
+ "s9eb77670df": "desconocida",
+ "@s9eb77670df": {
+  "x-mt": true
+ },
  "scb28b11e70": "Nueva vista",
  "s1f9799af4e": "e.g. Cottage",
  "@s1f9799af4e": {
@@ -858,7 +1007,6 @@
  "se12fc46923": "Ninguno",
  "s9773c92c92": "Energía y costes",
  "s43dead6994": "Contrato eléctrico",
- "sef4d24cdd4": "Día",
  "sa62dd794ce": "Mes",
  "s6b2ebe5aca": "Elige primero tus medidores",
  "sde41f2fac9": "Marcar abajo qué medidor mide todo el sitio y cuáles dispositivos individuales.",
@@ -1253,18 +1401,15 @@
  "@s579f396ae5": {
   "x-mt": true
  },
- "s8653f173b6": "Temperatura",
- "@s8653f173b6": {
+ "sdffada0297": "Agua caliente ahora",
+ "@sdffada0297": {
   "x-mt": true
  },
- "s3c6fedc117": "Precio ahora (total)",
- "@s3c6fedc117": {
+ "s24335ec1b2": "Próximas horas de calefacción",
+ "@s24335ec1b2": {
   "x-mt": true
  },
- "s7dfe0e7977": "Siguiente cambio",
- "@s7dfe0e7977": {
-  "x-mt": true
- },
+ "s5fc5085143": "Coste",
  "s5555a716bb": "Se trata de una estimación de precios y ajustes: el puente casero no ha respondido todavía, por lo que el estado real del dispositivo es desconocido.",
  "@s5555a716bb": {
   "x-mt": true
@@ -1275,6 +1420,10 @@
  },
  "s728ddd7778": "Anulación manual...",
  "@s728ddd7778": {
+  "x-mt": true
+ },
+ "s29ae62461a": "+1 h calefacción ahora",
+ "@s29ae62461a": {
   "x-mt": true
  },
  "sd661031615": "no sensor",
@@ -1322,20 +1471,24 @@
  "@s39d300e3ea": {
   "x-mt": true
  },
- "s55153c17b8": "Siguiente 24 h: precio y horas de calefacción planeadas",
- "@s55153c17b8": {
+ "sdb0bb1e577": "Hoy y mañana: precio y horas de calefacción planificadas",
+ "@sdb0bb1e577": {
+  "x-mt": true
+ },
+ "se94c8fdb93": "Hoy: precio y horas de calefacción planificadas",
+ "@se94c8fdb93": {
   "x-mt": true
  },
  "sfb5a3f7da0": "Todavía no hay datos de precios.",
  "@sfb5a3f7da0": {
   "x-mt": true
  },
- "sba9d60d97c": "Naranja = calefacción prevista. Un bar más alto = una hora más cara ({p0}–{p1} c/kWh).",
- "@sba9d60d97c": {
+ "s867307e8a6": "Naranja = calefacción prevista. Un bar más alto = un más caro ({p1}–{p2} c/kWh). La línea es ahora.",
+ "@s867307e8a6": {
   "x-mt": true
  },
- "s3030d2947a": "Un bar más alto = una hora más cara ({p0}–{p1} c/kWh). El plan muestra cuando el puente de casa ha respondido.",
- "@s3030d2947a": {
+ "s688a9cae66": "Un bar más alto = un más caro ({p1}–{p2} c/kWh). El plan muestra cuando el puente de casa ha respondido. La línea es ahora.",
+ "@s688a9cae66": {
   "x-mt": true
  },
  "s3d99bc591b": "Anulación manual",
@@ -1983,6 +2136,10 @@
  },
  "s109b35551a": "Máx",
  "sf2c65c5aeb": "Promedio",
+ "s8653f173b6": "Temperatura",
+ "@s8653f173b6": {
+  "x-mt": true
+ },
  "s68b942c864": "Establecer la ubicación de la casa (Energía → Ajustes) para el pronóstico.",
  "@s68b942c864": {
   "x-mt": true
@@ -2531,7 +2688,6 @@
  "@s5fab7a2144": {
   "x-mt": true
  },
- "sd5f46903a1": "Temperatura objetivo",
  "sd2758727f5": "Sensor de temperatura",
  "@sd2758727f5": {
   "x-mt": true
@@ -2626,6 +2782,10 @@
  },
  "scb39988da3": "Ya tiene un programa: {p0}",
  "@scb39988da3": {
+  "x-mt": true
+ },
+ "s8e2e55aae8": "Punto de set de agua caliente",
+ "@s8e2e55aae8": {
   "x-mt": true
  },
  "s8ea88baef9": "Relé o enchufe",
@@ -3589,6 +3749,14 @@
  "@s8c3353e896": {
   "x-mt": true
  },
+ "sfa229e528f": "El agua caliente está calentada por una hora ahora, luego el control automático se reanudará.",
+ "@sfa229e528f": {
+  "x-mt": true
+ },
+ "s66ce56ca38": "Comienzo",
+ "@s66ce56ca38": {
+  "x-mt": true
+ },
  "s13a8a207ec": "Reglas y ajustes",
  "@s13a8a207ec": {
   "x-mt": true
@@ -3603,10 +3771,6 @@
  },
  "sf5dbb363af": "Límites de seguridad",
  "@sf5dbb363af": {
-  "x-mt": true
- },
- "sf9cd32fb4f": "Temperatura mínima",
- "@sf9cd32fb4f": {
   "x-mt": true
  },
  "sfb0553315b": "Protección contra la escotilla",
@@ -3677,10 +3841,6 @@
  "@s58b2cdb4e2": {
   "x-mt": true
  },
- "s66ce56ca38": "Comienzo",
- "@s66ce56ca38": {
-  "x-mt": true
- },
  "s632723d95f": "Mientras usted está lejos las habitaciones se mantienen más frías, y el calentador de agua se calienta sólo la noche antes de regresar. Se aplican límites de seguridad y protección contra la helada.",
  "@s632723d95f": {
   "x-mt": true
@@ -3717,6 +3877,18 @@
  "@se68cc54085": {
   "x-mt": true
  },
+ "s3fbca4acdd": "Precio y límites",
+ "@s3fbca4acdd": {
+  "x-mt": true
+ },
+ "s3c6fedc117": "Precio ahora (total)",
+ "@s3c6fedc117": {
+  "x-mt": true
+ },
+ "s7dfe0e7977": "Siguiente cambio",
+ "@s7dfe0e7977": {
+  "x-mt": true
+ },
  "sf9cbe76823": "Reglas de precios",
  "@sf9cbe76823": {
   "x-mt": true
@@ -3735,10 +3907,6 @@
  },
  "s68b3688217": "Punto abajo en horas caras",
  "@s68b3688217": {
-  "x-mt": true
- },
- "s108a800ffc": "no utilizado",
- "@s108a800ffc": {
   "x-mt": true
  },
  "sb35d5f8afd": "Punto de juego en horas baratas",
@@ -4986,7 +5154,6 @@
  "s0ab1430151": "Nuevo termostato",
  "sbbc98d573d": "Editar termostato",
  "s87984716cb": "¿Eliminar el termostato?",
- "s79786b9f7d": "Objetivo",
  "sdd309c0a63": "El termostato funciona en el puente de casa",
  "sa4701693b6": "Configura el acceso remoto en un dispositivo en casa (Ajustes → Acceso remoto). Hasta entonces no controla nada.",
  "s06cda8c0de": "Funciona en este dispositivo (puente de casa).",
@@ -6020,7 +6187,6 @@
  },
  "s80c4ecec94": "c/h",
  "sb68e905fc4": "Consumo (kWh)",
- "s5fc5085143": "Coste",
  "s2b2118a93b": "Datos antiguos",
  "@s2b2118a93b": {
   "x-mt": true
@@ -6881,34 +7047,6 @@
  },
  "s1e9eca6676": "Precio del sitio ahora con IVA. Transferencia, impuestos y margen no están incluidos – La calefacción inteligente compara el precio total.",
  "@s1e9eca6676": {
-  "x-mt": true
- },
- "se26e839c2f": "Lunes",
- "@se26e839c2f": {
-  "x-mt": true
- },
- "s763254941f": "Martes",
- "@s763254941f": {
-  "x-mt": true
- },
- "sf3448cdd52": "Miércoles",
- "@sf3448cdd52": {
-  "x-mt": true
- },
- "sc34ca7eddb": "Jueves",
- "@sc34ca7eddb": {
-  "x-mt": true
- },
- "sfa82438bec": "Viernes",
- "@sfa82438bec": {
-  "x-mt": true
- },
- "s517c348371": "Sábado",
- "@s517c348371": {
-  "x-mt": true
- },
- "sb1f0e72163": "Domingo",
- "@sb1f0e72163": {
   "x-mt": true
  },
  "sd24649df81": "El navegador no puede llegar a dispositivos en su red de inicio",
@@ -10207,8 +10345,8 @@
  "@s33536024e7": {
   "x-mt": true
  },
- "s4eec9a0479": "Un calentador de agua permanece caliente durante un día: se calienta en las horas más baratas del día.",
- "@s4eec9a0479": {
+ "s7794246dd8": "El agua caliente doméstica se calienta en las horas más baratas del día, opcionalmente en una ventana de tiempo o listo por un tiempo de reloj. Un sensor es opcional: sin uno el control solo se basa en el tiempo.",
+ "@s7794246dd8": {
   "x-mt": true
  },
  "sa2dc343545": "El modo Fireplace terminó: la habitación está enfriando. La calefacción está de vuelta a la normalidad.",
@@ -10554,6 +10692,10 @@
  "@s78188d956e": {
   "x-mt": true
  },
+ "se873f8e023": "Legionella protection",
+ "@se873f8e023": {
+  "x-mt": true
+ },
  "saa76f06f20": "Pasando horas caras",
  "@saa76f06f20": {
   "x-mt": true
@@ -10765,6 +10907,10 @@
  "@s9e31ebc1e8": {
   "x-mt": true
  },
+ "s6d7231b90b": "Agua caliente {p0} °C está por debajo del mínimo {p1} °C – calefacción independientemente del precio",
+ "@s6d7231b90b": {
+  "x-mt": true
+ },
  "s7cdb2a0cb6": "Temperatura {p0} °C debajo del mínimo {p1} °C",
  "@s7cdb2a0cb6": {
   "x-mt": true
@@ -10793,6 +10939,10 @@
  "@s247db88d99": {
   "x-mt": true
  },
+ "s83b24d9798": "Protección de la Legionella: el agua se calienta al menos 60 °C",
+ "@s83b24d9798": {
+  "x-mt": true
+ },
  "s0d09da9167": "Hora barata ({p0} c/kWh ≤ límite {p1} c)",
  "@s0d09da9167": {
   "x-mt": true
@@ -10803,6 +10953,10 @@
  },
  "sf56f514430": "{p0} c/kWh limit {p1} c",
  "@sf56f514430": {
+  "x-mt": true
+ },
+ "scfd2c6b3c6": "Hora expensiva – el tanque es suficiente ({p0})",
+ "@scfd2c6b3c6": {
   "x-mt": true
  },
  "s9cdd4b289a": "Hora expensiva – el suelo de almacenamiento es suficiente ({p0})",
@@ -10831,6 +10985,10 @@
  },
  "sadbee991d6": "Temperatura {p0} °C está debajo del punto de juego {p1} °C – calefacción",
  "@sadbee991d6": {
+  "x-mt": true
+ },
+ "s6fced7323b": "Agua caliente {p0} °C ha alcanzado el objetivo ({p1} °C) – pausing",
+ "@s6fced7323b": {
   "x-mt": true
  },
  "s0e20e8780d": "Setpoint {p0} °C reached ({p1} °C)",
@@ -10893,20 +11051,92 @@
  "@s2c7a2c7c84": {
   "x-mt": true
  },
- "s6ebbbbc4a0": "El control de la temperatura y los límites de seguridad (protección de la tensión, temperatura mínima) están apagados, y {p0}.",
- "@s6ebbbbc4a0": {
+ "s7efd6e02bf": "el precio sube {p0} c",
+ "@s7efd6e02bf": {
   "x-mt": true
  },
- "sdba1212edb": "Los límites de seguridad (protección de residuos, temperatura mínima) están apagados, y la calefacción sigue el calendario de precios.",
- "@sdba1212edb": {
+ "s0ebd550167": "el precio cae {p0} c",
+ "@s0ebd550167": {
+  "x-mt": true
+ },
+ "s897fd4ff6f": "el clima caliente",
+ "@s897fd4ff6f": {
+  "x-mt": true
+ },
+ "s63e831118b": "el tiempo fresco",
+ "@s63e831118b": {
+  "x-mt": true
+ },
+ "s323434468b": "una hora barata",
+ "@s323434468b": {
+  "x-mt": true
+ },
+ "s7ead54b4cd": "una hora cara",
+ "@s7ead54b4cd": {
+  "x-mt": true
+ },
+ "s6eb11a0979": "protección de legionela",
+ "@s6eb11a0979": {
+  "x-mt": true
+ },
+ "s3e1542b6fd": "listo para este tiempo",
+ "@s3e1542b6fd": {
+  "x-mt": true
+ },
+ "sc9ee0a28fe": "se ha alcanzado el objetivo",
+ "@sc9ee0a28fe": {
+  "x-mt": true
+ },
+ "saa18ab9c50": "debajo del mínimo",
+ "@saa18ab9c50": {
+  "x-mt": true
+ },
+ "s183739696a": "Setpoint now {p0} °C → {p1} °C at {p2} ({p3})",
+ "@s183739696a": {
+  "x-mt": true
+ },
+ "sddf1e59c0e": "Ahora {p0} → {p1} en {p2} ({p3})",
+ "@sddf1e59c0e": {
+  "x-mt": true
+ },
+ "s4c7b4375ee": "El tiempo: fuera ahora {p0} °C → {p1} °C a {p2} (encendimiento, la demanda de calor cae)",
+ "@s4c7b4375ee": {
+  "x-mt": true
+ },
+ "s89f83771d1": "Tiempo: afuera ahora {p0} °C → {p1} °C a {p2} (cooling, la demanda de calor aumenta)",
+ "@s89f83771d1": {
+  "x-mt": true
+ },
+ "s4ec19937a8": "Tiempo: afuera ahora {p0} °C",
+ "@s4ec19937a8": {
+  "x-mt": true
+ },
+ "s7e0277d646": "{p0} h hoy",
+ "@s7e0277d646": {
+  "x-mt": true
+ },
+ "s379b002672": "Hoy sobre {p0} € ({p1} h)",
+ "@s379b002672": {
   "x-mt": true
  },
  "sbf916076f9": "El sensor de temperatura no responde.",
  "@sbf916076f9": {
   "x-mt": true
  },
+ "sd7ded67308": "El agua caliente sigue el reloj hasta que el sensor responde. No se puede calentar por la fuerza debajo del mínimo.",
+ "@sd7ded67308": {
+  "x-mt": true
+ },
  "s9fad63ec58": "Revise la batería y la red del sensor, o elija otro sensor.",
  "@s9fad63ec58": {
+  "x-mt": true
+ },
+ "s6ebbbbc4a0": "El control de la temperatura y los límites de seguridad (protección de la tensión, temperatura mínima) están apagados, y {p0}.",
+ "@s6ebbbbc4a0": {
+  "x-mt": true
+ },
+ "sdba1212edb": "Los límites de seguridad (protección de residuos, temperatura mínima) están apagados, y la calefacción sigue el calendario de precios.",
+ "@sdba1212edb": {
   "x-mt": true
  },
  "s0a81072a1f": "Encuéntrelo en la lista de dispositivos de su router o en la aplicación del fabricante (información del dispositivo).",

@@ -506,6 +506,155 @@
  "s472700f0f5": "Õnnestunud andmepäringud on loetletud siin. Teade saadetakse ainult siis, kui päring jätkuvalt ebaõnnestub.",
  "sdfa5b44030": "Õnnestus",
  "s8b8e9ac677": "Ebaõnnestus",
+ "se26e839c2f": "Esmaspäev",
+ "@se26e839c2f": {
+  "x-mt": true
+ },
+ "s763254941f": "Teisipäev",
+ "@s763254941f": {
+  "x-mt": true
+ },
+ "sf3448cdd52": "Kolmapäev",
+ "@sf3448cdd52": {
+  "x-mt": true
+ },
+ "sc34ca7eddb": "Neljapäev",
+ "@sc34ca7eddb": {
+  "x-mt": true
+ },
+ "sfa82438bec": "Reede",
+ "@sfa82438bec": {
+  "x-mt": true
+ },
+ "s517c348371": "Laupäev",
+ "@s517c348371": {
+  "x-mt": true
+ },
+ "sb1f0e72163": "Pühapäev",
+ "@sb1f0e72163": {
+  "x-mt": true
+ },
+ "s401ab20baa": "Soe tarbevesi",
+ "@s401ab20baa": {
+  "x-mt": true
+ },
+ "sd5f46903a1": "Sihttemperatuur",
+ "sf9cd32fb4f": "Minimaalne temperatuur",
+ "@sf9cd32fb4f": {
+  "x-mt": true
+ },
+ "sc4b5aaad1f": "Kuumutamine ainult ajaaknas",
+ "@sc4b5aaad1f": {
+  "x-mt": true
+ },
+ "s818fe9e314": "Näiteks 22–07, muidu terve päev.",
+ "@s818fe9e314": {
+  "x-mt": true
+ },
+ "s6518b3c8cd": "Aken {p0}–{p1}",
+ "@s6518b3c8cd": {
+  "x-mt": true
+ },
+ "s0d3960eb3b": "Aken algab",
+ "@s0d3960eb3b": {
+  "x-mt": true
+ },
+ "s02508fe60e": "Aken lõpeb",
+ "@s02508fe60e": {
+  "x-mt": true
+ },
+ "s864ccac46c": "Valmis selleks ajaks",
+ "@s864ccac46c": {
+  "x-mt": true
+ },
+ "sf5ef6d3923": "Odavaimad tunnid ööpäevaringselt.",
+ "@sf5ef6d3923": {
+  "x-mt": true
+ },
+ "sd5607dfabc": "Valmis {p0}",
+ "@sd5607dfabc": {
+  "x-mt": true
+ },
+ "s4d02b57785": "Valmis",
+ "@s4d02b57785": {
+  "x-mt": true
+ },
+ "s7ec7bbadbb": "Ilma andurita programm kuumeneb valitud tundidel või aknas. Anduriga peatub see sihtmärgi juures ja jõudu soojendab, kui vesi on alla miinimumi.",
+ "@s7ec7bbadbb": {
+  "x-mt": true
+ },
+ "sbb9faf8374": "Soe tarbevesi, kõrgekvaliteediline",
+ "@sbb9faf8374": {
+  "x-mt": true
+ },
+ "s64bd3ab3ff": "Temperatuuriandur (valikuline)",
+ "sd043d39316": "Andurit ei ole - kontroll aja ja hinna üle",
+ "@sd043d39316": {
+  "x-mt": true
+ },
+ "s2444634bdc": "Kuumaveepumba seadeväärtus",
+ "@s2444634bdc": {
+  "x-mt": true
+ },
+ "s45c2cea1b1": "Määramispunkt valitud",
+ "@s45c2cea1b1": {
+  "x-mt": true
+ },
+ "se86407966b": "Kirjutage relee asemel kõrge või madal seadepunkt hinna järgi.",
+ "@se86407966b": {
+  "x-mt": true
+ },
+ "s9ebc215a7a": "Kuumavee seadeväärtuse valimine",
+ "@s9ebc215a7a": {
+  "x-mt": true
+ },
+ "s24c5940457": "Seadepunktikaarti pole, kõigepealt lisa kuumavee sihtmärgiga soojuspump.",
+ "@s24c5940457": {
+  "x-mt": true
+ },
+ "sc012905dab": "Kõrge seadeväärtus (odav hind)",
+ "@sc012905dab": {
+  "x-mt": true
+ },
+ "s31ef35d933": "Madal seadeväärtus (kallis hind)",
+ "@s31ef35d933": {
+  "x-mt": true
+ },
+ "s240c0e0824": "Legionella iganädalane kaitse",
+ "@s240c0e0824": {
+  "x-mt": true
+ },
+ "sb95cea244f": "Väljas",
+ "s7f9a03282e": "{p0} {p1}, {p2} °C",
+ "@s7f9a03282e": {
+  "x-mt": true
+ },
+ "sef4d24cdd4": "Päev",
+ "sad0fdcc679": "Alustab",
+ "@sad0fdcc679": {
+  "x-mt": true
+ },
+ "s79786b9f7d": "Siht",
+ "s3228fda646": "Maksimaalne hind",
+ "@s3228fda646": {
+  "x-mt": true
+ },
+ "s108a800ffc": "ei kasutata",
+ "@s108a800ffc": {
+  "x-mt": true
+ },
+ "s129338afa1": "Minimaalne kütmisaeg",
+ "@s129338afa1": {
+  "x-mt": true
+ },
+ "sfe7bad8c23": "Võimsus kuluprognoosi koostamiseks",
+ "@sfe7bad8c23": {
+  "x-mt": true
+ },
+ "s9eb77670df": "tundmatu",
+ "@s9eb77670df": {
+  "x-mt": true
+ },
  "scb28b11e70": "Uus vaade",
  "s1f9799af4e": "nt Cottage",
  "@s1f9799af4e": {
@@ -861,7 +1010,6 @@
  "se12fc46923": "Puudub",
  "s9773c92c92": "Energia ja kulud",
  "s43dead6994": "Elektrileping",
- "sef4d24cdd4": "Päev",
  "sa62dd794ce": "Kuu",
  "s6b2ebe5aca": "Vali kõigepealt arvestid",
  "sde41f2fac9": "Märkige allpool, milline meeter mõõdab kogu saiti ja millised üksikud seadmed.",
@@ -1256,18 +1404,15 @@
  "@s579f396ae5": {
   "x-mt": true
  },
- "s8653f173b6": "Õhutemperatuur",
- "@s8653f173b6": {
+ "sdffada0297": "Kuum vesi nüüd",
+ "@sdffada0297": {
   "x-mt": true
  },
- "s3c6fedc117": "Hind nüüd (kokku)",
- "@s3c6fedc117": {
+ "s24335ec1b2": "Järgmised küttetunnid",
+ "@s24335ec1b2": {
   "x-mt": true
  },
- "s7dfe0e7977": "Järgmine muutus",
- "@s7dfe0e7977": {
-  "x-mt": true
- },
+ "s5fc5085143": "Kulu",
  "s5555a716bb": "See on hinnang hindade ja seadete järgi: kodusild ei ole veel vastanud, nii et seadme tegelik seisund on teadmata.",
  "@s5555a716bb": {
   "x-mt": true
@@ -1278,6 +1423,10 @@
  },
  "s728ddd7778": "Käsitsi tühistamine...",
  "@s728ddd7778": {
+  "x-mt": true
+ },
+ "s29ae62461a": "+1 h kütmine",
+ "@s29ae62461a": {
   "x-mt": true
  },
  "sd661031615": "sensorit",
@@ -1325,20 +1474,24 @@
  "@s39d300e3ea": {
   "x-mt": true
  },
- "s55153c17b8": "Järgmine 24 h: hind ja planeeritud küttetunnid",
- "@s55153c17b8": {
+ "sdb0bb1e577": "Täna ja homme: hind ja planeeritud küttetunnid",
+ "@sdb0bb1e577": {
+  "x-mt": true
+ },
+ "se94c8fdb93": "Täna: hind ja planeeritud küttetunnid",
+ "@se94c8fdb93": {
   "x-mt": true
  },
  "sfb5a3f7da0": "Hinnaandmeid veel pole.",
  "@sfb5a3f7da0": {
   "x-mt": true
  },
- "sba9d60d97c": "Oranž = planeeritud kütmine. Kõrgem baar = kallim tund ({p0}–{p1} c/kWh).",
- "@sba9d60d97c": {
+ "s867307e8a6": "Oranž = planeeritud kütmine. Kõrgem baar = kallim ({p1}–{p2} c/kWh). Liin on nüüd.",
+ "@s867307e8a6": {
   "x-mt": true
  },
- "s3030d2947a": "Kõrgem riba = kallim tund ({p0}–{p1} c/kWh). Plaan näitab, millal kodusild on vastanud.",
- "@s3030d2947a": {
+ "s688a9cae66": "Kõrgem riba = kallim ({p1}–{p2} c/kWh). Plaan näitab, millal kodusild on vastanud. Liin on nüüd.",
+ "@s688a9cae66": {
   "x-mt": true
  },
  "s3d99bc591b": "Käsitsi tühistamine",
@@ -1989,6 +2142,10 @@
  },
  "s109b35551a": "Maks",
  "sf2c65c5aeb": "Keskmine",
+ "s8653f173b6": "Õhutemperatuur",
+ "@s8653f173b6": {
+  "x-mt": true
+ },
  "s68b942c864": "Määra kodu asukoht (Energy → Settings) prognoosimiseks.",
  "@s68b942c864": {
   "x-mt": true
@@ -2537,7 +2694,6 @@
  "@s5fab7a2144": {
   "x-mt": true
  },
- "sd5f46903a1": "Sihttemperatuur",
  "sd2758727f5": "Temperatuuriandur",
  "@sd2758727f5": {
   "x-mt": true
@@ -2632,6 +2788,10 @@
  },
  "scb39988da3": "Programm on juba olemas: {p0}",
  "@scb39988da3": {
+  "x-mt": true
+ },
+ "s8e2e55aae8": "Kuumavee seadeväärtus",
+ "@s8e2e55aae8": {
   "x-mt": true
  },
  "s8ea88baef9": "Relee või pistik",
@@ -3598,6 +3758,14 @@
  "@s8c3353e896": {
   "x-mt": true
  },
+ "sfa229e528f": "Kuuma vett kuumutatakse nüüd tund aega, seejärel jätkatakse automaatset juhtimist.",
+ "@sfa229e528f": {
+  "x-mt": true
+ },
+ "s66ce56ca38": "Alusta",
+ "@s66ce56ca38": {
+  "x-mt": true
+ },
  "s13a8a207ec": "Reeglid ja seadistused",
  "@s13a8a207ec": {
   "x-mt": true
@@ -3612,10 +3780,6 @@
  },
  "sf5dbb363af": "Ohutuspiirid",
  "@sf5dbb363af": {
-  "x-mt": true
- },
- "sf9cd32fb4f": "Minimaalne temperatuur",
- "@sf9cd32fb4f": {
   "x-mt": true
  },
  "sfb0553315b": "Külmakaitse",
@@ -3686,10 +3850,6 @@
  "@s58b2cdb4e2": {
   "x-mt": true
  },
- "s66ce56ca38": "Alusta",
- "@s66ce56ca38": {
-  "x-mt": true
- },
  "s632723d95f": "Kui olete eemal, hoitakse ruume jahedamalt ja veesoojendit soojendatakse ainult ööl enne naasmist.",
  "@s632723d95f": {
   "x-mt": true
@@ -3726,6 +3886,18 @@
  "@se68cc54085": {
   "x-mt": true
  },
+ "s3fbca4acdd": "Hind ja piirmäärad",
+ "@s3fbca4acdd": {
+  "x-mt": true
+ },
+ "s3c6fedc117": "Hind nüüd (kokku)",
+ "@s3c6fedc117": {
+  "x-mt": true
+ },
+ "s7dfe0e7977": "Järgmine muutus",
+ "@s7dfe0e7977": {
+  "x-mt": true
+ },
  "sf9cbe76823": "Hinnareeglid",
  "@sf9cbe76823": {
   "x-mt": true
@@ -3744,10 +3916,6 @@
  },
  "s68b3688217": "Seadke punkt maha kulukatel tundidel",
  "@s68b3688217": {
-  "x-mt": true
- },
- "s108a800ffc": "ei kasutata",
- "@s108a800ffc": {
   "x-mt": true
  },
  "sb35d5f8afd": "Seadke koht üles odavatel tundidel",
@@ -5004,7 +5172,6 @@
  "s0ab1430151": "Uus termostaat",
  "sbbc98d573d": "Muuda termostaati",
  "s87984716cb": "Kustutada termostaat?",
- "s79786b9f7d": "Siht",
  "sdd309c0a63": "Termostaat töötab kodusillal",
  "sa4701693b6": "Võta kaugjuurdepääs kasutusele kodus oleval seadmel (Seaded → Kaugjuurdepääs). Seni termostaat ei juhi.",
  "s06cda8c0de": "Töötab selles seadmes (kodusild).",
@@ -6044,7 +6211,6 @@
  },
  "s80c4ecec94": "c/h",
  "sb68e905fc4": "Tarbimine (kWh)",
- "s5fc5085143": "Kulu",
  "s2b2118a93b": "Vanad andmed",
  "@s2b2118a93b": {
   "x-mt": true
@@ -6908,34 +7074,6 @@
  },
  "s1e9eca6676": "Hetkehind nüüd käibemaksuga. Siirde-, maksu- ja marginaal ei sisalda – Nutikas kütmine võrdleb koguhinda.",
  "@s1e9eca6676": {
-  "x-mt": true
- },
- "se26e839c2f": "Esmaspäev",
- "@se26e839c2f": {
-  "x-mt": true
- },
- "s763254941f": "Teisipäev",
- "@s763254941f": {
-  "x-mt": true
- },
- "sf3448cdd52": "Kolmapäev",
- "@sf3448cdd52": {
-  "x-mt": true
- },
- "sc34ca7eddb": "Neljapäev",
- "@sc34ca7eddb": {
-  "x-mt": true
- },
- "sfa82438bec": "Reede",
- "@sfa82438bec": {
-  "x-mt": true
- },
- "s517c348371": "Laupäev",
- "@s517c348371": {
-  "x-mt": true
- },
- "sb1f0e72163": "Pühapäev",
- "@sb1f0e72163": {
   "x-mt": true
  },
  "sd24649df81": "Brauser ei jõua teie koduvõrgu seadmeteni",
@@ -10264,8 +10402,8 @@
  "@s33536024e7": {
   "x-mt": true
  },
- "s4eec9a0479": "Veesoojendi püsib kuumana päevaks: seda soojendatakse kõige odavamatel tundidel päevas.",
- "@s4eec9a0479": {
+ "s7794246dd8": "Soe tarbevesi soojendatakse kõige odavamal kellaajal, soovi korral ajaaknas või kellaajaks. Andur on valikuline: ilma selleta on juhtimine ainult ajapõhine.",
+ "@s7794246dd8": {
   "x-mt": true
  },
  "sa2dc343545": "Kaminarežiim lõppes: ruum jahtub. Kütmine on taas normaalne.",
@@ -10611,6 +10749,10 @@
  "@s78188d956e": {
   "x-mt": true
  },
+ "se873f8e023": "Legionella kaitse",
+ "@se873f8e023": {
+  "x-mt": true
+ },
  "saa76f06f20": "Kallid töötunnid vahele jätta",
  "@saa76f06f20": {
   "x-mt": true
@@ -10822,6 +10964,10 @@
  "@s9e31ebc1e8": {
   "x-mt": true
  },
+ "s6d7231b90b": "Kuum vesi {p0} °C on allpool minimaalset {p1} °C – kuumutamine olenemata hinnast",
+ "@s6d7231b90b": {
+  "x-mt": true
+ },
  "s7cdb2a0cb6": "Temperatuur {p0} °C allpool minimaalset {p1} °C",
  "@s7cdb2a0cb6": {
   "x-mt": true
@@ -10850,6 +10996,10 @@
  "@s247db88d99": {
   "x-mt": true
  },
+ "s83b24d9798": "Legionellavastane kaitse: vett kuumutatakse temperatuurini vähemalt 60 °C",
+ "@s83b24d9798": {
+  "x-mt": true
+ },
  "s0d09da9167": "Odav tund ({p0} c/kWh ≤ piirang {p1} c)",
  "@s0d09da9167": {
   "x-mt": true
@@ -10860,6 +11010,10 @@
  },
  "sf56f514430": "{p0} c/kWh > piirnorm {p1} c",
  "@sf56f514430": {
+  "x-mt": true
+ },
+ "scfd2c6b3c6": "Kallis tund - paagist piisab ({p0})",
+ "@scfd2c6b3c6": {
   "x-mt": true
  },
  "s9cdd4b289a": "Kulukas tund - ladustamispõrand on piisav ({p0})",
@@ -10888,6 +11042,10 @@
  },
  "sadbee991d6": "Temperatuur {p0} °C on allpool seadeväärtust {p1} °C – kuumutamine",
  "@sadbee991d6": {
+  "x-mt": true
+ },
+ "s6fced7323b": "Kuum vesi {p0} °C on saavutanud eesmärgi ({p1} °C) – peatumine",
+ "@s6fced7323b": {
   "x-mt": true
  },
  "s0e20e8780d": "Saavutatud seadistuspunkt {p0} °C ({p1} °C)",
@@ -10950,20 +11108,92 @@
  "@s2c7a2c7c84": {
   "x-mt": true
  },
- "s6ebbbbc4a0": "Temperatuuri reguleerimine ja ohutuspiirid (külmakaitse, minimaalne temperatuur) on välja lülitatud ja {p0}.",
- "@s6ebbbbc4a0": {
+ "s7efd6e02bf": "hinnatõus {p0} c",
+ "@s7efd6e02bf": {
   "x-mt": true
  },
- "sdba1212edb": "Ohutuspiirid (külmakaitse, minimaalne temperatuur) on välja lülitatud ja kütmine järgib hinnagraafikut.",
- "@sdba1212edb": {
+ "s0ebd550167": "hind langeb {p0} c",
+ "@s0ebd550167": {
+  "x-mt": true
+ },
+ "s897fd4ff6f": "ilmasoojenemist",
+ "@s897fd4ff6f": {
+  "x-mt": true
+ },
+ "s63e831118b": "ilm jaheneb",
+ "@s63e831118b": {
+  "x-mt": true
+ },
+ "s323434468b": "odavat tundi",
+ "@s323434468b": {
+  "x-mt": true
+ },
+ "s7ead54b4cd": "kallis tund",
+ "@s7ead54b4cd": {
+  "x-mt": true
+ },
+ "s6eb11a0979": "Legionella kaitse",
+ "@s6eb11a0979": {
+  "x-mt": true
+ },
+ "s3e1542b6fd": "selleks ajaks valmis",
+ "@s3e1542b6fd": {
+  "x-mt": true
+ },
+ "sc9ee0a28fe": "sihtmärgini jõutakse",
+ "@sc9ee0a28fe": {
+  "x-mt": true
+ },
+ "saa18ab9c50": "miinimumist allpool",
+ "@saa18ab9c50": {
+  "x-mt": true
+ },
+ "s183739696a": "Seadke punkt kohe {p0} °C → {p1} °C juures {p2} ({p3})",
+ "@s183739696a": {
+  "x-mt": true
+ },
+ "sddf1e59c0e": "Nüüd {p0} → {p1} at {p2} ({p3})",
+ "@sddf1e59c0e": {
+  "x-mt": true
+ },
+ "s4c7b4375ee": "Ilm: väljaspool nüüd {p0} °C → {p1} °C juures {p2} (soojenemine, soojusvajadus langeb)",
+ "@s4c7b4375ee": {
+  "x-mt": true
+ },
+ "s89f83771d1": "Ilm: väljaspool nüüd {p0} °C → {p1} °C juures {p2} (jahutus, soojusvajadus suureneb)",
+ "@s89f83771d1": {
+  "x-mt": true
+ },
+ "s4ec19937a8": "Ilm: väljaspool nüüd {p0} °C",
+ "@s4ec19937a8": {
+  "x-mt": true
+ },
+ "s7e0277d646": "{p0} h täna",
+ "@s7e0277d646": {
+  "x-mt": true
+ },
+ "s379b002672": "Täna umbes {p0} € ({p1} h)",
+ "@s379b002672": {
   "x-mt": true
  },
  "sbf916076f9": "Temperatuuriandur ei reageeri.",
  "@sbf916076f9": {
   "x-mt": true
  },
+ "sd7ded67308": "Kuum vesi järgib kella, kuni andur vastab. Seda ei saa jõuga kuumutada alla miinimumi.",
+ "@sd7ded67308": {
+  "x-mt": true
+ },
  "s9fad63ec58": "Kontrollige anduri akut ja võrku või valige mõni muu andur.",
  "@s9fad63ec58": {
+  "x-mt": true
+ },
+ "s6ebbbbc4a0": "Temperatuuri reguleerimine ja ohutuspiirid (külmakaitse, minimaalne temperatuur) on välja lülitatud ja {p0}.",
+ "@s6ebbbbc4a0": {
+  "x-mt": true
+ },
+ "sdba1212edb": "Ohutuspiirid (külmakaitse, minimaalne temperatuur) on välja lülitatud ja kütmine järgib hinnagraafikut.",
+ "@sdba1212edb": {
   "x-mt": true
  },
  "s0a81072a1f": "Leia see ruuteri seadmete nimekirjast või valmistaja rakendusest (seadme info). Reserveeri sellele kindel IP.",

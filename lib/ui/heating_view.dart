@@ -67,18 +67,22 @@ Future<void> ensureHeatingTile(AppState st) async {
 
 // ------------------------------------------------------------------ data
 
-/// Price (c/kWh incl. VAT) of an hour from this device's cached prices and the user's contract.
+/// Price (c/kWh incl. VAT) at [h] from this device's cached prices and the user's contract.
+/// Uses 15-min slots when the series has them, otherwise the hourly average.
 double? Function(DateTime) heatCostFn(AppState st) {
   final zone = st.energyZone;
-  final series = PriceService.shared.cached(zone)?.hourly();
-  if (series == null) unawaited(PriceService.shared.get(zone).then((_) {}, onError: (_) {}));
+  final raw = PriceService.shared.cached(zone);
+  if (raw == null) unawaited(PriceService.shared.get(zone).then((_) {}, onError: (_) {}));
   final contract = st.config.energy.contract;
   return (h) {
-    final p = series?.at(h);
+    final p = raw?.at(h) ?? raw?.hourly().at(h);
     if (p == null) return null;
     return contract?.unitAt(h, spotEurMwh: p.eurMwh)?.inc ?? p.eurMwh / 10;
   };
 }
+
+/// 15 when the cached prices are quarter-hourly, otherwise 60.
+int heatSlotMinutesOf(AppState st) => slotMinutesOf(PriceService.shared.cached(st.energyZone));
 
 double? Function(DateTime) heatOutdoorFn(AppState st) {
   final home = st.config.energy.home;
@@ -97,6 +101,7 @@ HeatInputs heatInputsNow(AppState st) {
     holiday: c.holiday.activeAt(now),
     holidayEnd: c.holiday.to,
     fireplace: fire.activeAt(now),
+    slotMinutes: heatSlotMinutesOf(st),
   );
 }
 
@@ -128,6 +133,7 @@ HeatExplanation heatExplain(AppState st, HeatLoad l) {
         holidayEnd: x.holidayEnd,
         fireplace: x.fireplace,
         lastOn: s.on,
+        slotMinutes: x.slotMinutes,
       ),
       st: s,
       thermoSetpoint: thermo?.setpoint,
@@ -384,9 +390,10 @@ class _HeatingTileState extends State<HeatingTile> {
     );
   }
 
-  Widget _chip(BuildContext context, IconData icon, String text, {Color? color}) {
+  Widget _chip(BuildContext context, IconData icon, String text, {Color? color, Key? key}) {
     final cs = Theme.of(context).colorScheme;
     return Container(
+      key: key,
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
         color: (color ?? cs.onSurfaceVariant).withValues(alpha: 0.14),
@@ -503,6 +510,10 @@ class _HeatingTileState extends State<HeatingTile> {
                         '${x.n(e.price!)} c/kWh · limit ${x.n(e.limit!)} c',
                       ),
               ),
+            if (e.dhw && e.nextHoursText(x) != null)
+              _chip(context, Icons.schedule, e.nextHoursText(x)!, key: const ValueKey('heat-dhw-next')),
+            if (e.dhw && e.costTodayText(x) != null)
+              _chip(context, Icons.payments_outlined, e.costTodayText(x)!, key: const ValueKey('heat-dhw-cost')),
           ],
         ),
         if (e.price != null)
@@ -726,11 +737,19 @@ String _fallbackShort(HeatText x, String f) => switch (f) {
 
 /// 'Tilannekuva': the big status of one device with everything that decides it.
 class HeatSnapshot extends StatelessWidget {
-  const HeatSnapshot({super.key, required this.load, required this.explanation, this.onManual, this.onClearManual});
+  const HeatSnapshot({
+    super.key,
+    required this.load,
+    required this.explanation,
+    this.onManual,
+    this.onClearManual,
+    this.onBoost,
+  });
   final HeatLoad load;
   final HeatExplanation explanation;
   final VoidCallback? onManual;
   final VoidCallback? onClearManual;
+  final VoidCallback? onBoost;
 
   @override
   Widget build(BuildContext context) {
@@ -742,7 +761,6 @@ class HeatSnapshot extends StatelessWidget {
     final color = heatColor(context, e);
     final err = e.heatError;
     final warn = e.sensorWarning(x);
-    final next = e.nextText(x);
     return Card(
       key: const ValueKey('heat-snapshot'),
       color: e.shownOn == true && e.confirmed ? color.withValues(alpha: 0.14) : null,
@@ -774,22 +792,34 @@ class HeatSnapshot extends StatelessWidget {
                 style: text.bodySmall?.copyWith(color: cs.onSurfaceVariant),
               ),
             const SizedBox(height: 4),
-            Text(e.reasonText(x), key: const ValueKey('heat-snapshot-reason'), style: text.titleMedium),
-            const SizedBox(height: 10),
-            Wrap(
-              spacing: 16,
-              runSpacing: 8,
-              children: [
-                _fact(context, Icons.thermostat, x.t('Lämpötila', 'Temperature'), _tempFact(x, e)),
-                _fact(
-                  context,
-                  Icons.bolt,
-                  x.t('Hinta nyt (kokonaishinta)', 'Price now (total)'),
-                  _priceFact(x, e, heatSpotNow(st)),
-                ),
-                if (next != null) _fact(context, Icons.schedule, x.t('Seuraava muutos', 'Next change'), next),
-              ],
-            ),
+            Text(e.headline(x) ?? e.reasonText(x), key: const ValueKey('heat-headline'), style: text.titleMedium),
+            if (e.weatherLine(x) != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(e.weatherLine(x)!, key: const ValueKey('heat-weather'), style: text.bodyMedium),
+              ),
+            if (e.dhw) ...[
+              const SizedBox(height: 8),
+              Wrap(
+                key: const ValueKey('heat-dhw-facts'),
+                spacing: 16,
+                runSpacing: 8,
+                children: [
+                  if (e.temp != null)
+                    _fact(context, Icons.thermostat, x.t('Käyttövesi nyt', 'Hot water now'), _deg(x, e.temp)),
+                  if (e.nextHoursText(x) != null)
+                    _fact(
+                      context,
+                      Icons.schedule,
+                      x.t('Seuraavat lämmitykset', 'Next heating hours'),
+                      e.nextHoursText(x)!,
+                    ),
+                  if (e.costTodayText(x) != null)
+                    _fact(context, Icons.payments_outlined, x.t('Kustannus', 'Cost'), e.costTodayText(x)!),
+                ],
+              ),
+            ],
+            const SizedBox(height: 8),
             if (warn != null)
               _note(context, Icons.sensors_off, warn, cs.error, key: const ValueKey('heat-sensor-warning')),
             if (err != null)
@@ -818,7 +848,9 @@ class HeatSnapshot extends StatelessWidget {
                 cs.onSurfaceVariant,
               ),
             const SizedBox(height: 8),
-            Row(
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
               children: [
                 if (e.mode == 'manual')
                   FilledButton.tonalIcon(
@@ -834,6 +866,13 @@ class HeatSnapshot extends StatelessWidget {
                     icon: const Icon(Icons.touch_app_outlined),
                     label: Text(x.t('Käsiohjaus…', 'Manual override…')),
                   ),
+                if (load.isDhw && onBoost != null)
+                  FilledButton.tonalIcon(
+                    key: const ValueKey('heat-boost'),
+                    onPressed: onBoost,
+                    icon: const Icon(Icons.local_fire_department_outlined),
+                    label: Text(x.t('+1 h lämmitys nyt', '+1 h heating now')),
+                  ),
               ],
             ),
           ],
@@ -842,7 +881,7 @@ class HeatSnapshot extends StatelessWidget {
     );
   }
 
-  static String _tempFact(HeatText x, HeatExplanation e) {
+  static String tempFact(HeatText x, HeatExplanation e) {
     if (e.control == 'thermostat') {
       return '${_deg(x, e.temp)} → ${_deg(x, e.target)}';
     }
@@ -862,7 +901,7 @@ class HeatSnapshot extends StatelessWidget {
     return '${_deg(x, e.temp)} (${lim.join(', ')})';
   }
 
-  static String _priceFact(HeatText x, HeatExplanation e, [double? spot]) {
+  static String priceFact(HeatText x, HeatExplanation e, [double? spot]) {
     if (e.price == null) return x.t('ei hintatietoa', 'no price data');
     final p =
         '${x.n(e.price!)} c/kWh${spot == null ? '' : x.t(' (pörssi alv:llä ${x.n(spot)} c)', ' (spot with VAT ${x.n(spot)} c)')}';
@@ -961,54 +1000,56 @@ class HeatRules extends StatelessWidget {
     final x = HeatText(AppScope.of(context).lang);
     final cs = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
-    final shown = explanation.checks.where((c) => c.state != 'inactive' || c.id == 'manual' && false).toList();
+    final shown = explanation.checks.where((c) => c.state != 'inactive').toList();
     return Card(
       key: const ValueKey('heat-rules'),
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(x.t('Miksi näin? Säännöt ja niiden tila', 'Why? The rules and their state'), style: text.titleSmall),
-            const SizedBox(height: 6),
-            for (final c in shown)
-              Padding(
-                key: ValueKey('rule-${c.id}'),
-                padding: const EdgeInsets.symmetric(vertical: 4),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Icon(
-                      switch (c.state) {
-                        'active' => Icons.arrow_circle_right,
-                        'pass' => Icons.check_circle_outline,
-                        _ => Icons.help_outline,
-                      },
-                      size: 20,
-                      color: switch (c.state) {
-                        'active' => Colors.deepOrange,
-                        'pass' => cs.primary,
-                        _ => cs.onSurfaceVariant,
-                      },
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            c.state == 'active' ? '${c.title(x)} – ${x.t('ratkaisee nyt', 'decides now')}' : c.title(x),
-                            style: text.labelLarge,
-                          ),
-                          Text(c.detail(x), style: text.bodySmall),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-          ],
+      child: ExpansionTile(
+        key: const ValueKey('heat-rules-toggle'),
+        initiallyExpanded: false,
+        tilePadding: const EdgeInsets.symmetric(horizontal: 12),
+        childrenPadding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+        title: Text(
+          x.t('Miksi näin? Säännöt ja niiden tila', 'Why? The rules and their state'),
+          style: text.titleSmall,
         ),
+        children: [
+          for (final c in shown)
+            Padding(
+              key: ValueKey('rule-${c.id}'),
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    switch (c.state) {
+                      'active' => Icons.arrow_circle_right,
+                      'pass' => Icons.check_circle_outline,
+                      _ => Icons.help_outline,
+                    },
+                    size: 20,
+                    color: switch (c.state) {
+                      'active' => Colors.deepOrange,
+                      'pass' => cs.primary,
+                      _ => cs.onSurfaceVariant,
+                    },
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          c.state == 'active' ? '${c.title(x)} – ${x.t('ratkaisee nyt', 'decides now')}' : c.title(x),
+                          style: text.labelLarge,
+                        ),
+                        Text(c.detail(x), style: text.bodySmall),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
       ),
     );
   }
@@ -1026,18 +1067,26 @@ class HeatTimeline extends StatelessWidget {
     final text = Theme.of(context).textTheme;
     final cs = Theme.of(context).colorScheme;
     final now = DateTime.now();
-    final h0 = DateTime(now.year, now.month, now.day, now.hour);
+    final midnight = DateTime(now.year, now.month, now.day);
+    final step = heatSlotMinutesOf(st);
     final cost = heatCostFn(st);
-    final ls = st.heatingStatus?['loads'] is Map ? (st.heatingStatus!['loads'] as Map)[load.id] : null;
-    final plan = ls is Map ? LoadStatus.fromJson(Map<String, dynamic>.from(ls)).plan : <(DateTime, DateTime)>[];
-    final hours = [for (var i = 0; i < 24; i++) DateTime(h0.year, h0.month, h0.day, h0.hour + i)];
-    final costs = [for (final h in hours) cost(h)];
+    final tomorrow = PriceService.shared.cached(st.energyZone)?.hasTomorrow(now) == true;
+    final end = midnight.add(Duration(days: tomorrow ? 2 : 1));
+    final slots = <DateTime>[];
+    for (var t = midnight; t.isBefore(end); t = t.add(Duration(minutes: step))) {
+      slots.add(t);
+    }
+    final costs = [for (final h in slots) cost(h)];
     final known = costs.whereType<double>().toList();
     final maxC = known.isEmpty ? 1.0 : known.reduce((a, b) => a > b ? a : b);
     final minC = known.isEmpty ? 0.0 : known.reduce((a, b) => a < b ? a : b);
     final span = (maxC - minC).abs() < 0.01 ? 1.0 : maxC - minC;
+    final e = heatExplain(st, load);
+    final plan = e.plan.isNotEmpty ? e.plan : <(DateTime, DateTime)>[];
     bool onAt(DateTime h) => plan.any((p) => !h.isBefore(p.$1) && h.isBefore(p.$2));
     final havePlan = plan.isNotEmpty;
+    final nowIndex = now.difference(midnight).inMinutes ~/ step;
+    final labels = tomorrow ? const [0, 6, 12, 18, 24, 30, 36, 42, 48] : const [0, 6, 12, 18, 24];
     return Card(
       key: const ValueKey('heat-timeline'),
       child: Padding(
@@ -1046,41 +1095,77 @@ class HeatTimeline extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              x.t('Seuraavat 24 h: hinta ja suunnitellut lämmitystunnit', 'Next 24 h: price and planned heating hours'),
+              tomorrow
+                  ? x.t(
+                      'Tänään ja huomenna: hinta ja suunnitellut lämmitystunnit',
+                      'Today and tomorrow: price and planned heating hours',
+                    )
+                  : x.t('Tänään: hinta ja suunnitellut lämmitystunnit', 'Today: price and planned heating hours'),
               style: text.titleSmall,
             ),
             const SizedBox(height: 8),
             SizedBox(
-              height: 72,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  for (var i = 0; i < 24; i++)
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 1),
-                        child: Container(
-                          key: ValueKey('tl-$i'),
-                          height: costs[i] == null ? 4 : 10 + 58 * ((costs[i]! - minC) / span).clamp(0.0, 1.0),
-                          decoration: BoxDecoration(
-                            color: costs[i] == null
-                                ? cs.outlineVariant
-                                : (havePlan && onAt(hours[i])
-                                      ? Colors.deepOrange
-                                      : cs.onSurfaceVariant.withValues(alpha: 0.35)),
-                            borderRadius: BorderRadius.circular(2),
-                          ),
-                        ),
+              height: 80,
+              child: LayoutBuilder(
+                builder: (ctx, box) {
+                  final w = box.maxWidth;
+                  final barW = w / slots.length;
+                  final nowX = ((now.difference(midnight).inMinutes + now.second / 60) / (slots.length * step) * w)
+                      .clamp(0.0, w);
+                  return Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          for (var i = 0; i < slots.length; i++)
+                            SizedBox(
+                              width: barW,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: step < 60 ? 0.2 : 1),
+                                child: Container(
+                                  key: ValueKey(
+                                    slots[i].minute == 0
+                                        ? 'tl-h-${slots[i].hour + (slots[i].day == midnight.day ? 0 : 24)}'
+                                        : 'tls-$i',
+                                  ),
+                                  height: costs[i] == null ? 4 : 10 + 58 * ((costs[i]! - minC) / span).clamp(0.0, 1.0),
+                                  decoration: BoxDecoration(
+                                    color: costs[i] == null
+                                        ? cs.outlineVariant
+                                        : (havePlan && onAt(slots[i])
+                                              ? Colors.deepOrange
+                                              : cs.onSurfaceVariant.withValues(alpha: 0.35)),
+                                    borderRadius: BorderRadius.circular(1),
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
                       ),
-                    ),
-                ],
+                      if (nowIndex >= 0 && nowIndex < slots.length)
+                        Positioned(
+                          left: nowX - 1,
+                          top: 0,
+                          bottom: 0,
+                          child: Container(key: const ValueKey('tl-now'), width: 2, color: cs.primary),
+                        ),
+                    ],
+                  );
+                },
               ),
             ),
             const SizedBox(height: 4),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                for (final i in const [0, 6, 12, 18, 23]) Text(x.hm(hours[i]), style: text.labelSmall),
+                for (final h in labels)
+                  if (h <= (tomorrow ? 48 : 24))
+                    Text(
+                      h == 24 || h == 48 ? '24' : (h % 24).toString().padLeft(2, '0'),
+                      key: ValueKey('tl-label-$h'),
+                      style: text.labelSmall,
+                    ),
               ],
             ),
             const SizedBox(height: 6),
@@ -1089,12 +1174,12 @@ class HeatTimeline extends StatelessWidget {
                   ? x.t('Hintatietoa ei ole vielä.', 'No price data yet.')
                   : (havePlan
                         ? x.t(
-                            'Oranssi = lämmitys suunnitellusti päällä. Korkeampi pylväs = kalliimpi tunti (${x.n(minC)}–${x.n(maxC)} c/kWh).',
-                            'Orange = heating planned on. A taller bar = a more expensive hour (${x.n(minC)}–${x.n(maxC)} c/kWh).',
+                            'Oranssi = lämmitys suunnitellusti päällä. Korkeampi pylväs = kalliimpi ${step < 60 ? 'vartti' : 'tunti'} (${x.n(minC)}–${x.n(maxC)} c/kWh). Viiva = nyt.',
+                            'Orange = heating planned on. A taller bar = a more expensive ${step < 60 ? 'quarter hour' : 'hour'} (${x.n(minC)}–${x.n(maxC)} c/kWh). The line is now.',
                           )
                         : x.t(
-                            'Korkeampi pylväs = kalliimpi tunti (${x.n(minC)}–${x.n(maxC)} c/kWh). Suunnitelma näkyy, kun kotisilta on vastannut.',
-                            'A taller bar = a more expensive hour (${x.n(minC)}–${x.n(maxC)} c/kWh). The plan shows when the home bridge has answered.',
+                            'Korkeampi pylväs = kalliimpi ${step < 60 ? 'vartti' : 'tunti'} (${x.n(minC)}–${x.n(maxC)} c/kWh). Suunnitelma näkyy, kun kotisilta on vastannut. Viiva = nyt.',
+                            'A taller bar = a more expensive ${step < 60 ? 'quarter hour' : 'hour'} (${x.n(minC)}–${x.n(maxC)} c/kWh). The plan shows when the home bridge has answered. The line is now.',
                           )),
               style: text.bodySmall,
             ),

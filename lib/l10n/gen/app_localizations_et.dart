@@ -505,6 +505,138 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s8b8e9ac677 => 'Ebaõnnestus';
 
   @override
+  String get se26e839c2f => 'Esmaspäev';
+
+  @override
+  String get s763254941f => 'Teisipäev';
+
+  @override
+  String get sf3448cdd52 => 'Kolmapäev';
+
+  @override
+  String get sc34ca7eddb => 'Neljapäev';
+
+  @override
+  String get sfa82438bec => 'Reede';
+
+  @override
+  String get s517c348371 => 'Laupäev';
+
+  @override
+  String get sb1f0e72163 => 'Pühapäev';
+
+  @override
+  String get s401ab20baa => 'Soe tarbevesi';
+
+  @override
+  String get sd5f46903a1 => 'Sihttemperatuur';
+
+  @override
+  String get sf9cd32fb4f => 'Minimaalne temperatuur';
+
+  @override
+  String get sc4b5aaad1f => 'Kuumutamine ainult ajaaknas';
+
+  @override
+  String get s818fe9e314 => 'Näiteks 22–07, muidu terve päev.';
+
+  @override
+  String s6518b3c8cd(String p0, String p1) {
+    return 'Aken $p0–$p1';
+  }
+
+  @override
+  String get s0d3960eb3b => 'Aken algab';
+
+  @override
+  String get s02508fe60e => 'Aken lõpeb';
+
+  @override
+  String get s864ccac46c => 'Valmis selleks ajaks';
+
+  @override
+  String get sf5ef6d3923 => 'Odavaimad tunnid ööpäevaringselt.';
+
+  @override
+  String sd5607dfabc(String p0) {
+    return 'Valmis $p0';
+  }
+
+  @override
+  String get s4d02b57785 => 'Valmis';
+
+  @override
+  String get s7ec7bbadbb =>
+      'Ilma andurita programm kuumeneb valitud tundidel või aknas. Anduriga peatub see sihtmärgi juures ja jõudu soojendab, kui vesi on alla miinimumi.';
+
+  @override
+  String get sbb9faf8374 => 'Soe tarbevesi, kõrgekvaliteediline';
+
+  @override
+  String get s64bd3ab3ff => 'Temperatuuriandur (valikuline)';
+
+  @override
+  String get sd043d39316 => 'Andurit ei ole - kontroll aja ja hinna üle';
+
+  @override
+  String get s2444634bdc => 'Kuumaveepumba seadeväärtus';
+
+  @override
+  String get s45c2cea1b1 => 'Määramispunkt valitud';
+
+  @override
+  String get se86407966b =>
+      'Kirjutage relee asemel kõrge või madal seadepunkt hinna järgi.';
+
+  @override
+  String get s9ebc215a7a => 'Kuumavee seadeväärtuse valimine';
+
+  @override
+  String get s24c5940457 =>
+      'Seadepunktikaarti pole, kõigepealt lisa kuumavee sihtmärgiga soojuspump.';
+
+  @override
+  String get sc012905dab => 'Kõrge seadeväärtus (odav hind)';
+
+  @override
+  String get s31ef35d933 => 'Madal seadeväärtus (kallis hind)';
+
+  @override
+  String get s240c0e0824 => 'Legionella iganädalane kaitse';
+
+  @override
+  String get sb95cea244f => 'Väljas';
+
+  @override
+  String s7f9a03282e(String p0, String p1, String p2) {
+    return '$p0 $p1, $p2 °C';
+  }
+
+  @override
+  String get sef4d24cdd4 => 'Päev';
+
+  @override
+  String get sad0fdcc679 => 'Alustab';
+
+  @override
+  String get s79786b9f7d => 'Siht';
+
+  @override
+  String get s3228fda646 => 'Maksimaalne hind';
+
+  @override
+  String get s108a800ffc => 'ei kasutata';
+
+  @override
+  String get s129338afa1 => 'Minimaalne kütmisaeg';
+
+  @override
+  String get sfe7bad8c23 => 'Võimsus kuluprognoosi koostamiseks';
+
+  @override
+  String get s9eb77670df => 'tundmatu';
+
+  @override
   String get scb28b11e70 => 'Uus vaade';
 
   @override
@@ -1032,9 +1164,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s43dead6994 => 'Elektrileping';
-
-  @override
-  String get sef4d24cdd4 => 'Päev';
 
   @override
   String get sa62dd794ce => 'Kuu';
@@ -1617,13 +1746,13 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s579f396ae5 => 'Olukord';
 
   @override
-  String get s8653f173b6 => 'Õhutemperatuur';
+  String get sdffada0297 => 'Kuum vesi nüüd';
 
   @override
-  String get s3c6fedc117 => 'Hind nüüd (kokku)';
+  String get s24335ec1b2 => 'Järgmised küttetunnid';
 
   @override
-  String get s7dfe0e7977 => 'Järgmine muutus';
+  String get s5fc5085143 => 'Kulu';
 
   @override
   String get s5555a716bb =>
@@ -1634,6 +1763,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s728ddd7778 => 'Käsitsi tühistamine...';
+
+  @override
+  String get s29ae62461a => '+1 h kütmine';
 
   @override
   String get sd661031615 => 'sensorit';
@@ -1686,19 +1818,22 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s39d300e3ea => 'otsustab';
 
   @override
-  String get s55153c17b8 => 'Järgmine 24 h: hind ja planeeritud küttetunnid';
+  String get sdb0bb1e577 => 'Täna ja homme: hind ja planeeritud küttetunnid';
+
+  @override
+  String get se94c8fdb93 => 'Täna: hind ja planeeritud küttetunnid';
 
   @override
   String get sfb5a3f7da0 => 'Hinnaandmeid veel pole.';
 
   @override
-  String sba9d60d97c(String p0, String p1) {
-    return 'Oranž = planeeritud kütmine. Kõrgem baar = kallim tund ($p0–$p1 c/kWh).';
+  String s867307e8a6(String p0, String p1, String p2) {
+    return 'Oranž = planeeritud kütmine. Kõrgem baar = kallim ($p1–$p2 c/kWh). Liin on nüüd.';
   }
 
   @override
-  String s3030d2947a(String p0, String p1) {
-    return 'Kõrgem riba = kallim tund ($p0–$p1 c/kWh). Plaan näitab, millal kodusild on vastanud.';
+  String s688a9cae66(String p0, String p1, String p2) {
+    return 'Kõrgem riba = kallim ($p1–$p2 c/kWh). Plaan näitab, millal kodusild on vastanud. Liin on nüüd.';
   }
 
   @override
@@ -2384,6 +2519,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sf2c65c5aeb => 'Keskmine';
 
   @override
+  String get s8653f173b6 => 'Õhutemperatuur';
+
+  @override
   String get s68b942c864 =>
       'Määra kodu asukoht (Energy → Settings) prognoosimiseks.';
 
@@ -2963,9 +3101,6 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
-  String get sd5f46903a1 => 'Sihttemperatuur';
-
-  @override
   String get sd2758727f5 => 'Temperatuuriandur';
 
   @override
@@ -3046,6 +3181,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String scb39988da3(String p0) {
     return 'Programm on juba olemas: $p0';
   }
+
+  @override
+  String get s8e2e55aae8 => 'Kuumavee seadeväärtus';
 
   @override
   String get s8ea88baef9 => 'Relee või pistik';
@@ -4303,6 +4441,13 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s8c3353e896 => 'Ükski kodusild pole paaris.';
 
   @override
+  String get sfa229e528f =>
+      'Kuuma vett kuumutatakse nüüd tund aega, seejärel jätkatakse automaatset juhtimist.';
+
+  @override
+  String get s66ce56ca38 => 'Alusta';
+
+  @override
   String get s13a8a207ec => 'Reeglid ja seadistused';
 
   @override
@@ -4313,9 +4458,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get sf5dbb363af => 'Ohutuspiirid';
-
-  @override
-  String get sf9cd32fb4f => 'Minimaalne temperatuur';
 
   @override
   String get sfb0553315b => 'Külmakaitse';
@@ -4374,9 +4516,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s58b2cdb4e2 => 'Lõpetage varem, kui ruum hakkab jahtuma';
 
   @override
-  String get s66ce56ca38 => 'Alusta';
-
-  @override
   String get s632723d95f =>
       'Kui olete eemal, hoitakse ruume jahedamalt ja veesoojendit soojendatakse ainult ööl enne naasmist.';
 
@@ -4407,6 +4546,15 @@ class AppLocalizationsEt extends AppLocalizations {
   String get se68cc54085 => 'Andurit pole';
 
   @override
+  String get s3fbca4acdd => 'Hind ja piirmäärad';
+
+  @override
+  String get s3c6fedc117 => 'Hind nüüd (kokku)';
+
+  @override
+  String get s7dfe0e7977 => 'Järgmine muutus';
+
+  @override
   String get sf9cbe76823 => 'Hinnareeglid';
 
   @override
@@ -4424,9 +4572,6 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s68b3688217 => 'Seadke punkt maha kulukatel tundidel';
-
-  @override
-  String get s108a800ffc => 'ei kasutata';
 
   @override
   String get sb35d5f8afd => 'Seadke koht üles odavatel tundidel';
@@ -5643,9 +5788,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s87984716cb => 'Kustutada termostaat?';
 
   @override
-  String get s79786b9f7d => 'Siht';
-
-  @override
   String get sdd309c0a63 => 'Termostaat töötab kodusillal';
 
   @override
@@ -6805,9 +6947,6 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sb68e905fc4 => 'Tarbimine (kWh)';
 
   @override
-  String get s5fc5085143 => 'Kulu';
-
-  @override
   String get s2b2118a93b => 'Vanad andmed';
 
   @override
@@ -7795,27 +7934,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s1e9eca6676 =>
       'Hetkehind nüüd käibemaksuga. Siirde-, maksu- ja marginaal ei sisalda – Nutikas kütmine võrdleb koguhinda.';
-
-  @override
-  String get se26e839c2f => 'Esmaspäev';
-
-  @override
-  String get s763254941f => 'Teisipäev';
-
-  @override
-  String get sf3448cdd52 => 'Kolmapäev';
-
-  @override
-  String get sc34ca7eddb => 'Neljapäev';
-
-  @override
-  String get sfa82438bec => 'Reede';
-
-  @override
-  String get s517c348371 => 'Laupäev';
-
-  @override
-  String get sb1f0e72163 => 'Pühapäev';
 
   @override
   String get sd24649df81 => 'Brauser ei jõua teie koduvõrgu seadmeteni';
@@ -11275,8 +11393,8 @@ class AppLocalizationsEt extends AppLocalizations {
       'Maapealne soojus koos veeringlusega talletab veidi soojust: kõige kallimad tunnid jäetakse vahele kõige rohkem mõnetunniste vaheaegadega.';
 
   @override
-  String get s4eec9a0479 =>
-      'Veesoojendi püsib kuumana päevaks: seda soojendatakse kõige odavamatel tundidel päevas.';
+  String get s7794246dd8 =>
+      'Soe tarbevesi soojendatakse kõige odavamal kellaajal, soovi korral ajaaknas või kellaajaks. Andur on valikuline: ilma selleta on juhtimine ainult ajapõhine.';
 
   @override
   String get sa2dc343545 =>
@@ -11636,6 +11754,9 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s78188d956e => 'Tuba on piisavalt soe';
 
   @override
+  String get se873f8e023 => 'Legionella kaitse';
+
+  @override
   String get saa76f06f20 => 'Kallid töötunnid vahele jätta';
 
   @override
@@ -11853,6 +11974,11 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String s6d7231b90b(String p0, String p1) {
+    return 'Kuum vesi $p0 °C on allpool minimaalset $p1 °C – kuumutamine olenemata hinnast';
+  }
+
+  @override
   String s7cdb2a0cb6(String p0, String p1) {
     return 'Temperatuur $p0 °C allpool minimaalset $p1 °C';
   }
@@ -11882,6 +12008,10 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String get s83b24d9798 =>
+      'Legionellavastane kaitse: vett kuumutatakse temperatuurini vähemalt 60 °C';
+
+  @override
   String s0d09da9167(String p0, String p1) {
     return 'Odav tund ($p0 c/kWh ≤ piirang $p1 c)';
   }
@@ -11894,6 +12024,11 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String sf56f514430(String p0, String p1) {
     return '$p0 c/kWh > piirnorm $p1 c';
+  }
+
+  @override
+  String scfd2c6b3c6(String p0) {
+    return 'Kallis tund - paagist piisab ($p0)';
   }
 
   @override
@@ -11926,6 +12061,11 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String sadbee991d6(String p0, String p1) {
     return 'Temperatuur $p0 °C on allpool seadeväärtust $p1 °C – kuumutamine';
+  }
+
+  @override
+  String s6fced7323b(String p0, String p1) {
+    return 'Kuum vesi $p0 °C on saavutanud eesmärgi ($p1 °C) – peatumine';
   }
 
   @override
@@ -11988,6 +12128,86 @@ class AppLocalizationsEt extends AppLocalizations {
   }
 
   @override
+  String s7efd6e02bf(String p0) {
+    return 'hinnatõus $p0 c';
+  }
+
+  @override
+  String s0ebd550167(String p0) {
+    return 'hind langeb $p0 c';
+  }
+
+  @override
+  String get s897fd4ff6f => 'ilmasoojenemist';
+
+  @override
+  String get s63e831118b => 'ilm jaheneb';
+
+  @override
+  String get s323434468b => 'odavat tundi';
+
+  @override
+  String get s7ead54b4cd => 'kallis tund';
+
+  @override
+  String get s6eb11a0979 => 'Legionella kaitse';
+
+  @override
+  String get s3e1542b6fd => 'selleks ajaks valmis';
+
+  @override
+  String get sc9ee0a28fe => 'sihtmärgini jõutakse';
+
+  @override
+  String get saa18ab9c50 => 'miinimumist allpool';
+
+  @override
+  String s183739696a(String p0, String p1, String p2, String p3) {
+    return 'Seadke punkt kohe $p0 °C → $p1 °C juures $p2 ($p3)';
+  }
+
+  @override
+  String sddf1e59c0e(String p0, String p1, String p2, String p3) {
+    return 'Nüüd $p0 → $p1 at $p2 ($p3)';
+  }
+
+  @override
+  String s4c7b4375ee(String p0, String p1, String p2) {
+    return 'Ilm: väljaspool nüüd $p0 °C → $p1 °C juures $p2 (soojenemine, soojusvajadus langeb)';
+  }
+
+  @override
+  String s89f83771d1(String p0, String p1, String p2) {
+    return 'Ilm: väljaspool nüüd $p0 °C → $p1 °C juures $p2 (jahutus, soojusvajadus suureneb)';
+  }
+
+  @override
+  String s4ec19937a8(String p0) {
+    return 'Ilm: väljaspool nüüd $p0 °C';
+  }
+
+  @override
+  String s7e0277d646(String p0) {
+    return '$p0 h täna';
+  }
+
+  @override
+  String s379b002672(String p0, String p1) {
+    return 'Täna umbes $p0 € ($p1 h)';
+  }
+
+  @override
+  String get sbf916076f9 => 'Temperatuuriandur ei reageeri.';
+
+  @override
+  String get sd7ded67308 =>
+      'Kuum vesi järgib kella, kuni andur vastab. Seda ei saa jõuga kuumutada alla miinimumi.';
+
+  @override
+  String get s9fad63ec58 =>
+      'Kontrollige anduri akut ja võrku või valige mõni muu andur.';
+
+  @override
   String s6ebbbbc4a0(String p0) {
     return 'Temperatuuri reguleerimine ja ohutuspiirid (külmakaitse, minimaalne temperatuur) on välja lülitatud ja $p0.';
   }
@@ -11995,13 +12215,6 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get sdba1212edb =>
       'Ohutuspiirid (külmakaitse, minimaalne temperatuur) on välja lülitatud ja kütmine järgib hinnagraafikut.';
-
-  @override
-  String get sbf916076f9 => 'Temperatuuriandur ei reageeri.';
-
-  @override
-  String get s9fad63ec58 =>
-      'Kontrollige anduri akut ja võrku või valige mõni muu andur.';
 
   @override
   String get s0a81072a1f =>
