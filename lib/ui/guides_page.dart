@@ -74,6 +74,49 @@ const remoteGuides = <Guide>[
     ],
   ),
   Guide(
+    id: 'ha_tailscale',
+    icon: Icons.home_outlined,
+    title: ('Etäyhteys Tailscalella (Home Assistant)', 'Remote access with Tailscale (Home Assistant)'),
+    summary: (
+      'Yhdistä Molaplan Home Assistantiin myös kodin ulkopuolelta Tailscalen kautta. Paikallinen osoite ja Tailscale-osoite tallennetaan samaan yhteyteen; tunnus kysytään vain kerran.',
+      'Reach Home Assistant from Molaplan even away from home, through Tailscale. The local address and the Tailscale address are stored on the same connection; the token is asked only once.',
+    ),
+    good: (
+      'Sopii, kun Home Assistant pyörii kotona ja haluat avata sen turvallisesti ilman porttiohjauksia. Selainversiossa https-osoite (Tailscale Serve) välttää selaimen eston http-osoitteeseen.',
+      'A good fit when Home Assistant runs at home and you want a secure path without port forwarding. In the web app an https address (Tailscale Serve) avoids the browser blocking http.',
+    ),
+    steps: [
+      (
+        'Home Assistantissa: Asetukset → Lisäosat → Lisäosakauppa. Hae "Tailscale" (virallinen lisäosa), asenna, ota käyttöön Käynnistä käynnistyksen yhteydessä ja Watchdog, käynnistä lisäosa, avaa Web UI ja kirjaudu sisään tai hyväksy laite.',
+        'In Home Assistant: Settings → Add-ons → Add-on store. Search for "Tailscale" (the official add-on), install it, enable Start on boot and Watchdog, start it, open the Web UI and sign in or approve the machine.',
+      ),
+      (
+        'Tailscalen hallinnassa (login.tailscale.com → Machines): etsi Home Assistantin kone ja sen 100.x-osoite. Ota koneella käyttöön "Disable key expiry" ja laita MagicDNS päälle.',
+        'In the Tailscale admin console (login.tailscale.com → Machines): find the Home Assistant machine and its 100.x IP. Turn on "Disable key expiry" for that machine and enable MagicDNS.',
+      ),
+      (
+        'Asenna Tailscale-sovellus laitteisiin, joissa Molaplan on, kirjaudu samalle tilille ja yhdistä. Kokeile selaimessa osoitetta http://homeassistant:8123.',
+        'Install the Tailscale app on the devices that run Molaplan, sign in with the same account and connect. Test in a browser with http://homeassistant:8123.',
+      ),
+      (
+        'Valinnainen HTTPS selainversiota ja PWA:ta varten: ota hallinnan DNS-asetuksissa käyttöön HTTPS-varmenteet, aseta lisäosassa proxy: true, käynnistä lisäosa uudelleen. Osoite on muotoa https://nimi.tailnet.ts.net. Lisää configuration.yaml-tiedostoon: http: use_x_forwarded_for: true ja trusted_proxies: [127.0.0.1]. Selain estää http-yhteyden https-sivulta, joten web-sovellus tarvitsee tämän https-osoitteen tai yhteyden kotisillan kautta.',
+        'Optional HTTPS for the web app and PWA: enable HTTPS certificates in the admin DNS settings, set the add-on option proxy: true, and restart the add-on. The address looks like https://name.tailnet.ts.net. In configuration.yaml add http: use_x_forwarded_for: true and trusted_proxies: [127.0.0.1]. The browser blocks http from an https page, so the web app needs this https address or a connection through the home bridge.',
+      ),
+      (
+        'Molaplanissa: kirjoita paikallinen osoite ja Tailscale-osoite samaan Home Assistant -yhteyteen (Tailscale-osoite on kohdassa Edistyneet) ja sama pitkäikäinen tunnus. Molaplan kokeilee ensin paikallista osoitetta ja käyttää Tailscale-osoitetta, kun et ole kotiverkossa.',
+        'In Molaplan: enter the local address and the Tailscale address on the same Home Assistant connection (the Tailscale address is under Advanced) and the same long-lived token. Molaplan tries the local address first and uses the Tailscale address when you are away from the home network.',
+      ),
+    ],
+    links: [
+      ('tailscale.com/download', 'https://tailscale.com/download'),
+      ('login.tailscale.com', 'https://login.tailscale.com'),
+    ],
+    note: (
+      'Tämän laitteen, jossa Molaplan on, pitää olla yhdistettynä samaan tailnetiin kuin Home Assistant. Ohje on yleinen eikä viittaa tiettyyn asennukseen.',
+      'The device running Molaplan must be connected to the same tailnet as Home Assistant. This guide is generic and does not refer to a particular installation.',
+    ),
+  ),
+  Guide(
     id: 'wireguard',
     icon: Icons.shield_outlined,
     title: ('WireGuard (reitittimen VPN)', 'WireGuard (router VPN)'),
@@ -343,6 +386,35 @@ class GuideDetailPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+
+Guide? guideById(String id) => remoteGuides.where((g) => g.id == id).firstOrNull;
+
+/// Link / entry from the Home Assistant connection form: "Etäyhteys Tailscalella – ohje".
+class HaTailscaleGuideLink extends StatelessWidget {
+  const HaTailscaleGuideLink({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final g = guideById('ha_tailscale');
+    if (g == null) return const SizedBox.shrink();
+    return ListTile(
+      key: const ValueKey('ha-tailscale-guide'),
+      contentPadding: EdgeInsets.zero,
+      leading: const Icon(Icons.menu_book_outlined),
+      title: Text(tx(context, 'Etäyhteys Tailscalella – ohje', 'Remote access with Tailscale – guide')),
+      subtitle: Text(
+        tx(
+          context,
+          'Lisäosa Home Assistantiin, MagicDNS ja osoitteet Molaplanissa.',
+          'The Home Assistant add-on, MagicDNS, and the addresses in Molaplan.',
+        ),
+      ),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => GuideDetailPage(guide: g))),
     );
   }
 }

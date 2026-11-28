@@ -92,12 +92,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             ),
           ),
           onPick: (t) async {
-            final ok = await Navigator.push<bool>(
-              context,
-              MaterialPageRoute(
-                builder: (_) => TemplateSetupPage(template: t, dashboard: _dash),
-              ),
-            );
+            final ok = await openTemplateSetup(context, t, dashboard: _dash);
             if (ok == true && mounted) _go(2);
           },
           onBrand: (p) async {

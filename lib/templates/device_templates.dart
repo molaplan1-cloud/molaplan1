@@ -1,5 +1,6 @@
 import '../ui/measure_colors.dart' show defaultPriceThresholds;
 import '../devices/climate.dart';
+import '../devices/ha_routes.dart';
 
 import 'dart:convert';
 import 'dart:math' show max;
@@ -441,12 +442,12 @@ final deviceTemplates = <DeviceTemplate>[
     inputs: const [
       FieldSpec(
         'address',
-        'Home Assistantin osoite',
-        'Home Assistant address',
+        'Paikallinen osoite',
+        'Local address',
         required: true,
-        hint: '192.168.x.x:8123',
-        helpFi: 'Sama osoite, jolla avaat Home Assistantin selaimessa.',
-        helpEn: 'The address you open Home Assistant with.',
+        hint: 'http://homeassistant.local:8123',
+        helpFi: 'Osoite, jolla avaat Home Assistantin kotiverkossa, esim. http://homeassistant.local:8123 tai kotiverkon IP. Etäosoitteet (Tailscale, Nabu Casa) lisätään kohdassa Edistyneet. Tunnus kysytään vain kerran.',
+        helpEn: 'The address you open Home Assistant with on the home network, e.g. http://homeassistant.local:8123 or a LAN IP. Remote addresses (Tailscale, Nabu Casa) are added under Advanced. The token is asked only once.',
       ),
       FieldSpec(
         'token',
@@ -454,17 +455,44 @@ final deviceTemplates = <DeviceTemplate>[
         'Long-lived token',
         kind: FieldKind.secret,
         required: true,
-        helpFi: 'Home Assistant → klikkaa omaa nimeäsi vasemmalla alhaalla → Turvallisuus → Pitkäikäiset käyttöoikeustunnukset → Luo tunnus. Kopioi ja liitä tähän.',
-        helpEn: 'Home Assistant → your profile → Security → Long-lived access tokens → Create token. Paste it here.',
+        helpFi: 'Home Assistant → klikkaa omaa nimeäsi vasemmalla alhaalla → Turvallisuus → Pitkäikäiset käyttöoikeustunnukset → Luo tunnus. Kopioi ja liitä tähän. Tunnus tallennetaan tähän laitteeseen, eikä sitä kysytä uudelleen kun lisäät lisää entiteettejä.',
+        helpEn: 'Home Assistant → your profile → Security → Long-lived access tokens → Create token. Paste it here. The token is stored on this device and is not asked again when you add more entities.',
+      ),
+      FieldSpec(
+        'tailscaleUrl',
+        'Tailscale-osoite',
+        'Tailscale address',
+        hint: 'http://100.x.x.x:8123 tai https://nimi.ts.net',
+        advanced: true,
+        helpFi: haTailscaleHelpFi,
+        helpEn: haTailscaleHelpEn,
+      ),
+      FieldSpec(
+        'remoteUrl',
+        'Etäosoite (Nabu Casa tai muu)',
+        'Remote address (Nabu Casa or other)',
+        hint: 'https://xxxx.ui.nabu.casa',
+        advanced: true,
+        helpFi: 'Nabu Casa- tai muu julkinen https-osoite, jos käytät sitä kodin ulkopuolella.',
+        helpEn: 'A Nabu Casa or other public https address, if you use one away from home.',
       ),
     ],
     build: (v, lang) {
       var url = normUrl(v['address']);
       if (!RegExp(r':\d+$').hasMatch(Uri.tryParse(url)?.authority ?? '') && !url.startsWith('https')) url = '$url:8123';
+      final settings = <String, dynamic>{
+        'baseUrl': url,
+        'liveUpdates': true,
+        if (v['allowSelfSigned'] == true) 'allowSelfSigned': true,
+        'localUrl': v['localUrl'] ?? v['address'],
+        if (_s(v, 'tailscaleUrl').isNotEmpty) 'tailscaleUrl': _s(v, 'tailscaleUrl'),
+        if (_s(v, 'remoteUrl').isNotEmpty) 'remoteUrl': _s(v, 'remoteUrl'),
+      };
+      applyHaFieldsToSettings(settings, activeUrl: url);
       final c = ConnectionConfig(
-        name: 'Home Assistant',
+        name: _s(v, 'name', 'Home Assistant'),
         type: 'homeassistant',
-        settings: {'baseUrl': url, 'liveUpdates': true, if (v['allowSelfSigned'] == true) 'allowSelfSigned': true},
+        settings: settings,
         secrets: {if (_s(v, 'token').isNotEmpty) 'token': _s(v, 'token')},
       );
       // Tiles are picked next in the entity picker (HaEntityPickerPage) – never all at once.

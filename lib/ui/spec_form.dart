@@ -9,13 +9,25 @@ import '../l10n/l10n.dart';
 
 /// Generic form for a list of [FieldSpec]s editing [values] in place.
 class SpecForm extends StatelessWidget {
-  const SpecForm({super.key, required this.fields, required this.values, this.onChanged, this.scope});
+  const SpecForm({
+    super.key,
+    required this.fields,
+    required this.values,
+    this.onChanged,
+    this.scope,
+    this.advancedTitle,
+    this.advancedSubtitle,
+  });
   final List<FieldSpec> fields;
   final Map<String, dynamic> values;
   final VoidCallback? onChanged;
 
   /// e.g. "modbus.read" – selects help texts and advanced fields.
   final String? scope;
+
+  /// Defaults to "Lisäasetukset". Home Assistant uses "Edistyneet".
+  final String? advancedTitle;
+  final String? advancedSubtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +62,9 @@ class SpecForm extends StatelessWidget {
               initiallyExpanded: advUsed,
               tilePadding: EdgeInsets.zero,
               leading: const Icon(Icons.tune),
-              title: Text(tr(lang, 'Lisäasetukset', 'Advanced settings')),
+              title: Text(advancedTitle ?? tr(lang, 'Lisäasetukset', 'Advanced settings')),
               subtitle: Text(
-                tr(lang, 'Yleensä näihin ei tarvitse koskea', "Usually you don't need these"),
+                advancedSubtitle ?? tr(lang, 'Yleensä näihin ei tarvitse koskea', "Usually you don't need these"),
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               childrenPadding: const EdgeInsets.only(top: 4),

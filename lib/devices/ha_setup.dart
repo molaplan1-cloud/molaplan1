@@ -14,7 +14,7 @@ import '../core/friendly_error.dart';
 import '../drivers/http_driver.dart' show makeHttpClient;
 import 'provider.dart' show isPrivateIPv4;
 
-enum HaProblem { unreachable, wrongProtocol, badToken }
+enum HaProblem { unreachable, wrongProtocol, badToken, mixedContent }
 
 class HaSetupError extends PlainError {
   HaSetupError._(this.problem, ErrorKind k, String tf, String te, String hf, String he, String tech)
@@ -40,13 +40,22 @@ class HaSetupError extends PlainError {
       'Home Assistant was found but rejected the token. Create a new long-lived token (your profile → Security → Long-lived access tokens) and paste all of it.',
       tech,
     ),
+    HaProblem.mixedContent => HaSetupError._(
+      p,
+      ErrorKind.wrongProtocol,
+      'Selain estää http-yhteyden',
+      'The browser blocks the http address',
+      'Tämä selainversio on https-sivulla, joten se ei voi avata Home Assistantin http-osoitetta. Käytä Tailscale Serven https-osoitetta (*.ts.net) tai ohjaa yhteys kotisillan kautta.',
+      'This web app is on an https page, so it cannot open a Home Assistant http address. Use a Tailscale Serve https address (*.ts.net) or route the connection through the home bridge.',
+      tech,
+    ),
     HaProblem.unreachable => HaSetupError._(
       p,
       ErrorKind.unreachable,
       'Laitetta ei tavoitettu',
       'Could not reach the device',
-      'Tarkista, että Home Assistant on päällä ja että tämä laite on samassa kotiverkossa. Kodin ulkopuolelta käytä Nabu Casa- tai muuta ulkoista osoitetta.',
-      'Check that Home Assistant is on and this device is on the same home network. Away from home use the Nabu Casa or another external address.',
+      'Tarkista, että Home Assistant on päällä ja että tämä laite on samassa kotiverkossa. Kodin ulkopuolelta käytä Tailscale-osoitetta, Nabu Casaa tai muuta etäosoitetta (ne lisätään kerran yhteyden asetuksiin, kohdassa Edistyneet).',
+      'Check that Home Assistant is on and this device is on the same home network. Away from home use a Tailscale address, Nabu Casa or another remote address (they are stored once on the connection, under Advanced).',
       tech,
     ),
   };
@@ -55,6 +64,17 @@ class HaSetupError extends PlainError {
 /// LAN host: private IPv4, *.local or a bare name ("homeassistant").
 bool isLanHaHost(String host) =>
     isPrivateIPv4(host) || host.endsWith('.local') || (host.isNotEmpty && !host.contains('.') && !host.contains(':'));
+
+/// Tailscale: CGNAT 100.64.0.0/10, *.ts.net, or Tailscale IPv6 prefix.
+bool isTailscaleHaHost(String host) {
+  final h = host.trim().toLowerCase();
+  if (h.isEmpty) return false;
+  if (h.endsWith('.ts.net')) return true;
+  if (h.startsWith('fd7a:115c:a1e0')) return true;
+  final p = h.split('.').map(int.tryParse).toList();
+  if (p.length != 4 || p.any((x) => x == null)) return false;
+  return p[0] == 100 && p[1]! >= 64 && p[1]! <= 127;
+}
 
 /// Address preference: LAN IP, then *.local / bare names, then external (Nabu Casa etc.).
 int haUrlRank(String url) {
@@ -83,11 +103,22 @@ List<String> haCandidates(String input) {
     if (port == null && lan) out.add(_origin(u.scheme, host, 8123));
     out.add(_origin(other, host, port));
     if (port == null && lan) out.add(_origin(other, host, 8123));
-  } else if (lan) {
+  } else if (lan || isTailscaleHaHost(host)) {
     final p = port ?? 8123;
-    out
-      ..add(_origin('http', host, p))
-      ..add(_origin('https', host, p));
+    // Serve on *.ts.net is usually https on 443 when no port was typed.
+    if (!hasScheme && port == null && host.toLowerCase().endsWith('.ts.net')) {
+      out
+        ..add(_origin('https', host, null))
+        ..add(_origin('http', host, 8123))
+        ..add(_origin('https', host, 8123));
+    } else {
+      out
+        ..add(_origin('http', host, p))
+        ..add(_origin('https', host, p));
+      if (port == null && host.toLowerCase().endsWith('.ts.net')) {
+        out.add(_origin('https', host, null));
+      }
+    }
   } else if (port != null) {
     out
       ..add(_origin('https', host, port))
@@ -193,6 +224,43 @@ Future<HaProbeResult> probeHomeAssistant(
   }
   throw HaSetupError(worst, tech.join('; '));
 }
+
+/// Quick health check of a single already-normalized base URL (`GET /api/` with the token).
+Future<({bool ok, bool selfSigned, String message})> healthCheckHa(
+  String url, {
+  required String token,
+  bool allowSelfSigned = false,
+  HaClients? clients,
+  Duration timeout = const Duration(seconds: 4),
+}) async {
+  final base = url.replaceAll(RegExp(r'/+$'), '');
+  if (base.isEmpty) return (ok: false, selfSigned: false, message: '');
+  final mk = clients ?? _defaultClient;
+  final host = Uri.tryParse(base)?.host ?? '';
+  final https = base.startsWith('https');
+  final modes = https && (allowSelfSigned || isLanHaHost(host) || isTailscaleHaHost(host))
+      ? const [false, true]
+      : const [false];
+  for (final ss in modes) {
+    if (ss && !allowSelfSigned && !isLanHaHost(host)) continue;
+    final c = mk(ss);
+    try {
+      final r = await c
+          .get(Uri.parse('$base/api/'), headers: {'Authorization': 'Bearer ${token.trim()}'})
+          .timeout(timeout);
+      if (r.statusCode == 200 && r.body.contains('API running')) {
+        final m = jsonDecode(r.body);
+        return (ok: true, selfSigned: ss, message: m is Map ? '${m['message'] ?? 'OK'}' : 'OK');
+      }
+    } catch (_) {
+      // try the next certificate mode
+    } finally {
+      c.close();
+    }
+  }
+  return (ok: false, selfSigned: false, message: '');
+}
+
 
 // ------------------------------------------------------------------ discovery dedupe (t133u)
 

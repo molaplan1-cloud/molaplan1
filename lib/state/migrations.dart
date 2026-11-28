@@ -1,6 +1,7 @@
 /// One-time fixes for configurations saved by older versions.
 library;
 
+import '../devices/ha_routes.dart';
 import '../devices/sensors.dart';
 import '../models/models.dart';
 import '../prices/prices.dart';
@@ -180,19 +181,35 @@ void repointConnection(AppConfig cfg, String from, String to) {
 /// tiles of the others point to it. Different servers or different tokens stay separate.
 /// Needs the secrets loaded. Returns the removed connections (their stored secrets can go).
 List<ConnectionConfig> dedupeHaConnections(AppConfig cfg) {
-  final keep = <String, ConnectionConfig>{};
+  final keep = <ConnectionConfig>[];
   final removed = <ConnectionConfig>[];
   for (final c in List.of(cfg.connections)) {
     if (c.type != 'homeassistant') continue;
     final demo = c.settings['demo'] == true;
     final addr = haAddress(c);
-    if (!demo && addr.isEmpty) continue; // not set up yet: nothing to compare
-    final key = demo ? 'demo' : '$addr|${c.secrets['token'] ?? ''}';
-    final first = keep[key];
+    if (!demo && addr.isEmpty && haUrlSet(c).isEmpty) continue; // not set up yet
+    ConnectionConfig? first;
+    for (final k in keep) {
+      final kDemo = k.settings['demo'] == true;
+      if (demo || kDemo) {
+        if (demo && kDemo) {
+          first = k;
+          break;
+        }
+        continue;
+      }
+      if ((k.secrets['token'] ?? '') != (c.secrets['token'] ?? '')) continue;
+      final overlap = haUrlSet(k).intersection(haUrlSet(c)).isNotEmpty || haAddress(k) == haAddress(c);
+      if (overlap) {
+        first = k;
+        break;
+      }
+    }
     if (first == null) {
-      keep[key] = c;
+      keep.add(c);
       continue;
     }
+    mergeHaRoutes(first, haRoutesOf(c), activeUrl: '${first.settings['baseUrl'] ?? ''}');
     repointConnection(cfg, c.id, first.id);
     cfg.connections.remove(c);
     removed.add(c);

@@ -1,4 +1,7 @@
 import 'ha_picker.dart';
+import 'ha_connection_flow.dart';
+import 'guides_page.dart';
+import '../devices/ha_routes.dart';
 import 'thermostat_pages.dart';
 import 'weather_tile.dart';
 
@@ -33,6 +36,79 @@ import 'modbus_scan_page.dart';
 import 'spec_form.dart';
 import 'network_scan.dart';
 
+
+/// Shared entry for every "open this device template" call site.
+Future<bool?> openTemplateSetup(
+  BuildContext context,
+  DeviceTemplate t, {
+  Dashboard? dashboard,
+  Map<String, dynamic>? initialValues,
+}) {
+  if (t.id == 'homeassistant') {
+    return openHaAddFlow(context, dashboard: dashboard, initialValues: initialValues);
+  }
+  return Navigator.push<bool>(
+    context,
+    MaterialPageRoute(
+      builder: (_) => TemplateSetupPage(template: t, dashboard: dashboard, initialValues: initialValues),
+    ),
+  );
+}
+
+/// Lisää → Home Assistant: reuse a stored connection (no token form) or set up a new one.
+Future<bool?> openHaAddFlow(
+  BuildContext context, {
+  Dashboard? dashboard,
+  Map<String, dynamic>? initialValues,
+  bool forceNew = false,
+}) async {
+  final st = AppScope.read(context);
+  final list = haServers(st);
+  final typed = [
+    if (initialValues != null) ...[
+      '${initialValues['address'] ?? ''}',
+      '${initialValues['baseUrl'] ?? ''}',
+      '${initialValues['tailscaleUrl'] ?? ''}',
+      '${initialValues['remoteUrl'] ?? ''}',
+    ],
+  ];
+  final match = existingHaConnection(list, urls: typed);
+  if (!forceNew && match != null && typed.any((u) => u.trim().isNotEmpty)) {
+    if (!context.mounted) return false;
+    await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => HaEntityPickerPage(connection: match, dashboard: dashboard)),
+    );
+    return true;
+  }
+  if (!forceNew && list.isNotEmpty && (initialValues == null || typed.every((u) => u.trim().isEmpty))) {
+    final pick = await pickHaServer(context, offerNew: true);
+    if (pick == null || !context.mounted) return false;
+    if (!pick.addNew && pick.connection != null) {
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => HaEntityPickerPage(connection: pick.connection!, dashboard: dashboard),
+        ),
+      );
+      return true;
+    }
+  }
+  if (!context.mounted) return false;
+  return Navigator.push<bool>(
+    context,
+    MaterialPageRoute(
+      builder: (_) => TemplateSetupPage(
+        template: tHomeAssistant(),
+        dashboard: dashboard,
+        initialValues: initialValues,
+      ),
+    ),
+  );
+}
+
+DeviceTemplate tHomeAssistant() => templateById('homeassistant')!;
+
 /// Grid of ready-made device recipes. Pops with `true` when something was added.
 class TemplateGalleryPage extends StatelessWidget {
   const TemplateGalleryPage({super.key, this.dashboard});
@@ -48,12 +124,7 @@ class TemplateGalleryPage extends StatelessWidget {
           if (context.mounted) Navigator.pop(context, true);
         },
         onPick: (t) async {
-          final added = await Navigator.push<bool>(
-            context,
-            MaterialPageRoute(
-              builder: (_) => TemplateSetupPage(template: t, dashboard: dashboard),
-            ),
-          );
+          final added = await openTemplateSetup(context, t, dashboard: dashboard);
           if (added == true && context.mounted) Navigator.pop(context, true);
         },
         onBrand: (p) async {
@@ -589,12 +660,14 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
     final addr = '${values['address'] ?? ''}'.trim();
     if (addr.isNotEmpty && addr == _haVerified) return true;
     var token = '${values['token'] ?? ''}'.trim();
+    final typedUrls = [
+      addr,
+      '${values['tailscaleUrl'] ?? ''}',
+      '${values['remoteUrl'] ?? ''}',
+    ];
     if (token.isEmpty) {
-      // Heat pump on an already added HA: reuse its token.
-      final ex = AppScope.read(context).config.connections.where((e) => e.type == 'homeassistant').where((e) {
-        final b = '${e.settings['baseUrl']}';
-        return haCandidates(addr).contains(b) || b == addr;
-      }).firstOrNull;
+      // Already added HA: reuse its token and stored routes.
+      final ex = existingHaConnection(AppScope.read(context).config.connections, urls: typedUrls);
       if (ex != null) {
         values['address'] = ex.settings['baseUrl'];
         _haVerified = '${ex.settings['baseUrl']}';
@@ -602,7 +675,16 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
       }
     }
     try {
-      final r = await widget.haProbe(addr, token, more: [..._haMore, 'homeassistant.local']);
+      final r = await widget.haProbe(
+        addr,
+        token,
+        more: [
+          ..._haMore,
+          'homeassistant.local',
+          '${values['tailscaleUrl'] ?? ''}',
+          '${values['remoteUrl'] ?? ''}',
+        ],
+      );
       if (!mounted) return false;
       setState(() {
         final changed = r.baseUrl != addr;
@@ -1111,6 +1193,14 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
                 key: ValueKey('tpl$_formKey'),
                 fields: t.inputs,
                 values: values,
+                advancedTitle: _isHa ? tx(context, 'Edistyneet', 'Advanced') : null,
+                advancedSubtitle: _isHa
+                    ? tx(
+                        context,
+                        'Tailscale, Nabu Casa ja muut etäosoitteet. Tunnus kysytään vain kerran.',
+                        'Tailscale, Nabu Casa and other remote addresses. The token is asked only once.',
+                      )
+                    : null,
                 onChanged: () => setState(() {
                   // t235u: picking the kv-panel preset fills its commands into the form.
                   if (t.id == 'ntfy_device' && values['preset'] != _preset) {
@@ -1120,6 +1210,19 @@ class _TemplateSetupPageState extends State<TemplateSetupPage> {
                   }
                 }),
               ),
+              if (_isHa) ...[
+                const HaTailscaleGuideLink(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8, bottom: 8),
+                  child: HaRouteHelp(
+                    urls: [
+                      '${values['address'] ?? ''}',
+                      '${values['tailscaleUrl'] ?? ''}',
+                      '${values['remoteUrl'] ?? ''}',
+                    ],
+                  ),
+                ),
+              ],
               if (t.id == 'tasmota')
                 Padding(
                   padding: const EdgeInsets.only(bottom: 12),

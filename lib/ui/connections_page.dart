@@ -4,10 +4,14 @@ import 'package:material_ui/material_ui.dart';
 
 import '../core/fields.dart';
 import '../drivers/registry.dart';
+import '../devices/ha_routes.dart';
 import '../models/models.dart';
 import 'account_nudge.dart';
 import 'channel_repair.dart';
 import 'app_scope.dart';
+import 'ha_connection_flow.dart';
+import 'ha_picker.dart';
+import 'guides_page.dart';
 import 'heatpump_pages.dart';
 import 'heatpump_import.dart';
 import 'error_box.dart';
@@ -120,7 +124,13 @@ class ConnectionsPage extends StatelessWidget {
                         leading: Icon(connectionIcon(con.type)),
                         title: Text(con.name),
                         subtitle: Text('${descriptorFor(con.type).label(st.lang)} · $addr'),
-                        trailing: const Icon(Icons.chevron_right),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            if (con.type == 'homeassistant') HaRouteChip(connection: con),
+                            const Icon(Icons.chevron_right),
+                          ],
+                        ),
                         onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(builder: (_) => ConnectionEditor(initial: con.copy())),
@@ -154,6 +164,12 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
   String? _result;
   Object? _error;
 
+  @override
+  void initState() {
+    super.initState();
+    if (c.type == 'homeassistant') syncHaFieldsFromSettings(values);
+  }
+
   ConnectionConfig _build() {
     final d = descriptorFor(c.type);
     final secretKeys = d.secretKeys;
@@ -165,6 +181,9 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
         out.settings[k] = v;
       }
     });
+    if (c.type == 'homeassistant') {
+      applyHaFieldsToSettings(out.settings, activeUrl: '${out.settings['baseUrl'] ?? ''}');
+    }
     return out;
   }
 
@@ -290,12 +309,51 @@ class _ConnectionEditorState extends State<ConnectionEditor> {
                 decoration: InputDecoration(labelText: tx(context, 'Nimi', 'Name')),
               ),
               const SizedBox(height: 10),
+              if (c.type == 'homeassistant') ...[
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: HaRouteChip(connection: _build()),
+                ),
+                const SizedBox(height: 8),
+              ],
               SpecForm(
                 key: ValueKey('conn$_formKey'),
                 fields: d.connectionFields,
                 values: values,
                 scope: '${c.type}.conn',
+                advancedTitle: c.type == 'homeassistant' ? tx(context, 'Edistyneet', 'Advanced') : null,
+                advancedSubtitle: c.type == 'homeassistant'
+                    ? tx(
+                        context,
+                        'Tailscale, Nabu Casa ja muut etäosoitteet. Tunnus on tallennettu tähän yhteyteen.',
+                        'Tailscale, Nabu Casa and other remote addresses. The token is stored on this connection.',
+                      )
+                    : null,
               ),
+              if (c.type == 'homeassistant') ...[
+                const HaTailscaleGuideLink(),
+                HaRouteHelp(
+                  urls: [
+                    '${values['baseUrl'] ?? ''}',
+                    '${values['localUrl'] ?? ''}',
+                    '${values['tailscaleUrl'] ?? ''}',
+                    '${values['remoteUrl'] ?? ''}',
+                  ],
+                ),
+                if (!widget.isNew)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8, bottom: 8),
+                    child: OutlinedButton.icon(
+                      key: const ValueKey('ha-add-entities'),
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => HaEntityPickerPage(connection: c)),
+                      ),
+                      icon: const Icon(Icons.add),
+                      label: Text(tx(context, 'Lisää entiteettejä', 'Add entities')),
+                    ),
+                  ),
+              ],
               DeviceNotifyPrefsSection(values: values, onChanged: () => setState(() {})),
               if (st.stateTopicOffer?.id == c.id) StateTopicOfferCard(connectionId: c.id, suggested: st.stateTopicOffer!.suggested),
               const SizedBox(height: 8),

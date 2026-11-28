@@ -197,11 +197,17 @@ class _NetworkScanCardState extends State<NetworkScanCard> {
     } else {
       final t = deviceTemplates.where((t) => t.id == flow.$2).firstOrNull;
       if (t == null) return;
+      // Cloud-only devices (Airthings) have no address to fill.
+      final initial = t.id == 'airthings' ? const <String, dynamic>{} : {'address': h.address, if (h.name.isNotEmpty) 'name': h.name};
+      if (t.id == 'homeassistant') {
+        final ok = await openTemplateSetup(context, t, dashboard: widget.dashboard, initialValues: initial);
+        if (ok == true) widget.onAdded?.call(false);
+        return;
+      }
       page = TemplateSetupPage(
         template: t,
         dashboard: widget.dashboard,
-        // Cloud-only devices (Airthings) have no address to fill.
-        initialValues: t.id == 'airthings' ? const {} : {'address': h.address, if (h.name.isNotEmpty) 'name': h.name},
+        initialValues: initial,
       );
     }
     final ok = await Navigator.push<bool>(context, MaterialPageRoute(builder: (_) => page!));

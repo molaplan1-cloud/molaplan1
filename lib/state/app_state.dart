@@ -4,6 +4,8 @@ import '../core/home_network.dart';
 import 'measure_history.dart';
 import '../core/friendly_error.dart';
 import '../devices/climate.dart';
+import '../devices/ha_routes.dart';
+import '../drivers/ha_driver.dart';
 import 'migrations.dart';
 import 'sensor_repair.dart';
 
@@ -108,6 +110,7 @@ class AppState extends ChangeNotifier implements SyncHost {
       unawaited(
         NetHealth.instance.check(force: true),
       ); // t213u: banner follows network changes
+      if (up) unawaited(refreshHaRoutes());
     });
     remote.addListener(() {
       final p = remote.paired;
@@ -1645,7 +1648,27 @@ class AppState extends ChangeNotifier implements SyncHost {
     return _drivers[c.id] ??= remote.router.wrap(c);
   }
 
+  /// Re-probes Home Assistant routes when the network comes back (local first).
+  Future<void> refreshHaRoutes() async {
+    var changed = false;
+    for (final c in config.connections.where((c) => c.type == 'homeassistant' && c.settings['demo'] != true)) {
+      final d = _drivers[c.id];
+      try {
+        if (d is HomeAssistantDriver) {
+          if (await d.useBestRoute(preferLocal: true)) changed = true;
+        }
+      } catch (_) {
+        // leave the last working URL; tiles will retry
+      }
+    }
+    if (changed) {
+      await save();
+      notifyListeners();
+    }
+  }
+
   Future<void> upsertConnection(ConnectionConfig c) async {
+    if (c.type == 'homeassistant') applyHaFieldsToSettings(c.settings);
     final secretKeys = descriptorFor(c.type).secretKeys;
     c.settings.removeWhere((k, _) => secretKeys.contains(k));
     final i = config.connections.indexWhere((e) => e.id == c.id);
@@ -2182,6 +2205,13 @@ class AppState extends ChangeNotifier implements SyncHost {
 
   static String _addrKey(ConnectionConfig c) {
     final s = c.settings;
+    if (c.type == 'homeassistant') {
+      final urls = haUrlSet(c).toList()..sort();
+      final a = urls.isEmpty
+          ? (s['baseUrl'] ?? '').toString().toLowerCase().replaceAll(RegExp(r'/+$'), '')
+          : urls.join(',');
+      return 'homeassistant|$a';
+    }
     final a = (s['baseUrl'] ?? s['host'] ?? s['url'] ?? '')
         .toString()
         .toLowerCase()
@@ -2247,14 +2277,22 @@ class AppState extends ChangeNotifier implements SyncHost {
     final remap = <String, String>{};
     final used = <ConnectionConfig>[];
     for (final c in r.connections) {
-      final existing = config.connections
-          .where((e) => _addrKey(e) == _addrKey(c))
-          .firstOrNull;
+      final existing = c.type == 'homeassistant'
+          ? existingHaConnection(config.connections, candidate: c)
+          : config.connections.where((e) => _addrKey(e) == _addrKey(c)).firstOrNull;
       if (existing != null) {
         remap[c.id] = existing.id;
         // Newer settings/credentials win (e.g. a password added in the wizard).
-        existing.settings.addAll(c.settings);
-        c.secrets.forEach((k, v) => existing.secrets[k] = v);
+        if (c.type == 'homeassistant') {
+          mergeHaRoutes(existing, haRoutesOf(c), activeUrl: '${existing.settings['baseUrl'] ?? ''}');
+          // Do not let an empty token from a reuse form wipe the stored one.
+          c.secrets.forEach((k, v) {
+            if (v.trim().isNotEmpty) existing.secrets[k] = v;
+          });
+        } else {
+          existing.settings.addAll(c.settings);
+          c.secrets.forEach((k, v) => existing.secrets[k] = v);
+        }
         await _persistSecrets(existing);
         await _drivers.remove(existing.id)?.dispose();
         used.add(existing);

@@ -5,8 +5,12 @@ import '../core/io_http.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_socket_channel/io.dart';
 
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 import '../core/fields.dart';
 import '../core/template.dart';
+import '../devices/ha_routes.dart';
+import '../devices/ha_setup.dart';
 import 'driver.dart';
 import 'http_driver.dart';
 
@@ -30,7 +34,15 @@ class HomeAssistantDriver extends Driver {
     en: 'Home Assistant',
     create: HomeAssistantDriver.new,
     connectionFields: [
-      FieldSpec('baseUrl', 'Osoite', 'URL', hint: 'http://homeassistant.local:8123', required: true),
+      FieldSpec(
+        'baseUrl',
+        'Käytössä oleva osoite',
+        'Address in use',
+        hint: 'http://homeassistant.local:8123',
+        required: true,
+        helpFi: 'Tämä on juuri nyt käytössä oleva osoite (paikallinen, Tailscale tai etä). Muut osoitteet ovat kohdassa Edistyneet.',
+        helpEn: 'The address currently in use (local, Tailscale or remote). Other addresses are under Advanced.',
+      ),
       FieldSpec(
         'token',
         'Pitkäikäinen käyttöoikeustunnus',
@@ -39,17 +51,46 @@ class HomeAssistantDriver extends Driver {
         required: true,
       ),
       FieldSpec(
+        'localUrl',
+        'Paikallinen osoite',
+        'Local address',
+        hint: 'http://homeassistant.local:8123',
+        advanced: true,
+        helpFi: 'Osoite kotiverkossa, esim. http://homeassistant.local:8123 tai kotiverkon IP.',
+        helpEn: 'The address on the home network, e.g. http://homeassistant.local:8123 or a LAN IP.',
+      ),
+      FieldSpec(
+        'tailscaleUrl',
+        'Tailscale-osoite',
+        'Tailscale address',
+        hint: 'http://100.x.x.x:8123 tai https://nimi.ts.net',
+        advanced: true,
+        helpFi: haTailscaleHelpFi,
+        helpEn: haTailscaleHelpEn,
+      ),
+      FieldSpec(
+        'remoteUrl',
+        'Etäosoite (Nabu Casa tai muu)',
+        'Remote address (Nabu Casa or other)',
+        hint: 'https://xxxx.ui.nabu.casa',
+        advanced: true,
+        helpFi: 'Nabu Casa- tai muu julkinen https-osoite, jos käytät sitä kodin ulkopuolella.',
+        helpEn: 'A Nabu Casa or other public https address, if you use one away from home.',
+      ),
+      FieldSpec(
         'liveUpdates',
         'Reaaliaikaiset päivitykset (websocket)',
         'Live updates (websocket)',
         kind: FieldKind.boolean,
         defaultValue: true,
+        advanced: true,
       ),
       FieldSpec(
         'allowSelfSigned',
         'Salli itse allekirjoitettu sertifikaatti',
         'Allow self-signed certificate',
         kind: FieldKind.boolean,
+        advanced: true,
       ),
     ],
     readFields: [
@@ -74,6 +115,74 @@ class HomeAssistantDriver extends Driver {
   String get _base {
     final b = s.str('baseUrl');
     return b.endsWith('/') ? b.substring(0, b.length - 1) : b;
+  }
+
+  HaRouteKind? get activeRouteKind => haRouteKindOf(config);
+
+  List<HaRoute> get _usableRoutes {
+    final all = haRoutesOf(config);
+    return [
+      for (final r in all)
+        if (!haMixedContentBlocked(r.url, isWeb: kIsWeb, pageScheme: Uri.base.scheme)) r,
+    ];
+  }
+
+  /// Re-picks the live URL (local first when [preferLocal] is true). Updates settings in place.
+  Future<bool> useBestRoute({bool preferLocal = true}) async {
+    final token = s.str('token');
+    final routes = _usableRoutes;
+    if (routes.isEmpty) {
+      final any = haRoutesOf(config);
+      if (any.isNotEmpty && any.every((r) => haMixedContentBlocked(r.url, isWeb: kIsWeb, pageScheme: Uri.base.scheme))) {
+        throw HaSetupError(HaProblem.mixedContent, 'https page vs http HA');
+      }
+      return false;
+    }
+    final sel = await selectHaRoute(
+      routes: routes,
+      token: token,
+      lastUrl: _base,
+      allowSelfSigned: s.flag('allowSelfSigned'),
+      preferLocal: preferLocal,
+      probe: (url, {required token, required allowSelfSigned}) =>
+          healthCheckHa(url, token: token, allowSelfSigned: allowSelfSigned),
+    );
+    if (!sel.ok) return false;
+    final changed = sel.url != _base || sel.selfSigned && !s.flag('allowSelfSigned');
+    writeHaRoutes(
+      config.settings,
+      haRoutesOf(config),
+      activeUrl: sel.url,
+      lastKind: sel.kind,
+    );
+    if (sel.selfSigned) config.settings['allowSelfSigned'] = true;
+    if (changed) {
+      _client?.close();
+      _client = null;
+      final old = _ws;
+      _ws = null;
+      await old?.sink.close();
+    }
+    return changed;
+  }
+
+  bool _isTransport(Object e) {
+    final s = e.toString().toLowerCase();
+    if (s.contains('401') || s.contains('403') || s.contains('404') || s.contains('invalid token')) {
+      return false;
+    }
+    if (e is DriverException && (s.contains('http ') || s.contains('entity '))) return false;
+    return true;
+  }
+
+  Future<T> _withRoute<T>(Future<T> Function() op) async {
+    try {
+      return await op();
+    } catch (e) {
+      if (!_isTransport(e)) rethrow;
+      if (await useBestRoute(preferLocal: true)) return await op();
+      rethrow;
+    }
   }
 
   Object? _pick(Map<String, dynamic> state, Map<String, dynamic> spec) {
@@ -104,11 +213,13 @@ class HomeAssistantDriver extends Driver {
 
   @override
   Future<Object?> read(Map<String, dynamic> spec) async {
-    final entity = spec.str('entityId');
-    final cached = _ws != null ? _states[entity] : null;
-    // {'full': true}: the whole state (state + attributes) – colour lights, thermostats.
-    if (spec['full'] == true) return cached ?? await _getState(entity);
-    return _pick(cached ?? await _getState(entity), spec);
+    return _withRoute(() async {
+      final entity = spec.str('entityId');
+      final cached = _ws != null ? _states[entity] : null;
+      // {'full': true}: the whole state (state + attributes) – colour lights, thermostats.
+      if (spec['full'] == true) return cached ?? await _getState(entity);
+      return _pick(cached ?? await _getState(entity), spec);
+    });
   }
 
   /// t148u: the recorder's history for the trend window (GET /api/history/period), so a new
@@ -126,10 +237,12 @@ class HomeAssistantDriver extends Driver {
       if (attr == null) 'minimal_response': '',
       if (attr == null) 'no_attributes': '',
     };
-    final uri = Uri.parse('$_base/api/history/period/$start').replace(queryParameters: q);
-    final r = await client.get(uri, headers: _headers).timeout(const Duration(seconds: 10));
-    if (r.statusCode >= 400) return const [];
-    return parseHaHistory(jsonDecode(r.body), attribute: attr);
+    return _withRoute(() async {
+      final uri = Uri.parse('$_base/api/history/period/$start').replace(queryParameters: q);
+      final r = await client.get(uri, headers: _headers).timeout(const Duration(seconds: 10));
+      if (r.statusCode >= 400) return const <(DateTime, double)>[];
+      return parseHaHistory(jsonDecode(r.body), attribute: attr);
+    });
   }
 
   @override
@@ -155,7 +268,7 @@ class HomeAssistantDriver extends Driver {
 
   Future<void> _ensureWs() {
     if (_ws != null) return Future.value();
-    return _wsConnecting ??= _connectWs().whenComplete(() => _wsConnecting = null);
+    return _wsConnecting ??= _withRoute(_connectWs).whenComplete(() => _wsConnecting = null);
   }
 
   Future<void> _connectWs() async {
@@ -241,24 +354,30 @@ class HomeAssistantDriver extends Driver {
     }
     final entity = spec.strOrNull('entityId');
     if (entity != null) body['entity_id'] = entity;
-    final r = await client
-        .post(
-          Uri.parse('$_base/api/services/${svc.substring(0, i)}/${svc.substring(i + 1)}'),
-          headers: _headers,
-          body: jsonEncode(body),
-        )
-        .timeout(const Duration(seconds: 10));
-    if (r.statusCode >= 400) throw DriverException('Home Assistant: HTTP ${r.statusCode} ${r.body}');
-    return r.body;
+    return _withRoute(() async {
+      final r = await client
+          .post(
+            Uri.parse('$_base/api/services/${svc.substring(0, i)}/${svc.substring(i + 1)}'),
+            headers: _headers,
+            body: jsonEncode(body),
+          )
+          .timeout(const Duration(seconds: 10));
+      if (r.statusCode >= 400) throw DriverException('Home Assistant: HTTP ${r.statusCode} ${r.body}');
+      return r.body;
+    });
   }
 
   @override
   Future<String> test() async {
+    await useBestRoute(preferLocal: true);
     final r = await client.get(Uri.parse('$_base/api/'), headers: _headers).timeout(const Duration(seconds: 10));
     if (r.statusCode == 401) throw DriverException('401 Unauthorized (token)');
     if (r.statusCode >= 400) throw DriverException('HTTP ${r.statusCode}');
     final m = jsonDecode(r.body);
-    return m is Map ? (m['message'] ?? 'OK').toString() : 'OK';
+    final kind = activeRouteKind;
+    final label = kind == null ? '' : ' · ${haRouteLabel(kind, fi: true)}';
+    final msg = m is Map ? (m['message'] ?? 'OK').toString() : 'OK';
+    return '$msg$label';
   }
 
   @override

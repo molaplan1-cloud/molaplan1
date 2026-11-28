@@ -7,6 +7,7 @@ import '../templates/device_templates.dart';
 import 'add_device_wizard.dart';
 import 'already_added.dart';
 import 'app_scope.dart';
+import 'ha_connection_flow.dart';
 
 String haDomainLabel(BuildContext context, String d) => switch (d) {
   'light' => tx(context, 'Valot', 'Lights'),
@@ -219,6 +220,12 @@ class _HaEntityPickerPageState extends State<HaEntityPickerPage> {
             'Pick Home Assistant devices',
           ),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: Center(child: HaRouteChip(connection: widget.connection)),
+          ),
+        ],
       ),
       body: error != null
           ? Center(

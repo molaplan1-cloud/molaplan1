@@ -208,12 +208,7 @@ Future<void> showServiceTileSheet(BuildContext context, Dashboard d) async {
   Future<void> template(String tid) async {
     final t = deviceTemplates.where((t) => t.id == tid).firstOrNull;
     if (t == null) return;
-    await Navigator.push<bool>(
-      context,
-      MaterialPageRoute(
-        builder: (_) => TemplateSetupPage(template: t, dashboard: d),
-      ),
-    );
+    await openTemplateSetup(context, t, dashboard: d);
   }
 
   switch (id) {
