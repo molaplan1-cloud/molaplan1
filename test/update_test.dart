@@ -20,14 +20,16 @@ Map<String, dynamic> ghRelease(
   String tag, {
   List<String>? assets,
   String body = '## Uutta\n- **Päivitykset** sovelluksessa',
+  bool draft = false,
 }) => {
   'tag_name': tag,
   'name': 'Molaplan $tag',
   'body': body,
+  if (draft) 'draft': true,
   'html_url': 'https://github.com/$releaseRepo/releases/tag/$tag',
   'assets': [
     for (final a in assets ?? [androidArm64Asset, androidUniversalAsset, windowsAsset, checksumAsset])
-      {'name': a, 'browser_download_url': 'https://dl.example/$tag/$a', 'size': 10},
+      {'name': a, 'browser_download_url': 'https://github.com/$releaseRepo/releases/download/$tag/$a', 'size': 10},
   ],
 };
 
@@ -205,6 +207,9 @@ void main() {
       client: MockClient((req) async {
         if (req.url.host == 'molaplan.com') return http.Response('', 404); // R701: manifest is tried first
         calls++;
+        if (req.url.path.endsWith('/releases')) {
+          return http.Response(status == 200 ? jsonEncode([ghRelease(tag)]) : '{"message":"error"}', status);
+        }
         return http.Response(jsonEncode(ghRelease(tag)), status);
       }),
     )..autoCheck = true;
@@ -223,15 +228,18 @@ void main() {
       status = 403;
       expect(await u.checkOnStartup(), isNull);
       expect(checked, isNull, reason: 'rate limited -> retry next start');
+      final afterFail = calls;
+      expect(afterFail, greaterThanOrEqualTo(1));
       status = 200;
       expect((await u.checkOnStartup())!.version, '0.3.2');
-      expect(calls, 2);
+      final afterOk = calls;
+      expect(afterOk, greaterThan(afterFail));
       now = now.add(const Duration(minutes: 59));
       expect(await u.checkOnStartup(), isNull);
-      expect(calls, 2);
+      expect(calls, afterOk, reason: 'still inside the interval');
       now = now.add(const Duration(minutes: 2));
       expect(await u.checkOnStartup(), isNotNull);
-      expect(calls, 3);
+      expect(calls, greaterThan(afterOk));
     });
 
     test('skipped version is not offered on startup, but the manual check shows it', () async {
@@ -385,7 +393,7 @@ void main() {
       expect(find.text('Molaplan $appVersion'), findsOneWidget);
       await tester.tap(btn);
       await tester.pumpAndSettle();
-      expect(find.text('Sinulla on uusin versio ($appVersion).'), findsOneWidget);
+      expect(find.text('Sovellus on ajan tasalla.'), findsOneWidget);
     });
   });
 }

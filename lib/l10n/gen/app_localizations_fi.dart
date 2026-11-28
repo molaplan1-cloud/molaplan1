@@ -6470,9 +6470,11 @@ class AppLocalizationsFi extends AppLocalizations {
   String get s108e078c0c => 'Modbus-laite tuotu Home Assistantista';
 
   @override
-  String sa0c07ccd04(String p0) {
-    return 'Sinulla on uusin versio ($p0).';
-  }
+  String get s9f06d04913 =>
+      'Sovellus on ajan tasalla. Uudempi versio valmistuu pian.';
+
+  @override
+  String get s133d690938 => 'Sovellus on ajan tasalla.';
 
   @override
   String get sa118d84538 =>

@@ -6450,9 +6450,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get s108e078c0c => 'Modbus device imported from Home Assistant';
 
   @override
-  String sa0c07ccd04(String p0) {
-    return 'You have the latest version ($p0).';
-  }
+  String get s9f06d04913 =>
+      'The app is up to date. A newer version will be ready shortly.';
+
+  @override
+  String get s133d690938 => 'The app is up to date.';
 
   @override
   String get sa118d84538 =>

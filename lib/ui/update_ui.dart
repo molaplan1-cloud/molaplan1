@@ -60,7 +60,13 @@ Future<void> manualUpdateCheck(BuildContext context) async {
     case CheckOutcome.upToDate:
       showSnack(
         context,
-        tx(context, 'Sinulla on uusin versio ($appVersion).', 'You have the latest version ($appVersion).'),
+        r.pendingNewer
+            ? tx(
+                context,
+                'Sovellus on ajan tasalla. Uudempi versio valmistuu pian.',
+                'The app is up to date. A newer version will be ready shortly.',
+              )
+            : tx(context, 'Sovellus on ajan tasalla.', 'The app is up to date.'),
       );
     case CheckOutcome.unavailable:
       showSnack(

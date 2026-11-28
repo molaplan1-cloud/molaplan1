@@ -10521,25 +10521,25 @@
   "description": "fi: Modbus-laite tuotu Home Assistantista",
   "x-where": "ui/ha_modbus_ui.dart:206"
  },
- "sa0c07ccd04": "You have the latest version ({p0}).",
- "@sa0c07ccd04": {
-  "description": "fi: Sinulla on uusin versio ({p0}).",
-  "x-where": "ui/update_ui.dart:63",
-  "placeholders": {
-   "p0": {
-    "type": "String"
-   }
-  }
+ "s9f06d04913": "The app is up to date. A newer version will be ready shortly.",
+ "@s9f06d04913": {
+  "description": "fi: Sovellus on ajan tasalla. Uudempi versio valmistuu pian.",
+  "x-where": "ui/update_ui.dart:64"
+ },
+ "s133d690938": "The app is up to date.",
+ "@s133d690938": {
+  "description": "fi: Sovellus on ajan tasalla.",
+  "x-where": "ui/update_ui.dart:69"
  },
  "sa118d84538": "Could not check for updates right now. Check the internet connection and try again later.",
  "@sa118d84538": {
   "description": "fi: Päivityksiä ei voitu tarkistaa juuri nyt. Tarkista nettiyhteys ja yritä myöhemmin.",
-  "x-where": "ui/update_ui.dart:68"
+  "x-where": "ui/update_ui.dart:74"
  },
  "s9f2b092d8c": "Version {p0} is available",
  "@s9f2b092d8c": {
   "description": "fi: Uusi versio {p0} on saatavilla",
-  "x-where": "ui/update_ui.dart:86",
+  "x-where": "ui/update_ui.dart:92",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10549,7 +10549,7 @@
  "sa5133b2c4a": "You have version {p0}.",
  "@sa5133b2c4a": {
   "description": "fi: Sinulla on nyt versio {p0}.",
-  "x-where": "ui/update_ui.dart:94",
+  "x-where": "ui/update_ui.dart:100",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10559,57 +10559,57 @@
  "s3cb3b0f9e9": "Molaplan downloads the update, closes for a moment and restarts by itself. Your settings are kept.",
  "@s3cb3b0f9e9": {
   "description": "fi: Molaplan lataa päivityksen, sulkeutuu hetkeksi ja käynnistyy itse uudelleen. Asetuksesi säilyvät.",
-  "x-where": "ui/update_ui.dart:98"
+  "x-where": "ui/update_ui.dart:104"
  },
  "se099b5797e": "What''s new:",
  "@se099b5797e": {
   "description": "fi: Mitä uutta:",
-  "x-where": "ui/update_ui.dart:108"
+  "x-where": "ui/update_ui.dart:114"
  },
  "s9315c3df42": "Skip this version",
  "@s9315c3df42": {
   "description": "fi: Ohita tämä versio",
-  "x-where": "ui/update_ui.dart:120"
+  "x-where": "ui/update_ui.dart:126"
  },
  "sdd5c8f0a9d": "Later",
  "@sdd5c8f0a9d": {
   "description": "fi: Myöhemmin",
-  "x-where": "ui/update_ui.dart:125"
+  "x-where": "ui/update_ui.dart:131"
  },
  "s696dfe5700": "Update now",
  "@s696dfe5700": {
   "description": "fi: Päivitä nyt",
-  "x-where": "ui/update_ui.dart:132"
+  "x-where": "ui/update_ui.dart:138"
  },
  "s5a94ef2af1": "The download was corrupted",
  "@s5a94ef2af1": {
   "description": "fi: Lataus oli viallinen",
-  "x-where": "ui/update_ui.dart:195"
+  "x-where": "ui/update_ui.dart:201"
  },
  "s81e4325573": "Download failed",
  "@s81e4325573": {
   "description": "fi: Lataus ei onnistunut",
-  "x-where": "ui/update_ui.dart:196"
+  "x-where": "ui/update_ui.dart:202"
  },
  "s4b1d3df588": "The file checksum did not match, so nothing was installed. Please try again in a moment.",
  "@s4b1d3df588": {
   "description": "fi: Tiedoston tarkistussumma ei täsmännyt, joten mitään ei asennettu. Yritä hetken päästä uudelleen.",
-  "x-where": "ui/update_ui.dart:200"
+  "x-where": "ui/update_ui.dart:206"
  },
  "s0c463c7069": "Check the internet connection and try again. You can also download the update from the release page.",
  "@s0c463c7069": {
   "description": "fi: Tarkista nettiyhteys ja yritä uudelleen. Voit myös ladata päivityksen julkaisusivulta.",
-  "x-where": "ui/update_ui.dart:205"
+  "x-where": "ui/update_ui.dart:211"
  },
  "s5dd4c9671f": "Open release page",
  "@s5dd4c9671f": {
   "description": "fi: Avaa julkaisusivu",
-  "x-where": "ui/update_ui.dart:214"
+  "x-where": "ui/update_ui.dart:220"
  },
  "s8f5be45ff1": "Installing {p0} – the app restarts in a moment.",
  "@s8f5be45ff1": {
   "description": "fi: Asennetaan versio {p0} – sovellus käynnistyy uudelleen hetken kuluttua.",
-  "x-where": "ui/update_ui.dart:233",
+  "x-where": "ui/update_ui.dart:239",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10619,7 +10619,7 @@
  "sf207ef6dc2": "Install failed: {p0}",
  "@sf207ef6dc2": {
   "description": "fi: Asennus epäonnistui: {p0}",
-  "x-where": "ui/update_ui.dart:238",
+  "x-where": "ui/update_ui.dart:244",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10629,12 +10629,12 @@
  "s49ddc3c3b6": "Update downloaded",
  "@s49ddc3c3b6": {
   "description": "fi: Päivitys ladattu",
-  "x-where": "ui/update_ui.dart:262"
+  "x-where": "ui/update_ui.dart:268"
  },
  "s04a05bb8fc": "The file is verified and saved:\n{p0}\n\nTo use it:\n1. Close Molaplan.\n2. Extract the zip over the old Molaplan folder (or into a new folder).\n3. Start molaplan.exe. Your settings are kept.",
  "@s04a05bb8fc": {
   "description": "fi: Tiedosto on tarkistettu ja tallennettu:\n{p0}\n\nNäin otat sen käyttöön:\n1. Sulje Molaplan.\n2. Pura zip-tiedosto vanhan Mol",
-  "x-where": "ui/update_ui.dart:264",
+  "x-where": "ui/update_ui.dart:270",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10644,42 +10644,42 @@
  "s1dd246ec69": "Release page",
  "@s1dd246ec69": {
   "description": "fi: Julkaisusivu",
-  "x-where": "ui/update_ui.dart:271"
+  "x-where": "ui/update_ui.dart:277"
  },
  "s0f07b20d45": "Open zip",
  "@s0f07b20d45": {
   "description": "fi: Avaa zip",
-  "x-where": "ui/update_ui.dart:272"
+  "x-where": "ui/update_ui.dart:278"
  },
  "s6e1ebc8baa": "Open folder",
  "@s6e1ebc8baa": {
   "description": "fi: Avaa kansio",
-  "x-where": "ui/update_ui.dart:279"
+  "x-where": "ui/update_ui.dart:285"
  },
  "s6d9de3f94b": "The install did not continue",
  "@s6d9de3f94b": {
   "description": "fi: Asennus ei jatkunut",
-  "x-where": "ui/update_ui.dart:298"
+  "x-where": "ui/update_ui.dart:304"
  },
  "s25a6f00343": "If you cancelled it yourself, all is well. If Android''s Install window did not appear, tap Try again.",
  "@s25a6f00343": {
   "description": "fi: Jos perut asennuksen itse, kaikki on kunnossa. Jos Androidin Asenna-ikkunaa ei näkynyt, paina Yritä uudelleen.",
-  "x-where": "ui/update_ui.dart:300"
+  "x-where": "ui/update_ui.dart:306"
  },
  "s29e92898c6": "Confirm the install in the Android window or notification.",
  "@s29e92898c6": {
   "description": "fi: Vahvista asennus Androidin ikkunasta tai ilmoituksesta.",
-  "x-where": "ui/update_ui.dart:322"
+  "x-where": "ui/update_ui.dart:328"
  },
  "s48093a1369": "Confirm the update",
  "@s48093a1369": {
   "description": "fi: Vahvista päivitys",
-  "x-where": "ui/update_ui.dart:348"
+  "x-where": "ui/update_ui.dart:354"
  },
  "s6d50eeae10": "Update {p0} is waiting for your confirmation. Tap Open install (or the \"Molaplan-päivitys valmis\" notification).",
  "@s6d50eeae10": {
   "description": "fi: Päivitys {p0} odottaa vahvistusta. Paina Avaa asennus (tai napauta ilmoitusta \"Molaplan-päivitys valmis\").",
-  "x-where": "ui/update_ui.dart:350",
+  "x-where": "ui/update_ui.dart:356",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10689,17 +10689,17 @@
  "s1a5c09b6e4": "Open install",
  "@s1a5c09b6e4": {
   "description": "fi: Avaa asennus",
-  "x-where": "ui/update_ui.dart:361"
+  "x-where": "ui/update_ui.dart:367"
  },
  "sd1cdbd3630": "The install did not start",
  "@sd1cdbd3630": {
   "description": "fi: Asennus ei käynnistynyt",
-  "x-where": "ui/update_ui.dart:378"
+  "x-where": "ui/update_ui.dart:384"
  },
  "s21972e23c1": "Android did not start installing {p0}.\n\nCheck that \"Allow from this source\" is on for Molaplan and tap Update again. You can also download the APK from the release page.\n\nDetail: {p1}",
  "@s21972e23c1": {
   "description": "fi: Android ei aloittanut päivityksen {p0} asennusta.\n\nTarkista, että \"Salli tästä lähteestä\" on päällä Molaplanille, ja pai",
-  "x-where": "ui/update_ui.dart:380",
+  "x-where": "ui/update_ui.dart:386",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -10712,32 +10712,32 @@
  "sa1bd8d2533": "Open settings",
  "@sa1bd8d2533": {
   "description": "fi: Avaa asetukset",
-  "x-where": "ui/update_ui.dart:394"
+  "x-where": "ui/update_ui.dart:400"
  },
  "sa065e7f650": "Allow installing updates",
  "@sa065e7f650": {
   "description": "fi: Salli päivitysten asennus",
-  "x-where": "ui/update_ui.dart:408"
+  "x-where": "ui/update_ui.dart:414"
  },
  "sdc3bf71baf": "Android asks once for permission so Molaplan can install its own updates.\n\n1. Tap \"Open settings\".\n2. Turn on \"Allow from this source\".\n3. Come back and tap \"Update\" again.",
  "@sdc3bf71baf": {
   "description": "fi: Android kysyy kerran luvan, jotta Molaplan saa asentaa omat päivityksensä.\n\n1. Paina \"Avaa asetukset\".\n2. Kytke päälle \"",
-  "x-where": "ui/update_ui.dart:410"
+  "x-where": "ui/update_ui.dart:416"
  },
  "s441683b7a8": "Verifying…",
  "@s441683b7a8": {
   "description": "fi: Tarkistetaan…",
-  "x-where": "ui/update_ui.dart:443"
+  "x-where": "ui/update_ui.dart:449"
  },
  "se83b7fb2ac": "Downloading update…",
  "@se83b7fb2ac": {
   "description": "fi: Ladataan päivitystä…",
-  "x-where": "ui/update_ui.dart:444"
+  "x-where": "ui/update_ui.dart:450"
  },
  "s0b68f81d82": "Molaplan {p0} is available. The bridge keeps working.",
  "@s0b68f81d82": {
   "description": "fi: Molaplan {p0} on saatavilla. Silta toimii normaalisti.",
-  "x-where": "ui/update_ui.dart:479",
+  "x-where": "ui/update_ui.dart:485",
   "placeholders": {
    "p0": {
     "type": "String"

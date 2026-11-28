@@ -5781,10 +5781,8 @@
  "@s108e078c0c": {
   "x-mt": true
  },
- "sa0c07ccd04": "Teil on kõige uuem versioon ({p0}).",
- "@sa0c07ccd04": {
-  "x-mt": true
- },
+ "s9f06d04913": "Rakendus on ajakohane. Uuem versioon valmib peagi.",
+ "s133d690938": "Rakendus on ajakohane.",
  "sa118d84538": "Uuenduste kontrollimine pole praegu võimalik. Kontrolli internetiühendust ja proovi hiljem uuesti.",
  "@sa118d84538": {
   "x-mt": true
@@ -13340,6 +13338,10 @@
  },
  "se684d0b30c": "Kaugjuurdepääs Tailscale''i kaudu: paigalda Tailscale nii sellesse seadmesse, kus töötab Molaplan, kui ka masinasse, kus töötab Home Assistant, ja ühenda need samasse tailneti. Seejärel sisesta Tailscale''i aadress, näiteks http://homeassistant:8123, Tailscale''i IP (100.x.x.x:8123) või Tailscale Serve''i https-aadress (midagi.ts.net).\n\nVeebirakendus (https): brauser blokeerib juurdepääsu turvamata http-aadressile. Kasuta Tailscale Serve''i https-aadressi (*.ts.net) või suuna ühendus kodusilla kaudu.",
  "s2549c6a969": "See veebirakendus on https-lehel, seega ei saa see avada Home Assistanti http-aadressi. Kasuta Tailscale Serve''i https-aadressi (*.ts.net) või suuna ühendus kodusilla kaudu.",
+ "s43f0f45aa9": "Kohalik",
+ "@s43f0f45aa9": {
+  "x-mt": true
+ },
  "s7e7efa0889": "Tailscale",
  "s3e96abe344": "Kaug",
  "s1a9acfbc67": "- Light{p0}",
@@ -13381,10 +13383,6 @@
  },
  "s06444f278d": "asukoht (100 = suletud)",
  "@s06444f278d": {
-  "x-mt": true
- },
- "s43f0f45aa9": "Kohalik",
- "@s43f0f45aa9": {
   "x-mt": true
  }
 }

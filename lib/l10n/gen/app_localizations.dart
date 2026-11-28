@@ -11717,11 +11717,17 @@ abstract class AppLocalizations {
   /// **'Modbus device imported from Home Assistant'**
   String get s108e078c0c;
 
-  /// fi: Sinulla on uusin versio ({p0}).
+  /// fi: Sovellus on ajan tasalla. Uudempi versio valmistuu pian.
   ///
   /// In en, this message translates to:
-  /// **'You have the latest version ({p0}).'**
-  String sa0c07ccd04(String p0);
+  /// **'The app is up to date. A newer version will be ready shortly.'**
+  String get s9f06d04913;
+
+  /// fi: Sovellus on ajan tasalla.
+  ///
+  /// In en, this message translates to:
+  /// **'The app is up to date.'**
+  String get s133d690938;
 
   /// fi: Päivityksiä ei voitu tarkistaa juuri nyt. Tarkista nettiyhteys ja yritä myöhemmin.
   ///

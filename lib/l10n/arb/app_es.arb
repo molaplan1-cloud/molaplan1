@@ -5763,10 +5763,8 @@
  "@s108e078c0c": {
   "x-mt": true
  },
- "sa0c07ccd04": "Usted tiene la última versión ({p0}).",
- "@sa0c07ccd04": {
-  "x-mt": true
- },
+ "s9f06d04913": "La aplicación está actualizada. Una versión más nueva estará lista en breve.",
+ "s133d690938": "La aplicación está actualizada.",
  "sa118d84538": "No podía comprobar las actualizaciones ahora mismo. Compruebe la conexión a Internet e inténtelo de nuevo más tarde.",
  "@sa118d84538": {
   "x-mt": true
@@ -13280,6 +13278,10 @@
  },
  "se684d0b30c": "Acceso remoto a través de Tailscale: instala Tailscale tanto en este dispositivo que ejecuta Molaplan como en el equipo que ejecuta Home Assistant, y únelos a la misma tailnet. Luego introduce la dirección de Tailscale, por ejemplo http://homeassistant:8123, una IP de Tailscale (100.x.x.x:8123) o una dirección https de Tailscale Serve (algo.ts.net).\n\nAplicación web (https): el navegador bloquea el acceso a una dirección http no segura. Usa una dirección https de Tailscale Serve (*.ts.net) o enruta la conexión a través del puente de casa.",
  "s2549c6a969": "Esta aplicación web está en una página https, así que no puede abrir una dirección http de Home Assistant. Usa una dirección https de Tailscale Serve (*.ts.net) o enruta la conexión a través del puente de casa.",
+ "s43f0f45aa9": "Local",
+ "@s43f0f45aa9": {
+  "x-mt": true
+ },
  "s7e7efa0889": "Tailscale",
  "s3e96abe344": "Remoto",
  "s1a9acfbc67": "Luz {p0}",
@@ -13321,10 +13323,6 @@
  },
  "s06444f278d": "posición (100 = cerrada)",
  "@s06444f278d": {
-  "x-mt": true
- },
- "s43f0f45aa9": "Local",
- "@s43f0f45aa9": {
   "x-mt": true
  }
 }

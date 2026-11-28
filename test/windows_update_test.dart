@@ -18,6 +18,7 @@ import 'package:molaplan/ui/settings_page.dart';
 import 'package:molaplan/ui/update_ui.dart' show windowsStartupDelay;
 import 'package:molaplan/ui/windows_update_ui.dart';
 import 'package:molaplan/update/update_core.dart';
+import 'package:molaplan/version.dart';
 import 'package:molaplan/update/windows_update.dart';
 import 'package:path/path.dart' as p;
 
@@ -68,38 +69,62 @@ void main() {
     Future<(CheckResult, List<String>)> run({
       String current = '0.20.24',
       http.Response Function()? manifest,
-      http.Response Function()? tag,
+      List<Map<String, dynamic>>? releases,
+      int listStatus = 0,
+      http.Response Function(String tag)? tag,
       http.Response Function()? latest,
+      int Function(Uri url)? assetStatus,
     }) async {
       final urls = <String>[];
       final r = await checkUpdate(
         current: current,
         client: MockClient((req) async {
-          urls.add('${req.url.host}${req.url.path}');
-          if (req.url.host == 'molaplan.com') return (manifest ?? () => http.Response('', 500))();
-          if (req.url.path.contains('/releases/tags/')) return (tag ?? () => http.Response('', 404))();
-          return (latest ?? () => http.Response('', 404))();
+          final u = req.url;
+          urls.add('${req.method}:${u.host}${u.path}');
+          if (u.host == 'molaplan.com') return (manifest ?? () => http.Response('', 500))();
+          if (u.path.contains('/releases/tags/')) {
+            return tag != null ? tag(u.pathSegments.last) : http.Response('', 404);
+          }
+          if (u.path.endsWith('/releases/latest')) {
+            return (latest ?? () => http.Response('', 404))();
+          }
+          if (u.path.endsWith('/releases')) {
+            if (listStatus != 0) {
+              return http.Response(releases == null ? '' : jsonEncode(releases), listStatus);
+            }
+            if (releases != null) return http.Response(jsonEncode(releases), 200);
+            return http.Response('', 404);
+          }
+          final code = assetStatus?.call(u) ?? 404;
+          return http.Response(code == 200 || code == 206 ? 'x' : '', code);
         }),
       );
       return (r, urls);
     }
 
+    int published(Uri u, Set<String> versions) {
+      if (!u.path.contains('/releases/download/')) return 404;
+      return versions.any((v) => u.path.contains('/$v/')) ? 200 : 404;
+    }
+
     test('molaplan.com says newer: the release comes from the tag endpoint', () async {
       final (r, urls) = await run(
         manifest: () => http.Response('{"version":"0.20.25"}', 200),
-        tag: () => http.Response(jsonEncode(ghRelease('v0.20.25')), 200),
+        tag: (_) => http.Response(jsonEncode(ghRelease('v0.20.25')), 200),
       );
       expect(r.outcome, CheckOutcome.newer);
       expect(r.release!.version, '0.20.25');
       expect(r.release!.notes, contains('Päivitykset'));
-      expect(urls.first, 'molaplan.com/version.json');
+      expect(urls.first, contains('molaplan.com/version.json'));
       expect(urls.any((u) => u.contains('/releases/latest')), isFalse);
     });
 
-    test('GitHub API rate limited: fixed download links, notes empty', () async {
+    test('GitHub API rate limited: fixed download links, notes empty, only if the files exist', () async {
       final (r, _) = await run(
         manifest: () => http.Response('{"version":"0.20.25"}', 200),
-        tag: () => http.Response('{"message":"API rate limit exceeded"}', 403),
+        listStatus: 403,
+        tag: (_) => http.Response('{"message":"API rate limit exceeded"}', 403),
+        assetStatus: (u) => published(u, {'v0.20.25'}),
       );
       expect(r.outcome, CheckOutcome.newer);
       final z = r.release!.asset(windowsAsset)!;
@@ -107,10 +132,10 @@ void main() {
       expect(r.release!.asset(checksumAsset)!.url, endsWith('/v0.20.25/SHA256SUMS'));
     });
 
-    test('up to date: GitHub is not even asked', () async {
+    test('up to date when the manifest matches, even if GitHub is asked', () async {
       final (r, urls) = await run(manifest: () => http.Response('{"version":"0.20.24"}', 200));
       expect(r.outcome, CheckOutcome.upToDate);
-      expect(urls, hasLength(1));
+      expect(urls.first, contains('molaplan.com/version.json'));
     });
 
     test('a manifest older than the app is never an update (no downgrade)', () async {
@@ -118,12 +143,94 @@ void main() {
       expect(r.outcome, CheckOutcome.upToDate);
     });
 
-    test('molaplan.com down: GitHub latest decides; both down: unavailable', () async {
-      final (r, urls) = await run(latest: () => http.Response(jsonEncode(ghRelease('v0.20.26')), 200));
+    test('molaplan.com down: newest GitHub release with assets; both down: unavailable', () async {
+      final (r, urls) = await run(releases: [ghRelease('v0.20.26')]);
       expect(r.outcome, CheckOutcome.newer);
-      expect(urls.last, contains('/releases/latest'));
+      expect(r.release!.version, '0.20.26');
+      expect(urls.any((u) => u.endsWith('/releases')), isTrue);
       final (x, _) = await run();
       expect(x.outcome, CheckOutcome.unavailable);
+    });
+
+    test('R735: manifest is ahead (tag still building) and a complete older release is newer than installed', () async {
+      // Enn on 0.20.29, version.json already 0.20.35, GitHub latest complete is 0.20.30.
+      final (r, _) = await run(
+        current: '0.20.29',
+        manifest: () => http.Response('{"version":"0.20.35"}', 200),
+        releases: [
+          ghRelease('v0.20.35', assets: []),
+          ghRelease('v0.20.30'),
+          ghRelease('v0.20.29'),
+        ],
+        tag: (t) => t == 'v0.20.35'
+            ? http.Response(jsonEncode(ghRelease('v0.20.35', assets: [])), 200)
+            : http.Response('', 404),
+        assetStatus: (u) => published(u, {'v0.20.30', 'v0.20.29'}),
+      );
+      expect(r.outcome, CheckOutcome.newer);
+      expect(r.release!.version, '0.20.30');
+      expect(r.pendingNewer, isFalse);
+    });
+
+    test('R737: nothing newer has assets – up to date, with a quiet "valmistuu pian" flag', () async {
+      final (r, _) = await run(
+        current: '0.20.30',
+        manifest: () => http.Response('{"version":"0.20.35"}', 200),
+        releases: [ghRelease('v0.20.35', assets: []), ghRelease('v0.20.30')],
+        tag: (_) => http.Response(jsonEncode(ghRelease('v0.20.35', assets: [])), 200),
+        assetStatus: (u) => published(u, {'v0.20.30'}),
+      );
+      expect(r.outcome, CheckOutcome.upToDate);
+      expect(r.pendingNewer, isTrue);
+    });
+
+    test('R736: a newer GitHub release without the Windows zip is skipped', () async {
+      final (r, _) = await run(
+        current: '0.20.29',
+        manifest: () => http.Response('', 500),
+        releases: [
+          ghRelease('v0.20.31', assets: [androidArm64Asset, androidUniversalAsset, checksumAsset]),
+          ghRelease('v0.20.30'),
+        ],
+      );
+      expect(r.outcome, CheckOutcome.newer);
+      expect(r.release!.version, '0.20.30');
+    });
+
+    test('drafts and empty releases are not offered; fallback latest without files is up to date', () async {
+      final (r, _) = await run(
+        current: '0.20.30',
+        releases: [ghRelease('v0.20.32', draft: true), ghRelease('v0.20.31', assets: [])],
+      );
+      expect(r.outcome, CheckOutcome.upToDate);
+      expect(r.pendingNewer, isTrue);
+      final (x, _) = await run(
+        current: '0.20.30',
+        latest: () => http.Response(jsonEncode(ghRelease('v0.20.33', assets: [])), 200),
+      );
+      expect(x.outcome, CheckOutcome.upToDate);
+      expect(x.pendingNewer, isTrue);
+    });
+
+    test('newestInstallable picks the highest semver with the platform file and checksum', () {
+      final a = ReleaseInfo.fromGitHub(ghRelease('v0.20.31', assets: [androidArm64Asset, checksumAsset]));
+      final b = ReleaseInfo.fromGitHub(ghRelease('v0.20.30'));
+      final c = ReleaseInfo.fromGitHub(ghRelease('v0.20.32', draft: true));
+      expect(newestInstallable([c, a, b], os: 'windows')!.version, '0.20.30');
+      expect(newestInstallable([c, a, b], os: 'android', abis: ['arm64-v8a'])!.version, '0.20.31');
+      expect(releaseIsInstallable(c, os: 'windows'), isFalse);
+    });
+
+    test('rate limited and files not uploaded: up to date, not an error', () async {
+      final (r, _) = await run(
+        current: '0.20.30',
+        manifest: () => http.Response('{"version":"0.20.35"}', 200),
+        listStatus: 403,
+        tag: (_) => http.Response('{"message":"API rate limit exceeded"}', 403),
+        latest: () => http.Response('{"message":"API rate limit exceeded"}', 403),
+      );
+      expect(r.outcome, CheckOutcome.upToDate);
+      expect(r.pendingNewer, isTrue);
     });
   });
 
@@ -419,7 +526,7 @@ void main() {
       var hits = 0;
       final u = make(WinPlatform(tmp, tmp), auto: false, onGet: () => hits++);
       expect((await u.checkNow()).outcome, CheckOutcome.upToDate);
-      expect(hits, 1);
+      expect(hits, greaterThanOrEqualTo(1));
     });
 
     test('automatic install needs a self-updating install', () {
@@ -585,6 +692,29 @@ void main() {
       expect(pf.launched, hasLength(1));
       expect(pf.launched.single.version, '9.9.9');
       expect(pf.exited, isTrue);
+    });
+
+    testWidgets('manual check: ajan tasalla, and a quiet note when a newer build is coming', (tester) async {
+      final (st, _) = await app(tester);
+      st.update.autoCheck = false;
+      st.update.client = MockClient((req) async {
+        if (req.url.host == 'molaplan.com') return http.Response('{"version":"9.9.9"}', 200);
+        if (req.url.path.endsWith('/releases')) return http.Response(jsonEncode([ghRelease('v$appVersion')]), 200);
+        if (req.url.path.contains('/releases/tags/')) {
+          return http.Response(jsonEncode(ghRelease('v9.9.9', assets: [])), 200);
+        }
+        return http.Response('', 404);
+      });
+      await tester.pumpWidget(MolaplanApp(state: st));
+      await tester.pumpAndSettle();
+      tester.state<NavigatorState>(find.byType(Navigator).first).push(MaterialPageRoute(builder: (_) => const SettingsPage()));
+      await tester.pumpAndSettle();
+      final btn = find.byKey(const ValueKey('settings-check-updates'));
+      await tester.scrollUntilVisible(btn, 200, scrollable: find.byType(Scrollable).first);
+      await tester.pumpAndSettle();
+      await tester.tap(btn);
+      await tester.pumpAndSettle();
+      expect(find.text('Sovellus on ajan tasalla. Uudempi versio valmistuu pian.'), findsOneWidget);
     });
 
     testWidgets('settings: automatic check switch, install switch (Windows), last checked', (tester) async {

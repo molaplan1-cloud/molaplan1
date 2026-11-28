@@ -5766,10 +5766,8 @@
  "@s108e078c0c": {
   "x-mt": true
  },
- "sa0c07ccd04": "Du har den senaste versionen ({p0}).",
- "@sa0c07ccd04": {
-  "x-mt": true
- },
+ "s9f06d04913": "Appen är uppdaterad. En nyare version blir klar snart.",
+ "s133d690938": "Appen är uppdaterad.",
  "sa118d84538": "Kunde inte söka efter uppdateringar just nu. Kontrollera internetanslutningen och försök igen senare.",
  "@sa118d84538": {
   "x-mt": true
@@ -13292,6 +13290,10 @@
  },
  "se684d0b30c": "Fjärråtkomst via Tailscale: installera Tailscale både på den här enheten där Molaplan körs och på datorn där Home Assistant körs, och anslut dem till samma tailnet. Ange sedan Tailscale-adressen, till exempel http://homeassistant:8123, en Tailscale-IP (100.x.x.x:8123) eller en https-adress från Tailscale Serve (något.ts.net).\n\nWebbapp (https): webbläsaren blockerar åtkomst till en osäker http-adress. Använd en https-adress från Tailscale Serve (*.ts.net) eller koppla anslutningen via hembryggan.",
  "s2549c6a969": "Den här webbappen är på en https-sida, så den kan inte öppna en http-adress till Home Assistant. Använd en https-adress från Tailscale Serve (*.ts.net) eller koppla anslutningen via hembryggan.",
+ "s43f0f45aa9": "Lokal",
+ "@s43f0f45aa9": {
+  "x-mt": true
+ },
  "s7e7efa0889": "Tailscale",
  "s3e96abe344": "Fjärr",
  "s1a9acfbc67": "Ljus {p0}",
@@ -13333,10 +13335,6 @@
  },
  "s06444f278d": "position (100 = stängd)",
  "@s06444f278d": {
-  "x-mt": true
- },
- "s43f0f45aa9": "Lokal",
- "@s43f0f45aa9": {
   "x-mt": true
  }
 }

@@ -6449,9 +6449,11 @@ class AppLocalizationsEt extends AppLocalizations {
   String get s108e078c0c => 'Koduabilisest imporditud Modbusi seade';
 
   @override
-  String sa0c07ccd04(String p0) {
-    return 'Teil on kõige uuem versioon ($p0).';
-  }
+  String get s9f06d04913 =>
+      'Rakendus on ajakohane. Uuem versioon valmib peagi.';
+
+  @override
+  String get s133d690938 => 'Rakendus on ajakohane.';
 
   @override
   String get sa118d84538 =>

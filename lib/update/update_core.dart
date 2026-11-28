@@ -72,7 +72,9 @@ class ReleaseInfo {
     required this.notes,
     required this.pageUrl,
     required this.assets,
+    this.draft = false,
   });
+  final bool draft;
   final String tag;
   final String name;
   final String notes;
@@ -92,6 +94,7 @@ class ReleaseInfo {
       for (final a in (j['assets'] as List? ?? []))
         ReleaseAsset('${a['name']}', '${a['browser_download_url']}', (a['size'] as num?)?.toInt() ?? 0),
     ],
+    draft: j['draft'] == true,
   );
 }
 
@@ -151,9 +154,13 @@ Future<void> verifyChecksum(File f, String assetName, Map<String, String> sums) 
 enum CheckOutcome { newer, upToDate, unavailable }
 
 class CheckResult {
-  CheckResult(this.outcome, [this.release]);
+  CheckResult(this.outcome, [this.release, this.pendingNewer = false]);
   final CheckOutcome outcome;
   final ReleaseInfo? release;
+
+  /// A newer version is already tagged or listed on molaplan.com, but its installers are not
+  /// published yet (CI is still running). The user is up to date with what can be installed.
+  final bool pendingNewer;
 }
 
 /// Asks GitHub for the latest release. Never throws: offline, rate limited
@@ -214,40 +221,208 @@ ReleaseInfo releaseFromVersion(String version, {String repo = 'molaplan1-cloud/m
   );
 }
 
-/// R701: the update check. Asks molaplan.com first (no rate limit); when that says a newer version
-/// exists, the release (notes + files) comes from GitHub's tag endpoint, or, if the API is rate
-/// limited, from the fixed download links. When molaplan.com cannot be reached the GitHub "latest"
-/// endpoint decides. Never throws: [CheckOutcome.unavailable] means "could not tell".
+/// The installers this device needs: the platform file and SHA256SUMS, listed on the release
+/// (the URLs themselves are checked with [assetsArePublished] when the list is only constructed).
+bool releaseIsInstallable(ReleaseInfo r, {required String os, List<String> abis = const []}) {
+  if (r.draft) return false;
+  if (os == 'windows' || os == 'android') {
+    if (r.asset(checksumAsset) == null) return false;
+    return pickAsset(r, os: os, abis: abis) != null;
+  }
+  // Linux/macOS and tests on them have no installer of their own: a published release is still
+  // offered (the UI opens the release page).
+  return r.assets.isNotEmpty;
+}
+
+ReleaseInfo? newestInstallable(Iterable<ReleaseInfo> releases, {required String os, List<String> abis = const []}) {
+  ReleaseInfo? best;
+  SemVer? bestV;
+  for (final r in releases) {
+    if (!releaseIsInstallable(r, os: os, abis: abis)) continue;
+    final v = SemVer.tryParse(r.tag);
+    if (v == null) continue;
+    if (bestV == null || v > bestV) {
+      best = r;
+      bestV = v;
+    }
+  }
+  return best;
+}
+
+Map<String, String> _ghHeaders(String current) => {
+  'Accept': 'application/vnd.github+json',
+  'User-Agent': 'molaplan-app/$current',
+};
+
+/// True when [url] answers 200 (or a partial-content range). Used so a constructed download link
+/// is not offered before CI has uploaded the file.
+Future<bool> remoteAssetExists(String url, {http.Client? client, Duration timeout = const Duration(seconds: 12)}) async {
+  final c = client ?? http.Client();
+  try {
+    final head = http.Request('HEAD', Uri.parse(url));
+    final hr = await c.send(head).timeout(timeout);
+    if (hr.statusCode == 200 || hr.statusCode == 204 || hr.statusCode == 206) return true;
+    if (hr.statusCode == 404 || hr.statusCode == 410) return false;
+    // Some hosts refuse HEAD: a 1-byte GET is enough and does not download the zip.
+    final get = http.Request('GET', Uri.parse(url));
+    get.headers['Range'] = 'bytes=0-0';
+    final gr = await c.send(get).timeout(timeout);
+    return gr.statusCode == 200 || gr.statusCode == 206;
+  } catch (_) {
+    return false;
+  } finally {
+    if (client == null) c.close();
+  }
+}
+
+Future<bool> assetsArePublished(
+  ReleaseInfo r, {
+  required String os,
+  List<String> abis = const [],
+  http.Client? client,
+  Duration timeout = const Duration(seconds: 12),
+}) async {
+  if (!releaseIsInstallable(r, os: os, abis: abis)) return false;
+  final asset = pickAsset(r, os: os, abis: abis)!;
+  final sums = r.asset(checksumAsset)!;
+  return await remoteAssetExists(asset.url, client: client, timeout: timeout) &&
+      await remoteAssetExists(sums.url, client: client, timeout: timeout);
+}
+
+Future<List<ReleaseInfo>> fetchReleases({
+  required String repo,
+  required String current,
+  required http.Client client,
+  Duration timeout = const Duration(seconds: 12),
+}) async {
+  try {
+    final r = await client
+        .get(Uri.parse('https://api.github.com/repos/$repo/releases?per_page=30'), headers: _ghHeaders(current))
+        .timeout(timeout);
+    if (r.statusCode != 200) return const [];
+    final list = jsonDecode(r.body);
+    if (list is! List) return const [];
+    return [
+      for (final e in list)
+        if (e is Map) ReleaseInfo.fromGitHub(Map<String, dynamic>.from(e)),
+    ];
+  } catch (_) {
+    return const [];
+  }
+}
+
+Future<ReleaseInfo?> fetchReleaseByTag({
+  required String repo,
+  required String current,
+  required String version,
+  required http.Client client,
+  Duration timeout = const Duration(seconds: 12),
+}) async {
+  try {
+    final r = await client
+        .get(
+          Uri.parse('https://api.github.com/repos/$repo/releases/tags/v$version'),
+          headers: _ghHeaders(current),
+        )
+        .timeout(timeout);
+    if (r.statusCode != 200) return null;
+    return ReleaseInfo.fromGitHub(jsonDecode(r.body) as Map<String, dynamic>);
+  } catch (_) {
+    return null;
+  }
+}
+
+/// Resolves [version] to a release whose installers are actually downloadable. Never offers a tag
+/// that only exists or a release whose zip is still being built.
+Future<ReleaseInfo?> resolvePublishedRelease({
+  required String version,
+  required String repo,
+  required String current,
+  required String os,
+  List<String> abis = const [],
+  required http.Client client,
+  Duration timeout = const Duration(seconds: 12),
+  ReleaseInfo? known,
+}) async {
+  final tagged = known ??
+      await fetchReleaseByTag(repo: repo, current: current, version: version, client: client, timeout: timeout);
+  if (tagged != null && releaseIsInstallable(tagged, os: os, abis: abis)) return tagged;
+  final constructed = releaseFromVersion(version, repo: repo);
+  if (await assetsArePublished(constructed, os: os, abis: abis, client: client, timeout: timeout)) {
+    return constructed;
+  }
+  return null;
+}
+
+/// R701 / R735–R737: the update check. Prefers molaplan.com/version.json (no API rate limit) but
+/// only when that version's Windows/Android file and SHA256SUMS are already published. Otherwise
+/// the newest GitHub release that actually has those files is used; tags still building are
+/// skipped, never offered, and never shown as an error. If nothing newer is downloadable the
+/// outcome is up to date ([CheckResult.pendingNewer] when a newer version is on the way).
+/// Never throws: [CheckOutcome.unavailable] means "could not tell".
 Future<CheckResult> checkUpdate({
   required String current,
   String repo = 'molaplan1-cloud/molaplan1',
   http.Client? client,
   Duration timeout = const Duration(seconds: 12),
+  String os = 'windows',
+  List<String> abis = const [],
 }) async {
   final c = client ?? http.Client();
   try {
-    String? latest;
-    try {
-      final r = await c
-          .get(Uri.parse('$manifestUrl?t=${DateTime.now().millisecondsSinceEpoch ~/ 60000}'), headers: {'Cache-Control': 'no-cache'})
-          .timeout(timeout);
-      if (r.statusCode == 200) latest = parseManifestVersion(r.body);
-    } catch (_) {}
-    if (latest == null) return await checkLatest(current: current, repo: repo, client: c, timeout: timeout);
-    if (!isNewer(latest, current)) return CheckResult(CheckOutcome.upToDate);
+    String? manifest;
     try {
       final r = await c
           .get(
-            Uri.parse('https://api.github.com/repos/$repo/releases/tags/v$latest'),
-            headers: {'Accept': 'application/vnd.github+json', 'User-Agent': 'molaplan-app/$current'},
+            Uri.parse('$manifestUrl?t=${DateTime.now().millisecondsSinceEpoch ~/ 60000}'),
+            headers: {'Cache-Control': 'no-cache'},
           )
           .timeout(timeout);
-      if (r.statusCode == 200) {
-        final rel = ReleaseInfo.fromGitHub(jsonDecode(r.body) as Map<String, dynamic>);
-        if (rel.tag.isNotEmpty && rel.assets.isNotEmpty) return CheckResult(CheckOutcome.newer, rel);
-      }
+      if (r.statusCode == 200) manifest = parseManifestVersion(r.body);
     } catch (_) {}
-    return CheckResult(CheckOutcome.newer, releaseFromVersion(latest, repo: repo));
+
+    final releases = await fetchReleases(repo: repo, current: current, client: c, timeout: timeout);
+    final best = newestInstallable(releases, os: os, abis: abis);
+
+    if (manifest != null) {
+      if (isNewer(manifest, current)) {
+        final known = releases.where((r) => SemVer.tryParse(r.tag)?.toString() == manifest).firstOrNull;
+        final published = await resolvePublishedRelease(
+          version: manifest,
+          repo: repo,
+          current: current,
+          os: os,
+          abis: abis,
+          client: c,
+          timeout: timeout,
+          known: known,
+        );
+        if (published != null) return CheckResult(CheckOutcome.newer, published);
+        // Manifest is ahead of the installers (CI still running). Offer the newest complete
+        // release if it is still newer than the one installed; otherwise the user is up to date.
+        if (best != null && isNewer(best.tag, current)) return CheckResult(CheckOutcome.newer, best);
+        return CheckResult(CheckOutcome.upToDate, best, true);
+      }
+      // Manifest is not newer. A complete GitHub release could still be newer if version.json
+      // has not been deployed yet – offer that. Do not offer a tag that is only building.
+      if (best != null && isNewer(best.tag, current)) return CheckResult(CheckOutcome.newer, best);
+      return CheckResult(CheckOutcome.upToDate, best);
+    }
+
+    // molaplan.com could not be reached: GitHub only, and only releases with real assets.
+    if (releases.isNotEmpty || best != null) {
+      if (best != null && isNewer(best.tag, current)) return CheckResult(CheckOutcome.newer, best);
+      final pending = releases.any((r) => !r.draft && isNewer(r.tag, current));
+      return CheckResult(CheckOutcome.upToDate, best, pending);
+    }
+    // The list endpoint failed (rate limit, offline): try /releases/latest, but only if it has files.
+    final fallback = await checkLatest(current: current, repo: repo, client: c, timeout: timeout);
+    if (fallback.outcome == CheckOutcome.newer &&
+        fallback.release != null &&
+        !releaseIsInstallable(fallback.release!, os: os, abis: abis)) {
+      return CheckResult(CheckOutcome.upToDate, fallback.release, true);
+    }
+    return fallback;
   } finally {
     if (client == null) c.close();
   }

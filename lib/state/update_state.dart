@@ -180,7 +180,13 @@ class UpdateState extends ChangeNotifier {
   Future<CheckResult> _check() async {
     phase = UpdatePhase.checking;
     notifyListeners();
-    final r = await checkUpdate(current: current, repo: releaseRepo, client: client);
+    final r = await checkUpdate(
+      current: current,
+      repo: releaseRepo,
+      client: client,
+      os: platform.os,
+      abis: await platform.abis(),
+    );
     if (r.outcome == CheckOutcome.newer) {
       available = r.release;
       postponed = false;
