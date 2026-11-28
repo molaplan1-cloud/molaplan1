@@ -43,8 +43,11 @@ void main() {
       // Nothing technical or editable on screen.
       expect(find.byIcon(Icons.edit_outlined), findsNothing);
       expect(find.byIcon(Icons.drag_indicator), findsNothing);
-      // The always-visible add button is the only FAB (no edit tools).
-      expect(find.byKey(const ValueKey('add-fab')), findsOneWidget);
+      // R598 (t329u): one add button – the dashed Lisää tile; no FAB, no app-bar '+'.
+      expect(find.byKey(const ValueKey('add-fab')), findsNothing);
+      expect(find.byKey(const ValueKey('appbar-add')), findsNothing);
+      expect(find.byType(FloatingActionButton), findsNothing);
+      expect(find.byKey(const ValueKey('add-placeholder')), findsOneWidget);
       expect(find.byType(Drawer), findsNothing);
       // t245u: the main menu is always there – side menu when wide, ☰ otherwise.
       expect(find.byKey(const ValueKey('side-nav')), size.width >= 900 ? findsOneWidget : findsNothing);

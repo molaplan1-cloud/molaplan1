@@ -3,7 +3,6 @@
 /// network scan) or a service tile (price, weather, camera, gauge, ntfy/command).
 library;
 
-import '../core/plat.dart';
 
 import 'package:material_ui/material_ui.dart';
 
@@ -19,10 +18,7 @@ import 'smart_heating_pages.dart';
 import 'template_gallery.dart';
 import 'tile_editor.dart';
 import 'weather_tile.dart';
-
-/// Desktop gets a '+' in the app bar as well.
-bool showAppBarAdd(BuildContext context) =>
-    MediaQuery.sizeOf(context).width >= 900 || Plat.isWindows || Plat.isLinux || Plat.isMacOS;
+import 'energy_flow_tile.dart' show addEnergyFlowTile;
 
 Future<void> showAddSheet(BuildContext context, {Dashboard? dashboard}) async {
   final d = dashboard ?? AppScope.read(context).config.dashboards.first;
@@ -106,6 +102,16 @@ const _serviceTiles = [
     'Electricity price',
     'Pörssihinta nyt ja tunneittain, halvimmat tunnit.',
     'Spot price now and hourly, the cheapest hours.',
+  ),
+  // R590 (t328u)
+  _ServiceTile(
+    'energyflow',
+    Icons.hub_outlined,
+    Color(0xFF2EB8A6),
+    'Energiavirta',
+    'Energy flow',
+    'Verkko, aurinkosähkö, akku, auton lataus ja laitteet: mihin sähkö virtaa nyt.',
+    'Grid, solar, battery, EV charging and devices: where the power flows right now.',
   ),
   _ServiceTile(
     'weather',
@@ -222,6 +228,8 @@ Future<void> showServiceTileSheet(BuildContext context, Dashboard d) async {
       } else {
         await addHeatingTile(st, d: d);
       }
+    case 'energyflow':
+      await addEnergyFlowTile(context, d);
     case 'camera':
       final p = providerById('camera_onvif');
       if (p != null) {
@@ -393,6 +401,25 @@ class _PreviewPainter extends CustomPainter {
           ..strokeCap = StrokeCap.round;
         canvas.drawArc(r, 3.3, 2.8, false, bg);
         canvas.drawArc(r, 3.3, 1.8, false, bg..color = color);
+      case 'energyflow':
+        final r = size.height * 0.2;
+        final pts = [
+          Offset(size.width * 0.18, size.height * 0.5),
+          Offset(size.width * 0.5, size.height * 0.22),
+          Offset(size.width * 0.82, size.height * 0.5),
+          Offset(size.width * 0.5, size.height * 0.78),
+        ];
+        final line = Paint()
+          ..color = color.withValues(alpha: 0.6)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2;
+        canvas.drawLine(pts[0], pts[2], line);
+        canvas.drawLine(pts[1], pts[3], line);
+        for (final pt in pts) {
+          canvas.drawCircle(pt, r, Paint()..color = cs.surface);
+          canvas.drawCircle(pt, r, line);
+        }
+        canvas.drawCircle(Offset(size.width * 0.34, size.height * 0.5), 3, p);
       case 'weather':
         final path = Path()..moveTo(0, size.height * 0.7);
         for (var x = 0.0; x <= size.width; x += 4) {

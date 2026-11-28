@@ -54,7 +54,7 @@ void main() {
     await _font('MaterialIcons', 'MaterialIcons-Regular.otf');
   });
 
-  testWidgets('add: FAB + dashed placeholder, one sheet with Laite / Ruutu and service tiles', (tester) async {
+  testWidgets('add: only the dashed placeholder (R598, no FAB), one sheet with Laite / Ruutu and service tiles', (tester) async {
     final st = await _state();
     final d = st.config.dashboards.first;
     await st.upsertTile(d, TileConfig(id: 'A', type: TileType.toggle, title: 'Valot'));
@@ -63,10 +63,11 @@ void main() {
     addTearDown(tester.view.reset);
     await tester.pumpWidget(MolaplanApp(state: st));
     await tester.pump(const Duration(milliseconds: 300));
-    expect(find.byKey(const ValueKey('add-fab')), findsOneWidget);
+    expect(find.byKey(const ValueKey('add-fab')), findsNothing);
+    expect(find.byType(FloatingActionButton), findsNothing);
     expect(find.byKey(const ValueKey('add-placeholder')), findsOneWidget);
     await _shot(tester, 'add-placeholder');
-    await tester.tap(find.byKey(const ValueKey('add-fab')));
+    await tester.tap(find.byKey(const ValueKey('add-placeholder')));
     await tester.pumpAndSettle();
     expect(find.byKey(const ValueKey('add-choice-device')), findsOneWidget);
     expect(find.byKey(const ValueKey('add-choice-tile')), findsOneWidget);

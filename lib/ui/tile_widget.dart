@@ -47,6 +47,8 @@ import 'alarm_log_page.dart';
 import 'security_tile.dart';
 import '../core/security_state.dart';
 import '../energy/meters.dart';
+import '../energy/energy_flow.dart' show estimatesPower, isEnergyFlowTile;
+import 'energy_flow_tile.dart' show EnergyFlowTile;
 
 /// A live dashboard tile. Rebuilt (runtime restarted) when its config changes.
 /// A LAN-only tile while away from home (t131u): greyed and inert, with "Vain kotiverkossa",
@@ -734,7 +736,7 @@ class _TileWidgetState extends State<TileWidget> {
             if (rt?.updated != null)
               Text('${tx(context, 'Päivitetty', 'Updated')}: ${rt!.updated!.toLocal().toString().substring(0, 19)}'),
             if (rt?.error != null) ...[const SizedBox(height: 8), ErrorBox(error: rt!.error!)],
-            if (t.type == TileType.value && meterKind(t.unit) != null) ...[
+            if ((t.type == TileType.value && meterKind(t.unit) != null) || estimatesPower(t)) ...[
               const SizedBox(height: 12),
               AppScope(
                 state: AppScope.read(context),
@@ -851,6 +853,7 @@ class _TileWidgetState extends State<TileWidget> {
     // t144u: 0,5-size tiles get a compact variant (icon + value, one button, a mini toggle).
     if (isLogViewTile(t)) return LogTileView(tile: t, editing: widget.editing); // R486
     if (isHeatingTile(t)) return HeatingTile(tile: t, editing: widget.editing); // R610
+    if (isEnergyFlowTile(t)) return EnergyFlowTile(tile: t, editing: widget.editing); // R590
     if (isMiniTile(t)) return _mini(context);
     if (isWeatherTile(t)) return WeatherTile(tile: t, editing: widget.editing);
     final away = awayLanConnection(AppScope.of(context), t);

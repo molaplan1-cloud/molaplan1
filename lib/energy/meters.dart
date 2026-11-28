@@ -32,8 +32,13 @@ double toK(double v, String unit) => unit.trim().toLowerCase().startsWith('k') ?
 
 /// Consumption of one meter in one hour, with its cost.
 class EnergyBucket {
-  EnergyBucket({this.kwh = 0, this.ex = 0, this.inc = 0, this.unpriced = 0});
+  EnergyBucket({this.kwh = 0, this.ex = 0, this.inc = 0, this.unpriced = 0, this.est = 0});
   double kwh;
+
+  /// R593 (t328u): the part of [kwh] that is an estimate (a constant-power device's nominal power
+  /// while on), not a measurement.
+  double est;
+  bool get estimated => est > 0;
 
   /// Variable cost € (energy + transfer + tax), without / with VAT.
   double ex;
@@ -42,15 +47,17 @@ class EnergyBucket {
   /// kWh that had no price (spot price missing at that time).
   double unpriced;
 
-  Map<String, dynamic> toJson() => {'k': kwh, 'e': ex, 'i': inc, if (unpriced > 0) 'u': unpriced};
+  Map<String, dynamic> toJson() => {'k': kwh, 'e': ex, 'i': inc, if (unpriced > 0) 'u': unpriced, if (est > 0) 'x': est};
   factory EnergyBucket.fromJson(Map<String, dynamic> j) => EnergyBucket(
     kwh: (j['k'] as num?)?.toDouble() ?? 0,
     ex: (j['e'] as num?)?.toDouble() ?? 0,
     inc: (j['i'] as num?)?.toDouble() ?? 0,
     unpriced: (j['u'] as num?)?.toDouble() ?? 0,
+    est: (j['x'] as num?)?.toDouble() ?? 0,
   );
   void add(EnergyBucket o) {
     kwh += o.kwh;
+    est += o.est;
     ex += o.ex;
     inc += o.inc;
     unpriced += o.unpriced;
@@ -75,36 +82,43 @@ class EnergyLog {
   /// Longest gap between two power samples that is still integrated (else the gap is skipped).
   static const maxGap = Duration(minutes: 15);
 
+  /// Longest time an estimated on/off state ('step') is assumed to have held.
+  static const maxStepGap = Duration(hours: 6);
+
   /// Records a reading of meter [id]: [kind] 'power' (kW) or 'energy' (kWh counter).
   /// [price] gives c/kWh at a time (null = unknown).
-  void record(String id, String kind, double value, DateTime t, Vat2? Function(DateTime) price) {
+  /// [estimated]: the value is an estimate (nominal power), counted into [EnergyBucket.est] too.
+  void record(String id, String kind, double value, DateTime t, Vat2? Function(DateTime) price, {bool estimated = false}) {
     final last = _last[id];
     _last[id] = (t, value);
     if (last == null || !t.isAfter(last.$1)) return;
     final dt = t.difference(last.$1);
-    if (kind == 'power') {
-      if (dt > maxGap) return;
+    if (kind == 'power' || kind == 'step') {
+      // R593: 'step' = an estimated on/off power: the previous state held until this sample
+      // (a pushed state only changes when the device does), up to [maxStepGap].
+      if (dt > (kind == 'step' ? maxStepGap : maxGap)) return;
       // Split across hour boundaries so each hour gets its own share (and price).
       var from = last.$1;
-      final kw = (last.$2 + value) / 2;
+      final kw = kind == 'step' ? last.$2 : (last.$2 + value) / 2;
       while (from.isBefore(t)) {
         final hourEnd = DateTime(from.year, from.month, from.day, from.hour + 1);
         final to = hourEnd.isBefore(t) ? hourEnd : t;
-        _add(id, from, kw * to.difference(from).inMilliseconds / 3600000, price);
+        _add(id, from, kw * to.difference(from).inMilliseconds / 3600000, price, estimated);
         from = to;
       }
     } else {
       final d = value - last.$2;
       if (d < 0 || d > 1000) return; // counter reset or nonsense
-      _add(id, t, d, price);
+      _add(id, t, d, price, estimated);
     }
   }
 
-  void _add(String id, DateTime t, double kwh, Vat2? Function(DateTime) price) {
+  void _add(String id, DateTime t, double kwh, Vat2? Function(DateTime) price, [bool estimated = false]) {
     if (kwh <= 0) return;
     final b = (data[id] ??= {}).putIfAbsent(hourKey(t), EnergyBucket.new);
     final p = price(t);
     b.kwh += kwh;
+    if (estimated) b.est += kwh;
     if (p == null) {
       b.unpriced += kwh;
     } else {

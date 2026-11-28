@@ -15,6 +15,7 @@ import 'package:flutter/foundation.dart';
 
 import '../core/security_state.dart';
 import '../drivers/driver.dart';
+import '../energy/energy_flow.dart' show estimatedPowerW, estimatesPower;
 import '../models/models.dart';
 import '../state/tile_runtime.dart';
 import 'event_log.dart';
@@ -129,7 +130,7 @@ class LogCollector extends ChangeNotifier {
         _changed(d.id);
         return;
       }
-      final n = logNumber(v);
+      final n = numberOf(t, v);
       if (n == null || !_wants(d, s, n, at)) return;
       s.add(n, at);
       _changed(d.id);
@@ -165,6 +166,20 @@ class LogCollector extends ChangeNotifier {
       ], retention: userLogRetention(d)),
     ]);
     _changed(null);
+  }
+
+  /// R593 (t328u): the number a trend stores for [t]: a constant-power device with a nominal
+  /// power gives its estimated W (nominal while on, 0 while off), anything else its reading.
+  double? numberOf(TileConfig t, Object? v) {
+    final type = driverFor(t.connectionId)?.config.type;
+    if (estimatesPower(t, connType: type)) return estimatedPowerW(t, v, connType: type);
+    return logNumber(v);
+  }
+
+  /// Is trend [d] made of estimates (shown with ≈ and "arvio")?
+  bool isEstimated(LogDef d) {
+    final t = logTile(config(), d.tileId);
+    return d.isTrend && t != null && estimatesPower(t, connType: driverFor(t.connectionId)?.config.type);
   }
 
   /// Dedupe: an equal value (within the dead band) is only stored again after the interval.
@@ -297,7 +312,7 @@ class LogCollector extends ChangeNotifier {
       if (cur == null || t == null || isPriceChartTile(t)) continue;
       // Only a value that is still fresh is repeated (a silent device leaves a gap).
       if (n.difference(cur.$2) > Duration(minutes: d.intervalMin * 2 + 5)) continue;
-      final v = logNumber(cur.$1);
+      final v = numberOf(t, cur.$1);
       if (v == null) continue;
       unawaited(
         _run(d.id, () async {

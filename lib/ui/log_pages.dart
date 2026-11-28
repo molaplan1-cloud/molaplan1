@@ -15,6 +15,7 @@ import '../core/security_state.dart';
 import '../log/event_log.dart';
 import '../log/log_collector.dart';
 import '../log/log_def.dart';
+import '../energy/energy_flow.dart' show estimatesPower;
 import '../log/trend_series.dart';
 import '../models/models.dart';
 import '../security/alarm_log.dart';
@@ -72,7 +73,8 @@ String logIntervalLabel(BuildContext context, int m) => switch (m) {
   _ => tx(context, 'Muutokset ja vähintään kerran tunnissa', 'Changes and at least hourly'),
 };
 
-String _unitOf(TileConfig? t) => t == null ? '' : (isPriceChartTile(t) ? 'c/kWh' : t.unit.trim());
+String _unitOf(TileConfig? t) =>
+    t == null ? '' : (isPriceChartTile(t) ? 'c/kWh' : (estimatesPower(t) ? 'W' : t.unit.trim()));
 
 String _num(double v, TileConfig? t) {
   final dec = t == null ? 1 : (isPriceChartTile(t) ? 2 : t.decimals.clamp(0, 4));
@@ -751,6 +753,19 @@ class _LogViewPageState extends State<LogViewPage> {
                   label: (v) => _num(v, t),
                 ),
         ),
+        if (AppScope.read(context).logs.isEstimated(d))
+          Padding(
+            padding: const EdgeInsets.only(top: 12),
+            child: Text(
+              key: const ValueKey('log-estimated'),
+              tx(
+                context,
+                '≈ Arvio: laskettu laitteen nimellistehosta niinä aikoina, kun laite on päällä. Ei mittaus.',
+                '≈ Estimate: worked out from the device\'s nominal power while it is on. Not a measurement.',
+              ),
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ),
         const SizedBox(height: 16),
         if (s != null)
           Wrap(
@@ -1045,7 +1060,9 @@ class _LogTileViewState extends State<LogTileView> {
           final pts = _s?.range(now.subtract(Duration(hours: d.rangeHours))) ?? const <TrendPoint>[];
           final s = trendStats(pts);
           final unit = _unitOf(t);
-          if (s != null) head = '${_num(_s?.lastValue ?? s.last, t)}${unit.isEmpty ? '' : ' $unit'}';
+          if (s != null) {
+            head = '${st.logs.isEstimated(d) ? '≈ ' : ''}${_num(_s?.lastValue ?? s.last, t)}${unit.isEmpty ? '' : ' $unit'}';
+          }
           body = pts.isEmpty
               ? Center(child: Text(tx(context, 'Kerätään…', 'Collecting…')))
               : TrendChart(

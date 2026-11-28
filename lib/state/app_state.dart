@@ -24,6 +24,7 @@ import '../notify/data_fetch_host.dart';
 import '../notify/ntfy_listen.dart';
 import '../energy/contract.dart';
 import '../energy/meters.dart';
+import '../energy/energy_flow.dart' show estimatedPowerW;
 import '../energy/smart_heating.dart';
 import '../energy/thermostat.dart';
 import '../prices/prices.dart';
@@ -399,6 +400,16 @@ class AppState extends ChangeNotifier implements SyncHost {
         if (historyStore is! MemoryConfigStore) _historySaveTimer ??= Timer(const Duration(seconds: 60), saveHistory);
       }
     }
+    // R593 (t328u): a constant-power device with a nominal power: its estimated consumption
+    // goes to the energy log (flagged as estimated) and to the live power, meter role or not.
+    final est = estimatedPowerW(t, v, connType: connection(t.connectionId)?.type);
+    if (est != null) {
+      final when = at ?? DateTime.now();
+      livePower[t.id] = (when, est / 1000);
+      energyLog.record(t.id, 'step', est / 1000, when, unitPriceAt, estimated: true);
+      if (energyStore is! MemoryConfigStore) _energySaveTimer ??= Timer(const Duration(seconds: 60), saveEnergy);
+      return;
+    }
     final m = config.energy.meters[t.id];
     if (m == null) return;
     final kind = meterKind(t.unit);
@@ -407,6 +418,12 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (kind == 'power') livePower[t.id] = (at ?? DateTime.now(), toK(d, t.unit));
     energyLog.record(t.id, kind, toK(d, t.unit), at ?? DateTime.now(), unitPriceAt);
     _energySaveTimer ??= Timer(const Duration(seconds: 60), saveEnergy);
+  }
+
+  /// R591 (t328u): an energy flow tile logs its node powers (kW) for "today" per node.
+  void recordFlowPower(String id, double kw, DateTime at, {bool estimated = false}) {
+    energyLog.record(id, 'power', kw, at, unitPriceAt, estimated: estimated);
+    if (energyStore is! MemoryConfigStore) _energySaveTimer ??= Timer(const Duration(seconds: 60), saveEnergy);
   }
 
   Future<void> saveHistory() async {

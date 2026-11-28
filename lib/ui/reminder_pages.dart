@@ -208,7 +208,10 @@ class _RemindersPageState extends State<RemindersPage> {
     };
     return Scaffold(
       appBar: AppBar(title: Text(tx(context, 'Ilmoitukset ja muistutukset', 'Notifications and reminders'))),
-      floatingActionButton: FloatingActionButton.extended(
+      // R598 (t329u): an empty list has its own start button – no second add button then.
+      floatingActionButton: list.isEmpty
+          ? null
+          : FloatingActionButton.extended(
         key: const ValueKey('rem-add'),
         onPressed: _pickTemplate,
         icon: const Icon(Icons.add_alert_outlined),

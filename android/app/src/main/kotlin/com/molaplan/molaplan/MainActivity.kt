@@ -162,6 +162,11 @@ class MainActivity : FlutterActivity() {
                     lock?.release()
                     result.success(null)
                 }
+                // R590 (t328u): battery saver on -> the energy flow tile stops moving.
+                "powerSave" -> {
+                    val pm = getSystemService(Context.POWER_SERVICE) as android.os.PowerManager
+                    result.success(pm.isPowerSaveMode)
+                }
                 // Network scan: this device's name and the default gateway.
                 "netInfo" -> {
                     var gw: String? = null

@@ -329,6 +329,15 @@ class TileConfig {
   /// Never a PIN or connection secret; "Uusi linkki" replaces it (revokes the old one).
   String? feed;
 
+  /// R592 (t328u): how the consumption of a switchable device is known: 'auto' (from the
+  /// device type), 'const' (vakioteho – a fixed power while on) or 'variable' (muuttuva teho –
+  /// heat pumps, inverters, chargers: only a measurement counts, never an estimate).
+  String powerMode;
+
+  /// R592: nominal power in W of a constant-power device (heater, sauna, pump, lights). While the
+  /// device is on, its consumption is estimated as this (shown with ≈, flagged as estimated).
+  double? nominalW;
+
   TileConfig({
     String? id,
     required this.type,
@@ -384,6 +393,8 @@ class TileConfig {
     this.battery,
     this.lastAlarm,
     this.feed,
+    this.powerMode = 'auto',
+    this.nominalW,
   }) : id = id ?? newId(),
        w2 = _clampW2(w2 ?? colSpan * 2),
        h2 = (h2 ?? rowSpan * 2).clamp(1, maxH2),
@@ -448,6 +459,8 @@ class TileConfig {
     'battery': ?battery,
     'lastAlarm': ?lastAlarm,
     'feed': ?feed,
+    if (powerMode != 'auto') 'powerMode': powerMode,
+    'nominalW': ?nominalW,
   };
 
   factory TileConfig.fromJson(Map<String, dynamic> j) => TileConfig(
@@ -545,6 +558,11 @@ class TileConfig {
         : null,
     lastAlarm: (j['lastAlarm'] as num?)?.toInt(),
     feed: j['feed'] is String && (j['feed'] as String).isNotEmpty ? j['feed'] as String : null,
+    powerMode: const ['const', 'variable'].contains(j['powerMode']) ? j['powerMode'] as String : 'auto',
+    nominalW: switch (j['nominalW']) {
+      final num v when v > 0 && v.isFinite => v.toDouble(),
+      _ => null,
+    },
   );
 
   TileConfig copy() => TileConfig.fromJson(jsonDecode(jsonEncode(toJson())));

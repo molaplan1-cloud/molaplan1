@@ -7,6 +7,7 @@
 library;
 
 import '../core/security_state.dart';
+import '../energy/energy_flow.dart' show estimatesPower;
 import '../models/models.dart';
 
 abstract final class LogKind {
@@ -125,6 +126,7 @@ bool canLogTile(TileConfig t) {
       t.read['kind'] == 'climate') {
     return false;
   }
+  if (t.read['kind'] == 'energyflow') return false;
   if (t.type == TileType.camera) return false;
   if (t.type == TileType.button && t.read['activeWhen'] == null) return false;
   return t.read.isNotEmpty;
@@ -145,6 +147,8 @@ double? logNumber(Object? v) {
 bool tileIsNumeric(TileConfig t, Object? sample) {
   if (isPriceChartTile(t)) return true;
   if (isSecurityTile(t) || t.sensor != null) return false;
+  // R593: a constant-power switch with a nominal power gives an estimated power trend.
+  if (estimatesPower(t)) return true;
   if (t.type == TileType.toggle) return false;
   if (t.type == TileType.slider || t.type == TileType.thermostat) return true;
   if (t.type != TileType.value) return false;

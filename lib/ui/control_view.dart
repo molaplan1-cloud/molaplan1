@@ -63,13 +63,6 @@ class ControlView extends StatelessWidget {
         title: Text(title, key: const ValueKey('cv-title')),
         actions: [
           const RemoteStatusChip(),
-          if (!st.viewLocked && showAppBarAdd(context))
-            IconButton(
-              key: const ValueKey('appbar-add'),
-              tooltip: tx(context, 'Lisää', 'Add'),
-              icon: const Icon(Icons.add),
-              onPressed: () => showAddSheet(context, dashboard: groups.isEmpty ? null : groups.last),
-            ),
           if (st.viewLocked)
             Padding(
               padding: const EdgeInsets.only(right: 4),
@@ -82,14 +75,8 @@ class ControlView extends StatelessWidget {
           const SizedBox(width: 8),
         ],
       ),
-      floatingActionButton: st.viewLocked
-          ? null
-          : FloatingActionButton.extended(
-              key: const ValueKey('add-fab'),
-              onPressed: () => showAddSheet(context, dashboard: groups.isEmpty ? null : groups.last),
-              icon: const Icon(Icons.add),
-              label: Text(tx(context, 'Lisää', 'Add')),
-            ),
+      // R598 (t329u): one add button only – the dashed Lisää tile after the last tile (no
+      // floating button, no app-bar '+'); the gear menu keeps "Lisää laite".
       body: Column(
         children: [
           const UpdateBanner(),
@@ -106,7 +93,7 @@ class ControlView extends StatelessWidget {
                   final gap = g.gap;
                   final whole = single && groups.isNotEmpty && groups.first.photoBackground;
                   final list = ListView(
-                    padding: EdgeInsets.fromLTRB(gap, 6, gap, st.viewLocked ? 32 : 96),
+                    padding: EdgeInsets.fromLTRB(gap, 6, gap, 32),
                     children: [
                       const HomeHeader(),
                       for (final d in groups)

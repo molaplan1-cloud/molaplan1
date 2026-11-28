@@ -14,6 +14,8 @@ import '../state/auto_driver.dart' show autoConnId;
 import '../models/models.dart';
 import '../models/color_ranges.dart';
 import 'color_ranges_editor.dart';
+import 'energy_flow_tile.dart' show EnergyFlowEditor;
+import '../energy/energy_flow.dart';
 import 'app_scope.dart';
 import 'automation_pages.dart' show pickTiles;
 import 'error_box.dart';
@@ -461,6 +463,10 @@ class _TileEditorState extends State<TileEditor> {
 
   @override
   Widget build(BuildContext context) {
+    // R590 (t328u): the energy flow tile has its own editor (sources, not a connection).
+    if (isEnergyFlowTile(t)) {
+      return EnergyFlowEditor(dashboard: widget.dashboard, initial: t, isNew: widget.isNew);
+    }
     final st = AppScope.of(context);
     final text = Theme.of(context).textTheme;
     return Scaffold(
@@ -936,6 +942,7 @@ class _TileEditorState extends State<TileEditor> {
                     t.offCommand,
                     (s) => setState(() => t.offCommand = s),
                   ),
+                  ..._powerSection(context, text),
                 ],
                 if (t.type == TileType.slider) ...[
                   _section(
@@ -1047,6 +1054,88 @@ class _TileEditorState extends State<TileEditor> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _nominal.dispose();
+    super.dispose();
+  }
+
+  late final _nominal = TextEditingController(
+    text: t.nominalW == null ? '' : t.nominalW!.round().toString(),
+  );
+
+  /// R592 (t328u): "Kulutus" – constant power (vakioteho, a manual nominal power gives an
+  /// estimate) or variable power (muuttuva teho, only a measurement counts).
+  List<Widget> _powerSection(BuildContext context, TextTheme text) {
+    final type = AppScope.read(context).connection(t.connectionId)?.type;
+    final auto = effectivePowerMode(TileConfig(type: t.type, read: t.read), connType: type);
+    final mode = effectivePowerMode(t, connType: type);
+    return [
+      _section(
+        text,
+        tx(context, 'Kulutus', 'Power use'),
+        tx(
+          context,
+          'Energiavirta- ja energiaseuranta käyttävät tätä, kun laitteella ei ole omaa tehomittausta.',
+          'Used by the energy flow and energy tracking when the device has no power reading of its own.',
+        ),
+      ),
+      SegmentedButton<String>(
+        key: const ValueKey('power-mode'),
+        segments: [
+          ButtonSegment(
+            value: 'auto',
+            label: Text(
+              auto == 'const'
+                  ? tx(context, 'Automaattinen (vakio)', 'Automatic (constant)')
+                  : tx(context, 'Automaattinen (muuttuva)', 'Automatic (variable)'),
+            ),
+          ),
+          ButtonSegment(value: 'const', label: Text(tx(context, 'Vakioteho', 'Constant power'))),
+          ButtonSegment(value: 'variable', label: Text(tx(context, 'Muuttuva teho', 'Variable power'))),
+        ],
+        selected: {t.powerMode},
+        showSelectedIcon: false,
+        onSelectionChanged: (v) => setState(() => t.powerMode = v.first),
+      ),
+      const SizedBox(height: 10),
+      if (mode == 'const') ...[
+        TextField(
+          key: const ValueKey('nominal-power'),
+          controller: _nominal,
+          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+          decoration: InputDecoration(
+            labelText: tx(context, 'Nimellisteho (W)', 'Nominal power (W)'),
+            hintText: tx(context, 'esim. 2000', 'e.g. 2000'),
+            suffixText: 'W',
+          ),
+          onChanged: (v) {
+            final d = double.tryParse(v.replaceAll(',', '.').trim());
+            t.nominalW = d != null && d > 0 && d.isFinite ? d : null;
+          },
+        ),
+        const SizedBox(height: 4),
+        Text(
+          tx(
+            context,
+            'Kun laite on päällä, sen kulutukseksi arvioidaan tämä teho (esim. lämmitin, sauna, pumppu, valot). Arvio näkyy ≈-merkillä ja kirjataan energiaseurantaan arviona.',
+            'While the device is on, its use is estimated as this power (e.g. a heater, sauna, pump or lights). The estimate shows with ≈ and is logged as an estimate.',
+          ),
+          style: text.bodySmall,
+        ),
+      ] else
+        Text(
+          key: const ValueKey('variable-power-note'),
+          tx(
+            context,
+            'Muuttuvatehoisen laitteen (esim. lämpöpumppu, invertteri, latausasema) kulutusta ei arvioida käsin, koska teho vaihtelee. Käytä laitteen omaa tehomittausta tai erillistä mittaria.',
+            'A variable-power device (e.g. a heat pump, inverter or charger) is not estimated by hand because its power varies. Use the device\'s own power reading or a separate meter.',
+          ),
+          style: text.bodySmall,
+        ),
+    ];
   }
 
   Widget _section(TextTheme text, String title, String? sub) => Padding(

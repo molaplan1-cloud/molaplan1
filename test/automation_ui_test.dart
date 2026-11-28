@@ -87,7 +87,8 @@ void main() {
     final (st, _) = await _app(tester);
     await tester.pumpWidget(MolaplanApp(state: st));
     await _settle(tester);
-    await tester.tap(find.byKey(const ValueKey('add-fab')));
+    await tester.ensureVisible(find.byKey(const ValueKey('add-placeholder')));
+    await tester.tap(find.byKey(const ValueKey('add-placeholder')));
     await _settle(tester);
     expect(find.byKey(const ValueKey('add-choice-automation')), findsOneWidget);
     await tester.tap(find.byKey(const ValueKey('add-choice-automation')));

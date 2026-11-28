@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../energy/contract.dart';
 import '../energy/meters.dart';
+import '../energy/energy_flow.dart' show estimatesPower;
 import '../energy/weather.dart';
 import '../models/models.dart';
 import '../prices/prices.dart';
@@ -103,7 +104,9 @@ class _EnergyPageState extends State<EnergyPage> {
       for (final e in st.config.energy.meters.entries)
         if (tiles.containsKey(e.key)) e.key: e.value,
     };
-    final candidates = tiles.values.where((t) => t.type == TileType.value && meterKind(t.unit) != null).toList();
+    final candidates = tiles.values
+        .where((t) => (t.type == TileType.value && meterKind(t.unit) != null) || estimatesPower(t))
+        .toList();
     final b = breakdown(meters, st.energyLog, prefix);
     final c = st.contract;
     final fees = month ? c.monthlyFees : c.dailyFees(day);
@@ -117,7 +120,8 @@ class _EnergyPageState extends State<EnergyPage> {
           Expanded(
             child: Text(label, style: bold ? text.titleSmall : text.bodyMedium, overflow: TextOverflow.ellipsis),
           ),
-          SizedBox(width: 90, child: Text(_kwh(v.kwh), textAlign: TextAlign.end)),
+          // R593: an estimated share is marked with ≈.
+          SizedBox(width: 90, child: Text('${v.estimated ? '≈ ' : ''}${_kwh(v.kwh)}', textAlign: TextAlign.end)),
           SizedBox(width: 80, child: Text(_eur(v.inc), textAlign: TextAlign.end)),
           SizedBox(
             width: 80,

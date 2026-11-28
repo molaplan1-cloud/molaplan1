@@ -483,22 +483,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
           const SizedBox(width: 12),
         ],
       ),
-      floatingActionButton: _editing
-          ? (st.config.advanced
-                ? FloatingActionButton.extended(
-                    onPressed: () => _addTile(d),
-                    icon: const Icon(Icons.add),
-                    label: Text(tx(context, 'Lisää ruutu', 'Add tile')),
-                  )
-                : null)
-          : (d.tiles.isEmpty
-                ? null // the empty view has its own big button
-                : FloatingActionButton.extended(
-                    key: const ValueKey('home-add-device'),
-                    onPressed: () => showAddSheet(context, dashboard: d),
-                    icon: const Icon(Icons.add, size: 28),
-                    label: Text(tx(context, 'Lisää', 'Add'), style: const TextStyle(fontSize: 18)),
-                  )),
+      // R598 (t329u): no floating "Lisää" – the dashed Lisää tile at the end of the grid is the
+      // one add button (in edit mode too).
       body: body,
     );
 
@@ -645,7 +631,7 @@ class _DashboardGridState extends State<_DashboardGrid> {
           return RoomBackdrop(
             dashboard: dashboard,
             child: SingleChildScrollView(
-              padding: EdgeInsets.fromLTRB(g.gap, 4, g.gap, 96),
+              padding: EdgeInsets.fromLTRB(g.gap, 4, g.gap, 32),
               child: Wrap(
                 spacing: g.gap,
                 runSpacing: g.gap,
@@ -654,15 +640,17 @@ class _DashboardGridState extends State<_DashboardGrid> {
                     if (byId[id] != null &&
                         (widget.editing || !st.config.hideAwayTiles || awayLanConnection(st, byId[id]!) == null))
                       _sized(context, byId[id]!, g),
-                  if (!widget.editing)
-                    SizedBox(
-                      width: g.width(1),
-                      height: g.height(1),
-                      child: AddPlaceholderTile(
-                        key: const ValueKey('add-placeholder'),
-                        onTap: () => showAddSheet(context, dashboard: dashboard),
-                      ),
+                  // R598 (t329u): always the last tile, also while editing (the only add button).
+                  SizedBox(
+                    width: g.width(1),
+                    height: g.height(1),
+                    child: AddPlaceholderTile(
+                      key: const ValueKey('add-placeholder'),
+                      onTap: widget.editing && st.config.advanced
+                          ? widget.onAddTile
+                          : () => showAddSheet(context, dashboard: dashboard),
                     ),
+                  ),
                 ],
               ),
             ),

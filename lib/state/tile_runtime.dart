@@ -31,6 +31,7 @@ class TileRuntime extends ChangeNotifier {
       tile.read['kind'] != 'climate' &&
       tile.read['kind'] != 'weather' &&
       tile.read['kind'] != 'heating' && // R610: reads the shared heating state
+      tile.read['kind'] != 'energyflow' && // R590: the energy flow reads its source tiles
       tile.read['kind'] != 'log'; // R485: a log / trend tile reads the log store
 
   /// t193u: live runtimes by tile id, so a script / scene / control button can refresh the
