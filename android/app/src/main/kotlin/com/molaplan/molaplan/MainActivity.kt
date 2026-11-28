@@ -198,6 +198,18 @@ class MainActivity : FlutterActivity() {
                     }
                     result.success(null)
                 }
+                "cancel" -> {
+                    try {
+                        val id = call.argument<Int>("id")
+                        if (id != null) {
+                            val nm = getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
+                            nm.cancel(id)
+                        }
+                        result.success(true)
+                    } catch (e: Exception) {
+                        result.success(false)
+                    }
+                }
                 "show" -> {
                     try {
                         val nm = getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
@@ -214,7 +226,8 @@ class MainActivity : FlutterActivity() {
                         val link = call.argument<String>("link")
                         val tap = Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                         if (link != null) { tap.action = Intent.ACTION_VIEW; tap.data = Uri.parse(link) }
-                        val id = (System.currentTimeMillis() % 100000).toInt()
+                        val id = call.argument<Int>("id") ?: (System.currentTimeMillis() % 100000).toInt()
+                        val onlyOnce = call.argument<Boolean>("onlyAlertOnce") == true
                         // R464: an alarm shown by the open app uses the same loud channel.
                         if (call.argument<Boolean>("alarm") == true) {
                             AlarmNotifier.post(
@@ -238,6 +251,7 @@ class MainActivity : FlutterActivity() {
                             .setStyle(android.app.Notification.BigTextStyle().bigText(call.argument<String>("body") ?: ""))
                             .setContentIntent(open)
                             .setAutoCancel(true)
+                            .setOnlyAlertOnce(onlyOnce)
                             .build()
                         NotifyTrim.makeRoom(this)
                         nm.notify(id, n)

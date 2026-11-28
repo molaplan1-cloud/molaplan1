@@ -496,6 +496,19 @@ class AppLocalizationsFi extends AppLocalizations {
   String get sdfff64e4c3 => 'Hubin kautta';
 
   @override
+  String get s6f1dc5d97e => 'Tietohaut';
+
+  @override
+  String get s472700f0f5 =>
+      'Onnistuneet tietohaut merkitään tänne. Ilmoitus tulee vain, jos haku epäonnistuu toistuvasti.';
+
+  @override
+  String get sdfa5b44030 => 'Onnistui';
+
+  @override
+  String get s8b8e9ac677 => 'Epäonnistui';
+
+  @override
   String get scb28b11e70 => 'Uusi näkymä';
 
   @override
@@ -1172,6 +1185,13 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get s6b8c0469dc => 'Tallennettu tähän sovellukseen';
+
+  @override
+  String get scafc63f250 => 'Ilmoita myös onnistuneista tietohauista';
+
+  @override
+  String get sc871df3444 =>
+      'Oletuksena onnistuneet haut merkitään vain lokiin (Lokit ja trendit → Tietohaut). Ilmoitus tulee, jos haku epäonnistuu toistuvasti.';
 
   @override
   String get sd9762f0556 => 'Kopioitu';
@@ -6638,6 +6658,9 @@ class AppLocalizationsFi extends AppLocalizations {
       'Tarkista laitteen unit id ja Modbus-asetukset. Napauta käyttääksesi tätä osoitetta.';
 
   @override
+  String get sdca1898723 => 'Sää';
+
+  @override
   String get s64f4d1e11a => 'Aseta kodin sijainti';
 
   @override
@@ -6937,6 +6960,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get se93448dca9 => 'Tapahtumaloki';
+
+  @override
+  String get sb7bd245cdc => 'Onnistuneet haut ja hakuvirheet tällä laitteella';
 
   @override
   String get s79a52f607c =>
@@ -10410,6 +10436,17 @@ class AppLocalizationsFi extends AppLocalizations {
   @override
   String get s984804da72 =>
       'Huawei, Fronius, SolarEdge, SMA, Growatt – tuotanto, verkko ja akku. Paikallisesti, pilvi valinnainen.';
+
+  @override
+  String get s5a9f34e4c2 => 'Tiedot päivitetty';
+
+  @override
+  String get s3acea7ff5a => 'Tietohaku ei onnistunut';
+
+  @override
+  String s0cfb3a816e(String p0) {
+    return '$p0 – yritetään uudelleen';
+  }
 
   @override
   String get s68e2e87750 => 'OCPP 1.6J (paikallinen, mikä tahansa merkki)';

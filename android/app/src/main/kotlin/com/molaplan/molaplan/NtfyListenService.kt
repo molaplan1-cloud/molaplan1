@@ -86,7 +86,7 @@ object NtfyNotifyFilter {
         Kind.ALARM_END to Regex("(hälytys|halytys|alarm|larm|häire|alarma)\\S*\\s*[:,-]?\\s*(kuitattu|päättyi|paattyi|loppui|ohi|pois|cleared|ended|over|stopped|acknowledged|silenced|kvitterat|slut|avslutat|lõppes|kinnitatud|finalizada|terminada|reconocida)|^(kuitattu|alarm cleared|alarm ended|alarm acknowledged)|kesken hälytyksen|during (an )?alarm|under (ett )?larm|häire ajal|durante (la|una) alarma", setOf(RegexOption.IGNORE_CASE)),
         Kind.DISARM to Regex("^(valvonta|vartiointi|hälytin|halytin)\\s*(pois|poistettu|kytketty pois|off)|^(disarm|alarm (system )?(off|disarmed)|system disarmed|security off|larm(et)?\\s*(av|frånslaget|avaktiverat)|bortalarm av|valve (välja|maas|väljas)|valvest(us)? (välja|maha)|desarmad|alarma desactivada|sistema desarmado)", setOf(RegexOption.IGNORE_CASE)),
         Kind.ARM to Regex("^(valvonta|vartiointi|hälytin|halytin)\\s*(päälle|paalle|päällä|kytketty|aktiivinen|on\\b)|^(arm(ed|ing)?\\b|alarm (system )?(on|armed)|system armed|security on|larm(et)?\\s*(på|tillslaget|aktiverat)|bortalarm på|valve (sisse|peal)|valvestatud|armad|alarma activada|sistema armado)", setOf(RegexOption.IGNORE_CASE)),
-        Kind.STATUS to Regex("^(tila( json)?|status( json)?|state|heartbeat|syke|keepalive|ping|info|ei muutosta|no change|ingen ändring|muutust pole|sin cambios|meno\\b|tulo\\b|tulo havaittu|lähtöviive|lahtoviive|tuloviive|poistumisviive|exit delay|entry delay|arrival|departure|utpasseringsfördröjning|inpasseringsfördröjning|väljumisviivitus|sisenemisviivitus|retardo de (salida|entrada)|pelote|deterr|päivitys|paivitys|update|uppdatering|uuendus|actualización|sisävalo|pihavalo|valo\\b|light\\b|laite käynnistyi|device restarted|rebooted|käynnistyi uudelleen)", setOf(RegexOption.IGNORE_CASE)),
+        Kind.STATUS to Regex("^(tila( json)?|status( json)?|state|heartbeat|syke|keepalive|ping|info|ei muutosta|no change|ingen ändring|muutust pole|sin cambios|meno\\b|tulo\\b|tulo havaittu|lähtöviive|lahtoviive|tuloviive|poistumisviive|exit delay|entry delay|arrival|departure|utpasseringsfördröjning|inpasseringsfördröjning|väljumisviivitus|sisenemisviivitus|retardo de (salida|entrada)|pelote|deterr|päivitys|paivitys|päivitetty|paivitetty|update|updated|uppdatering|uppdaterad|uuendus|uuendatud|actualización|actualizado|sisävalo|pihavalo|valo\\b|light\\b|laite käynnistyi|device restarted|rebooted|käynnistyi uudelleen)", setOf(RegexOption.IGNORE_CASE)),
         Kind.ALARM to Regex("(hälytys|halytys|\\balarm\\b|\\blarm\\b|häire|alarma|intrusion|intrång|sissetung|intrusión|burglar|murto|sireeni päällä|siren on)", setOf(RegexOption.IGNORE_CASE)),
     )
 
@@ -101,7 +101,25 @@ object NtfyNotifyFilter {
         return Kind.OTHER
     }
 
-    fun allows(mode: String, title: String, message: String, tags: List<String>, prio: Int = 3): Boolean {
+    // R580: "Päivitetty: …", "Updated: …" and similar data-fetch successes.
+    private val fetchSuccess = Regex(
+        "(^päivitetty:?|^paivitetty:?|^updated:?|^uppdaterad:?|^uuendatud:?|^actualizado:?|" +
+            "päivitetty:\\s*\\d+\\s*laitetta|updated:\\s*\\d+\\s*devices?|" +
+            "hinnat haettu|prices? (for|fetched)|tiedot päivitetty|" +
+            "^data updated|^data fetched|" +
+            "^päivitä\\b|^paivita\\b|^refresh\\b)",
+        setOf(RegexOption.IGNORE_CASE)
+    )
+
+    fun isDataFetchSuccess(title: String, message: String): Boolean {
+        val t = title.trim()
+        val m = message.trim()
+        return (t.isNotEmpty() && fetchSuccess.containsMatchIn(t)) ||
+            (m.isNotEmpty() && fetchSuccess.containsMatchIn(m))
+    }
+
+    fun allows(mode: String, title: String, message: String, tags: List<String>, prio: Int = 3, notifyFetchSuccess: Boolean = false): Boolean {
+        if (isDataFetchSuccess(title, message) && !notifyFetchSuccess) return false
         if (mode == "none") return false
         if (mode == "all") return true
         val kind = classify(title, message, tags)
@@ -235,7 +253,7 @@ class NtfyListenService : Service() {
     private fun handleLine(t: Topic, line: String) {
         val rules = config().optJSONObject("alarm")
         // t319u: replay-safe decision (old / seen messages and control events never notify).
-        val d = NtfyAlarmGate.decide(line, t.topic, t.filter, rules, System.currentTimeMillis() / 1000) { isSeen(it) }
+        val d = NtfyAlarmGate.decide(line, t.topic, t.filter, rules, System.currentTimeMillis() / 1000, { isSeen(it) }, config().optBoolean("notifyFetchSuccess", false))
         if (d.action == NtfyAlarmGate.Action.IGNORE) return
         // Only real messages move the resume point (never open/keepalive ids, see NtfyAlarmGate).
         if (d.cursorId != null) saveCursor(t, d.cursorId, d.cursorTime)

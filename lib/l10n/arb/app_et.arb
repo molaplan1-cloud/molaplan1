@@ -502,6 +502,10 @@
  "@sdfff64e4c3": {
   "x-mt": true
  },
+ "s6f1dc5d97e": "Andmepäringud",
+ "s472700f0f5": "Õnnestunud andmepäringud on loetletud siin. Teade saadetakse ainult siis, kui päring jätkuvalt ebaõnnestub.",
+ "sdfa5b44030": "Õnnestus",
+ "s8b8e9ac677": "Ebaõnnestus",
  "scb28b11e70": "Uus vaade",
  "s1f9799af4e": "nt Cottage",
  "@s1f9799af4e": {
@@ -927,6 +931,8 @@
  "sba0a4fbaba": "Seadme vastused",
  "sdf08a348ba": "Salvestatud, ka serverisse (iPhone)",
  "s6b8c0469dc": "Salvestatud sellesse rakendusse",
+ "scafc63f250": "Teavita ka siis, kui andmepäring õnnestub",
+ "sc871df3444": "Vaikimisi kirjutatakse õnnestunud päringud ainult logisse (Logid ja trendid → Andmepäringud). Teade saadetakse, kui päring ebaõnnestub korduvalt.",
  "sd9762f0556": "Kopeeritud",
  "s703e5ec00e": "Link kopeeritud",
  "sd6f41faa1d": "Kopeeri",
@@ -5935,6 +5941,10 @@
  "@s9041c140be": {
   "x-mt": true
  },
+ "sdca1898723": "Weather",
+ "@sdca1898723": {
+  "x-mt": true
+ },
  "s64f4d1e11a": "Määra kodu asukoht",
  "sbf7cc3de9a": "Proovi nüüd",
  "@sbf7cc3de9a": {
@@ -6175,6 +6185,7 @@
  "s7001f80c75": "Pole veel kaarte, mida logida.",
  "s25729ac0be": "Milline kaart?",
  "se93448dca9": "Sündmuste logi",
+ "sb7bd245cdc": "Õnnestunud päringud ja päringuvead selles seadmes",
  "s79a52f607c": "Loo logi või trend mis tahes kaardist: temperatuur, võimsus, hind, andur, relee või olek. Vajuta Lisa või hoia kaarti all ja vali Lisa logi / trend.",
  "s4ff01d5c5f": "säilitatakse",
  "s11c71ee131": "päeva",
@@ -9507,6 +9518,9 @@
  "@s984804da72": {
   "x-mt": true
  },
+ "s5a9f34e4c2": "Andmed uuendatud",
+ "s3acea7ff5a": "Andmepäring ebaõnnestus",
+ "s0cfb3a816e": "{p0} – proovitakse uuesti",
  "s68e2e87750": "OCPP 1.6J (kohalik, mis tahes kaubamärk)",
  "@s68e2e87750": {
   "x-mt": true

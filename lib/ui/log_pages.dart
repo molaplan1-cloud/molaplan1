@@ -20,6 +20,7 @@ import '../models/models.dart';
 import '../security/alarm_log.dart';
 import 'alarm_log_page.dart' show alarmLogTime, alarmLogDuration;
 import 'app_scope.dart';
+import 'data_fetch_log_page.dart';
 
 /// The readable name of a logged value.
 String logValueLabel(BuildContext context, TileConfig? t, String key, {String? stored}) {
@@ -189,48 +190,61 @@ class LogsPage extends StatelessWidget {
         icon: const Icon(Icons.add),
         label: Text(tx(context, 'Lisää loki / trendi', 'Add log / trend')),
       ),
-      body: ds.isEmpty
-          ? Center(
-              child: Padding(
-                padding: const EdgeInsets.all(24),
-                child: Text(
-                  tx(
-                    context,
-                    'Rakenna loki tai trendi mistä tahansa ruudusta: lämpötila, teho, hinta, anturi, rele tai tila. Paina Lisää tai pidä ruutua painettuna ja valitse Lisää loki / trendi.',
-                    'Build a log or trend from any tile: temperature, power, price, sensor, relay or state. Tap Add, or long-press a tile and choose Add log / trend.',
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+      body: ListView(
+        key: const ValueKey('logs-list'),
+        padding: const EdgeInsets.only(bottom: 88),
+        children: [
+          if (tileId == null)
+          ListTile(
+            key: const ValueKey('log-data-fetch'),
+            leading: const Icon(Icons.sync),
+            title: Text(tx(context, 'Tietohaut', 'Data fetches')),
+            subtitle: Text(
+              tx(
+                context,
+                'Onnistuneet haut ja hakuvirheet tällä laitteella',
+                'Successful fetches and fetch errors on this device',
               ),
-            )
-          : ListView(
-              key: const ValueKey('logs-list'),
-              padding: const EdgeInsets.only(bottom: 88),
-              children: [
-                for (final d in ds)
-                  ListTile(
-                    key: ValueKey('log-${d.id}'),
-                    leading: Icon(d.isTrend ? Icons.show_chart : Icons.list_alt),
-                    title: Text(logTitle(context, d)),
-                    subtitle: Text(
-                      '${d.isTrend ? tx(context, 'Trendi', 'Trend') : tx(context, 'Tapahtumaloki', 'Event log')} · ${tx(context, 'säilytys', 'kept')} ${d.retentionDays} ${tx(context, 'vrk', 'days')}',
-                    ),
-                    trailing: const Icon(Icons.chevron_right),
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => LogViewPage(logId: d.id))),
-                  ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-                  child: Text(
-                    tx(
-                      context,
-                      'Tiedot tallennetaan tälle laitteelle. Keräys toimii aina, kun Molaplan on käynnissä (myös taustalla Windowsissa ja kotisiltana). Androidilla arvot luetaan lisäksi noin 15 minuutin välein, vaikka sovellus olisi kiinni. Selaimessa keräys toimii vain sivun ollessa auki; hinnat ja laitteet, joilla on oma historia, täydentävät aukot.',
-                      'Data is stored on this device. Collection runs whenever Molaplan runs (also in the background on Windows and as a home bridge). On Android values are also read about every 15 minutes with the app closed. In the browser collection runs only while the page is open; prices and devices with their own history fill the gaps.',
-                    ),
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                ),
-              ],
             ),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const DataFetchLogPage())),
+          ),
+          if (ds.isEmpty)
+            Padding(
+              padding: const EdgeInsets.all(24),
+              child: Text(
+                tx(
+                  context,
+                  'Rakenna loki tai trendi mistä tahansa ruudusta: lämpötila, teho, hinta, anturi, rele tai tila. Paina Lisää tai pidä ruutua painettuna ja valitse Lisää loki / trendi.',
+                  'Build a log or trend from any tile: temperature, power, price, sensor, relay or state. Tap Add, or long-press a tile and choose Add log / trend.',
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          for (final d in ds)
+            ListTile(
+              key: ValueKey('log-${d.id}'),
+              leading: Icon(d.isTrend ? Icons.show_chart : Icons.list_alt),
+              title: Text(logTitle(context, d)),
+              subtitle: Text(
+                '${d.isTrend ? tx(context, 'Trendi', 'Trend') : tx(context, 'Tapahtumaloki', 'Event log')} · ${tx(context, 'säilytys', 'kept')} ${d.retentionDays} ${tx(context, 'vrk', 'days')}',
+              ),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => LogViewPage(logId: d.id))),
+            ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+            child: Text(
+              tx(
+                context,
+                'Tiedot tallennetaan tälle laitteelle. Keräys toimii aina, kun Molaplan on käynnissä (myös taustalla Windowsissa ja kotisiltana). Androidilla arvot luetaan lisäksi noin 15 minuutin välein, vaikka sovellus olisi kiinni. Selaimessa keräys toimii vain sivun ollessa auki; hinnat ja laitteet, joilla on oma historia, täydentävät aukot.',
+                'Data is stored on this device. Collection runs whenever Molaplan runs (also in the background on Windows and as a home bridge). On Android values are also read about every 15 minutes with the app closed. In the browser collection runs only while the page is open; prices and devices with their own history fill the gaps.',
+              ),
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

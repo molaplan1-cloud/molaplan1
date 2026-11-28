@@ -20,6 +20,7 @@ import '../drivers/ntfy_device.dart';
 import '../notify/event_prefs.dart';
 import '../drivers/registry.dart';
 import '../models/models.dart';
+import '../notify/data_fetch_host.dart';
 import '../notify/ntfy_listen.dart';
 import '../energy/contract.dart';
 import '../energy/meters.dart';
@@ -661,7 +662,8 @@ class AppState extends ChangeNotifier implements SyncHost {
     );
     loaded = true;
     notifyListeners();
-    unawaited(NtfyListen.sync(connections: config.connections, notify: config.automation.notify));
+    attachDataFetch(notifySuccess: config.notifyFetchSuccess, lang: lang);
+    unawaited(NtfyListen.sync(connections: config.connections, notify: config.automation.notify, notifyFetchSuccess: config.notifyFetchSuccess));
   }
 
   Future<void> setBridgeMode(bool on) async {
@@ -712,7 +714,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     if (!_applyingSync) account.localChanged();
     _scheduleRulesPush();
     automations.changed();
-    unawaited(NtfyListen.sync(connections: config.connections, notify: config.automation.notify));
+    unawaited(NtfyListen.sync(connections: config.connections, notify: config.automation.notify, notifyFetchSuccess: config.notifyFetchSuccess));
     if (sharing.mine.any((r) => r.status == ShareStatus.active)) {
       _sharePush?.cancel();
       _sharePush = Timer(const Duration(seconds: 3), () => unawaited(sharing.pushPackages()));
@@ -836,6 +838,7 @@ class AppState extends ChangeNotifier implements SyncHost {
     'autoLocal',
     'notifyInApp',
     'trayOnClose',
+    'notifyFetchSuccess',
     'animations',
     'homeStrip',
     'theme',
@@ -1481,7 +1484,10 @@ class AppState extends ChangeNotifier implements SyncHost {
         config.animations = v;
       case 'homeStrip':
         config.homeStrip = v;
+      case 'notifyFetchSuccess':
+        config.notifyFetchSuccess = v;
     }
+    attachDataFetch(notifySuccess: config.notifyFetchSuccess, lang: lang);
     await save();
     automations.changed();
     notifyListeners();

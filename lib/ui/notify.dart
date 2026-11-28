@@ -90,6 +90,8 @@ class LocalNotify {
   }
 
   /// [link] e.g. molaplan://tile/ID – opened when the notification is tapped.
+  /// [id] keeps one notification per source (updated, not duplicated). When
+  /// [onlyAlertOnce] is true, an update of the same [id] does not sound again.
   static Future<void> show(
     String title,
     String body, {
@@ -97,6 +99,8 @@ class LocalNotify {
     int priority = 3,
     bool alarm = false,
     bool insistent = false,
+    int? id,
+    bool onlyAlertOnce = false,
   }) async {
     if (recorded != null) {
       recorded!.add((title, body));
@@ -113,6 +117,8 @@ class LocalNotify {
           // R464: the loud alarm channel (see AlarmNotifier.kt).
           if (alarm) 'alarm': true,
           if (alarm) 'insistent': insistent,
+          'id': ?id,
+          if (onlyAlertOnce) 'onlyAlertOnce': true,
         });
       } catch (_) {}
       return;
@@ -129,6 +135,22 @@ class LocalNotify {
           if (link != null) DeepLinks.open(link);
         };
         await n.show();
+      } catch (_) {}
+    }
+  }
+
+  /// Notification ids cancelled while [recorded] is set (tests).
+  static List<int>? recordedCancelled;
+
+  /// R582: drop a previously posted notification (e.g. a fetch failure after recovery).
+  static Future<void> cancel(int id) async {
+    if (recorded != null) {
+      recordedCancelled?.add(id);
+      return;
+    }
+    if (_android) {
+      try {
+        await _ch.invokeMethod('cancel', {'id': id});
       } catch (_) {}
     }
   }

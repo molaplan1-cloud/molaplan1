@@ -87,6 +87,20 @@ class NotifyFilterSection extends StatelessWidget {
               ],
             ),
           ),
+        SwitchListTile(
+          key: const ValueKey('notify-fetch-success'),
+          contentPadding: EdgeInsets.zero,
+          title: Text(tx(context, 'Ilmoita myös onnistuneista tietohauista', 'Also notify when a data fetch succeeds')),
+          subtitle: Text(
+            tx(
+              context,
+              'Oletuksena onnistuneet haut merkitään vain lokiin (Lokit ja trendit → Tietohaut). Ilmoitus tulee, jos haku epäonnistuu toistuvasti.',
+              'By default, successful fetches are written only to the log (Logs and trends → Data fetches). A notification is sent if a fetch keeps failing.',
+            ),
+          ),
+          value: st.config.notifyFetchSuccess,
+          onChanged: (v) => st.setDeviceFlag('notifyFetchSuccess', v),
+        ),
       ],
     );
   }

@@ -492,6 +492,19 @@ class AppLocalizationsEt extends AppLocalizations {
   String get sdfff64e4c3 => 'Hubi kaudu';
 
   @override
+  String get s6f1dc5d97e => 'Andmepäringud';
+
+  @override
+  String get s472700f0f5 =>
+      'Õnnestunud andmepäringud on loetletud siin. Teade saadetakse ainult siis, kui päring jätkuvalt ebaõnnestub.';
+
+  @override
+  String get sdfa5b44030 => 'Õnnestus';
+
+  @override
+  String get s8b8e9ac677 => 'Ebaõnnestus';
+
+  @override
   String get scb28b11e70 => 'Uus vaade';
 
   @override
@@ -1164,6 +1177,13 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get s6b8c0469dc => 'Salvestatud sellesse rakendusse';
+
+  @override
+  String get scafc63f250 => 'Teavita ka siis, kui andmepäring õnnestub';
+
+  @override
+  String get sc871df3444 =>
+      'Vaikimisi kirjutatakse õnnestunud päringud ainult logisse (Logid ja trendid → Andmepäringud). Teade saadetakse, kui päring ebaõnnestub korduvalt.';
 
   @override
   String get sd9762f0556 => 'Kopeeritud';
@@ -6613,6 +6633,9 @@ class AppLocalizationsEt extends AppLocalizations {
       'Kontrolli ühiku ID ja Modbusi seadistusi. Selle aadressi kasutamiseks klõpsa nupule.';
 
   @override
+  String get sdca1898723 => 'Weather';
+
+  @override
   String get s64f4d1e11a => 'Määra kodu asukoht';
 
   @override
@@ -6911,6 +6934,9 @@ class AppLocalizationsEt extends AppLocalizations {
 
   @override
   String get se93448dca9 => 'Sündmuste logi';
+
+  @override
+  String get sb7bd245cdc => 'Õnnestunud päringud ja päringuvead selles seadmes';
 
   @override
   String get s79a52f607c =>
@@ -10337,6 +10363,17 @@ class AppLocalizationsEt extends AppLocalizations {
   @override
   String get s984804da72 =>
       'Huawei, Fronius, SolarEdge, SMA, Growatt – tootmine, võrk ja aku. Kohalik, pilv valikuline.';
+
+  @override
+  String get s5a9f34e4c2 => 'Andmed uuendatud';
+
+  @override
+  String get s3acea7ff5a => 'Andmepäring ebaõnnestus';
+
+  @override
+  String s0cfb3a816e(String p0) {
+    return '$p0 – proovitakse uuesti';
+  }
 
   @override
   String get s68e2e87750 => 'OCPP 1.6J (kohalik, mis tahes kaubamärk)';

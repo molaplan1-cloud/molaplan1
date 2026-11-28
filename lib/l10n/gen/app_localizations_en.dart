@@ -492,6 +492,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sdfff64e4c3 => 'via the Hub';
 
   @override
+  String get s6f1dc5d97e => 'Data fetches';
+
+  @override
+  String get s472700f0f5 =>
+      'Successful data fetches are listed here. A notification is sent only if a fetch keeps failing.';
+
+  @override
+  String get sdfa5b44030 => 'Succeeded';
+
+  @override
+  String get s8b8e9ac677 => 'Failed';
+
+  @override
   String get scb28b11e70 => 'New dashboard';
 
   @override
@@ -1166,6 +1179,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get s6b8c0469dc => 'Saved in this app';
+
+  @override
+  String get scafc63f250 => 'Also notify when a data fetch succeeds';
+
+  @override
+  String get sc871df3444 =>
+      'By default, successful fetches are written only to the log (Logs and trends → Data fetches). A notification is sent if a fetch keeps failing.';
 
   @override
   String get sd9762f0556 => 'Copied';
@@ -6614,6 +6634,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'Check the unit id and Modbus settings. Tap to use this address.';
 
   @override
+  String get sdca1898723 => 'Weather';
+
+  @override
   String get s64f4d1e11a => 'Set the home location';
 
   @override
@@ -6912,6 +6935,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get se93448dca9 => 'Event log';
+
+  @override
+  String get sb7bd245cdc =>
+      'Successful fetches and fetch errors on this device';
 
   @override
   String get s79a52f607c =>
@@ -10350,6 +10377,17 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get s984804da72 =>
       'Huawei, Fronius, SolarEdge, SMA, Growatt – production, grid and battery. Local, cloud optional.';
+
+  @override
+  String get s5a9f34e4c2 => 'Data updated';
+
+  @override
+  String get s3acea7ff5a => 'Data fetch failed';
+
+  @override
+  String s0cfb3a816e(String p0) {
+    return '$p0 – retrying';
+  }
 
   @override
   String get s68e2e87750 => 'OCPP 1.6J (local, any brand)';

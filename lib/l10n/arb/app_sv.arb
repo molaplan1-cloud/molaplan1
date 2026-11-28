@@ -502,6 +502,10 @@
  "@sdfff64e4c3": {
   "x-mt": true
  },
+ "s6f1dc5d97e": "Datahämtningar",
+ "s472700f0f5": "Lyckade datahämtningar listas här. En avisering skickas bara om en hämtning fortsätter att misslyckas.",
+ "sdfa5b44030": "Lyckades",
+ "s8b8e9ac677": "Misslyckades",
  "scb28b11e70": "Ny vy",
  "s1f9799af4e": "t.ex. stuga",
  "@s1f9799af4e": {
@@ -927,6 +931,8 @@
  "sba0a4fbaba": "Enhetens svar",
  "sdf08a348ba": "Sparat, även på servern (iPhone)",
  "s6b8c0469dc": "Sparat i den här appen",
+ "scafc63f250": "Meddela också när en datahämtning lyckas",
+ "sc871df3444": "Som standard skrivs lyckade hämtningar bara till loggen (Loggar och trender → Datahämtningar). En avisering skickas om en hämtning fortsätter att misslyckas.",
  "sd9762f0556": "Kopierat",
  "s703e5ec00e": "Länken kopierad",
  "sd6f41faa1d": "Kopiera",
@@ -5914,6 +5920,10 @@
  "@s9041c140be": {
   "x-mt": true
  },
+ "sdca1898723": "Vädret",
+ "@sdca1898723": {
+  "x-mt": true
+ },
  "s64f4d1e11a": "Ange hemmets plats",
  "sbf7cc3de9a": "Försök nu",
  "@sbf7cc3de9a": {
@@ -6154,6 +6164,7 @@
  "s7001f80c75": "Inga kort att logga ännu.",
  "s25729ac0be": "Vilket kort?",
  "se93448dca9": "Händelselogg",
+ "sb7bd245cdc": "Lyckade hämtningar och hämtningsfel på den här enheten",
  "s79a52f607c": "Skapa en logg eller trend från vilket kort som helst: temperatur, effekt, pris, sensor, relä eller status. Tryck på Lägg till, eller håll ett kort intryckt och välj Lägg till logg / trend.",
  "s4ff01d5c5f": "sparas",
  "s11c71ee131": "dygn",
@@ -9465,6 +9476,9 @@
  "@s984804da72": {
   "x-mt": true
  },
+ "s5a9f34e4c2": "Data uppdaterad",
+ "s3acea7ff5a": "Datahämtningen misslyckades",
+ "s0cfb3a816e": "{p0} – nytt försök",
  "s68e2e87750": "OCPP 1.6J (lokalt, något varumärke)",
  "@s68e2e87750": {
   "x-mt": true

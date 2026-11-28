@@ -491,6 +491,19 @@ class AppLocalizationsSv extends AppLocalizations {
   String get sdfff64e4c3 => 'via Hub';
 
   @override
+  String get s6f1dc5d97e => 'Datahämtningar';
+
+  @override
+  String get s472700f0f5 =>
+      'Lyckade datahämtningar listas här. En avisering skickas bara om en hämtning fortsätter att misslyckas.';
+
+  @override
+  String get sdfa5b44030 => 'Lyckades';
+
+  @override
+  String get s8b8e9ac677 => 'Misslyckades';
+
+  @override
   String get scb28b11e70 => 'Ny vy';
 
   @override
@@ -1164,6 +1177,13 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get s6b8c0469dc => 'Sparat i den här appen';
+
+  @override
+  String get scafc63f250 => 'Meddela också när en datahämtning lyckas';
+
+  @override
+  String get sc871df3444 =>
+      'Som standard skrivs lyckade hämtningar bara till loggen (Loggar och trender → Datahämtningar). En avisering skickas om en hämtning fortsätter att misslyckas.';
 
   @override
   String get sd9762f0556 => 'Kopierat';
@@ -6622,6 +6642,9 @@ class AppLocalizationsSv extends AppLocalizations {
       'Kontrollera enhets-ID och Modbus-inställningarna. Tryck på för att använda den här adressen.';
 
   @override
+  String get sdca1898723 => 'Vädret';
+
+  @override
   String get s64f4d1e11a => 'Ange hemmets plats';
 
   @override
@@ -6919,6 +6942,10 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get se93448dca9 => 'Händelselogg';
+
+  @override
+  String get sb7bd245cdc =>
+      'Lyckade hämtningar och hämtningsfel på den här enheten';
 
   @override
   String get s79a52f607c =>
@@ -10356,6 +10383,17 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get s984804da72 =>
       'Huawei, Fronius, SolarEdge, SMA, Growatt - produktion, rutnät och batteri. Lokalt, moln valfritt.';
+
+  @override
+  String get s5a9f34e4c2 => 'Data uppdaterad';
+
+  @override
+  String get s3acea7ff5a => 'Datahämtningen misslyckades';
+
+  @override
+  String s0cfb3a816e(String p0) {
+    return '$p0 – nytt försök';
+  }
 
   @override
   String get s68e2e87750 => 'OCPP 1.6J (lokalt, något varumärke)';

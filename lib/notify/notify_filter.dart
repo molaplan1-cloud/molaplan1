@@ -8,6 +8,8 @@
 /// ntfy.molaplan.com Worker (classifyNotify), which applies the same rule to iPhone pushes.
 library;
 
+import 'data_fetch.dart';
+
 /// Per-topic notification choice.
 ///  - `auto` (default for device reply topics): arm / disarm / alarm / alarm end notify, messages
 ///    recognised as status / info stay silent, anything unrecognised notifies at ntfy priority >= 3
@@ -54,7 +56,7 @@ final _patterns = <(NotifyKind, RegExp)>[
   (
     NotifyKind.status,
     RegExp(
-      r'^(tila( json)?|status( json)?|state|heartbeat|syke|keepalive|ping|info|ei muutosta|no change|ingen ändring|muutust pole|sin cambios|meno\b|tulo\b|tulo havaittu|lähtöviive|lahtoviive|tuloviive|poistumisviive|exit delay|entry delay|arrival|departure|utpasseringsfördröjning|inpasseringsfördröjning|väljumisviivitus|sisenemisviivitus|retardo de (salida|entrada)|pelote|deterr|päivitys|paivitys|update|uppdatering|uuendus|actualización|sisävalo|pihavalo|valo\b|light\b|laite käynnistyi|device restarted|rebooted|käynnistyi uudelleen)',
+      r'^(tila( json)?|status( json)?|state|heartbeat|syke|keepalive|ping|info|ei muutosta|no change|ingen ändring|muutust pole|sin cambios|meno\b|tulo\b|tulo havaittu|lähtöviive|lahtoviive|tuloviive|poistumisviive|exit delay|entry delay|arrival|departure|utpasseringsfördröjning|inpasseringsfördröjning|väljumisviivitus|sisenemisviivitus|retardo de (salida|entrada)|pelote|deterr|päivitys|paivitys|päivitetty|paivitetty|update|updated|uppdatering|uppdaterad|uuendus|uuendatud|actualización|actualizado|sisävalo|pihavalo|valo\b|light\b|laite käynnistyi|device restarted|rebooted|käynnistyi uudelleen)',
       caseSensitive: false,
       unicode: true,
     ),
@@ -94,7 +96,11 @@ bool notifyFilterAllows(
   required String message,
   List<String> tags = const [],
   int priority = 3,
+  bool notifyFetchSuccess = false,
 }) {
+  // R580: data-fetch successes stay in the log unless the user turns success
+  // notifications on (even when the topic is set to "all").
+  if (isDataFetchSuccess(title, message) && !notifyFetchSuccess) return false;
   switch (mode) {
     case 'none':
       return false;

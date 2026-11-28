@@ -73,6 +73,7 @@ object NtfyAlarmGate {
         rules: JSONObject?,
         nowSec: Long,
         seen: (String) -> Boolean,
+        notifyFetchSuccess: Boolean = false,
     ): Result {
         val j = try { JSONObject(line) } catch (_: Exception) { return Result(Action.IGNORE, "not json") }
         val event = j.optString("event", "message")
@@ -87,7 +88,7 @@ object NtfyAlarmGate {
         if (ta != null) for (i in 0 until ta.length()) tags.add(ta.optString(i))
         fun r(a: Action, why: String) = Result(a, why, id.ifEmpty { null }, time, id, title, message, prio, j.optString("click", ""))
         if (!NtfyListenFilter.shouldNotify(event, title, message, tags)) return r(Action.STATE_ONLY, "status json")
-        if (!NtfyNotifyFilter.allows(filter, title, message, tags, prio)) return r(Action.STATE_ONLY, "filter $filter")
+        if (!NtfyNotifyFilter.allows(filter, title, message, tags, prio, notifyFetchSuccess)) return r(Action.STATE_ONLY, "filter $filter")
         if (!isFresh(time, nowSec)) return r(Action.STATE_ONLY, "old (${nowSec - time} s)")
         if (id.isNotEmpty() && seen(id)) return r(Action.STATE_ONLY, "seen")
         val alarm = isRealAlarm(rules, topic, title, message, tags, prio, j.has("attachment"))

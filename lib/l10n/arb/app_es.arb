@@ -502,6 +502,10 @@
  "@sdfff64e4c3": {
   "x-mt": true
  },
+ "s6f1dc5d97e": "Consultas de datos",
+ "s472700f0f5": "Aquí se listan las consultas de datos correctas. Solo se envía una notificación si una consulta sigue fallando.",
+ "sdfa5b44030": "Correcto",
+ "s8b8e9ac677": "Falló",
  "scb28b11e70": "Nueva vista",
  "s1f9799af4e": "e.g. Cottage",
  "@s1f9799af4e": {
@@ -924,6 +928,8 @@
  "sba0a4fbaba": "Respuestas del dispositivo",
  "sdf08a348ba": "Guardado, también en el servidor (iPhone)",
  "s6b8c0469dc": "Guardado en esta app",
+ "scafc63f250": "Avisar también cuando una consulta de datos se realice correctamente",
+ "sc871df3444": "Por defecto, las consultas correctas solo se escriben en el registro (Registros y tendencias → Consultas de datos). Se envía una notificación si una consulta sigue fallando.",
  "sd9762f0556": "Copiado",
  "s703e5ec00e": "Enlace copiado",
  "sd6f41faa1d": "Copiar",
@@ -5908,6 +5914,10 @@
  "@s9041c140be": {
   "x-mt": true
  },
+ "sdca1898723": "El tiempo",
+ "@sdca1898723": {
+  "x-mt": true
+ },
  "s64f4d1e11a": "Indica la ubicación de casa",
  "sbf7cc3de9a": "Pruebe ahora",
  "@sbf7cc3de9a": {
@@ -6148,6 +6158,7 @@
  "s7001f80c75": "Aún no hay tarjetas que registrar.",
  "s25729ac0be": "¿Qué tarjeta?",
  "se93448dca9": "Registro de eventos",
+ "sb7bd245cdc": "Consultas correctas y errores de consulta en este dispositivo",
  "s79a52f607c": "Crea un registro o una tendencia desde cualquier tarjeta: temperatura, potencia, precio, sensor, relé o estado. Pulsa Añadir, o mantén pulsada una tarjeta y elige Añadir registro / tendencia.",
  "s4ff01d5c5f": "se guarda",
  "s11c71ee131": "días",
@@ -9447,6 +9458,9 @@
  "@s984804da72": {
   "x-mt": true
  },
+ "s5a9f34e4c2": "Datos actualizados",
+ "s3acea7ff5a": "Falló la consulta de datos",
+ "s0cfb3a816e": "{p0} – se reintenta",
  "s68e2e87750": "OCPP 1.6J (local, cualquier marca)",
  "@s68e2e87750": {
   "x-mt": true

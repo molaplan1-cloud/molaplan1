@@ -733,6 +733,10 @@ class AppConfig {
   bool notifyInApp;
   bool trayOnClose;
 
+  /// R585 (t327u): device-local. Off = successful data fetches go only to the
+  /// log; the tablet notifies only when a fetch keeps failing.
+  bool notifyFetchSuccess;
+
   /// Device-local (v0.7.2, R132): subtle animations (off = calmer / lighter on slow tablets) and
   /// the clock + weather strip at the top of the home screen.
   bool animations;
@@ -767,6 +771,7 @@ class AppConfig {
     this.autoLocal = true,
     this.notifyInApp = true,
     this.trayOnClose = true,
+    this.notifyFetchSuccess = false,
     this.animations = true,
     this.homeStrip = true,
     List<LogDef>? logs,
@@ -800,6 +805,7 @@ class AppConfig {
     if (!autoLocal) 'autoLocal': false,
     if (!notifyInApp) 'notifyInApp': false,
     if (!trayOnClose) 'trayOnClose': false,
+    if (notifyFetchSuccess) 'notifyFetchSuccess': true,
     if (!animations) 'animations': false,
     if (!homeStrip) 'homeStrip': false,
     'relayUrl': ?relayUrl,
@@ -845,6 +851,7 @@ class AppConfig {
       autoLocal: j['autoLocal'] != false,
       notifyInApp: j['notifyInApp'] != false,
       trayOnClose: j['trayOnClose'] != false,
+      notifyFetchSuccess: j['notifyFetchSuccess'] == true,
       animations: j['animations'] != false,
       homeStrip: j['homeStrip'] != false,
       relayUrl: j['relayUrl'] as String?,

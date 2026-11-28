@@ -497,6 +497,19 @@ class AppLocalizationsEs extends AppLocalizations {
   String get sdfff64e4c3 => 'a través del Hub';
 
   @override
+  String get s6f1dc5d97e => 'Consultas de datos';
+
+  @override
+  String get s472700f0f5 =>
+      'Aquí se listan las consultas de datos correctas. Solo se envía una notificación si una consulta sigue fallando.';
+
+  @override
+  String get sdfa5b44030 => 'Correcto';
+
+  @override
+  String get s8b8e9ac677 => 'Falló';
+
+  @override
   String get scb28b11e70 => 'Nueva vista';
 
   @override
@@ -1175,6 +1188,14 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get s6b8c0469dc => 'Guardado en esta app';
+
+  @override
+  String get scafc63f250 =>
+      'Avisar también cuando una consulta de datos se realice correctamente';
+
+  @override
+  String get sc871df3444 =>
+      'Por defecto, las consultas correctas solo se escriben en el registro (Registros y tendencias → Consultas de datos). Se envía una notificación si una consulta sigue fallando.';
 
   @override
   String get sd9762f0556 => 'Copiado';
@@ -6677,6 +6698,9 @@ class AppLocalizationsEs extends AppLocalizations {
       'Compruebe la configuración id y Modbus de la unidad. Pulse para usar esta dirección.';
 
   @override
+  String get sdca1898723 => 'El tiempo';
+
+  @override
   String get s64f4d1e11a => 'Indica la ubicación de casa';
 
   @override
@@ -6976,6 +7000,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get se93448dca9 => 'Registro de eventos';
+
+  @override
+  String get sb7bd245cdc =>
+      'Consultas correctas y errores de consulta en este dispositivo';
 
   @override
   String get s79a52f607c =>
@@ -10444,6 +10472,17 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get s984804da72 =>
       'Huawei, Fronius, SolarEdge, SMA, Growatt – producción, rejilla y batería. Local, nube opcional.';
+
+  @override
+  String get s5a9f34e4c2 => 'Datos actualizados';
+
+  @override
+  String get s3acea7ff5a => 'Falló la consulta de datos';
+
+  @override
+  String s0cfb3a816e(String p0) {
+    return '$p0 – se reintenta';
+  }
 
   @override
   String get s68e2e87750 => 'OCPP 1.6J (local, cualquier marca)';

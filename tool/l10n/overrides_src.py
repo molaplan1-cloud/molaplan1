@@ -2,6 +2,17 @@
 # Run: python3 tool/l10n/overrides_src.py && python3 tool/l10n/translate.py
 import json, os
 T = {
+ # R580–R589 (t327u): data-fetch log and notifications
+ 'Data fetches': ('Datahämtningar', 'Andmepäringud', 'Consultas de datos'),
+ 'Successful data fetches are listed here. A notification is sent only if a fetch keeps failing.': ('Lyckade datahämtningar listas här. En avisering skickas bara om en hämtning fortsätter att misslyckas.', 'Õnnestunud andmepäringud on loetletud siin. Teade saadetakse ainult siis, kui päring jätkuvalt ebaõnnestub.', 'Aquí se listan las consultas de datos correctas. Solo se envía una notificación si una consulta sigue fallando.'),
+ 'Succeeded': ('Lyckades', 'Õnnestus', 'Correcto'),
+ 'Failed': ('Misslyckades', 'Ebaõnnestus', 'Falló'),
+ 'Also notify when a data fetch succeeds': ('Meddela också när en datahämtning lyckas', 'Teavita ka siis, kui andmepäring õnnestub', 'Avisar también cuando una consulta de datos se realice correctamente'),
+ 'By default, successful fetches are written only to the log (Logs and trends → Data fetches). A notification is sent if a fetch keeps failing.': ('Som standard skrivs lyckade hämtningar bara till loggen (Loggar och trender → Datahämtningar). En avisering skickas om en hämtning fortsätter att misslyckas.', 'Vaikimisi kirjutatakse õnnestunud päringud ainult logisse (Logid ja trendid → Andmepäringud). Teade saadetakse, kui päring ebaõnnestub korduvalt.', 'Por defecto, las consultas correctas solo se escriben en el registro (Registros y tendencias → Consultas de datos). Se envía una notificación si una consulta sigue fallando.'),
+ 'Successful fetches and fetch errors on this device': ('Lyckade hämtningar och hämtningsfel på den här enheten', 'Õnnestunud päringud ja päringuvead selles seadmes', 'Consultas correctas y errores de consulta en este dispositivo'),
+ 'Data updated': ('Data uppdaterad', 'Andmed uuendatud', 'Datos actualizados'),
+ 'Data fetch failed': ('Datahämtningen misslyckades', 'Andmepäring ebaõnnestus', 'Falló la consulta de datos'),
+ '{p0} – retrying': ('{p0} – nytt försök', '{p0} – proovitakse uuesti', '{p0} – se reintenta'),
  # R560–R569 (t324u): generic help text – no owner's test setup
  'Use is recorded while the app is open (for example continuously on the home bridge).': ('Användning spelas in medan appen är öppen (till exempel hela tiden på hembron).', 'Kasutamine registreeritakse, kui rakendus on avatud (näiteks kogu aeg kodusillal).', 'El uso se registra mientras la aplicación está abierta (por ejemplo, de forma continua en el puente doméstico).'),
  'No home bridge: the thermostat is not controlling yet. Set up remote access on a device at home.': ('Ingen hembro: termostaten styr ännu inte. Ställ in fjärråtkomst på en enhet i hemmet.', 'Kodusild puudub: termostaat ei juhi veel. Võta kaugjuurdepääs kasutusele kodus oleval seadmel.', 'No hay puente doméstico: el termostato todavía no controla. Configura el acceso remoto en un dispositivo en casa.'),

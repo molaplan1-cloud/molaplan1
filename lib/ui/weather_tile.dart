@@ -6,6 +6,7 @@ import 'package:material_ui/material_ui.dart';
 import '../energy/weather.dart';
 import '../models/models.dart';
 import 'app_scope.dart';
+import '../notify/data_fetch.dart';
 import 'energy_pages.dart' show HomeLocationPage;
 
 /// 'Sääennuste' tile (t110u): Open-Meteo for the home location (the same forecast feeds
@@ -101,9 +102,11 @@ class _WeatherTileState extends State<WeatherTile> {
           _err = null;
         });
       }
+      unawaited(DataFetch.instance.ok('weather', label: mounted ? tx(context, 'Sää', 'Weather') : 'Weather'));
     } catch (e) {
       if (mounted) setState(() => _err = e);
       _retry = Timer(const Duration(minutes: 2), _load);
+      unawaited(DataFetch.instance.fail('weather', label: mounted ? tx(context, 'Sää', 'Weather') : 'Weather', message: e.toString()));
     } finally {
       _loading = false;
     }

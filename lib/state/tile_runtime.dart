@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 
 import '../drivers/driver.dart';
 import '../models/models.dart';
+import '../notify/data_fetch.dart';
 
 /// Keeps a tile's live value up to date by watching (push) or polling.
 class TileRuntime extends ChangeNotifier {
@@ -111,9 +112,11 @@ class TileRuntime extends ChangeNotifier {
       final v = await d.read(tile.read);
       _set(v, null);
       NetHealth.instance.reportOk(connectionHost(d.config.settings));
+      unawaited(DataFetch.instance.ok('tile:${tile.id}', label: tile.title));
     } catch (e) {
       NetHealth.instance.report(e);
       _set(value, e.toString());
+      unawaited(DataFetch.instance.fail('tile:${tile.id}', label: tile.title, message: e.toString()));
     }
   }
 

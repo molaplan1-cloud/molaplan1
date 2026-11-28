@@ -22,6 +22,7 @@ import 'tile_shortcuts_page.dart';
 import '../state/home_launcher.dart';
 import 'camera_view.dart';
 import 'icons.dart';
+import '../notify/data_fetch.dart';
 import '../notify/notify_filter.dart';
 import 'notify.dart';
 import 'price_tile.dart';
@@ -620,17 +621,25 @@ class _TileWidgetState extends State<TileWidget> {
           if (mounted) setState(() => _reply = null);
         });
       }
-      // R502 (t317u): status replies (Tila, Tila JSON, "Ei muutosta", delays) stay in the tile;
-      // arming, disarming, alarms and other devices' replies notify.
-      if (LocalNotify.appInBackground &&
+      // R502 (t317u): status replies stay in the tile; arming, disarming, alarms
+      // and other devices' replies notify. R580: a successful data refresh is
+      // logged and does not notify (unless the user turned that on).
+      final replyTitle = '${r['title'] ?? ''}';
+      final replyMsg = '${r['message'] ?? ''}';
+      if (isDataFetchSuccess(replyTitle, replyMsg)) {
+        unawaited(DataFetch.instance.ok('ntfy:${t.id}', label: t.title, message: replyMsg));
+      } else if (isDataFetchFailure(replyTitle, replyMsg)) {
+        unawaited(DataFetch.instance.fail('ntfy:${t.id}', label: t.title, message: replyMsg));
+      } else if (LocalNotify.appInBackground &&
           notifyFilterAllows(
             'auto',
-            title: '${r['title'] ?? ''}',
-            message: '${r['message'] ?? ''}',
+            title: replyTitle,
+            message: replyMsg,
             priority: (r['priority'] as num?)?.toInt() ?? 3,
+            notifyFetchSuccess: AppScope.read(context).config.notifyFetchSuccess,
           )) {
-        final title = '${r['title'] ?? ''}'.isEmpty ? t.title : '${t.title}: ${r['title']}';
-        unawaited(LocalNotify.show(title, '${r['message'] ?? ''}'));
+        final title = replyTitle.isEmpty ? t.title : '${t.title}: ${r['title']}';
+        unawaited(LocalNotify.show(title, replyMsg));
       }
     }
   }

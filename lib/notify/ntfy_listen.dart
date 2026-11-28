@@ -137,18 +137,20 @@ class NtfyListen with WidgetsBindingObserver {
   static Future<void> sync({
     required List<ConnectionConfig> connections,
     required NotifySettings notify,
+    bool notifyFetchSuccess = false,
   }) async {
     if (kIsWeb || !Plat.isAndroid || Plat.isFlutterTest) return;
-    await instance._sync(connections: connections, notify: notify);
+    await instance._sync(connections: connections, notify: notify, notifyFetchSuccess: notifyFetchSuccess);
   }
 
-  Future<void> _sync({required List<ConnectionConfig> connections, required NotifySettings notify}) async {
+  Future<void> _sync({required List<ConnectionConfig> connections, required NotifySettings notify, bool notifyFetchSuccess = false}) async {
     final targets = ntfyListenTargets(connections: connections, notify: notify);
     final payload = jsonEncode({
       'topics': [for (final t in targets) t.toJson()],
       if (notify.quietFrom != null) 'quietFrom': notify.quietFrom,
       if (notify.quietTo != null) 'quietTo': notify.quietTo,
       if (notify.mutedUntil != null) 'mutedUntil': notify.mutedUntil,
+      if (notifyFetchSuccess) 'notifyFetchSuccess': true,
       // R461: the native listener classifies alarms with the same rules.
       'alarm': notify.alarm.toJson(),
     });

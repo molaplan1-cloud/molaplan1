@@ -425,6 +425,9 @@ class PriceService {
   /// Network requests made per area (tests and "Tekniset tiedot").
   final fetches = <String, int>{};
 
+  /// R580: the app logs the result (and may notify on a lasting failure).
+  static void Function(String zone, {required bool ok, String? message})? onFetchResult;
+
   Future<PriceSeries> get(String zone, {bool force = false}) {
     return _inflight[zone] ??= _get(zone, force).whenComplete(() {
       // Block body on purpose: remove() returns this very future, and whenComplete would await it (deadlock).
@@ -452,12 +455,20 @@ class PriceService {
     }
     _lastTry[zone] = now;
     fetches[zone] = (fetches[zone] ?? 0) + 1;
-    final got = await _fetch(zone);
+    late PriceSeries got;
+    try {
+      got = await _fetch(zone);
+    } catch (e) {
+      onFetchResult?.call(zone, ok: false, message: e.toString());
+      rethrow;
+    }
     final want = !now.isBefore(tomorrowDue(now, zone: zone));
     if (!got.stale && got.at(now) != null && (!want || got.hasTomorrow(now))) {
       _misses.remove(zone);
+      onFetchResult?.call(zone, ok: true, message: got.source);
     } else {
       _misses[zone] = (_misses[zone] ?? 0) + 1;
+      onFetchResult?.call(zone, ok: false, message: got.stale ? 'stale' : got.source);
     }
     return got;
   }

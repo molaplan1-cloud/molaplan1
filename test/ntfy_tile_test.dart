@@ -16,7 +16,7 @@ import 'support/mock_ntfy.dart';
 
 void main() {
   testWidgets(
-    'ntfy template: PIN asked (hidden, not stored), reply shown in the same tile, notification in background',
+    'ntfy template: PIN asked (hidden, not stored), reply shown in the same tile; a successful refresh is not a notification',
     (tester) async {
       HttpOverrides.global = null; // real loopback HTTP to the mock ntfy server
       final m = (await tester.runAsync(
@@ -55,10 +55,10 @@ void main() {
       expect(find.byKey(const ValueKey('pin-field')), findsOneWidget);
       expect(tester.widget<TextField>(find.byKey(const ValueKey('pin-field'))).obscureText, isTrue);
       await tester.enterText(find.byKey(const ValueKey('pin-field')), '1234');
-      // Background: the reply also comes as a notification.
+      // Background: a successful 'Päivitetty' reply is logged, not notified.
       tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
       await tester.tap(find.byKey(const ValueKey('pin-ok')));
-      for (var i = 0; i < 40 && LocalNotify.recorded!.isEmpty; i++) {
+      for (var i = 0; i < 40 && find.text('Päivitetty: 3 laitetta OK').evaluate().isEmpty; i++) {
         await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 100)));
         await tester.pump(const Duration(milliseconds: 100));
       }
@@ -69,7 +69,7 @@ void main() {
       expect(find.text('Kotilaite'), findsOneWidget);
       expect(find.textContaining('Vastaus klo'), findsOneWidget);
       expect(m.published, ['koti-cmd-test:päivitä 1234']);
-      expect(LocalNotify.recorded, [('Päivitä: Kotilaite', 'Päivitetty: 3 laitetta OK')]);
+      expect(LocalNotify.recorded, isEmpty);
       expect(
         await tester.runAsync(() => st.secretStore.read(AppState.pinKey(button.id))),
         isNull,

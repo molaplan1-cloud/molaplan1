@@ -755,6 +755,26 @@
   "description": "fi: Hubin kautta",
   "x-where": "ui/airthings_page.dart:143"
  },
+ "s6f1dc5d97e": "Data fetches",
+ "@s6f1dc5d97e": {
+  "description": "fi: Tietohaut",
+  "x-where": "ui/data_fetch_log_page.dart:37"
+ },
+ "s472700f0f5": "Successful data fetches are listed here. A notification is sent only if a fetch keeps failing.",
+ "@s472700f0f5": {
+  "description": "fi: Onnistuneet tietohaut merkitään tänne. Ilmoitus tulee vain, jos haku epäonnistuu toistuvasti.",
+  "x-where": "ui/data_fetch_log_page.dart:45"
+ },
+ "sdfa5b44030": "Succeeded",
+ "@sdfa5b44030": {
+  "description": "fi: Onnistui",
+  "x-where": "ui/data_fetch_log_page.dart:70"
+ },
+ "s8b8e9ac677": "Failed",
+ "@s8b8e9ac677": {
+  "description": "fi: Epäonnistui",
+  "x-where": "ui/data_fetch_log_page.dart:70"
+ },
  "scb28b11e70": "New dashboard",
  "@scb28b11e70": {
   "description": "fi: Uusi näkymä",
@@ -1810,6 +1830,16 @@
  "@s6b8c0469dc": {
   "description": "fi: Tallennettu tähän sovellukseen",
   "x-where": "ui/notify_filter_section.dart:79"
+ },
+ "scafc63f250": "Also notify when a data fetch succeeds",
+ "@scafc63f250": {
+  "description": "fi: Ilmoita myös onnistuneista tietohauista",
+  "x-where": "ui/notify_filter_section.dart:93"
+ },
+ "sc871df3444": "By default, successful fetches are written only to the log (Logs and trends → Data fetches). A notification is sent if a fetch keeps failing.",
+ "@sc871df3444": {
+  "description": "fi: Oletuksena onnistuneet haut merkitään vain lokiin (Lokit ja trendit → Tietohaut). Ilmoitus tulee, jos haku epäonnistuu t",
+  "x-where": "ui/notify_filter_section.dart:95"
  },
  "sd9762f0556": "Copied",
  "@sd9762f0556": {
@@ -3879,12 +3909,12 @@
  "s12c2f8e6e4": "Home network only",
  "@s12c2f8e6e4": {
   "description": "fi: Vain kotiverkossa",
-  "x-where": "ui/tile_widget.dart:101"
+  "x-where": "ui/tile_widget.dart:102"
  },
  "s5f7c464e6d": "at {p0}",
  "@s5f7c464e6d": {
   "description": "fi: klo {p0}",
-  "x-where": "ui/tile_widget.dart:136",
+  "x-where": "ui/tile_widget.dart:137",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -3894,7 +3924,7 @@
  "s21b64ae0a7": "{p0} only works on the home network. The tile returns to normal by itself when you are home again.",
  "@s21b64ae0a7": {
   "description": "fi: {p0} toimii vain kotiverkossa. Ruutu palaa normaaliksi itsestään, kun olet taas kotona.",
-  "x-where": "ui/tile_widget.dart:184",
+  "x-where": "ui/tile_widget.dart:185",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -3904,82 +3934,82 @@
  "s6b1a8249de": "Last state",
  "@s6b1a8249de": {
   "description": "fi: Viimeisin tila",
-  "x-where": "ui/tile_widget.dart:194"
+  "x-where": "ui/tile_widget.dart:195"
  },
  "s56650a18d5": "Make it work remotely ›",
  "@s56650a18d5": {
   "description": "fi: Tee etäkäyttöiseksi ›",
-  "x-where": "ui/tile_widget.dart:212"
+  "x-where": "ui/tile_widget.dart:213"
  },
  "sa0d8c62e5a": "No command configured",
  "@sa0d8c62e5a": {
   "description": "fi: Komentoa ei ole määritetty",
-  "x-where": "ui/tile_widget.dart:361"
+  "x-where": "ui/tile_widget.dart:362"
  },
  "s1e5d696a26": "Run this command?",
  "@s1e5d696a26": {
   "description": "fi: Suoritetaanko komento?",
-  "x-where": "ui/tile_widget.dart:369"
+  "x-where": "ui/tile_widget.dart:370"
  },
  "sa5ee6618a3": "change PIN",
  "@sa5ee6618a3": {
   "description": "fi: vaihda PIN-koodi",
-  "x-where": "ui/tile_widget.dart:411"
+  "x-where": "ui/tile_widget.dart:412"
  },
  "s66f8ce67ed": "enter PIN",
  "@s66f8ce67ed": {
   "description": "fi: syötä PIN-koodi",
-  "x-where": "ui/tile_widget.dart:412"
+  "x-where": "ui/tile_widget.dart:413"
  },
  "sb7b0c97cfa": "The device needs its PIN for every command and status request. Enter it once here.",
  "@sb7b0c97cfa": {
   "description": "fi: Laite tarvitsee PIN-koodin jokaiseen komentoon ja tilakyselyyn. Syötä se kerran tässä.",
-  "x-where": "ui/tile_widget.dart:420"
+  "x-where": "ui/tile_widget.dart:421"
  },
  "s1df6e2eaa7": "PIN",
  "@s1df6e2eaa7": {
   "description": "fi: PIN",
-  "x-where": "ui/tile_widget.dart:434"
+  "x-where": "ui/tile_widget.dart:435"
  },
  "sb52d5c0b5b": "The browser never stores the PIN. It is asked again the next time you open the page.",
  "@sb52d5c0b5b": {
   "description": "fi: Selaimessa PIN-koodia ei tallenneta. Se kysytään uudelleen, kun avaat sivun seuraavan kerran.",
-  "x-where": "ui/tile_widget.dart:442"
+  "x-where": "ui/tile_widget.dart:443"
  },
  "secab66c046": "Remember on this device",
  "@secab66c046": {
   "description": "fi: Muista tällä laitteella",
-  "x-where": "ui/tile_widget.dart:455"
+  "x-where": "ui/tile_widget.dart:456"
  },
  "s2a15ea2eab": "Stored encrypted on this device only – not in the account or on other devices. Off = asked again when the app restarts.",
  "@s2a15ea2eab": {
   "description": "fi: Tallennetaan salattuna vain tähän laitteeseen – ei tilille eikä muille laitteille. Pois päältä = kysytään taas, kun sove",
-  "x-where": "ui/tile_widget.dart:457"
+  "x-where": "ui/tile_widget.dart:458"
  },
  "sdfc012fb4e": "PIN code",
  "@sdfc012fb4e": {
   "description": "fi: PIN-koodi",
-  "x-where": "ui/tile_widget.dart:513"
+  "x-where": "ui/tile_widget.dart:514"
  },
  "s10bf4eab8e": "Stored encrypted on this device only. By default the PIN is not stored.",
  "@s10bf4eab8e": {
   "description": "fi: Tallennetaan suojattuna vain tähän laitteeseen. Oletuksena PIN-koodia ei tallenneta.",
-  "x-where": "ui/tile_widget.dart:537"
+  "x-where": "ui/tile_widget.dart:538"
  },
  "s912ea5d2ec": "Send",
  "@s912ea5d2ec": {
   "description": "fi: Lähetä",
-  "x-where": "ui/tile_widget.dart:552"
+  "x-where": "ui/tile_widget.dart:553"
  },
  "s856418521a": "No commands configured",
  "@s856418521a": {
   "description": "fi: Komentoja ei ole määritetty",
-  "x-where": "ui/tile_widget.dart:567"
+  "x-where": "ui/tile_widget.dart:568"
  },
  "sb0ba67e677": "Ran at {p0}",
  "@sb0ba67e677": {
   "description": "fi: Ajettu klo {p0}",
-  "x-where": "ui/tile_widget.dart:603",
+  "x-where": "ui/tile_widget.dart:604",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -3989,7 +4019,7 @@
  "sdfa66ee201": "{p0}: sent",
  "@sdfa66ee201": {
   "description": "fi: {p0}: lähetetty",
-  "x-where": "ui/tile_widget.dart:613",
+  "x-where": "ui/tile_widget.dart:614",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -3999,87 +4029,87 @@
  "s12fc3810a5": "Sent – waiting for the reply…",
  "@s12fc3810a5": {
   "description": "fi: Lähetetty – odotetaan vastausta…",
-  "x-where": "ui/tile_widget.dart:669"
+  "x-where": "ui/tile_widget.dart:678"
  },
  "sd1c7d49360": "Reply at",
  "@sd1c7d49360": {
   "description": "fi: Vastaus klo",
-  "x-where": "ui/tile_widget.dart:686"
+  "x-where": "ui/tile_widget.dart:695"
  },
  "s29fae6a0e8": "Price control on",
  "@s29fae6a0e8": {
   "description": "fi: Hintaohjaus käytössä",
-  "x-where": "ui/tile_widget.dart:723"
+  "x-where": "ui/tile_widget.dart:732"
  },
  "sbfe79d1f5f": "Updated",
  "@sbfe79d1f5f": {
   "description": "fi: Päivitetty",
-  "x-where": "ui/tile_widget.dart:725"
+  "x-where": "ui/tile_widget.dart:734"
  },
  "s71f145905e": "Shortcut / share",
  "@s71f145905e": {
   "description": "fi: Pikakomento / jaa",
-  "x-where": "ui/tile_widget.dart:744"
+  "x-where": "ui/tile_widget.dart:753"
  },
  "sff8f7a1947": "Add log / trend",
  "@sff8f7a1947": {
   "description": "fi: Lisää loki / trendi",
-  "x-where": "ui/tile_widget.dart:756"
+  "x-where": "ui/tile_widget.dart:765"
  },
  "se893c16dba": "Log / trend",
  "@se893c16dba": {
   "description": "fi: Loki / trendi",
-  "x-where": "ui/tile_widget.dart:757"
+  "x-where": "ui/tile_widget.dart:766"
  },
  "s46d0983ce8": "Add to home screen",
  "@s46d0983ce8": {
   "description": "fi: Lisää aloitusnäytölle",
-  "x-where": "ui/tile_widget.dart:767"
+  "x-where": "ui/tile_widget.dart:776"
  },
  "s59d55f8882": "Rename",
  "@s59d55f8882": {
   "description": "fi: Nimeä uudelleen",
-  "x-where": "ui/tile_widget.dart:774"
+  "x-where": "ui/tile_widget.dart:783"
  },
  "s84ada1ae69": "Change PIN",
  "@s84ada1ae69": {
   "description": "fi: Vaihda PIN",
-  "x-where": "ui/tile_widget.dart:786"
+  "x-where": "ui/tile_widget.dart:795"
  },
  "s25580038cb": "Saved PIN removed",
  "@s25580038cb": {
   "description": "fi: Tallennettu PIN poistettu",
-  "x-where": "ui/tile_widget.dart:794"
+  "x-where": "ui/tile_widget.dart:803"
  },
  "sf50c488b24": "Forget saved PIN",
  "@sf50c488b24": {
   "description": "fi: Unohda tallennettu PIN",
-  "x-where": "ui/tile_widget.dart:796"
+  "x-where": "ui/tile_widget.dart:805"
  },
  "safe0429a90": "Price control",
  "@safe0429a90": {
   "description": "fi: Hintaohjaus",
-  "x-where": "ui/tile_widget.dart:805"
+  "x-where": "ui/tile_widget.dart:814"
  },
  "sf3d644dd4c": "Learn a remote button",
  "@sf3d644dd4c": {
   "description": "fi: Opettele kaukosäätimen nappi",
-  "x-where": "ui/tile_widget.dart:814"
+  "x-where": "ui/tile_widget.dart:823"
  },
  "sfb1a18d11f": "Refresh",
  "@sfb1a18d11f": {
   "description": "fi: Päivitä",
-  "x-where": "ui/tile_widget.dart:821"
+  "x-where": "ui/tile_widget.dart:830"
  },
  "sbb9e9b1229": "Enter PIN",
  "@sbb9e9b1229": {
   "description": "fi: Syötä PIN",
-  "x-where": "ui/tile_widget.dart:1106"
+  "x-where": "ui/tile_widget.dart:1115"
  },
  "se38a9bb2ed": "Last",
  "@se38a9bb2ed": {
   "description": "fi: Viimeksi",
-  "x-where": "ui/tile_widget.dart:1271"
+  "x-where": "ui/tile_widget.dart:1280"
  },
  "s8e3624e844": "Zoom in",
  "@s8e3624e844": {
@@ -10718,15 +10748,20 @@
   "description": "fi: Tarkista laitteen unit id ja Modbus-asetukset. Napauta käyttääksesi tätä osoitetta.",
   "x-where": "ui/modbus_scan_page.dart:224"
  },
+ "sdca1898723": "Weather",
+ "@sdca1898723": {
+  "description": "fi: Sää",
+  "x-where": "ui/weather_tile.dart:105"
+ },
  "s64f4d1e11a": "Set the home location",
  "@s64f4d1e11a": {
   "description": "fi: Aseta kodin sijainti",
-  "x-where": "ui/weather_tile.dart:141"
+  "x-where": "ui/weather_tile.dart:144"
  },
  "sbf7cc3de9a": "Try now",
  "@sbf7cc3de9a": {
   "description": "fi: Yritä nyt",
-  "x-where": "ui/weather_tile.dart:165"
+  "x-where": "ui/weather_tile.dart:168"
  },
  "sec88246e24": "Choose a room photo",
  "@sec88246e24": {
@@ -11106,312 +11141,317 @@
  "s9f02ad954d": "Armed",
  "@s9f02ad954d": {
   "description": "fi: Valvonta päälle",
-  "x-where": "ui/log_pages.dart:28"
+  "x-where": "ui/log_pages.dart:29"
  },
  "s8352b34316": "Armed (at home)",
  "@s8352b34316": {
   "description": "fi: Valvonta päälle (kotona)",
-  "x-where": "ui/log_pages.dart:29"
+  "x-where": "ui/log_pages.dart:30"
  },
  "s49e6af4fbd": "Disarmed",
  "@s49e6af4fbd": {
   "description": "fi: Valvonta pois",
-  "x-where": "ui/log_pages.dart:30"
+  "x-where": "ui/log_pages.dart:31"
  },
  "s3dfa789b85": "ALARM",
  "@s3dfa789b85": {
   "description": "fi: HÄLYTYS",
-  "x-where": "ui/log_pages.dart:31"
+  "x-where": "ui/log_pages.dart:32"
  },
  "s06273ba893": "Exit delay",
  "@s06273ba893": {
   "description": "fi: Lähtöviive",
-  "x-where": "ui/log_pages.dart:32"
+  "x-where": "ui/log_pages.dart:33"
  },
  "sfcf7462d8b": "Entry delay",
  "@sfcf7462d8b": {
   "description": "fi: Tuloviive",
-  "x-where": "ui/log_pages.dart:33"
+  "x-where": "ui/log_pages.dart:34"
  },
  "s55142f0816": "Alarm / open / motion",
  "@s55142f0816": {
   "description": "fi: Hälytys / auki / liike",
-  "x-where": "ui/log_pages.dart:39"
+  "x-where": "ui/log_pages.dart:40"
  },
  "s6f0481deb7": "Calm / closed",
  "@s6f0481deb7": {
   "description": "fi: Rauhallinen / kiinni",
-  "x-where": "ui/log_pages.dart:40"
+  "x-where": "ui/log_pages.dart:41"
  },
  "s4b77da40d6": "This device (Molaplan)",
  "@s4b77da40d6": {
   "description": "fi: Tämä laite (Molaplan)",
-  "x-where": "ui/log_pages.dart:51"
+  "x-where": "ui/log_pages.dart:52"
  },
  "s1cbfbc5ff7": "Removed tile",
  "@s1cbfbc5ff7": {
   "description": "fi: Poistettu ruutu",
-  "x-where": "ui/log_pages.dart:56"
+  "x-where": "ui/log_pages.dart:57"
  },
  "s7843a19ea0": "24 h",
  "@s7843a19ea0": {
   "description": "fi: 24 h",
-  "x-where": "ui/log_pages.dart:61"
+  "x-where": "ui/log_pages.dart:62"
  },
  "s4b87fa9575": "7 days",
  "@s4b87fa9575": {
   "description": "fi: 7 vrk",
-  "x-where": "ui/log_pages.dart:62"
+  "x-where": "ui/log_pages.dart:63"
  },
  "s1e72f886c1": "30 days",
  "@s1e72f886c1": {
   "description": "fi: 30 vrk",
-  "x-where": "ui/log_pages.dart:63"
+  "x-where": "ui/log_pages.dart:64"
  },
  "s78266c553c": "Only when the value changes",
  "@s78266c553c": {
   "description": "fi: Vain kun arvo muuttuu",
-  "x-where": "ui/log_pages.dart:67"
+  "x-where": "ui/log_pages.dart:68"
  },
  "sf224f07b80": "Changes and at least every minute",
  "@sf224f07b80": {
   "description": "fi: Muutokset ja vähintään minuutin välein",
-  "x-where": "ui/log_pages.dart:68"
+  "x-where": "ui/log_pages.dart:69"
  },
  "s41ef71d809": "Changes and at least every 5 min",
  "@s41ef71d809": {
   "description": "fi: Muutokset ja vähintään 5 min välein",
-  "x-where": "ui/log_pages.dart:69"
+  "x-where": "ui/log_pages.dart:70"
  },
  "s12e38f800c": "Changes and at least every 15 min",
  "@s12e38f800c": {
   "description": "fi: Muutokset ja vähintään 15 min välein",
-  "x-where": "ui/log_pages.dart:70"
+  "x-where": "ui/log_pages.dart:71"
  },
  "sa7c19cc4e2": "Changes and at least hourly",
  "@sa7c19cc4e2": {
   "description": "fi: Muutokset ja vähintään kerran tunnissa",
-  "x-where": "ui/log_pages.dart:71"
+  "x-where": "ui/log_pages.dart:72"
  },
  "sc0d4464ce2": "You can have at most 40 logs.",
  "@sc0d4464ce2": {
   "description": "fi: Lokeja voi olla enintään 40.",
-  "x-where": "ui/log_pages.dart:99"
+  "x-where": "ui/log_pages.dart:100"
  },
  "s7001f80c75": "No tiles to log yet.",
  "@s7001f80c75": {
   "description": "fi: Ei ruutuja, joista voisi kerätä lokia.",
-  "x-where": "ui/log_pages.dart:141"
+  "x-where": "ui/log_pages.dart:142"
  },
  "s25729ac0be": "Which tile?",
  "@s25729ac0be": {
   "description": "fi: Mistä ruudusta?",
-  "x-where": "ui/log_pages.dart:154"
+  "x-where": "ui/log_pages.dart:155"
  },
  "se93448dca9": "Event log",
  "@se93448dca9": {
   "description": "fi: Tapahtumaloki",
-  "x-where": "ui/log_pages.dart:163"
+  "x-where": "ui/log_pages.dart:164"
+ },
+ "sb7bd245cdc": "Successful fetches and fetch errors on this device",
+ "@sb7bd245cdc": {
+  "description": "fi: Onnistuneet haut ja hakuvirheet tällä laitteella",
+  "x-where": "ui/log_pages.dart:203"
  },
  "s79a52f607c": "Build a log or trend from any tile: temperature, power, price, sensor, relay or state. Tap Add, or long-press a tile and choose Add log / trend.",
  "@s79a52f607c": {
   "description": "fi: Rakenna loki tai trendi mistä tahansa ruudusta: lämpötila, teho, hinta, anturi, rele tai tila. Paina Lisää tai pidä ruut",
-  "x-where": "ui/log_pages.dart:197"
+  "x-where": "ui/log_pages.dart:216"
  },
  "s4ff01d5c5f": "kept",
  "@s4ff01d5c5f": {
   "description": "fi: säilytys",
-  "x-where": "ui/log_pages.dart:216"
+  "x-where": "ui/log_pages.dart:230"
  },
  "s11c71ee131": "days",
  "@s11c71ee131": {
   "description": "fi: vrk",
-  "x-where": "ui/log_pages.dart:216"
+  "x-where": "ui/log_pages.dart:230"
  },
  "sbbb938f28f": "Data is stored on this device. Collection runs whenever Molaplan runs (also in the background on Windows and as a home bridge). On Android values are also read about every 15 minutes with the app closed. In the browser collection runs only while the page is open; prices and devices with their own history fill the gaps.",
  "@sbbb938f28f": {
   "description": "fi: Tiedot tallennetaan tälle laitteelle. Keräys toimii aina, kun Molaplan on käynnissä (myös taustalla Windowsissa ja kotis",
-  "x-where": "ui/log_pages.dart:224"
+  "x-where": "ui/log_pages.dart:238"
  },
  "s5e9f9fcae5": "New log / trend",
  "@s5e9f9fcae5": {
   "description": "fi: Uusi loki / trendi",
-  "x-where": "ui/log_pages.dart:304"
+  "x-where": "ui/log_pages.dart:318"
  },
  "sb0ced9bdb6": "Name (optional)",
  "@sb0ced9bdb6": {
   "description": "fi: Nimi (vapaaehtoinen)",
-  "x-where": "ui/log_pages.dart:322"
+  "x-where": "ui/log_pages.dart:336"
  },
  "s237da9d739": "Chart",
  "@s237da9d739": {
   "description": "fi: Kuvaaja",
-  "x-where": "ui/log_pages.dart:353"
+  "x-where": "ui/log_pages.dart:367"
  },
  "s89fd2c0b0b": "Line",
  "@s89fd2c0b0b": {
   "description": "fi: Viiva",
-  "x-where": "ui/log_pages.dart:358"
+  "x-where": "ui/log_pages.dart:372"
  },
  "se256c45d40": "Record",
  "@se256c45d40": {
   "description": "fi: Tallenna",
-  "x-where": "ui/log_pages.dart:369"
+  "x-where": "ui/log_pages.dart:383"
  },
  "sd185524df1": "Which changes are logged",
  "@sd185524df1": {
   "description": "fi: Mitkä muutokset kirjataan",
-  "x-where": "ui/log_pages.dart:381"
+  "x-where": "ui/log_pages.dart:395"
  },
  "s0918947c1c": "Every change",
  "@s0918947c1c": {
   "description": "fi: Kaikki muutokset",
-  "x-where": "ui/log_pages.dart:385"
+  "x-where": "ui/log_pages.dart:399"
  },
  "sae3c62f7d0": "Values appear here once the tile has reported them. Until then log every change.",
  "@sae3c62f7d0": {
   "description": "fi: Arvot tulevat näkyviin, kun ruutu on raportoinut niitä. Kirjaa siihen asti kaikki muutokset.",
-  "x-where": "ui/log_pages.dart:400"
+  "x-where": "ui/log_pages.dart:414"
  },
  "s16b24be503": "Record who / what changed it",
  "@s16b24be503": {
   "description": "fi: Kirjaa kuka / mikä muutti",
-  "x-where": "ui/log_pages.dart:410"
+  "x-where": "ui/log_pages.dart:424"
  },
  "se2badd71f2": "When the device tells (e.g. the alarm panel user) or the change was made from this app.",
  "@se2badd71f2": {
   "description": "fi: Kun laite kertoo sen (esim. hälytyspaneelin käyttäjä) tai muutos tehtiin tästä sovelluksesta.",
-  "x-where": "ui/log_pages.dart:412"
+  "x-where": "ui/log_pages.dart:426"
  },
  "s56acf29de0": "Show as a tile on the dashboard",
  "@s56acf29de0": {
   "description": "fi: Näytä ruutuna etusivulla",
-  "x-where": "ui/log_pages.dart:426"
+  "x-where": "ui/log_pages.dart:440"
  },
  "s40e7046009": "More settings",
  "@s40e7046009": {
   "description": "fi: Lisäasetukset",
-  "x-where": "ui/log_pages.dart:434"
+  "x-where": "ui/log_pages.dart:448"
  },
  "s3f5977d9b6": "Keep data for",
  "@s3f5977d9b6": {
   "description": "fi: Säilytä tiedot",
-  "x-where": "ui/log_pages.dart:440"
+  "x-where": "ui/log_pages.dart:454"
  },
  "se668520c52": "Default range",
  "@se668520c52": {
   "description": "fi: Oletusaikaväli",
-  "x-where": "ui/log_pages.dart:453"
+  "x-where": "ui/log_pages.dart:467"
  },
  "s92c8a02204": "Ignore changes smaller than",
  "@s92c8a02204": {
   "description": "fi: Ohita pienemmät muutokset kuin",
-  "x-where": "ui/log_pages.dart:465"
+  "x-where": "ui/log_pages.dart:479"
  },
  "sf84e8b990b": "Older data is condensed: 1-minute detail for 6 h, then 5 min, 15 min, 1 hour. Data stays on this device; export CSV to use it elsewhere.",
  "@sf84e8b990b": {
   "description": "fi: Vanhat tiedot tiivistetään: minuutin tarkkuus 6 h, sitten 5 min, 15 min, tunti. Tieto pysyy tällä laitteella; vie CSV, j",
-  "x-where": "ui/log_pages.dart:473"
+  "x-where": "ui/log_pages.dart:487"
  },
  "s7036f1191e": "At most 2000 events. Data stays on this device; export CSV to use it elsewhere.",
  "@s7036f1191e": {
   "description": "fi: Enintään 2000 tapahtumaa. Tieto pysyy tällä laitteella; vie CSV, jos haluat sen muualle.",
-  "x-where": "ui/log_pages.dart:478"
+  "x-where": "ui/log_pages.dart:492"
  },
  "s62cd475497": "Export CSV",
  "@s62cd475497": {
   "description": "fi: Vie CSV",
-  "x-where": "ui/log_pages.dart:578"
+  "x-where": "ui/log_pages.dart:592"
  },
  "sd0271d93a1": "CSV exported",
  "@sd0271d93a1": {
   "description": "fi: CSV viety",
-  "x-where": "ui/log_pages.dart:580"
+  "x-where": "ui/log_pages.dart:594"
  },
  "sb130aae279": "Tile added to the dashboard",
  "@sb130aae279": {
   "description": "fi: Ruutu lisätty etusivulle",
-  "x-where": "ui/log_pages.dart:595"
+  "x-where": "ui/log_pages.dart:609"
  },
  "s950023174c": "Clear the data?",
  "@s950023174c": {
   "description": "fi: Tyhjennetäänkö tiedot?",
-  "x-where": "ui/log_pages.dart:599"
+  "x-where": "ui/log_pages.dart:613"
  },
  "s5c6181d628": "The collected data is removed from this device. Collection continues.",
  "@s5c6181d628": {
   "description": "fi: Kerätyt tiedot poistetaan tältä laitteelta. Keräys jatkuu.",
-  "x-where": "ui/log_pages.dart:600"
+  "x-where": "ui/log_pages.dart:614"
  },
  "s6d02a02a84": "Delete the log?",
  "@s6d02a02a84": {
   "description": "fi: Poistetaanko loki?",
-  "x-where": "ui/log_pages.dart:612"
+  "x-where": "ui/log_pages.dart:626"
  },
  "s352ff3dfcd": "The log, its data and its tile are removed.",
  "@s352ff3dfcd": {
   "description": "fi: Loki, sen tiedot ja sen ruutu poistetaan.",
-  "x-where": "ui/log_pages.dart:613"
+  "x-where": "ui/log_pages.dart:627"
  },
  "s4a997986a1": "The log was removed.",
  "@s4a997986a1": {
   "description": "fi: Loki on poistettu.",
-  "x-where": "ui/log_pages.dart:628"
+  "x-where": "ui/log_pages.dart:642"
  },
  "s7a0680e628": "Clear data",
  "@s7a0680e628": {
   "description": "fi: Tyhjennä tiedot",
-  "x-where": "ui/log_pages.dart:661"
+  "x-where": "ui/log_pages.dart:675"
  },
  "sdbf5997eb6": "Delete log",
  "@sdbf5997eb6": {
   "description": "fi: Poista loki",
-  "x-where": "ui/log_pages.dart:662"
+  "x-where": "ui/log_pages.dart:676"
  },
  "s861cfdceb8": "No data for this range yet. Collecting.",
  "@s861cfdceb8": {
   "description": "fi: Ei vielä tietoja tältä ajalta. Keräys on käynnissä.",
-  "x-where": "ui/log_pages.dart:723"
+  "x-where": "ui/log_pages.dart:737"
  },
  "saa1ac2854a": "Min",
  "@saa1ac2854a": {
   "description": "fi: Min",
-  "x-where": "ui/log_pages.dart:747"
+  "x-where": "ui/log_pages.dart:761"
  },
  "s3f80c515c3": "Max",
  "@s3f80c515c3": {
   "description": "fi: Max",
-  "x-where": "ui/log_pages.dart:748"
+  "x-where": "ui/log_pages.dart:762"
  },
  "s0995036cd3": "Latest",
  "@s0995036cd3": {
   "description": "fi: Viimeisin",
-  "x-where": "ui/log_pages.dart:750"
+  "x-where": "ui/log_pages.dart:764"
  },
  "safecdd6b93": "No events yet. The log records the chosen changes from now on.",
  "@safecdd6b93": {
   "description": "fi: Ei tapahtumia vielä. Loki kirjaa valitut muutokset tästä eteenpäin.",
-  "x-where": "ui/log_pages.dart:773"
+  "x-where": "ui/log_pages.dart:787"
  },
  "s4ba3b23ae1": "Lasted",
  "@s4ba3b23ae1": {
   "description": "fi: Kesti",
-  "x-where": "ui/log_pages.dart:817"
+  "x-where": "ui/log_pages.dart:831"
  },
  "s5fb1d3d53a": "Who",
  "@s5fb1d3d53a": {
   "description": "fi: Kuka",
-  "x-where": "ui/log_pages.dart:818"
+  "x-where": "ui/log_pages.dart:832"
  },
  "s23f691770e": "Collecting…",
  "@s23f691770e": {
   "description": "fi: Kerätään…",
-  "x-where": "ui/log_pages.dart:1036"
+  "x-where": "ui/log_pages.dart:1050"
  },
  "s35be191f52": "No events yet",
  "@s35be191f52": {
   "description": "fi: Ei tapahtumia vielä",
-  "x-where": "ui/log_pages.dart:1047"
+  "x-where": "ui/log_pages.dart:1061"
  },
  "sfe55fd97fa": "All quiet.",
  "@sfe55fd97fa": {
@@ -16688,6 +16728,26 @@
   "description": "fi: Huawei, Fronius, SolarEdge, SMA, Growatt – tuotanto, verkko ja akku. Paikallisesti, pilvi valinnainen.",
   "x-where": "energy/solar_providers.dart:346"
  },
+ "s5a9f34e4c2": "Data updated",
+ "@s5a9f34e4c2": {
+  "description": "fi: Tiedot päivitetty",
+  "x-where": "notify/data_fetch_host.dart:54"
+ },
+ "s3acea7ff5a": "Data fetch failed",
+ "@s3acea7ff5a": {
+  "description": "fi: Tietohaku ei onnistunut",
+  "x-where": "notify/data_fetch_host.dart:55"
+ },
+ "s0cfb3a816e": "{p0} – retrying",
+ "@s0cfb3a816e": {
+  "description": "fi: {p0} – yritetään uudelleen",
+  "x-where": "notify/data_fetch_host.dart:58",
+  "placeholders": {
+   "p0": {
+    "type": "String"
+   }
+  }
+ },
  "s68e2e87750": "OCPP 1.6J (local, any brand)",
  "@s68e2e87750": {
   "description": "fi: OCPP 1.6J (paikallinen, mikä tahansa merkki)",
@@ -17892,7 +17952,7 @@
  "sb9964cfb3b": "Power {p0}",
  "@sb9964cfb3b": {
   "description": "fi: Teho {p0}",
-  "x-where": "state/app_state.dart:1373",
+  "x-where": "state/app_state.dart:1376",
   "placeholders": {
    "p0": {
     "type": "String"
@@ -17902,7 +17962,7 @@
  "s08d04d58a9": "Channel {p0}",
  "@s08d04d58a9": {
   "description": "fi: Kanava {p0}",
-  "x-where": "state/app_state.dart:1374",
+  "x-where": "state/app_state.dart:1377",
   "placeholders": {
    "p0": {
     "type": "String"

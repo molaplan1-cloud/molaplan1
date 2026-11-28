@@ -992,6 +992,30 @@ abstract class AppLocalizations {
   /// **'via the Hub'**
   String get sdfff64e4c3;
 
+  /// fi: Tietohaut
+  ///
+  /// In en, this message translates to:
+  /// **'Data fetches'**
+  String get s6f1dc5d97e;
+
+  /// fi: Onnistuneet tietohaut merkitään tänne. Ilmoitus tulee vain, jos haku epäonnistuu toistuvasti.
+  ///
+  /// In en, this message translates to:
+  /// **'Successful data fetches are listed here. A notification is sent only if a fetch keeps failing.'**
+  String get s472700f0f5;
+
+  /// fi: Onnistui
+  ///
+  /// In en, this message translates to:
+  /// **'Succeeded'**
+  String get sdfa5b44030;
+
+  /// fi: Epäonnistui
+  ///
+  /// In en, this message translates to:
+  /// **'Failed'**
+  String get s8b8e9ac677;
+
   /// fi: Uusi näkymä
   ///
   /// In en, this message translates to:
@@ -2227,6 +2251,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Saved in this app'**
   String get s6b8c0469dc;
+
+  /// fi: Ilmoita myös onnistuneista tietohauista
+  ///
+  /// In en, this message translates to:
+  /// **'Also notify when a data fetch succeeds'**
+  String get scafc63f250;
+
+  /// fi: Oletuksena onnistuneet haut merkitään vain lokiin (Lokit ja trendit → Tietohaut). Ilmoitus tulee, jos haku epäonnistuu t
+  ///
+  /// In en, this message translates to:
+  /// **'By default, successful fetches are written only to the log (Logs and trends → Data fetches). A notification is sent if a fetch keeps failing.'**
+  String get sc871df3444;
 
   /// fi: Kopioitu
   ///
@@ -12111,6 +12147,12 @@ abstract class AppLocalizations {
   /// **'Check the unit id and Modbus settings. Tap to use this address.'**
   String get s9041c140be;
 
+  /// fi: Sää
+  ///
+  /// In en, this message translates to:
+  /// **'Weather'**
+  String get sdca1898723;
+
   /// fi: Aseta kodin sijainti
   ///
   /// In en, this message translates to:
@@ -12686,6 +12728,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Event log'**
   String get se93448dca9;
+
+  /// fi: Onnistuneet haut ja hakuvirheet tällä laitteella
+  ///
+  /// In en, this message translates to:
+  /// **'Successful fetches and fetch errors on this device'**
+  String get sb7bd245cdc;
 
   /// fi: Rakenna loki tai trendi mistä tahansa ruudusta: lämpötila, teho, hinta, anturi, rele tai tila. Paina Lisää tai pidä ruut
   ///
@@ -18676,6 +18724,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Huawei, Fronius, SolarEdge, SMA, Growatt – production, grid and battery. Local, cloud optional.'**
   String get s984804da72;
+
+  /// fi: Tiedot päivitetty
+  ///
+  /// In en, this message translates to:
+  /// **'Data updated'**
+  String get s5a9f34e4c2;
+
+  /// fi: Tietohaku ei onnistunut
+  ///
+  /// In en, this message translates to:
+  /// **'Data fetch failed'**
+  String get s3acea7ff5a;
+
+  /// fi: {p0} – yritetään uudelleen
+  ///
+  /// In en, this message translates to:
+  /// **'{p0} – retrying'**
+  String s0cfb3a816e(String p0);
 
   /// fi: OCPP 1.6J (paikallinen, mikä tahansa merkki)
   ///
