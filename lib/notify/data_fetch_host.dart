@@ -3,6 +3,7 @@ library;
 
 import 'dart:async';
 
+import '../core/plat.dart';
 import '../l10n/l10n.dart';
 import '../log/event_log.dart';
 import '../prices/prices.dart';
@@ -38,7 +39,10 @@ void attachDataFetch({required bool notifySuccess, required String lang}) {
   d.sink ??= const LocalDataFetchSink();
   d.notifySuccess = notifySuccess;
   d.translate = (fi, en) => tr(lang, fi, en);
-  _failTick ??= Timer.periodic(const Duration(minutes: 1), (_) => unawaited(DataFetch.instance.tick()));
+  // A pending periodic timer fails widget tests (CI, '!timersPending').
+  if (!Plat.isFlutterTest) {
+    _failTick ??= Timer.periodic(const Duration(minutes: 1), (_) => unawaited(DataFetch.instance.tick()));
+  }
   PriceService.onFetchResult = (zone, {required bool ok, String? message}) {
     if (ok) {
       unawaited(DataFetch.instance.ok('price:$zone', label: zone, message: message));
